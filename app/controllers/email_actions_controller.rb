@@ -26,7 +26,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
     respond_to do |format|
       format.html {
-        flash[:notice] = I18n.t "email.missed_yesterday.marked_as_read_success"
+        flash[:notice] = I18n.t "email.catch_up.marked_as_read_success"
         redirect_to root_path
       }
       format.gif { respond_with_pixel }

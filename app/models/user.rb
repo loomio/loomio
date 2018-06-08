@@ -10,8 +10,9 @@ class User < ApplicationRecord
   include CustomCounterCache::Model
 
   extend HasTokens
+  extend HasDefaults
 
-  extend  NoSpam
+  extend NoSpam
   no_spam_for :name
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
@@ -128,15 +129,16 @@ class User < ApplicationRecord
           dependent: :destroy
 
   before_save :set_avatar_initials
-  initialized_with_token :unsubscribe_token, -> { Devise.friendly_token }
-  initialized_with_token :email_api_key,     -> { SecureRandom.hex(16) }
+  initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
+  initialized_with_token :email_api_key,            -> { SecureRandom.hex(16) }
+  initialized_with_default :email_on_participation, -> { !ENV['EMAIL_ON_PARTICIPATION_DEFAULT_FALSE'] }
 
 
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where("deactivated_at IS NOT NULL") }
-  scope :email_missed_yesterday, -> { active.verified.where(email_missed_yesterday: true) }
+  scope :email_catch_up, -> { active.verified.where(email_catch_up: true) }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }

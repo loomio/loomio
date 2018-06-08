@@ -1,0 +1,17 @@
+.everything
+  %p= t(:'email.catch_up.do_not_reply')
+  %h1= t(@subject_key, @subject_params)
+  .toc
+    =render 'user_mailer/catch_up/headlines'
+  %hr
+  - @groups.each do |group|
+    - next unless @discussions_by_group.has_key?(group)
+    %h1= link_to group.full_name, group_url(group)
+    - @discussions_by_group[group].each do |discussion|
+      = render 'user_mailer/catch_up/discussion', discussion: discussion
+
+%p
+  = t(:'email.catch_up.thanks_for_reading')
+  %img{src: mark_summary_as_read_url_for(@user, format: 'gif'), alt: '', width: 1, height: 1}
+  %br
+=render 'user_mailer/unsubscribe_link'

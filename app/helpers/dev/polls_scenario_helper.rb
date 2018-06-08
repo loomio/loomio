@@ -185,7 +185,7 @@ module Dev::PollsScenarioHelper
       poll: poll}
   end
 
-  def poll_missed_yesterday_scenario(poll_type:)
+  def poll_catch_up_scenario(poll_type:)
     scenario  = poll_expired_scenario(poll_type: poll_type)
     observer = saved fake_user
     scenario[:discussion].group.add_member! observer
@@ -195,7 +195,7 @@ module Dev::PollsScenarioHelper
     choices += [{poll_option_id: poll.poll_option_ids[1]}] if poll.multiple_choice
 
     StanceService.create(stance: fake_stance(poll: poll, stance_choices_attributes: choices), actor: observer)
-    UserMailer.missed_yesterday(observer).deliver_now
+    UserMailer.catch_up(observer).deliver_now
 
     scenario.merge(observer: observer)
   end
