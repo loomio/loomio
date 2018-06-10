@@ -1,4 +1,13 @@
 class UserService
+  def self.destroy(user:)
+    user.deactivate!
+    zombie = User.create(name: I18n.t(:'user.deleted_user'),
+                         email: "deleted-user-#{rand(10**10)}@example.com")
+    MigrateUserService.migrate!(source: user, destination: zombie)
+    user.reload.destroy
+    zombie
+  end
+
   def self.verify(user: )
     return user if user.email_verified?
     User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }

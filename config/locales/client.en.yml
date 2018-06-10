@@ -909,6 +909,8 @@ en:
     change_picture_link: 'Change picture'
     change_password_link: 'Reset password'
     deactivate_user_link: 'Deactivate account...'
+    delete_account: 'Permanently Delete account'
+    delete_user_link: 'Delete account'
     profile: 'Profile'
     edit_profile: 'Edit Profile'
     picture_label: 'Picture'
@@ -952,6 +954,12 @@ en:
     no_emails: 'You will no longer receive notification emails'
     submit: 'Yes, I want to deactivate'
 
+  delete_user_modal:
+    title: 'Delete your user account'
+    irreversable: "WARNING: This cannot be undone. If you proceed:"
+    you_will_be_deleted: "Your user account including your name, email address and other personally identifying data will be deleted from our systems."
+    submit: 'Yes, delete my account'
+
   deactivate_user_form:
     aria_label: 'Deactivate account confirm'
     title: 'Deactivate account'
@@ -960,7 +968,7 @@ en:
     submit: 'Deactivate account'
 
   only_coordinator_modal:
-    aria_label: 'Unable to deactivate account'
+    aria_label: 'Unable to proceed'
     explanation: 'A group must have at least one coordinator. You are the only coordinator of the following groups:'
     instructions: 'In order to deactivate your account, you need to visit each of the groups listed above and either make someone else a coordinator, or deactivate the group.'
 
