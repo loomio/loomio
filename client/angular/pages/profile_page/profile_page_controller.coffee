@@ -51,7 +51,7 @@ $controller = ($scope, $rootScope) ->
           title: 'delete_user_modal.title'
           submit: 'delete_user_modal.submit'
           fragment: 'delete_user_modal'
-        submit: -> Records.users.destroy(Session.user())
+        submit: -> Records.users.destroy()
         successCallback: hardReload
     else
       ModalService.open 'ConfirmModal', confirm: confirm
