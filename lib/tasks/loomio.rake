@@ -25,7 +25,13 @@ namespace :loomio do
 
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
-    SendMissedYesterdayEmailJob.perform_later
+
+    if ENV['EMAIL_CATCH_UP_WEEKLY']
+      SendWeeklyCatchUpEmailJob.perform_later
+    else
+      SendDailyCatchUpEmailJob.perform_later
+    end
+    
     AnnouncementService.delay.resend_pending_memberships
     LocateUsersAndGroupsJob.perform_later
     UsageReportService.send if (Time.now.hour == 0)

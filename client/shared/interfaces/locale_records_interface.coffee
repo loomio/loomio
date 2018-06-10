@@ -14,6 +14,6 @@ module.exports = class LocaleRecordsInterface extends BaseRecordsInterface
       onSuccess: (response) ->
         if response.ok
           response.text().then (data) ->
-            eval(data)
+            eval data
         else
           throw response

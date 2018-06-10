@@ -1,7 +1,8 @@
-.auth-provider-form
+.auth-provider-form{ng-if: "providers.length"}
   .auth-provider-form__providers
     %button.md-button.md-raised{type: "button", class: "{{provider.name}}", ng-click: "select(provider)", ng-repeat: "provider in providers"}
       %i.mdi.mdi-24px{ng-if: "provider.name != 'saml'", class: "mdi-{{provider.name}}"}
       %i.mdi.mdi-24px.mdi-microsoft{ng-if: "provider.name == 'saml'"}
       %span{translate: "auth_form.continue_with_provider", translate-value-provider: "{{capitalize(provider.name)}}"}>
       %span
+    %p.md-subhead.auth-email-form__or-enter-email{translate: "auth_form.or_enter_your_email"}

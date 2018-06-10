@@ -1,8 +1,8 @@
 class Full::UserSerializer < UserSerializer
-  attributes :email, :email_when_proposal_closing_soon, :email_missed_yesterday,
+  attributes :email, :email_when_proposal_closing_soon, :email_catch_up,
              :email_when_mentioned, :email_on_participation, :selected_locale,
              :locale, :default_membership_volume, :experiences, :is_coordinator,
-             :is_admin
+             :is_admin, :intercom_hash
 
   has_many :formal_memberships, serializer: MembershipSerializer, root: :memberships
   has_many :guest_memberships,  serializer: Simple::MembershipSerializer, root: :memberships
@@ -39,6 +39,15 @@ class Full::UserSerializer < UserSerializer
 
   def include_has_password?
     true
+  end
+
+  def intercom_hash
+    secret = Rails.application.secrets.intercom_app_secret
+    OpenSSL::HMAC.hexdigest('sha256', secret, id.to_s)
+  end
+
+  def include_intercom_hash?
+    Rails.application.secrets.intercom_app_secret
   end
 
   private

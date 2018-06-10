@@ -18,9 +18,7 @@ describe API::ProfileController do
         username
         avatar_initials
         avatar_kind
-        time_zone
-        search_fragment
-        label])
+        time_zone])
       expect(json['users'][0].keys).to_not include 'email'
       expect(json['users'][0]['name']).to eq another_user.name
     end

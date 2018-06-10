@@ -2,7 +2,7 @@ ExampleContent = Struct.new(:group) do
   include Routing
 
   def add_to_group!
-    group.add_member!(helper_bot).tap do
+    group.add_admin!(helper_bot).tap do
       DiscussionService.create(discussion: introduction_thread, actor: helper_bot)
       DiscussionService.create(discussion: how_it_works_thread, actor: helper_bot)
       PollService.create(poll: example_proposal, actor: helper_bot)

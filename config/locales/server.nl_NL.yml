@@ -255,7 +255,6 @@ nl_NL:
 
           ![loomio logo](https://i.imgur.com/Fvtworb.png)
   poll_mailer:
-    resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
     common:
       or: of
       why_send_this: Je ontvangt deze e-mail omdat %{reason}

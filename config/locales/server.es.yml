@@ -275,7 +275,6 @@ es:
 
           ![loomio logo](https://i.imgur.com/Fvtworb.png)
   poll_mailer:
-    resend: 'RECORDATORIO: %{actor} está esperando que votes en: %{title} '
     common:
       or: o
       why_send_this: Recibes este correo porque %{reason}

@@ -198,6 +198,7 @@ module.exports = {
 
     page.fillIn('.comment-form textarea', 'I am new!')
     page.click('.comment-form__submit-button')
+    page.pause(2000)
     page.expectText('.flash-root__message', 'Comment added')
   },
 
@@ -363,10 +364,10 @@ module.exports = {
     page.expectText('.new-comment__body', 'body of the comment')
   },
 
-  'sends_missed_yesterday': (test) => {
+  'sends_catch_up': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_thread_missed_yesterday')
+    page.loadPath('setup_thread_catch_up')
     page.expectText('.activity-feed', 'body of the comment')
     page.expectText('.activity-feed', 'Patrick Swayze closed the discussion')
   },

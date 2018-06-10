@@ -301,7 +301,6 @@ fr:
   group_mailer:
     resend: 'RAPPEL : %{member} attend que vous rejoignez %{group_name}'
   poll_mailer:
-    resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
     common:
       or: ou
       why_send_this: Vous recevez ce courriel parce que %{reason}

@@ -7,7 +7,9 @@ cs:
         blank: nemůže být prázdné
         invalid: není platná hodnota
   errors:
+    not_found: 404 soubor nebyl nalezen.
     messages:
+      email: není platnou e-mailovou adresou
       spoofed_media_type: Obsah tohoto souboru neodpovídá jeho názvu
   attachment:
     error:

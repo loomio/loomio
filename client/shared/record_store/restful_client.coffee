@@ -41,17 +41,17 @@ module.exports =
       @get(path or '', params)
 
     post: (path, params) ->
-      @request @buildUrl(path), 'POST', _.defaults({}, @defaultParams, params)
+      @request @buildUrl(path), 'POST', paramsFor(params)
 
     patch: (path, params) ->
-      @request @buildUrl(path), 'PATCH', _.defaults({}, @defaultParams, params)
+      @request @buildUrl(path), 'PATCH', paramsFor(params)
 
     delete: (path, params) ->
-      @request @buildUrl(path), 'DELETE', _.defaults({}, @defaultParams, params)
+      @request @buildUrl(path), 'DELETE', paramsFor(params)
 
     # NB: get requests place their params into the query string, rather than the request body
     get: (path, params) ->
-      @request @buildUrl(path, _.defaults({}, @defaultParams, params)), 'GET'
+      @request @buildUrl(path, paramsFor(params)), 'GET'
 
     request: (path, method, body = {}) ->
       opts =
@@ -110,3 +110,6 @@ module.exports =
 
     abort: ->
       @currentUpload.abort() if @currentUpload
+
+paramsFor = (params) ->
+  _.defaults({}, @defaultParams, _.pick(params, _.identity))

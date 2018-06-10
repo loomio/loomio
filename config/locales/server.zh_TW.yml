@@ -7,6 +7,7 @@ zh_TW:
         blank: 不能留白
         invalid: 不是有效的值
   errors:
+    noscript: Loomio 需要 JavaScript！請在您的瀏覽器中啟用 JavaScript 以繼續
     return_home: 回到首頁
     not_found: 404 檔案找不到。
     messages:
@@ -304,7 +305,6 @@ zh_TW:
   group_mailer:
     resend: '提醒：%{member} 正等候您加入 %{group_name}'
   poll_mailer:
-    resend: '提醒：%{actor} 正在等待您的投票 %{title}'
     common:
       or: 或
       why_send_this: 因為 %{reason}，您收到了這封電子郵件
@@ -338,6 +338,7 @@ zh_TW:
         stance_created: "%{actor} 已經投票：%{title}"
         stance_created_author: "請驗證您的投票：%{title}"
         user_mentioned: '%{actor} 提到您在：%{title}'
+        user_reminded: '%{actor} 正在提醒您要投票：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個提案'
         poll_edited: '<strong>%{actor}</strong> 編輯了提案'
@@ -350,6 +351,7 @@ zh_TW:
         outcome_announced: '<strong>%{actor}</strong> 已分享了提案的成果。'
         stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
         user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
+        user_reminded: '<strong>%{actor}</strong>正在提醒您要投票：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
@@ -368,6 +370,7 @@ zh_TW:
         stance_created: "%{actor} 投了票：%{title}"
         stance_created_author: "請驗證您的投票：%{title}"
         user_mentioned: '%{actor} 提到您在：%{title}'
+        user_reminded: '%{actor} 正在提醒您要投票：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個投票'
         poll_edited: '<strong>%{actor}</strong> 編輯了投票'
@@ -382,6 +385,7 @@ zh_TW:
         outcome_announced: '<strong>%{actor}</strong> 已分享了投票的成果。'
         stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
         user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
+        user_reminded: '<strong>%{actor}</strong>正在提醒您要投票：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
@@ -398,6 +402,7 @@ zh_TW:
         stance_created: "%{actor} 已經參與：%{title}"
         stance_created_author: "請驗證您的投票：%{title}"
         user_mentioned: '%{actor} 提到您在：%{title}'
+        user_reminded: '%{actor} 正在提醒您要參與：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 正在勾選'
         poll_edited: '<strong>%{actor}</strong> 編輯了勾選'
@@ -410,6 +415,7 @@ zh_TW:
         outcome_announced: '<strong>%{actor}</strong> 已分享了成果。'
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
         user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
+        user_reminded: '<strong>%{actor}</strong> 正在提醒您要參與：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     dot_vote:
@@ -428,6 +434,7 @@ zh_TW:
         stance_created: "%{actor} 投了票：%{title}"
         stance_created_author: "請驗證您的投票：%{title}"
         user_mentioned: '%{actor} 提到您在：%{title}'
+        user_reminded: '%{actor} 正在提醒您要投票：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 啟動了一個點投票'
         poll_edited: '<strong>%{actor}</strong> 編輯了點投票'
@@ -442,6 +449,7 @@ zh_TW:
         outcome_announced: '<strong>%{actor}</strong> 已分享了點投票的成果。'
         stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
         user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
+        user_reminded: '<strong>%{actor}</strong>正在提醒您要投票：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
@@ -461,6 +469,7 @@ zh_TW:
         stance_created: '%{actor} 已經參與：%{title}'
         stance_created_author: "請驗證您的投票：%{title}"
         user_mentioned: '%{actor} 提到您在：%{title}'
+        user_reminded: '%{actor} 正在提醒您要投票：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個時間投票'
         poll_edited: '<strong>%{actor}</strong> 編輯了時間投票'
@@ -476,6 +485,7 @@ zh_TW:
         outcome_announced: '<strong>%{actor}</strong> 已分享了時間投票的成果。'
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
         user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
+        user_reminded: '<strong>%{actor}</strong>正在提醒您要投票：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     ranked_choice:
@@ -491,9 +501,11 @@ zh_TW:
         poll_option_added_author: '%{actor} 新增選項給：%{title}'
         outcome_created: '%{actor} 分享了一個成果：%{title}'
         outcome_created_author: '您分享了一個結果：%{title}'
+        outcome_announced: '%{actor} 分享了排序選擇結果。'
         stance_created: '%{actor} 已經參與：%{title}'
         stance_created_author: "請驗證您的投票：%{title}"
         user_mentioned: '%{actor} 提到您在：%{title}'
+        user_reminded: '%{actor} 正在提醒您要投票：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個排序選擇'
         poll_edited: '<strong>%{actor}</strong> 編輯了排序選擇'
@@ -509,6 +521,7 @@ zh_TW:
         outcome_announced: '<strong>%{actor}</strong> 已分享了一個排序選擇的成果。'
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
         user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
+        user_reminded: '<strong>%{actor}</strong>正在提醒您要投票：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: '%{comment_author} 的意見'

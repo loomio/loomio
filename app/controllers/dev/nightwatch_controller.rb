@@ -29,7 +29,7 @@ class Dev::NightwatchController < Dev::BaseController
     :setup_discussion_mailer_user_mentioned_email,
     :setup_discussion_mailer_invitation_created_email,
     :setup_accounts_merged_email,
-    :setup_thread_missed_yesterday,
+    :setup_thread_catch_up,
     :setup_group_invitation_ignored,
     :setup_discussion_invitation_ignored,
     :setup_poll_invitation_ignored,

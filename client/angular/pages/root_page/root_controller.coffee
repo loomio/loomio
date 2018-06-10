@@ -3,7 +3,7 @@ EventBus        = require 'shared/services/event_bus'
 AbilityService  = require 'shared/services/ability_service'
 LmoUrlService   = require 'shared/services/lmo_url_service'
 ModalService    = require 'shared/services/modal_service'
-IntercomService = require 'shared/services/intercom_service'
+FlashService    = require 'shared/services/flash_service'
 
 { signIn }                                       = require 'shared/helpers/user'
 { viewportSize, trackEvents, deprecatedBrowser } = require 'shared/helpers/window'
@@ -13,6 +13,8 @@ IntercomService = require 'shared/services/intercom_service'
 { setupAngular }                                 = require 'angular/setup'
 
 $controller = ($scope, $injector) ->
+  $scope.theme  = AppConfig.theme
+  $scope.assets = AppConfig.assets
   setupAngular($scope, $injector)
 
   $scope.warnDeprecation  = deprecatedBrowser()
@@ -24,8 +26,10 @@ $controller = ($scope, $injector) ->
   $scope.loggedIn = ->
     $scope.pageError = null
     $scope.refreshing = true
-    $injector.get('$timeout') -> $scope.refreshing = false
-    IntercomService.boot()
+    $injector.get('$timeout') ->
+      $scope.refreshing = false
+      FlashService.success AppConfig.userPayload.flash.notice
+      delete AppConfig.userPayload.flash.notice
     if LmoUrlService.params().set_password
       delete LmoUrlService.params().set_password
       ModalService.open 'ChangePasswordForm'
@@ -44,7 +48,7 @@ $controller = ($scope, $injector) ->
     $scope.links = options.links or {}
     setCurrentComponent(options)
 
-  signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
+  signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, $scope.loggedIn)
   initLiveUpdate()
 
   return

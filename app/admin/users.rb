@@ -3,7 +3,7 @@ ActiveAdmin.register User do
 
   filter :name
   filter :username
-  filter :email
+  filter :email, as: :string
   filter :created_at
 
   scope :all

@@ -10,8 +10,8 @@ class UserMailer < BaseMailer
                      locale: @user.locale
   end
 
-  def missed_yesterday(user, time_since = nil)
-    return unless user.email_missed_yesterday
+  def catch_up(user, time_since = nil, frequency = 'daily')
+    return unless user.email_catch_up
     @recipient = @user = user
     @time_start = time_since || 24.hours.ago
     @time_finish = Time.zone.now
@@ -25,11 +25,14 @@ class UserMailer < BaseMailer
 
     @reader_cache = Caches::DiscussionReader.new(user: @user, parents: @discussions)
 
+    @subject_key = "email.catch_up.#{frequency}_subject"
+    @subject_params = { site_name: AppConfig.theme[:site_name] }
+
     unless @discussions.empty? or @user.groups.empty?
       @discussions_by_group = @discussions.group_by(&:group)
       send_single_mail to: @user.email,
-                       subject_key: "email.missed_yesterday.subject",
-                       subject_params: { site_name: AppConfig.theme[:site_name] },
+                       subject_key: @subject_key,
+                       subject_params: @subject_params,
                        locale: @user.locale
     end
   end
