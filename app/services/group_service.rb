@@ -46,7 +46,7 @@ module GroupService
 
   def self.export(group: , actor: )
     actor.ability.authorize! :show, group
-    GroupExportJob.new(group, actor).perform
+    GroupExportJob.perform_later(group, actor)
   end
 
   def self.merge(source:, target:, actor:)

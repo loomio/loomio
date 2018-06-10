@@ -61,6 +61,16 @@ class UserMailer < BaseMailer
                      locale: [@user.locale, @inviter.locale]
   end
 
+  def group_export_ready(recipient, group, document)
+    puts "im a mailer"
+    @user     = recipient
+    @document = document
+    send_single_mail to: @user.email,
+                     subject_key: "user_mailer.group_export.subject",
+                     subject_params: {group_name: group.name},
+                     locale: @user.locale
+  end
+
   def login(user:, token:)
     @user = user
     @token = token

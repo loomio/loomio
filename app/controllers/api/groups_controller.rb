@@ -38,9 +38,8 @@ class API::GroupsController < API::RestfulController
   end
 
   def export
-    self.resource = load_and_authorize(:formal_group)
-    service.export(group: group, actor: current_user)
-    render head: :ok
+    service.export(group: load_and_authorize(:group), actor: current_user)
+    render json: { success: :ok }
   end
 
   private

@@ -5,7 +5,7 @@ class GroupExportJob < ActiveJob::Base
     groups = actor.groups.where(id: group.all_groups)
     filename = GroupExportService.export_filename_for(group)
     GroupExportService.export(groups, filename)
-    document = Document.create(author: actor, file: File.open(filename, 'r'))
-    UserMailer.group_export_ready(user, attachment)
+    document = Document.create(author: actor, file: File.open(filename, 'r'), title: filename)
+    UserMailer.group_export_ready(actor, group, document).deliver
   end
 end

@@ -56,6 +56,7 @@ Loomio::Application.routes.draw do
       member do
         get :token
         get :subgroups
+        post :export
         patch :archive
         put :archive
         post 'upload_photo/:kind', action: :upload_photo
