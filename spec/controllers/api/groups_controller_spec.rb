@@ -12,6 +12,11 @@ describe API::GroupsController do
     sign_in user
   end
 
+  describe 'export' do
+    it 'kicks off a group export job'
+    it 'gives access denied if you dont belong'
+  end
+
   describe 'show' do
     it 'returns the group json' do
       discussion

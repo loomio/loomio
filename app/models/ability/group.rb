@@ -2,7 +2,7 @@ module Ability::Group
   def initialize(user)
     super(user)
 
-    can :show, ::Group do |group|
+    can [:show] ::Group do |group|
       if user.is_admin?
         true
       elsif group.archived_at || group.is_guest_group?

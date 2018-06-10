@@ -37,6 +37,12 @@ class API::GroupsController < API::RestfulController
     respond_with_resource
   end
 
+  def export
+    self.resource = load_and_authorize(:formal_group)
+    service.export(group: group, actor: current_user)
+    render head: :ok
+  end
+
   private
   def track_visit
     VisitService.record(group: resource, visit: current_visit, user: current_user)

@@ -26,11 +26,10 @@ class GroupExportService
                                     :reset_password_token,
                                     :unsubscribe_token] }}.with_indifferent_access.freeze
 
-  def self.export(group)
+  def self.export(groups, filename)
     ids = Hash.new { |hash, key| hash[key] = [] }
-    filename = "tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_#{group.name.parameterize}.json"
     File.open(filename, 'w') do |file|
-      group.all_groups.each do |group|
+      groups.each do |group|
         puts_record(group, file, ids)
         RELATIONS.each do |relation|
           puts "Exporting: #{relation}"
@@ -40,7 +39,10 @@ class GroupExportService
         end
       end
     end
-    filename
+  end
+
+  def self.export_filename_for(group)
+    "tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_#{group.name.parameterize}.json"
   end
 
   def self.puts_record(record, file, ids)
