@@ -62,7 +62,6 @@ class UserMailer < BaseMailer
   end
 
   def group_export_ready(recipient, group, document)
-    puts "im a mailer"
     @user     = recipient
     @document = document
     send_single_mail to: @user.email,
