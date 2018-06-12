@@ -950,6 +950,7 @@ en:
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
     no_emails: 'You will no longer receive notification emails'
+    you_can_reactivate: "You can reactivate your account later if you wish"
     submit: 'Yes, I want to deactivate'
 
   deactivate_user_form:
