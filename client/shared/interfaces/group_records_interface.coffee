@@ -3,7 +3,6 @@ GroupModel           = require 'shared/models/group_model'
 
 module.exports = class GroupRecordsInterface extends BaseRecordsInterface
   model: GroupModel
-  export: (id) -> @remote.postMember(id, 'export')
 
   fuzzyFind: (id) ->
     # could be id or key or handle

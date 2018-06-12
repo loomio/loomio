@@ -32,6 +32,8 @@ class Group < ApplicationRecord
   has_many :polls, foreign_key: :group_id, dependent: :destroy
   has_many :public_polls, through: :public_discussions, dependent: :destroy, source: :polls
 
+  has_many :documents, as: :model, dependent: :destroy
+  
   include GroupExportRelations
 
   scope :archived, -> { where('archived_at IS NOT NULL') }

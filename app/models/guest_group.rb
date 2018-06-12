@@ -9,10 +9,6 @@ class GuestGroup < Group
     Group.none
   end
 
-  def documents
-    Document.none
-  end
-
   def group_privacy=(term)
     raise 'guest groups cant be open' if term == 'open'
     super

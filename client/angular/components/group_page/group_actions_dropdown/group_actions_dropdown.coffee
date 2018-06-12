@@ -16,7 +16,7 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
 
     $scope.openGroupExportModal = ->
       ModalService.open 'ConfirmModal', confirm: ->
-        submit: -> Records.groups.export($scope.group.id)
+        submit: $scope.group.export
         text:
           title:    'group_export_modal.title'
           helptext: 'group_export_modal.body'
