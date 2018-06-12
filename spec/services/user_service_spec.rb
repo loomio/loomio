@@ -16,7 +16,7 @@ describe UserService do
 
     it "migrates all their records to a zombie" do
       zombie = UserService.destroy(user: @user)
-      expect(zombie.name).to eq "Deleted User"
+      expect(zombie.email).to match /deleted-user-.+@example.com/
       expect(zombie.archived_memberships.count).to eq 1
       expect(zombie.authored_discussions.count).to eq 1
     end
