@@ -7,6 +7,7 @@ class UserService
     MigrateUserService.migrate!(source: user, destination: zombie)
     user.reload.destroy
     EventBus.broadcast 'user_destroy', user, zombie
+    zombie
   end
 
   def self.verify(user: )
