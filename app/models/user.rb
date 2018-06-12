@@ -309,6 +309,7 @@ class User < ApplicationRecord
   end
 
   def deactivate!
+    return if self.deactivated_at
     former_group_ids = group_ids
     update_attributes(deactivated_at: Time.now, avatar_kind: "initials")
     memberships.update_all(archived_at: Time.now)

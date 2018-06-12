@@ -105,6 +105,7 @@ Loomio::Application.routes.draw do
         post :deactivate
         post :reactivate
         post :save_experience
+        delete :destroy
       end
       post :remind, on: :member
     end
