@@ -1,5 +1,32 @@
 require 'rails_helper'
 describe UserService do
+
+  describe 'destroy' do
+    before do
+      @user = FactoryBot.create :user
+      @group = FactoryBot.create :formal_group
+      @membership = @group.add_member! @user
+      @discussion = FactoryBot.create :discussion, author: @user, group: @group
+    end
+
+    it "deactivates the user" do
+      zombie = UserService.destroy(user: @user)
+      expect(@membership.reload.archived_at).to be_present
+    end
+
+    it "migrates all their records to a zombie" do
+      zombie = UserService.destroy(user: @user)
+      expect(zombie.email).to match /deleted-user-.+@example.com/
+      expect(zombie.archived_memberships.count).to eq 1
+      expect(zombie.authored_discussions.count).to eq 1
+    end
+
+    it "deletes the user" do
+      zombie = UserService.destroy(user: @user)
+      expect { @user.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
+
   describe 'verify' do
     it 'sets email_verfied true if email is unique' do
       user = FactoryBot.create(:user, email_verified: false, email: 'user@example.com')

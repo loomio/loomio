@@ -44,6 +44,18 @@ $controller = ($scope, $rootScope) ->
         fragment: 'deactivate_user'
       submit: -> ModalService.open 'ConfirmModal', confirm: confirm
 
+  @deleteUser = ->
+    if AbilityService.canDeactivateUser()
+      ModalService.open 'ConfirmModal', confirm: ->
+        text:
+          title: 'delete_user_modal.title'
+          submit: 'delete_user_modal.submit'
+          fragment: 'delete_user_modal'
+        submit: -> Records.users.destroy()
+        successCallback: hardReload
+    else
+      ModalService.open 'ConfirmModal', confirm: confirm
+
   confirm = ->
     if AbilityService.canDeactivateUser()
       scope: {user: Session.user()}

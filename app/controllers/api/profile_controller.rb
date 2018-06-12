@@ -1,5 +1,4 @@
 class API::ProfileController < API::RestfulController
-
   def show
     load_and_authorize :user
     respond_with_resource serializer: UserSerializer
@@ -38,6 +37,11 @@ class API::ProfileController < API::RestfulController
 
   def deactivate
     service.deactivate(current_user_params)
+    respond_with_resource
+  end
+
+  def destroy
+    service.destroy(user: current_user)
     respond_with_resource
   end
 
