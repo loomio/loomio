@@ -3,7 +3,7 @@ module Ability::Comment
     super(user)
 
     can [:create], ::Comment do |comment|
-      comment.discussion.members.include?(user)
+      comment.discussion&.members&.include?(user)
     end
 
     can [:update], ::Comment do |comment|
