@@ -5,7 +5,7 @@ lt:
       details: Išsamesnė Informacija
       group_name: Grupės Pavadinimas
   email:
-    missed_yesterday:
+    catch_up:
       mark_as_read: Žymėti kaip skaitytą
   footer:
     about: Apie

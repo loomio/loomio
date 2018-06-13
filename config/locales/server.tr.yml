@@ -30,8 +30,7 @@ tr:
       link_help: "Gruba gitmek için aşağıdaki bağlantıyı tıklayın:"
     unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
-    missed_yesterday:
-      headlines: Ana başlıklar
+    catch_up:
       mark_as_read: Okundu olarak işaretle
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
       marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi

@@ -106,13 +106,11 @@ nl_NL:
       link_help: "Klik op onderstaande link om naar de groep te gaan:"
     unsubscribe: 'Uitschrijven of je e-mailvoorkeuren aanpassen:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mailvoorkeuren aan te passen."
-    missed_yesterday:
-      subject: Gisteren op %{site_name}
+    catch_up:
+      daily_subject: Gisteren op %{site_name}
       do_not_reply: Gelieve niet te antwoorden op deze e-mail.
-      headlines: Nieuws
       mark_as_read: Markeer als gelezen
       thanks_for_reading: Bedankt voor het lezen, een fijne dag toegewenst!
-      heres_what_happened: "Dit gebeurde er gisteren op %{site_name}."
       marked_as_read_success: Alles uit de e-mail werd gemarkeerd als gelezen
       click_here: Klik hier
     group_membership_approved:

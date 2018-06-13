@@ -65,7 +65,7 @@ cs:
       link_help: "Kliknutím na odkaz níže přejdete do skupiny:"
     unsubscribe: 'Odhlašte se nebo si změňte nastavení emailu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, abyste se odhlásil(a) nebo změnil(a) nastavení emailu."
-    missed_yesterday:
+    catch_up:
       do_not_reply: Prosím neodpovídejte na tento email.
       mark_as_read: Označit jako přečtené
       thanks_for_reading: Děkujeme za přečtení a přejeme hezký den!

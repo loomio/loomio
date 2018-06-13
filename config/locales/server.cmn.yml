@@ -4,7 +4,7 @@ cmn:
       title: 标题
       details: 细节
   email:
-    missed_yesterday:
+    catch_up:
       click_here: 点击这里
   footer:
     public_groups: 公共组团

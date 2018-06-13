@@ -111,13 +111,11 @@ es:
       link_help: "Haz clic en el enlace para ir al grupo:"
     unsubscribe: 'Da de baja o cambia las preferencias de tu correo electrónico:   '
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para dar de baja o cambiar las preferencias de correo electrónico."
-    missed_yesterday:
-      subject: Ayer en %{site_name}
+    catch_up:
+      daily_subject: Ayer en %{site_name}
       do_not_reply: Por favor no respondas a este email
-      headlines: 'Titulo '
       mark_as_read: Marcar como leído
       thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
-      heres_what_happened: "Esto es lo que paso en %{site_name} ayer. "
       marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
       click_here: Haz clic aquí
     group_membership_approved:

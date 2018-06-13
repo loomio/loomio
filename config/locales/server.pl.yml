@@ -7,7 +7,7 @@ pl:
       group_name: Nazwa Grupy
       total: W sumie
   email:
-    missed_yesterday:
+    catch_up:
       mark_as_read: Oznaczenie jako przeczytane
   footer:
     about: O...

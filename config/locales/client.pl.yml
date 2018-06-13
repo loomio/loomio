@@ -214,6 +214,7 @@ pl:
       proposals: 'Rekomendacje'
       comments: 'Komentarze'
   membership_dropdown:
+    invitation_resent: "Zaproszenie wysłane ponownie"
     make_coordinator: 'Definicja koordynatora'
   start_menu:
     start_group: 'Uruchomienie Grupy'

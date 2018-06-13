@@ -89,10 +89,9 @@ it:
       accept_invitation: "Accetta l'invito"
     unsubscribe: 'Disiscriviti o cambia le preferenze email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
-    missed_yesterday:
-      subject: Ieri su%{site_name}
+    catch_up:
+      daily_subject: Ieri su%{site_name}
       do_not_reply: Non rispondere a questa email
-      headlines: I Titoli
       mark_as_read: Contrassegnato come letto
       thanks_for_reading: Grazie per aver letto, buona giornata!
       marked_as_read_success: Tutte le email sono state contrassegnate come lette

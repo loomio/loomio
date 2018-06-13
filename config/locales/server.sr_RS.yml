@@ -11,8 +11,7 @@ sr_RS:
     reply_to_this_discussion: Одговори у овој дискусији
     unsubscribe: 'Одјавите се или промените подешавања еПоште'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> за одјаву са листе за обавештења или промену подешавања Ваше еПоште."
-    missed_yesterday:
-      headlines: Наслови
+    catch_up:
       mark_as_read: Означи као прочитано
       thanks_for_reading: Хвала на читању, пријатан дан!
       marked_as_read_success: Све еПоруке су означене као прочитане

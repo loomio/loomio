@@ -7,7 +7,7 @@ gl:
   email:
     by_who: por %{person}
     reply_to_this_discussion: Respostar a este debate
-    missed_yesterday:
+    catch_up:
       click_here: Pincha aquí
   footer:
     about: Acerca de

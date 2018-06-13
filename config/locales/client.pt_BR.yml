@@ -292,6 +292,7 @@ pt_BR:
     contact_site_name: 'Contato {{site_name}}'
     sign_out: 'Sair'
   membership_dropdown:
+    invitation_resent: "Convide reenviado"
     make_coordinator: 'Tornar coordenador(a)'
     cancel_invitation: Cancelar convite
   start_menu:
@@ -653,7 +654,6 @@ pt_BR:
     no_longer_group_member: 'Você deixará de ser listado como membro de todos os grupos'
     name_removed: 'Comentários, propostas e discussões feitas por você permanecerão, mas seu nome será removido dos mesmos'
     no_emails: 'Você não receberá mais notificações por email'
-    contact_for_reactivation: 'Você precisará entrar em contato conosco para reativar sua conta'
     submit: 'Sim, eu quero desativar'
   deactivate_user_form:
     aria_label: 'Confirmação de desativação da conta'
@@ -662,7 +662,6 @@ pt_BR:
     placeholder: 'Responder a essa pergunta é opcional. Qualquer informação que você possa compartilhar irá nos ajudar a melhorar :) '
     submit: 'Desativar conta'
   only_coordinator_modal:
-    aria_label: 'Não foi possível desativar a conta'
     explanation: 'Um grupo deve ter pelo menos um coordenador. Você é o único coordenador dos seguintes grupos:'
     instructions: 'A fim de desativar a sua conta, você precisa visitar cada um dos grupos listados acima e tornar mais alguém coordenador ou desativar o grupo.'
   email_settings_page:

@@ -63,9 +63,8 @@ pt_BR:
       link_help: "Clique no link abaixo para ir para o grupo:"
     unsubscribe: 'Cancelar inscrição ou modificar suas preferências de e-mail:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para cancelar sua inscrição ou modificar suas preferências de e-mail."
-    missed_yesterday:
+    catch_up:
       do_not_reply: Por favor não responda a esse email.
-      headlines: Em destaque
       mark_as_read: Marcar como lida
       thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
       marked_as_read_success: Tudo no e-mail foi marcado como lido

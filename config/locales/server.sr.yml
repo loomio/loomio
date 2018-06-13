@@ -36,8 +36,7 @@ sr:
       link_help: "Škljocnite na adresu ispod da odete do grupe:"
     unsubscribe: 'Odjavite se ili promenite podešavanja ePošte'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavu sa liste za obaveštenja ili promenu podešavanja Vaše ePošte."
-    missed_yesterday:
-      headlines: Naslovi
+    catch_up:
       mark_as_read: Označi kao pročitano
       thanks_for_reading: Hvala na čitanju, prijatan dan!
       marked_as_read_success: Sve ePoruke su označene kao pročitane

@@ -32,8 +32,7 @@ ca:
       link_help: "Cliqueu a l'enllaç de sota per a anar al grup:"
     unsubscribe: 'Doneu-vos de baixa o canvieu les preferències de correu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
-    missed_yesterday:
-      headlines: Capçaleres
+    catch_up:
       mark_as_read: Marca com a llegit
       click_here: Fes click aquí
     membership_request:

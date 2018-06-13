@@ -299,6 +299,7 @@ es:
     contact_site_name: 'Contacto {{site_name}}'
     sign_out: 'Salir'
   membership_dropdown:
+    invitation_resent: "Reenviar invitación"
     make_coordinator: 'Hacer coordinador '
     demote_coordinator: 'Remover coordinador'
     cancel_invitation: cancelar invitación
@@ -760,7 +761,6 @@ es:
     no_longer_group_member: 'Ya no serás listado como miembro en ningún grupo'
     name_removed: 'Comentarios, propuestas e hilos que has realizado permanecerán, pero tu nombre será removido de los mismos'
     no_emails: 'Ya no recibirás notificaciones por email'
-    contact_for_reactivation: 'Deberás contactarnos para reactivar su cuenta'
     submit: 'Si, quiero desactivar mi cuenta'
   deactivate_user_form:
     aria_label: 'Confirmar la desactivación de la cuenta '
@@ -769,7 +769,6 @@ es:
     placeholder: 'Contestar a esta pregunta es opcional. Cualquier información que compartas nos ayudará a mejorar :)'
     submit: 'Desactiva cuenta '
   only_coordinator_modal:
-    aria_label: 'No hemos podido desactivar la cuenta'
     explanation: 'Un grupo debe tener al menos un coordinador. Tú eres el único coordinador de los siguientes grupos:'
     instructions: 'Para poder desactivar su cuenta, necesitarás visitar cada uno de los grupo mencionados arriba y o bien nombrar a otro coordinador o desactivar el grupo.'
   email_settings_page:
@@ -1420,7 +1419,6 @@ es:
     sign_in_to_loomio: Entrar a {{site_name}}
     sign_in: Entrar
     sign_in_as: Ingresa como {{name}}
-    choose_an_account: "Entra a través de un tercero, o ingresa una dirección de correo electrónico para continuar."
     invitation_required: Cuenta de usuario no encontrada. Nuevas cuentas de usuario son solo por invitación
     more_providers: Más
     email_not_present: Se necesita una dirección de correo
@@ -1430,22 +1428,15 @@ es:
     email_not_found: "Lo lamentamos, no pudimos encontrar una cuenta con esa dirección de correo electrónico"
     email_placeholder: tu@ejemplo.com
     login_with_token: Estas listo! haz clic en el enlace debajo para ingresar.
-    login_link_helptext: |
-        Haz clic en el botón debajo y te enviaremos un enlace para ingresar instantáneamente.
-        Si deseas usar una contraseña para ingresar en el futuro, puedes ingresar una en tu página de perfil.
     login_link_helptext_with_password: "Introduce tu contraseña, o entra a través de un correo electrónico."
-    oauth_confirm_helptext: "Simplemente confirma tus detalles de abajo, y te enviaremos un enlace para entrar."
     name_required: Por favor ingresa un nombre
-    account_inactive: ¡Vaya! parece que la cuenta {{email}} está desactivada. Póngase en contacto con nosotros para reactivarla.
     welcome_back: Bienvenido nuevamente, {{name}}!
     login_link: Entra a través de un correo electrónico
     set_password: Configura la contraseña
     set_password_helptext: '¿Cansado de entrar con tu email? '
     set_password_link: Configura una contraseña
     hello: "Hola, {{name}}!"
-    new_to_loomio: ¿Nuevo en {{site_name}}? Crea una nueva cuenta
     create_account: Crear una cuenta
-    already_a_user: ¿Ya tienes una cuenta en {{site_name}}? Ingresa tu correo electrónico para enlazar esta cuenta con la tuya
     link_accounts: Enlazar cuentas
     check_your_email: ¡Revisa tu correo electrónico!
     password_link_sent: "Te hemos enviado un correo electrónico a {{email}}, con instrucciones en como configurar tu contraseña."

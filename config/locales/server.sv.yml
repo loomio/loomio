@@ -17,7 +17,7 @@ sv:
     reply_to_this_discussion: Svara på denna diskussion
     unsubscribe: 'Avregistrera dig eller ändra dina e-postinställningar:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
-    missed_yesterday:
+    catch_up:
       mark_as_read: Markera som läst
       thanks_for_reading: Tack för läsning, ha en bra dag!
       marked_as_read_success: Allt från mail har markerats som läst

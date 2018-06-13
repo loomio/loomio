@@ -166,6 +166,8 @@ cs:
     password_confirmation_label: 'Stejné heslo znovu:'
   signed_out_modal:
     ok: "Ok"
+  comment_reply_form:
+    aria_label: 'Přidat odpověď'
   comment_form:
     aria_label: 'Přidat komentář'
     attachments:
@@ -222,7 +224,10 @@ cs:
     email_settings: 'Nastavení e-mailu'
     help: 'Nápověda'
     sign_out: 'Odhlásit se'
+  membership_card:
+    invite_to_group: "Pozvat do skupiny"
   membership_dropdown:
+    invitation_resent: "Pozvánka přeposlána"
     make_coordinator: 'Vytvořit koordinátora'
     cancel_invitation: Stornovat pozvánku
   start_menu:
@@ -272,9 +277,12 @@ cs:
     privacy_organisation: 'Vlákno bude vidět pro členy {{parent}} a členy {{group}}.'
   announcement:
     form:
+      group_announced:
+        title: Pozvat do skupiny
       outcome_announced:
         title: Sdílet výsledek
       anyone_can_participate: Kdokoli s odkazem se může účastnit
+      notified_empty: 'Zatím nebyl nikdo vybrán.'
   action_dock:
     react: Přidat reakci
     add_comment: Komentář
@@ -672,7 +680,6 @@ cs:
     groups_placeholder: (Všechny skupiny)
   auth_form:
     sign_in: Přihlásit se
-    choose_an_account: "Přihlaste se prostřednictvím třetí strany nebo zadejte svou e-mailovou adresu a pokračujte."
     more_providers: Více
     email_not_present: Je vyžadována e-mailová adresa
     invalid_email: "Je nám líto, ale nevypadá to jako platná e-mailová adresa"
@@ -680,7 +687,6 @@ cs:
     email_not_found: "Je nám líto, nenašli jsme účet s touto e-mailovou adresou"
     email_placeholder: vy@priklad.cz
     login_link_helptext_with_password: "Zadejte své heslo nebo se přihlaste e-mailem."
-    oauth_confirm_helptext: "Stačí potvrdit podrobnosti níže a my vám zašleme odkaz na přihlášení."
     name_required: Zadejte prosím jméno
     welcome_back: Vítejte zpět, {{name}}!
     login_link: Přihlaste se prostřednictvím e-mailu

@@ -245,6 +245,7 @@ de:
     contact_site_name: '{{site_name}} kontaktieren'
     sign_out: 'Abmelden'
   membership_dropdown:
+    invitation_resent: "Einladung erneut versendet"
     make_coordinator: 'Zum Koordinator machen'
     demote_coordinator: 'Koordinatorrechte entfernen'
     cancel_invitation: Einladung abbrechen

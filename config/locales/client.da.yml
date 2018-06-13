@@ -558,14 +558,12 @@ da:
     introduction: 'Når du deaktiverer din konto:'
     no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
     name_removed: 'Kommentarer, forslag og debatter som du har lavet vil forblive men dit navn vil blive fjernet fra dem'
-    contact_for_reactivation: 'For at genaktivere din konto så skal du kontakte os'
     submit: 'Ja, jeg vil stadig gerne deaktivere'
   deactivate_user_form:
     aria_label: 'Bekræft deaktiver konto'
     title: 'Deaktiver konto'
     submit: 'Deaktiver konto'
   only_coordinator_modal:
-    aria_label: 'Kan ikke deaktivere konto'
     explanation: 'En gruppe skal have mindst en koordinator. Du er den eneste koordinator af følgende grupper:'
     instructions: 'For at kunne deaktivere din konto, så bliver du nødt til at besøge alle grupperne herover og enten gøre en anden bruger til koordinator eller deaktivere gruppen.'
   email_settings_page:

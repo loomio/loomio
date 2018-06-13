@@ -291,6 +291,7 @@ it:
     contact_site_name: 'Contatto {{site_name}}'
     sign_out: 'Esci'
   membership_dropdown:
+    invitation_resent: "Invito reinviato"
     make_coordinator: 'Inserisci come coordinatore'
     demote_coordinator: 'Disinserisci come coordinatore'
     cancel_invitation: Revoca invito
@@ -716,7 +717,6 @@ it:
     no_longer_group_member: 'Non sarai più listato/a come membro di alcun gruppo.'
     name_removed: 'I tuoi commenti, le tue proposte e le tue discussioni rimarranno, ma il tuo nome verrà rimosso'
     no_emails: 'Non riceverai più email di notifica'
-    contact_for_reactivation: 'Dovrai contattarci per riattivare il tuo account'
     submit: 'Sì, voglio disattivare'
   deactivate_user_form:
     aria_label: 'Conferma di disattivazione dell''account'
@@ -724,7 +724,6 @@ it:
     question: 'Vuoi dirci perchè disattivi il tuo account?'
     submit: 'Disattiva l''account'
   only_coordinator_modal:
-    aria_label: 'Non riesco a disattivare l''account'
     instructions: 'Per disattivare il tuo account devi visitare tutti i gruppi elencati qui sopra e nominare qualcun altro coordinatore/trice, o disattivare il gruppo.'
   email_settings_page:
     header: Impostazioni Email
@@ -1077,7 +1076,6 @@ it:
     sign_in_to_loomio: Iscriviti a {{site_name}}
     sign_in: Iscriviti
     sign_in_as: Autenticati come {{name}}
-    choose_an_account: "Autenticati attraverso un account social o inserisci la tua email per continuare."
     login_link_helptext_with_password: "Inserisci la tua password, o autenticati via email."
     login_link: Iscriviti via email
     set_password: Imposta password

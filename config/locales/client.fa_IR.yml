@@ -121,6 +121,8 @@ fa_IR:
       discussions: 'موضوعات'
       proposals: 'پیشنهاد‌ها'
       comments: 'نظرات'
+  membership_dropdown:
+    invitation_resent: "ارسال دوباره دعوت نامه"
   notifications:
     header: "اطلاعیه ها"
   discussion_form:

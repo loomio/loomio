@@ -17,8 +17,7 @@ hu:
     reply_to_this_discussion: Válaszolj erre a témára
     unsubscribe: 'Leiratkozás vagy az e-mail beállítások megváltoztatása:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, hogy leiratkozz vagy megváltoztasd az e-mail beállításaidat."
-    missed_yesterday:
-      headlines: Szalagcímek
+    catch_up:
       mark_as_read: Olvasottként jelöl
       thanks_for_reading: Köszönjük az elolvasást, kellemes napot!
       marked_as_read_success: Minden olvasottként van jelölve

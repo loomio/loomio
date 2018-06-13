@@ -53,13 +53,11 @@ de:
       link_help: "Klicke auf den untenstehenden Link, um die Gruppe zu betreten:"
     unsubscribe: 'Benachrichtigungen deaktivieren oder E-Mail-Einstellungen ändern:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> , um Benachrichtigungen zu deaktivieren oder um deine E-Mail-Einstellungen zu ändern."
-    missed_yesterday:
-      subject: Gestern auf %{site_name}
+    catch_up:
+      daily_subject: Gestern auf %{site_name}
       do_not_reply: Bitte auf diese E-Mail nicht direkt antworten.
-      headlines: Neue Diskussionsbeiträge
       mark_as_read: Als gelesen markieren
       thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
-      heres_what_happened: "Das ist gestern auf %{site_name} passiert."
       marked_as_read_success: Alles aus der eMail wurde als gelesen markiert
       click_here: Klicke hier
     group_membership_approved:

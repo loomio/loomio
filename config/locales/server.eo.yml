@@ -31,8 +31,8 @@ eo:
       accept_invitation: "Akcepti inviton"
     unsubscribe: 'Malaboni aŭ ŝanĝi viajn retpoŝtpreferojn:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> por malaboni aŭ ŝanĝi viajn retpoŝtpreferojn."
-    missed_yesterday:
-      subject: Hieraŭ en %{site_name}
+    catch_up:
+      daily_subject: Hieraŭ en %{site_name}
       mark_as_read: Marki kiel legita
       thanks_for_reading: Dankon por legi, havu bonegan tagon!
       marked_as_read_success: Ĉio de la retpoŝtaĵo markiĝis kiel legita

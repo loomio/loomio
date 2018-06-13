@@ -880,7 +880,6 @@ fr:
     placeholder: 'Vous n’êtes pas obligé de répondre à cette question. Toute information que vous nous partagerez nous aidera à nous améliorer :)'
     submit: 'Désactiver mon compte'
   only_coordinator_modal:
-    aria_label: 'Impossible de désactiver le compte'
     explanation: 'Un groupe doit avoir au moins un coordinateur. Vous êtes le seul coordinateur des groupes suivants :'
     instructions: 'Afin de désactiver votre compte, vous devez visiter chaque groupe ci-dessus et pour chacun faire de quelqu’un d’autre un coordinateur, ou désactiver le groupe.'
   email_settings_page:

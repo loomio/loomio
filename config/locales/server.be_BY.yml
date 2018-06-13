@@ -22,8 +22,7 @@ be_BY:
     reply_to_this_discussion: Адказаць у абмеркаванні
     unsubscribe: 'Адпісацца ці змяніць свае налады электроннай пошты:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> каб адпісацца ці змяніць свае налады электроннай пошты."
-    missed_yesterday:
-      headlines: Апошнія навіны
+    catch_up:
       mark_as_read: Адзначыць як прачытанае
       thanks_for_reading: Дзякуем, што прачыталі! Цудоўнага вам дня!
       marked_as_read_success: Усе паведамленні з ліста былі пазначаны як прачытаныя

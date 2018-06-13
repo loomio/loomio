@@ -443,14 +443,12 @@ ko:
     aria_label: '계정 비활성화'
     introduction: '계정 비활성화된 때 '
     no_longer_group_member: '당신은 모든 그룹에서 탈퇴됩니다.'
-    contact_for_reactivation: '계정을 다시 활성화하려면 우리에게 연락하십시요'
     submit: '네, 비활성화하겠습니다.'
   deactivate_user_form:
     aria_label: '계정 비활성화가 확인됨.'
     title: '계정 비활성화'
     submit: '계정 비활성화'
   only_coordinator_modal:
-    aria_label: '계정을 비활성화할 수 없습니다.'
     explanation: '이 그룹에는 한 명의 코디네이터만 있어야 합니다. 새로운 코디네이터를 추가를 원하십니까?'
     instructions: '당신의 계정을 비활성화 하기 위해서 위에 언급된 각 그룹을 방문해 다른 사람을 코디네이터로 만들든지, 그룹을 비활성화해야 합니다.'
   email_settings_page:

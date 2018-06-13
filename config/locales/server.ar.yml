@@ -12,8 +12,7 @@ ar:
     reply_to_this_discussion: شارك في هذا النقاش
     unsubscribe: 'قم بإلغاء الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> لإلغاء الاشتراك أو تغيير تفضيلات البريد الإلكتروني."
-    missed_yesterday:
-      headlines: العناوين
+    catch_up:
       mark_as_read: مقروء
       thanks_for_reading: شكرا للقراءة، نتمنى لك يوماً سعيداً!
       marked_as_read_success: تم تحديد كل شيء في الرسالة الالكترونية كمقروء
