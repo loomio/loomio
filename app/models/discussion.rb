@@ -57,7 +57,7 @@ class Discussion < ApplicationRecord
   has_many :poll_documents,    through: :polls,    source: :documents
   has_many :comment_documents, through: :comments, source: :documents
 
-  has_many :items, -> { includes(:user).thread_events.order('events.id ASC') }, class_name: 'Event', dependent: :destroy
+  has_many :items, -> { includes(:user).thread_events }, class_name: 'Event', dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
 
