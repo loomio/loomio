@@ -82,6 +82,13 @@ module Dev::Scenarios::Group
     redirect_to group_url(create_group)
   end
 
+  def setup_group_with_no_coordinators
+    create_group
+    @group.admin_memberships.each{|m| m.update(admin: false)}
+    sign_in patrick
+    redirect_to group_url(create_group)
+  end
+
   def setup_group_with_restrictive_settings
     sign_in max
     create_stance
