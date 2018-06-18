@@ -266,11 +266,6 @@ describe "User abilities" do
 
     it { should be_able_to(:show, user_comment) }
 
-    it "cannot remove themselves if they are the only member of the group" do
-      group.memberships.where("memberships.id != ?", @membership.id).destroy_all
-      should_not be_able_to(:destroy, @membership)
-    end
-
     context "members can add members" do
       before { group.update_attribute(:members_can_add_members, true) }
       it { should     be_able_to(:add_members, group) }
