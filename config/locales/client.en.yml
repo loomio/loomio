@@ -982,8 +982,8 @@ en:
     on_participation_description: "When you participate in a thread, all further activity will be emailed to you immediately."
     announcement_label: Announcements
     announcement_description: "You will receive an email about all content that has been announced by people in your groups"
-    mentioned_label: Mentions
-    mentioned_description: "When someone wants to get your attention, they'll @mention you. We recommend you leave this on, so that you'll get an email when this happens."
+    mentioned_label: Mentions & Replies
+    mentioned_description: "When someone mentions you in a comment or replies to you, you'll get a notification email"
     update_settings: Save changes
     specific_groups: Settings for specific groups
     default_settings:
