@@ -83,7 +83,8 @@ module Dev::Scenarios::Group
   end
 
   def setup_group_with_no_coordinators
-    create_group.memberships.update_all(admin: false)
+    create_group
+    @group.admin_memberships.each{|m| m.update(admin: false)}
     sign_in patrick
     redirect_to group_url(create_group)
   end

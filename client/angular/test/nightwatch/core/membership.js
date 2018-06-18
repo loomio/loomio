@@ -67,10 +67,9 @@ module.exports = {
 
     page.loadPath('setup_group_as_member')
     page.click('.membership-card__search-button')
-    page.fillIn('.membership-card__filter', 'Patrick')
+    page.fillIn('.membership-card__filter', 'Jennifer')
     page.pause()
     page.click('.membership-dropdown__button')
-    page.pause()
     page.expectNoText('.membership-dropdown', 'Demote coordinator')
   },
 
