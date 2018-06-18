@@ -1,5 +1,6 @@
 module Dev::Scenarios::Membership
   def setup_group_as_member
+    create_group.update_admin_memberships_count
     sign_in jennifer
     redirect_to group_url(create_group)
   end

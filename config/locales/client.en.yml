@@ -968,11 +968,6 @@ en:
     placeholder: 'Answering this question is optional. Any information you share will help us to improve :)'
     submit: 'Deactivate account'
 
-  only_coordinator_modal:
-    aria_label: 'Unable to proceed'
-    explanation: 'A group must have at least one coordinator. You are the only coordinator of the following groups:'
-    instructions: 'In order to deactivate your account, you need to visit each of the groups listed above and either make someone else a coordinator, or deactivate the group.'
-
   email_settings_page:
     header: Email settings
     all_groups: Settings for all groups

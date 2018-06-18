@@ -49,6 +49,7 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
         redirect:   ('dashboard' if $scope.membership.user() == Session.user())
 
     $scope.canToggleAdmin = ->
+      ($scope.membership.group().adminMembershipsCount == 0 and $scope.membership.user() == Session.user()) or
       AbilityService.canAdministerGroup($scope.membership.group()) and
       (!$scope.membership.admin or $scope.canRemoveMembership($scope.membership))
 

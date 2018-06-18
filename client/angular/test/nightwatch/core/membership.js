@@ -36,7 +36,7 @@ module.exports = {
     page.expectElement('.membership-card__invite')
   },
 
-  'can remove coordinator privileges when there is more than one coordinator': (test) => {
+  'can remove coordinator privileges': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_multiple_coordinators')
@@ -50,10 +50,22 @@ module.exports = {
     page.expectNoElement('.user-avatar--coordinator')
   },
 
-  'cannot_remove_privileges_for_last_coordinator': (test) => {
+  'can_self_promote_when_no_coordinators': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_group')
+    page.loadPath('setup_group_with_no_coordinators')
+    page.click('.membership-card__search-button')
+    page.fillIn('.membership-card__filter', 'Patrick')
+    page.pause()
+    page.click('.membership-dropdown__button')
+    page.click('.membership-dropdown__toggle-admin')
+    page.expectText('.flash-root__message', 'Patrick Swayze is now a coordinator')
+  },
+
+  'cannot_self_promote_when_coordinators': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_as_member')
     page.click('.membership-card__search-button')
     page.fillIn('.membership-card__filter', 'Patrick')
     page.pause()

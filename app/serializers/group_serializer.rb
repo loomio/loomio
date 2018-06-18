@@ -38,7 +38,7 @@ class GroupSerializer < Simple::GroupSerializer
              :membership_granted_upon,
              :discussion_privacy_options,
              :has_discussions,
-             :has_multiple_admins,
+             :admin_memberships_count,
              :archived_at
 
   attributes_for_formal :cover_urls,
@@ -93,9 +93,4 @@ class GroupSerializer < Simple::GroupSerializer
   def has_discussions
     object.discussions_count > 0
   end
-
-  def has_multiple_admins
-    object.admin_memberships_count > 1
-  end
-
 end

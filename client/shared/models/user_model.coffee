@@ -44,7 +44,7 @@ module.exports = class UserModel extends BaseModel
     _.invoke @adminMemberships(), 'groupId'
 
   onlyAdminGroups: ->
-    _.filter @adminGroups(), (g) -> !g.hasMultipleAdmins
+    _.filter @adminGroups(), (g) -> g.adminMembershipsCount == 1
 
   parentGroups: ->
     _.filter @groups(), (group) -> group.isParent()
