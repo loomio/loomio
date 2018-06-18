@@ -1,6 +1,0 @@
-.fragment.fragment__only-coordinator
-  %p{translate: "only_coordinator_modal.explanation"}
-  %ul.only-coordinator-modal__list
-    %li.only-coordinator-modal__list-item{ng-repeat: "group in user.onlyAdminGroups() track by group.id"}
-      %a.lmo-link{ng-click: "submit(group)"} {{group.fullName}}
-  %p{translate: "only_coordinator_modal.instructions"}
