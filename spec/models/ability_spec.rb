@@ -315,9 +315,15 @@ describe "User abilities" do
     it { should     be_able_to(:destroy, own_pending_membership) }
     it { should     be_able_to(:destroy, other_members_pending_membership) }
 
-    it "should not be able to delete the only admin of a group" do
-      group.admin_memberships.where("memberships.id != ?", @membership.id).destroy_all
-      should_not be_able_to(:destroy, @membership)
+    it "should be able to become admin if no admins" do
+      @membership.update(admin: false)
+      group.admin_memberships.destroy_all
+      should be_able_to(:make_admin, @membership)
+    end
+
+    it "should not be able to become admin if other admins" do
+      @membership.update(admin: false)
+      should_not be_able_to(:make_admin, @membership)
     end
 
     context "group members invitable by admins" do
