@@ -190,7 +190,7 @@ en:
     quiet_label: "No emails"
     mute_label: "Mute"
     discussion:
-      title: "Email settings for {{title}}"
+      title: "Thread email settings"
       loud_description: "You will be emailed whenever there is activity in this thread."
       normal_description: "You will be emailed whenever a proposal is started, about to close, or an outcome is posted."
       quiet_description: "You won't be emailed about this thread."
