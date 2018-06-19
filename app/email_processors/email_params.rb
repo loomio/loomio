@@ -1,6 +1,7 @@
 class EmailParams
   attr_accessor :discussion_id
   attr_accessor :user_id
+  attr_accessor :parent_id
   attr_accessor :email_api_key
   attr_accessor :body
 
@@ -14,8 +15,9 @@ class EmailParams
     end
 
     @discussion_id = params['d']
-    @user_id = params['u']
+    @user_id       = params['u']
+    @parent_id     = params['c']
     @email_api_key = params['k']
-    @body = email.body
+    @body          = email.body
   end
 end
