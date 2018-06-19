@@ -95,7 +95,6 @@ hu:
     quiet_label: "Nincs új e-mail"
     mute_label: "Néma"
     discussion:
-      title: "Email beállítások {{title}}-hez"
       loud_description: "Azonnali értesítés e-mailben, új tevékenység esetén ezen a témakörön belül."
       normal_description: "Azonnali értesítés e-mailben, amennyiben egy javaslat született, zárás következik vagy ha összegzést tettek közzé."
       quiet_description: "Ne küldj e-mailt ezen témakör változásairól."

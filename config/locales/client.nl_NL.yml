@@ -170,7 +170,6 @@ nl_NL:
     quiet_label: "Geen e-mails"
     mute_label: "Dempen"
     discussion:
-      title: "E-mail-instellingen voor {{title}}"
       loud_description: "Je ontvangt een e-mail wanneer dit bord activiteit vertoond."
       normal_description: "Je ontvangt een e-mail wanneer er een voorstel gestart is, op het punt staat te sluiten, of als er een uitkomst bekend is."
       quiet_description: "Je ontvangt geen e-mails over dit bord."
@@ -727,9 +726,6 @@ nl_NL:
     question: 'Wil je ons vertellen waarom je wil deactiveren?'
     placeholder: 'Deze vraag beantwoorden is optioneel. Elke informatie die je wil delen zal ons helpen nog te verbeteren :)'
     submit: 'Deactiveer account'
-  only_coordinator_modal:
-    explanation: 'Een groep moet minstens één coördinator hebben. Je bent de enige coördinator van de volgende groepen.'
-    instructions: 'Om je account te kunnen deactiveren, moet je elke van de hierboven vermelde groepen bezoeken en iemand anders coördinator maken, of de groep deactiveren.'
   email_settings_page:
     header: E-mailinstellingen
     all_groups: Instellingen voor alle groepen
@@ -738,7 +734,6 @@ nl_NL:
     on_participation_label: Abonneer op deelname
     on_participation_description: "Als je deelneemt aan een discussie, wordt alle verdere activiteit direct naar je gemaild."
     announcement_label: Aankondigingen
-    mentioned_label: Vermeldingen
     update_settings: Bewaar veranderingen
     specific_groups: Instellingen voor specifieke groepen
     default_settings:

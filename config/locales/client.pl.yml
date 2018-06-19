@@ -171,7 +171,6 @@ pl:
     quiet_label: "Brak wiadomości"
     mute_label: "Wycisz"
     discussion:
-      title: "Ustawienia poczty dla {{title}}"
       loud_description: "Wyślemy do Ciebie e-mail przy każdej aktywności w tym wątku."
       normal_description: "Wyślemy do Ciebie e-mail za każdym razem, gdy wysuwana jest jakaś propozycja, gdy niedługo się kończy lub gdy prezentowany jest jej rezultat."
       quiet_description: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."

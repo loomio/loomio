@@ -66,7 +66,6 @@ sr:
     quiet_label: "Nema ePoruka"
     mute_label: "Utišaj"
     discussion:
-      title: "Opcije ePoruka za {{title}}"
       loud_description: "Dobičete ePoruku kada god ima aktivnosti u ovoj niti."
       normal_description: "Dobićete ePoruku kada se pojavi predlog, pred njegovo zatvaranje ili kada je ishod određen."
       quiet_description: "Nećete biti obaveštavani o ovoj niti."
@@ -389,7 +388,6 @@ sr:
     daily_summary_label: Dnevni izveštaj ePorukom
     on_participation_label: Pretplati se na učešće
     on_participation_description: "Kada se priključite niti, sve dalje aktivnosti biće Vam odmah poslate ePorukom."
-    mentioned_label: Pominjanja
     specific_groups: Opcije određenih grupa
     default_settings:
       loud_description: "Kada se pridružite novoj grupi, bićete obavešteni ePorukom <strong>kada god bude aktivnosti u njoj</strong>."

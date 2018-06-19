@@ -108,7 +108,6 @@ da:
     quiet_label: "Ingen emails"
     mute_label: "Slå fra"
     discussion:
-      title: "Email indstilinger for {{title}}"
       loud_description: "Du vil modtage en email hver gang der er aktivitet på denne debat."
       normal_description: "Du vil modtage en email hver gang et forslag er oprettet, ved at lukke, eller et resultat er publiceret."
       quiet_description: "Du vil ikke modtage nogen email ved nogen aktiviteter på denne debat."
@@ -563,9 +562,6 @@ da:
     aria_label: 'Bekræft deaktiver konto'
     title: 'Deaktiver konto'
     submit: 'Deaktiver konto'
-  only_coordinator_modal:
-    explanation: 'En gruppe skal have mindst en koordinator. Du er den eneste koordinator af følgende grupper:'
-    instructions: 'For at kunne deaktivere din konto, så bliver du nødt til at besøge alle grupperne herover og enten gøre en anden bruger til koordinator eller deaktivere gruppen.'
   email_settings_page:
     header: Emailindstillinger
     all_groups: Indstillinger for alle grupper
@@ -573,7 +569,6 @@ da:
     on_participation_label: Abonnér ved deltagelse
     on_participation_description: "Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme."
     announcement_label: Normal
-    mentioned_label: Mentions
     update_settings: Gem ændringer
     specific_groups: Indstillinger for specifikke grupper
     default_settings:

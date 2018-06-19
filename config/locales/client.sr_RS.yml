@@ -62,8 +62,6 @@ sr_RS:
     loud_label: "Сва активност"
     quiet_label: "Без еПорука"
     mute_label: "Утишај"
-    discussion:
-      title: "Подешавања еПорука za {{title}}"
     membership:
       title: "Подешавања еПорука za {{title}}"
   inbox:

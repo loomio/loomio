@@ -179,7 +179,6 @@ zh_TW:
     quiet_label: "不寄電子郵件"
     mute_label: "靜音"
     discussion:
-      title: "{{title}} 的電子郵件設定"
       loud_description: "您將會在這個討論串有任何動態時收到電子郵件。"
       normal_description: "您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。"
       quiet_description: "您將不會收到任何關於此討論串的電子郵件。"
@@ -888,10 +887,6 @@ zh_TW:
     question: '您可以告訴我們為何您要凍結您的帳號嗎？'
     placeholder: '回答這個問題是選擇性的。您分享的任何資訊都可以協助我們改善服務 :)'
     submit: '凍結帳號'
-  only_coordinator_modal:
-    aria_label: '無法繼續'
-    explanation: '一個群組至少必須有一個協調者。您是以下群組的唯一協調者：'
-    instructions: '為了凍結您的帳號，您需要看看上面列出的每一個群組，增加其他的協調者，或是凍結群組。'
   email_settings_page:
     header: 電子郵件設定
     all_groups: 所有群組的設定
@@ -901,8 +896,6 @@ zh_TW:
     on_participation_description: "當您參與討論串時，之後所有的動態都會即時寄給您。"
     announcement_label: 公告
     announcement_description: "您將會收到一封關於所有在您的群組中已被夥伴宣佈的內容的電子郵件"
-    mentioned_label: 提及
-    mentioned_description: "當某人想要取得您的注意，他們將會以 @ 來提及您。我們建議您保持這個設定，這樣您就可以在有人提及您時收到一封電子郵件。"
     update_settings: 儲存變更
     specific_groups: 特定群組的設定
     default_settings:

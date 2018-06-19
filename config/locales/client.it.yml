@@ -170,7 +170,6 @@ it:
     quiet_label: "Nessuna email"
     mute_label: "Silenzia"
     discussion:
-      title: "Configurazione email per {{title}}"
       loud_description: "Riceverai una notifica ogni volta che c'è attività in questa discussione."
       normal_description: "Riceverai un email ogni volta che una proposta viene iniziata, sta per concludersi, o un risultato viene pubblicato."
       quiet_description: "Non riceverai email su questa discussione."
@@ -723,15 +722,12 @@ it:
     title: 'Disattiva l''account'
     question: 'Vuoi dirci perchè disattivi il tuo account?'
     submit: 'Disattiva l''account'
-  only_coordinator_modal:
-    instructions: 'Per disattivare il tuo account devi visitare tutti i gruppi elencati qui sopra e nominare qualcun altro coordinatore/trice, o disattivare il gruppo.'
   email_settings_page:
     header: Impostazioni Email
     all_groups: Configurazione per tutti i gruppi
     daily_summary_label: 'Sommario giornaliero '
     on_participation_description: "Quando partecipi ad una discussione, tutte le successive attività ti verranno notificate via email immediatamente."
     announcement_label: Annunci
-    mentioned_label: Menzioni
     update_settings: Salva modifiche
     default_settings:
       loud_description: "Quando ti iscrivi a un nuovo gruppo, ti viene inviata un'email <strong>ogni qual volta vi sia attività</strong>."

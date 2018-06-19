@@ -171,7 +171,6 @@ es:
     quiet_label: "No enviar correo"
     mute_label: "Silenciar "
     discussion:
-      title: "Configuración de correo electrónico para {{title}}"
       loud_description: "Recibirás correo electrónico siempre que haya actividad en este hilo."
       normal_description: "Recibirás correo electrónico siempre que se inicie una propuesta, cuando esté a punto de cerrarse o cuando se publique un resultado. "
       quiet_description: "No recibirás correo electrónico sobre este hilo. "
@@ -768,9 +767,6 @@ es:
     question: '¿Nos contarías por qué estás desactivando tu cuenta?'
     placeholder: 'Contestar a esta pregunta es opcional. Cualquier información que compartas nos ayudará a mejorar :)'
     submit: 'Desactiva cuenta '
-  only_coordinator_modal:
-    explanation: 'Un grupo debe tener al menos un coordinador. Tú eres el único coordinador de los siguientes grupos:'
-    instructions: 'Para poder desactivar su cuenta, necesitarás visitar cada uno de los grupo mencionados arriba y o bien nombrar a otro coordinador o desactivar el grupo.'
   email_settings_page:
     header: Ajustes de correo
     all_groups: 'Configuración para todos los grupos. '
@@ -779,7 +775,6 @@ es:
     on_participation_label: 'Suscribirte a la participación '
     on_participation_description: "Cuando participes en un hilo, inmediatamente se te enviará toda la actividad subsiguiente por correo electrónico. "
     announcement_label: Anuncios
-    mentioned_label: 'Menciones '
     update_settings: Guardar cambios
     specific_groups: 'Configuración para grupos específicos  '
     default_settings:

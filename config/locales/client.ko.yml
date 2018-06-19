@@ -70,7 +70,6 @@ ko:
     quiet_label: "이메일 없음"
     mute_label: "음소거"
     discussion:
-      title: " {{title}}을 위한 이메일 환경설정"
       loud_description: "이 쓰레드와 관련한 활동이 있으면 메일을 받습니다."
       normal_description: "누군가 제안하거나, 종료시키기 전이나, 성과를 작성할때마다 메일을 받습니다."
       quiet_description: "이 쓰레드와 관련한 메일을 받지 않습니다."
@@ -448,15 +447,11 @@ ko:
     aria_label: '계정 비활성화가 확인됨.'
     title: '계정 비활성화'
     submit: '계정 비활성화'
-  only_coordinator_modal:
-    explanation: '이 그룹에는 한 명의 코디네이터만 있어야 합니다. 새로운 코디네이터를 추가를 원하십니까?'
-    instructions: '당신의 계정을 비활성화 하기 위해서 위에 언급된 각 그룹을 방문해 다른 사람을 코디네이터로 만들든지, 그룹을 비활성화해야 합니다.'
   email_settings_page:
     header: 이메일 설정
     all_groups: 모든 그룹에 적용중
     daily_summary_label: 일별 요약 이메일
     on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
-    mentioned_label: 말하기
     specific_groups: 특별한 그룹에 적용
     default_settings:
       loud_description: "새로운 그룹에 참여하면, 당신은 <strong>행동이 있을 때마다</strong>이메일을 받을 수 있습니다."

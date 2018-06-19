@@ -134,7 +134,6 @@ cs:
     quiet_label: "Žádné e-maily"
     mute_label: "Ztlumit"
     discussion:
-      title: "Nastavení emailu pro {{title}}"
       loud_description: "Budete obesláni e-mailem vždy, když bude v tomto vláknu aktivita."
       normal_description: "Budete obesláni e-mailem vždy, když bude zahájen návrh, bude ukončen, nebo bude zveřejněn výsledek."
       quiet_description: "Nebudete o tomto vláknu obesíláni e-mailem."
@@ -478,7 +477,6 @@ cs:
     all_groups: Nastavení pro všechny skupiny
     daily_summary_label: Denní souhrnný e-mail
     announcement_label: Oznámení
-    mentioned_label: Zmínky
     specific_groups: Nastavení pro konkrétní skupiny
     default_settings:
       normal_description: "Když se připojíte k nové skupině, obdržíte e-maily o <strong>novách vláknech a návrzích</strong>."

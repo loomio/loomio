@@ -88,7 +88,6 @@ ca:
     quiet_label: "Cap correu electrònic"
     mute_label: "Silenci"
     discussion:
-      title: "Configuració de correu electrònic per a {{title}}"
       loud_description: "Rebreu correus electrònics sempre que hi hagi activitat en aquesta discussió."
       normal_description: "Rebreu correus electrònics sempre que es creï una proposta, quan estigui a punt de tancar-se o quan es publiqui un resultat."
       quiet_description: "No rebreu cap correu electrònic sobre aquesta discussió."
@@ -400,7 +399,6 @@ ca:
     all_groups: Configuració per tots els grups
     daily_summary_label: Correu electrònic de resum diari
     on_participation_label: Subscriure a la participació
-    mentioned_label: Mencions
     specific_groups: Configuració per grups específics
     default_settings:
       loud_description: "Quan us uniu a un grup nou, rebre un correu electrònic <strong>cada cop que hi hagi activitat</strong>."
