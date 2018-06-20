@@ -693,6 +693,9 @@ describe API::DiscussionsController do
       expect(items).to_not include target_event
       expect(items).to_not include another_event
 
+      expect(target_event.reload.eventable.discussion_id).to eq new_discussion.id
+      expect(another_event.reload.eventable.discussion_id).to eq new_discussion.id
+
       forked_event = items.find_by(kind: :discussion_forked)
       expect(forked_event).to be_present
       expect(forked_event.sequence_id).to eq 2
