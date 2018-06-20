@@ -58,3 +58,5 @@ module.exports = new class AuthService
     if _.keys(user.errors)
       user.name           = vars.name
       user.legalAccepted  = vars.legalAccepted
+      
+    return _.keys(user.errors).length == 0
