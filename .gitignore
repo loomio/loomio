@@ -27,6 +27,7 @@ public/uploads
 public/img/emojis
 public/service-worker.js
 
+/disabled_plugins/
 /dev_plugins/
 /fetched_plugins/
 /plugins
