@@ -8,6 +8,7 @@ de:
         invalid: ist kein gültiger Wert
   errors:
     noscript: Loomio benötigt Javascript zum Arbeiten! Bitte aktivieren Sie Javascript in Ihren Browser um fortzufahren
+    return_home: zurück zur Home-Seite
     not_found: 404 Datei wurde nicht gefunden.
     messages:
       email: keine gültige Mailadresse
@@ -31,12 +32,19 @@ de:
       percent_voted: "%{num}/%{denom} (%{percent}) Mitglieder haben ihre Position angegeben."
       title: Titel
       author: Autor
+      created_at: Hergestellt in
+      closing_at: Schließt um
+      closed_at: Geschlossen um
+      is_latest: Ist das Neueste
       engagement: Enagement
       stances: Standpunkte
       participants: Teilnehmer
       details: Details
       group_name: Gruppen-Name
       discussion_title: Thread Überschrift
+      outcome_author: Autor des Ergebnisses
+      outcome_created_at: Ergebnis erstellt um
+      outcome_statement: Ergebniserklärung
       poll_url: Umfrage-URL
       reason: Begründung
       participant: Teilnehmer
@@ -48,9 +56,14 @@ de:
   invitation:
     invitation_cancelled: Sorry, diese Einladung wurde durch den Gruppenkoordinator widerrufen. Bitte fragen Sie nach einer weiteren Einladung
     invitation_already_used: Diese Einladung wurde bereits genutzt. Bitte melden Sie sich direkt bei Loomio an um in Ihrer Gruppe fortzufahren.
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
   validate:
     motion:
       must_close_in_future: Vorschlag muss in der Zukunft enden.
@@ -61,6 +74,7 @@ de:
         <p>Du hast die kostenlose Mitgliedschaft für deine Gruppe <a href="/g/%{group_key}">%{group}</a> ausgewählt</p>
   user_mailer:
     accounts_merged:
+      subject: "Ihre %{site_name} Benutzerkonten wurden zusammengeführt."
       body_html: |
           Hallo %{name},
           Ihre zwei Loomio-Accounts wurden zu einem Account fusioniert.
@@ -514,14 +528,29 @@ de:
   personal_data:
     title: persönliche Daten von %{user_name} in %{host_name}
   poll_generator:
+    proposal:
+      title: "Angebotsschreiben an Shelley und Jack verlängern"
+      details: Shelley und Jack haben in den letzten 3 Monaten als Praktikanten mit uns gearbeitet und beide haben bewundernswertes Engagement gezeigt und sind eindeutig Vorteile für unser Team. Sollen wir ihnen formelle Beschäftigungsangebote anbieten?
     poll:
       title: "Liegen ggf. Lebensmittelunverträglichkeiten vor, die wir bei unserer Geschäftsfeier am Donnerstag berücksichtigen müssen?"
+      details: Wir freuen uns darauf, Sie alle bei uns zu sehen! Bitte geben Sie an, ob es irgendwelche Diätbeschränkungen gibt, die wir beachten sollten.
     count:
       title: "Wer würde helfen das Firmenpicknick zu organisieren?"
+      details: Marsha fühlte sich beim letzten Mal total überfordert, also würden wir ihr diesmal ein Paar Helferinnen geben, um sicherzustellen, dass es für alle etwas einfacher ist. Bitte geben Sie an, ob Sie helfen möchten!
+    dot_vote:
+      title: "Was ist unsere Unternehmensstrategie für das nächste Quartal?"
+      details: Dies ist ein großes Jahr für unser Unternehmen und wir müssen strategisch darauf achten, wofür wir unsere begrenzten Ressourcen einsetzen. Bitte geben Sie an, auf welche Bereiche Sie sich im nächsten Quartal konzentrieren sollten.
+    ranked_choice:
+      title: "Wer sollte unser nächster stellvertretender Bürgermeister sein?"
+      details: "Es ist Zeit für unsere halbjährlichen Wahlen! Dies ist eine offizielle Instant-Runoff-Umfrage, die unseren nächsten stellvertretenden Bürgermeister bestimmen wird. Überzeugen Sie sich bei jedem Kandidaten auf unserer Website!"
     meeting:
       title: "Wann sollen wir das nächste Personal-Meeting haben?"
+      details: Es ist wieder Zeit für unser halbjährliches Mitarbeitertreffen; idealerweise würden wir uns gerne vor Ende der nächsten Woche treffen. Welche Zeiten funktionieren für alle?
   notified:
+    no_matches_found: "Keine Ergebnisse gefunden '%{query}'"
     group_users: "(%{count} Personen)"
+    group_title: "%{name} (%{count} Personen)"
+    public_title: Öffentlich (Jeder mit Link)
   poll_unsubscribe:
     title: Die Benachrichtigungen für %{title} wurden deaktiviert
     helptext: Sie werden keine Mails mehr zu dieser Entscheidung erhalten.
@@ -533,4 +562,50 @@ de:
     poll_created: "Neue *%{poll_type}* in *%{group}*: *%{poll}*"
     poll_closing_soon: "Erinnerung: *%{poll}* schließt in 24 Stunden"
     poll_expired: "*%{poll}* wurde geschlossen"
+    poll_not_found: "Entschuldigung, diese Umfrage wurde nicht gefunden. Geben Sie \"/loomio\" <poll_type><title>'ein, um einen anderen zu starten"
+    unknown_channel: |
+        Entschuldigung, es sieht so aus, als sei keine Loomio-Gruppe mit diesem Kanal verknüpft.
+        Versuchen Sie stattdessen, '/ loomio' in einem der folgenden Kanäle zu spielen
+        %{integrations}
+    stance_not_valid: "Entschuldigung, wir konnten keine Einstellung für *%{poll}* erstellen. <%{url}|Klicken Sie hier>, um direkt über die Umfrage abzustimmen."
+    group_identity_created: |
+        Hallo, ich bin Loomio Bot! *%{author}* hat mich hinzugefügt.
+        Ich kann Ihrem Team helfen, gemeinsam Entscheidungen zu treffen.
+
+        Meine Funktionen umfassen:
+
+        - Initiieren von Threads und Entscheidungen auf Loomio direkt von Slack
+        - Ankündigung, wann neue Threads und Entscheidungen auf Loomio stattfinden
+        - Zulassen, dass die Leute über Entscheidungen von Slack abstimmen
+        - Mitteilung der Ergebnisse von Entscheidungen
+
+        Um mehr zu erfahren, tippe _ / loomio help_
+
+        Sie müssen Teil der Loomio-Gruppe *%{group}* sein, um teilnehmen zu können.
+        Wenn Sie noch nicht beigetreten sind, <%{url}| Klicken Sie hier>, um dies zu tun.
+    request_authorization_message: "Noch ein Schritt: <%{url}| Klicken Sie hier>, um Ihr Slack-Konto für die Nutzung von Loomio zu autorisieren. (Sie müssen dies nur einmal tun)"
+    poll_closed: "*%{title}* hat bereits geschlossen! <%{url}|Klicken Sie hier> um die Ergebnisse zu sehen."
+    go_to_slack: zu Slack gehen
+    stance_created: Danke für die Teilnahme! Sie wählten  *%{position}* in der Umfrage <%{poll_url}|%{title}>. Wenn Sie Ihre Wahl ändern möchten, oder einen Grund nenen wollen,w arum Sie so abgestimmt haben, <%{stance_url}|Klicken Sie hier>.
     click_to_vote: "Wählen Sie eine Option unten:"
+    time_zone_message: (alle Zeiten sind in der %{zone} Zeitzone)
+    authorized_message: Erfolg! Sie sind jetzt bereit, jetzt über Slack abzustimmen.
+    initiate: |
+        Okay, lass uns das tun! <%{url}%{type}| Klicken Sie hier, um mit Ihrem> zu beginnen.
+        (Hinweis: Wir werden in diesem Kanal posten, sobald er erstellt wurde, damit jeder teilnehmen kann)
+    slash_command_help: |
+        Geben Sie einfach einen Entscheidungstyp und eine Frage ein, und wir nehmen es von dort.
+        Sie können aus folgenden Entscheidungstypen wählen:
+        Vorschlag: Kollektivvertrag anstreben
+        'zählen': Verfolgen Sie die Teilnahme und finden Sie Freiwillige
+        'Umfrage': Messen Sie die Popularität von Optionen
+        'dot_vote': Priorisieren Sie eine Liste von Optionen
+        Treffen: Treffen Sie sich, um sich zu treffen
+        Oder starte eine Konversation mit '/ loomio thread <title>'.
+
+        Beispielsweise:
+        /loomio Graf Wer kommt am Sonntag zur Party?
+        Um eine neue Zählung zu beginnen.
+        oder
+        /loomio thread Sprechen wir über die Unternehmensausrichtung
+        Um einen neuen Thread zu starten
