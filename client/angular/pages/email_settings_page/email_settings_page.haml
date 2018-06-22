@@ -8,7 +8,7 @@
 
         %form{ng-submit: "emailSettingsPage.submit()"}
           .email-settings-page__global-email-settings-options
-            %md-checkbox.md-checkbox--with-summary.email-settings-page__daily-summary#daily-summary-email{ng-model: "emailSettingsPage.user.emailMissedYesterday"}
+            %md-checkbox.md-checkbox--with-summary.email-settings-page__daily-summary#daily-summary-email{ng-model: "emailSettingsPage.user.emailCatchUp"}
               %strong{for: "daily-summary-email", translate: "email_settings_page.daily_summary_label"}
               .email-settings-page__input-description{translate: "email_settings_page.daily_summary_description"}
 
