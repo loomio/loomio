@@ -354,6 +354,7 @@ en:
     resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
 
   poll_mailer:
+    resend: '%{actor} is reminding you to vote in: %{title}'
     common:
       or: or
       why_send_this: You are receiving this email because %{reason}
