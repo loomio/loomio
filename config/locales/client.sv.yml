@@ -1,5 +1,45 @@
 sv:
+  reactions:
+    slight_smile: Gilla
+    heart: Älska
+    laughing: Skratta
+    clap: Applådera
+    hugging: Krama
+    sunglasses: Coolt
+    wink: Blinka
+    nerd: Smart
+    relieved: Lättad
+    worried: Bekymrad
+    confused: Förvirrad
+    neutral_face: Neutral
+    disappointed: Besviken
+    angry: Arg
+    rolling_eyes: Rullar ögon
+    cry: Gråter
+    scream: Skriker
+    sleeping: Utråkad
+    thinking: Tänker
+    raised_hands: Händerna i luften
+    pray: Ber
+    fingers_crossed: Fingrarna i kors
+    v: Fred
+    metal: Metall
+    ok_hand: Ok
+    wave: Vinka
+    thumbsup: Tumme upp
+    thumbsdown: Tumme ner
+  poll_types:
+    proposal: Förslag
+    count: Bock
+    poll: Undersökning
   common:
+    you: Du
+    expand: Expandera
+    all_day: Hela dagen
+    ok_got_it: Ok, förstår
+    not_found: Inte hittad
+    time_zone: Tidszon
+    local_time: Lokal tid
     confirm_discard_changes: Kasta bort dina ändringar?
     time:
       am: förmiddag
@@ -10,7 +50,11 @@ sv:
     notification_volume: 'Notifieringsvolym'
     group: 'Grupp'
     groups: 'Grupper'
+    threads: 'Trådar'
+    decisions: 'Beslut'
+    settings: 'Inställningar'
     help: 'Hjälp'
+    anonymous: Anonym
     privacy:
       privacy: 'Integritet'
       public: 'Offentlig'
@@ -28,9 +72,15 @@ sv:
     more_help: 'Mer hjälp'
     models:
       proposal: 'Förslag'
+    copy: 'Kopiera'
+    copy_text: 'Kopiera text'
     copied: 'Kopierad till urklipp'
+    points_abbrev: Varje röst är värd {{score}} poäng
+    total: Totalt
     action:
+      next: 'Nästa'
       close: 'Stäng'
+      reopen: 'Öppna igen'
       save: 'Spara'
       save_changes: 'Spara ändringar'
       update_settings: 'Uppdatera inställningar'
@@ -51,11 +101,48 @@ sv:
       translated: 'Översättning av Bing Translator'
       upload: 'Ladda upp'
       uploading: 'Laddar upp'
+      load_more: 'Ladda fler'
+      share: Dela
+      ok: Ok!
+      retry: Försök igen
+      done: Klar
+      start: Starta
+      delete: Radera
+      unsubscribe: Sluta prenumerera
+      subscribe: Prenumerera
+      remind: Påminn
+      resend: Skicka igen
+      send: Skicka
+      joined: Gick med
+      last_seen: Senast sedd
+      invite: Bjud in
+      resent: Inbjudan skickad igen
+      export: Exportera
+    formatting_help:
+      label: 'Utformning'
+  ordinal:
+    _1: 1:a
+    _2: 2:a
+    _3: 3:e
+    _4: 4:e
+    _5: 5:e
+    _6: 6:e
+    _7: 7:e
+    _8: 8:e
+    _9: 9:e
+    _10: 10:e
   devise:
+    sessions:
+      signed_up: Registreringen lyckades!
     failure:
       inactive: 'Det är ett deaktiverat konto associerat med denna e-postadress. Om du vill återaktivera ditt konto, kontakta oss.'
   error_page:
     forbidden: 'Du saknar behörighet att göra detta.'
+  verify_stances:
+    remove: Ta bort
+    verify_success: Röst verifierad
+    remove_success: Röst borttagen
+    all_done: Bra jobbat, du har verfierat alla röster.
   volume_levels:
     normal: 'Normal'
     quiet: 'Tyst'
@@ -72,6 +159,8 @@ sv:
     closing_in: 'Stänger'
   sign_up_form:
     password_label: 'Lösenord:'
+  signed_out_modal:
+    ok: "Ok"
   comment_form:
     edit_comment: 'Edit kommentar'
     delete_comment: 'Ta bort kommentaren'
@@ -82,6 +171,7 @@ sv:
       discussions: 'Diskussioner'
     logo_title: 'Hemsida'
   membership_dropdown:
+    invitation_resent: "Inbjudan skickad igen"
     make_coordinator: 'Gör till koordinator'
   notifications:
     header: "Notifieringar"
@@ -100,7 +190,10 @@ sv:
     email_label: Email
   revision_history_modal:
     current_revision: Senaste
+  reactions_display:
+    you: "Du"
   group_page:
+    invite_people: 'Bjud in'
     options_label: 'Alternativ'
     options:
       label: 'Alternativ'
@@ -114,6 +207,10 @@ sv:
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera
+  invitation_form:
+    copy_link: 'Kopiera'
+    send: 'Skicka'
+    done: 'Klar'
   memberships_page:
     members: 'Medlemmar'
     name_label: 'Namn'
@@ -129,6 +226,7 @@ sv:
   dashboard_page:
     aria_label: 'Instrumentbräda'
     no_groups:
+      start: Starta
       or: eller
     mark_as_read: Markera som läst
     threads_from:
@@ -136,6 +234,7 @@ sv:
       yesterday: 'Igår'
   inbox_page:
     no_groups:
+      start: Starta
       or: eller
   activity_card:
     unread: Olästa
@@ -144,7 +243,9 @@ sv:
     aria_label: 'Gruppnamn'
   thread_context:
     close_thread: 'Stäng'
+    reopen_thread: 'Öppna igen'
     mute_thread: 'Tysta ned'
+    delete_thread: 'Radera'
   delete_comment_dialog:
     title: 'Ta bort kommentaren'
     question: 'Är du säker på att du vill ta bort denna kommentaren?'
@@ -163,8 +264,22 @@ sv:
     invitation: 'Tips för att skriva en bra inbjudan'
     proposal: 'Tips för att skriva ett tydligt förslag'
     vote: 'Du kan ändra din ståndpunkt när som helst'
+  decision_tools_card:
+    proposal_title: Förslag
+    count_title: Bock
+    poll_title: Undersökning
   poll_common_form:
     closed: Stängd
+    start: Starta
   poll_count_options:
     'yes': 'Ja'
     'no': 'Nej'
+  poll_meeting_chart_panel:
+    total: Totalt
+  poll_common_subscribe_form:
+    subscribe: Prenumerera
+  polls_page:
+    heading: Beslut
+  install_slack:
+    progress:
+      invite: Bjud in

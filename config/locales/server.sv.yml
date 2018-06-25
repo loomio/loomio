@@ -4,6 +4,7 @@ sv:
       title: Titel
       author: Författare
       details: Detaljer
+      total: Totalt
   validate:
     motion:
       must_close_in_future: Förslaget måste stängas i framtiden.
@@ -34,4 +35,7 @@ sv:
     pricing: Prissättning
     public_groups: Öppna grupper
     terms: Villkor
+  poll_mailer:
+    common:
+      unsubscribe: Sluta prenumerera
   comment_by: Kommentaren av %{comment_author}
