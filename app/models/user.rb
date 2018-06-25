@@ -206,6 +206,10 @@ class User < ApplicationRecord
     verified_first.find_by(email: email)&.email_status || :unused
   end
 
+  def self.find_for_database_authentication(warden_conditions)
+    super(warden_conditions.merge(email_verified: true))
+  end
+
   define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
 
   def associate_with_identity(identity)
