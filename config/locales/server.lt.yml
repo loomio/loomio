@@ -4,6 +4,7 @@ lt:
       title: Antraštė
       details: Išsamesnė Informacija
       group_name: Grupės Pavadinimas
+      total: Iš viso
   email:
     catch_up:
       mark_as_read: Žymėti kaip skaitytą

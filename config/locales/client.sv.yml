@@ -11,9 +11,13 @@ sv:
     relieved: Lättad
     worried: Bekymrad
     confused: Förvirrad
+    confounded: Förväxlas
     neutral_face: Neutral
+    slight_frown: Rynka pannan
     disappointed: Besviken
     angry: Arg
+    weary: Trött
+    astonished: Förvånad
     rolling_eyes: Rullar ögon
     cry: Gråter
     scream: Skriker
@@ -37,6 +41,7 @@ sv:
     expand: Expandera
     all_day: Hela dagen
     ok_got_it: Ok, förstår
+    learn_more: Lär dig mer
     not_found: Inte hittad
     time_zone: Tidszon
     local_time: Lokal tid
@@ -143,7 +148,12 @@ sv:
     verify_success: Röst verifierad
     remove_success: Röst borttagen
     all_done: Bra jobbat, du har verfierat alla röster.
+  previous_polls_page:
+    heading: Aktiviter i {{name}}
+    polls_count: Visar {{loaded}} av {{total}} beslut
+    search_activities: Sök beslut
   volume_levels:
+    loud: 'Ljud'
     normal: 'Normal'
     quiet: 'Tyst'
     mute: 'Tysta ned'
@@ -151,7 +161,25 @@ sv:
   change_volume_form:
     aria_label: "Byt epostinställningars formulär"
     loud_label: "All aktivitet"
+    normal_label: "Meddelanden"
+    quiet_label: "Inga e-post"
     mute_label: "Tysta ned"
+    discussion:
+      loud_description: "Du kommer stt få ett e-post när det sker aktivitet i tråden."
+      normal_description: "Du kommer att få e-post när ett förslag har startats, håller på att stängas, eller resultat är postat."
+      quiet_description: "Du kommer inte få e-post om denna tråd."
+      apply_to_all: "Tillämpa dessa inställningar på alla trådar i denna grupp."
+      messages:
+        loud: "Du kommer att få e-post om aktivitet i denna tråd."
+        normal: "Du kommer att få e-post om förslag i denna tråd."
+        quiet: "Du kommer inte få e-post om denna tråd."
+    membership:
+      title: "E-postinställningar för {{title}}"
+      loud_description: "Du kommer att få e-post vid aktivitet i denna grupp."
+      normal_description: "Du kommer bara få e-post vid meddelanden i denna grupp."
+      quiet_description: "Du kommer inte få e-post om aktivitet i denna grupp."
+      messages:
+        normal: "Du kommer bara få e-post vid meddelanden i denna grupp."
   inbox:
     clear: 'Klar'
     latest: 'Senaste'
@@ -223,6 +251,8 @@ sv:
     username_label: 'Användarnamn'
     email_label: 'Email'
     locale_label: 'Språk'
+  email_settings_page:
+    announcement_label: Meddelanden
   dashboard_page:
     aria_label: 'Instrumentbräda'
     no_groups:

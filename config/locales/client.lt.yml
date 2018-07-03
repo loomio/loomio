@@ -1,27 +1,81 @@
 lt:
+  reactions:
+    heart: Meilė
+    laughing: Juokas
+    clap: Ploti
+    hugging: Apkabinimas
+    sunglasses: Šaunus
+    wink: Mirktelėti
+    nerd: Protingas
+    worried: Neramus
+    confused: Sumišęs
+    confounded: Suglumintas
+    neutral_face: Neutralus
+    slight_frown: Susiraukti
+    disappointed: Nusivylęs
+    angry: Piktas
+    weary: pavargęs
+    astonished: Apstulbintas
+    cry: Verkti
+    scream: Šaukti
+    sleeping: Nuobodžiaujantis
+    thinking: Galvojau
+    raised_hands: Pakeltos rankos
+    pray: Melstis
+    fingers_crossed: Sukryžiuoti pirštai
+    v: Taika
+    metal: Metalas
+    ok_hand: Gerai
+    wave: Banga
+  poll_types:
+    proposal: Pasiūlymas
+    count: Patikrinti
+    poll: Apklausa
+    meeting: Laiko apklausa
   common:
+    you: Tu
+    expand: Išplėsti
+    all_day: Visą dieną
+    ok_got_it: Gerai, supratau
+    learn_more: Sužinoti daugiau
+    not_found: Nerastas
+    time_zone: Laiko zona
     confirm_discard_changes: Atmesti jūsų pakeitimus?
     time:
       am: am
       pm: pm
-    volume: 'Garsis'
-    notification_volume: 'Pranešimų garsis'
+    volume: 'Garsumas'
+    notification_volume: 'Pranešimų garsumas'
     group: 'Grupė'
     groups: 'Grupės'
+    threads: 'Temos'
+    decisions: 'Sprendimai'
+    settings: 'Nustatymai'
     help: 'Pagalba'
+    anonymous: Anoniminis
     privacy:
       privacy: 'Privatumas'
       public: 'Vieša'
+      open: 'Atidaryti'
+      closed: 'Uždarytas'
       private: 'Privati'
+      secret: 'Paslaptis'
+    selected: 'Pasirinktas'
     date_range:
       today: 'Šiandien'
       yesterday: 'Vakar'
       thisweek: 'Šią savaitę'
       thismonth: 'Šį mėnesį'
+      older: 'Vyresnis'
+    more_help: 'Daugiau pagalbos'
     models:
       proposal: 'Pasiūlymas'
+    copy: 'Kopijuoti'
+    copy_text: 'Kopijuoti tekstą'
     copied: 'Nukopijuota į iškarpinę'
+    total: Iš viso
     action:
+      next: 'Kitas'
       close: 'Užverti'
       save: 'Įrašyti'
       save_changes: 'Įrašyti pakeitimus'
@@ -96,6 +150,8 @@ lt:
       joined_group: 'Dabar jūs esate {{group}} grupės narys'
   membership_request_form:
     email_label: El. paštas
+  reactions_display:
+    you: "Tu"
   group_page:
     messages:
       privacy:
@@ -130,6 +186,7 @@ lt:
   invitation_form:
     invite_people: 'Pakviesti žmones'
     group: 'Grupė'
+    copy_link: 'Kopijuoti'
   memberships_page:
     coordinator_label: 'Koordinatorius'
     remove_member_label: 'Šalinti'
@@ -219,5 +276,16 @@ lt:
   contact_message_form:
     email_label: 'Jūsų el. pašto adresas'
     email_placeholder: 'Įveskite savo el. pašto adresą...'
+  decision_tools_card:
+    proposal_title: Pasiūlymas
+    count_title: Patikrinti
+    poll_title: Apklausa
+    meeting_title: Laiko apklausa
+  poll_common_form:
+    closed: Uždarytas
   poll_count_options:
     'no': 'Ne'
+  poll_meeting_chart_panel:
+    total: Iš viso
+  polls_page:
+    heading: Sprendimai

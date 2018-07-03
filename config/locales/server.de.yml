@@ -305,6 +305,7 @@ de:
   group_mailer:
     resend: 'Erinnerung: %{member} wartet darauf, dass sie %{group_name} beitreten'
   poll_mailer:
+    resend: '%{actor} erinnert Sie zur Wahl von %{title}'
     common:
       or: oder
       why_send_this: Du erhältst diese E-Mail weil %{reason}

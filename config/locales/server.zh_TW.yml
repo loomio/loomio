@@ -305,6 +305,7 @@ zh_TW:
   group_mailer:
     resend: '提醒：%{member} 正等候您加入 %{group_name}'
   poll_mailer:
+    resend: '%{actor} 正在提醒您要投票：%{title}'
     common:
       or: 或
       why_send_this: 因為 %{reason}，您收到了這封電子郵件
