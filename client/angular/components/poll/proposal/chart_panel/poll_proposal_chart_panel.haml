@@ -7,4 +7,4 @@
         %tr{ng-repeat: "name in pollOptionNames() track by $index"}
           %td
             .poll-proposal-chart-panel__label{class: "poll-proposal-chart-panel__label--{{name}}"}
-              {{ countFor(name) }} {{ translationFor(name) }}
+              {{ countFor(name) }} ({{ percentFor(name) }}%) {{ translationFor(name) }}
