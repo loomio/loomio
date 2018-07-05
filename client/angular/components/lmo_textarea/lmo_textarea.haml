@@ -3,7 +3,7 @@
     %md-input-container.md-block.md-no-errors{md-no-float: "true"}
       %label{ng-if: "label"} {{label}}
       %outlet{name: "before-lmo-textarea", model: "model"}
-      %textarea.lmo-textarea.lmo-primary-form-input{ng-disabled: "isDisabled", name: "body", placeholder: "{{placeholder}}", ng-model: "model[field]", md-maxlength: "{{maxlength}}", maxlength: "{{maxlength}}", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 150, 'blur': 0} }"}
+      %textarea.lmo-textarea.lmo-primary-form-input{max-rows: 5, ng-disabled: "isDisabled", name: "body", placeholder: "{{placeholder}}", ng-model: "model[field]", md-maxlength: "{{maxlength}}", maxlength: "{{maxlength}}", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 150, 'blur': 0} }"}
     .lmo-md-actions
       .lmo-flex
         %validation_errors{ng-if: "model.errors[field]", subject: "model", field: "{{field}}"}
