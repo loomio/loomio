@@ -970,7 +970,7 @@ en:
 
   email_settings_page:
     header: Email settings
-    email_newsletter: Newsletter
+    email_newsletter: Loomio Newsletter
     email_newsletter_description: "Get updates about new features, training, events in your city and the future of Loomio. Usually 2 or 3 emails per year."
     daily_summary_label: Daily summary email
     daily_summary_description: "Each morning, you will get an email with any activity that you missed the day before. This makes it easy to stay up to date with activity."
