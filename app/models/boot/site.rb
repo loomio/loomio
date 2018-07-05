@@ -4,12 +4,13 @@ module Boot
     include Routing
     include AngularHelper
 
-    def payload
+    def payload(detected_locale: )
       @payload ||= {
         version:             Loomio::Version.current,
         environment:         Rails.env,
         permittedParams:     PermittedParamsSerializer.new({}),
         locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
+        detectedLocale:      detected_locale,
         momentLocales:       AppConfig.moment_locales,
         recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
         intercomAppId:       ENV['INTERCOM_APP_ID'],
