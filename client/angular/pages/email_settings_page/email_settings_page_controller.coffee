@@ -2,6 +2,7 @@ Session        = require 'shared/services/session'
 Records        = require 'shared/services/records'
 EventBus       = require 'shared/services/event_bus'
 AbilityService = require 'shared/services/ability_service'
+AppConfig      = require 'shared/services/app_config'
 ModalService   = require 'shared/services/modal_service'
 LmoUrlService  = require 'shared/services/lmo_url_service'
 
@@ -19,6 +20,8 @@ $controller = ($rootScope) ->
       successCallback: -> LmoUrlService.goTo '/dashboard' if AbilityService.isLoggedIn()
   @init()
 
+  @newsletterEnabled = AppConfig.newsletterEnabled
+  
   @groupVolume = (group) ->
     group.membershipFor(Session.user()).volume
 

@@ -11,6 +11,7 @@ module Boot
         permittedParams:     PermittedParamsSerializer.new({}),
         locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
         momentLocales:       AppConfig.moment_locales,
+        newsletterEnabled:   ENV['NEWSLETTER_ENABLED'],
         recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
         intercomAppId:       ENV['INTERCOM_APP_ID'],
         baseUrl:             root_url,

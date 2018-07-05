@@ -15,6 +15,8 @@ class User < ApplicationRecord
   extend NoSpam
   no_spam_for :name
 
+  has_paper_trail only: [:email_newsletter]
+
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
     helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
@@ -26,6 +28,7 @@ class User < ApplicationRecord
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
+
   attr_accessor :legal_accepted
 
   attr_writer   :has_password

@@ -115,6 +115,7 @@ module Plugins
     def use_view_path(path)
       @actions.add Proc.new {
         ApplicationController.append_view_path(path_prefix(path, rails_root: false))
+        BaseMailer.append_view_path(path_prefix(path, rails_root: false))
       }.to_proc
     end
 
