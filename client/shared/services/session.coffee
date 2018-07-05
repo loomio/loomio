@@ -11,7 +11,7 @@ module.exports = new class Session
   signIn: (userId) ->
     setDefaultParams()
     user = @user()
-    @updateLocale(user.locale || AppConfig.detectedLocale)
+    @updateLocale(user.locale || AppConfig.defaultLocale)
 
     return unless AppConfig.currentUserId = userId
     exceptionHandler.setUserContext(_.pick(user, "email", "name", "id"))
