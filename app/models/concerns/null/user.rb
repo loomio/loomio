@@ -18,7 +18,7 @@ module Null::User
   def false_methods
     [:is_logged_in?, :is_member_of?, :is_admin_of?, :is_admin?, :is_admin, :uses_markdown?,
      :email_when_proposal_closing_soon, :email_catch_up, :has_password,
-     :email_when_mentioned, :email_on_participation, :email_verified, :email_verified?]
+     :email_when_mentioned, :email_on_participation, :email_verified, :email_verified?, :email_newsletter]
   end
 
   def empty_methods
