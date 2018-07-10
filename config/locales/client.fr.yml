@@ -179,6 +179,7 @@ fr:
     quiet_label: "Aucun courriel"
     mute_label: "Ignorer"
     discussion:
+      title: "Paramètres du fil e-mail"
       loud_description: "Vous recevrez un courriel à chaque fois qu’il y aura une activité dans cette discussion."
       normal_description: "Vous recevrez un courriel lorsqu’une décision est lancée ou sur le point de fermer, et quand un résultat est publié."
       quiet_description: "Vous ne recevrez aucun courriel à propos de cette discussion."
@@ -682,7 +683,7 @@ fr:
     document_removed: Document supprimé
   document:
     error:
-      invalid_format: Oups, cette URL n'est pas correcte. Elle doit commencer par http:// ou https://
+      invalid_format: Oups, votre URL n'est pas correcte. Elle doit commencer par http:// ou https://
     card:
       no_documents: Aucun document n'a été ajouté à ce groupe pour le moment.
       view_documents: Tout voir
@@ -833,6 +834,8 @@ fr:
     change_picture_link: 'Changer de photo'
     change_password_link: 'Réinitialiser mon mot de passe'
     deactivate_user_link: 'Désactiver mon compte…'
+    delete_account: 'Supprimer définitivement le compte'
+    delete_user_link: 'Supprimer le compte'
     profile: 'Profil'
     edit_profile: 'Modifier mon profil'
     picture_label: 'Image'
@@ -871,7 +874,13 @@ fr:
     no_longer_group_member: 'Vous ne serez plus enregistré comme membre d’aucun groupe'
     name_removed: 'Les commentaires, les décisions et les discussions que vous avez fait resteront mais votre nom en sera retiré'
     no_emails: 'Vous ne recevrez plus de courriels de notification'
+    you_can_reactivate: "Vous pouvez réactiver votre compte ultérieurement si vous le souhaitez."
     submit: 'Oui, je veux désactiver'
+  delete_user_modal:
+    title: 'Supprimer votre compte'
+    irreversable: "AVERTISSEMENT : Ceci ne peut pas être annulé. Si vous continuez :"
+    you_will_be_deleted: "Votre compte d'utilisateur, y compris votre nom, votre adresse e-mail et d'autres données d'identification personnelle seront supprimés de nos systèmes."
+    submit: 'Oui, supprimer mon compte'
   deactivate_user_form:
     aria_label: 'Désactivation du compte'
     title: 'Compte désactivé'
@@ -887,6 +896,8 @@ fr:
     on_participation_description: "Lorsque vous participez à une discussion, toute activité ultérieure vous sera immédiatement envoyée par courriel."
     announcement_label: Nouvelles discussions et décisions
     announcement_description: "Vous recevrez un courriel à chaque nouvelle discussion ou proposition annoncée par un membre dans l'un de vos groupes."
+    mentioned_label: Mentions et réponses
+    mentioned_description: "Lorsque quelqu'un vous mentionne dans un commentaire ou vous répond, vous recevrez un courriel de notification."
     update_settings: Sauvegarder les modifications
     specific_groups: Paramètres pour certains groupes
     default_settings:

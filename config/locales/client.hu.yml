@@ -1,5 +1,55 @@
 hu:
+  reactions:
+    slight_smile: Tetszik
+    heart: Szeret
+    laughing: Nevet
+    clap: Taps
+    hugging: Ölel
+    sunglasses: Menő
+    wink: Kacsint
+    nerd: Okos
+    relieved: Megkönnyebült
+    worried: Aggódó
+    confused: Összezavart
+    confounded: Felkavart
+    neutral_face: Semleges
+    slight_frown: Szomorú
+    disappointed: Csalódott
+    angry: Mérges
+    weary: Fáradt
+    astonished: Döbbent
+    rolling_eyes: Szemet forgat
+    cry: Sír
+    scream: Sikolt
+    sleeping: Unott
+    thinking: Gondolkodik
+    raised_hands: Kezet felemel
+    pray: Imádkozik
+    fingers_crossed: Szorít
+    v: Béke
+    metal: \m/
+    ok_hand: Oké
+    wave: Integet
+    thumbsup: Egyetért
+    thumbsdown: Nem ért egyet
+  poll_types:
+    proposal: Javaslat
+    count: Jelöl
+    poll: Szavazás
+    dot_vote: Pont-szavazás
+    meeting: Idő szavazás
+    ranked_choice: Sorrend szavazás
+  timezones:
+    local: Helyi idő ({{value}})
   common:
+    you: Te
+    expand: Kiterjeszt
+    all_day: Egész nap
+    ok_got_it: Értettem
+    learn_more: Tudj meg többet
+    not_found: Nem találom
+    time_zone: Időzóna
+    local_time: Helyi idő
     confirm_discard_changes: Elveti a módosításait?
     time:
       am: de
@@ -10,7 +60,11 @@ hu:
     notification_volume: 'Értesítési hangerő'
     group: 'Csoport'
     groups: 'Csoportok'
+    threads: 'Tredek'
+    decisions: 'Döntések'
+    settings: 'Beállítások'
     help: 'Segítség'
+    anonymous: Anoním
     privacy:
       privacy: 'Adatvédelem'
       public: 'Nyilvános'
@@ -31,9 +85,12 @@ hu:
     copy: 'Másolás'
     copy_text: 'Szöveg másolása'
     copied: 'Vágólapra másolva'
+    points_abbrev: Minden szavazat {{score}} pontot ér
+    total: Teljes
     action:
       next: 'Következő'
       close: 'Bezár'
+      reopen: 'Újranyit'
       save: 'Mentés'
       save_changes: 'Változások mentése'
       update_settings: 'Beállítások frissítése'
@@ -47,7 +104,7 @@ hu:
       cancel: 'Mégse'
       show_more: "Bővebben"
       view_all: "Mutasd mind"
-      new_thread: "Új téma"
+      new_thread: "Új tred"
       add_subgroup: 'Alcsoport létrehozása'
       loading: 'Betöltés'
       translate: 'Fordítás'
@@ -63,10 +120,18 @@ hu:
       delete: Törlés
       unsubscribe: Leiratkozás
       subscribe: Feliratkozás
+      remind: Emlékeztet
       resend: Újraküldés
       send: Küldés
+      joined: Csatlakozott
+      last_seen: Utoljára megnézve
+      invite: Meghív
+      resent: Meghívás újraküldve
+      export: Kiexportálás
+      fork: Leágazás
     formatting_help:
       label: 'Formázás'
+      title: 'Tanuld meg formázni a szöveged'
   ordinal:
     _1: '1.'
     _2: '2.'
@@ -78,12 +143,29 @@ hu:
     _8: '8.'
     _9: '9.'
     _10: '10.'
+  devise:
+    sessions:
+      signed_up: Sikeresen csatlakozott!
+    failure:
+      inactive: 'Ehhez az email címhez egy inaktív felhasználó van csatolva. Ha újra szeretnéd aktivizálni a felhasználód, írj nekünk.'
   error_page:
     forbidden: 'Ehhez nincs jogosultságod.'
     page_not_found: 'Ezt nem találjuk. Lehet, hogy törölték vagy áthelyezték.'
     internal_server_error: 'Sajnáljuk, de valami hiba történt. Kérlek próbáld újra.'
+  verify_email_notice:
+    please_verify: Köszönjük a részvételt! Az emailben elküldött linken tudod ellenőrizni a szavazatod.
   verify_stances:
+    title: Szavazatokat ellenőrizni
+    description: Kérlek tekintsd át a szavazatokat és ellenőrizd, hogy valóban a tieid.
     verify: Ellenőrzés
+    remove: Eltávolít
+    verify_success: Szavazat ellenőrizve
+    remove_success: Szavazat eltávolítva
+    all_done: Gratulálok, az összes szavazatot ellenőrízted.
+  previous_polls_page:
+    heading: '{{name}} tevékenységei'
+    polls_count: '{{total}} döntésből {{loaded}} mutatása'
+    search_activities: Döntések keresése
   volume_levels:
     loud: 'Hangos'
     normal: 'Normál'
@@ -91,40 +173,61 @@ hu:
     mute: 'Néma'
     unmute: 'Néma üzemmód kikapcsolása'
   change_volume_form:
+    aria_label: "Email beállítások módosítása"
     loud_label: "Összes tevékenység"
+    normal_label: "Bejelentések"
     quiet_label: "Nincs új e-mail"
     mute_label: "Néma"
     discussion:
-      loud_description: "Azonnali értesítés e-mailben, új tevékenység esetén ezen a témakörön belül."
+      title: "Tred email beállításai"
+      loud_description: "Azonnali értesítés e-mailben, új tevékenység esetén ezen a treden belül."
       normal_description: "Azonnali értesítés e-mailben, amennyiben egy javaslat született, zárás következik vagy ha összegzést tettek közzé."
-      quiet_description: "Ne küldj e-mailt ezen témakör változásairól."
-      apply_to_all: "Ezen beállítások alkalmazása a csoporton belüli összes témakörre."
+      quiet_description: "Ne küldj e-mailt ezen tred változásairól."
+      apply_to_all: "Ezen beállítások alkalmazása a csoporton belüli összes tredre."
       messages:
-        loud: "Azonnali értesítés e-mailben, új tevékenység esetén ezen a témakörön belül."
-        normal: "Azonnali értesítés e-mailben, új javaslat esetén ezen a témakörön belül."
+        loud: "Azonnali értesítés e-mailben, új tevékenység esetén ezen a treden belül."
+        normal: "Azonnali értesítés e-mailben, új javaslat esetén ezen a treden belül."
         quiet: "Ne küldj e-mailt ezen témakör változásairól."
     membership:
       title: "Email beállítások {{title}}-hez"
       loud_description: "Azonnali értesítés e-mailben, új tevékenység esetén ezen csoporton belül."
+      normal_description: "Csak ebből a csoportból fogsz jelentéseket kapni. "
       quiet_description: "Ne küldj e-mailt ezen csoport tevékenységeiről."
       apply_to_all: "Ezen beállítások alkalmazása minden csoportomra."
       messages:
         loud: "Értesítés e-mailben ezen csoporton belüli összes tevékenységről."
+        normal: "Csak ebből a csoportból fogsz jelentéseket kapni. "
         quiet: "Ne küldj e-mailt ezen csoport tevékenységeiről."
     all_groups:
       messages:
         loud: "Értesítés e-mailben minden csoport összes tevékenységről aminek tagja vagyok."
+        normal: "Minden csoportból kapsz jelentéseket."
         quiet: "Ne küldj e-mailt egyik csoportom tevékenységeiről sem."
     user:
       title: E-mail beállítások új csoportokra
       loud_description: "Azonnali értesítés e-mailben, új tevékenység esetén valamennyi új csoportomon belül."
+      normal_description: "Minden újonnan csatlakozott csoportodból kapsz jelentéseket."
       quiet_description: "Ne küldj e-mailt az új csoportjaim tevékenységeiről."
       apply_to_all: "Ezen beállítások alkalmazása minden csoportomra."
       messages:
         loud: "Értesítés e-mailben az új csoportjaim belüli összes tevékenységről."
+        normal: "Új csoportjaidból kapsz jelentéseket. "
         quiet: "Ne küldj e-mailt új csoportokról."
+  close_explanation_modal:
+    aria_label: Tred lezárása
+    close_thread: Tred lezárása
+    body_header: |
+        <p>Zárd le a régi vagy a már tárgytalan tredeket, eltüntetve őket a folyamból és jelezd, hogy a vita lezárult.</p>
+    body_footer: |
+        <p>Bárki hozzászólhat vagy indíthat újabb szavazást a tredben, de nem fog megjelenni a csoportban vagy a kezdőlapon.</p>
+    image_alt: Minden tred lezárása
   mute_explanation_modal:
-    mute_thread: Témakör némítása
+    aria_label: Tred némítása
+    mute_thread: Tred némítása
+    body_html: |
+        A némítás azt jelenti, hogy <p>nem kapsz értesítést a szavazásokról</p>, vagy bármi más aktivitásról a tredben, kivéve ha valaki <strong>@megemlít téged</strong>.
+    body_html_2: |
+        A némított tredek nincsenek feltűntetve a <p>friss</p> és <strong>olvasatlan</strong> oldalakon. Hogy megtaláld ezeket a tredeket, menj a <strong>Némított tredek </strong> az oldalsávban.
   inbox:
     clear: 'Töröl'
     latest: 'Legutóbbi'
@@ -154,37 +257,77 @@ hu:
     public_privacy_notice: 'A hozzászólás mindenki számára nyilvános lesz.'
     sign_in: "Lépj be, hogy hozzászolhass a témakörhöz."
   sidebar:
+    start_thread: Új tred
     aria_labels:
       groups_list: 'Csoportok'
+      user_list: 'Felhasználói tettek'
   navbar:
     recent_title: 'Irány az eszközökhöz'
     unread_title: 'Olvasatlan tevékenységek megtekintése'
+    start_thread: 'Új tred'
     notifications: 'Értesítések'
     search:
+      label: 'Kereső mező; keress csoportokat és tredeket'
       results_aria_label: 'Keresési eredmények'
-      no_results: 'Nem található eredmény erre a témakörre'
+      no_results: 'Nem található eredmény erre a tredre'
       close: 'Kereső panel bezárása'
       placeholder: 'Keresés'
       loading: 'Eredmények betöltése...'
-      discussions: 'Szálak'
+      discussions: 'Tredek'
       proposals: 'Javaslatok'
       comments: 'Hozzászólások'
     sign_in: 'Bejelentkezés'
-    toggle_sidebar: 'Oldal panel ki/be kapcsolása'
+    toggle_sidebar: 'Oldalsáv ki/be kapcsolása'
+    logo_title: 'Kezdőoldal'
   user_dropdown:
-    help: 'Sugó'
+    button_label: 'Felhasználó menü'
+    edit_profile: 'Profil szerkesztése'
+    email_settings: 'Email beállítások'
+    help: 'Súgó'
+    contact_site_name: 'Kapcsolatfelvétel {{site_name}}vel '
     sign_out: 'Kijelentkezés'
+  membership_card:
+    group_members: "Csoporttagok"
+    discussion_members: "Tredben résztvevők"
+    poll_members: "{{pollType}} tagjai"
+    invite_to_group: "Meghívás a csoportba"
+    invite_to_discussion: "Meghívás a tredbe"
+    invite_to_poll: "Meghívás szavazásra"
+    invitations: "Meghívások"
   membership_dropdown:
+    set_title: "Cím megadása"
+    resend: "Meghívás újraküldése"
+    invitation_resent: "Meghívás újraküldve"
     make_coordinator: 'Koordonátori jogok megadása'
+    demote_coordinator: 'Koordinátori jogok elvétele'
+    remove_from:
+      discussion: "Eltávolítás a tredből"
+      group: "Eltávolítás a csoportból"
+      poll: 'Eltávolítá a {{pollType}}ból'
+    cancel_invitation: Meghívás elvetése
   start_menu:
+    label: 'Felhasználói tettek'
+    title: 'Tett'
     start_group: 'Csoport indítása'
     start_subgroup: 'Alcsoport indítása'
-    start_thread: 'Témakör indítása'
+    start_thread: 'Tred indítása'
+    start_poll: 'Szavazás indítása'
     invite_people: 'Hívj meg másokat'
+  notification_models:
+    discussion: 'tred:'
+    comment: 'kommentelés'
+    poll: 'döntés:'
+    outcome: 'eredmény:'
   notifications:
     header: "Értesítések"
     no_notifications: "Nincsenek új értesítések."
+    new_discussion: "<strong>{{name}}</strong>elindította a <strong>{{title}}</strong> című vitát"
+    discussion_announced: "<strong>{{name}}</strong> elindított egy beszélgetést <strong>{{title}}</strong> címmel"
+    new_motion: "<strong>{{name}}</strong>  elindított egy szavazást<strong>{{title}}</strong> címmel"
+    motion_closed: "Szavazás vége: <strong>{{title}}</strong>"
     publish_outcome: "Eredmény közlése"
+    motion_closed_by_user: "<strong>{{name}}</strong> lezárta a  <strong>{{title}}</strong> szavazást"
+    motion_closed_by_expiry: "A <strong>{{title}}</strong> szavazás lezárult"
     motion_closing_soon: "Javaslat hamarosan zárul: <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Szólj bele
@@ -198,6 +341,14 @@ hu:
     title_placeholder: 'Mit szeretnél megtárgyalni?'
     context_label: 'Leírás'
     privacy_label: 'Adatvédelem'
+  announcement:
+    form:
+      group_announced:
+        title: Meghívás csoportba
+      discussion_announced:
+        title: Meghívás a tredbe
+      poll_announced:
+        title: Meghívás szavazásra
   join_group_button:
     join_group: Kapcsolódj a csoporthoz
   membership_request_form:
@@ -206,14 +357,18 @@ hu:
     email_label: E-mail
   revision_history_modal:
     current_revision: Legutóbbi
+  reactions_display:
+    you: "Te"
   group_page:
     group_logo: 'Csoport logó'
     new_photo: 'Új fotó'
+    invite_people: 'Meghív'
     visibility_label: 'Láthatóság'
     options_label: 'Lehetőségek'
     options:
       label: 'Lehetőségek'
       edit_group: 'A csoport beállításainak szerkesztése'
+      email_settings: 'Email beállítások'
       leave_group: 'Kilépés a csoportból'
       deactivate_group: 'Csoport deaktiválása'
     volume:
@@ -254,6 +409,14 @@ hu:
     name_label: 'Név'
     coordinator_label: 'Koordonátor'
     remove_member_label: 'Visszavonás'
+  membership_remove_modal:
+    invitation:
+      title: Meghívás elvetése
+      submit: Meghívás elvetése
+  memberships_panel:
+    remove_coordinator: Koordinátori jogok elvétele
+  cancel_invitation_form:
+    heading: Meghívás elvetése
   profile_page:
     profile: 'Profil'
     picture_label: 'Kép'
@@ -261,6 +424,9 @@ hu:
     username_label: 'Felhasználónév'
     email_label: 'E-mail'
     locale_label: 'Nyelv'
+  email_settings_page:
+    header: Email beállítások
+    announcement_label: Bejelentések
   dashboard_page:
     aria_label: 'Műszerfal'
     no_groups:
@@ -284,7 +450,9 @@ hu:
   thread_group:
     aria_label: 'Csoport neve'
   thread_context:
+    email_settings: 'Email beállítások'
     close_thread: 'Bezár'
+    reopen_thread: 'Újranyit'
     delete_thread: 'Törlés'
   delete_comment_dialog:
     title: 'Hozzászólás törlése'
@@ -307,11 +475,24 @@ hu:
   registered_app_form:
     messages:
       logo_changed: Logó frissítve.
+  decision_tools_card:
+    proposal_title: Javaslat
+    count_title: Jelöl
+    poll_title: Szavazás
+    meeting_title: Idő szavazás
+    ranked_choice_title: Sorrend szavazás
   poll_common_form:
     closed: Zárva
     start: Indítás
   poll_count_options:
     'yes': 'Igen'
     'no': 'Nem'
+  poll_meeting_chart_panel:
+    total: Teljes
   poll_common_subscribe_form:
     subscribe: Feliratkozás
+  polls_page:
+    heading: Döntések
+  install_slack:
+    progress:
+      invite: Meghív

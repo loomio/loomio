@@ -744,7 +744,7 @@ en:
 
   document:
     error:
-      invalid_format: Oops! Your URL is invalid. Ensurer it begins with http:// or https://
+      invalid_format: Oops! Your URL is invalid. Ensure it begins with http:// or https://
     card:
       no_documents: No attachments have been uploaded into this group yet
       view_documents: View all
