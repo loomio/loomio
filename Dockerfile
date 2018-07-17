@@ -4,8 +4,8 @@
 #
 # It is not a standalone image.
 #
-FROM ruby:2.5.0
-ENV REFRESHED_AT 2018-02-13
+FROM ruby:2.5.1
+ENV REFRESHED_AT 2018-07-17
 
 RUN gem update --system
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
