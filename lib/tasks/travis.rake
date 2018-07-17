@@ -11,12 +11,6 @@ namespace :travis do
     system("./cc-test-reporter before-build")
   end
 
-  task :rspec do
-    puts "Starting to run rspec..."
-    system("bundle exec rspec --color")
-    raise "rspec failed!" unless $?.exitstatus == 0
-  end
-
   task :e2e => :environment do
     # warming up the server
     system("sleep 10")
@@ -29,7 +23,7 @@ namespace :travis do
 
   task :plugins => :environment do
     puts "Starting to run plugin rspec..."
-    system("bundle exec rspec plugins")
+    system("rspec plugins")
     rspec_passed = $?.exitstatus == 0
     system("wget http://localhost:3000/")
     puts "Starting to run plugins nightwatch..."
