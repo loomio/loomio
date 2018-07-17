@@ -11,6 +11,12 @@ namespace :travis do
     system("./cc-test-reporter before-build")
   end
 
+  task :rspec do
+    puts "Starting to run rspec..."
+    system("rspec --color")
+    raise "rspec failed!" unless $?.exitstatus == 0
+  end
+
   task :e2e => :environment do
     # warming up the server
     system("sleep 10")
