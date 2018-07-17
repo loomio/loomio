@@ -64,8 +64,9 @@ before_script:
   - bundle exec rails server -b 0.0.0.0 > /dev/null &
 
 script:
-  - if [ "$TASK" = "rspec" ];   then bundle exec rspec --color; fi
+  - if [ "$TASK" = "rspec" ];   then bundle exec rspec ; fi
   - if [ "$TASK" = "e2e" ];     then bundle exec rake travis:e2e; fi
+  - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
 
 after_script:

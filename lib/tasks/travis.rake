@@ -13,7 +13,7 @@ namespace :travis do
 
   task :rspec do
     puts "Starting to run rspec..."
-    system("rspec --color")
+    system("bundle exec rspec --color")
     raise "rspec failed!" unless $?.exitstatus == 0
   end
 
@@ -28,14 +28,14 @@ namespace :travis do
   end
 
   task :plugins => :environment do
-    puts "Starting to run plugin rspec..."
-    system("rspec plugins")
-    rspec_passed = $?.exitstatus == 0
+    # puts "Starting to run plugin rspec..."
+    # system("bundle exec rspec plugins")
+    # rspec_passed = $?.exitstatus == 0
     system("wget http://localhost:3000/")
     puts "Starting to run plugins nightwatch..."
     system("cd client && gulp nightwatch:plugins --retries 2")
     nightwatch_passed = $?.exitstatus == 0
-    raise "rspec:plugins failed!" unless rspec_passed
+    # raise "rspec:plugins failed!" unless rspec_passed
     raise "nightwatch:plugins failed!" unless nightwatch_passed
   end
 
