@@ -27,7 +27,11 @@ class API::MembershipsController < API::RestfulController
 
   def for_user
     load_and_authorize :user
-    instantiate_collection { |collection| collection.active.formal.where(user_id: @user.id).order('groups.full_name') }
+    same_group_ids   = current_user.formal_group_ids & @user.formal_group_ids
+    public_group_ids = @user.formal_groups.visible_to_public.pluck(:id)
+    instantiate_collection do |collection|
+      collection = Membership.joins(:group).where(group_id: same_group_ids + public_group_ids, user_id: @user.id).active.formal.order('groups.full_name')
+    end
     respond_with_collection serializer: Simple::MembershipSerializer
   end
 
