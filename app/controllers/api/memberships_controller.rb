@@ -30,7 +30,7 @@ class API::MembershipsController < API::RestfulController
     same_group_ids   = current_user.formal_group_ids & @user.formal_group_ids
     public_group_ids = @user.formal_groups.visible_to_public.pluck(:id)
     instantiate_collection do |collection|
-      collection = Membership.joins(:group).where(group_id: same_group_ids + public_group_ids).active.formal.order('groups.full_name')
+      collection = Membership.joins(:group).where(group_id: same_group_ids + public_group_ids, user_id: @user.id).active.formal.order('groups.full_name')
     end
     respond_with_collection serializer: Simple::MembershipSerializer
   end
