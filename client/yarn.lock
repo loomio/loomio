@@ -90,13 +90,13 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-animate@1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.4.1.tgz#efee776c182beb77bac8981408c7163d96d78d7d"
+angular-animate@1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.7.2.tgz#48d1d22caf0057b57b50f882b68d51c297aa7747"
 
-angular-aria@1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.4.1.tgz#8eee2751b674d47cc4e559a1b7e73f593fc4fb9d"
+angular-aria@1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.7.2.tgz#68cb3d15aece7a22517b1fe3e00d9d3807ceca88"
 
 angular-clipboard@latest:
   version "1.6.2"
@@ -118,13 +118,13 @@ angular-inview@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/angular-inview/-/angular-inview-2.1.0.tgz#9e8615b89f26f80565aaef706a04a9c667c7d785"
 
-angular-material@1.1.9:
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/angular-material/-/angular-material-1.1.9.tgz#840574f8701629fc39eadfea7fd8e235cc5d97c6"
+angular-material@1.1.10:
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/angular-material/-/angular-material-1.1.10.tgz#fb93ba84f2734146cb9ca8ebf65bdc163d9f8471"
 
-angular-messages@^1.5.5:
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.6.7.tgz#b82943d442929d787547814b394f3481bd36f7e0"
+angular-messages@1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.7.2.tgz#77116d83a72a00234d8177de9837bc867321f25e"
 
 angular-mocks@^1.5.5:
   version "1.6.7"
@@ -138,9 +138,9 @@ angular-route@^1.5.5:
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.7.tgz#020970d93d8b2ce4ca6aff0e0d7922579543cbcf"
 
-"angular-sanitize@~> 1.4.1":
-  version "1.4.14"
-  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.4.14.tgz#778c4e24941fa982d86cf7ebac3e613fa5d414fc"
+"angular-sanitize@~> 1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.2.tgz#e9f6e6a3e966c479c02dbc5712bee6de031f8eef"
 
 angular-scroll@~0.6.5:
   version "0.6.5"
@@ -156,21 +156,21 @@ angular-translate-loader-url@latest:
   dependencies:
     angular-translate "~2.16.0"
 
-angular-translate@~2.15.1:
-  version "2.15.2"
-  resolved "https://registry.yarnpkg.com/angular-translate/-/angular-translate-2.15.2.tgz#f9a3c2b8d5daeb7d76c9e2c01ff3c3d57fe12b90"
-  dependencies:
-    angular ">=1.2.26 <=1.6"
-
 angular-translate@~2.16.0:
   version "2.16.0"
   resolved "https://registry.yarnpkg.com/angular-translate/-/angular-translate-2.16.0.tgz#6b7f84657d6534d25878cc55e6a2a06f7607299f"
   dependencies:
     angular ">=1.2.26 <=1.6"
 
-angular@1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.1.tgz#21af170852707c732560aad3ec18e90ddf7c8f26"
+angular-translate@~2.18.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/angular-translate/-/angular-translate-2.18.1.tgz#b29ed0d2f9bac44075e7aad3284166c59e150791"
+  dependencies:
+    angular ">=1.2.26 <=1.7"
+
+angular@1.7.2, "angular@>=1.2.26 <=1.7":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.2.tgz#687b955dbe5c533f8d73460461707af00360251f"
 
 angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
   version "1.6.7"
