@@ -1,3 +1,4 @@
 angular.module('loomioApp').config ['$qProvider', ($qProvider) ->
-    $qProvider.errorOnUnhandledRejections(false);
+  # if something is driving you totally nuts, try commenting this for more errors
+  $qProvider.errorOnUnhandledRejections(false);
 ]
