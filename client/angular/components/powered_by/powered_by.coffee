@@ -7,5 +7,5 @@ angular.module('loomioApp').directive 'poweredBy', ->
     $scope.privacyUrl   = AppConfig.theme.privacy_url
     $scope.termsUrl     = AppConfig.theme.terms_url
     $scope.frontPageUrl = AppConfig.baseUrl + "?frontpage"
-    $scope.showFrontPage = AppConfig.theme.baseUrl != "https://www.loomio.org/"
+    $scope.showFrontPage = AppConfig.baseUrl != "https://www.loomio.org/"
   ]
