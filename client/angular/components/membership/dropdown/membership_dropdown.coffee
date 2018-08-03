@@ -40,6 +40,7 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
           namespace: namespace
           user: $scope.membership.user()
           group: $scope.membership.group()
+          membership: $scope.membership
         text:
           title:    "membership_remove_modal.#{namespace}.title"
           fragment: "membership_remove_modal"
