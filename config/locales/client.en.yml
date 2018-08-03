@@ -1858,3 +1858,9 @@ en:
       Now, whenever anyone starts a poll in this group, they'll have the option to
       post updates about that poll into a channel in your slack team.
     start_poll_now: Make a decision now
+
+  powered_by:
+    powered_by_loomio: Powered by Loomio
+    privacy_policy: Privacy policy
+    terms_of_service: Terms of service
+    front_page: Front page
