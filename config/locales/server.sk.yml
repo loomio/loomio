@@ -11,7 +11,7 @@ sk:
     reply_to_this_discussion: Odpovedať na diskusiu
     unsubscribe: 'Odhláste sa alebo si zmeňte nastavenia emailu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, aby ste sa odhlásil(a) alebo zmenil(a) nastavenia emailu."
-    missed_yesterday:
+    catch_up:
       mark_as_read: Označiť ako prečítané
       thanks_for_reading: Vďaka za čítanie a prajeme pekný deň!
       marked_as_read_success: Všetko z emailu bolo označené ako prečítané

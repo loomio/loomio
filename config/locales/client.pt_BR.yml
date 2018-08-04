@@ -1,6 +1,6 @@
 pt_BR:
   reactions:
-    slight_smile: Gosto
+    slight_smile: Curtir
     heart: Amor
     laughing: Gargalhada
     clap: Bater palma
@@ -170,7 +170,6 @@ pt_BR:
     quiet_label: "Sem e-mails"
     mute_label: "Mudo"
     discussion:
-      title: "Configurações de e-mail para {{title}}"
       loud_description: "Será enviado e-mail pra você sempre que houver atividade neste segmento."
       normal_description: "Você receberá e-mail sempre que uma propostafor iniciado, estiver prestes a fechar, ou um resultado for publicado."
       quiet_description: "Não será enviado e-mail sobre este tópico."
@@ -292,6 +291,7 @@ pt_BR:
     contact_site_name: 'Contato {{site_name}}'
     sign_out: 'Sair'
   membership_dropdown:
+    invitation_resent: "Convide reenviado"
     make_coordinator: 'Tornar coordenador(a)'
     cancel_invitation: Cancelar convite
   start_menu:
@@ -653,7 +653,6 @@ pt_BR:
     no_longer_group_member: 'Você deixará de ser listado como membro de todos os grupos'
     name_removed: 'Comentários, propostas e discussões feitas por você permanecerão, mas seu nome será removido dos mesmos'
     no_emails: 'Você não receberá mais notificações por email'
-    contact_for_reactivation: 'Você precisará entrar em contato conosco para reativar sua conta'
     submit: 'Sim, eu quero desativar'
   deactivate_user_form:
     aria_label: 'Confirmação de desativação da conta'
@@ -661,10 +660,6 @@ pt_BR:
     question: 'Você pode nos contar porque está desativando?'
     placeholder: 'Responder a essa pergunta é opcional. Qualquer informação que você possa compartilhar irá nos ajudar a melhorar :) '
     submit: 'Desativar conta'
-  only_coordinator_modal:
-    aria_label: 'Não foi possível desativar a conta'
-    explanation: 'Um grupo deve ter pelo menos um coordenador. Você é o único coordenador dos seguintes grupos:'
-    instructions: 'A fim de desativar a sua conta, você precisa visitar cada um dos grupos listados acima e tornar mais alguém coordenador ou desativar o grupo.'
   email_settings_page:
     header: Configurações de e-mail
     all_groups: Configurações para todos os grupos
@@ -673,7 +668,6 @@ pt_BR:
     on_participation_label: Inscrever-se na participação
     on_participation_description: "Quando você participar de uma discussão, todas as atividades serão enviadas por e-mail para você imediatamente."
     announcement_label: Anúncios
-    mentioned_label: Menções
     update_settings: Salvar mudanças
     specific_groups: Configurações para grupos específicos
     default_settings:

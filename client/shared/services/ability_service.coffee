@@ -160,8 +160,6 @@ module.exports = new class AbilityService
 
   canRemoveMembership: (membership) ->
     membership and
-    membership.group().memberIds().length > 1 and
-    (!membership.admin or membership.group().adminIds().length > 1) and
     (membership.user() == Session.user() or @canAdministerGroup(membership.group()))
 
   canSetMembershipTitle: (membership) ->
@@ -172,10 +170,6 @@ module.exports = new class AbilityService
     membership and
     !membership.acceptedAt and
     membership.inviter() == Session.user()
-
-  canDeactivateUser: ->
-   _.all Session.user().memberships(), (membership) ->
-     !membership.admin or membership.group().hasMultipleAdmins
 
   canManageMembershipRequests: (group) ->
     (group.membersCanAddMembers and Session.user().isMemberOf(group)) or @canAdministerGroup(group)

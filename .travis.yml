@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.5.0
+  - 2.5.1
 
 dist: trusty
 sudo: required
@@ -43,6 +43,8 @@ env:
 
 before_install:
   - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
+  - gem update --system
+  - gem --version
   - gem install bundler
   - nvm install 8.4.0
   - nvm use 8.4.0
@@ -62,8 +64,9 @@ before_script:
   - bundle exec rails server -b 0.0.0.0 > /dev/null &
 
 script:
-  - if [ "$TASK" = "rspec" ];   then bundle exec rake travis:rspec; fi
+  - if [ "$TASK" = "rspec" ];   then bundle exec rspec ; fi
   - if [ "$TASK" = "e2e" ];     then bundle exec rake travis:e2e; fi
+  - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
 
 after_script:

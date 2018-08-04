@@ -38,6 +38,7 @@
           %verify_email_notice
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}
           %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
+          %powered_by{'ng-if' => '!refreshing && !pageError'}
 
     %script{src: bundle_asset_path(:"angular.bundle.min.js")}
 

@@ -18,6 +18,7 @@ en:
       spoofed_media_type: The contents of that file don't match its filename
 
   user:
+    deleted_user: "Deleted User"
     placeholder_name: "Invited user (%{hostname})"
     error:
       recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
@@ -358,6 +359,7 @@ en:
     resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
 
   poll_mailer:
+    resend: '%{actor} is reminding you to vote in: %{title}'
     common:
       or: or
       why_send_this: You are receiving this email because %{reason}

@@ -34,17 +34,19 @@ module EmailHelper
     Redcarpet::Markdown.new(renderer, *MARKDOWN_OPTIONS).render(text)
   end
 
-  def reply_to_address(discussion: , user: )
-    pairs = []
-    {d: discussion.id, u: user.id, k: user.email_api_key}.each do |key, value|
-      pairs << "#{key}=#{value}"
-    end
-    pairs.join('&')+"@#{ENV['REPLY_HOSTNAME']}"
+  def reply_to_address(model:, user: )
+    address = {
+      c: (model.id if model.is_a?(Comment)),
+      d: model.discussion_id,
+      u: user.id,
+      k: user.email_api_key
+    }.compact.map { |k, v| [k,v].join('=') }.join('&')
+    [address, ENV['REPLY_HOSTNAME']].join('@')
   end
 
-  def reply_to_address_with_group_name(discussion: , user: )
+  def reply_to_address_with_group_name(model:, user:)
     return unless user.is_logged_in?
-    "\"#{discussion.group.full_name}\" <#{reply_to_address(discussion: discussion, user: user)}>"
+    "\"#{model.discussion.group.full_name}\" <#{reply_to_address(model: model, user: user)}>"
   end
 
   def render_email_plaintext(text)

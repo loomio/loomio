@@ -10,7 +10,7 @@ ko:
       intro: "%{group} 그룹에 %{who}님이 알림글을 올렸습니다."
     unsubscribe: '구독중지 혹은 이메일 설정을 변경하세요.'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
-    missed_yesterday:
+    catch_up:
       mark_as_read: 읽음으로 표시
       click_here: 여기를 클릭하세요.
     membership_request:

@@ -9,7 +9,7 @@ ml:
       intro: "%{who}   %{group}-ല്‍ പ്രസ്താവന ഇറക്കി:"
     unsubscribe: '<a href=''%{link_path}''>%{link_text}</a>വരികാരവുന്നത് നിര്‍ത്താന്‍ അലെങ്കില്‍ ഇമെയില്‍ താത്പര്യങ്ങള്‍ മാറ്റുവാന്‍.'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>വരികാരവുന്നത് നിര്‍ത്താന്‍ അലെങ്കില്‍ ഇമെയില്‍ താത്പര്യങ്ങള്‍ മാറ്റുവാന്‍."
-    missed_yesterday:
+    catch_up:
       click_here: ഇവിടെ ക്ലിക്ക് ചെയ്യുക
     membership_request:
       view_group: താങ്കള്‍ക്ക് ഇവിടെ അനുമതി നല്‍കുകയോ നിരാകരിക്കുകയോ ചെയ്യാം

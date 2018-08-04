@@ -22,10 +22,10 @@
 
 - else
   - if show_link
-    %td= stance_choice.score if show_score
+    %td= stance_choice.rank_or_score if show_score
     %td= render 'poll_mailer/common/chip', color: poll_option.color
     %td= link_to poll_option.display_name(zone: time_zone), @info.target_url(poll_option_id: poll_option.id)
   - else
-    %td= stance_choice.score if show_score
+    %td= stance_choice.rank_or_score if show_score
     %td= render 'poll_mailer/common/chip', color: poll_option.color
     %td= poll_option.display_name(zone: time_zone)

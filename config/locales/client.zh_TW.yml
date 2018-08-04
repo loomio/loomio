@@ -179,7 +179,7 @@ zh_TW:
     quiet_label: "不寄電子郵件"
     mute_label: "靜音"
     discussion:
-      title: "{{title}} 的電子郵件設定"
+      title: "討論串電子郵件設定"
       loud_description: "您將會在這個討論串有任何動態時收到電子郵件。"
       normal_description: "您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。"
       quiet_description: "您將不會收到任何關於此討論串的電子郵件。"
@@ -320,6 +320,7 @@ zh_TW:
     invite_to_poll: "邀請投票"
     invitations: "邀請函"
   membership_dropdown:
+    set_title: "設定標題"
     resend: "重新寄送邀請函"
     invitation_resent: "重新傳送邀請"
     make_coordinator: '成為協作者'
@@ -682,8 +683,6 @@ zh_TW:
     confirm_remove_helptext: 您確定您想要移除附件嗎？
     document_removed: 附件已移除
   document:
-    error:
-      invalid_format: 喔喔！您的 URL 無效。請確定其是以 http:// 或 https:// 開始
     card:
       no_documents: 未有已被上傳至此群組的附件
       view_documents: 檢視全部
@@ -787,6 +786,18 @@ zh_TW:
   memberships_panel:
     add_coordinator: 成為協作者
     remove_coordinator: 移除協作者
+  membership_form:
+    modal_title:
+      group: 設定群組標題
+      discussion: 設定討論串標題
+      poll: 設定 {{pollType}} 標題
+    title_helptext:
+      group: 這個標題會出現在這個群組中的 {{name}} 名稱旁。使用它來讓夥伴們知道他們的角色。
+      discussion: 這個標題會出現在這個討論串中的 {{name}} 名稱旁。使用它來讓夥伴們知道他們的角色。
+      poll: 這個標題會出現在這個 {{pollType}} 中的 {{name}} 名稱旁。使用它來讓夥伴們知道他們的角色。
+    title_label: 標題
+    title_placeholder: 例子：「協調者」或「主持人」
+    updated: 成員標題已更新
   pending_invitations_card:
     heading: 擱置中的邀請函
     email: 電子郵件
@@ -822,6 +833,8 @@ zh_TW:
     change_picture_link: '變更照片'
     change_password_link: '重設密碼'
     deactivate_user_link: '凍結帳號...'
+    delete_account: '永久刪除帳號'
+    delete_user_link: '刪除帳號'
     profile: '簡歷'
     edit_profile: '編輯簡歷'
     picture_label: '照片'
@@ -860,17 +873,19 @@ zh_TW:
     no_longer_group_member: '您將不會再被任何群組列為成員'
     name_removed: '您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。'
     no_emails: '您將不會再收到電子郵件通知'
+    you_can_reactivate: "如果您想要的話，您可以在稍後重新啟用您的帳號"
     submit: '是的，我想要停用'
+  delete_user_modal:
+    title: '刪除您的使用者帳號'
+    irreversable: "警告：這無法復原。如果您要繼續的話："
+    you_will_be_deleted: "您的使用者帳號，包含您的名字、電子郵件地址與其他可識別個人的資料，都將會從我們的系統中刪除。"
+    submit: '是的，刪除我的帳號'
   deactivate_user_form:
     aria_label: '確認凍結帳號'
     title: '凍結帳號'
     question: '您可以告訴我們為何您要凍結您的帳號嗎？'
     placeholder: '回答這個問題是選擇性的。您分享的任何資訊都可以協助我們改善服務 :)'
     submit: '凍結帳號'
-  only_coordinator_modal:
-    aria_label: '無法凍結帳號'
-    explanation: '一個群組至少必須有一個協調者。您是以下群組的唯一協調者：'
-    instructions: '為了凍結您的帳號，您需要看看上面列出的每一個群組，增加其他的協調者，或是凍結群組。'
   email_settings_page:
     header: 電子郵件設定
     all_groups: 所有群組的設定
@@ -880,8 +895,8 @@ zh_TW:
     on_participation_description: "當您參與討論串時，之後所有的動態都會即時寄給您。"
     announcement_label: 公告
     announcement_description: "您將會收到一封關於所有在您的群組中已被夥伴宣佈的內容的電子郵件"
-    mentioned_label: 提及
-    mentioned_description: "當某人想要取得您的注意，他們將會以 @ 來提及您。我們建議您保持這個設定，這樣您就可以在有人提及您時收到一封電子郵件。"
+    mentioned_label: 提及與回覆
+    mentioned_description: "當某人在評論中提及您或回覆您時，您將會收到一封通知電子郵件"
     update_settings: 儲存變更
     specific_groups: 特定群組的設定
     default_settings:

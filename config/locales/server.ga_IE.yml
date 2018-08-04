@@ -8,7 +8,7 @@ ga_IE:
   email:
     by_who: ag %{person}
     reply_to_this_discussion: Freagraigh an plé seo
-    missed_yesterday:
+    catch_up:
       mark_as_read: Rianaigh mar léite
       thanks_for_reading: Go raibh maith agat as ucht é a léamh. Bíodh lá den scoth agat!
       click_here: Brúigh anseo

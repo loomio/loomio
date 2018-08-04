@@ -333,13 +333,6 @@ module.exports = {
     page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
   },
 
-  'prevents last coordinator from leaving the group': (test) => {
-    page = pageHelper(test)
-    page.loadPath('setup_group')
-    page.click('.group-page-actions__button')
-    page.expectNoElement('.group-page-actions__leave-group')
-  },
-
   'allows a coordinator to archive a group': (test) => {
     page = pageHelper(test)
 

@@ -11,8 +11,7 @@ sl:
     reply_to_this_discussion: Odgovori na to razpravo
     unsubscribe: 'Odjavi se ali spremeni svoje email nastavitve:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih email nastavitev."
-    missed_yesterday:
-      headlines: Razprave
+    catch_up:
       mark_as_read: Označi kot prebrano
       thanks_for_reading: Super, prebral/a si vse novice. Lep dan!
       marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano

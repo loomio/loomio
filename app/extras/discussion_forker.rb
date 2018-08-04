@@ -17,6 +17,7 @@ class DiscussionForker
   def move_items
     target.forked_items.update_all(discussion_id: target.id)
     target.forked_items.where(depth: 1).update_all(parent_id: target.created_event.id)
+    target.forked_comments.update_all(discussion_id: target.id)
   end
 
   def update_counts

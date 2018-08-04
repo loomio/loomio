@@ -8,7 +8,7 @@ mk:
     group_email:
       intro: "%{who} направи најава во %{group}:"
     reply_to_this_discussion: Врати на дискусијата
-    missed_yesterday:
+    catch_up:
       mark_as_read: Означи го како прочитано
       click_here: Кликни овде
     membership_request:

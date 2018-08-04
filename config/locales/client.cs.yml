@@ -134,7 +134,6 @@ cs:
     quiet_label: "Žádné e-maily"
     mute_label: "Ztlumit"
     discussion:
-      title: "Nastavení emailu pro {{title}}"
       loud_description: "Budete obesláni e-mailem vždy, když bude v tomto vláknu aktivita."
       normal_description: "Budete obesláni e-mailem vždy, když bude zahájen návrh, bude ukončen, nebo bude zveřejněn výsledek."
       quiet_description: "Nebudete o tomto vláknu obesíláni e-mailem."
@@ -166,6 +165,8 @@ cs:
     password_confirmation_label: 'Stejné heslo znovu:'
   signed_out_modal:
     ok: "Ok"
+  comment_reply_form:
+    aria_label: 'Přidat odpověď'
   comment_form:
     aria_label: 'Přidat komentář'
     attachments:
@@ -222,8 +223,14 @@ cs:
     email_settings: 'Nastavení e-mailu'
     help: 'Nápověda'
     sign_out: 'Odhlásit se'
+  membership_card:
+    group_members: "Členové skupiny"
+    invite_to_group: "Pozvat do skupiny"
   membership_dropdown:
+    invitation_resent: "Pozvánka přeposlána"
     make_coordinator: 'Vytvořit koordinátora'
+    remove_from:
+      group: "Odstranit ze skupiny"
     cancel_invitation: Stornovat pozvánku
   start_menu:
     label: 'Akce uživatele'
@@ -243,6 +250,7 @@ cs:
     motion_closed_by_user: "<strong>{{name}}</strong> uzavřel návrh <strong>{{title}}</strong>"
     motion_closed_by_expiry: "Byl uzavřen návrh <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> okomentoval(a) <strong>{{title}}</strong>"
+    user_added_to_group: "Uživatel <strong>{{name}}</strong> Vás přidal do skupiny <strong>{{title}}</strong>"
     user_added_to_group_no_inviter: "Byli jste přidáni do skupiny <strong>{{title}}</strong>"
     motion_closing_soon: "Návrh brzy končí: <strong>{{title}}</strong>"
   position_buttons_panel:
@@ -272,11 +280,18 @@ cs:
     privacy_organisation: 'Vlákno bude vidět pro členy {{parent}} a členy {{group}}.'
   announcement:
     form:
+      group_announced:
+        title: Pozvat do skupiny
+        helptext: Kdo byste pozvali do skupiny?
       outcome_announced:
         title: Sdílet výsledek
       anyone_can_participate: Kdokoli s odkazem se může účastnit
+      notified_empty: 'Zatím nebyl nikdo vybrán.'
+    group_form:
+      modal_title: Vybrat členy skupiny
   action_dock:
     react: Přidat reakci
+    edit_group: Upravit kontext skupiny
     add_comment: Komentář
     copy_url: Kopírovat URL
     edit_thread: Upravit kontext
@@ -285,6 +300,7 @@ cs:
     image_size_helptext: 'Ideální velikost obrázku je 1400 x 320px'
     upload_success: 'Titulní fotka byla úspěšně aktualizována'
   logo_photo_form:
+    aria_label: 'Formulář pro změnu loga skupiny'
     heading: 'Nové logo skupiny'
     upload_link: 'Nahrát nové logo skupiny'
     image_size_helptext: 'Ideální velikost obrázku je 100 x 100px'
@@ -310,6 +326,9 @@ cs:
     you: "Vy"
     you_and_name: "Vy a {{name}}"
     you_and_name_and_count_more: "Vy, {{name}} a {{count}} dalších"
+  context_panel:
+    thread_status:
+      pinned: "Toto vlákno bylo připnuté. Zůstane v horní části seznamu témat pro všechny uživatele."
   group_page:
     messages:
       leave_group_success: 'Tuto skupinu jste opustil(a)'
@@ -320,6 +339,7 @@ cs:
     discussions_placeholder: 'Vlákno je místem, kde každý může diskutovat o tématu a tvořit společně rozhodnutí.'
     members_placeholder: 'Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!'
     subgroups: 'Podskupiny'
+    subgroups_placeholder: 'Podskupiny poskytují týmům svůj vlastní prostor a nezávislá upozornění zaměřená pouze těm správným uživatelům'
     invite_people: 'Pozvat'
     visibility_label: 'Viditelnost'
     options_label: 'Nastavení'
@@ -336,6 +356,11 @@ cs:
     messages:
       description_updated: 'Popisek aktualizován'
   leave_group_form:
+    aria_label: 'Opustit skupinu'
+    title: 'Opustit skupinu'
+    question: 'Opravdu chcete tuto skupinu opustit?'
+    submit: 'Ano, opustit tuto skupinu'
+    cannot_leave_group: 'Tuto skupinu nemůžete opustit, protože jste poslední koordinátor. Budete muset vybrat jiného koordinátora nebo skupinu deaktivovat.'
     add_coordinator: 'Přidat koordinátora'
   archive_group_form:
     question: 'Opravdu chcete deaktivovat tuto skupinu?'
@@ -389,6 +414,7 @@ cs:
     see_more: "Zobrazit všechna: ({{count}}) rozhodnutí"
   invitation_form:
     group: 'Skupina'
+    group_placeholder: 'Vybrat skupinu'
     shareable_link: 'Odkaz ke sdílení'
     copy_link: 'Kopírovat'
     email_addresses: 'E-mailová adresa'
@@ -401,7 +427,10 @@ cs:
       invitation_sent: 'Pozvánka odeslána.'
       invitations_sent: 'Odesláno {{count}} pozvánek.'
   add_members_modal:
+    aria_label: 'Přidat členy z nadřazené skupiny'
     add_members: 'Přidat členy'
+    user_added_to_subgroup: 'Skupina {{name}} byla přidána do podskupiny'
+    users_added_to_subgroup: '{{count}} uživatelů bylo přidáno do podskupiny'
   memberships_page:
     members: 'Členové'
     name_label: 'Jméno'
@@ -421,6 +450,9 @@ cs:
       submit: Odebrat člena
   memberships_panel:
     add_coordinator: Vytvořit koordinátora
+  membership_form:
+    modal_title:
+      group: Nastavit název skupiny
   pending_invitations_card:
     heading: Nevyřízené pozvánky
     email: Email
@@ -470,7 +502,6 @@ cs:
     all_groups: Nastavení pro všechny skupiny
     daily_summary_label: Denní souhrnný e-mail
     announcement_label: Oznámení
-    mentioned_label: Zmínky
     specific_groups: Nastavení pro konkrétní skupiny
     default_settings:
       normal_description: "Když se připojíte k nové skupině, obdržíte e-maily o <strong>novách vláknech a návrzích</strong>."
@@ -582,6 +613,8 @@ cs:
     invitation: 'Rady pro napsání senzační pozvánky'
     proposal: 'Rady pro napsání jasného návrhu'
     vote: 'Můžete kdykoliv svůj postoj změnit'
+  explore_page:
+    header: Prozkoumat skupiny
   global:
     messages:
       reload: 'Znovu načíst'
@@ -612,6 +645,14 @@ cs:
     share_proposal: Sdílet návrh
     start_poll: Spuštění rozhodování
     publish_poll: Sdílet hlasování
+  poll_common_add_option:
+    button:
+      add_option: Přidat další možnost
+    modal:
+      title: Přidat možnost
+    form:
+      add_options: Přidat možnosti
+      options_added: Volba byla přidána
   poll_common_index_card:
     title: Předchozí rozhodnutí
     no_polls: Žádná předchozí rozhodnutí.
@@ -619,8 +660,14 @@ cs:
   current_polls_card:
     title: Aktuální rozhodnutí
     start_poll: Nové rozhodnutí
+  poll_common_select_group:
+    loomio_group: Skupina
+    loomio_group_placeholder: (nebyla vybrána žádná skupina)
   poll_common_notify_group:
     notify_group: Oznámení
+  poll_common_settings:
+    voter_can_add_options:
+      title: Hlasující mohou přidávat nové možnosti
   poll_common_close_form:
     close_proposal: Uzavřít návrh
     close_poll: Uzavřít hlasování
@@ -632,6 +679,7 @@ cs:
     submit: Sdílet výsledek
   poll_common_form:
     details: Podrobnosti
+    options: Nastavení
     closed: Zavřená
     start: Zahájit
   poll_proposal_form:
@@ -672,7 +720,6 @@ cs:
     groups_placeholder: (Všechny skupiny)
   auth_form:
     sign_in: Přihlásit se
-    choose_an_account: "Přihlaste se prostřednictvím třetí strany nebo zadejte svou e-mailovou adresu a pokračujte."
     more_providers: Více
     email_not_present: Je vyžadována e-mailová adresa
     invalid_email: "Je nám líto, ale nevypadá to jako platná e-mailová adresa"
@@ -680,7 +727,6 @@ cs:
     email_not_found: "Je nám líto, nenašli jsme účet s touto e-mailovou adresou"
     email_placeholder: vy@priklad.cz
     login_link_helptext_with_password: "Zadejte své heslo nebo se přihlaste e-mailem."
-    oauth_confirm_helptext: "Stačí potvrdit podrobnosti níže a my vám zašleme odkaz na přihlášení."
     name_required: Zadejte prosím jméno
     welcome_back: Vítejte zpět, {{name}}!
     login_link: Přihlaste se prostřednictvím e-mailu
@@ -699,6 +745,9 @@ cs:
       decide: Rozhodněte se
     install:
       group_name: Název skupiny
+      group_name_placeholder: Název nové skupiny...
+      start_new_group: Založte novou skupinu
+      use_existing_group: Použijte existující skupinu
     invite:
       publish_group: Uveďte uvítací zprávu
       custom_message: Vlastní zpráva

@@ -79,8 +79,6 @@ mi:
   change_volume_form:
     aria_label: "Whakahuritia ngā kōwhiringa īmēra"
     mute_label: "Whakahāngūtia"
-    discussion:
-      title: "Kōwhiringa īmēra o {{title}}"
     membership:
       title: "Kōwhiringa īmēra o {{title}}"
   mute_explanation_modal:

@@ -98,7 +98,6 @@ tr:
     quiet_label: "E-posta yok"
     mute_label: "Sesi kıs"
     discussion:
-      title: "{{title}} için e-posta ayarları"
       loud_description: "Bu konuyla ilgili etkinlik olduğunda e-postayla size gönderilecektir."
     membership:
       title: "{{title}} için e-posta ayarları"

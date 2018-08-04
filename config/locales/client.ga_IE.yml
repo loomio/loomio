@@ -102,7 +102,6 @@ ga_IE:
     quiet_label: "Gan ríomhphoist"
     mute_label: "Balbh"
     discussion:
-      title: "Socruithe ríomhphoist i gcomhair {{title}}"
       loud_description: "Seolfar ríomhphost chugat aon uair a bhíonn gníomhaíocht ar an snáithe seo."
       quiet_description: "Ní sheolfar ríomhphoist chugat i dtaca leis an snáithe seo."
       messages:

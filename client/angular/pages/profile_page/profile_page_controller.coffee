@@ -44,23 +44,23 @@ $controller = ($scope, $rootScope) ->
         fragment: 'deactivate_user'
       submit: -> ModalService.open 'ConfirmModal', confirm: confirm
 
-  confirm = ->
-    if AbilityService.canDeactivateUser()
-      scope: {user: Session.user()}
-      submit: -> Records.users.deactivate(Session.user())
+  @deleteUser = ->
+    ModalService.open 'ConfirmModal', confirm: ->
       text:
-        title:    'deactivate_user_form.title'
-        submit:   'deactivate_user_form.submit'
-        fragment: 'deactivate_user_confirmation'
+        title: 'delete_user_modal.title'
+        submit: 'delete_user_modal.submit'
+        fragment: 'delete_user_modal'
+      submit: -> Records.users.destroy()
       successCallback: hardReload
-    else
-      scope: {user: Session.user()}
-      submit: -> Promise.resolve(true)
-      successCallback: (group) ->
-        LmoUrlService.goTo LmoUrlService.group(group) if group
-      text:
-        title:    'deactivate_user_form.title'
-        fragment: 'only_coordinator'
+
+  confirm = ->
+    scope: {user: Session.user()}
+    submit: -> Records.users.deactivate(Session.user())
+    text:
+      title:    'deactivate_user_form.title'
+      submit:   'deactivate_user_form.submit'
+      fragment: 'deactivate_user_confirmation'
+    successCallback: hardReload
 
   return
 

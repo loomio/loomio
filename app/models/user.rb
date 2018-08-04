@@ -15,6 +15,8 @@ class User < ApplicationRecord
   extend NoSpam
   no_spam_for :name
 
+  has_paper_trail only: [:email_newsletter]
+
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
     helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
@@ -26,6 +28,7 @@ class User < ApplicationRecord
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
+
   attr_accessor :legal_accepted
 
   attr_writer   :has_password
@@ -206,6 +209,10 @@ class User < ApplicationRecord
     verified_first.find_by(email: email)&.email_status || :unused
   end
 
+  def self.find_for_database_authentication(warden_conditions)
+    super(warden_conditions.merge(email_verified: true))
+  end
+
   define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
 
   def associate_with_identity(identity)
@@ -309,6 +316,7 @@ class User < ApplicationRecord
   end
 
   def deactivate!
+    return if self.deactivated_at
     former_group_ids = group_ids
     update_attributes(deactivated_at: Time.now, avatar_kind: "initials")
     memberships.update_all(archived_at: Time.now)

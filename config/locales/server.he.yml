@@ -6,7 +6,7 @@ he:
       details: פרטים
   email:
     reply_to_this_discussion: השיבו לדיון זה
-    missed_yesterday:
+    catch_up:
       mark_as_read: סמן כנקרא
       thanks_for_reading: תודה שקראת. יום טוב!
       click_here: הקליקו כאן

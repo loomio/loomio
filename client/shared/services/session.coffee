@@ -10,10 +10,11 @@ exceptionHandler = require 'shared/helpers/exception_handler'
 module.exports = new class Session
   signIn: (userId) ->
     setDefaultParams()
-    return unless AppConfig.currentUserId = userId
     user = @user()
+    @updateLocale(user.locale || AppConfig.defaultLocale)
+
+    return unless AppConfig.currentUserId = userId
     exceptionHandler.setUserContext(_.pick(user, "email", "name", "id"))
-    @updateLocale()
 
     if user.timeZone != AppConfig.timeZone
       user.timeZone = AppConfig.timeZone
@@ -31,8 +32,8 @@ module.exports = new class Session
   currentGroupId: ->
     @currentGroup? && @currentGroup.id
 
-  updateLocale: ->
-    locale = (@user().locale || "en").toLowerCase().replace('_','-')
+  updateLocale: (locale) ->
+    locale = locale.toLowerCase().replace('_','-')
     I18n.useLocale(locale)
     return if momentLocaleFor(locale) == "en"
     Records.momentLocales.fetch(path: "#{momentLocaleFor(locale)}.js").then -> moment.locale(locale)

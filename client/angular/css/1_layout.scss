@@ -1,6 +1,5 @@
 .lmo-one-column-layout, .lmo-two-column-layout{
   margin: auto;
-  padding-bottom: 25px;
   z-index: $z-zero;
   min-width: 320px;
 }
@@ -26,15 +25,22 @@
   position: relative;
   -webkit-overflow-scrolling: touch;
 }
+
 .lmo-main-background {
   position: absolute;
   width: 100%;
+  min-width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
   height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
+ng_outlet {
+  width: 100%;
+}
 @media(max-width: $tiny-max-px) {
   .lmo-hide-on-xs { display: none !important; }
 }

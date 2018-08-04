@@ -149,6 +149,17 @@ describe API::ProfileController do
     end
   end
 
+  describe 'delete' do
+    before { sign_in user }
+    context 'success' do
+      it "deletes the users account" do
+        post :destroy
+        expect(response).to be_success
+        expect {user.reload}.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
+  end
+
   describe 'save_experience' do
     before { sign_in user }
 

@@ -14,6 +14,7 @@ zh_TW:
       email: 您輸入的不是有效的電子郵件地址
       spoofed_media_type: 檔案內容不符合其檔案名稱
   user:
+    deleted_user: "已刪除的使用者"
     placeholder_name: "已邀請的使用者 (%{hostname})"
     error:
       recaptcha: "我們無法確認您是不是機器人。請再試一次！"
@@ -135,13 +136,12 @@ zh_TW:
       link_help: "點選以下的連結以前往該群組："
     unsubscribe: '取消訂閱或者變更您的電子郵件偏好設定：'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的電子郵件偏好設定。"
-    missed_yesterday:
-      subject: 昨日 %{site_name}
+    catch_up:
+      daily_subject: 昨日 %{site_name}
+      weekly_subject: 上週在 %{site_name}
       do_not_reply: 請不要回覆此封電子郵件。
-      headlines: 頭條
       mark_as_read: 設為已讀
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
-      heres_what_happened: "這裡是 %{site_name} 上昨天發生的事情。"
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
       click_here: 點這邊
     group_membership_approved:
@@ -305,6 +305,7 @@ zh_TW:
   group_mailer:
     resend: '提醒：%{member} 正等候您加入 %{group_name}'
   poll_mailer:
+    resend: '%{actor} 正在提醒您要投票：%{title}'
     common:
       or: 或
       why_send_this: 因為 %{reason}，您收到了這封電子郵件

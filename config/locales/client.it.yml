@@ -30,6 +30,7 @@ it:
     metal: Metal
     ok_hand: Ok
     wave: Onda
+    thumbsdown: Pollice verso
   poll_types:
     proposal: Proposta
     count: Verifica
@@ -88,6 +89,7 @@ it:
     action:
       next: 'Prossimo'
       close: 'Chiudi'
+      reopen: 'Riapri'
       save: 'Salva'
       save_changes: 'Salva'
       update_settings: 'Aggiorna impostazioni'
@@ -120,8 +122,10 @@ it:
       remind: Ricorda
       resend: Reinvia
       send: Invia
+      last_seen: Visitato l'ultima volta
       invite: Invita
       resent: Invito reinviato
+      export: Esporta
     formatting_help:
       label: 'Formattazione'
       title: 'Impara come usare il Markdown per formattare il tuo testo'
@@ -170,7 +174,6 @@ it:
     quiet_label: "Nessuna email"
     mute_label: "Silenzia"
     discussion:
-      title: "Configurazione email per {{title}}"
       loud_description: "Riceverai una notifica ogni volta che c'è attività in questa discussione."
       normal_description: "Riceverai un email ogni volta che una proposta viene iniziata, sta per concludersi, o un risultato viene pubblicato."
       quiet_description: "Non riceverai email su questa discussione."
@@ -204,6 +207,9 @@ it:
         loud: "Ricevi un'email per tutte le attività nei nuovi gruppi."
         normal: "Riceverai email sugli annunci nei nuovi gruppi."
         quiet: "Non riceverai email sui nuovi gruppi."
+  close_explanation_modal:
+    aria_label: Chiudi discussione
+    close_thread: Chiudi discussione
   mute_explanation_modal:
     aria_label: Silenzia discussione
     mute_thread: Silenzia discussione
@@ -291,6 +297,7 @@ it:
     contact_site_name: 'Contatto {{site_name}}'
     sign_out: 'Esci'
   membership_dropdown:
+    invitation_resent: "Invito reinviato"
     make_coordinator: 'Inserisci come coordinatore'
     demote_coordinator: 'Disinserisci come coordinatore'
     cancel_invitation: Revoca invito
@@ -716,23 +723,18 @@ it:
     no_longer_group_member: 'Non sarai più listato/a come membro di alcun gruppo.'
     name_removed: 'I tuoi commenti, le tue proposte e le tue discussioni rimarranno, ma il tuo nome verrà rimosso'
     no_emails: 'Non riceverai più email di notifica'
-    contact_for_reactivation: 'Dovrai contattarci per riattivare il tuo account'
     submit: 'Sì, voglio disattivare'
   deactivate_user_form:
     aria_label: 'Conferma di disattivazione dell''account'
     title: 'Disattiva l''account'
     question: 'Vuoi dirci perchè disattivi il tuo account?'
     submit: 'Disattiva l''account'
-  only_coordinator_modal:
-    aria_label: 'Non riesco a disattivare l''account'
-    instructions: 'Per disattivare il tuo account devi visitare tutti i gruppi elencati qui sopra e nominare qualcun altro coordinatore/trice, o disattivare il gruppo.'
   email_settings_page:
     header: Impostazioni Email
     all_groups: Configurazione per tutti i gruppi
     daily_summary_label: 'Sommario giornaliero '
     on_participation_description: "Quando partecipi ad una discussione, tutte le successive attività ti verranno notificate via email immediatamente."
     announcement_label: Annunci
-    mentioned_label: Menzioni
     update_settings: Salva modifiche
     default_settings:
       loud_description: "Quando ti iscrivi a un nuovo gruppo, ti viene inviata un'email <strong>ogni qual volta vi sia attività</strong>."
@@ -821,6 +823,7 @@ it:
     edit: 'Modifica'
     edit_thread: 'Modifica'
     close_thread: 'Chiudi'
+    reopen_thread: 'Riapri'
     mute_thread: 'Silenzia'
     move_thread: 'Sposta'
     print_thread: 'Stampa'
@@ -1077,7 +1080,6 @@ it:
     sign_in_to_loomio: Iscriviti a {{site_name}}
     sign_in: Iscriviti
     sign_in_as: Autenticati come {{name}}
-    choose_an_account: "Autenticati attraverso un account social o inserisci la tua email per continuare."
     login_link_helptext_with_password: "Inserisci la tua password, o autenticati via email."
     login_link: Iscriviti via email
     set_password: Imposta password

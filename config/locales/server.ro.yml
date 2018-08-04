@@ -67,10 +67,9 @@ ro:
       link_help: "Apasa pe linkul de mai jos pentru a intra in grup:"
     unsubscribe: 'Dezabonare sau schimbarea preferintelor de email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
-    missed_yesterday:
-      subject: Ieri pe %{site_name}
+    catch_up:
+      daily_subject: Ieri pe %{site_name}
       do_not_reply: Te rugam nu raspunde acestui email.
-      headlines: Titluri
       mark_as_read: Marcheaza ca citit
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit

@@ -40,6 +40,7 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
           namespace: namespace
           user: $scope.membership.user()
           group: $scope.membership.group()
+          membership: $scope.membership
         text:
           title:    "membership_remove_modal.#{namespace}.title"
           fragment: "membership_remove_modal"
@@ -49,6 +50,7 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
         redirect:   ('dashboard' if $scope.membership.user() == Session.user())
 
     $scope.canToggleAdmin = ->
+      ($scope.membership.group().adminMembershipsCount == 0 and $scope.membership.user() == Session.user()) or
       AbilityService.canAdministerGroup($scope.membership.group()) and
       (!$scope.membership.admin or $scope.canRemoveMembership($scope.membership))
 

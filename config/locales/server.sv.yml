@@ -4,6 +4,7 @@ sv:
       title: Titel
       author: Författare
       details: Detaljer
+      total: Totalt
   validate:
     motion:
       must_close_in_future: Förslaget måste stängas i framtiden.
@@ -17,7 +18,7 @@ sv:
     reply_to_this_discussion: Svara på denna diskussion
     unsubscribe: 'Avregistrera dig eller ändra dina e-postinställningar:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
-    missed_yesterday:
+    catch_up:
       mark_as_read: Markera som läst
       thanks_for_reading: Tack för läsning, ha en bra dag!
       marked_as_read_success: Allt från mail har markerats som läst
@@ -34,4 +35,7 @@ sv:
     pricing: Prissättning
     public_groups: Öppna grupper
     terms: Villkor
+  poll_mailer:
+    common:
+      unsubscribe: Sluta prenumerera
   comment_by: Kommentaren av %{comment_author}

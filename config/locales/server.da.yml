@@ -46,8 +46,7 @@ da:
       link_help: "Klik på linket herunder for at gå til gruppen:"
     unsubscribe: 'Afmeld abonnement eller rediger dine e-mail-indstillinger:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> for at afmelde abonnement eller ændre dine e-mail-indstillinger."
-    missed_yesterday:
-      headlines: Overskrifter
+    catch_up:
       mark_as_read: Marker som læst
       thanks_for_reading: Tak fordi du læste, hav en god dag!
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst

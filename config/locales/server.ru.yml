@@ -6,7 +6,7 @@ ru:
       details: Детали
       total: Всего
   email:
-    missed_yesterday:
+    catch_up:
       mark_as_read: Отметить прочитанным
       click_here: Кликните здесь
   footer:

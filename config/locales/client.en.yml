@@ -190,7 +190,7 @@ en:
     quiet_label: "No emails"
     mute_label: "Mute"
     discussion:
-      title: "Email settings for {{title}}"
+      title: "Thread email settings"
       loud_description: "You will be emailed whenever there is activity in this thread."
       normal_description: "You will be emailed whenever a proposal is started, about to close, or an outcome is posted."
       quiet_description: "You won't be emailed about this thread."
@@ -759,7 +759,7 @@ en:
 
   document:
     error:
-      invalid_format: Oops! Your URL is invalid. Ensurer it begins with http:// or https://
+      invalid_format: Oops! Your URL is invalid. Ensure it begins with http:// or https://
     card:
       no_documents: No attachments have been uploaded into this group yet
       view_documents: View all
@@ -924,6 +924,8 @@ en:
     change_picture_link: 'Change picture'
     change_password_link: 'Reset password'
     deactivate_user_link: 'Deactivate account...'
+    delete_account: 'Permanently Delete account'
+    delete_user_link: 'Delete account'
     profile: 'Profile'
     edit_profile: 'Edit Profile'
     picture_label: 'Picture'
@@ -965,7 +967,14 @@ en:
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
     no_emails: 'You will no longer receive notification emails'
+    you_can_reactivate: "You can reactivate your account later if you wish"
     submit: 'Yes, I want to deactivate'
+
+  delete_user_modal:
+    title: 'Delete your user account'
+    irreversable: "WARNING: This cannot be undone. If you proceed:"
+    you_will_be_deleted: "Your user account including your name, email address and other personally identifying data will be deleted from our systems."
+    submit: 'Yes, delete my account'
 
   deactivate_user_form:
     aria_label: 'Deactivate account confirm'
@@ -974,22 +983,18 @@ en:
     placeholder: 'Answering this question is optional. Any information you share will help us to improve :)'
     submit: 'Deactivate account'
 
-  only_coordinator_modal:
-    aria_label: 'Unable to deactivate account'
-    explanation: 'A group must have at least one coordinator. You are the only coordinator of the following groups:'
-    instructions: 'In order to deactivate your account, you need to visit each of the groups listed above and either make someone else a coordinator, or deactivate the group.'
-
   email_settings_page:
     header: Email settings
-    all_groups: Settings for all groups
+    email_newsletter: Loomio Newsletter
+    email_newsletter_description: "Get updates about new features, training, events in your city and the future of Loomio. Usually 2 or 3 emails per year."
     daily_summary_label: Daily summary email
     daily_summary_description: "Each morning, you will get an email with any activity that you missed the day before. This makes it easy to stay up to date with activity."
     on_participation_label: Subscribe on participation
     on_participation_description: "When you participate in a thread, all further activity will be emailed to you immediately."
     announcement_label: Announcements
     announcement_description: "You will receive an email about all content that has been announced by people in your groups"
-    mentioned_label: Mentions
-    mentioned_description: "When someone wants to get your attention, they'll @mention you. We recommend you leave this on, so that you'll get an email when this happens."
+    mentioned_label: Mentions & Replies
+    mentioned_description: "When someone mentions you in a comment or replies to you, you'll get a notification email"
     update_settings: Save changes
     specific_groups: Settings for specific groups
     default_settings:
@@ -1868,3 +1873,9 @@ en:
       Now, whenever anyone starts a poll in this group, they'll have the option to
       post updates about that poll into a channel in your slack team.
     start_poll_now: Make a decision now
+
+  powered_by:
+    powered_by_loomio: Powered by Loomio
+    privacy_policy: Privacy policy
+    terms_of_service: Terms of service
+    front_page: Front page

@@ -33,6 +33,7 @@ class Dev::NightwatchController < Dev::BaseController
     :setup_group_invitation_ignored,
     :setup_discussion_invitation_ignored,
     :setup_poll_invitation_ignored,
-    :setup_user_reactivation_email
+    :setup_user_reactivation_email,
+    :setup_newsletter_opt_in_email
   ]
 end

@@ -96,19 +96,6 @@ module.exports = {
     page.expectText('.flash-root__message', 'Your password has been updated')
   },
 
-  'prevents you from deactivating the account': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.click('.user-dropdown__dropdown-button')
-    page.click('.user-dropdown__list-item-button--profile')
-    page.click('.profile-page__deactivate')
-    page.expectText('.confirm-modal', 'When you deactivate your account:')
-    page.click('.confirm-modal__submit')
-    page.pause()
-    page.expectText('.confirm-modal', 'A group must have at least one coordinator. You are the only coordinator of the following groups:')
-  },
-
   'successfully_deactivates_the_account': (test) => {
     page = pageHelper(test)
 
@@ -120,6 +107,17 @@ module.exports = {
     page.pause(2000)
     page.click('.confirm-modal__submit')
     page.expectText('.auth-modal', 'Sign into Loomio')
+  },
+
+  'deletes_the_account': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_with_multiple_coordinators')
+    page.click('.user-dropdown__dropdown-button')
+    page.click('.user-dropdown__list-item-button--profile')
+    page.click('.profile-page__delete')
+    page.click('.confirm-modal__submit')
+    page.expectText('.auth-modal', 'Sign into Loomio', 12000)
   }
 
 }

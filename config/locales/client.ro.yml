@@ -142,7 +142,6 @@ ro:
     quiet_label: "Nici un email"
     mute_label: "Ascunde notificari"
     discussion:
-      title: "Setari de email pentru {{title}}"
       quiet_description: "Nu vei primi emailuri legate de aceasta discutie"
       messages:
         quiet: "Nu vei primi emailuri legate de aceasta discutie"
@@ -225,6 +224,7 @@ ro:
     contact_site_name: 'Contacteaza {{site_name}}'
     sign_out: 'Iesire din cont'
   membership_dropdown:
+    invitation_resent: "Invitatie retrimisa"
     make_coordinator: 'Promoveaza coordonator'
   start_menu:
     label: 'Actiuni utilizator'

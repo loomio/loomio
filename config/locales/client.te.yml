@@ -1,23 +1,80 @@
 te:
+  reactions:
+    ok_hand: సరే
   common:
+    you: మీరు
+    ok_got_it: సరే, అర్థమయింది
+    learn_more: మరింత తెలుసుకోండి
+    not_found: కనబడలేదు
+    time_zone: కాల మండలం
+    local_time: స్థానిక సమయం
     group: 'సమూహం'
     groups: 'సమూహాలు'
+    decisions: 'నిర్ణయాలు'
+    settings: 'అమరికలు'
+    help: 'సహాయం'
     privacy:
+      privacy: 'అంతరంగికత'
       public: 'బహిరంగం'
+    date_range:
+      today: 'నేడు'
+      yesterday: 'నిన్న'
+      thisweek: 'ఈ వారం'
+      thismonth: 'ఈ నెల'
+    more_help: 'మరింత సహాయం'
     models:
       proposal: 'ప్రతిపాదన'
+    copy: 'కాపీ చేయి'
+    total: మొత్తం
     action:
+      next: 'తదుపరి'
+      close: 'మూసివేయి'
       save: 'భద్రపరుచు'
+      save_changes: 'మార్పులను భద్రపరచు'
       edit: 'సవరించు'
+      remove: 'తీసివేయి'
       like: 'ఇష్టం'
+      back: 'వెనుకకు'
       unlike: 'అయిష్టం'
+      update: 'తాజాకరించు'
       cancel: 'రద్దుచేయి'
+      show_more: "ఇంకా చూపించు"
+      translate: 'అనువదించు'
+      ok: సరే!
+      done: పూర్తయింది
+      delete: తొలగించు
+      send: పంపించు
+      invite: ఆహ్నానించు
+  verify_stances:
+    remove: తీసివేయి
+  sign_up_form:
+    password_label: 'సంకేతపదం:'
+    password_confirmation_label: 'అదే సంకేతపదం మరోసారి:'
+  signed_out_modal:
+    ok: "సరే"
   comment_form:
     delete_comment: 'వ్యాఖ్యను తొలగించు'
+  sidebar:
+    aria_labels:
+      user_list: 'వాడుకరి చర్యలు'
   navbar:
     search:
       placeholder: 'వెతుకు'
       discussions: 'చర్చలు'
+      comments: 'వ్యాఖ్యలు'
+    logo_title: 'ముంగిలి పేజీ'
+  user_dropdown:
+    button_label: 'వాడుకరి మెనూ'
+    email_settings: 'ఈమెయిలు అమరికలు'
+    help: 'సహాయం'
+  membership_card:
+    invitations: "ఆహ్వానాలు"
+  membership_dropdown:
+    cancel_invitation: ఆహ్వానం రద్దుచేయి
+  start_menu:
+    label: 'వాడుకరి చర్యలు'
+  notification_models:
+    poll: 'నిర్ణయం:'
   notifications:
     header: "గమనికలు"
   discussion_form:
@@ -29,30 +86,55 @@ te:
     heading: సమూహంలో చేరుటకు అడగండి
     name_label: పేరు
     email_label: ఈమెయిలు
+  reactions_display:
+    you: "మీరు"
   group_page:
+    invite_people: 'ఆహ్నానించు'
     options_label: 'ఐచ్ఛికాలు'
     options:
       label: 'ఐచ్ఛికాలు'
+      email_settings: 'ఈమెయిలు అమరికలు'
+  group_form:
+    privacy: 'అంతరంగికత'
   document:
     form:
       title_label: పేరు
   membership_requests_page:
     approve: ఆమోదించండి
     ignore: విస్మరించు
+  invitation_form:
+    copy_link: 'కాపీ చేయి'
+    send: 'పంపించు'
+    done: 'పూర్తయింది'
   memberships_page:
     members: 'సభ్యులు'
     name_label: 'పేరు'
     coordinator_label: 'సమన్వయకర్త'
     remove_member_label: 'తీసివేయి'
+  membership_remove_modal:
+    invitation:
+      title: ఆహ్వానం రద్దుచేయి
+      submit: ఆహ్వానం రద్దుచేయి
+  cancel_invitation_form:
+    heading: ఆహ్వానం రద్దుచేయి
   profile_page:
     picture_label: 'చిత్రం'
     name_label: 'పేరు'
     email_label: 'ఈమెయిలు'
     locale_label: 'భాష'
+  email_settings_page:
+    header: ఈమెయిలు అమరికలు
+    update_settings: మార్పులను భద్రపరచు
+  dashboard_page:
+    threads_from:
+      today: 'నేడు'
+      yesterday: 'నిన్న'
   thread_group:
     aria_label: 'సమూహం పేరు'
   thread_context:
+    email_settings: 'ఈమెయిలు అమరికలు'
     close_thread: 'మూసివేయి'
+    delete_thread: 'తొలగించు'
   delete_comment_dialog:
     title: 'వ్యాఖ్యను తొలగించు'
     confirm: 'వ్యాఖ్యను తొలగించు'
@@ -71,6 +153,14 @@ te:
     name_label: పేరు
   poll_common_form:
     closed: మూసివేయబడింది
+    update: తాజాకరించు
   poll_count_options:
     'yes': 'అవును'
     'no': 'కాదు'
+  poll_meeting_chart_panel:
+    total: మొత్తం
+  polls_page:
+    heading: నిర్ణయాలు
+  install_slack:
+    progress:
+      invite: ఆహ్నానించు

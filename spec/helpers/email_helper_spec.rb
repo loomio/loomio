@@ -4,12 +4,17 @@ ENV['REPLY_HOSTNAME'] = 'replyhostname.com'
 
 describe EmailHelper do
   context 'reply_to_address' do
-    let(:discussion) { double(:discussion, id: 'd1') }
-    let(:user) { double(:user, id: '1', email_api_key: 'abc123') }
+    let(:discussion) { create(:discussion) }
+    let(:comment) { create(:comment, discussion: discussion) }
+    let(:user) { create(:user, email_api_key: 'abc123') }
     it "gives correct format" do
-      output = helper.reply_to_address(discussion: discussion,
-                                          user: user)
-      expect(output).to eq "d=d1&u=1&k=abc123@replyhostname.com"
+      output = helper.reply_to_address(model: discussion, user: user)
+      expect(output).to eq "d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@replyhostname.com"
+    end
+
+    it "gives correct format for a comment" do
+      output = helper.reply_to_address(model: comment, user: user)
+      expect(output).to eq "c=#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@replyhostname.com"
     end
   end
 

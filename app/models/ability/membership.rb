@@ -9,7 +9,10 @@ module Ability::Membership
     end
 
     can [:make_admin], ::Membership do |membership|
-      user_is_admin_of?(membership.group_id)
+      user_is_admin_of?(membership.group_id) ||
+      (user_is_member_of?(membership.group_id) &&
+       membership.user == user &&
+       membership.group.admin_memberships.count == 0)
     end
 
     can :resend, ::Membership do |membership|
@@ -17,8 +20,6 @@ module Ability::Membership
     end
 
     can [:remove_admin, :destroy], ::Membership do |membership|
-      (membership.group.members.size > 1) &&
-      (!membership.admin? or membership.group.admin_memberships_count > 1) &&
       (membership.user == user ||
        user_is_admin_of?(membership.group_id) ||
        (membership.inviter == user && !membership.accepted_at?))
