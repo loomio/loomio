@@ -336,9 +336,11 @@ GEM
     oj (3.5.0)
     orm_adapter (0.5.0)
     os (0.9.6)
-    paper_trail (8.1.2)
-      activerecord (>= 4.2, < 5.2)
+    paper_trail (9.2.0)
+      activerecord (>= 4.2, < 5.3)
+      paper_trail-association_tracking (< 2)
       request_store (~> 1.1)
+    paper_trail-association_tracking (1.0.0)
     paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -597,7 +599,7 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   oj
-  paper_trail (~> 8.1.2)
+  paper_trail (~> 9.2.0)
   paperclip (~> 5.2.1)
   pg (~> 0.18.4)
   poltergeist
