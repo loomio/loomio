@@ -134,9 +134,9 @@ angular-recaptcha@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/angular-recaptcha/-/angular-recaptcha-4.1.0.tgz#ca5de30a8f020e73d517b9097059ad8851a29847"
 
-angular-route@^1.5.5:
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.7.tgz#020970d93d8b2ce4ca6aff0e0d7922579543cbcf"
+angular-route@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.7.3.tgz#245c7ea7d18514c1d08201588092db7df210e7c6"
 
 "angular-sanitize@~> 1.7.2":
   version "1.7.2"
@@ -168,15 +168,11 @@ angular-translate@~2.18.1:
   dependencies:
     angular ">=1.2.26 <=1.7"
 
-angular@1.7.2, "angular@>=1.2.26 <=1.7":
+angular@1.7.2, angular@>=1.0.6, "angular@>=1.2.26 <=1.7", angular@^1.2.5:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.2.tgz#687b955dbe5c533f8d73460461707af00360251f"
 
-angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.7.tgz#0f89837dae1776b01ccb1fa2096db0d9373d9897"
-
-angular@^1.2.5:
+"angular@>=1.2.26 <=1.6":
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.8.tgz#5be378a58be91a5489e78b59c4518cd9fd273ffb"
 

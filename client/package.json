@@ -40,7 +40,7 @@
     "angular-messages": "1.7.2",
     "angular-mocks": "^1.5.5",
     "angular-recaptcha": "4.1.0",
-    "angular-route": "^1.5.5",
+    "angular-route": "^1.7.3",
     "angular-sanitize": "~> 1.7.2",
     "angular-scroll": "~0.6.5",
     "angular-sortable-view": "0.0.15",
