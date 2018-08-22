@@ -6072,8 +6072,8 @@ supports-color@^4.0.0, supports-color@^4.4.0:
     has-flag "^2.0.0"
 
 svg.js@latest:
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/svg.js/-/svg.js-2.6.3.tgz#ac07c61f54ada2745548800307bb45b4b3b519eb"
+  version "2.6.5"
+  resolved "https://registry.yarnpkg.com/svg.js/-/svg.js-2.6.5.tgz#5b93d0c8c11e2b70812ef9de1562aa91975cc3b6"
 
 svgo@^0.7.0:
   version "0.7.2"
