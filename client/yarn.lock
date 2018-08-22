@@ -138,9 +138,9 @@ angular-route@^1.5.5:
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.7.tgz#020970d93d8b2ce4ca6aff0e0d7922579543cbcf"
 
-"angular-sanitize@~> 1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.2.tgz#e9f6e6a3e966c479c02dbc5712bee6de031f8eef"
+"angular-sanitize@~> 1.7.3":
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.3.tgz#e1ddaa7337724f9554066fd9e9123486b8881c4a"
 
 angular-scroll@~0.6.5:
   version "0.6.5"
@@ -168,15 +168,11 @@ angular-translate@~2.18.1:
   dependencies:
     angular ">=1.2.26 <=1.7"
 
-angular@1.7.2, "angular@>=1.2.26 <=1.7":
+angular@1.7.2, angular@>=1.0.6, "angular@>=1.2.26 <=1.7", angular@^1.2.5:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.2.tgz#687b955dbe5c533f8d73460461707af00360251f"
 
-angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.7.tgz#0f89837dae1776b01ccb1fa2096db0d9373d9897"
-
-angular@^1.2.5:
+"angular@>=1.2.26 <=1.6":
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.8.tgz#5be378a58be91a5489e78b59c4518cd9fd273ffb"
 
