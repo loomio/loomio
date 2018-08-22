@@ -347,7 +347,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    pg (0.18.4)
+    pg (1.0.0)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -601,7 +601,7 @@ DEPENDENCIES
   oj
   paper_trail (~> 9.2.0)
   paperclip (~> 5.2.1)
-  pg (~> 0.18.4)
+  pg (~> 1.0.0)
   poltergeist
   premailer-rails
   puma
