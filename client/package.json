@@ -65,7 +65,7 @@
     "url-search-params-polyfill": "latest",
     "raven-js": "latest",
     "svg.js": "latest",
-    "vinyl-source-stream": "^1.1.0",
+    "vinyl-source-stream": "^2.0.0",
     "vue": "^2.5.11",
     "vue-material": "^0.8.1",
     "whatwg-fetch": "^2.0.3"
