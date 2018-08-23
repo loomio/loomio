@@ -490,7 +490,7 @@ GEM
       tilt (>= 1.1, < 3)
     sentry-raven (2.7.4)
       faraday (>= 0.7.6, < 1.0)
-    sequenced (2.0.0)
+    sequenced (3.1.1)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
     sexp_processor (4.11.0)
@@ -623,7 +623,7 @@ DEPENDENCIES
   s3_uploader
   sass-rails
   sentry-raven
-  sequenced (~> 2.0.0)
+  sequenced (~> 3.1.1)
   shoulda-matchers
   simplecov
   snorlax (= 0.1.8)
