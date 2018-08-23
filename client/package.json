@@ -90,7 +90,7 @@
     "gulp-debug": "^2.1.2",
     "gulp-expect-file": "0.0.7",
     "gulp-haml": "^0.1.6",
-    "gulp-htmlmin": "^1.3.0",
+    "gulp-htmlmin": "^4.0.0",
     "gulp-javascript-to-coffeescript": "^1.0.0",
     "gulp-nightwatch": "^0.3.2",
     "gulp-pipe": "^1.0.4",
