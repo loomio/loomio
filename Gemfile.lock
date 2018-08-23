@@ -120,7 +120,7 @@ GEM
     benchmark-ips (2.7.2)
     bootsnap (1.2.1)
       msgpack (~> 1.0)
-    browser (2.3.0)
+    browser (2.5.3)
     builder (3.2.3)
     bullet (5.7.5)
       activesupport (>= 3.0.0)
@@ -559,7 +559,7 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   bootsnap
-  browser (~> 2.3.0)
+  browser (~> 2.5.3)
   bullet
   byebug
   cancancan
