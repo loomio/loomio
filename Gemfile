@@ -28,7 +28,7 @@ gem 'httparty', '~> 0.15.6'
 gem 'browser', '~> 2.5.3'
 gem 'fog-aws'
 gem "sentry-raven"
-gem 'sequenced', '~> 2.0.0'
+gem 'sequenced', '~> 3.1.1'
 gem 'http_accept_language'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'uglifier'
