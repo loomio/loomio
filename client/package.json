@@ -87,7 +87,7 @@
     "gulp-coffee": "^2.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-cssmin": "^0.1.7",
-    "gulp-debug": "^2.1.2",
+    "gulp-debug": "^4.0.0",
     "gulp-expect-file": "0.0.7",
     "gulp-haml": "^0.1.6",
     "gulp-htmlmin": "^4.0.0",
