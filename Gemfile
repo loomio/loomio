@@ -1,6 +1,7 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 ruby '2.5.1'
+
 gem 'rails', '~> 5.1.5'
 gem 'actioncable'
 gem 'rake'
