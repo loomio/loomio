@@ -17,8 +17,6 @@
     "default": {
       "skip_testcases_on_fail": false,
       "launch_url": "about:blank",
-      "selenium_port" : 4444,
-      "selenium_host" : "localhost",
       "silent": true,
       "screenshots": {
         "enabled": true,
