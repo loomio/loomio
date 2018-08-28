@@ -516,7 +516,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stackprof (0.2.11)
+    stackprof (0.2.12)
     temple (0.8.0)
     thor (0.20.0)
     thread_safe (0.3.6)
