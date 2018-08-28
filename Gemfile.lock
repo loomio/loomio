@@ -464,7 +464,7 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
-    ruby-saml (1.7.2)
+    ruby-saml (1.8.0)
       nokogiri (>= 1.5.10)
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
