@@ -106,7 +106,7 @@
     "node-yaml-config": "0.0.4",
     "selenium-server-standalone-jar": "3.8.1",
     "uglify-es": "^3.3.4",
-    "uglifyify": "^4.0.5",
+    "uglifyify": "^5.0.1",
     "vinyl-buffer": "^1.0.1",
     "vueify": "^9.4.1",
     "vueify-extract-css": "^0.2.0",
