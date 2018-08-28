@@ -36,7 +36,7 @@ GIT
       unf (~> 0.1.0)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     actioncable (5.1.6)
       actionpack (= 5.1.6)
