@@ -5967,9 +5967,9 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
-selenium-server-standalone-jar@3.8.1:
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/selenium-server-standalone-jar/-/selenium-server-standalone-jar-3.8.1.tgz#24efe8a130f07a074b7c1a2ca3d6cd50c06ccb7d"
+selenium-server-standalone-jar@3.13.0:
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/selenium-server-standalone-jar/-/selenium-server-standalone-jar-3.13.0.tgz#03eee0d4537f08e36620b49c56ad074da6c7700a"
 
 "semver@2 || 3 || 4 || 5", semver@^5.3.0:
   version "5.4.1"
