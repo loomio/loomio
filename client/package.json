@@ -80,7 +80,7 @@
     "coffeeify": "^3.0.1",
     "coffeescript": "^1.12.7",
     "geckodriver": "^1.10.0",
-    "globby": "^7.1.1",
+    "globby": "^8.0.1",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^1.8.0",
     "gulp-autoprefixer": "^4.0.0",
