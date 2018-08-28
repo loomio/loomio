@@ -5,7 +5,7 @@
   "selenium": {
     "start_process": true,
     "start_session": true,
-    "server_path": "./node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-3.8.1.jar",
+    "server_path": "./node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-3.13.0.jar",
     "log_path": "./angular/test/output",
     "port": 4444,
     "cli_args": {
