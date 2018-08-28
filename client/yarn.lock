@@ -178,19 +178,11 @@ angular-translate@~2.18.1:
   dependencies:
     angular ">=1.2.26 <=1.7"
 
-angular@1.7.3:
+angular@1.7.3, angular@>=1.0.6, "angular@>=1.2.26 <=1.7", angular@^1.2.5:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.3.tgz#0f25a661d079fc84d5ccc877a2ef9d7178575ddb"
 
-angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.7.tgz#0f89837dae1776b01ccb1fa2096db0d9373d9897"
-
-"angular@>=1.2.26 <=1.7":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.2.tgz#687b955dbe5c533f8d73460461707af00360251f"
-
-angular@^1.2.5:
+"angular@>=1.2.26 <=1.6":
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.8.tgz#5be378a58be91a5489e78b59c4518cd9fd273ffb"
 
@@ -198,9 +190,9 @@ angulartics-google-tag-manager@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/angulartics-google-tag-manager/-/angulartics-google-tag-manager-0.0.1.tgz#59e8e4a9db5d85693b7cdec81a215136b04118e9"
 
-angulartics@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/angulartics/-/angulartics-1.1.2.tgz#58fb242cebafd40a10111a3dacf87579d7cebbd0"
+angulartics@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/angulartics/-/angulartics-1.6.0.tgz#a89c17ef8ea2334ebced65d6265951846f848172"
 
 ansi-colors@1.1.0, ansi-colors@^1.0.1:
   version "1.1.0"
