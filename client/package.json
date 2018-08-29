@@ -67,7 +67,7 @@
     "svg.js": "latest",
     "vinyl-source-stream": "^2.0.0",
     "vue": "^2.5.11",
-    "vue-material": "^0.8.1",
+    "vue-material": "^1.0.0",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
