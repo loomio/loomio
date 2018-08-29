@@ -68,7 +68,7 @@
     "vinyl-source-stream": "^2.0.0",
     "vue": "^2.5.11",
     "vue-material": "^0.8.1",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "add-stream": "^1.0.0",
