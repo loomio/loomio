@@ -35,7 +35,7 @@
     "angular-clipboard": "latest",
     "angular-elastic": "latest",
     "angular-gravatar": "~0.4.2",
-    "angular-inview": "2.1.0",
+    "angular-inview": "3.0.0",
     "angular-material": "1.1.10",
     "angular-messages": "1.7.3",
     "angular-mocks": "^1.5.5",
