@@ -2673,15 +2673,15 @@ gulp-footer@2.0.1:
     lodash._reinterpolate "^3.0.0"
     lodash.template "^3.6.2"
 
-gulp-haml@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/gulp-haml/-/gulp-haml-0.1.6.tgz#fa41f14d47c342cebae7993f7887803866f61139"
+gulp-haml@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gulp-haml/-/gulp-haml-1.0.1.tgz#6c141f74bfb082600fdc6dfaf8172b0aecf68023"
   dependencies:
-    gulp-util "^3.0.2"
     haml "^0.4.3"
     hamljs "^0.6.2"
     lodash "^3.10.1"
     map-stream "^0.1.0"
+    plugin-error "^0.1.2"
     replace-ext "0.0.1"
 
 gulp-header@2.0.5:
