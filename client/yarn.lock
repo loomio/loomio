@@ -1808,9 +1808,9 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-"emojione@~> 2.2.7":
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/emojione/-/emojione-2.2.7.tgz#46457cf6b9b2f8da13ae8a2e4e547de06ee15e96"
+"emojione@~> 3.1.7":
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/emojione/-/emojione-3.1.7.tgz#2d3c725c696f179c9dde3acb655c621ee9429b1e"
 
 encodeurl@~1.0.1:
   version "1.0.1"
