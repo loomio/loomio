@@ -1218,9 +1218,13 @@ coffeeify@^3.0.1:
     convert-source-map "^1.3.0"
     through2 "^2.0.0"
 
-coffeescript@^1.10.0, coffeescript@^1.12.7:
+coffeescript@^1.10.0:
   version "1.12.7"
   resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-1.12.7.tgz#e57ee4c4867cf7f606bfc4a0f2d550c0981ddd27"
+
+coffeescript@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-2.3.1.tgz#a25f69c251d25805c9842e57fc94bfc453ef6aed"
 
 collection-visit@^1.0.0:
   version "1.0.0"
