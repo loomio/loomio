@@ -151,9 +151,9 @@ angular-mocks@^1.5.5:
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.6.7.tgz#85bf45a2537eac59fc6f4cf319846102e8000e65"
 
-angular-recaptcha@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/angular-recaptcha/-/angular-recaptcha-4.1.0.tgz#ca5de30a8f020e73d517b9097059ad8851a29847"
+angular-recaptcha@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/angular-recaptcha/-/angular-recaptcha-4.2.0.tgz#3533802ae0d43ac9fedd5f6104e9dbf3c10588a7"
 
 angular-route@^1.5.5:
   version "1.6.7"
