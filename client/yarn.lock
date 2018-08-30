@@ -2593,7 +2593,7 @@ graceful-fs@^3.0.0:
   dependencies:
     natives "^1.1.0"
 
-graceful-fs@^4.1.2:
+graceful-fs@^4.1.2, graceful-fs@~4.1.4:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
@@ -2653,13 +2653,13 @@ gulp-concat@2.6.1, gulp-concat@^2.6.0:
     through2 "^2.0.0"
     vinyl "^2.0.0"
 
-gulp-cssmin@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/gulp-cssmin/-/gulp-cssmin-0.1.7.tgz#f576fe5211d107baa9401504249bf87aed1556bd"
+gulp-cssmin@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/gulp-cssmin/-/gulp-cssmin-0.2.0.tgz#87ab3c69dd39b20d5d96355c6504ad6a447b1e72"
   dependencies:
     clean-css "^3.1.9"
     filesize "~2.0.0"
-    graceful-fs "~2.0.0"
+    graceful-fs "~4.1.4"
     gulp-rename "~1.1.0"
     gulp-util "~2.2.0"
     map-stream "0.0.4"
