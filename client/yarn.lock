@@ -1218,11 +1218,7 @@ coffeeify@^3.0.1:
     convert-source-map "^1.3.0"
     through2 "^2.0.0"
 
-coffeescript@^1.10.0:
-  version "1.12.7"
-  resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-1.12.7.tgz#e57ee4c4867cf7f606bfc4a0f2d550c0981ddd27"
-
-coffeescript@^2.3.1:
+coffeescript@^2.1.0, coffeescript@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-2.3.1.tgz#a25f69c251d25805c9842e57fc94bfc453ef6aed"
 
@@ -2635,13 +2631,14 @@ gulp-autoprefixer@^4.0.0:
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-coffee@^2.3.1:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/gulp-coffee/-/gulp-coffee-2.3.5.tgz#8c64e9ac884e1bab4e20b66ac7c386a816859041"
+gulp-coffee@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/gulp-coffee/-/gulp-coffee-3.0.2.tgz#4514a561f6f16266a6564a807467b82658ef6530"
   dependencies:
-    coffeescript "^1.10.0"
-    gulp-util "^3.0.2"
+    coffeescript "^2.1.0"
     merge "^1.2.0"
+    plugin-error "^0.1.2"
+    replace-ext "^1.0.0"
     through2 "^2.0.1"
     vinyl-sourcemaps-apply "^0.2.1"
 
@@ -2806,7 +2803,7 @@ gulp-uglify@^3.0.0:
     uglify-js "^3.0.5"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-util@^3, gulp-util@^3.0.0, gulp-util@^3.0.1, gulp-util@^3.0.2, gulp-util@^3.0.7:
+gulp-util@^3, gulp-util@^3.0.0, gulp-util@^3.0.1, gulp-util@^3.0.7:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
