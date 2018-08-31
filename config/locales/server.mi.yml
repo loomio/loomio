@@ -4,7 +4,11 @@ mi:
       title: Taitara
       author: Kaituhi
       details: Ngā Taipitopito
+      total: Tapeke
   footer:
     help: Āwhina
     privacy: Matatapu
     public_groups: rōpū public
+  poll_mailer:
+    common:
+      unsubscribe: Weteohauru
