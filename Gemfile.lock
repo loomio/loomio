@@ -528,7 +528,7 @@ GEM
     uuidtools (2.1.5)
     warden (1.2.7)
       rack (>= 1.0)
-    webmock (3.3.0)
+    webmock (3.4.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
