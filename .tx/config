@@ -12,3 +12,4 @@ file_filter = config/locales/server.<lang>.yml
 source_file = config/locales/server.en.yml
 source_lang = en
 type = YAML
+
