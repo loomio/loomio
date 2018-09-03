@@ -1,7 +1,6 @@
 .install-slack-invite-form
   %h2.lmo-h2{translate: "install_slack.invite.heading"}
   %p.lmo-hint-text{translate: "install_slack.invite.helptext"}
-  hello
   %md-select{md-autofocus: "true", ng-model: "groupIdentity.customFields.slack_channel_id", placeholder: "{{'install_slack.invite.select_a_channel' | translate}}", md-on-open: "fetchChannels()"}
     %md-option{ng-value: "channel.id", ng-repeat: "channel in channels | orderBy: 'name'"}
       %span &#35;{{ channel.name }}
