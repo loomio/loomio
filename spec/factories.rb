@@ -1,7 +1,7 @@
 FactoryBot.define do
 
   factory :blacklisted_password do
-    string "MyString"
+    string { "MyString" }
   end
 
   factory :membership do |m|
@@ -17,10 +17,10 @@ FactoryBot.define do
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
-    legal_accepted true
-    password 'complex_password'
-    time_zone "Pacific/Tarawa"
-    email_verified true
+    legal_accepted { true }
+    password { 'complex_password' }
+    time_zone { "Pacific/Tarawa" }
+    email_verified { true }
 
     after(:build) do |user|
       user.generate_username
@@ -29,7 +29,7 @@ FactoryBot.define do
 
   factory :unverified_user, class: User do
     sequence(:email) { Faker::Internet.email }
-    email_verified false
+    email_verified { false }
   end
 
   factory :login_token do
@@ -39,7 +39,7 @@ FactoryBot.define do
   factory :admin_user, class: User do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
-    password 'complex_password'
+    password { 'complex_password' }
     is_admin {true}
     after(:build) do |user|
       user.generate_username
@@ -48,9 +48,9 @@ FactoryBot.define do
 
   factory :slack_identity, class: Identities::Slack do
     user
-    identity_type "slack"
-    access_token "dat_access"
-    uid "U123"
+    identity_type { "slack" }
+    access_token { "dat_access" }
+    uid { "U123" }
     sequence(:name) { Faker::Name.name }
     sequence(:email) { Faker::Internet.email }
     custom_fields {{
@@ -61,9 +61,9 @@ FactoryBot.define do
 
   factory :facebook_identity, class: Identities::Facebook do
     user
-    identity_type "facebook"
-    access_token "access_dat"
-    uid "U123"
+    identity_type { "facebook" }
+    access_token { "access_dat" }
+    uid { "U123" }
     sequence(:name) { Faker::Name.name }
     sequence(:email) { Faker::Internet.email }
     custom_fields { { facebook_group_id: "G123" } }
@@ -73,15 +73,15 @@ FactoryBot.define do
     user
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
-    source 'gmail'
+    source { 'gmail' }
   end
 
   factory :formal_group do
     sequence(:name) { Faker::Name.name }
-    description 'A description for this group'
-    group_privacy 'open'
-    discussion_privacy_options 'public_or_private'
-    members_can_add_members true
+    description { 'A description for this group' }
+    group_privacy { 'open' }
+    discussion_privacy_options { 'public_or_private' }
+    members_can_add_members { true }
     after(:create) do |group|
       user = create(:user)
       group.parent&.add_admin!(user)
@@ -90,7 +90,7 @@ FactoryBot.define do
   end
 
   factory :guest_group do
-    group_privacy 'closed'
+    group_privacy { 'closed' }
   end
 
   factory :group_identity do
@@ -102,20 +102,20 @@ FactoryBot.define do
     discussion
     association :eventable, factory: :comment
     user
-    sequence_id 1
-    kind :new_comment
+    sequence_id { 1 }
+    kind { :new_comment }
   end
 
   factory :version, class: PaperTrail::Version do
     association :item, factory: :discussion
-    event :updated
-    object_changes({})
+    event { :updated }
+    object_changes { {} }
   end
 
   factory :discussion_event, class: Event do
     association :eventable, factory: :discussion
     user
-    kind :new_discussion
+    kind { :new_discussion }
   end
 
   factory :discussion do
@@ -123,9 +123,9 @@ FactoryBot.define do
     association :group, :factory => :formal_group
     association :guest_group, factory: :guest_group
     title { Faker::Name.name }
-    description 'A description for this discussion. Should this be *rich*?'
-    uses_markdown true
-    private true
+    description { 'A description for this discussion. Should this be *rich*?' }
+    uses_markdown { true }
+    private { true }
     after(:build) do |discussion|
       discussion.group.parent&.add_member!(discussion.author)
       discussion.group.add_member!(discussion.author)
@@ -143,7 +143,7 @@ FactoryBot.define do
   factory :comment do
     user
     discussion
-    body 'body of the comment'
+    body { 'body of the comment' }
 
     after(:build) do |comment|
       comment.discussion.group.parent.add_member!(comment.user) if comment.discussion.group.parent
@@ -157,12 +157,12 @@ FactoryBot.define do
   factory :reaction do
     association :reactable, factory: :comment
     user
-    reaction "+1"
+    reaction { "+1" }
   end
 
   factory :invitation do
     recipient_email { Faker::Internet.email }
-    single_use true
+    single_use { true }
     intent {'join_group'}
     association :inviter, factory: :user
     association :group, factory: :formal_group
@@ -190,7 +190,7 @@ FactoryBot.define do
   end
 
   factory :translation do
-    language 'en'
+    language { 'en' }
     fields {{ body: 'Successful translation' }}
   end
 
@@ -198,17 +198,17 @@ FactoryBot.define do
     discussion
     motion
     comment
-    discussion_blurb "discussion blurb"
-    motion_blurb "motion blurb"
-    comment_blurb "comment blurb"
-    priority 1.0
-    query "test query"
+    discussion_blurb { "discussion blurb" }
+    motion_blurb { "motion blurb" }
+    comment_blurb { "comment blurb" }
+    priority { 1.0 }
+    query { "test query" }
   end
 
   factory :webhook do
     association :hookable, factory: :discussion
     uri { "www.test.com" }
-    kind :slack
+    kind { :slack }
     event_types { ['motion_closing_soon', 'new_motion', 'motion_outcome_created'] }
   end
 
@@ -226,9 +226,9 @@ FactoryBot.define do
   end
 
   factory :application, class: OauthApplication do
-    name "More like BROAuth, am I right?"
+    name { "More like BROAuth, am I right?" }
     association :owner, factory: :user
-    redirect_uri "https://www.loomio.org"
+    redirect_uri { "https://www.loomio.org" }
   end
 
   factory :access_token, class: Doorkeeper::AccessToken do
@@ -237,61 +237,61 @@ FactoryBot.define do
   end
 
   factory :poll_option do
-    name "Plan A"
+    name { "Plan A" }
   end
 
   factory :poll do
-    poll_type "poll"
-    title "This is a poll"
-    details "with a description"
+    poll_type { "poll" }
+    title { "This is a poll" }
+    details { "with a description" }
     association :author, factory: :user
     association :guest_group, factory: :guest_group
-    poll_option_names ["engage"]
+    poll_option_names { ["engage"] }
   end
 
   factory :poll_proposal, class: Poll do
-    poll_type "proposal"
-    title "This is a proposal"
-    details "with a description"
+    poll_type { "proposal" }
+    title { "This is a proposal" }
+    details { "with a description" }
     association :author, factory: :user
-    poll_option_names %w[agree abstain disagree block]
+    poll_option_names { %w[agree abstain disagree block] }
     association :guest_group, factory: :guest_group
   end
 
   factory :poll_dot_vote, class: Poll do
-    poll_type "dot_vote"
-    title "This is a dot vote"
-    details "with a description"
+    poll_type { "dot_vote" }
+    title { "This is a dot vote" }
+    details { "with a description" }
     association :author, factory: :user
-    poll_option_names %w(apple banana orange)
-    custom_fields dots_per_person: 8
+    poll_option_names { %w(apple banana orange) }
+    custom_fields { { dots_per_person: 8 } }
     association :guest_group, factory: :guest_group
   end
 
   factory :poll_meeting, class: Poll do
-    poll_type "meeting"
-    title "This is a meeting"
-    details "with a description"
+    poll_type { "meeting" }
+    title { "This is a meeting" }
+    details { "with a description" }
     association :author, factory: :user
-    poll_option_names ['01-01-2015']
-    custom_fields can_respond_maybe: false
+    poll_option_names { ['01-01-2015'] }
+    custom_fields { { can_respond_maybe: false } }
     association :guest_group, factory: :guest_group
   end
 
   factory :poll_ranked_choice, class: Poll do
-    poll_type "ranked_choice"
-    title "This is a ranked choice"
-    details "with a description"
+    poll_type { "ranked_choice" }
+    title { "This is a ranked choice" }
+    details { "with a description" }
     association :author, factory: :user
-    poll_option_names %w(apple banana orange)
-    custom_fields minimum_stance_choices: 2
+    poll_option_names { %w(apple banana orange) }
+    custom_fields { { minimum_stance_choices: 2 } }
     association :guest_group, factory: :guest_group
   end
 
   factory :outcome do
     poll
     association :author, factory: :user
-    statement "An outcome"
+    statement { "An outcome" }
   end
 
   factory :stance do
@@ -306,13 +306,13 @@ FactoryBot.define do
   factory :notification do
     user
     event
-    url "https://www.example.com"
+    url { "https://www.example.com" }
     association :actor, factory: :user
   end
 
   factory :received_email do
-    sender_email "John Doe <john@doe.com>"
-    body "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah"
+    sender_email { "John Doe <john@doe.com>" }
+    body { "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah" }
   end
 
 end
