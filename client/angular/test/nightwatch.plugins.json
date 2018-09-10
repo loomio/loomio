@@ -1,7 +1,7 @@
 {
   "src_folders": ["angular/test/nightwatch/plugins"],
   "tests_output": "./angular/test/output",
-  "globals_path": "./angular/test/nightwatch/globals.js",
+  "globals_path": "./nightwatch/globals.js",
   "selenium": {
     "start_process": true,
     "start_session": true,
