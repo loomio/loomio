@@ -58,6 +58,7 @@ gem 'google-cloud-translate'
 gem 'discourse-diff'
 
 group :development, :test do
+  gem 'parallel_tests'
   gem 'byebug'
   gem 'factory_bot_rails'
   gem 'faker'
