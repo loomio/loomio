@@ -40,6 +40,14 @@ describe Poll do
     expect(option_poll.poll_options.map(&:name)).to eq ['A', 'C', 'B']
   end
 
+  describe "guest group" do
+    it "deletes guest group when poll is deleted" do
+      group = poll.tap(&:save).guest_group
+      poll.destroy
+      expect { group.reload }.to raise_error ActiveRecord::RecordNotFound
+    end
+  end
+
   describe 'anyone_can_participate=' do
 
     describe 'existing poll' do
