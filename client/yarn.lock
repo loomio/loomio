@@ -102,9 +102,9 @@ angular-animate@1.7.3:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.7.3.tgz#99aa794d3417aa6a794f603c9c27ec0ee4c4b3b4"
 
-angular-aria@1.7.3:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.7.3.tgz#a545112da0daed875061ff49d1ac8964cfa51a8a"
+angular-aria@1.7.4:
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.7.4.tgz#0774cefa3a3e1bf0bf7aba5253e3bb9ca209f216"
 
 angular-clipboard@latest:
   version "1.6.2"
