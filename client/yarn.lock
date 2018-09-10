@@ -170,11 +170,7 @@ angular-translate@~2.18.1:
   dependencies:
     angular ">=1.2.26 <=1.7"
 
-angular@1.7.3:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.3.tgz#0f25a661d079fc84d5ccc877a2ef9d7178575ddb"
-
-angular@>=1.0.6, "angular@>=1.2.26 <=1.7", angular@^1.2.5:
+angular@1.7.4, angular@>=1.0.6, "angular@>=1.2.26 <=1.7", angular@^1.2.5:
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.4.tgz#c1bf4884c2d470c06907737a1bf0835a9f646f31"
 
