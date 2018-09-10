@@ -23,7 +23,7 @@ describe API::CommentsController do
       context 'success' do
         it "updates a comment" do
           post :update, params: { id: comment.id, comment: comment_params }
-          expect(response).to be_success
+          expect(response).to be_successful
           expect(comment.reload.body).to eq comment_params[:body]
         end
       end
@@ -60,7 +60,7 @@ describe API::CommentsController do
       context 'success' do
         it "creates a comment" do
           post :create, params: { comment: comment_params }
-          expect(response).to be_success
+          expect(response).to be_successful
           expect(Comment.where(body: comment_params[:body],
                                user_id: user.id)).to exist
         end
@@ -128,7 +128,7 @@ describe API::CommentsController do
       context 'allowed to delete' do
         it "destroys a comment" do
           delete :destroy, params: { id: comment.id }
-          expect(response).to be_success
+          expect(response).to be_successful
           expect(Comment.where(id: comment.id).count).to be 0
         end
       end

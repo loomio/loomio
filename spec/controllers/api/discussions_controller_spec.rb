@@ -391,7 +391,7 @@ describe API::DiscussionsController do
         reader = DiscussionReader.for(user: user, discussion: discussion)
         reader.update volume: :loud
         put :set_volume, params: { id: discussion.id, volume: :mute }, format: :json
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(reader.reload.volume.to_sym).to eq :mute
       end
     end
@@ -401,7 +401,7 @@ describe API::DiscussionsController do
         reader = DiscussionReader.for(user: user, discussion: another_discussion)
         reader.update volume: :loud
         put :set_volume, params: { id: another_discussion.id, volume: :mute }, format: :json
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
         expect(reader.reload.volume.to_sym).not_to eq :mute
       end
     end
@@ -414,7 +414,7 @@ describe API::DiscussionsController do
     context 'success' do
       it "updates a discussion" do
         post :update, params: { id: discussion.id, discussion: discussion_params }, format: :json
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(discussion.reload.title).to eq discussion_params[:title]
       end
 
@@ -465,7 +465,7 @@ describe API::DiscussionsController do
     context 'success' do
       it "creates a discussion" do
         post :create, params: { discussion: discussion_params }, format: :json
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(Discussion.last).to be_present
       end
 

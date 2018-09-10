@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180724135748) do
+ActiveRecord::Schema.define(version: 2018_09_10_032702) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
   enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
+  enable_extension "plpgsql"
 
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid "visit_id"
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 20180724135748) do
     t.index ["group_id"], name: "index_discussions_on_group_id"
     t.index ["guest_group_id"], name: "index_discussions_on_guest_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true
-    t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: { last_activity_at: :desc }
+    t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: :desc
     t.index ["private"], name: "index_discussions_on_private"
   end
 
@@ -432,7 +432,7 @@ ActiveRecord::Schema.define(version: 20180724135748) do
     t.string "url"
     t.integer "actor_id"
     t.index ["actor_id"], name: "index_notifications_on_actor_id"
-    t.index ["created_at"], name: "index_notifications_on_created_at", order: { created_at: :desc }
+    t.index ["created_at"], name: "index_notifications_on_created_at", order: :desc
     t.index ["event_id"], name: "index_notifications_on_event_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
     t.index ["viewed"], name: "index_notifications_on_viewed"
@@ -478,6 +478,7 @@ ActiveRecord::Schema.define(version: 20180724135748) do
     t.string "logo_content_type"
     t.integer "logo_file_size"
     t.datetime "logo_updated_at"
+    t.boolean "confidential", default: true, null: false
     t.index ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type"
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
