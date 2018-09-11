@@ -48,7 +48,7 @@ gem 'activerecord-import'
 gem 'discriminator', '~> 0.1.1'
 gem 'has_secure_token'
 gem "autoprefixer-rails"
-gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
+gem 'icalendar'
 gem 'rack-attack'
 gem 'js_regex'
 gem 'bootsnap', require: false

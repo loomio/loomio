@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/icalendar/icalendar.git
-  revision: 97ed9d301448350de15da4ba3b2323bd685d358c
-  ref: 97ed9d3
-  specs:
-    icalendar (2.4.1)
-
-GIT
   remote: git://github.com/loomio/custom_counter_cache.git
   revision: 7a4ed2c70c6a00cbee468d81295bdb3d4a86f2a7
   branch: rails5
@@ -279,6 +272,9 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
+    icalendar (2.5.0)
+      ice_cube (~> 0.16)
+    ice_cube (0.16.3)
     inherited_resources (1.9.0)
       actionpack (>= 4.2, < 5.3)
       has_scope (~> 0.6)
@@ -592,7 +588,7 @@ DEPENDENCIES
   heroku-deflater
   http_accept_language
   httparty (~> 0.16.2)
-  icalendar!
+  icalendar
   js_regex
   launchy
   maxminddb
