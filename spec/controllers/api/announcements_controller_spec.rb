@@ -22,19 +22,20 @@ describe API::AnnouncementsController do
       another_group.add_member! an_acquaintance
     end
 
-    it 'returns an existing user you know' do
-      get :search, params: { q: 'fran' }
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json[0]['name']).to eq a_friend.name
-    end
-
-    it 'does not return an existing user you dont know' do
-      get :search, params: { q: 'alien' }
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json).to be_empty
-    end
+    # we dont announce without a group eh?
+    # it 'returns an existing user you know' do
+    #   get :search, params: { q: 'fran' }
+    #   expect(response.status).to eq 200
+    #   json = JSON.parse(response.body)
+    #   expect(json[0]['name']).to eq a_friend.name
+    # end
+    #
+    # it 'does not return an existing user you dont know' do
+    #   get :search, params: { q: 'alien' }
+    #   expect(response.status).to eq 200
+    #   json = JSON.parse(response.body)
+    #   expect(json).to be_empty
+    # end
 
     it 'returns an email address' do
       get :search, params: { q: 'bumble@bee.com' }

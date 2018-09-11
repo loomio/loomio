@@ -19,6 +19,6 @@ Queries::AnnouncementRecipients = Struct.new(:query, :user, :group) do
   end
 
   def user_results
-    User.mentionable_by(user).where.not(id: group.member_ids).search_for(query)
+    User.mention_search(user, group, query).where.not(id: group.member_ids)
   end
 end

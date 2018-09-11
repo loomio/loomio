@@ -184,6 +184,7 @@ describe API::ProfileController do
   describe "mentionable" do
     let(:user)  { create :user }
     let(:group) { create :formal_group }
+    let(:subgroup) { create :formal_group, parent: group}
     let!(:jennifer) { create :user, name: 'jennifer', username: 'queenie' }
     let!(:jessica)  { create :user, name: 'jeesica', username: 'queenbee' }
     let!(:emilio)   { create :user, name: 'emilio', username: 'coolguy' }
@@ -194,25 +195,26 @@ describe API::ProfileController do
     before do
       group.add_member! user
       group.add_member! jennifer
+      subgroup.add_member! emilio
       sign_in user
     end
 
     it "returns users with name matching fragment" do
-      get :mentionable_users, params: {q: "je"}
-      json = JSON.parse(response.body)
-      user_ids = json['users'].map { |c| c['id'] }
-      expect(user_ids).to     include jennifer.id
-      expect(user_ids).to_not include jessica.id
-      expect(user_ids).to_not include emilio.id
+      get :mentionable_users, params: {q: "je", group_id: group.id}
+      user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
+      expect(user_ids).to eq [jennifer.id]
     end
 
     it "returns users with username matching fragment" do
-      get :mentionable_users, params: {q: "qu"}
-      json = JSON.parse(response.body)
-      user_ids = json['users'].map { |c| c['id'] }
-      expect(user_ids).to     include jennifer.id
-      expect(user_ids).to_not include jessica.id
-      expect(user_ids).to_not include emilio.id
+      get :mentionable_users, params: {q: "qu", group_id: group.id}
+      user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
+      expect(user_ids).to eq [jennifer.id]
+    end
+
+    it "returns users from groups within the same organisation" do
+      get :mentionable_users, params: {q: "em", group_id: group.id}
+      user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
+      expect(user_ids).to eq [emilio.id]
     end
   end
 end
