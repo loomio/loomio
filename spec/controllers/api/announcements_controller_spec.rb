@@ -3,7 +3,7 @@ require 'rails_helper'
 describe API::AnnouncementsController do
   let(:user)  { create :user }
   let(:group) { create :formal_group }
-  let(:another_group) { create :formal_group }
+  let(:another_group) { create :formal_group, parent: group }
   let(:an_unknown_group) { create :formal_group }
 
   before do
