@@ -150,7 +150,7 @@ class User < ApplicationRecord
   scope :verified_first, -> { order(email_verified: :desc) }
   scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first", first: "#{q}%", other:  "% #{q}%") }
   scope :mentionable_by, -> (user) { active.verified.distinct.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
-
+  scope :group_members_first, -> (groups) { select('*, gmf.id').joins("LEFT OUTER JOIN memberships gmf ON gmf.group_id IN (#{groups.map(&:id).join(',')}) AND gmf.user_id = users.id").order("gmf.id NULLS LAST") }
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
   scope :email_proposal_closing_soon_for, -> (group) {

@@ -5,7 +5,9 @@ class API::ProfileController < API::RestfulController
   end
 
   def mentionable_users
-    instantiate_collection { |collection| collection.search_for(params[:q]) }
+    instantiate_collection do |collection|
+      collection.search_for(params[:q]).group_members_first(model.groups)
+    end
     respond_with_collection serializer: Simple::UserSerializer, root: :users
   end
 
@@ -61,6 +63,12 @@ class API::ProfileController < API::RestfulController
   end
 
   private
+
+  def model
+    load_and_authorize(:group, optional: true) ||
+    load_and_authorize(:discussion, optional: true) ||
+    load_and_authorize(:poll, optional: true)
+  end
 
   def accessible_records
     resource_class.mentionable_by(current_user)
