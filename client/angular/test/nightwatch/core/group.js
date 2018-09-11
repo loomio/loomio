@@ -20,10 +20,11 @@ module.exports = {
     page.loadPath('view_open_group_as_visitor')
     page.click('.join-group-button__join-group')
     workflow.signInViaEmail('new@account.com')
-    page.click('.join-group-button__join-group')
     page.ensureSidebar()
     page.expectElement('.sidebar__content')
     page.expectText('.group-theme__name', 'Open Dirty Dancing Shoes')
+    page.click('.join-group-button__join-group')
+    page.expectText('.flash-root__message', 'You are now a member of Open Dirty Dancing Shoes')
   },
 
   'does not allow mark as read or mute': (test) => {
