@@ -1162,7 +1162,7 @@ zh_TW:
       success: "「{{name}}」已無法使用您的帳號"
   decision_tools_card:
     title: 決策工具
-    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">說明</a>
+    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">說明</a>
     proposal_title: 提案
     count_title: 勾選
     poll_title: 投票
@@ -1349,7 +1349,7 @@ zh_TW:
     start: 啟動
     update: 更新
     loomio_school_link: |
-        <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>查詢更多資訊。</p>
+        <p>在 <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio 學院</a>查詢更多資訊。</p>
   poll_proposal_form:
     tool_tip_expanded: |
         <p>提案是用來尋求關於一段陳述或是行動方針共識的工具。</p>
@@ -1360,7 +1360,7 @@ zh_TW:
     tool_tip_collapsed: 尋求共識
     start_header: 啟動提案
     edit_header: 編輯提案
-    tip: 透過一個所有聲音都可以被聽到的過程尋求共識。<a href="https://www.loomio.school/beginner/proposals.html" target="_blank">更多資訊</a>
+    tip: 透過一個所有聲音都可以被聽到的過程尋求共識。<a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">更多資訊</a>
     title_placeholder: 例如：讓我們一起去月球！
     details_placeholder: 請提供足夠的資訊，讓每個人都能表示贊成或是反對。
     proposal_created: 提案已啟動

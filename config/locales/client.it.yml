@@ -898,7 +898,7 @@ it:
   registered_app_form:
     name_label: Nome
   decision_tools_card:
-    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Aiuto</a>
+    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Aiuto</a>
     proposal_title: Proposta
     count_title: Verifica
     poll_title: Sondaggio
@@ -990,7 +990,7 @@ it:
     tool_tip_collapsed: Cercare un accordo collettivo
     start_header: Lancia proposta
     edit_header: Aggiorna proposta
-    tip: Cerca un accordo collettivo tramite un processo che permette a ciascuna voce di essere ascoltata. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Per saperne di più</a>
+    tip: Cerca un accordo collettivo tramite un processo che permette a ciascuna voce di essere ascoltata. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Per saperne di più</a>
     title_placeholder: Ad esempio, andiamo sulla Luna!
     details_placeholder: Dai informazioni sufficienti affinché tutti sappiano cosa significa essere d'accordo o in disaccordo
     proposal_created: Proposta lanciata

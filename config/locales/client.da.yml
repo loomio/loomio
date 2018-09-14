@@ -896,7 +896,7 @@ da:
     tool_tip_collapsed: Søg kollektiv enighed
     start_header: Opret forslag
     edit_header: Rediger forslag
-    tip: SSøg kollektiv enighed igennem en proces som lader alle stemmer blive hørt. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Læs mere</a>
+    tip: SSøg kollektiv enighed igennem en proces som lader alle stemmer blive hørt. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Læs mere</a>
     title_placeholder: F.eks. Lad os flyve til månen!
     details_placeholder: Giv nok information så at alle ved hvad det betyder at være enig eller uenig
     proposal_created: Forslag oprettet

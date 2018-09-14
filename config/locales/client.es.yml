@@ -1162,7 +1162,7 @@ es:
       success: "'{{name}}' ya no puede usar tu cuenta."
   decision_tools_card:
     title: Herramientas para decisiones
-    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Ayuda</a>
+    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda</a>
     proposal_title: Propuesta
     count_title: Comprobación
     poll_title: 'Encuesta '
@@ -1349,7 +1349,7 @@ es:
     start: Iniciar
     update: Actualizar
     loomio_school_link: |
-        <p>Encuentra más información en <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
+        <p>Encuentra más información en <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Una propuesta es una herramienta para buscar el acuerdo colectivo sobre una declaración o curso de acción</p>

@@ -628,7 +628,7 @@ cs:
       logo_changed: Logo aktualizováno.
   decision_tools_card:
     title: Nástroje pro rozhodování
-    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Nápověda</a>
+    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Nápověda</a>
     proposal_title: Návrh
     count_title: Kontrola
     poll_title: Hlasování
