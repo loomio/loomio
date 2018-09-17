@@ -126,7 +126,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11.0)
     byebug (10.0.2)
-    cancancan (2.2.0)
+    cancancan (2.3.0)
     capybara (3.6.0)
       addressable
       mini_mime (>= 0.1.3)
