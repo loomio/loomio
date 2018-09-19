@@ -1,4 +1,6 @@
 cs:
+  reactions:
+    ok_hand: Ok
   poll_types:
     proposal: Návrh
     count: Kontrola
@@ -101,6 +103,8 @@ cs:
     _9: Devátý
     _10: Desátý
   devise:
+    sessions:
+      signed_up: Úspěšně jste se zaregistrovali!
     failure:
       inactive: 'K této e-mailové adrese je přiřazen deaktivovaný účet. Chcete-li svůj účet znovu aktivovat, kontaktujte nás.'
   error_page:
@@ -149,6 +153,10 @@ cs:
     user:
       title: Nastavení e-mailů pro nové skupiny
       apply_to_all: "Použít tato nastavení pro všechny mé skupiny."
+  close_explanation_modal:
+    aria_label: Zavřít vlákno
+    close_thread: Zavřít vlákno
+    image_alt: Zavírají všechny vlákna
   mute_explanation_modal:
     aria_label: Ztlumit vlákno
     mute_thread: Ztlumit vlákno
@@ -226,6 +234,7 @@ cs:
   membership_card:
     group_members: "Členové skupiny"
     invite_to_group: "Pozvat do skupiny"
+    invite_to_poll: "Pozvat k hlasování"
   membership_dropdown:
     invitation_resent: "Pozvánka přeposlána"
     make_coordinator: 'Vytvořit koordinátora'
@@ -240,6 +249,8 @@ cs:
     start_thread: 'Vytvořit vlákno'
     start_poll: 'Začít hlasování'
     invite_people: 'Pozvat lidi'
+  notification_models:
+    discussion: 'vlákno:'
   notifications:
     header: "Upozornění"
     no_notifications: "Nemáte žádná upozornění."
@@ -283,6 +294,8 @@ cs:
       group_announced:
         title: Pozvat do skupiny
         helptext: Kdo byste pozvali do skupiny?
+      poll_announced:
+        title: Pozvat k hlasování
       outcome_announced:
         title: Sdílet výsledek
       anyone_can_participate: Kdokoli s odkazem se může účastnit
@@ -499,7 +512,6 @@ cs:
     submit: 'Deaktivovat účet'
   email_settings_page:
     header: Nastavení emailu
-    all_groups: Nastavení pro všechny skupiny
     daily_summary_label: Denní souhrnný e-mail
     announcement_label: Oznámení
     specific_groups: Nastavení pro konkrétní skupiny
@@ -628,7 +640,6 @@ cs:
       logo_changed: Logo aktualizováno.
   decision_tools_card:
     title: Nástroje pro rozhodování
-    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Nápověda</a>
     proposal_title: Návrh
     count_title: Kontrola
     poll_title: Hlasování

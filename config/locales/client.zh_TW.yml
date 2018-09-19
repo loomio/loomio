@@ -683,6 +683,8 @@ zh_TW:
     confirm_remove_helptext: 您確定您想要移除附件嗎？
     document_removed: 附件已移除
   document:
+    error:
+      invalid_format: 喔喔！您的 URL 是無效的。請確定它以 http:// 或 https:// 開始
     card:
       no_documents: 未有已被上傳至此群組的附件
       view_documents: 檢視全部
@@ -888,7 +890,8 @@ zh_TW:
     submit: '凍結帳號'
   email_settings_page:
     header: 電子郵件設定
-    all_groups: 所有群組的設定
+    email_newsletter: Loomio 通訊
+    email_newsletter_description: "取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。"
     daily_summary_label: 每日摘要電子郵件
     daily_summary_description: "每天早上，您都會收到一封關於您前一天錯過了哪些動態的電子郵件。這讓您可以更容易地保持最新狀態。"
     on_participation_label: 參與時訂閱
@@ -1349,7 +1352,7 @@ zh_TW:
     start: 啟動
     update: 更新
     loomio_school_link: |
-        <p>在 <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio 學院</a>查詢更多資訊。</p>
+        <p>在 <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio 說明</a>取得更多資訊。</p>
   poll_proposal_form:
     tool_tip_expanded: |
         <p>提案是用來尋求關於一段陳述或是行動方針共識的工具。</p>
@@ -1675,3 +1678,8 @@ zh_TW:
         現在，無論任何人在此群組中啟動投票，他們都將會有
         選項來貼出投票的更新到您 Slack 團隊中的頻道。
     start_poll_now: 現在做決策
+  powered_by:
+    powered_by_loomio: 威力本源 Loomio
+    privacy_policy: 隱私權政策
+    terms_of_service: 服務條款
+    front_page: 首頁
