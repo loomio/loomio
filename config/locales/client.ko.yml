@@ -449,7 +449,6 @@ ko:
     submit: '계정 비활성화'
   email_settings_page:
     header: 이메일 설정
-    all_groups: 모든 그룹에 적용중
     daily_summary_label: 일별 요약 이메일
     on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
     specific_groups: 특별한 그룹에 적용

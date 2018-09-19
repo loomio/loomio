@@ -11,6 +11,11 @@ cs:
     messages:
       email: není platnou e-mailovou adresou
       spoofed_media_type: Obsah tohoto souboru neodpovídá jeho názvu
+  user:
+    deleted_user: "Odstraněný uživatel"
+    error:
+      bad_login: "Nelze vás přihlásit. Zkuste to znovu."
+      username_must_be_alphanumeric: "Uživatelské jméno musí obsahovat pouze malá písmena a číslice"
   attachment:
     error:
       too_large: Soubor, který jste se pokusili přiložit, je větší než 100MB. Prosím, vyberte menší soubor.
@@ -116,6 +121,7 @@ cs:
       unsubscribe: Odhlásit odběr
       results: Výsledky
       responses: Odpovědi
+      change_your_stance: Změnit
       create_outcome: Sdílet výsledek
       your_response: "Hlasovali jste:"
       please_respond: Prosím odpovězte

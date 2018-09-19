@@ -729,7 +729,6 @@ uk:
     submit: 'Закрити обліковий запис'
   email_settings_page:
     header: Налаштування електронної пошти
-    all_groups: Налаштування для всіх груп
     daily_summary_label: Щоденний підсумковий лист
     daily_summary_description: "Щоранку, ви отримаєте електронного листа з інформацією щодо будь-якої активності, яку ви пропустили за попередній день. Це простий спосіб бути в курсі подій."
     on_participation_label: Підписатися на участь
@@ -981,7 +980,6 @@ uk:
       success: "'{{name}}' не буде далі використовувати ваш обліковий запис."
   decision_tools_card:
     title: Інструмент прийняття рішень
-    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Допомога</a>
     proposal_title: Пропозиція
     count_title: Контрольний список
     poll_title: Опитування
@@ -1140,8 +1138,6 @@ uk:
     closed: Закрита
     start: Почати
     update: Оновити
-    loomio_school_link: |
-        <p>Дізнайтеся більше у <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Школі Loomio</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Пропозиція є інструментом для пошуку колективної згоди, щодо позиції або напрямку дій.</p>
@@ -1152,7 +1148,6 @@ uk:
     tool_tip_collapsed: Шукайте колективної згоди
     start_header: Внести пропозицію
     edit_header: Редагувати пропозицію
-    tip: Шукайте колективної згоди за процедурою, що дозволяє почути всі голоси. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Дізнатись більше</a>
     title_placeholder: Наприклад давайте організуємо подорож на Місяць!
     details_placeholder: Надайте достатно інформації, аби кожен розумів що означає погодитись або не погодитись
     proposal_created: Пропозицію внесено

@@ -2,11 +2,21 @@ ca:
   reactions:
     slight_smile: M'agrada
     heart: Amor
+    disappointed: Decebut
+    angry: Enfadat
+    astonished: Astorat
     cry: Plora
     v: Pau
     ok_hand: D'acord
+  poll_types:
+    poll: Enquesta
   common:
     you: Tu
+    expand: Expandeix
+    ok_got_it: D'acord
+    not_found: No s'ha trobat
+    time_zone: Zona horària
+    local_time: Hora local
     confirm_discard_changes: Descarteu els canvis?
     time:
       am: AM
@@ -17,7 +27,10 @@ ca:
     notification_volume: 'Notificació de volum'
     group: 'Grup'
     groups: 'Grups'
+    threads: 'Fils'
+    settings: 'Configuracions'
     help: 'Ajuda'
+    anonymous: Anònim
     privacy:
       privacy: 'Privacitat'
       public: 'Públic'
@@ -60,6 +73,11 @@ ca:
       translated: 'Traducció realitzada per Bing Translator'
       upload: 'Carrega'
       uploading: 'Carregant'
+      retry: Prova de nou
+      done: Fet
+      start: Comença
+      delete: Esborrar
+      unsubscribe: Cancel·lar la subscripció
   ordinal:
     _1: 1r
     _2: 2n
@@ -396,7 +414,6 @@ ca:
     update_profile: 'Actualitza el perfil'
   email_settings_page:
     header: Configuració del correu electrònic
-    all_groups: Configuració per tots els grups
     daily_summary_label: Correu electrònic de resum diari
     on_participation_label: Subscriure a la participació
     specific_groups: Configuració per grups específics
@@ -601,10 +618,13 @@ ca:
     submit: Revocar accés
     messages:
       success: "'{{name}}' ja no pot utilitzar el vostre compte."
+  decision_tools_card:
+    poll_title: Enquesta
   poll_common:
     start_poll: Comença una decissió
   poll_common_form:
     closed: Tancat
+    start: Començar
   poll_count_options:
     'yes': 'Sí'
     'no': 'No'

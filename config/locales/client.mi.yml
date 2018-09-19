@@ -41,9 +41,14 @@ mi:
     more_help: 'He awhina ano'
     models:
       proposal: 'Tono'
+    copy: 'Tārua'
+    copy_text: 'Tārua kuputuhi'
     copied: 'Kua taruatia ki te papa whakapine'
+    total: Tapeke
     action:
+      next: 'Kei mua'
       close: 'Katia'
+      reopen: 'Tūwhera anō'
       save: 'Tiaki'
       save_changes: 'Puritia nga panonitanga'
       update_settings: 'Whakahoungia nga ritenga'
@@ -66,10 +71,21 @@ mi:
       uploading: 'Kei te whakautangia'
       load_more: 'Tukua mai anō'
       share: Pānui whānui
+      retry: Ngana anō
       done: Kua mutu
       start: Tīmatahia
+      delete: Mukua
+      unsubscribe: Weteohauru
+      subscribe: Ohauru
+      send: Tukua
+      invite: Pōwhiri
+      resent: Kua tukua anō te pōwhiri
     formatting_help:
       label: 'He whakanikoniko pūreta'
+  ordinal:
+    _1: Tuatahi
+    _2: Tuarua
+    _3: Tuatoru
   error_page:
     forbidden: 'Kāhore e tukua ana tāu mahi'
   volume_levels:
@@ -91,6 +107,10 @@ mi:
   sign_up_form:
     password_label: 'Kupu huna:'
   comment_form:
+    aria_label: 'Tāpirihia te tākupu'
+    messages:
+      created: 'Kua tāpirihia te tākupu'
+      destroyed: 'Kua mukua te tākupu'
     submit_button:
       label: 'Pānui'
     sign_in: "Me takiuru mai, he whakamana mō te whakawhiti kōrero"
@@ -104,6 +124,8 @@ mi:
       proposals: 'Ngā whakatakoto'
       comments: 'Ngā kōrero poto'
     sign_in: 'Takiuru mai'
+  membership_dropdown:
+    invitation_resent: "Kua tukua anō te pōwhiri"
   start_menu:
     title: 'Mahi'
     start_group: 'Whakatūhia tētahi rōpū hou'
@@ -124,6 +146,7 @@ mi:
   revision_history_modal:
     current_revision: Hou ake
   group_page:
+    invite_people: 'Pōwhiri'
     options_label: 'Ngā Kōwhiringa'
     options:
       label: 'Ngā Kōwhiringa'
@@ -135,6 +158,8 @@ mi:
       title_label: Ingoa
   invitation_form:
     invite_people: 'Pōwhiri atu'
+    copy_link: 'Tārua'
+    send: 'Tukua'
     done: 'Kua mutu'
   memberships_page:
     members: 'Ngā Mema'
@@ -167,7 +192,9 @@ mi:
     aria_label: 'Ingoa rōpū'
   thread_context:
     close_thread: 'Katia'
+    reopen_thread: 'Tūwhera anō'
     mute_thread: 'Whakahāngū'
+    delete_thread: 'Mukua'
   decision_tools_card:
     proposal_title: He whakatakoto
     count_title: Whakatika
@@ -175,5 +202,12 @@ mi:
   poll_common_form:
     closed: Kua kati
     start: Tīmatatia
+  poll_meeting_chart_panel:
+    total: Tapeke
+  poll_common_subscribe_form:
+    subscribe: Ohauru
   polls_page:
     heading: Ngā whakatau
+  install_slack:
+    progress:
+      invite: Pōwhiri

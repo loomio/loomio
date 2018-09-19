@@ -683,6 +683,8 @@ es:
     confirm_remove_helptext: ¿Seguro que quieres eliminar este archivo adjunto?
     document_removed: Archivo adjunto eliminado
   document:
+    error:
+      invalid_format: ¡Vaya! Tu URL es inválida. Asegúrate de que empieza por http:// o https://
     card:
       no_documents: Aún no se han cargado archivos adjuntos a este grupo
       view_documents: Ver todo
@@ -888,7 +890,6 @@ es:
     submit: 'Desactiva cuenta '
   email_settings_page:
     header: Ajustes de correo
-    all_groups: 'Configuración para todos los grupos. '
     daily_summary_label: Correo electrónico de resumen diario
     daily_summary_description: "Cada mañana, recibirás un email con la actividad no leída el día anterior. Este email facilita  el estar al día con la actividad."
     on_participation_label: 'Suscribirte a la participación '
@@ -1162,7 +1163,6 @@ es:
       success: "'{{name}}' ya no puede usar tu cuenta."
   decision_tools_card:
     title: Herramientas para decisiones
-    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda</a>
     proposal_title: Propuesta
     count_title: Comprobación
     poll_title: 'Encuesta '
@@ -1348,8 +1348,6 @@ es:
     closed: 'Cerrado '
     start: Iniciar
     update: Actualizar
-    loomio_school_link: |
-        <p>Encuentra más información en <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Una propuesta es una herramienta para buscar el acuerdo colectivo sobre una declaración o curso de acción</p>
@@ -1360,7 +1358,6 @@ es:
     tool_tip_collapsed: 'Busca el acuerdo colectivo  '
     start_header: Inicia una propuesta
     edit_header: Edita una propuesta
-    tip: 'Busca el acuerdo colectivo a través de un proceso que permite que todas las voces sean escuchadas. '
     title_placeholder: P.ej. ¡Vamos a la luna!
     details_placeholder: Dé suficiente información para que todos sepan lo que significa estar de acuerdo o en desacuerdo
     proposal_created: Propuesta iniciada

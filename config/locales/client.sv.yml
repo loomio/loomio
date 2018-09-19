@@ -178,8 +178,12 @@ sv:
       loud_description: "Du kommer att få e-post vid aktivitet i denna grupp."
       normal_description: "Du kommer bara få e-post vid meddelanden i denna grupp."
       quiet_description: "Du kommer inte få e-post om aktivitet i denna grupp."
+      apply_to_all: "Tillämpa dessa inställningar i alla mina grupper."
       messages:
+        loud: "Du kommer få e-post om alla aktiviteter i denna grupp. "
         normal: "Du kommer bara få e-post vid meddelanden i denna grupp."
+    user:
+      apply_to_all: "Tillämpa dessa inställningar i alla mina grupper."
   inbox:
     clear: 'Klar'
     latest: 'Senaste'

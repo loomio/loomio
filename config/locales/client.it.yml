@@ -122,6 +122,7 @@ it:
       remind: Ricorda
       resend: Reinvia
       send: Invia
+      joined: Collegato
       last_seen: Visitato l'ultima volta
       invite: Invita
       resent: Invito reinviato
@@ -141,6 +142,8 @@ it:
     _9: 9°
     _10: 10°
   devise:
+    sessions:
+      signed_up: Iscritto con successo!
     failure:
       inactive: 'Questo indirizzo email è associato a un account disattivato. Se vuoi riattivare il tuo account, faccelo sapere.'
   error_page:
@@ -174,6 +177,7 @@ it:
     quiet_label: "Nessuna email"
     mute_label: "Silenzia"
     discussion:
+      title: "Impostazioni thread email"
       loud_description: "Riceverai una notifica ogni volta che c'è attività in questa discussione."
       normal_description: "Riceverai un email ogni volta che una proposta viene iniziata, sta per concludersi, o un risultato viene pubblicato."
       quiet_description: "Non riceverai email su questa discussione."
@@ -291,11 +295,14 @@ it:
     toggle_sidebar: 'Attiva la barra laterale'
     logo_title: 'Home page'
   user_dropdown:
+    button_label: 'Menu utente'
     edit_profile: 'Modifica profilo'
     email_settings: 'Impostazioni email'
     help: 'Aiuto'
     contact_site_name: 'Contatto {{site_name}}'
     sign_out: 'Esci'
+  membership_card:
+    group_members: "Membri del gruppo"
   membership_dropdown:
     invitation_resent: "Invito reinviato"
     make_coordinator: 'Inserisci come coordinatore'
@@ -731,7 +738,6 @@ it:
     submit: 'Disattiva l''account'
   email_settings_page:
     header: Impostazioni Email
-    all_groups: Configurazione per tutti i gruppi
     daily_summary_label: 'Sommario giornaliero '
     on_participation_description: "Quando partecipi ad una discussione, tutte le successive attività ti verranno notificate via email immediatamente."
     announcement_label: Annunci
@@ -898,7 +904,6 @@ it:
   registered_app_form:
     name_label: Nome
   decision_tools_card:
-    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Aiuto</a>
     proposal_title: Proposta
     count_title: Verifica
     poll_title: Sondaggio
@@ -990,7 +995,6 @@ it:
     tool_tip_collapsed: Cercare un accordo collettivo
     start_header: Lancia proposta
     edit_header: Aggiorna proposta
-    tip: Cerca un accordo collettivo tramite un processo che permette a ciascuna voce di essere ascoltata. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Per saperne di più</a>
     title_placeholder: Ad esempio, andiamo sulla Luna!
     details_placeholder: Dai informazioni sufficienti affinché tutti sappiano cosa significa essere d'accordo o in disaccordo
     proposal_created: Proposta lanciata
