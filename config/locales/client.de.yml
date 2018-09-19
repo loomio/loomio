@@ -88,7 +88,7 @@ de:
     points_abbrev: Jede Stimme ist {{score}} Punkte wert
     total: Gesamt
     action:
-      next: 'Nächstes'
+      next: 'Weiter'
       close: 'Vorzeitig beenden'
       reopen: 'erneut öffnen'
       save: 'Speichern'
@@ -312,10 +312,10 @@ de:
     sign_out: 'Abmelden'
   membership_card:
     group_members: "Mitglieder der Gruppe"
-    discussion_members: "Thread-Mitglieder"
+    discussion_members: "Diskussions-Mitglieder"
     poll_members: "{{pollType}} Mitglieder"
     invite_to_group: "zur Gruppe einladen"
-    invite_to_discussion: "zum Thread einladen"
+    invite_to_discussion: "zur Diskussion einladen"
     invite_to_poll: "zur Abstimmung einladen"
     invitations: "Einladungen"
   membership_dropdown:
@@ -420,7 +420,7 @@ de:
         title: zur Gruppe einladen
         helptext: Wen möchten Sie zu der Gruppe einladen?
       discussion_announced:
-        title: zum Thread einladen
+        title: zur Diskussion einladen
         helptext: Wen möchten Sie zu dem Thread einladen?
       discussion_edited:
         title: Über Änderungen benachrichtigen
@@ -458,7 +458,7 @@ de:
     add_comment: Kommentieren
     copy_url: URL kopieren
     edit_thread: Kontext bearbeiten
-    announce_thread: Personen zum Thread einladen
+    announce_thread: Personen zur Diskussion einladen
     announce_thread_active: (bis jetzt wurde niemand eingeladen)
     translate_thread: Zusammenhang übersetzen
     edit_poll: Umfrage bearbeiten
@@ -470,14 +470,14 @@ de:
     edit_comment: Kommentar bearbeiten
     delete_comment: Kommentar löschen
     reply_to_comment: Antworten
-    fork_comment: Thread abspalten
+    fork_comment: Diskussion gabeln
     translate_comment: Kommentar übersetzen
     edit_outcome: Ergebnis bearbeiten
     announce_outcome: Andere über dieses Ergebnis benachrichtigen
     announce_outcome_active: (Bisher wurde noch niemand über dieses Ergebnis informiert)
     translate_outcome: Ergebnis übersetzen
     show_history: Bearbeitungsverlauf anzeigen
-    pin_thread: Thread festsetzen
+    pin_thread: Diskussion anpinnen
     unpin_thread: Thread nicht mehr festsetzen
     comment_copied: Kommentar-URL in die Zwischenablage kopiert
     poll_copied: Die Entscheidungs-URL wurde in die Zwischenablage kopiert
@@ -626,7 +626,7 @@ de:
       private_to_parent_members: 'Name und Beschreibung sind nur für Mitglieder von {{parent}} sichtbar'
     privacy: 'Privatsphäre'
     group_privacy_is_open_description: "Die Gruppe ist für alle sichtbar und kann von allen betreten werden. Nur Gruppenmitglieder können sehen, wer Mitglied in dieser Gruppe ist. Alle Diskussionen sind öffentlich."
-    group_privacy_is_closed_description: "Jeder kann die Gruppe finden und Sie nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Threads sind privat."
+    group_privacy_is_closed_description: "Jeder kann die Gruppe finden und dich um Beitritt bitten. Nur Mitglieder können sehen, wer in der Gruppe ist. Alle Diskussionen sind privat."
     group_privacy_is_closed_public_threads_description: "Jeder kann die Gruppe finden und Sie nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Threads können privat oder öffentlich sein."
     group_privacy_is_secret_description: "Nur eingeladene Mitglieder können die Gruppe finden und die Teilnehmer und Diskussionsbeiträge der Gruppe sehen."
     confirm_change_to_secret: "Wenn Du fortfährst werden alle Diskussionen dieser Gruppe und all ihrer Untergruppen privat."
@@ -641,7 +641,7 @@ de:
     advanced_settings: "Erweiterte Einstellungen"
     how_do_people_join: "Wie kann jemand teilnehmen?"
     membership_granted_upon_request: 'Gruppe ist zugänglich für alle'
-    membership_granted_upon_approval: 'Jede.r kann um Aufnahme bitten. Diese wird dann geprüft.'
+    membership_granted_upon_approval: 'Jeder kann um Aufnahme bitten. Diese wird dann geprüft.'
     membership_granted_upon_approval_secret_parent: '<strong>Auf Anfrage</strong> - jede.r von {{parent}} kann um Aufnahme in die Gruppe bitten.'
     features: 'Gruppenspezifische Funktionen'
     thread_privacy: 'Diskussions-Privatsphäre'
@@ -911,9 +911,9 @@ de:
   dashboard_page:
     aria_label: 'Schreibtisch'
     no_groups:
-      show_all: Sie haben keine neuesten Threads, da sie keiner Gruppe angehören.
+      show_all: Du hast keine aktuellen Diskussionsverläufe, da du keiner Gruppe angehörst.
       show_muted: Sie haben keine atummen Threads, weil Sie kein Mitglied einer Gruppe sind.
-      start: Start
+      start: Eröffne eine Diskussion
       or: oder
       join_group: <a href="/explore">tritt einer Gruppe bei</a> um Diskussionen zu sehen.
     no_threads:
@@ -927,13 +927,11 @@ de:
     thread_dismissed: Thread wurde geschlossen
     thread_recalled: Thread zurückgerufen
     explain_mute:
-      title: Sie haben noch keine Threads stumm gestellt.
+      title: Du hast noch keine Diskussionen stumm gestellt
       explanation_html: |
-          Stumm schalten ist eine Möglichkeit, Threads zu verstecken oder still zu schalten, an denen du nicht interessiert bist.
-          Stummschaltung bedeutet, dass Sie es nicht in "<strong>Zuletzt verwendet</strong>" oder "<strong>Ungelesen</strong>" sehen und Sie nicht über Aktivitäten in diesem Diskussionsfaden informiert werden, z. B. Vorschläge.
-          Sie werden nur benachrichtigt, wenn jemand <strong>@</strong> Ihren Namen angibt.
-      instructions: 'Um einen Thread stummzuschalten, bewegen Sie den Mauszeiger darüber und klicken Sie auf das Stummschaltungssymbol.'
-      see_muted_html: 'Um Ihre stummen Themen zu sehen, klicken Sie auf <strong>"stumm gestellt"</strong>. Sie können die Stummschaltung aufheben, indem Sie den Mauszeiger bewegen und auf das gleiche Symbol klicken.'
+          Stumm schalten ist eine Möglichkeit, Diskussionsverläufe zu verstecken oder stumm zu schalten, an denen du nicht interessiert bist. Stummschaltung bedeutet, dass du es nicht in "<strong>Zuletzt verwendet</strong>" oder "<strong>Ungelesen</strong>" siehst und du nicht über Aktivitäten in diesem Diskussionsverlauf informiert wirst, z. B. über neue Vorschläge. Du wirst nur benachrichtigt, wenn jemand @ deinen Namen angibt.
+      instructions: 'Um einen Diskussionsverlauf stummzuschalten, bewegst du den Mauszeiger darüber und klickst auf das Symbol für stumm schalten'
+      see_muted_html: 'Um deine stumm geschaltenen Diskussionen zu sehen, klicke auf "<strong>stumm gestellt</strong>". Du kannst die Stummschaltung aufheben, indem du den Mauszeiger bewegst und auf das gleiche Symbol klickst.'
     filtering:
       filter_threads: Diskussionen filtern
       filter_threads_aria_label: Diskussionen filtern
@@ -944,7 +942,7 @@ de:
       proposals: Vorschläge
       proposals_aria_label: Momentan werden Diskussionen mit laufenden Vorschlägen angezeigt
       proposals_description: Nur Diskussionen mit laufenden Vorschlägen anzeigen
-      muted: stumm gestellte Threads
+      muted: Stumm geschaltete Diskussionen
       muted_aria_label: Momentan werden nur stumm-geschaltete Diskussionen angezeigt
       muted_description: Nur Diskussionen anzeigen, die Du stumm geschaltet hast.
     aria_thread:
@@ -970,7 +968,7 @@ de:
     view_more: Mehr anzeigen
     no_groups:
       explanation: Sie haben keine ungelesenen Threads, da Sie keiner Gruppe angehören
-      start: Starte
+      start: Eröffne eine Diskussion
       or: oder
       join_group: <a href="/explore">tritt einer Gruppe bei</a> um Diskussionen zu sehen.
   discussion:
@@ -1350,14 +1348,14 @@ de:
     start: Start
     update: Aktualisieren
     loomio_school_link: |
-        <p>Erfahren Sie mehr bei <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
+        <p>Erfahre mehr unter <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
-        <p>Ein Vorschlag ist ein Werkzeug, um die Zustimmung für ein Statement oder eine Handlungsoption einzuholen.</p>
+        <p>Ein Vorschlag ist ein Werkzeug, um die Zustimmung für eine Aussage oder eine Handlungsoption einzuholen.</p>
         <p>Teilnehmer können zustimmen, ablehnen, sich enthalten oder ein Veto einlegen - und ihre Abstimmungsposition auch entsprechend begründen.</p>
         <p>Ein Kuchendiagramm zeigt die verschiedenen Abstimmungspositionen in der Gruppe übersichtlich an, während durch die Abstimmungsbegründungen auch einzelne Meinungen nicht unter den Tisch fallen und gehört werden. </p>
         <p>Lass dich nicht entmutigen, wenn es zunächst nicht zu einer Einigung kommt, Vorschläge sind dafür vorgesehen, Diskussionspunkte in den Fokus zu rücken, die einer Klärung bedürfen.</p>
-        <p>Mit einer ausreichend großen Abstimmungsbeteiligung ist ein Vorschlag somit ein mächtiges Werkzeug, um der Abstimmung im nächsten Schritt Handlungen und Tagen folgen zu lassen.</p>
+        <p>Mit einer ausreichend großen Abstimmungsbeteiligung ist ein Vorschlag somit ein mächtiges Werkzeug, um der Abstimmung im nächsten Schritt Handlungen und Taten folgen zu lassen.</p>
     tool_tip_collapsed: Gemeinschaftlich abstimmen
     start_header: Vorschlag starten
     edit_header: Angebot bearbeiten
@@ -1367,9 +1365,9 @@ de:
     proposal_updated: Vorschlag aktualisiert
   poll_poll_form:
     tool_tip_expanded: |
-        <p>Verwenden Sie eine Umfrage, um die Popularität zu messen oder eine Auswahl anzubieten.</p>
-        <p>Stellen Sie einige Optionen zur Auswahl bereit. Entscheiden Sie, ob die Teilnehmer einzelne oder mehrere Optionen als ihre Antwort wählen.</p>
-        <p>Jeder wählt und kann auch eine Aussage eingeben, wenn sie möchten. Die Ergebnisse werden in einem Balkendiagramm dargestellt.</p>
+        <p>Verwende eine Umfrage, um die Beliebtheit zu messen oder eine Auswahl anzubieten.</p>
+        <p>Stelle einige Optionen zur Auswahl bereit. Entscheide, ob die Teilnehmer einzelne oder mehrere Optionen als ihre Antwort wählen dürfen.</p>
+        <p>Jeder kann abstimmen und wenn gewünscht, auch eine Aussage in Worten formulieren. Die Ergebnisse werden in einem Balkendiagramm dargestellt.</p>
     tool_tip_collapsed: Beliebtheit eines Vorschlags messen oder Handlungsoptionen anbieten
     start_header: Umfrage beginnen
     edit_header: Umfrage bearbeiten
@@ -1382,11 +1380,11 @@ de:
     poll_updated: Umfrage aktualisiert
   poll_count_form:
     tool_tip_expanded: |
-        <p>Ein <em>Check</em> ist ein Tool mit vielen Verwendungsmöglichkeiten, aber nur 2 Antworten: ein Häkchen (✔) oder ein x-Zeichen (✘). Die Teilnehmer verwenden das Häkchen (✔), um Ja zu sagen, und das x-Zeichen (✘), um Nein oder Unsicher zu sagen.</p>
-        <p>Verwenden Sie diese Option, um Personen mit einem Angebot wie einer RSVP zu kontaktieren: "Ich komme zu der Veranstaltung" oder "Ich werde der Arbeitsgruppe beitreten".</p>
-        <p>Oder verwenden Sie es, um den Abschluss einer Aufgabe zu verfolgen: "Ich habe überprüft, ob meine Kontaktdaten korrekt sind" oder "Ich habe das Dokument gelesen und mein Feedback hinterlassen".</p>
-        <p>Ein Scheck hat ein <em>Ziel</em>, das ist die Anzahl der Teilnehmer, die Sie möchten. Das Ziel zeigt der Gruppe an, ob etwas mehr Aufmerksamkeit benötigt oder gut abonniert ist.</p>
-        <p>Einen Tag, bevor der Scheck schließt, wird er diejenigen, die nicht daran teilgenommen haben, daran erinnern, wie ein digitaler Ziegenhirte.</p>
+        <p>Ein <em>Check</em> ist ein Instrument mit vielen Verwendungsmöglichkeiten, aber nur 2 Antworten: ein Häkchen (✔) oder ein x-Zeichen (✘). Die Teilnehmer verwenden das Häkchen (✔), um Ja zu sagen, und das x-Zeichen (✘), um Nein oder Unsicher zu sagen.</p>
+        <p>Verwende diese Option, um Personen mit einer Antwortbitte zu kontaktieren, z.B.: "Ich komme zu der Veranstaltung" oder "Ich werde der Arbeitsgruppe beitreten".</p>
+        <p>Verwende es auch, um den Abschluss einer Aufgabe zu verfolgen, z.B.: "Ich habe überprüft, ob meine Kontaktdaten korrekt sind" oder "Ich habe das Dokument gelesen und mein Feedback hinterlassen".</p>
+        <p>Ein Check hat ein <em>Ziel</em>, dass du die Anzahl der Teilnehmer für eine Abstimmung kennst. Das Ergebnis zeigt der Gruppe an, ob noch etwas mehr Aufmerksamkeit benötigt wird oder nicht. </p>
+        <p>Einen Tag, bevor der Check schließt, werden diejenigen, die noch nicht daran teilgenommen haben, mit einer Erinnerung kontaktiert.</p>
     tool_tip_collapsed: Teilnahmebestätigung einholen oder Freiwillige finden
     start_header: Starten Sie die Überprüfung
     edit_header: Bestätigungsanfrage bearbeiten
@@ -1398,8 +1396,8 @@ de:
   poll_dot_vote_form:
     tool_tip_expanded: |
         <p>Punktabstimmung ist eine Möglichkeit, eine Liste von Optionen zu priorisieren.</p>
-        <p>Den Teilnehmern wird eine begrenzte Anzahl von "Punkten" zur Verfügung gestellt, die sie jedoch beliebig unter den zur Verfügung gestellten Optionen aufteilen können, um ihre eigenen Präferenzen darzustellen.</p>
-        <p>Die Gesamtsummen der Ergebnisse werden angezeigt, sowie die einzelnen Stimmen, sodass Sie verschiedene Standpunkte betrachten können.</p>
+        <p>Den Teilnehmern wird eine begrenzte Anzahl von "digitalen Klebepunkten" zur Verfügung gestellt, die sie beliebig unter den zur Verfügung gestellten Optionen aufteilen können, um ihre eigenen Präferenzen darzustellen.</p>
+        <p>Die Gesamtsumme der Ergebnisse werden angezeigt sowie die einzelnen Stimmen, sodass die verschiedenen Standpunkte betrachtet werden können.</p>
     tool_tip_collapsed: Verschiedene Handlungsoptionen priorisieren
     start_header: Starten Sie die Punktabstimmung
     edit_header: Bearbeiten Sie die Punktabstimmung
@@ -1413,11 +1411,11 @@ de:
     dot_vote_updated: Punktabstimmung aktualisiert
   poll_meeting_form:
     tool_tip_expanded: |
-        <p>Verwenden Sie eine Zeitumfrage, um herauszufinden, wann Personen für ein Treffen zur Verfügung stehen.</p>
-        <p>Geben Sie eine Liste von Daten oder Uhrzeiten ein, zu denen Sie Ihre Besprechung haben könnten.</p>
-        <p>Die Teilnehmer kreuzen die an, an denen sie teilnehmen können, oder sie können das Anweisungsfeld verwenden, um ihre Umstände zu erklären, damit Sie die Optionen bei Bedarf aktualisieren können.</p>
-        <p>Wenn Sie während einer Zeitumfrage neue Zeiten hinzufügen, werden Personen, die bereits abgestimmt haben, aufgefordert, ihre Antwort zu aktualisieren.</p>
-        <p>Sie können dann sehen, wer wann verfügbar ist und entscheiden, wann Sie sich treffen.</p>
+        <p>Verwende eine Zeitumfrage, um herauszufinden, wann Personen für ein Treffen zur Verfügung stehen.</p>
+        <p>Gib eine Liste von Daten oder Uhrzeiten ein, zu denen Sie Ihre Besprechung stattfinden soll.</p>
+        <p>Die Teilnehmer kreuzen die Optionen an, an denen sie teilnehmen können oder sie können das Kommentarfeld verwenden, um ihre Umstände zu erklären. Dann können die Terminoptionen unter Umständen aktualisiert werden.</p>
+        <p>Wenn du während einer Zeitumfrage neue Zeiten hinzufügst, werden Personen, die bereits abgestimmt haben, aufgefordert, ihre Antwort zu aktualisieren.</p>
+        <p>Du kannst so sehen, wer wann verfügbar ist und entscheiden, wann das Treffen stattfinden kann.</p>
         <p>Zeiten werden automatisch in die lokale Zeitzone des Teilnehmers konvertiert.</p>
     tool_tip_collapsed: Gemeinsam geeignete Zeiten für Meetings finden
     start_header: Startzeit-Umfrage
@@ -1433,9 +1431,10 @@ de:
     add_option_placeholder: neue Zeit einfügen
   poll_ranked_choice_form:
     tool_tip_expanded: |
-        <p>Die Ranglistenwahl ist eine Wahlmethode, die es jedem Wähler ermöglicht, mit seinen Präferenzen in der richtigen Reihenfolge zu antworten.</p>
-        <p>Es ist vorzuziehen, wenn "Wahldiebstahl" ein Problem ist (dh. zwei etwas populäre Optionen sind ähnlich genug, dass sie
-        am Ende teilen Stimmen zwischen ihnen), und kann verwendet werden, um eine Condorcet oder Instant Runoff Stil Wahl zu implementieren.</p>
+        <p>Die Ranglistenwahl ist eine Methode, die es jedem Wähler ermöglicht, mit seinen Präferenzen in Form einer Reihenfolge zu antworten.</p>
+        <p>Es lohnt sich besonders, wenn es um Entscheidungen zwischen zwei oder mehreren beliebte Optionen geht, die recht ähnlich sind. Die Abstimmung wird dann einer Unterscheidung erzielen.</p>
+        <p>Die Anwendung lohnt sich auch, wenn es darum geht, eine Entscheidung nach Mehrheit zu erwirken.</p>
+        <p>Außerdem eignet sich das Instrument bei Stichwahl-Entscheidungen.</p>
     tool_tip_collapsed: Handlungsoptionen in einer Reihenfolge gewichten
     start_header: Start der Rangliste
     edit_header: Rangliste bearbeiten
@@ -1566,13 +1565,13 @@ de:
     filter_placeholder: (Alle Abstimmungen)
     groups_placeholder: (Alle Gruppen)
   auth_form:
-    sign_in_to_loomio: Einloggen in {{site_name}}
+    sign_in_to_loomio: Einloggen bei {{site_name}}
     sign_in: einloggen
     continue: fortfahren
     sign_in_as: als {{name}} einloggen
     continue_with_provider: mit {{provider}} fortfahren
     continue_with_email: mit E-Mail fortfahren
-    or_enter_your_email: oder geben Sie Ihre Mailadresse ein
+    or_enter_your_email: oder gib deine Ihre Mailadresse ein
     invitation_required: 'Der Account wurde nicht gefunden. Neue Accounts nur per Einladung. '
     more_providers: mehr
     email_not_present: Eine Mailadresse ist erforderlich
@@ -1583,9 +1582,7 @@ de:
     email_placeholder: du@beispiel.de
     login_with_token: Sie sind fertig! Klicken Sie auf den Link unten um sich einzuloggen.
     login_link_helptext: |
-        Klicken Sie auf die Schaltfläche unten und wir senden Ihnen einen Link, um sich sofort anzumelden.
-        Wenn Sie in der Zukunft ein Kennwort verwenden möchten, können Sie eines auf Ihrer Profilseite festlegen.
-    login_link_helptext_with_password: "Geben Sie ihr Passwort ein oder loggen Sie sich via Email ein"
+      Klicke auf die Schaltfläche unten wir senden dir einen Link, um dich sofort anzumelden. Wenn du in der Zukunft ein Kennwort verwenden möchtest, kannst du eines auf deiner Profilseite festlegen.    login_link_helptext_with_password: "Geben Sie ihr Passwort ein oder loggen Sie sich via Email ein"
     sign_up_helptext: "Bitte füllen Sie dieses Formular aus, um ein Benutzerkonto zu erstellen"
     i_accept: "Ich akzeptiere die <a href='{{termsUrl}}' target='_blank'>Nutzungsbedingungen</a> und <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>"
     name_required: Bitte geben Sie einen Namen ein.
@@ -1593,7 +1590,7 @@ de:
     account_inactive: Scheint, als wurde der Account für {{email}} deaktiviert.
     privacy_notice: "Persönliche Daten werden gesammelt, wenn Sie {{siteName}} verwenden. <br/>Lesen Sie unsere <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>, um mehr zu erfahren."
     welcome: Willkommen auf {{siteName}}!
-    welcome_back: NameWillkommen zurück, {{name}}!
+    welcome_back: Willkommen zuück, {{name}}!
     login_link: Via Mail anmelden
     set_password: Passwort festlegen
     set_password_helptext: Keine Lust sich via Mail einzuloggen?
@@ -1603,9 +1600,9 @@ de:
     create_account: Account erstellen
     already_a_user: Haben Sie {{site_name}} bereits davor verwendet? Geben Sie die Mail-Adresse ein, die sie als letzte nutzen, um sie miteinander zu koppeln.
     link_accounts: Accounts verbinden
-    check_your_email: Überprüfen Sie Ihren E-Mail-Posteingang
+    check_your_email: Überprüfe deinen E-Mail-Posteingang
     login_link_sent: "Wir haben eine Mail an {{email}} gesendet."
-    instructions: "Klicken Sie auf den Link um sich einzuloggen, oder geben Sie den Code unten ein: "
+    instructions: "Klicke auf den Link um dich einzuloggen oder gib den Code unten ein:"
     too_many_attempts: "zu viele Versuche; klicken Sie auf den Link in der Mail um sich einzuloggen."
     invalid_code: "Sorry, dieser Code stimmt nicht überein. Überprüfen Sie Ihre Mails und versuchen Sie es erneut."
     password_link_sent: "Wir haben eine Mail mit der Anleitung wie Sie Ihr Passwort festlegen an {{email}} gesendet."
