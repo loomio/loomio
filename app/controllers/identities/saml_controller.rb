@@ -14,10 +14,6 @@ class Identities::SamlController < Identities::BaseController
     { response: params[:SAMLResponse] }
   end
 
-  def get_url_base
-	"#{request.protocol}#{request.host_with_port}"
-  end
-
   def sp_settings
     # this is just for testing purposes.
     # should retrieve SAML-settings based on subdomain, IP-address, NameID or similar
