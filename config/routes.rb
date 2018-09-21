@@ -320,7 +320,8 @@ Loomio::Application.routes.draw do
   end
 
   scope :saml do
-    post :oauth,                          to: 'identities/saml#create'
+    post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
+    get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
   end
 
   get ":id", to: 'groups#show', as: :group_handle, format: :html
