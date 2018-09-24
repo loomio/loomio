@@ -19,9 +19,7 @@
   "bugs": {
     "url": "https://github.com/loomio/loomio/issues"
   },
-  "browserslist": [
-    "defaults"
-  ],
+  "browserslist": [ "defaults", "IE 11" ],
   "browser": {
     "vue": "vue/dist/vue.common.js"
   },
@@ -71,7 +69,10 @@
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
     "add-stream": "^1.0.0",
+    "babelify": "^10.0.0",
     "browserify": "^16.2.2",
     "browserify-debug-tools": "^2.3.0",
     "browserify-ngannotate": "^2.0.0",
