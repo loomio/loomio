@@ -19,7 +19,6 @@
   "bugs": {
     "url": "https://github.com/loomio/loomio/issues"
   },
-  "browserslist": [ "defaults", "IE 11" ],
   "browser": {
     "vue": "vue/dist/vue.common.js"
   },
@@ -32,7 +31,7 @@
     "angular-clipboard": "latest",
     "angular-elastic": "latest",
     "angular-gravatar": "~0.4.2",
-    "angular-inview": "3.0.0",
+    "angular-inview": "2.3.0",
     "angular-material": "1.1.10",
     "angular-messages": "1.7.4",
     "angular-mocks": "^1.7.4",
