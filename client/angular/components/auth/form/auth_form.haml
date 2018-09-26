@@ -3,7 +3,7 @@
   .auth-form__logging-in.animated{ng-if: "!loginComplete()"}
     .auth-form__email-not-set.animated{ng-if: "!user.emailStatus"}
       %auth_provider_form{user: "user"}
-      %auth_email_form{user: "user"}
+      %auth_email_form{user: "user", ng-if: "emailLogin"}
       .auth-form__privacy-notice.md-caption.lmo-hint-text{ng-if: "privacyUrl", translate: "auth_form.privacy_notice", translate-values: "{siteName: siteName, privacyUrl: privacyUrl}"}
     .auth-form__email-set.animated{ng-if: "user.emailStatus"}
       %auth_identity_form.animated{ng-if: "pendingProviderIdentity && !user.createAccount", user: "user", identity: "pendingProviderIdentity"}

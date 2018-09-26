@@ -5,6 +5,7 @@ angular.module('loomioApp').directive 'authProviderForm', ['$window', ($window) 
   scope: {user: '='}
   templateUrl: 'generated/components/auth/provider_form/auth_provider_form.html'
   controller: ['$scope', ($scope) ->
+    $scope.emailLogin = AppConfig.features.app.email_login
     $scope.providers = AppConfig.identityProviders
     $scope.capitalize = _.capitalize
 
