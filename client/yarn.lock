@@ -638,9 +638,9 @@ angular-gravatar@~0.4.2:
   dependencies:
     angular "^1.2.5"
 
-angular-inview@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/angular-inview/-/angular-inview-3.0.0.tgz#de6f13f2e674a9c6a2fbceaad0ea7eac7735b8b4"
+angular-inview@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/angular-inview/-/angular-inview-2.3.1.tgz#2818f839432af2de44732678061ab76d83d52158"
 
 angular-material@1.1.10:
   version "1.1.10"
