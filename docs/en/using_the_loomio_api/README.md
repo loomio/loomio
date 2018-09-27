@@ -19,7 +19,7 @@ Happy cUrling and bashing!
 
 ## Using the Public API
 
-Data in public discussions is freely available via the Loomio API. Certain endpoints (marked with a 🔓 in the [API Endpoints](#api_endpoints) section below) are accessible even while logged out. For example, you can view a list of the most recently created public discussions on (Loomio.org)[http://www.loomio.org] like so:
+Data in public discussions is freely available via the Loomio API. Certain endpoints (marked with a 🔓 in the [API Endpoints](#api_endpoints) section below) are accessible even while logged out. For example, you can view a list of the most recently created public discussions on [Loomio.org](http://www.loomio.org) like so:
 
 ```bash
   curl /discussions.json
