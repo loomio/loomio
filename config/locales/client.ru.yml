@@ -10,6 +10,14 @@ ru:
     nerd: Умный
     relieved: Освобожденный
     worried: Взволнован
+    confused: Смущенный
+    confounded: Посрамленный
+    neutral_face: Нейтральный
+    slight_frown: Хмуриться
+    disappointed: Разочарованный
+    angry: Рассерженный
+    weary: Утомлённый
+    astonished: Изумлённый
     cry: Плакать
     scream: Кричать
     sleeping: Скучающий
@@ -22,7 +30,9 @@ ru:
     ok_hand: Хорошо
   poll_types:
     proposal: Предложение
+    count: Проверка
     poll: Опрос
+    dot_vote: Голосов
     meeting: Голосование за время встречи
   timezones:
     local: местное время ({{значение}})
@@ -48,6 +58,7 @@ ru:
     decisions: 'Решения'
     settings: 'Настройки'
     help: 'Помощь'
+    anonymous: Анонимный
     privacy:
       privacy: 'Конфиденциальность'
       public: 'Публичная'
@@ -361,6 +372,7 @@ ru:
     heading: Предыдущие предложения
   invitation_form:
     copy_link: 'Копировать'
+    custom_message: 'Сообщение от пользователя'
     add_members: 'Добавить участников'
     done: 'Сделано'
     messages:
@@ -463,6 +475,7 @@ ru:
     submit: Деактивировать
   decision_tools_card:
     proposal_title: Предложение
+    count_title: Проверка
     poll_title: Опрос
     meeting_title: Голосование за время встречи
   poll_common:
@@ -486,3 +499,42 @@ ru:
     start_new_poll: Новое решение
   auth_form:
     email_placeholder: You@example.com
+  install_slack:
+    progress:
+      decide: Принять решение
+    install:
+      heading: 'Шаг 1. Выберите группу Loomio для интеграции'
+      tooltip_heading: Loomio и Slack-мессенджер отлично работают вместе
+      and_also_this: Начните опросы мгновенно и получите обратную связь в режиме реального времени
+      add_to_group_helptext: Выберите группу, чтобы связать со Slack-мессенджером
+      group_name: Название группы
+      group_name_placeholder: Придумайте имя для новой группы...
+      slack_installed: Slack-мессенджер устновлен
+      install_slack: Установить Slack-мессенджер сейчас
+      start_new_group: Создать новую группу
+      use_existing_group: Использовать существующую группу
+    invite:
+      heading: 'Шаг 2: Настройте канал Slack-мессенджера'
+      helptext: |
+          Успешно! Теперь выберите канал, на который мы будем отправлять обновления.
+      select_a_channel: Выбрать канал
+      publish_group: Отправить приветственное сообщение
+      publish_group_helptext_on: Мы отправим сообщение на этот канал, чтобы проинструктировать людей о том, как использовать LoomioBot.
+      publish_group_helptext_off: Мы ничего не будем публиковать, пока Вы не создадите опрос.
+      custom_message: Сообщение от пользователя
+      set_channel: Установить канал
+    decide:
+      heading: 'Шаг 3: Примите решение совместно'
+      helptext: "Теперь, когда Вы определились, пришло время принимать решения. Выберите один из следующих вариантов:"
+    common:
+      do_it_later: Я сделаю это позже
+  browser_warning:
+    message: "ВАЖНО! Вы используете устаревший браузер ({{имя}} {{версия}}), который нами не поддерживается {{сайт}}."
+    link: Пожалуйста, используйте другой браузер
+  slack_added_modal:
+    title: Успешно!
+    start_poll_now: Принять решение сейчас
+  powered_by:
+    privacy_policy: Политика конфиденциальности
+    terms_of_service: Условия использования
+    front_page: Заглавная страница
