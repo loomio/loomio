@@ -71,10 +71,10 @@ module.exports = class UserModel extends BaseModel
     @id == object.authorId if object
 
   isAdminOf: (group) ->
-    _.contains(group.adminIds(), @id) if group
+    _.includes(group.adminIds(), @id) if group
 
   isMemberOf: (group) ->
-    _.contains(group.memberIds(), @id) if group
+    _.includes(group.memberIds(), @id) if group
 
   firstName: ->
     _.first @name.split(' ') if @name
@@ -123,4 +123,4 @@ module.exports = class UserModel extends BaseModel
       @titleFor(model.guestGroup()) or @titleFor(model.discussion()) or @titleFor(model.group())
 
   belongsToPayingGroup: ->
-    _.any @groups(), (group) -> group.subscriptionKind == 'paid'
+    _.some @groups(), (group) -> group.subscriptionKind == 'paid'

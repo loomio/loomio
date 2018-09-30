@@ -18,7 +18,7 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
     InboxService.load()
 
     $scope.canStartThreads = ->
-      _.any Session.user().groups(), (group) -> AbilityService.canStartThread(group)
+      _.some Session.user().groups(), (group) -> AbilityService.canStartThread(group)
 
     availableGroups = ->
       _.filter Session.user().groups(), (group) -> group.type == 'FormalGroup'

@@ -2,7 +2,7 @@ BaseRecordsInterface = require 'shared/record_store/base_records_interface'
 AnnouncementModel    = require 'shared/models/announcement_model'
 
 kindForTarget = (target) ->
-  if _.contains(['poll_edited', 'discussion_edited'], target.kind)
+  if _.includes(['poll_edited', 'discussion_edited'], target.kind)
     target.kind
   else
     "#{eventableOrSelf(target).constructor.singular}_announced"

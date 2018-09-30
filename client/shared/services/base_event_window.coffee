@@ -34,7 +34,7 @@ module.exports = class BaseEventWindow
   setMax: (val) -> @max = if val < @lastInSequence() then val else false
 
   isUnread: (event) =>
-    !_.any @readRanges, (range) ->
+    !_.some @readRanges, (range) ->
       _.inRange(event.sequenceId, range[0], range[1]+1)
 
   increaseMax: =>

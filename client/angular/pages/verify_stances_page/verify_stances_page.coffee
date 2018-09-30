@@ -14,7 +14,7 @@ $controller = ($scope, $rootScope) ->
     path:       'unverified'
 
   $scope.loader.fetchRecords().then (data) =>
-    Records.stances.find(_.pluck(data.stances, 'id')).map (stance) ->
+    Records.stances.find(_.map(data.stances, 'id')).map (stance) ->
       stance.unverified = true
 
   $scope.stances = -> Records.stances.find(unverified: true)

@@ -153,7 +153,7 @@ module.exports =
     translationOptions: ->
 
     isA: (models...) ->
-      _.contains models, @constructor.singular
+      _.includes models, @constructor.singular
 
     isNew: ->
       not @id?

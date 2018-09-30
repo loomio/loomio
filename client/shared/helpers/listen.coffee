@@ -9,7 +9,7 @@ module.exports =
     $scope.mentionables = []
     $scope.fetchByNameFragment = (q) ->
       Records.users.fetchMentionable(q).then (response) ->
-        $scope.mentionables = Records.users.find(_.pluck(response.users, 'id'))
+        $scope.mentionables = Records.users.find(_.map(response.users, 'id'))
 
   listenForTranslations: ($scope) ->
     EventBus.listen $scope, 'translationComplete', (e, translatedFields) =>

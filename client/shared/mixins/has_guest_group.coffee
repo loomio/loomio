@@ -10,7 +10,7 @@ module.exports = new class HasGuestGroup
       @recordStore.groups.find(id: {$in: model.groupIds()})
 
     model.memberIds = model.memberIds or ->
-      _.pluck @recordStore.memberships.find(groupId: {$in: model.groupIds()}), 'userId'
+      _.map @recordStore.memberships.find(groupId: {$in: model.groupIds()}), 'userId'
 
     model.members = model.members or ->
       @recordStore.users.find(id: {$in: model.memberIds()})

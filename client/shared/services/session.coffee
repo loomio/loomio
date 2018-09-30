@@ -45,7 +45,7 @@ setDefaultParams = (params) ->
     Records[endpoint].remote.defaultParams = _.pick params, _.identity
 
 momentLocaleFor = (locale) ->
-  if _.contains AppConfig.momentLocales.valid, locale
+  if _.includes AppConfig.momentLocales.valid, locale
     locale
   else
     _.first locale.split('-')

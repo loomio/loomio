@@ -66,7 +66,7 @@ module.exports = class EventModel extends BaseModel
     @discussion().isForking() && @kind == 'new_comment'
 
   isForking: ->
-    _.contains @discussion().forkedEventIds, @id
+    _.includes @discussion().forkedEventIds, @id
 
   toggleFromFork: ->
     if @isForking()

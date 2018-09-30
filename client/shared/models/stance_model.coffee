@@ -43,10 +43,10 @@ module.exports = class StanceModel extends BaseModel
     @recordStore.pollOptions.find(@pollOptionIds())
 
   stanceChoiceNames: ->
-    _.pluck(@pollOptions(), 'name')
+    _.map(@pollOptions(), 'name')
 
   pollOptionIds: ->
-    _.pluck @stanceChoices(), 'pollOptionId'
+    _.map @stanceChoices(), 'pollOptionId'
 
   choose: (optionIds) ->
     _.each @recordStore.stanceChoices.find(stanceId: @id), (stanceChoice) ->
@@ -57,7 +57,7 @@ module.exports = class StanceModel extends BaseModel
     @
 
   votedFor: (option) ->
-    _.contains _.pluck(@pollOptions(), 'id'), option.id
+    _.includes _.map(@pollOptions(), 'id'), option.id
 
   scoreFor: (option) ->
     choiceForOption = _.find @stanceChoices(), (choice)->

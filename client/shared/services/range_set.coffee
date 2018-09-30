@@ -25,7 +25,7 @@ module.exports = new class RangeSet
     ab[0][1] >= ab[1][0]
 
   includesValue: (ranges, value) ->
-    _.any ranges, (range) ->
+    _.some ranges, (range) ->
       _.inRange(value, range[0], range[1]+1)
 
   # TODO: fix me for complex range sets!
@@ -45,7 +45,7 @@ module.exports = new class RangeSet
   subtractRangesLoop: (wholes, parts) ->
     output = []
     _.each wholes, (whole) =>
-      if _.any(parts, (part) => @overlaps(whole, part))
+      if _.some(parts, (part) => @overlaps(whole, part))
         _.each _.select(parts, (part) => @overlaps(whole, part)), (part) =>
           _.each @subtractRange(whole, part), (remainder) =>
             output.push remainder

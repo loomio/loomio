@@ -75,7 +75,7 @@ module.exports = class DiscussionModel extends BaseModel
       poll.isActive()
 
   hasActivePoll: ->
-    _.any @activePolls()
+    _.some @activePolls()
 
   hasDecision: ->
     @hasActivePoll()
@@ -208,4 +208,4 @@ module.exports = class DiscussionModel extends BaseModel
     _.sortBy(@recordStore.events.find(@forkedEventIds), 'sequenceId')
 
   forkTarget: ->
-    @forkedEvents()[0].model() if _.any @forkedEvents()
+    @forkedEvents()[0].model() if _.some @forkedEvents()

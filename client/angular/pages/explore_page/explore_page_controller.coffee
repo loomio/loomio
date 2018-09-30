@@ -20,7 +20,7 @@ $controller = ($rootScope, $timeout) ->
   @handleSearchResults = (response) =>
     Records.groups.getExploreResultsCount(@query).then (data) =>
       @resultsCount = data.count
-    @groupIds = @groupIds.concat _.pluck(response.groups, 'id')
+    @groupIds = @groupIds.concat _.map(response.groups, 'id')
     @canLoadMoreGroups = (response.groups || []).length == @perPage
 
   # changing the search term
@@ -39,7 +39,7 @@ $controller = ($rootScope, $timeout) ->
     { 'background-image': "url(#{group.coverUrl('small')})" }
 
   @groupDescription = (group) ->
-    _.trunc group.description, 100 if group.description
+    _.truncate group.description, {length: 100} if group.description
 
   @showMessage = ->
     !@searching &&

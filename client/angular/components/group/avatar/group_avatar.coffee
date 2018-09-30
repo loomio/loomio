@@ -5,6 +5,6 @@ angular.module('loomioApp').directive 'groupAvatar', ->
   replace: true
   controller: ['$scope', ($scope) ->
     sizes = ['small', 'medium', 'large']
-    unless _.contains(sizes, $scope.size)
+    unless _.includes(sizes, $scope.size)
       $scope.size = 'small'
   ]

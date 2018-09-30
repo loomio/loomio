@@ -105,7 +105,7 @@ module.exports = class GroupModel extends BaseModel
     @recordStore.discussions.find(groupId: { $in: @organisationIds() }, discussionReaderId: { $ne: null })
 
   organisationIds: ->
-    _.pluck(@subgroups(), 'id').concat(@id)
+    _.map(@subgroups(), 'id').concat(@id)
 
   membershipFor: (user) ->
     _.find @memberships(), (membership) -> membership.userId == user.id
@@ -124,10 +124,10 @@ module.exports = class GroupModel extends BaseModel
     _.some @recordStore.memberships.where(groupId: @id, userId: user.id)
 
   memberIds: ->
-    _.pluck @memberships(), 'userId'
+    _.map @memberships(), 'userId'
 
   adminIds: ->
-    _.pluck @adminMemberships(), 'userId'
+    _.map @adminMemberships(), 'userId'
 
   parentName: ->
     @parent().name if @parent()?

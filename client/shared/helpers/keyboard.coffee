@@ -24,7 +24,7 @@ module.exports =
       !scope.submitIsDisabled and
       hasActiveElement(opts.element, active) and
       (event.ctrlKey or event.metaKey or opts.anyEnter) and
-      (opts.anyInput or _.contains(active.classList, 'lmo-primary-form-input'))
+      (opts.anyInput or _.includes(active.classList, 'lmo-primary-form-input'))
 
 keyboardShortcuts =
   73:  'pressedI'
@@ -47,7 +47,7 @@ hasActiveElement = (element, active) ->
   _.find element.find('textarea'), (input) -> active == input
 
 defaultShouldExecute = (active = {}, event = {}) ->
-  !event.ctrlKey and !event.altKey and !_.contains(['INPUT', 'TEXTAREA', 'SELECT'], active.nodeName)
+  !event.ctrlKey and !event.altKey and !_.includes(['INPUT', 'TEXTAREA', 'SELECT'], active.nodeName)
 
 registerKeyEvent = (scope, eventCode, execute, shouldExecute) ->
   scope["#{eventCode}Event"]() if typeof scope["#{eventCode}Event"] is 'function'

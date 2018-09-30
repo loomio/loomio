@@ -59,7 +59,7 @@ module.exports =
         switch model.pollType
           # for polls with default poll options (proposal, check)
           when 'proposal', 'count'
-            model.pollOptionNames = _.pluck fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
+            model.pollOptionNames = _.map fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
           # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
           when 'meeting'
             model.customFields.can_respond_maybe = model.canRespondMaybe
@@ -161,7 +161,7 @@ failure = (scope, model, options) ->
   (response) ->
     FlashService.dismiss()
     options.failureCallback(response) if typeof options.failureCallback is 'function'
-    setErrors(scope, model, response) if _.contains([401, 422], response.status)
+    setErrors(scope, model, response) if _.includes([401, 422], response.status)
     EventBus.emit scope, errorTypes[response.status] or 'unknownError',
       model: model
       response: response
