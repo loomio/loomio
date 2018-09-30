@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
 
   # this boots the angular app
   def index
+    expires_now
     render 'application/index', layout: false
   end
 
