@@ -1,11 +1,11 @@
+Ahoy.cookie_domain = :all
 Ahoy.visit_duration = 30.minutes
 Ahoy.geocode = :async
+# Ahoy.track_visits_immediately = true if Rails.env.test?
 Ahoy.api = true
 Ahoy.server_side_visits = :when_needed
-AhoyEmail.default_options[:open] = true
-AhoyEmail.default_options[:utm_params] = true
+AhoyEmail.track click: false
 Ahoy.mask_ips = true
-Ahoy.cookies = false
 
 class Ahoy::Store < Ahoy::DatabaseStore
 
