@@ -7,6 +7,7 @@ angular.module('loomioApp').directive 'authForm', ->
   scope: {preventClose: '=', user: '='}
   templateUrl: 'generated/components/auth/form/auth_form.html'
   controller: ['$scope', ($scope) ->
+    $scope.emailLogin = AppConfig.features.app.email_login
     $scope.siteName = AppConfig.theme.site_name
     $scope.privacyUrl = AppConfig.theme.privacy_url
 
