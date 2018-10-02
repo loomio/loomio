@@ -1597,9 +1597,9 @@ de:
     set_password_link: Legen Sie ein Passwort fest
     hello: "Hallo, {{name}}!"
     new_to_loomio: Das erste mal auf {{site_name}}? Erstellen Sie einen Account
-    create_account: Account erstellen
     already_a_user: Haben Sie {{site_name}} bereits davor verwendet? Geben Sie die Mail-Adresse ein, die sie als letzte nutzen, um sie miteinander zu koppeln.
-    link_accounts: Accounts verbinden
+    create_account: Benutzerkonto erstellen
+    link_accounts: Verbinden
     check_your_email: Überprüfe deinen E-Mail-Posteingang
     login_link_sent: "Wir haben eine Mail an {{email}} gesendet."
     instructions: "Klicke auf den Link um dich einzuloggen oder gib den Code unten ein:"
