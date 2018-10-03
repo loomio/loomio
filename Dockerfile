@@ -37,7 +37,9 @@ WORKDIR /loomio
 RUN bundle install
 
 # build client app
+ENV RAILS_ENV test
 RUN bundle exec rake plugins:fetch[docker] plugins:install deploy:build
+ENV RAILS_ENV production
 
 EXPOSE 3000
 
