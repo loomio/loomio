@@ -25,7 +25,7 @@
   "homepage": "https://github.com/loomio/loomio#readme",
   "dependencies": {
     "actioncable": "^5.2.1",
-    "angular": "1.7.4",
+    "angular": "1.7.5",
     "angular-animate": "1.7.5",
     "angular-aria": "1.7.4",
     "angular-clipboard": "latest",
