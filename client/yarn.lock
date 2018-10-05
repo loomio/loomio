@@ -614,9 +614,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-animate@1.7.4:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.7.4.tgz#14cee98e6aebab27642391c94c872009f2e3cd62"
+angular-animate@1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.7.5.tgz#1ffc6c2a9cdee227a2ba79cc6cd8f71ec44db5dc"
 
 angular-aria@1.7.4:
   version "1.7.4"
