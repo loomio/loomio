@@ -756,10 +756,10 @@ angular-route@^1.7.4:
   resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.7.4.tgz#2af79395b7bc0d92d2a394efea255a912255fea9"
   integrity sha512-z7HjNixxCdU7Th12jeXS/MS9QV320AVIOHmZ39guXZMJY4fR3defC/uyzhJyEiiw2ySXfg/PWjWdterw82CVig==
 
-angular-sanitize@^1.7.4:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.4.tgz#c7d80176ed31507fd0e08bbb3a6c25bf09db2a61"
-  integrity sha512-i5NoK6lo21N/CDRtkXpUuqaXeyncP7icLNCGzCUCD6CQvfVh3nY9Nsiw+tHtiIeD34ppcbl5Wb6ihY7RKDoDVw==
+angular-sanitize@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.5.tgz#75d49e15071ca9c70581e76d20940f26372e24d2"
+  integrity sha512-wjKCJOIwrkEvfD0keTnKGi6We13gtoCAQIHcdoqyoo3gwvcgNfYymVQIS3+iCGVcjfWz0jHuS3KgB4ysRWsTTA==
 
 angular-scroll@~1.0.2:
   version "1.0.2"
