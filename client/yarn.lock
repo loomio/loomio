@@ -741,10 +741,10 @@ angular-messages@1.7.5:
   resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.7.5.tgz#7c2fd781315a43a19838b117da0142a988454e14"
   integrity sha512-YDpJpFLyrIgZjE/sIAjgww1y6r3QqXBJbNDI0QjftD37vHXLkwvAOo3A4bxPw8BikyGLcJrFrgf6hRAzntJIWA==
 
-angular-mocks@^1.7.4:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.7.4.tgz#106d9c96eae0117ad9962ee688da5e514edae645"
-  integrity sha512-VSgHxObks7g5KeKVZ/g8awQosCY75SLm/R90WL/bqu8MxOvr9upYcNYCQuWS8z+OlLz+A8UuNPrzAc/LsGZ65Q==
+angular-mocks@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.7.5.tgz#c8baba5a06ed60b934697026b492169626af384b"
+  integrity sha512-I+Ue2Bkx6R9W5178DYrNvzjIdGh4wKKoCWsgz8dc7ysH4mA70Q3M9v5xRF0RUu7r+2CZj+nDeUecvh2paxcYvg==
 
 angular-recaptcha@4.2.0:
   version "4.2.0"
