@@ -33,7 +33,7 @@
     "angular-gravatar": "~0.4.2",
     "angular-inview": "2.3.1",
     "angular-material": "1.1.10",
-    "angular-messages": "1.7.4",
+    "angular-messages": "1.7.5",
     "angular-mocks": "^1.7.4",
     "angular-recaptcha": "4.2.0",
     "angular-route": "^1.7.4",
