@@ -36,7 +36,7 @@
     "angular-messages": "1.7.5",
     "angular-mocks": "^1.7.5",
     "angular-recaptcha": "4.2.0",
-    "angular-route": "^1.7.4",
+    "angular-route": "^1.7.5",
     "angular-sanitize": "^1.7.5",
     "angular-scroll": "~1.0.2",
     "angular-sortable-view": "0.0.17",
@@ -68,7 +68,7 @@
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.0",
+    "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "add-stream": "^1.0.0",
     "babelify": "^10.0.0",

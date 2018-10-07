@@ -9,7 +9,7 @@
   dependencies:
     "@babel/highlight" "^7.0.0"
 
-"@babel/core@^7.1.0":
+"@babel/core@^7.1.2":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.1.2.tgz#f8d2a9ceb6832887329a7b60f9d035791400ba4e"
   integrity sha512-IFeSSnjXdhDaoysIlev//UzHZbdEmm7D0EIH2qtse9xK7mXEZQpYjs2P00XlP1qYsYvid79p+Zgg6tz1mp6iVw==
@@ -754,7 +754,7 @@ angular-recaptcha@4.2.0:
   resolved "https://registry.yarnpkg.com/angular-recaptcha/-/angular-recaptcha-4.2.0.tgz#3533802ae0d43ac9fedd5f6104e9dbf3c10588a7"
   integrity sha512-PZ4VsUiNKNqaGqCpTAEwyAWUNF0w7xFulMf3ajJVym7bidxPEi5py1jQdxj4LFIWUxoA7XPan4sJMK4UeB8Srg==
 
-angular-route@^1.7.4:
+angular-route@^1.7.5:
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.7.5.tgz#34a3648c407a14a030d075cf485318e33ba23f0e"
   integrity sha512-7KfyEVVOWTI+jTY/j5rUNCIHGRyeCOx7YqZI/Ci3IbDK7GIsy6xH+hS5ai0Xi0sLjzDZ0PUDO4gBn+K0dVtlOg==
