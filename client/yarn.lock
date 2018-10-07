@@ -751,10 +751,10 @@ angular-recaptcha@4.2.0:
   resolved "https://registry.yarnpkg.com/angular-recaptcha/-/angular-recaptcha-4.2.0.tgz#3533802ae0d43ac9fedd5f6104e9dbf3c10588a7"
   integrity sha512-PZ4VsUiNKNqaGqCpTAEwyAWUNF0w7xFulMf3ajJVym7bidxPEi5py1jQdxj4LFIWUxoA7XPan4sJMK4UeB8Srg==
 
-angular-route@^1.7.4:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.7.4.tgz#2af79395b7bc0d92d2a394efea255a912255fea9"
-  integrity sha512-z7HjNixxCdU7Th12jeXS/MS9QV320AVIOHmZ39guXZMJY4fR3defC/uyzhJyEiiw2ySXfg/PWjWdterw82CVig==
+angular-route@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.7.5.tgz#34a3648c407a14a030d075cf485318e33ba23f0e"
+  integrity sha512-7KfyEVVOWTI+jTY/j5rUNCIHGRyeCOx7YqZI/Ci3IbDK7GIsy6xH+hS5ai0Xi0sLjzDZ0PUDO4gBn+K0dVtlOg==
 
 angular-sanitize@^1.7.5:
   version "1.7.5"
