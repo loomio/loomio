@@ -1,6 +1,7 @@
-Loomio is a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. If you'd like to find out more, check out [Loomio.org](https://www.loomio.org).
+Loomio is a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. To find out more, visit [Loomio.org](https://www.loomio.org).
 
 
+![](https://travis-ci.org/loomio/loomio.svg?branch=master)
 
 ### Contributing
 
@@ -14,7 +15,7 @@ To learn about working within the Loomio Co-op, read the [Loomio Coop Handbook](
 
 [![View performance data on Skylight](https://badges.skylight.io/status/BGzqZwewZHUe.svg)](https://oss.skylight.io/app/applications/BGzqZwewZHUe)
 
-[![Build Status](https://travis-ci.org/loomio/loomio.svg?branch=master)](https://travis-ci.org/loomio/loomio) 
+[![Build Status](https://travis-ci.org/loomio/loomio.svg?branch=master)](https://travis-ci.org/loomio/loomio)
 
 ### Contact
 
