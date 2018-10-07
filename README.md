@@ -1,7 +1,6 @@
 Loomio is a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. To find out more, visit [Loomio.org](https://www.loomio.org).
 
-
-![](https://travis-ci.org/loomio/loomio.svg?branch=master)
+[![Build Status](https://travis-ci.org/loomio/loomio.svg?branch=master)](https://travis-ci.org/loomio/loomio)
 
 ### Contributing
 
@@ -12,10 +11,6 @@ To setup up a Loomio development environment, or to develop plugin to extend Loo
 To setup your own Loomio instance see [loomio/loomio-deploy](https://github.com/loomio/loomio-deploy)
 
 To learn about working within the Loomio Co-op, read the [Loomio Coop Handbook](https://github.com/loomio/loomio-coop-handbook)
-
-[![View performance data on Skylight](https://badges.skylight.io/status/BGzqZwewZHUe.svg)](https://oss.skylight.io/app/applications/BGzqZwewZHUe)
-
-[![Build Status](https://travis-ci.org/loomio/loomio.svg?branch=master)](https://travis-ci.org/loomio/loomio)
 
 ### Contact
 
