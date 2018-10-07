@@ -38,7 +38,7 @@ RUN bundle install
 
 # build client app
 ENV RAILS_ENV test
-RUN bundle exec rake plugins:fetch[docker] plugins:install deploy:build
+RUN bundle exec rake plugins:fetch[docker]
 ENV RAILS_ENV production
 
 EXPOSE 3000

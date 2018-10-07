@@ -31,19 +31,10 @@ namespace :loomio do
     else
       SendDailyCatchUpEmailJob.perform_later
     end
-    
+
     AnnouncementService.delay.resend_pending_memberships
     LocateUsersAndGroupsJob.perform_later
     UsageReportService.send if (Time.now.hour == 0)
-  end
-
-  task migrate_attachments: :environment do
-    MigrateAttachmentService.migrate!(attachments: Attachment.where(attachable_type: [
-      "Discussion",
-      "Poll",
-      "Comment",
-      "Outcome"
-    ]))
   end
 
   task generate_error: :environment do
