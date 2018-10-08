@@ -27,19 +27,17 @@ RUN apt-get install -y nodejs
 WORKDIR /loomio
 ADD . /loomio
 COPY config/database.docker.yml /loomio/config/database.yml
-
-WORKDIR /loomio/angular
-RUN npm install -g yarn
-RUN yarn
-RUN npm rebuild node-sass
-
-WORKDIR /loomio
 RUN bundle install
 
-# build client app
 ENV RAILS_ENV test
 RUN bundle exec rake plugins:fetch[docker]
 ENV RAILS_ENV production
+
+WORKDIR /loomio/client
+RUN npm install -g yarn
+RUN yarn
+RUN npm rebuild node-sass
+WORKDIR /loomio
 
 EXPOSE 3000
 
