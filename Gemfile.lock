@@ -86,6 +86,8 @@ GEM
       arel (~> 8.0)
     activerecord-import (0.26.0)
       activerecord (>= 3.2)
+    activerecord-nulldb-adapter (0.3.9)
+      activerecord (>= 2.0.0)
     activesupport (5.1.6)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
@@ -515,7 +517,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.3.13)
     stackprof (0.2.12)
     temple (0.8.0)
     terrapin (0.6.0)
@@ -553,6 +554,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   activeadmin (~> 1.3.1)
   activerecord-import
+  activerecord-nulldb-adapter
   ahoy_email (~> 0.5.2)
   ahoy_matey (~> 2)
   autoprefixer-rails
@@ -630,7 +632,6 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   sprockets-rails
-  sqlite3
   stackprof
   twitter-text!
   uglifier
