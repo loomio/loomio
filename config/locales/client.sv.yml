@@ -35,7 +35,12 @@ sv:
   poll_types:
     proposal: Förslag
     count: Bock
-    poll: Undersökning
+    poll: Röstning
+    dot_vote: Punktröstning
+    meeting: Tidsröstning
+    ranked_choice: Valfritt val
+  timezones:
+    local: Lokal tid ({{value}})
   common:
     you: Du
     expand: Expandera
@@ -123,8 +128,10 @@ sv:
       invite: Bjud in
       resent: Inbjudan skickad igen
       export: Exportera
+      fork: Gaffel
     formatting_help:
       label: 'Utformning'
+      title: 'Lär dig hur du använder Märkspråk för att formatera din text'
   ordinal:
     _1: 1:a
     _2: 2:a
@@ -143,13 +150,20 @@ sv:
       inactive: 'Det är ett deaktiverat konto associerat med denna e-postadress. Om du vill återaktivera ditt konto, kontakta oss.'
   error_page:
     forbidden: 'Du saknar behörighet att göra detta.'
+    page_not_found: 'Vi kunde inte hitta det. Det kan ha blivit raderat eller flyttat.'
+    internal_server_error: 'Vi är ledsna, men något gick fel. Var god försök igen.'
+  verify_email_notice:
+    please_verify: Tack för att du deltar! Vänligen kolla din e-post efter en länk för att verifiera din röst.
   verify_stances:
+    title: Kontrollera röster
+    description: Läs igenom rösterna nedan och kontrollera att de är dina.
+    verify: Verifiera
     remove: Ta bort
     verify_success: Röst verifierad
     remove_success: Röst borttagen
     all_done: Bra jobbat, du har verfierat alla röster.
   previous_polls_page:
-    heading: Aktiviter i {{name}}
+    heading: Aktiviter i {{namn}}
     polls_count: Visar {{loaded}} av {{total}} beslut
     search_activities: Sök beslut
   volume_levels:
@@ -165,8 +179,9 @@ sv:
     quiet_label: "Inga e-post"
     mute_label: "Tysta ned"
     discussion:
+      title: "Tråda e-post inställningar"
       loud_description: "Du kommer stt få ett e-post när det sker aktivitet i tråden."
-      normal_description: "Du kommer att få e-post när ett förslag har startats, håller på att stängas, eller resultat är postat."
+      normal_description: "Du kommer att få en e-post när ett förslag har startats, håller på att stänga, eller resultatet är postat."
       quiet_description: "Du kommer inte få e-post om denna tråd."
       apply_to_all: "Tillämpa dessa inställningar på alla trådar i denna grupp."
       messages:
@@ -182,8 +197,27 @@ sv:
       messages:
         loud: "Du kommer få e-post om alla aktiviteter i denna grupp. "
         normal: "Du kommer bara få e-post vid meddelanden i denna grupp."
+        quiet: "Du kommer inte bli mailad om den här grupp."
+    all_groups:
+      messages:
+        loud: "Du kommer att bli mailad om alla aktivitetera i alla dina grupper"
+        normal: "Du kommer endast att bli mailade meddelanden i alla dina grupper."
+        quiet: "Du kommer inte att mailas om någon av dina grupper."
     user:
+      title: E-post inställningar för nya grupper
+      loud_description: "Du kommer bli mailad när det finns aktiviteter i nya grupper du går med."
+      normal_description: "Du kommer bli mailad om meddelanden i nya grupper du går med."
+      quiet_description: "Du kommer inte bli mailad om aktivitet i några nya grupper du går med."
       apply_to_all: "Tillämpa dessa inställningar i alla mina grupper."
+      messages:
+        loud: "Du kommer att mailas alla aktiviteter i nya grupper."
+        normal: "Du kommer bli mailad om meddelande i nya grupper."
+        quiet: "Du kommer inte bli mailad om nya grupper."
+  close_explanation_modal:
+    aria_label: Stäng tråd
+    close_thread: Stäng tråd
+    body_header: |
+        <p>Stäng gamla eller irrelevanta trådar för att ta bort dem från visning och visa att diskussionen har stängts.</p>
   inbox:
     clear: 'Klar'
     latest: 'Senaste'
@@ -302,6 +336,8 @@ sv:
     proposal_title: Förslag
     count_title: Bock
     poll_title: Undersökning
+    meeting_title: Tidsröstning
+    ranked_choice_title: Valfritt val
   poll_common_form:
     closed: Stängd
     start: Starta

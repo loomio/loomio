@@ -22,7 +22,9 @@ it:
       author: Autore
       details: Dettagli
       group_name: Nome del gruppo
+      discussion_title: Titolo della discussione
       reason: Motivo
+      participant: Partecipante
       total: Totale
   stance:
     error:
