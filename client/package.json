@@ -98,7 +98,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-run-sequence": "^0.3.2",
-    "gulp-sass": "4.0.1",
+    "gulp-sass": "4.0.2",
     "gulp-uglify": "^3.0.1",
     "gulp-watch": "^5.0.1",
     "hamljs": "^0.6.2",
