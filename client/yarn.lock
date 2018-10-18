@@ -1455,10 +1455,10 @@ browserslist@^4.1.0:
     electron-to-chromium "^1.3.73"
     node-releases "^1.0.0-alpha.12"
 
-budo@^11.3.2:
-  version "11.4.1"
-  resolved "https://registry.yarnpkg.com/budo/-/budo-11.4.1.tgz#e69185ec343051d9055af3880e3085d497041edb"
-  integrity sha512-TZMC0dYE3agNdVCuRCa7en16Cm3d0G0kLWObZ45tUQieIYdN1ARDOVBCnRxQXuj7NRjRsIunoxxiRSqqEPYDIQ==
+budo@^11.5.0:
+  version "11.5.0"
+  resolved "https://registry.yarnpkg.com/budo/-/budo-11.5.0.tgz#47f002d57b5f2e145dab13b8a430e295542ca3e5"
+  integrity sha512-kijEIfBG/UOQsNPQiNHAduFeDSMh28jCa6TI+mApIJWUrM2Gq3T7yzh3lCNipWhZTUNBztSj6UxiV1oE31Mvdw==
   dependencies:
     bole "^2.0.0"
     browserify "^16.1.0"
