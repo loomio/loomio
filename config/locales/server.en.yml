@@ -85,7 +85,7 @@ en:
 
   user_mailer:
     group_export_ready:
-      subject: Group data export for #{group_name}
+      subject: Group data export for %{group_name}
       body_html: |
         Here is the link to download your group data: %{url}
 
