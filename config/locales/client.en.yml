@@ -613,7 +613,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
-      export_data: 'Export group data'
+      export_data: 'Export Group Data'
       manage_members: 'Manage Members'
       add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
