@@ -87,7 +87,7 @@ en:
     group_export_ready:
       subject: Group data export for %{group_name}
       body_html: |
-        Here is the link to download your group data: %{url}
+        Download your group data <a href="%{url}">here</a>.
 
     accounts_merged:
       subject: "Your %{site_name} user accounts have been merged."
