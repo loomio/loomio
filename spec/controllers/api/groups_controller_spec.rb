@@ -19,8 +19,9 @@ describe API::GroupsController do
       expect(response.status).to eq 403
     end
 
-    it 'creates a document with file'
-    it 'sends an email with the link'
+    it 'sends an email' do
+      expect { post :export, params: { id: group.key } }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
   end
 
   describe 'show' do
