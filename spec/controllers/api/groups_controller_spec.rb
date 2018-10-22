@@ -6,6 +6,7 @@ describe API::GroupsController do
   let(:guest_group) { create :guest_group, creator: user }
   let(:subgroup) { create :formal_group, parent: group }
   let(:discussion) { create :discussion, group: group }
+  let(:another_group) { create :guest_group }
 
   before do
     group.admins << user
@@ -13,8 +14,13 @@ describe API::GroupsController do
   end
 
   describe 'export' do
-    it 'kicks off a group export job'
-    it 'gives access denied if you dont belong'
+    it 'gives access denied if you dont belong' do
+      post :export, params: { id: another_group.key }
+      expect(response.status).to eq 403
+    end
+
+    it 'creates a document with file'
+    it 'sends an email with the link'
   end
 
   describe 'show' do
