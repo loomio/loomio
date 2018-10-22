@@ -28,7 +28,7 @@ module LocalesHelper
 
   def save_detected_locale(user = current_user)
     if user.is_logged_in? && browser_detected_locales.any?
-      user.update_detected_locale(browser_detected_locales.first)
+      user.update_detected_locale(first_supported_locale browser_detected_locales)
     end
   end
 

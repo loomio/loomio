@@ -10,7 +10,8 @@ module.exports = new class UserHelpService
       else 'en'
 
   helpLink: ->
-    "https://loomio.gitbooks.io/manual/content/#{@helpLocale()}/index.html"
+    # "https://loomio.gitbooks.io/manual/content/#{@helpLocale()}/index.html"
+    "https://help.loomio.org/"
 
   helpVideo: ->
     switch Session.user().locale

@@ -662,7 +662,6 @@ pt_BR:
     submit: 'Desativar conta'
   email_settings_page:
     header: Configurações de e-mail
-    all_groups: Configurações para todos os grupos
     daily_summary_label: E-mail de resumo diário
     daily_summary_description: "Toda manhã você receberá um email com qualquer atividade que você não viu no dia anterior. Isso facilita com que você fique atualizado(a) com as atividades que estão rolando."
     on_participation_label: Inscrever-se na participação

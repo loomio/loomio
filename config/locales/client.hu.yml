@@ -228,6 +228,12 @@ hu:
         A némítás azt jelenti, hogy <p>nem kapsz értesítést a szavazásokról</p>, vagy bármi más aktivitásról a tredben, kivéve ha valaki <strong>@megemlít téged</strong>.
     body_html_2: |
         A némított tredek nincsenek feltűntetve a <p>friss</p> és <strong>olvasatlan</strong> oldalakon. Hogy megtaláld ezeket a tredeket, menj a <strong>Némított tredek </strong> az oldalsávban.
+    image_alt: Némított tredek beállításai az oldalsávban
+  dismiss_explanation_modal:
+    aria_label: Tred elvetése
+    dismiss_thread: Tred elvetése
+    body_html: |
+        <p>Ha elvetsz egy tredet, eltűnik az olvasatlan tredjeid közül. Ha bármi történik, újra bekerül az olvastlanok közé.</p>
   inbox:
     clear: 'Töröl'
     latest: 'Legutóbbi'
@@ -237,28 +243,46 @@ hu:
     password_label: 'Jelszó:'
     password_confirmation_label: 'Jelszó megismétlése:'
   signed_out_modal:
+    aria_label: 'Az értekezésnek vége'
+    title: "Az értekezésednek vége"
+    message: "Kijelentkeztél egy másik ablakban. Kérlek jelentkezz be újra a folytatáshoz."
     ok: "Rendben"
+  comment_reply_form:
+    aria_label: 'Válasz írás'
   comment_form:
     aria_label: 'Hozzászólás'
     attachments:
+      add_attachment: 'Fájl csatolása'
       remove_attachment: 'Csatolmány eltávolítása'
     messages:
       created: 'Hozzászólás megjelenítve'
       replied: '{{name}} értesítve a válaszról'
       updated: 'Hozzászólás frissítve'
       destroyed: 'Hozzászólás törölve'
+    say_something: Mondj valamit....
     edit_comment: 'Hozzászólást módosít'
     delete_comment: 'Hozzászólás törlése'
     cancel_reply: 'Válasz törlése'
     confirm_delete_message: 'Biztosan törölni akarod ezt a hozzászólást?'
+    confirm_delete: 'Komment törlése'
+    in_reply_to: "Válasz {{name}}ra"
+    write_a_comment: "Írj egy kommentet..."
     submit_button:
       label: 'Bejegyzés'
     private_privacy_notice: 'A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható.'
     public_privacy_notice: 'A hozzászólás mindenki számára nyilvános lesz.'
     sign_in: "Lépj be, hogy hozzászolhass a témakörhöz."
   sidebar:
+    recent_threads: 'Új tredek'
+    unread_threads: 'Olvasatlan tredek ({{count}})'
+    muted_threads: 'Némított tredek'
+    start_group: 'Új csoport'
+    explore: 'Nyilvános csoportok'
     start_thread: Új tred
+    start_decision: Új döntés
     aria_labels:
+      heading: 'Oldalsáv'
+      threads_list: 'Tred történések'
       groups_list: 'Csoportok'
       user_list: 'Felhasználói tettek'
   navbar:
@@ -328,7 +352,21 @@ hu:
     publish_outcome: "Eredmény közlése"
     motion_closed_by_user: "<strong>{{name}}</strong> lezárta a  <strong>{{title}}</strong> szavazást"
     motion_closed_by_expiry: "A <strong>{{title}}</strong> szavazás lezárult"
+    new_vote: "<strong>{{name}}</strong>álláspontja {{position}}  a <strong>{{title}}</strong> javaslatban"
+    new_comment: "<strong>{{name}}</strong> hozzászólt a <strong>{{title}}</strong> tredhez"
+    comment_replied_to: "<strong>{{name}}</strong> válaszolt a kommentedre a <strong>{{title}}</strong>tredben"
+    reaction_created: "<strong>{{name}}</strong> reagált<img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> a kommentedre itt: {{model}}<strong>{{title}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> megemlített téged itt: <strong>{{title}}</strong>"
+    user_reminded: "<strong>{{name}}</strong> vár a visszaigazolásodra itt: <strong>{{title}}</strong>"
+    membership_requested: "<strong>{{name}}</strong> szeretne csatlakozni ide: <strong>{{title}}</strong>"
+    membership_request_approved: '<strong>{{name}}</strong> elfogadta a csatlakozási kérelmed a <strong>{{title}}</strong> tredbe'
+    user_added_to_group: "<strong>{{name}}</strong> felvett a <strong>{{title}}</strong> csoportba"
+    user_added_to_group_no_inviter: "Csatlakoztál ide: <strong>{{title}}</strong>"
     motion_closing_soon: "Javaslat hamarosan zárul: <strong>{{title}}</strong>"
+    motion_outcome_created: "<strong>{{name}}</strong> közzétett egy végeredményt a <strong>{{title}}</strong> szavazásban"
+    motion_outcome_updated: "<strong>{{name}}</strong> frissített egy végeredményt a <strong>{{title}}</strong>szavazásban"
+    invitation_accepted: "<strong>{{name}}</strong> elfogadta a csatlakozási kérelmed itt: <strong>{{title}}</strong>"
+    new_coordinator: "<strong>{{name}}</strong> koordinátorrá tett itt: <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Szólj bele
   extend_proposal_form:
@@ -349,6 +387,8 @@ hu:
         title: Meghívás a tredbe
       poll_announced:
         title: Meghívás szavazásra
+  action_dock:
+    delete_comment: Komment törlése
   join_group_button:
     join_group: Kapcsolódj a csoporthoz
   membership_request_form:
@@ -481,6 +521,8 @@ hu:
     poll_title: Szavazás
     meeting_title: Idő szavazás
     ranked_choice_title: Sorrend szavazás
+  current_polls_card:
+    start_poll: Új döntés
   poll_common_form:
     closed: Zárva
     start: Indítás
@@ -493,6 +535,7 @@ hu:
     subscribe: Feliratkozás
   polls_page:
     heading: Döntések
+    start_new_poll: Új döntés
   install_slack:
     progress:
       invite: Meghív

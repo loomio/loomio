@@ -1,7 +1,7 @@
 module HasGuestGroup
   extend ActiveSupport::Concern
   included do
-    belongs_to :guest_group, class_name: "GuestGroup"
+    belongs_to :guest_group, class_name: "GuestGroup", dependent: :destroy
     has_many :guests, through: :guest_group, source: :members
     after_save :update_anyone_can_participate, if: :update_anyone_can_participate_value
     attr_accessor :update_anyone_can_participate_value

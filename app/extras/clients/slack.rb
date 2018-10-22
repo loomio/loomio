@@ -16,7 +16,12 @@ class Clients::Slack < Clients::Base
   def fetch_channels
     pub = fetch_public_channels
     pri = fetch_private_channels
-    json = if pub.success && pri.success then pub.json + pri.json else [] end
+
+    json = if pub.success && pri.success then
+      [pub, pri].map(&:json).flatten.reject {|channel| channel['name'].starts_with?("mpdm-") }
+    else
+      []
+    end
     OpenStruct.new(json: json)
   end
 
@@ -42,6 +47,7 @@ class Clients::Slack < Clients::Base
   def fetch_private_channels
     get "groups.list", options: { success: ->(response) { response['groups'] } }
   end
+
 
   def default_is_success
     ->(response) { response.success? && JSON.parse(response.body)['ok'].present? }

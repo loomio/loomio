@@ -23,7 +23,7 @@ describe Stance do
 
   describe 'statement' do
     it 'has a length validation' do
-      expect(build(:stance, reason: "a"*400)).to_not be_valid
+      expect(build(:stance, reason: "a"*600)).to_not be_valid
     end
   end
 

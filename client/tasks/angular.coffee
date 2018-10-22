@@ -20,6 +20,7 @@ cssmin     = require 'gulp-cssmin'
 browserify = require 'browserify'
 buffer     = require 'vinyl-buffer'
 coffeeify  = require 'coffeeify'
+babelify   = require 'babelify'
 source     = require 'vinyl-source-stream'
 fs         = require 'fs'
 collapse   = require 'bundle-collapser/plugin'
@@ -41,6 +42,7 @@ module.exports =
   production: ->
     requireForBundle()
     browserify(browserifyOpts())
+      .transform("babelify", {presets: ["@babel/preset-env"], extensions: ['.coffee', '.js']})
       .plugin(collapse)
       .transform('uglifyify')
       .bundle()

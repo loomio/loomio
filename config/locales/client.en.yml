@@ -1292,7 +1292,7 @@ en:
 
   decision_tools_card:
     title: Decision tools
-    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Help</a>
+    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Help</a>
     proposal_title: Proposal
     count_title: Check
     poll_title: Poll
@@ -1503,7 +1503,7 @@ en:
     start: Start
     update: Update
     loomio_school_link: |
-      <p>Find out more at <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
+      <p>Find out more at <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
 
   poll_proposal_form:
     tool_tip_expanded: |
@@ -1515,7 +1515,7 @@ en:
     tool_tip_collapsed: Seek collective agreement
     start_header: Start proposal
     edit_header: Edit proposal
-    tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
+    tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Learn more</a>
     title_placeholder: E.g. Let's go to the moon!
     details_placeholder: Give enough information so everyone knows what it means to agree or disagree
     proposal_created: Proposal started

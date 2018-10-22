@@ -1,1 +1,18 @@
-nb_NO: {}
+nb_NO:
+  poll:
+    export:
+      title: Tittel
+      total: Totalt
+  email:
+    group_membership_approved:
+      join_group: "Bli med i gruppe"
+  footer:
+    help: Hjelp
+    privacy: Personvern
+    public_groups: Offentlige grupper
+  poll_mailer:
+    common:
+      unsubscribe: Meld deg av
+      create_outcome: Del resultat
+  poll_unsubscribe:
+    go_to_dashboad: Gå til skrivebordet

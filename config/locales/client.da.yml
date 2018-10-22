@@ -564,7 +564,6 @@ da:
     submit: 'Deaktiver konto'
   email_settings_page:
     header: Emailindstillinger
-    all_groups: Indstillinger for alle grupper
     daily_summary_label: Send resumé email hver dag
     on_participation_label: Abonnér ved deltagelse
     on_participation_description: "Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme."
@@ -896,7 +895,6 @@ da:
     tool_tip_collapsed: Søg kollektiv enighed
     start_header: Opret forslag
     edit_header: Rediger forslag
-    tip: SSøg kollektiv enighed igennem en proces som lader alle stemmer blive hørt. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Læs mere</a>
     title_placeholder: F.eks. Lad os flyve til månen!
     details_placeholder: Giv nok information så at alle ved hvad det betyder at være enig eller uenig
     proposal_created: Forslag oprettet

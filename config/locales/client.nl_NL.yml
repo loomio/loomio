@@ -728,7 +728,6 @@ nl_NL:
     submit: 'Deactiveer account'
   email_settings_page:
     header: E-mailinstellingen
-    all_groups: Instellingen voor alle groepen
     daily_summary_label: Dagelijkse samenvatting per e-mail
     daily_summary_description: "Iedere morgen krijg je een e-mail met de gemiste activiteiten van de dag ervoor. Zo is het gemakkelijk om op de hoogte te blijven van alle activiteiten."
     on_participation_label: Abonneer op deelname
@@ -985,7 +984,6 @@ nl_NL:
       success: "'{{name}}' kan geen gebruik meer maken van je account."
   decision_tools_card:
     title: Beslissingsinstrumenten
-    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Hulp</a>
     proposal_title: Voorstel
     count_title: Check
     poll_title: Peiling
@@ -1144,8 +1142,6 @@ nl_NL:
     closed: Gesloten
     start: Starten
     update: Updaten
-    loomio_school_link: |
-        <p>Verruim je kennis op de <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Een 'Voorstel' is een instrument om een gemeenschappelijk akkoord te bekomen over een stelling of verloop.</p>
@@ -1156,7 +1152,6 @@ nl_NL:
     tool_tip_collapsed: Beoog een gemeenschappelijk akkoord
     start_header: '''Voorstel'' starten'
     edit_header: Voorstel bewerken
-    tip: Beoog een gemeenschappelijk akkoord aan de hand van een proces dat stemmen aan het woord laat. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank"> Leer meer </a>
     title_placeholder: M.a.w. Laten we naar de maan gaan!
     details_placeholder: Geef genoeg informatie, zodat iedereen weet wat het inhoudt om het eens of oneens te zijn
     proposal_created: '''Voorstel'' aangemaakt'

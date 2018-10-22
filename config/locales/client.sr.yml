@@ -384,7 +384,6 @@ sr:
     update_profile: 'Promena profila'
   email_settings_page:
     header: ePoruke
-    all_groups: Opcije svih grupa
     daily_summary_label: Dnevni izveštaj ePorukom
     on_participation_label: Pretplati se na učešće
     on_participation_description: "Kada se priključite niti, sve dalje aktivnosti biće Vam odmah poslate ePorukom."
