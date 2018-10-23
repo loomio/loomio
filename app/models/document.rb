@@ -49,6 +49,10 @@ class Document < ApplicationRecord
     self.file.blank?
   end
 
+  def url
+    self[:url].starts_with?("/") ? "#{lmo_asset_host}#{self[:url]}" : self[:url]
+  end
+
   private
 
   # need this to save model with upload correctly and get metadata,
@@ -62,8 +66,6 @@ class Document < ApplicationRecord
     self.icon    ||= metadata['icon']
     self.color   ||= metadata['color']
   end
-
-  private
 
   def metadata
     @metadata ||= Hash(AppConfig.doctypes.detect { |type| /#{type['regex']}/.match(file_content_type || url) })
