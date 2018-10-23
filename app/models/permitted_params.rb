@@ -103,7 +103,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def contact_message_attributes
-    [:email, :message, :name]
+    [:email, :subject, :user_id, :message, :name]
   end
 
   def user_deactivation_response_attributes

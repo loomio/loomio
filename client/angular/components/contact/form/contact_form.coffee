@@ -17,6 +17,7 @@ angular.module('loomioApp').directive 'contactForm', ->
     if $scope.isLoggedIn()
       $scope.message.name = Session.user().name
       $scope.message.email = Session.user().email
+      $scope.message.userId = Session.user().id
 
     $scope.submit = submitForm $scope, $scope.message,
       flashSuccess: "contact_message_form.new_contact_message"
