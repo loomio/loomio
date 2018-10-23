@@ -42,7 +42,7 @@ class GroupExportService
   end
 
   def self.export_filename_for(group)
-    "tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_#{group.name.parameterize}.json"
+    "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_#{group.name.parameterize}.json"
   end
 
   def self.puts_record(record, file, ids)
