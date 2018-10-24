@@ -186,50 +186,50 @@ describe API::ProfileController do
     let(:group) { create :formal_group }
     let(:subgroup) { create :formal_group, parent: group}
     let(:completely_unrelated_group) { create :formal_group }
-    let!(:jennifer) { create :user, name: 'jennifer', username: 'queenie' }
-    let!(:jessica)  { create :user, name: 'jessica', username: 'queenbee' }
-    let!(:emilio)   { create :user, name: 'emilio', username: 'coolguy' }
-    let!(:jerry)    { create :user, name: 'jerry', username: 'someguy' }
+    let!(:jgroupmember) { create :user, name: 'jgroupmember', username: 'queenie' }
+    let!(:jalien)  { create :user, name: 'jalien', username: 'queenbee' }
+    let!(:esubgroupmember)   { create :user, name: 'esubgroupmember', username: 'coolguy' }
+    let!(:jguest)    { create :user, name: 'jguest', username: 'someguy' }
     let(:discussion) { create :discussion, group: group, author: user, private: true }
 
-    # jennifer and emilio are in the group
-    # jessica is not in the group
+    # jgroupmember and esubgroupmember are in the group
+    # jalien is not in the group
 
     before do
       group.add_member! user
-      group.add_member! jennifer
-      subgroup.add_member! emilio
-      completely_unrelated_group.add_member! jessica
-      discussion.guest_group.add_member! jerry
+      group.add_member! jgroupmember
+      subgroup.add_member! esubgroupmember
+      completely_unrelated_group.add_member! jalien
+      discussion.guest_group.add_member! jguest
       sign_in user
     end
 
     it "returns users with name matching fragment" do
-      get :mentionable_users, params: {q: "je", group_id: group.id}
+      get :mentionable_users, params: {q: "jgr", group_id: group.id}
       user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
-      expect(user_ids).to eq [jennifer.id]
+      expect(user_ids).to eq [jgroupmember.id]
     end
 
     it "returns users with username matching fragment" do
       get :mentionable_users, params: {q: "qu", group_id: group.id}
       user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
-      expect(user_ids).to eq [jennifer.id]
+      expect(user_ids).to eq [jgroupmember.id]
     end
 
     it "returns users from groups within the same organisation" do
-      get :mentionable_users, params: {q: "em", group_id: group.id}
+      get :mentionable_users, params: {q: "e", group_id: group.id}
       user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
-      expect(user_ids).to eq [emilio.id]
+      expect(user_ids).to eq [esubgroupmember.id]
     end
 
-    it "returns users from guest group for the discussion" do
-      get :mentionable_users, params: {q: "jer", discussion_id: discussion.id}
+    it "returns users for the discussion" do
+      get :mentionable_users, params: {q: "j", discussion_id: discussion.id}
       user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
-      expect(user_ids).to eq [jerry.id]
+      expect(user_ids).to eq [jgroupmember.id, jguest.id]
     end
 
     it "doesn't return users from groups outside the organisation" do
-      get :mentionable_users, params: {q: "da", group_id: group.id}
+      get :mentionable_users, params: {q: "ja", group_id: group.id}
       user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
       expect(user_ids).to eq []
     end
