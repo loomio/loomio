@@ -61,9 +61,9 @@ class DiscussionReader < ApplicationRecord
     save if persist
   end
 
-  def volume
+  def computed_volume
     if persisted?
-      super || membership&.volume || 'normal'
+      volume || membership&.volume || 'normal'
     else
       membership.volume
     end

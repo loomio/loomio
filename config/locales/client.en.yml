@@ -613,6 +613,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
+      export_data: 'Export Group Data'
       manage_members: 'Manage Members'
       add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
@@ -722,6 +723,20 @@ en:
     messages:
       group_created: 'Group started'
       group_updated: 'Group updated'
+
+  group_export_modal:
+    title: Export group data
+    body: |
+      <p>
+        You may download a copy of your group's data at any time.
+        <a href="https://help.loomio.org/user_manual/group_export">Find out more.</a>
+      </p>
+      <p>
+        It takes a few minutes to complete, depending on the size of your group.
+        When it's ready you'll receive an email with a link to download the file.
+      </p>
+    submit: Start export
+    flash: Group data export started
 
   group_features:
     useAnonymous: Enable anonymous polling

@@ -44,7 +44,7 @@ describe 'CommentService' do
       reader = DiscussionReader.for(discussion: comment.discussion, user: user)
       reader.set_volume!("normal")
       CommentService.create(comment: comment, actor: user)
-      expect(reader.reload.volume).to eq "loud"
+      expect(reader.reload.computed_volume).to eq "loud"
     end
 
     it 'saves the comment' do
@@ -75,7 +75,7 @@ describe 'CommentService' do
       it 'updates the discussion reader' do
         user.update_attribute(:email_on_participation, false)
         CommentService.create(comment: comment, actor: user)
-        expect(reader.reload.volume.to_sym).to eq :normal
+        expect(reader.reload.computed_volume.to_sym).to eq :normal
       end
 
       it 'publishes a comment replied to event if there is a parent' do

@@ -1,5 +1,5 @@
 class UserMailer < BaseMailer
-  layout 'invite_people_mailer', only: [:membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :user_reactivated]
+  layout 'invite_people_mailer', only: [:membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :user_reactivated, :group_export_ready]
 
   def accounts_merged(user)
     @user = user
@@ -59,6 +59,15 @@ class UserMailer < BaseMailer
                      subject_key: "email.user_added_to_group.subject",
                      subject_params: { which_group: @group.full_name, who: @inviter.name, site_name: AppConfig.theme[:site_name] },
                      locale: [@user.locale, @inviter.locale]
+  end
+
+  def group_export_ready(recipient, group, document)
+    @user     = recipient
+    @document = document
+    send_single_mail to: @user.email,
+                     subject_key: "user_mailer.group_export_ready.subject",
+                     subject_params: {group_name: group.name},
+                     locale: @user.locale
   end
 
   def login(user:, token:)
