@@ -185,9 +185,12 @@ describe API::ProfileController do
     let(:user)  { create :user }
     let(:group) { create :formal_group }
     let(:subgroup) { create :formal_group, parent: group}
+    let(:completely_unrelated_group) { create :formal_group }
     let!(:jennifer) { create :user, name: 'jennifer', username: 'queenie' }
-    let!(:jessica)  { create :user, name: 'jeesica', username: 'queenbee' }
+    let!(:jessica)  { create :user, name: 'jessica', username: 'queenbee' }
     let!(:emilio)   { create :user, name: 'emilio', username: 'coolguy' }
+    let!(:jerry)    { create :user, name: 'jerry', username: 'someguy' }
+    let(:discussion) { create :discussion, group: group, author: user, private: true }
 
     # jennifer and emilio are in the group
     # jessica is not in the group
@@ -196,6 +199,8 @@ describe API::ProfileController do
       group.add_member! user
       group.add_member! jennifer
       subgroup.add_member! emilio
+      completely_unrelated_group.add_member! jessica
+      discussion.guest_group.add_member! jerry
       sign_in user
     end
 
@@ -215,6 +220,18 @@ describe API::ProfileController do
       get :mentionable_users, params: {q: "em", group_id: group.id}
       user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
       expect(user_ids).to eq [emilio.id]
+    end
+
+    it "returns users from guest group for the discussion" do
+      get :mentionable_users, params: {q: "jer", discussion_id: discussion.id}
+      user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
+      expect(user_ids).to eq [jerry.id]
+    end
+
+    it "doesn't return users from groups outside the organisation" do
+      get :mentionable_users, params: {q: "da", group_id: group.id}
+      user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
+      expect(user_ids).to eq []
     end
   end
 end
