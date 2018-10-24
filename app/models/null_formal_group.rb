@@ -16,4 +16,8 @@ class NullFormalGroup
   def identities
     Identities::Base.none
   end
+
+  def guest_group
+    self
+  end
 end
