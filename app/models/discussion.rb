@@ -51,6 +51,7 @@ class Discussion < ApplicationRecord
   has_many :polls, dependent: :destroy
   has_many :active_polls, -> { where(closed_at: nil) }, class_name: "Poll"
   has_one :search_vector
+
   has_many :comments, dependent: :destroy
   has_many :commenters, -> { uniq }, through: :comments, source: :user
   has_many :documents, as: :model, dependent: :destroy

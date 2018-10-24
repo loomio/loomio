@@ -11,21 +11,30 @@ class Group < ApplicationRecord
 
   belongs_to :creator, class_name: 'User'
   belongs_to :parent, class_name: 'Group'
+
+  has_many :discussions,             foreign_key: :group_id, dependent: :destroy
+  has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'
+  has_many :comments, through: :discussions
+
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
   has_many :memberships, -> { where is_suspended: false, archived_at: nil }
+  has_many :members, through: :memberships, source: :user
+
   has_many :accepted_memberships, -> { accepted }, class_name: 'Membership'
+  has_many :accepted_members, through: :accepted_memberships, source: :user
+
   has_many :admin_memberships, -> { where admin: true, archived_at: nil }, class_name: 'Membership'
   has_many :admins, through: :admin_memberships, source: :user
 
   has_many :membership_requests, dependent: :destroy
   has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
-  has_many :members, through: :memberships, source: :user
-  has_many :accepted_members, through: :accepted_memberships, source: :user
 
-  has_many :discussions, foreign_key: :group_id, dependent: :destroy
-  has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'
   has_many :polls, foreign_key: :group_id, dependent: :destroy
   has_many :public_polls, through: :public_discussions, dependent: :destroy, source: :polls
+
+  has_many :documents, as: :model, dependent: :destroy
+  
+  include GroupExportRelations
 
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }

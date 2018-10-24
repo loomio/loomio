@@ -36,7 +36,6 @@ class FormalGroup < Group
   has_many :group_identities, dependent: :destroy, foreign_key: :group_id
   has_many :identities, through: :group_identities
 
-  has_many :documents, as: :model, dependent: :destroy
   has_many :discussion_documents,        through: :discussions,        source: :documents
   has_many :poll_documents,              through: :polls,              source: :documents
   has_many :comment_documents,           through: :comments,           source: :documents
@@ -48,7 +47,7 @@ class FormalGroup < Group
   belongs_to :default_group_cover
 
   has_many :subgroups,
-           -> { where(archived_at: nil).order(:name) },
+           -> { where(archived_at: nil) },
            class_name: 'Group',
            foreign_key: 'parent_id'
   has_many :all_subgroups, class_name: 'Group', foreign_key: :parent_id

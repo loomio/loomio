@@ -6,10 +6,22 @@ describe API::GroupsController do
   let(:guest_group) { create :guest_group, creator: user }
   let(:subgroup) { create :formal_group, parent: group }
   let(:discussion) { create :discussion, group: group }
+  let(:another_group) { create :guest_group }
 
   before do
     group.admins << user
     sign_in user
+  end
+
+  describe 'export' do
+    it 'gives access denied if you dont belong' do
+      post :export, params: { id: another_group.key }
+      expect(response.status).to eq 403
+    end
+
+    it 'sends an email' do
+      expect { post :export, params: { id: group.key } }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
   end
 
   describe 'show' do
