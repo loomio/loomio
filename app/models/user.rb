@@ -153,11 +153,15 @@ class User < ApplicationRecord
   scope :mention_search, -> (user, model, query) do
     # allow mentioning of anyone in the organisation
     model_org_ids = model.group.parent_or_self.id_and_subgroup_ids
+    # and allow mention of anyone in the guest group
+    guest_group_id = model.guest_group.id
+    org_ids_with_guest_group_id = model_org_ids + [ guest_group_id ]
     distinct.active.verified.
       search_for(query).
       joins(:memberships).
-      where("memberships.group_id": model_org_ids).
-      where.not(id: user.id).order("users.name")
+      where("memberships.group_id": org_ids_with_guest_group_id).
+      where.not(id: user.id).
+      order("users.name")
   end
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
