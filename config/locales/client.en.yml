@@ -729,7 +729,7 @@ en:
     body: |
       <p>
         You may download a copy of your group's data at any time.
-        <a href="https://help.loomio.org/user_manual/group_export">Find out more.</a>
+        <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find out more.</a>
       </p>
       <p>
         It takes a few minutes to complete, depending on the size of your group.
