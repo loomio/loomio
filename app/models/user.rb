@@ -156,7 +156,7 @@ class User < ApplicationRecord
     distinct.active.verified.
       search_for(query).
       joins(:memberships).
-      where("memberships.group_id": group_ids).
+      where("memberships.group_id": group_ids.compact).
       where.not(id: user.id).
       order("users.name")
   end
