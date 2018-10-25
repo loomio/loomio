@@ -16,6 +16,11 @@
     %validation_errors{subject: "message", field: "email"}
 
   %md-input-container.md-block
+    %label{translate: "contact_message_form.subject_label"}
+    %input{type: "text", placeholder: "{{'contact_message_form.subject_placeholder' | translate}}", ng-model: "message.subject"}
+    %validation_errors{subject: "message", field: "subject"}
+
+  %md-input-container.md-block
     %label{translate: "contact_message_form.message_label"}
     %textarea{ng-model: "message.message", placeholder: "{{'contact_message_form.message_placeholder' | translate}}"}
     %validation_errors{subject: "message", field: "message"}

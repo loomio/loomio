@@ -46,8 +46,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       g.full_name
     end
 
-    column "Size", :memberships_count
-
+    column "Members", :memberships_count
     column "Discussions", :discussions_count
     column :created_at
     column :description, :sortable => :description do |group|
