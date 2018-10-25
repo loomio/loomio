@@ -1209,8 +1209,10 @@ en:
     description_private_title: 'updated the thread title, context and privacy'
 
   contact_message_form:
-    helptext: "Want to get in touch? Just enter a message below and you'll hear from us shortly."
-    contact_us_email: "(You can also always reach us at <a href=\"mailto:{{email}}\">{{email}}</a>)"
+    title: "Have a Loomio question or a suggestion? We’d love to help!"
+    read_the_manual: |
+      You can also read our <a href="{{link}}">Help Manual</a> to solve common problems quickly.
+    contact_us_email: "Don't like forms? You can also email us: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contact Us'
     name_label: 'Your name'
     name_placeholder: 'Enter your name...'
@@ -1220,6 +1222,7 @@ en:
     message_placeholder: 'Your message...'
     send_message: 'Send Message'
     new_contact_message: "Thanks for getting in touch; we'll get back to you soon!"
+    success: "Thanks for your message, {{name}}. You'll hear back from us soon."
 
   hint:
     context: 'Tips for using the context panel'

@@ -2,12 +2,16 @@ Session        = require 'shared/services/session'
 Records        = require 'shared/services/records'
 AbilityService = require 'shared/services/ability_service'
 AppConfig      = require 'shared/services/app_config'
+UserHelpService= require 'shared/services/user_help_service'
 
 { submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').directive 'contactForm', ->
   templateUrl: 'generated/components/contact/form/contact_form.html'
   controller: ['$scope', ($scope) ->
+    $scope.submitted = false
+    $scope.helpLink = UserHelpService.helpLink()
+
     $scope.contactEmail = AppConfig.contactEmail
 
     $scope.isLoggedIn = ->
@@ -20,4 +24,5 @@ angular.module('loomioApp').directive 'contactForm', ->
 
     $scope.submit = submitForm $scope, $scope.message,
       flashSuccess: "contact_message_form.new_contact_message"
+      successCallback: -> $scope.submitted = true
   ]
