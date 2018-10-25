@@ -152,11 +152,11 @@ class User < ApplicationRecord
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :mention_search, -> (user, model, query) do
     # allow mentioning of anyone in the organisation
-    group_ids = model.group.parent_or_self.id_and_subgroup_ids + [model.guest_group.id].uniq
+    group_ids = (model.group.parent_or_self.id_and_subgroup_ids + [model.guest_group.id]).compact.uniq
     distinct.active.verified.
       search_for(query).
       joins(:memberships).
-      where("memberships.group_id": group_ids.compact).
+      where("memberships.group_id": group_ids).
       where.not(id: user.id).
       order("users.name")
   end
