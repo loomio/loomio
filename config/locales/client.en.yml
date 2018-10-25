@@ -1209,9 +1209,9 @@ en:
     description_private_title: 'updated the thread title, context and privacy'
 
   contact_message_form:
-    title: "Have a Loomio question or a suggestion? We’d love to help!"
+    title: "Hi there! How can we help?"
     read_the_manual: |
-      You can also read our <a href="{{link}}">Help Manual</a> to solve common problems quickly.
+       Did you know you can search our <a href="{{link}}">Help Manual</a> for answers to common questions?
     contact_us_email: "Don't like forms? You can also email us: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contact Us'
     name_label: 'Your name'
