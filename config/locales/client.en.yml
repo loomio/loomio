@@ -1211,15 +1211,18 @@ en:
   contact_message_form:
     title: "Hi there! How can we help?"
     read_the_manual: |
-       Did you know you can search our <a href="{{link}}">Help Manual</a> for answers to common questions?
-    contact_us_email: "Don't like forms? You can also email us: <a href=\"mailto:{{email}}\">{{email}}</a>"
+      Have you seen our <a href="{{link}}" target="_blank">Help Manual</a>? We update it regularly with frequently asked questions.
+    contact_us_email: "You can also email us: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contact Us'
     name_label: 'Your name'
     name_placeholder: 'Enter your name...'
+    subject_label: "Subject"
+    subject_placeholder: |
+      Eg: Trouble signing in, or Feature suggestion
     email_label: 'Your email address'
     email_placeholder: 'Enter your email address...'
     message_label: 'Your message'
-    message_placeholder: 'Your message...'
+    message_placeholder: 'If requesting support please try to provide as much information as you can.'
     send_message: 'Send Message'
     new_contact_message: "Thanks for getting in touch; we'll get back to you soon!"
     success: "Thanks for your message, {{name}}. You'll hear back from us soon."

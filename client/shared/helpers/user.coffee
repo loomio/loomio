@@ -25,9 +25,3 @@ module.exports =
   getProviderIdentity: ->
     validProviders = _.pluck(AppConfig.identityProviders, 'name')
     AppConfig.pendingIdentity if _.contains(validProviders, AppConfig.pendingIdentity.identity_type)
-
-  contactUs: ->
-    if IntercomService.available()
-      IntercomService.open()
-    else
-      ModalService.open('ContactModal')

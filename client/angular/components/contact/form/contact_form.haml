@@ -5,6 +5,8 @@
 
   %p{translate: "contact_message_form.read_the_manual", translate-value-link: "{{helpLink}}"}
 
+  %p &nbsp;
+
   %md-input-container.md-block{ng-if: "!isLoggedIn()"}
     %label{translate: "contact_message_form.name_label"}
     %input{type: "text", placeholder: "{{'contact_message_form.name_placeholder' | translate}}", ng-model: "message.name"}
