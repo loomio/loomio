@@ -89,6 +89,6 @@ class Membership < ApplicationRecord
   private
 
   def set_volume
-    self.volume = user.default_membership_volume if group.is_formal_group?
+    self.volume = user.default_membership_volume if id.nil? && group.is_formal_group?
   end
 end

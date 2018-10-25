@@ -1,6 +1,6 @@
 module AngularHelper
   def current_version
-    Rails.env.production? ? Loomio::Version.current : :development
+    Rails.env.development? ? :development : Loomio::Version.current
   end
 
   def bundle_asset_path(filename)

@@ -44,6 +44,11 @@ module GroupService
     EventBus.broadcast('group_move', group, parent, actor)
   end
 
+  def self.export(group: , actor: )
+    actor.ability.authorize! :show, group
+    GroupExportJob.perform_later(group, actor)
+  end
+
   def self.merge(source:, target:, actor:)
     actor.ability.authorize! :merge, source
     actor.ability.authorize! :merge, target

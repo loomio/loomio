@@ -26,6 +26,7 @@ ActiveAdmin.register User do
     column :last_sign_in_at
     column "No. of groups", :memberships_count
     column :deactivated_at
+    column :email_verified
     actions
   end
 
@@ -103,11 +104,13 @@ ActiveAdmin.register User do
         button_to 'Reactivate User', reactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to reactivate this user?'}
       end
     end
+    
     attributes_table do
       user.attributes.each do |k,v|
-        row k.to_sym if v.present?
+        row k.to_sym
       end
     end
+
     panel("Memberships") do
       table_for user.memberships.each do |m|
         column :group_id

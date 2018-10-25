@@ -84,6 +84,11 @@ en:
       <p>You've selected the Free plan for your group <a href="/g/%{group_key}">%{group}</a></p>
 
   user_mailer:
+    group_export_ready:
+      subject: Group data export for %{group_name}
+      body_html: |
+        Download your group data <a href="%{url}">here</a>. Please note that this link will expire in one week's time.
+
     accounts_merged:
       subject: "Your %{site_name} user accounts have been merged."
       body_html: |

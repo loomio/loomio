@@ -37,6 +37,11 @@ class API::GroupsController < API::RestfulController
     respond_with_resource
   end
 
+  def export
+    service.export(group: load_and_authorize(:group), actor: current_user)
+    render json: { success: :ok }
+  end
+
   private
   def track_visit
     VisitService.record(group: resource, visit: current_visit, user: current_user)

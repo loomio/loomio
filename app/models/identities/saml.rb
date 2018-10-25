@@ -12,18 +12,19 @@ class Identities::Saml < Identities::Base
 
   def settings
     @settings ||= begin
-      settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(ENV['SAML_APP_SECRET'])
+      settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(ENV['SAML_IDP_METADATA_URL'])
       settings.assertion_consumer_service_url = saml_oauth_url
-      settings.issuer                         = root_url
-      settings.name_identifier_format         = ENV['SAML_APP_EMAIL_FIELD']
+      settings.issuer                         = ENV.fetch('SAML_ISSUER', saml_metadata_url)
+      settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
       settings
     end
   end
 
   def fetch_user_info
     return unless self.response.is_valid?
+    logger.info self.response
     self.email = self.uid = self.response.nameid
-    self.name  = self.response.attributes[ENV['SAML_APP_NAME_FIELD']]
+    self.name = self.response.attributes['displayName']
   end
 
   def requires_access_token?

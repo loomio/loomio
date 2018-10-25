@@ -12,6 +12,10 @@
           %span{translate: "group_page.options.email_settings"}
       %outlet{name: "after-group-actions-manage-memberships", model: "group"}
       %outlet{name: "after-group-actions-manage-memberships-2", model: "group"}
+      %md-menu-item.group-page-actions__export-json{ng-if: "canExportData()"}
+        %md-button{ng-click: "openGroupExportModal()"}
+          %span{translate: "group_page.options.export_data"}
+
       %md-menu-item.group-page-actions__leave-group{ng-if: "canLeaveGroup()"}
         %md-button{ng-click: "leaveGroup()"}
           %span{translate: "group_page.options.leave_group"}

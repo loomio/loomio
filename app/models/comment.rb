@@ -5,6 +5,7 @@ class Comment < ApplicationRecord
   include HasMentions
   include HasDrafts
   include HasCreatedEvent
+  include HasEvents
 
   has_paper_trail only: [:body]
 

@@ -17,12 +17,12 @@ de:
     deleted_user: "gelöschter Nutzer"
     placeholder_name: "eingeladener Nutzer (%{hostname})"
     error:
-      recaptcha: "Es war uns nicht möglich zu bestätigen, dass Sie kein Computer sind. Bitte versuchen Sie es erneut."
-      bad_login: "Eine Anmeldung war nicht möglich. Bitte versuchen Sie es erneut."
+      recaptcha: "Es war uns nicht möglich zu bestätigen, dass du kein Computer bist. Bitte versuche es erneut."
+      bad_login: "Eine Anmeldung war nicht möglich. Bitte versuche es erneut."
       username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
   attachment:
     error:
-      too_large: Die Datei, die Sie versuchen anzuhängen ist größer als 100 Megabyte, bitte wählen Sie eine kleinere Datei
+      too_large: Die Datei, die du versuchst anzuhängen ist größer als 100 Megabyte, bitte wähle eine kleinere Datei
   poll:
     error:
       cannot_add_options: es können keine Optionen zu dieser Umfrage hinzugefügt werden.
@@ -52,10 +52,10 @@ de:
       total: Gesamt
   stance:
     error:
-      too_short: Bitte treffen Sie eine Auswahl
+      too_short: Bitte triff eine Auswahl
   invitation:
-    invitation_cancelled: Sorry, diese Einladung wurde durch den Gruppenkoordinator widerrufen. Bitte fragen Sie nach einer weiteren Einladung
-    invitation_already_used: Diese Einladung wurde bereits genutzt. Bitte melden Sie sich direkt bei Loomio an um in Ihrer Gruppe fortzufahren.
+    invitation_cancelled: Sorry, diese Einladung wurde durch den Gruppenkoordinator widerrufen. Bitte frage nach einer weiteren Einladung
+    invitation_already_used: Diese Einladung wurde bereits genutzt. Bitte melde dich direkt bei Loomio an um in Ihrer Gruppe fortzufahren.
   date:
     formats:
       for_this_year: "%e %b"
@@ -74,27 +74,27 @@ de:
         <p>Du hast die kostenlose Mitgliedschaft für deine Gruppe <a href="/g/%{group_key}">%{group}</a> ausgewählt</p>
   user_mailer:
     accounts_merged:
-      subject: "Ihre %{site_name} Benutzerkonten wurden zusammengeführt."
+      subject: "Deine %{site_name} Benutzerkonten wurden zusammengeführt."
       body_html: |
           Hallo %{name},
-          Ihre zwei Loomio-Accounts wurden zu einem Account fusioniert.
-          Um nun auf Loomio zugreifen zu können, bitte nutzen sie <strong>%{email}</strong> beim Einloggen.
+          Deine zwei Loomio-Accounts wurden zu einem Account fusioniert.
+          Um nun auf Loomio zugreifen zu können, bitte nutze <strong>%{email}</strong> beim Einloggen.
   email:
     common:
-      or_enter_code: oder geben Sie den Code unten ein
+      or_enter_code: oder gib den Code unten ein
       resend: Dieser Link wird 24 Stunden verfügbar sein und kann nur einmal genutzt werden.
     login:
       subject: bei %{site_name}anmelden
-      intro: 'Hallo %{name}, hier ist der Link um sich in Ihrem Account %{site_name}anzumelden '
+      intro: 'Hallo %{name}, hier ist der Link um sich in deinem Account %{site_name}anzumelden '
       login: als %{name} einloggen
     reactivate:
-      subject: Ihren Account %{site_name} wieder aktivieren
-      intro: Hi %{name}, hier ist der Link zur Reaktivierung Ihres %{site_name} Accounts
+      subject: deinen Account %{site_name} wieder aktivieren
+      intro: Hi %{name}, hier ist der Link zur Reaktivierung deines %{site_name} Accounts
       login: '%{name}reaktivieren'
     contact_request:
-      subject: "%{name} möchte Sich mit Ihnen auf %{site_name} verbinden!"
-      intro: "%{name} (%{email})  hat Ihnen eine Anfrage zum verbinden gesendet."
-      footer: "Sie können %{name} direkt antworten, indem Sie auf diese E-Mail antworten."
+      subject: "%{name} möchte Sich mit dir auf %{site_name} verbinden!"
+      intro: "%{name} (%{email})  hat dir eine Anfrage zum verbinden gesendet."
+      footer: "Du kannst %{name} direkt antworten, indem du auf diese E-Mail antwortest."
     reset_password:
       greeting: |
           Hallo %{name}
@@ -107,7 +107,7 @@ de:
     start_decision:
       subject: einen Entschluss auf Loomio fassen
       intro: Hallo <strong>%{name}</strong>!
-      action: Was möchten Sie tun?
+      action: Was möchtest du tun?
       proposal: einen Vorschlag machen
       count: Bestätigung starten
       poll: eine Umfrage starten
@@ -122,15 +122,15 @@ de:
     value_proposition: "%{site_name} bietet platz für Gruppen um gemeinsam Entschlüsse zu treffen"
     view_group: Gruppe ansehen
     to_join_group:
-      subject: "%{member} hat Sie eingeladen %{group_name} auf %{site_name} beizutreten"
+      subject: "%{member} hat dich eingeladen %{group_name} auf %{site_name} beizutreten"
       invitation_text: "%{member} hat dich eingeladen, ihrer Gruppe %{group_name} beizutreten."
       invitation_text_html: "hat dich eingeladen, ihrer/seiner Gruppe beizutreten"
       link_help: "Klicke auf den untenstehenden Link, um die Einladung anzunehmen:"
       accept_invitation: "Einladung annehmen"
     resend_to_join_group:
-      subject: "%{member} Wartet darauf, dass Sie %{group_name} auf %{site_name} beitreten"
+      subject: "%{member} Wartet darauf, dass du %{group_name} auf %{site_name} beitrittst"
     user_added_to_group:
-      subject: "%{who} hat Sie zu %{which_group} auf %{site_name} hinzugefügt"
+      subject: "%{who} hat dich zu %{which_group} auf %{site_name} hinzugefügt"
       content: "%{who} hat dich zu %{which_group} hinzugefügt."
       content_html: "<strong>%{who}</strong> hat dich zu <strong>%{which_group}</strong> hinzugefügt."
       link_help: "Klicke auf den untenstehenden Link, um die Gruppe zu betreten:"
@@ -148,7 +148,7 @@ de:
       intro: "Deine Aufnahme-Anfrage für die Gruppe %{group_name} wurde angenommen."
       intro_html: "Deine Aufnahme-Anfrage für Gruppe <strong>%{group_name}</strong> wurde angenommen."
       link_help: "Klicke auf den untenstehenden Link, um der Gruppe %{group_name} beizutreten und loszulegen:"
-      subject: "Ihr Nachfrage der Gruppe %{group_name} beizutreten wurde bestätigt"
+      subject: "Deine Nachfrage der Gruppe %{group_name} beizutreten wurde bestätigt"
       join_group: "Der Gruppe beitreten"
     membership_request:
       intro_html: hat um Aufnahme in eine deiner Gruppen gebeten.
@@ -157,27 +157,27 @@ de:
       button_text: Anfrage ansehen
   announcement_count_emails: "%{count} Mails"
   email_actions:
-    unfollowed_discussion: Sie haben die E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.
+    unfollowed_discussion: Du hast die E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.
   discussion_mailer:
-    resend: 'Erinnerung: %{actor} wartet darauf, dass sie in %{discussion} beitreten'
+    resend: 'Erinnerung: %{actor} wartet darauf, dass du in %{discussion} beitrittst'
     new_discussion:
       subject: "[%{group}] %{discussion}"
-      subject_html: "<strong>%{actor}</strong> hat einen Thread eröffnet: %{discussion}"
+      subject_html: "<strong>%{actor}</strong> hat eine Diskussion eröffnet: %{discussion}"
     discussion_edited:
       subject: "[%{group}] %{discussion}"
-      subject_html: "<strong>%{actor}</strong> hat Thread %{discussion} bearbeitet"
+      subject_html: "<strong>%{actor}</strong> hat die Diskussion %{discussion} bearbeitet"
     discussion_announced:
       subject: "[%{group}] %{discussion}"
-      subject_html: "<strong>%{actor}</strong> hat Sie zu %{discussion} eingeladen"
+      subject_html: "<strong>%{actor}</strong> hat dich zu %{discussion} eingeladen"
     new_comment:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> hat in %{discussion} kommentiert"
     comment_replied_to:
-      subject: '%{actor}  hat Ihnen geantwortet in %{discussion}'
-      subject_html: '<strong>%{actor}</strong> hat Sie in %{discussion} erwähnt'
+      subject: '%{actor}  hat dir geantwortet in %{discussion}'
+      subject_html: '<strong>%{actor}</strong> hat dich in %{discussion} erwähnt'
     user_mentioned:
-      subject: '%{actor} hat Sie in %{discussion} erwähnt'
-      subject_html: "<strong>%{actor}</strong> hat sie in %{discussion} erwähnt"
+      subject: '%{actor} hat dich in %{discussion} erwähnt'
+      subject_html: "<strong>%{actor}</strong> hat dich in %{discussion} erwähnt"
     reply_or_view_online_html: Entweder direkt auf diese E-Mail antworten oder <a href='%{url}'>auf %{hostname} antworten</a>.
     turn_off_notifications_html: "<a href='%{url}'>E-Mail-Benachrichtigungen</a> für diese Diskussion deaktivieren."
     change_email_preferences_html: "<a href='%{email_preferences_url}'>E-Mail-Einstellungen</a> ändern."
@@ -194,8 +194,8 @@ de:
     independent_install_html: '%{hostname} benutzt eine unabhängige Kopie von Loomio: <a href="http://github.com/loomio/loomio"> Erfahre mehr</a>.'
   invitation_form:
     error:
-      too_many_pending: "Sie haben mehr als das Maximum %{count} der ausstehenden Einladungen "
-      too_many_cancelled: "Sie haben mehr als das Maximum %{count} an abgesagten Einladungen für diese Gruppe"
+      too_many_pending: "Du hast mehr als das Maximum %{count} der ausstehenden Einladungen "
+      too_many_cancelled: "Du hast mehr als das Maximum %{count} an abgesagten Einladungen für diese Gruppe"
       all_email_addresses_belong_to_members: "Diese Personen sind bereits Mitglieder dieser Gruppe"
   password_reset:
     change_your_password: Passwort ändern
@@ -203,8 +203,8 @@ de:
     confirm_new_password: Passwort bestätigen
     new_password: neues Passwort
     email_guidelines_html: |
-        <p> geben Sie eine Mailadresse ein, damit Ihnen der Link zum Zurücksetzen Ihres Passworts zugeschickt werden kann.</p>
-        <p>Wenn Sie sich via Facebook oder Google anmelden, geben Sie die mit diesen Accounts verküpfte Mailadresse ein.</p>
+        <p> gib eine Mailadresse ein, damit Ihnen der Link zum Zurücksetzen deines Passworts zugeschickt werden kann.</p>
+        <p>Wenn du dich via Facebook oder Google anmeldest, gib die mit diesen Accounts verküpfte Mailadresse ein.</p>
     reset_email_timeframe: Es wird bis zu 5 Minuten dauern, bis die eMail Dich erreicht. Bitte prüfe gegebenenfalls auch Deinen Spam-Ordner.
     length_restriction: Passwörter müssen mindestens 8 Zeichen enthalten.
     forbidden_passwords: Um Dein Konto sicher zu gestalten, sind einfache Passwörter, wie "passwort" und ähnliches verboten.
@@ -286,7 +286,7 @@ de:
       title: |
           ## Listen
       body: |
-          So kannst Du Aufzählungen erstellen
+          So kannst du Aufzählungen erstellen
 
           * beginne mit einer Leerzeile vor der Aufzählung
           * beginne die Aufzählungspunkte mit (*)
@@ -303,7 +303,7 @@ de:
 
           ![Loomio-Logo](https://i.imgur.com/Fvtworb.png)
   group_mailer:
-    resend: 'Erinnerung: %{member} wartet darauf, dass sie %{group_name} beitreten'
+    resend: 'Erinnerung: %{member} wartet darauf, dass du %{group_name} beitrittst'
   poll_mailer:
     resend: '%{actor} erinnert Sie zur Wahl von %{title}'
     common:
@@ -315,8 +315,8 @@ de:
       responses: Antworten
       change_your_stance: Ändern
       create_outcome: Ergebnis bekanntgeben
-      your_response: "Sie wählten:"
-      please_respond: Bitte beteiligen Sie sich an der Abstimmung
+      your_response: "du hast gewählt:"
+      please_respond: Bitte beteilige dich an der Abstimmung
       time_zone: (Zeitangaben in %{zone})
       undecided_members: unentschlossende Mitglieder (%{count})
       undecided_visitors: unentschlossene Gäste (%{count})
@@ -324,34 +324,34 @@ de:
       vote_now: jetzt wählen
       verify_stance_for_unverified_user: "Danke für deine Abstimmungsbeteiligung bei %{title}. Bitte verifiziere deine E-Mail-Adresse, damit wir dir die Ergebnisse der Abstimmung zusenden können."
       verify_stance_for_verified_user: "Es sieht so aus, als ob du hier abgestimmt hättest: %{title}. Wenn du diese Abstimmung tatsächlich vorgenommen hast, klicke bitte den unten angegebenen Link zur Bestätigung."
-      you_have_until: Sie haben bis %{when} Zeit teilzunehmen
+      you_have_until: du hast bis %{when} Zeit teilzunehmen
     proposal:
       subject:
         poll_created: '%{actor} hat einen Vorschlag erstellt: %{title}'
         poll_edited: '%{actor} hat den Vorschlag %{title} beabeitet'
-        poll_announced: '%{actor} hat Sie dazu eingeladen für den Vorschlag %{title} zu wählen'
+        poll_announced: '%{actor} hat dich dazu eingeladen für den Vorschlag %{title} zu wählen'
         poll_closing_soon: 'Vorschlag endet in 24 Stunden: %{title}'
         poll_closing_soon_author: 'Dein Vorschlag endet in 24 Stunden: %{title}'
         poll_expired: "Vorschlag wurde beendet: %{title}"
-        poll_expired_author: 'Ihr Vorschlag wurde geschlossen. Teilen Sie das Ergebnis auf %{title}'
+        poll_expired_author: 'Dein Vorschlag wurde geschlossen. Teile das Ergebnis auf %{title}'
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         stance_created: "%{actor} hat abgestimmt: %{title}"
-        stance_created_author: "Bitte bestätigen Sie hier %{title} Ihre Wahl"
-        user_mentioned: '%{actor} hat Sie in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert Sie zur Wahl von %{title}'
+        stance_created_author: "Bitte bestätige hier %{title} deine Wahl"
+        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
+        user_reminded: '%{actor} erinnert dich zur Wahl von %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> hat einen Vorschlag erstellt'
         poll_edited: '<strong>%{actor}</strong> hat den Vorschlag geändert'
-        poll_announced: '<strong>%{actor}</strong> hat Sie eingeladen, über einen Vorschlag abzustimmen'
+        poll_announced: '<strong>%{actor}</strong> hat dich eingeladen, über einen Vorschlag abzustimmen'
         poll_closing_soon: 'Der Vorschlag von <strong>%{actor}</strong> endet in 24 Stunden. Jetzt ist ein guter Zeitpunkt, um an der Abstimmung teilzunehmen, deine Meinung noch einmal zu überdenken oder auch, um andere noch zum Mitmachen zu bewegen.'
         poll_closing_soon_author: 'Dein Vorschlag endet in 24 Stunden - jetzt ist ein guter Zeitpunkt, um andere an den Vorschlag zu erinnern oder um gegebenenfalls die Frist zu verlängern.'
         poll_expired: "Der Vorschlag von <strong>%{actor}</strong> wurde beendet: %{title}"
-        poll_expired_author: 'Ihr Vorschlag wurde <strong>geschlossen</strong>. Bitte nehmen Sie sich Zeit zu bedenken, was gesagt wurde und was <strong>als Ergebnis geteilt wurde</strong>, damit die Anderen wissen, was als nächstes passiert.'
+        poll_expired_author: 'Ihr Vorschlag wurde <strong>geschlossen</strong>. Bitte nimm dir Zeit zu bedenken, was gesagt wurde und was <strong>als Ergebnis geteilt wurde</strong>, damit die Anderen wissen, was als nächstes passiert.'
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
         outcome_announced: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
         stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> hat Sie in %{title} erwähnt'
+        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
         user_reminded: '<strong>%{actor}</strong> erinnert Sie in %{title} zu wählen'
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -359,55 +359,55 @@ de:
       subject:
         poll_created: '%{actor} hat eine Abstimmung eröffnet: %{title}'
         poll_edited: '%{actor} hat die Umfrage %{title} bearbeitet'
-        poll_announced: '%{actor} hat Sie eingeladen in der Umfrage zu wählen: %{title}'
+        poll_announced: '%{actor} hat dich eingeladen in der Umfrage zu wählen: %{title}'
         poll_closing_soon: 'In 24 Stunden endet die Abstimmungsfrist für: %{title}'
         poll_closing_soon_author: 'Deine Abstimmung zu %{title} endet in 24 Stunden'
         poll_expired: "Umfrageergebnisse: %{title}"
-        poll_expired_author: 'Ihre Umfrage wurde beendet. Teilen Sie das Abstimmungsergebnis mit: %{title}'
+        poll_expired_author: 'Deine Umfrage wurde beendet. Teile das Abstimmungsergebnis mit: %{title}'
         poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
         outcome_announced: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
         stance_created: "%{actor} hat abgestimmt: %{title}"
-        stance_created_author: "Bitte bestätigen sie hier %{title} Ihre Wahl"
-        user_mentioned: '%{actor} hat Sie in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert Sie zur Wahl von %{title}'
+        stance_created_author: "Bitte bestätige hier %{title} deine Wahl"
+        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
+        user_reminded: '%{actor} erinnert dich zur Wahl von %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> hat eine Abstimmung eröffnet'
         poll_edited: '<strong>%{actor}</strong> hat die Umfrage überarbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat Sie zu einer Umfrage eingeladen'
+        poll_announced: '<strong>%{actor}</strong> hat dich zu einer Umfrage eingeladen'
         poll_closing_soon: '<strong>%{actor}</strong>''s Abstimmung läuft in 24 Std. ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder andere zum Mitmachen zu aufzufordern.'
         poll_closing_soon_author: 'Deine Abstimmung läuft in 24 Stunden ab - jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
         poll_expired: "<strong>%{actor}s</strong> Umfrage wurde beendet: %{title}"
-        poll_expired_author: 'Ihre Umfrage ist <strong>beendet</strong>. Bitte nehmen Sie sich ein wenig Zeit, um die Abstimmungsbeiträge zu analysieren. Anschließend sollten Sie <strong>der Gruppe das Ergebnis bekanntgeben</strong>, damit alle Mitglieder über die nächsten Schritte informiert sind.'
+        poll_expired_author: 'Ihre Umfrage ist <strong>beendet</strong>. Bitte nimm dir ein wenig Zeit, um die Abstimmungsbeiträge zu analysieren. Anschließend solltest du <strong>der Gruppe das Ergebnis bekanntgeben</strong>, damit alle Mitglieder über die nächsten Schritte informiert sind.'
         poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
         outcome_announced: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
         stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> hat Sie in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert Sie in %{title} zu wählen'
+        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
+        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} zu wählen'
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
         poll_created: '%{actor} möchte eine Bestätigung: %{title}'
         poll_edited: '%{actor} hat die Bestätigung bearbeitet: %{title}'
-        poll_announced: '%{actor} hat Sie eingeladen teilzunehmen: %{title}'
-        poll_closing_soon: 'Sie haben noch 24 Stunden Zeit %{title} zu prüfen'
+        poll_announced: '%{actor} hat dich eingeladen teilzunehmen: %{title}'
+        poll_closing_soon: 'Du hast noch 24 Stunden Zeit %{title} zu prüfen'
         poll_closing_soon_author: 'Deine Bestätigung endet in 24 Stunden: %{title}'
         poll_expired: "Bestätigung abgeschlossen: %{title}"
         poll_expired_author: 'Einholen der Bestätigung abgeschlossen. Geben Sie das Ergebnis bekannt für: %{title}'
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         stance_created: "%{actor} hat sich bei %{title} beteiligt"
-        stance_created_author: "Bitte bestätigen sie hier %{title} Ihre Wahl"
-        user_mentioned: '%{actor} hat Sie in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert Sie an %{title} teilzunehmen'
+        stance_created_author: "Bitte bestätige hier %{title} deine Wahl"
+        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
+        user_reminded: '%{actor} erinnert dich an %{title} teilzunehmen'
       header:
         poll_created: '<strong>%{actor}</strong> möchte eine Bestätigung'
         poll_edited: '<strong>%{actor}</strong> hat die Rechnung bearbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat Sie eingeladen teilzunehmen'
+        poll_announced: '<strong>%{actor}</strong> hat dich eingeladen teilzunehmen'
         poll_closing_soon: '<strong>%{actor}</strong>''s Check läuft in 24 Stunden ab'
         poll_closing_soon_author: 'Dein Check läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
         poll_expired: "Die von <strong>%{actor}</strong> angeforderte Bestätigung ist abgeschlossen: %{title}"
@@ -415,114 +415,114 @@ de:
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
         outcome_announced: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
         stance_created: "<strong>%{actor}</strong> hat in %{title} teilgenommen"
-        user_mentioned: '<strong>%{actor}</strong> hat Sie in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert Sie in %{title} teilzuhaben'
+        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
+        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} teilzuhaben'
       body:
         voted: '<strong>%{participant}</strong>:'
     dot_vote:
       subject:
         poll_created: '%{actor} hat eine neue Priorisierung erstellt: %{title}'
         poll_edited: '%{actor} hat die Punktabstimmung %{title} bearbeitet'
-        poll_announced: '%{actor} hat Sie eingeladen, an einer Punktabstimmung %{title} teilzuhaben'
+        poll_announced: '%{actor} hat dich eingeladen, an einer Punktabstimmung %{title} teilzuhaben'
         poll_closing_soon: 'Die Priorisierung %{title} läuft in 24 Stunden ab'
         poll_closing_soon_author: 'Deine Priorisierung %{title} läuft in 24 Stunden ab'
         poll_expired: "Ergebnisse der Punktabstimmung: %{title}"
-        poll_expired_author: 'Ihre Punktabstimmung wurde geschlossen. Teilen Sie das Ergebnis von %{title}'
+        poll_expired_author: 'Dein Punktabstimmung wurde geschlossen. Teile das Ergebnis von %{title}'
         poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
         outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         stance_created: "%{actor} hat abgestimmt: %{title}"
-        stance_created_author: "Bitte bestätigen sie hier %{title} Ihre Wahl"
-        user_mentioned: '%{actor} hat Sie in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert Sie zur Wahl von %{title}'
+        stance_created_author: "Bitte bestätige hier %{title} deine Wahl"
+        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
+        user_reminded: '%{actor} erinnert dich zur Wahl von %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> startete eine Priorisierung'
         poll_edited: '<strong>%{actor}</strong> hat die Punktabstimmung bearbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat Sie dazu eingeladen an einer Punktabstimmung teilzunehmen'
+        poll_announced: '<strong>%{actor}</strong> hat dich dazu eingeladen an einer Punktabstimmung teilzunehmen'
         poll_closing_soon: '<strong>%{actor}</strong>''s Priorisierung läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, abzustimmen, deine Stimmverteilung zu ändern oder andere zum Mitmachen einzuladen.'
         poll_closing_soon_author: 'Deine Priorisierung läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
         poll_expired: "Ergebnis für <strong>%{actor}s</strong> Punktabstimmung: %{title}"
-        poll_expired_author: 'Ihre Punktabstimmung wurde <strong>geschlossen</strong>. Betrachten Sie was gesagt wurde und <strong>teilen Sie das Ergebnis</strong> mit der Gruppe, damit die Anderen wissen, was als nächstes passieren wird'
+        poll_expired_author: 'Deine Punktabstimmung wurde <strong>geschlossen</strong>. Betrachte was gesagt wurde und <strong>teile das Ergebnis</strong> mit der Gruppe, damit die Anderen wissen, was als nächstes passieren wird'
         poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '<strong>%{actor}</strong> hat ein Priorisierungergebnis bekanntgegeben.'
         outcome_announced: '<strong>%{actor}</strong> hat ein Priorisierungergebnis bekanntgegeben.'
         stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> hat Sie in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert Sie in %{title} zu wählen'
+        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
+        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} zu wählen'
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
       subject:
         poll_created: '%{actor} hat eine Zeitumfrage gestartet %{title}'
         poll_edited: '%{actor} hat die Zeitumfrage bearbeitet: %{title}'
-        poll_announced: '%{actor} hat Sie eingeladen an der Zeitumfrage teilzuhaben: %{title}'
+        poll_announced: '%{actor} hat dich eingeladen an der Zeitumfrage teilzuhaben: %{title}'
         poll_closing_soon: 'Zeitumfrage in 24 Stunden beendet: %{title}'
-        poll_closing_soon_author: 'Ihre Zeitumfrage schließt in 24 Stunden: %{title}'
+        poll_closing_soon_author: 'Deine Zeitumfrage schließt in 24 Stunden: %{title}'
         poll_expired: "Ergebnisse der Zeitumfrage: %{title}"
-        poll_expired_author: 'Ihre Zeitumfrage wurde beendet. Teilen Sie das Ergebnis: %{title}'
+        poll_expired_author: 'Deine Zeitumfrage wurde beendet. Teile das Ergebnis: %{title}'
         poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
-        outcome_created_author: 'Sie haben ein Abstimmungsergebnis bekanntgegeben: %{title}'
+        outcome_created_author: 'Du hast ein Abstimmungsergebnis bekanntgegeben: %{title}'
         outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         stance_created: '%{actor} hat sich bei %{title} beteiligt'
-        stance_created_author: "Bitte bestätigen sie hier %{title} Ihre Wahl"
-        user_mentioned: '%{actor} hat Sie in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert Sie zur Wahl von %{title}'
+        stance_created_author: "Bitte bestätige hier %{title} deine Wahl"
+        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
+        user_reminded: '%{actor} erinnert dich zur Wahl von %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> hat eine Zeitumfrage gestartet'
         poll_edited: '<strong>%{actor}</strong> hat die Zeitumfrage bearbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat Sie eingeladen, in der Zeitumfrage teilzuhaben'
+        poll_announced: '<strong>%{actor}</strong> hat dich eingeladen, in der Zeitumfrage teilzuhaben'
         poll_closing_soon: '<strong>%{actor}</strong>s Zeitumfrage schließt in 24 Stunden. Es ist an der Zeit zu wählen, Ihre meinung zu ändern oder Andere dazu zu befördern daran teilzuhaben'
-        poll_closing_soon_author: 'Ihre Zeitumfrage schließt in 24 Stunden - Sie können Personen daran erinnern oder die Frist wenn nötig verlängern'
+        poll_closing_soon_author: 'Deine Zeitumfrage endet in 24 Stunden - du kannst die anderen erinnern oder die Frist wenn nötig verlängern'
         poll_expired: "<strong>%{actor}s</strong> Zeitumfrage ist beendet"
-        poll_expired_author: 'Ihre Zeitumfrage ist <strong>beendet</strong>. Betrachten Sie was geteilt wurde und <strong>teilen Sie das Ergebnis</strong> mit der Gruppe, damit die Anderen wissen was als nächstes passiert.'
+        poll_expired_author: 'Deine Zeitumfrage ist <strong>beendet</strong>. Betrachte was geteilt wurde und <strong>teile das Ergebnis</strong> mit der Gruppe, damit die Anderen wissen was als nächstes passiert.'
         poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '<strong>%{actor}</strong> hat das Ergebnis einer Zeitumfrage geteilt'
-        outcome_created_author: 'Sie haben ein Zeitumfragenergebnis geteilt.'
+        outcome_created_author: 'Du hast ein Zeitumfragenergebnis geteilt.'
         outcome_announced: '<strong>%{actor}</strong> hat das Ergebnis einer Zeitumfrage geteilt'
         stance_created: "<strong>%{actor}</strong> hat in %{title} teilgenommen"
-        user_mentioned: '<strong>%{actor}</strong> hat Sie in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert Sie in %{title} zu wählen'
+        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
+        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} zu wählen'
       body:
         voted: '<strong>%{participant}</strong>:'
     ranked_choice:
       subject:
         poll_created: '%{actor}hat eine Rangwahl eröffnet: %{title}'
         poll_edited: '%{actor} hat die Rangwahl bearbeitet: %{title}'
-        poll_announced: '%{actor} hat Sie dazu eingeladen Optionen in einer Umfrage %{title}einzustufen '
+        poll_announced: '%{actor} hat dich dazu eingeladen Optionen in einer Umfrage %{title}einzustufen '
         poll_closing_soon: 'Rangwahl ist in 24 Stunden beendet: %{title}'
-        poll_closing_soon_author: 'Ihre Rangwahl schließt in 24 Stunden: %{title}'
+        poll_closing_soon_author: 'Deine Rangwahl schließt in 24 Stunden: %{title}'
         poll_expired: "Rangwahl-Ergebnis: %{title}"
-        poll_expired_author: 'Ihre Rangwahl wurde beendet. Teilen Sie das Ergebnis: %{title}'
+        poll_expired_author: 'Deine Rangwahl wurde beendet. Teile das Ergebnis: %{title}'
         poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
         poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat das Ergebnis für %{title} bekanntgegeben'
-        outcome_created_author: 'Sie haben ein Abstimmungsergebnis bekanntgegeben: %{title}'
+        outcome_created_author: 'Du hast ein Abstimmungsergebnis bekanntgegeben: %{title}'
         outcome_announced: '%{actor} hat ein Rangwahl-Ergebnis geteilt'
         stance_created: '%{actor} hat sich bei %{title} beteiligt'
-        stance_created_author: "Bitte bestätigen sie hier %{title} Ihre Wahl"
-        user_mentioned: '%{actor} hat Sie in %{title} erwähnt'
-        user_reminded: '%{actor} erinnert Sie zur Wahl von %{title}'
+        stance_created_author: "Bitte bestätige hier %{title} Ihre Wahl"
+        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
+        user_reminded: '%{actor} erinnert dich zur Wahl von %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> hat eine Rangwahl eröffnet'
         poll_edited: '<strong>%{actor}</strong> hat die Rangwahl bearbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat Sie eingeladen, Optionen in einer Umfrage einzustufen'
-        poll_closing_soon: '<strong>%{actor}</strong>s Rangwahl ist in 24 Stunden beendet. Sie können noch wählen, Ihre Meinung ändern oder andere dazu aufrufen sich zu beteiligen.'
-        poll_closing_soon_author: 'Ihre Rangwahl schließt in 24 Stunden - Sie können Andere noch erinnern oder die Frist, falls nötig, verlängern.'
+        poll_announced: '<strong>%{actor}</strong> hat dich eingeladen, Optionen in einer Umfrage einzustufen'
+        poll_closing_soon: '<strong>%{actor}</strong>s Rangwahl ist in 24 Stunden beendet. Du kannst noch wählen, deine Meinung ändern oder andere dazu aufrufen sich zu beteiligen.'
+        poll_closing_soon_author: 'Deine Rangwahl schließt in 24 Stunden - Du kannst Andere noch erinnern oder die Frist, falls nötig, verlängern.'
         poll_expired: "<strong>%{actor}s</strong> Rangwahl ist beendet."
-        poll_expired_author: 'Ihre Rangwahl ist <strong>beendet</strong>. Schauen Sie sich an was entstanden ist und <strong>teilen Sie das Ergebnis</strong> mit der Gruppe, damit die Anderen wissen, wie es weitergeht.'
+        poll_expired_author: 'Deine Rangwahl ist <strong>beendet</strong>. Schaue dir an was entstanden ist und <strong>teile das Ergebnis</strong> mit der Gruppe, damit die Anderen wissen, wie es weitergeht.'
         poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '<strong>%{actor}</strong> hat ein Rangwahl-Ergebnis geteilt.'
-        outcome_created_author: 'Sie haben ein Rangwahl-Ergebnis geteilt'
+        outcome_created_author: 'Du hast ein Rangwahl-Ergebnis geteilt'
         outcome_announced: '<strong>%{actor}</strong> hat ein Rangwahl-Ergebnis geteilt.'
         stance_created: "<strong>%{actor}</strong> hat in %{title} teilgenommen"
-        user_mentioned: '<strong>%{actor}</strong> hat Sie in %{title} erwähnt'
-        user_reminded: '<strong>%{actor}</strong> erinnert Sie in %{title} zu wählen'
+        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
+        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} zu wählen'
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: Kommentar von %{comment_author}
@@ -534,7 +534,7 @@ de:
       details: Shelley und Jack haben in den letzten 3 Monaten als Praktikanten mit uns gearbeitet und beide haben bewundernswertes Engagement gezeigt und sind eindeutig Vorteile für unser Team. Sollen wir ihnen formelle Beschäftigungsangebote anbieten?
     poll:
       title: "Liegen ggf. Lebensmittelunverträglichkeiten vor, die wir bei unserer Geschäftsfeier am Donnerstag berücksichtigen müssen?"
-      details: Wir freuen uns darauf, Sie alle bei uns zu sehen! Bitte geben Sie an, ob es irgendwelche Diätbeschränkungen gibt, die wir beachten sollten.
+      details: Wir freuen uns darauf, euch alle bei uns zu sehen! Bitte gebt an, ob es irgendwelche Diätbeschränkungen gibt, die wir beachten sollten.
     count:
       title: "Wer würde helfen das Firmenpicknick zu organisieren?"
       details: Marsha fühlte sich beim letzten Mal total überfordert, also würden wir ihr diesmal ein Paar Helferinnen geben, um sicherzustellen, dass es für alle etwas einfacher ist. Bitte geben Sie an, ob Sie helfen möchten!
@@ -554,21 +554,21 @@ de:
     public_title: Öffentlich (Jeder mit Link)
   poll_unsubscribe:
     title: Die Benachrichtigungen für %{title} wurden deaktiviert
-    helptext: Sie werden keine Mails mehr zu dieser Entscheidung erhalten.
+    helptext: Du wirst keine Mails mehr zu dieser Entscheidung erhalten.
     visit_poll: Umfrage ansehen
     go_to_dashboad: zum Dashboard
   slack:
-    new_discussion: "Neuer Thread in *%{group}*: *%{discussion}*"
+    new_discussion: "Neuer Diskussion in *%{group}*: *%{discussion}*"
     outcome_created: "Ergebnis wurde in *%{group}* gepostet: *%{poll}*"
     poll_created: "Neue *%{poll_type}* in *%{group}*: *%{poll}*"
     poll_closing_soon: "Erinnerung: *%{poll}* schließt in 24 Stunden"
     poll_expired: "*%{poll}* wurde geschlossen"
-    poll_not_found: "Entschuldigung, diese Umfrage wurde nicht gefunden. Geben Sie \"/loomio\" <poll_type><title>'ein, um einen anderen zu starten"
+    poll_not_found: "Entschuldigung, diese Umfrage wurde nicht gefunden. Gib \"/loomio\" <poll_type><title>'ein, um einen anderen zu starten"
     unknown_channel: |
         Entschuldigung, es sieht so aus, als sei keine Loomio-Gruppe mit diesem Kanal verknüpft.
-        Versuchen Sie stattdessen, '/ loomio' in einem der folgenden Kanäle zu spielen
+        Versuche stattdessen, '/ loomio' in einem der folgenden Kanäle zu spielen
         %{integrations}
-    stance_not_valid: "Entschuldigung, wir konnten keine Einstellung für *%{poll}* erstellen. <%{url}|Klicken Sie hier>, um direkt über die Umfrage abzustimmen."
+    stance_not_valid: "Entschuldigung, wir konnten keine Einstellung für *%{poll}* erstellen. <%{url}|Klicke hier>, um direkt über die Umfrage abzustimmen."
     group_identity_created: |
         Hallo, ich bin Loomio Bot! *%{author}* hat mich hinzugefügt.
         Ich kann Ihrem Team helfen, gemeinsam Entscheidungen zu treffen.
@@ -584,29 +584,29 @@ de:
 
         Sie müssen Teil der Loomio-Gruppe *%{group}* sein, um teilnehmen zu können.
         Wenn Sie noch nicht beigetreten sind, <%{url}| Klicken Sie hier>, um dies zu tun.
-    request_authorization_message: "Noch ein Schritt: <%{url}| Klicken Sie hier>, um Ihr Slack-Konto für die Nutzung von Loomio zu autorisieren. (Sie müssen dies nur einmal tun)"
-    poll_closed: "*%{title}* hat bereits geschlossen! <%{url}|Klicken Sie hier> um die Ergebnisse zu sehen."
+    request_authorization_message: "Noch ein Schritt: <%{url}| Klicke hier>, um Ihr Slack-Konto für die Nutzung von Loomio zu autorisieren. (Du musst dies nur einmal tun)"
+    poll_closed: "*%{title}* hat bereits geschlossen! <%{url}|Klicke hier> um die Ergebnisse zu sehen."
     go_to_slack: zu Slack gehen
-    stance_created: Danke für die Teilnahme! Sie wählten  *%{position}* in der Umfrage <%{poll_url}|%{title}>. Wenn Sie Ihre Wahl ändern möchten, oder einen Grund nenen wollen,w arum Sie so abgestimmt haben, <%{stance_url}|Klicken Sie hier>.
-    click_to_vote: "Wählen Sie eine Option unten:"
+    stance_created: Danke für die Teilnahme! Du wähltest  *%{position}* in der Umfrage <%{poll_url}|%{title}>. Wenn du deine Wahl ändern möchtest, oder einen Grund nennen willst, warum du so abgestimmt hast, <%{stance_url}|Klicke hier>.
+    click_to_vote: "Wähle eine Option unten:"
     time_zone_message: (alle Zeiten sind in der %{zone} Zeitzone)
-    authorized_message: Erfolg! Sie sind jetzt bereit, jetzt über Slack abzustimmen.
+    authorized_message: Erfolg! Du bist jetzt bereit, jetzt über Slack abzustimmen.
     initiate: |
-        Okay, lass uns das tun! <%{url}%{type}| Klicken Sie hier, um mit Ihrem> zu beginnen.
+        Okay, lass uns das tun! <%{url}%{type}| Klicke hier, um mit deinem> zu beginnen.
         (Hinweis: Wir werden in diesem Kanal posten, sobald er erstellt wurde, damit jeder teilnehmen kann)
     slash_command_help: |
-        Geben Sie einfach einen Entscheidungstyp und eine Frage ein, und wir nehmen es von dort.
-        Sie können aus folgenden Entscheidungstypen wählen:
+        Gib einfach einen Entscheidungstyp und eine Frage ein, und wir nehmen es von dort.
+        Du kannst aus folgenden Entscheidungstypen wählen:
         Vorschlag: Kollektivvertrag anstreben
-        'zählen': Verfolgen Sie die Teilnahme und finden Sie Freiwillige
-        'Umfrage': Messen Sie die Popularität von Optionen
-        'dot_vote': Priorisieren Sie eine Liste von Optionen
-        Treffen: Treffen Sie sich, um sich zu treffen
+        'zählen': Verfolge die Teilnahme und finde Freiwillige
+        'Umfrage': Messe die Popularität von Optionen
+        'dot_vote': Priorisiereeine Liste von Optionen
+        Treffen: Trefft euch, um sich zu treffen
         Oder starte eine Konversation mit '/ loomio thread <title>'.
 
         Beispielsweise:
-        /loomio Graf Wer kommt am Sonntag zur Party?
+        /loomio count Wer kommt am Sonntag zur Party?
         Um eine neue Zählung zu beginnen.
         oder
-        /loomio thread Sprechen wir über die Unternehmensausrichtung
-        Um einen neuen Thread zu starten
+        /loomio Dthread Sprechen wir über die Unternehmensausrichtung
+        Um eine neue Diskussion zu starten

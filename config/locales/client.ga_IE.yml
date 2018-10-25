@@ -384,7 +384,6 @@ ga_IE:
     submit: 'Díghníomhachtaigh an cuntas'
   email_settings_page:
     header: Socruithe ríomhphoist
-    all_groups: Socruithe i gcomhair gach baicle
     daily_summary_label: Ríomhphost le hachoimre laethúil
     announcement_label: Fógraí
     edit: Eagar

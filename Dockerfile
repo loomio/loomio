@@ -20,24 +20,24 @@ RUN apt-get install -y libxml2-dev libxslt1-dev
 # RUN apt-get install -y python python-dev python-pip python-virtualenv
 
 # install node
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
 # RUN mkdir /loomio
 WORKDIR /loomio
 ADD . /loomio
 COPY config/database.docker.yml /loomio/config/database.yml
+RUN bundle install
 
-WORKDIR /loomio/angular
+ENV RAILS_ENV test
+RUN bundle exec rake plugins:fetch[docker]
+ENV RAILS_ENV production
+
+WORKDIR /loomio/client
 RUN npm install -g yarn
 RUN yarn
 RUN npm rebuild node-sass
-
 WORKDIR /loomio
-RUN bundle install
-
-# build client app
-RUN bundle exec rake plugins:fetch[docker]
 
 EXPOSE 3000
 
