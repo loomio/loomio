@@ -217,13 +217,13 @@ describe API::ProfileController do
     end
 
     it "returns users from groups within the same organisation" do
-      get :mentionable_users, params: {q: "e", group_id: group.id}
+      get :mentionable_users, params: {q: "esub", group_id: group.id}
       user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
       expect(user_ids).to eq [esubgroupmember.id]
     end
 
     it "returns users for the discussion" do
-      get :mentionable_users, params: {q: "j", discussion_id: discussion.id}
+      get :mentionable_users, params: {q: "jg", discussion_id: discussion.id}
       user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
       expect(user_ids).to eq [jgroupmember.id, jguest.id]
     end
