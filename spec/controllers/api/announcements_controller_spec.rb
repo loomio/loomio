@@ -15,27 +15,21 @@ describe API::AnnouncementsController do
     let!(:a_friend)        { create :user, name: "Friendly Fran" }
     let!(:an_acquaintance) { create :user, name: "Acquaintance Annie" }
     let!(:a_stranger)      { create :user, name: "Alien Alan" }
+    let(:subgroup) { create :formal_group, parent: group}
 
     before do
+      group.add_member! user
       group.add_member! a_friend
       another_group.add_member! user
       another_group.add_member! an_acquaintance
     end
 
-    # we dont announce without a group eh?
-    # it 'returns an existing user you know' do
-    #   get :search, params: { q: 'fran' }
-    #   expect(response.status).to eq 200
-    #   json = JSON.parse(response.body)
-    #   expect(json[0]['name']).to eq a_friend.name
-    # end
-    #
-    # it 'does not return an existing user you dont know' do
-    #   get :search, params: { q: 'alien' }
-    #   expect(response.status).to eq 200
-    #   json = JSON.parse(response.body)
-    #   expect(json).to be_empty
-    # end
+    it 'does not return an existing user you dont know' do
+      get :search, params: { q: 'alien', group_id: group.id }
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+      expect(json).to be_empty
+    end
 
     it 'returns an email address' do
       get :search, params: { q: 'bumble@bee.com' }
@@ -44,7 +38,7 @@ describe API::AnnouncementsController do
       expect(json[0]['name']).to eq 'bumble@bee.com'
     end
 
-    it 'finds potential members when a group is given' do
+    it 'finds members in your group but not this subgroup' do
       get :search, params: { q: 'annie', group_id: group.id }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
