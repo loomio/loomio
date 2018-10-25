@@ -28,6 +28,6 @@ Please read [Our translation guide](docs/en/translation/) to find out how you ca
 
 ## Want to help develop Loomio?
 
-Dive into our [docs](docs/en/) to find out how to deploy your own Loomio instance or develop a new feature in Loomio.
+Dive into our [docs](https://help.loomio.org/en/dev_manual/) to find out how to deploy your own Loomio instance or develop a new feature in Loomio.
 
 To participate in discussions about the app, potential features, and more, [join the Loomio Community group on Loomio](https://www.loomio.org/g/WmPCB3IR/loomio-community).

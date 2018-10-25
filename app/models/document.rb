@@ -15,7 +15,7 @@ class Document < ApplicationRecord
     end
   }
   do_not_validate_attachment_file_type :file
-  after_post_process :set_initial_url
+  after_create :set_initial_url
 
   scope :search_for, ->(query) {
     if query.present?
@@ -49,6 +49,10 @@ class Document < ApplicationRecord
     self.file.blank?
   end
 
+  def url
+    self[:url].starts_with?("http") ? self[:url] : "#{lmo_asset_host}#{self[:url]}"
+  end
+
   private
 
   # need this to save model with upload correctly and get metadata,
@@ -62,8 +66,6 @@ class Document < ApplicationRecord
     self.icon    ||= metadata['icon']
     self.color   ||= metadata['color']
   end
-
-  private
 
   def metadata
     @metadata ||= Hash(AppConfig.doctypes.detect { |type| /#{type['regex']}/.match(file_content_type || url) })

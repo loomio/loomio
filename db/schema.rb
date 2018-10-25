@@ -675,8 +675,6 @@ ActiveRecord::Schema.define(version: 20180724135748) do
     t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip", limit: 255
-    t.string "last_sign_in_ip", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "name", limit: 255
