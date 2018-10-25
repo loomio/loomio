@@ -19,7 +19,11 @@ module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
 
   search: (query, model) ->
     params = {q: query}
-    params.group_id = model.id if model.type == 'FormalGroup'
+    # GK: TODO: add id params relative to model - check if correct
+    params.group_id = model.id if model.isA?('group')
+    params.poll_id = model.id if model.isA?('poll')
+    params.discussion_id = model.id if model.isA?('discussion')
+
     @remote.fetch
       path: 'search'
       params: params

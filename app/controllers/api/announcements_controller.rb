@@ -20,6 +20,9 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def notified_group
+    # GK: TODO: group key is being passed into load_and_authorize, but it could be a poll or discussion
+    # therefore, load_and_authorize is returning nil
+    # and therefore, NullFormalGroup is initialised
     @notified_group ||= load_and_authorize(:group, :invite_people, optional: true) || NullFormalGroup.new
   end
 

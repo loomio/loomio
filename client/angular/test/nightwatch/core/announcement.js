@@ -42,6 +42,7 @@ module.exports = {
     page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
+  // GK: TODO: is this test still coherent? depends on how we resolve the poll_created issue
   'announcement_created': (test) => {
     page = pageHelper(test)
 
