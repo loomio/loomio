@@ -5,9 +5,7 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-    resource.require_valid_signup = true
-    resource.require_recaptcha = true
-    if resource.save
+    if UserSerivce.create(resource)
       save_detected_locale(resource)
       if email_is_verified?
         sign_in resource
