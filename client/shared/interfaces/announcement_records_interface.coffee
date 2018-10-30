@@ -23,6 +23,7 @@ module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
     params.group_id = model.id if model.isA?('group')
     params.poll_id = model.id if model.isA?('poll')
     params.discussion_id = model.id if model.isA?('discussion')
+    params.outcome_id = model.id if model.isA?('outcome')
 
     @remote.fetch
       path: 'search'
