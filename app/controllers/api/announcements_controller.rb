@@ -10,7 +10,7 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def search
-    self.collection = Queries::AnnouncementRecipients.new(params.require(:q), current_user, notified_model).results
+    self.collection = Queries::AnnouncementRecipients.new(params.require(:q), current_user, announcement_target_model).results
     respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
   end
 
@@ -19,13 +19,13 @@ class API::AnnouncementsController < API::RestfulController
     { email_user_ids: collection.pending.pluck(:user_id) }
   end
 
-  # # GK: TODO: why would we use this instead of notified_model?
-  # def notified_group
-  #   # GK: TODO: group key is being passed into load_and_authorize, but it could be a poll or discussion
-  #   # therefore, load_and_authorize is returning nil
-  #   # and therefore, NullFormalGroup is initialised
-  #   @notified_group ||= load_and_authorize(:group, :invite_people, optional: true) || NullFormalGroup.new
-  # end
+  def announcement_target_model
+    @announcement_target_model ||=
+      load_and_authorize(:group, :announce, optional: true) ||
+      load_and_authorize(:discussion, :announce, optional: true) ||
+      load_and_authorize(:poll, :announce, optional: true) ||
+      load_and_authorize(:outcome)
+  end
 
   def notified_model
     @notified_model ||=
