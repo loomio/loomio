@@ -32,7 +32,7 @@ describe API::AnnouncementsController do
     end
 
     it 'returns an email address' do
-      get :search, params: { q: 'bumble@bee.com' }
+      get :search, params: { q: 'bumble@bee.com', group_id: group.id }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
       expect(json[0]['name']).to eq 'bumble@bee.com'

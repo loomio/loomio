@@ -19,6 +19,10 @@ Queries::AnnouncementRecipients = Struct.new(:query, :user, :model) do
   end
 
   def user_results
-    User.mention_search(user, model, query)
+    if model.is_a? Group
+      User.mention_search(user, model, query).where.not(id: model.member_ids)
+    else
+      User.mention_search(user, model, query)
+    end
   end
 end
