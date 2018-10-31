@@ -1,11 +1,11 @@
 class API::AnnouncementsController < API::RestfulController
   def audience
-    self.collection = service.audience_for(notified_model, params.require(:kind), current_user)
+    self.collection = service.audience_for(announcement_target_model, params.require(:kind), current_user)
     respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
   end
 
   def create
-    self.collection = service.create(model: notified_model, params: resource_params, actor: current_user).memberships
+    self.collection = service.create(model: announcement_target_model, params: resource_params, actor: current_user).memberships
     respond_with_collection serializer: MembershipSerializer, root: :memberships, scope: create_scope
   end
 
@@ -24,14 +24,14 @@ class API::AnnouncementsController < API::RestfulController
       load_and_authorize(:group, :announce, optional: true) ||
       load_and_authorize(:discussion, :announce, optional: true) ||
       load_and_authorize(:poll, :announce, optional: true) ||
-      load_and_authorize(:outcome)
+      load_and_authorize(:outcome, :announce, optional: false)
   end
-
-  def notified_model
-    @notified_model ||=
-      load_and_authorize(:group, optional: true) ||
-      load_and_authorize(:discussion, optional: true) ||
-      load_and_authorize(:poll, optional: true) ||
-      load_and_authorize(:outcome)
-  end
+  #
+  # def notified_model
+  #   @notified_model ||=
+  #     load_and_authorize(:group, optional: true) ||
+  #     load_and_authorize(:discussion, optional: true) ||
+  #     load_and_authorize(:poll, optional: true) ||
+  #     load_and_authorize(:outcome)
+  # end
 end
