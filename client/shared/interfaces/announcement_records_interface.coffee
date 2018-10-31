@@ -18,8 +18,8 @@ module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
   model: AnnouncementModel
 
   search: (query, model) ->
-    params = {q: query}
-    params.group_id = model.id if model.constructor.type == 'FormalGroup'
+    params = _.merge({q: query}, model.namedId())
+
     @remote.fetch
       path: 'search'
       params: params
