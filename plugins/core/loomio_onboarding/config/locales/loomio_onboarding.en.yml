@@ -6,9 +6,9 @@ en:
         body_md: |
             Hi %{recipient_name}
 
-            Welcome to Loomio, your online place to have discussions and make decisions with your group.
+            Welcome to Loomio, a platform for you to hold discussions and make decisions with your group.
 
-            I'm %{sender_name}, one of the Loomio team members and here to help.
+            I'm %{sender_name}, one of the Loomio team members here to help.
 
             Have you visited [help.loomio.org](https://help.loomio.org/%{user_help_locale}) yet? If not, here are a couple of pages that you might find useful:
 
@@ -16,7 +16,7 @@ en:
 
             Similarly [Joining a group](https://help.loomio.org/%{user_help_locale}/user_manual/getting_started/joining_a_group/?utm_source=welcome_email) will help you set up your profile, confgure your email settings, and ensure you're ready to particiapte.
 
-            That's just the beginning; There's more great content, including guides, how-to's and even a course on facilitation.
+            That's just the beginning! There's more great content, including guides, how-tos and even a course on facilitation.
 
             If you'd like to hear when we release new features or help content, please subscribe to the newsletter.
 
