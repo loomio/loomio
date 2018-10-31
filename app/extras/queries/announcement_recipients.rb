@@ -19,6 +19,8 @@ Queries::AnnouncementRecipients = Struct.new(:query, :user, :model) do
   end
 
   def user_results
+    # GK: NB: target model isn't always a Group
+    # TODO: this could be sub-classed out
     if model.is_a? Group
       User.mention_search(user, model, query).where.not(id: model.member_ids)
     else
