@@ -1,0 +1,25 @@
+de:
+  loomio_onboarding:
+    group_progress_card:
+      title: Gruppe aktivieren
+      activities:
+        set_description: Gruppen-Beschreibung festlegen
+        set_logo: Gruppenlogo auswählen
+        set_cover_photo: Gruppen-Titelbild wählen
+        invite_people_in: Personen einladen
+        start_thread: einen Diskussionen-Thread eröffnen
+        make_decision: Entscheidung vorbereiten
+      learn_more: mehr bei der Loomio-Schule lernen
+      learn_more_title: in neuem Tab öffnen
+      celebration_message: Super, Ihre Gruppe ist bereit!
+      dismiss_this_card: Karte ablehnen
+    user_progress_card:
+      title: Profil einrichten
+      activities:
+        enter_name: Name einfügen
+        set_profile_picture: Profilbild einstellen
+        set_bio: Kurzbeschreibung hinzufügen
+        join_group: einer Gruppe beitreten
+        make_decision: Entscheidung abstimmen
+      celebration_message: Ihr Profil ist bereit!
+      dismiss: Ausblenden
