@@ -74,7 +74,7 @@ module.exports = {
     page.expectText('.context-panel', 'Private')
   },
 
-  'does not store cancelled thread info': (test) => {
+  'does_not_store_cancelled_thread_info': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
@@ -88,6 +88,7 @@ module.exports = {
     page.pause()
 
     page.click('.context-panel-dropdown__button')
+    page.pause()
     page.click('.context-panel-dropdown__option--edit')
 
     page.expectNoText('.discussion-form__title-input', 'dumb title')
