@@ -155,6 +155,9 @@ module.exports =
     isA: (models...) ->
       _.contains models, @constructor.singular
 
+    namedId: ->
+      { "#{@constructor.singular}_id": @id }
+
     isNew: ->
       not @id?
 
