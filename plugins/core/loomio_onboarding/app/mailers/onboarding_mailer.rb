@@ -6,6 +6,6 @@ class OnboardingMailer < UserMailer
                      locale:        @user.locale,
                      from:          ENV['WELCOME_EMAIL_SENDER_EMAIL'],
                      reply_to:      ENV['SUPPORT_EMAIL'],
-                     subject_key:   "onboarding_mailer.welcome.subject"
+                     subject_key:   "loomio_onboarding.onboarding_mailer.welcome.subject"
   end
 end
