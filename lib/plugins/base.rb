@@ -24,8 +24,12 @@ module Plugins
       @config = File.exists?(config_file_path) ? YAML.load(ERB.new(File.read(config_file_path)).result) : {}
     end
 
-    def enabled=(value)
-      @enabled = value.is_a?(TrueClass) || ENV[value]
+    def enabled
+      enabled_plugins.include? self.name
+    end
+
+    def enabled_plugins
+      ENV['ENABLED_PLUGINS'].split(" ").map(&:to_sym)
     end
 
     def use_class_directory(glob)
