@@ -42,6 +42,21 @@ module LocalesHelper
     end.compact.first || I18n.default_locale
   end
 
+  def help_manual_locale(locale)
+    case locale
+    when :es, :an, :ca, :gl
+      "es"
+    when :ar
+      "ar"
+    when :fr
+      "fr"
+    when :zh_TW
+      "zh"
+    else
+      "en"
+    end
+  end
+
   private
 
   def normalize(locale)

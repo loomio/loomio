@@ -10,11 +10,11 @@ en:
 
             I'm %{sender_name}, one of the Loomio team members and here to help.
 
-            Have you visited [help.loomio.org](https://help.loomio.org/) yet? If not, here are a couple of pages that you might find useful:
+            Have you visited [help.loomio.org](https://help.loomio.org/%{user_help_locale}) yet? If not, here are a couple of pages that you might find useful:
 
-            [Starting a group](https://help.loomio.org/en/user_manual/getting_started/starting_a_group/?utm_source=welcome_email) guides you through setting up, inviting people and making your first decisions together as a group.
+            [Starting a group](https://help.loomio.org/%{user_help_locale}/user_manual/getting_started/starting_a_group/?utm_source=welcome_email) guides you through setting up, inviting people and making your first decisions together as a group.
 
-            Similarly [Joining a group](https://help.loomio.org/en/user_manual/getting_started/joining_a_group/?utm_source=welcome_email) will help you set up your profile, confgure your email settings, and ensure you're ready to particiapte.
+            Similarly [Joining a group](https://help.loomio.org/%{user_help_locale}/user_manual/getting_started/joining_a_group/?utm_source=welcome_email) will help you set up your profile, confgure your email settings, and ensure you're ready to particiapte.
 
             That's just the beginning; There's more great content, including guides, how-to's and even a course on facilitation.
 
