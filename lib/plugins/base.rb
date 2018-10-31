@@ -8,7 +8,7 @@ module Plugins
   VALID_ASSET_TYPES = [:coffee, :scss, :haml, :js, :css]
 
   class Base
-    attr_accessor :name, :installed
+    attr_accessor :name, :installed, :enabled # GK: TODO: enabled is to prevent existing plugins from blowing up, but we should fix all the plugins
     attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :extensions, :enabled, :config
     alias :read_attribute_for_serialization :send
 
@@ -25,11 +25,11 @@ module Plugins
     end
 
     def enabled
-      enabled_plugins.include? self.name
+      !disabled_plugins.include? self.name
     end
 
-    def enabled_plugins
-      ENV['ENABLED_PLUGINS'].split(" ").map(&:to_sym)
+    def disabled_plugins
+      ENV['DISABLED_PLUGINS'].split(" ").map(&:to_sym)
     end
 
     def use_class_directory(glob)
