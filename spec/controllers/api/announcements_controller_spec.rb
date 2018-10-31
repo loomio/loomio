@@ -76,6 +76,7 @@ describe API::AnnouncementsController do
       group.add_member! both_user
       subgroup.add_member! both_user
       group.add_member! parent_user
+      subgroup.add_admin! user
 
       get :audience, params: {group_id: subgroup.id, kind: "parent_group"}
       json = JSON.parse response.body
