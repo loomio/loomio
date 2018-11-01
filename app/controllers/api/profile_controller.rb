@@ -67,7 +67,8 @@ class API::ProfileController < API::RestfulController
   def model
     load_and_authorize(:group, optional: true) ||
     load_and_authorize(:discussion, optional: true) ||
-    load_and_authorize(:poll, optional: true)
+    load_and_authorize(:poll, optional: true) ||
+    load_and_authorize(:comment, optional: true)
   end
 
   def accessible_records
