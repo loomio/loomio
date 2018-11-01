@@ -41,7 +41,7 @@ module Plugins
 
         plugin.use_events do |event_bus|
           event_bus.listen('user_create') do |user|
-            OnboardingMailer.delay(run_at: 10.minutes.from_now).welcome(user)
+            OnboardingMailer.delay(run_at: 5.minutes.from_now).welcome(user)
           end
         end
 
