@@ -42,6 +42,10 @@ module LocalesHelper
     end.compact.first || I18n.default_locale
   end
 
+  def help_manual_locale(locale)
+    "en"
+  end
+
   private
 
   def normalize(locale)

@@ -1,0 +1,25 @@
+uk:
+  loomio_onboarding:
+    group_progress_card:
+      title: Активуйте свою групу
+      activities:
+        set_description: Додайте опис для групи
+        set_logo: Виберіть логотип для вашої групи
+        set_cover_photo: Виберіть фото обкладинки для вашої групи
+        invite_people_in: Запросіть людей долучитись
+        start_thread: Розпочніть тему для обговорення
+        make_decision: Розпочати процес прийняття рішення
+      learn_more: Дізнайтеся більше в Школі Loomio
+      learn_more_title: Відкрити в новій вкладці
+      celebration_message: Чудово! Ваша група готова для початку роботи!
+      dismiss_this_card: Відхилити цю картку
+    user_progress_card:
+      title: Налаштувати свій профіль
+      activities:
+        enter_name: Введіть ваше ім'я
+        set_profile_picture: Виберіть картинку профілю
+        set_bio: Введіть короткий вступ
+        join_group: Приєднатись до групи
+        make_decision: Проголосувати за рішення
+      celebration_message: Ваш профіль готовий для початку роботи!
+      dismiss: Відхилити
