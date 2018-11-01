@@ -6,15 +6,3 @@ loomio_org_plugin:
 
 loomio_legal_plugin:
   repo:         https://github.com/loomio/loomio_legal_plugin.git
-
-loomio_tags:
-  repo:         https://github.com/loomio/loomio_tags.git
-
-loomio_truncate_comment:
-  repo:         https://github.com/loomio/loomio_truncate_comment.git
-
-loomio_content_preview:
-  repo:         https://github.com/loomio/loomio_content_preview.git
-
-loomio_onboarding:
-  repo:         https://github.com/loomio/loomio_onboarding.git
