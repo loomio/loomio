@@ -84,11 +84,9 @@ module.exports = {
     page.fillIn('.discussion-form__title-input', 'dumb title')
     page.fillIn('.discussion-form textarea', 'rubbish description')
 
-    page.click('.modal-cancel')
-    page.pause()
+    page.click('.discussion-modal .modal-cancel')
 
     page.click('.context-panel-dropdown__button')
-    page.pause()
     page.click('.context-panel-dropdown__option--edit')
 
     page.expectNoText('.discussion-form__title-input', 'dumb title')
