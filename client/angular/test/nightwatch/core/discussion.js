@@ -86,6 +86,8 @@ module.exports = {
 
     page.click('.discussion-modal .modal-cancel')
 
+    page.pause()
+
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--edit')
 
