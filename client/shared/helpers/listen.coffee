@@ -8,7 +8,8 @@ module.exports =
   listenForMentions: ($scope, model) ->
     $scope.mentionables = []
     $scope.fetchByNameFragment = (q) ->
-      Records.users.fetchMentionable(q).then (response) ->
+      return unless q.length > 1
+      Records.users.fetchMentionable(q, model).then (response) ->
         $scope.mentionables = Records.users.find(_.pluck(response.users, 'id'))
 
   listenForTranslations: ($scope) ->
