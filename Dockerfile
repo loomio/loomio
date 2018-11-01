@@ -29,9 +29,8 @@ ADD . /loomio
 COPY config/database.docker.yml /loomio/config/database.yml
 RUN bundle install
 
-ENV RAILS_ENV test
-RUN bundle exec rake plugins:fetch[docker]
-ENV RAILS_ENV production
+# disable loomio_onboarding plugin
+ENV DISABLED_PLUGINS loomio_onboarding
 
 WORKDIR /loomio/client
 RUN npm install -g yarn
