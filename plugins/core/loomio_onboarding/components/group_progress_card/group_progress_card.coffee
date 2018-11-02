@@ -26,7 +26,7 @@ angular.module('loomioApp').directive 'groupProgressCard', ->
       click:     -> ModalService.open 'GroupModal', group: -> $scope.group
     ,
       translate: "set_logo"
-      complete:  -> $scope.group.logoUrl() != '/img/default-logo-medium.png'
+      complete:  -> $scope.group.logoUrl() != '/theme/icon.png'
       click:     -> ModalService.open 'LogoPhotoForm', group: -> $scope.group
     ,
       translate: "set_cover_photo"
@@ -40,10 +40,6 @@ angular.module('loomioApp').directive 'groupProgressCard', ->
       translate: "start_thread"
       complete:  -> $scope.group.discussionsCount > 2
       click:     -> ModalService.open 'DiscussionStartModal', discussion: -> Records.discussions.build(groupId: $scope.group.id)
-    ,
-      translate: "make_decision"
-      complete:  -> $scope.group.pollsCount > 1
-      click:     -> ModalService.open 'PollCommonStartModal', poll: -> Records.polls.build(groupId: $scope.group.id)
     ]
 
     $scope.translationFor = (key) ->
