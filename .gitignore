@@ -30,7 +30,8 @@ public/service-worker.js
 /disabled_plugins/
 /dev_plugins/
 /fetched_plugins/
-/plugins
+/plugins/*
+!/plugins/core/
 
 dump.rdb
 

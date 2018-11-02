@@ -169,6 +169,9 @@ module.exports = class GroupModel extends BaseModel
       @remove()
       _.each @memberships(), (m) -> m.remove()
 
+  export: =>
+    @remote.postMember(@id, 'export')
+
   uploadLogo: (file) =>
     @remote.upload("#{@key}/upload_photo/logo", file, {}, ->)
 

@@ -33,10 +33,6 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
     object.id
   end
 
-  def discussion_reader_volume
-    object.volume
-  end
-
   def seen_by_count
     object.discussion.seen_by_count
   end

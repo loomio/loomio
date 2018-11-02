@@ -613,6 +613,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
+      export_data: 'Export Group Data'
       manage_members: 'Manage Members'
       add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
@@ -722,6 +723,20 @@ en:
     messages:
       group_created: 'Group started'
       group_updated: 'Group updated'
+
+  group_export_modal:
+    title: Export group data
+    body: |
+      <p>
+        You may download a copy of your group's data at any time.
+        <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find out more.</a>
+      </p>
+      <p>
+        It takes a few minutes to complete, depending on the size of your group.
+        When it's ready you'll receive an email with a link to download the file.
+      </p>
+    submit: Start export
+    flash: Group data export started
 
   group_features:
     useAnonymous: Enable anonymous polling
@@ -996,9 +1011,6 @@ en:
     no_groups:
       show_all: You don't have any recent threads because you are not a member of any groups.
       show_muted: You don't have any muted threads because you are not a member of any groups.
-      start: Start
-      or: or
-      join_group: <a href="/explore">join</a> a group to see threads.
     no_threads:
       show_all: You don't have any recent threads.
       show_proposals: There are no proposals currently active.
@@ -1194,17 +1206,23 @@ en:
     description_private_title: 'updated the thread title, context and privacy'
 
   contact_message_form:
-    helptext: "Want to get in touch? Just enter a message below and you'll hear from us shortly."
-    contact_us_email: "(You can also always reach us at <a href=\"mailto:{{email}}\">{{email}}</a>)"
+    title: "Hi there! How can we help?"
+    read_the_manual: |
+      Have you seen our <a href="{{link}}" target="_blank">Help Manual</a>? We update it regularly with frequently asked questions.
+    contact_us_email: "You can also email us: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contact Us'
     name_label: 'Your name'
     name_placeholder: 'Enter your name...'
+    subject_label: "Subject"
+    subject_placeholder: |
+      Eg: Trouble signing in, or Feature suggestion
     email_label: 'Your email address'
     email_placeholder: 'Enter your email address...'
     message_label: 'Your message'
-    message_placeholder: 'Your message...'
+    message_placeholder: 'If requesting support please try to provide as much information as you can.'
     send_message: 'Send Message'
     new_contact_message: "Thanks for getting in touch; we'll get back to you soon!"
+    success: "Thanks for your message, {{name}}. You'll hear back from us soon."
 
   hint:
     context: 'Tips for using the context panel'

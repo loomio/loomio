@@ -321,7 +321,7 @@ module.exports = {
     page.expectNoElement('.group-form__members-can-vote .md-checked')
   },
 
-  'allows group members to leave the group': (test) => {
+  'allows_group_members_to_leave_the_group': (test) => {
     page = pageHelper(test)
 
     // leave group and expect the group has left groups page
@@ -329,19 +329,23 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__leave-group')
     page.click('.confirm-modal__submit')
+    page.pause()
     page.expectText('.flash-root__message', 'You have left this group')
-    page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
+    page.expectElement('.group-modal')
+    // page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
   },
 
-  'allows a coordinator to archive a group': (test) => {
+  'allows_a_coordinator_to_archive_a_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__archive-group')
     page.click('.confirm-modal__submit')
+    page.pause()
     page.expectText('.flash-root__message', 'This group has been deactivated')
-    page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
+    page.expectElement('.group-modal')
+    // page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
   },
 
   'handles empty draft privacy gracefully': (test) => {

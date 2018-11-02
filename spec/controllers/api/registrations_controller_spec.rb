@@ -28,9 +28,9 @@ describe API::RegistrationsController do
       expect(response.status).to eq 422
     end
 
-    it 'sends a login email' do
+    it 'sends a login email and a welcome email' do
       Clients::Recaptcha.any_instance.stub(:validate) { true }
-      expect { post :create, params: { user: registration_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { post :create, params: { user: registration_params } }.to change { ActionMailer::Base.deliveries.count }.by(2)
     end
 
     it 'logs in immediately if pending invitation is present' do

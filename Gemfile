@@ -84,9 +84,8 @@ group :test do
   gem 's3_uploader'
   gem 'poltergeist'
   gem 'webmock'
-  gem "codeclimate-test-reporter", require: false
   gem 'rack_session_access'
-  gem 'rspec-rails', '~> 3.8.0'
+  gem 'rspec-rails', '~> 3.8.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'

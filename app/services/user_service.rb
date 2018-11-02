@@ -1,4 +1,12 @@
 class UserService
+  def self.create(user:)
+    user.require_valid_signup = true
+    user.require_recaptcha = true
+    user.save.tap do
+      EventBus.broadcast 'user_create', user
+    end
+  end
+
   def self.destroy(user:)
     user.deactivate!
     zombie = User.create(name: I18n.t(:'user.deleted_user'),
@@ -39,6 +47,8 @@ class UserService
 
   def self.delete_spam(user)
     # destroyed (cascade delete)
+    raise "no deletey admin plezse" if user.is_admin?
+
     Group.where(creator_id: user.id).destroy_all
     Poll.where(author_id: user.id).destroy_all
     Discussion.where(author_id: user.id).destroy_all

@@ -7,9 +7,20 @@ EventBus = require 'shared/services/event_bus'
 module.exports =
   listenForMentions: ($scope, model) ->
     $scope.mentionables = []
+    $scope.mentionableUserIds = []
     $scope.fetchByNameFragment = (q) ->
-      Records.users.fetchMentionable(q).then (response) ->
-        $scope.mentionables = Records.users.find(_.pluck(response.users, 'id'))
+      if q.length > 0
+        Records.users.fetchMentionable(q, model).then (response) ->
+          $scope.mentionableUserIds =  _.uniq($scope.mentionableUserIds.concat(_.pluck(response.users, 'id')))
+          chain = Records.users.collection.chain().find(id: {'$in': $scope.mentionableUserIds})
+          chain = chain.where (u) ->
+            q = q.toLowerCase()
+            u.name.toLowerCase().startsWith(q) or
+            u.username.toLowerCase().startsWith(q) or
+            u.name.toLowerCase().includes(" #{q}")
+          $scope.mentionables = chain.data()
+      else
+        $scope.mentionables = []
 
   listenForTranslations: ($scope) ->
     EventBus.listen $scope, 'translationComplete', (e, translatedFields) =>

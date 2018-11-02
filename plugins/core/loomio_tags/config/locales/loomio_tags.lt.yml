@@ -1,0 +1,7 @@
+lt:
+  loomio_tags:
+    color_label: Spalva
+    modal_title: Sukurti naują žymę
+    modal_edit_title: Taisyti žymę
+    modal_destroy_title: Šalinti žymę
+    destroy_tag: Šalinti žymę
