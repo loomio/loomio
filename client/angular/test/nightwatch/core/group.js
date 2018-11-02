@@ -73,11 +73,12 @@ module.exports = {
     page.expectElement('.join-group-button__join-group')
   },
 
-  'displays threads from subgroups in the discussions card': (test) => {
+  'displays_threads_from_subgroups_in_the_discussions_card': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_subgroups')
-    page.expectText('.discussions-card__list', 'Vaya con dios')
+    page.pause(2000)
+    page.expectText('.discussions-card__list', 'Vaya con dios', 20000)
   },
 
   'starts an open group': (test) => {
