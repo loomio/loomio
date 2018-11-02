@@ -12,13 +12,13 @@ module.exports =
       if q.length > 0
         Records.users.fetchMentionable(q, model).then (response) ->
           $scope.mentionableUserIds =  _.uniq($scope.mentionableUserIds.concat(_.pluck(response.users, 'id')))
-          chain = Records.users.collection.chain().find(id: {'$in': $scope.mentionableUserIds})
-          chain = chain.where (u) ->
-            q = q.toLowerCase()
-            u.name.toLowerCase().startsWith(q) or
-            u.username.toLowerCase().startsWith(q) or
-            u.name.toLowerCase().includes(" #{q}")
-          $scope.mentionables = chain.data()
+        chain = Records.users.collection.chain().find(id: {'$in': $scope.mentionableUserIds})
+        chain = chain.where (u) ->
+          q = q.toLowerCase()
+          u.name.toLowerCase().startsWith(q) or
+          u.username.toLowerCase().startsWith(q) or
+          u.name.toLowerCase().includes(" #{q}")
+        $scope.mentionables = chain.data()
       else
         $scope.mentionables = []
 
