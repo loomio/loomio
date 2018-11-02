@@ -10,8 +10,11 @@ module Dev::NintiesMoviesHelper
                               is_admin: true,
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
+                              uploaded_avatar: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"),
                               detected_locale: 'en',
                               email_verified: true)
+
+    @patrick.update(avatar_kind: 'uploaded')
     @patrick.experienced!("introductionCarousel")
     @patrick
   end
@@ -29,7 +32,9 @@ module Dev::NintiesMoviesHelper
                   User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
+                               uploaded_avatar: File.new("#{Rails.root}/spec/fixtures/images/jennifer.png"),
                                email_verified: true)
+    @jennifer.update(avatar_kind: 'uploaded')
     @jennifer.experienced!("introductionCarousel")
     @jennifer
   end
