@@ -8,22 +8,22 @@ module.exports =
   listenForMentions: ($scope, model) ->
     $scope.mentionables = []
     $scope.mentionableUserIds = []
-    updateMentionables = (q) ->
+    updateMentionables = ->
       chain = Records.users.collection.chain().find(id: {'$in': $scope.mentionableUserIds})
       chain = chain.where (u) ->
-        q = q.toLowerCase()
-        u.name.toLowerCase().startsWith(q) or
-        u.username.toLowerCase().startsWith(q) or
-        u.name.toLowerCase().includes(" #{q}")
+        u.name.toLowerCase().startsWith($scope.q) or
+        u.username.toLowerCase().startsWith($scope.q) or
+        u.name.toLowerCase().includes(" #{$scope.q}")
       $scope.mentionables = chain.data()
 
 
     $scope.fetchByNameFragment = (q) ->
-      if q.length > 0
-        Records.users.fetchMentionable(q, model).then (response) ->
+      $scope.q = q.toLowerCase()
+      if $scope.q.length > 0
+        Records.users.fetchMentionable($scope.q, model).then (response) ->
           $scope.mentionableUserIds =  _.uniq($scope.mentionableUserIds.concat(_.pluck(response.users, 'id')))
-          updateMentionables(q)
-        updateMentionables(q)
+          updateMentionables()
+        updateMentionables()
       else
         $scope.mentionables = []
 
