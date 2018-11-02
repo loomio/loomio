@@ -14,16 +14,15 @@
     %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-if: "canStartThread()", ng_click: "startDiscussion()", title: "{{ 'navbar.start_thread' | translate }}"}
       %span{translate: "navbar.start_thread"}
 
-  %loading{ng-show: "loading()"}
-  .discussions-card__content{ng-if: "!loading()"}
+  .discussions-card__content
     .discussions-card__list--empty{ng-if: "isEmpty()"}
       %p.lmo-hint-text{translate: "group_page.no_threads_here"}
       %p.lmo-hint-text{ng-if: "!canViewPrivateContent()", translate: "group_page.private_threads"}
 
     .discussions-card__list{ng-if: "!fragment"}
       %section.thread-preview-collection__container{ng-if: "discussions.any() || pinned.any()"}
-        %thread_preview_collection.thread-previews-container--pinned{ng-if: "pinned.any()", query: "pinned", limit: "loader.numLoaded", order: "title"}
-        %thread_preview_collection.thread-previews-container--unpinned{ng-if: "discussions.any()", query: "discussions", limit: "loader.numLoaded"}
+        %thread_preview_collection.thread-previews-container--pinned{ng-if: "pinned.any()", query: "pinned", limit: "loader.numRequested || 25", order: "title"}
+        %thread_preview_collection.thread-previews-container--unpinned{ng-if: "discussions.any()", query: "discussions", limit: "loader.numRequested || 25"}
       .lmo-show-more{ng-if: "!loader.exhausted && !loader.loadingMore"}
         %button.discussions-card__show-more{ng-hide: "loading()", ng-click: "loader.loadMore()", translate: "common.action.show_more"}
       .lmo-hint-text.discussions-card__no-more-threads{translate: "group_page.no_more_threads", ng-if: "loader.numLoaded > 0 && loader.exhausted"}
@@ -31,3 +30,4 @@
     .discussions-card__list{ng-if: "fragment"}
       %section.thread-preview-collection__container{ng-if: "searched.any()"}
         %thread_preview_collection.thread-previews-container--searched{query: "searched"}
+    %loading{ng-show: "loading()"}
