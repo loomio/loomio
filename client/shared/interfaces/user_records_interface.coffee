@@ -11,6 +11,7 @@ module.exports = class UserRecordsInterface extends BaseRecordsInterface
     @fetch
       path: 'mentionable_users'
       params:
+        per: 100
         q: q
         "#{model.constructor.singular}_id": model.id
 
