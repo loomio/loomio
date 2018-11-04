@@ -7,8 +7,7 @@ EventBus = require 'shared/services/event_bus'
 module.exports =
   listenForMentions: ($scope, model) ->
     $scope.mentionables = []
-    $scope.mentionableUserIds = []
-
+    $scope.mentionableUserIds = model.memberIds()
 
     updateMentionables = ->
       chain = Records.users.collection.chain().find(id: {'$in': $scope.mentionableUserIds})

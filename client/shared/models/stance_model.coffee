@@ -27,6 +27,12 @@ module.exports = class StanceModel extends BaseModel
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Stance")
 
+  memberIds: ->
+    @poll().memberIds()
+
+  group: ->
+    @poll().group()
+
   author: ->
     @participant()
 
