@@ -16,7 +16,7 @@ module.exports =
         u.name.toLowerCase().startsWith($scope.q) or
         u.username.toLowerCase().startsWith($scope.q) or
         u.name.toLowerCase().includes(" #{$scope.q}")
-      $scope.mentionables = _.sortBy(chain.data(), [(u) -> 0 - Records.events.find(actorId: u.id).length])
+      $scope.mentionables = _.sortBy(chain.data(), (u) -> (0 - Records.events.find(actorId: u.id).length))
 
     fetchThenUpdate = _.throttle ->
       Records.users.fetchMentionable($scope.q, model).then (response) ->
