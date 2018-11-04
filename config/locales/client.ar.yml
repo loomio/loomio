@@ -451,10 +451,10 @@ ar:
     contact_us: 'اتصل بنا'
     name_label: 'اسمك'
     name_placeholder: 'ادخل اسمك...'
+    subject_label: "الموضوع"
     email_label: 'عنوان بريدك الإلكتروني'
     email_placeholder: 'ادخل عنوان بريدك الالكتروني...'
     message_label: 'رسالتك'
-    message_placeholder: 'ادخل رسالتك...'
     send_message: 'أرسل الرسالة'
   hint:
     context: 'نصائح حول استخدام منصة السياق'

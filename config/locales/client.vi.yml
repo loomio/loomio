@@ -62,6 +62,8 @@ vi:
   new_comment_item:
     context_menu:
       delete_comment: 'Xóa bình luận'
+  contact_message_form:
+    subject_label: "Chủ đề"
   hint:
     context: 'Gợi ý về cách sử dụng khung điều khiển nội dung'
     discussion: 'Gợi ý về cách bắt đầu tham gia thảo luận'

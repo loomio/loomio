@@ -72,8 +72,6 @@ an:
     locale_label: 'Idioma'
   dashboard_page:
     aria_label: 'Panel de control'
-    no_groups:
-      or: u
     mark_as_read: Marcar como leyiu
     threads_from:
       today: 'Hue'
@@ -96,6 +94,7 @@ an:
       delete_comment: 'Borrar comentario'
   contact_message_form:
     name_label: 'O tuyo nombre'
+    subject_label: "Titol"
     email_label: 'O tuyo correu electronico'
     message_label: 'O tuyo mensache'
   hint:

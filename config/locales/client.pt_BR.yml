@@ -511,6 +511,8 @@ pt_BR:
     messages:
       group_created: 'Grupo iniciado'
       group_updated: 'Grupo atualizado'
+  group_export_modal:
+    title: Exportar data do grupo
   membership_requests_card:
     heading: 'Pedidos para inclusão de membros'
     manage_requests: Gerenciar solicitações
@@ -681,9 +683,6 @@ pt_BR:
     no_groups:
       show_all: Você não possui nenhum tópico recente, porque você não é membro de nenhum grupo.
       show_muted: Você não possui nenhum tópico silenciado, porque você não é membro de nenhum grupo.
-      start: Comece
-      or: ou
-      join_group: <a href="/explore">participe</a> de um grupo para ver os tópicos.
     no_threads:
       show_all: Você não tem tópicos recentes.
       show_proposals: Não há propostas ativas no momento.
@@ -835,10 +834,10 @@ pt_BR:
     contact_us: 'Contato'
     name_label: 'Seu nome'
     name_placeholder: 'Digite o seu nome...'
+    subject_label: "Assunto"
     email_label: 'Seu endereço de e-mail'
     email_placeholder: 'Digite seu endereço de e-mail...'
     message_label: 'Sua mensagem'
-    message_placeholder: 'Sua mensagem...'
     send_message: 'Enviar Mensagem'
   hint:
     context: 'Dicas para usar o painel de contexto'

@@ -342,8 +342,6 @@ pl:
       updated: Ustawienia poczty zmienione
   dashboard_page:
     aria_label: 'Pulpit'
-    no_groups:
-      start: Rozpocznij
     no_threads:
       show_all: Nie masz żadnych ostatnich wątków.
       show_proposals: Brak aktywnych rekomendacji
@@ -414,7 +412,6 @@ pl:
     email_label: 'Twój adres email'
     email_placeholder: 'Podaj Twój adres email...'
     message_label: 'Twoja wiadomość'
-    message_placeholder: 'Twoja wiadomość...'
     send_message: 'Wysłanie Wiadomości'
   hint:
     context: 'Wskazówki użycia panelu kontekstu'

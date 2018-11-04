@@ -400,9 +400,6 @@ sr:
     no_groups:
       show_all: Nemaš novih niti jer nisi član ni jedne grupe.
       show_muted: Nemaš prigušenih niti jer nisi član ni jedne grupe.
-      start: Start
-      or: ili
-      join_group: <a href="/explore">priključi se</a> grupi da vidiš niti.
     no_threads:
       show_all: Nemate skorih niti
       show_proposals: Nema trenutno aktivnih predloga.
@@ -533,10 +530,10 @@ sr:
     contact_us: 'Kontakiraj nas'
     name_label: 'Tvoje ime'
     name_placeholder: 'Upiši svoje ime...'
+    subject_label: "Tema"
     email_label: 'Tvoja adresa ePošte'
     email_placeholder: 'Upiši svoju adresu ePošte'
     message_label: 'Tvoja poruka'
-    message_placeholder: 'Vaša poruka...'
     send_message: 'Pošalji Poruku'
   hint:
     context: 'Saveti za upotrebu kontekstualnog panela'

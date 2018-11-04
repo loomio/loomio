@@ -457,6 +457,9 @@ it:
     show_history: Mostra la storia della modifica
     pin_thread: Fissa in alto la discussione
     unpin_thread: Non fissare in alto la discussione
+    comment_copied: URL del commento copiato negli appunti
+    poll_copied: URL della decisione copiato negli appunti
+    discussion_copied: URL della discussione copiato negli appunti
   cover_photo_form:
     aria_label: 'Cambia modulo dell''immagine di copertina'
     heading: 'Nuova immagine di copertina'
@@ -511,9 +514,13 @@ it:
     new_photo: 'nuova immagine'
     new_cover_photo: 'Carica nuova immagine di copertina'
     new_group_logo: 'Carica logo nuovo gruppo'
+    open_discussions: 'Discussioni aperte'
+    closed_discussions: 'Discussioni chiuse'
     discussions_placeholder: 'La discussione è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni.'
+    members: '{{count}} membri'
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
+    see_all_members: 'Vedi tutti i {{count}} membri'
     subgroups: 'Sottogruppi'
     subgroups_placeholder: 'I sottogruppi danno ai gruppi il proprio spazio e permettono di inviare notiifiche focalizzate sulle persone giuste. '
     invite_people: 'Invita'
@@ -618,6 +625,8 @@ it:
     messages:
       group_created: 'Gruppo avviato'
       group_updated: 'Gruppo aggiornato'
+  group_export_modal:
+    title: Esporta i dati del gruppo
   group_features:
     nested_comments: Abilita la vista nidificata dei commenti
   membership_requests_card:
@@ -648,6 +657,7 @@ it:
       url_helptext: Links a siti o risorse in rete
       file_helptext: Allega files dal tuo computer
     form:
+      url_label: URL
       helptext: Clicca qui, incolla o trascina files per allegarli
       url_placeholder: 'Ad esempio: https://www.esempio.com/allegato.zip'
       title_helptext: Come vuoi nominare questo allegato?
@@ -721,17 +731,24 @@ it:
   membership_remove_modal:
     invitation:
       title: Revoca invito
+      message: Sei sicuro/a di volere ritirare l'invito fatto a {{name}}?
       flash: Invito cancellato
       submit: Revoca invito
     membership:
       title: Rimuovi membro
+      message: Sei sicuro/a di volere espellere {{name}}?
+      impact_for_group: Questa azione impedirà loro l'accesso a tutte le discussioni e le decisioni del gruppo.
+      impact_for_subgroups: Questa azione impedirà loro di accedere anche a tutti i sottogruppi.
+      flash: Membro rimosso
       submit: Rimuovi membro
   memberships_panel:
     add_coordinator: Inserisci come coordinatore
     remove_coordinator: Disinserisci come coordinatore
   membership_form:
     modal_title:
+      group: Imposta il nome del gruppo
       discussion: Imposta titolo
+      poll: 'Imposta il nome del {{pollType}} '
     title_helptext:
       group: Questo titolo apparirà prima del nome {{name}} inserito in questo gruppo. Usalo per assegnare un ruolo alla persona.
       discussion: Questo titolo apparirà prima del nome {{name}} inserito in questa discussione. Usalo per assegnare un ruolo alla persona.
@@ -773,6 +790,7 @@ it:
     change_password_link: 'Cambia password'
     deactivate_user_link: 'Disattiva account...'
     delete_account: 'Cancella l''account permanentemente'
+    delete_user_link: 'Rimuovi account'
     profile: 'Profilo'
     edit_profile: 'Modifica profilo'
     picture_label: 'Immagine'
@@ -811,14 +829,22 @@ it:
     no_longer_group_member: 'Non sarai più listato/a come membro di alcun gruppo.'
     name_removed: 'I tuoi commenti, le tue proposte e le tue discussioni rimarranno, ma il tuo nome verrà rimosso'
     no_emails: 'Non riceverai più email di notifica'
+    you_can_reactivate: "Se tu vorrai, potrai riattivare il tuo account in futuro"
     submit: 'Sì, voglio disattivare'
+  delete_user_modal:
+    title: 'Cancella il tuo account'
+    irreversable: "ATTENZIONE: Questa operazione è irreversibile. Se continuerai:"
+    you_will_be_deleted: "Il tuo account, compresi nome, indirizzo email e gli altri dati personali verranno cancellati dal nostro sistema."
+    submit: 'Si, voglio che il mio account sia cancellato'
   deactivate_user_form:
     aria_label: 'Conferma di disattivazione dell''account'
     title: 'Disattiva l''account'
     question: 'Vuoi dirci perchè disattivi il tuo account?'
+    placeholder: 'Rispondere a questa domanda è facoltativo. Ogni informazione che condividi con noi ci aiuterà a migliorare :)'
     submit: 'Disattiva l''account'
   email_settings_page:
     header: Impostazioni Email
+    email_newsletter: Loomio Newsletter
     email_newsletter_description: "Ricevi aggiornamenti di nuove funzioni, di trainings, eventi nella tua città e sul futuro di Loomio. Di solito due o tre email all'anno."
     daily_summary_label: Notifica giornaliera
     daily_summary_description: "Ogni mattina riceverai una email contenente la notifica di ogni attività che hai perso il giorno prima. Questo ti permetterà di rimanere al corrente di tutte le attività."
@@ -842,9 +868,6 @@ it:
     no_groups:
       show_all: Non ci sono nuove discussioni da visualizzare perchè non sei membro di alcun gruppo.
       show_muted: Non ci sono discussioni silenziate perchè non sei membro di alcun gruppo.
-      start: Avvio
-      or: o
-      join_group: <a href="/explore">iscriviti</a> ad un gruppo per vedere le discussioni.
     no_threads:
       show_all: Non hai alcuna discussione recente
       show_proposals: Non ci sono proposte attive in questo momento.
@@ -853,6 +876,8 @@ it:
     load_more: Carica altre discussioni
     mark_as_read: Contrassegnato come letto
     dismiss: Ignora
+    thread_dismissed: Discussione abbandonata
+    thread_recalled: Discussione riattivata
     explain_mute:
       title: Non hai ancora silenziato nessuna discussione
       explanation_html: |
@@ -870,6 +895,7 @@ it:
       proposals: Proposte
       proposals_aria_label: Sto mostrando solo le discussioni con proposte attive
       proposals_description: Visualizza solo le discussioni che contengono proposte attive
+      muted: Discussioni silenziate.
       muted_aria_label: Discussioni attualmente silenziate
       muted_description: Visualizza solo le discussioni che sono state silenziate.
     aria_thread:
@@ -971,10 +997,10 @@ it:
     contact_us: 'Contattaci'
     name_label: 'Nominativo'
     name_placeholder: 'Digita il tuo nome...'
+    subject_label: "Oggetto"
     email_label: 'Indirizzo email'
     email_placeholder: 'Inserisci il tuo indirizzo email'
     message_label: 'Messaggio'
-    message_placeholder: 'Il tuo messaggio...'
     send_message: 'Invia Messaggio'
   hint:
     context: 'Consigli per utilizzare il pannello contestuale'

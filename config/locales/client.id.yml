@@ -68,6 +68,8 @@ id:
   new_comment_item:
     context_menu:
       delete_comment: 'Hapus komentar'
+  contact_message_form:
+    subject_label: "Perihal"
   hint:
     context: 'Tips menggunakan panel konteks'
     discussion: 'Tips memulai diskusi yang menarik'

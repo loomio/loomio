@@ -106,8 +106,6 @@ be_BY:
     locale_label: 'Мова'
   dashboard_page:
     aria_label: 'Галоўная'
-    no_groups:
-      or: альбо
     mark_as_read: Адзначыць як прачытанае
     filtering:
       all: Нядаўнія абмеркаванні
@@ -134,6 +132,7 @@ be_BY:
       delete_comment: 'Выдаліць каментар'
   contact_message_form:
     name_label: 'Ваша імя'
+    subject_label: "Тэма"
     email_label: 'Ваш email адрас '
     message_label: 'Ваша паведамленне'
   hint:

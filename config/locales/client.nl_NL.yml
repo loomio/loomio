@@ -548,6 +548,8 @@ nl_NL:
     messages:
       group_created: 'Groep gestart'
       group_updated: 'Groep bijgewerkt'
+  group_export_modal:
+    title: Groepsdata exporteren
   membership_requests_card:
     heading: 'Lidmaatschapsverzoeken'
     manage_requests: Beheer verzoeken
@@ -748,9 +750,6 @@ nl_NL:
     no_groups:
       show_all: Je hebt geen recente discussies, omdat je geen lid bent van een groep.
       show_muted: Je hebt geen gedempte discussies, omdat je geen lid bent van een groep.
-      start: Start
-      or: of
-      join_group: <a href="/explore">wordt lid</a> van een groep om discussies te zien.
     no_threads:
       show_all: Je hebt geen recente borden.
       show_proposals: Er zijn geen voorstellen actief op dit moment.
@@ -914,14 +913,13 @@ nl_NL:
     description_private: 'de discussie context en privacy bijgewerkt'
     description_private_title: 'de discussie titel, context en privacy bijgewerkt'
   contact_message_form:
-    helptext: "Wil je contact met ons opnemen? Vul hieronder dan gewoon een bericht in en je zal kortelings van ons horen."
     contact_us: 'Neem contact met ons op'
     name_label: 'Je naam'
     name_placeholder: 'Voer je naam in...'
+    subject_label: "Onderwerp"
     email_label: 'Je e-mailadres'
     email_placeholder: 'Voer je e-mailadres in...'
     message_label: 'Je bericht'
-    message_placeholder: 'Jouw bericht...'
     send_message: 'Stuur bericht'
   hint:
     context: 'Tips voor het gebruik van het omschrijvingenveld'

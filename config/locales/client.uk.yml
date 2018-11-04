@@ -549,6 +549,8 @@ uk:
     messages:
       group_created: 'Групу створено'
       group_updated: 'Групу оновлено'
+  group_export_modal:
+    title: Експортувати дані групи
   membership_requests_card:
     heading: 'Запити на приєднання'
     manage_requests: Керування запитами
@@ -749,9 +751,6 @@ uk:
     no_groups:
       show_all: У Вас нема жодних недавніх тем, бо Ви не є учасниками жодної групи.
       show_muted: У Вас нема вимкнутих тем, бо Ви не є учасником жодної групи.
-      start: Почати
-      or: або
-      join_group: <a href="/explore">долучіться</a> до групи аби бачити теми.
     no_threads:
       show_all: У вас нема жодних недавніх тем.
       show_proposals: Наразі немає активних пропозицій.
@@ -910,14 +909,13 @@ uk:
     description_private: 'оновлено контекст теми та конфіденційність'
     description_private_title: 'оновити заголовок теми, контекст та конфіденційність'
   contact_message_form:
-    helptext: "Бажаєте зв'язатися? Просто введіть повідомлення нижче, і ми зв'яжемось незабаром."
     contact_us: 'Контакти'
     name_label: 'Ваше ім''я'
     name_placeholder: 'Введіть ваше ім''я...'
+    subject_label: "Тема"
     email_label: 'Ваша електронна адреса'
     email_placeholder: 'Введіть адресу вашої еектронної пошти...'
     message_label: 'Ваше повідомлення'
-    message_placeholder: 'Ваше повідомлення...'
     send_message: 'Надіслати повідомлення'
   hint:
     context: 'Підказки з використання контекстної панелі'

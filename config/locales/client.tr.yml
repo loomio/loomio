@@ -411,9 +411,6 @@ tr:
       updated: E-posta ayarları güncellendi
   dashboard_page:
     aria_label: 'Kontrol paneli'
-    no_groups:
-      start: Başla
-      or: veya
     no_threads:
       show_all: Herhangi bir yeni konunuz yok.
       show_proposals: Şu anda etkin herhangi bir öneri yok.
@@ -537,10 +534,10 @@ tr:
     contact_us: 'Bizimle iletişime geçin'
     name_label: 'Adın'
     name_placeholder: 'Adınızı giriniz...'
+    subject_label: "Konu"
     email_label: 'E-posta adresin'
     email_placeholder: 'Eposta adresinizi giriniz...'
     message_label: 'Mesajın'
-    message_placeholder: 'Mesajınız...'
     send_message: 'Mesaj gönder'
   hint:
     context: 'İçerik panelini kullanmak için ipuçları'

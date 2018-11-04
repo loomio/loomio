@@ -103,8 +103,6 @@ sl:
       updated: Email nastavitve posodobljene
   dashboard_page:
     aria_label: 'Nadzorna plošča'
-    no_groups:
-      or: ali
     mark_as_read: Označi kot prebrano
     threads_from:
       today: 'Danes'
@@ -130,6 +128,7 @@ sl:
       delete_comment: 'Izbriši komentar'
   contact_message_form:
     name_label: 'Tvoje ime'
+    subject_label: "Naslov"
     email_label: 'Tvoj email naslov'
     email_placeholder: 'Vnesi svoj email ...'
     message_label: 'Tvoje sporočilo'

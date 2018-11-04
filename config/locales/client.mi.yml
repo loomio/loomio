@@ -172,8 +172,6 @@ mi:
   email_settings_page:
     edit: Whakatikaina
   dashboard_page:
-    no_groups:
-      start: Tīmatatia
     filtering:
       proposals: Ngā whakatakoto
     threads_from:

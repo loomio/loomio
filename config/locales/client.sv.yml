@@ -293,9 +293,6 @@ sv:
     announcement_label: Meddelanden
   dashboard_page:
     aria_label: 'Instrumentbräda'
-    no_groups:
-      start: Starta
-      or: eller
     mark_as_read: Markera som läst
     threads_from:
       today: 'I dag'
@@ -324,6 +321,7 @@ sv:
       delete_comment: 'Ta bort kommentaren'
   contact_message_form:
     name_label: 'Ditt namn'
+    subject_label: "Ämne"
     email_label: 'Din emailadress'
     message_label: 'Ditt meddelande'
   hint:

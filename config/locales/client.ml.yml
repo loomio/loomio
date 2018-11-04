@@ -68,6 +68,8 @@ ml:
   new_comment_item:
     context_menu:
       delete_comment: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
+  contact_message_form:
+    subject_label: "വിഷയം"
   hint:
     context: 'സാഹചര്യ പട്ടിക ഉപയോഗിക്കാനുള്ള നുറുങ്ങുവിദ്യകള്‍'
     discussion: 'രസകരമായ ചര്‍ച്ചകള്‍ തുടങ്ങാനുള്ള നുറുങ്ങുവിദ്യകള്‍'

@@ -583,8 +583,6 @@ nb_NO:
     update_settings: Lagre endringer
     edit: Rediger
   dashboard_page:
-    no_groups:
-      start: Start
     filtering:
       proposals: Forslag
     threads_from:

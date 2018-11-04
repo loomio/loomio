@@ -889,7 +889,7 @@ de:
     submit: 'Benutzerkonto deaktivieren'
   email_settings_page:
     header: E-Mail-Einstellungen
-    all_groups: Einstellungen für alle Gruppen
+    email_newsletter: Loomio Newsletter
     daily_summary_label: Tägliche Übersichts-E-Mail
     daily_summary_description: "Du erhältst jeden Morgen eine E-Mail mit allen Aktivitäten des Vortages. So bleibst du stets auf dem Laufenden über alle Aktivitäten."
     on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
@@ -913,9 +913,6 @@ de:
     no_groups:
       show_all: Du hast keine aktuellen Diskussionsverläufe, da du keiner Gruppe angehörst.
       show_muted: Sie haben keine atummen Threads, weil Sie kein Mitglied einer Gruppe sind.
-      start: Eröffne eine Diskussion
-      or: oder
-      join_group: <a href="/explore">tritt einer Gruppe bei</a> um Diskussionen zu sehen.
     no_threads:
       show_all: Du hast keine aktuellen Diskussionen.
       show_proposals: Momentan sind keine Vorschläge am Laufen.
@@ -1089,15 +1086,13 @@ de:
     description_private: 'aktualisierte die Diskussionsbeschreibung und Privatsphäre'
     description_private_title: 'aktualisierte Diskussionstitel, Diskussionsbeschreibung und Privatsphäre'
   contact_message_form:
-    helptext: "Du möchtest mit uns Kontakt aufnehmen? Schreibe uns einfach eine Nachricht und wir melden uns umgehend bei dir."
-    contact_us_email: "(Sie erreichen uns auch jederzeit unter <a href=\"mailto:{{email}}\">{{email}}</a>)"
     contact_us: 'Kontakt aufnehmen'
     name_label: 'Dein Name'
     name_placeholder: 'Gib Deinen Namen ein...'
+    subject_label: "Betreff"
     email_label: 'Ihre E-Mail-Adresse'
     email_placeholder: 'Gib deine E-Mail-Adresse ein...'
     message_label: 'Deine Nachricht'
-    message_placeholder: 'Deine Nachricht...'
     send_message: 'Nachricht abschicken'
     new_contact_message: "Danke, dass Sie sich gemeldet haben. Wir melden uns bald bei Ihnen!"
   hint:
@@ -1582,7 +1577,8 @@ de:
     email_placeholder: du@beispiel.de
     login_with_token: Sie sind fertig! Klicken Sie auf den Link unten um sich einzuloggen.
     login_link_helptext: |
-      Klicke auf die Schaltfläche unten wir senden dir einen Link, um dich sofort anzumelden. Wenn du in der Zukunft ein Kennwort verwenden möchtest, kannst du eines auf deiner Profilseite festlegen.    login_link_helptext_with_password: "Geben Sie ihr Passwort ein oder loggen Sie sich via Email ein"
+        Klicke auf die Schaltfläche unten wir senden dir einen Link, um dich sofort anzumelden. Wenn du in der Zukunft ein Kennwort verwenden möchtest, kannst du eines auf deiner Profilseite festlegen.    login_link_helptext_with_password: "Geben Sie ihr Passwort ein oder loggen Sie sich via Email ein"
+    login_link_helptext_with_password: "Gib dein Passwort ein oder logge  dich via Email ein"
     sign_up_helptext: "Bitte füllen Sie dieses Formular aus, um ein Benutzerkonto zu erstellen"
     i_accept: "Ich akzeptiere die <a href='{{termsUrl}}' target='_blank'>Nutzungsbedingungen</a> und <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>"
     name_required: Bitte geben Sie einen Namen ein.
@@ -1597,8 +1593,8 @@ de:
     set_password_link: Legen Sie ein Passwort fest
     hello: "Hallo, {{name}}!"
     new_to_loomio: Das erste mal auf {{site_name}}? Erstellen Sie einen Account
-    already_a_user: Haben Sie {{site_name}} bereits davor verwendet? Geben Sie die Mail-Adresse ein, die sie als letzte nutzen, um sie miteinander zu koppeln.
     create_account: Benutzerkonto erstellen
+    already_a_user: Haben Sie {{site_name}} bereits davor verwendet? Geben Sie die Mail-Adresse ein, die sie als letzte nutzen, um sie miteinander zu koppeln.
     link_accounts: Verbinden
     check_your_email: Überprüfe deinen E-Mail-Posteingang
     login_link_sent: "Wir haben eine Mail an {{email}} gesendet."

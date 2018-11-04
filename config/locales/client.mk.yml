@@ -63,8 +63,6 @@ mk:
     email_label: 'Email'
     locale_label: 'Јазик'
   dashboard_page:
-    no_groups:
-      or: или
     mark_as_read: Означи го како прочитано
     threads_from:
       today: 'Денес'
@@ -85,6 +83,7 @@ mk:
       delete_comment: 'Избриши го коментарот'
   contact_message_form:
     name_label: 'Твоето име'
+    subject_label: "Тема"
     email_label: 'Твојата електронска пошта'
     message_label: 'Твојата порака'
   poll_common_form:

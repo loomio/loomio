@@ -227,8 +227,6 @@ eo:
     edit: Redakti
   dashboard_page:
     aria_label: 'Supervidpanelo'
-    no_groups:
-      or: aŭ
     no_threads:
       show_all: Vi ne havas lastatempajn fadenojn.
     view_recent: Ĉu vidi ĉiujn lastatempajn fadenojn?
@@ -282,9 +280,9 @@ eo:
   contact_message_form:
     contact_us: 'Kontakti nin'
     name_label: 'Via nomo'
+    subject_label: "Temo"
     email_label: 'Via retpoŝtadreso'
     message_label: 'Via mesaĝo'
-    message_placeholder: 'Via mesaĝo…'
     send_message: 'Sendi mesaĝon'
   hint:
     context: 'Konsiloj por uzo de la kunteksto-panelo'
