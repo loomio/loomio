@@ -23,21 +23,21 @@ module.exports = {
     page.expectElement('.group-progress-card__complete')
   },
 
-  'displays a celebratory message when setup is complete': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_progress_card_coordinator')
-    page.click('.group-progress-card__list-item:last-child')
-    page.click('.poll-common-choose-type__poll-type--proposal')
-    page.fillIn('.poll-common-form-fields__title', 'New proposal')
-    page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
-    page.click('.dismiss-modal-button')
-    page.pause()
-    page.click('.group-theme__name--compact a')
-    page.pause()
-    page.expectText('.group-progress-card', "Nice! Your group is good to go!")
-  },
+  // 'displays a celebratory message when setup is complete': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_progress_card_coordinator')
+  //   page.click('.group-progress-card__list-item:last-child')
+  //   page.click('.poll-common-choose-type__poll-type--proposal')
+  //   page.fillIn('.poll-common-form-fields__title', 'New proposal')
+  //   page.click('.poll-common-form__submit')
+  //   page.expectElement('.announcement-form__submit')
+  //   page.click('.dismiss-modal-button')
+  //   page.pause()
+  //   page.click('.group-theme__name--compact a')
+  //   page.pause()
+  //   page.expectText('.group-progress-card', "Nice! Your group is good to go!")
+  // },
 
   'can be dismissed': (test) => {
     page = pageHelper(test)
