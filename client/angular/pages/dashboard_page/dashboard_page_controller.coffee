@@ -70,6 +70,10 @@ $controller = ($rootScope, $routeParams, $mdMedia) ->
     params:
       filter: @filter
       per: 50
+
+
+  @dashboardLoaded = Records.discussions.collection.data.length > 0
+
   @loader.fetchRecords().then => @dashboardLoaded = true
 
   @noGroups        = -> !Session.user().hasAnyGroups()
