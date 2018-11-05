@@ -28,7 +28,7 @@ module.exports =
 
 
     $scope.fetchByNameFragment = (q) ->
-      $scope.q = q.toLowerCase()
+      $scope.q = [q].join().toLowerCase() # handle nulls
       if $scope.q.length > 0
         fetchThenUpdate()
         updateMentionables()
