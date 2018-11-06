@@ -10,27 +10,27 @@ angular.module('loomioApp').directive 'pollScoreVoteForm', ->
   controller: ['$scope', '$element', ($scope, $element) ->
     $scope.vars = {}
 
-    percentageFor = (choice) ->
-      max = $scope.stance.poll().customFields.max_score
-      return unless max > 0
-      "#{100 * choice.score / max}%"
+    # percentageFor = (choice) ->
+    #   max = $scope.stance.poll().customFields.max_score
+    #   return unless max > 0
+    #   "#{100 * choice.score / max}%"
 
-    backgroundImageFor = (option) ->
-      "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
+    # backgroundImageFor = (option) ->
+    #   "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
 
-    $scope.styleData = (choice) ->
-      option = $scope.optionFor(choice)
-      'border-color': option.color
-      'background-image': backgroundImageFor(option)
-      'background-size': percentageFor(choice)
+    # $scope.styleData = (choice) ->
+    #   option = $scope.optionFor(choice)
+    #   'border-color': option.color
+    #   'background-image': backgroundImageFor(option)
+    #   'background-size': percentageFor(choice)
 
     $scope.stanceChoiceFor = (option) ->
       _.first(_.filter($scope.stance.stanceChoices(), (choice) ->
         choice.pollOptionId == option.id
         ).concat({score: 0}))
 
-    $scope.adjust = (choice, amount) ->
-      choice.score += amount
+    # $scope.adjust = (choice, amount) ->
+    #   choice.score += amount
 
     $scope.optionFor = (choice) ->
       Records.pollOptions.find(choice.poll_option_id)
@@ -51,7 +51,6 @@ angular.module('loomioApp').directive 'pollScoreVoteForm', ->
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->
         EventBus.emit $scope, 'processing'
-        return unless _.sum(_.pluck($scope.stanceChoices, 'score')) > 0
         $scope.stance.stanceChoicesAttributes = $scope.stanceChoices
 
     submitOnEnter $scope, element: $element
