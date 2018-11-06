@@ -69,6 +69,9 @@ module Dev::PollsScenarioHelper
 
     StanceService.create(stance: fake_stance(poll: poll), actor: observer)
     PollService.update(poll: poll, params: { title: "New title" }, actor: actor)
+    recipients = {user_ids: [observer.id], emails: [observer.email]}
+    announcement_params = { kind: "poll_announced", recipients: recipients }
+    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
 
     {discussion: discussion,
      observer: observer,
@@ -177,6 +180,10 @@ module Dev::PollsScenarioHelper
     outcome    = fake_outcome(poll: poll)
 
     OutcomeService.create(outcome: outcome, actor: actor)
+    recipients = {user_ids: [observer.id], emails: [observer.email]}
+    announcement_params = { kind: "outcome_announced", recipients: recipients }
+    AnnouncementService.create(model: outcome, params: announcement_params, actor: actor)
+
     { discussion: discussion,
       observer: observer,
       actor: actor,
