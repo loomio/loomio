@@ -179,8 +179,11 @@ module Dev::PollsScenarioHelper
   end
 
   def poll_catch_up_scenario(poll_type:)
+    discussion = saved(fake_discussion(group: create_group_with_members))
     scenario  = poll_expired_scenario(poll_type: poll_type)
     observer = saved fake_user
+    observer.email_catch_up = true
+    discussion.group.add_member! observer
     scenario[:discussion].group.add_member! observer
     poll = scenario[:poll]
     poll.update(multiple_choice: poll_type.to_sym == :poll)
