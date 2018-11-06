@@ -92,7 +92,7 @@ class Dev::PollsController < Dev::BaseController
         scenario = send(:"#{scenario_name}_scenario", poll_type: poll_type)
         sign_in(scenario[:observer]) if scenario[:observer].is_a?(User)
         if email
-          last_email to: scenario[:observer]
+          last_email # to: scenario[:observer]
         else
           redirect_to poll_url(scenario[:poll], Hash(scenario[:params]))
         end
