@@ -52,7 +52,7 @@ module Dev::PollsScenarioHelper
     poll = fake_poll(poll_type: poll_type, discussion: nil)
     event = PollService.create(poll: poll, actor: actor)
     poll.update(anyone_can_participate: true)
-    membership = poll.guest_group.memberships.create(user: FactoryBot.build(:unverified_user, email: "hello@test.com"))
+    membership = poll.guest_group.memberships.create(user: fake_user(email_verified: false))
 
     {poll: poll,
      actor: actor,
