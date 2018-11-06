@@ -7,21 +7,14 @@ module Dev::PollsScenarioHelper
     discussion.group.add_member! user
     poll = fake_poll(discussion: discussion, poll_type: poll_type)
     event = PollService.create(poll: poll, actor: actor)
+    recipients = {user_ids: [user.id], emails: [user.email]}
+    announcement_params = { kind: "poll_announced", recipients: recipients }
+    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
 
     {discussion: discussion,
      observer: user,
      poll:     event.eventable,
      actor:    actor}
-  end
-
-  def poll_share_scenario(poll_type:)
-    observer = saved fake_user
-    event = PollService.create(poll: fake_poll(poll_type: poll_type, discussion: nil), actor: observer)
-
-    {observer: observer,
-     actor: observer,
-     poll: event.eventable,
-     params: {share: true}}
   end
 
   def poll_closed_scenario(poll_type:)
