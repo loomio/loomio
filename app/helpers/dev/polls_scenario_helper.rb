@@ -18,8 +18,8 @@ module Dev::PollsScenarioHelper
   end
 
   def poll_closed_scenario(poll_type:)
-    scenario = poll_share_scenario(poll_type: poll_type)
-    PollService.close(poll: scenario[:poll], actor: scenario[:observer])
+    scenario = poll_created_scenario(poll_type: poll_type)
+    PollService.close(poll: scenario[:poll], actor: scenario[:actor])
 
     {observer: scenario[:observer],
      poll:     scenario[:poll]}
