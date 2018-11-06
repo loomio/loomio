@@ -108,6 +108,9 @@ module Dev::PollsScenarioHelper
                                                      closing_at: 1.day.from_now))
 
     PollService.create(poll: poll, actor: actor)
+    recipients = {user_ids: [non_voter.id], emails: [non_voter.email]}
+    announcement_params = { kind: "poll_announced", recipients: recipients }
+    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
 
     PollService.publish_closing_soon
 
@@ -133,6 +136,9 @@ module Dev::PollsScenarioHelper
     discussion.group.add_member! voter
     PollService.create(poll: poll, actor: actor)
     PollService.publish_closing_soon
+    recipients = {user_ids: [voter.id], emails: [voter.email]}
+    announcement_params = { kind: "poll_announced", recipients: recipients }
+    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
 
     { discussion: discussion,
       observer: voter,
