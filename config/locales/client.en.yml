@@ -40,7 +40,7 @@ en:
     dot_vote: Dot vote
     meeting: Time poll
     ranked_choice: Ranked choice
-    score: Score vote
+    score: Score poll
   timezones:
     local: Local time ({{value}})
 
