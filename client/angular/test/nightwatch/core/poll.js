@@ -28,44 +28,6 @@ module.exports = {
     })
   },
 
-  // 'can_start_a_standalone_poll': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('start_poll', { controller: 'polls' })
-  //   page.click('.poll-common-choose-type__poll-type--proposal')
-  //   page.click(".poll-common-tool-tip__collapse")
-  //   page.fillIn('.poll-common-form-fields__title', 'A new proposal')
-  //   page.fillIn('.poll-common-form-fields textarea', 'Some details')
-  //   page.click('.poll-common-form__submit')
-  //   page.expectElement('.announcement-form__submit')
-  //   page.click('.dismiss-modal-button')
-  //   page.expectNoElement('.poll-common-modal')
-  //   page.pause()
-  //
-  //   page.expectText('.poll-common-card__title', 'A new proposal')
-  //   page.expectText('.poll-common-details-panel__details', 'Some details')
-  //
-  //   page.click('.poll-common-vote-form__button:first-child')
-  //   page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
-  //   page.click('.poll-common-vote-form__submit')
-  //
-  //   page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
-  //     page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
-  //     page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
-  //   })
-  //
-  //   page.scrollTo('.poll-actions-dropdown__button', () => {
-  //     page.click('.poll-actions-dropdown__button')
-  //     page.click('.poll-actions-dropdown__close')
-  //     page.click('.poll-common-close-form__submit')
-  //   })
-  //
-  //   page.fillIn('.poll-common-outcome-form__statement textarea', 'This is an outcome')
-  //   page.click('.poll-common-outcome-form__submit')
-  //
-  //   page.expectText('.poll-common-outcome-panel', 'This is an outcome')
-  // },
-
   'can set an outcome': (test) => {
     page = pageHelper(test)
 
