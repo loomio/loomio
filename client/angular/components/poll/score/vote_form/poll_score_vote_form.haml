@@ -2,9 +2,6 @@
   %poll_common_participant_form{stance: "stance"}
 
   %h3.lmo-card-subheading{translate: "poll_common.your_response"}
-  .lmo-hint-text
-    -# .poll-score-vote-form__too-many-dots{ng-if: "tooManyDots()", translate: "poll_score_vote_form.too_many_dots"}
-    -# .poll-score-vote-form__dots-remaining{ng-if: "!tooManyDots()", translate: "poll_score_vote_form.dots_remaining", translate-value-count: "{{dotsRemaining()}}"}
   %md-list.poll-score-vote-form__options
     %md-list-item.poll-score-vote-form__option{ng-repeat: "choice in stanceChoices track by choice.poll_option_id"}
       .poll-score-vote-form__option-label-container
