@@ -35,7 +35,7 @@ module Boot
         pageSize: {
           default:         ENV.fetch('DEFAULT_PAGE_SIZE', 30),
           groupThreads:    ENV.fetch('GROUP_PAGE_SIZE',   30),
-          threadItems:     ENV.fetch('THREAD_PAGE_SIZE',  10),
+          threadItems:     ENV.fetch('THREAD_PAGE_SIZE',  20),
           exploreGroups:   ENV.fetch('EXPLORE_PAGE_SIZE', 10)
         },
         flashTimeout: {

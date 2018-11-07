@@ -13,7 +13,7 @@ module.exports =
       chain = Records.users.collection.chain().find(id: {'$in': $scope.mentionableUserIds})
       chain = chain.where (u) ->
         u.name.toLowerCase().startsWith($scope.q) or
-        u.username.toLowerCase().startsWith($scope.q) or
+        (u.username || "").toLowerCase().startsWith($scope.q) or
         u.name.toLowerCase().includes(" #{$scope.q}")
       $scope.mentionables = _.sortBy(chain.data(), (u) -> (0 - Records.events.find(actorId: u.id).length))
 
@@ -28,7 +28,7 @@ module.exports =
 
 
     $scope.fetchByNameFragment = (q) ->
-      $scope.q = [q].join().toLowerCase() # handle nulls
+      $scope.q = (q || "").toLowerCase()
       if $scope.q.length > 0
         fetchThenUpdate()
         updateMentionables()
