@@ -40,6 +40,7 @@ en:
     dot_vote: Dot vote
     meeting: Time poll
     ranked_choice: Ranked choice
+    score: Score poll
   timezones:
     local: Local time ({{value}})
 
@@ -1572,6 +1573,20 @@ en:
     dots_per_person_helptext: The number of dots each participant will distribute
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
+
+  poll_score_form:
+    tool_tip_expanded: |
+      <p>Score polls allow people to express their degree of preference for each option.</p>
+      <p>The total score of each option is shown as part of the results.</p>
+    tool_tip_collapsed: Score each option
+    start_header: Start score poll
+    edit_header: Edit score poll
+    tip: Score each option
+    title_placeholder: E.g. Score candidates on scale of 0-9
+    details_placeholder: Provide any clarifying details people might need to participate
+    add_option_placeholder: Add option
+    score_created: Score poll created
+    score_updated: Score poll updated
 
   poll_meeting_form:
     tool_tip_expanded: |
