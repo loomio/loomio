@@ -54,7 +54,7 @@ poll:
 dot_vote:
   poll_options_attributes: []
   chart_type:              bar
-  material_icon:           mdi-chart-bubble
+  material_icon:           mdi-chart-bar-stacked
   can_add_options:         true
   can_remove_options:      true
   must_have_options:       true
@@ -69,7 +69,7 @@ dot_vote:
 score:
   poll_options_attributes: []
   chart_type:              bar
-  material_icon:           mdi-poll
+  material_icon:           mdi-chart-gantt
   can_add_options:         true
   can_remove_options:      true
   must_have_options:       true
