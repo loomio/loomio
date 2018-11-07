@@ -110,6 +110,7 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_stance_created,         email: true
   observe_scenario :poll_options_added_author,   email: true, except: [:count, :proposal]
   observe_scenario :poll_anonymous,              email: true
+  observe_scenario :poll_share
   observe_scenario :poll_options_added
   observe_scenario :poll_expired
   observe_scenario :poll_anonymous
