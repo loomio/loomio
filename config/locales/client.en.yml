@@ -1578,7 +1578,7 @@ en:
     tool_tip_expanded: |
       <p>Score polls allow people to express their degree of preference for each option.</p>
       <p>The total score of each option is shown as part of the results.</p>
-    tool_tip_collapsed: Score options
+    tool_tip_collapsed: Score each option
     start_header: Start score poll
     edit_header: Edit score poll
     tip: Score each option
