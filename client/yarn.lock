@@ -3371,10 +3371,10 @@ growl@1.9.2:
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.9.2.tgz#0ea7743715db8d8de2c5ede1775e1b45ac85c02f"
   integrity sha1-Dqd0NxXbjY3ixe3hd14bRayFwC8=
 
-gulp-angular-templatecache@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/gulp-angular-templatecache/-/gulp-angular-templatecache-2.2.3.tgz#f256fcc7c6b8f2199449bfd8fe35a73c62c2844d"
-  integrity sha512-1ldZMdYhmJ1VhLOZAW9o039uK54TBmucT/eSUSNtQ3GYycITFmMBCBrrnEIUb4IQIHi6mShu8NeLg+8KAkkYkw==
+gulp-angular-templatecache@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/gulp-angular-templatecache/-/gulp-angular-templatecache-2.2.5.tgz#56393cf3f9982f2d931de3ff51d1170bfa40248f"
+  integrity sha512-BaNAVSt7lRQ7hRicUrVD7sBmXGUbkIE8iEjb0MUti7myg/4EfcadHIu9CMTbdjQc+UgyRAudCx6FHfR5QOZ0Ag==
   dependencies:
     event-stream "3.3.4"
     gulp-concat "2.6.1"
