@@ -1,11 +1,12 @@
 .poll-score-vote-form__options{
-  flex: 1;
 }
 
 .poll-score-vote-form__option {
   padding: 0 !important;
   flex-direction: column;
-  // margin-top: -40px; GK: TODO: this is causing the slider to be unresponsive
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .poll-score-vote-form__option-label-container {
