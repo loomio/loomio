@@ -54,7 +54,7 @@ poll:
 dot_vote:
   poll_options_attributes: []
   chart_type:              bar
-  material_icon:           mdi-chart-bubble
+  material_icon:           mdi-chart-bar-stacked
   can_add_options:         true
   can_remove_options:      true
   must_have_options:       true
@@ -62,6 +62,21 @@ dot_vote:
   can_vote_anonymously:    true
   required_custom_fields:
     - dots_per_person
+  sort_options:
+    - newest_first
+    - oldest_first
+
+score:
+  poll_options_attributes: []
+  chart_type:              bar
+  material_icon:           mdi-chart-gantt
+  can_add_options:         true
+  can_remove_options:      true
+  must_have_options:       true
+  has_variable_score:      true
+  can_vote_anonymously:    true
+  required_custom_fields:
+    - max_score
   sort_options:
     - newest_first
     - oldest_first

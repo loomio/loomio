@@ -7,18 +7,21 @@ module Dev::PollsScenarioHelper
     discussion.group.add_member! user
     poll = fake_poll(discussion: discussion, poll_type: poll_type)
     event = PollService.create(poll: poll, actor: actor)
+    recipients = {user_ids: [user.id], emails: [user.email]}
+    announcement_params = { kind: "poll_announced", recipients: recipients }
+    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
 
     {discussion: discussion,
      observer: user,
      poll:     event.eventable,
-     actor:    actor}
+     actor:    actor,
+     params: {share: true}}
   end
 
   def poll_share_scenario(poll_type:)
     observer = saved fake_user
     event = PollService.create(poll: fake_poll(poll_type: poll_type, discussion: nil), actor: observer)
-
-    {observer: observer,
+     {observer: observer,
      actor: observer,
      poll: event.eventable,
      params: {share: true}}
@@ -26,7 +29,7 @@ module Dev::PollsScenarioHelper
 
   def poll_closed_scenario(poll_type:)
     scenario = poll_share_scenario(poll_type: poll_type)
-    PollService.close(poll: scenario[:poll], actor: scenario[:observer])
+    PollService.close(poll: scenario[:poll], actor: scenario[:actor])
 
     {observer: scenario[:observer],
      poll:     scenario[:poll]}
@@ -59,7 +62,7 @@ module Dev::PollsScenarioHelper
     poll = fake_poll(poll_type: poll_type, discussion: nil)
     event = PollService.create(poll: poll, actor: actor)
     poll.update(anyone_can_participate: true)
-    membership = poll.guest_group.memberships.create(user: FactoryBot.build(:unverified_user, email: "hello@test.com"))
+    membership = poll.guest_group.memberships.create(user: fake_user(email_verified: false))
 
     {poll: poll,
      actor: actor,
@@ -76,6 +79,9 @@ module Dev::PollsScenarioHelper
 
     StanceService.create(stance: fake_stance(poll: poll), actor: observer)
     PollService.update(poll: poll, params: { title: "New title" }, actor: actor)
+    recipients = {user_ids: [observer.id], emails: [observer.email]}
+    announcement_params = { kind: "poll_announced", recipients: recipients }
+    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
 
     {discussion: discussion,
      observer: observer,
@@ -115,6 +121,9 @@ module Dev::PollsScenarioHelper
                                                      closing_at: 1.day.from_now))
 
     PollService.create(poll: poll, actor: actor)
+    recipients = {user_ids: [non_voter.id], emails: [non_voter.email]}
+    announcement_params = { kind: "poll_announced", recipients: recipients }
+    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
 
     PollService.publish_closing_soon
 
@@ -140,6 +149,9 @@ module Dev::PollsScenarioHelper
     discussion.group.add_member! voter
     PollService.create(poll: poll, actor: actor)
     PollService.publish_closing_soon
+    recipients = {user_ids: [voter.id], emails: [voter.email]}
+    announcement_params = { kind: "poll_announced", recipients: recipients }
+    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
 
     { discussion: discussion,
       observer: voter,
@@ -178,6 +190,10 @@ module Dev::PollsScenarioHelper
     outcome    = fake_outcome(poll: poll)
 
     OutcomeService.create(outcome: outcome, actor: actor)
+    recipients = {user_ids: [observer.id], emails: [observer.email]}
+    announcement_params = { kind: "outcome_announced", recipients: recipients }
+    AnnouncementService.create(model: outcome, params: announcement_params, actor: actor)
+
     { discussion: discussion,
       observer: observer,
       actor: actor,
@@ -186,8 +202,11 @@ module Dev::PollsScenarioHelper
   end
 
   def poll_catch_up_scenario(poll_type:)
+    discussion = saved(fake_discussion(group: create_group_with_members))
     scenario  = poll_expired_scenario(poll_type: poll_type)
     observer = saved fake_user
+    observer.email_catch_up = true
+    discussion.group.add_member! observer
     scenario[:discussion].group.add_member! observer
     poll = scenario[:poll]
     poll.update(multiple_choice: poll_type.to_sym == :poll)
