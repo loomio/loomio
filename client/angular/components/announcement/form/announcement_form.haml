@@ -26,6 +26,6 @@
 
       .lmo-flex--row.lmo-flex__center{ng-if: "announcement.model.anyoneCanParticipate || announcement.model.isA('group')"}
         %md-input-container.lmo-flex__grow.md-no-errors.announcement-form__shareable-link
-          %input{value: "{{shareableLink()}}", disabled: "true"}
-        %md-button.md-accent.md-button--tiny.announcement-form__copy{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink()", on-copied: "copied()"}
+          %input{value: "{{shareableLink}}", disabled: "true"}
+        %md-button.md-accent.md-button--tiny.announcement-form__copy{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
           %span{translate: "common.copy"}

@@ -13,13 +13,13 @@ angular.module('loomioApp').directive 'announcementForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
-    $scope.announcement.model.fetchToken() if $scope.announcement.model.isA('group')
+    if $scope.announcement.model.isA('group')
+      $scope.announcement.model.fetchToken().then ->
+        $scope.shareableLink = LmoUrlService.shareableLink($scope.announcement.model)
 
     $scope.canUpdateAnyoneCanParticipate = ->
       $scope.announcement.model.isA('poll') &&
       AbilityService.canAdminister($scope.announcement.model)
-
-    $scope.shareableLink = -> LmoUrlService.shareableLink($scope.announcement.model)
 
     $scope.announcement.recipients = []
 

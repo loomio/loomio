@@ -66,7 +66,7 @@ module.exports = class GroupModel extends BaseModel
   group: -> @
 
   fetchToken: ->
-    @remote.getMember(@id, 'token').then (token) => @token = token
+    @remote.getMember(@id, 'token').then => @token
 
   closedPolls: ->
     _.filter @polls(), (poll) ->
