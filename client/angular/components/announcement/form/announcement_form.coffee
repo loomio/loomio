@@ -13,6 +13,8 @@ angular.module('loomioApp').directive 'announcementForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
+
+    $scope.shareableLink = LmoUrlService.shareableLink($scope.announcement.model)
     if $scope.announcement.model.isA('group')
       $scope.announcement.model.fetchToken().then ->
         $scope.shareableLink = LmoUrlService.shareableLink($scope.announcement.model)
