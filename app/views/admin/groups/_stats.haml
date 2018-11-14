@@ -1,48 +1,18 @@
-%script{ src: "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js" }
-
-%canvas{ id: "myChart" }
-
-:javascript
-  parseDataForChart = (record) => {
-   return {
-    t: new Date(record["date"]),
-    y: record["count"]
-   }
-  }
-  data = #{ Queries::AdminGroupPage.fetch_data(group.id).to_s.html_safe }
-  visitsData = data["visits"]
-  membersData = data["members"]
-  threadsData = data["threads"]
-  ctx = document.getElementById("myChart").getContext('2d')
-  labels = membersData.map((r) => { return new Date(r["date"]) }) // GK: NB: labels are overridden by x-axis time units
-  visitsDataset = visitsData.map(parseDataForChart)
-  membersDataset = membersData.map(parseDataForChart)
-  threadsDataset = threadsData.map(parseDataForChart)
-  myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: "Visits (total)",
-        backgroundColor: 'rgba(244, 215, 66, 0)',
-        borderColor: 'rgb(244, 215, 66)',
-        data: visitsDataset
-      }, {
-        label: "Members (total)",
-        backgroundColor: 'rgba(80, 65, 244, 0)',
-        borderColor: 'rgb(80, 65, 244)',
-        data: membersDataset
-      }, {
-        label: "Threads (total)",
-        backgroundColor: 'rgba(244, 66, 131, 0)',
-        borderColor: 'rgb(244, 66, 131)',
-        data: threadsDataset
-      }]
-     },
-     options: {
-      scales: {
-        yAxes: [{ ticks: { beginAtZero: true } }],
-        xAxes: [{ type: 'time' }]
-      }
-     }
-   })
+%div{ class: 'panel' }
+  %h3 Group Stats
+  %div{ class: 'panel-contents' }
+    %table{ id: 'stats-table' }
+      %tr
+        %th Visits
+        %th Members
+        %th Threads
+        %th Subgroups
+        %th Polls
+        %th Votes
+      %tr
+        %th= Queries::AdminGroupPage.visits(group.id).last[:count]
+        %th= group.memberships_count
+        %th= group.discussions_count
+        %th= group.subgroups_count
+        %th= group.polls_count
+        %th= group.polls.reduce(0) { |sofar, poll| sofar + poll.stances.count }

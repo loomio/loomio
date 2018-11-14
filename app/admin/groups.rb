@@ -64,6 +64,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   end
 
   show do |group|
+    render 'graph', { group: group }
     render 'stats', { group: group }
     attributes_table do
       if Plugins.const_defined?("LoomioBuyerExperience")
@@ -119,7 +120,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       row :handle
       row :is_referral
       row :cohort_id
-      row :subscription
+      row :subscription_id
       row :enable_experiments
       row :analytics_enabled
       row :experiences
