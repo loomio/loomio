@@ -1,0 +1,46 @@
+%script{ src: "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js" }
+
+%canvas{ id: "myChart" }
+
+:javascript
+  parseDataForChart = (record) => {
+   return {
+    t: new Date(record["date"]),
+    y: record["count"]
+   }
+  }
+  visitsData = #{ Queries::AdminGroupPage.visits(group.id).to_s.html_safe }
+  membersData = #{ Queries::AdminGroupPage.members(group.id).to_s.html_safe }
+  threadsData = #{ Queries::AdminGroupPage.threads(group.id).to_s.html_safe }
+  ctx = document.getElementById("myChart").getContext('2d')
+  labels = visitsData.map((r) => { return new Date(r["date"]) }) // GK: TODO: labels over timescale - not sure yet
+  visitsDataset = visitsData.map(parseDataForChart)
+  membersDataset = membersData.map(parseDataForChart)
+  threadsDataset = threadsData.map(parseDataForChart)
+  myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "Visits",
+        backgroundColor: 'rgba(244, 215, 66, 0.4)',
+        borderColor: 'rgb(244, 215, 66)',
+        data: visitsDataset
+      }, {
+        label: "Members",
+        backgroundColor: 'rgba(80, 65, 244, 0.4)',
+        borderColor: 'rgb(80, 65, 244)',
+        data: membersDataset
+      }, {
+        label: "Threads",
+        backgroundColor: 'rgba(244, 66, 131, 0.4)',
+        borderColor: 'rgb(244, 66, 131)',
+        data: membersDataset
+      }]
+     },
+     options: {
+      scales: {
+        yAxes: [{ ticks: { beginAtZero: true } }]
+      }
+     }
+   })

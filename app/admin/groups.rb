@@ -64,6 +64,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   end
 
   show do |group|
+    render 'stats', { group: group }
     attributes_table do
       if Plugins.const_defined?("LoomioBuyerExperience")
         row :standard_plan_link do link_to("standard subscription link", ChargifyService.standard_plan_url(group), target: '_blank' ) end
