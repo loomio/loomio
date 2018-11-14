@@ -9,38 +9,40 @@
     y: record["count"]
    }
   }
-  visitsData = #{ Queries::AdminGroupPage.visits(group.id).to_s.html_safe }
-  membersData = #{ Queries::AdminGroupPage.members(group.id).to_s.html_safe }
-  threadsData = #{ Queries::AdminGroupPage.threads(group.id).to_s.html_safe }
+  data = #{ Queries::AdminGroupPage.fetch_data(group.id).to_s.html_safe }
+  visitsData = data["visits"]
+  membersData = data["members"]
+  threadsData = data["threads"]
   ctx = document.getElementById("myChart").getContext('2d')
-  labels = visitsData.map((r) => { return new Date(r["date"]) }) // GK: TODO: labels over timescale - not sure yet
+  labels = membersData.map((r) => { return new Date(r["date"]) }) // GK: NB: labels are overridden by x-axis time units
   visitsDataset = visitsData.map(parseDataForChart)
   membersDataset = membersData.map(parseDataForChart)
   threadsDataset = threadsData.map(parseDataForChart)
   myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
       labels: labels,
       datasets: [{
         label: "Visits",
-        backgroundColor: 'rgba(244, 215, 66, 0.4)',
+        backgroundColor: 'rgba(244, 215, 66, 0)',
         borderColor: 'rgb(244, 215, 66)',
         data: visitsDataset
       }, {
         label: "Members",
-        backgroundColor: 'rgba(80, 65, 244, 0.4)',
+        backgroundColor: 'rgba(80, 65, 244, 0)',
         borderColor: 'rgb(80, 65, 244)',
         data: membersDataset
       }, {
         label: "Threads",
-        backgroundColor: 'rgba(244, 66, 131, 0.4)',
+        backgroundColor: 'rgba(244, 66, 131, 0)',
         borderColor: 'rgb(244, 66, 131)',
-        data: membersDataset
+        data: threadsDataset
       }]
      },
      options: {
       scales: {
-        yAxes: [{ ticks: { beginAtZero: true } }]
+        yAxes: [{ ticks: { beginAtZero: true } }],
+        xAxes: [{ type: 'time' }]
       }
      }
    })
