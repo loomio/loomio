@@ -10,13 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181109014324) do
+ActiveRecord::Schema.define(version: 20181114222453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.string "author_type"
+    t.bigint "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
 
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid "visit_id"
@@ -623,7 +636,9 @@ ActiveRecord::Schema.define(version: 20181109014324) do
     t.integer "chargify_subscription_id"
     t.string "plan"
     t.string "payment_method", default: "chargify", null: false
+    t.integer "owner_id"
     t.index ["kind"], name: "index_subscriptions_on_kind"
+    t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
   create_table "tags", id: :serial, force: :cascade do |t|
