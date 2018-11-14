@@ -66,6 +66,33 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   show do |group|
     render 'graph', { group: group }
     render 'stats', { group: group }
+    if Plugins.const_defined?("LoomioOrg")
+      if group.subscription.present?
+        render 'subscription', { subscription: group.subscription }
+      end
+    end
+
+    panel("Subgroups") do
+      table_for group.subgroups.each do |subgroup|
+        column :name do |g|
+          link_to g.name, admin_group_path(g)
+        end
+        column :id
+      end
+    end
+
+    panel("Group members") do
+      table_for group.members.each do |member|
+        column :user_id do |user|
+          link_to user.id, admin_user_path(user)
+        end
+        column :name
+        column :email
+        column :deactivated_at
+        column :is_admin
+      end
+    end
+
     attributes_table do
       if Plugins.const_defined?("LoomioBuyerExperience")
         row :standard_plan_link do link_to("standard subscription link", ChargifyService.standard_plan_url(group), target: '_blank' ) end
@@ -145,26 +172,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
             mail_to(user.email,user.email)
           end
         end
-      end
-    end
-
-    panel("Group members") do
-      table_for group.members.each do |member|
-        column :user_id do |user|
-          link_to user.id, admin_user_path(user)
-        end
-        column :name
-        column :email
-        column :deactivated_at
-      end
-    end
-
-    panel("Subgroups") do
-      table_for group.subgroups.each do |subgroup|
-        column :name do |g|
-          link_to g.name, admin_group_path(g)
-        end
-        column :id
       end
     end
 
