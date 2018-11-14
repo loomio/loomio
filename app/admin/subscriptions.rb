@@ -11,7 +11,7 @@ ActiveAdmin.register Subscription do
     column :groups do |subscription|
       subscription.groups.map do |group|
         link_to group.name, admin_group_path(group.id)
-      end
+      end.join(', ').html_safe
     end
     actions
   end
@@ -30,7 +30,11 @@ ActiveAdmin.register Subscription do
       end
       row :plan
       row :payment_method
-      row :groups
+      row :groups do |subscription|
+        subscription.groups.map do |group|
+          link_to group.name, admin_group_path(group.id)
+        end.join(', ').html_safe
+      end
     end
   end
 
