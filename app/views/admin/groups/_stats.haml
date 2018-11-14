@@ -10,9 +10,9 @@
         %th Polls
         %th Votes
       %tr
-        %th= Queries::AdminGroupPage.visits(group.id).last[:count]
-        %th= group.memberships_count
-        %th= group.discussions_count
-        %th= group.subgroups_count
-        %th= group.polls_count
-        %th= group.polls.reduce(0) { |sofar, poll| sofar + poll.stances.count }
+        %td= Queries::AdminGroupPage.visits(group.id).last[:count]
+        %td= group.memberships_count
+        %td= group.discussions_count
+        %td= group.subgroups_count
+        %td= group.polls_count
+        %td= group.polls.reduce(0) { |sofar, poll| sofar + poll.stances.count }
