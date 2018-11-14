@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181109014324) do
+ActiveRecord::Schema.define(version: 20181114011330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -623,7 +623,9 @@ ActiveRecord::Schema.define(version: 20181109014324) do
     t.integer "chargify_subscription_id"
     t.string "plan"
     t.string "payment_method", default: "chargify", null: false
+    t.integer "owner_id"
     t.index ["kind"], name: "index_subscriptions_on_kind"
+    t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
   create_table "tags", id: :serial, force: :cascade do |t|
