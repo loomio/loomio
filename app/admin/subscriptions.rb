@@ -8,6 +8,7 @@ ActiveAdmin.register Subscription do
     column :activated_at
     column :plan
     column :chargify_subscription_id
+    column :owner
     column :groups do |subscription|
       subscription.groups.map do |group|
         link_to group.name, admin_group_path(group.id)
@@ -30,6 +31,7 @@ ActiveAdmin.register Subscription do
       end
       row :plan
       row :payment_method
+      row :owner
       row :groups do |subscription|
         subscription.groups.map do |group|
           link_to group.name, admin_group_path(group.id)
@@ -46,6 +48,7 @@ ActiveAdmin.register Subscription do
       input :expires_at
       input :activated_at
       input :chargify_subscription_id, label: "Chargify Subscription Id"
+      input :owner_id, label: "Owner Id"
     end
     f.actions
   end
