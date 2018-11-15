@@ -35,13 +35,11 @@ module Plugins
         plugin.use_class_directory 'app/mailers'
         plugin.use_view_path :"app/views"
 
-        unless ENV['WELCOME_EMAIL_SENDER_NAME'] && ENV['WELCOME_EMAIL_SENDER_EMAIL']
-          raise 'Please define ENV\'s: WELCOME_EMAIL_SENDER_NAME and WELCOME_EMAIL_SENDER_EMAIL'
-        end
-
-        plugin.use_events do |event_bus|
-          event_bus.listen('user_create') do |user|
-            OnboardingMailer.delay(run_at: 5.minutes.from_now).welcome(user)
+        if ENV['WELCOME_EMAIL_SENDER_NAME'] && ENV['WELCOME_EMAIL_SENDER_EMAIL']
+          plugin.use_events do |event_bus|
+            event_bus.listen('user_create') do |user|
+              OnboardingMailer.delay(run_at: 5.minutes.from_now).welcome(user)
+            end
           end
         end
 
