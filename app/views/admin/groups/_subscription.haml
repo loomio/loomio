@@ -1,0 +1,16 @@
+%div{ class: 'panel' }
+  %h3 Subscription
+  %div{ class: 'panel-contents' }
+    %table{ id: 'subscription-table' }
+      %tr
+        %th Activated At
+        %th Expires At
+        %th Plan
+        %th Kind
+        %th Chargify Subscription Id
+      %tr
+        %td= subscription.activated_at
+        %td= subscription.expires_at
+        %td= subscription.plan
+        %td= subscription.kind
+        %td= subscription.chargify_subscription_id

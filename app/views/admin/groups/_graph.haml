@@ -1,0 +1,51 @@
+%script{ src: "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js" }
+
+%div{ id: 'chart-container', style: "height: 200px" }
+  %canvas{ id: "myChart", style: "height: 200px !important" }
+
+:javascript
+  parseDataForChart = (record) => {
+   return {
+    t: new Date(record["date"]),
+    y: record["count"]
+   }
+  }
+  data = #{ Queries::AdminGroupPage.fetch_data(group).to_json.to_s.html_safe }
+  visitsData = data["visits"]
+  membersData = data["members"]
+  threadsData = data["threads"]
+  ctx = document.getElementById("myChart").getContext('2d')
+  labels = membersData.map((r) => { return new Date(r["date"]) }) // GK: NB: labels are overridden by x-axis time units
+  visitsDataset = visitsData.map(parseDataForChart)
+  membersDataset = membersData.map(parseDataForChart)
+  threadsDataset = threadsData.map(parseDataForChart)
+  myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "Visits",
+        backgroundColor: 'rgba(244, 215, 66, 1)',
+        borderColor: 'rgb(244, 215, 66)',
+        data: visitsDataset
+      }, {
+        label: "Members",
+        backgroundColor: 'rgba(80, 65, 244, 1)',
+        borderColor: 'rgb(80, 65, 244)',
+        data: membersDataset
+      }, {
+        label: "Threads",
+        backgroundColor: 'rgba(244, 66, 131, 1)',
+        borderColor: 'rgb(244, 66, 131)',
+        data: threadsDataset
+      }]
+     },
+     options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{ ticks: { beginAtZero: true } }],
+        xAxes: [{ type: 'time' }]
+      }
+     }
+   })
