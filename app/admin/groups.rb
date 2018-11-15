@@ -90,6 +90,9 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
         column :email
         column :deactivated_at
         column :is_admin
+        column "Support Desk" do |user|
+          link_to("Search for #{user.name}", "https://support.loomio.org/scp/users.php?a=search&query=#{user.name.downcase.split(' ').join('+')}")
+        end
       end
     end
 
