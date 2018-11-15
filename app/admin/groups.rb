@@ -66,6 +66,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   show do |group|
     render 'graph', { group: group }
     render 'stats', { group: group }
+
     if Plugins.const_defined?("LoomioOrg")
       if group.subscription.present?
         render 'subscription', { subscription: group.subscription }
@@ -73,7 +74,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
 
     panel("Subgroups") do
-      table_for group.subgroups.order(:memberships_count).each do |subgroup|
+      table_for group.subgroups.order(memberships_count: :desc).each do |subgroup|
         column :name do |g|
           link_to g.name, admin_group_path(g)
         end
