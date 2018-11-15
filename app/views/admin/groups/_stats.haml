@@ -4,29 +4,30 @@
     %table{ id: 'stats-table' }
       %tr
         %td
-          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.visits(group.id).last[:count]
+          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.visits_count(group)
         %td
           %h2{ style: "text-align: center"}= group.memberships_count
         %td
-          %h2{ style: "text-align: center"}= group.discussions_count
-        %td
           %h2{ style: "text-align: center"}= group.subgroups_count
         %td
-          %h2{ style: "text-align: center"}= group.polls_count
+          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.discussions_count(group)
         %td
-          %h2{ style: "text-align: center"}= group.polls.reduce(0) { |sofar, poll| sofar + poll.stances.count }
+          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.polls_count(group)
+        %td
+          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.thread_items_count(group)
+
       %tr
         %th
           %h4{ style: "text-align: center" } Visits
         %th
           %h4{ style: "text-align: center" } Members
         %th
-          %h4{ style: "text-align: center" } Threads
-        %th
           %h4{ style: "text-align: center" } Subgroups
+        %th
+          %h4{ style: "text-align: center" } Threads
         %th
           %h4{ style: "text-align: center" } Polls
         %th
-          %h4{ style: "text-align: center" } Votes
+          %h4{ style: "text-align: center" } Thread items
 
-    %h3 Tags: #{ group.admin_tags.split(' ').join(', ') }
+    %h3 Tags: #{ group.admin_tags }

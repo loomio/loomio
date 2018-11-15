@@ -10,7 +10,7 @@
     y: record["count"]
    }
   }
-  data = #{ Queries::AdminGroupPage.fetch_data(group.id).to_s.html_safe }
+  data = #{ Queries::AdminGroupPage.fetch_data(group).to_json.to_s.html_safe }
   visitsData = data["visits"]
   membersData = data["members"]
   threadsData = data["threads"]
