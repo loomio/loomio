@@ -24,13 +24,6 @@ class Queries::AdminGroupPage
   def self.massage(records)
     records
       .map { |record| { date: record["date"], count: record["count"] }  }
-      .reduce([]) do |sofar, record|
-        if sofar.empty?
-          [record]
-        else
-          sofar + [{ date: record[:date], count: (sofar.last[:count] || 0) + record[:count] }]
-        end
-      end
   end
 
   def self.fetch_data(group_id)
