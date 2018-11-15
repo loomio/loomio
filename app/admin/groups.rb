@@ -197,11 +197,10 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
         f.input :id, :input_html => { :disabled => true }
       end
       f.input :name, :input_html => { :disabled => f.object.persisted? }
+      f.input :admin_tags, label: "Tags (separated by a space)"
       f.input :description
       f.input :parent_id, label: "Parent Id"
       f.input :handle, as: :string
-      f.input :analytics_enabled
-      f.input :enable_experiments
     end
     f.actions
   end
