@@ -73,20 +73,20 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
 
     panel("Subgroups") do
-      table_for group.subgroups.each do |subgroup|
+      table_for group.subgroups.order(:memberships_count).each do |subgroup|
         column :name do |g|
           link_to g.name, admin_group_path(g)
         end
-        column :id
+        column :memberships_count
+        column :discussions_count
       end
     end
 
     panel("Group members") do
       table_for group.members.each do |member|
-        column :user_id do |user|
-          link_to user.id, admin_user_path(user)
+        column :name do |user|
+          link_to user.name, admin_user_path(user)
         end
-        column :name
         column :email
         column :deactivated_at
         column :is_admin

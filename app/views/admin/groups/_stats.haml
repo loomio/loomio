@@ -3,16 +3,28 @@
   %div{ class: 'panel-contents' }
     %table{ id: 'stats-table' }
       %tr
-        %th Visits
-        %th Members
-        %th Threads
-        %th Subgroups
-        %th Polls
-        %th Votes
+        %td
+          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.visits(group.id).last[:count]
+        %td
+          %h2{ style: "text-align: center"}= group.memberships_count
+        %td
+          %h2{ style: "text-align: center"}= group.discussions_count
+        %td
+          %h2{ style: "text-align: center"}= group.subgroups_count
+        %td
+          %h2{ style: "text-align: center"}= group.polls_count
+        %td
+          %h2{ style: "text-align: center"}= group.polls.reduce(0) { |sofar, poll| sofar + poll.stances.count }
       %tr
-        %td= Queries::AdminGroupPage.visits(group.id).last[:count]
-        %td= group.memberships_count
-        %td= group.discussions_count
-        %td= group.subgroups_count
-        %td= group.polls_count
-        %td= group.polls.reduce(0) { |sofar, poll| sofar + poll.stances.count }
+        %th
+          %h4{ style: "text-align: center" } Visits
+        %th
+          %h4{ style: "text-align: center" } Members
+        %th
+          %h4{ style: "text-align: center" } Threads
+        %th
+          %h4{ style: "text-align: center" } Subgroups
+        %th
+          %h4{ style: "text-align: center" } Polls
+        %th
+          %h4{ style: "text-align: center" } Votes
