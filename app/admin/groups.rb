@@ -55,10 +55,10 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     column :archived_at
     column :analytics_enabled
     column :enable_experiments
-    # TODO: This is a plugin-specific hack. Activeadmin does not take well to being customized.
-    # I would rather leave this now and revisit when/if we upgrade our admin panel for more general use.
-    if Plugins.const_defined?("LoomioBuyerExperience")
-      column("Subscription") { |group| group.subscription&.kind }
+    column :subscription_id do |group|
+      if group.subscription_id
+        link_to group.subscription_id, admin_subscription_path(group.subscription.id)
+      end
     end
     actions
   end
@@ -207,6 +207,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       f.input :description
       f.input :parent_id, label: "Parent Id"
       f.input :handle, as: :string
+      f.input :subscription_id, label: "Subscription Id"
     end
     f.actions
   end
