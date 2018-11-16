@@ -1,8 +1,7 @@
 .time-zone-select
-  .time-zone-select__selected{ng-show: "!isOpen"}
-    %md-button.time-zone-select__change-button{ng-click: "open()", aria-label:"Change time zone"}
-      {{currentZone()}}
-  .time-zone-select__change{ng-show: "isOpen"}
-    %md-autocomplete{md-search-text: "q", md-selected-item: "name", md-selected-item-change: "change()", md-items: "name in names()", placeholder: "Enter time zone"}
+  .time-zone-select__change
+    <md-select placeholder="Choose Timezone" ng-model="zone" style="min-width: 200px;" ng-change="selectChanged()">
+      <md-option ng-value="name" ng-repeat="name in names()">{{name}}</md-option>
+    </md-select>
       %md-item-template
         %span {{name}}

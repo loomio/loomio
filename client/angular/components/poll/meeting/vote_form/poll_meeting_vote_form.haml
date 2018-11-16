@@ -6,6 +6,7 @@
       %h3.lmo-h3.poll-meeting-vote-form--box{translate: "poll_meeting_vote_form.can_attend"}
       %h3.lmo-h3.poll-meeting-vote-form--box{translate: "poll_meeting_vote_form.if_need_be", ng-if:"canRespondMaybe"}
       %h3.lmo-h3.poll-meeting-vote-form--box{translate: "poll_meeting_vote_form.unable"}
+      %time_zone_select.lmo-margin-left
     %md-list-item.poll-common-vote-form__option.lmo-flex--row{ng-repeat: "option in stance.poll().pollOptions() | orderBy:'name' track by option.id"}
       %md-button.poll-meeting-vote-form--box{md-colors:"selectedColor(option, i)", ng-repeat:"i in stanceValues", ng-click:"click(option.id, i)"}
         %img.poll-common-form__icon{ng-src: "/img/agree.svg", ng-if: "i == 2"}
