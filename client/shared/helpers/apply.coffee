@@ -1,5 +1,6 @@
 EventBus      = require 'shared/services/event_bus'
 LmoUrlService = require 'shared/services/lmo_url_service'
+AppConfig      = require 'shared/services/app_config'
 
 # a series of helpers which attaches functionality to a scope, such as performing
 # a sequence of steps, or loading for a particular function
@@ -27,7 +28,7 @@ module.exports =
         options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
   applyDiscussionStartSequence: (scope, options = {}) ->
-    steps = if ENV['DONT_NOTIFY_NEW_THREAD']
+    steps = if AppConfig.theme['dont_notify_new_thread']
       ['save']
     else
       ['save', 'announce']
