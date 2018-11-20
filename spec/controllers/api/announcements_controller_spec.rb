@@ -123,6 +123,7 @@ describe API::AnnouncementsController do
 
   describe 'create' do
     let(:notified_user) { create :user }
+    let(:member) { create :user }
 
     describe 'discussion' do
       let(:discussion)    { create :discussion, author: user }
@@ -133,6 +134,26 @@ describe API::AnnouncementsController do
         post :create, params: {discussion_id: discussion.id,
                                announcement: {kind: "new_discussion", recipients: recipients}}
         expect(response.status).to eq 403
+      end
+
+      it 'cannot announce unless members_can_announce' do
+        discussion.group.add_member! member
+        discussion.group.update(members_can_announce: false)
+        sign_in member
+        recipients = {user_ids: [notified_user.id], emails: []}
+        post :create, params: {discussion_id: discussion.id,
+                               announcement: {kind: "new_discussion", recipients: recipients}}
+        expect(response.status).to eq 403
+      end
+
+      it 'can announce if members_can_announce' do
+        discussion.group.add_member! member
+        discussion.group.update(members_can_announce: true)
+        sign_in member
+        recipients = {user_ids: [notified_user.id], emails: []}
+        post :create, params: {discussion_id: discussion.id,
+                               announcement: {kind: "new_discussion", recipients: recipients}}
+        expect(response.status).to eq 200
       end
 
       it 'notify exising user' do

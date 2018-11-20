@@ -7,7 +7,7 @@ module Dev::NintiesMoviesHelper
     @patrick ||= User.find_by(email: 'patrick_swayze@example.com') ||
                  User.create!(name: 'Patrick Swayze',
                               email: 'patrick_swayze@example.com',
-                              is_admin: true,
+                              is_admin: false,
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
                               uploaded_avatar: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"),

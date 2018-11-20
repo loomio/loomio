@@ -8,7 +8,7 @@ angular.module('loomioApp').factory 'DiscussionEditModal', ->
     $scope.discussion = discussion.clone()
 
     applySequence $scope,
-      steps: ['save', 'announce']
+      steps: ['save']
       saveComplete: (_, event) ->
         $scope.announcement = Records.announcements.buildFromModel(event)
   ]
