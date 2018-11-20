@@ -27,8 +27,13 @@ module.exports =
         options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
   applyDiscussionStartSequence: (scope, options = {}) ->
+    steps = if ENV['DONT_NOTIFY_NEW_THREAD']
+      ['save']
+    else
+      ['save', 'announce']
+
     applySequence scope,
-      steps: ['save', 'announce']
+      steps: steps
       emitter: options.emitter or scope
       saveComplete: (_, event) ->
         LmoUrlService.goTo LmoUrlService.discussion(event.model())
