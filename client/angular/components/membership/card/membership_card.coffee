@@ -49,7 +49,7 @@ angular.module('loomioApp').directive 'membershipCard', ->
       !$scope.loader.loading
 
     $scope.canAddMembers = ->
-      AbilityService.canAddMembers($scope.group) && !$scope.pending
+      AbilityService.canAddMembers($scope.group.targetModel().group()) && !$scope.pending
 
     $scope.memberships = ->
       if $scope.vars.fragment
