@@ -50,7 +50,7 @@ class Group < ApplicationRecord
   before_validation :ensure_handle_is_not_empty
 
   def ensure_handle_is_not_empty
-    self.handle = nil if self.handle == ""
+    self.handle = nil if self.handle.to_s.strip == ""
   end
 
   def target_model
