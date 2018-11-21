@@ -204,7 +204,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       end
       f.input :name, :input_html => { :disabled => f.object.persisted? }
       f.input :admin_tags, label: "Tags (separated by a space)"
-      f.input :description
+      f.input :description, :input_html => { :disabled => true }
       f.input :parent_id, label: "Parent Id"
       f.input :handle, as: :string
       f.input :subscription_id, label: "Subscription Id"
