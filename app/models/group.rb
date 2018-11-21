@@ -47,12 +47,6 @@ class Group < ApplicationRecord
   define_counter_cache(:pending_memberships_count) { |group| group.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
 
-  before_validation :ensure_handle_is_not_empty
-
-  def ensure_handle_is_not_empty
-    self.handle = nil if self.handle.to_s.strip == ""
-  end
-
   def target_model
     Discussion.find_by(guest_group_id: id) ||
     Poll.find_by(guest_group_id: id) ||

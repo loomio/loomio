@@ -90,6 +90,12 @@ class FormalGroup < Group
 
   alias_method :draft_parent, :parent
 
+  before_validation :ensure_handle_is_not_empty
+
+  def ensure_handle_is_not_empty
+    self.handle = nil if self.handle.to_s.strip == ""
+  end
+
   def update_undecided_count
     polls.active.each(&:update_undecided_count)
   end
