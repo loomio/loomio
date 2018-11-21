@@ -22,7 +22,7 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
       option = $scope.optionFor(choice)
       'border-color': option.color
       'background-image': backgroundImageFor(option)
-      'background-size': "#{percentageFor(choice)} 100%"
+      'background-size': percentageFor(choice)
 
 
     $scope.stanceChoiceFor = (option) ->
