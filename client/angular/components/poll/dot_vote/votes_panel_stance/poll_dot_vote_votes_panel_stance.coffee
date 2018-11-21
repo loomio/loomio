@@ -22,7 +22,7 @@ angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ->
 
     $scope.styleData = (choice) ->
       'background-image': backgroundImageFor(choice)
-      'background-size': percentageFor(choice)
+      'background-size': "#{percentageFor(choice)} 100%"
 
     $scope.stanceChoices = ->
       _.sortBy($scope.stance.stanceChoices(), 'score').reverse()
