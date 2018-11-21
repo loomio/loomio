@@ -33,7 +33,7 @@ class Group < ApplicationRecord
   has_many :public_polls, through: :public_discussions, dependent: :destroy, source: :polls
 
   has_many :documents, as: :model, dependent: :destroy
-  
+
   include GroupExportRelations
 
   scope :archived, -> { where('archived_at IS NOT NULL') }
@@ -46,6 +46,12 @@ class Group < ApplicationRecord
   define_counter_cache(:memberships_count)         { |group| group.memberships.count }
   define_counter_cache(:pending_memberships_count) { |group| group.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
+
+  before_validation :ensure_handle_is_not_empty
+
+  def ensure_handle_is_not_empty
+    self.handle = nil if self.handle == ""
+  end
 
   def target_model
     Discussion.find_by(guest_group_id: id) ||
