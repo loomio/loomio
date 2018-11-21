@@ -40,7 +40,15 @@ module Ability::Poll
       )
     end
 
-    can [:update, :share, :remind, :destroy, :export, :announce], ::Poll do |poll|
+    can [:announce], ::Poll do |poll|
+      if poll.discussion
+        can?(:announce, poll.discussion)
+      else
+        user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
+      end
+    end
+
+    can [:update, :share, :remind, :destroy, :export], ::Poll do |poll|
       user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
     end
 

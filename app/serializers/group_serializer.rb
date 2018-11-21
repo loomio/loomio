@@ -21,6 +21,7 @@ class GroupSerializer < Simple::GroupSerializer
              :created_at,
              :creator_id,
              :members_can_add_members,
+             :members_can_announce,
              :members_can_create_subgroups,
              :members_can_start_discussions,
              :members_can_edit_discussions,
