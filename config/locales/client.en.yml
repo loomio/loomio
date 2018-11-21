@@ -709,6 +709,7 @@ en:
     allow_public_threads: 'Allow public threads in this group.'
     #is_visible_to_parent_members: 'Content is visible to members of {{parentGroupName}}.'
     parent_members_can_see_discussions: 'Members of {{parent}} can see private threads.'
+    members_can_announce: 'Members can notify everyone in the group.'
     members_can_add_members: 'Members can invite people and approve requests to join.'
     members_can_create_subgroups: 'Members can create subgroups.'
     members_can_edit_discussions: 'Members can update the context and title of any thread.'
