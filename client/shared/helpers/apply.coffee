@@ -11,6 +11,7 @@ obeyMembersCanAnnounce = (steps, group) ->
     _.without(steps, 'announce')
 
 module.exports =
+  obeyMembersCanAnnounce: obeyMembersCanAnnounce
   applyLoadingFunction: (scope, functionName) ->
     executing = "#{functionName}Executing"
     loadingFunction = scope[functionName]
