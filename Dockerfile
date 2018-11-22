@@ -4,7 +4,7 @@
 #
 # It is not a standalone image.
 #
-FROM ruby:2.5.1
+FROM ruby:2.5.3
 ENV REFRESHED_AT 2018-07-17
 
 RUN gem update --system
