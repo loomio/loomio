@@ -658,6 +658,10 @@ en:
       title: "What's our company strategy for next quarter?"
       details: This is a big year for our company and we need to be strategic about what we put our limited resourcing into. Please indicate which areas you think are most important to focus on over the next quarter.
 
+    score:
+      title: "What topics are you interested in for the next conference?"
+      details: We're preparing the topics to be covered for the next conference. Please indicate your interest in each of the following topics.
+
     ranked_choice:
       title: "Who should be our next deputy mayor?"
       details: "It's time for our semi-annual elections! This is an official instant runoff poll which will determine our next deputy mayor. Be sure to read up on each of the candidates on our website!"

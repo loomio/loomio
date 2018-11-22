@@ -1,5 +1,6 @@
 production:
   adapter: postgresql
+  pool: <%= ENV.fetch('DB_POOL', 10) %>
   database: <%= ENV['RDS_DB_NAME'] %>
   username: <%= ENV['RDS_USERNAME'] %>
   password: <%= ENV['RDS_PASSWORD'] %>
