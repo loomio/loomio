@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.5.3'
-gem 'rails', '~> 5.1.5'
+gem 'rails', '~> 5.2.1'
 gem 'actioncable'
 gem 'rake'
 gem 'pg', '~> 1.1.3'
