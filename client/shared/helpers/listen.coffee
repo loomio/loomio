@@ -6,9 +6,6 @@ EventBus = require 'shared/services/event_bus'
 # emoji being added or a translation being completed
 module.exports =
   listenForMentions: ($scope, model) ->
-    $scope.mentionables = []
-    $scope.mentionableUserIds = model.memberIds()
-
     updateMentionables = ->
       chain = Records.users.collection.chain().find(id: {'$in': $scope.mentionableUserIds})
       chain = chain.where (u) ->
@@ -27,7 +24,6 @@ module.exports =
     ,
       {leading: true, trailing: true}
 
-
     $scope.fetchByNameFragment = (q) ->
       $scope.q = (q || "").toLowerCase()
       if $scope.q.length > 0
@@ -35,6 +31,12 @@ module.exports =
         updateMentionables()
       else
         $scope.mentionables = []
+
+    $scope.mentionables = []
+    $scope.mentionableUserIds = model.memberIds()
+    updateMentionables()
+
+
 
   listenForTranslations: ($scope) ->
     EventBus.listen $scope, 'translationComplete', (e, translatedFields) =>
