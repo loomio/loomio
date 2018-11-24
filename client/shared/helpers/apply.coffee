@@ -1,6 +1,7 @@
 EventBus      = require 'shared/services/event_bus'
 LmoUrlService = require 'shared/services/lmo_url_service'
 Session       = require 'shared/services/session'
+AppConfig   = require 'shared/services/app_config'
 
 # a series of helpers which attaches functionality to a scope, such as performing
 # a sequence of steps, or loading for a particular function
