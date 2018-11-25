@@ -56,7 +56,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     column :analytics_enabled
     column :enable_experiments
     column :subscription_id do |group|
-      if group.subscription_id
+      if group.subscription_id.present?
         link_to group.subscription_id, admin_subscription_path(group.subscription.id)
       end
     end
@@ -83,17 +83,14 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       end
     end
 
-    panel("Group members") do
-      table_for group.members.each do |member|
-        column :name do |user|
-          link_to user.name, admin_user_path(user)
-        end
-        column :email
-        column :deactivated_at
-        column :is_admin
-        column "Support Desk" do |user|
-          if user.name.present?
-            link_to("Search for #{user.name}", "https://support.loomio.org/scp/users.php?a=search&query=#{user.name.downcase.split(' ').join('+')}")
+    panel("Members") do
+      table_for group.memberships.active.each do
+        column(:name) { |m| link_to m.user.name, admin_user_path(m.user) }
+        column(:email) { |m| m.user.email }
+        column(:coordinator) { |m| m.admin }
+        column "Support" do |m|
+          if m.user.name.present?
+            link_to("Search for #{m.user.name}", "https://support.loomio.org/scp/users.php?a=search&query=#{m.user.name.downcase.split(' ').join('+')}")
           end
         end
       end
