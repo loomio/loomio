@@ -31,9 +31,6 @@ class StanceService
     stance.update params
     return false unless stance.valid?
 
-    stance.poll.stances.where(participant: actor).update_all(latest: false)
-    stance.save!
-    stance.participant.save!
     EventBus.broadcast 'stance_update', stance, actor
   end
 end
