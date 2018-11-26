@@ -10,7 +10,6 @@
     .lmo-disabled-form{ng-if: "isDisabled"}
     %poll_common_directive{name: "vote_form", stance: "stance"}
 
-  -# GK: TODO: extract as separate component
   %md-dialog-content{ng-if: "isEditing"}
     %md-button.md-secondary.md-raised{ng-click: "toggleCreation()", translate: "Change your vote"}
     .poll-common-stance-reason
