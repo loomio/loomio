@@ -25,4 +25,15 @@ class StanceService
     EventBus.broadcast 'stance_create', stance, actor
     Events::StanceCreated.publish! stance
   end
+
+  def self.update(stance:, actor:, params:)
+    actor.ability.authorize! :update, stance
+    stance.update params
+    return false unless stance.valid?
+
+    stance.poll.stances.where(participant: actor).update_all(latest: false)
+    stance.save!
+    stance.participant.save!
+    EventBus.broadcast 'stance_update', stance, actor
+  end
 end
