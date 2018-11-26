@@ -1,4 +1,10 @@
 module Dev::Scenarios::Group
+  def setup_group_super_admin
+    patrick.update(is_admin: true)
+    sign_in patrick
+    create_group.add_member! emilio
+    redirect_to group_url(create_group)
+  end
   def setup_group
     sign_in patrick
     create_group.add_member! emilio
