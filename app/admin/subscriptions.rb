@@ -9,11 +9,6 @@ ActiveAdmin.register Subscription do
     column :plan
     column :chargify_subscription_id
     column :owner
-    column :groups do |subscription|
-      subscription.groups.map do |group|
-        link_to group.name, admin_group_path(group.id)
-      end.join(', ').html_safe
-    end
     actions
   end
 

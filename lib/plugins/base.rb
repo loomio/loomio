@@ -29,7 +29,7 @@ module Plugins
     end
 
     def disabled_plugins
-      ENV['DISABLED_PLUGINS'].split(" ").map(&:to_sym)
+      ENV['DISABLED_PLUGINS'].to_s.split(" ").map(&:to_sym)
     end
 
     def use_class_directory(glob)

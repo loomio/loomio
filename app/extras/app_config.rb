@@ -42,6 +42,7 @@ class AppConfig
       icon_src:                          ENV.fetch('THEME_ICON_SRC',                '/theme/icon.png'),
       app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            '/theme/logo.svg'),
       default_group_cover_src:           ENV.fetch('THEME_DEFAULT_GROUP_COVER_SRC', '/theme/default_group_cover.png'),
+      dont_notify_new_thread:            ENV['DONT_NOTIFY_NEW_THREAD'],
 
       # used in emails
       email_header_logo_src:             ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC',   '/theme/logo_128h.png'),
