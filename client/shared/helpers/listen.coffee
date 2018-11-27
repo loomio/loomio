@@ -6,10 +6,37 @@ EventBus = require 'shared/services/event_bus'
 # emoji being added or a translation being completed
 module.exports =
   listenForMentions: ($scope, model) ->
-    $scope.mentionables = []
+    updateMentionables = ->
+      chain = Records.users.collection.chain().find(id: {'$in': $scope.mentionableUserIds})
+      chain = chain.where (u) ->
+        _.isString(u.username) &&
+        (u.name.toLowerCase().startsWith($scope.q) or
+         (u.username || "").toLowerCase().startsWith($scope.q) or
+         u.name.toLowerCase().includes(" #{$scope.q}"))
+      $scope.mentionables = _.sortBy(chain.data(), (u) -> (0 - Records.events.find(actorId: u.id).length))
+
+    fetchThenUpdate = _.throttle ->
+      Records.users.fetchMentionable($scope.q, model).then (response) ->
+        $scope.mentionableUserIds =  _.uniq($scope.mentionableUserIds.concat(_.pluck(response.users, 'id')))
+        updateMentionables()
+    ,
+      500
+    ,
+      {leading: true, trailing: true}
+
     $scope.fetchByNameFragment = (q) ->
-      Records.users.fetchMentionable(q).then (response) ->
-        $scope.mentionables = Records.users.find(_.map(response.users, 'id'))
+      $scope.q = (q || "").toLowerCase()
+      if $scope.q.length > 0
+        fetchThenUpdate()
+        updateMentionables()
+      else
+        $scope.mentionables = []
+
+    $scope.mentionables = []
+    $scope.mentionableUserIds = model.memberIds()
+    updateMentionables()
+
+
 
   listenForTranslations: ($scope) ->
     EventBus.listen $scope, 'translationComplete', (e, translatedFields) =>

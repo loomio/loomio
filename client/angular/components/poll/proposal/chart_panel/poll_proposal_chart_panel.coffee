@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'pollProposalChartPanel', ->
       $scope.poll.stanceData[name] or 0
 
     $scope.percentFor = (name) ->
-      parseInt(parseFloat($scope.countFor(name)) / parseFloat($scope.poll.stancesCount) * 100)
+      parseInt(parseFloat($scope.countFor(name)) / parseFloat($scope.poll.stancesCount) * 100) || 0
 
     $scope.translationFor = (name) ->
       I18n.t("poll_proposal_options.#{name}")

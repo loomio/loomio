@@ -84,6 +84,11 @@ en:
       <p>You've selected the Free plan for your group <a href="/g/%{group_key}">%{group}</a></p>
 
   user_mailer:
+    group_export_ready:
+      subject: Group data export for %{group_name}
+      body_html: |
+        Download your group data <a href="%{url}">here</a>. Please note that this link will expire in one week's time.
+
     accounts_merged:
       subject: "Your %{site_name} user accounts have been merged."
       body_html: |
@@ -445,6 +450,43 @@ en:
       body:
         voted: '<strong>%{participant}</strong>:'
 
+    score:
+      subject:
+        poll_created: '%{actor} started a poll: %{title}'
+        poll_edited: '%{actor} edited the poll: %{title}'
+        poll_announced: '%{actor} invited you to vote in a poll: %{title}'
+        poll_closing_soon: 'Poll closing in 24 hours: %{title}'
+        poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
+        poll_expired: "Poll results: %{title}"
+        poll_expired_author: 'Your poll has closed. Share an outcome for: %{title}'
+        poll_option_added: '%{actor} added options to: %{title}'
+        poll_option_added_author: '%{actor} added options to: %{title}'
+        outcome_created: '%{actor} shared a poll outcome: %{title}'
+        outcome_announced: '%{actor} shared a poll outcome: %{title}'
+        stance_created: "%{actor} voted on: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
+        user_reminded: '%{actor} is reminding you to vote in: %{title}'
+
+      header:
+        poll_created: '<strong>%{actor}</strong> started a poll'
+        poll_edited: '<strong>%{actor}</strong> edited the poll'
+        poll_announced: '<strong>%{actor}</strong> invited you to vote in a poll'
+        poll_closing_soon: '<strong>%{actor}</strong>''s poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
+        poll_closing_soon_author: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
+        poll_expired: "<strong>%{actor}'s</strong> poll closed: %{title}"
+        poll_expired_author: 'Your poll has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
+        poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
+        outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
+        outcome_announced: '<strong>%{actor}</strong> shared a poll outcome.'
+        stance_created: "<strong>%{actor}</strong> voted on: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
+
+      body:
+        voted: '<strong>%{participant}</strong>:'
+
     count:
       subject:
         poll_created: '%{actor} is checking: %{title}'
@@ -615,6 +657,10 @@ en:
     dot_vote:
       title: "What's our company strategy for next quarter?"
       details: This is a big year for our company and we need to be strategic about what we put our limited resourcing into. Please indicate which areas you think are most important to focus on over the next quarter.
+
+    score:
+      title: "What topics are you interested in for the next conference?"
+      details: We're preparing the topics to be covered for the next conference. Please indicate your interest in each of the following topics.
 
     ranked_choice:
       title: "Who should be our next deputy mayor?"

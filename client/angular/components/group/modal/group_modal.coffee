@@ -10,7 +10,7 @@ angular.module('loomioApp').factory 'GroupModal', ->
 
     applySequence $scope,
       steps: ->
-        if $scope.group.isNew() or $scope.group.parentId
+        if $scope.group.isNew()
           ['create', 'announce']
         else
           ['create']

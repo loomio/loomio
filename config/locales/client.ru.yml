@@ -290,6 +290,10 @@ ru:
     title_label: 'Название'
     context_label: 'Описание'
     privacy_label: 'Конфиденциальность'
+  announcement:
+    form:
+      outcome_announced:
+        title: Поделиться результатами
   action_dock:
     react: Добавить реакцию
     add_resource: Добавить вложение
@@ -356,6 +360,7 @@ ru:
     start_subgroup_heading: 'Создать подгруппу'
     edit_group_heading: 'Редактировать настройки группы'
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
+    group_name: 'Название группы'
     privacy: 'Конфиденциальность'
     submit_update: 'Обновить настройки'
   documents_page:
@@ -393,15 +398,15 @@ ru:
     name_label: 'Имя'
     email_label: 'Email'
     locale_label: 'Язык'
+  change_password_form:
+    change_password_title: Сменить ваш пароль
+    change_password: Сменить пароль
   email_settings_page:
     header: Настройки email
     announcement_label: Объявления
     edit: Редактировать
   dashboard_page:
     aria_label: 'Кабинет'
-    no_groups:
-      start: Начать
-      or: или
     mark_as_read: Отметить прочитанным
     dismiss: Отклонить
     filtering:
@@ -450,10 +455,10 @@ ru:
     contact_us: 'Наши контакты'
     name_label: 'Ваше имя'
     name_placeholder: 'Введите ваше имя...'
+    subject_label: "Заголовок"
     email_label: 'Ваш электронный адрес'
     email_placeholder: 'Введите ваш электронный адрес...'
     message_label: 'Ваше сообщение'
-    message_placeholder: 'Ваше сообщение...'
     send_message: 'Отправить сообщение'
   hint:
     context: 'Подсказки для использования контекстной панели'
@@ -479,9 +484,17 @@ ru:
     poll_title: Опрос
     meeting_title: Голосование за время встречи
   poll_common:
+    reason: Причина
+    results: Результаты
+    responses: Ответы
     change_your_stance: Изменить ваш голос
+    start_poll: Начните решение
   current_polls_card:
     start_poll: Новое решение
+  poll_common_set_outcome_panel:
+    share_outcome: Поделиться результатами
+  poll_common_outcome_form:
+    submit: Поделиться результатами
   poll_common_form:
     closed: Закрыто
     start: Начать
@@ -499,6 +512,7 @@ ru:
     start_new_poll: Новое решение
   auth_form:
     email_placeholder: You@example.com
+    name: Название
   install_slack:
     progress:
       decide: Принять решение

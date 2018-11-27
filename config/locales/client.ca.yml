@@ -429,9 +429,6 @@ ca:
     no_groups:
       show_all: No teniu cap discussió recent perquè no sou membres de cap grup.
       show_muted: No teniu cap discussió silenciada perquè no sou membres de cap grup.
-      start: Crea
-      or: o
-      join_group: <a href="/explore">uniu-vos</a> a un grup per veure les discussions.
     no_threads:
       show_all: No teniu cap discussió recent.
       show_proposals: Actualment no hi ha cap proposta activa.
@@ -565,10 +562,10 @@ ca:
     contact_us: 'Contacteu amb nosaltres'
     name_label: 'El teu nom'
     name_placeholder: 'Introduïu el nom...'
+    subject_label: "Tema"
     email_label: 'Adreça de correu'
     email_placeholder: 'Introduïu l''adreça de correu...'
     message_label: 'El vostre missatge'
-    message_placeholder: 'El vostre missatge...'
     send_message: 'Envia el missatge'
   hint:
     context: 'Claus per utilitzar el panell contextual'

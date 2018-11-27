@@ -369,9 +369,6 @@ ro:
     announcement_label: Anunturi
   dashboard_page:
     aria_label: 'Tablou de bord'
-    no_groups:
-      start: Incepe
-      or: sau
     no_threads:
       show_all: Nu ai nici o discutie recenta.
       show_muted: Nu ai nici o discutie dezactivata.
@@ -439,6 +436,7 @@ ro:
       delete_comment: 'Sterge comentariu'
   contact_message_form:
     name_label: 'Nume'
+    subject_label: "Subiect"
     email_label: 'Adresa ta de email'
     message_label: 'Mesaj'
   hint:

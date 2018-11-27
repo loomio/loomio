@@ -13,11 +13,13 @@ $controller = ($scope, $rootScope) ->
 
   listenForLoading $scope
 
-  applyDiscussionStartSequence @,
-    emitter: $scope
-    afterSaveComplete: (event) ->
-      ModalService.open 'AnnouncementModal', announcement: ->
-        Records.announcements.buildFromModel(event)
+  Records.groups.findOrFetch(LmoUrlService.params().group_id).then =>
+    applyDiscussionStartSequence @,
+      emitter: $scope
+      afterSaveComplete: (event) ->
+        ModalService.open 'AnnouncementModal', announcement: ->
+          Records.announcements.buildFromModel(event)
+
 
   return
 

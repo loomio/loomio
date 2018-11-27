@@ -2,8 +2,6 @@ AppConfig       = require 'shared/services/app_config'
 Session         = require 'shared/services/session'
 UserHelpService = require 'shared/services/user_help_service'
 
-{ contactUs } = require 'shared/helpers/user'
-
 angular.module('loomioApp').directive 'userDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/user/dropdown/user_dropdown.html'
@@ -21,7 +19,4 @@ angular.module('loomioApp').directive 'userDropdown', ->
 
     $scope.showHelp = ->
       AppConfig.features.app.help_link
-
-    $scope.contactUs = ->
-      contactUs()
   ]

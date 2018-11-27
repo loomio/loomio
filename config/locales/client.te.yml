@@ -143,6 +143,7 @@ te:
       delete_comment: 'వ్యాఖ్యను తొలగించు'
   contact_message_form:
     name_label: 'మీ పేరు'
+    subject_label: "విషయం"
     email_label: 'మీ ఈమెయిలు చిరునామా'
     message_label: 'మీ సందేశం'
   registered_apps_page:

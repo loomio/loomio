@@ -81,8 +81,6 @@ ja:
     email_label: 'Eメール'
     locale_label: '言語'
   dashboard_page:
-    no_groups:
-      or: または
     threads_from:
       today: '本日'
       yesterday: '昨日'
@@ -102,6 +100,7 @@ ja:
       delete_comment: 'コメントを削除します'
   contact_message_form:
     name_label: 'あなたの名前'
+    subject_label: "主題"
     email_label: 'あなたのメールアドレス'
     message_label: 'あなたのメッセージ'
   hint:

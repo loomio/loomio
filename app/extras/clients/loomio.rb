@@ -8,7 +8,6 @@ class Clients::Loomio < Clients::Base
     true
   end
 
-
   def default_host
     "#{ENV.fetch('USAGE_REPORT_URL', 'https://www.loomio.org')}/api/v1".freeze
   end

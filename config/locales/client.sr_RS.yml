@@ -141,8 +141,6 @@ sr_RS:
     header: Опције еПорука
   dashboard_page:
     aria_label: 'Радна табла'
-    no_groups:
-      or: или
     mark_as_read: Означи као прочитано
     filtering:
       proposals: Предлози
@@ -171,6 +169,7 @@ sr_RS:
       delete_comment: 'Обриши коментар'
   contact_message_form:
     name_label: 'Твоје име'
+    subject_label: "Тема"
     email_label: 'Твоја адреса еПоште'
     message_label: 'Твоја порука'
   hint:

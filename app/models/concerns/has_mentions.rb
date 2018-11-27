@@ -14,7 +14,7 @@ module HasMentions
   end
 
   def mentioned_users
-    User.mentionable_by(author).where(username: mentioned_usernames)
+    User.visible_by(author).where(username: mentioned_usernames)
   end
 
   # users mentioned in the text, but not yet sent notifications

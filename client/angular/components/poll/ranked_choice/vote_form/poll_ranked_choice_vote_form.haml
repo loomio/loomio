@@ -16,7 +16,6 @@
         %i.mdi.mdi-drag.poll-ranked-choice-vote-form__drag-handle
 
   %validation_errors{subject: "stance", field: "stanceChoices"}
-  %poll_common_add_option_button{ng-if: "stance.isNew() && stance.poll().voterCanAddOptions", poll: "stance.poll()"}
   %poll_common_stance_reason{stance: "stance"}
 
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between

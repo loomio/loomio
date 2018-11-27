@@ -86,6 +86,7 @@ he:
       delete_comment: 'מחקו תגובה'
   contact_message_form:
     name_label: 'שמך'
+    subject_label: "נושא"
     email_label: 'כתובת הדוא״ל שלך'
     message_label: 'ההודעה שלך'
   hint:

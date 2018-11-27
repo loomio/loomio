@@ -6,7 +6,7 @@ LmoUrlService = require 'shared/services/lmo_url_service'
 angular.module('loomioApp').directive 'pollCommonIndexCard', ->
   scope: {model: '=', limit: '@?', viewMoreLink: '=?'}
   templateUrl: 'generated/components/poll/common/index_card/poll_common_index_card.html'
-  replace: true
+  replace: false
   controller: ['$scope', ($scope) ->
     $scope.fetchRecords = ->
       Records.polls.fetchFor($scope.model, limit: $scope.limit, status: 'closed')

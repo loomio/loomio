@@ -62,4 +62,7 @@ ca:
     links:
       title: |
           ## Enllaços i imatges
+  poll_mailer:
+    common:
+      unsubscribe: Cancel·lar la subscripció
   comment_by: Comentari per %{comment_author}

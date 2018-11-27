@@ -1,1 +1,660 @@
-nb_NO: {}
+nb_NO:
+  reactions:
+    slight_smile: Liker
+    heart: Elsker
+    laughing: Ler
+    clap: Klappe
+    hugging: Klem
+    sunglasses: Kul
+    wink: Vinke
+    nerd: Smart
+    relieved: Beroliget
+    worried: Bekymret
+    confused: Forvirret
+    confounded: Forvirret
+    neutral_face: Nøytral
+    slight_frown: Rynker på nesa
+    disappointed: Skuffet
+    angry: Sinna
+    weary: Sliten
+    astonished: Forbauset
+    rolling_eyes: Ruller med øynene
+    cry: Gråter
+    scream: Skriker
+    sleeping: Kjeder seg
+    thinking: Tenker
+    raised_hands: Henda i været
+    pray: Ber
+    fingers_crossed: Kryssede fingere
+    v: Fred
+    metal: Metal
+    ok_hand: Ok
+    wave: Vinke
+    thumbsup: Tommel opp
+    thumbsdown: Tommel ned
+  poll_types:
+    proposal: Forslag
+    count: Ja / Nei
+    poll: Avstemning
+    dot_vote: Steiner i kurver
+    meeting: Tidspunkt
+    ranked_choice: Rangering
+  timezones:
+    local: Lokal tid ({{value}})
+  common:
+    you: Du
+    expand: Utvid
+    all_day: Hele dagen
+    ok_got_it: Ok, jeg forstår
+    learn_more: Les mer
+    not_found: Ikke funnet
+    time_zone: Tidssone
+    local_time: Lokal tid
+    confirm_discard_changes: Ignorer forandringer?
+    time:
+      am: AM
+      pm: PM
+    closing_in: 'Stenger {{time}}'
+    closed_ago: 'Stengt {{time}}'
+    volume: 'Volum'
+    notification_volume: 'Varslingsvolum'
+    group: 'Gruppe'
+    groups: 'Grupper'
+    threads: 'Tråder'
+    decisions: 'Beslutninger'
+    settings: 'Innstillinger'
+    help: 'Hjelp'
+    anonymous: Anonym
+    privacy:
+      privacy: 'Personvern'
+      public: 'Offentlig'
+      open: 'Åpen'
+      closed: 'Lukket'
+      private: 'Privat'
+      secret: 'Hemmelig'
+    selected: 'Valgt'
+    date_range:
+      today: 'I dag'
+      yesterday: 'I går'
+      thisweek: 'Denne uka'
+      thismonth: 'Denne måneden'
+      older: 'Eldre'
+    more_help: 'Mer hjelp'
+    models:
+      proposal: 'Forslag'
+    copy: 'Kopier'
+    copy_text: 'Kopier tekst'
+    copied: 'Kopiert til utklippstavle'
+    points_abbrev: Hver stemme er verdt {{score}} poeng
+    total: Totalt
+    action:
+      next: 'Neste'
+      close: 'Lukk'
+      reopen: 'Gjenåpne'
+      save: 'Lagre'
+      save_changes: 'Lagre endringer'
+      update_settings: 'Oppdater innstillinger'
+      reply: 'Svar'
+      edit: 'Rediger'
+      remove: 'Fjern'
+      like: 'Liker'
+      back: 'Tilbake'
+      unlike: 'U-lik'
+      update: 'Oppdater'
+      cancel: 'Avbryt'
+      show_more: "Vis mer"
+      view_all: "Vis alle"
+      new_thread: "Ny tråd"
+      add_subgroup: 'Legg til undergruppe'
+      loading: 'Laster'
+      translate: 'Oversett'
+      translated: 'Oversettelse av Bing '
+      upload: 'Last opp'
+      uploading: 'Laster opp'
+      load_more: 'Last mer'
+      share: Del
+      ok: Ok!
+      retry: Prøv igjen
+      done: Ferdig
+      start: Start
+      delete: Slett
+      unsubscribe: Meld deg av
+      subscribe: Meld deg på
+      remind: Påminn
+      resend: Send på nytt
+      send: Send
+      joined: Ble medlem
+      last_seen: Sist sett
+      invite: Inviter
+      resent: Invitasjon sendt på nytt
+      export: Eksporter
+      fork: Ny forgrening
+    formatting_help:
+      label: 'Formatering'
+      title: 'Lær hvordan du kan bruke Markdown for å formatere teksten din'
+  ordinal:
+    _1: '1.'
+    _2: '2.'
+    _3: '3.'
+    _4: '4.'
+    _5: '5.'
+    _6: '6.'
+    _7: '7.'
+    _8: '8.'
+    _9: '9.'
+    _10: '10.'
+  devise:
+    sessions:
+      signed_up: Kontoen er opprettet!
+    failure:
+      inactive: 'Det er en deaktivert konto assossiert med denne e-postadressen. Hvis du vil reaktivere kontoen så kan du kontakte Loomio.'
+  error_page:
+    forbidden: 'Du har ikke tillatelse til å gjøre dette.'
+    page_not_found: 'Vi kunne ikke finne dette. Det kan ha blitt slettet eller flyttet.'
+    internal_server_error: 'Vi beklager, men noe gikk galt. Vennligst prøv på nytt.'
+  verify_email_notice:
+    please_verify: Takk for din deltakelse. Vær grei å sjekk e-posten din for å verifisere din stemme.
+  verify_stances:
+    title: Verifiser stemmer
+    description: 'Vær vennlig å gå gjennom stemmene under og verifiser at det er dine. '
+    verify: Verifiser
+    remove: Fjern
+    verify_success: Stemme verifisert
+    remove_success: Stemme fjernet
+    all_done: Kjempebra, du har verifisert alle stemmene.
+  previous_polls_page:
+    heading: Aktivitet i {{name}}
+    polls_count: Viser {{loaded}} av {{total}} beslutninger
+    search_activities: Søk i beslutninger
+  volume_levels:
+    loud: 'Høyt'
+    normal: 'Normalt'
+    quiet: 'Stille'
+    mute: 'Dempet'
+    unmute: 'U-Demp'
+  change_volume_form:
+    aria_label: "Oppdatere innstillinger for e-post skjema"
+    loud_label: "All aktivitet"
+    normal_label: "Annonseringer"
+    quiet_label: "Ingen e-poster"
+    mute_label: "Dempet"
+    discussion:
+      title: "Tråd e-post innstillinger "
+      loud_description: "Du vil motta en e-post når det er aktivitet i denne tråden."
+      normal_description: "Du vil motta en e-post når en beslutning er startet, i ferd med å lukkes eller når et resultat av en beslutning er postet."
+      quiet_description: "Du vil ikke motta e-post om denne tråden."
+      apply_to_all: "Bruk disse innstillingene på alle tråder i denne gruppen."
+      messages:
+        loud: "Du vil motta e-post om aktivietet i denne tråden."
+        normal: "Du vil motta e-post om beslutninger i denne tråden."
+        quiet: "Du vil ikke motta e-post om denne tråden."
+    membership:
+      title: "Innstillinger for e-post for {{title}}"
+      loud_description: "Du vil motta en e-post hver gang det er aktivitet i denne gruppa."
+      normal_description: "Du vil bare motta e-post om annonseringer i denne gruppa."
+      quiet_description: "Du vil ikke motta e-post om aktivetet i denne gruppa."
+      apply_to_all: "Bruk disse innstillingene på alle gruppene mine."
+      messages:
+        loud: "Du vil motta e-post om all aktivetet i denne gruppa"
+        normal: "Du vil bare få e-post om annonseringer i denne gruppa."
+        quiet: "Du vil ikke motta e-post om denne gruppa."
+    all_groups:
+      messages:
+        loud: "Du vil motta e-post om all aktivitet i dine grupper."
+        normal: "Du vil bare motta e-post om annonseringer i alle dine grupper."
+        quiet: "Du vil ikke motta e-post om noen av dine grupper."
+    user:
+      title: Innstillinger for e-post i nye grupper
+      loud_description: "Du vil motta e-post når det er aktivitet i nye grupper du kan bli med i. "
+      normal_description: "Du vil motta e-post når det er annonseringer i nye grupper du kan bli med i. "
+      quiet_description: "Du vil ikke motta e-post når det er aktivitet i nye grupper du har blitt med i. "
+      apply_to_all: "Bruk disse innstillingene på alle gruppene mine."
+      messages:
+        loud: "Du vil motta e-post om all aktivitet i nye grupper."
+        normal: "Du vil motta e-post om alle annonseringer i nye grupper."
+        quiet: "Du vil ikke motta e-post om nye grupper."
+  close_explanation_modal:
+    aria_label: Lukk tråd
+    close_thread: Lukk tråd
+    body_header: |
+        <p>Lukk gamle eller irrelevante tråder for å gjør de usynlige for å indikere at diskusjonen er stengt.</p>
+    body_footer: |
+        <p>Alle kan kommentere eller starte en beslutning i en lukket tråd, men det vil ikke være synlig i gruppens tråder eller på skrivebordet. </p>
+    image_alt: Lukker alle tråder
+  mute_explanation_modal:
+    aria_label: Demp tråd
+    mute_thread: Demp tråd
+    body_html: |
+        Demping betyr at du <strong> ikke vil motta varslinger om beslutninger </strong>, annen aktivitet i denne tråden, med mindre noen <strong> @nevner deg.</strong>.
+    body_html_2: |
+        Dempede tråder er skult fra <strong>SIste</strong> og <strong>Uleste </strong> sider også. For å finne dine dempede tråder så kan du velge <strong>Dempede</strong> i sidemenyen
+    image_alt: Alternativer for dempede tråder i sidemenyen.
+  dismiss_explanation_modal:
+    aria_label: Avslutt tråd
+    dismiss_thread: Avslutt tråd
+  inbox:
+    clear: 'Tøm'
+    latest: 'Siste'
+    unread: 'Ulest'
+    closing_in: 'Lukker'
+  sign_up_form:
+    password_label: 'Passord: '
+    password_confirmation_label: 'Passordet på nytt:'
+  signed_out_modal:
+    aria_label: 'Økt fullført'
+    title: "Din økt er ferdig"
+    message: "Du har blitt logget ut fra et annet vindu. Vennligst logg inn for å fortsette."
+    ok: "Ok"
+  comment_reply_form:
+    aria_label: 'Legg til et svar'
+  comment_form:
+    aria_label: 'Legg til en kommentar'
+    attachments:
+      add_attachment: 'Legg ved fil'
+      remove_attachment: 'Fjern vedlegg'
+    messages:
+      created: 'Kommentar lagt til'
+      replied: '{{name}} varslet om svar'
+      updated: 'Kommentar oppdatert'
+      destroyed: 'Kommentar slettet'
+    say_something: Si noe...
+    edit_comment: 'Rediger kommentar'
+    delete_comment: 'Slett kommentar'
+    cancel_reply: 'Avslutt svar'
+    confirm_delete_message: 'Er du sikker på at du vil slette denne kommentaren?'
+    confirm_delete: 'Slett kommentar'
+    in_reply_to: "Svar til {{name}}"
+    write_a_comment: "Skriv en kommentar..."
+    submit_button:
+      label: 'Post'
+    private_privacy_notice: 'Kommentaren din vil være synlig for medlemmer av {{groupName}}.'
+    public_privacy_notice: 'Kommentaren din vil være synlig for alle på nettet.'
+    sign_in: "Logg inn for å bli med i samtalen"
+  sidebar:
+    recent_threads: 'Siste tråder'
+    unread_threads: 'Uleste tråder ({{count}})'
+    muted_threads: 'Dempede tråder'
+    start_group: 'Ny gruppe'
+    explore: 'Offentlige grupper'
+    start_thread: Ny tråd
+    start_decision: Ny beslutning
+    aria_labels:
+      heading: 'Sidemeny'
+      threads_list: 'Trådhandlinger'
+      groups_list: 'Grupper'
+      user_list: 'Brukerhandlinger'
+  navbar:
+    recent_title: 'Gå til skrivebordet'
+    unread_title: 'Vis ulest aktivitet'
+    start_thread: 'Ny tråd'
+    notifications: 'Varslingspanel'
+    search:
+      label: 'Søkefelt; søk i grupper og tråder'
+      results_aria_label: 'Søkeresultater'
+      no_results: 'Ingen tråder funnet'
+      close: 'Lukk søkepanelet'
+      placeholder: 'Søk'
+      loading: 'Laster resulater...'
+      discussions: 'Tråder'
+      proposals: 'Forslag'
+      comments: 'Kommentarer'
+    sign_in: 'Logg inn'
+    toggle_sidebar: 'Slå av/på sidemeny'
+    logo_title: 'Hjemmeside'
+  user_dropdown:
+    button_label: 'Brukermeny'
+    edit_profile: 'Rediger brukerprofil'
+    email_settings: 'Innstillinger for e-post'
+    help: 'Hjelp'
+    contact_site_name: 'Kontakt {{site_name}}'
+    sign_out: 'Logg ut'
+  membership_card:
+    group_members: "Gruppemedlemmer"
+    discussion_members: "Trådmedlemmer"
+    poll_members: "{{pollType}} medlemmer"
+    invite_to_group: "Inviter til gruppe"
+    invite_to_discussion: "Inviter til tråd"
+    invite_to_poll: "Inviter til å stemme"
+    invitations: "Invitasjoner"
+  membership_dropdown:
+    set_title: "Sett tittel"
+    resend: "Send  invitasjon på nytt"
+    invitation_resent: "Invitasjon sendt på nytt"
+    make_coordinator: 'Sett som koordinator'
+    demote_coordinator: 'Fjern som koordinator'
+    remove_from:
+      discussion: "Fjern fra tråd"
+      group: "Fjern fra gruppe"
+      poll: 'Fjern fra  {{pollType}}'
+    cancel_invitation: Avslutt invitasjon
+  start_menu:
+    label: 'Brukerhandlinger'
+    title: 'Handling'
+    start_group: 'Start en gruppe'
+    start_subgroup: 'Start en undergruppe'
+    start_thread: 'Start en tråd'
+    start_poll: 'Start en avstemning'
+    invite_people: 'Inviter folk'
+  notification_models:
+    discussion: 'tråd:'
+    comment: 'kommenter i'
+    poll: 'beslutning:'
+    outcome: 'resultat:'
+  notifications:
+    header: "Varslinger"
+    no_notifications: "Du har ingen ny varslinger"
+    new_discussion: "<strong>{{name}}</strong> starter en diskusjon <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> delte en diskusjon <strong>{{title}}</strong>"
+    new_motion: "<strong>{{name}}</strong>  started en beslutning  <strong>{{title}}</strong>"
+    motion_closed: "Beslutning lukket:<strong>{{title}}</strong>"
+    publish_outcome: "Publiser et resultat"
+    motion_closed_by_user: "<strong>{{name}}</strong> stengte beslutningen <strong>{{title}}</strong>"
+    motion_closed_by_expiry: "Beslutningen er lukket <strong>{{title}}</strong>"
+    new_vote: "<strong>{{name}}</strong> {{position}} på beslutningen <strong>{{title}}</strong>"
+    new_comment: "<strong>{{name}}</strong> kommenterte på <strong>{{title}}</strong>"
+    comment_replied_to: "<strong>{{name}}</strong>svarte på din kommentar i <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> reagerte <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> på din {{model}}<strong>{{title}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> nevnte deg i <strong>{{title}}</strong>"
+    user_reminded: "<strong>{{name}}</strong> venter på at du skal delta i <strong>{{title}}</strong>"
+    membership_requested: "<strong>{{name}}</strong> forespurte medlemskap i  <strong>{{title}}</strong>"
+    membership_request_approved: '<strong>{{name}}</strong> godkjente din forespørsel om å bli med i  <strong>{{title}}</strong>'
+    user_added_to_group: "<strong>{{name}}</strong> la deg til i gruppen  <strong>{{title}}</strong>"
+    user_added_to_group_no_inviter: "Du ble lagt til i gruppen  <strong>{{title}}</strong>"
+    motion_closing_soon: "Beslutninger som snart stenger: <strong>{{title}}</strong>"
+    motion_outcome_created: "<strong>{{name}}</strong> publiserte resultatet fra beslutningen <strong>{{title}}</strong>"
+    motion_outcome_updated: "<strong>{{name}}</strong> oppdaterte resultatet for beslutningen <strong>{{title}}</strong>"
+    invitation_accepted: "<strong>{{name}}</strong> godkjente din invitasjon til å bli med i  <strong>{{title}}</strong>"
+    new_coordinator: "<strong>{{name}}</strong> gjorde deg til koordinator for  <strong>{{title}}</strong>"
+    poll_created: "<strong>{{name}}</strong> startet en {{poll_type}}: <strong>{{title}}</strong>"
+    poll_edited: "<strong>{{name}}</strong> redigerte en {{poll_type}}: <strong>{{title}}</strong>"
+    poll_announced: "<strong>{{name}}</strong> delte en {{poll_type}}: <strong>{{title}}</strong>"
+    poll_closing_soon: "{{poll_type}} stenger snart: <strong>{{title}}</strong>"
+    poll_expired: "{{poll_type}} stengt: <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong>  la til valg for: <strong>{{title}}</strong>"
+    outcome_created: "<strong>{{name}}</strong> delte et resulat: <strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong> delte et resulat: <strong>{{title}}</strong>"
+    stance_created: "<strong>{{name}}</strong> deltok i: <strong>{{title}}</strong>"
+  position_buttons_panel:
+    heading: Si det du vil
+  extend_proposal_form:
+    aria_label: Endret stengetid
+    title: 'Endret stengetid'
+    success: 'Stengetid for beslutningen oppdatert'
+    submit: 'Oppdatert stengetid'
+  discussion_record:
+    created: 'Tråden {{title}} ble opprettet i gruppa: {{groupName}}'
+    updated: 'Lagret endringer i  {{title}}'
+  discussion_fork_actions:
+    helptext: "Velg de innleggene du vil flytte til en ny tråd"
+  discussion_form:
+    aria_label: 'Trådskjema'
+    messages:
+      created: 'Tråd startet'
+      updated: 'Tråd oppdatert'
+      forked: 'Trådforgreining opprettet'
+    new_discussion_title: 'Start en ny tråd'
+    fork_discussion_title: 'Forgren en tråd'
+    edit_discussion_title: 'Rediger tråd'
+    group_label: 'Gruppe'
+    group_placeholder: 'Velg en gruppe'
+    title_label: 'Tittel'
+    title_placeholder: 'Hvilket tema vil du diskutere?'
+    context_label: 'Kontekst'
+    context_placeholder: 'Gi nok bakgrunnsinformasjon for at gruppen skal ha en produkutiv diskusjon. Denne kan oppdateres underveis i diskusjonen.'
+    privacy_label: 'Personvern'
+    privacy_public: 'Alle kan se denne tråden. Bare medlemmer kan delta i tråden.'
+    privacy_private: 'Denne tråden er bare synlig for medlemmer i {{group}}.'
+    privacy_organisation: 'Denne tråden vil være synlig for medlemmer i {{parent}} og medlemmer i gruppen: {{group}}.'
+    fork_notice: 'En ny tråd vil bli opprettet med {{count}} innlegg fra  {{title}}'
+  announcement:
+    audiences:
+      parent_group: Medlemmer av {{name}}
+      formal_group: Medlemmer av {{name}}
+      discussion_group: Medlemmer i tråden
+      voters: Folk som har stemt
+      non_voters: Folk som ikke har stemt
+    form:
+      group_announced:
+        title: Inviter til gruppe
+        helptext: Hvem vil du invitere til gruppa?
+      discussion_announced:
+        title: Inviter til tråd
+        helptext: Hvem vil du invitere til denne tråden?
+      discussion_edited:
+        title: Varling om redigering
+        helptext: Hvem vil du varsle om dine endringer?
+      poll_announced:
+        title: Inviter til å stemme
+        helptext: Hvem vil du invitere til å stemme?
+      poll_edited:
+        title: Varling om redigering
+        helptext: Hvem vil du varsle om dine endringer?
+      outcome_announced:
+        title: Del resultat
+        helptext: Hvem vil du dele resultatet med?
+      anyone_can_participate: Alle med link kan delta
+      placeholder: Skriv inn navn eller e-postadresser...
+      notified_empty: 'Ingen valgt enda.'
+      notified: '{{notified}} folk vil bli varslet:'
+      notified_singular: '1 person vil bli varslet:'
+      group_title: '{{name}} ({{count}} folk)'
+    members_list:
+      title: Delt med
+      last_notified: Varslet
+      not_notified: ikke varslet enda
+      no_members: "Dette har ikke blitt delt med noen enda!"
+    group_form:
+      search_placeholder: Søk etter folk...
+      modal_title: Velg gruppemedlemmer
+      members_count: '{{count}} folk vil bli varslet'
+    flash:
+      success: '{{count}} varslinger sendt'
+  action_dock:
+    react: Legg til reaksjon
+    add_resource: Legg til vedlegg
+    edit_group: Rediger gruppens kontekst
+    add_comment: Kommentar
+    copy_url: Kopier URL
+    edit_thread: Rediger kontekst
+    announce_thread: Invitert folk til bli med i tråden
+    announce_thread_active: (Ingen har blitt invitert enda)
+    translate_thread: Oversett kontekst
+    edit_poll: Rediger avstemning
+    announce_poll: Inviter folk til å stemme
+    announce_poll_active: (Ingen har blitt invitert enda)
+    translate_poll: Oversett avstemning
+    edit_stance: Endre din stemme
+    translate_stance: Oversett stemme
+    edit_comment: Rediger kommentar
+    delete_comment: Slett kommentar
+    reply_to_comment: Svar
+    fork_comment: Forgren tråd
+    translate_comment: Oversett kommentar
+    edit_outcome: Rediger resultat
+    announce_outcome: Varsle folk om resultatet
+    announce_outcome_active: (Ingen har blir varslet om resultatet enda)
+    translate_outcome: Oversett resultatet
+    show_history: Vis redigeringshistorie
+    pin_thread: Fest tråd
+    unpin_thread: U-Fest tråd
+    comment_copied: Kommentar-URL kopiert til utklippstavlen
+    poll_copied: Beslutnings-URL kopiert til utklippstavlen
+    discussion_copied: Tråd-URL kopiert til utklippstavlen
+  cover_photo_form:
+    aria_label: 'Bytt forsidebilde skjema'
+    heading: 'Nytt forsidebilde'
+    upload_link: 'Last opp nytt forsidebilde'
+    image_size_helptext: 'Den beste bildeoppløsningen er 1400×320px'
+    upload_success: 'Forsidebilde oppdatert'
+  logo_photo_form:
+    aria_label: 'Bytt gruppelogo skjema'
+    heading: 'Ny gruppelogo'
+    upload_link: 'Last opp ny gruppelogo'
+    image_size_helptext: 'Den beste oppløsningen er 100×100px'
+    upload_success: 'Logo oppdatert'
+  join_group_button:
+    join_group: Bli med i gruppe
+    membership_requested: Venter på forespørsel om medlemskap
+    messages:
+      joined_group: 'Du er nå medlem av gruppen: {{group}}'
+  membership_request_form:
+    aria_label: Forespørslel om medlemskap
+    heading: Spør om å få bli med i gruppen
+    name_label: Navn
+    email_label: E-post
+    introduction_label: Hvorfor vil du bli med i gruppen?
+    submit_button: Spør om å få bli med i gruppen
+    introduction_over_limit: Svaret er for langt
+    messages:
+      membership_requested: 'Du har forespurt medlemskap i gruppen: {{group}}'
+  revision_history_modal:
+    aria_label: Revisjonshistorikk
+    discussion_header: Historikk for revisjoner i diskusjoner
+    comment_header: Historikk for revisjoner i kommentarer
+    poll_header: Historikk for revisjoner i beslutninger
+    started_by: 'Startet av <strong>{{name}}</strong>'
+    edited_by: 'Redigert av <strong>{{name}}</strong>'
+    posted: Postet
+    original_text: Original
+    current_revision: Siste
+    closing_at_changed: "stengetid satt til {{time}}"
+    private_changed: "personvern satt til {{private}}"
+    group_id_changed: "flyttet til {{name}}"
+  reactions_input:
+    add_your_reaction: Legg til din reaksjon
+  reactions_display:
+    more_reactions: "{{count}} flere"
+    you: "Du"
+    you_and_name: "Du og {{name}}"
+    you_and_name_and_count_more: "Du, {{name}} og {{count}} flere"
+    name_and_count_more: "{{name}} og {{count}} flere"
+  context_panel:
+    thread_status:
+      pinned: "Denne tråden er festet. Den vil forbli på toppen av gruppelista for alle brukere."
+      closed: "Denne tråden har blitt stengt. Den vil ikke være synlig på Skrivebordet, og ligge under 'lukket' på gruppesiden"
+  group_page:
+    show_opened: '{{count}} Åpne'
+    show_closed: '{{count}} Lukket'
+    no_threads_here: Ingen tråder å se her!
+    search_threads: Søk etter tråder...
+    new_cover_photo: 'Last opp nytt forsidebilde'
+    new_group_logo: 'Last opp ny gruppelogo'
+    invite_people: 'Inviter'
+    options:
+      email_settings: 'Innstillinger for e-post'
+  group_form:
+    privacy: 'Personvern'
+    submit_update: 'Oppdater innstillinger'
+  documents_page:
+    confirm_remove_title: Fjern vedlegg
+  document:
+    modal:
+      title: Legg til vedlegg
+    form:
+      title_label: Navn
+  invitation_form:
+    invite_people: 'Inviter folk'
+    group: 'Gruppe'
+    group_placeholder: 'Velg en gruppe'
+    copy_link: 'Kopier'
+    send: 'Send'
+    done: 'Ferdig'
+  memberships_page:
+    name_label: 'Navn'
+    remove_member_label: 'Fjern'
+  membership_remove_modal:
+    invitation:
+      title: Avslutt invitasjon
+      submit: Avslutt invitasjon
+  memberships_panel:
+    add_coordinator: Sett som koordinator
+    remove_coordinator: Fjern som koordinator
+  pending_invitations_card:
+    email: E-post
+    copy_url: Kopier URL
+  cancel_invitation_form:
+    heading: Avslutt invitasjon
+  profile_page:
+    name_label: 'Navn'
+    email_label: 'E-post'
+  email_settings_page:
+    header: Innstillinger for e-post
+    announcement_label: Annonseringer
+    update_settings: Lagre endringer
+    edit: Rediger
+  dashboard_page:
+    filtering:
+      proposals: Forslag
+    threads_from:
+      today: 'I dag'
+      yesterday: 'I går'
+  inbox_page:
+    no_groups:
+      start: Start
+  discussion:
+    started_by: 'Startet av <strong>{{name}}</strong>'
+  activity_card:
+    unread: Ulest
+    latest: Siste
+  thread_context:
+    email_settings: 'Innstillinger for e-post'
+    edit: 'Rediger'
+    edit_thread: 'Rediger'
+    close_thread: 'Lukk'
+    reopen_thread: 'Gjenåpne'
+    mute_thread: 'Dempet'
+    delete_thread: 'Slett'
+    add_comment: 'Kommenter'
+  pin_thread_modal:
+    title: Fest tråd
+    pin_thread: Fest tråd
+  delete_comment_dialog:
+    title: 'Slett kommentar'
+    question: 'Er du sikker på at du vil slette denne kommentaren?'
+    confirm: 'Slett kommentar'
+  new_comment_item:
+    context_menu:
+      edit_comment: 'Rediger kommentar'
+      delete_comment: 'Slett kommentar'
+  registered_apps_page:
+    name: Navn
+  registered_app_form:
+    name_label: Navn
+  decision_tools_card:
+    proposal_title: Forslag
+    count_title: Ja / Nei
+    poll_title: Avstemning
+    meeting_title: Tidspunkt
+    ranked_choice_title: Rangering
+  poll_common:
+    change_your_stance: Endre din stemme
+  current_polls_card:
+    start_poll: Ny beslutning
+  poll_common_select_group:
+    loomio_group: Gruppe
+  poll_common_notify_group:
+    members_count: "{{count}} folk vil bli varslet"
+  poll_common_set_outcome_panel:
+    share_outcome: Del resultat
+  poll_common_outcome_form:
+    submit: Del resultat
+  poll_common_form:
+    title: Tittel
+    closed: Lukket
+    start: Start
+    update: Oppdater
+  poll_poll_form:
+    edit_header: Rediger avstemning
+  poll_meeting_chart_panel:
+    total: Totalt
+  poll_common_subscribe_form:
+    subscribe: Meld deg på
+  polls_page:
+    heading: Beslutninger
+    start_new_poll: Ny beslutning
+  auth_form:
+    name: Navn
+    email: E-post
+  install_slack:
+    progress:
+      invite: Inviter

@@ -148,8 +148,6 @@ fa_IR:
     update_settings: ذخیره کردن تغییرات
     edit: ویرایش
   dashboard_page:
-    no_groups:
-      start: شروع
     filtering:
       proposals: پیشنهاد‌ها
     threads_from:

@@ -66,7 +66,7 @@ module.exports = class GroupModel extends BaseModel
   group: -> @
 
   fetchToken: ->
-    @remote.getMember(@id, 'token').then (token) -> @token = token
+    @remote.getMember(@id, 'token').then => @token
 
   closedPolls: ->
     _.filter @polls(), (poll) ->
@@ -168,6 +168,9 @@ module.exports = class GroupModel extends BaseModel
     @remote.patchMember(@key, 'archive').then =>
       @remove()
       _.each @memberships(), (m) -> m.remove()
+
+  export: =>
+    @remote.postMember(@id, 'export')
 
   uploadLogo: (file) =>
     @remote.upload("#{@key}/upload_photo/logo", file, {}, ->)

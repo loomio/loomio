@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
     percentageFor = (choice) ->
       max = $scope.stance.poll().customFields.dots_per_person
       return unless max > 0
-      "#{100 * choice.score / max}%"
+      "#{100 * choice.score / max}% 100%"
 
     backgroundImageFor = (option) ->
       "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
@@ -23,6 +23,7 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
       'border-color': option.color
       'background-image': backgroundImageFor(option)
       'background-size': percentageFor(choice)
+
 
     $scope.stanceChoiceFor = (option) ->
       _.first(_.filter($scope.stance.stanceChoices(), (choice) ->

@@ -96,6 +96,32 @@ PollGenerator = Struct.new(:poll_type) do
     ])
   end
 
+  def score_params
+    {
+      poll_option_names: ["Code for conduct at events", "Disrupting the sharing economy", "Blockchain, AI, trust and accountability", "Post-crisis community tech", "Sustainability"],
+      custom_fields: { max_score: 9 }
+    }
+  end
+
+  def score_stances_for(poll)
+    generate_stance_for(poll, index: 0, reason: "", stance_choices_attributes: [
+      { poll_option_id: poll.poll_option_ids[1], score: 2 },
+      { poll_option_id: poll.poll_option_ids[2], score: 3 },
+      { poll_option_id: poll.poll_option_ids[3], score: 3 }
+    ])
+    generate_stance_for(poll, index: 1, reason: "", stance_choices_attributes: [
+      { poll_option_id: poll.poll_option_ids[0], score: 7 },
+      { poll_option_id: poll.poll_option_ids[4], score: 1 }
+    ])
+    generate_stance_for(poll, index: 2, reason: "", stance_choices_attributes: [
+      { poll_option_id: poll.poll_option_ids[0], score: 1 },
+      { poll_option_id: poll.poll_option_ids[1], score: 3 },
+      { poll_option_id: poll.poll_option_ids[2], score: 1 },
+      { poll_option_id: poll.poll_option_ids[3], score: 1 },
+      { poll_option_id: poll.poll_option_ids[4], score: 2 }
+    ])
+  end
+
   def meeting_params
     {
       poll_option_names: [

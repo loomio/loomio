@@ -66,6 +66,8 @@ km:
   new_comment_item:
     context_menu:
       delete_comment: 'លុបមតិយោបល់ '
+  contact_message_form:
+    subject_label: "ប្រធានបទ​"
   hint:
     context: 'ពត៏មានជំនួយសម្រាប់ការប្រើបន្ទះបរិបទនេះ'
     discussion: 'គន្លឹះសម្រាប់ការចាប់ផ្តើមជាមួយការពិភាក្សារដ៏គួរឲ្យចាប់ចិត្ត'

@@ -666,6 +666,8 @@ es:
     messages:
       group_created: 'Grupo ha sido creado'
       group_updated: 'Grupo actualizado'
+  group_export_modal:
+    title: Exportar la data grupal
   group_features:
     useAnonymous: 'Activar votos anónimos '
     nested_comments: Activar comentarios agrupados
@@ -913,9 +915,6 @@ es:
     no_groups:
       show_all: 'No tienes ningún hilo reciente porque no eres miembro de ningún grupo. '
       show_muted: No tienes ningún hilo silenciado porque no eres miembro de ningún grupo.
-      start: 'Empezar '
-      or: 'o '
-      join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.  '
     no_threads:
       show_all: No tienes ningún hilo reciente.
       show_proposals: No hay propuestas activas en este momento.
@@ -1091,15 +1090,13 @@ es:
     description_private: 'actualizó el contexto y la privacidad del hilo '
     description_private_title: 'se actualizó el título, el contexto y la privacidad del hilo '
   contact_message_form:
-    helptext: "¿Quieres ponerte en contacto con el equipo de Loomio? Ingresa un mensaje debajo y te responderemos a la brevedad. "
-    contact_us_email: "(También siempre podrás contactarnos en <a href=\"mailto:contact@loomio.org\">{{email}}</a>) "
     contact_us: 'Contáctanos'
     name_label: 'Tu nombre'
     name_placeholder: 'Introduce tu nombre...'
+    subject_label: "Título"
     email_label: 'Tu correo electrónico'
     email_placeholder: 'Introduce tu correo electrónico...'
     message_label: 'Tu mensaje'
-    message_placeholder: 'Tu mensaje...'
     send_message: 'Enviar mensaje'
     new_contact_message: "Gracias por contactarnos, te responderemos en breve"
   hint:

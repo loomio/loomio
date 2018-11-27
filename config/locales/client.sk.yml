@@ -72,8 +72,6 @@ sk:
     locale_label: 'Jazyk'
   dashboard_page:
     aria_label: 'Ovládací panel'
-    no_groups:
-      or: alebo
     mark_as_read: Označiť ako prečítané
     threads_from:
       today: 'Dnes'
@@ -96,6 +94,7 @@ sk:
       delete_comment: 'Odstrániť komentár'
   contact_message_form:
     name_label: 'Vaše meno'
+    subject_label: "Téma"
     email_label: 'Vaša emailová adresa'
     message_label: 'Vaša správa'
   hint:

@@ -1,0 +1,25 @@
+zh_TW:
+  loomio_onboarding:
+    group_progress_card:
+      title: 啟用您的群組
+      activities:
+        set_description: 設定您的群組描述
+        set_logo: 為您的群組選擇圖示
+        set_cover_photo: 為您的群組選擇封面圖片
+        invite_people_in: 邀請夥伴在
+        start_thread: 開始討論串
+        make_decision: 啟動決策
+      learn_more: 在 Loomio 學院學習更多
+      learn_more_title: 在新分頁中開啟
+      celebration_message: 很好！您的群組可以開始使用了！
+      dismiss_this_card: 忽略這張卡片
+    user_progress_card:
+      title: 設定您的簡歷
+      activities:
+        enter_name: 輸入您的名字
+        set_profile_picture: 設定簡歷照片
+        set_bio: 輸入簡短的自介
+        join_group: 加入群組
+        make_decision: 在決策中投票
+      celebration_message: 您的簡歷可以開始使用了！
+      dismiss: 暫時忽略

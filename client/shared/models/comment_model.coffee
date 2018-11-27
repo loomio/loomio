@@ -45,6 +45,9 @@ module.exports = class CommentModel extends BaseModel
   guestGroup: ->
     @discussion().guestGroup()
 
+  memberIds: ->
+    @discussion().memberIds()
+
   isMostRecent: ->
     _.last(@discussion().comments()) == @
 

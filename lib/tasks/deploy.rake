@@ -11,7 +11,6 @@
 # rake deploy:bump_version    -- add a commit to master which bumps the current version
 # rake deploy:plugins:fetch   -- fetch plugins from the loomio_org plugins.yml
 # rake deploy:plugins:install -- install plugins so the correct files are built and deployed
-# rake deploy:build           -- build all clientside assets
 # rake deploy:commit          -- commit all non-repository code to a branch for pushing
 # rake deploy:push            -- push deploy branch to heroku
 # rake deploy:cleanup         -- run rake db:migrate on heroku, restart dynos, and notify clients of version update
@@ -24,7 +23,7 @@ def deploy_steps
     "deploy:bump_version",
     "plugins:fetch[#{heroku_plugin_set}]",
     "plugins:install[fetched]",
-    "deploy:build",
+    "client:build",
     "deploy:commit",
     "deploy:push",
     "deploy:cleanup"
@@ -59,15 +58,6 @@ namespace :deploy do
       "git add lib/version",
       "git commit -m 'bump version to #{loomio_version}'",
       "git push origin master")
-  end
-
-  desc "Builds assets for production push"
-  task :build do
-    puts "Building clientside assets..."
-    run_commands(
-      "cd client && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",
-      "mkdir -p public/client/#{loomio_version}",
-      "cp -r public/client/development/* public/client/#{loomio_version}")
   end
 
   desc "Commits built assets to deployment branch"

@@ -582,9 +582,6 @@ da:
     no_groups:
       show_all: Du har ikke nogen seneste debatter da du ikke er medlem af nogen grupper.
       show_muted: Du har ikke nogen debatter uden notifikationer da du ikke er medlem af nogen grupper.
-      start: Opret
-      or: eller
-      join_group: <a href="/explore">blive medlem</a> af en gruppe for at se debatter.
     no_threads:
       show_all: Du har ikke nogen seneste debatter.
       show_proposals: Der er pt. ikke nogen aktive forslag.
@@ -733,10 +730,10 @@ da:
     contact_us: 'Kontakt os'
     name_label: 'Dit navn'
     name_placeholder: 'Indtast dit navn...'
+    subject_label: "Emne"
     email_label: 'Din emailadresse'
     email_placeholder: 'Indtast din emailadresse...'
     message_label: 'Din besked'
-    message_placeholder: 'Din besked...'
     send_message: 'Send besked'
   hint:
     context: 'Tips for at bruge kontekst panelet'

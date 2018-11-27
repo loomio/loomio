@@ -391,9 +391,6 @@ ga_IE:
       updated: Nuashonraigh na socruithe ríomhphoist
   dashboard_page:
     aria_label: 'An clár rialaithe'
-    no_groups:
-      start: Tosaigh
-      or: nó
     no_threads:
       show_all: Níl aon snáithe le déanaí agat.
       show_proposals: Níl aon tograí atá gníomhach faoi láthair.
@@ -484,10 +481,10 @@ ga_IE:
     contact_us: 'Déan teagmháil linn'
     name_label: 'D''ainm'
     name_placeholder: 'Cuir d''ainm isteach...'
+    subject_label: "Ábhar"
     email_label: 'Do sheoladh ríomhphoist'
     email_placeholder: 'Cuir isteach do sheoladh ríomhphoist...'
     message_label: 'Do theachtaireacht'
-    message_placeholder: 'Do theachtaireacht...'
     send_message: 'Seol an teachtaireacht'
   hint:
     discussion: 'Leideanna chun tús a chur le plé mealltach'

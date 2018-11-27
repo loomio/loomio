@@ -3,7 +3,7 @@ require 'rails_helper'
 describe API::AnnouncementsController do
   let(:user)  { create :user }
   let(:group) { create :formal_group }
-  let(:another_group) { create :formal_group }
+  let(:another_group) { create :formal_group, parent: group }
   let(:an_unknown_group) { create :formal_group }
 
   before do
@@ -15,35 +15,30 @@ describe API::AnnouncementsController do
     let!(:a_friend)        { create :user, name: "Friendly Fran" }
     let!(:an_acquaintance) { create :user, name: "Acquaintance Annie" }
     let!(:a_stranger)      { create :user, name: "Alien Alan" }
+    let(:subgroup) { create :formal_group, parent: group}
 
     before do
+      group.add_member! user
       group.add_member! a_friend
       another_group.add_member! user
       another_group.add_member! an_acquaintance
     end
 
-    it 'returns an existing user you know' do
-      get :search, params: { q: 'fran' }
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json[0]['name']).to eq a_friend.name
-    end
-
     it 'does not return an existing user you dont know' do
-      get :search, params: { q: 'alien' }
+      get :search, params: { q: 'alien', group_id: group.id }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
       expect(json).to be_empty
     end
 
     it 'returns an email address' do
-      get :search, params: { q: 'bumble@bee.com' }
+      get :search, params: { q: 'bumble@bee.com', group_id: group.id }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
       expect(json[0]['name']).to eq 'bumble@bee.com'
     end
 
-    it 'finds potential members when a group is given' do
+    it 'finds members in your group but not this subgroup' do
       get :search, params: { q: 'annie', group_id: group.id }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
@@ -81,6 +76,7 @@ describe API::AnnouncementsController do
       group.add_member! both_user
       subgroup.add_member! both_user
       group.add_member! parent_user
+      subgroup.add_admin! user
 
       get :audience, params: {group_id: subgroup.id, kind: "parent_group"}
       json = JSON.parse response.body
@@ -127,6 +123,7 @@ describe API::AnnouncementsController do
 
   describe 'create' do
     let(:notified_user) { create :user }
+    let(:member) { create :user }
 
     describe 'discussion' do
       let(:discussion)    { create :discussion, author: user }
@@ -137,6 +134,26 @@ describe API::AnnouncementsController do
         post :create, params: {discussion_id: discussion.id,
                                announcement: {kind: "new_discussion", recipients: recipients}}
         expect(response.status).to eq 403
+      end
+
+      it 'cannot announce unless members_can_announce' do
+        discussion.group.add_member! member
+        discussion.group.update(members_can_announce: false)
+        sign_in member
+        recipients = {user_ids: [notified_user.id], emails: []}
+        post :create, params: {discussion_id: discussion.id,
+                               announcement: {kind: "new_discussion", recipients: recipients}}
+        expect(response.status).to eq 403
+      end
+
+      it 'can announce if members_can_announce' do
+        discussion.group.add_member! member
+        discussion.group.update(members_can_announce: true)
+        sign_in member
+        recipients = {user_ids: [notified_user.id], emails: []}
+        post :create, params: {discussion_id: discussion.id,
+                               announcement: {kind: "new_discussion", recipients: recipients}}
+        expect(response.status).to eq 200
       end
 
       it 'notify exising user' do

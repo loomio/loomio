@@ -23,11 +23,5 @@ module.exports =
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
   getProviderIdentity: ->
-    validProviders = _.map(AppConfig.identityProviders, 'name')
+    validProviders = _.pluck(AppConfig.identityProviders, 'name')
     AppConfig.pendingIdentity if _.includes(validProviders, AppConfig.pendingIdentity.identity_type)
-
-  contactUs: ->
-    if IntercomService.available()
-      IntercomService.open()
-    else
-      ModalService.open('ContactModal')

@@ -69,8 +69,6 @@ gl:
     locale_label: 'Lingua'
   dashboard_page:
     aria_label: 'Panel de control'
-    no_groups:
-      or: ou
     threads_from:
       today: 'Hoxe'
   inbox_page:
@@ -91,6 +89,7 @@ gl:
       delete_comment: 'Borrar comentario'
   contact_message_form:
     name_label: 'O teu nome'
+    subject_label: "Tema"
     email_label: 'A túa dirección de correo electrónico'
     message_label: 'A túa mensaxe'
   hint:

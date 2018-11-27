@@ -84,7 +84,6 @@ class Dev::PollsController < Dev::BaseController
 
   def self.observe_scenario(scenario_name, email: false, except: [], only:nil)
     poll_types = only || (AppConfig.poll_templates.keys - except.map(&:to_s))
-
     poll_types.each do |poll_type|
       action_name = :"test_#{poll_type}_#{scenario_name}#{'_email' if email}"
       define_method action_name do
@@ -105,21 +104,21 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_closing_soon,           email: true
   observe_scenario :poll_closing_soon_with_vote, email: true
   observe_scenario :poll_closing_soon_author,    email: true
-  observe_scenario :poll_expired,                email: true
   observe_scenario :poll_expired_author,         email: true
   observe_scenario :poll_outcome_created,        email: true
-  observe_scenario :poll_catch_up,       email: true
+  observe_scenario :poll_catch_up,               email: true
   observe_scenario :poll_stance_created,         email: true
-  observe_scenario :poll_options_added,          email: true, except: [:count, :proposal]
   observe_scenario :poll_options_added_author,   email: true, except: [:count, :proposal]
   observe_scenario :poll_anonymous,              email: true
+  observe_scenario :poll_share
+  observe_scenario :poll_options_added
+  observe_scenario :poll_expired
   observe_scenario :poll_anonymous
   observe_scenario :poll_with_guest
   observe_scenario :poll_with_guest_as_author
   observe_scenario :poll_notifications
   observe_scenario :poll_created_as_visitor
   observe_scenario :poll_created_as_logged_out
-  observe_scenario :poll_share
   observe_scenario :poll_closed
   observe_scenario :poll_meeting_populated,     only: [:meeting]
 end

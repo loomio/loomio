@@ -28,7 +28,7 @@ class PermittedParams < Struct.new(:params)
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at, :anonymous,
      :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
-     :custom_fields, {custom_fields: [:can_respond_maybe, :deanonymize_after_close, :dots_per_person, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
+     :custom_fields, {custom_fields: [:can_respond_maybe, :deanonymize_after_close, :dots_per_person, :max_score, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
      :document_ids, {document_ids: []},
      :poll_option_names, {poll_option_names: []}]
   end
@@ -71,7 +71,7 @@ class PermittedParams < Struct.new(:params)
 
   def group_attributes
     [:parent_id, :name, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
-     :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
+     :members_can_add_members, :members_can_announce, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
      :description, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :members_can_raise_motions,
      :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups,
@@ -103,7 +103,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def contact_message_attributes
-    [:email, :message, :name]
+    [:email, :subject, :user_id, :message, :name]
   end
 
   def user_deactivation_response_attributes

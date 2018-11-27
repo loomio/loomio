@@ -5,10 +5,14 @@ module.exports = class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
   apiEndPoint: 'profile'
 
-  fetchMentionable: (q) =>
+  fetchMentionable: (q, model) =>
+    model = model.discussion() if !model.id? && model.discussionId
+    model = model.group() if !model.id? && !model.discussionId
     @fetch
       path: 'mentionable_users'
-      params: {q: q}
+      params:
+        q: q
+        "#{model.constructor.singular}_id": model.id
 
   updateProfile: (user) =>
     @remote.post 'update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })

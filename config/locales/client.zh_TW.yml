@@ -569,6 +569,7 @@ zh_TW:
     options:
       label: '選項'
       edit_group: '編輯群組設定'
+      export_data: '匯出群組資料'
       manage_members: '管理成員'
       add_subgroup: '新增子群組'
       manage_subscription: '管理群組訂閱'
@@ -666,6 +667,19 @@ zh_TW:
     messages:
       group_created: '群組已啟動'
       group_updated: '群組已更新'
+  group_export_modal:
+    title: 匯出群組資料
+    body: |
+        <p>
+        您可以在任何時候下載一份您群組資料的副本。
+        <a href="https://help.loomio.org/en/user_manual/groups/data_export/">更多資訊。</a>
+        </p>
+        <p>
+        這可能需要一些時間才能完成，取決於您群組的大小。
+        當它準備好的時候您將會收到一封帶有下載檔案連結的電子郵件。
+        </p>
+    submit: 開始匯出
+    flash: 群組資料匯出開始
   group_features:
     useAnonymous: 啟用匿名投票
     nested_comments: 啟用巢狀評論檢視
@@ -915,9 +929,6 @@ zh_TW:
     no_groups:
       show_all: 您沒有任何最近的討論串，因為您還不是任何群組的成員。
       show_muted: 您沒有任何已靜音的討論串，因為您不是任何群組的成員。
-      start: 啟動
-      or: 或者
-      join_group: <a href="/explore">加入</a>群組以觀看討論串。
     no_threads:
       show_all: 您沒有任何最近的討論串
       show_proposals: 目前沒有活躍的提案。
@@ -1093,17 +1104,23 @@ zh_TW:
     description_private: '更新討論串內容與隱私設定'
     description_private_title: '更新討論串標題、內容與隱私設定'
   contact_message_form:
-    helptext: "想要取得聯繫？只要在下面輸入訊息，您將會很快就收到我們的消息。"
-    contact_us_email: "（您也可以透過 <a href=\"mailto:{{email}}\">{{email}}</a> 隨時與我們聯繫）"
+    title: "嗨，您好！我們可以怎麼協助您？"
+    read_the_manual: |
+        您看過我們的<a href="{{link}}" target="_blank">說明手冊</a>了嗎？我們會用常見問題定期更新它。
+    contact_us_email: "您也可以寄電子郵件給我們：<a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: '聯絡我們'
     name_label: '您的大名'
     name_placeholder: '輸入您的大名...'
+    subject_label: "主旨"
+    subject_placeholder: |
+        範例：登入時遇到問題，或是功能建議
     email_label: '您的電子郵件地址'
     email_placeholder: '輸入您的電子郵件位址...'
     message_label: '您的訊息'
-    message_placeholder: '您的訊息...'
+    message_placeholder: '若請求支援請嘗試提供盡可能多的資訊給我們。'
     send_message: '寄送訊息'
     new_contact_message: "感謝您聯絡我們；我們會盡快回覆您！"
+    success: "感謝您的訊息，{{name}}。我們將會在收到訊息後很快地回覆您。"
   hint:
     context: '使用論述控制板的小提示'
     discussion: '發起一段激動人心討論的小提示'

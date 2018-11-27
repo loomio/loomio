@@ -3,7 +3,7 @@ BaseModel = require 'shared/record_store/base_model'
 module.exports = class EventModel extends BaseModel
   @singular: 'event'
   @plural: 'events'
-  @indices: ['id', 'discussionId']
+  @indices: ['id', 'actorId', 'discussionId']
 
   @eventTypeMap:
     group:              'groups'

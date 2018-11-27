@@ -11,6 +11,18 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
   replace: true
   controller: ['$scope', ($scope) ->
 
+    $scope.canExportData = ->
+      Session.user().isMemberOf($scope.group)
+
+    $scope.openGroupExportModal = ->
+      ModalService.open 'ConfirmModal', confirm: ->
+        submit: $scope.group.export
+        text:
+          title:    'group_export_modal.title'
+          helptext: 'group_export_modal.body'
+          submit:   'group_export_modal.submit'
+          flash:    'group_export_modal.flash'
+
     $scope.canAdministerGroup = ->
       AbilityService.canAdministerGroup($scope.group)
 

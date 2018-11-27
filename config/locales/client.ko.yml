@@ -464,9 +464,6 @@ ko:
     no_groups:
       show_all: 당신은 가입된 그룹이 없기 때문에 최근 모둠이 없습니다.
       show_muted: 가입된 그룹이 없기 때문에 대기중인 모둠이 없습니다.
-      start: 시작
-      or: 혹은
-      join_group: '주제를 보기 위해 그룹에 <a href="/explore">참여합니다</a> '
     no_threads:
       show_all: 최근 주제가 없습니다.
       show_proposals: 현재 활성화된 제안이 없습니다.
@@ -589,10 +586,10 @@ ko:
     contact_us: '연락하기'
     name_label: '이름'
     name_placeholder: '이름'
+    subject_label: "제목"
     email_label: '이메일 주소'
     email_placeholder: '이메일 주소'
     message_label: '메시지'
-    message_placeholder: '메시지...'
     send_message: '메시지 보내기'
   hint:
     context: '켄텍스트 패널 사용을 위한 도움말'

@@ -1,0 +1,36 @@
+%div{ class: 'panel' }
+  %h3 Group Stats
+  %div{ class: 'panel-contents' }
+    %table{ id: 'stats-table' }
+      %tr
+        %td
+          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.visits_count(group)
+        %td
+          %h2{ style: "text-align: center"}= group.memberships_count
+        %td
+          %h2{ style: "text-align: center"}= group.subgroups_count
+        %td
+          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.discussions_count(group)
+        %td
+          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.polls_count(group)
+        %td
+          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.thread_items_count(group)
+
+      %tr
+        %th
+          %h4{ style: "text-align: center" } Visits
+        %th
+          %h4{ style: "text-align: center" } Members
+        %th
+          %h4{ style: "text-align: center" } Subgroups
+        %th
+          %h4{ style: "text-align: center" } Threads
+        %th
+          %h4{ style: "text-align: center" } Polls
+        %th
+          %h4{ style: "text-align: center" } Thread items
+
+    %h4 Tags:
+    %h3= group.admin_tags
+    %h4 Description:
+    %h3= group.description

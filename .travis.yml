@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.5.1
+  - 2.5.3
 
 dist: trusty
 sudo: required
@@ -16,13 +16,7 @@ cache:
 
 addons:
   firefox: "62.0"
-  postgresql: "9.4"
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - expect
-      - g++-4.8
+  postgresql: "9.6"
 
 env:
   global:
@@ -30,7 +24,7 @@ env:
     - DISPLAY=:99.0
     - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
     - RAILS_ENV=test
-    - PUMA_WORKERS=2
+    - PUMA_WORKERS=1
     - MIN_THREADS=3
     - MAX_THREADS=3
     - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
@@ -44,8 +38,8 @@ before_install:
   - gem update --system
   - gem --version
   - gem install bundler
-  - nvm install 8.4.0
-  - nvm use 8.4.0
+  - nvm install 10.11.0
+  - nvm use 10.11.0
   - npm install -g yarn gulp
 
 install:
@@ -57,7 +51,7 @@ before_script:
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
-  - bundle exec rake travis:build_client
+  - bundle exec rake client:build
   - bundle exec rake travis:cc_reporter
   - bundle exec rails server -b 0.0.0.0 > /dev/null &
 

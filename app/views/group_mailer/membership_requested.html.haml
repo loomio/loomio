@@ -2,7 +2,7 @@
   %strong= @membership_request.name
   %span="(#{@membership_request.email})"
   = t(:"email.membership_request.intro_html")
-.invite-people-mailer__message-container
+.invite-people-mailer__body--center-text
   - if @introduction
     .invite-people-mailer__message_body
       = simple_format @introduction

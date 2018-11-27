@@ -1,0 +1,25 @@
+fr:
+  loomio_onboarding:
+    group_progress_card:
+      title: Activez votre groupe
+      activities:
+        set_description: Saisissez une description pour votre groupe
+        set_logo: Choisissez un logo pour votre groupe
+        set_cover_photo: Choisissez une bannière photo pour votre groupe
+        invite_people_in: Invitez des personnes
+        start_thread: Lancez une discussion
+        make_decision: Prenez une décision
+      learn_more: Apprenez-en plus à l’école Loomio
+      learn_more_title: S’ouvre dans un nouvel onglet
+      celebration_message: Bien joué ! Votre groupe est fin prêt !
+      dismiss_this_card: Ignorer cette carte
+    user_progress_card:
+      title: Configurez votre profil
+      activities:
+        enter_name: Entrez votre nom
+        set_profile_picture: Ajoutez une photo de profil
+        set_bio: Saisissez une brève introduction
+        join_group: Rejoignez un groupe
+        make_decision: Votez pour une décision
+      celebration_message: Votre profil est prêt !
+      dismiss: Ignorer

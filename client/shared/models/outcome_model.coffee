@@ -31,6 +31,9 @@ module.exports = class OutcomeModel extends BaseModel
   group: ->
     @poll().group() if @poll()
 
+  memberIds: ->
+    @poll().memberIds()
+
   announcementSize: ->
     @poll().announcementSize @notifyAction()
 

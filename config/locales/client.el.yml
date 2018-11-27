@@ -382,9 +382,6 @@ el:
     announcement_label: Ανακοινώσεις
   dashboard_page:
     aria_label: 'Πίνακας Εργαλείων'
-    no_groups:
-      start: Εκίνηση
-      or: ή
     mark_as_read: Σημείωσε ως διαβασμένα
     filtering:
       proposals: Προτάσεις
@@ -416,6 +413,7 @@ el:
       delete_comment: 'Διαγραφή σχόλιου'
   contact_message_form:
     name_label: 'Το όνομα σας'
+    subject_label: "Θέμα"
     email_label: 'Η Ηλεκτρονική Διεύθυνση σας'
     message_label: 'Το μήνυμα σας'
   hint:

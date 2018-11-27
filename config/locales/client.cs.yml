@@ -520,9 +520,6 @@ cs:
     edit: Upravit
   dashboard_page:
     aria_label: 'Ovládací panel'
-    no_groups:
-      start: Zahájit
-      or: nebo
     no_threads:
       show_all: Nemáte žádná aktuální vlákna
       show_proposals: Žádné návrhy nejsou momentálně aktivní.
@@ -614,10 +611,10 @@ cs:
     contact_us: 'Kontakt'
     name_label: 'Vaše jméno'
     name_placeholder: 'Zadejte své jméno...'
+    subject_label: "Téma"
     email_label: 'Vaše emailová adresa'
     email_placeholder: 'Zadejte svou emailovou adresu...'
     message_label: 'Vaše zpráva'
-    message_placeholder: 'Vaše zpráva...'
     send_message: 'Odeslat zprávu'
   hint:
     context: 'Rady pro používání kontextového panelu'

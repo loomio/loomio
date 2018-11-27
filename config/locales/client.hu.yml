@@ -469,9 +469,6 @@ hu:
     announcement_label: Bejelentések
   dashboard_page:
     aria_label: 'Műszerfal'
-    no_groups:
-      start: Indítás
-      or: vagy
     mark_as_read: Olvasottként jelöl
     filtering:
       proposals: Javaslatok
@@ -504,6 +501,7 @@ hu:
       delete_comment: 'Hozzászólás törlése'
   contact_message_form:
     name_label: 'Neved'
+    subject_label: "Téma"
     email_label: 'E-mail címed'
     message_label: 'Üzeneted'
   hint:

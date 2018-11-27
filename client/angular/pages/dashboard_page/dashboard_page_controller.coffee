@@ -70,6 +70,10 @@ $controller = ($rootScope, $routeParams, $mdMedia) ->
     params:
       filter: @filter
       per: 50
+
+
+  @dashboardLoaded = Records.discussions.collection.data.length > 0
+
   @loader.fetchRecords().then => @dashboardLoaded = true
 
   @noGroups        = -> !Session.user().hasAnyGroups()
@@ -78,6 +82,8 @@ $controller = ($rootScope, $routeParams, $mdMedia) ->
   @startGroup      = -> ModalService.open 'GroupModal', group: -> Records.groups.build()
   @userHasMuted    = -> Session.user().hasExperienced("mutingThread")
   @showLargeImage  = -> $mdMedia("gt-sm")
+
+  @startGroup() if @noGroups() && AbilityService.canStartGroups()
 
   return
 

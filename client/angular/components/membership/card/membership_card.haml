@@ -10,8 +10,7 @@
         %i.mdi.mdi-close
 
   %plus_button.membership-card__membership.membership-card__invite{ng-if: "canAddMembers()", click: "invite", message: "membership_card.invite_to_{{group.targetModel().constructor.singular}}"}
-  %loading{ng-if: "loader.loading"}
-  .membership-card__membership.lmo-flex.lmo-flex__center{ng-repeat: "membership in memberships() | orderBy: ['-admin', '-createdAt'] | limitTo: loader.numRequested track by membership.id", data-username: "{{membership.user().username}}"}
+  .membership-card__membership.lmo-flex.lmo-flex__center{ng-repeat: "membership in memberships() | orderBy: ['-admin', '-createdAt'] | limitTo: (loader.numRequested || 10) track by membership.id", data-username: "{{membership.user().username}}"}
     %user_avatar.lmo-margin-right{user: "membership.user()", size: "medium", coordinator: "membership.admin", no-link: "!membership.acceptedAt"}
     .membership-card__user.lmo-flex.lmo-flex__grow.lmo-truncate{layout: "column"}
       %span> {{membership.userName() || membership.user().email }}
@@ -19,6 +18,7 @@
       .membership-card__last-seen.md-caption{translate: "user_page.online_field", translate-value-value: "{{::membership.user().lastSeenAt | timeFromNowInWords}}", ng-if: "::membership.user().lastSeenAt"}
       .membership-card__last-seen.md-caption{translate: "user_page.invited", translate-value-value: "{{::membership.user().createdAt | timeFromNowInWords}}", ng-if: "!membership.acceptedAt"}
     %membership_dropdown{membership: "membership"}
+  %loading{ng-if: "loader.loading"}
 
   .lmo-md-actions{ng-if: "showLoadMore()"}
     %md-button.md-accent{ng-if: "showLoadMore()", ng-click: "loader.loadMore()", translate: "common.action.load_more"}
