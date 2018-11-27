@@ -1,6 +1,8 @@
 ActiveAdmin.register Subscription do
   actions :new, :create, :index, :show, :edit, :update, :destroy
 
+  filter :kind
+
   index do
     column :kind
     column :trial_created_at
