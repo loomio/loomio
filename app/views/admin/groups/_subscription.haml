@@ -15,4 +15,7 @@
         %td= subscription.expires_at
         %td= subscription.plan
         %td= subscription.kind
-        %td= subscription.chargify_subscription_id
+        - if subscription.chargify_subscription_id.present?
+          %td= link_to subscription.chargify_subscription_id, "https://loomio.chargify.com/subscriptions/#{subscription.chargify_subscription_id}"
+        - else
+          %td= nil
