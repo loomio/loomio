@@ -8,7 +8,7 @@
         %td
           %h2{ style: "text-align: center"}= group.memberships_count
         %td
-          %h2{ style: "text-align: center"}= group.subgroups_count
+          %h2{ style: "text-align: center"}= group.subgroups.count
         %td
           %h2{ style: "text-align: center"}= Queries::AdminGroupPage.discussions_count(group)
         %td
