@@ -502,7 +502,7 @@ en:
     announce_poll: Invite people to vote
     announce_poll_active: (No one has been invited yet)
     translate_poll: Translate poll
-    edit_stance: Change your vote
+    edit_stance: Change position
     translate_stance: Translate vote
     edit_comment: Edit comment
     delete_comment: Delete comment
@@ -1307,7 +1307,7 @@ en:
 
   poll_common:
     your_response: Your response
-    change_your_response: Change your response
+    change_your_response: Edit response
     reason: Reason
     reason_placeholder: Any additional comments?
     message: Message
@@ -1320,7 +1320,7 @@ en:
     update_outcome: Update outcome
     outcome: Outcome
     statement: Statement
-    change_your_stance: Change your response
+    change_your_stance: Edit response
     load_more: Load more
     details: Details
     participant_name: Your name
@@ -1332,6 +1332,7 @@ en:
     publish_poll: Share poll
     view_all: View all
     save_changes: Save
+    change_vote: Change vote
 
   poll_common_attachment_form:
     label: Attachments
