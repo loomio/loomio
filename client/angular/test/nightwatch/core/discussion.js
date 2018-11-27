@@ -3,6 +3,12 @@ pageHelper = require('../helpers/page_helper')
 workflowHelper = require('../helpers/workflow_helper')
 
 module.exports = {
+  'presents_new_discussion_form_for_a_group_from_params': (test) => {
+    page = pageHelper(test)
+    page.loadPath('setup_start_thread_form_from_url')
+    page.expectText('discussion_form', "Dirty Dancing Shoes")
+    page.expectValue('.discussion-form__title-input', "testing title")
+  },
   'preselects current group': (test) => {
     page = pageHelper(test)
 

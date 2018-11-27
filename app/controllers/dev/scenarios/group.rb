@@ -130,4 +130,14 @@ module Dev::Scenarios::Group
     @discussion = @group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
     redirect_to group_url(@group)
   end
+
+  def setup_start_thread_form_from_url
+    sign_in patrick
+    redirect_to "/d/new/?group_id=#{create_group.id}&title=testing title&type=thread"
+  end
+
+  def setup_start_poll_form_from_url
+    sign_in patrick
+    redirect_to "/p/new/count?group_id=#{create_group.id}&title=testing title"
+  end
 end

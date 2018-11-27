@@ -9,7 +9,7 @@ $controller = ($scope, $rootScope) ->
   $rootScope.$broadcast('currentComponent', { page: 'startDiscussionPage', skipScroll: true })
   @discussion = Records.discussions.build
     title:       LmoUrlService.params().title
-    groupId:     LmoUrlService.params().group_id
+    groupId:     parseInt(LmoUrlService.params().group_id)
 
   listenForLoading $scope
 
