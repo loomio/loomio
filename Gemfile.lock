@@ -548,7 +548,7 @@ PLATFORMS
 DEPENDENCIES
   actioncable
   active_model_serializers (~> 0.8.1)
-  activeadmin (~> 1.4.0)
+  activeadmin (~> 1.4.1)
   activerecord-import
   activerecord-nulldb-adapter
   ahoy_email (~> 0.5.2)
