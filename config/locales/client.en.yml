@@ -1320,7 +1320,7 @@ en:
     update_outcome: Update outcome
     outcome: Outcome
     statement: Statement
-    change_your_stance: Change your vote
+    change_your_stance: Change your response
     load_more: Load more
     details: Details
     participant_name: Your name
@@ -1331,6 +1331,7 @@ en:
     start_poll: Start a decision
     publish_poll: Share poll
     view_all: View all
+    save_changes: Save
 
   poll_common_attachment_form:
     label: Attachments
