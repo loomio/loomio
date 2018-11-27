@@ -36,6 +36,7 @@ WORKDIR /loomio/client
 RUN npm install -g yarn
 RUN yarn
 RUN npm rebuild node-sass
+RUN node_modules/gulp/bin/gulp.js compile
 WORKDIR /loomio
 
 EXPOSE 3000
