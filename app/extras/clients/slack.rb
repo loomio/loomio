@@ -14,11 +14,10 @@ class Clients::Slack < Clients::Base
 
   # We are doing two requests and combining them here
   def fetch_channels
-    pub = fetch_public_channels
-    pri = fetch_private_channels
+    channels = get "conversations.list", params: {types: "public_channel,private_channel"}, options: { success: ->(response) { response['channels'] } }
 
-    json = if pub.success && pri.success then
-      [pub, pri].map(&:json).flatten.reject {|channel| channel['name'].starts_with?("mpdm-") }
+    json = if channels.success
+      [channels].map(&:json).flatten.reject {|channel| channel['name'].starts_with?("mpdm-") }
     else
       []
     end
@@ -39,15 +38,6 @@ class Clients::Slack < Clients::Base
   end
 
   private
-
-  def fetch_public_channels
-    get "channels.list", options: { success: ->(response) { response['channels'] } }
-  end
-
-  def fetch_private_channels
-    get "groups.list", options: { success: ->(response) { response['groups'] } }
-  end
-
 
   def default_is_success
     ->(response) { response.success? && JSON.parse(response.body)['ok'].present? }
