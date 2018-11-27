@@ -3,12 +3,14 @@
   %div{ class: 'panel-contents' }
     %table{ id: 'subscription-table' }
       %tr
+        %th Id
         %th Activated At
         %th Expires At
         %th Plan
         %th Kind
         %th Chargify Subscription Id
       %tr
+        %td= link_to subscription.id, admin_subscription_path(subscription.id)
         %td= subscription.activated_at
         %td= subscription.expires_at
         %td= subscription.plan
