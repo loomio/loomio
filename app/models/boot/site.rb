@@ -14,7 +14,6 @@ module Boot
         momentLocales:       AppConfig.moment_locales,
         newsletterEnabled:   ENV['NEWSLETTER_ENABLED'],
         recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
-        intercomAppId:       ENV['INTERCOM_APP_ID'],
         baseUrl:             root_url,
         contactEmail:        ENV['SUPPORT_EMAIL'],
         plugins:             Plugins::Repository.to_config,
