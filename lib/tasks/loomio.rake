@@ -34,7 +34,10 @@ namespace :loomio do
 
     AnnouncementService.delay.resend_pending_memberships
     LocateUsersAndGroupsJob.perform_later
-    UsageReportService.send if (Time.now.hour == 0)
+    if (Time.now.hour == 0)
+      UsageReportService.send
+      ExamplePollService.cleanup
+    end
   end
 
   task generate_error: :environment do
