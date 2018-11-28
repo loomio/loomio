@@ -94,7 +94,7 @@
     "gulp-javascript-to-coffeescript": "^1.0.0",
     "gulp-nightwatch": "^0.3.3",
     "gulp-pipe": "^1.0.4",
-    "gulp-plumber": "^1.2.0",
+    "gulp-plumber": "^1.2.1",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-run-sequence": "^0.3.2",
