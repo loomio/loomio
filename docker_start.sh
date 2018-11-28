@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 if [ "$TASK" = "worker" ];
 then
   bundle exec rake jobs:work;
