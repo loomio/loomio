@@ -99,63 +99,6 @@ describe API::StancesController do
     end
   end
 
-  describe do
-    let(:unverified_user)       { create :user, email: 'user@example.com', email_verified: false }
-    let(:user)                  { create :user, email: 'user@example.com', email_verified: true }
-    let(:stance)                { create :stance, participant: unverified_user }
-
-    describe 'unverified' do
-      it 'lists unconfirmed stances' do
-        sign_in user
-        stance
-        get :unverified
-        expect(response.status).to eq 200
-        expect(assigns(:stances)).to include stance
-      end
-    end
-
-    describe 'verify' do
-      it 'verifies unverified stances by verified email address' do
-        sign_in user
-        stance
-        expect{post :verify, params: { id: stance.id }}.to change { user.stances.count }.by 1
-        expect(response.status).to eq 200
-        expect(assigns(:stance)).to eq stance
-        expect(stance.reload.participant).to eq user
-      end
-
-      it 'cannot verify stances by another email address' do
-        sign_in user
-        stance.participant.update(email: 'notme@example.com')
-        expect{post :verify, params: { id: stance.id }}.to_not change { user.stances.count }
-        expect(response.status).to eq 403
-      end
-
-      it 'cannot verify stances already verified' do
-        sign_in user
-        stance.update(participant: user)
-        expect{post :verify, params: { id: stance.id }}.to_not change { user.stances.count }
-        expect(response.status).to eq 403
-      end
-    end
-
-    describe 'destroy' do
-      it 'destroys unverified stances' do
-        sign_in user
-        stance
-        expect{post :destroy, params: { id: stance.id }}.to change { unverified_user.stances.count }.by -1
-        expect(response.status).to eq 200
-      end
-
-      it 'cannot destroy verified stances' do
-        sign_in user
-        stance.update(participant: user)
-        expect{post :destroy, params: { id: stance.id }}.to_not change { unverified_user.stances.count }
-        expect(response.status).to eq 403
-      end
-    end
-  end
-
   describe 'create' do
 
     let(:another_user) { create :user, email: 'another_user@example.com', email_verified: false }
@@ -169,11 +112,6 @@ describe API::StancesController do
       visitor_attributes: { name: "Johnny Doe, not logged in", email: "user@example.com", legal_accepted: true}
     }}
 
-    # test logged out cannot create a stance
-    # non member cannot create a stance
-    # unverified user gets verification email on stance create
-    # if polls is anonymous you still get your own stance back
-
     it 'returns 403 for logged out users' do
       post :create, params: { stance: stance_params }
       expect(response.status).to eq 403
@@ -184,20 +122,6 @@ describe API::StancesController do
         sign_in create :user
         post :create, params: {stance: stance_params}
         expect(response.status).to eq 403
-      end
-    end
-
-    describe "unverified member votes" do
-      it "creates stance and updates name and email" do
-        poll.guest_group.add_member! user
-        sign_in user
-        expect { post :create, params: {stance: visitor_stance_params } }.to change {ActionMailer::Base.deliveries.count}.by 1
-        expect(user.stances.count).to eq 1
-        expect(response.status).to eq 200
-        expect(user.reload.name).to eq visitor_stance_params[:visitor_attributes][:name]
-        expect(user.reload.email).to eq visitor_stance_params[:visitor_attributes][:email]
-        expect(user.reload.email_verified).to eq false
-        expect(last_email_html_body).to include "Please verify your email address"
       end
     end
 
@@ -311,46 +235,6 @@ describe API::StancesController do
         expect { post :create, params: { stance: stance_params} }.to change { Stance.count }.by(1)
         expect(Stance.last.participant).to eq user
         expect(poll.members).to include user
-      end
-
-      describe 'not logged in' do
-        it 'user enters verified users email' do
-          user.update(email_verified: true)
-          # create stance and unverified user, send claim_or_destroy (only single vote claim)
-          expect { post :create, params: { stance: visitor_stance_params} }.to change { Stance.count }.by(1)
-          stance = Stance.last
-          expect(stance.participant.email_verified).to eq false
-          expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
-          expect(poll.members).to include stance.participant
-          expect(poll.members).to_not include User.verified.find_by(email: stance.participant.email)
-          expect(last_email.to).to eq [stance.participant.email]
-          expect(last_email_html_body).to include "confirm your vote"
-        end
-
-        it 'user enters unverified users email' do
-          # create stance and unverified user -> send verify/login email
-          user.update(email_verified: false)
-          expect { post :create, params: { stance: visitor_stance_params} }.to change { Stance.count }.by(1)
-          stance = Stance.last
-          expect(stance.participant.email_verified).to eq false
-          expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
-          expect(poll.members).to include stance.participant
-          expect(poll.members).to_not include User.verified.find_by(email: stance.participant.email)
-          expect(last_email.to).to eq [stance.participant.email]
-          expect(last_email_html_body).to include "verify your email"
-        end
-
-        it 'user enters unrecognised email' do
-          # create stance and unverified user -> send verify/login email
-          expect { post :create, params: { stance: visitor_stance_params} }.to change { Stance.count }.by(1)
-          stance = Stance.last
-          expect(stance.participant.email_verified).to eq false
-          expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
-          expect(poll.members).to include stance.participant
-          expect(poll.members).to_not include User.verified.find_by(email: stance.participant.email)
-          expect(last_email.to).to eq [stance.participant.email]
-          expect(last_email_html_body).to include "verify your email"
-        end
       end
     end
   end

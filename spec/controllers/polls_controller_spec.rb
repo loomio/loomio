@@ -31,7 +31,7 @@ describe PollsController do
       let(:user) { create :user, email_verified: false }
       let(:membership) { create :membership, group: poll.guest_group, user: user }
 
-      it "logs you in as unverified user and redeems membership" do
+      it "logs you in as verified user and redeems membership" do
         get :show, params: {key: poll.key}, session: {pending_membership_token: membership.token }
         expect(response.status).to eq 200
         expect(controller.current_user).to eq user
@@ -44,7 +44,7 @@ describe PollsController do
       let(:verified_user) { create :user }
       let(:membership) { create :membership, group: poll.guest_group, user: unverified_user }
 
-      it "logs you in as unverified user and redeems membership" do
+      it "logs you in as verified user and redeems membership" do
         sign_in verified_user
         get :show, params: {key: poll.key}, session: {pending_membership_token: membership.token }
         expect(response.status).to eq 200
