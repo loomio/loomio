@@ -1751,9 +1751,6 @@ en:
 
   poll_common_example_card:
     what_is_this: "This is a live example of a {{type}}. You're a participant - give it a try!"
-    helptext_before: "When you're ready,"
-    helptext_link: "start a {{type}}"
-    helptext_after: "of your own, and invite some people to try it."
 
   share_poll_page:
     title: Share poll - {{title}}
