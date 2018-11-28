@@ -33,7 +33,7 @@ class BaseMailer < ActionMailer::Base
   end
 
   def send_single_mail(locale: , to:, subject_key:, subject_params: {}, **options)
-    return if to.end_with? "@example.com"
+    return if to.end_with? "@example.com" && Rails.env.production?
     I18n.with_locale(first_supported_locale(locale)) do
       mail options.merge(to: to, subject: I18n.t(subject_key, subject_params))
     end unless self.class.disabled
