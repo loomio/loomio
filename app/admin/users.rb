@@ -84,7 +84,7 @@ ActiveAdmin.register User do
     redirect_to admin_users_path, :notice => "User updated"
   end
 
-  member_action :login_as, :method => :post do
+  member_action :login_as, :method => :get do
     user = User.friendly.find(params[:id])
     token = user.login_tokens.create
     redirect_to login_token_url(token.token)
@@ -140,8 +140,8 @@ ActiveAdmin.register User do
     end
 
     panel 'login as user' do
-      form action: login_as_admin_user_path(user), method: :post do |f|
-        f.input type: :submit, value: "Login as #{user.name}"
+      a href: login_as_admin_user_path(user) do
+        "Login as #{user.name}"
       end
     end
 
