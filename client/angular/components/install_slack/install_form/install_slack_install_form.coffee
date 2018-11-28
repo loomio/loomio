@@ -15,7 +15,7 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ->
     newGroup = Records.groups.build(name: Session.user().identityFor('slack').customFields.slack_team_name)
 
     $scope.toggleExistingGroup = ->
-      $scope.setSubmit(if $scope.group.id then newGroup else _.first($scope.groups()))
+      $scope.setSubmit(if $scope.group.id then newGroup else _.head($scope.groups()))
 
     $scope.setSubmit = (group) ->
       $scope.group = group
@@ -29,7 +29,7 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ->
           g = Records.groups.find(response.groups[0].key)
           LmoUrlService.goTo LmoUrlService.group(g)
           EventBus.emit $scope, 'nextStep', g
-    $scope.setSubmit(_.first($scope.groups()) or newGroup)
+    $scope.setSubmit(_.head($scope.groups()) or newGroup)
 
     submitOnEnter $scope, anyEnter: true
     EventBus.listen $scope, 'focus',  $scope.focus

@@ -85,7 +85,7 @@ module.exports = class DiscussionModel extends BaseModel
       !poll.isActive()
 
   activePoll: ->
-    _.first @activePolls()
+    _.head @activePolls()
 
   isUnread: ->
     !@isDismissed() and
@@ -164,7 +164,7 @@ module.exports = class DiscussionModel extends BaseModel
     RangeSet.length(@readRanges)
 
   firstSequenceId: ->
-    (_.first(@ranges) || [])[0]
+    (_.head(@ranges) || [])[0]
 
   lastSequenceId: ->
     (_.last(@ranges) || [])[1]

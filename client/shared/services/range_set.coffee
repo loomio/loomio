@@ -46,7 +46,7 @@ module.exports = new class RangeSet
     output = []
     _.each wholes, (whole) =>
       if _.some(parts, (part) => @overlaps(whole, part))
-        _.each _.select(parts, (part) => @overlaps(whole, part)), (part) =>
+        _.each _.filter(parts, (part) => @overlaps(whole, part)), (part) =>
           _.each @subtractRange(whole, part), (remainder) =>
             output.push remainder
       else
@@ -68,7 +68,7 @@ module.exports = new class RangeSet
   firstMissingRange: (superset, subset) ->
     for supersetRange in superset
       if !_.find subset, supersetRange
-        subsetRange = _.first _.filter subset, (range) -> range[0] >= supersetRange[0]
+        subsetRange = _.head _.filter subset, (range) -> range[0] >= supersetRange[0]
         return [supersetRange, subsetRange]
     []
 

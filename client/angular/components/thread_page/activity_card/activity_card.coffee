@@ -20,7 +20,7 @@ angular.module('loomioApp').directive 'activityCard', ['$mdDialog', ($mdDialog) 
       $scope.position = $scope.positionForSelect()
 
     $scope.positionForSelect = ->
-      if _.include(['requested', 'context'], $scope.initialPosition())
+      if _.includes(['requested', 'context'], $scope.initialPosition())
         "beginning"
       else
         $scope.initialPosition()

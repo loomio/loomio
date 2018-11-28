@@ -73,7 +73,7 @@ module.exports = class CommentModel extends BaseModel
     @author().avatarOrInitials()
 
   beforeDestroy: ->
-    _.invoke @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'
+    _.invokeMap @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'
 
   edited: ->
     @versionsCount > 1

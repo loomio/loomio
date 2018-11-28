@@ -54,7 +54,7 @@ module.exports = class EventModel extends BaseModel
     @discussion().markAsRead(@sequenceId) if @discussion()
 
   beforeRemove: ->
-    _.invoke(@notifications(), 'remove')
+    _.invokeMap(@notifications(), 'remove')
 
   removeFromThread: =>
     @remote.patchMember(@id, 'remove_from_thread').then => @remove()
@@ -73,7 +73,7 @@ module.exports = class EventModel extends BaseModel
       _.pull @discussion().forkedEventIds, @id
     else
       @discussion().forkedEventIds.push @id
-    _.invoke @recordStore.events.find(parentId: @id), 'toggleFromFork'
+    _.invokeMap @recordStore.events.find(parentId: @id), 'toggleFromFork'
 
   next: ->
     @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]

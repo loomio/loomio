@@ -22,4 +22,4 @@ module.exports = new class HasGuestGroup
       model.guestGroup().adminMemberships().concat((model.group() or @recordStore.groups.build()).adminMemberships())
 
     model.adminMembers = ->
-      _.invoke model.adminMemberships(), 'user'
+      _.invokeMap model.adminMemberships(), 'user'

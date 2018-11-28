@@ -92,7 +92,7 @@ module.exports = class PollModel extends BaseModel
     if @isActive()
       _.difference(@members(), @participants())
     else
-      _.invoke @pollDidNotVotes(), 'user'
+      _.invokeMap @pollDidNotVotes(), 'user'
 
   membersCount: ->
     # NB: this won't work for people who vote, then leave the group.

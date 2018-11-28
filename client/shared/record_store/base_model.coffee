@@ -109,6 +109,7 @@ module.exports =
           data[snakeName] = @[camelName]
         true # so if the value is false we don't break the loop
 
+
       wrapper[paramKey] = data
       wrapper
 

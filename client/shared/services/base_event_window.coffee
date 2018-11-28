@@ -12,7 +12,7 @@ module.exports = class BaseEventWindow
   # numTotal
 
   # methods about what the client has loaded
-  firstLoaded:       -> (_.first(@loadedEvents()) || {})[@columnName] || 0
+  firstLoaded:       -> (_.head(@loadedEvents()) || {})[@columnName] || 0
   lastLoaded:        -> (_.last(@loadedEvents())  || {})[@columnName] || 0
   numLoaded:         -> @loadedEvents().length
   anyLoaded:         -> @numLoaded() > 0

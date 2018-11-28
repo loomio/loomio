@@ -20,10 +20,10 @@ module.exports =
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
       successCallback: (data) ->
-        _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
+        _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
         if model.isForking()
           model.forkTarget().discussion().forkedEventIds = []
-          _.invoke Records.events.find(model.forkedEventIds), 'remove'
+          _.invokeMap Records.events.find(model.forkedEventIds), 'remove'
         nextOrSkip(data, scope, model)
     , options))
 
@@ -69,7 +69,7 @@ module.exports =
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
-        _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
+        _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
         model.removeOrphanOptions()
         nextOrSkip(data, scope, model)
       cleanupFn: ->

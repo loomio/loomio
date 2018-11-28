@@ -48,4 +48,4 @@ momentLocaleFor = (locale) ->
   if _.includes AppConfig.momentLocales.valid, locale
     locale
   else
-    _.first locale.split('-')
+    _.head locale.split('-')

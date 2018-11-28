@@ -15,7 +15,7 @@ module.exports = class GroupIdentityModel extends BaseModel
 
   # because 'identity' is reserved
   userIdentity: ->
-    _.first @recordStore.identities.find(id: @identityId)
+    _.head @recordStore.identities.find(id: @identityId)
 
   slackTeamName: ->
     @userIdentity().customFields.slack_team_name

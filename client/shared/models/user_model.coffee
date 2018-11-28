@@ -22,7 +22,7 @@ module.exports = class UserModel extends BaseModel
     _.detect @identities(), (i) -> i.identityType == type
 
   membershipFor: (group) ->
-    _.first @recordStore.memberships.find(groupId: group.id, userId: @id)
+    _.head @recordStore.memberships.find(groupId: group.id, userId: @id)
 
   adminMemberships: ->
     _.filter @memberships(), (m) -> m.admin
@@ -38,10 +38,10 @@ module.exports = class UserModel extends BaseModel
     _.filter @groups(), (group) -> group.type == "FormalGroup"
 
   adminGroups: ->
-    _.invoke @adminMemberships(), 'group'
+    _.invokeMap @adminMemberships(), 'group'
 
   adminGroupIds: ->
-    _.invoke @adminMemberships(), 'groupId'
+    _.invokeMap @adminMemberships(), 'groupId'
 
   parentGroups: ->
     _.filter @groups(), (group) -> group.isParent()
@@ -77,7 +77,7 @@ module.exports = class UserModel extends BaseModel
     _.includes(group.memberIds(), @id) if group
 
   firstName: ->
-    _.first @name.split(' ') if @name
+    _.head @name.split(' ') if @name
 
   lastName: ->
     @name.split(' ').slice(1).join(' ')

@@ -7,7 +7,7 @@ module.exports = new class AuthService
   emailStatus: (user) ->
     pendingToken = (AppConfig.pendingIdentity or {}).token
     Records.users.emailStatus(user.email, pendingToken).then (data) =>
-      @applyEmailStatus(user, _.first(data.users))
+      @applyEmailStatus(user, _.head(data.users))
 
   applyEmailStatus: (user, data = {}) ->
     keys = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash',

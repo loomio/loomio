@@ -37,7 +37,7 @@ module.exports = class StanceModel extends BaseModel
     @participant()
 
   stanceChoice: ->
-    _.first @stanceChoices()
+    _.head @stanceChoices()
 
   pollOption: ->
     @stanceChoice().pollOption() if @stanceChoice()

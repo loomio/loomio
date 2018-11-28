@@ -26,7 +26,7 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
 
 
     $scope.stanceChoiceFor = (option) ->
-      _.first(_.filter($scope.stance.stanceChoices(), (choice) ->
+      _.head(_.filter($scope.stance.stanceChoices(), (choice) ->
         choice.pollOptionId == option.id
         ).concat({score: 0}))
 
