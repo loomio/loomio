@@ -58,6 +58,7 @@ class FormalGroup < Group
   define_counter_cache(:closed_discussions_count)  { |group| group.discussions.is_closed.count }
   define_counter_cache(:discussions_count)         { |group| group.discussions.count }
   define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
+  update_counter_cache(:parent, :subgroups_count)
 
   delegate :include?, to: :users, prefix: true
   delegate :members, to: :parent, prefix: true
