@@ -15,11 +15,6 @@ angular.module('loomioApp').directive 'stanceCreated', ->
       icon: 'mdi-translate'
       canPerform: -> $scope.eventable.reason && AbilityService.canTranslate($scope.eventable)
       perform:    -> $scope.eventable.translate(Session.user().locale)
-    ,
-      name: 'edit_stance'
-      icon: 'mdi-pencil'
-      canPerform: -> AbilityService.canEditStance($scope.eventable)
-      perform:    -> ModalService.open 'PollCommonEditVoteModal', stance: -> $scope.eventable
     ]
 
     listenForTranslations($scope)
