@@ -16,6 +16,7 @@ angular.module('loomioApp').directive 'pollRankedChoiceVoteForm', ->
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->
         EventBus.emit $scope, 'processing'
+        $scope.stance.id = null
         selected = _.take $scope.pollOptions, $scope.numChoices
         $scope.stance.stanceChoicesAttributes = _.map selected, (option, index) ->
           poll_option_id: option.id

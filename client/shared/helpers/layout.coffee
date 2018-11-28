@@ -2,7 +2,6 @@ AppConfig       = require 'shared/services/app_config'
 Session         = require 'shared/services/session'
 AbilityService  = require 'shared/services/ability_service'
 ModalService    = require 'shared/services/modal_service'
-IntercomService = require 'shared/services/intercom_service'
 ScrollService   = require 'shared/services/scroll_service'
 I18n            = require 'shared/services/i18n'
 
@@ -20,7 +19,6 @@ module.exports =
     AppConfig.currentDiscussion = options.discussion
     AppConfig.currentPoll       = options.poll
 
-    IntercomService.updateWithGroup(AppConfig.currentGroup)
     ModalService.forceSignIn() if shouldForceSignIn(options)
 
     scrollTo(options.scrollTo or 'h1') unless options.skipScroll

@@ -55,11 +55,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     column :archived_at
     column :analytics_enabled
     column :enable_experiments
-    column :subscription_id do |group|
-      if group.subscription_id.present?
-        link_to group.subscription_id, admin_subscription_path(group.subscription.id)
-      end
-    end
     actions
   end
 

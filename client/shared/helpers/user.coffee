@@ -3,7 +3,6 @@ Session        = require 'shared/services/session'
 Records        = require 'shared/services/records'
 AbilityService = require 'shared/services/ability_service'
 LmoUrlService  = require 'shared/services/lmo_url_service'
-IntercomService = require 'shared/services/intercom_service'
 ModalService   = require 'shared/services/modal_service'
 
 { hardReload } = require 'shared/helpers/window'
@@ -15,7 +14,6 @@ module.exports =
     Records.import(data)
     Session.signIn(userId)
     AppConfig.pendingIdentity = data.pending_identity
-    IntercomService.fetch()
     afterSignIn() if typeof afterSignIn is 'function'
 
   signOut: ->

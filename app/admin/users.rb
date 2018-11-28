@@ -84,6 +84,12 @@ ActiveAdmin.register User do
     redirect_to admin_users_path, :notice => "User updated"
   end
 
+  member_action :login_as, :method => :get do
+    user = User.friendly.find(params[:id])
+    token = user.login_tokens.create
+    redirect_to login_token_url(token.token)
+  end
+
   show do |user|
     if user.deactivated_at.nil?
       panel("Deactivate") do
@@ -104,7 +110,7 @@ ActiveAdmin.register User do
         button_to 'Reactivate User', reactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to reactivate this user?'}
       end
     end
-    
+
     attributes_table do
       user.attributes.each do |k,v|
         row k.to_sym
@@ -130,6 +136,12 @@ ActiveAdmin.register User do
         f.label "Email address of final user account"
         f.input name: :destination_email
         f.input type: :submit, value: "Merge user"
+      end
+    end
+
+    panel 'login as user' do
+      a href: login_as_admin_user_path(user) do
+        "Login as #{user.name}"
       end
     end
 

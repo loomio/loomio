@@ -12,18 +12,19 @@ $controller = ($scope, $rootScope, $routeParams) ->
   @poll = Records.polls.build
     title:       LmoUrlService.params().title
     pollType:    $routeParams.poll_type
-    groupId:     LmoUrlService.params().group_id
+    groupId:     parseInt(LmoUrlService.params().group_id)
     customFields:
       pending_emails: _.compact((LmoUrlService.params().pending_emails || "").split(','))
 
   @icon = ->
     iconFor(@poll)
 
-  applyPollStartSequence @,
-    emitter: $scope
-    afterSaveComplete: (event) ->
-      ModalService.open 'AnnouncementModal', announcement: ->
-        Records.announcements.buildFromModel(event)
+  Records.groups.findOrFetch(LmoUrlService.params().group_id).then =>
+    applyPollStartSequence @,
+      emitter: $scope
+      afterSaveComplete: (event) ->
+        ModalService.open 'AnnouncementModal', announcement: ->
+          Records.announcements.buildFromModel(event)
 
   listenForLoading $scope
 

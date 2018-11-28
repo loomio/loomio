@@ -2,6 +2,11 @@ require('coffeescript/register')
 pageHelper = require('../helpers/page_helper')
 
 module.exports = {
+  'presents_new_poll_form_for_a_group_from_params': (test) => {
+    page = pageHelper(test)
+    page.loadPath('setup_start_poll_form_from_url')
+    page.expectValue('.poll-common-form-fields__title', "testing title")
+  },
   'can start a poll in a group': (test) => {
     page = pageHelper(test)
 
