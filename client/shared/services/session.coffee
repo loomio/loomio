@@ -40,9 +40,9 @@ module.exports = new class Session
 
 setDefaultParams = (params) ->
   endpoints = ['stances', 'polls', 'discussions', 'events', 'reactions', 'documents']
-  defaultParams = _.pick params, _.identity
+  defaultParams = _.pickBy(params, _.identity)
   _.each endpoints, (endpoint) ->
-    Records[endpoint].remote.defaultParams = _.pick params, _.identity
+    Records[endpoint].remote.defaultParams = defaultParams
 
 momentLocaleFor = (locale) ->
   if _.includes AppConfig.momentLocales.valid, locale
