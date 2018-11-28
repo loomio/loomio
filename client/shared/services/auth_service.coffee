@@ -13,7 +13,7 @@ module.exports = new class AuthService
     keys = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash',
             'avatar_url', 'has_password', 'email_status', 'email_verified',
             'legal_accepted_at', 'auth_form']
-    user.update _.pick(_.mapKeys(_.pick(data, keys), (v,k) -> _.camelCase(k)), _.identity)
+    user.update _.pickBy(_.mapKeys(_.pick(data, keys), (v,k) -> _.camelCase(k)), _.identity)
     user.update(hasToken: data.has_token)
     user
 
@@ -58,5 +58,5 @@ module.exports = new class AuthService
     if _.keys(user.errors)
       user.name           = vars.name
       user.legalAccepted  = vars.legalAccepted
-      
+
     return _.keys(user.errors).length == 0
