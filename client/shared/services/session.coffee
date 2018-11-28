@@ -14,7 +14,7 @@ module.exports = new class Session
     @updateLocale(user.locale || AppConfig.defaultLocale)
 
     return unless AppConfig.currentUserId = userId
-    exceptionHandler.setUserContext(_.pick(user, "email", "name", "id"))
+    exceptionHandler.setUserContext(_.pick(user, ["email", "name", "id"]))
 
     if user.timeZone != AppConfig.timeZone
       user.timeZone = AppConfig.timeZone

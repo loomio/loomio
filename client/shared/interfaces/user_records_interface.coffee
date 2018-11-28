@@ -37,4 +37,4 @@ module.exports = class UserRecordsInterface extends BaseRecordsInterface
   emailStatus: (email, token) ->
     @fetch
       path: 'email_status'
-      params: _.pick {email: email, token: token}, _.identity
+      params: _.pickBy({email: email, token: token}, _.identity)
