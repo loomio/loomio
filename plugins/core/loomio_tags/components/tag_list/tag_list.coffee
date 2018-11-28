@@ -14,7 +14,7 @@ angular.module('loomioApp').directive 'tagList',->
       Records.tags.find(groupId: $scope.parent.id)
 
     $scope.tagSelected = (tagId) ->
-      _.any Records.discussionTags.find(discussionId: $scope.discussion.id, tagId: tagId)
+      _.some Records.discussionTags.find(discussionId: $scope.discussion.id, tagId: tagId)
 
     $scope.canAdministerGroup = ->
       AbilityService.canAdministerGroup $scope.parent

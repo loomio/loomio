@@ -17,7 +17,7 @@ $controller = ($rootScope, $routeParams) ->
     oldThreads = @view.threads
     @view.threads = =>
       _.filter oldThreads(), (thread) =>
-        _.any Records.discussionTags.find(tagId: @tag.id, discussionId: thread.id)
+        _.some Records.discussionTags.find(tagId: @tag.id, discussionId: thread.id)
 
   return
 
