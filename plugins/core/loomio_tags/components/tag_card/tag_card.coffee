@@ -20,7 +20,7 @@ angular.module('loomioApp').directive 'tagCard', ->
 
     $scope.showTagCard = ->
       $scope.canAdministerGroup() or
-      _.any(Records.tags.find(groupId: $scope.parent.id))
+      _.some(Records.tags.find(groupId: $scope.parent.id))
 
     $scope.openTagForm = ->
       ModalService.open 'TagModal', tag: ->

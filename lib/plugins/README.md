@@ -232,7 +232,7 @@ As of Angular 1.4, there is some decent support for adding custom code to existi
 ```coffee
 angular.module('loomioApp').config ($provide) -> # 1
   $provide.decorator 'kickflipDirective', ($delegate) -> # 2
-    directive = _.first($delegate) # $delegate is an array here :/
+    directive = _.head($delegate) # $delegate is an array here :/
     directive.compile = ->
       (scope, elem) ->
         directive.link.apply(this, arguments)

@@ -7,7 +7,7 @@ module.exports =
     client = new RestfulClient('boot')
     client.get('site').then (siteResponse) ->
       client.get('user', unsubscribe_token: token).then (userResponse) ->
-        if _.all _.pluck([siteResponse, userResponse], 'ok')
+        if _.every _.map([siteResponse, userResponse], 'ok')
           siteResponse.json().then (site) ->
             userResponse.json().then (user) ->
               callback(_.merge(site, userPayload: user))

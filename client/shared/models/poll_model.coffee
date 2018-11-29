@@ -81,7 +81,7 @@ module.exports = class PollModel extends BaseModel
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
   participantIds: ->
-    _.pluck(@latestStances(), 'participantId')
+    _.map(@latestStances(), 'participantId')
 
   # who's voted?
   participants: ->
@@ -92,7 +92,7 @@ module.exports = class PollModel extends BaseModel
     if @isActive()
       _.difference(@members(), @participants())
     else
-      _.invoke @pollDidNotVotes(), 'user'
+      _.invokeMap @pollDidNotVotes(), 'user'
 
   membersCount: ->
     # NB: this won't work for people who vote, then leave the group.
@@ -108,7 +108,7 @@ module.exports = class PollModel extends BaseModel
   clearStaleStances: ->
     existing = []
     _.each @latestStances('-createdAt'), (stance) ->
-      if _.contains(existing, stance.participant())
+      if _.includes(existing, stance.participant())
         stance.latest = false
       else
         existing.push(stance.participant())
@@ -148,7 +148,7 @@ module.exports = class PollModel extends BaseModel
 
   addOption: =>
     @handleDateOption()
-    return unless @newOptionName and !_.contains(@pollOptionNames, @newOptionName)
+    return unless @newOptionName and !_.includes(@pollOptionNames, @newOptionName)
     @pollOptionNames.push @newOptionName
     @setErrors({})
     @setMinimumStanceChoices()
@@ -163,7 +163,7 @@ module.exports = class PollModel extends BaseModel
     @customFields.minimum_stance_choices = _.max [@pollOptionNames.length, 1]
 
   hasRequiredField: (field) =>
-    _.contains AppConfig.pollTemplates[@pollType].required_custom_fields, field
+    _.includes AppConfig.pollTemplates[@pollType].required_custom_fields, field
 
   hasPollSetting: (setting) =>
     AppConfig.pollTemplates[@pollType][setting]?

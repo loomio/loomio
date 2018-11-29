@@ -21,5 +21,5 @@ module.exports =
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
   getProviderIdentity: ->
-    validProviders = _.pluck(AppConfig.identityProviders, 'name')
-    AppConfig.pendingIdentity if _.contains(validProviders, AppConfig.pendingIdentity.identity_type)
+    validProviders = _.map(AppConfig.identityProviders, 'name')
+    AppConfig.pendingIdentity if _.includes(validProviders, AppConfig.pendingIdentity.identity_type)

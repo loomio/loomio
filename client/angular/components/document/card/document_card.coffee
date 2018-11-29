@@ -12,10 +12,10 @@ angular.module('loomioApp').directive 'documentCard', ->
         # displaying all the documents across different models within our group.
         # this smells for sure, but don't want to change the way the list works
         # at the moment, because it works nicely in a lot of other places
-        documents = Records.documents.find(_.pluck(data.documents, 'id'))
+        documents = Records.documents.find(_.map(data.documents, 'id'))
         $scope.model =
           isNew:                    -> true
-          hasDocuments:             -> _.any(documents)
+          hasDocuments:             -> _.some(documents)
           newAndPersistedDocuments: -> documents
     $scope.init()
 

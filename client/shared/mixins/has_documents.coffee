@@ -13,7 +13,7 @@ module.exports = new class HasDocuments
 
     model.newAndPersistedDocuments = ->
       _.uniq _.filter _.union(model.documents(), model.newDocuments()), (doc) ->
-        !_.contains model.removedDocumentIds, doc.id
+        !_.includes model.removedDocumentIds, doc.id
 
     model.hasDocuments = ->
       model.newAndPersistedDocuments().length > 0
@@ -21,7 +21,7 @@ module.exports = new class HasDocuments
     model.serialize = ->
       data = @baseSerialize()
       root = model.constructor.serializationRoot or model.constructor.singular
-      data[root].document_ids = _.pluck model.newAndPersistedDocuments(), 'id'
+      data[root].document_ids = _.map model.newAndPersistedDocuments(), 'id'
       data
 
     model.showDocumentTitle = opts.showTitle

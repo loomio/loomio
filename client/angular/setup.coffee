@@ -51,7 +51,7 @@ setupAngularEventBus = ->
 setupAngularPaste = ($rootScope) ->
   window.addEventListener 'paste', (event) ->
     data = event.clipboardData
-    return unless item = _.first _.filter(data.items, (item) -> item.getAsFile())
+    return unless item = _.head _.filter(data.items, (item) -> item.getAsFile())
     event.preventDefault()
     file = new File [item.getAsFile()], data.getData('text/plain') || Date.now(),
       lastModified: Date.now()

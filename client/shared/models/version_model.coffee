@@ -13,10 +13,10 @@ module.exports = class VersionModel extends BaseModel
 
   editedAttributeNames: ->
     _.filter _.keys(@changes).sort(), (key) ->
-      _.include ['title', 'name', 'description', 'closing_at', 'private', 'document_ids'], key
+      _.includes ['title', 'name', 'description', 'closing_at', 'private', 'document_ids'], key
 
   attributeEdited: (name) ->
-     _.include(_.keys(@changes), name)
+     _.includes(_.keys(@changes), name)
 
   authorName: ->
     @author().nameWithTitle(@model()) if @author()

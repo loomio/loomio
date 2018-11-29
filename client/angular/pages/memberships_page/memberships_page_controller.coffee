@@ -48,7 +48,7 @@ $controller = ($routeParams, $rootScope) ->
   filteredMemberships = =>
     if @fragment
       _.filter @group.memberships(), (membership) =>
-        _.contains membership.userName().toLowerCase(), @fragment.toLowerCase()
+        _.includes membership.userName().toLowerCase(), @fragment.toLowerCase()
     else
       @group.memberships()
 

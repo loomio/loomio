@@ -43,7 +43,7 @@ angular.module('loomioApp').directive 'announcementForm', ->
     $scope.addRecipient = (recipient) ->
       return unless recipient
       _.each recipient.emails, (email) -> $scope.addRecipient buildRecipientFromEmail(email)
-      if !recipient.emails && !_.contains(_.pluck($scope.announcement.recipients, "emailHash"), recipient.emailHash)
+      if !recipient.emails && !_.includes(_.map($scope.announcement.recipients, "emailHash"), recipient.emailHash)
         $scope.announcement.recipients.unshift recipient
       $scope.selected = undefined
       $scope.query = ''

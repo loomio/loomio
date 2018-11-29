@@ -112,4 +112,4 @@ module.exports =
       @currentUpload.abort() if @currentUpload
 
     paramsFor: (params) ->
-      _.defaults({}, @defaultParams, _.pick(params, _.identity))
+      _.defaults({}, @defaultParams, _.pickBy(params, _.identity))

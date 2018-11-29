@@ -25,7 +25,7 @@ module.exports = new class RangeSet
     ab[0][1] >= ab[1][0]
 
   includesValue: (ranges, value) ->
-    _.any ranges, (range) ->
+    _.some ranges, (range) ->
       _.inRange(value, range[0], range[1]+1)
 
   # TODO: fix me for complex range sets!
@@ -45,8 +45,8 @@ module.exports = new class RangeSet
   subtractRangesLoop: (wholes, parts) ->
     output = []
     _.each wholes, (whole) =>
-      if _.any(parts, (part) => @overlaps(whole, part))
-        _.each _.select(parts, (part) => @overlaps(whole, part)), (part) =>
+      if _.some(parts, (part) => @overlaps(whole, part))
+        _.each _.filter(parts, (part) => @overlaps(whole, part)), (part) =>
           _.each @subtractRange(whole, part), (remainder) =>
             output.push remainder
       else
@@ -68,7 +68,7 @@ module.exports = new class RangeSet
   firstMissingRange: (superset, subset) ->
     for supersetRange in superset
       if !_.find subset, supersetRange
-        subsetRange = _.first _.filter subset, (range) -> range[0] >= supersetRange[0]
+        subsetRange = _.head _.filter subset, (range) -> range[0] >= supersetRange[0]
         return [supersetRange, subsetRange]
     []
 
