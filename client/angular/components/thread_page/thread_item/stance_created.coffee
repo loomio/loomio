@@ -15,6 +15,12 @@ angular.module('loomioApp').directive 'stanceCreated', ->
       icon: 'mdi-translate'
       canPerform: -> $scope.eventable.reason && AbilityService.canTranslate($scope.eventable)
       perform:    -> $scope.eventable.translate(Session.user().locale)
+      ,
+      name: 'show_history',
+      icon: 'mdi-history'
+      canPerform: -> $scope.eventable.edited()
+      perform:    -> ModalService.open 'RevisionHistoryModal', model: -> $scope.eventable
+    ,
     ]
 
     listenForTranslations($scope)

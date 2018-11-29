@@ -464,6 +464,9 @@ en:
       poll_announced:
         title: Invite to vote
         helptext: Who would you like to invite to vote?
+      poll:
+        title: Notify of edits
+        helptext: Who would you like to notify about your changes?
       poll_edited:
         title: Notify of edits
         helptext: Who would you like to notify about your changes?
@@ -556,6 +559,7 @@ en:
     discussion_header: Discussion revision history
     comment_header: Comment revision history
     poll_header: Poll revision history
+    stance_header: Stance revision history
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
     posted: Posted
