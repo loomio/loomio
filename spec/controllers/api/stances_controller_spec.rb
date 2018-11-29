@@ -239,25 +239,6 @@ describe API::StancesController do
     end
   end
 
-  describe "create as logged out without token on public poll" do
-    it 'creates a new stance' do
-      expect { post :create, params: { stance: visitor_stance_params } }.to change { Stance.count }.by(1)
-
-      stance = Stance.last
-      expect(stance.poll).to eq public_poll
-      expect(stance.poll_options.first).to eq public_poll_option
-      expect(stance.reason).to eq visitor_stance_params[:reason]
-      expect(stance.latest).to eq true
-
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json['stances'].length).to eq 1
-      expect(json['stances'][0]['id']).to eq stance.id
-      expect(json['poll_options'].map { |o| o['name'] }).to include public_poll_option.name
-    end
-
-  end
-
   describe "create as logged in member without token" do
     before { group.add_member! user }
 
