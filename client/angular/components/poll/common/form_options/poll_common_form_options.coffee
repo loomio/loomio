@@ -21,7 +21,7 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', ->
       $scope.poll.setMinimumStanceChoices()
 
     $scope.canRemoveOption = (name) ->
-      _.contains($scope.existingOptions, name) || AbilityService.canRemovePollOptions($scope.poll)
+      _.includes($scope.existingOptions, name) || AbilityService.canRemovePollOptions($scope.poll)
 
     registerKeyEvent $scope, 'pressedEnter', $scope.poll.addOption, (active) ->
       active.classList.contains('poll-poll-form__add-option-input')

@@ -52,4 +52,4 @@ module.exports = class MembershipModel extends BaseModel
     @volume == 'mute'
 
   beforeRemove: ->
-    _.invoke(@recordStore.events.find('eventable.type': 'membership', 'eventable.id': @id), 'remove')
+    _.invokeMap(@recordStore.events.find('eventable.type': 'membership', 'eventable.id': @id), 'remove')

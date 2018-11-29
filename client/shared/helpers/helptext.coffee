@@ -24,7 +24,7 @@ module.exports =
           event.model().title
 
   eventPollType: (event) ->
-    return "" unless _.contains ['poll', 'stance', 'outcome'], event.eventable.type
+    return "" unless _.includes ['poll', 'stance', 'outcome'], event.eventable.type
     "poll_types.#{event.model().poll().pollType}"
 
   emojiTitle: (shortname) ->
@@ -103,13 +103,13 @@ stanceCreatedKey = (event, useNesting) ->
 
 discussionEditedKey = (event) ->
   changes = event.customFields.changed_keys
-  if _.contains(changes, 'title')
+  if _.includes(changes, 'title')
     'discussion_title_edited'
-  else if _.contains(changes, 'private')
+  else if _.includes(changes, 'private')
     'discussion_privacy_edited'
-  else if _.contains(changes, 'description')
+  else if _.includes(changes, 'description')
     'discussion_context_edited'
-  else if _.contains(changes, 'document_ids')
+  else if _.includes(changes, 'document_ids')
     'discussion_attachments_edited'
   else
     'discussion_edited'

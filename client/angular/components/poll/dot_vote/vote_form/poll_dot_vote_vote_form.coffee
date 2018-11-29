@@ -26,7 +26,7 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
 
 
     $scope.stanceChoiceFor = (option) ->
-      _.first(_.filter($scope.stance.stanceChoices(), (choice) ->
+      _.head(_.filter($scope.stance.stanceChoices(), (choice) ->
         choice.pollOptionId == option.id
         ).concat({score: 0}))
 
@@ -37,7 +37,7 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
       Records.pollOptions.find(choice.poll_option_id)
 
     $scope.dotsRemaining = ->
-      $scope.stance.poll().customFields.dots_per_person - _.sum(_.pluck($scope.stanceChoices, 'score'))
+      $scope.stance.poll().customFields.dots_per_person - _.sum(_.map($scope.stanceChoices, 'score'))
 
     $scope.tooManyDots = ->
       $scope.dotsRemaining() < 0

@@ -12,7 +12,7 @@ module.exports = class BaseEventWindow
   # numTotal
 
   # methods about what the client has loaded
-  firstLoaded:       -> (_.first(@loadedEvents()) || {})[@columnName] || 0
+  firstLoaded:       -> (_.head(@loadedEvents()) || {})[@columnName] || 0
   lastLoaded:        -> (_.last(@loadedEvents())  || {})[@columnName] || 0
   numLoaded:         -> @loadedEvents().length
   anyLoaded:         -> @numLoaded() > 0
@@ -34,7 +34,7 @@ module.exports = class BaseEventWindow
   setMax: (val) -> @max = if val < @lastInSequence() then val else false
 
   isUnread: (event) =>
-    !_.any @readRanges, (range) ->
+    !_.some @readRanges, (range) ->
       _.inRange(event.sequenceId, range[0], range[1]+1)
 
   increaseMax: =>

@@ -17,7 +17,7 @@ module.exports =
 
     fetchThenUpdate = _.throttle ->
       Records.users.fetchMentionable($scope.q, model).then (response) ->
-        $scope.mentionableUserIds =  _.uniq($scope.mentionableUserIds.concat(_.pluck(response.users, 'id')))
+        $scope.mentionableUserIds =  _.uniq($scope.mentionableUserIds.concat(_.map(response.users, 'id')))
         updateMentionables()
     ,
       500
@@ -33,7 +33,7 @@ module.exports =
         $scope.mentionables = []
 
     $scope.mentionables = []
-    $scope.mentionableUserIds = model.memberIds()
+    $scope.mentionableUserIds = []
     updateMentionables()
 
 

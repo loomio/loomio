@@ -22,7 +22,7 @@ module.exports = class UserModel extends BaseModel
     _.detect @identities(), (i) -> i.identityType == type
 
   membershipFor: (group) ->
-    _.first @recordStore.memberships.find(groupId: group.id, userId: @id)
+    _.head @recordStore.memberships.find(groupId: group.id, userId: @id)
 
   adminMemberships: ->
     _.filter @memberships(), (m) -> m.admin
@@ -38,10 +38,10 @@ module.exports = class UserModel extends BaseModel
     _.filter @groups(), (group) -> group.type == "FormalGroup"
 
   adminGroups: ->
-    _.invoke @adminMemberships(), 'group'
+    _.invokeMap @adminMemberships(), 'group'
 
   adminGroupIds: ->
-    _.invoke @adminMemberships(), 'groupId'
+    _.invokeMap @adminMemberships(), 'groupId'
 
   parentGroups: ->
     _.filter @groups(), (group) -> group.isParent()
@@ -71,13 +71,13 @@ module.exports = class UserModel extends BaseModel
     @id == object.authorId if object
 
   isAdminOf: (group) ->
-    _.contains(group.adminIds(), @id) if group
+    _.includes(group.adminIds(), @id) if group
 
   isMemberOf: (group) ->
-    _.contains(group.memberIds(), @id) if group
+    _.includes(group.memberIds(), @id) if group
 
   firstName: ->
-    _.first @name.split(' ') if @name
+    _.head @name.split(' ') if @name
 
   lastName: ->
     @name.split(' ').slice(1).join(' ')
@@ -123,4 +123,4 @@ module.exports = class UserModel extends BaseModel
       @titleFor(model.guestGroup()) or @titleFor(model.discussion()) or @titleFor(model.group())
 
   belongsToPayingGroup: ->
-    _.any @groups(), (group) -> group.subscriptionKind == 'paid'
+    _.some @groups(), (group) -> group.subscriptionKind == 'paid'

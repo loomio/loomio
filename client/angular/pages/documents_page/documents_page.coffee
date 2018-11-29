@@ -17,7 +17,7 @@ $controller = ($routeParams, $rootScope) ->
       _.isEmpty(@fragment) or doc.title.match(///#{@fragment}///i)
 
   @hasDocuments = ->
-    _.any @documents()
+    _.some @documents()
 
   @addDocument = ->
     ModalService.open 'DocumentModal', doc: =>

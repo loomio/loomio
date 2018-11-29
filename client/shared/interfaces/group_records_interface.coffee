@@ -6,7 +6,7 @@ module.exports = class GroupRecordsInterface extends BaseRecordsInterface
 
   fuzzyFind: (id) ->
     # could be id or key or handle
-    @find(id) || _.first(@find(handle: id))
+    @find(id) || _.head(@find(handle: id))
 
   findOrFetch: (id, options = {}, ensureComplete = false) ->
     record = @fuzzyFind(id)

@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'tagDisplay', ->
   templateUrl: 'generated/components/tag_display/tag_display.html'
   controller: ['$scope', ($scope) ->
     $scope.anyTags = ->
-      _.any $scope.discussionTags()
+      _.some $scope.discussionTags()
 
     $scope.discussionTags = ->
       Records.discussionTags.find discussionId: $scope.discussion.id

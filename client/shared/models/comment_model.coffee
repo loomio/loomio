@@ -61,7 +61,7 @@ module.exports = class CommentModel extends BaseModel
     @recordStore.comments.find(@parentId)
 
   reactors: ->
-    @recordStore.users.find(_.pluck(@reactions(), 'userId'))
+    @recordStore.users.find(_.map(@reactions(), 'userId'))
 
   authorName: ->
     @author().nameWithTitle(@discussion()) if @author()
@@ -73,7 +73,7 @@ module.exports = class CommentModel extends BaseModel
     @author().avatarOrInitials()
 
   beforeDestroy: ->
-    _.invoke @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'
+    _.invokeMap @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'
 
   edited: ->
     @versionsCount > 1

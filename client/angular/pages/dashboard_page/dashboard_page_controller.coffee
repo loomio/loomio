@@ -78,7 +78,7 @@ $controller = ($rootScope, $routeParams, $mdMedia) ->
 
   @noGroups        = -> !Session.user().hasAnyGroups()
   @promptStart     = -> !Session.user().hasAnyGroups() && AbilityService.canStartGroups()
-  @noThreads       = -> _.all @views, (view) -> !view.any()
+  @noThreads       = -> _.every @views, (view) -> !view.any()
   @startGroup      = -> ModalService.open 'GroupModal', group: -> Records.groups.build()
   @userHasMuted    = -> Session.user().hasExperienced("mutingThread")
   @showLargeImage  = -> $mdMedia("gt-sm")

@@ -12,7 +12,7 @@ module.exports =
   updateCover:                -> updateCover()
 
   setCurrentComponent: (options) ->
-    title = _.trunc options.title or I18n.t(options.titleKey), 300
+    title = _.truncate(options.title or I18n.t(options.titleKey), {length: 300})
     document.querySelector('title').text = _.compact([title, AppConfig.theme.site_name]).join(' | ')
 
     AppConfig.currentGroup      = options.group

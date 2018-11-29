@@ -11,7 +11,7 @@ angular.module('loomioApp').directive 'pollCommonCalendarInvite', ->
       value:     TimeService.displayDateAndTime(option.name)
       attendees: option.stances().length
 
-    bestOption = _.first _.sortBy $scope.options, (option) ->
+    bestOption = _.head _.sortBy $scope.options, (option) ->
       -1 * option.attendees # sort descending, so the best option is first
 
     $scope.outcome.calendarInvite = true

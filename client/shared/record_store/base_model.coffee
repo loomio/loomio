@@ -109,6 +109,7 @@ module.exports =
           data[snakeName] = @[camelName]
         true # so if the value is false we don't break the loop
 
+
       wrapper[paramKey] = data
       wrapper
 
@@ -153,7 +154,7 @@ module.exports =
     translationOptions: ->
 
     isA: (models...) ->
-      _.contains models, @constructor.singular
+      _.includes models, @constructor.singular
 
     namedId: ->
       { "#{@constructor.singular}_id": @id }

@@ -552,7 +552,7 @@ DEPENDENCIES
   activerecord-import
   activerecord-nulldb-adapter
   ahoy_email (~> 0.5.2)
-  ahoy_matey (~> 2)
+  ahoy_matey (~> 2.1.0)
   autoprefixer-rails
   awesome_print
   bootsnap

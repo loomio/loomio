@@ -50,5 +50,5 @@ angular.module('loomioApp').directive 'groupProgressCard', ->
       $scope.dismissed = true
 
     $scope.setupComplete = ->
-      _.all _.invoke($scope.activities, 'complete')
+      _.every _.invokeMap($scope.activities, 'complete')
   ]

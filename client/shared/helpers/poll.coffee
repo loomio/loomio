@@ -22,7 +22,7 @@ module.exports =
     ]
 
   myLastStanceFor: (poll) ->
-    _.first _.sortBy(Records.stances.find(
+    _.head _.sortBy(Records.stances.find(
       latest: true
       pollId: poll.id
       participantId: AppConfig.currentUserId

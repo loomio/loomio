@@ -30,7 +30,7 @@ angular.module('loomioApp').directive 'groupForm', ->
         parent: $scope.group.parentName()
 
     $scope.showGroupFeatures = ->
-      AbilityService.isSiteAdmin() and _.any($scope.featureNames)
+      AbilityService.isSiteAdmin() and _.some($scope.featureNames)
 
     $scope.featureNames = AppConfig.features.group
   ]

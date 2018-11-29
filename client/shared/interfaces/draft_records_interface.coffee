@@ -5,7 +5,7 @@ module.exports = class DraftRecordsInterface extends BaseRecordsInterface
   model: DraftModel
 
   findOrBuildFor: (model) ->
-    _.first(@find(draftableType: _.capitalize(model.constructor.singular), draftableId: model.id)) or
+    _.head(@find(draftableType: _.capitalize(model.constructor.singular), draftableId: model.id)) or
     @build(draftableType: _.capitalize(model.constructor.singular), draftableId: model.id, payload: {})
 
   fetchFor: (model) ->

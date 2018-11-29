@@ -21,7 +21,7 @@ angular.module('loomioApp').directive 'pollCommonStartForm', ->
           pollType:              pollType
           discussionId:          $scope.discussion.id
           groupId:               $scope.discussion.groupId or $scope.group.id
-          pollOptionNames:       _.pluck $scope.fieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
+          pollOptionNames:       _.map $scope.fieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
 
     $scope.fieldFromTemplate = (pollType, field) ->
       fieldFromTemplate(pollType, field)

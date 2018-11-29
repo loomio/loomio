@@ -50,7 +50,7 @@ module.exports =
 
 applySequence = (scope, options) ->
   scope.steps = if typeof options.steps is 'function' then options.steps() else options.steps
-  scope.currentStep = options.initialStep or _.first(scope.steps)
+  scope.currentStep = options.initialStep or _.head(scope.steps)
 
   scope.currentStepIndex = -> _.indexOf scope.steps, scope.currentStep
 
