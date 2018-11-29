@@ -81,36 +81,6 @@ module.exports = {
     page.expectText('.poll-common-outcome-panel', 'Here is a statement')
   },
 
-  'can_vote_as_a_visitor': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('test_proposal_poll_created_as_visitor', { controller: 'polls' })
-    page.click('.poll-common-vote-form__button:first-child')
-    page.fillIn('.poll-common-participant-form__name', 'Big Baloo')
-    page.fillIn('.poll-common-participant-form__email', 'big@baloo.com')
-    page.click('.poll-common-participant-form__legal-accepted')
-    page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
-    page.click('.poll-common-vote-form__submit')
-
-    page.expectText('.flash-root__message', 'Vote created')
-    page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Big Baloo')
-  },
-
-  'can_vote_as_a_logged_out_user': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('test_proposal_poll_created_as_logged_out', { controller: 'polls' })
-    page.click('.poll-common-vote-form__button:first-child')
-    page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
-    page.fillIn('.poll-common-participant-form__name', 'Big Baloo')
-    page.fillIn('.poll-common-participant-form__email', 'big@baloo.ninja')
-    page.click('.poll-common-participant-form__legal-accepted')
-    page.click('.poll-common-vote-form__submit')
-
-    page.expectText('.flash-root__message', 'Vote created')
-    page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Big Baloo')
-  },
-
   'can_invite_users_via_email': (test) => {
     page = pageHelper(test)
 
