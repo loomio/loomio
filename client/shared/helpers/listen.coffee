@@ -33,7 +33,7 @@ module.exports =
         $scope.mentionables = []
 
     $scope.mentionables = []
-    $scope.mentionableUserIds = model.memberIds()
+    $scope.mentionableUserIds = []
     updateMentionables()
 
 
