@@ -1,5 +1,4 @@
 class API::StancesController < API::RestfulController
-  alias :update :create
   before_action :set_guest_params, only: :create
   after_action  :sign_in_unverified_user, only: :create
 

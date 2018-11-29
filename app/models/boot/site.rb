@@ -42,7 +42,7 @@ module Boot
           long:            ENV.fetch('FLASH_TIMEOUT_LONG', 2147483645).to_i
         },
         drafts: {
-          debounce:        ENV.fetch('LOOMIO_DRAFT_DEBOUNCE', 750).to_i
+          debounce:        ENV.fetch('LOOMIO_DRAFT_DEBOUNCE', 1500).to_i
         },
         searchFilters: {
           status: %w(active closed).freeze
