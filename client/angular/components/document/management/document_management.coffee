@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'documentManagement', ->
         _.isEmpty($scope.fragment) or doc.title.match(///#{$scope.fragment}///i)
 
     $scope.hasDocuments = ->
-      _.any $scope.documents()
+      _.some $scope.documents()
 
     $scope.canAdministerGroup = ->
       AbilityService.canAdministerGroup(@group)

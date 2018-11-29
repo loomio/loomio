@@ -11,6 +11,6 @@ angular.module('loomioApp').factory 'EditCommentForm', ->
     $scope.submit = submitForm $scope, $scope.comment,
       flashSuccess: 'comment_form.messages.updated'
       successCallback: ->
-        _.invoke Records.documents.find($scope.comment.removedDocumentIds), 'remove'
+        _.invokeMap Records.documents.find($scope.comment.removedDocumentIds), 'remove'
     submitOnEnter $scope
   ]

@@ -14,7 +14,7 @@ module.exports = new class Session
     @updateLocale(user.locale || AppConfig.defaultLocale)
 
     return unless AppConfig.currentUserId = userId
-    exceptionHandler.setUserContext(_.pick(user, "email", "name", "id"))
+    exceptionHandler.setUserContext(_.pick(user, ["email", "name", "id"]))
 
     if user.timeZone != AppConfig.timeZone
       user.timeZone = AppConfig.timeZone
@@ -40,12 +40,12 @@ module.exports = new class Session
 
 setDefaultParams = (params) ->
   endpoints = ['stances', 'polls', 'discussions', 'events', 'reactions', 'documents']
-  defaultParams = _.pick params, _.identity
+  defaultParams = _.pickBy(params, _.identity)
   _.each endpoints, (endpoint) ->
-    Records[endpoint].remote.defaultParams = _.pick params, _.identity
+    Records[endpoint].remote.defaultParams = defaultParams
 
 momentLocaleFor = (locale) ->
-  if _.contains AppConfig.momentLocales.valid, locale
+  if _.includes AppConfig.momentLocales.valid, locale
     locale
   else
-    _.first locale.split('-')
+    _.head locale.split('-')

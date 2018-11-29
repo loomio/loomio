@@ -19,7 +19,7 @@ $controller = ($scope, $injector) ->
 
   $scope.warnDeprecation  = deprecatedBrowser()
   $scope.currentComponent = 'nothing yet'
-  $scope.renderSidebar    = _.contains(['large', 'extralarge'], viewportSize())
+  $scope.renderSidebar    = _.includes(['large', 'extralarge'], viewportSize())
   $scope.isLoggedIn       = -> AbilityService.isLoggedIn()
   $scope.isEmailVerified  = -> AbilityService.isEmailVerified()
   $scope.keyDown          = (event) -> broadcastKeyEvent($scope, event)

@@ -18,13 +18,13 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
     InboxService.load()
 
     $scope.canStartThreads = ->
-      _.any Session.user().groups(), (group) -> AbilityService.canStartThread(group)
+      _.some Session.user().groups(), (group) -> AbilityService.canStartThread(group)
 
     availableGroups = ->
       _.filter Session.user().groups(), (group) -> group.type == 'FormalGroup'
 
     $scope.currentGroup = ->
-      return _.first(availableGroups()) if availableGroups().length == 1
+      return _.head(availableGroups()) if availableGroups().length == 1
       _.find(availableGroups(), (g) -> g.id == (AppConfig.currentGroup or {}).id) || Records.groups.build()
 
     EventBus.listen $scope, 'toggleSidebar', (event, show) ->

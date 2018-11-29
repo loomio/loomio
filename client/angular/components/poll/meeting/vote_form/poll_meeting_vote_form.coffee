@@ -36,7 +36,7 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
             {poll_option_id: id, score:score} if score > 0
         )
 
-        $scope.stance.stanceChoicesAttributes = attrs if _.any(attrs)
+        $scope.stance.stanceChoicesAttributes = attrs if _.some(attrs)
 
     EventBus.listen $scope, 'timeZoneSelected', (e, zone) ->
       $scope.zone = zone

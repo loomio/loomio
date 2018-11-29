@@ -26,7 +26,7 @@ $controller = ($rootScope) ->
 
   @loadMore = =>
     @loader.loadMore().then (response) =>
-      @pollIds = @pollIds.concat _.pluck(response.polls, 'id')
+      @pollIds = @pollIds.concat _.map(response.polls, 'id')
   applyLoadingFunction @, 'loadMore'
 
   @fetchRecords = =>
@@ -45,7 +45,7 @@ $controller = ($rootScope) ->
 
     @loader.fetchRecords().then (response) =>
       @group   = Records.groups.find(LmoUrlService.params().group_key)
-      @pollIds = _.pluck(response.polls, 'id')
+      @pollIds = _.map(response.polls, 'id')
     , (error) ->
       EventBus.broadcast $rootScope, 'pageError', error
 

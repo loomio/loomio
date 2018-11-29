@@ -7,13 +7,13 @@ module.exports = new class AuthService
   emailStatus: (user) ->
     pendingToken = (AppConfig.pendingIdentity or {}).token
     Records.users.emailStatus(user.email, pendingToken).then (data) =>
-      @applyEmailStatus(user, _.first(data.users))
+      @applyEmailStatus(user, _.head(data.users))
 
   applyEmailStatus: (user, data = {}) ->
     keys = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash',
             'avatar_url', 'has_password', 'email_status', 'email_verified',
             'legal_accepted_at', 'auth_form']
-    user.update _.pick(_.mapKeys(_.pick(data, keys), (v,k) -> _.camelCase(k)), _.identity)
+    user.update _.pickBy(_.mapKeys(_.pick(data, keys), (v,k) -> _.camelCase(k)), _.identity)
     user.update(hasToken: data.has_token)
     user
 
@@ -58,5 +58,5 @@ module.exports = new class AuthService
     if _.keys(user.errors)
       user.name           = vars.name
       user.legalAccepted  = vars.legalAccepted
-      
+
     return _.keys(user.errors).length == 0

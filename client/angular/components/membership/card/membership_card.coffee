@@ -54,7 +54,7 @@ angular.module('loomioApp').directive 'membershipCard', ->
     $scope.memberships = ->
       if $scope.vars.fragment
         _.filter $scope.records(), (membership) =>
-          _.contains membership.userName().toLowerCase(), $scope.vars.fragment.toLowerCase()
+          _.includes membership.userName().toLowerCase(), $scope.vars.fragment.toLowerCase()
       else
         $scope.records()
 

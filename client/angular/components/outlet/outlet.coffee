@@ -18,7 +18,7 @@ angular.module('loomioApp').directive 'outlet', ['$compile', ($compile) ->
       return true if outlet.experimental? and group.enableExperiments
 
       # outlet is a premium plugin servicing a premium group
-      return true if _.include(outlet.plans, group.subscriptionPlan)
+      return true if _.includes(outlet.plans, group.subscriptionPlan)
 
       # otherwise don't show the plugin
       return false

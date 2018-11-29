@@ -43,7 +43,7 @@ angular.module('loomioApp').directive 'discussionsCard', ['$timeout', ($timeout)
         $scope.searched = ThreadQueryService.queryFor
           name: "group_#{$scope.group.key}_searched"
           group: $scope.group
-          ids: _.pluck(data.discussions, 'id')
+          ids: _.map(data.discussions, 'id')
           overwrite: true
     applyLoadingFunction($scope, 'searchThreads')
 

@@ -26,10 +26,10 @@ module.exports = new class AbilityService
     _.intersection(Session.user().groupIds(), user.groupIds()).length
 
   canAddComment: (thread) ->
-    _.contains thread.members(), Session.user()
+    _.includes thread.members(), Session.user()
 
   canRespondToComment: (comment) ->
-    _.contains comment.discussion().members(), Session.user()
+    _.includes comment.discussion().members(), Session.user()
 
   canForkComment: (comment) ->
     @canMoveThread(comment.discussion()) &&
@@ -49,10 +49,10 @@ module.exports = new class AbilityService
     (@memberOf(poll) and (!poll.group() or poll.group().membersCanVote))
 
   memberOf: (model) ->
-    _.any _.compact(model.groups()), (group) -> Session.user().isMemberOf(group)
+    _.some _.compact(model.groups()), (group) -> Session.user().isMemberOf(group)
 
   adminOf: (model) ->
-    _.any _.compact(model.groups()), (group) -> Session.user().isAdminOf(group)
+    _.some _.compact(model.groups()), (group) -> Session.user().isAdminOf(group)
 
   canReactToPoll: (poll) ->
     @isEmailVerified() and @canParticipateInPoll(poll)
@@ -105,7 +105,7 @@ module.exports = new class AbilityService
     @canAdministerGroup(discussion.group())
 
   canChangeVolume: (discussion) ->
-    _.contains discussion.members(), Session.user()
+    _.includes discussion.members(), Session.user()
 
   canManageGroupSubscription: (group) ->
     group.isParent() and
@@ -213,7 +213,7 @@ module.exports = new class AbilityService
 
   canTranslate: (model) ->
     AppConfig.inlineTranslation.isAvailable? and
-    _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
+    _.includes(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
     !model.translation and
     Session.user().locale != model.author().locale
 
@@ -221,7 +221,7 @@ module.exports = new class AbilityService
     if poll.group()
       @canViewGroup(poll.group())
     else
-      @canAdministerPoll() || _.contains(@poll().voters(), Session.user())
+      @canAdministerPoll() || _.includes(@poll().voters(), Session.user())
 
   canRemovePollOptions: (poll) ->
     poll.isNew() || (poll.isActive() && poll.stancesCount == 0)
@@ -239,7 +239,7 @@ module.exports = new class AbilityService
     poll.isClosed() and @canAdministerPoll(poll)
 
   canAdministerPoll: (poll) ->
-    _.contains(poll.adminMembers(), Session.user()) || Session.user().isAuthorOf(poll)
+    _.includes(poll.adminMembers(), Session.user()) || Session.user().isAuthorOf(poll)
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)

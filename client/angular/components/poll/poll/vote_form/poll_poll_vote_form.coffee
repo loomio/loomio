@@ -24,7 +24,7 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
       buttonStyle $scope.isSelected(option)
 
     $scope.isSelected = (option) ->
-      _.contains $scope.selectedOptionIds, option.id
+      _.includes $scope.selectedOptionIds, option.id
 
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->

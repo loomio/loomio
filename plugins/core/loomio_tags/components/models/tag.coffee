@@ -17,7 +17,7 @@ TagModel = class TagModel extends BaseModel
     false
 
   discussionTagFor: (discussionId) ->
-    _.first(@recordStore.discussionTags.find(tagId: @id, discussionId: discussionId)) or
+    _.head(@recordStore.discussionTags.find(tagId: @id, discussionId: discussionId)) or
     @recordStore.discussionTags.build(tagId: @id, discussionId: discussionId)
 
 TagRecordsInterface = class TagRecordsInterface extends BaseRecordsInterface

@@ -33,8 +33,7 @@ RUN bundle install
 ENV DISABLED_PLUGINS loomio_onboarding
 
 WORKDIR /loomio/client
-RUN npm install -g yarn
-RUN yarn
+RUN npm install
 RUN npm rebuild node-sass
 WORKDIR /loomio
 
