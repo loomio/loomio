@@ -14,6 +14,7 @@ class API::VersionsController < API::RestfulController
     load_and_authorize(:group, optional:true)||
     load_and_authorize(:discussion, optional:true)||
     load_and_authorize(:comment, optional:true) ||
+    load_and_authorize(:stance, optional:true) ||
     load_and_authorize(:poll, optional:false)
   end
 

@@ -1,7 +1,5 @@
 Records = require 'shared/services/records.coffee'
-{
-  exactDateWithTime
-} = require 'shared/helpers/filters.coffee'
+{ exactDateWithTime } = require 'shared/helpers/filters.coffee'
 
 angular.module('loomioApp').directive 'revisionHistoryContent', ->
   scope:{model:'=', version:'='}
@@ -12,7 +10,7 @@ angular.module('loomioApp').directive 'revisionHistoryContent', ->
     $scope.diffType = (field_name) ->
       # depending on the model type we will have different kinds
       switch field_name
-        when "body", "description", "title" then (if $scope.version.changes[field_name][0] then "diff" else "original");
+        when "body", "description", "title", "reason" then (if $scope.version.changes[field_name][0] then "diff" else "original");
         when "group_id", "private" then "notice";
 
     $scope.noticeValues = (field_name) ->

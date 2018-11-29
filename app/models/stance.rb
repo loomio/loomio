@@ -14,6 +14,13 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
+  has_paper_trail only: [:reason]
+  define_counter_cache(:versions_count)  { |stance| stance.versions.count }
+  def self.always_versioned_fields
+    [:reason]
+  end
+
+
   accepts_nested_attributes_for :stance_choices
   attr_accessor :visitor_attributes
 
@@ -39,6 +46,7 @@ class Stance < ApplicationRecord
   validate :total_score_is_valid
   validate :participant_is_complete
   validates :reason, length: { maximum: 500 }
+
 
   delegate :locale,         to: :author
   delegate :group,          to: :poll, allow_nil: true

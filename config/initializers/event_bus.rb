@@ -66,7 +66,7 @@ EventBus.configure do |config|
   end
 
   # update discussion or comment versions_count when title or description edited
-  config.listen('discussion_update', 'comment_update', 'poll_update') { |model| model.update_versions_count }
+  config.listen('discussion_update', 'comment_update', 'poll_update', 'stance_update') { |model| model.update_versions_count }
 
   config.listen('membership_destroy') { |membership| Queries::OrganisationMemberships.for(membership).destroy_all }
 
