@@ -330,7 +330,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
-    oj (3.7.1)
+    oj (3.7.4)
     orm_adapter (0.5.0)
     os (1.0.0)
     paper_trail (10.0.1)
