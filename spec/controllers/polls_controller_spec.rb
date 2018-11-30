@@ -26,33 +26,6 @@ describe PollsController do
       get :show, params: { key: poll.key }
       expect(assigns(:metadata)[:title]).to be_nil
     end
-
-    describe "logged out with pending membership" do
-      let(:user) { create :user, email_verified: false }
-      let(:membership) { create :membership, group: poll.guest_group, user: user }
-
-      it "logs you in as unverified user and redeems membership" do
-        get :show, params: {key: poll.key}, session: {pending_membership_token: membership.token }
-        expect(response.status).to eq 200
-        expect(controller.current_user).to eq user
-        expect(membership.reload.accepted_at?).to be true
-      end
-    end
-
-    describe "logged in with pending membership" do
-      let(:unverified_user) { create :user, email_verified: false }
-      let(:verified_user) { create :user }
-      let(:membership) { create :membership, group: poll.guest_group, user: unverified_user }
-
-      it "logs you in as unverified user and redeems membership" do
-        sign_in verified_user
-        get :show, params: {key: poll.key}, session: {pending_membership_token: membership.token }
-        expect(response.status).to eq 200
-        expect(controller.current_user).to eq verified_user
-        expect(membership.reload.accepted_at?).to be true
-        expect(membership.user).to eq verified_user
-      end
-    end
   end
 
 
