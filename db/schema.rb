@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181129031039) do
+ActiveRecord::Schema.define(version: 20181130030859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 20181129031039) do
     t.datetime "time"
     t.index ["properties"], name: "ahoy_events_properties", using: :gin
     t.index ["time"], name: "index_ahoy_events_on_time"
-    t.index ["user_id"], name: "index_ahoy_events_on_user_id"
-    t.index ["visit_id"], name: "index_ahoy_events_on_visit_id"
   end
 
   create_table "ahoy_messages", id: :serial, force: :cascade do |t|
@@ -52,10 +50,7 @@ ActiveRecord::Schema.define(version: 20181129031039) do
     t.datetime "sent_at"
     t.datetime "opened_at"
     t.datetime "clicked_at"
-    t.index ["sent_at"], name: "index_ahoy_messages_on_sent_at"
-    t.index ["to"], name: "index_ahoy_messages_on_to"
     t.index ["token"], name: "index_ahoy_messages_on_token"
-    t.index ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type"
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -146,12 +141,7 @@ ActiveRecord::Schema.define(version: 20181129031039) do
     t.datetime "dismissed_at"
     t.string "read_ranges_string"
     t.index ["discussion_id"], name: "index_motion_read_logs_on_discussion_id"
-    t.index ["last_read_at"], name: "index_discussion_readers_on_last_read_at"
-    t.index ["participating"], name: "index_discussion_readers_on_participating"
     t.index ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true
-    t.index ["user_id", "volume"], name: "index_discussion_readers_on_user_id_and_volume"
-    t.index ["user_id"], name: "index_motion_read_logs_on_user_id"
-    t.index ["volume"], name: "index_discussion_readers_on_volume"
   end
 
   create_table "discussion_search_vectors", id: :serial, force: :cascade do |t|
@@ -247,9 +237,6 @@ ActiveRecord::Schema.define(version: 20181129031039) do
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["discussion_id"], name: "index_events_on_discussion_id"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
-    t.index ["kind"], name: "index_events_on_kind"
-    t.index ["parent_id", "position"], name: "index_events_on_parent_id_and_position", where: "(parent_id IS NOT NULL)"
-    t.index ["parent_id"], name: "index_events_on_parent_id", where: "(parent_id IS NOT NULL)"
   end
 
   create_table "group_identities", id: :serial, force: :cascade do |t|
@@ -446,11 +433,8 @@ ActiveRecord::Schema.define(version: 20181129031039) do
     t.jsonb "translation_values", default: {}, null: false
     t.string "url"
     t.integer "actor_id"
-    t.index ["actor_id"], name: "index_notifications_on_actor_id"
-    t.index ["created_at"], name: "index_notifications_on_created_at", order: { created_at: :desc }
     t.index ["event_id"], name: "index_notifications_on_event_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
-    t.index ["viewed"], name: "index_notifications_on_viewed"
   end
 
   create_table "oauth_access_grants", id: :serial, force: :cascade do |t|
@@ -751,7 +735,6 @@ ActiveRecord::Schema.define(version: 20181129031039) do
     t.datetime "created_at"
     t.jsonb "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
-    t.index ["whodunnit"], name: "index_versions_on_whodunnit"
   end
 
   create_table "visits", id: :uuid, default: nil, force: :cascade do |t|
@@ -777,7 +760,6 @@ ActiveRecord::Schema.define(version: 20181129031039) do
     t.string "utm_content"
     t.string "utm_campaign"
     t.datetime "started_at"
-    t.index ["user_id"], name: "index_visits_on_user_id"
   end
 
   create_table "webhooks", id: :serial, force: :cascade do |t|
