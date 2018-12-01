@@ -1,14 +1,10 @@
 module CurrentUserHelper
   include PendingActionsHelper
 
-  def sign_in(user, verified_sign_in_method: true)
+  def sign_in(user)
     @current_user = nil
-    if verified_sign_in_method
-      user = UserService.verify(user: user)
-      super(user) && handle_pending_actions(user)
-    else
-      super(user)
-    end
+    user = UserService.verify(user: user)
+    super(user) && handle_pending_actions(user)
   end
 
   def current_user
