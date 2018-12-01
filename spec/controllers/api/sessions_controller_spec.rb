@@ -8,7 +8,7 @@ describe API::SessionsController do
 
     describe 'via token' do
       before do
-        session[:pending_token] = token.token
+        session[:pending_login_token] = token.token
         request.env["devise.mapping"] = Devise.mappings[:user]
       end
 
@@ -34,7 +34,7 @@ describe API::SessionsController do
       end
 
       it 'does not sign in a user with an invalid token id' do
-        session[:pending_token] = 'notatoken'
+        session[:pending_login_token] = 'notatoken'
         post :create
         expect(response.status).to eq 401
       end

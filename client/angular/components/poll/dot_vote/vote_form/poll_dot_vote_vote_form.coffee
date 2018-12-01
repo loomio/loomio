@@ -53,7 +53,7 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
       prepareFn: ->
         EventBus.emit $scope, 'processing'
         $scope.stance.id = null
-        return unless _.sum(_.pluck($scope.stanceChoices, 'score')) > 0
+        return unless _.sum(_.map($scope.stanceChoices, 'score')) > 0
         $scope.stance.stanceChoicesAttributes = $scope.stanceChoices
 
     submitOnEnter $scope, element: $element

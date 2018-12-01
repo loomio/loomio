@@ -1,5 +1,6 @@
   .revision-history-content{ng-switch:"model.constructor.singular"}
     .revision-history-content--markdown.text-diff{ng-switch-when:"comment", ng-bind-html: "version.changes.body"}
+    .revision-history-content--markdown.text-diff{ng-switch-when:"stance", ng-bind-html: "version.changes.reason"}
     %div{ng-switch-when:"discussion"}
       %text_diff.lmo-h1.revision-history-content--header{before: "version.changes.title[0]", after: "version.changes.title[1]"}
       .revision-history-content--markdown.text-diff{ng-bind-html: "version.changes.description"}
