@@ -46,27 +46,28 @@ module PendingActionsHelper
   def consume_pending_membership(user)
     if pending_membership
       MembershipService.redeem(membership: pending_membership, actor: user)
+      session.delete(:pending_membership_token)
     end
   end
 
   def pending_group
-    @pending_group ||= Group.find_by(token: session[:pending_group_token]) if session[:pending_group_token]
+    Group.find_by(token: session[:pending_group_token]) if session[:pending_group_token]
   end
 
   def pending_token
-    @pending_token_user ||= LoginToken.where.not(user_id: current_user.email_verified? && current_user.id).find_by(token: session[:pending_token]) if session[:pending_token]
+    LoginToken.where.not(user_id: current_user.email_verified? && current_user.id).find_by(token: session[:pending_token]) if session[:pending_token]
   end
 
   def pending_membership
-    @pending_membership ||= Membership.pending.find_by(token: session.delete(:pending_membership_token)) if session[:pending_membership_token]
+    Membership.pending.find_by(token: session[:pending_membership_token]) if session[:pending_membership_token]
   end
 
   def pending_identity
-    @pending_identity ||= Identities::Base.find_by(id: session[:pending_identity_id]) if session[:pending_identity_id]
+    Identities::Base.find_by(id: session[:pending_identity_id]) if session[:pending_identity_id]
   end
 
   def pending_user
-    @pending_user ||= User.find_by(id: session[:pending_user_id]) if session[:pending_user_id]
+    User.find_by(id: session[:pending_user_id]) if session[:pending_user_id]
   end
 
   def serialized_pending_identity
