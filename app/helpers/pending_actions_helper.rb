@@ -22,9 +22,9 @@ module PendingActionsHelper
   end
 
   def consume_pending_login_token
-    if pending_token
-      pending_token.update(used: true)
-      session.delete(:pending_token)
+    if pending_login_token
+      pending_login_token.update(used: true)
+      session.delete(:pending_login_token)
     end
   end
 
@@ -53,8 +53,8 @@ module PendingActionsHelper
     Group.find_by(token: session[:pending_group_token]) if session[:pending_group_token]
   end
 
-  def pending_token
-    LoginToken.where.not(user_id: current_user.email_verified? && current_user.id).find_by(token: session[:pending_token]) if session[:pending_token]
+  def pending_login_token
+    LoginToken.find_by(token: session[:pending_login_token]) if session[:pending_login_token]
   end
 
   def pending_membership
@@ -70,7 +70,7 @@ module PendingActionsHelper
   end
 
   def serialized_pending_identity
-    Pending::TokenSerializer.new(pending_token, root: false).as_json ||
+    Pending::TokenSerializer.new(pending_login_token, root: false).as_json ||
     Pending::IdentitySerializer.new(pending_identity, root: false).as_json ||
     Pending::MembershipSerializer.new(pending_membership, root: false).as_json ||
     Pending::GroupSerializer.new(pending_group, root: false).as_json ||
