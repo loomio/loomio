@@ -12,6 +12,10 @@ class Events::StanceCreated < Event
           discussion: stance.poll.discussion
   end
 
+  def notify_author?
+    false
+  end
+
   private
   def author
     User.active.verified.find_by(email: eventable.participant.email) || eventable.participant
