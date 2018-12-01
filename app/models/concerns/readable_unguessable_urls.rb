@@ -7,7 +7,7 @@ module ReadableUnguessableUrls
     base.extend FriendlyId
     base.send :friendly_id, :key, use: [:finders]
     base.send :before_validation, :set_key
-    base.send :validates, :key, uniqueness: true, presence: true
+    base.send :validates, :key, presence: true
   end
 
   private
@@ -30,4 +30,3 @@ module ReadableUnguessableUrls
      (0..9).to_a ).sample(KEY_LENGTH).join
   end
 end
-
