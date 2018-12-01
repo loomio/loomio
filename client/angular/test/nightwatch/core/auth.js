@@ -205,7 +205,7 @@ module.exports = {
 
     page.loadPath('setup_invitation_to_visitor')
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-signup-form', 'Welcome to')
+    page.expectText('.auth-signup-form', 'New to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
     page.click('.auth-signup-form__legal-accepted')
     page.click('.auth-signup-form__submit')
@@ -219,7 +219,7 @@ module.exports = {
     page.loadPath('setup_invitation_to_visitor')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@merciless.com')
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-signup-form', 'Welcome to')
+    page.expectText('.auth-signup-form', 'New to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
     page.click('.auth-signup-form__legal-accepted')
     page.click('.auth-signup-form__submit')
