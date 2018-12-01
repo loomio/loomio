@@ -167,8 +167,6 @@ Loomio::Application.routes.draw do
     resource :outcomes,     only: [:create, :update]
 
     resources :stances,     only: [:index, :create, :update, :destroy] do
-      get :unverified, on: :collection
-      post :verify, on: :member
       get :my_stances, on: :collection
     end
 
@@ -257,7 +255,6 @@ Loomio::Application.routes.draw do
   get 'profile'                            => 'application#index', as: :profile
   get 'contact'                            => 'application#index', as: :contact
   get 'email_preferences'                  => 'application#index', as: :email_preferences
-  get 'verify_stances'                     => 'application#index', as: :verify_stances
   get 'apps/registered'                    => 'application#index'
   get 'apps/authorized'                    => 'application#index'
   get 'apps/registered/:id'                => 'application#index'

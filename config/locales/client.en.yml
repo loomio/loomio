@@ -163,15 +163,6 @@ en:
   verify_email_notice:
     please_verify: Thanks for participating! Please check your email for a link to verify your vote.
 
-  verify_stances:
-    title: Verify votes
-    description: Please review the votes below and verify that they are yours.
-    verify: Verify
-    remove: Remove
-    verify_success: Vote verified
-    remove_success: Vote removed
-    all_done: Great job, you've verified all the votes.
-
   previous_polls_page:
     heading: Activities in {{name}}
     polls_count: Showing {{loaded}} of {{total}} decisions
@@ -1744,9 +1735,6 @@ en:
     poll_published_with_discussion: "published a poll in <strong>{{discussion}}</strong>:"
     view_it_on_loomio: View it on {{site_name}}
     timestamp: Today at {{timestamp}}
-
-  poll_common_participant_form:
-    participant_name_placeholder: What is your name?
 
   poll_common_subscribe_form:
     receive_updates_title: Your vote has been recorded

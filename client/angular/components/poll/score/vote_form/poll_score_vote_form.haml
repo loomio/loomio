@@ -1,6 +1,4 @@
 %form.poll-score-vote-form{ng-submit: "submit()"}
-  %poll_common_participant_form{stance: "stance"}
-
   %h3.lmo-card-subheading{translate: "poll_common.your_response"}
   %md-list.poll-score-vote-form__options
     %div.poll-score-vote-form__option{ng-repeat: "choice in stanceChoices track by choice.poll_option_id"}

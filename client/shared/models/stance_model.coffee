@@ -73,6 +73,3 @@ module.exports = class StanceModel extends BaseModel
       choice.pollOptionId == option.id
 
     if choiceForOption then choiceForOption.score else 0
-
-  verify: () =>
-    @remote.postMember(@id, 'verify').then => @unverified = false
