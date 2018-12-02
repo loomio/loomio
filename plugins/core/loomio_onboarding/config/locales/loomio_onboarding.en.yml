@@ -6,7 +6,7 @@ en:
         body_md: |
             Hi %{recipient_name}
 
-            Thanks for joining Loomio, an online place to make decisions with your group.
+            Welcome to Loomio! The online place to make decisions with your group.
 
             I'm %{sender_name}, a Loomio team member, and I'm here to help you get started.
 
