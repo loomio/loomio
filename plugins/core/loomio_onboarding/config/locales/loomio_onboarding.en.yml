@@ -10,7 +10,7 @@ en:
 
             I'm %{sender_name}, a Loomio team member, and I'm here to help you get started.
 
-            If you'd like a free Loomio training session, sign up for our [Loomio 101 webinar](%{webinar_url}). We'll give you a tour of the app as well as a chance to ask any quesitons you may have.
+            If you'd like a free Loomio training session, sign up for our [Loomio 101 webinar](%{webinar_url}). We'll give you a tour of the app, and an opportunity to ask any questions you may have.
 
             Have you visited [help.loomio.org](https://help.loomio.org/%{help_locale}/) yet? If not, here are a couple of pages that you might find useful:
 
