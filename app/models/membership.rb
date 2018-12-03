@@ -26,7 +26,7 @@ class Membership < ApplicationRecord
   belongs_to :invitation
   has_many :events, as: :eventable, dependent: :destroy
 
-  scope :active,        -> { not_archived.accepted.not_suspended }
+  scope :active,        -> { not_archived.accepted }
   scope :archived,      -> { where('archived_at IS NOT NULL') }
   scope :not_archived,  -> { where(archived_at: nil) }
   scope :pending,       -> { where(accepted_at: nil) }
