@@ -18,7 +18,7 @@ class Queries::VisibleInvitableMemberships < Delegator
 
   def visible_memberships_filtered
     Membership.select("DISTINCT ON (user_id) memberships.*")
-              .where(user_id: visible_user_ids, group_id: @user.group_ids, archived_at: nil, is_suspended: false)
+              .where(user_id: visible_user_ids, group_id: @user.group_ids, archived_at: nil)
               .search_for(@query)
               .limit(@limit)
   end

@@ -17,7 +17,7 @@ class Group < ApplicationRecord
   has_many :comments, through: :discussions
 
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
-  has_many :memberships, -> { where is_suspended: false, archived_at: nil }
+  has_many :memberships, -> { where archived_at: nil }
   has_many :members, through: :memberships, source: :user
 
   has_many :accepted_memberships, -> { accepted }, class_name: 'Membership'

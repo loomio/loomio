@@ -9,8 +9,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 20181201212826) do
+ActiveRecord::Schema.define(version: 20181203052716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +37,6 @@ ActiveRecord::Schema.define(version: 20181201212826) do
     t.jsonb "properties"
     t.datetime "time"
     t.index ["properties"], name: "ahoy_events_properties", using: :gin
-    t.index ["time"], name: "index_ahoy_events_on_time"
   end
 
   create_table "ahoy_messages", id: :serial, force: :cascade do |t|
@@ -237,6 +235,7 @@ ActiveRecord::Schema.define(version: 20181201212826) do
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["discussion_id"], name: "index_events_on_discussion_id"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
+    t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id"
   end
 
@@ -326,7 +325,7 @@ ActiveRecord::Schema.define(version: 20181201212826) do
     t.string "token"
     t.string "admin_tags"
     t.boolean "members_can_announce", default: true, null: false
-    t.index ["archived_at"], name: "index_groups_on_archived_at"
+    t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
     t.index ["created_at"], name: "index_groups_on_created_at"
@@ -340,6 +339,7 @@ ActiveRecord::Schema.define(version: 20181201212826) do
     t.index ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions"
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
     t.index ["token"], name: "index_groups_on_token", unique: true
+    t.index ["type"], name: "index_groups_on_type"
   end
 
   create_table "invitations", id: :serial, force: :cascade do |t|
@@ -407,15 +407,14 @@ ActiveRecord::Schema.define(version: 20181201212826) do
     t.datetime "archived_at"
     t.integer "inbox_position", default: 0
     t.boolean "admin", default: false, null: false
-    t.boolean "is_suspended", default: false, null: false
     t.integer "volume"
     t.jsonb "experiences", default: {}, null: false
     t.integer "invitation_id"
     t.string "token"
     t.datetime "accepted_at"
     t.string "title"
+    t.index ["archived_at"], name: "index_memberships_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_memberships_on_created_at"
-    t.index ["group_id", "user_id", "is_suspended", "archived_at"], name: "active_memberships"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"

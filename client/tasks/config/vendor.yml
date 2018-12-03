@@ -19,7 +19,7 @@ angular:
   - angular-translate
   - angular-translate-loader-url
   - angulartics
-  - angulartics-google-tag-manager
+  - angulartics-piwik
   - loomio-angular-marked
   - loomio-angular-router
   - ment.io
