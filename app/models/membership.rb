@@ -27,8 +27,6 @@ class Membership < ApplicationRecord
   has_many :events, as: :eventable, dependent: :destroy
 
   scope :active,        -> { not_archived.accepted.not_suspended }
-  scope :suspended,     -> { where(is_suspended: true) }
-  scope :not_suspended, -> { where(is_suspended: false) }
   scope :archived,      -> { where('archived_at IS NOT NULL') }
   scope :not_archived,  -> { where(archived_at: nil) }
   scope :pending,       -> { where(accepted_at: nil) }

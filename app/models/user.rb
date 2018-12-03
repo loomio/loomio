@@ -66,12 +66,12 @@ class User < ApplicationRecord
   validates :password, nontrivial_password: true, allow_nil: true
 
   has_many :admin_memberships,
-           -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
+           -> { where('memberships.admin = ?', true) },
            class_name: 'Membership',
            dependent: :destroy
 
   has_many :memberships,
-           -> { where(is_suspended: false, archived_at: nil) },
+           -> { where(archived_at: nil) },
            dependent: :destroy
 
   has_many :archived_memberships,
