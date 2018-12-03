@@ -23,7 +23,6 @@
     = action_cable_meta_tag
 
     = render 'angular/metadata'
-    = render 'application/google_analytics'
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %noscript= I18n.t(:"errors.noscript")
@@ -43,3 +42,4 @@
     %script{src: bundle_asset_path(:"angular.bundle.min.js")}
 
     = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]
+    = render 'application/matomo_js'
