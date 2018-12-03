@@ -18,15 +18,19 @@ module.exports =
   setupAngular: ($rootScope, $injector) ->
     setupAngularScroll()
     setupAngularEventBus()
+    setupMatomo($rootScope, $injector.get('$analytics'))
     setupAngularPaste($rootScope)
     setupAngularHotkeys($rootScope)
     setupAngularFlash($rootScope)
-    setupAngularAhoy($rootScope)
     setupAngularRoutes($injector.get('$router'))
     setupAngularNavigate($injector.get('$location'))
     setupAngularTranslate($rootScope, $injector.get('$translate'))
     setupAngularDigest($rootScope, $injector)
     setupAngularModal($rootScope, $injector)
+
+setupMatomo = ($rootScope, $analytics) ->
+  EventBus.listen $rootScope, 'currentComponent', =>
+    $analytics.pageTrack(window.location.pathname);
 
 setupAngularScroll = ->
   ScrollService.setScrollMethod (elem, container, options = {}) ->
@@ -71,25 +75,6 @@ setupAngularHotkeys = ($rootScope) ->
 setupAngularFlash = ($rootScope) ->
   FlashService.setBroadcastMethod (flashOptions) ->
     EventBus.broadcast $rootScope, 'flashMessage', flashOptions
-
-setupAngularAhoy = ($rootScope) ->
-  return unless ahoy?
-
-  ahoy.trackClicks()
-  ahoy.trackSubmits()
-  ahoy.trackChanges()
-
-  # track page views
-  EventBus.listen $rootScope, 'currentComponent', =>
-    ahoy.track '$view',
-      page:  window.location.pathname
-      url:   window.location.href
-      title: document.title
-
-  # track modal views
-  EventBus.listen $rootScope, 'modalOpened', (_, modal) =>
-    ahoy.track 'modalOpened',
-      name: modal.templateUrl.match(/(\w+)\.html$/)[1]
 
 setupAngularRoutes = ($router) ->
   $router.config(Routes.concat(AppConfig.plugins.routes))
