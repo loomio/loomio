@@ -18,6 +18,7 @@ module.exports =
   setupAngular: ($rootScope, $injector) ->
     setupAngularScroll()
     setupAngularEventBus()
+    setupMatomo($rootScope, $injector.get('$analytics'))
     setupAngularPaste($rootScope)
     setupAngularHotkeys($rootScope)
     setupAngularFlash($rootScope)
@@ -26,6 +27,10 @@ module.exports =
     setupAngularTranslate($rootScope, $injector.get('$translate'))
     setupAngularDigest($rootScope, $injector)
     setupAngularModal($rootScope, $injector)
+
+setupMatomo = ($rootScope, $analytics) ->
+  EventBus.listen $rootScope, 'currentComponent', =>
+    $analytics.pageTrack(window.location.pathname);
 
 setupAngularScroll = ->
   ScrollService.setScrollMethod (elem, container, options = {}) ->
