@@ -31,7 +31,7 @@ bootDat (appConfig) ->
     'angular-clipboard',
     'ngMaterial',
     'angulartics',
-    'angulartics.google.tagmanager',
+    'angulartics.piwik',
     'vcRecaptcha',
     'angular-sortable-view'
     ])

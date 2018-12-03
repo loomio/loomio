@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181201212826) do
+ActiveRecord::Schema.define(version: 20181202235325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20181201212826) do
     t.jsonb "properties"
     t.datetime "time"
     t.index ["properties"], name: "ahoy_events_properties", using: :gin
-    t.index ["time"], name: "index_ahoy_events_on_time"
   end
 
   create_table "ahoy_messages", id: :serial, force: :cascade do |t|
