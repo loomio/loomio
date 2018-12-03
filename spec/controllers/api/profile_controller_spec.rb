@@ -230,8 +230,8 @@ describe API::ProfileController do
 
     it "doesn't return users from groups outside the organisation" do
       get :mentionable_users, params: {q: "ja", group_id: group.id}
-      user_ids = JSON.parse(response.body)['users'].map { |c| c['id'] }
-      expect(user_ids).to eq []
+      user_names = JSON.parse(response.body)['users'].map { |c| c['name'] }
+      expect(user_names).to eq []
     end
   end
 end
