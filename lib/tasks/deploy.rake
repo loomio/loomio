@@ -8,7 +8,6 @@
 # This deploy script is modular, meaning you can run any part of it individually.
 # The order of operations goes:
 #
-# rake deploy:bump_version    -- add a commit to master which bumps the current version
 # rake deploy:plugins:fetch   -- fetch plugins from the loomio_org plugins.yml
 # rake deploy:plugins:install -- install plugins so the correct files are built and deployed
 # rake deploy:commit          -- commit all non-repository code to a branch for pushing
@@ -20,7 +19,6 @@
 
 def deploy_steps
   [
-    "deploy:bump_version",
     "plugins:fetch[#{heroku_plugin_set}]",
     "plugins:install[fetched]",
     "client:build",
@@ -46,18 +44,6 @@ namespace :deploy do
     puts "Deploying to #{heroku_remote}..."
     run_commands("bundle exec rake #{deploy_steps}")
     at_exit { run_commands("git branch -D #{deploy_branch}") }
-  end
-
-  desc "Bump version of repository if pushing to production"
-  task :bump_version do
-    puts "Bumping version from #{loomio_version}..."
-    run_commands(
-      "git checkout master",
-      "git reset --hard",
-      "ruby script/bump_version.rb patch",
-      "git add lib/version",
-      "git commit -m 'bump version to #{loomio_version}'",
-      "git push origin master")
   end
 
   desc "Commits built assets to deployment branch"
