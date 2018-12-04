@@ -32,6 +32,7 @@ module.exports = {
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
     })
   },
+
   'can_start_a_check_in_a_group': (test) => {
     page = pageHelper(test)
 
@@ -57,6 +58,7 @@ module.exports = {
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
     })
   },
+
   'can_start_a_poll_in_a_group': (test) => {
     page = pageHelper(test)
 
@@ -83,6 +85,36 @@ module.exports = {
 
     page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
       page.expectText('.poll-common-stance-choice--poll', 'An option')
+      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    })
+  },
+
+  'can_start_a_dot_vote_in_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.decision-tools-card__poll-type--dot_vote')
+    page.click(".poll-common-tool-tip__collapse")
+    page.fillIn('.poll-common-form-fields__title', 'A new proposal')
+    page.fillIn('.poll-common-form-fields textarea', 'Some details')
+    page.fillIn('.poll-poll-form__add-option-input  ', 'An option')
+    page.click('.poll-poll-form__option-button')
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectNoElement('.poll-common-modal')
+
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details', 'Some details')
+
+    page.click('.poll-dot-vote-vote-form__dot-button:last-child')
+    page.click('.poll-dot-vote-vote-form__dot-button:last-child')
+
+    page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
+    page.click('.poll-common-vote-form__submit')
+
+    page.scrollTo('.poll-dot-vote-votes-panel-stance', () => {
+      page.expectText('.poll-dot-vote-votes-panel__stance-choice', 'An option')
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
     })
   },
