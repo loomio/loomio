@@ -9,7 +9,8 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 20181203052716) do
+
+ActiveRecord::Schema.define(version: 20181204214026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -340,31 +341,6 @@ ActiveRecord::Schema.define(version: 20181203052716) do
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
     t.index ["token"], name: "index_groups_on_token", unique: true
     t.index ["type"], name: "index_groups_on_type"
-  end
-
-  create_table "invitations", id: :serial, force: :cascade do |t|
-    t.string "recipient_email", limit: 255
-    t.integer "inviter_id"
-    t.boolean "to_be_admin", default: false, null: false
-    t.string "token", limit: 255, null: false
-    t.datetime "accepted_at"
-    t.string "intent", default: "join_group", null: false
-    t.integer "canceller_id"
-    t.datetime "cancelled_at"
-    t.string "recipient_name", limit: 255
-    t.integer "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean "single_use", default: true, null: false
-    t.text "message"
-    t.integer "send_count", default: 0, null: false
-    t.index ["accepted_at"], name: "index_invitations_on_accepted_at", where: "(accepted_at IS NULL)"
-    t.index ["cancelled_at"], name: "index_invitations_on_cancelled_at"
-    t.index ["created_at"], name: "index_invitations_on_created_at"
-    t.index ["group_id"], name: "index_invitations_on_group_id"
-    t.index ["recipient_email"], name: "index_invitations_on_recipient_email"
-    t.index ["single_use"], name: "index_invitations_on_single_use"
-    t.index ["token"], name: "index_invitations_on_token"
   end
 
   create_table "login_tokens", id: :serial, force: :cascade do |t|
