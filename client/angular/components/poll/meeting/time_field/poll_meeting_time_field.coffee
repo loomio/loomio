@@ -6,5 +6,4 @@ angular.module('loomioApp').directive 'pollMeetingTimeField', ->
   controller: ['$scope', ($scope) ->
     $scope.dateToday = moment().format('YYYY-MM-DD')
     $scope.times = TimeService.timesOfDay()
-    $scope.minDate = new Date()
   ]
