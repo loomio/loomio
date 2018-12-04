@@ -154,13 +154,15 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('test_discussion', { controller: 'polls' })
-    page.click('.decision-tools-card__poll-type--score')
+    page.click('.decision-tools-card__poll-type--meeting')
     page.click('.poll-common-tool-tip__collapse')
     page.fillIn('.poll-common-form-fields__title', 'A new proposal')
     page.fillIn('.poll-common-form-fields textarea', 'Some details')
 
     page.fillIn('.poll-meeting-time-field__datepicker-container input', moment().format('D MMMM YYYY'))
-    page.fillIn('.poll-meeting-time-field__timepicker-container input', '10:00 pm')
+    page.click('.poll-meeting-time-field__timepicker-container')
+    page.pause(500)
+    page.click('.md-select-menu-container.md-active md-option:first-child')
 
     page.click('.poll-meeting-form__option-button')
 
@@ -172,14 +174,14 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details', 'Some details')
 
-    page.fillIn('.poll-score-vote-form__score-input', '4')
+    page.click('.poll-common-vote-form__option button:first-child')
     page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
 
 
     page.click('.poll-common-vote-form__submit')
 
+    page.expectElement('.poll-meeting-chart-panel--yes')
     page.scrollTo('.poll-common-votes-panel__stance', () => {
-      page.expectText('.poll-common-stance-choice', 'An option')
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
     })
   },
