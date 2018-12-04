@@ -159,7 +159,9 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title', 'A new proposal')
     page.fillIn('.poll-common-form-fields textarea', 'Some details')
 
-    page.fillIn('.md-datepicker-input', moment().format('D MMMM YYYY'))
+    page.fillIn('.poll-meeting-time-field__datepicker-container input', moment().format('D MMMM YYYY'))
+    page.fillIn('.poll-meeting-time-field__timepicker-container input', '10:00 pm')
+
     page.click('.poll-meeting-form__option-button')
 
     page.click('.poll-common-form__submit')
