@@ -138,12 +138,13 @@ module.exports = {
     page.expectText('.poll-common-details-panel__details', 'Some details')
 
     page.fillIn('.poll-score-vote-form__score-input', '4')
-
     page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
+
+
     page.click('.poll-common-vote-form__submit')
 
     page.scrollTo('.poll-common-votes-panel__stance', () => {
-      page.expectText('.poll-common-stance-choice--score', 'An option')
+      page.expectText('.poll-common-stance-choice', 'An option')
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
     })
   },
