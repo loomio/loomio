@@ -333,8 +333,8 @@ GEM
     oj (3.7.4)
     orm_adapter (0.5.0)
     os (1.0.0)
-    paper_trail (10.0.1)
-      activerecord (>= 4.2, < 5.3)
+    paper_trail (10.1.0)
+      activerecord (>= 4.2, < 6.0)
       request_store (~> 1.1)
     paperclip (6.1.0)
       activemodel (>= 4.2.0)
@@ -595,7 +595,7 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   oj
-  paper_trail (~> 10.0.1)
+  paper_trail (~> 10.1.0)
   paperclip (~> 6.1.0)
   parallel_tests
   pg (~> 1.1.3)
