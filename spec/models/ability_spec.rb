@@ -412,12 +412,5 @@ describe "User abilities" do
       it { should     be_able_to(:deactivate, other_user) }
     end
 
-    context "other_user is the only coordinator of one of their groups" do
-      before do
-        group.admins.destroy_all
-        group.add_admin!(other_user)
-      end
-      it { should_not be_able_to(:deactivate, other_user) }
-    end
   end
 end
