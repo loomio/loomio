@@ -14,34 +14,6 @@ class Dev::PollsController < Dev::BaseController
     redirect_to poll.guest_group.memberships.last
   end
 
-  def test_verify_stances
-    sign_out
-    user            = fake_user(email_verified: true)
-    unverified_user = fake_user(email: user.email, email_verified: false)
-    saved fake_stance(participant: unverified_user)
-    sign_in user
-    redirect_to verify_stances_path
-  end
-
-  def test_verify_vote_by_unverified_user
-    poll = saved fake_poll
-    unverified_user = saved fake_user(email_verified: false)
-    poll.guest_group.add_member! unverified_user
-    stance = fake_stance(poll: poll, participant: unverified_user)
-    StanceService.create(stance: stance, actor: unverified_user)
-    last_email
-  end
-
-  def test_verify_vote_by_verified_user
-    poll = saved fake_poll
-    verified_user = saved fake_user(email: 'user@example.com', email_verified: true)
-    unverified_user = saved fake_user(email: 'user@example.com', email_verified: false)
-    poll.guest_group.add_member! unverified_user
-    stance = fake_stance(poll: poll, participant: unverified_user)
-    StanceService.create(stance: stance, actor: unverified_user)
-    last_email
-  end
-
   def test_discussion
     group = create_group_with_members
     discussion = saved fake_discussion(group: group)

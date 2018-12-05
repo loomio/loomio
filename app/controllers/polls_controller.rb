@@ -30,13 +30,6 @@ class PollsController < ApplicationController
 
   private
 
-  def handle_pending_memberships
-    if !current_user.is_logged_in? && pending_membership
-      sign_in pending_membership.user, verified_sign_in_method: false
-    end
-    super
-  end
-
   def is_subscribed?
     resource.poll_unsubscriptions.find_by(user: current_user).blank?
   end

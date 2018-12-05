@@ -39,6 +39,7 @@ shouldForceSignIn = (options = {}) ->
          'registeredAppsPage', \
          'registeredAppPage',  \
          'pollsPage',          \
+         'pollPage',           \
          'startPollPage',      \
          'upgradePage',        \
          'startGroupPage' then true

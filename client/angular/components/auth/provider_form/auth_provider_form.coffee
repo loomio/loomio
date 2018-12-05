@@ -6,7 +6,8 @@ angular.module('loomioApp').directive 'authProviderForm', ['$window', ($window) 
   templateUrl: 'generated/components/auth/provider_form/auth_provider_form.html'
   controller: ['$scope', ($scope) ->
     $scope.emailLogin = AppConfig.features.app.email_login
-    $scope.providers = AppConfig.identityProviders
+    $scope.providers = _.reject AppConfig.identityProviders, (provider) -> provider.name == 'slack'
+    console.log $scope.providers
     $scope.capitalize = _.capitalize
 
     $scope.select = (provider) ->

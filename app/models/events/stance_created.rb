@@ -13,7 +13,7 @@ class Events::StanceCreated < Event
   end
 
   def notify_author?
-    !user.email_verified
+    false
   end
 
   private

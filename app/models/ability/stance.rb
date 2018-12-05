@@ -15,11 +15,5 @@ module Ability::Stance
     can [:make_draft, :create], ::Stance do |stance|
       user.can? :vote_in, stance.poll
     end
-
-    can [:verify, :destroy], ::Stance do |stance|
-      user.email_verified? &&
-      stance.participant.email_verified == false &&
-      stance.participant.email == user.email
-    end
   end
 end

@@ -1,10 +1,4 @@
 class StanceService
-  def self.verify(stance:, actor:)
-    actor.ability.authorize! :verify, stance
-    stance.update(participant: actor)
-    EventBus.broadcast 'stance_verify', stance, actor
-  end
-
   def self.destroy(stance:, actor:)
     actor.ability.authorize! :destroy, stance
     stance.destroy

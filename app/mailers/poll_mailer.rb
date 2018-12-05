@@ -1,10 +1,8 @@
 class PollMailer < BaseMailer
   REPLY_DELIMITER = "--"
-  layout 'invite_people_mailer', only: 'stance_created_author'
 
   %w(poll_created poll_announced poll_edited
-     stance_created stance_created_author
-     invitation_created invitation_resend
+     stance_created invitation_created invitation_resend
      poll_option_added poll_option_added_author
      outcome_created outcome_created_author outcome_announced
      poll_closing_soon poll_closing_soon_author
@@ -42,11 +40,7 @@ class PollMailer < BaseMailer
       to:            recipient.email,
       subject_key:   event.email_subject_key || "poll_mailer.#{@info.poll_type}.subject.#{@info.action_name}",
       subject_params: { title: @info.poll.title, actor: @info.actor.name },
-      layout:        layouts[action_name].to_s
+      layout:        'base_mailer'
     )
-  end
-
-  def layouts
-    HashWithIndifferentAccess.new { :base_mailer }.merge(stance_created_author: :invite_people_mailer)
   end
 end

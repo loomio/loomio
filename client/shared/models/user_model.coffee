@@ -19,7 +19,7 @@ module.exports = class UserModel extends BaseModel
     (_.find(AppConfig.locales, (h) => h.key == @locale) or {}).name
 
   identityFor: (type) ->
-    _.detect @identities(), (i) -> i.identityType == type
+    _.find @identities(), (i) -> i.identityType == type
 
   membershipFor: (group) ->
     _.head @recordStore.memberships.find(groupId: group.id, userId: @id)

@@ -392,7 +392,6 @@ en:
         outcome_created: '%{actor} shared a proposal outcome: %{title}'
         outcome_announced: '%{actor} shared a proposal outcome: %{title}'
         stance_created: "%{actor} voted on: %{title}"
-        stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
         user_reminded: '%{actor} is reminding you to vote in: %{title}'
 

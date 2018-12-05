@@ -6,7 +6,7 @@ AppConfig   = require 'shared/services/app_config'
 # a series of helpers which attaches functionality to a scope, such as performing
 # a sequence of steps, or loading for a particular function
 obeyMembersCanAnnounce = (steps, group) ->
-  if Session.user().isAdminOf?(group) or group.membersCanAnnounce
+  if Session.user().isAdminOf?(group) or (group && group.membersCanAnnounce)
     steps
   else
     _.without(steps, 'announce')

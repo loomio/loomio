@@ -1,3 +1,4 @@
+const moment = require('moment')
 require('coffeescript/register')
 pageHelper = require('../helpers/page_helper')
 
@@ -7,7 +8,7 @@ module.exports = {
     page.loadPath('setup_start_poll_form_from_url')
     page.expectValue('.poll-common-form-fields__title', "testing title")
   },
-  'can start a poll in a group': (test) => {
+  'can_start_a_proposal_in_a_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('test_discussion', { controller: 'polls' })
@@ -29,6 +30,189 @@ module.exports = {
 
     page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
       page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
+      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    })
+  },
+
+  'can_start_a_check_in_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.decision-tools-card__poll-type--count')
+    page.click(".poll-common-tool-tip__collapse")
+    page.fillIn('.poll-common-form-fields__title', 'A new proposal')
+    page.fillIn('.poll-common-form-fields textarea', 'Some details')
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectNoElement('.poll-common-modal')
+
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details', 'Some details')
+
+    page.click('.poll-common-vote-form__button:first-child')
+    page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
+    page.click('.poll-common-vote-form__submit')
+
+    page.scrollTo('.poll-common-stance-choice--count', () => {
+      page.expectText('.poll-common-stance-choice__option-name', 'Yes')
+      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    })
+  },
+
+  'can_start_a_poll_in_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.decision-tools-card__poll-type--poll')
+    page.click(".poll-common-tool-tip__collapse")
+    page.fillIn('.poll-common-form-fields__title', 'A new proposal')
+    page.fillIn('.poll-common-form-fields textarea', 'Some details')
+    page.fillIn('.poll-poll-form__add-option-input  ', 'An option')
+    page.click('.poll-poll-form__option-button')
+    // page.fillIn('.poll-poll-form__add-option-input  ', 'Another option')
+    // page.click('[aria-label="Remove option"]')
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectNoElement('.poll-common-modal')
+
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details', 'Some details')
+
+    page.click('.poll-common-vote-form__button')
+    page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
+    page.click('.poll-common-vote-form__submit')
+
+    page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
+      page.expectText('.poll-common-stance-choice--poll', 'An option')
+      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    })
+  },
+
+  'can_start_a_dot_vote_in_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.decision-tools-card__poll-type--dot_vote')
+    page.click(".poll-common-tool-tip__collapse")
+    page.fillIn('.poll-common-form-fields__title', 'A new proposal')
+    page.fillIn('.poll-common-form-fields textarea', 'Some details')
+    page.fillIn('.poll-poll-form__add-option-input  ', 'An option')
+    page.click('.poll-poll-form__option-button')
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectNoElement('.poll-common-modal')
+
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details', 'Some details')
+
+    page.click('.poll-dot-vote-vote-form__dot-button:last-child')
+    page.click('.poll-dot-vote-vote-form__dot-button:last-child')
+
+    page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
+    page.click('.poll-common-vote-form__submit')
+
+    page.scrollTo('.poll-dot-vote-votes-panel-stance', () => {
+      page.expectText('.poll-dot-vote-votes-panel__stance-choice', 'An option')
+      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    })
+  },
+
+  'can_start_a_score_poll_in_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.decision-tools-card__poll-type--score')
+    page.click(".poll-common-tool-tip__collapse")
+    page.fillIn('.poll-common-form-fields__title', 'A new proposal')
+    page.fillIn('.poll-common-form-fields textarea', 'Some details')
+    page.fillIn('.poll-poll-form__add-option-input  ', 'An option')
+    page.click('.poll-poll-form__option-button')
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectNoElement('.poll-common-modal')
+
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details', 'Some details')
+
+    page.fillIn('.poll-score-vote-form__score-input', '4')
+    page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
+
+
+    page.click('.poll-common-vote-form__submit')
+
+    page.scrollTo('.poll-common-votes-panel__stance', () => {
+      page.expectText('.poll-common-stance-choice', 'An option')
+      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    })
+  },
+
+  'can_start_a_time_poll_in_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.decision-tools-card__poll-type--meeting')
+    page.click('.poll-common-tool-tip__collapse')
+    page.fillIn('.poll-common-form-fields__title', 'A new proposal')
+    page.fillIn('.poll-common-form-fields textarea', 'Some details')
+
+    page.fillIn('.poll-meeting-time-field__datepicker-container input', moment().format('D MMMM YYYY'))
+    page.click('.poll-meeting-time-field__timepicker-container')
+    page.pause(500)
+    page.click('.md-select-menu-container.md-active md-option:first-child')
+
+    page.click('.poll-meeting-form__option-button')
+
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectNoElement('.poll-common-modal')
+
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details', 'Some details')
+
+    page.click('.poll-common-vote-form__option button:first-child')
+    page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
+
+
+    page.click('.poll-common-vote-form__submit')
+
+    page.expectElement('.poll-meeting-chart-panel--yes')
+    page.scrollTo('.poll-common-votes-panel__stance', () => {
+      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    })
+  },
+  'can_start_a_ranked_choice_in_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.decision-tools-card__poll-type--ranked_choice')
+    page.click('.poll-common-tool-tip__collapse')
+    page.fillIn('.poll-common-form-fields__title', 'A new proposal')
+    page.fillIn('.poll-common-form-fields textarea', 'Some details')
+
+    page.fillIn('.poll-poll-form__add-option-input', 'An option')
+    page.click('.poll-poll-form__option-button')
+    page.fillIn('.poll-poll-form__add-option-input', 'Another option')
+    page.click('.poll-common-form__options .poll-poll-form__option-button:last-child')
+
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectNoElement('.poll-common-modal')
+
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details', 'Some details')
+
+    page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
+
+    page.click('.poll-common-vote-form__submit')
+
+    page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
+      page.expectText('.poll-common-votes-panel__stance-name-and-option .poll-common-stance-choice--ranked-choice:first-child', 'An option')
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
     })
   },
@@ -79,36 +263,6 @@ module.exports = {
     page.click('.poll-common-outcome-form__submit')
     page.expectText('.flash-root__message', 'Outcome created')
     page.expectText('.poll-common-outcome-panel', 'Here is a statement')
-  },
-
-  'can_vote_as_a_visitor': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('test_proposal_poll_created_as_visitor', { controller: 'polls' })
-    page.click('.poll-common-vote-form__button:first-child')
-    page.fillIn('.poll-common-participant-form__name', 'Big Baloo')
-    page.fillIn('.poll-common-participant-form__email', 'big@baloo.com')
-    page.click('.poll-common-participant-form__legal-accepted')
-    page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
-    page.click('.poll-common-vote-form__submit')
-
-    page.expectText('.flash-root__message', 'Vote created')
-    page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Big Baloo')
-  },
-
-  'can_vote_as_a_logged_out_user': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('test_proposal_poll_created_as_logged_out', { controller: 'polls' })
-    page.click('.poll-common-vote-form__button:first-child')
-    page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
-    page.fillIn('.poll-common-participant-form__name', 'Big Baloo')
-    page.fillIn('.poll-common-participant-form__email', 'big@baloo.ninja')
-    page.click('.poll-common-participant-form__legal-accepted')
-    page.click('.poll-common-vote-form__submit')
-
-    page.expectText('.flash-root__message', 'Vote created')
-    page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Big Baloo')
   },
 
   'can_invite_users_via_email': (test) => {

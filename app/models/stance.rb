@@ -14,6 +14,13 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
+  has_paper_trail only: [:reason]
+  define_counter_cache(:versions_count)  { |stance| stance.versions.count }
+  def self.always_versioned_fields
+    [:reason]
+  end
+
+
   accepts_nested_attributes_for :stance_choices
   attr_accessor :visitor_attributes
 
@@ -31,14 +38,13 @@ class Stance < ApplicationRecord
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
   scope :chronologically, -> { order('created_at asc') }
-  scope :verified,       -> { joins(:participant).where('users.email_verified': true) }
-  scope :unverified,       -> { joins(:participant).where('users.email_verified': false) }
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
 
   validate :enough_stance_choices
   validate :total_score_is_valid
   validate :participant_is_complete
   validates :reason, length: { maximum: 500 }
+
 
   delegate :locale,         to: :author
   delegate :group,          to: :poll, allow_nil: true

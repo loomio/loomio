@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181120053443) do
+ActiveRecord::Schema.define(version: 20181204232402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,6 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.jsonb "properties"
     t.datetime "time"
     t.index ["properties"], name: "ahoy_events_properties", using: :gin
-    t.index ["time"], name: "index_ahoy_events_on_time"
-    t.index ["user_id"], name: "index_ahoy_events_on_user_id"
-    t.index ["visit_id"], name: "index_ahoy_events_on_visit_id"
   end
 
   create_table "ahoy_messages", id: :serial, force: :cascade do |t|
@@ -52,10 +49,7 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.datetime "sent_at"
     t.datetime "opened_at"
     t.datetime "clicked_at"
-    t.index ["sent_at"], name: "index_ahoy_messages_on_sent_at"
-    t.index ["to"], name: "index_ahoy_messages_on_to"
     t.index ["token"], name: "index_ahoy_messages_on_token"
-    t.index ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type"
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -146,12 +140,7 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.datetime "dismissed_at"
     t.string "read_ranges_string"
     t.index ["discussion_id"], name: "index_motion_read_logs_on_discussion_id"
-    t.index ["last_read_at"], name: "index_discussion_readers_on_last_read_at"
-    t.index ["participating"], name: "index_discussion_readers_on_participating"
     t.index ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true
-    t.index ["user_id", "volume"], name: "index_discussion_readers_on_user_id_and_volume"
-    t.index ["user_id"], name: "index_motion_read_logs_on_user_id"
-    t.index ["volume"], name: "index_discussion_readers_on_volume"
   end
 
   create_table "discussion_search_vectors", id: :serial, force: :cascade do |t|
@@ -247,9 +236,8 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["discussion_id"], name: "index_events_on_discussion_id"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
-    t.index ["kind"], name: "index_events_on_kind"
-    t.index ["parent_id", "position"], name: "index_events_on_parent_id_and_position", where: "(parent_id IS NOT NULL)"
-    t.index ["parent_id"], name: "index_events_on_parent_id", where: "(parent_id IS NOT NULL)"
+    t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
+    t.index ["parent_id"], name: "index_events_on_parent_id"
   end
 
   create_table "group_identities", id: :serial, force: :cascade do |t|
@@ -338,7 +326,7 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.string "token"
     t.string "admin_tags"
     t.boolean "members_can_announce", default: true, null: false
-    t.index ["archived_at"], name: "index_groups_on_archived_at"
+    t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
     t.index ["created_at"], name: "index_groups_on_created_at"
@@ -352,31 +340,7 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.index ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions"
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
     t.index ["token"], name: "index_groups_on_token", unique: true
-  end
-
-  create_table "invitations", id: :serial, force: :cascade do |t|
-    t.string "recipient_email", limit: 255
-    t.integer "inviter_id"
-    t.boolean "to_be_admin", default: false, null: false
-    t.string "token", limit: 255, null: false
-    t.datetime "accepted_at"
-    t.string "intent", default: "join_group", null: false
-    t.integer "canceller_id"
-    t.datetime "cancelled_at"
-    t.string "recipient_name", limit: 255
-    t.integer "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean "single_use", default: true, null: false
-    t.text "message"
-    t.integer "send_count", default: 0, null: false
-    t.index ["accepted_at"], name: "index_invitations_on_accepted_at", where: "(accepted_at IS NULL)"
-    t.index ["cancelled_at"], name: "index_invitations_on_cancelled_at"
-    t.index ["created_at"], name: "index_invitations_on_created_at"
-    t.index ["group_id"], name: "index_invitations_on_group_id"
-    t.index ["recipient_email"], name: "index_invitations_on_recipient_email"
-    t.index ["single_use"], name: "index_invitations_on_single_use"
-    t.index ["token"], name: "index_invitations_on_token"
+    t.index ["type"], name: "index_groups_on_type"
   end
 
   create_table "login_tokens", id: :serial, force: :cascade do |t|
@@ -388,6 +352,7 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.string "redirect"
     t.integer "code", null: false
     t.boolean "is_reactivation", default: false, null: false
+    t.index ["token"], name: "index_login_tokens_on_token"
   end
 
   create_table "membership_requests", id: :serial, force: :cascade do |t|
@@ -419,15 +384,14 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.datetime "archived_at"
     t.integer "inbox_position", default: 0
     t.boolean "admin", default: false, null: false
-    t.boolean "is_suspended", default: false, null: false
     t.integer "volume"
     t.jsonb "experiences", default: {}, null: false
     t.integer "invitation_id"
     t.string "token"
     t.datetime "accepted_at"
     t.string "title"
+    t.index ["archived_at"], name: "index_memberships_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_memberships_on_created_at"
-    t.index ["group_id", "user_id", "is_suspended", "archived_at"], name: "active_memberships"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -446,11 +410,8 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.jsonb "translation_values", default: {}, null: false
     t.string "url"
     t.integer "actor_id"
-    t.index ["actor_id"], name: "index_notifications_on_actor_id"
-    t.index ["created_at"], name: "index_notifications_on_created_at", order: { created_at: :desc }
     t.index ["event_id"], name: "index_notifications_on_event_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
-    t.index ["viewed"], name: "index_notifications_on_viewed"
   end
 
   create_table "oauth_access_grants", id: :serial, force: :cascade do |t|
@@ -595,6 +556,7 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
     t.index ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true
+    t.index ["key"], name: "index_polls_on_key", unique: true
   end
 
   create_table "reactions", id: :serial, force: :cascade do |t|
@@ -626,6 +588,7 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.boolean "latest", default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer "versions_count", default: 0
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
   end
@@ -750,7 +713,6 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.datetime "created_at"
     t.jsonb "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
-    t.index ["whodunnit"], name: "index_versions_on_whodunnit"
   end
 
   create_table "visits", id: :uuid, default: nil, force: :cascade do |t|
@@ -776,7 +738,6 @@ ActiveRecord::Schema.define(version: 20181120053443) do
     t.string "utm_content"
     t.string "utm_campaign"
     t.datetime "started_at"
-    t.index ["user_id"], name: "index_visits_on_user_id"
   end
 
   create_table "webhooks", id: :serial, force: :cascade do |t|
