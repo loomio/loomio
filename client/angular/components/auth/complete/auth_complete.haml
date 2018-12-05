@@ -11,5 +11,7 @@
     %md-input-container.auth-complete__code.md-no-errors
       %input.lmo-primary-form-input{type: "integer", maxlength: "6", ng-model: "session.code"}
     %validation_errors{subject: "session", field: "password"}
+    %br
+    %span{translate: "auth_form.check_spam_folder"}>
     .lmo-md-action
       %md-button.md-raised.md-primary{ng-click: "submit()", ng-disabled: "!session.code", translate: "auth_form.sign_in"}
