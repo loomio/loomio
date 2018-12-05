@@ -157,7 +157,7 @@ class User < ApplicationRecord
       search_for(query).
       joins(:memberships).
       where("memberships.group_id": group_ids).
-      where.not(id: user.id).
+      where.not('users.id': user.id).
       order("users.name")
   end
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
