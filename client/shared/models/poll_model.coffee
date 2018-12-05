@@ -51,6 +51,7 @@ module.exports = class PollModel extends BaseModel
     pollOptionNames: []
     pollOptionIds: []
     customFields: {}
+    # optionDate: moment().format('YYYY-MM-DD')
 
   audienceValues: ->
     name: @group().name
