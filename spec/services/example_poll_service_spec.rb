@@ -6,7 +6,10 @@ describe ExamplePollService do
   let!(:example_poll) { FactoryBot.create(:poll, example: true, created_at: 2.day.ago) }
   let!(:user) { FactoryBot.create(:user) }
   let!(:example_user) { FactoryBot.create(:user, email: "something@example.com", created_at: 2.day.ago) }
-  group.add_member! example_user
+
+  before do
+    group.add_member! example_user
+  end
 
   it('deletes example poll but does not delete poll') do
     ExamplePollService.cleanup
