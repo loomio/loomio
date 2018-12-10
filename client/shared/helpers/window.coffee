@@ -13,8 +13,10 @@ module.exports =
     bowser.msie and parseInt(bowser.version) <= 11
 
   exportGlobals: ->
-    window.moment = require 'moment'
-    window._      = require 'lodash'
+    window.moment  = require 'moment'
+    window._       = require 'lodash'
+
+
     _.extend window._, require 'shared/helpers/lodash_ext'
 
   initServiceWorker: ->

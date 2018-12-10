@@ -16,7 +16,7 @@
     %span
       %strong> {{::discussion.authorName()}}
       %span{aria-hidden: "true"}·
-      %timeago.nowrap{timestamp: "::discussion.createdAt" }>
+      %vue-component.nowrap{name: "TimeAgo", v-props-date: "::discussion.createdAt"}
       %span{aria-hidden: "true"}·
       %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
         %i.mdi.mdi-lock-outline>

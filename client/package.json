@@ -56,15 +56,15 @@
     "ment.io": "~0.9.15",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
+    "ngVue": "loomio/ngVue#master",
     "promise-polyfill": "^8.1.0",
     "promise.prototype.finally": "^3.1.0",
     "raven-js": "latest",
     "svg.js": "^2.7.0",
     "url-search-params-polyfill": "latest",
     "vinyl-source-stream": "^2.0.0",
-    "vue": "^2.5.17",
-    "vue-material": "1.0.0-beta-10.2",
-    "vue-template-compiler": "^2.5.17",
+    "vue": "^2.5.19",
+    "vue-i18n": "8.4.0",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
@@ -108,8 +108,6 @@
     "uglify-es": "^3.3.9",
     "uglifyify": "^5.0.1",
     "vinyl-buffer": "^1.0.1",
-    "vueify": "^9.4.1",
-    "vueify-extract-css": "^0.2.0",
     "yargs": "^12.0.5"
   }
 }

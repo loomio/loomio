@@ -19,7 +19,7 @@
           %span{ng-bind-html: "::headline()"}
           %span{aria-hidden: "true"}>·
           %a.thread-item__link.lmo-pointer{href: "{{::link()}}"}
-            %timeago.timeago--inline{timestamp: "event.createdAt"}
+            %vue-component.timeago--inline{name: "TimeAgo", v-props-date: "event.createdAt"}
         %md-button.md-button--tiny{ng-if: "canRemoveEvent()", ng-click: "removeEvent()"}
           %i.mdi.mdi-delete
       %thread_item_directive.thread-item__directive{event: "event"}

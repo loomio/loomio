@@ -66,7 +66,7 @@ module.exports =
 
   vue:
     main:           'vue/main.coffee'
-    vue:            'vue/components/*.vue'
+    vue:            'vue/components/*.coffee'
 
   nightwatch:
     config:

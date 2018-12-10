@@ -14,5 +14,5 @@
         %span
           %strong.lmo-truncate> {{ version.authorName() }}
           %span>·
-          %timeago.lmo-margin-right--small{timestamp: "version.createdAt"}
+          %vue-component.lmo-margin-right--small{name: "TimeAgo", v-props-date: "version.createdAt"}
       %revision_history_content{ng-if:"!loading", model: "model", version:"version"}

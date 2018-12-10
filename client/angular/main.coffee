@@ -18,7 +18,14 @@ bootDat (appConfig) ->
   window.Loomio = AppConfig
 
   require './dependencies/vendor'
+
+
+  require('ngVue')
+  require('ngVue/build/plugins.js')
+
   angular.module('loomioApp', [
+    'ngVue',
+    'ngVue.plugins',
     'ngNewRouter',
     'pascalprecht.translate',
     'ngSanitize',
