@@ -2,7 +2,7 @@ window.VueI18n = require('vue-i18n')
 window.Vue     = require('vue')
 Vue.use(VueI18n)
 
-i18n = new VueI18n(
+window.i18n = new VueI18n(
   locale: 'en',
   fallbackLocale: 'en',
   messages:
@@ -10,6 +10,10 @@ i18n = new VueI18n(
       test: "hello bonjour"
 )
 
+fetch('/api/v1/translations?lang=en').then (res)->
+  res.json().then (data) ->
+    i18n.setLocaleMessage('en', data)
+    
 # vue = new Vue(
 #   el: '#app',
 #   components:

@@ -1,7 +1,7 @@
 ThreadService = require 'shared/services/thread_service'
 LmoUrlService = require 'shared/services/lmo_url_service'
 
-module.exports = Vue.component 'ThreadPreview', 
+module.exports = Vue.component 'ThreadPreview',
   props:
     thread: Object
   methods:
@@ -33,7 +33,7 @@ module.exports = Vue.component 'ThreadPreview',
       </div>
       <!-- <div v-if="thread.pinned" title="{{'context_panel.thread_status.pinned' | translate}}" class="thread-preview__pin thread-preview__status-icon"><i class="mdi mdi-pin"></i></div> -->
   </a>
-  <p>{{$t('test')}}</p>
+  <p>{{$t('mute_explanation_modal.body_html')}}</p>
   <!--
   <div v-if="thread.discussionReaderId" class="thread-preview__actions lmo-hide-on-xs">
       <button @click="dismiss()" :disabled="!thread.isUnread()" :class="{disabled: !thread.isUnread()}" title="{{'dashboard_page.dismiss' | translate }}" class="md-raised thread-preview__dismiss">
