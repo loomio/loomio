@@ -42,7 +42,9 @@ module.exports = Vue.component 'BarChart',
             .x(0)
             .y(scoreDatum.index * barHeight)
   watch:
-    stanceCounts: -> this.draw()
+    stanceCounts: ->
+      console.log('watch stanceCounts', this.stanceCounts)
+      this.draw()
   template: '<div class="bar-chart"></div>'
   mounted: ->
     this.svgEl = svg(this.$el).size('100%', '100%')
