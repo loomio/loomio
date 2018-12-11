@@ -13,7 +13,7 @@ module.exports = Vue.component 'ThreadPreview',
     threadUrl: -> "/d/#{this.thread.key}"
   template: """
 <div class="thread-preview">
-  <a :href="urlFor(thread)" md-colors="{'border-color': 'primary-500'}" :class="{'thread-preview__link--unread': thread.isUnread()}" class="thread-preview__link">
+  <div md-colors="{'border-color': 'primary-500'}" :class="{'thread-preview__link--unread': thread.isUnread()}" class="thread-preview__link">
       <div class="sr-only"><span>{{thread.authorName()}}: {{thread.title}}.</span><span v-if="thread.hasUnreadActivity()" v-t="{ path: 'dashboard_page.aria_thread.unread', args: { count: thread.unreadItemsCount() }}"></span></div>
       <div class="thread-preview__icon">
           <user-avatar v-if="!thread.activePoll()" :user="thread.author()" size="medium"></user-avatar>
@@ -32,7 +32,7 @@ module.exports = Vue.component 'ThreadPreview',
           </div>
       </div>
       <div v-if="thread.pinned" :title="$t('context_panel.thread_status.pinned')" class="thread-preview__pin thread-preview__status-icon"><i class="mdi mdi-pin"></i></div>
-  </a>
+  </div>
   <div v-if="thread.discussionReaderId" class="thread-preview__actions lmo-hide-on-xs">
       <button @click="dismiss()" :disabled="!thread.isUnread()" :class="{disabled: !thread.isUnread()}" :title="$t('dashboard_page.dismiss')" class="md-raised thread-preview__dismiss">
           <div class="mdi mdi-check"></div>
