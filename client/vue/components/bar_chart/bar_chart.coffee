@@ -30,12 +30,12 @@ module.exports = Vue.component 'BarChart',
     drawChart: ->
       _.each this.shapes, (shape) -> shape.remove()
       barHeight = this.size / this.scoreData.length
-      _.map this.scoreData, (scoreData) =>
-        barWidth = _.max([(this.size * this.scoreData.score) / this.scoreMaxValue, 2])
+      _.map this.scoreData, (scoreDatum) =>
+        barWidth = _.max([(this.size * scoreDatum.score) / this.scoreMaxValue, 2])
         this.draw.rect(barWidth, barHeight-2)
-            .fill(this.scoreData.color)
+            .fill(scoreDatum.color)
             .x(0)
-            .y(this.scoreData.index * barHeight)
+            .y(scoreDatum.index * barHeight)
   watch:
     stanceCounts: (newStanceCounts, oldStanceCounts) ->
       if this.scoreData.length > 0 and this.scoreMaxValue > 0
