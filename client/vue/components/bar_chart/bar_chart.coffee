@@ -6,7 +6,7 @@ module.exports = Vue.component 'BarChart',
     stanceCounts: Array
     size: String # IK: seems bad
   data: ->
-    draw: null
+    svgEl: null
     shapes: []
   computed:
     scoreData: ->
@@ -15,6 +15,11 @@ module.exports = Vue.component 'BarChart',
     scoreMaxValue: ->
       _.max _.map(this.scoreData, (data) -> data.score)
   methods:
+    draw: ->
+      if this.scoreData.length > 0 and this.scoreMaxValue > 0
+        this.drawChart()
+      else
+        this.drawPlaceholder()
     drawPlaceholder: ->
       _.each this.shapes, (shape) -> shape.remove()
       barHeight = this.size / 3
@@ -23,7 +28,7 @@ module.exports = Vue.component 'BarChart',
         1: 2 * this.size / 3
         2: this.size / 3
       _.each barWidths, (width, index) =>
-        this.draw.rect(width, barHeight - 2)
+        this.svgEl.rect(width, barHeight - 2)
             .fill("#ebebeb")
             .x(0)
             .y(index * barHeight)
@@ -32,20 +37,13 @@ module.exports = Vue.component 'BarChart',
       barHeight = this.size / this.scoreData.length
       _.map this.scoreData, (scoreDatum) =>
         barWidth = _.max([(this.size * scoreDatum.score) / this.scoreMaxValue, 2])
-        this.draw.rect(barWidth, barHeight-2)
+        this.svgEl.rect(barWidth, barHeight-2)
             .fill(scoreDatum.color)
             .x(0)
             .y(scoreDatum.index * barHeight)
   watch:
-    stanceCounts: (newStanceCounts, oldStanceCounts) ->
-      if this.scoreData.length > 0 and this.scoreMaxValue > 0
-        this.drawChart()
-      else
-        this.drawPlaceholder()
+    stanceCounts: -> this.draw()
   template: '<div class="bar-chart"></div>'
   mounted: ->
-    this.draw = svg(this.$el).size('100%', '100%')
-    if this.scoreData.length > 0 and this.scoreMaxValue > 0
-      this.drawChart()
-    else
-      this.drawPlaceholder()
+    this.svgEl = svg(this.$el).size('100%', '100%')
+    this.draw()
