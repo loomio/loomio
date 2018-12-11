@@ -26,6 +26,8 @@ angular.module('loomioApp').value('TimeAgo', require 'vue/components/time_ago/ti
 angular.module('loomioApp').value('ThreadPreview', require 'vue/components/thread_preview/thread_preview.coffee')
 angular.module('loomioApp').value('UserAvatar', require 'vue/components/user_avatar/user_avatar.coffee')
 angular.module('loomioApp').value('UserAvatarBody', require 'vue/components/user_avatar_body/user_avatar_body.coffee')
+angular.module('loomioApp').value('PollCommonChartPreview', require 'vue/components/poll_common_chart_preview/poll_common_chart_preview.coffee')
+angular.module('loomioApp').value('BarChart', require 'vue/components/bar_chart/bar_chart.coffee')
 angular.module('loomioApp').config ['$ngVueProvider', ($ngVueProvider) ->
   $ngVueProvider.setRootVueInstanceProps({
     i18n: i18n

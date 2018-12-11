@@ -18,8 +18,8 @@ module.exports = Vue.component 'UserAvatar',
     <a :href="urlFor(user)" v-if="!noLink" class="user-avatar__profile-link">
         <user-avatar-body :user="user" :coordinator="coordinator" :size="size" :colors="colors"></user-avatar-body>
     </a>
-    <!-- <div ng-if="noLink" class="user-avatar__profile-link">
-        <user_avatar_body user="user" coordinator="coordinator" size="size" colors="colors"></user_avatar_body>
-    </div> -->
+    <div v-if="noLink" class="user-avatar__profile-link">
+        <user-avatar-body :user="user" :coordinator="coordinator" :size="size" :colors="colors"></user-avatar-body>
+    </div>
 </div>
 """
