@@ -38,6 +38,7 @@ module.exports =
       include(vendor, 'css'),
       'angular/css/app.scss',
       'angular/components/**/*.scss',
+      'vue/components/**/*.scss',
       'angular/pages/**/*.scss',
       include(plugins, 'scss')
     ])
