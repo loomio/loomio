@@ -11,6 +11,7 @@ module.exports = Vue.component 'PollCommonChartPreview',
     myStance: -> myLastStanceFor(this.poll)
   template: """
 <div class="poll-common-chart-preview">
+  {{ poll.stanceCounts }}
   <bar-chart v-if="chartType == \'bar\'" :stance-counts="this.poll.stanceCounts" size="50"></bar-chart>
 
   <!-- <progress_chart ng-if="chartType() == \'progress\'" stance_counts="poll.stanceCounts" goal="poll.goal()" size="50"></progress_chart>

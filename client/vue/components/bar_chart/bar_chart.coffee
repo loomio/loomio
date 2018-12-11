@@ -8,7 +8,6 @@ module.exports = Vue.component 'BarChart',
   data: ->
     svgEl: null
     shapes: []
-    someString: "foo"
   computed:
     scoreData: ->
       _.take(_.map(this.stanceCounts, (score, index) ->
@@ -16,9 +15,6 @@ module.exports = Vue.component 'BarChart',
     scoreMaxValue: ->
       _.max _.map(this.scoreData, (data) -> data.score)
   methods:
-    changeString: ->
-      console.log('changeString', this.someString)
-      this.someString = "bar"
     draw: ->
       if this.scoreData.length > 0 and this.scoreMaxValue > 0
         this.drawChart()
@@ -46,12 +42,10 @@ module.exports = Vue.component 'BarChart',
             .x(0)
             .y(scoreDatum.index * barHeight)
   watch:
-    someString: ->
-      console.log('watch someString', this.someString)
-  #   stanceCounts: -> this.draw()
-  template: '<div class="bar-chart"><button v-on:click="changeString">asd</button></div>'
-  # mounted: ->
-  #   this.svgEl = svg(this.$el).size('100%', '100%')
-  #   this.draw()
-  beforeUpdate: ->
-    console.log('updated', this.someString)
+    stanceCounts: ->
+      console.log('watch stanceCounts', this.stanceCounts)
+      this.draw()
+  template: '<div class="bar-chart"></div>'
+  mounted: ->
+    this.svgEl = svg(this.$el).size('100%', '100%')
+    this.draw()
