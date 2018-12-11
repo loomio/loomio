@@ -17,7 +17,7 @@ module.exports = Vue.component 'ThreadPreview',
       <div class="sr-only"><span>{{thread.authorName()}}: {{thread.title}}.</span><span v-if="thread.hasUnreadActivity()" v-t="{ path: 'dashboard_page.aria_thread.unread', args: { count: thread.unreadItemsCount() }}"></span></div>
       <div class="thread-preview__icon">
           <user-avatar v-if="!thread.activePoll()" :user="thread.author()" size="medium"></user-avatar>
-          <!-- <poll_common_chart_preview ng-if="thread.activePoll()" poll="thread.activePoll()"></poll_common_chart_preview> -->
+          <poll-common-chart-preview v-if="thread.activePoll()" :poll="thread.activePoll()"></poll-common-chart-preview>
       </div>
       <div class="thread-preview__details">
           <div class="thread-preview__text-container">
