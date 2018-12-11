@@ -6,9 +6,10 @@ module.exports = Vue.component 'BarChart',
     poll: Object
   methods:
     urlFor: (model) -> LmoUrlService.route(model: model)
-  computed:
-    countFor: (option) -> this.poll.stanceData[option.name] or 0
-    barTextFor: (option) -> "#{$this.countFor(option)} - #{option.name}".replace(/\s/g, '\u00a0')
+    countFor: (option) ->
+      this.poll.stanceData[option.name] or 0
+    barTextFor: (option) ->
+      "#{this.countFor(option)} - #{option.name}".replace(/\s/g, '\u00a0')
     percentageFor: (option) ->
       max = _.max(_.values(this.poll.stanceData))
       return unless max > 0
@@ -16,12 +17,20 @@ module.exports = Vue.component 'BarChart',
     backgroundImageFor: (option) ->
       "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
     styleData: (option) ->
-      'background-image': backgroundImageFor(option)
-      'background-size': "#{percentageFor(option)} 100%"
+      'background-image': this.backgroundImageFor(option)
+      'background-size': "#{this.percentageFor(option)} 100%"
+  computed:
     orderedPollOptions: ->
-      _.orderBy(this.poll, 'priority')
+      _.orderBy(this.poll.pollOptions(), ['priority'])
   template: """
 <div class="poll-common-bar-chart">
-  <div v-for="option in orderedPollOptions" :key="option.id" :style="styleData(option)" class="poll-common-bar-chart__bar">{{barTextFor(option)}}</div>
+  <div
+    v-for="option in orderedPollOptions"
+    :key="option.id"
+    :style="styleData(option)"
+    class="poll-common-bar-chart__bar"
+  >
+    {{barTextFor(option)}}
+  </div>
 </div>
 """
