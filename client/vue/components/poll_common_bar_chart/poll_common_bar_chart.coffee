@@ -1,7 +1,7 @@
 { fieldFromTemplate, myLastStanceFor } = require 'shared/helpers/poll'
 LmoUrlService = require 'shared/services/lmo_url_service'
 
-module.exports = Vue.component 'BarChart',
+module.exports = Vue.component 'PollCommonBarChart',
   props:
     poll: Object
   methods:
