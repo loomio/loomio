@@ -1,4 +1,5 @@
 .thread-previews
   %outlet{name: "before-thread-previews", model: "query"}
+  -# {{ query.threads()[0].activePoll().stanceCounts }}
   .blank{ng-repeat: "thread in query.threads() | orderBy: vars.order | limitTo: limit track by thread.key"}
     %vue-component{name: "ThreadPreview", v-props-thread: "thread"}
