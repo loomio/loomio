@@ -6,9 +6,11 @@ module.exports = Vue.component 'ThreadPreviewCollection',
       type: String
       default: '-lastActivityAt'
     }
+  data: ->
+    threads: @query.threads()
   computed:
     orderedThreads: ->
-      _.slice(_.orderBy(@query.threads(), @order), @limit)
+      _.slice(_.orderBy(@threads, @order), @limit)
   template:
     """
     <div class="thread-previews">
