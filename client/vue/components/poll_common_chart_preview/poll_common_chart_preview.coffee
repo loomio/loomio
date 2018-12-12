@@ -27,6 +27,10 @@ module.exports = Vue.component 'PollCommonChartPreview',
     :stance-counts="this.poll.stanceCounts"
     :my-stance="this.myStance"
   ></poll-proposal-chart-preview>
-  <!--  <matrix_chart ng-if="chartType() == \'matrix\'" matrix_counts="poll.matrixCounts" size="50"></matrix_chart> -->
+  <matrix-chart
+    v-if="chartType == \'matrix\'"
+    :matrix-counts="this.poll.matrixCounts"
+    size="50"
+  ></matrix-chart>
 </div>
 """
