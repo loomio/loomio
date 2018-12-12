@@ -5,11 +5,13 @@ module.exports = new class ThreadQueryService
 
   queryFor: (options = {}) ->
     Records.discussions.collection.removeDynamicView(options.name) if options.overwrite
-    threads: -> applyFilters(options).data()
-    length:  -> @threads().length
-    any:     -> @length() > 0
-    constructor:
-      singular: 'query'
+    return {
+      threads: -> applyFilters(options).data()
+      length:  -> @threads().length
+      any: -> @length() > 0
+      constructor:
+        singular: 'query'
+    }
 
   applyFilters = (options) ->
     return view if view = Records.discussions.collection.getDynamicView(options.name)

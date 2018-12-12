@@ -29,6 +29,6 @@
       .dashboard-page__collections{ng-if: "!dashboardPage.noThreads()"}
         %section.thread-preview-collection__container{ng-if: "dashboardPage.views[viewName].any()", class: "dashboard-page__{{viewName}}", ng-repeat: "viewName in dashboardPage.viewNames"}
           %h2.dashboard-page__date-range{translate: "dashboard_page.threads_from.{{viewName}}"}
-          %thread_preview_collection.thread-previews-container{query: "dashboardPage.views[viewName]"}
+          %vue-component.thread-previews-container{name: "ThreadPreviewCollection", v-props-query: "dashboardPage.views[viewName]"}
         .dashboard-page__footer{ng-if: "!dashboardPage.loader.exhausted", in-view: "$inview && dashboardPage.loader.loadMore()", in-view-options: "{debounce: 200}"} &nbsp;
         %loading{ng-show: "dashboardPage.loader.loading"}

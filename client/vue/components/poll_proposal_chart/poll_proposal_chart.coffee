@@ -12,7 +12,6 @@ module.exports = Vue.component 'PollProposalChart',
     radius: ->
       this.diameter / 2.0
     uniquePositionsCount: ->
-      console.log('this.stanceCounts', this.stanceCounts)
       _.compact(this.stanceCounts).length
   methods:
     arcPath: (startAngle, endAngle) ->
