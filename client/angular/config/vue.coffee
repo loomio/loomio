@@ -30,6 +30,8 @@ angular.module('loomioApp').value('PollCommonChartPreview', require 'vue/compone
 angular.module('loomioApp').value('PollCommonBarChart', require 'vue/components/poll_common_bar_chart/poll_common_bar_chart.coffee')
 angular.module('loomioApp').value('BarChart', require 'vue/components/bar_chart/bar_chart.coffee')
 angular.module('loomioApp').value('ProgressChart', require 'vue/components/progress_chart/progress_chart.coffee')
+angular.module('loomioApp').value('PollProposalChartPreview', require 'vue/components/poll_proposal_chart_preview/poll_proposal_chart_preview.coffee')
+angular.module('loomioApp').value('PollProposalChart', require 'vue/components/poll_proposal_chart/poll_proposal_chart.coffee')
 angular.module('loomioApp').config ['$ngVueProvider', ($ngVueProvider) ->
   $ngVueProvider.setRootVueInstanceProps({
     i18n: i18n
