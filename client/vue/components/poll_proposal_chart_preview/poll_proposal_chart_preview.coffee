@@ -5,7 +5,7 @@ module.exports = Vue.component 'PollProposalChartPreview',
   template: """
     <div class="poll-proposal-chart-preview">
       <poll-proposal-chart
-        :stance-counts="this.stanceCounts"
+        :stance-counts="stanceCounts"
         :diameter="50"
         class="poll-common-collapsed__pie-chart"
       ></poll-proposal-chart>

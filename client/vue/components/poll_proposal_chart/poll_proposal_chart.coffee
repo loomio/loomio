@@ -8,6 +8,7 @@ module.exports = Vue.component 'PollProposalChart',
   data: ->
     svgEl: null
     shapes: []
+    dStanceCounts: @stanceCounts
   computed:
     radius: ->
       this.diameter / 2.0

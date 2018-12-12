@@ -4,6 +4,8 @@ LmoUrlService = require 'shared/services/lmo_url_service'
 module.exports = Vue.component 'ThreadPreview',
   props:
     thread: Object
+  data: ->
+    dthread: @thread
   methods:
     urlFor: (model) -> LmoUrlService.route(model: model)
     dismiss: -> ThreadService.dismiss(this.thread)
