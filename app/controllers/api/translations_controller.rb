@@ -1,6 +1,16 @@
 class API::TranslationsController < API::RestfulController
   def show
-    render json: ClientTranslationService.new(params[:lang]).as_json
+    {
+     title: "this is a title",
+     other: {
+       thing: "another {{title}}"
+       }
+     }
+    if params[:vue]
+      render json: convertcurlys(ClientTranslationService.new(params[:lang]).as_json
+    else
+      render json: ClientTranslationService.new(params[:lang]).as_json
+    end
   end
 
   def inline
