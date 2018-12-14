@@ -273,7 +273,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
-    icalendar (2.5.1)
+    icalendar (2.5.2)
       ice_cube (~> 0.16)
     ice_cube (0.16.3)
     inherited_resources (1.9.0)
