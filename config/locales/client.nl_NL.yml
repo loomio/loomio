@@ -145,14 +145,6 @@ nl_NL:
     internal_server_error: 'Helaas, er ging iets fout. Probeer het opnieuw.'
   verify_email_notice:
     please_verify: Bedankt voor de medewerking! Gelieve je e-mail te controleren op een toegekomen link ter bevestiging van je stemming.
-  verify_stances:
-    title: Stemmen bevestigen
-    description: Gelieve de onderstaande stemmen te controleren en te bevestigen dat deze de jouwe zijn.
-    verify: Bevestigen
-    remove: Verwijderen
-    verify_success: Stem bevestigd
-    remove_success: Stem verwijderd
-    all_done: Goed gedaan, je hebt alle stemmen bevestigd.
   previous_polls_page:
     heading: Activiteiten in {{name}}
     polls_count: Toont {{loaded}} van de {{total}} beslissingen
@@ -375,7 +367,7 @@ nl_NL:
     translate_thread: Beschrijving vertalen
     edit_poll: '''Peiling'' bewerken'
     translate_poll: '''Peiling'' vertalen'
-    edit_stance: Verander je stem
+    edit_stance: Verander standpunt
     translate_stance: Stem vertalen
     edit_comment: Commentaar bewerken
     delete_comment: Commentaar verwijderen
@@ -990,7 +982,6 @@ nl_NL:
     ranked_choice_title: Keuzes rangschikken
   poll_common:
     your_response: Je antwoord
-    change_your_response: Verander je antwoord
     reason: Reden
     reason_placeholder: Nog bijkomend commentaar?
     message: Bericht
@@ -1001,7 +992,6 @@ nl_NL:
     update_outcome: Uitkomst actualiseren
     outcome: Uitkomst
     statement: Verklaring
-    change_your_stance: Verander je stem
     load_more: Laad meer
     details: Details
     participant_name: Je naam
@@ -1011,6 +1001,7 @@ nl_NL:
     share_count: '''Check'' delen'
     start_poll: Start een beslissing
     publish_poll: '''Peiling'' delen'
+    save_changes: Bewaren
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -1199,6 +1190,9 @@ nl_NL:
     dots_per_person: Stippen per persoon
     dot_vote_created: '''Dotmocracy'' aangemaakt'
     dot_vote_updated: '''Dotmocracy'' geactualiseerd'
+  poll_score_form:
+    details_placeholder: Verschaf de nodige uitleg die mensen zouden nodig hebben om te participeren
+    add_option_placeholder: Optie toevoegen
   poll_meeting_form:
     tool_tip_expanded: |
         <p>Gebruik 'Moment bevragen' om uit te zoeken wanneer mensen beschikbaar zijn om af te spreken. </p>
@@ -1320,8 +1314,6 @@ nl_NL:
     poll_published_with_discussion: "een peiling gepubliceerd in <strong>{{discussion}}</strong>:"
     view_it_on_loomio: Bekijk het op {{site_name}}
     timestamp: Vandaag om {{timestamp}}
-  poll_common_participant_form:
-    participant_name_placeholder: Hoe heet je?
   poll_common_subscribe_form:
     receive_updates_title: Je stem is opgenomen
     receive_updates_helptext: Als je een e-mail wil krijgen over de uitkomst van deze peiling, voer dan je e-mail adres hieronder in.
@@ -1330,9 +1322,6 @@ nl_NL:
     no_thanks: Nee dankjewel
   poll_common_example_card:
     what_is_this: "Dit is een live voorbeeld van een {{type}}. Je ben een deelnemer - doe eens een poging!"
-    helptext_before: "Als je er klaar voor bent,"
-    helptext_link: "start dan een {{type}}"
-    helptext_after: "van jezelf en nodig een paar mensen uit om het uit te proberen"
   share_poll_page:
     title: Deel peiling - {{title}}
   polls_page:
@@ -1355,7 +1344,6 @@ nl_NL:
     invalid_token: "Het spijt me da het niet gelukt is in te loggen met die token. Klink hieronder om nog een te versturen."
     email_not_found: "Helaas konden we geen account vinden met dat e-mailadres"
     email_placeholder: you@example.com
-    login_with_token: Je bent klaar! Klik onderstaande link aan om in te loggen.
     login_link_helptext_with_password: "Typ je wachtwoord in of log in via e-mail."
     name_required: Geef aub een naam in
     welcome_back: Welkom terug, {{name}}!

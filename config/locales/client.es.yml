@@ -154,14 +154,6 @@ es:
     internal_server_error: 'Lo sentimos, pero algo ha ido mal. Por favor, inténtalo otra vez.'
   verify_email_notice:
     please_verify: 'Gracias por participar! Por favor busca en tu correo un email con un enlace para verificar tu voto. '
-  verify_stances:
-    title: Verificar votos
-    description: 'Por favor verifica que los siguientes votos son tuyos. '
-    verify: Verificar
-    remove: Eliminar
-    verify_success: 'Voto verificado '
-    remove_success: 'Voto eliminado '
-    all_done: Bien hecho! verificaste todos tus votos.
   previous_polls_page:
     heading: Actividades en {{name}}
     polls_count: Mostrando {{loaded}} de {{total}} decisiones
@@ -429,6 +421,9 @@ es:
       poll_announced:
         title: 'Invitar a votar '
         helptext: ¿A quién te gustaría invitar a la votación?
+      poll:
+        title: Notificar cambios
+        helptext: '¿A quién te gustaría notificar de los cambios? '
       poll_edited:
         title: Notificar cambios
         helptext: '¿A quién te gustaría notificar de los cambios? '
@@ -466,7 +461,7 @@ es:
     announce_poll: 'Invitar personas a votar '
     announce_poll_active: '(Nadie ha sido invitado aún) '
     translate_poll: Traducir encuesta
-    edit_stance: Cambia tu voto
+    edit_stance: Cambiar decisión
     translate_stance: Traducir voto
     edit_comment: Editar comentario
     delete_comment: 'Eliminar comentario '
@@ -1168,7 +1163,6 @@ es:
     ranked_choice_title: Opción priorizada
   poll_common:
     your_response: Tu respuesta
-    change_your_response: Cambie su respuesta
     reason: Razón
     reason_placeholder: ¿Algún otro comentario?
     message: Mensaje
@@ -1181,7 +1175,6 @@ es:
     update_outcome: Actualizar el resultado
     outcome: Resultado
     statement: Declaración
-    change_your_stance: Cambie su voto
     load_more: Carga más
     details: Detalles
     participant_name: Tu nombre
@@ -1192,6 +1185,7 @@ es:
     start_poll: 'Iniciar una decisión '
     publish_poll: Compartir encuesta
     view_all: Ver todo
+    save_changes: Guardar
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -1405,6 +1399,9 @@ es:
     dots_per_person_helptext: 'El numero de puntos que cada votante distribuirá '
     dot_vote_created: Voto de punto creado
     dot_vote_updated: Voto de punto actualizado
+  poll_score_form:
+    details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
+    add_option_placeholder: Agregar opción
   poll_meeting_form:
     tool_tip_expanded: |
         <p>Usa una coordinación de horario para saber cuándo hay disponibilidad de la gente para reunirse.</p>
@@ -1537,8 +1534,6 @@ es:
     poll_published_with_discussion: "publicó una encuesta en <strong>{{discussion}}</strong>:"
     view_it_on_loomio: Verlo en {{site_name}}
     timestamp: Hoy en {{timestamp}}
-  poll_common_participant_form:
-    participant_name_placeholder: ¿Cuál es tu nombre?
   poll_common_subscribe_form:
     receive_updates_title: 'Tu voto ha sido enviado '
     receive_updates_helptext: 'Si deseas recibir un correo sobre el resultado de esta encuesta, ingresa tu dirección de email debajo '
@@ -1547,9 +1542,6 @@ es:
     no_thanks: No, gracias
   poll_common_example_card:
     what_is_this: "Este es un ejemplo en vivo de {{type}}. Tu eres un participante - pruebalo! "
-    helptext_before: "Cuando estés list@,"
-    helptext_link: "comienza una {{type}}"
-    helptext_after: "propia, e invita a algunas personas a probarlo."
   share_poll_page:
     title: Compartir encuesta - {{title}}
   polls_page:
@@ -1576,23 +1568,16 @@ es:
     invalid_token: "Perdón pero no pudimos usar ese enlace para que ingreses. Haz clic debajo para que te enviemos uno nuevo"
     email_not_found: "Lo lamentamos, no pudimos encontrar una cuenta con esa dirección de correo electrónico"
     email_placeholder: tu@ejemplo.com
-    login_with_token: Estas listo! haz clic en el enlace debajo para ingresar.
-    login_link_helptext: |
-        Haz clic en el siguiente botón, y te enviaremos un enlace para ingresar instantáneamente.
-        Si deseas usar una contraseña para ingresar en el futuro, puedes ingresar una en tu página de perfil.
     login_link_helptext_with_password: "Introduce tu contraseña, o entra a través de un correo electrónico."
-    sign_up_helptext: "Porfavor completa este formulario para crear una cuenta de usuario"
+    sign_up_helptext: Porfavor completa este formulario para crear una cuenta de usuario
     i_accept: "Acepto los <a href='{{termsUrl}}' target='_blank'>Términos del servicio</a> y la <a href='{{privacyUrl}}' target='_blank'>Política de privacidad</a>"
     name_required: Por favor ingresa un nombre
     terms_required: 'Debes aceptar los Términos del Servicio '
     account_inactive: '¡Vaya! parece que la cuenta de {{email}} está desactivada. '
     privacy_notice: "Data personal es colectada cuando usas {{siteName}}. <br/>Lee nuestra <a href='{{privacyUrl}}' target='_blank'>Política de privacidad</a>para saber más."
-    welcome: Bienvenido a {{siteName}}!
     welcome_back: Bienvenido nuevamente, {{name}}!
     login_link: Entra a través de un correo electrónico
     set_password: Configura la contraseña
-    set_password_helptext: '¿Cansado de entrar con tu email? '
-    set_password_link: Configura una contraseña
     hello: "Hola, {{name}}!"
     new_to_loomio: ¿Primera vez en {{site_name}}? Crea una nueva cuenta
     create_account: Crear una cuenta

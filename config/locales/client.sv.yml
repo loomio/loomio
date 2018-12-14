@@ -154,14 +154,6 @@ sv:
     internal_server_error: 'Vi är ledsna, men något gick fel. Var god försök igen.'
   verify_email_notice:
     please_verify: Tack för att du deltar! Vänligen kolla din e-post efter en länk för att verifiera din röst.
-  verify_stances:
-    title: Kontrollera röster
-    description: Läs igenom rösterna nedan och kontrollera att de är dina.
-    verify: Verifiera
-    remove: Ta bort
-    verify_success: Röst verifierad
-    remove_success: Röst borttagen
-    all_done: Bra jobbat, du har verfierat alla röster.
   previous_polls_page:
     heading: Aktiviter i {{namn}}
     polls_count: Visar {{loaded}} av {{total}} beslut
@@ -336,6 +328,8 @@ sv:
     poll_title: Undersökning
     meeting_title: Tidsröstning
     ranked_choice_title: Valfritt val
+  poll_common:
+    save_changes: Spara
   poll_common_form:
     closed: Stängd
     start: Starta

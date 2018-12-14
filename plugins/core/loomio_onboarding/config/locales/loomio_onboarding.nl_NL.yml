@@ -9,8 +9,6 @@ nl_NL:
         invite_people_in: Nodig mensen uit
         start_thread: Start een discussiebord
         make_decision: Start een beslissing
-      learn_more: Leer meer op de Loomio School
-      learn_more_title: Opent in een nieuw tabblad
       celebration_message: Goed zo! Je groep is klaar!
       dismiss_this_card: Deze kaart afwijzen
     user_progress_card:

@@ -9,8 +9,6 @@ es:
         invite_people_in: Invita a personas a
         start_thread: Comience un hilo de discusión
         make_decision: 'Iniciar una decisión '
-      learn_more: Obtenga más información en Loomio School
-      learn_more_title: Abre en nueva ventana
       celebration_message: Bien, tu grupo esta listo!
       dismiss_this_card: Descartar este cartel
     user_progress_card:

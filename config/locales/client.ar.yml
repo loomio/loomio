@@ -129,6 +129,8 @@ ar:
     privacy_public: 'يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.'
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
     privacy_organisation: 'سيكون الموضوع ظاهراً لأعضاء {{parent}} و أعضاء {{group}}.'
+  action_dock:
+    edit_stance: تغيير الموقف
   join_group_button:
     join_group: انضم للمجموعة
     messages:
@@ -507,6 +509,8 @@ ar:
     submit: سحب إمكانية الدخول
     messages:
       success: "لن يستطيع '{{name}}' استخدام حسابك بعد الآن."
+  poll_common:
+    save_changes: حفظ
   poll_common_form:
     closed: مغلقة
   poll_count_options:

@@ -74,6 +74,8 @@ km:
     invitation: 'គន្លឹះសម្រាប់ការសរសេរការអញ្ចើញដ៏អស្ចារ្យ'
     proposal: 'គន្លឹះសម្រាប់ការសរសេរសំណើរច្បាស់លាស់'
     vote: 'អ្នកអាចផ្លាស់ប្ដូរទីតាំងរបស់អ្នកនៅពេលណាមួួយ'
+  poll_common:
+    save_changes: រក្សាទុក​
   poll_common_form:
     closed: បានបិទ
   poll_count_options:

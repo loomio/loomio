@@ -146,14 +146,6 @@ uk:
     internal_server_error: 'На жаль щось пішло не так. Будь ласка спробуйте ще раз.'
   verify_email_notice:
     please_verify: Дякуємо за участь! Будь ласка, перевірте свою пошту та підтвердіть свій голос за посиланням.
-  verify_stances:
-    title: Підтверджені голоси
-    description: Будь ласка, перегляньте наведені нижче голоси та переконайтеся, що вони є вашими.
-    verify: Підтвердити
-    remove: Видалити
-    verify_success: Голос підтверджено
-    remove_success: Голос видалено
-    all_done: Чудова робота, ви підтвердили всі голоси.
   previous_polls_page:
     heading: Оновлення у {{name}}
     polls_count: Відображені {{loaded}} з {{total}} рішень
@@ -376,7 +368,7 @@ uk:
     translate_thread: Перекласти контекст
     edit_poll: Редагувати опитування
     translate_poll: Перекласти опитування
-    edit_stance: Змінити ваш голос
+    edit_stance: Змінити ставлення
     translate_stance: Перекласти голосування
     edit_comment: Редагувати коментар
     delete_comment: Видалити коментар
@@ -986,7 +978,6 @@ uk:
     ranked_choice_title: Ранговий вибір
   poll_common:
     your_response: Ваша відповідь
-    change_your_response: Змінити вашу відповідь
     reason: Аргумент
     reason_placeholder: Маєте додаткові коментарі?
     message: Повідомлення
@@ -997,7 +988,6 @@ uk:
     update_outcome: Оновити результат
     outcome: Результат
     statement: Пояснення
-    change_your_stance: Змінити ваш голос
     load_more: Завантажити більше
     details: Деталі
     participant_name: Ваше ім'я
@@ -1007,6 +997,7 @@ uk:
     share_count: Поширити контрольний список
     start_poll: Розпочати процес прийняття рішення
     publish_poll: Поширити опитування
+    save_changes: Зберегти
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -1195,6 +1186,9 @@ uk:
     dots_per_person: Кількість точок на особу
     dot_vote_created: Відбіркове голосування створено
     dot_vote_updated: Відбіркове голосування оновлено
+  poll_score_form:
+    details_placeholder: Надайте будь-які уточнюючі деталі, що можливо будуть потрібні людям аби долучитись
+    add_option_placeholder: Додати варіант відповіді
   poll_meeting_form:
     tool_tip_expanded: |
         <p>Використовуйте опитування щодо часу, аби знайти час коли люди доступні для зустрічі.</p>
@@ -1315,8 +1309,6 @@ uk:
     poll_published_with_discussion: "опублікував(ла) опитування в <strong>{{discussion}}</strong>:"
     view_it_on_loomio: Переглянути її на {{site_name}}
     timestamp: Сьогодні о {{timestamp}}
-  poll_common_participant_form:
-    participant_name_placeholder: Як вас звати?
   poll_common_subscribe_form:
     receive_updates_title: Ваше рішення було записане
     receive_updates_helptext: Якщо бажаєте отримати поштове сповіщення щодо результатів цього опитування, залиште вашу поштову адресу нижче
@@ -1325,9 +1317,6 @@ uk:
     no_thanks: Ні, дякую
   poll_common_example_card:
     what_is_this: "Це реальний приклад {{type}}. Ви учасник - спробуйте!"
-    helptext_before: "Коли ви будете готові,"
-    helptext_link: "створіть {{type}}"
-    helptext_after: "самостійно, і запросіть людей щоб спробувати."
   share_poll_page:
     title: Поширити опитування - {{title}}
   polls_page:
@@ -1350,7 +1339,6 @@ uk:
     invalid_token: "На жаль, нам не вдалося використати цей токен для входу в систему. Натисніть нижче, щоб надіслати інший."
     email_not_found: "На жаль, ми не змогли знайти обліковий запис з цією адресою електронної пошти"
     email_placeholder: you@example.com
-    login_with_token: Ви все налаштували! Натисніть посилання нижче для входу.
     login_link_helptext_with_password: "Введіть пароль або увійдіть через електронну пошту."
     name_required: Бідь ласка введіть ім'я
     welcome_back: З поверненням, {{name}}!

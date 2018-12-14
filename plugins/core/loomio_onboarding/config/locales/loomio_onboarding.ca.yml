@@ -9,8 +9,6 @@ ca:
         invite_people_in: Convida a gent
         start_thread: Comença un fil de discussió
         make_decision: Comença una decissió
-      learn_more: Aprèn més a l'Escola Loomio
-      learn_more_title: S'obre en una nova pestanya
       celebration_message: Bé! El teu grup ja està apunt!
       dismiss_this_card: Descarta aquesta fitxa
     user_progress_card:

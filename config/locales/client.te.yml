@@ -45,8 +45,6 @@ te:
       delete: తొలగించు
       send: పంపించు
       invite: ఆహ్నానించు
-  verify_stances:
-    remove: తీసివేయి
   sign_up_form:
     password_label: 'సంకేతపదం:'
     password_confirmation_label: 'అదే సంకేతపదం మరోసారి:'
@@ -152,6 +150,8 @@ te:
   registered_app_form:
     new_application_title: కొత్త ఫిర్యాదు
     name_label: పేరు
+  poll_common:
+    save_changes: భద్రపరుచు
   poll_common_form:
     closed: మూసివేయబడింది
     update: తాజాకరించు
