@@ -25,6 +25,12 @@ describe API::TranslationsController do
       json = JSON.parse(response.body)
       expect(json.dig('common', 'action', 'save')).to eq 'Save'
     end
+
+    it 'returns a modified translation based on vue parameter' do
+      get :show, params: { vue: true }
+      json = JSON.parse(response.body)
+      expect(json.dig('common', 'closing_in')).to eq 'Closing {time}'
+    end
   end
 
   describe 'inline' do
