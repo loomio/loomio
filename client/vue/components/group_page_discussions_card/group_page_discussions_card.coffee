@@ -173,9 +173,9 @@ module.exports = Vue.component 'GroupPageDiscussionsCard',
               v-if="loader.numLoaded > 0 && loader.exhausted"
               class="lmo-hint-text discussions-card__no-more-threads"
             ></div>
-            <!-- <loading
+            <loading
               v-if="loader.loadingMore"
-            ></loading> -->
+            ></loading>
         </div>
         <div
           v-if="fragment"
@@ -191,9 +191,9 @@ module.exports = Vue.component 'GroupPageDiscussionsCard',
             ></thread-preview-collection>
           </section>
         </div>
-        <!-- <loading
+        <loading
           v-show="loading"
-        ></loading> -->
+        ></loading>
     </div>
 </section>
 """
