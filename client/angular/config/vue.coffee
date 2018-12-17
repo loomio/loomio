@@ -10,7 +10,7 @@ window.i18n = new VueI18n(
       test: "hello bonjour"
 )
 
-fetch('/api/v1/translations?lang=en').then (res)->
+fetch('/api/v1/translations?lang=en&vue=true').then (res)->
   res.json().then (data) ->
     i18n.setLocaleMessage('en', data)
 
