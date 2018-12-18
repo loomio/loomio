@@ -36,7 +36,9 @@ angular.module('loomioApp').value('MatrixChart', require 'vue/components/matrix_
 angular.module('loomioApp').value('ThreadPreviewCollection', require 'vue/components/thread_preview_collection/thread_preview_collection.coffee')
 angular.module('loomioApp').value('GroupPageDiscussionsCard', require 'vue/components/group_page_discussions_card/group_page_discussions_card.coffee')
 angular.module('loomioApp').value('GroupPageDescriptionCard', require 'vue/components/group_page_description_card/group_page_description_card.coffee')
+angular.module('loomioApp').value('DocumentList', require 'vue/components/document_list/document_list.coffee')
 angular.module('loomioApp').value('Loading', require 'vue/components/loading/loading.coffee')
+angular.module('loomioApp').value('ActionDock', require 'vue/components/action_dock/action_dock.coffee')
 angular.module('loomioApp').config ['$ngVueProvider', ($ngVueProvider) ->
   $ngVueProvider.setRootVueInstanceProps({
     i18n: i18n

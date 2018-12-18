@@ -11,12 +11,14 @@ module.exports = Vue.component 'GroupPageDescriptionCard',
     actions: [
       name: 'edit_group'
       icon: 'mdi-pencil'
-      canPerform: -> AbilityService.canEditGroup(@group)
+      canPerform: =>
+        AbilityService.canEditGroup(@group)
       perform:    -> ModalService.open 'GroupModal', group: -> @group
     ,
       name: 'add_resource'
       icon: 'mdi-attachment'
-      canPerform: -> AbilityService.canAdministerGroup(@group)
+      canPerform: =>
+        AbilityService.canAdministerGroup(@group)
       perform:    -> ModalService.open 'DocumentModal', doc: ->
         Records.documents.build
           modelId:   @group.id
@@ -41,17 +43,17 @@ module.exports = Vue.component 'GroupPageDescriptionCard',
           marked="group.description"
           class="description-card__text lmo-markdown-wrapper"
         ></div>
-        <!-- <document_list
-          model="group"
+        <document-list
+          :model="group"
           placeholder="document.list.no_group_documents"
-        ></document_list> -->
+        ></document-list>
         <div
           class="lmo-md-action"
         >
-          <!-- <action_dock
-            model="group"
-            actions="actions"
-          ></action_dock> -->
+          <action-dock
+            :model="group"
+            :actions="actions"
+          ></action-dock>
         </div>
       </section>
     """
