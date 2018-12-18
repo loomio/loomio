@@ -134,15 +134,15 @@ module.exports = Vue.component 'GroupPageDiscussionsCard',
           :title="$t('navbar.start_thread')"
           class="md-primary md-raised discussions-card__new-thread-button"
         >
-          <span translate="navbar.start_thread"></span>
+          <span v-t="{ path: 'navbar.start_thread' }"></span>
         </button>
     </div>
     <div class="discussions-card__content">
         <div v-if="isEmpty" class="discussions-card__list--empty">
-            <p translate="group_page.no_threads_here" class="lmo-hint-text"></p>
+            <p v-t="{ path: 'group_page.no_threads_here' }" class="lmo-hint-text"></p>
             <p
               v-if="!canViewPrivateContent"
-              translate="group_page.private_threads"
+              v-t="{ path: 'group_page.private_threads' }"
               class="lmo-hint-text"
             ></p>
         </div>
@@ -169,12 +169,12 @@ module.exports = Vue.component 'GroupPageDiscussionsCard',
             <div v-if="!loader.exhausted && !loader.loadingMore" class="lmo-show-more">
               <button v-show="!loading"
                 @click="loader.loadMore"
-                translate="common.action.show_more"
+                v-t="{ path: 'common.action.show_more' }"
                 class="discussions-card__show-more"
               ></button>
             </div>
             <div
-              translate="group_page.no_more_threads"
+              v-t="{ path: 'group_page.no_more_threads' }"
               v-if="loader.numLoaded > 0 && loader.exhausted"
               class="lmo-hint-text discussions-card__no-more-threads"
             ></div>
