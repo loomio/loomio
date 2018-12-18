@@ -10,33 +10,7 @@ Vue.use(VueI18n)
 Vue.use(Vuex)
 
 
-window.store = new Vuex.Store
-  state:
-    discussions: Records.discussions.collection.data
-    comments: Records.comments.collection.data
-    groups: Records.groups.collection.data
-    documents: Records.documents
-
-  getters:
-    documentsFor: (state) => (model) =>
-      state.documents.collection.chain().
-        find(modelId: model.id).
-        find(modelType: _.capitalize(model.constructor.singular))
-        .data()
-
-    newDocumentsFor: (state) => (model) =>
-      state.documents.find(model.newDocumentIds)
-
-    newAndPersistedDocumentsFor: (state, getters) => (model) =>
-      _.uniq _.filter _.union(getters.documentsFor(model), getters.newDocumentsFor(model)), (doc) ->
-        !_.includes model.removedDocumentIds, doc.id
-
-    hasDocumentsFor: (state, getters) => (model) =>
-      getters.newAndPersistedDocumentsFor(model).length > 0
-
-  mutations:
-    increment: (state) ->
-      state.count += 1
+store = require('vue/store/main.coffee')
 
 i18n = new VueI18n
   locale: 'en',
