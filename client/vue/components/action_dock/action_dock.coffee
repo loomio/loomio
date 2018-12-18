@@ -2,8 +2,6 @@ module.exports = Vue.component 'ActionDock',
   props:
     model: Object
     actions: Array
-  mounted: ->
-    # debugger
   template:
     """
       <div
