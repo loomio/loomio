@@ -64,10 +64,6 @@ module.exports =
     emojis:         '../public/img/emojis'
     moment_locales: '../public/client/development/moment_locales'
 
-  vue:
-    main:           'vue/main.coffee'
-    vue:            'vue/components/*.vue'
-
   nightwatch:
     config:
       core:        'angular/test/nightwatch.core.json'
