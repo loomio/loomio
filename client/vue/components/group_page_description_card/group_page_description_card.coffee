@@ -13,13 +13,13 @@ module.exports =
       icon: 'mdi-pencil'
       canPerform: =>
         AbilityService.canEditGroup(@group)
-      perform:    -> ModalService.open 'GroupModal', group: -> @group
+      perform:    => ModalService.open 'GroupModal', group: => @group
     ,
       name: 'add_resource'
       icon: 'mdi-attachment'
       canPerform: =>
         AbilityService.canAdministerGroup(@group)
-      perform:    -> ModalService.open 'DocumentModal', doc: ->
+      perform:    => ModalService.open 'DocumentModal', doc: =>
         Records.documents.build
           modelId:   @group.id
           modelType: 'Group'
