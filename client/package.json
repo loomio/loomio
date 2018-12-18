@@ -19,9 +19,6 @@
   "bugs": {
     "url": "https://github.com/loomio/loomio/issues"
   },
-  "browser": {
-    "vue": "vue/dist/vue.common.js"
-  },
   "homepage": "https://github.com/loomio/loomio#readme",
   "dependencies": {
     "actioncable": "^5.2.2",
@@ -62,9 +59,6 @@
     "svg.js": "^2.7.0",
     "url-search-params-polyfill": "latest",
     "vinyl-source-stream": "^2.0.0",
-    "vue": "^2.5.17",
-    "vue-material": "1.0.0-beta-10.2",
-    "vue-template-compiler": "^2.5.17",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
@@ -108,8 +102,6 @@
     "uglify-es": "^3.3.9",
     "uglifyify": "^5.0.1",
     "vinyl-buffer": "^1.0.1",
-    "vueify": "^9.4.1",
-    "vueify-extract-css": "^0.2.0",
     "yargs": "^12.0.5"
   }
 }
