@@ -8,10 +8,11 @@ LmoUrlService      = require 'shared/services/lmo_url_service'
 
 { applyLoadingFunction } = require 'shared/helpers/apply'
 
-module.exports = Vue.component 'GroupPageDiscussionsCard',
+module.exports =
   props:
     group: Object
   mounted: ->
+    console.log @$store.state
     @loader.fetchRecords()
     # EventBus.listen this, 'subgroupsLoaded', -> @init(@filter)
     applyLoadingFunction(this, 'searchThreads')

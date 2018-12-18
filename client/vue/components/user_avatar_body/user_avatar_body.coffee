@@ -1,7 +1,7 @@
 { is2x } = require 'shared/helpers/window'
 LmoUrlService = require 'shared/services/lmo_url_service'
 
-module.exports = Vue.component 'UserAvatarBody',
+module.exports =
   props:
     user: Object
     coordinator: Boolean

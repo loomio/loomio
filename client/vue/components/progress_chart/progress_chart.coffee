@@ -2,7 +2,7 @@ svg = require 'svg.js'
 
 AppConfig = require 'shared/services/app_config'
 
-module.exports = Vue.component 'ProgressChart',
+module.exports =
   props:
     stanceCounts: Array
     goal: Number

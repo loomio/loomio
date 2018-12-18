@@ -2,7 +2,7 @@ Records        = require 'shared/services/records'
 EventBus       = require 'shared/services/event_bus'
 AbilityService = require 'shared/services/ability_service'
 
-module.exports = Vue.component 'DocumentList',
+module.exports =
   props:
     model: Object
     showEdit: Boolean

@@ -1,7 +1,7 @@
 svg = require 'svg.js'
 AppConfig = require 'shared/services/app_config'
 
-module.exports = Vue.component 'BarChart',
+module.exports =
   props:
     stanceCounts: Array
     size: String # IK: seems bad

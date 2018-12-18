@@ -1,4 +1,4 @@
-module.exports = Vue.component 'PollProposalChartPreview',
+module.exports =
   props:
     stanceCounts: Array
     myStance: Object

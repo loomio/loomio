@@ -4,7 +4,7 @@ ModalService   = require 'shared/services/modal_service'
 
 { submitForm } = require 'shared/helpers/form'
 
-module.exports = Vue.component 'GroupPageDescriptionCard',
+module.exports =
   props:
     group: Object
   data: ->

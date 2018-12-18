@@ -1,6 +1,6 @@
 LmoUrlService = require 'shared/services/lmo_url_service'
 
-module.exports = Vue.component 'UserAvatar',
+module.exports = 
   props:
     thread: Object
     user: Object

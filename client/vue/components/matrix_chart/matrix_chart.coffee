@@ -1,6 +1,6 @@
 svg = require 'svg.js'
 
-module.exports = Vue.component 'MatrixChart',
+module.exports = 
   props:
     matrixCounts: Array
     size: String

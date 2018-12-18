@@ -1,7 +1,7 @@
 svg = require 'svg.js'
 AppConfig = require 'shared/services/app_config'
 
-module.exports = Vue.component 'PollProposalChart',
+module.exports =
   props:
     stanceCounts: Array
     diameter: Number

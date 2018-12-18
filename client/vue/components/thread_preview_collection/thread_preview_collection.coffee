@@ -1,4 +1,4 @@
-module.exports = Vue.component 'ThreadPreviewCollection',
+module.exports =
   props:
     query: Object
     limit:

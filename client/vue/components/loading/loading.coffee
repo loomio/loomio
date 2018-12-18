@@ -1,4 +1,4 @@
-module.exports = Vue.component 'Loading',
+module.exports = 
   props:
     diameter:
       type: Number

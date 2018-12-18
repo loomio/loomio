@@ -1,7 +1,7 @@
 ThreadService = require 'shared/services/thread_service'
 LmoUrlService = require 'shared/services/lmo_url_service'
 
-module.exports = Vue.component 'ThreadPreview',
+module.exports =
   props:
     thread: Object
   data: ->

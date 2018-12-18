@@ -1,4 +1,4 @@
-module.exports = Vue.component 'ActionDock',
+module.exports =
   props:
     model: Object
     actions: Array
