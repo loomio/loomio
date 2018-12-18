@@ -2,8 +2,6 @@ module.exports =
   props:
     model: Object
     actions: Array
-  mounted: ->
-    # debugger
   template:
     """
       <div

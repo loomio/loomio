@@ -12,15 +12,20 @@ module.exports =
     placeholder: String
   created: ->
     Records.documents.fetchByModel(@model) unless @model.isNew() or @skipFetch
+    view = Records.documents.collection.addDynamicView("#{model.singluar}_#{model.id}_documents")
+    # view.addFind()
+  data: ->
+    allDocuments: Loomio.records.documents.collection.data
   methods:
     edit: (doc, $mdMenu) ->
       EventBus.broadcast @, 'initializeDocument', doc, $mdMenu
   computed:
+    orderedDocuments: =>
+      _.orderBy(@model.newAndPersistedDocuments(), ['-createdAt'])
+
     showTitle: ->
       (@model.showDocumentTitle or @showEdit) and
       (@model.hasDocuments() or @placeholder)
-    newAndPersistedDocumentsOrderedByCreatedAt: ->
-      _.orderBy(@model.newAndPersistedDocuments(), ['-createdAt'])
   template:
     """
       <section class="document-list">
@@ -41,7 +46,7 @@ module.exports =
           <div
             layout="column"
             :class="{'document-list__document--image': document.isAnImage() && !hidePreview}"
-            v-for="document in newAndPersistedDocumentsOrderedByCreatedAt"
+            v-for="document in orderedDocuments"
             :key="document.id"
             class="document-list__document lmo-flex"
           >
