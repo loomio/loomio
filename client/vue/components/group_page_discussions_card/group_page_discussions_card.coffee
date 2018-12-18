@@ -12,7 +12,6 @@ module.exports =
   props:
     group: Object
   mounted: ->
-    console.log @$store.state
     @loader.fetchRecords()
     # EventBus.listen this, 'subgroupsLoaded', -> @init(@filter)
     applyLoadingFunction(this, 'searchThreads')

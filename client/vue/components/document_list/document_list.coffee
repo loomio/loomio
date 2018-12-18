@@ -11,17 +11,20 @@ module.exports =
     skipFetch: Boolean
     placeholder: String
   created: ->
-    Records.documents.fetchByModel(@model) unless @model.isNew() or @skipFetch
-    view = Records.documents.collection.addDynamicView("#{model.singluar}_#{model.id}_documents")
-    # view.addFind()
-  data: ->
-    allDocuments: Loomio.records.documents.collection.data
+    unless @model.isNew() or @skipFetch
+      Records.documents.fetchByModel(@model)
+
   methods:
     edit: (doc, $mdMenu) ->
       EventBus.broadcast @, 'initializeDocument', doc, $mdMenu
+
   computed:
-    orderedDocuments: =>
-      _.orderBy(@model.newAndPersistedDocuments(), ['-createdAt'])
+    documents: ->
+      @$store.getters.documentsFor(@model)
+
+    orderedDocuments: ->
+      console.log 'docs', @$store.getters.documentsFor(@model)
+      _.orderBy(@$store.getters.newAndPersistedDocumentsFor(@model), ['-createdAt'])
 
     showTitle: ->
       (@model.showDocumentTitle or @showEdit) and
@@ -40,15 +43,13 @@ module.exports =
           class="lmo-hint-text md-caption"
         ></p>
         <div
-          layout="column"
-          class="document-list__documents md-block lmo-flex"
+          class="document-list__documents md-block lmo-flex lmo-flex--column"
         >
           <div
-            layout="column"
             :class="{'document-list__document--image': document.isAnImage() && !hidePreview}"
             v-for="document in orderedDocuments"
             :key="document.id"
-            class="document-list__document lmo-flex"
+            class="document-list__document lmo-flex lmo-flex--column"
           >
             <div
               v-if="document.isAnImage() && !hidePreview"
