@@ -64,7 +64,7 @@ module.exports = Vue.component 'GroupPageDiscussionsCard',
       @loader.loadingFirst || @searchThreadsExecuting
     isEmpty: ->
       return if @loading
-      if _.isEmpty @fragment
+      if !_.isEmpty @fragment
         _.isEmpty @searched || !@searched.any()
       else
         !@discussions.any() && !@pinned.any()
