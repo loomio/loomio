@@ -33,32 +33,39 @@ module.exports = Vue.component 'GroupPageDiscussionsCard',
         group_id: @group.id
         filter:   @filter
     searchOpen: false
-    fragment: null
+    searched: {}
+    fragment: ''
   methods:
-    searchThreads: -> # should this be computed? async work
-      return Promise.resolve(true) unless @fragment
-      Records.discussions.search(@group.key, @fragment, per: 10).then (data) ->
-        @searched = ThreadQueryService.queryFor
+    searchThreads: _.throttle ->
+      return Promise.resolve(true) unless !_.isEmpty @fragment
+      Records.discussions.search(@group.key, @fragment).then (data) =>
+        @searched = Object.assign {}, @searched, ThreadQueryService.queryFor
           name: "group_#{@group.key}_searched"
           group: @group
           ids: _.map(data.discussions, 'id')
           overwrite: true
+    , 250
     startDiscussion: ->
       ModalService.open 'DiscussionStartModal', discussion: -> Records.discussions.build(groupId: @group.id)
     openSearch: ->
       @searchOpen = true
-      $timeout -> document.querySelector('.discussions-card__search input').focus()
     closeSearch: ->
-      @fragment = null
+      @fragment = ''
       @searchOpen = false
+    setFilter: (newFilter) ->
+      @filter = newFilter
 
+  watch:
+    searchOpen: ->
+      if @searchOpen
+        this.$nextTick -> document.querySelector('.discussions-card__search--open input').focus()
   computed:
     loading: ->
       @loader.loadingFirst || @searchThreadsExecuting
     isEmpty: ->
       return if @loading
-      if @fragment
-        !@searched || !@searched.any()
+      if _.isEmpty @fragment
+        _.isEmpty @searched || !@searched.any()
       else
         !@discussions.any() && !@pinned.any()
     canViewPrivateContent: ->
@@ -80,27 +87,25 @@ module.exports = Vue.component 'GroupPageDiscussionsCard',
         >
           <span
             v-if="filter == 'show_opened'"
-            translate="group_page.open_discussions"
+            v-t="{ path: 'group_page.open_discussions' }"
           ></span>
           <span
             v-if="filter == 'show_closed'"
-            translate="group_page.closed_discussions"
+            v-t="{ path: 'group_page.closed_discussions' }"
           ></span>
         </h3>
         <div
-          :class="{'discussions-card__search--open': searchOpen}"
-          class="discussions-card__search md-block md-no-errors"
+          v-if="searchOpen"
+          class="discussions-card__search discussions-card__search--open md-block md-no-errors"
         >
           <i
             @click="closeSearch"
-            v-if="searchOpen"
             class="mdi mdi-close md-button--tiny lmo-pointer"
           ></i>
           <input
             v-model="fragment"
             :placeholder="$t('group_page.search_threads')"
-            @change="searchThreads"
-            <!-- v-model-options="{debounce: 250}" -->
+            @input="searchThreads"
           >
         </div>
         <button
@@ -113,13 +118,13 @@ module.exports = Vue.component 'GroupPageDiscussionsCard',
         <div class="lmo-flex__grow"></div>
         <div
           v-if="!searchOpen && filter == 'show_closed'"
-          @click="init('show_opened')"
+          @click="setFilter('show_opened')"
           v-t="{ path: 'group_page.show_opened', args: { count: group.openDiscussionsCount } }"
           class="discussions-card__filter discussions-card__filter--open lmo-link lmo-pointer"
         ></div>
         <div
           v-if="!searchOpen && filter == 'show_opened' && group.closedDiscussionsCount > 0"
-          @click="init('show_closed')"
+          @click="setFilter('show_closed')"
           v-t="{ path: 'group_page.show_closed', args: { count: group.closedDiscussionsCount } }"
           class="discussions-card__filter discussions-card__filter--closed lmo-link lmo-pointer"
         ></div>
@@ -141,7 +146,7 @@ module.exports = Vue.component 'GroupPageDiscussionsCard',
               class="lmo-hint-text"
             ></p>
         </div>
-        <div v-if="!fragment" class="discussions-card__list">
+        <div v-if="_.isEmpty(fragment)" class="discussions-card__list">
             <section
               v-if="discussions.any() || pinned.any()"
               class="thread-preview-collection__container"
@@ -178,11 +183,11 @@ module.exports = Vue.component 'GroupPageDiscussionsCard',
             ></loading>
         </div>
         <div
-          v-if="fragment"
+          v-if="!_.isEmpty(fragment)"
           class="discussions-card__list"
         >
           <section
-            v-if="searched.any()"
+            v-if="!_.isEmpty(searched) && searched.any()"
             class="thread-preview-collection__container"
           >
             <thread-preview-collection
