@@ -3,8 +3,10 @@ markedHelper  = require('shared/helpers/marked')
 
 marked.setOptions Object.assign({renderer: customRenderer()}, options)
 
+render = (el, binding, vnode) ->
+  return unless binding.value
+  el.innerHTML = marked(binding.value)
+  
 Vue.directive 'marked',
-  update: (el, binding, vnode) ->
-    el.innerHTML = marked(binding.value)
-  bind: (el, binding, vnode) ->
-    el.innerHTML = marked(binding.value)
+  update: render
+  bind: render

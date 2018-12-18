@@ -21,7 +21,6 @@ module.exports =
       canPerform: =>
         AbilityService.canAdministerGroup(@group)
       perform:    => ModalService.open 'DocumentModal', doc: =>
-        console.log @group.id
         Records.documents.build
           modelId:   @group.id
           modelType: 'Group'

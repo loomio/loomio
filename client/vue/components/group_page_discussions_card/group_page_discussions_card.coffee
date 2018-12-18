@@ -46,7 +46,7 @@ module.exports =
           overwrite: true
     , 250
     startDiscussion: ->
-      ModalService.open 'DiscussionStartModal', discussion: -> Records.discussions.build(groupId: @group.id)
+      ModalService.open 'DiscussionStartModal', discussion: => Records.discussions.build(groupId: @group.id)
     openSearch: ->
       @searchOpen = true
     closeSearch: ->
