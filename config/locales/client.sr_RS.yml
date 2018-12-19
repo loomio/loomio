@@ -178,6 +178,8 @@ sr_RS:
     invitation: 'Савети за писање сјајног позива'
     proposal: 'Савети за писање јасног предлога'
     vote: 'Можете променити свој став било када'
+  poll_common:
+    save_changes: Сними
   poll_common_form:
     closed: Истекло
   poll_count_options:

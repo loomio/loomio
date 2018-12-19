@@ -281,6 +281,8 @@ lt:
     count_title: Patikrinti
     poll_title: Apklausa
     meeting_title: Laiko apklausa
+  poll_common:
+    save_changes: Įrašyti
   poll_common_form:
     closed: Uždarytas
   poll_count_options:

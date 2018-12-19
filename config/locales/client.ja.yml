@@ -109,6 +109,8 @@ ja:
     invitation: '素晴らしい招待を書くアドバイス'
     proposal: 'はっきりした提案を書くアドバイス'
     vote: 'いつでも意見を変更することができます'
+  poll_common:
+    save_changes: 保存
   poll_common_form:
     closed: 議論終了
   poll_count_options:

@@ -208,6 +208,8 @@ ga_IE:
     context_label: 'Comhthéacs'
     context_placeholder: 'Cuir dóthain eolas cúlra ar fáil don bhaicle le go mbeidh an plé torthúil. Is féidir seo a nuashonrú fad is atá an plé ar bun'
     privacy_label: 'Príobháideachas'
+  action_dock:
+    edit_stance: Athraigh do sheasamh
   cover_photo_form:
     heading: 'Grianghraf cumhdaigh nua'
     upload_link: 'Uasluchtaigh grianghraf cumhdaigh nua'
@@ -512,6 +514,8 @@ ga_IE:
     proposal_title: Togra
     count_title: Dearbháil
     poll_title: Vótáil
+  poll_common:
+    save_changes: Taisc
   current_polls_card:
     start_poll: Cinneadh nua
   poll_common_notify_group:

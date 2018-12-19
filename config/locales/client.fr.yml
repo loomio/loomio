@@ -154,14 +154,6 @@ fr:
     internal_server_error: 'Nous sommes désolés mais quelque chose s’est mal passé. Veuillez essayer à nouveau.'
   verify_email_notice:
     please_verify: Merci d’avoir participé. Consultez vos courriels, un lien vous a été envoyé pour valider votre vote.
-  verify_stances:
-    title: Confirmer les votes
-    description: Merci de vérifier que les votes ci-dessous correspondent bien à vos choix.
-    verify: Vérifier
-    remove: Retirer
-    verify_success: Vote vérifié
-    remove_success: Vote supprimé
-    all_done: Bon travail, vous avez vérifié tous les votes.
   previous_polls_page:
     heading: Activité pour {{name}}
     polls_count: Montrer {{loaded}} de {{total}} décisions
@@ -428,6 +420,9 @@ fr:
       poll_announced:
         title: Inviter au vote
         helptext: Qui voulez-vous inviter à voter ?
+      poll:
+        title: Notifier des modifications
+        helptext: Qui voulez-vous notifier de vos modifications ?
       poll_edited:
         title: Notifier des modifications
         helptext: Qui voulez-vous notifier de vos modifications ?
@@ -465,7 +460,7 @@ fr:
     announce_poll: Inviter des personnes au vote
     announce_poll_active: (Personne n'a encore été invité)
     translate_poll: Afficher une traduction automatique du sondage
-    edit_stance: Changer votre vote
+    edit_stance: Modifier votre position
     translate_stance: Afficher une traduction automatique du vote
     edit_comment: Modifier le commentaire
     delete_comment: Supprimer le commentaire
@@ -1167,7 +1162,6 @@ fr:
     ranked_choice_title: Classement par préférence
   poll_common:
     your_response: Votre réponse
-    change_your_response: Changer votre réponse
     reason: Raison
     reason_placeholder: Un commentaire supplémentaire ?
     message: Message
@@ -1180,7 +1174,6 @@ fr:
     update_outcome: Mettre à jour le résultat
     outcome: Résultat
     statement: Déclaration
-    change_your_stance: Changer votre vote
     load_more: Plus
     details: Détails
     participant_name: Votre nom
@@ -1191,6 +1184,7 @@ fr:
     start_poll: Prendre une décision
     publish_poll: Partager le sondage
     view_all: Tout voir
+    save_changes: Enregistrer
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -1404,6 +1398,9 @@ fr:
     dots_per_person_helptext: Le nombre de points dont disposent chaque participant⋅e
     dot_vote_created: Vote à points créé
     dot_vote_updated: Vote à points mis à jour
+  poll_score_form:
+    details_placeholder: Partagez toutes les informations utiles pour participer
+    add_option_placeholder: Ajouter une option
   poll_meeting_form:
     tool_tip_expanded: |
         <p>Utilisez un sondage réunion pour trouver un créneau horaire pour une réunion.</p>
@@ -1535,8 +1532,6 @@ fr:
     poll_published_with_discussion: "a publié un sondage dans <strong>{{discussion}}</strong>:"
     view_it_on_loomio: Voir sur {{site_name}}
     timestamp: Aujourd’hui à {{timestamp}}
-  poll_common_participant_form:
-    participant_name_placeholder: Quel est votre nom ?
   poll_common_subscribe_form:
     receive_updates_title: Votre vote a bien été enregistré
     receive_updates_helptext: Pour recevoir le résultat de ce sondage par courriel, merci de renseigner votre adresse e-mail ci-dessous
@@ -1545,9 +1540,6 @@ fr:
     no_thanks: Non merci
   poll_common_example_card:
     what_is_this: "Ceci est un exemple de {{type}}. Vous êtes participant — essayez !"
-    helptext_before: "Quand vous êtes prêt,"
-    helptext_link: "Démarrer un {{type}}"
-    helptext_after: "de votre part, et invitez des personnes pour l’essayer."
   share_poll_page:
     title: Partager le sondage - {{title}}
   polls_page:
@@ -1574,23 +1566,16 @@ fr:
     invalid_token: "Désolé, nous n’avons pas pu vous authentifier grâce à ce lien. Cliquez ci-dessous pour en recevoir un nouveau."
     email_not_found: "Désolé, nous n’avons pas trouvé de compte correspondant à cette adresse e-mail."
     email_placeholder: vous@exemple.com
-    login_with_token: Vous êtes prêt ! Cliquez sur le lien ci-dessous pour vous connecter.
-    login_link_helptext: |
-        Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
-        Si vous préférez utiliser un mot de passe pour vous connecter à l’avenir, vous pouvez le définir sur votre page de profil.
     login_link_helptext_with_password: "Entrez votre mot de passe, ou connectez-vous par courriel."
-    sign_up_helptext: "Merci de remplir ce formulaire pour créer un compte"
+    sign_up_helptext: Merci de remplir ce formulaire pour créer un compte
     i_accept: "J'accepte les <a href='{{termsUrl}}' target='_blank'>Conditions d'utilisation</a> et la <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a>"
     name_required: Entrez un nom
     terms_required: Vous devez accepter les Conditions d'utilisation
     account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé !
     privacy_notice: "Des données personnelles sont recueillies quand vous utilisez {{siteName}}. <br/> Lisez notre <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a> pour en savoir plus."
-    welcome: Bienvenue sur {{siteName}} !
     welcome_back: Content de vous revoir, {{name}} !
     login_link: Recevoir un courriel de connexion
     set_password: Définir un mot de passe
-    set_password_helptext: Marre de devoir vous authentifier par courriel?
-    set_password_link: Créer votre mot de passe
     hello: "Bonjour, {{name}} !"
     new_to_loomio: Nouveau sur {{site_name}} ? Créez un compte !
     create_account: Créez un compte

@@ -341,7 +341,6 @@ zh_TW:
         outcome_created: '%{actor} 分享了一個提案成果：%{title}'
         outcome_announced: '%{actor} 分享了一個提案成果：%{title}'
         stance_created: "%{actor} 已經投票：%{title}"
-        stance_created_author: "請驗證您的投票：%{title}"
         user_mentioned: '%{actor} 提到您在：%{title}'
         user_reminded: '%{actor} 正在提醒您要投票：%{title}'
       header:
@@ -373,6 +372,40 @@ zh_TW:
         outcome_created: '%{actor} 分享了一個投票成果：%{title}'
         outcome_announced: '%{actor} 分享了一個投票成果：%{title}'
         stance_created: "%{actor} 投了票：%{title}"
+        stance_created_author: "請驗證您的投票：%{title}"
+        user_mentioned: '%{actor} 提到您在：%{title}'
+        user_reminded: '%{actor} 正在提醒您要投票：%{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> 已啟動了一個投票'
+        poll_edited: '<strong>%{actor}</strong> 編輯了投票'
+        poll_announced: '<strong>%{actor}</strong> 邀請您投票'
+        poll_closing_soon: '<strong>%{actor}</strong> 的投票將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
+        poll_closing_soon_author: '您的投票將於24小時內關閉，現在正是您提醒其他人關於這個投票或是展延期限的絕佳時機。'
+        poll_expired: "<strong>%{actor}</strong> 的投票已關閉：%{title}"
+        poll_expired_author: '您的投票已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        poll_option_added: '<strong>%{actor}</strong> 新增選項給：%{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> 新增選項給：%{title}'
+        outcome_created: '<strong>%{actor}</strong> 已分享了投票的成果。'
+        outcome_announced: '<strong>%{actor}</strong> 已分享了投票的成果。'
+        stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
+        user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
+        user_reminded: '<strong>%{actor}</strong>正在提醒您要投票：%{title}'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    score:
+      subject:
+        poll_created: '%{actor} 啟動了一個投票：%{title}'
+        poll_edited: '%{actor} 編輯了投票：%{title}'
+        poll_announced: '%{actor} 邀請您投票：%{title}'
+        poll_closing_soon: '24小時內關閉的投票：%{title}'
+        poll_closing_soon_author: '您的投票將於24小時內關閉：%{title}'
+        poll_expired: "投票結果：%{title}"
+        poll_expired_author: '您的投票已關閉。請分享成果：%{title}'
+        poll_option_added: '%{actor} 新增選項給：%{title}'
+        poll_option_added_author: '%{actor} 新增選項給：%{title}'
+        outcome_created: '%{actor} 分享了一個投票成果：%{title}'
+        outcome_announced: '%{actor} 分享了一個投票成果：%{title}'
+        stance_created: "%{actor} 已經投票：%{title}"
         stance_created_author: "請驗證您的投票：%{title}"
         user_mentioned: '%{actor} 提到您在：%{title}'
         user_reminded: '%{actor} 正在提醒您要投票：%{title}'
@@ -545,6 +578,9 @@ zh_TW:
     dot_vote:
       title: "我們公司下一季的戰略是什麼？"
       details: 對我們的公司而言，這是非常忙碌的一年，我們需要對我們有限的資源做戰略調配。請說明您認為下一季裡最重要的領域。
+    score:
+      title: "下次會議，您感興趣的主題是什麼？"
+      details: 我們正在準備下次會議要討論的主題。請指出您對下列每個主題的感興趣程度。
     ranked_choice:
       title: "我們的下一個副市長應該是誰？"
       details: "現在是我們的半年度選舉的時候了！這是一個即時投票，將決定我們的下一個副市長。請務必在我們的網站上閱讀每個候選人的介紹！"

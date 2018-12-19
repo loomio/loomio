@@ -139,14 +139,6 @@ ru:
     internal_server_error: 'Извините, что-то не так. Попробуйте снова.'
   verify_email_notice:
     please_verify: Спасибо за участие! Пожалуйста, проверьте почтовый ящик, мы выслали на него ссылку, чтобы верифицировать Ваше голосование
-  verify_stances:
-    title: Верифицировать голосавание
-    description: Пожалуйста просмотрите голосование внизу и подтвердите, что оно Ваше
-    verify: Подтвердить
-    remove: Удалить
-    verify_success: Голосование подтверждено
-    remove_success: Голосование удалено
-    all_done: Отличная работа, Вы подтвердили все голосование
   previous_polls_page:
     heading: Активности в {{имя}}
     polls_count: Показать {{загруженное}}  {{итог}} решения
@@ -237,6 +229,7 @@ ru:
       groups_list: 'Группы'
       user_list: 'Активность пользователя'
   navbar:
+    recent_title: 'В панель управления'
     start_thread: 'Новая тема'
     notifications: 'Панель уведомлений'
     search:
@@ -303,7 +296,7 @@ ru:
     translate_thread: Перевести контекст
     edit_poll: Редактировать опрос
     translate_poll: Перевести опрос
-    edit_stance: Изменить ваш голос
+    edit_stance: Изменить позицию
     translate_stance: Перевести голос
     edit_comment: Редактировать коментарий
     delete_comment: Удалить комментарий
@@ -487,8 +480,8 @@ ru:
     reason: Причина
     results: Результаты
     responses: Ответы
-    change_your_stance: Изменить ваш голос
     start_poll: Начните решение
+    save_changes: Сохранить
   current_polls_card:
     start_poll: Новое решение
   poll_common_set_outcome_panel:

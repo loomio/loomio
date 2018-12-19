@@ -141,6 +141,8 @@ be_BY:
     invitation: 'Парады, як пісаць файныя запрашэнні'
     proposal: 'Парады, як пісаць зразумелыя прапановы'
     vote: 'Вы здольны змяніць свой голас у любы час'
+  poll_common:
+    save_changes: Захаваць
   poll_common_form:
     closed: Закрыта
   poll_count_options:

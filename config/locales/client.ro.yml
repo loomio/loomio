@@ -121,12 +121,6 @@ ro:
     forbidden: 'Nu ai permisiune pentru aceasta actiune.'
     page_not_found: 'Nu am gasit nimic corespunzator. Este posibil sa fie sters sau mutat.'
     internal_server_error: 'Ne pare rau, ceva nu a mers cum trebuie. Te rugam sa mai incerci o data.'
-  verify_stances:
-    title: Verifica voturi
-    verify: Verifica
-    remove: Sterge
-    verify_success: Vot verificat
-    remove_success: Vot sters
   previous_polls_page:
     heading: Activitati in {{name}}
     search_activities: Cauta decizii
@@ -265,7 +259,6 @@ ro:
     translate_thread: Traduce context
     edit_poll: Editare sondaj
     translate_poll: Traducere sondaj
-    edit_stance: Modifica votul
     translate_stance: Traducere vot
     edit_comment: Editare comentariu
     delete_comment: Sterge comentariu
@@ -454,8 +447,8 @@ ro:
     count_title: Verifica
     poll_title: Sondaj
   poll_common:
-    change_your_stance: Modifica votul
     start_poll: Creeaza o decizie
+    save_changes: Salvare
   current_polls_card:
     start_poll: Decizie noua
   poll_common_notify_group:

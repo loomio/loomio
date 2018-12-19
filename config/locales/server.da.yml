@@ -229,6 +229,29 @@ da:
         stance_created: "<strong>%{actor}</strong> stemte på: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
+    score:
+      subject:
+        poll_created: '%{actor} startede en afstemning: %{title}'
+        poll_edited: '%{actor} redigerede afstemningen: %{title}'
+        poll_closing_soon: 'Afstemning lukker om 24 timer: %{title}'
+        poll_closing_soon_author: 'Din afstemning lukker om 24 timer: %{title}'
+        poll_expired: "Afstemning resultat: %{title}"
+        poll_expired_author: 'Din afstemning er lukket. Del resultatet af afstemningen for: %{title}'
+        outcome_created: '%{actor} delte resultatet af afstemningen: %{title}'
+        outcome_announced: '%{actor} delte resultatet af afstemningen: %{title}'
+        stance_created: "%{actor} stemte på: %{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> oprettede en afstemning'
+        poll_edited: '<strong>%{actor}</strong> redigerede en afstemning'
+        poll_closing_soon: '<strong>%{actor}</strong>s afstemning lukker om 24 timer. Nu er et godt tidspunkt at stemme, skifte mening eller opmuntre andre til at deltage.'
+        poll_closing_soon_author: 'Dit afstemning lukker om 24 timer - det er nu et godt tidspunkt at mindre folk om det eller udvidde deadline, hvis nødvendigt.'
+        poll_expired: "<strong>%{actor}'s</strong> afstemning er lukket: %{title}"
+        poll_expired_author: 'Din afstemning er <strong>lukket</strong>. Overvej hvad der er blevet sagt <strong>del et resultat</strong> med gruppen, så folk ved hvad der sker som det næste skridt.'
+        outcome_created: '<strong>%{actor}</strong> delte resultatet af en afstemning.'
+        outcome_announced: '<strong>%{actor}</strong> delte resultatet af en afstemning.'
+        stance_created: "<strong>%{actor}</strong> stemte på: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
     count:
       subject:
         poll_created: '%{actor} kontrollerer: %{title}'
