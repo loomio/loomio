@@ -45,6 +45,7 @@ components =
   ContextPanel: require 'vue/components/context_panel/context_panel.coffee'
   Translation: require 'vue/components/translation/translation.coffee'
   ActivityCard: require 'vue/components/activity_card/activity_card.coffee'
+  ThreadItem: require 'vue/components/thread_page_thread_item/thread_item.coffee' 
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))

@@ -41,11 +41,12 @@ module.exports =
       return this.user.avatarUrl if typeof this.user.avatarUrl is 'string'
       this.user.avatarUrl[this.imageSize]
 
-  template: """
-<div>
-  <img v-if="user.avatarKind === 'gravatar'" class="user-avatar__img" :class="[boxClass]" :gravatar-src="user.emailHash" :gravatar-size="gravatarSize" :alt="user.name" />
-  <img v-else-if="user.avatarKind === 'uploaded'" :class="`user-avatar__img lmo-box--${size}`" :alt="user.name" :src="uploadedAvatarUrl" />
-  <div v-else-if="user.initials === 'uploaded'" class="user-avatar__initials" :class="[boxClass, userAvatarInitialsClass]" aria-hidden="true">{{user.avatarInitials}}</div>
-  <div v-else class="user-avatar__initials mdi lmo-flex--center lmo-flex__center lmo-flex__horizontal-center lmo-grey-on-white" :class="[boxClass, mdiSize, user.avatarKind]"></div>
-</div>
-"""
+  template:
+    """
+    <div>
+      <img v-if="user.avatarKind === 'gravatar'" class="user-avatar__img" :class="[boxClass]" :gravatar-src="user.emailHash" :gravatar-size="gravatarSize" :alt="user.name" />
+      <img v-else-if="user.avatarKind === 'uploaded'" :class="`user-avatar__img lmo-box--${size}`" :alt="user.name" :src="uploadedAvatarUrl" />
+      <div v-else-if="user.avatarKind === 'initials'" class="user-avatar__initials" :class="[boxClass, userAvatarInitialsClass]" aria-hidden="true">{{user.avatarInitials}}</div>
+      <div v-else class="user-avatar__initials mdi lmo-flex--center lmo-flex__center lmo-flex__horizontal-center lmo-grey-on-white" :class="[boxClass, mdiSize, user.avatarKind]"></div>
+    </div>
+    """
