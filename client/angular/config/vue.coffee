@@ -41,6 +41,9 @@ components =
   DocumentList: require 'vue/components/document_list/document_list.coffee'
   Loading: require 'vue/components/loading/loading.coffee'
   ActionDock: require 'vue/components/action_dock/action_dock.coffee'
+  ThreadCard: require 'vue/components/thread_card/thread_card.coffee'
+  ContextPanel: require 'vue/components/context_panel/context_panel.coffee'
+  Translation: require 'vue/components/translation/translation.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))

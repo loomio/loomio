@@ -23,7 +23,6 @@ module.exports =
       @$store.getters.documentsFor(@model)
 
     orderedDocuments: ->
-      console.log 'docs', @$store.getters.documentsFor(@model)
       _.orderBy(@$store.getters.newAndPersistedDocumentsFor(@model), ['-createdAt'])
 
     showTitle: ->

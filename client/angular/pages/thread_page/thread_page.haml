@@ -11,4 +11,5 @@
       %membership_card.lmo-column-right{group: "threadPage.discussion.guestGroup()", pending: "true"}
       %poll_common_index_card.lmo-column-right{model: "threadPage.discussion"}
       %outlet.after-column-right.lmo-column-right{name: "thread-page-column-right"}
-      %thread_card.lmo-column-left{discussion: "threadPage.discussion"}
+      -# %thread_card.lmo-column-left{discussion: "threadPage.discussion"}
+      %vue-component{name: "ThreadCard", v-props-discussion: "threadPage.discussion"}

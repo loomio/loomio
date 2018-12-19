@@ -1,3 +1,5 @@
+Records       = require 'shared/services/records'
+
 module.exports = new Vuex.Store
   state:
     discussions: Records.discussions.collection.data
