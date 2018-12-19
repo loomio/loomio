@@ -91,7 +91,6 @@ module.exports =
               </h3>
               <button v-if="canRemoveEvent()" @click="removeEvent()" class="md-button--tiny"><i class="mdi mdi-delete"></i></button>
             </div>
-            {{ _.camelCase(event.kind) }}
             <component :is="_.camelCase(event.kind)" :event='event' :eventable='event.model()'></component>
           </div>
         </div>
@@ -101,10 +100,10 @@ module.exports =
           :parent-event="event"
           :parent-event-window="eventWindow"
         ></event-children>
-        <!-- <add-comment-panel
-          parent_event="event"
-          event_window="eventWindow"
-        ></add-comment-panel> -->
+        <add-comment-panel
+          :parent-event="event"
+          :event-window="eventWindow"
+        ></add-comment-panel>
       </template>
     </div>
     """
