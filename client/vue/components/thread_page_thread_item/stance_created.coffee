@@ -4,13 +4,12 @@ ModalService   = require 'shared/services/modal_service'
 
 { listenForTranslations } = require 'shared/helpers/listen'
 
-angular.module('loomioApp').directive 'stanceCreated', ->
-  scope: {eventable: '='}
-  restrict: 'E'
-  templateUrl: 'generated/components/thread_page/thread_item/stance_created.html'
-  replace: true
-  controller: ['$scope', ($scope) ->
-    $scope.actions = [
+module.exports =
+  props:
+    event: Object
+    eventable: Object
+  created: ->
+    @actions = [
       name: 'translate_stance'
       icon: 'mdi-translate'
       canPerform: -> $scope.eventable.reason && AbilityService.canTranslate($scope.eventable)
@@ -20,8 +19,19 @@ angular.module('loomioApp').directive 'stanceCreated', ->
       icon: 'mdi-history'
       canPerform: -> $scope.eventable.edited()
       perform:    -> ModalService.open 'RevisionHistoryModal', model: -> $scope.eventable
-    ,
     ]
-
-    listenForTranslations($scope)
-  ]
+  # mounted: ->
+  #   listenForTranslations($scope)
+  template:
+    """
+    <div class="stance-created">
+      <!-- <poll_common_directive name="stance_choice" ng-repeat="choice in eventable.stanceChoices() | orderBy: \'rank\'" ng-if="choice.score &gt; 0" stance_choice="choice"></poll_common_directive> -->
+      <div v-if="eventable.stanceChoices().length == 0" v-t="'poll_common_votes_panel.none_of_the_above'" class="lmo-hint-text"></div>
+      <div v-marked="eventable.reason" v-if="eventable.reason && !eventable.translation" class="lmo-markdown-wrapper"></div>
+      <translation v-if="translation" :model="eventable" field="reason" class="thread-item__body"></translation>
+      <div class="lmo-md-actions">
+        <!-- <reactions_display model="eventable"></reactions_display> -->
+        <action-dock :model="eventable" :actions="actions"></action-dock>
+      </div>
+    </div>
+    """

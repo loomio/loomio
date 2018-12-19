@@ -90,6 +90,7 @@ module.exports =
             </h3>
             <button v-if="canRemoveEvent()" @click="removeEvent()" class="md-button--tiny"><i class="mdi mdi-delete"></i></button>
           </div>
+          {{ _.camelCase(event.kind) }}
           <component :is="_.camelCase(event.kind)" :event='event' :eventable='event.model()'></component>
         </div>
       </div>

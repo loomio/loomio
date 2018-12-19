@@ -49,6 +49,8 @@ components =
   DecisionToolsCard: require 'vue/components/thread_page_decision_tools_card/decision_tools_card.coffee'
   PollCommonStartForm: require 'vue/components/poll_common_start_form/poll_common_start_form.coffee'
   NewComment: require 'vue/components/thread_page_thread_item/new_comment.coffee'
+  OutcomeCreated: require 'vue/components/thread_page_thread_item/outcome_created.coffee'
+  PollCreated: require 'vue/components/thread_page_thread_item/poll_created.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
