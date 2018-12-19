@@ -9,6 +9,7 @@ module.exports = class RecordLoader
     @numLoaded    = opts.numLoaded or 0
     @numRequested = opts.numRequested or 0
     @then         = opts.then or (data) -> data
+    @loading      = false
 
   reset: ->
     @params['from'] = 0

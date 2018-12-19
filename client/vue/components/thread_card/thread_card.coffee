@@ -5,6 +5,6 @@ module.exports =
     """
     <div class="thread-card lmo-column-left lmo-card--no-padding">
       <context-panel :discussion="discussion"></context-panel>
-      <!-- <activity-card discussion="discussion" v-if="discussion.createdEvent()"></activity-card> -->
+      <activity-card :discussion="discussion" v-if="discussion.createdEvent()"></activity-card>
     </div>
     """
