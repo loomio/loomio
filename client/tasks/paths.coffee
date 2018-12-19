@@ -48,7 +48,6 @@ module.exports =
 
   shared:
     coffee:       'shared/**/*.coffee'
-    emojis:         include(vendor, 'emoji')
     moment_locales: include(vendor, 'moment_locales')
 
   execjs:
@@ -61,7 +60,6 @@ module.exports =
   dist:
     root:           '../public/'
     assets:         '../public/client/development'
-    emojis:         '../public/img/emojis'
     moment_locales: '../public/client/development/moment_locales'
 
   nightwatch:
