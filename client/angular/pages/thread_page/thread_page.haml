@@ -6,10 +6,11 @@
     .thread-page__main-content{ng-class: "{'thread-page__forking': threadPage.discussion.isForking()}"}
       %outlet.before-column-right.lmo-column-right{name: "before-thread-page-column-right", model: "threadPage.discussion"}
       %poll_common_card.lmo-card--no-padding.lmo-column-right{poll: "poll", ng-repeat: "poll in threadPage.discussion.activePolls() track by poll.id"}
-      %decision_tools_card.decision-tools-card.lmo-column-right{discussion: "threadPage.discussion"}
+      -# %decision_tools_card.decision-tools-card.lmo-column-right{discussion: "threadPage.discussion"}
+      %vue-component.decision-tools-card.lmo-column-right{name: "DecisionToolsCard", v-props-discussion: "threadPage.discussion"}
       %membership_card.lmo-column-right{group: "threadPage.discussion.guestGroup()"}
       %membership_card.lmo-column-right{group: "threadPage.discussion.guestGroup()", pending: "true"}
       %poll_common_index_card.lmo-column-right{model: "threadPage.discussion"}
       %outlet.after-column-right.lmo-column-right{name: "thread-page-column-right"}
       -# %thread_card.lmo-column-left{discussion: "threadPage.discussion"}
-      %vue-component{name: "ThreadCard", v-props-discussion: "threadPage.discussion"}
+      %vue-component.lmo-column-left{name: "ThreadCard", v-props-discussion: "threadPage.discussion"}
