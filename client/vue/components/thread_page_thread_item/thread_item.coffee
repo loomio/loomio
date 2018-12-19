@@ -53,6 +53,7 @@ module.exports =
     link: ->
       LmoUrlService.event @event
 
+
   template:
     """
     <div
@@ -89,7 +90,7 @@ module.exports =
             </h3>
             <button v-if="canRemoveEvent()" @click="removeEvent()" class="md-button--tiny"><i class="mdi mdi-delete"></i></button>
           </div>
-          <!-- <thread_item_directive event="event" class="thread-item__directive"></thread_item_directive> -->
+          <component :is="_.camelCase(event.kind)" :event='event' :eventable='event.model()'></component>
         </div>
       </div>
     </div>

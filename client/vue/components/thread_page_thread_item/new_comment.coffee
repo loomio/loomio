@@ -7,63 +7,74 @@ ModalService   = require 'shared/services/modal_service'
 
 { listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
 
-angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', ($rootScope, clipboard) ->
-  scope: {event: '=', eventable: '='}
-  restrict: 'E'
-  templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'
-  replace: true
-  controller: ['$scope', ($scope) ->
-    $scope.actions = [
+module.exports =
+  props:
+    event: Object
+    eventable: Object
+  created: ->
+    @actions = [
       name: 'react'
-      canPerform: -> AbilityService.canAddComment($scope.eventable.discussion())
+      canPerform: => AbilityService.canAddComment(@eventable.discussion())
     ,
       name: 'reply_to_comment'
       icon: 'mdi-reply'
-      canPerform: -> AbilityService.canRespondToComment($scope.eventable)
-      perform:    -> EventBus.broadcast $rootScope, 'replyToEvent', $scope.event.surfaceOrSelf(), $scope.eventable
+      canPerform: => AbilityService.canRespondToComment(@eventable)
+      perform:    => EventBus.broadcast $rootScope, 'replyToEvent', @event.surfaceOrSelf(), @eventable
     ,
       name: 'edit_comment'
       icon: 'mdi-pencil'
-      canPerform: -> AbilityService.canEditComment($scope.eventable)
-      perform:    -> ModalService.open 'EditCommentForm', comment: -> $scope.eventable
+      canPerform: => AbilityService.canEditComment(@eventable)
+      perform:    => ModalService.open 'EditCommentForm', comment: => @eventable
     ,
       name: 'fork_comment'
       icon: 'mdi-call-split'
-      canPerform: -> AbilityService.canForkComment($scope.eventable)
-      perform:    ->
+      canPerform: => AbilityService.canForkComment(@eventable)
+      perform:    =>
         EventBus.broadcast $rootScope, 'toggleSidebar', false
-        $scope.event.toggleFromFork()
+        @event.toggleFromFork()
     ,
       name: 'translate_comment'
       icon: 'mdi-translate'
-      canPerform: -> $scope.eventable.body && AbilityService.canTranslate($scope.eventable) && !$scope.translation
-      perform:    -> $scope.eventable.translate(Session.user().locale)
+      canPerform: => @eventable.body && AbilityService.canTranslate(@eventable) && !@translation
+      perform:    => @eventable.translate(Session.user().locale)
     ,
-      name: 'copy_url'
-      icon: 'mdi-link'
-      canPerform: -> clipboard.supported
-      perform:    ->
-        clipboard.copyText(LmoUrlService.event($scope.event, {}, absolute: true))
-        FlashService.success("action_dock.comment_copied")
-    ,
+    #   name: 'copy_url'
+    #   icon: 'mdi-link'
+    #   canPerform: => clipboard.supported
+    #   perform:    =>
+    #     clipboard.copyText(LmoUrlService.event(@event, {}, absolute: true))
+    #     FlashService.success("action_dock.comment_copied")
+    # ,
       name: 'show_history'
       icon: 'mdi-history'
-      canPerform: -> $scope.eventable.edited()
-      perform:    -> ModalService.open 'RevisionHistoryModal', model: -> $scope.eventable
+      canPerform: => @eventable.edited()
+      perform:    => ModalService.open 'RevisionHistoryModal', model: => @eventable
     ,
       name: 'delete_comment'
       icon: 'mdi-delete'
-      canPerform: -> AbilityService.canDeleteComment($scope.eventable)
-      perform:    -> ModalService.open 'ConfirmModal', confirm: ->
-        submit: $scope.eventable.destroy
+      canPerform: => AbilityService.canDeleteComment(@eventable)
+      perform:    => ModalService.open 'ConfirmModal', confirm: =>
+        submit: @eventable.destroy
         text:
           title:    'delete_comment_dialog.title'
           helptext: 'delete_comment_dialog.question'
           confirm:  'delete_comment_dialog.confirm'
           flash:    'comment_form.messages.destroyed'
     ]
-
-    listenForReactions($scope, $scope.eventable)
-    listenForTranslations($scope)
-  ]
-]
+  # mounted: ->
+  #   listenForReactions($scope, $scope.eventable)
+  #   listenForTranslations($scope)
+  template:
+    """
+    <div id="'comment-'+ eventable.id" class="new-comment">
+      <div v-if="!eventable.translation" v-marked="eventable.cookedBody()" class="thread-item__body new-comment__body lmo-markdown-wrapper"></div>
+      <translation v-if="eventable.translation" :model="eventable" field="body" class="thread-item__body"></translation>
+      <!-- <outlet name="after-comment-body" model="eventable"></outlet> -->
+      <document-list :model="eventable" :skip-fetch="true"></document-list>
+      <div class="lmo-md-actions">
+        <!-- <reactions_display model="eventable"></reactions_display> -->
+        <action-dock :model="eventable" :actions="actions"></action-dock>
+      </div>
+      <!-- <outlet name="after-comment-event" model="eventable"></outlet> -->
+    </div>
+    """
