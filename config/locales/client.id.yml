@@ -76,6 +76,8 @@ id:
     invitation: 'Tips menulis undangan yang baik'
     proposal: 'Tips untuk menulis usulan yang baik'
     vote: 'Anda dapat mengubah pendapat Anda kapanpun'
+  poll_common:
+    save_changes: Simpan
   poll_common_form:
     closed: Ditutup
   poll_count_options:

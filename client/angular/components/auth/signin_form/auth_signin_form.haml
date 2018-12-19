@@ -9,9 +9,9 @@
       %span{translate: "auth_form.sign_in_as", translate-value-name: "{{user.name}}"}
     %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "sendLoginLink()", ng-if: "user.errors.token"}
       %span{translate: "auth_form.login_link"}
-    %p.md-caption
+    %p
       %span{translate: "auth_form.set_password_helptext"}>
-      %a.lmo-pointer{ng-click: "signInAndSetPassword()", translate: "auth_form.set_password_link"}
+      %a.lmo-pointer{ng-click: "signInAndSetPassword()", translate: "auth_form.set_password"}
 
   .auth-signin-form__no-token{ng-if: "!user.hasToken"}
     %p

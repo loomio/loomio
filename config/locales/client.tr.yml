@@ -62,7 +62,7 @@ tr:
       cancel: 'İptal et'
       show_more: "Daha fazla göster"
       view_all: "Hepsini görüntüle"
-      new_thread: "Yeni konu"
+      new_thread: "Yeni müzakere"
       add_subgroup: 'Alt grup ekle'
       loading: 'Yükleniyor'
       translate: 'Tercüme et'
@@ -137,11 +137,11 @@ tr:
   navbar:
     recent_title: 'Kontrol paneline git'
     unread_title: 'Okunmamış etkinlikleri görüntüle'
-    start_thread: 'Yeni konu'
+    start_thread: 'Yeni müzakere'
     notifications: 'Bildirim paneli'
     search:
       results_aria_label: 'Arama sonuçları'
-      no_results: 'Hiçbir konu bulunamadı'
+      no_results: 'Hiçbir müzakere bulunamadı'
       close: 'Arama panelini kapat'
       placeholder: 'Arama'
       loading: 'Sonuçlar yükleniyor...'
@@ -158,7 +158,7 @@ tr:
     title: 'Aksiyon'
     start_group: 'Grup Başlat'
     start_subgroup: 'Alt Grup Başlat'
-    start_thread: 'Konu Başlat'
+    start_thread: 'Müzakere Başlat'
     invite_people: 'Kişileri davet et'
   notifications:
     header: "Bildirimler"
@@ -171,14 +171,14 @@ tr:
     success: 'Öneri kapanış süresi güncellendi'
     submit: 'Kapanış saatini güncelle'
   discussion_record:
-    created: '{{title}} konusu {{groupName}} grubunda başarıyla oluşturuldu '
+    created: '{{title}} müzakeresi {{groupName}} grubunda başarıyla oluşturuldu '
     updated: 'Değişiklikleri {{title}} konusuna kaydet'
   discussion_form:
     messages:
-      created: 'Konu başladı'
-      updated: 'Konu güncellendi'
-    new_discussion_title: 'Yeni konu başlat'
-    edit_discussion_title: 'Konuyu düzenle'
+      created: 'Müzakere başlatıldı'
+      updated: 'Müzakere güncellendi'
+    new_discussion_title: 'Yeni müzakere başlat'
+    edit_discussion_title: 'Müzakereyi düzenle'
     group_label: 'Grup'
     group_placeholder: 'Bir grup seç'
     title_label: 'Başlık'
@@ -186,9 +186,11 @@ tr:
     context_label: 'İçerik'
     context_placeholder: 'Üretken bir tartışma grubuna sahip olmak için yeterli derecede arka plan bilgisi veriniz. Bu alan müzakere ilerledikçe güncellenebilir'
     privacy_label: 'Gizlilik'
-    privacy_public: 'Herhangi bir kişi konuyu görebilir. Sadece üyeler katılım gösterebilir.'
-    privacy_private: 'Konu sadece {{group}} grubunun üyelerine görünür olacaktır.'
-    privacy_organisation: 'Konu {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
+    privacy_public: 'Herhangi bir kişi müzakereyi görebilir. Sadece üyeler katılım gösterebilir.'
+    privacy_private: 'Müzakere sadece {{group}} grubunun üyelerine görünür olacaktır.'
+    privacy_organisation: 'Müzakere {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
+  action_dock:
+    edit_stance: Konumunu değiştir
   cover_photo_form:
     heading: 'Yeni kapak fotoğrafı'
     upload_link: 'Yeni kapak fotoğrafı yükle'
@@ -226,7 +228,7 @@ tr:
     new_photo: 'yeni fotoğraf'
     new_cover_photo: 'Yeni kapak fotoğrafı yükle'
     new_group_logo: 'Yeni grup logosu yükle'
-    discussions_placeholder: 'Konu, herkesin bir başlık hakkında müzakere ederek birlikte kararlar aldığı yerdir.'
+    discussions_placeholder: 'Müzakere, herkesin bir başlık hakkında tartışarak birlikte kararlar aldığı yerdir.'
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
     subgroups: 'Alt gruplar'
@@ -246,8 +248,8 @@ tr:
       loud: Herhangi bir etkinlik olduğunda e-posta gönder.
       loud_aria_description: Bu grup için bildirim ses düzeyiniz Yüksek Ses'e ayarlandı. Her ne zaman bir faaliyet olursa size e-posta gönderilecektir.
       loud_message: '"{{name}}" hakkındaki tüm faaliyetler size e-postayla gönderilecektir.'
-      normal: 'Sadece önemli aktiviteleri e-postala: Yeni konular ve öneriler, sonuçlar vb'
-      normal_aria_description: Bu grup için bildirim ses düzeyiniz Normal'e ayarlandı. Sadece önemli faaliyetler e-postayla iletilecektir; mesela birisi yeni bir konu başlattığında, bir öneri gündeme getirdiğinde ya da bir sonuç belirlediğinde gibi.
+      normal: 'Sadece önemli aktiviteleri e-postala: Yeni müzakere ve öneriler, sonuçlar vb'
+      normal_aria_description: Bu grup için bildirim ses düzeyiniz Normal'e ayarlandı. Sadece önemli faaliyetler e-postayla iletilecektir; mesela birisi yeni bir müzakere başlattığında, bir öneri gündeme getirdiğinde ya da bir sonuç belirlediğinde gibi.
       normal_message: '"{{name}}" içerisinde sadece önemli faaliyetler hakkında e-postayla haberdar edileceksiniz.'
       quiet: Bu grup hakkında e-posta gönderme. Etkinlikler kontrol panelinde görüntülenecektir.
       quiet_aria_description: Bu grup için bildirim ses düzeyiniz Sakin'e ayarlandı. Bu gruba ait faaliyetler hakkında e-posta almayacaksınız. Grup faaliyetleri Kontrol Panelinde görüntülenecektir
@@ -276,27 +278,36 @@ tr:
       private_to_group: 'Ad ve açıklama sadece grup üyelerine görünür olacaktır.'
       private_to_parent_members: 'Ad ve açıklama sadece {{parent}} grubunun üyelerine görünür olacaktır.'
     privacy: 'Gizlilik'
-    confirm_change_to_secret: "Eğer devam ederseniz, bu gruptaki tüm konular ve onların alt grupları gizlenecektir."
-    confirm_change_to_secret_subgroup: 'Eğer devam ederseniz, tüm konular gizli yapılacaktır.'
-    confirm_change_to_public: 'Eğer devam ederseniz, bu gruptaki tüm konular web üzerinde herkese açık olacaktır.'
-    confirm_change_to_private_discussions_only: 'Eğer devam ederseniz, bu gruptaki tüm kamuya açık konular gizlenecektir.'
+    group_privacy_is_open_description: "Herkes grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır."
+    group_privacy_is_closed_description: "Herkes grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir."
+    group_privacy_is_closed_public_threads_description: "Herkes grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açık veya gizli olabilir."
+    group_privacy_is_secret_description: "Sadece davet edilen üyeler grubu bulabilir, kimlerin gruba dahil olduğunu ve müzakereleri görebilir."
+    confirm_change_to_secret: "Eğer devam ederseniz, bu gruptaki tüm müzakereler ve onların alt grupları gizlenecektir."
+    confirm_change_to_secret_subgroup: 'Eğer devam ederseniz, tüm müzakereler gizli yapılacaktır.'
+    confirm_change_to_public: 'Eğer devam ederseniz, bu gruptaki tüm müzakereler web üzerinde herkese açık olacaktır.'
+    confirm_change_to_private_discussions_only: 'Eğer devam ederseniz, bu gruptaki kamuya açık tüm müzakereler gizlenecektir.'
+    subgroup_privacy_is_open_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır."
+    subgroup_privacy_is_closed_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir."
+    subgroup_privacy_is_closed_public_threads_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açık veya gizli olabilir."
+    subgroup_privacy_is_closed_secret_parent_description: "{{Parent}} grubunun üyeleri bu alt grubu bulabilir ve katılmayı isteyebilir. Tüm müzakereler gizlidir. Sadece üyeler grupta kim olduğunu görebilir."
+    subgroup_privacy_is_secret_description: 'Sadece davet edilen üyeler bu alt grubu bulabilir, kimlerin grupta olduğunu ve müzakereleri görebilir.'
     advanced_settings: "Gelişmiş ayarlar"
     how_do_people_join: "Kişiler nasıl katılabilir?"
     membership_granted_upon_request: 'Herkes gruba katılabilir.'
     membership_granted_upon_approval: 'Herkes katılım talebinde bulunabilir, ancak onaylanması gerekir.'
-    thread_privacy: 'Konu gizliliği'
-    public_threads: 'Sadece kamuya açık konular'
+    thread_privacy: 'Müzakere gizliliği'
+    public_threads: 'Sadece kamuya açık olan müzakereler'
     public_discussions_subgroup: '{{parentGroupName}} grubunda bulunan herkes müzakereleri görebilir'
-    public_or_private_threads: 'Kamuya açık ve gizli konulara izin ver'
+    public_or_private_threads: 'Kamuya açık ve gizli müzakerelere izin ver'
     private_threads: 'Sadece üyeler müzakereleri görebilir'
     permissions: 'İzinler'
-    allow_public_threads: 'Bu grupta kamuya açık konulara izin ver.'
-    parent_members_can_see_discussions: '{{parent}} grubunun üyeleri gizli konuları görebilir.'
+    allow_public_threads: 'Bu grupta kamuya açık müzakerelere izin ver.'
+    parent_members_can_see_discussions: '{{parent}} grubunun üyeleri gizli müzakereleri görebilir.'
     members_can_add_members: 'Üyeler başkalarını davet edebilir ve katılım isteklerini onaylayabilir.'
     members_can_create_subgroups: 'Üyeler alt gruplar oluşturabilir.'
-    members_can_edit_discussions: 'Üyeler herhangi bir konunun içeriğini ve başlığını güncelleyebilir.'
+    members_can_edit_discussions: 'Üyeler herhangi bir müzakerenin içeriğini ve başlığını güncelleyebilir.'
     members_can_edit_comments: 'Üyeler her zaman kendi yorumlarını düzenleyebilir.'
-    members_can_start_discussions: 'Üyeler yeni konular başlatabilir.'
+    members_can_start_discussions: 'Üyeler yeni müzakereler başlatabilir.'
     members_can_vote: 'Üyeler önerilere oy verebilir.'
     members_can_raise_motions: 'Üyeler öneriler başlatabilir.'
     submit_start_group: 'Grup başlat'
@@ -406,45 +417,49 @@ tr:
   email_settings_page:
     header: E-posta ayarları
     daily_summary_label: Günlük özet e-postası
+    on_participation_description: "Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir."
     announcement_label: Duyurular
+    edit: Düzenle
     messages:
       updated: E-posta ayarları güncellendi
   dashboard_page:
     aria_label: 'Kontrol paneli'
     no_threads:
-      show_all: Herhangi bir yeni konunuz yok.
+      show_all: Herhangi bir yeni müzakereniz yok.
       show_proposals: Şu anda etkin herhangi bir öneri yok.
-      show_muted: Sesi kısılmış herhangi bir konunuz yok.
-    view_recent: Tüm son konuları görüntüle?
-    load_more: Daha fazla konu yükle
+      show_muted: Sesi kısılmış herhangi bir müzakereniz yok.
+    view_recent: Tüm son müzakereleri görüntüle?
+    load_more: Daha fazla müzakere yükle
     mark_as_read: Okundu olarak işaretle
     filtering:
-      filter_threads: Konuları Filtrele
-      filter_threads_aria_label: Konuları Filtrele
+      filter_threads: Müzakereleri Filtrele
+      filter_threads_aria_label: Müzakereleri Filtrele
       dropdown_heading: Kontrol panelini filtrele
-      all: Son Konular
-      all_aria_label: Şu anda son konular görüntüleniyor
-      all_description: Son konuları görüntüle
+      all: Son Müzakereler
+      all_aria_label: Şu anda son müzakereler görüntüleniyor
+      all_description: Son müzakereleri görüntüle
       proposals: Öneriler
-      proposals_aria_label: Şu anda aktif önerileri olan konular görüntüleniyor
-      proposals_description: Sadece aktif önerileri olan konuları görüntüle
-      muted_aria_label: Şu anda sesi kısılmış konular görüntüleniyor
-      muted_description: Sadece sesi kısılmış konuları görüntüleyin
+      proposals_aria_label: Şu anda aktif önerileri olan müzakereler görüntüleniyor
+      proposals_description: Sadece aktif önerileri olan müzakereleri görüntüle
+      muted: Sesi Kısılmış Müzakereler
+      muted_aria_label: Şu anda sesi kısılmış müzakereler görüntüleniyor
+      muted_description: Sadece sesi kısılmış müzakereleri görüntüleyin
     aria_thread:
       unread: '{{count}} okunmamış öğe.'
       current_proposal: 'Güncel öneri: {{name}}.'
       you_voted: 'Oy verdiniz: {{position}}.'
     threads_from:
-      group: 'tarafından konular'
-      starred: 'Yıldızlı konular'
+      group: 'tarafından müzakereler'
+      proposals: 'Aktif kararları olan müzakereler'
+      starred: 'Yıldızlı müzakereler'
       today: 'Bugün'
       yesterday: 'Dün'
       thisweek: 'Bu hafta'
       thismonth: 'Bu ay'
       older: 'Bir aydan daha eski'
   inbox_page:
-    no_threads: Yaşasın! Gelen kutunuzdaki bütün konuları okudunuz.
-    unread_threads: Okunmamış konular
+    no_threads: Yaşasın! Gelen kutunuzdaki bütün müzakereleri okudunuz.
+    unread_threads: Okunmamış müzakereler
     view_more: Daha Fazla Göster
     no_groups:
       start: Başla
@@ -454,6 +469,8 @@ tr:
     activity_placeholder: 'Henüz etkinlik yok!'
     load_previous: 'Daha önceki aktiviteyi yükle'
     started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
+    volume:
+      mute_message: 'Müzakerenin sesi kısıldı'
   activity_card:
     unread: Okunmamış
     latest: En yeniler
@@ -463,26 +480,31 @@ tr:
   thread_group:
     aria_label: 'Grup adı'
   thread_context:
-    aria_label: 'Konu içeriği'
-    thread_options: 'Konu seçenekleri'
+    aria_label: 'Müzakere içeriği'
+    thread_options: 'Müzakere seçenekleri'
     email_settings: 'E-posta ayarları'
+    edit: 'Düzenle'
+    edit_thread: 'Düzenle'
     close_thread: 'Kapat'
     mute_thread: 'Sesi kıs'
     move_thread: 'Taşı'
     print_thread: 'Yazdır'
     delete_thread: 'Sil'
   delete_thread_form:
-    title: Konuyu sil
-    body: Bu konuyu silmek istediğinden emin misin?
+    aria_label: 'Müzakereyi sil'
+    title: Müzakereyi sil
+    body: Bu müzakereyi silmek istediğinden emin misin?
+    confirm: 'Müzakereyi sil'
     messages:
-      success: Konu silindi
+      success: Müzakere silindi
   move_thread_form:
-    title: Konuyu taşı
+    aria_label: Müzakereyi taşı
+    title: Müzakereyi taşı
     body: 'Hedef grup:'
-    confirm: Konuyu taşı
-    confirm_change_to_private_thread: '{{groupName}} açık bir gruptur. Eğer devam ederseniz, konu herkese açılacaktır.'
+    confirm: Müzakereyi taşı
+    confirm_change_to_private_thread: '{{groupName}} açık bir gruptur. Eğer devam ederseniz, müzakere herkese açılacaktır.'
     messages:
-      success: 'Konu {{name}} grubuna taşındı '
+      success: 'Müzakere {{name}} grubuna taşındı '
   delete_comment_dialog:
     title: 'Yorumu sil'
     question: 'Bu yorumu silmek istediğinden emin misin?'
@@ -523,9 +545,9 @@ tr:
   proposal_outcome_updated_item:
     proposal_outcome_updated: 'önerinin sonucu güncellendi:'
   discussion_edited_item:
-    title: 'konu başlığı güncellendi: <span>{{title}}</span>'
-    description: 'konu içeriği güncellendi'
-    description_title: 'konu başlığı ve içerik güncellendi'
+    title: 'müzakere başlığı güncellendi: <span>{{title}}</span>'
+    description: 'müzakere içeriği güncellendi'
+    description_title: 'müzakere başlığı ve içerik güncellendi'
     private: 'konu gizliliği güncellendi: '
     public_to_private: 'gizli'
     private_to_public: 'genel'
@@ -551,10 +573,16 @@ tr:
   emoji_picker:
     search: "Bir emoji bulun..."
     no_emojis_found: "'{{term}}' için hiçbir emoji bulunamadı!"
+  registered_apps_page:
+    name: İsim
+  registered_app_form:
+    name_label: İsim
   decision_tools_card:
     proposal_title: Öneri
     count_title: Kontrol et
     poll_title: Anket
+  poll_common:
+    save_changes: Kaydet
   poll_common_notify_group:
     notify_group: Duyuru
   poll_common_close_form:
@@ -567,3 +595,5 @@ tr:
     'no': 'Hayır'
   polls_page:
     heading: Kararlar
+  auth_form:
+    name: İsim

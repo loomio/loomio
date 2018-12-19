@@ -43,7 +43,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def destroy
-    service.destroy(user: current_user)
+    service.delay.destroy(user: current_user)
     respond_with_resource
   end
 

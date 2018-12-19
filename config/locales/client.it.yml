@@ -154,14 +154,6 @@ it:
     internal_server_error: 'Spiacenti, ma qualcosa è andato storto. Riprova più tardi '
   verify_email_notice:
     please_verify: Grazie della partecipazione! Cerca nella tua email un link e cliccaci per verificare il tuo voto.
-  verify_stances:
-    title: Verifica voti
-    description: Controlla i voti qui sotto e verifica che siano i tuoi.
-    verify: Verifica
-    remove: Rimuovi
-    verify_success: Voto verificato
-    remove_success: Voto rimosso
-    all_done: Ottimo lavoro, hai verificato tutti i voti.
   previous_polls_page:
     heading: Attività in {{nome}}
     polls_count: Mostra {{loaded}} su un totale di {{total}} decisioni
@@ -416,6 +408,9 @@ it:
       poll_announced:
         title: Invita a votare
         helptext: Chi vorresti invitare a votare?
+      poll:
+        title: Notifica le modifiche
+        helptext: Chi vorresti notificare delle tue modifiche?
       poll_edited:
         title: Notifica le modifiche
         helptext: Chi vorresti notificare delle tue modifiche?
@@ -445,7 +440,7 @@ it:
     translate_thread: Traduci il contesto
     edit_poll: Modifica sondaggio
     translate_poll: Traduci sondaggio
-    edit_stance: Cambia il tuo voto
+    edit_stance: Cambia posizione
     translate_stance: Traduci il voto
     edit_comment: Modifica il commento
     delete_comment: Cancella il commento
@@ -1030,7 +1025,6 @@ it:
     ranked_choice_title: Scelta di preferenze
   poll_common:
     your_response: La tua risposta
-    change_your_response: Cambia la tua risposta
     reason: Motivo
     message: Messaggio
     results: Risultati
@@ -1040,12 +1034,12 @@ it:
     update_outcome: Aggiorna risultato
     outcome: Risultato
     statement: Dichiarazione
-    change_your_stance: Cambia il tuo voto
     load_more: Caricane altri
     details: Dettagli
     participant_name: Il tuo nome
     participant_email: La tua email
     start_poll: Inizia una decisione
+    save_changes: Salva
   poll_common_attachment_form:
     label: Allegati
   poll_common_card:
@@ -1171,6 +1165,8 @@ it:
     details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
     dots_per_person: Punti disponibili a persona
     dots_per_person_helptext: Il numero di punti che ogni partecipante può assegnare
+  poll_score_form:
+    details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
   poll_meeting_form:
     tool_tip_expanded: |
         <p>Usa un Sondaggio per incontro per sapere quando le persone sono disponibili ad incontrarsi.</p>
@@ -1234,8 +1230,6 @@ it:
     stance_updated: Voto aggiornato
   thread_item:
     event_removed: "Rimosso dalla discussione"
-  poll_common_participant_form:
-    participant_name_placeholder: Come ti chiami?
   poll_common_subscribe_form:
     receive_updates_title: Il tuo voto è stato acquisito
     receive_updates_helptext: Se vuoi ricevere un'email sul risultato del sondaggio, inserisci la tua email qui sotto

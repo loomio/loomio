@@ -1,6 +1,4 @@
 ko:
   loomio_onboarding:
-    group_progress_card:
-      learn_more_title: 새로운 탭 열기
     user_progress_card:
       dismiss: 기각합니다

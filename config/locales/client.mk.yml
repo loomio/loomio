@@ -86,6 +86,8 @@ mk:
     subject_label: "Тема"
     email_label: 'Твојата електронска пошта'
     message_label: 'Твојата порака'
+  poll_common:
+    save_changes: Зачувај
   poll_common_form:
     closed: Затворено
   poll_count_options:

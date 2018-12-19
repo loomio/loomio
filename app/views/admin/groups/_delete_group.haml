@@ -1,0 +1,6 @@
+%div{ class: 'panel' }
+  %h3 Delete this group
+  %div{ class: 'panel-contents' }
+    %div Deleting this group will destroy all related subgroups, discussions, polls, documents, and memberships - but not the users themselves.
+    %div
+      =link_to 'Delete this group', delete_group_admin_group_path(group), method: :post, data: {confirm: "Are you sure you want to delete this group - #{group.name}?"}

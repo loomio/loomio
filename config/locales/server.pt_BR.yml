@@ -35,6 +35,7 @@ pt_BR:
       created_at: Criado em
       closing_at: Encerrando em
       closed_at: Terminou em
+      is_latest: É o Ultimo
       engagement: Engajamento
       stances: Posicionamentos
       participants: Participantes
@@ -72,6 +73,10 @@ pt_BR:
         <h1>Confirmado.</h1>
         <p>Você selecionou o plano Gratuito para o seu grupo <a href="/g/%{group_key}">%{group}</a></p>
   user_mailer:
+    group_export_ready:
+      subject: Dados do Grupo para exportar %{group_name}
+      body_html: |
+          Baixe a dados do grupo <a href="%{url}">aqui</a>. Por favor note que esse link expirará em uma semana.
     accounts_merged:
       subject: "A sua conta de usuário em %{site_name} foi integrada."
       body_html: |
@@ -335,7 +340,6 @@ pt_BR:
         outcome_created: '%{actor} criou uma proposta de resolução: %{title}'
         outcome_announced: '%{actor} criou uma proposta de resolução: %{title}'
         stance_created: "%{actor} votou em %{title}"
-        stance_created_author: "Por favor verifique seu voto em %{title}"
         user_mentioned: '%{actor} mencionou você em %{title}'
         user_reminded: '%{actor} lembrou você de votar em %{title}'
       header:
@@ -354,6 +358,40 @@ pt_BR:
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
+      subject:
+        poll_created: '%{actor} iniciou uma enquete: %{title}'
+        poll_edited: '%{actor} editou a enquete %{title}'
+        poll_announced: '%{actor} convidou você para votar na enquete %{title}'
+        poll_closing_soon: 'Enquete encerrando em 24 horas: %{title}'
+        poll_closing_soon_author: 'Sua enquete %{title} encerra em 24 horas'
+        poll_expired: "Resultados da enquete %{title}"
+        poll_expired_author: 'Sua enquete encerrou. Crie uma proposta de resolução para %{title}'
+        poll_option_added: '%{actor} adicionou opções em %{title}'
+        poll_option_added_author: '%{actor} adicionou opções em %{title}'
+        outcome_created: '%{actor} criou uma proposta de resolução para a enquete %{title}'
+        outcome_announced: '%{actor} criou uma proposta de resolução para a enquete %{title}'
+        stance_created: "%{actor} votou em %{title}"
+        stance_created_author: "Por favor verifique seu voto em %{title}"
+        user_mentioned: '%{actor} mencionou você em %{title}'
+        user_reminded: '%{actor} lembrou você de votar em %{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> iniciou uma enquete'
+        poll_edited: '<strong>%{actor}</strong> editou a enquete'
+        poll_announced: '<strong>%{actor}</strong> convidou você para votar na enquete'
+        poll_closing_soon: 'A enquete de <strong>%{actor}</strong> encerrará em 24 horas. Este é um bom momento para votar, mudar de opção ou encorar outras pessoas a participar.'
+        poll_closing_soon_author: 'Sua enquete encerrará em 24 horas - agora é um bom momento para lembrar as pessoas de votarem, ou ampliar o período de votação se necessário.'
+        poll_expired: "A enquete %{title} de <strong>%{actor}</strong> encerrou."
+        poll_expired_author: 'Sua enquete <strong>encerrou</strong>. Por favor tome algum tempo para considerar o que foi discutido e <strong>compartilhe uma proposta de resolução</strong> com o grupo, para que as pessoas saibam o que irá acontecer em seguida.'
+        poll_option_added: '<strong>%{actor}</strong> adicionou opções a %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> adicionou opções a %{title}'
+        outcome_created: '<strong>%{actor}</strong> criou uma proposta de resolução.'
+        outcome_announced: '<strong>%{actor}</strong> criou uma proposta de resolução.'
+        stance_created: "<strong>%{actor}</strong> votou em %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mencionou você em %{title}'
+        user_reminded: '<strong>%{actor}</strong> está lhe lembrando de votar em %{title}'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    score:
       subject:
         poll_created: '%{actor} iniciou uma enquete: %{title}'
         poll_edited: '%{actor} editou a enquete %{title}'
@@ -539,6 +577,9 @@ pt_BR:
     dot_vote:
       title: "Qual a estratégia da nossa empresa para o próximo trimestre?"
       details: Este é um grande ano para a nossa empresa e nós precisamos pensar estrategicamente aonde colocamos nossos recursos limitados. Por favor indique em que áreas você acha que deveríamos focar mais no próximo trimestre.
+    score:
+      title: "Quais são os tópicos que você tem interesse em discutir na próxima conferencia?"
+      details: Estamos preparando os tópicos que serão abordados na próxima conferencia. Por favor indique seus interesses em cada um dos seguintes temas.
     ranked_choice:
       title: "Quem deveria ocupar a vice-prefeitura?"
       details: "É hora das nossas eleições semestrais! Esta é uma votação oficial que vai determinar a próxima pessoa a ocupar a vice-prefeitura. Lembre-se de ler as propostas de cada candidatura no nosso site!"

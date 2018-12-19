@@ -91,6 +91,8 @@ he:
     message_label: 'ההודעה שלך'
   hint:
     discussion: 'טיפים להתחלת דיון מרתק'
+  poll_common:
+    save_changes: שמירה
   poll_common_form:
     closed: סגור
   poll_count_options:

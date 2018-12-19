@@ -287,6 +287,8 @@ da:
       anyone_can_participate: Alle kan deltage
     group_form:
       members_count: '{{count}} mennesker vil blive notificeret'
+  action_dock:
+    edit_stance: Rediger stillingtagen
   cover_photo_form:
     aria_label: 'Skift forsidefoto'
     heading: 'Nyt forsidefoto'
@@ -800,7 +802,6 @@ da:
     meeting_title: Find et tidspunkt
   poll_common:
     your_response: Dit valg
-    change_your_response: Skift mening
     reason: Begrundelse
     message: Besked
     results: Resultat
@@ -810,7 +811,6 @@ da:
     update_outcome: Rediger resultat
     outcome: Resultat
     statement: Statement
-    change_your_stance: Skift mening
     load_more: Hent mere
     details: Detaljer
     participant_name: Dit navn
@@ -820,6 +820,7 @@ da:
     share_count: Del checkmåling
     start_poll: Opret en beslutning
     publish_poll: Den meningsmåling
+    save_changes: Gem
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_card:
@@ -926,6 +927,9 @@ da:
     dots_per_person: Antal prikker til fordeling
     dot_vote_created: Prikafstemning oprettet
     dot_vote_updated: Prikafstemning redigeret
+  poll_score_form:
+    details_placeholder: Bekriv udførligt hvad der skal foregå så at deltagerne har de bedste forudsætninger at melde tilbage
+    add_option_placeholder: Tilføj mulighed
   poll_meeting_form:
     tool_tip_collapsed: Find et tidspunkt hvor alle kan mødes
     start_header: Opret Fund tidspunkt
@@ -991,8 +995,6 @@ da:
     poll_published: "publicerede en måling:"
     poll_published_with_discussion: "publicerede en måling i <strong>{{discussion}}</strong>:"
     timestamp: I dag kl. {{timestamp}}
-  poll_common_participant_form:
-    participant_name_placeholder: Hvad er dit navn?
   poll_common_subscribe_form:
     receive_updates_title: Din stemme er noteret
     receive_updates_helptext: Hvis du ønsker at modtage en email om resultatet af denne måling, så indtast venligst din email herunder

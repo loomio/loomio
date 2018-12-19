@@ -182,6 +182,8 @@ sr:
     privacy_public: 'Svako može videti nit. Samo se članovi mogu pridružiti.'
     privacy_private: 'Nit će biti vidljiva isključivo članovima {{group}}.'
     privacy_organisation: 'Nit će biti vidljiva članovima {{parent}} i članovima {{group}}.'
+  action_dock:
+    edit_stance: Promeni poziciju
   join_group_button:
     join_group: Pridruži se grupi
     membership_requested: Zahtev za članstvom je na čekanju
@@ -590,6 +592,8 @@ sr:
     submit: Ukini pristup
     messages:
       success: "'{{name}}' ne može više koristiti Vaš nalog."
+  poll_common:
+    save_changes: Snimi
   poll_common_form:
     closed: Zatvoreno
   poll_count_options:

@@ -10,10 +10,9 @@ shared  = require './tasks/shared'
 
 gulp.task 'angular:haml',          angular.haml
 gulp.task 'angular:scss',          angular.scss
-gulp.task 'shared:emoji',          shared.emoji
 gulp.task 'shared:moment_locales', shared.moment_locales
 
-gulp.task 'angular:external', ['angular:haml', 'angular:scss', 'shared:emoji', 'shared:moment_locales']
+gulp.task 'angular:external', ['angular:haml', 'angular:scss', 'shared:moment_locales']
 
 gulp.task 'angular:bundle:dev',     angular.development
 gulp.task 'angular:bundle:prod',    angular.production

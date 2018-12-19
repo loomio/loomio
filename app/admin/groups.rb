@@ -187,6 +187,8 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
         f.input type: :submit, value: "Set handle"
       end
     end
+
+    render 'delete_group', { group: group }
   end
 
   form do |f|
@@ -229,6 +231,12 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     group = Group.friendly.find(params[:id])
     group.unarchive!
     flash[:notice] = "Unarchived #{group.name}"
+    redirect_to [:admin, :groups]
+  end
+
+  member_action :delete_group, :method => :post do
+    group = Group.friendly.find(params[:id])
+    group.destroy!
     redirect_to [:admin, :groups]
   end
 end

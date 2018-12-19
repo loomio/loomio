@@ -171,7 +171,6 @@ eo:
     add_comment: Komenti
     edit_poll: Redakti enketon
     translate_poll: Traduki enketon
-    edit_stance: Ŝanĝi vian voĉdonon
   join_group_button:
     join_group: Aliĝi al la grupo
   membership_request_form:
@@ -303,18 +302,17 @@ eo:
     poll_title: Enketo
   poll_common:
     your_response: Via respondo
-    change_your_response: Ŝanĝi vian respondon
     reason: Kialo
     message: Mesaĝo
     results: Rezultoj
     responses: Respondoj
     vote: Voĉdono
     votes: Voĉdonoj
-    change_your_stance: Ŝanĝi vian voĉdonon
     load_more: Ŝargi pli
     details: Detaloj
     participant_name: Via nomo
     participant_email: Retadreso
+    save_changes: Konservi
   poll_common_select_group:
     loomio_group: Grupo
   poll_common_calendar_invite:
@@ -347,8 +345,6 @@ eo:
     just_now: Ĝuste nun
   poll_common_publish_slack_preview:
     timestamp: Hodiaŭ je {{timestamp}}
-  poll_common_participant_form:
-    participant_name_placeholder: Kio estas via nomo?
   polls_page:
     heading: Decidoj
   auth_form:

@@ -39,6 +39,7 @@ zh_TW:
     dot_vote: 點投票
     meeting: 時間投票
     ranked_choice: 排序選擇
+    score: 分數投票
   timezones:
     local: 本地時間 ({{value}})
   common:
@@ -154,14 +155,6 @@ zh_TW:
     internal_server_error: '很抱歉，但是有些事情不太對勁。請再試一次。'
   verify_email_notice:
     please_verify: 感謝參與！請檢查您的電子郵件來找找驗證您的投票的連結。
-  verify_stances:
-    title: 驗證投票
-    description: 請審閱下方的投票並驗證其是否為您的投票。
-    verify: 驗證
-    remove: 移除
-    verify_success: 投票已驗證
-    remove_success: 投票已移除
-    all_done: 做得好，您已經驗證所有投票了。
   previous_polls_page:
     heading: 在 {{name}} 中的動態
     polls_count: 顯示 {{total}} 中的 {{loaded}} 個決策
@@ -429,6 +422,9 @@ zh_TW:
       poll_announced:
         title: 邀請投票
         helptext: 您想要邀請誰來投票？
+      poll:
+        title: 編輯的通知
+        helptext: 您想要通知誰關於您的變更？
       poll_edited:
         title: 編輯的通知
         helptext: 您想要通知誰關於您的變更？
@@ -466,7 +462,7 @@ zh_TW:
     announce_poll: 邀請夥伴來投票
     announce_poll_active: （尚未邀請任何人）
     translate_poll: 翻譯投票
-    edit_stance: 變更您的投票
+    edit_stance: 變更立場
     translate_stance: 翻譯投票
     edit_comment: 編輯意見
     delete_comment: 刪除意見
@@ -515,6 +511,7 @@ zh_TW:
     discussion_header: 討論串修訂歷史
     comment_header: 評論修訂歷史
     poll_header: 投票修訂歷史
+    stance_header: 立場調整歷史
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited_by: '由 <strong>{{name}}</strong> 所編輯'
     posted: 已貼出
@@ -654,6 +651,7 @@ zh_TW:
     permissions: '權限'
     allow_public_threads: '允許在此群組中公開討論串。'
     parent_members_can_see_discussions: '{{parent}} 的成員可以看到私密討論串。'
+    members_can_announce: '成員可以通知任何在群組裡的人。'
     members_can_add_members: '成員可以邀請夥伴並核准加入請求。'
     members_can_create_subgroups: '成員可以建立子群組。'
     members_can_edit_discussions: '成員可以更新任何討論串的內容與標題。'
@@ -1191,7 +1189,7 @@ zh_TW:
     ranked_choice_title: 排序選擇
   poll_common:
     your_response: 您的回應
-    change_your_response: 變更您的回應
+    change_your_response: 編輯回應
     reason: 理由
     reason_placeholder: 任何額外的意見？
     message: 訊息
@@ -1204,7 +1202,7 @@ zh_TW:
     update_outcome: 更新結果
     outcome: 成果
     statement: 聲明
-    change_your_stance: 變更您的投票
+    change_your_stance: 編輯回應
     load_more: 載入更多
     details: 詳細內容
     participant_name: 您的大名
@@ -1215,6 +1213,8 @@ zh_TW:
     start_poll: 啟動決策
     publish_poll: 分享投票
     view_all: 檢視全部
+    save_changes: 儲存
+    change_vote: 變更投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -1431,6 +1431,19 @@ zh_TW:
     dots_per_person_helptext: 每個參與者將會被分配到的點數
     dot_vote_created: 點投票已建立
     dot_vote_updated: 點投票已更新
+  poll_score_form:
+    tool_tip_expanded: |
+        <p>分數投票讓夥伴們可以表達他們對每個選項的喜好程度。</p>
+        <p>每個選項的總分會顯示在結果中。</p>
+    tool_tip_collapsed: 對每個選項評分
+    start_header: 啟動分數投票
+    edit_header: 編輯分數投票
+    tip: 對每個選項評分
+    title_placeholder: 例如：以 0-9 的分數對候選人評分
+    details_placeholder: 提供任何參與的人可能需要知道的細節
+    add_option_placeholder: 新增選項
+    score_created: 已建立分數投票
+    score_updated: 分數投票已更新
   poll_meeting_form:
     tool_tip_expanded: |
         <p>使用時間投票來看看夥伴們何時可以會面。</p>
@@ -1563,8 +1576,6 @@ zh_TW:
     poll_published_with_discussion: "在 <strong>{{discussion}}</strong> 中發佈投票。"
     view_it_on_loomio: 在 {{site_name}} 上檢視
     timestamp: 今日 {{timestamp}}
-  poll_common_participant_form:
-    participant_name_placeholder: 您的大名是？
   poll_common_subscribe_form:
     receive_updates_title: 您的投票已記錄
     receive_updates_helptext: 若您想要收到關於此投票的結果的電子郵件，在下面輸入您的電子郵件
@@ -1573,9 +1584,6 @@ zh_TW:
     no_thanks: 不用了，謝謝
   poll_common_example_card:
     what_is_this: "這裡有五個 {{type}} 的範例。您是參與者，來試試看吧！"
-    helptext_before: "當您準備好時，"
-    helptext_link: "啟動一個 {{type}}"
-    helptext_after: "您自己，或是邀請一些夥伴來試試。"
   share_poll_page:
     title: 分享投票 - {{title}}
   polls_page:
@@ -1602,23 +1610,21 @@ zh_TW:
     invalid_token: "抱歉，我們無法使用那個憑證來讓您登入。點選下方來傳送另一個。"
     email_not_found: "抱歉，我們找不到與此電子郵件地址相關的帳號"
     email_placeholder: you@example.com
-    login_with_token: 您已經設定好了！點選下方的連結來登入。
-    login_link_helptext: |
-        點擊下方的按鈕，然後我們就會傳送給您一個可以立即登入的連結。
-        若您未來想要使用密碼，您可以從您的設定檔頁面設定一個。
+    login_with_token: 您已經設定好了！點選下方的連結以繼續。
+    login_link_helptext: 點選下方的按鈕，然後我們就會傳送連結給您以供登入。
     login_link_helptext_with_password: "輸入您的密碼，或是透過電子郵件登入。"
-    sign_up_helptext: "請完成此表單以建立使用者帳號"
+    check_spam_folder: 如果電子郵件未在短時間內抵達，請檢查您的垃圾信資料夾。
+    sign_up_helptext: 請完成此表單以建立使用者帳號
     i_accept: "我接受<a href='{{termsUrl}}' target='_blank'>服務條款</a>與<a href='{{privacyUrl}}' target='_blank'>隱私權政策</a>"
     name_required: 請輸入名稱
     terms_required: 您必須同意服務條款
     account_inactive: 喔喔，看起來 {{email}} 的帳號已經被停用囉！
     privacy_notice: "當您使用 {{siteName}} 時將會收集個人資料。<br/>閱讀我們的<a href='{{privacyUrl}}' target='_blank'>隱私權政策</a>來取得更多資訊。"
-    welcome: 歡迎來到 {{siteName}}！
+    welcome: 新加入 {{siteName}}？
     welcome_back: 歡迎回來，{{name}}！
     login_link: 透過電子郵件登入
     set_password: 設定密碼
-    set_password_helptext: 厭倦透過電子郵件登入了嗎？
-    set_password_link: 設定密碼
+    set_password_helptext: 下次想要使用密碼嗎？
     hello: "您好，{{name}}！"
     new_to_loomio: 第一次來到 {{site_name}}？建立帳號
     create_account: 建立帳號
