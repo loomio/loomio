@@ -20,7 +20,16 @@ module.exports =
   #         EventBus.broadcast $scope, 'showReplyForm', comment
   data: ->
     isDisabled: false
+  created: ->
+    threadItemComponents: [
+      'newComment',
+      'outcomeCreated',
+      'pollCreated',
+      'stanceCreated'
+     ]
   methods:
+    hasComponent: -> _.includes(@threadItemComponents, _.camelCase(@event.kind))
+
     debug: -> window.Loomio.debug
 
     canRemoveEvent: -> AbilityService.canRemoveEventFromThread(@event)
@@ -91,7 +100,7 @@ module.exports =
               </h3>
               <button v-if="canRemoveEvent()" @click="removeEvent()" class="md-button--tiny"><i class="mdi mdi-delete"></i></button>
             </div>
-            <component :is="_.camelCase(event.kind)" :event='event' :eventable='event.model()'></component>
+            <component v-if="hasComponent()" :is="_.camelCase(event.kind)" :event='event' :eventable='event.model()'></component>
           </div>
         </div>
       </div>
