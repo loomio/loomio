@@ -144,6 +144,6 @@ module.exports =
         ></div> -->
         <loading v-show="eventWindow.loader.loadingMore" class="activity-card__loading page-loading"></loading>
       </div>
-      <!-- <add_comment_panel v-if="eventWindow" event_window="eventWindow" parent_event="discussion.createdEvent()"></add_comment_panel> -->
+      <add-comment-panel v-if="eventWindow" :event-window="eventWindow" :parent-event="discussion.createdEvent()"></add-comment-panel>
     </section>
     """
