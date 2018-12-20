@@ -11,7 +11,7 @@ module.exports =
     parentEvent: Object
 
   created: ->
-    actor = Session.user()
+    @actor = Session.user()
 
   mounted: ->
     EventBus.listen @, 'replyToEvent', (e, event, comment) =>
@@ -53,7 +53,7 @@ module.exports =
           <user-avatar :user="actor" size="small"></user-avatar>
         </div>
         <div class="thread-item__body lmo-flex--column lmo-flex__horizontal-center">
-          <!-- <comment_form event-window="eventWindow"></comment_form> -->
+          <comment-form :event-window="eventWindow"></comment-form>
         </div>
       </div>
       <div v-if="!canAddComment()" class="add-comment-panel__join-actions">

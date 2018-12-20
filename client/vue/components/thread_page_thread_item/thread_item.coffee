@@ -8,6 +8,13 @@ I18n           = require 'shared/services/i18n'
 { submitForm } = require 'shared/helpers/form'
 { eventHeadline, eventTitle, eventPollType } = require 'shared/helpers/helptext'
 
+threadItemComponents = [
+  'newComment',
+  'outcomeCreated',
+  'pollCreated',
+  'stanceCreated'
+ ]
+
 module.exports =
   props:
     event: Object
@@ -20,15 +27,9 @@ module.exports =
   #         EventBus.broadcast $scope, 'showReplyForm', comment
   data: ->
     isDisabled: false
-  created: ->
-    threadItemComponents: [
-      'newComment',
-      'outcomeCreated',
-      'pollCreated',
-      'stanceCreated'
-     ]
   methods:
-    hasComponent: -> _.includes(@threadItemComponents, _.camelCase(@event.kind))
+    hasComponent: ->
+      _.includes(threadItemComponents, _.camelCase(@event.kind))
 
     debug: -> window.Loomio.debug
 

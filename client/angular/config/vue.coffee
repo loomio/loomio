@@ -54,6 +54,7 @@ components =
   StanceCreated: require 'vue/components/thread_page_thread_item/stance_created.coffee'
   EventChildren: require 'vue/components/thread_page_event_children/event_children.coffee'
   AddCommentPanel: require 'vue/components/thread_page_add_comment_panel/add_comment_panel.coffee'
+  CommentForm: require 'vue/components/thread_page_comment_form/comment_form.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))

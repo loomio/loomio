@@ -1,0 +1,15 @@
+.comment-form .lmo-textarea md-input-container {
+  margin-top: -2px;
+}
+.comment-form-attachments input {
+  display: none;
+}
+
+.comment-form-button {
+  margin-left: 10px;
+  &:hover { cursor: pointer; }
+}
+
+.comment-form-container{
+  width: 100%;
+}
