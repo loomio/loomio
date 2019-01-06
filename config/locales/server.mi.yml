@@ -6,9 +6,12 @@ mi:
       details: Ngā Taipitopito
       total: Tapeke
   footer:
+    blog: Rangitaki
+    contact: Whakapā
     help: Āwhina
     privacy: Matatapu
     public_groups: rōpū public
+    terms: Ngā whakaritenga
   poll_mailer:
     common:
       unsubscribe: Weteohauru

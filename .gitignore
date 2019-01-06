@@ -24,7 +24,6 @@ bin/
 public/client
 public/system
 public/uploads
-public/img/emojis
 public/service-worker.js
 
 /disabled_plugins/

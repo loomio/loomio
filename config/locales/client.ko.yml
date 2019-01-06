@@ -199,6 +199,8 @@ ko:
     privacy_public: '누구나 이 쓰레드를 볼 수 있지만, 회원만 참여할 수 있습니다.'
     privacy_private: '이 쓰레드는 {{group}}의 멤버만 볼 수 있습니다.'
     privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
+  action_dock:
+    edit_stance: 선택 변경
   cover_photo_form:
     aria_label: '커버 사진 양식 교체'
     heading: '새로운 커버 사진'
@@ -602,6 +604,8 @@ ko:
       reload: '다시 불러오기'
   emoji_picker:
     search: "이모티콘을 찾으세요."
+  poll_common:
+    save_changes: 저장
   poll_common_form:
     closed: 종료
   poll_count_options:

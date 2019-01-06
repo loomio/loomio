@@ -113,14 +113,6 @@ cs:
     internal_server_error: 'Omlouváme se, ale něco se pokazilo. Prosím zkuste to znovu.'
   verify_email_notice:
     please_verify: Děkujeme za účast! Zkontrolujte prosím Vaši emailovou schránku, aby jste potvrdili Váš hlas pomocí odkazu.
-  verify_stances:
-    title: Ověřit hlasy
-    description: Zkontrolujte prosím hlasy níže a potvrďte, že se jedná o Vaše hlasy.
-    verify: Ověřit
-    remove: Odebrat
-    verify_success: Hlas ověřen
-    remove_success: Hlas odebrán
-    all_done: Dobrá práce, ověřili jste všechny Vaše hlasy.
   previous_polls_page:
     heading: Aktivity v {{name}}
     polls_count: Zobrazeno {{loaded}} z {{total}} rozhodnutí
@@ -309,6 +301,7 @@ cs:
     copy_url: Kopírovat URL
     edit_thread: Upravit kontext
     translate_thread: Přeložit kontext
+    edit_stance: Změnit postoj
   cover_photo_form:
     image_size_helptext: 'Ideální velikost obrázku je 1400 x 320px'
     upload_success: 'Titulní fotka byla úspěšně aktualizována'
@@ -643,7 +636,6 @@ cs:
     meeting_title: Doba hlasování
   poll_common:
     your_response: Vaše odpověď
-    change_your_response: Změňte odpověď
     reason_placeholder: Jakékoliv další připomínky?
     results: Výsledky
     responses: Odpovědi
@@ -653,6 +645,7 @@ cs:
     share_proposal: Sdílet návrh
     start_poll: Spuštění rozhodování
     publish_poll: Sdílet hlasování
+    save_changes: Uložit
   poll_common_add_option:
     button:
       add_option: Přidat další možnost
@@ -712,15 +705,11 @@ cs:
     title: Admin - {{title}}
   poll_common_publish_facebook_preview:
     just_now: Právě teď
-  poll_common_participant_form:
-    participant_name_placeholder: Jaké je vaše jméno?
   poll_common_subscribe_form:
     receive_updates_title: Vaše hlasování bylo zaznamenáno
     receive_updates_helptext: Chcete-li obdržet e-mail s výsledky tohoto hlasování, zadejte níže svou e-mailovou adresu
     subscribe: Přihlásit odběr
     no_thanks: Ne, díky
-  poll_common_example_card:
-    helptext_before: "Až budete připraveni,"
   polls_page:
     heading: Rozhodnutí
     start_new_poll: Nové rozhodnutí

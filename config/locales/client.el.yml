@@ -237,6 +237,8 @@ el:
     privacy_public: 'Οποιοσδήποτε μπορεί να δει αυτό το θέμα. Μόνο μέλη μπορούν να συμμετάσχουν.'
     privacy_private: 'Το θέμα θα είναι ορατό μόνο στα μέλη της ομάδας {{group}}.'
     privacy_organisation: 'Το θέμα θα είναι ορατό μόνο στα μέλη της {{parent}} και μέλη της ομάδα {{group}}.'
+  action_dock:
+    edit_stance: Αλλάξε θέση
   cover_photo_form:
     aria_label: 'Αλλάξτε την φωτογραφία φόρμας εξωφύλλου'
     heading: 'Νέα φωτογραφία εξωφύλλου'
@@ -427,6 +429,8 @@ el:
     count_title: Έλεγχος
     poll_title: Ψηφοφορία
     meeting_title: Χρόνος ψηφοφορίας
+  poll_common:
+    save_changes: Αποθήκευση
   current_polls_card:
     start_poll: Νέα απόφαση
   poll_common_notify_group:

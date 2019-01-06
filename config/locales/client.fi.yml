@@ -96,5 +96,7 @@ fi:
     context_menu:
       edit_comment: 'Muokkaa kommenttia'
       delete_comment: 'Poista kommentti'
+  poll_common:
+    save_changes: Tallenna
   poll_common_form:
     closed: Suljettu

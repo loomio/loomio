@@ -251,6 +251,33 @@ uk:
         stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
+    score:
+      subject:
+        poll_created: '%{actor} розпочав(ла) опитування: %{title}'
+        poll_edited: '%{actor} відредагував(ла) опитування: %{title}'
+        poll_closing_soon: 'Опитування закривається за 24 години: %{title}'
+        poll_closing_soon_author: 'Ваше опитування закривається за 24 години: %{title}'
+        poll_expired: "Результати опитування: %{title}"
+        poll_expired_author: 'Ваше опитування закрито. Поширте результат для: %{title}'
+        poll_option_added: '%{actor} додав(ла) варіанти до: %{title}'
+        poll_option_added_author: '%{actor} додав(ла) варіанти до: %{title}'
+        outcome_created: '%{actor} поширив(ла) результат опитування: %{title}'
+        outcome_announced: '%{actor} поширив(ла) результат опитування: %{title}'
+        stance_created: "%{actor} проголосував щодо: %{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> розпочав(ла) опитування'
+        poll_edited: '<strong>%{actor}</strong> відредагував(ла) опитування'
+        poll_closing_soon: 'Опитування від <strong>%{actor}</strong> закривається за 24 годин. Зараз зручний час щоб проголосувати, змінити свою думку або заохотити інших до участі.'
+        poll_closing_soon_author: 'Ваше опитування закривається за 24 години - тепер чудовий час щоб нагадати людям про нього або продовжити термін якщо це необхідно.'
+        poll_expired: "Опитування <strong>%{actor}</strong> закрито: %{title}"
+        poll_expired_author: 'Ваше опитування <strong>закрито</strong>. Будь ласка знайдіть час аби врахувати що і як було сказано та <strong>поширте результат</strong> у групі, аби люди знали що буде відбуватися далі.'
+        poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
+        outcome_created: '<strong>%{actor}</strong> поширив(ла) результат опитування.'
+        outcome_announced: '<strong>%{actor}</strong> поширив(ла) результат опитування.'
+        stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
     count:
       subject:
         poll_created: '%{actor} відмітився(лась) в: %{title}'

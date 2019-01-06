@@ -154,14 +154,6 @@ hu:
     internal_server_error: 'Sajnáljuk, de valami hiba történt. Kérlek próbáld újra.'
   verify_email_notice:
     please_verify: Köszönjük a részvételt! Az emailben elküldött linken tudod ellenőrizni a szavazatod.
-  verify_stances:
-    title: Szavazatokat ellenőrizni
-    description: Kérlek tekintsd át a szavazatokat és ellenőrizd, hogy valóban a tieid.
-    verify: Ellenőrzés
-    remove: Eltávolít
-    verify_success: Szavazat ellenőrizve
-    remove_success: Szavazat eltávolítva
-    all_done: Gratulálok, az összes szavazatot ellenőrízted.
   previous_polls_page:
     heading: '{{name}} tevékenységei'
     polls_count: '{{total}} döntésből {{loaded}} mutatása'
@@ -388,6 +380,7 @@ hu:
       poll_announced:
         title: Meghívás szavazásra
   action_dock:
+    edit_stance: Álláspontod megváltoztatása
     delete_comment: Komment törlése
   join_group_button:
     join_group: Kapcsolódj a csoporthoz
@@ -519,6 +512,8 @@ hu:
     poll_title: Szavazás
     meeting_title: Idő szavazás
     ranked_choice_title: Sorrend szavazás
+  poll_common:
+    save_changes: Mentés
   current_polls_card:
     start_poll: Új döntés
   poll_common_form:

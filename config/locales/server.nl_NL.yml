@@ -275,7 +275,6 @@ nl_NL:
         outcome_created: '%{actor} deelde de uitkomst van een voorstel: %{title}'
         outcome_announced: '%{actor} deelde de uitkomst van een voorstel: %{title}'
         stance_created: "%{actor} stemde op: %{title}"
-        stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> heeft een voorstel gestart'
         poll_closing_soon: '<strong>%{actor}</strong>''s voorstel sluit over 24 uur. Nu is een goed moment om te stemmen, je te bedenken, of anderen aan te moedigen om deel te nemen.'
@@ -303,6 +302,32 @@ nl_NL:
         poll_created: '<strong>%{actor}</strong> heeft een peiling gestart'
         poll_closing_soon: '<strong>%{actor}</strong> ''s peiling sluit over 24 uur. Nu is een goed moment om te stemmen, je te bedenken, of anderen aan te moedigen om deel te nemen.'
         poll_closing_soon_author: 'Je peiling sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.'
+        poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
+        outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'
+        outcome_announced: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    score:
+      subject:
+        poll_created: ' %{actor} heeft een peiling gestart: %{title}'
+        poll_edited: '%{actor} bewerkte de peiling: %{title}'
+        poll_closing_soon: 'Peiling sluit over 24 uur: %{title}'
+        poll_closing_soon_author: 'Je peiling sluit over 24 uur: %{title}'
+        poll_expired: "Peilingsresultaten: %{title}"
+        poll_expired_author: 'Je peiling werd gesloten. Deel een uitkomst van: %{title}'
+        poll_option_added: '%{actor} voegde opties toe aan: %{title}'
+        poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
+        outcome_created: '%{actor} heeft een uitkomst van een peiling gedeeld: %{title}'
+        outcome_announced: '%{actor} heeft een uitkomst van een peiling gedeeld: %{title}'
+        stance_created: "%{actor} stemde op: %{title}"
+        stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> heeft een peiling gestart'
+        poll_edited: '<strong>%{actor}</strong> heeft een peiling aangepast'
+        poll_closing_soon: '<strong>%{actor}</strong> ''s peiling sluit over 24 uur. Nu is een goed moment om te stemmen, je te bedenken, of anderen aan te moedigen om deel te nemen.'
+        poll_closing_soon_author: 'Je peiling sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.'
+        poll_expired_author: 'Je peiling is <strong>gesloten</strong>. Neem alstublieft de tijd om na te gaan wat er gezegd is en <strong>deel een uitkomst</strong> met de groep, zodat mensen weten wat er hierna gebeurt.'
         poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
         outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'

@@ -337,7 +337,6 @@ de:
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         stance_created: "%{actor} hat abgestimmt: %{title}"
-        stance_created_author: "Bitte bestätige hier %{title} deine Wahl"
         user_mentioned: '%{actor} hat dich in %{title} erwähnt'
         user_reminded: '%{actor} erinnert dich zur Wahl von %{title}'
       header:
@@ -370,6 +369,40 @@ de:
         outcome_announced: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
         stance_created: "%{actor} hat abgestimmt: %{title}"
         stance_created_author: "Bitte bestätige hier %{title} deine Wahl"
+        user_mentioned: '%{actor} hat dich in %{title} erwähnt'
+        user_reminded: '%{actor} erinnert dich zur Wahl von %{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> hat eine Abstimmung eröffnet'
+        poll_edited: '<strong>%{actor}</strong> hat die Umfrage überarbeitet'
+        poll_announced: '<strong>%{actor}</strong> hat dich zu einer Umfrage eingeladen'
+        poll_closing_soon: '<strong>%{actor}</strong>''s Abstimmung läuft in 24 Std. ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder andere zum Mitmachen zu aufzufordern.'
+        poll_closing_soon_author: 'Deine Abstimmung läuft in 24 Stunden ab - jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
+        poll_expired: "<strong>%{actor}s</strong> Umfrage wurde beendet: %{title}"
+        poll_expired_author: 'Ihre Umfrage ist <strong>beendet</strong>. Bitte nimm dir ein wenig Zeit, um die Abstimmungsbeiträge zu analysieren. Anschließend solltest du <strong>der Gruppe das Ergebnis bekanntgeben</strong>, damit alle Mitglieder über die nächsten Schritte informiert sind.'
+        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+        outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
+        outcome_announced: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
+        stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> hat dich in %{title} erwähnt'
+        user_reminded: '<strong>%{actor}</strong> erinnert dich in %{title} zu wählen'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    score:
+      subject:
+        poll_created: '%{actor} hat eine Abstimmung eröffnet: %{title}'
+        poll_edited: '%{actor} hat die Umfrage %{title} bearbeitet'
+        poll_announced: '%{actor} hat dich eingeladen in der Umfrage zu wählen: %{title}'
+        poll_closing_soon: 'In 24 Stunden endet die Abstimmungsfrist für: %{title}'
+        poll_closing_soon_author: 'Deine Abstimmung zu %{title} endet in 24 Stunden'
+        poll_expired: "Umfrageergebnisse: %{title}"
+        poll_expired_author: 'Deine Umfrage wurde beendet. Teile das Abstimmungsergebnis mit: %{title}'
+        poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
+        outcome_created: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
+        outcome_announced: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
+        stance_created: "%{actor} hat abgestimmt: %{title}"
+        stance_created_author: "Bitte bestätige hier %{title} Ihre Wahl"
         user_mentioned: '%{actor} hat dich in %{title} erwähnt'
         user_reminded: '%{actor} erinnert dich zur Wahl von %{title}'
       header:

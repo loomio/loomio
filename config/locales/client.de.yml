@@ -154,14 +154,6 @@ de:
     internal_server_error: 'Entschuldigung. Etwas ist schiefgegangen. Bitte erneut versuchen.'
   verify_email_notice:
     please_verify: Vielen Dank für die Teilnahme. Wir haben dir eine E-Mail mit einem Link geschickt, mit dem du deine Teilnahme bestätigen kannst.
-  verify_stances:
-    title: Abstimmung überprüfen
-    description: Bitte lesen Sie Ihre Abstimmungen unten erneut und überprüfen Sie, dass es Ihre sind
-    verify: überprüfen
-    remove: entfernen
-    verify_success: Ihre Abstimmung wurde überprüft
-    remove_success: Ihre Abstimmung wurde entfernt
-    all_done: Gute Arbeit, Sie haben all Ihre Abstimmungen überprüft.
   previous_polls_page:
     heading: Aktivitäten in {{name}}
     polls_count: Zeige {{loaded}} von {{total}} Entscheidungen
@@ -428,6 +420,9 @@ de:
       poll_announced:
         title: zur Umfrage einladen
         helptext: Wen möchten Sie zur Umfrage einladen?
+      poll:
+        title: Über Änderungen benachrichtigen
+        helptext: Wen möchten Sie über Ihre Änderungen benachrichtigen?
       poll_edited:
         title: Über Änderungen benachrichtigen
         helptext: Wen möchten Sie über Ihre Änderungen benachrichtigen?
@@ -465,7 +460,7 @@ de:
     announce_poll: Personen zur Umfrage einladen
     announce_poll_active: (bis jetzt wurde niemand eingeladen)
     translate_poll: Umfrage übersetzen
-    edit_stance: Abstimmungsentscheidung ändern
+    edit_stance: Meinung ändern
     translate_stance: Abstimmung übersetzen
     edit_comment: Kommentar bearbeiten
     delete_comment: Kommentar löschen
@@ -1165,7 +1160,6 @@ de:
     ranked_choice_title: Gewichtete Auswahl
   poll_common:
     your_response: Deine Abstimmungsentscheidung
-    change_your_response: Abstimmungsentscheidung ändern
     reason: Begründung
     reason_placeholder: Ergänzender Kommentar?
     message: Nachricht
@@ -1178,7 +1172,6 @@ de:
     update_outcome: Abstimmungsergebnis aktualisieren
     outcome: Abstimmungsergebnis
     statement: Einschätzung
-    change_your_stance: Abstimmungsentscheidung ändern
     load_more: Mehr anzeigen
     details: Details
     participant_name: Ihr Name
@@ -1189,6 +1182,7 @@ de:
     start_poll: Entscheidung vorbereiten
     publish_poll: Abstimmung teilen
     view_all: alles sehen
+    save_changes: Speichern
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -1404,6 +1398,9 @@ de:
     dots_per_person_helptext: Die Anzahl der Punkte, die jeder Teilnehmer verteilt
     dot_vote_created: Punktabstimmung erstellt
     dot_vote_updated: Punktabstimmung aktualisiert
+  poll_score_form:
+    details_placeholder: Geben Sie alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
+    add_option_placeholder: Option hinzufügen
   poll_meeting_form:
     tool_tip_expanded: |
         <p>Verwende eine Zeitumfrage, um herauszufinden, wann Personen für ein Treffen zur Verfügung stehen.</p>
@@ -1536,8 +1533,6 @@ de:
     poll_published_with_discussion: "veröffentlichte eine Umfrage in <strong>{{discussion}}</strong>:"
     view_it_on_loomio: Schau es dir auf {{site_name}} an
     timestamp: Heute um {{timestamp}}
-  poll_common_participant_form:
-    participant_name_placeholder: Wie lautet Ihr Name?
   poll_common_subscribe_form:
     receive_updates_title: Ihre Wahl wurde aufgenommen.
     receive_updates_helptext: Wenn Sie eine Mail zum Ergebnis der Umfrage erhalten wollen, geben Sie Ihre Mailadresse unten ein
@@ -1546,9 +1541,6 @@ de:
     no_thanks: Nein, danke.
   poll_common_example_card:
     what_is_this: "Dies ist ein Live-Beispiel für {{type}}. Sie sind Teilnehmer - probieren Sie es aus!"
-    helptext_before: "wenn Sie bereit sind,"
-    helptext_link: "eine/n {{type}} starten"
-    helptext_after: "deiner eigenen, und lade einige Leute ein, es zu versuchen."
   share_poll_page:
     title: Abstimmung {{title}} teilen
   polls_page:
@@ -1575,22 +1567,16 @@ de:
     invalid_token: "Entschuldigung, wir konnten dieses Zeichen nicht verwenden, um Sie  einzuloggen. Klicke unten, um einen anderen zu senden."
     email_not_found: "sorry, wir konnten keinen Account zu dieser Emailadresse finden"
     email_placeholder: du@beispiel.de
-    login_with_token: Sie sind fertig! Klicken Sie auf den Link unten um sich einzuloggen.
-    login_link_helptext: |
-        Klicke auf die Schaltfläche unten wir senden dir einen Link, um dich sofort anzumelden. Wenn du in der Zukunft ein Kennwort verwenden möchtest, kannst du eines auf deiner Profilseite festlegen.    login_link_helptext_with_password: "Geben Sie ihr Passwort ein oder loggen Sie sich via Email ein"
     login_link_helptext_with_password: "Gib dein Passwort ein oder logge  dich via Email ein"
-    sign_up_helptext: "Bitte füllen Sie dieses Formular aus, um ein Benutzerkonto zu erstellen"
+    sign_up_helptext: Bitte füllen Sie dieses Formular aus, um ein Benutzerkonto zu erstellen
     i_accept: "Ich akzeptiere die <a href='{{termsUrl}}' target='_blank'>Nutzungsbedingungen</a> und <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>"
     name_required: Bitte geben Sie einen Namen ein.
     terms_required: Sie müssen die Nutzungsbedingungen bestätigen.
     account_inactive: Scheint, als wurde der Account für {{email}} deaktiviert.
     privacy_notice: "Persönliche Daten werden gesammelt, wenn Sie {{siteName}} verwenden. <br/>Lesen Sie unsere <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>, um mehr zu erfahren."
-    welcome: Willkommen auf {{siteName}}!
     welcome_back: Willkommen zuück, {{name}}!
     login_link: Via Mail anmelden
     set_password: Passwort festlegen
-    set_password_helptext: Keine Lust sich via Mail einzuloggen?
-    set_password_link: Legen Sie ein Passwort fest
     hello: "Hallo, {{name}}!"
     new_to_loomio: Das erste mal auf {{site_name}}? Erstellen Sie einen Account
     create_account: Benutzerkonto erstellen
