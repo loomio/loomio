@@ -253,7 +253,7 @@ describe Event do
   end
 
   describe 'stance_created' do
-    let(:stance) { build :stance, poll: poll }
+    let(:stance) { create :stance, poll: poll }
 
     it 'notifies the author if notify_on_participate' do
       poll.update(notify_on_participate: true)

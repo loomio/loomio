@@ -10,7 +10,7 @@ describe API::RegistrationsController do
   before { request.env["devise.mapping"] = Devise.mappings[:user] }
 
   describe 'create' do
-    let(:pending_membership) { create :membership, user: User.new(email: registration_params[:email]) }
+    let(:pending_membership) { create :membership, user: User.create(email: registration_params[:email]) }
     let(:pending_identity)   { create :facebook_identity, email: registration_params[:email] }
 
     it 'creates a new user' do

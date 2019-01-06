@@ -23,7 +23,7 @@ describe MigrateUserService do
   let!(:patrick_stance)     { saved fake_stance(poll: poll) }
   let!(:jennifer_stance)    { saved fake_stance(poll: poll) }
   let!(:pending_membership) { saved fake_membership(inviter: patrick, group: group, user: saved(fake_user(email_verified: false))) }
-  let!(:poll_pending_membership) { saved fake_membership(inviter: patrick, group: poll.guest_group) }
+  let!(:poll_pending_membership) { saved fake_membership(inviter: patrick, group: poll.guest_group.tap {|g| g.save}) }
   let!(:membership_request) { saved fake_membership_request(requestor: patrick, group: group) }
   let!(:identity)           { saved fake_identity(user: patrick) }
   let!(:draft)              { saved fake_draft(user: patrick, draftable: group) }
