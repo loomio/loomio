@@ -15,7 +15,11 @@ cache:
 
 addons:
   firefox: "64.0"
-  postgresql: "10.6"
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
 
 env:
   global:
