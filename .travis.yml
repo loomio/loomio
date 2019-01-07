@@ -15,7 +15,7 @@ cache:
 
 addons:
   firefox: "64.0"
-  postgresql: "9.6"
+  postgresql: "10.6"
 
 env:
   global:
