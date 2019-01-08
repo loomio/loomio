@@ -64,7 +64,6 @@ group :development, :test do
   gem 'byebug'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'shoulda-matchers'
   gem 'dotenv-rails'
   gem 'database_cleaner'
   gem 'gemrat'
