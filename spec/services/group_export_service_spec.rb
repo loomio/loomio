@@ -32,7 +32,7 @@ describe GroupExportService do
 
   describe 'export and import' do
     it 'can export a group' do
-      filename = GroupExportService.export_filename_for(group)
+      filename = GroupExportService.export_filename_for(group.name)
       GroupExportService.export(group.all_groups, filename)
       puts "exported: #{filename}"
       [Group, Membership, User, Discussion, Comment, Poll, PollOption, Stance, StanceChoice,

@@ -62,10 +62,8 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     render 'graph', { group: group }
     render 'stats', { group: group }
 
-    if Plugins.const_defined?("LoomioOrg")
-      if group.subscription.present?
-        render 'subscription', { subscription: group.subscription }
-      end
+    if group.subscription_id
+      render 'subscription', { subscription: group.subscription }
     end
 
     panel("Subgroups") do
@@ -189,6 +187,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
 
     render 'delete_group', { group: group }
+    render 'export_group', { group: group }
   end
 
   form do |f|
@@ -236,7 +235,15 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
 
   member_action :delete_group, :method => :post do
     group = Group.friendly.find(params[:id])
-    group.destroy!
+    group.delay.destroy!
     redirect_to [:admin, :groups]
+  end
+
+  member_action :export_group, method: :post do
+    group = Group.friendly.find(params[:id])
+    GroupExportJob.perform_later(group_ids: group.all_groups.pluck(:id),
+                                 group_name: group.name,
+                                 actor: current_user)
+    redirect_to admin_group_path(group)
   end
 end
