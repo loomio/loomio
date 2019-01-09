@@ -48,6 +48,7 @@ install:
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
+  - createdb loomio_test
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
   - bundle exec rake client:build
