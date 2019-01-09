@@ -99,7 +99,7 @@ GEM
       nokogiri
       railties
       safely_block (>= 0.1.1)
-    ahoy_matey (2.1.0)
+    ahoy_matey (2.2.0)
       addressable
       browser (~> 2.0)
       device_detector
@@ -533,7 +533,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.5)
     uniform_notifier (1.12.1)
-    user_agent_parser (2.5.0)
+    user_agent_parser (2.5.1)
     uuidtools (2.1.5)
     warden (1.2.8)
       rack (>= 2.0.6)
@@ -557,7 +557,7 @@ DEPENDENCIES
   activerecord-import (= 0.28.1)
   activerecord-nulldb-adapter
   ahoy_email (~> 0.5.2)
-  ahoy_matey (~> 2.1.0)
+  ahoy_matey (~> 2.2.0)
   autoprefixer-rails
   awesome_print
   bootsnap
