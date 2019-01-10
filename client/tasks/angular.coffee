@@ -42,7 +42,7 @@ module.exports =
   production: ->
     requireForBundle()
     browserify(browserifyOpts())
-      .transform("babelify", {presets: ["@babel/preset-env"], extensions: ['.coffee', '.js']})
+      .transform("babelify", {presets: ["es2015", "@babel/preset-env"], extensions: ['.coffee', '.js']})
       .plugin(collapse)
       .transform('uglifyify')
       .bundle()

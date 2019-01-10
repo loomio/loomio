@@ -1,4 +1,5 @@
 Records       = require 'shared/services/records'
+import Vuex from 'vuex'
 
 module.exports = new Vuex.Store
   state:
