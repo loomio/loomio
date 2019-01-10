@@ -57,6 +57,9 @@ components =
   CommentForm: require 'vue/components/thread_page_comment_form/comment_form.coffee'
   MembershipCard: require 'vue/components/membership_card/membership_card.coffee'
   PlusButton: require 'vue/components/plus_button/plus_button.coffee'
+  PollCommonIndexCard: require 'vue/components/poll_common_index_card/poll_common_index_card.coffee'
+  PollCommonPreview: require 'vue/components/poll_common_preview/poll_common_preview.coffee'
+  PollCommonClosingAt: require 'vue/components/poll_common_closing_at/poll_common_closing_at.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
