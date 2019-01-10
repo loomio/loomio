@@ -4,27 +4,36 @@ ModalService   = require 'shared/services/modal_service'
 
 { listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
 
-angular.module('loomioApp').directive 'outcomeCreated', ->
-  scope: {eventable: '='}
-  restrict: 'E'
-  templateUrl: 'generated/components/thread_page/thread_item/outcome_created.html'
-  replace: true
-  controller: ['$scope', ($scope) ->
-    $scope.actions = [
+module.exports =
+  props:
+    event: Object
+    eventable: Object
+  created: ->
+    @actions = [
       name: 'react'
-      canPerform: -> AbilityService.canReactToPoll($scope.eventable.poll())
+      canPerform: => AbilityService.canReactToPoll(@eventable.poll())
     ,
       name: 'edit_outcome'
       icon: 'mdi-pencil'
-      canPerform: -> AbilityService.canSetPollOutcome($scope.eventable.poll())
-      perform:    -> ModalService.open 'PollCommonOutcomeModal', outcome: -> $scope.eventable
+      canPerform: => AbilityService.canSetPollOutcome(@eventable.poll())
+      perform:    => ModalService.open 'PollCommonOutcomeModal', outcome: => @eventable
     ,
       name: 'translate_outcome'
       icon: 'mdi-translate'
-      canPerform: -> AbilityService.canTranslate($scope.eventable)
-      perform:    -> $scope.eventable.translate(Session.user().locale)
+      canPerform: => AbilityService.canTranslate(@eventable)
+      perform:    => @eventable.translate(Session.user().locale)
     ]
-
-    listenForReactions $scope, $scope.eventable
-    listenForTranslations $scope,
-  ]
+  # mounted: ->
+  #   listenForReactions $scope, $scope.eventable
+  #   listenForTranslations $scope,
+  template:
+    """
+    <div class="outcome-created">
+      <p v-if="!eventable.translation" v-marked="eventable.statement" class="thread-item__body lmo-markdown-wrapper"></p>
+      <translation v-if="eventable.translation" :model="eventable" field="statement" class="thread-item__body"></translation>
+      <div class="lmo-md-actions">
+        <!-- <reactions_display model="eventable"></reactions_display> -->
+        <action-dock :model="eventable" :actions="actions"></action-dock>
+      </div>
+    </div>
+    """

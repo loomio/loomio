@@ -108,9 +108,9 @@ upload = (scope, model, options) ->
 
 submit = (scope, model, options = {}) ->
   # fetch draft from server and listen for changes to it
-  if model.hasDrafts and model.isNew() and AbilityService.isLoggedIn()
-    model.fetchAndRestoreDraft()
-    EventBus.watch scope, model.draftFields, model.planDraftFetch, true
+  # if model.hasDrafts and model.isNew() and AbilityService.isLoggedIn()
+  #   model.fetchAndRestoreDraft()
+  #   EventBus.watch scope, model.draftFields, model.planDraftFetch, true
 
   submitFn  = options.submitFn  or model.save
   confirmFn = options.confirmFn or (-> false)

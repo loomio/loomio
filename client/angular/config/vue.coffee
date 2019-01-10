@@ -46,8 +46,15 @@ components =
   Translation: require 'vue/components/translation/translation.coffee'
   ActivityCard: require 'vue/components/activity_card/activity_card.coffee'
   ThreadItem: require 'vue/components/thread_page_thread_item/thread_item.coffee'
-  DecisionToolsCard: require 'vue/components/thread_page_decision_tools_card/decision_tools_card.coffee' 
+  DecisionToolsCard: require 'vue/components/thread_page_decision_tools_card/decision_tools_card.coffee'
   PollCommonStartForm: require 'vue/components/poll_common_start_form/poll_common_start_form.coffee'
+  NewComment: require 'vue/components/thread_page_thread_item/new_comment.coffee'
+  OutcomeCreated: require 'vue/components/thread_page_thread_item/outcome_created.coffee'
+  PollCreated: require 'vue/components/thread_page_thread_item/poll_created.coffee'
+  StanceCreated: require 'vue/components/thread_page_thread_item/stance_created.coffee'
+  EventChildren: require 'vue/components/thread_page_event_children/event_children.coffee'
+  AddCommentPanel: require 'vue/components/thread_page_add_comment_panel/add_comment_panel.coffee'
+  CommentForm: require 'vue/components/thread_page_comment_form/comment_form.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
