@@ -17,8 +17,7 @@ module.exports =
     plusUser: Records.users.build(avatarKind: 'mdi-plus')
     fetched: false
     searchOpen: false
-  created: ->
-    @loader = new RecordLoader
+    loader: new RecordLoader
       collection: 'memberships'
       params:
         per: 20
@@ -63,7 +62,6 @@ module.exports =
 
     orderedMemberships: ->
       limit = @loader.numRequested || 10
-      console.log('@memberships', @memberships())
       _.slice(_.orderBy(@memberships(), ['-admin', '-createdAt']), 0, limit)
 
     recordsDisplayed: ->
