@@ -1,15 +1,17 @@
-Session = require 'shared/services/session'
+Session       = require 'shared/services/session'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
 module.exports =
   props:
     poll: Object
     displayGroupName: String
   methods:
+    urlFor: (model) -> LmoUrlService.route(model: model)
     showGroupName: ->
       @displayGroupName && @poll.group()
   template:
     """
-    <a lmo-href-for="poll" class="poll-common-preview">
+    <a :href="urlFor(poll)" class="poll-common-preview">
       <poll-common-chart-preview :poll="poll"></poll-common-chart-preview>
       <div class="poll-common-preview__body">
         <div class="md-subhead lmo-truncate-text">
