@@ -87,17 +87,13 @@ module.exports =
       return unless !_.isEmpty @fragment
       Records.memberships.fetchByNameFragment(@fragment, @group.key)
 
-  computed:
     cardTitle: ->
       if @pending
         'membership_card.invitations'
       else
         "membership_card.#{@group.targetModel().constructor.singular}_members"
-    order: ->
-      if @pending
-        '-createdAt'
-      else
-        '-admin'
+
+  computed:
     pollType: ->
       @group.targetModel().translatedPollType() if @group.targetModel().isA('poll')
 
@@ -111,7 +107,7 @@ module.exports =
     >
       <div class="lmo-md-actions">
         <h2
-          v-t="{ path: cardTitle, args: { values: { pollType: pollType } } }"
+          v-t="{ path: cardTitle(), args: { values: { pollType: pollType } } }"
           v-if="!searchOpen"
           class="membership-card__title lmo-truncate lmo-card-heading lmo-flex__grow" id="membership-card-title"
         ></h2>
