@@ -1,13 +1,13 @@
 ThreadService = require 'shared/services/thread_service'
-LmoUrlService = require 'shared/services/lmo_url_service'
+urlFor        = require 'vue/mixins/url_for'
 
 module.exports =
+  mixins: [urlFor]
   props:
     thread: Object
   data: ->
     dthread: @thread
   methods:
-    urlFor: (model) -> LmoUrlService.route(model: model)
     dismiss: -> ThreadService.dismiss(this.thread)
     muteThread: -> ThreadService.mute(this.thread)
     unmuteThread: -> ThreadService.unmute(this.thread)

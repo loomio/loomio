@@ -1,14 +1,13 @@
 { is2x } = require 'shared/helpers/window'
-LmoUrlService = require 'shared/services/lmo_url_service'
+urlFor   = require 'vue/mixins/url_for'
 
 module.exports =
+  mixins: [urlFor]
   props:
     user: Object
     coordinator: Boolean
     size: String
     colors: Object
-  methods:
-    urlFor: (model) -> LmoUrlService.route(model: model)
   computed:
     threadUrl: -> "/d/#{this.thread.key}"
     boxClass: -> "lmo-box--#{this.size}"

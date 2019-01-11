@@ -1,12 +1,12 @@
-Session       = require 'shared/services/session'
-LmoUrlService = require 'shared/services/lmo_url_service'
+Session = require 'shared/services/session'
+urlFor  = require 'vue/mixins/url_for'
 
 module.exports =
+  mixins: [urlFor]
   props:
     poll: Object
     displayGroupName: String
   methods:
-    urlFor: (model) -> LmoUrlService.route(model: model)
     showGroupName: ->
       @displayGroupName && @poll.group()
   template:
