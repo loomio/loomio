@@ -1,4 +1,6 @@
 mi:
+  reactions:
+    slight_smile: Rawe
   poll_types:
     proposal: He whakatakoto
     count: Whakatika
@@ -140,6 +142,8 @@ mi:
     group_label: 'Rōpū'
     title_label: 'Taitara'
     privacy_label: 'Matatapu'
+  action_dock:
+    edit_stance: Whakahuritia tōu whakapono-ā-tuhi
   membership_request_form:
     name_label: Ingoa
     email_label: Īmēra
@@ -197,6 +201,8 @@ mi:
     proposal_title: He whakatakoto
     count_title: Whakatika
     poll_title: Pōti
+  poll_common:
+    save_changes: Tiaki
   poll_common_form:
     closed: Kua kati
     start: Tīmatatia

@@ -106,9 +106,6 @@ fa_IR:
     _10: دهم
   error_page:
     forbidden: 'شما اجازه انجام این کار را ندارید.'
-  verify_stances:
-    verify: تایید کردن
-    remove: حذف کردن
   signed_out_modal:
     ok: "باشه!"
   sidebar:
@@ -163,6 +160,8 @@ fa_IR:
     delete_thread: 'پاک کردن'
   decision_tools_card:
     poll_title: نظرسنجی
+  poll_common:
+    save_changes: ذخیره
   poll_common_select_group:
     loomio_group: گروه
   poll_common_form:

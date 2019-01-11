@@ -146,14 +146,6 @@ pl:
     internal_server_error: 'Przykro nam, ale coś poszło źle. Spróbuj jeszcze raz.'
   verify_email_notice:
     please_verify: Dziękujemy za udział! Sprawdź swoją skrzynkę e-mail w poszukiwaniu linku do weryfikacji Twojego głosowania.
-  verify_stances:
-    title: Weryfikuj głosy
-    description: Sprawdź proszę poniższe głosy i sprawdź czy należą do ciebie.
-    verify: Weryfikuj
-    remove: Usuń
-    verify_success: Głos zweryfikowany
-    remove_success: Głos usunięty
-    all_done: Dobra robota, wszystkie głosy zweryfikowane.
   previous_polls_page:
     heading: Aktywność w {{name}}
     polls_count: Pokazuje {{loaded}} z {{total}} decyzji
@@ -244,6 +236,8 @@ pl:
     context_label: 'Kontekst'
     context_placeholder: 'Aby uzyskać efektywną dyskusję podaj dostateczną ilość informacji. Można aktualizować w trakcie dyskusji'
     privacy_label: 'Zasady prywatności'
+  action_dock:
+    edit_stance: Zmiana stanowiska
   join_group_button:
     join_group: Dołączenie do grupy
     messages:
@@ -424,6 +418,8 @@ pl:
     count_title: Zaznaczenie
     poll_title: Ankieta
     meeting_title: Ankieta datowa
+  poll_common:
+    save_changes: Zapis
   poll_common_form:
     closed: Zamknięta
     start: Rozpocznij

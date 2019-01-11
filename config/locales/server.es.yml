@@ -338,7 +338,6 @@ es:
         outcome_created: '%{actor} publicó el resultado de la propuesta: %{title}'
         outcome_announced: '%{actor} publicó el resultado de la propuesta: %{title}'
         stance_created: "%{actor} votó en: %{title}"
-        stance_created_author: "Por favor verifica tu voto en: %{title}"
         user_mentioned: '%{actor} te mencionó en:%{title}'
         user_reminded: '%{actor} te está recordando que votes en %{title} '
       header:
@@ -383,6 +382,40 @@ es:
         poll_expired_author: 'Tu encuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
         poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
         poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
+        outcome_created: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
+        outcome_announced: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
+        stance_created: "<strong>%{actor} </strong> votó en: %{title} "
+        user_mentioned: '<strong>%{actor}</strong> te mencionó en: %{title} '
+        user_reminded: '<strong>%{actor} </strong> te está recordando que votes en %{title}'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    score:
+      subject:
+        poll_created: '*%{actor} comenzó una encuesta: %{title}'
+        poll_edited: '%{actor} editó la encuesta: %{title}'
+        poll_announced: '%{actor} te invitó a votar en una encuesta: %{title}'
+        poll_closing_soon: 'Encuesta cerrando en 24hr: %{title}'
+        poll_closing_soon_author: 'Tu encuesta cierra en 24hr: %{title}'
+        poll_expired: "Resultado de la encuesta: %{title}"
+        poll_expired_author: ' Tu encuesta ha cerrado. Comparte el resultado para: %{title}'
+        poll_option_added: '%{actor} añadió opciones en: %{title}'
+        poll_option_added_author: '%{actor} añadió opciones en: %{title}'
+        outcome_created: '%{actor} publicó el resultado de la encuesta: %{title}'
+        outcome_announced: '%{actor} publicó el resultado de la encuesta: %{title}'
+        stance_created: "%{actor} votó en: %{title}"
+        stance_created_author: "Por favor verifica tu voto en: %{title}"
+        user_mentioned: '%{actor} te mencionó en:%{title} '
+        user_reminded: '%{actor} te está recordando que votes en %{title} '
+      header:
+        poll_created: '<strong>%{actor}</strong> inicio una encuesta'
+        poll_edited: '<strong>%{actor}</strong> edito la encuesta'
+        poll_announced: '<strong>%{actor}</strong> te invitó a votar en una encuesta'
+        poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
+        poll_closing_soon_author: 'Tu encuesta cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
+        poll_expired: "La propuesta de<strong>%{actor}</strong> ha cerrado: %{title}"
+        poll_expired_author: 'Tu encuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
+        poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
+        poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
         outcome_created: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
         outcome_announced: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
         stance_created: "<strong>%{actor} </strong> votó en: %{title} "

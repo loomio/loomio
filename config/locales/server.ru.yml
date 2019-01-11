@@ -35,6 +35,9 @@ ru:
       created_at: Создано
       closing_at: Закрывается
       closed_at: Закрыто
+      is_latest: Последний
+      engagement: Участие
+      stances: Позиции
       participants: Участники
       details: Детали
       group_name: Название группы
@@ -234,6 +237,16 @@ ru:
         Если у вас есть вопросы, посмотрите на [Справочное руководство Loomio](http://help.loomio.org).
   first_proposal:
     name: Предложение-образец
+    description: |
+        Это **предложение**, где вы можете совместно принять решение. Вы можете выдвинуть предложение, когда идет дискуссия.
+
+        Каждого попросят **заявить позицию** до **дедлайна**. Если надо, можно сдвинуть дедлайн или закрыть предложение до срока.
+
+        Вы можете **изменить свою позицию**, пока предложение открыто.  Мы можете пересмотреть свой взгляд, послушав остальных.
+
+        Иногда группы работают через **ряд предложений**, чтобы вместе выстроить решение. Вы можете поднимать следующие предложения в этой ветке.
+
+        **Попробуйте поучаствовать! Нажмите одну из четырех кнопок**.
   markdown:
     intro:
       title: |
@@ -326,7 +339,6 @@ ru:
         outcome_created: '%{actor} поделились результатом предложения: %{title}'
         outcome_announced: '%{actor} поделились результатом предложения: %{title}'
         stance_created: "%{actor} проголосовали в: %{title}"
-        stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
         user_mentioned: '%{actor} упомянули вас в: %{title}'
         user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
       header:
@@ -345,6 +357,40 @@ ru:
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
+      subject:
+        poll_created: '%{actor} открыли опрос: %{title}'
+        poll_edited: '%{actor} отредактировали опрос: %{title}'
+        poll_announced: '%{actor} приглашает вас проголосовать в опросе: %{title}'
+        poll_closing_soon: 'Опрос закрывается через 24 часа: %{title}'
+        poll_closing_soon_author: 'Ваш опрос закрывается через 24 часа: %{title}'
+        poll_expired: "Результаты опроса: %{title}"
+        poll_expired_author: 'Ваш опрос закрылся. Поделитесь результатом: %{title}'
+        poll_option_added: '%{actor} добавили вариантов к: %{title}'
+        poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
+        outcome_created: '%{actor} поделились результатом опроса: %{title}'
+        outcome_announced: '%{actor} поделились результатом опроса: %{title}'
+        stance_created: "%{actor} проголосовали в: %{title}"
+        stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
+        user_mentioned: '%{actor} упомянули вас в: %{title}'
+        user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> открыли опрос'
+        poll_edited: '<strong>%{actor}</strong> отредактировали опрос'
+        poll_announced: '<strong>%{actor}</strong> приглашает вас проголосовать в опросе'
+        poll_closing_soon: 'Опрос <strong>%{actor}</strong> закрывается через 24 часа. Хорошее время, чтобы проголосовать, изменить свое мнение или пригласить других поучаствовать.'
+        poll_closing_soon_author: 'Ваш опрос закрывается через 24 часа — хорошее время, чтобы напомнить о нем людям или продлить сроки голосования, если нужно.'
+        poll_expired: "Опрос <strong>%{actor}</strong> закрылся: %{title}"
+        poll_expired_author: 'Ваш опрос <strong>закрылся</strong>. Найдите, пожалуйста, время обдумать то, чтобы было сказано и <strong>поделиться результатом</strong> с группой, чтобы люди знали, что будет дальше.'
+        poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
+        outcome_created: '<strong>%{actor}</strong> поделились результатом опроса.'
+        outcome_announced: '<strong>%{actor}</strong> поделились результатом опроса.'
+        stance_created: "<strong>%{actor}</strong> проголосовали в: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
+        user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    score:
       subject:
         poll_created: '%{actor} открыли опрос: %{title}'
         poll_edited: '%{actor} отредактировали опрос: %{title}'
@@ -444,18 +490,35 @@ ru:
         voted: '<strong>%{participant}</strong>:'
     meeting:
       subject:
+        poll_created: '%{actor} открыли опрос о времени: %{title}'
+        poll_edited: '%{actor} отредактировали опрос о времени: %{title}'
+        poll_announced: '%{actor} приглашает вас принять участие в опросе по времени: %{title}'
+        poll_closing_soon: 'Опрос о времени закрывается через 24 часа: %{title}'
+        poll_closing_soon_author: 'Ваш опрос о времени закрывается через 24 часа: %{title}'
+        poll_expired: "Результаты опроса о времени: %{title}"
+        poll_expired_author: 'Ваш опрос о времени закрылся. Поделитесь результатом: %{title}'
         poll_option_added: '%{actor} добавили вариантов к: %{title}'
         poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
         outcome_created: '%{actor} поделились результатом: %{title}'
+        outcome_created_author: 'Вы поделились результатом: %{title}'
         outcome_announced: '%{actor} поделились результатом: %{title}'
         stance_created: '%{actor} поучаствовали в: %{title}'
         stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
         user_mentioned: '%{actor} упомянули вас в: %{title}'
         user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
       header:
+        poll_created: '<strong>%{actor}</strong> открыли опрос о времени'
+        poll_edited: '<strong>%{actor}</strong> отредактировали опрос о времени'
+        poll_announced: '<strong>%{actor}</strong> приглашает вас поучаствовать в опросе о времени'
+        poll_closing_soon: 'Опрос о времени <strong>%{actor}</strong> закроется через 24 часа. Хорошее время, чтобы проголосовать, изменить свою позицию или призвать других поучаствовать.'
+        poll_closing_soon_author: 'Ваш опрос о времени закрывается через 24 часа — возможно, вы захотите напомнить о нем людям или продлить срок голосования, если нужно.'
+        poll_expired: "Опрос о времени <strong>%{actor}</strong> закрыт"
+        poll_expired_author: 'Ваш опрос о времени <strong>закрыт</strong>. Обдумайте то, что было сказано и <strong>поделитесь результатом</strong> с группой, чтобы люди знали, что дальше.'
         poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
+        outcome_created: '<strong>%{actor}</strong> поделились результатом опроса о времени.'
         outcome_created_author: 'Вы поделились результатом опроса.'
+        outcome_announced: 'Результаты опроса о времени <strong>%{actor}</strong>.'
         stance_created: "<strong>%{actor}</strong> поучаствовали в: %{title}"
         user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
         user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
@@ -463,31 +526,65 @@ ru:
         voted: '<strong>%{participant}</strong>:'
     ranked_choice:
       subject:
+        poll_created: '%{actor} открыли ранжированное голосование: %{title}'
+        poll_edited: '%{actor} отредактировали ранжированное голосование: %{title}'
+        poll_announced: '%{actor} приглашает вас проранжировать варианты в опросе: %{title}'
+        poll_closing_soon: 'Ранжированное голосование закрывается через 24 часа: %{title}'
+        poll_closing_soon_author: 'Ваше ранжированное голосование закрывается через 24 часа: %{title}'
+        poll_expired: "Результаты ранжированного голосования: %{title}"
+        poll_expired_author: 'Ваше ранжированное голосование закрыто. Поделитесь результатом: %{title}'
         poll_option_added: '%{actor} добавили вариантов к: %{title}'
         poll_option_added_author: '%{actor} добавили вариантов к: %{title}'
         outcome_created: '%{actor} поделились результатом: %{title}'
+        outcome_created_author: 'Вы поделились результатом: %{title}'
+        outcome_announced: '%{actor} поделились результатом ранжированного голосования: %{title}'
         stance_created: '%{actor} поучаствовали в: %{title}'
         stance_created_author: "Подтвердите, пожалуйста, ваш голос в: %{title}"
         user_mentioned: '%{actor} упомянули вас в: %{title}'
         user_reminded: '%{actor} напоминает, чтобы вы проголосовали за: %{title}'
       header:
+        poll_created: '<strong>%{actor}</strong> открыли ранжированное голосование'
+        poll_edited: ' <strong>%{actor}</strong> отредактировали ранжированное голосование'
+        poll_announced: '<strong>%{actor}</strong> приглашает вас проранжировать варианты в опросе'
+        poll_closing_soon: 'Ранжированный опрос <strong>%{actor}</strong> закрывается через 24 часа. Самое время проголосовать, изменить свой голос или призвать других поучаствовать.'
+        poll_closing_soon_author: 'Ваше ранжированное голосование закрывается через 24 часа — возможно, вы захотите напомнить о нем людям или продлить срок голосования, если нужно.'
+        poll_expired: "Ранжированный опрос <strong>%{actor}</strong> закрылся"
+        poll_expired_author: 'Ваш ранжированный опрос <strong>закрыт</strong>. Обдумайте то, что было сказано и <strong>поделитесь результатом</strong> с группой, чтобы люди знали, что дальше.'
         poll_option_added: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> добавили вариантов к: %{title}'
+        outcome_created: '<strong>%{actor}</strong> поделились результатом ранжированного голосования.'
+        outcome_created_author: 'Вы поделились результатом ранжированного голосования.'
+        outcome_announced: '<strong>%{actor}</strong> поделились результатом ранжированного голосования.'
         stance_created: "<strong>%{actor}</strong> поучаствовали в: %{title}"
         user_mentioned: '<strong>%{actor}</strong> упомянули вас в: %{title}'
         user_reminded: '<strong>%{actor}</strong> напоминает, чтобы вы проголосовали в: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: Комментарий %{comment_author}
+  personal_data:
+    title: Личные данные %{user_name} на %{host_name}
   poll_generator:
+    proposal:
+      title: "Письма с предложениями о продлении для Шелли и Джека"
+      details: Шелли и Джек работали у нас стажерами последние 3 месяца, и оба продемонстрировали похвальную преданность делу и были несомненным усилением нашей команды. Не стоит ли нам направить им формальные предложения о зачислении в штат?
+    poll:
+      title: "Есть ли какие-то аллергии на еду, которые следует учесть перед обедом в четверг"
+      details: С нетерпением ждем вас на нашем месте! Укажите, пожалуйста, есть ли какие-то диетические ограничения, о которых нам следует знать.
+    count:
+      title: "Кто готов помочь организовать пикник для компании?"
+      details: Марша в прошлый раз была совершенно измотана, так что в этот раз мы бы хотели найти ей пару помощников, чтобы всем было полегче. Пожалуйста, откликнитесь, кто хочет помочь!
     dot_vote:
       title: "Какова стратегия нашей кампании на следующий квартал?"
       details: 'Это очень важный год для нашей компании, так что давайте мыслить стратегически и решим, на что потратить наши ограниченные ресурсы. Пожалуйста, выскажитесь: на каких областях важнее всего сосредоточиться в следующем квартале?'
+    score:
+      title: "Какие темы были бы вам интересны на следующей конференции?"
+      details: Мы составляем список тем, которые затронем на следующей конференции. Пожалуйста, отметьте, какие из следующего списка тем вам интересны.
     ranked_choice:
       title: "Кто станет нашим следующим заместителем мэра?"
       details: "Прошло полгода, время выборов! Это официальное мажоритарно-преференциальное голосование, на котором мы выберем следующего заместителя мэра. Не забудьте почитать обо всех кандидатах на нашем сайте!"
     meeting:
       title: "Когда следующая встреча команды?"
+      details: Прошло два месяца, время для очередной общей встречи; в идеале нам стоит собраться до конца следующей недели. Какие даты всех устроят?
   notified:
     no_matches_found: "Ничего похожего на '%{query}'"
     group_users: "(%{count} человек)"
@@ -497,9 +594,57 @@ ru:
     title: Вы отписались от %{title}
     helptext: Вы не будете больше получать писем по поводу этого решения.
     visit_poll: Смотреть опрос
+    go_to_dashboad: В панель управления
   slack:
+    new_discussion: "Новая ветка в *%{group}*: *%{discussion}*"
+    outcome_created: "В *%{group}* опубликован результат: *%{poll}*"
     poll_created: "Новый *%{poll_type}* в *%{group}*: *%{poll}*"
     poll_closing_soon: "Напоминаем: *%{poll}* закрывается через 24 часа"
     poll_expired: "*%{poll}* закрылся"
     poll_not_found: "К сожалению, этот опрос не найден. Напечатайте '/loomio <poll_type><title>', чтобы начать новый?"
+    unknown_channel: |
+        Простите, но похоже, что с этим каналом никаких групп loomio не связано.
+        Попробовать сказать "/loomio" в одном из следующих каналов?
+        %{integrations}
+    stance_not_valid: "Увы, мы не смогли создать позицию для *%{poll}*. <%{url}|Щелкните здесь>, чтобы проголосовать напрямую в опросе."
+    group_identity_created: |
+        Привет, я бот Loomio! Меня создали *%{author}*.
+        Я могу помочь вашей команде принимать совместные решения.
+
+        В числе моих функций:
+
+        - Открытие веток и решений в Loomio напрямую из Slack
+        - Оповещение, когда в Loomio появляются новые ветки и решения
+        - Возможность голосовать по решениям из Slack
+        - Сообщение о результатах решений
+
+        Чтобы узнать больше, напишите  _/loomio help_
+
+        Вам нужно быть в частью Loomio-группы *%{group}*, чтобы участвовать.
+        Если вы еще не присоедились, <%{url}|Щелкните здесь>, чтобы это сделать.
+    request_authorization_message: "Остался лишь один шаг: <%{url}|Щелкните здесь>, чтобы авторизовать использование Loomio для вашей учетки slack. (Это нужно сделать только один раз)"
+    poll_closed: "*%{title}* уже закрыли! <%{url}|Щелкните здесь>, чтобы посмотреть результаты."
+    go_to_slack: В Slack
+    stance_created: Спасибо, что поучаствовали! Вы проголосовали *%{position}* в опросе <%{poll_url}|%{title}>. Если хотите пояснить, почему проголосовали именно так или изменить свой голос, <%{stance_url}|нажмите сюда>.
     click_to_vote: "Выберите один из вариантов ниже и проголосуйте:"
+    time_zone_message: (все время в часовом поясе %{zone})
+    authorized_message: Получилось! Теперь вы готовы голосовать в slack.
+    initiate: |
+        Хорошо, начнем! <%{url}|Щелкните, чтобы начать %{type}>.
+        (внимание: мы напишем в этот канал после создания, чтобы все смогли поучаствовать)
+    slash_command_help: |
+        Просто введите вид решения и вопрос, и поехали.
+        Выберите один из следующих видов решений:
+        'proposal' (предложение): принимаем решение вместе
+        'count' (перекличка): отследить участие и найти добровольцев
+        'poll' (опрос): измерить популярность вариантов
+        'dot_vote' (точечное голосование): расставить приоритеты по списку вариантов
+        'meeting' (встреча): найти время, чтобы встретиться
+        Или начните разговор с помощью '/loomion thread <title>'.
+
+        К примеру:
+        /loomio count Кто придет на вечеринку в воскресенье?
+        чтобы начать перекличку
+        или
+        /loomio thread Давайте поговорим об управлении компанией
+        чтобы начать новую ветку

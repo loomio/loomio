@@ -12,7 +12,7 @@ class DiscussionService
 
   def self.destroy(discussion:, actor:)
     actor.ability.authorize!(:destroy, discussion)
-    discussion.destroy
+    discussion.delay.destroy
     EventBus.broadcast('discussion_destroy', discussion, actor)
   end
 
@@ -75,7 +75,7 @@ class DiscussionService
     source = discussion.forked_items.first.discussion
 
     return false unless event = create(discussion: discussion, actor: actor)
-    
+
     EventBus.broadcast('discussion_fork', source, event.eventable, actor)
     Events::DiscussionForked.publish!(event.eventable, source)
   end

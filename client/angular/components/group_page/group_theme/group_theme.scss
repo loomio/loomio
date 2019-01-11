@@ -43,6 +43,8 @@
   height: 108px;
   background-size: contain;
   background-color: white;
+  background-repeat: no-repeat;
+  background-position-y: center;
   border: 4px solid #fff;
   &:hover .group-theme__upload-photo {
     button { background: $background-transparent-color; }

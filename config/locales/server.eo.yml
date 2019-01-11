@@ -85,12 +85,16 @@ eo:
         poll_closing_soon: 'Propozicio fermiĝis en 24 horoj: %{title}'
         poll_closing_soon_author: 'Via propozicio fermiĝos en 24 horoj: %{title}'
         poll_expired: "Propozicio fermita: %{title}"
-        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> startigis propozicion'
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
+      subject:
+        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    score:
       subject:
         stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
       body:

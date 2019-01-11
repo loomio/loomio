@@ -154,14 +154,6 @@ nb_NO:
     internal_server_error: 'Vi beklager, men noe gikk galt. Vennligst prøv på nytt.'
   verify_email_notice:
     please_verify: Takk for din deltakelse. Vær grei å sjekk e-posten din for å verifisere din stemme.
-  verify_stances:
-    title: Verifiser stemmer
-    description: 'Vær vennlig å gå gjennom stemmene under og verifiser at det er dine. '
-    verify: Verifiser
-    remove: Fjern
-    verify_success: Stemme verifisert
-    remove_success: Stemme fjernet
-    all_done: Kjempebra, du har verifisert alle stemmene.
   previous_polls_page:
     heading: Aktivitet i {{name}}
     polls_count: Viser {{loaded}} av {{total}} beslutninger
@@ -426,6 +418,9 @@ nb_NO:
       poll_announced:
         title: Inviter til å stemme
         helptext: Hvem vil du invitere til å stemme?
+      poll:
+        title: Varling om redigering
+        helptext: Hvem vil du varsle om dine endringer?
       poll_edited:
         title: Varling om redigering
         helptext: Hvem vil du varsle om dine endringer?
@@ -463,7 +458,6 @@ nb_NO:
     announce_poll: Inviter folk til å stemme
     announce_poll_active: (Ingen har blitt invitert enda)
     translate_poll: Oversett avstemning
-    edit_stance: Endre din stemme
     translate_stance: Oversett stemme
     edit_comment: Rediger kommentar
     delete_comment: Slett kommentar
@@ -627,7 +621,7 @@ nb_NO:
     meeting_title: Tidspunkt
     ranked_choice_title: Rangering
   poll_common:
-    change_your_stance: Endre din stemme
+    save_changes: Lagre
   current_polls_card:
     start_poll: Ny beslutning
   poll_common_select_group:

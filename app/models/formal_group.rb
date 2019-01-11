@@ -50,7 +50,7 @@ class FormalGroup < Group
            -> { where(archived_at: nil) },
            class_name: 'Group',
            foreign_key: 'parent_id'
-  has_many :all_subgroups, class_name: 'Group', foreign_key: :parent_id
+  has_many :all_subgroups, dependent: :destroy, class_name: 'Group', foreign_key: :parent_id
 
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
   define_counter_cache(:discussions_count)         { |group| group.discussions.count }

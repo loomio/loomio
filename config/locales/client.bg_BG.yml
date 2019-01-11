@@ -68,5 +68,7 @@ bg_BG:
     invitation: 'Насоки за писане на страхотни покани'
     proposal: 'Насоки за писане на чисти предложения'
     vote: 'Можете да промените позицията си по всяко време'
+  poll_common:
+    save_changes: Запис
   poll_common_form:
     closed: Затворен

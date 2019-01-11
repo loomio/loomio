@@ -9,8 +9,6 @@ uk:
         invite_people_in: Запросіть людей долучитись
         start_thread: Розпочніть тему для обговорення
         make_decision: Розпочати процес прийняття рішення
-      learn_more: Дізнайтеся більше в Школі Loomio
-      learn_more_title: Відкрити в новій вкладці
       celebration_message: Чудово! Ваша група готова для початку роботи!
       dismiss_this_card: Відхилити цю картку
     user_progress_card:

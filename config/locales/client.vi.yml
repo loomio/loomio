@@ -70,6 +70,8 @@ vi:
     invitation: 'Gợi ý về cách viết các lời mời để kết nối thêm thành viên'
     proposal: 'Gợi ý về việc viết lời đề nghị theo hướng rõ ràng nhất'
     vote: 'Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào'
+  poll_common:
+    save_changes: Lưu
   poll_common_form:
     closed: Đã đóng lại
   poll_count_options:
