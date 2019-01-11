@@ -5,7 +5,7 @@
     %group_theme{group: "threadPage.discussion.group()", compact: "true"}
     .thread-page__main-content{ng-class: "{'thread-page__forking': threadPage.discussion.isForking()}"}
       %outlet.before-column-right.lmo-column-right{name: "before-thread-page-column-right", model: "threadPage.discussion"}
-      %poll_common_card.lmo-card--no-padding.lmo-column-right{poll: "poll", ng-repeat: "poll in threadPage.discussion.activePolls() track by poll.id"}
+      %vue-component{name: "PollCommonCardRepeater", v-props-discussion: "threadPage.discussion"}
       %vue-component.decision-tools-card.lmo-column-right{name: "DecisionToolsCard", v-props-discussion: "threadPage.discussion"}
       %vue-component.lmo-column-right{name: "MembershipCard", v-props-group: "threadPage.discussion.guestGroup()"}
       %vue-component.lmo-column-right{name: "MembershipCard", v-props-group: "threadPage.discussion.guestGroup()", v-props-pending: "true"}

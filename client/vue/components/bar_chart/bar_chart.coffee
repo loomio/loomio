@@ -43,7 +43,6 @@ module.exports =
             .y(scoreDatum.index * barHeight)
   watch:
     stanceCounts: ->
-      console.log('watch stanceCounts', this.stanceCounts)
       this.draw()
   template: '<div class="bar-chart"></div>'
   mounted: ->
