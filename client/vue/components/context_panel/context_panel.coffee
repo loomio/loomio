@@ -7,11 +7,13 @@ ThreadService  = require 'shared/services/thread_service'
 LmoUrlService  = require 'shared/services/lmo_url_service'
 FlashService   = require 'shared/services/flash_service'
 I18n           = require 'shared/services/i18n'
+urlFor         = require 'vue/mixins/url_for'
 
 { listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
 { scrollTo }                                  = require 'shared/helpers/layout'
 
 module.exports =
+  mixins: [urlFor]
   props:
     discussion: Object
   created: ->
@@ -65,7 +67,6 @@ module.exports =
     #   EventBus.broadcast $rootScope, 'showThreadLintel', bool
     showRevisionHistory: ->
       ModalService.open 'RevisionHistoryModal', model: => @discussion
-    urlFor: (model) -> LmoUrlService.route(model: model)
 
   template:
     """
