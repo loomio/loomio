@@ -5,7 +5,7 @@ LmoUrlService = require 'shared/services/lmo_url_service'
 angular.module('loomioApp').directive 'navbarSearch', ['$timeout', ($timeout) ->
   scope: {}
   restrict: 'E'
-  templateUrl: 'generated/components/navbar/navbar_search.html'
+  template: require('./navbar_search.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.isOpen = false

@@ -10,7 +10,7 @@ I18n           = require 'shared/services/i18n'
 angular.module('loomioApp').directive 'commentForm', ->
   scope: {eventWindow: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
+  template: require('./comment_form.haml')
   replace: true
   controller: ['$scope', '$element', ($scope, $element) ->
     $scope.discussion = $scope.eventWindow.discussion

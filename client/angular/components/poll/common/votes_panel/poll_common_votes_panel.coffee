@@ -5,7 +5,7 @@ EventBus     = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollCommonVotesPanel', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/votes_panel/poll_common_votes_panel.html'
+  template: require('./poll_common_votes_panel.haml')
   controller: ['$scope', ($scope) ->
     # sorry. ng-if and md-select break. github.com/angular/material/issues/3940
     $scope.fix = {}

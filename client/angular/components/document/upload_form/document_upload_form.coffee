@@ -6,7 +6,7 @@ EventBus = require 'shared/services/event_bus'
 angular.module('loomioApp').directive 'documentUploadForm', ->
   scope: {model: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/document/upload_form/document_upload_form.html'
+  template: require('./document_upload_form.haml')
   replace: true
   controller: ['$scope', '$element', ($scope, $element) ->
     uploadForm $scope, $element, $scope.model,

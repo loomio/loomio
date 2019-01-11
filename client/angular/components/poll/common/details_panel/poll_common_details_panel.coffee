@@ -9,7 +9,7 @@ FlashService   = require 'shared/services/flash_service'
 
 angular.module('loomioApp').directive 'pollCommonDetailsPanel', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/details_panel/poll_common_details_panel.html'
+  template: require('./poll_common_details_panel.haml')
   controller: ['$scope', 'clipboard', ($scope, clipboard) ->
     $scope.actions = [
       name: 'translate_poll'

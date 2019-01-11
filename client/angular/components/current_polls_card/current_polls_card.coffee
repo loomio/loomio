@@ -6,7 +6,7 @@ ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'currentPollsCard', ->
   scope: {model: '='}
-  templateUrl: 'generated/components/current_polls_card/current_polls_card.html'
+  template: require('./current_polls_card.haml')
   controller: ['$scope', ($scope) ->
     $scope.fetchRecords = ->
       Records.polls.fetchFor($scope.model, status: 'active')

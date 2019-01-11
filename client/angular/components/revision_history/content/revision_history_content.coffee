@@ -4,7 +4,7 @@ Records = require 'shared/services/records.coffee'
 angular.module('loomioApp').directive 'revisionHistoryContent', ->
   scope:{model:'=', version:'='}
   restrict:'E'
-  templateUrl: 'generated/components/revision_history/content/revision_history_content.html'
+  template: require('./revision_history_content.haml')
   controller:['$scope', ($scope) ->
 
     $scope.diffType = (field_name) ->

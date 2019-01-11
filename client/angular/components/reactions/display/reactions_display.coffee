@@ -7,7 +7,7 @@ AbilityService = require 'shared/services/ability_service'
 angular.module('loomioApp').directive 'reactionsDisplay', ->
   scope: {model: '=', load: '@'}
   restrict: 'E'
-  templateUrl: 'generated/components/reactions/display/reactions_display.html'
+  template: require('./reactions_display.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.diameter = 16

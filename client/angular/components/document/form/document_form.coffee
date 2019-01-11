@@ -5,7 +5,7 @@ EventBus = require 'shared/services/event_bus'
 { triggerResize } = require 'shared/helpers/window'
 
 angular.module('loomioApp').directive 'documentForm', ['$timeout', ($timeout) ->
-  templateUrl: 'generated/components/document/form/document_form.html'
+  template: require('./document_form.haml')
   controller: ['$scope', ($scope) ->
     EventBus.listen $scope, 'initializeDocument', (_, doc, $mdMenu) ->
       $timeout -> $mdMenu.open() if $mdMenu

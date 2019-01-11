@@ -5,7 +5,7 @@ NestedEventWindow = require 'shared/services/nested_event_window'
 angular.module('loomioApp').directive 'eventChildren', ->
   scope: {parentEvent: '=', parentEventWindow: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/thread_page/event_children/event_children.html'
+  template: require('./event_children.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.debug = -> AppConfig.debug

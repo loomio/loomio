@@ -11,7 +11,7 @@ LmoUrlService      = require 'shared/services/lmo_url_service'
 angular.module('loomioApp').directive 'discussionsCard', ['$timeout', ($timeout) ->
   scope: {group: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
+  template: require('./discussions_card.haml')
   replace: true
   controller: ['$scope', ($scope) ->
 

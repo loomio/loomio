@@ -6,7 +6,7 @@ I18n           = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'discussionForm', ->
   scope: {discussion: '='}
-  templateUrl: 'generated/components/discussion/form/discussion_form.html'
+  template: require('./discussion_form.haml')
   controller: ['$scope', ($scope) ->
     if $scope.discussion.isNew()
       $scope.showGroupSelect = true

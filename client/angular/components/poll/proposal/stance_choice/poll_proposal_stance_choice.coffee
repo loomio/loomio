@@ -1,3 +1,3 @@
 angular.module('loomioApp').directive 'pollProposalStanceChoice', ->
   scope: {stanceChoice: '='}
-  templateUrl: 'generated/components/poll/proposal/stance_choice/poll_proposal_stance_choice.html'
+  template: require('./poll_proposal_stance_choice.haml')

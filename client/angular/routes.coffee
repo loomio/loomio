@@ -23,7 +23,7 @@ module.exports = [
   {path: '/g/:key/documents', component: 'documentsPage'},
   {path: '/g/:key/previous_polls', component: 'previousPollsPage'},
   {path: '/g/new', component: 'startGroupPage'},
-  {path: '/g/:key', component: 'groupPage' },
+  {path: '/g/:key', component: 'groupPage', template: 'hello.html' },
   {path: '/g/:key/:stub', component: 'groupPage' },
   {path: '/u/:key', component: 'userPage' },
   {path: '/u/:key/:stub', component: 'userPage' },

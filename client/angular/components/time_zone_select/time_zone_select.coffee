@@ -6,7 +6,7 @@ I18n        = require 'shared/services/i18n'
 angular.module('loomioApp').directive 'timeZoneSelect', ->
   scope: {zone: '=?'}
   restrict: 'E'
-  templateUrl: 'generated/components/time_zone_select/time_zone_select.html'
+  template: require('./time_zone_select.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.zone = $scope.zone || AppConfig.timeZone

@@ -3,7 +3,7 @@ EventBus = require 'shared/services/event_bus.coffee'
 {applyLoadingFunction } = require 'shared/helpers/apply.coffee'
 angular.module('loomioApp').directive 'revisionHistoryNav', ->
   scope: {model: '='}
-  templateUrl: 'generated/components/revision_history/nav/revision_history_nav.html'
+  template: require('./revision_history_nav.haml')
   controller:['$scope', ($scope) ->
     $scope.currentIndex = latestIndex = $scope.model.versionsCount - 1
 

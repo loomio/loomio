@@ -10,7 +10,7 @@ I18n     = require 'shared/services/i18n'
 angular.module('loomioApp').directive 'groupFormActions', ->
   scope: {group: '='}
   replace: true
-  templateUrl: 'generated/components/group/form_actions/group_form_actions.html'
+  template: require('./group_form_actions.haml')
   controller: ['$scope', ($scope) ->
     actionName = if $scope.group.isNew() then 'created' else 'updated'
 

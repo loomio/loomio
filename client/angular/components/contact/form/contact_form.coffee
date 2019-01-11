@@ -7,7 +7,7 @@ UserHelpService= require 'shared/services/user_help_service'
 { submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').directive 'contactForm', ->
-  templateUrl: 'generated/components/contact/form/contact_form.html'
+  template: require('./contact_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.submitted = false
     $scope.helpLink = UserHelpService.helpLink()

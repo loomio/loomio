@@ -2,7 +2,7 @@ FlashService  = require 'shared/services/flash_service'
 LmoUrlService = require 'shared/services/lmo_url_service'
 
 angular.module('loomioApp').factory 'ConfirmModal', ->
-  templateUrl: 'generated/components/confirm_modal/confirm_modal.html'
+  template: require('./confirm_modal.haml')
   controller: ['$scope', 'confirm', ($scope, confirm) ->
     $scope.confirm  = confirm
     $scope.fragment = "generated/components/fragments/#{confirm.text.fragment}.html" if confirm.text.fragment

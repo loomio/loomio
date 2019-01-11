@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'loadingContent', ->
   scope: {blockCount: '=?', lineCount: '=?'}
   restrict: 'E'
-  templateUrl: 'generated/components/loading_content/loading_content.html'
+  template: require('./loading_content.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.blocks = new Array($scope.blockCount or 1)

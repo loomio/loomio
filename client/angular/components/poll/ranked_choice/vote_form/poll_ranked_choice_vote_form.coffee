@@ -5,7 +5,7 @@ EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollRankedChoiceVoteForm', ->
   scope: {stance: '='}
-  templateUrl: 'generated/components/poll/ranked_choice/vote_form/poll_ranked_choice_vote_form.html'
+  template: require('./poll_ranked_choice_vote_form.haml')
   controller: ['$scope', '$element', ($scope, $element) ->
     initForm = do ->
       $scope.numChoices  = $scope.stance.poll().customFields.minimum_stance_choices

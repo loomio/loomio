@@ -30,27 +30,27 @@ budo       = require 'budo'
 uglify     = require('gulp-uglify/composer')(require('uglify-es', console))
 
 module.exports =
-  development: ->
-    requireForBundle()
-    budo paths.angular.main,
-      serve: "client/development/angular.bundle.js"
-      stream: process.stdout
-      live: true
-      port: 4002
-      browserify: browserifyOpts()
-
-  production: ->
-    requireForBundle()
-    browserify(browserifyOpts())
-      .transform("babelify", {presets: ["es2015", "@babel/preset-env"], extensions: ['.coffee', '.js']})
-      .plugin(collapse)
-      .transform('uglifyify')
-      .bundle()
-      .pipe(source('angular.bundle.min.js'))
-      .pipe(buffer())
-      .pipe(uglify())
-      .on('error', onError)
-      .pipe(gulp.dest(paths.dist.assets))
+  # development: ->
+  #   requireForBundle()
+  #   budo paths.angular.main,
+  #     serve: "client/development/angular.bundle.js"
+  #     stream: process.stdout
+  #     live: true
+  #     port: 4002
+  #     browserify: browserifyOpts()
+  #
+  # production: ->
+  #   requireForBundle()
+  #   browserify(browserifyOpts())
+  #     .transform("babelify", {presets: ["es2015", "@babel/preset-env"], extensions: ['.coffee', '.js']})
+  #     .plugin(collapse)
+  #     .transform('uglifyify')
+  #     .bundle()
+  #     .pipe(source('angular.bundle.min.js'))
+  #     .pipe(buffer())
+  #     .pipe(uglify())
+  #     .on('error', onError)
+  #     .pipe(gulp.dest(paths.dist.assets))
 
   haml: ->
     pipe gulp.src(paths.angular.folders.templates), [

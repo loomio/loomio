@@ -15,7 +15,7 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', 'clipboard'
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
-  templateUrl: 'generated/components/thread_page/context_panel/context_panel.html'
+  template: require('./context_panel.haml')
   controller: ['$scope', ($scope) ->
     $scope.status = ->
       return 'pinned' if $scope.discussion.pinned

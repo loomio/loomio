@@ -10,7 +10,7 @@ ModalService   = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', ($rootScope, clipboard) ->
   scope: {event: '=', eventable: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'
+  template: require('./new_comment.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.actions = [

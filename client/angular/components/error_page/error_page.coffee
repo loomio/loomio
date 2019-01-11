@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'errorPage', ->
   scope: {error: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/error_page/error_page.html'
+  template: require('./error_page.haml')
   replace: true

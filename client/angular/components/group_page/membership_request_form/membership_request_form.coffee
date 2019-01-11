@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service'
 { submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'MembershipRequestForm', ->
-  templateUrl: 'generated/components/group_page/membership_request_form/membership_request_form.html'
+  template: require('./membership_request_form.haml')
   controller: ['$scope', 'group', ($scope, group) ->
     $scope.membershipRequest = Records.membershipRequests.build
       groupId: group.id

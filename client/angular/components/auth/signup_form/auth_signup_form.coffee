@@ -8,7 +8,7 @@ I18n        = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'authSignupForm', ->
   scope: {user: '='}
-  templateUrl: 'generated/components/auth/signup_form/auth_signup_form.html'
+  template: require('./auth_signup_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.recaptchaKey = AppConfig.recaptchaKey
     $scope.termsUrl     = AppConfig.theme.terms_url

@@ -11,7 +11,7 @@ I18n           = require 'shared/services/i18n'
 angular.module('loomioApp').directive 'threadItem', ['$compile', ($compile) ->
   scope: {event: '=', eventWindow: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
+  template: require('./thread_item.haml')
 
   link: (scope, element, attrs) ->
     if scope.event.isSurface() && scope.eventWindow.useNesting

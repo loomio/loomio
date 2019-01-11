@@ -7,7 +7,7 @@ ModalService = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'pollCommonStartForm', ->
   scope: {discussion: '=?', group: '=?'}
   restrict: 'E'
-  templateUrl: 'generated/components/poll/common/start_form/poll_common_start_form.html'
+  template: require('./poll_common_start_form.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.discussion = $scope.discussion or {}

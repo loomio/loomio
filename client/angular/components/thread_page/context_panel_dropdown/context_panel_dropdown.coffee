@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'contextPanelDropdown', ['$rootScope', ($r
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
-  templateUrl: 'generated/components/thread_page/context_panel_dropdown/context_panel_dropdown.html'
+  template: require('./context_panel_dropdown.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.canChangeVolume = ->

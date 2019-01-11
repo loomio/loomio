@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service'
 angular.module('loomioApp').directive 'documentList', ->
   scope: {model: '=', showEdit: '=?', hidePreview: '=?', hideDate: '=?', skipFetch: '=?'}
   replace: true
-  templateUrl: 'generated/components/document/list/document_list.html'
+  template: require('./document_list.haml')
   controller: ['$scope', ($scope) ->
     Records.documents.fetchByModel($scope.model) unless $scope.model.isNew() or $scope.skipFetch
 

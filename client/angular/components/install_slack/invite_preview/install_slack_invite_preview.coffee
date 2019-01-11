@@ -2,7 +2,7 @@ AppConfig = require 'shared/services/app_config'
 Session   = require 'shared/services/session'
 
 angular.module('loomioApp').directive 'installSlackInvitePreview', ['$timeout', ($timeout) ->
-  templateUrl: 'generated/components/install_slack/invite_preview/install_slack_invite_preview.html'
+  template: require('./install_slack_invite_preview.haml')
   controller: ['$scope', ($scope) ->
     $timeout ->
       $scope.group     = AppConfig.currentGroup

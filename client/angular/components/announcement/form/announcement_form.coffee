@@ -11,7 +11,7 @@ FlashService   = require 'shared/services/flash_service'
 angular.module('loomioApp').directive 'announcementForm', ->
   scope: {announcement: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/announcement/form/announcement_form.html'
+  template: require('./announcement_form.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.shareableLink = LmoUrlService.shareableLink($scope.announcement.model)

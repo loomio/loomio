@@ -4,7 +4,7 @@ Records        = require 'shared/services/records'
 angular.module('loomioApp').directive 'notifications', ->
   scope: {}
   restrict: 'E'
-  templateUrl: 'generated/components/notifications/notifications.html'
+  template: require('./notifications.haml')
   replace: true
   controller: ['$scope', ($scope) ->
 

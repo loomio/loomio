@@ -3,7 +3,7 @@ EventBus  = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'authProviderForm', ['$window', ($window) ->
   scope: {user: '='}
-  templateUrl: 'generated/components/auth/provider_form/auth_provider_form.html'
+  template: require('./auth_provider_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.emailLogin = AppConfig.features.app.email_login
     $scope.providers = _.reject AppConfig.identityProviders, (provider) -> provider.name == 'slack'

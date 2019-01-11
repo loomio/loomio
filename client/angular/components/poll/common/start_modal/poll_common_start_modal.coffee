@@ -4,7 +4,7 @@ Records = require 'shared/services/records'
 { applyPollStartSequence } = require 'shared/helpers/apply'
 
 angular.module('loomioApp').factory 'PollCommonStartModal', ->
-  templateUrl: 'generated/components/poll/common/start_modal/poll_common_start_modal.html'
+  template: require('./poll_common_start_modal.haml')
   controller: ['$scope', 'poll', ($scope, poll) ->
     $scope.poll = poll.clone()
 

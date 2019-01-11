@@ -4,7 +4,7 @@
 angular.module('loomioApp').directive 'membershipFormActions', ->
   scope: {membership: '='}
   replace: true
-  templateUrl: 'generated/components/membership/form_actions/membership_form_actions.html'
+  template: require('./membership_form_actions.haml')
   controller: ['$scope', ($scope) ->
     $scope.submit = submitMembership $scope, $scope.membership
     submitOnEnter $scope

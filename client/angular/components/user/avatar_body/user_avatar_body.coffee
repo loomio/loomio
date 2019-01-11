@@ -3,7 +3,7 @@
 angular.module('loomioApp').directive 'userAvatarBody', ->
   scope: {user: '=', size: '=', colors: '=', coordinator: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/user/avatar_body/user_avatar_body.html'
+  template: require('./user_avatar_body.haml')
   replace: false
   controller: ['$scope', ($scope) ->
 

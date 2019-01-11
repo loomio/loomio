@@ -7,7 +7,7 @@ EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'installSlackInviteForm', ->
   scope: {group: '='}
-  templateUrl: 'generated/components/install_slack/invite_form/install_slack_invite_form.html'
+  template: require('./install_slack_invite_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.groupIdentity = Records.groupIdentities.build(
       groupId: $scope.group.id

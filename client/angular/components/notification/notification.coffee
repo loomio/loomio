@@ -4,7 +4,7 @@ I18n    = require 'shared/services/i18n'
 angular.module('loomioApp').directive 'notification', ->
   scope: {notification: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/notification/notification.html'
+  template: require('./notification.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.actor = ->

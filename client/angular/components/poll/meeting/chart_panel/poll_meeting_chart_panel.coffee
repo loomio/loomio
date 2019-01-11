@@ -2,7 +2,7 @@ EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollMeetingChartPanel', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/meeting/chart_panel/poll_meeting_chart_panel.html'
+  template: require('./poll_meeting_chart_panel.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.totalFor = (option) ->

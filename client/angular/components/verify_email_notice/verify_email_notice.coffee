@@ -5,7 +5,7 @@ Records        = require 'shared/services/records'
 angular.module('loomioApp').directive 'verifyEmailNotice', ->
   scope: false
   restrict: 'E'
-  templateUrl: 'generated/components/verify_email_notice/verify_email_notice.html'
+  template: require('./verify_email_notice.haml')
   controller: ['$scope', ($scope) ->
     $scope.show = ->
       AbilityService.isNotEmailVerified() &&

@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'announcementChip', ->
   scope: {user: '=', showClose: '=?'}
   replace: true
   restrict: 'E'
-  templateUrl: 'generated/components/announcement/chip/announcement_chip.html'
+  template: require('./announcement_chip.haml')
   controller: ['$scope', ($scope) ->
     $scope.removeRecipient = ->
       EventBus.emit $scope, 'removeRecipient', $scope.user

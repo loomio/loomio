@@ -6,7 +6,7 @@ I18n           = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'groupForm', ->
   scope: {group: '=', modal: '=?'}
-  templateUrl: 'generated/components/group/form/group_form.html'
+  template: require('./group_form.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.titleLabel = ->

@@ -10,7 +10,7 @@ ModalService   = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($mdMedia, $mdSidenav) ->
   scope: false
   restrict: 'E'
-  templateUrl: 'generated/components/sidebar/sidebar.html'
+  template: require('./sidebar.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.currentState = ""

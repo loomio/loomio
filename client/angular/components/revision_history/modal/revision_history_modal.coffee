@@ -4,7 +4,7 @@ EventBus = require 'shared/services/event_bus.coffee'
 { applyLoadingFunction } = require 'shared/helpers/apply.coffee'
 
 angular.module('loomioApp').factory 'RevisionHistoryModal', ->
-  templateUrl: 'generated/components/revision_history/modal/revision_history_modal.html'
+  template: require('./revision_history_modal.haml')
   controller:['$scope', 'model', ($scope,  model) ->
     $scope.model = model
     $scope.type = model.constructor.singular

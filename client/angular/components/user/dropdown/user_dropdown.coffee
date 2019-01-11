@@ -4,7 +4,7 @@ UserHelpService = require 'shared/services/user_help_service'
 
 angular.module('loomioApp').directive 'userDropdown', ->
   restrict: 'E'
-  templateUrl: 'generated/components/user/dropdown/user_dropdown.html'
+  template: require('./user_dropdown.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.siteName = AppConfig.theme.site_name

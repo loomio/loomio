@@ -2,7 +2,7 @@ Records = require 'shared/services/records'
 
 angular.module('loomioApp').directive 'authAvatar', ->
   scope: {user: '=?'}
-  templateUrl: 'generated/components/auth/avatar/auth_avatar.html'
+  template: require('./auth_avatar.haml')
   controller: ['$scope', ($scope) ->
     $scope.user = $scope.user or {avatarKind: 'initials'}
     if _.includes(['initials', 'mdi-email-outline'], $scope.user.avatarKind)

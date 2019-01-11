@@ -8,7 +8,7 @@ ModalService = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
   scope: {model: '=', field: '@', noAttachments: '@', label: '=?', placeholder: '=?', helptext: '=?', maxlength: '=?'}
   restrict: 'E'
-  templateUrl: 'generated/components/lmo_textarea/lmo_textarea.html'
+  template: require('./lmo_textarea.haml')
   replace: true
   controller: ['$scope', '$element', ($scope, $element) ->
     $scope.init = (model) ->

@@ -6,7 +6,7 @@ EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'contactRequestForm', ->
   scope: {user: '='}
-  templateUrl: 'generated/components/contact_request/form/contact_request_form.html'
+  template: require('./contact_request_form.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.contactRequest = Records.contactRequests.build(recipientId: $scope.user.id)

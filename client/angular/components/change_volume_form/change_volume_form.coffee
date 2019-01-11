@@ -3,7 +3,7 @@ Session = require 'shared/services/session'
 { submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'ChangeVolumeForm', ->
-  templateUrl: 'generated/components/change_volume_form/change_volume_form.html'
+  template: require('./change_volume_form.haml')
   controller: ['$scope', 'model', ($scope, model) ->
     $scope.model = model.clone()
     $scope.volumeLevels = ["loud", "normal", "quiet"]

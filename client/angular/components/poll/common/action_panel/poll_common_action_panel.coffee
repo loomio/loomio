@@ -9,7 +9,7 @@ LmoUrlService  = require 'shared/services/lmo_url_service'
 
 angular.module('loomioApp').directive 'pollCommonActionPanel', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/action_panel/poll_common_action_panel.html'
+  template: require('./poll_common_action_panel.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.init = ->

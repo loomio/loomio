@@ -7,7 +7,7 @@ EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollCommonCard', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/card/poll_common_card.html'
+  template: require('./poll_common_card.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     Records.polls.findOrFetchById($scope.poll.key)

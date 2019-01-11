@@ -4,7 +4,7 @@ Records = require 'shared/services/records'
 { submitOnEnter } = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').factory 'EditCommentForm', ->
-  templateUrl: 'generated/components/thread_page/comment_form/edit_comment_form.html'
+  template: require('./edit_comment_form.haml')
   controller: ['$scope', 'comment', ($scope, comment) ->
     $scope.comment = comment.clone()
 
