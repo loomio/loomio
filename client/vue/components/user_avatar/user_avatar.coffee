@@ -1,6 +1,7 @@
-LmoUrlService = require 'shared/services/lmo_url_service'
+urlFor = require 'vue/mixins/url_for'
 
-module.exports = 
+module.exports =
+  mixins: [urlFor]
   props:
     thread: Object
     user: Object
@@ -8,8 +9,6 @@ module.exports =
     size: String
     noLink: Boolean
     colors: Object
-  methods:
-    urlFor: (model) -> LmoUrlService.route(model: model)
   computed:
     threadUrl: -> "/d/#{this.thread.key}"
     boxClass: -> "lmo-box--#{this.size}"

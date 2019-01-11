@@ -1,11 +1,10 @@
 { fieldFromTemplate, myLastStanceFor } = require 'shared/helpers/poll'
-LmoUrlService = require 'shared/services/lmo_url_service'
+urlFor                                 = require 'vue/mixins/url_for'
 
 module.exports =
+  mixins: [urlFor]
   props:
     poll: Object
-  methods:
-    urlFor: (model) -> LmoUrlService.route(model: model)
   computed:
     chartType: -> fieldFromTemplate(this.poll.pollType, 'chart_type')
     myStance: -> myLastStanceFor(this.poll)
