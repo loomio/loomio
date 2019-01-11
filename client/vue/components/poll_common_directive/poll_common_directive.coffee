@@ -6,18 +6,19 @@ module.exports =
     stanceChoice: Object
     back: Object
     name: String
-  data: ->
-    dpoll: @poll
   methods:
     componentName: ->
-      model = @stance or @outcome or @stanceChoice or (poll: ->)
-      @dpoll = @dpoll or model.poll()
+      pollType = (@stance or @outcome or @stanceChoice or @poll).poll().pollType
 
-      if Vue.options.components[_.camelCase("poll-#{@dpoll.pollType}-#{@name}-directive")]
-        "poll-#{@dpoll.pollType}-#{@name}"
+      # console.log "poll-#{@poll.pollType}-#{@name}"
+      # console.log 'camelcase', _.camelCase("poll-#{@poll.pollType}-#{@name}")
+      # console.log 'Vue.options.components', Vue.options.components
+
+      if Vue.options.components[_.upperFirst(_.camelCase("poll-#{pollType}-#{@name}"))]
+        "poll-#{_.kebabCase(pollType)}-#{@name}"
       else
         "poll-common-#{@name}"
   template:
     """
-    <component :is="componentName()" :poll='dpoll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back'></component>
+    <component :is="componentName()" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back'></component>
     """

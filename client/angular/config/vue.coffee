@@ -76,6 +76,10 @@ components =
   PollCommonVoteForm: require 'vue/components/poll_common_vote_form/poll_common_vote_form.coffee'
   PollCommonAnonymousHelptext: require 'vue/components/poll_common_anonymous_helptext/poll_common_anonymous_helptext.coffee'
   PollCommonStanceReason: require 'vue/components/poll_common_stance_reason/poll_common_stance_reason.coffee'
+  PollPollVoteForm: require 'vue/components/poll_poll_vote_form/poll_poll_vote_form.coffee'
+  ValidationErrors: require 'vue/components/validation_errors/validation_errors.coffee'
+  PollDotVoteVoteForm: require 'vue/components/poll_dot_vote_vote_form/poll_dot_vote_vote_form.coffee'
+  PollScoreVoteForm: require 'vue/components/poll_score_vote_form/poll_score_vote_form.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
