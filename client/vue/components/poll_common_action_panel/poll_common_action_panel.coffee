@@ -11,21 +11,18 @@ module.exports =
   props:
     poll: Object
   data: ->
-    stance: myLastStanceFor(@poll) or
-                    Records.stances.build(
-                      pollId:    @poll.id,
-                      userId:    AppConfig.currentUserId
-                    ).choose(LmoUrlService.params().poll_option_id)
+    stance: @getLastStance()
   created: ->
-    EventBus.listen @, 'refreshStance', @init
+    EventBus.listen @, 'refreshStance', @refreshStance
   methods:
-    init: ->
-      @stance = myLastStanceFor(@poll) or
+    refreshStance: -> @stance = @getLastStance()
+
+    getLastStance: ->
+      myLastStanceFor(@poll) or
                       Records.stances.build(
                         pollId:    @poll.id,
                         userId:    AppConfig.currentUserId
                       ).choose(LmoUrlService.params().poll_option_id)
-
     userHasVoted: ->
       myLastStanceFor(@poll)?
 
