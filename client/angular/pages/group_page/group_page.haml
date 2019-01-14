@@ -9,7 +9,7 @@
         %vue-component{name: "GroupPageDiscussionsCard", v-props-group: "groupPage.group"}
       .lmo-group-column-right
         %outlet{name: "before-group-page-column-right", model: "groupPage.group"}
-        %current_polls_card{model: "groupPage.group"}
+        %vue-component{name: "CurrentPollsCard", v-props-model: "groupPage.group"}
         %membership_requests_card{group: "groupPage.group"}
         %membership_card{group: "groupPage.group"}
         %membership_card{group: "groupPage.group", pending: "true"}

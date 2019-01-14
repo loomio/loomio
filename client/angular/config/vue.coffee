@@ -85,6 +85,7 @@ components =
   PollMeetingTime: require 'vue/components/poll_meeting_time/poll_meeting_time.coffee'
   PollRankedChoiceVoteForm: require 'vue/components/poll_ranked_choice_vote_form/poll_ranked_choice_vote_form.coffee'
   SubgroupsCard: require 'vue/components/subgroups_card/subgroups_card.coffee'
+  CurrentPollsCard: require 'vue/components/current_polls_card/current_polls_card.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
