@@ -7,7 +7,7 @@ module.exports =
   props:
     model: Object
     limit: Number
-    viewMoreLink: Object
+    viewMoreLink: Boolean
   created: ->
     applyLoadingFunction(@, 'fetchRecords')
     @fetchRecords()
