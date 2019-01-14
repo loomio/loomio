@@ -334,7 +334,7 @@ GEM
     multipart-post (2.0.0)
     newrelic_rpm (5.6.0.349)
     nio4r (2.3.1)
-    nokogiri (1.10.0)
+    nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
     oj (3.7.6)
     orm_adapter (0.5.0)
