@@ -40,6 +40,6 @@ module.exports =
           </a>
         </div>
       </div>
-      <loading v-if="fetchRecordsExecuting"></loading>
+      <!-- <loading v-if="fetchRecordsExecuting"></loading> -->
     </div>
     """
