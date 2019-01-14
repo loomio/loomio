@@ -80,6 +80,10 @@ components =
   ValidationErrors: require 'vue/components/validation_errors/validation_errors.coffee'
   PollDotVoteVoteForm: require 'vue/components/poll_dot_vote_vote_form/poll_dot_vote_vote_form.coffee'
   PollScoreVoteForm: require 'vue/components/poll_score_vote_form/poll_score_vote_form.coffee'
+  PollMeetingVoteForm: require 'vue/components/poll_meeting_vote_form/poll_meeting_vote_form.coffee'
+  TimeZoneSelect: require 'vue/components/time_zone_select/time_zone_select.coffee'
+  PollMeetingTime: require 'vue/components/poll_meeting_time/poll_meeting_time.coffee'
+  PollRankedChoiceVoteForm: require 'vue/components/poll_ranked_choice_vote_form/poll_ranked_choice_vote_form.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
