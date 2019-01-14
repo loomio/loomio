@@ -49,4 +49,11 @@ module PrettyUrlHelper
     end
   end
 
+  def user_avatar_url(user)
+    [
+      root_url(default_url_options.merge(trailing_slash: false)),
+      object.user.avatar_url
+    ].join
+  end
+
 end

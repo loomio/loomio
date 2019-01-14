@@ -681,6 +681,16 @@ en:
     visit_poll: View poll
     go_to_dashboad: Go to dashboard
 
+  microsoft:
+    section_title: "[%{title}](%{url})"
+    created_at: "Created at"
+    authored_by: "Authored by"
+    new_discussion: "New thread in %{group}"
+    outcome_created: "Outcome posted in %{group}"
+    poll_created: "New %{poll_type} in %{group}"
+    poll_closing_soon: "%{poll_type} is closing in 24 hours"
+    poll_expired: "%{poll_type} has closed"
+
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"
     outcome_created: "Outcome posted in *%{group}*: *%{poll}*"
