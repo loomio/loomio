@@ -14,7 +14,7 @@
         %vue-component{name: "MembershipCard", v-props-group: "groupPage.group"}
         %vue-component{name: "MembershipCard", v-props-group: "groupPage.group", v-props-pending: "true"}
         %vue-component{name: "SubgroupsCard", v-props-group: "groupPage.group"}
-        %document_card{group: "groupPage.group"}
+        %vue-component{name: "DocumentCard", v-props-group: "groupPage.group"}
         %vue-component{name: "PollCommonIndexCard", v-props-model: "groupPage.group", v-props-limit: "5", v-props-view-more-link: "true"}
         %outlet{name: "after-slack-card", model: "groupPage.group"}
         %install_slack_card{group: "groupPage.group"}
