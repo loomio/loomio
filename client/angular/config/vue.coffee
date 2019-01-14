@@ -84,6 +84,7 @@ components =
   TimeZoneSelect: require 'vue/components/time_zone_select/time_zone_select.coffee'
   PollMeetingTime: require 'vue/components/poll_meeting_time/poll_meeting_time.coffee'
   PollRankedChoiceVoteForm: require 'vue/components/poll_ranked_choice_vote_form/poll_ranked_choice_vote_form.coffee'
+  SubgroupsCard: require 'vue/components/subgroups_card/subgroups_card.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
