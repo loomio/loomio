@@ -3,6 +3,7 @@
   %main.documents-page{ng-if: "documentsPage.group"}
     .lmo-group-theme-padding
     %group_theme{group: "documentsPage.group"}
+    -# %vue-component{name: "GroupTheme", v-props-group: "documentsPage.group"}
     .lmo-card
       .documents-page__top-bar.lmo-flex.lmo-flex__space-between.lmo-flex__baseline
         %h2.lmo-h2.md-title{translate: "documents_page.title"}
@@ -14,5 +15,5 @@
           %input.membership-page__search-filter{ng-model: "documentsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "documentsPage.fetchDocuments()", placeholder: "{{'documents_page.fragment_placeholder' | translate}}"}
           %i.mdi.mdi-magnify.mdi-24px
         %p.lmo-hint-text{ng-if: "!documentsPage.hasDocuments()", translate: "documents_page.no_documents_from_fragment", translate-value-fragment: "{{documentsPage.fragment}}"}
-        %document_management{group: "documentsPage.group", fragment: "documentsPage.fragment"}
+        %vue-component{name: "DocumentManagement", v-props-group: "documentsPage.group", v-props-fragment: "documentsPage.fragment"}
     %loading{ng-if: "fetchDocumentsExecuting"}
