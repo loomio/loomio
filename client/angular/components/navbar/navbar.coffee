@@ -6,7 +6,7 @@ ModalService   = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'navbar', ['$rootScope', ($rootScope) ->
   scope: {}
   restrict: 'E'
-  templateUrl: 'generated/components/navbar/navbar.html'
+  template: require('./navbar.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.logo = ->

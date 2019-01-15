@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service'
 
 angular.module('loomioApp').directive 'pollCommonUndecidedUser', ->
   scope: {user: '=', poll: '='}
-  templateUrl: 'generated/components/poll/common/undecided/user/poll_common_undecided_user.html'
+  template: require('./poll_common_undecided_user.haml')
   controller: ['$scope', ($scope) ->
     $scope.canAdministerPoll = ->
       AbilityService.canAdministerPoll($scope.poll)

@@ -6,7 +6,7 @@ ModalService   = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'subgroupsCard', ['$rootScope', ($rootScope) ->
   scope: {group: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/group_page/subgroups_card/subgroups_card.html'
+  template: require('./subgroups_card.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.show = ->

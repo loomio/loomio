@@ -5,7 +5,7 @@ I18n           = require 'shared/services/i18n'
 { submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'MoveThreadForm', ->
-  templateUrl: 'generated/components/move_thread_form/move_thread_form.html'
+  template: require('./move_thread_form.haml')
   controller: ['$scope', 'discussion', ($scope, discussion) ->
     $scope.discussion = discussion.clone()
 

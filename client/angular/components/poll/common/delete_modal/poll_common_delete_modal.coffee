@@ -3,7 +3,7 @@ LmoUrlService = require 'shared/services/lmo_url_service'
 { submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'PollCommonDeleteModal', ->
-  templateUrl: 'generated/components/poll/common/delete_modal/poll_common_delete_modal.html'
+  template: require('./poll_common_delete_modal.haml')
   controller: ['$scope', 'poll', ($scope, poll) ->
     $scope.poll = poll
 

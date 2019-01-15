@@ -4,7 +4,7 @@ LmoUrlService = require 'shared/services/lmo_url_service'
 { applySequence } = require 'shared/helpers/apply'
 
 angular.module('loomioApp').factory 'GroupModal', ->
-  templateUrl: 'generated/components/group/modal/group_modal.html'
+  template: require('./group_modal.haml')
   controller: ['$scope', 'group', ($scope, group) ->
     $scope.group = group.clone()
 

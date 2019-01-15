@@ -3,7 +3,7 @@ ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'documentManagement', ->
   scope: {group: '=', fragment: '=', filter: '@', header: '@'}
-  templateUrl: 'generated/components/document/management/document_management.html'
+  template: require('./document_management.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.documents = ->

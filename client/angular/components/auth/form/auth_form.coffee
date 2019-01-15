@@ -5,7 +5,7 @@ AppConfig               = require 'shared/services/app_config'
 
 angular.module('loomioApp').directive 'authForm', ->
   scope: {preventClose: '=', user: '='}
-  templateUrl: 'generated/components/auth/form/auth_form.html'
+  template: require('./auth_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.emailLogin = AppConfig.features.app.email_login
     $scope.siteName = AppConfig.theme.site_name

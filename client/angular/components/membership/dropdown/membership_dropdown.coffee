@@ -8,7 +8,7 @@ I18n           = require 'shared/services/i18n'
 angular.module('loomioApp').directive 'membershipDropdown', ->
   scope: {membership: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/membership/dropdown/membership_dropdown.html'
+  template: require('./membership_dropdown.haml')
   controller: ['$scope', ($scope) ->
     $scope.canPerformAction = ->
       $scope.canSetTitle()         or

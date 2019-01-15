@@ -4,7 +4,7 @@ RecordLoader = require 'shared/services/record_loader'
 
 angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ->
   scope: {stance: '='}
-  templateUrl: 'generated/components/poll/dot_vote/votes_panel_stance/poll_dot_vote_votes_panel_stance.html'
+  template: require('./poll_dot_vote_votes_panel_stance.haml')
   controller: ['$scope', ($scope) ->
     $scope.barTextFor = (choice) ->
       "#{choice.score} - #{choice.pollOption().name}".replace(/\s/g, '\u00a0')

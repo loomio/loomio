@@ -5,7 +5,7 @@ LmoUrlService = require 'shared/services/lmo_url_service'
 { submitOnEnter }      = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').factory 'RegisteredAppForm', ->
-  templateUrl: 'generated/components/registered_app_form/registered_app_form.html'
+  template: require('./registered_app_form.haml')
   controller: ['$scope', '$element', 'application', ($scope, $element, application) ->
     $scope.application = application.clone()
 

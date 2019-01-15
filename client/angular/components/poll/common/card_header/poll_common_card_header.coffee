@@ -4,7 +4,7 @@ AbilityService = require 'shared/services/ability_service'
 
 angular.module('loomioApp').directive 'pollCommonCardHeader', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/card_header/poll_common_card_header.html'
+  template: require('./poll_common_card_header.haml')
   controller: ['$scope', ($scope) ->
     $scope.pollHasActions = ->
       AbilityService.canEditPoll($scope.poll)  ||

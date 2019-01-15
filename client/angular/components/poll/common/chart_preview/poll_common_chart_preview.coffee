@@ -4,7 +4,7 @@ Session = require 'shared/services/session'
 
 angular.module('loomioApp').directive 'pollCommonChartPreview', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/chart_preview/poll_common_chart_preview.html'
+  template: require('./poll_common_chart_preview.haml')
   controller: ['$scope', ($scope) ->
     $scope.chartType = ->
       fieldFromTemplate($scope.poll.pollType, 'chart_type')

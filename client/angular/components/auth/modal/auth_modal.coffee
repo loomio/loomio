@@ -4,7 +4,7 @@ EventBus    = require 'shared/services/event_bus'
 AuthService = require 'shared/services/auth_service'
 
 angular.module('loomioApp').factory 'AuthModal', ->
-  templateUrl: 'generated/components/auth/modal/auth_modal.html'
+  template: require('./auth_modal.haml')
   controller: ['$scope', 'preventClose', ($scope, preventClose) ->
     $scope.siteName = AppConfig.theme.site_name
     $scope.user = AuthService.applyEmailStatus Records.users.build(), AppConfig.pendingIdentity

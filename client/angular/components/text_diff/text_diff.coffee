@@ -4,7 +4,7 @@
 angular.module('loomioApp').directive 'textDiff', ->
   scope: {before: '=', after: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/text_diff/text_diff.html'
+  template: require('./text_diff.haml')
   controller: ['$scope', ($scope) ->
     $scope.diff = ->
       compileDiffHtml($scope.before, $scope.after)

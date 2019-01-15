@@ -7,7 +7,7 @@ I18n        = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'authEmailForm', ->
   scope: {user: '='}
-  templateUrl: 'generated/components/auth/email_form/auth_email_form.html'
+  template: require('./auth_email_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.email = $scope.user.email
 

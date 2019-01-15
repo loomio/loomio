@@ -1,6 +1,6 @@
 angular.module('loomioApp').directive 'pollCommonCollapsed', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/collapsed/poll_common_collapsed.html'
+  template: require('./poll_common_collapsed.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.formattedPollType = (type) ->

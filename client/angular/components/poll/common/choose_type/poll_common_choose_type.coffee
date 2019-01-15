@@ -5,7 +5,7 @@ EventBus  = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollCommonChooseType', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/choose_type/poll_common_choose_type.html'
+  template: require('./poll_common_choose_type.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.choose = (type) ->

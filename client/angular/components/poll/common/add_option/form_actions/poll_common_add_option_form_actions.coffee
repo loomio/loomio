@@ -4,7 +4,7 @@ EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollCommonAddOptionFormActions', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/add_option/form_actions/poll_common_add_option_form_actions.html'
+  template: require('./poll_common_add_option_form_actions.haml')
   replace: true
   controller: ['$scope', '$rootScope', ($scope, $rootScope) ->
     $scope.submit = submitPoll $scope, $scope.poll,

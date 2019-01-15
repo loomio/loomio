@@ -4,7 +4,7 @@ ModalService = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'documentCard', ->
   scope: {group: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/document/card/document_card.html'
+  template: require('./document_card.haml')
   controller: ['$scope', ($scope) ->
     $scope.init = ->
       Records.documents.fetchByGroup($scope.group, null, per: 3).then (data) ->

@@ -1,6 +1,6 @@
 angular.module('loomioApp').directive 'pollRankedChoiceForm', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/ranked_choice/form/poll_ranked_choice_form.html'
+  template: require('./poll_ranked_choice_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.poll.setMinimumStanceChoices()
   ]

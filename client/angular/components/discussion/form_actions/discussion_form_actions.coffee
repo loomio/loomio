@@ -8,7 +8,7 @@ LmoUrlService = require 'shared/services/lmo_url_service'
 angular.module('loomioApp').directive 'discussionFormActions', ->
   scope: {discussion: '='}
   replace: true
-  templateUrl: 'generated/components/discussion/form_actions/discussion_form_actions.html'
+  template: require('./discussion_form_actions.haml')
   controller: ['$scope', ($scope) ->
     $scope.submit = submitDiscussion $scope, $scope.discussion
     submitOnEnter $scope

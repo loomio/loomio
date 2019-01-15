@@ -7,7 +7,7 @@ I18n      = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'documentUrlForm', ->
   scope: {document: '='}
-  templateUrl: 'generated/components/document/url_form/document_url_form.html'
+  template: require('./document_url_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.model = Records.discussions.build()
 

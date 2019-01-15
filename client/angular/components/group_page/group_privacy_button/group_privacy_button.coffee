@@ -4,7 +4,7 @@ I18n = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'groupPrivacyButton', ->
   restrict: 'E'
-  templateUrl: 'generated/components/group_page/group_privacy_button/group_privacy_button.html'
+  template: require('./group_privacy_button.haml')
   replace: true
   scope: {group: '='}
   controller: ['$scope', ($scope) ->

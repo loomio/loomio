@@ -3,7 +3,7 @@ EventBus = require 'shared/services/event_bus'
 { listenForLoading } = require 'shared/helpers/listen'
 
 angular.module('loomioApp').factory 'DocumentModal', ['$timeout', ($timeout) ->
-  templateUrl: 'generated/components/document/modal/document_modal.html'
+  template: require('./document_modal.haml')
   controller: ['$scope', 'doc', ($scope, doc) ->
     $scope.document = doc.clone()
     listenForLoading $scope

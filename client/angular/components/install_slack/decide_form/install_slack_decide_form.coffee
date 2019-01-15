@@ -5,7 +5,7 @@ Records   = require 'shared/services/records'
 
 angular.module('loomioApp').directive 'installSlackDecideForm', ->
   scope: {group: '='}
-  templateUrl: 'generated/components/install_slack/decide_form/install_slack_decide_form.html'
+  template: require('./install_slack_decide_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.poll = Records.polls.build groupId: $scope.group.id
     applyPollStartSequence $scope,

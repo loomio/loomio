@@ -3,7 +3,7 @@ I18n    = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'pollProposalChartPanel', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/proposal/chart_panel/poll_proposal_chart_panel.html'
+  template: require('./poll_proposal_chart_panel.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.pollOptionNames = ->

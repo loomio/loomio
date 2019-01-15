@@ -1,5 +1,5 @@
 angular.module('loomioApp').factory 'MembershipModal', ->
-  templateUrl: 'generated/components/membership/modal/membership_modal.html'
+  template: require('./membership_modal.haml')
   controller: ['$scope', 'membership', ($scope, membership) ->
     $scope.membership = membership.clone()
   ]

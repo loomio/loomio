@@ -8,7 +8,7 @@ Records        = require 'shared/services/records'
 angular.module('loomioApp').directive 'membershipCard', ->
   scope: {group: '=', pending: "=?"}
   restrict: 'E'
-  templateUrl: 'generated/components/membership/card/membership_card.html'
+  template: require('./membership_card.haml')
   replace: false
   controller: ['$scope', ($scope) ->
     $scope.vars = {}

@@ -4,7 +4,7 @@ FlashService = require 'shared/services/flash_service'
 
 angular.module('loomioApp').directive 'flash', ['$interval', ($interval) ->
   restrict: 'E'
-  templateUrl: 'generated/components/flash/flash.html'
+  template: require('./flash.haml')
   replace: true
   controllerAs: 'flash'
   controller: ['$scope', ($scope) ->

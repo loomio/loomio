@@ -6,7 +6,7 @@ EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
   scope: {stance: '='}
-  templateUrl: 'generated/components/poll/dot_vote/vote_form/poll_dot_vote_vote_form.html'
+  template: require('./poll_dot_vote_vote_form.haml')
   controller: ['$scope', '$element', ($scope, $element) ->
     $scope.vars = {}
 

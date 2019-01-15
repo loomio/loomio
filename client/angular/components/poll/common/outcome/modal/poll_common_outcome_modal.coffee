@@ -3,7 +3,7 @@ Records = require 'shared/services/records'
 { applySequence } = require 'shared/helpers/apply'
 
 angular.module('loomioApp').factory 'PollCommonOutcomeModal', ->
-  templateUrl: 'generated/components/poll/common/outcome/modal/poll_common_outcome_modal.html'
+  template: require('./poll_common_outcome_modal.haml')
   controller: ['$scope', 'outcome', ($scope, outcome) ->
     $scope.outcome = outcome.clone()
 

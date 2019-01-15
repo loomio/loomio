@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'tagDisplay', ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
-  templateUrl: 'generated/components/tag_display/tag_display.html'
+  template: require('./tag_display.haml')
   controller: ['$scope', ($scope) ->
     $scope.anyTags = ->
       _.some $scope.discussionTags()

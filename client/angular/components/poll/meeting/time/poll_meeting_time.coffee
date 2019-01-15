@@ -3,7 +3,7 @@ TimeService = require 'shared/services/time_service'
 angular.module('loomioApp').directive 'pollMeetingTime', ->
   scope: {name: '=', zone: '='}
   replace: true
-  templateUrl: "generated/components/poll/meeting/time/poll_meeting_time.html"
+  template: require('./poll_meeting_time.haml')
   controller: ['$scope', ($scope) ->
     $scope.sameYear    = TimeService.sameYear
     $scope.displayYear  = TimeService.displayYear

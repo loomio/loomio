@@ -1,6 +1,11 @@
-window.Vue     = require('vue')
-window.VueI18n = require('vue-i18n')
-window.Vuex    = require('vuex')
+# Vue     = require('vue')
+# VueI18n = require('vue-i18n')
+# Vuex    = require('vuex')
+# Vuetify = require('vuetify')
+import Vue from 'vue'
+import VueI18n from 'vue-i18n'
+import Vuex from 'vuex'
+import Vuetify from 'vuetify'
 
 require('vue/directives/marked')
 

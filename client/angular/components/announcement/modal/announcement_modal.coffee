@@ -1,5 +1,5 @@
 angular.module('loomioApp').factory 'AnnouncementModal', ->
-  templateUrl: 'generated/components/announcement/modal/announcement_modal.html'
+  template: require('./announcement_modal.haml')
   controller: ['$scope', 'announcement', ($scope, announcement) ->
     $scope.announcement = announcement
   ]

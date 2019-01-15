@@ -4,7 +4,7 @@ I18n = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'discussionPrivacyIcon', ->
   scope: {discussion: '=', private: '=?'}
-  templateUrl: 'generated/components/discussion/privacy_icon/discussion_privacy_icon.html'
+  template: require('./discussion_privacy_icon.haml')
   controller: ['$scope', ($scope) ->
     $scope.private = $scope.discussion.private if typeof $scope.private == 'undefined'
 

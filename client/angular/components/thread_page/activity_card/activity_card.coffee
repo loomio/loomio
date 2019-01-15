@@ -10,7 +10,7 @@ ModalService             = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'activityCard', ['$mdDialog', ($mdDialog) ->
   scope: {discussion: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
+  template: require('./activity_card.haml')
   controller: ['$scope', ($scope) ->
     $scope.debug = -> window.Loomio.debug
 

@@ -3,7 +3,7 @@ EventBus  = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollMeetingForm', ->
   scope: {poll: '=', back: '=?'}
-  templateUrl: 'generated/components/poll/meeting/form/poll_meeting_form.html'
+  template: require('./poll_meeting_form.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.removeOption = (name) ->

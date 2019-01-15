@@ -4,7 +4,7 @@ Records = require 'shared/services/records'
 { submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'ChangePasswordForm', ->
-  templateUrl: 'generated/components/change_password_form/change_password_form.html'
+  template: require('./change_password_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.user = Session.user().clone()
 

@@ -3,7 +3,7 @@ ModalService   = require 'shared/services/modal_service'
 LmoUrlService  = require 'shared/services/lmo_url_service'
 angular.module('loomioApp').directive 'pollCommonActionsDropdown', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/actions_dropdown/poll_common_actions_dropdown.html'
+  template: require('./poll_common_actions_dropdown.haml')
   controller: ['$scope', ($scope) ->
     $scope.canEditPoll = ->
       AbilityService.canEditPoll($scope.poll)

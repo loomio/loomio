@@ -9,7 +9,7 @@ moment = require 'moment'
 angular.module('loomioApp').directive 'groupProgressCard', ->
   scope: { group: '=?', discussion: '=?' }
   restrict: 'E'
-  templateUrl: 'generated/components/group_progress_card/group_progress_card.html'
+  template: require('./group_progress_card.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.group = $scope.group || $scope.discussion.group()

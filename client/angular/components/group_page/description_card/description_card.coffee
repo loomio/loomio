@@ -7,7 +7,7 @@ ModalService   = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'descriptionCard', ->
   scope: {group: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/group_page/description_card/description_card.html'
+  template: require('./description_card.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.actions = [

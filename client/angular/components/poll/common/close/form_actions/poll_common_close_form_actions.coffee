@@ -4,7 +4,7 @@ EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollCommonCloseFormActions', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/close/form_actions/poll_common_close_form_actions.html'
+  template: require('./poll_common_close_form_actions.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.submit = submitForm $scope, $scope.poll,

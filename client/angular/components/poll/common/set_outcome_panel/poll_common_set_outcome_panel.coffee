@@ -4,7 +4,7 @@ ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'pollCommonSetOutcomePanel', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/set_outcome_panel/poll_common_set_outcome_panel.html'
+  template: require('./poll_common_set_outcome_panel.haml')
   controller: ['$scope', ($scope) ->
     $scope.showPanel = ->
       !$scope.poll.outcome() and AbilityService.canSetPollOutcome($scope.poll)

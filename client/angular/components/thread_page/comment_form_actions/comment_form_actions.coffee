@@ -3,4 +3,4 @@
 angular.module('loomioApp').directive 'commentFormActions', ->
   scope: {comment: '=', submit: '='}
   replace: true
-  templateUrl: 'generated/components/thread_page/comment_form_actions/comment_form_actions.html'
+  template: require('./comment_form_actions.haml')

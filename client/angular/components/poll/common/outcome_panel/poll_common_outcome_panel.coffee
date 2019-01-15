@@ -7,7 +7,7 @@ ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'pollCommonOutcomePanel', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/outcome_panel/poll_common_outcome_panel.html'
+  template: require('./poll_common_outcome_panel.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.actions = [

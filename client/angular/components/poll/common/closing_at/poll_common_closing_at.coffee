@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'pollCommonClosingAt', ->
   scope: {poll: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/poll/common/closing_at/poll_common_closing_at.html'
+  template: require('./poll_common_closing_at.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.time = ->

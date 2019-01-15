@@ -7,7 +7,7 @@ ModalService   = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'pollCreated', ->
   scope: {eventable: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/thread_page/thread_item/outcome_created.html'
+  template: require('./outcome_created.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.actions = [

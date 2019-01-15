@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'reactionsInput', ->
   scope: {model: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/reactions/input/reactions_input.html'
+  template: require('./reactions_input.haml')
   replace: true

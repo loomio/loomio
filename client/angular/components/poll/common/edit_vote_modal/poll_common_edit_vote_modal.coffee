@@ -5,7 +5,7 @@ EventBus = require 'shared/services/event_bus'
 { submitStance }  = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'PollCommonEditVoteModal', ['$rootScope', ($rootScope) ->
-  templateUrl: 'generated/components/poll/common/edit_vote_modal/poll_common_edit_vote_modal.html'
+  template: require('./poll_common_edit_vote_modal.haml')
   controller: ['$scope', 'stance', ($scope, stance) ->
     $scope.isEditing = true
     $scope.stance = stance.clone()

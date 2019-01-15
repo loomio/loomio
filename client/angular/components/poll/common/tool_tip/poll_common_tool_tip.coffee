@@ -4,7 +4,7 @@ Records   = require 'shared/services/records'
 
 angular.module('loomioApp').directive 'pollCommonToolTip', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/tool_tip/poll_common_tool_tip.html'
+  template: require('./poll_common_tool_tip.haml')
   controller: ['$scope', ($scope) ->
     $scope.showHelpLink = AppConfig.features.app.help_link
     experienceKey = $scope.poll.pollType+"_tool_tip"

@@ -6,7 +6,7 @@ EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'documentTitleForm', ->
   scope: {document: '='}
-  templateUrl: 'generated/components/document/title_form/document_title_form.html'
+  template: require('./document_title_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.submit = submitForm $scope, $scope.document,
       flashSuccess: "document.flash.success"

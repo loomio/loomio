@@ -2,7 +2,7 @@ EventBus     = require 'shared/services/event_bus'
 FlashService = require 'shared/services/flash_service'
 
 angular.module('loomioApp').factory 'RemoveAppForm', ['$rootScope', ($rootScope) ->
-  templateUrl: 'generated/components/remove_app_form/remove_app_form.html'
+  template: require('./remove_app_form.haml')
   controller: ['$scope', 'applcation', ($scope, application) ->
     $scope.application = application
 

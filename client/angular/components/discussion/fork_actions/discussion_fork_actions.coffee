@@ -3,7 +3,7 @@ ModalService = require 'shared/services/modal_service.coffee'
 
 angular.module('loomioApp').directive 'discussionForkActions', ->
   scope: {discussion: '='}
-  templateUrl: 'generated/components/discussion/fork_actions/discussion_fork_actions.html'
+  template: require('./discussion_fork_actions.haml')
   controller: ['$scope', ($scope) ->
     $scope.submit = ->
       ModalService.open 'DiscussionStartModal', discussion: ->

@@ -9,7 +9,7 @@ I18n      = require 'shared/services/i18n'
 angular.module('loomioApp').directive 'emojiPicker', ['$timeout', ($timeout)->
   scope: {reaction: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/emoji_picker/emoji_picker.html'
+  template: require('./emoji_picker.haml')
   controller: ['$scope', ($scope) ->
     $scope.render = emojione.shortnameToImage
 

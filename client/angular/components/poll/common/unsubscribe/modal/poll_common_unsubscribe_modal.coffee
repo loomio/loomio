@@ -1,5 +1,5 @@
 angular.module('loomioApp').factory 'PollCommonUnsubscribeModal', ->
-  templateUrl: 'generated/components/poll/common/unsubscribe/modal/poll_common_unsubscribe_modal.html'
+  template: require('./poll_common_unsubscribe_modal.haml')
   controller: ['$scope', 'poll', ($scope, poll) ->
     $scope.poll = poll
   ]

@@ -8,7 +8,7 @@ ModalService   = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'joinGroupButton', ['$rootScope', ($rootScope) ->
   scope: {group: '=', block: '=?'}
   restrict: 'E'
-  templateUrl: 'generated/components/group_page/join_group_button/join_group_button.html'
+  template: require('./join_group_button.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     Records.membershipRequests.fetchMyPendingByGroup($scope.group.key)

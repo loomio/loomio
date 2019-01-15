@@ -6,7 +6,7 @@ EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollCommonReopenFormActions', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/reopen/form_actions/poll_common_reopen_form_actions.html'
+  template: require('./poll_common_reopen_form_actions.haml')
   controller: ['$scope', ($scope) ->
     $scope.poll.closingAt = moment().add(1, 'day')
 

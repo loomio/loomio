@@ -4,7 +4,7 @@ AbilityService = require 'shared/services/ability_service'
 angular.module('loomioApp').directive 'membershipRequestsCard', ->
   scope: {group: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/group_page/membership_requests_card/membership_requests_card.html'
+  template: require('./membership_requests_card.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.canManageMembershipRequests = ->

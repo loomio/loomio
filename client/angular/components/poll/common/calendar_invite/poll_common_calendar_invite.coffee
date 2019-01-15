@@ -3,7 +3,7 @@ TimeService = require 'shared/services/time_service'
 
 angular.module('loomioApp').directive 'pollCommonCalendarInvite', ->
   scope: {outcome: '='}
-  templateUrl: 'generated/components/poll/common/calendar_invite/poll_common_calendar_invite.html'
+  template: require('./poll_common_calendar_invite.haml')
   controller: ['$scope', ($scope) ->
 
     $scope.options = _.map $scope.outcome.poll().pollOptions(), (option) ->

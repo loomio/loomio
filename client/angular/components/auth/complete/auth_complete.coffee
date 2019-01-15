@@ -8,7 +8,7 @@ I18n     = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'authComplete', ->
   scope: {user: '='}
-  templateUrl: 'generated/components/auth/complete/auth_complete.html'
+  template: require('./auth_complete.haml')
   controller: ['$scope', ($scope) ->
     $scope.session = Records.sessions.build(email: $scope.user.email)
     $scope.attempts = 0

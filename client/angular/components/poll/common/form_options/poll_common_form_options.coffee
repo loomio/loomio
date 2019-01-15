@@ -7,7 +7,7 @@ EventBus       = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollCommonFormOptions', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/form_options/poll_common_form_options.html'
+  template: require('./poll_common_form_options.haml')
   controller: ['$scope', ($scope) ->
     $scope.currentZone = ->
       Session.user().timeZone

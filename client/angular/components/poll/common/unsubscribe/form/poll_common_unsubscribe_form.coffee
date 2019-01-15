@@ -2,7 +2,7 @@
 
 angular.module('loomioApp').directive 'pollCommonUnsubscribeForm', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/unsubscribe/form/poll_common_unsubscribe_form.html'
+  template: require('./poll_common_unsubscribe_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.toggle = submitForm $scope, $scope.poll,
       submitFn: $scope.poll.toggleSubscription

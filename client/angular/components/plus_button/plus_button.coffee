@@ -3,7 +3,7 @@ Records = require 'shared/services/records'
 angular.module('loomioApp').directive 'plusButton', ->
   scope: {click: '=', message: '@'}
   restrict: 'E'
-  templateUrl: 'generated/components/plus_button/plus_button.html'
+  template: require('./plus_button.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.plusUser = Records.users.build(avatarKind: 'mdi-plus')

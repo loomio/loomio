@@ -3,7 +3,7 @@ Records   = require 'shared/services/records'
 
 angular.module('loomioApp').directive 'pollCommonRankedChoiceChart', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/common/ranked_choice_chart/poll_common_ranked_choice_chart.html'
+  template: require('./poll_common_ranked_choice_chart.haml')
   controller: ['$scope', ($scope) ->
     $scope.countFor = (option) ->
       ($scope.poll.stanceData or {})[option.name] or 0

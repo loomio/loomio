@@ -6,7 +6,7 @@ ModalService   = require 'shared/services/modal_service'
 angular.module('loomioApp').directive 'groupTheme', ['$rootScope', ($rootScope) ->
   scope: {group: '=', homePage: '=', compact: '=', discussion: '=?'}
   restrict: 'E'
-  templateUrl: 'generated/components/group_page/group_theme/group_theme.html'
+  template: require('./group_theme.haml')
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.logoStyle = ->

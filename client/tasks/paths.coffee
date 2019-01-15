@@ -23,11 +23,12 @@ module.exports =
         glob.sync('angular/components/**/*.coffee'),
         _.map(include(plugins, 'coffee'), (path) -> "../../#{path}")
       ])
-      templates:   _.flatten([
-        'angular/components/**/*.haml',
-        'angular/pages/**/*.haml',
-        include(plugins, 'haml')
-      ])
+      templates: ['angular/pages/**/*.haml']
+      # templates:   _.flatten([
+      #   'angular/components/**/*.haml',
+      #   'angular/pages/**/*.haml',
+      #   include(plugins, 'haml')
+      # ])
     dependencies:
       folder:     'angular/dependencies'
       vendor:     'angular/dependencies/vendor.coffee'

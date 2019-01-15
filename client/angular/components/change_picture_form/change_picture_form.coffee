@@ -5,7 +5,7 @@ EventBus = require 'shared/services/event_bus'
 { submitForm, uploadForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'ChangePictureForm', ['$rootScope', '$timeout', ($rootScope, $timeout) ->
-  templateUrl: 'generated/components/change_picture_form/change_picture_form.html'
+  template: require('./change_picture_form.haml')
   controller: ['$scope', '$element', ($scope, $element) ->
     $scope.user = Session.user().clone()
 

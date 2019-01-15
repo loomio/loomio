@@ -8,7 +8,7 @@ I18n        = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'authIdentityForm', ->
   scope: {user: '=', identity: '='}
-  templateUrl: 'generated/components/auth/identity_form/auth_identity_form.html'
+  template: require('./auth_identity_form.haml')
   controller: ['$scope', ($scope) ->
     $scope.siteName = AppConfig.theme.site_name
     $scope.createAccount = -> $scope.user.createAccount = true

@@ -4,7 +4,7 @@ ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'installSlackCard', ->
   scope: {group: '='}
-  templateUrl: 'generated/components/install_slack/card/install_slack_card.html'
+  template: require('./install_slack_card.haml')
   controller: ['$scope', ($scope) ->
     $scope.show = ->
       AbilityService.canAdministerGroup($scope.group) &&

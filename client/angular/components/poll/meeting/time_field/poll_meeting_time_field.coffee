@@ -2,7 +2,7 @@ TimeService = require 'shared/services/time_service'
 
 angular.module('loomioApp').directive 'pollMeetingTimeField', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/meeting/time_field/poll_meeting_time_field.html'
+  template: require('./poll_meeting_time_field.haml')
   controller: ['$scope', ($scope) ->
     $scope.dateToday = moment().format('YYYY-MM-DD')
     $scope.times = TimeService.timesOfDay()

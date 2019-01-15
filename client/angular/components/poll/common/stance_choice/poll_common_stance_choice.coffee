@@ -2,7 +2,7 @@
 
 angular.module('loomioApp').directive 'pollCommonStanceChoice', ->
   scope: {stanceChoice: '='}
-  templateUrl: 'generated/components/poll/common/stance_choice/poll_common_stance_choice.html'
+  template: require('./poll_common_stance_choice.haml')
   controller: ['$scope', ($scope) ->
     $scope.translateOptionName = ->
       return unless $scope.stanceChoice.poll()
