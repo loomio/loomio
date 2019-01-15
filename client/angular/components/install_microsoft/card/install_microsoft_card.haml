@@ -4,7 +4,7 @@
   .lmo-flex
     %img.install-slack-card__logo{src: "/img/microsoft-icon-color.svg"}
     .install-microsoft-card__info.lmo-flex.lmo-flex--column.lmo-flex{ng-if: "groupIdentity()"}
-      %p.lmo-hint-text{translate: "install_microsoft.card.installed_helptext"}
+      .lmo-hint-text{translate: "install_microsoft.card.installed_helptext"}
       %a.lmo-pointer{ng-if: "canRemoveIdentity()", ng-click: "remove()", translate: "install_microsoft.card.remove_identity"}
     %p.install-slack-card__helptext.lmo-hint-text{ng-if: "!groupIdentity()", translate: "install_microsoft.card.install_helptext"}
   .lmo-md-actions
