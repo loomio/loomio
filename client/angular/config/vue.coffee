@@ -87,6 +87,7 @@ components =
   SubgroupsCard: require 'vue/components/subgroups_card/subgroups_card.coffee'
   CurrentPollsCard: require 'vue/components/current_polls_card/current_polls_card.coffee'
   DocumentCard: require 'vue/components/document_card/document_card.coffee'
+  MembershipRequestsCard: require 'vue/components/membership_requests_card/membership_requests_card.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))

@@ -10,7 +10,7 @@
       .lmo-group-column-right
         %outlet{name: "before-group-page-column-right", model: "groupPage.group"}
         %vue-component{name: "CurrentPollsCard", v-props-model: "groupPage.group"}
-        %membership_requests_card{group: "groupPage.group"}
+        %vue-component{name: "MembershipRequestsCard", v-props-group: "groupPage.group"}
         %vue-component{name: "MembershipCard", v-props-group: "groupPage.group"}
         %vue-component{name: "MembershipCard", v-props-group: "groupPage.group", v-props-pending: "true"}
         %vue-component{name: "SubgroupsCard", v-props-group: "groupPage.group"}
