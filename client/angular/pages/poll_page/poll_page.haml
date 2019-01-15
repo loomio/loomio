@@ -6,5 +6,4 @@
     .poll-page__main-content
       %vue-component{name: "MembershipCard", v-props-group: "pollPage.poll.guestGroup()"}
       %vue-component{name: "MembershipCard", v-props-group: "pollPage.poll.guestGroup()", v-props-pending: "true"}
-      -# %poll_common_card.lmo-card--no-padding.lmo-column-left{poll: "pollPage.poll"}
       %vue-component.lmo-card--no-padding.lmo-column-left{name: "PollCommonCard", v-props-poll: "pollPage.poll"}

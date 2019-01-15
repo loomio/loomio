@@ -27,6 +27,7 @@ module.exports =
       params:
         poll_id: @poll.key
         order: @fix.votesOrder
+    @loader.fetchRecords()
     EventBus.listen @, 'refreshStance', =>
       @loader.fetchRecords()
   methods:
@@ -37,7 +38,6 @@ module.exports =
       @loader.numLoaded < @poll.stancesCount
 
     stances: ->
-      console.log @loader.numLoaded
       @poll.latestStances(sortFn[@fix.votesOrder], @loader.numLoaded)
 
     changeOrder: ->
@@ -54,9 +54,8 @@ module.exports =
         </select>
       </div>
       <div v-if="!hasSomeVotes()" v-t="'poll_common_votes_panel.no_votes_yet'" class="poll-common-votes-panel__no-votes"></div>
-      {{stances()}}
       <div v-if="hasSomeVotes()" class="poll-common-votes-panel__has-votes">
-        <poll-common-directive :stance="stance" name="votes-panel-stance" v-for="stance in stances() :key="stance.id"></poll-common-directive>
+        <poll-common-directive :stance="stance" name="votes-panel-stance" v-for="stance in stances()" :key="stance.id"></poll-common-directive>
         <button v-if="moreToLoad()" v-t="'common.action.load_more'" @click="loader.loadMore()"></button>
       </div>
       <poll-common-undecided-panel :poll="poll"></poll-common-undecided-panel>

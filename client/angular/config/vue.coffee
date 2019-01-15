@@ -99,6 +99,8 @@ components =
   JoinGroupButton: require 'vue/components/group_page/join_group_button/join_group_button.coffee'
   GroupActionsDropdown: require 'vue/components/group_page/group_actions_dropdown/group_actions_dropdown.coffee'
   GroupPrivacyButton: require 'vue/components/group_page/group_privacy_button/group_privacy_button.coffee'
+  PollCountStanceChoice: require 'vue/components/poll_count_stance_choice/poll_count_stance_choice.coffee'
+  PollCommonStanceIcon: require 'vue/components/poll_common_stance_icon/poll_common_stance_icon.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
