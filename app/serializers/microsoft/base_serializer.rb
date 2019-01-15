@@ -40,7 +40,7 @@ class Microsoft::BaseSerializer < ActiveModel::Serializer
   end
 
   def section_image
-    user_avatar_url(user)
+    user.absolute_avatar_url
   end
 
   def section_facts

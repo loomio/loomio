@@ -1,5 +1,6 @@
 module HasAvatar
   include AvatarInitials
+  include Routing
   extend ActiveSupport::Concern
 
   AVATAR_SIZES = {
@@ -36,6 +37,17 @@ module HasAvatar
     case avatar_kind.to_sym
     when :gravatar then gravatar_url(size: AVATAR_SIZES[size])
     when :uploaded then uploaded_avatar.url(size)
+    end
+  end
+
+  def absolute_avatar_url(size = :medium)
+    url = avatar_url(size)
+    if url =~ /https:\/\//
+      url
+    elsif url
+      [root_url(default_url_options).chomp('/'), url].join
+    else
+      User.helper_bot.absolute_avatar_url
     end
   end
 
