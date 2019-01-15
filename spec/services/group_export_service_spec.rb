@@ -32,12 +32,11 @@ describe GroupExportService do
 
   describe 'export and import' do
     it 'can export a group' do
-      filename = GroupExportService.export_filename_for(group)
-      GroupExportService.export(group.all_groups, filename)
-      puts "exported: #{filename}"
+      filename = GroupExportService.export(group.all_groups, group.name)
+      # puts "exported: #{filename}"
       [Group, Membership, User, Discussion, Comment, Poll, PollOption, Stance, StanceChoice,
        Reaction, Event, Notification, Document, DiscussionReader].each {|model| model.delete_all }
-      puts "importing: #{filename}"
+      # puts "importing: #{filename}"
       GroupExportService.import(filename)
       expect { another_group.reload }.to raise_error { ActiveRecord::RecordNotFound }
       expect(subgroup.reload).to be_present

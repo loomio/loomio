@@ -19,6 +19,7 @@
 
     %link{rel: "stylesheet", href: client_asset_path(:"angular.min.css")}
     %link{rel: 'manifest',   href: '/manifest.json'}
+    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
 
     = action_cable_meta_tag
 
@@ -39,7 +40,7 @@
           %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
           %powered_by{'ng-if' => '!refreshing && !pageError'}
 
-    %script{src: '/client/webpack/app.bundle.js'} 
+    %script{src: '/client/webpack/app.bundle.js'}
     -# bundle_asset_path(:"angular.bundle.min.js")}
 
     = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]

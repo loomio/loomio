@@ -1,7 +1,3 @@
-# Vue     = require('vue')
-# VueI18n = require('vue-i18n')
-# Vuex    = require('vuex')
-# Vuetify = require('vuetify')
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import Vuex from 'vuex'
@@ -13,6 +9,7 @@ Records       = require 'shared/services/records'
 
 Vue.use(VueI18n)
 Vue.use(Vuex)
+Vue.use(Vuetify)
 
 
 store = require('vue/store/main.coffee')

@@ -48,6 +48,12 @@ RSpec.configure do |config|
 
   config.before(:each) do
 
+    stub_request(:get, /\.chargifypay.com/).
+      to_return(status: 200, body: '{"subscription":{"product":{"handle":"test-handle"}}}', headers: {})
+    stub_request(:put, /\.chargifypay.com/).
+      to_return(status: 200, body: '{"subscription":{"product":{"handle":"test-handle"}}}', headers: {})
+    stub_request(:delete, /\.chargifypay.com/).
+      to_return(status: 200, body: '{"subscription":{"product":{"handle":"test-handle"}}}', headers: {})
     stub_request(:get, /\.chargify.com/).
       to_return(status: 200, body: '{"subscription":{"product":{"handle":"test-handle"}}}', headers: {})
     stub_request(:put, /\.chargify.com/).
