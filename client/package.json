@@ -6,7 +6,8 @@
   "scripts": {
     "test": "gulp test",
     "build": "gulp angular:external; webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "buildwatch": "npm run build && npm run watch"
   },
   "engines": {
     "npm": ">= 2.14.20",

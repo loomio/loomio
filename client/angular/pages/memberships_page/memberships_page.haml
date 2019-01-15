@@ -2,7 +2,7 @@
   %loading{ng-if: "!membershipsPage.group"}
   %main.memberships-page{ng-if: "membershipsPage.group"}
     .lmo-group-theme-padding
-    %group_theme{group: "membershipsPage.group"}
+    %vue-component{name: "GroupTheme", v-props-group: "membershipsPage.group"}
     .lmo-card
       .memberships-page__top-bar.lmo-flex.lmo-flex__space-between.lmo-flex__baseline
         %h2.md-title{translate: "memberships_page.members"}
