@@ -5,6 +5,8 @@ import Vuetify from 'vuetify'
 
 require('vue/directives/marked')
 
+window.Vue = Vue
+
 Records       = require 'shared/services/records'
 
 Vue.use(VueI18n)

@@ -33,7 +33,7 @@ module.exports =
     <div class="poll-common-action-panel">
       <section v-if="!poll.closedAt">
         <div v-if="userHasVoted()" class="md-block">
-          <poll-common-directive :stance="stance" name="change_your_vote"></poll-common-directive>
+          <poll-common-directive :stance="stance" name="change-your-vote"></poll-common-directive>
         </div>
         <div v-show="!userHasVoted()" class="md-block">
           <poll-common-directive v-if="userCanParticipate()" :stance="stance" name="vote-form"></poll-common-directive>

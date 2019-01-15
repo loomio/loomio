@@ -35,7 +35,7 @@ module.exports =
         <poll-common-outcome-panel :poll="poll" v-if="poll.outcome()"></poll-common-outcome-panel>
         <poll-common-details-panel :poll="poll"></poll-common-details-panel>
         <div v-if="showResults()" class="poll-common-card__results-shown">
-          <poll-common-directive :poll="poll" name="chart_panel"></poll-common-directive>
+          <poll-common-directive :poll="poll" name="chart-panel"></poll-common-directive>
           <poll-common-add-option-button :poll="poll"></poll-common-add-option-button>
           <poll-common-percent-voted :poll="poll"></poll-common-percent-voted>
         </div>
