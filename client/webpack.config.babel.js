@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: ['./angular/main.coffee', './angular/css/app.scss'],
+  entry: ['./angular/main.coffee'],
   devtool: 'inline-source-map',
   resolve: {
-    extensions: [ '.js', '.coffee', '.haml', '.scss', '.css'],
+    extensions: [ '.js', '.coffee', '.haml'],
     modules: [path.resolve(__dirname), path.resolve(__dirname, 'node_modules')],
     alias: {
       'vue$': 'vue/dist/vue.esm.js'

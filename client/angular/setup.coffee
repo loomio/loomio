@@ -109,12 +109,12 @@ setupAngularModal = ($rootScope, $injector, $mdDialog) ->
       role:           'dialog'
       backdrop:       'static'
       scope:          buildScope($rootScope, $mdDialog)
-      templateUrl:    modal.templateUrl
+      template:       modal.template
       controller:     modal.controller
       size:           modal.size or ''
       resolve:        resolve
       escapeToClose:  !resolve.preventClose()
-      ariaLabel:      I18n.t(ariaFor(modal))
+      # ariaLabel:      I18n.t(ariaFor(modal))
       onComplete:     focusElement
 
     $mdDialog.show(AppConfig.currentModal)

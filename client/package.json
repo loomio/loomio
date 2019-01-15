@@ -5,7 +5,7 @@
   "main": "gulpfile.coffee",
   "scripts": {
     "test": "gulp test",
-    "build": "gulp angular:external",
+    "build": "gulp angular:external; webpack",
     "watch": "webpack --watch"
   },
   "engines": {
