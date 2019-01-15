@@ -10,7 +10,6 @@ module.exports =
     fragment: Object
     filter: Object
     header: Object
-  data: ->
   methods:
     canAdministerGroup: ->
       AbilityService.canAdministerGroup(@group)
@@ -36,7 +35,7 @@ module.exports =
       _.orderBy @documents, 'createdAt', 'desc'
 
     hasDocuments: ->
-      _.some @documents()
+      _.some @documents
   template:
     """
     <div v-if="hasDocuments" class="document-management">
