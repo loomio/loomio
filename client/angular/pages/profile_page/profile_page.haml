@@ -8,30 +8,30 @@
       %h3.lmo-h3{translate: "profile_page.edit_profile"}
 
       .profile-page__profile-fieldset
-        %user_avatar{user: "profilePage.user", size: "featured"}
+        %vue-component{name: "UserAvatar", v-props-user: "profilePage.user", v-props-size: "'featured'"}
         %md-button.md-accent.md-button--no-h-margin.profile-page__change-picture{ng-click: "profilePage.changePicture()", translate: "profile_page.change_picture_link"}
 
       .profile-page__profile-fieldset
         %md-input-container.md-block
           %label{for: "user-name-field", translate: "profile_page.name_label"}
           %input.profile-page__name-input#user-name-field{ng-required: true, ng-model: "profilePage.user.name"}
-          %validation_errors{subject: "profilePage.user", field: "name"}
+          %vue-component{name: "ValidationErrors", v-props-subject: "profilePage.user", v-props-field: "'name'"}
 
         %md-input-container.md-block
           %label{for: "user-username-field", translate: "profile_page.username_label"}
           %input.profile-page__username-input#user-username-field{ng-required: true, ng-model: "profilePage.user.username"}
           .md-caption{translate: "profile_page.username_helptext"}
-          %validation_errors{subject: "profilePage.user", field: "username"}
+          %vue-component{name: "ValidationErrors", v-props-subject: "profilePage.user", v-props-field: "'username'"}
 
         %md-input-container.md-block
           %label{for: "user-email-field", translate: "profile_page.email_label"}
           %input.profile-page__email-input#user-email-field{ng-required: true, ng-model: "profilePage.user.email"}
-          %validation_errors{subject: "profilePage.user", field: "email"}
+          %vue-component{name: "ValidationErrors", v-props-subject: "profilePage.user", v-props-field: "'email'"}
 
         %md-input-container.md-block
           %label{for: "user-short-bio-field", translate: "profile_page.short_bio_label"}
           %textarea.profile-page__short-bio-input#user-short-bio-field{ng-model: "profilePage.user.shortBio", placeholder: "{{'profile_page.short_bio_placeholder' | translate}}"}
-          %validation_errors{subject: "profilePage.user", field: "shortBio"}
+          %vue-component{name: "ValidationErrors", v-props-subject: "profilePage.user", v-props-field: "'shortBio'"}
 
         %md-input-container.md-block
           %label{for: "user-location-field", translate: "profile_page.location_label"}
@@ -42,7 +42,7 @@
           %md-select.profile-page__language-input#user-locale-field{ng-model: "profilePage.user.selectedLocale", ng-required: "true"}
             %md-option{ng-repeat: "locale in profilePage.availableLocales()", ng-value: "locale.key"}
               {{locale.name}}
-          %validation_errors{subject: "profilePage.user", field: "selectedLocale"}
+          %vue-component{name: "ValidationErrors", v-props-subject: "profilePage.user", v-props-field: "'selectedLocale'"}
 
         %p{ng-if: "profilePage.showHelpTranslate()"}
           %a.md-caption{translate: "profile_page.help_translate", href: "https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation", target: "_blank"}
