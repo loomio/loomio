@@ -2,8 +2,7 @@
   %loading{ng-if: "!documentsPage.group"}
   %main.documents-page{ng-if: "documentsPage.group"}
     .lmo-group-theme-padding
-    %group_theme{group: "documentsPage.group"}
-    -# %vue-component{name: "GroupTheme", v-props-group: "documentsPage.group"}
+    %vue-component{name: "GroupTheme", v-props-group: "documentsPage.group"}
     .lmo-card
       .documents-page__top-bar.lmo-flex.lmo-flex__space-between.lmo-flex__baseline
         %h2.lmo-h2.md-title{translate: "documents_page.title"}

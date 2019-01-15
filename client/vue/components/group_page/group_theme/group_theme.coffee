@@ -20,11 +20,11 @@ module.exports =
       ModalService.open 'LogoPhotoForm', group: => group
   computed:
     logoStyle: ->
-      { 'background-image': "url(#{$scope.group.logoUrl()})" }
+      { 'background-image': "url(#{@group.logoUrl()})" }
     canPerformActions: ->
-      AbilityService.isSiteAdmin() or AbilityService.canLeaveGroup($scope.group)
+      AbilityService.isSiteAdmin() or AbilityService.canLeaveGroup(@group)
     canUploadPhotos: ->
-      $scope.homePage and AbilityService.canAdministerGroup($scope.group)
+      !_.isEmpty(@homePage) and AbilityService.canAdministerGroup(@group)
   template:
     """
     <div class="group-theme">
@@ -46,8 +46,8 @@ module.exports =
         </div>
       </div>
       <div v-if="!compact" class="group-theme__header">
-        <div :style="logoStyle()" :alt="$t('group_page.group_logo')" class="group-theme__logo">
-          <div v-if="canUploadPhotos()" class="group-theme__upload-photo">
+        <div :style="logoStyle" :alt="$t('group_page.group_logo')" class="group-theme__logo">
+          <div v-if="canUploadPhotos" class="group-theme__upload-photo">
             <button @click="openUploadLogoForm()" :title="$t('group_page.new_group_logo')" class="lmo-flex lmo-flex__center">
             <i class="mdi mdi-camera mdi-24px"></i>
             <span v-t="'group_page.new_photo'" class="group-theme__upload-help-text"></span></button>
@@ -61,7 +61,7 @@ module.exports =
           <div v-if="homePage" class="group-theme__actions">
             <join-group-button :group="group"></join-group-button>
             <!-- <outlet name="group-theme-actions" model="group"></outlet> -->
-            <div v-if="canPerformActions()" class="group-theme__member-actions">
+            <div v-if="canPerformActions" class="group-theme__member-actions">
                 <!-- <outlet name="group-theme-member-actions" model="group"></outlet> -->
                 <group-privacy-button :group="group"></group-privacy-button>
                 <group-actions-dropdown :group="group"></group-actions-dropdown>
