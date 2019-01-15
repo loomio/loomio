@@ -40,25 +40,23 @@ class Microsoft::BaseSerializer < ActiveModel::Serializer
   end
 
   def section_image
-    user_avatar_url object.user
+    user_avatar_url(user)
   end
 
   def section_facts
-    [{
-      name: I18n.t(:"microsoft.authored_by"),
-      value: object.user.name
-    }, {
-      name: I18n.t(:"microsoft.created_at"),
-      value: object.created_at
-    }]
+    []
   end
 
   private
 
   def text_options
     {
-      author: object.user.name,
+      author: user.name,
       group:  object.group.full_name
     }
+  end
+
+  def user
+    object.user || object.eventable.user
   end
 end

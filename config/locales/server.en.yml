@@ -683,8 +683,6 @@ en:
 
   microsoft:
     section_title: "[%{title}](%{url})"
-    created_at: "Created at"
-    authored_by: "Authored by"
     new_discussion: "New thread in %{group}"
     outcome_created: "Outcome posted in %{group}"
     poll_created: "New %{poll_type} in %{group}"
