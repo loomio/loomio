@@ -5,7 +5,7 @@ module.exports =
   mixins: [urlFor]
   props:
     poll: Object
-    displayGroupName: String
+    displayGroupName: Boolean
   methods:
     showGroupName: ->
       @displayGroupName && @poll.group()
