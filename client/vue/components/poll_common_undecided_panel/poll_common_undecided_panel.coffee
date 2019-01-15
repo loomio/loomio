@@ -38,7 +38,7 @@ module.exports =
       <button v-if="canShowUndecided()" @click="showUndecided()" v-t="{ path: 'poll_common_undecided_panel.show_undecided', args: { count: poll.undecidedCount } }" class="md-accent poll-common-undecided-panel__button"></button>
       <div v-if="showingUndecided" class="poll-common-undecided-panel__panel poll-common-undecided-panel__users">
         <h3 v-t="{ path: 'poll_common_undecided_panel.undecided_users', args: { count: poll.undecidedCount } }" class="lmo-card-subheading"></h3>
-        <poll-common-undecided-user :user="user" :poll="poll" v-for="user in poll.undecided()"></poll-common-undecided-user>
+        <poll-common-undecided-user :user="user" :poll="poll" v-for="user in poll.undecided()" :key="user.id"></poll-common-undecided-user>
         <p v-if="!canEditPoll()">
           <span v-if="poll.guestGroup().pendingInvitationsCount == 1" v-t="'poll_common_undecided_panel.invitation_count_singular'" class="lmo-hint-text"></span>
           <span v-if="poll.guestGroup().pendingInvitationsCount > 1" v-t="{ path: 'poll_common_undecided_panel.invitation_count_plural', args: { count: poll.guestGroup().pendingInvitationsCount } }" class="lmo-hint-text"></span>

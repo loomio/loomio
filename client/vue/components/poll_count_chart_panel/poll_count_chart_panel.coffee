@@ -3,28 +3,26 @@ Records   = require 'shared/services/records'
 
 module.exports =
   props:
+    poll: Object
   data: ->
+    colors: AppConfig.pollColors.count
   methods:
+    percentComplete: (index) ->
+      "#{100 * @poll.stanceCounts[index] / @poll.goal()}%"
   template:
     """
-    .poll-count-chart-panel
-      %h3.lmo-card-subheading{translate: "poll_common.results"}
-      .poll-count-chart-panel__chart-container
-        .poll-count-chart-panel__progress
-          .poll-count-chart-panel__incomplete
-          .poll-count-chart-panel__no{ng-style: "{'flex-basis': percentComplete(1), 'background-color': colors[1]}"}
-          .poll-count-chart-panel__yes{ng-style: "{'flex-basis': percentComplete(0), 'background-color': colors[0]}"}
-        .poll-count-chart-panel__data
-          .poll-count-chart-panel__numerator {{poll.stancesCount}}
-          .poll-count-chart-panel__denominator{translate: "poll_count_chart_panel.out_of", translate-value-goal: "{{poll.goal()}}"}
+    <div class="poll-count-chart-panel">
+      <h3 v-t="'poll_common.results'" class="lmo-card-subheading"></h3>
+      <div class="poll-count-chart-panel__chart-container">
+        <div class="poll-count-chart-panel__progress">
+          <div class="poll-count-chart-panel__incomplete"></div>
+          <div :style="{'flex-basis': percentComplete(1), 'background-color': colors[1]}" class="poll-count-chart-panel__no"></div>
+          <div :style="{'flex-basis': percentComplete(0), 'background-color': colors[0]}" class="poll-count-chart-panel__yes"></div>
+        </div>
+        <div class="poll-count-chart-panel__data">
+          <div class="poll-count-chart-panel__numerator">{{poll.stancesCount}}</div>
+          <div v-t="{ path: 'poll_count_chart_panel.out_of', args: { goal: poll.goal() } }" class="poll-count-chart-panel__denominator"></div>
+        </div>
+      </div>
+    </div>
     """
-
-angular.module('loomioApp').directive 'pollCountChartPanel', ->
-  scope: {poll: '='}
-  template: require('./poll_count_chart_panel.haml')
-  controller: ['$scope', ($scope) ->
-    $scope.percentComplete = (index) ->
-      "#{100 * $scope.poll.stanceCounts[index] / $scope.poll.goal()}%"
-
-    $scope.colors = AppConfig.pollColors.count
-  ]
