@@ -46,10 +46,11 @@ module.exports =
         <div v-if="moreMembershipsToLoad()">
           <button v-t="'common.action.load_more'" aria-label="common.action.load_more" @click="loadMemberships()" class="md-accent"></button>
         </div>
-        <div v-if="!moreMembershipsToLoad() && moreInvitationsToLoad() && canEditPoll()">
+        <!-- moreInvitationsToLoad does not exist? -->
+        <!-- <div v-if="!moreMembershipsToLoad() && moreInvitationsToLoad() && canEditPoll()">
           <button v-t="'poll_common_undecided_panel.show_invitations'" aria-label="common.action.load_more" @click="showUndecided()" class="md-accent poll-common-undecided-panel__show-invitations"></button>
           <button v-if="loaders.invitations.numLoaded > 0" v-t="'common.action.load_more'" aria-label="common.action.load_more" @click="loadInvitations()" class="md-accent"></button>
-        </div>
+        </div> -->
       </div>
     </div>
     """
