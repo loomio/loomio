@@ -1,0 +1,18 @@
+.group-page-actions {
+  display: flex;
+  align-items: center;
+}
+
+.group-actions-dropdown__menu-content .md-button {
+  display: flex !important;
+  align-items: center;
+}
+
+.group-actions-dropdown__menu-content {
+  max-height: 400px;
+}
+
+.group-actions-dropdown__menu-content .mdi {
+  font-size: 20px;
+  margin-right: 8px;
+}

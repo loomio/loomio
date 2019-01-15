@@ -95,6 +95,10 @@ components =
   PollCountChartPanel: require 'vue/components/poll_count_chart_panel/poll_count_chart_panel.coffee'
   PollCommonChangeYourVote: require 'vue/components/poll_common_change_your_vote/poll_common_change_your_vote.coffee'
   PollCommonVotesPanelStance: require 'vue/components/poll_common_votes_panel_stance/poll_common_votes_panel_stance.coffee'
+  GroupTheme: require 'vue/components/group_page/group_theme/group_theme.coffee'
+  JoinGroupButton: require 'vue/components/group_page/join_group_button/join_group_button.coffee'
+  GroupActionsDropdown: require 'vue/components/group_page/group_actions_dropdown/group_actions_dropdown.coffee'
+  GroupPrivacyButton: require 'vue/components/group_page/group_privacy_button/group_privacy_button.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
