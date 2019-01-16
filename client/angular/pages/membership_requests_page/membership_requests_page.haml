@@ -7,7 +7,7 @@
       %h2.lmo-h2{translate: "membership_requests_page.heading"}
       %ul{ng-if: "membershipRequestsPage.group.hasPendingMembershipRequests()"}
         %li.lmo-flex.membership-requests-page__pending-request{layout: "row", ng-repeat: "request in membershipRequestsPage.pendingRequests() track by request.id"}
-          %user_avatar.lmo-margin-right{user: "request.actor()", size: "medium"}
+          %vue-component.lmo-margin-right{name: "UserAvatar", v-props-user: "request.actor()", v-props-size: "'medium'"}
           .lmo-flex{layout: "column"}
             %span.membership-requests-page__pending-request-name
               %strong {{request.actor().name}}
@@ -25,7 +25,7 @@
       %h3.lmo-card-heading{translate: "membership_requests_page.previous_requests"}
       %ul{ng-if: "membershipRequestsPage.group.hasPreviousMembershipRequests()"}
         %li.lmo-flex.membership-requests-page__previous-request{layout: "row", ng-repeat: "request in membershipRequestsPage.previousRequests() track by request.id"}
-          %user_avatar.lmo-margin-right{user: "request.actor()", size: "medium"}
+          %vue-component.lmo-margin-right{name: "UserAvatar", v-props-user: "request.actor()", v-props-size: "'medium'"}
           .lmo-flex{layout: "column"}
             %span.membership-requests-page__previous-request-name
               %strong {{request.actor().name}}
@@ -33,7 +33,7 @@
               {{request.email}}
             .membership-requests-page__previous-request-response
               %span{translate: "membership_requests_page.previous_request_response", translate-value-response: "{{request.formattedResponse()}}", translate-value-responder: "{{request.responder().name}}"}>
-              %span> · 
+              %span> ·
               %vue-component{name: "TimeAgo", v-props-date: "request.respondedAt"}
             .membership-requests-page__previous-request-introduction
               {{request.introduction}}
