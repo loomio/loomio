@@ -6,12 +6,15 @@ import Vuetify from 'vuetify'
 require('vue/directives/marked')
 
 window.Vue = Vue
+window.Vuetify = Vuetify
 
 Records       = require 'shared/services/records'
 
 Vue.use(VueI18n)
 Vue.use(Vuex)
-Vue.use(Vuetify)
+Vue.use(Vuetify,
+  icons: {dropdown: 'mdi-menu-down'}
+)
 
 
 store = require('vue/store/main.coffee')

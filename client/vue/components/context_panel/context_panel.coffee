@@ -8,12 +8,13 @@ LmoUrlService  = require 'shared/services/lmo_url_service'
 FlashService   = require 'shared/services/flash_service'
 I18n           = require 'shared/services/i18n'
 urlFor         = require 'vue/mixins/url_for'
+exactDate      = require 'vue/mixins/exact_date'
 
 { listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
 { scrollTo }                                  = require 'shared/helpers/layout'
 
 module.exports =
-  mixins: [urlFor]
+  mixins: [urlFor, exactDate]
   props:
     discussion: Object
   created: ->
@@ -84,37 +85,37 @@ module.exports =
           <!-- <context_panel_dropdown discussion="discussion"></context_panel_dropdown> -->
       </div>
       <div class="context-panel__details md-body-1 lmo-flex--row">
-          <user-avatar :user="discussion.author()" size="small" class="lmo-margin-right"></user-avatar>
-          <span>
-            <strong>{{discussion.authorName()}}</strong>
-            <span aria-hidden="true">·</span>
-            <time-ago :date="discussion.createdAt" class="nowrap"></time-ago>
-            <span aria-hidden="true">·</span>
-            <span v-show="discussion.private" class="nowrap context-panel__discussion-privacy context-panel__discussion-privacy--private">
-              <i class="mdi mdi-lock-outline"></i>
-              <span v-t="'common.privacy.private'"></span>
-            </span>
-            <span v-show="!discussion.private" class="nowrap context-panel__discussion-privacy context-panel__discussion-privacy--public">
-              <i class="mdi mdi-earth"></i>
-              <span v-t="'common.privacy.public'"></span>
-            </span>
-            <span v-show="discussion.seenByCount > 0">
-              <span aria-hidden="true">·</span>
-              <span
-                v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"
-                class="context-panel__seen_by_count"
-              ></span>
-            </span>
-            <span v-if="discussion.forkedEvent() && discussion.forkedEvent().discussion()">
-              <span aria-hidden="true">·</span>
-              <span v-t="'thread_context.forked_from'"></span>
-              <a :href="urlFor(discussion.forkedEvent())">{{discussion.forkedEvent().discussion().title}}</a>
-            </span>
+        <user-avatar :user="discussion.author()" size="small" class="lmo-margin-right"></user-avatar>
+        <span>
+          <strong>{{discussion.authorName()}}</strong>
+          <span aria-hidden="true">·</span>
+          <time-ago :date="discussion.createdAt" class="nowrap"></time-ago>
+          <span aria-hidden="true">·</span>
+          <span v-show="discussion.private" class="nowrap context-panel__discussion-privacy context-panel__discussion-privacy--private">
+            <i class="mdi mdi-lock-outline"></i>
+            <span v-t="'common.privacy.private'"></span>
           </span>
-          <div v-t="'common.privacy.closed'" v-if="discussion.closedAt" md-colors="{color: 'warn-600', 'border-color': 'warn-600'}" class="lmo-badge lmo-pointer">
-              <!-- <md-tooltip>{{ discussion.closedAt | exactDateWithTime }}</md-tooltip> -->
-          </div>
-          <!-- <outlet name="after-thread-title" model="discussion" class="lmo-flex"></outlet> -->
+          <span v-show="!discussion.private" class="nowrap context-panel__discussion-privacy context-panel__discussion-privacy--public">
+            <i class="mdi mdi-earth"></i>
+            <span v-t="'common.privacy.public'"></span>
+          </span>
+          <span v-show="discussion.seenByCount > 0">
+            <span aria-hidden="true">·</span>
+            <span
+              v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"
+              class="context-panel__seen_by_count"
+            ></span>
+          </span>
+          <span v-if="discussion.forkedEvent() && discussion.forkedEvent().discussion()">
+            <span aria-hidden="true">·</span>
+            <span v-t="'thread_context.forked_from'"></span>
+            <a :href="urlFor(discussion.forkedEvent())">{{discussion.forkedEvent().discussion().title}}</a>
+          </span>
+        </span>
+        <div v-t="'common.privacy.closed'" v-if="discussion.closedAt" md-colors="{color: 'warn-600', 'border-color': 'warn-600'}" class="lmo-badge lmo-pointer">
+          <v-tooltip bottom>{{ exactDate(discussion.closedAt) }}</v-tooltip>
+        </div>
+        <!-- <outlet name="after-thread-title" model="discussion" class="lmo-flex"></outlet> -->
       </div>
       <div
         v-if="!discussion.translation"

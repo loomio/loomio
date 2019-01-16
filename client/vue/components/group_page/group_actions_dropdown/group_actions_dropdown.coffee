@@ -68,29 +68,33 @@ module.exports =
 
   template:
     """
-      <div class="group-page-actions lmo-no-print">
-        {{ GroupActionsDropdown }}
-        <!-- <md-menu md-position-mode="target-right target" class="lmo-dropdown-menu">
-          <md-button ng-click="$mdMenu.open()" class="group-page-actions__button"> <span translate="group_page.options.label"></span> <i class="mdi mdi-chevron-down"></i></md-button>
-          <md-menu-content class="group-actions-dropdown__menu-content">
-              <md-menu-item ng-if="canEditGroup()" class="group-page-actions__edit-group-link">
-                  <md-button ng-click="editGroup()"><span translate="group_page.options.edit_group"></span></md-button>
-              </md-menu-item>
-              <md-menu-item ng-if="canChangeVolume()" class="group-page-actions__change-volume-link">
-                  <md-button ng-click="openChangeVolumeForm()"><span translate="group_page.options.email_settings"></span></md-button>
-              </md-menu-item>
-              <outlet name="after-group-actions-manage-memberships" model="group"></outlet>
-              <outlet name="after-group-actions-manage-memberships-2" model="group"></outlet>
-              <md-menu-item ng-if="canExportData()" class="group-page-actions__export-json">
-                  <md-button ng-click="openGroupExportModal()"><span translate="group_page.options.export_data"></span></md-button>
-              </md-menu-item>
-              <md-menu-item ng-if="canLeaveGroup()" class="group-page-actions__leave-group">
-                  <md-button ng-click="leaveGroup()"><span translate="group_page.options.leave_group"></span></md-button>
-              </md-menu-item>
-              <md-menu-item ng-if="canArchiveGroup()" class="group-page-actions__archive-group">
-                  <md-button ng-click="archiveGroup()"><span translate="group_page.options.deactivate_group"></span></md-button>
-              </md-menu-item>
-          </md-menu-content>
-        </md-menu> -->
-      </div>
+    <div class="group-page-actions lmo-no-print">
+      <v-menu md-position-mode="target-right target" class="lmo-dropdown-menu">
+        <v-btn slot="activator" class="group-page-actions__button">
+          <span v-t="'group_page.options.label'"></span>
+          <i class="mdi mdi-chevron-down"></i>
+        </v-btn>
+        <v-list class="group-actions-dropdown__menu-content">
+          <v-list-tile v-if="canEditGroup()" @click="editGroup()" class="group-page-actions__edit-group-link">
+            <v-list-tile-title v-t="'group_page.options.edit_group'"></v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile v-if="canChangeVolume()" @click="openChangeVolumeForm()" class="group-page-actions__change-volume-link">
+            <v-list-tile-title v-t="'group_page.options.email_settings'"></v-list-tile-title>
+          </v-list-tile>
+
+          <!-- <outlet name="after-group-actions-manage-memberships" model="group"></outlet>
+          <outlet name="after-group-actions-manage-memberships-2" model="group"></outlet> -->
+
+          <v-list-tile v-if="canExportData()" @click="openGroupExportModal()" class="group-page-actions__export-json">
+            <v-list-tile-title v-t="'group_page.options.export_data'"></v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile v-if="canLeaveGroup()" @click="leaveGroup()" class="group-page-actions__leave-group">
+            <v-list-tile-title v-t="'group_page.options.leave_group'"></v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile v-if="canArchiveGroup()" @click="archiveGroup()" class="group-page-actions__archive-group">
+            <v-list-tile-title v-t="'group_page.options.deactivate_group'"></v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+    </div>
     """
