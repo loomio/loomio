@@ -22,4 +22,4 @@
               %h2.inbox-page__group-name
                 %a{href: "/g/{{group.key}}"} {{group.name}}
             .inbox-page__groups.thread-previews-container
-              %thread_preview_collection{query: "inboxPage.views[group.key]", limit: "inboxPage.threadLimit"}
+              %vue-component{name: "ThreadPreviewCollection", v-props-query: "inboxPage.views[group.key]", v-props-limit: "inboxPage.threadLimit" }
