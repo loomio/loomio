@@ -14,6 +14,7 @@ module.exports =
     per: AppConfig.pageSize.threadItems
     renderMode: 'nested'
     position: @positionForSelect()
+    eventWindow: {}
     loader: new RecordLoader
       collection: 'events'
       params:
@@ -21,6 +22,11 @@ module.exports =
         order: 'sequence_id'
         from: @initialSequenceId(@initialPosition())
         per: @per
+    positionItems: []
+    renderModeItems: [
+      {text: @$t('activity_card.chronological'), value: 'chronological'},
+      {text: @$t('activity_card.nested'), value: 'nested'}
+    ]
   created: ->
     # EventBus.listen $scope, 'fetchRecordsForPrint', ->
     #   if $scope.discussion.allEventsLoaded()
@@ -30,7 +36,6 @@ module.exports =
     #     $scope.eventWindow.showAll().then ->
     #       $mdDialog.cancel()
     #       print()
-
     @init()
     # EventBus.listen $scope, 'initActivityCard', -> $scope.init()
   methods:
@@ -96,22 +101,19 @@ module.exports =
       @setupEventWindow(position)
       @loader.loadMore(@initialSequenceId(position)).then =>
         @setupEventWindow(position)
-
         # EventBus.emit $scope, 'threadPageScrollToSelector', $scope.elementToFocus(position)
+      @positionItems = [
+        {text: @$t('activity_card.beginning'), value: 'beginning'},
+        {text: @$t('activity_card.unread'), value: 'unread', disabled: !@eventWindow.anyUnread()},
+        {text: @$t('activity_card.latest'), value: 'latest'}
+      ]
 
   template:
     """
     <section aria-labelledby="activity-card-title" class="activity-card">
       <div v-show="eventWindow.anyLoaded()" class="activity-card__settings">
-        <!-- <md-select ng-model="position" ng-change="init(position)" class="md-no-underline">
-          <md-option value="beginning" translate="activity_card.beginning"></md-option>
-          <md-option value="unread" translate="activity_card.unread" ng-disabled="!eventWindow.anyUnread()"></md-option>
-          <md-option value="latest" translate="activity_card.latest"></md-option>
-        </md-select> -->
-        <!-- <md-select ng-model="renderMode" ng-change="init()" class="md-no-underline">
-          <md-option value="chronological" translate="activity_card.chronological"></md-option>
-          <md-option value="nested" translate="activity_card.nested"></md-option>
-        </md-select> -->
+        <v-select :items="positionItems" v-model="position" @change="init(position)" solo></v-select>
+        <v-select :items="renderModeItems" v-model="renderMode" @change="init()" solo></v-select>
       </div>
 
       <div v-if="debug()">first: {{eventWindow.firstInSequence()}}last: {{eventWindow.lastInSequence()}}total: {{eventWindow.numTotal()}}min: {{eventWindow.min}}max: {{eventWindow.max}}per: {{per}}firstLoaded: {{eventWindow.firstLoaded()}}lastLoaded: {{eventWindow.lastLoaded()}}loadedCount: {{eventWindow.numLoaded()}}read: {{discussion.readItemsCount()}}unread: {{discussion.unreadItemsCount()}}firstUnread {{discussion.firstUnreadSequenceId()}}initialSequenceId: {{initialSequenceId(initialPosition())}}requestedSequenceId: {{discussion.requestedSequenceId}}position: {{initialPosition()}}</div>
