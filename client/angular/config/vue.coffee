@@ -104,6 +104,7 @@ components =
   DocumentManagement: require 'vue/components/document/management/document_management.coffee'
   GroupAvatar: require 'vue/components/group/avatar/group_avatar.coffee'
   PollCommonPreviewRepeater: require 'vue/components/poll_common_preview_repeater/poll_common_preview_repeater.coffee'
+  ContactForm: require 'vue/components/contact/form/contact_form.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
