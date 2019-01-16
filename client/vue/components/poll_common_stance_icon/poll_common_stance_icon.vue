@@ -1,0 +1,40 @@
+<style>
+.poll-common-stance-icon {
+  display: inline-block;
+}
+
+.poll-common-stance-icon__svg {
+  margin-right: 4px;
+  position: relative;
+  bottom: -4px;
+}
+
+.poll-common-stance-icon__chip {
+  border-left: 8px solid;
+  padding-left: 4px;
+  margin-left: 4px;
+  display: inline-block;
+  position: relative;
+  top: 7px;
+  height: 24px;
+}
+</style>
+
+<script lang="coffee">
+{ fieldFromTemplate } = require 'shared/helpers/poll'
+
+module.exports =
+  props:
+    stanceChoice: Object
+  methods:
+    useOptionIcon: ->
+      fieldFromTemplate(@stanceChoice.poll().pollType, 'has_option_icons')
+
+</script>
+
+<template>
+    <div class="poll-common-stance-icon">
+      <img v-if="useOptionIcon()" :src="'/img/' + stanceChoice.pollOption().name + '.svg'" alt="stanceChoice.pollOption().name" class="lmo-box--tiny poll-common-stance-icon__svg">
+      <div v-if="!useOptionIcon()" :style="{'border-color': stanceChoice.pollOption().color}" class="poll-common-stance-icon__chip"></div>
+    </div>
+</template>
