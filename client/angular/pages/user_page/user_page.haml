@@ -4,7 +4,8 @@
     .lmo-card.user-page__profile
       .user-page__content.lmo-flex{layout: "row"}
         .user-page__avatar.lmo-margin-right
-          %user_avatar{user: "userPage.user", size: "featured"}
+          -# %user_avatar{user: "userPage.user", size: "featured"}
+          %vue-component{name: "UserAvatar", v-props-user: "userPage.user", v-props-size: "'featured'"}
           %md-button.md-block.md-primary.md-raised.user-page__contact-user{ng-if: "userPage.canContactUser()", ng-click: "userPage.contactUser()", translate: "user_page.contact_user", translate-value-name: "{{userPage.user.firstName()}}"}
         .user-page__info
           %h1.lmo-h1 {{userPage.user.name}}
