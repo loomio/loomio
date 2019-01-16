@@ -9,8 +9,8 @@ module.exports =
   template:
     """
     <div class="group-setting-checkbox">
-      <!-- <md-checkbox ng-model="group[setting]">
-        <span translate="{{translateKey()}}" translate-values="translateValues"></span>
-      </md-checkbox> -->
+      <v-checkbox v-model="group[setting]">
+        <span v-t="{ path: translateKey, args: translateValues }"></span>
+      </v-checkbox>
     </div>
     """

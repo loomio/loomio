@@ -10,11 +10,11 @@ I18n     = require 'shared/services/i18n'
 module.exports =
   props:
     group: Object
-  data: ->
-    expanded: false
+  # data: ->
+  #   expanded: false
   methods:
     expandForm: ->
-      @expanded = true
+      Vue.set(@group, 'expanded', true) # probably a bad idea
       scrollTo '.group-form__permissions', container: '.group-modal md-dialog-content'
   computed:
     actionName: ->
@@ -41,17 +41,14 @@ module.exports =
   template:
     """
     <div class="lmo-md-actions">
-      <div v-if="expanded"></div>
-      <button
-        md-button
-        type="button"
-        v-if="!expanded"
+      <div v-if="group.expanded"></div>
+      <v-btn
+        v-if="!group.expanded"
         @click="expandForm()"
         v-t="'group_form.advanced_settings'"
         class="md-accent group-form__advanced-link"
-      ></button>
-      <button
-        md-button
+      ></v-btn>
+      <v-btn
         @click="submit()"
         class="md-primary md-raised group-form__submit-button"
       >
@@ -67,6 +64,6 @@ module.exports =
           v-if="!group.isNew()"
           v-t="'common.action.update_settings'"
         ></span>
-      </button>
+      </v-btn>
     </div>
     """
