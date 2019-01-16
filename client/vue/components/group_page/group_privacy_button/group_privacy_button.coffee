@@ -16,12 +16,14 @@ module.exports =
         when 'secret' then 'mdi-lock-outline'
   template:
     """
-      <button aria-label="{{privacyDescription()}}" class="group-privacy-button md-button">
-        <!-- <md-tooltip class="group-privacy-button__tooltip">{{privacyDescription()}}</md-tooltip> -->
+    <v-tooltip bottom class="group-privacy-button__tooltip">
+      <button slot="activator" aria-label="{{privacyDescription()}}" class="group-privacy-button md-button">
         <div v-t="{ path: 'group_page.privacy.aria_label', args: { privacy: group.groupPrivacy }}" class="sr-only"></div>
         <div aria-hidden="true" class="screen-only lmo-flex lmo-flex__center">
           <i class="mdi" :class="iconClass"></i>
           <span v-t="'common.privacy.' + group.groupPrivacy"></span>
         </div>
       </button>
+      {{privacyDescription()}}
+    </v-tooltip>
     """
