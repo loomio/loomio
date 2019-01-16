@@ -1,3 +1,7 @@
+<style>
+</style>
+
+<script lang="coffee">
 Records      = require 'shared/services/records'
 ModalService = require 'shared/services/modal_service'
 urlFor       = require 'vue/mixins/url_for'
@@ -9,8 +13,9 @@ module.exports =
     group: Object
   created: ->
     Records.documents.fetchByGroup(@group)
-  template:
-    """
+</script>
+
+<template>
     <section class="document-card lmo-card lmo-no-print">
       <h2 v-t="'document.list.title'" class="lmo-card-heading" id="document-card-title"></h2>
       <loading v-if="_.isEmpty(group)"></loading>
@@ -24,4 +29,4 @@ module.exports =
         </a>
       </div>
     </section>
-    """
+</template>

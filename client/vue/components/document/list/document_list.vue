@@ -1,3 +1,69 @@
+<style>
+.document-list {
+  .md-button--tiny { opacity: 0.5; }
+  &:hover {
+    .md-button--tiny { opacity: 1; }
+  }
+}
+
+.document-list__document {
+  margin: 8px 0;
+  line-height: 32px;
+  background: $modal-background-color;
+  @include roundedCorners;
+  &--image { padding-top: 8px; }
+}
+
+.document-list__entry {
+  padding-left: 8px;
+}
+
+.document-list__image {
+  margin: auto;
+  max-width: 100%;
+  img {
+    max-width: 100%;
+    max-height: 240px;
+  }
+}
+
+.document-list .md-button--tiny {
+  opacity: 0.5;
+  transition: opacity ease-in-out 0.25s;
+  &:hover { opacity: 1; }
+}
+
+.document-list__heading {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.document-list .mdi {
+  font-size: 24px;
+}
+
+.document-list .mdi.mdi-pencil {
+  font-size: 20px;
+}
+
+.document-list__title {
+  color: $primary-text-color;
+  font-size: 14px;
+}
+
+.document-list__upload-time {
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.document-list__tooltip {
+  padding-top: 8px;
+  max-height: 600px;
+  max-width: 400px;
+}
+</style>
+
+<script lang="coffee">
 Records        = require 'shared/services/records'
 EventBus       = require 'shared/services/event_bus'
 AbilityService = require 'shared/services/ability_service'
@@ -28,8 +94,9 @@ module.exports =
     showTitle: ->
       (@model.showDocumentTitle or @showEdit) and
       (@model.hasDocuments() or @placeholder)
-  template:
-    """
+</script>
+
+<template>
       <section class="document-list">
         <h3
           v-if="showTitle"
@@ -105,4 +172,4 @@ module.exports =
           </div>
         </div>
       </section>
-    """
+</template>
