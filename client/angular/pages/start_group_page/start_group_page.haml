@@ -3,4 +3,5 @@
     %loading{ng-if: "!startGroupPage.group"}
     .start-group-page__main-content.lmo-flex.lmo-card{ng-if: "startGroupPage.group", layout: "column"}
       %h1.lmo-card-heading{translate: "group_form.start_group_heading"}
-      %group_form{group: "startGroupPage.group"}
+      %vue-component{name: "GroupForm", v-props-group: "startGroupPage.group" }
+      -# %group_form{group: "startGroupPage.group"}

@@ -105,6 +105,9 @@ components =
   GroupAvatar: require 'vue/components/group/avatar/group_avatar.coffee'
   PollCommonPreviewRepeater: require 'vue/components/poll_common_preview_repeater/poll_common_preview_repeater.coffee'
   ContactForm: require 'vue/components/contact/form/contact_form.coffee'
+  GroupForm: require 'vue/components/group/form/group_form.coffee'
+  GroupFormActions: require 'vue/components/group/form_actions/group_form_actions.coffee'
+  GroupSettingCheckbox: require 'vue/components/group/setting_checkbox/group_setting_checkbox.coffee'
 
 _.each components, (obj, name) ->
   angular.module('loomioApp').value(name, Vue.component(name, obj))
