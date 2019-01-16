@@ -1,4 +1,5 @@
 const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   mode: 'development',
@@ -17,6 +18,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       { test: /\.haml$/,
         use: [{loader: path.resolve(__dirname, 'tasks/haml-loader.js')}]
        },
@@ -25,5 +30,6 @@ module.exports = {
                  loader: 'coffee-loader',
                  options: { transpile: { presets: ['@babel/env'] }}
                } ]}]
-  }
+  },
+  plugins: [ new VueLoaderPlugin() ]
 };
