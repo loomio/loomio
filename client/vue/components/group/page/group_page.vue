@@ -14,8 +14,6 @@ import urlFor from 'vue/mixins/url_for'
 
 module.exports =
   mixins: [urlFor]
-  props:
-
 </script>
 
 <template>

@@ -87,12 +87,8 @@ module.exports =
 
     canChangeVolume: ->
       AbilityService.canChangeGroupVolume(@group)
-
-  template:
-    """
-    """
-
 </script>
+
 <template>
   <div class="group-page-actions lmo-no-print">
     <v-menu md-position-mode="target-right target" class="lmo-dropdown-menu">
