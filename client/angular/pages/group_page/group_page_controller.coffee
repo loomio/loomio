@@ -20,12 +20,12 @@ $controller = ($rootScope, $routeParams) ->
       condition:      condition
       allowContinue:  opts.allowContinue
 
-  @addLauncher =>
-    ModalService.open 'InstallSlackModal',
-      group: => @group
-      requirePaidPlan: -> true
-  , ->
-    LmoUrlService.params().install_slack
+  # @addLauncher =>
+  #   ModalService.open 'InstallSlackModal',
+  #     group: => @group
+  #     requirePaidPlan: -> true
+  # , ->
+  #   LmoUrlService.params().install_slack
 
   @performLaunch = ->
     @launchers.sort((a, b) -> a.priority - b.priority).map (launcher) =>

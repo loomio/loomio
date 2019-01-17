@@ -14,6 +14,7 @@ LmoUrlService  = require 'shared/services/lmo_url_service'
 module.exports =
   props:
     poll: Object
+    
   data: ->
     stance: @getLastStance()
   created: ->

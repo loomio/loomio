@@ -1,4 +1,3 @@
-Routes         = require 'angular/routes'
 AppConfig      = require 'shared/services/app_config'
 Records        = require 'shared/services/records'
 EventBus       = require 'shared/services/event_bus'
@@ -22,7 +21,7 @@ module.exports =
     setupAngularPaste($rootScope)
     setupAngularHotkeys($rootScope)
     setupAngularFlash($rootScope)
-    setupAngularRoutes($injector.get('$router'))
+    # setupAngularRoutes($injector.get('$router'))
     setupAngularNavigate($injector.get('$location'))
     setupAngularTranslate($rootScope, $injector.get('$translate'))
     setupAngularDigest($rootScope, $injector)

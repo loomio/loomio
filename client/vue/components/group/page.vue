@@ -17,6 +17,10 @@ module.exports =
 </script>
 
 <template>
+  hello I'm the group page
+</template>
+
+<femplate>
   <div class="loading-wrapper lmo-two-column-layout">
     <loading ng-if="!groupPage.group"></loading>
     <main ng-if="groupPage.group" class="group-page lmo-row">
@@ -42,4 +46,4 @@ module.exports =
       </div>
     </main>
   </div>
-  </template>
+  </femplate>

@@ -12,23 +12,23 @@ include = (file, key, p = file.path) ->
   _.map(file[key], (path) -> _.compact([p, path]).join('/'))
 
 module.exports =
-  angular:
-    root:      'angular'
-    main:      'angular/main.coffee'
-    folders:
-      vendor:     include(vendor, 'angular', '')
-      config:     glob.sync('angular/config/*.coffee')
-      pages:      glob.sync('angular/pages/**/*.coffee')
-      components: _.flatten([
-        glob.sync('angular/components/**/*.coffee'),
-        _.map(include(plugins, 'coffee'), (path) -> "../../#{path}")
-      ])
-      templates: ['angular/pages/**/*.haml']
-      # templates:   _.flatten([
-      #   'angular/components/**/*.haml',
-      #   'angular/pages/**/*.haml',
-      #   include(plugins, 'haml')
-      # ])
+  vue:
+    root:      'vue'
+    main:      'vue/setup.coffee'
+    # folders:
+    #   vendor:     include(vendor, 'angular', '')
+    #   config:     glob.sync('angular/config/*.coffee')
+    #   pages:      glob.sync('angular/pages/**/*.coffee')
+    #   components: _.flatten([
+    #     glob.sync('angular/components/**/*.coffee'),
+    #     _.map(include(plugins, 'coffee'), (path) -> "../../#{path}")
+    #   ])
+    #   templates: ['angular/pages/**/*.haml']
+    #   # templates:   _.flatten([
+    #   #   'angular/components/**/*.haml',
+    #   #   'angular/pages/**/*.haml',
+    #   #   include(plugins, 'haml')
+    #   # ])
     dependencies:
       folder:     'angular/dependencies'
       vendor:     'angular/dependencies/vendor.coffee'
