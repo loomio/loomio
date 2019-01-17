@@ -69,7 +69,7 @@
     "browserify": "^16.2.3",
     "browserify-debug-tools": "^2.3.0",
     "browserify-ngannotate": "^2.0.0",
-    "budo": "^11.5.0",
+    "budo": "^11.6.0",
     "bundle-collapser": "^1.3.0",
     "coffeeify": "^3.0.1",
     "coffeescript": "^2.3.2",
