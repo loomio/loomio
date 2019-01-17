@@ -1834,6 +1834,16 @@ en:
       webhook_label: Webhook URL
       webhook_installed: Connected to Microsoft Teams
       webhook_placeholder: https://outlook.office.com/...
+      event_kind_helptext: Which events should be posted into the Teams channel?
+
+    event_kinds:
+      new_discussion: A new thread is started
+      new_comment: A new comment has been made
+      poll_created: A poll is created
+      stance_created: A new vote has been cast
+      poll_closing_soon: A poll is expiring soon
+      poll_expired: A poll has expired
+      outcome_created: An outcome has been shared
 
   install_slack:
     modal_title: Install Slack

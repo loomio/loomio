@@ -85,7 +85,7 @@ class PermittedParams < Struct.new(:params)
 
   def group_identity_attributes
    [:group_id, :identity_type, :webhook_url, :make_announcement,
-    :custom_fields, custom_fields: [:slack_channel_name, :slack_channel_id]
+    :custom_fields, custom_fields: [:slack_channel_name, :slack_channel_id, :event_kinds, event_kinds: []]
    ]
   end
 

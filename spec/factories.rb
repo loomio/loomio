@@ -72,8 +72,8 @@ FactoryBot.define do
   factory :microsoft_identity, class: Identities::Microsoft do
     user
     identity_type { "microsoft" }
-    access_token { "https://webhook.url" }
-    uid { "https://webhook.url" }
+    access_token { "https://outlook.office.com/webhook.url" }
+    uid { "https://outlook.office.com/webhook.url" }
   end
 
   factory :contact do

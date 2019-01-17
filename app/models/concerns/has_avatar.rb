@@ -46,6 +46,8 @@ module HasAvatar
       url
     elsif url
       [root_url(default_url_options).chomp('/'), url].join
+    elsif self == User.helper_bot
+      self.avatar_url
     else
       User.helper_bot.absolute_avatar_url
     end

@@ -15,7 +15,8 @@ describe API::GroupIdentitiesController do
   let(:webhook_group_identity_params) {{
     group_id: group.id,
     identity_type: :microsoft,
-    webhook_url: 'https://outlook.office.com/webhook'
+    webhook_url: 'https://outlook.office.com/webhook',
+    custom_fields: { event_kinds: ['poll_created'] }
   }}
 
   before { group.add_admin! user }
@@ -52,6 +53,8 @@ describe API::GroupIdentitiesController do
       gi = GroupIdentity.last
       expect(gi.identity).to_not eq webhook_identity
       expect(gi.identity.access_token).to eq webhook_group_identity_params[:webhook_url]
+      expect(gi.event_kinds).to include 'poll_created'
+      expect(gi.event_kinds).to_not include 'poll_closing_soon'
     end
   end
 
