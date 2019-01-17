@@ -53,8 +53,8 @@ describe API::GroupIdentitiesController do
       gi = GroupIdentity.last
       expect(gi.identity).to_not eq webhook_identity
       expect(gi.identity.access_token).to eq webhook_group_identity_params[:webhook_url]
-      expect(gi.event_kinds).to include 'poll_created'
-      expect(gi.event_kinds).to_not include 'poll_closing_soon'
+      expect(gi.identity.event_kinds).to include 'poll_created'
+      expect(gi.identity.event_kinds).to_not include 'poll_closing_soon'
     end
   end
 

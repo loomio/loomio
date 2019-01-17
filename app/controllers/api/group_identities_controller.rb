@@ -12,6 +12,7 @@ class API::GroupIdentitiesController < API::RestfulController
   def generate_webhook_identity
     current_user.identities.build(
       identity_type: resource_params[:identity_type],
+      custom_fields: resource_params[:custom_fields],
       access_token:  resource.webhook_url,
       uid:           resource.webhook_url
     ) if resource.webhook_url
