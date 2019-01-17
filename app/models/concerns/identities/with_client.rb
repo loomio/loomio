@@ -1,6 +1,6 @@
 module Identities::WithClient
   def notify!(event)
-    return unless event_kinds.include?(event.kind)
+    return unless valid_event_kinds.include?(event.kind)
     I18n.with_locale(event.group.locale) { client.post_content!(event) }
   end
 
@@ -10,7 +10,7 @@ module Identities::WithClient
 
   private
 
-  def event_kinds
+  def valid_event_kinds
     [
       'new_discussion',
       'poll_created',

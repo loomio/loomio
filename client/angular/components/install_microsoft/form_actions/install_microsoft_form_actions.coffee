@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'installMicrosoftFormActions', ->
   controller: ['$scope', ($scope) ->
     $scope.submit = submitForm $scope, $scope.groupIdentity,
       prepareFn: ->
-        $scope.groupIdentity.customFields.event_kinds = _.map $scope.groupIdentity.eventKinds, (_, value) -> value
+        $scope.groupIdentity.customFields.event_kinds = _.map $scope.groupIdentity.eventKinds, (value, key) -> key if value
 
       flashSuccess: 'install_microsoft.form.webhook_installed'
       successCallback: -> EventBus.emit $scope, '$close'

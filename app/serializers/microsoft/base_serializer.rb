@@ -23,7 +23,7 @@ class Microsoft::BaseSerializer < ActiveModel::Serializer
 
   def sections
     [{
-      activityTitle:    section_title,
+      activityTitle:    "[#{section_title}](#{section_url})",
       activitySubtitle: section_subtitle,
       activityImage:    section_image,
       facts:            section_facts,
@@ -32,7 +32,11 @@ class Microsoft::BaseSerializer < ActiveModel::Serializer
   end
 
   def section_title
-    "[#{object.eventable.title}](#{polymorphic_url(object.eventable, default_url_options)})"
+    object.eventable.title
+  end
+
+  def section_url
+    polymorphic_url(object.eventable, default_url_options)
   end
 
   def section_subtitle
