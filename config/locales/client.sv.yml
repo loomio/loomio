@@ -39,6 +39,7 @@ sv:
     dot_vote: Punktröstning
     meeting: Tidsröstning
     ranked_choice: Valfritt val
+    score: Ränka röster
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -210,6 +211,9 @@ sv:
     close_thread: Stäng tråd
     body_header: |
         <p>Stäng gamla eller irrelevanta trådar för att ta bort dem från visning och visa att diskussionen har stängts.</p>
+    body_footer: |
+        <p>Vem som helst kan fortfarande kommentera eller starta en omröstning i en stängd tråd, men det kommer inte att visas i gruppens trådlista eller i instrumentbrädan.</p>
+    image_alt: Stänger alla trådar
   inbox:
     clear: 'Klar'
     latest: 'Senaste'
@@ -224,6 +228,7 @@ sv:
     delete_comment: 'Ta bort kommentaren'
     confirm_delete_message: 'Är du säker på att du vill ta bort denna kommentaren?'
   navbar:
+    recent_title: 'Gå till instrumentbrädan'
     search:
       placeholder: 'Sök'
       discussions: 'Diskussioner'
@@ -250,11 +255,20 @@ sv:
     current_revision: Senaste
   reactions_display:
     you: "Du"
+  context_panel:
+    thread_status:
+      closed: "Denna tråd är stängd. Den kommer inte längre att visas på instrumentbrädan, tråden kommer också vara listad som 'stängd' på gruppsidan."
   group_page:
     invite_people: 'Bjud in'
     options_label: 'Alternativ'
     options:
       label: 'Alternativ'
+    volume:
+      quiet: Skicka mig inte epost om den här gruppen. Aktivitet kommer att visas på instrumentbrädan.
+      quiet_aria_description: Din notifikationsvolym för den här gruppen är satt till Tyst. Du kommer inta att få epost om aktivitet i den här gruppen. Grupp aktivitet kommer att visas på din instrumentbräda.
+      mute: Göm denna grupp från instrumentbrädan och notifiera mig inte om jag inte är @omnämnd.
+      mute_aria_description: Din notifikationsvolym för den här gruppen är satt till Stum. Du kommer inte att få epost om inte någon specifikt vidnämner dig och grupp aktivitet kommer inte att visas på din instrumentbräda.
+      mute_message: '"{{name}}" har tagits bort från din instrumentbräda.'
   group_form:
     privacy: 'Integritet'
     submit_start_group: 'Startgrupp'
@@ -286,6 +300,8 @@ sv:
   dashboard_page:
     aria_label: 'Instrumentbräda'
     mark_as_read: Markera som läst
+    filtering:
+      dropdown_heading: Filtrera instrumentbrädan.
     threads_from:
       today: 'I dag'
       yesterday: 'Igår'
