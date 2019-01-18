@@ -33,7 +33,7 @@
     "angular-messages": "1.7.5",
     "angular-mocks": "^1.7.5",
     "angular-recaptcha": "4.2.0",
-    "angular-route": "^1.7.5",
+    "angular-route": "^1.7.6",
     "angular-sanitize": "^1.7.5",
     "angular-scroll": "~1.0.2",
     "angular-sortable-view": "0.0.17",
