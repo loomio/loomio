@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-score-vote-form__options{
 }
 

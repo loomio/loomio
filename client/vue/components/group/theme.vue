@@ -1,4 +1,5 @@
-<style>
+<style lang="scss">
+@import 'app.scss';
 .group-theme{
   @include lmoRow;
   padding-top: 48px;
@@ -128,7 +129,6 @@
 .group-theme__upload-help-text {
   transition: 0.25s opacity ease-in-out;
   opacity: 0;
-  @include fontTiny;
   color: $primary-text-color;
 }
 </style>
@@ -167,7 +167,7 @@ module.exports =
     <div class="group-theme">
       <div class="group-theme__cover lmo-no-print">
         <div v-if="canUploadPhotos" class="group-theme__upload-photo">
-          <button @click="openUploadCoverForm()" :title="$t('group_page.new_cover_photo')" class="lmo-flex lmo-flex__center"><i class="mdi mdi-camera mdi-24px"></i><span translate="group_page.new_photo" class="group-theme__upload-help-text"></span></button>
+          <button @click="openUploadCoverForm()" :title="$t('group_page.new_cover_photo')" class="lmo-flex lmo-flex__center"><i class="mdi mdi-camera mdi-24px"></i><span translate="group_page.new_photo" class="group-theme__upload-help-text caption"></span></button>
         </div>
       </div>
       <div v-if="compact" class="group-theme__header--compact">

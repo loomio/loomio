@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-common-stance-icon {
   display: inline-block;
 }

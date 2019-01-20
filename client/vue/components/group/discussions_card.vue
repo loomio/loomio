@@ -1,4 +1,6 @@
-<style>
+<style lang="scss">
+@import 'app.scss';
+
 .discussions-card__header{
   padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
   display: flex;

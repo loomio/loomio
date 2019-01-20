@@ -1,5 +1,6 @@
 emojione     = require 'emojione'
 marked = require 'marked'
+clone = require 'lodash/clone'
 
 _parse = marked.parse
 marked.parse = (src, opt, callback) ->
@@ -11,7 +12,7 @@ module.exports = {
   marked: marked
   customRenderer: (opts) ->
     _super   = new marked.Renderer(opts)
-    renderer = _.clone(_super)
+    renderer = clone(_super)
     cook = (text) ->
       text = emojione.shortnameToImage(text)
       text = text.replace(/\[\[@([a-zA-Z0-9]+)\]\]/g, "<a class='lmo-user-mention' href='/u/$1'>@$1</a>")

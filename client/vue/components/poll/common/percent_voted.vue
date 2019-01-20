@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-common-percent-voted {
   margin: 16px 0;
 }

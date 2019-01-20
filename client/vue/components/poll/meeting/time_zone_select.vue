@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .md-dialog .md-virtual-repeat-container.md-autocomplete-suggestions-container {
   z-index: $z-extreme !important;
 }

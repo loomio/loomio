@@ -1,7 +1,6 @@
 import GroupPage from 'vue/components/group/page.vue'
 
 module.exports = [
-  
   {path: '/dashboard', component: GroupPage},
   # {path: '/dashboard/:filter', component: 'dashboardPage'},
   # {path: '/polls', component: 'pollsPage'},

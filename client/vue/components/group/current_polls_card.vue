@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .current-polls-card__start-poll {
   margin: 0;
 }

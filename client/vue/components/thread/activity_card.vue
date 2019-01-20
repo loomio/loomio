@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .activity-card {
   padding: $cardPaddingSize 0;
 }

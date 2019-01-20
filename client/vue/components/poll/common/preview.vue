@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 a.poll-common-preview {
   display: flex;
   @include listTransition;

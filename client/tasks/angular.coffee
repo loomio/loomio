@@ -52,23 +52,23 @@ module.exports =
   #     .on('error', onError)
   #     .pipe(gulp.dest(paths.dist.assets))
 
-  haml: ->
-    pipe gulp.src(paths.angular.folders.templates), [
-      plumber(errorHandler: onError),
-      haml(),
-      htmlmin(),
-      template(
-        module: 'loomioApp'
-        transformUrl: (url) ->
-          if url.match /.+\/.+/
-            "generated/components/#{url}"
-          else
-            "generated/components/#{url.split('.')[0]}/#{url}"
-      )
-      toCoffee().on('error', gutil.log)
-      concat("templates.coffee"),
-      gulp.dest(paths.angular.dependencies.folder)
-    ]
+  # haml: ->
+  #   pipe gulp.src(paths.angular.folders.templates), [
+  #     plumber(errorHandler: onError),
+  #     haml(),
+  #     htmlmin(),
+  #     template(
+  #       module: 'loomioApp'
+  #       transformUrl: (url) ->
+  #         if url.match /.+\/.+/
+  #           "generated/components/#{url}"
+  #         else
+  #           "generated/components/#{url.split('.')[0]}/#{url}"
+  #     )
+  #     toCoffee().on('error', gutil.log)
+  #     concat("templates.coffee"),
+  #     gulp.dest(paths.angular.dependencies.folder)
+  #   ]
 
   scss: ->
     pipe gulp.src(paths.angular.scss), [

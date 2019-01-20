@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .add-comment-panel__sign-in-btn { width: 100% }
 .add-comment-panel__join-actions button {
   width: 100%;

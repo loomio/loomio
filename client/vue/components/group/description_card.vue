@@ -1,4 +1,6 @@
-<style>
+<style lang="scss">
+@import 'app.scss';
+
 .description-card__documents-link {
   @include cardMinorAction;
   margin: 0 0 0 4px;

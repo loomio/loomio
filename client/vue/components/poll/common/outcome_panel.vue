@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-common-outcome-panel__authored-by {
   @include fontSmall;
   color: $grey-on-white;

@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .thread-item--indent {
   margin-left: 42px;
 }

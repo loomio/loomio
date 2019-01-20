@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .decision-tools-card__poll-types {
   margin: 0;
   padding: 0;

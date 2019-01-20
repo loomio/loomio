@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-common-vote-form__button {
   border: 2px solid $background-color;
   min-width: auto;

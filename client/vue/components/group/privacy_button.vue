@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .group-privacy-button i {
   margin-right: 4px;
   font-size: 18px;

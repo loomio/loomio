@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .thread-item {
   padding: 4px $cardPaddingSize;
 }

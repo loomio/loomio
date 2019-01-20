@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .translation__body {
   font-style: italic;
 }

@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .group-page-actions {
   display: flex;
   align-items: center;

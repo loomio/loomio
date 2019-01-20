@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .thread-preview {
   @include md-body-1;
   @include listTransition;

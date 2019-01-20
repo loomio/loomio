@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .document-management {
   margin-bottom: 16px;
 }

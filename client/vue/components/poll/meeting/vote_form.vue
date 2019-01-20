@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 $box-width:60px;
 
 .poll-meeting-vote-form__checkbox--legend {

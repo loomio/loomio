@@ -1,15 +1,16 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'development',
-  entry: ['./angular/main.coffee'],
+  entry: ['./vue/main.coffee'],
   devtool: 'inline-source-map',
   resolve: {
     extensions: [ '.js', '.coffee', '.haml'],
     modules: [path.resolve(__dirname), path.resolve(__dirname, 'node_modules')],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.runtime.esm.js'
     }
   },
   output: {
@@ -18,6 +19,17 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(scss|css)$/,
+        use: [
+          {loader: 'vue-style-loader'},
+          {loader: 'css-loader'},
+          {loader: 'sass-loader',
+           options: { includePaths: ["angular/css", "node_modules/mdi/scss"]}
+          }
+        ],
+      },
+      { test: /\.html$/, use: 'vue-template-loader' },
       {
         test: /\.vue$/,
         loader: 'vue-loader'

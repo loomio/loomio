@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-ranked-choice-vote-form {
   .poll-common-vote-form__option {
     width: 100%;

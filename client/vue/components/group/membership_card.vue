@@ -1,4 +1,6 @@
-<style>
+<style lang="scss">
+@import 'app.scss';
+
 .membership-card__membership {
   padding: 8px 0;
 }

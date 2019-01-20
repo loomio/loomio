@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-common-set-outcome-panel {
   margin-bottom: 16px;
 }

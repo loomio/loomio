@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-proposal-chart {
   border: 0;
   margin: 0;

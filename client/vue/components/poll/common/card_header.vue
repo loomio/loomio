@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-common-card-header__poll-type {
   margin-left: 10px;
   line-height: 25px;

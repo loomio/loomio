@@ -1,26 +1,22 @@
-<script>
-import Loading from 'vue/components/loading/loading.coffee'
-import GroupTheme from 'vue/components/group/theme/group_theme.coffee'
-import GroupPageDescriptionCard from 'vue/components/group/page/description_card/group_page_description_card.coffee'
-import GroupPageDiscussionsCard from 'vue/components/group/page/discussions_card/group_page_discussions_card.coffee'
-import CurrentPollsCard from 'vue/components/current_polls_card/current_polls_card.coffee'
-import MembershipRequestsCard from 'vue/components/group/page/membership_requests_card/membership_requests_card.coffee'
-import MembershipCard from 'vue/components/group/page/membership_card/membership_card.coffee'
-import SubgroupsCard from 'vue/components/group/page/subgroups_card/subgroups_card.coffee'
-import DocumentCard from 'vue/components/document/card/document_card.coffee'
-import PollCommonIndexCard from 'vue/components/poll_common_index_card/membership_card.coffee'
+<script lang="coffee">
+import Loading from 'vue/components/common/loading.vue'
+import GroupTheme from 'vue/components/group/theme.vue'
+import GroupPageDescriptionCard from 'vue/components/group/description_card.vue'
+import GroupPageDiscussionsCard from 'vue/components/group/discussions_card.vue'
+import CurrentPollsCard from 'vue/components/group/current_polls_card.vue'
+import MembershipRequestsCard from 'vue/components/group/membership_requests_card.vue'
+import MembershipCard from 'vue/components/group/membership_card.vue'
+import SubgroupsCard from 'vue/components/group/subgroups_card.vue'
+import DocumentCard from 'vue/components/document/card.vue'
+import PollCommonIndexCard from 'vue/components/poll/common/index_card.vue'
 
-import urlFor from 'vue/mixins/url_for'
+import urlFor from 'vue/mixins/url_for.coffee'
 
 module.exports =
   mixins: [urlFor]
 </script>
 
 <template>
-  hello I'm the group page
-</template>
-
-<femplate>
   <div class="loading-wrapper lmo-two-column-layout">
     <loading ng-if="!groupPage.group"></loading>
     <main ng-if="groupPage.group" class="group-page lmo-row">
@@ -46,4 +42,4 @@ module.exports =
       </div>
     </main>
   </div>
-  </femplate>
+</template>

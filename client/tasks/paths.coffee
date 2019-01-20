@@ -14,7 +14,7 @@ include = (file, key, p = file.path) ->
 module.exports =
   vue:
     root:      'vue'
-    main:      'vue/setup.coffee'
+    main:      'vue/main.coffee'
     # folders:
     #   vendor:     include(vendor, 'angular', '')
     #   config:     glob.sync('angular/config/*.coffee')

@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .contact-form__helptext {
   margin-bottom: 48px;
 }

@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .thread-previews-container {
   @include cardNoPadding;
   margin-bottom: $cardPaddingSize;

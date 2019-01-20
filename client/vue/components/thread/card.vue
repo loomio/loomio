@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .thread-card {
   order: 10;
 }

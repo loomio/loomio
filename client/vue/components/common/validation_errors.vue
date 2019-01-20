@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .lmo-validation-error__message {
   display: block;
 }

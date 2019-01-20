@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .time-ago {
   border: 0;
 }

@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-common-votes-panel__no-votes {
   color: $grey-on-white;
   font-style: italic;

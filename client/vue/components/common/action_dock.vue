@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
   .action-dock {
     transition: opacity ease-in-out 0.25s;
   }

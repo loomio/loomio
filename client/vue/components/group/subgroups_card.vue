@@ -1,4 +1,6 @@
-<style>
+<style lang="scss">
+@import 'app.scss';
+
 .subgroups-card{
   @include card;
 }

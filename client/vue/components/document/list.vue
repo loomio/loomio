@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .document-list {
   .md-button--tiny { opacity: 0.5; }
   &:hover {

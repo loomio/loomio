@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-proposal-chart-preview {
   width: 50px;
   height: 50px;

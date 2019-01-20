@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .user-avatar__profile-link {
   cursor: pointer;
   &:hover,

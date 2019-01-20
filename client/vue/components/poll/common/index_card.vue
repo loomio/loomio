@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-common-index-card__view-more {
   cursor: pointer;
 }

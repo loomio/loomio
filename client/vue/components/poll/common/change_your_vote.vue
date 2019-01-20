@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 </style>
 
 <script lang="coffee">

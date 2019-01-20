@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .comment-form .lmo-textarea md-input-container {
   margin-top: -2px;
 }

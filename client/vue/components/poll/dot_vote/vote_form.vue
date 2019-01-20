@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .poll-dot-vote-vote-form__option{
   padding: 0 !important;
 }

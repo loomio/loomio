@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .progress-chart {
   background-color: $background-color;
   width: 50px;

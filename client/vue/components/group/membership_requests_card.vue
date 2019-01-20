@@ -1,4 +1,6 @@
-<style>
+<style lang="scss">
+@import 'app.scss';
+
 .membership-requests-card{
   @include card;
 }
