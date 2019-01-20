@@ -64,7 +64,7 @@ class GroupExportService
         next unless (data['table'] == table && !existing_ids.include?(data['record']['id']))
         klass.new(data['record'])
       end.compact!
-      klass.import(new_records, validate: false)
+      klass.import(new_records, validate: false, on_duplicate_key_ignore: true)
     end
   end
 end
