@@ -1,6 +1,6 @@
 #
 # Warning: this image is designed to be used with docker-compose as
-# instructed athttps://github.com/loomio/loomio-deploy
+# instructed at https://github.com/loomio/loomio-deploy
 #
 # It is not a standalone image.
 #
