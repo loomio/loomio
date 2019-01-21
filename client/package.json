@@ -24,7 +24,7 @@
     "actioncable": "^5.2.2",
     "angular": "1.7.5",
     "angular-animate": "1.7.5",
-    "angular-aria": "1.7.5",
+    "angular-aria": "1.7.6",
     "angular-clipboard": "latest",
     "angular-elastic": "latest",
     "angular-gravatar": "~0.4.2",
