@@ -65,7 +65,6 @@ RSpec.configure do |config|
     stub_request(:post, /graph.facebook.com/).to_return(status: 200)
     stub_request(:post, /api.cognitive.microsoft.com/).to_return(status: 200)
     stub_request(:get,  /api.microsofttranslator.com/).to_return(status: 200)
-    stub_request(:post, /outlook.office.com/).to_return(status: 200)
 
     stub_request(:head, /www.gravatar.com/).
       with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
