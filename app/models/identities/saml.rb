@@ -3,13 +3,6 @@ class Identities::Saml < Identities::Base
   set_identity_type :saml
   attr_accessor :response
 
-  def initialize(response: "")
-    super.tap do
-      self.response          = OneLogin::RubySaml::Response.new(response, skip_recipient_check: true)
-      self.response.settings = settings
-    end
-  end
-
   def settings
     @settings ||= begin
       settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(ENV['SAML_IDP_METADATA_URL'])

@@ -4,7 +4,15 @@ AppConfig = require 'shared/services/app_config'
 module.exports = class GroupIdentityModel extends BaseModel
   @singular: 'groupIdentity'
   @plural: 'groupIdentities'
-  @serializableAttributes: AppConfig.permittedParams.groupIdentity
+  @serializableAttributes: AppConfig.permittedParams.group_identity
+  @validEventKinds = [
+    'new_discussion',
+    'new_comment',
+    'poll_created',
+    'poll_closing_soon',
+    'poll_expired',
+    'stance_created'
+  ]
 
   defaultValues: ->
     customFields: {}
