@@ -1814,37 +1814,6 @@ en:
 
     reactivate: Reactivate account
 
-  install_microsoft:
-    modal_title: Install Microsoft Teams
-    card:
-      install_title: Connect to Microsoft Teams
-      install_helptext: Loomio bot notifies your team of discussions and decisions on Loomio.
-      installed_title: Connected to Microsoft Teams
-      installed_helptext: Events from this group will be sent to your Microsoft Team.
-      install_microsoft: Connect Teams
-      remove_identity: Remove this integration
-      confirm_remove_title: Remove Microsoft Teams
-      confirm_remove_helptext: |
-        Your microsoft teams channel will no longer receive updates about this group.
-        You can always go back and add it again.
-      identity_removed: Integration removed
-
-    form:
-      webhook_helptext: Enter the webhook URL provided by your Teams channel. <a href="/microsoft">Learn more about setting up Microsoft Teams with Loomio</a>
-      webhook_label: Webhook URL
-      webhook_installed: Connected to Microsoft Teams
-      webhook_placeholder: https://outlook.office.com/...
-      event_kind_helptext: Which events should be posted into the Teams channel?
-
-    event_kinds:
-      new_discussion: A new thread is started
-      new_comment: A new comment has been made
-      poll_created: A poll is created
-      stance_created: A new vote has been cast
-      poll_closing_soon: A poll is expiring soon
-      poll_expired: A poll has expired
-      outcome_created: An outcome has been shared
-
   install_slack:
     modal_title: Install Slack
     modal_helptext: First up, you'll need to sign in to slack. We'll redirect you there automatically in a second, or you can click the button below to continue.

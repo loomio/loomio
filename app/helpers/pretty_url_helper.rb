@@ -48,4 +48,5 @@ module PrettyUrlHelper
     when Membership            then polymorphic_title(model.target_model)
     end
   end
+
 end

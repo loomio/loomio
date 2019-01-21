@@ -49,7 +49,7 @@ class Clients::Base
       failure:    default_failure,
       is_success: default_is_success
     )
-    Clients::Request.new(method, [options[:host], path].compact.join('/'), {
+    Clients::Request.new(method, [options[:host], path].join('/'), {
       options[:params_field] => params_for(params),
       :"headers"             => headers_for(headers)
     }).tap { |request| request.perform!(options) }
@@ -107,12 +107,11 @@ class Clients::Base
   end
 
   def serialized_event(event)
-    serializer = [
-      "#{self.class.name.demodulize}::#{event.kind.classify}Serializer",
-      "#{self.class.name.demodulize}::#{event.eventable.class}Serializer",
-      "#{self.class.name.demodulize}::BaseSerializer"
-    ].detect { |str| str.constantize rescue nil }.constantize
-    serializer.new(event, root: false).as_json
+    begin
+      "#{self.class.name.demodulize}::#{event.kind.classify}Serializer".constantize
+    rescue NameError
+      "#{self.class.name.demodulize}::BaseSerializer".constantize
+    end.new(event, root: false).as_json
   end
 
   def default_host

@@ -69,13 +69,6 @@ FactoryBot.define do
     custom_fields { { facebook_group_id: "G123" } }
   end
 
-  factory :microsoft_identity, class: Identities::Microsoft do
-    user
-    identity_type { "microsoft" }
-    access_token { "https://outlook.office.com/webhook.url" }
-    uid { "https://outlook.office.com/webhook.url" }
-  end
-
   factory :contact do
     user
     sequence(:email) { Faker::Internet.email }

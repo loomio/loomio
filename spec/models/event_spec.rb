@@ -123,20 +123,6 @@ describe Event do
       expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }.by(1) # (the mentioned user)
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
     end
-
-    it 'notifies microsoft webhook if one exists' do
-      identity = create(:microsoft_identity, custom_fields: { event_kinds: ['poll_created'] })
-      gi = create(:group_identity, identity: identity, group: poll.group)
-      Events::PollCreated.publish!(poll, poll.author)
-      expect(WebMock).to have_requested(:post, identity.access_token)
-    end
-
-    it 'does not notify microsoft webhook if event kind is not included' do
-      identity = create(:microsoft_identity, custom_fields: { event_kinds: ['outcome_created'] })
-      gi = create(:group_identity, identity: identity, group: poll.group)
-      Events::PollCreated.publish!(poll, poll.author)
-      expect(WebMock).to_not have_requested(:post, identity.access_token)
-    end
   end
 
   describe 'poll_edited' do
@@ -245,20 +231,6 @@ describe Event do
       recipients = ActionMailer::Base.deliveries.map(&:to).flatten
       expect(recipients).to include user_mentioned.email
       expect(recipients).to include outcome.author.email
-    end
-
-    it 'notifies microsoft webhook if one exists' do
-      identity = create(:microsoft_identity, custom_fields: { event_kinds: ['outcome_created'] })
-      gi = create(:group_identity, identity: identity, group: outcome.group)
-      Events::OutcomeCreated.publish!(outcome)
-      expect(WebMock).to have_requested(:post, identity.access_token)
-    end
-
-    it 'does not notify microsoft webhook if event kind is not included' do
-      identity = create(:microsoft_identity, custom_fields: { event_kinds: ['poll_created'] })
-      gi = create(:group_identity, identity: identity, group: outcome.group)
-      Events::OutcomeCreated.publish!(outcome)
-      expect(WebMock).to_not have_requested(:post, identity.access_token)
     end
   end
 

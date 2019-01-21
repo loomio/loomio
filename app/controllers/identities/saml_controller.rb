@@ -6,14 +6,6 @@ class Identities::SamlController < Identities::BaseController
 
   private
 
-  def identity
-    @identity ||= identity_class.new.tap do |i|
-      i.response          = OneLogin::RubySaml::Response.new(params[:SAMLResponse], skip_recipient_check: true)
-      i.response.settings = i.settings
-      complete_identity(i)
-    end
-  end
-
   def oauth_url
     OneLogin::RubySaml::Authrequest.new.create(Identities::Saml.new.settings)
   end
