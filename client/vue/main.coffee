@@ -31,7 +31,7 @@ bootDat (appConfig) ->
   window.Loomio = AppConfig
 
   routes = require('vue/routes.coffee')
-  router = new VueRouter( mode: 'history', routes: routes)
+  router = new VueRouter(mode: 'history', routes: routes)
   store = require('vue/store/main.coffee')
 
   i18n = new VueI18n({locale: 'en', fallbackLocale: 'en'})

@@ -19,6 +19,7 @@
 
     %link{rel: "stylesheet", href: '/client/webpack/app.css'}
     %link{rel: 'manifest',   href: '/manifest.json'}
+    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
 
     = action_cable_meta_tag
 
@@ -37,7 +38,6 @@
           .lmo-main-background
             -# %verify_email_notice
             -# %ng_outlet{'ng-if' => '!refreshing && !pageError'}
-            router
             %router-view
             -# %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
             -# %powered_by{'ng-if' => '!refreshing && !pageError'}
