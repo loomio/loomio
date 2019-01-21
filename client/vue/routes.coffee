@@ -1,11 +1,12 @@
 import GroupPage from 'vue/components/group/page.vue'
 import DashboardPage from 'vue/components/dashboard/page.vue'
+import PollsPage from 'vue/components/polls/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
-  # {path: '/dashboard/:filter', component: 'dashboardPage'},
-  # {path: '/polls', component: 'pollsPage'},
-  # {path: '/polls/:filter', component: 'pollsPage'},
+  {path: '/dashboard/:filter', component: DashboardPage},
+  {path: '/polls', component: PollsPage},
+  {path: '/polls/:filter', component: PollsPage},
   # {path: '/inbox', component: 'inboxPage' },
   # {path: '/groups', component: 'groupsPage' },
   # {path: '/explore', component: 'explorePage'},

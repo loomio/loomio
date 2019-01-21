@@ -1,7 +1,7 @@
 <style lang="scss">
 a.poll-common-preview {
   display: flex;
-  @include listTransition;
+  // @include listTransition;
   width: 100%;
   text-decoration: none;
   padding: 8px 0;

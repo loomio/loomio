@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .dashboard-page {
   /* @include lmoRow; */
 }
