@@ -144,7 +144,7 @@ module.exports =
   mixins: [urlFor]
   props:
     group: Object
-    homePage: Object
+    homePage: Boolean
     compact: Boolean
     discussion: Object
   created: ->
