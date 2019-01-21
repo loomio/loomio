@@ -28,6 +28,7 @@ module.exports =
   components:
     Loading: Loading
     GroupTheme: GroupTheme
+    GroupPageDescriptionCard: GroupPageDescriptionCard
   mixins: [urlFor]
   data: ->
     group: null
@@ -70,7 +71,6 @@ module.exports =
 
 <template>
   <div class="loading-wrapper lmo-two-column-layout">
-    hello from group page
     <loading v-if="!group"></loading>
     <main v-if="group" class="group-page lmo-row">
       <!-- <outlet name="before-group-page" model="group"></outlet> -->
