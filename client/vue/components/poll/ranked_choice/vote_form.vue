@@ -3,7 +3,7 @@
   .poll-common-vote-form__option {
     width: 100%;
     padding-right: 0;
-    box-shadow: $whiteframe-shadow-2dp;
+    // box-shadow: $whiteframe-shadow-2dp;
     background: $card-background-color;
     &--selected {
       background: $item-highlight-color

@@ -26,7 +26,7 @@ module.exports = [
   # {path: '/g/:key/previous_polls', component: 'previousPollsPage'},
   # {path: '/g/new', component: 'startGroupPage'},
   # {path: '/g/:key', component: 'groupPage', template: 'hello.html' },
-  # {path: '/g/:key/:stub', component: 'groupPage' },
+  {path: '/g/:key/:stub', component: GroupPage},
   # {path: '/u/:key', component: 'userPage' },
   # {path: '/u/:key/:stub', component: 'userPage' },
   # {path: '/apps/authorized', component: 'authorizedAppsPage'},

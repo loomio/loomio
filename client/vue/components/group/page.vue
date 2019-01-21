@@ -14,10 +14,13 @@ import urlFor from 'vue/mixins/url_for.coffee'
 
 module.exports =
   mixins: [urlFor]
+  created: ->
+    console.log "booting group page"
 </script>
 
 <template>
   <div class="loading-wrapper lmo-two-column-layout">
+    hello from group page
     <loading ng-if="!groupPage.group"></loading>
     <main ng-if="groupPage.group" class="group-page lmo-row">
       <!-- <outlet name="before-group-page" model="groupPage.group"></outlet> -->

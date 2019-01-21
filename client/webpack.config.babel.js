@@ -1,6 +1,7 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 module.exports = {
   mode: 'development',
@@ -10,19 +11,21 @@ module.exports = {
     extensions: [ '.js', '.coffee', '.haml'],
     modules: [path.resolve(__dirname), path.resolve(__dirname, 'node_modules')],
     alias: {
-      'vue$': 'vue/dist/vue.runtime.esm.js'
+      'vue$': 'vue/dist/vue.esm.js'
     }
   },
   output: {
     path: path.resolve(__dirname, '../public/client/webpack'),
-    filename: 'app.bundle.js'
+    filename: 'app.js'
   },
   module: {
     rules: [
       {
         test: /\.(scss|css)$/,
         use: [
-          {loader: 'vue-style-loader'},
+          process.env.NODE_ENV !== 'production'
+            ? {loader: 'vue-style-loader'}
+            : {loader: MiniCssExtractPlugin.loader} ,
           {loader: 'css-loader'},
           {loader: 'sass-loader',
            options: { includePaths: ["angular/css", "node_modules/mdi/scss"]}
@@ -43,5 +46,19 @@ module.exports = {
                  options: { transpile: { presets: ['@babel/env'] }}
                } ]}]
   },
-  plugins: [ new VueLoaderPlugin() ]
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "app.css"
+    }),
+    new VueLoaderPlugin(),
+    new VuetifyLoaderPlugin(
+      // forEach(ComponentPaths, (path, name) -> {
+      //   match (originalTag, { kebabTag, camelTag, path, component }) {
+      //     if (kebabTag.startsWith('core-')) {
+      //       return [camelTag, `import ${camelTag} from '@/components/core/${camelTag.substring(4)}.vue'`]
+      //     }
+      //   }
+      // })
+    )
+  ]
 };

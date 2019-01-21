@@ -1,3 +1,38 @@
+@mixin card{
+  @include cardNoPadding;
+  @include cardPadding;
+}
+
+@mixin cardNoPadding {
+  @include md-body-1;
+  @include roundedCorners;
+  // box-shadow: $whiteframe-shadow-1dp;
+  background: $card-background-color;
+  margin-bottom: 12px;
+  max-width: 100%;
+}
+
+@mixin cardHeadingPadding {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+}
+@mixin cardPadding {
+  padding: $cardPaddingSize;
+}
+@mixin cardButton {
+  position: relative;
+  top: -7px;
+  right: -9px;
+  float: right;
+}
+
+@mixin cardMinorAction {
+  color: $grey-on-white;
+  margin: 20px 0 0 0;
+  display: block;
+  text-decoration: underline;
+  clear: both;
+}
+
 .lmo-card {
   @include card;
 }

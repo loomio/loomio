@@ -1,3 +1,5 @@
+@import '~settings/elevations';
+
 .lmo-navbar {
   .navbar__logo-bg {
     background-repeat: no-repeat;
@@ -7,7 +9,7 @@
 
   .md-toolbar-tools {
     background-color: #fff;
-    box-shadow: $whiteframe-shadow-4dp;
+    box-shadow: elevation(4dp)$whiteframe-shadow-4dp;
 
     max-height: 48px;
     justify-content: space-between;

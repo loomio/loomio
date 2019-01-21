@@ -1,52 +1,86 @@
-// NB: mixins are deprecated; please don't use them! We want to get rid of them in our app!
-@mixin md-headline {
-  font-size: $headline-font-size-base;
-  font-weight: 400;
-  line-height: rem(3.2);
-}
-
 @mixin md-caption {
-  font-size: $caption-font-size-base;
-  letter-spacing: 0.020em;
+ font-size:12px;
+ letter-spacing:.020em
+}
+
+@mixin md-body-1 {
+ font-size:14px;
+ letter-spacing:.010em;
+ font-weight:400;
+ line-height:20px
+}
+
+@mixin md-body-2 {
+ font-size:14px;
+ letter-spacing:.010em;
+ font-weight:500;
+ line-height:24px
+}
+
+@mixin md-subhead {
+  font-size:16px;
+  font-weight:400;
+  letter-spacing:.010em;
+  line-height:24px
+}
+
+@mixin md-title {
+  font-size:20px;
+  font-weight:500;
+  letter-spacing:.005em
+}
+
+@mixin md-headline {
+  font-size:34px;
+  font-weight:400;
+  line-height:40px
+}
+
+@mixin md-display-1 {
+  font-size:34px;
+  font-weight:400;
+  line-height:40px
+}
+
+@mixin md-display-2 {
+   font-size:45px;
+   font-weight:400;
+   line-height:64px
+}
+
+@mixin md-display-3 {
+  font-size:56px;
+  font-weight:400;
+  letter-spacing:-.005em;
+  line-height:56px
+}
+
+@mixin md-display-4 {
+  font-size:112px;
+  font-weight:300;
+  letter-spacing:-.010em;
+  line-height:112px
 }
 
 
-@mixin fontTiny {
-  font-size: $caption-font-size-base;
-  // font-size: 12px;
-  // line-height: 14px;
-}
-
-@mixin fontSmall {
-  @include md-body-1;
-  // font-size: 13px;
-  // line-height: 19px;
-}
-
-@mixin fontMedium {
-  @include md-body-1();
-  // font-size: 15px;
-  // line-height: 23px;
-}
-
-@mixin fontMedLarge {
-  @include md-subhead();
-  // font-size: 18px;
-  // line-height: 25px;
-}
-
-@mixin fontLarge {
-  @include md-title();
-  // font-size: 20px;
-  // line-height: 28px;
-}
+@mixin fontSmall { @include md-body-1; }
+@mixin fontTiny { @include md-caption; }
+@mixin fontMedium { @include md-body-1(); }
+@mixin fontMedLarge { @include md-subhead(); }
+@mixin fontLarge { @include md-title(); }
+@mixin fontGrande { @include md-headline(); }
 
 
-@mixin fontGrande {
-  @include md-headline();
-  // font-size: 24px;
-  // line-height: 32px;
-}
+.md-caption   { @include md-caption; }
+.md-body-1    { @include md-body-1; }
+.md-body-2    { @include md-body-2; }
+.md-subhead   { @include md-subhead; }
+.md-title     { @include md-title; }
+.md-headline  { @include md-headline; }
+.md-display-1 { @include md-display-1; }
+.md-display-2 { @include md-display-2; }
+.md-display-3 { @include md-display-3; }
+.md-display-4 { @include md-display-4; }
 
 
 @mixin truncateText {
@@ -78,27 +112,6 @@
   }
 }
 
-@mixin card{
-  @include cardNoPadding;
-  @include cardPadding;
-}
-
-@mixin cardNoPadding {
-  @include md-body-1;
-  @include roundedCorners;
-  box-shadow: $whiteframe-shadow-1dp;
-  background: $card-background-color;
-  margin-bottom: 12px;
-  max-width: 100%;
-}
-
-@mixin cardHeadingPadding {
-  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
-}
-@mixin cardPadding {
-  padding: $cardPaddingSize;
-}
-
 @mixin listTransition {
   transition: 0.25s background-color ease-in-out;
   color: $primary-text-color;
@@ -108,20 +121,6 @@
   }
 }
 
-@mixin cardButton {
-  position: relative;
-  top: -7px;
-  right: -9px;
-  float: right;
-}
-
-@mixin cardMinorAction {
-  color: $grey-on-white;
-  margin: 20px 0 0 0;
-  display: block;
-  text-decoration: underline;
-  clear: both;
-}
 
 @mixin roundedCorners {
   border-radius: 2px;
