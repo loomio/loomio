@@ -10,6 +10,7 @@ import PollPage from 'vue/components/poll/page.vue'
 import MembershipRequestsPage from 'vue/components/membership_requests/page.vue'
 import DocumentsPage from 'vue/components/documents/page.vue'
 import StartGroupPage from 'vue/components/start_group/page.vue'
+import ContactPage from 'vue/components/contact/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -20,7 +21,7 @@ module.exports = [
   # {path: '/groups', component: 'groupsPage' },
   {path: '/explore', component: ExplorePage},
   {path: '/profile', component: ProfilePage},
-  # {path: '/contact', component: 'contactPage'},
+  {path: '/contact', component: ContactPage},
   # {path: '/email_preferences', component: 'emailSettingsPage' },
   # {path: '/d/new', component: 'startDiscussionPage'},
   {path: '/d/:key', component: ThreadPage },
