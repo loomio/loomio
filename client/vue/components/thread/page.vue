@@ -188,7 +188,7 @@ module.exports =
   <div class="loading-wrapper lmo-two-column-layout">
     <loading v-if="!discussion"></loading>
     <main v-if="!isEmptyDiscussion" class="thread-page lmo-row">
-      <!-- <discussion_fork_actions discussion="discussion" ng-show="discussion.isForking()"></discussion_fork_actions> -->
+      <discussion-fork-actions :discussion="discussion" v-show="discussion.isForking()"></discussion-fork-actions>
       <group-theme :group="discussion.group()" :compact="true"></group-theme>
       <div :class="{'thread-page__forking': discussion.isForking()}" class="thread-page__main-content">
         <!-- <outlet name="before-thread-page-column-right" model="discussion" class="before-column-right lmo-column-right"></outlet> -->
