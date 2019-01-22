@@ -12,6 +12,7 @@ import DocumentsPage from 'vue/components/documents/page.vue'
 import StartGroupPage from 'vue/components/start_group/page.vue'
 import ContactPage from 'vue/components/contact/page.vue'
 import EmailSettingsPage from 'vue/components/email_settings/page.vue'
+import UserPage from 'vue/components/user/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -40,8 +41,8 @@ module.exports = [
   {path: '/g/new', component: StartGroupPage},
   {path: '/g/:key', component: GroupPage },
   {path: '/g/:key/:stub', component: GroupPage},
-  # {path: '/u/:key', component: 'userPage' },
-  # {path: '/u/:key/:stub', component: 'userPage' },
+  {path: '/u/:key', component: UserPage },
+  {path: '/u/:key/:stub', component: UserPage },
   # {path: '/apps/authorized', component: 'authorizedAppsPage'},
   # {path: '/apps/registered', component: 'registeredAppsPage'},
   # {path: '/apps/registered/:id', component: 'registeredAppPage'},
