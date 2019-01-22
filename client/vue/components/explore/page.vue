@@ -1,4 +1,5 @@
 <style lang="scss">
+@import 'variables';
 @import 'mixins';
 @import 'lmo_card';
 .explore-page {
@@ -79,124 +80,102 @@
 AppConfig = require 'shared/services/app_config'
 Records   = require 'shared/services/records'
 EventBus  = require 'shared/services/event_bus'
-urlFor         = require 'vue/mixins/url_for'
+urlFor    = require 'vue/mixins/url_for'
+
+_truncate = require 'lodash/truncate'
+_map      = require 'lodash/map'
+_sortBy   = require 'lodash/sortby'
 
 { applyLoadingFunction } = require 'shared/helpers/apply'
 
 module.exports =
   mixins: [urlFor]
   data: ->
-    threadLimit: 50
-    views: InboxService.queryByGroup()
+    groupIds: []
+    resultsCount: 0
+    perPage: AppConfig.pageSize.exploreGroups
+    canLoadMoreGroups: true
+    query: ""
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', {titleKey: 'inbox_page.unread_threads' ,page: 'inboxPage'}
-    InboxService.load()
+    # EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
+    # applyLoadingFunction(@, 'search')
+    # @search()
   methods:
-    startGroup: ->
-      ModalService.open 'GroupModal', group: => Records.groups.build()
-  computed:
-    loading: ->
-      !InboxService.loaded
-
     groups: ->
-      Records.groups.find(_.keys(@views))
+      Records.groups.find(@groupIds)
 
-    hasThreads: ->
-      InboxService.unreadCount() > 0
+    handleSearchResults: (response) ->
+      Records.groups.getExploreResultsCount(@query).then (data) =>
+        @resultsCount = data.count
+      @groupIds = @groupIds.concat _map(response.groups, 'id')
+      @canLoadMoreGroups = (response.groups || []).length == @perPage
 
-    noGroups: ->
-      !Session.user().hasAnyGroups()
+    # changing the search term
+    search: ->
+      @groupIds = []
+      Records.groups.fetchExploreGroups(@query, per: @perPage).then(@handleSearchResults)
+
+    # clicking 'show more'
+    loadMore: ->
+      Records.groups.fetchExploreGroups(@query, from: @groupIds.length, per: @perPage).then(@handleSearchResults)
+
+    groupCover: (group) ->
+      { 'background-image': "url(#{group.coverUrl('small')})" }
+
+    groupDescription: (group) ->
+      _truncate group.description, {length: 100} if group.description
+  computed:
+    showMessage: ->
+      !@searching &&
+      @query &&
+      @groups().length > 0
+
+    searchResultsMessage: ->
+      if @groups().length == 1
+        'explore_page.single_search_result'
+      else
+        'explore_page.multiple_search_results'
+
+    noResultsFound: ->
+      !@searching && (@groups().length < @perPage || !@canLoadMoreGroups)
 
     orderedGroups: ->
-      _.sortBy @groups(), '-recentActivityCount'
-
-#
-# $controller = ($rootScope, $timeout) ->
-#   EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
-#
-#   @groupIds = []
-#   @resultsCount = 0
-#   @perPage = AppConfig.pageSize.exploreGroups
-#   @canLoadMoreGroups = true
-#   @query = ""
-#   $timeout -> document.querySelector('#search-field').focus()
-#
-#   @groups = =>
-#     Records.groups.find(@groupIds)
-#
-#   @handleSearchResults = (response) =>
-#     Records.groups.getExploreResultsCount(@query).then (data) =>
-#       @resultsCount = data.count
-#     @groupIds = @groupIds.concat _.map(response.groups, 'id')
-#     @canLoadMoreGroups = (response.groups || []).length == @perPage
-#
-#   # changing the search term
-#   @search = =>
-#     @groupIds = []
-#     Records.groups.fetchExploreGroups(@query, per: @perPage).then(@handleSearchResults)
-#   applyLoadingFunction(@, 'search')
-#   @search()
-#
-#   # clicking 'show more'
-#   @loadMore = =>
-#     Records.groups.fetchExploreGroups(@query, from: @groupIds.length, per: @perPage).then(@handleSearchResults)
-#
-#
-#   @groupCover = (group) ->
-#     { 'background-image': "url(#{group.coverUrl('small')})" }
-#
-#   @groupDescription = (group) ->
-#     _.truncate group.description, {length: 100} if group.description
-#
-#   @showMessage = ->
-#     !@searching &&
-#     @query &&
-#     @groups().length > 0
-#
-#   @searchResultsMessage = ->
-#     if @groups().length == 1
-#       'explore_page.single_search_result'
-#     else
-#       'explore_page.multiple_search_results'
-#
-#   @noResultsFound = ->
-#     !@searching && (@groups().length < @perPage || !@canLoadMoreGroups)
-
+      _sortBy @groups(), '-recentActivityCount'
 </script>
 
 <template>
   <div class="lmo-one-column-layout">
     <main class="explore-page">
-        <h1 v-t="'explore_page.header'" class="lmo-h1-medium"></h1>
-        <!-- <md-input-container class="explore-page__search-field">
-            <input ng-model="query" ng-model-options="{debounce: 600}" ng-change="search()" placeholder="{{ \'explore_page.search_placeholder\' | translate }}" id="search-field"><i aria-hidden="true" class="mdi mdi-magnify"></i>
-            <loading ng-show="searchExecuting"></loading>
-        </md-input-container> -->
-        <div v-show="showMessage()" v-t="{ path: searchResultsMessage(), args: { resultCount: resultsCount, searchTerm: query } }" class="explore-page__search-results"></div>
-        <div class="explore-page__groups">
-            <a v-for="group in orderedGroups" :key="group.id" :href="urlFor(group)" class="explore-page__group">
-                <div :style="groupCover(group)" class="explore-page__group-cover"></div>
-                <div class="explore-page__group-details">
-                    <h2 class="lmo-h2">{{group.name}}</h2>
-                    <div class="explore-page__group-description">{{groupDescription(group)}}</div>
-                    <div class="explore-page__group-stats lmo-flex lmo-flex__start lmo-flex__center">
-                      <i class="mdi mdi-account-multiple lmo-margin-right"></i>
-                      <span class="lmo-margin-right">{{group.membershipsCount}}</span>
-                      <i class="mdi mdi-comment-text-outline lmo-margin-right"></i>
-                      <span class="lmo-margin-right">{{group.discussionsCount}}</span>
-                      <i class="mdi mdi-thumbs-up-down lmo-margin-right"></i>
-                      <span class="lmo-margin-right">{{group.pollsCount}}</span>
-                      <i></i>
-                      <span></span>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div v-show="canLoadMoreGroups" class="lmo-show-more">
-            <button v-show="!searchExecuting" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more"></button>
-        </div>
-        <loading v-show="searchExecuting"></loading>
-        <div v-show="noResultsFound()" v-t="'explore_page.no_results_found'" class="explore-page__no-results-found"></div>
+      <h1 v-t="'explore_page.header'" class="lmo-h1-medium"></h1>
+      <!-- <md-input-container class="explore-page__search-field">
+          <input ng-model="query" ng-model-options="{debounce: 600}" ng-change="search()" placeholder="{{ \'explore_page.search_placeholder\' | translate }}" id="search-field"><i aria-hidden="true" class="mdi mdi-magnify"></i>
+          <loading ng-show="searchExecuting"></loading>
+      </md-input-container> -->
+      <div v-show="showMessage" v-t="{ path: searchResultsMessage, args: { resultCount: resultsCount, searchTerm: query } }" class="explore-page__search-results"></div>
+      <div class="explore-page__groups">
+        <a v-for="group in orderedGroups" :key="group.id" :href="urlFor(group)" class="explore-page__group">
+          <div :style="groupCover(group)" class="explore-page__group-cover"></div>
+          <div class="explore-page__group-details">
+            <h2 class="lmo-h2">{{group.name}}</h2>
+            <div class="explore-page__group-description">{{groupDescription(group)}}</div>
+            <div class="explore-page__group-stats lmo-flex lmo-flex__start lmo-flex__center">
+              <i class="mdi mdi-account-multiple lmo-margin-right"></i>
+              <span class="lmo-margin-right">{{group.membershipsCount}}</span>
+              <i class="mdi mdi-comment-text-outline lmo-margin-right"></i>
+              <span class="lmo-margin-right">{{group.discussionsCount}}</span>
+              <i class="mdi mdi-thumbs-up-down lmo-margin-right"></i>
+              <span class="lmo-margin-right">{{group.pollsCount}}</span>
+              <i></i>
+              <span></span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div v-show="canLoadMoreGroups" class="lmo-show-more">
+        <!-- <button v-show="!searchExecuting" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more"></button> -->
+      </div>
+      <!-- <loading v-show="searchExecuting"></loading> -->
+      <div v-show="noResultsFound" v-html="$t('explore_page.no_results_found')" class="explore-page__no-results-found"></div>
     </main>
   </div>
 </template>
