@@ -5,6 +5,10 @@ import InboxPage from 'vue/components/inbox/page.vue'
 import ExplorePage from 'vue/components/explore/page.vue'
 import ThreadPage from 'vue/components/thread/page.vue'
 import ProfilePage from 'vue/components/profile/page.vue'
+import StartPollPage from 'vue/components/start_poll/page.vue'
+import PollPage from 'vue/components/poll/page.vue'
+import MembershipRequestsPage from 'vue/components/membership_requests/page.vue'
+import DocumentsPage from 'vue/components/documents/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -22,13 +26,13 @@ module.exports = [
   {path: '/d/:key/:stub', component: ThreadPage },
   {path: '/d/:key/:stub/:sequence_id', component: ThreadPage },
   {path: '/d/:key/comment/:comment', component: ThreadPage},
-  # {path: '/p/new', component: 'startPollPage'},
-  # {path: '/p/new/:poll_type', component: 'startPollPage'},
-  # {path: '/p/:key/', component: 'pollPage'},
-  # {path: '/p/:key/:stub', component: 'pollPage'},
-  # {path: '/g/:key/memberships', component: 'groupPage'},
-  # {path: '/g/:key/membership_requests', component: 'membershipRequestsPage'},
-  # {path: '/g/:key/documents', component: 'documentsPage'},
+  {path: '/p/new', component: StartPollPage},
+  {path: '/p/new/:poll_type', component: StartPollPage},
+  {path: '/p/:key/', component: PollPage},
+  {path: '/p/:key/:stub', component: PollPage},
+  {path: '/g/:key/memberships', component: GroupPage},
+  {path: '/g/:key/membership_requests', component: MembershipRequestsPage},
+  {path: '/g/:key/documents', component: DocumentsPage},
   # {path: '/g/:key/previous_polls', component: 'previousPollsPage'},
   # {path: '/g/new', component: 'startGroupPage'},
   {path: '/g/:key', component: GroupPage },
@@ -40,5 +44,5 @@ module.exports = [
   # {path: '/apps/registered/:id', component: 'registeredAppPage'},
   # {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
   # {path: '/slack/install', component: 'installSlackPage'},
-  # {path: '/:handle', component: 'groupPage' },
+  {path: '/:handle', component: GroupPage },
 ]

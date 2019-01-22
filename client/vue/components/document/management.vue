@@ -1,4 +1,5 @@
 <style lang="scss">
+@import 'variables';
 .document-management {
   margin-bottom: 16px;
 }
