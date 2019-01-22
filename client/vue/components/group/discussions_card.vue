@@ -64,9 +64,13 @@ EventBus           = require 'shared/services/event_bus'
 RecordLoader       = require 'shared/services/record_loader'
 ThreadQueryService = require 'shared/services/thread_query_service'
 ModalService       = require 'shared/services/modal_service'
-LmoUrlService      = require 'shared/services/lmo_url_service'
 
 { applyLoadingFunction } = require 'shared/helpers/apply'
+
+# import { isEmpty } from 'lodash'
+_isEmpty = require 'lodash/isempty'
+_map = require 'lodash/map'
+_throttle = require 'lodash/throttle'
 
 module.exports =
   props:
@@ -76,7 +80,7 @@ module.exports =
     # EventBus.listen this, 'subgroupsLoaded', -> @init(@filter)
     applyLoadingFunction(this, 'searchThreads')
   data: ->
-    filter: LmoUrlService.params().filter or 'show_opened'
+    filter: @$route.params.filter or 'show_opened'
     pinned: ThreadQueryService.queryFor
       name: "group_#{@group.key}_pinned"
       group: @group
@@ -96,13 +100,13 @@ module.exports =
     searched: {}
     fragment: ''
   methods:
-    searchThreads: _.throttle ->
-      return Promise.resolve(true) unless !_.isEmpty @fragment
+    searchThreads: _throttle ->
+      return Promise.resolve(true) unless !isEmpty @fragment
       Records.discussions.search(@group.key, @fragment).then (data) =>
         @searched = Object.assign {}, @searched, ThreadQueryService.queryFor
           name: "group_#{@group.key}_searched"
           group: @group
-          ids: _.map(data.discussions, 'id')
+          ids: _map(data.discussions, 'id')
           overwrite: true
     , 250
     startDiscussion: ->
@@ -114,6 +118,8 @@ module.exports =
       @searchOpen = false
     setFilter: (newFilter) ->
       @filter = newFilter
+    isEmpty: (o) ->
+      _isEmpty(o)
 
   watch:
     searchOpen: ->
@@ -122,16 +128,17 @@ module.exports =
   computed:
     loading: ->
       @loader.loadingFirst || @searchThreadsExecuting
-    isEmpty: ->
+    noThreads: ->
       return if @loading
-      if !_.isEmpty @fragment
-        _.isEmpty @searched || !@searched.any()
+      if !@isEmpty @fragment
+        @isEmpty @searched || !@searched.any()
       else
         !@discussions.any() && !@pinned.any()
     canViewPrivateContent: ->
       AbilityService.canViewPrivateContent(@group)
     canStartThread: ->
       AbilityService.canStartThread(@group)
+
 </script>
 
 <template>
@@ -199,7 +206,7 @@ module.exports =
         </button>
     </div>
     <div class="discussions-card__content">
-        <div v-if="isEmpty" class="discussions-card__list--empty">
+        <div v-if="noThreads" class="discussions-card__list--empty">
             <p v-t="{ path: 'group_page.no_threads_here' }" class="lmo-hint-text"></p>
             <p
               v-if="!canViewPrivateContent"
@@ -207,7 +214,7 @@ module.exports =
               class="lmo-hint-text"
             ></p>
         </div>
-        <div v-if="_.isEmpty(fragment)" class="discussions-card__list">
+        <div v-if="isEmpty(fragment)" class="discussions-card__list">
             <section
               v-if="discussions.any() || pinned.any()"
               class="thread-preview-collection__container"
@@ -244,11 +251,11 @@ module.exports =
             ></loading>
         </div>
         <div
-          v-if="!_.isEmpty(fragment)"
+          v-if="!isEmpty(fragment)"
           class="discussions-card__list"
         >
           <section
-            v-if="!_.isEmpty(searched) && searched.any()"
+            v-if="!isEmpty(searched) && searched.any()"
             class="thread-preview-collection__container"
           >
             <thread-preview-collection

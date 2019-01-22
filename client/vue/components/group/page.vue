@@ -11,24 +11,9 @@ PaginationService = require 'shared/services/pagination_service'
 
 { subscribeTo } = require 'shared/helpers/cable'
 
-import Loading from 'vue/components/common/loading.vue'
-import GroupTheme from 'vue/components/group/theme.vue'
-import GroupPageDescriptionCard from 'vue/components/group/description_card.vue'
-import GroupPageDiscussionsCard from 'vue/components/group/discussions_card.vue'
-import CurrentPollsCard from 'vue/components/group/current_polls_card.vue'
-import MembershipRequestsCard from 'vue/components/group/membership_requests_card.vue'
-import MembershipCard from 'vue/components/group/membership_card.vue'
-import SubgroupsCard from 'vue/components/group/subgroups_card.vue'
-import DocumentCard from 'vue/components/document/card.vue'
-import PollCommonIndexCard from 'vue/components/poll/common/index_card.vue'
-
 import urlFor from 'vue/mixins/url_for.coffee'
 
 module.exports =
-  components:
-    Loading: Loading
-    GroupTheme: GroupTheme
-    GroupPageDescriptionCard: GroupPageDescriptionCard
   mixins: [urlFor]
   data: ->
     group: null
@@ -83,7 +68,7 @@ module.exports =
         <div class="lmo-group-column-right">
           <!--<outlet name="before-group-page-column-right" model="group"></outlet>-->
           <current-polls-card :model="group"></current-polls-card>
-          <membership-request-card :group="group"></membership-request-card>
+          <membership-requests-card :group="group"></membership-requests-card>
           <membership-card :group="group"></membership-card>
           <membership-card :group="group" :pending="true"></membership-card>
           <subgroups-card  :group="group"></subgroups-card>
