@@ -23,7 +23,7 @@ module.exports =
     joinGroup: ->
       if AbilityService.isLoggedIn()
         Records.memberships.joinGroup(@group).then =>
-          EventBus.broadcast $rootScope, 'joinedGroup'
+          # EventBus.broadcast $rootScope, 'joinedGroup'
           FlashService.success('join_group_button.messages.joined_group', group: @group.fullName)
       else
         ModalService.open 'AuthModal'
@@ -51,13 +51,13 @@ module.exports =
       AbilityService.isLoggedIn()
 
   created: ->
-    Records.membershipRequests.fetchMyPendingByGroup($scope.group.key)
+    Records.membershipRequests.fetchMyPendingByGroup(@group.key)
 </script>
 
 <template>
       <div class="blank">
         <div v-if="!isMember" class="join-group-button">
-          <div v-if="canJoinGroup()" class="blank">
+          <div v-if="canJoinGroup" class="blank">
             <button md-button :class="{'btn-block': block}" v-t="'join_group_button.join_group'" @click="joinGroup()" class="md-raised md-primary join-group-button__join-group"></button>
           </div>
           <div v-if="canRequestMembership" class="blank">

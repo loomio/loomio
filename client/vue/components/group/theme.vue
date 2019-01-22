@@ -140,7 +140,11 @@ AbilityService = require 'shared/services/ability_service'
 ModalService   = require 'shared/services/modal_service'
 urlFor         = require 'vue/mixins/url_for'
 
+import JoinGroupButton from 'vue/components/group/join_button.vue'
+
 module.exports =
+  components:
+    JoinGroupButton: JoinGroupButton
   mixins: [urlFor]
   props:
     group: Object
