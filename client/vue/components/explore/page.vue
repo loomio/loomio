@@ -1,4 +1,6 @@
 <style lang="scss">
+@import 'mixins';
+@import 'lmo_card';
 .explore-page {
   @include cardPadding;
 }
@@ -77,6 +79,7 @@
 AppConfig = require 'shared/services/app_config'
 Records   = require 'shared/services/records'
 EventBus  = require 'shared/services/event_bus'
+urlFor         = require 'vue/mixins/url_for'
 
 { applyLoadingFunction } = require 'shared/helpers/apply'
 

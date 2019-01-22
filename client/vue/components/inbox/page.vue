@@ -1,6 +1,9 @@
 <style lang="scss">
+@import 'mixins';
+@import 'lmo_card';
+
 .inbox-page{
-  // @include lmoRow;
+  @include lmoRow;
 }
 
 .inbox-page .thread-preview__pin {
@@ -8,7 +11,7 @@
 }
 
 .inbox-page__group {
-  // margin-bottom: $cardPaddingSize * 2;
+  margin-bottom: $cardPaddingSize * 2;
 }
 
 .inbox-page__heading{
@@ -16,18 +19,18 @@
 }
 
 .inbox-page__no-threads, .inbox-page__no-groups {
-  // margin-left: $cardPaddingSize;
+  margin-left: $cardPaddingSize;
 }
 
 .inbox-page__group-name a{
-  // @include fontMedium;
+  @include fontMedium;
   line-height: 30px;
-  // color: $grey-on-grey;
-  // padding-left: $thinPaddingSize;
+  color: $grey-on-grey;
+  padding-left: $thinPaddingSize;
 }
 
 .inbox-page__group-name-container {
-  // padding: 0 $cardPaddingSize;
+  padding: 0 $cardPaddingSize;
 }
 </style>
 
@@ -38,10 +41,12 @@ Records        = require 'shared/services/records'
 EventBus       = require 'shared/services/event_bus'
 InboxService   = require 'shared/services/inbox_service'
 ModalService   = require 'shared/services/modal_service'
+urlFor         = require 'vue/mixins/url_for'
 
 # import ThreadPreviewCollection from 'vue/components/thread/preview_collection.vue'
 
 module.exports =
+  mixins: [urlFor]
   data: ->
     threadLimit: 50
     views: InboxService.queryByGroup()

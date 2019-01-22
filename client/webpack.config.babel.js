@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.styl$/,
-        use: ['style-loader', 'css-loader', 'stylus-loader'],
+        use: ['null-loader'],
       },
       { test: /\.html$/, use: 'vue-template-loader' },
       {
