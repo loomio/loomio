@@ -18,9 +18,7 @@ module.exports =
   data: ->
     group: null
   created: ->
-    console.log "params key", @$route.params.key
     Records.groups.findOrFetch(@$route.params.key, {}, true).then (group) =>
-      console.log('group', group)
       @init(group)
     , (error) ->
       # EventBus.broadcast $rootScope, 'pageError', error
