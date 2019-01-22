@@ -9,6 +9,7 @@ import StartPollPage from 'vue/components/start_poll/page.vue'
 import PollPage from 'vue/components/poll/page.vue'
 import MembershipRequestsPage from 'vue/components/membership_requests/page.vue'
 import DocumentsPage from 'vue/components/documents/page.vue'
+import StartGroupPage from 'vue/components/start_group/page.vue'
 import ContactPage from 'vue/components/contact/page.vue'
 import EmailSettingsPage from 'vue/components/email_settings/page.vue'
 
@@ -36,7 +37,7 @@ module.exports = [
   {path: '/g/:key/membership_requests', component: MembershipRequestsPage},
   {path: '/g/:key/documents', component: DocumentsPage},
   # {path: '/g/:key/previous_polls', component: 'previousPollsPage'},
-  # {path: '/g/new', component: 'startGroupPage'},
+  {path: '/g/new', component: StartGroupPage},
   {path: '/g/:key', component: GroupPage },
   {path: '/g/:key/:stub', component: GroupPage},
   # {path: '/u/:key', component: 'userPage' },
