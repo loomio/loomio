@@ -73,16 +73,16 @@ module.exports =
     canAdministerGroup: ->
       AbilityService.canAdministerGroup(@group)
 
-    canEditGroup: =>
+    canEditGroup: ->
       AbilityService.canEditGroup(@group)
 
     canAddSubgroup: ->
       AbilityService.canCreateSubgroups(@group)
 
-    canArchiveGroup: =>
+    canArchiveGroup: ->
       AbilityService.canArchiveGroup(@group)
 
-    canLeaveGroup: =>
+    canLeaveGroup: ->
       AbilityService.canRemoveMembership(@group.membershipFor(Session.user()))
 
     canChangeVolume: ->
@@ -97,23 +97,23 @@ module.exports =
         <i class="mdi mdi-chevron-down"></i>
       </v-btn>
       <v-list class="group-actions-dropdown__menu-content">
-        <v-list-tile v-if="canEditGroup()" @click="editGroup()" class="group-page-actions__edit-group-link">
+        <v-list-tile v-if="canEditGroup" @click="editGroup()" class="group-page-actions__edit-group-link">
           <v-list-tile-title v-t="'group_page.options.edit_group'"></v-list-tile-title>
         </v-list-tile>
-        <v-list-tile v-if="canChangeVolume()" @click="openChangeVolumeForm()" class="group-page-actions__change-volume-link">
+        <v-list-tile v-if="canChangeVolume" @click="openChangeVolumeForm()" class="group-page-actions__change-volume-link">
           <v-list-tile-title v-t="'group_page.options.email_settings'"></v-list-tile-title>
         </v-list-tile>
 
         <!-- <outlet name="after-group-actions-manage-memberships" model="group"></outlet>
         <outlet name="after-group-actions-manage-memberships-2" model="group"></outlet> -->
 
-        <v-list-tile v-if="canExportData()" @click="openGroupExportModal()" class="group-page-actions__export-json">
+        <v-list-tile v-if="canExportData" @click="openGroupExportModal()" class="group-page-actions__export-json">
           <v-list-tile-title v-t="'group_page.options.export_data'"></v-list-tile-title>
         </v-list-tile>
-        <v-list-tile v-if="canLeaveGroup()" @click="leaveGroup()" class="group-page-actions__leave-group">
+        <v-list-tile v-if="canLeaveGroup" @click="leaveGroup()" class="group-page-actions__leave-group">
           <v-list-tile-title v-t="'group_page.options.leave_group'"></v-list-tile-title>
         </v-list-tile>
-        <v-list-tile v-if="canArchiveGroup()" @click="archiveGroup()" class="group-page-actions__archive-group">
+        <v-list-tile v-if="canArchiveGroup" @click="archiveGroup()" class="group-page-actions__archive-group">
           <v-list-tile-title v-t="'group_page.options.deactivate_group'"></v-list-tile-title>
         </v-list-tile>
       </v-list>

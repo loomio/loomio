@@ -45,6 +45,6 @@ module.exports =
           <span v-t="'common.privacy.' + group.groupPrivacy"></span>
         </div>
       </button>
-      {{privacyDescription()}}
+      {{privacyDescription}}
     </v-tooltip>
 </template>
