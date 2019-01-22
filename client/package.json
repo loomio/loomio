@@ -74,7 +74,7 @@
     "coffeeify": "^3.0.1",
     "coffeescript": "^2.3.2",
     "geckodriver": "^1.14.1",
-    "globby": "^8.0.1",
+    "globby": "^9.0.0",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^2.2.6",
     "gulp-autoprefixer": "^6.0.0",
