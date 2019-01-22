@@ -4,6 +4,8 @@ $boxMediumSize: 50px;
 $boxLargeSize: 80px;
 $boxFeaturedSize: 175px;
 
+@import 'mixins';
+
 @mixin smallIcon {
   @include roundedCorners;
   width: $boxSmallSize;

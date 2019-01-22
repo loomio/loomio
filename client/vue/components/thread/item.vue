@@ -1,4 +1,6 @@
 <style lang="scss">
+@import 'variables';
+@import 'mixins';
 .thread-item {
   padding: 4px $cardPaddingSize;
 }

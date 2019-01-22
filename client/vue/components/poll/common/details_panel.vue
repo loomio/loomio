@@ -1,4 +1,5 @@
 <style lang="scss">
+@import 'mixins';
 .poll-common-details-panel__started-by {
   @include fontSmall;
   color: $grey-on-white;

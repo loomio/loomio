@@ -1,4 +1,5 @@
 <style lang="scss">
+@import 'variables';
 .poll-common-votes-panel__no-votes {
   color: $grey-on-white;
   font-style: italic;

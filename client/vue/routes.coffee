@@ -3,6 +3,7 @@ import DashboardPage from 'vue/components/dashboard/page.vue'
 import PollsPage from 'vue/components/polls/page.vue'
 import InboxPage from 'vue/components/inbox/page.vue'
 import ExplorePage from 'vue/components/explore/page.vue'
+import ThreadPage from 'vue/components/thread/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -16,10 +17,10 @@ module.exports = [
   # {path: '/contact', component: 'contactPage'},
   # {path: '/email_preferences', component: 'emailSettingsPage' },
   # {path: '/d/new', component: 'startDiscussionPage'},
-  # {path: '/d/:key', component: 'threadPage' },
-  # {path: '/d/:key/:stub', component: 'threadPage' },
-  # {path: '/d/:key/:stub/:sequence_id', component: 'threadPage' },
-  # {path: '/d/:key/comment/:comment', component: 'threadPage'},
+  {path: '/d/:key', component: ThreadPage },
+  {path: '/d/:key/:stub', component: ThreadPage },
+  {path: '/d/:key/:stub/:sequence_id', component: ThreadPage },
+  {path: '/d/:key/comment/:comment', component: ThreadPage},
   # {path: '/p/new', component: 'startPollPage'},
   # {path: '/p/new/:poll_type', component: 'startPollPage'},
   # {path: '/p/:key/', component: 'pollPage'},

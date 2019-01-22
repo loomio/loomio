@@ -78,5 +78,6 @@ module.exports = {
   GroupForm: 'group/form',
   GroupFormActions: 'group/form_actions',
   GroupSettingCheckbox: 'group/setting_checkbox',
+  DiscussionForkActions: 'discussion/fork_actions',
   MembershipRequestsCard: 'group/membership_requests_card'
 }
