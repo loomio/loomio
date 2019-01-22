@@ -13,6 +13,8 @@ Records      = require 'shared/services/records'
 EventBus     = require 'shared/services/event_bus'
 ModalService = require 'shared/services/modal_service'
 
+_sortBy   = require 'lodash/sortby'
+
 module.exports =
   data: ->
     loading: true
