@@ -1,4 +1,6 @@
 <style lang="scss">
+@import 'variables';
+
 .progress-chart {
   background-color: $background-color;
   width: 50px;

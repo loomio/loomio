@@ -1,4 +1,6 @@
 <style lang="scss">
+@import "variables";
+
 .user-avatar__profile-link {
   cursor: pointer;
   &:hover,

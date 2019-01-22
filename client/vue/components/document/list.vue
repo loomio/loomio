@@ -1,4 +1,6 @@
 <style lang="scss">
+@import 'mixins';
+
 .document-list {
   .md-button--tiny { opacity: 0.5; }
   &:hover {
@@ -163,7 +165,7 @@ module.exports =
               ></document_list_edit> -->
               <button
                 v-if="showEdit"
-                @click="$emit(\'documentRemoved\', document)"
+                @click="$emit('documentRemoved', document)"
                 class="md-button--tiny"
               >
                 <i class="mdi mdi-close"></i>

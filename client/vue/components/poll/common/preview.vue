@@ -1,4 +1,6 @@
 <style lang="scss">
+@import 'mixins';
+
 a.poll-common-preview {
   display: flex;
   @include listTransition;

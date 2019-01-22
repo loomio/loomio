@@ -1,4 +1,7 @@
 <style lang="scss">
+@import 'mixins';
+@import 'boxes';
+
 .thread-preview {
   @include md-body-1;
   @include listTransition;

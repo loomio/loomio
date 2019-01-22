@@ -1,4 +1,6 @@
 <style lang="scss">
+@import 'variables';
+
 .poll-proposal-chart-preview {
   width: 50px;
   height: 50px;

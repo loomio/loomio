@@ -1,3 +1,5 @@
+@import 'mixins';
+
 @mixin card{
   @include cardNoPadding;
   @include cardPadding;

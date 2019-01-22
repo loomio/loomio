@@ -1,4 +1,6 @@
 <style lang="scss">
+@import 'lmo_card';
+
 .thread-previews-container {
   @include cardNoPadding;
   margin-bottom: $cardPaddingSize;
