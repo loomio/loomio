@@ -66,7 +66,7 @@ module.exports =
           </div>
         </div>
         <div v-if="!canAddComment()" class="add-comment-panel__join-actions">
-          <!-- <join_group_button group="eventWindow.discussion.group()" v-if="isLoggedIn()" block="true"></join_group_button> -->
+          <join-group-button :group="eventWindow.discussion.group()" v-if="isLoggedIn()" :block="true"></join-group-button>
           <button v-t="'comment_form.sign_in'" @click="signIn()" v-if="!isLoggedIn()" class="md-primary md-raised add-comment-panel__sign-in-btn"></button>
         </div>
       </div>
