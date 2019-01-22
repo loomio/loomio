@@ -4,6 +4,7 @@ import PollsPage from 'vue/components/polls/page.vue'
 import InboxPage from 'vue/components/inbox/page.vue'
 import ExplorePage from 'vue/components/explore/page.vue'
 import ThreadPage from 'vue/components/thread/page.vue'
+import ProfilePage from 'vue/components/profile/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -13,7 +14,7 @@ module.exports = [
   {path: '/inbox', component: InboxPage },
   # {path: '/groups', component: 'groupsPage' },
   {path: '/explore', component: ExplorePage},
-  # {path: '/profile', component: 'profilePage'},
+  {path: '/profile', component: ProfilePage},
   # {path: '/contact', component: 'contactPage'},
   # {path: '/email_preferences', component: 'emailSettingsPage' },
   # {path: '/d/new', component: 'startDiscussionPage'},

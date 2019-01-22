@@ -5,7 +5,7 @@
 
 md-input-container label.lmo-validation-error__message {
   font-size: 11px;
-  color: $highlight-red !important;
+  // color: $highlight-red !important;
 }
 
 </style>
