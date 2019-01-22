@@ -26,18 +26,17 @@ module.exports =
     init: (group) ->
       @group = group
       subscribeTo(@group)
-
       Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
       maxDiscussions = if AbilityService.canViewPrivateContent(@group)
         @group.discussionsCount
       else
         @group.publicDiscussionsCount
-      # @pageWindow = PaginationService.windowFor
-      #   current:  parseInt(LmoUrlService.params().from or 0)
-      #   min:      0
-      #   max:      maxDiscussions
-      #   pageType: 'groupThreads'
+      @pageWindow = PaginationService.windowFor
+        current:  parseInt(@$route.params.from or 0)
+        min:      0
+        max:      maxDiscussions
+        pageType: 'groupThreads'
 
       # EventBus.broadcast $rootScope, 'currentComponent',
       #   title: @group.fullName
