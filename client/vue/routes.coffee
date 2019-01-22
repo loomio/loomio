@@ -15,6 +15,7 @@ import EmailSettingsPage from 'vue/components/email_settings/page.vue'
 import UserPage from 'vue/components/user/page.vue'
 import AuthorizedAppsPage from 'vue/components/authorized_apps/page.vue'
 import RegisteredAppsPage from 'vue/components/registered_apps/page.vue'
+import RegisteredAppPage from 'vue/components/registered_app/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -47,8 +48,8 @@ module.exports = [
   {path: '/u/:key/:stub', component: UserPage },
   {path: '/apps/authorized', component: AuthorizedAppsPage},
   {path: '/apps/registered', component: RegisteredAppsPage},
-  # {path: '/apps/registered/:id', component: 'registeredAppPage'},
-  # {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
+  {path: '/apps/registered/:id', component: RegisteredAppPage},
+  {path: '/apps/registered/:id/:stub', component: RegisteredAppPage},
   # {path: '/slack/install', component: 'installSlackPage'},
   {path: '/:handle', component: GroupPage },
 ]
