@@ -14,7 +14,7 @@ LmoUrlService  = require 'shared/services/lmo_url_service'
 module.exports =
   props:
     poll: Object
-    
+
   data: ->
     stance: @getLastStance()
   created: ->
@@ -27,7 +27,7 @@ module.exports =
                       Records.stances.build(
                         pollId:    @poll.id,
                         userId:    AppConfig.currentUserId
-                      ).choose(LmoUrlService.params().poll_option_id)
+                      ).choose(@$route.params.poll_option_id)
     userHasVoted: ->
       myLastStanceFor(@poll)?
 

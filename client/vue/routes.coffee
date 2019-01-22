@@ -5,6 +5,7 @@ import InboxPage from 'vue/components/inbox/page.vue'
 import ExplorePage from 'vue/components/explore/page.vue'
 import ThreadPage from 'vue/components/thread/page.vue'
 import StartPollPage from 'vue/components/start_poll/page.vue'
+import PollPage from 'vue/components/poll/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -24,8 +25,8 @@ module.exports = [
   {path: '/d/:key/comment/:comment', component: ThreadPage},
   {path: '/p/new', component: StartPollPage},
   {path: '/p/new/:poll_type', component: StartPollPage},
-  # {path: '/p/:key/', component: 'pollPage'},
-  # {path: '/p/:key/:stub', component: 'pollPage'},
+  {path: '/p/:key/', component: PollPage},
+  {path: '/p/:key/:stub', component: PollPage},
   # {path: '/g/:key/memberships', component: 'groupPage'},
   # {path: '/g/:key/membership_requests', component: 'membershipRequestsPage'},
   # {path: '/g/:key/documents', component: 'documentsPage'},
