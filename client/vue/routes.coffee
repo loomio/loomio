@@ -16,6 +16,7 @@ import UserPage from 'vue/components/user/page.vue'
 import AuthorizedAppsPage from 'vue/components/authorized_apps/page.vue'
 import RegisteredAppsPage from 'vue/components/registered_apps/page.vue'
 import RegisteredAppPage from 'vue/components/registered_app/page.vue'
+import InstallSlackPage from 'vue/components/install_slack/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -50,6 +51,6 @@ module.exports = [
   {path: '/apps/registered', component: RegisteredAppsPage},
   {path: '/apps/registered/:id', component: RegisteredAppPage},
   {path: '/apps/registered/:id/:stub', component: RegisteredAppPage},
-  # {path: '/slack/install', component: 'installSlackPage'},
+  {path: '/slack/install', component: InstallSlackPage},
   {path: '/:handle', component: GroupPage },
 ]
