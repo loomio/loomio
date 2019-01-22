@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'mixins';
+
 .lmo-one-column-layout, .lmo-two-column-layout{
   margin: auto;
   z-index: $z-zero;

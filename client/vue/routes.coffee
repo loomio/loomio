@@ -10,6 +10,7 @@ import PollPage from 'vue/components/poll/page.vue'
 import MembershipRequestsPage from 'vue/components/membership_requests/page.vue'
 import DocumentsPage from 'vue/components/documents/page.vue'
 import ContactPage from 'vue/components/contact/page.vue'
+import EmailSettingsPage from 'vue/components/email_settings/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -21,7 +22,7 @@ module.exports = [
   {path: '/explore', component: ExplorePage},
   {path: '/profile', component: ProfilePage},
   {path: '/contact', component: ContactPage},
-  # {path: '/email_preferences', component: 'emailSettingsPage' },
+  {path: '/email_preferences', component: EmailSettingsPage },
   # {path: '/d/new', component: 'startDiscussionPage'},
   {path: '/d/:key', component: ThreadPage },
   {path: '/d/:key/:stub', component: ThreadPage },
