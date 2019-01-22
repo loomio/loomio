@@ -13,6 +13,11 @@ import StartGroupPage from 'vue/components/start_group/page.vue'
 import ContactPage from 'vue/components/contact/page.vue'
 import EmailSettingsPage from 'vue/components/email_settings/page.vue'
 import StartDiscussionPage from 'vue/components/start_discussion/page.vue'
+import UserPage from 'vue/components/user/page.vue'
+import AuthorizedAppsPage from 'vue/components/authorized_apps/page.vue'
+import RegisteredAppsPage from 'vue/components/registered_apps/page.vue'
+import RegisteredAppPage from 'vue/components/registered_app/page.vue'
+import InstallSlackPage from 'vue/components/install_slack/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -39,13 +44,13 @@ module.exports = [
   {path: '/g/new', component: StartGroupPage},
   {path: '/g/:key', component: GroupPage },
   {path: '/g/:key/:stub', component: GroupPage},
-  # {path: '/u/:key', component: 'userPage' },
-  # {path: '/u/:key/:stub', component: 'userPage' },
-  # {path: '/apps/authorized', component: 'authorizedAppsPage'},
-  # {path: '/apps/registered', component: 'registeredAppsPage'},
-  # {path: '/apps/registered/:id', component: 'registeredAppPage'},
-  # {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
-  # {path: '/slack/install', component: 'installSlackPage'},
+  {path: '/u/:key', component: UserPage },
+  {path: '/u/:key/:stub', component: UserPage },
+  {path: '/apps/authorized', component: AuthorizedAppsPage},
+  {path: '/apps/registered', component: RegisteredAppsPage},
+  {path: '/apps/registered/:id', component: RegisteredAppPage},
+  {path: '/apps/registered/:id/:stub', component: RegisteredAppPage},
+  {path: '/slack/install', component: InstallSlackPage},
   {path: '/:handle', component: GroupPage },
 ]
 
