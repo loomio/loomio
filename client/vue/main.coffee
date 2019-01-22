@@ -29,7 +29,8 @@ bootDat (appConfig) ->
     pendingIdentity: appConfig.userPayload.pendingIdentity
     pluginConfigFor: pluginConfigFor
   window.Loomio = AppConfig
-
+  { signIn }                                       = require 'shared/helpers/user'
+  FlashService    = require 'shared/services/flash_service'
   routes = require('vue/routes.coffee')
   router = new VueRouter(mode: 'history', routes: routes)
   store = require('vue/store/main.coffee')
@@ -37,10 +38,25 @@ bootDat (appConfig) ->
   i18n = new VueI18n({locale: 'en', fallbackLocale: 'en'})
 
   app = new Vue(
+    el: '#app'
     router: router
     i18n: i18n
     store: store
-  ).$mount('#app')
+    methods:
+      loggedIn: ->
+        FlashService.success AppConfig.userPayload.flash.notice
+        # $scope.pageError = null
+        # $scope.refreshing = true
+        # $injector.get('$timeout') ->
+        #   $scope.refreshing = false
+          # FlashService.success AppConfig.userPayload.flash.notice
+        #   delete AppConfig.userPayload.flash.notice
+        # if LmoUrlService.params().set_password
+        #   delete LmoUrlService.params().set_password
+        #   ModalService.open 'ChangePasswordForm'
+    created: ->
+      signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, @loggedIn)
+  )
 
   fetch('/api/v1/translations?lang=en&vue=true').then (res) ->
     res.json().then (data) ->

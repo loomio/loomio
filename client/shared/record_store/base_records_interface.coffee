@@ -1,5 +1,6 @@
 RestfulClient = require './restful_client'
 utils         = require './utils'
+_ = require 'lodash'
 
 module.exports =
   class BaseRecordsInterface
