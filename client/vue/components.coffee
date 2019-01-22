@@ -81,5 +81,8 @@ module.exports = {
   DiscussionForkActions: 'discussion/fork_actions',
   MembershipRequestsCard: 'group/membership_requests_card',
   PollCommonChooseType: 'poll/common/choose_type',
-  PollCommonFormActions: 'poll/common/form_actions'
+  PollCommonFormActions: 'poll/common/form_actions',
+  DiscussionForm: 'discussion/form',
+  DiscussionPrivacyIcon: 'discussion/privacy_icon',
+  DiscussionFormActions: 'discussion/form_actions'
 }

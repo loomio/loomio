@@ -1,0 +1,38 @@
+<style lang="scss">
+.discussion-privacy-icon i {
+  font-size: 16px;
+  width: 16px;
+  position: relative;
+  top: 3px;
+}
+</style>
+<script lang="coffee">
+module.exports =
+  props:
+    discussion: Object
+    private: Boolean
+  data: ->
+  computed:
+    computedPrivate: ->
+      if @private == 'undefined'
+        return @discussion.private
+      else
+        @private
+
+    translateKey: ->
+      if @private then 'private' else 'public'
+
+    privacyDescription: ->
+      I18n.t discussionPrivacy(@discussion, @computedPrivate),
+        group:  @discussion.group().name
+        parent: @discussion.group().parentName()
+</script>
+<template>
+  <span class="discussion-privacy-icon">
+    <div class="discussion-privacy-icon__title">
+      <strong v-t="'common.privacy.' + translateKey"></strong>
+    </div>
+    <div v-html="privacyDescription" class="discussion-privacy-icon__subtitle">
+    </div>
+  </span>
+</template>

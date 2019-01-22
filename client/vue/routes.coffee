@@ -12,6 +12,7 @@ import DocumentsPage from 'vue/components/documents/page.vue'
 import StartGroupPage from 'vue/components/start_group/page.vue'
 import ContactPage from 'vue/components/contact/page.vue'
 import EmailSettingsPage from 'vue/components/email_settings/page.vue'
+import StartDiscussionPage from 'vue/components/start_discussion/page.vue'
 
 module.exports = [
   {path: '/dashboard', component: DashboardPage},
@@ -19,12 +20,11 @@ module.exports = [
   {path: '/polls', component: PollsPage},
   {path: '/polls/:filter', component: PollsPage},
   {path: '/inbox', component: InboxPage },
-  # {path: '/groups', component: 'groupsPage' },
   {path: '/explore', component: ExplorePage},
   {path: '/profile', component: ProfilePage},
   {path: '/contact', component: ContactPage},
   {path: '/email_preferences', component: EmailSettingsPage },
-  # {path: '/d/new', component: 'startDiscussionPage'},
+  {path: '/d/new', component: StartDiscussionPage },
   {path: '/d/:key', component: ThreadPage },
   {path: '/d/:key/:stub', component: ThreadPage },
   {path: '/d/:key/:stub/:sequence_id', component: ThreadPage },
@@ -36,7 +36,6 @@ module.exports = [
   {path: '/g/:key/memberships', component: GroupPage},
   {path: '/g/:key/membership_requests', component: MembershipRequestsPage},
   {path: '/g/:key/documents', component: DocumentsPage},
-  # {path: '/g/:key/previous_polls', component: 'previousPollsPage'},
   {path: '/g/new', component: StartGroupPage},
   {path: '/g/:key', component: GroupPage },
   {path: '/g/:key/:stub', component: GroupPage},
@@ -49,3 +48,6 @@ module.exports = [
   # {path: '/slack/install', component: 'installSlackPage'},
   {path: '/:handle', component: GroupPage },
 ]
+
+# {path: '/groups', component: 'groupsPage' },
+# {path: '/g/:key/previous_polls', component: 'previousPollsPage'},
