@@ -79,5 +79,7 @@ module.exports = {
   GroupFormActions: 'group/form_actions',
   GroupSettingCheckbox: 'group/setting_checkbox',
   DiscussionForkActions: 'discussion/fork_actions',
-  MembershipRequestsCard: 'group/membership_requests_card'
+  MembershipRequestsCard: 'group/membership_requests_card',
+  PollCommonChooseType: 'poll/common/choose_type'
+  PollCommonFormActions: 'poll/common/form_actions'
 }
