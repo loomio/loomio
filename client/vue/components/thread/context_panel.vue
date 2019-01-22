@@ -1,4 +1,5 @@
 <style lang="scss">
+@import 'variables';
 .context-panel {
   .lmo-card-heading { margin-top: 7px; }
   border-bottom: 1px solid $border-color;

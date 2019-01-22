@@ -1,4 +1,6 @@
 <style lang="scss">
+@import 'variables';
+@import 'mixins';
 .activity-card {
   padding: $cardPaddingSize 0;
 }
