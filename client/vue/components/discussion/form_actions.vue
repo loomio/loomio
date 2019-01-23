@@ -12,9 +12,7 @@ module.exports =
   props:
     discussion: Object
   created: ->
-    # submitOnEnter $scope
-  methods:
-    submit: -> submitDiscussion @, @discussion
+    @submit = submitDiscussion @, @discussion
 </script>
 <template>
   <div class="discussion-form-actions lmo-md-actions">

@@ -99,7 +99,7 @@ module.exports =
       </div>
       <textarea
         lmo_textarea
-        v-model="discussion"
+        v-model="discussion.description"
         field="description"
         :placeholder="$t('discussion_form.context_placeholder')"
         :label="$t('discussion_form.context_label')"
@@ -108,11 +108,11 @@ module.exports =
       <v-list class="discussion-form__options">
         <v-list-tile v-if="showPrivacyForm()" class="discussion-form__privacy-form">
           <v-radio-group v-model="discussion.private">
-            <v-radio v-model="discussion.private" :value="false" class="md-checkbox--with-summary discussion-form__public">
-              <discussion-privacy-icon discussion="discussion" private="false"></discussion-privacy-icon>
+            <v-radio :value="false" class="md-checkbox--with-summary discussion-form__public">
+              <discussion-privacy-icon slot="label" :discussion="discussion" :private="false"></discussion-privacy-icon>
             </v-radio>
-            <v-radio v-model="discussion.private" :value="true" class="md-checkbox--with-summary discussion-form__private">
-              <discussion-privacy-icon discussion="discussion" private="true"></discussion-privacy-icon>
+            <v-radio :value="true" class="md-checkbox--with-summary discussion-form__private">
+              <discussion-privacy-icon slot="label" :discussion="discussion" :private="true"></discussion-privacy-icon>
             </v-radio>
           </v-radio-group>
         </v-list-tile>
