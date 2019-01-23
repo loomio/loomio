@@ -84,5 +84,6 @@ module.exports = {
   PollCommonFormActions: 'poll/common/form_actions',
   DiscussionForm: 'discussion/form',
   DiscussionPrivacyIcon: 'discussion/privacy_icon',
-  DiscussionFormActions: 'discussion/form_actions'
+  DiscussionFormActions: 'discussion/form_actions',
+  DiscussionStart: 'discussion/start',
 }

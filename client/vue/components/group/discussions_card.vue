@@ -1,62 +1,3 @@
-<style lang="scss">
-@import 'app.scss';
-
-.discussions-card__header{
-  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
-  display: flex;
-  justify-content: space-between;
-}
-
-.discussions-card__title {
-  line-height: 36px;
-}
-
-.discussions-card__filter {
-  text-decoration: none;
-  font-size: 16px;
-  line-height: 36px;
-  &--selected { font-weight: bold; }
-}
-
-.discussions-card__search {
-  margin: 0;
-  display: flex;
-  width: 0;
-  flex-shrink: $z-extreme;
-  transition: width 0.25s ease-in-out;
-  &--open { width: 100%; }
-  i {
-    position: absolute;
-    font-size: 20px;
-    top: 0;
-    right: 0;
-  }
-}
-
-.discussions-card__no-more-threads {
-  padding: $cardPaddingSize;
-  text-align: center;
-}
-
-.discussions-card__dropdown {
-  margin: 0 0 10px 0;
-}
-
-.discussions-card__new-thread-button{
-  @include cardButton;
-}
-
-.discussions-card__list--empty {
-  text-align: center;
-  padding: 0 $cardPaddingSize $cardPaddingSize $cardPaddingSize;
-}
-
-.discussions-card__show-more {
-  @include cardMinorAction;
-  @include lmoBtnLink;
-}
-</style>
-
 <script lang="coffee">
 Records            = require 'shared/services/records'
 AbilityService     = require 'shared/services/ability_service'
@@ -109,8 +50,10 @@ module.exports =
           ids: _map(data.discussions, 'id')
           overwrite: true
     , 250
-    startDiscussion: ->
-      ModalService.open 'DiscussionStartModal', discussion: => Records.discussions.build(groupId: @group.id)
+
+    newDiscussion: ->
+      Records.discussions.build(groupId: @group.id)
+
     openSearch: ->
       @searchOpen = true
     closeSearch: ->
@@ -196,14 +139,18 @@ module.exports =
           v-t="{ path: 'group_page.show_closed', args: { count: group.closedDiscussionsCount } }"
           class="discussions-card__filter discussions-card__filter--closed lmo-link lmo-pointer"
         ></div>
-        <button
-          v-if="canStartThread"
-          @click="startDiscussion"
-          :title="$t('navbar.start_thread')"
-          class="md-primary md-raised discussions-card__new-thread-button"
-        >
-          <span v-t="{ path: 'navbar.start_thread' }"></span>
-        </button>
+
+        <v-dialog>
+          <button
+            v-if="canStartThread"
+            slot="activator"
+            :title="$t('navbar.start_thread')"
+            class="md-primary md-raised discussions-card__new-thread-button"
+          >
+            <span v-t="{ path: 'navbar.start_thread' }"></span>
+          </button>
+          <discussion-start :discussion="newDiscussion()"></discussion-start>
+        </v-dialog>
     </div>
     <div class="discussions-card__content">
         <div v-if="noThreads" class="discussions-card__list--empty">
@@ -270,3 +217,62 @@ module.exports =
     </div>
   </section>
 </template>
+
+<style lang="scss">
+@import 'app.scss';
+
+.discussions-card__header{
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+  display: flex;
+  justify-content: space-between;
+}
+
+.discussions-card__title {
+  line-height: 36px;
+}
+
+.discussions-card__filter {
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 36px;
+  &--selected { font-weight: bold; }
+}
+
+.discussions-card__search {
+  margin: 0;
+  display: flex;
+  width: 0;
+  flex-shrink: $z-extreme;
+  transition: width 0.25s ease-in-out;
+  &--open { width: 100%; }
+  i {
+    position: absolute;
+    font-size: 20px;
+    top: 0;
+    right: 0;
+  }
+}
+
+.discussions-card__no-more-threads {
+  padding: $cardPaddingSize;
+  text-align: center;
+}
+
+.discussions-card__dropdown {
+  margin: 0 0 10px 0;
+}
+
+.discussions-card__new-thread-button{
+  @include cardButton;
+}
+
+.discussions-card__list--empty {
+  text-align: center;
+  padding: 0 $cardPaddingSize $cardPaddingSize $cardPaddingSize;
+}
+
+.discussions-card__show-more {
+  @include cardMinorAction;
+  @include lmoBtnLink;
+}
+</style>
