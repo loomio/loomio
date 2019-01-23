@@ -40,6 +40,7 @@ module.exports =
     searchOpen: false
     searched: {}
     fragment: ''
+    discussionStartIsOpen: false
   methods:
     searchThreads: _throttle ->
       return Promise.resolve(true) unless !isEmpty @fragment
@@ -63,6 +64,9 @@ module.exports =
       @filter = newFilter
     isEmpty: (o) ->
       _isEmpty(o)
+
+    closeDiscussionStart: ->
+      @discussionStartIsOpen = false
 
   watch:
     searchOpen: ->
@@ -140,16 +144,16 @@ module.exports =
           class="discussions-card__filter discussions-card__filter--closed lmo-link lmo-pointer"
         ></div>
 
-        <v-dialog>
-          <button
+        <v-dialog v-model="discussionStartIsOpen" lazy>
+          <v-btn
             v-if="canStartThread"
             slot="activator"
             :title="$t('navbar.start_thread')"
             class="md-primary md-raised discussions-card__new-thread-button"
           >
             <span v-t="{ path: 'navbar.start_thread' }"></span>
-          </button>
-          <discussion-start :discussion="newDiscussion()"></discussion-start>
+          </v-btn>
+          <discussion-start :discussion="newDiscussion()" :close="closeDiscussionStart"></discussion-start>
         </v-dialog>
     </div>
     <div class="discussions-card__content">

@@ -1,6 +1,7 @@
 <style lang="scss">
+@import 'variables';
 .discussion-modal {
-  // max-width: $small-max-px;
+  max-width: $small-max-px;
 }
 
 .discussion-form__options {
@@ -17,11 +18,11 @@
   white-space: nowrap;
 }
 
-// @media (max-width: $small-max-px){
-//   .discussion-modal { max-width: auto; }
-//   .discussion-form__formatting-help { display: none; }
-//   .thread-helptext { display: none; }
-// }
+@media (max-width: $small-max-px){
+  .discussion-modal { max-width: auto; }
+  .discussion-form__formatting-help { display: none; }
+  .thread-helptext { display: none; }
+}
 </style>
 
 <script lang="coffee">
@@ -90,8 +91,6 @@ module.exports =
           <input
             :placeholder="$t('discussion_form.title_placeholder')"
             v-model="discussion.title"
-            v-model-options="{ allowInvalid: true }"
-            ng-required="true"
             maxlength="255"
             class="discussion-form__title-input lmo-primary-form-input"
             id="discussion-title">
