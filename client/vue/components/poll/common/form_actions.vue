@@ -6,9 +6,8 @@ module.exports =
   props:
     poll: Object
   created: ->
+    @submit = submitPoll(@, @poll, broadcaster: @)
     # submitOnEnter $scope
-  methods:
-    # submit: submitPoll(@, @poll, broadcaster: $rootScope)
 </script>
 
 <template>

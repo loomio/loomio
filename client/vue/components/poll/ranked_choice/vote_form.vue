@@ -35,14 +35,30 @@ EventBus = require 'shared/services/event_bus'
 { submitOnEnter, registerKeyEvent } = require 'shared/helpers/keyboard'
 { submitStance }                    = require 'shared/helpers/form'
 
+_sortBy = require 'lodash/sortBy'
+_find = require 'lodash/find'
+_matchesProperty = require 'lodash/matchesProperty'
+_take = require 'lodash/take'
+_map = require 'lodash/map'
+_findIndex = require 'lodash/findIndex'
+
 module.exports =
   props:
     stance: Object
   data: ->
     numChoices: @stance.poll().customFields.minimum_stance_choices
-    pollOptions: _.sortBy @stance.poll().pollOptions(), (option) =>
-      choice = _.find(@stance.stanceChoices(), _.matchesProperty('pollOptionId', option.id))
+    pollOptions: _sortBy @stance.poll().pollOptions(), (option) =>
+      choice = _find(@stance.stanceChoices(), _matchesProperty('pollOptionId', option.id))
       -(choice or {}).score
+  created: ->
+    @submit = submitStance @, @stance,
+      prepareFn: =>
+        EventBus.emit $scope, 'processing'
+        @stance.id = null
+        selected = _take @pollOptions, @numChoices
+        @stance.stanceChoicesAttributes = _map selected, (option, index) =>
+          poll_option_id: option.id
+          score:         @numChoices - index
   mounted: ->
     submitOnEnter @, element: @$el
     registerKeyEvent @, 'pressedUpArrow', =>
@@ -55,13 +71,13 @@ module.exports =
       @selectedOption = null
   methods:
     orderedPollOptions: ->
-      _.sortBy @pollOptions(), 'priority'
+      _sortBy @pollOptions(), 'priority'
 
     setSelected: (option) ->
       @selectedOption = option
 
     selectedOptionIndex: ->
-      _.findIndex @pollOptions, @selectedOption
+      _findIndex @pollOptions, @selectedOption
 
     isSelected: (option) ->
       @selectedOption == option
@@ -72,14 +88,6 @@ module.exports =
       @pollOptions[fromIndex]   = @pollOptions[toIndex]
       @pollOptions[toIndex]     = @selectedOption
 
-    # submit = submitStance $scope, $scope.stance,
-    #   prepareFn: ->
-    #     EventBus.emit $scope, 'processing'
-    #     $scope.stance.id = null
-    #     selected = _.take $scope.pollOptions, $scope.numChoices
-    #     $scope.stance.stanceChoicesAttributes = _.map selected, (option, index) ->
-    #       poll_option_id: option.id
-    #       score:          $scope.numChoices - index
 </script>
 
 <template>

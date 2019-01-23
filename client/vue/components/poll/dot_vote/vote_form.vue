@@ -58,6 +58,11 @@ EventBus = require 'shared/services/event_bus'
 { submitStance }  = require 'shared/helpers/form'
 { submitOnEnter } = require 'shared/helpers/keyboard'
 
+_sum = require 'lodash/sum'
+_map = require 'lodash/map'
+_head = require 'lodash/head'
+_filter = require 'lodash/filter'
+
 module.exports =
   props:
     stance: Object
@@ -68,6 +73,13 @@ module.exports =
     EventBus.listen @, 'pollOptionsAdded', @setStanceChoices
   mounted: ->
     submitOnEnter @, element: @$el
+
+    @submit = submitStance @, @stance,
+      prepareFn: ->
+        EventBus.emit @, 'processing'
+        @stance.id = null
+        return unless _sum(_map(@stanceChoices, 'score')) > 0
+        @stance.stanceChoicesAttributes = @stanceChoices
   methods:
     percentageFor: (choice) ->
       max = @stance.poll().customFields.dots_per_person
@@ -84,7 +96,7 @@ module.exports =
       'background-size': @percentageFor(choice)
 
     stanceChoiceFor: (option) ->
-      _.head(_.filter(@stance.stanceChoices(), (choice) =>
+      _head(_filter(@stance.stanceChoices(), (choice) =>
         choice.pollOptionId == option.id
         ).concat({score: 0}))
 
@@ -95,22 +107,15 @@ module.exports =
       Records.pollOptions.find(choice.poll_option_id)
 
     dotsRemaining: ->
-      @stance.poll().customFields.dots_per_person - _.sum(_.map(@stanceChoices, 'score'))
+      @stance.poll().customFields.dots_per_person - _sum(_map(@stanceChoices, 'score'))
 
     tooManyDots: ->
       @dotsRemaining() < 0
 
     setStanceChoices: ->
-      @stanceChoices = _.map @stance.poll().pollOptions(), (option) =>
+      @stanceChoices = _map @stance.poll().pollOptions(), (option) =>
         poll_option_id: option.id
         score: @stanceChoiceFor(option).score
-
-    # submit: submitStance $scope, $scope.stance,
-    #   prepareFn: ->
-    #     EventBus.emit $scope, 'processing'
-    #     $scope.stance.id = null
-    #     return unless _.sum(_.map($scope.stanceChoices, 'score')) > 0
-    #     $scope.stance.stanceChoicesAttributes = $scope.stanceChoices
 </script>
 
 <template>

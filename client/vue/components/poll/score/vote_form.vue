@@ -46,6 +46,10 @@ EventBus = require 'shared/services/event_bus'
 { submitStance }  = require 'shared/helpers/form'
 { submitOnEnter } = require 'shared/helpers/keyboard'
 
+_head = require 'lodash/head'
+_filter = require 'lodash/filter'
+_map = require 'lodash/map'
+
 module.exports =
   props:
     stance: Object
@@ -54,11 +58,16 @@ module.exports =
   created: ->
     @setStanceChoices()
     EventBus.listen @, 'pollOptionsAdded', @setStanceChoices
+    @submit = submitStance @, @stance,
+      prepareFn: =>
+        EventBus.emit $scope, 'processing'
+        @stance.id = null
+        @stance.stanceChoicesAttributes = @stanceChoices
   mounted: ->
     submitOnEnter @, element: @$el
   methods:
     stanceChoiceFor: (option) ->
-      _.head(_.filter(@stance.stanceChoices(), (choice) =>
+      _head(_filter(@stance.stanceChoices(), (choice) =>
         choice.pollOptionId == option.id
         ).concat({score: 0}))
 
@@ -66,15 +75,11 @@ module.exports =
       Records.pollOptions.find(choice.poll_option_id)
 
     setStanceChoices: ->
-      @stanceChoices = _.map @stance.poll().pollOptions(), (option) =>
+      @stanceChoices = _map @stance.poll().pollOptions(), (option) =>
         poll_option_id: option.id
         score: @stanceChoiceFor(option).score
 
-    # submit = submitStance $scope, $scope.stance,
-    #   prepareFn: ->
-    #     EventBus.emit $scope, 'processing'
-    #     $scope.stance.id = null
-    #     $scope.stance.stanceChoicesAttributes = $scope.stanceChoices
+
 </script>
 
 <template>

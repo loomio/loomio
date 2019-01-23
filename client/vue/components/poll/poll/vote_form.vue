@@ -8,21 +8,34 @@ EventBus = require 'shared/services/event_bus'
 { submitStance }  = require 'shared/helpers/form'
 { buttonStyle }   = require 'shared/helpers/style'
 
+_compact = require 'lodash/compact'
+_map = require 'lodash/map'
+_sortBy = require 'lodash/sortBy'
+_pull = require 'lodash/pull'
+_includes = require 'lodash/includes'
+
 module.exports =
   props:
     stance: Object
   data: ->
-    selectedOptionIds: _.compact @stance.pollOptionIds()
+    selectedOptionIds: _compact @stance.pollOptionIds()
+  created: ->
+    @submit = submitStance @, @stance,
+      prepareFn: =>
+        EventBus.emit @, 'processing'
+        @stance.id = null
+        @stance.stanceChoicesAttributes = _map @selectedOptionIds, (id) =>
+          poll_option_id: id
   mounted: ->
     submitOnEnter @, element: @$el
   methods:
     orderedPollOptions: ->
-      _.sortBy @stance.poll().pollOptions(), 'priority'
+      _sortBy @stance.poll().pollOptions(), 'priority'
 
     select: (option) ->
       if @stance.poll().multipleChoice
         if @isSelected(option)
-          _.pull(@selectedOptionIds, option.id)
+          _pull(@selectedOptionIds, option.id)
         else
           @selectedOptionIds.push option.id
       else
@@ -33,14 +46,8 @@ module.exports =
       buttonStyle @isSelected(option)
 
     isSelected: (option) ->
-      _.includes @selectedOptionIds, option.id
+      _includes @selectedOptionIds, option.id
 
-    # submit = submitStance @, @stance,
-    #   prepareFn: =>
-    #     EventBus.emit @, 'processing'
-    #     @stance.id = null
-    #     @stance.stanceChoicesAttributes = _.map @selectedOptionIds, (id) =>
-    #       poll_option_id: id
 </script>
 
 <template>

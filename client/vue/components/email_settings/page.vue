@@ -73,7 +73,7 @@ module.exports =
           <form @submit="submit()">
             <div class="email-settings-page__global-settings">
               <v-checkbox v-model="user.emailCatchUp" class="md-checkbox--with-summary email-settings-page__daily-summary" id="daily-summary-email">
-                <strong for="daily-summary-email" v-t="email_settings_page.daily_summary_label"></strong>
+                <strong for="daily-summary-email" v-t="'email_settings_page.daily_summary_label'"></strong>
                 <div v-t="'email_settings_page.daily_summary_description'" class="email-settings-page__input-description"></div>
               </v-checkbox>
               <v-checkbox v-model="user.emailOnParticipation" class="md-checkbox--with-summary email-settings-page__on-participation" id="on-participation-email">
@@ -90,7 +90,7 @@ module.exports =
               </v-checkbox>
             </div>
             <v-btn type="submit" ng-disabled="isDisabled" v-t="'email_settings_page.update_settings'" class="md-primary md-raised email-settings-page__update-button"></v-btn>
-          </form>ß
+          </form>
         </div>
         <div class="email-settings-page__specific-group-settings">
             <h3 v-t="'email_settings_page.specific_groups'" class="lmo-h3"></h3>
@@ -108,7 +108,7 @@ module.exports =
                   <strong class="email-settings-page__group-name">
                     <span v-if="group.isSubgroup()">{{group.parentName()}} -</span> <span>{{group.name}}</span>
                   </strong>
-                  <div v-t="'change_volume_form.{{groupVolume(group)}}_label'" class="email-settings-page__membership-volume"></div>
+                  <div v-t="'change_volume_form.' + groupVolume(group)" class="email-settings-page__membership-volume"></div>
                 </div>
                 <div class="email-settings-page__edit">
                   <v-btn @click="editSpecificGroupVolume(group)" v-t="'email_settings_page.edit'" class="md-accent email-settings-page__edit-membership-volume-link"></v-btn>

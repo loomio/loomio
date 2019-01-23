@@ -33,16 +33,16 @@ module.exports =
     selectedOptionId: @stance.pollOptionId()
   mounted: ->
     submitOnEnter @, element: @$el
+
+    @submit = submitStance @, @stance,
+      prepareFn: ->
+        @stance.id = null
+        @stance.stanceChoicesAttributes = [
+          poll_option_id: @selectedOptionId
+        ]
   methods:
     orderedPollOptions: ->
       _.sortBy @stance.poll().pollOptions(), 'priority'
-
-    # submit: submitStance @, @stance,
-    #   prepareFn: ->
-    #     @stance.id = null
-    #     @stance.stanceChoicesAttributes = [
-    #       poll_option_id: @selectedOptionId
-    #     ]
 
     isSelected: (option) ->
       @selectedOptionId == option.id

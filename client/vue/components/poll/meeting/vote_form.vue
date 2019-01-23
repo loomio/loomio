@@ -28,13 +28,20 @@ EventBus = require 'shared/services/event_bus'
 { submitStance }  = require 'shared/helpers/form'
 { buttonStyle }   = require 'shared/helpers/style'
 
+_compact = require 'lodash/compact'
+_map = require 'lodash/map'
+_toPairs = require 'lodash/toPairs'
+_fromPairs = require 'lodash/fromPairs'
+_some = require 'lodash/some'
+_sortBy = require 'lodash/sortBy'
+
 module.exports =
   props:
     stance: Object
   data: ->
     vars: {}
     zone: null
-    stanceValuesMap: _.fromPairs _.map @stance.poll().pollOptions(), (option) =>
+    stanceValuesMap: _fromPairs _map @stance.poll().pollOptions(), (option) =>
       stanceChoice = @stance.stanceChoices().find((sc) => sc.pollOptionId == option.id) or {}
       [option.id, stanceChoice.score or 0]
     canRespondMaybe: @stance.poll().customFields.can_respond_maybe
@@ -42,6 +49,16 @@ module.exports =
   created: ->
     EventBus.listen @, 'timeZoneSelected', (e, zone) =>
       @zone = zone
+
+    @submit = submitStance @, @stance,
+      prepareFn: =>
+        EventBus.emit $scope, 'processing'
+        @stance.id = null
+        attrs = _compact _map(_toPairs(@stanceValuesMap), ([id, score]) ->
+            {poll_option_id: id, score:score} if score > 0
+        )
+
+        @stance.stanceChoicesAttributes = attrs if _some(attrs)
   mounted: ->
     submitOnEnter @, element: @$el
   methods:
@@ -52,17 +69,8 @@ module.exports =
       @stanceValuesMap[optionId] = score
 
     orderedPollOptions: ->
-      _.sortBy @stance.poll().pollOptions(), 'name'
+      _sortBy @stance.poll().pollOptions(), 'name'
 
-    # submit = submitStance $scope, $scope.stance,
-    #   prepareFn: ->
-    #     EventBus.emit $scope, 'processing'
-    #     $scope.stance.id = null
-    #     attrs = _.compact _.map(_.toPairs($scope.stanceValuesMap), ([id, score]) ->
-    #         {poll_option_id: id, score:score} if score > 0
-    #     )
-    #
-    #     $scope.stance.stanceChoicesAttributes = attrs if _.some(attrs)
 </script>
 
 <template>
