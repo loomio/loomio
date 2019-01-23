@@ -88,4 +88,5 @@ module.exports = {
   DiscussionStart: 'discussion/start',
   DismissModalButton: 'common/dismiss_modal_button',
   Navbar: 'common/navbar',
+  Sidebar: 'common/sidebar'
 }
