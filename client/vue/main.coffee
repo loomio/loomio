@@ -9,7 +9,7 @@ window.Vuetify = Vuetify
 
 Vue.use(VueI18n)
 Vue.use(Vuex)
-Vue.use(Vuetify, icons: {dropdown: 'mdi-menu-down'} )
+Vue.use(Vuetify, iconfont: 'mdi' )
 Vue.use(VueRouter)
 
 require('vue/directives/marked')

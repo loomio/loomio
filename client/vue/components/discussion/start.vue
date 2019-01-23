@@ -33,7 +33,7 @@ module.exports =
       <!-- <announcement_form :announcement="announcement" v-if="currentStep == announce"></announcement_form> -->
     </v-card-text>
     <v-card-actions>
-      <discussion-form-actions :discussion="discussion" v-if="currentStep == 'save'"></discussion-form-actions>
+      <discussion-form-actions :discussion="discussion" :close="close" v-if="currentStep == 'save'"></discussion-form-actions>
       <!-- <announcement_form_actions announcement="announcement" v-if="currentStep == announce"></announcement_form_actions> -->
     </v-card-actions>
   </v-card>

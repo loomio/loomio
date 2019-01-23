@@ -11,8 +11,10 @@ LmoUrlService = require 'shared/services/lmo_url_service'
 module.exports =
   props:
     discussion: Object
+    close: Function
   created: ->
-    @submit = submitDiscussion @, @discussion
+    @submit = submitDiscussion @, @discussion,
+      successCallback: => @close()
 </script>
 <template>
   <div class="discussion-form-actions lmo-md-actions">
