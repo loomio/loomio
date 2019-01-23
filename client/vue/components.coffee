@@ -87,4 +87,5 @@ module.exports = {
   DiscussionFormActions: 'discussion/form_actions',
   DiscussionStart: 'discussion/start',
   DismissModalButton: 'common/dismiss_modal_button',
+  Navbar: 'common/navbar',
 }
