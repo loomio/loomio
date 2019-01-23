@@ -22,6 +22,8 @@ module.exports =
   data: ->
     currentState: ""
     showSidebar: true
+    isStartingGroup: false
+    isStartingThread: false
   created: ->
     InboxService.load()
     EventBus.listen @, 'toggleSidebar', (event, show) =>
@@ -76,7 +78,8 @@ module.exports =
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
 
     startGroup: ->
-      ModalService.open 'GroupModal', group: => Records.groups.build()
+      # ModalService.open 'GroupModal', group: => Records.groups.build()
+      @isStartingGroup = true
 
     startThread: ->
       ModalService.open 'DiscussionStartModal', discussion: => Records.discussions.build(groupId: @currentGroup().id)
@@ -141,6 +144,12 @@ module.exports =
           <i class="sidebar__list-item-icon mdi mdi-plus"></i>
           <span v-t="'sidebar.start_group'"></span>
         </v-list-tile>
+        <v-dialog
+          v-model="isStartingGroup"
+          lazy
+        >
+          <div>hello world</div>
+        </v-dialog>
       </v-list>
     </div>
   </v-navigation-drawer>

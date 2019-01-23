@@ -19,6 +19,8 @@ AppConfig = require 'shared/services/app_config'
 { exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window'
 { bootDat } = require 'shared/helpers/boot'
 
+# import Sidebar from 'vue/components/common/sidebar.vue'
+
 hardReload('/417.html') if unsupportedBrowser()
 exportGlobals()
 initServiceWorker()
@@ -34,6 +36,7 @@ bootDat (appConfig) ->
   routes = require('vue/routes.coffee')
   router = new VueRouter(mode: 'history', routes: routes)
   store = require('vue/store/main.coffee')
+  Sidebar = require('vue/components/common/sidebar.vue').default
 
   i18n = new VueI18n({locale: 'en', fallbackLocale: 'en'})
 
@@ -42,6 +45,8 @@ bootDat (appConfig) ->
       i18n.setLocaleMessage('en', data)
       app = new Vue(
         el: '#app'
+        components:
+          Sidebar: Sidebar
         router: router
         i18n: i18n
         store: store
@@ -59,4 +64,11 @@ bootDat (appConfig) ->
             #   ModalService.open 'ChangePasswordForm'
         created: ->
           signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, @loggedIn)
+        template:
+          """
+          <div>
+            <sidebar></sidebar>
+            <router-view></router-view>
+          </div>
+          """
       )
