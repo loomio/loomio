@@ -37,27 +37,26 @@ bootDat (appConfig) ->
 
   i18n = new VueI18n({locale: 'en', fallbackLocale: 'en'})
 
-  app = new Vue(
-    el: '#app'
-    router: router
-    i18n: i18n
-    store: store
-    methods:
-      loggedIn: ->
-        FlashService.success AppConfig.userPayload.flash.notice
-        # $scope.pageError = null
-        # $scope.refreshing = true
-        # $injector.get('$timeout') ->
-        #   $scope.refreshing = false
-          # FlashService.success AppConfig.userPayload.flash.notice
-        #   delete AppConfig.userPayload.flash.notice
-        # if LmoUrlService.params().set_password
-        #   delete LmoUrlService.params().set_password
-        #   ModalService.open 'ChangePasswordForm'
-    created: ->
-      signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, @loggedIn)
-  )
-
   fetch('/api/v1/translations?lang=en&vue=true').then (res) ->
     res.json().then (data) ->
       i18n.setLocaleMessage('en', data)
+      app = new Vue(
+        el: '#app'
+        router: router
+        i18n: i18n
+        store: store
+        methods:
+          loggedIn: ->
+            FlashService.success AppConfig.userPayload.flash.notice
+            # $scope.pageError = null
+            # $scope.refreshing = true
+            # $injector.get('$timeout') ->
+            #   $scope.refreshing = false
+              # FlashService.success AppConfig.userPayload.flash.notice
+            #   delete AppConfig.userPayload.flash.notice
+            # if LmoUrlService.params().set_password
+            #   delete LmoUrlService.params().set_password
+            #   ModalService.open 'ChangePasswordForm'
+        created: ->
+          signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, @loggedIn)
+      )
