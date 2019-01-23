@@ -88,25 +88,25 @@ module.exports =
       <v-divider class="sidebar__divider"></v-divider>
       <v-list layout="column" aria-label="$t('sidebar.aria_labels.threads_list')" class="sidebar__list sidebar__threads">
         <router-link to="/polls">
-          <v-list-tile @click="isActive()" aria-label="$t('sidebar.my_decisions')" :class="{'sidebar__list-item--selected': onPage('pollsPage')}" class="sidebar__list-item-button sidebar__list-item-button--decisions">
+          <v-list-tile aria-label="$t('sidebar.my_decisions')" :class="{'sidebar__list-item--selected': onPage('pollsPage')}" class="sidebar__list-item-button sidebar__list-item-button--decisions">
             <v-list-tile-action class="sidebar__list-item-icon mdi mdi-thumbs-up-down"></v-list-tile-action>
             <span v-t="'common.decisions'"></span>
           </v-list-tile>
         </router-link>
         <router-link to="/dashboard">
-          <v-list-tile @click="isActive()" aria-label="$t('sidebar.recent')" :class="{'sidebar__list-item--selected': onPage('dashboardPage')}" class="sidebar__list-item-button sidebar__list-item-button--recent">
+          <v-list-tile aria-label="$t('sidebar.recent')" :class="{'sidebar__list-item--selected': onPage('dashboardPage')}" class="sidebar__list-item-button sidebar__list-item-button--recent">
             <i class="sidebar__list-item-icon mdi mdi-forum"></i>
             <span v-t="'sidebar.recent_threads'"></span>
           </v-list-tile>
         </router-link>
         <router-link to="/inbox">
-          <v-list-tile @click="isActive()" aria-label="$t('sidebar.unread')" :class="{'sidebar__list-item--selected': onPage('inboxPage')}" class="sidebar__list-item-button sidebar__list-item-button--unread">
+          <v-list-tile aria-label="$t('sidebar.unread')" :class="{'sidebar__list-item--selected': onPage('inboxPage')}" class="sidebar__list-item-button sidebar__list-item-button--unread">
             <i class="sidebar__list-item-icon mdi mdi-inbox"></i>
             <span v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }"></span>
           </v-list-tile>
         </router-link>
         <router-link to="/dashboard/show_muted">
-          <v-list-tile @click="isActive()" aria-label="$t('sidebar.muted')" :class="{'sidebar__list-item--selected': onPage('dashboardPage', null, 'show_muted')}" class="sidebar__list-item-button sidebar__list-item-button--muted">
+          <v-list-tile aria-label="$t('sidebar.muted')" :class="{'sidebar__list-item--selected': onPage('dashboardPage', null, 'show_muted')}" class="sidebar__list-item-button sidebar__list-item-button--muted">
             <i class="sidebar__list-item-icon mdi mdi-volume-mute"></i>
             <span v-t="'sidebar.muted_threads'"></span>
           </v-list-tile>

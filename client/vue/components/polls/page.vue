@@ -68,6 +68,12 @@ urlFor = require 'vue/mixins/url_for'
 import Loading from 'vue/components/common/loading.vue'
 import PollCommonPreview from 'vue/components/poll/common/preview.vue'
 
+_map = require 'lodash/map'
+_capitalize = require 'lodash/capitalize'
+_sortBy = require 'lodash/sortBy'
+_isEmpty = require 'lodash/isEmpty'
+_filter = require 'lodash/filter'
+
 module.exports =
   components:
     Loading: Loading
@@ -91,10 +97,10 @@ module.exports =
     # @fetchRecords()
     # applyLoadingFunction(@, 'searchPolls')
   computed:
-    statusFilters: -> _.map AppConfig.searchFilters.status, (filter) =>
-      { name: _.capitalize(filter), value: filter }
+    statusFilters: -> _map AppConfig.searchFilters.status, (filter) =>
+      { name: _capitalize(filter), value: filter }
 
-    groupFilters: -> _.map Session.user().groups(), (group) =>
+    groupFilters: -> _map Session.user().groups(), (group) =>
       { name: group.fullName, value: group.key }
 
     loadedCount: ->
@@ -107,10 +113,10 @@ module.exports =
       # @fetchRecordsExecuting || @loadMoreExecuting
 
     orderedPolls: ->
-      _.sortBy(@pollCollection().polls(), 'pollImportance')
+      _sortBy(@pollCollection().polls(), 'pollImportance')
 
     hasGroup: ->
-      !_.isEmpty(@group)
+      !_isEmpty(@group)
 
   methods:
     statusFilter: -> LmoUrlService.params().status
@@ -118,7 +124,7 @@ module.exports =
     pollImportance: (poll) -> poll.importance(@now)
     loadMore: ->
       @loader.loadMore().then (response) =>
-        @pollIds = @pollIds.concat _.map(response.polls, 'id')
+        @pollIds = @pollIds.concat _map(response.polls, 'id')
     fetchRecords: ->
       LmoUrlService.params 'group_key', @groupFilter
       LmoUrlService.params 'status',    @statusFilter
@@ -129,7 +135,7 @@ module.exports =
 
       @loader.fetchRecords().then (response) =>
         @group   = Records.groups.find(LmoUrlService.params().group_key)
-        @pollIds = _.map(response.polls, 'id')
+        @pollIds = _map(response.polls, 'id')
       , (error) ->
         # EventBus.broadcast $rootScope, 'pageError', error
     startNewPoll: ->
@@ -143,9 +149,9 @@ module.exports =
 
     pollCollection: ->
       polls: =>
-        _.sortBy(
-          _.filter(Records.polls.find(@pollIds), (poll) =>
-            _.isEmpty(@fragment) or poll.title.match(///#{@fragment}///i)), '-createdAt')
+        _sortBy(
+          _filter(Records.polls.find(@pollIds), (poll) =>
+            _isEmpty(@fragment) or poll.title.match(///#{@fragment}///i)), '-createdAt')
 
 </script>
 <template>

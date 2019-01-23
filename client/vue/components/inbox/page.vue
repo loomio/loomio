@@ -70,7 +70,7 @@ module.exports =
       !Session.user().hasAnyGroups()
 
     orderedGroups: ->
-      _.sortBy @groups(), 'name'
+      _.sortBy @groups, 'name'
 </script>
 
 <template>
