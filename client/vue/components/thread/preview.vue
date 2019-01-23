@@ -160,7 +160,7 @@ module.exports =
               <div class="thread-preview__group-name">{{ thread.group().fullName }} ·
                   <time-ago :date="thread.lastActivityAt"></time-ago>
               </div>
-              <div v-if="thread.closedAt" md-colors="{color: 'warn-600', 'border-color': 'warn-600'}" translate="common.privacy.closed" class="lmo-badge lmo-pointer"></div>
+              <div v-if="thread.closedAt" md-colors="{color: 'warn-600', 'border-color': 'warn-600'}" v-t="'common.privacy.closed'" class="lmo-badge lmo-pointer"></div>
           </div>
       </div>
       <div v-if="thread.pinned" :title="$t('context_panel.thread_status.pinned')" class="thread-preview__pin thread-preview__status-icon"><i class="mdi mdi-pin"></i></div>

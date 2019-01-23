@@ -97,6 +97,11 @@ I18n           = require 'shared/services/i18n'
 { submitForm } = require 'shared/helpers/form'
 { eventHeadline, eventTitle, eventPollType } = require 'shared/helpers/helptext'
 
+_includes = require 'lodash/includes'
+_camelCase = require 'lodash/camelCase'
+
+import NewComment from 'vue/components/thread/item/new_comment.vue'
+
 threadItemComponents = [
   'newComment',
   'outcomeCreated',
@@ -105,6 +110,8 @@ threadItemComponents = [
  ]
 
 module.exports =
+  components:
+    NewComment: NewComment
   props:
     event: Object
     eventWindow: Object
@@ -118,7 +125,7 @@ module.exports =
     isDisabled: false
   methods:
     hasComponent: ->
-      _.includes(threadItemComponents, _.camelCase(@event.kind))
+      _includes(threadItemComponents, _camelCase(@event.kind))
 
     debug: -> window.Loomio.debug
 
@@ -142,15 +149,18 @@ module.exports =
       (Session.user().id != @event.actorId) && @eventWindow.isUnread(@event)
 
     headline: ->
-      I18n.t eventHeadline(@event, @eventWindow.useNesting),
-        author:   @event.actorName() || I18n.t('common.anonymous')
-        username: @event.actorUsername()
-        key:      @event.model().key
-        title:    eventTitle(@event)
-        polltype: I18n.t(eventPollType(@event)).toLowerCase()
+      # I18n.t eventHeadline(@event, @eventWindow.useNesting),
+      #   author:   @event.actorName() || I18n.t('common.anonymous')
+      #   username: @event.actorUsername()
+      #   key:      @event.model().key
+      #   title:    eventTitle(@event)
+      #   polltype: I18n.t(eventPollType(@event)).toLowerCase()
 
     link: ->
       LmoUrlService.event @event
+
+    camelCase: (str) ->
+      _camelCase(str)
 </script>
 
 <template>
@@ -189,7 +199,7 @@ module.exports =
                 </h3>
                 <button v-if="canRemoveEvent()" @click="removeEvent()" class="md-button--tiny"><i class="mdi mdi-delete"></i></button>
               </div>
-              <component v-if="hasComponent()" :is="_.camelCase(event.kind)" :event='event' :eventable='event.model()'></component>
+              <component v-if="hasComponent()" :is="camelCase(event.kind)" :event='event' :eventable='event.model()'></component>
             </div>
           </div>
         </div>
