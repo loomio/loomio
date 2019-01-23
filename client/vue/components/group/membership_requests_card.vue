@@ -60,18 +60,18 @@ module.exports =
         <h2 v-t="'membership_requests_card.heading'" class="lmo-card-heading"></h2>
         <ul md-list>
           <li md-list-item v-for="request in orderedPendingMembershipRequests()" :key="request.id" class="membership-requests-card__request">
-            <a layout="row" :href="urlFor(group, 'membership_requests')" title="$t('membership_requests_card.manage_requests')" class="md-button membership-requests-card__request-link lmo-flex">
+            <router-link layout="row" :to="urlFor(group, 'membership_requests')" title="$t('membership_requests_card.manage_requests')" class="md-button membership-requests-card__request-link lmo-flex">
               <user-avatar :user="request.actor()" size="medium" class="lmo-margin-right"></user-avatar>
               <div layout="column" class="lmo-flex">
                 <div class="lmo-truncate membership-requests-card__requestor-name">{{request.actor().name || request.actor().email}}</div>
                 <div class="lmo-truncate membership-requests-card__requestor-introduction">{{request.introduction}}</div>
               </div>
-            </a>
+            </router-link>
           </li>
         </ul>
-        <a :href="urlFor(group, 'membership_requests')" class="membership-requests-card__link lmo-card-minor-action">
+        <router-link :to="urlFor(group, 'membership_requests')" class="membership-requests-card__link lmo-card-minor-action">
           <span v-t="{ path: 'membership_requests_card.manage_requests_with_count', args: { count: group.pendingMembershipRequests().length } }"></span>
-        </a>
+        </router-link>
       </section>
     </div>
 </template>

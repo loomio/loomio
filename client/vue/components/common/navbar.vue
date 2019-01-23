@@ -93,7 +93,7 @@ module.exports =
           </v-toolbar-side-icon>
         </div>
         <div class="navbar__middle lmo-flex lmo-flex__horizontal-center">
-          <router-link href="/dashboard" class="lmo-pointer">
+          <router-link to="/dashboard" class="lmo-pointer">
             <img :src="logo()">
           </router-link>
         </div>

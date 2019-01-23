@@ -153,9 +153,9 @@ module.exports =
     <main class="polls-page">
         <div class="lmo-flex lmo-flex__space-between lmo-flex__baseline">
             <h1 v-if="hasGroup" class="lmo-h1 dashboard-page__heading polls-page__heading">
-              <a :href="urlFor(group)">
+              <router-link :to="urlFor(group)">
                 <span v-t="{ path: 'polls_page.heading_with_group', args: { name: group.fullName }}"></span>
-              </a>
+              </router-link>
             </h1>
             <h1 v-if="!hasGroup" v-t="'polls_page.heading'" class="lmo-h1 dashboard-page__heading polls-page__heading"></h1></div>
         <div class="lmo-card">

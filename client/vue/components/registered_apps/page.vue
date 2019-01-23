@@ -62,7 +62,7 @@ module.exports =
         <div layout="row" v-for="application in orderedApplications" :key="application.id" class="registered-apps-page__apps lmo-flex lmo-flex__center">
           <img :src="application.logoUrl" class="lmo-box--medium lmo-margin-right">
           <div class="lmo-flex__grow">
-            <strong><a :href="urlFor(application)" class="nowrap">{{ application.name }}</a></strong>
+            <strong><router-link :to="urlFor(application)" class="nowrap">{{ application.name }}</router-link></strong>
           </div>
           <code v-for="uri in application.redirectUriArray()" class="registered-apps-page__code lmo-flex__grow">{{uri}}</code>
           <v-btn @click="openDestroyForm(application)" class="registered-apps-page__clear lmo-flex lmo-flex__center lmo-flex__horizontal-center">

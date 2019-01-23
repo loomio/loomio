@@ -72,10 +72,10 @@ module.exports =
       </div>
       <div layout="column" class="document-management__column-row lmo-flex lmo-flex__grow">
         <strong class="lmo-truncate">
-          <a :href="document.url" target="_blank">{{ truncate(document.title, 50) }}</a>
+          <router-link :to="document.url" target="_blank">{{ truncate(document.title, 50) }}</router-link>
         </strong>
         <div class="document-management__caption md-caption">
-          <a :href="urlFor(document.model())" class="lmo-truncate">{{ truncate(document.modelTitle(), 50) }}</a>
+          <router-link :to="urlFor(document.model())" class="lmo-truncate">{{ truncate(document.modelTitle(), 50) }}</router-link>
         </div>
         <div class="document-management__caption md-caption">
           <span>{{document.authorName()}}</span>

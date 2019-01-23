@@ -23,7 +23,6 @@ module.exports =
     currentState: ""
     showSidebar: true
   created: ->
-    console.log 'sidebar created'
     InboxService.load()
     EventBus.listen @, 'toggleSidebar', (event, show) =>
       if !_isUndefined(show)

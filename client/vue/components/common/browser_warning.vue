@@ -15,6 +15,6 @@ module.exports =
 <template>
   <div class="browser-warning">
     <span v-t="{ path: 'browser_warning.message', args: { name: browser.name, version: browser.version, site: siteName } }"></span>
-    <a href="https://browser-update.org/update-browser.html" v-t="'browser_warning.link'"></a>
+    <router-link to="https://browser-update.org/update-browser.html" v-t="'browser_warning.link'"></router-link>
   </div>
 </template>

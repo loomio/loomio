@@ -100,7 +100,7 @@ module.exports =
                         <div class="inbox-page__group-name-container lmo-flex">
                           <img :src="group.logoUrl()" aria-hidden="true" class="lmo-box--small pull-left">
                           <h2 class="inbox-page__group-name">
-                            <a :href="'/g/' + group.key">{{group.name}}</a>
+                            <router-link :to="'/g/' + group.key">{{group.name}}</router-link>
                           </h2>
                         </div>
                         <div class="inbox-page__groups thread-previews-container">

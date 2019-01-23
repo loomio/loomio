@@ -79,7 +79,7 @@ module.exports =
               <!-- <group_avatar group="subgroup" size="medium"></group_avatar> -->
             </div>
             <div class="subgroups-card__list-item-name">
-              <a :href="urlFor(subgroup)">{{ subgroup.name }}</a>
+              <router-link :to="urlFor(subgroup)">{{ subgroup.name }}</router-link>
             </div>
             <div class="subgroups-card__list-item-description">{{ truncate(subgroup.description) }}</div>
           </li>

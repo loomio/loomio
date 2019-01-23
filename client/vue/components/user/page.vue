@@ -77,7 +77,7 @@ module.exports =
               <v-list>
                 <v-list-tile v-for="group in orderedFormalGroups" :key="group.id" class="user-page__group lmo-flex lmo-flex__center">
                   <img :src="group.logoUrl()" class="md-avatar lmo-box--small lmo-margin-right">
-                  <a :href="urlFor(group)">{{group.fullName}}</a>
+                  <router-link :to="urlFor(group)">{{group.fullName}}</router-link>
                 </v-list-tile>
               </v-list>
               <!-- <loading v-if="loadGroupsForExecuting"></loading> -->

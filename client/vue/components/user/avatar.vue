@@ -76,9 +76,9 @@ module.exports =
 
 <template>
 <div aria-hidden="true" :title="user.name" class="user-avatar" :class="[boxClass]">
-    <a :href="urlFor(user)" v-if="!noLink" class="user-avatar__profile-link">
+    <router-link :to="urlFor(user)" v-if="!noLink" class="user-avatar__profile-link">
         <user-avatar-body :user="user" :coordinator="coordinator" :size="size" :colors="colors"></user-avatar-body>
-    </a>
+    </router-link>
     <div v-if="noLink" class="user-avatar__profile-link">
         <user-avatar-body :user="user" :coordinator="coordinator" :size="size" :colors="colors"></user-avatar-body>
     </div>

@@ -190,12 +190,12 @@ module.exports =
                   </div>
                   <span v-html="headline()"></span>
                   <span aria-hidden="true">·</span>
-                  <a
-                    :href="link()"
+                  <router-link
+                    :to="link()"
                     class="thread-item__link lmo-pointer"
                   >
                     <time-ago :date="event.createdAt" class="timeago--inline"></time-ago>
-                  </a>
+                  </router-link>
                 </h3>
                 <button v-if="canRemoveEvent()" @click="removeEvent()" class="md-button--tiny"><i class="mdi mdi-delete"></i></button>
               </div>

@@ -54,6 +54,11 @@ RecordLoader       = require 'shared/services/record_loader'
 ThreadQueryService = require 'shared/services/thread_query_service'
 ModalService       = require 'shared/services/modal_service'
 
+_capitalize = require 'lodash/capitalize'
+_take = require 'lodash/take'
+_keys = require 'lodash/keys'
+_every = require 'lodash/every'
+
 module.exports =
   data: ->
     dashboardLoaded: Records.discussions.collection.data.length > 0
@@ -103,9 +108,9 @@ module.exports =
   methods:
     viewName: (name) ->
       if @filter == 'show_muted'
-        "dashboard#{_.capitalize(name)}Muted"
+        "dashboard#{_capitalize(name)}Muted"
       else
-        "dashboard#{_.capitalize(name)}"
+        "dashboard#{_capitalize(name)}"
 
     filters: (filters) ->
       ['only_threads_in_my_groups', 'show_opened', @filter].concat(filters)
@@ -118,11 +123,11 @@ module.exports =
       else
         'dashboard_page.filtering.all'
 
-    viewNames: -> _.keys(@views)
-    loadingViewNames: -> _.take @viewNames, 3
+    viewNames: -> _keys(@views)
+    loadingViewNames: -> _take @viewNames, 3
     noGroups: -> !Session.user().hasAnyGroups()
     promptStart: -> !Session.user().hasAnyGroups() && AbilityService.canStartGroups()
-    noThreads: -> _.every @views, (view) => !view.any()
+    noThreads: -> _every @views, (view) => !view.any()
     userHasMuted: -> Session.user().hasExperienced("mutingThread")
     showLargeImage: -> $mdMedia("gt-sm")
 
@@ -146,9 +151,9 @@ module.exports =
             <span v-show="filter == 'show_all'" v-t="'dashboard_page.no_threads.show_all'"></span>
             <p v-t="'dashboard_page.no_threads.show_all'"></p>
             <span v-show="filter == 'show_muted' && userHasMuted" v-t="'dashboard_page.no_threads.show_muted'"></span>
-            <a lmo-href="/dashboard" v-show="filter != 'show_all' && userHasMuted">
+            <router-link to="/dashboard" v-show="filter != 'show_all' && userHasMuted">
               <span v-t="'dashboard_page.view_recent'"></span>
-            </a>
+            </router-link>
           </div>
           <div v-if="filter == 'show_muted' && !userHasMuted" class="dashboard-page__explain-mute">
             <p><strong v-t="'dashboard_page.explain_mute.title'"></strong></p>

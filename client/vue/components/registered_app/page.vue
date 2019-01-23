@@ -90,9 +90,9 @@ module.exports =
       </div>
       <div class="lmo-flex lmo-flex__space-between">
         <div>
-          <a href="/apps/registered" class="md-button">
+          <router-link to="/apps/registered" class="md-button">
             <span v-t="'common.action.back'"></span>
-          </a>
+          </router-link>
         </div>
         <div>
           <v-btn type="button" v-t="'common.action.remove'" @click="openRemoveForm()" class="md-warn md-raised"></v-btn>

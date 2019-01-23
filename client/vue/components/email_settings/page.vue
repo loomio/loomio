@@ -115,7 +115,7 @@ module.exports =
                 </div>
               </v-list-tile>
             </v-list>
-            <a href="https://help.loomio.org/en/user_manual/users/email_settings/" target="_blank" v-t="'email_settings_page.learn_more'" class="email-settings-page__learn-more-link"></a>
+            <router-link to="https://help.loomio.org/en/user_manual/users/email_settings/" target="_blank" v-t="'email_settings_page.learn_more'" class="email-settings-page__learn-more-link"></router-link>
         </div>
       </div>
     </main>

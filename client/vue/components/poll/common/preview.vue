@@ -30,7 +30,7 @@ module.exports =
 </script>
 
 <template>
-    <a :href="urlFor(poll)" class="poll-common-preview">
+    <router-link :to="urlFor(poll)" class="poll-common-preview">
       <poll-common-chart-preview :poll="poll"></poll-common-chart-preview>
       <div class="poll-common-preview__body">
         <div class="md-subhead lmo-truncate-text">
@@ -43,5 +43,5 @@ module.exports =
           <poll-common-closing-at :poll="poll"></poll-common-closing-at>
         </div>
       </div>
-    </a>
+    </router-link>
 </template>

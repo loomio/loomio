@@ -123,8 +123,8 @@ module.exports =
               v-if="document.isAnImage() && !hidePreview"
               class="document-list__image"
             >
-              <a
-                :href="document.url"
+              <router-link
+                :to="document.url"
                 target="_blank"
                 class="lmo-pointer"
               >
@@ -132,7 +132,7 @@ module.exports =
                   :src="document.webUrl"
                   :alt="document.title"
                 >
-              </a>
+              </router-link>
             </div>
             <div
               layout="row"
@@ -142,8 +142,8 @@ module.exports =
                 :class="`mdi lmo-margin-right mdi-${document.icon}`"
                 :style="{color: document.color}"
               ></i>
-              <a
-                :href="document.url"
+              <router-link
+                :to="document.url"
                 target="_blank"
                 class="lmo-pointer lmo-relative lmo-truncate lmo-flex lmo-flex__grow"
               >
@@ -152,7 +152,7 @@ module.exports =
                 >
                   {{ document.title }}
                 </div>
-              </a>
+              </router-link>
               <div
                 v-if="!hideDate && !showEdit"
                 class="document-list__upload-time md-caption lmo-flex__shrink"

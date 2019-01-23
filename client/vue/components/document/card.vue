@@ -27,9 +27,9 @@ module.exports =
         <document-list :model="group" :hide-preview="true" :hide-date="true"></document-list>
       </div>
       <div class="lmo-md-actions">
-        <a :href="urlFor(group, 'documents')" class="lmo-card-minor-action">
+        <router-link :to="urlFor(group, 'documents')" class="lmo-card-minor-action">
           <span v-t="'document.card.view_documents'"></span>
-        </a>
+        </router-link>
       </div>
     </section>
 </template>

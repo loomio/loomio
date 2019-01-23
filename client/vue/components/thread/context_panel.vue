@@ -165,7 +165,7 @@ module.exports =
           <span v-if="discussion.forkedEvent() && discussion.forkedEvent().discussion()">
             <span aria-hidden="true">·</span>
             <span v-t="'thread_context.forked_from'"></span>
-            <a :href="urlFor(discussion.forkedEvent())">{{discussion.forkedEvent().discussion().title}}</a>
+            <router-link :to="urlFor(discussion.forkedEvent())">{{discussion.forkedEvent().discussion().title}}</router-link>
           </span>
         </span>
         <div v-t="'common.privacy.closed'" v-if="discussion.closedAt" md-colors="{color: 'warn-600', 'border-color': 'warn-600'}" class="lmo-badge lmo-pointer">

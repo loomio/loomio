@@ -153,7 +153,7 @@ module.exports =
       </md-input-container> -->
       <div v-show="showMessage" v-t="{ path: searchResultsMessage, args: { resultCount: resultsCount, searchTerm: query } }" class="explore-page__search-results"></div>
       <div class="explore-page__groups">
-        <a v-for="group in orderedGroups" :key="group.id" :href="urlFor(group)" class="explore-page__group">
+        <router-link v-for="group in orderedGroups" :key="group.id" :to="urlFor(group)" class="explore-page__group">
           <div :style="groupCover(group)" class="explore-page__group-cover"></div>
           <div class="explore-page__group-details">
             <h2 class="lmo-h2">{{group.name}}</h2>
@@ -169,7 +169,7 @@ module.exports =
               <span></span>
             </div>
           </div>
-        </a>
+        </router-link>
       </div>
       <div v-show="canLoadMoreGroups" class="lmo-show-more">
         <!-- <button v-show="!searchExecuting" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more"></button> -->

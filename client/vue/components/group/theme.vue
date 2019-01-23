@@ -176,14 +176,14 @@ module.exports =
       </div>
       <div v-if="compact" class="group-theme__header--compact">
         <div aria-hidden="true" class="group-theme__logo--compact">
-          <a lmo-href-for="group"><img :src="group.logoUrl()" :alt="$t('group_page.group_logo')"></a>
+          <router-link :to="urlFor(group)"><img :src="group.logoUrl()" :alt="$t('group_page.group_logo')"></router-link>
         </div>
         <div aria-label="breadcrumb" role="navigation" class="group-theme__name--compact">
-          <a v-if="group.isSubgroup()" lmo-href-for="group.parent()">{{group.parentName()}}</a>
+          <router-link v-if="group.isSubgroup()" :to="urlFor(group.parent())">{{group.parentName()}}</router-link>
           <span v-if="group.isSubgroup()">-</span>
-          <a :href="urlFor(group)" aria-current="page">{{group.name}}</a>
+          <router-link :to="urlFor(group)" aria-current="page">{{group.name}}</router-link>
           <span v-if="discussion">-</span>
-          <a v-if="discussion" :href="urlFor(discussion)" aria-current="page">{{discussion.title}}</a>
+          <router-link v-if="discussion" :to="urlFor(discussion)" aria-current="page">{{discussion.title}}</router-link>
         </div>
       </div>
       <div v-if="!compact" class="group-theme__header">
@@ -196,9 +196,9 @@ module.exports =
         </div>
       <div class="group-theme__name-and-actions">
         <h1 aria-label="breadcrumb" role="navigation" class="lmo-h1 group-theme__name">
-        <a v-if="group.isSubgroup()" :href="urlFor(group.parent())">{{group.parentName()}}</a>
+        <router-link v-if="group.isSubgroup()" :to="urlFor(group.parent())">{{group.parentName()}}</router-link>
         <span v-if="group.isSubgroup()">-</span>
-        <a :href="urlFor(group)">{{group.name}}</a></h1>
+        <router-link :to="urlFor(group)">{{group.name}}</router-link></h1>
           <div v-if="homePage" class="group-theme__actions">
             <join-group-button :group="group"></join-group-button>
             <!-- <outlet name="group-theme-actions" model="group"></outlet> -->

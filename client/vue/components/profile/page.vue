@@ -121,7 +121,7 @@ module.exports =
                       <validation-errors :subject="user" field="selectedLocale"></validation-errors>
                   </div>
                   <p v-if="showHelpTranslate">
-                      <a v-t="'profile_page.help_translate'" href="https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation" target="_blank" class="md-caption"></a>
+                      <router-link v-t="'profile_page.help_translate'" to="https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation" target="_blank" class="md-caption"></router-link>
                   </p>
               </div>
               <div class="profile-page__update-account lmo-flex lmo-flex__space-between">
