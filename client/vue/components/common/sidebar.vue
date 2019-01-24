@@ -23,7 +23,7 @@ module.exports =
     currentState: ""
     showSidebar: true
     isGroupModalOpen: false
-    isStartingThread: false
+    isThreadModalOpen: false
   created: ->
     InboxService.load()
     EventBus.listen @, 'toggleSidebar', (event, show) =>
@@ -45,8 +45,8 @@ module.exports =
       _filter Session.user().groups(), (group) => group.type == 'FormalGroup'
 
     currentGroup: ->
-      return _head(availableGroups()) if availableGroups().length == 1
-      _find(availableGroups(), (g) => g.id == (AppConfig.currentGroup or {}).id) || Records.groups.build()
+      return _head(@availableGroups()) if @availableGroups().length == 1
+      _find(@availableGroups(), (g) => g.id == (AppConfig.currentGroup or {}).id) || Records.groups.build()
 
     onPage: (page, key, filter) ->
       switch page
@@ -80,11 +80,19 @@ module.exports =
     openGroupModal: ->
       @isGroupModalOpen = true
 
+    openThreadModal: ->
+      @isThreadModalOpen = true
+    closeThreadModal: ->
+      @isThreadModalOpen = false
+
     newGroup: ->
       Records.groups.build()
 
-    startThread: ->
-      ModalService.open 'DiscussionStartModal', discussion: => Records.discussions.build(groupId: @currentGroup().id)
+    newThread: ->
+      Records.discussions.build(groupId: @currentGroup().id)
+
+    # startThread: ->
+    #   ModalService.open 'DiscussionStartModal', discussion: => Records.discussions.build(groupId: @currentGroup().id)
 </script>
 
 <template>
@@ -116,10 +124,16 @@ module.exports =
             <span v-t="'sidebar.muted_threads'"></span>
           </v-list-tile>
         </router-link>
-        <v-list-tile v-if="canStartThreads()" @click="startThread()" aria-label="$t('sidebar.start_thread')" class="sidebar__list-item-button sidebar__list-item-button--start-thread">
+        <v-list-tile v-if="canStartThreads()" @click="openThreadModal()" aria-label="$t('sidebar.start_thread')" class="sidebar__list-item-button sidebar__list-item-button--start-thread">
           <i class="sidebar__list-item-icon mdi mdi-plus"></i>
           <span v-t="'sidebar.start_thread'"></span>
         </v-list-tile>
+        <v-dialog
+          v-model="isThreadModalOpen"
+          lazy
+        >
+          <discussion-start :discussion="newThread()" :close="closeThreadModal"></discussion-start>
+        </v-dialog>
       </v-list>
       <v-divider class="sidebar__divider"></v-divider>
       <v-list-tile v-t="'common.groups'" class="sidebar__list-subhead"></v-list-tile>
