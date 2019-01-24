@@ -9,10 +9,15 @@ ModalService = require 'shared/services/modal_service'
 { fieldFromTemplate } = require 'shared/helpers/poll'
 
 _map = require 'lodash/map'
+_reduce = require 'lodash/reduce'
 
 module.exports =
   data: ->
-    isPollModalOpen: false
+    # isPollModalOpen: false
+    modals: _reduce(@pollTypes(), (modals, poll) =>
+      modals[poll] = false
+      modals
+    , {})
   props:
     discussion:
       type: Object
@@ -21,8 +26,8 @@ module.exports =
       type: Object
       default: () => ({})
   methods:
-    openPollModal: ->
-      @isPollModalOpen = true
+    openPollModal: (pollType) ->
+      @modals[pollType] = true
 
     pollTypes: -> AppConfig.pollTypes
 
@@ -54,13 +59,13 @@ module.exports =
         <v-list-tile
           class="decision-tools-card__poll-type"
           :class="'decision-tools-card__poll-type--' + pollType"
-          @click="openPollModal"
+          @click="openPollModal(pollType)"
           v-for="(pollType, index) in pollTypes()"
           :key=index
           :aria-label="getAriaLabelForPollType(pollType)"
         >
           <v-dialog
-            v-model="isPollModalOpen"
+            v-model="modals[pollType]"
             lazy
           >
             <poll-common-start-modal :poll="newPoll(pollType)"></poll-common-start-modal>
