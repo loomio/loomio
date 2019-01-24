@@ -11,7 +11,7 @@ I18n           = require 'shared/services/i18n'
 module.exports =
   props:
     group: Object
-    modal: Object
+    modal: Boolean
   data: ->
     isDisabled: false
     rules: {

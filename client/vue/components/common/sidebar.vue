@@ -22,7 +22,7 @@ module.exports =
   data: ->
     currentState: ""
     showSidebar: true
-    isStartingGroup: false
+    isGroupModalOpen: false
     isStartingThread: false
   created: ->
     InboxService.load()
@@ -77,16 +77,18 @@ module.exports =
     canStartGroup: -> AbilityService.canStartGroups()
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
 
-    startGroup: ->
-      # ModalService.open 'GroupModal', group: => Records.groups.build()
-      @isStartingGroup = true
+    openGroupModal: ->
+      @isGroupModalOpen = true
+
+    newGroup: ->
+      Records.groups.build()
 
     startThread: ->
       ModalService.open 'DiscussionStartModal', discussion: => Records.discussions.build(groupId: @currentGroup().id)
 </script>
 
 <template>
-  <v-navigation-drawer role="navigation" md-component-id="left" :md-is-open="showSidebar" :md-is-locked-open="canLockSidebar() && showSidebar" md-whiteframe="4" aria-label="$t('sidebar.aria_labels.heading')" aria-hidden="!showSidebar" class="md-sidenav-left lmo-no-print">
+  <v-navigation-drawer permanent role="navigation" md-component-id="left" :md-is-open="showSidebar" :md-is-locked-open="canLockSidebar() && showSidebar" md-whiteframe="4" aria-label="$t('sidebar.aria_labels.heading')" aria-hidden="!showSidebar" class="md-sidenav-left lmo-no-print">
     <div md_content layout="column" @click="sidebarItemSelected()" role="navigation" class="sidebar__content lmo-no-print">
       <v-divider class="sidebar__divider"></v-divider>
       <v-list layout="column" aria-label="$t('sidebar.aria_labels.threads_list')" class="sidebar__list sidebar__threads">
@@ -140,15 +142,15 @@ module.exports =
             <span v-t="'sidebar.explore'"></span>
           </v-list-tile>
         </router-link>
-        <v-list-tile v-if="canStartGroup()" @click="startGroup()" aria-label="$t('sidebar.start_group')" class="sidebar__list-item-button sidebar__list-item-button--start-group">
+        <v-list-tile v-if="canStartGroup()" @click="openGroupModal()" aria-label="$t('sidebar.start_group')" class="sidebar__list-item-button sidebar__list-item-button--start-group">
           <i class="sidebar__list-item-icon mdi mdi-plus"></i>
           <span v-t="'sidebar.start_group'"></span>
         </v-list-tile>
         <v-dialog
-          v-model="isStartingGroup"
+          v-model="isGroupModalOpen"
           lazy
         >
-          <div>hello world</div>
+          <group-start :group="newGroup()"></group-start>
         </v-dialog>
       </v-list>
     </div>

@@ -16,6 +16,7 @@ module.exports =
     group: Object
   # data: ->
   #   expanded: false
+    successFn: Function
   methods:
     expandForm: ->
       Vue.set(@group, 'expanded', true) # probably a bad idea
@@ -42,6 +43,7 @@ module.exports =
       successCallback: (response) =>
         group = Records.groups.find(response.groups[0].key)
         EventBus.emit @, 'nextStep', group
+        @successFn(group)
 </script>
 
 <template>
