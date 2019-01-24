@@ -36,31 +36,24 @@ EventBus  = require 'shared/services/event_bus'
 
 { iconFor } = require 'shared/helpers/poll'
 
-angular.module('loomioApp').directive 'pollCommonChooseType', ->
-  scope: {poll: '='}
-  template: require('./poll_common_choose_type.haml')
-  controller: ['$scope', ($scope) ->
-
-    $scope.choose = (type) ->
-      EventBus.emit $scope, 'nextStep', type
-
-    $scope.pollTypes = -> AppConfig.pollTypes
-
-    $scope.iconFor = (pollType) ->
-      iconFor { pollType: pollType } # :/
-  ]
-
 module.exports =
   props:
-  data: ->
+    poll: Object
   methods:
+    iconForPollType: (pollType) ->
+      iconFor { pollType: pollType } # :/
+
+    choose: (type) ->
+      # EventBus.emit @, 'nextStep', type
+  computed:
+    pollTypes: -> AppConfig.pollTypes
 </script>
 
 <template>
   <div class="poll-common-choose-type__select-poll-type">
     <div :class="'poll-common-choose-type__poll-type--' + pollType" v-for="(pollType, index) in pollTypes()" :key="index">
       <v-list-tile @click="choose(pollType)" class="poll-common-choose-type__poll-type">
-        <i :class="'mdi mdi-24px poll-common-choose-type__icon ' + iconFor(pollType)"></i>
+        <i :class="'mdi mdi-24px poll-common-choose-type__icon ' + iconForPollType(pollType)"></i>
         <div :class="'poll-common-choose-type__content poll-common-choose-type__start-poll--' + pollType">
           <div v-t="'decision_tools_card.' + pollType + '_title'" class="poll-common-choose-type__poll-type-title md-subhead"></div>
           <div v-t="'poll_' + pollType + '_form.tool_tip_collapsed'" class="poll-common-choose-type__poll-type-subtitle md-caption"></div>

@@ -8,7 +8,11 @@ ModalService = require 'shared/services/modal_service'
 
 { fieldFromTemplate } = require 'shared/helpers/poll'
 
+_map = require 'lodash/map'
+
 module.exports =
+  data: ->
+    isPollModalOpen: false
   props:
     discussion:
       type: Object
@@ -17,15 +21,25 @@ module.exports =
       type: Object
       default: () => ({})
   methods:
+    openPollModal: ->
+      @isPollModalOpen = true
+
     pollTypes: -> AppConfig.pollTypes
 
-    startPoll: (pollType) ->
-      ModalService.open 'PollCommonStartModal', poll: =>
-        Records.polls.build
-          pollType:              pollType
-          discussionId:          @discussion.id
-          groupId:               @discussion.groupId or @group.id
-          pollOptionNames:       _.map @callFieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
+    newPoll: (pollType) ->
+      Records.polls.build
+        pollType:              pollType
+        discussionId:          @discussion.id
+        groupId:               @discussion.groupId or @group.id
+        pollOptionNames:       _map @callFieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
+
+    # startPoll: (pollType) ->
+    #   # ModalService.open 'PollCommonStartModal', poll: =>
+    #   Records.polls.build
+    #     pollType:              pollType
+    #     discussionId:          @discussion.id
+    #     groupId:               @discussion.groupId or @group.id
+    #     pollOptionNames:       _map @callFieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
 
     callFieldFromTemplate: (pollType, field) ->
       fieldFromTemplate(pollType, field)
@@ -36,16 +50,22 @@ module.exports =
 </script>
 
 <template>
-      <ul md-list class="decision-tools-card__poll-types">
-        <li
-          md-list-item
+      <v-list class="decision-tools-card__poll-types">
+        <v-list-tile
           class="decision-tools-card__poll-type"
           :class="'decision-tools-card__poll-type--' + pollType"
-          @click="startPoll(pollType)"
+          @click="openPollModal"
           v-for="(pollType, index) in pollTypes()"
           :key=index
           :aria-label="getAriaLabelForPollType(pollType)"
         >
+          <v-dialog
+            v-model="isPollModalOpen"
+            lazy
+          >
+            <poll-common-start-modal :poll="newPoll(pollType)"></poll-common-start-modal>
+            <!-- <discussion-start :discussion="newThread()" :close="closeThreadModal"></discussion-start> -->
+          </v-dialog>
           <i
             class="mdi mdi-24px decision-tools-card__icon"
             :class="callFieldFromTemplate(pollType, 'material_icon')"
@@ -54,6 +74,6 @@ module.exports =
             <div v-t="'poll_types.' + pollType" class="decision-tools-card__poll-type-title md-body-1"></div>
             <div v-t="'poll_' + pollType + '_form.tool_tip_collapsed'" class="decision-tools-card__poll-type-subtitle md-caption"></div>
           </div>
-        </li>
-      </ul>
+        </v-list-tile>
+      </v-list>
 </template>

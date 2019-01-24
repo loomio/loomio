@@ -2,6 +2,7 @@
 </style>
 
 <script lang="coffee">
+
 module.exports =
   props:
     poll: Object
