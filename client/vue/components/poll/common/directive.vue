@@ -4,6 +4,8 @@
 <script lang="coffee">
 import PollProposalForm from 'vue/components/poll/proposal/form.vue'
 module.exports =
+  components:
+    'poll-proposal-form': PollProposalForm
   props:
     poll: Object
     stance: Object
@@ -14,10 +16,9 @@ module.exports =
   methods:
     componentName: ->
       pollType = (@stance or @outcome or @stanceChoice or @poll).poll().pollType
-      console.log "poll-#{pollType}-#{@name}"
 
-      if Vue.options.components[_.upperFirst(_.camelCase("poll-#{pollType}-#{@name}"))]
-        "poll-#{_.kebabCase(pollType)}-#{@name}"
+      if @$options.components["poll-#{pollType}-#{@name}"]
+        "poll-#{pollType}-#{@name}"
       else
         "poll-common-#{@name}"
 </script>
