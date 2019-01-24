@@ -91,5 +91,6 @@ module.exports = {
   Sidebar: 'common/sidebar',
   GroupStart: 'group/start',
   AnnouncementForm: 'announcement/form',
-  PollCommonStartModal: 'poll/common/start_modal'
+  PollCommonStartModal: 'poll/common/start_modal',
+  PollProposalForm: 'poll/proposal/form'
 }

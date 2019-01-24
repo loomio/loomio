@@ -2,7 +2,7 @@
 </style>
 
 <script lang="coffee">
-
+import PollProposalForm from 'vue/components/poll/proposal/form.vue'
 module.exports =
   props:
     poll: Object
