@@ -77,10 +77,13 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
 
     panel("Members") do
-      table_for group.memberships.active.each do
-        column(:name) { |m| link_to m.user.name, admin_user_path(m.user) }
-        column(:email) { |m| m.user.email }
+      table_for group.all_memberships.each do
+        column(:name)        { |m| link_to m.user.name, admin_user_path(m.user) }
+        column(:email)       { |m| m.user.email }
         column(:coordinator) { |m| m.admin }
+        column(:invter)      { |m| m.inviter.name }
+        column(:accepted_at) { |m| m.accepted_at }
+        column(:archived_at) { |m| m.archived_at }
         column "Support" do |m|
           if m.user.name.present?
             link_to("Search for #{m.user.name}", "https://support.loomio.org/scp/users.php?a=search&query=#{m.user.name.downcase.split(' ').join('+')}")
