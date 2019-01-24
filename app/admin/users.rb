@@ -119,11 +119,11 @@ ActiveAdmin.register User do
 
     panel("Memberships") do
       table_for user.memberships.formal.each do |m|
-        column :admin
         column :group_name do |g|
           group = g.group
           link_to group.full_name, admin_group_path(group)
         end
+        column :admin
       end
     end
 
