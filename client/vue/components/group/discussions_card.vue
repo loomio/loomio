@@ -91,7 +91,7 @@ module.exports =
 <template>
   <v-card
     aria-labelledby="threads-card-title"
-    class="pa-0 discussions-card"
+    class="discussions-card mb-2"
     v-if="discussions"
   >
     <div class="discussions-card__header">
@@ -146,14 +146,18 @@ module.exports =
 
         <v-dialog v-model="discussionStartIsOpen" lazy>
           <v-btn
+            flat
+            color="primary"
             v-if="canStartThread"
             slot="activator"
             :title="$t('navbar.start_thread')"
-            class="md-primary md-raised discussions-card__new-thread-button"
-          >
-            <span v-t="{ path: 'navbar.start_thread' }"></span>
-          </v-btn>
-          <discussion-start :discussion="newDiscussion()" :close="closeDiscussionStart"></discussion-start>
+            class="discussions-card__new-thread-button"
+            v-t="{ path: 'navbar.start_thread' }"
+          ></v-btn>
+          <discussion-start
+            :discussion="newDiscussion()"
+            :close="closeDiscussionStart">
+          </discussion-start>
         </v-dialog>
     </div>
     <div class="discussions-card__content">

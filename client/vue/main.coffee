@@ -37,7 +37,8 @@ bootDat (appConfig) ->
   routes = require('vue/routes.coffee')
   router = new VueRouter(mode: 'history', routes: routes)
   store = require('vue/store/main.coffee')
-  Sidebar = require('vue/components/common/sidebar.vue').default
+  Sidebar = require('vue/components/common/sidebar.vue')
+  # Navbar = require('vue/components/common/navbar.vue')
 
   i18n = new VueI18n({locale: 'en', fallbackLocale: 'en'})
 
@@ -52,6 +53,7 @@ bootDat (appConfig) ->
           accent: colors.cyan.base
         components:
           Sidebar: Sidebar
+          # Navbar: Navbar
         router: router
         i18n: i18n
         store: store

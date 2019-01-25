@@ -34,7 +34,7 @@ module.exports = new class Session
 
   updateLocale: (locale) ->
     locale = locale.toLowerCase().replace('_','-')
-    I18n.useLocale(locale)
+    # I18n.useLocale(locale)
     return if momentLocaleFor(locale) == "en"
     Records.momentLocales.fetch(path: "#{momentLocaleFor(locale)}.js").then -> moment.locale(locale)
 

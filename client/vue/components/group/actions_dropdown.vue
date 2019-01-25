@@ -1,24 +1,3 @@
-<style lang="scss">
-.group-page-actions {
-  display: flex;
-  align-items: center;
-}
-
-.group-actions-dropdown__menu-content .md-button {
-  display: flex !important;
-  align-items: center;
-}
-
-.group-actions-dropdown__menu-content {
-  max-height: 400px;
-}
-
-.group-actions-dropdown__menu-content .mdi {
-  font-size: 20px;
-  margin-right: 8px;
-}
-</style>
-
 <script lang="coffee">
 AppConfig      = require 'shared/services/app_config'
 Session        = require 'shared/services/session'
@@ -92,7 +71,7 @@ module.exports =
 <template>
   <div class="group-page-actions lmo-no-print">
     <v-menu md-position-mode="target-right target" class="lmo-dropdown-menu">
-      <v-btn slot="activator" class="group-page-actions__button">
+      <v-btn flat slot="activator" class="group-page-actions__button">
         <span v-t="'group_page.options.label'"></span>
         <i class="mdi mdi-chevron-down"></i>
       </v-btn>
@@ -120,3 +99,24 @@ module.exports =
     </v-menu>
   </div>
 </template>
+
+<style lang="scss">
+.group-page-actions {
+  display: flex;
+  align-items: center;
+}
+
+.group-actions-dropdown__menu-content .md-button {
+  display: flex !important;
+  align-items: center;
+}
+
+.group-actions-dropdown__menu-content {
+  max-height: 400px;
+}
+
+.group-actions-dropdown__menu-content .mdi {
+  font-size: 20px;
+  margin-right: 8px;
+}
+</style>

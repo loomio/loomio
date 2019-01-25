@@ -31,7 +31,7 @@ module.exports =
 <template>
   <v-card
     aria-labelledby="description-card-title"
-    class="description-card"
+    class="description-card mb-2"
   >
     <v-card-text>
       <h2

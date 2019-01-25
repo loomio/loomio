@@ -23,14 +23,14 @@ module.exports =
     isThreadModalOpen: false
   created: ->
     InboxService.load()
-    EventBus.listen @, 'toggleSidebar', (event, show) =>
-      if !_isUndefined(show)
-        @showSidebar = show
-      else
-        @showSidebar = !@showSidebar
-
-    EventBus.listen @, 'currentComponent', (el, component) =>
-      @currentState = component
+    # EventBus.listen @, 'toggleSidebar', (event, show) =>
+    #   if !_isUndefined(show)
+    #     @showSidebar = show
+    #   else
+    #     @showSidebar = !@showSidebar
+    #
+    # EventBus.listen @, 'currentComponent', (el, component) =>
+    #   @currentState = component
   computed:
     orderedGroups: ->
       _sortBy @groups(), 'fullName'
