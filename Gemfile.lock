@@ -370,6 +370,7 @@ GEM
       rack (>= 1.0, < 3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rack-timeout (0.5.1)
     rack_session_access (0.2.0)
       builder (>= 2.0.0)
       rack (>= 1.0.0)
@@ -608,6 +609,7 @@ DEPENDENCIES
   premailer-rails
   puma
   rack-attack
+  rack-timeout
   rack_session_access
   rails (~> 5.2.2)
   rails-controller-testing
