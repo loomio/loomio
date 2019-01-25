@@ -25,21 +25,26 @@
     = render 'angular/metadata'
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
-    #app
+    %v-app#app
       -# %noscript= I18n.t(:"errors.noscript")
       -# %browser_warning{'ng-if' => 'warnDeprecation'}
       -# %flash
-      -# %navbar{'ng-if' => 'translationsLoaded'}
+      %navbar
+      %sidebar
+      %v-content
+        %v-container-fluid
+          %router-view
+          -# %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
+          -# %powered_by{'ng-if' => '!refreshing && !pageError'}
+      -# %v-footer{app: "true"}
 
-      .lmo-sidebar-and-main-container{'ng-if' => 'translationsLoaded', layout: "row", flex: ""}
+      -# .lmo-sidebar-and-main-container{'ng-if' => 'translationsLoaded', layout: "row", flex: ""}
         -# %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}
         .lmo-main-content{flex: ""}
           -# .lmo-main-background
             -# %verify_email_notice
             -# %ng_outlet{'ng-if' => '!refreshing && !pageError'}
           -# %router-view
-            -# %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
-            -# %powered_by{'ng-if' => '!refreshing && !pageError'}
 
     %script{src: '/client/webpack/app.js'}
     -# bundle_asset_path(:"angular.bundle.min.js")}

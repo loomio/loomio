@@ -89,9 +89,9 @@ module.exports =
 </script>
 
 <template>
-  <section
+  <v-card
     aria-labelledby="threads-card-title"
-    class="discussions-card lmo-card--no-padding"
+    class="pa-0 discussions-card"
     v-if="discussions"
   >
     <div class="discussions-card__header">
@@ -219,7 +219,7 @@ module.exports =
           v-show="loading"
         ></loading>
     </div>
-  </section>
+  </v-card>
 </template>
 
 <style lang="scss">

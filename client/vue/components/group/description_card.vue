@@ -1,13 +1,3 @@
-<style lang="scss">
-@import 'app.scss';
-
-.description-card__documents-link {
-  @include cardMinorAction;
-  margin: 0 0 0 4px;
-  line-height: 32px;
-}
-</style>
-
 <script lang="coffee">
 Records        = require 'shared/services/records'
 AbilityService = require 'shared/services/ability_service'
@@ -39,34 +29,47 @@ module.exports =
 </script>
 
 <template>
-      <section
-        aria-labelledby="description-card-title"
-        class="description-card lmo-card"
+  <v-card
+    aria-labelledby="description-card-title"
+    class="description-card"
+  >
+    <v-card-text>
+      <h2
+        v-t="'description_card.title'"
+        class="description-card__title lmo-card-heading"
+      ></h2>
+      <div
+        v-t="'description_card.placeholder'"
+        v-if="!group.description"
+        class="description-card__placeholder lmo-hint-text"
+      ></div>
+      <div
+        v-marked="group.description"
+        class="description-card__text lmo-markdown-wrapper"
+      ></div>
+      <document-list
+        :model="group"
+        placeholder="document.list.no_group_documents"
+      ></document-list>
+      <div
+        class="lmo-md-action"
       >
-        <h2
-          v-t="'description_card.title'"
-          class="description-card__title lmo-card-heading"
-        ></h2>
-        <div
-          v-t="'description_card.placeholder'"
-          v-if="!group.description"
-          class="description-card__placeholder lmo-hint-text"
-        ></div>
-        <div
-          v-marked="group.description"
-          class="description-card__text lmo-markdown-wrapper"
-        ></div>
-        <document-list
+        <action-dock
           :model="group"
-          placeholder="document.list.no_group_documents"
-        ></document-list>
-        <div
-          class="lmo-md-action"
-        >
-          <action-dock
-            :model="group"
-            :actions="actions"
-          ></action-dock>
-        </div>
-      </section>
+          :actions="actions"
+        ></action-dock>
+      </div>
+    </v-card-text>
+  </v-card>
 </template>
+
+<style lang="scss">
+
+@import 'app.scss';
+
+.description-card__documents-link {
+  @include cardMinorAction;
+  margin: 0 0 0 4px;
+  line-height: 32px;
+}
+</style>

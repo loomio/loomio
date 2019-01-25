@@ -3,6 +3,7 @@ import VueI18n from 'vue-i18n'
 import Vuex from 'vuex'
 import Vuetify from 'vuetify'
 import VueRouter from 'vue-router'
+import colors from 'vuetify/es5/util/colors'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -43,8 +44,12 @@ bootDat (appConfig) ->
   fetch('/api/v1/translations?lang=en&vue=true').then (res) ->
     res.json().then (data) ->
       i18n.setLocaleMessage('en', data)
-      app = new Vue(
+      app = new Vue
         el: '#app'
+        theme:
+          primary: colors.amber.base
+          secondary: colors.green.base
+          accent: colors.cyan.base
         components:
           Sidebar: Sidebar
         router: router
@@ -64,11 +69,3 @@ bootDat (appConfig) ->
             #   ModalService.open 'ChangePasswordForm'
         created: ->
           signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, @loggedIn)
-        template:
-          """
-          <div>
-            <sidebar></sidebar>
-            <router-view></router-view>
-          </div>
-          """
-      )

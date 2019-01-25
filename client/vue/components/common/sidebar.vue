@@ -1,6 +1,3 @@
-<style>
-</style>
-
 <script lang="coffee">
 AppConfig      = require 'shared/services/app_config'
 Session        = require 'shared/services/session'
@@ -96,7 +93,7 @@ module.exports =
 </script>
 
 <template>
-  <v-navigation-drawer permanent role="navigation" md-component-id="left" :md-is-open="showSidebar" :md-is-locked-open="canLockSidebar() && showSidebar" md-whiteframe="4" aria-label="$t('sidebar.aria_labels.heading')" aria-hidden="!showSidebar" class="md-sidenav-left lmo-no-print">
+  <v-navigation-drawer app permanent role="navigation" md-component-id="left" :md-is-open="showSidebar" :md-is-locked-open="canLockSidebar() && showSidebar" md-whiteframe="4" aria-label="$t('sidebar.aria_labels.heading')" aria-hidden="!showSidebar" class="md-sidenav-left lmo-no-print">
     <div md_content layout="column" @click="sidebarItemSelected()" role="navigation" class="sidebar__content lmo-no-print">
       <v-divider class="sidebar__divider"></v-divider>
       <v-list layout="column" aria-label="$t('sidebar.aria_labels.threads_list')" class="sidebar__list sidebar__threads">
@@ -170,3 +167,6 @@ module.exports =
     </div>
   </v-navigation-drawer>
 </template>
+
+<style>
+</style>
