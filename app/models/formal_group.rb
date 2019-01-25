@@ -45,7 +45,8 @@ class FormalGroup < Group
 
   belongs_to :cohort
   belongs_to :default_group_cover
-
+  belongs_to :subscription
+  
   has_many :subgroups,
            -> { where(archived_at: nil) },
            class_name: 'Group',

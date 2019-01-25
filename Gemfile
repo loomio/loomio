@@ -52,6 +52,7 @@ gem 'has_secure_token'
 gem "autoprefixer-rails"
 gem 'icalendar'
 gem 'rack-attack'
+gem 'rack-timeout'
 gem 'js_regex'
 gem 'bootsnap', require: false
 gem 'redis-rails'
