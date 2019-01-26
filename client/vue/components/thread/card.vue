@@ -11,8 +11,8 @@ module.exports =
 </script>
 
 <template>
-    <div class="thread-card lmo-card--no-padding">
-      <context-panel :discussion="discussion"></context-panel>
-      <activity-card :discussion="discussion" v-if="discussion.createdEvent()"></activity-card>
-    </div>
+  <v-card class="thread-card">
+    <context-panel :discussion="discussion"></context-panel>
+    <activity-card :discussion="discussion" v-if="discussion.createdEvent()"></activity-card>
+  </v-card>
 </template>

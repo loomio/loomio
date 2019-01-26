@@ -21,6 +21,7 @@ module.exports =
     showSidebar: true
     isGroupModalOpen: false
     isThreadModalOpen: false
+
   created: ->
     InboxService.load()
     # EventBus.listen @, 'toggleSidebar', (event, show) =>
@@ -31,12 +32,15 @@ module.exports =
     #
     # EventBus.listen @, 'currentComponent', (el, component) =>
     #   @currentState = component
+
   computed:
     orderedGroups: ->
       _sortBy @groups(), 'fullName'
+
   methods:
     canStartThreads: ->
-      _some Session.user().groups(), (group) => AbilityService.canStartThread(group)
+      Session.user().id &&
+      _some(Session.user().groups(), (group) => AbilityService.canStartThread(group))
 
     availableGroups: ->
       _filter Session.user().groups(), (group) => group.type == 'FormalGroup'
@@ -93,45 +97,72 @@ module.exports =
 </script>
 
 <template>
-  <v-navigation-drawer app permanent role="navigation" md-component-id="left" :md-is-open="showSidebar" :md-is-locked-open="canLockSidebar() && showSidebar" md-whiteframe="4" aria-label="$t('sidebar.aria_labels.heading')" aria-hidden="!showSidebar" class="md-sidenav-left lmo-no-print">
-    <div md_content layout="column" @click="sidebarItemSelected()" role="navigation" class="sidebar__content lmo-no-print">
-      <v-divider class="sidebar__divider"></v-divider>
-      <v-list layout="column" aria-label="$t('sidebar.aria_labels.threads_list')" class="sidebar__list sidebar__threads">
-        <router-link to="/polls">
-          <v-list-tile aria-label="$t('sidebar.my_decisions')" :class="{'sidebar__list-item--selected': onPage('pollsPage')}" class="sidebar__list-item-button sidebar__list-item-button--decisions">
-            <v-list-tile-action class="sidebar__list-item-icon mdi mdi-thumbs-up-down"></v-list-tile-action>
-            <span v-t="'common.decisions'"></span>
-          </v-list-tile>
-        </router-link>
-        <router-link to="/dashboard">
-          <v-list-tile aria-label="$t('sidebar.recent')" :class="{'sidebar__list-item--selected': onPage('dashboardPage')}" class="sidebar__list-item-button sidebar__list-item-button--recent">
-            <i class="sidebar__list-item-icon mdi mdi-forum"></i>
-            <span v-t="'sidebar.recent_threads'"></span>
-          </v-list-tile>
-        </router-link>
-        <router-link to="/inbox">
-          <v-list-tile aria-label="$t('sidebar.unread')" :class="{'sidebar__list-item--selected': onPage('inboxPage')}" class="sidebar__list-item-button sidebar__list-item-button--unread">
-            <i class="sidebar__list-item-icon mdi mdi-inbox"></i>
-            <span v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }"></span>
-          </v-list-tile>
-        </router-link>
-        <router-link to="/dashboard/show_muted">
-          <v-list-tile aria-label="$t('sidebar.muted')" :class="{'sidebar__list-item--selected': onPage('dashboardPage', null, 'show_muted')}" class="sidebar__list-item-button sidebar__list-item-button--muted">
-            <i class="sidebar__list-item-icon mdi mdi-volume-mute"></i>
-            <span v-t="'sidebar.muted_threads'"></span>
-          </v-list-tile>
-        </router-link>
-        <v-list-tile v-if="canStartThreads()" @click="openThreadModal()" aria-label="$t('sidebar.start_thread')" class="sidebar__list-item-button sidebar__list-item-button--start-thread">
-          <i class="sidebar__list-item-icon mdi mdi-plus"></i>
-          <span v-t="'sidebar.start_thread'"></span>
+  <v-navigation-drawer app permanent value="true" class="lmo-no-print">
+    <v-list>
+      <v-list-tile to="/polls" class="sidebar__list-item-button--decisions">
+        <v-list-tile-action>
+          <v-icon>mdi-thumbs-up-down</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title v-t="'common.decisions'"></v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+
+      <v-list-tile to="/dashboard" class="sidebar__list-item-button--recent">
+        <v-list-tile-action>
+          <v-icon>mdi-forum</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title v-t="'sidebar.recent_threads'"></v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+
+      <v-list-tile to="/inbox" class="sidebar__list-item-button--unread">
+        <v-list-tile-action>
+          <v-icon>mdi-inbox</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title  v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }"></v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+
+      <v-list-tile to="/dashboard/show_muted" class="sidebar__list-item-button--muted">
+        <v-list-tile-action>
+          <v-icon>mdi-volume-mute</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title v-t="'sidebar.muted_threads'"></v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+
+      <v-list-tile v-if="canStartThreads()" @click="openThreadModal()" class="sidebar__list-item-button--start-thread">
+        <v-list-tile-action>
+          <v-icon>mdi-plus</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title v-t="'sidebar.start_thread'"></v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+    </v-list>
+    <v-dialog v-model="isThreadModalOpen" lazy >
+      <discussion-start :discussion="newThread()" :close="closeThreadModal"></discussion-start>
+    </v-dialog>
+    <v-divider class="sidebar__divider"></v-divider>
+    <v-list>
+      <div v-for="group in orderedGroups" :key="group.id">
+        <v-list-tile :to="groupUrl(group)" v-if="group.isParent()">
+          <v-list-tile-action>
+            <img :src="group.logoUrl()" class="md-avatar lmo-box--tiny sidebar__list-item-group-logo">
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{group.name}}</v-list-tile-title>
+          </v-list-tile-content>
         </v-list-tile>
-        <v-dialog
-          v-model="isThreadModalOpen"
-          lazy
-        >
-          <discussion-start :discussion="newThread()" :close="closeThreadModal"></discussion-start>
-        </v-dialog>
-      </v-list>
+      </div>
+    </v-list>
+
+
+    <!-- <div md_content layout="column" @click="sidebarItemSelected()" role="navigation" class="sidebar__content lmo-no-print">
       <v-divider class="sidebar__divider"></v-divider>
       <v-list-tile v-t="'common.groups'" class="sidebar__list-subhead"></v-list-tile>
       <v-list :class="{'sidebar__no-groups': groups().length < 1}" aria-label="$t('sidebar.aria_labels.groups_list')" class="sidebar__list sidebar__groups">
@@ -164,7 +195,7 @@ module.exports =
           <group-start :group="newGroup()"></group-start>
         </v-dialog>
       </v-list>
-    </div>
+    </div> -->
   </v-navigation-drawer>
 </template>
 

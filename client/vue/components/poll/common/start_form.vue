@@ -55,30 +55,30 @@ module.exports =
 </script>
 
 <template>
-      <v-list class="decision-tools-card__poll-types">
-        <v-list-tile
-          class="decision-tools-card__poll-type"
-          :class="'decision-tools-card__poll-type--' + pollType"
-          @click="openPollModal(pollType)"
-          v-for="(pollType, index) in pollTypes()"
-          :key=index
-          :aria-label="getAriaLabelForPollType(pollType)"
-        >
-          <v-dialog
-            v-model="modals[pollType]"
-            lazy
-          >
-            <poll-common-start-modal :poll="newPoll(pollType)"></poll-common-start-modal>
-            <!-- <discussion-start :discussion="newThread()" :close="closeThreadModal"></discussion-start> -->
-          </v-dialog>
-          <i
-            class="mdi mdi-24px decision-tools-card__icon"
-            :class="callFieldFromTemplate(pollType, 'material_icon')"
-          ></i>
-          <div class="decision-tools-card__content">
-            <div v-t="'poll_types.' + pollType" class="decision-tools-card__poll-type-title md-body-1"></div>
-            <div v-t="'poll_' + pollType + '_form.tool_tip_collapsed'" class="decision-tools-card__poll-type-subtitle md-caption"></div>
-          </div>
-        </v-list-tile>
-      </v-list>
+  <v-list class="decision-tools-card__poll-types">
+    <v-list-tile
+      class="decision-tools-card__poll-type"
+      :class="'decision-tools-card__poll-type--' + pollType"
+      @click="openPollModal(pollType)"
+      v-for="(pollType, index) in pollTypes()"
+      :key=index
+      :aria-label="getAriaLabelForPollType(pollType)"
+    >
+      <v-dialog
+        v-model="modals[pollType]"
+        lazy
+      >
+        <poll-common-start-modal :poll="newPoll(pollType)"></poll-common-start-modal>
+        <!-- <discussion-start :discussion="newThread()" :close="closeThreadModal"></discussion-start> -->
+      </v-dialog>
+      <i
+        class="mdi mdi-24px decision-tools-card__icon"
+        :class="callFieldFromTemplate(pollType, 'material_icon')"
+      ></i>
+      <div class="decision-tools-card__content">
+        <div v-t="'poll_types.' + pollType" class="decision-tools-card__poll-type-title md-body-1"></div>
+        <div v-t="'poll_' + pollType + '_form.tool_tip_collapsed'" class="decision-tools-card__poll-type-subtitle md-caption"></div>
+      </div>
+    </v-list-tile>
+  </v-list>
 </template>
