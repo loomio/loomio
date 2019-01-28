@@ -95,5 +95,9 @@ module.exports = {
   PollProposalForm: 'poll/proposal/form',
   Notifications: 'common/notifications',
   Notification: 'common/notification',
-  UserDropdown: 'common/user_dropdown'
+  UserDropdown: 'common/user_dropdown',
+  PollCommonFormFields: 'poll/common/form_fields',
+  PollCommonClosingAtField: 'poll/common/closing_at_field',
+  PollCommonSettings: 'poll/common/settings',
+  HelpBubble: 'common/help_bubble'
 }
