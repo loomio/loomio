@@ -24,14 +24,9 @@ module.exports =
 
   created: ->
     InboxService.load()
-    # EventBus.listen @, 'toggleSidebar', (event, show) =>
-    #   if !_isUndefined(show)
-    #     @showSidebar = show
-    #   else
-    #     @showSidebar = !@showSidebar
-    #
-    # EventBus.listen @, 'currentComponent', (el, component) =>
-    #   @currentState = component
+    EventBus.$on 'toggleSidebar', (event, show) =>
+      console.log "toggling"
+      @showSidebar = !@showSidebar
 
   computed:
     orderedGroups: ->
@@ -97,7 +92,7 @@ module.exports =
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print(app, permanent, dark, width="250")
+v-navigation-drawer.lmo-no-print(app, permanent, dark, width="250", v-model="showSidebar")
   v-list
     v-list-tile.sidebar__list-item-button--decisions(to='/polls')
       v-list-tile-action

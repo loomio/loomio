@@ -8,6 +8,9 @@ module.exports =
   data: ->
     title: AppConfig.theme.site_name
 
+  methods:
+    toggleSidebar: -> EventBus.$emit 'toggleSidebar'
+
   mounted: ->
     EventBus.$on 'currentComponent', (data) =>
       console.log "currentComponent set", data
@@ -31,7 +34,7 @@ module.exports =
 <template lang="pug">
   v-toolbar(app)
     //- v-toolbar-side-icon
-    v-btn(icon)
+    v-btn(icon, @click="toggleSidebar()")
       v-avatar(tile size="36px")
         img(:src='icon')
     v-toolbar-title {{title}}
