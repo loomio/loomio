@@ -101,5 +101,7 @@ module.exports = {
   PollCommonSettings: 'poll/common/settings',
   HelpBubble: 'common/help_bubble',
   PollPollForm: 'poll/poll/form',
-  PollCommonFormOptions: 'poll/common/form_options'
+  PollCommonFormOptions: 'poll/common/form_options',
+  PollCountForm: 'poll/count/form',
+  PollDotVoteForm: 'poll/dot_vote/form'
 }

@@ -5,11 +5,15 @@
 import PollProposalForm from 'vue/components/poll/proposal/form.vue'
 import PollCommonVoteForm from 'vue/components/poll/common/vote_form.vue'
 import PollPollForm from 'vue/components/poll/poll/form.vue'
+import PollCountForm from 'vue/components/poll/count/form.vue'
+import PollDotVoteForm from 'vue/components/poll/dot_vote/form.vue'
 module.exports =
   components:
     'poll-proposal-form': PollProposalForm
     'poll-common-vote-form': PollCommonVoteForm
     'poll-poll-form': PollPollForm
+    'poll-count-form': PollCountForm
+    'poll-dot_vote-form': PollDotVoteForm
   props:
     poll: Object
     stance: Object
