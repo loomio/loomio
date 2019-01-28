@@ -66,20 +66,24 @@ _filter = require 'lodash/filter'
 module.exports =
   props:
     stance: Object
+
   data: ->
     vars: {}
+
   created: ->
     @setStanceChoices()
-    EventBus.listen @, 'pollOptionsAdded', @setStanceChoices
+    EventBus.$on 'pollOptionsAdded', @setStanceChoices
+
   mounted: ->
     submitOnEnter @, element: @$el
 
     @submit = submitStance @, @stance,
       prepareFn: ->
-        EventBus.emit @, 'processing'
+        EventBus.$emit @, 'processing'
         @stance.id = null
         return unless _sum(_map(@stanceChoices, 'score')) > 0
         @stance.stanceChoicesAttributes = @stanceChoices
+
   methods:
     percentageFor: (choice) ->
       max = @stance.poll().customFields.dots_per_person
@@ -118,35 +122,26 @@ module.exports =
         score: @stanceChoiceFor(option).score
 </script>
 
-<template>
-      <form @submit.prevent="submit()" class="poll-dot-vote-vote-form">
-        <h3 v-t="'poll_common.your_response'" class="lmo-card-subheading"></h3>
-        <div class="lmo-hint-text">
-          <div v-if="tooManyDots()" v-t="'poll_dot_vote_vote_form.too_many_dots'" class="poll-dot-vote-vote-form__too-many-dots"></div>
-          <div v-if="!tooManyDots()" v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining() } }" class="poll-dot-vote-vote-form__dots-remaining"></div>
-        </div>
-        <ul md-list class="poll-common-vote-form__options">
-          <li md-list-item v-for="choice in stanceChoices" :key="choice.poll_option_id" class="poll-dot-vote-vote-form__option poll-common-vote-form__option">
-            <div md-input-container class="poll-dot-vote-vote-form__input-container">
-              <p :style="styleData(choice)" class="poll-dot-vote-vote-form__chosen-option--name poll-common-vote-form__border-chip poll-common-bar-chart__bar">{{ optionFor(choice).name }}</p>
-              <div class="poll-dot-vote-vote-form__dot-input-field">
-                <button type="button" @click="adjust(choice, -1)" :disabled="choice.score == 0" class="poll-dot-vote-vote-form__dot-button">
-                  <div class="mdi mdi-24px mdi-minus-circle-outline"></div>
-                </button>
-                <input type="number" v-model="choice.score" min="0" step="1" class="poll-dot-vote-vote-form__dot-input">
-                <button type="button" @click="adjust(choice, 1)" :disabled="dotsRemaining() == 0" class="poll-dot-vote-vote-form__dot-button">
-                  <div class="mdi mdi-24px mdi-plus-circle-outline"></div>
-                </button>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <validation-errors :subject="stance" field="stanceChoices"></validation-errors>
-        <poll-common-stance-reason :stance="stance"></poll-common-stance-reason>
-        <div class="poll-common-form-actions lmo-flex lmo-flex__space-between">
-          <poll-common-show-results-button v-if="stance.isNew()"></poll-common-show-results-button>
-          <div v-if="!stance.isNew()"></div>
-          <button type="submit" :disabled="tooManyDots()" v-t="'poll_common.vote'" aria-label="$t('poll_poll_vote_form.vote')" class="md-primary md-raised poll-common-vote-form__submit"></button>
-        </div>
-      </form>
+<template lang="pug">
+form.poll-dot-vote-vote-form(@submit.prevent='submit()')
+  h3.lmo-card-subheading(v-t="'poll_common.your_response'")
+  .lmo-hint-text
+    .poll-dot-vote-vote-form__too-many-dots(v-if='tooManyDots()', v-t="'poll_dot_vote_vote_form.too_many_dots'")
+    .poll-dot-vote-vote-form__dots-remaining(v-if='!tooManyDots()', v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining() } }")
+  ul.poll-common-vote-form__options(md-list='')
+    li.poll-dot-vote-vote-form__option.poll-common-vote-form__option(md-list-item='', v-for='choice in stanceChoices', :key='choice.poll_option_id')
+      .poll-dot-vote-vote-form__input-container(md-input-container='')
+        p.poll-dot-vote-vote-form__chosen-option--name.poll-common-vote-form__border-chip.poll-common-bar-chart__bar(:style='styleData(choice)') {{ optionFor(choice).name }}
+        .poll-dot-vote-vote-form__dot-input-field
+          button.poll-dot-vote-vote-form__dot-button(type='button', @click='adjust(choice, -1)', :disabled='choice.score == 0')
+            .mdi.mdi-24px.mdi-minus-circle-outline
+          input.poll-dot-vote-vote-form__dot-input(type='number', v-model='choice.score', min='0', step='1')
+          button.poll-dot-vote-vote-form__dot-button(type='button', @click='adjust(choice, 1)', :disabled='dotsRemaining() == 0')
+            .mdi.mdi-24px.mdi-plus-circle-outline
+  validation-errors(:subject='stance', field='stanceChoices')
+  poll-common-stance-reason(:stance='stance')
+  .poll-common-form-actions.lmo-flex.lmo-flex__space-between
+    poll-common-show-results-button(v-if='stance.isNew()')
+    div(v-if='!stance.isNew()')
+    button.md-primary.md-raised.poll-common-vote-form__submit(type='submit', :disabled='tooManyDots()', v-t="'poll_common.vote'", aria-label="$t('poll_poll_vote_form.vote')")
 </template>

@@ -23,7 +23,7 @@ module.exports =
     joinGroup: ->
       if AbilityService.isLoggedIn()
         Records.memberships.joinGroup(@group).then =>
-          # EventBus.broadcast $rootScope, 'joinedGroup'
+          EventBus.$emit 'joinedGroup', {group: @group}
           FlashService.success('join_group_button.messages.joined_group', group: @group.fullName)
       else
         ModalService.open 'AuthModal'

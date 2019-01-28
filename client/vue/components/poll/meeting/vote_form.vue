@@ -47,12 +47,11 @@ module.exports =
     canRespondMaybe: @stance.poll().customFields.can_respond_maybe
     stanceValues: if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
   created: ->
-    EventBus.listen @, 'timeZoneSelected', (e, zone) =>
-      @zone = zone
+    EventBus.$on 'timeZoneSelected', (e, zone) => @zone = zone
 
     @submit = submitStance @, @stance,
       prepareFn: =>
-        EventBus.emit $scope, 'processing'
+        EventBus.$emit $scope, 'processing'
         @stance.id = null
         attrs = _compact _map(_toPairs(@stanceValuesMap), ([id, score]) ->
             {poll_option_id: id, score:score} if score > 0

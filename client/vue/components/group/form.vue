@@ -22,7 +22,7 @@ module.exports =
     @featureNames = AppConfig.features.group
   methods:
     privacyStringFor: (privacy) ->
-      I18n.t groupPrivacy(@group, privacy),
+      @$t groupPrivacy(@group, privacy),
         parent: @group.parentName()
   computed:
     titleLabel: ->
@@ -38,7 +38,7 @@ module.exports =
         ['open', 'closed', 'secret']
 
     privacyStatement: ->
-      I18n.t groupPrivacyStatement(@group),
+      @$t groupPrivacyStatement(@group),
         parent: @group.parentName()
 
     showGroupFeatures: ->

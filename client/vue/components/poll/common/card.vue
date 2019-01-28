@@ -14,11 +14,9 @@ module.exports =
     poll: Object
   created: ->
     Records.polls.findOrFetchById(@poll.key)
-    EventBus.listen @, 'showResults', =>
-      @buttonPressed = true
-    EventBus.listen @, 'stanceSaved', =>
-      EventBus.broadcast @, 'refreshStance'
-    listenForLoading @
+    EventBus.$on 'showResults', => @buttonPressed = true
+    EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
+    # listenForLoading @
   data: ->
     buttonPressed: false
   methods:

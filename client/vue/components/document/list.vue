@@ -78,14 +78,14 @@ module.exports =
     hideDate: Boolean
     skipFetch: Boolean
     placeholder: String
-    
+
   created: ->
     unless @model.isNew() or @skipFetch
       Records.documents.fetchByModel(@model)
 
   methods:
     edit: (doc, $mdMenu) ->
-      EventBus.broadcast @, 'initializeDocument', doc, $mdMenu
+      EventBus.$emit 'initializeDocument', doc, $mdMenu
 
   computed:
     documents: ->
@@ -99,80 +99,27 @@ module.exports =
       (@model.hasDocuments() or @placeholder)
 </script>
 
-<template>
-      <section class="document-list">
-        <h3
-          v-if="showTitle"
-          v-t="{ path: 'document.list.title' }"
-          class="document-list__heading lmo-card-heading"
-        ></h3>
-        <p
-          v-if="!model.hasDocuments() && placeholder"
-          v-t="placeholder"
-          class="lmo-hint-text md-caption"
-        ></p>
-        <div
-          class="document-list__documents md-block lmo-flex lmo-flex--column"
-        >
-          <div
-            :class="{'document-list__document--image': document.isAnImage() && !hidePreview}"
-            v-for="document in orderedDocuments"
-            :key="document.id"
-            class="document-list__document lmo-flex lmo-flex--column"
-          >
-            <div
-              v-if="document.isAnImage() && !hidePreview"
-              class="document-list__image"
-            >
-              <router-link
-                :to="document.url"
-                target="_blank"
-                class="lmo-pointer"
-              >
-                <img
-                  :src="document.webUrl"
-                  :alt="document.title"
-                >
-              </router-link>
-            </div>
-            <div
-              layout="row"
-              class="document-list__entry lmo-flex lmo-flex__center"
-            >
-              <i
-                :class="`mdi lmo-margin-right mdi-${document.icon}`"
-                :style="{color: document.color}"
-              ></i>
-              <router-link
-                :to="document.url"
-                target="_blank"
-                class="lmo-pointer lmo-relative lmo-truncate lmo-flex lmo-flex__grow"
-              >
-                <div
-                  class="document-list__title lmo-truncate lmo-flex__grow"
-                >
-                  {{ document.title }}
-                </div>
-              </router-link>
-              <div
-                v-if="!hideDate && !showEdit"
-                class="document-list__upload-time md-caption lmo-flex__shrink"
-              >
-                {{ document.createdAt.fromNow() }}
-              </div>
-              <!-- <document_list_edit
-                document="document"
-                ng-if="showEdit"
-              ></document_list_edit> -->
-              <button
-                v-if="showEdit"
-                @click="$emit('documentRemoved', document)"
-                class="md-button--tiny"
-              >
-                <i class="mdi mdi-close"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+<template lang="pug">
+section.document-list
+  h3.document-list__heading.lmo-card-heading(v-if='showTitle', v-t="{ path: 'document.list.title' }")
+  p.lmo-hint-text.md-caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
+  .document-list__documents.md-block.lmo-flex.lmo-flex--column
+    .document-list__document.lmo-flex.lmo-flex--column(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in orderedDocuments', :key='document.id')
+      .document-list__image(v-if='document.isAnImage() && !hidePreview')
+        router-link.lmo-pointer(:to='document.url', target='_blank')
+          img(:src='document.webUrl', :alt='document.title')
+      .document-list__entry.lmo-flex.lmo-flex__center(layout='row')
+        i(:class='`mdi lmo-margin-right mdi-${document.icon}`', :style='{color: document.color}')
+        router-link.lmo-pointer.lmo-relative.lmo-truncate.lmo-flex.lmo-flex__grow(:to='document.url', target='_blank')
+          .document-list__title.lmo-truncate.lmo-flex__grow
+            | {{ document.title }}
+        .document-list__upload-time.md-caption.lmo-flex__shrink(v-if='!hideDate && !showEdit')
+          | {{ document.createdAt.fromNow() }}
+        //
+          <document_list_edit
+          document="document"
+          ng-if="showEdit"
+          ></document_list_edit>
+        button.md-button--tiny(v-if='showEdit', @click="$emit('documentRemoved', document)")
+          i.mdi.mdi-close
 </template>

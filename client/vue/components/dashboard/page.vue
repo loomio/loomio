@@ -133,7 +133,7 @@ module.exports =
 </script>
 
 <template lang="pug">
-v-container.lmo-main-container.dashboard-page(grid-list-lg)
+v-container.lmo-main-container.dashboard-page
   //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'", v-show="filter == 'hide_muted'")
   //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
   section(v-if='!dashboardLoaded', v-for='(viewName, index) in loadingViewNames', :key='index', :class="'dashboard-page__loading dashboard-page__' + viewName", aria-hidden='true')
@@ -160,7 +160,7 @@ v-container.lmo-main-container.dashboard-page(grid-list-lg)
           img(src='/img/mute-small.png')
         p(v-t="'dashboard_page.explain_mute.see_muted_html'")
     .dashboard-page__collections(v-if='!noThreads')
-      v-card(v-if='views[viewName].any()', :class="'thread-preview-collection__container dashboard-page__' + viewName", v-for='viewName in viewNames')
+      v-card.mb-3(v-if='views[viewName].any()', :class="'thread-preview-collection__container dashboard-page__' + viewName", v-for='viewName in viewNames')
         v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
         thread-preview-collection.thread-previews-container(:query='views[viewName]')
       .dashboard-page__footer(v-if='!loader.exhausted', in-view='$inview && loader.loadMore()', in-view-options='{debounce: 200}')  

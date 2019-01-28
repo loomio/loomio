@@ -56,8 +56,7 @@ module.exports =
         poll_id: @poll.key
         order: @fix.votesOrder
     @loader.fetchRecords()
-    EventBus.listen @, 'refreshStance', =>
-      @loader.fetchRecords()
+    EventBus.$on 'refreshStance', => @loader.fetchRecords()
   methods:
     hasSomeVotes: ->
       @poll.stancesCount > 0

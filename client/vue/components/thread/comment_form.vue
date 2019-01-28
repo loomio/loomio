@@ -53,7 +53,7 @@ module.exports =
       @submit = submitForm @, @comment,
         submitFn: @comment.save
         flashSuccess: =>
-          EventBus.emit @, 'commentSaved'
+          EventBus.$emit @, 'commentSaved'
           if @comment.isReply()
             'comment_form.messages.replied'
           else

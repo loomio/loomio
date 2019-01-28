@@ -11,13 +11,13 @@ module.exports = new Vuex.Store
 
   getters:
     documentsFor: (state) => (model) =>
-      state.documents.collection.chain().
+      Records.documents.collection.chain().
         find(modelId: model.id).
         find(modelType: _.capitalize(model.constructor.singular))
         .data()
 
     newDocumentsFor: (state) => (model) =>
-      state.documents.find(model.newDocumentIds)
+      Records.documents.find(model.newDocumentIds)
 
     newAndPersistedDocumentsFor: (state, getters) => (model) =>
       _.uniq _.filter _.union(getters.documentsFor(model), getters.newDocumentsFor(model)), (doc) ->

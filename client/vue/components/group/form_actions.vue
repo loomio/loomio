@@ -1,10 +1,6 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
 Records  = require 'shared/services/records'
 EventBus = require 'shared/services/event_bus'
-I18n     = require 'shared/services/i18n'
 
 { scrollTo }            = require 'shared/helpers/layout'
 { submitForm }          = require 'shared/helpers/form'
@@ -38,39 +34,20 @@ module.exports =
           when 'open'   then true
           when 'closed' then @group.parentMembersCanSeeDiscussions
           when 'secret' then false
-      confirmFn: (model)          -> I18n.t groupPrivacyConfirm(model)
+      confirmFn: (model)          => @$t groupPrivacyConfirm(model)
       flashSuccess:               => "group_form.messages.group_#{@actionName}"
       successCallback: (response) =>
         group = Records.groups.find(response.groups[0].key)
-        EventBus.emit @, 'nextStep', group
+        EventBus.$emit 'nextStep', group
         @successFn(group)
 </script>
 
-<template>
-    <div class="lmo-md-actions">
-      <div v-if="group.expanded"></div>
-      <v-btn
-        v-if="!group.expanded"
-        @click="expandForm()"
-        v-t="'group_form.advanced_settings'"
-        class="md-accent group-form__advanced-link"
-      ></v-btn>
-      <v-btn
-        @click="submit()"
-        class="md-primary md-raised group-form__submit-button"
-      >
-        <span
-          v-if="group.isNew() && group.isParent()"
-          v-t="'group_form.submit_start_group'"
-        ></span>
-        <span
-          v-if="group.isNew() && !group.isParent()"
-          v-t="'group_form.submit_start_subgroup'"
-        ></span>
-        <span
-          v-if="!group.isNew()"
-          v-t="'common.action.update_settings'"
-        ></span>
-      </v-btn>
-    </div>
+<template lang="pug">
+  v-card-actions
+    div(v-if='group.expanded')
+    v-btn.group-form__advanced-link(flat color="accent", v-if='!group.expanded', @click='expandForm()', v-t="'group_form.advanced_settings'")
+    v-btn.group-form__submit-button(flat color="primary", @click='submit()')
+      span(v-if='group.isNew() && group.isParent()', v-t="'group_form.submit_start_group'")
+      span(v-if='group.isNew() && !group.isParent()', v-t="'group_form.submit_start_subgroup'")
+      span(v-if='!group.isNew()', v-t="'common.action.update_settings'")
 </template>

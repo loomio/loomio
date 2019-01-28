@@ -33,7 +33,7 @@ module.exports =
   data: ->
     selectedOptionId: @stance.pollOptionId()
   mounted: ->
-    submitOnEnter @, element: @$el
+    # submitOnEnter @, element: @$el
 
     @submit = submitStance @, @stance,
       prepareFn: ->
@@ -53,7 +53,7 @@ module.exports =
 
     select: (option) ->
       @selectedOptionId = option.id
-      @$nextTick => EventBus.broadcast @, 'focusTextarea'
+      @$nextTick => EventBus.$emit 'focusTextarea'
 </script>
 
 <template lang="pug">

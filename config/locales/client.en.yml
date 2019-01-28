@@ -347,15 +347,6 @@ en:
       poll: 'Remove from {{pollType}}'
     cancel_invitation: Cancel invitation
 
-  start_menu:
-    label: 'User actions'
-    title: 'Action'
-    start_group: 'Start Group'
-    start_subgroup: 'Start Subgroup'
-    start_thread: 'Start Thread'
-    start_poll: 'Start Poll'
-    invite_people: 'Invite People'
-
   notification_models:
     discussion: 'thread: '
     comment: 'comment in '

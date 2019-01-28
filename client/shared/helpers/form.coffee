@@ -54,7 +54,7 @@ module.exports =
     submit(scope, model, _.merge(
       flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
       prepareFn: =>
-        EventBus.emit scope, 'processing'
+        EventBus.$emit scope, 'processing'
         model.customFields.deanonymize_after_close = model.deanonymizeAfterClose if model.anonymous
         switch model.pollType
           # for polls with default poll options (proposal, check)
@@ -90,7 +90,7 @@ module.exports =
     scope.selectFile = -> element[0].querySelector('input[type=file]').click()
     scope.drop       = (event) -> scope.upload(event.dataTransfer.files)
     if !options.disablePaste
-      EventBus.listen scope, 'filesPasted', (_, files) -> scope.upload(files)
+      EventBus.$on 'filesPasted', (_, files) -> scope.upload(files)
 
 upload = (scope, model, options) ->
   submitFn = options.submitFn or Records.documents.upload

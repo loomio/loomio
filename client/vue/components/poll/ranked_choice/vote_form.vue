@@ -53,7 +53,7 @@ module.exports =
   created: ->
     @submit = submitStance @, @stance,
       prepareFn: =>
-        EventBus.emit $scope, 'processing'
+        EventBus.$emit $scope, 'processing'
         @stance.id = null
         selected = _take @pollOptions, @numChoices
         @stance.stanceChoicesAttributes = _map selected, (option, index) =>

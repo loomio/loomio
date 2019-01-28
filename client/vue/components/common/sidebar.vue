@@ -124,7 +124,7 @@ v-navigation-drawer.lmo-no-print(app, permanent, dark, width="250")
         v-icon mdi-plus
       v-list-tile-content
         v-list-tile-title(v-t="'sidebar.start_thread'")
-  v-dialog(v-model='isThreadModalOpen', lazy='')
+  v-dialog(v-model='isThreadModalOpen' lazy persistent)
     discussion-start(:discussion='newThread()', :close='closeThreadModal')
   v-divider.sidebar__divider
   v-list

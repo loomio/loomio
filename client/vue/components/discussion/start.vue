@@ -14,30 +14,30 @@ module.exports =
         @announcement = Records.announcements.buildFromModel(event)
 </script>
 
-<template>
-  <v-card class="discussion-modal">
-    <!-- <div v-show="isDisabled" class="lmo-disabled-form"></div> -->
-    <v-card-title>
-      <div class="md-toolbar-tools lmo-flex lmo-flex__space-between">
-        <i class="mdi mdi-forum"></i>
-        <h1 class="lmo-h1 modal-title">
-          <span v-t="'discussion_form.new_discussion_title'" v-if="currentStep == 'save' && !discussion.isForking()"></span>
-          <span v-t="'discussion_form.fork_discussion_title'" v-if="currentStep == 'save' && discussion.isForking()"></span>
-          <span v-t="'announcement.form.discussion_announced.title'" v-if="currentStep == 'announce'"></span>
-        </h1>
-        <dismiss-modal-button aria-hidden="true" :close="close"></dismiss-modal-button>
-      </div>
-    </v-card-title>
-    <v-card-text class="md-body-1 lmo-slide-animation">
-      <discussion-form :discussion="discussion" v-if="currentStep == 'save'" class="animated"></discussion-form>
-      <!-- <announcement_form :announcement="announcement" v-if="currentStep == announce"></announcement_form> -->
-    </v-card-text>
-    <v-card-actions>
-      <discussion-form-actions :discussion="discussion" :close="close" v-if="currentStep == 'save'"></discussion-form-actions>
-      <!-- <announcement_form_actions announcement="announcement" v-if="currentStep == announce"></announcement_form_actions> -->
-    </v-card-actions>
-  </v-card>
-</template>
+<template lang="pug">
+v-card.discussion-modal
+  // <div v-show="isDisabled" class="lmo-disabled-form"></div>
+  //- v-toolbar(flat)
+  //-   v-toolbar-avatar
+  //-     v-icon mdi-forum
+  //-   v-toolbar-title
+  //-     span(v-t="'discussion_form.new_discussion_title'", v-if="currentStep == 'save' && !discussion.isForking()")
+  //-     span(v-t="'discussion_form.fork_discussion_title'", v-if="currentStep == 'save' && discussion.isForking()")
+  //-     span(v-t="'announcement.form.discussion_announced.title'", v-if="currentStep == 'announce'")
+  //-   v-spacer
+  //-   v-toolbar-items
+  //-     dismiss-modal-button(aria-hidden='true', :close='close')
+  v-card-title
+    v-layout(justify-space-between style="align-items: center")
+      v-flex
+        .headline(v-t="'discussion_form.new_discussion_title'")
+      v-flex(shrink)
+        dismiss-modal-button(aria-hidden='true', :close='close')
 
-<style lang="scss">
-</style>
+  v-card-text.md-body-1.lmo-slide-animation
+    discussion-form(:discussion='discussion', v-if="currentStep == 'save'")
+    // <announcement_form :announcement="announcement" v-if="currentStep == announce"></announcement_form>
+  v-card-actions
+    discussion-form-actions(:discussion='discussion', :close='close', v-if="currentStep == 'save'")
+    // <announcement_form_actions announcement="announcement" v-if="currentStep == announce"></announcement_form_actions>
+</template>

@@ -24,8 +24,8 @@ module.exports =
     user: null
   created: ->
     @init()
-    # EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}
-    # EventBus.listen $scope, 'updateProfile', => @init()
+    EventBus.$emit 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}
+    EventBus.$on 'updateProfile', => @init()
   computed:
     showHelpTranslate: ->
       AppConfig.features.app.help_link

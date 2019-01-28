@@ -17,13 +17,16 @@ module.exports =
 
   data: ->
     stance: @getLastStance()
+
   created: ->
-    EventBus.listen @, 'refreshStance', @refreshStance
+    EventBus.$on 'refreshStance', @refreshStance
+
   computed:
     userHasVoted: ->
       myLastStanceFor(@poll)?
     userCanParticipate: ->
       AbilityService.canParticipateInPoll(@poll)
+      
   methods:
     refreshStance: -> @stance = @getLastStance()
     getLastStance: ->

@@ -57,10 +57,10 @@ module.exports =
     vars: {}
   created: ->
     @setStanceChoices()
-    EventBus.listen @, 'pollOptionsAdded', @setStanceChoices
+    EventBus.$on 'pollOptionsAdded', @setStanceChoices
     @submit = submitStance @, @stance,
       prepareFn: =>
-        EventBus.emit $scope, 'processing'
+        EventBus.$emit $scope, 'processing'
         @stance.id = null
         @stance.stanceChoicesAttributes = @stanceChoices
   mounted: ->

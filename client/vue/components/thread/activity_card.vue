@@ -1,12 +1,6 @@
 <style lang="scss">
 @import 'variables';
 @import 'mixins';
-.activity-card {
-  padding: $cardPaddingSize 0;
-}
-
-.activity-card__settings {
-}
 
 .activity-card__load-more-sensor {
   height: 1px;
@@ -159,7 +153,7 @@ module.exports =
       @setupEventWindow(position)
       @loader.loadMore(@initialSequenceId(position)).then =>
         @setupEventWindow(position)
-        # EventBus.emit $scope, 'threadPageScrollToSelector', $scope.elementToFocus(position)
+        # EventBus.$emit $scope, 'threadPageScrollToSelector', $scope.elementToFocus(position)
       @positionItems = [
         {text: @$t('activity_card.beginning'), value: 'beginning'},
         {text: @$t('activity_card.unread'), value: 'unread', disabled: !@eventWindow.anyUnread()},
@@ -170,8 +164,10 @@ module.exports =
 <template lang="pug">
 section.activity-card(aria-labelledby='activity-card-title')
   v-layout.activity-card__settings(justify-space-between v-show='eventWindow.anyLoaded()')
-    v-select(flat :items='positionItems', v-model='position', @change='init(position)', solo='')
-    v-select(flat :items='renderModeItems', v-model='renderMode', @change='init()', solo='')
+    v-flex
+      v-select(flat :items='positionItems', v-model='position', @change='init(position)', solo='')
+    v-flex
+      v-select(flat :items='renderModeItems', v-model='renderMode', @change='init()', solo='')
   div(v-if='debug()')
     | first: {{eventWindow.firstInSequence()}}last: {{eventWindow.lastInSequence()}}total: {{eventWindow.numTotal()}}min: {{eventWindow.min}}max: {{eventWindow.max}}per: {{per}}firstLoaded: {{eventWindow.firstLoaded()}}lastLoaded: {{eventWindow.lastLoaded()}}loadedCount: {{eventWindow.numLoaded()}}read: {{discussion.readItemsCount()}}unread: {{discussion.unreadItemsCount()}}firstUnread {{discussion.firstUnreadSequenceId()}}initialSequenceId: {{initialSequenceId(initialPosition())}}requestedSequenceId: {{discussion.requestedSequenceId}}position: {{initialPosition()}}
   // <loading_content v-if="loader.loading" block-count="2" class="lmo-card-left-right-padding"></loading_content>
@@ -191,5 +187,4 @@ section.activity-card(aria-labelledby='activity-card-title')
       ></div>
     loading.activity-card__loading.page-loading(v-show='eventWindow.loader.loadingMore')
   add-comment-panel(v-if='eventWindow', :event-window='eventWindow', :parent-event='discussion.createdEvent()')
-
 </template>

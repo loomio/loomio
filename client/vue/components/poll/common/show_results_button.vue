@@ -9,7 +9,7 @@ module.exports =
     clicked: false
   methods:
     press: ->
-      EventBus.emit @, 'showResults'
+      EventBus.$emit @, 'showResults'
       @clicked = true
 
 </script>

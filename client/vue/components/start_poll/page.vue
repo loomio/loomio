@@ -28,7 +28,7 @@ module.exports =
       customFields:
         pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', { page: 'startPollPage', skipScroll: true }
+    EventBus.$emit 'currentComponent', { page: 'startPollPage', skipScroll: true }
     Records.groups.findOrFetch(@$route.params.group_id).then =>
       # applyPollStartSequence @,
       #   emitter: @

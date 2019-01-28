@@ -1,30 +1,3 @@
-<style lang="scss">
-@import 'variables';
-.discussion-modal {
-  max-width: $small-max-px;
-}
-
-.discussion-form__options {
-  clear: both;
-}
-
-.discussion-form__options md-list-item,
-.discussion-form__options md-list-item .md-no-style {
-  padding: 0 !important;
-}
-
-.discussion-form__options md-checkbox .md-label {
-  display: block !important;
-  white-space: nowrap;
-}
-
-@media (max-width: $small-max-px){
-  .discussion-modal { max-width: auto; }
-  .discussion-form__formatting-help { display: none; }
-  .thread-helptext { display: none; }
-}
-</style>
-
 <script lang="coffee">
 Session        = require 'shared/services/session'
 AbilityService = require 'shared/services/ability_service'
@@ -55,7 +28,7 @@ module.exports =
         AbilityService.canStartThread(group)
 
     privacyPrivateDescription: ->
-      I18n.t discussionPrivacy(discussion, true),
+      @$t discussionPrivacy(discussion, true),
         group:  @discussion.group().name,
         parent: @discussion.group().parentName()
 
@@ -67,63 +40,28 @@ module.exports =
       }), 'fullName')
 </script>
 
-<template>
-  <div class="discussion-form">
-    <div v-t="'group_page.discussions_placeholder'" v-show="discussion.isNew() && !discussion.isForking()" class="lmo-hint-text"></div>
-    <div v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEvents.length, title: discussion.forkTarget().discussion().title } }" v-if="discussion.isForking()" class="lmo-hint-text"></div>
-    <div v-show="showGroupSelect" class="md-block">
-      <label for="discussion-group-field" v-t="'discussion_form.group_label'"></label>
-      <v-select
-        v-model="discussion.groupId"
-        :placeholder="$t('discussion_form.group_placeholder')"
-        :items="groupSelectOptions"
-        ng-required="true"
-        @change="discussion.fetchAndRestoreDraft(); updatePrivacy()"
-        class="discussion-form__group-select"
-        id="discussion-group-field">
-      </v-select>
-      <div class="md-errors-spacer"></div>
-    </div>
-    <div v-if="discussion.groupId" class="discussion-form__group-selected">
-      <div class="md-block">
-        <label for="discussion-title" v-t="'discussion_form.title_label'"></label>
-        <div class="lmo-relative">
-          <input
-            :placeholder="$t('discussion_form.title_placeholder')"
-            v-model="discussion.title"
-            maxlength="255"
-            class="discussion-form__title-input lmo-primary-form-input"
-            id="discussion-title">
-        </div>
-        <validation-errors :subject="discussion" field="title"></validation-errors>
-      </div>
-      <textarea
-        lmo_textarea
-        v-model="discussion.description"
-        field="description"
-        :placeholder="$t('discussion_form.context_placeholder')"
-        :label="$t('discussion_form.context_label')"
-        v-if="!discussion.isForking()">
-      </textarea>
-      <v-list class="discussion-form__options">
-        <v-list-tile v-if="showPrivacyForm()" class="discussion-form__privacy-form">
-          <v-radio-group v-model="discussion.private">
-            <v-radio :value="false" class="md-checkbox--with-summary discussion-form__public">
-              <discussion-privacy-icon slot="label" :discussion="discussion" :private="false"></discussion-privacy-icon>
-            </v-radio>
-            <v-radio :value="true" class="md-checkbox--with-summary discussion-form__private">
-              <discussion-privacy-icon slot="label" :discussion="discussion" :private="true"></discussion-privacy-icon>
-            </v-radio>
-          </v-radio-group>
-        </v-list-tile>
-        <v-list-tile v-if="!showPrivacyForm()" class="discussion-form__privacy-notice">
-          <label layout="row" class="discussion-form__privacy-notice lmo-flex">
-            <i v-if="discussion.private" class="mdi mdi-24px mdi-lock-outline lmo-margin-right"></i>
-            <i v-if="!discussion.private" class="mdi mdi-24px mdi-earth lmo-margin-right"></i>
-            <discussion-privacy-icon discussion="discussion"></discussion-privacy-icon>
-          </label>
-        </v-list-tile>
-      </v-list>
-    </div>
-  </div>
+<template lang="pug">
+.discussion-form
+  .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !discussion.isForking()')
+  .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEvents.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
+  .md-block(v-show='showGroupSelect')
+    label(for='discussion-group-field', v-t="'discussion_form.group_label'")
+    v-select#discussion-group-field.discussion-form__group-select(v-model='discussion.groupId', :placeholder="$t('discussion_form.group_placeholder')", :items='groupSelectOptions', ng-required='true', @change='discussion.fetchAndRestoreDraft(); updatePrivacy()')
+    .md-errors-spacer
+  .discussion-form__group-selected(v-if='discussion.groupId')
+    v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')", :placeholder="$t('discussion_form.title_placeholder')", v-model='discussion.title', maxlength='255')
+    //- validation-errors(:subject='discussion', field='title')
+    //- textarea(lmo_textarea='', v-model='discussion.description', field='description', :placeholder="$t('discussion_form.context_placeholder')", :label="$t('discussion_form.context_label')", v-if='!discussion.isForking()')
+    v-list.discussion-form__options
+      v-list-tile.discussion-form__privacy-form(v-if='showPrivacyForm()')
+        v-radio-group(v-model='discussion.private')
+          v-radio.md-checkbox--with-summary.discussion-form__public(:value='false')
+            discussion-privacy-icon(slot='label', :discussion='discussion', :private='false')
+          v-radio.md-checkbox--with-summary.discussion-form__private(:value='true')
+            discussion-privacy-icon(slot='label', :discussion='discussion', :private='true')
+      v-list-tile.discussion-form__privacy-notice(v-if='!showPrivacyForm()')
+        label.discussion-form__privacy-notice.lmo-flex(layout='row')
+          i.mdi.mdi-24px.mdi-lock-outline.lmo-margin-right(v-if='discussion.private')
+          i.mdi.mdi-24px.mdi-earth.lmo-margin-right(v-if='!discussion.private')
+          discussion-privacy-icon(discussion='discussion')
 </template>

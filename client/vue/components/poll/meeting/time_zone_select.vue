@@ -37,7 +37,7 @@ module.exports =
     names: ->
       _.uniq(_.values(AppConfig.timeZones)).sort()
     selectChanged: ->
-      EventBus.emit @, 'timeZoneSelected', @dzone
+      EventBus.$emit @, 'timeZoneSelected', @dzone
 
 </script>
 

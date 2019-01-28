@@ -91,10 +91,10 @@ module.exports =
     fragment: null
     pollsCount: null
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}
+    EventBus.$emit 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}
     # applyLoadingFunction @, 'loadMore'
     # applyLoadingFunction @, 'fetchRecords'
-    # @fetchRecords()
+    @fetchRecords()
     # applyLoadingFunction(@, 'searchPolls')
   computed:
     statusFilters: -> _map AppConfig.searchFilters.status, (filter) =>

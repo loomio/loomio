@@ -11,8 +11,8 @@ module.exports =
   props:
     group: Object
   created: ->
-    # Records.groups.fetchByParent(@group).then =>
-    #   EventBus.broadcast $rootScope, 'subgroupsLoaded', @group
+    Records.groups.fetchByParent(@group).then =>
+      EventBus.$emit 'subgroupsLoaded', @group
   methods:
     orderedSubgroups: ->
       _.sortBy @group.subgroups(), 'name'

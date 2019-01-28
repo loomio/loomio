@@ -97,7 +97,7 @@ module.exports =
     canLoadMoreGroups: true
     query: ""
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
+    EventBus.$emit 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
     # applyLoadingFunction(@, 'search')
     # @search()
   methods:

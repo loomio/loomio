@@ -25,7 +25,7 @@ module.exports =
       if @private then 'private' else 'public'
 
     privacyDescription: ->
-      I18n.t discussionPrivacy(@discussion, @computedPrivate),
+      @$t discussionPrivacy(@discussion, @computedPrivate),
         group:  @discussion.group().name
         parent: @discussion.group().parentName()
 </script>

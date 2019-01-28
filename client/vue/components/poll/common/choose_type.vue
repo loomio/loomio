@@ -44,7 +44,7 @@ module.exports =
       iconFor { pollType: pollType } # :/
 
     choose: (type) ->
-      # EventBus.emit @, 'nextStep', type
+      # EventBus.$emit @, 'nextStep', type
   computed:
     pollTypes: -> AppConfig.pollTypes
 </script>

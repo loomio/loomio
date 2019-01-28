@@ -1,14 +1,3 @@
-<style lang="scss">
-@import 'variables';
-.start-group-page {
-  margin-top: $cardPaddingSize;
-}
-
-.start-group-page__main-content {
-  position: relative;
-}
-</style>
-
 <script lang="coffee">
 Records       = require 'shared/services/records'
 EventBus      = require 'shared/services/event_bus'
@@ -23,8 +12,9 @@ module.exports =
       name: @$route.params.name
       customFields:
         pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
+
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', { page: 'startGroupPage', skipScroll: true }
+    EventBus.$emit 'currentComponent', { page: 'startGroupPage', skipScroll: true }
     # EventBus.listen $scope, 'nextStep', (_, group) ->
     #   LmoUrlService.goTo LmoUrlService.group(group)
     #   ModalService.open 'InvitationModal', group: -> group

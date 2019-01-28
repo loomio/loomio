@@ -2,34 +2,8 @@
 @import 'mixins';
 @import 'lmo_card';
 
-.inbox-page{
-}
-
 .inbox-page .thread-preview__pin {
   display: none;
-}
-
-.inbox-page__group {
-  margin-bottom: $cardPaddingSize * 2;
-}
-
-.inbox-page__heading{
-  margin: 20px 0 20px 13px;
-}
-
-.inbox-page__no-threads, .inbox-page__no-groups {
-  margin-left: $cardPaddingSize;
-}
-
-.inbox-page__group-name a{
-  @include fontMedium;
-  line-height: 30px;
-  color: $grey-on-grey;
-  padding-left: $thinPaddingSize;
-}
-
-.inbox-page__group-name-container {
-  padding: 0 $cardPaddingSize;
 }
 </style>
 
@@ -91,11 +65,11 @@ v-container.lmo-main-container.inbox-page(grid-list-lg)
         span(v-t="'inbox_page.no_groups.or'")
         span(v-t="'inbox_page.no_groups.join_group'")
       .inbox-page__group(v-for='group in orderedGroups', :key='group.id')
-        section(v-if='views[group.key].any()', role='region', aria-label="$t('inbox_page.threads_from.group') + group.name")
-          .inbox-page__group-name-container.lmo-flex
-            img.lmo-box--small.pull-left(:src='group.logoUrl()', aria-hidden='true')
-            h2.inbox-page__group-name
-              router-link(:to="'/g/' + group.key") {{group.name}}
-          .inbox-page__groups.thread-previews-container
-            thread-preview-collection(:query="views[group.key]", :limit="threadLimit")
+        v-card.mb-3(v-if='views[group.key].any()')
+          v-card-title
+            v-avatar.mr-2(tile size="48px")
+              v-img(:src='group.logoUrl()', aria-hidden='true')
+            router-link.inbox-page__group-name(:to="'/g/' + group.key")
+              span.subheading {{group.name}}
+          thread-preview-collection(:query="views[group.key]", :limit="threadLimit")
 </template>

@@ -15,7 +15,7 @@ module.exports =
     poll: {}
   created: ->
     Records.polls.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
-      # EventBus.broadcast $rootScope, 'pageError', error
+      EventBus.$emit 'pageError', error
   methods:
     init: (poll) ->
       if poll and _isEmpty @poll?
