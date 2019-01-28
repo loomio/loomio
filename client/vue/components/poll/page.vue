@@ -1,14 +1,3 @@
-<style lang="scss">
-@import 'variables';
-.start-poll-page {
-  margin-top: $cardPaddingSize;
-}
-
-.start-poll-page__main-content {
-  justify-content: center;
-}
-</style>
-
 <script lang="coffee">
 Session       = require 'shared/services/session'
 Records       = require 'shared/services/records'
@@ -32,12 +21,12 @@ module.exports =
       if poll and _isEmpty @poll?
         @poll = poll
 
-        # EventBus.broadcast $rootScope, 'currentComponent',
-        #   group: poll.group()
-        #   poll:  poll
-        #   title: poll.title
-        #   page: 'pollPage'
-        #   skipScroll: true
+        EventBus.$emit 'currentComponent',
+          group: poll.group()
+          poll:  poll
+          title: poll.title
+          page: 'pollPage'
+          skipScroll: true
 
         subscribeTo(@poll)
 

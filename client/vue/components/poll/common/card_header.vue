@@ -24,12 +24,12 @@ module.exports =
       iconFor(@poll)
 </script>
 
-<template>
-    <div class="poll-common-card-header lmo-flex lmo-flex__space-between">
-      <div class="poll-common-card-header lmo-flex">
-        <i class="'mdi mdi-24px ' + icon()"></i>
-        <h2 v-t="'poll_types.' + poll.pollType" class="lmo-card-heading poll-common-card-header__poll-type"></h2>
-      </div>
-      <!-- <poll_common_actions_dropdown poll="poll" ng-if="pollHasActions()" class="pull-right"></poll_common_actions_dropdown> -->
-    </div>
+<template lang="pug">
+v-layout.poll-common-card-header
+  v-icon {{'mdi ' + icon()}}
+  v-subheader(v-t="'poll_types.' + poll.pollType")
+  //- .poll-common-card-header.lmo-flex
+  //-   i.mdi-24px(class="'mdi ' + icon()")
+  //-   h2.lmo-card-heading.poll-common-card-header__poll-type
+  //- // <poll_common_actions_dropdown poll="poll" ng-if="pollHasActions()" class="pull-right"></poll_common_actions_dropdown>
 </template>

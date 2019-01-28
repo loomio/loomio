@@ -68,55 +68,23 @@ module.exports =
       AbilityService.canChangeGroupVolume(@group)
 </script>
 
-<template>
-  <div class="group-page-actions lmo-no-print">
-    <v-menu md-position-mode="target-right target" class="lmo-dropdown-menu">
-      <v-btn flat slot="activator" class="group-page-actions__button">
-        <span v-t="'group_page.options.label'"></span>
-        <i class="mdi mdi-chevron-down"></i>
-      </v-btn>
-      <v-list class="group-actions-dropdown__menu-content">
-        <v-list-tile v-if="canEditGroup" @click="editGroup()" class="group-page-actions__edit-group-link">
-          <v-list-tile-title v-t="'group_page.options.edit_group'"></v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile v-if="canChangeVolume" @click="openChangeVolumeForm()" class="group-page-actions__change-volume-link">
-          <v-list-tile-title v-t="'group_page.options.email_settings'"></v-list-tile-title>
-        </v-list-tile>
-
-        <!-- <outlet name="after-group-actions-manage-memberships" model="group"></outlet>
-        <outlet name="after-group-actions-manage-memberships-2" model="group"></outlet> -->
-
-        <v-list-tile v-if="canExportData" @click="openGroupExportModal()" class="group-page-actions__export-json">
-          <v-list-tile-title v-t="'group_page.options.export_data'"></v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile v-if="canLeaveGroup" @click="leaveGroup()" class="group-page-actions__leave-group">
-          <v-list-tile-title v-t="'group_page.options.leave_group'"></v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile v-if="canArchiveGroup" @click="archiveGroup()" class="group-page-actions__archive-group">
-          <v-list-tile-title v-t="'group_page.options.deactivate_group'"></v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-menu>
-  </div>
+<template lang="pug">
+v-menu.group-page-actions.lmo-no-print(offset-y)
+  v-btn.group-page-actions__button(flat slot='activator')
+    span(v-t="'group_page.options.label'")
+    v-icon mdi-chevron-down
+  v-list.group-actions-dropdown__menu-content
+    v-list-tile.group-page-actions__edit-group-link(v-if='canEditGroup', @click='editGroup()' v-t="'group_page.options.edit_group'")
+      v-list-tile-title(v-t="'group_page.options.edit_group'")
+    v-list-tile.group-page-actions__change-volume-link(v-if='canChangeVolume', @click='openChangeVolumeForm()')
+      v-list-tile-title(v-t="'group_page.options.email_settings'")
+    //
+      <outlet name="after-group-actions-manage-memberships" model="group"></outlet>
+      <outlet name="after-group-actions-manage-memberships-2" model="group"></outlet>
+    v-list-tile.group-page-actions__export-json(v-if='canExportData', @click='openGroupExportModal()')
+      v-list-tile-title(v-t="'group_page.options.export_data'")
+    v-list-tile.group-page-actions__leave-group(v-if='canLeaveGroup', @click='leaveGroup()')
+      v-list-tile-title(v-t="'group_page.options.leave_group'")
+    v-list-tile.group-page-actions__archive-group(v-if='canArchiveGroup', @click='archiveGroup()')
+      v-list-tile-title(v-t="'group_page.options.deactivate_group'")
 </template>
-
-<style lang="scss">
-.group-page-actions {
-  display: flex;
-  align-items: center;
-}
-
-.group-actions-dropdown__menu-content .md-button {
-  display: flex !important;
-  align-items: center;
-}
-
-.group-actions-dropdown__menu-content {
-  max-height: 400px;
-}
-
-.group-actions-dropdown__menu-content .mdi {
-  font-size: 20px;
-  margin-right: 8px;
-}
-</style>

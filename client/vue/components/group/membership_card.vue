@@ -97,75 +97,36 @@ module.exports =
       @group.targetModel().translatedPollType() if @group.targetModel().isA('poll')
 </script>
 
-<template>
-  <v-card
-    aria-labelledby="membership-card-title"
-    v-if="show()"
-    :class="{'membership-card--pending': pending}"
-    class="membership-card lmo-no-print mb-2"
-  >
-    <v-card-text>
-      <div class="lmo-md-actions">
-        <h2
-          v-t="{ path: cardTitle(), args: { values: { pollType: pollType } } }"
-          v-if="!searchOpen"
-          class="membership-card__title lmo-truncate lmo-card-heading lmo-flex__grow" id="membership-card-title"
-        ></h2>
-        <button @click="toggleSearch()" v-if="!searchOpen" class="md-button--tiny membership-card__search-button">
-          <i class="mdi mdi-magnify"></i>
-        </button>
-        <!-- <md-input-container ng-class="{'membership-card__search--open': searchOpen}" md-no-float="true" class="membership-card__search md-block md-no-errors">
-            <input ng-model="fragment" ng-model-options="{debounce: 300}" ng-change="fetchMemberships()" placeholder="{{'memberships_page.fragment_placeholder' | translate}}" class="membership-card__filter">
-            <md-button ng-if="searchOpen" ng-click="toggleSearch()" class="md-button--tiny"><i class="mdi mdi-close"></i></md-button>
-        </md-input-container> -->
-      </div>
-      <plus-button
-        v-if="canAddMembers()"
-        :click="invite"
-        :message="'membership_card.invite_to_' + group.targetModel().constructor.singular"
-        class="membership-card__membership membership-card__invite"
-      ></plus-button>
-      <div
-        v-for="membership in orderedMemberships()"
-        :key="membership.id"
-        data-username="membership.user().username"
-        class="membership-card__membership lmo-flex lmo-flex__center"
-      >
-          <user-avatar
-            :user="membership.user()"
-            size="medium"
-            :coordinator="membership.admin"
-            :no-link="!membership.acceptedAt"
-            class="lmo-margin-right"
-          ></user-avatar>
-          <div layout="column" class="membership-card__user lmo-flex lmo-flex__grow lmo-truncate">
-            <span>{{membership.userName() || membership.user().email }}</span>
-            <!-- <outlet name="after-membership-user" model="membership"></outlet> -->
-            <div
-              v-if="membership.user().lastSeenAt"
-              v-t="{ path: 'user_page.online_field', args: { value: fromNow(membership.user().lastSeenAt) } }"
-              class="membership-card__last-seen md-caption"
-            ></div>
-            <div
-              v-if="!membership.acceptedAt"
-              v-t="{ path: 'user_page.invited', args: { value: fromNow(membership.user().createdAt) } }"
-              class="membership-card__last-seen md-caption"
-            ></div>
-          </div>
-          <!-- <membership_dropdown membership="membership"></membership_dropdown>-->
-      </div>
-      <loading v-if="loader.loading"></loading>
-      <div v-if="showLoadMore()" class="lmo-md-actions">
-        <button
-          v-if="showLoadMore()"
-          @click="loader.loadMore()"
-          v-t="'common.action.load_more'"
-          class="md-accent"
-        ></button>
-        <span>{{recordsDisplayed()}} / {{recordCount()}}</span>
-      </div>
-    </v-card-text>
-  </v-card>
+<template lang="pug">
+v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pending': pending}")
+  v-layout(justify-space-between)
+    v-subheader(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }', v-if='!searchOpen')
+    v-btn(icon)
+      v-icon mdi-magnify
+//- v-card-text
+//-   .lmo-md-actions
+//-     h2#membership-card-title.membership-card__title.lmo-truncate.lmo-card-heading.lmo-flex__grow(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }', v-if='!searchOpen')
+//-     button.md-button--tiny.membership-card__search-button(@click='toggleSearch()', v-if='!searchOpen')
+//-       i.mdi.mdi-magnify
+//-     //
+//-       <md-input-container ng-class="{'membership-card__search--open': searchOpen}" md-no-float="true" class="membership-card__search md-block md-no-errors">
+//-       <input ng-model="fragment" ng-model-options="{debounce: 300}" ng-change="fetchMemberships()" placeholder="{{'memberships_page.fragment_placeholder' | translate}}" class="membership-card__filter">
+//-       <md-button ng-if="searchOpen" ng-click="toggleSearch()" class="md-button--tiny"><i class="mdi mdi-close"></i></md-button>
+//-       </md-input-container>
+//-   plus-button.membership-card__membership.membership-card__invite(v-if='canAddMembers()', :click='invite', :message="'membership_card.invite_to_' + group.targetModel().constructor.singular")
+//-   .membership-card__membership.lmo-flex.lmo-flex__center(v-for='membership in orderedMemberships()', :key='membership.id', data-username='membership.user().username')
+//-     user-avatar.lmo-margin-right(:user='membership.user()', size='medium', :coordinator='membership.admin', :no-link='!membership.acceptedAt')
+//-     .membership-card__user.lmo-flex.lmo-flex__grow.lmo-truncate(layout='column')
+//-       span {{membership.userName() || membership.user().email }}
+//-       // <outlet name="after-membership-user" model="membership"></outlet>
+//-       .membership-card__last-seen.md-caption(v-if='membership.user().lastSeenAt', v-t="{ path: 'user_page.online_field', args: { value: fromNow(membership.user().lastSeenAt) } }")
+//-       .membership-card__last-seen.md-caption(v-if='!membership.acceptedAt', v-t="{ path: 'user_page.invited', args: { value: fromNow(membership.user().createdAt) } }")
+//-     // <membership_dropdown membership="membership"></membership_dropdown>
+//-   loading(v-if='loader.loading')
+//-   .lmo-md-actions(v-if='showLoadMore()')
+//-     button.md-accent(v-if='showLoadMore()', @click='loader.loadMore()', v-t="'common.action.load_more'")
+//-     span {{recordsDisplayed()}} / {{recordCount()}}
+
 </template>
 
 <style lang="scss">
@@ -196,9 +157,5 @@ module.exports =
 
 .membership-card__last-seen {
   color: $grey-on-white;
-}
-
-.membership-card__title {
-  line-height: 36px;
 }
 </style>

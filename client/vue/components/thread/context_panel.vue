@@ -126,68 +126,46 @@ module.exports =
       ModalService.open 'RevisionHistoryModal', model: => @discussion
 </script>
 
-<template>
-    <section aria-label="$t('thread_context.aria_label')" class="context-panel lmo-card-padding lmo-action-dock-wrapper">
-      <div class="context-panel__top">
-          <div v-if="status" :title="statusTitle" class="context-panel__status">
-            <i v-if="status == 'pinned'" class="mdi mdi-pin"></i>
-          </div>
-          <div class="context-panel__h1 lmo-flex__grow">
-            <h1 v-if="!discussion.translation" class="lmo-h1 context-panel__heading">{{discussion.title}}</h1>
-            <h1 v-if="discussion.translation" class="lmo-h1">
-              <translation :model="discussion" field="title"></translation>
-            </h1>
-          </div>
-          <!-- <context_panel_dropdown discussion="discussion"></context_panel_dropdown> -->
-      </div>
-      <div class="context-panel__details md-body-1 lmo-flex--row">
-        <user-avatar :user="discussion.author()" size="small" class="lmo-margin-right"></user-avatar>
-        <span>
-          <strong>{{discussion.authorName()}}</strong>
-          <span aria-hidden="true">·</span>
-          <time-ago :date="discussion.createdAt" class="nowrap"></time-ago>
-          <span aria-hidden="true">·</span>
-          <span v-show="discussion.private" class="nowrap context-panel__discussion-privacy context-panel__discussion-privacy--private">
-            <i class="mdi mdi-lock-outline"></i>
-            <span v-t="'common.privacy.private'"></span>
-          </span>
-          <span v-show="!discussion.private" class="nowrap context-panel__discussion-privacy context-panel__discussion-privacy--public">
-            <i class="mdi mdi-earth"></i>
-            <span v-t="'common.privacy.public'"></span>
-          </span>
-          <span v-show="discussion.seenByCount > 0">
-            <span aria-hidden="true">·</span>
-            <span
-              v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"
-              class="context-panel__seen_by_count"
-            ></span>
-          </span>
-          <span v-if="discussion.forkedEvent() && discussion.forkedEvent().discussion()">
-            <span aria-hidden="true">·</span>
-            <span v-t="'thread_context.forked_from'"></span>
-            <router-link :to="urlFor(discussion.forkedEvent())">{{discussion.forkedEvent().discussion().title}}</router-link>
-          </span>
-        </span>
-        <div v-t="'common.privacy.closed'" v-if="discussion.closedAt" md-colors="{color: 'warn-600', 'border-color': 'warn-600'}" class="lmo-badge lmo-pointer">
-          <v-tooltip bottom>{{ exactDate(discussion.closedAt) }}</v-tooltip>
-        </div>
-        <!-- <outlet name="after-thread-title" model="discussion" class="lmo-flex"></outlet> -->
-      </div>
-      <div
-        v-if="!discussion.translation"
-        v-marked="discussion.cookedDescription()"
-        class="context-panel__description lmo-markdown-wrapper"
-      ></div>
-      <translation
-        v-if="discussion.translation"
-        :model="discussion"
-        field="description"
-        class="lmo-markdown-wrapper"
-      ></translation>
-      <document-list :model="discussion" :skip-fetch="true"></document-list>
-      <div class="lmo-md-actions">
-        <!-- <reactions_display model="discussion" load="true" class="context-panel__actions-left"></reactions_display> -->
-        <action-dock :model="discussion" :actions="actions"></action-dock>
-      </div>
-    </section>
+<template lang="pug">
+//- section.context-panel.lmo-card-padding.lmo-action-dock-wrapper(aria-label="$t('thread_context.aria_label')")
+v-card-text.context-panel
+  .context-panel__top
+    .context-panel__status(v-if='status', :title='statusTitle')
+      i.mdi.mdi-pin(v-if="status == 'pinned'")
+    .context-panel__h1.lmo-flex__grow
+      h1.headline.context-panel__heading
+        span(v-if='!discussion.translation') {{discussion.title}}
+        span(v-if='discussion.translation')
+          translation(:model='discussion', field='title')
+    // <context_panel_dropdown discussion="discussion"></context_panel_dropdown>
+  v-layout.context-panel__details(align-center)
+    user-avatar.lmo-margin-right(:user='discussion.author()', size='medium')
+    span
+      strong {{discussion.authorName()}}
+      span.mx-1(aria-hidden='true') ·
+      time-ago.nowrap(:date='discussion.createdAt')
+      span.mx-1(aria-hidden='true') ·
+      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
+        i.mdi.mdi-lock-outline
+        span(v-t="'common.privacy.private'")
+      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
+        i.mdi.mdi-earth
+        span(v-t="'common.privacy.public'")
+      span(v-show='discussion.seenByCount > 0')
+        span.mx-1(aria-hidden='true') ·
+        span.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }")
+      span(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
+        span.mx-1(aria-hidden='true') ·
+        span(v-t="'thread_context.forked_from'")
+        router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
+    .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
+      v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
+    // <outlet name="after-thread-title" model="discussion" class="lmo-flex"></outlet>
+  .context-panel__description.lmo-markdown-wrapper(v-if='!discussion.translation', v-marked='discussion.cookedDescription()')
+  translation.lmo-markdown-wrapper(v-if='discussion.translation', :model='discussion', field='description')
+  document-list(:model='discussion', :skip-fetch='true')
+  .lmo-md-actions
+    // <reactions_display model="discussion" load="true" class="context-panel__actions-left"></reactions_display>
+    action-dock(:model='discussion', :actions='actions')
+
 </template>

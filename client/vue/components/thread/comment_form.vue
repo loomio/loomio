@@ -73,15 +73,14 @@ module.exports =
     @init()
 </script>
 
-<template>
-      <div class="comment-form lmo-relative">
-        <form v-on:submit.prevent="submit()">
-          <div v-show="isDisabled" class="lmo-disabled-form"></div>
-          <textarea v-model="comment.body"></textarea>
-          <button type="submit">Submit</button>
-          <!-- <lmo_textarea model="comment" field="body" placeholder="commentPlaceholder()" helptext="commentHelptext()"></lmo_textarea> -->
-          <!-- <comment_form_actions comment="comment" submit="submit"></comment_form_actions> -->
-          <!-- <validation_errors subject="comment" field="file"></validation_errors> -->
-        </form>
-      </div>
+<template lang="pug">
+.comment-form.lmo-relative
+  form(v-on:submit.prevent='submit()')
+    .lmo-disabled-form(v-show='isDisabled')
+    v-textarea(v-model='comment.body')
+    v-btn(flat color="primary" type='submit') Post
+    // <lmo_textarea model="comment" field="body" placeholder="commentPlaceholder()" helptext="commentHelptext()"></lmo_textarea>
+    // <comment_form_actions comment="comment" submit="submit"></comment_form_actions>
+    // <validation_errors subject="comment" field="file"></validation_errors>
+
 </template>

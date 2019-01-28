@@ -15,21 +15,14 @@ module.exports =
     isEmpty: -> _isEmpty(@group)
 </script>
 
-<template>
-  <v-card class="document-card mb-2 lmo-no-print">
-    <v-card-text>
-      <h2 v-t="'document.list.title'" class="lmo-card-heading" id="document-card-title"></h2>
-      <loading v-if="isEmpty"></loading>
-      <div v-if="!isEmpty" class="document-card__content">
-        <div v-t="'document.card.no_documents'" v-if="!group.hasDocuments()" class="lmo-hint-text"></div>
-        <document-list :model="group" :hide-preview="true" :hide-date="true"></document-list>
-      </div>
-    </v-card-text>
-    <v-card-actions>
-      <v-btn flat :to="urlFor(group, 'documents')" v-t="'document.card.view_documents'"></v-btn>
-    </v-card-actions>
-  </v-card>
+<template lang="pug">
+v-card.document-card.lmo-no-print
+  v-subheader(v-t="'document.list.title'")
+  v-card-text
+    loading(v-if='isEmpty')
+    .document-card__content(v-if='!isEmpty')
+      .lmo-hint-text(v-t="'document.card.no_documents'", v-if='!group.hasDocuments()')
+      document-list(:model='group', :hide-preview='true', :hide-date='true')
+  v-card-actions
+    v-btn(flat='', :to="urlFor(group, 'documents')", v-t="'document.card.view_documents'")
 </template>
-
-<style lang="scss">
-</style>

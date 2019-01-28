@@ -1,4 +1,3 @@
-
 <script lang="coffee">
 Records        = require 'shared/services/records'
 EventBus       = require 'shared/services/event_bus'
@@ -28,31 +27,24 @@ module.exports =
        ModalService.open 'GroupModal', group: => Records.groups.build(parentId: @group.id)
 </script>
 
-<template>
-  <v-card aria-labelledby="subgroups-card__title" v-if="show()" class="subgroups-card mb-2">
-    <v-card-text>
-      <h2 v-t="'group_page.subgroups'" class="lmo-card-heading" id="subgroups-card__title"></h2>
-      <p v-t="'group_page.subgroups_placeholder'" v-if="group.subgroups().length == 0" class="lmo-hint-text"></p>
-      <ul class="subgroups-card__list">
-        <li v-for="subgroup in orderedSubgroups()" :key="subgroup.id" class="subgroups-card__list-item">
-          <div class="subgroups-card__list-item-logo">
-            <!-- <group_avatar group="subgroup" size="medium"></group_avatar> -->
-          </div>
-          <div class="subgroups-card__list-item-name">
-            <router-link :to="urlFor(subgroup)">{{ subgroup.name }}</router-link>
-          </div>
-          <div class="subgroups-card__list-item-description">{{ truncate(subgroup.description) }}</div>
-        </li>
-      </ul>
-      <div class="lmo-flex lmo-flex__space-between"></div>
-    </v-card-text>
-    <v-card-actions>
-      <!-- <outlet name="subgroup-card-footer"></outlet> -->
-      <v-btn flat @click="startSubgroup()" v-if="canCreateSubgroups()" class="subgroups-card__start">
-        <span v-t="'common.action.add_subgroup'"></span>
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+<template lang="pug">
+v-card.subgroups-card(aria-labelledby='subgroups-card__title', v-if='show()')
+  v-subheader(v-t="'group_page.subgroups'")
+  v-card-text
+    p.lmo-hint-text(v-t="'group_page.subgroups_placeholder'", v-if='group.subgroups().length == 0')
+    ul.subgroups-card__list
+      li.subgroups-card__list-item(v-for='subgroup in orderedSubgroups()', :key='subgroup.id')
+        .subgroups-card__list-item-logo
+          // <group_avatar group="subgroup" size="medium"></group_avatar>
+        .subgroups-card__list-item-name
+          router-link(:to='urlFor(subgroup)') {{ subgroup.name }}
+        .subgroups-card__list-item-description {{ truncate(subgroup.description) }}
+    .lmo-flex.lmo-flex__space-between
+  v-card-actions
+    // <outlet name="subgroup-card-footer"></outlet>
+    v-btn.subgroups-card__start(flat='', @click='startSubgroup()', v-if='canCreateSubgroups()')
+      span(v-t="'common.action.add_subgroup'")
+
 </template>
 <style lang="scss">
 @import 'app.scss';

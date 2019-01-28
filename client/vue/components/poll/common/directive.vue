@@ -3,9 +3,11 @@
 
 <script lang="coffee">
 import PollProposalForm from 'vue/components/poll/proposal/form.vue'
+import PollCommonVoteForm from 'vue/components/poll/common/vote_form.vue'
 module.exports =
   components:
     'poll-proposal-form': PollProposalForm
+    'poll-common-vote-form': PollCommonVoteForm
   props:
     poll: Object
     stance: Object
@@ -24,5 +26,5 @@ module.exports =
 </script>
 
 <template>
-    <component :is="componentName()" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back'></component>
+  <component :is="componentName()" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back'></component>
 </template>

@@ -6,7 +6,8 @@ module.exports = new Vuex.Store
     discussions: Records.discussions.collection.data
     comments: Records.comments.collection.data
     groups: Records.groups.collection.data
-    documents: Records.documents
+    documents: Records.documents.collection.data
+    notifications: Records.notifications.collection.data
 
   getters:
     documentsFor: (state) => (model) =>

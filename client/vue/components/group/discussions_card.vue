@@ -88,142 +88,39 @@ module.exports =
 
 </script>
 
-<template>
-  <v-card
-    aria-labelledby="threads-card-title"
-    class="discussions-card mb-2"
-    v-if="discussions"
-  >
-    <div class="discussions-card__header">
-        <h3
-          v-if="!searchOpen"
-          class="discussions-card__title lmo-card-heading"
-          id="threads-card-title"
-        >
-          <span
-            v-if="filter == 'show_opened'"
-            v-t="{ path: 'group_page.open_discussions' }"
-          ></span>
-          <span
-            v-if="filter == 'show_closed'"
-            v-t="{ path: 'group_page.closed_discussions' }"
-          ></span>
-        </h3>
-        <div
-          v-if="searchOpen"
-          class="discussions-card__search discussions-card__search--open md-block md-no-errors"
-        >
-          <i
-            @click="closeSearch"
-            class="mdi mdi-close md-button--tiny lmo-pointer"
-          ></i>
-          <input
-            v-model="fragment"
-            :placeholder="$t('group_page.search_threads')"
-            @input="searchThreads"
-          >
-        </div>
-        <button
-          v-if="!searchOpen"
-          @click="openSearch"
-          class="md-button--tiny"
-        >
-          <i class="mdi mdi-magnify"></i>
-        </button>
-        <div class="lmo-flex__grow"></div>
-        <div
-          v-if="!searchOpen && filter == 'show_closed'"
-          @click="setFilter('show_opened')"
-          v-t="{ path: 'group_page.show_opened', args: { count: group.openDiscussionsCount } }"
-          class="discussions-card__filter discussions-card__filter--open lmo-link lmo-pointer"
-        ></div>
-        <div
-          v-if="!searchOpen && filter == 'show_opened' && group.closedDiscussionsCount > 0"
-          @click="setFilter('show_closed')"
-          v-t="{ path: 'group_page.show_closed', args: { count: group.closedDiscussionsCount } }"
-          class="discussions-card__filter discussions-card__filter--closed lmo-link lmo-pointer"
-        ></div>
-
-        <v-dialog v-model="discussionStartIsOpen" lazy>
-          <v-btn
-            flat
-            color="primary"
-            v-if="canStartThread"
-            slot="activator"
-            :title="$t('navbar.start_thread')"
-            class="discussions-card__new-thread-button"
-            v-t="{ path: 'navbar.start_thread' }"
-          ></v-btn>
-          <discussion-start
-            :discussion="newDiscussion()"
-            :close="closeDiscussionStart">
-          </discussion-start>
-        </v-dialog>
-    </div>
-    <div class="discussions-card__content">
-        <div v-if="noThreads" class="discussions-card__list--empty">
-            <p v-t="{ path: 'group_page.no_threads_here' }" class="lmo-hint-text"></p>
-            <p
-              v-if="!canViewPrivateContent"
-              v-t="{ path: 'group_page.private_threads' }"
-              class="lmo-hint-text"
-            ></p>
-        </div>
-        <div v-if="isEmpty(fragment)" class="discussions-card__list">
-            <section
-              v-if="discussions.any() || pinned.any()"
-              class="thread-preview-collection__container"
-            >
-              <thread-preview-collection
-                v-if="pinned.any()"
-                :query="pinned"
-                :limit="loader.numRequested"
-                order="title"
-                class="thread-previews-container--pinned"
-              ></thread-preview-collection>
-              <thread-preview-collection
-                v-if="discussions.any()"
-                :query="discussions"
-                :limit="loader.numRequested"
-                class="thread-previews-container--unpinned"
-              >
-              </thread-preview-collection>
-            </section>
-            <div v-if="!loader.exhausted && !loader.loadingMore" class="lmo-show-more">
-              <button v-show="!loading"
-                @click="loader.loadMore"
-                v-t="{ path: 'common.action.show_more' }"
-                class="discussions-card__show-more"
-              ></button>
-            </div>
-            <div
-              v-t="{ path: 'group_page.no_more_threads' }"
-              v-if="loader.numLoaded > 0 && loader.exhausted"
-              class="lmo-hint-text discussions-card__no-more-threads"
-            ></div>
-            <loading
-              v-if="loader.loadingMore"
-            ></loading>
-        </div>
-        <div
-          v-if="!isEmpty(fragment)"
-          class="discussions-card__list"
-        >
-          <section
-            v-if="!isEmpty(searched) && searched.any()"
-            class="thread-preview-collection__container"
-          >
-            <thread-preview-collection
-              :query="searched"
-              class="thread-previews-container--searched"
-            ></thread-preview-collection>
-          </section>
-        </div>
-        <loading
-          v-show="loading"
-        ></loading>
-    </div>
-  </v-card>
+<template lang="pug">
+v-card.discussions-card(aria-labelledby='threads-card-title', v-if='discussions')
+  .discussions-card__header
+    h3#threads-card-title.discussions-card__title.lmo-card-heading(v-if='!searchOpen')
+      span(v-if="filter == 'show_opened'", v-t="{ path: 'group_page.open_discussions' }")
+      span(v-if="filter == 'show_closed'", v-t="{ path: 'group_page.closed_discussions' }")
+    .discussions-card__search.discussions-card__search--open.md-block.md-no-errors(v-if='searchOpen')
+      i.mdi.mdi-close.md-button--tiny.lmo-pointer(@click='closeSearch')
+      input(v-model='fragment', :placeholder="$t('group_page.search_threads')", @input='searchThreads')
+    button.md-button--tiny(v-if='!searchOpen', @click='openSearch')
+      i.mdi.mdi-magnify
+    .lmo-flex__grow
+    .discussions-card__filter.discussions-card__filter--open.lmo-link.lmo-pointer(v-if="!searchOpen && filter == 'show_closed'", @click="setFilter('show_opened')", v-t="{ path: 'group_page.show_opened', args: { count: group.openDiscussionsCount } }")
+    .discussions-card__filter.discussions-card__filter--closed.lmo-link.lmo-pointer(v-if="!searchOpen && filter == 'show_opened' && group.closedDiscussionsCount > 0", @click="setFilter('show_closed')", v-t="{ path: 'group_page.show_closed', args: { count: group.closedDiscussionsCount } }")
+    v-dialog(v-model='discussionStartIsOpen', lazy='')
+      v-btn.discussions-card__new-thread-button(flat='', color='primary', v-if='canStartThread', slot='activator', :title="$t('navbar.start_thread')", v-t="{ path: 'navbar.start_thread' }")
+      discussion-start(:discussion='newDiscussion()', :close='closeDiscussionStart')
+  .discussions-card__content
+    .discussions-card__list--empty(v-if='noThreads')
+      p.lmo-hint-text(v-t="{ path: 'group_page.no_threads_here' }")
+      p.lmo-hint-text(v-if='!canViewPrivateContent', v-t="{ path: 'group_page.private_threads' }")
+    .discussions-card__list(v-if='isEmpty(fragment)')
+      section.thread-preview-collection__container(v-if='discussions.any() || pinned.any()')
+        thread-preview-collection.thread-previews-container--pinned(v-if='pinned.any()', :query='pinned', :limit='loader.numRequested', order='title')
+        thread-preview-collection.thread-previews-container--unpinned(v-if='discussions.any()', :query='discussions', :limit='loader.numRequested')
+      .lmo-show-more(v-if='!loader.exhausted && !loader.loadingMore')
+        button.discussions-card__show-more(v-show='!loading', @click='loader.loadMore', v-t="{ path: 'common.action.show_more' }")
+      .lmo-hint-text.discussions-card__no-more-threads(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
+      loading(v-if='loader.loadingMore')
+    .discussions-card__list(v-if='!isEmpty(fragment)')
+      section.thread-preview-collection__container(v-if='!isEmpty(searched) && searched.any()')
+        thread-preview-collection.thread-previews-container--searched(:query='searched')
+    loading(v-show='loading')
 </template>
 
 <style lang="scss">

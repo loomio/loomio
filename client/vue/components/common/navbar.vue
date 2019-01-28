@@ -5,48 +5,63 @@ AbilityService = require 'shared/services/ability_service'
 ModalService   = require 'shared/services/modal_service'
 
 module.exports =
-  methods:
-    toggleSidebar: ->
-      # EventBus.broadcast $rootScope, 'toggleSidebar'
+  data: ->
+    title: AppConfig.theme.site_name
 
-    signIn: ->
-      ModalService.open 'AuthModal'
+  mounted: ->
+    EventBus.$on 'currentComponent', (data) =>
+      console.log "currentComponent set", data
+      if data.title?
+        @title = data.title
+      else if data.titleKey?
+        @title = @$t(data.titleKey)
+
   computed:
     logo: ->
       AppConfig.theme.app_logo_src
 
+    icon: ->
+      AppConfig.theme.icon_src
+
     isLoggedIn: ->
       AbilityService.isLoggedIn()
+
 </script>
 
-<template>
-<v-toolbar app>
-  hi
-  <v-toolbar-side-icon></v-toolbar-side-icon>
-  <v-toolbar-title>Title</v-toolbar-title>
-  <div class="md-toolbar-tools">
-    <div class="navbar__left">
-      <v-toolbar-side-icon v-show="isLoggedIn()" @click="toggleSidebar()" aria-label="$t('navbar.toggle_sidebar')" class="navbar__sidenav-toggle">
-        <!-- <i class="mdi mdi-menu"></i> -->
-      </v-toolbar-side-icon>
-    </div>
-    <div class="navbar__middle lmo-flex lmo-flex__horizontal-center">
-      <router-link to="/dashboard" class="lmo-pointer">
-        <img :src="logo()">
-      </router-link>
-    </div>
-    <div class="navbar__right">
-      <div v-if="isLoggedIn()" class="lmo-flex--row">
-        <!-- <navbar_search></navbar_search>
-        <notifications></notifications>
-        <user_dropdown></user_dropdown> -->
-      </div>
-      <v-btn v-if="!isLoggedIn()" @click="signIn()" class="md-primary md-raised navbar__sign-in">
-        <span v-t="'navbar.sign_in'"></span>
-      </v-btn>
-    </div>
-  </div>
-</v-toolbar>
+<template lang="pug">
+  v-toolbar(app)
+    //- v-toolbar-side-icon
+    v-btn(icon)
+      v-avatar(tile size="36px")
+        img(:src='icon')
+    v-toolbar-title {{title}}
+    v-spacer
+    v-toolbar-items(v-if='isLoggedIn')
+      v-btn(icon)
+        v-icon mdi-magnify
+      //- v-btn(icon)
+      //-   v-icon mdi-bell
+      //- | hello
+      notifications
+      user-dropdown
+      //- v-btn(icon)
+      //-   v-icon mdi-dots-vertical
+    v-toolbar-items(v-if='!isLoggedIn')
+      v-btn(flat v-t="'navbar.sign_in'")
+    //- .navbar__left
+    //-   v-toolbar-side-icon.navbar__sidenav-toggle(v-show='isLoggedIn()', @click='toggleSidebar()', aria-label="$t('navbar.toggle_sidebar')")
+    //-     v-icon mdi-menu
+    //- .navbar__middle.lmo-flex.lmo-flex__horizontal-center
+    //-   router-link.lmo-pointer(to='/dashboard')
+    //-     img(:src='logo()')
+    //- .navbar__right
+    //-   .lmo-flex--row(v-if='isLoggedIn()')
+    //-     //
+    //-       <navbar_search></navbar_search>
+    //-       <notifications></notifications>
+    //-       <user_dropdown></user_dropdown>
+    //-   v-btn.md-primary.md-raised.navbar__sign-in(v-if='!isLoggedIn()', @click='signIn()')
+    //-     span(v-t="'navbar.sign_in'")
 </template>
 
 <style lang="scss">

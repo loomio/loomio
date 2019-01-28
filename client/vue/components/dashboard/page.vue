@@ -1,6 +1,5 @@
 <style lang="scss">
 .dashboard-page {
-  /* @include lmoRow; */
 }
 
 .dashboard-page .thread-preview__pin {
@@ -99,10 +98,10 @@ module.exports =
         filter: @filter
         per: 50
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent',
-    #   titleKey: titleKey()
-    #   page: 'dashboardPage'
-    #   filter: $routeParams.filter
+    EventBus.$emit 'currentComponent',
+      titleKey: @titleKey
+      page: 'dashboardPage'
+      # filter: $routeParams.filter
     @loader.fetchRecords().then => @dashboardLoaded = true
     @startGroup() if @noGroups && AbilityService.canStartGroups()
   methods:
@@ -118,10 +117,10 @@ module.exports =
     startGroup: -> ModalService.open 'GroupModal', group: => Records.groups.build()
   computed:
     titleKey: ->
-      if @filter == 'show_muted'
-        'dashboard_page.filtering.muted'
-      else
-        'dashboard_page.filtering.all'
+      # if @filter == 'show_muted'
+      #   'dashboard_page.filtering.muted'
+      # else
+      'dashboard_page.filtering.all'
 
     viewNames: -> _keys(@views)
     loadingViewNames: -> _take @viewNames, 3
@@ -129,54 +128,41 @@ module.exports =
     promptStart: -> !Session.user().hasAnyGroups() && AbilityService.canStartGroups()
     noThreads: -> _every @views, (view) => !view.any()
     userHasMuted: -> Session.user().hasExperienced("mutingThread")
-    showLargeImage: -> $mdMedia("gt-sm")
+    showLargeImage: -> true
 
 </script>
 
-<template>
-  <div class="lmo-one-column-layout">
-    <main class="dashboard-page lmo-row">
-      <h1 v-t="'dashboard_page.filtering.all'" v-show="filter == 'hide_muted'" class="lmo-h1-medium dashboard-page__heading"></h1>
-      <h1 v-t="'dashboard_page.filtering.muted'" v-show="filter == 'show_muted'" class="lmo-h1-medium dashboard-page__heading"></h1>
-      <section v-if="!dashboardLoaded" v-for="(viewName, index) in loadingViewNames" :key="index" :class="'dashboard-page__loading dashboard-page__' + viewName" aria-hidden="true">
-        <h2 v-t="'dashboard_page.threads_from.' + viewName" class="dashboard-page__date-range"></h2>
-        <div class="thread-previews-container">
-          <!-- <loading_content line-count="2" ng-repeat="i in [1,2] track by $index" class="thread-preview"></loading_content> -->
-        </div>
-      </section>
-      <section v-if="dashboardLoaded" class="dashboard-page__loaded">
-        <div v-if="noThreads" class="dashboard-page__empty">
-          <p v-t="'dashboard_page.no_groups.show_all'" v-if="noGroups"></p>
-          <div v-if="!noGroups" class="dashboard-page__no-threads">
-            <span v-show="filter == 'show_all'" v-t="'dashboard_page.no_threads.show_all'"></span>
-            <p v-t="'dashboard_page.no_threads.show_all'"></p>
-            <span v-show="filter == 'show_muted' && userHasMuted" v-t="'dashboard_page.no_threads.show_muted'"></span>
-            <router-link to="/dashboard" v-show="filter != 'show_all' && userHasMuted">
-              <span v-t="'dashboard_page.view_recent'"></span>
-            </router-link>
-          </div>
-          <div v-if="filter == 'show_muted' && !userHasMuted" class="dashboard-page__explain-mute">
-            <p><strong v-t="'dashboard_page.explain_mute.title'"></strong></p>
-            <p v-t="'dashboard_page.explain_mute.explanation_html'"></p>
-            <p v-t="'dashboard_page.explain_mute.instructions'"></p>
-            <div v-if="showLargeImage" class="dashboard-page__mute-image--large">
-              <img src="/img/mute.png">
-            </div>
-            <div v-if="!showLargeImage" class="dashboard-page__mute-image--small">
-              <img src="/img/mute-small.png">
-            </div>
-            <p v-t="'dashboard_page.explain_mute.see_muted_html'"></p>
-          </div>
-        </div>
-        <div v-if="!noThreads" class="dashboard-page__collections">
-          <section v-if="views[viewName].any()" :class="'thread-preview-collection__container dashboard-page__' + viewName" v-for="viewName in viewNames">
-            <h2 v-t="'dashboard_page.threads_from.' + viewName" class="dashboard-page__date-range"></h2>
-            <thread-preview-collection :query="views[viewName]" class="thread-previews-container"></thread-preview-collection>
-          </section>
-          <div v-if="!loader.exhausted" in-view="$inview && loader.loadMore()" in-view-options="{debounce: 200}" class="dashboard-page__footer">&nbsp;</div>
-          <loading v-show="loader.loading"></loading>
-        </div>
-      </section>
-    </main>
-  </div>
+<template lang="pug">
+v-container.lmo-main-container.dashboard-page(grid-list-lg)
+  //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'", v-show="filter == 'hide_muted'")
+  //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
+  section(v-if='!dashboardLoaded', v-for='(viewName, index) in loadingViewNames', :key='index', :class="'dashboard-page__loading dashboard-page__' + viewName", aria-hidden='true')
+    h2.dashboard-page__date-range(v-t="'dashboard_page.threads_from.' + viewName")
+    .thread-previews-container
+      // <loading_content line-count="2" ng-repeat="i in [1,2] track by $index" class="thread-preview"></loading_content>
+  section.dashboard-page__loaded(v-if='dashboardLoaded')
+    .dashboard-page__empty(v-if='noThreads')
+      p(v-t="'dashboard_page.no_groups.show_all'", v-if='noGroups')
+      .dashboard-page__no-threads(v-if='!noGroups')
+        span(v-show="filter == 'show_all'", v-t="'dashboard_page.no_threads.show_all'")
+        p(v-t="'dashboard_page.no_threads.show_all'")
+        span(v-show="filter == 'show_muted' && userHasMuted", v-t="'dashboard_page.no_threads.show_muted'")
+        router-link(to='/dashboard', v-show="filter != 'show_all' && userHasMuted")
+          span(v-t="'dashboard_page.view_recent'")
+      .dashboard-page__explain-mute(v-if="filter == 'show_muted' && !userHasMuted")
+        p
+          strong(v-t="'dashboard_page.explain_mute.title'")
+        p(v-t="'dashboard_page.explain_mute.explanation_html'")
+        p(v-t="'dashboard_page.explain_mute.instructions'")
+        .dashboard-page__mute-image--large(v-if='showLargeImage')
+          img(src='/img/mute.png')
+        .dashboard-page__mute-image--small(v-if='!showLargeImage')
+          img(src='/img/mute-small.png')
+        p(v-t="'dashboard_page.explain_mute.see_muted_html'")
+    .dashboard-page__collections(v-if='!noThreads')
+      v-card(v-if='views[viewName].any()', :class="'thread-preview-collection__container dashboard-page__' + viewName", v-for='viewName in viewNames')
+        v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
+        thread-preview-collection.thread-previews-container(:query='views[viewName]')
+      .dashboard-page__footer(v-if='!loader.exhausted', in-view='$inview && loader.loadMore()', in-view-options='{debounce: 200}')  
+      loading(v-show='loader.loading')
 </template>

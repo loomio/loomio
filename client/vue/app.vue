@@ -22,11 +22,10 @@ module.exports =
 
 </script>
 
-<template>
-  <v-app>
-    <sidebar></sidebar>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
-  </v-app>
+<template lang="pug">
+  v-app
+    navbar
+    sidebar
+    v-content
+      router-view
 </template>

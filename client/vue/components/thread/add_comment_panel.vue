@@ -55,19 +55,14 @@ module.exports =
     indent: -> @eventWindow.useNesting && @isReply
 </script>
 
-<template>
-      <div v-if="show" :class="{'thread-item--indent': indent}" class="add-comment-panel lmo-card-padding">
-        <div v-if="canAddComment()" class="lmo-flex--row">
-          <div class="thread-item__avatar lmo-margin-right">
-            <user-avatar :user="actor" size="small"></user-avatar>
-          </div>
-          <div class="thread-item__body lmo-flex--column lmo-flex__horizontal-center">
-            <comment-form :event-window="eventWindow"></comment-form>
-          </div>
-        </div>
-        <div v-if="!canAddComment()" class="add-comment-panel__join-actions">
-          <join-group-button :group="eventWindow.discussion.group()" v-if="isLoggedIn()" :block="true"></join-group-button>
-          <button v-t="'comment_form.sign_in'" @click="signIn()" v-if="!isLoggedIn()" class="md-primary md-raised add-comment-panel__sign-in-btn"></button>
-        </div>
-      </div>
+<template lang="pug">
+.add-comment-panel.lmo-card-padding(v-if='show', :class="{'thread-item--indent': indent}")
+  .lmo-flex--row(v-if='canAddComment()')
+    .thread-item__avatar.lmo-margin-right
+      user-avatar(:user='actor', size='medium')
+    .thread-item__body.lmo-flex--column.lmo-flex__horizontal-center
+      comment-form(:event-window='eventWindow')
+  .add-comment-panel__join-actions(v-if='!canAddComment()')
+    join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn()', :block='true')
+    button.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
 </template>

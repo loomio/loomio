@@ -78,6 +78,7 @@ module.exports =
     hideDate: Boolean
     skipFetch: Boolean
     placeholder: String
+    
   created: ->
     unless @model.isNew() or @skipFetch
       Records.documents.fetchByModel(@model)

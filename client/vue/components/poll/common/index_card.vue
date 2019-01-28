@@ -30,26 +30,18 @@ module.exports =
 
 </script>
 
-<template>
-  <v-card class="poll-common-index-card mb-2">
-    <v-card-text>
-      <h2 v-t="'poll_common_index_card.title'" class="lmo-card-heading"></h2>
-      <div class="poll-common-index-card__polls">
-        <div v-if="!polls().length" v-t="'poll_common_index_card.no_polls'" class="lmo-hint-text"></div>
-        <div v-if="polls().length" class="poll-common-index-card__has-polls">
-          <poll-common-preview v-for="poll in polls()" :key="poll.id" :poll="poll"></poll-common-preview>
-          <a @click="viewMore()" v-if="displayViewMore()" class="poll-common-index-card__view-more">
-            <span v-t="{ path: 'poll_common_index_card.count', args: { count: model.closedPollsCount } }"></span>
-          </a>
-        </div>
-      </div>
-      <!-- <loading v-if="fetchRecordsExecuting"></loading> -->
-    </v-card-text>
-  </v-card>
+<template lang="pug">
+v-card.poll-common-index-card
+  v-subheader(v-t="'poll_common_index_card.title'")
+  v-card-text(v-if='!polls().length')
+    .lmo-hint-text(v-t="'poll_common_index_card.no_polls'")
+  v-list.poll-common-index-card__polls(two-line v-if='polls().length')
+    poll-common-preview(v-for='poll in polls()', :key='poll.id', :poll='poll')
+  v-card-actions
+    v-btn.poll-common-index-card__view-more(flat, @click='viewMore()', v-if='displayViewMore()')
+      span(v-t="{ path: 'poll_common_index_card.count', args: { count: model.closedPollsCount } }")
+    // <loading v-if="fetchRecordsExecuting"></loading>
 </template>
 
 <style lang="scss">
-.poll-common-index-card__view-more {
-  cursor: pointer;
-}
 </style>

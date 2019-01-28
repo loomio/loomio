@@ -21,6 +21,10 @@ module.exports = {
   },
   module: {
     rules: [
+      { test: /\.styl$/, use: ['null-loader'], },
+      { test: /\.html$/, use: 'vue-template-loader' },
+      { test: /\.vue$/,  loader: 'vue-loader' },
+      { test: /\.pug$/,  use: 'pug-plain-loader'},
       {
         test: /\.(scss|css)$/,
         use: [
@@ -31,18 +35,6 @@ module.exports = {
           {loader: 'sass-loader', options: { includePaths: ["vue/css", "node_modules/mdi/scss"]}}
         ],
       },
-      {
-        test: /\.styl$/,
-        use: ['null-loader'],
-      },
-      { test: /\.html$/, use: 'vue-template-loader' },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      { test: /\.haml$/,
-        use: [{loader: path.resolve(__dirname, 'tasks/haml-loader.js')}]
-       },
       { test: /\.coffee$/,
         use: [ {
                  loader: 'coffee-loader',

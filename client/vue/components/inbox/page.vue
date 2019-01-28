@@ -3,7 +3,6 @@
 @import 'lmo_card';
 
 .inbox-page{
-  @include lmoRow;
 }
 
 .inbox-page .thread-preview__pin {
@@ -51,7 +50,9 @@ module.exports =
     threadLimit: 50
     views: InboxService.queryByGroup()
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', {titleKey: 'inbox_page.unread_threads' ,page: 'inboxPage'}
+    EventBus.$emit 'currentComponent',
+      titleKey: 'inbox_page.unread_threads'
+      page: 'inboxPage'
     InboxService.load()
   methods:
     startGroup: ->
@@ -73,43 +74,28 @@ module.exports =
       _.sortBy @groups, 'name'
 </script>
 
-<template>
-  <div class="lmo-one-column-layout">
-    <main class="inbox-page">
-        <div class="thread-preview-collection__container">
-            <h1 v-t="'inbox_page.unread_threads'" class="lmo-h1-medium inbox-page__heading"></h1>
-            <section v-if="loading" aria-hidden="true" class="dashboard-page__loading">
-                <div class="thread-previews-container">
-                    <!-- <loading_content line-count="2" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10] track by $index" class="thread-preview"></loading_content> -->
-                </div>
-            </section>
-            <section v-if="!loading" class="inbox-page__threads">
-                <div v-show="!hasThreads && !noGroups" class="inbox-page__no-threads">
-                  <span v-t="'inbox_page.no_threads'"></span>
-                  <span></span>
-                  🙌
-                </div>
-                <div v-show="noGroups" class="inbox-page__no-groups">
-                  <p v-t="'inbox_page.no_groups.explanation'"></p>
-                  <button v-t="'inbox_page.no_groups.start'" @click="startGroup()" class="lmo-btn-link--blue"></button>
-                  <span v-t="'inbox_page.no_groups.or'"></span>
-                  <span v-t="'inbox_page.no_groups.join_group'"></span>
-                </div>
-                <div v-for="group in orderedGroups" :key="group.id" class="inbox-page__group">
-                    <section v-if="views[group.key].any()" role="region" aria-label="$t('inbox_page.threads_from.group') + group.name">
-                        <div class="inbox-page__group-name-container lmo-flex">
-                          <img :src="group.logoUrl()" aria-hidden="true" class="lmo-box--small pull-left">
-                          <h2 class="inbox-page__group-name">
-                            <router-link :to="'/g/' + group.key">{{group.name}}</router-link>
-                          </h2>
-                        </div>
-                        <div class="inbox-page__groups thread-previews-container">
-                          <!-- <thread-preview-collection :query="views[group.key]" :limit="threadLimit"></thread-preview-collection> -->
-                        </div>
-                    </section>
-                </div>
-            </section>
-        </div>
-    </main>
-</div>
+<template lang="pug">
+v-container.lmo-main-container.inbox-page(grid-list-lg)
+  .thread-preview-collection__container
+    //- h1.lmo-h1-medium.inbox-page__heading(v-t="'inbox_page.unread_threads'")
+    section.dashboard-page__loading(v-if='loading', aria-hidden='true')
+      .thread-previews-container
+        // <loading_content line-count="2" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10] track by $index" class="thread-preview"></loading_content>
+    section.inbox-page__threads(v-if='!loading')
+      .inbox-page__no-threads(v-show='!hasThreads && !noGroups')
+        span(v-t="'inbox_page.no_threads'")
+        span 🙌
+      .inbox-page__no-groups(v-show='noGroups')
+        p(v-t="'inbox_page.no_groups.explanation'")
+        button.lmo-btn-link--blue(v-t="'inbox_page.no_groups.start'", @click='startGroup()')
+        span(v-t="'inbox_page.no_groups.or'")
+        span(v-t="'inbox_page.no_groups.join_group'")
+      .inbox-page__group(v-for='group in orderedGroups', :key='group.id')
+        section(v-if='views[group.key].any()', role='region', aria-label="$t('inbox_page.threads_from.group') + group.name")
+          .inbox-page__group-name-container.lmo-flex
+            img.lmo-box--small.pull-left(:src='group.logoUrl()', aria-hidden='true')
+            h2.inbox-page__group-name
+              router-link(:to="'/g/' + group.key") {{group.name}}
+          .inbox-page__groups.thread-previews-container
+            thread-preview-collection(:query="views[group.key]", :limit="threadLimit")
 </template>

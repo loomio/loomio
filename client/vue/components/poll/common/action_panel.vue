@@ -19,38 +19,30 @@ module.exports =
     stance: @getLastStance()
   created: ->
     EventBus.listen @, 'refreshStance', @refreshStance
+  computed:
+    userHasVoted: ->
+      myLastStanceFor(@poll)?
+    userCanParticipate: ->
+      AbilityService.canParticipateInPoll(@poll)
   methods:
     refreshStance: -> @stance = @getLastStance()
-
     getLastStance: ->
       myLastStanceFor(@poll) or
                       Records.stances.build(
                         pollId:    @poll.id,
                         userId:    AppConfig.currentUserId
                       ).choose(@$route.params.poll_option_id)
-    userHasVoted: ->
-      myLastStanceFor(@poll)?
 
-    userCanParticipate: ->
-      AbilityService.canParticipateInPoll(@poll)
 </script>
 
-<template>
-    <div class="poll-common-action-panel">
-      <section v-if="!poll.closedAt">
-        <div v-if="userHasVoted()" class="md-block">
-          <poll-common-directive :stance="stance" name="change-your-vote"></poll-common-directive>
-        </div>
-        <div v-show="!userHasVoted()" class="md-block">
-          <poll-common-directive v-if="userCanParticipate()" :stance="stance" name="vote-form"></poll-common-directive>
-          <div v-if="!userCanParticipate()" class="poll-common-unable-to-vote">
-            <p v-t="'poll_common_action_panel.unable_to_vote'" class="lmo-hint-text"></p>
-            <div class="lmo-md-actions">
-              <poll-common-show-results-button></poll-common-show-results-button>
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+<template lang="pug">
+.poll-common-action-panel(v-if='!poll.closedAt')
+  poll-common-directive(v-if='userHasVoted', :stance='stance', name='change-your-vote')
+  div(v-show='!userHasVoted')
+    poll-common-directive(v-if='userCanParticipate', :stance='stance', name='vote-form')
+    .poll-common-unable-to-vote(v-if='!userCanParticipate')
+      p.lmo-hint-text(v-t="'poll_common_action_panel.unable_to_vote'")
+      .lmo-md-actions
+        poll-common-show-results-button
+        div
 </template>

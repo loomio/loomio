@@ -43,7 +43,6 @@ bootDat (appConfig) ->
     res.json().then (data) ->
       i18n.setLocaleMessage('en', data)
       app = require('./app.vue').default
-      console.log app
       routes = require('vue/routes.coffee')
       router = new VueRouter(mode: 'history', routes: routes)
       store = require('vue/store/main.coffee')

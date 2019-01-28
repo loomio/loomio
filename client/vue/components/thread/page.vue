@@ -159,17 +159,17 @@ module.exports =
         #   max:      @discussion.lastSequenceId()
         #   pageType: 'activityItems'
 
-        # EventBus.broadcast $rootScope, 'currentComponent',
-        #   title: @discussion.title
-        #   page: 'threadPage'
-        #   group: @discussion.group()
-        #   discussion: @discussion
-        #   links:
-        #     canonical:   LmoUrlService.discussion(@discussion, {}, absolute: true)
-        #     rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private
-        #     prev:        LmoUrlService.discussion(@discussion, from: @pageWindow.prev) if @pageWindow.prev?
-        #     next:        LmoUrlService.discussion(@discussion, from: @pageWindow.next) if @pageWindow.next?
-        #   skipScroll: true
+        EventBus.$emit 'currentComponent',
+          title: @discussion.title
+          page: 'threadPage'
+          group: @discussion.group()
+          discussion: @discussion
+          # links:
+          #   canonical:   LmoUrlService.discussion(@discussion, {}, absolute: true)
+          #   rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private
+          #   prev:        LmoUrlService.discussion(@discussion, from: @pageWindow.prev) if @pageWindow.prev?
+          #   next:        LmoUrlService.discussion(@discussion, from: @pageWindow.next) if @pageWindow.next?
+          # skipScroll: true
   computed:
     requestedCommentId: ->
       parseInt(@$route.params.comment)
@@ -184,22 +184,28 @@ module.exports =
 
 </script>
 
-<template>
-  <div class="loading-wrapper lmo-two-column-layout">
-    <loading v-if="!discussion"></loading>
-    <main v-if="!isEmptyDiscussion" class="thread-page lmo-row">
-      <discussion-fork-actions :discussion="discussion" v-show="discussion.isForking()"></discussion-fork-actions>
-      <group-theme :group="discussion.group()" :compact="true"></group-theme>
-      <div :class="{'thread-page__forking': discussion.isForking()}" class="thread-page__main-content">
-        <!-- <outlet name="before-thread-page-column-right" model="discussion" class="before-column-right lmo-column-right"></outlet> -->
-        <poll-common-card-repeater :discussion="discussion"></poll-common-card-repeater>
-        <decision-tools-card :discussion="discussion" class="decision-tools-card lmo-column-right"></decision-tools-card>
-        <membership-card :group="discussion.guestGroup()" class="lmo-column-right"></membership-card>
-        <membership-card :group="discussion.guestGroup()" :pending="true" class="lmo-column-right"></membership-card>
-        <poll-common-index-card :model="discussion" class="lmo-column-right"></poll-common-index-card>
-        <!-- <outlet name="thread-page-column-right" class="after-column-right lmo-column-right"></outlet> -->
-        <thread-card :discussion="discussion" class="lmo-column-left"></thread-card>
-      </div>
-    </main>
-  </div>
+<template lang="pug">
+v-container.lmo-main-container.thread-page(grid-list-lg)
+  loading(v-if='!discussion')
+  div(v-if='!isEmptyDiscussion')
+    group-theme(:group='discussion.group()', :compact='true')
+    discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
+    //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")
+    v-layout
+      v-flex(md8)
+        thread-card(:discussion='discussion')
+      v-flex(md4)
+        v-layout(column)
+          // <outlet name="before-thread-page-column-right" model="discussion" class="before-column-right lmo-column-right"></outlet>
+          v-flex(v-for="poll in discussion.activePolls()", :key="poll.id")
+            poll-common-card(:poll="poll")
+          v-flex
+            decision-tools-card(:discussion='discussion')
+          v-flex
+            membership-card(:group='discussion.guestGroup()')
+          v-flex
+            membership-card(:group='discussion.guestGroup()', :pending='true')
+          v-flex
+            poll-common-index-card(:model='discussion')
+          // <outlet name="thread-page-column-right" class="after-column-right lmo-column-right"></outlet>
 </template>

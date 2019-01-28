@@ -6,14 +6,6 @@
 }
 
 .activity-card__settings {
-  md-select {
-    margin: 0;
-  }
-  padding: $cardPaddingSize;
-  padding-top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
 }
 
 .activity-card__load-more-sensor {
@@ -175,43 +167,29 @@ module.exports =
       ]
 </script>
 
-<template>
-    <section aria-labelledby="activity-card-title" class="activity-card">
-      <div v-show="eventWindow.anyLoaded()" class="activity-card__settings">
-        <v-select :items="positionItems" v-model="position" @change="init(position)" solo></v-select>
-        <v-select :items="renderModeItems" v-model="renderMode" @change="init()" solo></v-select>
-      </div>
+<template lang="pug">
+section.activity-card(aria-labelledby='activity-card-title')
+  v-layout.activity-card__settings(justify-space-between v-show='eventWindow.anyLoaded()')
+    v-select(flat :items='positionItems', v-model='position', @change='init(position)', solo='')
+    v-select(flat :items='renderModeItems', v-model='renderMode', @change='init()', solo='')
+  div(v-if='debug()')
+    | first: {{eventWindow.firstInSequence()}}last: {{eventWindow.lastInSequence()}}total: {{eventWindow.numTotal()}}min: {{eventWindow.min}}max: {{eventWindow.max}}per: {{per}}firstLoaded: {{eventWindow.firstLoaded()}}lastLoaded: {{eventWindow.lastLoaded()}}loadedCount: {{eventWindow.numLoaded()}}read: {{discussion.readItemsCount()}}unread: {{discussion.unreadItemsCount()}}firstUnread {{discussion.firstUnreadSequenceId()}}initialSequenceId: {{initialSequenceId(initialPosition())}}requestedSequenceId: {{discussion.requestedSequenceId}}position: {{initialPosition()}}
+  // <loading_content v-if="loader.loading" block-count="2" class="lmo-card-left-right-padding"></loading_content>
+  .activity-card__content(v-if='!loader.loading')
+    a.activity-card__load-more.lmo-flex.lmo-flex__center.lmo-no-print(v-show='eventWindow.anyPrevious() && !eventWindow.loader.loadingPrevious', @click='eventWindow.showPrevious()', tabindex='0')
+      i.mdi.mdi-autorenew
+      span(v-t="{ path: 'discussion.load_previous', args: { count: eventWindow.numPrevious() }}")
+    loading.activity-card__loading.page-loading(v-show='eventWindow.loader.loadingPrevious')
+    ul.activity-card__activity-list
+      li.activity-card__activity-list-item(v-for='event in eventWindow.windowedEvents()', :key='event.id')
+        thread-item(:event='event', :event-window='eventWindow')
+    //
+      <div
+      in-view="$inview && !eventWindow.loader.loadingMore && eventWindow.anyNext() && eventWindow.showNext()"
+      in-view-options="{throttle: 200}"
+      class="activity-card__load-more-sensor lmo-no-print"
+      ></div>
+    loading.activity-card__loading.page-loading(v-show='eventWindow.loader.loadingMore')
+  add-comment-panel(v-if='eventWindow', :event-window='eventWindow', :parent-event='discussion.createdEvent()')
 
-      <div v-if="debug()">first: {{eventWindow.firstInSequence()}}last: {{eventWindow.lastInSequence()}}total: {{eventWindow.numTotal()}}min: {{eventWindow.min}}max: {{eventWindow.max}}per: {{per}}firstLoaded: {{eventWindow.firstLoaded()}}lastLoaded: {{eventWindow.lastLoaded()}}loadedCount: {{eventWindow.numLoaded()}}read: {{discussion.readItemsCount()}}unread: {{discussion.unreadItemsCount()}}firstUnread {{discussion.firstUnreadSequenceId()}}initialSequenceId: {{initialSequenceId(initialPosition())}}requestedSequenceId: {{discussion.requestedSequenceId}}position: {{initialPosition()}}</div>
-
-      <!-- <loading_content v-if="loader.loading" block-count="2" class="lmo-card-left-right-padding"></loading_content> -->
-      <div v-if="!loader.loading" class="activity-card__content">
-        <a
-          v-show="eventWindow.anyPrevious() && !eventWindow.loader.loadingPrevious"
-          @click="eventWindow.showPrevious()"
-          tabindex="0"
-          class="activity-card__load-more lmo-flex lmo-flex__center lmo-no-print"
-        >
-          <i class="mdi mdi-autorenew"></i>
-          <span v-t="{ path: 'discussion.load_previous', args: { count: eventWindow.numPrevious() }}"></span>
-        </a>
-        <loading v-show="eventWindow.loader.loadingPrevious" class="activity-card__loading page-loading"></loading>
-        <ul class="activity-card__activity-list">
-          <li
-            v-for="event in eventWindow.windowedEvents()"
-            :key="event.id"
-            class="activity-card__activity-list-item"
-          >
-            <thread-item :event="event" :event-window="eventWindow"></thread-item>
-          </li>
-        </ul>
-        <!-- <div
-          in-view="$inview && !eventWindow.loader.loadingMore && eventWindow.anyNext() && eventWindow.showNext()"
-          in-view-options="{throttle: 200}"
-          class="activity-card__load-more-sensor lmo-no-print"
-        ></div> -->
-        <loading v-show="eventWindow.loader.loadingMore" class="activity-card__loading page-loading"></loading>
-      </div>
-      <add-comment-panel v-if="eventWindow" :event-window="eventWindow" :parent-event="discussion.createdEvent()"></add-comment-panel>
-    </section>
 </template>

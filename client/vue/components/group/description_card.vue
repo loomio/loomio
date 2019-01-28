@@ -28,39 +28,15 @@ module.exports =
     ]
 </script>
 
-<template>
-  <v-card
-    aria-labelledby="description-card-title"
-    class="description-card mb-2"
-  >
-    <v-card-text>
-      <h2
-        v-t="'description_card.title'"
-        class="description-card__title lmo-card-heading"
-      ></h2>
-      <div
-        v-t="'description_card.placeholder'"
-        v-if="!group.description"
-        class="description-card__placeholder lmo-hint-text"
-      ></div>
-      <div
-        v-marked="group.description"
-        class="description-card__text lmo-markdown-wrapper"
-      ></div>
-      <document-list
-        :model="group"
-        placeholder="document.list.no_group_documents"
-      ></document-list>
-      <div
-        class="lmo-md-action"
-      >
-        <action-dock
-          :model="group"
-          :actions="actions"
-        ></action-dock>
-      </div>
-    </v-card-text>
-  </v-card>
+<template lang="pug">
+v-card.description-card(aria-labelledby='description-card-title')
+  v-subheader(v-t="'description_card.title'")
+  v-card-text
+    .description-card__placeholder.lmo-hint-text(v-t="'description_card.placeholder'", v-if='!group.description')
+    .description-card__text.lmo-markdown-wrapper(v-marked='group.description')
+    document-list(:model='group', placeholder='document.list.no_group_documents')
+    .lmo-md-action
+      action-dock(:model='group', :actions='actions')
 </template>
 
 <style lang="scss">

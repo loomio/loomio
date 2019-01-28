@@ -21,7 +21,7 @@ module.exports =
     Records.groups.findOrFetch(@$route.params.key, {}, true).then (group) =>
       @init(group)
     , (error) ->
-      # EventBus.broadcast $rootScope, 'pageError', error
+      EventBus.$emit 'pageError', error
   methods:
     init: (group) ->
       @group = group
@@ -38,43 +38,49 @@ module.exports =
         max:      maxDiscussions
         pageType: 'groupThreads'
 
-      # EventBus.broadcast $rootScope, 'currentComponent',
-      #   title: @group.fullName
-      #   page: 'groupPage'
-      #   group: @group
-      #   key: @group.key
-      #   links:
-      #     canonical:   LmoUrlService.group(@group, {}, absolute: true)
-      #     rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
-      #     prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
-      #     next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
+      EventBus.$emit 'currentComponent',
+        title: @group.fullName
+        page: 'groupPage'
+        group: @group
+        key: @group.key
+        links:
+          canonical:   LmoUrlService.group(@group, {}, absolute: true)
+          rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
+          prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
+          next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
 
 </script>
 
-<template>
-  <div class="loading-wrapper lmo-two-column-layout">
-    <loading v-if="!group"></loading>
-    <main v-if="group" class="group-page lmo-row">
-      <!-- <outlet name="before-group-page" model="group"></outlet> -->
-      <group-theme :group="group" :home-page="true"></group-theme>
-      <div class="lmo-row">
-        <div class="lmo-group-column-left">
-          <group-page-description-card :group="group"></group-page-description-card>
-          <group-page-discussions-card :group="group"></group-page-discussions-card>
-        </div>
-        <div class="lmo-group-column-right">
-          <!--<outlet name="before-group-page-column-right" model="group"></outlet>-->
-          <current-polls-card :model="group"></current-polls-card>
-          <membership-requests-card :group="group"></membership-requests-card>
-          <membership-card :group="group"></membership-card>
-          <membership-card :group="group" :pending="true"></membership-card>
-          <subgroups-card  :group="group"></subgroups-card>
-          <document-card   :group="group"></document-card>
-          <poll-common-index-card :model="group" :limit="5" :view-more-link="true"></poll-common-index-card>
-          <!-- <outlet name="after-slack-card" model="group"></outlet> -->
-          <!-- <installslack_card group="group"></install_slack_card> -->
-        </div>
-      </div>
-    </main>
-  </div>
+<template lang="pug">
+v-container.lmo-main-container.group-page(grid-list-lg)
+  loading(v-if='!group')
+  div(v-if='group')
+    group-theme(:group='group', :home-page='true')
+    v-layout(row)
+      // <outlet name="before-group-page" model="group"></outlet>
+      v-flex(xs12 md8)
+        v-layout(column)
+          v-flex
+            group-page-description-card(:group='group')
+          v-flex
+            group-page-discussions-card(:group='group')
+      v-flex(xs12 md4)
+        v-layout(column)
+          v-flex
+            // <outlet name="before-group-page-column-right" model="group"></outlet>
+            current-polls-card(:model='group')
+          v-flex
+            membership-requests-card(:group='group')
+          v-flex
+            membership-card(:group='group')
+          v-flex
+            membership-card(:group='group', :pending='true')
+          v-flex
+            subgroups-card(:group='group')
+          v-flex
+            document-card(:group='group')
+          v-flex
+            poll-common-index-card(:model='group', :limit='5', :view-more-link='true')
+            // <outlet name="after-slack-card" model="group"></outlet>
+            // <installslack_card group="group"></install_slack_card>
 </template>

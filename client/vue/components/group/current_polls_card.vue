@@ -1,13 +1,3 @@
-<style lang="scss">
-.current-polls-card__start-poll {
-  margin: 0;
-}
-
-.current-polls-card__title {
-  margin-bottom: 8px;
-}
-</style>
-
 <script lang="coffee">
 Records        = require 'shared/services/records'
 AbilityService = require 'shared/services/ability_service'
@@ -36,15 +26,17 @@ module.exports =
 
     canStartPoll: ->
       AbilityService.canStartPoll(@model.group())
+  computed:
+    empty: ->
+      @polls().length == 0
 </script>
 
-<template>
-    <div v-if="polls().length" class="current-polls-card lmo-card">
-      <h2 v-t="'current_polls_card.title'" class="lmo-card-heading lmo-truncate-text"></h2>
-      <div class="current-polls-card__polls">
-        <div v-if="!canStartPoll() && !polls().length" v-t="'current_polls_card.no_polls'" class="current-polls-card__no-polls lmo-hint-text"></div>
-        <poll-common-preview :poll="poll" v-for="poll in polls()" :key="poll.id"></poll-common-preview>
-      </div>
-      <!-- <loading v-if="fetchRecordsExecuting"></loading> -->
-    </div>
+<template lang="pug">
+v-card.current-polls-card(v-if='polls().length')
+  v-subheader(v-t="'current_polls_card.title'")
+  .current-polls-card__no-polls.lmo-hint-text(v-if='!canStartPoll() && empty', v-t="'current_polls_card.no_polls'")
+  v-list(v-if='!empty')
+    poll-common-preview(:poll='poll', v-for='poll in polls()', :key='poll.id')
+  // <loading v-if="fetchRecordsExecuting"></loading>
+
 </template>
