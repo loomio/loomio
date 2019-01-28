@@ -13,15 +13,10 @@ module.exports =
       Records.users.build(avatarKind: 'mdi-plus')
 </script>
 
-<template>
-    <div @click="click()" class="plus-button lmo-flex lmo-flex__center lmo-pointer">
-      <user-avatar
-        :user="plusUser()"
-        :no-link="true"
-        size="medium"
-        :colors="{borderColor: 'accent-500', color: 'accent-500'}"
-        class="lmo-margin-right"
-      ></user-avatar>
-      <span v-t="message"></span>
-    </div>
+<template lang="pug">
+v-list-tile.plus-button(@click='click()')
+  v-list-tile-avatar
+    v-icon mdi-plus
+  v-list-tile-content
+    v-list-tile-title(v-t='message')
 </template>

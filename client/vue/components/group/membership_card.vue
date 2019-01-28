@@ -103,59 +103,19 @@ v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pe
     v-subheader(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }', v-if='!searchOpen')
     v-btn(icon)
       v-icon mdi-magnify
-//- v-card-text
-//-   .lmo-md-actions
-//-     h2#membership-card-title.membership-card__title.lmo-truncate.lmo-card-heading.lmo-flex__grow(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }', v-if='!searchOpen')
-//-     button.md-button--tiny.membership-card__search-button(@click='toggleSearch()', v-if='!searchOpen')
-//-       i.mdi.mdi-magnify
-//-     //
-//-       <md-input-container ng-class="{'membership-card__search--open': searchOpen}" md-no-float="true" class="membership-card__search md-block md-no-errors">
-//-       <input ng-model="fragment" ng-model-options="{debounce: 300}" ng-change="fetchMemberships()" placeholder="{{'memberships_page.fragment_placeholder' | translate}}" class="membership-card__filter">
-//-       <md-button ng-if="searchOpen" ng-click="toggleSearch()" class="md-button--tiny"><i class="mdi mdi-close"></i></md-button>
-//-       </md-input-container>
-//-   plus-button.membership-card__membership.membership-card__invite(v-if='canAddMembers()', :click='invite', :message="'membership_card.invite_to_' + group.targetModel().constructor.singular")
-//-   .membership-card__membership.lmo-flex.lmo-flex__center(v-for='membership in orderedMemberships()', :key='membership.id', data-username='membership.user().username')
-//-     user-avatar.lmo-margin-right(:user='membership.user()', size='medium', :coordinator='membership.admin', :no-link='!membership.acceptedAt')
-//-     .membership-card__user.lmo-flex.lmo-flex__grow.lmo-truncate(layout='column')
-//-       span {{membership.userName() || membership.user().email }}
-//-       // <outlet name="after-membership-user" model="membership"></outlet>
-//-       .membership-card__last-seen.md-caption(v-if='membership.user().lastSeenAt', v-t="{ path: 'user_page.online_field', args: { value: fromNow(membership.user().lastSeenAt) } }")
-//-       .membership-card__last-seen.md-caption(v-if='!membership.acceptedAt', v-t="{ path: 'user_page.invited', args: { value: fromNow(membership.user().createdAt) } }")
-//-     // <membership_dropdown membership="membership"></membership_dropdown>
-//-   loading(v-if='loader.loading')
-//-   .lmo-md-actions(v-if='showLoadMore()')
-//-     button.md-accent(v-if='showLoadMore()', @click='loader.loadMore()', v-t="'common.action.load_more'")
-//-     span {{recordsDisplayed()}} / {{recordCount()}}
-
+  v-list(two-line)
+    plus-button.membership-card__membership.membership-card__invite(v-if='canAddMembers()', :click='invite', :message="'membership_card.invite_to_' + group.targetModel().constructor.singular")
+    v-list-tile(v-for='membership in orderedMemberships()', :key='membership.id', data-username='membership.user().username')
+      v-list-tile-avatar
+        user-avatar.lmo-margin-right(:user='membership.user()', size='medium', :coordinator='membership.admin', :no-link='!membership.acceptedAt')
+      v-list-tile-content
+        v-list-tile-title {{membership.userName() || membership.user().email }}
+        v-list-tile-sub-title.membership-card__last-seen
+          span(v-if='membership.user().lastSeenAt', v-t="{ path: 'user_page.online_field', args: { value: fromNow(membership.user().lastSeenAt) } }")
+          span(v-if='!membership.acceptedAt', v-t="{ path: 'user_page.invited', args: { value: fromNow(membership.user().createdAt) } }")
+      // <membership_dropdown membership="membership"></membership_dropdown>
+    loading(v-if='loader.loading')
+  v-card-actions(v-if='showLoadMore()')
+    v-btn(flat color="accent", v-if='showLoadMore()', @click='loader.loadMore()', v-t="'common.action.load_more'")
+    span {{recordsDisplayed()}} / {{recordCount()}}
 </template>
-
-<style lang="scss">
-@import 'app.scss';
-
-.membership-card__membership {
-  padding: 8px 0;
-}
-
-.membership-card__search {
-  margin: 0;
-  width: 0;
-  visibility: hidden;
-  transition: width 0.25s ease-in-out;
-  &--open {
-    visibility: visible;
-    width: 100%;
-  }
-
-  .md-button--tiny {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 0;
-    margin: 0;
-  }
-}
-
-.membership-card__last-seen {
-  color: $grey-on-white;
-}
-</style>
