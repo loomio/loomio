@@ -99,5 +99,7 @@ module.exports = {
   PollCommonFormFields: 'poll/common/form_fields',
   PollCommonClosingAtField: 'poll/common/closing_at_field',
   PollCommonSettings: 'poll/common/settings',
-  HelpBubble: 'common/help_bubble'
+  HelpBubble: 'common/help_bubble',
+  PollPollForm: 'poll/poll/form',
+  PollCommonFormOptions: 'poll/common/form_options'
 }
