@@ -78,10 +78,10 @@ module.exports =
         @stance.id = null
         return unless _sum(_map(@stanceChoices, 'score')) > 0
         @stance.stanceChoicesAttributes = @stanceChoices
-        
+
     @setStanceChoices()
     EventBus.$on 'pollOptionsAdded', @setStanceChoices
-    submitOnEnter @, element: @$el
+    # submitOnEnter @, element: @$el
 
   methods:
     percentageFor: (choice) ->
@@ -104,7 +104,6 @@ module.exports =
         ).concat({score: 0}))
 
     adjust: (choice, amount) ->
-      console.log choice
       choice.score += amount
 
     optionFor: (choice) ->
