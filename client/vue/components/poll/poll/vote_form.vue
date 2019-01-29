@@ -50,33 +50,18 @@ module.exports =
 
 </script>
 
-<template>
-    <div class="poll-poll-vote-form lmo-drop-animation">
-      <h3 v-t="'poll_common.your_response'" class="lmo-card-subheading"></h3>
-      <poll-common-anonymous-helptext v-if="stance.poll().anonymous"></poll-common-anonymous-helptext>
-      <div class="lmo-flex--column">
-        <button
-          :md-colors="mdColors(option)"
-          @click="select(option)"
-          v-for="option in orderedPollOptions()"
-          :key="option.id"
-          class="lmo-align-left poll-common-vote-form__button poll-common-vote-form__button--block"
-        >
-          <div :style="{'border-color': option.color}" class="poll-common-stance-icon__chip lmo-margin-right"></div>
-          <span class="poll-common-vote-form__option-name">{{ option.name }}</span>
-        </button>
-      </div>
-      <validation-errors :subject="stance" field="stanceChoices"></validation-errors>
-      <poll-common-stance-reason :stance="stance" v-show="stance.poll().multipleChoice || selectedOptionIds.length" v-if="stance" class="animated"></poll-common-stance-reason>
-      <div class="poll-common-form-actions lmo-flex lmo-flex__space-between">
-        <poll-common-show-results-button v-if="stance.isNew()"></poll-common-show-results-button>
-        <div v-if="!stance.isNew()"></div>
-        <button
-          @click="submit()"
-          v-t="'poll_common.vote'"
-          aria-label="$t('poll_poll_vote_form.vote')"
-          class="md-primary md-raised poll-common-vote-form__submit"
-        ></button>
-      </div>
-    </div>
+<template lang="pug">
+.poll-poll-vote-form.lmo-drop-animation
+  v-subheader(v-t="'poll_common.your_response'")
+  poll-common-anonymous-helptext(v-if='stance.poll().anonymous')
+  v-list(column)
+    v-list-tile.poll-common-vote-form__button(flat align-center :md-colors='mdColors(option)', @click='select(option)', v-for='option in orderedPollOptions()', :key='option.id')
+      .poll-common-stance-icon__chip(:style="{'border-color': option.color}")
+      v-list-tile-title {{ option.name }}
+  validation-errors(:subject='stance', field='stanceChoices')
+  poll-common-stance-reason.animated(:stance='stance', v-show='stance.poll().multipleChoice || selectedOptionIds.length', v-if='stance')
+  v-card-actions
+    poll-common-show-results-button(v-if='stance.isNew()')
+    v-spacer
+    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()', v-t="'poll_common.vote'")
 </template>

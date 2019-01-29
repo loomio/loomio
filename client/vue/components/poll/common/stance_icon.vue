@@ -12,11 +12,10 @@
 .poll-common-stance-icon__chip {
   border-left: 8px solid;
   padding-left: 4px;
-  margin-left: 4px;
+  margin-right: 8px;
   display: inline-block;
   position: relative;
-  top: 7px;
-  height: 24px;
+  height: 36px;
 }
 </style>
 

@@ -51,24 +51,21 @@ module.exports =
   #   listenForReactions(@, @poll)
 </script>
 
-<template>
-    <div class="poll-common-details-panel lmo-action-dock-wrapper">
-      <h3 v-t="'poll_common.details'" v-if="poll.outcome()" class="lmo-card-subheading"></h3>
-      <div class="poll-common-details-panel__started-by">
-        <span v-t="{ path: 'poll_card.started_by', args: { name: poll.authorName() } }"></span>
-        <span aria-hidden="true">·</span>
-        <poll-common-closing-at :poll="poll"></poll-common-closing-at>
-        <span v-if="poll.anonymous">·</span>
-        <span v-if="poll.anonymous" md-colors="{color: 'primary-600', 'border-color': 'primary-600'}" v-t="'common.anonymous'" class="lmo-badge lmo-pointer"></span>
-      </div>
-      <div v-if="!poll.translation" v-marked="poll.cookedDetails()" class="poll-common-details-panel__details lmo-markdown-wrapper"></div>
-      <div v-if="poll.translation" class="poll-common-details-panel__details">
-        <translation :model="poll" :field="details" class="lmo-markdown-wrapper"></translation>
-      </div>
-      <document-list :model="poll"></document-list>
-      <div class="lmo-md-actions">
-        <!-- <reactions_display model="poll" load="true"></reactions_display> -->
-        <action-dock :model="poll" :actions="actions"></action-dock>
-      </div>
-    </div>
+<template lang="pug">
+.poll-common-details-panel
+  v-subheader(v-t="'poll_common.details'", v-if='poll.outcome()')
+  .poll-common-details-panel__started-by
+    span(v-t="{ path: 'poll_card.started_by', args: { name: poll.authorName() } }")
+    span(aria-hidden='true') ·
+    poll-common-closing-at(:poll='poll')
+    span(v-if='poll.anonymous') ·
+    span(v-if='poll.anonymous', md-colors="{color: 'primary-600', 'border-color': 'primary-600'}", v-t="'common.anonymous'")
+  .poll-common-details-panel__details(v-if='!poll.translation', v-marked='poll.cookedDetails()')
+  .poll-common-details-panel__details(v-if='poll.translation')
+    translation(:model='poll', :field='details')
+  document-list(:model='poll')
+  v-card-actions.lmo-md-actions
+    // <reactions_display model="poll" load="true"></reactions_display>
+    v-spacer
+    action-dock(:model='poll', :actions='actions')
 </template>

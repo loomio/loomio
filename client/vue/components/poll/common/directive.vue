@@ -14,6 +14,9 @@ import PollCommonChangeYourVote from 'vue/components/poll/common/change_your_vot
 import PollProposalChartPanel from 'vue/components/poll/proposal/chart_panel.vue'
 import PollCommonVotesPanelStance from 'vue/components/poll/common/votes_panel_stance.vue'
 import PollProposalStanceChoice from 'vue/components/poll/proposal/stance_choice.vue'
+import PollCountStanceChoice from 'vue/components/poll/count/stance_choice.vue'
+import PollCountChartPanel from 'vue/components/poll/count/chart_panel.vue'
+import PollPollVoteForm from 'vue/components/poll/poll/vote_form.vue'
 module.exports =
   components:
     'poll-proposal-form': PollProposalForm
@@ -28,6 +31,9 @@ module.exports =
     'poll-proposal-chart-panel': PollProposalChartPanel
     'poll-common-votes-panel-stance': PollCommonVotesPanelStance
     'poll-proposal-stance-choice': PollProposalStanceChoice
+    'poll-count-stance-choice': PollCountStanceChoice
+    'poll-count-chart-panel': PollCountChartPanel
+    'poll-poll-vote-form': PollPollVoteForm
   props:
     poll: Object
     stance: Object

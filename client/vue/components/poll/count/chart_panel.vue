@@ -1,4 +1,5 @@
 <style lang="scss">
+@import 'variables';
 .poll-count-chart-panel__chart-container {
   width: 200px;
   height: 200px;
