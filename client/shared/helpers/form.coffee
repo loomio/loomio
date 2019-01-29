@@ -40,21 +40,21 @@ module.exports =
     submit(scope, model, _.merge(
       flashSuccess: "poll_#{model.poll().pollType}_vote_form.stance_#{actionName(model)}"
       prepareFn: ->
-        EventBus.emit scope, 'processing'
+        EventBus.$emit 'processing'
       successCallback: (data) ->
         model.poll().clearStaleStances()
         scrollTo '.poll-common-card__results-shown'
-        EventBus.emit scope, 'stanceSaved'
-        signIn(data, data.stances[0].participant_id, -> EventBus.emit scope, 'loggedIn') unless Session.user().emailVerified
+        EventBus.$emit 'stanceSaved'
+        signIn(data, data.stances[0].participant_id, -> EventBus.$emit 'loggedIn') unless Session.user().emailVerified
       cleanupFn: ->
-        EventBus.emit scope, 'doneProcessing'
+        EventBus.$emit 'doneProcessing'
     , options))
 
   submitPoll: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
       flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
       prepareFn: =>
-        EventBus.$emit scope, 'processing'
+        EventBus.$emit 'processing'
         model.customFields.deanonymize_after_close = model.deanonymizeAfterClose if model.anonymous
         switch model.pollType
           # for polls with default poll options (proposal, check)
@@ -73,13 +73,13 @@ module.exports =
         model.removeOrphanOptions()
         nextOrSkip(data, scope, model)
       cleanupFn: ->
-        EventBus.emit scope, 'doneProcessing'
+        EventBus.$emit 'doneProcessing'
     , options))
 
   submitMembership: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
       flashSuccess: "membership_form.#{actionName(model)}"
-      successCallback: -> EventBus.emit scope, '$close'
+      successCallback: -> EventBus.$emit '$close'
     , options))
 
   upload: (scope, model, options = {}) ->
@@ -130,7 +130,7 @@ submit = (scope, model, options = {}) ->
 prepare = (scope, model, options, prepareArgs) ->
   FlashService.loading(options.loadingMessage)
   options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
-  EventBus.emit scope, 'processing'
+  EventBus.$emit 'processing'
   model.cancelDraftFetch()       if typeof model.cancelDraftFetch is 'function'
   model.clearDrafts()            if typeof model.clearDrafts      is 'function'
   model.setErrors()
@@ -162,14 +162,14 @@ failure = (scope, model, options) ->
     FlashService.dismiss()
     options.failureCallback(response) if typeof options.failureCallback is 'function'
     setErrors(scope, model, response) if _.includes([401, 422], response.status)
-    EventBus.emit scope, errorTypes[response.status] or 'unknownError',
+    EventBus.$emit errorTypes[response.status] or 'unknownError',
       model: model
       response: response
 
 cleanup = (scope, model, options = {}) ->
   ->
     options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
-    EventBus.emit scope, 'doneProcessing' unless options.skipDoneProcessing
+    EventBus.$emit 'doneProcessing' unless options.skipDoneProcessing
     scope.isDisabled = false
     scope.files = null        if scope.files
     scope.percentComplete = 0 if scope.percentComplete
@@ -182,9 +182,9 @@ calculateFlashOptions = (options) ->
 nextOrSkip = (data, scope, model) ->
   eventData = _.find(data.events, (event) -> event.kind == eventKind(model)) || {}
   if event = Records.events.find(eventData.id)
-    EventBus.emit scope, 'nextStep', event
+    EventBus.$emit 'nextStep', event
   else
-    EventBus.emit scope, 'skipStep'
+    EventBus.$emit 'skipStep'
 
 actionName = (model) ->
   return 'forked' if model.isA('discussion') and model.isForking()

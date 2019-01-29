@@ -41,7 +41,7 @@ module.exports =
       <!-- <dialog_scroll_indicator></dialog_scroll_indicator> -->
     </v-card-text>
     <v-card-actions v-if="currentStep != 'choose'" class="lmo-slide-animation">
-      <poll-common-form-actions v-if="currentStep == 'save'" :poll="poll" class="animated"></poll-common-form-actions>
+      <poll-common-form-actions v-if="currentStep == 'save'" :poll="poll" :close="close" class="animated"></poll-common-form-actions>
       <announcement-form-actions v-if="currentStep == 'announce'" :announcement="announcement" class="animated"></announcement-form-actions>
     </v-card-actions>
   </v-card>

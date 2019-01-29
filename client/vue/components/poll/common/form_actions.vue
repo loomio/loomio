@@ -5,8 +5,12 @@
 module.exports =
   props:
     poll: Object
+    close: Function
   created: ->
-    @submit = submitPoll(@, @poll, broadcaster: @)
+    @submit = submitPoll @, @poll,
+      broadcaster: @
+      successCallback: =>
+        @close()
     # submitOnEnter $scope
 </script>
 
