@@ -17,10 +17,10 @@ module.exports =
 </script>
 
 <template lang="pug">
-.poll-common-settings
-  .md-block.poll-common-multiple-choice.poll-common-checkbox-option(v-for="(setting, index) in settings", :key="index")
-    .poll-common-checkbox-option__text.md-list-item-text.lmo-flex--row
-      h3(v-t="'poll_common_settings.' + snakify(setting) + '.title'")
-    help-bubble(:helptext="'poll_common_settings.' + snakify(setting) + '.helptext_on'")
+v-list.poll-common-settings
+  v-list-tile.poll-common-checkbox-option(v-for="(setting, index) in settings", :key="index")
     v-checkbox(v-model="poll[setting]")
+      v-layout(slot="label" align-center)
+        span.pr-1(v-t="'poll_common_settings.' + snakify(setting) + '.title'")
+        help-bubble(:helptext="'poll_common_settings.' + snakify(setting) + '.helptext_on'")
 </template>
