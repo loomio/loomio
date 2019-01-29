@@ -17,8 +17,10 @@
 module.exports =
   props:
     stance: Object
+  beforeCreate: ->
+    @$options.components.PollCommonDirective = require('vue/components/poll/common/directive.vue').default
   created: ->
-    listenForTranslations @
+    # listenForTranslations @
   computed:
     orderedStanceChoices: ->
       _.sortBy @stance.stanceChoices(), 'rank'
