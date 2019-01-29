@@ -26,6 +26,9 @@ import PollDotVoteChartPanel from 'vue/components/poll/dot_vote/chart_panel.vue'
 import PollScoreVoteForm from 'vue/components/poll/score/vote_form.vue'
 import PollScoreChartPanel from 'vue/components/poll/score/chart_panel.vue'
 import PollCommonStanceChoice from 'vue/components/poll/common/stance_choice.vue'
+import PollRankedChoiceVoteForm from 'vue/components/poll/ranked_choice/vote_form.vue'
+import PollMeetingVoteForm from 'vue/components/poll/meeting/vote_form.vue'
+import PollMeetingChartPanel from 'vue/components/poll/meeting/chart_panel.vue'
 module.exports =
   components:
     'poll-proposal-form': PollProposalForm
@@ -52,6 +55,9 @@ module.exports =
     'poll-score-vote-form': PollScoreVoteForm
     'poll-score-chart-panel': PollScoreChartPanel
     'poll-common-stance-choice': PollCommonStanceChoice
+    'poll-ranked_choice-vote-form': PollRankedChoiceVoteForm
+    'poll-meeting-vote-form': PollMeetingVoteForm
+    'poll-meeting-chart-panel': PollMeetingChartPanel
   props:
     poll: Object
     stance: Object
@@ -64,11 +70,12 @@ module.exports =
       pollType = (@stance or @outcome or @stanceChoice or @poll).poll().pollType
 
       console.log('pollType', pollType)
-      console.log("poll-#{pollType}-#{@name}")
 
       if @$options.components["poll-#{pollType}-#{@name}"]
+        console.log 'match with ', "poll-#{pollType}-#{@name}"
         "poll-#{pollType}-#{@name}"
       else
+        console.log 'no match, falling through to common ', "poll-common-#{@name}"
         "poll-common-#{@name}"
 </script>
 

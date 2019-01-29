@@ -1,4 +1,5 @@
 <style lang="scss">
+@import 'variables';
 .poll-ranked-choice-vote-form {
   .poll-common-vote-form__option {
     width: 100%;
