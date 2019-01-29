@@ -11,14 +11,13 @@
 AppConfig         = require 'shared/services/app_config'
 EventBus          = require 'shared/services/event_bus'
 NestedEventWindow = require 'shared/services/nested_event_window'
-import ThreadItem from 'vue/components/thread/item.vue'
 
 module.exports =
-  components:
-    ThreadItem: ThreadItem
   props:
     parentEvent: Object
     parentEventWindow: Object
+  beforeCreate: ->
+    @$options.components.ThreadItem = require('vue/components/thread/item.vue').default
   data: ->
     eventWindow: new NestedEventWindow
       parentEvent:       @parentEvent

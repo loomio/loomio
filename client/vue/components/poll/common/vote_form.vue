@@ -13,7 +13,7 @@ module.exports =
   mounted: ->
     # submitOnEnter @, element: @$el
     @submit = submitStance @, @stance,
-      prepareFn: ->
+      prepareFn: =>
         @stance.id = null
         @stance.stanceChoicesAttributes = [
           poll_option_id: @selectedOptionId

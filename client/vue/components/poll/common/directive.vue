@@ -10,6 +10,7 @@ import PollDotVoteForm from 'vue/components/poll/dot_vote/form.vue'
 import PollScoreForm from 'vue/components/poll/score/form.vue'
 import PollMeetingForm from 'vue/components/poll/meeting/form.vue'
 import PollRankedChoiceForm from 'vue/components/poll/ranked_choice/form.vue'
+import PollCommonChangeYourVote from 'vue/components/poll/common/change_your_vote.vue'
 module.exports =
   components:
     'poll-proposal-form': PollProposalForm
@@ -20,6 +21,7 @@ module.exports =
     'poll-score-form': PollScoreForm
     'poll-meeting-form': PollMeetingForm
     'poll-ranked_choice-form': PollRankedChoiceForm
+    'poll-common-change-your-vote': PollCommonChangeYourVote
   props:
     poll: Object
     stance: Object
