@@ -9,13 +9,12 @@ module.exports =
 
 <template>
     <div class="poll-common-stance-reason">
-      <textarea
-        v-model="stance"
-        field="reason"
+      <v-textarea
+        v-model="stance.reason"
         :label="$t('poll_common.reason')"
         :placeholder="$t('poll_common.reason_placeholder')"
         maxlength="500"
         class="poll-common-vote-form__reason"
-      ></textarea>
+      ></v-textarea>
     </div>
 </template>
