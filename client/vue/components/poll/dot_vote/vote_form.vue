@@ -1,4 +1,5 @@
 <style lang="scss">
+@import 'variables';
 .poll-dot-vote-vote-form__option{
   padding: 0 !important;
 }
@@ -105,6 +106,7 @@ module.exports =
         ).concat({score: 0}))
 
     adjust: (choice, amount) ->
+      console.log choice
       choice.score += amount
 
     optionFor: (choice) ->
@@ -124,19 +126,19 @@ module.exports =
 
 <template lang="pug">
 form.poll-dot-vote-vote-form(@submit.prevent='submit()')
-  h3.lmo-card-subheading(v-t="'poll_common.your_response'")
+  v-subheader(v-t="'poll_common.your_response'")
   .lmo-hint-text
     .poll-dot-vote-vote-form__too-many-dots(v-if='tooManyDots()', v-t="'poll_dot_vote_vote_form.too_many_dots'")
     .poll-dot-vote-vote-form__dots-remaining(v-if='!tooManyDots()', v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining() } }")
-  ul.poll-common-vote-form__options(md-list='')
-    li.poll-dot-vote-vote-form__option.poll-common-vote-form__option(md-list-item='', v-for='choice in stanceChoices', :key='choice.poll_option_id')
-      .poll-dot-vote-vote-form__input-container(md-input-container='')
+  v-list.poll-common-vote-form__options
+    v-list-tile.poll-dot-vote-vote-form__option.poll-common-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
+      v-layout
         p.poll-dot-vote-vote-form__chosen-option--name.poll-common-vote-form__border-chip.poll-common-bar-chart__bar(:style='styleData(choice)') {{ optionFor(choice).name }}
-        .poll-dot-vote-vote-form__dot-input-field
-          button.poll-dot-vote-vote-form__dot-button(type='button', @click='adjust(choice, -1)', :disabled='choice.score == 0')
+        v-layout
+          v-btn.poll-dot-vote-vote-form__dot-button(type='button', @click='adjust(choice, -1)', :disabled='choice.score == 0')
             .mdi.mdi-24px.mdi-minus-circle-outline
-          input.poll-dot-vote-vote-form__dot-input(type='number', v-model='choice.score', min='0', step='1')
-          button.poll-dot-vote-vote-form__dot-button(type='button', @click='adjust(choice, 1)', :disabled='dotsRemaining() == 0')
+          v-text-field(type='number', v-model='choice.score', min='0', step='1')
+          v-btn.poll-dot-vote-vote-form__dot-button(type='button', @click='adjust(choice, 1)', :disabled='dotsRemaining() == 0')
             .mdi.mdi-24px.mdi-plus-circle-outline
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance')
