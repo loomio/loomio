@@ -110,5 +110,6 @@ module.exports = {
   PollProposalChartPanel: 'poll/proposal/chart_panel',
   PollCommonVotesPanelStance: 'poll/common/votes_panel_stance',
   PollProposalStanceChoice: 'poll/proposal/stance_choice',
-  PollCommonStanceChoice: 'poll/common/stance_choice'
+  PollCommonStanceChoice: 'poll/common/stance_choice',
+  PollCommonActionsDropdown: 'poll/common/actions_dropdown'
 }

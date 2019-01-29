@@ -47,7 +47,7 @@ module.exports =
 
 <template lang="pug">
 v-menu
-  v-btn(slot="activator")
+  v-btn(flat icon slot="activator")
     .sr-only(v-t="'group_page.options_label'")
     v-icon mdi-chevron-down
   v-list
@@ -57,11 +57,11 @@ v-menu
     v-list-tile(v-if="canEditPoll()", @click="editPoll()")
       span(v-t="'common.action.edit'")
     v-list-tile(v-if="canClosePoll()", @click="closePoll()")
-      span(v-t="{ path: 'poll_common.close_poll_type', args: { 'poll-type': poll.translatedPollType() }")
+      span(v-t="{ path: 'poll_common.close_poll_type', args: { 'poll-type': poll.translatedPollType() } }")
     v-list-tile(v-if="canReopenPoll()", @click="reopenPoll()")
-      span(v-t="common.action.reopen")
+      span(v-t="'common.action.reopen'")
     v-list-tile(v-if="canExportPoll()", @click="exportPoll()")
-      span(v-t="common.action.export")
+      span(v-t="'common.action.export'")
     v-list-tile(v-if="canDeletePoll()", @click="deletePoll()")
-      span(v-t="common.action.delete")
+      span(v-t="'common.action.delete'")
 </template>

@@ -1,10 +1,3 @@
-<style lang="scss">
-.poll-common-card-header__poll-type {
-  margin-left: 10px;
-  line-height: 25px;
-}
-</style>
-
 <script lang="coffee">
 AbilityService = require 'shared/services/ability_service'
 
@@ -28,5 +21,6 @@ module.exports =
 v-layout.poll-common-card-header
   v-icon {{'mdi ' + icon()}}
   v-subheader(v-t="'poll_types.' + poll.pollType")
-  //- // <poll_common_actions_dropdown poll="poll" ng-if="pollHasActions()" class="pull-right"></poll_common_actions_dropdown>
+  v-spacer
+  poll-common-actions-dropdown(:poll="poll", v-if="pollHasActions()")
 </template>
