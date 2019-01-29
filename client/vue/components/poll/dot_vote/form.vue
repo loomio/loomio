@@ -1,4 +1,7 @@
 <style lang="scss">
+.text-field-container {
+  max-width: 30px;
+}
 </style>
 <script lang="coffee">
 module.exports =
@@ -12,14 +15,11 @@ module.exports =
   poll-common-form-fields(:poll="poll")
   poll-common-form-options(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
-
-  .md-input-compensate
-    .lmo-flex.lmo-flex__center
-      .poll-common-checkbox-option__text.md-list-item-text.lmo-flex__grow
-        .lmo-flex--row
-          h3(v-t="'poll_dot_vote_form.dots_per_person'")
-          help-bubble(helptext="poll_dot_vote_form.dots_per_person_helptext")
-        validation-errors(:subject="poll", field="dotsPerPerson")
-      v-text-field.lmo-number-input(type="number", min="1", v-model="poll.customFields.dots_per_person")
-    poll-common-settings(:poll="poll")
+  v-layout.poll-common-checkbox-option__text(align-center)
+    v-subheader(v-t="'poll_dot_vote_form.dots_per_person'")
+    help-bubble(helptext="poll_dot_vote_form.dots_per_person_helptext")
+    validation-errors(:subject="poll", field="dotsPerPerson")
+    div.text-field-container
+      v-text-field(type="number", min="1", v-model="poll.customFields.dots_per_person", single-line)
+  poll-common-settings(:poll="poll")
 </template>

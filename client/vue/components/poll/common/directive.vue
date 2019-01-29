@@ -18,6 +18,11 @@ import PollCountStanceChoice from 'vue/components/poll/count/stance_choice.vue'
 import PollCountChartPanel from 'vue/components/poll/count/chart_panel.vue'
 import PollPollVoteForm from 'vue/components/poll/poll/vote_form.vue'
 import PollDotVoteVoteForm from 'vue/components/poll/dot_vote/vote_form.vue'
+import PollDotVoteStanceChoice from 'vue/components/poll/dot_vote/stance_choice.vue'
+import PollPollStanceChoice from 'vue/components/poll/poll/stance_choice.vue'
+import PollPollChartPanel from 'vue/components/poll/poll/chart_panel.vue'
+import PollCommonBarChartPanel from 'vue/components/poll/common/bar_chart_panel.vue'
+import PollDotVoteChartPanel from 'vue/components/poll/dot_vote/chart_panel.vue'
 module.exports =
   components:
     'poll-proposal-form': PollProposalForm
@@ -36,6 +41,11 @@ module.exports =
     'poll-count-chart-panel': PollCountChartPanel
     'poll-poll-vote-form': PollPollVoteForm
     'poll-dot_vote-vote-form': PollDotVoteVoteForm
+    'poll-dot_vote-stance-choice': PollDotVoteStanceChoice
+    'poll-poll-stance-choice': PollPollStanceChoice
+    'poll-poll-chart-panel': PollPollChartPanel
+    'poll-common-bar-chart-panel': PollCommonBarChartPanel
+    'poll-dot_vote-chart-panel': PollDotVoteChartPanel
   props:
     poll: Object
     stance: Object

@@ -22,7 +22,7 @@ module.exports =
   created: ->
     @submit = submitStance @, @stance,
       prepareFn: =>
-        EventBus.$emit @, 'processing'
+        @$emit 'processing'
         @stance.id = null
         @stance.stanceChoicesAttributes = _map @selectedOptionIds, (id) =>
           poll_option_id: id
@@ -40,7 +40,7 @@ module.exports =
           @selectedOptionIds.push option.id
       else
         @selectedOptionIds = [option.id]
-        @$nextTick => EventBus.$emit 'focusTextarea'
+        @$nextTick => @$emit 'focusTextarea'
 
     mdColors: (option) ->
       buttonStyle @isSelected(option)

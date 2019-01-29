@@ -72,18 +72,16 @@ module.exports =
     vars: {}
 
   created: ->
-    @setStanceChoices()
-    EventBus.$on 'pollOptionsAdded', @setStanceChoices
-
-  mounted: ->
-    submitOnEnter @, element: @$el
-
     @submit = submitStance @, @stance,
-      prepareFn: ->
-        EventBus.$emit @, 'processing'
+      prepareFn: =>
+        EventBus.$emit 'processing'
         @stance.id = null
         return unless _sum(_map(@stanceChoices, 'score')) > 0
         @stance.stanceChoicesAttributes = @stanceChoices
+        
+    @setStanceChoices()
+    EventBus.$on 'pollOptionsAdded', @setStanceChoices
+    submitOnEnter @, element: @$el
 
   methods:
     percentageFor: (choice) ->
@@ -125,7 +123,7 @@ module.exports =
 </script>
 
 <template lang="pug">
-form.poll-dot-vote-vote-form(@submit.prevent='submit()')
+.poll-dot-vote-vote-form
   v-subheader(v-t="'poll_common.your_response'")
   .lmo-hint-text
     .poll-dot-vote-vote-form__too-many-dots(v-if='tooManyDots()', v-t="'poll_dot_vote_vote_form.too_many_dots'")
@@ -145,5 +143,5 @@ form.poll-dot-vote-vote-form(@submit.prevent='submit()')
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     poll-common-show-results-button(v-if='stance.isNew()')
     div(v-if='!stance.isNew()')
-    button.md-primary.md-raised.poll-common-vote-form__submit(type='submit', :disabled='tooManyDots()', v-t="'poll_common.vote'", aria-label="$t('poll_poll_vote_form.vote')")
+    button.md-primary.md-raised.poll-common-vote-form__submit(type='button', @click="submit()", :disabled='tooManyDots()', v-t="'poll_common.vote'", aria-label="$t('poll_poll_vote_form.vote')")
 </template>
