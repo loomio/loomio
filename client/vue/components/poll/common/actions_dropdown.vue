@@ -51,17 +51,17 @@ v-menu
     .sr-only(v-t="'group_page.options_label'")
     v-icon mdi-chevron-down
   v-list
-    v-list-tile(@click="toggleSubscription()")
+    v-list-tile.poll-actions-dropdown__subscribe(@click="toggleSubscription()")
       span(v-t="'common.action.unsubscribe'", v-if="poll.subscribed")
       span(v-t="'common.action.subscribe'", v-if="!poll.subscribed")
-    v-list-tile(v-if="canEditPoll()", @click="editPoll()")
+    v-list-tile.poll-actions-dropdown__edit(v-if="canEditPoll()", @click="editPoll()")
       span(v-t="'common.action.edit'")
-    v-list-tile(v-if="canClosePoll()", @click="closePoll()")
+    v-list-tile.poll-actions-dropdown__close(v-if="canClosePoll()", @click="closePoll()")
       span(v-t="{ path: 'poll_common.close_poll_type', args: { 'poll-type': poll.translatedPollType() } }")
-    v-list-tile(v-if="canReopenPoll()", @click="reopenPoll()")
+    v-list-tile.poll-actions-dropdown__reopen(v-if="canReopenPoll()", @click="reopenPoll()")
       span(v-t="'common.action.reopen'")
-    v-list-tile(v-if="canExportPoll()", @click="exportPoll()")
+    v-list-tile.poll-actions-dropdown__export(v-if="canExportPoll()", @click="exportPoll()")
       span(v-t="'common.action.export'")
-    v-list-tile(v-if="canDeletePoll()", @click="deletePoll()")
+    v-list-tile.poll-actions-dropdown__delete(v-if="canDeletePoll()", @click="deletePoll()")
       span(v-t="'common.action.delete'")
 </template>
