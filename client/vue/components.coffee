@@ -116,5 +116,7 @@ module.exports = {
   PollPollStanceChoice: 'poll/poll/stance_choice',
   PollPollChartPanel: 'poll/poll/chart_panel',
   PollDotVoteChartPanel: 'poll/dot_vote/chart_panel',
-  PollCommonBarChartPanel: 'poll/common/bar_chart_panel'
+  PollCommonBarChartPanel: 'poll/common/bar_chart_panel',
+  PollScoreVoteForm: 'poll/score/vote_form',
+  PollScoreChartPanel: 'poll/score/chart_panel'
 }

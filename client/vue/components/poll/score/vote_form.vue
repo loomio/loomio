@@ -60,11 +60,11 @@ module.exports =
     EventBus.$on 'pollOptionsAdded', @setStanceChoices
     @submit = submitStance @, @stance,
       prepareFn: =>
-        EventBus.$emit $scope, 'processing'
+        @$emit 'processing'
         @stance.id = null
         @stance.stanceChoicesAttributes = @stanceChoices
-  mounted: ->
-    submitOnEnter @, element: @$el
+  # mounted: ->
+  #   submitOnEnter @, element: @$el
   methods:
     stanceChoiceFor: (option) ->
       _head(_filter(@stance.stanceChoices(), (choice) =>
