@@ -105,5 +105,6 @@ module.exports = {
   PollCountForm: 'poll/count/form',
   PollDotVoteForm: 'poll/dot_vote/form',
   PollScoreForm: 'poll/score/form',
-  PollMeetingForm: 'poll/meeting/form'
+  PollMeetingForm: 'poll/meeting/form',
+  PollRankedChoiceForm: 'poll/ranked_choice/form'
 }
