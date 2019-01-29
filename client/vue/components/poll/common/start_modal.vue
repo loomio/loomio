@@ -6,6 +6,7 @@ Records = require 'shared/services/records'
 module.exports =
   props:
     poll: Object
+    close: Function
   data: ->
     dpoll: @poll.clone()
     announcement: {}
@@ -28,7 +29,7 @@ module.exports =
           <span v-if="currentStep == 'save'" v-t="'poll_common.start_poll'"></span>
           <span v-if="currentStep == 'announce'" v-t="'announcement.form.poll_announced.title'"></span>
         </h1>
-        <dismiss-modal-button></dismiss-modal-button>
+        <dismiss-modal-button :close="close"></dismiss-modal-button>
       </div>
     </v-card-title>
     <v-card-text>

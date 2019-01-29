@@ -28,6 +28,8 @@ module.exports =
   methods:
     openPollModal: (pollType) ->
       @modals[pollType] = true
+    closePollModal: (pollType) ->
+      => @modals[pollType] = false # N.B: this must be a closure to be passed down to sub-component @click
 
     pollTypes: -> AppConfig.pollTypes
 
@@ -58,7 +60,7 @@ module.exports =
 v-list.decision-tools-card__poll-types
   v-list-tile.decision-tools-card__poll-type(:class="'decision-tools-card__poll-type--' + pollType", @click='openPollModal(pollType)', v-for='(pollType, index) in pollTypes()', :key='index', :aria-label='getAriaLabelForPollType(pollType)')
     v-dialog(v-model='modals[pollType]', lazy='')
-      poll-common-start-modal(:poll='newPoll(pollType)')
+      poll-common-start-modal(:poll='newPoll(pollType)', :close="closePollModal(pollType)")
     v-list-tile-avatar
       v-icon {{callFieldFromTemplate(pollType, 'material_icon')}}
     v-list-tile-content
