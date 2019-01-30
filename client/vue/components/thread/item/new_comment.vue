@@ -15,6 +15,14 @@ module.exports =
   props:
     event: Object
     eventable: Object
+  data: ->
+    isEditCommentModalOpen: false
+  methods:
+    openEditCommentModal: ->
+      @isEditCommentModalOpen = true
+
+    closeEditCommentModal: ->
+      @isEditCommentModalOpen = false
   created: ->
     @actions = [
       name: 'react'
@@ -28,7 +36,7 @@ module.exports =
       name: 'edit_comment'
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canEditComment(@eventable)
-      perform:    => ModalService.open 'EditCommentForm', comment: => @eventable
+      perform:    => @openEditCommentModal()
     ,
       name: 'fork_comment'
       icon: 'mdi-call-split'
@@ -71,16 +79,16 @@ module.exports =
 
 </script>
 
-<template>
-    <div id="'comment-'+ eventable.id" class="new-comment">
-      <div v-if="!eventable.translation" v-marked="eventable.cookedBody()" class="thread-item__body new-comment__body lmo-markdown-wrapper"></div>
-      <translation v-if="eventable.translation" :model="eventable" field="body" class="thread-item__body"></translation>
-      <!-- <outlet name="after-comment-body" model="eventable"></outlet> -->
-      <document-list :model="eventable" :skip-fetch="true"></document-list>
-      <div class="lmo-md-actions">
-        <!-- <reactions_display model="eventable"></reactions_display> -->
-        <action-dock :model="eventable" :actions="actions"></action-dock>
-      </div>
-      <!-- <outlet name="after-comment-event" model="eventable"></outlet> -->
-    </div>
+<template lang="pug">
+  .new-comment(id="'comment-'+ eventable.id")
+    .thread-item__body.new-comment__body.lmo-markdown-wrapper(v-if='!eventable.translation', v-marked='eventable.cookedBody()')
+    translation.thread-item__body(v-if='eventable.translation', :model='eventable', field='body')
+    //- <outlet name="after-comment-body" model="eventable"></outlet>
+    document-list(:model='eventable', :skip-fetch='true')
+    .lmo-md-actions
+      //- <reactions_display model="eventable"></reactions_display>
+      action-dock(:model='eventable', :actions='actions')
+      v-dialog(v-model="isEditCommentModalOpen", lazy persistent)
+        edit-comment-form(:comment="eventable", :close="closeEditCommentModal")
+    //- <outlet name="after-comment-event" model="eventable"></outlet>
 </template>

@@ -126,5 +126,7 @@ module.exports = {
   PollCommonEditModal: 'poll/common/edit_modal',
   PollCommonEditVoteModal: 'poll/common/edit_vote_modal',
   ContactRequestModal: 'contact/request_modal',
-  ContactRequestForm: 'contact/request_form'
+  ContactRequestForm: 'contact/request_form',
+  CommentFormActions: 'thread/comment_form_actions',
+  EditCommentForm: 'thread/edit_comment_form'
 }
