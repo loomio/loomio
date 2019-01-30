@@ -23,6 +23,17 @@ FlashService   = require 'shared/services/flash_service'
 module.exports =
   props:
     poll: Object
+  data: ->
+    isPollCommonEditModalOpen: false
+    isAnnouncementModalOpen: false
+    isRevisionHistoryModalOpen: false
+  methods:
+    openPollCommonEditModal: ->
+      @isPollCommonEditModalOpen = true
+    openRevisionHistoryModal: ->
+      @isRevisionHistoryModalOpen = true
+    openAnnouncementModal: ->
+      @isAnnouncementModalOpen = true
   created: ->
     @actions = [
       name: 'translate_poll'
@@ -39,7 +50,9 @@ module.exports =
       name: 'edit_poll'
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canEditPoll(@poll)
-      perform:    => ModalService.open 'PollCommonEditModal', poll: => @poll
+      perform:    =>
+        console.log('open modal')
+        @openPollCommonEditModal()
     ,
       name: 'show_history'
       icon: 'mdi-history'
@@ -68,4 +81,10 @@ module.exports =
     // <reactions_display model="poll" load="true"></reactions_display>
     v-spacer
     action-dock(:model='poll', :actions='actions')
+  v-dialog(v-model='isPollCommonEditModalOpen' lazy persistent)
+    poll-common-edit-modal(:poll='poll')
+  //- v-dialog(v-model='isThreadModalOpen' lazy persistent)
+  //-   discussion-start(:discussion='newThread()', :close='closeThreadModal')
+  //- v-dialog(v-model='isThreadModalOpen' lazy persistent)
+  //-   discussion-start(:discussion='newThread()', :close='closeThreadModal')
 </template>
