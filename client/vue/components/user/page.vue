@@ -27,6 +27,7 @@ module.exports =
   mixins: [fromNow, urlFor]
   data: ->
     user: {}
+    isMembershipsFetchingDone: false
   created: ->
     # applyLoadingFunction(@, 'loadGroupsFor')
     @setUser()
@@ -44,8 +45,10 @@ module.exports =
 
     loadGroupsFor: (user) ->
       Records.memberships.fetchByUser(user).then =>
+        @isMembershipsFetchingDone = true
   computed:
     canContactUser: ->
+      console.log 'isMembershipsFetchingDone', @isMembershipsFetchingDone
       AbilityService.canContactUser(@user)
 
     isEmptyUser: ->
