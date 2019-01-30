@@ -123,5 +123,6 @@ module.exports = {
   PollMeetingChartPanel: 'poll/meeting/chart_panel',
   PollMeetingChangeYourVote: 'poll/meeting/change_your_vote',
   PollMeetingVotesPanelStance: 'poll/meeting/votes_panel_stance',
-  PollCommonEditModal: 'poll/common/edit_modal'
+  PollCommonEditModal: 'poll/common/edit_modal',
+  PollCommonEditVoteModal: 'poll/common/edit_vote_modal'
 }
