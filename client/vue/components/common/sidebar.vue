@@ -75,6 +75,8 @@ module.exports =
 
     openGroupModal: ->
       @isGroupModalOpen = true
+    closeGroupModal: ->
+      @isGroupModalOpen = false
 
     openThreadModal: ->
       @isThreadModalOpen = true
@@ -134,4 +136,11 @@ v-navigation-drawer.lmo-no-print(app, permanent, dark, width="250", v-model="sho
           img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo(:src='group.logoUrl()')
         v-list-tile-content
           v-list-tile-title {{group.name}}
+    v-list-tile.sidebar__list-item-button--start-group(v-if="canStartGroup()", @click="openGroupModal()")
+      v-list-tile-action
+        v-icon mdi-plus
+      v-list-tile-content
+        span(v-t="'sidebar.start_group'")
+      v-dialog(v-model='isGroupModalOpen' lazy)
+        group-start(:group='newGroup()', :close='closeGroupModal')
 </template>

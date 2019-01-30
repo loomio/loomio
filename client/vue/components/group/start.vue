@@ -10,6 +10,7 @@ LmoUrlService = require 'shared/services/lmo_url_service'
 module.exports =
   props:
     group: Object
+    close: Function
   data: ->
     dgroup: @group.clone()
     announcement: {}
@@ -31,7 +32,7 @@ module.exports =
 </script>
 
 <template>
-  <v-card class="group-modal lmo-modal__narrow">
+  <v-card class="group-modal">
     <!-- <div v-show="isDisabled" class="lmo-disabled-form"></div> -->
     <v-card-title>
       <div class="md-toolbar-tools lmo-flex__space-between">
@@ -46,7 +47,7 @@ module.exports =
             <h1 v-t="'announcement.form.group_announced.title'" class="lmo-h1"></h1>
           </div>
         </div>
-        <dismiss-modal-button></dismiss-modal-button>
+        <dismiss-modal-button :close="close"></dismiss-modal-button>
       </div>
     </v-card-title>
     <v-card-text class="md-body-1 lmo-slide-animation">
