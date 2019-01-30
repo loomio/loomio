@@ -46,6 +46,6 @@ v-card.group-modal
     announcement-form.animated(v-if="dcurrentStep == 'announce'", :announcement='announcement')
     // <dialog_scroll_indicator></dialog_scroll_indicator>
   v-card-actions
-    group-form-actions(v-if="dcurrentStep == 'create'", :group='dgroup', :successfn='completeGroupCreation')
+    group-form-actions(v-if="dcurrentStep == 'create'", :group='dgroup', :successFn='completeGroupCreation')
     // <announcement_form_actions v-if="dcurrentStep = 'announce'" :announcement="announcement"></announcement_form_actions>
 </template>
