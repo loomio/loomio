@@ -50,9 +50,7 @@ module.exports =
       name: 'edit_poll'
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canEditPoll(@poll)
-      perform:    =>
-        console.log('open modal')
-        @openPollCommonEditModal()
+      perform:    => @openPollCommonEditModal()
     ,
       name: 'show_history'
       icon: 'mdi-history'
