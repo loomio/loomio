@@ -29,6 +29,8 @@ import PollCommonStanceChoice from 'vue/components/poll/common/stance_choice.vue
 import PollRankedChoiceVoteForm from 'vue/components/poll/ranked_choice/vote_form.vue'
 import PollMeetingVoteForm from 'vue/components/poll/meeting/vote_form.vue'
 import PollMeetingChartPanel from 'vue/components/poll/meeting/chart_panel.vue'
+import PollMeetingChangeYourVote from 'vue/components/poll/meeting/change_your_vote.vue'
+import PollMeetingVotesPanelStance from 'vue/components/poll/meeting/votes_panel_stance.vue'
 module.exports =
   components:
     'poll-proposal-form': PollProposalForm
@@ -58,6 +60,8 @@ module.exports =
     'poll-ranked_choice-vote-form': PollRankedChoiceVoteForm
     'poll-meeting-vote-form': PollMeetingVoteForm
     'poll-meeting-chart-panel': PollMeetingChartPanel
+    'poll-meeting-change-your-vote': PollMeetingChangeYourVote
+    'poll-meeting-votes-panel-stance': PollMeetingVotesPanelStance
   props:
     poll: Object
     stance: Object
@@ -69,7 +73,7 @@ module.exports =
     componentName: ->
       pollType = (@stance or @outcome or @stanceChoice or @poll).poll().pollType
 
-      console.log('pollType', pollType)
+      console.log "poll-#{pollType}-#{@name}"
 
       if @$options.components["poll-#{pollType}-#{@name}"]
         console.log 'match with ', "poll-#{pollType}-#{@name}"
