@@ -30,6 +30,8 @@ module.exports =
   methods:
     openPollCommonEditModal: ->
       @isPollCommonEditModalOpen = true
+    closePollCommonEditModal: ->
+      @isPollCommonEditModalOpen = false
     openRevisionHistoryModal: ->
       @isRevisionHistoryModalOpen = true
     openAnnouncementModal: ->
@@ -80,7 +82,7 @@ module.exports =
     v-spacer
     action-dock(:model='poll', :actions='actions')
   v-dialog(v-model='isPollCommonEditModalOpen' lazy persistent)
-    poll-common-edit-modal(:poll='poll')
+    poll-common-edit-modal(:poll='poll', :close="closePollCommonEditModal")
   //- v-dialog(v-model='isThreadModalOpen' lazy persistent)
   //-   discussion-start(:discussion='newThread()', :close='closeThreadModal')
   //- v-dialog(v-model='isThreadModalOpen' lazy persistent)

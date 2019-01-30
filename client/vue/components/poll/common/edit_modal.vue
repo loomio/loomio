@@ -12,6 +12,7 @@ Records = require 'shared/services/records'
 module.exports =
   props:
     poll: Object
+    close: Function
   data: ->
     dpoll: @poll.clone()
     announcement: {}
@@ -33,7 +34,7 @@ v-card.poll-common-modal
     h1.lmo-h1
       span(v-t="'poll_' + poll.pollType + '_form.edit_header'", v-if="currentStep == 'save'")
       span(v-t="announcement.form.poll.title", v-if="currentStep == 'announce'")
-    dismiss-modal-button
+    dismiss-modal-button(:close="close")
   v-card-text
     poll-common-directive(:poll="poll", name="form", v-if="currentStep == 'save'")
     announcement-form(announcement="announcement", v-if="currentStep == 'announce'")
