@@ -124,5 +124,7 @@ module.exports = {
   PollMeetingChangeYourVote: 'poll/meeting/change_your_vote',
   PollMeetingVotesPanelStance: 'poll/meeting/votes_panel_stance',
   PollCommonEditModal: 'poll/common/edit_modal',
-  PollCommonEditVoteModal: 'poll/common/edit_vote_modal'
+  PollCommonEditVoteModal: 'poll/common/edit_vote_modal',
+  ContactRequestModal: 'contact/request_modal',
+  ContactRequestForm: 'contact/request_form'
 }

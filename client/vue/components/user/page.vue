@@ -28,6 +28,7 @@ module.exports =
   data: ->
     user: {}
     isMembershipsFetchingDone: false
+    isModalOpen: false
   created: ->
     # applyLoadingFunction(@, 'loadGroupsFor')
     @setUser()
@@ -40,8 +41,12 @@ module.exports =
       # EventBus.broadcast $rootScope, 'currentComponent', {title: @user.name, page: 'userPage'}
         @loadGroupsFor(@user)
 
-    contactUser: ->
-      ModalService.open 'ContactRequestModal', user: => @user
+    openModal: ->
+      @isModalOpen = true
+      # ModalService.open 'ContactRequestModal', user: => @user
+
+    closeModal: ->
+      @isModalOpen = false
 
     loadGroupsFor: (user) ->
       Records.memberships.fetchByUser(user).then =>
@@ -66,7 +71,9 @@ module.exports =
       .user-page__content.lmo-flex(layout='row')
         .user-page__avatar.lmo-margin-right
           user-avatar(:user='user', size='featured')
-          v-btn.md-block.md-primary.md-raised.user-page__contact-user(v-if='canContactUser', @click='contactUser()', v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
+          v-btn.md-block.md-primary.md-raised.user-page__contact-user(v-if='canContactUser', @click='openModal()', v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
+          v-dialog(v-model="isModalOpen", lazy, persistent)
+            contact-request-modal(:user="user", :close="closeModal")
         .user-page__info
           h1.lmo-h1 {{user.name}}
           .lmo-hint-text @{{user.username}}
