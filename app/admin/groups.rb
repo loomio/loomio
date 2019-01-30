@@ -62,7 +62,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     render 'graph', { group: group }
     render 'stats', { group: group }
 
-    if group.subscription_id
+    if group.subscription.present?
       render 'subscription', { subscription: group.subscription }
     end
 
