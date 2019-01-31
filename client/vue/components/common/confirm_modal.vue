@@ -17,6 +17,7 @@ module.exports =
   created: ->
     @submit = (args...) =>
       @isDisabled = true
+      console.log '@confirm in submit', @confirm
       @confirm.submit(args...).then =>
         @close()
         @$router.push @confirm.redirect     if @confirm.redirect?
@@ -25,7 +26,7 @@ module.exports =
       .finally =>
         @isDisabled = false
 
-      # _.merge $scope, confirm.scope # not sure why this is necessary
+      _.merge @, confirm.scope # not sure why this is necessary
 </script>
 
 <template lang="pug">
