@@ -1,4 +1,6 @@
 Records       = require 'shared/services/records'
+AbilityService = require 'shared/services/ability_service'
+Session       = require 'shared/services/session'
 import Vuex from 'vuex'
 
 module.exports = new Vuex.Store
@@ -8,6 +10,7 @@ module.exports = new Vuex.Store
     groups: Records.groups.collection.data
     documents: Records.documents.collection.data
     notifications: Records.notifications.collection.data
+    memberships: Records.memberships
 
   getters:
     documentsFor: (state) => (model) =>
@@ -25,6 +28,15 @@ module.exports = new Vuex.Store
 
     hasDocumentsFor: (state, getters) => (model) =>
       getters.newAndPersistedDocumentsFor(model).length > 0
+
+    canContactUser: (state, getters) => (user) =>
+      return false if _.isEmpty(user) or _.isNil(user)
+      AbilityService.isLoggedIn() &&
+      Session.user().id != user.id &&
+      _.intersection(
+        _.map(state.memberships.find(userId: Session.user().id), 'groupId'),
+        _.map(state.memberships.find(userId: user.id), 'groupId')
+      ).length
 
   mutations:
     increment: (state) ->

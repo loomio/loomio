@@ -36,25 +36,21 @@ module.exports =
       # EventBus.broadcast $rootScope, 'pageError', error
   methods:
     setUser: ->
-      # return if @user
       if @user = (Records.users.find(@$route.params.key) or Records.users.find(username: @$route.params.key))[0]
       # EventBus.broadcast $rootScope, 'currentComponent', {title: @user.name, page: 'userPage'}
         @loadGroupsFor(@user)
 
     openModal: ->
       @isModalOpen = true
-      # ModalService.open 'ContactRequestModal', user: => @user
 
     closeModal: ->
       @isModalOpen = false
 
     loadGroupsFor: (user) ->
-      Records.memberships.fetchByUser(user).then =>
-        @isMembershipsFetchingDone = true
+      Records.memberships.fetchByUser(user)
   computed:
     canContactUser: ->
-      console.log 'isMembershipsFetchingDone', @isMembershipsFetchingDone
-      AbilityService.canContactUser(@user)
+      @$store.getters.canContactUser(@user)
 
     isEmptyUser: ->
       _isEmpty @user
