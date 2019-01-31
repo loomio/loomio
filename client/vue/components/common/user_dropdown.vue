@@ -25,7 +25,7 @@ v-menu(offset-y)
       v-list-tile-content(v-t="'user_dropdown.edit_profile'")
       v-list-tile-avatar
         v-icon mdi-account
-    v-list-tile(to="/email_settings")
+    v-list-tile(to="/email_preferences")
       v-list-tile-content(v-t="'user_dropdown.email_settings'")
       v-list-tile-avatar
         v-icon mdi-settings
