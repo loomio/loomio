@@ -35,6 +35,8 @@ module.exports =
     fragment: Object
     filter: Object
     header: Object
+  data: ->
+    isRemoveModalOpen: false
   methods:
     canAdministerGroup: ->
       AbilityService.canAdministerGroup(@group)
@@ -42,13 +44,16 @@ module.exports =
     edit: (doc) ->
       ModalService.open 'DocumentModal', doc: => doc
 
-    remove: (doc) ->
-      ModalService.open 'ConfirmModal', confirm: =>
-        submit:      doc.destroy
-        text:
-          title:    'documents_page.confirm_remove_title'
-          helptext: 'documents_page.confirm_remove_helptext'
-          flash:    'documents_page.document_removed'
+    closeRemoveModal: ->
+      @isRemoveModalOpen = false
+    openRemoveModal: ->
+      @isRemoveModalOpen = true
+    removeModalConfirmOpts: (doc) ->
+      submit:      doc.destroy
+      text:
+        title:    'documents_page.confirm_remove_title'
+        helptext: 'documents_page.confirm_remove_helptext'
+        flash:    'documents_page.document_removed'
   computed:
     documents: ->
       _.filter @group.allDocuments(), (doc) =>
@@ -63,32 +68,25 @@ module.exports =
       _.some @documents
 </script>
 
-<template>
-  <div v-if="hasDocuments" class="document-management">
-    <h3 v-t="'document.management.' + filter + '_header'" v-if="filter" class="lmo-h3"></h3>
-    <div v-for="document in orderedDocuments" :key="document.id" layout="row" class="document-management__document lmo-flex lmo-flex__space-between">
-      <div class="document-management__column-row">
-        <i :class="'mdi lmo-margin-right document-management__icon mdi-' + document.icon" :style="{color: document.color}"></i>
-      </div>
-      <div layout="column" class="document-management__column-row lmo-flex lmo-flex__grow">
-        <strong class="lmo-truncate">
-          <router-link :to="document.url" target="_blank">{{ truncate(document.title, 50) }}</router-link>
-        </strong>
-        <div class="document-management__caption md-caption">
-          <router-link :to="urlFor(document.model())" class="lmo-truncate">{{ truncate(document.modelTitle(), 50) }}</router-link>
-        </div>
-        <div class="document-management__caption md-caption">
-          <span>{{document.authorName()}}</span>
-          <span>·</span>
-          <time-ago :date="document.createdAt"></time-ago>
-        </div>
-      </div>
-      <div v-if="canAdministerGroup()" class="document-management__column-row">
-        <button @click="edit(document)" v-t="'common.action.edit'" class="md-accent"></button>
-      </div>
-      <div v-if="canAdministerGroup()" class="document-management__column-row">
-        <button @click="remove(document)" v-t="'common.action.remove'" class="md-warn"></button>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+.document-management(v-if='hasDocuments')
+  h3.lmo-h3(v-t="'document.management.' + filter + '_header'", v-if='filter')
+  .document-management__document.lmo-flex.lmo-flex__space-between(v-for='document in orderedDocuments', :key='document.id', layout='row')
+    .document-management__column-row
+      i(:class="'mdi lmo-margin-right document-management__icon mdi-' + document.icon", :style='{color: document.color}')
+    .document-management__column-row.lmo-flex.lmo-flex__grow(layout='column')
+      strong.lmo-truncate
+        router-link(:to='document.url', target='_blank') {{ truncate(document.title, 50) }}
+      .document-management__caption.md-caption
+        router-link.lmo-truncate(:to='urlFor(document.model())') {{ truncate(document.modelTitle(), 50) }}
+      .document-management__caption.md-caption
+        span {{document.authorName()}}
+        span ·
+        time-ago(:date='document.createdAt')
+    .document-management__column-row(v-if='canAdministerGroup()')
+      button.md-accent(@click='edit(document)', v-t="'common.action.edit'")
+    .document-management__column-row(v-if='canAdministerGroup()')
+      button.md-warn(@click='openRemoveModal', v-t="'common.action.remove'")
+      v-dialog(v-model="isRemoveModalOpen", lazy persistent)
+        confirm-modal(:confirm="removeModalConfirmOpts(document)", :close="closeRemoveModal")
 </template>
