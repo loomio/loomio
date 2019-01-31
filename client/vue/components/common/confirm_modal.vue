@@ -17,7 +17,6 @@ module.exports =
   created: ->
     @submit = (args...) =>
       @isDisabled = true
-      console.log '@confirm in submit', @confirm
       @confirm.submit(args...).then =>
         @close()
         @$router.push @confirm.redirect     if @confirm.redirect?
@@ -37,7 +36,7 @@ v-card.confirm-modal
       h1.lmo-h1(v-t="confirm.text.title")
       dismiss-modal-button(v-if="!confirm.forceSubmit", :close="close")
   v-card-text
-    p(v-t="confirm.text.helptext", v-if="confirm.text.helptext")
+    p(v-html="$t(confirm.text.helptext)", v-if="confirm.text.helptext")
     //- p(ng-include="fragment", ng-if="fragment")
   v-card-actions
     div(v-if="confirm.forceSubmit")
