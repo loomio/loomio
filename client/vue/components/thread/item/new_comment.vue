@@ -17,12 +17,26 @@ module.exports =
     eventable: Object
   data: ->
     isEditCommentModalOpen: false
+    isDeleteCommentModalOpen: false
+    confirmOpts:
+      submit: @eventable.destroy
+      text:
+        title:    'delete_comment_dialog.title'
+        helptext: 'delete_comment_dialog.question'
+        confirm:  'delete_comment_dialog.confirm'
+        flash:    'comment_form.messages.destroyed'
   methods:
     openEditCommentModal: ->
       @isEditCommentModalOpen = true
 
     closeEditCommentModal: ->
       @isEditCommentModalOpen = false
+
+    openDeleteCommentModal: ->
+      @isDeleteCommentModalOpen = true
+
+    closeDeleteCommentModal: ->
+      @isDeleteCommentModalOpen = false
   created: ->
     @actions = [
       name: 'react'
@@ -65,13 +79,7 @@ module.exports =
       name: 'delete_comment'
       icon: 'mdi-delete'
       canPerform: => AbilityService.canDeleteComment(@eventable)
-      perform:    => ModalService.open 'ConfirmModal', confirm: =>
-        submit: @eventable.destroy
-        text:
-          title:    'delete_comment_dialog.title'
-          helptext: 'delete_comment_dialog.question'
-          confirm:  'delete_comment_dialog.confirm'
-          flash:    'comment_form.messages.destroyed'
+      perform:    => @openDeleteCommentModal()
     ]
   # mounted: ->
   #   listenForReactions($scope, $scope.eventable)
@@ -90,5 +98,7 @@ module.exports =
       action-dock(:model='eventable', :actions='actions')
       v-dialog(v-model="isEditCommentModalOpen", lazy persistent)
         edit-comment-form(:comment="eventable", :close="closeEditCommentModal")
+      v-dialog(v-model="isDeleteCommentModalOpen", lazy persistent)
+        confirm-modal(:confirm="confirmOpts", :close="closeDeleteCommentModal")
     //- <outlet name="after-comment-event" model="eventable"></outlet>
 </template>

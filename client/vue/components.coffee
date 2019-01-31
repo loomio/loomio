@@ -128,5 +128,6 @@ module.exports = {
   ContactRequestModal: 'contact/request_modal',
   ContactRequestForm: 'contact/request_form',
   CommentFormActions: 'thread/comment_form_actions',
-  EditCommentForm: 'thread/edit_comment_form'
+  EditCommentForm: 'thread/edit_comment_form',
+  ConfirmModal: 'common/confirm_modal'
 }
