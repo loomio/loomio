@@ -15,7 +15,7 @@ class User < ApplicationRecord
   extend NoSpam
   no_spam_for :name
 
-  has_paper_trail only: [:email_newsletter]
+  has_paper_trail only: [:email_newsletter], on: [:create, :update]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {

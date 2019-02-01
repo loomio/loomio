@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
   include HasCreatedEvent
   include HasEvents
 
-  has_paper_trail only: [:body]
+  has_paper_trail only: [:body], on: [:update]
 
   is_translatable on: :body
   is_mentionable  on: :body

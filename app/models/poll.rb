@@ -96,7 +96,7 @@ class Poll < ApplicationRecord
   alias_method :user, :author
   alias_method :draft_parent, :discussion
 
-  has_paper_trail only: [:title, :details, :closing_at, :group_id]
+  has_paper_trail only: [:title, :details, :closing_at, :group_id], on: [:create, :update]
 
   def self.always_versioned_fields
     [:title, :details]

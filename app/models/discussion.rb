@@ -39,7 +39,7 @@ class Discussion < ApplicationRecord
 
   is_mentionable on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
-  has_paper_trail only: [:title, :description, :private, :group_id]
+  has_paper_trail only: [:title, :description, :private, :group_id], on: [:create, :update]
 
   def self.always_versioned_fields
     [:title, :description]

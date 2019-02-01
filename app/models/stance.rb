@@ -14,7 +14,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason]
+  has_paper_trail only: [:reason], on: [:create, :update]
   define_counter_cache(:versions_count)  { |stance| stance.versions.count }
   def self.always_versioned_fields
     [:reason]
