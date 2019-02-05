@@ -129,5 +129,6 @@ module.exports = {
   ContactRequestForm: 'contact/request_form',
   CommentFormActions: 'thread/comment_form_actions',
   EditCommentForm: 'thread/edit_comment_form',
-  ConfirmModal: 'common/confirm_modal'
+  ConfirmModal: 'common/confirm_modal',
+  LmoTextarea: 'lmo_textarea/lmo_textarea'
 }

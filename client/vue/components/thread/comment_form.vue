@@ -34,21 +34,20 @@ module.exports =
       discussionId: @eventWindow.discussion.id
       authorId: Session.user().id
     isDisabled: null
+
   methods:
     commentHelptext: ->
       helptext = if @eventWindow.discussion.private
-        @$t('comment_form.private_privacy_notice', groupName: @comment.group().fullName)
+        {path: 'comment_form.private_privacy_notice', groupName: @comment.group().fullName}
       else
-        @$t('comment_form.public_privacy_notice')
-      helptext.replace('&amp;', '&')
-              .replace('&lt;', '<')
-              .replace('&gt;', '>')
+        {path: 'comment_form.public_privacy_notice'}
 
     commentPlaceholder: ->
       if @comment.parentId
-        @$t('comment_form.in_reply_to', name: @comment.parent().authorName())
+        {path: 'comment_form.in_reply_to', name: @comment.parent().authorName()}
       else
-        @$t('comment_form.aria_label')
+        {path: 'comment_form.aria_label'}
+
     init: ->
       @submit = submitForm @, @comment,
         submitFn: @comment.save
@@ -71,14 +70,15 @@ module.exports =
       # EventBus.broadcast @, 'reinitializeForm', @comment
   mounted: ->
     @init()
+
 </script>
 
 <template lang="pug">
 .comment-form.lmo-relative
   form(v-on:submit.prevent='submit()')
     .lmo-disabled-form(v-show='isDisabled')
-    v-textarea(v-model='comment.body')
-    v-btn(flat color="primary" type='submit') Post
+    lmo-textarea(:model='comment', field="body", :placeholder="commentPlaceholder()", :helptext="commentHelptext()")
+    v-btn(flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
     // <lmo_textarea model="comment" field="body" placeholder="commentPlaceholder()" helptext="commentHelptext()"></lmo_textarea>
     // <comment_form_actions comment="comment" submit="submit"></comment_form_actions>
     // <validation_errors subject="comment" field="file"></validation_errors>
