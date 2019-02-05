@@ -320,7 +320,7 @@ _NB: that this will compile files with extensions `js`, or `coffee` into `applic
 If you want to include assets in the asset pipeline without including them in the default manifest files (`application.js` and `application.css`, you can use the 'standalone' option.
 
 ```ruby
-  plugin.use_static_asset 'assets', 'kickflip.scss'
+  plugin.use_static_asset 'assets', 'kickflip.scss', true
 ```
 
 This means the file won't be included in the manifests, but still exist in the asset pipeline and can be included in individual views by writing
