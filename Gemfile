@@ -26,7 +26,7 @@ gem 'delayed_job', '~> 4.1.5'
 gem 'delayed_job_active_record', '~> 4.1.3'
 gem 'rinku'
 gem 'friendly_id', '~> 5.2.5'
-gem 'httparty', '~> 0.16.3'
+gem 'httparty', '~> 0.16.4'
 gem 'browser', '~> 2.5.3'
 gem 'fog-aws'
 gem "sentry-raven"
