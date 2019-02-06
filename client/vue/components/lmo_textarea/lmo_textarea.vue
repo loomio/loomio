@@ -1,6 +1,5 @@
 <script lang="coffee">
 import tippy from 'tippy.js'
-import Fuse from 'fuse.js'
 import 'tippy.js/dist/tippy.css'
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 import {
@@ -24,6 +23,9 @@ import {
   History,
   Mention
 } from 'tiptap-extensions'
+
+import MentionMixin from './mention_mixin.coffee'
+import MentionExtension from './mention_extension.coffee'
 
 module.exports =
   props:
@@ -49,138 +51,24 @@ module.exports =
 
   methods:
     showLinkMenu: (attrs) ->
-      this.linkUrl = attrs.href
-      this.linkMenuIsActive = true
-      this.$nextTick =>
-        this.$refs.linkInput.focus()
+      @linkUrl = attrs.href
+      @linkMenuIsActive = true
+      @$nextTick =>
+        @$refs.linkInput.focus()
 
     hideLinkMenu: ->
-      this.linkUrl = null
-      this.linkMenuIsActive = false
+      @linkUrl = null
+      @linkMenuIsActive = false
 
     setLinkUrl: (command, url) ->
       command({ href: url })
-      this.hideLinkMenu()
-      this.editor.focus()
-
-    # // navigate to the previous item
-    # // if it's the first item, navigate to the last one
-    upHandler: ->
-      @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length
-
-    # // navigate to the next item
-    # // if it's the last item, navigate to the first one
-    downHandler: ->
-      @navigatedUserIndex = (@navigatedUserIndex + 1) % @filteredUsers.length
-
-    enterHandler: ->
-      user = this.filteredUsers[this.navigatedUserIndex]
-      @selectUser(user) if user
-
-    # // we have to replace our suggestion text with a mention
-    # // so it's important to pass also the position of your suggestion text
-    selectUser: (user) ->
-      @insertMention
-        range: this.suggestionRange
-        attrs:
-          id: user.id,
-          label: user.name
+      @hideLinkMenu()
       @editor.focus()
-
-     # // renders a popup with suggestions
-     # // tiptap provides a virtualNode object for using popper.js (or tippy.js) for popups
-     renderPopup: (node) ->
-       return if @popup
-       @popup = tippy(node, {
-         content: this.$refs.suggestions,
-         trigger: 'mouseenter',
-         interactive: true,
-         theme: 'dark',
-         placement: 'top-start',
-         performance: true,
-         inertia: true,
-         duration: [400, 200],
-         showOnInit: true,
-         arrow: true,
-         arrowType: 'round'
-       })
-
-     destroyPopup: ->
-       if (@popup)
-         @popup.destroyAll()
-         @popup = null
 
   mounted: ->
     @editor = new Editor
       extensions: [
-        new Mention(
-          # a list of all suggested items
-          items: => [
-            { id: 1, name: 'Philipp Kühn' }
-            { id: 2, name: 'Hans Pagel' }
-            { id: 3, name: 'Kris Siepert' }
-            { id: 4, name: 'Justin Schueler' }
-            { id: 5, name: 'Robert Guthrie' }
-          ]
-          # is called when a suggestion starts
-          onEnter: ({ items, query, range, command, virtualNode }) =>
-            @query = query
-            @filteredUsers = items
-            @suggestionRange = range
-            @renderPopup(virtualNode)
-            # // we save the command for inserting a selected mention
-            # // this allows us to call it inside of our custom popup
-            # // via keyboard navigation and on click
-            @insertMention = command
 
-          # is called when a suggestion has changed
-          onChange: ({items, query, range, virtualNode}) =>
-            @query = query
-            @filteredUsers = items
-            @suggestionRange = range
-            @navigatedUserIndex = 0
-            @renderPopup(virtualNode)
-
-          # is called when a suggestion is cancelled
-          onExit: =>
-            # // reset all saved values
-            @query = null
-            @filteredUsers = []
-            @suggestionRange = null
-            @navigatedUserIndex = 0
-            @destroyPopup()
-
-          # is called on every keyDown event while a suggestion is active
-          onKeyDown: ({ event }) =>
-            # // pressing up arrow
-            if (event.keyCode == 38)
-              @upHandler()
-              return true
-
-            # // pressing down arrow
-            if (event.keyCode == 40)
-              @downHandler()
-              return true
-
-            # // pressing enter
-            if (event.keyCode == 13)
-              @enterHandler()
-              return true
-
-            return false
-
-          # // is called when a suggestion has changed
-          # // this function is optional because there is basic filtering built-in
-          # // you can overwrite it if you prefer your own filtering
-          # // in this example we use fuse.js with support for fuzzy search
-          onFilter: (items, query) =>
-            return items if (!query)
-            fuse = new Fuse(items, {
-              threshold: 0.2,
-              keys: ['name'],
-            })
-            fuse.search(query)
-          ),
           new Blockquote(),
           new BulletList(),
           new CodeBlock(),
