@@ -34,7 +34,7 @@
     "angular-mocks": "^1.7.6",
     "angular-recaptcha": "4.2.0",
     "angular-route": "^1.7.7",
-    "angular-sanitize": "^1.7.6",
+    "angular-sanitize": "^1.7.7",
     "angular-scroll": "~1.0.2",
     "angular-sortable-view": "0.0.17",
     "angular-translate": "~2.18.1",
