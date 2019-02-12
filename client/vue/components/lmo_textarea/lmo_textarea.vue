@@ -1,31 +1,19 @@
 <script lang="coffee">
 import tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
-import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
-import {
-  Blockquote,
-  CodeBlock,
-  HardBreak,
-  Heading,
-  HorizontalRule,
-  OrderedList,
-  BulletList,
-  ListItem,
-  TodoItem,
-  TodoList,
-  Image,
-  Bold,
-  Code,
-  Italic,
-  Link,
-  Strike,
-  Underline,
-  History,
-  Mention
-} from 'tiptap-extensions'
+import Records from 'shared/services/records'
+import _concat from 'lodash/concat'
+import _sortBy from 'lodash/sortby'
+import _isString from 'lodash/isstring'
+import _filter from 'lodash/filter'
+import _uniq from 'lodash/uniq'
+import _map from 'lodash/map'
 
-import MentionMixin from './mention_mixin.coffee'
-import MentionExtension from './mention_extension.coffee'
+import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
+
+import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
+  OrderedList, BulletList, ListItem, TodoItem, TodoList, Image, Bold, Code,
+  Italic, Link, Strike, Underline, History, Mention } from 'tiptap-extensions'
 
 module.exports =
   props:
@@ -36,38 +24,74 @@ module.exports =
   components:
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
-    EditorMenuBubble: EditorMenuBubble
+    # EditorMenuBubble: EditorMenuBubble
 
   data: ->
-    editor: null
-    linkUrl: null
-    linkMenuIsActive: false
-    toggle_multiple: {}
-    query: null,
-    suggestionRange: null,
-    filteredUsers: [],
-    navigatedUserIndex: 0,
-    insertMention: () => {},
-
-  methods:
-    showLinkMenu: (attrs) ->
-      @linkUrl = attrs.href
-      @linkMenuIsActive = true
-      @$nextTick =>
-        @$refs.linkInput.focus()
-
-    hideLinkMenu: ->
-      @linkUrl = null
-      @linkMenuIsActive = false
-
-    setLinkUrl: (command, url) ->
-      command({ href: url })
-      @hideLinkMenu()
-      @editor.focus()
-
-  mounted: ->
-    @editor = new Editor
+    query: null
+    suggestionRange: null
+    mentionableUserIds: []
+    navigatedUserIndex: 0
+    insertMention: () => {}
+    editor: new Editor
       extensions: [
+          new Mention(
+            items: []
+
+            # is called when a suggestion starts
+            onEnter: ({ items, query, range, command, virtualNode }) =>
+              console.log "suggestion started", items, query, range
+              @query = query
+              @suggestionRange = range
+              @insertMention = command
+              @renderPopup(virtualNode)
+              @fetchMentionable()
+
+            # is called when a suggestion has changed
+            onChange: ({items, query, range, virtualNode}) =>
+              console.log "suggestion changed", items, query, range
+              @query = query
+              @suggestionRange = range
+              @navigatedUserIndex = 0
+              @renderPopup(virtualNode)
+              @fetchMentionable()
+
+            # is called when a suggestion is cancelled
+            onExit: =>
+              # // reset all saved values
+              @query = null
+              @suggestionRange = null
+              @navigatedUserIndex = 0
+              @destroyPopup()
+
+            # is called on every keyDown event while a suggestion is active
+            onKeyDown: ({ event }) =>
+              # // pressing up arrow
+              if (event.keyCode == 38)
+                @upHandler()
+                return true
+
+              # // pressing down arrow
+              if (event.keyCode == 40)
+                @downHandler()
+                return true
+
+              # // pressing enter
+              if (event.keyCode == 13)
+                @enterHandler()
+                return true
+
+              return false
+
+            # // is called when a suggestion has changed
+            onFilter: (items, query) =>
+              console.log "on filter #{query}"
+              unsorted = _filter items, (i) ->
+                  _isString(u.username) &&
+                  (u.name.toLowerCase().startsWith(query) or
+                   (u.username || "").toLowerCase().startsWith(query) or
+                   u.name.toLowerCase().includes(" #{query}"))
+              _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
+          ),
 
           new Blockquote(),
           new BulletList(),
@@ -89,205 +113,131 @@ module.exports =
           new History()]
       content: '<p>This is just a boring paragraph</p>'
 
+
+  computed:
+    hasResults: -> @filteredUsers.length
+    showSuggestions: -> @query || @hasResults
+    filteredUsers: ->
+      unsorted = _filter Records.users.collection.chain().find(@mentionableUserIds).data(), (u) =>
+        _isString(u.username) &&
+        (u.name.toLowerCase().startsWith(@query) or
+        (u.username || "").toLowerCase().startsWith(@query) or
+        u.name.toLowerCase().includes(" #{@query}"))
+      _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
+
+  methods:
+    fetchMentionable: ->
+      Records.users.fetchMentionable(@query, @model).then (response) =>
+        @mentionableUserIds.concat(_.uniq @mentionableUserIds + _.map(response.users, 'id'))
+
+    # // navigate to the previous item
+    # // if it's the first item, navigate to the last one
+    upHandler: ->
+      @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length
+
+    # // navigate to the next item
+    # // if it's the last item, navigate to the first one
+    downHandler: ->
+      @navigatedUserIndex = (@navigatedUserIndex + 1) % @filteredUsers.length
+
+    enterHandler: ->
+      user = @filteredUsers[@navigatedUserIndex]
+      @selectUser(user) if user
+
+    # // we have to replace our suggestion text with a mention
+    # // so it's important to pass also the position of your suggestion text
+    selectUser: (user) ->
+      @insertMention
+        range: @suggestionRange
+        attrs:
+          id: user.id,
+          label: user.name
+      @editor.focus()
+
+     # // renders a popup with suggestions
+     # // tiptap provides a virtualNode object for using popper.js (or tippy.js) for popups
+     renderPopup: (node) ->
+       return if @popup
+       @popup = tippy(node, {
+         content: @$refs.suggestions,
+         trigger: 'mouseenter',
+         interactive: true,
+         theme: 'dark',
+         placement: 'top-start',
+         performance: true,
+         inertia: true,
+         duration: [400, 200],
+         showOnInit: true,
+         arrow: true,
+         arrowType: 'round'
+       })
+
+     destroyPopup: ->
+       if (@popup)
+         @popup.destroyAll()
+         @popup = null
+
+  mounted: ->
+
   beforeDestroy: ->
     @editor.destroy()
 </script>
 
 <template lang="pug">
-.editor
-  editor-menu-bubble.menububble.is-hidden(:editor='editor')
-    .menububble(slot-scope='{ commands, isActive, getMarkAttrs, menu }', :class="{ 'is-active': menu.isActive }", :style='`left: ${menu.left}px; bottom: ${menu.bottom}px;`')
-      form.menububble__form(v-if='linkMenuIsActive', @submit.prevent='setLinkUrl(commands.link, linkUrl)')
-        input.menububble__input(type='text', v-model='linkUrl', placeholder='https://', ref='linkInput', @keydown.esc='hideLinkMenu')
-        v-btn.menububble__button(icon @click='setLinkUrl(commands.link, null)')
-          v-icon mdi-close-circle-outline
-      template(v-else)
-        v-btn.menububble__button(@click="showLinkMenu(getMarkAttrs('link'))", :class="{ 'is-active': isActive.link() }")
-          span Link
-          v-icon mdi-link
+div
+  .editor
+    editor-menu-bar(:editor='editor')
+      .menubar(slot-scope='{ commands, isActive }')
+        v-btn-toggle(multiple)
+          v-btn.menubar__button(icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
+            v-icon mdi-format-bold
+          v-btn.menubar__button(icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
+            v-icon mdi-format-italic
+          v-btn.menubar__button(icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
+            v-icon mdi-format-strikethrough
+          v-btn.menubar__button(icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
+            v-icon mdi-format-underline
+          //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code() }", @click='commands.code')
+          //-   v-icon mdi-code-braces
+          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
+            v-icon mdi-format-pilcrow
+          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
+            v-icon mdi-format-header-1
+          v-btn.menubar__v-btn(icon @click='commands.todo_list')
+            v-icon mdi-format-list-checks
+        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
+        //-   v-icon mdi-format-header-2
+        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
+        //-   v-icon mdi-format-header-3
+        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
+        //-   v-icon mdi-format-list-bulleted
+        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
+        //-   v-icon mdi-format-list-numbered
+        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
+        //-   v-icon mdi-format-quote-closed
+        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
+        //-   v-icon mdi-code-tags
+        //- v-btn.menubar__v-btn(icon @click='commands.horizontal_rule')
+        //-   v-icon mdi-format-page-break
+        //- v-btn.menubar__v-btn(icon @click='commands.undo')
+        //-   v-icon mdi-undo
+        //- v-btn.menubar__v-btn(icon @click='commands.redo')
+        //-   v-icon mdi-redo
+    editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
 
-  editor-menu-bar(:editor='editor')
-    .menubar(slot-scope='{ commands, isActive }')
-      v-btn-toggle(v-model="toggle_multiple" multiple)
-        v-btn.menubar__button(icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
-          v-icon mdi-format-bold
-        v-btn.menubar__button(icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
-          v-icon mdi-format-italic
-        v-btn.menubar__button(icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
-          v-icon mdi-format-strikethrough
-        v-btn.menubar__button(icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
-          v-icon mdi-format-underline
-        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code() }", @click='commands.code')
-        //-   v-icon mdi-code-braces
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
-          v-icon mdi-format-pilcrow
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
-          v-icon mdi-format-header-1
-        v-btn.menubar__v-btn(icon @click='commands.todo_list')
-          v-icon mdi-format-list-checks
-      //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
-      //-   v-icon mdi-format-header-2
-      //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
-      //-   v-icon mdi-format-header-3
-      //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
-      //-   v-icon mdi-format-list-bulleted
-      //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
-      //-   v-icon mdi-format-list-numbered
-      //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
-      //-   v-icon mdi-format-quote-closed
-      //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
-      //-   v-icon mdi-code-tags
-      //- v-btn.menubar__v-btn(icon @click='commands.horizontal_rule')
-      //-   v-icon mdi-format-page-break
-      //- v-btn.menubar__v-btn(icon @click='commands.undo')
-      //-   v-icon mdi-undo
-      //- v-btn.menubar__v-btn(icon @click='commands.redo')
-      //-   v-icon mdi-redo
-  editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
+  .suggestion-list(v-show='showSuggestions', ref='suggestions')
+    template(v-if='hasResults')
+      .suggestion-list__item(v-for='(user, index) in filteredUsers', :key='user.id', :class="{ 'is-selected': navigatedUserIndex === index }", @click='selectUser(user)')
+        | {{ user.name }}
+    .suggestion-list__item.is-empty(v-else) No users found
 </template>
 
 <style lang="scss">
-.menububble {
- position:absolute;
- display:flex;
- z-index:20;
- background:#000;
- border-radius:5px;
- padding:.3rem;
- margin-bottom:.5rem;
- transform:translateX(-50%);
- visibility:hidden;
- opacity:0;
- transition:opacity .2s,visibility .2s
-}
-.menububble.is-active {
- opacity:1;
- visibility:visible
-}
-.menububble__button {
- display:inline-flex;
- background:rgba(0,0,0,0);
- border:0;
- color:#fff;
- padding:.2rem .5rem;
- margin-right:.2rem;
- border-radius:3px;
- cursor:pointer
-}
-.menububble__button:last-child {
- margin-right:0
-}
-.menububble__button:hover {
- background-color:hsla(0,0%,100%,.1)
-}
-.menububble__button.is-active {
- background-color:hsla(0,0%,100%,.2)
-}
-.menububble__form {
- display:flex;
- align-items:center
-}
-.menububble__input {
- font:inherit;
- border:none;
- background:rgba(0,0,0,0);
- color:#fff
-}
-
-.menubar {
- margin-bottom:1rem;
- transition:visibility .2s .4s,opacity .2s .4s
-}
-.menubar.is-hidden {
- visibility:hidden;
- opacity:0
-}
-.menubar.is-focused {
- visibility:visible;
- opacity:1;
- transition:visibility .2s,opacity .2s
-}
-.menubar__button {
- font-weight:700;
- display:inline-flex;
- background:rgba(0,0,0,0);
- border:0;
- color:#000;
- padding:.2rem .5rem;
- margin-right:.2rem;
- border-radius:3px;
- cursor:pointer
-}
-.menubar__button:hover {
- background-color:rgba(0,0,0,.05)
-}
-.menubar__button.is-active {
- background-color:rgba(0,0,0,.1)
-}
-
-ul[data-type=todo_list] {
- padding-left:0
-}
-li[data-type=todo_item] {
- display:-webkit-box;
- display:-ms-flexbox;
- display:flex;
- -webkit-box-orient:horizontal;
- -webkit-box-direction:normal;
- -ms-flex-direction:row;
- flex-direction:row
-}
-.todo-checkbox {
- border:2px solid #000;
- height:.9em;
- width:.9em;
- -webkit-box-sizing:border-box;
- box-sizing:border-box;
- margin-right:10px;
- margin-top:.3rem;
- -moz-user-select:none;
- -ms-user-select:none;
- user-select:none;
- -webkit-user-select:none;
- cursor:pointer;
- border-radius:.2em;
- background-color:rgba(0,0,0,0);
- -webkit-transition:background .4s;
- transition:background .4s
-}
-.todo-content {
- -webkit-box-flex:1;
- -ms-flex:1;
- flex:1
-}
-li[data-done=true] {
- text-decoration:line-through
-}
-li[data-done=true] .todo-checkbox {
- background-color:#000
-}
-li[data-done=false] {
- text-decoration:none
-}
-
-.editor {
- position:relative
-}
-.editor__floating-menu {
- position:absolute;
- margin-top:-.25rem;
- visibility:hidden;
- opacity:0;
- -webkit-transition:opacity .2s,visibility .2s;
- transition:opacity .2s,visibility .2s
-}
-.editor__floating-menu.is-active {
- opacity:1;
- visibility:visible
-}
 
 $color-black: #000;
 $color-white: #fff;
+
+// @import '~modules/tippy.js/dist/tippy.css';
 
 .mention {
   background: rgba($color-black, 0.1);
@@ -352,5 +302,4 @@ $color-white: #fff;
     border-right-color: $color-black;
   }
 }
-
 </style>
