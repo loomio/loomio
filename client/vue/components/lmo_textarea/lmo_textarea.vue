@@ -35,11 +35,10 @@ module.exports =
     editor: new Editor
       extensions: [
           new Mention(
-            items: []
 
             # is called when a suggestion starts
-            onEnter: ({ items, query, range, command, virtualNode }) =>
-              console.log "suggestion started", items, query, range
+            onEnter: ({ query, range, command, virtualNode }) =>
+              # console.log "suggestion started", items, query, range
               @query = query
               @suggestionRange = range
               @insertMention = command
@@ -47,8 +46,8 @@ module.exports =
               @fetchMentionable()
 
             # is called when a suggestion has changed
-            onChange: ({items, query, range, virtualNode}) =>
-              console.log "suggestion changed", items, query, range
+            onChange: ({query, range, virtualNode}) =>
+              # console.log "suggestion changed", items, query, range
               @query = query
               @suggestionRange = range
               @navigatedUserIndex = 0
@@ -57,7 +56,6 @@ module.exports =
 
             # is called when a suggestion is cancelled
             onExit: =>
-              # // reset all saved values
               @query = null
               @suggestionRange = null
               @navigatedUserIndex = 0
@@ -65,32 +63,22 @@ module.exports =
 
             # is called on every keyDown event while a suggestion is active
             onKeyDown: ({ event }) =>
-              # // pressing up arrow
+              # pressing up arrow
               if (event.keyCode == 38)
                 @upHandler()
                 return true
 
-              # // pressing down arrow
+              # pressing down arrow
               if (event.keyCode == 40)
                 @downHandler()
                 return true
 
-              # // pressing enter
+              # pressing enter
               if (event.keyCode == 13)
                 @enterHandler()
                 return true
 
               return false
-
-            # // is called when a suggestion has changed
-            onFilter: (items, query) =>
-              console.log "on filter #{query}"
-              unsorted = _filter items, (i) ->
-                  _isString(u.username) &&
-                  (u.name.toLowerCase().startsWith(query) or
-                   (u.username || "").toLowerCase().startsWith(query) or
-                   u.name.toLowerCase().includes(" #{query}"))
-              _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
           ),
 
           new Blockquote(),
@@ -111,8 +99,10 @@ module.exports =
           new Strike(),
           new Underline(),
           new History()]
-      content: '<p>This is just a boring paragraph</p>'
-
+      content: @model[@field]
+      onUpdate: ({ getJSON, getHTML }) =>
+        @model[@field] = getHTML()
+        @model["#{@field}Format"] = "html"
 
   computed:
     hasResults: -> @filteredUsers.length
@@ -130,13 +120,13 @@ module.exports =
       Records.users.fetchMentionable(@query, @model).then (response) =>
         @mentionableUserIds.concat(_.uniq @mentionableUserIds + _.map(response.users, 'id'))
 
-    # // navigate to the previous item
-    # // if it's the first item, navigate to the last one
+    # navigate to the previous item
+    # if it's the first item, navigate to the last one
     upHandler: ->
       @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length
 
-    # // navigate to the next item
-    # // if it's the last item, navigate to the first one
+    # navigate to the next item
+    # if it's the last item, navigate to the first one
     downHandler: ->
       @navigatedUserIndex = (@navigatedUserIndex + 1) % @filteredUsers.length
 
@@ -144,8 +134,8 @@ module.exports =
       user = @filteredUsers[@navigatedUserIndex]
       @selectUser(user) if user
 
-    # // we have to replace our suggestion text with a mention
-    # // so it's important to pass also the position of your suggestion text
+    # we have to replace our suggestion text with a mention
+    # so it's important to pass also the position of your suggestion text
     selectUser: (user) ->
       @insertMention
         range: @suggestionRange
@@ -154,8 +144,8 @@ module.exports =
           label: user.name
       @editor.focus()
 
-     # // renders a popup with suggestions
-     # // tiptap provides a virtualNode object for using popper.js (or tippy.js) for popups
+     # renders a popup with suggestions
+     # tiptap provides a virtualNode object for using popper.js (or tippy.js) for popups
      renderPopup: (node) ->
        return if @popup
        @popup = tippy(node, {
@@ -177,8 +167,6 @@ module.exports =
          @popup.destroyAll()
          @popup = null
 
-  mounted: ->
-
   beforeDestroy: ->
     @editor.destroy()
 </script>
@@ -188,7 +176,7 @@ div
   .editor
     editor-menu-bar(:editor='editor')
       .menubar(slot-scope='{ commands, isActive }')
-        v-btn-toggle(multiple)
+        v-btn-toggle
           v-btn.menubar__button(icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
             v-icon mdi-format-bold
           v-btn.menubar__button(icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
@@ -248,9 +236,11 @@ $color-white: #fff;
   padding: 0.2rem 0.5rem;
   white-space: nowrap;
 }
+
 .mention-suggestion {
   color: rgba($color-black, 0.6);
 }
+
 .suggestion-list {
   padding: 0.2rem;
   border: 2px solid rgba($color-black, 0.1);
@@ -276,6 +266,7 @@ $color-white: #fff;
     }
   }
 }
+
 .tippy-tooltip.dark-theme {
   background-color: $color-black;
   padding: 0;
@@ -301,5 +292,43 @@ $color-white: #fff;
   .tippy-popper[x-placement^=right] & .tippy-arrow {
     border-right-color: $color-black;
   }
+}
+
+ul[data-type="todo_list"] {
+  padding-left: 0;
+}
+
+li[data-type="todo_item"] {
+  display: flex;
+  flex-direction: row;
+}
+
+.todo-checkbox {
+  border: 2px solid $color-black;
+  height: 0.9em;
+  width: 0.9em;
+  box-sizing: border-box;
+  margin-right: 10px;
+  margin-top: 0.3rem;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  border-radius: 0.2em;
+  background-color: transparent;
+  transition: 0.4s background;
+}
+
+.todo-content {
+  flex: 1;
+}
+
+li[data-done="true"] {
+  text-decoration: line-through;
+}
+li[data-done="true"] .todo-checkbox {
+  background-color: $color-black;
+}
+li[data-done="false"] {
+  text-decoration: none;
 }
 </style>

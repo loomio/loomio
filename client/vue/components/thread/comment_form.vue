@@ -31,6 +31,8 @@ module.exports =
     eventWindow: Object
   data: ->
     comment: Records.comments.build
+      body_format: "html"
+      body: ""
       discussionId: @eventWindow.discussion.id
       authorId: Session.user().id
     isDisabled: null

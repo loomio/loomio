@@ -89,7 +89,9 @@ module.exports =
 
 <template lang="pug">
   .new-comment(id="'comment-'+ eventable.id")
-    .thread-item__body.new-comment__body.lmo-markdown-wrapper(v-if='!eventable.translation', v-marked='eventable.cookedBody()')
+    div(v-if='!eventable.translation')
+    .thread-item__body.new-comment__body.lmo-markdown-wrapper(v-if='eventable.bodyFormat == "md"', v-marked='eventable.cookedBody()')
+    .thread-item__body.new-comment__body.lmo-markdown-wrapper(v-if='eventable.bodyFormat == "html"', v-html='eventable.body')
     translation.thread-item__body(v-if='eventable.translation', :model='eventable', field='body')
     //- <outlet name="after-comment-body" model="eventable"></outlet>
     document-list(:model='eventable', :skip-fetch='true')
