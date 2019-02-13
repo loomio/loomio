@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181204232402) do
+ActiveRecord::Schema.define(version: 2019_02_13_025154) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
   enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20181204232402) do
     t.integer "attachments_count", default: 0, null: false
     t.datetime "edited_at"
     t.integer "versions_count", default: 0
+    t.string "body_format", limit: 10, default: "md", null: false
     t.index ["created_at"], name: "index_comments_on_created_at"
     t.index ["discussion_id"], name: "index_comments_on_commentable_id"
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
@@ -181,12 +182,13 @@ ActiveRecord::Schema.define(version: 20181204232402) do
     t.integer "seen_by_count", default: 0, null: false
     t.string "ranges_string"
     t.integer "guest_group_id"
+    t.string "description_format", limit: 10, default: "md", null: false
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
     t.index ["guest_group_id"], name: "index_discussions_on_guest_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true
-    t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: { last_activity_at: :desc }
+    t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: :desc
     t.index ["private"], name: "index_discussions_on_private"
   end
 
@@ -326,6 +328,7 @@ ActiveRecord::Schema.define(version: 20181204232402) do
     t.string "token"
     t.string "admin_tags"
     t.boolean "members_can_announce", default: true, null: false
+    t.string "description_format", limit: 10, default: "md", null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
@@ -496,6 +499,7 @@ ActiveRecord::Schema.define(version: 20181204232402) do
     t.boolean "latest", default: true, null: false
     t.integer "poll_option_id"
     t.jsonb "custom_fields", default: {}, null: false
+    t.string "statement_format", limit: 10, default: "md", null: false
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
@@ -552,6 +556,7 @@ ActiveRecord::Schema.define(version: 20181204232402) do
     t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false
     t.integer "versions_count", default: 0
+    t.string "details_format", limit: 10, default: "md", null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
@@ -589,20 +594,17 @@ ActiveRecord::Schema.define(version: 20181204232402) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "versions_count", default: 0
+    t.string "reason_format", limit: 10, default: "md", null: false
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
   end
 
   create_table "subscriptions", id: :serial, force: :cascade do |t|
-    t.string "kind"
-    t.date "expires_at"
-    t.date "trial_ended_at"
-    t.date "activated_at"
+    t.datetime "expires_at"
     t.integer "chargify_subscription_id"
-    t.string "plan"
+    t.string "plan", default: "trial"
     t.string "payment_method", default: "chargify", null: false
     t.integer "owner_id"
-    t.index ["kind"], name: "index_subscriptions_on_kind"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
@@ -694,6 +696,7 @@ ActiveRecord::Schema.define(version: 20181204232402) do
     t.datetime "last_seen_at"
     t.datetime "legal_accepted_at"
     t.boolean "email_newsletter", default: false, null: false
+    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)"
     t.index ["email"], name: "index_users_on_email"
