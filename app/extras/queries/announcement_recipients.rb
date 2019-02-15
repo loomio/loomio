@@ -6,7 +6,7 @@ Queries::AnnouncementRecipients = Struct.new(:query, :user, :model) do
   private
 
   def email_result
-    emails = query.scan(AppConfig::EMAIL_REGEX)
+    emails = query.scan(AppConfig::EMAIL_REGEX).uniq
     case emails.length
     when 0
     when 1

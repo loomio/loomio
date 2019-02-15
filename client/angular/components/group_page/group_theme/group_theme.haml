@@ -37,5 +37,6 @@
         %outlet{name: "group-theme-actions", model: "group"}
         .group-theme__member-actions{ng-if: "canPerformActions()"}
           %outlet{name: "group-theme-member-actions", model: "group"}
+          %current_plan_button{group: "group"}
           %group_privacy_button{group: "group"}
           %group_actions_dropdown{group: "group"}

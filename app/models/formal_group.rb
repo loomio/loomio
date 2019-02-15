@@ -46,7 +46,7 @@ class FormalGroup < Group
   belongs_to :cohort
   belongs_to :default_group_cover
   belongs_to :subscription
-  
+
   has_many :subgroups,
            -> { where(archived_at: nil) },
            class_name: 'Group',
@@ -132,6 +132,17 @@ class FormalGroup < Group
     self.update_attribute(:archived_at, nil)
     all_memberships.update_all(archived_at: nil)
     all_subgroups.update_all(archived_at: nil)
+  end
+
+  def org_memberships_count
+    Membership.not_archived.where(group_id: id_and_subgroup_ids).count('distinct user_id')
+  end
+
+  def has_max_members
+    parent_group = parent_or_self
+    AppConfig.app_features[:subscriptions] &&
+    parent_group.subscription.max_members &&
+    parent_group.org_memberships_count >= parent_group.subscription.max_members
   end
 
   def is_subgroup_of_hidden_parent?

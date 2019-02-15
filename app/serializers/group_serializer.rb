@@ -52,9 +52,14 @@ class GroupSerializer < Simple::GroupSerializer
                         :recent_activity_count,
                         :is_subgroup_of_hidden_parent,
                         :is_visible_to_parent_members,
-                        :parent_members_can_see_discussions
+                        :parent_members_can_see_discussions,
+                        :org_memberships_count
 
   has_one :parent, serializer: GroupSerializer, root: :groups
+
+  def include_org_memberships_count?
+    object.is_parent?
+  end
 
   def include_token?
     Hash(scope)[:include_token]

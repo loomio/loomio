@@ -443,6 +443,14 @@ en:
       non_voters: People who have not voted
 
     form:
+      too_many_invitations: |
+        Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
+      no_inivtations_remaining: |
+        <p>You have no invitations remaining on your current subscription plan.</p>
+        <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to send more invitations.</p>
+
+      invitations_remaining: '{{count}} invitations remaining. <a href="{{url}}" target="_blank">Upgrade</a>'
+
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?

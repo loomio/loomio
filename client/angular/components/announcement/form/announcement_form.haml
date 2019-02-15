@@ -1,31 +1,46 @@
 .announcement-form
-  .announcement-form__invite
-    %p.announcement-form__help.md-subhead{translate: "announcement.form.{{announcement.kind}}.helptext"}>
-    %md-list
-      %md-list-item.announcement-form__audience.md-whiteframe-1dp{ng-repeat: "audience in audiences()", ng-click: "loadAudience(audience)"}
-        %i.mdi.mdi-18px.mdi-account-multiple.lmo-margin-right--small
-        %span.md-body-1{translate: "announcement.audiences.{{audience}}", translate-values: "audienceValues()"}
+  %div{ng-if: "!canInvite"}
+    .announcement-form__invite
+      %p{translate: "announcement.form.no_inivtations_remaining", translate-values: "{url: upgradeUrl}"}
 
-      %md-autocomplete{md-search-text: "query", md-autoselect: "true", md-autofocus: "true", md-selected-item-change: "addRecipient(recipient)", md-item-text: "recipient.email", placeholder: "{{'announcement.form.placeholder' | translate}}", md-items: "recipient in search(query)", md-min-length: "3", md-delay: "150"}
-        %md-item-template
-          %announcement_chip{user: "recipient"}
+  %div{ng-if: "canInvite"}
+    .announcement-form__invite
+      %p.announcement-form__help.md-subhead{translate: "announcement.form.{{announcement.kind}}.helptext"}>
+      %md-list
+        %md-list-item.announcement-form__audience.md-whiteframe-1dp{ng-repeat: "audience in audiences()", ng-click: "loadAudience(audience)"}
+          %i.mdi.mdi-18px.mdi-account-multiple.lmo-margin-right--small
+          %span.md-body-1{translate: "announcement.audiences.{{audience}}", translate-values: "audienceValues()"}
 
-    %md-list.announcement-form__invited
-      %div.md-subhead.announcement-form__num-notified{ng-switch: "announcement.recipients.length"}
-        %p.lmo-text-right{ng-switch-when: "0", translate: "announcement.form.notified_empty"}
-        %p.lmo-text-right{ng-switch-when: "1", translate: "announcement.form.notified_singular"}
-        %p.lmo-text-right{ng-switch-default: "true", translate: "announcement.form.notified", translate-value-notified: "{{announcement.recipients.length}}"}
-      %md-list-item.announcement-form__list-item{ng-repeat: "recipient in announcement.recipients track by recipient.emailHash"}
-        %announcement_chip{user: "recipient", show-close: "true"}
-  .announcement-form__share-link{ng-if: "!announcement.model.isA('discussion') && announcement.recipients.length == 0"}
-    %p.announcement-form__help.md-subhead{ng-if: "announcement.model.isA('group')", translate: "invitation_form.shareable_link"}>
-    .announcement-shareable-link__content.lmo-flex--column
-      .lmo-flex--row.lmo-flex__center{ng-if: "canUpdateAnyoneCanParticipate() || announcement.model.anyoneCanParticipate"}
-        %md-checkbox.announcement-form__checkbox{ng-model: "announcement.model.anyoneCanParticipate", ng-change: "announcement.model.save()", ng-if: "canUpdateAnyoneCanParticipate()"}
-          %label{translate: "announcement.form.anyone_can_participate"}
+        %md-autocomplete{md-search-text: "query", md-autoselect: "true", md-autofocus: "true", md-selected-item-change: "addRecipient(recipient)", md-item-text: "recipient.email", placeholder: "{{'announcement.form.placeholder' | translate}}", md-items: "recipient in search(query)", md-min-length: "3", md-delay: "150"}
+          %md-item-template
+            %announcement_chip{user: "recipient"}
 
-      .lmo-flex--row.lmo-flex__center{ng-if: "announcement.model.anyoneCanParticipate || announcement.model.isA('group')"}
-        %md-input-container.lmo-flex__grow.md-no-errors.announcement-form__shareable-link
-          %input{value: "{{shareableLink}}", disabled: "true"}
-        %md-button.md-accent.md-button--tiny.announcement-form__copy{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
-          %span{translate: "common.copy"}
+      %div.lmo-flex.lmo-flex__space-between{ng-if: "showInvitationsRemaining"}
+        %div.spacer
+        %p.md-caption{translate: "announcement.form.invitations_remaining", translate-values: "{count: invitationsRemaining, upgradeUrl: upgradeUrl }"}
+
+      %md-list.announcement-form__invited
+        %div.md-subhead.announcement-form__num-notified{ng-switch: "announcement.recipients.length"}
+          %p.lmo-text-right{ng-switch-when: "0", translate: "announcement.form.notified_empty"}
+          %p.lmo-text-right{ng-switch-when: "1", translate: "announcement.form.notified_singular"}
+          %p.lmo-text-right{ng-switch-default: "true", translate: "announcement.form.notified", translate-value-notified: "{{announcement.recipients.length}}"}
+        %md-list-item.announcement-form__list-item{ng-repeat: "recipient in announcement.recipients track by recipient.emailHash"}
+          %announcement_chip{user: "recipient", show-close: "true"}
+    .announcement-form__share-link{ng-if: "!announcement.model.isA('discussion') && announcement.recipients.length == 0"}
+      %p.announcement-form__help.md-subhead{ng-if: "announcement.model.isA('group')", translate: "invitation_form.shareable_link"}>
+      .announcement-shareable-link__content.lmo-flex--column
+        .lmo-flex--row.lmo-flex__center{ng-if: "canUpdateAnyoneCanParticipate() || announcement.model.anyoneCanParticipate"}
+          %md-checkbox.announcement-form__checkbox{ng-model: "announcement.model.anyoneCanParticipate", ng-change: "announcement.model.save()", ng-if: "canUpdateAnyoneCanParticipate()"}
+            %label{translate: "announcement.form.anyone_can_participate"}
+
+        .lmo-flex--row.lmo-flex__center{ng-if: "announcement.model.anyoneCanParticipate || announcement.model.isA('group')"}
+          %md-input-container.lmo-flex__grow.md-no-errors.announcement-form__shareable-link
+            %input{value: "{{shareableLink}}", disabled: "true"}
+          %md-button.md-accent.md-button--tiny.announcement-form__copy{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
+            %span{translate: "common.copy"}
+  %md-dialog-actions
+    .lmo-md-actions
+      %div{ng-if: "announcement.recipients.length"}
+        %p{ng-show: "tooManyInvitations()", translate: "announcement.form.too_many_invitations", translate-values: "{upgradeUrl: upgradeUrl}"}
+      %md-button.md-accent.announcement-form__cancel{ng-if: "!announcement.recipients.length", ng-click: "$emit('$close')", translate: "common.action.close"}
+      %md-button.md-primary.md-raised.announcement-form__submit{ng-disabled: "!announcement.recipients.length || tooManyInvitations()", ng-click: "submit()", translate: "common.action.send"}
