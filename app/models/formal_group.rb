@@ -140,9 +140,10 @@ class FormalGroup < Group
 
   def has_max_members
     parent_group = parent_or_self
+    subscription = Subscription.for(parent_group)
     AppConfig.app_features[:subscriptions] &&
-    parent_group.subscription.max_members &&
-    parent_group.org_memberships_count >= parent_group.subscription.max_members
+    subscription.max_members &&
+    parent_group.org_memberships_count >= subscription.max_members
   end
 
   def is_subgroup_of_hidden_parent?
