@@ -41,6 +41,6 @@
   %md-dialog-actions
     .lmo-md-actions
       %div{ng-if: "announcement.recipients.length"}
-        %p{ng-show: "tooManyInvitations()", translate: "announcement.form.too_many_invitations", translate-values: "{upgradeUrl: upgradeUrl}"}
+        %p.md-subhead{ng-show: "tooManyInvitations()", translate: "announcement.form.too_many_invitations", translate-values: "{upgradeUrl: upgradeUrl}"}
       %md-button.md-accent.announcement-form__cancel{ng-if: "!announcement.recipients.length", ng-click: "$emit('$close')", translate: "common.action.close"}
       %md-button.md-primary.md-raised.announcement-form__submit{ng-disabled: "!announcement.recipients.length || tooManyInvitations()", ng-click: "submit()", translate: "common.action.send"}
