@@ -138,6 +138,10 @@ class FormalGroup < Group
     Membership.not_archived.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
+  def org_discussions_count
+    FormalGroup.where(id: id_and_subgroup_ids).sum(:discussions_count)
+  end
+
   def has_max_members
     parent_group = parent_or_self
     subscription = Subscription.for(parent_group)
@@ -171,7 +175,7 @@ class FormalGroup < Group
   end
 
   def id_and_subgroup_ids
-    Array(id) | subgroup_ids
+    @id_and_subgroup_ids ||= (Array(id) | subgroup_ids)
   end
 
   def handle

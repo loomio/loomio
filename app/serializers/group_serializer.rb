@@ -53,7 +53,9 @@ class GroupSerializer < Simple::GroupSerializer
                         :is_subgroup_of_hidden_parent,
                         :is_visible_to_parent_members,
                         :parent_members_can_see_discussions,
-                        :org_memberships_count
+                        :org_memberships_count,
+                        :org_discussions_count
+
 
   has_one :parent, serializer: GroupSerializer, root: :groups
 
