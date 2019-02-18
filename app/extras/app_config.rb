@@ -74,8 +74,7 @@ class AppConfig
       ahoy_tracking:              !ENV['FEATURES_DISABLE_AHOY_TRACKING'],
       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
       nested_comments:            ENV.fetch('FEATURES_NESTED_COMMENTS_FOR_ALL',    false),
-      default_thread_render_mode: ENV.fetch('FEATURES_DEFAULT_THREAD_RENDER_MODE', 'chronological'),
-      subscriptions:              ENV.fetch('FEATURES_SUBSCRIPTIONS_ENABLED', false)
+      default_thread_render_mode: ENV.fetch('FEATURES_DEFAULT_THREAD_RENDER_MODE', 'chronological')
     }
   end
 

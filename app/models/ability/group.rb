@@ -56,7 +56,7 @@ module Ability::Group
          :invite_people,
          :announce,
          :manage_membership_requests], ::Group do |group|
-      user.email_verified? && !group.has_max_members &&
+      user.email_verified? && Subscription.for(group).is_active? && !group.has_max_members &&
       ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
       user_is_admin_of?(group.id))
     end

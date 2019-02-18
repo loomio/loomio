@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'currentPlanButton', ->
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.plan = $scope.group.subscriptionPlan
-    $scope.show = AppConfig.features.app.subscriptions && $scope.plan == 'trial'
+    $scope.show = $scope.plan == 'trial'
     $scope.upgradeUrl = AppConfig.baseUrl+'upgrade'
   ]
   template: '

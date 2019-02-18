@@ -1,7 +1,8 @@
 .announcement-form
   %div{ng-if: "!canInvite"}
     .announcement-form__invite.md-body-1
-      %p{translate: "announcement.form.no_inivtations_remaining", translate-values: "{upgradeUrl: upgradeUrl}"}
+      %p{ng-if: "invitationsRemaining < 1", translate: "announcement.form.no_inivtations_remaining", translate-values: "{upgradeUrl: upgradeUrl}"}
+      %p{ng-if: "!subscriptionActive", translate: "discussion.subscription_canceled", translate-values: "{upgradeUrl: upgradeUrl}"}
 
   %div{ng-if: "canInvite"}
     .announcement-form__invite

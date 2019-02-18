@@ -1080,6 +1080,9 @@ en:
     max_threads_reached: |
       <p>Sorry! You cannot start another thread because your group is on a trial plan.</p>
       <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
+    subscription_canceled: |
+      <p>Sorry! Your subscription is not active.</p>
+      <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
     activity: 'Activity'
     activity_placeholder: 'No activity yet!'
     load_previous: 'Load earlier activity'

@@ -9,7 +9,9 @@ angular.module('loomioApp').factory 'DiscussionStartModal', ->
     $scope.maxThreads = discussion.group().parentOrSelf().subscriptionMaxThreads
     $scope.threadCount = discussion.group().parentOrSelf().orgDiscussionsCount
     $scope.maxThreadsReached = $scope.maxThreads && $scope.threadCount >= $scope.maxThreads
+    $scope.subscriptionActive = discussion.group().parentOrSelf().subscriptionActive
     $scope.upgradeUrl = AppConfig.baseUrl + 'upgrade'
+    $scope.canStartThread = $scope.subscriptionActive && !$scope.maxThreadsReached
 
     $scope.discussion = discussion.clone()
 

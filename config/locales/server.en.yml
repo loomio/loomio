@@ -79,9 +79,8 @@ en:
       one_at_a_time: There is another active proposal.
 
   subscriptions:
-    gift_plan_selected_for_group_html: |
-      <h1>Success.</h1>
-      <p>You've selected the Free plan for your group <a href="/g/%{group_key}">%{group}</a></p>
+    active: Active
+    inactive: Inactive
 
   user_mailer:
     group_export_ready:
