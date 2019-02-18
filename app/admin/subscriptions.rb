@@ -4,11 +4,10 @@ ActiveAdmin.register Subscription do
   filter :kind
 
   index do
-    column :kind
-    column :trial_created_at
-    column :expires_at
-    column :activated_at
     column :plan
+    column :state
+    column :expires_at
+    column :payment_method
     column :chargify_subscription_id
     column :owner
     actions
@@ -17,16 +16,14 @@ ActiveAdmin.register Subscription do
   show do
     attributes_table do
       row :id
-      row :kind
+      row :plan
+      row :state
       row :expires_at
-      row :trial_ended_at
-      row :activated_at
       row :chargify_subscription_id do |subscription|
         if subscription.chargify_subscription_id
           link_to subscription.chargify_subscription_id, "http://#{ENV['CHARGIFY_APP_NAME']}.chargify.com/subscriptions/#{subscription.chargify_subscription_id}", target: '_blank'
         end
       end
-      row :plan
       row :payment_method
       row :owner
       row :groups do |subscription|
@@ -43,7 +40,6 @@ ActiveAdmin.register Subscription do
       input :plan, as: :select, collection: Subscription::PLAN_NAMES
       input :payment_method, as: :select, collection: Subscription::PAYMENT_METHODS
       input :expires_at
-      input :activated_at
       input :chargify_subscription_id, label: "Chargify Subscription Id"
       input :owner_id, label: "Owner Id"
     end
