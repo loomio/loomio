@@ -449,7 +449,7 @@ en:
         <p>You have no invitations remaining on your current subscription plan.</p>
         <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to send more invitations.</p>
 
-      invitations_remaining: '{{count}} invitations remaining. <a href="{{url}}" target="_blank">Upgrade</a>'
+      invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
 
       group_announced:
         title: Invite to group

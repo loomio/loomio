@@ -1,7 +1,7 @@
 .announcement-form
   %div{ng-if: "!canInvite"}
-    .announcement-form__invite
-      %p{translate: "announcement.form.no_inivtations_remaining", translate-values: "{url: upgradeUrl}"}
+    .announcement-form__invite.md-body-1
+      %p{translate: "announcement.form.no_inivtations_remaining", translate-values: "{upgradeUrl: upgradeUrl}"}
 
   %div{ng-if: "canInvite"}
     .announcement-form__invite
@@ -38,7 +38,7 @@
             %input{value: "{{shareableLink}}", disabled: "true"}
           %md-button.md-accent.md-button--tiny.announcement-form__copy{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
             %span{translate: "common.copy"}
-  %md-dialog-actions
+  %md-dialog-actions{ng-if: "canInvite"}
     .lmo-md-actions
       %div{ng-if: "announcement.recipients.length"}
         %p.md-subhead{ng-show: "tooManyInvitations()", translate: "announcement.form.too_many_invitations", translate-values: "{upgradeUrl: upgradeUrl}"}

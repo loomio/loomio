@@ -1,5 +1,5 @@
 Records        = require 'shared/services/records'
-AppConfig         = require 'shared/services/app_config'
+AppConfig      = require 'shared/services/app_config'
 ModalService   = require 'shared/services/modal_service'
 I18n           = require 'shared/services/i18n'
 EventBus       = require 'shared/services/event_bus'
@@ -18,7 +18,7 @@ angular.module('loomioApp').directive 'announcementForm', ->
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
 
-    $scope.upgradeUrl = AppConfig.baseUrl + '/upgrade'
+    $scope.upgradeUrl = AppConfig.baseUrl + 'upgrade'
 
     $scope.invitationsRemaining =
       ($scope.announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0) -
