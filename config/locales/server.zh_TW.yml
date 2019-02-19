@@ -68,6 +68,9 @@ zh_TW:
     motion:
       must_close_in_future: 提案必須在未來定案。
       one_at_a_time: 有其他活躍的提案。
+  subscriptions:
+    active: 活躍
+    inactive: 不活躍
   user_mailer:
     group_export_ready:
       subject: 匯出「%{group_name}」的群組資料
