@@ -32,12 +32,20 @@ ActiveAdmin.register Subscription do
         end.join(', ').html_safe
       end
     end
+    # panel("Refresh subscription") do
+    #   if subscription.chargify_subscription_id
+    #     form action: refresh_subscription_path(subscription), method: :post do |f|
+    #       f.input type: :submit, value: "Update subscription from chargify"
+    #     end
+    #   else
+    #     "no chargify subscription to refresh"
+    #   end
+    # end
   end
 
   form do |f|
     inputs 'Subscription' do
-      input :kind, as: :select, collection: Subscription::KINDS
-      input :plan, as: :select, collection: Subscription::PLAN_NAMES
+      input :plan, as: :select, collection: SubscriptionService::PLANS.keys
       input :payment_method, as: :select, collection: Subscription::PAYMENT_METHODS
       input :expires_at
       input :chargify_subscription_id, label: "Chargify Subscription Id"
