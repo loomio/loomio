@@ -31,27 +31,42 @@ ActiveAdmin.register Subscription do
           link_to group.name, admin_group_path(group.id)
         end.join(', ').html_safe
       end
+      row :max_threads
+      row :max_members
+      row :max_orgs
     end
-    # panel("Refresh subscription") do
-    #   if subscription.chargify_subscription_id
-    #     form action: refresh_subscription_path(subscription), method: :post do |f|
-    #       f.input type: :submit, value: "Update subscription from chargify"
-    #     end
-    #   else
-    #     "no chargify subscription to refresh"
-    #   end
-    # end
+
+    panel("Refresh chargify") do
+      if subscription.chargify_subscription_id
+        form action: refresh_admin_subscription_path(subscription), method: :post do |f|
+          f.input type: :submit, value: "refresh chargify"
+        end
+      else
+        "no chargify subscription to refresh"
+      end
+    end
   end
 
   form do |f|
     inputs 'Subscription' do
       input :plan, as: :select, collection: SubscriptionService::PLANS.keys
       input :payment_method, as: :select, collection: Subscription::PAYMENT_METHODS
+      input :state, as: :select, collection: ['active', 'canceled']
       input :expires_at
+      input :max_threads
+      input :max_members
+      input :max_orgs
       input :chargify_subscription_id, label: "Chargify Subscription Id"
       input :owner_id, label: "Owner Id"
     end
     f.actions
+  end
+
+  member_action :refresh, :method => :post do
+    subscription = Subscription.find(params[:id])
+    SubscriptionService.update(subscription: subscription,
+                               params: SubscriptionService.chargify_get(subscription.chargify_subscription_id))
+    redirect_to [:admin, subscription]
   end
 
   controller do
