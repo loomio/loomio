@@ -63,6 +63,7 @@ en:
     notification_volume: 'Notification Volume'
     group: 'Group'
     groups: 'Groups'
+    organization: "Organization"
     organizations: "Organizations"
     threads: 'Threads'
     decisions: 'Decisions'
