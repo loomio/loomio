@@ -9,6 +9,8 @@ class FormalGroup < Group
   validates :name, length: { maximum: 250 }
 
   validate :limit_inheritance
+  validates :subscription, absence: true, if: :is_subgroup?
+
 
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
