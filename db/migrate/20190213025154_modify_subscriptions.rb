@@ -6,6 +6,5 @@ class ModifySubscriptions < ActiveRecord::Migration[5.2]
     change_column :subscriptions, :plan,           :string, default: "free"
     change_column :subscriptions, :expires_at,     :datetime
     change_column :subscriptions, :payment_method, :string, default: "none"
-    add_index     :subscriptions, :chargify_subscription_id, unique: true
   end
 end
