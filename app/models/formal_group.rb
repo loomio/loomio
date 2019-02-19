@@ -9,6 +9,8 @@ class FormalGroup < Group
   validates :name, length: { maximum: 250 }
 
   validate :limit_inheritance
+  validates :subscription, absence: true, if: :is_subgroup?
+
 
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
@@ -46,7 +48,7 @@ class FormalGroup < Group
   belongs_to :cohort
   belongs_to :default_group_cover
   belongs_to :subscription
-  
+
   has_many :subgroups,
            -> { where(archived_at: nil) },
            class_name: 'Group',
@@ -134,6 +136,20 @@ class FormalGroup < Group
     all_subgroups.update_all(archived_at: nil)
   end
 
+  def org_memberships_count
+    Membership.not_archived.where(group_id: id_and_subgroup_ids).count('distinct user_id')
+  end
+
+  def org_discussions_count
+    FormalGroup.where(id: id_and_subgroup_ids).sum(:discussions_count)
+  end
+
+  def has_max_members
+    parent_group = parent_or_self
+    subscription = Subscription.for(parent_group)
+    subscription.max_members && parent_group.org_memberships_count >= subscription.max_members
+  end
+
   def is_subgroup_of_hidden_parent?
     is_subgroup? and parent.is_hidden_from_public?
   end
@@ -159,7 +175,7 @@ class FormalGroup < Group
   end
 
   def id_and_subgroup_ids
-    Array(id) | subgroup_ids
+    @id_and_subgroup_ids ||= (Array(id) | subgroup_ids)
   end
 
   def handle

@@ -324,6 +324,16 @@ describe API::AnnouncementsController do
         expect(User.where(email: notified_user.email).count).to eq 2
         expect(notified_user.groups).to_not include group.guest_group
       end
+
+      it 'does not allow announcement if max members is reached' do
+        AppConfig.app_features[:subscription] = true
+        Subscription.for(group).update(max_members: 0)
+        recipients = {user_ids: [], emails: ['jim@example.com']}
+        post :create, params: {group_id: group.id,
+                               announcement: {kind: "group_announced", recipients: recipients}}
+        json = JSON.parse response.body
+        expect(response.status).to eq 403
+      end
     end
   end
 end

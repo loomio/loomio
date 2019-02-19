@@ -3,11 +3,15 @@
   %head
     %title= AppConfig.theme[:site_name]
     %meta{charset: 'utf-8'}
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     = stylesheet_link_tag 'basic/all'
   %body
     %header
-      %img{src: AppConfig.theme[:app_logo_src]}
+      %a{href: root_url}
+        %img{src: AppConfig.theme[:app_logo_src]}
     %main
       = yield
     %footer
+      - if @footer
+        = render @footer
     = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]

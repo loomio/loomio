@@ -63,7 +63,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     render 'stats', { group: group }
 
     if group.subscription_id
-      render 'subscription', { subscription: group.subscription }
+      render 'subscription', { subscription: Subscription.for(group)}
     end
 
     panel("Subgroups") do

@@ -63,6 +63,7 @@ en:
     notification_volume: 'Notification Volume'
     group: 'Group'
     groups: 'Groups'
+    organizations: "Organizations"
     threads: 'Threads'
     decisions: 'Decisions'
     settings: 'Settings'
@@ -289,7 +290,7 @@ en:
     recent_threads: 'Recent threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
-    start_group: 'New group'
+    start_group: 'New organization'
     explore: 'Public groups'
     start_thread: New thread
     start_decision: New decision
@@ -443,6 +444,14 @@ en:
       non_voters: People who have not voted
 
     form:
+      too_many_invitations: |
+        Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
+      no_inivtations_remaining: |
+        <p>You have no invitations remaining on your current subscription plan.</p>
+        <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to send more invitations.</p>
+
+      invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
+
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?
@@ -1068,6 +1077,12 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
 
   discussion:
+    max_threads_reached: |
+      <p>Sorry! You cannot start another thread because your group is on a trial plan.</p>
+      <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
+    subscription_canceled: |
+      <p>Sorry! Your subscription is not active.</p>
+      <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
     activity: 'Activity'
     activity_placeholder: 'No activity yet!'
     load_previous: 'Load earlier activity'
