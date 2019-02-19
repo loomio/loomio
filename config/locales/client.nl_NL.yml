@@ -247,7 +247,6 @@ nl_NL:
     recent_threads: 'Recente borden'
     unread_threads: 'Ongelezen borden ({{count}})'
     muted_threads: 'Gedempte borden'
-    start_group: 'Nieuwe groep'
     explore: 'Openbare groepen'
     start_thread: Nieuw bord
     start_decision: Nieuwe beslissing

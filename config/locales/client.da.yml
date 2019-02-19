@@ -186,7 +186,6 @@ da:
     recent_threads: 'Seneste debatter'
     unread_threads: 'Ulæste debatter ({{count}})'
     muted_threads: 'Uden notifikationer'
-    start_group: 'Opret gruppe'
     explore: 'Offentlige grupper'
     start_thread: Opret debat
     start_decision: Opret stillingtagen

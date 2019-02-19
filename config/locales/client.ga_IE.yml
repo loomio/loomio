@@ -148,7 +148,6 @@ ga_IE:
     submit_button:
       label: 'Foilsigh é'
   sidebar:
-    start_group: 'Baicle nua'
     explore: 'Baiclí poiblí'
     start_thread: Snáith nua
     start_decision: Cinneadh nua

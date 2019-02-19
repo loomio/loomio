@@ -188,7 +188,6 @@ ro:
   sidebar:
     recent_threads: 'Conversatii recente'
     unread_threads: 'Conversatii necitite ({{count}})'
-    start_group: 'Grup nou'
     explore: 'Grupuri publice'
     start_thread: Conversatie noua
     start_decision: Decizie noua

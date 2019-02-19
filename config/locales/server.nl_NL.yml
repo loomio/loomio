@@ -42,11 +42,6 @@ nl_NL:
     motion:
       must_close_in_future: '''Voorstel'' moet in de toekomst sluiten.'
       one_at_a_time: Er is een ander 'Voorstel' actief.
-  subscriptions:
-    gift_plan_selected_for_group_html: |+
-        <h1>Succes.</h1>
-        <p>Je hebt voor je groep het Gratis pakket geselecteerd <a href="/g/%{group_key}">%{group}</a></p>
-
   user_mailer:
     accounts_merged:
       subject: "Je gebruikersaccounts van %{site_name} werden samengevoegd."

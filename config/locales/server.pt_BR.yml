@@ -68,10 +68,6 @@ pt_BR:
     motion:
       must_close_in_future: Proposta deve encerrar no futuro.
       one_at_a_time: Há outra proposta ativa.
-  subscriptions:
-    gift_plan_selected_for_group_html: |
-        <h1>Confirmado.</h1>
-        <p>Você selecionou o plano Gratuito para o seu grupo <a href="/g/%{group_key}">%{group}</a></p>
   user_mailer:
     group_export_ready:
       subject: Dados do Grupo para exportar %{group_name}

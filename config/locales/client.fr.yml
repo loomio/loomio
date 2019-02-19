@@ -269,7 +269,6 @@ fr:
     recent_threads: 'Discussions récentes'
     unread_threads: 'Discussions non lues ({{count}})'
     muted_threads: 'Discussions ignorées'
-    start_group: 'Nouveau groupe'
     explore: 'Groupes publics'
     start_thread: Nouvelle discussion
     start_decision: Nouvelle décision

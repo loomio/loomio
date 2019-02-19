@@ -191,7 +191,6 @@ cs:
     recent_threads: 'Aktuální vlákna'
     unread_threads: 'Nepřečtená vlákna ({{count}})'
     muted_threads: 'Ztlumená vlákna'
-    start_group: 'Nová skupina'
     explore: 'Veřejné skupiny'
     start_thread: Nové vlákno
     start_decision: Nové rozhodnutí

@@ -269,7 +269,6 @@ es:
     recent_threads: 'Hilos recientes'
     unread_threads: 'No leído ({{count}})'
     muted_threads: 'Hilos silenciados '
-    start_group: 'Nuevo grupo'
     explore: 'Grupos públicos'
     start_thread: Nuevo hilo
     start_decision: 'Nueva decisión  '

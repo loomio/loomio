@@ -268,7 +268,6 @@ de:
     recent_threads: 'Aktuelle Diskussionen'
     unread_threads: 'Ungelesene Diskussionen ({{count}})'
     muted_threads: 'Stummgeschaltete Diskussionen'
-    start_group: 'Neue Gruppe'
     explore: 'Öffentliche Gruppen'
     start_thread: Neue Diskussion
     start_decision: Neue Abstimmung

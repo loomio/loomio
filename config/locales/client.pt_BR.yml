@@ -263,7 +263,6 @@ pt_BR:
     recent_threads: 'Conversas recentes'
     unread_threads: 'Conversas não lidas ({{count}})'
     muted_threads: 'Conversas silenciadas'
-    start_group: 'Novo grupo'
     explore: 'Grupos públicos'
     start_thread: Nova conversa
     start_decision: Nova decisão

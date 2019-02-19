@@ -128,7 +128,6 @@ tr:
     private_privacy_notice: 'Yorumunuz sadece {{groupName}} grubunun üyelerine görünür olacak.'
     public_privacy_notice: 'Yorumunuz web üzerindeki herkese görünür olacak.'
   sidebar:
-    start_group: 'Yeni grup'
     explore: 'Genel gruplar'
     start_thread: Yeni konu
     aria_labels:

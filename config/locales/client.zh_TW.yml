@@ -270,7 +270,6 @@ zh_TW:
     recent_threads: '最近的討論串'
     unread_threads: '未讀的討論串 ({{count}})'
     muted_threads: '已靜音的討論串'
-    start_group: '新增群組'
     explore: '公開群組'
     start_thread: 新討論串
     start_decision: 新決策

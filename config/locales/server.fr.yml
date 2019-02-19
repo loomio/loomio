@@ -68,11 +68,6 @@ fr:
     motion:
       must_close_in_future: Une proposition ne peut se terminer dans le passé
       one_at_a_time: Il y a une autre proposition active.
-  subscriptions:
-    gift_plan_selected_for_group_html: |+
-        <h1>Bravo.</h1>
-        <p>Vous avez choisi l'offre gratuite pour votre groupe <a href="/g/%{group_key}">%{group}</a></p>
-
   user_mailer:
     group_export_ready:
       subject: Export des données du groupe %{group_name}

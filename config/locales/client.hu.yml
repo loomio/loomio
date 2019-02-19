@@ -268,7 +268,6 @@ hu:
     recent_threads: 'Új tredek'
     unread_threads: 'Olvasatlan tredek ({{count}})'
     muted_threads: 'Némított tredek'
-    start_group: 'Új csoport'
     explore: 'Nyilvános csoportok'
     start_thread: Új tred
     start_decision: Új döntés

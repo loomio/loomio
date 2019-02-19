@@ -220,7 +220,6 @@ ru:
     sign_in: "Войдите чтобы присоеденится к разговору"
   sidebar:
     recent_threads: 'Последние темы'
-    start_group: 'Новая группа'
     explore: 'Публичная группа'
     start_thread: Новая тема
     start_decision: Новое решение

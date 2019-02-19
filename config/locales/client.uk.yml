@@ -248,7 +248,6 @@ uk:
     recent_threads: 'Нещодавні теми'
     unread_threads: 'Не прочитані ({{count}}) тем'
     muted_threads: 'Вимкнуті теми'
-    start_group: 'Нова група'
     explore: 'Відкриті групи'
     start_thread: Нова тема
     start_decision: Нове рішення

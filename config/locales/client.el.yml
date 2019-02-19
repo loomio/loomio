@@ -170,7 +170,6 @@ el:
     recent_threads: 'Πρόσφατα θέματα'
     unread_threads: 'Αδιάβαστα θέματα ({{count}})'
     muted_threads: 'Θέματα σε σίγαση'
-    start_group: 'Νέα ομάδα'
     explore: 'Δημόσιες ομάδες'
     start_thread: Νέο θέμα
     start_decision: Νέα απόφαση
