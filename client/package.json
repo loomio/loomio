@@ -29,7 +29,7 @@
     "angular-elastic": "latest",
     "angular-gravatar": "~0.4.2",
     "angular-inview": "2.3.1",
-    "angular-material": "1.1.12",
+    "angular-material": "1.1.13",
     "angular-messages": "1.7.7",
     "angular-mocks": "^1.7.7",
     "angular-recaptcha": "4.2.0",
@@ -102,6 +102,6 @@
     "uglify-es": "^3.3.9",
     "uglifyify": "^5.0.1",
     "vinyl-buffer": "^1.0.1",
-    "yargs": "^13.2.0"
+    "yargs": "^13.2.1"
   }
 }
