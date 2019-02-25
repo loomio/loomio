@@ -83,7 +83,7 @@ describe MigrateUserService do
     assert_equal jennifer.memberships_count, 2
 
     assert_equal 1, poll.reload.stances_count
-    assert_equal 1, group.reload.memberships_count
+    assert_equal 2, group.reload.memberships_count
     assert_equal 1, group.reload.pending_memberships_count
     assert_equal 1, group.reload.admin_memberships_count
     assert_equal version.reload.whodunnit, jennifer.id
