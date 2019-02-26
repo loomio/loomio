@@ -4,6 +4,8 @@ class Subscription < ApplicationRecord
   has_many :groups
   belongs_to :owner, class_name: 'User'
 
+  attr_accessor :chargify_product_id
+
   def self.for(group)
     group.subscription || begin
       group.subscription = Subscription.new
