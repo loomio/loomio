@@ -5,7 +5,7 @@ module.exports = {
   'can create a tag for a group and a discussion': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_group_on_paid_plan')
+    page.loadPath('setup_group')
     page.click('.tag-form__create-tag')
     page.fillIn('.tag-form__name', 'Tag Name')
     page.click( '.tag-form__submit')
@@ -22,7 +22,7 @@ module.exports = {
   'can create a discussion tag for a discussion': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_group_on_paid_plan')
+    page.loadPath('setup_group')
     page.click('.tag-form__create-tag')
     page.fillIn('.tag-form__name', 'Tag Name')
     page.click( '.tag-form__submit')
