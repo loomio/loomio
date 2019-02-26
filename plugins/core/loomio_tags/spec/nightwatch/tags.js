@@ -22,7 +22,7 @@ module.exports = {
   'can create a discussion tag for a discussion': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_group_with_pinned_discussion')
+    page.loadPath('setup_group_with_discussion')
     page.click('.tag-form__create-tag')
     page.fillIn('.tag-form__name', 'Tag Name')
     page.click( '.tag-form__submit')

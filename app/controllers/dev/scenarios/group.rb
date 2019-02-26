@@ -11,6 +11,13 @@ module Dev::Scenarios::Group
     redirect_to group_url(create_group)
   end
 
+  def setup_group_with_discussion
+    sign_in patrick
+    create_group.add_member! emilio
+    create_discussion
+    redirect_to group_url(create_group)
+  end
+
   def setup_group_with_handle
     sign_in patrick
     create_group.update_attributes(name: 'Ghostbusters', handle: 'ghostbusters')
