@@ -1221,7 +1221,7 @@ en:
   contact_message_form:
     title: "Hi there! How can we help?"
     read_the_manual: |
-      Have you seen our <a href="{{link}}" target="_blank">Help Manual</a>? We update it regularly with frequently asked questions.
+      Have you seen our <a href="{{link}}" target="_blank">Help Manual</a>? We update it regularly with frequently asked questions and answers.
     contact_us_email: "You can also email us: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contact Us'
     name_label: 'Your name'
@@ -1235,6 +1235,10 @@ en:
     message_placeholder: 'If requesting support please try to provide as much information as you can.'
     send_message: 'Send Message'
     new_contact_message: "Thanks for getting in touch; we'll get back to you soon!"
+    consent_message: |
+      By contacting us you consent to our staff accessing your account as necessary. <br />
+      Our support team speak English and will translate your message with Google Translate if required. <br />
+      We aim to respond to all messages within 24 hours.
     success: "Thanks for your message, {{name}}. You'll hear back from us soon."
 
   hint:
