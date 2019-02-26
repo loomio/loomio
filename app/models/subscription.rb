@@ -7,10 +7,11 @@ class Subscription < ApplicationRecord
   attr_accessor :chargify_product_id
 
   def self.for(group)
-    group.subscription || begin
-      group.subscription = Subscription.new
-      group.save
-      group.subscription
+    parent = group.parent_or_self
+    parent.subscription || begin
+      parent.subscription = Subscription.new
+      parent.save
+      parent.subscription
     end
   end
 
