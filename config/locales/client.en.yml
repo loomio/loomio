@@ -626,7 +626,7 @@ en:
       manage_members: 'Manage Members'
       add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
-      email_settings: 'Email settings'
+      email_settings: 'Email Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
     volume:
