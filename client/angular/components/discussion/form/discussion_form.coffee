@@ -9,6 +9,7 @@ angular.module('loomioApp').directive 'discussionForm', ->
   scope: {discussion: '='}
   templateUrl: 'generated/components/discussion/form/discussion_form.html'
   controller: ['$scope', ($scope) ->
+    $scope.canStartThread = true
     $scope.$watch 'discussion.groupId', (o, v)->
       return unless $scope.discussion.groupId
       $scope.maxThreads = $scope.discussion.group().parentOrSelf().subscriptionMaxThreads
