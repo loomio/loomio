@@ -14,7 +14,7 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
     $scope.baseUrl = AppConfig.baseUrl
 
     $scope.canExportData = ->
-      Session.user().isMemberOf($scope.group)
+      Session.user().isAdminOf($scope.group)
 
     $scope.openGroupExportModal = ->
       ModalService.open 'ConfirmModal', confirm: ->
