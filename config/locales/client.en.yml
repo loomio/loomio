@@ -619,11 +619,14 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
-      export_data: 'Export Group Data'
+      export_data: Export Group Data
+      export_data_as_json: Export Group Data as JSON
+      export_data_as_csv: Export Group Data as CSV
+      export_data_as_html: Export Group Data as HTML
       manage_members: 'Manage Members'
       add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
-      email_settings: 'Email settings'
+      email_settings: 'Email Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
     volume:

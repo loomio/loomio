@@ -11,6 +11,8 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
   replace: true
   controller: ['$scope', ($scope) ->
 
+    $scope.baseUrl = AppConfig.baseUrl
+
     $scope.canExportData = ->
       Session.user().isMemberOf($scope.group)
 
