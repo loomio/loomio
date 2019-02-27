@@ -295,7 +295,7 @@ Loomio::Application.routes.draw do
   # for IE / other browsers which insist on requesting things which don't exist
   get '/favicon.ico'                       => 'application#ok'
   get '/wp-login.php'                      => 'application#ok'
-  get '/crowdfunding'                      => 'application#crowdfunding'
+  get '/crowdfunding_celebration'          => 'application#crowdfunding'
 
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do
