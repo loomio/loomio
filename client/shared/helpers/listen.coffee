@@ -9,10 +9,10 @@ module.exports =
     updateMentionables = ->
       chain = Records.users.collection.chain().find(id: {'$in': $scope.mentionableUserIds})
       chain = chain.where (u) ->
-        _.isString(u.username) &&
-        (u.name.toLowerCase().startsWith($scope.q) or
-         (u.username || "").toLowerCase().startsWith($scope.q) or
-         u.name.toLowerCase().includes(" #{$scope.q}"))
+        name = (u.name || "").toLowerCase()
+        username = (u.username || "").toLowerCase()
+        name.startsWith($scope.q) or username.startsWith($scope.q) or name.includes(" #{$scope.q}")
+
       $scope.mentionables = _.sortBy(chain.data(), (u) -> (0 - Records.events.find(actorId: u.id).length))
 
     fetchThenUpdate = _.throttle ->
