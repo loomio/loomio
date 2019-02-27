@@ -1,0 +1,1799 @@
+:css
+  .crowdfunding__section {
+    padding-bottom: 30px;
+  }
+
+  .crowdfunding__image {
+    margin: 20px auto;
+    max-width: 100%;
+  }
+
+  .crowdfunding__header {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .crowdfunding__header-icon-container {
+    flex: 1;
+  }
+
+  .crowdfunding__thanks,
+  .crowdfunding__get-in-touch {
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .grid--medium {
+        display: block;
+    }
+    .crowdfunding__header-text-container {
+      text-align: center;
+    }
+  }
+
+  @media (min-width: 600px) {
+    .crowdfunding__header-text-container {
+      text-align: left;
+    }
+  }
+
+  .grid {
+    display: flex;
+  }
+  *, ::after, ::before {
+      box-sizing: border-box;
+  }
+
+  .grid > * {
+      flex: 1;
+      flex-grow: 1;
+      flex-grow: 4;
+      padding-left: .5rem;
+      padding-right: .5rem;
+  }
+  *, ::after, ::before {
+      box-sizing: border-box;
+  }
+
+.container
+  .wrapper
+    %h1 Loomio Crowdfunding 2014
+    %section.crowdfunding__section
+      %h4 March 2014
+
+      .intro
+        %p At the start of this year, we had a rough prototype of a tool for people to make decisions together online. The basic concept was proven, but it was rough - it didn’t work on mobile, it was clunky to use, and its usefulness was limited to a relatively small number of dedicated people. We felt like there was so much more potential there - if only we could dedicate all our time to it for 6 months, we were pretty sure we could build something that had a shot at making participatory decision-making truly accessible.
+
+        %p We knew we needed resources to make it happen, but we didn’t feel right about any of the common methods used to fund software projects - selling advertising, selling users’ data, or being dragged off track by traditional profit-maximising venture capital.
+
+        %p So, in March, we went out to our community and asked for help, launching a <a href="http://love.loomio.org">crowdfunding campaign</a> with an ambitious $100,000USD target. By the end of the month, we were completely overwhelmed by more than 1,600 extraordinarily generous people from all over the world contributing over $125,000USD to make it happen.
+
+        %p From then until now, we’ve had our heads down in intensive development, taking everything we learnt from the much-loved prototype ("Loomio Beta”), and building a whole new app (“Loomio 1.0”). Development has focused on 4 areas: Mobile, Accessible, Easy, Safe.
+    %section.crowdfunding__section
+      %ul.indented-list
+        %li
+          %strong Mobile
+          \- In September, we released the first mobile-friendly version of Loomio Beta. Loomio 1.0 is “mobile-first”, which means we approached the design for the new interface with mobile use as our first priority. We believe in the open mobile web, so we’ve focussed on providing a world-class mobile experience that works in your browser on any device, rather than building apps specifically for iOS or Android.
+
+        %li
+          %strong Accessible
+          \- With some additional support from the <a href="http://www.namaste.org/blog/collaborative-decision-making-with-loomio">Namaste Foundation</a>, we’ve been working with accessibility experts <a href="http://accease.com/">AccEase</a> to make sure the new app works beautifully for anyone, regardless of their ability. We’ve had a number of checkpoints over the past few months to make sure the design and development are following best practice. In January 2015, AccEase are hosting an intensive user-testing process, bringing together people with visual, cognitive, and mobility impairments to test-drive the software.
+
+        %li
+          %strong Easy
+          \- The core purpose of the Loomio project has always been “to make it easy  for anyone, anywhere to participate in the decisions that affect them” - and we’ll only get there if the software is seriously user-friendly. Over the last six months we’ve been able to take a rigorously user-driven approach to making sure the new design is as easy to use and engaging as possible - and
+          = link_to 'our community', 'http://www.loomio.com/community'
+          has been a totally invaluable source of feedback and good ideas.
+
+        %li
+          %strong Safe
+          \- We think that the best way to be really safe on the web is to control your own environment, so we’ve put a huge amount of work into making it as easy as possible for people to set up and run their own version of the Loomio software. You can find out more about the Loomio Docker installation here.
+    %section.crowdfunding__section
+      %h4 November 2014
+
+      %p Now as of November 2014, we’re excited to announce that we’ve achieved everything we set out to in the crowdfunding campaign! We’ve invited in all of our generous crowdfunding backers as the first “pre-release” testers to try out the new Loomio 1.0, and we’re looking forward to releasing it to the general public in early 2015.
+
+      %p Thanks to the work the crowdfunding campaign enabled, Loomio has now supported more than 50,000 people to make 18,000 decisions together in 43,000 discussions. Our amazing community of international volunteers has made Loomio available in 30 languages, with more being added all the time.
+
+      %p These numbers make us pretty excited, but we’re really looking forward to seeing how much further and faster collaborative decision-making spreads once we release Loomio 1.0.
+
+      %h1.crowdfunding__thanks Thank you!
+
+      = image_tag('loomio_org/team.png', class: 'crowdfunding__image')
+
+      %p This project couldn’t exist without the support of thousands of people from all over the world.
+
+      %p We want to take some space to express our deep gratitude to the 1,649 supporters that pitched in to make this all possible:
+
+    %section.crowdfunding__section
+      %h3 $10,000 Founding Donor
+      %section.crowdfunding__section.grid.grid--medium
+        %div
+          %p
+            <b>Francois Bouregard</b> - François is the founder of a democratically organised agile consultancy in Montreal called
+            = link_to 'Pyxis Technologies.', 'http://pyxis-tech.com/en'
+            He surprised us with a massive contribution on the last day of the campaign.
+          %p.clearfix When we asked François what was going through his head when he made the decision to donate to Loomio, here’s what he said:
+          %p.blockquote
+            Being more able to make decisions consciously, and at scale - I think that humanity needs that, so much. To see that some people were willing to put their heart and energy into that, and put it in the commons - that was it for me. So I said, well, this year, the money I’m going to give is gonna go to Loomio”.
+
+      %section.crowdfunding__section
+        %h3 $1,000+ Contributors
+        .grid.grid--medium
+          %div
+            Ajay Mehta <br>
+            Slow Boat Music Ltd.<br>
+            Alanna Krause<br>
+            Marion and Vera Blake<br>
+          %div
+            Brian Cartmell<br>
+            Alli and John Knight<br>
+            Shamubeel Eaqub<br>
+            Law for Change<br>
+          %div
+            Wikimedia Foundation<br>
+            Len Cook<br>
+            Matthew Wisdom
+        .special-artwork
+          %h4 Limited Edition Artwork
+          %p As part of their reward, these contributors received a signed print of a Loomio-themed artwork by our amazing-illustrator and developer Hannah Salmon.
+          %img.img-artwork{src: 'https://loomio-attachments.s3.amazonaws.com/uploads/5ed2e78392a145269dd063e383bc05a3/image-000.png', alt: 'Artwork'}
+
+
+      %section.crowdfunding__section
+        %h3 $500+ Contributors
+        .grid.grid--medium
+          %div
+            Gail Altschuler<br>
+            Samuel Knight<br>
+            Nicholas Williams<br>
+            Alexander Raichev<br>
+            Quatro Management Limited<br>
+          %div
+            Daniel Mulholland<br>
+            Niels Vandamme<br>
+            Fran Wilde<br>
+            Larry Salveson<br>
+          %div
+            Dale Hunter<br>
+            Enspiral Services<br>
+            Charles Hett<br>
+            Susan Maiava<br>
+
+      %section.crowdfunding__section
+        %h3 $250+ Contributors
+        .grid.grid--medium
+          %div
+            Vivian Hutchinson<br>
+            Andrew Paul<br>
+            Angus de Lange<br>
+            LB Joum<br>
+            Sue Johnston<br>
+            Kevin Sulava<br>
+            David Klein<br>
+            Rick Sommerford<br>
+            Raf Manji<br>
+            Christian Mairoll<br>
+            Sophie Jerram
+            %i.fa.fa-btc
+            <br>
+            Lane & Mark Murrah<br>
+          %div
+            Timothy Robert Sherman<br>
+            Eugenie Sage<br>
+            John Brooker<br>
+            SilverStripe Ltd<br>
+            Richard May<br>
+            Wayne de Geere III<br>
+            Lee Ryan<br>
+            Danielle Boven<br>
+            Jay Phillips<br>
+            Benjamin S Applegate<br>
+            Frank Willard<br>
+            Victor Stanton<br>
+          %div
+            Frank Grove<br>
+            Miriam Nelson Clark<br>
+            Beth McIlveen Nobes<br>
+            Hamish More<br>
+            Álvaro Saco Fortuna<br>
+            Leander Schulz<br>
+            Aaron Stewart<br>
+            Charmaine Pountney<br>
+            Edie Smith<br>
+            Georgy Zhukov<br>
+            Victor Stanton<br>
+            Sion Whellens<br>
+
+      %section.crowdfunding__section
+        %h3 $100+ Contributors
+        .grid.grid--medium
+          %div
+            Micah Daigle <br>
+            Corinna Zuckerman <br>
+            Mark Russell <br>
+            Nick Lewis <br>
+            Kyle Webb <br>
+            Ramsey Margolis <br>
+            Kiri Jarden <br>
+            Chrissie Butler and Kieran Monaghan <br>
+            Andrew Cobb <br>
+            Sam Lang <br>
+            Bari and Alan Harlam <br>
+            Billy Matheson <br>
+            Hayden Glass <br>
+            Wendy Nelson and Lindsay Clark <br>
+            Charlie Ablett <br>
+            Simon Wright <br>
+            Lorraine Warshaw <br>
+            Ariane Cherbuliez <br>
+            Polly LaBarre <br>
+            Geraint Scott <br>
+            Helene Finidori <br>
+            Erin Todd <br>
+            Scott and Fumie Lemmon <br>
+            Freerange Press <br>
+            Helga Arlington <br>
+            Jost Siegfried <br>
+            Susan Loucks <br>
+            Benjamin Rees
+            %i.fa.fa-btc
+            <br>
+            Petra Stephenson<br>
+            Michael Gray <br>
+            A J Hoyt <br>
+            Amanda Lennon <br>
+            Pennie Brownlee <br>
+            Bill Wallace <br>
+            Craig Taube-Schock <br>
+            Praveen Arimbrathodiyil <br>
+            rose ryan <br>
+            Eileen Sweeney <br>
+            Tali Williams <br>
+            Brent Barrett <br>
+            Benjamin Spink-McCarthy <br>
+            Jonathan Jong <br>
+            Fernando Gomez Morcillo <br>
+            Minh Ha <br>
+            Peter Dreisiger <br>
+            Frances Joychild <br>
+            Jessy McNamara <br>
+            Callum Fulcher <br>
+            Adelaide Bike Kitchen <br>
+            Alex <br>
+            Cambridge Cohousing <br>
+            Cecily Horne <br>
+            Elisa Wang <br>
+            Kenneth LeFebvre <br>
+            Dean Procter <br>
+            Stephanie Pride <br>
+            Sue Coutts <br>
+          %div
+            Trinity Fauren <br>
+            Robert Daland <br>
+            Barbie Mavor <br>
+            Onno van Bekkum<br>
+            Sam Boyer <br>
+            Michael Allen <br>
+            Doug Kaplan <br>
+            Paula Sager <br>
+            Jan Rivers <br>
+            Doris Zuur <br>
+            Harald Wagener <br>
+            Karl Edwards <br>
+            Benjamin Melancon <br>
+            Demetre Tryfiatis <br>
+            Jenny Morel <br>
+            Vernet <br>
+            Andreas Bieler <br>
+            Rémi Bondurand <br>
+            PublicVoice <br>
+            Sarah Webster <br>
+            Varun adibhatla <br>
+            Arthur Peel <br>
+            Timo Ewalds <br>
+            Vanisa Dhiru <br>
+            Jud Fretter <br>
+            Audrey Tang <br>
+            Laurent Lathieyre <br>
+            Tim Keller <br>
+            Greg Conner <br>
+            Sarah Pearson <br>
+            Simon James Steenhof <br>
+            Robbie Fordyce <br>
+            Miles K Thompson <br>
+            G Stone <br>
+            Jesse Mortenson <br>
+            Hiran Thabrew <br>
+            Mathew Woodyard <br>
+            Jeremy Gilpin <br>
+            Edward Abraham <br>
+            Nicholas B Robson <br>
+            John Peterson <br>
+            Melissa Riparetti-Stepien <br>
+            Denis Tegg <br>
+            Peter M. Shane <br>
+            Kathryn Ananda <br>
+            Ryan Wold <br>
+            Robert Schmidli <br>
+            Jon Richter <br>
+            Seth Behnke <br>
+            Manuel Potoi <br>
+            Bob Dick <br>
+            Jan Logie <br>
+            Rune Skjold Larsen <br>
+            Osaka Silenzio <br>
+            Cae Schlick <br>
+            Mojo Mathers <br>
+            Fiona Campbell <br>
+            Wallace Metcalfe<br>
+            Wanaka Wastebusters<br>
+          %div
+            Dave Keyes <br>
+            Ben Waldron <br>
+            Mike Nudds <br>
+            Elliott Bass <br>
+            AJ Hopley <br>
+            Robert Boere <br>
+            Fergal Harrington <br>
+            Ed Mitchell <br>
+            Hadley Fierlinger <br>
+            Spencer Grimes <br>
+            Julian Priest <br>
+            Ben Liquete <br>
+            Michael Honey <br>
+            Thomas Mitchell <br>
+            Chris Esther <br>
+            Ali Robertson <br>
+            Isaac MO Matheson <br>
+            Tony Smith <br>
+            Paul Ransfield <br>
+            Tracey Lee  <br>
+            Finlay Thompson <br>
+            Mark Moir <br>
+            Andrew Simmonds <br>
+            Mikey Lemmon <br>
+            Charlie Harvey <br>
+            Tim Fitzgerald <br>
+            Paul Nollen <br>
+            Lucas dos Santos Furquim Ribeiro <br>
+            Robert J Solik <br>
+            Audrey Yeo <br>
+            Andrew Burnett <br>
+            Michael Riben <br>
+            Lubos Magat <br>
+            Torsten Fischer <br>
+            Karsten Mengler<br>
+            Malte Tepe <br>
+            Brenda Wallace <br>
+            William Smales <br>
+            Permaculture in New Zealand <br>
+            Gillian Cameron <br>
+            Simon L Stewart <br>
+            paul bolger <br>
+            Claire O'Connell <br>
+            Sacha Dylan <br>
+            Richard <br>
+            Beau Murrah <br>
+            Mark McGuire <br>
+            Charlie Shread <br>
+            Robert Beck <br>
+            Phil Friend <br>
+            Heironymous Caper <br>
+            Michael McKinsey <br>
+            Ryan D Gillespie <br>
+            Thomas Shelton <br>
+            Musa Siddeeq <br>
+            Tjasa Ucakar  <br>
+            Rotorua Hospital Anaesthetic Department <br>
+
+      %section.crowdfunding__section
+        %h3 $50+ Contributors
+        .grid.grid--medium
+          %div
+            Doug & Dallas Knight <br>
+            Amie Parker <br>
+            Fredd Marshall <br>
+            Eli Geminder <br>
+            Hailey Cooperrider <br>
+            Anake Goodall <br>
+            Nick Churchouse <br>
+            George Salmond <br>
+            Phill Coxon <br>
+            Michael Elwood-Smith <br>
+            Murdoch Stephens <br>
+            Malcolm Shearer <br>
+            Boaz Chen
+            %i.fa.fa-btc
+            <br>
+            Anne-Marie Sullivan <br>
+            Stephen Olsen <br>
+            Ants Cabraal <br>
+            Silvia Zuur <br>
+            Monica Meyer <br>
+            Michelle Gibbs <br>
+            Chloe Waretini <br>
+            Seth Veale <br>
+            Damian <br>
+            David Johnson <br>
+            Henry Peach <br>
+            Hannah Smith <br>
+            Martha Torrance <br>
+            todd diamond <br>
+            Sean Tilley <br>
+            Andrew Walters <br>
+            Sophi Reinholt <br>
+            Vincent Smart <br>
+            Joel Rogers <br>
+            Rohan Satyanand <br>
+            Chong Kee Tan <br>
+            Elisabeth Motsinger <br>
+            Steve Barr <br>
+            Cédric Félizard <br>
+            Mike Kmiec <br>
+            Adam Jorlen <br>
+            Chris O'Connor <br>
+            Merrin Pearse <br>
+            David Tonner <br>
+            Nicolas Zahn <br>
+            Anthony Pulido <br>
+            Daniel Christos <br>
+            Megan Salole <br>
+            Citizen Gold <br>
+            R Brough Turner <br>
+            Pete Johnson Jr <br>
+            ashley holwell <br>
+            Jessa Reitsma <br>
+            Lippe <br>
+            Nikola Pavelic <br>
+            Wayne Ashlin <br>
+            Paul Bendall <br>
+            Ramez Naam <br>
+            Deborah Block <br>
+            Julien Carnot <br>
+            Joe Manning <br>
+            Albert Williams <br>
+            Simon Hendeles Layton <br>
+            Robert Schraders <br>
+            Andrew Hedges <br>
+            Jonathan Todd (Billy) <br>
+            clkao <br>
+            Anna Dean <br>
+            Guy Salmon <br>
+            Gary Wren <br>
+            Karen Lea Ames Caylor <br>
+            James King <br>
+            Gerald Michalski <br>
+            sofia robinson <br>
+            Megan Thomas <br>
+            William Hay <br>
+            Dave Chisholm <br>
+            Steven Mustor <br>
+            Jennifer Birch <br>
+            Andrew Paik <br>
+            James Schneider <br>
+            Sina Khanifar <br>
+            Zaki Manian <br>
+            Dan K. Johnson <br>
+            Jacob Sparrow <br>
+            Mitzi Borren <br>
+          %div
+            David Grossman <br>
+            Rachel Highton <br>
+            David Fawcett <br>
+            Eric Bloomquist <br>
+            Steven Palmer <br>
+            Alejandro Alonso Martínez <br>
+            Jon Alexander <br>
+            Anastasia Kavada <br>
+            Emil Josef Tschepp <br>
+            Pål Røynesdal <br>
+            Jason Diceman <br>
+            Simon Keating <br>
+            Anne Hollander  <br>
+            Andreas Lloyd <br>
+            Andy Nash <br>
+            Sandip Kalsy <br>
+            Clea Buchler <br>
+            James Coyle <br>
+            Lu Davidson <br>
+            Rob Pyne <br>
+            John Wilson Tovey <br>
+            Bentley Davis <br>
+            katia guiloff <br>
+            Fleur Hirst <br>
+            Danita Delce <br>
+            Michael Lowe <br>
+            Naomi Most <br>
+            Emmanuel M Vincent <br>
+            Kevin Ryan <br>
+            Marilyn Hoey <br>
+            Elias Westerberg <br>
+            Adrian Bader <br>
+            Thomas Stokell  <br>
+            Bill Rosenberg <br>
+            Angela Waddell  <br>
+            Elaine Dyer <br>
+            AJay (Amanda Jane) Morris <br>
+            Trent Mankelow <br>
+            Jon Bakos <br>
+            William Stadtwald Demchick <br>
+            Kevin Martin <br>
+            Dustin Woods <br>
+            Richard L Gilmore <br>
+            John Milford <br>
+            Pauline Wayman <br>
+            Donald Simpson <br>
+            Robyn Irwin and Richard Whitney <br>
+            Hörður Torfason <br>
+            Kaila Colbin <br>
+            Cameron John Lumsden <br>
+            Louis Novak <br>
+            Andrew Johnston <br>
+            Quentin Grimaud <br>
+            Marti Eller <br>
+            Ani Mitcalfe <br>
+            Kate Stone <br>
+            Tris Lumley <br>
+            Murray Rosser <br>
+            Karmus <br>
+            Kati Thompson <br>
+            John West <br>
+            Zac Oosten & Antoinette Gionfriddo <br>
+            Emma Giesen <br>
+            Mary O' Keeffe <br>
+            Joshua Vial <br>
+            Jean S Fleming <br>
+            Doing Something Good <br>
+            Matthew Solik <br>
+            Donna Caddie <br>
+            Heather Galbraith <br>
+            Laura Southward-Ellis <br>
+            David Preece <br>
+            Christopher Holdaway <br>
+            Alina Siegfried <br>
+            Bart Cox <br>
+            Aidan Leong <br>
+            Stéphane Dubé <br>
+            Stephen Blyth <br>
+            Stephanie Bain <br>
+            Gerry Simms <br>
+            Simon Telfer <br>
+            Christopher Bull <br>
+          %div
+            Dilhan and Chrys Cabraal <br>
+            Mark Norman <br>
+            Vaughan Smith <br>
+            Mark Anthony Servian <br>
+            Heather and Martin Roberts <br>
+            Jeff Silverwood <br>
+            Laura McKim <br>
+            Scotch Bingeington <br>
+            Robbie Neilson <br>
+            Nicholas Booth <br>
+            Wendy Leebov <br>
+            Tom Pettit <br>
+            peter hanning <br>
+            François P. Robert <br>
+            Robert Rhinehart <br>
+            Moea Armstrong <br>
+            Alexander Smith <br>
+            McCormack and Associates Limited <br>
+            Michael Howden <br>
+            Lance Wiggs <br>
+            WikiHouseNZ <br>
+            Antonio D'souza <br>
+            Vanessa Rushton <br>
+            Peter Thirkell <br>
+            Teresa Pomeroy <br>
+            Brett Lockspeiser <br>
+            marianne doczi <br>
+            maia sauren <br>
+            Bob Jesse <br>
+            Mandy McGirr <br>
+            Astral  <br>
+            Sally Vanos <br>
+            Tom Haig <br>
+            Matt McGregor <br>
+            Roger Steele <br>
+            Ben Vidulich <br>
+            Marion Wood <br>
+            Anthony Lorieu <br>
+            Anders Andersem <br>
+            Brandon Mikel  <br>
+            Helen Hanify <br>
+            Andy Williamson <br>
+            Salvatore Guiseppe Strati <br>
+            Anna Baird <br>
+            Lance Adam Cash <br>
+            Kim Miller <br>
+            Andy Lulham <br>
+            Oliver Jones <br>
+            Jonathan D. Pincus <br>
+            Elaine Mayo <br>
+            johannes prinz <br>
+            Veronica <br>
+            Tony Kennedy <br>
+            Manu Vallyon <br>
+            Christina sawicki <br>
+            Glen Irving <br>
+            Tony Holt <br>
+            Thomas Huulbæk Andersen <br>
+            Rob Ramsay <br>
+            Massimo Santanicchia  <br>
+            Valérie Gehlé <br>
+            Ole-Morten Duesund <br>
+            Adrienne Gulliver <br>
+            Cyriel van 't End <br>
+            greg O'Connor <br>
+            Samuel Frew <br>
+            Tim McNamara <br>
+            Andrew Melville <br>
+            Thomas Forth <br>
+            Lindsay Alderton <br>
+            Michael Stoeckli <br>
+            Nandini Nair <br>
+            Rupert Pirie-Hunter <br>
+            Mircea Zachia <br>
+            Robert Baker <br>
+            Colin P Winter <br>
+            Jan Dowland <br>
+            Alan Clark Davison <br>
+            Witchcamp Council <br>
+            chris Jangelov <br>
+            Ansgar Konermann <br>
+            Kara-Leah Grant <br>
+
+      %section.crowdfunding__section
+        %h3 $25+ Contributors
+        .grid.grid--medium
+          %div
+            Celia A. Muir<br>
+            Meg Howie <br>
+            Jimmy Green <br>
+            Joshua Chalifour <br>
+            Marnie Kent <br>
+            Tim Bonnemann <br>
+            Craig Ambrose <br>
+            Cate Jessep <br>
+            Julian Apatu <br>
+            Greg Bodnar <br>
+            John Kirby <br>
+            Kim Lowe <br>
+            TeArikirangi Mamaku <br>
+            kevin keane <br>
+            Gemma Syme <br>
+            Lucy Clark <br>
+            Inga Jensen <br>
+            Tawny Christian <br>
+            Will Lau <br>
+            C M Wade-Brown <br>
+            Chantal Grut <br>
+            Niq Curry <br>
+            Nick Taylor <br>
+            Sean Molloy <br>
+            Daniel Schwalm <br>
+            Tim Gummer <br>
+            Frances Eberhard <br>
+            John S Adams <br>
+            John DeCubellis <br>
+            Alice Leparc <br>
+            Amelia Friedman <br>
+            Christine Dinsmore <br>
+            Susan Hellerstein <br>
+            Steven Sciulli <br>
+            Michael Capozzoli <br>
+            Alexander Bolshakov <br>
+            stan Alley <br>
+            Rafael Fernandez-Font Perez <br>
+            David H. Mason <br>
+            Frank Swinney <br>
+            Fraser Bruce <br>
+            Christian Buggedei <br>
+            seanduffell <br>
+            Sebastien Arbogast <br>
+            Frederick Stark <br>
+            Mark Bekhit <br>
+            Phillipa Gaines <br>
+            David Clearwater <br>
+            Robert A Hogan <br>
+            Rob Edward <br>
+            Allan Tear <br>
+            Carlos Manuel Arias Moreno <br>
+            Rodolfo Saccani <br>
+            Shayne Hunter <br>
+            Sarah Putt <br>
+            Alexander Paulson <br>
+            J D Carpenter <br>
+            Guilhem Gantois <br>
+            Jim Baltaxe <br>
+            Maira Brandao Carvalho <br>
+            Carte Blanche / New Era – New Rules <br>
+            Kelly Cheesman <br>
+            Chris Bean <br>
+            Raul P Cardoso <br>
+            Rob  Nevin – U-R-Able, Canada <br>
+            Bernard Brunet <br>
+            Stefano Perfili <br>
+            Young-jin Choi <br>
+            Jason Crewe <br>
+            Brent McFarlane <br>
+            Nicolas Wormser <br>
+            Kim paton <br>
+            Marta Stojanovic <br>
+            Rick Orser <br>
+            Bernard Gruschow <br>
+            Hamish Ross White <br>
+            M Garry <br>
+            Peter Schurman <br>
+            Rhonda King <br>
+            kelli mccluskey <br>
+            David Schindler <br>
+            Stuart Hall <br>
+            Ken Long <br>
+            Alyson Howell <br>
+            Manop Kalra <br>
+            Daniel Steinbock <br>
+            Ciarán Carter <br>
+            David Meyer <br>
+            Paul Handover <br>
+            Aliza Yair <br>
+            Dean Satchell <br>
+            Simon Baker <br>
+            Paul Ferris <br>
+            Ann Phillis <br>
+            Charles Lehner <br>
+            bonnie wykman <br>
+            Robert S Houghton <br>
+            Michael Niemann <br>
+            Carne Ross <br>
+            Rob Jellinghaus <br>
+            richard hayman <br>
+            Robyn Moore <br>
+            Katherine Hay <br>
+            Dan Randow <br>
+            Anthony (Bones) Pettifer <br>
+            Lucy D'Aeth <br>
+            Trudy Lane <br>
+            Alastair Parvin <br>
+            Andre Kpodonu <br>
+            Ashley Taylor <br>
+            Ian Schlakman <br>
+            Sonja Lani Mitchell <br>
+            Jozef Benge <br>
+            Jordi Faxedas Rubio <br>
+            Andrea Ryan <br>
+            Travis Kriplean <br>
+            Michael Feldstein <br>
+            Vincent Dickie <br>
+            Viktor Zaunders <br>
+            Christopher Paul Schraders <br>
+            Mita Williams <br>
+            Peter Dowson <br>
+            Guillaume Marceau <br>
+            Latesha Randall <br>
+            d'Arcy Lunn <br>
+            David Konecny <br>
+            Tom Sarsons <br>
+            Carolyn Dixon <br>
+            Elsa Gebremichael <br>
+            Chris Taklis <br>
+            Dorte Wray <br>
+            Chris Zumbrunn
+            %i.fa.fa-btc
+            <br>
+            serge hoebeke <br>
+            Micheline Callicott <br>
+            Bryan Tabuteau <br>
+            Carl Naus <br>
+            Donna McKinnon <br>
+            Philip Korsika <br>
+            Tejopala Rawls <br>
+            Alexis Sim <br>
+            Timothy Russell Blair <br>
+            Daniel Dietz <br>
+            Rachael Rowe <br>
+            Mischa Nowicki <br>
+            Vitaly Aranovich <br>
+            Kate McNair <br>
+            Kevin McDermott <br>
+            Christian Nöel Seppa <br>
+            Lachlan Musicman <br>
+            John Hart <br>
+            Damon Styer <br>
+            David Nash <br>
+            Matthew Van Natta <br>
+            Matthew Allen <br>
+            Dimitris Koukoulakis <br>
+            Jamie L Klinger <br>
+            Malcolm Johnstone <br>
+            Andrew Kensington <br>
+            Spyros Tzortzis <br>
+            Lisandro Gaertner <br>
+            Gwendolyn Blue <br>
+            Jon Rodriguez <br>
+            Lucas de Abreu Pinto <br>
+            Karen White <br>
+            Lloyd Houghton <br>
+            Keith Rozendal <br>
+            Rebecca Colwell <br>
+            Rhonda Marchand <br>
+            Rosa Maria Ramos Salgueiro <br>
+            Robert Sean Clifford <br>
+            Jenny Rickitt <br>
+            Andrew Robinson <br>
+          %div
+            Sarah Teng <br>
+            Douglas Beitz <br>
+            Matthew Evetts <br>
+            Victor Minkov <br>
+            Kenneth Durwood Evans <br>
+            Leslie Young <br>
+            Willow Brugh <br>
+            Kevin M Turner <br>
+            Isaac Hollander McCreery <br>
+            Davendra Patek <br>
+            Rachael Mansfield <br>
+            Chi-hsien Lu <br>
+            Pascal Wicht <br>
+            roy hanfling <br>
+            Kuanling Huang <br>
+            Kim Fortin <br>
+            Toolbox for Education & Social Action <br>
+            Isabelle Decarroux <br>
+            Cobi Smith <br>
+            Zita Joyce <br>
+            Peter Uithoven <br>
+            Steven Clift <br>
+            Katherine Despot Belmonte <br>
+            Torrance Hodgson <br>
+            Onur Ekinci <br>
+            Daniel Batkin <br>
+            Steve Hanson <br>
+            Alan Meridian <br>
+            God Is Life <br>
+            John Herring <br>
+            Loren Hockly <br>
+            Ignatius and Greta Menzies <br>
+            Georges Gregorius <br>
+            Ronis Chapman <br>
+            Geoffrey Monot <br>
+            Michael Brady <br>
+            Claudio Lente <br>
+            James Wilson <br>
+            Sian <br>
+            Kate Duignan <br>
+            Ellen Schindler <br>
+            Sam Rye <br>
+            Roberto Gilli <br>
+            John Glass <br>
+            Rochelle Furneaux <br>
+            Michelle Marie King <br>
+            Ed Lytwak <br>
+            Sea Rotmann <br>
+            Philip Douglass <br>
+            Iain Lawson Marjoribanks <br>
+            Kevin J Bayuk <br>
+            Coggo <br>
+            Eaden McKee
+            %i.fa.fa-btc
+            <br>
+            martin judd <br>
+            Richard Schut <br>
+            Jaakko Helleranta <br>
+            Rikki Doud <br>
+            Bianca Hurrell <br>
+            Margot W. Parkes <br>
+            Dalma Berkovics <br>
+            Pamela McLean <br>
+            Brett Holland <br>
+            Vanessa Sloan Morgan <br>
+            Turumeke Harrington <br>
+            The Boraman-Ritchie Family <br>
+            Alison Crawford <br>
+            William Potapchuk <br>
+            Frith Jenkins <br>
+            Tom manziano <br>
+            Jeanne Dear <br>
+            Pamela Campe <br>
+            Rory Thomson-Ball <br>
+            James Metcalfe  <br>
+            Sonya Cameron <br>
+            Eli Feghali <br>
+            Michael Noonan <br>
+            Cameron McLean <br>
+            Patrick Cotter <br>
+            Randal Jack <br>
+            Charles Thomassin <br>
+            Daniel McClelland <br>
+            Krishna Khatri-Chetri <br>
+            Tsung-Hao Tang <br>
+            Alexander Smith <br>
+            warren hardy <br>
+            Daniel Walker <br>
+            Hannah Northover <br>
+            Dr Katherine Phelps <br>
+            Soeren Ole Ekelund <br>
+            porta nicolas <br>
+            Crispin Clarke <br>
+            Diana Elliot <br>
+            Gabrielle McKone <br>
+            Jocelyn Orb <br>
+            Renee Rushton <br>
+            Penelope Esplin <br>
+            Vasilis Kostakis <br>
+            Sean Boileau <br>
+            Kathryn Bechtold <br>
+            Joseph Ramsay <br>
+            Monica Evans <br>
+            Jason Post <br>
+            Rob Wallace <br>
+            Thiago de Mello Bueno <br>
+            Kylie Sutcliffe <br>
+            Megan Mann <br>
+            Christina Kadmos <br>
+            Emmanuel Gilloz <br>
+            Duncan Work <br>
+            Kieran Smith <br>
+            Bronwyn Carlisle <br>
+            Gina Rembe <br>
+            Giuseppe Schiavone <br>
+            Nikolas Tzimoulis <br>
+            Robinson Alexander Ochoa Echeverri <br>
+            Morag McDonald <br>
+            Justin Longo <br>
+            Margy-Jean Malcolm <br>
+            Will Catton <br>
+            Joseph Mitchell <br>
+            Daniele Mancinelli <br>
+            Ian Shearer <br>
+            David Verelst <br>
+            Mads Ringblom Knudsen <br>
+            Eric DeLong <br>
+            Belle Barber <br>
+            Mamari Stephens <br>
+            Nik Wakelin <br>
+            Cameron Mehlhopt <br>
+            Nenad Lazarov <br>
+            Nico Burns <br>
+            robert stratford <br>
+            mr finn shaw jackson <br>
+            Dugald Stewart <br>
+            Roger Pitton <br>
+            Mark Johnstone <br>
+            Daryl Green <br>
+            Reuben McDougall <br>
+            Diane Pivac <br>
+            Anne Purcell <br>
+            emily m lippold cheney <br>
+            Lucas Nebert <br>
+            Anna Mackay <br>
+            Jonathan Charles Morris <br>
+            Simon Wallace <br>
+            Naomi Blackburn <br>
+            megan courtney <br>
+            Angus Blair <br>
+            Kay Benseman <br>
+            Emily Harris <br>
+            Barry Coates <br>
+            Emily Meese <br>
+            Marianne Elliott <br>
+            Douglas Jimenez <br>
+            Chris Olson <br>
+            Connor Harris <br>
+            Desmond Joseph Molloy <br>
+            Mark C. Wilson <br>
+            Cam Findlay <br>
+            James Daniel Francis <br>
+            Tobias D. Bindslet <br>
+            Miranda W Voke <br>
+            Tim McKenzie <br>
+            Lewis Sullivan <br>
+            Lucy Kebbell <br>
+            akim Heinicke <br>
+            Robert Mackay <br>
+            Rafael Martinez-Cortina <br>
+            Daniel Mestre <br>
+            Katie Anne Brasell <br>
+            Brani Mead <br>
+          %div
+            Omar Kamoun <br>
+            Martin Bulmer <br>
+            Caleb Gordon <br>
+            Karen Summerhays <br>
+            Naomi Smith <br>
+            Tom Lord <br>
+            Arthur De Grave <br>
+            Laura James <br>
+            Camille Barton <br>
+            Anna van Os <br>
+            Jeffrey Swift <br>
+            Thomas Floyd Wright <br>
+            Christopher Pope <br>
+            Michael G Schwern <br>
+            Elijah van der Giessen <br>
+            Peter Parkinson <br>
+            Clare McLennan-Kissel <br>
+            Catherine Styles <br>
+            Nicky Benson <br>
+            Francesca Pick <br>
+            Richard Norman <br>
+            Kim Conway <br>
+            Nicola Linwood <br>
+            Jason Kemp <br>
+            Dean Nugent <br>
+            Paula Warren <br>
+            Mary Anne Cutaia <br>
+            Logan Elliott <br>
+            Emily Preston <br>
+            Sigmund Kopperud <br>
+            Daniel Vasku <br>
+            Greer Lees <br>
+            Bindy Bonnette <br>
+            Kelly Pendergrast <br>
+            Adam Bullen <br>
+            Kelly Hall <br>
+            Jane Henley <br>
+            Aindriu Macfehin <br>
+            Davy van de Vusse <br>
+            Jeff Henderson <br>
+            Tim Soar <br>
+            Kay Jones <br>
+            Julie Hernandez  <br>
+            Richard Keller <br>
+            Julie Crocker <br>
+            Magali Larroche <br>
+            Timothy Rayner <br>
+            Eric Stiens <br>
+            Jackson James Wood <br>
+            Vicky Forgie <br>
+            Bronwyn Venning <br>
+            Diane Shepheard <br>
+            Peter Vail <br>
+            Dave Collett <br>
+            Jarod Santana <br>
+            Janet Rosado <br>
+            David Schofield <br>
+            Marhefka István <br>
+            Mathijs Maarten de Bruin <br>
+            Jenny Harding <br>
+            Martin Meteyard <br>
+            Mike Kemp <br>
+            Remi Fontan <br>
+            Adrian Hon <br>
+            Andrew Lilburn <br>
+            Corrina Lyon <br>
+            JoFF Rae <br>
+            Kate Swade <br>
+            Jason Gowans <br>
+            Rory Lenihan-Ikin <br>
+            Robin Allison <br>
+            Tibor Katelbach <br>
+            Mark Edgecombe <br>
+            Paul Elvins <br>
+            John McBurney <br>
+            David Neil Thorp <br>
+            Steve Upstill <br>
+            Ben Firshman <br>
+            Robert Houghton <br>
+            Roze Kitty <br>
+            Karen Kun <br>
+            Jérôme Gravel-Niquet <br>
+            James Smith <br>
+            Daniel Nephin <br>
+            Sudharshan Natarajan <br>
+            Patricia Shepard <br>
+            Raui Glenn Lewis <br>
+            Michael Maloney <br>
+            Alexandre Junqueira <br>
+            Fabio Silva <br>
+            Dave Scott <br>
+            David Moore <br>
+            Briary Crawford-Zachernuk <br>
+            Cédric Herpson <br>
+            Dale Nirvani Pfeifer <br>
+            Michael Dale <br>
+            Alan Christensen <br>
+            rachel rose <br>
+            Sally Munro <br>
+            Beatworld Records  <br>
+            Jade Reidy <br>
+            Andrew Phillips <br>
+            Max Clarke-Parker <br>
+            Karin McCracken  <br>
+            Hannah Mackintosh <br>
+            Matthew Kerr <br>
+            Benjamin Wilson <br>
+            Alec Dawson <br>
+            Darren Sharp <br>
+            Peter McGeorge <br>
+            Glen Qualls <br>
+            Daniela Cuaron <br>
+            Faye Adams <br>
+            Suzanne Beryl Taylor <br>
+            Alister Newton <br>
+            David Good <br>
+            Antony McMullen <br>
+            Richard Thompson <br>
+            Mr Joel S Mackay <br>
+            Gareth <br>
+            Restruct digital innovation <br>
+            Amy Leah Brosnahan <br>
+            Bob Cannell <br>
+            Tristan Carter <br>
+            Benjamin Lupton <br>
+            Federico Gori <br>
+            Andrew Mallis <br>
+            Susannah Smith <br>
+            Ben Fagan <br>
+            Vicky Soderberg <br>
+            Tom Anderson <br>
+            Jan Eggleton <br>
+            Georgina Preston <br>
+            Christopher Mulcare <br>
+            Logan Valentine <br>
+            Stanley Frielick <br>
+            Duncan M Nimmo <br>
+            Steve Fuery <br>
+            Michele Embling <br>
+            Andy Fuchs <br>
+            Aaron Lavack <br>
+            Adrian Field <br>
+            Umutcan Onal <br>
+            Charles Merricks <br>
+            Anasha Cummings <br>
+            sara jafary <br>
+            Bron Thomson <br>
+            Nat N <br>
+            Keir Wotherspoon <br>
+            Carl Chenery <br>
+            Sarah Hutchings <br>
+            Richard G McKenzie <br>
+            Alicia Boyd <br>
+            Elizabeth Connor <br>
+            Darian James Woods <br>
+            Andrew McQuiggin <br>
+            Megan Floris <br>
+            Zakkai Kauffman-Rogoff <br>
+            Mario Zelaya Jr <br>
+            catherine shovlin <br>
+            Ryan Rediske <br>
+            Stephanie L. Parks <br>
+            Justin Pierce <br>
+            Fabien Freyburger <br>
+            jc mase <br>
+            Maani Stirling <br>
+            Andrew Curry <br>
+            Aurèle Duda <br>
+            David Hårsmar <br>
+            Timothy Huegerich <br>
+            Dylan Chauvin-Smith <br>
+            Jules Todd <br>
+            John Goodnough <br>
+            Rory Ridley-Duff <br>
+
+      %section.crowdfunding__section
+        %h3 $10+ Contributors
+        .grid.grid--medium
+          %div
+            Bob Irving<br>
+            Kathy Bartlett<br>
+            Donald Jessep<br>
+            Sarah McGray<br>
+            Patrick Shepherd<br>
+            William McGrath<br>
+            Andrew Fyfe<br>
+            Jasper O'Donnell<br>
+            Marlen O'Donnell<br>
+            Carol<br>
+            Jocelyn Winters<br>
+            Cristina Parra<br>
+            shaked from<br>
+            Simon Tegg<br>
+            Nancy Shalek<br>
+            Ruben Solvang<br>
+            Margaret Kinosian<br>
+            Antonios Triantafyllakis<br>
+            John K Triedman<br>
+            Philip Catton<br>
+            Rebecca Thornber<br>
+            Josh Forde<br>
+            carl scrase<br>
+            Mike Riversdale<br>
+            Megan Duffy<br>
+            Emma McFadyen<br>
+            Paul Doney<br>
+            Mathieu Loiseau<br>
+            Nancy Pepper<br>
+            Gordon Dykes<br>
+            Juliana Johnson<br>
+            Thomas Monckton<br>
+            Alice Irving<br>
+            Carol Shantal<br>
+            Daniel Christopher Mawhera White<br>
+            Mitar Milutinovic<br>
+            Barbara Tegg<br>
+            Bryan Bruce<br>
+            Phillipa Reeve<br>
+            Vitaliy Angelov Filipov<br>
+            Meliors Simms<br>
+            Colin Charles Croft Hewens<br>
+            Hannah Maria<br>
+            Gillian Pow<br>
+            Tanja pelkonen<br>
+            Renee Gerlich<br>
+            Eden Beck<br>
+            Michael Kuehl<br>
+            Phillipa Williams<br>
+            Lee Russel<br>
+            Deirdre Kent<br>
+            Dhaj Sumner<br>
+            David Tunkrans<br>
+            Frith Driver-Burgess<br>
+            Alison Shearer<br>
+            Marie Lefort<br>
+            Matt Sutton-Vermeulen<br>
+            Tootsie Black<br>
+            Louise Whitmore<br>
+            Tanja Ærtebjerg<br>
+            Tendayi Sutherland <br>
+            James Scott<br>
+            Elizabeth Morley<br>
+            Susan Cooke<br>
+            Russell Silverwood<br>
+            Jane McDonough<br>
+            Margaret Giroux<br>
+            Mischa Saunders<br>
+            Caleb Buchbinder<br>
+            Terry Burrell <br>
+            Leonard Cook<br>
+            Bronwyn Hayward<br>
+            Lincoln Gasking<br>
+            Samson Ootoowak<br>
+            Severin Keller<br>
+            Kate Frykberg</br>
+            Dave Moskovitz<br>
+            Hayden Powell Currie<br>
+            Megan McCarthy<br>
+            Jared Laverty<br>
+            Amanda Lia Rogers<br>
+            Judy Lymbery<br>
+            Sophie Fern<br>
+            Helen Slyfield<br>
+            Shirley Vollweiler<br>
+            Nigel Taptiklis<br>
+            Alana McCrossin<br>
+            Richard Dennis Bartlett<br>
+            Berwyn Hoyt<br>
+            Jesse Doud<br>
+            Henry Liu<br>
+            Leland LeCuyer<br>
+            Andrew Robinson<br>
+            Michael Reynolds<br>
+            Paul Goulter<br>
+            Megan Kinsley<br>
+            David Wetuski<br>
+            Titus Stahl<br>
+            Laurent Chedanne<br>
+            Ben McMaster<br>
+            Richard Kirkpatrick<br>
+            David<br>
+            Marama Mayrick<br>
+            Kade Smith<br>
+            Jenalene Antony <br>
+            Bryn-Evan Manning Thomas<br>
+            Jeremy Liss<br>
+            Leigh Harrison<br>
+            Vincenzo Barbato<br>
+            Rose Lu<br>
+            Ben Thirkell-White<br>
+            Kathryn Lemmon<br>
+            Kelsey Sterrett<br>
+            Ryan Hageman<br>
+            Emma Smith<br>
+            Kelly Spencer<br>
+            Kate Reddington<br>
+            Caitlin Macleod<br>
+            Natalia Lombardo<br>
+            Finn Boyle <br>
+            Keri McMullan<br>
+            Catalina Mustatea<br>
+            Rebekah Wilson<br>
+            Matt Boyd<br>
+            David Turner<br>
+            Diana Suggate<br>
+            Matthew Baird<br>
+            Tim Jones<br>
+            Elizabeth Goodwin<br>
+            Wesley Wana<br>
+            Alice Fage<br>
+            Robin Youngson<br>
+            Sue Hirst<br>
+            alex brown<br>
+            Peter Macfadyen<br>
+            Sandra Irving<br>
+            Hasse Ramlev Hansen<br>
+            Matt Brown<br>
+            Vinoo Jacob<br>
+            James Bartlett<br>
+            Klaas Stijnen<br>
+            s r anderson<br>
+            Deborah Radford<br>
+            Ted Wells<br>
+            B Nolan<br>
+            Alex Hannant<br>
+            David Newton<br>
+            Henrik Moller<br>
+            Jackson Hobbs<br>
+            Lucy Moore<br>
+            David Stone<br>
+            Eileen Brindle<br>
+            Izzy Lomax<br>
+            Heather Zachernuk<br>
+            Nick white<br>
+            Sharmian Firth<br>
+            William Matheson<br>
+            Kim Wheatley<br>
+            Lynsey Ferrari<br>
+            Kathryn Jury<br>
+            Lindsay Cowley<br>
+            Lisa Rees<br>
+            th.ai<br>
+            Angelique Praat<br>
+            Kevin Mills<br>
+            Hagen Penelope Anne<br>
+            Bettina Neill & Jamaine Kiddie<br>
+            Roger Lampen<br>
+            GM Burns<br>
+            Vince Cabrera<br>
+            Sylvie Rose Thomson<br>
+            Jonathan Bell<br>
+            Sylvie Froncek<br>
+            Claire O'Loughlin<br>
+            Finn Cardno<br>
+            Manuel Varela<br>
+            Charlene Nelson<br>
+            Dr. Robert and Alice Rene<br>
+            Frances Wilkins<br>
+            liz lemmon<br>
+            Jenny McArthur<br>
+            Big Live Arts Group<br>
+            Shirley Dodds<br>
+            Mallika Krishnamurthy<br>
+            Kate Laura McNab<br>
+            Elizabeth Eppel<br>
+            Daniel F Benson-Guiu<br>
+            John Brinsley Pirie<br>
+            Gurjot Gill<br>
+            Bonnie Dowling<br>
+            Genevieve Doube<br>
+            Dan Lemmon<br>
+            Neil Morris<br>
+            Naila Kuhlmann <br>
+            B Lake<br>
+            Olivier Endelin<br>
+            Karen Salmon<br>
+            Jeff Doud<br>
+            Freida Maverick<br>
+            Colin England<br>
+            Tricia Thompson<br>
+            Jorge Delgado<br>
+            Anton Booth<br>
+            Caroline Fitzgerald<br>
+          %div
+            Richie Flinn<br>
+            Shirley Schmidli<br>
+            Sam Parkin<br>
+            Jarad Bryant<br>
+            Elizabeth Willoughby-Martin<br>
+            Laura O'Connell<br>
+            Mark Addleson<br>
+            Jason Christopher Hartley<br>
+            Allison Maya Borgueta<br>
+            Harry Silver<br>
+            Sandy Burton-Davis and Kitty August<br>
+            Snow (DrTiTus)<br>
+            Francisco Hernandez<br>
+            Jacqui Graham<br>
+            Sebastian Schmidt<br>
+            M A Hughes<br>
+            Rebecca Kinaston<br>
+            Hannah August<br>
+            Katherine Burns<br>
+            Genevieve Parkes<br>
+            Sean Coley<br>
+            Jamie MacDonald<br>
+            Ruby May<br>
+            Eamonn Marra<br>
+            Arnaud Limon<br>
+            Rolf Veen<br>
+            Matthew Tonks<br>
+            George Darroch<br>
+            Caroline Halcrow<br>
+            Shafan Cornerstone<br>
+            jeremy Butler<br>
+            Matt Kennedy<br>
+            Marco Muser<br>
+            Maxim Merlyn Butler<br>
+            Sébastien Bourdu<br>
+            Luis Capelo<br>
+            Stephen Reid<br>
+            Joe Gillick<br>
+            Jennifer E Boone<br>
+            Hillary Chapman-Roberts<br>
+            Andrew Laskey<br>
+            Malcolm Angell<br>
+            Karl Schönswetter<br>
+            Romanie<br>
+            Ihab Sinno<br>
+            Víctor Gómez de Juan<br>
+            David Leben<br>
+            Nolan Hodgson<br>
+            David Bulger<br>
+            Jodie Stewart<br>
+            Amie Van der Meel<br>
+            Carla Schollum<br>
+            Hana Swan<br>
+            Timothy E McGee<br>
+            Finian Desmond<br>
+            Shaun Swanson<br>
+            Chris von Roy<br>
+            Kirsty Frances McKay<br>
+            Andrew Bryce Galloway<br>
+            Eleanor Bakker<br>
+            Adam Glickman<br>
+            Judy Murphy<br>
+            Kevin Samnick<br>
+            Scott Bunn<br>
+            angela wither<br>
+            Mike Aslin<br>
+            KtWhite<br>
+            Mike<br>
+            Rhydian Thomas<br>
+            Ben Bowie<br>
+            Lydia White<br>
+            Matthew B Holt<br>
+            Dmitriy Gorodnytskyi<br>
+            Luciana  Manrique<br>
+            Rosalind Atkinson<br>
+            Jill Hayhurst<br>
+            Brooks Yardley<br>
+            Sarah Smythe<br>
+            Marcus Michael Yass<br>
+            marnie reid<br>
+            Sarah Cross<br>
+            George Moon<br>
+            Boris Filipov<br>
+            Bruni Lindeijer<br>
+            Neophytos Kolokotronis<br>
+            CALLY O'NEILL<br>
+            kitt howard verhoef<br>
+            Paul Greindl<br>
+            Jonathan Harford<br>
+            Vitalis Skiauteris<br>
+            Joe<br>
+            Guy Staniforth<br>
+            Pierre-Yves Uytdenhoef<br>
+            Leteinturier Jean-Baptiste<br>
+            Sarah Rogers<br>
+            Konstantinos Thoukydidis<br>
+            Abby Haverkamp<br>
+            Liam Griffin<br>
+            Irina Gray<br>
+            Julian Boorman<br>
+            Arthur and Lia<br>
+            Keoni Kealoha Mahelona<br>
+            Dave W Currie<br>
+            Jeremy Wynnyk<br>
+            Dru Streicher<br>
+            Devon Barrett<br>
+            Daniel Friesen<br>
+            Allen Riddell<br>
+            Robin Shannon<br>
+            Henry Gomersall<br>
+            Richard Brownsdon<br>
+            Brad Malone<br>
+            Brian Sarfatty<br>
+            Guy Holmwood-Bramwell<br>
+            Mathew Martinuk<br>
+            Ian Keith Henry<br>
+            Giulio Belluomini<br>
+            Heidi Kate Knight<br>
+            Kimberley M Dostaler<br>
+            Hayden Micallef<br>
+            Orta Therox<br>
+            stephen parry<br>
+            jorinde rapsey<br>
+            Georgios Thomakos<br>
+            Chris Rodgers<br>
+            Sky Gilbar<br>
+            Samuel Lay<br>
+            Alexander Mitcalfe Wilson<br>
+            Bret Mogilefsky<br>
+            Tom de Bruin<br>
+            Freya Wall<br>
+            Brett Scott<br>
+            Jimmy Hooker<br>
+            alan williams<br>
+            Caitlyn Chuan Yunn Lee<br>
+            Brian Skeele<br>
+            Sarah Cleave<br>
+            PR Payne<br>
+            Marica Odagaki<br>
+            Miriam Freeman Plume<br>
+            Jacobo Elosua<br>
+            Daniel Demmel<br>
+            David Duncan MacBryde<br>
+            Jade Wood<br>
+            Kevin Gibbons<br>
+            Jelle Langbroek<br>
+            Nick Moxsom<br>
+            felicity donaldson<br>
+            Caitlyn Cook<br>
+            Madge Darlington<br>
+            Nicola Pickworth<br>
+            Gergő Tisza<br>
+            Kerry Ann Lee<br>
+            Mr Tom Spencer<br>
+            Aris Alissandrakis<br>
+            Dylan M Taylor<br>
+            Sicco van Sas<br>
+            Daniel Strypey Bruce<br>
+            Shachar Liberman<br>
+            javi creus<br>
+            Ana Luisa Simões Ramos Ferreira<br>
+            Michael Young<br>
+            Hank Ryan Thompson<br>
+            Joey Bania<br>
+            Thomasin Sleigh<br>
+            Momo<br>
+            Monica Buchan-Ng<br>
+            Rachel Clentworth<br>
+            Jonathan Leschinski<br>
+            Jenni Hagedorn<br>
+            the Chris Armstrong<br>
+            Shawn Berry<br>
+            David Brooks<br>
+            Thomas Pettit<br>
+            Chris Sparshott<br>
+            Richard Castor<br>
+            Fiona Hewitt<br>
+            Matthew McFeely<br>
+            Stephen Templer<br>
+            Normann Hoeller<br>
+            Alon Antin<br>
+            Auriga Martin<br>
+            dorien vermaas<br>
+            Nick Johnstone<br>
+            Kate Beecroft<br>
+            Steve Phillips<br>
+            Brendan coneglan<br>
+            Hugh Geenen<br>
+            Ditte Lykke Pedersen<br>
+            Anthony Lapointe<br>
+            Megan Duffy<br>
+            Tracey Norrish<br>
+            AYESHA GARRETT<br>
+            Philip Court<br>
+            Alex Fradera<br>
+            Alex Backhouse<br>
+            Sean Burn<br>
+            Marliese Andexer<br>
+            Victor Birk Reves<br>
+            Rufus Polson<br>
+            Rebecca May<br>
+            Anna Mathieson<br>
+            Abdullah Khalid<br>
+            Goober Fox<br>
+          %div
+            Denise Bijoux<br>
+            Anna Cooke<br>
+            Rhiannon Josland<br>
+            Vlatko Materic<br>
+            Lydia Nobbs<br>
+            David DiGiovanni<br>
+            Victoria Guyatt<br>
+            Christopher J R Wood<br>
+            Martin Honermeyer<br>
+            Judy Sutherland<br>
+            Ash Smith<br>
+            H Carmody<br>
+            Rohan Wakefield<br>
+            Cass Sutton<br>
+            Chris Lauer<br>
+            Lisa Holter<br>
+            Annie Irving<br>
+            Rob Ward<br>
+            Meredith Youngson<br>
+            Liz Gibson<br>
+            Ben Phillips<br>
+            Rosabel Tan<br>
+            Tara Forde<br>
+            Lilian Clare Hacking<br>
+            Diane White<br>
+            Dimitris Tzortzis<br>
+            Lenara Verle<br>
+            Randi Eaton<br>
+            Gizem Candemir Kılıçoğlu<br>
+            Ruth-Anne Sammes<br>
+            Lior Saar<br>
+            Grayson Gilmour<br>
+            Duncan Killick<br>
+            Craig Jackson<br>
+            Matt Beauchamp Buck<br>
+            Daniel Burmester<br>
+            Mark Bradford<br>
+            Ana McGowan<br>
+            Rosa Hughes-Currie<br>
+            Jen Butt<br>
+            Scott McKenzie<br>
+            Sarrah Jayne<br>
+            Christopher Hellyer <br>
+            Michael August<br>
+            Bridget kelly<br>
+            Rebecca Dobson<br>
+            Rebeka Whale<br>
+            Simon Frost<br>
+            Tricia Fitzgerald<br>
+            Amanda Nally<br>
+            Helen Marie O'Connell<br>
+            Emily Robinson<br>
+            Veronica Stevenson<br>
+            Amiria Paterson<br>
+            Linsell Richards<br>
+            Judy Martin<br>
+            Georgie Craw<br>
+            Joshua Urieli<br>
+            Raymond Quindala Garay<br>
+            Cara Lavan<br>
+            Nicola Groves<br>
+            Yago Bermejo Abati<br>
+            Louise May<br>
+            Belinda Dods<br>
+            Thomas Coats<br>
+            Nina Fowler<br>
+            Gerrit Jos van Beek<br>
+            Sam Coley<br>
+            Matt Wilson<br>
+            Guy Pringle<br>
+            Joanna Cringle<br>
+            Jonathan Garlick<br>
+            Aran Dasan<br>
+            Gregory William Haslett<br>
+            Nadish de Silva<br>
+            Hugh McDonald<br>
+            Madeleine Conway<br>
+            Ellen Quigley<br>
+            Trent Larson<br>
+            Katie Isaacs<br>
+            Gail MacKean<br>
+            Sharla Kew<br>
+            A H Upstill<br>
+            Shirley tricker <br>
+            Juan Pablo Iribarne<br>
+            Rimu Atkinson<br>
+            Brent Yardley<br>
+            Michael Vincent<br>
+            Qedric James<br>
+            Simon Andrew Calcinai<br>
+            Peter Grigor<br>
+            Salena Davie<br>
+            Mark Amery<br>
+            Taylor Welsh<br>
+            Rosalee Jenkin<br>
+            Moira Clunie<br>
+            Ben Schuhholz<br>
+            Nicola Rankin<br>
+            Taylor Lodge<br>
+            Liam Barrington-Bush<br>
+            Masood Mansoori<br>
+            Rose Miller<br>
+            Pleayo Tovaranonte<br>
+            Jessica Thompson<br>
+            @PrototypeAlex<br>
+            Hannah Clarke<br>
+            Eryn Gribble<br>
+            Mick Rose<br>
+            Diana Burns<br>
+            Hannah Kettle<br>
+            Nick Potter<br>
+            Zach Webber<br>
+            garry bryant<br>
+            Nathan Snyder<br>
+            Anthony Aisenberg<br>
+            Rodney Dawson<br>
+            Amelia Hitchcock<br>
+            Adam Duracz<br>
+            Thomas Lambert<br>
+            Bex Ward<br>
+            Andrew Mrasek<br>
+            Ken Pullar<br>
+            Rata Gordon<br>
+            Tristan Brooks<br>
+            Fabricio Leal de Souza<br>
+            Amy Wirt<br>
+            KREMSER Grégory<br>
+            Amko Hanse<br>
+            Merrin Macleod<br>
+            Ike Zwanikken<br>
+            Margaret M Little<br>
+            Emily Sutton<br>
+            Lucy Gordon<br>
+            Craig Drayton<br>
+            Cara Hill<br>
+            Daniel Pemberton<br>
+            Thomas Harwood-Stevenson<br>
+            Katie Ronson<br>
+            Jack Marshall<br>
+            Daniel Ram<br>
+            Beba McLean<br>
+            Sam McLeod-Jones<br>
+            Kees van Drongelen<br>
+            Matt Scheurich<br>
+            Samuel Huggard<br>
+            Nick Leckie<br>
+            Patrick Andrews<br>
+            Brigid Connor<br>
+            Phillipa Clark<br>
+            Melissa Clark-Reynolds<br>
+            Erica Sklenars<br>
+            Charmaine Meyers<br>
+            Yao-ban Chan<br>
+            eduardo graña<br>
+            Xavier Antoviaque<br>
+            Tim Frazer<br>
+            Eric Nelson<br>
+            Rasikananda Dasa<br>
+            Matt Lemmon<br>
+            Emerson Luiz Bittencourt<br>
+            Jessica O'Connell<br>
+            Rachel McGonigal<br>
+            Stephen Leary<br>
+            Nicole Rodgers<br>
+            Alex Kelly<br>
+            Kieran Callaghan<br>
+            Susan F Williams<br>
+            Paul and Carole Doherty<br>
+            Justin M Zajac<br>
+            Anthony Lander<br>
+            Matthew McDermott<br>
+            Kathryn L Shaw<br>
+            Andy McCready<br>
+            Ana Moreno<br>
+            Lillian Fougere<br>
+            Lani<br>
+            John LaRocco<br>
+            Amanda Bittaker<br>
+            Bonnie Tonkin<br>
+            Richard Paul Steenhof<br>
+            Peter Gilberd<br>
+            Aseem Mulji <br>
+            Paul Bruce<br>
+            Bernadette Fitzgibbon<br>
+            Real World Education Ltd<br>
+            Rosie Evans<br>
+            Patricia O'Neill<br>
+            strg<br>
+            Martin Tegg<br>
+            Kevin Morris<br>
+            Helen Hill<br>
+            Jardar Skage Øhrn<br>
+            Sophie Turner<br>
+            Julia Spelman<br>
+            Narendrn Balachandran<br>
+            simon morris<br>
+            Anselme Rougier<br>
+            Nickolas Panoutsos<br>
+            Jeremy G Russell<br>
+            Diogo Alexandre dos Santos Nunes<br>
+            Nancy Withbroe<br>
+            Nicolas Marchildon<br>
+            Benjamin Burton<br>
+            Matthew Boyd<br>
+            Levi Carthew<br>
+    %section.crowdfunding__section
+      %p
+        If your name is missing, or spelled incorrectly, please
+        = link_to 'get in touch', 'https://www.loomio.org/contact'
+        and we'll fix it right away.
+        %i.fa.fa-heart
