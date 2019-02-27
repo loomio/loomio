@@ -9,12 +9,9 @@
         %span{translate: "announcement.form.discussion_announced.title", ng-switch-when: "announce"}
       %dismiss_modal_button{aria-hidden: "true"}
 
-  %md-dialog-content.md-body-1.lmo-slide-animation{ng-switch: "currentStep", ng-if: "canStartThread"}
+  %md-dialog-content.md-body-1.lmo-slide-animation{ng-switch: "currentStep"}
     %discussion_form.animated{discussion: "discussion", ng-switch-when: "save"}
     %announcement_form{announcement: "announcement", ng-switch-when: "announce"}
-  %md-dialog-actions{ng-switch: "currentStep", ng-if: "canStartThread"}
+  %md-dialog-actions{ng-switch: "currentStep"}
     %discussion_form_actions{discussion: "discussion", ng-switch-when: "save"}
     %announcement_form_actions{announcement: "announcement", ng-switch-when: "announce"}
-  %md-dialog-content.md-body-1{ng-if: "!canStartThread"}
-    %p{ng-if: "maxThreadsReached", translate: "discussion.max_threads_reached", translate-values: "{upgradeUrl: upgradeUrl}"}
-    %p{ng-if: "!subscriptionActive", translate: "discussion.subscription_canceled", translate-values: "{upgradeUrl: upgradeUrl}"}
