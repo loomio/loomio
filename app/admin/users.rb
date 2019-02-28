@@ -85,9 +85,8 @@ ActiveAdmin.register User do
   end
 
   member_action :login_as, :method => :get do
-    user = User.friendly.find(params[:id])
-    token = user.login_tokens.create
-    redirect_to login_token_url(token.token)
+    @user = User.friendly.find(params[:id])
+    @token = @user.login_tokens.create
   end
 
   show do |user|
@@ -140,7 +139,7 @@ ActiveAdmin.register User do
     end
 
     panel 'login as user' do
-      a href: login_as_admin_user_path(user) do
+      a(href: login_as_admin_user_path(user), target: "_blank") do
         "Login as #{user.name}"
       end
     end
