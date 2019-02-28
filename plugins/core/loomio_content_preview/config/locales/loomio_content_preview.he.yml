@@ -1,1 +1,7 @@
-he: {}
+he:
+  loomio_content_preview:
+    preview_pane:
+      no_content: אין תוכן לתצוגה מקדימה
+      helptext: ההערות שלך יופיעו כך בעדכוני פעילות.
+    preview_button:
+      preview: תצוגה מקדימה
