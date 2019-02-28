@@ -574,7 +574,10 @@ zh_TW:
     options:
       label: '選項'
       edit_group: '編輯群組設定'
-      export_data: '匯出群組資料'
+      export_data: 匯出群組資料
+      export_data_as_json: 將群組資料匯出為 JSON
+      export_data_as_csv: 將群組資料匯出為 CSV
+      export_data_as_html: 將群組資料匯出為 HTML
       manage_members: '管理成員'
       add_subgroup: '新增子群組'
       manage_subscription: '管理群組訂閱'
@@ -1118,7 +1121,7 @@ zh_TW:
   contact_message_form:
     title: "嗨，您好！我們可以怎麼協助您？"
     read_the_manual: |
-        您看過我們的<a href="{{link}}" target="_blank">說明手冊</a>了嗎？我們會用常見問題定期更新它。
+        您已經看過我們的<a href="{{link}}" target="_blank">說明手冊</a>了嗎？我們會定期更新常見問題與答案。
     contact_us_email: "您也可以寄電子郵件給我們：<a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: '聯絡我們'
     name_label: '您的大名'
@@ -1132,6 +1135,10 @@ zh_TW:
     message_placeholder: '若請求支援請嘗試提供盡可能多的資訊給我們。'
     send_message: '寄送訊息'
     new_contact_message: "感謝您聯絡我們；我們會盡快回覆您！"
+    consent_message: |
+        聯絡我們即代表您同意我們的員工在必要的時候存取您的帳號。<br />
+        我們的支援團隊會說英語，並會在必要的時候使用 Google 翻譯來翻譯您的訊息。<br />
+        我們的目標是在24小時內回覆所有訊息。
     success: "感謝您的訊息，{{name}}。我們將會在收到訊息後很快地回覆您。"
   hint:
     context: '使用論述控制板的小提示'

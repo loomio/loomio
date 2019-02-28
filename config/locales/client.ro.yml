@@ -306,7 +306,6 @@ ro:
     options_label: 'Optiuni'
     options:
       label: 'Optiuni'
-      email_settings: 'Setari email'
     volume:
       loud: Trimite email ori de cate ori exista activitate.
       normal: 'Trimite email pentru fiecare activitate importanta: discutii si propuneri noi, rezultate, etc.'

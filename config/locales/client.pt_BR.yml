@@ -518,7 +518,6 @@ pt_BR:
       manage_members: 'Gerenciar Membros'
       add_subgroup: 'Adicionar Subgrupo'
       manage_subscription: 'Gerenciar Inscrições do Grupo '
-      email_settings: 'Configurações de e-mail'
       leave_group: 'Sair do Grupo'
       deactivate_group: 'Desativar Grupo'
     volume:

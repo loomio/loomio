@@ -447,7 +447,6 @@ nl_NL:
       manage_members: 'Beheer leden'
       add_subgroup: 'Voeg subgroep toe'
       manage_subscription: 'Beheer groepsinschrijving'
-      email_settings: 'E-mailinstellingen'
       leave_group: 'Verlaat groep'
       deactivate_group: 'Deactiveer groep'
     volume:

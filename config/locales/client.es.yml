@@ -566,7 +566,6 @@ es:
       manage_members: 'Administrar miembros '
       add_subgroup: 'Agregar un Subgrupo'
       manage_subscription: 'Administrar las Suscripciones del grupo '
-      email_settings: 'Ajustes de correo'
       leave_group: 'Dejar el grupo'
       deactivate_group: 'Desactivar el grupo'
     volume:

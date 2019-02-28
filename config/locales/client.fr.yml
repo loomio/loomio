@@ -564,11 +564,10 @@ fr:
     options:
       label: 'Options'
       edit_group: 'Modifier les paramètres du groupe'
-      export_data: 'Exporter les données du groupe'
+      export_data: Exporter les données du groupe
       manage_members: 'Gérer les membres'
       add_subgroup: 'Ajouter un sous-groupe'
       manage_subscription: 'Gérer les inscriptions au groupe'
-      email_settings: 'Paramètres e-mail'
       leave_group: 'Quitter le groupe'
       deactivate_group: 'Désactiver le groupe'
     volume:
@@ -1101,8 +1100,6 @@ fr:
     description_private_title: 'a modifié titre, contexte et confidentialité de la discussion'
   contact_message_form:
     title: "Salut ! Comment puis-je vous aider ?"
-    read_the_manual: |
-        Avez-vous vu notre <a href="{{link}}" target="_blank">Manuel d'aide</a>? Nous le mettons à jour régulièrement avec les questions fréquemment posées.
     contact_us_email: "Vous pouvez aussi nous contacter par e-mail : <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contactez-nous'
     name_label: 'Votre nom'

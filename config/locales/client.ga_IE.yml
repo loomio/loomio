@@ -248,7 +248,6 @@ ga_IE:
       label: 'Roghanna'
       manage_members: 'Riar na comhaltaí'
       add_subgroup: 'Cuir fobhaicle leis'
-      email_settings: 'Socruithe ríomhphoist'
       leave_group: 'Fág an bhaicle seo'
       deactivate_group: 'Díghníomhachtaigh an bhaicle'
     volume:

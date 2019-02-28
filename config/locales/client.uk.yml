@@ -448,7 +448,6 @@ uk:
       manage_members: 'Керувати учасниками'
       add_subgroup: 'Додати підгрупу'
       manage_subscription: 'Керувати підпискою групи'
-      email_settings: 'Налаштування електронної пошти'
       leave_group: 'Залишити групу'
       deactivate_group: 'Закрити групу'
     volume:

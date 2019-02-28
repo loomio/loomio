@@ -222,7 +222,6 @@ sr:
       manage_members: 'Upravljanje Članovima'
       add_subgroup: 'Dodaj Podgrupu'
       manage_subscription: 'Upravljaj Praćenjem Grupa'
-      email_settings: 'Opcije ePoruka'
       leave_group: 'Napusti Grupu'
       deactivate_group: 'Deaktiviraj Grupu'
     volume:

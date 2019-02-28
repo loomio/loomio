@@ -1,1 +1,15 @@
-br: {}
+br:
+  reactions:
+    slight_smile: Plijet on
+    heart: Karout a ran
+    laughing: Farsus eo
+    clap: Stlakadegoù
+    hugging: Pok
+    sunglasses: Trankil
+    wink: Serr-lagad
+    nerd: Speredeg
+    relieved: Disammet
+    worried: Nec'het
+  common:
+    action:
+      like: 'Plijet on'

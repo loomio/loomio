@@ -460,11 +460,10 @@ pl:
     options:
       label: 'Opcje'
       edit_group: 'Edytuj ustawienia grupy'
-      export_data: 'Eksportuj dane grupy'
+      export_data: Eksportuj dane grupy
       manage_members: 'Zarządzaj użytkownikami'
       add_subgroup: 'Dodaj subgrupę'
       manage_subscription: 'Zarządzaj subskrypcją grupy'
-      email_settings: 'Ustawienia e-maili'
       leave_group: 'Opuść grupę'
       deactivate_group: 'Dezaktywuj grupę'
     volume:

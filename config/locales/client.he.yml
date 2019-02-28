@@ -61,6 +61,8 @@ he:
     notification_volume: 'עוצמת התראה'
     group: 'קבוצה'
     groups: 'קבוצות'
+    organization: "ארגון"
+    organizations: "ארגונים"
     threads: 'שיחות'
     decisions: 'דיונים'
     settings: 'הגדרות'
@@ -269,6 +271,7 @@ he:
     recent_threads: 'שיחות אחרונות'
     unread_threads: 'שיחות שלא נקראו ({{count}})'
     muted_threads: 'שיחות שהושתקו'
+    start_group: 'ארגון חדש'
     explore: 'קבוצות ציבוריות'
     start_thread: שיחה חדשה
     start_decision: החלטה חדשה
@@ -408,6 +411,12 @@ he:
       voters: אנשים שהצביעו
       non_voters: אנשים שלא הצביעו
     form:
+      too_many_invitations: |
+          הגעת לגבול ההזמנות המותר. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>
+      no_inivtations_remaining: |
+          <p>לא נותרה לך הזמנה בחבילת המנוי הנוכחי שלך.</p>
+          <p>אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> על מנת לשלוח עוד הזמנות.</p>
+      invitations_remaining: '{{count}} הזמנות נותרו. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>'
       group_announced:
         title: הזמן לקבוצה
         helptext: מי היית רוצה להזמין לקבוצה?
@@ -564,11 +573,10 @@ he:
     options:
       label: 'אפשרויות'
       edit_group: 'עריכת הגדרות הקבוצה'
-      export_data: 'יצוא דאטה של הקבוצה'
+      export_data: יצוא דאטה של הקבוצה
       manage_members: 'ניהול חברים'
       add_subgroup: 'הוספת תת קבוצה'
       manage_subscription: 'ניהול מינויים של הקבוצה'
-      email_settings: 'הגדרות מייל'
       leave_group: 'עזוב את הקבוצה'
       deactivate_group: 'הפוך קבוצה ללא פעילה'
     volume:
@@ -724,33 +732,168 @@ he:
     heading: בקשות חברות
     approve: אישור
     ignore: התעלמ/י
+    no_pending_requests: כרגע אין בקשות מנויים ממתינות לקבוצה זו
+    no_previous_requests: כרגע אין בקשות מנויים קודמים לקבוצה זו.
+    previous_requests: בקשות קודמות
+    previous_request_response: '{{response}} ע"י {{responder}} '
+    messages:
+      request_approved_success: בקשת מנוי אושרה
+      request_ignored_success: בקשת מנוי ללא התייחסות
+  group_previous_proposals_card:
+    heading: בקשות קודמות
+    see_more: צפה בעוד
+  group_decisions_card:
+    see_more: "צפה בכל: ({{count}}) ההחלטות"
   invitation_form:
+    aria_label: 'טופס הזמנה'
     invite_people: 'הזמן אנשים'
+    invite_people_to_group: 'Iהזמנה ל{{name}}'
+    group: 'קבוצה'
     group_placeholder: 'בחירת קבוצה'
+    shareable_link: 'לינק לשיתוף'
     copy_link: 'העתק'
+    email_addresses: 'כתובת דואר אלקטרוני'
+    email_addresses_placeholder: 'לדוגמא: helperbot@loomio.org, friendlybot@loomio.org'
+    shareable_link_explanation: 'העתק את הלינק ושלח אותו לכל מי שתרצה לצרף לקבוצה. זה יאפשר להם כניסה לכל השיחות בקבוצה.'
+    email_explanation: 'לחלופין, הזן כתובות דואר אלקטרוני מתחת ושלח הזמנה במייל.'
+    add_custom_message: 'עשו את הזמנתכם אישית.'
+    add_custom_message_link: 'הוסף הודעה אישית.'
+    custom_message: 'הודעה אישית'
+    custom_message_placeholder: 'הוסף הודעה אישית לשליחה עם ההזמנה.'
+    team_invitation_message: 'לחלופין,'
+    team_invitation_link: 'קבל לינק לשיתוף.'
+    add_members: 'הוסף חברים'
+    from_parent_group: 'מאת {{name}}.'
     send: 'שליחה'
     done: 'סיום'
+    messages:
+      invitation_sent: 'הזמנה נשלחה.'
+      invitations_sent: '{{count}} הזמנה נשלחה.'
+      no_invitations: 'אוי לא! אנא ודא שכתובת המייל שלך נכונה ותקנית ונסה שוב.'
+      max_invitations: 'אם אתה רוצה לשלוח יותר מ100 הזמנות, השתמש בלינק צוות.'
+  add_members_modal:
+    aria_label: 'הוסף חברים לקבוצת האב'
+    heading: 'הוסף אנשים מ{{name}}'
+    add_members: 'הוסף חברים'
+    user_added_to_subgroup: '{{name}} הוסף לתת הקבוצה'
+    users_added_to_subgroup: '{{count}} משתמשים הוספו לתת הקבוצה'
+    no_members_to_add: 'כל המשתתפים של {{parent}} שייכים לתת קבוצה זו'
   memberships_page:
     members: 'חברים'
     name_label: 'שם'
     coordinator_label: 'מתאם'
     remove_member_label: 'הסרה'
+    fragment_placeholder: 'סנן משתמשים לפי שם או שם משתמש'
+    messages:
+      remove_member_success: '{{name}} הןסר'
+      make_admin_success: '{{name}} עכשיו מתאם'
+      remove_admin_success: '{{name}} כבר אינו מתאם'
+    remove_admin_from_self:
+      question: 'אתה בטוח שאתה לא רוצה להיות מתאם יותר?'
   membership_remove_modal:
     invitation:
       title: בטל הזמנה
+      message: אתה בטוח שאתה רוצה לבטל את ההזמנה של {{name}}?
+      flash: הזמנה בוטלה
       submit: בטל הזמנה
+    membership:
+      title: הסרת משתתף
+      message: אתה בטוח שאתה רוצה להסיר את {{name}}?
+      impact_for_group: זה יוריד את הגישה שלהם לכל השיחות וההחלטות בקבוצה.
+      impact_for_subgroups: זה יסיר את הגישה שלהם לכל תת הקבוצות של הקבוצה.
+      flash: משתתף הוסר
+      submit: הסרת משתתף
   memberships_panel:
+    add_coordinator: הפוך למתאם
     remove_coordinator: הורדת דרגת המתאם
+  membership_form:
+    modal_title:
+      group: תן שם לקבוצה
+      discussion: תן שם לשיחה
+      poll: תן שם ל{{pollType}}
+    title_helptext:
+      group: שם זה יופיע לצד השם של {{name}} בתוך קבוצה זו. השתמש בזה כדי ליידע את האנשים על תפקידם.
+      discussion: שם זה יופיע לצד השם של {{name}} בתוך שיחה זו. השתמש בזה כדי ליידע את האנשים על תפקידם.
+      poll: שם זה יופיע לצד השם של {{name}} בתוך {{pollType}} זה. השתמש בזה כדי ליידע את האנשים על תפקידם.
+    title_label: כותרת
+    title_placeholder: 'לדוגמא: מתאם או מאפשר'
+    updated: כותרת החברות עודכנה
   pending_invitations_card:
+    heading: הזמנות ממתינות
+    email: דואר אלקטרוני
+    invitation_link: לינק הזמנה
+    sent: נשלח
+    sent_at: נשלח {{date}}
     copy_url: העתק כתובת הדף
+    revoke_invitation: הסר הרשאה
   cancel_invitation_form:
     heading: בטל הזמנה
+    question: האם אתה בטוח שברצונך לבטל את ההזמנה?
+    submit: "כן, בטל הזמנה"
+    cancel: 'לא'
+    messages:
+      success: הזמנה בוטלה
+  user_page:
+    contact_user: 'צור קשר עם {{name}}'
+    location_field: 'מיקום: {{value}}'
+    locale_field: 'שפה: {{value}}'
+    online_field: 'אונליין: {{value}}'
+    invited: 'הוזמן {{value}}'
+  contact_request_form:
+    modal_title: "דואר אלקטרוני {{name}}"
+    message_placeholder: הצג את עצמך ושתף למה היית רוצה ליצור קשר
+    helptext: "{{name}} ישלח את שמך, כתובת הדואר וההודעה שלך"
+    email_sent: "דוא\"ל נשלח אל {{name}}"
   profile_page:
+    messages:
+      updated: 'פרופיל עודכן'
+      picture_changed: 'תמונת פרופיל עודכנה'
+      password_changed: 'סיסמה עודכנה'
+      deactivated: 'החשבון הושבת'
+    change_picture_link: 'שנה תמונה'
+    change_password_link: 'אפס סיסמה'
+    deactivate_user_link: 'השבת חשבון...'
+    delete_account: 'מחר חשבון לצמיתות'
+    delete_user_link: 'מחק חשבון'
     profile: 'פרופיל'
+    edit_profile: 'ערוך פרופיל'
     picture_label: 'תמונה'
     name_label: 'שם'
+    username_label: 'שם משתמש'
+    username_helptext: 'הכל אותיות ומספרים, מקסימום 30 תווים'
     email_label: 'דואל'
+    short_bio_label: 'הצגה'
     locale_label: 'שפה'
+    short_bio_placeholder: 'אנא הצג את עצמך, כולל מומחיות, נושאים המעניינים אותך, וקשרים עם ארגונים'
+    locale_placeholder: בחר שפה מועדפת
+    location_label: 'מיקום'
+    location_placeholder: 'איפה אתה ממוקם?'
+    update_profile: 'עדכן פרופיל'
+    deactivate_account: 'השבת חשבון'
+    help_translate: "עזור לנו לתרגם את המערכת"
+  change_picture_form:
+    aria_label: 'שנה צורת התמונה'
+    title: 'שנה תמונה'
+    helptext: 'אתה יכול לעלות תמונת פרופיל משלך או, אם יש לך חשבון <a href="https://en.gravatar.com/support/whatisgravatar/">אווטר</a>, אתה יכול להשתמש בו.'
+    use_initials: 'השתמש בראשי תיבות'
+    use_gravatar: 'השתמש באווטר'
+    use_uploaded: 'העלה תמונה חדשה'
+  change_password_form:
+    set_password_title: הגדר סיסמה
+    change_password_title: שנה את הסיסמה שלך
+    set_password_helptext: אנא הזן סיסמה עם לפחות 8 תווים  כדי להרשם
+    change_password_helptext: שכחת את הסיסמה או שאתה רוצה לשנותה? פשוט הזן סיסמה חדשה כאן.
+    set_password: הגדר סיסמה
+    change_password: שנה סיסמה
+    password_changed: סיסמתך עודכנה
+    password_set: סיסמתך נקבעה
+  deactivation_modal:
+    aria_label: 'השבת חשבון'
+    introduction: 'כשאתה משבית את חשבונך:'
+    no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
+  deactivate_user_form:
+    title: 'השבת חשבון'
+    submit: 'השבת חשבון'
   email_settings_page:
     header: הגדרות מייל
     announcement_label: הודעות
@@ -799,6 +942,8 @@ he:
     message_label: 'ההודעה שלך'
   hint:
     discussion: 'טיפים להתחלת דיון מרתק'
+  authorized_apps_page:
+    revoke: הסר הרשאה
   registered_apps_page:
     name: שם
   registered_app_form:
@@ -815,10 +960,16 @@ he:
     save_changes: שמירה
   poll_common_attachment_form:
     label: קבצים מצורפים
+  poll_common_index_card:
+    count: "צפה בכל: ({{count}}) ההחלטות"
   current_polls_card:
     start_poll: החלטה חדשה
+  poll_common_select_group:
+    loomio_group: קבוצה
   poll_common_notify_group:
     members_count: "{{count}} אנשים יעודכנו"
+  poll_common_calendar_invite:
+    location: מיקום
   poll_common_set_outcome_panel:
     share_outcome: שתפ/י תוצאה
   poll_common_outcome_form:
@@ -840,7 +991,11 @@ he:
     heading: דיונים
     start_new_poll: החלטה חדשה
   auth_form:
+    set_password: הגדר סיסמה
     name: שם
+    email: דואר אלקטרוני
   install_slack:
     progress:
       invite: הזמן
+    invite:
+      custom_message: הודעה אישית

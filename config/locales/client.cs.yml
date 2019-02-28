@@ -353,7 +353,6 @@ cs:
       edit_group: 'Upravit nastavení skupiny'
       manage_members: 'Správa členů'
       add_subgroup: 'Přidání skupiny'
-      email_settings: 'Nastavení emailu'
       leave_group: 'Opuštění skupiny'
       deactivate_group: 'Deaktivování skupiny'
   description_card:

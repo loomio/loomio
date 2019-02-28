@@ -400,7 +400,6 @@ hu:
     options:
       label: 'Lehetőségek'
       edit_group: 'A csoport beállításainak szerkesztése'
-      email_settings: 'Email beállítások'
       leave_group: 'Kilépés a csoportból'
       deactivate_group: 'Csoport deaktiválása'
     volume:

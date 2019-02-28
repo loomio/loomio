@@ -21,6 +21,9 @@ he:
     pricing: תמחור
     public_groups: קבוצות ציבוריות
     terms: תנאי שימוש
+  password_reset:
+    change_your_password: שנה את הסיסמה שלך
+    change_my_password: שנה סיסמה
   poll_mailer:
     common:
       unsubscribe: ביטול מינוי
