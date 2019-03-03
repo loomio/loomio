@@ -12,7 +12,7 @@ class DiscussionService
 
   def self.destroy(discussion:, actor:)
     actor.ability.authorize!(:destroy, discussion)
-    discussion.delay.destroy
+    discussion.destroy!
     EventBus.broadcast('discussion_destroy', discussion, actor)
   end
 

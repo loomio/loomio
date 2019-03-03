@@ -19,11 +19,18 @@ header {
 }
 
 footer {
+  margin: 1em;
+  padding: 1em;
+  color: #888;
+  a {
+    color: #888;
+  }
 }
 
 main {
   background-color: #fff;
   padding: 1em;
+  margin: 1em;
   border-radius: 20px;
   box-shadow: 1px 1px 4px #999;
 }

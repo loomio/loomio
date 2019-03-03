@@ -254,7 +254,6 @@ ko:
       manage_members: '멤버 관리'
       add_subgroup: '소그룹 추가하기'
       manage_subscription: '그룹 가입 관리'
-      email_settings: '이메일 설정'
       leave_group: '그룹 떠나기'
       deactivate_group: '그룹 비활성화'
     volume:

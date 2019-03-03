@@ -63,6 +63,8 @@ en:
     notification_volume: 'Notification Volume'
     group: 'Group'
     groups: 'Groups'
+    organization: "Organization"
+    organizations: "Organizations"
     threads: 'Threads'
     decisions: 'Decisions'
     settings: 'Settings'
@@ -289,7 +291,7 @@ en:
     recent_threads: 'Recent threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
-    start_group: 'New group'
+    start_group: 'New organization'
     explore: 'Public groups'
     start_thread: New thread
     start_decision: New decision
@@ -434,6 +436,14 @@ en:
       non_voters: People who have not voted
 
     form:
+      too_many_invitations: |
+        Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
+      no_inivtations_remaining: |
+        <p>You have no invitations remaining on your current subscription plan.</p>
+        <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to send more invitations.</p>
+
+      invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
+
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?
@@ -600,11 +610,14 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
-      export_data: 'Export Group Data'
+      export_data: Export Group Data
+      export_data_as_json: Export Group Data as JSON
+      export_data_as_csv: Export Group Data as CSV
+      export_data_as_html: Export Group Data as HTML
       manage_members: 'Manage Members'
       add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
-      email_settings: 'Email settings'
+      email_settings: 'Email Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
     volume:
@@ -1059,6 +1072,12 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
 
   discussion:
+    max_threads_reached: |
+      <p>Sorry! You cannot start another thread because your group is on a trial plan.</p>
+      <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
+    subscription_canceled: |
+      <p>Sorry! Your subscription is not active.</p>
+      <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
     activity: 'Activity'
     activity_placeholder: 'No activity yet!'
     load_previous: 'Load earlier activity'
@@ -1196,7 +1215,7 @@ en:
   contact_message_form:
     title: "Hi there! How can we help?"
     read_the_manual: |
-      Have you seen our <a href="{{link}}" target="_blank">Help Manual</a>? We update it regularly with frequently asked questions.
+      Have you seen our <a href="{{link}}" target="_blank">Help Manual</a>? We update it regularly with frequently asked questions and answers.
     contact_us_email: "You can also email us: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contact Us'
     name_label: 'Your name'
@@ -1210,6 +1229,10 @@ en:
     message_placeholder: 'If requesting support please try to provide as much information as you can.'
     send_message: 'Send Message'
     new_contact_message: "Thanks for getting in touch; we'll get back to you soon!"
+    consent_message: |
+      By contacting us you consent to our staff accessing your account as necessary. <br />
+      Our support team speak English and will translate your message with Google Translate if required. <br />
+      We aim to respond to all messages within 24 hours.
     success: "Thanks for your message, {{name}}. You'll hear back from us soon."
 
   hint:

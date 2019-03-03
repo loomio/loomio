@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_050843) do
+ActiveRecord::Schema.define(version: 2019_02_14_015134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -600,15 +600,16 @@ ActiveRecord::Schema.define(version: 2019_02_05_050843) do
   end
 
   create_table "subscriptions", id: :serial, force: :cascade do |t|
-    t.string "kind"
-    t.date "expires_at"
-    t.date "trial_ended_at"
-    t.date "activated_at"
+    t.datetime "expires_at"
     t.integer "chargify_subscription_id"
-    t.string "plan"
-    t.string "payment_method", default: "chargify", null: false
+    t.string "plan", default: "free"
+    t.string "payment_method", default: "none", null: false
     t.integer "owner_id"
-    t.index ["kind"], name: "index_subscriptions_on_kind"
+    t.integer "max_threads"
+    t.integer "max_members"
+    t.integer "max_orgs"
+    t.string "state", default: "active", null: false
+    t.index ["chargify_subscription_id"], name: "index_subscriptions_on_chargify_subscription_id", unique: true
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 

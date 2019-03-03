@@ -12,9 +12,17 @@
           %span{translate: "group_page.options.email_settings"}
       %outlet{name: "after-group-actions-manage-memberships", model: "group"}
       %outlet{name: "after-group-actions-manage-memberships-2", model: "group"}
-      %md-menu-item.group-page-actions__export-json{ng-if: "canExportData()"}
-        %md-button{ng-click: "openGroupExportModal()"}
-          %span{translate: "group_page.options.export_data"}
+      %md-menu{ng-if: "canExportData()"}
+        %md-menu-item
+          %md-button{ng-click: "$mdMenu.open()", translate: "group_page.options.export_data"}
+        %md-menu-content
+          %md-menu-item.group-page-actions__export-json
+            %md-button{ng-click: "openGroupExportModal()", translate: "group_page.options.export_data_as_json"}
+          %md-menu-item.group-page-actions__export-csv
+            %md-button{href: "{{baseUrl}}g/{{group.key}}/export.csv", target: "_blank", translate: "group_page.options.export_data_as_csv"}
+          %md-menu-item.group-page-actions__export-html
+            %md-button{href: "{{baseUrl}}g/{{group.key}}/export.html", target: "_blank", translate: "group_page.options.export_data_as_html"}
+
 
       %md-menu-item.group-page-actions__leave-group{ng-if: "canLeaveGroup()"}
         %md-button{ng-click: "leaveGroup()"}

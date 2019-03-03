@@ -140,7 +140,7 @@ module.exports = new class AbilityService
     (Session.user().isMemberOf(group) and group.membersCanCreateSubgroups))
 
   canEditGroup: (group) ->
-    @canAdministerGroup(group) or @isSiteAdmin()
+    @canAdministerGroup(group)
 
   canLeaveGroup: (group) ->
     Session.user().membershipFor(group)?

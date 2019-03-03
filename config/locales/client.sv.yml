@@ -156,7 +156,7 @@ sv:
   verify_email_notice:
     please_verify: Tack för att du deltar! Vänligen kolla din e-post efter en länk för att verifiera din röst.
   previous_polls_page:
-    heading: Aktiviter i {{namn}}
+    heading: Aktiviter i {{name}}
     polls_count: Visar {{loaded}} av {{total}} beslut
     search_activities: Sök beslut
   volume_levels:
@@ -214,6 +214,20 @@ sv:
     body_footer: |
         <p>Vem som helst kan fortfarande kommentera eller starta en omröstning i en stängd tråd, men det kommer inte att visas i gruppens trådlista eller i instrumentbrädan.</p>
     image_alt: Stänger alla trådar
+  mute_explanation_modal:
+    aria_label: Gör tråd stum
+    mute_thread: Gör tråd stum
+    body_html: |
+        Att göra tråden stum betyder att du <strong>inte kommer bli notifierad kring förslag</strong> eller andra aktiviteter i denna tråd, ifall inte någon <strong>@omnämner dig</strong>.
+    body_html_2: |
+        Stumma trådar är gömda från <strong>Senaste</strong> och <strong>Olästa</strong> sidor också. För att hitta dina Stumma trådar, välj <strong>Stumma</strong>valmöjligheten i sidomenyn
+    image_alt: Stumma trådar valmöjligheten i sidomenyn
+  dismiss_explanation_modal:
+    aria_label: Avfärda tråd
+    dismiss_thread: Avfärda tråd
+    body_html: |
+        <p>Genom att avfärda en tråd så försvinner den från ditt olästa innehåll. Om någon ny
+        aktivitet händer i tråden så kommer den att visas som oläst igen</p>
   inbox:
     clear: 'Klar'
     latest: 'Senaste'
@@ -221,14 +235,49 @@ sv:
     closing_in: 'Stänger'
   sign_up_form:
     password_label: 'Lösenord:'
+    password_confirmation_label: 'Återupprepa lösenord:'
   signed_out_modal:
+    aria_label: 'Sessionen avslutad'
+    title: "Din session är avslutad"
+    message: "Du har loggats ut från ett annat fönster. Var god logga in igen för att fortsätta."
     ok: "Ok"
+  comment_reply_form:
+    aria_label: 'Lägg till svar'
   comment_form:
+    aria_label: 'Lägg till kommentar'
+    attachments:
+      add_attachment: 'Bifoga fil'
+      remove_attachment: 'Ta bort bifogning'
+    messages:
+      created: 'Kommentar tillagd'
+      replied: '{{name}} har notfierats angående svar'
+      updated: 'Kommentar uppdaterad'
+      destroyed: 'Kommentar borttagen'
+    say_something: Säg något...
     edit_comment: 'Edit kommentar'
     delete_comment: 'Ta bort kommentaren'
+    cancel_reply: 'Ångra svar'
     confirm_delete_message: 'Är du säker på att du vill ta bort denna kommentaren?'
+    confirm_delete: 'Ta bort kommentar'
+    in_reply_to: "Svara till {{name}} "
+    write_a_comment: "Skriv en kommentar..."
+    submit_button:
+      label: 'Lägg upp'
+    private_privacy_notice: 'Din kommentar kommer bara vara synlig för medlemmar av {{groupName}}.'
+    public_privacy_notice: 'Din kommentar kommer att vara synlig för alla på nätet.'
+    sign_in: "Logga in för att delta i konversationen"
+  sidebar:
+    recent_threads: 'Senaste trådarna'
+    unread_threads: 'Olästa trådar ({{count}})'
+    muted_threads: 'Stumma trådar'
+    explore: 'Publika grupper'
+    start_thread: Ny tråd
+    start_decision: Nytt beslut
+    aria_labels:
+      heading: 'Sidomeny'
   navbar:
     recent_title: 'Gå till instrumentbrädan'
+    start_thread: 'Ny tråd'
     search:
       placeholder: 'Sök'
       discussions: 'Diskussioner'
@@ -245,6 +294,8 @@ sv:
     title_label: 'Titel'
     context_label: 'Kontext'
     privacy_label: 'Sekretesspolicy'
+  action_dock:
+    delete_comment: Ta bort kommentar
   join_group_button:
     join_group: Bli medlem i gruppen
   membership_request_form:
@@ -273,6 +324,8 @@ sv:
     privacy: 'Integritet'
     submit_start_group: 'Startgrupp'
     submit_update: 'Uppdatera inställningar'
+  documents_page:
+    confirm_remove_title: Ta bort bifogning
   document:
     form:
       title_label: Namn
@@ -346,6 +399,8 @@ sv:
     ranked_choice_title: Valfritt val
   poll_common:
     save_changes: Spara
+  current_polls_card:
+    start_poll: Nytt beslut
   poll_common_form:
     closed: Stängd
     start: Starta
@@ -358,6 +413,7 @@ sv:
     subscribe: Prenumerera
   polls_page:
     heading: Beslut
+    start_new_poll: Nytt beslut
   install_slack:
     progress:
       invite: Bjud in

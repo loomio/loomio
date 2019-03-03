@@ -220,7 +220,6 @@ ru:
     sign_in: "Войдите чтобы присоеденится к разговору"
   sidebar:
     recent_threads: 'Последние темы'
-    start_group: 'Новая группа'
     explore: 'Публичная группа'
     start_thread: Новая тема
     start_decision: Новое решение
@@ -339,7 +338,6 @@ ru:
       manage_members: 'Управлять участниками'
       add_subgroup: 'Добавить подгруппу'
       manage_subscription: 'Управлять подписками группы'
-      email_settings: 'Настройки Email'
       leave_group: 'Покинуть группу'
       deactivate_group: 'Деактивировать группу'
   leave_group_form:

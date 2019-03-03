@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'groupTheme', ['$rootScope', ($rootScope) 
       { 'background-image': "url(#{$scope.group.logoUrl()})" }
 
     $scope.canPerformActions = ->
-      AbilityService.isSiteAdmin() or AbilityService.canLeaveGroup($scope.group)
+      AbilityService.canLeaveGroup($scope.group)
 
     $scope.canUploadPhotos = ->
       $scope.homePage and AbilityService.canAdministerGroup($scope.group)

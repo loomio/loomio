@@ -41,10 +41,6 @@ cs:
     motion:
       must_close_in_future: Návrh musí být uzavřen v budoucnu.
       one_at_a_time: Existuje další aktivní návrh.
-  subscriptions:
-    gift_plan_selected_for_group_html: |
-        <h1>Úspěch.</h1>
-        <p>Vybrali jste bezplatný plán pro vaši skupinu <a href="/g/%{group_key}">%{group}</a></p>
   email:
     common:
       resend: Platnost tohoto odkazu vyprší za 24 hodin a může být použit pouze jednou.

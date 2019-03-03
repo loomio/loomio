@@ -188,7 +188,6 @@ ro:
   sidebar:
     recent_threads: 'Conversatii recente'
     unread_threads: 'Conversatii necitite ({{count}})'
-    start_group: 'Grup nou'
     explore: 'Grupuri publice'
     start_thread: Conversatie noua
     start_decision: Decizie noua
@@ -307,7 +306,6 @@ ro:
     options_label: 'Optiuni'
     options:
       label: 'Optiuni'
-      email_settings: 'Setari email'
     volume:
       loud: Trimite email ori de cate ori exista activitate.
       normal: 'Trimite email pentru fiecare activitate importanta: discutii si propuneri noi, rezultate, etc.'

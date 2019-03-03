@@ -68,10 +68,6 @@ ru:
     motion:
       must_close_in_future: Предложение должно закрываться в будущем.
       one_at_a_time: Есть другое активное предложение.
-  subscriptions:
-    gift_plan_selected_for_group_html: |
-        <h1>Получилось!</h1>
-        <p>Вы выбрали бесплатный план для своей группы <a href="/g/%{group_key}">%{group}</a></p>
   user_mailer:
     group_export_ready:
       subject: Данные для экспорта группы %{group_name}

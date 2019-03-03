@@ -22,6 +22,7 @@ module.exports = class GroupModel extends BaseModel
     groupPrivacy: 'closed'
     discussionPrivacyOptions: 'private_only'
     membershipGrantedUpon: 'approval'
+    membersCanAnnounce: true
     membersCanAddMembers: true
     membersCanEditDiscussions: true
     membersCanEditComments: true

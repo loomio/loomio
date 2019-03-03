@@ -186,7 +186,6 @@ da:
     recent_threads: 'Seneste debatter'
     unread_threads: 'Ulæste debatter ({{count}})'
     muted_threads: 'Uden notifikationer'
-    start_group: 'Opret gruppe'
     explore: 'Offentlige grupper'
     start_thread: Opret debat
     start_decision: Opret stillingtagen
@@ -347,7 +346,6 @@ da:
       manage_members: 'Administrer medlemmer'
       add_subgroup: 'Opret undergruppe'
       manage_subscription: 'Administrer gruppe abonnement'
-      email_settings: 'Emailindstillinger'
       leave_group: 'Forlad gruppe'
       deactivate_group: 'Deaktiver gruppe'
     volume:

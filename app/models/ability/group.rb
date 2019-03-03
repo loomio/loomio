@@ -3,9 +3,7 @@ module Ability::Group
     super(user)
 
     can [:show], ::Group do |group|
-      if user.is_admin?
-        true
-      elsif group.archived_at || group.is_guest_group?
+      if group.archived_at || group.is_guest_group?
         false
       else
         group.is_visible_to_public? or
@@ -40,7 +38,7 @@ module Ability::Group
          :publish,
          :export,
          :view_pending_invitations], ::Group do |group|
-      user.is_admin? || user_is_admin_of?(group.id)
+      user_is_admin_of?(group.id)
     end
 
     can [:members_autocomplete,
@@ -56,7 +54,7 @@ module Ability::Group
          :invite_people,
          :announce,
          :manage_membership_requests], ::Group do |group|
-      user.email_verified? &&
+      user.email_verified? && Subscription.for(group).is_active? && !group.has_max_members &&
       ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
       user_is_admin_of?(group.id))
     end

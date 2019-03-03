@@ -268,7 +268,6 @@ de:
     recent_threads: 'Aktuelle Diskussionen'
     unread_threads: 'Ungelesene Diskussionen ({{count}})'
     muted_threads: 'Stummgeschaltete Diskussionen'
-    start_group: 'Neue Gruppe'
     explore: 'Öffentliche Gruppen'
     start_thread: Neue Diskussion
     start_decision: Neue Abstimmung
@@ -566,7 +565,6 @@ de:
       manage_members: 'Mitglieder verwalten'
       add_subgroup: 'Untergruppe anlegen'
       manage_subscription: 'Gruppenbenachrichtigungen verwalten'
-      email_settings: 'E-Mail-Einstellungen'
       leave_group: 'Gruppe verlassen'
       deactivate_group: 'Gruppe deaktivieren'
     volume:

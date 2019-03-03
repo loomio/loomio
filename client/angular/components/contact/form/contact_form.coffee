@@ -23,6 +23,8 @@ angular.module('loomioApp').directive 'contactForm', ->
       $scope.message.email = Session.user().email
       $scope.message.userId = Session.user().id
 
+    $scope.showContactConsent = AppConfig.features.app.show_contact_consent
+
     $scope.submit = submitForm $scope, $scope.message,
       flashSuccess: "contact_message_form.new_contact_message"
       successCallback: -> $scope.submitted = true

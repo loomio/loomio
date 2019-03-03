@@ -44,10 +44,6 @@ it:
     motion:
       must_close_in_future: La proposta sarà presto chiusa.
       one_at_a_time: C'è un altra proposta attiva.
-  subscriptions:
-    gift_plan_selected_for_group_html: |
-        <h1>Azione eseguita con successo.</h1>
-        <p> Hai selezionato il piano Free per il tuo gruppo <a href="/g/%{group_key}">%{group}</a></p>
   user_mailer:
     accounts_merged:
       subject: "Gli accounts del tuo sito %{site_name} sono stati fusi."

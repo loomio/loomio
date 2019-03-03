@@ -102,7 +102,6 @@ sr_RS:
     options_label: 'Опције'
     options:
       label: 'Опције'
-      email_settings: 'Опције еПорука'
       leave_group: 'Напусти Групу'
       deactivate_group: 'Деактивирај Групу'
     volume:

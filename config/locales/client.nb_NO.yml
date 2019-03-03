@@ -266,7 +266,6 @@ nb_NO:
     recent_threads: 'Siste tråder'
     unread_threads: 'Uleste tråder ({{count}})'
     muted_threads: 'Dempede tråder'
-    start_group: 'Ny gruppe'
     explore: 'Offentlige grupper'
     start_thread: Ny tråd
     start_decision: Ny beslutning
@@ -534,8 +533,6 @@ nb_NO:
     new_cover_photo: 'Last opp nytt forsidebilde'
     new_group_logo: 'Last opp ny gruppelogo'
     invite_people: 'Inviter'
-    options:
-      email_settings: 'Innstillinger for e-post'
   group_form:
     privacy: 'Personvern'
     submit_update: 'Oppdater innstillinger'
