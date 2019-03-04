@@ -52,9 +52,40 @@ class GroupSerializer < Simple::GroupSerializer
                         :recent_activity_count,
                         :is_subgroup_of_hidden_parent,
                         :is_visible_to_parent_members,
-                        :parent_members_can_see_discussions
+                        :parent_members_can_see_discussions,
+                        :org_memberships_count,
+                        :org_discussions_count,
+                        :subscription_active
+
 
   has_one :parent, serializer: GroupSerializer, root: :groups
+
+  attributes_for_formal :subscription_plan, :subscription_active,
+    :subscription_max_members, :subscription_max_threads
+
+  def subscription_max_members
+    subscription.max_members
+  end
+
+  def subscription_max_threads
+    subscription.max_threads
+  end
+
+  def subscription_plan
+    subscription.plan
+  end
+
+  def subscription_active
+    subscription.is_active?
+  end
+
+  def subscription
+    @subscription ||= Subscription.for(object)
+  end
+
+  def include_org_memberships_count?
+    object.is_parent?
+  end
 
   def include_token?
     Hash(scope)[:include_token]

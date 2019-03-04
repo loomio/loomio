@@ -43,7 +43,7 @@ class Group < ApplicationRecord
 
   define_counter_cache(:polls_count)               { |group| group.polls.count }
   define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
-  define_counter_cache(:memberships_count)         { |group| group.memberships.active.count }
+  define_counter_cache(:memberships_count)         { |group| group.memberships.count }
   define_counter_cache(:pending_memberships_count) { |group| group.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
 

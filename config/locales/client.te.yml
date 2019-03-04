@@ -91,7 +91,6 @@ te:
     options_label: 'ఐచ్ఛికాలు'
     options:
       label: 'ఐచ్ఛికాలు'
-      email_settings: 'ఈమెయిలు అమరికలు'
   group_form:
     privacy: 'అంతరంగికత'
   document:

@@ -62,9 +62,13 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     render 'graph', { group: group }
     render 'stats', { group: group }
 
-    if Plugins.const_defined?("LoomioOrg")
-      if group.subscription.present?
-        render 'subscription', { subscription: group.subscription }
+    if group.subscription_id
+      render 'subscription', { subscription: Subscription.for(group)}
+    end
+
+    if group.parent_id
+      panel("Parent group") do
+        link_to group.parent.name, admin_group_path(group.parent)
       end
     end
 
@@ -79,10 +83,13 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
 
     panel("Members") do
-      table_for group.memberships.active.each do
-        column(:name) { |m| link_to m.user.name, admin_user_path(m.user) }
-        column(:email) { |m| m.user.email }
+      table_for group.all_memberships.each do
+        column(:name)        { |m| link_to m.user.name, admin_user_path(m.user) }
+        column(:email)       { |m| m.user.email }
         column(:coordinator) { |m| m.admin }
+        column(:invter)      { |m| m.inviter.try(:name) }
+        column(:accepted_at) { |m| m.accepted_at }
+        column(:archived_at) { |m| m.archived_at }
         column "Support" do |m|
           if m.user.name.present?
             link_to("Search for #{m.user.name}", "https://support.loomio.org/scp/users.php?a=search&query=#{m.user.name.downcase.split(' ').join('+')}")
@@ -189,6 +196,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
 
     render 'delete_group', { group: group }
+    render 'export_group', { group: group }
   end
 
   form do |f|
@@ -236,7 +244,15 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
 
   member_action :delete_group, :method => :post do
     group = Group.friendly.find(params[:id])
-    group.destroy!
+    group.delay.destroy!
     redirect_to [:admin, :groups]
+  end
+
+  member_action :export_group, method: :post do
+    group = Group.friendly.find(params[:id])
+    GroupExportJob.perform_later(group_ids: group.all_groups.pluck(:id),
+                                 group_name: group.name,
+                                 actor: current_user)
+    redirect_to admin_group_path(group)
   end
 end

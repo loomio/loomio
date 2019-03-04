@@ -39,3 +39,5 @@ sv:
     common:
       unsubscribe: Sluta prenumerera
   comment_by: Kommentaren av %{comment_author}
+  poll_unsubscribe:
+    go_to_dashboad: Gå till instrumentbrädan

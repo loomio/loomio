@@ -68,10 +68,6 @@ es:
     motion:
       must_close_in_future: La propuesta debe cerrar en el futuro.
       one_at_a_time: Ya hay una propuesta activa.
-  subscriptions:
-    gift_plan_selected_for_group_html: |
-        <h1>Listo!</h1>
-        <p>Seleccionaste el plan Gratis para tu grupo <a href="/g/%{group_key}">%{group}</a></p>
   user_mailer:
     accounts_merged:
       subject: "Tus %{site_name} cuentas de usuario han sido unificadas. "

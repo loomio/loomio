@@ -259,7 +259,6 @@ ca:
       manage_members: 'Administra els membres'
       add_subgroup: 'Afegeix un subgrup'
       manage_subscription: 'Administra les subscripcions del grup'
-      email_settings: 'Configuració de correu'
       leave_group: 'Abandona el grup'
       deactivate_group: 'Desactiva el grup'
     volume:

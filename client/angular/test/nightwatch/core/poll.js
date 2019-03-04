@@ -265,16 +265,16 @@ module.exports = {
     page.expectText('.poll-common-outcome-panel', 'Here is a statement')
   },
 
-  'can_invite_users_via_email': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('test_proposal_poll_share', { controller: 'polls' })
-    page.click('.membership-card__invite')
-    page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
-    page.expectText('.announcement-chip__content', 'test@example.com')
-    page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '1 notifications sent')
-  },
+  // 'can_invite_users_via_email': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('test_proposal_poll_share', { controller: 'polls' })
+  //   page.click('.membership-card__invite')
+  //   page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
+  //   page.expectText('.announcement-chip__content', 'test@example.com')
+  //   page.click('.announcement-form__submit')
+  //   page.expectText('.flash-root__message', '1 notifications sent')
+  // },
 
   'can_show_undecided_users': (test) => {
     page = pageHelper(test)

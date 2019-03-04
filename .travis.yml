@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.6.0
+  - 2.6.1
 
 dist: trusty
 sudo: required
@@ -14,7 +14,7 @@ cache:
     - client/node_modules
 
 addons:
-  firefox: "64.0"
+  firefox: "65.0"
   postgresql: "9.6"
 
 env:

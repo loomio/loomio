@@ -4,17 +4,15 @@
     %table{ id: 'subscription-table' }
       %tr
         %th Id
-        %th Activated At
-        %th Expires At
-        %th Plan
-        %th Kind
+        %th plan
+        %th state
+        %th expires_at
         %th Chargify Subscription Id
       %tr
         %td= link_to subscription.id, admin_subscription_path(subscription.id)
-        %td= subscription.activated_at
-        %td= subscription.expires_at
         %td= subscription.plan
-        %td= subscription.kind
+        %td= subscription.state
+        %td= subscription.expires_at
         - if subscription.chargify_subscription_id.present?
           %td= link_to subscription.chargify_subscription_id, "https://loomio.chargify.com/subscriptions/#{subscription.chargify_subscription_id}"
         - else

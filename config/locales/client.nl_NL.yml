@@ -247,7 +247,6 @@ nl_NL:
     recent_threads: 'Recente borden'
     unread_threads: 'Ongelezen borden ({{count}})'
     muted_threads: 'Gedempte borden'
-    start_group: 'Nieuwe groep'
     explore: 'Openbare groepen'
     start_thread: Nieuw bord
     start_decision: Nieuwe beslissing
@@ -448,7 +447,6 @@ nl_NL:
       manage_members: 'Beheer leden'
       add_subgroup: 'Voeg subgroep toe'
       manage_subscription: 'Beheer groepsinschrijving'
-      email_settings: 'E-mailinstellingen'
       leave_group: 'Verlaat groep'
       deactivate_group: 'Deactiveer groep'
     volume:

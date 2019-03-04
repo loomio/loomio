@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
     render 'application/index', layout: false
   end
 
+  def crowdfunding
+    render layout: 'basic'
+  end
+
   def ok
     head :ok
   end

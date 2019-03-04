@@ -27,6 +27,7 @@
     %textarea{ng-model: "message.message", placeholder: "{{'contact_message_form.message_placeholder' | translate}}"}
     %validation_errors{subject: "message", field: "message"}
 
+  %p.lmo-hint-text{ng-if: "showContactConsent", translate: "contact_message_form.consent_message"}
   %p.lmo-hint-text{translate: "contact_message_form.contact_us_email", translate-value-email: "{{contactEmail}}"}
 
   .lmo-md-actions

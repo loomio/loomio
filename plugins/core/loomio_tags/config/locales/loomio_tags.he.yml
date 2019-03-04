@@ -1,1 +1,22 @@
-he: {}
+he:
+  action_dock:
+    tag_thread: ניהול תגיות
+  loomio_tags:
+    tags: תגיות
+    apply_tags: החל תגיות
+    new_tag: יצירת תגית
+    name_label: שם
+    color_label: צבע
+    card_title: תגיות קטגוריה
+    modal_title: יצירת תגית חדשה
+    modal_edit_title: עריכת תגית
+    modal_destroy_title: הסרת תגית
+    destroy_tag: הסרת תגית
+    destroy_helptext: פעולה זו תהרוס את התגית ותסיר אותה מכל השיחות בקבוצה. את/ה בטוח?
+    helptext: תגיות מאפשרות לך לקטלג את השיחות ולמצוא אותם בקלות אחר כך
+    discussions_count_singular: ({{count}} שיחה)
+    discussions_count_plural: ({{count}} שיחות)
+    tag_created: תגית נשמרה בהצלחה
+    tag_destroyed: תגית הוסרה בהצלחה
+    tags_marked: שיחה סומנה כ'{{name}}' ב{{groupName}}
+    no_tags_present: לא נמצאו שיחות עם תגית זו. נסה לבחור אחרת.

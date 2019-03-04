@@ -14,10 +14,6 @@ uk:
     motion:
       must_close_in_future: Пропозицію потрібно закрити в майбутньому.
       one_at_a_time: Є інші активні пропозиції.
-  subscriptions:
-    gift_plan_selected_for_group_html: |
-        <h1>Успішно.</h1>
-        <p>Ви вибрали безкоштовний план для вашої групи <a href="/g/%{group_key}">%{group}</a></p>
   email:
     reset_password:
       greeting: |

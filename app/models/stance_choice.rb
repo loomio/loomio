@@ -1,6 +1,6 @@
 class StanceChoice < ApplicationRecord
   belongs_to :poll_option
-  belongs_to :stance, dependent: :destroy
+  belongs_to :stance
   has_one :poll, through: :poll_option
   delegate :has_variable_score, to: :poll, allow_nil: true
 

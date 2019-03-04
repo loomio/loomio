@@ -1,1 +1,45 @@
-he: {}
+he:
+  loomio_onboarding:
+    onboarding_mailer:
+      welcome:
+        subject: ברוכים הבאים ללומיו!
+        body_md: |+
+            היי %{recipient_name}
+
+            ברוכים הבאים ללומיו! המקום שלכם לקיים דיונים והחלטות עם הקבוצה שלכם.
+
+            אני %{sender_name}, חבר בלומיו, ואני פה כדי לעזור לך להתניע את התהליכים.
+
+            תרצה להצטרף לשיעור ניסיון חינם בלומיו?%{webinar_url}.
+            השיעור כולל סיור באפליקציה והזדמנות לשאול שאלות שיש לך.
+
+            בקר באתר העזרה של לומיו [help.loomio.org](https://help.loomio.org/%{help_locale}/)
+
+            זו רק ההתחלה! יש המון תוכן ומדריכים לעזור לך.
+
+            אם יש לך שאלות או הערות, פנה אלינו במייל
+
+            בהצלחה!
+
+    group_progress_card:
+      title: הפעלת הקבוצה שלך
+      activities:
+        set_description: הגדר את תאור הקבוצה
+        set_logo: בחר לוגו לקבוצה שלך
+        set_cover_photo: בחר תמונת קאבר לקבוצה
+        invite_people_in: הזמן אנשים
+        start_thread: התחל דיון
+        make_decision: התחל החלטה
+      learn_more: למד עוד בעזרה של לומיו
+      celebration_message: יפה! הקבוצה שלך מוכנה.
+      dismiss_this_card: בטל את הכרטיס
+    user_progress_card:
+      title: הגדר את הפרופיל שלך
+      activities:
+        enter_name: הזן את שמך
+        set_profile_picture: הוסף תמונת פרופיל
+        set_bio: הוסף תאור קצר
+        join_group: הצטרף לקבוצה
+        make_decision: הצבע על החלטה
+      celebration_message: הפרופיל שלך מוכן!
+      dismiss: בטל

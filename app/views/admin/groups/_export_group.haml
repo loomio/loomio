@@ -1,0 +1,9 @@
+%div.panel
+  %h3 Export group data
+  %div.panel-contents
+    %div
+      Export all records of this group. An email will be sent to you when the export is complete
+    %div
+      =link_to 'Export group',
+               export_group_admin_group_path(group),
+               method: :post

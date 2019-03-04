@@ -39,6 +39,7 @@ fr:
     dot_vote: Vote à points
     meeting: Sondage horaire de réunion
     ranked_choice: Classement par préférence
+    score: Vote pondéré
   timezones:
     local: Heure locale ({{value}})
   common:
@@ -268,7 +269,6 @@ fr:
     recent_threads: 'Discussions récentes'
     unread_threads: 'Discussions non lues ({{count}})'
     muted_threads: 'Discussions ignorées'
-    start_group: 'Nouveau groupe'
     explore: 'Groupes publics'
     start_thread: Nouvelle discussion
     start_decision: Nouvelle décision
@@ -509,6 +509,7 @@ fr:
     discussion_header: Historique des modifications de la discussion
     comment_header: Historique des modifications du commentaire
     poll_header: Historique des modifications du sondage
+    stance_header: Historique de révision de position
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     edited_by: 'Édité par <strong>{{name}}</strong>'
     posted: Posté
@@ -563,10 +564,10 @@ fr:
     options:
       label: 'Options'
       edit_group: 'Modifier les paramètres du groupe'
+      export_data: Exporter les données du groupe
       manage_members: 'Gérer les membres'
       add_subgroup: 'Ajouter un sous-groupe'
       manage_subscription: 'Gérer les inscriptions au groupe'
-      email_settings: 'Paramètres e-mail'
       leave_group: 'Quitter le groupe'
       deactivate_group: 'Désactiver le groupe'
     volume:
@@ -647,6 +648,7 @@ fr:
     permissions: 'Permissions'
     allow_public_threads: 'Autoriser les discussions publiques dans ce groupe.'
     parent_members_can_see_discussions: 'Les membres de {{parent}} peuvent voir les discussions privées.'
+    members_can_announce: 'Les membres peuvent notifier toutes les personnes du groupe.'
     members_can_add_members: 'Les membres peuvent inviter des personnes et approuver les demandes d’adhésion.'
     members_can_create_subgroups: 'Les membres peuvent créer des sous-groupes.'
     members_can_edit_discussions: 'Les membres peuvent modifier le titre et la description de n’importe quelle discussion.'
@@ -662,6 +664,17 @@ fr:
       group_updated: 'Groupe mis à jour'
   group_export_modal:
     title: Exporter les données de votre groupe
+    body: |
+        <p>
+        Vous pouvez télécharger une copie des données de votre groupe quand vous le souhaitez.
+        <a href="https://help.loomio.org/en/user_manual/groups/data_export/">En savoir plus.</a>
+        </p>
+        <p>
+        L'export prend quelques minutes, en fonction de la taille de votre groupe.
+        Quand il est disponible, vous recevrez un e-mail contenant un lien pour télécharger le fichier.
+        </p>
+    submit: Démarrer l'export
+    flash: L'export des données du groupe a démarré
   group_features:
     useAnonymous: Ne pas afficher les votes des membres
     nested_comments: Afficher les commentaires en mode discussion
@@ -886,6 +899,8 @@ fr:
     submit: 'Désactiver mon compte'
   email_settings_page:
     header: Réglages de courriel
+    email_newsletter: Bulletin d'information de Loomio
+    email_newsletter_description: "Etre averti des nouvelles fonctionnalités, formation, évènements dans votre ville et du futur de Loomio. 2 à 3 e-mails par an."
     daily_summary_label: Résumé quotidien
     daily_summary_description: "Tous les matins, vous recevrez un courriel avec toutes les activités que vous avez raté la veille. Cela vous permet de rester au courant de l’activité de vos groupes."
     on_participation_label: Notification sur les discussions auxquelles je participe
@@ -1084,15 +1099,21 @@ fr:
     description_private: 'a modifié contexte et confidentialité de la discussion'
     description_private_title: 'a modifié titre, contexte et confidentialité de la discussion'
   contact_message_form:
+    title: "Salut ! Comment puis-je vous aider ?"
+    contact_us_email: "Vous pouvez aussi nous contacter par e-mail : <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contactez-nous'
     name_label: 'Votre nom'
     name_placeholder: 'Entrez votre nom…'
     subject_label: "Sujet"
+    subject_placeholder: |
+        Par exemple, problème de connexion ou suggestion de fonctionnalité
     email_label: 'Votre adresse e-mail'
     email_placeholder: 'Entrez votre adresse e-mail…'
     message_label: 'Votre message'
+    message_placeholder: 'Si vous avez besoin d''aide, donnez autant d''information que possible s''il vous plait.'
     send_message: 'Envoyer le Message'
     new_contact_message: "Merci de nous avoir contacté, nous vous répondrons rapidement!"
+    success: "Merci pour votre message, {{name}}. Nous prendrons rapidement contact."
   hint:
     context: 'Conseils pour l’utilisation de la zone de contexte'
     discussion: 'Conseils pour démarrer une discussion stimulante'
@@ -1154,6 +1175,7 @@ fr:
       success: "« {{name}} » ne peut plus utiliser votre compte."
   decision_tools_card:
     title: Outils de décision
+    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Aide</a>
     proposal_title: Proposition
     count_title: Vérification
     poll_title: Sondage
@@ -1162,6 +1184,7 @@ fr:
     ranked_choice_title: Classement par préférence
   poll_common:
     your_response: Votre réponse
+    change_your_response: Modifier la réponse
     reason: Raison
     reason_placeholder: Un commentaire supplémentaire ?
     message: Message
@@ -1174,6 +1197,7 @@ fr:
     update_outcome: Mettre à jour le résultat
     outcome: Résultat
     statement: Déclaration
+    change_your_stance: Modifier la réponse
     load_more: Plus
     details: Détails
     participant_name: Votre nom
@@ -1185,6 +1209,7 @@ fr:
     publish_poll: Partager le sondage
     view_all: Tout voir
     save_changes: Enregistrer
+    change_vote: Changer votre vote
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -1338,6 +1363,8 @@ fr:
     closed: Clôturée
     start: Démarrer
     update: Mettre à jour
+    loomio_school_link: |
+        <p>Apprenez-en plus sur <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">l'aide de Loomio</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Une proposition est un outil de recherche d’accord collectif à propos d’une déclaration ou d’un plan d’action.</p>
@@ -1348,6 +1375,7 @@ fr:
     tool_tip_collapsed: Cherchez l’accord collectif
     start_header: Faire une proposition
     edit_header: Éditer la proposition
+    tip: Recherche le consensus par un processus permettant à tous de s'exprimer.<a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Apprenez-en plus</a>
     title_placeholder: Par exemple « Allons sur la lune! »
     details_placeholder: Donnez assez d’informations pour que tout le monde sache ce que veut dire être d’accord et être en désaccord
     proposal_created: Proposition démarrée
@@ -1399,8 +1427,18 @@ fr:
     dot_vote_created: Vote à points créé
     dot_vote_updated: Vote à points mis à jour
   poll_score_form:
+    tool_tip_expanded: |
+        <p>Le votes pondéré permet à chacun d'exprimer son degré d'adhésion à chacune des propositions.</p>
+        <p>Le score total de chaque proposition est affiché dans le résultat.</p>
+    tool_tip_collapsed: Pondérer chaque choix
+    start_header: Initier un vote pondéré
+    edit_header: Modifier un vote pondéré
+    tip: Pondérer chaque choix
+    title_placeholder: Par exemple, pondérer les candidats sur une échelle de 0 à 9
     details_placeholder: Partagez toutes les informations utiles pour participer
     add_option_placeholder: Ajouter une option
+    score_created: Vote pondéré créé
+    score_updated: Vote pondéré mis à jour
   poll_meeting_form:
     tool_tip_expanded: |
         <p>Utilisez un sondage réunion pour trouver un créneau horaire pour une réunion.</p>
@@ -1566,16 +1604,21 @@ fr:
     invalid_token: "Désolé, nous n’avons pas pu vous authentifier grâce à ce lien. Cliquez ci-dessous pour en recevoir un nouveau."
     email_not_found: "Désolé, nous n’avons pas trouvé de compte correspondant à cette adresse e-mail."
     email_placeholder: vous@exemple.com
+    login_with_token: Vous êtes prêt ! Cliquez sur le lien ci-dessous pour continuer.
+    login_link_helptext: Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
     login_link_helptext_with_password: "Entrez votre mot de passe, ou connectez-vous par courriel."
+    check_spam_folder: Si vous ne recevez pas l'e-mail, veuillez vérifier le répertoire des spams.
     sign_up_helptext: Merci de remplir ce formulaire pour créer un compte
     i_accept: "J'accepte les <a href='{{termsUrl}}' target='_blank'>Conditions d'utilisation</a> et la <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a>"
     name_required: Entrez un nom
     terms_required: Vous devez accepter les Conditions d'utilisation
     account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé !
     privacy_notice: "Des données personnelles sont recueillies quand vous utilisez {{siteName}}. <br/> Lisez notre <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a> pour en savoir plus."
+    welcome: Nouveau sur {{siteName}} ?
     welcome_back: Content de vous revoir, {{name}} !
     login_link: Recevoir un courriel de connexion
     set_password: Définir un mot de passe
+    set_password_helptext: Vous souhaitez un mot de passe pour la prochaine fois ?
     hello: "Bonjour, {{name}} !"
     new_to_loomio: Nouveau sur {{site_name}} ? Créez un compte !
     create_account: Créez un compte
@@ -1650,3 +1693,8 @@ fr:
         Vous avez ajouté Slack à votre groupe <strong>{{name}}</strong>.
         Maintenant, dès que quelqu’un démarre un sondage dans ce groupe, il ou elle pourra choisir de notifier la chaîne de votre équipe Slack.
     start_poll_now: Prendre une décision maintenant
+  powered_by:
+    powered_by_loomio: Propulsé par Loomio
+    privacy_policy: Politique de confidentialité
+    terms_of_service: Conditions d'utilisation
+    front_page: Première page

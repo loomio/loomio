@@ -14,6 +14,7 @@ fr:
       email: Adresse e-mail non valide
       spoofed_media_type: Les contenus de ce fichier ne correspondent pas à son nom
   user:
+    deleted_user: "Utilisateur supprimé"
     placeholder_name: "Utilisateur invité (%{hostname})"
     error:
       recaptcha: "Nous n'avons pas pu confirmer que vous n'êtes pas un robot. Merci de réessayer!"
@@ -67,12 +68,11 @@ fr:
     motion:
       must_close_in_future: Une proposition ne peut se terminer dans le passé
       one_at_a_time: Il y a une autre proposition active.
-  subscriptions:
-    gift_plan_selected_for_group_html: |+
-        <h1>Bravo.</h1>
-        <p>Vous avez choisi l'offre gratuite pour votre groupe <a href="/g/%{group_key}">%{group}</a></p>
-
   user_mailer:
+    group_export_ready:
+      subject: Export des données du groupe %{group_name}
+      body_html: |
+          Téléchargez les données du groupe ici</a>. Ce lien expirera dans une semaine.
     accounts_merged:
       subject: "Vos comptes utilisateurs sur %{site_name} ont été fusionnés."
       body_html: |
@@ -138,6 +138,7 @@ fr:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou modifier vos préférences de notification par courriel."
     catch_up:
       daily_subject: Hier sur %{site_name}
+      weekly_subject: La semaine dernière sur %{site_name}
       do_not_reply: Merci de ne pas répondre à ce courriel.
       mark_as_read: Marquer comme lu
       thanks_for_reading: Merci pour votre lecture, passez une bonne journée !
@@ -573,6 +574,9 @@ fr:
     dot_vote:
       title: "Quelle est notre stratégie d'entreprise pour le trimestre prochain?"
       details: C'est une année charnière pour notre entreprise et nous devons prioriser l'usage de nos ressources limitées. Merci d'indiquer les thèmes qui selon vous doivent concentrer nos efforts sur le prochain trimestre.
+    score:
+      title: "Quels sont les sujets qui vous intéressent pour la prochaine conférence ?"
+      details: Nous préparons les sujets qui seront évoqués lors de la prochaine conférence. Merci de nous indiqué quels sont ceux qui vous intéressent.
     ranked_choice:
       title: "Qui désigner comme maire-adjoint?"
       details: "C'est l'heure de nos élections semestrielles. Ceci est un vote alternatif officiel, qui désignera notre prochain maire-adjoint. N'oubliez pas de vous renseigner sur les différents candidats sur notre site!"

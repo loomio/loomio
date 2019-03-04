@@ -122,10 +122,15 @@ pl:
       remind: Przypomnij
       resend: Wyślij ponownie
       send: Wyślij
+      joined: Dołączył/a
+      last_seen: Ostatnio widziany/a
+      invite: Zaproś
       resent: Zaproszenie wysłane ponownie
       export: Eksport
+      fork: Stwórz odgałęzienie
     formatting_help:
       label: 'Formatowanie'
+      title: 'Naucz się używać Markdown, by sformatować swój tekst'
   ordinal:
     _1: '1.'
     _2: '2.'
@@ -138,6 +143,8 @@ pl:
     _9: '9.'
     _10: '10.'
   devise:
+    sessions:
+      signed_up: Zarejestrowano pomyślnie!
     failure:
       inactive: 'Z tym adresem e-mail związane jest dezaktywowane konto. Jeśli chcesz aktywować swoje konto, skontaktuj się z nami.'
   error_page:
@@ -163,57 +170,163 @@ pl:
     quiet_label: "Brak wiadomości"
     mute_label: "Wycisz"
     discussion:
+      title: "Ustawienia e-mailowe wątku"
       loud_description: "Wyślemy do Ciebie e-mail przy każdej aktywności w tym wątku."
       normal_description: "Wyślemy do Ciebie e-mail za każdym razem, gdy wysuwana jest jakaś propozycja, gdy niedługo się kończy lub gdy prezentowany jest jej rezultat."
       quiet_description: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."
       apply_to_all: "Zapisz te ustawienia do wszystkich wątków w tej grupie"
       messages:
         loud: "Pocztą otrzymasz powiadomienie o aktywności w tym wątku."
+        normal: "Otrzymasz maila dotyczącego propozycji w tym wątku."
         quiet: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."
     membership:
       title: "Ustawienia poczty dla {{title}}"
+      loud_description: "Otrzymasz maila za każdym razem, gdy w grupie pojawi się jakaś aktywność."
+      normal_description: "Otrzymasz maila tylko odnośnie ogłoszeń w grupie."
+      quiet_description: "Nie otrzymasz żadnych maili dotyczących aktywności w tej grupie."
+      apply_to_all: "Zastosuj te ustawienia do wszystkich moich grup."
+      messages:
+        loud: "Otrzymasz maila o wszystkich aktywnościach w tej grupie."
+        normal: "Otrzymasz maila tylko odnośnie ogłoszeń w grupie."
+        quiet: "Nie otrzymasz żadnych maili dotyczących tej grupy."
+    all_groups:
+      messages:
+        loud: "Otrzymasz maila o  aktywnościach we wszystkich Twoich grupach."
+        normal: "Otrzymasz wyłącznie maile z ogłoszeniami ze wszystkich Twoich grup."
+        quiet: "Nie otrzymasz maila o żadnej z Twoich grup."
+    user:
+      title: Ustawienia e-maili dla nowych grup
+      apply_to_all: "Zastosuj te ustawienia do wszystkich moich grup."
+  close_explanation_modal:
+    aria_label: Zamknij wątek
+    close_thread: Zamknij wątek
+    body_header: |
+        Zamknij stare i niepotrzebne wątki, by usunąć je z widoku i zaznaczyć, że dyskusja jest już zakończona.
+    body_footer: |
+        Każdy/a może w dalszym ciągu komentować i tworzyć ankiety w zamkniętym wątku, lecz nie pojawią się one w głównym panelu grupy.
+  mute_explanation_modal:
+    aria_label: Wycisz wątek
+    mute_thread: Wycisz wątek
+    body_html: |
+        Wyciszanie wątku oznacza, że nie będziesz powiadamiany/a o propozycjach i innych aktywnościach w tym wątku, chyba że ktoś @wspomni o Tobie.
+    body_html_2: |
+        Wyciszone wątki są także ukryte z najnowszych i nieprzeczytanych stron. By znaleźć Twoje wyciszone wątki, wybierz opcję Wyciszone na pasku bocznym.
+    image_alt: Opcja wyciszonych wątków na pasku bocznym
+  dismiss_explanation_modal:
+    aria_label: Oddal wątek
+    dismiss_thread: Oddal wątek
+    body_html: |
+        Oddalanie wątku usuwa go z Twojej listy nieprzeczytanych. Jeżeli w wątku pojawi się jakaś nowa aktywność, pojawi się on ponownie na liście nieprzeczytanych.
   inbox:
     clear: 'Wyczyść'
     latest: 'Ostatnie'
     unread: 'Nieprzeczytane'
     closing_in: 'Zamykane'
+  sign_up_form:
+    password_label: 'Hasło:'
+    password_confirmation_label: 'Podaj hasło ponownie:'
   signed_out_modal:
+    aria_label: 'Sesja zakończona'
+    title: "Twoja sesja została zakończona"
     ok: "Ok"
+  comment_reply_form:
+    aria_label: 'Dodaj odpowiedź'
   comment_form:
     aria_label: 'Dodanie komentarza'
     attachments:
+      add_attachment: 'Załącz plik'
       remove_attachment: 'Usunięcie załącznika'
     messages:
       created: 'Komentarz dodany'
+      replied: '{{name}} powiadomiony/a o odpowiedzi'
       updated: 'Komentarz zmieniony'
       destroyed: 'Komentarz usunięty'
+    say_something: Powiedz coś...
     edit_comment: 'Edycja komentarza'
     delete_comment: 'Usunięcie komentarza'
     cancel_reply: 'Anulowanie Odpowiedzi'
     confirm_delete_message: 'Czy na pewno chcesz usunąć ten komentarz?'
+    confirm_delete: 'Usuń komentarz'
+    in_reply_to: "Odpowiedz {{name}}"
+    write_a_comment: "Napisz komentarz"
     submit_button:
       label: 'Wysłanie'
+    private_privacy_notice: 'Twój komentarz będzie widoczny tylko dla członków {{groupName}}.'
+    public_privacy_notice: 'Twój komentarz będzie widoczny dla wszystkich.'
+    sign_in: "Zaloguj się, by dołączyć do rozmowy"
+  sidebar:
+    recent_threads: 'Najnowsze wątki'
+    unread_threads: 'Nieprzeczytane wątki ({{count}})'
+    muted_threads: 'Wyciszone wątki'
+    explore: 'Publiczne grupy'
+    start_thread: Nowy wątek
+    start_decision: Nowa decyzja
+    aria_labels:
+      heading: 'Pasek boczny'
+      groups_list: 'Grupy'
   navbar:
     recent_title: 'Idź do pulpitu'
     unread_title: 'Zobacz nieprzeczytaną aktywność'
+    start_thread: 'Nowy wątek'
     notifications: 'Panel powiadomień'
     search:
+      label: 'Wyszukaj; wyszukaj grupy i wątki'
+      results_aria_label: 'Wyniki wyszukiwania'
+      no_results: 'Nie znaleziono wątków'
       close: 'Zamknij panel wyszukiwania'
       placeholder: 'Szukaj'
       loading: 'Ładowanie wyników...'
       discussions: 'Wątki'
       proposals: 'Rekomendacje'
       comments: 'Komentarze'
+    sign_in: 'Zaloguj się'
+    toggle_sidebar: 'Pokaż pasek boczny'
+    logo_title: 'Strona domowa'
+  user_dropdown:
+    button_label: 'Menu użytkownika'
+    edit_profile: 'Edytuj profil'
+    email_settings: 'Ustawienia e-maili'
+    help: 'Pomoc'
+    sign_out: 'Wyloguj się'
+  membership_card:
+    group_members: "Członkowie grupy"
+    discussion_members: "Członkowie wątku"
+    poll_members: "{{pollType}} członkowie"
+    invite_to_group: "Zaproś do grupy"
+    invite_to_discussion: "Zaproś do wątku"
+    invite_to_poll: "Zaproś do głosowania"
+    invitations: "Zaproszenia"
   membership_dropdown:
+    set_title: "Nadaj tytuł"
+    resend: "Wyślij zaproszenie ponownie"
     invitation_resent: "Zaproszenie wysłane ponownie"
     make_coordinator: 'Definicja koordynatora'
+    demote_coordinator: 'Odwołaj koordynatora'
+    remove_from:
+      discussion: "Usuń z wątku"
+      group: "Usuń z grupy"
+      poll: 'Usuń z {{pollType}}'
+    cancel_invitation: Anuluj zaproszenie
   start_menu:
+    title: 'Działanie'
     start_group: 'Uruchomienie Grupy'
     start_subgroup: 'Uruchomienie Podgrupy'
     start_thread: 'Uruchomienie Wątku'
+    start_poll: 'Stwórz ankietę'
     invite_people: 'Zaproszenie Osób'
+  notification_models:
+    discussion: 'wątek:'
+    comment: 'skomentuj w'
+    poll: 'decyzja:'
+    outcome: 'rezultat:'
   notifications:
     header: "Powiadomienia"
+    no_notifications: "Nie masz żadnych powiadomień"
+    new_discussion: "{{name}} rozpoczął/a dyskusję {{title}}"
+    discussion_announced: "{{name}} udostępnił/a dyskusję {{title}}"
+    new_motion: "{{name}} stworzył/a propozycję {{title}}"
+    motion_closed: "Propozycja zamknięta: {{title}}"
+    publish_outcome: "Opublikuj rezultat"
   position_buttons_panel:
     heading: Wypowiedz się
   extend_proposal_form:
@@ -236,38 +349,123 @@ pl:
     context_label: 'Kontekst'
     context_placeholder: 'Aby uzyskać efektywną dyskusję podaj dostateczną ilość informacji. Można aktualizować w trakcie dyskusji'
     privacy_label: 'Zasady prywatności'
+  announcement:
+    form:
+      group_announced:
+        title: Zaproś do grupy
+      discussion_announced:
+        title: Zaproś do wątku
+      poll_announced:
+        title: Zaproś do głosowania
   action_dock:
+    announce_thread_active: (Nikt jeszcze nie został/a zaproszony/a)
+    announce_poll: Zaproś ludzi do głosowania
+    announce_poll_active: (Nikt jeszcze nie został/a zaproszony/a)
+    translate_poll: Przetłumacz ankietę
     edit_stance: Zmiana stanowiska
+    translate_stance: Przetłumacz głosowanie
+    edit_comment: Edytuj komentarz
+    delete_comment: Usuń komentarz
+    reply_to_comment: Odpowiedz
+    fork_comment: Odgałąź wątek
+    translate_comment: Przetłumacz komentarz
+    edit_outcome: Edytuj rezultat
+    announce_outcome: Powiadom ludzi o tym rezultacie
+    announce_outcome_active: (Nikt nie został/a jeszcze poinformowany/a o tym rezultacie)
+    translate_outcome: Przetłumacz rezultat
+    show_history: Pokaż historię edycji
+    pin_thread: Przypnij wątek
+    unpin_thread: Odepnij wątek
+    comment_copied: Adres URL komentarza skopiowano do schowka
+    poll_copied: Adres URL decyzji skopiowano do schowka
+    discussion_copied: Adres URL wątku skopiowano do schowka
+  cover_photo_form:
+    aria_label: 'Zmień formę zdjęcia głównego'
+    heading: 'Nowe zdjęcie główne'
+    upload_link: 'Załaduj nowe zdjęcie główne'
+    image_size_helptext: 'Idealny rozmiar obrazu to 1400x320px'
+    upload_success: 'Zaktualizowano zdjęcie główne'
+  logo_photo_form:
+    aria_label: 'Zmień formę logo grupy'
+    heading: 'Nowe logo grupy'
+    upload_link: 'Załaduj nowe logo grupy'
+    image_size_helptext: 'Idealny rozmiar obrazka to 100x100px'
+    upload_success: 'Zaktualizowano logo'
   join_group_button:
     join_group: Dołączenie do grupy
+    membership_requested: Oczekująca prośba o członkostwo
     messages:
       joined_group: 'Jesteś teraz członkiem grupy {{group}}'
   membership_request_form:
+    aria_label: Formularz zgłoszeniowy
     heading: Prośba o dołączenie do grupy
     name_label: Nazwa
     email_label: E-mail
+    introduction_label: Dlaczego chcesz dołączyć do grupy?
+    submit_button: Poproś o dołączenie
+    introduction_over_limit: Odpowiedź zbyt długa
     messages:
       membership_requested: 'Wysłałeś/aś prośbę o dołączenie do grupy  {{group}}'
   revision_history_modal:
+    aria_label: Historia poprawek
+    discussion_header: Historia poprawek dyskusji
+    comment_header: Historia poprawek komentarza
+    poll_header: Historia poprawek ankiety
+    stance_header: Historia poprawek stanowiska
+    started_by: 'Zapoczątkowane przez {{name}}'
+    edited_by: 'Edytowane przez {{name}}'
+    posted: Opublikowano
+    original_text: Oryginał
     current_revision: Ostatnie
+  reactions_input:
+    add_your_reaction: Dodaj swoją reakcję
   reactions_display:
+    more_reactions: "{{count}} więcej"
     you: "Ty"
+    you_and_name: "Ty i {{name}}"
+    you_and_name_and_count_more: "Ty, {{name}} i {{count}} więcej"
+    name_and_count_more: "{{name}} i {{count}} więcej"
+  context_panel:
+    thread_status:
+      pinned: "Ten wątek został przypięty. Zostanie na samej górze listy wątków dla wszystkich członków grupy."
+      closed: "Ten wątek został zamknięty. Nie będzie się więcej pojawiał w głównym panelu i będzie wyświetlał się pod \"Zamkniętymi\" na stronie grupy."
   group_page:
+    show_opened: '{{count}} Otwarte'
+    show_closed: '{{count}} Zamknięte'
+    no_threads_here: Nie ma tu żadnych wątków!
+    search_threads: Szukaj wątków...
+    private_threads: Musisz być w tej grupie, by widzieć jej prywatne wątki.
+    no_more_threads: To już wszystkie wątki w tej grupie!
     messages:
       privacy:
         members: 'Ta grupa jest teraz widoczna tylko dla członków'
         parent_members: 'Ta grupa jest teraz widoczna tylko dla członków Twojej organizacji'
         public: 'Ta grupa jest teraz publiczna'
       leave_group_success: 'Opuściłeś/aś tę grupę'
+      archive_group_success: 'Ta grupa została dezaktywowana'
     group_logo: 'Logo grupy'
+    new_photo: 'nowe zdjęcie'
+    new_cover_photo: 'Załaduj nowe zdjęcie główne'
+    new_group_logo: 'Załaduj nowe logo grupy'
+    open_discussions: 'Otwarte wątki'
+    closed_discussions: 'Zamknięte wątki'
     discussions_placeholder: 'Wątek jest miejscem gdzie wszyscy mogą dyskutować temat i podejmować wspólne decyzje.'
     members_placeholder: 'Jesteś jedynym członkiem: zaproś inne osoby!'
     member_options: Opcje członka
     subgroups: 'Podgrupy'
+    subgroups_placeholder: 'Subgrupy dają zespołom własną przestrzeń i wysyłają powiadomienia do właściwych osób.'
+    invite_people: 'Zaproś'
     visibility_label: 'Widoczność'
     options_label: 'Opcje'
     options:
       label: 'Opcje'
+      edit_group: 'Edytuj ustawienia grupy'
+      export_data: Eksportuj dane grupy
+      manage_members: 'Zarządzaj użytkownikami'
+      add_subgroup: 'Dodaj subgrupę'
+      manage_subscription: 'Zarządzaj subskrypcją grupy'
+      leave_group: 'Opuść grupę'
+      deactivate_group: 'Dezaktywuj grupę'
     volume:
       loud: Wyślij wiadomość jeśli pojawi się aktywność.
       loud_aria_description: Poziom powiadamiania dla tej grupy jest ustawiony na Głośno. Będziesz otrzymywać wiadomości w przypadku każdej aktywności.
@@ -277,7 +475,22 @@ pl:
       quiet_aria_description: Poziom powiadamianie dla tej grupy jest ustawiony na Cicho. Nie będziesz otrzymywać maili o aktywnościach z tej grupy. Jej aktywność będzie wyświetlana na Pulpicie.
       mute: Ukryj tę grupę na pulpicie i nie przesyłaj powiadomień z wyjątkiem @wzmianek
       mute_aria_description: Poziom powiadamiania dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie.
+  leave_group_form:
+    add_coordinator: 'Dodaj koordynatora/kę'
+  archive_group_form:
+    aria_label: 'Dezaktywuj grupę'
+    title: 'Dezaktywuj grupę'
+    question: 'Czy masz pewność, że chcesz dezaktywować tę grupę?'
+    submit: 'Tak, dezaktywuj tę grupę'
   group_form:
+    start_group_heading: 'Załóż grupę'
+    start_subgroup_heading: 'Załóż subgrupę'
+    edit_group_heading: 'Edytuj ustawienia grupy'
+    edit_subgroup_heading: 'Edytuj ustawienia subgrupy'
+    group_name: 'Nazwa grupy'
+    group_name_placeholder: 'Jak chcesz nazwać swoją grupę?'
+    subgroup_name: 'Nazwa subgrupy'
+    description: 'Opis'
     privacy: 'Prywatność'
     submit_update: 'Zaktualizuj ustawienia'
   documents_page:
@@ -309,9 +522,16 @@ pl:
       make_admin_success: '{{name}} został/a koordynatorem'
       remove_admin_success: '{{name}} przestał/a być koordynatorem'
   membership_remove_modal:
+    invitation:
+      title: Anuluj zaproszenie
+      submit: Anuluj zaproszenie
     membership:
       title: Usunięcie członka
       submit: Usunięcie członka
+  memberships_panel:
+    remove_coordinator: Odwołaj koordynatora
+  cancel_invitation_form:
+    heading: Anuluj zaproszenie
   profile_page:
     messages:
       updated: 'Profil zmieniony'
@@ -386,10 +606,14 @@ pl:
   thread_context:
     aria_label: 'Kontekst wątku.'
     thread_options: 'Opcje wątku'
+    email_settings: 'Ustawienia e-maili'
     close_thread: 'Zamknij'
     reopen_thread: 'Otworzyć ponownie'
     mute_thread: 'Wycisz'
     delete_thread: 'Usuń'
+  pin_thread_modal:
+    title: Przypnij wątek
+    pin_thread: Przypnij wątek
   delete_comment_dialog:
     title: 'Usuń komentarz'
     question: 'Czy na pewno chcesz usunąć ten komentarz?'
@@ -420,6 +644,8 @@ pl:
     meeting_title: Ankieta datowa
   poll_common:
     save_changes: Zapis
+  current_polls_card:
+    start_poll: Nowa decyzja
   poll_common_form:
     closed: Zamknięta
     start: Rozpocznij
@@ -433,3 +659,7 @@ pl:
     subscribe: Subskrybuj
   polls_page:
     heading: Decyzje
+    start_new_poll: Nowa decyzja
+  install_slack:
+    progress:
+      invite: Zaproś

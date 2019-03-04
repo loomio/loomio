@@ -4,6 +4,8 @@ he:
       title: תואר
       author: מחבר
       details: פרטים
+      group_name: שם הקבוצה
+      total: סך הכל
   email:
     reply_to_this_discussion: השיבו לדיון זה
     catch_up:
@@ -19,3 +21,12 @@ he:
     pricing: תמחור
     public_groups: קבוצות ציבוריות
     terms: תנאי שימוש
+  password_reset:
+    change_your_password: שנה את הסיסמה שלך
+    change_my_password: שנה סיסמה
+  poll_mailer:
+    common:
+      unsubscribe: ביטול מינוי
+      create_outcome: שתפ/י תוצאה
+  poll_unsubscribe:
+    go_to_dashboad: עבור לדשבורד

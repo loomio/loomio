@@ -263,7 +263,6 @@ pt_BR:
     recent_threads: 'Conversas recentes'
     unread_threads: 'Conversas não lidas ({{count}})'
     muted_threads: 'Conversas silenciadas'
-    start_group: 'Novo grupo'
     explore: 'Grupos públicos'
     start_thread: Nova conversa
     start_decision: Nova decisão
@@ -519,7 +518,6 @@ pt_BR:
       manage_members: 'Gerenciar Membros'
       add_subgroup: 'Adicionar Subgrupo'
       manage_subscription: 'Gerenciar Inscrições do Grupo '
-      email_settings: 'Configurações de e-mail'
       leave_group: 'Sair do Grupo'
       deactivate_group: 'Desativar Grupo'
     volume:
