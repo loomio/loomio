@@ -574,9 +574,13 @@ he:
       label: 'אפשרויות'
       edit_group: 'עריכת הגדרות הקבוצה'
       export_data: יצוא דאטה של הקבוצה
+      export_data_as_json: יצא את נתוני הקבוצה כקובץ JSON
+      export_data_as_csv: יצא את נתוני הקבוצה כקובץ CSV
+      export_data_as_html: יצא את נתוני הקבוצה כקובץ HTML
       manage_members: 'ניהול חברים'
       add_subgroup: 'הוספת תת קבוצה'
       manage_subscription: 'ניהול מינויים של הקבוצה'
+      email_settings: 'הגדרות מייל'
       leave_group: 'עזוב את הקבוצה'
       deactivate_group: 'הפוך קבוצה ללא פעילה'
     volume:
@@ -891,11 +895,24 @@ he:
     aria_label: 'השבת חשבון'
     introduction: 'כשאתה משבית את חשבונך:'
     no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
+    name_removed: 'הערות, הצעות ודיונים שביצעת ישראו אבל השם שלך יוסר מהם'
+    no_emails: 'לא תקבל/י יותר עדכונים במייל.'
+    you_can_reactivate: "אם תרצה, תוכל לאקטב את החשבון שלך מחדש בשלב מאוחר יותר "
+    submit: 'כן, אני רוצה להשבית'
+  delete_user_modal:
+    title: 'מחק את חשבון המשתמש שלך'
+    irreversable: "אזהרה: פעולה זו לא ניתנת לביטול. אם אתה ממשיך:"
+    you_will_be_deleted: "חשבון המשתמש שלך כולל שמך, כתובת הדוא\"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו."
+    submit: 'כן, מחק את חשבון המשתמש שלי'
   deactivate_user_form:
+    aria_label: 'אישור השבתת החשבון'
     title: 'השבת חשבון'
+    question: 'תוכל לספר לנו למה אתה משבית את החשבון?'
+    placeholder: 'שאלת רשות. כל מידע שתשתף איתנו יעזור לנו להשתפר :)'
     submit: 'השבת חשבון'
   email_settings_page:
     header: הגדרות מייל
+    email_newsletter: הניוזלטר של לומיו
     announcement_label: הודעות
     update_settings: שמור שינויים
   dashboard_page:
