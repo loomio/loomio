@@ -23,7 +23,7 @@ class GroupInviter
   end
 
   def invited_members
-    @invited_members ||= User.where(id: [@user_ids, @generated_user_ids].flatten.compact)
+    @invited_members ||= User.where("id in (:ids) or email in (:emails)", ids: @user_ids, emails: @emails)
   end
 
   def invited_memberships
@@ -33,16 +33,14 @@ class GroupInviter
   private
 
   def generate_users!
-    @generated_user_ids ||= User.import(@emails.uniq.map do |email|
+    User.import(@emails.uniq.map do |email|
       User.new(email: email, time_zone: @inviter.time_zone, detected_locale: @inviter.locale)
-    end).ids
+    end, on_duplicate_key_ignore: true)
   end
 
   def generate_memberships!
-    @generated_membership_ids ||= begin
-      memberships = invited_members.where.not(id: @group.member_ids).map { |user| membership_for(user) }
-      Membership.import(memberships).ids
-    end
+    memberships = invited_members.where.not(id: @group.reload.all_member_ids).map { |user| membership_for(user) }
+    Membership.import(memberships).ids
   end
 
   def membership_for(user)

@@ -10,7 +10,7 @@ describe API::RegistrationsController do
   before { request.env["devise.mapping"] = Devise.mappings[:user] }
 
   describe 'create' do
-    let(:pending_membership) { create :membership, user: User.create(email: registration_params[:email]) }
+    let(:pending_membership) { create :membership, user: User.create(email: registration_params[:email], email_verified: false) }
     let(:pending_identity)   { create :facebook_identity, email: registration_params[:email] }
 
     it 'creates a new user' do
@@ -31,14 +31,6 @@ describe API::RegistrationsController do
     it 'sends a login email and a welcome email' do
       Clients::Recaptcha.any_instance.stub(:validate) { true }
       expect { post :create, params: { user: registration_params } }.to change { ActionMailer::Base.deliveries.count }.by(2)
-    end
-
-    it 'logs in immediately if pending invitation is present' do
-      session[:pending_membership_token] = pending_membership.token
-      expect { post :create, params: { user: registration_params.except(:recaptcha) } }.to change { User.count }.by(1)
-      u = User.last
-      expect(u.name).to eq registration_params[:name]
-      expect(u.email).to eq registration_params[:email]
     end
 
     it 'logs in immediately if pending identity is present' do
