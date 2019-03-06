@@ -14,6 +14,5 @@ class MergeDuplicateUsers < ActiveRecord::Migration[5.2]
     remove_index :users, name: :index_users_on_email
     remove_index :users, name: :email_verified_and_unique
     add_index    :users, :email, unique: true
-    raise "fail"
   end
 end

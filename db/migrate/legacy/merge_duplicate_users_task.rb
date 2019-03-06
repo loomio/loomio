@@ -5,10 +5,23 @@ class MergeDuplicateUsersTask
     puts "email_not_verified users: #{User.where(email_verified: false).count}"
     puts "verified users with unverified dupes: #{verified_users_with_dupes.count}"
 
-    puts "unique verified emails: #{User.select("distinct(lower(email))").where(email_verified: true).count}"
-    puts "unique unverified emails: #{User.select("distinct(lower(email))").where(email_verified: false).count}"
+    unique_emails = User.pluck("lower(email)").uniq
+    puts "unique emails: #{unique_emails.size}"
+
+    puts "sql"
+    sql_unique_verified_count = User.select("distinct(lower(email))").where(email_verified: true).count
+    sql_unique_unverified_count = User.select("distinct(lower(email))").where(email_verified: false).count
+    puts "unique verified emails: #{sql_unique_verified_count}"
+    puts "unique unverified emails: #{sql_unique_unverified_count}"
     puts "unique unverified emails (minus verified): #{unqiue_unverified_users_minus_verified.pluck(:email).count}"
-    puts "total unique emails: #{User.select("distinct(lower(email))").count}"
+
+    puts "ruby"
+    ruby_unique_verified_emails = User.where(email_verified: true).pluck("lower(email)").uniq
+    ruby_unique_unverified_emails = User.where(email_verified: false).pluck('lower(email)').uniq
+    ruby_unique_unverified_emails_minus_verified = ruby_unique_unverified_emails - ruby_unique_verified_emails
+    puts "unique verified emails: #{ruby_unique_verified_emails.size}"
+    puts "unique unverified emails: #{ruby_unique_unverified_emails.size}"
+    puts "unique unique_unverified_emails_minus_verified: #{ruby_unique_unverified_emails_minus_verified.size}"
   end
 
   def self.verified_users_with_dupes
@@ -21,21 +34,21 @@ class MergeDuplicateUsersTask
     # select the user with the min id in each dupe situation
 
     ActiveRecord::Base.connection.execute("DROP TABLE IF EXISTS verified_emails")
-    ActiveRecord::Base.connection.execute("SELECT lower(email) as email INTO TEMPORARY verified_emails FROM users WHERE email_verified = true;")
+    ActiveRecord::Base.connection.execute("SELECT lower(email) as email INTO TEMPORARY verified_emails FROM users WHERE email_verified = true")
 
-    User.select('distinct on (lower(users.email)) *')
-        .joins('LEFT OUTER JOIN verified_emails ON lower(users.email) = lower(verified_emails.email)')
+    User.select('distinct on (users.email) *, users.email')
+        .joins('LEFT OUTER JOIN verified_emails ON lower(users.email) = verified_emails.email')
         .where('users.email_verified = false AND verified_emails.email is null')
-        .order("email, id")
+        .order("users.email, id")
   end
 
   def self.merge_verified
     ActiveRecord::Base.logger.level = 1
     ActiveRecord::Base.transaction do
-      verified_user_ids_with_dupes = verified_users_with_dupes.pluck('users.id')
+      verified_users_with_dupes.pluck('lower(users.email)').uniq
       count = 0
       puts "merge verified:"
-      User.where(id: verified_user_ids_with_dupes, email_verified: true).find_each do |user|
+      verified_users_with_dupes.where(email_verified: true).find_each do |user|
         puts count.to_s if (count += 1) % 100 == 0
         merge_dupes(user)
       end
@@ -49,7 +62,7 @@ class MergeDuplicateUsersTask
 
       count = 0
       puts "merge unverified:"
-      User.where(id: users_with_duplicates, email_verified: false).find_each do |user|
+      unqiue_unverified_users_minus_verified.where(email_verified: false).each do |user|
         puts count.to_s if (count += 1) % 100 == 0
         merge_dupes(user)
       end
@@ -58,31 +71,31 @@ class MergeDuplicateUsersTask
   end
 
   def self.merge_dupes(original_user)
-    duplicate_users = User.where(email: original_user.email, email_verified: false).where("id != ?", original_user.id)
+    byebug if original_user.email.nil?
+    duplicate_users = User.where(email: original_user.email.downcase).where(email_verified: false).where("id != ?", original_user.id)
     duplicate_user_ids = duplicate_users.pluck(:id)
 
     # puts "1"
+    #
+    # # maybe make this a background job?
+    original_user_group_ids = Membership.where(user_id: original_user.id).pluck(:group_id)
+    #
+    Membership.where(user_id: duplicate_user_ids, group_id: original_user_group_ids).delete_all
+    #
+    taken_group_ids = []
+    unique_membership_ids = []
+    Membership.where(user_id: duplicate_user_ids).each do |m|
+      unless taken_group_ids.include? m.group_id
+        taken_group_ids << m.group_id
+        unique_membership_ids << m.id
+      end
+    end
 
-    # maybe make this a background job?
-    # group_ids_before = original_user.reload.group_ids
-    # original_user_group_ids = membership.where(user_id: original_user.id).pluck(:group_id)
-    #
-    # Membership.where(user_id: duplicate_user_ids, group_id: original_user_group_ids).delete_all
-    #
-    # taken_group_ids = []
-    # unique_membership_ids = []
-    # Membership.where(user_id: duplicate_user_ids).each do |m|
-    #   unless taken_group_ids.include? m.group_id
-    #     taken_group_ids << m.group_id
-    #     unique_membership_ids << m.id
-    #   end
-    # end
-    #
-    # Membership.where(id: unique_membership_ids).update_all(user_id: original_user.id)
-    # Membership.where(user_id: duplicate_user_ids).delete_all
+    Membership.where(id: unique_membership_ids).update_all(user_id: original_user.id)
+    Membership.where(user_id: duplicate_user_ids).delete_all
     #
     # group_ids_after = original_user.reload.group_ids
-
+    #
     # raise "missing group ids" unless group_ids_before.all? {|id| group_ids_after.include? id }
 
     Comment.where(user_id: duplicate_user_ids).update_all(user_id: original_user.id)
