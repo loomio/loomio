@@ -3,17 +3,30 @@ class MergeDuplicateUsersTask
     puts "users: #{User.count}"
     puts "email_verified users: #{User.where(email_verified: true).count}"
     puts "email_not_verified users: #{User.where(email_verified: false).count}"
-    puts "verified users with dupes: #{verified_users_with_dupes.count}"
-    puts "unverified users with dupes: #{unverified_users_with_dupes.count}"
-    puts "unique emails: #{User.select("distinct(lower(email))").count}"
+    puts "verified users with unverified dupes: #{verified_users_with_dupes.count}"
+
+    puts "unique verified emails: #{User.select("distinct(lower(email))").where(email_verified: true).count}"
+    puts "unique unverified emails: #{User.select("distinct(lower(email))").where(email_verified: false).count}"
+    puts "unique unverified emails (minus verified): #{unqiue_unverified_users_minus_verified.pluck(:email).count}"
+    puts "total unique emails: #{User.select("distinct(lower(email))").count}"
   end
 
   def self.verified_users_with_dupes
-    User.joins("INNER JOIN users unverified ON users.email = unverified.email").where("users.email_verified = true AND unverified.email_verified=false").distinct
+    User.joins("INNER JOIN users unverified ON users.email = unverified.email")
+        .where("users.email_verified = true AND unverified.email_verified=false").distinct
   end
 
-  def self.unverified_users_with_dupes
-    User.joins("INNER JOIN users duplicates ON users.email = duplicates.email").where("users.email_verified = false AND duplicates.email_verified=false AND users.id != duplicates.id").distinct
+  def self.unqiue_unverified_users_minus_verified
+    # get list of unqiue emails of users with unverified_emails , diff against verified emails uniq list.
+    # select the user with the min id in each dupe situation
+
+    ActiveRecord::Base.connection.execute("DROP TABLE IF EXISTS verified_emails")
+    ActiveRecord::Base.connection.execute("SELECT lower(email) as email INTO TEMPORARY verified_emails FROM users WHERE email_verified = true;")
+
+    User.select('distinct on (lower(users.email)) *')
+        .joins('LEFT OUTER JOIN verified_emails ON lower(users.email) = lower(verified_emails.email)')
+        .where('users.email_verified = false AND verified_emails.email is null')
+        .order("email, id")
   end
 
   def self.merge_verified
@@ -32,7 +45,7 @@ class MergeDuplicateUsersTask
 
   def self.merge_unverified
     ActiveRecord::Base.transaction do
-      users_with_duplicates = unverified_users_with_dupes.pluck('users.id')
+      users_with_duplicates = unqiue_unverified_users_minus_verified.pluck('users.id')
 
       count = 0
       puts "merge unverified:"
@@ -50,6 +63,7 @@ class MergeDuplicateUsersTask
 
     # puts "1"
 
+    # maybe make this a background job?
     # group_ids_before = original_user.reload.group_ids
     # original_user_group_ids = membership.where(user_id: original_user.id).pluck(:group_id)
     #

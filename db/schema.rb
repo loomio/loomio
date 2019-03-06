@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_010911) do
     t.index ["run_at", "locked_at", "locked_by", "failed_at"], name: "index_delayed_jobs_on_ready"
   end
 
-  create_table "discussion_readers", id: :integer, default: -> { "nextval('motion_read_logs_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "discussion_readers", id: :serial, force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
