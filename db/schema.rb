@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_011614) do
+ActiveRecord::Schema.define(version: 2019_03_06_010911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_011614) do
     t.string "string", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["string"], name: "index_blacklisted_passwords_on_string", using: :hash
   end
 
   create_table "cohorts", id: :serial, force: :cascade do |t|
@@ -128,7 +127,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_011614) do
     t.index ["run_at", "locked_at", "locked_by", "failed_at"], name: "index_delayed_jobs_on_ready"
   end
 
-  create_table "discussion_readers", id: :serial, force: :cascade do |t|
+  create_table "discussion_readers", id: :integer, default: -> { "nextval('motion_read_logs_id_seq'::regclass)" }, force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -238,6 +237,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_011614) do
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "group_identities", id: :serial, force: :cascade do |t|
@@ -603,7 +603,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_011614) do
     t.integer "max_members"
     t.integer "max_orgs"
     t.string "state", default: "active", null: false
-    t.index ["chargify_subscription_id"], name: "index_subscriptions_on_chargify_subscription_id", unique: true
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
