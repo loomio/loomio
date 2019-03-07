@@ -7,7 +7,7 @@ class MergeDuplicateUsers < ActiveRecord::Migration[5.2]
     MergeDuplicateUsersTask.print_stats
     MergeDuplicateUsersTask.merge_verified
     puts "merge unverified"
-    MergeDuplicateUsersTask.print_stats
+    # MergeDuplicateUsersTask.print_stats
     MergeDuplicateUsersTask.merge_unverified
     puts "after"
     MergeDuplicateUsersTask.print_stats
