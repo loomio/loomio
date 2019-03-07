@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_011614) do
+ActiveRecord::Schema.define(version: 2019_03_06_010911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_011614) do
     t.string "string", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["string"], name: "index_blacklisted_passwords_on_string", using: :hash
   end
 
   create_table "cohorts", id: :serial, force: :cascade do |t|
@@ -603,6 +604,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_011614) do
     t.integer "max_members"
     t.integer "max_orgs"
     t.string "state", default: "active", null: false
+    t.index ["chargify_subscription_id"], name: "index_subscriptions_on_chargify_subscription_id", unique: true
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
