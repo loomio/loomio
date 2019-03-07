@@ -18,14 +18,14 @@ _head = require 'lodash/head'
 module.exports =
   data: ->
     currentState: ""
-    showSidebar: true
+    showSidebar: null
     isGroupModalOpen: false
     isThreadModalOpen: false
 
   created: ->
     InboxService.load()
     EventBus.$on 'toggleSidebar', (event, show) =>
-      console.log "toggling"
+      console.log "toggling #{@showSidebar}"
       @showSidebar = !@showSidebar
 
   computed:
@@ -94,7 +94,7 @@ module.exports =
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print(app, permanent, dark, width="250", v-model="showSidebar")
+v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
   v-list
     v-list-tile.sidebar__list-item-button--decisions(to='/polls')
       v-list-tile-action

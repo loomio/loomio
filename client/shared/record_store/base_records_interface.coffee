@@ -74,9 +74,7 @@ module.exports =
           @findByIds(q)
       else
         chain = @collection.chain()
-        console.log "hi from find"
         _.each _.keys(q), (key) ->
-          console.log "key: #{key}, q: #{q}"
           chain.find("#{key}": q[key])
           true
         chain.data()
