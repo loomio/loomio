@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_015134) do
+ActiveRecord::Schema.define(version: 2019_03_05_011614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -238,6 +238,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_015134) do
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "group_identities", id: :serial, force: :cascade do |t|
