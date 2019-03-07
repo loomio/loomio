@@ -10,13 +10,34 @@ describe API::RegistrationsController do
   before { request.env["devise.mapping"] = Devise.mappings[:user] }
 
   describe 'create' do
+    let(:login_token)        { create :login_token, user: User.create(email: registration_params[:email], email_verified: false) }
     let(:pending_membership) { create :membership, user: User.create(email: registration_params[:email], email_verified: false) }
     let(:pending_identity)   { create :facebook_identity, email: registration_params[:email] }
 
     it 'creates a new user' do
       expect { post :create, params: { user: registration_params } }.to change { User.count }.by(1)
       expect(response.status).to eq 200
-      u = User.last
+      u = User.find_by(email: registration_params[:email])
+      expect(u.name).to eq registration_params[:name]
+      expect(u.email).to eq registration_params[:email]
+      expect(u.legal_accepted_at).to be_present
+    end
+
+    it "signup via membership" do
+      session[:pending_membership_token] = pending_membership.token
+      expect { post :create, params: { user: registration_params } }.to change { User.count }.by(0)
+      expect(response.status).to eq 200
+      u = User.find_by(email: registration_params[:email])
+      expect(u.name).to eq registration_params[:name]
+      expect(u.email).to eq registration_params[:email]
+      expect(u.legal_accepted_at).to be_present
+    end
+
+    it "signup via login token" do
+      session[:pending_login_token] = login_token.token
+      expect { post :create, params: { user: registration_params } }.to change { User.count }.by(0)
+      expect(response.status).to eq 200
+      u = User.find_by(email: registration_params[:email])
       expect(u.name).to eq registration_params[:name]
       expect(u.email).to eq registration_params[:email]
       expect(u.legal_accepted_at).to be_present
@@ -35,8 +56,8 @@ describe API::RegistrationsController do
 
     it 'logs in immediately if pending identity is present' do
       session[:pending_identity_id] = pending_identity.id
-      expect { post :create, params: { user: registration_params.except(:recaptcha) } }.to change { User.count }.by(1)
-      u = User.last
+      expect { post :create, params: { user: registration_params.except(:recaptcha) } }.to change { User.count }.by(0)
+      u = User.find_by(email: registration_params[:email])
       expect(u.name).to eq registration_params[:name]
       expect(u.email).to eq registration_params[:email]
     end

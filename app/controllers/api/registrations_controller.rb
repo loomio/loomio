@@ -6,7 +6,7 @@ class API::RegistrationsController < Devise::RegistrationsController
   def create
     @verified_email = email_is_verified?
 
-    if self.resource = user_from_membership
+    if self.resource = user_from_membership || user_from_login_token || user_from_pending_identity
       resource.attributes=(sign_up_params)
     else
       build_resource(sign_up_params)
@@ -30,6 +30,14 @@ class API::RegistrationsController < Devise::RegistrationsController
   private
   def user_from_membership
     pending_membership.present? && pending_membership.user
+  end
+
+  def user_from_login_token
+    pending_login_token.present? && pending_login_token.user
+  end
+
+  def user_from_pending_identity
+    pending_identity.present? && pending_identity.user
   end
 
   def permission_check
