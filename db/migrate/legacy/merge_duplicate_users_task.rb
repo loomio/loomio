@@ -71,17 +71,15 @@ class MergeDuplicateUsersTask
   end
 
   def self.merge_dupes(original_user)
-    byebug if original_user.email.nil?
     duplicate_users = User.where(email: original_user.email.downcase).where(email_verified: false).where("id != ?", original_user.id)
     duplicate_user_ids = duplicate_users.pluck(:id)
+    raise "too many dupe user ids #{duplicate_user_ids.size} #{original_user.email}" if duplicate_user_ids.size > 100 and original_user.email != "contact@loomio.org"
 
-    # puts "1"
-    #
-    # # maybe make this a background job?
     original_user_group_ids = Membership.where(user_id: original_user.id).pluck(:group_id)
-    #
-    Membership.where(user_id: duplicate_user_ids, group_id: original_user_group_ids).delete_all
-    #
+    deleted_dupe_memberships_count = Membership.where(user_id: duplicate_user_ids, group_id: original_user_group_ids).delete_all
+
+    raise "deleted max dupe memberships #{deleted_dupe_memberships_count} " if deleted_dupe_memberships_count > 100
+
     taken_group_ids = []
     unique_membership_ids = []
     Membership.where(user_id: duplicate_user_ids).each do |m|
@@ -91,15 +89,22 @@ class MergeDuplicateUsersTask
       end
     end
 
-    Membership.where(id: unique_membership_ids).update_all(user_id: original_user.id)
-    Membership.where(user_id: duplicate_user_ids).delete_all
+    merged_memberships_count = Membership.where(id: unique_membership_ids).update_all(user_id: original_user.id)
+    raise "merged memberships maxed #{merged_memberships_count}" if merged_memberships_count > 100
+
+    deleted_memberships_count = Membership.where(user_id: duplicate_user_ids).delete_all
+    raise "deleted max memberships #{deleted_memberships_count}" if deleted_memberships_count > 100
+
     #
     # group_ids_after = original_user.reload.group_ids
     #
     # raise "missing group ids" unless group_ids_before.all? {|id| group_ids_after.include? id }
 
-    Comment.where(user_id: duplicate_user_ids).update_all(user_id: original_user.id)
-    Event.where(user_id: duplicate_user_ids).update_all(user_id: original_user.id)
+    updated_comments_count = Comment.where(user_id: duplicate_user_ids).update_all(user_id: original_user.id)
+    raise "max updated comments #{updated_comments_count}" if updated_comments_count > 100
+
+    updated_events_count = Event.where(user_id: duplicate_user_ids).update_all(user_id: original_user.id)
+    raise "updated max events #{updated_events_count}" if updated_events_count > 100
 
     # puts "4"
     duplicate_users.each do |source|
@@ -126,4 +131,3 @@ class MergeDuplicateUsersTask
   #   unvierified users will drop
 
 end
-
