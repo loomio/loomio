@@ -66,6 +66,12 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       render 'subscription', { subscription: Subscription.for(group)}
     end
 
+    if group.parent_id
+      panel("Parent group") do
+        link_to group.parent.name, admin_group_path(group.parent)
+      end
+    end
+
     panel("Subgroups") do
       table_for group.subgroups.order(memberships_count: :desc).each do |subgroup|
         column :name do |g|

@@ -1310,6 +1310,7 @@ en:
     proposal_title: Proposal
     count_title: Check
     poll_title: Poll
+    score_title: Score poll
     dot_vote_title: Dot Vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice

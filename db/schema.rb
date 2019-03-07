@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_015134) do
+ActiveRecord::Schema.define(version: 2019_03_06_010911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -240,6 +240,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_015134) do
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "group_identities", id: :serial, force: :cascade do |t|
@@ -703,8 +704,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_015134) do
     t.boolean "email_newsletter", default: false, null: false
     t.string "short_bio_format", limit: 10, default: "md", null: false
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
-    t.index ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)"
-    t.index ["email"], name: "index_users_on_email"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
