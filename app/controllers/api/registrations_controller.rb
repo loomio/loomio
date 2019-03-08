@@ -6,12 +6,9 @@ class API::RegistrationsController < Devise::RegistrationsController
   def create
     @verified_email = email_is_verified?
 
-    if self.resource = user_from_membership || user_from_login_token || user_from_pending_identity
-      resource.attributes=(sign_up_params)
-    else
-      build_resource(sign_up_params)
-    end
-
+    self.resource = user_from_membership || user_from_login_token || user_from_pending_identity || build_resource
+    resource.attributes=(sign_up_params)
+ 
     if UserService.create(user: resource)
       save_detected_locale(resource)
       if @verified_email
