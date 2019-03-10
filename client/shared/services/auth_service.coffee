@@ -22,11 +22,13 @@ module.exports = new class AuthService
       _.pick(user, ['email', 'name', 'password'])
     ).save().then ->
       onSuccess()
-    , () ->
-      user.errors = if user.hasToken
-        { token:    [I18n.t('auth_form.invalid_token')] }
-      else
-        { password: [I18n.t('auth_form.invalid_password')] }
+    , (response) ->
+      response.json()
+      .then (data) ->
+        user.errors = if user.hasToken
+          { token:    [I18n.t('auth_form.invalid_token')] }
+        else
+          { password: data.errors.password }
 
   signUp: (user, onSuccess) ->
     Records.registrations.build(
