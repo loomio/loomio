@@ -58,6 +58,8 @@ uk:
     notification_volume: 'Рівень гучності сповіщень'
     group: 'Група'
     groups: 'Групи'
+    organization: "Організація"
+    organizations: "Організації"
     threads: 'Теми'
     decisions: 'Рішення'
     settings: 'Налаштування'
@@ -88,6 +90,7 @@ uk:
     action:
       next: 'Наступна'
       close: 'Закрити'
+      reopen: 'Відновити'
       save: 'Зберегти'
       save_changes: 'Зберегти зміни'
       update_settings: 'Оновити налаштування'
@@ -120,9 +123,12 @@ uk:
       remind: Нагадати
       resend: Надіслати повторно
       send: Відправити
+      joined: Долучився
+      last_seen: Востаннє переглянуто
       invite: Запросити
       resent: Надіслати запрошення повторно
       export: Експортувати
+      fork: Гілкування
     formatting_help:
       label: 'Форматувати'
       title: 'Дізнайтесь як використовувати Markdown для форматування текту'
@@ -138,6 +144,8 @@ uk:
     _9: 9-ий
     _10: 10-ий
   devise:
+    sessions:
+      signed_up: Вхід виконано!
     failure:
       inactive: 'З цією адресою електронної пошти вже пов’язано обліковий запис. Якщо ви бежаєте відновити свій обліковий запис, зверніться, будь ласка, до нас.'
   error_page:
@@ -163,6 +171,7 @@ uk:
     quiet_label: "Без поштових сповіщень"
     mute_label: "Беззвучно"
     discussion:
+      title: "Налаштування пошти для теми"
       loud_description: "Ви отримаєте поштове сповіщення як тільки з'являться оновлення у цій темі."
       normal_description: "Вам буде надіслане сповіщення по електронній пошті у разі внесення пропозиції, її закриття та публікації результату."
       quiet_description: "Ви не будете отримувати поштові сповіщення з цієї теми."
@@ -197,8 +206,9 @@ uk:
         normal: "Вам будуть надсилатись поштові сповіщення про оголошення в нових групах."
         quiet: "Ви не будете отримувати поштові сповіщення про створення нових груп."
   close_explanation_modal:
-    aria_label: Закрити гілку
-    close_thread: Закрити гілку
+    aria_label: Закрити тему
+    close_thread: Закрити тему
+    image_alt: Закрити всі теми
   mute_explanation_modal:
     aria_label: Вимкнути сповіщення для теми
     mute_thread: Вимкнути сповіщення для теми
@@ -222,6 +232,8 @@ uk:
     title: "Ваша сесія закінчилась"
     message: "Ви вийшли з іншого вікна. Будь ласка, ввійдіть знову щоб продовжити."
     ok: "Ok"
+  comment_reply_form:
+    aria_label: 'Відповісти'
   comment_form:
     aria_label: 'Прокоментувати'
     attachments:
@@ -239,6 +251,7 @@ uk:
     confirm_delete_message: 'Ви впевнені, що хочете видалити цей коментар?'
     confirm_delete: 'Видалити коментар'
     in_reply_to: "Відповісти {{name}}"
+    write_a_comment: "Додати коментар..."
     submit_button:
       label: 'Опублікувати'
     private_privacy_notice: 'Ваш коментар зможуть бачити тільки учасники {{groupName}}.'
@@ -248,6 +261,7 @@ uk:
     recent_threads: 'Нещодавні теми'
     unread_threads: 'Не прочитані ({{count}}) тем'
     muted_threads: 'Вимкнуті теми'
+    start_group: 'Нова організація'
     explore: 'Відкриті групи'
     start_thread: Нова тема
     start_decision: Нове рішення
@@ -275,15 +289,30 @@ uk:
     toggle_sidebar: 'Змінити бічну панель'
     logo_title: 'На головну'
   user_dropdown:
+    button_label: 'Меню користувача'
     edit_profile: 'Редагувати профіль'
     email_settings: 'Налаштування пошти'
     help: 'Допомога'
     contact_site_name: 'Зв''язатись з {{site_name}}'
     sign_out: 'Вийти'
+  membership_card:
+    group_members: "Учасники групи"
+    discussion_members: "Учасники теми"
+    poll_members: "учасники {{pollType}}"
+    invite_to_group: "Запросити до групи"
+    invite_to_discussion: "Запросити до теми"
+    invite_to_poll: "Запросити до голосування"
+    invitations: "Запрошення"
   membership_dropdown:
+    set_title: "Вкажіть назву"
+    resend: "Запросити повторно"
     invitation_resent: "Надіслати запрошення повторно"
     make_coordinator: 'Зробити координатором'
     demote_coordinator: 'Усунути координатора'
+    remove_from:
+      discussion: "Видалити з теми"
+      group: "Видалити з групи"
+      poll: 'Видалити з {{pollType}}'
     cancel_invitation: Скасувати запрошення
   start_menu:
     label: 'Дії користувача'
@@ -293,10 +322,16 @@ uk:
     start_thread: 'Створити тему'
     start_poll: 'Розпочати Опитування'
     invite_people: 'Запросити людей'
+  notification_models:
+    discussion: 'тема:'
+    comment: 'прокоментувати в'
+    poll: 'рішення:'
+    outcome: 'результат:'
   notifications:
     header: "Сповіщення"
     no_notifications: "У Вас нема жодних оповіщень"
     new_discussion: "<strong>{{name}}</strong> розпочав(ла) обговорення <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> опублікував(ла) обговорення <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> зробив(ла) пропозицію <strong>{{title}}</strong>"
     motion_closed: "Пропозицію закрито: <strong>{{title}}</strong>"
     publish_outcome: "Опублікувати результат"
@@ -305,6 +340,7 @@ uk:
     new_vote: "<strong>{{name}}</strong> {{position}} щодо пропозиції <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> прокоментував(ла) <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> відповів(ла) на ваш коментар у <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> відреагував <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> на ваш(е) {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> згадав(ла) вас у <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> очікує вашого долучення до <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> зробив(ла) запит на долучення до <strong>{{title}}</strong>"
@@ -318,8 +354,10 @@ uk:
     new_coordinator: "<strong>{{name}}</strong> зробив(ла) вас координатором <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> розпочав(ла) {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> відредагував(ла) {{poll_type}}: <strong>{{title}}</strong>"
+    poll_announced: "<strong>{{name}}</strong> опублікував(ла) {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} невдовзі буде закрито: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} закрито: <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> додав(ла) опції до: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> опублікував(ла) результат: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> опублікував(ла) результат: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> долучився(лась) до: <strong>{{title}}</strong>"
@@ -333,12 +371,16 @@ uk:
   discussion_record:
     created: 'Тему {{title}} було успішно створено у {{groupName}}'
     updated: 'Зберегти зміни у {{title}}'
+  discussion_fork_actions:
+    helptext: "Виберіть елементи, які потрібно перемістити до нової теми"
   discussion_form:
     aria_label: 'Форма для теми'
     messages:
       created: 'Тему створено'
       updated: 'Оновленні теми'
+      forked: 'Гілку теми створено'
     new_discussion_title: 'Створити нову тему'
+    fork_discussion_title: 'Створити гілку теми'
     edit_discussion_title: 'Редагувати тему'
     group_label: 'Група'
     group_placeholder: 'Вибрати групу'
@@ -350,10 +392,42 @@ uk:
     privacy_public: 'Будь-хто може бачити тему. Тільки учасники можуть брати участь в обговоренні.'
     privacy_private: 'Тему можуть бачити тільки учасники групи {{group}}.'
     privacy_organisation: 'Тему можуть бачити тільки учасники груп {{parent}} та {{group}}.'
+    fork_notice: 'Буде створено нову тему з {{count}} елементів від {{title}}'
   announcement:
+    audiences:
+      parent_group: Учсник {{name}}
+      formal_group: Учсник {{name}}
+      discussion_group: Учасники теми
+      voters: Люди, які проголосували
+      non_voters: Люди, які не проголосували
     form:
+      too_many_invitations: |
+          Перевищено ліміт запрошень. <a href="{{upgradeUrl}}" target="_blank">Оновити план</a>
+      no_inivtations_remaining: |
+          <p>У вашому поточному плані підписки не залишилося запрошень.</p>
+          <p>Будь ласка <a href="{{upgradeUrl}}" target="_blank">оновіть план</a> щоб надіслати більше запрошень.</p>
+      invitations_remaining: 'Залишилось {{count}} запрошень. <a href="{{upgradeUrl}}" target="_blank">Оновити план</a>'
+      group_announced:
+        title: Запросити до групи
+        helptext: Кого ви хотіли б запросити в цю групу?
+      discussion_announced:
+        title: Запросити до теми
+        helptext: Кого ви хотіли б залучити до теми?
+      discussion_edited:
+        title: Повідомляти про зміни
+        helptext: Кого ви хотіли б повідомити про внесені зміни?
+      poll_announced:
+        title: Запросити до голосування
+        helptext: Кого ви хотіли б долучити до голосування?
+      poll:
+        title: Повідомляти про зміни
+        helptext: Кого ви хотіли б повідомити про внесені зміни?
+      poll_edited:
+        title: Повідомляти про зміни
+        helptext: Кого ви хотіли б повідомити про внесені зміни?
       outcome_announced:
         title: Поширити результат
+        helptext: З ким ви хотіли б поділитися результатом?
       anyone_can_participate: Будь-хто може долучитись за посиланням
     group_form:
       members_count: '{{count}} людей будуть сповіщені'
@@ -372,6 +446,7 @@ uk:
     edit_comment: Редагувати коментар
     delete_comment: Видалити коментар
     reply_to_comment: Відповісти
+    fork_comment: Гілка теми
     translate_comment: Перекласти коментар
     edit_outcome: Редагувати результат
     translate_outcome: Перекласти результат
@@ -804,7 +879,11 @@ uk:
       pinned: 'Тему закріплено'
       unpinned: 'Тему відкріплено'
     volume:
+      mute_message: 'Тему вимкнуто'
       unmute_message: 'Тему увімкнено'
+    closed:
+      reopened: 'Тему відкрито'
+      closed: 'Тему закрито'
   activity_card:
     unread: Непрочитані
     latest: Останній
@@ -820,6 +899,7 @@ uk:
     edit: 'Редагувати'
     edit_thread: 'Редагувати'
     close_thread: 'Закрити'
+    reopen_thread: 'Відновити'
     pin_thread: 'Закріпити'
     unpin_thread: 'Відкріпити'
     mute_thread: 'Беззвучно'
@@ -828,6 +908,7 @@ uk:
     delete_thread: 'Видалити'
     add_comment: 'Коментувати'
     seen_by_count: 'Бачили {{count}}'
+    forked_from: "Гілка від"
   pin_thread_modal:
     title: Закріпити тему
     helptext: "Закріплені теми завжди з'являються у верхній частині списку тем групи. Вони можуть використовуватись для інформування учасників про важливі повідомлення або для просування загальних матеріалів, таких як етичний кодекс або основні принципи спільноти."
@@ -1289,6 +1370,7 @@ uk:
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> відредагував вкладення до теми"
     discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> відредагував тему"
     discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> прибрав тему з <strong>{{title}}</strong>"
+    discussion_forked: "<strong><a href='u/{{username}}'>{{author}}</a></strong> створив гілку від цієї теми: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> поширив результат у <strong>{{title}}</strong>"
     poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> закрив {{polltype}}: <strong>{{title}}</strong>"
@@ -1296,6 +1378,7 @@ uk:
     poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> відредагував(ла) {{polltype}}: <strong>{{title}}</strong>"
     poll_expired: "{{polltype}} закрито: <strong>{{title}}</strong>"
     stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> проголосував у: <strong>{{title}}</strong>"
+    event_removed: "Видалені з теми"
   poll_admin_page:
     title: Адміністратор - {{title}}
   poll_common_publish_facebook_preview:

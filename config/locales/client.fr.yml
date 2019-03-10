@@ -1179,6 +1179,7 @@ fr:
     proposal_title: Proposition
     count_title: Vérification
     poll_title: Sondage
+    score_title: Vote pondéré
     dot_vote_title: Vote à points
     meeting_title: Sondage horaire de réunion
     ranked_choice_title: Classement par préférence
