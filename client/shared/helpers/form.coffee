@@ -150,7 +150,7 @@ progress = (scope) ->
 
 success = (scope, model, options) ->
   (data) ->
-    FlashService.dismiss()
+    # FlashService.dismiss()
     if options.flashSuccess?
       flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
       FlashService.success flashKey, calculateFlashOptions(options.flashOptions)
@@ -159,7 +159,7 @@ success = (scope, model, options) ->
 
 failure = (scope, model, options) ->
   (response) ->
-    FlashService.dismiss()
+    # FlashService.dismiss()
     options.failureCallback(response) if typeof options.failureCallback is 'function'
     setErrors(scope, model, response) if _.includes([401, 422], response.status)
     EventBus.$emit errorTypes[response.status] or 'unknownError',
@@ -168,6 +168,7 @@ failure = (scope, model, options) ->
 
 cleanup = (scope, model, options = {}) ->
   ->
+    FlashService.dismiss()
     options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
     EventBus.$emit 'doneProcessing' unless options.skipDoneProcessing
     scope.isDisabled = false

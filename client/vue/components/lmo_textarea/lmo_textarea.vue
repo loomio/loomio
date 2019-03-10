@@ -12,8 +12,9 @@ import _map from 'lodash/map'
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
 import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
-  OrderedList, BulletList, ListItem, TodoItem, TodoList, Image, Bold, Code,
+  OrderedList, BulletList, ListItem, TodoItem, TodoList, Bold, Code,
   Italic, Link, Strike, Underline, History, Mention } from 'tiptap-extensions'
+import Image from 'shared/tiptap_extentions/image.js'
 
 module.exports =
   props:
@@ -35,7 +36,6 @@ module.exports =
     editor: new Editor
       extensions: [
           new Mention(
-
             # is called when a suggestion starts
             onEnter: ({ query, range, command, virtualNode }) =>
               # console.log "suggestion started", items, query, range
@@ -189,28 +189,28 @@ div
           //-   v-icon mdi-code-braces
           v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
             v-icon mdi-format-pilcrow
-          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
-            v-icon mdi-format-header-1
           v-btn.menubar__v-btn(icon @click='commands.todo_list')
             v-icon mdi-format-list-checks
-        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
-        //-   v-icon mdi-format-header-2
-        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
-        //-   v-icon mdi-format-header-3
-        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
-        //-   v-icon mdi-format-list-bulleted
-        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
-        //-   v-icon mdi-format-list-numbered
-        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
-        //-   v-icon mdi-format-quote-closed
-        //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
-        //-   v-icon mdi-code-tags
-        //- v-btn.menubar__v-btn(icon @click='commands.horizontal_rule')
-        //-   v-icon mdi-format-page-break
-        //- v-btn.menubar__v-btn(icon @click='commands.undo')
-        //-   v-icon mdi-undo
-        //- v-btn.menubar__v-btn(icon @click='commands.redo')
-        //-   v-icon mdi-redo
+          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
+            v-icon mdi-format-header-1
+          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
+            v-icon mdi-format-header-2
+          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
+            v-icon mdi-format-header-3
+          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
+            v-icon mdi-format-list-bulleted
+          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
+            v-icon mdi-format-list-numbered
+          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
+            v-icon mdi-format-quote-closed
+          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
+            v-icon mdi-code-tags
+          v-btn.menubar__v-btn(icon @click='commands.horizontal_rule')
+            v-icon mdi-format-page-break
+          v-btn.menubar__v-btn(icon @click='commands.undo')
+            v-icon mdi-undo
+          v-btn.menubar__v-btn(icon @click='commands.redo')
+            v-icon mdi-redo
     editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
 
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
