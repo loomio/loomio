@@ -4,14 +4,10 @@ class API::RegistrationsController < Devise::RegistrationsController
   before_action :permission_check, only: :create
 
   def create
-    @verified_email = email_is_verified?
-
-    self.resource = user_from_membership || user_from_login_token || user_from_pending_identity || build_resource
-    resource.attributes=(sign_up_params)
- 
-    if UserService.create(user: resource)
+    self.resource = find_user
+    if UserService.create(user: resource, params: sign_up_params)
       save_detected_locale(resource)
-      if @verified_email
+      if resource.email_verified
         sign_in resource
         flash[:notice] = t(:'devise.sessions.signed_in')
         render json: { success: :ok, signed_in: true }
@@ -25,16 +21,12 @@ class API::RegistrationsController < Devise::RegistrationsController
   end
 
   private
-  def user_from_membership
-    pending_membership.present? && pending_membership.user
-  end
-
-  def user_from_login_token
-    pending_login_token.present? && pending_login_token.user
-  end
-
-  def user_from_pending_identity
-    pending_identity.present? && pending_identity.user
+  def find_user
+    pending_membership&.user ||
+    pending_login_token&.user ||
+    pending_identity&.user ||
+    User.find_by(email: sign_up_params[:email], email_verified: false) ||
+    build_resource
   end
 
   def permission_check
@@ -45,10 +37,5 @@ class API::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(:name, :email, :recaptcha, :legal_accepted)
     end
-  end
-
-  def email_is_verified?
-    (pending_identity.present? && pending_identity.email == params[:user][:email]) or
-    (pending_membership.present? && pending_membership.user.email == params[:user][:email])
   end
 end

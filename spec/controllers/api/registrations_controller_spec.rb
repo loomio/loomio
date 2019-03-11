@@ -23,6 +23,16 @@ describe API::RegistrationsController do
       expect(u.legal_accepted_at).to be_present
     end
 
+    it "sign up via email for existing user (email_verified = false)" do
+      u = User.create(email: registration_params[:email], email_verified: false)
+      expect { post :create, params: { user: registration_params } }.to change { User.count }.by(0)
+      expect(response.status).to eq 200
+      u.reload
+      expect(u.name).to eq registration_params[:name]
+      expect(u.email).to eq registration_params[:email]
+      expect(u.legal_accepted_at).to be_present
+    end
+
     it "signup via membership" do
       session[:pending_membership_token] = pending_membership.token
       expect { post :create, params: { user: registration_params } }.to change { User.count }.by(0)

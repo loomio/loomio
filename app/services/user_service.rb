@@ -1,5 +1,7 @@
 class UserService
-  def self.create(user:)
+  def self.create(user:, params:)
+    user.email_verified = user.email == params[:email]
+    user.attributes = params.slice(:name, :email, :recaptcha, :legal_accepted)
     user.require_valid_signup = true
     user.require_recaptcha = true
     user.save.tap do
