@@ -26,9 +26,9 @@ class API::SessionsController < Devise::SessionsController
 
   def failure_message
     if resource_params[:password] && User.where(email: resource_params[:email]).where.not(locked_at: nil).exists?
-      { password: [t(:"user.error.locked")] }
+      { password: [:'auth_form.account_locked'] }
     else
-      { password: [t(:"user.error.bad_login")] }
+      { password: [:'auth_form.invalid_password'] }
     end
   end
 

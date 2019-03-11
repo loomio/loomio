@@ -27,7 +27,7 @@ module.exports = new class AuthService
         user.errors = if user.hasToken
           { token:    [I18n.t('auth_form.invalid_token')] }
         else
-          { password: data.errors.password }
+          { password: _.map(data.errors.password, (key) -> I18n.t(key)) }
         finished()
 
   signUp: (user, onSuccess) ->

@@ -24,7 +24,6 @@ en:
       recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
       bad_login: "Sorry, that password doesn't match the one we have on file"
       username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
-      locked: "Your account has been locked after too many failed login attempts. Check your email for an unlock link"
 
   attachment:
     error:
