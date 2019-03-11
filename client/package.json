@@ -24,6 +24,7 @@
   "dependencies": {
     "@mdi/font": "^3.3.92",
     "actioncable": "^5.2.2",
+    "activestorage": "^5.2.2",
     "angular": "1.7.7",
     "angular-animate": "1.7.7",
     "angular-aria": "1.7.7",

@@ -8,6 +8,7 @@ import _isString from 'lodash/isstring'
 import _filter from 'lodash/filter'
 import _uniq from 'lodash/uniq'
 import _map from 'lodash/map'
+import { DirectUpload } from "activestorage"
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
@@ -15,6 +16,26 @@ import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
   OrderedList, BulletList, ListItem, TodoItem, TodoList, Bold, Code,
   Italic, Link, Strike, Underline, History, Mention } from 'tiptap-extensions'
 import Image from 'shared/tiptap_extentions/image.js'
+
+
+uploadFile = (input, file) =>
+  # // your form needs the file_field direct_upload: true, which
+  # //  provides data-direct-upload-url
+  url = "/rails/active_storage/direct_uploads"
+  upload = new DirectUpload(file, url)
+
+  upload.create (error, blob) =>
+    if error
+      # // Handle the error
+    else
+      # // Add an appropriately-named hidden input to the form with a
+      # //  value of blob.signed_id so that the blob ids will be
+      # //  transmitted in the normal upload flow
+      hiddenField = document.createElement('input')
+      hiddenField.setAttribute("type", "hidden");
+      hiddenField.setAttribute("value", blob.signed_id);
+      hiddenField.name = input.name
+      document.querySelector('form').appendChild(hiddenField)
 
 module.exports =
   props:
@@ -35,70 +56,70 @@ module.exports =
     insertMention: () => {}
     editor: new Editor
       extensions: [
-          new Mention(
-            # is called when a suggestion starts
-            onEnter: ({ query, range, command, virtualNode }) =>
-              # console.log "suggestion started", items, query, range
-              @query = query
-              @suggestionRange = range
-              @insertMention = command
-              @renderPopup(virtualNode)
-              @fetchMentionable()
+        new Mention(
+          # is called when a suggestion starts
+          onEnter: ({ query, range, command, virtualNode }) =>
+            # console.log "suggestion started", items, query, range
+            @query = query
+            @suggestionRange = range
+            @insertMention = command
+            @renderPopup(virtualNode)
+            @fetchMentionable()
 
-            # is called when a suggestion has changed
-            onChange: ({query, range, virtualNode}) =>
-              # console.log "suggestion changed", items, query, range
-              @query = query
-              @suggestionRange = range
-              @navigatedUserIndex = 0
-              @renderPopup(virtualNode)
-              @fetchMentionable()
+          # is called when a suggestion has changed
+          onChange: ({query, range, virtualNode}) =>
+            # console.log "suggestion changed", items, query, range
+            @query = query
+            @suggestionRange = range
+            @navigatedUserIndex = 0
+            @renderPopup(virtualNode)
+            @fetchMentionable()
 
-            # is called when a suggestion is cancelled
-            onExit: =>
-              @query = null
-              @suggestionRange = null
-              @navigatedUserIndex = 0
-              @destroyPopup()
+          # is called when a suggestion is cancelled
+          onExit: =>
+            @query = null
+            @suggestionRange = null
+            @navigatedUserIndex = 0
+            @destroyPopup()
 
-            # is called on every keyDown event while a suggestion is active
-            onKeyDown: ({ event }) =>
-              # pressing up arrow
-              if (event.keyCode == 38)
-                @upHandler()
-                return true
+          # is called on every keyDown event while a suggestion is active
+          onKeyDown: ({ event }) =>
+            # pressing up arrow
+            if (event.keyCode == 38)
+              @upHandler()
+              return true
 
-              # pressing down arrow
-              if (event.keyCode == 40)
-                @downHandler()
-                return true
+            # pressing down arrow
+            if (event.keyCode == 40)
+              @downHandler()
+              return true
 
-              # pressing enter
-              if (event.keyCode == 13)
-                @enterHandler()
-                return true
+            # pressing enter
+            if (event.keyCode == 13)
+              @enterHandler()
+              return true
 
-              return false
-          ),
+            return false
+        ),
 
-          new Blockquote(),
-          new BulletList(),
-          new CodeBlock(),
-          new HardBreak(),
-          new Image(),
-          new Heading({ levels: [1, 2, 3] }),
-          new HorizontalRule(),
-          new ListItem(),
-          new OrderedList(),
-          new TodoItem(),
-          new TodoList(),
-          new Bold(),
-          new Code(),
-          new Italic(),
-          new Link(),
-          new Strike(),
-          new Underline(),
-          new History()]
+        new Blockquote(),
+        new BulletList(),
+        new CodeBlock(),
+        new HardBreak(),
+        new Image(),
+        new Heading({ levels: [1, 2, 3] }),
+        new HorizontalRule(),
+        new ListItem(),
+        new OrderedList(),
+        new TodoItem(),
+        new TodoList(),
+        new Bold(),
+        new Code(),
+        new Italic(),
+        new Link(),
+        new Strike(),
+        new Underline(),
+        new History()]
       content: @model[@field]
       onUpdate: ({ getJSON, getHTML }) =>
         @model[@field] = getHTML()
@@ -116,6 +137,12 @@ module.exports =
       _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
 
   methods:
+    fileSelected: (e, a) ->
+      for file in @$refs.uploadField.files
+        console.log "uploading", file
+        uploadFile(@$refs.uploadField, file)
+
+
     fetchMentionable: ->
       Records.users.fetchMentionable(@query, @model).then (response) =>
         @mentionableUserIds.concat(_.uniq @mentionableUserIds + _.map(response.users, 'id'))
@@ -218,6 +245,11 @@ div
       .suggestion-list__item(v-for='(user, index) in filteredUsers', :key='user.id', :class="{ 'is-selected': navigatedUserIndex === index }", @click='selectUser(user)')
         | {{ user.name }}
     .suggestion-list__item.is-empty(v-else) No users found
+
+  .uploads
+    | Attachments
+    form(style="display: block" @change="fileSelected()")
+      input(ref="uploadField" type="file" name="files" style="display: block")
 </template>
 
 <style lang="scss">

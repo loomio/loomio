@@ -28,7 +28,9 @@ gem 'rinku'
 gem 'friendly_id', '~> 5.2.5'
 gem 'httparty', '~> 0.16.4'
 gem 'browser', '~> 2.5.3'
-gem 'fog-aws'
+gem "aws-sdk-s3", require: false
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
 gem "sentry-raven"
 gem 'sequenced', '~> 3.1.1'
 gem 'http_accept_language'
