@@ -22,7 +22,7 @@ en:
     placeholder_name: "Invited user (%{hostname})"
     error:
       recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
-      bad_login: "Unable to log you in. Please try again."
+      bad_login: "Sorry, that password doesn't match the one we have on file"
       username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
 
   attachment:

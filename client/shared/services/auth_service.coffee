@@ -17,16 +17,18 @@ module.exports = new class AuthService
     user.update(hasToken: data.has_token)
     user
 
-  signIn: (user = {}, onSuccess) ->
+  signIn: (user = {}, onSuccess, finished) ->
     Records.sessions.build(
       _.pick(user, ['email', 'name', 'password'])
     ).save().then ->
       onSuccess()
-    , () ->
-      user.errors = if user.hasToken
-        { token:    [I18n.t('auth_form.invalid_token')] }
-      else
-        { password: [I18n.t('auth_form.invalid_password')] }
+    , (response) ->
+      response.json().then (data) ->
+        user.errors = if user.hasToken
+          { token:    [I18n.t('auth_form.invalid_token')] }
+        else
+          { password: _.map(data.errors.password, (key) -> I18n.t(key)) }
+        finished()
 
   signUp: (user, onSuccess) ->
     Records.registrations.build(
