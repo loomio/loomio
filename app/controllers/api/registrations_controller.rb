@@ -7,13 +7,13 @@ class API::RegistrationsController < Devise::RegistrationsController
     self.resource = find_user
     if UserService.create(user: resource, params: sign_up_params)
       save_detected_locale(resource)
-      if resource.email_verified
+      if email_is_verified?
         sign_in resource
         flash[:notice] = t(:'devise.sessions.signed_in')
         render json: { success: :ok, signed_in: true }
       else
         LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
-        render json: { success: :ok }
+        render json: { success: :ok, signed_in: false }
       end
     else
       render json: { errors: resource.errors }, status: 422
@@ -22,11 +22,17 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   private
   def find_user
-    pending_membership&.user ||
-    pending_login_token&.user ||
-    pending_identity&.user ||
+    pending_user ||
     User.find_by(email: sign_up_params[:email], email_verified: false) ||
     build_resource
+  end
+
+  def email_is_verified?
+    pending_user&.email == sign_up_params[:email]
+  end
+
+  def pending_user
+    (pending_membership || pending_login_token || pending_identity)&.user
   end
 
   def permission_check
