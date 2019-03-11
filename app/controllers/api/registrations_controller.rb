@@ -4,23 +4,16 @@ class API::RegistrationsController < Devise::RegistrationsController
   before_action :permission_check, only: :create
 
   def create
-    @verified_email = email_is_verified?
-
-    if self.resource = user_from_membership || user_from_login_token || user_from_pending_identity
-      resource.attributes=(sign_up_params)
-    else
-      build_resource(sign_up_params)
-    end
-
-    if UserService.create(user: resource)
+    self.resource = find_user
+    if UserService.create(user: resource, params: sign_up_params)
       save_detected_locale(resource)
-      if @verified_email
+      if email_is_verified?
         sign_in resource
         flash[:notice] = t(:'devise.sessions.signed_in')
         render json: { success: :ok, signed_in: true }
       else
         LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
-        render json: { success: :ok }
+        render json: { success: :ok, signed_in: false }
       end
     else
       render json: { errors: resource.errors }, status: 422
@@ -28,16 +21,18 @@ class API::RegistrationsController < Devise::RegistrationsController
   end
 
   private
-  def user_from_membership
-    pending_membership.present? && pending_membership.user
+  def find_user
+    pending_user ||
+    User.find_by(email: sign_up_params[:email], email_verified: false) ||
+    build_resource
   end
 
-  def user_from_login_token
-    pending_login_token.present? && pending_login_token.user
+  def email_is_verified?
+    pending_user&.email == sign_up_params[:email]
   end
 
-  def user_from_pending_identity
-    pending_identity.present? && pending_identity.user
+  def pending_user
+    (pending_membership || pending_login_token || pending_identity)&.user
   end
 
   def permission_check
@@ -48,10 +43,5 @@ class API::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(:name, :email, :recaptcha, :legal_accepted)
     end
-  end
-
-  def email_is_verified?
-    (pending_identity.present? && pending_identity.email == params[:user][:email]) or
-    (pending_membership.present? && pending_membership.user.email == params[:user][:email])
   end
 end
