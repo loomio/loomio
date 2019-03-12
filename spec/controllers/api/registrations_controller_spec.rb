@@ -46,6 +46,18 @@ describe API::RegistrationsController do
       expect(u.legal_accepted_at).to be_present
     end
 
+    it "signup via membership with different email address" do
+      session[:pending_membership_token] = pending_membership.token
+      registration_params[:email] = "changed@example.com"
+      expect { post :create, params: { user: registration_params } }.to change { User.count }.by(0)
+      expect(response.status).to eq 200
+      expect(JSON.parse(response.body)['signed_in']).to be false
+      u = User.find_by(email: registration_params[:email])
+      expect(u.name).to eq registration_params[:name]
+      expect(u.email).to eq registration_params[:email]
+      expect(u.legal_accepted_at).to be_present
+    end
+
     it "signup via login token" do
       session[:pending_login_token] = login_token.token
       expect { post :create, params: { user: registration_params } }.to change { User.count }.by(0)

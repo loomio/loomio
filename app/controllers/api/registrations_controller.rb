@@ -4,10 +4,11 @@ class API::RegistrationsController < Devise::RegistrationsController
   before_action :permission_check, only: :create
 
   def create
+    @email_is_verified = email_is_verified?
     self.resource = find_user
     if UserService.create(user: resource, params: sign_up_params)
       save_detected_locale(resource)
-      if email_is_verified?
+      if @email_is_verified
         sign_in resource
         flash[:notice] = t(:'devise.sessions.signed_in')
         render json: { success: :ok, signed_in: true }
@@ -28,7 +29,9 @@ class API::RegistrationsController < Devise::RegistrationsController
   end
 
   def email_is_verified?
-    pending_user&.email == sign_up_params[:email]
+    (pending_membership&.user  ||
+     pending_login_token&.user ||
+     pending_identity)&.email == sign_up_params[:email]
   end
 
   def pending_user
