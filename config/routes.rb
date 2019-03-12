@@ -222,6 +222,8 @@ Loomio::Application.routes.draw do
     get "identities/:id/:command", to: "identities#command"
   end
 
+  post '/direct_uploads', to: 'direct_uploads#create'
+
   get '/users/sign_in', to: redirect('/dashboard')
   get '/users/sign_up', to: redirect('/dashboard')
   devise_for :users

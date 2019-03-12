@@ -7,12 +7,12 @@ module ProtectedFromForgery
   protected
 
   def verified_request?
-    super || form_authenticity_token == request.headers['X-XSRF-TOKEN']
+    super || form_authenticity_token == request.headers['X-CSRF-TOKEN']
   end
 
   private
 
   def set_xsrf_token
-    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+    cookies['CSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end
 end

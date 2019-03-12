@@ -8,7 +8,7 @@ import _isString from 'lodash/isstring'
 import _filter from 'lodash/filter'
 import _uniq from 'lodash/uniq'
 import _map from 'lodash/map'
-import { DirectUpload } from "activestorage"
+import FileUploader from 'shared/services/file_uploader'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
@@ -16,26 +16,6 @@ import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
   OrderedList, BulletList, ListItem, TodoItem, TodoList, Bold, Code,
   Italic, Link, Strike, Underline, History, Mention } from 'tiptap-extensions'
 import Image from 'shared/tiptap_extentions/image.js'
-
-
-uploadFile = (input, file) =>
-  # // your form needs the file_field direct_upload: true, which
-  # //  provides data-direct-upload-url
-  url = "/rails/active_storage/direct_uploads"
-  upload = new DirectUpload(file, url)
-
-  upload.create (error, blob) =>
-    if error
-      # // Handle the error
-    else
-      # // Add an appropriately-named hidden input to the form with a
-      # //  value of blob.signed_id so that the blob ids will be
-      # //  transmitted in the normal upload flow
-      hiddenField = document.createElement('input')
-      hiddenField.setAttribute("type", "hidden");
-      hiddenField.setAttribute("value", blob.signed_id);
-      hiddenField.name = input.name
-      document.querySelector('form').appendChild(hiddenField)
 
 module.exports =
   props:
@@ -51,6 +31,7 @@ module.exports =
   data: ->
     query: null
     suggestionRange: null
+    files: []
     mentionableUserIds: []
     navigatedUserIndex: 0
     insertMention: () => {}
@@ -138,10 +119,17 @@ module.exports =
 
   methods:
     fileSelected: (e, a) ->
-      for file in @$refs.uploadField.files
-        console.log "uploading", file
-        uploadFile(@$refs.uploadField, file)
-
+      for file in @$refs.filesField.files
+        console.log file
+        wrapper = {file: file, name: file.name, size: file.size, type: file.type, percentComplete: 0}
+        @files.push(wrapper)
+        fileCallbacks = {
+          progress: (e) ->
+            if (e.lengthComputable)
+              wrapper.percentComplete = parseInt(e.loaded / e.total * 100);
+        }
+        new FileUploader(fileCallbacks).upload(file).then (blob) =>
+          wrapper.blob = blob
 
     fetchMentionable: ->
       Records.users.fetchMentionable(@query, @model).then (response) =>
@@ -212,28 +200,30 @@ div
             v-icon mdi-format-strikethrough
           v-btn.menubar__button(icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
             v-icon mdi-format-underline
+          v-btn.menubar__button(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
+            v-icon mdi-paperclip
           //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code() }", @click='commands.code')
           //-   v-icon mdi-code-braces
-          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
-            v-icon mdi-format-pilcrow
-          v-btn.menubar__v-btn(icon @click='commands.todo_list')
-            v-icon mdi-format-list-checks
-          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
-            v-icon mdi-format-header-1
-          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
-            v-icon mdi-format-header-2
-          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
-            v-icon mdi-format-header-3
-          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
-            v-icon mdi-format-list-bulleted
-          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
-            v-icon mdi-format-list-numbered
-          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
-            v-icon mdi-format-quote-closed
-          v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
-            v-icon mdi-code-tags
-          v-btn.menubar__v-btn(icon @click='commands.horizontal_rule')
-            v-icon mdi-format-page-break
+          //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
+          //-   v-icon mdi-format-pilcrow
+          //- v-btn.menubar__v-btn(icon @click='commands.todo_list')
+          //-   v-icon mdi-format-list-checks
+          //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
+          //-   v-icon mdi-format-header-1
+          //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
+          //-   v-icon mdi-format-header-2
+          //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
+          //-   v-icon mdi-format-header-3
+          //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
+          //-   v-icon mdi-format-list-bulleted
+          //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
+          //-   v-icon mdi-format-list-numbered
+          //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
+          //-   v-icon mdi-format-quote-closed
+          //- v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
+          //-   v-icon mdi-code-tags
+          //- v-btn.menubar__v-btn(icon @click='commands.horizontal_rule')
+          //-   v-icon mdi-format-page-break
           v-btn.menubar__v-btn(icon @click='commands.undo')
             v-icon mdi-undo
           v-btn.menubar__v-btn(icon @click='commands.redo')
@@ -246,10 +236,23 @@ div
         | {{ user.name }}
     .suggestion-list__item.is-empty(v-else) No users found
 
-  .uploads
-    | Attachments
-    form(style="display: block" @change="fileSelected()")
-      input(ref="uploadField" type="file" name="files" style="display: block")
+
+  .attachments(v-if="files.length")
+    p(v-t='"common.attachments"')
+    ul
+      li(v-for="file in files" key="file.vueKey")
+        i.mdi.mdi-image
+        span {{file.name}}
+        div.progress-outer
+          div.progress-inner
+            | complete:
+            span {{file.percentComplete}}
+        v-btn(icon)
+          v-icon mdi-close
+
+
+  form(style="display: block" @change="fileSelected()")
+    input(ref="filesField" type="file" name="files" multiple=true)
 </template>
 
 <style lang="scss">

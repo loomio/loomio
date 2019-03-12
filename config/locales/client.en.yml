@@ -53,6 +53,7 @@ en:
     not_found: Not found
     time_zone: Time zone
     local_time: Local time
+    attachments: Attachments
     confirm_discard_changes: Discard your changes?
     time:
       am: am
