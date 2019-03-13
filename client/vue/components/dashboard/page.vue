@@ -160,7 +160,7 @@ v-container.lmo-main-container.dashboard-page
           img(src='/img/mute-small.png')
         p(v-t="'dashboard_page.explain_mute.see_muted_html'")
     .dashboard-page__collections(v-if='!noThreads')
-      v-card.mb-3(v-if='views[viewName].any()', :class="'thread-preview-collection__container dashboard-page__' + viewName", v-for='viewName in viewNames')
+      v-card.mb-3(v-if='views[viewName].any()', :class="'thread-preview-collection__container dashboard-page__' + viewName", v-for='viewName in viewNames' :key='viewName')
         v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
         thread-preview-collection.thread-previews-container(:query='views[viewName]')
       .dashboard-page__footer(v-if='!loader.exhausted', in-view='$inview && loader.loadMore()', in-view-options='{debounce: 200}')  

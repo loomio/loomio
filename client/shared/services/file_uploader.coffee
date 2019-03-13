@@ -6,7 +6,6 @@ module.exports = class FileUploader
     @blobXHRCallbacks = blobXHRCallbacks
 
   upload: (file) ->
-    console.log @fileXHRCallbacks
     url = "/direct_uploads"
     upload = new DirectUpload(file, url, {
       directUploadWillCreateBlobWithXHR: (xhr) =>
@@ -15,6 +14,7 @@ module.exports = class FileUploader
 
       directUploadWillStoreFileWithXHR: (xhr) =>
         _.forEach @fileXHRCallbacks, (value, key) ->
+          console.log key, value
           xhr.upload.addEventListener(key, value)
     })
 

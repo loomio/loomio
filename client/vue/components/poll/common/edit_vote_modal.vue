@@ -50,7 +50,7 @@ v-card.poll-common-modal
 
   v-card-text(v-if="isEditing")
     div
-      poll-common-directive(:stance-choice="choice", name="stance-choice", v-if="choice.id && choice.score > 0", v-for="choice in orderedStanceChoices")
+      poll-common-directive(:stance-choice="choice", name="stance-choice", v-if="choice.id && choice.score > 0", v-for="choice in orderedStanceChoices" :key="choice.id")
       v-btn(@click="toggleCreation()", v-t="'poll_common.change_vote'")
     .poll-common-stance-reason
       v-textarea.poll-common-vote-form__reason(lmo_textarea, :model="stance.reason", :label="$t('poll_common.reason')", :placeholder="$t('poll_common.reason_placeholder')", maxlength="500")

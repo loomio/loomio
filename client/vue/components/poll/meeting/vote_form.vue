@@ -84,7 +84,7 @@ module.exports =
           <time-zone-select class="lmo-margin-left"></time-zone-select>
         </li>
         <li md-list-item v-for="option in orderedPollOptions()" :key="option.id" class="poll-common-vote-form__option lmo-flex--row">
-          <v-btn type="button" md-colors="selectedColor(option, i)" v-for="i in stanceValues" @click="click(option.id, i)" class="poll-meeting-vote-form--box">
+          <v-btn type="button" md-colors="selectedColor(option, i)" v-for="i in stanceValues" :key="i" @click="click(option.id, i)" class="poll-meeting-vote-form--box">
             <img src="/img/agree.svg" v-if="i == 2" class="poll-common-form__icon">
             <img src="/img/abstain.svg" v-if="i == 1" class="poll-common-form__icon">
             <img src="/img/disagree.svg" v-if="i == 0" class="poll-common-form__icon">

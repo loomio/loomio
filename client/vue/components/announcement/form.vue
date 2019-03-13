@@ -104,7 +104,7 @@ module.exports =
     <div class="announcement-form__invite">
       <p v-t="'announcement.form.' + announcement.kind + '.helptext'" class="announcement-form__help md-subhead"></p>
       <v-list>
-        <v-list-tile v-for="audience in audiences()" @click="loadAudience(audience)" class="announcement-form__audience md-whiteframe-1dp">
+        <v-list-tile v-for="audience in audiences()" :key="audience" @click="loadAudience(audience)" class="announcement-form__audience md-whiteframe-1dp">
           <i class="mdi mdi-18px mdi-account-multiple lmo-margin-right--small"></i>
           <span v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }" class="md-body-1"></span>
         </v-list-tile>

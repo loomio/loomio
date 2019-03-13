@@ -84,7 +84,7 @@ urlFor    = require 'vue/mixins/url_for'
 
 _truncate = require 'lodash/truncate'
 _map      = require 'lodash/map'
-_sortBy   = require 'lodash/sortby'
+_sortBy   = require 'lodash/sortBy'
 
 { applyLoadingFunction } = require 'shared/helpers/apply'
 

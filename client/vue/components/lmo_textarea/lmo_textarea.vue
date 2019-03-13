@@ -3,12 +3,14 @@ import tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
 import Records from 'shared/services/records'
 import _concat from 'lodash/concat'
-import _sortBy from 'lodash/sortby'
-import _isString from 'lodash/isstring'
+import _sortBy from 'lodash/sortBy'
+import _isString from 'lodash/isString'
 import _filter from 'lodash/filter'
 import _uniq from 'lodash/uniq'
 import _map from 'lodash/map'
+import _forEach from 'lodash/foreach'
 import FileUploader from 'shared/services/file_uploader'
+import FilesList from './files_list.vue'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
@@ -26,6 +28,7 @@ module.exports =
   components:
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
+    FilesList: FilesList
     # EditorMenuBubble: EditorMenuBubble
 
   data: ->
@@ -119,17 +122,18 @@ module.exports =
 
   methods:
     fileSelected: (e, a) ->
-      for file in @$refs.filesField.files
-        console.log file
-        wrapper = {file: file, name: file.name, size: file.size, type: file.type, percentComplete: 0}
+      _forEach @$refs.filesField.files, (file) =>
+        wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null}
         @files.push(wrapper)
+        console.log "added upload", wrapper
         fileCallbacks = {
           progress: (e) ->
             if (e.lengthComputable)
               wrapper.percentComplete = parseInt(e.loaded / e.total * 100);
+            console.log "progress", wrapper
         }
-        new FileUploader(fileCallbacks).upload(file).then (blob) =>
-          wrapper.blob = blob
+        uploader = new FileUploader(fileCallbacks)
+        uploader.upload(file).then (blob) => wrapper.blob = blob
 
     fetchMentionable: ->
       Records.users.fetchMentionable(@query, @model).then (response) =>
@@ -236,26 +240,19 @@ div
         | {{ user.name }}
     .suggestion-list__item.is-empty(v-else) No users found
 
-
-  .attachments(v-if="files.length")
-    p(v-t='"common.attachments"')
-    ul
-      li(v-for="file in files" key="file.vueKey")
-        i.mdi.mdi-image
-        span {{file.name}}
-        div.progress-outer
-          div.progress-inner
-            | complete:
-            span {{file.percentComplete}}
-        v-btn(icon)
-          v-icon mdi-close
-
+  files-list(:files="files")
 
   form(style="display: block" @change="fileSelected()")
     input(ref="filesField" type="file" name="files" multiple=true)
 </template>
 
 <style lang="scss">
+.progress {
+  width: 100px;
+}
+.progress-bar {
+  background-color: #555;
+}
 
 $color-black: #000;
 $color-white: #fff;

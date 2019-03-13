@@ -68,7 +68,7 @@ module.exports =
   section.group-form__section.group-form__privacy
     h3.lmo-h3(v-t="'group_form.privacy'")
     v-radio-group(v-model='group.groupPrivacy')
-      v-radio(v-for='privacy in privacyOptions', :class="'md-checkbox--with-summary group-form__privacy-' + privacy", :value='privacy', :aria-label='privacy')
+      v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
         template(slot='label')
           .group-form__privacy-title
             strong(v-t="'common.privacy.' + privacy")
@@ -77,7 +77,7 @@ module.exports =
     section.group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
       h3.lmo-h3(v-t="'group_form.how_do_people_join'")
       v-radio-group(ng-model='group.membershipGrantedUpon')
-        v-radio(v-for="granted in ['request', 'approval']", :class="'group-form__membership-granted-upon-' + granted", :value='granted')
+        v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
           template(slot='label')
             span(v-t="'group_form.membership_granted_upon_' + granted")
     section.group-form__section.group-form__permissions

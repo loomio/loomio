@@ -26,7 +26,7 @@ EventBus     = require 'shared/services/event_bus'
 ModalService = require 'shared/services/modal_service'
 urlFor       = require 'vue/mixins/url_for'
 
-_sortBy   = require 'lodash/sortby'
+_sortBy   = require 'lodash/sortBy'
 
 module.exports =
   mixins: [urlFor]

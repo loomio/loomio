@@ -21,7 +21,7 @@ urlFor         = require 'vue/mixins/url_for'
 { applyLoadingFunction } = require 'shared/helpers/apply'
 
 _isEmpty     = require 'lodash/isempty'
-_sortBy     = require 'lodash/sortby'
+_sortBy     = require 'lodash/sortBy'
 
 module.exports =
   mixins: [fromNow, urlFor]
