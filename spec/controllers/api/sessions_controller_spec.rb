@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe API::SessionsController do
   describe 'create' do
-    let(:user) { create :user, email: "test@test.com", email_verified: true }
-    let(:unverified_user) { create :user, email_verified: false, email: "test@test.com" }
+    let(:user) { create :user, email: "verified@example.com", email_verified: true }
+    let(:unverified_user) { create :user, email_verified: false, email: "unverified@example.com" }
     let(:token) { create :login_token }
 
     describe 'via token' do

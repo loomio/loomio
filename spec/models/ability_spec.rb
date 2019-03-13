@@ -11,7 +11,7 @@ describe "User abilities" do
   subject { ability }
 
   let(:own_pending_membership) {
-    create :membership, user: create(:user, email: "h@h.com", email_verified: false), group: group, inviter: user
+    create :membership, user: create(:user, email: "i@i.com", email_verified: false), group: group, inviter: user
   }
   let(:other_members_pending_membership) {
     create :membership, user: create(:user, email: "h@h.com", email_verified: false), group: group, inviter: other_user

@@ -1205,6 +1205,7 @@ zh_TW:
     proposal_title: 提案
     count_title: 勾選
     poll_title: 投票
+    score_title: 分數投票
     dot_vote_title: 點投票
     meeting_title: 時間投票
     ranked_choice_title: 排序選擇

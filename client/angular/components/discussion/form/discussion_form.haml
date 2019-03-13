@@ -9,11 +9,11 @@
         {{group.fullName}}
     .md-errors-spacer
 
-  %md-dialog-content.md-body-1{ng-if: "!canStartThread"}
+  %md-dialog-content.md-body-1{ng-if: "showUpgradeMessage"}
     %p{ng-if: "maxThreadsReached", translate: "discussion.max_threads_reached", translate-values: "{upgradeUrl: upgradeUrl}"}
     %p{ng-if: "!subscriptionActive", translate: "discussion.subscription_canceled", translate-values: "{upgradeUrl: upgradeUrl}"}
 
-  .discussion-form__group-selected{ng-if: "discussion.groupId && canStartThread"}
+  .discussion-form__group-selected{ng-if: "discussion.groupId && !showUpgradeMessage"}
     %md-input-container.md-block
       %label{for: "discussion-title", translate: "discussion_form.title_label"}
       .lmo-relative

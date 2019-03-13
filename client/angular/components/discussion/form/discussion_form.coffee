@@ -10,6 +10,7 @@ angular.module('loomioApp').directive 'discussionForm', ->
   templateUrl: 'generated/components/discussion/form/discussion_form.html'
   controller: ['$scope', ($scope) ->
     $scope.canStartThread = true
+    $scope.showUpgradeMessage = false
     $scope.$watch 'discussion.groupId', (o, v)->
       return unless $scope.discussion.groupId
       $scope.maxThreads = $scope.discussion.group().parentOrSelf().subscriptionMaxThreads
@@ -18,6 +19,7 @@ angular.module('loomioApp').directive 'discussionForm', ->
       $scope.subscriptionActive = $scope.discussion.group().parentOrSelf().subscriptionActive
       $scope.upgradeUrl = AppConfig.baseUrl + 'upgrade'
       $scope.canStartThread = $scope.subscriptionActive && !$scope.maxThreadsReached
+      $scope.showUpgradeMessage = $scope.discussion.isNew() && !$scope.canStartThread
 
     if $scope.discussion.isNew()
       $scope.showGroupSelect = true

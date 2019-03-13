@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.6.1'
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 5.2.2.1'
 gem 'actioncable'
 gem 'rake'
 gem 'pg', '~> 1.1.4'
@@ -52,7 +52,6 @@ gem 'has_secure_token'
 gem "autoprefixer-rails"
 gem 'icalendar'
 gem 'rack-attack'
-gem 'rack-timeout'
 gem 'js_regex'
 gem 'bootsnap', require: false
 gem 'redis-rails'
@@ -95,6 +94,7 @@ end
 
 group :production do
   gem 'puma'
+  gem 'rack-timeout'
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'
   gem 'newrelic_rpm'
