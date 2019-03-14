@@ -11,20 +11,28 @@ module.exports =
 .files-list(v-if="files.length")
   p(v-t='"common.attachments"')
   ul
-    li.files-list__item(v-for="wrapper in files" :key="wrapper.key")
-      v-icon.files-list__icon mdi-image
-      span.files-list__file-name {{wrapper.file.name}} {{wrapper.percentComplete}}
-      span.files-list__progress(v-if="!wrapper.blob")
-        span.files-list__progress-bar(:style="progressStyle(wrapper.percentComplete)")
-      v-btn.files-list__remove(icon)
-        v-icon mdi-close
+    li(v-for="wrapper in files" :key="wrapper.key")
+      .files-list__item
+        v-icon.files-list__icon mdi-image
+        span.files-list__file-name {{wrapper.file.name}}
+        span.files-list__progress(v-if="!wrapper.blob")
+          span.files-list__progress-bar(:style="progressStyle(wrapper.percentComplete)")
+        v-btn.files-list__remove(icon @click="$emit('removeFile', wrapper.file.name)")
+          v-icon mdi-close
+      p(v-if="wrapper.blob")
+        img(:src="wrapper.blob.preview_url")
 </template>
 
 <style lang="scss">
 @import 'variables';
 .files-list {
 }
-
+.files-list ul {
+  padding-left: 0;
+}
+.files-list li {
+  list-style: none;
+}
 .files-list__icon {
 }
 
@@ -50,6 +58,9 @@ module.exports =
 }
 
 .files-list__remove {
+}
+.files-list p img {
+  width: 100%;
 }
 
 </style>

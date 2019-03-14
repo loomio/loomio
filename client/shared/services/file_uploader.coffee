@@ -14,7 +14,6 @@ module.exports = class FileUploader
 
       directUploadWillStoreFileWithXHR: (xhr) =>
         _.forEach @fileXHRCallbacks, (value, key) ->
-          console.log key, value
           xhr.upload.addEventListener(key, value)
     })
 

@@ -8,7 +8,7 @@ import _isString from 'lodash/isString'
 import _filter from 'lodash/filter'
 import _uniq from 'lodash/uniq'
 import _map from 'lodash/map'
-import _forEach from 'lodash/foreach'
+import _forEach from 'lodash/forEach'
 import FileUploader from 'shared/services/file_uploader'
 import FilesList from './files_list.vue'
 
@@ -105,9 +105,9 @@ module.exports =
         new Underline(),
         new History()]
       content: @model[@field]
-      onUpdate: ({ getJSON, getHTML }) =>
-        @model[@field] = getHTML()
-        @model["#{@field}Format"] = "html"
+      # onUpdate: ({ getJSON, getHTML }) =>
+      #   @model[@field] = getHTML()
+      #   @model["#{@field}Format"] = "html"
 
   computed:
     hasResults: -> @filteredUsers.length
@@ -121,16 +121,17 @@ module.exports =
       _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
 
   methods:
+    removeFile: (name) ->
+      @files = _filter @files, (wrapper) -> wrapper.file.name != name
+
     fileSelected: (e, a) ->
       _forEach @$refs.filesField.files, (file) =>
-        wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null}
+        wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null, xhr: null}
         @files.push(wrapper)
-        console.log "added upload", wrapper
         fileCallbacks = {
           progress: (e) ->
             if (e.lengthComputable)
               wrapper.percentComplete = parseInt(e.loaded / e.total * 100);
-            console.log "progress", wrapper
         }
         uploader = new FileUploader(fileCallbacks)
         uploader.upload(file).then (blob) => wrapper.blob = blob
@@ -240,9 +241,9 @@ div
         | {{ user.name }}
     .suggestion-list__item.is-empty(v-else) No users found
 
-  files-list(:files="files")
+  files-list(:files="files" v-on:removeFile="removeFile")
 
-  form(style="display: block" @change="fileSelected()")
+  form(style="display: block" @change="fileSelected")
     input(ref="filesField" type="file" name="files" multiple=true)
 </template>
 
