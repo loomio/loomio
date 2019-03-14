@@ -395,6 +395,7 @@ sv:
     proposal_title: Förslag
     count_title: Bock
     poll_title: Undersökning
+    score_title: Ränka röster
     meeting_title: Tidsröstning
     ranked_choice_title: Valfritt val
   poll_common:

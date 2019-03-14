@@ -1790,6 +1790,7 @@ en:
     invalid_email: "Sorry, that doesn't look like a valid email address"
     invalid_password: "Sorry, that password doesn't match the one we have on file"
     invalid_token: "Sorry, we weren't able to use that token to log you in. Click below to send another one."
+    account_locked: "Your account has been locked after too many failed login attempts. Check your email for an unlock link"
     email_not_found: "Sorry, we couldn't find an account with that email address"
     email_placeholder: you@example.com
     login_with_token: You're all set! Click the link below to continue.

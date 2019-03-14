@@ -19,23 +19,30 @@ angular.module('loomioApp').directive 'announcementForm', ->
   controller: ['$scope', ($scope) ->
 
     $scope.upgradeUrl = AppConfig.baseUrl + 'upgrade'
+    $scope.invitationsRemaining = 1000
+    $scope.showInvitationsRemaining = false
+    $scope.subscriptionActive = true
+    $scope.canInvite = true
 
-    $scope.invitationsRemaining =
-      ($scope.announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0) -
-      $scope.announcement.model.group().parentOrSelf().orgMembershipsCount
+    if $scope.announcement.model.group()
+      $scope.invitationsRemaining =
+        ($scope.announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0) -
+        $scope.announcement.model.group().parentOrSelf().orgMembershipsCount
 
-    $scope.showInvitationsRemaining =
-      $scope.announcement.model.isA('group') &&
-      $scope.announcement.model.group().parentOrSelf().subscriptionMaxMembers
+      $scope.showInvitationsRemaining =
+        $scope.announcement.model.isA('group') &&
+        $scope.announcement.model.group().parentOrSelf().subscriptionMaxMembers
 
-    $scope.subscriptionActive = $scope.announcement.model.group().parentOrSelf().subscriptionActive
+      $scope.subscriptionActive = $scope.announcement.model.group().parentOrSelf().subscriptionActive
 
-    $scope.canInvite = $scope.subscriptionActive && (!$scope.announcement.model.group().parentOrSelf().subscriptionMaxMembers || $scope.invitationsRemaining > 0)
+      $scope.canInvite = $scope.subscriptionActive && (!$scope.announcement.model.group().parentOrSelf().subscriptionMaxMembers || $scope.invitationsRemaining > 0)
 
-    $scope.tooManyInvitations = ->
-      $scope.showInvitationsRemaining && ($scope.invitationsRemaining < $scope.announcement.recipients.length)
+      $scope.tooManyInvitations = ->
+        $scope.showInvitationsRemaining && ($scope.invitationsRemaining < $scope.announcement.recipients.length)
+
 
     $scope.shareableLink = LmoUrlService.shareableLink($scope.announcement.model)
+
     if $scope.announcement.model.isA('group')
       $scope.announcement.model.fetchToken().then ->
         $scope.shareableLink = LmoUrlService.shareableLink($scope.announcement.model)

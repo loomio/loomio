@@ -631,7 +631,6 @@ ActiveRecord::Schema.define(version: 2019_03_10_214604) do
     t.integer "max_members"
     t.integer "max_orgs"
     t.string "state", default: "active", null: false
-    t.index ["chargify_subscription_id"], name: "index_subscriptions_on_chargify_subscription_id", unique: true
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
@@ -724,11 +723,15 @@ ActiveRecord::Schema.define(version: 2019_03_10_214604) do
     t.datetime "legal_accepted_at"
     t.boolean "email_newsletter", default: false, null: false
     t.string "short_bio_format", limit: 10, default: "md", null: false
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
