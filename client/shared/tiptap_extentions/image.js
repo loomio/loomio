@@ -1,5 +1,6 @@
 import { Node, Plugin } from 'tiptap'
-import { upload } from 'shared/helpers/form.coffee'
+import FileUploader from 'shared/services/file_uploader'
+import {placeholderPlugin, findPlaceholder} from 'shared/tiptap_extentions/placeholder_plugin.js'
 
 export default class Image extends Node {
   get name() {
@@ -73,18 +74,50 @@ export default class Image extends Node {
 
               const { schema } = view.state
               const coordinates = view.posAtCoords({ left: event.clientX, top: event.clientY })
+              debugger
+              // A fresh object to act as the ID for this upload
+              let id = {}
+
+              // Replace the selection with a placeholder
+              let tr = view.state.tr
+              if (!tr.selection.empty) tr.deleteSelection()
+              tr.setMeta(placeholderPlugin, {add: {id, pos: tr.selection.from}})
+              view.dispatch(tr)
+
 
               images.forEach(image => {
-                const reader = new FileReader()
 
-                reader.onload = readerEvent => {
+
+                const callbacks = {
+                  progress: function(e) {
+                    if (e.lengthComputable) {
+                      console.log("uploading: ", parseInt(e.loaded / e.total * 100));
+                    }
+                  }
+                }
+
+                const uploader = new FileUploader(callbacks)
+
+                uploader.upload(image).then(blob => {
+
+                  let pos = findPlaceholder(view.state, id)
+                  // If the content around the placeholder has been deleted, drop
+                  // the image
+                  if (pos == null) return
+                  // Otherwise, insert it at the placeholder's position, and remove
+                  // the placeholder
+                  view.dispatch(view.state.tr
+                    .replaceWith(pos, pos, schema.nodes.image.create({src: url}))
+                    .setMeta(placeholderPlugin, {remove: {id}}))
                   const node = schema.nodes.image.create({
-                    src: readerEvent.target.result,
+                    src: blob.preview_url,
                   })
                   const transaction = view.state.tr.insert(coordinates.pos, node)
                   view.dispatch(transaction)
-                }
-                reader.readAsDataURL(image)
+                }, () => {
+                  // On failure, just clean up the placeholder
+                  view.dispatch(tr.setMeta(placeholderPlugin, {remove: {id}}))
+                })
               })
             },
           },

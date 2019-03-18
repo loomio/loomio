@@ -248,6 +248,20 @@ div
 </template>
 
 <style lang="scss">
+
+placeholder {
+  display: inline;
+  border: 1px solid #ccc;
+  color: #ccc;
+}
+placeholder:after {
+  content: "☁";
+  font-size: 200%;
+  line-height: 0.1;
+  font-weight: bold;
+}
+.ProseMirror img { max-width: 100px }
+
 .progress {
   width: 100px;
 }
