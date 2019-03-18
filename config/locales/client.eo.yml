@@ -111,6 +111,8 @@ eo:
     _10: 10a
   error_page:
     forbidden: 'Vi ne havas permeson fari ĉi tion'
+    page_not_found: 'Ni ne sukcesis trovi tion. Eble oni forigis aŭ translokigis ĝin.'
+    internal_server_error: 'Ni bedaŭras, sed io misfunkciis/okazis fuŝaĵo. Bonvolu provi denove.'
   volume_levels:
     loud: 'Brua'
     normal: 'Normala'
@@ -126,13 +128,24 @@ eo:
     aria_label: Silentigi fadenon
     mute_thread: Silentigi fadenon
   inbox:
+    clear: 'Klara'
+    latest: 'Plej lasta'
     unread: 'Nelegitaj'
+    closing_in: 'Fermo'
   signed_out_modal:
     ok: "Bone!"
   comment_form:
+    aria_label: 'Aldonu komenton'
+    attachments:
+      remove_attachment: 'Forigu la alkroĉaĵon.'
     edit_comment: 'Redakti komenton'
     delete_comment: 'Forigi komenton'
+    cancel_reply: 'Nuligu la respondon'
     confirm_delete_message: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
+    confirm_delete: 'Forigi la komenton'
+    in_reply_to: "Responu al {{nomo}}"
+    submit_button:
+      label: 'Afiŝu'
   sidebar:
     start_thread: Nova fadeno
     aria_labels:
@@ -171,12 +184,15 @@ eo:
     add_comment: Komenti
     edit_poll: Redakti enketon
     translate_poll: Traduki enketon
+    delete_comment: Forigi la komenton
   join_group_button:
     join_group: Aliĝi al la grupo
   membership_request_form:
     heading: Peti aliĝon al la grupo
     name_label: Nomo
     email_label: Retpoŝto
+  revision_history_modal:
+    current_revision: Plej lasta
   reactions_display:
     you: "Vi"
   group_page:
@@ -187,6 +203,8 @@ eo:
       label: 'Opcioj'
   group_form:
     privacy: 'Privateco'
+  documents_page:
+    confirm_remove_title: Forigu alkroĉaĵon.
   document:
     form:
       title_label: Nomo
@@ -247,6 +265,7 @@ eo:
       or: aŭ
   activity_card:
     unread: Nelegitaj
+    latest: Plej lasta
   thread_group:
     aria_label: 'Grupnomo'
   thread_context:

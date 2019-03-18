@@ -18,7 +18,7 @@ fr:
     placeholder_name: "Utilisateur invité (%{hostname})"
     error:
       recaptcha: "Nous n'avons pas pu confirmer que vous n'êtes pas un robot. Merci de réessayer!"
-      bad_login: "Nous n'avons pas pu vous connecter. Merci de réessayer!"
+      bad_login: "Désolé, le mot de passe n’est pas le même que celui enregistré."
       username_must_be_alphanumeric: "Les identifiants doivent être composés uniquement de lettre en minuscules et/ou de chiffres"
   attachment:
     error:

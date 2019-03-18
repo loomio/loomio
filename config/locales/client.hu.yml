@@ -394,6 +394,7 @@ hu:
   group_page:
     group_logo: 'Csoport logó'
     new_photo: 'Új fotó'
+    subgroups: 'Alcsoportok'
     invite_people: 'Meghív'
     visibility_label: 'Láthatóság'
     options_label: 'Lehetőségek'
@@ -419,6 +420,7 @@ hu:
     start_subgroup_heading: 'Indíts egy alcsoportot'
     privacy: 'Adatvédelem'
     members_can_start_discussions: 'A tagok felvethetnek új támékat.'
+    submit_start_group: 'Indíts csoportot'
     submit_update: 'Beállítások frissítése'
   documents_page:
     confirm_remove_title: Csatolmány eltávolítása

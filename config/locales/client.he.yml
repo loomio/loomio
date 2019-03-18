@@ -913,45 +913,195 @@ he:
   email_settings_page:
     header: הגדרות מייל
     email_newsletter: הניוזלטר של לומיו
+    email_newsletter_description: "קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד\"כ 2-3 מיילים בשנה."
+    daily_summary_label: סיכום יומי במייל
+    daily_summary_description: "בכל יום תקבל מייל עם כל פעילות שפספסת ביום שלפני. כך תוכל לשאר מעודכן עם הפעילות."
+    on_participation_label: הרשם בהשתתפות
+    on_participation_description: "כשאתה משתתף בשיחה, כל פעילות עתידית תשלח אליך למייל באופן מיידי."
     announcement_label: הודעות
+    announcement_description: "אתה תקבל מייל בנוגע לכל תוכן שמוכרז ע\"י אנשים בקבוצות שלך"
+    mentioned_label: איזכורים ותגובות
+    mentioned_description: "כשמישהו מזכיר אותך בתגובה או במענה לך, אתה תקבל הודעה על כך במייל"
     update_settings: שמור שינויים
+    specific_groups: הגדרות לקבוצות ספציפיות
+    default_settings:
+      loud_description: "כשאתה מצטרף לקבוצה חדשה אתה תקבל מייל  <strong>כשיש פעילות</strong>."
+      normal_description: "כשאתה מצטרף לקבוצה חדשה אתה תקבל מייל על <strong>שיחות חדשות והצעות</strong>."
+      quiet_description: "כשאתה מצטרף לקבוצה חדשה, אתה  <strong>לא תקבל מייל על פעילות בקבוצה</strong>."
+    edit: עריכה
+    messages:
+      updated: הגדרות מייל עודכנו
+    learn_more: למד עוד על הגדרות מייל...
   dashboard_page:
     aria_label: 'לוח מכוונים'
+    no_groups:
+      show_all: אין לך שיחות אחרונות בגלל שאתה לא חבר באף קבוצה.
+      show_muted: אין לך אף שיחה מושתקת כי אתה לא חבר באף קבוצה.
+    no_threads:
+      show_all: אין לך אף שיחות אחרונות.
+      show_proposals: אין כרגע הצעות אקטיביות.
+      show_muted: אין לך אף שיחה מושתקת.
+    view_recent: לצפות בכל השיחות האחרונות?
+    load_more: הצג עוד שיחות
     mark_as_read: סמן כנקרא
     dismiss: בטל
+    thread_dismissed: שיחה שוחררה
+    thread_recalled: שיחה הושבה
+    explain_mute:
+      title: לא השתקת אף שיחה עוד.
+      explanation_html: |
+          השתקה היא דרך להסתיר או להשקיט שיחות שאתה לא מעוניין בהן.
+          השתקה משמעה שלא תראה אותה ב<strong>לאחרונה</strong> או <strong>לא נקרא</strong>, ואתה לא תקבל עדכון על פעילות בשיחה זו, כמו הצעות.
+          אתה תקבל התראה רק אם מישהו only be alerted if someone <strong>@מזכיר</strong> את שמך.
+      instructions: 'להשתקת שיחה, רחף מעליה ולחץ על אייקון ההשתקה.'
+      see_muted_html: 'לצפיה בשיחות מושתקות, לחץ על  <strong>"מושתק"</strong>. אתה יכול לבטל השתקה ע"י ריחוף על השיחה ולחיצה על אותו האייקון.'
     filtering:
+      filter_threads: סינון השיחות
+      filter_threads_aria_label: סינון השיחות
+      dropdown_heading: סינון לוח הבקרה
+      all: שיחות אחרונות
+      all_aria_label: מציג את השיחות האחרונות
+      all_description: צפה בשיחות אחרונות
       proposals: הצעות
+      proposals_aria_label: מציג כרגע שיחות עם הצעות פעילות
+      proposals_description: צפה רק בשיחות עם הצעות פעילות
+      muted: שיחות מושתקות
+      muted_aria_label: כרגע מראה שיחות מושתקות
+      muted_description: הצג רק שיחות שהושתקו
+    aria_thread:
+      unread: '{{count}} פריטים שלא נקראו.'
+      current_proposal: 'הצעה נוכחית: {{name}}.'
+      you_voted: 'את/ה הצבעת: {{position}}.'
+    thread_preview:
+      you_voted: 'את/ה הצבעת {{position}}'
+      undecided: 'את/ה מתלבט/ת'
     threads_from:
+      group: 'שיחות מאת'
+      pinned: 'שיחות נעוצות'
+      proposals: 'שיחות עם החלטות פעילות'
+      starred: 'שיחות שסומנו בכוכב'
       today: 'היום'
       yesterday: 'אתמול'
+      thisweek: 'השבוע הנוכחי'
+      thismonth: 'החודש הנוכחי'
+      older: 'ישן מחודש'
   inbox_page:
+    no_threads: וואו! קראת את כל השיחות בתיבת המייל שלך
+    unread_threads: שיחות שלא נקראו
+    view_more: צפה בעוד
     no_groups:
+      explanation: אין לך שיחות שלא נקראו בגלל שאתה לא חבר באף קבוצה.
       start: התחלה
+      or: או
+      join_group: <a href="/explore">הצטרף</a> לקבוצה כדי לצפות בשיחות.
   discussion:
+    max_threads_reached: |
+        מצטערים! אינך יכול להתחיל שיחה חדשה בגלל שהקבוצה שלך היא על חשבון זמני.</p>
+        <p>אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> כדי להמשיך להשתמש בלומיו.</p>
+    subscription_canceled: |
+        <p>מצטערים! החשבון שלך לא פעיל.</p>
+        <p>אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> כדי להמשיך להשתמש בלומיו.</p>
+    activity: 'פעילות'
+    activity_placeholder: 'אין פעילות עוד!'
+    load_previous: 'טען פעילויות מוקדמות יותר'
     started_by: 'התחיל ע"י <strong>{{name}}</strong>'
+    pin:
+      pinned: 'השיחה נעוצה'
+      unpinned: 'שיחה כבר לא נעוצה'
+    volume:
+      mute_message: 'השיחה הושתקה'
+      unmute_message: 'השיחה כבר לא הושתקה'
+    closed:
+      reopened: 'השיחה נפתחה מחדש'
+      closed: 'השיחה נסגרה'
   activity_card:
+    beginning: התחלה
     unread: לא-נקרא
     latest: אחרונים
+    chronological: כרונולוגית
+    nested: מקונן
+    attachment_display:
+      aria_label: 'קובץ מצורף:'
+      image_alt: 'תמונה מצורפת'
+    n_previous: 'טען  {{count}} תגובות קודמות'
+    n_more: 'טען {{count}} תגובות'
   thread_group:
     aria_label: 'שם הקבוצה'
   thread_context:
+    aria_label: 'הקשר השיחה'
+    thread_options: 'אפשרויות השיחה'
     email_settings: 'הגדרות מייל'
+    edit: 'עריכה'
+    edit_thread: 'עריכה'
     close_thread: 'סגירה'
     reopen_thread: 'פתח מחדש'
+    pin_thread: 'סיכה'
+    unpin_thread: 'הסר סיכה'
     mute_thread: 'השתק'
+    move_thread: 'העבר'
+    print_thread: 'הדפס'
     delete_thread: 'מחיקה'
     add_comment: 'הערה'
+    seen_by_count: 'נצפה ע"י {{count}}'
+    forked_from: "פוצל מ-"
   pin_thread_modal:
     title: דקור שיחה
+    helptext: "שיחות נעוצות תמיד יופיעו בראש רשימת השיחות בקבוצה שלהן. השיחות יכולות לשמש לעדכן חברים על הודעות חשובות, או לקדם תוכן משותף כמו תקנון התנהגות או קוי יסוד לקהילה."
+    helptext_two: "אתה יכול להוריד סיכות בכל עת ע\"י בחירה בהסר סיכה ברשימת האפשרויות של השיחה"
     pin_thread: דקור שיחה
+  delete_thread_form:
+    aria_label: 'מחיקת שיחה'
+    title: מחיקת שיחה
+    body: האם אתה בטוח שהנך מעוניין למחוק את השיחה הזו?
+    confirm: 'מחיקת שיחה'
+    messages:
+      success: שיחה נמחקה
+  move_thread_form:
+    aria_label: העבר שיחה
+    title: העבר שיחה
+    body: 'קבוצת היעד:'
+    confirm: העבר שיחה
+    confirm_change_to_private_thread: '{{groupName}} הינה קבוצה פתוחה. אם אתה ממשיך, השיחה הזו תהיה פומבית.'
+    messages:
+      success: השיחה הועברה ל{{name}}
+  print_modal:
+    load_discussion: מעלה את כל הדיון
+    helptext: רק שניה, אנחנו מביאים את כל האירועים בשיחה הזו להדפסה...
   delete_comment_dialog:
     title: 'מחקו תגובה'
     question: 'למחוק את התגובה? בטוחים?'
     confirm: 'מחקו תגובה'
   new_comment_item:
+    aria_label: 'הערות ע"י {{author}}'
     context_menu:
+      aria_label: 'אפשרויות להערות'
       edit_comment: 'ערוך הערה'
       delete_comment: 'מחקו תגובה'
+    in_reply_to: 'בתגובה ל<strong>{{recipient}}</strong>'
+    edited: 'ערוך'
+  new_vote_item:
+    agree: 'מוסכם'
+    abstain: 'נמנע'
+    disagree: 'לא מסכים'
+    block: 'נחסם'
+    agree_with_statement: 'מוסכם: <span>{{statement}}</span>'
+    abstain_with_statement: 'נמנע: <span>{{statement}}</span>'
+    disagree_with_statement: 'לא מסכים: <span>{{statement}}</span>'
+    block_with_statement: 'נחסם: <span>{{statement}}</span>'
+  new_proposal_item:
+    author_created_proposal: 'התחל הצעה: <span>{{title}}</span>'
+  proposal_closed_item:
+    proposal_closed: 'ההצעה נסגרה: <span>{{title}}</span>'
+  proposal_closed_by_user_item:
+    proposal_closed_by_user: 'סגר את ההצעה: <span>{{title}}</span>'
+  proposal_edited_item:
+    name: 'עדכן את כותרת ההצעה: <span>{{title}}</span>'
+    description: 'עדכן את תיאור ההצעה'
+    closing_at: 'עדכן את ההצעה כך שתסגר ב<span>{{time}}</span>'
+    description_name: 'נושא ותיאור ההצעה עודכן'
+    closing_at_name: 'נושא ושעת סיום ההצעה עודכן'
+    closing_at_description: 'תיאור וזמן סגירת ההצעה עודכנו'
+    closing_at_description_name: 'נושא, תיאור וזמן סגירת ההצעה עודכנו'
   contact_message_form:
     name_label: 'שמך'
     subject_label: "נושא"
@@ -969,6 +1119,7 @@ he:
     proposal_title: הצעה
     count_title: בדיקה
     poll_title: סקר
+    score_title: ניקוד סקר
     meeting_title: הצבעת זמן
     ranked_choice_title: דירוג בחירה
   poll_common:
@@ -997,6 +1148,11 @@ he:
     update: עדכון
   poll_poll_form:
     edit_header: עריכת סקר
+  poll_proposal_options:
+    agree_verb: "מוסכם"
+    abstain_verb: "נמנע"
+    disagree_verb: "לא מסכים"
+    block_verb: "נחסם"
   poll_count_options:
     'yes': 'כן'
     'no': 'לא'

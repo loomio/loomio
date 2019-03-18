@@ -18,7 +18,6 @@ pt_BR:
     placeholder_name: "Usuário convidado (%{hostname})"
     error:
       recaptcha: "Não pudemos verificar que você não é um robô, por favor tente novamente."
-      bad_login: "Não pudemos efetuar seu login. Por favor tente novamente."
       username_must_be_alphanumeric: "Nomes de usuário devem conter apenas letras minúsculas e números"
   attachment:
     error:
