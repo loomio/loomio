@@ -52,9 +52,7 @@ class Queries::PersonalDataQuery
   end
 
   def self.membership_requests(user)
-    MembershipRequest.where(email: user.email).
-      or(MembershipRequest.where(requestor_id: user.id)).
-      or(MembershipRequest.where(responder_id: user.id))
+    MembershipRequest.where(requestor_id: user.id).or(MembershipRequest.where(responder_id: user.id))
   end
 
   def self.memberships(user)
