@@ -1,5 +1,5 @@
 // a prosemirror plugin
-const {Plugin} = require("prosemirror-state")
+const {Plugin, PluginKey} = require("prosemirror-state")
 const {Decoration, DecorationSet} = require("prosemirror-view")
 
 export function findPlaceholder(state, id) {
@@ -9,13 +9,15 @@ export function findPlaceholder(state, id) {
 }
 
 export const placeholderPlugin = new Plugin({
-  state: {
+   state: {
+    key: new PluginKey('suggestions'),
     init() { return DecorationSet.empty },
-    apply(tr, set) {
+    apply(tr, set)  {
       // Adjust decoration positions to changes made by the transaction
       set = set.map(tr.mapping, tr.doc)
       // See if the transaction adds or removes any placeholders
       let action = tr.getMeta(this)
+      debugger
       if (action && action.add) {
         let widget = document.createElement("placeholder")
         let deco = Decoration.widget(action.add.pos, widget, {id: action.add.id})
@@ -30,4 +32,4 @@ export const placeholderPlugin = new Plugin({
   props: {
     decorations(state) { return this.getState(state) }
   }
-});
+})

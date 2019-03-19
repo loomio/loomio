@@ -1,8 +1,41 @@
-import { Node, Plugin } from 'tiptap'
+import { Node, Plugin, PluginKey} from 'tiptap'
+import {Decoration, DecorationSet} from 'prosemirror-view'
+
 import FileUploader from 'shared/services/file_uploader'
-import {placeholderPlugin, findPlaceholder} from 'shared/tiptap_extentions/placeholder_plugin.js'
+
+const placeholderPlugin = new Plugin({
+   state: {
+    key: new PluginKey('placeholder'),
+    init() { return DecorationSet.empty },
+    apply(tr, set)  {
+      // Adjust decoration positions to changes made by the transaction
+      set = set.map(tr.mapping, tr.doc)
+      // See if the transaction adds or removes any placeholders
+      let action = tr.getMeta('placeholder')
+      if (action && action.add) {
+        let widget = document.createElement("placeholder")
+        let deco = Decoration.widget(action.add.pos, widget, {id: action.add.id})
+        set = set.add(tr.doc, [deco])
+      } else if (action && action.remove) {
+        set = set.remove(set.find(null, null,
+                                  spec => spec.id == action.remove.id))
+      }
+      return set
+    }
+  },
+  props: {
+    decorations(state) { return this.getState(state) }
+  }
+})
+
+function findPlaceholder(state, id) {
+  let decos = placeholderPlugin.getState(state)
+  let found = decos.find(null, null, spec => spec.id == id)
+  return found.length ? found[0].from : null
+}
 
 export default class Image extends Node {
+
   get name() {
     return 'image'
   }
@@ -47,6 +80,7 @@ export default class Image extends Node {
 
   get plugins() {
     return [
+      placeholderPlugin,
       new Plugin({
         props: {
           handleDOMEvents: {
@@ -74,14 +108,14 @@ export default class Image extends Node {
 
               const { schema } = view.state
               const coordinates = view.posAtCoords({ left: event.clientX, top: event.clientY })
-              debugger
+
               // A fresh object to act as the ID for this upload
               let id = {}
 
               // Replace the selection with a placeholder
               let tr = view.state.tr
               if (!tr.selection.empty) tr.deleteSelection()
-              tr.setMeta(placeholderPlugin, {add: {id, pos: tr.selection.from}})
+              tr.setMeta('placeholder', {add: {id, pos: tr.selection.from}})
               view.dispatch(tr)
 
 
@@ -107,16 +141,16 @@ export default class Image extends Node {
                   // Otherwise, insert it at the placeholder's position, and remove
                   // the placeholder
                   view.dispatch(view.state.tr
-                    .replaceWith(pos, pos, schema.nodes.image.create({src: url}))
-                    .setMeta(placeholderPlugin, {remove: {id}}))
-                  const node = schema.nodes.image.create({
-                    src: blob.preview_url,
-                  })
-                  const transaction = view.state.tr.insert(coordinates.pos, node)
-                  view.dispatch(transaction)
+                    .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url}))
+                    .setMeta('placeholder', {remove: {id}}))
+                  // const node = schema.nodes.image.create({
+                  //   src: blob.preview_url,
+                  // })
+                  // const transaction = view.state.tr.insert(coordinates.pos, node)
+                  // view.dispatch(transaction)
                 }, () => {
                   // On failure, just clean up the placeholder
-                  view.dispatch(tr.setMeta(placeholderPlugin, {remove: {id}}))
+                  view.dispatch(tr.setMeta('placeholder', {remove: {id}}))
                 })
               })
             },

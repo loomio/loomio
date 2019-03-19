@@ -251,8 +251,11 @@ div
 
 placeholder {
   display: inline;
-  border: 1px solid #ccc;
+  border: 5px solid #ccc;
   color: #ccc;
+  width: 20px;
+  height: 20px;
+  background-color: #111;
 }
 placeholder:after {
   content: "☁";
