@@ -15,6 +15,5 @@
     %group_form.animated{ng-switch-when: "create", group: "group", modal: "true"}
     %announcement_form.animated{ng-switch-when: "announce", announcement: "announcement"}
     %dialog_scroll_indicator
-  %md-dialog-actions{ng-switch: "currentStep"}
-    %group_form_actions{ng-switch-when: "create", group: "group"}
-    %announcement_form_actions{ng-switch-when: "announce", announcement: "announcement"}
+  %md-dialog-actions{ng-if: "currentStep == 'create'"}
+    %group_form_actions{group: "group"}
