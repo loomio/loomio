@@ -16,6 +16,13 @@ const placeholderPlugin = new Plugin({
         let widget = document.createElement("placeholder")
         let deco = Decoration.widget(action.add.pos, widget, {id: action.add.id})
         set = set.add(tr.doc, [deco])
+      } else if (action && action.update) {
+        console.log("update: ", action.update)
+        set = set.remove(set.find(null, null,
+          spec => spec.id == action.update.id))
+        let widget = document.createTextNode(action.update.pct)
+        let deco = Decoration.widget(action.update.pos, widget, {id: action.update.id})
+        set = set.add(tr.doc, [deco])
       } else if (action && action.remove) {
         set = set.remove(set.find(null, null,
                                   spec => spec.id == action.remove.id))
@@ -123,7 +130,10 @@ export default class Image extends Node {
                 const callbacks = {
                   progress: function(e) {
                     if (e.lengthComputable) {
-                      console.log("uploading: ", parseInt(e.loaded / e.total * 100));
+                      const pct = parseInt(e.loaded / e.total * 100);
+                      console.log("uploading: ", pct);
+                      tr.setMeta('placeholder', {update: {id, pos: tr.selection.from, pct}})
+                      view.dispatch(tr)
                     }
                   }
                 }
