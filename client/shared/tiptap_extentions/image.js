@@ -109,17 +109,15 @@ export default class Image extends Node {
               const { schema } = view.state
               const coordinates = view.posAtCoords({ left: event.clientX, top: event.clientY })
 
-              // A fresh object to act as the ID for this upload
-              let id = {}
-
-              // Replace the selection with a placeholder
-              let tr = view.state.tr
-              if (!tr.selection.empty) tr.deleteSelection()
-              tr.setMeta('placeholder', {add: {id, pos: tr.selection.from}})
-              view.dispatch(tr)
-
-
               images.forEach(image => {
+                // A fresh object to act as the ID for this upload
+                let id = {}
+
+                // Replace the selection with a placeholder
+                let tr = view.state.tr
+                if (!tr.selection.empty) tr.deleteSelection()
+                tr.setMeta('placeholder', {add: {id, pos: tr.selection.from}})
+                view.dispatch(tr)
 
 
                 const callbacks = {
