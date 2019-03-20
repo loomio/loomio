@@ -38,15 +38,21 @@ function finduploadPlaceholder(state, id) {
   return found.length ? found[0].from : null
 }
 
-function insertImage(image, view) {
+function insertImage(image, view, coordinates) {
   const { schema } = view.state
   // A fresh object to act as the ID for this upload
   let id = "image"+(count++)
 
   // Replace the selection with a placeholder
   let tr = view.state.tr
-  if (!tr.selection.empty) tr.deleteSelection()
-  tr.setMeta('uploadPlaceholder', {add: {id, pos: tr.selection.from}})
+  if (!tr.selection.empty) {
+    tr.deleteSelection()
+    tr.setMeta('uploadPlaceholder', {add: {id, pos: tr.selection.from}})
+  } else if (coordinates) {
+    tr.setMeta('uploadPlaceholder', {add: {id, pos: coordinates.pos}})
+  } else {
+    tr.setMeta('uploadPlaceholder', {add: {id, pos: tr.selection.from}})
+  }
   view.dispatch(tr)
 
   const callbacks = {
@@ -75,10 +81,10 @@ function insertImage(image, view) {
   })
 }
 
-function handleAttachments(attachments, view, attachFile) {
+function handleAttachments(attachments, view, attachFile, coordinates) {
   Array.from(attachments).forEach(attachment => {
     if ((/image/i).test(attachment.type)) {
-      insertImage(attachment, view)
+      insertImage(attachment, view, coordinates)
     } else {
       attachFile(attachment)
     }
@@ -163,7 +169,9 @@ export default class Image extends Node {
               }
               event.preventDefault()
 
-              handleAttachments(event.dataTransfer.files, view, attachFile)
+              const coordinates = view.posAtCoords({ left: event.clientX, top: event.clientY })
+
+              handleAttachments(event.dataTransfer.files, view, attachFile, coordinates)
             },
           },
         },
