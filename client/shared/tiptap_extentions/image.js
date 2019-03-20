@@ -77,21 +77,11 @@ function insertImage(image, view) {
 
 function handleAttachments(attachments, view, attachFile) {
   Array.from(attachments).forEach(attachment => {
-    const reader = new FileReader()
-    reader.onload = function(event) {
-      const res = fileType(new Uint8Array(event.target.result))
-      const mime = res.mime
-      console.log("res", res)
-      console.log("event", event)
-      console.log("mime", mime)
-      console.log("attachment", attachment)
-      if ((/image/i).test(mime)) {
-        insertImage(attachment, view)
-      }else{
-        attachFile(attachment)
-      }
+    if ((/image/i).test(attachment.type)) {
+      insertImage(attachment, view)
+    } else {
+      attachFile(attachment)
     }
-    return reader.readAsArrayBuffer(attachment)
   })
 }
 

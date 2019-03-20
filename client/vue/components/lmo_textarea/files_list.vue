@@ -14,7 +14,8 @@ module.exports =
     li(v-for="wrapper in files" :key="wrapper.key")
       .files-list__item
         v-icon.files-list__icon mdi-image
-        span.files-list__file-name {{wrapper.file.name}}
+        a.files-list__file-name(v-if="wrapper.blob" :href="wrapper.blob.download_url" target="_blank") {{wrapper.file.name}}
+        span.files-list__file-name(v-if="!wrapper.blob") {{wrapper.file.name}}
         progress(v-if="!wrapper.blob" max="100" :value="wrapper.percentComplete")
         v-btn.files-list__remove(icon @click="$emit('removeFile', wrapper.file.name)")
           v-icon mdi-close

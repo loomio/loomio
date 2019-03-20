@@ -10,6 +10,8 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
         headers: blob.service_headers_for_direct_upload
     })
 
+    json.merge!(download_url: url_for(blob))
+
     if blob.image?
       json.merge!(preview_url: rails_representation_url(blob.variant(resize: "600x600>")))
     end
