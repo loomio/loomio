@@ -16,7 +16,7 @@ import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
 import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
   OrderedList, BulletList, ListItem, TodoItem, TodoList, Bold, Code,
-  Italic, Link, Strike, Underline, History, Mention } from 'tiptap-extensions'
+  Italic, Link, Strike, Underline, History, Mention, Placeholder } from 'tiptap-extensions'
 import Image from 'shared/tiptap_extentions/image.js'
 
 module.exports =
@@ -103,7 +103,13 @@ module.exports =
         new Link(),
         new Strike(),
         new Underline(),
-        new History()]
+        new History(),
+        new Placeholder({
+          emptyClass: 'is-empty',
+          emptyNodeText: 'Write something …',
+          showOnlyWhenEditable: true,
+        })
+      ]
       content: @model[@field]
       # onUpdate: ({ getJSON, getHTML }) =>
       #   @model[@field] = getHTML()
@@ -278,8 +284,27 @@ progress::-moz-progress-bar {
   transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
 }
 
+.ProseMirror {
+  border-bottom: 1px solid $grey-on-white;
+  background-color: $background-color;
+  outline: none;
+}
+
+.ProseMirror:focus {
+  border-bottom: 2px solid yellow;
+}
+
 .ProseMirror img {
   display: block;
+}
+
+.editor p.is-empty:first-child::before {
+  content: attr(data-empty-text);
+  float: left;
+  color: #aaa;
+  pointer-events: none;
+  height: 0;
+  font-style: italic;
 }
 
 .mention {
