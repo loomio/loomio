@@ -90,7 +90,7 @@ module.exports =
         new BulletList(),
         new CodeBlock(),
         new HardBreak(),
-        new Image(),
+        new Image({attachFile: @attachFile}),
         new Heading({ levels: [1, 2, 3] }),
         new HorizontalRule(),
         new ListItem(),
@@ -124,17 +124,18 @@ module.exports =
     removeFile: (name) ->
       @files = _filter @files, (wrapper) -> wrapper.file.name != name
 
-    fileSelected: (e, a) ->
-      _forEach @$refs.filesField.files, (file) =>
-        wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null, xhr: null}
-        @files.push(wrapper)
-        fileCallbacks = {
-          progress: (e) ->
-            if (e.lengthComputable)
-              wrapper.percentComplete = parseInt(e.loaded / e.total * 100);
-        }
-        uploader = new FileUploader(fileCallbacks)
-        uploader.upload(file).then (blob) => wrapper.blob = blob
+    attachFile: (file) ->
+      wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null, xhr: null}
+      @files.push(wrapper)
+      fileCallbacks = {
+        progress: (e) ->
+          if (e.lengthComputable)
+            wrapper.percentComplete = parseInt(e.loaded / e.total * 100);
+      }
+      uploader = new FileUploader(fileCallbacks)
+      uploader.upload(file).then (blob) => wrapper.blob = blob
+
+    fileSelected: -> _forEach @$refs.filesField.files, @attachFile
 
     fetchMentionable: ->
       Records.users.fetchMentionable(@query, @model).then (response) =>
@@ -248,34 +249,38 @@ div
 </template>
 
 <style lang="scss">
-
-placeholder {
-  display: inline;
-  border: 5px solid #ccc;
-  color: #ccc;
-  width: 20px;
-  height: 20px;
-  background-color: #111;
-}
-placeholder:after {
-  content: "☁";
-  font-size: 200%;
-  line-height: 0.1;
-  font-weight: bold;
-}
-.ProseMirror img { max-width: 100px }
-
-.progress {
-  width: 100px;
-}
-.progress-bar {
-  background-color: #555;
-}
+@import 'variables.scss';
 
 $color-black: #000;
 $color-white: #fff;
 
-// @import '~modules/tippy.js/dist/tippy.css';
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $color-white;
+  border: 1px solid $border-color;
+}
+
+progress::-webkit-progress-bar {
+  background-color: $color-white;
+  border: 1px solid $border-color;
+}
+
+progress::-webkit-progress-value {
+  background-color: lightblue;
+  border: 0;
+  transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
+}
+
+progress::-moz-progress-bar {
+  background-color: lightblue;
+  border: 0;
+  transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
+}
+
+.ProseMirror img {
+  display: block;
+}
 
 .mention {
   background: rgba($color-black, 0.1);

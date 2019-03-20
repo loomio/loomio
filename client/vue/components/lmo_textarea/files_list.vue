@@ -15,11 +15,10 @@ module.exports =
       .files-list__item
         v-icon.files-list__icon mdi-image
         span.files-list__file-name {{wrapper.file.name}}
-        span.files-list__progress(v-if="!wrapper.blob")
-          span.files-list__progress-bar(:style="progressStyle(wrapper.percentComplete)")
+        progress(v-if="!wrapper.blob" max="100" :value="wrapper.percentComplete")
         v-btn.files-list__remove(icon @click="$emit('removeFile', wrapper.file.name)")
           v-icon mdi-close
-      p(v-if="wrapper.blob")
+      p(v-if="wrapper.blob && wrapper.blob.preview_url")
         img(:src="wrapper.blob.preview_url")
 </template>
 

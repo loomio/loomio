@@ -3,29 +3,26 @@ import {Decoration, DecorationSet} from 'prosemirror-view'
 
 import FileUploader from 'shared/services/file_uploader'
 
-const placeholderPlugin = new Plugin({
+let count = 0;
+
+const uploadPlaceholderPlugin = new Plugin({
    state: {
-    key: new PluginKey('placeholder'),
+    key: new PluginKey('uploadPlaceholder'),
     init() { return DecorationSet.empty },
     apply(tr, set)  {
       // Adjust decoration positions to changes made by the transaction
       set = set.map(tr.mapping, tr.doc)
       // See if the transaction adds or removes any placeholders
-      let action = tr.getMeta('placeholder')
+      let action = tr.getMeta('uploadPlaceholder')
       if (action && action.add) {
-        let widget = document.createElement("placeholder")
+        let widget = document.createElement("progress")
+        widget.setAttribute("id", action.add.id)
+        widget.setAttribute("max", 100)
+        widget.setAttribute("value", 0)
         let deco = Decoration.widget(action.add.pos, widget, {id: action.add.id})
         set = set.add(tr.doc, [deco])
-      } else if (action && action.update) {
-        console.log("update: ", action.update)
-        set = set.remove(set.find(null, null,
-          spec => spec.id == action.update.id))
-        let widget = document.createTextNode(action.update.pct)
-        let deco = Decoration.widget(action.update.pos, widget, {id: action.update.id})
-        set = set.add(tr.doc, [deco])
       } else if (action && action.remove) {
-        set = set.remove(set.find(null, null,
-                                  spec => spec.id == action.remove.id))
+        set = set.remove(set.find(null, null, spec => spec.id == action.remove.id))
       }
       return set
     }
@@ -35,10 +32,67 @@ const placeholderPlugin = new Plugin({
   }
 })
 
-function findPlaceholder(state, id) {
-  let decos = placeholderPlugin.getState(state)
+function finduploadPlaceholder(state, id) {
+  let decos = uploadPlaceholderPlugin.getState(state)
   let found = decos.find(null, null, spec => spec.id == id)
   return found.length ? found[0].from : null
+}
+
+function insertImage(image, view) {
+  const { schema } = view.state
+  // A fresh object to act as the ID for this upload
+  let id = "image"+(count++)
+
+  // Replace the selection with a placeholder
+  let tr = view.state.tr
+  if (!tr.selection.empty) tr.deleteSelection()
+  tr.setMeta('uploadPlaceholder', {add: {id, pos: tr.selection.from}})
+  view.dispatch(tr)
+
+  const callbacks = {
+    progress: function(e) {
+      if (e.lengthComputable) {
+        document.getElementById(id).setAttribute("value", parseInt(e.loaded / e.total * 100))
+      }
+    }
+  }
+
+  const uploader = new FileUploader(callbacks)
+
+  uploader.upload(image).then(blob => {
+    let pos = finduploadPlaceholder(view.state, id)
+    // If the content around the placeholder has been deleted, drop
+    // the image
+    if (pos == null) return
+    // Otherwise, insert it at the placeholder's position, and remove
+    // the placeholder
+    view.dispatch(view.state.tr
+      .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url}))
+      .setMeta('uploadPlaceholder', {remove: {id}}))
+  }, () => {
+    // On failure, just clean up the placeholder
+    view.dispatch(tr.setMeta('uploadPlaceholder', {remove: {id}}))
+  })
+}
+
+function handleAttachments(attachments, view, attachFile) {
+  Array.from(attachments).forEach(attachment => {
+    const reader = new FileReader()
+    reader.onload = function(event) {
+      const res = fileType(new Uint8Array(event.target.result))
+      const mime = res.mime
+      console.log("res", res)
+      console.log("event", event)
+      console.log("mime", mime)
+      console.log("attachment", attachment)
+      if ((/image/i).test(mime)) {
+        insertImage(attachment, view)
+      }else{
+        attachFile(attachment)
+      }
+    }
+    return reader.readAsArrayBuffer(attachment)
+  })
 }
 
 export default class Image extends Node {
@@ -86,15 +140,30 @@ export default class Image extends Node {
   }
 
   get plugins() {
+    const attachFile = this.options.attachFile
     return [
-      placeholderPlugin,
+      uploadPlaceholderPlugin,
       new Plugin({
         props: {
           handleDOMEvents: {
+            paste(view, event) {
+              const items = Array.from(event.clipboardData.items)
+
+              if (items.filter(item => item.getAsFile()).length == 0) {
+                return
+              }
+
+              event.preventDefault()
+              const attachments = items.map(item =>
+                new File([item.getAsFile()],
+                         event.clipboardData.getData('text/plain') || Date.now(),
+                         {lastModified: Date.now(), type: item.type})
+              )
+              handleAttachments(attachments, view, attachFile)
+            },
             drop(view, event) {
               // first -> upload the file and callback with progress and when it's done
               // display an uploading image, and when the upload is complete, replace the src with the url.
-              console.log("we got this")
               const hasFiles = event.dataTransfer
               && event.dataTransfer.files
               && event.dataTransfer.files.length
@@ -102,65 +171,9 @@ export default class Image extends Node {
               if (!hasFiles) {
                 return
               }
-
-              const images = Array
-                .from(event.dataTransfer.files)
-                .filter(file => (/image/i).test(file.type))
-
-              if (images.length === 0) {
-                return
-              }
-
               event.preventDefault()
 
-              const { schema } = view.state
-              const coordinates = view.posAtCoords({ left: event.clientX, top: event.clientY })
-
-              images.forEach(image => {
-                // A fresh object to act as the ID for this upload
-                let id = {}
-
-                // Replace the selection with a placeholder
-                let tr = view.state.tr
-                if (!tr.selection.empty) tr.deleteSelection()
-                tr.setMeta('placeholder', {add: {id, pos: tr.selection.from}})
-                view.dispatch(tr)
-
-
-                const callbacks = {
-                  progress: function(e) {
-                    if (e.lengthComputable) {
-                      const pct = parseInt(e.loaded / e.total * 100);
-                      console.log("uploading: ", pct);
-                      tr.setMeta('placeholder', {update: {id, pos: tr.selection.from, pct}})
-                      view.dispatch(tr)
-                    }
-                  }
-                }
-
-                const uploader = new FileUploader(callbacks)
-
-                uploader.upload(image).then(blob => {
-
-                  let pos = findPlaceholder(view.state, id)
-                  // If the content around the placeholder has been deleted, drop
-                  // the image
-                  if (pos == null) return
-                  // Otherwise, insert it at the placeholder's position, and remove
-                  // the placeholder
-                  view.dispatch(view.state.tr
-                    .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url}))
-                    .setMeta('placeholder', {remove: {id}}))
-                  // const node = schema.nodes.image.create({
-                  //   src: blob.preview_url,
-                  // })
-                  // const transaction = view.state.tr.insert(coordinates.pos, node)
-                  // view.dispatch(transaction)
-                }, () => {
-                  // On failure, just clean up the placeholder
-                  view.dispatch(tr.setMeta('placeholder', {remove: {id}}))
-                })
-              })
+              handleAttachments(event.dataTransfer.files, view, attachFile)
             },
           },
         },
