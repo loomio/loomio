@@ -1,21 +1,3 @@
-<style lang="scss">
-.comment-form .lmo-textarea md-input-container {
-  margin-top: -2px;
-}
-.comment-form-attachments input {
-  display: none;
-}
-
-.comment-form-button {
-  margin-left: 10px;
-  &:hover { cursor: pointer; }
-}
-
-.comment-form-container{
-  width: 100%;
-}
-</style>
-
 <script lang="coffee">
 Session        = require 'shared/services/session'
 Records        = require 'shared/services/records'
@@ -30,6 +12,7 @@ module.exports =
   props:
     eventWindow: Object
   data: ->
+    saving: false
     comment: Records.comments.build
       body_format: "html"
       body: ""
@@ -52,7 +35,9 @@ module.exports =
 
     init: ->
       @submit = submitForm @, @comment,
-        submitFn: @comment.save
+        submitFn: =>
+          @saving = !@saving
+          @comment.save()
         flashSuccess: =>
           EventBus.$emit 'commentSaved'
           if @comment.isReply()
@@ -79,10 +64,28 @@ module.exports =
 .comment-form.lmo-relative
   form(v-on:submit.prevent='submit()')
     .lmo-disabled-form(v-show='isDisabled')
-    lmo-textarea(:model='comment', field="body", :placeholder="commentPlaceholder()", :helptext="commentHelptext()")
+    lmo-textarea(:model='comment' :saving="saving" field="body" :placeholder="commentPlaceholder()" :helptext="commentHelptext()")
     v-btn(flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
     // <lmo_textarea model="comment" field="body" placeholder="commentPlaceholder()" helptext="commentHelptext()"></lmo_textarea>
     // <comment_form_actions comment="comment" submit="submit"></comment_form_actions>
     // <validation_errors subject="comment" field="file"></validation_errors>
 
 </template>
+
+<style lang="scss">
+.comment-form .lmo-textarea md-input-container {
+  margin-top: -2px;
+}
+.comment-form-attachments input {
+  display: none;
+}
+
+.comment-form-button {
+  margin-left: 10px;
+  &:hover { cursor: pointer; }
+}
+
+.comment-form-container{
+  width: 100%;
+}
+</style>

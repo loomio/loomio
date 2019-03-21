@@ -25,11 +25,16 @@ module.exports =
     field: String
     placeholder: Object
     helptext: Object
+    saving: Boolean
   components:
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
     FilesList: FilesList
     # EditorMenuBubble: EditorMenuBubble
+
+  watch:
+    saving: ->
+      @updateModel()
 
   data: ->
     query: null
@@ -127,6 +132,11 @@ module.exports =
       _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
 
   methods:
+    updateModel: ->
+      console.log("updating model with textarea html")
+      @model[@field] = @editor.getHTML()
+      # @model.files ...
+
     removeFile: (name) ->
       @files = _filter @files, (wrapper) -> wrapper.file.name != name
 
@@ -285,13 +295,13 @@ progress::-moz-progress-bar {
 }
 
 .ProseMirror {
-  border-bottom: 1px solid $grey-on-white;
-  background-color: $background-color;
+  border: 2px solid $border-color;
+  border-radius: 4px;
   outline: none;
 }
 
 .ProseMirror:focus {
-  border-bottom: 2px solid yellow;
+  border-color: var(--v-accent-base);
 }
 
 .ProseMirror img {

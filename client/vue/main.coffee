@@ -17,6 +17,8 @@ Vue.use(Vuetify,
     primary: colors.amber.base
     secondary: colors.green.base
     accent: colors.cyan.base
+  options:
+    customProperties: true
 )
 Vue.use(VueRouter)
 
