@@ -38,11 +38,10 @@ function finduploadPlaceholder(state, id) {
   return found.length ? found[0].from : null
 }
 
-function insertImage(image, view, coordinates) {
+function insertImage(file, view, coordinates, attachImageFile) {
   const { schema } = view.state
-  // A fresh object to act as the ID for this upload
-  let id = "image"+(count++)
 
+  const id = "image"+(count++)
   // Replace the selection with a placeholder
   let tr = view.state.tr
   if (!tr.selection.empty) {
@@ -55,32 +54,35 @@ function insertImage(image, view, coordinates) {
   }
   view.dispatch(tr)
 
-  const uploader = new FileUploader({ onProgress: (e) =>
-    document.getElementById(id).setAttribute("value", parseInt(e.loaded / e.total * 100))
-  })
-
-  uploader.upload(image).then(blob => {
-    let pos = finduploadPlaceholder(view.state, id)
-    // If the content around the placeholder has been deleted, drop
-    // the image
-    if (pos == null) return
-    // Otherwise, insert it at the placeholder's position, and remove
-    // the placeholder
-    view.dispatch(view.state.tr
-      .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url}))
-      .setMeta('uploadPlaceholder', {remove: {id}}))
-  }, () => {
-    // On failure, just clean up the placeholder
-    view.dispatch(tr.setMeta('uploadPlaceholder', {remove: {id}}))
+  attachImageFile({
+    file: file,
+    onProgress: (e) => {
+      document.getElementById(id).setAttribute("value", parseInt(e.loaded / e.total * 100))
+    },
+    onComplete: (blob) => {
+      let pos = finduploadPlaceholder(view.state, id)
+      // If the content around the placeholder has been deleted, drop
+      // the image
+      if (pos == null) return
+      // Otherwise, insert it at the placeholder's position, and remove
+      // the placeholder
+      view.dispatch(view.state.tr
+       .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url}))
+       .setMeta('uploadPlaceholder', {remove: {id}}))
+    },
+    onFailure: () => {
+      // On failure, just clean up the placeholder
+      view.dispatch(tr.setMeta('uploadPlaceholder', {remove: {id}}))
+    }
   })
 }
 
-function handleAttachments(attachments, view, attachFile, coordinates) {
-  Array.from(attachments).forEach(attachment => {
-    if ((/image/i).test(attachment.type)) {
-      insertImage(attachment, view, coordinates)
+function handleUploads({files, view, attachFile, attachImageFile, coordinates}) {
+  Array.from(files).forEach(file => {
+    if ((/image/i).test(file.type)) {
+      insertImage(file, view, coordinates, attachImageFile)
     } else {
-      attachFile(attachment)
+      attachFile({file})
     }
   })
 }
@@ -131,6 +133,7 @@ export default class Image extends Node {
 
   get plugins() {
     const attachFile = this.options.attachFile
+    const attachImageFile = this.options.attachImageFile
     return [
       uploadPlaceholderPlugin,
       new Plugin({
@@ -144,12 +147,12 @@ export default class Image extends Node {
               }
 
               event.preventDefault()
-              const attachments = items.map(item =>
+              const files = items.map(item =>
                 new File([item.getAsFile()],
                          event.clipboardData.getData('text/plain') || Date.now(),
                          {lastModified: Date.now(), type: item.type})
               )
-              handleAttachments(attachments, view, attachFile)
+              handleUploads({files, view, attachFile, attachImageFile, coordinates})
             },
             drop(view, event) {
               // first -> upload the file and callback with progress and when it's done
@@ -165,7 +168,7 @@ export default class Image extends Node {
 
               const coordinates = view.posAtCoords({ left: event.clientX, top: event.clientY })
 
-              handleAttachments(event.dataTransfer.files, view, attachFile, coordinates)
+              handleUploads({files: event.dataTransfer.files, view, attachFile, attachImageFile, coordinates})
             },
           },
         },

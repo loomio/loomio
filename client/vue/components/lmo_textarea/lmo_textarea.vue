@@ -96,7 +96,7 @@ module.exports =
         new BulletList(),
         new CodeBlock(),
         new HardBreak(),
-        new Image({attachFile: @attachFile}),
+        new Image({attachFile: @attachFile, attachImageFile: @attachImageFile}),
         new Heading({ levels: [1, 2, 3] }),
         new HorizontalRule(),
         new ListItem(),
@@ -136,21 +136,31 @@ module.exports =
     updateModel: ->
       console.log("updating model with textarea html")
       @model[@field] = @editor.getHTML()
-      # @model.files ...
+      @model.files = @files.map (wrapper) => wrapper.file
+      @model.imageFiles = @imageFiles
 
     removeFile: (name) ->
       @files = _filter @files, (wrapper) -> wrapper.file.name != name
 
-    attachFile: (file) ->
-      wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null, xhr: null}
+    attachFile: ({file}) ->
+      wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null}
       @files.push(wrapper)
-
       uploader = new FileUploader onProgress: (e) ->
         wrapper.percentComplete = parseInt(e.loaded / e.total * 100)
 
-      uploader.upload(file).then (blob) => wrapper.blob = blob
+      uploader.upload(file).then (blob) =>
+        wrapper.blob = blob
+      ,
+      (e) ->
+        console.log "attachment failed to upload"
 
-    fileSelected: -> _forEach @$refs.filesField.files, @attachFile
+    attachImageFile: ({file, onProgress, onComplete, onFailure}) ->
+      @imageFiles.push(file)
+      uploader = new FileUploader onProgress: onProgress
+      uploader.upload(file).then(onComplete, onFailure)
+
+    fileSelected: ->
+      _forEach @$refs.filesField.files, @attachFile
 
     fetchMentionable: ->
       Records.users.fetchMentionable(@query, @model).then (response) =>

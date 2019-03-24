@@ -37,6 +37,7 @@ module.exports =
       @submit = submitForm @, @comment,
         submitFn: =>
           @saving = !@saving
+          console.log @comment
           @comment.save()
         flashSuccess: =>
           EventBus.$emit 'commentSaved'
