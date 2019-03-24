@@ -40,6 +40,7 @@ module.exports =
     query: null
     suggestionRange: null
     files: []
+    imageFiles: []
     mentionableUserIds: []
     navigatedUserIndex: 0
     insertMention: () => {}
@@ -143,12 +144,10 @@ module.exports =
     attachFile: (file) ->
       wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null, xhr: null}
       @files.push(wrapper)
-      fileCallbacks = {
-        progress: (e) ->
-          if (e.lengthComputable)
-            wrapper.percentComplete = parseInt(e.loaded / e.total * 100);
-      }
-      uploader = new FileUploader(fileCallbacks)
+
+      uploader = new FileUploader onProgress: (e) ->
+        wrapper.percentComplete = parseInt(e.loaded / e.total * 100)
+
       uploader.upload(file).then (blob) => wrapper.blob = blob
 
     fileSelected: -> _forEach @$refs.filesField.files, @attachFile

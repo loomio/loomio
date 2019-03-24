@@ -55,15 +55,9 @@ function insertImage(image, view, coordinates) {
   }
   view.dispatch(tr)
 
-  const callbacks = {
-    progress: function(e) {
-      if (e.lengthComputable) {
-        document.getElementById(id).setAttribute("value", parseInt(e.loaded / e.total * 100))
-      }
-    }
-  }
-
-  const uploader = new FileUploader(callbacks)
+  const uploader = new FileUploader({ onProgress: (e) =>
+    document.getElementById(id).setAttribute("value", parseInt(e.loaded / e.total * 100))
+  })
 
   uploader.upload(image).then(blob => {
     let pos = finduploadPlaceholder(view.state, id)
