@@ -25,7 +25,7 @@ module.exports =
     field: String
     placeholder: Object
     helptext: Object
-    saving: Boolean
+    shouldUpdateModel: Boolean
   components:
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
@@ -33,8 +33,9 @@ module.exports =
     # EditorMenuBubble: EditorMenuBubble
 
   watch:
-    saving: ->
+    shouldUpdateModel: ->
       @updateModel()
+      @$emit("modelUpdated")
 
   data: ->
     query: null

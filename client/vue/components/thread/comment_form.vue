@@ -12,7 +12,7 @@ module.exports =
   props:
     eventWindow: Object
   data: ->
-    saving: false
+    shouldUpdateModel: false
     comment: Records.comments.build
       body_format: "html"
       body: ""
@@ -33,11 +33,15 @@ module.exports =
       else
         {path: 'comment_form.aria_label'}
 
+    preSave: ->
+      @shouldUpdateModel = !@shouldUpdateModel
+
+    callSubmit: -> @submit()
     init: ->
       @submit = submitForm @, @comment,
         submitFn: =>
-          @saving = !@saving
-          console.log @comment
+          console.log 'comment', @comment
+          console.log 'comment.body', @comment.body
           @comment.save()
         flashSuccess: =>
           EventBus.$emit 'commentSaved'
@@ -63,9 +67,9 @@ module.exports =
 
 <template lang="pug">
 .comment-form.lmo-relative
-  form(v-on:submit.prevent='submit()')
+  form(v-on:submit.prevent='preSave()')
     .lmo-disabled-form(v-show='isDisabled')
-    lmo-textarea(:model='comment' :saving="saving" field="body" :placeholder="commentPlaceholder()" :helptext="commentHelptext()")
+    lmo-textarea(:model='comment' @modelUpdated="callSubmit" :shouldUpdateModel="shouldUpdateModel" field="body" :placeholder="commentPlaceholder()" :helptext="commentHelptext()")
     v-btn(flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
     // <lmo_textarea model="comment" field="body" placeholder="commentPlaceholder()" helptext="commentHelptext()"></lmo_textarea>
     // <comment_form_actions comment="comment" submit="submit"></comment_form_actions>

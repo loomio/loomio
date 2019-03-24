@@ -22,6 +22,8 @@ class Comment < ApplicationRecord
   alias_method :draft_parent, :discussion
 
   has_many_attached :files
+  has_many_attached :image_files
+
   has_many :documents, as: :model, dependent: :destroy
 
   validates_presence_of :user
