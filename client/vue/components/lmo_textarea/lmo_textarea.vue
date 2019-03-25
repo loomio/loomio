@@ -25,6 +25,8 @@ module.exports =
     field: String
     placeholder: Object
     helptext: Object
+    shouldReset: Boolean
+
   components:
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
@@ -117,10 +119,7 @@ module.exports =
         })
       ]
       content: @model[@field]
-      onUpdate: ({ getJSON, getHTML }) =>
-        @model[@field] = getHTML()
-        @model.files = @files.map (wrapper) => wrapper.blob.signed_id
-        @model.imageFiles = @imageFiles.map (wrapper) => wrapper.blob.signed_id
+      onUpdate: @updateModel
 
   computed:
     hasResults: -> @filteredUsers.length
@@ -134,6 +133,11 @@ module.exports =
       _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
 
   methods:
+    updateModel: ->
+      @model[@field] = @editor.getHTML()
+      @model.files = @files.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
+      @model.imageFiles = @imageFiles.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
+
     removeFile: (name) ->
       @files = _filter @files, (wrapper) -> wrapper.file.name != name
 
@@ -145,6 +149,7 @@ module.exports =
 
       uploader.upload(file).then (blob) =>
         wrapper.blob = blob
+        @updateModel()
       ,
       (e) ->
         console.log "attachment failed to upload"
@@ -153,13 +158,14 @@ module.exports =
       wrapper = {file: file, blob: null}
       @imageFiles.push(wrapper)
       uploader = new FileUploader onProgress: onProgress
-      uploader.upload(file).then((blob) ->
+      uploader.upload(file).then((blob) =>
         wrapper.blob = blob
         onComplete(blob)
+        @updateModel()
       , onFailure)
 
     fileSelected: ->
-      _forEach @$refs.filesField.files, @attachFile
+      _forEach(@$refs.filesField.files, (file) => @attachFile(file: file))
 
     fetchMentionable: ->
       Records.users.fetchMentionable(@query, @model).then (response) =>
@@ -211,6 +217,13 @@ module.exports =
        if (@popup)
          @popup.destroyAll()
          @popup = null
+  watch:
+    files: -> @updateModel()
+    imageFiles: -> @updateModel()
+    shouldReset: ->
+      @editor.clearContent()
+      @files = []
+      @imageFiles = []
 
   beforeDestroy: ->
     @editor.destroy()

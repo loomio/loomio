@@ -9,6 +9,13 @@ describe Comment do
     discussion.group.add_member!(user)
   end
 
+  describe "sanitization" do
+    it "removes script tags" do
+      comment.body = "hi im a hacker <script>alert('hacked')</script>"
+      expect(comment.body).to eq "hi im a hacker alert('hacked')"
+    end
+  end
+
   describe "#is_most_recent?" do
     subject { comment.is_most_recent? }
     context "comment is the last one added to discussion" do

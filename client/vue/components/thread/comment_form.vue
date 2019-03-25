@@ -11,12 +11,10 @@ I18n           = require 'shared/services/i18n'
 module.exports =
   props:
     eventWindow: Object
+
   data: ->
-    comment: Records.comments.build
-      body_format: "html"
-      body: ""
-      discussionId: @eventWindow.discussion.id
-      authorId: Session.user().id
+    shouldReset: false
+    comment: {}
     isDisabled: null
 
   methods:
@@ -35,10 +33,18 @@ module.exports =
     preSave: ->
       @shouldUpdateModel = !@shouldUpdateModel
 
+    reset: ->
+      @comment = Records.comments.build
+        body_format: "html"
+        body: ""
+        discussionId: @eventWindow.discussion.id
+        authorId: Session.user().id
+      @shouldReset = !@shouldReset
+
     init: ->
+      @reset()
       @submit = submitForm @, @comment,
         submitFn: =>
-          console.log @comment 
           @comment.save()
         flashSuccess: =>
           EventBus.$emit 'commentSaved'
@@ -66,7 +72,7 @@ module.exports =
 .comment-form.lmo-relative
   form(v-on:submit.prevent='submit()')
     .lmo-disabled-form(v-show='isDisabled')
-    lmo-textarea(:model='comment' field="body" :placeholder="commentPlaceholder()" :helptext="commentHelptext()")
+    lmo-textarea(:model='comment' field="body" :placeholder="commentPlaceholder()" :helptext="commentHelptext()" :shouldReset="shouldReset")
     v-btn(flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
 
 </template>

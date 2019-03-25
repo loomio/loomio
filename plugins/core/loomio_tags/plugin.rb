@@ -19,16 +19,16 @@ module Plugins
         end
         plugin.use_class_directory 'models'
 
-        plugin.use_factory :tag do
-          association :group, factory: :formal_group
-          name "metatag"
-          color "#656565"
-        end
-
-        plugin.use_factory :discussion_tag do
-          discussion
-          tag
-        end
+        # plugin.use_factory :tag do
+        #   association :group, factory: :formal_group
+        #   name "metatag"
+        #   color "#656565"
+        # end
+        #
+        # plugin.use_factory :discussion_tag do
+        #   discussion
+        #   tag
+        # end
 
         plugin.extend_class Discussion do
           has_many :discussion_tags, dependent: :destroy
