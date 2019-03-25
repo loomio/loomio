@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_03_21_022626) do
+ActiveRecord::Schema.define(version: 2019_03_10_214604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -258,7 +259,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_022626) do
     t.datetime "updated_at"
     t.integer "user_id"
     t.boolean "member", default: false, null: false
-    t.index ["created_at"], name: "index_group_visits_on_created_at", order: :desc
+    t.index ["created_at"], name: "index_group_visits_on_created_at"
     t.index ["group_id"], name: "index_group_visits_on_group_id"
     t.index ["member"], name: "index_group_visits_on_member"
     t.index ["visit_id", "group_id"], name: "index_group_visits_on_visit_id_and_group_id", unique: true
