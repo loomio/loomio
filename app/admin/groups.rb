@@ -255,4 +255,18 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
                                  actor: current_user)
     redirect_to admin_group_path(group)
   end
+
+  collection_action :export_users, method: :get do
+    render 'export_users'
+  end
+
+  collection_action :export_users_report, method: :get do
+    @users = User.joins(:memberships).
+      where(:'memberships.group_id' => params[:group_ids].split(' ').map(&:to_i))
+    if params[:coordinators]
+      @users = @users.where(:'memberships.admin' => true)
+    end
+    render 'export_users_report'
+  end
+
 end
