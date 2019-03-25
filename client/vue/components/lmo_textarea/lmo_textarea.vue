@@ -25,7 +25,6 @@ module.exports =
     field: String
     placeholder: Object
     helptext: Object
-    shouldUpdateModel: Boolean
   components:
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
@@ -118,9 +117,10 @@ module.exports =
         })
       ]
       content: @model[@field]
-      # onUpdate: ({ getJSON, getHTML }) =>
-      #   @model[@field] = getHTML()
-      #   @model["#{@field}Format"] = "html"
+      onUpdate: ({ getJSON, getHTML }) =>
+        @model[@field] = getHTML()
+        @model.files = @files.map (wrapper) => wrapper.blob.signed_id
+        @model.imageFiles = @imageFiles.map (wrapper) => wrapper.blob.signed_id
 
   computed:
     hasResults: -> @filteredUsers.length
@@ -134,12 +134,6 @@ module.exports =
       _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
 
   methods:
-    updateModel: ->
-      console.log("updating model with textarea html")
-      @model[@field] = @editor.getHTML()
-      @model.files = @files.map (wrapper) => wrapper.file
-      @model.imageFiles = @imageFiles
-
     removeFile: (name) ->
       @files = _filter @files, (wrapper) -> wrapper.file.name != name
 
@@ -156,9 +150,13 @@ module.exports =
         console.log "attachment failed to upload"
 
     attachImageFile: ({file, onProgress, onComplete, onFailure}) ->
-      @imageFiles.push(file)
+      wrapper = {file: file, blob: null}
+      @imageFiles.push(wrapper)
       uploader = new FileUploader onProgress: onProgress
-      uploader.upload(file).then(onComplete, onFailure)
+      uploader.upload(file).then((blob) ->
+        wrapper.blob = blob
+        onComplete(blob)
+      , onFailure)
 
     fileSelected: ->
       _forEach @$refs.filesField.files, @attachFile
