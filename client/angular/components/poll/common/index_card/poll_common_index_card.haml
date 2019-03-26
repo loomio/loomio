@@ -1,9 +1,0 @@
-.poll-common-index-card.lmo-card
-  %h2.lmo-card-heading{translate: "poll_common_index_card.title"}
-  .poll-common-index-card__polls
-    .lmo-hint-text{ng-if: "!polls().length", translate: "poll_common_index_card.no_polls"}
-    .poll-common-index-card__has-polls{ng-if: "polls().length"}
-      %poll_common_preview{poll: "poll", ng-repeat: "poll in polls() track by poll.id"}
-      %a.poll-common-index-card__view-more{ng-click: "viewMore()", ng-if: "displayViewMore()"}
-        %span{translate: "poll_common_index_card.count", translate-value-count: "{{model.closedPollsCount}}"}
-  %loading{ng-if: "fetchRecordsExecuting"}

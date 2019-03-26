@@ -43,3 +43,4 @@ client/tests_output
 client/angular/test/screenshots
 client/angular/test/nightwatch/plugins
 client/angular/test/log
+vue/node_modules

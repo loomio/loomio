@@ -1,9 +1,0 @@
-.poll-common-undecided-user.lmo-flex.lmo-flex__center{layout: "row"}
-  %user_avatar{user: "user", size: "small"}
-  %span.poll-common-undecided-user__name.lmo-flex__grow {{ user.name || user.email }}
-  .poll-common-undecided-user__action{ng-if: "poll.isActive() && canAdministerPoll() && !remindExecuting"}
-    .poll-common-undecided-user--reminded{ng-if: "user.reminded"}
-      %p.lmo-hint-text{translate: "poll_common_undecided_user.reminded"}
-    .poll-common-undecided-user--unreminded{ng-if: "!user.reminded"}
-      %md-button.md-accent.poll-common-undecided-user__remind{ng-click: "remind()", translate: "common.action.remind"}
-  %loading{ng-if: "remindExecuting"}

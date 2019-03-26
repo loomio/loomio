@@ -1,5 +1,0 @@
-.fragment.fragment__membership-remove-modal
-  %p{translate: "membership_remove_modal.{{namespace}}.message", translate-value-name: "{{user.name || user.email}}"}
-  %div{ng-if: "membership.acceptedAt"}
-    %p{translate: "membership_remove_modal.{{namespace}}.impact_for_group", ng-if: "group.targetModel().isA('group')"}
-    %p{translate: "membership_remove_modal.{{namespace}}.impact_for_subgroups", ng-if: "group.targetModel().isA('group') && group.isParent()"}

@@ -1,9 +1,0 @@
-.lmo-two-column-layout
-  %loading{ng-if: "!pollPage.poll"}
-  %main.poll-page.lmo-row{ng-if: "pollPage.poll"}
-    %poll_common_example_card{ng-if: "pollPage.poll.example", poll: "pollPage.poll"}
-    %group_theme{ng-if: "pollPage.poll.group()", group: "pollPage.poll.group()", discussion: "pollPage.poll.discussion()", compact: "true"}
-    .poll-page__main-content
-      %vue-component{name: "MembershipCard", v-props-group: "pollPage.poll.guestGroup()"}
-      %vue-component{name: "MembershipCard", v-props-group: "pollPage.poll.guestGroup()", v-props-pending: "true"}
-      %vue-component.lmo-card--no-padding.lmo-column-left{name: "PollCommonCard", v-props-poll: "pollPage.poll"}

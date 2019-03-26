@@ -1,8 +1,0 @@
-.stance-created
-  %poll_common_directive{name: "stance_choice", ng-repeat: "choice in eventable.stanceChoices() | orderBy: 'rank'", ng-if: "choice.score > 0", stance_choice: "choice"}
-  .lmo-hint-text{ng-if: "eventable.stanceChoices().length == 0", translate: "poll_common_votes_panel.none_of_the_above"}
-  .lmo-markdown-wrapper{marked: "eventable.reason", ng-if: "eventable.reason && !eventable.translation"}
-  %translation.thread-item__body{ng-if: "translation", model: "eventable", field: "reason"}
-  .lmo-md-actions
-    %reactions_display{model: "eventable"}
-    %action_dock{model: "eventable", actions: "actions"}

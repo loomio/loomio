@@ -1,7 +1,0 @@
-  .lmo-md-actions
-    %div{ng-if: "group.expanded"}
-    %md-button.md-accent.group-form__advanced-link{type: "button", ng-if: "!group.expanded", ng-click: "expandForm()", translate: "group_form.advanced_settings"}
-    %md-button.md-primary.md-raised.group-form__submit-button{ng-click: "submit()"}
-      %span{ng-if: "group.isNew() && group.isParent()", translate: "group_form.submit_start_group"}
-      %span{ng-if: "group.isNew() && !group.isParent()", translate: "group_form.submit_start_subgroup"}
-      %span{ng-if: "!group.isNew()", translate: "common.action.update_settings"}

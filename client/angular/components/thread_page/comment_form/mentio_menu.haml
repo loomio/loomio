@@ -1,8 +1,0 @@
-%md-menu-content.mentio-menu
-  -# we need a ul for mentio to function properly, herp.
-  %ul
-    %md-menu-item.mentio-menu__item{mentio-menu-item: "user", layout: "row", ng-repeat: "user in items track by user.id"}
-      %user_avatar.mentio-menu__avatar{user: "user", size: "small"}
-      .lmo-flex{layout: "column"}
-        %strong.mentionable-name {{user.name}}
-        .mentionable-username {{user.username}}

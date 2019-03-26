@@ -1,7 +1,0 @@
-.announcement-chip.lmo-md-actions{data-id: "{{user.id}}"}
-  .announcement-chip__content.lmo-flex--row.lmo-flex__center
-    %user_avatar.lmo-margin-right{user: "user", size: "small", no-link: "true"}
-    %span.md-body-2 {{ user.name || user.email }}
-  .announcement-chip__action
-    %md-button.md-button--tiny{ng-if: "showClose", ng-click: "removeRecipient(recipient)"}
-      %i.mdi.mdi-24px.mdi-window-close

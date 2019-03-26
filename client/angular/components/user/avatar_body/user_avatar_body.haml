@@ -1,5 +1,0 @@
-.user-avatar-body{ng-switch: "user.avatarKind"}
-  %img.user-avatar__img{ng-switch-when: "gravatar", md-colors: "mdColors()", class: "lmo-box--{{size}}",  gravatar-src: "user.emailHash", gravatar-size: "{{gravatarSize()}}", alt: "{{::user.name}}"}
-  %img.user-avatar__img{ng-switch-when: "uploaded", md-colors: "mdColors()", class: "lmo-box--{{size}}", alt: "{{user.name}}", ng-src: "{{uploadedAvatarUrl()}}"}
-  .user-avatar__initials{ng-switch-when: "initials", md-colors: "mdColors()", class: "lmo-box--{{size}}  user-avatar__initials--{{size}}", aria-hidden: "true"} {{user.avatarInitials}}
-  .user-avatar__initials.mdi.lmo-flex--center.lmo-flex__center.lmo-flex__horizontal-center.lmo-grey-on-white{ng-switch-default: "true", md-colors: "mdColors()", class: "{{mdiSize}} lmo-box--{{size}} {{user.avatarKind}}"}
