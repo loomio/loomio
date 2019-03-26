@@ -66,8 +66,8 @@ class Comment < ApplicationRecord
 
   def body=(content)
     # if body_format == "html"
-    tags = %w[strong em b i p code pre big small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote]
-    attributes = %w[href src alt title]
+    tags = %w[strong em b i p code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote]
+    attributes = %w[href src alt title class data-type data-done data-mention-id]
     self[:body] = Rails::Html::WhiteListSanitizer.new.sanitize(content, tags: tags, attributes: attributes)
     # end
   end

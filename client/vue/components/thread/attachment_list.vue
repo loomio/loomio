@@ -1,7 +1,12 @@
 <script lang="coffee">
+
+import prettyBytes from 'pretty-bytes'
+
 module.exports =
   props:
     attachments: Array
+  methods:
+    prettifyBytes: (s) -> prettyBytes(s)
 </script>
 <template lang="pug">
 .attachment-list
@@ -10,8 +15,12 @@ module.exports =
       img.attachment-list__preview(:src="attachment.preview_url")
     .attachment-list__item-details
       v-icon(v-if="attachment.icon") {{ `mdi-${attachment.icon}` }}
-      a(:href="attachment.download_url")
-        span {{ attachment.filename }}
+      div
+        a(:href="attachment.download_url")
+          span {{ attachment.filename }}
+        |
+        |
+        span.lmo-grey-on-white {{ prettifyBytes(attachment.byte_size) }}
 </template>
 <style lang="scss">
 
