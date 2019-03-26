@@ -54,7 +54,7 @@ class Comment < ApplicationRecord
   delegate :members, to: :discussion
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
-  after_save :update_attachments
+  before_save :build_attachments
 
   def self.always_versioned_fields
     [:body]
@@ -106,15 +106,15 @@ class Comment < ApplicationRecord
   end
 
   private
-  def attachments
-    files.map do |file|
-      {name: file.name,
-       preview_url: (file.previewable? ? file.preview(resize: "600x600>") : nil),
-       download_url: Rails.application.routes.url_helpers.rails_blob_path(file)
-      }
+  def build_attachments
+    self[:attachments] = files.map do |file|
+      i = file.blob.slice(:id, :filename, :content_type, :byte_size)
+      i.merge!({ preview_url: file.representation(resize: "600x600>") }) if file.representable?
+      i.merge!({ download_url: Rails.application.routes.url_helpers.rails_blob_path(file, disposition: "attachment", only_path: true) })
+      i
     end
   end
-  
+
   def documents_owned_by_author
     return if documents.pluck(:author_id).select { |user_id| user_id != user.id }.empty?
     errors.add(:documents, "Attachments must be owned by author")

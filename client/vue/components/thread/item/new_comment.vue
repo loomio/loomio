@@ -95,6 +95,7 @@ module.exports =
     translation.thread-item__body(v-if='eventable.translation', :model='eventable', field='body')
     //- <outlet name="after-comment-body" model="eventable"></outlet>
     document-list(:model='eventable', :skip-fetch='true')
+    attachment-list(:attachments="eventable.attachments")
     .lmo-md-actions
       //- <reactions_display model="eventable"></reactions_display>
       action-dock(:model='eventable', :actions='actions')
