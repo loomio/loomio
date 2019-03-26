@@ -106,13 +106,19 @@ class Comment < ApplicationRecord
   end
 
   private
+
   def build_attachments
     self[:attachments] = files.map do |file|
       i = file.blob.slice(:id, :filename, :content_type, :byte_size)
       i.merge!({ preview_url: file.representation(resize: "600x600>") }) if file.representable?
       i.merge!({ download_url: Rails.application.routes.url_helpers.rails_blob_path(file, disposition: "attachment", only_path: true) })
+      i.merge!({ icon: attachment_icon(file.blob.content_type || file.blob.filename) })
       i
     end
+  end
+
+  def attachment_icon(name)
+    AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
   end
 
   def documents_owned_by_author
