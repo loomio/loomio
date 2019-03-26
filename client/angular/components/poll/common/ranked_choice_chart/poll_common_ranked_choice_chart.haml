@@ -1,0 +1,18 @@
+.poll-common-ranked-choice-chart.lmo-flex{layout: "row"}
+  .lmo-flex.lmo-flex__grow{layout: "column"}
+    .poll-common-ranked-choice-chart__cell
+    .poll-common-ranked-choice-chart__cell.poll-common-ranked-choice-chart__cell--name{ng-repeat: "option in pollOptions() track by option.id", ng-style: "styleData(option)"}
+      {{option.name}}
+  .poll-common-ranked-choice-chart__table{layout: "row"}
+    .poll-common-ranked-choice-chart__cell.poll-common-ranked-choice-chart__cell-column{layout: "column", ng-repeat: "score in scores() track by $index"}
+      .poll-common-ranked-choice-chart__cell.lmo-flex__horizontal-center{layout: "column"}
+        %strong{translate: "ordinal._{{rankFor(score)}}"}>
+        %md-tooltip
+          %span{translate: "common.points_abbrev", translate-value-score: "{{score}}"}
+      .poll-common-ranked-choice-chart__cell{ng-repeat: "option in pollOptions() track by option.id"}
+        {{votesFor(option, score)}}
+    .lmo-flex{layout: "column"}
+      .poll-common-ranked-choice-chart__cell
+        %strong{translate: "common.total"}
+      .poll-common-ranked-choice-chart__cell{ng-repeat: "option in pollOptions() track by option.id"}
+        {{countFor(option)}}

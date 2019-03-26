@@ -1,0 +1,5 @@
+.poll-common-chart-preview
+  %bar_chart{ng-if: "chartType() == 'bar'", stance_counts: "poll.stanceCounts", size: "50"}
+  %progress_chart{ng-if: "chartType() == 'progress'", stance_counts: "poll.stanceCounts", goal: "poll.goal()", size: "50"}
+  %poll_proposal_chart_preview{ng-if: "chartType() == 'pie'", stance_counts: "poll.stanceCounts", my_stance: "myStance()"}
+  %matrix_chart{ng-if: "chartType() == 'matrix'", matrix_counts: "poll.matrixCounts", size: "50"}

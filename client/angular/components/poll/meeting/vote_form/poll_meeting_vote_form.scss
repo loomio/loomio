@@ -1,0 +1,20 @@
+$box-width:60px;
+
+.poll-meeting-vote-form__checkbox--legend {
+  margin-top:4px;
+}
+
+.poll-meeting-vote-form__helptext {
+  color: $grey-on-white;
+}
+
+.poll-meeting-vote-form--box {
+  border: 2px solid $card-background-color;
+  min-width: $box-width;
+  width: $box-width;
+  line-height: normal;
+  text-align: center;
+  margin: 0px 8px;
+  &.md-button { height: $box-width; }
+  img { width: 32px; }
+}

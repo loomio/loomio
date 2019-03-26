@@ -1,0 +1,10 @@
+.lmo-one-column-layout
+  %main.start-discussion-page.lmo-row
+    .start-discussion-page__main-content.lmo-flex.lmo-card.lmo-relative{layout: "column"}
+      .lmo-disabled-form{ng-if: "isDisabled"}
+      .discussion-start-discussion__header.lmo-flex.lmo-flex__center
+        %i.mdi.mdi-forum.lmo-margin-right
+        %h2.lmo-card-heading{translate: "discussion_form.new_discussion_title"}
+      .discussion-start-discussion
+        %discussion_form{discussion: "startDiscussionPage.discussion"}
+        %discussion_form_actions{discussion: "startDiscussionPage.discussion"}

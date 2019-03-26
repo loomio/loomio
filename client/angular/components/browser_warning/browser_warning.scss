@@ -1,0 +1,12 @@
+.browser-warning {
+  @include md-body-1;
+  font-weight: bold;
+  padding: 8px;
+  line-height: 20px;
+  background: red;
+  color: white;
+  a {
+    text-decoration: underline;
+    color: white;
+  }
+}

@@ -1,0 +1,37 @@
+.discussion-form
+  .lmo-hint-text{translate: "group_page.discussions_placeholder", ng-show: "discussion.isNew() && !discussion.isForking()"}
+  .lmo-hint-text{translate: "discussion_form.fork_notice", ng-if: "discussion.isForking()", translate-value-count: "{{discussion.forkedEvents().length}}", translate-value-title: "{{discussion.forkTarget().discussion().title}}"}
+
+  %md-input-container.md-block{ng-show: "showGroupSelect"}
+    %label{for: "discussion-group-field", translate: "discussion_form.group_label"}
+    %md-select.discussion-form__group-select#discussion-group-field{ng-model: "discussion.groupId", placeholder: "{{'discussion_form.group_placeholder' | translate}}", ng-required: "true", ng-change: "discussion.fetchAndRestoreDraft(); updatePrivacy()"}
+      %md-option{ng-value: "group.id", ng-repeat: "group in availableGroups() | orderBy: 'fullName' track by group.id"}
+        {{group.fullName}}
+    .md-errors-spacer
+
+  %md-dialog-content.md-body-1{ng-if: "showUpgradeMessage"}
+    %p{ng-if: "maxThreadsReached", translate: "discussion.max_threads_reached", translate-values: "{upgradeUrl: upgradeUrl}"}
+    %p{ng-if: "!subscriptionActive", translate: "discussion.subscription_canceled", translate-values: "{upgradeUrl: upgradeUrl}"}
+
+  .discussion-form__group-selected{ng-if: "discussion.groupId && !showUpgradeMessage"}
+    %md-input-container.md-block
+      %label{for: "discussion-title", translate: "discussion_form.title_label"}
+      .lmo-relative
+        %input.discussion-form__title-input.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-model-options: "{ allowInvalid: true }", ng-required: "true", maxlength: "255"}
+      %validation_errors{subject: "discussion", field: "title"}
+
+    %lmo_textarea{model: "discussion", field: "description", placeholder: "'discussion_form.context_placeholder' | translate", label: "'discussion_form.context_label' | translate", ng-if: "!discussion.isForking()"}
+
+    %md-list.discussion-form__options
+      %md-list-item.discussion-form__privacy-form{ng-if: "showPrivacyForm()"}
+        %md-radio-group{ng-model: "discussion.private"}
+          %md-radio-button.md-checkbox--with-summary.discussion-form__public{ng-model: "discussion.private", ng-value: "false"}
+            %discussion_privacy_icon{discussion: "discussion", private: "false"}
+          %md-radio-button.md-checkbox--with-summary.discussion-form__private{ng-model: "discussion.private", ng-value: "true"}
+            %discussion_privacy_icon{discussion: "discussion", private: "true"}
+
+      %md-list-item.discussion-form__privacy-notice{ng-if: "!showPrivacyForm()"}
+        %label.discussion-form__privacy-notice.lmo-flex{layout: "row"}
+          %i.mdi.mdi-24px.mdi-lock-outline.lmo-margin-right{ng-if: "discussion.private"}
+          %i.mdi.mdi-24px.mdi-earth.lmo-margin-right{ng-if: "!discussion.private"}
+          %discussion_privacy_icon{discussion: "discussion"}

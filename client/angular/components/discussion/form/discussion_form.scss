@@ -1,0 +1,23 @@
+.discussion-modal {
+  max-width: $small-max-px;
+}
+
+.discussion-form__options {
+  clear: both;
+}
+
+.discussion-form__options md-list-item,
+.discussion-form__options md-list-item .md-no-style {
+  padding: 0 !important;
+}
+
+.discussion-form__options md-checkbox .md-label {
+  display: block !important;
+  white-space: nowrap;
+}
+
+@media (max-width: $small-max-px){
+  .discussion-modal { max-width: auto; }
+  .discussion-form__formatting-help { display: none; }
+  .thread-helptext { display: none; }
+}

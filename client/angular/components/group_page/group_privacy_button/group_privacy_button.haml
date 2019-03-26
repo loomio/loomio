@@ -1,0 +1,6 @@
+%button.group-privacy-button.md-button{aria-label: "{{privacyDescription()}}"}
+  %md-tooltip.group-privacy-button__tooltip {{privacyDescription()}}
+  .sr-only{translate: "group_page.privacy.aria_label", translate-value-privacy: "{{group.groupPrivacy}}"}
+  .screen-only.lmo-flex.lmo-flex__center{aria-hidden: "true"}
+    %i.mdi{class: "{{iconClass()}}"}
+    %span{translate: "common.privacy.{{group.groupPrivacy}}"}

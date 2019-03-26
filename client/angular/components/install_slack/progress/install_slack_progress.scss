@@ -1,0 +1,47 @@
+.install-slack-progress {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 16px 36px;
+}
+
+.install-slack-progress__bar {
+  width: 100%;
+  border-radius: 5px;
+  height: 6px;
+  position: absolute;
+  top: 4px;
+  background: $background-color;
+}
+
+.install-slack-progress__bar.active {
+  background: $loomio-orange;
+  border-radius: 5px;
+  transition: 0.25s all ease-in-out;
+}
+
+.install-slack-progress__dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: $background-color;
+  z-index: $z-low;
+  label {
+    font-weight: normal;
+    text-align: center;
+    position: relative;
+    top: 20px;
+    right: 10px;
+    color: $background-color;
+  }
+}
+
+.install-slack-progress__dot.complete {
+  background: $loomio-orange;
+}
+
+.install-slack-progress__dot.active label {
+  color: $loomio-orange;
+  font-weight: bold;
+}

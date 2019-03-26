@@ -1,0 +1,35 @@
+.auth-provider-form {
+  display: flex;
+  justify-content: center;
+}
+.auth-provider-form__providers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-provider-form__providers .md-button.md-raised {
+  @include md-subhead();
+  height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  color: white;
+  text-transform: none;
+}
+
+.auth-email-form__submit {
+  @include md-subhead();
+  height: 40px;
+  text-transform: none;
+}
+.auth-provider-form__providers .md-button i { margin: 3px 16px 0 16px }
+.auth-provider-form__providers span { padding: 0 4px; }
+
+.auth-provider-form__providers .facebook { background: #3b5998; }
+.auth-provider-form__providers .google   { background: #dd4b39; }
+.auth-provider-form__providers .slack    { background: #e9a820; }
+
+.auth-provider-form__providers .facebook:hover { background: lighten(#3b5998, 20%) !important; }
+.auth-provider-form__providers .google:hover   { background: lighten(#dd4b39, 20%) !important; }
+.auth-provider-form__providers .slack:hover    { background: lighten(#e9a820, 20%) !important; }

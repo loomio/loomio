@@ -1,0 +1,34 @@
+.lmo-one-column-layout
+  %main.dashboard-page.lmo-row
+    %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.all", ng-show: "dashboardPage.filter == 'hide_muted'"}
+    %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.muted", ng-show: "dashboardPage.filter == 'show_muted'"}
+    %section.dashboard-page__loading{ng-if: "!dashboardPage.dashboardLoaded", ng-repeat: "viewName in dashboardPage.loadingViewNames track by $index", class: "dashboard-page__{{viewName}}", aria-hidden: "true"}
+      %h2.dashboard-page__date-range{translate: "dashboard_page.threads_from.{{viewName}}"}
+      .thread-previews-container
+        %loading_content.thread-preview{line-count: 2, ng-repeat: "i in [1,2] track by $index"}
+    %section.dashboard-page__loaded{ng-if: "dashboardPage.dashboardLoaded"}
+      .dashboard-page__empty{ng-if: "dashboardPage.noThreads()"}
+        %p{translate: "dashboard_page.no_groups.show_all", ng-if: "dashboardPage.noGroups()"}>
+        .dashboard-page__no-threads{ng-if: "!dashboardPage.noGroups()"}
+          %span{ng-show: "dashboardPage.filter == 'show_all'", translate: "dashboard_page.no_threads.show_all"}>
+           %p{translate: "dashboard_page.no_threads.show_all"}
+          %span{ng-show: "dashboardPage.filter == 'show_muted' && dashboardPage.userHasMuted()", translate: "dashboard_page.no_threads.show_muted"}>
+          %a{lmo-href: "/dashboard", ng-show: "dashboardPage.filter != 'show_all' && dashboardPage.userHasMuted()"}
+            %span{translate: "dashboard_page.view_recent"}>
+        .dashboard-page__explain-mute{ng-if: "dashboardPage.filter == 'show_muted' && !dashboardPage.userHasMuted()"}
+          %p
+            %strong{translate: "dashboard_page.explain_mute.title"}
+          %p{translate: "dashboard_page.explain_mute.explanation_html"}
+          %p{translate: "dashboard_page.explain_mute.instructions"}
+          .dashboard-page__mute-image--large{ng-if: "dashboardPage.showLargeImage()"}
+            %img{ng-src: "/img/mute.png"}
+          .dashboard-page__mute-image--small{ng-if: "!dashboardPage.showLargeImage()"}
+            %img{ng-src: "/img/mute-small.png"}
+          %p{translate: "dashboard_page.explain_mute.see_muted_html"}
+
+      .dashboard-page__collections{ng-if: "!dashboardPage.noThreads()"}
+        %section.thread-preview-collection__container{ng-if: "dashboardPage.views[viewName].any()", class: "dashboard-page__{{viewName}}", ng-repeat: "viewName in dashboardPage.viewNames"}
+          %h2.dashboard-page__date-range{translate: "dashboard_page.threads_from.{{viewName}}"}
+          %thread_preview_collection.thread-previews-container{query: "dashboardPage.views[viewName]"}
+        .dashboard-page__footer{ng-if: "!dashboardPage.loader.exhausted", in-view: "$inview && dashboardPage.loader.loadMore()", in-view-options: "{debounce: 200}"} &nbsp;
+        %loading{ng-show: "dashboardPage.loader.loading"}

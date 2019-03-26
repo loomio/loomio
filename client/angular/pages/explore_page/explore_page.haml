@@ -1,0 +1,27 @@
+.lmo-one-column-layout
+  %main.explore-page
+    %h1.lmo-h1-medium{translate: "explore_page.header"}
+    %md-input-container.explore-page__search-field
+      %input#search-field{ng-model: "explorePage.query", ng-model-options: "{debounce: 600}", ng-change: "explorePage.search()", placeholder: "{{ 'explore_page.search_placeholder' | translate }}"}
+      %i.mdi.mdi-magnify{aria-hidden: "true"}
+      %loading{ng-show: "searchExecuting"}
+    .explore-page__search-results{ng-show: "explorePage.showMessage()", translate: "{{explorePage.searchResultsMessage()}}", translate-values: "{resultCount: explorePage.resultsCount, searchTerm: explorePage.query}"}
+    .explore-page__groups
+      %a.explore-page__group{ng-repeat: "group in explorePage.groups() | orderBy: '-recentActivityCount' track by group.id", lmo-href-for: "group"}
+        .explore-page__group-cover{ng-style: "explorePage.groupCover(group)"}
+        .explore-page__group-details
+          %h2.lmo-h2 {{group.name}}
+          .explore-page__group-description {{explorePage.groupDescription(group)}}
+          .explore-page__group-stats.lmo-flex.lmo-flex__start.lmo-flex__center
+            %i.mdi.mdi-account-multiple.lmo-margin-right
+            %span.lmo-margin-right {{group.membershipsCount}}
+            %i.mdi.mdi-comment-text-outline.lmo-margin-right
+            %span.lmo-margin-right {{group.discussionsCount}}
+            %i.mdi.mdi-thumbs-up-down.lmo-margin-right
+            %span.lmo-margin-right {{group.pollsCount}}
+            %i
+            %span
+    .lmo-show-more{ng-show: "explorePage.canLoadMoreGroups"}
+      %button.explore-page__show-more{ng-hide: "searchExecuting", ng-click: "explorePage.loadMore()", translate: "common.action.show_more"}
+    %loading{ng-show: "searchExecuting"}
+    .explore-page__no-results-found{ng-show: "explorePage.noResultsFound()", translate: "explore_page.no_results_found"}

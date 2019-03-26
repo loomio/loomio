@@ -1,0 +1,12 @@
+.blank
+  %section.membership-requests-card{ng-if: "canManageMembershipRequests() && group.hasPendingMembershipRequests()"}
+    %h2.lmo-card-heading{translate: "membership_requests_card.heading"}
+    %md-list
+      %md-list-item.membership-requests-card__request{ng-repeat: "request in group.pendingMembershipRequests() | orderBy: '-createdAt' | limitTo: 5 track by request.id"}
+        %a.md-button.membership-requests-card__request-link.lmo-flex{layout: "row", lmo-href-for: "group", lmo-href-action: "membership_requests", title: "{{ 'membership_requests_card.manage_requests' | translate }}"}
+          %user_avatar.lmo-margin-right{user: "request.actor()", size: "medium"}
+          .lmo-flex{layout: "column"}
+            .lmo-truncate.membership-requests-card__requestor-name {{request.actor().name || request.actor().email}}
+            .lmo-truncate.membership-requests-card__requestor-introduction {{request.introduction}}
+    %a.membership-requests-card__link.lmo-card-minor-action{lmo-href-for: "group", lmo-href-action: "membership_requests"}
+      %span{translate: "membership_requests_card.manage_requests_with_count", translate-value-count: "{{group.pendingMembershipRequests().length}}"}

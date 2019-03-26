@@ -1,0 +1,10 @@
+.powered-by {
+  @include md-caption;
+  color: $grey-on-grey;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.powered-by a {
+  color: $grey-on-grey;
+}

@@ -1,0 +1,29 @@
+.context-panel-dropdown.pull-right.lmo-no-print
+  %outlet.context-panel__before-thread-actions{name: "before-thread-actions", model: "discussion"}
+  %md-menu.lmo-dropdown-menu{md-position-mode: "target-right target"}
+    %md-button.context-panel-dropdown__button{ng-click: "$mdMenu.open()"}
+      .sr-only{translate: "thread_context.thread_options"}
+      %i.mdi.mdi-24px.mdi-chevron-down
+    %md-menu-content
+      %md-menu-item.context-panel-dropdown__option--email-settings{ng-if: "canChangeVolume()"}
+        %md-button{ng-click: "openChangeVolumeForm()", translate: "thread_context.email_settings"}
+      %md-menu-item.context-panel-dropdown__option--edit{ng-if: "canEditThread()"}
+        %md-button{ng-click: "editThread()", translate: "thread_context.edit"}
+      %md-menu-item.context-panel-dropdown__option--pin{ng-show: "!discussion.pinned && canPinThread()"}
+        %md-button{ng-click: "pinThread()", translate: "thread_context.pin_thread"}
+      %md-menu-item.context-panel-dropdown__option--pin{ng-show: "discussion.pinned && canPinThread()"}
+        %md-button{ng-click: "unpinThread()", translate: "thread_context.unpin_thread"}
+      %md-menu-item.context-panel-dropdown__option--close{ng-show: "!discussion.closedAt && canCloseThread()"}
+        %md-button{ng-click: "closeThread()", translate: "thread_context.close_thread"}
+      %md-menu-item.context-panel-dropdown__option--reopen{ng-show: "discussion.closedAt && canCloseThread()"}
+        %md-button{ng-click: "reopenThread()", translate: "thread_context.reopen_thread"}
+      %md-menu-item.context-panel-dropdown__option--mute{ng-if: "canMuteThread()", ng-show: "!discussion.isMuted()"}
+        %md-button{ng-click: "muteThread()", translate: "volume_levels.mute"}
+      %md-menu-item.context-panel-dropdown__option--unmute{ng-show: "discussion.isMuted()"}
+        %md-button{ng-click: "unmuteThread()", translate: "volume_levels.unmute"}
+      %md-menu-item.context-panel-dropdown__option--move{ng-if: "canMoveThread()"}
+        %md-button{ng-click: "moveThread()", translate: "thread_context.move_thread"}
+      %md-menu-item.context-panel-dropdown__option--print
+        %md-button{ng-click: "requestPagePrinted()", translate: "thread_context.print_thread"}
+      %md-menu-item.context-panel-dropdown__option--delete{ng-if: "canDeleteThread()"}
+        %md-button{ng-click: "deleteThread()", translate: "thread_context.delete_thread"}

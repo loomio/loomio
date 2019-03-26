@@ -1,0 +1,19 @@
+.document-management {
+  margin-bottom: 16px;
+}
+
+.document-management__caption {
+  color: $grey-on-white;
+}
+
+.document-management__icon {
+  font-size: 24px;
+}
+
+.document-management__column-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 8px 0;
+  i { padding: 4px; }
+}

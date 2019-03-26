@@ -1,0 +1,23 @@
+.install-slack-install-form
+  %h2.lmo-h2{translate: "install_slack.install.heading"}
+
+  .install-slack-install-form__add-to-group{ng-if: "group.id"}
+    %p.lmo-hint-text{translate: "install_slack.install.add_to_group_helptext"}
+    %md-select{md-autofocus: "true", ng-model: "group", ng-change: "setSubmit(group)", aria-label: "{{ 'install_slack.install.group_id' | translate }}"}
+      %md-option{ng-repeat: "g in groups() | orderBy:'fullName'", ng-value: "g"}
+        {{ g.fullName }}
+
+    .lmo-flex.install-slack-form__actions{layout: "column"}
+      %md-button.md-primary.md-raised{translate: "install_slack.install.install_slack", ng-click: "submit()"}
+      %md-button{translate: "install_slack.install.start_new_group", ng-click: "toggleExistingGroup()"}
+
+  .install-slack-install-form__create-new-group{ng-if: "!group.id"}
+    %p.lmo-hint-text{translate: "install_slack.install.create_new_group_helptext"}
+
+    %md-input-container.md-block.install-slack-install-form__group
+      %label{translate: "install_slack.install.group_name"}
+      %input.lmo-primary-form-input{md-autofocus: "true", type: "text", placeholder: "{{ 'install_slack.install.group_name_placeholder' | translate }}", ng-model: "group.name"}
+
+    .lmo-flex.install-slack-form__actions{layout: "column"}
+      %md-button.md-primary.md-raised.install-slack-install-form__submit{translate: "install_slack.install.install_slack", ng-click: "submit()"}
+      %md-button{ng-if: "groups().length", translate: "install_slack.install.use_existing_group", ng-click: "toggleExistingGroup()"}

@@ -1,0 +1,4 @@
+.poll-common-set-outcome-panel{ng-if: "showPanel()"}
+  %p.lmo-hint-text{translate: "poll_common_set_outcome_panel.{{poll.pollType}}"}
+  %md-dialog-actions
+    %md-button.md-primary.md-raised.poll-common-set-outcome-panel__submit{ng-click: "openOutcomeForm()", translate: "poll_common_set_outcome_panel.share_outcome", aria-label: "{{poll_common.set_outcome | translate}}"}

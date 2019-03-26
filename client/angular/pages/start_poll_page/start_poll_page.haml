@@ -1,0 +1,13 @@
+.lmo-one-column-layout
+  %main.start-poll-page.lmo-row
+    .start-poll-page__main-content.lmo-flex.lmo-card.lmo-relative{layout: "column"}
+      .lmo-disabled-form{ng-if: "isDisabled"}
+      .poll-common-start-poll__header.lmo-flex{ng-if: "!startPollPage.poll.pollType"}
+        %h2.lmo-card-heading{translate: "poll_common.start_poll"}
+      .poll-common-start-poll__header.lmo-flex{ng-if: "startPollPage.poll.pollType"}
+        %i.mdi{class: "{{ startPollPage.icon() }}"}
+        %h2.lmo-card-heading.poll-common-card-header__poll-type{translate: "poll_types.{{startPollPage.poll.pollType}}"}
+      .poll-common-start-poll{ng-switch: "startPollPage.currentStep"}
+        %poll_common_choose_type.animated{ng-switch-when: "choose", poll: "startPollPage.poll"}
+        %poll_common_directive.animated{ng-switch-when: "save", poll: "startPollPage.poll", name: "form"}
+        %poll_common_form_actions{ng-switch-when: "save", poll: "startPollPage.poll"}

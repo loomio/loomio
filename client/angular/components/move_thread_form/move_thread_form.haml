@@ -1,0 +1,15 @@
+%md-dialog.move-thread-form
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{translate: "move_thread_form.title"}
+      %dismiss_modal_button
+  .md-dialog-content
+    %label{for: "group-dropdown", translate: "move_thread_form.body"}
+    %md-select.move-thread-form__group-dropdown#group-dropdown{ng-model: "discussion.groupId", ng-required: true, ng-change: "updateTarget()"}
+      %md-option{ng-value: "group.id", ng-repeat: "group in availableGroups() | orderBy: 'fullName' track by group.id"}
+        {{group.fullName}}
+
+    .lmo-md-actions
+      %md-button{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+      %md-button.md-raised.md-primary.move-thread-form__submit{type: "button", translate: "move_thread_form.confirm", ng-click: "moveThread()"}

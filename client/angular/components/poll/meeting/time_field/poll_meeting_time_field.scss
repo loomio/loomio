@@ -1,0 +1,41 @@
+.poll-meeting-time-field__datepicker-container {
+  margin-bottom: -16px;
+  margin-right: 16px;
+  input {
+    max-width: 100%;
+    // font-size: 14px !important;
+  }
+}
+
+.poll-meeting-time-field .md-datepicker-input-container {
+  width: 100%;
+}
+
+.poll-meeting-time-field__timepicker-container {
+  margin: 0;
+}
+
+.poll-meeting-form__poll-option-name {
+  padding: 0 2px !important;
+}
+
+.poll-meeting-time-field {
+  padding: 16px 0 2px 0px !important
+}
+.poll-meeting-time-field__add {
+  text-align: right;
+}
+
+.md-datepicker-expand-triangle {
+  top: 23%;
+}
+
+.md-select-value .md-select-icon:after {
+  font-size: 14px;
+}
+
+@media (max-width: $tiny-max-px) {
+  .poll-meeting-time-field__datepicker button {
+    // display: none;
+  }
+}

@@ -1,0 +1,10 @@
+.poll-common-votes-panel__stance
+  %user_avatar.lmo-flex__no-shrink{user: "stance.participant()", size: "small"}
+  .poll-common-votes-panel__stance-content
+    .poll-common-votes-panel__stance-name-and-option
+      %strong> {{ participantName() }}
+      %span.lmo-hint-text{translate: "poll_common_votes_panel.none_of_the_above", ng-if: "!stance.stanceChoices().length"}>
+      %poll_common_directive{name: "stance_choice", stance_choice: "choice", ng-if: "choice.score > 0", ng-repeat: "choice in stance.stanceChoices() | orderBy: 'rank'"}
+    .poll-common-votes-panel__stance-reason{ng-if: "stance.reason"}
+      %span.lmo-markdown-wrapper{ng-if: "!stance.translation", marked: "stance.reason"}
+      %translation{ng-if: "stance.translation", model: "stance", field: "reason"}

@@ -23,7 +23,15 @@ class ApplicationController < ActionController::Base
   # this boots the angular app
   def index
     expires_now
-    render 'application/index', layout: false
+    response.headers["Cache-Control"] = "no-store"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+
+    if current_user.is_logged_in? && current_user.experiences['vue_client']
+      render 'application/vue', layout: false
+    else
+      render 'application/index', layout: false
+    end
   end
 
   def crowdfunding

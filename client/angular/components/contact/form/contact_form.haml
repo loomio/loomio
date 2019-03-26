@@ -1,0 +1,38 @@
+.contact-form{ng-show: "!submitted"}
+  .lmo-disabled-form{ng-show: "isDisabled"}
+
+  %h1.lmo-h2{translate: "contact_message_form.title"}
+
+  %p{translate: "contact_message_form.read_the_manual", translate-value-link: "{{helpLink}}"}
+
+  %p &nbsp;
+
+  %md-input-container.md-block{ng-if: "!isLoggedIn()"}
+    %label{translate: "contact_message_form.name_label"}
+    %input{type: "text", placeholder: "{{'contact_message_form.name_placeholder' | translate}}", ng-model: "message.name"}
+    %validation_errors{subject: "message", field: "name"}
+
+  %md-input-container.md-block{ng-if: "!isLoggedIn()"}
+    %label{translate: "contact_message_form.email_label"}
+    %input{type: "text", placeholder: "{{'contact_message_form.email_placeholder' | translate}}", ng-model: "message.email"}
+    %validation_errors{subject: "message", field: "email"}
+
+  %md-input-container.md-block
+    %label{translate: "contact_message_form.subject_label"}
+    %input{type: "text", placeholder: "{{'contact_message_form.subject_placeholder' | translate}}", ng-model: "message.subject"}
+    %validation_errors{subject: "message", field: "subject"}
+
+  %md-input-container.md-block
+    %label{translate: "contact_message_form.message_label"}
+    %textarea{ng-model: "message.message", placeholder: "{{'contact_message_form.message_placeholder' | translate}}"}
+    %validation_errors{subject: "message", field: "message"}
+
+  %p.lmo-hint-text{ng-if: "showContactConsent", translate: "contact_message_form.consent_message"}
+  %p.lmo-hint-text{translate: "contact_message_form.contact_us_email", translate-value-email: "{{contactEmail}}"}
+
+  .lmo-md-actions
+    %div
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "contact_message_form.send_message"}
+
+.contact-form__success{ng-show: "submitted"}
+  %h1.lmo-h2{translate: "contact_message_form.success", translate-value-name: "{{message.name}}"}

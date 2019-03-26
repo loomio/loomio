@@ -1,0 +1,12 @@
+.lmo-one-column-layout
+  %loading{ng-show: "authorizedAppsPage.loading"}
+  %main.authorized-apps-page{ng-if: "!authorizedAppsPage.loading"}
+    %h1.lmo-h1{translate: "authorized_apps_page.title"}
+    %hr
+    .lmo-placeholder{ng-if: "authorizedAppsPage.applications().length == 0", translate: "authorized_apps_page.no_applications"}
+    .lmo-flex.lmo-flex__space-between{layout: "column", ng-if: "authorizedAppsPage.applications().length > 0"}
+      .lmo-placeholder{translate: "authorized_apps_page.notice"}
+      .lmo-flex.lmo-flex__center{layout: "row", ng-repeat: "application in authorizedAppsPage.applications() | orderBy: 'name' track by application.id"}
+        %img.lmo-box--small{ng-src: "{{application.logoUrl}}"}>
+        %strong.lmo-flex__grow {{ application.name }}
+        %md-button.md-raised.md-warn{ng-click: "authorizedAppsPage.openRevokeForm(application)", translate: "authorized_apps_page.revoke"}

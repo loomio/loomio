@@ -1,0 +1,42 @@
+%md-sidenav.md-sidenav-left.lmo-no-print{role: "navigation", md-component-id: "left", md-is-open: "showSidebar", md-is-locked-open: "canLockSidebar() && showSidebar", md-whiteframe: "4", aria-label: "{{ 'sidebar.aria_labels.heading' | translate }}", aria-hidden: "{{!showSidebar}}"}
+  %md_content.sidebar__content.lmo-no-print{flex: "", layout: "column", ng-click: "sidebarItemSelected()", role: "navigation"}
+    .sidebar__divider
+    %md_list.sidebar__list.sidebar__threads{layout: "column", aria-label: "{{ 'sidebar.aria_labels.threads_list' | translate }}"}
+      %md_list_item
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--decisions{ng-href: "/polls", lmo-href: "/polls", ng-click: "isActive()", aria-label: "{{ 'sidebar.my_decisions' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('pollsPage')}"}
+          %md_avatar_icon.sidebar__list-item-icon.mdi.mdi-thumbs-up-down
+          %span{translate: "common.decisions"}
+      %md_list_item
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--recent{ng-href: "/dashboard", lmo-href: "/dashboard", ng-click: "isActive()", aria-label: "{{ 'sidebar.recent' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('dashboardPage')}"}
+          %i.sidebar__list-item-icon.mdi.mdi-forum
+          %span{translate: "sidebar.recent_threads"}
+      %md_list_item
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--unread{ng-href: "/inbox", lmo-href: "/inbox", ng-click: "isActive()", aria-label: "{{ 'sidebar.unread' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('inboxPage')}"}
+          %i.sidebar__list-item-icon.mdi.mdi-inbox
+          %span{translate: "sidebar.unread_threads", translate-value-count: "{{unreadThreadCount()}}"}
+      %md_list_item
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--muted{ng-href: "/dashboard/show_muted", lmo-href: "/dashboard/show_muted", ng-click: "isActive()", aria-label: "{{ 'sidebar.muted' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('dashboardPage', nil, 'show_muted')}"}
+          %i.sidebar__list-item-icon.mdi.mdi-volume-mute
+          %span{translate: "sidebar.muted_threads"}
+      %md_list_item{ng-if: "canStartThreads()"}
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--start-thread{href: "", ng-click: "startThread()", aria-label: "{{ 'sidebar.start_thread' | translate }}"}
+          %i.sidebar__list-item-icon.mdi.mdi-plus
+          %span{translate: "sidebar.start_thread"}
+    .sidebar__divider
+    %md_list_item.sidebar__list-subhead{translate: "common.organizations"}
+    %md_list.sidebar__list.sidebar__groups{ng-class: "{'sidebar__no-groups': groups().length < 1}", aria-label: "{{ 'sidebar.aria_labels.groups_list' | translate }}"}
+      %md_list_item{ng_repeat: "group in groups() | orderBy: 'fullName' track by group.id"}
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--group{ng-href: "{{groupUrl(group)}}", lmo-href: "{{groupUrl(group)}}", aria-label: "{{group.name}}", ng-if: "group.isParent()", ng-class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
+          %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}", alt: ""}
+          %span {{group.name}}
+        %md_button.sidebar__list-item-button--subgroup.lmo-flex{ng-href: "{{groupUrl(group)}}", lmo-href: "{{groupUrl(group)}}", ng-if: "!group.isParent()", ng-class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
+          {{group.name}}
+        .sidebar__list-item-padding
+      -# %md_list_item{ng-if: "canViewPublicGroups()"}
+      -#   %md_button.sidebar__list-item-button.sidebar__list-item-button--explore{ng-href: "/explore", lmo-href: "/explore", aria-label: "{{ 'sidebar.explore' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('explorePage')}"}
+      -#     %i.sidebar__list-item-icon.mdi.mdi-earth
+      -#     %span{translate: "sidebar.explore"}
+      %md_list_item{ng-if: "canStartGroup()"}
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--start-group{href: "", ng-click: "startGroup()", aria-label: "{{ 'sidebar.start_group' | translate }}"}
+          %i.sidebar__list-item-icon.mdi.mdi-plus
+          %span{translate: "sidebar.start_group"}

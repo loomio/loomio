@@ -1,0 +1,30 @@
+%md-menu.lmo-dropdown-menu{md-position-mode: "target-right target"}
+  %md-button.user-dropdown__dropdown-button{ng-click: "$mdMenu.open()", aria-label: "{{ 'user_dropdown.button_label' | translate }}"}
+    %user_avatar{user: "user", no-link: "true", size: "small"}
+  %md-menu-content
+    %md-menu-item.user-dropdown__user-details
+      .lmo-flex.lmo-flex__center.lmo-flex__space-between
+        .user-dropdown__name
+          .user-dropdown__user-name.lmo-truncate {{user.name}}
+          .user-dropdown__user-username.lmo-truncate @{{user.username}}
+        %user_avatar{user: "user", size: "medium"}
+    %md-menu-item
+      %md_button.user-dropdown__list-item-button.user-dropdown__list-item-button--profile{ng-href: "/profile", lmo-href: "/profile", aria-label: "{{ 'user_dropdown.edit_profile' | translate }}", ng-class: "{'user_dropdown__list-item--selected': onPage('profilePage')}"}
+        %i.mdi.mdi-18px.lmo-margin-right.mdi-account
+        %span{translate: "user_dropdown.edit_profile"}
+    %md-menu-item
+      %md_button.user-dropdown__list-item-button.user-dropdown__list-item-button--email-settings{ng-href: "/email_preferences", lmo-href: "/email_preferences", aria-label: "{{ 'user_dropdown.email_settings' | translate }}", ng-class: "{'user_dropdown__list-item--selected': onPage('emailSettingsPage')}"}
+        %i.mdi.mdi-18px.lmo-margin-right.mdi-settings
+        %span{translate: "user_dropdown.email_settings"}
+    %md-menu-item{ng-if: "showHelp()"}
+      %md_button.user-dropdown__list-item-button{ng-href: "{{helpLink()}}", target: "_blank", aria-label: "{{ 'user_dropdown.help' | translate }}"}
+        %i.mdi.mdi-18px.lmo-margin-right.mdi-help-circle-outline
+        %span{translate: "user_dropdown.help"}
+    %md-menu-item
+      %md_button.user-dropdown__list-item-button{href: "/contact", aria-label: "{{ 'user_dropdown.contact' | translate }}"}
+        %i.mdi.mdi-18px.lmo-margin-right.mdi-email-outline
+        %span{translate: "user_dropdown.contact_site_name", translate-values: "{site_name: siteName}"}
+    %md-menu-item
+      %md_button.user-dropdown__list-item-button{href: "", ng-click: "signOut()", aria-label: "{{ 'user_dropdown.sign_out' | translate }}"}
+        %i.mdi.mdi-18px.lmo-margin-right.mdi-exit-to-app
+        %span{translate: "user_dropdown.sign_out"}

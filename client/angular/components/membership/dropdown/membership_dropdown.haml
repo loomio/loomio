@@ -1,0 +1,21 @@
+.membership-dropdown.lmo-no-print{ng-if: "canPerformAction()"}
+  %md-menu.lmo-dropdown-menu{md-position-mode: "target-right target"}
+    %md-button.membership-dropdown__button{ng-click: "$mdMenu.open()"}
+      .sr-only{translate: "membership_dropdown.membership_options"}
+      %i.mdi.mdi-24px.mdi-dots-horizontal.md-button--tiny
+    %md-menu-content.group-actions-dropdown__menu-content
+      %md-menu-item.membership-dropdown__set-title{ng-if: "canSetTitle()"}
+        %md-button{ng-click: "setTitle()"}
+          %span{translate: "membership_dropdown.set_title"}
+      %md-menu-item.membership-dropdown__resend{ng-if: "canResendMembership()"}
+        %md-button{ng-click: "resendMembership()", ng-disabled: "membership.resent"}
+          %span{translate: "membership_dropdown.resend", ng-if: "!membership.resent"}
+          %span{translate: "membership_dropdown.invitation_resent", ng-if: "membership.resent"}
+      %md-menu-item.membership-dropdown__toggle-admin{ng-if: "canToggleAdmin()"}
+        %md-button{ng-click: "toggleAdmin()"}
+          %span{translate: "membership_dropdown.make_coordinator", ng-if: "!membership.admin"}
+          %span{translate: "membership_dropdown.demote_coordinator", ng-if: "membership.admin"}
+      %md-menu-item.membership-dropdown__remove{ng-if: "canRemoveMembership()"}
+        %a.md-button{ng-click: "removeMembership()"}
+          %span{translate: "membership_dropdown.remove_from.{{membership.group().targetModel().constructor.singular}}", ng-if: "membership.acceptedAt", translate-values: "{pollType: membership.group().targetModel().translatedPollType()}"}
+          %span{translate: "membership_dropdown.cancel_invitation", ng-if: "!membership.acceptedAt"}

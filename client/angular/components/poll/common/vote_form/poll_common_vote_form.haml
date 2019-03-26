@@ -1,0 +1,15 @@
+.poll-common-vote-form.lmo-drop-animation
+  %h3.lmo-card-subheading{translate: "poll_common.your_response", ng-if: "stance.isNew()"}
+  %poll_common_anonymous_helptext{ng-if: "stance.poll().anonymous"}
+  .poll-common-vote-form__options.lmo-flex--row.lmo-flex__horizontal-center
+    %md-button.lmo-flex--column.poll-common-vote-form__button{md-colors: "mdColors(option)", ng-repeat: "option in stance.poll().pollOptions() | orderBy: 'priority' track by option.id", ng-click: "select(option)"}
+      %img.poll-common-form__icon{ng-src: "/img/{{option.name}}.svg"}
+      %span.poll-common-vote-form__chosen-option--name{translate: "poll_{{stance.poll().pollType}}_options.{{option.name}}", aria-label: "{{option.name}}"}
+      %md-tooltip.poll-common-vote-form__tooltip{md-delay: "750"}
+        %span{translate: "poll_{{stance.poll().pollType}}_options.{{option.name}}_meaning"}
+
+  %poll_common_stance_reason.animated{stance: "stance", ng-show: "selectedOptionId", ng-if: "stance"}
+  .lmo-md-actions
+    %div{ng-if: "!stance.isNew()"}
+    %show_results_button{ng-if: "stance.isNew()"}
+    %md-button.md-primary.md-raised.poll-common-vote-form__submit{ng-click: "submit()", translate: "poll_common.vote", ng-disabled: "!selectedOptionId"}

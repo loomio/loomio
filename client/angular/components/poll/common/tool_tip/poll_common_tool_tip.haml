@@ -1,0 +1,10 @@
+.poll-common-tool-tip
+  .poll-common-tool-tip__expanded{ng-if: "!collapsed"}
+    .poll-common-tool-tip__expanded-body.md-body-1{translate: "poll_{{poll.pollType}}_form.tool_tip_expanded"}
+    .poll-common-tool-tip__learn-more-link.md-body-1{ng-if: "showHelpLink", translate: "poll_common_form.loomio_school_link"}
+    .lmo-flex.lmo-flex__space-around
+      %md-button.md-accent.poll-common-tool-tip__collapse{translate: "common.ok_got_it", ng-click: "hide()"}
+
+  .poll-common-tool-tip__collapsed.md-caption{ng-if: "collapsed"}
+    %span.poll-common-tool-tip__collapsed-body{translate: "poll_{{poll.pollType}}_form.tool_tip_collapsed"}
+    %span.poll-common-tool-tip__learn-more{translate: "common.expand", ng-click: "show()"}

@@ -1,0 +1,30 @@
+.poll-common-ranked-choice-chart {
+  width: 100%;
+  text-align: left;
+  position: relative;
+}
+
+.poll-common-ranked-choice-chart__cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 72px;
+  padding: 4px;
+  &.poll-common-ranked-choice-chart__cell--name {
+    justify-content: flex-start;
+    background-repeat:no-repeat;
+  }
+}
+
+.poll-common-ranked-choice-chart__cell-column {
+  padding: 0 4px;
+}
+
+@media (max-width: $tiny-max-px) {
+  .poll-common-ranked-choice-chart__table {
+    position: absolute;
+    right: 0;
+    background: rgba(255,255,255,0.7);
+    box-shadow: 0 0 32px 6px white;
+  }
+}

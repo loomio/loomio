@@ -1,0 +1,9 @@
+.add-comment-panel.lmo-card-padding{ng-if: "show", ng-class: "{'thread-item--indent': indent()}"}
+  .lmo-flex--row{ng-if: "canAddComment()"}
+    .thread-item__avatar.lmo-margin-right
+      %user_avatar{user: "actor", size: "small"}
+    .thread-item__body.lmo-flex--column.lmo-flex__horizontal-center
+      %comment_form{event-window: "eventWindow"}
+  .add-comment-panel__join-actions{ng-if: "!canAddComment()"}
+    %join_group_button{group: "discussion.group()", ng-if: "isLoggedIn()", block: "true"}
+    %md-button.md-primary.md-raised.add-comment-panel__sign-in-btn{translate: "comment_form.sign_in", ng-click: "signIn()", ng-if: "!isLoggedIn()"}

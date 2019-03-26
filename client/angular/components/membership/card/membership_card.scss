@@ -1,0 +1,30 @@
+.membership-card__membership {
+  padding: 8px 0;
+}
+
+.membership-card__search {
+  margin: 0;
+  width: 0;
+  visibility: hidden;
+  transition: width 0.25s ease-in-out;
+  &--open {
+    visibility: visible;
+    width: 100%;
+  }
+
+  .md-button--tiny {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.membership-card__last-seen {
+  color: $grey-on-white;
+}
+
+.membership-card__title {
+  line-height: 36px;
+}

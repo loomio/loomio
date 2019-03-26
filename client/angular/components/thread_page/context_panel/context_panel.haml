@@ -1,0 +1,46 @@
+%section.context-panel.lmo-card-padding.lmo-action-dock-wrapper{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
+  .context-panel__top
+    .context-panel__status{ng-if: "status()", ng-attr-title: "{{statusTitle()}}", ng-switch: "status()"}
+      %i.mdi.mdi-pin{ng-switch-when: "pinned"}
+
+    .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
+      %h1.lmo-h1.context-panel__heading{ng-if: "!discussion.translaion"}
+        {{discussion.title}}
+      %h1.lmo-h1{ng-if: "discussion.translation"}
+        %translation{model: "discussion", field: "title"}
+
+    %context_panel_dropdown{discussion: "discussion"}
+
+  .context-panel__details.md-body-1.lmo-flex--row
+    %user_avatar.lmo-margin-right{user: "discussion.author()", size: "small"}
+    %span
+      %strong> {{::discussion.authorName()}}
+      %span{aria-hidden: "true"}·
+      %timeago.nowrap{timestamp: "::discussion.createdAt" }>
+      %span{aria-hidden: "true"}·
+      %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
+        %i.mdi.mdi-lock-outline>
+        %span{translate: "common.privacy.private"}>
+      %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public{ng-show: "!discussion.private"}>
+        %i.mdi.mdi-earth>
+        %span{translate: "common.privacy.public"}>
+      %span{ng-show: "discussion.seenByCount > 0"}>
+        %span{aria-hidden: "true"}>·
+        %span.context-panel__seen_by_count{ translate: "thread_context.seen_by_count", translate-value-count: "{{discussion.seenByCount}}"}
+      %span{ng-if: "discussion.forkedEvent().discussion()"}
+        %span{aria-hidden: "true"}>·
+        %span{translate: "thread_context.forked_from"}>
+        %a{lmo-href-for: "discussion.forkedEvent()"}>
+          {{discussion.forkedEvent().discussion().title}}
+    .lmo-badge.lmo-pointer{translate: "common.privacy.closed", ng-if: "discussion.closedAt", md-colors: "{color: 'warn-600', 'border-color': 'warn-600'}"}
+      %md-tooltip {{ discussion.closedAt | exactDateWithTime }}
+    %outlet.lmo-flex{name: "after-thread-title", model: "discussion"}
+
+  .context-panel__description.lmo-markdown-wrapper{ng-if: "!discussion.translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
+  %translation.lmo-markdown-wrapper{ng-if: "discussion.translation", model: "discussion", field: "description"}
+
+  %document_list{model: "discussion", skip-fetch: "true"}
+
+  .lmo-md-actions
+    %reactions_display.context-panel__actions-left{model: "discussion", load: "true"}
+    %action_dock{model: "discussion", actions: "actions"}

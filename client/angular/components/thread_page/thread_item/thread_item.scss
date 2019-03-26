@@ -1,0 +1,83 @@
+.thread-item {
+  padding: 4px $cardPaddingSize;
+}
+
+.thread-item--unread {
+  padding-left: $cardPaddingSize - 2px;
+  border-left: 2px solid;
+  &.thread-item--indent {
+    padding-left: $cardPaddingSize + 40px;
+    // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding))
+  }
+}
+
+.thread-item--indent {
+  padding-left: $cardPaddingSize + 42px;
+}
+
+.thread-item--indent-margin {
+  margin-left: $cardPaddingSize + 42px;
+}
+
+.thread-item__title {
+  /* these styles break with BEM but they keep the translations clean*/
+  color: $grey-on-white;
+  strong, a {
+    color: $primary-text-color;
+    @include md-body-2;
+  }
+  strong:nth-child(2) {
+    font-weight: normal;
+    color: $grey-on-white;
+  }
+}
+
+
+.thread-item__headline {
+  min-height: 28px;
+}
+
+.thread-item__body {
+  width: 100%;
+  min-width: 0;
+}
+@media (max-width: $tiny-max-px){
+  .thread-item__directive {
+    margin-left: -42px;
+  }
+}
+
+
+.thread-item__footer {
+  @include fontSmall();
+  color: $grey-on-white;
+  clear: both;
+}
+
+.thread-item__actions {
+  margin-right: 3px;
+  display: inline-block;
+}
+
+.thread-item__link:hover  {
+  text-decoration: underline;
+}
+
+.thread-item__link abbr span {
+  font-weight: normal;
+  color: $grey-on-white;
+}
+
+.thread-item__action {
+  @include lmoBtnLink;
+  color: $link-color;
+}
+
+.thread-item__action--view-edits {
+  @include lmoBtnLink;
+  color: $grey-on-white;
+}
+
+.thread-item__timestamp {
+  display: inline-block;
+}

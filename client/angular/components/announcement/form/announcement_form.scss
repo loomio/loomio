@@ -1,0 +1,29 @@
+.announcement-form__checkbox {
+  margin: 16px 0;
+}
+
+.announcement-form__list-item,
+.announcement-form__invited {
+  padding: 0 !important;
+}
+
+.announcement-form__copy {
+  margin-bottom: 8px;
+}
+
+.announcement-form__invite {
+  margin-bottom: 16px;
+}
+
+.announcement-form__shareable-link,
+.announcement-form__help {
+  margin: 8px 0;
+}
+
+.announcement-form__audience {
+  height: 42px;
+  min-height: 42px;
+  margin-bottom: 8px;
+  color: $primary-text-color;
+  i { opacity: 0.8; }
+}

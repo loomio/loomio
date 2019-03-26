@@ -1,0 +1,35 @@
+.thread-preview
+  %a.thread-preview__link{lmo-href-for: "thread", md-colors: "{'border-color': 'primary-500'}", ng-class: "{'thread-preview__link--unread': thread.isUnread()}"}
+    .sr-only
+      %span {{thread.authorName()}}: {{thread.title}}.
+      %span{ng-if: "thread.hasUnreadActivity()", translate: "dashboard_page.aria_thread.unread", translate-value-count: "{{ thread.unreadItemsCount() }}"}
+
+    .thread-preview__icon
+      %user_avatar{ng-if: "!thread.activePoll()", user: "thread.author()", size: "medium"}
+      %poll_common_chart_preview{ng-if: "thread.activePoll()", poll: "thread.activePoll()"}
+
+    .thread-preview__details
+      .thread-preview__text-container
+        .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }"}
+          {{thread.title}}
+        .thread-preview__unread-count{ng-if: "thread.hasUnreadActivity()"}
+          ({{thread.unreadItemsCount()}})
+
+      .thread-preview__text-container
+        .thread-preview__group-name
+          {{ thread.group().fullName }} ·
+
+          %timeago{timestamp: "thread.lastActivityAt"}>
+        .lmo-badge.lmo-pointer{ng-if: "thread.closedAt", md-colors: "{color: 'warn-600', 'border-color': 'warn-600'}", translate: "common.privacy.closed"}
+        %outlet{name: "after-thread-preview", model: "thread"}
+
+    .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'context_panel.thread_status.pinned' | translate}}"}
+      %i.mdi.mdi-pin
+
+  .thread-preview__actions.lmo-hide-on-xs{ng-if: "thread.discussionReaderId"}
+    %md-button.md-raised.thread-preview__dismiss{ng-click: "dismiss()", ng-disabled: "!thread.isUnread()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>
+      .mdi.mdi-check
+    %md-button.md-raised.thread-preview__mute{ng-click: "muteThread()", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}", aria-label: "{{ 'volume_levels.mute' | translate }}" }>
+      .mdi.mdi-volume-mute
+    %md-button.md-raised.thread-preview__unmute{ng-click: "unmuteThread()", ng-show: "thread.isMuted()", title: "{{ 'volume_levels.unmute' | translate }}", aria-label: "{{ 'volume_levels.unmute' | translate }}"}>
+      .mdi.mdi-volume-plus

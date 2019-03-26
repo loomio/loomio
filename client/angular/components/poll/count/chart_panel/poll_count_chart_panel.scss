@@ -1,0 +1,33 @@
+.poll-count-chart-panel__chart-container {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.poll-count-chart-panel__progress {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.poll-count-chart-panel__incomplete {
+  flex-grow: 1;
+  background-color: $background-color;
+}
+
+.poll-count-chart-panel__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.poll-count-chart-panel__numerator {
+  font-size: 72px;
+  line-height: 72px;
+}

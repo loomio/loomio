@@ -1,0 +1,16 @@
+.poll-common-school-link {
+  display: flex;
+  @include fontTiny;
+  line-height: 18px;
+  font-style: normal;
+  margin-bottom: 30px;
+}
+
+.poll-common-school-link i {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.poll-common-school-link a {
+  cursor: pointer;
+}

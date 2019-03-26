@@ -1,0 +1,17 @@
+  .poll-common-details-panel.lmo-action-dock-wrapper
+    %h3.lmo-card-subheading{translate: "poll_common.details", ng-if: "poll.outcome()"}
+    .poll-common-details-panel__started-by
+      %span{translate: "poll_card.started_by", translate-value-name: "{{poll.authorName()}}"}
+      %span{aria-hidden: "true"}>·
+      %poll_common_closing_at{poll: "poll"}
+      %span{ng-if: "poll.anonymous"}>·
+      %span.lmo-badge.lmo-pointer{ng-if: "poll.anonymous", md-colors: "{color: 'primary-600', 'border-color': 'primary-600'}", translate: "common.anonymous"}
+
+    .poll-common-details-panel__details.lmo-markdown-wrapper{ng-if: "!translation", marked: "poll.cookedDetails()"}
+    .poll-common-details-panel__details{ng-if: "poll.translation"}
+      %translation.lmo-markdown-wrapper{model: "poll", field: "details"}
+    %document_list{model: "poll"}
+
+    .lmo-md-actions
+      %reactions_display{model: "poll", load: "true"}
+      %action_dock{model: "poll", actions: "actions"}

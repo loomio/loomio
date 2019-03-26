@@ -1,0 +1,19 @@
+.notification {
+  display: flex;
+  @include listTransition;
+  padding: 13px;
+}
+
+.notification:hover {
+  text-decoration: none;
+  background-color: $background-color;
+}
+
+
+.notification__avatar {
+  margin-right: 13px;
+}
+
+.notification__content {
+  flex-shrink: 2;
+}

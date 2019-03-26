@@ -1,0 +1,17 @@
+.auth-identity-form
+  %h2.lmo-h2{translate: "auth_form.hello", translate-value-name: "{{user.name || user.email}}"}
+  %auth_avatar{user: "user"}
+
+  .auth-identity-form__options
+    .auth-identity-form__new-account
+      %p{translate: "auth_form.new_to_loomio", translate-values: "{site_name: siteName}"}
+      %md-button.md-primary.md-raised{ng-click: "createAccount()", translate: "auth_form.create_account"}
+
+    .auth-identity-form__existing-account
+      %p{translate: "auth_form.already_a_user", translate-values: "{site_name: siteName}"}
+      %md-input-container.md-block.auth-email-form__email
+        %label{translate: "auth_form.email"}
+        %input.lmo-primary-form-input#email{name: "email", type: "text", md-autofocus: "true", placeholder: "{{ 'auth_form.email_placeholder' | translate}}", ng-model: "email"}
+        %validation_errors{subject: "user", field: "email"}
+
+      %md-button{ng-click: "submit()", translate: "auth_form.link_accounts"}

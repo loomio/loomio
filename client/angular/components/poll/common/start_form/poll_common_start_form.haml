@@ -1,0 +1,6 @@
+%md-list.decision-tools-card__poll-types
+  %md-list-item.decision-tools-card__poll-type{class: "decision-tools-card__poll-type--{{pollType}}", ng-click: "startPoll(pollType)", ng-repeat: "pollType in pollTypes() track by $index", aria-label: "{{'poll_types.'+pollType | translate}}"}
+    %i.mdi.mdi-24px.decision-tools-card__icon{class: "{{fieldFromTemplate(pollType, 'material_icon')}}"}
+    .decision-tools-card__content
+      .decision-tools-card__poll-type-title.md-body-1{translate: "poll_types.{{pollType}}"}
+      .decision-tools-card__poll-type-subtitle.md-caption{translate: "poll_{{pollType}}_form.tool_tip_collapsed"}

@@ -1,0 +1,15 @@
+.revision-history-nav.lmo-flex.lmo-flex--row.lmo-grey-on-white.lmo-flex__center.lmo-flex__space-between
+  %md-button.md-button--tiny.revision-history-nav--oldest{ng-disabled:"isOldest()", ng-click:"setOldestRevision()"}
+    %i.mdi.mdi-arrow-collapse-left
+  %md-button.md-button--tiny.revision-history-nav--previous{ng-disabled:"isOldest()", ng-click:"setPreviousRevision()"}
+    %i.mdi.mdi-arrow-left
+  %span.lmo-flex__grow.align-center{ng-if:"!isOldest() && !isNewest()", replace:"true"}
+    %span {{currentIndex + 1}}
+    %span \/
+    %span {{model.versionsCount}}
+  %span.lmo-flex__grow.align-center{ng-if:"isOldest()", translate:"revision_history_modal.original_text "}
+  %span.lmo-flex__grow.align-center{ng-if:"isNewest()", translate:"revision_history_modal.current_revision"}
+  %md-button.md-button--tiny.revision-history-nav--next{ng-disabled:"isNewest()", ng-click:"setNextRevision()"}
+    %i.mdi.mdi-arrow-right
+  %md-button.md-button--tiny.revision-history-nav--latest{ng-disabled:"isNewest()", ng-click:"setLatestRevision()"}
+    %i.mdi.mdi-arrow-collapse-right

@@ -1,0 +1,51 @@
+$boxTinySize: 20px;
+$boxSmallSize: 30px;
+$boxMediumSize: 50px;
+$boxLargeSize: 80px;
+$boxFeaturedSize: 175px;
+
+@mixin smallIcon {
+  @include roundedCorners;
+  width: $boxSmallSize;
+  height: $boxSmallSize;
+}
+
+.lmo-box--tiny {
+  text-align: center;
+  width: $boxTinySize;
+  height: $boxTinySize;
+  min-width: $boxTinySize;
+  min-height: $boxTinySize;
+}
+
+.lmo-box--small {
+  text-align: center;
+  width: $boxSmallSize;
+  height: $boxSmallSize;
+  min-width: $boxSmallSize;
+  min-height: $boxSmallSize;
+}
+
+.lmo-box--medium {
+  text-align: center;
+  width: $boxMediumSize;
+  height: $boxMediumSize;
+  min-width: $boxMediumSize;
+  min-height: $boxMediumSize;
+}
+
+.lmo-box--large {
+  text-align: center;
+  width: $boxLargeSize;
+  height: $boxLargeSize;
+  min-width: $boxLargeSize;
+  min-height: $boxLargeSize;
+}
+
+.lmo-box--featured {
+  text-align: center;
+  width: $boxFeaturedSize;
+  height: $boxFeaturedSize;
+  min-width: $boxFeaturedSize;
+  min-height: $boxFeaturedSize;
+}

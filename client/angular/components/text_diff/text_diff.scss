@@ -1,0 +1,20 @@
+.text-diff {
+  ins {
+    background: lighten($agree-color, 50%);
+    @include roundedCorners;
+    margin: 2px;
+    padding: 0 4px;
+  }
+  del {
+    background: lighten($disagree-color, 20%);
+    @include roundedCorners;
+    margin: 2px;
+    padding: 0 4px;
+  }
+  td.diff-ins {
+    background: lighten($agree-color, 55%);
+  }
+  td.diff-del {
+    background: lighten($disagree-color, 30%);
+  }
+}

@@ -1,0 +1,12 @@
+%md-list-item.poll-meeting-time-field{flex: "true", layout: "row"}
+  %md-input-container.poll-meeting-time-field__datepicker-container
+    %label.poll-common-closing-at-field__label{translate: "poll_meeting_time_field.new_time_slot"}
+    %md-datepicker.lmo-flex.lmo-flex__baseline.poll-meeting-time-field__datepicker{ng-model: "poll.optionDate", md-min-date: "minDate", md-placeholder: "{{ 'poll_meeting_form.add_option_placeholder' | translate }}", ng-min-date: "dateToday", md-hide-icons: "calendar"}>
+  %md-input-container.poll-meeting-time-field__timepicker-container{ng-if: "poll.customFields.meeting_duration"}
+    %md-select{ng-model: "poll.optionTime", aria-label: "{{ 'poll_meeting_time_field.closing_hour' | translate }}"}
+      %md-option{ng-repeat: "time in times track by $index", ng-value: "time"}
+        {{ time }}
+  .lmo-flex__grow
+  .poll-meeting-time-field__add
+    %md-button.poll-meeting-form__option-button.lmo-inline-action{ng-click: "poll.addOption()", aria-label: "{{ 'poll_meeting_form.add_option_placeholder' | translate }}"}
+      %i.mdi.mdi-plus.poll-meeting-form__option-icon

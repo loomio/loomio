@@ -1,0 +1,22 @@
+%form.poll-meeting-vote-form{ng-submit: "submit()"}
+  %h3.lmo-card-subheading.lmo-flex__grow{translate: "poll_meeting_vote_form.your_response"}
+  %md-list.poll-common-vote-form__options
+    %md-list-item.lmo-flex--row.lmo-flex__horizontal-center.lmo-flex__center
+      %h3.lmo-h3.poll-meeting-vote-form--box{translate: "poll_meeting_vote_form.can_attend"}
+      %h3.lmo-h3.poll-meeting-vote-form--box{translate: "poll_meeting_vote_form.if_need_be", ng-if:"canRespondMaybe"}
+      %h3.lmo-h3.poll-meeting-vote-form--box{translate: "poll_meeting_vote_form.unable"}
+      %time_zone_select.lmo-margin-left
+    %md-list-item.poll-common-vote-form__option.lmo-flex--row{ng-repeat: "option in stance.poll().pollOptions() | orderBy:'name' track by option.id"}
+      %md-button.poll-meeting-vote-form--box{md-colors:"selectedColor(option, i)", ng-repeat:"i in stanceValues", ng-click:"click(option.id, i)"}
+        %img.poll-common-form__icon{ng-src: "/img/agree.svg", ng-if: "i == 2"}
+        %img.poll-common-form__icon{ng-src: "/img/abstain.svg", ng-if: "i == 1"}
+        %img.poll-common-form__icon{ng-src: "/img/disagree.svg", ng-if: "i == 0"}
+      %poll_meeting_time.lmo-margin-left{name: "option.name", zone: "zone"}
+  %validation_errors{subject: "stance", field: "stanceChoices"}
+  %poll_common_add_option_button{poll: "stance.poll()"}
+  %poll_common_stance_reason{stance: "stance"}
+
+  .poll-common-form-actions.lmo-flex.lmo-flex__space-between
+    %show_results_button{ng-if: "stance.isNew()"}
+    %div{ng-if: "!stance.isNew()"}
+    %md-button.md-primary.md-raised.poll-common-vote-form__submit{type: "submit", translate: "poll_common.vote", aria-label: "{{ 'poll_meeting_vote_form.vote' | translate }}"}

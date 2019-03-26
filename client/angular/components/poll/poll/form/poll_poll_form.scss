@@ -1,0 +1,20 @@
+.poll-poll-form__add-option-field,
+.poll-poll-form__option-text {
+  flex-grow: 1;
+  width: 100%;
+  @include truncateText;
+}
+
+.poll-poll-form__option-button {
+  display: flex;
+  min-width: 24px;
+  margin: 0 16px;
+}
+
+.poll-poll-form__option-icon--add {
+  margin-top: 16px !important;
+}
+
+.poll-poll-form__option-icon {
+  margin: auto;
+}

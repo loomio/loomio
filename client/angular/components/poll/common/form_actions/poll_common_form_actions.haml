@@ -1,0 +1,8 @@
+.poll-common-form-actions.lmo-md-actions
+  %span{ng-if: "!poll.isNew()"}
+  %md-button.md-accent{ng-if: "poll.isNew()", ng-click: "$emit('previousStep')", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
+  .lmo-md-actions
+    %outlet{name: "before-poll-submit", model: "poll"}
+    %md-button.md-primary.md-raised.poll-common-form__submit{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_common_form.update", aria-label: "{{ 'poll_common_form.update' | translate }}"}
+    %md-button.md-primary.md-raised.poll-common-form__submit{ng-click: "submit()", ng-if: "poll.isNew() && poll.groupId", translate: "poll_common_form.start", aria-label: "{{ 'poll_common_form.start' | translate }}"}
+    %md-button.md-primary.md-raised.poll-common-form__submit{ng-click: "submit()", ng-if: "poll.isNew() && !poll.groupId", translate: "common.action.next", aria-label: "{{ 'common.action.next' | translate }}"}

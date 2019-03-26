@@ -1,0 +1,10 @@
+.discussion-fork-actions {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: $z-low;
+}
+
+.discussion-fork-actions__notice {
+  padding: 8px;
+}

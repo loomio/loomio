@@ -1,0 +1,21 @@
+.help-bubble {
+  line-height: 20px;
+  margin: 0 8px;
+  cursor: pointer;
+  color: $grey-on-white;
+}
+
+.help-bubble__tooltip {
+  max-width: 200px;
+  padding: 4px 8px;
+  margin-top: 4px !important;
+  white-space: normal;
+  height: auto;
+  text-align: left;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+.help-bubble .mdi {
+  font-size: 20px;
+}

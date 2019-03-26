@@ -1,0 +1,23 @@
+.poll-ranked-choice-vote-form.lmo-relative
+  %h3.lmo-card-subheading{translate: "poll_common.your_response"}
+  %poll_common_anonymous_helptext{ng-if: "stance.poll().anonymous"}
+  %p.lmo-hint-text{translate: "poll_ranked_choice_vote_form.helptext", translate-value-count: "{{numChoices}}"}
+  .lmo-flex{sv-root: "true", layout: "row"}
+    %md-list.lmo-flex{layout: "column"}
+      %md-list-item.poll-ranked-choice-vote-form__ordinal{ng-repeat: "option in pollOptions | orderBy: 'priority' track by option.id"}
+        %span{ng-if: "$index < numChoices"} {{$index+1}}
+
+    %md-list.lmo-flex.lmo-flex__grow{layout: "column", sv-part: "pollOptions"}
+      %md-list-item.poll-common-vote-form__option.lmo-flex.lmo-pointer.lmo-flex__space-between{ng-click: "setSelected(option)", sv-element: "true", layout: "row", ng-class: "{'poll-common-vote-form__option--selected': isSelected(option)}", ng-repeat: "option in pollOptions track by option.id"}
+        .poll-common-vote-form__option-name.poll-common-vote-form__border-chip.lmo-flex__grow{ng-style: "{'border-color': option.color}"}
+          {{option.name}}
+        %i.mdi.mdi-drag.poll-ranked-choice-vote-form__drag-handle
+
+  %validation_errors{subject: "stance", field: "stanceChoices"}
+  %poll_common_add_option_button{poll: "stance.poll()"}
+  %poll_common_stance_reason{stance: "stance"}
+
+  .poll-common-form-actions.lmo-flex.lmo-flex__space-between
+    %show_results_button{ng-if: "stance.isNew()"}
+    %div{ng-if: "!stance.isNew()"}
+    %md-button.md-primary.md-raised.poll-common-vote-form__submit{ng-click: "submit()", translate: "poll_common.vote", aria-label: "{{ 'poll_poll_vote_form.vote' | translate }}"}

@@ -1,0 +1,17 @@
+.registered-apps-page {
+  @include card;
+  margin-top: 16px;
+}
+
+.registered-apps-page__apps {
+  width: 100%;
+}
+
+.registered-apps-page__code {
+  max-width: 300px;
+  @include truncateText;
+}
+
+.registered-apps-page__clear {
+  min-width: 32px;
+}

@@ -1,0 +1,21 @@
+%md-block.poll-common-form-options
+  %label.poll-common-form__options-label.md-caption{ng-if: "!datesAsOptions", translate: "poll_common_form.options"}
+  .poll-meeting-form__label-and-timezone{ng-if: "datesAsOptions"}
+    %label.nowrap.poll-common-form__options-label.md-caption.lmo-flex__grow{translate: "poll_meeting_form.timeslots"}
+  %md-list.md-block.poll-common-form__options
+    %validation_errors{subject: "poll", field: "pollOptions"}
+    %md-list-item{ng-if: "!poll.pollOptionNames.length"}
+      %p.lmo-hint-text{ng-if: "datesAsOptions", translate: "poll_meeting_form.no_options", translate-values: "{zone: currentZone()}"}
+      %p.lmo-hint-text{ng-if: "!datesAsOptions", translate: "poll_common_form.no_options"}
+    %md-list-item.poll-common-form__list-item{ng-repeat: "name in poll.pollOptionNames"}
+      %span.poll-poll-form__option-text{ng-if: "!datesAsOptions"} {{name}}
+      %poll_meeting_time.poll-meeting-form__option-text.lmo-flex__grow{ng-if: "datesAsOptions", name: "name", zone: "zone"}
+      %md-button.poll-poll-form__option-button{ng-if: "canRemoveOption(name)", ng-click: "removeOption(name)", aria-label: "{{ 'poll_poll_form.remove_option' | translate }}"}
+        %i.mdi.mdi-close.mdi-24px.poll-poll-form__option-icon
+    %poll_meeting_time_field{ng-if: "datesAsOptions", poll: "poll"}
+    %md-list-item.poll-common-form__add-option{ng-if: "!datesAsOptions", flex: "true", layout: "row"}
+      %md-input-container.poll-poll-form__add-option-field{md-no-float: "true"}
+        %input.poll-poll-form__add-option-input{ng-model: "poll.newOptionName", type: "text", placeholder: "{{ 'poll_common_form.options_placeholder' | translate }}"}
+      %div
+        %md-button.poll-poll-form__option-button{ng-click: "poll.addOption()", aria-label: "{{ 'poll_poll_form.add_option_placeholder' | translate }}"}
+          %i.mdi.mdi-plus.mdi-24px.poll-poll-form__option-icon.poll-poll-form__option-icon--add

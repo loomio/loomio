@@ -1,0 +1,16 @@
+.install-slack-invite-form
+  %h2.lmo-h2{translate: "install_slack.invite.heading"}
+  %p.lmo-hint-text{translate: "install_slack.invite.helptext"}
+  %md-select{md-autofocus: "true", ng-model: "groupIdentity.customFields.slack_channel_id", placeholder: "{{'install_slack.invite.select_a_channel' | translate}}", md-on-open: "fetchChannels()"}
+    %md-option{ng-value: "channel.id", ng-repeat: "channel in channels | orderBy: 'name'"}
+      %span &#35;{{ channel.name }}
+
+  .md-list-item-text.lmo-flex.lmo-flex__space-between
+    .poll-common-checkbox-option__text
+      %h3.lmo-h3{translate: "install_slack.invite.publish_group"}
+      %p.md-caption{translate: "install_slack.invite.publish_group_helptext_on", ng-if: "groupIdentity.makeAnnouncement"}
+      %p.md-caption{translate: "install_slack.invite.publish_group_helptext_off", ng-if: "!groupIdentity.makeAnnouncement"}
+    %md-checkbox{ng-model: "groupIdentity.makeAnnouncement"}
+
+  .lmo-flex.install-slack-form__actions{layout: "column"}
+    %md-button.md-primary.md-raised{ng-disabled: "!groupIdentity.customFields.slack_channel_id", translate: "install_slack.invite.set_channel", ng-click: "submit()"}

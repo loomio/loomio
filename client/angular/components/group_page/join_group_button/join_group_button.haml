@@ -1,0 +1,6 @@
+.blank
+  .join-group-button{ng-if: "!isMember()"}
+    .blank{ng-if: "canJoinGroup()"}
+      %md-button.md-raised.md-primary.join-group-button__join-group{ng-class: "{'btn-block': block}", translate: "join_group_button.join_group", ng-click: "joinGroup()"}
+    .blank{ng-if: "canRequestMembership()"}
+      %md-button.md-raised.md-primary.join-group-button__ask-to-join-group{ng-class: "{'btn-block': block}", ng-disabled: "hasRequestedMembership()", translate: "join_group_button.join_group", ng-click: "requestToJoinGroup()"}

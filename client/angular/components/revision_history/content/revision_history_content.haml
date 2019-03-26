@@ -1,0 +1,15 @@
+  .revision-history-content{ng-switch:"model.constructor.singular"}
+    .revision-history-content--markdown.text-diff{ng-switch-when:"comment", ng-bind-html: "version.changes.body"}
+    .revision-history-content--markdown.text-diff{ng-switch-when:"stance", ng-bind-html: "version.changes.reason"}
+    %div{ng-switch-when:"discussion"}
+      %text_diff.lmo-h1.revision-history-content--header{before: "version.changes.title[0]", after: "version.changes.title[1]"}
+      .revision-history-content--markdown.text-diff{ng-bind-html: "version.changes.description"}
+      %p.text-diff{ng-if:"version.changes.private && !version.isOriginal()"}
+        %ins{translate:"revision_history_modal.private_changed", translate-values:"noticeValues('private')"}
+      %p.text-diff{ng-if:"version.changes.group_id && !version.isOriginal()"}
+        %ins{translate:"revision_history_modal.group_id_changed", translate-values:"noticeValues('group_id')"}
+    %div{ng-switch-when:"poll"}
+      %text_diff.poll-common-card__title.revision-history-content--header{before: "version.changes.title[0]", after: "version.changes.title[1]"}
+      .revision-history-content--markdown.text-diff{ng-bind-html: "version.changes.details"}
+      %p.text-diff{ng-if:"version.changes.closing_at"}
+        %ins{translate:"revision_history_modal.closing_at_changed", translate-values:"noticeValues('closing_at')"}>

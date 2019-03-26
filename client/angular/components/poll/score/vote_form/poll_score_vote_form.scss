@@ -1,0 +1,38 @@
+.poll-score-vote-form__options{
+}
+
+.poll-score-vote-form__option {
+  padding: 0 !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.poll-score-vote-form__option-label-container {
+  padding: 0 !important;
+  display: flex;
+  flex: 1;
+  align-self: stretch;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.poll-score-vote-form__option-label {
+  padding: 0 !important;
+}
+
+.poll-score-vote-form__input-container {
+  width: 90%;
+  min-height: 48px;
+  display: flex;
+}
+
+.poll-score-vote-form__score-input {
+  margin-left: 4px;
+  margin-right: 4px;
+  order: 0 !important;
+  text-align: center;
+  position: relative;
+  top: 4px;
+}

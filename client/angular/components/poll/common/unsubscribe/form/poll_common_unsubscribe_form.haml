@@ -1,0 +1,8 @@
+.poll-common-unsubscribe-form
+  .md-list-item-text.lmo-flex.lmo-flex__space-between
+    .poll-common-checkbox-option__text
+      %h3.lmo-h3
+        %span{translate: "poll_common_unsubscribe_form.label"}
+      %p.md-caption{translate: "poll_common_unsubscribe_form.helptext_on", ng-if: "poll.subscribed"}
+      %p.md-caption{translate: "poll_common_unsubscribe_form.helptext_off", ng-if: "!poll.subscribed"}
+    %md-checkbox{ng-model: "poll.subscribed", ng-change: "toggle()"}

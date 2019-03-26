@@ -1,0 +1,11 @@
+.poll-common-form-fields
+  %poll_common_tool_tip{poll: "poll"}
+
+  %md-input-container.md-block
+    %label{translate: "poll_common_form.title"}
+    %input.lmo-primary-form-input.poll-common-form-fields__title{type: "text", ng-required: "true", placeholder: "{{titlePlaceholder()}}", ng-model: "poll.title", ng-model-options: "{ allowInvalid: true }", md-maxlength: "250"}
+    %validation_errors{subject: "poll", field: "title"}
+
+  %lmo_textarea{model: "poll", field: "details", label: "'poll_common_form.details' | translate", placeholder: "detailsPlaceholder()"}
+
+  %outlet{name: "after-poll-form-textarea", model: "poll"}

@@ -1,0 +1,5 @@
+.poll-proposal-chart-preview
+  %poll_proposal_chart.poll-common-collapsed__pie-chart{stance_counts: "stanceCounts", diameter: "50"}
+  .poll-proposal-chart-preview__stance-container
+    .poll-proposal-chart-preview__stance{ng-if: "myStance", class: "poll-proposal-chart-preview__stance--{{myStance.pollOption().name}} "}
+    .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided{ng-if: "!myStance"} ?

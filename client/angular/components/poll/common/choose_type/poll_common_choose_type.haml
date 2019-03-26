@@ -1,0 +1,7 @@
+.poll-common-choose-type__select-poll-type
+  %div{class: "poll-common-choose-type__poll-type--{{pollType}}", ng-repeat: "pollType in pollTypes() track by $index"}
+    %md-list-item.poll-common-choose-type__poll-type{ng-click: "choose(pollType)"}
+      %i.mdi.mdi-24px.poll-common-choose-type__icon{class: "{{iconFor(pollType)}}"}
+      .poll-common-choose-type__content{class: "poll-common-choose-type__start-poll--{{pollType}}"}
+        .poll-common-choose-type__poll-type-title.md-subhead{translate: "decision_tools_card.{{pollType}}_title"}
+        .poll-common-choose-type__poll-type-subtitle.md-caption{translate: "poll_{{pollType}}_form.tool_tip_collapsed"}

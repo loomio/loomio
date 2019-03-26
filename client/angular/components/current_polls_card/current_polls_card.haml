@@ -1,0 +1,6 @@
+.current-polls-card.lmo-card{ng-if: "polls().length"}
+  %h2.lmo-card-heading.lmo-truncate-text{translate: "current_polls_card.title"}
+  .current-polls-card__polls
+    .current-polls-card__no-polls.lmo-hint-text{ng-if: "!canStartPoll() && !polls().length", translate: "current_polls_card.no_polls"}
+    %poll_common_preview{poll: "poll", ng-repeat: "poll in polls() track by poll.id"}
+  %loading{ng-if: "fetchRecordsExecuting"}

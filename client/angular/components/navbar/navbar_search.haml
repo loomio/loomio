@@ -1,0 +1,10 @@
+.navbar-search
+  %md-button.navbar-search__button.lmo-flex{ng-if: "!isOpen", ng-click: "open()"}
+    .sr-only{translate: "navbar.search.placeholder"}
+    %i.mdi.mdi-magnify.mdi-24px
+
+  %md-autocomplete.navbar-search__input{ng-if: "isOpen", md-min-length: 3, md-delay: 300, md-menu-class: "navbar-search__results", md-selected-item: "selectedResult", md-search-text: "query", md-selected-item-change: "goToItem(result)", md-items: "result in search(query)", placeholder: "{{ 'navbar.search.placeholder' | translate }}"}
+    %md-item-template
+      %search_result{result: "result"}
+    %md-not-found
+      %span{translate: "navbar.search.no_results"}

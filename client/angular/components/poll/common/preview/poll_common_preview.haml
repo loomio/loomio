@@ -1,0 +1,10 @@
+%a.poll-common-preview{href: "", lmo-href-for: "poll"}
+  %poll_common_chart_preview{poll: "poll"}
+  .poll-common-preview__body
+    .md-subhead.lmo-truncate-text
+      %span> {{poll.title}}
+    .md-caption.lmo-grey-on-white.lmo-truncate-text
+      %span{ng-if: "showGroupName()"} {{ poll.group().fullName }}
+      %span{ng-if: "!showGroupName()", translate: "poll_common_collapsed.by_who", translate-value-name: "{{poll.authorName()}}"}>
+      %span>·
+      %poll_common_closing_at{poll: "poll"}

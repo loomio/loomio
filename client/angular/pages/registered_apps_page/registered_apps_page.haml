@@ -1,0 +1,18 @@
+.lmo-one-column-layout
+  %loading{ng-show: "registeredAppsPage.loading"}
+  %main.registered-apps-page{ng-if: "!registeredAppsPage.loading"}
+    .lmo-flex.lmo-flex__space-between
+      %h1.lmo-h1{translate: "registered_apps_page.title"}
+      %md-button.md-primary.md-raised{ng-click: "registeredAppsPage.openApplicationForm()"}
+        %span{translate: "registered_apps_page.create_new_application"}
+
+    .lmo-placeholder{ng-if: "registeredAppsPage.applications().length == 0", translate: "registered_apps_page.no_applications"}
+    .lmo-flex{layout: "column", ng-if: "registeredAppsPage.applications().length > 0"}
+      .registered-apps-page__apps.lmo-flex.lmo-flex__center{layout: "row", ng-repeat: "application in registeredAppsPage.applications() | orderBy: 'name' track by application.id"}
+        %img.lmo-box--medium.lmo-margin-right{ng-src: "{{application.logoUrl}}"}>
+        .lmo-flex__grow
+          %strong
+            %a.nowrap{lmo-href-for: "application"} {{ application.name }}
+        %code.registered-apps-page__code.lmo-flex__grow{ng-repeat: "uri in application.redirectUriArray()"} {{uri}}
+        %md-button.registered-apps-page__clear.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center{ng-click: "registeredAppsPage.openDestroyForm(application)"}
+          .mdi.mdi-close
