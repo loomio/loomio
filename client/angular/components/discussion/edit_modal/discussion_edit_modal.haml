@@ -11,6 +11,5 @@
     %div{ng-switch: "currentStep"}
       %discussion_form.animated{discussion: "discussion", ng-switch-when: "save"}
       %announcement_form.animated{announcement: "announcement", ng-switch-when: "announce"}
-  %md-dialog-actions.lmo-slide-animation{ng-switch: "currentStep"}
-    %discussion_form_actions.animated{discussion: "discussion", ng-switch-when: "save"}
-    %announcement_form_actions.animated{announcement: "announcement", ng-switch-when: "announce"}
+  %md-dialog-actions.lmo-slide-animation{ng-if: "currentStep == 'save'"}
+    %discussion_form_actions.animated{discussion: "discussion"}

@@ -14,7 +14,7 @@ cs:
   user:
     deleted_user: "Odstraněný uživatel"
     error:
-      bad_login: "Nelze vás přihlásit. Zkuste to znovu."
+      bad_login: "Omlouváme se, toto heslo neodpovídá heslu již zadanému"
       username_must_be_alphanumeric: "Uživatelské jméno musí obsahovat pouze malá písmena a číslice"
   attachment:
     error:

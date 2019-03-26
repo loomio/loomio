@@ -18,7 +18,7 @@ es:
     placeholder_name: "Usuario invitado (%{hostname})"
     error:
       recaptcha: "No pudimos verificar que no eres un robot. Por favor intenta de nuevo"
-      bad_login: "No pudiste entrar, intenta de nuevo"
+      bad_login: "Lo lamentamos, esa contraseña no coincide con la que tenemos archivada"
       username_must_be_alphanumeric: "El nombre de usuario debe contener solamente letras y dígitos en minúscula "
   attachment:
     error:

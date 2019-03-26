@@ -18,7 +18,7 @@ de:
     placeholder_name: "eingeladener Nutzer (%{hostname})"
     error:
       recaptcha: "Es war uns nicht möglich zu bestätigen, dass du kein Computer bist. Bitte versuche es erneut."
-      bad_login: "Eine Anmeldung war nicht möglich. Bitte versuche es erneut."
+      bad_login: "Sorry, das Passwort passt nicht zu dem, welches wir in unserer Datei haben."
       username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
   attachment:
     error:

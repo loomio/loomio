@@ -8,4 +8,3 @@
     %announcement_form.animated{ng-switch-when: "announce", announcement: "announcement"}
   .lmo-flex.install-slack-form__actions{ng-switch: "currentStep"}
     %md-button{ng-if: "currentStep == 'choose'", ng-click: "$emit('$close')", translate: "install_slack.common.do_it_later"}
-    %announcement_form_actions{ng-switch-when: "announce", announcement: "announcement"}

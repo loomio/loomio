@@ -14,6 +14,7 @@
           %button.poll-dot-vote-vote-form__dot-button{type: "button", ng-click: "adjust(choice, 1)", ng-disabled: "dotsRemaining() == 0"}
             .mdi.mdi-24px.mdi-plus-circle-outline
   %validation_errors{subject: "stance", field: "stanceChoices"}
+  %poll_common_add_option_button{poll: "stance.poll()"}
 
   %poll_common_stance_reason{stance: "stance"}
 

@@ -6,7 +6,7 @@
       .poll-common-stance-icon__chip.lmo-margin-right{ng-style: "{'border-color': '{{option.color}}'}"}
       %span.poll-common-vote-form__option-name {{ option.name }}
   %validation_errors{subject: "stance", field: "stanceChoices"}
-
+  %poll_common_add_option_button{poll: "stance.poll()"}
   %poll_common_stance_reason.animated{stance: "stance", ng-show: "stance.poll().multipleChoice || selectedOptionIds.length", ng-if: "stance"}
 
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between

@@ -4,6 +4,6 @@
       %i.mdi.mdi-tag.mdi-24px
       %h1.lmo-h1{ng-if: "tag.isNew()", translate: "loomio_tags.modal_title"}
       %h1.lmo-h1{ng-if: "!tag.isNew()", translate: "loomio_tags.modal_edit_title"}
-      %material_modal_header_cancel_button
+      %dismiss_modal_button
   .md-dialog-content
     %tag_form{tag: "tag"}

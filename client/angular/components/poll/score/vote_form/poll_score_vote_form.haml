@@ -9,7 +9,7 @@
         %md-slider.poll-score-vote-form__score-slider{min: "0", max: "9", ng-model: "choice.score", aria-label: "score"}
         %input.poll-score-vote-form__score-input{type: "number", ng-model: "choice.score", aria-label: "score", aria-controls: "score-slider"}
   %validation_errors{subject: "stance", field: "stanceChoices"}
-
+  %poll_common_add_option_button{poll: "stance.poll()"}
   %poll_common_stance_reason{stance: "stance"}
 
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between

@@ -26,6 +26,7 @@ he:
     change_my_password: שנה סיסמה
   poll_mailer:
     common:
+      or: או
       unsubscribe: ביטול מינוי
       create_outcome: שתפ/י תוצאה
   poll_unsubscribe:
