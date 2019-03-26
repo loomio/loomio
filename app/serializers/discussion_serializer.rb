@@ -40,6 +40,12 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_many :active_polls, serializer: Full::PollSerializer, root: :polls
 
+  has_many :discussion_tags
+
+  def discussion_tags
+    Array(Hash(scope).dig(:tag_cache, object.id))
+  end
+
   def active_polls
     scope[:poll_cache].get_for(object, hydrate_on_miss: false)
   end

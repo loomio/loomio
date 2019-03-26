@@ -5,6 +5,10 @@ class LoggedOutUser
 
   alias :read_attribute_for_serialization :send
 
+  def tags
+    Tag.none
+  end
+
   def initialize(name: nil, email: nil, token: nil, membership_token: nil, locale: I18n.locale)
     @name = name
     @email = email

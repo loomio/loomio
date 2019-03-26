@@ -152,6 +152,12 @@ Loomio::Application.routes.draw do
       get :inbox, on: :collection
     end
 
+    get    '/discussions/tags/:tag_id', action: 'discussions#tags'
+    resources :tags
+
+    resources :discussion_tags, only: [:create, :destroy]
+
+
     resources :search, only: :index
 
     resources :polls,       only: [:show, :index, :create, :update, :destroy] do

@@ -94,6 +94,14 @@ class PermittedParams < Struct.new(:params)
     ]
   end
 
+  def discussion_tag
+    [:tag_id, :discussion_id]
+  end
+
+  def tag
+    [:name, :color, :group_id]
+  end
+
   def comment_attributes
     [:body, :body_format, :discussion_id, :parent_id, :document_ids, :files, :image_files,
      {document_ids: []}, {files: []}, {image_files: []}]

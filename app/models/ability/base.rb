@@ -18,6 +18,9 @@ module Ability
     prepend Ability::Reaction
     prepend Ability::Stance
     prepend Ability::User
+    prepend Ability::Tag
+    prepend Ability::DiscussionTag
+
 
     def initialize(user)
       @user = user
