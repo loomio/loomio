@@ -6,14 +6,12 @@ module.exports =
 <template lang="pug">
 .attachment-list
   .attachment-list__item(v-for="attachment in attachments" :key="attachment.id")
-    span {{ attachment }}
     a.lmo-pointer(v-if="attachment.preview_url" :href='attachment.download_url', target='_blank')
-      img(:src="attachment.preview_url")
+      img.attachment-list__preview(:src="attachment.preview_url")
     .attachment-list__item-details
+      v-icon(v-if="attachment.icon") {{ `mdi-${attachment.icon}` }}
       a(:href="attachment.download_url")
-        div
-          v-icon(v-if="attachment.icon") {{ `mdi-${attachment.icon}` }}
-          span {{ attachment.filename }}
+        span {{ attachment.filename }}
 </template>
 <style lang="scss">
 
@@ -29,5 +27,10 @@ module.exports =
 .attachment-list__item-details {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+
+.attachment-list__preview {
+  max-width: 100%;
 }
 </style>
