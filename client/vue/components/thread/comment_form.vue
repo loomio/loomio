@@ -35,7 +35,7 @@ module.exports =
 
     reset: ->
       @comment = Records.comments.build
-        body_format: "html"
+        bodyFormat: "html"
         body: ""
         discussionId: @eventWindow.discussion.id
         authorId: Session.user().id
