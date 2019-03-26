@@ -52,6 +52,7 @@ module.exports =
     v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')", :placeholder="$t('discussion_form.title_placeholder')", v-model='discussion.title', maxlength='255')
     //- validation-errors(:subject='discussion', field='title')
     //- textarea(lmo_textarea='', v-model='discussion.description', field='description', :placeholder="$t('discussion_form.context_placeholder')", :label="$t('discussion_form.context_label')", v-if='!discussion.isForking()')
+    lmo-textarea(:model='discussion' field="description" :placeholder="$t('discussion_form.context_placeholder')")
     v-list.discussion-form__options
       v-list-tile.discussion-form__privacy-form(v-if='showPrivacyForm()')
         v-radio-group(v-model='discussion.private')

@@ -6,11 +6,13 @@ class Comment < ApplicationRecord
   include HasDrafts
   include HasCreatedEvent
   include HasEvents
+  include HasRichText
 
   has_paper_trail only: [:body]
 
   is_translatable on: :body
   is_mentionable  on: :body
+  is_rich_text    on: :body
 
   belongs_to :discussion
   has_one :group, through: :discussion
@@ -21,16 +23,12 @@ class Comment < ApplicationRecord
   alias_attribute :author_id, :user_id
   alias_method :draft_parent, :discussion
 
-  has_many_attached :files
-  has_many_attached :image_files
-
   has_many :documents, as: :model, dependent: :destroy
 
   validates_presence_of :user
   validate :has_body_or_document
   validate :parent_comment_belongs_to_same_discussion
   validate :documents_owned_by_author
-  validates :body, {length: {maximum: Rails.application.secrets.max_message_length}}
 
   default_scope { includes(:user).includes(:documents).includes(:discussion) }
 
@@ -54,7 +52,6 @@ class Comment < ApplicationRecord
   delegate :members, to: :discussion
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
-  before_save :build_attachments
 
   def self.always_versioned_fields
     [:body]
@@ -62,14 +59,6 @@ class Comment < ApplicationRecord
 
   def created_event_kind
     :new_comment
-  end
-
-  def body=(content)
-    # if body_format == "html"
-    tags = %w[strong em b i p code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote]
-    attributes = %w[href src alt title class data-type data-done data-mention-id]
-    self[:body] = Rails::Html::WhiteListSanitizer.new.sanitize(content, tags: tags, attributes: attributes)
-    # end
   end
 
   def parent_event
@@ -106,20 +95,6 @@ class Comment < ApplicationRecord
   end
 
   private
-
-  def build_attachments
-    self[:attachments] = files.map do |file|
-      i = file.blob.slice(:id, :filename, :content_type, :byte_size)
-      i.merge!({ preview_url: Rails.application.routes.url_helpers.rails_representation_path(file.representation(resize: "600x600>"), only_path: true) }) if file.representable?
-      i.merge!({ download_url: Rails.application.routes.url_helpers.rails_blob_path(file, disposition: "attachment", only_path: true) })
-      i.merge!({ icon: attachment_icon(file.blob.content_type || file.blob.filename) })
-      i
-    end
-  end
-
-  def attachment_icon(name)
-    AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
-  end
 
   def documents_owned_by_author
     return if documents.pluck(:author_id).select { |user_id| user_id != user.id }.empty?

@@ -16,7 +16,7 @@ module HasMentions
   def mentioned_user_ids
     Nokogiri::HTML(mentionable_text).search("span.mention[data-mention-id]").map do |el|
       el['data-mention-id']
-    end.map(:&to_i)
+    end.map(&:to_i)
   end
 
   def mentioned_users

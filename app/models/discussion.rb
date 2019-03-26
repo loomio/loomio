@@ -15,6 +15,7 @@ class Discussion < ApplicationRecord
   include UsesOrganisationScope
   include HasMailer
   include HasCreatedEvent
+  include HasRichText
   extend  NoSpam
 
   no_spam_for :title, :description
@@ -37,8 +38,9 @@ class Discussion < ApplicationRecord
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   validate :privacy_is_permitted_by_group
 
-  is_mentionable on: :description
+  is_mentionable  on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
+  is_rich_text    on: :description
   has_paper_trail only: [:title, :description, :private, :group_id]
 
   def self.always_versioned_fields
@@ -57,6 +59,9 @@ class Discussion < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
   has_many :poll_documents,    through: :polls,    source: :documents
   has_many :comment_documents, through: :comments, source: :documents
+  has_many :discussion_tags, dependent: :destroy
+  has_many :tags, through: :discussion_tags
+
 
   has_many :items, -> { includes(:user).thread_events }, class_name: 'Event', dependent: :destroy
 
