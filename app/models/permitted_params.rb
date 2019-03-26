@@ -18,7 +18,7 @@ class PermittedParams < Struct.new(:params)
 
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
-     :remember_me, :uploaded_avatar, :username, :short_bio, :location,
+     :remember_me, :uploaded_avatar, :username, :short_bio, :short_bio_format, :location,
      :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
      :email_catch_up, :deactivation_response, :has_password, :has_token, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation, :email_newsletter,
@@ -26,7 +26,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def poll_attributes
-    [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at, :anonymous,
+    [:title, :details, :details_format, :poll_type, :discussion_id, :group_id, :closing_at, :anonymous,
      :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
      :custom_fields, {custom_fields: [:can_respond_maybe, :deanonymize_after_close, :dots_per_person, :max_score, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
      :document_ids, {document_ids: []},
@@ -34,7 +34,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def stance_attributes
-    [:poll_id, :reason,
+    [:poll_id, :reason, :reason_format,
      :visitor_attributes, {visitor_attributes: [:name, :email, :legal_accepted, :recaptcha]},
      :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]}]
   end
@@ -44,7 +44,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def outcome_attributes
-    [:statement, :poll_id, :poll_option_id,
+    [:statement, :statement_format, :poll_id, :poll_option_id,
      :document_ids, {document_ids: []},
      :custom_fields, custom_fields: [:event_location, :event_summary, :event_description]]
   end
@@ -72,7 +72,7 @@ class PermittedParams < Struct.new(:params)
   def group_attributes
     [:parent_id, :name, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_announce, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
-     :description, :is_visible_to_parent_members, :parent_members_can_see_discussions,
+     :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :members_can_raise_motions,
      :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups,
      :document_ids, {document_ids: []}, :features, {features: AppConfig.group_features.presence || {}}
@@ -88,7 +88,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_attributes
-    [:title, :description, :group_id, :private,
+    [:title, :description, :description_format, :group_id, :private,
      :forked_event_ids, {forked_event_ids: []},
      :document_ids, {document_ids: []}
     ]
