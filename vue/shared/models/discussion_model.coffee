@@ -30,6 +30,7 @@ module.exports = class DiscussionModel extends BaseModel
     lastItemAt: null
     title: ''
     description: ''
+    descriptionFormat: 'html'
     forkedEventIds: []
 
   audienceValues: ->

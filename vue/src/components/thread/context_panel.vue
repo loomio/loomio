@@ -1,58 +1,3 @@
-<style lang="scss">
-@import 'variables';
-.context-panel {
-  .lmo-card-heading { margin-top: 7px; }
-  border-bottom: 1px solid $border-color;
-}
-
-.context-panel__top {
-  display: flex;
-}
-
-.context-panel__status {
-  font-size: 20px;
-  line-height: 34px;
-  margin-right: 8px;
-}
-
-.context-panel__before-thread-actions {
-  order: 1;
-}
-
-.context-panel__thread-actions {
-  margin-right: -10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.context-panel__discussion-privacy i {
-  position: relative;
-  font-size: 14px;
-  top: 2px;
-}
-
-.context-panel__details {
-  color: $grey-on-white;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.context-panel__description {
-  margin-bottom: 16px;
-  p:last-of-type { margin-bottom: 0; }
-}
-
-@media (min-width: $medium-max-px) {
-  .context-panel__before-thread-actions {
-    order: 0;
-  }
-
-  .context-panel__thread-actions {
-    flex-direction: row;
-  }
-}
-</style>
-
 <script lang="coffee">
 Records        = require 'shared/services/records'
 Session        = require 'shared/services/session'
@@ -160,12 +105,68 @@ v-card-text.context-panel
         router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
     .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
       v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
-    // <outlet name="after-thread-title" model="discussion" class="lmo-flex"></outlet>
-  .context-panel__description.lmo-markdown-wrapper(v-if='!discussion.translation', v-marked='discussion.cookedDescription()')
+  .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'md'", v-marked='discussion.cookedDescription()')
+  .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'html'", v-html='discussion.description')
+
   translation.lmo-markdown-wrapper(v-if='discussion.translation', :model='discussion', field='description')
   document-list(:model='discussion', :skip-fetch='true')
+  attachment-list(:attachments="discussion.attachments")
   .lmo-md-actions
     // <reactions_display model="discussion" load="true" class="context-panel__actions-left"></reactions_display>
     action-dock(:model='discussion', :actions='actions')
 
 </template>
+<style lang="scss">
+@import 'variables';
+.context-panel {
+  .lmo-card-heading { margin-top: 7px; }
+  border-bottom: 1px solid $border-color;
+}
+
+.context-panel__top {
+  display: flex;
+}
+
+.context-panel__status {
+  font-size: 20px;
+  line-height: 34px;
+  margin-right: 8px;
+}
+
+.context-panel__before-thread-actions {
+  order: 1;
+}
+
+.context-panel__thread-actions {
+  margin-right: -10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.context-panel__discussion-privacy i {
+  position: relative;
+  font-size: 14px;
+  top: 2px;
+}
+
+.context-panel__details {
+  color: $grey-on-white;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.context-panel__description {
+  margin-bottom: 16px;
+  p:last-of-type { margin-bottom: 0; }
+}
+
+@media (min-width: $medium-max-px) {
+  .context-panel__before-thread-actions {
+    order: 0;
+  }
+
+  .context-panel__thread-actions {
+    flex-direction: row;
+  }
+}
+</style>

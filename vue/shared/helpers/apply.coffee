@@ -76,6 +76,6 @@ applySequence = (scope, options) ->
       # emit a close event if we've run out of steps
       EventBus.emit emitter, '$close' if !scope.currentStep and !options.skipClose
 
-  emitter.unlistenPrevious = EventBus.listen emitter, 'previousStep', changeStep(-1, 'Back', options, emitter)
-  emitter.unlistenNext     = EventBus.listen emitter, 'nextStep',     changeStep(1, 'Complete', options, emitter)
-  emitter.unlistenSkip     = EventBus.listen emitter, 'skipStep',     changeStep(2, 'Skipped', options, emitter)
+  emitter.unlistenPrevious = EventBus.$on 'previousStep', changeStep(-1, 'Back', options, emitter)
+  emitter.unlistenNext     = EventBus.$on 'nextStep',     changeStep(1, 'Complete', options, emitter)
+  emitter.unlistenSkip     = EventBus.$on 'skipStep',     changeStep(2, 'Skipped', options, emitter)
