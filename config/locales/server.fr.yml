@@ -68,6 +68,9 @@ fr:
     motion:
       must_close_in_future: Une proposition ne peut se terminer dans le passé
       one_at_a_time: Il y a une autre proposition active.
+  subscriptions:
+    active: Active
+    inactive: Inactive
   user_mailer:
     group_export_ready:
       subject: Export des données du groupe %{group_name}
