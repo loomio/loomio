@@ -6,6 +6,7 @@ HasDocuments     = require 'shared/mixins/has_documents'
 HasTranslations  = require 'shared/mixins/has_translations'
 HasGuestGroup    = require 'shared/mixins/has_guest_group'
 I18n             = require 'shared/services/i18n'
+EventBus         = require 'shared/services/event_bus'
 
 module.exports = class PollModel extends BaseModel
   @singular: 'poll'
@@ -22,8 +23,8 @@ module.exports = class PollModel extends BaseModel
     HasTranslations.apply @
     HasGuestGroup.apply @
 
-  translatedPollType: ->
-    I18n.t("poll_types.#{@pollType}")
+  pollTypeKey: ->
+    "poll_types.#{@pollType}"
 
   draftParent: ->
     @discussion() or @author()
@@ -47,6 +48,7 @@ module.exports = class PollModel extends BaseModel
     discussionId: null
     title: ''
     details: ''
+    detailsFormat: 'html'
     closingAt: moment().add(3, 'days').startOf('hour')
     pollOptionNames: []
     pollOptionIds: []

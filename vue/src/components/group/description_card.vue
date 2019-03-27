@@ -33,8 +33,10 @@ v-card.description-card(aria-labelledby='description-card-title')
   v-subheader(v-t="'description_card.title'")
   v-card-text
     .description-card__placeholder.lmo-hint-text(v-t="'description_card.placeholder'", v-if='!group.description')
-    .description-card__text.lmo-markdown-wrapper(v-marked='group.description')
-    document-list(:model='group', placeholder='document.list.no_group_documents')
+    .description-card__text.lmo-markdown-wrapper(v-if="group.descriptionFormat == 'md'" v-marked='group.description')
+    .description-card__text.lmo-markdown-wrapper(v-if="group.descriptionFormat == 'html'" v-html='group.description')
+    attachment-list(:attachments="group.attachments")
+    document-list(:model='group')
     .lmo-md-action
       action-dock(:model='group', :actions='actions')
 </template>

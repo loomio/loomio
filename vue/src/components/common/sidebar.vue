@@ -121,7 +121,7 @@ v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
         v-icon mdi-plus
       v-list-tile-content
         v-list-tile-title(v-t="'sidebar.start_thread'")
-  v-dialog(v-model='isThreadModalOpen' lazy persistent)
+  v-dialog(v-model='isThreadModalOpen' lazy persistent scrollable)
     discussion-start(:discussion='newThread()', :close='closeThreadModal')
   v-divider.sidebar__divider
   v-list
@@ -141,6 +141,6 @@ v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
         v-icon mdi-plus
       v-list-tile-content
         span(v-t="'sidebar.start_group'")
-      v-dialog(v-model='isGroupModalOpen' lazy)
+      v-dialog(v-model='isGroupModalOpen' lazy scrollable)
         group-start(:group='newGroup()', :close='closeGroupModal')
 </template>

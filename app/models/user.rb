@@ -8,6 +8,9 @@ class User < ApplicationRecord
   include NoForbiddenEmails
   include HasMailer
   include CustomCounterCache::Model
+  include HasRichText
+
+  is_rich_text    on: :short_bio
 
   extend HasTokens
   extend HasDefaults

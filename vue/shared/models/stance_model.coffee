@@ -17,6 +17,7 @@ module.exports = class StanceModel extends BaseModel
 
   defaultValues: ->
     reason: ''
+    reasonFormat: 'html'
     visitorAttributes: {}
 
   relationships: ->

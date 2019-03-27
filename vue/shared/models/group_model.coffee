@@ -19,6 +19,7 @@ module.exports = class GroupModel extends BaseModel
     parentId: null
     name: ''
     description: ''
+    descriptionFormat: 'html'
     groupPrivacy: 'closed'
     discussionPrivacyOptions: 'private_only'
     membershipGrantedUpon: 'approval'

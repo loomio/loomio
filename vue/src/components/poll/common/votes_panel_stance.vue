@@ -38,7 +38,8 @@ module.exports =
           <poll-common-directive name="stance-choice" :stance-choice="choice" v-if="choice.score > 0" v-for="choice in orderedStanceChoices" :key="choice.id"></poll-common-directive>
         </div>
         <div v-if="stance.reason" class="poll-common-votes-panel__stance-reason">
-          <span v-if="!stance.translation" :marked="stance.reason" class="lmo-markdown-wrapper"></span>
+          <span v-if="!stance.translation && stance.reasonFormat == 'md'" v-marked="stance.reason" class="lmo-markdown-wrapper"></span>
+          <span v-if="!stance.translation && stance.reasonFormat == 'html'" v-html="stance.reason" class="lmo-markdown-wrapper"></span>
           <translation v-if="stance.translation" :model="stance" field="reason"></translation>
         </div>
       </div>

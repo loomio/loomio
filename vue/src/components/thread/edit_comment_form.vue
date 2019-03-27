@@ -28,7 +28,7 @@ module.exports =
   data: ->
     dcomment: @comment.clone()
   created: ->
-    @submit = submitForm @, @comment,
+    @submit = submitForm @, @dcomment,
       flashSuccess: 'comment_form.messages.updated'
       successCallback: =>
         _invokeMap Records.documents.find(@comment.removedDocumentIds), 'remove'
@@ -39,7 +39,9 @@ v-card.edit-comment-form
     h1(v-t="'comment_form.edit_comment'")
     dismiss-modal-button(:close="close")
   v-card-text
-    v-textarea(lmo_textarea, v-model="comment.body", :placeholder="$t('comment_form.say_something')")
+    .lmo-disabled-form(v-show='isDisabled')
+    lmo-textarea(v-if="dcomment.bodyFormat =='html'" :model='dcomment' field="body" :placeholder="$t('comment_form.say_something')")
+    v-textarea(v-if="dcomment.bodyFormat=='md'" lmo_textarea, v-model="comment.body", :placeholder="$t('comment_form.say_something')")
   v-card-actions
     comment-form-actions(:comment="comment", :submit="submit")
 </template>

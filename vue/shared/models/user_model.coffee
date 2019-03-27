@@ -15,6 +15,10 @@ module.exports = class UserModel extends BaseModel
     @hasMany 'identities'
     @hasMany 'reactions'
 
+  defaultValues: ->
+    shortBio: ''
+    shortBioFormat: 'html'
+
   localeName: ->
     (_.find(AppConfig.locales, (h) => h.key == @locale) or {}).name
 

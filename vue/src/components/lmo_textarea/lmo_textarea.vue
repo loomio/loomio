@@ -23,7 +23,7 @@ module.exports =
   props:
     model: Object
     field: String
-    placeholder: Object
+    placeholder: [String, Object]
     helptext: Object
     shouldReset: Boolean
 
@@ -114,7 +114,7 @@ module.exports =
         new History(),
         new Placeholder({
           emptyClass: 'is-empty',
-          emptyNodeText: 'Write something …',
+          emptyNodeText: @$t(@placeholder),
           showOnlyWhenEditable: true,
         })
       ]
@@ -326,6 +326,10 @@ progress::-moz-progress-bar {
 }
 
 .ProseMirror img {
+  display: block;
+}
+
+.ProseMirror progress {
   display: block;
 }
 

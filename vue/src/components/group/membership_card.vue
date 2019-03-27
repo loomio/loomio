@@ -94,7 +94,7 @@ module.exports =
 
   computed:
     pollType: ->
-      @group.targetModel().translatedPollType() if @group.targetModel().isA('poll')
+      @$t(@group.targetModel().pollTypeKey()) if @group.targetModel().isA('poll')
 </script>
 
 <template lang="pug">

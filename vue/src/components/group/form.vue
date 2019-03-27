@@ -63,7 +63,8 @@ module.exports =
     //- <validation-errors :subject="group" field="name"></validation-errors>
     //- </div>
   v-text-field(v-model='group.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255')
-  v-textarea(:model="group.description", :placeholder="$t('group_form.description_placeholder')", :label="$t('group_form.description')")
+  lmo-textarea(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')")
+  //- v-textarea(:model="group.description", :placeholder="$t('group_form.description_placeholder')", :label="$t('group_form.description')")
   .group-form__privacy-statement.lmo-hint-text {{privacyStatement}}
   section.group-form__section.group-form__privacy
     h3.lmo-h3(v-t="'group_form.privacy'")

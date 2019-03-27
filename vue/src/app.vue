@@ -27,5 +27,5 @@ module.exports =
     navbar
     sidebar
     v-content
-      router-view
+      router-view(:key="$route.path")
 </template>
