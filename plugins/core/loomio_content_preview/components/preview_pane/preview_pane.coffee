@@ -3,7 +3,7 @@ EventBus = require 'shared/services/event_bus.coffee'
 angular.module('loomioApp').directive 'previewPane', ->
   scope: {comment: '=?', poll: '=?', discussion: '=?', outcome: '=?'}
   restrict: 'E'
-  template: require('./preview_pane.haml')
+  templateUrl: 'generated/components/preview_pane/preview_pane.html'
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.model = $scope.comment || $scope.poll || $scope.discussion || $scope.outcome

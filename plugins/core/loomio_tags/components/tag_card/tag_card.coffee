@@ -9,7 +9,7 @@ ModalService   = require 'shared/services/modal_service.coffee'
 
 angular.module('loomioApp').directive 'tagCard', ->
   scope: {group: '='}
-  template: require('./tag_card.haml')
+  templateUrl: 'generated/components/tag_card/tag_card.html'
   controller: ['$scope', ($scope) ->
     $scope.parent = $scope.group.parentOrSelf()
 

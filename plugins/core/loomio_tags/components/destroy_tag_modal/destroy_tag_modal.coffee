@@ -5,7 +5,7 @@ _ = require 'lodash'
 { submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'DestroyTagModal', ->
-  template: require('./destroy_tag_modal.haml')
+  templateUrl: 'generated/components/destroy_tag_modal/destroy_tag_modal.html'
   controller: ['$scope', 'tag', ($scope, tag) ->
     $scope.tag = Records.tags.find(tag.id)
 
