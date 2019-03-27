@@ -1,4 +1,24 @@
 en:
+  loomio_tags:
+    tags: Tags
+    apply_tags: Apply tags
+    new_tag: Create tag
+    name_label: Name
+    color_label: Color
+    card_title: Category Tags
+    modal_title: Create a new tag
+    modal_edit_title: Edit tag
+    modal_destroy_title: Remove tag
+    destroy_tag: Remove tag
+    destroy_helptext: This will destroy this tag and remove it from all threads in the group. Are you sure?
+    helptext: Tags allow you to categorize conversations and easily find them later
+    discussions_count_singular: ({{count}} thread)
+    discussions_count_plural: ({{count}} threads)
+    tag_created: Tag saved
+    tag_destroyed: Tag removed
+    tags_marked: Threads marked '{{name}}' in {{groupName}}
+    no_tags_present: No threads were found with that tag! Try selecting another one.
+
   reactions:
     slight_smile: Like
     heart: Love
@@ -515,6 +535,7 @@ en:
     comment_copied: Comment URL copied to clipboard
     poll_copied: Decision URL copied to clipboard
     discussion_copied: Thread URL copied to clipboard
+    tag_thread: Manage tags
 
   cover_photo_form:
     aria_label: 'Change cover photo form'

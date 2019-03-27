@@ -21,7 +21,7 @@
 
           %timeago{timestamp: "thread.lastActivityAt"}>
         .lmo-badge.lmo-pointer{ng-if: "thread.closedAt", md-colors: "{color: 'warn-600', 'border-color': 'warn-600'}", translate: "common.privacy.closed"}
-        %outlet{name: "after-thread-preview", model: "thread"}
+        %tag_display{discussion: "thread"}
 
     .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'context_panel.thread_status.pinned' | translate}}"}
       %i.mdi.mdi-pin

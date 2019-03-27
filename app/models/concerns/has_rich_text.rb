@@ -1,4 +1,3 @@
-require "active_storage"
 module HasRichText
   extend ActiveSupport::Concern
 

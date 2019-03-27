@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ::API::TagsController, type: :controller do
+describe API::TagsController, type: :controller do
 
   let(:user) { create :user }
   let(:group) { create :formal_group }
