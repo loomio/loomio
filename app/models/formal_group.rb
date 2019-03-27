@@ -1,6 +1,9 @@
 class FormalGroup < Group
   include HasTimeframe
   include HasDrafts
+  include HasRichText
+
+  is_rich_text    on: :description
 
   extend  NoSpam
   no_spam_for :name, :description

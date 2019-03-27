@@ -6,6 +6,9 @@ class Outcome < ApplicationRecord
   include Translatable
   include HasCreatedEvent
   include HasEvents
+  include HasRichText
+
+  is_rich_text    on: :statement
 
   set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location
 
