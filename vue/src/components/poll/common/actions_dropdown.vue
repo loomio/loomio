@@ -57,7 +57,7 @@ v-menu
     v-list-tile.poll-actions-dropdown__edit(v-if="canEditPoll()", @click="editPoll()")
       span(v-t="'common.action.edit'")
     v-list-tile.poll-actions-dropdown__close(v-if="canClosePoll()", @click="closePoll()")
-      span(v-t="{ path: 'poll_common.close_poll_type', args: { 'poll-type': poll.translatedPollType() } }")
+      span(v-t="{ path: 'poll_common.close_poll_type', args: { 'poll-type': $t(poll.pollTypeKey()) } }")
     v-list-tile.poll-actions-dropdown__reopen(v-if="canReopenPoll()", @click="reopenPoll()")
       span(v-t="'common.action.reopen'")
     v-list-tile.poll-actions-dropdown__export(v-if="canExportPoll()", @click="exportPoll()")

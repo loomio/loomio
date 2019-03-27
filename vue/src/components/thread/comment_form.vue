@@ -14,7 +14,7 @@ module.exports =
 
   data: ->
     shouldReset: false
-    comment: {}
+    comment: @buildComment()
     isDisabled: null
 
   methods:
@@ -33,13 +33,16 @@ module.exports =
     preSave: ->
       @shouldUpdateModel = !@shouldUpdateModel
 
-    reset: ->
-      @comment = Records.comments.build
+    buildComment: ->
+      Records.comments.build
         bodyFormat: "html"
         body: ""
         discussionId: @eventWindow.discussion.id
         authorId: Session.user().id
+
+    reset: ->
       @shouldReset = !@shouldReset
+      @comment = @buildComment()
 
     init: ->
       @reset()

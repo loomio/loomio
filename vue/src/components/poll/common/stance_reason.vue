@@ -7,14 +7,9 @@ module.exports =
     stance: Object
 </script>
 
-<template>
-    <div class="poll-common-stance-reason">
-      <v-textarea
-        v-model="stance.reason"
-        :label="$t('poll_common.reason')"
-        :placeholder="$t('poll_common.reason_placeholder')"
-        maxlength="500"
-        class="poll-common-vote-form__reason"
-      ></v-textarea>
-    </div>
+<template lang="pug">
+.poll-common-stance-reason
+  lmo-textarea.poll-common-vote-form__reason(v-if="stance.reasonFormat =='html'" :model='stance' field="reason" :placeholder="$t('poll_common.reason_placeholder')" maxlength='500')
+  v-textarea.poll-common-vote-form__reason(v-if="stance.reasonFormat == 'md'" v-model='stance.reason' :label="$t('poll_common.reason')" :placeholder="$t('poll_common.reason_placeholder')" maxlength='500')
+
 </template>
