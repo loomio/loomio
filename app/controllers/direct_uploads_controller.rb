@@ -13,7 +13,7 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
     json.merge!(download_url: url_for(blob))
 
     if blob.representable?
-      json.merge!(preview_url: rails_representation_path(blob.representation(resize: "600x600>"), only_path: true))
+      json.merge!(preview_url: rails_representation_path(blob.representation(HasRichText::PREVIEW_OPTIONS), only_path: true))
     end
     json
   end
