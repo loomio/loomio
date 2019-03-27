@@ -14,6 +14,12 @@ FactoryBot.define do
     m.group { |g| g.association(:formal_group)}
   end
 
+  factory :tag do
+    association :group, factory: :formal_group
+    name "metatag"
+    color "#656565"
+  end
+
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
