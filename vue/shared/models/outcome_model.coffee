@@ -14,6 +14,7 @@ module.exports = class OutcomeModel extends BaseModel
 
   defaultValues: ->
     statement: ''
+    statementFormat: 'html'
     customFields: {}
 
   afterConstruction: ->

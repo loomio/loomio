@@ -22,6 +22,10 @@ module.exports = class PollModel extends BaseModel
     HasTranslations.apply @
     HasGuestGroup.apply @
 
+  defaultValues: ->
+    details: ''
+    detailsFormat: 'html'
+
   translatedPollType: ->
     I18n.t("poll_types.#{@pollType}")
 

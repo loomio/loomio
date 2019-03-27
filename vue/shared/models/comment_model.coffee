@@ -23,6 +23,7 @@ module.exports = class CommentModel extends BaseModel
     usesMarkdown: true
     discussionId: null
     body: ''
+    bodyFormat: 'html'
     mentionedUsernames: []
 
   relationships: ->
