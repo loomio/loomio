@@ -33,4 +33,6 @@ module.exports = [
   {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
   {path: '/slack/install', component: 'installSlackPage'},
   {path: '/:handle', component: 'groupPage' },
+  {path: '/tags/:id', component: 'tagsPage' },
+  {path: '/tags/:id/:stub', component: 'tagsPage' }
 ]

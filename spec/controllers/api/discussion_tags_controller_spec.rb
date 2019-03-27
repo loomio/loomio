@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ::API::DiscussionTagsController, type: :controller do
+describe API::DiscussionTagsController, type: :controller do
 
   let(:user) { create :user }
   let(:group) { create :formal_group }
@@ -9,8 +9,8 @@ describe ::API::DiscussionTagsController, type: :controller do
   let(:another_discussion) { create :discussion, group: group }
   let(:hidden_discussion) { create :discussion }
 
-  let(:tag) { create :tag, name: "My tag", group: group }
-  let(:another_tag) { create :tag, name: "Hidden tag", group: another_group }
+  let(:tag) { create :tag, name: "My tag", color: "#123456", group: group }
+  let(:another_tag) { create :tag, name: "Hidden tag", color: "#123456", group: another_group }
   let!(:discussion_tag) { create :discussion_tag, tag: tag, discussion: discussion }
   let!(:another_discussion_tag) { create :discussion_tag, tag: tag, discussion: another_discussion }
   let!(:hidden_discussion_tag) { create :discussion_tag, tag: another_tag, discussion: hidden_discussion }

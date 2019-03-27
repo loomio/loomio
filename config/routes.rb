@@ -153,11 +153,9 @@ Loomio::Application.routes.draw do
     end
 
     get    '/discussions/tags/:tag_id', action: 'discussions#tags'
-    # resources :tags
-    # plugin.use_client_route   '/tags/:id', :tags_page
-    # plugin.use_client_route   '/tags/:id/:stub', :tags_page
 
     resources :discussion_tags, only: [:create, :destroy]
+    resources :tags
 
 
     resources :search, only: :index
@@ -337,5 +335,5 @@ Loomio::Application.routes.draw do
   get '/beta' => 'beta#index'
   put '/beta' => 'beta#update'
 
-  # get ":id", to: 'groups#show', as: :group_handle, format: :html
+  get ":id", to: 'groups#show', as: :group_handle, format: :html
 end

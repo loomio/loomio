@@ -1,5 +1,4 @@
-class ::API::TagsController < API::RestfulController
-
+class API::TagsController < API::RestfulController
   def show
     load_and_authorize(:tag)
     respond_with_resource

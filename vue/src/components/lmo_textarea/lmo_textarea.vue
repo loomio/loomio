@@ -329,7 +329,7 @@ progress::-moz-progress-bar {
 }
 
 .ProseMirror progress {
-  display: block;
+  // display: block;
 }
 
 .editor p.is-empty:first-child::before {

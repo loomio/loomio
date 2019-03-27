@@ -4,6 +4,7 @@ class PermittedParams < Struct.new(:params)
     stance invitation group_request group discussion discussion_reader comment
     contact_message user_deactivation_response announcement document
     draft oauth_application group_identity contact_request reaction
+    tag discussion_tag
   )
 
   MODELS.each do |kind|
@@ -104,11 +105,11 @@ class PermittedParams < Struct.new(:params)
     ]
   end
 
-  def discussion_tag
+  def discussion_tag_attributes
     [:tag_id, :discussion_id]
   end
 
-  def tag
+  def tag_attributes
     [:name, :color, :group_id]
   end
 

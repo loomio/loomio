@@ -1,2 +1,2 @@
-class ::API::DiscussionTagsController < API::RestfulController
+class API::DiscussionTagsController < API::RestfulController
 end

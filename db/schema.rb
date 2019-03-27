@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_215735) do
+ActiveRecord::Schema.define(version: 2019_03_27_215607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -728,10 +728,10 @@ ActiveRecord::Schema.define(version: 2019_03_26_215735) do
     t.datetime "last_seen_at"
     t.datetime "legal_accepted_at"
     t.boolean "email_newsletter", default: false, null: false
+    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: {}, null: false
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
