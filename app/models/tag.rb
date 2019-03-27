@@ -1,4 +1,4 @@
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   include CustomCounterCache::Model
   belongs_to :group
   has_many :discussion_tags, dependent: :destroy

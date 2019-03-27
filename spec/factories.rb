@@ -16,8 +16,8 @@ FactoryBot.define do
 
   factory :tag do
     association :group, factory: :formal_group
-    name "metatag"
-    color "#656565"
+    # name "metatag"
+    # color "#656565"
   end
 
   factory :user do
