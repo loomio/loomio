@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'tagForm', ->
   scope: {tag: '='}
   restrict: 'E'
   replace: true
-  template: require('./tag_form.haml')
+  templateUrl: 'generated/components/tag_form/tag_form.html'
   controller: ['$scope', ($scope) ->
     $scope.tagColors = pluginConfigFor('loomio_tags').colors
 

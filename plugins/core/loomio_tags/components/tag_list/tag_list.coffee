@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 angular.module('loomioApp').directive 'tagList',->
   scope: {group: '=?', discussion: '=?', admin: '='}
   restrict: 'E'
-  template: require('./tag_list.haml')
+  templateUrl: 'generated/components/tag_list/tag_list.html'
   controller: ['$scope', ($scope) ->
     $scope.parent = ($scope.group or $scope.discussion.group()).parentOrSelf()
     Records.tags.fetchByGroup($scope.parent)

@@ -2,7 +2,7 @@ EventBus = require 'shared/services/event_bus.coffee'
 
 angular.module('loomioApp').directive 'previewButton', ->
   restrict: 'E'
-  template: require('./preview_button.haml')
+  templateUrl: 'generated/components/preview_button/preview_button.html'
   replace: true
   controller: ['$scope', ($scope) ->
 
