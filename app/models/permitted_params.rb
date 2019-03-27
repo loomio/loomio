@@ -22,7 +22,9 @@ class PermittedParams < Struct.new(:params)
      :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
      :email_catch_up, :deactivation_response, :has_password, :has_token, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation, :email_newsletter,
-     :legal_accepted, {email_new_discussions_and_proposals_group_ids: []}]
+     :legal_accepted, {email_new_discussions_and_proposals_group_ids: []},
+     :files, :image_files, {files: []}, {image_files: []}
+   ]
   end
 
   def poll_attributes
@@ -30,13 +32,17 @@ class PermittedParams < Struct.new(:params)
      :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
      :custom_fields, {custom_fields: [:can_respond_maybe, :deanonymize_after_close, :dots_per_person, :max_score, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
      :document_ids, {document_ids: []},
-     :poll_option_names, {poll_option_names: []}]
+     :poll_option_names, {poll_option_names: []},
+     :files, :image_files, {files: []}, {image_files: []}
+   ]
   end
 
   def stance_attributes
     [:poll_id, :reason, :reason_format,
      :visitor_attributes, {visitor_attributes: [:name, :email, :legal_accepted, :recaptcha]},
-     :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]}]
+     :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]},
+     :files, :image_files, {files: []}, {image_files: []}
+   ]
   end
 
   def stance_choice_attributes
@@ -46,7 +52,9 @@ class PermittedParams < Struct.new(:params)
   def outcome_attributes
     [:statement, :statement_format, :poll_id, :poll_option_id,
      :document_ids, {document_ids: []},
-     :custom_fields, custom_fields: [:event_location, :event_summary, :event_description]]
+     :custom_fields, {custom_fields: [:event_location, :event_summary, :event_description]},
+     :files, :image_files, {files: []}, {image_files: []}
+   ]
   end
 
   def membership_request_attributes
@@ -75,7 +83,8 @@ class PermittedParams < Struct.new(:params)
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :members_can_raise_motions,
      :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups,
-     :document_ids, {document_ids: []}, :features, {features: AppConfig.group_features.presence || {}}
+     :document_ids, {document_ids: []}, :features, {features: AppConfig.group_features.presence || {}},
+     :files, :image_files, {files: []}, {image_files: []}
    ]
   end
 
@@ -90,7 +99,8 @@ class PermittedParams < Struct.new(:params)
   def discussion_attributes
     [:title, :description, :description_format, :group_id, :private,
      :forked_event_ids, {forked_event_ids: []},
-     :document_ids, {document_ids: []}
+     :document_ids, {document_ids: []},
+     :files, :image_files, {files: []}, {image_files: []}
     ]
   end
 
