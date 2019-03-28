@@ -1277,7 +1277,7 @@ en:
       reload: 'Reload'
 
   emoji_picker:
-    search: "Find an emoji..."
+    search: "Pick your emoji…"
     no_emojis_found: "No emojis found for '{{term}}'!"
 
   authorized_apps_page:

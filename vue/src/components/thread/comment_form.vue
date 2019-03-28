@@ -26,9 +26,9 @@ module.exports =
 
     commentPlaceholder: ->
       if @comment.parentId
-        {path: 'comment_form.in_reply_to', name: @comment.parent().authorName()}
+        ['comment_form.in_reply_to', {name: @comment.parent().authorName()}]
       else
-        {path: 'comment_form.aria_label'}
+        'comment_form.aria_label'
 
     preSave: ->
       @shouldUpdateModel = !@shouldUpdateModel

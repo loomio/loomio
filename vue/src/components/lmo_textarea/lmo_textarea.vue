@@ -17,7 +17,10 @@ import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
   OrderedList, BulletList, ListItem, TodoItem, TodoList, Bold, Code,
   Italic, Link, Strike, Underline, History, Mention, Placeholder } from 'tiptap-extensions'
+import { insertText } from 'tiptap-commands'
 import Image from 'shared/tiptap_extentions/image.js'
+
+import { Picker } from 'emoji-mart-vue'
 
 module.exports =
   props:
@@ -31,6 +34,7 @@ module.exports =
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
     FilesList: FilesList
+    Picker: Picker
     # EditorMenuBubble: EditorMenuBubble
 
   watch:
@@ -45,6 +49,8 @@ module.exports =
     imageFiles: []
     mentionableUserIds: []
     navigatedUserIndex: 0
+    closeEmojiMenu: false
+    recentEmojis: 'thumbsup thumbsdown laughing wink sunglasses neutral_face sleeping relieved confused astonished confounded disappointed worried cry weary scream angry v ok_hand wave clap raised_hands pray heart'.split(" ")
     insertMention: () => {}
     editor: new Editor
       extensions: [
@@ -133,6 +139,11 @@ module.exports =
       _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
 
   methods:
+    emojiPicked: (a,b,c) ->
+      { view } = this.editor
+      insertText(a.native)(view.state, view.dispatch, view)
+      @closeEmojiMenu = false
+      @editor.focus()
     updateModel: ->
       @model[@field] = @editor.getHTML()
       @model.files = @files.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
@@ -296,8 +307,11 @@ div
                 v-icon mdi-format-list-numbered
         v-btn(flat icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
           v-icon mdi-paperclip
-        v-btn(flat icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
-          v-icon mdi-emoticon-outline
+        v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+          template(v-slot:activator="{on}")
+            v-btn(v-on="on" flat icon :class="{ 'is-active': isActive.underline() }")
+              v-icon mdi-emoticon-outline
+          picker(@select="emojiPicked" emoji="point_up" :recent="recentEmojis" :title="$t('emoji_picker.search')" :native="true" set="apple")
         //-
         //- v-btn-toggle(slot-scope='{ commands, isActive }')
         //- v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
