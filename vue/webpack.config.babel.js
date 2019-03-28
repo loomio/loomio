@@ -32,7 +32,7 @@ module.exports = {
             ? {loader: 'vue-style-loader'}
             : {loader: MiniCssExtractPlugin.loader} ,
           {loader: 'css-loader'},
-          {loader: 'sass-loader', options: { includePaths: ["src/css", "node_modules/mdi/scss"]}}
+          {loader: 'sass-loader', options: { includePaths: ["src/css", "node_modules/@mdi/font/scss"]}}
         ],
       },
       { test: /\.coffee$/,

@@ -232,44 +232,78 @@ module.exports =
 <template lang="pug">
 div
   .editor
-    editor-menu-bar(:editor='editor')
-      .menubar(slot-scope='{ commands, isActive }')
-        v-btn.menubar__button(icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
-          v-icon mdi-format-bold
-        v-btn.menubar__button(icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
-          v-icon mdi-format-italic
-        v-btn.menubar__button(icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
-          v-icon mdi-format-strikethrough
-        v-btn.menubar__button(icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
-          v-icon mdi-format-underline
-        v-btn.menubar__button(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
+    editor-menu-bar.menubar(:editor='editor')
+      div.lmo-flex.lmo-flex__center(slot-scope='{ commands, isActive }')
+        v-menu
+          template(v-slot:activator="{on}")
+            v-btn-toggle
+              v-btn(flat v-on="on")
+                v-icon mdi-format-size
+                v-icon mdi-menu-down
+          v-list
+            v-list-tile
+              v-btn(:class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
+                v-icon mdi-format-pilcrow
+            v-list-tile
+              v-btn(:class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
+                v-icon mdi-format-header-1
+            v-list-tile
+              v-btn(:class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
+                v-icon mdi-format-header-2
+            v-list-tile
+              v-btn(:class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
+                v-icon mdi-format-header-3
+        v-menu
+          template(v-slot:activator="{on}")
+            v-btn-toggle
+              v-btn(flat v-on="on")
+                v-icon mdi-format-bold
+                v-icon mdi-menu-down
+          v-list
+            v-list-tile
+              v-btn(icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
+                v-icon mdi-format-bold
+            v-list-tile
+              v-btn(icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
+                v-icon mdi-format-italic
+            v-list-tile
+              v-btn(icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
+                v-icon mdi-format-strikethrough
+            v-list-tile
+              v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
+                v-icon mdi-format-underline
+            v-list-tile
+              v-btn(icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
+                v-icon mdi-format-quote-closed
+            v-list-tile
+              v-btn(icon :class="{ 'is-active': isActive.code() }", @click='commands.code')
+                v-icon mdi-code-braces
+        v-menu
+          template(v-slot:activator="{on}")
+            v-btn-toggle
+              v-btn(flat v-on="on")
+                v-icon mdi-format-list-bulleted
+                v-icon mdi-menu-down
+          v-list
+            v-list-tile
+              v-btn(@click='commands.todo_list')
+                v-icon mdi-format-list-checks
+            v-list-tile
+              v-btn(:class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
+                v-icon mdi-format-list-bulleted
+            v-list-tile
+              v-btn(:class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
+                v-icon mdi-format-list-numbered
+        v-btn(flat icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
           v-icon mdi-paperclip
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code() }", @click='commands.code')
-          v-icon mdi-code-braces
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
-          v-icon mdi-format-pilcrow
-        v-btn.menubar__v-btn(icon @click='commands.todo_list')
-          v-icon mdi-format-list-checks
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
-          v-icon mdi-format-header-1
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
-          v-icon mdi-format-header-2
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
-          v-icon mdi-format-header-3
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
-          v-icon mdi-format-list-bulleted
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
-          v-icon mdi-format-list-numbered
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
-          v-icon mdi-format-quote-closed
-        v-btn.menubar__v-btn(icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
-          v-icon mdi-code-tags
-        v-btn.menubar__v-btn(icon @click='commands.horizontal_rule')
-          v-icon mdi-format-page-break
-        v-btn.menubar__v-btn(icon @click='commands.undo')
-          v-icon mdi-undo
-        v-btn.menubar__v-btn(icon @click='commands.redo')
-          v-icon mdi-redo
+        v-btn(flat icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
+          v-icon mdi-emoticon-outline
+        //-
+        //- v-btn-toggle(slot-scope='{ commands, isActive }')
+        //- v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
+        //-   v-icon mdi-paperclip
+        //- v-btn(icon @click='commands.horizontal_rule')
+        //-   v-icon mdi-format-page-break
     editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
 
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
@@ -314,6 +348,19 @@ progress::-moz-progress-bar {
   transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
 }
 
+.menubar {
+  .v-btn--icon {
+    width: 32px;
+    height: 32px;
+  }
+  .v-btn {
+    .v-icon {
+      font-size: 16px;
+      color: $grey-on-white;
+    }
+    // margin: 0;
+  }
+}
 .ProseMirror {
   border: 2px solid $border-color;
   border-radius: 4px;

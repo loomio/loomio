@@ -23,7 +23,6 @@
   "homepage": "https://github.com/loomio/loomio#readme",
   "dependencies": {
     "@mdi/font": "^3.5.95",
-    "mdi": "latest",
     "emojione": "~> 2.2.7",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
