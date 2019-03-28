@@ -9,7 +9,6 @@ module.exports =
 
 <template lang="pug">
 .files-list(v-if="files.length")
-  p(v-t='"common.attachments"')
   ul
     li(v-for="wrapper in files" :key="wrapper.key")
       .files-list__item

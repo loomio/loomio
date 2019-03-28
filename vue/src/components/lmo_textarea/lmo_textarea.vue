@@ -50,6 +50,8 @@ module.exports =
     mentionableUserIds: []
     navigatedUserIndex: 0
     closeEmojiMenu: false
+    linkUrl: null
+    linkDialogIsOpen: false
     recentEmojis: 'thumbsup thumbsdown laughing wink sunglasses neutral_face sleeping relieved confused astonished confounded disappointed worried cry weary scream angry v ok_hand wave clap raised_hands pray heart'.split(" ")
     insertMention: () => {}
     editor: new Editor
@@ -139,6 +141,13 @@ module.exports =
       _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
 
   methods:
+    setLinkUrl: (command) ->
+      console.log "empty", @editor.view.state.tr.selection.empty
+      command({ href: @linkUrl })
+      @linkUrl = null
+      @linkDialogIsOpen = false
+      @editor.focus()
+
     emojiPicked: (a,b,c) ->
       { view } = this.editor
       insertText(a.native)(view.state, view.dispatch, view)
@@ -247,76 +256,88 @@ div
       div.lmo-flex.lmo-flex__center(slot-scope='{ commands, isActive }')
         v-menu
           template(v-slot:activator="{on}")
-            v-btn-toggle
-              v-btn(flat v-on="on")
-                v-icon mdi-format-size
-                v-icon mdi-menu-down
-          v-list
+            v-btn(small flat v-on="on")
+              v-icon mdi-format-size
+              v-icon mdi-menu-down
+          v-list.menubar__dropdown
             v-list-tile
-              v-btn(:class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
-                v-icon mdi-format-pilcrow
-            v-list-tile
-              v-btn(:class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
+              v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
                 v-icon mdi-format-header-1
             v-list-tile
-              v-btn(:class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
+              v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
                 v-icon mdi-format-header-2
             v-list-tile
-              v-btn(:class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
+              v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
                 v-icon mdi-format-header-3
+            v-list-tile
+              v-btn(small flat :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
+                v-icon mdi-format-text
         v-menu
           template(v-slot:activator="{on}")
-            v-btn-toggle
-              v-btn(flat v-on="on")
-                v-icon mdi-format-bold
-                v-icon mdi-menu-down
-          v-list
+            v-btn(small flat v-on="on")
+              v-icon mdi-format-bold
+              v-icon mdi-menu-down
+          v-list.menubar__dropdown
             v-list-tile
-              v-btn(icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
+              v-btn(small flat :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
                 v-icon mdi-format-bold
             v-list-tile
-              v-btn(icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
+              v-btn(small flat :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
                 v-icon mdi-format-italic
             v-list-tile
-              v-btn(icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
+              v-btn(small flat :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
                 v-icon mdi-format-strikethrough
             v-list-tile
-              v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
+              v-btn(small flat :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
                 v-icon mdi-format-underline
             v-list-tile
-              v-btn(icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
-                v-icon mdi-format-quote-closed
+              v-btn(small flat :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
+                v-icon mdi-format-quote-close
             v-list-tile
-              v-btn(icon :class="{ 'is-active': isActive.code() }", @click='commands.code')
+              v-btn(small flat :class="{ 'is-active': isActive.code() }", @click='commands.code')
                 v-icon mdi-code-braces
         v-menu
           template(v-slot:activator="{on}")
-            v-btn-toggle
-              v-btn(flat v-on="on")
-                v-icon mdi-format-list-bulleted
-                v-icon mdi-menu-down
-          v-list
+            v-btn(small flat v-on="on")
+              v-icon mdi-format-list-bulleted
+              v-icon mdi-menu-down
+          v-list.menubar__dropdown
             v-list-tile
-              v-btn(@click='commands.todo_list')
-                v-icon mdi-format-list-checks
-            v-list-tile
-              v-btn(:class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
+              v-btn(small flat :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
                 v-icon mdi-format-list-bulleted
             v-list-tile
-              v-btn(:class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
+              v-btn(small flat :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
                 v-icon mdi-format-list-numbered
-        v-btn(flat icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
+            v-list-tile
+              v-btn(small flat @click='commands.todo_list')
+                v-icon mdi-format-list-checks
+        v-btn(flat small :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
           v-icon mdi-paperclip
         v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
           template(v-slot:activator="{on}")
-            v-btn(v-on="on" flat icon :class="{ 'is-active': isActive.underline() }")
+            v-btn(v-on="on" flat small :class="{ 'is-active': isActive.underline() }")
               v-icon mdi-emoticon-outline
           picker(@select="emojiPicked" emoji="point_up" :recent="recentEmojis" :title="$t('emoji_picker.search')" :native="true" set="apple")
+        v-dialog(v-model="linkDialogIsOpen")
+          template(v-slot:activator="{on}")
+            v-btn(flat small v-on="on")
+              v-icon mdi-link
+          v-card
+            .needsSelection(v-if="editor.view.state.tr.selection.empty")
+              v-card-title.title(v-t="'text_editor.select_text_to_link'")
+
+            .hasSelection(v-if="!editor.view.state.tr.selection.empty")
+              v-card-title.title(v-t="'text_editor.insert_link'")
+              v-card-text
+                v-text-field(type="url" label="https://www.example.com" v-model="linkUrl")
+              v-card-actions
+                v-spacer
+                v-btn(@click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
         //-
         //- v-btn-toggle(slot-scope='{ commands, isActive }')
-        //- v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
+        //- v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
         //-   v-icon mdi-paperclip
-        //- v-btn(icon @click='commands.horizontal_rule')
+        //- v-btn(small icon @click='commands.horizontal_rule')
         //-   v-icon mdi-format-page-break
     editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
 
@@ -362,21 +383,42 @@ progress::-moz-progress-bar {
   transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
 }
 
+.menubar__dropdown {
+  .v-list__tile {
+    height: 40px;;
+
+    .v-btn {
+      margin-left: 0;
+      margin-right: 0;
+      min-width: 0;
+      .v-icon {
+        font-size: 16px;
+        color: $grey-on-white;
+      }
+    }
+  }
+}
+
 .menubar {
   .v-btn--icon {
     width: 32px;
     height: 32px;
   }
   .v-btn {
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
     .v-icon {
       font-size: 16px;
       color: $grey-on-white;
     }
-    // margin: 0;
   }
 }
+
 .ProseMirror {
   border: 2px solid $border-color;
+  padding: 4px;
+  margin: 4px;
   border-radius: 4px;
   outline: none;
 }

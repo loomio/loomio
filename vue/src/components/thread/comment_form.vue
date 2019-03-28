@@ -76,7 +76,9 @@ module.exports =
   form(v-on:submit.prevent='submit()')
     .lmo-disabled-form(v-show='isDisabled')
     lmo-textarea(:model='comment' field="body" :placeholder="commentPlaceholder()" :helptext="commentHelptext()" :shouldReset="shouldReset")
-    v-btn(flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
+    v-card-actions
+      v-spacer
+      v-btn(flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
 
 </template>
 

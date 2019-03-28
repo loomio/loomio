@@ -140,7 +140,7 @@ en:
       uploading: 'Uploading'
       load_more: 'Load More'
       share: Share
-      ok: Ok!
+      ok: Ok
       retry: Retry
       done: Done
       start: Start
@@ -156,6 +156,7 @@ en:
       resent: Invitation resent
       export: Export
       fork: Fork
+      apply: Apply
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
@@ -965,6 +966,10 @@ en:
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
     help_translate: "Help us translate Loomio"
+
+  text_editor:
+    select_text_to_link: Select some text to link
+    insert_link: Insert link
 
   change_picture_form:
     aria_label: 'Change picture form'
