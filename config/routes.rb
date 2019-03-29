@@ -150,9 +150,8 @@ Loomio::Application.routes.draw do
       get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection
+      get '/tags/:tag_id', action: 'tags', on: :collection
     end
-
-    get    '/discussions/tags/:tag_id', action: 'discussions#tags'
 
     resources :discussion_tags, only: [:create, :destroy]
     resources :tags
