@@ -5,7 +5,7 @@
     %input.tag-form__name.lmo-primary-form-input{ng-model: "tag.name", placeholder: "Enter tag name..."}
     %validation_errors{subject: "tag", field: "name"}
   .tag-form__color-option-container
-    .tag-form__color-option{ng-repeat: "color in tagColors", style: "background-color: {{color}}", ng-mouseup: "tag.color = color"}
+    .tag-form__color-option{ng-repeat: "color in tagColors track by color", style: "background-color: {{color}}", ng-mouseup: "tag.color = color"}
       %i.mdi.mdi-check.mdi-24px{ng-if: "color == tag.color"}
   .lmo-md-actions
     %div{ng-if: "tag.isNew()"}

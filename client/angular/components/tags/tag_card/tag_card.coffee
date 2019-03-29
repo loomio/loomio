@@ -5,11 +5,10 @@ AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
 { applyLoadingFunction } = require 'shared/helpers/apply.coffee'
-{ pluginConfigFor }      = require 'shared/helpers/plugin.coffee'
 
 angular.module('loomioApp').directive 'tagCard', ->
   scope: {group: '='}
-  templateUrl: 'generated/components/tag_card/tag_card.html'
+  templateUrl: 'generated/components/tags/tag_card/tag_card.html'
   controller: ['$scope', ($scope) ->
     $scope.parent = $scope.group.parentOrSelf()
 
@@ -26,7 +25,7 @@ angular.module('loomioApp').directive 'tagCard', ->
       ModalService.open 'TagModal', tag: ->
         Records.tags.build
           groupId: $scope.parent.id
-          color:   pluginConfigFor('loomio_tags').colors[0]
+          color:   AppConfig.pollColors.poll[0]
 
     $scope.canAdministerGroup = ->
       AbilityService.canAdministerGroup($scope.parent)
