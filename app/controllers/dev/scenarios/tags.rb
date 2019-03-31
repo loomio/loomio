@@ -27,6 +27,6 @@ module Dev::Scenarios::Tags
     discussion = group.discussions.create!(title: 'This thread is public', private: false, author: patrick)
     tag = group.tags.create(name: "Tag Name", color: "#cccccc")
     discussion_tag = discussion.discussion_tags.create(tag: tag)
-    redirect_to "/tags/#{tag.id}"
+    redirect_to "/g/#{group.key}/tags"
   end
 end
