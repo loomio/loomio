@@ -12,3 +12,17 @@
               = image_tag('thread_mailer/paperclip.png', alt: 'attachment icon', class: 'thread-mailer__attachment-icon')
             %span.thread-mailer__file-attachment-filername
               = document.title
+- if resource.attachments.any?
+  %h4= t :attachments
+  %ul.thread-mailer__list
+    - resource.attachments.each do |attachment|
+      %li.thread-mailer__list-item
+        - if attachment['preview_url']
+          %a{href: attachment['download_url'], target: '_blank'}
+            %img{src: attachment['preview_url'], alt: attachment['filename']}
+        - else
+          %a.thread-mailer__file-attachment{href: attachment['download_url'], target: '_blank'}
+            %span
+              = image_tag('thread_mailer/paperclip.png', alt: 'attachment icon', class: 'thread-mailer__attachment-icon')
+            %span.thread-mailer__file-attachment-filername
+              = attachment['filename']

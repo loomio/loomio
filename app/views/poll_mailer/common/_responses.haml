@@ -17,6 +17,6 @@
             %td.poll-mailer-common-responses__reason
               - if stance_choice.stance.reason.present?
                 %span= "#{stance_choice.stance.participant_for_client(user: @info.actor).name}:"
-                %span= render_rich_text stance_choice.stance.reason
+                %span= render_rich_text(stance_choice.stance.reason, stance_choice.stance.reason_format)
               - else
                 %span= stance_choice.stance.participant_for_client(user: @info.actor).name

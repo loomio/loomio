@@ -4,4 +4,4 @@
     %tr= render 'poll_mailer/common/poll_option', poll_option: choice.poll_option, stance_choice: choice
 - if stance.participant == @info.recipient
   = link_to t(:"poll_mailer.common.change_your_stance"), @info.target_url(change_vote: true)
-%p= render_rich_text stance.reason
+%p= render_rich_text(stance.reason, stance.reason_format)
