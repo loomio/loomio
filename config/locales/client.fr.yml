@@ -61,6 +61,8 @@ fr:
     notification_volume: 'Fréquence de notification'
     group: 'Groupe'
     groups: 'Groupes'
+    organization: "Groupe"
+    organizations: "Groupes"
     threads: 'Discussions'
     decisions: 'Décisions'
     settings: 'Paramètres'
@@ -269,6 +271,7 @@ fr:
     recent_threads: 'Discussions récentes'
     unread_threads: 'Discussions non lues ({{count}})'
     muted_threads: 'Discussions ignorées'
+    start_group: 'Nouveau groupe'
     explore: 'Groupes publics'
     start_thread: Nouvelle discussion
     start_decision: Nouvelle décision
@@ -408,6 +411,12 @@ fr:
       voters: Personnes qui ont voté
       non_voters: Personnes qui n'ont pas voté
     form:
+      too_many_invitations: |
+          Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
+      no_inivtations_remaining: |
+          </p>Vous ne pouvez plus envoyer d'invitations</p>
+          <p>Veuillez <a href="{{upgradeUrl}}" target="_blank">mettre à jour</a> pour envoyer davantage d'invitations.</p>
+      invitations_remaining: '{{count}} invitations restantes <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>'
       group_announced:
         title: Inviter au groupe
         helptext: Qui voulez-vous inviter au groupe ?
@@ -565,9 +574,13 @@ fr:
       label: 'Options'
       edit_group: 'Modifier les paramètres du groupe'
       export_data: Exporter les données du groupe
+      export_data_as_json: Exporter les données du groupe au format JSON
+      export_data_as_csv: Exporter les données du groupe au format CSV
+      export_data_as_html: Exporter les données du groupe au format HTML
       manage_members: 'Gérer les membres'
       add_subgroup: 'Ajouter un sous-groupe'
       manage_subscription: 'Gérer les inscriptions au groupe'
+      email_settings: 'Paramètres des courriels'
       leave_group: 'Quitter le groupe'
       deactivate_group: 'Désactiver le groupe'
     volume:

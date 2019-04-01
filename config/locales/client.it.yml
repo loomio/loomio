@@ -39,6 +39,7 @@ it:
     dot_vote: Voto a punti
     meeting: Sondaggio per incontro
     ranked_choice: Scelta di preferenze
+    score: Punteggio votazione
   timezones:
     local: Ora locale ({{value}})
   common:
@@ -60,6 +61,8 @@ it:
     notification_volume: 'Volume delle notifiche'
     group: 'Gruppo'
     groups: 'Gruppi'
+    organization: "Organizzazione"
+    organizations: "Organizzazioni"
     threads: 'Discussioni'
     decisions: 'Decisioni'
     settings: 'Configurazione'
@@ -208,6 +211,8 @@ it:
   close_explanation_modal:
     aria_label: Chiudi discussione
     close_thread: Chiudi discussione
+    body_header: |
+        <p>Chiudi i threads vecchi o irrilevanti per rimuoverli dalla vista e indicare che la discussione è conclusa.</p>
     image_alt: Chiudi tutte le discussioni
   mute_explanation_modal:
     aria_label: Silenzia discussione
@@ -1018,6 +1023,7 @@ it:
     proposal_title: Proposta
     count_title: Verifica
     poll_title: Sondaggio
+    score_title: Punteggio votazione
     dot_vote_title: Voto a punti
     meeting_title: Sondaggio per incontro
     ranked_choice_title: Scelta di preferenze
@@ -1250,6 +1256,15 @@ it:
   install_slack:
     card:
       install_slack: Connetti Slack
+    invite:
+      heading: 'Passo 2: Setup di un canale Slack'
+      select_a_channel: Seleziona un canale
+      publish_group: Posta un messaggio di benvenuto
+    common:
+      do_it_later: Lo farò più tradi
+  browser_warning:
+    message: "IMPORTANTE! Tu stai usando un browser obsoleto ({{name}} {{version}}) che non è supportato da {{site}}."
+    link: Per favore passa a un altro browser
   slack_added_modal:
     title: Successo!
     start_poll_now: Prendi una decisione

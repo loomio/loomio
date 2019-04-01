@@ -1102,52 +1102,384 @@ he:
     closing_at_name: 'נושא ושעת סיום ההצעה עודכן'
     closing_at_description: 'תיאור וזמן סגירת ההצעה עודכנו'
     closing_at_description_name: 'נושא, תיאור וזמן סגירת ההצעה עודכנו'
+  proposal_outcome_created_item:
+    proposal_outcome_created: 'פורסם תוצר להצעה:'
+  proposal_outcome_updated_item:
+    proposal_outcome_updated: 'עודכן תוצר ההצעה:'
+  discussion_edited_item:
+    attachment_ids: 'עודכנו הקבצים המצורפים לשיחה'
+    title: 'נושא השיחה עודכן: <span>{{title}}</span>'
+    description: 'תוכן השיחה עודכן'
+    description_title: 'נושא ותוכן השיחה עודכנו'
+    private: 'הפרטיות של השיחה עודכנה ל'
+    public_to_private: 'פרטי'
+    private_to_public: 'פומבי'
+    private_title: 'נושא ופרטיות השיחה עודכנו'
+    description_private: 'תוכן ופרטיות השיחה עודכנו'
+    description_private_title: 'נושא, תוכן ופרטיות השיחה עודכנו'
   contact_message_form:
+    title: "היי! איך נוכל לעזור?"
+    read_the_manual: |
+        האם ראית את <a href="{{link}}" target="_blank">מדריך העזרה שלנו</a>? אנחנו מעדכנים אותו בקביעות עם שאלות ותשובות נפוצות.
+    contact_us_email: "אתה גם יכול לשלוח לנו מייל: <a href=\"mailto:{{email}}\">{{email}}</a>"
+    contact_us: 'צור קשר'
     name_label: 'שמך'
+    name_placeholder: 'הכנס את שמך...'
     subject_label: "נושא"
+    subject_placeholder: |
+        לדוגמא: בעיות רישום או הצעה לשיפור
     email_label: 'כתובת הדוא״ל שלך'
+    email_placeholder: 'הכנס את כתובת הדואר האלקטרוני שלך...'
     message_label: 'ההודעה שלך'
+    message_placeholder: 'אם אתם זקוקים לתמיכה, אנא נסו לספק כמה שיותר מידע שתוכלו.'
+    send_message: 'שלח הודעה'
+    new_contact_message: "תודה שיצרתם קשר. נחזור אליכם בקרוב!"
+    consent_message: |
+        ביצירת קשר איתנו, אתם מאשרים לצוות שלנו גישה לחשבון שלכם, במידה וידרש. <br />
+        צוות התמיכה דובר אנגלית ויתרגם את ההודעה שלך עם Google Translate, במידת וידרש. <br />
+        אנחנו מתכננים לענות לכל ההודעות אלינו תוך 24 שעות.
+    success: "תודה על הודעתך, {{name}}. נחזור אליך בקרוב."
   hint:
+    context: 'טיפים לשימוש בפאנל התוכן'
     discussion: 'טיפים להתחלת דיון מרתק'
+    invitation: 'טיפים לכתיבת הזמנה מעולה'
+    proposal: 'טיפים לכתיבת הצעה ברורה'
+    vote: 'אתה יכול לשנות את בחירתך בכל עת'
+  explore_page:
+    header: חקור קבוצות
+    search_placeholder: חיפוש בקבוצות פומביות
+    single_search_result: "התאמה עם קבוצה פומבית אחת <strong>{{searchTerm}}:</strong>"
+    multiple_search_results: "{{resultCount}} התאמות לקבוצות פומביות <strong>{{searchTerm}}:</strong>"
+    no_results_found: "<strong>לא מוצא את הקבוצה שאתה מחפש?</strong> אם הפרטיות של קבוצה מוגדרת כ-'סודי', היא לא תופיע כאן. אם ידוע לך מי מתאם בקבוצה, תוכל לבקש ממנו הזמנה."
+  global:
+    messages:
+      app_update: 'גרסה חדשה של האפליקציה זמינה לעדכון'
+      reload: 'טען מחדש'
+  emoji_picker:
+    search: "מצא אימוג'י..."
+    no_emojis_found: "ללא נמצאו אימוג'ים ל-'{{term}}'!"
   authorized_apps_page:
+    title: אפליקציות מורשות
+    no_applications: "לא נתת הרשאה לאף אפליקציית צד שלישי עוד."
+    notice: "נתת הרשאה לאפליקציות צד שלישי הבאות להשתמש בחשבונך. לחץ בטל הרשאה לנטרולם."
     revoke: הסר הרשאה
   registered_apps_page:
+    title: אפליקציות רשומות
+    no_applications: "עוד אין לך אפליקציות עם OAuth. לחץ למטה ליצירת אחת."
     name: שם
+    redirect_uris: הפניית כתובות אינטרנט
+    create_new_application: אפליקציה חדשה
+  registered_app_page:
+    uid: מספר זיהוי האפליקציה
+    secret: סוד האפליקציה
   registered_app_form:
+    new_application_title: אפליקציה חדשה
+    edit_application_title: עדכון האפליקציה
     name_label: שם
+    name_placeholder: איך קוראים לאפליקציה שלך?
+    redirect_uri_label: הפניה לכתובות
+    redirect_uri_placeholder: "כתובת לקריאה לאפליקציה שלך, לדוגמא: https://myapplication.com/loomio/callback"
+    redirect_uri_note: (שורה אחת לכל כתובת, התשמש ב'urn:ietf:wg:oauth:2.0:oob' לבדיקות מקומיות)
+    new_application_submit: צור אפליקציה
+    edit_application_submit: עדכון האפליקציה
+    messages:
+      logo_changed: לוגו עודכן.
+      created: "'{{name}}' נוצר "
+      updated: "'{{name}}' עודכן "
+  remove_app_form:
+    title: '{{name}} הושבת'
+    question: "אתה בטוח שאתה רוצה להשבית את האפליקציה '{{name}}'? לא ניתן לחזור אחורה מהפעולה."
+    submit: השבת
+    messages:
+      success: "'{{name}}' הושבת בהצלחה"
+  revoke_app_form:
+    title: בטל הרשאה ל{{name}}
+    question: "אתה בטוח שברצונך למנוע מ'{{name}}' להשתמש בחשבונך?"
+    submit: בטל הרשאה
+    messages:
+      success: "'{{name}}' אינו מורשה להשתמש בחשבונך יותר."
   decision_tools_card:
+    title: כלים לקבלת החלטות
+    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">עזרה</a>
     proposal_title: הצעה
     count_title: בדיקה
     poll_title: סקר
     score_title: ניקוד סקר
+    dot_vote_title: הצבעת נקודה
     meeting_title: הצבעת זמן
     ranked_choice_title: דירוג בחירה
   poll_common:
+    your_response: תגובתך
+    change_your_response: ערוך תגובה
+    reason: סיבה
+    reason_placeholder: הערות נוספות?
+    message: הודעה
+    results: תוצאות
+    responses: תגובות
+    close_poll_type: סגור {{pollType}}
+    totals: סיכומים
+    vote: הצבעה
+    votes: הצבעות
+    update_outcome: עדכן תוצאה
+    outcome: תוצאה
+    statement: הצהרה
+    change_your_stance: ערוך תגובה
+    load_more: טען עוד
+    details: פירוט
+    participant_name: שמך
+    participant_email: כתובת דוא"ל
+    share_poll: שתף סקר
+    share_proposal: שתף הצעה
+    share_count: שתף בדיקה
     start_poll: התחל החלטה
+    publish_poll: שתף סקר
     view_all: צפה בכל
     save_changes: שמירה
+    change_vote: שנה הצבעה
   poll_common_attachment_form:
     label: קבצים מצורפים
+  poll_common_add_option:
+    button:
+      add_option: הוסף עוד אפשרות
+    modal:
+      title: הוסף אפשרות
+    form:
+      add_options: הוסף אפשרויות
+      options_added: אפשרויות חדשות נוספו
+  poll_common_card:
+    show_results: הראה תוצאות
   poll_common_index_card:
+    title: החלטות קודמות
+    no_polls: לא נמצאו החלטות קודמות.
     count: "צפה בכל: ({{count}}) ההחלטות"
+  poll_common_action_panel:
+    anonymous: ההצבעות יהיו אנונימיות
+    anonymous_until_close: ההצבעות יהיו אנונימיות עד לסגירת הסקר
+    unable_to_vote: אין לך הרשאה להצביע על החלטה זו.
   current_polls_card:
+    title: החלטות עדכניות
     start_poll: החלטה חדשה
+    no_polls: אין החלטות פעילות כרגע.
+  poll_common_collapsed:
+    by_who: "על פי {{name}}"
   poll_common_select_group:
     loomio_group: קבוצה
+    loomio_group_placeholder: (לא נבחרה קבוצה)
   poll_common_notify_group:
+    notify_group: הכרזה
+    members_helptext: הקבוצה שלך לא תקבל הודעה
     members_count: "{{count}} אנשים יעודכנו"
+    participants_count: "{{count}} האנשים שהצביעו יקבלו הודעה"
   poll_common_calendar_invite:
+    calendar_invite: הוסף הזמנה ליומן עם תוצאה זו
+    poll_option_id: זמן פגישה
+    helptext_on: משתמשים יועלו להוסיף פגישה זו ליומן שלהם
+    helptext_off: הזמנה לפגישה לא תשלח
+    event_duration: משך
+    event_summary: סיכום
+    event_summary_placeholder: איך תרצה לקרוא לפגישה זו?
+    event_description: תיאור הפגישה
+    event_description_placeholder: מה התוכנית/לו"ז לפגישה?
     location: מיקום
+    location_placeholder: איפה תתקיים הפגישה?
+  poll_common_settings:
+    multiple_choice:
+      title: ריבוי אפשרויות
+      helptext_on: כשמסומן, משתתפים יוכלו לבחור כמה אפשרויות.
+    anyone_can_participate:
+      title: כל אחד יכול להשתתף
+      helptext_on: כשנבחר, כל אחד עם הלינק לסקר יכול להשתתף.
+    notify_on_participate:
+      title: עדכן אותי כשאנשים משתתפים
+      helptext_on: כשנבחר, תקבל הודעת עדכון בכל פעם מישהו משתתף.
+    anonymous:
+      title: מצביעים אנונימיים
+      helptext_on: כשנבחר, מידע על המשתתפים לא יוצג עם כל תגובה.
+    deanonymize_after_close:
+      title: הצג מצביעים אחרי סגירה
+      helptext_on: כשנבחר, מצביעים אנונימיים יוצגו אחרי סגירת הסקר
+    voter_can_add_options:
+      title: מצביעים יכולים להוסיף אפשרויות
+      helptext_on: כשנבחר, משתתפים יכולים להוסיף אפשרויות משלהם בעת ההצבעה.
+    can_respond_maybe:
+      title: מצביעים יכולים להשיב "אם נדרש"
+      helptext_on: מצביעעים יכולים לציין זמנים כ-"אם יש צורך"
+  poll_common_close_form:
+    title: סגור סקר מוקדם
+    helptext: אתה בטוח שאתה מוכן לסגור מוקדם?
+    close_proposal: סגור הצעה
+    close_poll: סגור סקר
+    close_count: סגור בדיקה
+    close_dot_vote: סגור בחירה של נקודות
+    close_meeting: סגור סקר תחום בזמן
+    close_ranked_choice: סגור סקר לפי דרוג
+    proposal_closed: הצעה סגורה
+    poll_closed: סקר סגור
+    count_closed: בחירה סגורה
+    dot_vote_closed: בחירת נקודות סגורה
+    meeting_closed: סקר תחום בזמן סגור
+    ranked_choice_closed: סקר לפי דרוג סגור
+  poll_common_reopen_form:
+    title: פתח מחדש החלטה סגורה
+    helptext: האם ההחלטה נסגרה לפני שהיית מוכן? פתח מחדש לאיסוף עוד עמדות מהקבוצה.
+    proposal_reopened: הצעה נפתחה מחדש
+    poll_reopened: סקר נפתח מחדש
+    count_reopened: בחירה נפתחה מחדש
+    dot_vote_reopened: בחירת נקודות נפתחה מחדש
+    meeting_reopened: סקר תחום בזמן נפתח מחדש
+    ranked_choice_reopened: סקר לפי דירוג נפתחה מחדש
+  poll_common_closing_at_field:
+    closing: סוגרים
+    closing_hour: שעת סגירה
+  poll_card:
+    started_by: התחיל לפי {{name}}
+  poll_common_votes_panel:
+    newest_first: הכי חדש קודם
+    oldest_first: הכי ישן קודם
+    priority_first: הסכמות קודם
+    priority_last: חסומים קודם
+    no_votes_yet: לא בוצעה עוד אף בחירה.
+    change_results_order: שנה סדר התוצאות
+    none_of_the_above: (אף אחד מהנ"ל)
+  poll_common_undecided_panel:
+    show_undecided: "הראה {{count}} שלא הוכרעו"
+    show_invitations: הראה הצעות ממתינות
+    undecided_users: "({{count}}) לא הוכרעו"
+    invitation_count_singular: "אדם אחד נוסף הוזמן דרך המייל להשתתף"
+    invitation_count_plural: "{{count}} אנשים נוספים הוזמנו דרך המייל להשתתף"
+  poll_common_undecided_user:
+    reminded: תזכורת נשלחה!
+    reminder_sent: הודעת תזכורת נשלחה
   poll_common_set_outcome_panel:
     share_outcome: שתפ/י תוצאה
+    poll: 'סקר זה נסגר <strong>שתף את התוצאה </strong> עם הקבוצה.'
+    proposal: 'הצעה זו נסגרה. אנא שקול מה נאמר בה ו- <strong>שתף את התוצאה </strong>, כך שאנשים ידעו מה הצעד הבא.'
+    count: 'בדיקה זו נסגרה. <strong>שתף את התוצאה</strong> לסיום התהליך.'
+    meeting: 'סקר תחום בזמן זה נסגר. <strong> שתף את התוצאה </strong> כדי שאחרים ידעו כשהפגישה תתקיים.'
+    dot_vote: 'בחירת הנקודות הזו נסגרה. <storng>שתף את התוצאה</strong> עם הקבוצה.'
+    ranked_choice: 'הסקר הדירוג הזה נסגר. <strong>שתף את התוצאה</strong> עם הקבוצה.'
   poll_common_outcome_form:
+    new_title: שתף תוצאה
+    update_title: עדכן תוצאה
+    outcome_created: תוצאה נוצרה
+    outcome_updated: תוצאה עודכנה
+    statement_placeholder: סכם את התגובות והסבר מה יקרה בהמשך.
     submit: שתפ/י תוצאה
+  poll_common_outcome_panel:
+    authored_by: 'לפי {{name}}'
+  poll_common_delete_modal:
+    question: אתה בטוח שברצונך למחוק את זה?
+    title: מחק החלטה
+    success: נמחק בהצלחה
+  poll_common_unsubscribe_form:
+    title: קבל עדכונים
+    label: קבל מייל עדכונים על החלטה זו
+    tooltip: 'אם תסיר את הסימון מהצ''קבוקס הזה לא תקבל עדכונים על החלטה זו (כגון עריכתה, כשפג תוקפה או התוצאה שלה). '
+    helptext_on: תקבל עדכונים במייל על פעילות בהחלטה זו
+    helptext_off: לא תקבל עדכונים במייל על החלטה זו
+    subscribed: הרשמה בוצעה בהצלחה
+    unsubscribed: ביטול ההרשמה בוצע בהצלחה
   poll_common_form:
+    title: כותרת
+    details: פירוט
+    options: אפשרויות
+    options_placeholder: הוסף אפשרות חדשה...
+    no_options: לא הוספת עוד אף אפשרות.
+    closing: סוגרים
     closed: סגור
     start: התחלה
     update: עדכון
+    loomio_school_link: |
+        <p>למידע נוסף - <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">עזרה של לומיו</a>.</p>
+  poll_proposal_form:
+    tool_tip_expanded: |
+        <p>הצעה היא כלי לחיפוש הסכמה קולקטיבית בנוגע להצהרה או דרך פעולה.</p>
+        <p>משתתפים יכולים להסכים, להמנע, להתנגד או לחסום - ולתת הצהרה להסבר עמדתם.</p>
+        <p>תרשים עוגה יציג את העמדות בקבוצה, בעוד שהצהרות נותנות לקולות השונים להשמע. </p>
+        <p>אל תתאכזב אם אתה לא רואה הסכמה בתחילה, הצעות נועדו להעלות על פני השטח נושאים הדורשים פתרון.</p>
+        <p>עם השתתפות טובה, הצעה היא כלי חזק למנדט לביצוע פעולות.</p>
+    tool_tip_collapsed: שאף להסכמה קולקטיבית
+    start_header: התחל הצעה
+    edit_header: ערוך הצעה
+    tip: שאף להסכמה קולקטיבית דרך תהליך שמאפשר לכל הקולות להשמע. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">למד איך</a>
+    title_placeholder: 'לדוגמא: בוא ניסע לירח!'
+    details_placeholder: תן מספיק מידע כך שכולם ידעו את משמעות ההסכמה או ההתנגדות לנושא
+    proposal_created: הצעה החלה
+    proposal_updated: הצעה עודכנה
   poll_poll_form:
+    tool_tip_expanded: |
+        <p>השתמש בסקר למדידת הפופולריות או להצעת אפשרויות.</p>
+        <p>תן כמה אפשרויות לבחור מהן, החלט אם משתתפים בוחרים אפשרות אחת או כמה אפשרויות.</p>
+        <p>כולם בוחרים ויכולים להוסיף הצהרה אם ירצו. התוצאות תוצגנה בגרף עמודות.</p>
+    tool_tip_collapsed: מדוד פופולריות או הצע אפשרויות
+    start_header: התחל סקר
     edit_header: עריכת סקר
+    tip: מדוד פופולריות של אפשרוית שונות
+    title_placeholder: 'לדוגמא: לאן תרצה ללכת בחופשה?'
+    details_placeholder: תן את כל הפרטים כדי שאנשים יוכלו לענות על השאלה.
+    add_option_placeholder: הוסף אפשרות
+    remove_option: הסר אפשרות
+    poll_created: סקר נוצר
+    poll_updated: סקר עודכן
+  poll_count_form:
+    tool_tip_expanded: |
+        <p> <em>בדיקה</em> היא כלי עם שימושים מרובים אך רק 2 תגובות אפשריות: וי (✔) או איקס (✘). משתמשים יבחרו ב-וי (✔) כדי להגיד כן ובאיקס (✘) כדי להגיד לא או לא בטוח.</p>
+        <p>השתמש בו כדי לעורר באנשים עניין עם הצעה, כגון תגובה להזמנה: "אני מגיע לאירוע" או "אני אצטרף לקבוצת העבודה".</p>
+        <p>או השתמש בה לעקוב אחרי סיום משימה: "בדקתי שרשימת הקשר שלי נכונה" או "קראתי את המסמך והשארתי פידבק".</p>
+        <p>לבדיקה יש <em>מטרה</em>, שהיא מספר המשתתפים שתרצה. המטרה מציינת לקבוצה אם משהו דורש עוד התייחסות או שמשתתפיה מעודכנים היטב.</p>
+        <p>יום לפני שהבדיקה נסגרת, היא תתזכר לאלו שלא השתתפו לעשות כן, כמו רועה צאן דיגיטלי.</p>
+    tool_tip_collapsed: עקוב השתתפות וחפש מתנדבים
+    start_header: התחל בדיקה
+    edit_header: ערוך בדיקה
+    tip: עורר באנשים עניין עם הצעה או בקשה
+    title_placeholder: 'לדוגמא: מי רוצה להצטרף לקבוצת עבודה?'
+    details_placeholder: הסבר איזו התחייבות נדרשת או תן פירוט על איך להשתתף.
+    count_created: בדיקה החלה
+    count_updated: בדיקה עודכנה
+  poll_dot_vote_form:
+    tool_tip_expanded: |
+        <p>בחירת נקודות היא דרך לתיעדוף רשימה של אפשרויות.</p>
+        <p>משתתפים מקבלים מספר 'נקודות' שהם יכולים למקם כרצונם מבין האפשרויות כדי להציג את העדפותיהם.</p>
+        <p>התוצאות הכוללות מוצגות, כמו גם ההצבעות האינדיבידואליות, כך שאתה יכול לשקול כמה נקודות מבט.</p>
+    tool_tip_collapsed: תעדף אפשרויות
+    start_header: התחל הצבעה של בחירת נקודות
+    edit_header: ערוך הצבעה של בחירת נקודות
+    tip: הקצה משאבים במשותף
+    title_placeholder: 'לדוגמא: איך אנחנו צריכים להקצות את התקציב שלנו?'
+    details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
+    add_option_placeholder: הוסף אפשרות
+    dots_per_person: נקודות פר אדם
+    dots_per_person_helptext: מספר הנקודות שיחלק כל משתתף
+    dot_vote_created: הצבעת נקודות נוצרה
+    dot_vote_updated: הצבעת נקודות עודכנה
+  poll_score_form:
+    tool_tip_expanded: |
+        <p>תוצאת הסקרים מאפשרת לאנשים להביע את דרגת העדפתם לכל אפשרות.</p>
+        <p>סך כל הניקוד לכל אפשרות מופיעה כחלק מהתוצאות.</p>
+    tool_tip_collapsed: ניקוד כל אפשרות
+    start_header: התחל סקר ניקוד
+    edit_header: ערוך סקר ניקוד
+    tip: ניקוד כל אפשרות
+    title_placeholder: 'לדוגמא: תן ציון למועמדים מ-0 עד 9'
+    details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
+    add_option_placeholder: הוסף אפשרות
+    score_created: סקר ניקוד נוצר
+    score_updated: סקר ניקוד עודכן
+  poll_meeting_form:
+    tool_tip_collapsed: מצא זמן להפגש
+    start_header: התחל סקר זמן
+    edit_header: ערוך סקר זמן
+    tip: מצא מתי אנשים פנויים לפגישה
+    title_placeholder: 'דוגמא: מתי נקיים את פגישתנו הבאה?'
+    details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
+  poll_ranked_choice_form:
+    tip: מצא מתי אנשים פנויים לפגישה
+    details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
+    no_options: "לא הוספת עוד אף אפשרות."
+  poll_meeting_time_field:
+    closing_hour: שעת סגירה
+  poll_proposal_vote_form:
+    vote: הצבעה
   poll_proposal_options:
     agree_verb: "מוסכם"
     abstain_verb: "נמנע"
@@ -1156,6 +1488,8 @@ he:
   poll_count_options:
     'yes': 'כן'
     'no': 'לא'
+  poll_count_vote_form:
+    reason_label: הודעה
   poll_meeting_chart_panel:
     total: סך הכל
   poll_common_subscribe_form:
