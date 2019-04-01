@@ -1,54 +1,3 @@
-<style lang="scss">
-@import 'variables';
-@import 'mixins';
-
-.activity-card__load-more-sensor {
-  height: 1px;
-}
-.activity-card__load-more{
-  @include fontSmall;
-  display: flex;
-  align-items: center;
-  color: $grey-on-grey;
-  line-height: 30px;
-  padding: 0 10px;
-  background-color: $background-color;
-  margin-bottom: 20px;
-  margin-left: $cardPaddingSize;
-  margin-right: $cardPaddingSize;
-  cursor: pointer;
-  i {
-    margin-right: 4px;
-    font-size: 16px;
-  }
-}
-
-.activity-card__last-read-activity {
-  visibility: hidden; /* can't display none because scrolling won't work */
-  line-height: 0px;
-  margin: -10px 0;
-}
-
-.activity-card__new-activity {
-  visibility: visible;
-  margin: 0px 0 25px 0;
-  padding-bottom: 3px;
-  border-bottom: 1px solid $loomio-orange;
-  text-align: right;
-  font-size: 10px;
-  line-height: 12px;
-  letter-spacing: 0.3px;
-  color: $loomio-orange;
-
-}
-
-.activity-card__activity-list{
-  list-style: none;
-  padding: 0;
-}
-
-</style>
-
 <script lang="coffee">
 AppConfig                = require 'shared/services/app_config'
 EventBus                 = require 'shared/services/event_bus'
@@ -56,6 +5,9 @@ RecordLoader             = require 'shared/services/record_loader'
 ChronologicalEventWindow = require 'shared/services/chronological_event_window'
 NestedEventWindow        = require 'shared/services/nested_event_window'
 ModalService             = require 'shared/services/modal_service'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
+
 
 { print } = require 'shared/helpers/window'
 
@@ -90,7 +42,11 @@ module.exports =
     #       print()
     @init()
     # EventBus.listen $scope, 'initActivityCard', -> $scope.init()
+  computed:
+    canAddComment: -> AbilityService.canAddComment(@discussion)
+
   methods:
+    isLoggedIn: -> AbilityService.isLoggedIn()
     positionForSelect: ->
       if _.includes(['requested', 'context'], @initialPosition())
         "beginning"
@@ -186,5 +142,67 @@ section.activity-card(aria-labelledby='activity-card-title')
       class="activity-card__load-more-sensor lmo-no-print"
       ></div>
     loading.activity-card__loading.page-loading(v-show='eventWindow.loader.loadingMore')
-  add-comment-panel(v-if='eventWindow', :event-window='eventWindow', :parent-event='discussion.createdEvent()')
+  //- add-comment-panel(v-if='eventWindow', :event-window='eventWindow', :parent-event='discussion.createdEvent()')
+  .add-comment-panel.lmo-card-padding
+    comment-form(v-if='canAddComment' :discussion='discussion')
+    .add-comment-panel__join-actions(v-if='!canAddComment')
+      join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn()', :block='true')
+      button.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
+
 </template>
+<style lang="scss">
+@import 'variables';
+@import 'mixins';
+
+.add-comment-panel__sign-in-btn { width: 100% }
+.add-comment-panel__join-actions button {
+  width: 100%;
+}
+
+
+.activity-card__load-more-sensor {
+  height: 1px;
+}
+.activity-card__load-more{
+  @include fontSmall;
+  display: flex;
+  align-items: center;
+  color: $grey-on-grey;
+  line-height: 30px;
+  padding: 0 10px;
+  background-color: $background-color;
+  margin-bottom: 20px;
+  margin-left: $cardPaddingSize;
+  margin-right: $cardPaddingSize;
+  cursor: pointer;
+  i {
+    margin-right: 4px;
+    font-size: 16px;
+  }
+}
+
+.activity-card__last-read-activity {
+  visibility: hidden; /* can't display none because scrolling won't work */
+  line-height: 0px;
+  margin: -10px 0;
+}
+
+.activity-card__new-activity {
+  visibility: visible;
+  margin: 0px 0 25px 0;
+  padding-bottom: 3px;
+  border-bottom: 1px solid $loomio-orange;
+  text-align: right;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.3px;
+  color: $loomio-orange;
+
+}
+
+.activity-card__activity-list{
+  list-style: none;
+  padding: 0;
+}
+
+</style>

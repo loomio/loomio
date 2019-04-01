@@ -45,7 +45,8 @@ module.exports =
       name: 'reply_to_comment'
       icon: 'mdi-reply'
       canPerform: => AbilityService.canRespondToComment(@eventable)
-      perform:    => EventBus.broadcast $rootScope, 'replyToEvent', @event.surfaceOrSelf(), @eventable
+      perform:    =>
+        @$emit('reply-button-clicked', {event: @event, eventable: @eventable})
     ,
       name: 'edit_comment'
       icon: 'mdi-pencil'

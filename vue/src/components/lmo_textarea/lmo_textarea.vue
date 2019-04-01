@@ -27,7 +27,7 @@ module.exports =
     model: Object
     field: String
     placeholder: [String, Object]
-    helptext: Object
+    helptext: [String, Object]
     shouldReset: Boolean
 
   components:
@@ -122,7 +122,7 @@ module.exports =
         new History(),
         new Placeholder({
           emptyClass: 'is-empty',
-          emptyNodeText: @$t(@placeholder),
+          emptyNodeText: @$lt(@placeholder),
           showOnlyWhenEditable: true,
         })
       ]
@@ -321,7 +321,7 @@ div
         v-dialog(v-model="linkDialogIsOpen")
           template(v-slot:activator="{on}")
             v-btn(flat small v-on="on")
-              v-icon mdi-link
+              v-icon mdi-link-variant
           v-card
             .needsSelection(v-if="editor.view.state.tr.selection.empty")
               v-card-title.title(v-t="'text_editor.select_text_to_link'")

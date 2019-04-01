@@ -10,35 +10,36 @@ I18n           = require 'shared/services/i18n'
 
 module.exports =
   props:
-    eventWindow: Object
+    discussion: Object
+    parentComment: Object
 
   data: ->
+    actor: Session.user()
     shouldReset: false
     comment: @buildComment()
     isDisabled: null
 
-  methods:
-    commentHelptext: ->
-      helptext = if @eventWindow.discussion.private
-        {path: 'comment_form.private_privacy_notice', groupName: @comment.group().fullName}
+  computed:
+    helptext: ->
+      helptext = if @discussion.private
+        {path: 'comment_form.private_privacy_notice', args: {groupName: @discussion.group().fullName}}
       else
-        {path: 'comment_form.public_privacy_notice'}
+        'comment_form.public_privacy_notice'
 
-    commentPlaceholder: ->
-      if @comment.parentId
-        ['comment_form.in_reply_to', {name: @comment.parent().authorName()}]
+    placeholder: ->
+      if @parentComment
+        {path: 'comment_form.in_reply_to', args: {name: @parentComment.authorName()}}
       else
         'comment_form.aria_label'
 
-    preSave: ->
-      @shouldUpdateModel = !@shouldUpdateModel
-
+  methods:
     buildComment: ->
       Records.comments.build
         bodyFormat: "html"
         body: ""
-        discussionId: @eventWindow.discussion.id
+        discussionId: @discussion.id
         authorId: Session.user().id
+        parentId: if @parentComment then @parentComment.id else null
 
     reset: ->
       @shouldReset = !@shouldReset
@@ -58,31 +59,33 @@ module.exports =
         flashOptions:
           name: =>
             @comment.parent().authorName() if @comment.isReply()
-        successCallback: @init
+        successCallback: =>
+          @$emit('comment-submitted')
+          @init()
 
-      # EventBus.listen @, 'setParentComment', (e, parentComment) =>
-      #   @comment.parentId = parentComment.id
-      #
       # submitOnEnter @, element: $element
-      #
-      # EventBus.broadcast @, 'reinitializeForm', @comment
   mounted: ->
     @init()
+
 
 </script>
 
 <template lang="pug">
-.comment-form.lmo-relative
-  form(v-on:submit.prevent='submit()')
-    .lmo-disabled-form(v-show='isDisabled')
-    lmo-textarea(:model='comment' field="body" :placeholder="commentPlaceholder()" :helptext="commentHelptext()" :shouldReset="shouldReset")
-    v-card-actions
-      v-spacer
-      v-btn(flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
+.comment-form.lmo-relative.lmo-flex--row
+  .thread-item__avatar.lmo-margin-right
+    user-avatar(:user='actor', size='medium')
+  .thread-item__body.lmo-flex--column.lmo-flex__horizontal-center
+    form(v-on:submit.prevent='submit()')
+      .lmo-disabled-form(v-show='isDisabled')
+      lmo-textarea(:model='comment' field="body" :placeholder="placeholder" :helptext="helptext" :shouldReset="shouldReset")
+      v-card-actions
+        v-spacer
+        v-btn(flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
 
 </template>
 
 <style lang="scss">
+
 .comment-form .lmo-textarea md-input-container {
   margin-top: -2px;
 }

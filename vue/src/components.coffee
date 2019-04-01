@@ -27,7 +27,6 @@ module.exports = {
   PollCreated: 'thread/item/poll_created',
   StanceCreated: 'thread/item/stance_created',
   EventChildren: 'thread/event_children',
-  AddCommentPanel: 'thread/add_comment_panel',
   CommentForm: 'thread/comment_form',
   MembershipCard: 'group/membership_card',
   PlusButton: 'common/plus_button',

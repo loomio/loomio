@@ -1,9 +1,10 @@
 AppConfig             = require 'shared/services/app_config'
 ImplementationService = require 'shared/services/implementation_service'
+EventBus              = require 'shared/services/event_bus'
 
 createFlashLevel = (service, level, duration) ->
   (translateKey, translateValues, actionKey, actionFn) ->
-    service.broadcast(
+    EventBus.$emit("flash_message",
       level:     level
       duration:  duration or AppConfig.flashTimeout.short
       message:   translateKey

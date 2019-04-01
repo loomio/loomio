@@ -9,6 +9,16 @@ window.Vuetify = Vuetify
 
 import colors from 'vuetify/es5/util/colors'
 
+Vue.prototype.$lt = (value) ->
+  if (typeof value == 'string')
+    @$t(value)
+  else
+    path = value.path
+    locale = value.locale
+    args = value.args
+    choice = value.choice
+    @$t(path, args)
+
 Vue.use(VueI18n)
 Vue.use(Vuex)
 Vue.use(Vuetify,
