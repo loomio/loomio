@@ -47,6 +47,7 @@ module.exports =
     suggestionRange: null
     files: []
     imageFiles: []
+    pendingFilesCount: 0
     mentionableUserIds: []
     navigatedUserIndex: 0
     closeEmojiMenu: false
@@ -164,11 +165,13 @@ module.exports =
     attachFile: ({file}) ->
       wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null}
       @files.push(wrapper)
+      @pendingFilesCount = @pendingFilesCount + 1
       uploader = new FileUploader onProgress: (e) ->
         wrapper.percentComplete = parseInt(e.loaded / e.total * 100)
 
       uploader.upload(file).then (blob) =>
         wrapper.blob = blob
+        @pendingFilesCount = @pendingFilesCount - 1
         @updateModel()
       ,
       (e) ->
@@ -177,10 +180,12 @@ module.exports =
     attachImageFile: ({file, onProgress, onComplete, onFailure}) ->
       wrapper = {file: file, blob: null}
       @imageFiles.push(wrapper)
+      @pendingFilesCount = @pendingFilesCount + 1
       uploader = new FileUploader onProgress: onProgress
       uploader.upload(file).then((blob) =>
         wrapper.blob = blob
         onComplete(blob)
+        @pendingFilesCount = @pendingFilesCount - 1
         @updateModel()
       , onFailure)
 
@@ -238,8 +243,12 @@ module.exports =
          @popup.destroyAll()
          @popup = null
   watch:
-    files: -> @updateModel()
-    imageFiles: -> @updateModel()
+    pendingFilesCount: (val) ->
+      @$emit('file-upload-count', val)
+    files: (val) ->
+      @updateModel()
+    imageFiles: (val) ->
+      @updateModel()
     shouldReset: ->
       @editor.clearContent()
       @files = []

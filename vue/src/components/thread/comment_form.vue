@@ -18,6 +18,7 @@ module.exports =
     shouldReset: false
     comment: @buildComment()
     isDisabled: null
+    submissionDisabled: false
 
   computed:
     helptext: ->
@@ -33,6 +34,11 @@ module.exports =
         'comment_form.aria_label'
 
   methods:
+    handleFileUploadCount: (count) ->
+      if count > 0
+        @submissionDisabled = true
+      else
+        @submissionDisabled = false
     buildComment: ->
       Records.comments.build
         bodyFormat: "html"
@@ -77,10 +83,10 @@ module.exports =
   .thread-item__body.lmo-flex--column.lmo-flex__horizontal-center
     form(v-on:submit.prevent='submit()')
       .lmo-disabled-form(v-show='isDisabled')
-      lmo-textarea(:model='comment' field="body" :placeholder="placeholder" :helptext="helptext" :shouldReset="shouldReset")
+      lmo-textarea(:model='comment' @file-upload-count="handleFileUploadCount" field="body" :placeholder="placeholder" :helptext="helptext" :shouldReset="shouldReset")
       v-card-actions
         v-spacer
-        v-btn(flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
+        v-btn(:disabled="submissionDisabled" flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
 
 </template>
 
