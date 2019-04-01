@@ -23,7 +23,7 @@
   "homepage": "https://github.com/loomio/loomio#readme",
   "dependencies": {
     "@mdi/font": "^3.5.95",
-    "actioncable": "^5.2.2",
+    "actioncable": "^5.2.3",
     "activestorage": "^5.2.2",
     "bowser": "^2.1.0",
     "diff-match-patch": "^1.0.4",
