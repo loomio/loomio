@@ -37,11 +37,6 @@ module.exports =
     Picker: Picker
     # EditorMenuBubble: EditorMenuBubble
 
-  watch:
-    shouldUpdateModel: ->
-      @updateModel()
-      @$emit("modelUpdated")
-
   data: ->
     query: null
     suggestionRange: null
@@ -139,14 +134,17 @@ module.exports =
         (u.username || "").toLowerCase().startsWith(@query) or
         u.name.toLowerCase().includes(" #{@query}"))
       _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
-
+    format: ->
+      @model["#{@field}Format"]
   methods:
     setLinkUrl: (command) ->
-      console.log "empty", @editor.view.state.tr.selection.empty
       command({ href: @linkUrl })
       @linkUrl = null
       @linkDialogIsOpen = false
       @editor.focus()
+
+    emitUploading: ->
+      @$emit('is-uploading', !(@model.files.length == @files.length && @model.imageFiles.length == @imageFiles.length))
 
     emojiPicked: (a,b,c) ->
       { view } = this.editor
@@ -157,6 +155,7 @@ module.exports =
       @model[@field] = @editor.getHTML()
       @model.files = @files.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
       @model.imageFiles = @imageFiles.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
+      @emitUploading()
 
     removeFile: (name) ->
       @files = _filter @files, (wrapper) -> wrapper.file.name != name
@@ -164,6 +163,7 @@ module.exports =
     attachFile: ({file}) ->
       wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null}
       @files.push(wrapper)
+      @emitUploading()
       uploader = new FileUploader onProgress: (e) ->
         wrapper.percentComplete = parseInt(e.loaded / e.total * 100)
 
@@ -177,6 +177,7 @@ module.exports =
     attachImageFile: ({file, onProgress, onComplete, onFailure}) ->
       wrapper = {file: file, blob: null}
       @imageFiles.push(wrapper)
+      @emitUploading()
       uploader = new FileUploader onProgress: onProgress
       uploader.upload(file).then((blob) =>
         wrapper.blob = blob
@@ -251,7 +252,8 @@ module.exports =
 
 <template lang="pug">
 div
-  .editor
+  v-textarea(v-if="format == 'md'" lmo_textarea v-model="model[field]" :placeholder="$t('comment_form.say_something')")
+  .editor(v-if="format == 'html'")
     editor-menu-bar.menubar(:editor='editor')
       div.lmo-flex.lmo-flex__center(slot-scope='{ commands, isActive }')
         v-menu
