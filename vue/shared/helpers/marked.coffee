@@ -26,8 +26,8 @@ module.exports = {
     emojione.imagePathPNG = "/img/emojis/"
     emojione.ascii = true
 
-    renderer.heading   = (text, level) ->
-      _super.heading(emojione.shortnameToImage(text), level, text)
+    # renderer.heading   = (text, level) ->
+    #   _super.heading(emojione.shortnameToImage(text), level, text)
 
     renderer.link      = (href, title, text) ->
       _super.link(href, title, text).replace('<a ', '<a rel="noopener noreferrer" target="_blank" ')

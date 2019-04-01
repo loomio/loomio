@@ -12,7 +12,6 @@ module.exports =
   .md-block
     v-text-field.lmo-primary-form-input.poll-common-form-fields__title(type='text', required='true', :placeholder="$t('poll_' + poll.pollType + '_form.title_placeholder')", :label="$t('poll_common_form.title')", v-model='poll.title', ng-model-options='{ allowInvalid: true }', maxlength='250')
     validation-errors(:subject='poll', field='title')
-  lmo-textarea(v-if="poll.detailsFormat =='html'" :model='poll' field="details" :placeholder="$t('poll_' + poll.pollType + '_form.details_placeholder')", :label="$t('poll_common_form.details')")
-  v-textarea(v-if="poll.detailsFormat =='md'" v-model='poll.details', :placeholder="$t('poll_' + poll.pollType + '_form.details_placeholder')", :label="$t('poll_common_form.details')")
+  lmo-textarea(:model='poll' field="details" :placeholder="$t('poll_' + poll.pollType + '_form.details_placeholder')", :label="$t('poll_common_form.details')")
   //- outlet(name='after-poll-form-textarea', model='poll')
 </template>
