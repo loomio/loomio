@@ -68,7 +68,7 @@
     "bundle-collapser": "^1.3.0",
     "coffee-loader": "^0.9.0",
     "coffeeify": "^3.0.1",
-    "coffeescript": "^2.3.2",
+    "coffeescript": "^2.4.0",
     "css-loader": "^2.1.0",
     "geckodriver": "^1.14.1",
     "globby": "^8.0.1",
