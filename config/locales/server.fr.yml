@@ -75,7 +75,7 @@ fr:
     group_export_ready:
       subject: Export des données du groupe %{group_name}
       body_html: |
-          Téléchargez les données du groupe ici</a>. Ce lien expirera dans une semaine.
+          Téléchargez les données du groupe <a href="%{url}"> ici</a>. Ce lien expirera dans une semaine.
     accounts_merged:
       subject: "Vos comptes utilisateurs sur %{site_name} ont été fusionnés."
       body_html: |

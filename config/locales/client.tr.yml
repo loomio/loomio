@@ -1,4 +1,21 @@
 tr:
+  loomio_tags:
+    tags: Etiketler
+    apply_tags: Etiketleri uygula
+    new_tag: Etiket oluştur
+    name_label: İsim
+    color_label: Renk
+    card_title: Kategori Etiketleri
+    modal_title: Yeni bir etiket oluştur
+    modal_edit_title: Etiketi düzenle
+    modal_destroy_title: Etiketi kaldır
+    destroy_tag: Etiketi kaldır
+    destroy_helptext: Bu, bu etiketi yok edecek ve gruptaki tüm müzakerelerden kaldıracaktır. Emin misiniz?
+    helptext: Etiketler, konuşmaları kategorilere ayırmanızı ve daha sonra kolayca bulmanızı sağlar
+    discussions_count_singular: ({{count}} müzakere)
+    discussions_count_plural: ({{count}} müzakereler)
+    tags_marked: 'Müzakereler {{groupName}} içinde ''{{name}}'' ile işaretlendi '
+    no_tags_present: Bu etiketle müzakere bulunamadı! Başka birini seçmeyi deneyin.
   poll_types:
     proposal: Öneri
     count: Kontrol et
@@ -71,6 +88,7 @@ tr:
       uploading: 'Yükleniyor'
       load_more: 'Daha fazla yükle'
       share: Paylaş
+      ok: Tamam
       done: Tamamlandı
       start: Başla
       invite: Davet et
@@ -152,13 +170,6 @@ tr:
   membership_dropdown:
     make_coordinator: 'Koordinatör yap'
     cancel_invitation: Davetiyeyi iptal et
-  start_menu:
-    label: 'Kullanıcı eylemleri'
-    title: 'Aksiyon'
-    start_group: 'Grup Başlat'
-    start_subgroup: 'Alt Grup Başlat'
-    start_thread: 'Müzakere Başlat'
-    invite_people: 'Kişileri davet et'
   notifications:
     header: "Bildirimler"
     publish_outcome: "Bir sonuç yayınla"
@@ -190,6 +201,7 @@ tr:
     privacy_organisation: 'Müzakere {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
   action_dock:
     edit_stance: Konumunu değiştir
+    tag_thread: Etiketleri yönet
   cover_photo_form:
     heading: 'Yeni kapak fotoğrafı'
     upload_link: 'Yeni kapak fotoğrafı yükle'
@@ -569,7 +581,6 @@ tr:
     messages:
       reload: 'Tekrar yükle'
   emoji_picker:
-    search: "Bir emoji bulun..."
     no_emojis_found: "'{{term}}' için hiçbir emoji bulunamadı!"
   registered_apps_page:
     name: İsim

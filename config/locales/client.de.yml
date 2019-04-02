@@ -1,4 +1,21 @@
 de:
+  loomio_tags:
+    tags: Schlagwörter
+    apply_tags: Schlagwörter übernehmen
+    new_tag: Schlagwort erstellen
+    name_label: Name
+    color_label: Farbe
+    card_title: Schlagwörter kategorisieren
+    modal_title: neues Schlagwort erstellen
+    modal_edit_title: Schlagwort bearbeiten
+    modal_destroy_title: Schlagwort entfernen
+    destroy_tag: Schlagwort entfernen
+    destroy_helptext: Dies wird das Schlagwort löschen und es aus allen Diskussionen entfernen. Bist du sicher?
+    helptext: Schlagwörter können Konversationen kategorisieren und lassen sich später leicht finden.
+    discussions_count_singular: ({{count}} thread)
+    discussions_count_plural: ({{count}} threads)
+    tags_marked: Themen mit '{{name}}' in {{groupName}}
+    no_tags_present: Zu diesem Schlagwort wurden keine Diskussionen gefunden! Versuche es mit einem anderen.
   reactions:
     slight_smile: Gefällt mir
     heart: Liebe
@@ -51,6 +68,7 @@ de:
     not_found: Nicht gefunden
     time_zone: Zeitzone
     local_time: Ortszeit
+    attachments: Arbeitsmaterialien
     confirm_discard_changes: Änderungen verwerfen?
     time:
       am: morgens
@@ -116,7 +134,7 @@ de:
       uploading: 'Hochladen ...'
       load_more: 'Mehr anzeigen'
       share: Teilen
-      ok: OK!
+      ok: ok
       retry: Nochmal versuchen
       done: Fertig
       start: Beginnen
@@ -324,14 +342,6 @@ de:
       group: "aus der Gruppe entfernen"
       poll: 'von {{pollType}} entfernen'
     cancel_invitation: Einladung abbrechen
-  start_menu:
-    label: 'Benutzer-Aktionen'
-    title: 'Aktion'
-    start_group: 'Gruppe erstellen'
-    start_subgroup: 'Untergruppe erstellen'
-    start_thread: 'Diskussion eröffnen'
-    start_poll: 'Umfrage starten'
-    invite_people: 'Teilnehmer einladen'
   notification_models:
     discussion: 'Diskussion:'
     comment: 'kommentieren in'
@@ -480,6 +490,7 @@ de:
     comment_copied: Kommentar-URL in die Zwischenablage kopiert
     poll_copied: Die Entscheidungs-URL wurde in die Zwischenablage kopiert
     discussion_copied: Diskussions-URL in die Zwischenablage kopiert
+    tag_thread: Schlagwörter verwalten
   cover_photo_form:
     aria_label: 'Titelfoto Änderungsformumlar'
     heading: 'Neues Titelfoto'
@@ -1122,7 +1133,6 @@ de:
       app_update: 'Eine neue Version der App ist verfügbar'
       reload: 'Reload'
   emoji_picker:
-    search: "Emoji suchen..."
     no_emojis_found: "Kein Emoji für '{{term}}' gefunden!"
   authorized_apps_page:
     title: Autorisierte Apps

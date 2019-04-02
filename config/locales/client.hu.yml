@@ -1,4 +1,6 @@
 hu:
+  loomio_tags:
+    name_label: Név
   reactions:
     slight_smile: Tetszik
     heart: Szeret
@@ -113,7 +115,7 @@ hu:
       uploading: 'Feltöltés'
       load_more: 'Több'
       share: Megosztás
-      ok: Rendben
+      ok: Oké
       retry: Újra
       done: Kész
       start: Indítás
@@ -320,14 +322,6 @@ hu:
       group: "Eltávolítás a csoportból"
       poll: 'Eltávolítá a {{pollType}}ból'
     cancel_invitation: Meghívás elvetése
-  start_menu:
-    label: 'Felhasználói tettek'
-    title: 'Tett'
-    start_group: 'Csoport indítása'
-    start_subgroup: 'Alcsoport indítása'
-    start_thread: 'Tred indítása'
-    start_poll: 'Szavazás indítása'
-    invite_people: 'Hívj meg másokat'
   notification_models:
     discussion: 'tred:'
     comment: 'kommentelés'

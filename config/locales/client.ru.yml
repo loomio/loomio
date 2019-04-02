@@ -1,4 +1,21 @@
 ru:
+  loomio_tags:
+    tags: Метки
+    apply_tags: Применить метки
+    new_tag: Создать метку
+    name_label: Название
+    color_label: Цвет
+    card_title: Метки категорий
+    modal_title: Создать новую метку
+    modal_edit_title: Править метку
+    modal_destroy_title: Удалить метку
+    destroy_tag: Удалить метку
+    destroy_helptext: Этим вы уничтожите эту метку и уберете ее со всех ветвей в группе. Уверены?
+    helptext: Метки позволяют разбивать обсуждения на категории и легко их потом находить
+    discussions_count_singular: ({{count}} ветвь)
+    discussions_count_plural: ({{count}} ветвей)
+    tags_marked: Ветви, помеченные '{{name}}' в {{groupName}}
+    no_tags_present: Не нашли ветвей с этой меткой! Попробуйте выбрать другую.
   reactions:
     slight_smile: Нравиться
     heart: Люблю
@@ -18,6 +35,7 @@ ru:
     angry: Рассерженный
     weary: Утомлённый
     astonished: Изумлённый
+    rolling_eyes: Закатить глаза
     cry: Плакать
     scream: Кричать
     sleeping: Скучающий
@@ -28,16 +46,21 @@ ru:
     v: Мир
     metal: Метал
     ok_hand: Хорошо
+    thumbsup: Одобрение
+    thumbsdown: Осуждение
   poll_types:
     proposal: Предложение
     count: Проверка
     poll: Опрос
     dot_vote: Голосов
     meeting: Голосование за время встречи
+    ranked_choice: Порядок ранжированния
+    score: Оценка опроса
   timezones:
     local: местное время ({{значение}})
   common:
     you: Ты
+    expand: Развернуть
     all_day: Весь день
     ok_got_it: Ок, понятно
     learn_more: Узнайте больше
@@ -83,6 +106,7 @@ ru:
     action:
       next: 'Следующее'
       close: 'Закрыть'
+      reopen: 'Открыть вновь'
       save: 'Сохранить'
       save_changes: 'Сохранить изменения'
       update_settings: 'Обновить настройки'
@@ -105,7 +129,7 @@ ru:
       uploading: 'скачивание'
       load_more: 'Загрузить больше'
       share: Поделиться
-      ok: Ок!
+      ok: Хорошо
       retry: Повторите попытку
       done: Сделано
       start: Начать
@@ -115,6 +139,7 @@ ru:
       remind: Напомнить
       resend: Переслать
       send: Послать
+      invite: Приглашать
       resent: Переслать приглашение
       export: Экспортировать
     formatting_help:
@@ -156,6 +181,7 @@ ru:
     quiet_label: "Нет "
     mute_label: "Заглушен"
     discussion:
+      title: "Тема настройки почты"
       loud_description: "По каждой активности в обсуждении Вы будете уведомлены письмом на указанный почтовый адрес"
       normal_description: "Вы получите электронное письмо всякий раз, когда предложение открыто, вот-вот закроется, или когда будут опубликованы результаты."
       quiet_description: "Вы не будете получать письма об этой ветке."
@@ -220,6 +246,7 @@ ru:
     sign_in: "Войдите чтобы присоеденится к разговору"
   sidebar:
     recent_threads: 'Последние темы'
+    muted_threads: 'Выключить уведомления темы'
     explore: 'Публичная группа'
     start_thread: Новая тема
     start_decision: Новое решение
@@ -251,14 +278,6 @@ ru:
   membership_dropdown:
     invitation_resent: "Переслать приглашение"
     make_coordinator: 'Сделать координатором'
-  start_menu:
-    label: 'Активность пользователя'
-    title: 'Действие'
-    start_group: 'Начать группу'
-    start_subgroup: 'Создать группу'
-    start_thread: 'Начать тему'
-    start_poll: 'Начать опрос'
-    invite_people: 'Пригласить людей'
   notifications:
     header: "Уведомления"
     no_notifications: "У Вас нет уведомлений"
@@ -303,6 +322,8 @@ ru:
     translate_comment: Перевести комментарий
     edit_outcome: Редактировать результат
     translate_outcome: Перевести результат
+    pin_thread: Пароль темы
+    tag_thread: Управлять метками
   cover_photo_form:
     heading: 'Новое фото обложки'
     upload_link: 'Загрузить новое фото обложки'
@@ -330,7 +351,9 @@ ru:
   group_page:
     new_cover_photo: 'Загрузить новое фото обложки'
     new_group_logo: 'Загрузить новый логотип группы'
+    open_discussions: 'Открыть тему'
     subgroups: 'Подгруппы'
+    invite_people: 'Приглашать'
     visibility_label: 'Видимость'
     options_label: 'Опции'
     options:
@@ -353,6 +376,8 @@ ru:
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
     group_name: 'Название группы'
     privacy: 'Конфиденциальность'
+    public_threads: 'Только публичные темы'
+    public_or_private_threads: 'Разрешить публичные и закрытые темы'
     submit_update: 'Обновить настройки'
   documents_page:
     confirm_remove_title: Удалить вложение
@@ -401,6 +426,8 @@ ru:
     mark_as_read: Отметить прочитанным
     dismiss: Отклонить
     filtering:
+      filter_threads: Фильтр Темы
+      filter_threads_aria_label: Фильтр Темы
       proposals: Голосования
     aria_thread:
       current_proposal: 'Текущее голосование: {{name}}.'
@@ -411,9 +438,13 @@ ru:
       today: 'Сегодня'
       yesterday: 'Вчера'
   inbox_page:
+    unread_threads: Непрочтенные темы
     no_groups:
       start: Начать
       or: или
+  discussion:
+    closed:
+      closed: 'Тема закрыта'
   activity_card:
     unread: Непрочитанные
     latest: Последний
@@ -425,10 +456,20 @@ ru:
     thread_options: 'Настройки обсуждения'
     email_settings: 'Настройки Email'
     close_thread: 'Закрыть'
+    reopen_thread: 'Открыть вновь'
     mute_thread: 'Заглушен'
     print_thread: 'Печать'
     delete_thread: 'Удалить'
     add_comment: 'Комментарий'
+  pin_thread_modal:
+    title: Пароль темы
+    pin_thread: Пароль темы
+  delete_thread_form:
+    aria_label: 'Удалить тему'
+    title: Удалить тему
+    confirm: 'Удалить тему'
+    messages:
+      success: Тема удалена
   delete_comment_dialog:
     title: 'Удалить комментарий'
     question: 'Вы уверены что хотите удалить комментарий?'
@@ -473,7 +514,9 @@ ru:
     proposal_title: Предложение
     count_title: Проверка
     poll_title: Опрос
+    score_title: Оценка опроса
     meeting_title: Голосование за время встречи
+    ranked_choice_title: Порядок ранжированния
   poll_common:
     reason: Причина
     results: Результаты
@@ -502,10 +545,12 @@ ru:
     heading: Решения
     start_new_poll: Новое решение
   auth_form:
+    invalid_password: "Извините, этот пароль не совпадает с тем, который у нас есть в файле"
     email_placeholder: You@example.com
     name: Название
   install_slack:
     progress:
+      invite: Приглашать
       decide: Принять решение
     install:
       heading: 'Шаг 1. Выберите группу Loomio для интеграции'

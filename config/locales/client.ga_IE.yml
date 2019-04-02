@@ -1,4 +1,6 @@
 ga_IE:
+  loomio_tags:
+    name_label: Ainm
   poll_types:
     proposal: Togra
     count: Dearbháil
@@ -72,7 +74,7 @@ ga_IE:
       uploading: 'Ag uasluchtú'
       load_more: 'Luchtaigh tuilleadh'
       share: Comhroinn é
-      ok: Tá go maith!
+      ok: Tá go maith
       retry: Atriail
       done: Déanta
       start: Tosaigh
@@ -172,12 +174,6 @@ ga_IE:
     logo_title: 'An clár cinn'
   membership_dropdown:
     cancel_invitation: 'Cealaigh an cuireadh '
-  start_menu:
-    title: 'Gníomh'
-    start_group: 'Tosaigh Baicle'
-    start_subgroup: 'Cuir Fobhaicle ar bun'
-    start_thread: 'Tosaigh Snáith'
-    invite_people: 'Tabhair Cuireadh Do Dhaoine'
   notifications:
     header: "Fógraí"
     no_notifications: "Níl aon fhógra agat"
@@ -494,8 +490,6 @@ ga_IE:
   global:
     messages:
       reload: 'Athluchtaigh é'
-  emoji_picker:
-    search: "Aimsigh emoji..."
   registered_apps_page:
     name: Ainm
     create_new_application: Feidhmchlár Nua

@@ -1,4 +1,6 @@
 el:
+  loomio_tags:
+    name_label: Όνομα
   poll_types:
     proposal: Πρόταση
     count: Έλεγχος
@@ -74,7 +76,7 @@ el:
       uploading: 'Φορτώνει'
       load_more: 'Φόρτωση περισσότερα'
       share: Μοίρασμα
-      ok: Εντάξει!
+      ok: Εντάξει
       retry: Ξαναδοκιμάστε
       done: Έγινε
       start: Εκίνηση
@@ -198,14 +200,6 @@ el:
     logo_title: 'Κεντρική σελίδα'
   membership_dropdown:
     make_coordinator: 'Κάντε τον/την συντονιστή/τρια'
-  start_menu:
-    label: 'Ενέργειες χρήστη'
-    title: 'Ενέργεια'
-    start_group: 'Ξεκινήστε μια ομάδα'
-    start_subgroup: 'Ξεκινήστε μια υπο-ομάδα'
-    start_thread: 'Ξεκινήστε ένα θέμα'
-    start_poll: 'Έναρξη ψηφοφορίας'
-    invite_people: 'Προσκαλέστε άτομα'
   notifications:
     header: "Ειδοποιήσεις"
     no_notifications: "Δεν έχετε καμία ειδοποίηση"

@@ -1,4 +1,21 @@
 uk:
+  loomio_tags:
+    tags: Мітки
+    apply_tags: Застосувати мітки
+    new_tag: Створити мітку
+    name_label: Ім'я
+    color_label: Колір
+    card_title: Мітки категорій
+    modal_title: Створити нову мітку
+    modal_edit_title: Редагувати мітку
+    modal_destroy_title: Видалити мітку
+    destroy_tag: Видалити мітку
+    destroy_helptext: Це призведе до знищення цієї мітки та видалення її з усіх тем у групі. Ви впевнені?
+    helptext: Мітки дозволяють класифікувати розмови та легко знаходити їх пізніше
+    discussions_count_singular: ({{count}} тема)
+    discussions_count_plural: ({{count}} тем)
+    tags_marked: Тему позначено '{{name}}' в {{groupName}}
+    no_tags_present: Не знайдено тем з цією міткою! Спробуйте вибрати іншу.
   reactions:
     slight_smile: Вподобайка
     heart: Любов
@@ -51,6 +68,7 @@ uk:
     not_found: Не знайдено
     time_zone: Часовий пояс
     local_time: За місцевим часом
+    attachments: Вкладення
     confirm_discard_changes: Скасувати зміни?
     time:
       am: дп
@@ -116,7 +134,7 @@ uk:
       uploading: 'Завантажити'
       load_more: 'Завантажити більше'
       share: Поширити
-      ok: Добре!
+      ok: Гаразд
       retry: Спробувати знов
       done: Виконано
       start: Почати
@@ -325,14 +343,6 @@ uk:
       group: "Видалити з групи"
       poll: 'Видалити з {{pollType}}'
     cancel_invitation: Скасувати запрошення
-  start_menu:
-    label: 'Дії користувача'
-    title: 'Дія'
-    start_group: 'Створити групу'
-    start_subgroup: 'Створити підгрупу'
-    start_thread: 'Створити тему'
-    start_poll: 'Розпочати Опитування'
-    invite_people: 'Запросити людей'
   notification_models:
     discussion: 'тема:'
     comment: 'прокоментувати в'
@@ -487,6 +497,7 @@ uk:
     comment_copied: URL-адресу коментаря скопійовано до буферу обміну
     poll_copied: URL-адресу рішення скопійовано до буферу обміну
     discussion_copied: URL-адресу теми скопійовано до буферу обміну
+    tag_thread: Керувати мітками
   cover_photo_form:
     aria_label: 'Змінити фото обкладинки'
     heading: 'Нове фото обкладинки'
@@ -1157,7 +1168,6 @@ uk:
       app_update: 'Доступна нова версія додатку'
       reload: 'Перезавантажити'
   emoji_picker:
-    search: "Знайти смайлик..."
     no_emojis_found: "Не знайдено смайлика для '{{term}}'!"
   authorized_apps_page:
     title: Підключені додатки

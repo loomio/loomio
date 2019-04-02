@@ -1,4 +1,21 @@
 pt_BR:
+  loomio_tags:
+    tags: Tags
+    apply_tags: Aplicar tags
+    new_tag: Criar tag
+    name_label: Nome
+    color_label: Cor
+    card_title: Categoria de Tags
+    modal_title: Criar uma nova tag
+    modal_edit_title: Editar tag
+    modal_destroy_title: Remover tag
+    destroy_tag: Remover tag
+    destroy_helptext: Isso vai deletar essa tag e removê-la de todas as conversas e tópicos no grupo. Você tem certeza?
+    helptext: Tags permitem que você categorize conversas e encontre-as facilmente mais tarde
+    discussions_count_singular: ({{count}} tópico)
+    discussions_count_plural: ({{count}} tópicos)
+    tags_marked: Tópicos marcados '{{name}}' em {{groupName}}
+    no_tags_present: Nenhum tópico foi encontrado com essa tag! Tente selecionar outra diferente.
   reactions:
     slight_smile: Curtir
     heart: Amor
@@ -48,6 +65,7 @@ pt_BR:
     not_found: Não encontrado
     time_zone: Fuso Horário
     local_time: Hora local
+    attachments: Anexos
     confirm_discard_changes: Descartar suas alterações?
     time:
       am: am
@@ -111,7 +129,7 @@ pt_BR:
       uploading: 'Carregando'
       load_more: 'Carregar mais'
       share: Compartilhar
-      ok: OK!
+      ok: Ok
       retry: Tentar de novo
       done: Pronto
       start: Começo
@@ -312,13 +330,6 @@ pt_BR:
     remove_from:
       discussion: "Apagar da conversa"
     cancel_invitation: Cancelar convite
-  start_menu:
-    label: 'Ações do usuário'
-    title: 'Ação'
-    start_group: 'Iniciar Grupo'
-    start_subgroup: 'Iniciar Subgrupo'
-    start_thread: 'Iniciar Conversa'
-    invite_people: 'Convidar Pessoas'
   notification_models:
     discussion: 'conversa:'
     outcome: 'resultado:'
@@ -440,6 +451,7 @@ pt_BR:
     pin_thread: Afixar conversa
     unpin_thread: Desafixar conversa
     discussion_copied: URL da conversa copiada para o clipboard
+    tag_thread: Gerenciar tags
   cover_photo_form:
     aria_label: 'Formulário de modificação da foto de capa'
     heading: 'Nova foto da capa'
@@ -976,7 +988,6 @@ pt_BR:
     messages:
       reload: 'Recarregar'
   emoji_picker:
-    search: "Encontre um emoji..."
     no_emojis_found: "Nenhum emoji encontrado para '{{term}}'!"
   authorized_apps_page:
     title: Apps Autorizados

@@ -3,6 +3,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const components = require('./src/components.coffee');
+const Fiber = require('fibers');
 
 module.exports = {
   mode: 'development',
@@ -32,7 +33,12 @@ module.exports = {
             ? {loader: 'vue-style-loader'}
             : {loader: MiniCssExtractPlugin.loader} ,
           {loader: 'css-loader'},
-          {loader: 'sass-loader', options: { includePaths: ["src/css", "node_modules/@mdi/font/scss"]}}
+          {loader: 'sass-loader',
+           options: {
+             includePaths: ["src/css", "node_modules/@mdi/font/scss"],
+             implementation: require("sass"),
+             fiber: Fiber
+           }},
         ],
       },
       { test: /\.coffee$/,

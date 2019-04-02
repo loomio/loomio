@@ -1,4 +1,6 @@
 te:
+  loomio_tags:
+    name_label: పేరు
   reactions:
     ok_hand: సరే
   common:
@@ -40,7 +42,7 @@ te:
       cancel: 'రద్దుచేయి'
       show_more: "ఇంకా చూపించు"
       translate: 'అనువదించు'
-      ok: సరే!
+      ok: సరే
       done: పూర్తయింది
       delete: తొలగించు
       send: పంపించు
@@ -69,8 +71,6 @@ te:
     invitations: "ఆహ్వానాలు"
   membership_dropdown:
     cancel_invitation: ఆహ్వానం రద్దుచేయి
-  start_menu:
-    label: 'వాడుకరి చర్యలు'
   notification_models:
     poll: 'నిర్ణయం:'
   notifications:

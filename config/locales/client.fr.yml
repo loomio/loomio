@@ -1,4 +1,21 @@
 fr:
+  loomio_tags:
+    tags: Mots-clés
+    apply_tags: Appliquer les mots-clés
+    new_tag: Créer un mot-clé
+    name_label: Nom
+    color_label: Couleur
+    card_title: Classement par mots-clés
+    modal_title: Créer un nouveau mot-clé
+    modal_edit_title: Modifier un mot-clé
+    modal_destroy_title: Supprimer le mot-clé
+    destroy_tag: Supprimer le mot-clé
+    destroy_helptext: Ce mot-clé sera supprimé et retiré de toutes les discussions du groupe. Êtes-vous sûr⋅e ?
+    helptext: Les mots-clés permettent de catégoriser les discussions pour les retrouver facilement par la suite.
+    discussions_count_singular: ({{count}} discussion)
+    discussions_count_plural: ({{count}} discussions)
+    tags_marked: Discussions marquées « {{name}} » dans {{groupName}}
+    no_tags_present: Aucune discussion n’a été trouvée avec ce mot-clé ! Essayez avec un autre.
   reactions:
     slight_smile: J’aime
     heart: J’adore
@@ -51,6 +68,7 @@ fr:
     not_found: Introuvable
     time_zone: Fuseau horaire
     local_time: Heure locale
+    attachments: Pièces jointes
     confirm_discard_changes: Annuler vos modifications ?
     time:
       am: am
@@ -116,7 +134,7 @@ fr:
       uploading: 'Téléchargement'
       load_more: 'Plus'
       share: Partager
-      ok: Ok !
+      ok: Ok
       retry: Réessayer
       done: Terminé
       start: Démarrer
@@ -324,14 +342,6 @@ fr:
       group: "Retirer du groupe"
       poll: 'Retirer de {{pollType}}'
     cancel_invitation: Annuler l’invitation
-  start_menu:
-    label: 'Actions utilisateur'
-    title: 'Action'
-    start_group: 'Créer un groupe'
-    start_subgroup: 'Créer un sous-groupe'
-    start_thread: 'Démarrer une discussion'
-    start_poll: 'Démarrer un sondage'
-    invite_people: 'Inviter des personnes'
   notification_models:
     discussion: 'discussion :'
     comment: 'commentaire dans'
@@ -486,6 +496,7 @@ fr:
     comment_copied: URL du commentaire copiée
     poll_copied: URL de la décision copiée
     discussion_copied: URL de la discussion copiée
+    tag_thread: Gérer les mots-clés
   cover_photo_form:
     aria_label: 'Changer la forme de la photo de couverture'
     heading: 'Nouvelle photo de couverture'
@@ -1144,7 +1155,6 @@ fr:
       app_update: 'Une nouvelle version de l’application est disponible'
       reload: 'Recharger'
   emoji_picker:
-    search: "Recherche d’une émoticône…"
     no_emojis_found: "Aucune émoticône trouvée pour « {{term}} » !"
   authorized_apps_page:
     title: Applications autorisées

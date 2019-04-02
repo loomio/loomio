@@ -1,4 +1,21 @@
 he:
+  loomio_tags:
+    tags: תגיות
+    apply_tags: החל תגיות
+    new_tag: יצירת תגית
+    name_label: שם
+    color_label: צבע
+    card_title: תגיות קטגוריה
+    modal_title: יצירת תגית חדשה
+    modal_edit_title: עריכת תגית
+    modal_destroy_title: הסרת תגית
+    destroy_tag: הסרת תגית
+    destroy_helptext: פעולה זו תהרוס את התגית ותסיר אותה מכל השיחות בקבוצה. את/ה בטוח?
+    helptext: תגיות מאפשרות לך לקטלג את השיחות ולמצוא אותם בקלות אחר כך
+    discussions_count_singular: ({{count}} שיחה)
+    discussions_count_plural: ({{count}} שיחות)
+    tags_marked: שיחה סומנה כ'{{name}}' ב{{groupName}}
+    no_tags_present: לא נמצאו שיחות עם תגית זו. נסה לבחור אחרת.
   reactions:
     slight_smile: לייק
     heart: אהבה
@@ -51,6 +68,7 @@ he:
     not_found: לא נמצא
     time_zone: אזור זמן
     local_time: זמן מקומי
+    attachments: קבצים מצורפים
     confirm_discard_changes: לבטל את השינויים
     time:
       am: am
@@ -116,7 +134,7 @@ he:
       uploading: 'עולה'
       load_more: 'טען עוד'
       share: שיתוף
-      ok: אוקיי!
+      ok: אוקיי
       retry: נסה שוב
       done: סיום
       start: התחלה
@@ -324,14 +342,6 @@ he:
       group: "הסר מהקבוצה"
       poll: 'הסר מה{{pollType}}'
     cancel_invitation: בטל הזמנה
-  start_menu:
-    label: 'פעולות משתמש'
-    title: 'פעולה'
-    start_group: 'התחל קבוצה'
-    start_subgroup: 'התחל תת קבוצה'
-    start_thread: 'התחל שיחה'
-    start_poll: 'התחל סקר'
-    invite_people: 'הזמן אנשים'
   notification_models:
     discussion: 'שיחה:'
     comment: 'הערה ב'
@@ -486,6 +496,7 @@ he:
     comment_copied: כתובת הURL של ההערה הועתקה לClipboard
     poll_copied: כתובת הURL של ההחלטה הועתקה לClipboard
     discussion_copied: כתובת הURL של השיחה הועתקה לClipboard
+    tag_thread: ניהול תגיות
   cover_photo_form:
     aria_label: 'שנה תמונת קאבר של הטופס'
     heading: 'תמונת קאבר חדשה'
@@ -1156,7 +1167,6 @@ he:
       app_update: 'גרסה חדשה של האפליקציה זמינה לעדכון'
       reload: 'טען מחדש'
   emoji_picker:
-    search: "מצא אימוג'י..."
     no_emojis_found: "ללא נמצאו אימוג'ים ל-'{{term}}'!"
   authorized_apps_page:
     title: אפליקציות מורשות
@@ -1472,7 +1482,17 @@ he:
     tip: מצא מתי אנשים פנויים לפגישה
     title_placeholder: 'דוגמא: מתי נקיים את פגישתנו הבאה?'
     details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
+    meeting_created: סקר זמן נוצר
+    meeting_updated: סקר זמן עודכן
+    timeslots: משבצות זמן
+    no_options: הזן זמנים באיזור הזמן שלך ({{zone}}). משתתפים יראו את הזמנים מתורגמים לאיזורי הזמן שלהם.
+    meeting_duration: אורך הפגישה
+    add_option_placeholder: הזן זמן חדש
   poll_ranked_choice_form:
+    tool_tip_expanded: |
+        <p>דירוג בחירה היא שיטת הצבעה שמאפשרת לכל מצביע להגיב עם העתפותיהם לפי סדר.</p>
+        <p>זוהי אפשרות מועדפת כאשר 'גניבת הצבעות' היא דאגה (ז"א, שתי אפשרויות פופולריות הן דומות מספיק כך שהן מתחלקות בהצבעות ביניהן), וניתנת לשימוש לצורך מימוש קונדורסה או בחירות בסגנון סיבוב שני מיידי.
+        </p>
     tip: מצא מתי אנשים פנויים לפגישה
     details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
     no_options: "לא הוספת עוד אף אפשרות."

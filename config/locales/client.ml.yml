@@ -1,4 +1,6 @@
 ml:
+  loomio_tags:
+    name_label: പേരു്
   common:
     group: 'കൂട്ടം'
     groups: 'കൂട്ടങ്ങള്‍'

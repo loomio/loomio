@@ -117,6 +117,6 @@ end
 def run_commands(*commands)
   Array(commands).compact.each do |command|
     puts "\n-> #{command}"
-    return false unless system(command)
+    raise "command failed: #{command}" unless system(command)
   end
 end

@@ -1,4 +1,21 @@
 es:
+  loomio_tags:
+    tags: Etiquetas
+    apply_tags: Aplicar etiquetas
+    new_tag: Crear etiqueta
+    name_label: Nombre
+    color_label: Color
+    card_title: Etiquetas de categoría
+    modal_title: Crea una nueva etiqueta
+    modal_edit_title: 'Editar etiqueta '
+    modal_destroy_title: 'Eliminar etiqueta '
+    destroy_tag: 'Eliminar etiqueta '
+    destroy_helptext: 'Esto destruirá esta etiqueta y la removerá de todos los hilos en este grupo. ¿Quieres seguir? '
+    helptext: Las etiquetas te permiten categorizar las conversaciones para encontrarlas fácilmente luego
+    discussions_count_singular: ({{count}} hilo)
+    discussions_count_plural: ({{count}} hilos)
+    tags_marked: Hilos marcados '{{name}}' en {{groupName}}
+    no_tags_present: Ningún hilo encontrado con esa etiqueta, intenta seleccionando otra.
   reactions:
     slight_smile: Gusta
     heart: Encanta
@@ -50,6 +67,7 @@ es:
     not_found: 'No encontrado '
     time_zone: 'Zona horaria '
     local_time: Hora local
+    attachments: Adjuntos
     confirm_discard_changes: ¿Descartar tus cambios?
     time:
       am: am
@@ -113,7 +131,7 @@ es:
       uploading: 'Cargando'
       load_more: 'Cargar Más'
       share: Compartir
-      ok: ¡Ok!
+      ok: Ok
       retry: 'Reintentar '
       done: Listo
       start: 'Empezar '
@@ -321,14 +339,6 @@ es:
       group: "Eliminar del grupo"
       poll: 'Eliminar de {{pollType}}'
     cancel_invitation: cancelar invitación
-  start_menu:
-    label: 'Acciones de usuario '
-    title: 'Acción '
-    start_group: 'Crear un grupo nuevo'
-    start_subgroup: 'Crear subgrupo nuevo'
-    start_thread: 'Iniciar hilo nuevo'
-    start_poll: 'Crear una encuesta'
-    invite_people: 'Invita a gente'
   notification_models:
     discussion: 'Hilo:'
     comment: 'comentar en'
@@ -477,6 +487,7 @@ es:
     comment_copied: URL del comentario copiado al portapapeles
     poll_copied: URL de la decisión ha sido copiado al portapapeles
     discussion_copied: URL del hilo ha sido copiado al portapapeles
+    tag_thread: Administrar etiquetas
   cover_photo_form:
     aria_label: 'Formulario de carga para la foto de portada '
     heading: 'Nueva foto de portada '
@@ -1109,7 +1120,6 @@ es:
       app_update: 'Una nueva versión de la app está disponible '
       reload: 'Actualizar '
   emoji_picker:
-    search: "Busca un emoji / emoticono..."
     no_emojis_found: "No se han encontrado emojis /emoticonos para  '{{term}}'!"
   authorized_apps_page:
     title: 'Apps autorizados '

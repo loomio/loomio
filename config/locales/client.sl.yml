@@ -1,4 +1,6 @@
 sl:
+  loomio_tags:
+    name_label: Ime
   common:
     time:
       am: dopoldan

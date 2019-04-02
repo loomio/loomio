@@ -1,4 +1,6 @@
 ko:
+  loomio_tags:
+    name_label: 이름
   common:
     confirm_discard_changes: 수정을 취소하시겠습니까?
     time:
@@ -51,6 +53,7 @@ ko:
       translated: 'Bing으로 번역'
       upload: '업로드'
       uploading: '업로딩중...'
+      ok: OK
   devise:
     failure:
       inactive: '이 이메일 주소와 연결된 비활성화된 계정이 있습니다. 당신의 계정을 재활성화시키려면, 우리에게 연락하십시요.'
@@ -161,13 +164,6 @@ ko:
   membership_dropdown:
     make_coordinator: '코디네이터로 만들기'
     cancel_invitation: 초대 취소
-  start_menu:
-    label: '사용자 액션'
-    title: '액션'
-    start_group: '그룹 시작하기'
-    start_subgroup: '소그룹 시작하기'
-    start_thread: '쓰레드 시작하기'
-    invite_people: '초대하기'
   notifications:
     header: "알림"
     no_notifications: "알림이 없습니다."
@@ -601,8 +597,6 @@ ko:
   global:
     messages:
       reload: '다시 불러오기'
-  emoji_picker:
-    search: "이모티콘을 찾으세요."
   poll_common:
     save_changes: 저장
   poll_common_form:

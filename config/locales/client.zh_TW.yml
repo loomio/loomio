@@ -1,4 +1,23 @@
 zh_TW:
+  loomio_tags:
+    tags: 標籤
+    apply_tags: 套用標籤
+    new_tag: 建立標籤
+    name_label: 名稱
+    color_label: 顏色
+    card_title: 分類標籤
+    modal_title: 建立新標籤
+    modal_edit_title: 編輯標籤
+    modal_destroy_title: 移除標籤
+    destroy_tag: 移除標籤
+    destroy_helptext: 這將會破壞這個標籤並將其從所有在此群組中的討論串中移除。您確定嗎？
+    helptext: 標籤讓您可以分類討論，就可以較容易地在稍後找到它們
+    discussions_count_singular: （{{count}} 個討論串）
+    discussions_count_plural: （{{count}} 個討論串）
+    tag_created: 標籤已儲存
+    tag_destroyed: 標籤已移除
+    tags_marked: 討論串已標記為在 {{groupName}} 中的 '{{name}}'
+    no_tags_present: 找不到有該標籤的討論串！嘗試選取其他的。
   reactions:
     slight_smile: 讚
     heart: 愛
@@ -51,6 +70,7 @@ zh_TW:
     not_found: 找不到
     time_zone: 時區
     local_time: 本地時間
+    attachments: 附件
     confirm_discard_changes: 丟棄您的變更？
     time:
       am: am
@@ -116,7 +136,7 @@ zh_TW:
       uploading: '正在上傳'
       load_more: '載入更多'
       share: 分享
-      ok: 確定！
+      ok: 好
       retry: 重試
       done: 完成
       start: 啟動
@@ -132,6 +152,7 @@ zh_TW:
       resent: 重新傳送邀請
       export: 匯出
       fork: 分支
+      apply: 套用
     formatting_help:
       label: '格式化'
       title: '學習如何使用 Markdown 來格式化您的文字'
@@ -325,14 +346,6 @@ zh_TW:
       group: "自群組移除"
       poll: '自 {{pollType}} 移除'
     cancel_invitation: 取消邀請函
-  start_menu:
-    label: '使用者動作'
-    title: '動作'
-    start_group: '啟動群組'
-    start_subgroup: '啟動子群組'
-    start_thread: '啟動討論串'
-    start_poll: '啟動投票'
-    invite_people: '邀請夥伴'
   notification_models:
     discussion: '討論串：'
     comment: '評論於'
@@ -487,6 +500,7 @@ zh_TW:
     comment_copied: 評論的 URL 已複製到剪貼簿
     poll_copied: 決策 URL 已複製到剪貼簿
     discussion_copied: 討論串 URL 已複製到剪貼簿
+    tag_thread: 管理標籤
   cover_photo_form:
     aria_label: '變更封面照片表單'
     heading: '新的封面圖片'
@@ -876,6 +890,9 @@ zh_TW:
     update_profile: '更新簡歷'
     deactivate_account: '凍結帳號'
     help_translate: "協助我們翻譯 Loomio"
+  text_editor:
+    select_text_to_link: 選取要連結的文字
+    insert_link: 插入連結
   change_picture_form:
     aria_label: '變更照片表單'
     title: '變更照片'
@@ -1157,7 +1174,7 @@ zh_TW:
       app_update: '新版的應用程式已經可用'
       reload: '重新整理'
   emoji_picker:
-    search: "找到一個 emoji..."
+    search: "挑選您的表情符號……"
     no_emojis_found: "找不到 '{{term}}' 的 emoji！"
   authorized_apps_page:
     title: 已授權的應用程式
@@ -1630,6 +1647,7 @@ zh_TW:
     invalid_email: "抱歉，這看起來不是有效的電子郵件地址"
     invalid_password: "抱歉，這個密碼與我們的檔案上的不一樣"
     invalid_token: "抱歉，我們無法使用那個憑證來讓您登入。點選下方來傳送另一個。"
+    account_locked: "您的帳號因為太多次失敗的登入嘗試而被鎖定。請檢查您的電子郵件以取得解鎖連結"
     email_not_found: "抱歉，我們找不到與此電子郵件地址相關的帳號"
     email_placeholder: you@example.com
     login_with_token: 您已經設定好了！點選下方的連結以繼續。
