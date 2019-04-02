@@ -36,5 +36,13 @@ module.exports = {
     page.click('.join-group-button__ask-to-join-group')
     page.click('.membership-request-form__submit-btn')
     page.expectText('.flash-root__message', 'You have requested membership')
-  }
+  },
+
+  'can_join_closed_subgroup_when_admin_of_parent_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_with_subgroups_as_admin_landing_in_other_subgroup')
+    page.click('.join-group-button__join-group')
+    page.expectText('.flash-root__message', 'You are now a member of Point Break - Bodhi')
+  },
 }
