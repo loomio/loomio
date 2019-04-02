@@ -3,8 +3,6 @@ Records       = require 'shared/services/records'
 I18n          = require 'shared/services/i18n'
 LmoUrlService = require 'shared/services/lmo_url_service'
 
-exceptionHandler = require 'shared/helpers/exception_handler'
-
 { hardReload } = require 'shared/helpers/window'
 
 module.exports = new class Session
@@ -14,7 +12,6 @@ module.exports = new class Session
     @updateLocale(user.locale || AppConfig.defaultLocale)
 
     return unless AppConfig.currentUserId = userId
-    exceptionHandler.setUserContext(_.pick(user, ["email", "name", "id"]))
 
     if user.timeZone != AppConfig.timeZone
       user.timeZone = AppConfig.timeZone
