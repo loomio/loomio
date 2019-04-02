@@ -607,6 +607,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
+  fog-aws
   friendly_id (~> 5.2.5)
   gemrat
   geocoder (= 1.5.1)
