@@ -9,7 +9,7 @@ ModalService       = require 'shared/services/modal_service'
 { applyLoadingFunction } = require 'shared/helpers/apply'
 
 # import { isEmpty } from 'lodash'
-_isEmpty = require 'lodash/isempty'
+_isEmpty = require 'lodash/isEmpty'
 _map = require 'lodash/map'
 _throttle = require 'lodash/throttle'
 

@@ -23,7 +23,7 @@ EventBus       = require 'shared/services/event_bus'
 AbilityService = require 'shared/services/ability_service'
 ModalService   = require 'shared/services/modal_service'
 
-_isEmpty  = require 'lodash/isempty'
+_isEmpty  = require 'lodash/isEmpty'
 _debounce = require 'lodash/debounce'
 
 { applyLoadingFunction } = require 'shared/helpers/apply'

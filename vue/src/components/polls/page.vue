@@ -71,7 +71,7 @@ import PollCommonPreview from 'src/components/poll/common/preview.vue'
 _map = require 'lodash/map'
 _capitalize = require 'lodash/capitalize'
 _sortBy = require 'lodash/sortBy'
-_isEmpty = require 'lodash/isempty'
+_isEmpty = require 'lodash/isEmpty'
 _filter = require 'lodash/filter'
 
 module.exports =

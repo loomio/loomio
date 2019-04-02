@@ -20,7 +20,7 @@ urlFor         = require 'src/mixins/url_for'
 
 { applyLoadingFunction } = require 'shared/helpers/apply'
 
-_isEmpty     = require 'lodash/isempty'
+_isEmpty     = require 'lodash/isEmpty'
 _sortBy     = require 'lodash/sortBy'
 
 module.exports =

@@ -114,7 +114,7 @@ LmoUrlService     = require 'shared/services/lmo_url_service'
 { scrollTo }         = require 'shared/helpers/layout'
 { registerKeyEvent } = require 'shared/helpers/keyboard'
 
-_isEmpty     = require 'lodash/isempty'
+_isEmpty     = require 'lodash/isEmpty'
 
 module.exports =
   data: ->

@@ -5,7 +5,7 @@ EventBus      = require 'shared/services/event_bus'
 ModalService  = require 'shared/services/modal_service'
 LmoUrlService = require 'shared/services/lmo_url_service'
 
-_isEmpty     = require 'lodash/isempty'
+_isEmpty     = require 'lodash/isEmpty'
 
 { subscribeTo }     = require 'shared/helpers/cable'
 { myLastStanceFor } = require 'shared/helpers/poll'

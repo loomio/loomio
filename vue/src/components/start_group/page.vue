@@ -4,7 +4,7 @@ EventBus      = require 'shared/services/event_bus'
 LmoUrlService = require 'shared/services/lmo_url_service'
 ModalService  = require 'shared/services/modal_service'
 
-_isEmpty     = require 'lodash/isempty'
+_isEmpty     = require 'lodash/isEmpty'
 
 module.exports =
   data: ->
