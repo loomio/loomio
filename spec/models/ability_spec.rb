@@ -290,7 +290,7 @@ describe "User abilities" do
   context "admin of a group" do
     let(:group) { create(:formal_group) }
     let(:subgroup) { create(:formal_group, parent: group) }
-    let(:another_subgroup) { create(:formal_group, parent: group) }
+    let(:closed_subgroup) { create(:formal_group, parent: group, group_privacy: 'closed') }
     let(:discussion) { create :discussion, group: group }
     let(:another_user_comment) { create :comment, discussion: discussion, user: other_user }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
@@ -310,10 +310,13 @@ describe "User abilities" do
     it { should     be_able_to(:make_admin, @subgroup_membership) }
     it { should     be_able_to(:remove_admin, @other_membership) }
     it { should     be_able_to(:destroy, @other_membership) }
-    it { should     be_able_to(:join, another_subgroup) }
     it { should     be_able_to(:destroy, another_user_comment) }
     it { should     be_able_to(:destroy, own_pending_membership) }
     it { should     be_able_to(:destroy, other_members_pending_membership) }
+
+    it "should be able to join a closed subgroup" do
+      should be_able_to(:join, closed_subgroup)
+    end
 
     it "should be able to become admin if no admins" do
       @membership.update(admin: false)
