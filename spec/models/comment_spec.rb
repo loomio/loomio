@@ -9,8 +9,9 @@ describe Comment do
     discussion.group.add_member!(user)
   end
 
-  describe "sanitization" do
+  describe "html sanitization" do
     it "removes script tags" do
+      comment.body_format = "html"
       comment.body = "hi im a hacker <script>alert('hacked')</script>"
       expect(comment.body).to eq "hi im a hacker alert('hacked')"
     end
