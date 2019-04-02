@@ -51,8 +51,9 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
 
     $scope.canToggleAdmin = ->
       ($scope.membership.group().adminMembershipsCount == 0 and $scope.membership.user() == Session.user()) or
-      AbilityService.canAdministerGroup($scope.membership.group()) and
-      (!$scope.membership.admin or $scope.canRemoveMembership($scope.membership))
+      (AbilityService.canAdministerGroup($scope.membership.group()) and (!$scope.membership.admin or $scope.canRemoveMembership($scope.membership))) or
+      ($scope.membership.user() == Session.user() && Session.user().isAdminOf($scope.membership.group().parent()))
+
 
     $scope.toggleAdmin = (membership) ->
       method = if $scope.membership.admin then 'removeAdmin' else 'makeAdmin'

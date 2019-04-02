@@ -62,6 +62,18 @@ module.exports = {
     page.expectText('.flash-root__message', 'Patrick Swayze is now a coordinator')
   },
 
+  'can_self_promote_when_admin_of_parent_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_with_subgroups_as_admin')
+    page.click('.membership-card__search-button')
+    page.fillIn('.membership-card__filter', 'Jennifer')
+    page.pause()
+    page.click('.membership-dropdown__button')
+    page.click('.membership-dropdown__toggle-admin')
+    page.expectText('.flash-root__message', 'Jennifer Grey is now a coordinator')
+  },
+
   'cannot_self_promote_when_coordinators': (test) => {
     page = pageHelper(test)
 
