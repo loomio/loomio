@@ -202,14 +202,14 @@ module.exports = new class AbilityService
     @canViewGroup(group)
 
   canJoinGroup: (group) ->
-    (group.membershipGrantedUpon == 'request') and
-    @canViewGroup(group) and
-    !Session.user().isMemberOf(group)
+    ((group.membershipGrantedUpon == 'request') and @canViewGroup(group) and !Session.user().isMemberOf(group)) ||
+    ((group.membershipGrantedUpon == 'approval') and @canViewGroup(group) and Session.user().isAdminOf(group.parent()) and !Session.user().isMemberOf(group))
 
   canRequestMembership: (group) ->
     (group.membershipGrantedUpon == 'approval') and
     @canViewGroup(group) and
-    !Session.user().isMemberOf(group)
+    !Session.user().isMemberOf(group) and
+    !@canJoinGroup(group)
 
   canTranslate: (model) ->
     AppConfig.inlineTranslation.isAvailable? and
