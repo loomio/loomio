@@ -90,7 +90,7 @@
     "vue-template-compiler": "^2.6.8",
     "vuetify-loader": "^1.2.1",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
+    "webpack-cli": "^3.3.0",
     "yargs": "^13.2.1"
   }
 }
