@@ -8,9 +8,13 @@ module HasRichText
       define_singleton_method :rich_text_fields, -> { Array on }
       rich_text_fields.each do |field|
         define_method "#{field}=" do |content|
-          tags = %w[strong em b i p code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote]
-          attributes = %w[href src alt title class data-type data-done data-mention-id]
-          self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(content, tags: tags, attributes: attributes)
+          if self["#{field}_format"] == "html"
+            tags = %w[strong em b i p code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote]
+            attributes = %w[href src alt title class data-type data-done data-mention-id]
+            self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(content, tags: tags, attributes: attributes)
+          else
+            self[field] = content
+          end
         end
         validates field, {length: {maximum: Rails.application.secrets.max_message_length}}
       end
