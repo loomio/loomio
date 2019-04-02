@@ -2,7 +2,7 @@
 Records      = require 'shared/services/records'
 ModalService = require 'shared/services/modal_service'
 urlFor       = require 'src/mixins/url_for'
-_isEmpty     = require 'lodash/isempty'
+_isEmpty     = require 'lodash/isEmpty'
 
 
 module.exports =

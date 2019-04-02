@@ -41,7 +41,7 @@ EventBus       = require 'shared/services/event_bus'
 AbilityService = require 'shared/services/ability_service'
 FlashService   = require 'shared/services/flash_service'
 
-_isEmpty     = require 'lodash/isempty'
+_isEmpty     = require 'lodash/isEmpty'
 
 module.exports =
   data: ->
