@@ -48,6 +48,9 @@ module.exports = {
                } ]}]
   },
   plugins: [
+    new WebpackNightWatchPlugin({
+      url: './tests/e2e/nightwatch.conf.js'
+    }),
     new MiniCssExtractPlugin({ filename: "app.css" }),
     new VueLoaderPlugin(),
     new VuetifyLoaderPlugin({
