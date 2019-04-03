@@ -1,11 +1,11 @@
 <style lang="scss">
 </style>
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+EventBus = require '@/shared/services/event_bus'
 
-{ listenForLoading } = require 'shared/helpers/listen'
-{ iconFor }          = require 'shared/helpers/poll'
-{ submitStance }  = require 'shared/helpers/form'
+{ listenForLoading } = require '@/shared/helpers/listen'
+{ iconFor }          = require '@/shared/helpers/poll'
+{ submitStance }  = require '@/shared/helpers/form'
 
 _sortBy = require 'lodash/sortBy'
 

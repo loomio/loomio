@@ -24,10 +24,10 @@
 </style>
 
 <script lang="coffee">
-Records      = require 'shared/services/records'
-EventBus     = require 'shared/services/event_bus'
-FlashService = require 'shared/services/flash_service'
-ModalService = require 'shared/services/modal_service'
+Records      = require '@/shared/services/records'
+EventBus     = require '@/shared/services/event_bus'
+FlashService = require '@/shared/services/flash_service'
+ModalService = require '@/shared/services/modal_service'
 
 _isEmpty     = require 'lodash/isEmpty'
 

@@ -5,13 +5,13 @@
 </style>
 
 <script lang="coffee">
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-AppConfig      = require 'shared/services/app_config'
-UserHelpService= require 'shared/services/user_help_service'
+Session        = require '@/shared/services/session'
+Records        = require '@/shared/services/records'
+AbilityService = require '@/shared/services/ability_service'
+AppConfig      = require '@/shared/services/app_config'
+UserHelpService= require '@/shared/services/user_help_service'
 
-{ submitForm } = require 'shared/helpers/form'
+{ submitForm } = require '@/shared/helpers/form'
 
 module.exports =
   data: ->

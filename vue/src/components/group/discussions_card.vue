@@ -1,12 +1,12 @@
 <script lang="coffee">
-Records            = require 'shared/services/records'
-AbilityService     = require 'shared/services/ability_service'
-EventBus           = require 'shared/services/event_bus'
-RecordLoader       = require 'shared/services/record_loader'
-ThreadQueryService = require 'shared/services/thread_query_service'
-ModalService       = require 'shared/services/modal_service'
+Records            = require '@/shared/services/records'
+AbilityService     = require '@/shared/services/ability_service'
+EventBus           = require '@/shared/services/event_bus'
+RecordLoader       = require '@/shared/services/record_loader'
+ThreadQueryService = require '@/shared/services/thread_query_service'
+ModalService       = require '@/shared/services/modal_service'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply'
+{ applyLoadingFunction } = require '@/shared/helpers/apply'
 
 # import { isEmpty } from 'lodash'
 _isEmpty = require 'lodash/isEmpty'

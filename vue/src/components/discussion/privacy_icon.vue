@@ -7,8 +7,8 @@
 }
 </style>
 <script lang="coffee">
-I18n = require 'shared/services/i18n'
-{ discussionPrivacy } = require 'shared/helpers/helptext'
+I18n = require '@/shared/services/i18n'
+{ discussionPrivacy } = require '@/shared/helpers/helptext'
 
 module.exports =
   props:

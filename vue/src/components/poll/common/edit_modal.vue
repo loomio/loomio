@@ -4,10 +4,10 @@
 }
 </style>
 <script lang="coffee">
-Records = require 'shared/services/records'
+Records = require '@/shared/services/records'
 
-{ iconFor }       = require 'shared/helpers/poll'
-{ applySequence } = require 'shared/helpers/apply'
+{ iconFor }       = require '@/shared/helpers/poll'
+{ applySequence } = require '@/shared/helpers/apply'
 
 module.exports =
   props:

@@ -24,15 +24,15 @@
 </style>
 
 <script lang="coffee">
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-AppConfig      = require 'shared/services/app_config'
-ModalService   = require 'shared/services/modal_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
+Session        = require '@/shared/services/session'
+Records        = require '@/shared/services/records'
+EventBus       = require '@/shared/services/event_bus'
+AbilityService = require '@/shared/services/ability_service'
+AppConfig      = require '@/shared/services/app_config'
+ModalService   = require '@/shared/services/modal_service'
+LmoUrlService  = require '@/shared/services/lmo_url_service'
 
-{ submitForm }   = require 'shared/helpers/form'
+{ submitForm }   = require '@/shared/helpers/form'
 
 module.exports =
   data: ->

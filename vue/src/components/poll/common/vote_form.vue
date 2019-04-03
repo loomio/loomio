@@ -1,9 +1,9 @@
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+EventBus = require '@/shared/services/event_bus'
 
-{ submitOnEnter } = require 'shared/helpers/keyboard'
-{ submitStance }  = require 'shared/helpers/form'
-{ buttonStyle }   = require 'shared/helpers/style'
+{ submitOnEnter } = require '@/shared/helpers/keyboard'
+{ submitStance }  = require '@/shared/helpers/form'
+{ buttonStyle }   = require '@/shared/helpers/style'
 
 module.exports =
   props:

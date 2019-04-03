@@ -1,9 +1,9 @@
 <script lang="coffee">
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
+Records        = require '@/shared/services/records'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply'
+{ applyLoadingFunction } = require '@/shared/helpers/apply'
 
 module.exports =
   props:

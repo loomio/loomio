@@ -1,7 +1,7 @@
 <script lang="coffee">
-I18n = require 'shared/services/i18n'
+I18n = require '@/shared/services/i18n'
 
-{ groupPrivacy } = require 'shared/helpers/helptext'
+{ groupPrivacy } = require '@/shared/helpers/helptext'
 
 module.exports =
   props:

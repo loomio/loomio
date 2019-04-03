@@ -44,8 +44,8 @@
 
 </style>
 <script lang="coffee">
-Records = require 'shared/services/records'
-I18n    = require 'shared/services/i18n'
+Records = require '@/shared/services/records'
+I18n    = require '@/shared/services/i18n'
 
 module.exports =
   props:

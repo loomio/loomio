@@ -21,10 +21,10 @@
 </style>
 
 <script lang="coffee">
-Records      = require 'shared/services/records'
-EventBus     = require 'shared/services/event_bus'
-ModalService = require 'shared/services/modal_service'
-urlFor       = require 'src/mixins/url_for'
+Records      = require '@/shared/services/records'
+EventBus     = require '@/shared/services/event_bus'
+ModalService = require '@/shared/services/modal_service'
+urlFor       = require '@/mixins/url_for'
 
 _sortBy   = require 'lodash/sortBy'
 

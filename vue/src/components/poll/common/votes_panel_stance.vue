@@ -11,8 +11,8 @@
 </style>
 
 <script lang="coffee">
-{ listenForTranslations } = require 'shared/helpers/listen'
-{ participantName }       = require 'shared/helpers/poll'
+{ listenForTranslations } = require '@/shared/helpers/listen'
+{ participantName }       = require '@/shared/helpers/poll'
 
 module.exports =
   props:

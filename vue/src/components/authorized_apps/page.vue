@@ -9,9 +9,9 @@
 </style>
 
 <script lang="coffee">
-Records      = require 'shared/services/records'
-EventBus     = require 'shared/services/event_bus'
-ModalService = require 'shared/services/modal_service'
+Records      = require '@/shared/services/records'
+EventBus     = require '@/shared/services/event_bus'
+ModalService = require '@/shared/services/modal_service'
 
 _sortBy   = require 'lodash/sortBy'
 

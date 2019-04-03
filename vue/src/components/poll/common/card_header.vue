@@ -1,7 +1,7 @@
 <script lang="coffee">
-AbilityService = require 'shared/services/ability_service'
+AbilityService = require '@/shared/services/ability_service'
 
-{ iconFor } = require 'shared/helpers/poll'
+{ iconFor } = require '@/shared/helpers/poll'
 
 module.exports =
   props:

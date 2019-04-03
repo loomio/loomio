@@ -32,15 +32,15 @@
 </style>
 
 <script lang="coffee">
-Records        = require 'shared/services/records'
-ModalService   = require 'shared/services/modal_service'
-I18n           = require 'shared/services/i18n'
-EventBus       = require 'shared/services/event_bus'
-utils          = require 'shared/record_store/utils'
-LmoUrlService  = require 'shared/services/lmo_url_service'
-AbilityService = require 'shared/services/ability_service'
-FlashService   = require 'shared/services/flash_service'
-{ audiencesFor, audienceValuesFor } = require 'shared/helpers/announcement'
+Records        = require '@/shared/services/records'
+ModalService   = require '@/shared/services/modal_service'
+I18n           = require '@/shared/services/i18n'
+EventBus       = require '@/shared/services/event_bus'
+utils          = require '@/shared/record_store/utils'
+LmoUrlService  = require '@/shared/services/lmo_url_service'
+AbilityService = require '@/shared/services/ability_service'
+FlashService   = require '@/shared/services/flash_service'
+{ audiencesFor, audienceValuesFor } = require '@/shared/helpers/announcement'
 
 _each = require 'lodash/each'
 _sortBy = require 'lodash/sortBy'

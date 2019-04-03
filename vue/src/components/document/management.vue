@@ -23,10 +23,10 @@
 </style>
 
 <script lang="coffee">
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-urlFor         = require 'src/mixins/url_for'
-truncate       = require 'src/mixins/truncate'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
+urlFor         = require '@/mixins/url_for'
+truncate       = require '@/mixins/truncate'
 
 module.exports =
   mixins: [urlFor, truncate]

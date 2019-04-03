@@ -1,7 +1,7 @@
 <script lang="coffee">
-Session      = require 'shared/services/session'
-EventBus     = require 'shared/services/event_bus'
-ModalService = require 'shared/services/modal_service'
+Session      = require '@/shared/services/session'
+EventBus     = require '@/shared/services/event_bus'
+ModalService = require '@/shared/services/modal_service'
 
 module.exports =
   created: ->

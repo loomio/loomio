@@ -2,8 +2,8 @@
 </style>
 
 <script lang="coffee">
-FlashService  = require 'shared/services/flash_service'
-LmoUrlService = require 'shared/services/lmo_url_service'
+FlashService  = require '@/shared/services/flash_service'
+LmoUrlService = require '@/shared/services/lmo_url_service'
 
 module.exports =
   props:

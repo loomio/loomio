@@ -14,10 +14,10 @@
 
 </style>
 <script lang="coffee">
-Records = require 'shared/services/records'
+Records = require '@/shared/services/records'
 
-{ submitForm }    = require 'shared/helpers/form'
-{ submitOnEnter } = require 'shared/helpers/keyboard'
+{ submitForm }    = require '@/shared/helpers/form'
+{ submitOnEnter } = require '@/shared/helpers/keyboard'
 
 _invokeMap = require 'lodash/invokeMap'
 

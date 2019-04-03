@@ -2,12 +2,12 @@
 </style>
 
 <script lang="coffee">
-Session  = require 'shared/services/session'
-Records  = require 'shared/services/records'
-EventBus = require 'shared/services/event_bus'
+Session  = require '@/shared/services/session'
+Records  = require '@/shared/services/records'
+EventBus = require '@/shared/services/event_bus'
 
-{ listenForLoading } = require 'shared/helpers/listen'
-{ myLastStanceFor }  = require 'shared/helpers/poll'
+{ listenForLoading } = require '@/shared/helpers/listen'
+{ myLastStanceFor }  = require '@/shared/helpers/poll'
 
 module.exports =
   props:

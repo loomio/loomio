@@ -7,16 +7,16 @@
 </style>
 
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
+AppConfig      = require '@/shared/services/app_config'
+Session        = require '@/shared/services/session'
+Records        = require '@/shared/services/records'
+EventBus       = require '@/shared/services/event_bus'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
+LmoUrlService  = require '@/shared/services/lmo_url_service'
 
-{ submitForm }   = require 'shared/helpers/form'
-{ hardReload }   = require 'shared/helpers/window'
+{ submitForm }   = require '@/shared/helpers/form'
+{ hardReload }   = require '@/shared/helpers/window'
 
 module.exports =
   data: ->

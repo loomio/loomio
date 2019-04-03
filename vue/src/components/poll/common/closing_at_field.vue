@@ -24,7 +24,7 @@
 </style>
 
 <script lang="coffee">
-AppConfig = require 'shared/services/app_config'
+AppConfig = require '@/shared/services/app_config'
 
 _times = require('lodash/times')
 

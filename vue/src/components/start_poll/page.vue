@@ -10,14 +10,14 @@
 </style>
 
 <script lang="coffee">
-Records       = require 'shared/services/records'
-EventBus      = require 'shared/services/event_bus'
-ModalService  = require 'shared/services/modal_service'
-LmoUrlService = require 'shared/services/lmo_url_service'
+Records       = require '@/shared/services/records'
+EventBus      = require '@/shared/services/event_bus'
+ModalService  = require '@/shared/services/modal_service'
+LmoUrlService = require '@/shared/services/lmo_url_service'
 
-{ listenForLoading }       = require 'shared/helpers/listen'
-{ iconFor }                = require 'shared/helpers/poll'
-{ applyPollStartSequence } = require 'shared/helpers/apply'
+{ listenForLoading }       = require '@/shared/helpers/listen'
+{ iconFor }                = require '@/shared/helpers/poll'
+{ applyPollStartSequence } = require '@/shared/helpers/apply'
 
 module.exports =
   data: ->

@@ -1,9 +1,9 @@
 <script lang="coffee">
-Session        = require 'shared/services/session'
-AbilityService = require 'shared/services/ability_service'
-I18n           = require 'shared/services/i18n'
+Session        = require '@/shared/services/session'
+AbilityService = require '@/shared/services/ability_service'
+I18n           = require '@/shared/services/i18n'
 
-{ discussionPrivacy } = require 'shared/helpers/helptext'
+{ discussionPrivacy } = require '@/shared/helpers/helptext'
 
 _map = require 'lodash/map'
 _sortBy = require 'lodash/sortBy'

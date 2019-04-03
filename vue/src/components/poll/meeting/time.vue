@@ -2,7 +2,7 @@
 </style>
 
 <script lang="coffee">
-TimeService = require 'shared/services/time_service'
+TimeService = require '@/shared/services/time_service'
 
 module.exports =
   props:

@@ -33,8 +33,8 @@
 </style>
 
 <script lang="coffee">
-AppConfig = require 'shared/services/app_config'
-EventBus  = require 'shared/services/event_bus'
+AppConfig = require '@/shared/services/app_config'
+EventBus  = require '@/shared/services/event_bus'
 
 _pull = require('lodash/pull')
 

@@ -3,7 +3,7 @@
 
 <script lang="coffee">
 bowser = require 'bowser'
-AppConfig = require 'shared/services/app_config'
+AppConfig = require '@/shared/services/app_config'
 
 module.exports =
   props:

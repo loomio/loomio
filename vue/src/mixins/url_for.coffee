@@ -1,4 +1,4 @@
-LmoUrlService = require 'shared/services/lmo_url_service'
+LmoUrlService = require '@/shared/services/lmo_url_service'
 
 module.exports =
   methods:

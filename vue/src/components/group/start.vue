@@ -1,8 +1,8 @@
 <script lang="coffee">
-Records       = require 'shared/services/records'
-LmoUrlService = require 'shared/services/lmo_url_service'
+Records       = require '@/shared/services/records'
+LmoUrlService = require '@/shared/services/lmo_url_service'
 
-{ applySequence } = require 'shared/helpers/apply'
+{ applySequence } = require '@/shared/helpers/apply'
 
 module.exports =
   props:

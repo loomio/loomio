@@ -4,6 +4,9 @@ import Vuex from 'vuex'
 import Vuetify from 'vuetify'
 import VueRouter from 'vue-router'
 
+Vue.config.productionTip = false
+import './registerServiceWorker'
+
 window.Vue = Vue
 window.Vuetify = Vuetify
 
@@ -33,12 +36,12 @@ Vue.use(Vuetify,
 Vue.use(VueRouter)
 
 i18n = new VueI18n({locale: 'en', fallbackLocale: 'en'})
-require('src/directives/marked')
+require('@/directives/marked')
 moment = require 'moment-timezone'
-AppConfig = require 'shared/services/app_config'
-{ pluginConfigFor } = require 'shared/helpers/plugin'
-{ exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window'
-{ bootDat } = require 'shared/helpers/boot'
+AppConfig = require '@/shared/services/app_config'
+{ pluginConfigFor } = require '@/shared/helpers/plugin'
+{ exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require '@/shared/helpers/window'
+{ bootDat } = require '@/shared/helpers/boot'
 
 hardReload('/417.html') if unsupportedBrowser()
 exportGlobals()
@@ -55,9 +58,9 @@ bootDat (appConfig) ->
     res.json().then (data) ->
       i18n.setLocaleMessage('en', data)
       app = require('./app.vue').default
-      routes = require('src/routes.coffee')
+      routes = require('@/routes.coffee')
       router = new VueRouter(mode: 'history', routes: routes)
-      store = require('src/store/main.coffee')
+      store = require('@/store/main.coffee')
       new Vue(
         render: (h) -> h(app)
         router: router

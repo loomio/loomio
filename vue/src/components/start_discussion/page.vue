@@ -4,12 +4,12 @@
 }
 </style>
 <script lang="coffee">
-Records       = require 'shared/services/records'
-ModalService  = require 'shared/services/modal_service'
-LmoUrlService = require 'shared/services/lmo_url_service'
+Records       = require '@/shared/services/records'
+ModalService  = require '@/shared/services/modal_service'
+LmoUrlService = require '@/shared/services/lmo_url_service'
 
-{ applyDiscussionStartSequence } = require 'shared/helpers/apply'
-{ listenForLoading }             = require 'shared/helpers/listen'
+{ applyDiscussionStartSequence } = require '@/shared/helpers/apply'
+{ listenForLoading }             = require '@/shared/helpers/listen'
 
 module.exports =
   data: ->

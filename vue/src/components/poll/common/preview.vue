@@ -1,6 +1,6 @@
 <script lang="coffee">
-Session = require 'shared/services/session'
-urlFor  = require 'src/mixins/url_for'
+Session = require '@/shared/services/session'
+urlFor  = require '@/mixins/url_for'
 
 module.exports =
   mixins: [urlFor]

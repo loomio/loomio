@@ -44,14 +44,14 @@
 </style>
 
 <script lang="coffee">
-AppConfig          = require 'shared/services/app_config'
-Records            = require 'shared/services/records'
-Session            = require 'shared/services/session'
-EventBus           = require 'shared/services/event_bus'
-AbilityService     = require 'shared/services/ability_service'
-RecordLoader       = require 'shared/services/record_loader'
-ThreadQueryService = require 'shared/services/thread_query_service'
-ModalService       = require 'shared/services/modal_service'
+AppConfig          = require '@/shared/services/app_config'
+Records            = require '@/shared/services/records'
+Session            = require '@/shared/services/session'
+EventBus           = require '@/shared/services/event_bus'
+AbilityService     = require '@/shared/services/ability_service'
+RecordLoader       = require '@/shared/services/record_loader'
+ThreadQueryService = require '@/shared/services/thread_query_service'
+ModalService       = require '@/shared/services/modal_service'
 
 _capitalize = require 'lodash/capitalize'
 _take = require 'lodash/take'

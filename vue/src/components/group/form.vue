@@ -2,11 +2,11 @@
 </style>
 
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-AbilityService = require 'shared/services/ability_service'
-I18n           = require 'shared/services/i18n'
+AppConfig      = require '@/shared/services/app_config'
+AbilityService = require '@/shared/services/ability_service'
+I18n           = require '@/shared/services/i18n'
 
-{ groupPrivacy, groupPrivacyStatement } = require 'shared/helpers/helptext'
+{ groupPrivacy, groupPrivacyStatement } = require '@/shared/helpers/helptext'
 
 module.exports =
   props:

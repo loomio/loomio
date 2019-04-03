@@ -11,14 +11,14 @@
 </style>
 
 <script lang="coffee">
-Records        = require 'shared/services/records'
-Session        = require 'shared/services/session'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
-FlashService   = require 'shared/services/flash_service'
+Records        = require '@/shared/services/records'
+Session        = require '@/shared/services/session'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
+LmoUrlService  = require '@/shared/services/lmo_url_service'
+FlashService   = require '@/shared/services/flash_service'
 
-{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
+{ listenForTranslations, listenForReactions } = require '@/shared/helpers/listen'
 
 module.exports =
   props:

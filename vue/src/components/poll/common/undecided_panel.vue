@@ -2,10 +2,10 @@
 </style>
 
 <script lang="coffee">
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-RecordLoader   = require 'shared/services/record_loader'
-LmoUrlService  = require 'shared/services/lmo_url_service'
+Records        = require '@/shared/services/records'
+AbilityService = require '@/shared/services/ability_service'
+RecordLoader   = require '@/shared/services/record_loader'
+LmoUrlService  = require '@/shared/services/lmo_url_service'
 
 module.exports =
   props:

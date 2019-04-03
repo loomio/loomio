@@ -31,10 +31,10 @@
 </style>
 
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+EventBus = require '@/shared/services/event_bus'
 
-{ submitOnEnter, registerKeyEvent } = require 'shared/helpers/keyboard'
-{ submitStance }                    = require 'shared/helpers/form'
+{ submitOnEnter, registerKeyEvent } = require '@/shared/helpers/keyboard'
+{ submitStance }                    = require '@/shared/helpers/form'
 
 _sortBy = require 'lodash/sortBy'
 _find = require 'lodash/find'

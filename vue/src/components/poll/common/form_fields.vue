@@ -1,5 +1,5 @@
 <script lang="coffee">
-I18n = require 'shared/services/i18n'
+I18n = require '@/shared/services/i18n'
 
 module.exports =
   props:

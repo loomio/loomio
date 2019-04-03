@@ -1,17 +1,17 @@
 <script lang="coffee">
 
-AppConfig         = require 'shared/services/app_config'
-Session           = require 'shared/services/session'
-Records           = require 'shared/services/records'
-EventBus          = require 'shared/services/event_bus'
-AbilityService    = require 'shared/services/ability_service'
-LmoUrlService     = require 'shared/services/lmo_url_service'
-ModalService      = require 'shared/services/modal_service'
-PaginationService = require 'shared/services/pagination_service'
+AppConfig         = require '@/shared/services/app_config'
+Session           = require '@/shared/services/session'
+Records           = require '@/shared/services/records'
+EventBus          = require '@/shared/services/event_bus'
+AbilityService    = require '@/shared/services/ability_service'
+LmoUrlService     = require '@/shared/services/lmo_url_service'
+ModalService      = require '@/shared/services/modal_service'
+PaginationService = require '@/shared/services/pagination_service'
 
-{ subscribeTo } = require 'shared/helpers/cable'
+{ subscribeTo } = require '@/shared/helpers/cable'
 
-import urlFor from 'src/mixins/url_for.coffee'
+import urlFor from '@/mixins/url_for.coffee'
 
 module.exports =
   mixins: [urlFor]

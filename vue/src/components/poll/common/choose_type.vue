@@ -31,10 +31,10 @@
 </style>
 
 <script lang="coffee">
-AppConfig = require 'shared/services/app_config'
-EventBus  = require 'shared/services/event_bus'
+AppConfig = require '@/shared/services/app_config'
+EventBus  = require '@/shared/services/event_bus'
 
-{ iconFor } = require 'shared/helpers/poll'
+{ iconFor } = require '@/shared/helpers/poll'
 
 module.exports =
   props:

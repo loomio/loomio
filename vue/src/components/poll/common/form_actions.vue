@@ -1,6 +1,6 @@
 <script lang="coffee">
-{ submitOnEnter } = require 'shared/helpers/keyboard'
-{ submitPoll }    = require 'shared/helpers/form'
+{ submitOnEnter } = require '@/shared/helpers/keyboard'
+{ submitPoll }    = require '@/shared/helpers/form'
 
 module.exports =
   props:

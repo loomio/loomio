@@ -1,6 +1,6 @@
 <script lang="coffee">
-urlFor = require 'src/mixins/url_for'
-{ is2x } = require 'shared/helpers/window'
+urlFor = require '@/mixins/url_for'
+{ is2x } = require '@/shared/helpers/window'
 import Gravatar from 'vue-gravatar';
 
 module.exports =

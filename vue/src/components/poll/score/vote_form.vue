@@ -40,11 +40,11 @@
 </style>
 
 <script lang="coffee">
-Records  = require 'shared/services/records'
-EventBus = require 'shared/services/event_bus'
+Records  = require '@/shared/services/records'
+EventBus = require '@/shared/services/event_bus'
 
-{ submitStance }  = require 'shared/helpers/form'
-{ submitOnEnter } = require 'shared/helpers/keyboard'
+{ submitStance }  = require '@/shared/helpers/form'
+{ submitOnEnter } = require '@/shared/helpers/keyboard'
 
 _head = require 'lodash/head'
 _filter = require 'lodash/filter'

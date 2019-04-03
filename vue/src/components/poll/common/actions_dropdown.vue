@@ -1,7 +1,7 @@
 <script lang="coffee">
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
+LmoUrlService  = require '@/shared/services/lmo_url_service'
 
 module.exports =
   props:

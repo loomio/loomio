@@ -10,10 +10,10 @@
 </style>
 
 <script lang="coffee">
-FlashService   = require 'shared/services/flash_service'
-AbilityService = require 'shared/services/ability_service'
+FlashService   = require '@/shared/services/flash_service'
+AbilityService = require '@/shared/services/ability_service'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply'
+{ applyLoadingFunction } = require '@/shared/helpers/apply'
 
 module.exports =
   props:

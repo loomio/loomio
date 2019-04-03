@@ -1,8 +1,8 @@
 <script lang="coffee">
-Records       = require 'shared/services/records'
-EventBus      = require 'shared/services/event_bus'
-LmoUrlService = require 'shared/services/lmo_url_service'
-ModalService  = require 'shared/services/modal_service'
+Records       = require '@/shared/services/records'
+EventBus      = require '@/shared/services/event_bus'
+LmoUrlService = require '@/shared/services/lmo_url_service'
+ModalService  = require '@/shared/services/modal_service'
 
 _isEmpty     = require 'lodash/isEmpty'
 

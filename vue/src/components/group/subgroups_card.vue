@@ -1,10 +1,10 @@
 <script lang="coffee">
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-urlFor         = require 'src/mixins/url_for'
-truncate       = require 'src/mixins/truncate'
+Records        = require '@/shared/services/records'
+EventBus       = require '@/shared/services/event_bus'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
+urlFor         = require '@/mixins/url_for'
+truncate       = require '@/mixins/truncate'
 
 module.exports =
   mixins: [urlFor, truncate]

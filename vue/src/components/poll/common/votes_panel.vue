@@ -26,10 +26,10 @@
 </style>
 
 <script lang="coffee">
-RecordLoader = require 'shared/services/record_loader'
-EventBus     = require 'shared/services/event_bus'
+RecordLoader = require '@/shared/services/record_loader'
+EventBus     = require '@/shared/services/event_bus'
 
-{ fieldFromTemplate } = require 'shared/helpers/poll'
+{ fieldFromTemplate } = require '@/shared/helpers/poll'
 
 sortFn =
   newest_first: (stance) ->

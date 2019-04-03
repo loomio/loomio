@@ -1,12 +1,12 @@
 <script lang="coffee">
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-RecordLoader   = require 'shared/services/record_loader'
-I18n           = require 'shared/services/i18n'
-Records        = require 'shared/services/records'
+Records        = require '@/shared/services/records'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
+RecordLoader   = require '@/shared/services/record_loader'
+I18n           = require '@/shared/services/i18n'
+Records        = require '@/shared/services/records'
 
-fromNow        = require 'src/mixins/from_now'
+fromNow        = require '@/mixins/from_now'
 
 module.exports =
   mixins: [fromNow]

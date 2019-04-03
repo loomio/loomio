@@ -1,8 +1,8 @@
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
+AppConfig      = require '@/shared/services/app_config'
+EventBus       = require '@/shared/services/event_bus'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
 
 module.exports =
   data: ->

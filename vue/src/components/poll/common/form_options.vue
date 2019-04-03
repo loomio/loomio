@@ -1,12 +1,12 @@
 <style lang="scss">
 </style>
 <script lang="coffee">
-Session        = require 'shared/services/session'
-AbilityService = require 'shared/services/ability_service'
-EventBus       = require 'shared/services/event_bus'
+Session        = require '@/shared/services/session'
+AbilityService = require '@/shared/services/ability_service'
+EventBus       = require '@/shared/services/event_bus'
 
-{ registerKeyEvent }  = require 'shared/helpers/keyboard'
-{ fieldFromTemplate } = require 'shared/helpers/poll'
+{ registerKeyEvent }  = require '@/shared/helpers/keyboard'
+{ fieldFromTemplate } = require '@/shared/helpers/poll'
 
 _pull = require 'lodash/pull'
 _includes = require 'lodash/includes'

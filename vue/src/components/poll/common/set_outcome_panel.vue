@@ -5,9 +5,9 @@
 </style>
 
 <script lang="coffee">
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
+Records        = require '@/shared/services/records'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
 
 module.exports =
   props:

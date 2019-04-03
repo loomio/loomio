@@ -100,8 +100,8 @@
 </style>
 
 <script lang="coffee">
-ThreadService = require 'shared/services/thread_service'
-urlFor        = require 'src/mixins/url_for'
+ThreadService = require '@/shared/services/thread_service'
+urlFor        = require '@/mixins/url_for'
 
 module.exports =
   mixins: [urlFor]

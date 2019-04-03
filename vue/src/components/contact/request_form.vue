@@ -1,11 +1,11 @@
 <style lang="scss">
 </style>
 <script lang="coffee">
-Records  = require 'shared/services/records'
-EventBus = require 'shared/services/event_bus'
+Records  = require '@/shared/services/records'
+EventBus = require '@/shared/services/event_bus'
 
-{ submitForm }    = require 'shared/helpers/form'
-{ submitOnEnter } = require 'shared/helpers/keyboard'
+{ submitForm }    = require '@/shared/helpers/form'
+{ submitOnEnter } = require '@/shared/helpers/keyboard'
 module.exports =
   props:
     user: Object

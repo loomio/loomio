@@ -8,9 +8,9 @@
 </style>
 
 <script lang="coffee">
-AppConfig         = require 'shared/services/app_config'
-EventBus          = require 'shared/services/event_bus'
-NestedEventWindow = require 'shared/services/nested_event_window'
+AppConfig         = require '@/shared/services/app_config'
+EventBus          = require '@/shared/services/event_bus'
+NestedEventWindow = require '@/shared/services/nested_event_window'
 
 module.exports =
   props:

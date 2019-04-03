@@ -1,12 +1,12 @@
 <script lang="coffee">
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-I18n           = require 'shared/services/i18n'
+Session        = require '@/shared/services/session'
+Records        = require '@/shared/services/records'
+EventBus       = require '@/shared/services/event_bus'
+AbilityService = require '@/shared/services/ability_service'
+I18n           = require '@/shared/services/i18n'
 
-{ submitForm }    = require 'shared/helpers/form'
-{ submitOnEnter } = require 'shared/helpers/keyboard'
+{ submitForm }    = require '@/shared/helpers/form'
+{ submitOnEnter } = require '@/shared/helpers/keyboard'
 
 module.exports =
   props:

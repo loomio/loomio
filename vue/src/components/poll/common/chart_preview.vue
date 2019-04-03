@@ -1,6 +1,6 @@
 <script lang="coffee">
-{ fieldFromTemplate, myLastStanceFor } = require 'shared/helpers/poll'
-urlFor                                 = require 'src/mixins/url_for'
+{ fieldFromTemplate, myLastStanceFor } = require '@/shared/helpers/poll'
+urlFor                                 = require '@/mixins/url_for'
 
 import BarChart from 'src/components/poll/common/bar_chart.vue'
 import ProcessChart from 'src/components/poll/common/progress_chart.vue'

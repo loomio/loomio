@@ -1,6 +1,6 @@
 <script lang="coffee">
-Records   = require 'shared/services/records'
-AppConfig = require 'shared/services/app_config'
+Records   = require '@/shared/services/records'
+AppConfig = require '@/shared/services/app_config'
 
 module.exports =
   created: ->

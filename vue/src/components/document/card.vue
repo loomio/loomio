@@ -1,7 +1,7 @@
 <script lang="coffee">
-Records      = require 'shared/services/records'
-ModalService = require 'shared/services/modal_service'
-urlFor       = require 'src/mixins/url_for'
+Records      = require '@/shared/services/records'
+ModalService = require '@/shared/services/modal_service'
+urlFor       = require '@/mixins/url_for'
 _isEmpty     = require 'lodash/isEmpty'
 
 

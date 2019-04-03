@@ -20,7 +20,7 @@
 </style>
 
 <script lang="coffee">
-{ fieldFromTemplate } = require 'shared/helpers/poll'
+{ fieldFromTemplate } = require '@/shared/helpers/poll'
 
 module.exports =
   props:

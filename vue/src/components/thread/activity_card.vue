@@ -1,15 +1,15 @@
 <script lang="coffee">
-AppConfig                = require 'shared/services/app_config'
-EventBus                 = require 'shared/services/event_bus'
-RecordLoader             = require 'shared/services/record_loader'
-ChronologicalEventWindow = require 'shared/services/chronological_event_window'
-NestedEventWindow        = require 'shared/services/nested_event_window'
-ModalService             = require 'shared/services/modal_service'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
+AppConfig                = require '@/shared/services/app_config'
+EventBus                 = require '@/shared/services/event_bus'
+RecordLoader             = require '@/shared/services/record_loader'
+ChronologicalEventWindow = require '@/shared/services/chronological_event_window'
+NestedEventWindow        = require '@/shared/services/nested_event_window'
+ModalService             = require '@/shared/services/modal_service'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
 
 
-{ print } = require 'shared/helpers/window'
+{ print } = require '@/shared/helpers/window'
 
 module.exports =
   props:

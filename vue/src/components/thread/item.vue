@@ -1,13 +1,13 @@
 <script lang="coffee">
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
-I18n           = require 'shared/services/i18n'
+Session        = require '@/shared/services/session'
+Records        = require '@/shared/services/records'
+EventBus       = require '@/shared/services/event_bus'
+AbilityService = require '@/shared/services/ability_service'
+LmoUrlService  = require '@/shared/services/lmo_url_service'
+I18n           = require '@/shared/services/i18n'
 
-{ submitForm } = require 'shared/helpers/form'
-{ eventHeadline, eventTitle, eventPollType } = require 'shared/helpers/helptext'
+{ submitForm } = require '@/shared/helpers/form'
+{ eventHeadline, eventTitle, eventPollType } = require '@/shared/helpers/helptext'
 
 _includes = require 'lodash/includes'
 _camelCase = require 'lodash/camelCase'

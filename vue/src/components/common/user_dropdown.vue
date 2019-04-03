@@ -1,7 +1,7 @@
 <script lang="coffee">
-AppConfig       = require 'shared/services/app_config'
-Session         = require 'shared/services/session'
-UserHelpService = require 'shared/services/user_help_service'
+AppConfig       = require '@/shared/services/app_config'
+Session         = require '@/shared/services/session'
+UserHelpService = require '@/shared/services/user_help_service'
 
 module.exports =
   methods:

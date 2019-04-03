@@ -103,16 +103,16 @@
 </style>
 
 <script lang="coffee">
-LmoUrlService     = require 'shared/services/lmo_url_service'
-Session           = require 'shared/services/session'
-Records           = require 'shared/services/records'
-EventBus          = require 'shared/services/event_bus'
-AbilityService    = require 'shared/services/ability_service'
-PaginationService = require 'shared/services/pagination_service'
-LmoUrlService     = require 'shared/services/lmo_url_service'
+LmoUrlService     = require '@/shared/services/lmo_url_service'
+Session           = require '@/shared/services/session'
+Records           = require '@/shared/services/records'
+EventBus          = require '@/shared/services/event_bus'
+AbilityService    = require '@/shared/services/ability_service'
+PaginationService = require '@/shared/services/pagination_service'
+LmoUrlService     = require '@/shared/services/lmo_url_service'
 
-{ scrollTo }         = require 'shared/helpers/layout'
-{ registerKeyEvent } = require 'shared/helpers/keyboard'
+{ scrollTo }         = require '@/shared/helpers/layout'
+{ registerKeyEvent } = require '@/shared/helpers/keyboard'
 
 _isEmpty     = require 'lodash/isEmpty'
 

@@ -2,8 +2,8 @@
 </style>
 
 <script lang="coffee">
-fromNow        = require 'src/mixins/from_now'
-exactDate      = require 'src/mixins/exact_date'
+fromNow        = require '@/mixins/from_now'
+exactDate      = require '@/mixins/exact_date'
 
 module.exports =
   mixins: [fromNow, exactDate]

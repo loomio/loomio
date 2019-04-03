@@ -1,9 +1,9 @@
 <script lang="coffee">
-Session        = require 'shared/services/session'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-urlFor         = require 'src/mixins/url_for'
+Session        = require '@/shared/services/session'
+EventBus       = require '@/shared/services/event_bus'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
+urlFor         = require '@/mixins/url_for'
 
 import JoinGroupButton from 'src/components/group/join_button.vue'
 

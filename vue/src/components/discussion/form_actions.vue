@@ -1,12 +1,12 @@
 <style lang="scss">
 </style>
 <script lang="coffee">
-Records       = require 'shared/services/records'
-EventBus      = require 'shared/services/event_bus'
-LmoUrlService = require 'shared/services/lmo_url_service'
+Records       = require '@/shared/services/records'
+EventBus      = require '@/shared/services/event_bus'
+LmoUrlService = require '@/shared/services/lmo_url_service'
 
-{ submitDiscussion } = require 'shared/helpers/form'
-{ submitOnEnter }    = require 'shared/helpers/keyboard'
+{ submitDiscussion } = require '@/shared/helpers/form'
+{ submitOnEnter }    = require '@/shared/helpers/keyboard'
 
 module.exports =
   props:

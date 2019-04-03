@@ -1,5 +1,5 @@
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+EventBus = require '@/shared/services/event_bus'
 
 module.exports =
   data: ->

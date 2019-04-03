@@ -1,7 +1,7 @@
 <script lang="coffee">
-Records = require 'shared/services/records'
-{ iconFor }                = require 'shared/helpers/poll'
-{ applyPollStartSequence } = require 'shared/helpers/apply'
+Records = require '@/shared/services/records'
+{ iconFor }                = require '@/shared/helpers/poll'
+{ applyPollStartSequence } = require '@/shared/helpers/apply'
 
 module.exports =
   props:

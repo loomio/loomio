@@ -35,11 +35,11 @@
 </style>
 
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-FlashService   = require 'shared/services/flash_service'
+AppConfig      = require '@/shared/services/app_config'
+Records        = require '@/shared/services/records'
+EventBus       = require '@/shared/services/event_bus'
+AbilityService = require '@/shared/services/ability_service'
+FlashService   = require '@/shared/services/flash_service'
 
 _isEmpty     = require 'lodash/isEmpty'
 

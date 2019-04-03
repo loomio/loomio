@@ -2,7 +2,7 @@
 </style>
 
 <script lang="coffee">
-ModalService   = require 'shared/services/modal_service'
+ModalService   = require '@/shared/services/modal_service'
 
 module.exports =
   props:

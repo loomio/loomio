@@ -8,13 +8,13 @@
 </style>
 
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-InboxService   = require 'shared/services/inbox_service'
-ModalService   = require 'shared/services/modal_service'
-urlFor         = require 'src/mixins/url_for'
+AppConfig      = require '@/shared/services/app_config'
+Session        = require '@/shared/services/session'
+Records        = require '@/shared/services/records'
+EventBus       = require '@/shared/services/event_bus'
+InboxService   = require '@/shared/services/inbox_service'
+ModalService   = require '@/shared/services/modal_service'
+urlFor         = require '@/mixins/url_for'
 
 # import ThreadPreviewCollection from 'src/components/thread/preview_collection.vue'
 

@@ -1,9 +1,9 @@
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
+AppConfig      = require '@/shared/services/app_config'
+Session        = require '@/shared/services/session'
+Records        = require '@/shared/services/records'
+AbilityService = require '@/shared/services/ability_service'
+ModalService   = require '@/shared/services/modal_service'
 
 module.exports =
   props:

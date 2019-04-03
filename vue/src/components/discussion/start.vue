@@ -1,6 +1,6 @@
 <script lang="coffee">
-Records = require 'shared/services/records'
-{ applyDiscussionStartSequence } = require 'shared/helpers/apply'
+Records = require '@/shared/services/records'
+{ applyDiscussionStartSequence } = require '@/shared/helpers/apply'
 
 module.exports =
   props:

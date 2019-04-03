@@ -35,9 +35,9 @@ md-list-item.membership-requests-card__request {
 </style>
 
 <script lang="coffee">
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-urlFor         = require 'src/mixins/url_for'
+Records        = require '@/shared/services/records'
+AbilityService = require '@/shared/services/ability_service'
+urlFor         = require '@/mixins/url_for'
 
 module.exports =
   mixins: [urlFor]

@@ -2,12 +2,12 @@
 </style>
 
 <script lang="coffee">
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-FlashService   = require 'shared/services/flash_service'
-ModalService   = require 'shared/services/modal_service'
+Session        = require '@/shared/services/session'
+Records        = require '@/shared/services/records'
+EventBus       = require '@/shared/services/event_bus'
+AbilityService = require '@/shared/services/ability_service'
+FlashService   = require '@/shared/services/flash_service'
+ModalService   = require '@/shared/services/modal_service'
 
 module.exports =
   props:

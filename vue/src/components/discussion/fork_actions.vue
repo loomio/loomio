@@ -13,8 +13,8 @@
 </style>
 
 <script lang="coffee">
-Records      = require 'shared/services/records.coffee'
-ModalService = require 'shared/services/modal_service.coffee'
+Records      = require '@/shared/services/records.coffee'
+ModalService = require '@/shared/services/modal_service.coffee'
 
 module.exports =
   props:

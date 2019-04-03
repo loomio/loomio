@@ -1,6 +1,6 @@
-Records       = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-Session       = require 'shared/services/session'
+Records       = require '@/shared/services/records'
+AbilityService = require '@/shared/services/ability_service'
+Session       = require '@/shared/services/session'
 import Vuex from 'vuex'
 
 module.exports = new Vuex.Store

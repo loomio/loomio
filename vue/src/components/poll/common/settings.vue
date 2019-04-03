@@ -1,5 +1,5 @@
 <script lang="coffee">
-{ settingsFor } = require 'shared/helpers/poll'
+{ settingsFor } = require '@/shared/helpers/poll'
 
 _snakeCase = require('lodash/snakeCase')
 

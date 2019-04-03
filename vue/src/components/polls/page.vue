@@ -54,19 +54,19 @@
 // }
 </style>
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-RecordLoader   = require 'shared/services/record_loader'
-ModalService   = require 'shared/services/modal_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
-urlFor = require 'src/mixins/url_for'
+AppConfig      = require '@/shared/services/app_config'
+Session        = require '@/shared/services/session'
+Records        = require '@/shared/services/records'
+EventBus       = require '@/shared/services/event_bus'
+AbilityService = require '@/shared/services/ability_service'
+RecordLoader   = require '@/shared/services/record_loader'
+ModalService   = require '@/shared/services/modal_service'
+LmoUrlService  = require '@/shared/services/lmo_url_service'
+urlFor = require '@/mixins/url_for'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply'
-import Loading from 'src/components/common/loading.vue'
-import PollCommonPreview from 'src/components/poll/common/preview.vue'
+{ applyLoadingFunction } = require '@/shared/helpers/apply'
+import Loading from '@/components/common/loading.vue'
+import PollCommonPreview from '@/components/poll/common/preview.vue'
 
 _map = require 'lodash/map'
 _capitalize = require 'lodash/capitalize'

@@ -2,7 +2,7 @@
 </style>
 
 <script lang="coffee">
-Records = require 'shared/services/records'
+Records = require '@/shared/services/records'
 
 module.exports =
   props:
