@@ -18,7 +18,7 @@ urlFor         = require '@/mixins/url_for'
 
 # import ThreadPreviewCollection from 'src/components/thread/preview_collection.vue'
 
-module.exports =
+export default
   mixins: [urlFor]
   data: ->
     threadLimit: 50

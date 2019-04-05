@@ -88,7 +88,7 @@ _sortBy   = require 'lodash/sortBy'
 
 { applyLoadingFunction } = require '@/shared/helpers/apply'
 
-module.exports =
+export default
   mixins: [urlFor]
   data: ->
     groupIds: []

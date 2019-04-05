@@ -1,58 +1,3 @@
-<style lang="scss">
-.polls-page {
-  margin-top: 16px;
-}
-
-.polls-page__heading a {
-  // color: $primary-text-color;
-}
-
-.polls-page__filters {
-  align-items: center;
-}
-
-.polls-page__status-filter {
-  margin-left: 30px;
-  margin-right: 30px;
-}
-
-.polls-page__group-filter {
-  min-width: 200px;
-}
-
-.polls-page__icon {
-  vertical-align: middle;
-  margin-bottom: 4px;
-}
-
-.polls-page__count {
-  font-weight: bold;
-  margin-top: 16px;
-}
-
-.polls-page__load-more {
-  margin-bottom: 16px;
-}
-
-.polls-page__search {
-  flex-grow: 1;
-  margin: 16px 0 -10px;
-  i {
-    position: absolute;
-    right: 0;
-    // color: $grey-on-white;
-  }
-}
-
-// @media (max-width: $small-max-px) {
-//   .polls-page__filters { flex-direction: column; }
-//   .polls-page__search { width: 100%; }
-//   .polls-page__status-filter,
-//   .polls-page__group-filter {
-//     width: 100%;
-//   }
-// }
-</style>
 <script lang="coffee">
 AppConfig      = require '@/shared/services/app_config'
 Session        = require '@/shared/services/session'
@@ -74,7 +19,7 @@ _sortBy = require 'lodash/sortBy'
 _isEmpty = require 'lodash/isEmpty'
 _filter = require 'lodash/filter'
 
-module.exports =
+export default
   components:
     Loading: Loading
     PollCommonPreview: PollCommonPreview
@@ -184,3 +129,58 @@ v-container.lmo-main-container.polls-page
       .polls-page__load-more(v-if='canLoadMore')
         button.md-primary(md-button='', v-t="'poll_common.load_more'", @click='loadMore()')
 </template>
+<style lang="scss">
+.polls-page {
+  margin-top: 16px;
+}
+
+.polls-page__heading a {
+  // color: $primary-text-color;
+}
+
+.polls-page__filters {
+  align-items: center;
+}
+
+.polls-page__status-filter {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.polls-page__group-filter {
+  min-width: 200px;
+}
+
+.polls-page__icon {
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+
+.polls-page__count {
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.polls-page__load-more {
+  margin-bottom: 16px;
+}
+
+.polls-page__search {
+  flex-grow: 1;
+  margin: 16px 0 -10px;
+  i {
+    position: absolute;
+    right: 0;
+    // color: $grey-on-white;
+  }
+}
+
+// @media (max-width: $small-max-px) {
+//   .polls-page__filters { flex-direction: column; }
+//   .polls-page__search { width: 100%; }
+//   .polls-page__status-filter,
+//   .polls-page__group-filter {
+//     width: 100%;
+//   }
+// }
+</style>

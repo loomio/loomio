@@ -36,10 +36,10 @@ Vue.use(Vuetify,
 Vue.use(VueRouter)
 
 i18n = new VueI18n({locale: 'en', fallbackLocale: 'en'})
-require('@/directives/marked')
+# require('@/directives/marked')
 moment = require 'moment-timezone'
 AppConfig = require '@/shared/services/app_config'
-{ pluginConfigFor } = require '@/shared/helpers/plugin'
+# { pluginConfigFor } = require '@/shared/helpers/plugin'
 { exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require '@/shared/helpers/window'
 { bootDat } = require '@/shared/helpers/boot'
 
@@ -51,7 +51,7 @@ bootDat (appConfig) ->
   _.merge AppConfig, _.merge appConfig,
     timeZone: moment.tz.guess()
     pendingIdentity: appConfig.userPayload.pendingIdentity
-    pluginConfigFor: pluginConfigFor
+    # pluginConfigFor: pluginConfigFor
   window.Loomio = AppConfig
 
   fetch('/api/v1/translations?lang=en&vue=true').then (res) ->

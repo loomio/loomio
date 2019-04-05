@@ -4,7 +4,7 @@ window.bowser = bowser
 # a series of helpers related to the current browser window, such as the viewport size
 # or printing. Hopefully we can pool all window-related functionality here, and
 # then allow for an alternate implementation for when 'window' may not exist
-module.exports =
+module.exports = 
 
   unsupportedBrowser: ->
     (bowser.safari and bowser.version < 9) or (bowser.ie and bowser.version < 11)

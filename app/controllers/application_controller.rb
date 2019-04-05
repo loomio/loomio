@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     prevent_caching
 
     if current_user.is_logged_in? && current_user.experiences['vue_client']
-      render 'application/vue', layout: false
+      render file: 'public/vue.html', layout: false
     else
       render 'application/index', layout: false
     end

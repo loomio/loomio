@@ -13,7 +13,7 @@ PaginationService = require '@/shared/services/pagination_service'
 
 import urlFor from '@/mixins/url_for.coffee'
 
-module.exports =
+export default
   mixins: [urlFor]
   data: ->
     group: null

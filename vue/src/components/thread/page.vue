@@ -116,7 +116,7 @@ LmoUrlService     = require '@/shared/services/lmo_url_service'
 
 _isEmpty     = require 'lodash/isEmpty'
 
-module.exports =
+export default
   data: ->
     discussion: {}
   created: ->

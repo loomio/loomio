@@ -1,4 +1,8 @@
 module.exports = {
+  indexPath: 'vue.html',
+  devServer: {
+   proxy: 'http://localhost:3000'
+  },
   css: {
     loaderOptions: {
       sass: {
