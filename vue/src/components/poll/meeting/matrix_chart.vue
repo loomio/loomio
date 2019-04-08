@@ -2,7 +2,7 @@
 </style>
 
 <script lang="coffee">
-svg = require 'svg.js'
+import svg from 'svg.js'
 
 module.exports =
   props:

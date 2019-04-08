@@ -22,10 +22,10 @@
 </style>
 
 <script lang="coffee">
-AppConfig   = require '@/shared/services/app_config'
-EventBus    = require '@/shared/services/event_bus'
-TimeService = require '@/shared/services/time_service'
-I18n        = require '@/shared/services/i18n'
+import AppConfig   from '@/shared/services/app_config'
+import EventBus    from '@/shared/services/event_bus'
+import TimeService from '@/shared/services/time_service'
+import I18n        from '@/shared/services/i18n'
 
 module.exports =
   props:

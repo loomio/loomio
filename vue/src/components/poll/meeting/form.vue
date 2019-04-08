@@ -33,10 +33,10 @@
 </style>
 
 <script lang="coffee">
-AppConfig = require '@/shared/services/app_config'
-EventBus  = require '@/shared/services/event_bus'
+import AppConfig from '@/shared/services/app_config'
+import EventBus  from '@/shared/services/event_bus'
 
-_pull = require('lodash/pull')
+import _pull from 'lodash/pull'
 
 module.exports =
   props:

@@ -36,8 +36,8 @@
 </style>
 
 <script lang="coffee">
-AppConfig = require '@/shared/services/app_config'
-Records   = require '@/shared/services/records'
+import AppConfig from '@/shared/services/app_config'
+import Records   from '@/shared/services/records'
 
 module.exports =
   props:
