@@ -36,7 +36,7 @@ import _fromPairs from 'lodash/fromPairs'
 import _some from 'lodash/some'
 import _sortBy from 'lodash/sortBy'
 
-module.exports =
+export default
   props:
     stance: Object
   data: ->

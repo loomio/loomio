@@ -2,7 +2,7 @@
 
 import prettyBytes from 'pretty-bytes'
 
-module.exports =
+export default
   props:
     attachments: Array
   methods:

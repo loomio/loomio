@@ -4,7 +4,7 @@
 <script lang="coffee">
 import ModalService   from '@/shared/services/modal_service'
 
-module.exports =
+export default
   props:
     stance: Object
   methods:

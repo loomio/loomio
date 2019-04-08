@@ -14,7 +14,7 @@ import exactDate      from '@/mixins/exact_date'
 import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
 import { scrollTo }                                  from '@/shared/helpers/layout'
 
-module.exports =
+export default
   mixins: [urlFor, exactDate]
   props:
     discussion: Object

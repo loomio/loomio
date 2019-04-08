@@ -18,7 +18,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import { submitForm }   from '@/shared/helpers/form'
 import { hardReload }   from '@/shared/helpers/window'
 
-module.exports =
+export default
   data: ->
     isDisabled: false
     user: null

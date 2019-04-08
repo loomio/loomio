@@ -10,7 +10,7 @@ import _isEmpty     from 'lodash/isEmpty'
 import { subscribeTo }     from '@/shared/helpers/cable'
 import { myLastStanceFor } from '@/shared/helpers/poll'
 
-module.exports =
+export default
   data: ->
     poll: {}
   created: ->

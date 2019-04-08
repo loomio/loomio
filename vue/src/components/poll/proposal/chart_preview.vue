@@ -52,7 +52,7 @@
 </style>
 
 <script lang="coffee">
-module.exports =
+export default
   props:
     stanceCounts: Array
     myStance: Object

@@ -6,7 +6,7 @@ import ModalService  from '@/shared/services/modal_service'
 
 import _isEmpty     from 'lodash/isEmpty'
 
-module.exports =
+export default
   data: ->
     group: Records.groups.build
       name: @$route.params.name

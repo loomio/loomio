@@ -39,7 +39,7 @@
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
 
-module.exports =
+export default
   props:
     poll: Object
   data: ->

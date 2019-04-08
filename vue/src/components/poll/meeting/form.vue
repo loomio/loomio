@@ -38,7 +38,7 @@ import EventBus  from '@/shared/services/event_bus'
 
 import _pull from 'lodash/pull'
 
-module.exports =
+export default
   props:
     poll: Object
     back: Boolean

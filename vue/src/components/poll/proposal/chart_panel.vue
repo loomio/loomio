@@ -47,7 +47,7 @@
 import Records from '@/shared/services/records'
 import I18n    from '@/shared/services/i18n'
 
-module.exports =
+export default
   props:
     poll: Object
   data: ->

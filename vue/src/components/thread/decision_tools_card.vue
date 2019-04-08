@@ -4,7 +4,7 @@
 <script lang="coffee">
 import AbilityService from '@/shared/services/ability_service'
 
-module.exports =
+export default
   props:
     discussion: Object
   methods:

@@ -64,7 +64,7 @@ import _map from 'lodash/map'
 import _head from 'lodash/head'
 import _filter from 'lodash/filter'
 
-module.exports =
+export default
   props:
     stance: Object
 

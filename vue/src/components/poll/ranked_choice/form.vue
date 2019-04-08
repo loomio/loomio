@@ -19,7 +19,7 @@
 </style>
 
 <script lang="coffee">
-module.exports =
+export default
   props:
     poll: Object
   created: ->

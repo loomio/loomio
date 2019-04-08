@@ -27,7 +27,7 @@ import EventBus    from '@/shared/services/event_bus'
 import TimeService from '@/shared/services/time_service'
 import I18n        from '@/shared/services/i18n'
 
-module.exports =
+export default
   props:
     zone:
       type: String

@@ -11,7 +11,7 @@ import ModalService   from '@/shared/services/modal_service'
 
 import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
 
-module.exports =
+export default
   props:
     event: Object
     eventable: Object

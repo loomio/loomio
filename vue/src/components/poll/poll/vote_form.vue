@@ -14,7 +14,7 @@ import _sortBy from 'lodash/sortBy'
 import _pull from 'lodash/pull'
 import _includes from 'lodash/includes'
 
-module.exports =
+export default
   props:
     stance: Object
   data: ->

@@ -11,7 +11,7 @@ import LmoUrlService from '@/shared/services/lmo_url_service'
 import { applyDiscussionStartSequence } from '@/shared/helpers/apply'
 import { listenForLoading }             from '@/shared/helpers/listen'
 
-module.exports =
+export default
   data: ->
     discussion: null
     isDisabled: false

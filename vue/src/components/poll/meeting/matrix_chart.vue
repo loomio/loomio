@@ -4,7 +4,7 @@
 <script lang="coffee">
 import svg from 'svg.js'
 
-module.exports =
+export default
   props:
     matrixCounts: Array
     size: String

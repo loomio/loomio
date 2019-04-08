@@ -35,7 +35,7 @@ import EventBus from '@/shared/services/event_bus'
 import _reduce from 'lodash/reduce'
 import _sortBy from 'lodash/sortBy'
 
-module.exports =
+export default
   props:
     poll: Object
     zone: Object

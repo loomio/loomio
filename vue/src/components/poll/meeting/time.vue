@@ -4,7 +4,7 @@
 <script lang="coffee">
 import TimeService from '@/shared/services/time_service'
 
-module.exports =
+export default
   props:
     name: String
     zone: Object

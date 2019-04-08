@@ -57,7 +57,7 @@ import _take from 'lodash/take'
 import _keys from 'lodash/keys'
 import _every from 'lodash/every'
 
-module.exports =
+export default
   data: ->
     dashboardLoaded: Records.discussions.collection.data.length > 0
     filter: @$route.params.filter || 'hide_muted'

@@ -1,8 +1,8 @@
 <script lang="coffee">
-import FlashService = require '@/shared/services/flash_service'
-AppConfig    = require '@/shared/services/app_config'
-{ signIn }  = require '@/shared/helpers/user'
-module.exports =
+import FlashService from '@/shared/services/flash_service'
+import AppConfig    from '@/shared/services/app_config'
+import { signIn }  from '@/shared/helpers/user'
+export default
   methods:
     loggedIn: ->
       FlashService.success AppConfig.userPayload.flash.notice

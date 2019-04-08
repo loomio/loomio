@@ -43,7 +43,7 @@ import _take from 'lodash/take'
 import _map from 'lodash/map'
 import _findIndex from 'lodash/findIndex'
 
-module.exports =
+export default
   props:
     stance: Object
   data: ->
