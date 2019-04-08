@@ -1,5 +1,5 @@
-AppConfig            = require '@/shared/services/app_config'
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
+import AppConfig             from '@/shared/services/app_config'
+import BaseRecordsInterface  from '@/shared/record_store/base_records_interface'
 
 export default class LocaleRecordsInterface extends BaseRecordsInterface
   model:

@@ -32,21 +32,20 @@
 </style>
 
 <script lang="coffee">
-Records        = require '@/shared/services/records'
-ModalService   = require '@/shared/services/modal_service'
-I18n           = require '@/shared/services/i18n'
-EventBus       = require '@/shared/services/event_bus'
-utils          = require '@/shared/record_store/utils'
-LmoUrlService  = require '@/shared/services/lmo_url_service'
-AbilityService = require '@/shared/services/ability_service'
-FlashService   = require '@/shared/services/flash_service'
-{ audiencesFor, audienceValuesFor } = require '@/shared/helpers/announcement'
-
-_each = require 'lodash/each'
-_sortBy = require 'lodash/sortBy'
-_includes = require 'lodash/includes'
-_map = require 'lodash/map'
-_pull = require 'lodash/pull'
+import Records        from '@/shared/services/records'
+import ModalService   from '@/shared/services/modal_service'
+import I18n           from '@/shared/services/i18n'
+import EventBus       from '@/shared/services/event_bus'
+import utils          from '@/shared/record_store/utils'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import AbilityService from '@/shared/services/ability_service'
+import FlashService   from '@/shared/services/flash_service'
+import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
+import _each from 'lodash/each'
+import _sortBy from 'lodash/sortBy'
+import _includes from 'lodash/includes'
+import _map from 'lodash/map'
+import _pull from 'lodash/pull'
 
 module.exports =
   props:

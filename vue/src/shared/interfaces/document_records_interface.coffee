@@ -1,5 +1,5 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-DocumentModel        = require '@/shared/models/document_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import DocumentModel        from '@/shared/models/document_model'
 
 export default class DocumentRecordsInterface extends BaseRecordsInterface
   model: DocumentModel

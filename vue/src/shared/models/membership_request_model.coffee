@@ -5,7 +5,6 @@ export default class MembershipRequestModel extends BaseModel
   @singular: 'membershipRequest'
   @plural: 'membershipRequests'
   @indices: ['id', 'groupId']
-  @serializableAttributes: AppConfig.permittedParams.membership_request
 
   relationships: ->
     @belongsTo 'group'
