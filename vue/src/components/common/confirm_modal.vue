@@ -2,10 +2,10 @@
 </style>
 
 <script lang="coffee">
-FlashService  = require '@/shared/services/flash_service'
-LmoUrlService = require '@/shared/services/lmo_url_service'
+import FlashService  from '@/shared/services/flash_service'
+import LmoUrlService from '@/shared/services/lmo_url_service'
 
-module.exports =
+export default
   props:
     close: Function
     confirm: Object

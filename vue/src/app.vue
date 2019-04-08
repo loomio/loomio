@@ -1,5 +1,5 @@
 <script lang="coffee">
-FlashService = require '@/shared/services/flash_service'
+import FlashService = require '@/shared/services/flash_service'
 AppConfig    = require '@/shared/services/app_config'
 { signIn }  = require '@/shared/helpers/user'
 module.exports =

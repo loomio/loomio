@@ -77,16 +77,14 @@
 </style>
 
 <script lang="coffee">
-AppConfig = require '@/shared/services/app_config'
-Records   = require '@/shared/services/records'
-EventBus  = require '@/shared/services/event_bus'
-urlFor    = require '@/mixins/url_for'
-
-_truncate = require 'lodash/truncate'
-_map      = require 'lodash/map'
-_sortBy   = require 'lodash/sortBy'
-
-{ applyLoadingFunction } = require '@/shared/helpers/apply'
+import AppConfig from '@/shared/services/app_config'
+import Records   from '@/shared/services/records'
+import EventBus  from '@/shared/services/event_bus'
+import urlFor    from '@/mixins/url_for'
+import _truncate from 'lodash/truncate'
+import _map      from 'lodash/map'
+import _sortBy   from 'lodash/sortBy'
+import { applyLoadingFunction } from '@/shared/helpers/apply'
 
 export default
   mixins: [urlFor]

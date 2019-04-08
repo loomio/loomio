@@ -1,6 +1,3 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
 import PollProposalForm from 'src/components/poll/proposal/form.vue'
 import PollCommonVoteForm from 'src/components/poll/common/vote_form.vue'
@@ -31,7 +28,8 @@ import PollMeetingVoteForm from 'src/components/poll/meeting/vote_form.vue'
 import PollMeetingChartPanel from 'src/components/poll/meeting/chart_panel.vue'
 import PollMeetingChangeYourVote from 'src/components/poll/meeting/change_your_vote.vue'
 import PollMeetingVotesPanelStance from 'src/components/poll/meeting/votes_panel_stance.vue'
-module.exports =
+
+export default
   components:
     'poll-proposal-form': PollProposalForm
     'poll-common-vote-form': PollCommonVoteForm

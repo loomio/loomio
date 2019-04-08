@@ -1,11 +1,8 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
-fromNow        = require '@/mixins/from_now'
-exactDate      = require '@/mixins/exact_date'
+import fromNow        from '@/mixins/from_now'
+import exactDate      from '@/mixins/exact_date'
 
-module.exports =
+export default
   mixins: [fromNow, exactDate]
   props:
     poll: Object

@@ -1,8 +1,5 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
-module.exports =
+export default
   props:
     group: Object
     size: String

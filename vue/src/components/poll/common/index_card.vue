@@ -1,10 +1,9 @@
 <script lang="coffee">
-Records       = require '@/shared/services/records'
-LmoUrlService = require '@/shared/services/lmo_url_service'
+import Records       = require '@/shared/services/records'
+import LmoUrlService = require '@/shared/services/lmo_url_service'
+import { applyLoadingFunction } = require '@/shared/helpers/apply'
 
-{ applyLoadingFunction } = require '@/shared/helpers/apply'
-
-module.exports =
+export default
   props:
     model: Object
     limit: Number

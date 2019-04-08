@@ -4,10 +4,11 @@
   }
 </style>
 <script lang="coffee">
-  module.exports =
-    props:
-      model: Object
-      actions: Array
+export default {
+  props:
+    model: Object
+    actions: Array
+}
 </script>
 <template>
   <div

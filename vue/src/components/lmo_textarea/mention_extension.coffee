@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js'
 
-export default{
+export default
   # a list of all suggested items
   items: => [
     { id: 1, name: 'Philipp Kühn' }
@@ -68,4 +68,3 @@ export default{
       keys: ['name'],
     })
     fuse.search(query)
-}

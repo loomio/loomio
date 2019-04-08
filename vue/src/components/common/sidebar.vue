@@ -1,21 +1,21 @@
 <script lang="coffee">
-AppConfig      = require '@/shared/services/app_config'
-Session        = require '@/shared/services/session'
-Records        = require '@/shared/services/records'
-EventBus       = require '@/shared/services/event_bus'
-AbilityService = require '@/shared/services/ability_service'
-LmoUrlService  = require '@/shared/services/lmo_url_service'
-InboxService   = require '@/shared/services/inbox_service'
-ModalService   = require '@/shared/services/modal_service'
+import AppConfig      from '@/shared/services/app_config'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import InboxService   from '@/shared/services/inbox_service'
+import ModalService   from '@/shared/services/modal_service'
 
-_isUndefined = require 'lodash/isUndefined'
-_sortBy = require 'lodash/sortBy'
-_some = require 'lodash/some'
-_filter = require 'lodash/filter'
-_find = require 'lodash/find'
-_head = require 'lodash/head'
+import _isUndefined from 'lodash/isUndefined'
+import _sortBy from 'lodash/sortBy'
+import _some from 'lodash/some'
+import _filter from 'lodash/filter'
+import _find from 'lodash/find'
+import _head from 'lodash/head'
 
-module.exports =
+export default
   data: ->
     currentState: ""
     showSidebar: null

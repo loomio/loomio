@@ -5,11 +5,11 @@
 </style>
 
 <script lang="coffee">
-Records        = require '@/shared/services/records'
-AbilityService = require '@/shared/services/ability_service'
-ModalService   = require '@/shared/services/modal_service'
+Records        from '@/shared/services/records'
+AbilityService from '@/shared/services/ability_service'
+ModalService   from '@/shared/services/modal_service'
 
-module.exports =
+export default
   props:
     poll: Object
   methods:

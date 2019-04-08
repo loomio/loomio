@@ -1,13 +1,12 @@
 <script lang="coffee">
-Session        = require '@/shared/services/session'
-EventBus       = require '@/shared/services/event_bus'
-AbilityService = require '@/shared/services/ability_service'
-ModalService   = require '@/shared/services/modal_service'
-urlFor         = require '@/mixins/url_for'
-
+import Session        from '@/shared/services/session'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import urlFor         from '@/mixins/url_for'
 import JoinGroupButton from 'src/components/group/join_button.vue'
 
-module.exports =
+export default
   components:
     JoinGroupButton: JoinGroupButton
   mixins: [urlFor]

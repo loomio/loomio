@@ -22,7 +22,7 @@ import Image from '@/shared/tiptap_extentions/image.js'
 
 import { Picker } from 'emoji-mart-vue'
 
-module.exports =
+export default
   props:
     model: Object
     field: String

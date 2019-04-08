@@ -5,7 +5,7 @@
 </style>
 
 <script lang="coffee">
-module.exports =
+export default
   params: ['date']
   computed:
     ago: ->

@@ -47,7 +47,7 @@ import _includes from 'lodash/includes'
 import _map from 'lodash/map'
 import _pull from 'lodash/pull'
 
-module.exports =
+export default {
   props:
     announcement: Object
   data: ->
@@ -96,6 +96,7 @@ module.exports =
     query: (newQuery, oldQuery) ->
       if newQuery.length > 3
         @search newQuery
+}
 </script>
 
 <template>

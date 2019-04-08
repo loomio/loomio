@@ -3,12 +3,6 @@
   margin-top: 16px;
 }
 </style>
-<!-- # <script lang="coffee">
-#   module.exports =
-#     props:
-#     data: ->
-#     methods:
-# </script> -->
 <template>
   <div class="lmo-one-column-layout">
     <main class="contact-page lmo-card">
