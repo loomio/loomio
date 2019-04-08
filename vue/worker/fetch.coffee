@@ -1,7 +1,7 @@
 strategies                = require './strategies.coffee'
 { networkFirstEndpoints } = require './endpoints.coffee'
 
-module.exports = (cache, request) ->
+export default function fetch = (cache, request) ->
   # iterate through strategies until we find one with a response
   strategiesFor(request).reduce (result, strategy) ->
     result.then  (response) -> response || strategy(cache, request)

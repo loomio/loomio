@@ -1,7 +1,7 @@
 { staticEndpoints, networkFirstEndpoints } = require './endpoints.coffee'
 cachedEndpoints = staticEndpoints.concat(networkFirstEndpoints)
 
-module.exports =
+export default
   network: (cache, request) ->
     fetch(request).then (response) ->
       if cachedEndpoints.find((url) -> request.url.match(url))

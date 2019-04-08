@@ -5,48 +5,48 @@ import AppConfig   from '@/shared/services/app_config'
 
 # a series of helpers which attaches functionality to a scope, such as performing
 # a sequence of steps, or loading for a particular function
-obeyMembersCanAnnounce = (steps, group) ->
+
+
+export function obeyMembersCanAnnounce = (steps, group) ->
   if Session.user().isAdminOf?(group) or (group && group.membersCanAnnounce)
     steps
   else
     _.without(steps, 'announce')
 
-module.exports =
-  obeyMembersCanAnnounce: obeyMembersCanAnnounce
-  applyLoadingFunction: (scope, functionName) ->
-    executing = "#{functionName}Executing"
-    loadingFunction = scope[functionName]
-    scope[functionName] = (args...) ->
-      return if scope[executing]
-      scope[executing] = true
-      loadingFunction(args...).finally -> scope[executing] = false
+export function applyLoadingFunction = (scope, functionName) ->
+  executing = "#{functionName}Executing"
+  loadingFunction = scope[functionName]
+  scope[functionName] = (args...) ->
+    return if scope[executing]
+    scope[executing] = true
+    loadingFunction(args...).finally -> scope[executing] = false
 
-  applySequence: (scope, options = {}) ->
-    applySequence(scope, options)
+export function applySequence = (scope, options = {}) ->
+  applySequence(scope, options)
 
-  applyPollStartSequence: (scope, options = {}) ->
-    applySequence scope,
-      steps: obeyMembersCanAnnounce(['choose', 'save', 'announce'], scope.poll.group())
-      initialStep: if scope.poll.pollType then 'save' else 'choose'
-      emitter: options.emitter or scope
-      chooseComplete: (_, pollType) ->
-        scope.poll.pollType = pollType
-      saveComplete: (_, event) ->
-        LmoUrlService.goTo LmoUrlService.poll(event.model())
-        options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
+export function applyPollStartSequence = (scope, options = {}) ->
+  applySequence scope,
+    steps: obeyMembersCanAnnounce(['choose', 'save', 'announce'], scope.poll.group())
+    initialStep: if scope.poll.pollType then 'save' else 'choose'
+    emitter: options.emitter or scope
+    chooseComplete: (_, pollType) ->
+      scope.poll.pollType = pollType
+    saveComplete: (_, event) ->
+      LmoUrlService.goTo LmoUrlService.poll(event.model())
+      options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
-  applyDiscussionStartSequence: (scope, options = {}) ->
-    steps = if AppConfig.theme['dont_notify_new_thread']
-      ['save']
-    else
-      ['save', 'announce']
+export function applyDiscussionStartSequence = (scope, options = {}) ->
+  steps = if AppConfig.theme['dont_notify_new_thread']
+    ['save']
+  else
+    ['save', 'announce']
 
-    applySequence scope,
-      steps: obeyMembersCanAnnounce(['save', 'announce'], scope.discussion.group())
-      emitter: options.emitter or scope
-      saveComplete: (_, event) ->
-        LmoUrlService.goTo LmoUrlService.discussion(event.model())
-        options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
+  applySequence scope,
+    steps: obeyMembersCanAnnounce(['save', 'announce'], scope.discussion.group())
+    emitter: options.emitter or scope
+    saveComplete: (_, event) ->
+      LmoUrlService.goTo LmoUrlService.discussion(event.model())
+      options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
 applySequence = (scope, options) ->
   scope.steps = if typeof options.steps is 'function' then options.steps() else options.steps

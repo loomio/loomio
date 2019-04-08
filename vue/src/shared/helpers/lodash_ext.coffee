@@ -1,4 +1,4 @@
-module.exports =
+export default
   mod: (num, mod) ->
     if num >= 0
       num % mod

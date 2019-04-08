@@ -9,88 +9,87 @@ import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { scrollTo }          from '@/shared/helpers/layout'
 
 # a helper to aid submitting forms throughout the app
-module.exports =
-  submitForm: (scope, model, options = {}) ->
-    submit(scope, model, options)
+export function submitForm = (scope, model, options = {}) ->
+  submit(scope, model, options)
 
-  submitDiscussion: (scope, model, options = {}) ->
-    submit(scope, model, _.merge(
-      submitFn: if model.isForking() then model.fork else model.save
-      flashSuccess: "discussion_form.messages.#{actionName(model)}"
-      failureCallback: ->
-        scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
-      successCallback: (data) ->
-        _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
-        if model.isForking()
-          model.forkTarget().discussion().forkedEventIds = []
-          _.invokeMap Records.events.find(model.forkedEventIds), 'remove'
-        nextOrSkip(data, scope, model)
-    , options))
+export function submitDiscussion = (scope, model, options = {}) ->
+  submit(scope, model, _.merge(
+    submitFn: if model.isForking() then model.fork else model.save
+    flashSuccess: "discussion_form.messages.#{actionName(model)}"
+    failureCallback: ->
+      scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
+    successCallback: (data) ->
+      _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
+      if model.isForking()
+        model.forkTarget().discussion().forkedEventIds = []
+        _.invokeMap Records.events.find(model.forkedEventIds), 'remove'
+      nextOrSkip(data, scope, model)
+  , options))
 
-  submitOutcome: (scope, model, options = {}) ->
-    submit(scope, model, _.merge(
-      flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
-      failureCallback: ->
-        scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
-      successCallback: (data) ->
-        nextOrSkip(data, scope, model)
-    , options))
+export function submitOutcome = (scope, model, options = {}) ->
+  submit(scope, model, _.merge(
+    flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
+    failureCallback: ->
+      scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+    successCallback: (data) ->
+      nextOrSkip(data, scope, model)
+  , options))
 
-  submitStance: (scope, model, options = {}) ->
-    submit(scope, model, _.merge(
-      flashSuccess: "poll_#{model.poll().pollType}_vote_form.stance_#{actionName(model)}"
-      prepareFn: ->
-        EventBus.$emit 'processing'
-      successCallback: (data) ->
-        model.poll().clearStaleStances()
-        scrollTo '.poll-common-card__results-shown'
-        EventBus.$emit 'stanceSaved'
-        signIn(data, data.stances[0].participant_id, -> EventBus.$emit 'loggedIn') unless Session.user().emailVerified
-      cleanupFn: ->
-        EventBus.$emit 'doneProcessing'
-    , options))
+export function submitStance = (scope, model, options = {}) ->
+  submit(scope, model, _.merge(
+    flashSuccess: "poll_#{model.poll().pollType}_vote_form.stance_#{actionName(model)}"
+    prepareFn: ->
+      EventBus.$emit 'processing'
+    successCallback: (data) ->
+      model.poll().clearStaleStances()
+      scrollTo '.poll-common-card__results-shown'
+      EventBus.$emit 'stanceSaved'
+      signIn(data, data.stances[0].participant_id, -> EventBus.$emit 'loggedIn') unless Session.user().emailVerified
+    cleanupFn: ->
+      EventBus.$emit 'doneProcessing'
+  , options))
 
-  submitPoll: (scope, model, options = {}) ->
-    submit(scope, model, _.merge(
-      flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
-      prepareFn: =>
-        EventBus.$emit 'processing'
-        model.customFields.deanonymize_after_close = model.deanonymizeAfterClose if model.anonymous
-        switch model.pollType
-          # for polls with default poll options (proposal, check)
-          when 'proposal', 'count'
-            model.pollOptionNames = _.map fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
-          # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
-          when 'meeting'
-            model.customFields.can_respond_maybe = model.canRespondMaybe
-            model.addOption()
-          else
-            model.addOption()
-      failureCallback: ->
-        scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
-      successCallback: (data) ->
-        _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
-        model.removeOrphanOptions()
-        nextOrSkip(data, scope, model)
-      cleanupFn: ->
-        EventBus.$emit 'doneProcessing'
-    , options))
+export function submitPoll = (scope, model, options = {}) ->
+  submit(scope, model, _.merge(
+    flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
+    prepareFn: =>
+      EventBus.$emit 'processing'
+      model.customFields.deanonymize_after_close = model.deanonymizeAfterClose if model.anonymous
+      switch model.pollType
+        # for polls with default poll options (proposal, check)
+        when 'proposal', 'count'
+          model.pollOptionNames = _.map fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
+        # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
+        when 'meeting'
+          model.customFields.can_respond_maybe = model.canRespondMaybe
+          model.addOption()
+        else
+          model.addOption()
+    failureCallback: ->
+      scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+    successCallback: (data) ->
+      _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
+      model.removeOrphanOptions()
+      nextOrSkip(data, scope, model)
+    cleanupFn: ->
+      EventBus.$emit 'doneProcessing'
+  , options))
 
-  submitMembership: (scope, model, options = {}) ->
-    submit(scope, model, _.merge(
-      flashSuccess: "membership_form.#{actionName(model)}"
-      successCallback: -> EventBus.$emit '$close'
-    , options))
+export function submitMembership = (scope, model, options = {}) ->
+  submit(scope, model, _.merge(
+    flashSuccess: "membership_form.#{actionName(model)}"
+    successCallback: -> EventBus.$emit '$close'
+  , options))
 
-  upload: (scope, model, options = {}) ->
-    upload(scope, model, options)
+export function upload = (scope, model, options = {}) ->
+  upload(scope, model, options)
 
-  uploadForm: (scope, element, model, options = {}) ->
-    scope.upload     = upload(scope, model, options)
-    scope.selectFile = -> element[0].querySelector('input[type=file]').click()
-    scope.drop       = (event) -> scope.upload(event.dataTransfer.files)
-    if !options.disablePaste
-      EventBus.$on 'filesPasted', (_, files) -> scope.upload(files)
+export function uploadForm = (scope, element, model, options = {}) ->
+  scope.upload     = upload(scope, model, options)
+  scope.selectFile = -> element[0].querySelector('input[type=file]').click()
+  scope.drop       = (event) -> scope.upload(event.dataTransfer.files)
+  if !options.disablePaste
+    EventBus.$on 'filesPasted', (_, files) -> scope.upload(files)
 
 upload = (scope, model, options) ->
   submitFn = options.submitFn or Records.documents.upload

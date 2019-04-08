@@ -1,4 +1,4 @@
-module.exports =
+export default
   assetEndpoints: (version) ->
     [
       "/dashboard",
