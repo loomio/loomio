@@ -1,4 +1,9 @@
 module.exports = {
+  configureWebpack: {
+    entry: {
+      'app': './src/main.coffee'
+    }
+  },
   indexPath: 'vue.html',
   devServer: {
    proxy: 'http://localhost:3000'

@@ -1,7 +1,7 @@
 BaseModel = require '@/shared/record_store/base_model'
 AppConfig = require '@/shared/services/app_config'
 
-module.exports = class AnnouncementModel extends BaseModel
+export default class AnnouncementModel extends BaseModel
   @singular: 'announcement'
   @plural: 'announcements'
 

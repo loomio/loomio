@@ -1,7 +1,7 @@
-BaseRecordsInterface  = require '@/shared/record_store/base_records_interface'
-OauthApplicationModel = require '@/shared/models/oauth_application_model'
+import BaseRecordsInterface  from '@/shared/record_store/base_records_interface'
+import OauthApplicationModel from '@/shared/models/oauth_application_model'
 
-module.exports = class OauthApplicationRecordsInterface extends BaseRecordsInterface
+export default class OauthApplicationRecordsInterface extends BaseRecordsInterface
   model: OauthApplicationModel
 
   fetchOwned: (options = {}) ->

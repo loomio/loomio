@@ -1,4 +1,4 @@
-module.exports = new class HasTranslations
+export default new class HasTranslations
   apply: (model) ->
     model.translate = (locale) ->
       model.recordStore.translations.fetchTranslation(model, locale).then (data) ->

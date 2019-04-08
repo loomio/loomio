@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-DraftModel           = require '@/shared/models/draft_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import DraftModel           from '@/shared/models/draft_model'
 
-module.exports = class DraftRecordsInterface extends BaseRecordsInterface
+export default class DraftRecordsInterface extends BaseRecordsInterface
   model: DraftModel
 
   findOrBuildFor: (model) ->

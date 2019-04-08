@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-MemberhipModel       = require '@/shared/models/membership_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import MemberhipModel       from '@/shared/models/membership_model'
 
-module.exports = class MemberhipRecordsInterface extends BaseRecordsInterface
+export default class MemberhipRecordsInterface extends BaseRecordsInterface
   model: MemberhipModel
 
   joinGroup: (group) ->

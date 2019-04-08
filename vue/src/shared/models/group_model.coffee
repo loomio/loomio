@@ -3,12 +3,11 @@ AppConfig    = require '@/shared/services/app_config'
 HasDrafts    = require '@/shared/mixins/has_drafts'
 HasDocuments = require '@/shared/mixins/has_documents'
 
-module.exports = class GroupModel extends BaseModel
+export default class GroupModel extends BaseModel
   @singular: 'group'
   @plural: 'groups'
   @uniqueIndices: ['id', 'key']
   @indices: ['parentId']
-  @serializableAttributes: AppConfig.permittedParams.group
   @draftParent: 'draftParent'
   @draftPayloadAttributes: ['name', 'description']
 

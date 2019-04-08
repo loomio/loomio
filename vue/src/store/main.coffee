@@ -3,7 +3,7 @@ AbilityService = require '@/shared/services/ability_service'
 Session       = require '@/shared/services/session'
 import Vuex from 'vuex'
 
-module.exports = new Vuex.Store
+export default new Vuex.Store
   state:
     discussions: Records.discussions.collection.data
     comments: Records.comments.collection.data

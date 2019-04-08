@@ -1,3 +1,3 @@
 import Vue from 'vue'
 EventBus = new Vue()
-module.exports = EventBus
+export default EventBus

@@ -1,6 +1,6 @@
 BaseModel = require '@/shared/record_store/base_model'
 
-module.exports = class MemberModel extends BaseModel
+export default class MemberModel extends BaseModel
   @singular: 'member'
   @plural: 'members'
   @serializableAttributes: ['key', 'title', 'subtitle', 'logo_type', 'logo_url', 'last_notified_at']

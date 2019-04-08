@@ -1,5 +1,4 @@
 AppConfig             = require '@/shared/services/app_config'
-ImplementationService = require '@/shared/services/implementation_service'
 EventBus              = require '@/shared/services/event_bus'
 
 createFlashLevel = (service, level, duration) ->
@@ -13,9 +12,7 @@ createFlashLevel = (service, level, duration) ->
       actionFn:  actionFn
     ) if translateKey
 
-module.exports = class FlashService
-  ImplementationService.requireMethod(@, 'broadcast', 'setBroadcastMethod')
-
+export default class FlashService
   @success: createFlashLevel @, 'success'
   @info:    createFlashLevel @, 'info'
   @warning: createFlashLevel @, 'warning'

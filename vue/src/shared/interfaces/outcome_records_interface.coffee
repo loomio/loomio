@@ -1,5 +1,5 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-OutcomeModel         = require '@/shared/models/outcome_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import OutcomeModel         from '@/shared/models/outcome_model'
 
-module.exports = class OutcomeRecordsInterface extends BaseRecordsInterface
+export default class OutcomeRecordsInterface extends BaseRecordsInterface
   model: OutcomeModel

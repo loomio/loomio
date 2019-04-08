@@ -1,6 +1,5 @@
-AppConfig     = require '@/shared/services/app_config'
-Records       = require '@/shared/services/records'
-I18n          = require '@/shared/services/i18n'
+import AppConfig from '@/shared/services/app_config'
+import Records   from '@/shared/services/records'
 
 # A series of helpers for interacting with polls, such as template values for a
 # particular poll or getting the last stance from a given user

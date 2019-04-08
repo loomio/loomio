@@ -1,11 +1,9 @@
 BaseModel = require '@/shared/record_store/base_model'
 AppConfig = require '@/shared/services/app_config'
 
-module.exports = class UserModel extends BaseModel
+export default class UserModel extends BaseModel
   @singular: 'user'
   @plural: 'users'
-  @serializableAttributes: AppConfig.permittedParams.user
-
   relationships: ->
     # note we should move these to a User extends UserModel so that all our authors don't get views created
     @hasMany 'memberships'

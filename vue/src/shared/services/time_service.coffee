@@ -1,6 +1,6 @@
 AppConfig = require '@/shared/services/app_config'
 
-module.exports = new class TimeService
+export default new class TimeService
   nameForZone: (zone, nameForLocal) ->
     if AppConfig.timeZone == zone
       nameForLocal

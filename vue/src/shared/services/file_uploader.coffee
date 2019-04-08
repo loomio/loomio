@@ -1,6 +1,6 @@
 import { DirectUpload } from "activestorage"
 
-module.exports = class FileUploader
+export default class FileUploader
   constructor: ({onProgress}) ->
     @onProgress = onProgress
 

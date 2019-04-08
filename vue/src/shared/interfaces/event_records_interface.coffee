@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-EventModel           = require '@/shared/models/event_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import EventModel           from '@/shared/models/event_model'
 
-module.exports = class EventRecordsInterface extends BaseRecordsInterface
+export default class EventRecordsInterface extends BaseRecordsInterface
   model: EventModel
 
   fetchByDiscussion: (discussionKey, options = {}) ->

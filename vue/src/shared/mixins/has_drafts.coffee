@@ -1,6 +1,6 @@
 AppConfig = require '@/shared/services/app_config'
 
-module.exports = new class HasDrafts
+export default new class HasDrafts
   apply: (model) ->
     model.draftParent = model.draftParent or ->
       model[model.constructor.draftParent]()

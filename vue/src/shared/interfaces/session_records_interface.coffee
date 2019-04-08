@@ -1,5 +1,5 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-SessionModel         = require '@/shared/models/session_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import SessionModel         from '@/shared/models/session_model'
 
-module.exports = class SessionRecordsInterface extends BaseRecordsInterface
+export default class SessionRecordsInterface extends BaseRecordsInterface
   model: SessionModel

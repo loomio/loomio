@@ -2,7 +2,7 @@ Records            = require '@/shared/services/records'
 Session            = require '@/shared/services/session'
 ThreadQueryService = require '@/shared/services/thread_query_service'
 
-module.exports = new class InboxService
+export default new class InboxService
 
   filters: [
     'only_threads_in_my_groups',

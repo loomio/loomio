@@ -1,11 +1,10 @@
 AppConfig     = require '@/shared/services/app_config'
 Records       = require '@/shared/services/records'
-I18n          = require '@/shared/services/i18n'
 LmoUrlService = require '@/shared/services/lmo_url_service'
 
 { hardReload } = require '@/shared/helpers/window'
 
-module.exports = new class Session
+export default new class Session
   signIn: (userId) ->
     setDefaultParams()
     user = @user()

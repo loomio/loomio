@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-UserModel            = require '@/shared/models/user_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import UserModel            from '@/shared/models/user_model'
 
-module.exports = class UserRecordsInterface extends BaseRecordsInterface
+export default class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
   apiEndPoint: 'profile'
 

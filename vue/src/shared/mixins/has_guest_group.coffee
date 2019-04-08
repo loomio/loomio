@@ -1,4 +1,4 @@
-module.exports = new class HasGuestGroup
+export default new class HasGuestGroup
   apply: (model) ->
     model.guestGroup = ->
       @recordStore.groups.find(@guestGroupId)

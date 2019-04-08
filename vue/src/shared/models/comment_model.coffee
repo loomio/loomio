@@ -5,11 +5,10 @@ HasDocuments    = require '@/shared/mixins/has_documents'
 HasMentions     = require '@/shared/mixins/has_mentions'
 HasTranslations = require '@/shared/mixins/has_translations'
 
-module.exports = class CommentModel extends BaseModel
+export default class CommentModel extends BaseModel
   @singular: 'comment'
   @plural: 'comments'
   @indices: ['discussionId', 'authorId']
-  @serializableAttributes: AppConfig.permittedParams.comment
   @draftParent: 'discussion'
   @draftPayloadAttributes: ['body', 'document_ids']
 

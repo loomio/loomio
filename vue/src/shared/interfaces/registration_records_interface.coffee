@@ -1,5 +1,5 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-RegistrationModel    = require '@/shared/models/registration_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import RegistrationModel    from '@/shared/models/registration_model'
 
-module.exports = class RegistrationRecordsInterface extends BaseRecordsInterface
+export default class RegistrationRecordsInterface extends BaseRecordsInterface
   model: RegistrationModel

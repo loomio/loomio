@@ -1,4 +1,4 @@
-module.exports = new class RangeSet
+export default new class RangeSet
   parse: (outer) ->
     _.map(outer.split(','), (pair) -> _.map(pair.split('-'), (s) -> parseInt(s)))
 

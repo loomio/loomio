@@ -10,7 +10,7 @@ AbilityService = require '@/shared/services/ability_service'
 
 { hardReload } = require '@/shared/helpers/window'
 
-module.exports = {
+export default{
   subscribeTo: (model) ->
     subscribeTo(model)
 

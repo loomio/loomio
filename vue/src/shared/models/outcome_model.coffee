@@ -4,11 +4,10 @@ HasDrafts        = require '@/shared/mixins/has_drafts'
 HasDocuments     = require '@/shared/mixins/has_documents'
 HasTranslations  = require '@/shared/mixins/has_translations'
 
-module.exports = class OutcomeModel extends BaseModel
+export default class OutcomeModel extends BaseModel
   @singular: 'outcome'
   @plural: 'outcomes'
   @indices: ['pollId', 'authorId']
-  @serializableAttributes: AppConfig.permittedParams.outcome
   @draftParent: 'poll'
   @draftPayloadAttributes: ['statement']
 

@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-TranslationModel     = require '@/shared/models/translation_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import TranslationModel     from '@/shared/models/translation_model'
 
-module.exports = class TranslationRecordsInterface extends BaseRecordsInterface
+export default class TranslationRecordsInterface extends BaseRecordsInterface
   model: TranslationModel
 
   fetchTranslation: (translatable, locale) ->

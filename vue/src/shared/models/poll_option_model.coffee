@@ -1,6 +1,6 @@
-BaseModel    = require '@/shared/record_store/base_model'
+import BaseModel  from  '@/shared/record_store/base_model'
 
-module.exports = class PollOptionModel extends BaseModel
+export default class PollOptionModel extends BaseModel
   @singular: 'pollOption'
   @plural: 'pollOptions'
   @indices: ['pollId']

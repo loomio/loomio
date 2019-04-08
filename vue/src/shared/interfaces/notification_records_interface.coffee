@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-NotificationModel    = require '@/shared/models/notification_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import NotificationModel    from '@/shared/models/notification_model'
 
-module.exports = class NotificationRecordsInterface extends BaseRecordsInterface
+export default class NotificationRecordsInterface extends BaseRecordsInterface
   model: NotificationModel
 
   viewed: ->

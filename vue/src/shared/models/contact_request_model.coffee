@@ -1,6 +1,6 @@
 BaseModel = require '@/shared/record_store/base_model'
 
-module.exports = class ContactRequestModel extends BaseModel
+export default class ContactRequestModel extends BaseModel
   @singular: 'contactRequest'
   @plural: 'contactRequests'
 

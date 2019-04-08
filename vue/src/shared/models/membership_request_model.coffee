@@ -1,7 +1,7 @@
 BaseModel = require '@/shared/record_store/base_model'
 AppConfig = require '@/shared/services/app_config'
 
-module.exports = class MembershipRequestModel extends BaseModel
+export default class MembershipRequestModel extends BaseModel
   @singular: 'membershipRequest'
   @plural: 'membershipRequests'
   @indices: ['id', 'groupId']

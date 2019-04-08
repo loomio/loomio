@@ -1,4 +1,4 @@
-module.exports = new class HasMentions
+export default new class HasMentions
   apply: (model, field) ->
     methodName = "cooked#{_.capitalize(field)}"
     fieldName  = "#{methodName}Value"

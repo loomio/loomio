@@ -1,4 +1,4 @@
-{customRenderer, options, marked} = require '@/shared/helpers/marked.coffee'
+import {customRenderer, options, marked} from '@/shared/helpers/marked.coffee'
 import Vue from 'vue'
 
 marked.setOptions Object.assign({renderer: customRenderer()}, options)

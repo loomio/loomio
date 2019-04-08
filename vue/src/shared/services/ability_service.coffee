@@ -3,7 +3,7 @@ Records       = require '@/shared/services/records'
 Session       = require '@/shared/services/session'
 LmoUrlService = require '@/shared/services/lmo_url_service'
 
-module.exports = new class AbilityService
+export default new class AbilityService
 
   isNotEmailVerified: ->
     @isLoggedIn() and !Session.user().emailVerified

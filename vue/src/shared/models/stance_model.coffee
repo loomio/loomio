@@ -3,11 +3,10 @@ AppConfig       = require '@/shared/services/app_config'
 HasDrafts       = require '@/shared/mixins/has_drafts'
 HasTranslations = require '@/shared/mixins/has_translations'
 
-module.exports = class StanceModel extends BaseModel
+export default class StanceModel extends BaseModel
   @singular: 'stance'
   @plural: 'stances'
   @indices: ['pollId']
-  @serializableAttributes: AppConfig.permittedParams.stance
   @draftParent: 'poll'
   @draftPayloadAttributes: ['reason']
 

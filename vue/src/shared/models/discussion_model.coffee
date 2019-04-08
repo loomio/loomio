@@ -7,14 +7,13 @@ HasMentions      = require '@/shared/mixins/has_mentions'
 HasTranslations  = require '@/shared/mixins/has_translations'
 HasGuestGroup    = require '@/shared/mixins/has_guest_group'
 
-module.exports = class DiscussionModel extends BaseModel
+export default class DiscussionModel extends BaseModel
   @singular: 'discussion'
   @plural: 'discussions'
   @uniqueIndices: ['id', 'key']
   @indices: ['groupId', 'authorId']
   @draftParent: 'group'
   @draftPayloadAttributes: ['title', 'description']
-  @serializableAttributes: AppConfig.permittedParams.discussion
 
   afterConstruction: ->
     @private = @privateDefaultValue() if @isNew()

@@ -1,6 +1,6 @@
 BaseModel = require '@/shared/record_store/base_model'
 
-module.exports = class EventModel extends BaseModel
+export default class EventModel extends BaseModel
   @singular: 'event'
   @plural: 'events'
   @indices: ['id', 'actorId', 'discussionId']

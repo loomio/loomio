@@ -1,6 +1,6 @@
 BaseModel = require '@/shared/record_store/base_model'
 
-module.exports = class VersionModel extends BaseModel
+export default class VersionModel extends BaseModel
   @singular: 'version'
   @plural: 'versions'
   @indices: ['discussionId']

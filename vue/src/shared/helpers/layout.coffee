@@ -1,11 +1,8 @@
-AppConfig       = require '@/shared/services/app_config'
-Session         = require '@/shared/services/session'
-AbilityService  = require '@/shared/services/ability_service'
-ModalService    = require '@/shared/services/modal_service'
-ScrollService   = require '@/shared/services/scroll_service'
-I18n            = require '@/shared/services/i18n'
-
-{ viewportSize } = require '@/shared/helpers/window'
+import AppConfig        from '@/shared/services/app_config'
+import Session          from '@/shared/services/session'
+import AbilityService   from '@/shared/services/ability_service'
+import ModalService     from '@/shared/services/modal_service'
+import { viewportSize } from '@/shared/helpers/window'
 
 module.exports =
   scrollTo: (target, options) -> scrollTo(target, options)
@@ -25,7 +22,6 @@ module.exports =
     updateCover()
 
 shouldForceSignIn = (options = {}) ->
-  # TODO review before we merge into master
   # return false if options.page == "pollPage" and Session.user() !AbilityService.isEmailVerified()
   # return false if AbilityService.isEmailVerified()
   return false if AbilityService.isLoggedIn() && AppConfig.pendingIdentity.identity_type != "loomio"

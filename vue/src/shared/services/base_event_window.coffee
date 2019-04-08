@@ -1,6 +1,6 @@
 RangeSet = require '@/shared/services/range_set'
 
-module.exports = class BaseEventWindow
+export default class BaseEventWindow
   constructor: ({discussion, per}) ->
     @discussion = discussion
     @per        = per

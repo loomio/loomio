@@ -1,4 +1,4 @@
-module.exports = new class HasDocuments
+export default new class HasDocuments
   apply: (model, opts = {}) ->
     model.newDocumentIds     = model.newDocumentIds or []
     model.removedDocumentIds = model.removedDocumentIds or []

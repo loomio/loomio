@@ -8,7 +8,7 @@ marked.parse = (src, opt, callback) ->
   src = src.replace(/<script[^>]+\>/ig, "")
   return _parse(src, opt, callback)
 
-module.exports = {
+module.exports =
   marked: marked
   customRenderer: (opts) ->
     _super   = new marked.Renderer(opts)
@@ -34,4 +34,3 @@ module.exports = {
 
     renderer
   options: {gfm: true, sanitize: true, breaks: true, smartypants: false, tables: true}
-}

@@ -1,5 +1,5 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-AnnouncementModel    = require '@/shared/models/announcement_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import AnnouncementModel    from '@/shared/models/announcement_model'
 
 kindForTarget = (target) ->
   if _.includes(['poll_edited', 'discussion_edited'], target.kind)
@@ -14,7 +14,7 @@ eventableOrSelf = (model) ->
     model
 
 
-module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
+export default class AnnouncementRecordsInterface extends BaseRecordsInterface
   model: AnnouncementModel
 
   search: (query, model) ->

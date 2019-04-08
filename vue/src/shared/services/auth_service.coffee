@@ -1,9 +1,7 @@
 AppConfig = require '@/shared/services/app_config'
 Records   = require '@/shared/services/records'
-I18n      = require '@/shared/services/i18n'
 
-module.exports = new class AuthService
-
+export default new class AuthService
   emailStatus: (user) ->
     pendingToken = (AppConfig.pendingIdentity or {}).token
     Records.users.emailStatus(user.email, pendingToken).then (data) =>

@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-StanceModel          = require '@/shared/models/stance_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import StanceModel          from '@/shared/models/stance_model'
 
-module.exports = class StanceRecordsInterface extends BaseRecordsInterface
+export default class StanceRecordsInterface extends BaseRecordsInterface
   model: StanceModel
 
   fetchMyStances: (groupKey, options = {}) ->

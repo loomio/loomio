@@ -3,7 +3,7 @@ Records       = require '@/shared/services/records'
 FlashService  = require '@/shared/services/flash_service'
 ModalService  = require '@/shared/services/modal_service'
 
-module.exports = new class ThreadService
+export default new class ThreadService
   mute: (thread, override = false) ->
     if !Session.user().hasExperienced("mutingThread") and !override
       Records.users.saveExperience("mutingThread")

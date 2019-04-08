@@ -1,10 +1,9 @@
 BaseModel = require '@/shared/record_store/base_model'
 AppConfig = require '@/shared/services/app_config'
 
-module.exports = class GroupIdentityModel extends BaseModel
+export default class GroupIdentityModel extends BaseModel
   @singular: 'groupIdentity'
   @plural: 'groupIdentities'
-  @serializableAttributes: AppConfig.permittedParams.groupIdentity
 
   defaultValues: ->
     customFields: {}

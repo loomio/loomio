@@ -1,6 +1,6 @@
 AppConfig = require '@/shared/services/app_config'
 
-module.exports = new class PaginationService
+export default new class PaginationService
   windowFor: ({current, min, max, pageType}) ->
     pageSize = parseInt(AppConfig.pageSize[pageType]) or AppConfig.pageSize.default
     {

@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-DiscussionModel      = require '@/shared/models/discussion_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import DiscussionModel      from '@/shared/models/discussion_model'
 
-module.exports = class DiscussionRecordsInterface extends BaseRecordsInterface
+export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel
 
   search: (groupKey, fragment, options = {}) ->

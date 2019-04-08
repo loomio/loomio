@@ -1,10 +1,6 @@
 AppConfig             = require '@/shared/services/app_config'
-ImplementationService = require '@/shared/services/implementation_service'
 
-module.exports = class LmoUrlService
-  ImplementationService.requireMethod @, 'goTo',   'setGoToMethod'
-  ImplementationService.requireMethod @, 'params', 'setParamsMethod'
-
+export default class LmoUrlService
   @shareableLink: (model) ->
     if model.isA('group')
       @buildModelRoute('', model.token, '', {}, namespace: 'join/group', absolute: true)

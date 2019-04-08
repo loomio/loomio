@@ -2,7 +2,7 @@ Records         = require '@/shared/services/records'
 RecordLoader    = require '@/shared/services/record_loader'
 BaseEventWindow = require '@/shared/services/base_event_window'
 
-module.exports = class NestedEventWindow extends BaseEventWindow
+export default class NestedEventWindow extends BaseEventWindow
   constructor: ({discussion, parentEvent, initialSequenceId, per}) ->
     super(discussion: discussion, per: per)
     @columnName = "position"

@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-GroupModel           = require '@/shared/models/group_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import GroupModel           from '@/shared/models/group_model'
 
-module.exports = class GroupRecordsInterface extends BaseRecordsInterface
+export default class GroupRecordsInterface extends BaseRecordsInterface
   model: GroupModel
 
   fuzzyFind: (id) ->

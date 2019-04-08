@@ -1,7 +1,7 @@
 Records = require '@/shared/services/records'
 Session = require '@/shared/services/session'
 
-module.exports = new class ThreadQueryService
+export default new class ThreadQueryService
 
   queryFor: (options = {}) ->
     Records.discussions.collection.removeDynamicView(options.name) if options.overwrite

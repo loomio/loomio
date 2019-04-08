@@ -1,11 +1,10 @@
 BaseModel = require '@/shared/record_store/base_model'
 AppConfig = require '@/shared/services/app_config'
 
-module.exports = class DocumentModel extends BaseModel
+export default class DocumentModel extends BaseModel
   @singular: 'document'
   @plural: 'documents'
   @indices: ['modelId', 'authorId']
-  @serializableAttributes: AppConfig.permittedParams.document
 
   relationships: ->
     @belongsTo 'author', from: 'users', by: 'authorId'

@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-CommentModel         = require '@/shared/models/comment_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import CommentModel         from '@/shared/models/comment_model'
 
-module.exports = class CommentRecordsInterface extends BaseRecordsInterface
+export default class CommentRecordsInterface extends BaseRecordsInterface
   model: CommentModel
 
   like: (user, comment, success) ->

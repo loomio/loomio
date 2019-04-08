@@ -1,7 +1,7 @@
 BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
 DocumentModel        = require '@/shared/models/document_model'
 
-module.exports = class DocumentRecordsInterface extends BaseRecordsInterface
+export default class DocumentRecordsInterface extends BaseRecordsInterface
   model: DocumentModel
 
   fetchByModel: (model) ->

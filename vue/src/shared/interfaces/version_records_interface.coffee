@@ -1,7 +1,7 @@
-BaseRecordsInterface = require '@/shared/record_store/base_records_interface'
-VersionModel         = require '@/shared/models/version_model'
+import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
+import VersionModel         from '@/shared/models/version_model'
 
-module.exports = class VersionRecordsInterface extends BaseRecordsInterface
+export default class VersionRecordsInterface extends BaseRecordsInterface
   model: VersionModel
 
   fetchByDiscussion: (discussionKey, options = {}) ->

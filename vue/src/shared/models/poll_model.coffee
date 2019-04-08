@@ -5,14 +5,12 @@ HasDrafts        = require '@/shared/mixins/has_drafts'
 HasDocuments     = require '@/shared/mixins/has_documents'
 HasTranslations  = require '@/shared/mixins/has_translations'
 HasGuestGroup    = require '@/shared/mixins/has_guest_group'
-I18n             = require '@/shared/services/i18n'
 EventBus         = require '@/shared/services/event_bus'
 
-module.exports = class PollModel extends BaseModel
+export default class PollModel extends BaseModel
   @singular: 'poll'
   @plural: 'polls'
   @indices: ['discussionId', 'authorId']
-  @serializableAttributes: AppConfig.permittedParams.poll
   @draftParent: 'draftParent'
   @draftPayloadAttributes: ['title', 'details']
 

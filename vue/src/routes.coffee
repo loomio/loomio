@@ -19,7 +19,7 @@ import RegisteredAppsPage from './components/registered_apps/page.vue'
 import RegisteredAppPage from './components/registered_app/page.vue'
 import InstallSlackPage from './components/install_slack/page.vue'
 
-module.exports = [
+export default [
   {path: '/dashboard', component: DashboardPage},
   {path: '/dashboard/:filter', component: DashboardPage},
   {path: '/polls', component: PollsPage},

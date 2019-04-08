@@ -1,6 +1,6 @@
 Records = require '@/shared/services/records'
 
-module.exports = class RecordLoader
+export default class RecordLoader
   constructor: (opts = {}) ->
     @loadingFirst = true
     @collection   = opts.collection

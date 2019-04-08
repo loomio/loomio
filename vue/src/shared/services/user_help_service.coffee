@@ -1,6 +1,6 @@
 Session = require '@/shared/services/session'
 
-module.exports = new class UserHelpService
+export default new class UserHelpService
   helpLocale: ->
     'en'
     # switch Session.user().locale

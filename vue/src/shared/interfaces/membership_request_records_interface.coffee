@@ -1,7 +1,7 @@
-BaseRecordsInterface   = require '@/shared/record_store/base_records_interface'
-MembershipRequestModel = require '@/shared/models/membership_request_model'
+import BaseRecordsInterface   from '@/shared/record_store/base_records_interface'
+import MembershipRequestModel from '@/shared/models/membership_request_model'
 
-module.exports = class MembershipRequestRecordsInterface extends BaseRecordsInterface
+export default class MembershipRequestRecordsInterface extends BaseRecordsInterface
   model: MembershipRequestModel
 
   fetchMyPendingByGroup: (groupKey, options = {}) ->
