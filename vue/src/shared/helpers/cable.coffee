@@ -1,14 +1,14 @@
-ActionCable = require 'actioncable'
+import ActionCable from 'actioncable'
 
-AppConfig      = require '@/shared/services/app_config'
-Session        = require '@/shared/services/session'
-Records        = require '@/shared/services/records'
-ModalService   = require '@/shared/services/modal_service'
-FlashService   = require '@/shared/services/flash_service'
-AuthService    = require '@/shared/services/auth_service'
-AbilityService = require '@/shared/services/ability_service'
+import AppConfig      from '@/shared/services/app_config'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import ModalService   from '@/shared/services/modal_service'
+import FlashService   from '@/shared/services/flash_service'
+import AuthService    from '@/shared/services/auth_service'
+import AbilityService from '@/shared/services/ability_service'
 
-{ hardReload } = require '@/shared/helpers/window'
+import { hardReload } from '@/shared/helpers/window'
 
 export default{
   subscribeTo: (model) ->

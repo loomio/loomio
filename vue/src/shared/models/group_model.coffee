@@ -1,7 +1,7 @@
-BaseModel    = require '@/shared/record_store/base_model'
-AppConfig    = require '@/shared/services/app_config'
-HasDrafts    = require '@/shared/mixins/has_drafts'
-HasDocuments = require '@/shared/mixins/has_documents'
+import BaseModel    from '@/shared/record_store/base_model'
+import AppConfig    from '@/shared/services/app_config'
+import HasDrafts    from '@/shared/mixins/has_drafts'
+import HasDocuments from '@/shared/mixins/has_documents'
 
 export default class GroupModel extends BaseModel
   @singular: 'group'

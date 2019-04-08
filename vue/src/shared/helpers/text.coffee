@@ -1,4 +1,4 @@
-DiffMatchPatch = require 'diff-match-patch'
+import DiffMatchPatch from 'diff-match-patch'
 
 prettyDiffHtml = (diff) ->
   diff.reduce((whole, [sign, chars] ) ->
@@ -8,9 +8,8 @@ prettyDiffHtml = (diff) ->
       when  1 then   "<ins>#{chars}</ins>"
   , "")
 
-module.exports =
-  compileDiffHtml: (before,  after)->
-    differ = new DiffMatchPatch()
-    diff = differ.diff_main(before||"", after||"")
-    differ.diff_cleanupSemantic(diff)
-    prettyDiffHtml(diff)
+export function compileDiffHtml = (before,  after)->
+  differ = new DiffMatchPatch()
+  diff = differ.diff_main(before||"", after||"")
+  differ.diff_cleanupSemantic(diff)
+  prettyDiffHtml(diff)

@@ -1,6 +1,6 @@
-emojione     = require 'emojione'
-marked = require 'marked'
-clone = require 'lodash/clone'
+import emojione     from 'emojione'
+import marked from 'marked'
+import clone from 'lodash/clone'
 
 _parse = marked.parse
 marked.parse = (src, opt, callback) ->

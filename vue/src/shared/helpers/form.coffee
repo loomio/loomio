@@ -1,12 +1,12 @@
-EventBus       = require '@/shared/services/event_bus'
-AbilityService = require '@/shared/services/ability_service'
-Records        = require '@/shared/services/records'
-Session        = require '@/shared/services/session'
-FlashService   = require '@/shared/services/flash_service'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import Records        from '@/shared/services/records'
+import Session        from '@/shared/services/session'
+import FlashService   from '@/shared/services/flash_service'
 
-{ signIn }            = require '@/shared/helpers/user'
-{ fieldFromTemplate } = require '@/shared/helpers/poll'
-{ scrollTo }          = require '@/shared/helpers/layout'
+import { signIn }            from '@/shared/helpers/user'
+import { fieldFromTemplate } from '@/shared/helpers/poll'
+import { scrollTo }          from '@/shared/helpers/layout'
 
 # a helper to aid submitting forms throughout the app
 module.exports =

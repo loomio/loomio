@@ -1,4 +1,4 @@
-Session = require '@/shared/services/session'
+import Session from '@/shared/services/session'
 
 export default new class UserHelpService
   helpLocale: ->

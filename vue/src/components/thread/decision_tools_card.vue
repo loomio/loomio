@@ -2,7 +2,7 @@
 </style>
 
 <script lang="coffee">
-AbilityService = require '@/shared/services/ability_service'
+import AbilityService from '@/shared/services/ability_service'
 
 module.exports =
   props:

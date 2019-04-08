@@ -1,6 +1,6 @@
-Records  = require '@/shared/services/records'
-Session  = require '@/shared/services/session'
-EventBus = require '@/shared/services/event_bus'
+import Records  from '@/shared/services/records'
+import Session  from '@/shared/services/session'
+import EventBus from '@/shared/services/event_bus'
 
 # A series of helpers for applying listeners to scope for events, such as an
 # emoji being added or a translation being completed

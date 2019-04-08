@@ -1,6 +1,6 @@
-AppConfig      = require '@/shared/services/app_config'
-EventBus       = require '@/shared/services/event_bus'
-AbilityService = require '@/shared/services/ability_service'
+import AppConfig      from '@/shared/services/app_config'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
 
 # a series of method related to the user entering input through the keyboard,
 # such as hotkeys or submit on enter

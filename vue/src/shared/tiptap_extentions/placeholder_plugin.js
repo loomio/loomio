@@ -1,6 +1,6 @@
 // a prosemirror plugin
-const {Plugin, PluginKey} = require("prosemirror-state")
-const {Decoration, DecorationSet} = require("prosemirror-view")
+import { Plugin, PluginKey } from "prosemirror-state"
+import { Decoration, DecorationSet } from "prosemirror-view"
 
 export function findPlaceholder(state, id) {
   let decos = placeholderPlugin.getState(state)

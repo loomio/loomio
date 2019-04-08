@@ -1,8 +1,8 @@
-AppConfig     = require '@/shared/services/app_config'
-Records       = require '@/shared/services/records'
-LmoUrlService = require '@/shared/services/lmo_url_service'
+import AppConfig     from '@/shared/services/app_config'
+import Records       from '@/shared/services/records'
+import LmoUrlService from '@/shared/services/lmo_url_service'
 
-{ hardReload } = require '@/shared/helpers/window'
+import { hardReload } from '@/shared/helpers/window'
 
 export default new class Session
   signIn: (userId) ->

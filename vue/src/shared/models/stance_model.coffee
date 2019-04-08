@@ -1,7 +1,7 @@
-BaseModel       = require '@/shared/record_store/base_model'
-AppConfig       = require '@/shared/services/app_config'
-HasDrafts       = require '@/shared/mixins/has_drafts'
-HasTranslations = require '@/shared/mixins/has_translations'
+import BaseModel       from '@/shared/record_store/base_model'
+import AppConfig       from '@/shared/services/app_config'
+import HasDrafts       from '@/shared/mixins/has_drafts'
+import HasTranslations from '@/shared/mixins/has_translations'
 
 export default class StanceModel extends BaseModel
   @singular: 'stance'

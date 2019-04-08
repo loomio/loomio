@@ -1,5 +1,5 @@
-Records = require '@/shared/services/records'
-Session = require '@/shared/services/session'
+import Records from '@/shared/services/records'
+import Session from '@/shared/services/session'
 
 export default new class ThreadQueryService
 

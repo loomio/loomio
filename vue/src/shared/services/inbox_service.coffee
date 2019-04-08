@@ -1,6 +1,6 @@
-Records            = require '@/shared/services/records'
-Session            = require '@/shared/services/session'
-ThreadQueryService = require '@/shared/services/thread_query_service'
+import Records            from '@/shared/services/records'
+import Session            from '@/shared/services/session'
+import ThreadQueryService from '@/shared/services/thread_query_service'
 
 export default new class InboxService
 

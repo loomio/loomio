@@ -1,4 +1,4 @@
-Records = require '@/shared/services/records'
+import Records from '@/shared/services/records'
 
 export default class RecordLoader
   constructor: (opts = {}) ->

@@ -1,213 +1,212 @@
-utils  = require './utils'
+import utils from './utils'
 
-module.exports =
-  class BaseModel
-    @singular: 'undefinedSingular'
-    @plural: 'undefinedPlural'
+export default class BaseModel
+  @singular: 'undefinedSingular'
+  @plural: 'undefinedPlural'
 
-    # indicate to Loki our 'primary keys' - it promises to make these fast to lookup by.
-    @uniqueIndices: ['id']
+  # indicate to Loki our 'primary keys' - it promises to make these fast to lookup by.
+  @uniqueIndices: ['id']
 
-    # list of other attributes to index
-    @indices: []
+  # list of other attributes to index
+  @indices: []
 
-    @searchableFields: []
+  @searchableFields: []
 
-    # whitelist of attributes to include when serializing the record.
-    # leave null to serialize all attributes
-    @serializableAttributes: null
+  # whitelist of attributes to include when serializing the record.
+  # leave null to serialize all attributes
+  @serializableAttributes: null
 
-    # what is the key to use when serializing the record?
-    @serializationRoot: null
+  # what is the key to use when serializing the record?
+  @serializationRoot: null
 
-    @memoize: []
+  @memoize: []
 
-    constructor: (recordsInterface, attributes = {}) ->
-      @processing = false # not returning/throwing on already processing rn
-      @_version = 0
-      @attributeNames = []
-      @setErrors()
-      Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
-      Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
-      Object.defineProperty(@, 'remote', value: recordsInterface.remote, enumerable: false)
-      @update(@defaultValues())
-      @update(attributes)
-      @buildRelationships() if @relationships?
-      @applyMemoization()
-      @afterConstruction()
+  constructor: (recordsInterface, attributes = {}) ->
+    @processing = false # not returning/throwing on already processing rn
+    @_version = 0
+    @attributeNames = []
+    @setErrors()
+    Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
+    Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
+    Object.defineProperty(@, 'remote', value: recordsInterface.remote, enumerable: false)
+    @update(@defaultValues())
+    @update(attributes)
+    @buildRelationships() if @relationships?
+    @applyMemoization()
+    @afterConstruction()
 
-    applyMemoization: ->
-      _.each @constructor.memoize, (name) =>
-        func = @[name]
-        @[name] = @recordStore.memoize func, @
+  applyMemoization: ->
+    _.each @constructor.memoize, (name) =>
+      func = @[name]
+      @[name] = @recordStore.memoize func, @
 
-    bumpVersion: ->
-      # @recordStore.bumpVersion()
-      @_version = @_version + 1
+  bumpVersion: ->
+    # @recordStore.bumpVersion()
+    @_version = @_version + 1
 
-    afterConstruction: ->
+  afterConstruction: ->
 
-    defaultValues: ->
-      {}
+  defaultValues: ->
+    {}
 
-    clone: ->
-      cloneAttributes = _.transform @attributeNames, (clone, attr) =>
-        if _.isArray(@[attr])
-          clone[attr] = @[attr].slice(0)
-        else
-          clone[attr] = @[attr]
-        true
-      cloneRecord = new @constructor(@recordsInterface, cloneAttributes)
-      cloneRecord.clonedFrom = @
-      cloneRecord
-
-    inCollection: =>
-      @['$loki']# and @recordsInterface.collection.get(@['$loki'])
-
-    update: (attributes) ->
-      @baseUpdate(attributes)
-
-    baseUpdate: (attributes) ->
-      @bumpVersion()
-      @attributeNames = _.union(@attributeNames, _.keys(attributes))
-      _.assign(@, attributes)
-
-      @recordsInterface.collection.update(@) if @inCollection()
-
-    attributeIsModified: (attributeName) ->
-      return false unless @clonedFrom?
-      original = @clonedFrom[attributeName]
-      current = @[attributeName]
-      if utils.isTimeAttribute(attributeName)
-        !(original == current or current.isSame(original))
+  clone: ->
+    cloneAttributes = _.transform @attributeNames, (clone, attr) =>
+      if _.isArray(@[attr])
+        clone[attr] = @[attr].slice(0)
       else
-        original != current
+        clone[attr] = @[attr]
+      true
+    cloneRecord = new @constructor(@recordsInterface, cloneAttributes)
+    cloneRecord.clonedFrom = @
+    cloneRecord
 
-    modifiedAttributes: ->
-      return [] unless @clonedFrom?
-      _.filter @attributeNames, (name) =>
-        @attributeIsModified(name)
+  inCollection: =>
+    @['$loki']# and @recordsInterface.collection.get(@['$loki'])
 
-    isModified: ->
-      return false unless @clonedFrom?
-      @modifiedAttributes().length > 0
+  update: (attributes) ->
+    @baseUpdate(attributes)
 
-    serialize: ->
-      @baseSerialize()
+  baseUpdate: (attributes) ->
+    @bumpVersion()
+    @attributeNames = _.union(@attributeNames, _.keys(attributes))
+    _.assign(@, attributes)
 
-    baseSerialize: ->
-      wrapper = {}
-      data = {}
-      paramKey = _.snakeCase(@constructor.serializationRoot or @constructor.singular)
+    @recordsInterface.collection.update(@) if @inCollection()
 
-      _.each @constructor.serializableAttributes or @attributeNames, (attributeName) =>
-        snakeName = _.snakeCase(attributeName)
-        camelName = _.camelCase(attributeName)
-        if utils.isTimeAttribute(camelName)
-          data[snakeName] = @[camelName].utc().format()
-        else
-          data[snakeName] = @[camelName]
-        true # so if the value is false we don't break the loop
+  attributeIsModified: (attributeName) ->
+    return false unless @clonedFrom?
+    original = @clonedFrom[attributeName]
+    current = @[attributeName]
+    if utils.isTimeAttribute(attributeName)
+      !(original == current or current.isSame(original))
+    else
+      original != current
 
+  modifiedAttributes: ->
+    return [] unless @clonedFrom?
+    _.filter @attributeNames, (name) =>
+      @attributeIsModified(name)
 
-      wrapper[paramKey] = data
-      wrapper
+  isModified: ->
+    return false unless @clonedFrom?
+    @modifiedAttributes().length > 0
 
-    relationships: ->
+  serialize: ->
+    @baseSerialize()
 
-    buildRelationships: ->
-      @views = {}
-      @relationships()
+  baseSerialize: ->
+    wrapper = {}
+    data = {}
+    paramKey = _.snakeCase(@constructor.serializationRoot or @constructor.singular)
 
-    hasMany: (name, userArgs = {}) ->
-      args = _.defaults userArgs,
-        from: name
-        with:  @constructor.singular+'Id'
-        of: 'id'
-        dynamicView: true
-
-      @[name] = if args.dynamicView
-        # sets up a dynamic view which will be kept updated as matching elements are added to the collection
-        => @buildView("#{@constructor.singular}_#{@keyOrId()}_#{name}", args).data()
+    _.each @constructor.serializableAttributes or @attributeNames, (attributeName) =>
+      snakeName = _.snakeCase(attributeName)
+      camelName = _.camelCase(attributeName)
+      if utils.isTimeAttribute(camelName)
+        data[snakeName] = @[camelName].utc().format()
       else
-        # adds a simple Records.collection.where with no db overhead
-        => @recordStore[args.from].find("#{args.with}": @[args.of])
+        data[snakeName] = @[camelName]
+      true # so if the value is false we don't break the loop
 
-    buildView: (viewName, args = {}) ->
-      # create the view which references the records
-      if !@views[viewName]
-        @views[viewName] = @recordStore[args.from].collection.addDynamicView(viewName)
-        @views[viewName].applyFind("#{args.with}": @[args.of])
-        @views[viewName].applySimpleSort(args.sortBy, args.sortDesc) if args.sortBy
-      @views[viewName]
 
-    belongsTo: (name, userArgs) ->
-      defaults =
-        from: name+'s'
-        by: name+'Id'
+    wrapper[paramKey] = data
+    wrapper
 
-      args = _.assign defaults, userArgs
+  relationships: ->
 
-      @[name] = =>
-        @recordStore[args.from].find(@[args.by])
+  buildRelationships: ->
+    @views = {}
+    @relationships()
 
-    translationOptions: ->
+  hasMany: (name, userArgs = {}) ->
+    args = _.defaults userArgs,
+      from: name
+      with:  @constructor.singular+'Id'
+      of: 'id'
+      dynamicView: true
 
-    isA: (models...) ->
-      _.includes models, @constructor.singular
+    @[name] = if args.dynamicView
+      # sets up a dynamic view which will be kept updated as matching elements are added to the collection
+      => @buildView("#{@constructor.singular}_#{@keyOrId()}_#{name}", args).data()
+    else
+      # adds a simple Records.collection.where with no db overhead
+      => @recordStore[args.from].find("#{args.with}": @[args.of])
 
-    namedId: ->
-      { "#{@constructor.singular}_id": @id }
+  buildView: (viewName, args = {}) ->
+    # create the view which references the records
+    if !@views[viewName]
+      @views[viewName] = @recordStore[args.from].collection.addDynamicView(viewName)
+      @views[viewName].applyFind("#{args.with}": @[args.of])
+      @views[viewName].applySimpleSort(args.sortBy, args.sortDesc) if args.sortBy
+    @views[viewName]
 
-    isNew: ->
-      not @id?
+  belongsTo: (name, userArgs) ->
+    defaults =
+      from: name+'s'
+      by: name+'Id'
 
-    keyOrId: ->
-      if @key?
-        @key
-      else
-        @id
+    args = _.assign defaults, userArgs
 
-    remove: =>
-      @beforeRemove()
-      if @inCollection()
-        @recordsInterface.collection.remove(@)
+    @[name] = =>
+      @recordStore[args.from].find(@[args.by])
 
-    destroy: =>
-      @processing = true
-      @beforeDestroy()
-      @remove()
-      @remote.destroy(@keyOrId()).then =>
-        @processing = false
+  translationOptions: ->
 
-    beforeDestroy: =>
+  isA: (models...) ->
+    _.includes models, @constructor.singular
 
-    beforeRemove: =>
+  namedId: ->
+    { "#{@constructor.singular}_id": @id }
 
-    save: =>
-      @processing = true
+  isNew: ->
+    not @id?
 
-      if @isNew()
-        @remote.create(@serialize()).then(@afterSave)
-      else
-        @remote.update(@keyOrId(), @serialize()).then(@afterSave)
+  keyOrId: ->
+    if @key?
+      @key
+    else
+      @id
 
-    afterSave: (data) =>
+  remove: =>
+    @beforeRemove()
+    if @inCollection()
+      @recordsInterface.collection.remove(@)
+
+  destroy: =>
+    @processing = true
+    @beforeDestroy()
+    @remove()
+    @remote.destroy(@keyOrId()).then =>
       @processing = false
-      if data.errors
-        @setErrors(data.errors)
-        throw data
-      else
-        @clonedFrom = undefined
-        data
 
-    clearErrors: ->
-      @errors = {}
+  beforeDestroy: =>
 
-    setErrors: (errorList = []) ->
-      @errors = {}
-      _.each errorList, (errors, key) =>
-        @errors[_.camelCase(key)] = errors
+  beforeRemove: =>
 
-    isValid: ->
-      @errors.length > 0
+  save: =>
+    @processing = true
+
+    if @isNew()
+      @remote.create(@serialize()).then(@afterSave)
+    else
+      @remote.update(@keyOrId(), @serialize()).then(@afterSave)
+
+  afterSave: (data) =>
+    @processing = false
+    if data.errors
+      @setErrors(data.errors)
+      throw data
+    else
+      @clonedFrom = undefined
+      data
+
+  clearErrors: ->
+    @errors = {}
+
+  setErrors: (errorList = []) ->
+    @errors = {}
+    _.each errorList, (errors, key) =>
+      @errors[_.camelCase(key)] = errors
+
+  isValid: ->
+    @errors.length > 0

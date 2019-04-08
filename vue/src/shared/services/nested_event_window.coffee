@@ -1,6 +1,6 @@
-Records         = require '@/shared/services/records'
-RecordLoader    = require '@/shared/services/record_loader'
-BaseEventWindow = require '@/shared/services/base_event_window'
+import Records         from '@/shared/services/records'
+import RecordLoader    from '@/shared/services/record_loader'
+import BaseEventWindow from '@/shared/services/base_event_window'
 
 export default class NestedEventWindow extends BaseEventWindow
   constructor: ({discussion, parentEvent, initialSequenceId, per}) ->

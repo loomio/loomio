@@ -1,4 +1,4 @@
-AppConfig = require '@/shared/services/app_config'
+import AppConfig from '@/shared/services/app_config'
 
 export default new class TimeService
   nameForZone: (zone, nameForLocal) ->

@@ -1,5 +1,4 @@
-AppConfig = require '@/shared/services/app_config.coffee'
+import AppConfig from '@/shared/services/app_config.coffee'
 
-module.exports =
-  pluginConfigFor: (name) ->
-    _.find(AppConfig.plugins.installed, (p) -> p.name == name).config
+export function pluginConfigFor = (name) ->
+  _.find(AppConfig.plugins.installed, (p) -> p.name == name).config

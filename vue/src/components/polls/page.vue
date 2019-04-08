@@ -1,23 +1,23 @@
 <script lang="coffee">
-AppConfig      = require '@/shared/services/app_config'
-Session        = require '@/shared/services/session'
-Records        = require '@/shared/services/records'
-EventBus       = require '@/shared/services/event_bus'
-AbilityService = require '@/shared/services/ability_service'
-RecordLoader   = require '@/shared/services/record_loader'
-ModalService   = require '@/shared/services/modal_service'
-LmoUrlService  = require '@/shared/services/lmo_url_service'
-urlFor = require '@/mixins/url_for'
+import AppConfig      from '@/shared/services/app_config'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import RecordLoader   from '@/shared/services/record_loader'
+import ModalService   from '@/shared/services/modal_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import urlFor from '@/mixins/url_for'
 
-{ applyLoadingFunction } = require '@/shared/helpers/apply'
+import { applyLoadingFunction } from '@/shared/helpers/apply'
 import Loading from '@/components/common/loading.vue'
 import PollCommonPreview from '@/components/poll/common/preview.vue'
 
-_map = require 'lodash/map'
-_capitalize = require 'lodash/capitalize'
-_sortBy = require 'lodash/sortBy'
-_isEmpty = require 'lodash/isEmpty'
-_filter = require 'lodash/filter'
+import _map from 'lodash/map'
+import _capitalize from 'lodash/capitalize'
+import _sortBy from 'lodash/sortBy'
+import _isEmpty from 'lodash/isEmpty'
+import _filter from 'lodash/filter'
 
 export default
   components:

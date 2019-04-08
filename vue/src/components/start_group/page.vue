@@ -1,10 +1,10 @@
 <script lang="coffee">
-Records       = require '@/shared/services/records'
-EventBus      = require '@/shared/services/event_bus'
-LmoUrlService = require '@/shared/services/lmo_url_service'
-ModalService  = require '@/shared/services/modal_service'
+import Records       from '@/shared/services/records'
+import EventBus      from '@/shared/services/event_bus'
+import LmoUrlService from '@/shared/services/lmo_url_service'
+import ModalService  from '@/shared/services/modal_service'
 
-_isEmpty     = require 'lodash/isEmpty'
+import _isEmpty     from 'lodash/isEmpty'
 
 module.exports =
   data: ->

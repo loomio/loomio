@@ -1,7 +1,7 @@
-Session       = require '@/shared/services/session'
-Records       = require '@/shared/services/records'
-FlashService  = require '@/shared/services/flash_service'
-ModalService  = require '@/shared/services/modal_service'
+import Session       from '@/shared/services/session'
+import Records       from '@/shared/services/records'
+import FlashService  from '@/shared/services/flash_service'
+import ModalService  from '@/shared/services/modal_service'
 
 export default new class ThreadService
   mute: (thread, override = false) ->

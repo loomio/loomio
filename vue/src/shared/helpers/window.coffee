@@ -1,4 +1,4 @@
-bowser = require 'bowser'
+import bowser from 'bowser'
 window.bowser = bowser
 
 export hardReload = (path) ->
