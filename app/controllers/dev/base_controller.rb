@@ -27,7 +27,7 @@ class Dev::BaseController < ApplicationController
   end
 
   def redirect_to(path)
-    if params[:vue]
+    if params[:vue] && Rails.env.development?
       super "http://localhost:8080#{URI(path).path}"
     else
       super

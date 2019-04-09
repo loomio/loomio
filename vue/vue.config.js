@@ -19,7 +19,8 @@ module.exports = {
       'app': './src/main.coffee'
     }
   },
-  indexPath: 'vue.html',
+  outputDir: '../public/client/vue',
+  assetsDir: '../../client/vue',
   devServer: {
    proxy: 'http://localhost:3000'
   },

@@ -31,6 +31,7 @@ env:
     - TASK=e2e
     - TASK=rspec
     - TASK=plugins
+    - TASK=vue
 
 before_install:
   - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
@@ -60,6 +61,7 @@ script:
   - if [ "$TASK" = "e2e" ];     then bundle exec rake travis:e2e; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
+  - if [ "$TASK" = "vue" ];     then bundle exec rake travis:vue; fi
 
 after_script:
   - bundle exec rake travis:cleanup
