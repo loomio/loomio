@@ -14,6 +14,6 @@ angular.module('loomioApp').directive 'currentPlanButton', ->
       <i class="mdi mdi-star mdi-24px premium-feature__star" aria-hidden="true"></i>
       <span ng-if="showUpgrade" translate="current_plan_button.upgrade"></span>
       <span ng-if="!showUpgrade" translate="plan_names.{{plan}}"></span>
-      <md-tooltip><span translate="current_plan_button.tooltip"></span></md-tooltip>
+      <md-tooltip ng-if="showUpgrade"><span translate="current_plan_button.tooltip"></span></md-tooltip>
       </md-button>
     </span>'
