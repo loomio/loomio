@@ -16,6 +16,7 @@ cache:
 addons:
   firefox: "65.0"
   postgresql: "9.6"
+  chrome: stable
 
 env:
   global:
