@@ -134,7 +134,7 @@ GEM
       aws-eventstream (~> 1.0, >= 1.0.2)
     bcrypt (3.1.12)
     benchmark-ips (2.7.2)
-    bootsnap (1.4.1)
+    bootsnap (1.4.3)
       msgpack (~> 1.0)
     browser (2.5.3)
     builder (3.2.3)
