@@ -1,15 +1,15 @@
-import emojione     from 'emojione'
+import emojione from 'emojione'
 import marked from 'marked'
 import clone from 'lodash/clone'
 
-_parse = marked.parse
-marked.parse = (src, opt, callback) ->
-  src = src.replace(/<img[^>]+\>/ig, "")
-  src = src.replace(/<script[^>]+\>/ig, "")
-  return _parse(src, opt, callback)
-
-export function marked = marked
-export function customRenderer = (opts) ->
+# _parse = marked.parse
+# marked.parse = (src, opt, callback) ->
+#   src = src.replace(/<img[^>]+\>/ig, "")
+#   src = src.replace(/<script[^>]+\>/ig, "")
+#   return _parse(src, opt, callback)
+# 
+# export marked = marked
+export customRenderer = (opts) ->
   _super   = new marked.Renderer(opts)
   renderer = clone(_super)
   cook = (text) ->
@@ -32,4 +32,4 @@ export function customRenderer = (opts) ->
     _super.link(href, title, text).replace('<a ', '<a rel="noopener noreferrer" target="_blank" ')
 
   renderer
-export const options = {gfm: true, sanitize: true, breaks: true, smartypants: false, tables: true}
+export options = {gfm: true, sanitize: true, breaks: true, smartypants: false, tables: true}

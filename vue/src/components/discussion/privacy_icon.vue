@@ -7,7 +7,7 @@
 }
 </style>
 <script lang="coffee">
-{ discussionPrivacy } from '@/shared/helpers/helptext'
+import { discussionPrivacy } from '@/shared/helpers/helptext'
 
 export default
   props:

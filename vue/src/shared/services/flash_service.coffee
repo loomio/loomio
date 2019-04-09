@@ -17,6 +17,6 @@ export default class FlashService
   @info:    createFlashLevel @, 'info'
   @warning: createFlashLevel @, 'warning'
   @error:   createFlashLevel @, 'error'
-  @loading: createFlashLevel @, 'loading', AppConfig.flashTimeout.long
-  @update:  createFlashLevel @, 'update', AppConfig.flashTimeout.long
+  @loading: createFlashLevel @, 'loading', 1
+  @update:  createFlashLevel @, 'update', 1
   @dismiss: createFlashLevel @, 'loading', 1

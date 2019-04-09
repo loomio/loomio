@@ -3,7 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import { listenForLoading } from '@/shared/helpers/listen'
 import { iconFor }          from '@/shared/helpers/poll'
 import { submitStance }  from '@/shared/helpers/form'
-import PollCommonDirective from('src/components/poll/common/directive.vue')
+import PollCommonDirective from '@/components/poll/common/directive.vue'
 import _sortBy from 'lodash/sortBy'
 
 export default
@@ -15,7 +15,7 @@ export default
     dstance: @stance.clone()
   components:
     PollCommonDirective: PollCommonDirective
-    
+
   created: ->
     @submit = submitStance @, @stance,
       prepareFn: ->

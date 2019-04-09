@@ -1,7 +1,10 @@
-import Records       from '@/shared/services/records'
+import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
-import Session       from '@/shared/services/session'
-import Vuex from 'vuex'
+import Session        from '@/shared/services/session'
+import Vue            from 'vue'
+import Vuex           from 'vuex'
+
+Vue.use(Vuex)
 
 export default new Vuex.Store
   state:

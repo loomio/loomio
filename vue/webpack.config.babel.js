@@ -68,7 +68,7 @@ module.exports = {
 
       match (originalTag, { kebabTag, camelTag, path, component }) {
         if (components[camelTag]) {
-          return [camelTag, `import ${camelTag} from 'src/components/${components[camelTag]}.vue'`]
+          return [camelTag, `import ${camelTag} from '@/components/${components[camelTag]}.vue'`]
         }
       }
     })

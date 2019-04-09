@@ -8,7 +8,7 @@ prettyDiffHtml = (diff) ->
       when  1 then   "<ins>#{chars}</ins>"
   , "")
 
-export function compileDiffHtml = (before,  after)->
+export compileDiffHtml = (before,  after)->
   differ = new DiffMatchPatch()
   diff = differ.diff_main(before||"", after||"")
   differ.diff_cleanupSemantic(diff)

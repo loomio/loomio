@@ -25,7 +25,7 @@
 
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
-import _times from('lodash/times')
+import _times from 'lodash/times'
 
 export default
   props:

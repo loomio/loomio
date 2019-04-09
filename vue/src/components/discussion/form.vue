@@ -1,7 +1,6 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import I18n           from '@/shared/services/i18n'
 import { discussionPrivacy } from '@/shared/helpers/helptext'
 import _map from 'lodash/map'
 import _sortBy from 'lodash/sortBy'

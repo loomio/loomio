@@ -5,8 +5,7 @@ import RecordLoader             from '@/shared/services/record_loader'
 import ChronologicalEventWindow from '@/shared/services/chronological_event_window'
 import NestedEventWindow        from '@/shared/services/nested_event_window'
 import ModalService             from '@/shared/services/modal_service'
-import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
+import AbilityService           from '@/shared/services/ability_service'
 
 
 import { print } from '@/shared/helpers/window'

@@ -16,8 +16,6 @@ export default
   props:
     parentEvent: Object
     parentEventWindow: Object
-  beforeCreate: ->
-    @$options.components.ThreadItem = require('src/components/thread/item.vue').default
   data: ->
     eventWindow: new NestedEventWindow
       parentEvent:       @parentEvent

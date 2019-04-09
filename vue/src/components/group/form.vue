@@ -1,7 +1,6 @@
 <script lang="coffee">
 import AppConfig      from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
-import I18n           from '@/shared/services/i18n'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 
 export default

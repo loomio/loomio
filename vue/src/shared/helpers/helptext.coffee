@@ -3,7 +3,7 @@ import Records from '@/shared/services/records'
 # a series of helpers related to getting a translation string to translate, such
 # as the headline of an event or the helptext strings on the discussion or group forms
 
-export function eventHeadline = (event, useNesting = false) ->
+export eventHeadline = (event, useNesting = false) ->
   key = switch event.kind
     when 'new_comment'       then newCommentKey(event, useNesting)
     when 'stance_created'    then stanceCreatedKey(event, useNesting)
@@ -11,7 +11,7 @@ export function eventHeadline = (event, useNesting = false) ->
     else event.kind
   "thread_item.#{key}"
 
-export function eventTitle = (event) ->
+export eventTitle = (event) ->
   switch event.eventable.type
     when 'comment'             then event.model().parentAuthorName
     when 'poll', 'outcome'     then event.model().poll().title
@@ -23,14 +23,14 @@ export function eventTitle = (event) ->
       else
         event.model().title
 
-export function eventPollType = (event) ->
+export eventPollType = (event) ->
   return "" unless _.includes ['poll', 'stance', 'outcome'], event.eventable.type
   "poll_types.#{event.model().poll().pollType}"
 
-export function emojiTitle = (shortname) ->
+export emojiTitle = (shortname) ->
   "reactions.#{shortname.replace(/:/g, '')}"
 
-export function groupPrivacy = (group, privacy) ->
+export groupPrivacy = (group, privacy) ->
   privacy = privacy || group.groupPrivacy
 
   if group.isParent()
@@ -54,7 +54,7 @@ export function groupPrivacy = (group, privacy) ->
         else
           'group_form.subgroup_privacy_is_closed_description'
 
-export function groupPrivacyStatement = (group) ->
+export groupPrivacyStatement = (group) ->
   if group.isSubgroup() && group.parent().privacyIsSecret()
     if group.privacyIsClosed()
       'group_form.privacy_statement.private_to_parent_members'
@@ -66,7 +66,7 @@ export function groupPrivacyStatement = (group) ->
       when 'closed' then 'group_form.privacy_statement.public_on_web'
       when 'secret' then 'group_form.privacy_statement.private_to_group'
 
-export function groupPrivacyConfirm = (group) ->
+export groupPrivacyConfirm = (group) ->
   return "" if group.isNew()
 
   if group.attributeIsModified('groupPrivacy')
@@ -81,7 +81,7 @@ export function groupPrivacyConfirm = (group) ->
     if group.discussionPrivacyOptions == 'private_only'
       'group_form.confirm_change_to_private_discussions_only'
 
-export function discussionPrivacy = (discussion, is_private = null) ->
+export discussionPrivacy = (discussion, is_private = null) ->
   if is_private == false
     'discussion_form.privacy_public'
   else if discussion.group().parentMembersCanSeeDiscussions

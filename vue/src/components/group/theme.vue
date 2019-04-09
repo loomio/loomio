@@ -4,18 +4,14 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import urlFor         from '@/mixins/url_for'
-import JoinGroupButton from 'src/components/group/join_button.vue'
 
 export default
-  components:
-    JoinGroupButton: JoinGroupButton
   mixins: [urlFor]
   props:
     group: Object
     homePage: Boolean
     compact: Boolean
     discussion: Object
-  created: ->
   methods:
     openUploadCoverForm: ->
       ModalService.open 'CoverPhotoForm', group: => group

@@ -9,16 +9,16 @@ import { hardReload } from '@/shared/helpers/window'
 
 # A series of actions relating to updating the current user, such as signing in
 # or changing the app's locale
-export function signIn = (data, userId, afterSignIn) =>
+export signIn = (data, userId, afterSignIn) =>
     Records.import(data)
     Session.signIn(userId)
     AppConfig.pendingIdentity = data.pending_identity
     afterSignIn() if typeof afterSignIn is 'function'
 
-export function signOut = ->
+export signOut = ->
     AppConfig.loggingOut = true
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
-export function getProviderIdentity = ->
+export getProviderIdentity = ->
     validProviders = _.map(AppConfig.identityProviders, 'name')
     AppConfig.pendingIdentity if _.includes(validProviders, AppConfig.pendingIdentity.identity_type)

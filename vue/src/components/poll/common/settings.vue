@@ -1,6 +1,6 @@
 <script lang="coffee">
 import { settingsFor } from '@/shared/helpers/poll'
-import _snakeCase from('lodash/snakeCase')
+import _snakeCase from 'lodash/snakeCase'
 
 export default
   props:

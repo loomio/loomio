@@ -4,7 +4,7 @@ import EventBus from '@/shared/services/event_bus'
 
 # A series of helpers for applying listeners to scope for events, such as an
 # emoji being added or a translation being completed
-export function listenForMentions = ($scope, model) ->
+export listenForMentions = ($scope, model) ->
   updateMentionables = ->
     chain = Records.users.collection.chain().find(id: {'$in': $scope.mentionableUserIds})
     chain = chain.where (u) ->
@@ -37,13 +37,13 @@ export function listenForMentions = ($scope, model) ->
 
 
 
-export function listenForTranslations = ($scope) ->
+export listenForTranslations = ($scope) ->
   EventBus.listen $scope, 'translationComplete', (e, translatedFields) =>
     return if e.defaultPrevented
     e.preventDefault()
     $scope.translation = translatedFields
 
-export function listenForEmoji = ($scope, model, field, $element) ->
+export listenForEmoji = ($scope, model, field, $element) ->
   EventBus.listen $scope, 'emojiSelected', (_, emoji) ->
     return unless $textarea = $element.find('textarea')[0]
     caretPosition = $textarea.selectionEnd
@@ -52,7 +52,7 @@ export function listenForEmoji = ($scope, model, field, $element) ->
       $textarea.selectionEnd = $textarea.selectionStart = caretPosition + emoji.length + 2
       $textarea.focus()
 
-export function listenForReactions = ($scope, model) ->
+export listenForReactions = ($scope, model) ->
   EventBus.listen $scope, 'emojiSelected', (_event, emoji) ->
     params =
       reactableType: _.capitalize(model.constructor.singular)
@@ -63,6 +63,6 @@ export function listenForReactions = ($scope, model) ->
     reaction.reaction = emoji
     reaction.save()
 
-export function listenForLoading = ($scope) ->
+export listenForLoading = ($scope) ->
   EventBus.listen $scope, 'processing',     -> $scope.isDisabled = true
   EventBus.listen $scope, 'doneProcessing', -> $scope.isDisabled = false

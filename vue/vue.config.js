@@ -1,4 +1,19 @@
+const components = require('./src/components.js')
+
 module.exports = {
+  chainWebpack: config => {
+          config
+          .plugin('VuetifyLoaderPlugin')
+          .tap(args => {
+              return [{
+                  match (originalTag, { kebabTag, camelTag, path, component }) {
+                    if (components[camelTag]) {
+                      return [camelTag, `import ${camelTag} from '@/components/${components[camelTag]}.vue'`]
+                    }
+                  }
+              }]
+          })
+  },
   configureWebpack: {
     entry: {
       'app': './src/main.coffee'

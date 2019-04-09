@@ -1,5 +1,4 @@
-import ActionCable from 'actioncable'
-
+import ActionCable    from 'actioncable'
 import AppConfig      from '@/shared/services/app_config'
 import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
@@ -10,24 +9,20 @@ import AbilityService from '@/shared/services/ability_service'
 
 import { hardReload } from '@/shared/helpers/window'
 
-export default{
-  subscribeTo: (model) ->
-    subscribeTo(model)
-
-  initLiveUpdate: ->
-    subscribeToApplication()
-
-    if AbilityService.isLoggedIn()
-      subscribeToUser()
-      _.each Session.user().groups(), subscribeToGroup
-    else
-      subscribeToMembership()
-}
-
-subscribeTo = (model) ->
+export subscribeTo = (model) ->
   switch model.constructor.singular
     when 'group' then subscribeToGroup(model)
     when 'poll'  then subscribeToPoll(model)
+
+export initLiveUpdate = ->
+  subscribeToApplication()
+
+  if AbilityService.isLoggedIn()
+    subscribeToUser()
+    _.each Session.user().groups(), subscribeToGroup
+  else
+    subscribeToMembership()
+
 
 subscribeToGroup = (group) ->
   ensureConnection().subscriptions.create { channel: "GroupChannel", group_id: group.id },

@@ -7,13 +7,13 @@ import AppConfig   from '@/shared/services/app_config'
 # a sequence of steps, or loading for a particular function
 
 
-export function obeyMembersCanAnnounce = (steps, group) ->
+export obeyMembersCanAnnounce = (steps, group) ->
   if Session.user().isAdminOf?(group) or (group && group.membersCanAnnounce)
     steps
   else
     _.without(steps, 'announce')
 
-export function applyLoadingFunction = (scope, functionName) ->
+export applyLoadingFunction = (scope, functionName) ->
   executing = "#{functionName}Executing"
   loadingFunction = scope[functionName]
   scope[functionName] = (args...) ->
@@ -21,10 +21,10 @@ export function applyLoadingFunction = (scope, functionName) ->
     scope[executing] = true
     loadingFunction(args...).finally -> scope[executing] = false
 
-export function applySequence = (scope, options = {}) ->
+export applySequence = (scope, options = {}) ->
   applySequence(scope, options)
 
-export function applyPollStartSequence = (scope, options = {}) ->
+export applyPollStartSequence = (scope, options = {}) ->
   applySequence scope,
     steps: obeyMembersCanAnnounce(['choose', 'save', 'announce'], scope.poll.group())
     initialStep: if scope.poll.pollType then 'save' else 'choose'
@@ -35,7 +35,7 @@ export function applyPollStartSequence = (scope, options = {}) ->
       LmoUrlService.goTo LmoUrlService.poll(event.model())
       options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
-export function applyDiscussionStartSequence = (scope, options = {}) ->
+export applyDiscussionStartSequence = (scope, options = {}) ->
   steps = if AppConfig.theme['dont_notify_new_thread']
     ['save']
   else

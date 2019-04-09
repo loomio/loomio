@@ -7,7 +7,6 @@ import ModalService   from '@/shared/services/modal_service'
 import ThreadService  from '@/shared/services/thread_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import FlashService   from '@/shared/services/flash_service'
-import I18n           from '@/shared/services/i18n'
 import urlFor         from '@/mixins/url_for'
 import exactDate      from '@/mixins/exact_date'
 

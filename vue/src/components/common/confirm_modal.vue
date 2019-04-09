@@ -1,6 +1,3 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
 import FlashService  from '@/shared/services/flash_service'
 import LmoUrlService from '@/shared/services/lmo_url_service'

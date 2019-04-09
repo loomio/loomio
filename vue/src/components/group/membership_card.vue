@@ -3,8 +3,6 @@ import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
-import I18n           from '@/shared/services/i18n'
-import Records        from '@/shared/services/records'
 import fromNow        from '@/mixins/from_now'
 
 export default

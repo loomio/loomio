@@ -16,8 +16,6 @@ import InboxService  from '@/shared/services/inbox_service'
 import ModalService  from '@/shared/services/modal_service'
 import urlFor        from '@/mixins/url_for'
 
-# import ThreadPreviewCollection from 'src/components/thread/preview_collection.vue'
-
 export default
   mixins: [urlFor]
   data: ->

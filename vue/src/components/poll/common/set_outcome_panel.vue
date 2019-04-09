@@ -5,9 +5,9 @@
 </style>
 
 <script lang="coffee">
-Records        from '@/shared/services/records'
-AbilityService from '@/shared/services/ability_service'
-ModalService   from '@/shared/services/modal_service'
+import Records        from '@/shared/services/records'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
 
 export default
   props:

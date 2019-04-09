@@ -34,7 +34,6 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import ModalService   from '@/shared/services/modal_service'
-import I18n           from '@/shared/services/i18n'
 import EventBus       from '@/shared/services/event_bus'
 import utils          from '@/shared/record_store/utils'
 import LmoUrlService  from '@/shared/services/lmo_url_service'

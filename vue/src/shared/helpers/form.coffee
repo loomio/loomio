@@ -9,10 +9,10 @@ import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { scrollTo }          from '@/shared/helpers/layout'
 
 # a helper to aid submitting forms throughout the app
-export function submitForm = (scope, model, options = {}) ->
+export submitForm = (scope, model, options = {}) ->
   submit(scope, model, options)
 
-export function submitDiscussion = (scope, model, options = {}) ->
+export submitDiscussion = (scope, model, options = {}) ->
   submit(scope, model, _.merge(
     submitFn: if model.isForking() then model.fork else model.save
     flashSuccess: "discussion_form.messages.#{actionName(model)}"
@@ -26,7 +26,7 @@ export function submitDiscussion = (scope, model, options = {}) ->
       nextOrSkip(data, scope, model)
   , options))
 
-export function submitOutcome = (scope, model, options = {}) ->
+export submitOutcome = (scope, model, options = {}) ->
   submit(scope, model, _.merge(
     flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
     failureCallback: ->
@@ -35,7 +35,7 @@ export function submitOutcome = (scope, model, options = {}) ->
       nextOrSkip(data, scope, model)
   , options))
 
-export function submitStance = (scope, model, options = {}) ->
+export submitStance = (scope, model, options = {}) ->
   submit(scope, model, _.merge(
     flashSuccess: "poll_#{model.poll().pollType}_vote_form.stance_#{actionName(model)}"
     prepareFn: ->
@@ -49,7 +49,7 @@ export function submitStance = (scope, model, options = {}) ->
       EventBus.$emit 'doneProcessing'
   , options))
 
-export function submitPoll = (scope, model, options = {}) ->
+export submitPoll = (scope, model, options = {}) ->
   submit(scope, model, _.merge(
     flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
     prepareFn: =>
@@ -75,16 +75,16 @@ export function submitPoll = (scope, model, options = {}) ->
       EventBus.$emit 'doneProcessing'
   , options))
 
-export function submitMembership = (scope, model, options = {}) ->
+export submitMembership = (scope, model, options = {}) ->
   submit(scope, model, _.merge(
     flashSuccess: "membership_form.#{actionName(model)}"
     successCallback: -> EventBus.$emit '$close'
   , options))
 
-export function upload = (scope, model, options = {}) ->
+export upload = (scope, model, options = {}) ->
   upload(scope, model, options)
 
-export function uploadForm = (scope, element, model, options = {}) ->
+export uploadForm = (scope, element, model, options = {}) ->
   scope.upload     = upload(scope, model, options)
   scope.selectFile = -> element[0].querySelector('input[type=file]').click()
   scope.drop       = (event) -> scope.upload(event.dataTransfer.files)

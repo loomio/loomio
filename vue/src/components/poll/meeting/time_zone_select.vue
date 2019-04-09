@@ -25,7 +25,6 @@
 import AppConfig   from '@/shared/services/app_config'
 import EventBus    from '@/shared/services/event_bus'
 import TimeService from '@/shared/services/time_service'
-import I18n        from '@/shared/services/i18n'
 
 export default
   props:

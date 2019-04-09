@@ -4,7 +4,6 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
-import I18n           from '@/shared/services/i18n'
 
 import { submitForm } from '@/shared/helpers/form'
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
@@ -12,10 +11,10 @@ import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helpt
 import _includes from 'lodash/includes'
 import _camelCase from 'lodash/camelCase'
 
-import NewComment from 'src/components/thread/item/new_comment.vue'
-import PollCreated from 'src/components/thread/item/poll_created.vue'
-import StanceCreated from 'src/components/thread/item/stance_created.vue'
-import OutcomeCreated from 'src/components/thread/item/outcome_created.vue'
+import NewComment from '@/components/thread/item/new_comment.vue'
+import PollCreated from '@/components/thread/item/poll_created.vue'
+import StanceCreated from '@/components/thread/item/stance_created.vue'
+import OutcomeCreated from '@/components/thread/item/outcome_created.vue'
 
 threadItemComponents = [
   'newComment',

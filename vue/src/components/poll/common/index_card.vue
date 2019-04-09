@@ -1,7 +1,7 @@
 <script lang="coffee">
-import Records       = require '@/shared/services/records'
-import LmoUrlService = require '@/shared/services/lmo_url_service'
-import { applyLoadingFunction } = require '@/shared/helpers/apply'
+import Records       from '@/shared/services/records'
+import LmoUrlService from '@/shared/services/lmo_url_service'
+import { applyLoadingFunction } from '@/shared/helpers/apply'
 
 export default
   props:
@@ -41,6 +41,3 @@ v-card.poll-common-index-card
       span(v-t="{ path: 'poll_common_index_card.count', args: { count: model.closedPollsCount } }")
     // <loading v-if="fetchRecordsExecuting"></loading>
 </template>
-
-<style lang="scss">
-</style>

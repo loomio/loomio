@@ -1,4 +1,4 @@
-export default
+module.exports = {
   TimeAgo: 'common/time_ago',
   ThreadPreview: 'thread/preview',
   UserAvatar: 'user/avatar',
@@ -131,3 +131,4 @@ export default
   ConfirmModal: 'common/confirm_modal',
   LmoTextarea: 'lmo_textarea/lmo_textarea',
   AttachmentList: 'thread/attachment_list'
+}

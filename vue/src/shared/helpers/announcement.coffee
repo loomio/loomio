@@ -1,4 +1,4 @@
-export function audiencesFor = (model) ->
+export audiencesFor = (model) ->
   _.compact [
     ('parent_group'     if model.isA('group')                         && model.parent()),
     ('formal_group'     if model.isA('discussion', 'poll', 'outcome') && model.group() && model.group().activeMembershipsCount() > 1),
@@ -7,7 +7,7 @@ export function audiencesFor = (model) ->
     ('non_voters'       if model.isA('poll')                          && model.stancesCount > 0 && model.undecidedCount > 1)
   ]
 
-export function audienceValuesFor = (model) ->
+export audienceValuesFor = (model) ->
   if model.isA('group') && model.parent()
     name: model.parent().name
   else if model.isA('discussion', 'poll', 'outcome') && model.group()

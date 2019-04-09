@@ -4,20 +4,20 @@ import AbilityService from '@/shared/services/ability_service'
 
 # a series of method related to the user entering input through the keyboard,
 # such as hotkeys or submit on enter
-export function broadcastKeyEvent = (scope, event) ->
+export broadcastKeyEvent = (scope, event) ->
   key = keyboardShortcuts[event.which]
   if key == 'pressedEnter' or (key and !event.ctrlKey and !event.metaKey)
     EventBus.broadcast scope, key, event, document.activeElement
 
-export function registerKeyEvent = (scope, eventCode, execute, shouldExecute) ->
+export registerKeyEvent = (scope, eventCode, execute, shouldExecute) ->
   registerKeyEvent(scope, eventCode, execute, shouldExecute)
 
-export function registerHotkeys = (scope, hotkeys) ->
+export registerHotkeys = (scope, hotkeys) ->
   _.each hotkeys, (execute, key) =>
     registerKeyEvent scope, key, execute, (event) ->
       defaultShouldExecute(event) and !AppConfig.currentModal and AbilityService.isLoggedIn()
 
-export function submitOnEnter = (scope, opts = {}) ->
+export submitOnEnter = (scope, opts = {}) ->
   registerKeyEvent scope, 'pressedEnter', scope[opts.submitFn or 'submit'], (active, event) =>
     !scope.isDisabled and
     !scope.submitIsDisabled and
