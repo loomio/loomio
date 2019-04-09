@@ -13,8 +13,6 @@ import './registerServiceWorker'
 
 Vue.config.productionTip = false
 
-Vue.use(Vuex)
-
 # { pluginConfigFor } = require '@/shared/helpers/plugin'
 import { exportGlobals, hardReload, unsupportedBrowser } from '@/shared/helpers/window.coffee'
 import { bootDat } from '@/shared/helpers/boot.coffee'
