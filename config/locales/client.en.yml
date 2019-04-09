@@ -464,9 +464,9 @@ en:
     form:
       too_many_invitations: |
         Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
-      no_inivtations_remaining: |
-        <p>You have no invitations remaining on your current subscription plan.</p>
-        <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to send more invitations.</p>
+      no_invitations_remaining: |
+        <p>You have used all {{maxMembers}} invitations available to this group.</p>
+        <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
 
       invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
 
@@ -1104,8 +1104,8 @@ en:
 
   discussion:
     max_threads_reached: |
-      <p>Sorry! You cannot start another thread because your group is on a trial plan.</p>
-      <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
+      <p>You have used all {{maxThreads}} threads available to this group.</p>
+      <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
     subscription_canceled: |
       <p>Sorry! Your subscription is not active.</p>
       <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
