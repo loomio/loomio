@@ -21,13 +21,13 @@ namespace :travis do
     raise "e2e failed!" unless $?.exitstatus == 0
   end
 
-  task :e2e => :environment do
+  task :vue => :environment do
     # warming up the server
     system("sleep 10")
     system("wget http://localhost:3000/")
     # ok now start running the tests
     puts "Starting to run vue nightwatch..."
-    system("cd vue && npm run test:e2e --retries 3")
+    system("cd vue && npm run test:e2e")
     raise "e2e failed!" unless $?.exitstatus == 0
   end
 
