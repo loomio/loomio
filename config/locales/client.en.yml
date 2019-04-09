@@ -1100,7 +1100,7 @@ en:
 
   discussion:
     max_threads_reached: |
-      <p>You have used all {{maxThreads}} threads available in this group.</p>
+      <p>You have used all {{maxThreads}} threads available to this group.</p>
       <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
     subscription_canceled: |
       <p>Sorry! Your subscription is not active.</p>
