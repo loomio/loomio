@@ -14,6 +14,8 @@ he:
     helptext: תגיות מאפשרות לך לקטלג את השיחות ולמצוא אותם בקלות אחר כך
     discussions_count_singular: ({{count}} שיחה)
     discussions_count_plural: ({{count}} שיחות)
+    tag_created: תגית נשמרה
+    tag_destroyed: תגית הוסרה
     tags_marked: שיחה סומנה כ'{{name}}' ב{{groupName}}
     no_tags_present: לא נמצאו שיחות עם תגית זו. נסה לבחור אחרת.
   reactions:
@@ -150,6 +152,7 @@ he:
       resent: הזמנה נשלחה שוב
       export: יצוא
       fork: הסתעפות
+      apply: החל
     formatting_help:
       label: 'פורמט'
       title: 'למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך'
@@ -886,6 +889,9 @@ he:
     update_profile: 'עדכן פרופיל'
     deactivate_account: 'השבת חשבון'
     help_translate: "עזור לנו לתרגם את המערכת"
+  text_editor:
+    select_text_to_link: בחר טקסט לחיבור
+    insert_link: הכנס לינק
   change_picture_form:
     aria_label: 'שנה צורת התמונה'
     title: 'שנה תמונה'
@@ -1167,6 +1173,7 @@ he:
       app_update: 'גרסה חדשה של האפליקציה זמינה לעדכון'
       reload: 'טען מחדש'
   emoji_picker:
+    search: "בחר אימוג'י"
     no_emojis_found: "ללא נמצאו אימוג'ים ל-'{{term}}'!"
   authorized_apps_page:
     title: אפליקציות מורשות
@@ -1476,6 +1483,13 @@ he:
     score_created: סקר ניקוד נוצר
     score_updated: סקר ניקוד עודכן
   poll_meeting_form:
+    tool_tip_expanded: |
+        <p>השתמש בסקר זמן למציאת פניות של אנשים להיפגש.</p>
+        <p>הכנס רשימה של תאריכים או זמנים לזמן הפגישה.</p>
+        <p>משתתפים מסמנים את הזמנים בהם הם פנויים להגיע, או שהם יכולים להוסיף בשדה ההצהרה להסביר את הנסיבות, כך שהם יכולים לעדכן את האפשרויות, אם נדרש.</p>
+        <p>אם אתה מוסיף זמנים חדשים בזמן הסקר, אנשים שהצביעו כבר יקבלו הודעה לעדכן את תגובתם. </p>
+        <p>אתה יכול לראות מי פנוי מתי ולהחליט מתי תתקיים הפגישה.</p>
+        <p>הזמנים מעודכנים באופן אוטומטי לפי הזמן המקומי של המשתתף.</p>
     tool_tip_collapsed: מצא זמן להפגש
     start_header: התחל סקר זמן
     edit_header: ערוך סקר זמן
@@ -1493,36 +1507,240 @@ he:
         <p>דירוג בחירה היא שיטת הצבעה שמאפשרת לכל מצביע להגיב עם העתפותיהם לפי סדר.</p>
         <p>זוהי אפשרות מועדפת כאשר 'גניבת הצבעות' היא דאגה (ז"א, שתי אפשרויות פופולריות הן דומות מספיק כך שהן מתחלקות בהצבעות ביניהן), וניתנת לשימוש לצורך מימוש קונדורסה או בחירות בסגנון סיבוב שני מיידי.
         </p>
+    tool_tip_collapsed: דרג אפשרויות לפי הסדר
+    start_header: התחל דירוג הבחירה
+    edit_header: ערוך דרוג הבחירה
     tip: מצא מתי אנשים פנויים לפגישה
+    title_placeholder: 'לדוגמא: את מי תרצה כראש העיר?'
     details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
+    meeting_created: דירוג הבחירה נוצר
+    meeting_updated: דירוג הבחירה עודכן
     no_options: "לא הוספת עוד אף אפשרות."
+    add_option_placeholder: הזן בחירה חדשה
+    minimum_stance_choices: אפשרויות לדירוג
+    minimum_stance_choices_helptext: מספר האפשרויות כל מצביע יכול לדרג
+    ranked_choice_created: דירוג הבחירה נוצר
+    ranked_choice_updated: דירוג הבחירה עודכן
   poll_meeting_time_field:
+    new_time_slot: ' משבצת זמן חדשה'
     closing_hour: שעת סגירה
   poll_proposal_vote_form:
+    default_reason_placeholder: אנא נמק
+    abstain_reason_placeholder: תן לאנשים לדעת מדוע אתה משנה את החלטתך
+    agree_reason_placeholder: מה אתה אוהב בהצעה ואיך היא תועיל לקבוצה?
+    disagree_reason_placeholder: איך ההצעה הזו יכולה להשתפר כך שתסכים לתמוך בה?
+    block_reason_placeholder: הסבר את התנגדותך להצעה ולמה היא לא צריכה להתקדם
+    stance_created: הצבעה נוצרה
+    stance_updated: הצבעה עודכנה
     vote: הצבעה
   poll_proposal_options:
+    agree: בעד
     agree_verb: "מוסכם"
+    agree_meaning: הצעה זו טובה דיה להיות מאומצת ע"י הקבוצה
+    abstain: נמנע
     abstain_verb: "נמנע"
+    abstain_meaning: לא בטוח, לא יודע או לא אכפת לי. אני אתמוך בתוצאה בכל מקרה
+    disagree: נגד
     disagree_verb: "לא מסכים"
+    disagree_meaning: אני לא תומך בהצעה. היא לא צריכה להמשיך.
+    block: חסום
     block_verb: "נחסם"
+    block_meaning: תשומת הלב של הקבוצה נדרשת בדחיפות לנושא עמוק
   poll_count_options:
     'yes': 'כן'
     'no': 'לא'
+    yes_meaning: אני מתנדב, נותן את הסכמתי, או השלמתי את המשימה הנתונה
+    no_meaning: אני לא מסוגל לתרום או להשתתף בהחלטה זו
   poll_count_vote_form:
     reason_label: הודעה
+    reason_placeholder: השאר הודעה, אם תרצה
+    stance_created: הצבעה נוצרה
+    stance_updated: הצבעה עודכנה
+  poll_common_percent_voted:
+    sentence: "{{percent}}% החברים הצהירו את עמדתם ({{numerator}}/{{denominator}})"
+  poll_count_chart_panel:
+    out_of: מחוץ ל{{goal}}
   poll_meeting_chart_panel:
     total: סך הכל
+  poll_poll_vote_form:
+    stance_created: הצבעה נוצרה
+    stance_updated: הצבעה עודכנה
+  poll_meeting_vote_form:
+    can_attend: "יכול להופיע"
+    unable: "לא יכול"
+    if_need_be: אם נדרש
+    your_response: מתי תוכל להופיע?
+    stance_created: זמינות נשמרה
+    stance_updated: זמינות עודכנה
+    reason_placeholder: הסבר מתי אתה פנוי (או תפוס), במידה והכותב צריך להוסיף אפשרויות.
+  poll_dot_vote_vote_form:
+    dots_remaining: "{{count}} נקודות נותרו."
+    too_many_dots: השתמשת ביותר מידי נקודות.
+    stance_created: הצבעה נוצרה
+    stance_updated: הצבעה עודכנה
+  poll_ranked_choice_vote_form:
+    helptext: גרור את האפשרויות לפי סדר עדיפותם (כאשר 1 היא האפשרות המועדפת ביותר. {{count}} ההעדפות הראשונות יתועדו במערכת.
+    stance_created: בחירה תועדה במערכת
+    stance_updated: בחירה עודכנה
+  thread_item:
+    comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> בתגובה ל<strong>{{title}}</strong>"
+    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ערך את כותרת השיחה"
+    discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ערך את תוכן השיחה"
+    discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ערך את הקבצים המצורפים לשיחה"
+    discussion_privacy_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> עדכן את הגדרות הפרטיות של השיחה"
+    discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ערך את השיחה"
+    discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> העביר את השיחה מ<strong>{{title}}</strong>"
+    discussion_closed: "<strong><a href='u/{{username}}'>{{author}}</a></strong> סגר את השיחה"
+    discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> פתח מחדש את השיחה"
+    discussion_forked: "<strong><a href='u/{{username}}'>{{author}}</a></strong> יצר פיצול של שיחה: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
+    outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> שיתף את התוצאה עבור <strong>{{title}}</strong>"
+    poll_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> פתח מחדש את {{polltype}}: <strong>{{title}}</strong>"
+    poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> סגר את {{polltype}}: <strong>{{title}}</strong>"
+    poll_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> התחיל את {{polltype}}: <strong>{{title}}</strong>"
+    poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ערך את {{polltype}}: <strong>{{title}}</strong>"
+    poll_expired: "{{polltype}} נסגר: <strong>{{title}}</strong>"
+    stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> הצביע על: <strong>{{title}}</strong>"
+    event_removed: "הוסר מהשיחה"
+  poll_admin_page:
+    title: אדמין (מנהל) - {{title}}
+  poll_common_publish_facebook_preview:
+    shared_a: שיתף את
+    link: לינק
+    just_now: ממש עכשיו
+  poll_common_publish_slack_preview:
+    poll_published: "פרסם סקר:"
+    poll_published_with_discussion: "פרסם סקר ב<strong>{{discussion}}</strong>:"
+    view_it_on_loomio: צפה באתר {{site_name}}
+    timestamp: היום ב{{timestamp}}
   poll_common_subscribe_form:
+    receive_updates_title: הצבעתך תועדה ונשמרה במערכת
+    receive_updates_helptext: אם ברצונך לקבל מייל על התוצאה של סקר זה, הכנס את המייל שלך למטה
+    email_saved: אתה תקבל מייל על תוצאת סקר זה
     subscribe: מינוי
+    no_thanks: לא תודה
+  poll_common_example_card:
+    what_is_this: "זוהי דוגמא חיה של {{type}}. אתה משתתף - נסה אותה!"
+  share_poll_page:
+    title: שתף סקר - {{title}}
   polls_page:
     heading: דיונים
+    heading_with_group: החלטות ב{{name}}
+    search_placeholder: חפס סקרים...
+    polls_count: הצג {{count}} של {{total}} הסקרים
     start_new_poll: החלטה חדשה
+    filter_placeholder: (כל הסקרים)
+    groups_placeholder: (כל הקבוצות)
   auth_form:
+    sign_in_to_loomio: התחבר ל{{site_name}}
+    sign_in: התחבר
+    continue: המשך
+    sign_in_as: הרשם כ{{name}}
+    continue_with_provider: המשך עם {{provider}}
+    continue_with_email: המשך עם המייל
+    or_enter_your_email: או, הכנס את המייל שלך
+    invitation_required: חשבון לא נמצא. חשבונות חדשים הם לפי הזמנה בלבד.
+    more_providers: עוד
+    email_not_present: כתובת מייל נדרשת כאן
+    invalid_email: "סליחה, אבל זה לא נראה כמו כתובת מייל תקינה"
+    invalid_password: "סליחה, סיסמה זו לא תואמת לזו שבמערכת"
+    invalid_token: "סליחה, אנחנו לא מסוגלים להשתמש בטוקן הזה כדי להכניס אותך. לחץ למטה לשלוח עוד אחד."
+    account_locked: "חשבונך ננעל אחרי נסיונות כושלים רבים מידי. בדוק במייל שלך לינק לביטול הנעילה"
+    email_not_found: "סליחה, לא מצאנו חשבון עם כתובת המייל הזו"
+    email_placeholder: you@example.com
+    login_with_token: 'אתה מוכן ומזומן! לחץ על הלינק למטה להמשיך. '
+    login_link_helptext: לחץ על הכפתור למטה ואנחנו נשלח לך לינק להתחברות.
+    login_link_helptext_with_password: "הכנס את סיסמתך, או הרשם דרך המייל."
+    check_spam_folder: אם המייל לא מגיע אליך בקרוב, בדוק בתיקיית הספאם.
+    sign_up_helptext: אנא השלם טופס זה ליצירת חשבון משתמש
+    i_accept: "אני מאשר את <a href='{{termsUrl}}' target='_blank'>תנאי השימוש</a> ואת <a href='{{privacyUrl}}' target='_blank'>מדיניות הפרטיות</a>"
+    name_required: אנה הכנס שם
+    terms_required: עליך לאשר את תנאי השימוש
+    account_inactive: אוי, נראה שהחשבון עבור {{email}} אינו פעיל!
+    privacy_notice: "מידע אישי נאסף בעת שימוש ב{{siteName}}. <br/> קרא את <a href='{{privacyUrl}}' target='_blank'>מדיניות הפרטיות</a> כדי ללמוד עוד את הנושא."
+    welcome: חדש ב{{siteName}}?
+    welcome_back: ברוך השב, {{name}}!
+    login_link: הרשם עם המייל
     set_password: הגדר סיסמה
+    set_password_helptext: תרצה להשתמש בסיסמה בפעם הבאה?
+    hello: "שלום, {{name}}!"
+    new_to_loomio: פעם ראשונה ב{{site_name}}? צור חשבון
+    create_account: צור חשבון
+    already_a_user: השתמשת ב{{site_name}} בעבר? הכנס את כתובת המייל בה השתמשת בפעם האחרונה לחיבורה.
+    link_accounts: חבר חשבונות
+    check_your_email: בדוק את המייל שלך!
+    login_link_sent: "שלחנו לך מייל ל{{email}}."
+    instructions: "לחץ על הלינק להתחברות, או הכנס את הקוד המופיע מטה:"
+    too_many_attempts: "יותר מידי ניסיונות; נסה ללחוץ על הלינק במייל כדי להתחבר."
+    invalid_code: "סליחה, קוד זה לא תואם. בדוק את המייל ונסה שוב."
+    password_link_sent: "שלחנו לך מייל ל{{email}} עם הנחיות איך לאפס את סיסמתך."
+    signed_in: התחברת בהצלחה
+    email_verified: כתובת המייל אומתה בהצלחה
     name: שם
     email: דואר אלקטרוני
+    password: סיסמה
+    reactivate: אקטב מחדש את החשבון
   install_slack:
+    modal_title: התקן Slack
+    modal_helptext: ראשית כל, עליך להתחבר לסלאק. אנחנו נעביר אותך לשם אוטומטית עוד שניה, או שאתה יכול ללחוץ על הכפתור למטה להמשיך.
+    login_to_slack: התחבר לSlack
+    card:
+      install_title: קשר לSlack
+      install_helptext: הבוט של לומיו מודיע לצוות הSlack שלך על דיונים והחלטות בלומיו. אתה יכול גם להתחיל החלטות ולהצביע עליהם מתוך Slack.
+      installed_title: מקושר לSlack
+      installed_helptext: קבוצה זו מחוברת לצוות סלאק<strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. אירועים בקבוצה יופיעו בערוץ <strong>{{channel}}</strong>.
+      install_slack: קשר את Slack
+      remove_identity: הסר אינטגרציה זו
+      confirm_remove_title: הסר אינטגרציה עם סלאק
+      confirm_remove_helptext: |
+          הערוץ Slack שלך לא יקבל עוד עדכונים על קבוצה זו.
+          אתה תמיד יכול לחזור ולהוסיף אותה שוב.
+      identity_removed: אינטגרציה הוסרה
     progress:
+      install: התקן
       invite: הזמן
+      decide: החלט
+    install:
+      heading: 'שלב 1: בחר את קבוצת הלומיו לאינטגרציה'
+      tooltip_heading: לומיו וSlack עובדים מעולה ביחד
+      it_does_this: משוך את תשומת לב המשתמשים איפה שהם
+      and_also_this: התחל סקרים מייד וקבל פידבק בזמן אמת
+      and_also_also_this: תן לאנשים לדעת את התוצאה ואיטרציה של מחשבותיך במהרה
+      add_to_group_helptext: בחר קבוצה לממשק לסלאק
+      create_new_group_helptext: אין לך קבוצת לומיו? הכנס שם ונייצר לך אחת בשבילך בקלות
+      group_name: שם הקבוצה
+      group_name_placeholder: תן שם לקבוצה החדשה
+      slack_installed: סלאק הותקן
+      install_slack: התקן סלאק עכשיו
+      start_new_group: התחל קבוצה חדשה
+      use_existing_group: השתמש בקבוצה קיימת
     invite:
+      heading: 'שלב 2: הגדר ערוץ סלאק'
+      helptext: |
+          הצלחה! עכשיו בחר ערוץ שתרצה להכניס עדכונים לתוכו.
+      select_a_channel: בחר ערוץ
+      publish_group: פרסם הודעת פתיחה
+      publish_group_helptext_on: אנחנו נפרסם הודעה לתוך ערוץ זה כדי להדריך אנשים איך להשתמש בבוט של לומיו.
+      publish_group_helptext_off: אנחנו לא נפרסם כלום עד שתייצר סקר.
       custom_message: הודעה אישית
+      set_channel: הגדר ערוץ
+    decide:
+      heading: 'שלב 3: קבלו החלטה יחדיו'
+      helptext: "עכשיו כשהכל מוכן, הגיע הזמן להתחיל לקבל החלטות. בחר באחת מהאפשרויות הבאות:"
+    common:
+      do_it_later: אני אעשה זאת אחר כך
+  browser_warning:
+    message: "חשוב מאוד! אתה משתמש בגרסת דפדפן ישנה ({{name}} {{version}}) שלא נתמכת ע\"י {{site}}."
+    link: אנא החלף לדפדפן אחר
+  slack_added_modal:
+    title: הצלחה!
+    helptext: |
+        הוספת את הSlack בהצלחה לקבוצה <strong>{{name}}</strong>.
+        עכשיו, כשמישהו יפתח סקר בקבוצה, תהיה להם האפשרות
+        לפרסם עדכונים על הסקר בתוך הערוץ של צוות הSlack שלך.
+    start_poll_now: קבל החלטה עכשיו
+  powered_by:
+    powered_by_loomio: מופעל ע"י לומיו
+    privacy_policy: מדיניות פרטיות
+    terms_of_service: תנאי שימוש
+    front_page: עמוד ראשי
