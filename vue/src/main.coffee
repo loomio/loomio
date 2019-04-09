@@ -8,6 +8,8 @@ import AppConfig from '@/shared/services/app_config'
 import moment from 'moment-timezone'
 import marked from '@/marked.coffee'
 import vuetify from '@/vuetify.coffee'
+import _forEach from 'lodash/forEach'
+import _camelCase from 'lodash/camelCase'
 
 import './registerServiceWorker'
 
@@ -26,6 +28,11 @@ bootDat (appConfig) ->
     # pluginConfigFor: pluginConfigFor
 
   window.Loomio = AppConfig
+
+  _forEach Loomio.records, (recordInterface, k) ->
+    model = Object.getPrototypeOf(recordInterface).model
+    if model && AppConfig.permittedParams[model.singular]
+      model.serializableAttributes = AppConfig.permittedParams[model.singular]
 
   fetch('/api/v1/translations?lang=en&vue=true').then (res) ->
     res.json().then (data) ->
