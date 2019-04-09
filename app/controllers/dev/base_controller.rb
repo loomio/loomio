@@ -26,4 +26,11 @@ class Dev::BaseController < ApplicationController
     BaseMailer.skip { yield }
   end
 
+  def redirect_to(path)
+    if params[:vue]
+      super "http://localhost:8080#{URI(path).path}"
+    else
+      super
+    end
+  end
 end
