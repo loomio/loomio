@@ -53,12 +53,10 @@ before_script:
   - createdb loomio_test
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
-  - bundle exec rake client:build
-  - bundle exec rake travis:cc_reporter
   - bundle exec rails server -b 0.0.0.0 > /dev/null &
 
 script:
-  - if [ "$TASK" = "rspec" ];   then bundle exec rspec ; fi
+  - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
   - if [ "$TASK" = "e2e" ];     then bundle exec rake travis:e2e; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
