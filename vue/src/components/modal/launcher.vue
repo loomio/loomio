@@ -27,6 +27,12 @@ export default
 
 <template lang="pug">
 v-dialog(v-model="isOpen")
-  component(:is="componentName" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
+  modal-template(title="placeholder title")
+    template(v-slot:content)
+      component(:is="componentName" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
+    template(v-slot:actions)
+      span action 1
+      span action 2
+      span action 3
 
 </template>
