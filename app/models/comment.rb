@@ -6,11 +6,13 @@ class Comment < ApplicationRecord
   include HasDrafts
   include HasCreatedEvent
   include HasEvents
+  include HasRichText
 
   has_paper_trail only: [:body]
 
   is_translatable on: :body
   is_mentionable  on: :body
+  is_rich_text    on: :body
 
   belongs_to :discussion
   has_one :group, through: :discussion
@@ -27,7 +29,6 @@ class Comment < ApplicationRecord
   validate :has_body_or_document
   validate :parent_comment_belongs_to_same_discussion
   validate :documents_owned_by_author
-  validates :body, {length: {maximum: Rails.application.secrets.max_message_length}}
 
   default_scope { includes(:user).includes(:documents).includes(:discussion) }
 
@@ -94,6 +95,7 @@ class Comment < ApplicationRecord
   end
 
   private
+
   def documents_owned_by_author
     return if documents.pluck(:author_id).select { |user_id| user_id != user.id }.empty?
     errors.add(:documents, "Attachments must be owned by author")

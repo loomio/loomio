@@ -10,9 +10,8 @@ module Ability::Membership
 
     can [:make_admin], ::Membership do |membership|
       user_is_admin_of?(membership.group_id) ||
-      (user_is_member_of?(membership.group_id) &&
-       membership.user == user &&
-       membership.group.admin_memberships.count == 0)
+      (user_is_member_of?(membership.group_id) && membership.user == user && membership.group.admin_memberships.count == 0) ||
+      (user_is_admin_of?(membership.group.parent_id) && user == membership.user)
     end
 
     can :resend, ::Membership do |membership|

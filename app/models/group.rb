@@ -17,6 +17,8 @@ class Group < ApplicationRecord
   has_many :comments, through: :discussions
 
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
+  has_many :all_members, through: :all_memberships, source: :user
+  
   has_many :memberships, -> { where archived_at: nil }
   has_many :members, through: :memberships, source: :user
 
@@ -43,7 +45,7 @@ class Group < ApplicationRecord
 
   define_counter_cache(:polls_count)               { |group| group.polls.count }
   define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
-  define_counter_cache(:memberships_count)         { |group| group.memberships.active.count }
+  define_counter_cache(:memberships_count)         { |group| group.memberships.count }
   define_counter_cache(:pending_memberships_count) { |group| group.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
 

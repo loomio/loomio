@@ -85,35 +85,24 @@ ActiveAdmin.register User do
   end
 
   member_action :login_as, :method => :get do
-    user = User.friendly.find(params[:id])
-    token = user.login_tokens.create
-    redirect_to login_token_url(token.token)
+    @user = User.friendly.find(params[:id])
+    @token = @user.login_tokens.create
   end
 
   show do |user|
-    if user.deactivated_at.nil?
-      panel("Deactivate") do
-        if user.ability.can? :deactivate, user
-          button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
-        else
-          div "This user can't be deactivated because they are the only coordinator of the following groups:"
-          table_for user.adminable_groups.where(type: "FormalGroup").published.select{|g| g.admins.count == 1}.each do |group|
-            column :id
-            column :name do |group|
-              link_to group.name, admin_group_path(group)
-            end
-          end
-        end
-      end
-    else
-      panel("This user account has been deactivated") do
-        button_to 'Reactivate User', reactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to reactivate this user?'}
-      end
-    end
-
     attributes_table do
       user.attributes.each do |k,v|
         row k.to_sym
+      end
+    end
+
+    if user.ability.can? :deactivate, user
+      panel("Deactivate") do
+        button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
+      end
+    else
+      panel("Reactivate") do
+        button_to 'Reactivate User', reactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to reactivate this user?'}
       end
     end
 
@@ -124,6 +113,15 @@ ActiveAdmin.register User do
           link_to group.full_name, admin_group_path(group)
         end
         column :admin
+      end
+    end
+
+    panel("Identities") do
+      table_for user.identities.each do |m|
+        column :identity_type
+        column :uid
+        column :name
+        column :email
       end
     end
 
@@ -140,7 +138,7 @@ ActiveAdmin.register User do
     end
 
     panel 'login as user' do
-      a href: login_as_admin_user_path(user) do
+      a(href: login_as_admin_user_path(user), target: "_blank") do
         "Login as #{user.name}"
       end
     end

@@ -4,6 +4,14 @@ class API::DiscussionsController < API::RestfulController
   include UsesPolls
   include UsesFullSerializer
 
+  def tags
+    instantiate_collection do |collection|
+      collection.sorted_by_latest_activity.joins(:discussion_tags)
+      .where('discussion_tags.tag_id': load_and_authorize(:tag).id)
+    end
+    respond_with_collection
+  end
+
   def show
     load_and_authorize(:discussion)
     respond_with_resource
@@ -86,6 +94,9 @@ class API::DiscussionsController < API::RestfulController
   end
 
   private
+  def default_scope
+    super.merge(tag_cache: DiscussionTagCache.new(Array(resource || collection)).data)
+  end
 
   def track_visit
     VisitService.record(group: resource.group, visit: current_visit, user: current_user)
@@ -117,5 +128,4 @@ class API::DiscussionsController < API::RestfulController
   def collection_for_inbox(collection)
     collection.recent.not_muted.unread.sorted_by_latest_activity.includes(:group, :author)
   end
-
 end

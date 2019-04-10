@@ -1,4 +1,6 @@
 ar:
+  loomio_tags:
+    name_label: 'الاسم '
   common:
     confirm_discard_changes: إلغاء التغييرات؟
     time:
@@ -96,11 +98,6 @@ ar:
       comments: 'التعليقات'
   membership_dropdown:
     cancel_invitation: إلغاء الدعوة
-  start_menu:
-    start_group: 'إبدأ مجموعة'
-    start_subgroup: 'إبدأ مجموعة فرعية'
-    start_thread: 'إبدأ موضوعاً'
-    invite_people: 'قم بدعوة أشخاص'
   notifications:
     header: "تبليغات"
     publish_outcome: "قم بنشر النتيجة"
@@ -468,7 +465,6 @@ ar:
     messages:
       reload: 'إعادة تحميل'
   emoji_picker:
-    search: "إيجاد رموز تعبيرية"
     no_emojis_found: "لم يتم إيجاد أي رموز تعبيرية ل'{{term}}'!"
   authorized_apps_page:
     title: التطبيقات المخولة

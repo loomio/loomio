@@ -19,3 +19,4 @@ If you want to get in touch with us, send an email: [contact@loomio.org](mailto:
 [Facebook](https://facebook.com/Loomio) [Twitter](https://twitter.com/Loomio)
 
 Loomio is free software released under the [GNU Affero General Public License](LICENSE.txt)
+

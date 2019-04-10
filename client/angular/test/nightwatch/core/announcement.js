@@ -85,19 +85,19 @@ module.exports = {
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
-  'outcome_created': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('test_proposal_poll_closed', { controller: 'polls' })
-    page.click('.poll-common-set-outcome-panel__submit')
-    page.fillIn('.poll-common-outcome-form__statement textarea', 'Immannounce all yall')
-    page.click('.poll-common-outcome-form__submit')
-    page.expectText('.flash-root__message', 'Outcome created')
-    page.expectElement('.announcement-form')
-    page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
-    page.expectText('.announcement-chip__content', 'test@example.com')
-    page.click('.announcement-form__submit')
-    page.pause(3000)
-    page.expectText('.flash-root__message', '1 notifications sent', 6000)
-  }
+  // 'outcome_created': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('test_proposal_poll_closed', { controller: 'polls' })
+  //   page.click('.poll-common-set-outcome-panel__submit')
+  //   page.fillIn('.poll-common-outcome-form__statement textarea', 'Immannounce all yall')
+  //   page.click('.poll-common-outcome-form__submit')
+  //   page.expectText('.flash-root__message', 'Outcome created')
+  //   page.expectElement('.announcement-form')
+  //   page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
+  //   page.expectText('.announcement-chip__content', 'test@example.com')
+  //   page.click('.announcement-form__submit')
+  //   page.pause(3000)
+  //   page.expectText('.flash-root__message', '1 notifications sent', 6000)
+  // }
 }

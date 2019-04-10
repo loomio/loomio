@@ -1,4 +1,6 @@
 vi:
+  loomio_tags:
+    name_label: Tên
   common:
     group: 'Nhóm'
     groups: 'Các nhóm'

@@ -1,4 +1,28 @@
 en:
+  current_plan_button:
+    upgrade: Upgrade
+    tooltip: Purchase a loomio plan to invite more people and start more threads.
+
+  loomio_tags:
+    tags: Tags
+    apply_tags: Apply tags
+    new_tag: Create tag
+    name_label: Name
+    color_label: Color
+    card_title: Category Tags
+    modal_title: Create a new tag
+    modal_edit_title: Edit tag
+    modal_destroy_title: Remove tag
+    destroy_tag: Remove tag
+    destroy_helptext: This will destroy this tag and remove it from all threads in the group. Are you sure?
+    helptext: Tags allow you to categorize conversations and easily find them later
+    discussions_count_singular: ({{count}} thread)
+    discussions_count_plural: ({{count}} threads)
+    tag_created: Tag saved
+    tag_destroyed: Tag removed
+    tags_marked: Threads marked '{{name}}' in {{groupName}}
+    no_tags_present: No threads were found with that tag! Try selecting another one.
+
   reactions:
     slight_smile: Like
     heart: Love
@@ -53,6 +77,7 @@ en:
     not_found: Not found
     time_zone: Time zone
     local_time: Local time
+    attachments: Attachments
     confirm_discard_changes: Discard your changes?
     time:
       am: am
@@ -63,6 +88,8 @@ en:
     notification_volume: 'Notification Volume'
     group: 'Group'
     groups: 'Groups'
+    organization: "Organization"
+    organizations: "Organizations"
     threads: 'Threads'
     decisions: 'Decisions'
     settings: 'Settings'
@@ -117,7 +144,7 @@ en:
       uploading: 'Uploading'
       load_more: 'Load More'
       share: Share
-      ok: Ok!
+      ok: Ok
       retry: Retry
       done: Done
       start: Start
@@ -133,6 +160,7 @@ en:
       resent: Invitation resent
       export: Export
       fork: Fork
+      apply: Apply
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
@@ -289,7 +317,7 @@ en:
     recent_threads: 'Recent threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
-    start_group: 'New group'
+    start_group: 'New organization'
     explore: 'Public groups'
     start_thread: New thread
     start_decision: New decision
@@ -346,15 +374,6 @@ en:
       group: "Remove from group"
       poll: 'Remove from {{pollType}}'
     cancel_invitation: Cancel invitation
-
-  start_menu:
-    label: 'User actions'
-    title: 'Action'
-    start_group: 'Start Group'
-    start_subgroup: 'Start Subgroup'
-    start_thread: 'Start Thread'
-    start_poll: 'Start Poll'
-    invite_people: 'Invite People'
 
   notification_models:
     discussion: 'thread: '
@@ -443,6 +462,14 @@ en:
       non_voters: People who have not voted
 
     form:
+      too_many_invitations: |
+        Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
+      no_invitations_remaining: |
+        <p>You have used all {{maxMembers}} invitations available to this group.</p>
+        <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
+
+      invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
+
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?
@@ -513,6 +540,7 @@ en:
     comment_copied: Comment URL copied to clipboard
     poll_copied: Decision URL copied to clipboard
     discussion_copied: Thread URL copied to clipboard
+    tag_thread: Manage tags
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -609,11 +637,14 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
-      export_data: 'Export Group Data'
+      export_data: Export Group Data
+      export_data_as_json: Export Group Data as JSON
+      export_data_as_csv: Export Group Data as CSV
+      export_data_as_html: Export Group Data as HTML
       manage_members: 'Manage Members'
       add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
-      email_settings: 'Email settings'
+      email_settings: 'Email Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
     volume:
@@ -940,6 +971,10 @@ en:
     deactivate_account: 'Deactivate account'
     help_translate: "Help us translate Loomio"
 
+  text_editor:
+    select_text_to_link: Select some text to link
+    insert_link: Insert link
+
   change_picture_form:
     aria_label: 'Change picture form'
     title: 'Change picture'
@@ -1068,6 +1103,12 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
 
   discussion:
+    max_threads_reached: |
+      <p>You have used all {{maxThreads}} threads available to this group.</p>
+      <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
+    subscription_canceled: |
+      <p>Sorry! Your subscription is not active.</p>
+      <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
     activity: 'Activity'
     activity_placeholder: 'No activity yet!'
     load_previous: 'Load earlier activity'
@@ -1205,7 +1246,7 @@ en:
   contact_message_form:
     title: "Hi there! How can we help?"
     read_the_manual: |
-      Have you seen our <a href="{{link}}" target="_blank">Help Manual</a>? We update it regularly with frequently asked questions.
+      Have you seen our <a href="{{link}}" target="_blank">Help Manual</a>? We update it regularly with frequently asked questions and answers.
     contact_us_email: "You can also email us: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contact Us'
     name_label: 'Your name'
@@ -1219,6 +1260,10 @@ en:
     message_placeholder: 'If requesting support please try to provide as much information as you can.'
     send_message: 'Send Message'
     new_contact_message: "Thanks for getting in touch; we'll get back to you soon!"
+    consent_message: |
+      By contacting us you consent to our staff accessing your account as necessary. <br />
+      Our support team speak English and will translate your message with Google Translate if required. <br />
+      We aim to respond to all messages within 24 hours.
     success: "Thanks for your message, {{name}}. You'll hear back from us soon."
 
   hint:
@@ -1241,7 +1286,7 @@ en:
       reload: 'Reload'
 
   emoji_picker:
-    search: "Find an emoji..."
+    search: "Pick your emoji…"
     no_emojis_found: "No emojis found for '{{term}}'!"
 
   authorized_apps_page:
@@ -1296,6 +1341,7 @@ en:
     proposal_title: Proposal
     count_title: Check
     poll_title: Poll
+    score_title: Score poll
     dot_vote_title: Dot Vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
@@ -1774,6 +1820,7 @@ en:
     invalid_email: "Sorry, that doesn't look like a valid email address"
     invalid_password: "Sorry, that password doesn't match the one we have on file"
     invalid_token: "Sorry, we weren't able to use that token to log you in. Click below to send another one."
+    account_locked: "Your account has been locked after too many failed login attempts. Check your email for an unlock link"
     email_not_found: "Sorry, we couldn't find an account with that email address"
     email_placeholder: you@example.com
     login_with_token: You're all set! Click the link below to continue.

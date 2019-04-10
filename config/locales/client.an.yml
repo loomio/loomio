@@ -1,4 +1,6 @@
 an:
+  loomio_tags:
+    name_label: Nombre
   common:
     time:
       am: am

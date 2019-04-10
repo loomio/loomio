@@ -4,7 +4,7 @@
 #
 # It is not a standalone image.
 #
-FROM ruby:2.6.0
+FROM ruby:2.6.1
 ENV REFRESHED_AT 2018-07-17
 
 RUN gem update --system
@@ -35,6 +35,11 @@ ENV DISABLED_PLUGINS loomio_onboarding
 WORKDIR /loomio/client
 RUN npm install
 RUN npm rebuild node-sass
+WORKDIR /loomio
+
+WORKDIR /loomio/vue
+RUN npm install
+RUN npm run build
 WORKDIR /loomio
 
 EXPOSE 3000

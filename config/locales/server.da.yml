@@ -14,10 +14,6 @@ da:
     motion:
       must_close_in_future: Forlag skal lukkes frem i tiden.
       one_at_a_time: Der er en andet aktivt forslag.
-  subscriptions:
-    gift_plan_selected_for_group_html: |
-        <h1>Succes.</h1>
-        <p>Du har valgt den gratis abonnements ordning for din gruppe <a href="/g/%{group_key}">%{group}</a></p>
   email:
     reset_password:
       greeting: |+

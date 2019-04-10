@@ -1,8 +1,0 @@
-[main]
-host = https://www.transifex.com
-
-[loomio-1.loomio_tags]
-file_filter = config/locales/loomio_tags.<lang>.yml
-source_file = config/locales/loomio_tags.en.yml
-source_lang = en
-type = YAML

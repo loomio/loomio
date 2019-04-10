@@ -70,6 +70,7 @@ namespace :deploy do
       "find public/img/emojis -name '*.png' | xargs git add -f",
       "git add -f plugins",
       "git add public/client/#{loomio_version} -f",
+      "git add public/client/webpack -f",
       "git add public/service-worker.js -f",
       "git commit -m 'Add compiled assets / plugin code'",
       "git checkout master")
@@ -116,6 +117,6 @@ end
 def run_commands(*commands)
   Array(commands).compact.each do |command|
     puts "\n-> #{command}"
-    return false unless system(command)
+    raise "command failed: #{command}" unless system(command)
   end
 end

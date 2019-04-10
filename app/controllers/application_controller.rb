@@ -23,10 +23,27 @@ class ApplicationController < ActionController::Base
   # this boots the angular app
   def index
     expires_now
-    render 'application/index', layout: false
+    prevent_caching
+
+    if current_user.is_logged_in? && current_user.experiences['vue_client']
+      render 'application/vue', layout: false
+    else
+      render 'application/index', layout: false
+    end
+  end
+
+  def crowdfunding
+    render layout: 'basic'
   end
 
   def ok
     head :ok
+  end
+
+  protected
+  def prevent_caching
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate' # HTTP 1.1.
+    response.headers['Pragma'] = 'no-cache' # HTTP 1.0.
+    response.headers['Expires'] = '0' # Proxies.
   end
 end

@@ -1,4 +1,6 @@
 mi:
+  loomio_tags:
+    name_label: Ingoa
   reactions:
     slight_smile: Rawe
   poll_types:
@@ -128,13 +130,6 @@ mi:
     sign_in: 'Takiuru mai'
   membership_dropdown:
     invitation_resent: "Kua tukua anō te pōwhiri"
-  start_menu:
-    title: 'Mahi'
-    start_group: 'Whakatūhia tētahi rōpū hou'
-    start_subgroup: 'Whakatūhia tētahi rōpū kei roto'
-    start_thread: 'Pānuihia tētahi miro hou'
-    start_poll: 'Whakatūhia tētahi pōti hou'
-    invite_people: 'Pōwhiri atu'
   notifications:
     header: "Ngā kōrero pūrongo"
     no_notifications: "Kāhore he kōrero pūrongo mōku"

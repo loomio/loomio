@@ -9,6 +9,9 @@ nl_NL:
   errors:
     messages:
       spoofed_media_type: De inhoud van dat bestand komt niet overeen met de bestandsnaam
+  user:
+    error:
+      bad_login: "Mijn excuses, het wachtwoord komt niet overeen met degene die we hebben"
   attachment:
     error:
       too_large: Het bestand dat je probeerde bij te voegen is groter dan 100 Megabyte, gelieve een kleiner bestand te kiezen.
@@ -42,11 +45,6 @@ nl_NL:
     motion:
       must_close_in_future: '''Voorstel'' moet in de toekomst sluiten.'
       one_at_a_time: Er is een ander 'Voorstel' actief.
-  subscriptions:
-    gift_plan_selected_for_group_html: |+
-        <h1>Succes.</h1>
-        <p>Je hebt voor je groep het Gratis pakket geselecteerd <a href="/g/%{group_key}">%{group}</a></p>
-
   user_mailer:
     accounts_merged:
       subject: "Je gebruikersaccounts van %{site_name} werden samengevoegd."

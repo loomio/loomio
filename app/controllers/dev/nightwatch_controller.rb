@@ -14,6 +14,7 @@ class Dev::NightwatchController < Dev::BaseController
   include Dev::Scenarios::Membership
   include Dev::Scenarios::Notification
   include Dev::Scenarios::Profile
+  include Dev::Scenarios::Tags
   # include Dev::Scenarios::Legacy
 
   before_action :cleanup_database, except: [

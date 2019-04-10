@@ -1,4 +1,23 @@
 zh_TW:
+  loomio_tags:
+    tags: 標籤
+    apply_tags: 套用標籤
+    new_tag: 建立標籤
+    name_label: 名稱
+    color_label: 顏色
+    card_title: 分類標籤
+    modal_title: 建立新標籤
+    modal_edit_title: 編輯標籤
+    modal_destroy_title: 移除標籤
+    destroy_tag: 移除標籤
+    destroy_helptext: 這將會破壞這個標籤並將其從所有在此群組中的討論串中移除。您確定嗎？
+    helptext: 標籤讓您可以分類討論，就可以較容易地在稍後找到它們
+    discussions_count_singular: （{{count}} 個討論串）
+    discussions_count_plural: （{{count}} 個討論串）
+    tag_created: 標籤已儲存
+    tag_destroyed: 標籤已移除
+    tags_marked: 討論串已標記為在 {{groupName}} 中的 '{{name}}'
+    no_tags_present: 找不到有該標籤的討論串！嘗試選取其他的。
   reactions:
     slight_smile: 讚
     heart: 愛
@@ -51,6 +70,7 @@ zh_TW:
     not_found: 找不到
     time_zone: 時區
     local_time: 本地時間
+    attachments: 附件
     confirm_discard_changes: 丟棄您的變更？
     time:
       am: am
@@ -61,6 +81,8 @@ zh_TW:
     notification_volume: '通知音量'
     group: '群組'
     groups: '群組'
+    organization: "組織"
+    organizations: "組織"
     threads: '討論串'
     decisions: '決策'
     settings: '設定'
@@ -114,7 +136,7 @@ zh_TW:
       uploading: '正在上傳'
       load_more: '載入更多'
       share: 分享
-      ok: 確定！
+      ok: 好
       retry: 重試
       done: 完成
       start: 啟動
@@ -130,6 +152,7 @@ zh_TW:
       resent: 重新傳送邀請
       export: 匯出
       fork: 分支
+      apply: 套用
     formatting_help:
       label: '格式化'
       title: '學習如何使用 Markdown 來格式化您的文字'
@@ -270,7 +293,7 @@ zh_TW:
     recent_threads: '最近的討論串'
     unread_threads: '未讀的討論串 ({{count}})'
     muted_threads: '已靜音的討論串'
-    start_group: '新增群組'
+    start_group: '新組織'
     explore: '公開群組'
     start_thread: 新討論串
     start_decision: 新決策
@@ -323,14 +346,6 @@ zh_TW:
       group: "自群組移除"
       poll: '自 {{pollType}} 移除'
     cancel_invitation: 取消邀請函
-  start_menu:
-    label: '使用者動作'
-    title: '動作'
-    start_group: '啟動群組'
-    start_subgroup: '啟動子群組'
-    start_thread: '啟動討論串'
-    start_poll: '啟動投票'
-    invite_people: '邀請夥伴'
   notification_models:
     discussion: '討論串：'
     comment: '評論於'
@@ -410,6 +425,12 @@ zh_TW:
       voters: 已經投票的夥伴
       non_voters: 尚未投票的夥伴
     form:
+      too_many_invitations: |
+          已超過邀請限制。<a href="{{upgradeUrl}}" target="_blank">升級</a>
+      no_inivtations_remaining: |
+          <p>您目前訂閱的計畫已無剩餘的邀請數。</p>
+          <p>請<a href="{{upgradeUrl}}" target="_blank">升級</a>以傳送更多邀請。</p>
+      invitations_remaining: '剩餘 {{count}} 個邀請。<a href="{{upgradeUrl}}" target="_blank">升級</a>'
       group_announced:
         title: 邀請至群組
         helptext: 您想要邀請誰到群組中？
@@ -479,6 +500,7 @@ zh_TW:
     comment_copied: 評論的 URL 已複製到剪貼簿
     poll_copied: 決策 URL 已複製到剪貼簿
     discussion_copied: 討論串 URL 已複製到剪貼簿
+    tag_thread: 管理標籤
   cover_photo_form:
     aria_label: '變更封面照片表單'
     heading: '新的封面圖片'
@@ -566,7 +588,10 @@ zh_TW:
     options:
       label: '選項'
       edit_group: '編輯群組設定'
-      export_data: '匯出群組資料'
+      export_data: 匯出群組資料
+      export_data_as_json: 將群組資料匯出為 JSON
+      export_data_as_csv: 將群組資料匯出為 CSV
+      export_data_as_html: 將群組資料匯出為 HTML
       manage_members: '管理成員'
       add_subgroup: '新增子群組'
       manage_subscription: '管理群組訂閱'
@@ -865,6 +890,9 @@ zh_TW:
     update_profile: '更新簡歷'
     deactivate_account: '凍結帳號'
     help_translate: "協助我們翻譯 Loomio"
+  text_editor:
+    select_text_to_link: 選取要連結的文字
+    insert_link: 插入連結
   change_picture_form:
     aria_label: '變更照片表單'
     title: '變更照片'
@@ -985,6 +1013,12 @@ zh_TW:
       or: 或者
       join_group: <a href="/explore">加入</a>群組以觀看討論串。
   discussion:
+    max_threads_reached: |
+        <p>抱歉！因為您的群組是試用計畫，所以無法開始另一個討論串。</p>
+        <p>請<a href="{{upgradeUrl}}" target="_blank">升級</a>以繼續使用 Loomio。</p>
+    subscription_canceled: |
+        <p>抱歉！您的訂閱不活躍。</p>
+        <p>請<a href="{{upgradeUrl}}" target="_blank">升級</a>以繼續使用 Loomio。</p>
     activity: '動態'
     activity_placeholder: '尚無動態！'
     load_previous: '載入更早的動態'
@@ -1104,7 +1138,7 @@ zh_TW:
   contact_message_form:
     title: "嗨，您好！我們可以怎麼協助您？"
     read_the_manual: |
-        您看過我們的<a href="{{link}}" target="_blank">說明手冊</a>了嗎？我們會用常見問題定期更新它。
+        您已經看過我們的<a href="{{link}}" target="_blank">說明手冊</a>了嗎？我們會定期更新常見問題與答案。
     contact_us_email: "您也可以寄電子郵件給我們：<a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: '聯絡我們'
     name_label: '您的大名'
@@ -1118,6 +1152,10 @@ zh_TW:
     message_placeholder: '若請求支援請嘗試提供盡可能多的資訊給我們。'
     send_message: '寄送訊息'
     new_contact_message: "感謝您聯絡我們；我們會盡快回覆您！"
+    consent_message: |
+        聯絡我們即代表您同意我們的員工在必要的時候存取您的帳號。<br />
+        我們的支援團隊會說英語，並會在必要的時候使用 Google 翻譯來翻譯您的訊息。<br />
+        我們的目標是在24小時內回覆所有訊息。
     success: "感謝您的訊息，{{name}}。我們將會在收到訊息後很快地回覆您。"
   hint:
     context: '使用論述控制板的小提示'
@@ -1136,7 +1174,7 @@ zh_TW:
       app_update: '新版的應用程式已經可用'
       reload: '重新整理'
   emoji_picker:
-    search: "找到一個 emoji..."
+    search: "挑選您的表情符號……"
     no_emojis_found: "找不到 '{{term}}' 的 emoji！"
   authorized_apps_page:
     title: 已授權的應用程式
@@ -1184,6 +1222,7 @@ zh_TW:
     proposal_title: 提案
     count_title: 勾選
     poll_title: 投票
+    score_title: 分數投票
     dot_vote_title: 點投票
     meeting_title: 時間投票
     ranked_choice_title: 排序選擇
@@ -1608,6 +1647,7 @@ zh_TW:
     invalid_email: "抱歉，這看起來不是有效的電子郵件地址"
     invalid_password: "抱歉，這個密碼與我們的檔案上的不一樣"
     invalid_token: "抱歉，我們無法使用那個憑證來讓您登入。點選下方來傳送另一個。"
+    account_locked: "您的帳號因為太多次失敗的登入嘗試而被鎖定。請檢查您的電子郵件以取得解鎖連結"
     email_not_found: "抱歉，我們找不到與此電子郵件地址相關的帳號"
     email_placeholder: you@example.com
     login_with_token: 您已經設定好了！點選下方的連結以繼續。

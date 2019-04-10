@@ -1,4 +1,23 @@
 nl_NL:
+  loomio_tags:
+    tags: Labels
+    apply_tags: Labels toekennen
+    new_tag: Label aanmaken
+    name_label: Naam
+    color_label: Kleur
+    card_title: Labels categoriseren
+    modal_title: Maak een nieuw label aan
+    modal_edit_title: Label bewerken
+    modal_destroy_title: Label verwijderen
+    destroy_tag: Label verwijderen
+    destroy_helptext: Hierdoor zal het label vernietigd worden en het uit alle borden in de groep verwijderen. Ben je zeker dat je dit wilt doen?
+    helptext: Labels laten je toe conversaties te categoriseren en deze later sneller terug te vinden
+    discussions_count_singular: ({{count}} thread)
+    discussions_count_plural: ({{count}} threads)
+    tag_created: Label opgeslagen
+    tag_destroyed: Label verwijderd
+    tags_marked: 'Borden gemarkeerd met ''{{name}}'' in {{groupName}} '
+    no_tags_present: Er werden geen borden gevonden met dit label! Probeer een andere te selecteren.
   reactions:
     slight_smile: Vind ik leuk
     heart: Liefde
@@ -48,6 +67,7 @@ nl_NL:
     not_found: Niet gevonden
     time_zone: Tijdzone
     local_time: Plaatselijke tijd
+    attachments: Bijlagen
     confirm_discard_changes: Wijzigingen verwijderen?
     time:
       am: am
@@ -110,7 +130,7 @@ nl_NL:
       uploading: 'Aan het uploaden'
       load_more: 'Laad meer'
       share: Delen
-      ok: Ok!
+      ok: Ok
       retry: Probeer opnieuw
       done: Gedaan
       start: Start
@@ -247,7 +267,6 @@ nl_NL:
     recent_threads: 'Recente borden'
     unread_threads: 'Ongelezen borden ({{count}})'
     muted_threads: 'Gedempte borden'
-    start_group: 'Nieuwe groep'
     explore: 'Openbare groepen'
     start_thread: Nieuw bord
     start_decision: Nieuwe beslissing
@@ -285,14 +304,6 @@ nl_NL:
     make_coordinator: 'Duid een coördinator aan'
     demote_coordinator: 'Degradeer een coördinator'
     cancel_invitation: Annuleer uitnodiging
-  start_menu:
-    label: 'Gebruikersacties'
-    title: 'Actie'
-    start_group: 'Begin groep!'
-    start_subgroup: 'Start Subgroep'
-    start_thread: 'Start discussie'
-    start_poll: '''Peiling'' starten'
-    invite_people: 'Nodig mensen uit'
   notifications:
     header: "Meldingen"
     no_notifications: "Je hebt geen meldingen"
@@ -378,6 +389,7 @@ nl_NL:
     show_history: Toon bewerkingsgeschiedenis
     pin_thread: Bord vastprikken
     unpin_thread: Bord ontprikken
+    tag_thread: Labels beheren
   cover_photo_form:
     aria_label: 'Formulier groepsfoto veranderen'
     heading: 'Nieuwe groepsfoto'
@@ -448,7 +460,6 @@ nl_NL:
       manage_members: 'Beheer leden'
       add_subgroup: 'Voeg subgroep toe'
       manage_subscription: 'Beheer groepsinschrijving'
-      email_settings: 'E-mailinstellingen'
       leave_group: 'Verlaat groep'
       deactivate_group: 'Deactiveer groep'
     volume:
@@ -930,7 +941,6 @@ nl_NL:
       app_update: 'Er is een nieuwe versie van de app beschikbaar'
       reload: 'Herladen'
   emoji_picker:
-    search: "Zoek een emoji..."
     no_emojis_found: "Geen emojis gevonden voor '{{term}}'"
   authorized_apps_page:
     title: Toegestane apps

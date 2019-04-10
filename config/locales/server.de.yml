@@ -18,7 +18,7 @@ de:
     placeholder_name: "eingeladener Nutzer (%{hostname})"
     error:
       recaptcha: "Es war uns nicht möglich zu bestätigen, dass du kein Computer bist. Bitte versuche es erneut."
-      bad_login: "Eine Anmeldung war nicht möglich. Bitte versuche es erneut."
+      bad_login: "Sorry, das Passwort passt nicht zu dem, welches wir in unserer Datei haben."
       username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
   attachment:
     error:
@@ -68,10 +68,6 @@ de:
     motion:
       must_close_in_future: Vorschlag muss in der Zukunft enden.
       one_at_a_time: Es gibt einen weiteren aktiven Vorschlag.
-  subscriptions:
-    gift_plan_selected_for_group_html: |
-        <h1>Erfolgreich.</h1>
-        <p>Du hast die kostenlose Mitgliedschaft für deine Gruppe <a href="/g/%{group_key}">%{group}</a> ausgewählt</p>
   user_mailer:
     accounts_merged:
       subject: "Deine %{site_name} Benutzerkonten wurden zusammengeführt."

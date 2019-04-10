@@ -10,7 +10,7 @@ class API::SessionsController < Devise::SessionsController
       user.update(name: resource_params[:name]) if resource_params[:name]
       render json: Boot::User.new(user).payload
     else
-      render json: { errors: { password: [t(:"user.error.bad_login")] } }, status: 401
+      render json: { errors: failure_message }, status: 401
     end
     session.delete(:pending_login_token)
   end
@@ -23,6 +23,14 @@ class API::SessionsController < Devise::SessionsController
   end
 
   private
+
+  def failure_message
+    if resource_params[:password] && User.where(email: resource_params[:email]).where.not(locked_at: nil).exists?
+      { password: [:'auth_form.account_locked'] }
+    else
+      { password: [:'auth_form.invalid_password'] }
+    end
+  end
 
   def attempt_login
     if pending_login_token&.useable?

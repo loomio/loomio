@@ -1,5 +1,6 @@
 class UserService
-  def self.create(user:)
+  def self.create(user:, params:)
+    user.attributes = params.slice(:name, :email, :recaptcha, :legal_accepted)
     user.require_valid_signup = true
     user.require_recaptcha = true
     user.save.tap do
@@ -9,6 +10,7 @@ class UserService
 
   def self.destroy(user:)
     user.deactivate!
+    user.identities.delete_all
     zombie = User.create(name: I18n.t(:'user.deleted_user'),
                          email: "deleted-user-#{SecureRandom.uuid}@example.com")
     zombie.update(deactivated_at: Time.now)

@@ -18,7 +18,7 @@ zh_TW:
     placeholder_name: "已邀請的使用者 (%{hostname})"
     error:
       recaptcha: "我們無法確認您是不是機器人。請再試一次！"
-      bad_login: "無法登入。請再試一次。"
+      bad_login: "抱歉，這個密碼與我們的檔案上的不一樣"
       username_must_be_alphanumeric: "使用者名稱只能為小寫字母與數字"
   attachment:
     error:
@@ -69,9 +69,8 @@ zh_TW:
       must_close_in_future: 提案必須在未來定案。
       one_at_a_time: 有其他活躍的提案。
   subscriptions:
-    gift_plan_selected_for_group_html: |
-        <h1>成功。</h1>
-        <p>您為您的群組 <a href="/g/%{group_key}">%{group}</a> 選擇了免費方案</p>
+    active: 活躍
+    inactive: 不活躍
   user_mailer:
     group_export_ready:
       subject: 匯出「%{group_name}」的群組資料

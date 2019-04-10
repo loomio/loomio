@@ -1,6 +1,9 @@
 class FormalGroup < Group
   include HasTimeframe
   include HasDrafts
+  include HasRichText
+
+  is_rich_text    on: :description
 
   extend  NoSpam
   no_spam_for :name, :description
@@ -9,6 +12,8 @@ class FormalGroup < Group
   validates :name, length: { maximum: 250 }
 
   validate :limit_inheritance
+  validates :subscription, absence: true, if: :is_subgroup?
+
 
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
@@ -42,11 +47,12 @@ class FormalGroup < Group
   has_many :public_discussion_documents, through: :public_discussions, source: :documents
   has_many :public_poll_documents,       through: :public_polls,       source: :documents
   has_many :public_comment_documents,    through: :public_comments,    source: :documents
+  has_many :tags, foreign_key: :group_id
 
   belongs_to :cohort
   belongs_to :default_group_cover
   belongs_to :subscription
-  
+
   has_many :subgroups,
            -> { where(archived_at: nil) },
            class_name: 'Group',
@@ -134,6 +140,20 @@ class FormalGroup < Group
     all_subgroups.update_all(archived_at: nil)
   end
 
+  def org_memberships_count
+    Membership.not_archived.where(group_id: id_and_subgroup_ids).count('distinct user_id')
+  end
+
+  def org_discussions_count
+    FormalGroup.where(id: id_and_subgroup_ids).sum(:discussions_count)
+  end
+
+  def has_max_members
+    parent_group = parent_or_self
+    subscription = Subscription.for(parent_group)
+    subscription.max_members && parent_group.org_memberships_count >= subscription.max_members
+  end
+
   def is_subgroup_of_hidden_parent?
     is_subgroup? and parent.is_hidden_from_public?
   end
@@ -159,7 +179,7 @@ class FormalGroup < Group
   end
 
   def id_and_subgroup_ids
-    Array(id) | subgroup_ids
+    @id_and_subgroup_ids ||= (Array(id) | subgroup_ids)
   end
 
   def handle

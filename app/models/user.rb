@@ -8,6 +8,9 @@ class User < ApplicationRecord
   include NoForbiddenEmails
   include HasMailer
   include CustomCounterCache::Model
+  include HasRichText
+
+  is_rich_text    on: :short_bio
 
   extend HasTokens
   extend HasDefaults
@@ -23,7 +26,7 @@ class User < ApplicationRecord
     demo_bot:   ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
   }.freeze
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable
   attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
@@ -126,6 +129,8 @@ class User < ApplicationRecord
   has_many :documents, foreign_key: :author_id, dependent: :destroy
   has_many :drafts, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
+  has_many :tags, through: :formal_groups
+
 
   has_one :deactivation_response,
           class_name: 'UserDeactivationResponse',

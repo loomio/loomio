@@ -12,6 +12,9 @@ class Poll < ApplicationRecord
   include HasMailer
   include Reactable
   include HasCreatedEvent
+  include HasRichText
+
+  is_rich_text    on: :details
 
   extend  NoSpam
   no_spam_for :title, :details

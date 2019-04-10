@@ -1,4 +1,10 @@
 lt:
+  loomio_tags:
+    color_label: Spalva
+    modal_title: Sukurti naują žymę
+    modal_edit_title: Taisyti žymę
+    modal_destroy_title: Šalinti žymę
+    destroy_tag: Šalinti žymę
   reactions:
     heart: Meilė
     laughing: Juokas
@@ -92,6 +98,7 @@ lt:
       new_thread: "Nauja gija"
       add_subgroup: 'Pridėti pogrupį'
       loading: 'Įkeliama'
+      ok: Gerai
   error_page:
     forbidden: 'Jūs neturite leidimo tai padaryti.'
     internal_server_error: 'Atleiskite, bet įvyko kažkokia klaida. Prašome bandyti dar kartą.'
@@ -130,9 +137,6 @@ lt:
       proposals: 'Pasiūlymai'
   membership_dropdown:
     cancel_invitation: Atsisakyti pakvietimo
-  start_menu:
-    start_thread: 'Kurti giją'
-    invite_people: 'Pakviesti žmones'
   notifications:
     header: "Pranešimai"
   position_buttons_panel:

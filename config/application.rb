@@ -73,6 +73,13 @@ module Loomio
     config.quiet_assets = true
     config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
+    if ENV['AWS_BUCKET']
+      config.active_storage.service = :amazon
+    else
+      config.active_storage.service = :local
+    end
+
+    # we plan to remove fog and paperclip once we've migrated to active storage
     if ENV['FOG_PROVIDER']
       def self.fog_credentials
         env = Rails.application.secrets
