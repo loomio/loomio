@@ -74,11 +74,11 @@ export default
 
     openGroupModal: ->
       console.log "emitting open group modal"
-      EventBus.$emit 'openModal', {component: 'DiscussionStart'}
+      EventBus.$emit 'openModal', {component: 'GroupStart', props: { group: Records.groups.build(), close: -> console.log 'closing group modal' }}
 
     openThreadModal: ->
       console.log "emitting open thread modal"
-      EventBus.$emit 'openModal', {component: 'GroupStart'}
+      EventBus.$emit 'openModal', {component: 'DiscussionStart', props: { discussion: Records.discussions.build(groupId: @currentGroup().id), close: -> console.log 'closing group modal' }}
 
 </script>
 

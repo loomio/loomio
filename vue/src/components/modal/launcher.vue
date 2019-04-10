@@ -1,38 +1,35 @@
 <script lang="coffee">
 import EventBus from "@/shared/services/event_bus"
+import DiscussionStartModal from '@/components/discussion/start.vue'
+import GroupStartModal from '@/components/group/start.vue'
 
 export default
+  components:
+    'DiscussionStart': DiscussionStartModal
+    'GroupStart': GroupStartModal
   data: ->
     isOpen: false
+    componentName: ""
+    componentProps: {}
 
   mounted: ->
     EventBus.$on('openModal', @openModal)
     EventBus.$on('closeModal', @closeModal)
 
   methods:
-    openModal: ->
-      console.log "hi"
+    openModal: (opts) ->
+      console.log "hi", opts
       @isOpen = true
+      @componentName = opts.component
+      @componentProps = opts.props
     closeModal: -> @isOpen = false
-
-  # newGroup: ->
-  #   Records.groups.build()
-  #
-  # newThread: ->
-  #   Records.discussions.build(groupId: @currentGroup().id)
-
-  # startThread: ->
-  #   ModalService.open 'DiscussionStartModal', discussion: => Records.discussions.build(groupId: @currentGroup().id)
 
 </script>
 
 <template lang="pug">
 v-dialog(model="isOpen")
-  h1 I'm open matey
-  //- v-dialog(v-model='isThreadModalOpen' lazy persistent scrollable)
-  //-   discussion-start(:discussion='newThread()', :close='closeThreadModal')
-  //- v-dialog(v-model='isGroupModalOpen' lazy scrollable)
-  //-   group-start(:group='newGroup()', :close='closeGroupModal')
-
+  component(:is="componentName" v-bind="componentProps" lazy scrollable)
 
 </template>
+<style lang="scss">
+</style>
