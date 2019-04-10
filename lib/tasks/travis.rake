@@ -6,7 +6,6 @@ namespace :travis do
   end
 
   task :rspec do
-    system("bundle exec rake client:build")
     puts "Starting to run rspec..."
     system("bundle exec rspec --color")
     raise "rspec failed!" unless $?.exitstatus == 0
