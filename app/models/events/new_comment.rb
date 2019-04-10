@@ -1,6 +1,7 @@
 class Events::NewComment < Event
   include Events::Notify::ByEmail
   include Events::Notify::Mentions
+  include Events::Notify::ThirdParty
   include Events::LiveUpdate
 
   def self.publish!(comment)

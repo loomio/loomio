@@ -1,0 +1,13 @@
+.install-microsoft-form
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %p.lmo-hint-text{translate: "install_microsoft.form.webhook_helptext"}
+  %md-input-container.md-block
+    %label{for: "microsoft-webhook-url", translate: "install_microsoft.form.webhook_label"}
+    .lmo-relative
+      %input.discussion-form__title-input.lmo-primary-form-input#microsoft-webhook-url{placeholder: "{{ 'install_microsoft.form.webhook_placeholder' | translate }}", ng-model: "groupIdentity.webhookUrl", ng-required: "true", maxlength: "255"}
+    %validation_errors{subject: "groupIdentity", field: "webhookUrl"}
+  %p.lmo-hint-text{translate: "install_microsoft.form.event_kind_helptext"}
+  %md-input-container.md-block
+    .install-microsoft-form__event-kinds{ng-repeat: "kind in groupIdentity.constructor.validEventKinds"}
+      %md-checkbox.md-checkbox--with-summary{id: "{{kind}}", ng-model: "groupIdentity.eventKinds[kind]"}
+        %span{for: "{{kind}}", translate: "install_microsoft.event_kinds.{{kind}}"}

@@ -6,6 +6,8 @@ class GroupIdentity < ApplicationRecord
     !!@make_announcement
   end
 
+  attr_accessor :webhook_url
+
   belongs_to :group, class_name: 'FormalGroup', required: true
   belongs_to :identity, class_name: 'Identities::Base', required: true
 
