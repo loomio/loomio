@@ -58,7 +58,6 @@ export default
 
     canLockSidebar: ->
       true
-      # $mdMedia("gt-sm")
 
     sidebarItemSelected: ->
       $mdSidenav('left').close() if !@canLockSidebar()
@@ -74,23 +73,13 @@ export default
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
 
     openGroupModal: ->
-      @isGroupModalOpen = true
-    closeGroupModal: ->
-      @isGroupModalOpen = false
+      console.log "emitting open group modal"
+      EventBus.$emit 'openModal', {component: 'DiscussionStart'}
 
     openThreadModal: ->
-      @isThreadModalOpen = true
-    closeThreadModal: ->
-      @isThreadModalOpen = false
+      console.log "emitting open thread modal"
+      EventBus.$emit 'openModal', {component: 'GroupStart'}
 
-    newGroup: ->
-      Records.groups.build()
-
-    newThread: ->
-      Records.discussions.build(groupId: @currentGroup().id)
-
-    # startThread: ->
-    #   ModalService.open 'DiscussionStartModal', discussion: => Records.discussions.build(groupId: @currentGroup().id)
 </script>
 
 <template lang="pug">
@@ -121,8 +110,6 @@ v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
         v-icon mdi-plus
       v-list-tile-content
         v-list-tile-title(v-t="'sidebar.start_thread'")
-  v-dialog(v-model='isThreadModalOpen' lazy persistent scrollable)
-    discussion-start(:discussion='newThread()', :close='closeThreadModal')
   v-divider.sidebar__divider
   v-list
     div(v-for='group in orderedGroups', :key='group.id')
@@ -141,6 +128,4 @@ v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
         v-icon mdi-plus
       v-list-tile-content
         span(v-t="'sidebar.start_group'")
-      v-dialog(v-model='isGroupModalOpen' lazy scrollable)
-        group-start(:group='newGroup()', :close='closeGroupModal')
 </template>
