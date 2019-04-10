@@ -2,7 +2,7 @@
 path: node_modules
 css_includes:
   - angular-material/modules/scss/
-  - mdi/scss
+  - "@mdi/font/scss"
 moment_locales:
   - moment/locale/*.js
 angular:
