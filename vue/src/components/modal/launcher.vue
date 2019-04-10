@@ -18,7 +18,6 @@ export default
 
   methods:
     openModal: (opts) ->
-      console.log "hi", opts
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
@@ -27,9 +26,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(model="isOpen")
-  component(:is="componentName" v-bind="componentProps" lazy scrollable)
+v-dialog(v-model="isOpen")
+  component(:is="componentName" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
 
 </template>
-<style lang="scss">
-</style>
