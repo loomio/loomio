@@ -75,7 +75,8 @@ class AppConfig
       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
       nested_comments:            ENV.fetch('FEATURES_NESTED_COMMENTS_FOR_ALL',    false),
       default_thread_render_mode: ENV.fetch('FEATURES_DEFAULT_THREAD_RENDER_MODE', 'chronological'),
-      show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false)
+      show_microsoft_card:        ENV.fetch('FEATURES_ENABLE_MICROSOFT_TEAMS',     false),
+      show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT',       false)
     }
   end
 

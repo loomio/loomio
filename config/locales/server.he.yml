@@ -1,11 +1,79 @@
 he:
+  explore:
+    header: חקור את הקבוצות הציבוריות
+  activerecord:
+    errors:
+      messages:
+        blank: לא ניתן להשאיר ריק
+        invalid: ערך לא תקין
+  errors:
+    noscript: לומיו זקוקה לJavascript כדי לעבוד! אנא אפשר Javascript בדפדפן שלך כדי להמשיך
+    return_home: חזור הביתה
+    not_found: 404 קובץ לא נמצא.
+    messages:
+      email: כתובת המייל אינו תקין
+      spoofed_media_type: תוכנו של הקובץ אינו תואם לשמו
+  user:
+    deleted_user: "משתמש מחוק"
+    placeholder_name: "משתמש מוזמן (%{hostname})"
+    error:
+      recaptcha: "לא הצלחנו לאשר שאינך רובוט. אנא נסה שוב!"
+      bad_login: "סליחה, סיסמה זו לא תואמת לזו שבמערכת"
+      username_must_be_alphanumeric: "שם המשתמש נדרש להיות באותיות אנגלית קטנות ומספרים בלבד"
+  attachment:
+    error:
+      too_large: הקובץ שניסית לצרף גדול מ100 מ"ב, אנא בחר קובץ קטן יותר.
   poll:
+    error:
+      cannot_add_options: לא יכול להוסיף אפשרויות לסקר זה
+      cannot_remove_options: לא יכול להוריד את האפשרויות מסקר זה
+      must_have_options: חייבת להיות אפשרות סקר אחת לפחות
     export:
-      title: תואר
+      percent_voted: "%{num}/%{denom} (%{percent}) משתתפים הצהירו את עמדתם"
+      title: כותרת
       author: מחבר
+      created_at: נוצר ב
+      closing_at: נסגר ב
+      closed_at: נסגר ב
+      is_latest: הכי חדש
+      engagement: מעורבות
+      stances: עמדות
+      participants: משתתפים
       details: פרטים
       group_name: שם הקבוצה
+      discussion_title: כותרת השיחה
+      outcome_author: מחבר התוצאה
+      outcome_created_at: תוצאה נוצרה ב
+      outcome_statement: הצהרת התוצאה
+      poll_url: כתובת הURL של הסקר
+      reason: סיבה
+      participant: משתתף
+      also_available: גם זמין ב
       total: סך הכל
+  stance:
+    error:
+      too_short: אנא בצע בחירתך
+  invitation:
+    invitation_cancelled: מצטערים, הזמנה זו בוטלה ע"י מתאם הקבוצה. אנא בקש הזמנה נוספת מהקבוצה.
+    invitation_already_used: הזמנה זו כבר היתה בשימוש. אנא היכנס ל- loomio ישירות כדי להמשיך לקבוצה שלך.
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
+  validate:
+    motion:
+      must_close_in_future: הצעה נדרשת להסגר בעתיד
+      one_at_a_time: יש עוד הצעה פעילה.
+  subscriptions:
+    active: פעיל
+    inactive: לא פעיל
+  user_mailer:
+    group_export_ready:
+      subject: איחוד ייצוא המידע עבור %{group_name}
   email:
     reply_to_this_discussion: השיבו לדיון זה
     catch_up:
@@ -28,6 +96,8 @@ he:
     common:
       or: או
       unsubscribe: ביטול מינוי
+      results: תוצאות
+      responses: תגובות
       create_outcome: שתפ/י תוצאה
   poll_unsubscribe:
     go_to_dashboad: עבור לדשבורד

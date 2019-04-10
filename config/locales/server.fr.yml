@@ -112,7 +112,7 @@ fr:
       intro: Bonjour, <strong>%{name}</strong>!
       action: Que voulez-vous faire?
       proposal: Créer une proposition
-      count: Démarrer une Vérification
+      count: Démarrer une vérification
       poll: Démarrer un sondage
       dot_vote: Démarrer un vote à points
       meeting: Trouver un créneau horaire
@@ -192,7 +192,7 @@ fr:
     help: Aide
     privacy: Confidentialité
     pricing: Tarification
-    public_groups: Groupes publiques
+    public_groups: Groupes publics
     terms: Conditions d’utilisation
     independent_install_html: '%{hostname} est une installation indépendante de Loomio : <a href="http://github.com/loomio/loomio">en savoir plus</a>.'
   invitation_form:
@@ -208,7 +208,7 @@ fr:
     email_guidelines_html: |
         <p>Entrez votre adresse e-mail et vous recevrez un lien de réinitialisation de votre mot de passe.</p>
         <p>Si vous vous connectez habituellement via Facebook ou Google, entrez l'adresse e-mail associée à ce compte.</p>
-    reset_email_timeframe: Un courriel peut prendre jusqu’à 5 minutes pour arriver. S’il n’apparaît pas, vérifier votre dossier de spams.
+    reset_email_timeframe: Un courriel peut prendre jusqu’à 5 minutes pour arriver. S’il n’apparaît pas, vérifiez votre dossier de spams.
     length_restriction: Les mots de passe doivent au moins avoir 8 caractères de long.
     forbidden_passwords: Les mots de passe communs tels que "motdepasse" (password) sont interdits afin de garder votre compte sécurisé.
   introduction_thread:
@@ -601,7 +601,7 @@ fr:
     outcome_created: "Résultat partagé dans *%{group}*: *%{poll}*"
     poll_created: "Nouveau *%{poll_type}* dans *%{group}*: *%{poll}*"
     poll_closing_soon: "Rappel: *%{poll}* se termine dans 24 heures"
-    poll_expired: "*%{poll}* est clotûré"
+    poll_expired: "*%{poll}* est clôturé"
     poll_not_found: "Désolé, nous n'avons pas trouvé ce sondage. Tapez '/loomio<poll_type><title>' pour recommencer?"
     unknown_channel: |
         Désolé, on dirait qu'il n'y a pas de groupe Loomio associé à cette chaîne.

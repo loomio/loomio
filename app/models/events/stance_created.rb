@@ -3,6 +3,7 @@ class Events::StanceCreated < Event
   include Events::Notify::ByEmail
   include Events::Notify::InApp
   include Events::Notify::Mentions
+  include Events::Notify::ThirdParty
   include Events::Notify::Author
 
   def self.publish!(stance)

@@ -23,6 +23,7 @@ angular.module('loomioApp').directive 'announcementForm', ->
     $scope.showInvitationsRemaining = false
     $scope.subscriptionActive = true
     $scope.canInvite = true
+    $scope.maxMembers = $scope.announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0
 
     if $scope.announcement.model.group()
       $scope.invitationsRemaining =

@@ -14,6 +14,8 @@ nl_NL:
     helptext: Labels laten je toe conversaties te categoriseren en deze later sneller terug te vinden
     discussions_count_singular: ({{count}} thread)
     discussions_count_plural: ({{count}} threads)
+    tag_created: Label opgeslagen
+    tag_destroyed: Label verwijderd
     tags_marked: 'Borden gemarkeerd met ''{{name}}'' in {{groupName}} '
     no_tags_present: Er werden geen borden gevonden met dit label! Probeer een andere te selecteren.
   reactions:
