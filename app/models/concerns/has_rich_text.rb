@@ -28,6 +28,8 @@ module HasRichText
   end
 
   def build_attachments
+    # this line is just to help migrations through
+    return true unless self.class.column_names.include?('attachments')
     self[:attachments] = files.map do |file|
       i = file.blob.slice(:id, :filename, :content_type, :byte_size)
       i.merge!({ preview_url: Rails.application.routes.url_helpers.rails_representation_path(file.representation(PREVIEW_OPTIONS), only_path: true) }) if file.representable?
