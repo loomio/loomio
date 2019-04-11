@@ -1,4 +1,7 @@
 zh_TW:
+  current_plan_button:
+    upgrade: 升級
+    tooltip: 購買 Loomio 計畫以邀請更多夥伴並啟動更多討論串。
   loomio_tags:
     tags: 標籤
     apply_tags: 套用標籤
@@ -427,9 +430,9 @@ zh_TW:
     form:
       too_many_invitations: |
           已超過邀請限制。<a href="{{upgradeUrl}}" target="_blank">升級</a>
-      no_inivtations_remaining: |
-          <p>您目前訂閱的計畫已無剩餘的邀請數。</p>
-          <p>請<a href="{{upgradeUrl}}" target="_blank">升級</a>以傳送更多邀請。</p>
+      no_invitations_remaining: |
+          <p>您已經使用了此群組可用的全部 {{maxMembers}} 個邀請。</p>
+          <p>下一步，<a href="{{upgradeUrl}}" target="_blank">選擇一個計畫</a>以繼續在 Loomio 上協作。</p>
       invitations_remaining: '剩餘 {{count}} 個邀請。<a href="{{upgradeUrl}}" target="_blank">升級</a>'
       group_announced:
         title: 邀請至群組
@@ -1013,9 +1016,10 @@ zh_TW:
       or: 或者
       join_group: <a href="/explore">加入</a>群組以觀看討論串。
   discussion:
-    max_threads_reached: |
-        <p>抱歉！因為您的群組是試用計畫，所以無法開始另一個討論串。</p>
-        <p>請<a href="{{upgradeUrl}}" target="_blank">升級</a>以繼續使用 Loomio。</p>
+    max_threads_reached: |+
+        <p>您已經使用了此群組可用的全部 {{maxMembers}} 個邀請。</p>
+        <p>下一步，<a href="{{upgradeUrl}}" target="_blank">選擇一個計畫</a>以繼續在 Loomio 上協作。</p>
+
     subscription_canceled: |
         <p>抱歉！您的訂閱不活躍。</p>
         <p>請<a href="{{upgradeUrl}}" target="_blank">升級</a>以繼續使用 Loomio。</p>
@@ -1682,6 +1686,34 @@ zh_TW:
     email: 電子郵件
     password: 密碼
     reactivate: 重新啟用帳號
+  install_microsoft:
+    modal_title: 安裝 Microsoft Teams
+    card:
+      install_title: 連線到 Microsoft Teams
+      install_helptext: Loomio 機器人會通知您的團隊在 Loomio 上的討論與決策。
+      installed_title: 已連線至 Microsoft Teams
+      installed_helptext: 此群組中的活動會傳送到您的 Microsoft Team。
+      install_microsoft: 連線至 Teams
+      remove_identity: 移除這個整合
+      confirm_remove_title: 移除 Microsoft Teams
+      confirm_remove_helptext: |
+          您的 Microsoft Teams 頻道將不會再收到關於此群組的更新。
+          您還是可以回來並將其重新加入。
+      identity_removed: 已移除整合
+    form:
+      webhook_helptext: 輸入您的 Teams 頻道提供的 webhook URL。<a href="/microsoft">取得更多與 Loomio 一同設定 Microsoft Teams 的資訊</a>
+      webhook_label: Webhook URL
+      webhook_installed: 已連線至 Microsoft Teams
+      webhook_placeholder: https://outlook.office.com/...
+      event_kind_helptext: 應該將哪些活動張貼至 Teams 頻道中？
+    event_kinds:
+      new_discussion: 已開啟新的討論串
+      new_comment: 已做出新的評論
+      poll_created: 已建立投票
+      stance_created: 已經投了新的一票
+      poll_closing_soon: 投票即將過期
+      poll_expired: 投票已過期
+      outcome_created: 結果已分享
   install_slack:
     modal_title: 安裝 Slack
     modal_helptext: 首先，您將需要登入到 Slack 中。我們將會在一秒內將您重新導向到那裡，或是您可以點選下面的按鈕來繼續。

@@ -1,4 +1,6 @@
 el:
+  current_plan_button:
+    upgrade: Αναβάθμιση
   loomio_tags:
     name_label: Όνομα
   poll_types:

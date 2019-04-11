@@ -1,4 +1,6 @@
 nl_NL:
+  current_plan_button:
+    upgrade: Upgrade
   loomio_tags:
     tags: Labels
     apply_tags: Labels toekennen
@@ -1369,6 +1371,10 @@ nl_NL:
     name: Naam
     email: E-mail
     password: Wachtwoord
+  install_microsoft:
+    card:
+      remove_identity: Verwijder deze verbinding
+      identity_removed: Verbinding beëindigd
   install_slack:
     modal_title: Slack installeren
     modal_helptext: Om te beginnen zal je moeten inloggen op slack. We gaan je daar zometeen automatisch naar doorverbinden, of je kan op knop hieronder drukken om verder te gaan.

@@ -1,4 +1,7 @@
 uk:
+  current_plan_button:
+    upgrade: Оновити
+    tooltip: Придбайте план використання loomio, щоб запросити більше людей та розпочати більше тем.
   loomio_tags:
     tags: Мітки
     apply_tags: Застосувати мітки
@@ -424,9 +427,6 @@ uk:
     form:
       too_many_invitations: |
           Перевищено ліміт запрошень. <a href="{{upgradeUrl}}" target="_blank">Оновити план</a>
-      no_inivtations_remaining: |
-          <p>У вашому поточному плані підписки не залишилося запрошень.</p>
-          <p>Будь ласка <a href="{{upgradeUrl}}" target="_blank">оновіть план</a> щоб надіслати більше запрошень.</p>
       invitations_remaining: 'Залишилось {{count}} запрошень. <a href="{{upgradeUrl}}" target="_blank">Оновити план</a>'
       group_announced:
         title: Запросити до групи
@@ -1007,9 +1007,6 @@ uk:
       or: або
       join_group: <a href="/explore">долучіться</a> до групи аби бачити теми.
   discussion:
-    max_threads_reached: |
-        Вибачте! Неможливо почати іншу тему, оскільки ваша група використовує пробний план.</p>
-        <p>Будь ласка <a href="{{upgradeUrl}}" target="_blank">оновіть план</a> щоб продовжувати використовувати Loomio.</p>
     subscription_canceled: |
         <p>Вибачте! Ваша підписка не активна.</p>
         <p>Будь ласка <a href="{{upgradeUrl}}" target="_blank">оновіть план</a> щоб продовжувати використовувати Loomio.</p>
@@ -1675,6 +1672,10 @@ uk:
     email: Електронна адреса
     password: Пароль
     reactivate: Відновити обліковий запис
+  install_microsoft:
+    card:
+      remove_identity: Видалити цю інтеграцію
+      identity_removed: Інтеграцію видалено
   install_slack:
     modal_title: Встановити Slack
     modal_helptext: По-перше, вам потрібно буде ввійти до slack. Ми перенаправимо вас туди автоматично за секунду, або ви можете натиснути кнопку нижче, щоб продовжити.

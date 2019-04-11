@@ -426,9 +426,6 @@ he:
     form:
       too_many_invitations: |
           הגעת לגבול ההזמנות המותר. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>
-      no_inivtations_remaining: |
-          <p>לא נותרה לך הזמנה בחבילת המנוי הנוכחי שלך.</p>
-          <p>אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> על מנת לשלוח עוד הזמנות.</p>
       invitations_remaining: '{{count}} הזמנות נותרו. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>'
       group_announced:
         title: הזמן לקבוצה
@@ -1012,9 +1009,6 @@ he:
       or: או
       join_group: <a href="/explore">הצטרף</a> לקבוצה כדי לצפות בשיחות.
   discussion:
-    max_threads_reached: |
-        מצטערים! אינך יכול להתחיל שיחה חדשה בגלל שהקבוצה שלך היא על חשבון זמני.</p>
-        <p>אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> כדי להמשיך להשתמש בלומיו.</p>
     subscription_canceled: |
         <p>מצטערים! החשבון שלך לא פעיל.</p>
         <p>אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> כדי להמשיך להשתמש בלומיו.</p>
@@ -1680,6 +1674,10 @@ he:
     email: דואר אלקטרוני
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
+  install_microsoft:
+    card:
+      remove_identity: הסר אינטגרציה זו
+      identity_removed: אינטגרציה הוסרה
   install_slack:
     modal_title: התקן Slack
     modal_helptext: ראשית כל, עליך להתחבר לסלאק. אנחנו נעביר אותך לשם אוטומטית עוד שניה, או שאתה יכול ללחוץ על הכפתור למטה להמשיך.

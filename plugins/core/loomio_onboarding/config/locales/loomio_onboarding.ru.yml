@@ -1,5 +1,8 @@
 ru:
   loomio_onboarding:
+    onboarding_mailer:
+      welcome:
+        subject: Добро пожаловать в Loomio!
     group_progress_card:
       title: Активируйте вашу группу
       activities:

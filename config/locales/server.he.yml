@@ -74,7 +74,26 @@ he:
   user_mailer:
     group_export_ready:
       subject: איחוד ייצוא המידע עבור %{group_name}
+      body_html: |
+          הורד את המידע מהקבוצה שלך <a href="%{url}">פה</a>. שים לב שלינק זה יבוטל בתוך שבוע ימים.
+    accounts_merged:
+      subject: "החשבונות שלך %{site_name} אוחדו. "
+      body_html: |
+          היי %{name},
+          שני חשבונות הלומיו אוחדו לחשבון אחד.
+          כדי להכנס ללומיו מעתה והלאה, נא להשתמש ב<strong>%{email}</strong> כדי להתחבר.
   email:
+    common:
+      or_enter_code: או, הזן את הקוד למטה
+      resend: הלינק הזה יבוטל תוך 24 שעות וניתן לשימוש רק פעם אחת.
+    login:
+      subject: התחבר ל%{site_name}
+      intro: היי %{name}, הנה הלינק להתחבר לחשבונך %{site_name}.
+      login: התחבר כ%{name}
+    reactivate:
+      subject: 'אקטב מחדש את חשבונך %{site_name} '
+      intro: היי %{name}, הנה הלינק כדי לאקטב מחדש את חשבונך %{site_name}.
+      login: אקטב מחדש%{name}
     reply_to_this_discussion: השיבו לדיון זה
     catch_up:
       mark_as_read: סמן כנקרא

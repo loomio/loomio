@@ -1,4 +1,6 @@
 hu:
+  current_plan_button:
+    upgrade: Upgrade
   loomio_tags:
     name_label: Név
   reactions:

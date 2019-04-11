@@ -1,4 +1,6 @@
 ko:
+  current_plan_button:
+    upgrade: 업그레이드
   loomio_tags:
     name_label: 이름
   common:

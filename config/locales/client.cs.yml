@@ -1,4 +1,6 @@
 cs:
+  current_plan_button:
+    upgrade: Zdokonalená verze
   loomio_tags:
     tags: Štítky
     apply_tags: Použít štítek

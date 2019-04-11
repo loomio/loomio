@@ -1,4 +1,7 @@
 de:
+  current_plan_button:
+    upgrade: Upgrade
+    tooltip: 'Kaufe ein Loomio Abonnement um mehr Personen einzuladen und mehr Diskussionen zu starten. '
   loomio_tags:
     tags: Schlagwörter
     apply_tags: Schlagwörter übernehmen
@@ -1630,6 +1633,10 @@ de:
     email: E-Mail
     password: Passwort
     reactivate: Account wieder aktivieren
+  install_microsoft:
+    card:
+      remove_identity: Diese Eingliederung entfernen
+      identity_removed: Eingliederung entfernt
   install_slack:
     modal_title: Slack installieren
     modal_helptext: Als erstes müssen Sie sich bei Slack anmelden. Wir werden Sie sofort  automatisch weiterleiten, alternativ können Sie zum Fortfahren auch auf den Button unten klicken.

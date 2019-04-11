@@ -1,4 +1,6 @@
 ga_IE:
+  current_plan_button:
+    upgrade: Uasghrádaigh
   loomio_tags:
     name_label: Ainm
   poll_types:

@@ -1,4 +1,7 @@
 fr:
+  current_plan_button:
+    upgrade: Changer d'offre
+    tooltip: Acheter un plan Loomio pour inviter plus de personnes et commencer plus de discussions.
   loomio_tags:
     tags: Mots-clés
     apply_tags: Appliquer les mots-clés
@@ -426,9 +429,9 @@ fr:
     form:
       too_many_invitations: |
           Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
-      no_inivtations_remaining: |
-          </p>Vous ne pouvez plus envoyer d'invitations</p>
-          <p>Veuillez <a href="{{upgradeUrl}}" target="_blank">mettre à jour</a> pour envoyer davantage d'invitations.</p>
+      no_invitations_remaining: |
+          <p>Vous avez épuisé toutes les {{maxMembers}} invitations disponible pour ce groupe.</p>
+          <p>Étape suivante, <a href="{{upgradeUrl}}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
       invitations_remaining: '{{count}} invitations restantes <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>'
       group_announced:
         title: Inviter au groupe
@@ -1013,8 +1016,8 @@ fr:
       join_group: <a href="/explore">rejoindre</a> un groupe pour voir des discussions.
   discussion:
     max_threads_reached: |
-        <p>Désolé ! Vous ne pouvez commencer une nouvelle discussion car votre groupe est en phase d'essai.</p>
-        <p>Veuillez <a href="{{upgradeUrl}}" target="_blank">mettre à jour</a> pour continuer à utiliser Loomio.</p>
+        <p>Vous avez épuisé toutes les {{maxThreads}} invitations disponible pour ce groupe.</p>
+        <p>Étape suivante, <a href="{{upgradeUrl}}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
     subscription_canceled: |
         <p>Désolé ! Votre abonnement n'est pas actif.</p>
         <p>Veuillez <a href="{{upgradeUrl}}" target="_blank">mettre à jour</a>pour continuer à utiliser Loomio.</p>
@@ -1680,6 +1683,10 @@ fr:
     email: Adresse e-mail
     password: Mot de passe
     reactivate: Réactiver le compte
+  install_microsoft:
+    card:
+      remove_identity: Retirer cette intégration
+      identity_removed: Intégration retirée
   install_slack:
     modal_title: Installer Slack
     modal_helptext: Pour commencer, connectez-vous à Slack. Nous vous redirigerons là dans un instant, ou vous pouvez cliquer ci-dessous pour continuer.

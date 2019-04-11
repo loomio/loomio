@@ -1,4 +1,6 @@
 tr:
+  current_plan_button:
+    upgrade: Yükselt
   loomio_tags:
     tags: Etiketler
     apply_tags: Etiketleri uygula

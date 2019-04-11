@@ -1,4 +1,6 @@
 it:
+  current_plan_button:
+    upgrade: Aggiorna
   loomio_tags:
     tags: Etichette
     apply_tags: Inserisci etichette

@@ -1,4 +1,6 @@
 pt_BR:
+  current_plan_button:
+    upgrade: Assinar um plano
   loomio_tags:
     tags: Tags
     apply_tags: Aplicar tags

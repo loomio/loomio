@@ -1,4 +1,6 @@
 pt_PT:
+  current_plan_button:
+    upgrade: Upgrade
   error_page:
     forbidden: 'Não tem permissão para o fazer.'
   discussion_form:

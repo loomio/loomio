@@ -1,4 +1,6 @@
 sv:
+  current_plan_button:
+    upgrade: Uppgradera
   loomio_tags:
     name_label: Namn
   reactions:

@@ -1,6 +1,23 @@
 da:
   loomio_tags:
     name_label: Navn
+    color_label: Farve
+    modal_title: Opret nyt mærke
+    modal_edit_title: Rediger mærke
+    modal_destroy_title: Slet mærke
+    destroy_tag: Slet mærke
+    discussions_count_singular: ({{count}} debat)
+    discussions_count_plural: ({{count}} debatter)
+    no_tags_present: Der blev ikke fundet debatter med det mærke! Prøv at vælge en anden.
+  reactions:
+    laughing: Grine
+    clap: Klappe
+    hugging: Kram
+    sunglasses: Sej
+    nerd: Smart
+    worried: Bekymret
+    neutral_face: Neutral
+    angry: Sur
   poll_types:
     proposal: Forslag
     count: Checkmåling

@@ -1,4 +1,6 @@
 ru:
+  current_plan_button:
+    upgrade: Обновить
   loomio_tags:
     tags: Метки
     apply_tags: Применить метки
@@ -322,7 +324,7 @@ ru:
     translate_comment: Перевести комментарий
     edit_outcome: Редактировать результат
     translate_outcome: Перевести результат
-    pin_thread: Пароль темы
+    pin_thread: Закрепить тему
     tag_thread: Управлять метками
   cover_photo_form:
     heading: 'Новое фото обложки'
@@ -457,13 +459,16 @@ ru:
     email_settings: 'Настройки Email'
     close_thread: 'Закрыть'
     reopen_thread: 'Открыть вновь'
-    mute_thread: 'Заглушен'
+    pin_thread: 'Закрепить'
+    unpin_thread: 'Открепить'
+    mute_thread: 'Заглушить'
+    move_thread: 'Переместить'
     print_thread: 'Печать'
     delete_thread: 'Удалить'
     add_comment: 'Комментарий'
   pin_thread_modal:
-    title: Пароль темы
-    pin_thread: Пароль темы
+    title: Закрепить тему
+    pin_thread: Закрепить тему
   delete_thread_form:
     aria_label: 'Удалить тему'
     title: Удалить тему
