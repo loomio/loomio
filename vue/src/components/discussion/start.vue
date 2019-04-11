@@ -1,8 +1,8 @@
 <script lang="coffee">
-Records = require 'shared/services/records'
-{ applyDiscussionStartSequence } = require 'shared/helpers/apply'
+import Records from '@/shared/services/records'
+import { applyDiscussionStartSequence } from '@/shared/helpers/apply'
 
-module.exports =
+export default
   props:
     discussion: Object
     close: Function

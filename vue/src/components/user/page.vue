@@ -11,19 +11,19 @@
 </style>
 
 <script lang="coffee">
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-fromNow        = require 'src/mixins/from_now'
-urlFor         = require 'src/mixins/url_for'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import fromNow        from '@/mixins/from_now'
+import urlFor         from '@/mixins/url_for'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply'
+import { applyLoadingFunction } from '@/shared/helpers/apply'
 
-_isEmpty     = require 'lodash/isEmpty'
-_sortBy     = require 'lodash/sortBy'
+import _isEmpty     from 'lodash/isEmpty'
+import _sortBy     from 'lodash/sortBy'
 
-module.exports =
+export default
   mixins: [fromNow, urlFor]
   data: ->
     user: {}

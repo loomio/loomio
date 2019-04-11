@@ -35,15 +35,14 @@
 </style>
 
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-FlashService   = require 'shared/services/flash_service'
+import AppConfig      from '@/shared/services/app_config'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import FlashService   from '@/shared/services/flash_service'
+import _isEmpty     from 'lodash/isEmpty'
 
-_isEmpty     = require 'lodash/isEmpty'
-
-module.exports =
+export default
   data: ->
     group: {}
   created: ->

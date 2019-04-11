@@ -31,12 +31,11 @@
 </style>
 
 <script lang="coffee">
-AppConfig = require 'shared/services/app_config'
-EventBus  = require 'shared/services/event_bus'
+import AppConfig from '@/shared/services/app_config'
+import EventBus  from '@/shared/services/event_bus'
+import { iconFor } from '@/shared/helpers/poll'
 
-{ iconFor } = require 'shared/helpers/poll'
-
-module.exports =
+export default
   props:
     poll: Object
   methods:

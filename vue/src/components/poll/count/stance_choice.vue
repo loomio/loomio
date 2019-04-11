@@ -2,7 +2,7 @@
 </style>
 
 <script lang="coffee">
-module.exports =
+export default
   props:
     stanceChoice: Object
 </script>

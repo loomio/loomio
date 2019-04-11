@@ -44,10 +44,9 @@
 
 </style>
 <script lang="coffee">
-Records = require 'shared/services/records'
-I18n    = require 'shared/services/i18n'
+import Records from '@/shared/services/records'
 
-module.exports =
+export default
   props:
     poll: Object
   data: ->

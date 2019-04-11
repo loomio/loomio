@@ -1,13 +1,12 @@
 <script lang="coffee">
-Records  = require 'shared/services/records'
-EventBus = require 'shared/services/event_bus'
+import Records  from '@/shared/services/records'
+import EventBus from '@/shared/services/event_bus'
+import { scrollTo }            from '@/shared/helpers/layout'
+import { submitForm }          from '@/shared/helpers/form'
+import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
+import { submitOnEnter }       from '@/shared/helpers/keyboard'
 
-{ scrollTo }            = require 'shared/helpers/layout'
-{ submitForm }          = require 'shared/helpers/form'
-{ groupPrivacyConfirm } = require 'shared/helpers/helptext'
-{ submitOnEnter }       = require 'shared/helpers/keyboard'
-
-module.exports =
+export default
   props:
     group: Object
   # data: ->

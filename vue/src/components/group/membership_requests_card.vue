@@ -35,11 +35,11 @@ md-list-item.membership-requests-card__request {
 </style>
 
 <script lang="coffee">
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-urlFor         = require 'src/mixins/url_for'
+import Records        from '@/shared/services/records'
+import AbilityService from '@/shared/services/ability_service'
+import urlFor         from '@/mixins/url_for'
 
-module.exports =
+export default
   mixins: [urlFor]
   props:
     group: Object

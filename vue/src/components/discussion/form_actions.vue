@@ -1,14 +1,11 @@
-<style lang="scss">
-</style>
 <script lang="coffee">
-Records       = require 'shared/services/records'
-EventBus      = require 'shared/services/event_bus'
-LmoUrlService = require 'shared/services/lmo_url_service'
+import Records       from '@/shared/services/records'
+import EventBus      from '@/shared/services/event_bus'
+import LmoUrlService from '@/shared/services/lmo_url_service'
+import { submitDiscussion } from '@/shared/helpers/form'
+import { submitOnEnter }    from '@/shared/helpers/keyboard'
 
-{ submitDiscussion } = require 'shared/helpers/form'
-{ submitOnEnter }    = require 'shared/helpers/keyboard'
-
-module.exports =
+export default
   props:
     discussion: Object
     close: Function

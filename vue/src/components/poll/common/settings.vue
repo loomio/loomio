@@ -1,9 +1,8 @@
 <script lang="coffee">
-{ settingsFor } = require 'shared/helpers/poll'
+import { settingsFor } from '@/shared/helpers/poll'
+import _snakeCase from 'lodash/snakeCase'
 
-_snakeCase = require('lodash/snakeCase')
-
-module.exports =
+export default
   props:
     poll: Object
   data: ->

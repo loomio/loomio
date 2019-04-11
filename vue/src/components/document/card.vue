@@ -1,11 +1,10 @@
 <script lang="coffee">
-Records      = require 'shared/services/records'
-ModalService = require 'shared/services/modal_service'
-urlFor       = require 'src/mixins/url_for'
-_isEmpty     = require 'lodash/isEmpty'
+import Records      from '@/shared/services/records'
+import ModalService from '@/shared/services/modal_service'
+import urlFor       from '@/mixins/url_for'
+import _isEmpty     from 'lodash/isEmpty'
 
-
-module.exports =
+export default
   mixins: [urlFor]
   props:
     group: Object

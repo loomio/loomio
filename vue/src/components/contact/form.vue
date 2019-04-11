@@ -5,15 +5,15 @@
 </style>
 
 <script lang="coffee">
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-AppConfig      = require 'shared/services/app_config'
-UserHelpService= require 'shared/services/user_help_service'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import AbilityService from '@/shared/services/ability_service'
+import AppConfig      from '@/shared/services/app_config'
+import UserHelpService from '@/shared/services/user_help_service'
 
-{ submitForm } = require 'shared/helpers/form'
+import { submitForm } from '@/shared/helpers/form'
 
-module.exports =
+export default
   data: ->
     submitted: false
     message: Records.contactMessages.build()

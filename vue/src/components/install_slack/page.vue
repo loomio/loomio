@@ -1,9 +1,9 @@
 <script lang="coffee">
-Session      = require 'shared/services/session'
-EventBus     = require 'shared/services/event_bus'
-ModalService = require 'shared/services/modal_service'
+import Session      from '@/shared/services/session'
+import EventBus     from '@/shared/services/event_bus'
+import ModalService from '@/shared/services/modal_service'
 
-module.exports =
+export default
   created: ->
     # EventBus.broadcast $rootScope, 'currentComponent', { page: 'installSlackPage' }
     ModalService.open('InstallSlackModal', group: (-> null), preventClose: (-> true)) if Session.user().identityFor('slack')

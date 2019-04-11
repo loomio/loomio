@@ -1,8 +1,8 @@
 <script lang="coffee">
-Records   = require 'shared/services/records'
-AppConfig = require 'shared/services/app_config'
+import Records   from '@/shared/services/records'
+import AppConfig from '@/shared/services/app_config'
 
-module.exports =
+export default
   created: ->
     @notificationsView = Records.notifications.collection.addDynamicView("notifications")
                                .applyFind(kind: { $in: AppConfig.notifications.kinds })

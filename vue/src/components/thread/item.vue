@@ -1,21 +1,20 @@
 <script lang="coffee">
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
-I18n           = require 'shared/services/i18n'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
 
-{ submitForm } = require 'shared/helpers/form'
-{ eventHeadline, eventTitle, eventPollType } = require 'shared/helpers/helptext'
+import { submitForm } from '@/shared/helpers/form'
+import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
 
-_includes = require 'lodash/includes'
-_camelCase = require 'lodash/camelCase'
+import _includes from 'lodash/includes'
+import _camelCase from 'lodash/camelCase'
 
-import NewComment from 'src/components/thread/item/new_comment.vue'
-import PollCreated from 'src/components/thread/item/poll_created.vue'
-import StanceCreated from 'src/components/thread/item/stance_created.vue'
-import OutcomeCreated from 'src/components/thread/item/outcome_created.vue'
+import NewComment from '@/components/thread/item/new_comment.vue'
+import PollCreated from '@/components/thread/item/poll_created.vue'
+import StanceCreated from '@/components/thread/item/stance_created.vue'
+import OutcomeCreated from '@/components/thread/item/outcome_created.vue'
 
 threadItemComponents = [
   'newComment',
@@ -24,7 +23,7 @@ threadItemComponents = [
   'stanceCreated'
  ]
 
-module.exports =
+export default
   components:
     NewComment: NewComment
     PollCreated: PollCreated

@@ -1,8 +1,5 @@
-<style>
-</style>
-
 <script lang="coffee">
-module.exports =
+export default
   props:
   data: ->
     flash: {}

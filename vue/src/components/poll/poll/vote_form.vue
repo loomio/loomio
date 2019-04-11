@@ -2,19 +2,19 @@
 </style>
 
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+import EventBus from '@/shared/services/event_bus'
 
-{ submitOnEnter } = require 'shared/helpers/keyboard'
-{ submitStance }  = require 'shared/helpers/form'
-{ buttonStyle }   = require 'shared/helpers/style'
+import { submitOnEnter } from '@/shared/helpers/keyboard'
+import { submitStance }  from '@/shared/helpers/form'
+import { buttonStyle }   from '@/shared/helpers/style'
 
-_compact = require 'lodash/compact'
-_map = require 'lodash/map'
-_sortBy = require 'lodash/sortBy'
-_pull = require 'lodash/pull'
-_includes = require 'lodash/includes'
+import _compact from 'lodash/compact'
+import _map from 'lodash/map'
+import _sortBy from 'lodash/sortBy'
+import _pull from 'lodash/pull'
+import _includes from 'lodash/includes'
 
-module.exports =
+export default
   props:
     stance: Object
   data: ->

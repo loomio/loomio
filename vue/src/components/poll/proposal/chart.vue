@@ -13,10 +13,10 @@
 </style>
 
 <script lang="coffee">
-svg = require 'svg.js'
-AppConfig = require 'shared/services/app_config'
+import svg from 'svg.js'
+import AppConfig from '@/shared/services/app_config'
 
-module.exports =
+export default
   props:
     stanceCounts: Array
     diameter: Number

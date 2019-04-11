@@ -7,7 +7,7 @@
 </style>
 
 <script lang="coffee">
-module.exports =
+export default
   props:
     model: Object
     field: String

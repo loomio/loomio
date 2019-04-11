@@ -1,63 +1,43 @@
 import Vue from 'vue'
-import VueI18n from 'vue-i18n'
 import Vuex from 'vuex'
-import Vuetify from 'vuetify'
-import VueRouter from 'vue-router'
+import router from '@/routes.coffee'
+import store from '@/store/main.coffee'
+import i18n from '@/i18n.coffee'
+import app from '@/app.vue'
+import AppConfig from '@/shared/services/app_config'
+import moment from 'moment-timezone'
+import marked from '@/marked.coffee'
+import vuetify from '@/vuetify.coffee'
+import _forEach from 'lodash/forEach'
+import _camelCase from 'lodash/camelCase'
 
-window.Vue = Vue
-window.Vuetify = Vuetify
+import './registerServiceWorker'
 
-import colors from 'vuetify/es5/util/colors'
+Vue.config.productionTip = false
 
-Vue.prototype.$lt = (value) ->
-  if (typeof value == 'string')
-    @$t(value)
-  else
-    path = value.path
-    locale = value.locale
-    args = value.args
-    choice = value.choice
-    @$t(path, args)
-
-Vue.use(VueI18n)
-Vue.use(Vuex)
-Vue.use(Vuetify,
-  iconfont: 'mdi'
-  theme:
-    primary: colors.amber.base
-    secondary: colors.green.base
-    accent: colors.cyan.base
-  options:
-    customProperties: true
-)
-Vue.use(VueRouter)
-
-i18n = new VueI18n({locale: 'en', fallbackLocale: 'en'})
-require('src/directives/marked')
-moment = require 'moment-timezone'
-AppConfig = require 'shared/services/app_config'
-{ pluginConfigFor } = require 'shared/helpers/plugin'
-{ exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window'
-{ bootDat } = require 'shared/helpers/boot'
-
+# { pluginConfigFor } = require '@/shared/helpers/plugin'
+import { exportGlobals, hardReload, unsupportedBrowser } from '@/shared/helpers/window.coffee'
+import { bootDat } from '@/shared/helpers/boot.coffee'
 hardReload('/417.html') if unsupportedBrowser()
 exportGlobals()
-initServiceWorker()
 
 bootDat (appConfig) ->
   _.merge AppConfig, _.merge appConfig,
     timeZone: moment.tz.guess()
     pendingIdentity: appConfig.userPayload.pendingIdentity
-    pluginConfigFor: pluginConfigFor
+    # pluginConfigFor: pluginConfigFor
+
   window.Loomio = AppConfig
+
+  _forEach Loomio.records, (recordInterface, k) ->
+    model = Object.getPrototypeOf(recordInterface).model
+    if model && AppConfig.permittedParams[model.singular]
+      model.serializableAttributes = AppConfig.permittedParams[model.singular]
 
   fetch('/api/v1/translations?lang=en&vue=true').then (res) ->
     res.json().then (data) ->
       i18n.setLocaleMessage('en', data)
-      app = require('./app.vue').default
-      routes = require('src/routes.coffee')
-      router = new VueRouter(mode: 'history', routes: routes)
-      store = require('src/store/main.coffee')
+      # apply serializatable attriburtes
       new Vue(
         render: (h) -> h(app)
         router: router

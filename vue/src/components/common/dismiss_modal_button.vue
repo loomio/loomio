@@ -1,5 +1,5 @@
 <script lang="coffee">
-module.exports =
+export default
   props:
     close: Function
 </script>

@@ -1,4 +1,4 @@
-module.exports = {
+export default
   methods:
     # // navigate to the previous item
     # // if it's the first item, navigate to the last one
@@ -46,6 +46,3 @@ module.exports = {
        if (@popup)
          @popup.destroyAll()
          @popup = null
-
-
-}

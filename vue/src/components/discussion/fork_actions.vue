@@ -13,10 +13,10 @@
 </style>
 
 <script lang="coffee">
-Records      = require 'shared/services/records.coffee'
-ModalService = require 'shared/services/modal_service.coffee'
+import Records      from '@/shared/services/records.coffee'
+import ModalService from '@/shared/services/modal_service.coffee'
 
-module.exports =
+export default
   props:
     discussion: Object
   methods:

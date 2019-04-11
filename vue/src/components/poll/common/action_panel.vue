@@ -1,17 +1,13 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
+import AppConfig      from '@/shared/services/app_config'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import { myLastStanceFor } from '@/shared/helpers/poll'
 
-{ myLastStanceFor } = require 'shared/helpers/poll'
-
-module.exports =
+export default
   props:
     poll: Object
 
@@ -26,7 +22,7 @@ module.exports =
       myLastStanceFor(@poll)?
     userCanParticipate: ->
       AbilityService.canParticipateInPoll(@poll)
-      
+
   methods:
     refreshStance: -> @stance = @getLastStance()
     getLastStance: ->

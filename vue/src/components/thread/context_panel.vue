@@ -1,20 +1,19 @@
 <script lang="coffee">
-Records        = require 'shared/services/records'
-Session        = require 'shared/services/session'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-ThreadService  = require 'shared/services/thread_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
-FlashService   = require 'shared/services/flash_service'
-I18n           = require 'shared/services/i18n'
-urlFor         = require 'src/mixins/url_for'
-exactDate      = require 'src/mixins/exact_date'
+import Records        from '@/shared/services/records'
+import Session        from '@/shared/services/session'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import ThreadService  from '@/shared/services/thread_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import FlashService   from '@/shared/services/flash_service'
+import urlFor         from '@/mixins/url_for'
+import exactDate      from '@/mixins/exact_date'
 
-{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
-{ scrollTo }                                  = require 'shared/helpers/layout'
+import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
+import { scrollTo }                                  from '@/shared/helpers/layout'
 
-module.exports =
+export default
   mixins: [urlFor, exactDate]
   props:
     discussion: Object

@@ -15,6 +15,7 @@ module Dev::NintiesMoviesHelper
                               email_verified: true)
 
     @patrick.update(avatar_kind: 'uploaded')
+    @patrick.experienced!("vue_client") if params[:vue]
     @patrick.experienced!("introductionCarousel")
     @patrick
   end
@@ -35,6 +36,7 @@ module Dev::NintiesMoviesHelper
                                uploaded_avatar: File.new("#{Rails.root}/spec/fixtures/images/jennifer.png"),
                                email_verified: true)
     @jennifer.update(avatar_kind: 'uploaded')
+    @jennifer.experienced!("vue_client") if params[:vue]
     @jennifer.experienced!("introductionCarousel")
     @jennifer
   end
@@ -46,6 +48,7 @@ module Dev::NintiesMoviesHelper
                           password: 'gh0stmovie',
                           username: 'mingthemerciless',
                           email_verified: true)
+    @max.experienced!("vue_client") if params[:vue]
     @max.experienced!("introductionCarousel")
     @max
   end

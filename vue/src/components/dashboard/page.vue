@@ -44,21 +44,20 @@
 </style>
 
 <script lang="coffee">
-AppConfig          = require 'shared/services/app_config'
-Records            = require 'shared/services/records'
-Session            = require 'shared/services/session'
-EventBus           = require 'shared/services/event_bus'
-AbilityService     = require 'shared/services/ability_service'
-RecordLoader       = require 'shared/services/record_loader'
-ThreadQueryService = require 'shared/services/thread_query_service'
-ModalService       = require 'shared/services/modal_service'
+import AppConfig          from '@/shared/services/app_config'
+import Records            from '@/shared/services/records'
+import Session            from '@/shared/services/session'
+import EventBus           from '@/shared/services/event_bus'
+import AbilityService     from '@/shared/services/ability_service'
+import RecordLoader       from '@/shared/services/record_loader'
+import ThreadQueryService from '@/shared/services/thread_query_service'
+import ModalService       from '@/shared/services/modal_service'
+import _capitalize from 'lodash/capitalize'
+import _take from 'lodash/take'
+import _keys from 'lodash/keys'
+import _every from 'lodash/every'
 
-_capitalize = require 'lodash/capitalize'
-_take = require 'lodash/take'
-_keys = require 'lodash/keys'
-_every = require 'lodash/every'
-
-module.exports =
+export default
   data: ->
     dashboardLoaded: Records.discussions.collection.data.length > 0
     filter: @$route.params.filter || 'hide_muted'

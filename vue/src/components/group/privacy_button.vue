@@ -1,9 +1,8 @@
 <script lang="coffee">
-I18n = require 'shared/services/i18n'
 
-{ groupPrivacy } = require 'shared/helpers/helptext'
+import { groupPrivacy } from '@/shared/helpers/helptext'
 
-module.exports =
+export default
   props:
     group: Object
   computed:

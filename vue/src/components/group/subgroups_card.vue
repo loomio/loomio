@@ -1,12 +1,12 @@
 <script lang="coffee">
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-urlFor         = require 'src/mixins/url_for'
-truncate       = require 'src/mixins/truncate'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import urlFor         from '@/mixins/url_for'
+import truncate       from '@/mixins/truncate'
 
-module.exports =
+export default
   mixins: [urlFor, truncate]
   props:
     group: Object

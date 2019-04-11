@@ -4,12 +4,11 @@
 }
 </style>
 <script lang="coffee">
-Records = require 'shared/services/records'
+import Records from '@/shared/services/records'
+import { iconFor }       from '@/shared/helpers/poll'
+import { applySequence } from '@/shared/helpers/apply'
 
-{ iconFor }       = require 'shared/helpers/poll'
-{ applySequence } = require 'shared/helpers/apply'
-
-module.exports =
+export default
   props:
     poll: Object
     close: Function

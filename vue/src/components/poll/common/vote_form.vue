@@ -1,11 +1,10 @@
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+import EventBus from '@/shared/services/event_bus'
+import { submitOnEnter } from '@/shared/helpers/keyboard'
+import { submitStance }  from '@/shared/helpers/form'
+import { buttonStyle }   from '@/shared/helpers/style'
 
-{ submitOnEnter } = require 'shared/helpers/keyboard'
-{ submitStance }  = require 'shared/helpers/form'
-{ buttonStyle }   = require 'shared/helpers/style'
-
-module.exports =
+export default
   props:
     stance: Object
   data: ->

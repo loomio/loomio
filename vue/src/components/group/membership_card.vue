@@ -1,14 +1,11 @@
 <script lang="coffee">
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-RecordLoader   = require 'shared/services/record_loader'
-I18n           = require 'shared/services/i18n'
-Records        = require 'shared/services/records'
+import Records        from '@/shared/services/records'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import RecordLoader   from '@/shared/services/record_loader'
+import fromNow        from '@/mixins/from_now'
 
-fromNow        = require 'src/mixins/from_now'
-
-module.exports =
+export default
   mixins: [fromNow]
   props:
     group: Object

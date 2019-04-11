@@ -1,9 +1,9 @@
 <script lang="coffee">
-Records = require 'shared/services/records'
-{ iconFor }                = require 'shared/helpers/poll'
-{ applyPollStartSequence } = require 'shared/helpers/apply'
+import Records from '@/shared/services/records'
+import { iconFor }                from '@/shared/helpers/poll'
+import { applyPollStartSequence } from '@/shared/helpers/apply'
 
-module.exports =
+export default
   props:
     poll: Object
     close: Function

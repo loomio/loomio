@@ -48,6 +48,9 @@ module.exports = {
                } ]}]
   },
   plugins: [
+    new WebpackNightWatchPlugin({
+      url: './tests/e2e/nightwatch.conf.js'
+    }),
     new MiniCssExtractPlugin({ filename: "app.css" }),
     new VueLoaderPlugin(),
     new VuetifyLoaderPlugin({
@@ -65,7 +68,7 @@ module.exports = {
 
       match (originalTag, { kebabTag, camelTag, path, component }) {
         if (components[camelTag]) {
-          return [camelTag, `import ${camelTag} from 'src/components/${components[camelTag]}.vue'`]
+          return [camelTag, `import ${camelTag} from '@/components/${components[camelTag]}.vue'`]
         }
       }
     })

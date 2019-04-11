@@ -1,21 +1,21 @@
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
-InboxService   = require 'shared/services/inbox_service'
-ModalService   = require 'shared/services/modal_service'
+import AppConfig      from '@/shared/services/app_config'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import InboxService   from '@/shared/services/inbox_service'
+import ModalService   from '@/shared/services/modal_service'
 
-_isUndefined = require 'lodash/isUndefined'
-_sortBy = require 'lodash/sortBy'
-_some = require 'lodash/some'
-_filter = require 'lodash/filter'
-_find = require 'lodash/find'
-_head = require 'lodash/head'
+import _isUndefined from 'lodash/isUndefined'
+import _sortBy from 'lodash/sortBy'
+import _some from 'lodash/some'
+import _filter from 'lodash/filter'
+import _find from 'lodash/find'
+import _head from 'lodash/head'
 
-module.exports =
+export default
   data: ->
     currentState: ""
     showSidebar: null
@@ -58,7 +58,6 @@ module.exports =
 
     canLockSidebar: ->
       true
-      # $mdMedia("gt-sm")
 
     sidebarItemSelected: ->
       $mdSidenav('left').close() if !@canLockSidebar()
@@ -74,23 +73,11 @@ module.exports =
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
 
     openGroupModal: ->
-      @isGroupModalOpen = true
-    closeGroupModal: ->
-      @isGroupModalOpen = false
+      EventBus.$emit 'openModal', {component: 'GroupStart', props: { group: Records.groups.build() }}
 
     openThreadModal: ->
-      @isThreadModalOpen = true
-    closeThreadModal: ->
-      @isThreadModalOpen = false
+      EventBus.$emit 'openModal', {component: 'DiscussionStart', props: { discussion: Records.discussions.build(groupId: @currentGroup().id) }}
 
-    newGroup: ->
-      Records.groups.build()
-
-    newThread: ->
-      Records.discussions.build(groupId: @currentGroup().id)
-
-    # startThread: ->
-    #   ModalService.open 'DiscussionStartModal', discussion: => Records.discussions.build(groupId: @currentGroup().id)
 </script>
 
 <template lang="pug">
@@ -121,8 +108,6 @@ v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
         v-icon mdi-plus
       v-list-tile-content
         v-list-tile-title(v-t="'sidebar.start_thread'")
-  v-dialog(v-model='isThreadModalOpen' lazy persistent scrollable)
-    discussion-start(:discussion='newThread()', :close='closeThreadModal')
   v-divider.sidebar__divider
   v-list
     div(v-for='group in orderedGroups', :key='group.id')
@@ -141,6 +126,4 @@ v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
         v-icon mdi-plus
       v-list-tile-content
         span(v-t="'sidebar.start_group'")
-      v-dialog(v-model='isGroupModalOpen' lazy scrollable)
-        group-start(:group='newGroup()', :close='closeGroupModal')
 </template>

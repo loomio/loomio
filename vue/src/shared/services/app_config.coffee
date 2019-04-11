@@ -1,0 +1,2 @@
+config = {}
+export default config

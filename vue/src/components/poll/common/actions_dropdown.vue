@@ -1,9 +1,9 @@
 <script lang="coffee">
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
 
-module.exports =
+export default
   props:
     poll: Object
   methods:

@@ -11,7 +11,7 @@ md-input-container label.lmo-validation-error__message {
 </style>
 
 <script lang="coffee">
-module.exports =
+export default
   props:
     subject: Object
     field: String

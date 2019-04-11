@@ -1,10 +1,7 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
-ModalService   = require 'shared/services/modal_service'
+import ModalService  from '@/shared/services/modal_service'
 
-module.exports =
+export default
   props:
     stance: Object
   data: ->

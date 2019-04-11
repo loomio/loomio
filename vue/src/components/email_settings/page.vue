@@ -24,17 +24,16 @@
 </style>
 
 <script lang="coffee">
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-AppConfig      = require 'shared/services/app_config'
-ModalService   = require 'shared/services/modal_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import AppConfig      from '@/shared/services/app_config'
+import ModalService   from '@/shared/services/modal_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import { submitForm }   from '@/shared/helpers/form'
 
-{ submitForm }   = require 'shared/helpers/form'
-
-module.exports =
+export default
   data: ->
     newsletterEnabled: AppConfig.newsletterEnabled
     user: null

@@ -1,7 +1,7 @@
 <script lang="coffee">
 import tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
-import Records from 'shared/services/records'
+import Records from '@/shared/services/records'
 import _concat from 'lodash/concat'
 import _sortBy from 'lodash/sortBy'
 import _isString from 'lodash/isString'
@@ -9,7 +9,7 @@ import _filter from 'lodash/filter'
 import _uniq from 'lodash/uniq'
 import _map from 'lodash/map'
 import _forEach from 'lodash/forEach'
-import FileUploader from 'shared/services/file_uploader'
+import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
@@ -18,11 +18,11 @@ import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
   OrderedList, BulletList, ListItem, TodoItem, TodoList, Bold, Code,
   Italic, Link, Strike, Underline, History, Mention, Placeholder } from 'tiptap-extensions'
 import { insertText } from 'tiptap-commands'
-import Image from 'shared/tiptap_extentions/image.js'
+import Image from '@/shared/tiptap_extentions/image.js'
 
 import { Picker } from 'emoji-mart-vue'
 
-module.exports =
+export default
   props:
     model: Object
     field: String

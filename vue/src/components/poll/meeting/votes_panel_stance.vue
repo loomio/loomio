@@ -1,8 +1,8 @@
 <script lang="coffee">
-{ listenForTranslations } = require 'shared/helpers/listen'
-{ participantName }       = require 'shared/helpers/poll'
+import { listenForTranslations } from '@/shared/helpers/listen'
+import { participantName }       from '@/shared/helpers/poll'
 
-module.exports =
+export default
   props:
     stance: Object
   created: ->

@@ -2,14 +2,15 @@
 </style>
 
 <script lang="coffee">
-bowser = require 'bowser'
-AppConfig = require 'shared/services/app_config'
+import bowser from 'bowser'
+import AppConfig from '@/shared/services/app_config'
 
-module.exports =
+export default {
   props:
   data: ->
     browser: bowser
     siteName: AppConfig.theme.site_name
+}
 </script>
 
 <template>

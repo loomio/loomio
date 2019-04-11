@@ -22,10 +22,10 @@
 </style>
 
 <script lang="coffee">
-{ fieldFromTemplate, myLastStanceFor } = require 'shared/helpers/poll'
-urlFor                                 = require 'src/mixins/url_for'
+import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
+import urlFor                                 from '@/mixins/url_for'
 
-module.exports =
+export default
   mixins: [urlFor]
   props:
     poll: Object

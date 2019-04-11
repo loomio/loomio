@@ -1,7 +1,5 @@
 <script lang="coffee">
-I18n = require 'shared/services/i18n'
-
-module.exports =
+export default
   props:
     poll: Object
 </script>

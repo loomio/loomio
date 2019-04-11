@@ -18,17 +18,15 @@
 </style>
 
 <script lang="coffee">
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import _isEmpty  from 'lodash/isEmpty'
+import _debounce from 'lodash/debounce'
+import { applyLoadingFunction } from '@/shared/helpers/apply'
 
-_isEmpty  = require 'lodash/isEmpty'
-_debounce = require 'lodash/debounce'
-
-{ applyLoadingFunction } = require 'shared/helpers/apply'
-
-module.exports =
+export default
   data: ->
     group: {}
     fragment: ''

@@ -2,16 +2,16 @@
 </style>
 
 <script lang="coffee">
-Session        = require 'shared/services/session'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
-FlashService   = require 'shared/services/flash_service'
-ModalService   = require 'shared/services/modal_service'
+import Session        from '@/shared/services/session'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import FlashService   from '@/shared/services/flash_service'
+import ModalService   from '@/shared/services/modal_service'
 
-{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
+import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
 
-module.exports =
+export default
   props:
     event: Object
     eventable: Object

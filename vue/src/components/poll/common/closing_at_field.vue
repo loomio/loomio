@@ -24,11 +24,10 @@
 </style>
 
 <script lang="coffee">
-AppConfig = require 'shared/services/app_config'
+import AppConfig from '@/shared/services/app_config'
+import _times from 'lodash/times'
 
-_times = require('lodash/times')
-
-module.exports =
+export default
   props:
     poll: Object
   data: ->

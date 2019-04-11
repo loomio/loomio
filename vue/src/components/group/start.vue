@@ -1,10 +1,9 @@
 <script lang="coffee">
-Records       = require 'shared/services/records'
-LmoUrlService = require 'shared/services/lmo_url_service'
+import Records       from '@/shared/services/records'
+import LmoUrlService from '@/shared/services/lmo_url_service'
+import { applySequence } from '@/shared/helpers/apply'
 
-{ applySequence } = require 'shared/helpers/apply'
-
-module.exports =
+export default
   props:
     group: Object
     close: Function

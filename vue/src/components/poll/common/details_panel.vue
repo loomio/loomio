@@ -11,16 +11,15 @@
 </style>
 
 <script lang="coffee">
-Records        = require 'shared/services/records'
-Session        = require 'shared/services/session'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
-FlashService   = require 'shared/services/flash_service'
+import Records        from '@/shared/services/records'
+import Session        from '@/shared/services/session'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import FlashService   from '@/shared/services/flash_service'
+import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
 
-{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
-
-module.exports =
+export default
   props:
     poll: Object
   data: ->
@@ -77,7 +76,7 @@ module.exports =
   .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='!poll.translation && poll.detailsFormat == "html"', v-html='poll.details')
   .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='poll.translation')
     translation(:model='poll', :field='details')
-  attachment-list(:attachments="poll.attachments")  
+  attachment-list(:attachments="poll.attachments")
   document-list(:model='poll')
   v-card-actions.lmo-md-actions
     // <reactions_display model="poll" load="true"></reactions_display>

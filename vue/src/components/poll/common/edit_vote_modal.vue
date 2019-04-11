@@ -1,23 +1,21 @@
-<style lang="scss">
-</style>
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+import EventBus from '@/shared/services/event_bus'
+import { listenForLoading } from '@/shared/helpers/listen'
+import { iconFor }          from '@/shared/helpers/poll'
+import { submitStance }  from '@/shared/helpers/form'
+import PollCommonDirective from '@/components/poll/common/directive.vue'
+import _sortBy from 'lodash/sortBy'
 
-{ listenForLoading } = require 'shared/helpers/listen'
-{ iconFor }          = require 'shared/helpers/poll'
-{ submitStance }  = require 'shared/helpers/form'
-
-_sortBy = require 'lodash/sortBy'
-
-module.exports =
+export default
   props:
     stance: Object
     close: Function
   data: ->
     isEditing: true
     dstance: @stance.clone()
-  beforeCreate: ->
-    @$options.components.PollCommonDirective = require('src/components/poll/common/directive.vue').default
+  components:
+    PollCommonDirective: PollCommonDirective
+
   created: ->
     @submit = submitStance @, @stance,
       prepareFn: ->

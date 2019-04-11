@@ -30,12 +30,12 @@
 </style>
 
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+import EventBus from '@/shared/services/event_bus'
 
-_reduce = require('lodash/reduce')
-_sortBy = require('lodash/sortBy')
+import _reduce from 'lodash/reduce'
+import _sortBy from 'lodash/sortBy'
 
-module.exports =
+export default
   props:
     poll: Object
     zone: Object

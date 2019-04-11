@@ -14,14 +14,14 @@
 
 </style>
 <script lang="coffee">
-Records = require 'shared/services/records'
+import Records from '@/shared/services/records'
 
-{ submitForm }    = require 'shared/helpers/form'
-{ submitOnEnter } = require 'shared/helpers/keyboard'
+import { submitForm }    from '@/shared/helpers/form'
+import { submitOnEnter } from '@/shared/helpers/keyboard'
 
-_invokeMap = require 'lodash/invokeMap'
+import _invokeMap from 'lodash/invokeMap'
 
-module.exports =
+export default
   props:
     comment: Object
     close: Function

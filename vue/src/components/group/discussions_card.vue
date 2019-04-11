@@ -1,19 +1,16 @@
 <script lang="coffee">
-Records            = require 'shared/services/records'
-AbilityService     = require 'shared/services/ability_service'
-EventBus           = require 'shared/services/event_bus'
-RecordLoader       = require 'shared/services/record_loader'
-ThreadQueryService = require 'shared/services/thread_query_service'
-ModalService       = require 'shared/services/modal_service'
+import Records            from '@/shared/services/records'
+import AbilityService     from '@/shared/services/ability_service'
+import EventBus           from '@/shared/services/event_bus'
+import RecordLoader       from '@/shared/services/record_loader'
+import ThreadQueryService from '@/shared/services/thread_query_service'
+import ModalService       from '@/shared/services/modal_service'
+import { applyLoadingFunction } from '@/shared/helpers/apply'
+import _isEmpty from 'lodash/isEmpty'
+import _map from 'lodash/map'
+import _throttle from 'lodash/throttle'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply'
-
-# import { isEmpty } from 'lodash'
-_isEmpty = require 'lodash/isEmpty'
-_map = require 'lodash/map'
-_throttle = require 'lodash/throttle'
-
-module.exports =
+export default
   props:
     group: Object
   mounted: ->

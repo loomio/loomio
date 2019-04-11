@@ -1,7 +1,7 @@
 <script lang="coffee">
-Records = require 'shared/services/records'
+import Records from '@/shared/services/records'
 
-module.exports =
+export default
   props:
     notification: Object
 

@@ -9,11 +9,10 @@
 </style>
 
 <script lang="coffee">
-svg = require 'svg.js'
+import svg from 'svg.js'
+import AppConfig from '@/shared/services/app_config'
 
-AppConfig = require 'shared/services/app_config'
-
-module.exports =
+export default
   props:
     stanceCounts: Array
     goal: Number

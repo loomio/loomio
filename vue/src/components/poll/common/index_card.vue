@@ -1,10 +1,9 @@
 <script lang="coffee">
-Records       = require 'shared/services/records'
-LmoUrlService = require 'shared/services/lmo_url_service'
+import Records       from '@/shared/services/records'
+import LmoUrlService from '@/shared/services/lmo_url_service'
+import { applyLoadingFunction } from '@/shared/helpers/apply'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply'
-
-module.exports =
+export default
   props:
     model: Object
     limit: Number
@@ -42,6 +41,3 @@ v-card.poll-common-index-card
       span(v-t="{ path: 'poll_common_index_card.count', args: { count: model.closedPollsCount } }")
     // <loading v-if="fetchRecordsExecuting"></loading>
 </template>
-
-<style lang="scss">
-</style>

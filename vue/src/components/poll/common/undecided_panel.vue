@@ -1,13 +1,10 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-RecordLoader   = require 'shared/services/record_loader'
-LmoUrlService  = require 'shared/services/lmo_url_service'
+import Records        from '@/shared/services/records'
+import AbilityService from '@/shared/services/ability_service'
+import RecordLoader   from '@/shared/services/record_loader'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
 
-module.exports =
+export default
   props:
     poll: Object
   data: ->

@@ -7,10 +7,9 @@
 }
 </style>
 <script lang="coffee">
-I18n = require 'shared/services/i18n'
-{ discussionPrivacy } = require 'shared/helpers/helptext'
+import { discussionPrivacy } from '@/shared/helpers/helptext'
 
-module.exports =
+export default
   props:
     discussion: Object
     private: Boolean

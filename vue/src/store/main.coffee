@@ -1,9 +1,12 @@
-Records       = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-Session       = require 'shared/services/session'
-import Vuex from 'vuex'
+import Records        from '@/shared/services/records'
+import AbilityService from '@/shared/services/ability_service'
+import Session        from '@/shared/services/session'
+import Vue            from 'vue'
+import Vuex           from 'vuex'
 
-module.exports = new Vuex.Store
+Vue.use(Vuex)
+
+export default new Vuex.Store
   state:
     discussions: Records.discussions.collection.data
     comments: Records.comments.collection.data

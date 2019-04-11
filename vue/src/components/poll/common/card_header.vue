@@ -1,9 +1,8 @@
 <script lang="coffee">
-AbilityService = require 'shared/services/ability_service'
+import AbilityService from '@/shared/services/ability_service'
+import { iconFor } from '@/shared/helpers/poll'
 
-{ iconFor } = require 'shared/helpers/poll'
-
-module.exports =
+export default
   props:
     poll: Object
   methods:

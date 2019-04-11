@@ -1,12 +1,10 @@
-<style lang="scss">
-</style>
 <script lang="coffee">
-Records  = require 'shared/services/records'
-EventBus = require 'shared/services/event_bus'
+import Records  from '@/shared/services/records'
+import EventBus from '@/shared/services/event_bus'
+import { submitForm }    from '@/shared/helpers/form'
+import { submitOnEnter } from '@/shared/helpers/keyboard'
 
-{ submitForm }    = require 'shared/helpers/form'
-{ submitOnEnter } = require 'shared/helpers/keyboard'
-module.exports =
+export default
   props:
     user: Object
   data: ->

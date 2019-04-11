@@ -8,16 +8,14 @@
 </style>
 
 <script lang="coffee">
-AppConfig         = require 'shared/services/app_config'
-EventBus          = require 'shared/services/event_bus'
-NestedEventWindow = require 'shared/services/nested_event_window'
+import AppConfig         from '@/shared/services/app_config'
+import EventBus          from '@/shared/services/event_bus'
+import NestedEventWindow from '@/shared/services/nested_event_window'
 
-module.exports =
+export default
   props:
     parentEvent: Object
     parentEventWindow: Object
-  beforeCreate: ->
-    @$options.components.ThreadItem = require('src/components/thread/item.vue').default
   data: ->
     eventWindow: new NestedEventWindow
       parentEvent:       @parentEvent

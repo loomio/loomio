@@ -40,17 +40,17 @@
 </style>
 
 <script lang="coffee">
-Records  = require 'shared/services/records'
-EventBus = require 'shared/services/event_bus'
+import Records  from '@/shared/services/records'
+import EventBus from '@/shared/services/event_bus'
 
-{ submitStance }  = require 'shared/helpers/form'
-{ submitOnEnter } = require 'shared/helpers/keyboard'
+import { submitStance }  from '@/shared/helpers/form'
+import { submitOnEnter } from '@/shared/helpers/keyboard'
 
-_head = require 'lodash/head'
-_filter = require 'lodash/filter'
-_map = require 'lodash/map'
+import _head from 'lodash/head'
+import _filter from 'lodash/filter'
+import _map from 'lodash/map'
 
-module.exports =
+export default
   props:
     stance: Object
   data: ->

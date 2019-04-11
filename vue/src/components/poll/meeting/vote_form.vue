@@ -23,20 +23,20 @@ $box-width:60px;
 </style>
 
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+import EventBus from '@/shared/services/event_bus'
 
-{ submitOnEnter } = require 'shared/helpers/keyboard'
-{ submitStance }  = require 'shared/helpers/form'
-{ buttonStyle }   = require 'shared/helpers/style'
+import { submitOnEnter } from '@/shared/helpers/keyboard'
+import { submitStance }  from '@/shared/helpers/form'
+import { buttonStyle }   from '@/shared/helpers/style'
 
-_compact = require 'lodash/compact'
-_map = require 'lodash/map'
-_toPairs = require 'lodash/toPairs'
-_fromPairs = require 'lodash/fromPairs'
-_some = require 'lodash/some'
-_sortBy = require 'lodash/sortBy'
+import _compact from 'lodash/compact'
+import _map from 'lodash/map'
+import _toPairs from 'lodash/toPairs'
+import _fromPairs from 'lodash/fromPairs'
+import _some from 'lodash/some'
+import _sortBy from 'lodash/sortBy'
 
-module.exports =
+export default
   props:
     stance: Object
   data: ->

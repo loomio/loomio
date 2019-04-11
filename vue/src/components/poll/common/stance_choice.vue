@@ -8,9 +8,9 @@
 </style>
 
 <script lang="coffee">
-{ fieldFromTemplate } = require 'shared/helpers/poll'
+import { fieldFromTemplate } from '@/shared/helpers/poll'
 
-module.exports =
+export default
   props:
     stanceChoice: Object
   methods:

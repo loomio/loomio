@@ -6,14 +6,13 @@
 </style>
 
 <script lang="coffee">
-Records        = require 'shared/services/records'
-Session        = require 'shared/services/session'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
+import Records        from '@/shared/services/records'
+import Session        from '@/shared/services/session'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
 
-{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
-
-module.exports =
+export default
   props:
     poll: Object
   created: ->

@@ -21,14 +21,14 @@
 </style>
 
 <script lang="coffee">
-Records      = require 'shared/services/records'
-EventBus     = require 'shared/services/event_bus'
-ModalService = require 'shared/services/modal_service'
-urlFor       = require 'src/mixins/url_for'
+import Records      from '@/shared/services/records'
+import EventBus     from '@/shared/services/event_bus'
+import ModalService from '@/shared/services/modal_service'
+import urlFor       from '@/mixins/url_for'
 
-_sortBy   = require 'lodash/sortBy'
+import _sortBy   from 'lodash/sortBy'
 
-module.exports =
+export default
   mixins: [urlFor]
   data: ->
     loading: true

@@ -1,7 +1,7 @@
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+import EventBus from '@/shared/services/event_bus'
 
-module.exports =
+export default
   data: ->
     clicked: false
 

@@ -1,17 +1,12 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
-AppConfig    = require 'shared/services/app_config'
-Records      = require 'shared/services/records'
-ModalService = require 'shared/services/modal_service'
+import AppConfig    from '@/shared/services/app_config'
+import Records      from '@/shared/services/records'
+import ModalService from '@/shared/services/modal_service'
+import { fieldFromTemplate } from '@/shared/helpers/poll'
+import _map from 'lodash/map'
+import _reduce from 'lodash/reduce'
 
-{ fieldFromTemplate } = require 'shared/helpers/poll'
-
-_map = require 'lodash/map'
-_reduce = require 'lodash/reduce'
-
-module.exports =
+export default
   data: ->
     # isPollModalOpen: false
     modals: _reduce(@pollTypes(), (modals, poll) =>

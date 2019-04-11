@@ -1,13 +1,13 @@
 <script lang="coffee">
-{ fieldFromTemplate, myLastStanceFor } = require 'shared/helpers/poll'
-urlFor                                 = require 'src/mixins/url_for'
+import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
+import urlFor                                 from '@/mixins/url_for'
 
-import BarChart from 'src/components/poll/common/bar_chart.vue'
-import ProcessChart from 'src/components/poll/common/progress_chart.vue'
-import PollProposalChartPreview from 'src/components/poll/proposal/chart_preview.vue'
-import MatrixChart from 'src/components/poll/meeting/matrix_chart.vue'
+import BarChart from '@/components/poll/common/bar_chart.vue'
+import ProcessChart from '@/components/poll/common/progress_chart.vue'
+import PollProposalChartPreview from '@/components/poll/proposal/chart_preview.vue'
+import MatrixChart from '@/components/poll/meeting/matrix_chart.vue'
 
-module.exports =
+export default
   components:
     BarChart: BarChart
   mixins: [urlFor]

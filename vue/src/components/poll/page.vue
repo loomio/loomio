@@ -1,16 +1,16 @@
 <script lang="coffee">
-Session       = require 'shared/services/session'
-Records       = require 'shared/services/records'
-EventBus      = require 'shared/services/event_bus'
-ModalService  = require 'shared/services/modal_service'
-LmoUrlService = require 'shared/services/lmo_url_service'
+import Session       from '@/shared/services/session'
+import Records       from '@/shared/services/records'
+import EventBus      from '@/shared/services/event_bus'
+import ModalService  from '@/shared/services/modal_service'
+import LmoUrlService from '@/shared/services/lmo_url_service'
 
-_isEmpty     = require 'lodash/isEmpty'
+import _isEmpty     from 'lodash/isEmpty'
 
-{ subscribeTo }     = require 'shared/helpers/cable'
-{ myLastStanceFor } = require 'shared/helpers/poll'
+import { subscribeTo }     from '@/shared/helpers/cable'
+import { myLastStanceFor } from '@/shared/helpers/poll'
 
-module.exports =
+export default
   data: ->
     poll: {}
   created: ->

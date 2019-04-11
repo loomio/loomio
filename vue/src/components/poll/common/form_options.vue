@@ -1,18 +1,16 @@
 <style lang="scss">
 </style>
 <script lang="coffee">
-Session        = require 'shared/services/session'
-AbilityService = require 'shared/services/ability_service'
-EventBus       = require 'shared/services/event_bus'
+import Session        from '@/shared/services/session'
+import AbilityService from '@/shared/services/ability_service'
+import EventBus       from '@/shared/services/event_bus'
+import { registerKeyEvent }  from '@/shared/helpers/keyboard'
+import { fieldFromTemplate } from '@/shared/helpers/poll'
+import _pull from 'lodash/pull'
+import _includes from 'lodash/includes'
+import _clone from 'lodash/clone'
 
-{ registerKeyEvent }  = require 'shared/helpers/keyboard'
-{ fieldFromTemplate } = require 'shared/helpers/poll'
-
-_pull = require 'lodash/pull'
-_includes = require 'lodash/includes'
-_clone = require 'lodash/clone'
-
-module.exports =
+export default
   props:
     poll: Object
   data: ->

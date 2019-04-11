@@ -16,6 +16,7 @@ cache:
 addons:
   firefox: "65.0"
   postgresql: "9.6"
+  chrome: stable
 
 env:
   global:
@@ -31,6 +32,7 @@ env:
     - TASK=e2e
     - TASK=rspec
     - TASK=plugins
+    # - TASK=vue
 
 before_install:
   - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
@@ -51,15 +53,14 @@ before_script:
   - createdb loomio_test
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
-  - bundle exec rake client:build
-  - bundle exec rake travis:cc_reporter
   - bundle exec rails server -b 0.0.0.0 > /dev/null &
 
 script:
-  - if [ "$TASK" = "rspec" ];   then bundle exec rspec ; fi
+  - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
   - if [ "$TASK" = "e2e" ];     then bundle exec rake travis:e2e; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
+  - if [ "$TASK" = "vue" ];     then bundle exec rake travis:vue; fi
 
 after_script:
   - bundle exec rake travis:cleanup

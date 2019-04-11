@@ -8,17 +8,15 @@
 </style>
 
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-InboxService   = require 'shared/services/inbox_service'
-ModalService   = require 'shared/services/modal_service'
-urlFor         = require 'src/mixins/url_for'
+import AppConfig     from '@/shared/services/app_config'
+import Session       from '@/shared/services/session'
+import Records       from '@/shared/services/records'
+import EventBus      from '@/shared/services/event_bus'
+import InboxService  from '@/shared/services/inbox_service'
+import ModalService  from '@/shared/services/modal_service'
+import urlFor        from '@/mixins/url_for'
 
-# import ThreadPreviewCollection from 'src/components/thread/preview_collection.vue'
-
-module.exports =
+export default
   mixins: [urlFor]
   data: ->
     threadLimit: 50

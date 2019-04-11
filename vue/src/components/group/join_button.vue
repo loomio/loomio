@@ -1,15 +1,12 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-FlashService   = require 'shared/services/flash_service'
-ModalService   = require 'shared/services/modal_service'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import FlashService   from '@/shared/services/flash_service'
+import ModalService   from '@/shared/services/modal_service'
 
-module.exports =
+export default
   props:
     group: Object
     block: Object

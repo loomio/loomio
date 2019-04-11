@@ -100,10 +100,10 @@
 </style>
 
 <script lang="coffee">
-ThreadService = require 'shared/services/thread_service'
-urlFor        = require 'src/mixins/url_for'
+import ThreadService from '@/shared/services/thread_service'
+import urlFor        from '@/mixins/url_for'
 
-module.exports =
+export default
   mixins: [urlFor]
   props:
     thread: Object

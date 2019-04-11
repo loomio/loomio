@@ -1,11 +1,10 @@
 <script lang="coffee">
-Records        = require 'shared/services/records'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
+import Records        from '@/shared/services/records'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import { submitForm } from '@/shared/helpers/form'
 
-{ submitForm } = require 'shared/helpers/form'
-
-module.exports =
+export default
   props:
     group: Object
 

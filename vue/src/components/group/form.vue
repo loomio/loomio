@@ -1,14 +1,9 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-AbilityService = require 'shared/services/ability_service'
-I18n           = require 'shared/services/i18n'
+import AppConfig      from '@/shared/services/app_config'
+import AbilityService from '@/shared/services/ability_service'
+import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 
-{ groupPrivacy, groupPrivacyStatement } = require 'shared/helpers/helptext'
-
-module.exports =
+export default
   props:
     group: Object
     modal: Boolean

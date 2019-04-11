@@ -1,9 +1,9 @@
 <script lang="coffee">
-AppConfig       = require 'shared/services/app_config'
-Session         = require 'shared/services/session'
-UserHelpService = require 'shared/services/user_help_service'
+import AppConfig       from '@/shared/services/app_config'
+import Session         from '@/shared/services/session'
+import UserHelpService from '@/shared/services/user_help_service'
 
-module.exports =
+export default
   methods:
     signOut: ->
       Session.signOut()

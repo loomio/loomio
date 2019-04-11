@@ -103,20 +103,19 @@
 </style>
 
 <script lang="coffee">
-LmoUrlService     = require 'shared/services/lmo_url_service'
-Session           = require 'shared/services/session'
-Records           = require 'shared/services/records'
-EventBus          = require 'shared/services/event_bus'
-AbilityService    = require 'shared/services/ability_service'
-PaginationService = require 'shared/services/pagination_service'
-LmoUrlService     = require 'shared/services/lmo_url_service'
+import LmoUrlService     from '@/shared/services/lmo_url_service'
+import Session           from '@/shared/services/session'
+import Records           from '@/shared/services/records'
+import EventBus          from '@/shared/services/event_bus'
+import AbilityService    from '@/shared/services/ability_service'
+import PaginationService from '@/shared/services/pagination_service'
 
-{ scrollTo }         = require 'shared/helpers/layout'
-{ registerKeyEvent } = require 'shared/helpers/keyboard'
+import { scrollTo }         from '@/shared/helpers/layout'
+import { registerKeyEvent } from '@/shared/helpers/keyboard'
 
-_isEmpty     = require 'lodash/isEmpty'
+import _isEmpty     from 'lodash/isEmpty'
 
-module.exports =
+export default
   data: ->
     discussion: {}
   created: ->

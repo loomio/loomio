@@ -5,7 +5,7 @@
 </style>
 
 <script lang="coffee">
-module.exports =
+export default
   props:
     discussion: Object
 </script>

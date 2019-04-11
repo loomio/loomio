@@ -1,8 +1,8 @@
 <script lang="coffee">
-{ submitOnEnter } = require 'shared/helpers/keyboard'
-{ submitPoll }    = require 'shared/helpers/form'
+import { submitOnEnter } from '@/shared/helpers/keyboard'
+import { submitPoll }    from '@/shared/helpers/form'
 
-module.exports =
+export default
   props:
     poll: Object
     close: Function

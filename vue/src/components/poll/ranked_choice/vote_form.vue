@@ -31,19 +31,19 @@
 </style>
 
 <script lang="coffee">
-EventBus = require 'shared/services/event_bus'
+import EventBus from '@/shared/services/event_bus'
 
-{ submitOnEnter, registerKeyEvent } = require 'shared/helpers/keyboard'
-{ submitStance }                    = require 'shared/helpers/form'
+import { submitOnEnter, registerKeyEvent } from '@/shared/helpers/keyboard'
+import { submitStance }                    from '@/shared/helpers/form'
 
-_sortBy = require 'lodash/sortBy'
-_find = require 'lodash/find'
-_matchesProperty = require 'lodash/matchesProperty'
-_take = require 'lodash/take'
-_map = require 'lodash/map'
-_findIndex = require 'lodash/findIndex'
+import _sortBy from 'lodash/sortBy'
+import _find from 'lodash/find'
+import _matchesProperty from 'lodash/matchesProperty'
+import _take from 'lodash/take'
+import _map from 'lodash/map'
+import _findIndex from 'lodash/findIndex'
 
-module.exports =
+export default
   props:
     stance: Object
   data: ->

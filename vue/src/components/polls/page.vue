@@ -1,80 +1,25 @@
-<style lang="scss">
-.polls-page {
-  margin-top: 16px;
-}
-
-.polls-page__heading a {
-  // color: $primary-text-color;
-}
-
-.polls-page__filters {
-  align-items: center;
-}
-
-.polls-page__status-filter {
-  margin-left: 30px;
-  margin-right: 30px;
-}
-
-.polls-page__group-filter {
-  min-width: 200px;
-}
-
-.polls-page__icon {
-  vertical-align: middle;
-  margin-bottom: 4px;
-}
-
-.polls-page__count {
-  font-weight: bold;
-  margin-top: 16px;
-}
-
-.polls-page__load-more {
-  margin-bottom: 16px;
-}
-
-.polls-page__search {
-  flex-grow: 1;
-  margin: 16px 0 -10px;
-  i {
-    position: absolute;
-    right: 0;
-    // color: $grey-on-white;
-  }
-}
-
-// @media (max-width: $small-max-px) {
-//   .polls-page__filters { flex-direction: column; }
-//   .polls-page__search { width: 100%; }
-//   .polls-page__status-filter,
-//   .polls-page__group-filter {
-//     width: 100%;
-//   }
-// }
-</style>
 <script lang="coffee">
-AppConfig      = require 'shared/services/app_config'
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-RecordLoader   = require 'shared/services/record_loader'
-ModalService   = require 'shared/services/modal_service'
-LmoUrlService  = require 'shared/services/lmo_url_service'
-urlFor = require 'src/mixins/url_for'
+import AppConfig      from '@/shared/services/app_config'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import RecordLoader   from '@/shared/services/record_loader'
+import ModalService   from '@/shared/services/modal_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import urlFor from '@/mixins/url_for'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply'
-import Loading from 'src/components/common/loading.vue'
-import PollCommonPreview from 'src/components/poll/common/preview.vue'
+import { applyLoadingFunction } from '@/shared/helpers/apply'
+import Loading from '@/components/common/loading.vue'
+import PollCommonPreview from '@/components/poll/common/preview.vue'
 
-_map = require 'lodash/map'
-_capitalize = require 'lodash/capitalize'
-_sortBy = require 'lodash/sortBy'
-_isEmpty = require 'lodash/isEmpty'
-_filter = require 'lodash/filter'
+import _map from 'lodash/map'
+import _capitalize from 'lodash/capitalize'
+import _sortBy from 'lodash/sortBy'
+import _isEmpty from 'lodash/isEmpty'
+import _filter from 'lodash/filter'
 
-module.exports =
+export default
   components:
     Loading: Loading
     PollCommonPreview: PollCommonPreview
@@ -184,3 +129,58 @@ v-container.lmo-main-container.polls-page
       .polls-page__load-more(v-if='canLoadMore')
         button.md-primary(md-button='', v-t="'poll_common.load_more'", @click='loadMore()')
 </template>
+<style lang="scss">
+.polls-page {
+  margin-top: 16px;
+}
+
+.polls-page__heading a {
+  // color: $primary-text-color;
+}
+
+.polls-page__filters {
+  align-items: center;
+}
+
+.polls-page__status-filter {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.polls-page__group-filter {
+  min-width: 200px;
+}
+
+.polls-page__icon {
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+
+.polls-page__count {
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.polls-page__load-more {
+  margin-bottom: 16px;
+}
+
+.polls-page__search {
+  flex-grow: 1;
+  margin: 16px 0 -10px;
+  i {
+    position: absolute;
+    right: 0;
+    // color: $grey-on-white;
+  }
+}
+
+// @media (max-width: $small-max-px) {
+//   .polls-page__filters { flex-direction: column; }
+//   .polls-page__search { width: 100%; }
+//   .polls-page__status-filter,
+//   .polls-page__group-filter {
+//     width: 100%;
+//   }
+// }
+</style>

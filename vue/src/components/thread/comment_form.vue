@@ -1,14 +1,13 @@
 <script lang="coffee">
-Session        = require 'shared/services/session'
-Records        = require 'shared/services/records'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-I18n           = require 'shared/services/i18n'
+import Session        from '@/shared/services/session'
+import Records        from '@/shared/services/records'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
 
-{ submitForm }    = require 'shared/helpers/form'
-{ submitOnEnter } = require 'shared/helpers/keyboard'
+import { submitForm }    from '@/shared/helpers/form'
+import { submitOnEnter } from '@/shared/helpers/keyboard'
 
-module.exports =
+export default
   props:
     discussion: Object
     parentComment: Object

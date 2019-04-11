@@ -1,14 +1,11 @@
 <script lang="coffee">
-Session        = require 'shared/services/session'
-AbilityService = require 'shared/services/ability_service'
-I18n           = require 'shared/services/i18n'
+import Session        from '@/shared/services/session'
+import AbilityService from '@/shared/services/ability_service'
+import { discussionPrivacy } from '@/shared/helpers/helptext'
+import _map from 'lodash/map'
+import _sortBy from 'lodash/sortBy'
 
-{ discussionPrivacy } = require 'shared/helpers/helptext'
-
-_map = require 'lodash/map'
-_sortBy = require 'lodash/sortBy'
-
-module.exports =
+export default
   props:
     discussion: Object
   data: ->

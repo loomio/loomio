@@ -1,8 +1,8 @@
 <script lang="coffee">
-Session = require 'shared/services/session'
-urlFor  = require 'src/mixins/url_for'
+import Session from '@/shared/services/session'
+import urlFor  from '@/mixins/url_for'
 
-module.exports =
+export default
   mixins: [urlFor]
   props:
     poll: Object

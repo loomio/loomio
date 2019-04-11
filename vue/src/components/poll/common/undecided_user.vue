@@ -10,12 +10,11 @@
 </style>
 
 <script lang="coffee">
-FlashService   = require 'shared/services/flash_service'
-AbilityService = require 'shared/services/ability_service'
+import FlashService   from '@/shared/services/flash_service'
+import AbilityService from '@/shared/services/ability_service'
+import { applyLoadingFunction } from '@/shared/helpers/apply'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply'
-
-module.exports =
+export default
   props:
     user: Object
     poll: Object

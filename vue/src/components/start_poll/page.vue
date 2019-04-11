@@ -10,16 +10,16 @@
 </style>
 
 <script lang="coffee">
-Records       = require 'shared/services/records'
-EventBus      = require 'shared/services/event_bus'
-ModalService  = require 'shared/services/modal_service'
-LmoUrlService = require 'shared/services/lmo_url_service'
+import Records       from '@/shared/services/records'
+import EventBus      from '@/shared/services/event_bus'
+import ModalService  from '@/shared/services/modal_service'
+import LmoUrlService from '@/shared/services/lmo_url_service'
 
-{ listenForLoading }       = require 'shared/helpers/listen'
-{ iconFor }                = require 'shared/helpers/poll'
-{ applyPollStartSequence } = require 'shared/helpers/apply'
+import { listenForLoading }       from '@/shared/helpers/listen'
+import { iconFor }                from '@/shared/helpers/poll'
+import { applyPollStartSequence } from '@/shared/helpers/apply'
 
-module.exports =
+export default
   data: ->
     poll: Records.polls.build
       title:       @$route.params.title

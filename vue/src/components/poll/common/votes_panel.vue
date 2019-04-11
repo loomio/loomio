@@ -26,10 +26,9 @@
 </style>
 
 <script lang="coffee">
-RecordLoader = require 'shared/services/record_loader'
-EventBus     = require 'shared/services/event_bus'
-
-{ fieldFromTemplate } = require 'shared/helpers/poll'
+import RecordLoader from '@/shared/services/record_loader'
+import EventBus     from '@/shared/services/event_bus'
+import { fieldFromTemplate } from '@/shared/helpers/poll'
 
 sortFn =
   newest_first: (stance) ->
@@ -41,7 +40,7 @@ sortFn =
   priority_last: (stance) ->
     -(stance.pollOption().priority)
 
-module.exports =
+export default
   props:
     poll: Object
   data: ->

@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js'
 
-module.exports = {
+export default
   # a list of all suggested items
   items: => [
     { id: 1, name: 'Philipp Kühn' }
@@ -68,4 +68,3 @@ module.exports = {
       keys: ['name'],
     })
     fuse.search(query)
-}

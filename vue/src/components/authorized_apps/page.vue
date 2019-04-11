@@ -9,13 +9,12 @@
 </style>
 
 <script lang="coffee">
-Records      = require 'shared/services/records'
-EventBus     = require 'shared/services/event_bus'
-ModalService = require 'shared/services/modal_service'
+import Records      from '@/shared/services/records'
+import EventBus     from '@/shared/services/event_bus'
+import ModalService from '@/shared/services/modal_service'
+import _sortBy   from 'lodash/sortBy'
 
-_sortBy   = require 'lodash/sortBy'
-
-module.exports =
+export default {
   data: ->
     loading: true
   created: ->
@@ -30,6 +29,7 @@ module.exports =
   computed:
     orderedApplications: ->
       _sortBy @applications(), 'name'
+}
 </script>
 
 <template>

@@ -1,22 +1,17 @@
 <script lang="coffee">
-Session        = require 'shared/services/session'
-EventBus       = require 'shared/services/event_bus'
-AbilityService = require 'shared/services/ability_service'
-ModalService   = require 'shared/services/modal_service'
-urlFor         = require 'src/mixins/url_for'
+import Session        from '@/shared/services/session'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import ModalService   from '@/shared/services/modal_service'
+import urlFor         from '@/mixins/url_for'
 
-import JoinGroupButton from 'src/components/group/join_button.vue'
-
-module.exports =
-  components:
-    JoinGroupButton: JoinGroupButton
+export default
   mixins: [urlFor]
   props:
     group: Object
     homePage: Boolean
     compact: Boolean
     discussion: Object
-  created: ->
   methods:
     openUploadCoverForm: ->
       ModalService.open 'CoverPhotoForm', group: => group

@@ -2,9 +2,9 @@
 </style>
 
 <script lang="coffee">
-TimeService = require 'shared/services/time_service'
+import TimeService from '@/shared/services/time_service'
 
-module.exports =
+export default
   props:
     name: String
     zone: Object

@@ -4,14 +4,14 @@
 }
 </style>
 <script lang="coffee">
-Records       = require 'shared/services/records'
-ModalService  = require 'shared/services/modal_service'
-LmoUrlService = require 'shared/services/lmo_url_service'
+import Records       from '@/shared/services/records'
+import ModalService  from '@/shared/services/modal_service'
+import LmoUrlService from '@/shared/services/lmo_url_service'
 
-{ applyDiscussionStartSequence } = require 'shared/helpers/apply'
-{ listenForLoading }             = require 'shared/helpers/listen'
+import { applyDiscussionStartSequence } from '@/shared/helpers/apply'
+import { listenForLoading }             from '@/shared/helpers/listen'
 
-module.exports =
+export default
   data: ->
     discussion: null
     isDisabled: false

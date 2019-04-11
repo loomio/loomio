@@ -1,15 +1,13 @@
 <script lang="coffee">
-
-FlashService = require 'shared/services/flash_service'
-AppConfig    = require 'shared/services/app_config'
-{ signIn }  = require 'shared/helpers/user'
-
-module.exports =
+import FlashService from '@/shared/services/flash_service'
+import AppConfig    from '@/shared/services/app_config'
+import { signIn }  from '@/shared/helpers/user'
+export default
   methods:
     loggedIn: ->
       FlashService.success AppConfig.userPayload.flash.notice
       # $scope.pageError = null
-      # $scope.refreshing = true
+      # $scope.refreshing  = true
       # $injector.get('$timeout') ->
       #   $scope.refreshing = false
         # FlashService.success AppConfig.userPayload.flash.notice
@@ -19,7 +17,6 @@ module.exports =
       #   ModalService.open 'ChangePasswordForm'
   created: ->
     signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, @loggedIn)
-
 </script>
 
 <template lang="pug">
@@ -28,4 +25,5 @@ module.exports =
     sidebar
     v-content
       router-view(:key="$route.path")
+    modal-launcher
 </template>
