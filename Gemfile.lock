@@ -298,7 +298,7 @@ GEM
     icalendar (2.5.3)
       ice_cube (~> 0.16)
     ice_cube (0.16.3)
-    image_processing (1.8.0)
+    image_processing (1.9.0)
       mini_magick (>= 4.9.3, < 5)
       ruby-vips (>= 2.0.13, < 3)
     inherited_resources (1.9.0)
@@ -621,7 +621,7 @@ DEPENDENCIES
   http_accept_language
   httparty (~> 0.16.4)
   icalendar
-  image_processing (~> 1.2)
+  image_processing (~> 1.9)
   js_regex
   launchy
   maxminddb
