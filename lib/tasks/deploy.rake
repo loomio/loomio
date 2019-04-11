@@ -67,10 +67,8 @@ namespace :deploy do
       "git checkout -b #{deploy_branch}",
       "rm -rf plugins/fetched/**/.git",
       "find plugins/fetched -name '*.*' | xargs git add -f",
-      "find public/img/emojis -name '*.png' | xargs git add -f",
       "git add -f plugins",
-      "git add public/client/#{loomio_version} -f",
-      "git add public/client/webpack -f",
+      "git add public/client/ -f",
       "git add public/service-worker.js -f",
       "git commit -m 'Add compiled assets / plugin code'",
       "git checkout master")
