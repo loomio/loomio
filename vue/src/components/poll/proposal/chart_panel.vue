@@ -59,7 +59,7 @@ export default
       parseInt(parseFloat(@countFor(name)) / parseFloat(@poll.stancesCount) * 100) || 0
 
     translationFor: (name) ->
-      I18n.t("poll_proposal_options.#{name}")
+      @$t("poll_proposal_options.#{name}")
 
 </script>
 <template lang="pug">
