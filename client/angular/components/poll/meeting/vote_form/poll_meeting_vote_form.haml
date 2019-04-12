@@ -13,7 +13,7 @@
         %img.poll-common-form__icon{ng-src: "/img/disagree.svg", ng-if: "i == 0"}
       %poll_meeting_time.lmo-margin-left{name: "option.name", zone: "zone"}
   %validation_errors{subject: "stance", field: "stanceChoices"}
-
+  %poll_common_add_option_button{poll: "stance.poll()"}
   %poll_common_stance_reason{stance: "stance"}
 
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between

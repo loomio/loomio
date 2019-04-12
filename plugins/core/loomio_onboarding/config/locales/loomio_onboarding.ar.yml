@@ -1,1 +1,7 @@
-ar: {}
+ar:
+  loomio_onboarding:
+    user_progress_card:
+      activities:
+        enter_name: ادخل اسمك
+        join_group: انضم إلى فريق
+        make_decision: صوّت على قرار

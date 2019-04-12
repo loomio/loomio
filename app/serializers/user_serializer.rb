@@ -1,9 +1,9 @@
 class UserSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :name, :username, :short_bio, :avatar_initials, :avatar_kind,
+  attributes :id, :name, :username, :short_bio, :short_bio_format, :avatar_initials, :avatar_kind,
              :avatar_url, :email_hash, :time_zone, :locale, :location, :created_at,
-             :email_verified, :has_password, :last_seen_at, :email
+             :email_verified, :has_password, :last_seen_at, :email, :attachments
 
   def name
     object.name ||

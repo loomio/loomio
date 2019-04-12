@@ -150,7 +150,12 @@ Loomio::Application.routes.draw do
       get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection
+      get '/tags/:id/(:stub)', action: :tags, on: :collection
     end
+
+    resources :discussion_tags, only: [:create, :destroy]
+    resources :tags
+
 
     resources :search, only: :index
 
@@ -221,6 +226,9 @@ Loomio::Application.routes.draw do
     end
     get "identities/:id/:command", to: "identities#command"
   end
+
+  get '/tags/:id/(:stub)', to: 'application#index'
+  post '/direct_uploads', to: 'direct_uploads#create'
 
   get '/users/sign_in', to: redirect('/dashboard')
   get '/users/sign_up', to: redirect('/dashboard')
@@ -297,6 +305,7 @@ Loomio::Application.routes.draw do
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
 
+
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do
       get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
@@ -322,6 +331,9 @@ Loomio::Application.routes.draw do
     post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
     get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
   end
+
+  get '/beta' => 'beta#index'
+  put '/beta' => 'beta#update'
 
   get ":id", to: 'groups#show', as: :group_handle, format: :html
 end

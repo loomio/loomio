@@ -13,6 +13,7 @@ namespace :travis do
 
   task :e2e => :environment do
     # warming up the server
+    system("bundle exec rake client:build")
     system("sleep 10")
     system("wget http://localhost:3000/")
     # ok now start running the tests
@@ -21,10 +22,21 @@ namespace :travis do
     raise "e2e failed!" unless $?.exitstatus == 0
   end
 
+  task :vue => :environment do
+    # warming up the server
+    system("sleep 10")
+    system("wget http://localhost:3000/")
+    # ok now start running the tests
+    puts "Starting to run vue nightwatch..."
+    system("cd vue && npm run test:e2e")
+    raise "e2e failed!" unless $?.exitstatus == 0
+  end
+
   task :plugins => :environment do
     # puts "Starting to run plugin rspec..."
     # system("bundle exec rspec plugins")
     # rspec_passed = $?.exitstatus == 0
+    system("bundle exec rake client:build")
     system("wget http://localhost:3000/")
     puts "Starting to run plugins nightwatch..."
     system("cd client && gulp nightwatch:plugins --retries 2")

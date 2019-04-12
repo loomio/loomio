@@ -1,4 +1,6 @@
 nb_NO:
+  loomio_tags:
+    name_label: Navn
   reactions:
     slight_smile: Liker
     heart: Elsker
@@ -113,7 +115,7 @@ nb_NO:
       uploading: 'Laster opp'
       load_more: 'Last mer'
       share: Del
-      ok: Ok!
+      ok: Ok
       retry: Prøv igjen
       done: Ferdig
       start: Start
@@ -318,14 +320,6 @@ nb_NO:
       group: "Fjern fra gruppe"
       poll: 'Fjern fra  {{pollType}}'
     cancel_invitation: Avslutt invitasjon
-  start_menu:
-    label: 'Brukerhandlinger'
-    title: 'Handling'
-    start_group: 'Start en gruppe'
-    start_subgroup: 'Start en undergruppe'
-    start_thread: 'Start en tråd'
-    start_poll: 'Start en avstemning'
-    invite_people: 'Inviter folk'
   notification_models:
     discussion: 'tråd:'
     comment: 'kommenter i'

@@ -1,0 +1,8 @@
+%h1 use beta client?
+
+= form_tag(beta_path, method: :put) do
+  = hidden_field_tag :enable, value: true
+  = submit_tag :enable
+
+= form_tag(beta_path, method: :put) do
+  = submit_tag :disable

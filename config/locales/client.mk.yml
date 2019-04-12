@@ -1,4 +1,6 @@
 mk:
+  loomio_tags:
+    name_label: Име
   common:
     group: 'Група'
     groups: 'Групи'

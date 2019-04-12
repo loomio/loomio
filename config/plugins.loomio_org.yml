@@ -3,6 +3,3 @@ loomio_marketing_styles:
 
 loomio_org_plugin:
   repo:         https://github.com/loomio/loomio_org_plugin.git
-
-loomio_legal_plugin:
-  repo:         https://github.com/loomio/loomio_legal_plugin.git

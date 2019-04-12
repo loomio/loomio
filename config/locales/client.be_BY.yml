@@ -1,4 +1,6 @@
 be_BY:
+  loomio_tags:
+    name_label: Імя
   common:
     confirm_discard_changes: Скасаваць змены?
     time:

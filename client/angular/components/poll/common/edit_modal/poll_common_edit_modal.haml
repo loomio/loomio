@@ -12,6 +12,5 @@
       %poll_common_directive.animated{poll: "poll", name: "form", ng-switch-when: "save"}
       %announcement_form.animated{announcement: "announcement", ng-switch-when: "announce"}
     %dialog_scroll_indicator
-  %md-dialog-actions.lmo-slide-animation{ng-switch: "currentStep"}
-    %poll_common_form_actions.animated{poll: "poll", ng-switch-when: "save"}
-    %announcement_form_actions.animated{announcement: "announcement", ng-switch-when: "announce"}
+  %md-dialog-actions.lmo-slide-animation{ng-if: "currentStep =='save'"}
+    %poll_common_form_actions.animated{poll: "poll"}

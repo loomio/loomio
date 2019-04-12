@@ -3,7 +3,7 @@
   - if discussion.created_at >= @time_start
     %p
       %em by #{discussion.author.name}
-    .description= render_rich_text discussion.description
+    .description= render_rich_text(discussion.description, discussion.description_format)
 
   - discussion.polls.active_or_closed_after(@time_start).each do |poll|
     = render "poll_mailer/common/catch_up", poll: poll

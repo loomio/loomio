@@ -17,6 +17,7 @@ class GroupSerializer < Simple::GroupSerializer
              :name,
              :full_name,
              :description,
+             :description_format,
              :logo_url_medium,
              :created_at,
              :creator_id,
@@ -40,7 +41,8 @@ class GroupSerializer < Simple::GroupSerializer
              :discussion_privacy_options,
              :has_discussions,
              :admin_memberships_count,
-             :archived_at
+             :archived_at,
+             :attachments
 
   attributes_for_formal :cover_urls,
                         :has_custom_cover,

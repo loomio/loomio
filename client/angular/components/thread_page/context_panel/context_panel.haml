@@ -34,7 +34,7 @@
           {{discussion.forkedEvent().discussion().title}}
     .lmo-badge.lmo-pointer{translate: "common.privacy.closed", ng-if: "discussion.closedAt", md-colors: "{color: 'warn-600', 'border-color': 'warn-600'}"}
       %md-tooltip {{ discussion.closedAt | exactDateWithTime }}
-    %outlet.lmo-flex{name: "after-thread-title", model: "discussion"}
+    %tag_display.lmo-flex{discussion: "discussion"}
 
   .context-panel__description.lmo-markdown-wrapper{ng-if: "!discussion.translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
   %translation.lmo-markdown-wrapper{ng-if: "discussion.translation", model: "discussion", field: "description"}

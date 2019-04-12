@@ -9,6 +9,9 @@ nl_NL:
   errors:
     messages:
       spoofed_media_type: De inhoud van dat bestand komt niet overeen met de bestandsnaam
+  user:
+    error:
+      bad_login: "Mijn excuses, het wachtwoord komt niet overeen met degene die we hebben"
   attachment:
     error:
       too_large: Het bestand dat je probeerde bij te voegen is groter dan 100 Megabyte, gelieve een kleiner bestand te kiezen.

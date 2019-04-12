@@ -1,4 +1,21 @@
 ca:
+  loomio_tags:
+    tags: Etiquetes
+    apply_tags: Aplica etiquetes
+    new_tag: Crea etiquetes
+    name_label: Nom
+    color_label: Color
+    card_title: Etiquetes de categoria
+    modal_title: Crea una nova etiqueta
+    modal_edit_title: Edita l'etiqueta
+    modal_destroy_title: Elimina l'etiqueta
+    destroy_tag: Elimina l'etiqueta
+    destroy_helptext: Això destruirà aquesta etiqueta i l'eliminarà de tots els fils del grup. Estàs segur/a?
+    helptext: Les etiquetes et permeten categoritzar converses i trobar-les fàcilment després.
+    discussions_count_singular: ({{count}} discussió)
+    discussions_count_plural: ({{count}} discussions)
+    tags_marked: Discussions marcades '{{name}}' a {{groupName}}
+    no_tags_present: No s'han trobat discussions amb aquesta etiqueta! Intenta seleccionar-ne una altra.
   reactions:
     slight_smile: M'agrada
     heart: Amor
@@ -73,6 +90,7 @@ ca:
       translated: 'Traducció realitzada per Bing Translator'
       upload: 'Carrega'
       uploading: 'Carregant'
+      ok: D'acord
       retry: Prova de nou
       done: Fet
       start: Comença
@@ -184,11 +202,6 @@ ca:
   membership_dropdown:
     make_coordinator: 'Fes coordinador/a'
     cancel_invitation: Cancel·la la invitació
-  start_menu:
-    start_group: 'Crea un grup'
-    start_subgroup: 'Crea un subgrup'
-    start_thread: 'Crea una discussió'
-    invite_people: 'Convida a gent'
   notifications:
     header: "Notificacions"
     no_notifications: "No teniu cap notificació"
@@ -220,6 +233,7 @@ ca:
     privacy_organisation: 'La discussió serà visible pels membres de {{parent}} i pels membres de {{group}}.'
   action_dock:
     edit_stance: Canvia la decisió
+    tag_thread: Gestiona etiquetes
   join_group_button:
     join_group: Uneix-te al grup
     membership_requested: Sol·licitud de pertinença pendent
@@ -582,7 +596,6 @@ ca:
     messages:
       reload: 'Recarrega'
   emoji_picker:
-    search: "Troba una emoticona..."
     no_emojis_found: "No s'ha trobat cap emoticona per '{{term}}'."
   authorized_apps_page:
     title: Aplicacions autoritzades

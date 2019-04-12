@@ -1,4 +1,23 @@
 da:
+  loomio_tags:
+    name_label: Navn
+    color_label: Farve
+    modal_title: Opret nyt mærke
+    modal_edit_title: Rediger mærke
+    modal_destroy_title: Slet mærke
+    destroy_tag: Slet mærke
+    discussions_count_singular: ({{count}} debat)
+    discussions_count_plural: ({{count}} debatter)
+    no_tags_present: Der blev ikke fundet debatter med det mærke! Prøv at vælge en anden.
+  reactions:
+    laughing: Grine
+    clap: Klappe
+    hugging: Kram
+    sunglasses: Sej
+    nerd: Smart
+    worried: Bekymret
+    neutral_face: Neutral
+    angry: Sur
   poll_types:
     proposal: Forslag
     count: Checkmåling
@@ -15,6 +34,7 @@ da:
     not_found: Ingen resultater fundet
     time_zone: Tidszone
     local_time: Lokal tid
+    attachments: Vedhæftede filer
     confirm_discard_changes: Fortryd dine ændringer
     time:
       am: am
@@ -74,7 +94,7 @@ da:
       uploading: 'Uploader'
       load_more: 'Hent mere'
       share: Del
-      ok: Ok!
+      ok: Ok
       retry: Forsøg igen
       done: Færdig
       start: Start
@@ -215,14 +235,6 @@ da:
   membership_dropdown:
     make_coordinator: 'Gør koordinator'
     cancel_invitation: Fortryd invitation
-  start_menu:
-    label: 'Bruger handlinger'
-    title: 'Handlinger'
-    start_group: 'Opret gruppe'
-    start_subgroup: 'Opret undergruppe'
-    start_thread: 'Opret debat'
-    start_poll: 'Opret afstemning'
-    invite_people: 'Inviter deltagere'
   notifications:
     header: "Notifikationer"
     no_notifications: "Du har ikke nogen notifikationer"
@@ -749,7 +761,6 @@ da:
     messages:
       reload: 'Genopfrisk'
   emoji_picker:
-    search: "Find en emoji..."
     no_emojis_found: "Kunne ikke finde emoji for '{{term}}'!"
   authorized_apps_page:
     title: Godkendte apps

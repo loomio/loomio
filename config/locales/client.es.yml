@@ -1,7 +1,27 @@
 es:
+  current_plan_button:
+    upgrade: Mejore su plan Loomio
+    tooltip: Compre un plan Loomio para invitar a más personas y abrir más hilos.
+  loomio_tags:
+    tags: Etiquetas
+    apply_tags: Aplicar etiquetas
+    new_tag: Crear etiqueta
+    name_label: Nombre
+    color_label: Color
+    card_title: Categorizar etiquetas
+    modal_title: Crea una nueva etiqueta
+    modal_edit_title: 'Editar etiqueta '
+    modal_destroy_title: 'Eliminar etiqueta '
+    destroy_tag: 'Eliminar etiqueta '
+    destroy_helptext: 'Esto eliminará la etiqueta y la retirará de todos los hilos en este grupo. ¿Estás seguro? '
+    helptext: Las etiquetas permiten categorizar conversaciones para encontrarlas más fácilmente después.
+    discussions_count_singular: ({{count}} hilo)
+    discussions_count_plural: ({{count}} hilos)
+    tags_marked: Hilos marcados con '{{name}}' en {{groupName}}
+    no_tags_present: ¡No se ha encontrado ningún hilo con esta etiqueta! Inténtalo con otra.
   reactions:
-    slight_smile: Gusta
-    heart: Encanta
+    slight_smile: Me gusta
+    heart: Me encanta
     laughing: Risa
     clap: 'Aplauso '
     hugging: 'Abrazo '
@@ -11,33 +31,33 @@ es:
     relieved: 'Aliviado '
     worried: 'Preocupado '
     confused: 'Confundido '
-    confounded: Condenado
+    confounded: Aturdido
     neutral_face: Neutral
     slight_frown: 'Ceño fruncido  '
     disappointed: 'Decepcionado '
     angry: 'Enojado '
     weary: Cansado
     astonished: 'Asombrado '
-    rolling_eyes: 'Revolear los ojos '
+    rolling_eyes: Ojos en blanco
     cry: 'Llorar '
     scream: 'Gritar '
     sleeping: 'Aburrido '
     thinking: 'Pensando '
-    raised_hands: 'Manos al aire '
+    raised_hands: Manos arriba
     pray: 'Rezar '
-    fingers_crossed: 'Dedos cruzados '
+    fingers_crossed: Cruzar los dedos
     v: Paz
     metal: Metal
     ok_hand: Ok
     wave: Saludar
-    thumbsup: Me gusta
-    thumbsdown: No me gusta
+    thumbsup: Pulgar arriba
+    thumbsdown: Pulgar abajo
   poll_types:
     proposal: Propuesta
-    count: Comprobar
+    count: Comprobación
     poll: Encuesta
-    dot_vote: Voto de Puntos
-    meeting: Coordinar horario
+    dot_vote: Asignación por puntos
+    meeting: Votación de horarios
     ranked_choice: Opción priorizada
   timezones:
     local: Hora local ({{value}})
@@ -50,6 +70,7 @@ es:
     not_found: 'No encontrado '
     time_zone: 'Zona horaria '
     local_time: Hora local
+    attachments: Adjuntos
     confirm_discard_changes: ¿Descartar tus cambios?
     time:
       am: am
@@ -113,7 +134,7 @@ es:
       uploading: 'Cargando'
       load_more: 'Cargar Más'
       share: Compartir
-      ok: ¡Ok!
+      ok: Ok
       retry: 'Reintentar '
       done: Listo
       start: 'Empezar '
@@ -125,8 +146,8 @@ es:
       send: Enviar
       joined: 'Se unió '
       last_seen: 'Visto '
-      invite: Invita
-      resent: Reenviar invitación
+      invite: Invitar
+      resent: Invitación reenviada
       export: Exportar
       fork: Bifurcar
     formatting_help:
@@ -306,29 +327,21 @@ es:
     group_members: "Miembros del grupo"
     discussion_members: "Miembros del hilo"
     poll_members: "{{pollType}} miembros"
-    invite_to_group: "Invita al grupo"
+    invite_to_group: "Invitar al grupo"
     invite_to_discussion: "Invitar al hilo"
     invite_to_poll: "Invitar a votar "
-    invitations: "Invitaciones "
+    invitations: "Invitaciones"
   membership_dropdown:
     set_title: "Añadir titulo "
-    resend: "Volver a enviar invitación"
-    invitation_resent: "Reenviar invitación"
+    resend: "Reenviar la invitación"
+    invitation_resent: "Invitación reenviada"
     make_coordinator: 'Hacer coordinador '
     demote_coordinator: 'Remover coordinador'
     remove_from:
       discussion: "Eliminar del hilo"
       group: "Eliminar del grupo"
       poll: 'Eliminar de {{pollType}}'
-    cancel_invitation: cancelar invitación
-  start_menu:
-    label: 'Acciones de usuario '
-    title: 'Acción '
-    start_group: 'Crear un grupo nuevo'
-    start_subgroup: 'Crear subgrupo nuevo'
-    start_thread: 'Iniciar hilo nuevo'
-    start_poll: 'Crear una encuesta'
-    invite_people: 'Invita a gente'
+    cancel_invitation: Cancelar la invitación
   notification_models:
     discussion: 'Hilo:'
     comment: 'comentar en'
@@ -357,7 +370,7 @@ es:
     motion_closing_soon: "La propuesta está a punto de cerrarse: <strong>{{title}}</strong>"
     motion_outcome_created: "<strong>{{name}}</strong> ha publicado un resultado para la propuesta <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> ha actualizado el resultado de la propuesta <strong>{{title}}</strong>"
-    invitation_accepted: "<strong>{{name}}</strong> ha aceptado tu invitación a unirse a <strong>{{title}}</strong>"
+    invitation_accepted: "<strong>{{name}}</strong> ha aceptado su invitación a unirse a <strong>{{title}}</strong>"
     new_coordinator: "<strong>{{name}}</strong> te ha añadido como coordinador de <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> empezó una {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> editó una {{poll_type}}: <strong>{{title}}</strong>"
@@ -409,17 +422,17 @@ es:
       non_voters: Gente que no ha votado
     form:
       group_announced:
-        title: 'Invita al grupo '
-        helptext: ¿A quién te gustaría invitar al grupo?
+        title: Invitar al grupo
+        helptext: ¿A quién le gustaría invitar al grupo?
       discussion_announced:
-        title: 'Invitar al hilo '
-        helptext: ¿A quién te gustaría invitar al hilo?
+        title: Invitar al hilo
+        helptext: ¿A quién le gustaría invitar a este hilo?
       discussion_edited:
         title: Notificar cambios
         helptext: ¿A quién te gustaría notificar sobre los cambios?
       poll_announced:
         title: 'Invitar a votar '
-        helptext: ¿A quién te gustaría invitar a la votación?
+        helptext: ¿A quién le gustaría invitar a la votación?
       poll:
         title: Notificar cambios
         helptext: '¿A quién te gustaría notificar de los cambios? '
@@ -453,11 +466,11 @@ es:
     add_comment: Comentario
     copy_url: Copiar URL
     edit_thread: Editar contexto
-    announce_thread: Invita personas a unirse al hilo
+    announce_thread: Invitar a otras personas a unirse al hilo
     announce_thread_active: (Nadie ha sido invitado aún)
     translate_thread: Traducir contexto
     edit_poll: Editar encuesta
-    announce_poll: 'Invitar personas a votar '
+    announce_poll: 'Invitar a personas a votar '
     announce_poll_active: '(Nadie ha sido invitado aún) '
     translate_poll: Traducir encuesta
     edit_stance: Cambiar decisión
@@ -477,18 +490,19 @@ es:
     comment_copied: URL del comentario copiado al portapapeles
     poll_copied: URL de la decisión ha sido copiado al portapapeles
     discussion_copied: URL del hilo ha sido copiado al portapapeles
+    tag_thread: Administrar etiquetas
   cover_photo_form:
-    aria_label: 'Formulario de carga para la foto de portada '
-    heading: 'Nueva foto de portada '
-    upload_link: 'Subir nueva foto de portada'
+    aria_label: 'Formulario para cargar la foto de portada '
+    heading: 'Nueva foto de portada'
+    upload_link: 'Cargar una nueva foto de portada'
     image_size_helptext: 'Tamaño de imagen ideal 1400x320px'
-    upload_success: 'La foto de portada ha sido actualizada con éxito'
+    upload_success: 'La foto de portada ha sido cargada con éxito'
   logo_photo_form:
-    aria_label: 'Formulario de cambio del logo del grupo'
+    aria_label: 'Formulario para cambiar el logo del grupo'
     heading: 'Nuevo logo del grupo'
-    upload_link: 'cargar nuevo logo del grupo'
+    upload_link: 'Cargar un nuevo logo del grupo'
     image_size_helptext: 'Tamaño de imagen ideal 100x100px'
-    upload_success: 'El logo ha sido actualizado con éxito'
+    upload_success: 'El logo ha sido cargado con éxito'
   join_group_button:
     join_group: Unirse al grupo
     membership_requested: Petición de membresía pendiente
@@ -545,13 +559,13 @@ es:
       archive_group_success: 'Este grupo ha sido desactivado '
     group_logo: 'Logo del grupo'
     new_photo: 'Nueva foto '
-    new_cover_photo: 'Carga una nueva foto de portada '
-    new_group_logo: 'Cargar nuevo logo del grupo'
+    new_cover_photo: 'Cargar una nueva foto de portada'
+    new_group_logo: 'Cargar un nuevo logo para el grupo'
     open_discussions: 'Hilos abiertos'
     closed_discussions: 'Hilos cerrados'
     discussions_placeholder: 'Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.'
     members: ' {{count}} miembros'
-    members_placeholder: 'Estás solo aquí: ¡invita a algunas personas para unirse a ti! '
+    members_placeholder: 'Está solo aquí: ¡Invite a otras personas! '
     member_options: Opciones de membresía
     see_all_members: 'Ve todos los ({{count}}) miembros'
     pending_invitations: '+ {{count}} pendientes'
@@ -605,7 +619,7 @@ es:
     submit: 'Sí, desactivar este grupo'
   group_form:
     aria_label: 'Formulario de grupo'
-    start_group_heading: 'Empieza un grupo'
+    start_group_heading: 'Crea un grupo'
     start_subgroup_heading: 'Comienza un sub-grupo '
     edit_group_heading: 'Editar la configuración del grupo'
     edit_subgroup_heading: 'Editar la configuración del subgrupo'
@@ -622,7 +636,7 @@ es:
     group_privacy_is_open_description: "Cualquier persona puede encontrar el grupo y pedir membresía. Solo los miembros pueden ver quien pertenece al grupo. Todos los hilos son públicos."
     group_privacy_is_closed_description: "Cualquier persona puede encontrar este grupo y pedir membresía. Sólo los miembros pueden ver quien pertenece al mismo. Todos los hilos son privados."
     group_privacy_is_closed_public_threads_description: "Cualquier persona puede encontrar este grupo y pedir membresía. Sólo los miembros pueden ver quien pertenece al mismo. Los hilos pueden ser públicos o privados."
-    group_privacy_is_secret_description: "Sólo miembros que han sido invitados pueden encontrar este grupo, ver quien pertenece al mismo y los hilos.  "
+    group_privacy_is_secret_description: "Sólo miembros invitados pueden encontrar este grupo, ver sus miembros y sus hilos."
     confirm_change_to_secret: "Si procedes, todos los hilo en este grupo y sus subgrupos se harán privados."
     confirm_change_to_secret_subgroup: 'Si continuas todos los hilos se harán privados.'
     confirm_change_to_public: 'Si continúas, todos los hilos de este grupo se harán públicos en internet.  '
@@ -631,7 +645,7 @@ es:
     subgroup_privacy_is_closed_description: "Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los miembros pueden ver quien pertenece al mismo. Todos los hilos son privados."
     subgroup_privacy_is_closed_public_threads_description: "Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los miembros pueden ver quien pertenece al mismo. Los hilos pueden ser públicos o privados."
     subgroup_privacy_is_closed_secret_parent_description: "Miembros de {{parent}} puede encontrar este subgrupo y pedir membresía. Solo los miembros pueden ver quien pertenece al mismo. Todos los hilos son privados."
-    subgroup_privacy_is_secret_description: 'Sólo miembros que han sido invitados pueden encontrar este subgrupo, ver quien pertenece al mismo y los hilos.  '
+    subgroup_privacy_is_secret_description: 'Sólo miembros invitados pueden encontrar este sub-grupo, ver sus miembros y sus hilos.'
     advanced_settings: "Configuración avanzada "
     how_do_people_join: "¿Cómo se unen las personas a este grupo?"
     membership_granted_upon_request: 'Cualquiera puede unirse al grupo.'
@@ -646,7 +660,7 @@ es:
     permissions: 'Permisos'
     allow_public_threads: 'Permitir hilos públicos en este grupo.'
     parent_members_can_see_discussions: 'Los miembros de {{parent}} pueden ver los hilos privados.'
-    members_can_add_members: 'Miembros pueden invitar gente y aprobar membresías.'
+    members_can_add_members: 'Los miembros pueden invitar y aprobar nuevos miembros.'
     members_can_create_subgroups: 'Los miembros pueden crear subgrupos.'
     members_can_edit_discussions: 'Los miembros pueden editar el título y contexto de cualquier hilo.'
     members_can_edit_comments: 'Los miembros pueden editar sus propios comentarios en cualquier momento.'
@@ -723,7 +737,7 @@ es:
     see_more: "Ve todas: las ({{count}}) decisiones "
   invitation_form:
     aria_label: 'Formulario de invitación'
-    invite_people: 'Invita gente'
+    invite_people: 'Invitar gente'
     invite_people_to_group: 'Invitar a {{name}}'
     group: 'Grupo'
     group_placeholder: 'Selecciona un grupo'
@@ -732,11 +746,11 @@ es:
     email_addresses: 'Correo electrónico'
     email_addresses_placeholder: 'ej. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: 'Copia el enlace y envíalo a cualquier persona que quieras que se una a tu grupo. Esto les dará acceso a todos los hilos de tu grupo. '
-    email_explanation: 'Alternativamente, ingresa las direcciones de email debajo para enviar invitaciones por email.'
-    add_custom_message: 'Personaliza tu invitación,'
+    email_explanation: 'Como alternativa, puede añadir las direcciones de email y enviar invitaciones por correo electrónico.'
+    add_custom_message: 'Personalice la invitación, '
     add_custom_message_link: 'agrega un mensaje personalizado '
     custom_message: 'Mensaje personalizado '
-    custom_message_placeholder: 'Entra un mensaje personal para incluirlo a la invitación. '
+    custom_message_placeholder: 'Introduzca un mensaje personal para enviarlo junto a la invitación.'
     team_invitation_message: 'Alternativamente, '
     team_invitation_link: 'usa un enlace para compartir.'
     add_members: 'Incluye miembros'
@@ -744,10 +758,10 @@ es:
     send: 'Enviar'
     done: 'Listo'
     messages:
-      invitation_sent: 'Invitaciones enviadas. '
+      invitation_sent: 'Invitación enviada.'
       invitations_sent: '{{count}} invitaciones enviadas.'
       no_invitations: '¡Uh oh! Comprueba que la dirección de correo electrónico es correcta e inténtalo de nuevo.'
-      max_invitations: 'Si quieres enviar mas de 100 invitaciones, utiliza un enlace.'
+      max_invitations: 'Si quiere enviar mas de 100 invitaciones, utilice un enlace de grupo.'
   add_members_modal:
     aria_label: 'Añadir miembros del grupo principal'
     heading: 'Adherir miembros de {{name}}'
@@ -769,10 +783,10 @@ es:
       question: '¿Estás seguro que ya no quieres ser un coordinador? '
   membership_remove_modal:
     invitation:
-      title: cancelar invitación
-      message: ¿Estás seguro de que quieres cancelar esta invitación a  {{name}}?
-      flash: 'invitación cancelada '
-      submit: cancelar invitación
+      title: Cancelar la invitación
+      message: ¿Está seguro de que quiere cancelar esta invitación a {{name}}?
+      flash: Invitación cancelada
+      submit: Cancelar invitación
     membership:
       title: 'Eliminar miembro '
       message: ¿Estás seguro de que quieres eliminar a {{name}}?
@@ -798,24 +812,24 @@ es:
   pending_invitations_card:
     heading: Invitaciones pendientes
     email: 'correo electrónico '
-    invitation_link: 'enlace de invitación '
+    invitation_link: Enlace a la invitación
     sent: 'Enviado '
     sent_at: Enviado {{date}}
     copy_url: Copiar URL
     revoke_invitation: Remover
   cancel_invitation_form:
-    heading: 'cancelar invitación '
-    question: ¿Estás seguro de que quieres cancelar esta invitación?
-    submit: "Si, cancela la invitación "
+    heading: Cancelar invitación
+    question: ¿Está seguro de que quiere cancelar esta invitación?
+    submit: "Si, cancelar la invitación"
     cancel: 'No '
     messages:
-      success: 'invitación cancelada '
+      success: Invitación cancelada
   user_page:
     contact_user: 'Contactar {{name}}'
     location_field: 'Ubicación: {{value}}'
     locale_field: 'Idioma: {{value}}'
     online_field: 'Online: {{value}}'
-    invited: 'Invitada {{value}}'
+    invited: 'Invitado/a {{value}}'
   contact_request_form:
     modal_title: "Email: {{name}}"
     message_placeholder: Comparte una breve introducción personal y di porqué te quieres contactar.
@@ -1103,13 +1117,12 @@ es:
     search_placeholder: Buscar grupos públicos
     single_search_result: "1 grupo público coincide con <strong>{{searchTerm}}:</strong> "
     multiple_search_results: "{{resultCount}} grupos públicos coinciden con <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>¿No puedes encontrar el grupo que buscas?</strong> Si la privacidad de ese grupo es 'Secreto', no aparecerá aquí. Si conoces a un coordinador del grupo, puedes pedirles una invitación.  "
+    no_results_found: "<strong>¿No puede encontrar el grupo que busca?</strong> Si la privacidad de ese grupo es 'Secreto', no aparecerá aquí. Si conoce a un/a coordinador/a del grupo, puede pedirle una invitación."
   global:
     messages:
       app_update: 'Una nueva versión de la app está disponible '
       reload: 'Actualizar '
   emoji_picker:
-    search: "Busca un emoji / emoticono..."
     no_emojis_found: "No se han encontrado emojis /emoticonos para  '{{term}}'!"
   authorized_apps_page:
     title: 'Apps autorizados '
@@ -1136,7 +1149,7 @@ es:
     new_application_submit: Crear aplicación
     edit_application_submit: 'Actualizar aplicación '
     messages:
-      logo_changed: Logo actualizado
+      logo_changed: El logo ha sido actualizado.
       created: "'{{name}}' creado"
       updated: "'{{name}}' actualizado "
   remove_app_form:
@@ -1219,10 +1232,10 @@ es:
     members_count: "{{count}} personas serán notificadas"
     participants_count: "Las {{count}} personas que hayan votado serán notificadas"
   poll_common_calendar_invite:
-    calendar_invite: 'Incluye una invitación al calendario con este resultado '
+    calendar_invite: Incluir una invitación al calendario con este resultado
     poll_option_id: 'Horario de reunión '
     helptext_on: Los usuarios podrán añadir esta reunión a sus calendarios
-    helptext_off: No se enviaran invitaciones para la reunión
+    helptext_off: No se enviara ninguna invitación a la reunión
     event_duration: Duración
     event_summary: Resumen
     event_summary_placeholder: ¿Cómo te gustaría llamar esta reunión?
@@ -1293,8 +1306,8 @@ es:
     show_undecided: "Mostrar {{count}} indecisos"
     show_invitations: Mostrar invitaciones pendientes
     undecided_users: "Indecisos ({{count}})  "
-    invitation_count_singular: "1 persona más ha sido invitada a participar vía email "
-    invitation_count_plural: "{{count}} personas adicionales han sido invitadas a participar vía email "
+    invitation_count_singular: "Una persona más ha sido invitada a participar vía email "
+    invitation_count_plural: "{{count}} personas adicionales han sido invitadas a participar vía email"
   poll_common_undecided_user:
     reminded: 'Recordatorio enviado '
     reminder_sent: 'Recordatorio de notificación enviado '
@@ -1558,7 +1571,7 @@ es:
     continue_with_provider: Continua con {{provider}}
     continue_with_email: Continua con email
     or_enter_your_email: 'O, introduce tu dirección de email '
-    invitation_required: Cuenta de usuario no encontrada. Nuevas cuentas de usuario son solo por invitación
+    invitation_required: Cuenta no encontrada. Para crear una cuentas nuevas necesita una invitación.
     more_providers: Más
     email_not_present: Se necesita una dirección de correo
     invalid_email: "Lo lamentamos, eso no parece una dirección de correo electrónico válida"
@@ -1593,6 +1606,10 @@ es:
     email: Correo Electrónico
     password: Contraseña
     reactivate: 'Reactiva la cuenta '
+  install_microsoft:
+    card:
+      remove_identity: Eliminar esta integración
+      identity_removed: 'Integración eliminada '
   install_slack:
     modal_title: Installar Slack
     modal_helptext: 'Primero, deberás ingresar en Slack. Te enviaremos ahí automáticamente en un segundo, o puedes hacer clic en el siguiente botón para continuar. '
@@ -1611,7 +1628,7 @@ es:
       identity_removed: 'Integración eliminada '
     progress:
       install: Instalar
-      invite: Invita
+      invite: Invitar
       decide: Decide
     install:
       heading: 'Primer paso: Selecciona un grupo de Loomio al que unirte'

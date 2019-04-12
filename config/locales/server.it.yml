@@ -7,19 +7,32 @@ it:
         blank: non può essere vuoto
         invalid: non è un valore valido
   errors:
+    noscript: Loomio richiede Javascript per funzionare! Per favore abilita Javascript nel tuo browser per poter continuare
+    return_home: Torna alla home
+    not_found: 404 file non trovato
     messages:
+      email: indirizzo mail non valido
       spoofed_media_type: I contenuti di questo file non corrispondono al suo nome file
+  user:
+    deleted_user: "Utente eliminato"
+    placeholder_name: "Utente invitato"
+    error:
+      recaptcha: "Non siamo stati in grado di verificare che tu non sia un robot. Per favore riprova ancora!"
   attachment:
     error:
-      too_large: Il file che hai tentato di allegare è più ampio di 100 Megabytes, scegli un file più piccolo.
+      too_large: Il file che hai tentato di allegare è maggiore di 100 Megabytes, scegli un file più piccolo.
   poll:
     error:
       cannot_add_options: Impossibile aggiungere opzioni a questo sondaggio
-      cannot_remove_options: Impossibile rimuovere opzioni da questo sondaggio
-      must_have_options: Ci deve essere almeno una opzione di sondaggio
+      cannot_remove_options: Impossibile rimuovere le opzioni da questo sondaggio
+      must_have_options: Il sondaggio deve avere almeno una opzione di voto
     export:
+      percent_voted: "%{num}/%{denom} (%{percent}) membri hanno dichiarato la loro posizione"
       title: Titolo
       author: Autore
+      created_at: Creato il
+      closing_at: Chiude il
+      closed_at: Chiuso il
       details: Dettagli
       group_name: Nome del gruppo
       discussion_title: Titolo della discussione

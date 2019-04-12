@@ -1,4 +1,6 @@
 id:
+  loomio_tags:
+    name_label: Nama
   common:
     group: 'Kelompok'
     groups: 'Kelompok'

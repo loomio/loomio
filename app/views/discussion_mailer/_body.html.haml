@@ -1,2 +1,2 @@
-%p= render_rich_text @info.eventable.body
+%p= render_rich_text(@info.eventable.body, @info.eventable.body_format)
 = render "attachments", resource: @info.eventable

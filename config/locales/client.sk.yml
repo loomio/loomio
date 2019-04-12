@@ -1,4 +1,6 @@
 sk:
+  loomio_tags:
+    name_label: Meno
   common:
     time:
       am: dop.

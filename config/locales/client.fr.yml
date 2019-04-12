@@ -1,4 +1,26 @@
 fr:
+  current_plan_button:
+    upgrade: Changer d'offre
+    tooltip: Acheter un plan Loomio pour inviter plus de personnes et commencer plus de discussions.
+  loomio_tags:
+    tags: Mots-clés
+    apply_tags: Appliquer les mots-clés
+    new_tag: Créer un mot-clé
+    name_label: Nom
+    color_label: Couleur
+    card_title: Classement par mots-clés
+    modal_title: Créer un nouveau mot-clé
+    modal_edit_title: Modifier un mot-clé
+    modal_destroy_title: Supprimer le mot-clé
+    destroy_tag: Supprimer le mot-clé
+    destroy_helptext: Ce mot-clé sera supprimé et retiré de toutes les discussions du groupe. Êtes-vous sûr⋅e ?
+    helptext: Les mots-clés permettent de catégoriser les discussions pour les retrouver facilement par la suite.
+    discussions_count_singular: ({{count}} discussion)
+    discussions_count_plural: ({{count}} discussions)
+    tag_created: Mot-clé sauvegardé
+    tag_destroyed: Mot-clé retiré
+    tags_marked: Discussions marquées « {{name}} » dans {{groupName}}
+    no_tags_present: Aucune discussion n’a été trouvée avec ce mot-clé ! Essayez avec un autre.
   reactions:
     slight_smile: J’aime
     heart: J’adore
@@ -51,16 +73,19 @@ fr:
     not_found: Introuvable
     time_zone: Fuseau horaire
     local_time: Heure locale
+    attachments: Pièces jointes
     confirm_discard_changes: Annuler vos modifications ?
     time:
-      am: am
-      pm: pm
+      am: le matin
+      pm: l'après-midi
     closing_in: 'Fermeture {{time}}'
     closed_ago: 'Fermée à {{time}}'
     volume: 'Volume'
     notification_volume: 'Fréquence de notification'
     group: 'Groupe'
     groups: 'Groupes'
+    organization: "Groupe"
+    organizations: "Groupes"
     threads: 'Discussions'
     decisions: 'Décisions'
     settings: 'Paramètres'
@@ -103,8 +128,8 @@ fr:
       unlike: 'Je n’aime plus'
       update: 'Mettre à jour'
       cancel: 'Annuler'
-      show_more: "En voir plus"
-      view_all: "Tout voir"
+      show_more: "Afficher davantage"
+      view_all: "Tout afficher"
       new_thread: "Nouvelle discussion"
       add_subgroup: 'Ajouter un sous-groupe'
       loading: 'Chargement'
@@ -114,7 +139,7 @@ fr:
       uploading: 'Téléchargement'
       load_more: 'Plus'
       share: Partager
-      ok: Ok !
+      ok: Ok
       retry: Réessayer
       done: Terminé
       start: Démarrer
@@ -130,6 +155,7 @@ fr:
       resent: Invitation renvoyée
       export: Exporter
       fork: Scinder
+      apply: Appliquer
     formatting_help:
       label: 'Mise en forme'
       title: 'Apprenez à utiliser Markdown pour mettre en forme votre texte'
@@ -152,9 +178,9 @@ fr:
   error_page:
     forbidden: 'Vous n’avez pas la permission de faire cela.'
     page_not_found: 'Nous n’avons pas pu trouver cela. Cela a dû être supprimé ou déplacé.'
-    internal_server_error: 'Nous sommes désolés mais quelque chose s’est mal passé. Veuillez essayer à nouveau.'
+    internal_server_error: 'Désolé, mais quelque chose s’est mal passé. Veuillez essayer à nouveau.'
   verify_email_notice:
-    please_verify: Merci d’avoir participé. Consultez vos courriels, un lien vous a été envoyé pour valider votre vote.
+    please_verify: Merci d’avoir participé. Consultez vos courriels, un lien vous a été envoyé pour vérifier votre vote.
   previous_polls_page:
     heading: Activité pour {{name}}
     polls_count: Montrer {{loaded}} de {{total}} décisions
@@ -269,6 +295,7 @@ fr:
     recent_threads: 'Discussions récentes'
     unread_threads: 'Discussions non lues ({{count}})'
     muted_threads: 'Discussions ignorées'
+    start_group: 'Nouveau groupe'
     explore: 'Groupes publics'
     start_thread: Nouvelle discussion
     start_decision: Nouvelle décision
@@ -321,14 +348,6 @@ fr:
       group: "Retirer du groupe"
       poll: 'Retirer de {{pollType}}'
     cancel_invitation: Annuler l’invitation
-  start_menu:
-    label: 'Actions utilisateur'
-    title: 'Action'
-    start_group: 'Créer un groupe'
-    start_subgroup: 'Créer un sous-groupe'
-    start_thread: 'Démarrer une discussion'
-    start_poll: 'Démarrer un sondage'
-    invite_people: 'Inviter des personnes'
   notification_models:
     discussion: 'discussion :'
     comment: 'commentaire dans'
@@ -353,7 +372,7 @@ fr:
     membership_requested: "<strong>{{name}}</strong> a demandé à être membre de <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> vous a ajouté à <strong>{{title}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> vous a ajouté au groupe <strong>{{title}}</strong>"
-    user_added_to_group_no_inviter: "Vous avez été ajouté au groupe <strong>{{title}}</strong>"
+    user_added_to_group_no_inviter: "Vous avez été ajouté·e au groupe <strong>{{title}}</strong>"
     motion_closing_soon: "Cette proposition se termine bientôt : <strong>{{title}}</strong>"
     motion_outcome_created: "<strong>{{name}}</strong>  a publié un résultat pour la proposition <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> a mis à jour le résultat de la proposition <strong>{{title}}</strong>"
@@ -408,6 +427,12 @@ fr:
       voters: Personnes qui ont voté
       non_voters: Personnes qui n'ont pas voté
     form:
+      too_many_invitations: |
+          Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
+      no_invitations_remaining: |
+          <p>Vous avez épuisé toutes les {{maxMembers}} invitations disponible pour ce groupe.</p>
+          <p>Étape suivante, <a href="{{upgradeUrl}}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
+      invitations_remaining: '{{count}} invitations restantes <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>'
       group_announced:
         title: Inviter au groupe
         helptext: Qui voulez-vous inviter au groupe ?
@@ -477,6 +502,7 @@ fr:
     comment_copied: URL du commentaire copiée
     poll_copied: URL de la décision copiée
     discussion_copied: URL de la discussion copiée
+    tag_thread: Gérer les mots-clés
   cover_photo_form:
     aria_label: 'Changer la forme de la photo de couverture'
     heading: 'Nouvelle photo de couverture'
@@ -565,9 +591,13 @@ fr:
       label: 'Options'
       edit_group: 'Modifier les paramètres du groupe'
       export_data: Exporter les données du groupe
+      export_data_as_json: Exporter les données du groupe au format JSON
+      export_data_as_csv: Exporter les données du groupe au format CSV
+      export_data_as_html: Exporter les données du groupe au format HTML
       manage_members: 'Gérer les membres'
       add_subgroup: 'Ajouter un sous-groupe'
       manage_subscription: 'Gérer les inscriptions au groupe'
+      email_settings: 'Paramètres des courriels'
       leave_group: 'Quitter le groupe'
       deactivate_group: 'Désactiver le groupe'
     volume:
@@ -862,6 +892,9 @@ fr:
     update_profile: 'Mettre à jour mon profil'
     deactivate_account: 'Désactiver mon compte'
     help_translate: "Aidez-nous à traduire Loomio"
+  text_editor:
+    select_text_to_link: Sélectionnez le texte du lien
+    insert_link: Insérer un lien
   change_picture_form:
     aria_label: 'Changer la forme de l’image'
     title: 'Changer l’image'
@@ -982,6 +1015,12 @@ fr:
       or: ou
       join_group: <a href="/explore">rejoindre</a> un groupe pour voir des discussions.
   discussion:
+    max_threads_reached: |
+        <p>Vous avez épuisé toutes les {{maxThreads}} invitations disponible pour ce groupe.</p>
+        <p>Étape suivante, <a href="{{upgradeUrl}}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
+    subscription_canceled: |
+        <p>Désolé ! Votre abonnement n'est pas actif.</p>
+        <p>Veuillez <a href="{{upgradeUrl}}" target="_blank">mettre à jour</a>pour continuer à utiliser Loomio.</p>
     activity: 'Activité'
     activity_placeholder: 'Aucune activité pour l’instant !'
     load_previous: 'Afficher les activités précédentes'
@@ -1100,6 +1139,8 @@ fr:
     description_private_title: 'a modifié titre, contexte et confidentialité de la discussion'
   contact_message_form:
     title: "Salut ! Comment puis-je vous aider ?"
+    read_the_manual: |
+        Avez-vous vu notre<a href="{{link}}" target="_blank">Manuel d'utilisation</a> ? Nous le mettons à jour régulièrement avec les questions fréquemment posées et leurs réponses.
     contact_us_email: "Vous pouvez aussi nous contacter par e-mail : <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contactez-nous'
     name_label: 'Votre nom'
@@ -1113,6 +1154,10 @@ fr:
     message_placeholder: 'Si vous avez besoin d''aide, donnez autant d''information que possible s''il vous plait.'
     send_message: 'Envoyer le Message'
     new_contact_message: "Merci de nous avoir contacté, nous vous répondrons rapidement!"
+    consent_message: |
+        En nous contactant, vous acceptez que notre équipe accède à votre compte lorsque c'est nécessaire.<br />
+        Notre équipe d'aide parle anglais et traduira votre message avec Google Traduction si nécessaire.<br />
+        Notre objectif est de répondre à tous vos messages en moins de 24 heures.
     success: "Merci pour votre message, {{name}}. Nous prendrons rapidement contact."
   hint:
     context: 'Conseils pour l’utilisation de la zone de contexte'
@@ -1131,7 +1176,7 @@ fr:
       app_update: 'Une nouvelle version de l’application est disponible'
       reload: 'Recharger'
   emoji_picker:
-    search: "Recherche d’une émoticône…"
+    search: "Choisissez votre emoji..."
     no_emojis_found: "Aucune émoticône trouvée pour « {{term}} » !"
   authorized_apps_page:
     title: Applications autorisées
@@ -1343,7 +1388,7 @@ fr:
   poll_common_outcome_panel:
     authored_by: 'Par {{name}}'
   poll_common_delete_modal:
-    question: Êtes vous sûr de vouloir supprimer cela ?
+    question: Êtes-vous sûr·e de vouloir supprimer cela ?
     title: Supprimer le choix
     success: Supprimer avec succès
   poll_common_unsubscribe_form:
@@ -1352,8 +1397,8 @@ fr:
     tooltip: Les notifications par courriel vous tiennent informé⋅e à propos de cette décision, par exemple quand elle est modifiée, quand elle se termine, ou quand un résultat a été atteint. En décochant cette case, vous ne recevrez plus de nouveaux courriels de notification pour cette décision.
     helptext_on: Vous recevrez un courriel lorsqu’il y aura une activité dans cette décision
     helptext_off: Vous ne recevrez aucun courriel concernant cette décision
-    subscribed: Vous vous êtes abonné avec succès
-    unsubscribed: Vous vous êtes désabonné avec succès
+    subscribed: Vous vous êtes abonné·e avec succès
+    unsubscribed: Vous vous êtes désabonné·e avec succès
   poll_common_form:
     title: Titre
     details: Détails
@@ -1375,7 +1420,7 @@ fr:
         <p>Avec une bonne participation, une proposition est un mandat puissant pour passer à l’action.
     tool_tip_collapsed: Cherchez l’accord collectif
     start_header: Faire une proposition
-    edit_header: Éditer la proposition
+    edit_header: Modifier la proposition
     tip: Recherche le consensus par un processus permettant à tous de s'exprimer.<a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Apprenez-en plus</a>
     title_placeholder: Par exemple « Allons sur la lune! »
     details_placeholder: Donnez assez d’informations pour que tout le monde sache ce que veut dire être d’accord et être en désaccord
@@ -1603,9 +1648,10 @@ fr:
     invalid_email: "Désolé, ça ne semble pas être une adresse e-mail valide."
     invalid_password: "Désolé, le mot de passe n’est pas le même que celui enregistré."
     invalid_token: "Désolé, nous n’avons pas pu vous authentifier grâce à ce lien. Cliquez ci-dessous pour en recevoir un nouveau."
+    account_locked: "Votre compte a été bloqué suite à de nombreuses tentatives de connexion. Vérifiez vos courriels pour obtenir le lien de déblocage."
     email_not_found: "Désolé, nous n’avons pas trouvé de compte correspondant à cette adresse e-mail."
     email_placeholder: vous@exemple.com
-    login_with_token: Vous êtes prêt ! Cliquez sur le lien ci-dessous pour continuer.
+    login_with_token: Vous êtes prêt·e ! Cliquez sur le lien ci-dessous pour continuer.
     login_link_helptext: Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
     login_link_helptext_with_password: "Entrez votre mot de passe, ou connectez-vous par courriel."
     check_spam_folder: Si vous ne recevez pas l'e-mail, veuillez vérifier le répertoire des spams.
@@ -1637,6 +1683,10 @@ fr:
     email: Adresse e-mail
     password: Mot de passe
     reactivate: Réactiver le compte
+  install_microsoft:
+    card:
+      remove_identity: Retirer cette intégration
+      identity_removed: Intégration retirée
   install_slack:
     modal_title: Installer Slack
     modal_helptext: Pour commencer, connectez-vous à Slack. Nous vous redirigerons là dans un instant, ou vous pouvez cliquer ci-dessous pour continuer.

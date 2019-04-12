@@ -20,9 +20,13 @@ module EmailHelper
     end if poll.has_score_icons
   end
 
-  def render_rich_text(text)
+  def render_rich_text(text, format = "md")
     return "" unless text
-    Redcarpet::Render::SmartyPants.render(emojify markdownify text).html_safe
+    if format == "md"
+      Redcarpet::Render::SmartyPants.render(emojify(markdownify(text))).html_safe
+    else
+      text.html_safe
+    end
   end
 
   def emojify(text)

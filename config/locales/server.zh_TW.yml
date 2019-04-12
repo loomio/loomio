@@ -18,7 +18,7 @@ zh_TW:
     placeholder_name: "已邀請的使用者 (%{hostname})"
     error:
       recaptcha: "我們無法確認您是不是機器人。請再試一次！"
-      bad_login: "無法登入。請再試一次。"
+      bad_login: "抱歉，這個密碼與我們的檔案上的不一樣"
       username_must_be_alphanumeric: "使用者名稱只能為小寫字母與數字"
   attachment:
     error:
@@ -596,6 +596,16 @@ zh_TW:
     helptext: 您將不會再收到關於此決策的電子郵件。
     visit_poll: 檢視投票
     go_to_dashboad: 到控制面板
+  microsoft:
+    section_title: "[%{title}](%{url})"
+    new_discussion: "%{group} 中的新討論串"
+    new_comment: "%{group} 中的新評論"
+    outcome_created: "已在 %{group} 中張貼結果"
+    poll_created: "在 %{group} 中新的 %{poll_type}"
+    stance_created: "%{poll} 的新回應"
+    poll_closing_soon: "%{poll_type} 即將在 24 小時內關閉"
+    poll_expired: "%{poll_type} 已關閉"
+    group_identity_created: "從 %{group} 而來的動態現在將會顯示在此頻道中"
   slack:
     new_discussion: "在 *%{group}* 中的新討論串：*%{discussion}*"
     outcome_created: "在 *%{group}* 中的結果已貼出：*%{poll}*"

@@ -1,4 +1,23 @@
 cs:
+  current_plan_button:
+    upgrade: Zdokonalená verze
+  loomio_tags:
+    tags: Štítky
+    apply_tags: Použít štítek
+    new_tag: Vytvořit štítek
+    name_label: Název
+    color_label: Barva
+    card_title: Kategorie štítků
+    modal_title: Vytvořit nový štítek
+    modal_edit_title: Upravit štítek
+    modal_destroy_title: Odebrat štítek
+    destroy_tag: Odebrat štítek
+    destroy_helptext: Smazat tento štítek a odebrat ho ze všech vláken ve skupině. Opravdu?
+    helptext: Štítky umožňují rozdělit konverzace do kategorií a snadno je později najít
+    discussions_count_singular: ({{count}} vlákno)
+    discussions_count_plural: ({{count}} vláken)
+    tags_marked: Vlákna označená '{{name}}' ve skupině {{groupName}}
+    no_tags_present: S tímto štítkem nebyly nalezeny žádná vlákna! Zkuste vybrat jiný.
   reactions:
     ok_hand: Ok
   poll_types:
@@ -77,7 +96,7 @@ cs:
       uploading: 'Nahrává se'
       load_more: 'Načíst další'
       share: Sdílet
-      ok: Ok!
+      ok: Ok
       retry: Opakovat
       done: Hotovo
       start: Zahájit
@@ -232,14 +251,6 @@ cs:
     remove_from:
       group: "Odstranit ze skupiny"
     cancel_invitation: Stornovat pozvánku
-  start_menu:
-    label: 'Akce uživatele'
-    title: 'Akce'
-    start_group: 'Vytvořit skupinu'
-    start_subgroup: 'Vytvořit podskupinu'
-    start_thread: 'Vytvořit vlákno'
-    start_poll: 'Začít hlasování'
-    invite_people: 'Pozvat lidi'
   notification_models:
     discussion: 'vlákno:'
   notifications:
@@ -301,6 +312,7 @@ cs:
     edit_thread: Upravit kontext
     translate_thread: Přeložit kontext
     edit_stance: Změnit postoj
+    tag_thread: Správa štítků
   cover_photo_form:
     image_size_helptext: 'Ideální velikost obrázku je 1400 x 320px'
     upload_success: 'Titulní fotka byla úspěšně aktualizována'

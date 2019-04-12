@@ -37,6 +37,11 @@ RUN npm install
 RUN npm rebuild node-sass
 WORKDIR /loomio
 
+WORKDIR /loomio/vue
+RUN npm install
+RUN npm run build
+WORKDIR /loomio
+
 EXPOSE 3000
 
 # source the config file and run puma when the container starts

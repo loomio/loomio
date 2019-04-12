@@ -1,3 +1,3 @@
-supported: [en, zh_TW, es, fr, de]
+supported: [en, zh_TW, es, fr, de, uk, pt_BR, nl_NL, it, he]
 fallbacks:
   zh: zh_TW

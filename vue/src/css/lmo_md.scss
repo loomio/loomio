@@ -1,0 +1,116 @@
+.lmo-md-actions {
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.lmo-md-action {
+  clear: both;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.md-button--no-h-margin {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.md-tooltip { height: auto; }
+
+.md-button--tiny {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  margin: 0 4px;
+  color: $grey-on-white;
+  overflow: visible;
+  transition: opacity ease-in-out 0.25s;
+  &[disabled] { opacity: 0.2 !important; }
+  &:hover { color: $primary-text-color; }
+  i { font-size: 20px; }
+  i.lmo-helper-icon {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+
+md-dialog {
+  overflow: hidden;
+  min-width: $tiny-max-px;
+  max-width: 800px;
+  max-height: 90%;
+  @media (max-width: $tiny-max-px) {
+    min-width: 100%;
+    max-height: 100%;
+  }
+}
+
+md-dialog-content {
+  position: relative;
+  padding: 16px !important;
+}
+
+md-dialog-actions {
+  z-index: $z-low;
+}
+
+md-menu-content[role="menu"] { max-height: inherit; }
+
+.md-button--nude {
+  opacity: .7;
+  &:hover { opacity: 1; }
+  font-size: 20px;
+  padding: 0;
+  background-color: transparent;
+  padding: 0 4px;
+  border: 0;
+}
+
+md-virtual-repeat-container {
+  min-width: $tiny-max-px !important;
+  z-index: $z-high !important;
+}
+
+md-progress-circular { margin: auto; }
+
+.md-checkbox--with-summary {
+  .md-container {
+    top: 2px;
+    transform: none;
+  }
+}
+
+.md-no-errors .md-errors-spacer { display: none; }
+.md-datepicker-input { font-size: 16px !important; }
+
+.md-open-menu-container {
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+@media (max-width: $tiny-max-px) {
+  .md-open-menu-container {
+    left: 0     !important;
+    top: 48px   !important;
+    width: 100%;
+    z-index: $z-medium;
+    .md-button { text-align: center; }
+  }
+  md-virtual-repeat-container {
+    left: 0 !important;
+    top: 48px !important;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (min-width: $tiny-max-px) {
+  .md-open-menu-container { z-index: $z-high; }
+}

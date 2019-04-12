@@ -18,7 +18,7 @@ ru:
     placeholder_name: "Приглашенный пользователь (%{hostname})"
     error:
       recaptcha: "Мы не убедились, что вы не робот! Еще раз!"
-      bad_login: "Не получилось вас залогинить. Попробуйте снова."
+      bad_login: "Извините, этот пароль не совпадает с тем, который у нас есть в файле"
       username_must_be_alphanumeric: "В имени пользователя должны быть только маленькие английские буквы и цифры."
   attachment:
     error:
@@ -68,6 +68,9 @@ ru:
     motion:
       must_close_in_future: Предложение должно закрываться в будущем.
       one_at_a_time: Есть другое активное предложение.
+  subscriptions:
+    active: Активный
+    inactive: Неактивный
   user_mailer:
     group_export_ready:
       subject: Данные для экспорта группы %{group_name}

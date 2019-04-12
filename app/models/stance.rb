@@ -9,6 +9,9 @@ class Stance < ApplicationRecord
   include Translatable
   is_translatable on: :reason
   is_mentionable  on: :reason
+  include HasRichText
+
+  is_rich_text    on: :reason
 
   belongs_to :poll, required: true
   has_many :stance_choices, dependent: :destroy

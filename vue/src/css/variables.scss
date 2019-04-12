@@ -1,0 +1,43 @@
+$navbar-height: 48px;
+$tiny-max:      480;
+$small-max:     767;
+$medium-max:    992;
+$tiny-max-px:   $tiny-max   + px;
+$small-max-px:  $small-max  + px;
+$medium-max-px: $medium-max + px;
+$max-container-size: 1120px;
+
+$z-negative: -10;
+$z-zero: 0;
+$z-low: 10;
+$z-medium: 100;
+$z-high: 1000;
+$z-extreme: 10000;
+
+$thinPaddingSize: 8px;
+$cardPaddingSize: 16px;
+
+$grey-on-grey:  #666;
+$grey-on-white: #767676;
+$light-grey-on-white: #999999;
+$primary-text-color: #262626;
+$border-color: #dcdcdc;
+$background-color: #ebebeb;
+$background-transparent-color: rgba(235,235,235,0.8);
+$card-background-color: #fff;
+$modal-background-color: #f6f6f6;
+$notification-color: #4A90E2;
+$highlight-red: #D0021B;
+$link-color: rgb(0,188,212);
+
+$item-highlight-color: #FFFFE8;
+$progress-bar-color: rgb(0,188,212);
+
+$loomio-orange: #FFA726;
+
+$agree-color: #00d374;
+$abstain-color: #F6A82B;
+$disagree-color: #F96168;
+$block-color: #CE261B;
+
+$mdi-font-path: '/fonts/mdi';

@@ -1,4 +1,6 @@
 gl:
+  loomio_tags:
+    name_label: Nome
   common:
     time:
       am: am

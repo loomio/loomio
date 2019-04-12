@@ -8,5 +8,5 @@
           = render "avatar", user: user
     %td.content
       %b= comment.author.name
-      %p= render_rich_text comment.body
+      %p= render_rich_text(comment.body, comment.body_format)
       = render "discussion_mailer/attachments", resource: comment if comment.documents.any?

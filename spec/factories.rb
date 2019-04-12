@@ -14,6 +14,17 @@ FactoryBot.define do
     m.group { |g| g.association(:formal_group)}
   end
 
+  factory :tag, class: Tag do
+    association :group, factory: :formal_group
+    # name "metatag"
+    # color "#656565"
+  end
+
+  factory :discussion_tag do
+    discussion
+    tag
+  end
+
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
@@ -67,6 +78,13 @@ FactoryBot.define do
     sequence(:name) { Faker::Name.name }
     sequence(:email) { Faker::Internet.email }
     custom_fields { { facebook_group_id: "G123" } }
+  end
+
+  factory :microsoft_identity, class: Identities::Microsoft do
+    user
+    identity_type { "microsoft" }
+    access_token { "https://outlook.office.com/webhook.url" }
+    uid { "https://outlook.office.com/webhook.url" }
   end
 
   factory :contact do

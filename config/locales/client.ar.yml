@@ -1,5 +1,23 @@
 ar:
+  current_plan_button:
+    upgrade: تحديث
+  loomio_tags:
+    tags: الوسوم
+    apply_tags: تطبيق الوسوم
+    new_tag: إنشاء وسم
+    name_label: 'الاسم '
+    color_label: اللون
+    card_title: فئة الوسوم
+    modal_title: إنشاء وسم جديد
+    modal_edit_title: تعديل الوسم
+  poll_types:
+    proposal: اقتراح
+    poll: استطلاع رأي
   common:
+    you: أنت
+    learn_more: تعلم المزيد
+    local_time: الوقت الحالي
+    attachments: المرفقات
     confirm_discard_changes: إلغاء التغييرات؟
     time:
       am: ص
@@ -10,6 +28,12 @@ ar:
     notification_volume: 'صوت التبليغات'
     group: 'المجموعة'
     groups: 'المجموعات'
+    organization: "المنظمة"
+    organizations: "المنظمات"
+    decisions: 'القرارات'
+    settings: 'الإعدادات'
+    help: 'المساعدة'
+    anonymous: مجهول
     privacy:
       privacy: 'الخصوصية'
       public: 'عام'
@@ -27,6 +51,7 @@ ar:
     more_help: 'مساعدة أكبر'
     models:
       proposal: 'مقترح'
+    copy: 'نسخ'
     copied: 'تم النسخ'
     action:
       close: 'مغلق'
@@ -60,14 +85,22 @@ ar:
     quiet: 'هادئ'
     mute: 'كتم'
     unmute: 'الغاء الكتم'
+  change_volume_form:
+    mute_label: "كتم"
+  mute_explanation_modal:
+    aria_label: كتم الخيط
+    mute_thread: كتم الخيط
   inbox:
     clear: 'مسح'
     latest: 'الأحدث'
     unread: 'غير مقروءة'
     closing_in: 'الإغلاق'
+  sign_up_form:
+    password_label: 'الكلمة السرية:'
   comment_form:
     aria_label: 'إضافة تعليق'
     attachments:
+      add_attachment: 'إرفاق ملف'
       remove_attachment: 'حذف المرفق'
     messages:
       created: 'تمت إضافة التعليق'
@@ -82,6 +115,10 @@ ar:
       label: 'نشر'
     private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
     public_privacy_notice: 'تعليقك سيظهر للجميع'
+  sidebar:
+    start_group: 'منظمة جديدة'
+    aria_labels:
+      groups_list: 'الفِرَق'
   navbar:
     recent_title: 'اذهب إلى لوحة التحكم'
     unread_title: 'أظهر النشاطات الغير مقروءة'
@@ -94,13 +131,17 @@ ar:
       discussions: 'المواضيع'
       proposals: 'المقترحات'
       comments: 'التعليقات'
+    sign_in: 'تسجيل الدخول'
+    logo_title: 'الصفحة الرئيسية'
+  user_dropdown:
+    email_settings: 'إعدادات البريد الإلكتروني'
+    help: 'المساعدة'
+    sign_out: 'الخروج'
+  membership_card:
+    group_members: "أعضاء الفريق"
+    invitations: "الدعوات"
   membership_dropdown:
     cancel_invitation: إلغاء الدعوة
-  start_menu:
-    start_group: 'إبدأ مجموعة'
-    start_subgroup: 'إبدأ مجموعة فرعية'
-    start_thread: 'إبدأ موضوعاً'
-    invite_people: 'قم بدعوة أشخاص'
   notifications:
     header: "تبليغات"
     publish_outcome: "قم بنشر النتيجة"
@@ -146,6 +187,8 @@ ar:
     edited_by: 'تم تعديله من قبل <strong>{{name}}</strong>'
     posted: تم النشر
     current_revision: الأحدث
+  reactions_display:
+    you: "أنت"
   group_page:
     messages:
       privacy:
@@ -236,8 +279,11 @@ ar:
     manage_requests: إدارة الطلبات
     manage_requests_with_count: إدارة الطلبات ({{count}})
   documents_page:
+    title: المرفقات
     confirm_remove_title: حذف المرفق
   document:
+    list:
+      title: المرفقات
     form:
       title_label: 'الاسم '
   membership_requests_page:
@@ -258,6 +304,7 @@ ar:
     invite_people: 'قم بدعوة أشخاص'
     group: 'مجموعة'
     shareable_link: 'رابط قابل للمشاركة'
+    copy_link: 'نسخ'
     email_addresses: 'عناوين البريد الإلكتروني'
     email_addresses_placeholder: 'مثال: helperbot@loomio.org, friendlybot@loomio.org'
     add_custom_message: 'قم بجعل دعوتك شخصية،'
@@ -386,7 +433,9 @@ ar:
   thread_context:
     aria_label: 'سياق الموضوع'
     thread_options: 'خيارات الموضوع'
+    email_settings: 'إعدادات البريد الإلكتروني'
     close_thread: 'مغلق'
+    mute_thread: 'كتم'
     move_thread: 'نقل'
     print_thread: 'طباعة'
     delete_thread: 'حذف'
@@ -468,7 +517,6 @@ ar:
     messages:
       reload: 'إعادة تحميل'
   emoji_picker:
-    search: "إيجاد رموز تعبيرية"
     no_emojis_found: "لم يتم إيجاد أي رموز تعبيرية ل'{{term}}'!"
   authorized_apps_page:
     title: التطبيقات المخولة
@@ -509,9 +557,16 @@ ar:
     submit: سحب إمكانية الدخول
     messages:
       success: "لن يستطيع '{{name}}' استخدام حسابك بعد الآن."
+  decision_tools_card:
+    proposal_title: اقتراح
+    poll_title: استطلاع رأي
   poll_common:
     save_changes: حفظ
+  poll_common_attachment_form:
+    label: المرفقات
   poll_common_form:
     closed: مغلقة
   poll_count_options:
     'no': 'لا'
+  polls_page:
+    heading: القرارات

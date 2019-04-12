@@ -22,7 +22,7 @@ module Null::User
   end
 
   def empty_methods
-    [:groups, :group_ids, :adminable_group_ids, :formal_group_ids]
+    [:groups, :group_ids, :adminable_group_ids, :formal_group_ids, :attachments]
   end
 
   def hash_methods
@@ -44,6 +44,10 @@ module Null::User
       polls: :poll,
       stances: :stance
     }
+  end
+
+  def short_bio_format
+    "html"
   end
 
   def identities

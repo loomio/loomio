@@ -1,0 +1,10 @@
+%md-dialog.tag-apply-modal.lmo-modal__narrow
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %i.mdi.mdi-tag
+      %h1.lmo-h1{translate: "loomio_tags.apply_tags"}
+      %dismiss_modal_button
+  .md-dialog-content.md-body-1.lmo-slide-animation{ng-switch: "currentStep"}
+    %tag_list{discussion: "discussion"}
+    .lmo-md-action
+      %md-button.md-raised.md-primary.tag-apply-modal__submit{ng-click: "$close()", translate: "common.action.ok"}

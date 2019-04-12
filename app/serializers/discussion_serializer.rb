@@ -16,6 +16,7 @@ class DiscussionSerializer < ActiveModel::Serializer
              :key,
              :title,
              :description,
+             :description_format,
              :ranges,
              :items_count,
              :last_comment_at,
@@ -27,7 +28,8 @@ class DiscussionSerializer < ActiveModel::Serializer
              :private,
              :versions_count,
              :importance,
-             :pinned
+             :pinned,
+             :attachments
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,
@@ -39,6 +41,12 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :group, serializer: GroupSerializer, root: :groups
   has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_many :active_polls, serializer: Full::PollSerializer, root: :polls
+
+  has_many :discussion_tags
+
+  def discussion_tags
+    Array(Hash(scope).dig(:tag_cache, object.id))
+  end
 
   def active_polls
     scope[:poll_cache].get_for(object, hydrate_on_miss: false)

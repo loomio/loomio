@@ -13,8 +13,22 @@ module HasMentions
     extract_mentioned_screen_names(mentionable_text).uniq - [self.author.username]
   end
 
+  def mentioned_user_ids
+    Nokogiri::HTML(mentionable_text).search("span.mention[data-mention-id]").map do |el|
+      el['data-mention-id']
+    end.map(&:to_i)
+  end
+
   def mentioned_users
-    User.visible_by(author).where(username: mentioned_usernames)
+     User.visible_by(author).where(mentioned_users_query)
+  end
+
+  def mentioned_users_query
+    if text_format == "md"
+      {username: mentioned_usernames}
+    else
+      {id: mentioned_user_ids}
+    end
   end
 
   # users mentioned in the text, but not yet sent notifications
@@ -34,6 +48,10 @@ module HasMentions
   end
 
   private
+
+  def text_format
+    self.send("#{self.class.mentionable_fields.first}_format")
+  end
 
   def mentionable_text
     self.class.mentionable_fields.map { |field| self.send(field) }.join('|')

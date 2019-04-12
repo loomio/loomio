@@ -1,0 +1,91 @@
+@import 'mixins';
+
+@mixin card{
+  @include cardNoPadding;
+  @include cardPadding;
+}
+
+@mixin cardNoPadding {
+  @include md-body-1;
+  @include roundedCorners;
+  // box-shadow: $whiteframe-shadow-1dp;
+  background: $card-background-color;
+  margin-bottom: 12px;
+  max-width: 100%;
+}
+
+@mixin cardHeadingPadding {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+}
+@mixin cardPadding {
+  padding: $cardPaddingSize;
+}
+@mixin cardButton {
+  position: relative;
+  top: -7px;
+  right: -9px;
+  float: right;
+}
+
+@mixin cardMinorAction {
+  color: $grey-on-white;
+  margin: 20px 0 0 0;
+  display: block;
+  text-decoration: underline;
+  clear: both;
+}
+
+.lmo-card {
+  @include card;
+}
+
+.lmo-card-pad-top {
+  padding-top: $cardPaddingSize;
+}
+
+.lmo-card-pad-sides {
+  padding: 0 $cardPaddingSize;
+}
+
+.lmo-card-pad-bottom {
+  padding-bottom: $cardPaddingSize;
+}
+
+.lmo-card-pad-top-n-sides {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+}
+
+.lmo-card-minor-action{
+  @include cardMinorAction;
+}
+
+.lmo-card--no-padding {
+  @include cardNoPadding;
+}
+
+.lmo-card-padding {
+  @include cardPadding;
+}
+
+.lmo-card-heading-padding {
+  @include cardHeadingPadding;
+}
+
+.lmo-card-left-right-padding {
+  padding: 0 $cardPaddingSize 0 $cardPaddingSize;
+}
+
+.lmo-card-heading{
+  @include md-subhead;
+  color: $grey-on-white;
+  margin-bottom: 10px;
+  margin-top: 0;
+  letter-spacing: .3px;
+}
+
+.lmo-card-subheading{
+  @include md-subhead;
+  color: $grey-on-white;
+  margin-top: 1.5em;
+  margin-bottom: .8em;
+}

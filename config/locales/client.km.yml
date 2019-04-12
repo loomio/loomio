@@ -1,4 +1,6 @@
 km:
+  loomio_tags:
+    name_label: ឈ្មោះ
   common:
     group: 'ក្រុម'
     groups: 'ក្រុម'

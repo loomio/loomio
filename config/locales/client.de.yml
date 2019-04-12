@@ -1,4 +1,24 @@
 de:
+  current_plan_button:
+    upgrade: Upgrade
+    tooltip: 'Kaufe ein Loomio Abonnement um mehr Personen einzuladen und mehr Diskussionen zu starten. '
+  loomio_tags:
+    tags: Schlagwörter
+    apply_tags: Schlagwörter übernehmen
+    new_tag: Schlagwort erstellen
+    name_label: Name
+    color_label: Farbe
+    card_title: Schlagwörter kategorisieren
+    modal_title: neues Schlagwort erstellen
+    modal_edit_title: Schlagwort bearbeiten
+    modal_destroy_title: Schlagwort entfernen
+    destroy_tag: Schlagwort entfernen
+    destroy_helptext: Dies wird das Schlagwort löschen und es aus allen Diskussionen entfernen. Bist du sicher?
+    helptext: Schlagwörter können Konversationen kategorisieren und lassen sich später leicht finden.
+    discussions_count_singular: ({{count}} thread)
+    discussions_count_plural: ({{count}} threads)
+    tags_marked: Themen mit '{{name}}' in {{groupName}}
+    no_tags_present: Zu diesem Schlagwort wurden keine Diskussionen gefunden! Versuche es mit einem anderen.
   reactions:
     slight_smile: Gefällt mir
     heart: Liebe
@@ -36,13 +56,14 @@ de:
     proposal: Vorschlag
     count: Bestätigung
     poll: Umfrage
-    dot_vote: Dot-Voting
+    dot_vote: Punktevergabe
     meeting: Terminfindung
     ranked_choice: Gewichtete Auswahl
+    score: Bewertung
   timezones:
     local: Ortszeit ({{value}})
   common:
-    you: Du
+    you: Sie
     expand: Mehr anzeigen
     all_day: Ganztägig
     ok_got_it: Ok, verstanden
@@ -50,7 +71,8 @@ de:
     not_found: Nicht gefunden
     time_zone: Zeitzone
     local_time: Ortszeit
-    confirm_discard_changes: Deine Änderungen verwerfen?
+    attachments: Arbeitsmaterialien
+    confirm_discard_changes: Änderungen verwerfen?
     time:
       am: morgens
       pm: abends
@@ -60,11 +82,13 @@ de:
     notification_volume: 'Benachrichtigungslautstärke'
     group: 'Gruppe'
     groups: 'Gruppen'
+    organization: "Organisation"
+    organizations: "Organisationen"
     threads: 'Diskussionsbeiträge'
     decisions: 'Abstimungen'
     settings: 'Einstellungen'
     help: 'Hilfe'
-    anonymous: anonym
+    anonymous: Anonym
     privacy:
       privacy: 'Privatsphäre'
       public: 'Öffentlich'
@@ -89,7 +113,7 @@ de:
     total: Gesamt
     action:
       next: 'Weiter'
-      close: 'Vorzeitig beenden'
+      close: 'Schliessen'
       reopen: 'erneut öffnen'
       save: 'Speichern'
       save_changes: 'Änderungen speichern'
@@ -105,7 +129,7 @@ de:
       show_more: "Mehr anzeigen"
       view_all: "Zeige alle"
       new_thread: "Neue Diskussion"
-      add_subgroup: 'Untergr. anlegen'
+      add_subgroup: 'Untergruppe anlegen'
       loading: 'Laden'
       translate: 'Übersetzen'
       translated: 'Übersetzung durch Bing Translator'
@@ -113,10 +137,10 @@ de:
       uploading: 'Hochladen ...'
       load_more: 'Mehr anzeigen'
       share: Teilen
-      ok: OK!
+      ok: ok
       retry: Nochmal versuchen
       done: Fertig
-      start: Los geht's
+      start: Beginnen
       delete: Löschen
       unsubscribe: Benachrichtigungen deaktivieren
       subscribe: Beitreten
@@ -127,11 +151,11 @@ de:
       last_seen: zuletzt angesehen
       invite: Einladen
       resent: Einladung erneut versendet
-      export: exportieren
+      export: Exportieren
       fork: Abzweigung
     formatting_help:
       label: 'Markdown-Formatierung'
-      title: 'Erfahre, wie du deinen Text mit Markdown formatieren kannst.'
+      title: 'Lernen Sie mehr über die Textformatierung mit Markdown'
   ordinal:
     _1: erste/s
     _2: zweite/s
@@ -145,82 +169,82 @@ de:
     _10: zehnte/s
   devise:
     sessions:
-      signed_up: erfolgreich angemeldet
+      signed_up: Erfolgreich angemeldet!
     failure:
-      inactive: 'Diese Email-Adresse ist mit einem deaktivierten Account verknüpft. Wenn Sie den Account wieder aktivieren möchten, nehmen Sie Kontakt mit uns auf.'
+      inactive: 'Diese E-Mail-Adresse gehört zu einem deaktivierten Benutzerkonto. Wenn Sie den Account wieder aktivieren möchten, nehmen Sie Kontakt mit uns auf.'
   error_page:
-    forbidden: 'Du hast nicht die notwendige Berechtigung für diese Aktion.'
+    forbidden: 'Sie sind nicht berechtigt, diese Aktion auszuführen.'
     page_not_found: 'Das konnten wir nicht finden. Es wurde entweder gelöscht oder verschoben.'
-    internal_server_error: 'Entschuldigung. Etwas ist schiefgegangen. Bitte erneut versuchen.'
+    internal_server_error: 'Entschuldigung, etwas ist schiefgegangen. Bitte versuchen Sie es erneut.'
   verify_email_notice:
-    please_verify: Vielen Dank für die Teilnahme. Wir haben dir eine E-Mail mit einem Link geschickt, mit dem du deine Teilnahme bestätigen kannst.
+    please_verify: Vielen Dank für die Teilnahme. Wir haben Ihnen eine E-Mail mit einem Link geschickt, mit dem Sie Ihre Teilnahme bestätigen kannst.
   previous_polls_page:
     heading: Aktivitäten in {{name}}
     polls_count: Zeige {{loaded}} von {{total}} Entscheidungen
     search_activities: Entscheidungen suchen
   volume_levels:
-    loud: 'Laut'
+    loud: 'Stummschaltung aufheben'
     normal: 'Normal'
     quiet: 'Leise'
     mute: 'Stummschalten'
-    unmute: 'Laut'
+    unmute: 'Stummschaltung aufheben'
   change_volume_form:
     aria_label: "E-Mail-Einstellungen ändern"
-    loud_label: "Über alle Aktivitäten benachrichtigen"
-    normal_label: "Nur Ankündigungen"
+    loud_label: "Alle Aktivitäten"
+    normal_label: "Ankündigungen"
     quiet_label: "Keine E-Mails"
     mute_label: "Stummschalten"
     discussion:
-      title: "Email-Einstellungen des Threads"
-      loud_description: "Du wirst benachrichtigt, sobald in dieser Diskussion etwas passiert."
-      normal_description: "Du wirst per E-Mail benachrichtigt, sobald eine Abstimmung eröffnet wurde oder demnächst beendet wird oder wenn ein Abstimmungsergebnis veröffentlicht wurde."
-      quiet_description: "Du wirst zu dieser Diskussion nicht per eMail benachrichtigt"
+      title: "E-Mail-Einstellungen zur Diskussion"
+      loud_description: "Sie werden per E-Mail benachrichtigt, sobald in dieser Diskussion etwas passiert."
+      normal_description: "Sie werden per E-Mail benachrichtigt, sobald eine Abstimmung eröffnet wurde oder demnächst beendet wird oder wenn ein Abstimmungsergebnis veröffentlicht wurde."
+      quiet_description: "Sie werden zu dieser Diskussion nicht per E-Mail benachrichtigt"
       apply_to_all: "Diese Einstellungen für alle Diskussionen in dieser Gruppe übernehmen."
       messages:
-        loud: "Du wirst per eMail benachrichtigt, sobald in dieser Diskussion etwas passiert."
-        normal: "Du wirst per eMail über Vorschläge in dieser Diskussion benachrichtigt."
-        quiet: "Du wirst zu dieser Diskussion nicht per eMail benachrichtigt"
+        loud: "Sie werden per E-Mail benachrichtigt, sobald in dieser Diskussion etwas passiert."
+        normal: "Sie werden per E-Mail über Vorschläge in dieser Diskussion benachrichtigt."
+        quiet: "Sie werden zu dieser Diskussion nicht per E-Mail benachrichtigt"
     membership:
       title: "E-Mail-Einstellungen für {{title}}"
-      loud_description: "Du wirst benachrichtigt, sobald in dieser Gruppe etwas passiert."
-      normal_description: "Du wirst nur über Ankündigungen in dieser Gruppe benachrichtigt."
-      quiet_description: "Du wirst nicht über Aktivitäten in dieser Gruppe benachrichtigt."
+      loud_description: "Sie werden benachrichtigt, sobald in dieser Gruppe etwas passiert."
+      normal_description: "Sie werden nur über Ankündigungen in dieser Gruppe benachrichtigt."
+      quiet_description: "Sie werden nicht über Aktivitäten in dieser Gruppe benachrichtigt."
       apply_to_all: "Diese Einstellungen für alle meine Gruppen übernehmen."
       messages:
-        loud: "Du wirst über alles per eMail benachrichtigt, sobald in dieser Gruppe etwas passiert."
-        normal: "Du wirst nur über Ankündigungen in dieser Gruppe benachrichtigt."
-        quiet: "Du wirst über nichts in dieser Gruppe benachrichtigt."
+        loud: "Sie werden über alles per E-Mail benachrichtigt, sobald in dieser Gruppe etwas passiert."
+        normal: "Sie werden nur über Ankündigungen in dieser Gruppe benachrichtigt."
+        quiet: "Sie werden über nichts in dieser Gruppe benachrichtigt."
     all_groups:
       messages:
-        loud: "Du wirst über alle Aktivitäten in allen deinen Gruppen per E-Mail informiert."
-        normal: "Du wirst nur über Ankündigungen in allen deinen Gruppen benachrichtigt."
-        quiet: "Du erhältst keine E-Mail-Benachrichtigungen zu deinen Gruppen."
+        loud: "Sie werden über alle Aktivitäten in all Ihren Gruppen per E-Mail informiert."
+        normal: "Sie werden nur über Ankündigungen in all Ihren Gruppen benachrichtigt."
+        quiet: "Sie erhalten keine E-Mail-Benachrichtigungen zu Ihren Gruppen."
     user:
       title: E-Mail-Einstellungen für neue Gruppen
-      loud_description: "Wenn du einer neuen Gruppe beitrittst, wirst du automatisch über alle Aktivitäten per E-Mail informiert."
-      normal_description: "Wenn du einer neuen Gruppe beitrittst, wirst du automatisch über alle Ankündigungen per E-Mail informiert."
-      quiet_description: "Wenn du einer Gruppe neu beitrittst, wirst du keine E-Mail-Benachrichtigungen über neue Aktivitäten erhalten."
+      loud_description: "Wenn Sie einer neuen Gruppe beitreten, werden Sie automatisch über alle Aktivitäten per E-Mail informiert."
+      normal_description: "Wenn Sie einer neuen Gruppe beitreten, werden Sie automatisch über alle Ankündigungen per E-Mail informiert."
+      quiet_description: "Wenn Sie einer Gruppe beitreten, werden Sie keine E-Mail-Benachrichtigungen über neue Aktivitäten erhalten."
       apply_to_all: "Diese Einstellungen für alle meine Gruppen übernehmen."
       messages:
-        loud: "Du wirst per eMail über alle Aktivitäten in Deinen neuen Gruppen benachrichtigt."
-        normal: "Du wirst über Ankündigungen in deinen neuen Gruppen benachrichtigt."
-        quiet: "Du wirst über nichts aus Deinen neuen Gruppen benachrichtigt."
+        loud: "Sie werden per E-Mail über alle Aktivitäten in neuen Gruppen benachrichtigt."
+        normal: "Sie werden über Ankündigungen in neuen Gruppen benachrichtigt."
+        quiet: "Sie werden keine Nachrichten über neue Gruppen erhalten."
   close_explanation_modal:
-    aria_label: Thread schließen
-    close_thread: Thread schließen
+    aria_label: Diskussion schließen
+    close_thread: Diskussion schließen
     body_header: |
-        <p>Schließen Sie alte oder irrelevante Threads, um sie aus der Ansicht zu entfernen, und zeigen Sie an, dass die Diskussion geschlossen wurde.</p>
+        <p>Schließen Sie alte oder irrelevante Diskussionen, um sie aus der Ansicht zu entfernen und zu signalisieren, dass die Diskussion abgeschlossen wurde.</p>
     body_footer: |
-        <p>Jeder kann in einem geschlossenen Thread eine Umfrage noch kommentieren oder starten, aber er wird nicht in der Thread-Liste der Gruppe oder im Dashboard angezeigt.</p>
-    image_alt: alle Threads schließen
+        <p>In geschlossenen Diskussionen kann weiterhin diskutiert werden, aber sie werden nicht mehr in der Diskussionsliste oder im Dashboard angezeigt.</p>
+    image_alt: Alle Diskussionen schließen
   mute_explanation_modal:
     aria_label: Diskussion stummschalten
     mute_thread: Diskussion stummschalten
     body_html: |
-        Stummschaltung bedeutet, dass Sie <strong>über Vorschläge</strong> oder andere Aktivitäten in diesem Thread nicht benachrichtigt werden, es sei denn, Sie werden von jemandem mit <strong>@</strong> angegeben.
+        Stummschaltung bedeutet, dass Sie <strong>über Vorschläge</strong> oder andere Aktivitäten in dieser Diskussion nicht benachrichtigt werden, es sei denn, Sie werden von jemandem mit <strong>@</strong> angegeben.
     body_html_2: |
-        Stumme Threads sind auch auf den Seiten <strong>"Zuletzt"</strong> und <strong>"Ungelesen"</strong> verborgen. Um Ihre stummen Themen zu finden, wählen Sie die Option <strong>"stumm"</strong> in der Seitenleiste
-    image_alt: Option für stumme Threads in der Seitenleiste
+        Stummgeschaltete Diskussionen sind auch auf den Seiten <strong>"Zuletzt"</strong> und <strong>"Ungelesen"</strong> verborgen. Um Ihre stummgeschalteten Diskussionen zu finden, wählen Sie die Option <strong>"stumm"</strong> in der Seitenleiste
+    image_alt: Option für stummgeschaltete Diskussionen in der Seitenleiste
   dismiss_explanation_modal:
     aria_label: Diskussion ausblenden
     dismiss_thread: Diskussion ausblenden
@@ -236,8 +260,8 @@ de:
     password_confirmation_label: 'Nochmal:'
   signed_out_modal:
     aria_label: 'Sitzung beendet'
-    title: "Deine Sitzung wurde beendet"
-    message: "Deine Sitzung wurde in einem anderen Fenster beendet. Bitte melde dich neu an um fortzufahren."
+    title: "Ihre Sitzung wurde beendet"
+    message: "Ihre Sitzung wurde in einem anderen Fenster beendet. Bitte melden Sie sich erneut an um fortzufahren."
     ok: "Ok"
   comment_reply_form:
     aria_label: 'Antwort hinzufügen'
@@ -255,25 +279,26 @@ de:
     edit_comment: 'Kommentar bearbeiten'
     delete_comment: 'Kommentar löschen'
     cancel_reply: 'Antwort abbrechen'
-    confirm_delete_message: 'Bist du sicher, dass du diesen Kommentar löschen möchtest?'
+    confirm_delete_message: 'Sind Sie sicher, dass Sie diesen Kommentar löschen möchten?'
     confirm_delete: 'Kommentar löschen'
-    in_reply_to: "{{Name}} antworten"
+    in_reply_to: "{{name}} antworten"
     write_a_comment: "einen Kommentar verfassen"
     submit_button:
       label: 'Veröffentlichen'
-    private_privacy_notice: 'Dein Kommentar wird nur für Mitglieder von {{groupName}} sichtbar sein.'
-    public_privacy_notice: 'Dein Kommentar wird für alle im Web sichtbar sein.'
+    private_privacy_notice: 'Ihr Kommentar wird nur für Mitglieder von {{groupName}} sichtbar sein.'
+    public_privacy_notice: 'Ihr Kommentar wird für alle im Web sichtbar sein.'
     sign_in: "Melde Dich an, um an der Diskussion teilzunehmen"
   sidebar:
     recent_threads: 'Aktuelle Diskussionen'
     unread_threads: 'Ungelesene Diskussionen ({{count}})'
     muted_threads: 'Stummgeschaltete Diskussionen'
+    start_group: 'Neue Organisation'
     explore: 'Öffentliche Gruppen'
     start_thread: Neue Diskussion
     start_decision: Neue Abstimmung
     aria_labels:
       heading: 'Sidebar'
-      threads_list: 'Thread-Aktionen'
+      threads_list: 'Diskussions-Aktionen'
       groups_list: 'Gruppen'
       user_list: 'Benutzer-Aktionen'
   navbar:
@@ -282,10 +307,10 @@ de:
     start_thread: 'Neue Diskussion'
     notifications: 'Benachrichtigungspanel'
     search:
-      label: 'Suchfeld; Gruppen und Threads suchen'
+      label: 'Suchfeld; Nach Gruppen und Diskussionen suchen'
       results_aria_label: 'Suchergebnisse'
       no_results: 'Keine Diskussionen gefunden'
-      close: 'Suchabfrage schließen'
+      close: 'Suchleiste schliessen'
       placeholder: 'Suchen'
       loading: 'Lade Ergebnisse...'
       discussions: 'Diskussionen'
@@ -303,7 +328,7 @@ de:
     sign_out: 'Abmelden'
   membership_card:
     group_members: "Mitglieder der Gruppe"
-    discussion_members: "Diskussions-Mitglieder"
+    discussion_members: "Diskussionsteilnehmer"
     poll_members: "{{pollType}} Mitglieder"
     invite_to_group: "zur Gruppe einladen"
     invite_to_discussion: "zur Diskussion einladen"
@@ -316,20 +341,12 @@ de:
     make_coordinator: 'Zum Koordinator machen'
     demote_coordinator: 'Koordinatorrechte entfernen'
     remove_from:
-      discussion: "von Thread entfernen"
+      discussion: "von Diskussion entfernen"
       group: "aus der Gruppe entfernen"
       poll: 'von {{pollType}} entfernen'
     cancel_invitation: Einladung abbrechen
-  start_menu:
-    label: 'Benutzer-Aktionen'
-    title: 'Aktion'
-    start_group: 'Gruppe erstellen'
-    start_subgroup: 'Untergruppe erstellen'
-    start_thread: 'Diskussion eröffnen'
-    start_poll: 'Umfrage starten'
-    invite_people: 'Teilnehmer einladen'
   notification_models:
-    discussion: 'Thread:'
+    discussion: 'Diskussion:'
     comment: 'kommentieren in'
     poll: 'Entscheidung:'
     outcome: 'Ergebnis:'
@@ -337,7 +354,7 @@ de:
     header: "Benachrichtigungen"
     no_notifications: "Es liegen keine Benachrichtigungen vor"
     new_discussion: "<strong>{{name}}</strong> hat die Diskussion <strong>{{title}}</strong> begonnen."
-    discussion_announced: "<strong>{{Name}}</strong> in einer Diskussion geteilt <strong>{{Titell}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> in einer Diskussion geteilt <strong>{{titlel}}</strong>"
     new_motion: "<strong>{{name}}</strong> hat den Vorschlag <strong>{{title}}</strong> erstellt"
     motion_closed: "Vorschlag ist beendet: <strong>{{title}}</strong>"
     publish_outcome: "Ergebnis bekanntgeben"
@@ -345,18 +362,18 @@ de:
     motion_closed_by_expiry: "Der Vorschlag <strong>{{title}}</strong> wurde beendet"
     new_vote: "<strong>{{name}}</strong> {{position}} zum Vorschlag <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> hat einen Kommentar verfasst in <strong>{{title}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> hat auf deinen Kommmentar in <strong>{{title}}</strong> geantwortet"
+    comment_replied_to: "<strong>{{name}}</strong> hat auf Ihren Kommentar in <strong>{{title}}</strong> geantwortet"
     reaction_created: "<strong>{{name}}</strong> reagierte <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> auf Ihr/e {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> hat dich in <strong>{{title}}</strong> erwähnt"
-    user_reminded: "<strong>{{name}}</strong> wartet darauf, dass du an <strong>{{title}}</strong> teilnimmst"
+    user_reminded: "<strong>{{name}}</strong> wartet darauf, dass Sie an <strong>{{title}}</strong> teilnehmen"
     membership_requested: "<strong>{{name}}</strong> hat die Mitliedschaft in <strong>{{title}}</strong> beantragt"
-    membership_request_approved: '<strong>{{name}}</strong> hat deine Mitgliedsanfrage in <strong>{{title}}</strong> angenommen'
+    membership_request_approved: '<strong>{{name}}</strong> hat Ihre Mitgliedsanfrage in <strong>{{title}}</strong> angenommen'
     user_added_to_group: "<strong>{{name}}</strong> hat dich zur Gruppe <strong>{{title}}</strong> hinzugefügt"
-    user_added_to_group_no_inviter: "Du wurdest zur Gruppe <strong>{{title}}</strong> hinzugefügt"
+    user_added_to_group_no_inviter: "Sie wurden zur Gruppe <strong>{{title}}</strong> hinzugefügt"
     motion_closing_soon: "Der Vorschlag wird bald beendet: <strong>{{title}}</strong>"
     motion_outcome_created: "<strong>{{name}}</strong> hat ein Ergebnis für den Vorschlag <strong>{{title}}</strong> veröffentlicht"
     motion_outcome_updated: "<strong>{{name}}</strong> hat das Ergebnis für den Vorschlag <strong>{{title}}</strong> bearbeitet"
-    invitation_accepted: "<strong>{{name}}</strong> hat deine Einladung zur Gruppe <strong>{{title}}</strong> angenommen"
+    invitation_accepted: "<strong>{{name}}</strong> hat Ihre Einladung zur Gruppe <strong>{{title}}</strong> angenommen"
     new_coordinator: "<strong>{{name}}</strong> hat dich zum Koordinator von <strong>{{title}}</strong> gemacht"
     poll_created: "<strong>{{name}}</strong> hat einen {{poll_type}} angelegt: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> hat einen {{poll_type}} bearbeitet: <strong>{{title}}</strong>"
@@ -368,7 +385,7 @@ de:
     outcome_announced: "<strong>{{name}}</strong> hat ein Ergebnis geteilt: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> hat teilgenommen: <strong>{{title}}</strong>"
   position_buttons_panel:
-    heading: Vertritt deine Meinung
+    heading: Sagen Sie Ihre Meinung
   extend_proposal_form:
     aria_label: Abstimmungsende ändern
     title: 'Abstimmungsende ändern'
@@ -378,32 +395,32 @@ de:
     created: 'Die Diskussion {{title}} wurde erfolgreich in {{groupName}} erstellt'
     updated: 'Änderungen für {{title}} gespeichert'
   discussion_fork_actions:
-    helptext: "Wählen Sie Elemente aus, die Sie in einen neuen Thread verschieben möchten"
+    helptext: "Wählen Sie Elemente aus, die Sie in eine neue Diskussion verschieben möchten"
   discussion_form:
-    aria_label: 'Thread-Formular'
+    aria_label: 'Diskussions-Formular'
     messages:
       created: 'Diskussion wurde eröffnet'
       updated: 'Diskussion aktualisiert'
-      forked: 'Thread-Abspaltung geschaffen'
+      forked: 'Diskussion aufgespaltet'
     new_discussion_title: 'Neue Diskussion beginnen'
-    fork_discussion_title: 'Thread aufspalten'
+    fork_discussion_title: 'Diskussion aufspalten'
     edit_discussion_title: 'Diskussion bearbeiten'
     group_label: 'Gruppe'
     group_placeholder: 'Gruppe auswählen'
     title_label: 'Titel'
-    title_placeholder: 'Welches Thema möchtest Du diskutieren?'
+    title_placeholder: 'Welches Thema möchten Sie diskutieren?'
     context_label: 'Kontext'
     context_placeholder: 'Stelle der Gruppe ausreichend Hintergrundinformationen zur Verfügung, um eine konstruktive Diskussion zu ermöglichen. Diese Informationen können im Verlauf der Diskussion entsprechend aktualisiert werden'
     privacy_label: 'Privatsphäre'
     privacy_public: 'Jede.r kann die Diskussion sehen. Nur Mitglieder können teilnehmen.'
     privacy_private: 'Die Diskussion wird nur für Mitglieder von {{group}} sichtbar sein.'
     privacy_organisation: 'Diese Diskussion wird nur für Mitglieder von {{parent}} und {{group}} sichtbar sein.'
-    fork_notice: 'Ein neuer Thread wird mit {{count}} Elementen aus {{title}} erstellt'
+    fork_notice: 'Es wird eine neue Diskussion mit {{count}} Einträgen aus {{title}} angelegt'
   announcement:
     audiences:
-      parent_group: Mitglieder von {{Name}}
-      formal_group: Mitglieder von Name
-      discussion_group: Mitglieder des Threads
+      parent_group: Mitglieder von {{name}}
+      formal_group: Mitglieder von {{name}}
+      discussion_group: Diskussionsteilnehmer
       voters: alle, die abgestimmt haben
       non_voters: alle, die noch nicht abgestimmt haben
     form:
@@ -412,7 +429,7 @@ de:
         helptext: Wen möchten Sie zu der Gruppe einladen?
       discussion_announced:
         title: zur Diskussion einladen
-        helptext: Wen möchten Sie zu dem Thread einladen?
+        helptext: Wen möchten Sie zu dieser Diskussion einladen?
       discussion_edited:
         title: Über Änderungen benachrichtigen
         helptext: Wen möchten Sie über Ihre Änderungen benachrichtigen?
@@ -427,7 +444,7 @@ de:
         helptext: Wen möchten Sie über Ihre Änderungen benachrichtigen?
       outcome_announced:
         title: Ergebnis bekanntgeben
-        helptext: Mit wem möchten Sie Ihr Ergebnis teilen?
+        helptext: Mit wem möchten Sie das Ergebnis teilen?
       anyone_can_participate: Alle, die Zugriff auf den Link haben, können abstimmen
       placeholder: Namen oder Mailadressen eingeben
       notified_empty: 'Bis jetzt wurde niemand ausgewählt.'
@@ -472,10 +489,11 @@ de:
     translate_outcome: Ergebnis übersetzen
     show_history: Bearbeitungsverlauf anzeigen
     pin_thread: Diskussion anpinnen
-    unpin_thread: Thread nicht mehr festsetzen
+    unpin_thread: Diskussion nicht mehr anpinnen
     comment_copied: Kommentar-URL in die Zwischenablage kopiert
     poll_copied: Die Entscheidungs-URL wurde in die Zwischenablage kopiert
-    discussion_copied: Thread-URL in die Zwischenablage kopiert
+    discussion_copied: Diskussions-URL in die Zwischenablage kopiert
+    tag_thread: Schlagwörter verwalten
   cover_photo_form:
     aria_label: 'Titelfoto Änderungsformumlar'
     heading: 'Neues Titelfoto'
@@ -492,17 +510,17 @@ de:
     join_group: Der Gruppe beitreten
     membership_requested: Mitgliedschaftsanfrage läuft noch
     messages:
-      joined_group: 'Du bist nun Mitglied von {{group}}.'
+      joined_group: 'Sie sind nun ein Mitglied von {{group}}'
   membership_request_form:
     aria_label: Anfrageformular zum Gruppenbeitritt
     heading: Gruppenbeitritt anfragen
     name_label: Name
     email_label: E-Mail
-    introduction_label: Warum willst Du beitreten?
+    introduction_label: Weshalb möchten Sie beitreten?
     submit_button: Beitritt anfragen
     introduction_over_limit: Die Antwort hat zu lange gedauert
     messages:
-      membership_requested: 'Du hast die Mitgliedschaft für {{group}} angefragt'
+      membership_requested: 'Sie haben sich für die Mitgliedschaft in {{group}} beworben'
   revision_history_modal:
     aria_label: Revisionsverlauf
     discussion_header: Diskussions-Revisionsverlauf
@@ -513,44 +531,44 @@ de:
     posted: Veröffentlicht
     original_text: Original
     current_revision: Letzte
-    closing_at_changed: "Schließzeit auf {{time}}"
-    private_changed: "Datenschutz auf {{privat}} festgelegt"
+    closing_at_changed: "Schliesst: {{time}}"
+    private_changed: "Sichtbarkeit auf {{privat}} festgelegt"
     group_id_changed: "in {{name}} verschoben"
   reactions_input:
     add_your_reaction: Reaktion hinzufügen
   reactions_display:
     more_reactions: "{{count}} weitere"
-    you: "Du"
-    you_and_name: "Du und {{name}}"
-    you_and_name_and_count_more: "Du, {{name}} und {{count}} weitere"
+    you: "Sie"
+    you_and_name: "Sie und {{name}}"
+    you_and_name_and_count_more: "Sie, {{name}} und {{count}} weitere"
     name_and_count_more: "{{name}} und {{count}} weitere"
   context_panel:
     thread_status:
-      pinned: "Dieser Thread wurde gepinnt. Er wird für alle Nutzer als oberstes auf der Gruppenliste der Threads angezeigt."
-      closed: "Dieser Thread wurde geschlossen. Er wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter \"Geschlossen\" angezeigt"
+      pinned: "Diese Diskussion wurde gepinnt. Sie wird für alle Nutzer zuoberst in der Diskussionsliste angezeigt."
+      closed: "Diese Diskussion wurde geschlossen. Sie wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter \"Geschlossen\" angezeigt"
   group_page:
-    show_opened: '{{Anzahl}} öffnen'
-    show_closed: '{{Auzählung}} geschlossen'
+    show_opened: '{{count}} Offen'
+    show_closed: '{{count}} Geschlossen'
     no_threads_here: Keine Themen hier zu sehen!
-    search_threads: Nach Threads suchen...
-    private_threads: Sie müssen Mitglied sein um private Threads in der Gruppe sehen zu können
+    search_threads: Diskussionen durchsuchen...
+    private_threads: Sie müssen Mitglied sein um private Diskussionen in der Gruppe sehen zu können
     no_more_threads: Das sind alle bislang in dieser Gruppe vorhandenen Diskussionen.
     messages:
       privacy:
         members: 'Diese Gruppe ist nun nur für Mitglieder sichtbar'
         parent_members: 'Diese Gruppe ist nur für Gruppenmitglieder sichtbar'
         public: 'Diese Gruppe ist nun im Web sichtbar'
-      leave_group_success: 'Du hast diese Gruppe verlassen'
+      leave_group_success: 'Sie haben diese Gruppe verlassen'
       archive_group_success: 'Diese Gruppe wurde deaktiviert'
     group_logo: 'Gruppen-Logo'
     new_photo: 'Neues Foto'
     new_cover_photo: 'Neues Titelfoto hochladen'
     new_group_logo: 'Neues Gruppenlogo hochladen'
     open_discussions: 'Aktuelle Diskussionen'
-    closed_discussions: 'geschlossene Threads'
+    closed_discussions: 'geschlossene Diskussionen'
     discussions_placeholder: 'An einer Diskussion können sich alle Mitglieder beteiligen und gemeinsam Abstimmungen durchführen.'
     members: '{{count}} Mitglieder'
-    members_placeholder: 'Du bist bislang alleine hier: Lade mehr Leute ein!'
+    members_placeholder: 'Sie sind zurzeit ganz alleine hier: Laden Sie mehr Leute ein!'
     member_options: Mitgliedseinstellungen
     see_all_members: 'Alle {{count}} Mitglieder anzeigen'
     pending_invitations: '+ {{count}} ausstehend'
@@ -562,29 +580,34 @@ de:
     options:
       label: 'Optionen'
       edit_group: 'Gruppeneinstellungen bearbeiten'
+      export_data: Gruppendaten exportieren
+      export_data_as_json: Gruppendaten im JSON-Format exportieren
+      export_data_as_csv: Gruppendaten im CSV-Format exportieren
+      export_data_as_html: Gruppendaten im HTML-Format exportieren
       manage_members: 'Mitglieder verwalten'
       add_subgroup: 'Untergruppe anlegen'
       manage_subscription: 'Gruppenbenachrichtigungen verwalten'
+      email_settings: 'E-Mail-Einstellungen'
       leave_group: 'Gruppe verlassen'
       deactivate_group: 'Gruppe deaktivieren'
     volume:
       loud: E-Mail, sobald es Aktuelles gibt.
-      loud_aria_description: Deine Benachrichtigungseinstellungen für diese Gruppe steht auf "Laut". Du wirst per eMail informiert, sobald etwas in der Gruppe geschieht.
-      loud_message: Du wirst über alles in "{{name}}" per eMail benachrichtigt.
+      loud_aria_description: Ihre Benachrichtigungseinstellungen für diese Gruppe steht auf "Laut". Sie werden per E-Mail informiert, sobald etwas in der Gruppe geschieht.
+      loud_message: Sie werden über alles in "{{name}}" per E-Mail benachrichtigt.
       normal: 'Nur wichtige Neuigkeiten per E-Mail senden: neue Diskussionen, neue Vorschläge, neue Ergebnisse etc.'
-      normal_aria_description: Deine Benachrichtigungseinstellungen für diese Gruppe stehen derzeit auf "Normal". Du wirst per E-Mail über wichtige Meldungen informiert, z. B. wenn jemand eine neue Diskussion beginnt, eine Abstimmung eröffnet oder ein Abstimmungsergebnis bekanntgibt.
-      normal_message: 'Du wirst in "{{name}}" nur über wichtige Geschehnisse per eMail benachrichtigt.'
+      normal_aria_description: Ihre Benachrichtigungseinstellungen für diese Gruppe stehen derzeit auf "Normal". Sie werden per E-Mail über wichtige Meldungen informiert, z. B. wenn jemand eine neue Diskussion beginnt, eine Abstimmung eröffnet oder ein Abstimmungsergebnis bekanntgibt.
+      normal_message: 'Sie werden in "{{name}}" nur über wichtige Geschehnisse per E-Mail benachrichtigt.'
       quiet: Keine E-Mail-Benachrichtungen für diese Gruppe senden. Aktivitäten werden auf dem Dashboard angezeigt.
-      quiet_aria_description: Deine Benachrichtigungseinstellung für diese Gruppe ist auf "Leise" gestellt. Du erhältst keine Benachrichtigungen über Aktivitäten in dieser Gruppe. Aktivitäten werden aber auf dem Dashboard angezeigt.
-      quiet_message: 'Du wirst über nichts in "{{name}}" per eMail benachrichtigt.'
+      quiet_aria_description: Ihre Benachrichtigungseinstellung für diese Gruppe ist auf "Leise" gestellt. Sie erhalten keine Benachrichtigungen über Aktivitäten in dieser Gruppe. Aktivitäten werden aber im Dashboard angezeigt.
+      quiet_message: 'Sie werden über nichts in "{{name}}" per E-Mail benachrichtigt.'
       mute: Diese Gruppe auf dem Dashboard verbergen und nur benachrichtigen, wenn ich @erwähnt werde.
-      mute_aria_description: Deine Benachrichtigungseinstellungen für diese Gruppe steht auf "Stumm". Du wirst nur per eMail informiert, wenn Du @angesprochen wirst. Meldungen aus dieser Gruppe werden in der Statusleiste nicht angezeigt.
-      mute_message: '"{{name}}" wurde von Deiner "Aktuell"-Liste entfernt.'
+      mute_aria_description: Ihre Benachrichtigungseinstellung für diese Gruppe steht auf "Stumm". Sie werden nur per E-Mail informiert, wenn Sie @angesprochen werden. Meldungen aus dieser Gruppe werden in der Statusleiste nicht angezeigt.
+      mute_message: '"{{name}}" wurde vom Dashboard entfernt.'
     privacy:
       private: 'Privatsphäre: Diese Gruppe ist nur für Mitglieder sichtbar'
-      parent_members: 'Privatsphäre: Diese Gruppe ist nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar.'
+      parent_members: 'Sichtbarkeit: Diese Gruppe ist nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar.'
       public: 'Privatsphäre: Diese Gruppe ist im Web sichtbar'
-      aria_label: 'Gruppen-Privatsphäre: {{privacy}}'
+      aria_label: 'Sichtbarkeit der Gruppe: {{privacy}}'
   description_card:
     title: 'Gruppenbeschreibung'
     placeholder: 'Gruppen-Koordinatoren können dieses Feld benutzen, um die Zielsetzung der Gruppe zu beschreiben, damit alle Teilnehmer wissen, warum sie hier sind.'
@@ -593,14 +616,14 @@ de:
   leave_group_form:
     aria_label: 'Gruppe verlassen'
     title: 'Gruppe verlassen'
-    question: 'Bist du sicher, dass du diese Gruppe verlassen möchtest?'
+    question: 'Sind Sie sicher, dass Sie diese Gruppe verlassen möchten?'
     submit: 'Ja, Gruppe verlassen'
-    cannot_leave_group: 'Du kannst diese Gruppe nicht verlassen, weil du der letzte verbliebene Koordinator bist. Du musst zunächst einen anderen Koordinator bestimmen oder die Gruppe deaktivieren.'
+    cannot_leave_group: 'Sie können diese Gruppe nicht verlassen, da Sie der letzte verbliebene Koordinator sind. Bitte bestimmen Sie zunächst einen neuen Koordinator oder deaktivieren Sie die Gruppe.'
     add_coordinator: 'Koordinator hinzufügen'
   archive_group_form:
     aria_label: 'Gruppe deaktivieren'
     title: 'Gruppe deaktivieren'
-    question: 'Bist du sicher, dass du diese Gruppe deaktivieren möchtest?'
+    question: 'Sind Sie sicher, dass Sie diese Gruppe deaktivieren möchten?'
     submit: 'Ja, diese Gruppe deaktivieren'
   group_form:
     aria_label: 'Gruppenform'
@@ -609,10 +632,10 @@ de:
     edit_group_heading: 'Gruppeneinstellungen bearbeiten'
     edit_subgroup_heading: 'Untergruppeneinstellungen bearbeiten'
     group_name: 'Gruppen-Name'
-    group_name_placeholder: 'Wie willst Du Deine Gruppe nennen?'
+    group_name_placeholder: 'Wie möchten Sie die Gruppe nennen?'
     subgroup_name: 'Untergruppen-Name'
     description: 'Beschreibung'
-    description_placeholder: 'Beschreibe die Zielsetzung deiner Gruppe, damit die Mitglieder wissen, warum sie hier sind.'
+    description_placeholder: 'Beschreiben Sie die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.'
     privacy_statement:
       public_on_web: 'Name, Beschreibung und Anhänge der Gruppe werden öffentlich einsehbar sein'
       private_to_group: 'Name und Beschreibung sind nur Mitgliedern sichtbar'
@@ -620,17 +643,17 @@ de:
     privacy: 'Privatsphäre'
     group_privacy_is_open_description: "Die Gruppe ist für alle sichtbar und kann von allen betreten werden. Nur Gruppenmitglieder können sehen, wer Mitglied in dieser Gruppe ist. Alle Diskussionen sind öffentlich."
     group_privacy_is_closed_description: "Jeder kann die Gruppe finden und dich um Beitritt bitten. Nur Mitglieder können sehen, wer in der Gruppe ist. Alle Diskussionen sind privat."
-    group_privacy_is_closed_public_threads_description: "Jeder kann die Gruppe finden und Sie nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Threads können privat oder öffentlich sein."
+    group_privacy_is_closed_public_threads_description: "Jeder kann die Gruppe finden und Sie nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Diskussionen können privat oder öffentlich sein."
     group_privacy_is_secret_description: "Nur eingeladene Mitglieder können die Gruppe finden und die Teilnehmer und Diskussionsbeiträge der Gruppe sehen."
-    confirm_change_to_secret: "Wenn Du fortfährst werden alle Diskussionen dieser Gruppe und all ihrer Untergruppen privat."
-    confirm_change_to_secret_subgroup: 'Wenn Du fortfährst werden alle Diskussionen privat.'
-    confirm_change_to_public: 'Wenn Du fortfährst werden alle Diskussionen in der Gruppe öffentlich sichtbar im Web.'
-    confirm_change_to_private_discussions_only: 'Wenn Du fortfährst werden alle öffentlichen Diskussionen dieser Gruppe privat.'
-    subgroup_privacy_is_open_description: "Jeder kann diese Gruppe finden und Sie nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Threads sind öffentlich."
-    subgroup_privacy_is_closed_description: "Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Threads sind privat."
-    subgroup_privacy_is_closed_public_threads_description: "Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Threads können öffentlich oder privat sein."
-    subgroup_privacy_is_closed_secret_parent_description: "nur Mitglieder von {{parent}} können diese Untergruppe finden und um Aufnhame bitten. Alle Diskussionen sind privat. Nur Gruppen-Mitglieder können sehen wer dabei ist."
-    subgroup_privacy_is_secret_description: 'Nur eingeladene Mitglieder können diese Untergruppe finden, sehen wer in der Gruppe ist und die Threads einsehen.'
+    confirm_change_to_secret: "Wenn Sie fortfahren werden alle Diskussionen dieser Gruppe und all ihrer Untergruppen privat."
+    confirm_change_to_secret_subgroup: 'Wenn Sie fortfahren werden alle Diskussionen privat.'
+    confirm_change_to_public: 'Wenn Sie fortfahren werden alle Diskussionen in der Gruppe öffentlich sichtbar im Web.'
+    confirm_change_to_private_discussions_only: 'Wenn Sie fortfahren werden alle öffentlichen Diskussionen dieser Gruppe privat.'
+    subgroup_privacy_is_open_description: "Jeder kann diese Gruppe finden und Sie nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind öffentlich."
+    subgroup_privacy_is_closed_description: "Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind privat."
+    subgroup_privacy_is_closed_public_threads_description: "Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Diskussionen können öffentlich oder privat sein."
+    subgroup_privacy_is_closed_secret_parent_description: "Nur Mitglieder von {{parent}} können diese Untergruppe finden und um Aufnhame bitten. Alle Diskussionen sind privat. Nur Gruppenmitglieder können die Mitgliederliste einsehen."
+    subgroup_privacy_is_secret_description: 'Nur eingeladene Mitglieder können diese Untergruppe finden, sehen wer in der Gruppe ist und die Diskussionen einsehen.'
     advanced_settings: "Erweiterte Einstellungen"
     how_do_people_join: "Wie kann jemand teilnehmen?"
     membership_granted_upon_request: 'Gruppe ist zugänglich für alle'
@@ -645,6 +668,7 @@ de:
     permissions: 'Berechtigungen'
     allow_public_threads: 'Öffentliche Diskussionen in der Gruppe erlauben.'
     parent_members_can_see_discussions: 'Mitglieder von {{parent}} können private Diskussionen sehen.'
+    members_can_announce: 'Mitglieder können alle anderen in der Gruppe benachrichtigen'
     members_can_add_members: 'Mitglieder können andere einladen und Beitrittsanfragen beantworten.'
     members_can_create_subgroups: 'Mitglieder können Untergruppen erstellen.'
     members_can_edit_discussions: 'Mitglieder können die Beschreibung und den Titel aller Diskussionen bearbeiten.'
@@ -658,8 +682,12 @@ de:
     messages:
       group_created: 'Gruppe wurde erstellt'
       group_updated: 'Gruppe aktualisiert'
+  group_export_modal:
+    title: Gruppendaten exportieren
+    submit: Mit Export beginnen
+    flash: Export der Gruppendaten hat begonnen
   group_features:
-    useAnonymous: anonyme Umfragen aktivieren
+    useAnonymous: Anonyme Umfragen aktivieren
     nested_comments: verschachtelte Kommentaransicht aktivieren
   membership_requests_card:
     heading: 'Mitgliedschaftsanfragen'
@@ -717,11 +745,11 @@ de:
     heading: Frühere Vorschläge
     see_more: Mehr erfahren
   group_decisions_card:
-    see_more: "alle/s: ({{Anzahl}}) Entscheidungen"
+    see_more: "Zeige alles: ({{count}}) Entscheidungen"
   invitation_form:
     aria_label: 'Einladungsformular'
     invite_people: 'Teilnehmer einladen'
-    invite_people_to_group: 'In die Gruppe {{name}} einladen'
+    invite_people_to_group: 'Zu {{name}} einladen'
     group: 'Gruppe'
     group_placeholder: 'Gruppe auswählen'
     shareable_link: 'Teilbarer Link'
@@ -729,13 +757,13 @@ de:
     email_addresses: 'E-Mail-Adressen'
     email_addresses_placeholder: 'z. B. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: 'Kopiere den Link und sende ihn an alle, die der Gruppe beitreten sollen. So erhalten die Teilnehmer Zugriff auf alle in der Gruppe vorhandenen Diskussionsbeiträge.'
-    email_explanation: 'Alternativ kannst du unten E-Mail-Adressen eingeben, um Einladungen per E-Mail zu senden.'
-    add_custom_message: 'Mach'' Deine Einladung persönlich,'
+    email_explanation: 'Alternativ können Sie im Folgenden E-Mail-Adressen eingeben, um Einladungen per E-Mail zu senden.'
+    add_custom_message: 'Personalisieren Sie die Einladung,'
     add_custom_message_link: 'füge eine persönliche Nachricht hinzu.'
     custom_message: 'Persönliche Nachricht'
-    custom_message_placeholder: 'Gib eine persönliche Nachricht hinzu, die der Einladung hinzugefügt wird.'
+    custom_message_placeholder: 'Geben Sie eine persönliche Nachricht ein, die der Einladung hinzugefügt wird.'
     team_invitation_message: 'Alternativ,'
-    team_invitation_link: 'erhalte einen Link, den Du teilen kannst.'
+    team_invitation_link: 'erhalten Sie einen Link zum Teilen.'
     add_members: 'Mitglieder hinzufügen'
     from_parent_group: 'von {{name}}.'
     send: 'Sende'
@@ -744,13 +772,13 @@ de:
       invitation_sent: 'Einladung gesendet.'
       invitations_sent: '{{count}} Einladungen versendet.'
       no_invitations: 'Bitte überprüfen Sie, dass Ihre Mailadresse korrekt ist und probieren Sie es erneut.'
-      max_invitations: 'Wenn Du mehr als 100 Einladungen zu verschicken hast, nutze einen Team-Link.'
+      max_invitations: 'Wenn Sie mehr als 100 Einladungen verschicken möchten, verwenden Sie einen Team-Link.'
   add_members_modal:
     aria_label: 'Mitglieder vom Mutterkonzern hinzufügen'
-    heading: 'Mitglieder aus der Gruppe {{name}} hinzufügen'
+    heading: 'Mitglieder der Gruppe {{name}} hinzufügen'
     add_members: 'Mitglieder hinzufügen'
-    user_added_to_subgroup: '{{name}} der Untergruppe hinzugefügt'
-    users_added_to_subgroup: '{{count}} Nutzer der Untergruppe hinzugefügt'
+    user_added_to_subgroup: '{{name}} zur Untergruppe hinzugefügt'
+    users_added_to_subgroup: '{{count}} Mitglieder zur Untergruppe hinzugefügt'
     no_members_to_add: 'Alle Mitglieder von {{parent}} gehören dieser Untergruppe an'
   memberships_page:
     members: 'Mitglieder'
@@ -761,19 +789,19 @@ de:
     messages:
       remove_member_success: '{{name}} enfernt'
       make_admin_success: '{{name}} ist nun ein Koordinator'
-      remove_admin_success: '{{name}} ist nun kein Koordinator mehr'
+      remove_admin_success: '{{name}} ist kein Koordinator mehr'
     remove_admin_from_self:
-      question: 'Bist du sicher, dass du nicht mehr Koordinator sein möchtest?'
+      question: 'Sind Sie sicher, dass Sie nicht mehr Koordinator sein möchten?'
   membership_remove_modal:
     invitation:
       title: Einladung abbrechen
-      message: Sind Sie sicher, dass Sie die Einladung an {{Name}} abbrechen wollen?
+      message: Sind Sie sicher, dass Sie die Einladung an {{name}} abbrechen wollen?
       flash: Einladung gelöscht
       submit: Einladung abbrechen
     membership:
       title: Mitglied entfernen
-      message: Sind Sie sicher, dass Sie {{Name}} entfernen wollen?
-      impact_for_group: Dies wird Ihren Zugang zu allen Threads und Entscheidungen in der Gruppe entfernen.
+      message: Sind Sie sicher, dass Sie {{name}} entfernen wollen?
+      impact_for_group: Dies wird Ihren Zugang zu allen Diskussionen und Entscheidungen in der Gruppe entfernen.
       impact_for_subgroups: Dies wird auch Ihren Zugang zu den Untergruppen dieser Gruppe entfernen.
       flash: Mitglied entfernt
       submit: Mitglied entfernen
@@ -783,11 +811,11 @@ de:
   membership_form:
     modal_title:
       group: Gruppen-Überschrift festlegen
-      discussion: Thread-Überschrift festlegen
+      discussion: Überschrift der Diskussion festlegen
       poll: Legen Sie den {{pollType}} Titel fest
     title_helptext:
       group: Dieser Titel wird neben {{name}}s Namen in dieser Gruppe angezeigt. Nutzen Sie ihn um anderen Personen Ihre Rolle zu zeigen.
-      discussion: 'Dieser Titel wird neben {{name}}s Name in diesem Thread angezeigt. Nutzen Sie ihn um anderen Personen Ihre Rolle zu zeigen. '
+      discussion: 'Dieser Titel wird neben {{name}}s Name in dieser Diskussion angezeigt. Nutzen Sie ihn um anderen Personen Ihre Rolle zu zeigen. '
       poll: Dieser Titel wird innerhalb dieses {{pollType}} neben dem Namen von {{name}} angezeigt. Verwenden Sie es, um die Leute ihre Rolle wissen zu lassen.
     title_label: Überschrift / Titel
     title_placeholder: zum Beispiel "Koordinator" oder "Moderator"
@@ -802,22 +830,22 @@ de:
     revoke_invitation: Zurückziehen
   cancel_invitation_form:
     heading: Einladung abbrechen
-    question: Sicher, dass Du diese Einladung löschen willst?
-    submit: "Ja, Einladung abbrechen"
+    question: Sind Sie sicher, dass Sie diese Einladung zurückziehen möchten?
+    submit: "Ja, Einladung zurückziehen"
     cancel: 'Nein'
     messages:
-      success: Einladung gelöscht
+      success: Einladung zurückgezogen
   user_page:
     contact_user: '{{name}} kontaktieren'
     location_field: 'Ort: {{value}}'
     locale_field: 'Sprache: {{value}}'
     online_field: 'Online: {{value}}'
-    invited: 'eingeladen {{value}}'
+    invited: 'Eingeladen: {{value}}'
   contact_request_form:
-    modal_title: "E-Mail {{name}}"
-    message_placeholder: Stell dich vor und beschreibe, warum du Kontakt aufnehmen willst.
-    helptext: "{{name}} wird dein Name, deine Email Adresse und die Nachricht gesendet"
-    email_sent: "Email an {{name}} gesendet"
+    modal_title: "E-Mail an {{name}}"
+    message_placeholder: Stellen Sie sich vor und beschreiben Sie, weshalb Sie Kontakt aufnehmen möchten.
+    helptext: "{{name}} erhält Ihren Namen, Ihre E-Mail-Adresse und die Nachricht"
+    email_sent: "E-Mail an {{name}} gesendet"
   profile_page:
     messages:
       updated: 'Profil aktualisiert'
@@ -838,10 +866,10 @@ de:
     email_label: 'E-Mail'
     short_bio_label: 'Über mich'
     locale_label: 'Sprache'
-    short_bio_placeholder: 'Bitte stelle dich hier kurz vor und nenne deine Fach- und Interessensgebiete sowie ggf. die Organisationen, für die du arbeitest.'
+    short_bio_placeholder: 'Bitte stellen Sie sich hier kurz vor und nennen Sie Ihre Fach- und Interessensgebiete sowie ggf. die Organisationen, für welche Sie tätig sind.'
     locale_placeholder: Wählen Sie Ihre Sprache
     location_label: 'Ort'
-    location_placeholder: 'Wo wohnst du?'
+    location_placeholder: 'Wo wohnen Sie?'
     update_profile: 'Profil aktualisieren'
     deactivate_account: 'Benutzerkonto deaktivieren'
     help_translate: "Hilf mit, Loomio zu übersetzen"
@@ -884,9 +912,9 @@ de:
     header: E-Mail-Einstellungen
     email_newsletter: Loomio Newsletter
     daily_summary_label: Tägliche Übersichts-E-Mail
-    daily_summary_description: "Du erhältst jeden Morgen eine E-Mail mit allen Aktivitäten des Vortages. So bleibst du stets auf dem Laufenden über alle Aktivitäten."
+    daily_summary_description: "Sie erhalten jeden Morgen eine E-Mail mit allen Aktivitäten des Vortages. So bleiben Sie stets auf dem Laufenden über alle Aktivitäten."
     on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
-    on_participation_description: "Wenn Du Dich an einer Diskussion beteiligst, wirst Du zukünftig automatisch über alle Aktivitäten per E-Mail informiert."
+    on_participation_description: "Wenn Sie an einer Diskussion teilnehmen, werden Sie zukünftig automatisch über alle Aktivitäten in dieser Diskussion per E-Mail informiert."
     announcement_label: Nur Ankündigungen
     announcement_description: "Sie erhalten eine E-Mail über alle Inhalte, die von Personen in Ihren Gruppen angekündigt wurden"
     mentioned_label: Erwähnungen und Antworten
@@ -894,9 +922,9 @@ de:
     update_settings: Änderungen speichern
     specific_groups: Einstellungen für einzelne Gruppen
     default_settings:
-      loud_description: "Wenn Du einer neuen Gruppe beitrittst, wirst Du per E-Mail über <strong>neue Aktivitäten</strong> benachrichtigt."
-      normal_description: "Wenn Du einer Gruppe beitrittst, dann wirst Du per eMail über <strong>neue Diskussionene und Voschläge </strong> benachrichtigt."
-      quiet_description: "Wenn Du einer Gruppe beitrittst, dann wirst Du <strong>keine eMail erhalten</strong>."
+      loud_description: "Wenn Sie einer neuen Gruppe beitreten, werden Sie per E-Mail über <strong>alle Aktivitäten</strong> benachrichtigt."
+      normal_description: "Wenn Sie einer Gruppe beitreten, werden Sie per E-Mail über <strong>neue Diskussionene und Voschläge </strong> benachrichtigt."
+      quiet_description: "Wenn Sie einer Gruppe beitreten werden Sie <strong>keine E-Mail-Benachrichtigungen erhalten</strong>."
     edit: Bearbeiten
     messages:
       updated: E-Mail-Einstellungen wurden aktualisiert
@@ -904,24 +932,26 @@ de:
   dashboard_page:
     aria_label: 'Schreibtisch'
     no_groups:
-      show_all: Du hast keine aktuellen Diskussionsverläufe, da du keiner Gruppe angehörst.
-      show_muted: Sie haben keine atummen Threads, weil Sie kein Mitglied einer Gruppe sind.
+      show_all: Es gibt keine aktuellen Diskussionen, da Sie noch keiner Gruppe angehören.
+      show_muted: Sie haben keine stummgeschalteten Diskussionen, weil Sie kein Mitglied einer Gruppe sind.
     no_threads:
-      show_all: Du hast keine aktuellen Diskussionen.
+      show_all: Sie haben derzeit keine aktuellen Diskussionen.
       show_proposals: Momentan sind keine Vorschläge am Laufen.
-      show_muted: Du hast keine Diskussionen stummgeschaltet.
+      show_muted: Sie haben derzeit keine stummgeschalteten Diskussionen.
     view_recent: Alle neuen Diskussionen anzeigen?
     load_more: Mehr Diskussionen anzeigen
     mark_as_read: Als gelesen markieren
     dismiss: Ausblenden
-    thread_dismissed: Thread wurde geschlossen
-    thread_recalled: Thread zurückgerufen
+    thread_dismissed: Diskussion wurde geschlossen
+    thread_recalled: Diskussion zurückgerufen
     explain_mute:
-      title: Du hast noch keine Diskussionen stumm gestellt
+      title: Sie haben noch keine Diskussionen stumm geschaltet.
       explanation_html: |
-          Stumm schalten ist eine Möglichkeit, Diskussionsverläufe zu verstecken oder stumm zu schalten, an denen du nicht interessiert bist. Stummschaltung bedeutet, dass du es nicht in "<strong>Zuletzt verwendet</strong>" oder "<strong>Ungelesen</strong>" siehst und du nicht über Aktivitäten in diesem Diskussionsverlauf informiert wirst, z. B. über neue Vorschläge. Du wirst nur benachrichtigt, wenn jemand @ deinen Namen angibt.
-      instructions: 'Um einen Diskussionsverlauf stummzuschalten, bewegst du den Mauszeiger darüber und klickst auf das Symbol für stumm schalten'
-      see_muted_html: 'Um deine stumm geschaltenen Diskussionen zu sehen, klicke auf "<strong>stumm gestellt</strong>". Du kannst die Stummschaltung aufheben, indem du den Mauszeiger bewegst und auf das gleiche Symbol klickst.'
+          Durch Stummschalten können Diskussionen versteckt werden, an denen Sie nicht interessiert sind.
+          Diskussionen, die Sie stummgeschaltet haben, werden nicht unter "<strong>Zuletzt verwendet</strong>" oder "<strong>Ungelesen</strong>" angezeigt und Sie werden nicht über Aktivitäten in diesen Diskussionen informiert.
+          Sie werden jedoch weiterhin benachrichtigt, wenn jemand Ihren <strong>@Namen</strong> in einer Diskussion erwähnt.
+      instructions: 'Um eine Diskussion stummzuschalten, bewegen Sie den Mauszeiger darüber und klicken Sie auf das entsprechende Symbol.'
+      see_muted_html: 'Um Ihre stummgeschalteten Diskussionen zu sehen, klicken Sie auf "<strong>stummgeschaltet</strong>". Sie können die Stummschaltung aufheben, indem Sie den Mauszeiger über die Diskussion bewegen und auf das entsprechende Symbol klicken.'
     filtering:
       filter_threads: Diskussionen filtern
       filter_threads_aria_label: Diskussionen filtern
@@ -934,17 +964,17 @@ de:
       proposals_description: Nur Diskussionen mit laufenden Vorschlägen anzeigen
       muted: Stumm geschaltete Diskussionen
       muted_aria_label: Momentan werden nur stumm-geschaltete Diskussionen angezeigt
-      muted_description: Nur Diskussionen anzeigen, die Du stumm geschaltet hast.
+      muted_description: Nur Diskussionen anzeigen, die Sie auf stumm geschaltet haben
     aria_thread:
       unread: '{{count}} ungelesene Einträge'
       current_proposal: 'Aktueller Vorschlag: {{name}}.'
-      you_voted: 'Du hast folgendermaßen abgestimmt: {{position}}.'
+      you_voted: 'Sie haben wie folgt abgestimmt: {{position}}.'
     thread_preview:
-      you_voted: 'Du hast folgendermaßen abgestimmt: {{position}}'
-      undecided: 'Du bist unentschlossen'
+      you_voted: 'Sie haben {{position}} gewählt:'
+      undecided: 'Sie sind unentschlossen'
     threads_from:
       group: 'Diskussionen von'
-      pinned: 'gepinnte Threads'
+      pinned: 'Gepinnte Diskussionen'
       proposals: 'Diskussionen mit aktuell laufenden Abstimmungen'
       starred: 'Favorisierte Diskussionen'
       today: 'Heute'
@@ -953,11 +983,11 @@ de:
       thismonth: 'Diesen Monat'
       older: 'Älter als einen Monat'
   inbox_page:
-    no_threads: Yippie! Du hast alle Diskussionen in Deinem Posteingang gelesen.
+    no_threads: Yippie! Sie haben alle Diskussionen in Ihrem Posteingang gelesen.
     unread_threads: Ungelesene Diskussionen
     view_more: Mehr anzeigen
     no_groups:
-      explanation: Sie haben keine ungelesenen Threads, da Sie keiner Gruppe angehören
+      explanation: Sie haben keine ungelesenen Diskussionen, da Sie keiner Gruppe angehören
       start: Eröffne eine Diskussion
       or: oder
       join_group: <a href="/explore">tritt einer Gruppe bei</a> um Diskussionen zu sehen.
@@ -967,14 +997,14 @@ de:
     load_previous: 'Lade ältere Beiträge'
     started_by: 'Erstellt von <strong>{{name}}</strong>'
     pin:
-      pinned: 'Thread gepinnt'
-      unpinned: 'Thread nicht gepinnt'
+      pinned: 'Diskussion gepinnt'
+      unpinned: 'Diskussion nicht gepinnt'
     volume:
-      mute_message: 'Thread stummgeschaltet'
+      mute_message: 'Diskussion stummgeschaltet'
       unmute_message: 'Stummschalten deaktiviert'
     closed:
-      reopened: 'Thread wieder geöffnet'
-      closed: 'Thread geschlossen'
+      reopened: 'Diskussion wieder geöffnet'
+      closed: 'Diskussion geschlossen'
   activity_card:
     beginning: Anfang
     unread: Ungelesen
@@ -994,10 +1024,10 @@ de:
     email_settings: 'E-Mail-Einstellungen'
     edit: 'Bearbeiten'
     edit_thread: 'Bearbeiten'
-    close_thread: 'Vorzeitig beenden'
+    close_thread: 'Schliessen'
     reopen_thread: 'erneut öffnen'
-    pin_thread: 'pinnen'
-    unpin_thread: 'nicht mehr pinnen'
+    pin_thread: 'Pinnen'
+    unpin_thread: 'Pinn entfernen'
     mute_thread: 'Stummschalten'
     move_thread: 'Verschieben'
     print_thread: 'Drucken'
@@ -1006,31 +1036,31 @@ de:
     seen_by_count: '{{count}}-mal gesehen'
     forked_from: "Gegabelt von"
   pin_thread_modal:
-    title: Thread anheften
-    helptext: "Fixierte Threads werden immer oben in der Thread-Liste ihrer Gruppe angezeigt. Sie können verwendet werden, um Mitglieder über wichtige Ankündigungen zu informieren oder um gemeinsames Material wie einen Verhaltenskodex oder Gemeinschaftsrichtlinien zu fördern."
+    title: Diskussion anpinnen
+    helptext: "Angepinnte Diskussionen werden immer oben in der Diskussions-Liste ihrer Gruppe angezeigt. Sie können verwendet werden, um Mitglieder über wichtige Ankündigungen zu informieren oder um gemeinsames Material wie einen Verhaltenskodex oder Gemeinschaftsrichtlinien zu fördern."
     helptext_two: "Sie können die Pins jederzeit entfernen, indem Sie im Drop-down-Menü die Option \"Entfernen\" wählen"
-    pin_thread: Thread anheften
+    pin_thread: Diskussion anpinnen
   delete_thread_form:
     aria_label: 'Diskussion löschen'
     title: Diskussion löschen
-    body: Bist du sicher, dass Du diese Diskussion löschen möchtest?
+    body: Sind Sie sicher, dass Sie diese Diskussion löschen möchten?
     confirm: 'Diskussion löschen'
     messages:
       success: Diskussion gelöscht
   move_thread_form:
-    aria_label: Thread bewegen
+    aria_label: Diskussion verschieben
     title: Diskussion verschieben
     body: 'Neue Zielgruppe:'
     confirm: Diskussion verschieben
-    confirm_change_to_private_thread: '{{groupName}} ist eine öffentliche Gruppe. Wenn Du fortfährst, wird diese Diskussion öffentlich sein.'
+    confirm_change_to_private_thread: '{{groupName}} ist eine öffentliche Gruppe. Wenn Sie fortfahren, wird diese Diskussion veröffentlicht.'
     messages:
       success: Diskussion wurde nach {{name}} verschoben
   print_modal:
     load_discussion: vollständige Diskussion laden
-    helptext: Nur eine Sekunde, wir holen alle Ereignisse in diesem Thread zum Drucken zusammen ...
+    helptext: Nur eine Sekunde, wir bereiten alle Ereignisse in dieser Diskussion zum Drucken vor ...
   delete_comment_dialog:
     title: 'Kommentar löschen'
-    question: 'Bist du sicher, dass du diesen Kommentar löschen möchtest?'
+    question: 'Sind Sie sicher, dass Sie diesen Kommentar löschen möchten?'
     confirm: 'Kommentar löschen'
   new_comment_item:
     aria_label: 'Kommentar von {{author}}'
@@ -1038,7 +1068,7 @@ de:
       aria_label: 'Kommentar-Optionen'
       edit_comment: 'Kommentar bearbeiten'
       delete_comment: 'Kommentar löschen'
-    in_reply_to: 'In Antwort zu <strong>{{recipient}}</strong>:'
+    in_reply_to: 'In Antwort zu <strong>{{recipient}}</strong>'
     edited: 'Bearbeitet'
   new_vote_item:
     agree: 'hat zugestimmt'
@@ -1048,17 +1078,17 @@ de:
     agree_with_statement: 'hat zugestimmt: <span>{{statement}}</span>'
     abstain_with_statement: 'hat sich enthalten: <span>{{statement}}</span>'
     disagree_with_statement: 'hat abgelehnt: <span>{{statement}}</span>'
-    block_with_statement: 'hat Veto eingelegt: <span>{{statement}}</span>'
+    block_with_statement: 'hat ein Veto eingelegt: <span>{{statement}}</span>'
   new_proposal_item:
     author_created_proposal: 'hat einen Vorschlag erstellt: <span>{{title}}</span>'
   proposal_closed_item:
     proposal_closed: 'Der Vorschlag ist beendet: <span>{{title}}</span>'
   proposal_closed_by_user_item:
-    proposal_closed_by_user: 'schloss den Vorschlag: <span>{{title}}</span>'
+    proposal_closed_by_user: 'hat den Vorschlag geschlossen: <span>{{title}}</span>'
   proposal_edited_item:
-    name: 'aktualisierte den Vorschlagtitel: <span>{{title}}</span>'
+    name: 'hat den Titel des Vorschlags aktualisiert: <span>{{title}}</span>'
     description: 'aktualisierte die Vorschlagsbeschreibung'
-    closing_at: 'aktualisierte das Ende des Vorschlags auf <span>{{time}}</span>'
+    closing_at: 'hat das Ende des Vorschlags auf <span>{{time}}</span> geändert'
     description_name: 'aktualisierte Vorschlagtitel und -beschreibung'
     closing_at_name: 'aktualisierte Vorschlagtitel und Ende'
     closing_at_description: 'aktualisierte Vorschlagsbeschreibung und Ende'
@@ -1069,7 +1099,7 @@ de:
     proposal_outcome_updated: 'hat das Abstimmungsergebnis aktualisiert:'
   discussion_edited_item:
     attachment_ids: 'aktualisierte die Diskussionsbeschreibung'
-    title: 'aktualisierte den Diskussionstitel: <span>{{title}}</span>'
+    title: 'hat den Titel der Diskussion geändert: <span>{{title}}</span>'
     description: 'aktualisierte die Diskussionsbeschreibung'
     description_title: 'aktualisierte Diskussionstitel und Diskussionsbeschreibung'
     private: 'aktualisierte die Diskussions-Privatsphäre zu'
@@ -1080,41 +1110,41 @@ de:
     description_private_title: 'aktualisierte Diskussionstitel, Diskussionsbeschreibung und Privatsphäre'
   contact_message_form:
     contact_us: 'Kontakt aufnehmen'
-    name_label: 'Dein Name'
-    name_placeholder: 'Gib Deinen Namen ein...'
+    name_label: 'Ihr Name'
+    name_placeholder: 'Geben Sie Ihren Namen ein...'
     subject_label: "Betreff"
     email_label: 'Ihre E-Mail-Adresse'
-    email_placeholder: 'Gib deine E-Mail-Adresse ein...'
-    message_label: 'Deine Nachricht'
+    email_placeholder: 'Geben Sie Ihre E-Mail-Adresse ein...'
+    message_label: 'Ihre Nachricht'
     send_message: 'Nachricht abschicken'
     new_contact_message: "Danke, dass Sie sich gemeldet haben. Wir melden uns bald bei Ihnen!"
+    success: "Danke für Ihre Nachricht. Wir werden uns mit Ihnen in Verbindung setzen."
   hint:
     context: 'Hinweise zur Verwendung des Kontext-Felds'
     discussion: 'Hinweise für das Starten einer mitreißenden Diskussion'
     invitation: 'Hinweise für das Schreiben einer guten Einladung'
     proposal: 'Hinweise für das Schreiben eines klaren Vorschlags'
-    vote: 'Du kannst Deine Meinung jederzeit ändern.'
+    vote: 'Sie können Ihre Meinung jederzeit ändern'
   explore_page:
     header: Erkunde Gruppen
     search_placeholder: Nach öffentlichen Gruppen suchen
-    single_search_result: "1 öffentliche Gruppe, die zu <strong>{{searchTerm}}</strong> passt:"
-    multiple_search_results: "{{resultCount}} öffentliche Gruppen für <strong>{{searchTerm}}</strong> gefunden"
-    no_results_found: "<strong>Kannst Du keine Gruppe finden?</strong> Wenn die Gruppe auf \"geheim\" gestellt ist, wird sie nicht angezeigt. Wenn Du eine.n Koordinator.in kennst, bitte um eine Einladung."
+    single_search_result: "1 öffentliche Gruppe für <strong>{{searchTerm}}</strong> gefunden:"
+    multiple_search_results: "{{resultCount}} öffentliche Gruppen für <strong>{{searchTerm}}</strong> gefunden:"
+    no_results_found: "<strong>Sie können keine Gruppe finden?</strong> Wenn eine Gruppe auf \"geheim\" gestellt ist, wird sie nicht angezeigt. Bitten Sie eine/n Koordinator/in um eine Einladung."
   global:
     messages:
       app_update: 'Eine neue Version der App ist verfügbar'
       reload: 'Reload'
   emoji_picker:
-    search: "Emoji suchen..."
     no_emojis_found: "Kein Emoji für '{{term}}' gefunden!"
   authorized_apps_page:
     title: Autorisierte Apps
-    no_applications: "Du hast bisher keine Drittanbieter-Apps autorisiert."
+    no_applications: "Sie haben bisher keine Drittanbieter-Apps autorisiert."
     notice: "Sie haben den folgenden Drittanbieter-Apps die Berechtigung zur Verwendung Ihres Kontos erteilt. Klicken Sie auf \"Widerrufen\", um sie zu deaktivieren."
     revoke: Widerrufen
   registered_apps_page:
     title: Registrierte Anwendungen
-    no_applications: "Du hast bislang keine OAuth-Anwendungen! Unten klicken, um eine einzurichten."
+    no_applications: "Sie haben bislang keine OAuth-Anwendungen! Unten klicken, um eine einzurichten."
     name: Name
     redirect_uris: Umleitungs-URLs
     create_new_application: Neue Anwendung
@@ -1125,9 +1155,9 @@ de:
     new_application_title: Neue Anwendung
     edit_application_title: Anwendung aktualisieren
     name_label: Name
-    name_placeholder: Wie heißt Deine App?
+    name_placeholder: Wie heisst Ihre App?
     redirect_uri_label: Umleitungs-Uris
-    redirect_uri_placeholder: "Die Callback-uri für Deine App, z.B.: https://myapplication.com/loomio/callback"
+    redirect_uri_placeholder: "Die Callback-uri für Ihre App, z.B.: https://myapplication.com/loomio/callback"
     redirect_uri_note: (Eine Zeile pro URI, benutze 'urn:ietf:wg:oauth:2.0:oob' für lokale Tests)
     new_application_submit: Erstelle App
     edit_application_submit: Anwendung aktualisieren
@@ -1137,33 +1167,34 @@ de:
       updated: "'{{name}}' aktualisiert"
   remove_app_form:
     title: '{{name}} deaktivieren'
-    question: "Bist du sicher, dass du die App '{{name}}' deaktivieren möchtest? Dieser Schritt kann nicht mehr rückgängig gemacht werden."
+    question: "Sind Sie sicher, dass Sie die App '{{name}}' deaktivieren möchten? Dieser Schritt kann nicht mehr rückgängig gemacht werden."
     submit: Deaktivieren
     messages:
       success: "'{{name}}' wurde erfolgreich deaktiviert"
   revoke_app_form:
     title: Zugriff für '{{name}}' widerrufen
-    question: "Bist du sicher, dass du '{{name}}' den Zugriff auf Dein Benutzerkonto verbieten möchtest?"
+    question: "Sind Sie sicher, dass Sie '{{name}}' den Zugriff auf Ihr Benutzerkonto verweigern möchten?"
     submit: Zugriff widerrufen
     messages:
-      success: "'{{name}}' kann Dein Konto nicht mehr nutzen."
+      success: "'{{name}}' kann Ihr Konto nicht mehr nutzen."
   decision_tools_card:
     title: Entscheidungswerkzeuge
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Hilfe</a>
     proposal_title: Vorschläge
     count_title: Bestätigung
     poll_title: Umfrage
-    dot_vote_title: Dot-Voting
+    score_title: Bewertung
+    dot_vote_title: Punktevergabe
     meeting_title: Terminfindung
-    ranked_choice_title: Gewichtete Auswahl
+    ranked_choice_title: Prioritätensetzung
   poll_common:
-    your_response: Deine Abstimmungsentscheidung
+    your_response: Ihre Antwort
     reason: Begründung
     reason_placeholder: Ergänzender Kommentar?
     message: Nachricht
     results: Abstimmungsergebnis
     responses: Antworten
-    close_poll_type: Schließen {{pollType}}
+    close_poll_type: '{{pollType}} schließen'
     totals: Summen
     vote: Abstimmen
     votes: Abstimmungsbeiträge
@@ -1196,7 +1227,7 @@ de:
   poll_common_index_card:
     title: Bisherige Abstimmungen
     no_polls: Bislang sind noch keine Abstimmungen vorhanden.
-    count: "alle/s: ({{Anzahl}}) Entscheidungen"
+    count: "Zeige alles: ({{count}}) Entscheidungen"
   poll_common_action_panel:
     anonymous: Stimmen werden anonym sein
     anonymous_until_close: Stimmen werden anonym bleiben, bis diese Umfrage endet
@@ -1238,41 +1269,41 @@ de:
       title: Mich benachrichtigen, wenn jemand abstimmt
       helptext_on: Wenn diese Option ausgewählt ist, werden Sie benachrichtigt, sobald jemand teilnimmt.
     anonymous:
-      title: anonyme Wähler
+      title: Anonyme Teilnahme
       helptext_on: Wenn diese Option ausgewählt ist, werden Teilnehmerinformationen nicht mit jeder Antwort angezeigt.
     deanonymize_after_close:
-      title: Enthüllung der Wähler nach Abschluss
-      helptext_on: Wenn diese Option ausgewählt ist, werden anonyme Wähler nach Abschluss der Umfrage enthüllt
+      title: Wahl der Teilnehmer nach Abschluss anzeigen
+      helptext_on: Wenn diese Option ausgewählt ist, werden anonyme Teilnehmer nach Abschluss der Umfrage enthüllt
     voter_can_add_options:
       title: Teilnehmervorschläge erlauben
       helptext_on: Wenn ausgewählt, können die Teilnehmer ihre eigenen Optionen hinzufügen, wenn sie abstimmen.
     can_respond_maybe:
-      title: Die Wähler können antworten "wenn es sein muss"
-      helptext_on: Wähler können Zeiten wie "Wenn nötig" angeben
+      title: Teilnehmer können antworten "wenn es sein muss"
+      helptext_on: Teilnehmer können "wenn nötig" angeben
   poll_common_close_form:
     title: Umfrage früher beenden
-    helptext: Bist du sicher, dass du die Abstimmung vorzeitig beenden möchtest?
-    close_proposal: Schließen Sie den Vorschlag
+    helptext: Sind Sie sicher, dass Sie die Abstimmung vorzeitig beenden möchten?
+    close_proposal: Vorschlag schließen
     close_poll: Abstimmung vorzeitig beenden
     close_count: Bestätigung vorzeitig beenden
-    close_dot_vote: Schließen Sie die Punktabstimmung
+    close_dot_vote: Punktevergabe schliessen
     close_meeting: Terminfindung beenden
-    close_ranked_choice: Schließen Sie eine Umfrage in der Rangliste
+    close_ranked_choice: Prioritätensetzung schließen
     proposal_closed: Vorschlag geschlossen
     poll_closed: Umfrage geschlossen
     count_closed: Bestätigung beendet
-    dot_vote_closed: Dotwahl geschlossen
+    dot_vote_closed: Punktevergabe geschlossen
     meeting_closed: Terminfindung beendet
-    ranked_choice_closed: Rangliste der Wahlumfrage geschlossen
+    ranked_choice_closed: Prioritätensetzung geschlossen
   poll_common_reopen_form:
     title: Öffnen Sie eine geschlossene Entscheidung erneut
-    helptext: War eine Entscheidung kurz bevor Sie fertig waren? Erneut öffnen, um mehr Standpunkte aus der Gruppe zu sammeln.
+    helptext: Wurde eine Entscheidung geschlossen bevor Sie fertig waren? Erneut öffnen, um mehr Argumente zu sammeln.
     proposal_reopened: Der Vorschlag wurde erneut geöffnet
     poll_reopened: Umfrage wieder eröffnet
     count_reopened: Prüfung wieder geöffnet
-    dot_vote_reopened: Dotabstimmung wieder eröffnet
+    dot_vote_reopened: Punktevergabe wieder eröffnet
     meeting_reopened: Die Zeitumfrage wurde erneut geöffnet
-    ranked_choice_reopened: Umfrage zur Ranglistenwahl erneut geöffnet
+    ranked_choice_reopened: Prioritätensetzung wiedereröffnet
   poll_common_closing_at_field:
     closing: Schluss
     closing_hour: Schließ-Stunde
@@ -1298,13 +1329,13 @@ de:
   poll_common_set_outcome_panel:
     share_outcome: Abstimmungsergebnis bekanntgeben
     poll: 'Diese Abstimmung ist beendet. Informiere die Gruppe über das<strong>Ergebnis</strong>.'
-    proposal: 'Dieser Vorschlag wurde geschlossen. Bitte beachten Sie, was gesagt wurde und <strong>teilen Sie ein Ergebnis</strong>, damit die Leute wissen, was als nächstes passieren wird.'
-    count: 'Dieser Scheck wurde geschlossen. <strong>Teile ein Ergebnis</strong>, um den Prozess abzuschließen.'
+    proposal: 'Dieser Vorschlag wurde geschlossen. Bitte beachten Sie, was gesagt wurde und <strong>verkünden Sie das Ergebnis</strong>, damit die Leute wissen, was als nächstes passieren wird.'
+    count: 'Dieser Check wurde geschlossen. <strong>Verkünde das Ergebnis</strong>, um den Prozess abzuschließen.'
     meeting: 'Diese Zeitumfrage ist abgeschlossen. <strong>Teile ein Ergebnis</strong>, um andere wissen zu lassen, wann das Treffen stattfinden wird.'
     dot_vote: 'Diese Punktabstimmung wurde abgeschlossen. <storng>Teile ein Ergebnis</strong> mit der Gruppe.'
-    ranked_choice: 'Diese Umfrage wurde beendet. <strong>Teile ein Ergebnis</strong> mit der Gruppe.'
+    ranked_choice: 'Diese Prioritätensetzung wurde beendet. <strong>Verkünde das Ergebnis</strong> mit der Gruppe.'
   poll_common_outcome_form:
-    new_title: Ergebnis teilen
+    new_title: Ergebnis verkünden
     update_title: Abstimmungsergebnis aktualisieren
     outcome_created: Ergebnis erschaffen
     outcome_updated: Ergebnis aktualisiert
@@ -1320,16 +1351,16 @@ de:
     title: Aktualisierungen erhalten
     label: Mail-Updates über diese Entscheidungen erhalten
     tooltip: E-Mail-Updates halten Sie über diese Entscheidung auf dem Laufenden, z.B. wann sie bearbeitet wird, wann sie abläuft oder wann ein Ergebnis festgelegt wurde. Wenn Sie dieses Kontrollkästchen deaktivieren, wird sichergestellt, dass Sie keine weiteren E-Mail-Benachrichtigungen zur Entscheidung erhalten.
-    helptext_on: Sie werden über die Aktivität der Entscheidungen Emails erhalten
+    helptext_on: Sie werden über die Ereignisse in dieser Diskussion per E-Mail informiert
     helptext_off: Sie werden keine Mails über diese Entscheidung erhalten.
     subscribed: erfolgreich unterschrieben
     unsubscribed: erfolgreich abgemeldet
   poll_common_form:
     title: Titel
     details: Details
-    options: Handlungsoptionen
+    options: Optionen
     options_placeholder: Neue Handlungsoption hinzufügen...
-    no_options: Du hast noch keine Handlungsoptionen hinzugefügt.
+    no_options: Sie haben noch keine Optionen hinzugefügt.
     closing: Schluss
     closed: Geschlossen
     start: Start
@@ -1355,7 +1386,7 @@ de:
         <p>Verwende eine Umfrage, um die Beliebtheit zu messen oder eine Auswahl anzubieten.</p>
         <p>Stelle einige Optionen zur Auswahl bereit. Entscheide, ob die Teilnehmer einzelne oder mehrere Optionen als ihre Antwort wählen dürfen.</p>
         <p>Jeder kann abstimmen und wenn gewünscht, auch eine Aussage in Worten formulieren. Die Ergebnisse werden in einem Balkendiagramm dargestellt.</p>
-    tool_tip_collapsed: Beliebtheit eines Vorschlags messen oder Handlungsoptionen anbieten
+    tool_tip_collapsed: Abstimmung mit Mehrfachauswahl
     start_header: Umfrage beginnen
     edit_header: Umfrage bearbeiten
     tip: Messen Sie die Beliebtheit verschiedener Optionen
@@ -1385,7 +1416,7 @@ de:
         <p>Punktabstimmung ist eine Möglichkeit, eine Liste von Optionen zu priorisieren.</p>
         <p>Den Teilnehmern wird eine begrenzte Anzahl von "digitalen Klebepunkten" zur Verfügung gestellt, die sie beliebig unter den zur Verfügung gestellten Optionen aufteilen können, um ihre eigenen Präferenzen darzustellen.</p>
         <p>Die Gesamtsumme der Ergebnisse werden angezeigt sowie die einzelnen Stimmen, sodass die verschiedenen Standpunkte betrachtet werden können.</p>
-    tool_tip_collapsed: Verschiedene Handlungsoptionen priorisieren
+    tool_tip_collapsed: Verschiedene Optionen priorisieren
     start_header: Starten Sie die Punktabstimmung
     edit_header: Bearbeiten Sie die Punktabstimmung
     tip: Ressourcen gemeinsam zuweisen
@@ -1397,8 +1428,17 @@ de:
     dot_vote_created: Punktabstimmung erstellt
     dot_vote_updated: Punktabstimmung aktualisiert
   poll_score_form:
+    tool_tip_expanded: |
+        <p>Durch Bewertungen können Teilnehmer den Grad der Zustimmung zu jeder Option ausdrücken.</p>
+        <p>Die Gesamtbewertung für jede Option wird als Teil des Umfrageergebnisses angezeigt.</p>
+    tool_tip_collapsed: Mehrere Optionen bewerten
+    start_header: Bewertung beginnen
+    edit_header: Bewertung bearbeiten
+    tip: Mehrere Optionen bewerten
     details_placeholder: Geben Sie alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
     add_option_placeholder: Option hinzufügen
+    score_created: Bewertung erstellt
+    score_updated: Bewertung aktualisiert
   poll_meeting_form:
     tool_tip_expanded: |
         <p>Verwende eine Zeitumfrage, um herauszufinden, wann Personen für ein Treffen zur Verfügung stehen.</p>
@@ -1421,24 +1461,24 @@ de:
     add_option_placeholder: neue Zeit einfügen
   poll_ranked_choice_form:
     tool_tip_expanded: |
-        <p>Die Ranglistenwahl ist eine Methode, die es jedem Wähler ermöglicht, mit seinen Präferenzen in Form einer Reihenfolge zu antworten.</p>
+        <p>Die Ranglistenwahl ist eine Methode, die es jedem Teilnehmer ermöglicht, mit seinen Präferenzen in Form einer Reihenfolge zu antworten.</p>
         <p>Es lohnt sich besonders, wenn es um Entscheidungen zwischen zwei oder mehreren beliebte Optionen geht, die recht ähnlich sind. Die Abstimmung wird dann einer Unterscheidung erzielen.</p>
         <p>Die Anwendung lohnt sich auch, wenn es darum geht, eine Entscheidung nach Mehrheit zu erwirken.</p>
         <p>Außerdem eignet sich das Instrument bei Stichwahl-Entscheidungen.</p>
-    tool_tip_collapsed: Handlungsoptionen in einer Reihenfolge gewichten
-    start_header: Start der Rangliste
-    edit_header: Rangliste bearbeiten
+    tool_tip_collapsed: Verschiedene Optionen priorisieren
+    start_header: Mit Prioritätensetzung beginnen
+    edit_header: Prioritätensetzung bearbeiten
     tip: Finden Sie heraus, wann Leute sich treffen können
     title_placeholder: z. B. Wer soll Bürgermeister werden?
     details_placeholder: Geben Sie alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
-    meeting_created: Rangliste erstellt
-    meeting_updated: Rangliste aktualisiert
-    no_options: "Du hast noch keine Handlungsoptionen hinzugefügt."
+    meeting_created: Prioritätensetzung erstellt
+    meeting_updated: Prioritätensetzung aktualisiert
+    no_options: "Sie haben noch keine Option hinzugefügt."
     add_option_placeholder: Geben Sie eine neue Auswahl ein
-    minimum_stance_choices: Zu gewichtende Handlungsoptionen
-    minimum_stance_choices_helptext: Anzahl der Handlungsoptionen, die die Teilnehmer gewichten können
-    ranked_choice_created: Rangliste erstellt
-    ranked_choice_updated: Rangliste aktualisiert
+    minimum_stance_choices: Zu priorisierende Optionen
+    minimum_stance_choices_helptext: Anzahl der Optionen, die die Teilnehmer priorisieren können
+    ranked_choice_created: Prioritätensetzung erstellt
+    ranked_choice_updated: Prioritätensetzung aktualisiert
   poll_meeting_time_field:
     new_time_slot: Neues Zeitfenster
     closing_hour: Schließ-Stunde
@@ -1487,13 +1527,13 @@ de:
     can_attend: "Kann teilnehmen"
     unable: "Unfähig"
     if_need_be: Wenn nötig
-    your_response: Wann kannst du teilnehmen?
+    your_response: Wann können Sie teilnehmen?
     stance_created: Verfügbarkeit gespeichert
     stance_updated: Verfügbarkeit aktualisiert
     reason_placeholder: Erklären Sie, wann Sie frei sind (oder beschäftigt sind), falls der Autor Optionen hinzufügen möchte.
   poll_dot_vote_vote_form:
     dots_remaining: "{{count}} Klebepunkt(e) übrig."
-    too_many_dots: Du hast zu viele Klebepunkte verwendet.
+    too_many_dots: Sie haben zu viele Klebepunkte verwendet.
     stance_created: Wahl erstellt
     stance_updated: Wahl aktualisiert
   poll_ranked_choice_vote_form:
@@ -1502,15 +1542,15 @@ de:
     stance_updated: Auswahl aktualisiert
   thread_item:
     comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> antwortet auf <strong>{{title}}</strong>"
-    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat den Thread-Titel bearbeitet"
+    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat die Überschrift der Diskussion bearbeitet"
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat die Diskussionsbeschreibung geändert."
-    discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat die Anhänge des Threads bearbeitet"
-    discussion_privacy_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> änderte die Thread-Privatsphäre"
-    discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat den Thread bearbeitet"
-    discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> bewegte den Thread <strong>{{title}}</strong>"
-    discussion_closed: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat den Thread geschlossen"
-    discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat den Thread wieder eröffnet"
-    discussion_forked: "<strong><a href='u/{{username}}'>{{author}}</a></strong> erstellte eine Abspaltung für den Thread: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat die Anhänge der Diskussion bearbeitet"
+    discussion_privacy_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat die Sichtbarkeits-Einstellungen der Diskussion geändert"
+    discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat die Diskussion bearbeitet"
+    discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat die Diskussion <strong>{{title}}</strong>  verschoben"
+    discussion_closed: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat die Diskussion geschlossen"
+    discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat die Diskussion wieder eröffnet"
+    discussion_forked: "<strong><a href='u/{{username}}'>{{author}}</a></strong> erstellte eine Abspaltung für die Diskussion: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat für <strong>{{title}}</strong>ein Ergebnis geteilt"
     poll_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat {{polltype}}: <strong>{{title}}</strong> wieder geöffnet"
@@ -1519,7 +1559,7 @@ de:
     poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat {{polltype}}: <strong>{{title}}</strong> bearbeitet"
     poll_expired: "{{polltype}} geschlossen: <strong>{{title}}</strong>"
     stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat abgestimmt: <strong>{{title}}</strong>"
-    event_removed: "Vom Thread entfernt"
+    event_removed: "Von der Diskussion entfernt"
   poll_admin_page:
     title: Administator - {{title}}
   poll_common_publish_facebook_preview:
@@ -1556,22 +1596,23 @@ de:
     sign_in_as: als {{name}} einloggen
     continue_with_provider: mit {{provider}} fortfahren
     continue_with_email: mit E-Mail fortfahren
-    or_enter_your_email: oder gib deine Ihre Mailadresse ein
+    or_enter_your_email: oder geben Sie Ihre Mailadresse ein
     invitation_required: 'Der Account wurde nicht gefunden. Neue Accounts nur per Einladung. '
     more_providers: mehr
     email_not_present: Eine Mailadresse ist erforderlich
-    invalid_email: "Sorry, diese Emailadresse scheint ungültig zu sein."
-    invalid_password: "Sorry, das Passwort passt nicht zu dem, welches wir in unserer Datei haben."
+    invalid_email: "Entschuldigung, diese E-Mail-Adresse scheint ungültig zu sein."
+    invalid_password: "Entschuldigung, das Passwort passt nicht zu dem, welches wir in unserer Datei haben."
     invalid_token: "Entschuldigung, wir konnten dieses Zeichen nicht verwenden, um Sie  einzuloggen. Klicke unten, um einen anderen zu senden."
-    email_not_found: "sorry, wir konnten keinen Account zu dieser Emailadresse finden"
-    email_placeholder: du@beispiel.de
-    login_link_helptext_with_password: "Gib dein Passwort ein oder logge  dich via Email ein"
+    email_not_found: "Entschuldigung, wir konnten keinen Account zu dieser E-Mail-Adresse finden"
+    email_placeholder: sie@domain.com
+    login_link_helptext_with_password: "Geben Sie Ihre Passwort ein oder melden Sie Sich per E-Mail an"
     sign_up_helptext: Bitte füllen Sie dieses Formular aus, um ein Benutzerkonto zu erstellen
     i_accept: "Ich akzeptiere die <a href='{{termsUrl}}' target='_blank'>Nutzungsbedingungen</a> und <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>"
     name_required: Bitte geben Sie einen Namen ein.
     terms_required: Sie müssen die Nutzungsbedingungen bestätigen.
-    account_inactive: Scheint, als wurde der Account für {{email}} deaktiviert.
+    account_inactive: Es scheint als wurde das Benutzerkonto für {{email}} deaktiviert.
     privacy_notice: "Persönliche Daten werden gesammelt, wenn Sie {{siteName}} verwenden. <br/>Lesen Sie unsere <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>, um mehr zu erfahren."
+    welcome: Neu bei {{siteName}}?
     welcome_back: Willkommen zuück, {{name}}!
     login_link: Via Mail anmelden
     set_password: Passwort festlegen
@@ -1580,18 +1621,22 @@ de:
     create_account: Benutzerkonto erstellen
     already_a_user: Haben Sie {{site_name}} bereits davor verwendet? Geben Sie die Mail-Adresse ein, die sie als letzte nutzen, um sie miteinander zu koppeln.
     link_accounts: Verbinden
-    check_your_email: Überprüfe deinen E-Mail-Posteingang
-    login_link_sent: "Wir haben eine Mail an {{email}} gesendet."
+    check_your_email: Überprüfen Sie Ihren E-Mail-Posteingang
+    login_link_sent: "Wir haben eine E-Mail an {{email}} gesendet."
     instructions: "Klicke auf den Link um dich einzuloggen oder gib den Code unten ein:"
     too_many_attempts: "zu viele Versuche; klicken Sie auf den Link in der Mail um sich einzuloggen."
-    invalid_code: "Sorry, dieser Code stimmt nicht überein. Überprüfen Sie Ihre Mails und versuchen Sie es erneut."
-    password_link_sent: "Wir haben eine Mail mit der Anleitung wie Sie Ihr Passwort festlegen an {{email}} gesendet."
+    invalid_code: "Entschuldigung, dieser Code stimmt nicht überein. Überprüfen Sie Ihre Mails und versuchen Sie es erneut."
+    password_link_sent: "Wir haben eine E-Mail mit der Anleitung zur Passwort-Festlegung an {{email}} gesendet."
     signed_in: erfolgreich eingeloggt
-    email_verified: Email erfolgreich bestätigt
+    email_verified: E-Mail erfolgreich verifiziert
     name: Name
     email: E-Mail
     password: Passwort
     reactivate: Account wieder aktivieren
+  install_microsoft:
+    card:
+      remove_identity: Diese Eingliederung entfernen
+      identity_removed: Eingliederung entfernt
   install_slack:
     modal_title: Slack installieren
     modal_helptext: Als erstes müssen Sie sich bei Slack anmelden. Wir werden Sie sofort  automatisch weiterleiten, alternativ können Sie zum Fortfahren auch auf den Button unten klicken.
@@ -1605,8 +1650,8 @@ de:
       remove_identity: Diese Eingliederung entfernen
       confirm_remove_title: Slack Eingliederung entfernen
       confirm_remove_helptext: |
-          Dein Slack-Kanal empfängt keine Updates mehr über diese Gruppe.
-          Sie können jederzeit zurückgehen und es erneut hinzufügen.
+          Ihr Slack-Kanal empfängt keine Updates mehr über diese Gruppe.
+          Sie können jederzeit zurückgehen und die Gruppe erneut hinzufügen.
       identity_removed: Eingliederung entfernt
     progress:
       install: Installieren
@@ -1629,7 +1674,7 @@ de:
     invite:
       heading: 'Schritt 2: Richten Sie einen Slack-Kanal ein'
       helptext: |
-          Erfolg! Wähle nun einen Kanal aus, in dem du Updates posten möchtest.
+          Erfolg! Wählen Sie nun einen Kanal aus, in welchem Sie Updates posten möchten.
       select_a_channel: Wählen Sie einen Kanal aus
       publish_group: Eine Willkommens-Nachricht verfassen
       publish_group_helptext_on: Wir werden eine Nachricht in diesen Kanal posten um zu erklären, wie LoomioBot genutzt wird.

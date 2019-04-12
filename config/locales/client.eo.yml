@@ -1,4 +1,6 @@
 eo:
+  loomio_tags:
+    name_label: Nomo
   reactions:
     slight_smile: Ŝati
     heart: Ŝategi
@@ -96,6 +98,7 @@ eo:
       loading: 'Ŝargiĝas'
       translate: 'Traduki'
       uploading: 'Alŝutiĝas'
+      ok: Bone!
       retry: Reprovi
       invite: Inviti
   ordinal:
@@ -111,6 +114,8 @@ eo:
     _10: 10a
   error_page:
     forbidden: 'Vi ne havas permeson fari ĉi tion'
+    page_not_found: 'Ni ne sukcesis trovi tion. Eble oni forigis aŭ translokigis ĝin.'
+    internal_server_error: 'Ni bedaŭras, sed io misfunkciis/okazis fuŝaĵo. Bonvolu provi denove.'
   volume_levels:
     loud: 'Brua'
     normal: 'Normala'
@@ -126,13 +131,24 @@ eo:
     aria_label: Silentigi fadenon
     mute_thread: Silentigi fadenon
   inbox:
+    clear: 'Klara'
+    latest: 'Plej lasta'
     unread: 'Nelegitaj'
+    closing_in: 'Fermo'
   signed_out_modal:
     ok: "Bone!"
   comment_form:
+    aria_label: 'Aldonu komenton'
+    attachments:
+      remove_attachment: 'Forigu la alkroĉaĵon.'
     edit_comment: 'Redakti komenton'
     delete_comment: 'Forigi komenton'
+    cancel_reply: 'Nuligu la respondon'
     confirm_delete_message: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
+    confirm_delete: 'Forigi la komenton'
+    in_reply_to: "Responu al {{nomo}}"
+    submit_button:
+      label: 'Afiŝu'
   sidebar:
     start_thread: Nova fadeno
     aria_labels:
@@ -153,11 +169,6 @@ eo:
     sign_out: 'Elsaluti'
   membership_dropdown:
     make_coordinator: 'Kunordigantigi'
-  start_menu:
-    title: 'Ago'
-    start_thread: 'Komenci fadenon'
-    start_poll: 'Komenci enketon'
-    invite_people: 'Inviti homojn'
   notifications:
     header: "Sciigoj"
   position_buttons_panel:
@@ -171,15 +182,29 @@ eo:
     add_comment: Komenti
     edit_poll: Redakti enketon
     translate_poll: Traduki enketon
+    delete_comment: Forigi la komenton
+  logo_photo_form:
+    heading: 'Nova emblemo de grupo'
+    upload_link: 'Alŝuti novan emblemon de grupo'
   join_group_button:
     join_group: Aliĝi al la grupo
+    messages:
+      joined_group: 'Vi nun estas membro de {{group}}'
   membership_request_form:
     heading: Peti aliĝon al la grupo
     name_label: Nomo
     email_label: Retpoŝto
+    introduction_label: Kial vi volas aliĝi?
+  revision_history_modal:
+    current_revision: Plej lasta
   reactions_display:
     you: "Vi"
+    you_and_name: "Vi kaj {{name}}"
+    you_and_name_and_count_more: "Vi, {{name}} kaj {{count}} pli"
+    name_and_count_more: "{{name}} kaj {{count}} pli"
   group_page:
+    show_closed: '{{count}} Fermita'
+    new_group_logo: 'Alŝuti novan emblemon de grupo'
     subgroups: 'Subgrupoj'
     invite_people: 'Inviti'
     options_label: 'Opcioj'
@@ -187,6 +212,8 @@ eo:
       label: 'Opcioj'
   group_form:
     privacy: 'Privateco'
+  documents_page:
+    confirm_remove_title: Forigu alkroĉaĵon.
   document:
     form:
       title_label: Nomo
@@ -216,7 +243,9 @@ eo:
     email_label: 'Retpoŝto'
     short_bio_label: 'Enkonduko'
     locale_label: 'Lingvo'
+    location_placeholder: 'Kie vi estas bazita?'
     update_profile: 'Ĝisdatigi profilon'
+    help_translate: "Helpu nin traduki Loomion!"
   change_picture_form:
     title: 'Ŝanĝi bildon'
   change_password_form:
@@ -247,6 +276,7 @@ eo:
       or: aŭ
   activity_card:
     unread: Nelegitaj
+    latest: Plej lasta
   thread_group:
     aria_label: 'Grupnomo'
   thread_context:
@@ -277,8 +307,10 @@ eo:
     public_to_private: 'nepublika'
     private_to_public: 'publika'
   contact_message_form:
+    title: "Saluton! Kiel ni povas helpi?"
     contact_us: 'Kontakti nin'
     name_label: 'Via nomo'
+    name_placeholder: 'Entajpu vian nomon...'
     subject_label: "Temo"
     email_label: 'Via retpoŝtadreso'
     message_label: 'Via mesaĝo'
@@ -289,6 +321,8 @@ eo:
     invitation: 'Konsiloj por verki bonegan inviton'
     proposal: 'Konsiloj por verki klaran proponon'
     vote: 'Vi povas ŝanĝi vian sintenon iam ajn'
+  explore_page:
+    header: Esplori grupojn
   global:
     messages:
       reload: 'Reŝarĝi'
@@ -318,13 +352,19 @@ eo:
   poll_common_calendar_invite:
     event_duration: Daŭro
     event_summary: Resumo
+  poll_common_closing_at_field:
+    closing_hour: Horo de fermo
   poll_common_form:
     title: Titolo
     details: Detaloj
     closed: Fermita
   poll_poll_form:
     edit_header: Redakti enketon
+  poll_meeting_time_field:
+    closing_hour: Horo de fermo
   poll_proposal_vote_form:
+    stance_created: Voĉdono kreis
+    stance_updated: Voĉdono ĝisdatigita
     vote: Voĉdono
   poll_proposal_options:
     agree: Konsenti
@@ -336,10 +376,23 @@ eo:
     'no': 'Ne'
   poll_count_vote_form:
     reason_label: Mesaĝo
+    stance_created: Voĉdono kreis
+    stance_updated: Voĉdono ĝisdatigita
   poll_meeting_chart_panel:
     total: Entute
+  poll_poll_vote_form:
+    stance_created: Voĉdono kreita
+    stance_updated: Voĉdono ĝisdatigita
+  poll_meeting_vote_form:
+    can_attend: "Povas ĉeesti"
+    unable: "Nekapabla"
+    your_response: Kiam vi povas ĉeesti?
   poll_dot_vote_vote_form:
     too_many_dots: Vi uzis tro da punktoj.
+    stance_created: Voĉdono kreis
+    stance_updated: Voĉdono ĝisdatigita
+  thread_item:
+    poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> fermis la {{polltype}}: <strong>{{title}}</strong>"
   poll_common_publish_facebook_preview:
     link: ligilo
     just_now: Ĝuste nun
@@ -351,6 +404,7 @@ eo:
     sign_in: Registriĝi
     sign_in_as: Registriĝi kiel {{name}}
     more_providers: Pli
+    name_required: Bonvolu entajpi nomon.
     hello: "Saluton, {{name}}!"
     create_account: Krei konton
     link_accounts: Ligi kontojn
@@ -359,12 +413,19 @@ eo:
     password: Pasvorto
   install_slack:
     login_to_slack: Ensaluti al Slack
+    card:
+      install_title: Konekti al Slack
+      installed_title: Konektita al Slack
+      install_slack: Konektigi Slack
     progress:
+      install: Instali
       invite: Inviti
       decide: Decidi
     install:
       group_name_placeholder: Nomi vian novan grupon…
     common:
       do_it_later: Mi faros ĉi tio poste
+  browser_warning:
+    link: Bonvolu komuti al alia retumilo
   slack_added_modal:
     title: Sukceso!

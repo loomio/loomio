@@ -1,4 +1,23 @@
 it:
+  current_plan_button:
+    upgrade: Aggiorna
+  loomio_tags:
+    tags: Etichette
+    apply_tags: Inserisci etichette
+    new_tag: Crea etichetta
+    name_label: Nome
+    color_label: Colore
+    card_title: Etichette di categoria
+    modal_title: Crea una nuova etichetta
+    modal_edit_title: Modifica etichetta
+    modal_destroy_title: Rimuovi etichetta
+    destroy_tag: Rimuovi etichetta
+    destroy_helptext: Cancellerai questa etichetta e la rimuoverai da tutte le discussioni nel gruppo. Sei sicuro?
+    helptext: 'Le etichette ti permettono di categorizzare le conversazioni e trovarle facilmente dopo '
+    discussions_count_singular: ({{count}} discussione)
+    discussions_count_plural: ({{count}} discussioni)
+    tags_marked: Discussioni marcate con '{{name}}' nel gruppo {{groupName}}
+    no_tags_present: 'Non è stata trovata nessuna discussione con questa etichetta!  '
   reactions:
     slight_smile: Mi piace
     heart: Amore
@@ -39,6 +58,7 @@ it:
     dot_vote: Voto a punti
     meeting: Sondaggio per incontro
     ranked_choice: Scelta di preferenze
+    score: Punteggio votazione
   timezones:
     local: Ora locale ({{value}})
   common:
@@ -50,6 +70,7 @@ it:
     not_found: Non trovato
     time_zone: Fuso orario
     local_time: Ora locale
+    attachments: Allegati
     confirm_discard_changes: Scarta le modifiche?
     time:
       am: am
@@ -60,6 +81,8 @@ it:
     notification_volume: 'Volume delle notifiche'
     group: 'Gruppo'
     groups: 'Gruppi'
+    organization: "Organizzazione"
+    organizations: "Organizzazioni"
     threads: 'Discussioni'
     decisions: 'Decisioni'
     settings: 'Configurazione'
@@ -113,7 +136,7 @@ it:
       uploading: 'Caricamento in corso'
       load_more: 'Carica ancora'
       share: Condividi
-      ok: Ok!
+      ok: Ok
       retry: Riprova
       done: Fatto
       start: Avvio
@@ -208,6 +231,8 @@ it:
   close_explanation_modal:
     aria_label: Chiudi discussione
     close_thread: Chiudi discussione
+    body_header: |
+        <p>Chiudi i threads vecchi o irrilevanti per rimuoverli dalla vista e indicare che la discussione è conclusa.</p>
     image_alt: Chiudi tutte le discussioni
   mute_explanation_modal:
     aria_label: Silenzia discussione
@@ -314,14 +339,6 @@ it:
       group: "Rimuovi dal gruppo"
       poll: 'Rimuovi dal sondaggio {{pollType}} '
     cancel_invitation: Revoca invito
-  start_menu:
-    label: 'Azioni utente'
-    title: 'Azioni'
-    start_group: 'Crea un gruppo'
-    start_subgroup: 'Crea un sottogruppo'
-    start_thread: 'Inizia una discussione'
-    start_poll: 'Avvia un sondaggio'
-    invite_people: 'Invita persone'
   notification_models:
     discussion: 'discussione'
     comment: 'commenta in '
@@ -454,6 +471,7 @@ it:
     comment_copied: URL del commento copiato negli appunti
     poll_copied: URL della decisione copiato negli appunti
     discussion_copied: URL della discussione copiato negli appunti
+    tag_thread: Gestisci le etichette
   cover_photo_form:
     aria_label: 'Cambia modulo dell''immagine di copertina'
     heading: 'Nuova immagine di copertina'
@@ -1004,8 +1022,6 @@ it:
   explore_page:
     header: Esplora gruppi
     search_placeholder: Cerca tra i gruppi pubblici
-  emoji_picker:
-    search: "Cerca una faccina"
   authorized_apps_page:
     revoke: Revoca
   registered_apps_page:
@@ -1018,6 +1034,7 @@ it:
     proposal_title: Proposta
     count_title: Verifica
     poll_title: Sondaggio
+    score_title: Punteggio votazione
     dot_vote_title: Voto a punti
     meeting_title: Sondaggio per incontro
     ranked_choice_title: Scelta di preferenze
@@ -1250,6 +1267,15 @@ it:
   install_slack:
     card:
       install_slack: Connetti Slack
+    invite:
+      heading: 'Passo 2: Setup di un canale Slack'
+      select_a_channel: Seleziona un canale
+      publish_group: Posta un messaggio di benvenuto
+    common:
+      do_it_later: Lo farò più tradi
+  browser_warning:
+    message: "IMPORTANTE! Tu stai usando un browser obsoleto ({{name}} {{version}}) che non è supportato da {{site}}."
+    link: Per favore passa a un altro browser
   slack_added_modal:
     title: Successo!
     start_poll_now: Prendi una decisione

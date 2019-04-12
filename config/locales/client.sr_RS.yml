@@ -1,4 +1,6 @@
 sr_RS:
+  loomio_tags:
+    name_label: Име
   common:
     confirm_discard_changes: Поништити промене?
     time:
@@ -78,8 +80,6 @@ sr_RS:
       proposals: 'Предлози'
   membership_dropdown:
     make_coordinator: 'Учини координатором'
-  start_menu:
-    invite_people: 'Позови Људе'
   notifications:
     header: "Обавештења"
   position_buttons_panel:

@@ -1,4 +1,8 @@
 hu:
+  current_plan_button:
+    upgrade: Upgrade
+  loomio_tags:
+    name_label: Név
   reactions:
     slight_smile: Tetszik
     heart: Szeret
@@ -113,7 +117,7 @@ hu:
       uploading: 'Feltöltés'
       load_more: 'Több'
       share: Megosztás
-      ok: Rendben
+      ok: Oké
       retry: Újra
       done: Kész
       start: Indítás
@@ -320,14 +324,6 @@ hu:
       group: "Eltávolítás a csoportból"
       poll: 'Eltávolítá a {{pollType}}ból'
     cancel_invitation: Meghívás elvetése
-  start_menu:
-    label: 'Felhasználói tettek'
-    title: 'Tett'
-    start_group: 'Csoport indítása'
-    start_subgroup: 'Alcsoport indítása'
-    start_thread: 'Tred indítása'
-    start_poll: 'Szavazás indítása'
-    invite_people: 'Hívj meg másokat'
   notification_models:
     discussion: 'tred:'
     comment: 'kommentelés'
@@ -394,6 +390,7 @@ hu:
   group_page:
     group_logo: 'Csoport logó'
     new_photo: 'Új fotó'
+    subgroups: 'Alcsoportok'
     invite_people: 'Meghív'
     visibility_label: 'Láthatóság'
     options_label: 'Lehetőségek'
@@ -419,6 +416,7 @@ hu:
     start_subgroup_heading: 'Indíts egy alcsoportot'
     privacy: 'Adatvédelem'
     members_can_start_discussions: 'A tagok felvethetnek új támékat.'
+    submit_start_group: 'Indíts csoportot'
     submit_update: 'Beállítások frissítése'
   documents_page:
     confirm_remove_title: Csatolmány eltávolítása

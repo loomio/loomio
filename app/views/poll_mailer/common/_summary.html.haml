@@ -12,11 +12,11 @@
 
   - if @info.outcome
     %h2= t(:"poll_common.outcome")
-    %p= render_rich_text @info.outcome.statement
+    %p= render_rich_text(@info.outcome.statement, @info.outcome.statement_format)
 
     %h2= t(:"poll_types.#{@info.poll_type}")
 
-  %p= render_rich_text @info.poll.details
+  %p= render_rich_text(@info.poll.details, @info.poll.details_format)
 
   %p
     - if @info.poll.active?

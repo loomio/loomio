@@ -1,4 +1,28 @@
 en:
+  current_plan_button:
+    upgrade: Upgrade
+    tooltip: Purchase a loomio plan to invite more people and start more threads.
+
+  loomio_tags:
+    tags: Tags
+    apply_tags: Apply tags
+    new_tag: Create tag
+    name_label: Name
+    color_label: Color
+    card_title: Category Tags
+    modal_title: Create a new tag
+    modal_edit_title: Edit tag
+    modal_destroy_title: Remove tag
+    destroy_tag: Remove tag
+    destroy_helptext: This will destroy this tag and remove it from all threads in the group. Are you sure?
+    helptext: Tags allow you to categorize conversations and easily find them later
+    discussions_count_singular: ({{count}} thread)
+    discussions_count_plural: ({{count}} threads)
+    tag_created: Tag saved
+    tag_destroyed: Tag removed
+    tags_marked: Threads marked '{{name}}' in {{groupName}}
+    no_tags_present: No threads were found with that tag! Try selecting another one.
+
   reactions:
     slight_smile: Like
     heart: Love
@@ -53,6 +77,7 @@ en:
     not_found: Not found
     time_zone: Time zone
     local_time: Local time
+    attachments: Attachments
     confirm_discard_changes: Discard your changes?
     time:
       am: am
@@ -119,7 +144,7 @@ en:
       uploading: 'Uploading'
       load_more: 'Load More'
       share: Share
-      ok: Ok!
+      ok: Ok
       retry: Retry
       done: Done
       start: Start
@@ -135,6 +160,7 @@ en:
       resent: Invitation resent
       export: Export
       fork: Fork
+      apply: Apply
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
@@ -349,15 +375,6 @@ en:
       poll: 'Remove from {{pollType}}'
     cancel_invitation: Cancel invitation
 
-  start_menu:
-    label: 'User actions'
-    title: 'Action'
-    start_group: 'Start Group'
-    start_subgroup: 'Start Subgroup'
-    start_thread: 'Start Thread'
-    start_poll: 'Start Poll'
-    invite_people: 'Invite People'
-
   notification_models:
     discussion: 'thread: '
     comment: 'comment in '
@@ -447,9 +464,9 @@ en:
     form:
       too_many_invitations: |
         Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
-      no_inivtations_remaining: |
-        <p>You have no invitations remaining on your current subscription plan.</p>
-        <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to send more invitations.</p>
+      no_invitations_remaining: |
+        <p>You have used all {{maxMembers}} invitations available to this group.</p>
+        <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
 
       invitations_remaining: '{{count}} invitations remaining. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
 
@@ -523,6 +540,7 @@ en:
     comment_copied: Comment URL copied to clipboard
     poll_copied: Decision URL copied to clipboard
     discussion_copied: Thread URL copied to clipboard
+    tag_thread: Manage tags
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -953,6 +971,10 @@ en:
     deactivate_account: 'Deactivate account'
     help_translate: "Help us translate Loomio"
 
+  text_editor:
+    select_text_to_link: Select some text to link
+    insert_link: Insert link
+
   change_picture_form:
     aria_label: 'Change picture form'
     title: 'Change picture'
@@ -1082,8 +1104,8 @@ en:
 
   discussion:
     max_threads_reached: |
-      <p>Sorry! You cannot start another thread because your group is on a trial plan.</p>
-      <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
+      <p>You have used all {{maxThreads}} threads available to this group.</p>
+      <p>Next step, <a href="{{upgradeUrl}}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
     subscription_canceled: |
       <p>Sorry! Your subscription is not active.</p>
       <p>Please <a href="{{upgradeUrl}}" target="_blank">upgrade</a> to continue using Loomio.</p>
@@ -1264,7 +1286,7 @@ en:
       reload: 'Reload'
 
   emoji_picker:
-    search: "Find an emoji..."
+    search: "Pick your emoji…"
     no_emojis_found: "No emojis found for '{{term}}'!"
 
   authorized_apps_page:
@@ -1838,6 +1860,37 @@ en:
     password: Password
 
     reactivate: Reactivate account
+
+  install_microsoft:
+    modal_title: Install Microsoft Teams
+    card:
+      install_title: Connect to Microsoft Teams
+      install_helptext: Loomio bot notifies your team of discussions and decisions on Loomio.
+      installed_title: Connected to Microsoft Teams
+      installed_helptext: Events from this group will be sent to your Microsoft Team.
+      install_microsoft: Connect Teams
+      remove_identity: Remove this integration
+      confirm_remove_title: Remove Microsoft Teams
+      confirm_remove_helptext: |
+        Your microsoft teams channel will no longer receive updates about this group.
+        You can always go back and add it again.
+      identity_removed: Integration removed
+
+    form:
+      webhook_helptext: Enter the webhook URL provided by your Teams channel. <a href="/microsoft">Learn more about setting up Microsoft Teams with Loomio</a>
+      webhook_label: Webhook URL
+      webhook_installed: Connected to Microsoft Teams
+      webhook_placeholder: https://outlook.office.com/...
+      event_kind_helptext: Which events should be posted into the Teams channel?
+
+    event_kinds:
+      new_discussion: A new thread is started
+      new_comment: A new comment has been made
+      poll_created: A poll is created
+      stance_created: A new vote has been cast
+      poll_closing_soon: A poll is expiring soon
+      poll_expired: A poll has expired
+      outcome_created: An outcome has been shared
 
   install_slack:
     modal_title: Install Slack

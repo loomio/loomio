@@ -10,6 +10,6 @@
               %strong
                 #{stance.participant_for_client(user: @info.recipient).name}:
       %tr
-        %td= render_rich_text stance.reason
+        %td= render_rich_text(stance.reason, stance.reason_format)
       %tr
         %td= render 'poll_mailer/score/stance_chart', stance: stance

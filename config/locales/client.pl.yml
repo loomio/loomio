@@ -1,4 +1,6 @@
 pl:
+  loomio_tags:
+    name_label: Nazwa
   reactions:
     slight_smile: Lubię
     heart: Kocham
@@ -112,7 +114,7 @@ pl:
       uploading: 'Ładowanie'
       load_more: 'Załaduj więcej'
       share: Udostępnij
-      ok: Ok!
+      ok: Ok
       retry: Spróbuj ponownie
       done: Zrobione
       start: Rozpocznij
@@ -307,13 +309,6 @@ pl:
       group: "Usuń z grupy"
       poll: 'Usuń z {{pollType}}'
     cancel_invitation: Anuluj zaproszenie
-  start_menu:
-    title: 'Działanie'
-    start_group: 'Uruchomienie Grupy'
-    start_subgroup: 'Uruchomienie Podgrupy'
-    start_thread: 'Uruchomienie Wątku'
-    start_poll: 'Stwórz ankietę'
-    invite_people: 'Zaproszenie Osób'
   notification_models:
     discussion: 'wątek:'
     comment: 'skomentuj w'

@@ -59,6 +59,22 @@ module Dev::Scenarios::Group
     redirect_to group_url(create_another_group)
   end
 
+  def setup_group_with_subgroups_as_admin
+    sign_in jennifer
+    create_another_group.add_admin! jennifer
+    create_subgroup.add_member! jennifer
+    another_create_subgroup
+    redirect_to group_url(create_subgroup)
+  end
+
+  def setup_group_with_subgroups_as_admin_landing_in_other_subgroup
+    sign_in jennifer
+    create_another_group.add_admin! jennifer
+    create_subgroup.add_member! jennifer
+    another_create_subgroup
+    redirect_to group_url(another_create_subgroup)
+  end
+
   def setup_open_group
     @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
                                 group_privacy: 'open')

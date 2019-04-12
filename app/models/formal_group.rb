@@ -1,6 +1,9 @@
 class FormalGroup < Group
   include HasTimeframe
   include HasDrafts
+  include HasRichText
+
+  is_rich_text    on: :description
 
   extend  NoSpam
   no_spam_for :name, :description
@@ -44,6 +47,7 @@ class FormalGroup < Group
   has_many :public_discussion_documents, through: :public_discussions, source: :documents
   has_many :public_poll_documents,       through: :public_polls,       source: :documents
   has_many :public_comment_documents,    through: :public_comments,    source: :documents
+  has_many :tags, foreign_key: :group_id
 
   belongs_to :cohort
   belongs_to :default_group_cover

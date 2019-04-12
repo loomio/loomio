@@ -1,4 +1,6 @@
 sr:
+  loomio_tags:
+    name_label: Ime
   common:
     confirm_discard_changes: Otkaži promene?
     time:
@@ -51,6 +53,7 @@ sr:
       translated: 'Prevod Bing Translator'
       upload: 'Prosledi'
       uploading: 'Prosleđivanje'
+      ok: U redu
   error_page:
     forbidden: 'Nemate dozvolu da ovo uradite.'
     page_not_found: 'Nismo u mogućnosti da to pronađemo. Možda je obrisano ili premešteno.'
@@ -148,11 +151,6 @@ sr:
   membership_dropdown:
     make_coordinator: 'Učini koordinatorom'
     cancel_invitation: Otkaži poziv
-  start_menu:
-    start_group: 'Kreiraj Grupu'
-    start_subgroup: 'Kreiraj Podgrupu'
-    start_thread: 'Kreiraj nit'
-    invite_people: 'Pozovi Ljude'
   notifications:
     header: "Obaveštenja"
     no_notifications: "Nemate nikakvih obaveštenja"
@@ -550,7 +548,6 @@ sr:
     messages:
       reload: 'Osveži'
   emoji_picker:
-    search: "Naži jedan emoji"
     no_emojis_found: "Nema emoja za '{{term}}'!"
   authorized_apps_page:
     title: Odobrene Aplikacije

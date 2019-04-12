@@ -1,20 +1,103 @@
 uk:
+  explore:
+    header: Переглянути відкриті групи
+  activerecord:
+    errors:
+      messages:
+        blank: не може бути порожнім
+        invalid: не є допустимим значенням
+  errors:
+    noscript: Для роботи Loomio потрібний JavaScript! Щоб продовжити, увімкніть JavaScript у веб-переглядачі
+    return_home: Повернутися додому
+    not_found: Файл 404 не знайдено.
+    messages:
+      email: адреса електронної пошти не вірна
+      spoofed_media_type: Вміст файлу не відповідає його імені
+  user:
+    deleted_user: "Видалені користувачі"
+    placeholder_name: "Запрошено користувача (%{hostname})"
+    error:
+      recaptcha: "Ми не змогли переконатися, що ви не робот. Будь ласка спробуйте ще раз!"
+      bad_login: "На жаль, цей пароль не збігається з тим, що збережений у профілі"
+      username_must_be_alphanumeric: "Ім'я користувача повинно містити лише прописні літери та цифри"
+  attachment:
+    error:
+      too_large: Файл, який ви намагаєтеся приєднати, перевищує 100 мегабайт. Виберіть менший файл.
   poll:
+    error:
+      cannot_add_options: Неможливо додати параметри до цього опитування
+      cannot_remove_options: Неможливо видалити параметри з цього опитування
+      must_have_options: В опитуванні має бути принаймні один варіант відповіді
     export:
+      percent_voted: "%{num}/%{denom} (%{percent}) учасників висловили свою позицію"
       title: Заголовок
       author: Автор
+      created_at: Створено
+      closing_at: Закривається
+      closed_at: Закрито
+      is_latest: Є останнім
+      engagement: Залучено
+      stances: Позиції
+      participants: Учасники
       details: Деталі
       group_name: Назва групи
+      discussion_title: Заголовок теми
+      outcome_author: Автор результату
+      outcome_created_at: Результат створено
+      outcome_statement: Опис результату
+      poll_url: URL-адреса опитування
       reason: Аргумент
+      participant: Учасник
+      also_available: Також доступний у
       total: Разом
+  stance:
+    error:
+      too_short: Будь ласка, виберіть
+  invitation:
+    invitation_cancelled: На жаль, це запрошення було скасовано координатором групи. Запросіть інше запрошення від групи.
+    invitation_already_used: Це запрошення вже було використано. Будь ласка, увійдіть в Loomio для входу в свою групу.
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
   validate:
     motion:
       must_close_in_future: Пропозицію потрібно закрити в майбутньому.
       one_at_a_time: Є інші активні пропозиції.
+  subscriptions:
+    active: Активні
+    inactive: Не активні
+  user_mailer:
+    group_export_ready:
+      subject: Експорт даних групи %{group_name}
+      body_html: |
+          Завантажте <a href="%{url}">тут</a> дані групи. Зверніть увагу на те, що термін дії цього посилання закінчиться через тиждень.
+    accounts_merged:
+      subject: "Ваші облікові записи на %{site_name} було об'єднано."
+      body_html: |
+          Вітаємо %{name},
+          Ваші два облікових записи Loomio були об'єднані в один.
+          Відтепер для входу в Loomio, будь ласка, використовуйте <strong>%{email}</strong>.
   email:
+    common:
+      or_enter_code: Або введіть код нижче
+      resend: Термін дії цього посилання закінчиться через 24 години і воно може бути використано лише один раз.
+    login:
+      subject: Увійтни до %{site_name}
+      intro: Вітаємо %{name}, ось посилання для входу до вашого облікового запису %{site_name}.
+      login: Увійти як %{name}
+    reactivate:
+      subject: Відновити обліковий запис %{site_name}
+      intro: Вітаємо %{name}, ось посилання для відновлення вашого облікового запису %{site_name}.
+      login: Відновити %{name}
+    contact_request:
+      subject: "%{name} хоче встановити з вами зв'язок у %{site_name}!"
+      intro: "%{name} (%{email}) надіслав вам запит на встановленя зв'язку."
+      footer: "Ви можете відповісти %{name} безпосередньо, відповівши на цей лист."
     reset_password:
       greeting: |
           Вітаємо %{name}
@@ -33,24 +116,32 @@ uk:
       poll: Створити опитування
       dot_vote: Створити відбіркове голосування
       meeting: Запланувати час
+      ranked_choice: Почати ранговий вибір
     custom: "%{text}"
     group_email:
       intro: "%{who} опублікував оголошення в %{group}:"
     by_who: користувачем %{person}
     reply_to_this_discussion: Відповісти в цьому обговоренні
+    value_proposition: "%{site_name} це місце для спільного прийняття рішень в групах"
     view_group: Переглянути групу
     to_join_group:
+      subject: "%{member} запросив(ла) вас долучитись до %{group_name} на %{site_name}"
       invitation_text: "%{member} запросив(ла) вас приєднатися до своєї групи  %{group_name}."
       invitation_text_html: "запросив(ла) вас приєднатися до своєї групи"
       link_help: "Натисніть на посилання нижче щоб прийняти запрошення:"
       accept_invitation: "Прийняти запрошення"
+    resend_to_join_group:
+      subject: "%{member} очікує вашого долучення до %{group_name} на %{site_name}"
     user_added_to_group:
+      subject: "%{who} додав(ла) вас до %{which_group} в %{site_name}"
       content: "%{who} додав вас до %{which_group}."
       content_html: "<strong>%{who}</strong> додав вас до <strong>%{which_group}</strong>."
       link_help: "Натисніть на посилання нижче щоб перейти до групи:"
     unsubscribe: 'Відпісатися, або змінити Ваші налаштування електронної пошти:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> аби відписатися або змінити налаштування електронної пошти"
     catch_up:
+      daily_subject: Вчора на %{site_name}
+      weekly_subject: Минулого тижня на %{site_name}
       do_not_reply: Будь ласка не відповідайте на цей лист
       mark_as_read: Відмітити як прочитане
       thanks_for_reading: Дякуємо за читання, гарного дня!
@@ -60,15 +151,40 @@ uk:
       intro: "Ваш запит на участь у групі %{group_name} було схвалено."
       intro_html: "Ваш запит на участь у групі <strong>%{group_name}</strong> було схвалено."
       link_help: "Натисніть на посилання нижче щоб долучитись до %{group_name} та розпочати:"
+      subject: "Ваш запит на участь у %{group_name} було схвалено"
       join_group: "Приєднатись до групи"
     membership_request:
       intro_html: запросила доступ до однієї з ваших груп.
       subject: "%{who} зробив запит на приєднання до %{which_group}"
       view_group: Тут ви можете підтвердити або відхилити запит
       button_text: Переглянути запит
+  announcement_count_emails: "%{count} листів"
+  email_actions:
+    unfollowed_discussion: Ви вимкнули сповіщення електронною поштою для цієї теми.
   discussion_mailer:
+    resend: 'НАГАДУВАННЯ: %{actor} очікує вашого долучення до %{discussion}'
+    new_discussion:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> розпочав тему: %{discussion}"
+    discussion_edited:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> відредагував(ла) тему: %{discussion}"
+    discussion_announced:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> запросив(ла) вас долучитись до: %{discussion}"
+    new_comment:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> залишив коментар у: %{discussion}"
+    comment_replied_to:
+      subject: '%{actor} відповів(ла) вам у: %{discussion}'
+      subject_html: '<strong>%{actor}</strong> відповів(ла) вам у: %{discussion}'
+    user_mentioned:
+      subject: '%{actor} згадав(ла) вас у: %{discussion}'
+      subject_html: "<strong>%{actor}</strong> згадав вас у %{discussion}"
     reply_or_view_online_html: Безпосередньо відповісти на цей лист або <a href='%{url}'>переглянути його на %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Вимкнути листи</a> з цього обговорення."
+    change_email_preferences_html: "Змінити <a href='%{email_preferences_url}'>налашьтування пошти</a>."
+    discussion_closed: "%{actor} закрив обговорення"
   footer:
     about: Про Loomio
     blog: Блог
@@ -82,9 +198,16 @@ uk:
   invitation_form:
     error:
       too_many_pending: "Ви досягли більш ніж максимально можливих %{count} запрошень в очікуванні для цієї групи"
+      too_many_cancelled: "У вас більше максимально допустимих %{count} скасованих запрошень до цієї групи"
+      all_email_addresses_belong_to_members: "Ці люди вже є учасниками групи."
   password_reset:
     change_your_password: Змінити пароль
     change_my_password: Змінити пароль
+    confirm_new_password: Підтвердити пароль
+    new_password: Новий пароль
+    email_guidelines_html: |
+        <p>Введіть адресу електронної пошти щоб отримати посилання для скидання пароля.</p>
+        <p>Якщо ви зазвичай входили через Facebook або Google, введіть адресу електронної пошти, пов'язану з цим обліковим записом.</p>
     reset_email_timeframe: Надходження листа може зайняти до 5 хвилин. Якщо він не відображається, обов'язково перевірте папку зі спамом.
     length_restriction: Паролі повинні бути довжиною не менше 8 символів.
     forbidden_passwords: Прості паролі, такі як "password", заборонені аби тримати ваш обліковий запис у безпеці.
@@ -182,10 +305,14 @@ uk:
           Так само для зображень, але додавши на початку знак оклику.
 
           ![Логотип Loomio](https://i.imgur.com/Fvtworb.png)
+  group_mailer:
+    resend: 'НАГАДУВАННЯ: %{member} очікує вашого долучення до %{group_name}'
   poll_mailer:
+    resend: '%{actor} нагадує вам щодо голосування: %{title}'
     common:
       or: або
       why_send_this: Ви отримали цей лист, тому що %{reason}
+      view_on_loomio: Переглянути на %{site_name}
       unsubscribe: Відписатись
       results: Результати
       responses: Відповіді
@@ -197,10 +324,15 @@ uk:
       undecided_members: Учасників що не визначились (%{count})
       undecided_visitors: (%{count}) гостей що не прийняли рішення
       more_undecided: "%{count} більше..."
+      vote_now: Проголосувати зараз
+      verify_stance_for_unverified_user: "Дякуємо за участь в голосуванні %{title}. Підтвердьте адресу електронної пошти, щоб ми могли надіслати вам результати, коли вони будуть готові."
+      verify_stance_for_verified_user: "Схоже що ви проголосували в %{title}. Якщо це дійсно були ви, натисніть посилання нижче, щоб підтвердити свій голос."
+      you_have_until: Ви маєте чекати до %{when} для участі.
     proposal:
       subject:
         poll_created: '%{actor} вніс(ла) пропозицію: %{title}'
         poll_edited: '%{actor} відредагував(ла) пропозицію: %{title}'
+        poll_announced: '%{actor} запросив вас проголосуати щодо пропозиції: %{title}'
         poll_closing_soon: 'Пропозиція закривається за 24 години: %{title}'
         poll_closing_soon_author: 'Ваша пропозиція закривається за 24 години: %{title}'
         poll_expired: "Пропозицію закрито: %{title}"
@@ -208,22 +340,28 @@ uk:
         outcome_created: '%{actor} поширив результат: %{title}'
         outcome_announced: '%{actor} поширив результат: %{title}'
         stance_created: "%{actor} проголосував щодо: %{title}"
+        user_mentioned: '%{actor} згадав вас в: %{title}'
+        user_reminded: '%{actor} нагадує вам щодо голосування: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> вніс(ла) пропозицію'
         poll_edited: '<strong>%{actor}</strong> відредагував(ла) пропозицію'
-        poll_closing_soon: 'Пропозиція внесена <strong>%{actor}</strong> закривається за 24 годин. Зараз зручний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.'
-        poll_closing_soon_author: 'Ваша пропозиція закривається за 24 години - тепер це чудовий час щоб нагадати людям про неї або продовжити термін, якщо це необхідно.'
+        poll_announced: '<strong>%{actor}</strong> запросив(ла) вас проголосувати щодо пропозиції'
+        poll_closing_soon: 'Пропозиція внесена <strong>%{actor}</strong> закриється за 24 годин. Зараз зручний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.'
+        poll_closing_soon_author: 'Ваша пропозиція закриється за 24 години - тепер це чудовий час щоб нагадати людям про неї або продовжити термін, якщо це необхідно.'
         poll_expired: "Пропозицію внесену <strong>%{actor}</strong> закрито: %{title}"
         poll_expired_author: 'Вашу пропозицію <strong>закрито</strong>. Будь ласка знайдіть час аби врахувати що і як було сказано та <strong>поширте результат</strong> у групі, аби люди знали що буде відбуватися далі., '
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат щодо пропозиції.'
         outcome_announced: '<strong>%{actor}</strong> поширив(ла) результат щодо пропозиції.'
         stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> згадав(ла) вас в: %{title}'
+        user_reminded: '<strong>%{actor}</strong> нагадує вам щодо участі в голосуванні в: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
       subject:
         poll_created: '%{actor} розпочав(ла) опитування: %{title}'
         poll_edited: '%{actor} відредагував(ла) опитування: %{title}'
+        poll_announced: '%{actor} запросив вас проголосувати в опитуванні: %{title}'
         poll_closing_soon: 'Опитування закривається за 24 години: %{title}'
         poll_closing_soon_author: 'Ваше опитування закривається за 24 години: %{title}'
         poll_expired: "Результати опитування: %{title}"
@@ -233,11 +371,15 @@ uk:
         outcome_created: '%{actor} поширив(ла) результат опитування: %{title}'
         outcome_announced: '%{actor} поширив(ла) результат опитування: %{title}'
         stance_created: "%{actor} проголосував щодо: %{title}"
+        stance_created_author: "Підтвердіть ваш вибір в: %{title}"
+        user_mentioned: '%{actor} згадав вас в: %{title}'
+        user_reminded: '%{actor} нагадує вам щодо голосування: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> розпочав(ла) опитування'
         poll_edited: '<strong>%{actor}</strong> відредагував(ла) опитування'
-        poll_closing_soon: 'Опитування від <strong>%{actor}</strong> закривається за 24 годин. Зараз зручний час щоб проголосувати, змінити свою думку або заохотити інших до участі.'
-        poll_closing_soon_author: 'Ваше опитування закривається за 24 години - тепер чудовий час щоб нагадати людям про нього або продовжити термін якщо це необхідно.'
+        poll_announced: '<strong>%{actor}</strong> запросив(ла) вас проголосувати в опитуванні'
+        poll_closing_soon: 'Опитування від <strong>%{actor}</strong> закриється за 24 годин. Зараз зручний час щоб проголосувати, змінити свою думку або заохотити інших до участі.'
+        poll_closing_soon_author: 'Ваше опитування закриється за 24 години - тепер чудовий час щоб нагадати людям про нього або продовжити термін якщо це необхідно.'
         poll_expired: "Опитування <strong>%{actor}</strong> закрито: %{title}"
         poll_expired_author: 'Ваше опитування <strong>закрито</strong>. Будь ласка знайдіть час аби врахувати що і як було сказано та <strong>поширте результат</strong> у групі, аби люди знали що буде відбуватися далі.'
         poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
@@ -245,12 +387,15 @@ uk:
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат опитування.'
         outcome_announced: '<strong>%{actor}</strong> поширив(ла) результат опитування.'
         stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> згадав(ла) вас в: %{title}'
+        user_reminded: '<strong>%{actor}</strong> нагадує вам щодо участі в голосуванні в: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     score:
       subject:
         poll_created: '%{actor} розпочав(ла) опитування: %{title}'
         poll_edited: '%{actor} відредагував(ла) опитування: %{title}'
+        poll_announced: '%{actor} запросив вас проголосувати в опитуванні: %{title}'
         poll_closing_soon: 'Опитування закривається за 24 години: %{title}'
         poll_closing_soon_author: 'Ваше опитування закривається за 24 години: %{title}'
         poll_expired: "Результати опитування: %{title}"
@@ -260,11 +405,15 @@ uk:
         outcome_created: '%{actor} поширив(ла) результат опитування: %{title}'
         outcome_announced: '%{actor} поширив(ла) результат опитування: %{title}'
         stance_created: "%{actor} проголосував щодо: %{title}"
+        stance_created_author: "Підтвердіть ваше голосування в: %{title}"
+        user_mentioned: '%{actor} згадав вас в: %{title}'
+        user_reminded: '%{actor} нагадує вам щодо голосування: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> розпочав(ла) опитування'
         poll_edited: '<strong>%{actor}</strong> відредагував(ла) опитування'
-        poll_closing_soon: 'Опитування від <strong>%{actor}</strong> закривається за 24 годин. Зараз зручний час щоб проголосувати, змінити свою думку або заохотити інших до участі.'
-        poll_closing_soon_author: 'Ваше опитування закривається за 24 години - тепер чудовий час щоб нагадати людям про нього або продовжити термін якщо це необхідно.'
+        poll_announced: '<strong>%{actor}</strong> запросив(ла) вас проголосувати в опитуванні'
+        poll_closing_soon: 'Опитування від <strong>%{actor}</strong> закриється за 24 годин. Зараз зручний час щоб проголосувати, змінити свою думку або заохотити інших до участі.'
+        poll_closing_soon_author: 'Ваше опитування закриється за 24 години - тепер чудовий час щоб нагадати людям про нього або продовжити термін якщо це необхідно.'
         poll_expired: "Опитування <strong>%{actor}</strong> закрито: %{title}"
         poll_expired_author: 'Ваше опитування <strong>закрито</strong>. Будь ласка знайдіть час аби врахувати що і як було сказано та <strong>поширте результат</strong> у групі, аби люди знали що буде відбуватися далі.'
         poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
@@ -272,12 +421,15 @@ uk:
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат опитування.'
         outcome_announced: '<strong>%{actor}</strong> поширив(ла) результат опитування.'
         stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> згадав(ла) вас в: %{title}'
+        user_reminded: '<strong>%{actor}</strong> нагадує вам щодо участі в голосуванні в: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
         poll_created: '%{actor} відмітився(лась) в: %{title}'
         poll_edited: '%{actor} відредагував(ла) контрольний список: %{title}'
+        poll_announced: '%{actor} запросив вас долучитись до: %{title}'
         poll_closing_soon: '24 години залишилось аби відмітитись: %{title}'
         poll_closing_soon_author: 'Ваш контрольний список закривається за 24 години: %{title}'
         poll_expired: "Контрольний список закрито: %{title}"
@@ -285,22 +437,29 @@ uk:
         outcome_created: '%{actor} поширив(ла) результат: %{title}'
         outcome_announced: '%{actor} поширив(ла) результат: %{title}'
         stance_created: "%{actor} долучився до: %{title}"
+        stance_created_author: "Підтвердіть ваше голосування в: %{title}"
+        user_mentioned: '%{actor} згадав вас в: %{title}'
+        user_reminded: '%{actor} нагадує вам щодо долучення до: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> відмітився(лась)'
         poll_edited: '<strong>%{actor}</strong> відредагував(ла) контрольний список'
-        poll_closing_soon: 'Контрольний список від <strong>%{actor}</strong> закривається за 24 години.'
-        poll_closing_soon_author: 'Ваш контрольний список закривається за 24 години - це чудовий час аби нагадати людям про нього або продовжити термін якщо це необхідно.'
+        poll_announced: '<strong>%{actor}</strong> запросив вас долучитись'
+        poll_closing_soon: 'Контрольний список від <strong>%{actor}</strong> закриється за 24 години.'
+        poll_closing_soon_author: 'Ваш контрольний список закриється за 24 години - це чудовий час аби нагадати людям про нього або продовжити термін якщо це необхідно.'
         poll_expired: "Контрольний список від <strong>%{actor}</strong> закрито: %{title}"
         poll_expired_author: 'Ось результати вашого контрольного списку. За потреби <strong>поширте результат</strong> аби люди знали що буде відбуватися далі.'
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат.'
         outcome_announced: '<strong>%{actor}</strong> поширив(ла) результат.'
         stance_created: "<strong>%{actor}</strong> прийняв участь у: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> згадав(ла) вас в: %{title}'
+        user_reminded: '<strong>%{actor}</strong> нагадує вам щодо долучення до: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     dot_vote:
       subject:
         poll_created: '%{actor} розпочав(ла) відбіркове голосування: %{title}'
         poll_edited: '%{actor} відредагував(ла) відбіркове голосування: %{title}'
+        poll_announced: '%{actor} запросив вас долучитись до відбіркового голосування: %{title}'
         poll_closing_soon: 'Відбіркове голосування закривається за 24 години: %{title}'
         poll_closing_soon_author: 'Ваше відбіркове голосування закривається за 24 години: %{title}'
         poll_expired: "Результати відбіркового голосування: %{title}"
@@ -310,11 +469,15 @@ uk:
         outcome_created: '%{actor} поширив(ла) результат: %{title}'
         outcome_announced: '%{actor} поширив(ла) результат: %{title}'
         stance_created: "%{actor} проголосував щодо: %{title}"
+        stance_created_author: "Підтвердіть ваше голосування в: %{title}"
+        user_mentioned: '%{actor} згадав вас в: %{title}'
+        user_reminded: '%{actor} нагадує вам щодо голосування: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> розпочав(ла) відбіркове голосування '
         poll_edited: '<strong>%{actor}</strong> відредагував(ла) відбіркове голосування'
-        poll_closing_soon: 'Відбіркове голосування від <strong>%{actor}</strong> закривається за 24 годин. Зараз зручний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.'
-        poll_closing_soon_author: 'Ваше відбіркове голосування закривається за 24 години - можливо ви бажаєте нагадати людям про нього або продовжити термін якщо це необхідно.'
+        poll_announced: '<strong>%{actor}</strong> запросив вас долучитись до відбіркового голосування'
+        poll_closing_soon: 'Відбіркове голосування від <strong>%{actor}</strong> закриється за 24 годин. Зараз зручний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.'
+        poll_closing_soon_author: 'Ваше відбіркове голосування закриється за 24 години - можливо ви бажаєте нагадати людям про нього або продовжити термін якщо це необхідно.'
         poll_expired: "Результат відбіркового голосування від <strong>%{actor}</strong> щодо: %{title}"
         poll_expired_author: 'Це відбіркове голосування <strong>закрито</strong>. Врахуйте що і як було сказано та <strong>поширте результат</strong> у групі, аби люди знали що буде відбуватися далі., '
         poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
@@ -322,12 +485,15 @@ uk:
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат відбіркового голосування .'
         outcome_announced: '<strong>%{actor}</strong> поширив(ла) результат відбіркового голосування .'
         stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> згадав(ла) вас в: %{title}'
+        user_reminded: '<strong>%{actor}</strong> нагадує вам щодо участі в голосуванні в: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
       subject:
         poll_created: '%{actor} розпочав(ла) опитування щодо часу: %{title}'
         poll_edited: '%{actor} відредагував(ла) опитування щодо часу: %{title}'
+        poll_announced: '%{actor} запросив вас долучитись до опитування щодо часу: %{title}'
         poll_closing_soon: 'Опитування щодо часу закривається за 24 години: %{title}'
         poll_closing_soon_author: 'Ваше опитування щодо часу закривається за 24 години: %{title}'
         poll_expired: "Результати опитування щодо часу: %{title}"
@@ -338,11 +504,15 @@ uk:
         outcome_created_author: 'Ви поширили результат: %{title}'
         outcome_announced: '%{actor} поширив(ла) результат: %{title}'
         stance_created: '%{actor} долучився до: %{title}'
+        stance_created_author: "Підтвердіть ваше голосування в: %{title}"
+        user_mentioned: '%{actor} згадав вас в: %{title}'
+        user_reminded: '%{actor} нагадує вам щодо голосування: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> розпочав(ла) опитування щодо часу'
         poll_edited: '<strong>%{actor}</strong> відредагував(ла) опитування щодо часу'
-        poll_closing_soon: 'Опитування щодо часу від <strong>%{actor}</strong> закривається за 24 годин. Зараз зручний час щоб проголосувати, змінити свою думку або заохотити інших до участі.'
-        poll_closing_soon_author: 'Ваше опитування щодо часу закривається за 24 години - можливо ви бажаєте нагадати людям про нього або продовжити термін якщо це необхідно.'
+        poll_announced: '<strong>%{actor}</strong> запросив вас долучитись до опитування щодо часу'
+        poll_closing_soon: 'Опитування щодо часу від <strong>%{actor}</strong> закриється за 24 годин. Зараз зручний час щоб проголосувати, змінити свою думку або заохотити інших до участі.'
+        poll_closing_soon_author: 'Ваше опитування щодо часу закриється за 24 години - можливо ви бажаєте нагадати людям про нього або продовжити термін якщо це необхідно.'
         poll_expired: "Опитування щодо часу від <strong>%{actor}</strong> закрито"
         poll_expired_author: 'Це опитування щодо часу <strong>закрито</strong>. Врахуйте що і як було сказано та <strong>поширте результат</strong> у групі аби люди знали що буде відбуватися далі., '
         poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
@@ -351,8 +521,49 @@ uk:
         outcome_created_author: 'Ви поширили результат опитування щодо часу.'
         outcome_announced: '<strong>%{actor}</strong> поширив(ла) результат опитування щодо часу.'
         stance_created: "<strong>%{actor}</strong> прийняв участь у: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> згадав(ла) вас в: %{title}'
+        user_reminded: '<strong>%{actor}</strong> нагадує вам щодо участі в голосуванні в: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
+    ranked_choice:
+      subject:
+        poll_created: '%{actor} розпочав(ла) ранговий вибір: %{title}'
+        poll_edited: '%{actor} відредагував(ла) ранговий вибір: %{title}'
+        poll_announced: '%{actor} запросив вас ранжувати варіанти в опитуванні: %{title}'
+        poll_closing_soon: 'Відбіркове голосування %{title}закривається за 24 години '
+        poll_closing_soon_author: 'Ваше відбіркове голосування %{title}закривається за 24 години '
+        poll_expired: "Результати відбіркового голосування: %{title}"
+        poll_expired_author: 'Ваше відбіркове голосування закрито. Поширте результат для: %{title}'
+        poll_option_added: '%{actor} додав(ла) варіанти до: %{title}'
+        poll_option_added_author: '%{actor} додав(ла) варіанти до: %{title}'
+        outcome_created: '%{actor} поширив(ла) результат: %{title}'
+        outcome_created_author: 'Ви поширили результат: %{title}'
+        outcome_announced: '%{actor} поширив(ла) результат рангового вибору.'
+        stance_created: '%{actor} долучився до: %{title}'
+        stance_created_author: "Підтвердіть ваше голосування в: %{title}"
+        user_mentioned: '%{actor} згадав вас в: %{title}'
+        user_reminded: '%{actor} нагадує вам щодо голосування: %{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> розпочав(ла) відбіркове голосування '
+        poll_edited: '<strong>%{actor}</strong> відредагував(ла) відбіркове голосування '
+        poll_announced: '<strong>%{actor}</strong> запросив(ла) вас ранжувати варіанти в опитуванні'
+        poll_closing_soon: 'Відбіркове голосування від <strong>%{actor}</strong> закриється за 24 годин. Зараз зручний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.'
+        poll_closing_soon_author: 'Ваше відбіркове голосування закриється за 24 години - можливо ви бажаєте нагадати людям про нього або продовжити термін якщо це необхідно.'
+        poll_expired: "Відбіркове голосування від <strong>%{actor}</strong> закрито"
+        poll_expired_author: 'Ваше відбіркове голосування <strong>закрито</strong>. Врахуйте що і як було сказано та <strong>поширте результат</strong> у групі, аби люди знали що буде відбуватися далі., '
+        poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
+        outcome_created: '<strong>%{actor}</strong> поширив(ла) результат відбіркового голосування.'
+        outcome_created_author: 'Ви поширили результат відбіркового голосування.'
+        outcome_announced: '<strong>%{actor}</strong> поширив(ла) результат відбіркового голосування.'
+        stance_created: "<strong>%{actor}</strong> прийняв участь у: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> згадав(ла) вас в: %{title}'
+        user_reminded: '<strong>%{actor}</strong> нагадує вам щодо участі в голосуванні в: %{title}'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+  comment_by: Коментар від %{comment_author}
+  personal_data:
+    title: Персональні дані %{user_name} на %{host_name}
   poll_generator:
     proposal:
       title: "Відправити листи-запрошення Петру та Василю"
@@ -366,6 +577,75 @@ uk:
     dot_vote:
       title: "Яка стратегія нашої компанія в наступному кварталі?"
       details: Це визначний рік для компанії і ми маймо вкладати наші обмежені ресурси з урахуванням стратегії. Прохання вказати, які напрямки ви вважаєте найбільш важливими, аби зосередитися на них протягом наступного кварталу.
+    score:
+      title: "Які теми ви хотіли б обговорити на наступній конференції?"
+      details: Ми готуємо теми, які будуть висвітлені на наступній конференції. Будь ласка, вкажіть свій інтерес до кожної з наступних тем.
+    ranked_choice:
+      title: "Хто повинен бути нашим наступним обраним головою?"
+      details: "Прийшов час для наших піврічних виборів! Це офіційне опитування є частиною голосування в декілька турів, яке визначить наступного обраного голову. Обов'язково прочитайте інформацію щодо кожного з кандидатів на нашому сайті!"
     meeting:
       title: "Коли ми маємо провести наше наступне зібрання?"
       details: Прийшов час для нашої щодвомісячної зустрічі персоналу; в ідеалі ми хотіли б зустрітися до кінця наступного тижня. Який час є зручним для всіх?
+  notified:
+    no_matches_found: "Нема результатів щодо '%{query}'"
+    group_users: "(%{count} людей)"
+    group_title: "%{name} (%{count} людей)"
+    public_title: Загальнодоступне (будь-хто за посиланням)
+  poll_unsubscribe:
+    title: Ви відпідписались від %{title}
+    helptext: Тепер ви не будете отримувати листи щодо цього рішення
+    visit_poll: Переглянути опитування
+    go_to_dashboad: Перейти до інформаційної панелі
+  slack:
+    new_discussion: "Нові теми в *%{group}*: *%{discussion}*"
+    outcome_created: "Результати опубліковані в *%{group}*: *%{poll}*"
+    poll_created: "Носве *%{poll_type}* в *%{group}*: *%{poll}*"
+    poll_closing_soon: "Нагадування: *%{poll}* закриється за 24 години"
+    poll_expired: "*%{poll}* закрито"
+    poll_not_found: "На жаль, це опитування не знайдено. Введіть '/loomio <poll_type> <title>' щоб розпочати інше."
+    unknown_channel: |
+        Схоже, що з цим каналом не пов'язана група loomio.
+        Спробуйте запустити "/ loomio" в одному з наступних каналів.
+        %{integrations}
+    stance_not_valid: "На жаль, ми не змогли записати позицію для *%{poll}*. <%{url}|Натисніть тут> щоб безпосередньо проголосувати за опитування."
+    group_identity_created: |
+        Вітаю, я бот Loomio! *%{author}* додав мене.
+        Я можу допомогти вашій команді приймати спільні рішення.
+
+        Мої функції:
+
+        - Створювати теми і рішення в Loomio безпосередньо зі Slack
+        - Оголошувати, коли на Loomio з'являються нові теми та рішення
+        - Дати можливість людям голосувати щодо рішень зі Slack
+        - Обговорювати результати рішень
+
+        Щоб дізнатися більше, введіть _/loomio help_
+
+        Щоб приймати участь ви повинні бути частиною групи *%{group}* в Loomio.
+        Якщо ви ще не приєдналися, <%{url}|натисніть тут> щоб зробити це.
+    request_authorization_message: "Останній крок: <%{url}|Натисніть тут> щоб авторизувати свій обліковий запис у Slack для використання з Loomio. (Це потрібно зробити лише один раз)"
+    poll_closed: "*%{title}* вже закрито! <%{url}|Натисніть тут> щоб переглянути результати."
+    go_to_slack: Перейти в Slack
+    stance_created: Дякуємо за участь! Ви проголосували *%{position}* в опитуванні <%{poll_url}|%{title}>. Якщо ви хотіли б змінити свій голос, або вказати причину того, чому вважаєте саме так, <%{stance_url}|натисніть тут>.
+    click_to_vote: "Виберіть варіант нижче, щоб проголосувати:"
+    time_zone_message: (всі часи знаходяться в часовому поясі %{zone})
+    authorized_message: Успішно! Тепер ви можете голосувати через Slack.
+    initiate: |
+        Давайте зробимо це!  <%{url}|Натисніть тут, щоб розпочати %{type}>.
+        (примітка: ми будемо публікувати в цей канал, як тільки він буде створений, щоб кожен міг взяти участь)
+    slash_command_help: |
+        Просто введіть тип рішення і питання, і ми візьмемо їх звідси.
+        Ви можете обрати один з наступних типів рішень:
+        'proposal': Шукайте колективної згоди
+        'count':      Відстежуйте участь та шукайте волонтерів
+        'poll':         Вимірюйте популярність варіантів
+        'dot_vote': Визначте пріоритети зі списку варіантів
+        'meeting': Оберіть час для зустрічі
+        Або розпочніть розмову за допомогою '/loomio thread <title>'.
+
+        Наприклад:
+        /loomio count Хто буде на вечірці в неділю?
+        Щоб почати новий підрахунок.
+        або
+        /loomio thread Поговоримо про напрямок розвитку компанії
+        Щоб почати нову тему

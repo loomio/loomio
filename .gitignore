@@ -43,3 +43,29 @@ client/tests_output
 client/angular/test/screenshots
 client/angular/test/nightwatch/plugins
 client/angular/test/log
+vue/node_modules
+
+.DS_Store
+node_modules
+/vue/dist
+
+/vue/tests/e2e/reports/
+selenium-debug.log
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*

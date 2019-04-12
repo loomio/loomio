@@ -1,4 +1,8 @@
 sv:
+  current_plan_button:
+    upgrade: Uppgradera
+  loomio_tags:
+    name_label: Namn
   reactions:
     slight_smile: Gilla
     heart: Älska
@@ -114,7 +118,7 @@ sv:
       uploading: 'Laddar upp'
       load_more: 'Ladda fler'
       share: Dela
-      ok: Ok!
+      ok: Ok
       retry: Försök igen
       done: Klar
       start: Starta

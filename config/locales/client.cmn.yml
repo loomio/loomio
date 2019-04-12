@@ -1,4 +1,6 @@
 cmn:
+  loomio_tags:
+    name_label: 名字
   reactions:
     slight_smile: 喜欢
     heart: 喜爱
@@ -42,6 +44,7 @@ cmn:
       like: '喜欢'
       unlike: '不喜欢'
       cancel: '取消'
+      ok: 好
   signed_out_modal:
     ok: "好"
   comment_form:
