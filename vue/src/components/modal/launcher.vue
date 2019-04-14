@@ -1,12 +1,12 @@
 <script lang="coffee">
 import EventBus from "@/shared/services/event_bus"
 import DiscussionStartModal from '@/components/discussion/start.vue'
-import GroupStartModal from '@/components/group/start.vue'
+import GroupForm from '@/components/group/form.vue'
 
 export default
   components:
     'DiscussionStart': DiscussionStartModal
-    'GroupStart': GroupStartModal
+    'GroupForm': GroupForm
   data: ->
     isOpen: false
     componentName: ""
@@ -26,16 +26,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model='discussionStartIsOpen', lazy='')
-  discussion-start(:discussion='newDiscussion()', :close='closeDiscussionStart')
-
 v-dialog(v-model="isOpen")
-  modal-template(title="placeholder title")
-    template(v-slot:content)
-      component(:is="componentName" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
-    template(v-slot:actions)
-      span action 1
-      span action 2
-      span action 3
+  component(:is="componentName" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
 
 </template>

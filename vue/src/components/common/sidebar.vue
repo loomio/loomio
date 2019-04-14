@@ -6,7 +6,7 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import InboxService   from '@/shared/services/inbox_service'
-import ModalService   from '@/shared/services/modal_service'
+import GroupModalMixin from '@/mixins/group_modal.coffee'
 
 import _isUndefined from 'lodash/isUndefined'
 import _sortBy from 'lodash/sortBy'
@@ -16,6 +16,7 @@ import _find from 'lodash/find'
 import _head from 'lodash/head'
 
 export default
+  mixins: [ GroupModalMixin ]
   data: ->
     currentState: ""
     showSidebar: null
@@ -69,11 +70,7 @@ export default
     currentUser: ->
       Session.user()
 
-    canStartGroup: -> AbilityService.canStartGroups()
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
-
-    openGroupModal: ->
-      EventBus.$emit 'openModal', {component: 'GroupStart', props: { group: Records.groups.build() }}
 
     openThreadModal: ->
       EventBus.$emit 'openModal', {component: 'DiscussionStart', props: { discussion: Records.discussions.build(groupId: @currentGroup().id) }}
@@ -121,7 +118,7 @@ v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
           img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo(:src='group.logoUrl()')
         v-list-tile-content
           v-list-tile-title {{group.name}}
-    v-list-tile.sidebar__list-item-button--start-group(v-if="canStartGroup()", @click="openGroupModal()")
+    v-list-tile.sidebar__list-item-button--start-group(v-if="canStartGroup()", @click="openStartGroupModal()")
       v-list-tile-action
         v-icon mdi-plus
       v-list-tile-content
