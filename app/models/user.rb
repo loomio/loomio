@@ -153,12 +153,12 @@ class User < ApplicationRecord
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
   scope :verified_first, -> { order(email_verified: :desc) }
-  scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first", first: "#{q}%", other:  "% #{q}%") }
+  scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :mention_search, -> (user, model, query) do
     # allow mentioning of anyone in the organisation
     group_ids = (model.group.parent_or_self.id_and_subgroup_ids + [model.guest_group.id]).compact.uniq
-    distinct.active.verified.
+    distinct.active.
       search_for(query).
       joins(:memberships).
       where("memberships.group_id": group_ids).
