@@ -613,7 +613,7 @@ en:
     messages:
       privacy:
         members: 'This group is now visible only to members'
-        parent_members: 'This group is now visible only to members of your organisation'
+        parent_members: 'This group is now visible only to members of your organization'
         public: 'This group is now visible to the public'
       leave_group_success: 'You have left this group'
       archive_group_success: 'This group has been deactivated'
@@ -688,6 +688,7 @@ en:
 
   group_form:
     aria_label: 'Group form'
+    new_organisation:
     start_group_heading: 'Start a group'
     start_subgroup_heading: 'Start a subgroup'
     edit_group_heading: 'Edit group settings'
