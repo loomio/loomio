@@ -39,6 +39,9 @@ export default
     fragment: ''
     discussionStartIsOpen: false
   methods:
+    openNewDiscussionModal: ->
+      ModalService.newDiscussionModal(@group)
+
     searchThreads: _throttle ->
       return Promise.resolve(true) unless !isEmpty @fragment
       Records.discussions.search(@group.key, @fragment).then (data) =>
@@ -99,9 +102,7 @@ v-card.discussions-card(aria-labelledby='threads-card-title', v-if='discussions'
     .lmo-flex__grow
     .discussions-card__filter.discussions-card__filter--open.lmo-link.lmo-pointer(v-if="!searchOpen && filter == 'show_closed'", @click="setFilter('show_opened')", v-t="{ path: 'group_page.show_opened', args: { count: group.openDiscussionsCount } }")
     .discussions-card__filter.discussions-card__filter--closed.lmo-link.lmo-pointer(v-if="!searchOpen && filter == 'show_opened' && group.closedDiscussionsCount > 0", @click="setFilter('show_closed')", v-t="{ path: 'group_page.show_closed', args: { count: group.closedDiscussionsCount } }")
-    v-dialog(v-model='discussionStartIsOpen', lazy='')
-      v-btn.discussions-card__new-thread-button(flat='', color='primary', v-if='canStartThread', slot='activator', :title="$t('navbar.start_thread')", v-t="{ path: 'navbar.start_thread' }")
-      discussion-start(:discussion='newDiscussion()', :close='closeDiscussionStart')
+    v-btn.discussions-card__new-thread-button(@click= 'openNewDiscussionModal', flat='', color='primary', v-if='canStartThread' :title="$t('navbar.start_thread')", v-t="{ path: 'navbar.start_thread' }")
   .discussions-card__content
     .discussions-card__list--empty(v-if='noThreads')
       p.lmo-hint-text(v-t="{ path: 'group_page.no_threads_here' }")

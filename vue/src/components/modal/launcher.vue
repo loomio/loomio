@@ -26,6 +26,9 @@ export default
 </script>
 
 <template lang="pug">
+v-dialog(v-model='discussionStartIsOpen', lazy='')
+  discussion-start(:discussion='newDiscussion()', :close='closeDiscussionStart')
+
 v-dialog(v-model="isOpen")
   modal-template(title="placeholder title")
     template(v-slot:content)

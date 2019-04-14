@@ -10,15 +10,19 @@ export default
     discussion: Object
   data: ->
     showGroupSelect: false
+
   created: ->
     if @discussion.isNew()
       @showGroupSelect = true
+
   methods:
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
+
     showPrivacyForm: ->
       return unless @discussion.group()
       @discussion.group().discussionPrivacyOptions == 'public_or_private'
+      
   computed:
     availableGroups: ->
       _.filter Session.user().formalGroups(), (group) ->

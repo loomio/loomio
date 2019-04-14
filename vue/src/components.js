@@ -131,6 +131,5 @@ module.exports = {
   ConfirmModal: 'common/confirm_modal',
   LmoTextarea: 'lmo_textarea/lmo_textarea',
   AttachmentList: 'thread/attachment_list',
-  ModalLauncher: 'modal/launcher',
-  ModalTemplate: 'modal/template'
+  ModalLauncher: 'modal/launcher'
 }
