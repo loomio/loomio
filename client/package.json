@@ -23,7 +23,7 @@
   "dependencies": {
     "actioncable": "^5.2.3",
     "angular": "1.7.8",
-    "angular-animate": "1.7.7",
+    "angular-animate": "1.7.8",
     "angular-aria": "1.7.8",
     "angular-clipboard": "latest",
     "angular-elastic": "latest",
