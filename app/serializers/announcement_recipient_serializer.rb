@@ -9,6 +9,10 @@ class AnnouncementRecipientSerializer < ActiveModel::Serializer
     object.name || object.email
   end
 
+  def include_email?
+    !object.name.present?
+  end
+
   def include_emails?
     object.email == "multiple"
   end

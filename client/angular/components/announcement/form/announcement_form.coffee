@@ -18,6 +18,7 @@ angular.module('loomioApp').directive 'announcementForm', ->
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
 
+    $scope.vars = {}
     $scope.upgradeUrl = AppConfig.baseUrl + 'upgrade'
     $scope.invitationsRemaining = 1000
     $scope.showInvitationsRemaining = false
@@ -74,8 +75,7 @@ angular.module('loomioApp').directive 'announcementForm', ->
       _.each recipient.emails, (email) -> $scope.addRecipient buildRecipientFromEmail(email)
       if !recipient.emails && !_.includes(_.map($scope.announcement.recipients, "emailHash"), recipient.emailHash)
         $scope.announcement.recipients.unshift recipient
-      $scope.selected = undefined
-      $scope.query = ''
+      $scope.vars = {selected: null, query: ''}
 
     EventBus.listen $scope, 'removeRecipient', (_event, recipient) ->
       _.pull $scope.announcement.recipients, recipient

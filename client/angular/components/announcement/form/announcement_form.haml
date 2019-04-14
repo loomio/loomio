@@ -12,7 +12,7 @@
           %i.mdi.mdi-18px.mdi-account-multiple.lmo-margin-right--small
           %span.md-body-1{translate: "announcement.audiences.{{audience}}", translate-values: "audienceValues()"}
 
-        %md-autocomplete{md-search-text: "query", md-autoselect: "true", md-autofocus: "true", md-selected-item-change: "addRecipient(recipient)", md-item-text: "recipient.email", placeholder: "{{'announcement.form.placeholder' | translate}}", md-items: "recipient in search(query)", md-min-length: "3", md-delay: "150"}
+        %md-autocomplete{md-search-text: "vars.query", md-autoselect: "true", md-selected-item: "vars.selected", md-autofocus: "true", md-selected-item-change: "addRecipient(recipient)", md-item-text: "recipient.email", placeholder: "{{'announcement.form.placeholder' | translate}}", md-items: "recipient in search(vars.query)", md-min-length: "3", md-delay: "150"}
           %md-item-template
             %announcement_chip{user: "recipient"}
 
