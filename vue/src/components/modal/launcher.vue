@@ -9,6 +9,7 @@ import PollCommonStartModal from '@/components/poll/common/start_modal'
 import PollCommonEditVoteModal from '@/components/poll/common/edit_vote_modal'
 import PollCommonEditModal from '@/components/poll/common/edit_modal'
 import ContactRequestForm from '@/components/contact/request_form'
+import AuthModal from '@/components/auth/modal'
 
 export default
   components:
@@ -21,6 +22,7 @@ export default
     'PollCommonEditVoteModal': PollCommonEditVoteModal
     'PollCommonEditModal': PollCommonEditModal
     'ContactRequestForm': ContactRequestForm
+    'AuthModal': AuthModal
   data: ->
     isOpen: false
     componentName: ""
