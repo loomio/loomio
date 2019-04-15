@@ -51,7 +51,7 @@ import EventBus           from '@/shared/services/event_bus'
 import AbilityService     from '@/shared/services/ability_service'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadQueryService from '@/shared/services/thread_query_service'
-import ModalService       from '@/shared/services/modal_service'
+import GroupModalMixin from '@/shared/mixins/group_modal.coffee'
 import _capitalize from 'lodash/capitalize'
 import _take from 'lodash/take'
 import _keys from 'lodash/keys'
@@ -102,7 +102,7 @@ export default
       page: 'dashboardPage'
       # filter: $routeParams.filter
     @loader.fetchRecords().then => @dashboardLoaded = true
-    @startGroup() if @noGroups && AbilityService.canStartGroups()
+    @openStartGroupModal if @noGroups && @canStartGroup()
   methods:
     viewName: (name) ->
       if @filter == 'show_muted'
@@ -112,8 +112,6 @@ export default
 
     filters: (filters) ->
       ['only_threads_in_my_groups', 'show_opened', @filter].concat(filters)
-
-    startGroup: -> ModalService.open 'GroupModal', group: => Records.groups.build()
   computed:
     titleKey: ->
       # if @filter == 'show_muted'
