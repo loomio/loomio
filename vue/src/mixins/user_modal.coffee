@@ -4,7 +4,7 @@ export default
   methods:
     openContactRequestModal: (user) ->
       EventBus.$emit('openModal',
-                      component: 'ContactRequestModal',
+                      component: 'ContactRequestForm',
                       props: {
                         user: user
                       })
