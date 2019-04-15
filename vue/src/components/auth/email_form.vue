@@ -1,16 +1,35 @@
 <script lang="coffee">
+import AuthService from '@/shared/services/auth_service'
+import EventBus    from '@/shared/services/event_bus'
+
 export default
   props:
+    user: Object
   data: ->
+    email: @user.email
   methods:
+    submit: ->
+      return unless @validateEmail()
+      # EventBus.emit $scope, 'processing'
+      @user.email = @email
+      AuthService.emailStatus(@user).finally =>
+        console.log 'doneProcessing'
+        # EventBus.emit $scope, 'doneProcessing'
+    validateEmail: ->
+      @user.errors = {}
+      if !@email
+        @user.errors.email = [@$t('auth_form.email_not_present')]
+      else if !@email.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)
+        @user.errors.email = [@$t('auth_form.invalid_email')]
+      !@user.errors.email?
 </script>
 <template lang="pug">
 .auth-email-form
-  md-input-container.md-block.auth-email-form__email
+  .md-block.auth-email-form__email
     label(translate='auth_form.email')
-    input#email.lmo-primary-form-input(name='email', type='email', placeholder="{{ \'auth_form.email_placeholder\' | translate}}", ng-model='email')
-    validation_errors(subject='user', field='email')
-  md-button.md-primary.md-raised.auth-email-form__submit(ng-click='submit()', ng-disabled='!email', translate='auth_form.continue_with_email', aria-label="{{ \'auth_form.continue_with_email\' | translate }}")
+    v-text-field#email.lmo-primary-form-input(name='email', type='email', :placeholder="$t('auth_form.email_placeholder')" v-model='email')
+    //- validation_errors(subject='user', field='email')
+  v-btn.md-primary.md-raised.auth-email-form__submit(@click='submit()', :disabled='!email', v-t="'auth_form.continue_with_email'")
 </template>
 <style lang="scss">
 </style>

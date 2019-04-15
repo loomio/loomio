@@ -31,7 +31,7 @@ v-card
     dismiss-modal-button(v-if='!preventClose' :close="close")
     div(v-if='preventClose')
   v-card-text
-    //- auth_form(user='user')
+    auth-form(:user='user')
 </template>
 <style lang="scss">
 </style>

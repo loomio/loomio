@@ -63,7 +63,6 @@ module.exports = {
   MembershipRequestsCard: 'group/membership_requests_card',
   PollCountChartPanel: 'poll/count/chart_panel',
   PollCommonChangeYourVote: 'poll/common/change_your_vote',
-  PollCommonVotesPanelStance: 'poll/common/votes_panel_stance',
   GroupTheme: 'group/theme',
   JoinGroupButton: 'group/join_button',
   GroupActionsDropdown: 'group/actions_dropdown',
@@ -104,7 +103,6 @@ module.exports = {
   PollMeetingForm: 'poll/meeting/form',
   PollRankedChoiceForm: 'poll/ranked_choice/form',
   PollProposalChartPanel: 'poll/proposal/chart_panel',
-  PollCommonVotesPanelStance: 'poll/common/votes_panel_stance',
   PollProposalStanceChoice: 'poll/proposal/stance_choice',
   PollCommonStanceChoice: 'poll/common/stance_choice',
   PollCommonActionsDropdown: 'poll/common/actions_dropdown',
@@ -113,7 +111,6 @@ module.exports = {
   PollPollChartPanel: 'poll/poll/chart_panel',
   PollDotVoteChartPanel: 'poll/dot_vote/chart_panel',
   PollCommonBarChartPanel: 'poll/common/bar_chart_panel',
-  PollScoreVoteForm: 'poll/score/vote_form',
   PollScoreChartPanel: 'poll/score/chart_panel',
   PollMeetingStanceIcon: 'poll/meeting/stance_icon',
   PollMeetingChartPanel: 'poll/meeting/chart_panel',
@@ -128,5 +125,8 @@ module.exports = {
   ConfirmModal: 'common/confirm_modal',
   LmoTextarea: 'lmo_textarea/lmo_textarea',
   AttachmentList: 'thread/attachment_list',
-  ModalLauncher: 'modal/launcher'
+  ModalLauncher: 'modal/launcher',
+  AuthForm: 'auth/form',
+  AuthEmailForm: 'auth/email_form',
+  AuthProviderForm: 'auth/provider_form'
 }
