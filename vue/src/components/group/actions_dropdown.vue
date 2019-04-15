@@ -4,14 +4,14 @@ import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
+import ConfirmModalMixin from '@/mixins/confirm_modal'
 
 export default
+  mixins: [
+    ConfirmModalMixin
+  ]
   props:
     group: Object
-  data: ->
-    isGroupExportModalOpen: false
-    isLeaveGroupModalOpen: false
-    isArchiveGroupModalOpen: false
   methods:
     openChangeVolumeForm: ->
       ModalService.open 'ChangeVolumeForm', model: => @group.membershipFor(Session.user())
@@ -23,17 +23,13 @@ export default
       ModalService.open 'GroupModal', group: => Records.groups.build(parentId: @group.id)
 
     openGroupExportModal: ->
-      @isGroupExportModalOpen = true
-    closeGroupExportModal: ->
-      @isGroupExportModalOpen = false
+      @openConfirmModal(@groupExportModalConfirmOpts)
+
     openLeaveGroupModal: ->
-      @isLeaveGroupModalOpen = true
-    closeLeaveGroupModal: ->
-      @isLeaveGroupModalOpen = false
+      @openConfirmModal(@leaveGroupModalConfirmOpts)
+
     openArchiveGroupModal: ->
-      @isArchiveGroupModalOpen = true
-    closeArchiveGroupModal: ->
-      @isArchiveGroupModalOpen = false
+      @openConfirmModal(@archiveGroupModalConfirmOpts)
 
   computed:
     groupExportModalConfirmOpts: ->
@@ -91,22 +87,16 @@ v-menu.group-page-actions.lmo-no-print(offset-y)
   v-list.group-actions-dropdown__menu-content
     v-list-tile.group-page-actions__edit-group-link(v-if='canEditGroup', @click='editGroup()' v-t="'group_page.options.edit_group'")
       v-list-tile-title(v-t="'group_page.options.edit_group'")
+
     v-list-tile.group-page-actions__change-volume-link(v-if='canChangeVolume', @click='openChangeVolumeForm()')
       v-list-tile-title(v-t="'group_page.options.email_settings'")
-      //- <outlet name="after-group-actions-manage-memberships" model="group"></outlet>
-      //- <outlet name="after-group-actions-manage-memberships-2" model="group"></outlet>
+
     v-list-tile.group-page-actions__export-json(v-if='canExportData', @click='openGroupExportModal()')
       v-list-tile-title(v-t="'group_page.options.export_data'")
-    v-dialog(v-model="isGroupExportModalOpen", lazy persistent)
-      confirm-modal(:confirm="groupExportModalConfirmOpts", :close="closeGroupExportModal")
 
     v-list-tile.group-page-actions__leave-group(v-if='canLeaveGroup', @click='openLeaveGroupModal()')
       v-list-tile-title(v-t="'group_page.options.leave_group'")
-    v-dialog(v-model="isLeaveGroupModalOpen", lazy persistent)
-      confirm-modal(:confirm="leaveGroupModalConfirmOpts", :close="closeLeaveGroupModal")
 
     v-list-tile.group-page-actions__archive-group(v-if='canArchiveGroup', @click='openArchiveGroupModal()')
       v-list-tile-title(v-t="'group_page.options.deactivate_group'")
-    v-dialog(v-model="isArchiveGroupModalOpen", lazy persistent)
-      confirm-modal(:confirm="archiveGroupModalConfirmOpts", :close="closeArchiveGroupModal")
 </template>
