@@ -11,5 +11,18 @@ export default
                       component: 'GroupForm',
                       props: {
                         group: Records.groups.build()
-                      }
-                      titleKey: 'group_form.new_organization')
+                      })
+
+    openEditGroupModal: (group) ->
+      EventBus.$emit('openModal',
+                      component: 'GroupForm',
+                      props: {
+                        group: group
+                      })
+
+    openStartSubgroupModal: (group) ->
+      EventBus.$emit('openModal',
+                      component: 'GroupForm',
+                      props: {
+                        group: Records.groups.build(parentId: group.id)
+                      })

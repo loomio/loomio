@@ -4,6 +4,7 @@ import GroupForm from '@/components/group/form.vue'
 import DiscussionForm from '@/components/discussion/form.vue'
 import EditCommentForm from '@/components/thread/edit_comment_form.vue'
 import ConfirmModal from '@/components/common/confirm_modal.vue'
+import ChangeVolumeForm from '@/components/common/change_volume_form'
 
 export default
   components:
@@ -11,6 +12,7 @@ export default
     'DiscussionForm': DiscussionForm
     'EditCommentForm': EditCommentForm
     'ConfirmModal': ConfirmModal
+    'ChangeVolumeForm': ChangeVolumeForm
   data: ->
     isOpen: false
     componentName: ""

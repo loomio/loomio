@@ -5,22 +5,26 @@ import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
+import GroupModalMixin from '@/mixins/group_modal'
+import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 
 export default
   mixins: [
-    ConfirmModalMixin
+    ConfirmModalMixin,
+    GroupModalMixin,
+    ChangeVolumeModalMixin
   ]
   props:
     group: Object
   methods:
     openChangeVolumeForm: ->
-      ModalService.open 'ChangeVolumeForm', model: => @group.membershipFor(Session.user())
+      @openChangeVolumeModal(@group.membershipFor(Session.user()))
 
     editGroup: ->
-      ModalService.open 'GroupModal', group: => @group
+      @openEditGroupModal(@group)
 
     addSubgroup: ->
-      ModalService.open 'GroupModal', group: => Records.groups.build(parentId: @group.id)
+      @openStartSubgroupModal(@group)
 
     openGroupExportModal: ->
       @openConfirmModal(@groupExportModalConfirmOpts)
@@ -85,7 +89,8 @@ v-menu.group-page-actions.lmo-no-print(offset-y)
     span(v-t="'group_page.options.label'")
     v-icon mdi-chevron-down
   v-list.group-actions-dropdown__menu-content
-    v-list-tile.group-page-actions__edit-group-link(v-if='canEditGroup', @click='editGroup()' v-t="'group_page.options.edit_group'")
+
+    v-list-tile.group-page-actions__edit-group-link(v-if='true', @click='editGroup()')
       v-list-tile-title(v-t="'group_page.options.edit_group'")
 
     v-list-tile.group-page-actions__change-volume-link(v-if='canChangeVolume', @click='openChangeVolumeForm()')
