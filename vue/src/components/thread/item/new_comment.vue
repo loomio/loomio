@@ -8,15 +8,18 @@ import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import FlashService   from '@/shared/services/flash_service'
 import ModalService   from '@/shared/services/modal_service'
+import CommentModalMixin from '@/mixins/comment_modal.coffee'
 
 import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
 
 export default
+  mixins: [
+    CommentModalMixin
+  ]
   props:
     event: Object
     eventable: Object
   data: ->
-    isEditCommentModalOpen: false
     isDeleteCommentModalOpen: false
     confirmOpts:
       submit: @eventable.destroy
@@ -26,12 +29,6 @@ export default
         confirm:  'delete_comment_dialog.confirm'
         flash:    'comment_form.messages.destroyed'
   methods:
-    openEditCommentModal: ->
-      @isEditCommentModalOpen = true
-
-    closeEditCommentModal: ->
-      @isEditCommentModalOpen = false
-
     openDeleteCommentModal: ->
       @isDeleteCommentModalOpen = true
 
@@ -50,8 +47,8 @@ export default
     ,
       name: 'edit_comment'
       icon: 'mdi-pencil'
-      canPerform: => AbilityService.canEditComment(@eventable)
-      perform:    => @openEditCommentModal()
+      canPerform: => @canEditComment(@eventable)
+      perform:    => @openEditCommentModal(@eventable)
     ,
       name: 'fork_comment'
       icon: 'mdi-call-split'
@@ -100,8 +97,6 @@ export default
     .lmo-md-actions
       //- <reactions_display model="eventable"></reactions_display>
       action-dock(:model='eventable', :actions='actions')
-      v-dialog(v-model="isEditCommentModalOpen", lazy persistent)
-        edit-comment-form(:comment="eventable", :close="closeEditCommentModal")
       v-dialog(v-model="isDeleteCommentModalOpen", lazy persistent)
         confirm-modal(:confirm="confirmOpts", :close="closeDeleteCommentModal")
     //- <outlet name="after-comment-event" model="eventable"></outlet>

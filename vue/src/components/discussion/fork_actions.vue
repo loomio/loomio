@@ -14,18 +14,14 @@
 
 <script lang="coffee">
 import Records      from '@/shared/services/records.coffee'
-import ModalService from '@/shared/services/modal_service.coffee'
+import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
 
 export default
   props:
     discussion: Object
   methods:
     submit: ->
-      ModalService.open 'DiscussionStartModal', discussion: =>
-        Records.discussions.build
-          groupId:        @discussion.groupId
-          private:        @discussion.private
-          forkedEventIds: @discussion.forkedEventIds
+      @openForkedDiscussionModal(@discussion.groupId, @discussion.private, @discussion.forkedEventIds)
 </script>
 
 <template>

@@ -18,3 +18,14 @@ export default
                         discussion: Records.discussions.build(groupId: @currentGroup().id)
                       }
                       titleKey: 'group_form.new_organization')
+
+    openForkedDiscussionModal: (groupId, isPrivate, forkedEventIds) ->
+      EventBus.$emit('openModal',
+                      component: 'DiscussionForm',
+                      props: {
+                        discussion: Records.discussions.build
+                          groupId:        groupId
+                          private:        isPrivate
+                          forkedEventIds: forkedEventIds
+                      }
+                      titleKey: 'group_form.new_organization')

@@ -2,11 +2,13 @@
 import EventBus from "@/shared/services/event_bus"
 import GroupForm from '@/components/group/form.vue'
 import DiscussionForm from '@/components/discussion/form.vue'
+import EditCommentForm from '@/components/thread/edit_comment_form.vue'
 
 export default
   components:
     'GroupForm': GroupForm
     'DiscussionForm': DiscussionForm
+    'EditCommentForm': EditCommentForm
   data: ->
     isOpen: false
     componentName: ""
