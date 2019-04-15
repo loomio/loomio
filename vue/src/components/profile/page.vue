@@ -14,17 +14,18 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
+import ConfirmModalMixin from '@/mixins/confirm_modal'
 
 import { submitForm }   from '@/shared/helpers/form'
 import { hardReload }   from '@/shared/helpers/window'
 
 export default
+  mixins: [
+    ConfirmModalMixin
+  ]
   data: ->
     isDisabled: false
     user: null
-    isDeactivateUserModalOpen: false
-    isReallyDeactivateUserModalOpen: false
-    isDeleteUserModalOpen: false
   created: ->
     @init()
     EventBus.$emit 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}
@@ -39,7 +40,7 @@ export default
         title: 'deactivate_user_form.title'
         submit: 'deactivation_modal.submit'
         fragment: 'deactivate_user'
-      submit: => Promise.resolve @isReallyDeactivateUserModalOpen = true
+      submit: => Promise.resolve @openConfirmModal(@reallyDeactivateUserConfirmOpts)
     deleteUserConfirmOpts: ->
       text:
         title: 'delete_user_modal.title'
@@ -71,16 +72,6 @@ export default
 
     changePassword: ->
       ModalService.open 'ChangePasswordForm'
-
-    openDeactivateUserModal: ->
-      @isDeactivateUserModalOpen = true
-    closeDeactivateUserModal: ->
-      @isDeactivateUserModalOpen = false
-
-    openReallyDeactivateUserModal: ->
-      @isReallyDeactivateUserModalOpen = true
-    closeReallyDeactivateUserModal: ->
-      @isReallyDeactivateUserModalOpen = false
 
     openDeleteUserModal: ->
       @isDeleteUserModalOpen = true
@@ -134,15 +125,9 @@ export default
         v-btn.md-primary.md-raised.profile-page__update-button(@click='submit()', :disabled='isDisabled', v-t="'profile_page.update_profile'")
     .profile-page-card
       h3.lmo-h3(v-t="'profile_page.deactivate_account'")
-      v-btn.md-warn.md-button--no-h-margin.profile-page__deactivate(@click='openDeactivateUserModal()', v-t="'profile_page.deactivate_user_link'")
-
-      v-dialog(v-model="isDeactivateUserModalOpen", lazy persistent)
-        confirm-modal(:confirm="deactivateUserConfirmOpts", :close="closeDeactivateUserModal")
-      v-dialog(v-model="isReallyDeactivateUserModalOpen", lazy persistent)
-        confirm-modal(:confirm="reallyDeactivateUserConfirmOpts", :close="closeReallyDeactivateUserModal")
+      v-btn.md-warn.md-button--no-h-margin.profile-page__deactivate(@click='openConfirmModal(deactivateUserConfirmOpts)', v-t="'profile_page.deactivate_user_link'")
 
       h3.lmo-h3(v-t="'profile_page.delete_account'")
-      v-btn.md-warn.md-button--no-h-margin.profile-page__delete(@click='openDeleteUserModal()', v-t="'profile_page.delete_user_link'")
-      v-dialog(v-model="isDeleteUserModalOpen", lazy persistent)
-        confirm-modal(:confirm="deleteUserConfirmOpts", :close="closeDeleteUserModal")
+      v-btn.md-warn.md-button--no-h-margin.profile-page__delete(@click='openConfirmModal(deleteUserConfirmOpts)', v-t="'profile_page.delete_user_link'")
+
 </template>
