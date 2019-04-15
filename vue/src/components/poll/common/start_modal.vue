@@ -8,7 +8,6 @@ export default
     poll: Object
     close: Function
   data: ->
-    dpoll: @poll.clone()
     announcement: {}
   created: ->
     applyPollStartSequence @,
