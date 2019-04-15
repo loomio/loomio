@@ -49,19 +49,18 @@ export default
       //- v-btn(icon)
       //-   v-icon mdi-dots-vertical
     v-toolbar-items(v-if='!isLoggedIn')
-      v-btn(flat v-t="'navbar.sign_in'")
+      v-btn(flat v-t="'navbar.sign_in'" @click='signIn()')
     //- .navbar__left
     //-   v-toolbar-side-icon.navbar__sidenav-toggle(v-show='isLoggedIn()', @click='toggleSidebar()', aria-label="$t('navbar.toggle_sidebar')")
     //-     v-icon mdi-menu
     //- .navbar__middle.lmo-flex.lmo-flex__horizontal-center
     //-   router-link.lmo-pointer(to='/dashboard')
-    //-     img(:src='logo()')
+    //-     img(:src='logo')
     //- .navbar__right
-    //-   .lmo-flex--row(v-if='isLoggedIn()')
-    //-     //
-    //-       <navbar_search></navbar_search>
-    //-       <notifications></notifications>
-    //-       <user_dropdown></user_dropdown>
-    //-   v-btn.md-primary.md-raised.navbar__sign-in(v-if='!isLoggedIn()', @click='signIn()')
-    //-     span(v-t="'navbar.sign_in'")
+    //-   .lmo-flex--row(v-if='isLoggedIn')
+    //-     user-dropdown
+          //- <navbar_search></navbar_search>
+          //- <notifications></notifications>
+      v-btn.md-primary.md-raised.navbar__sign-in(v-if='!isLoggedIn', @click='signIn()')
+        span(v-t="'navbar.sign_in'")
 </template>
