@@ -27,9 +27,14 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import urlFor         from '@/mixins/url_for'
 import truncate       from '@/mixins/truncate'
+import ConfirmModalMixin from '@/mixins/confirm_modal'
 
 export default
-  mixins: [urlFor, truncate]
+  mixins: [
+    urlFor,
+    truncate,
+    ConfirmModalMixin
+  ]
   props:
     group: Object
     fragment: Object
@@ -86,7 +91,5 @@ export default
     .document-management__column-row(v-if='canAdministerGroup()')
       button.md-accent(@click='edit(document)', v-t="'common.action.edit'")
     .document-management__column-row(v-if='canAdministerGroup()')
-      button.md-warn(@click='openRemoveModal', v-t="'common.action.remove'")
-      v-dialog(v-model="isRemoveModalOpen", lazy persistent)
-        confirm-modal(:confirm="removeModalConfirmOpts(document)", :close="closeRemoveModal")
+      button.md-warn(@click='openConfirmModal(removeModalConfirmOpts(document))', v-t="'common.action.remove'")
 </template>

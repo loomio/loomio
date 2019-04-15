@@ -3,12 +3,14 @@ import EventBus from "@/shared/services/event_bus"
 import GroupForm from '@/components/group/form.vue'
 import DiscussionForm from '@/components/discussion/form.vue'
 import EditCommentForm from '@/components/thread/edit_comment_form.vue'
+import ConfirmModal from '@/components/common/confirm_modal.vue'
 
 export default
   components:
     'GroupForm': GroupForm
     'DiscussionForm': DiscussionForm
     'EditCommentForm': EditCommentForm
+    'ConfirmModal': ConfirmModal
   data: ->
     isOpen: false
     componentName: ""
