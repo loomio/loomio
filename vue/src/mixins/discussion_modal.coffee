@@ -11,21 +11,21 @@ export default
       Session.user().id &&
       _some(Session.user().groups(), (group) => AbilityService.canStartThread(group))
 
-    openStartDiscussionModal: (groupId) ->
+    openStartDiscussionModal: (group) ->
       EventBus.$emit('openModal',
                       component: 'DiscussionForm',
                       props: {
-                        discussion: Records.discussions.build(groupId: @currentGroup().id)
+                        discussion: Records.discussions.build(groupId: group.id)
                       }
                       titleKey: 'group_form.new_organization')
 
-    openForkedDiscussionModal: (groupId, isPrivate, forkedEventIds) ->
+    openForkedDiscussionModal: (discussion) ->
       EventBus.$emit('openModal',
                       component: 'DiscussionForm',
                       props: {
                         discussion: Records.discussions.build
-                          groupId:        groupId
-                          private:        isPrivate
-                          forkedEventIds: forkedEventIds
+                          groupId:        discussion.groupId
+                          private:        discussion.private
+                          forkedEventIds: discussion.forkedEventIds
                       }
                       titleKey: 'group_form.new_organization')

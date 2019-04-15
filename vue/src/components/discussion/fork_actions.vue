@@ -21,7 +21,7 @@ export default
     discussion: Object
   methods:
     submit: ->
-      @openForkedDiscussionModal(@discussion.groupId, @discussion.private, @discussion.forkedEventIds)
+      @openForkedDiscussionModal(@discussion)
 </script>
 
 <template>

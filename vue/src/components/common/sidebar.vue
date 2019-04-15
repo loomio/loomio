@@ -96,7 +96,7 @@ v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
         v-icon mdi-volume-mute
       v-list-tile-content
         v-list-tile-title(v-t="'sidebar.muted_threads'")
-    v-list-tile.sidebar__list-item-button--start-thread(v-if='canStartThreads()', @click='openStartDiscussionModal(currentGroup().id)')
+    v-list-tile.sidebar__list-item-button--start-thread(v-if='canStartThreads()', @click='openStartDiscussionModal(currentGroup())')
       v-list-tile-action
         v-icon mdi-plus
       v-list-tile-content
