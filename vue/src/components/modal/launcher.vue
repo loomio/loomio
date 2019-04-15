@@ -5,6 +5,7 @@ import DiscussionForm from '@/components/discussion/form.vue'
 import EditCommentForm from '@/components/thread/edit_comment_form.vue'
 import ConfirmModal from '@/components/common/confirm_modal.vue'
 import ChangeVolumeForm from '@/components/common/change_volume_form'
+import PollCommonStartModal from '@/components/poll/common/start_modal'
 
 export default
   components:
@@ -13,6 +14,7 @@ export default
     'EditCommentForm': EditCommentForm
     'ConfirmModal': ConfirmModal
     'ChangeVolumeForm': ChangeVolumeForm
+    'PollCommonStartModal': PollCommonStartModal
   data: ->
     isOpen: false
     componentName: ""
