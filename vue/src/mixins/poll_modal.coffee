@@ -18,3 +18,10 @@ export default
                       props: {
                         stance: stance
                       })
+
+    openEditPollModal: (poll) ->
+      EventBus.$emit('openModal',
+                      component: 'PollCommonEditModal',
+                      props: {
+                        poll: poll
+                      })

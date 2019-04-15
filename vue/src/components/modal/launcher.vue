@@ -7,6 +7,8 @@ import ConfirmModal from '@/components/common/confirm_modal.vue'
 import ChangeVolumeForm from '@/components/common/change_volume_form'
 import PollCommonStartModal from '@/components/poll/common/start_modal'
 import PollCommonEditVoteModal from '@/components/poll/common/edit_vote_modal'
+import PollCommonEditModal from '@/components/poll/common/edit_modal'
+import ContactRequestModal from '@/components/contact/request_modal'
 
 export default
   components:
@@ -17,6 +19,8 @@ export default
     'ChangeVolumeForm': ChangeVolumeForm
     'PollCommonStartModal': PollCommonStartModal
     'PollCommonEditVoteModal': PollCommonEditVoteModal
+    'PollCommonEditModal': PollCommonEditModal
+    'ContactRequestModal': ContactRequestModal
   data: ->
     isOpen: false
     componentName: ""
