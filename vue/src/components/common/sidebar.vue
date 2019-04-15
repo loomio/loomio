@@ -7,16 +7,19 @@ import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import InboxService   from '@/shared/services/inbox_service'
 import GroupModalMixin from '@/mixins/group_modal.coffee'
+import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
 
 import _isUndefined from 'lodash/isUndefined'
 import _sortBy from 'lodash/sortBy'
-import _some from 'lodash/some'
 import _filter from 'lodash/filter'
 import _find from 'lodash/find'
 import _head from 'lodash/head'
 
 export default
-  mixins: [ GroupModalMixin ]
+  mixins: [
+    GroupModalMixin,
+    DiscussionModalMixin
+  ]
   data: ->
     currentState: ""
     showSidebar: null
@@ -34,10 +37,6 @@ export default
       _sortBy @groups(), 'fullName'
 
   methods:
-    canStartThreads: ->
-      Session.user().id &&
-      _some(Session.user().groups(), (group) => AbilityService.canStartThread(group))
-
     availableGroups: ->
       _filter Session.user().groups(), (group) => group.type == 'FormalGroup'
 
@@ -72,9 +71,6 @@ export default
 
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
 
-    openThreadModal: ->
-      EventBus.$emit 'openModal', {component: 'DiscussionStart', props: { discussion: Records.discussions.build(groupId: @currentGroup().id) }}
-
 </script>
 
 <template lang="pug">
@@ -100,7 +96,7 @@ v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
         v-icon mdi-volume-mute
       v-list-tile-content
         v-list-tile-title(v-t="'sidebar.muted_threads'")
-    v-list-tile.sidebar__list-item-button--start-thread(v-if='canStartThreads()', @click='openThreadModal()')
+    v-list-tile.sidebar__list-item-button--start-thread(v-if='canStartThreads()', @click='openStartDiscussionModal(currentGroup().id)')
       v-list-tile-action
         v-icon mdi-plus
       v-list-tile-content

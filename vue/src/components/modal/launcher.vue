@@ -1,12 +1,12 @@
 <script lang="coffee">
 import EventBus from "@/shared/services/event_bus"
-import DiscussionStartModal from '@/components/discussion/start.vue'
 import GroupForm from '@/components/group/form.vue'
+import DiscussionForm from '@/components/discussion/form.vue'
 
 export default
   components:
-    'DiscussionStart': DiscussionStartModal
     'GroupForm': GroupForm
+    'DiscussionForm': DiscussionForm
   data: ->
     isOpen: false
     componentName: ""
@@ -18,6 +18,7 @@ export default
 
   methods:
     openModal: (opts) ->
+      console.log 'openModal', opts
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
