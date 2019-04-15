@@ -128,5 +128,6 @@ module.exports = {
   ModalLauncher: 'modal/launcher',
   AuthForm: 'auth/form',
   AuthEmailForm: 'auth/email_form',
-  AuthProviderForm: 'auth/provider_form'
+  AuthProviderForm: 'auth/provider_form',
+  AuthIdentityForm: 'auth/identity_form'
 }

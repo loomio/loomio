@@ -1,50 +1,41 @@
 <script lang="coffee">
+import EventBus    from '@/shared/services/event_bus'
+import AuthService from '@/shared/services/auth_service'
+import AppConfig from '@/shared/services/app_config'
+
 export default
   props:
-  data: ->
+    user: Object
+    identity: Object
   methods:
+    submit: ->
+      # EventBus.emit $scope, 'processing'
+      @user.email = @email
+      AuthService.sendLoginLink(@user).then (->), ->
+        @user.errors = {email: [@$t('auth_form.email_not_found')]}
+      .finally ->
+        console.log 'doneProcessing'
+        # EventBus.emit $scope, 'doneProcessing'
+    createAccount: -> @user.createAccount = true
+  computed:
+    siteName: -> AppConfig.theme.site_name
+
 </script>
 <template lang="pug">
 .auth-identity-form
-  h2.lmo-h2(translate='auth_form.hello', translate-value-name='{{user.name || user.email}}')
-  auth_avatar(user='user')
+  h2.lmo-h2(v-t="{ path: 'auth_form.hello', args: { name: user.name || user.email } }")
+  //- auth_avatar(user='user')
   .auth-identity-form__options
     .auth-identity-form__new-account
-      p(translate='auth_form.new_to_loomio', translate-values='{site_name: siteName}')
-      md-button.md-primary.md-raised(ng-click='createAccount()', translate='auth_form.create_account')
+      p(v-t="{ path: 'auth_form.new_to_loomio', args: { site_name: siteName } }")
+      v-btn.md-primary.md-raised(@click='createAccount()', v-t="'auth_form.create_account'")
     .auth-identity-form__existing-account
-      p(translate='auth_form.already_a_user', translate-values='{site_name: siteName}')
-      md-input-container.md-block.auth-email-form__email
-        label(translate='auth_form.email')
-        input#email.lmo-primary-form-input(name='email', type='text', md-autofocus='true', placeholder="{{ \'auth_form.email_placeholder\' | translate}}", ng-model='email')
-        validation_errors(subject='user', field='email')
-      md-button(ng-click='submit()', translate='auth_form.link_accounts')
+      p(v-t="{ path: 'auth_form.already_a_user', args: { site_name: siteName }}")
+      md-block.auth-email-form__email
+        label(v-t="'auth_form.email'")
+        v-text-field#email.lmo-primary-form-input(name='email', type='text', v-autofocus='true', :placeholder="'auth_form.email_placeholder'", v-model='email')
+        //- validation_errors(subject='user', field='email')
+      v-btn(@click='submit()', v-t="'auth_form.link_accounts'")
 </template>
 <style lang="scss">
 </style>
-
-<!-- AppConfig   = require 'shared/services/app_config'
-EventBus    = require 'shared/services/event_bus'
-AuthService = require 'shared/services/auth_service'
-I18n        = require 'shared/services/i18n'
-
-{ hardReload }    = require 'shared/helpers/window'
-{ submitOnEnter } = require 'shared/helpers/keyboard'
-
-angular.module('loomioApp').directive 'authIdentityForm', ->
-  scope: {user: '=', identity: '='}
-  templateUrl: 'generated/components/auth/identity_form/auth_identity_form.html'
-  controller: ['$scope', ($scope) ->
-    $scope.siteName = AppConfig.theme.site_name
-    $scope.createAccount = -> $scope.user.createAccount = true
-
-    $scope.submit = ->
-      EventBus.emit $scope, 'processing'
-      $scope.user.email = $scope.email
-      AuthService.sendLoginLink($scope.user).then (->), ->
-        $scope.user.errors = {email: [I18n.t('auth_form.email_not_found')]}
-      .finally ->
-        EventBus.emit $scope, 'doneProcessing'
-
-    submitOnEnter $scope, anyEnter: true
-  ] -->
