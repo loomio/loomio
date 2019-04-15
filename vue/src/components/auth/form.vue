@@ -27,10 +27,10 @@ export default
       .auth-form__privacy-notice.md-caption.lmo-hint-text(v-if='privacyUrl', v-t="{ path: 'auth_form.privacy_notice', args: { siteName: siteName, privacyUrl: privacyUrl } }")
     .auth-form__email-set.animated(v-if='user.emailStatus')
       auth-identity-form.animated(v-if='pendingProviderIdentity && !user.createAccount', :user='user', :identity='pendingProviderIdentity')
-      //- .auth-form__no-pending-identity.animated(v-if='!pendingProviderIdentity || user.createAccount')
+      .auth-form__no-pending-identity.animated(v-if='!pendingProviderIdentity || user.createAccount')
+        auth-inactive-form.animated(v-if='user.authForm == "inactive"', :user='user')
       //-   auth_signin_form.animated(v-if='user.authForm == "signIn"', :user='user')
       //-   auth_signup_form.animated(v-if='user.authForm == "signUp"', :user='user')
-      //-   auth_inactive_form.animated(v-if='user.authForm == "inactive"', :user='user')
   //- auth_complete.animated(v-if='loginComplete', :user='user')
 </template>
 <style lang="scss">
