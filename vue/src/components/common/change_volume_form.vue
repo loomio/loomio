@@ -9,6 +9,7 @@ export default
   data: ->
     volumeLevels: ["loud", "normal", "quiet"]
     isDisabled: false
+    applyToAll: false
   mounted: ->
     @submit = submitForm @, @model,
       submitFn: (model) ->
@@ -42,15 +43,17 @@ v-card.change-volume-form
     .lmo-disabled-form(v-show='isDisabled')
     v-card-title
       .md-toolbar-tools.lmo-flex__space-between
-        h1.lmo-h1.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: model.title || model.groupName } }")
+        h1.lmo-h1.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: model.title || model.groupName() } }")
         dismiss-modal-button(:close="close")
-    .md-dialog-content
-      v-radio-group.md-body-1(v-model='buh.volume')
-        v-radio.md-checkbox--with-summary(v-for='level in volumeLevels', :value='level', :key="'volume-#{level}'")
-          span(v-t="'change_volume_form.#{level}_label'")
-          .change-volume-form__description(v-t="'#{translateKey()}.#{level}_description'")
+    v-card-text
+      v-radio-group(v-model='buh.volume')
+        v-radio(v-for='level in volumeLevels', :value='level', :key="'volume-' + level")
+          h1 anything???
+          span {{ "'change_volume_form.' + level + '_label'" }}
+          span(v-t="'change_volume_form.' + level + '_label'")
+          .change-volume-form__description(v-t="translateKey() + '.' + level + '_description'")
         v-checkbox#apply-to-all.change-volume-form__apply-to-all(v-model='applyToAll')
-          label.change-volume-form__apply-to-all-label(for='apply-to-all', v-t="'#{translateKey().apply_to_all}'")
+          label.change-volume-form__apply-to-all-label(for='apply-to-all', v-t="translateKey() + '.apply_to_all'")
       v-card-actions.lmo-md-actions
         v-btn.change-volume-form__cancel(type='button', v-t="'common.action.cancel'", @click='close()')
         v-btn.md-raised.md-primary.change-volume-form__submit(type='submit', :disabled='isDisabled', v-t="'common.action.update'")
