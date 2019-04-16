@@ -1,7 +1,7 @@
 <script lang="coffee">
 import { listenForLoading } from '@/shared/helpers/listen'
-import { getProviderIdentity } from '@/shared/helpers/user'
 import AppConfig from '@/shared/services/app_config'
+import Session from '@/shared/services/session'
 
 export default
   props:
@@ -11,7 +11,7 @@ export default
     emailLogin: AppConfig.features.app.email_login
     siteName: AppConfig.theme.site_name
     privacyUrl: AppConfig.theme.privacy_url
-    pendingProviderIdentity: getProviderIdentity()
+    pendingProviderIdentity: Session.providerIdentity()
     isDisabled: false
   computed:
     loginComplete: ->

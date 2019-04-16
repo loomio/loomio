@@ -15,29 +15,17 @@ Vue.config.productionTip = false
 
 # { pluginConfigFor } = require '@/shared/helpers/plugin'
 import { exportGlobals, hardReload, unsupportedBrowser } from '@/shared/helpers/window.coffee'
-import { bootDat } from '@/shared/helpers/boot.coffee'
+import boot from '@/shared/helpers/boot'
+import Session from '@/shared/services/session'
 hardReload('/417.html') if unsupportedBrowser()
 exportGlobals()
 
-bootDat (appConfig) ->
-  _.merge AppConfig, _.merge appConfig,
-    timeZone: moment.tz.guess()
-    pendingIdentity: appConfig.userPayload.pendingIdentity
-    # pluginConfigFor: pluginConfigFor
+boot ->
+  Session.fetch().then (data) ->
+    Session.apply(data)
 
-  window.Loomio = AppConfig
-
-  _forEach Loomio.records, (recordInterface, k) ->
-    model = Object.getPrototypeOf(recordInterface).model
-    if model && AppConfig.permittedParams[model.singular]
-      model.serializableAttributes = AppConfig.permittedParams[model.singular]
-
-  fetch('/api/v1/translations?lang=en&vue=true').then (res) ->
-    res.json().then (data) ->
-      i18n.setLocaleMessage('en', data)
-      # apply serializatable attriburtes
-      new Vue(
-        render: (h) -> h(app)
-        router: router
-        i18n: i18n
-      ).$mount('#app')
+    new Vue(
+      render: (h) -> h(app)
+      router: router
+      i18n: i18n
+    ).$mount('#app')

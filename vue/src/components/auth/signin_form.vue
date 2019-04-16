@@ -36,7 +36,7 @@ export default
 <template lang="pug">
 .auth-signin-form
   auth-avatar(:user='user')
-  md-block.auth-signin-form__magic-link
+  .auth-signin-form__magic-link
     h2.lmo-h2.align-center(v-t="{ path: 'auth_form.welcomeback', args: { name: user.firstName() } }")
   .auth-signin-form__token.align-center(v-if='user.hasToken')
     //- validation_errors(subject='user', field='token')

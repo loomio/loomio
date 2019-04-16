@@ -1,6 +1,8 @@
 <script lang="coffee">
 import Records       from '@/shared/services/records'
 import { submitForm }    from '@/shared/helpers/form'
+import Session from '@/shared/services/session'
+
 export default
   props:
     user: Object
@@ -9,7 +11,7 @@ export default
     attempts: 0
   created: ->
     @submit = submitForm @, @session,
-      successCallback: -> hardReload()
+      successCallback: (data) -> Session.apply(data)
       failureCallback: ->
         @attempts += 1
         # EventBus.emit $scope, 'doneProcessing'

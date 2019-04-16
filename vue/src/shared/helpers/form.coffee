@@ -4,7 +4,6 @@ import Records        from '@/shared/services/records'
 import Session        from '@/shared/services/session'
 import FlashService   from '@/shared/services/flash_service'
 
-import { signIn }            from '@/shared/helpers/user'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { scrollTo }          from '@/shared/helpers/layout'
 
@@ -44,7 +43,6 @@ export submitStance = (scope, model, options = {}) ->
       model.poll().clearStaleStances()
       scrollTo '.poll-common-card__results-shown'
       EventBus.$emit 'stanceSaved'
-      signIn(data, data.stances[0].participant_id, -> EventBus.$emit 'loggedIn') unless Session.user().emailVerified
     cleanupFn: ->
       EventBus.$emit 'doneProcessing'
   , options))

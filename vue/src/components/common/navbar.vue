@@ -3,17 +3,19 @@ import AppConfig      from '@/shared/services/app_config'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import AuthModalMixin from '@/mixins/auth_modal'
+import Session        from '@/shared/services/session'
 
 export default
-  mixins: [
-    AuthModalMixin
-  ]
+  mixins: [ AuthModalMixin ]
   data: ->
     title: AppConfig.theme.site_name
+    isLoggedIn: Session.isSignedIn()
   methods:
     toggleSidebar: -> EventBus.$emit 'toggleSidebar'
     signIn: -> @openAuthModal()
   mounted: ->
+    EventBus.$on 'signedIn', (user) =>
+      @isLoggedIn = true
     EventBus.$on 'currentComponent', (data) =>
       console.log "currentComponent set", data
       if data.title?
@@ -25,8 +27,6 @@ export default
       AppConfig.theme.app_logo_src
     icon: ->
       AppConfig.theme.icon_src
-    isLoggedIn: ->
-      AbilityService.isLoggedIn()
 </script>
 
 <template lang="pug">

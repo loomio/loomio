@@ -1,2 +1,2 @@
-config = {}
-export default config
+window.Loomio = {}
+export default window.Loomio
