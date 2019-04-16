@@ -125,17 +125,17 @@ fr:
     value_proposition: "%{site_name} est un espace où les groupes peuvent prendre des décisions collectivement"
     view_group: Voir le groupe
     to_join_group:
-      subject: "%{member} vous a invité à rejoindre le groupe %{group_name} sur %{site_name}"
-      invitation_text: "%{member} vous a invité à rejoindre son groupe %{group_name}."
-      invitation_text_html: "vous a invité à rejoindre son groupe"
+      subject: "%{member} vous a invité·e à rejoindre le groupe %{group_name} sur %{site_name}"
+      invitation_text: "%{member} vous a invité·e à rejoindre son groupe %{group_name}."
+      invitation_text_html: "vous a invité·e à rejoindre son groupe"
       link_help: "Cliquez sur le lien ci-dessous pour accepter l'invitation:"
       accept_invitation: "Accepter l'invitation"
     resend_to_join_group:
       subject: "%{member} attend que vous rejoignez %{group_name} sur %{site_name}"
     user_added_to_group:
-      subject: "%{who} vous a ajouté à %{which_group} sur %{site_name}"
-      content: "%{who} vous a ajouté à %{which_group}."
-      content_html: "<strong>%{who}</strong> vous a ajouté à <strong>%{which_group}</strong>."
+      subject: "%{who} vous a ajouté·e à %{which_group} sur %{site_name}"
+      content: "%{who} vous a ajouté·e à %{which_group}."
+      content_html: "<strong>%{who}</strong> vous a ajouté·e à <strong>%{which_group}</strong>."
       link_help: "Cliquez sur le lien ci-dessous pour aller au groupe:"
     unsubscribe: 'Se désabonner ou modifier vos préférences de notification par courriel :'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou modifier vos préférences de notification par courriel."
@@ -171,7 +171,7 @@ fr:
       subject_html: "<strong>%{actor}</strong> a modifié la discussion: %{discussion}"
     discussion_announced:
       subject: "[%{group}] %{discussion}"
-      subject_html: "<strong>%{actor}</strong> vous a invité à rejoindre : %{discussion}"
+      subject_html: "<strong>%{actor}</strong> vous a invité·e à rejoindre : %{discussion}"
     new_comment:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> a ajouté un commentaire sur: %{discussion}"
@@ -179,8 +179,8 @@ fr:
       subject: '%{actor} vous a répondu dans : %{discussion}'
       subject_html: '<strong>%{actor}</strong> vous a répondu dans : %{discussion}'
     user_mentioned:
-      subject: '%{actor} vous a mentionné dans : %{discussion}'
-      subject_html: "<strong>%{actor}</strong> vous a mentionné dans : %{discussion}"
+      subject: '%{actor} vous a mentionné·e dans : %{discussion}'
+      subject_html: "<strong>%{actor}</strong> vous a mentionné·e dans : %{discussion}"
     reply_or_view_online_html: Répondez à ce message directement ou <a href='%{url}'>visualisez-le sur %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Ne plus recevoir de courriels</a> pour cette discussion."
     change_email_preferences_html: "Modifiez vos <a href='%{email_preferences_url}'>préférences de notification par courriel</a>."
@@ -209,7 +209,7 @@ fr:
         <p>Entrez votre adresse e-mail et vous recevrez un lien de réinitialisation de votre mot de passe.</p>
         <p>Si vous vous connectez habituellement via Facebook ou Google, entrez l'adresse e-mail associée à ce compte.</p>
     reset_email_timeframe: Un courriel peut prendre jusqu’à 5 minutes pour arriver. S’il n’apparaît pas, vérifiez votre dossier de spams.
-    length_restriction: Les mots de passe doivent au moins avoir 8 caractères de long.
+    length_restriction: Les mots de passe doivent comporter au moins avoir 8 caractères.
     forbidden_passwords: Les mots de passe communs tels que "motdepasse" (password) sont interdits afin de garder votre compte sécurisé.
   introduction_thread:
     title: Bienvenue ! N'hésitez pas à vous présenter
@@ -332,7 +332,7 @@ fr:
       subject:
         poll_created: '%{actor} a lancé une proposition : %{title}'
         poll_edited: '%{actor} a modifié la proposition : %{title}'
-        poll_announced: '%{actor} vous a invité à voter sur une proposition : %{title}'
+        poll_announced: '%{actor} vous a invité·e à voter sur une proposition : %{title}'
         poll_closing_soon: 'Proposition clôturée dans 24 heures : %{title}'
         poll_closing_soon_author: 'Votre proposition se termine dans 24 heures : %{title}'
         poll_expired: "Proposition clôturée: %{title}"
@@ -340,12 +340,12 @@ fr:
         outcome_created: '%{actor} a partagé le résultat de la discussion :%{title}'
         outcome_announced: '%{actor} a partagé le résultat de la discussion :%{title}'
         stance_created: "%{actor} a voté sur : %{title}"
-        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
+        user_mentioned: '%{actor} vous a mentionné·e dans : %{title}'
         user_reminded: '%{actor} attend votre vote sur : %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> a démarré une proposition'
         poll_edited: '<strong>%{actor}</strong> a édité la proposition'
-        poll_announced: '<strong>%{actor}</strong> vous a invité à voter sur une proposition'
+        poll_announced: '<strong>%{actor}</strong> vous a invité·e à voter sur une proposition'
         poll_closing_soon: 'La proposition de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre proposition se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "La proposition de <strong>%{actor}</strong> est clôturée: %{title}"
@@ -353,7 +353,7 @@ fr:
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de décision.'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de décision.'
         stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
-        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné·e dans : %{title}'
         user_reminded: '<strong>%{actor}</strong> attend votre vote sur : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -361,7 +361,7 @@ fr:
       subject:
         poll_created: '%{actor} a démarré un sondage: %{title}'
         poll_edited: '%{actor} a modifié un sondage : %{title}'
-        poll_announced: '%{actor} vous a invité à voter sur un sondage : %{title}'
+        poll_announced: '%{actor} vous a invité·e à voter sur un sondage : %{title}'
         poll_closing_soon: 'Le sondage se termine dans 24 heures: %{title}'
         poll_closing_soon_author: 'Votre sondage se termine dans 24 heures : %{title}'
         poll_expired: "Résultats du sondage : %{title}"
@@ -372,12 +372,12 @@ fr:
         outcome_announced: '%{actor} a partagé un résultat de sondage : %{title}'
         stance_created: "%{actor} a voté sur : %{title}"
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
-        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
+        user_mentioned: '%{actor} vous a mentionné·e dans : %{title}'
         user_reminded: '%{actor} attend votre vote sur : %{title}'
       header:
         poll_created: ' <strong>%{actor}</strong> a démarré un sondage'
         poll_edited: '<strong>%{actor}</strong> a modifié un sondage'
-        poll_announced: '<strong>%{actor}</strong> vous a invité à voter dans un sondage'
+        poll_announced: '<strong>%{actor}</strong> vous a invité·e à voter dans un sondage'
         poll_closing_soon: 'Le sondage de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre sondage se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "Le sondage de <strong>%{actor}</strong> est clôturé: %{title}"
@@ -387,7 +387,7 @@ fr:
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de sondage.'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de sondage.'
         stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
-        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné·e dans : %{title}'
         user_reminded: '<strong>%{actor}</strong> attend votre vote sur : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -395,7 +395,7 @@ fr:
       subject:
         poll_created: '%{actor} a démarré un sondage: %{title}'
         poll_edited: '%{actor} a modifié un sondage : %{title}'
-        poll_announced: '%{actor} vous a invité à voter sur un sondage : %{title}'
+        poll_announced: '%{actor} vous a invité·e à voter sur un sondage : %{title}'
         poll_closing_soon: 'Le sondage se termine dans 24 heures: %{title}'
         poll_closing_soon_author: 'Votre sondage se termine dans 24 heures : %{title}'
         poll_expired: "Résultats du sondage : %{title}"
@@ -411,7 +411,7 @@ fr:
       header:
         poll_created: ' <strong>%{actor}</strong> a démarré un sondage'
         poll_edited: '<strong>%{actor}</strong> a modifié un sondage'
-        poll_announced: '<strong>%{actor}</strong> vous a invité à voter dans un sondage'
+        poll_announced: '<strong>%{actor}</strong> vous a invité·e à voter dans un sondage'
         poll_closing_soon: 'Le sondage de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre sondage se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "Le sondage de <strong>%{actor}</strong> est clôturé: %{title}"
@@ -421,7 +421,7 @@ fr:
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de sondage.'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de sondage.'
         stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
-        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné·e dans : %{title}'
         user_reminded: '<strong>%{actor}</strong> attend votre vote sur : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -429,7 +429,7 @@ fr:
       subject:
         poll_created: '%{actor} participe à une vérification : %{title}'
         poll_edited: '%{actor} a modifié la vérification : %{title}'
-        poll_announced: '%{actor} vous a invité à participer : %{title}'
+        poll_announced: '%{actor} vous a invité·e à participer : %{title}'
         poll_closing_soon: 'Plus que 24 heures pour participer à la vérification : %{title}'
         poll_closing_soon_author: 'Votre vérification se termine dans 24 heures : %{title}'
         poll_expired: "Vérification terminée : %{title}"
@@ -438,12 +438,12 @@ fr:
         outcome_announced: '%{actor} a partagé un résultat: %{title}'
         stance_created: "%{actor} a participé à: %{title}"
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
-        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
+        user_mentioned: '%{actor} vous a mentionné·e dans : %{title}'
         user_reminded: '%{actor} attend votre participation sur : %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> participe à la vérification'
         poll_edited: '<strong>%{actor}</strong> a modifié la vérification'
-        poll_announced: '<strong>%{actor}</strong> vous a invité à participer'
+        poll_announced: '<strong>%{actor}</strong> vous a invité·e à participer'
         poll_closing_soon: 'La vérification de <strong>%{actor}</strong> se termine dans 24 heures.'
         poll_closing_soon_author: 'Votre vérification se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "La vérification de <strong>%{actor}</strong> est terminé : %{title}"
@@ -451,7 +451,7 @@ fr:
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat.'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat.'
         stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné·e dans : %{title}'
         user_reminded: '<strong>%{actor}</strong> attend votre participation à : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -459,7 +459,7 @@ fr:
       subject:
         poll_created: '%{actor} a démarré un vote à points : %{title}'
         poll_edited: '%{actor} a modifié un vote à points : %{title}'
-        poll_announced: '%{actor} vous a invité à participer à un vote à points : %{title}'
+        poll_announced: '%{actor} vous a invité·e à participer à un vote à points : %{title}'
         poll_closing_soon: 'Le vote à points se termine dans 24 heures: %{title}'
         poll_closing_soon_author: 'Votre vote à points se termine dans 24 heures : %{title}'
         poll_expired: "Résultats du vote à points : %{title}"
@@ -470,12 +470,12 @@ fr:
         outcome_announced: '%{actor} a partagé un résultat: %{title}'
         stance_created: "%{actor} a voté sur : %{title}"
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
-        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
+        user_mentioned: '%{actor} vous a mentionné·e dans : %{title}'
         user_reminded: '%{actor} attend votre vote sur : %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> a démarré un vote à points'
         poll_edited: '<strong>%{actor}</strong> a modifié un vote à points'
-        poll_announced: '<strong>%{actor}</strong> vous a invité à participer à un vote à points'
+        poll_announced: '<strong>%{actor}</strong> vous a invité·e à participer à un vote à points'
         poll_closing_soon: 'Le vote à points de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre vote à points se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "Résultats du vote à points de <strong>%{actor}</strong> : %{title}"
@@ -485,7 +485,7 @@ fr:
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de vote à points.'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de vote à points.'
         stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
-        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné·e dans : %{title}'
         user_reminded: '<strong>%{actor}</strong> attend votre vote sur : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -493,7 +493,7 @@ fr:
       subject:
         poll_created: '%{actor} a démarré un sondage horaire: %{title}'
         poll_edited: '%{actor} a modifié un sondage horaire : %{title}'
-        poll_announced: '%{actor} vous a invité à participer à un sondage horaire : %{title}'
+        poll_announced: '%{actor} vous a invité·e à participer à un sondage horaire : %{title}'
         poll_closing_soon: 'Le sondage horaire se termine dans 24 heures: %{title}'
         poll_closing_soon_author: 'Votre sondage horaire se termine dans 24 heures : %{title}'
         poll_expired: "Résultats du sondage horaire : %{title}"
@@ -510,7 +510,7 @@ fr:
       header:
         poll_created: ' <strong>%{actor}</strong> a démarré un sondage horaire'
         poll_edited: '<strong>%{actor}</strong> a modifié le sondage horaire'
-        poll_announced: '<strong>%{actor}</strong> vous a invité à participer à un sondage horaire'
+        poll_announced: '<strong>%{actor}</strong> vous a invité·e à participer à un sondage horaire'
         poll_closing_soon: 'Le sondage horaire de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre sondage horaire se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "Le sondage horaire de <strong>%{actor}</strong> est clôturé : %{title}"
@@ -521,7 +521,7 @@ fr:
         outcome_created_author: 'Vous avez partagé un résultat de sondage horaire : %{title}'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de sondage horaire.'
         stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné·e dans : %{title}'
         user_reminded: '<strong>%{actor}</strong> attend votre vote sur : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -529,7 +529,7 @@ fr:
       subject:
         poll_created: '%{actor} a démarré un classement par préférence : %{title}'
         poll_edited: '%{actor} a modifié un classement par préférence : %{title}'
-        poll_announced: '%{actor} vous a invité à classer des options dans : %{title}'
+        poll_announced: '%{actor} vous a invité·e à classer des options dans : %{title}'
         poll_closing_soon: 'Le classement par préférence se termine dans 24 heures : %{title}'
         poll_closing_soon_author: 'Votre classement par préférence se termine dans 24 heures : %{title}'
         poll_expired: "Résultats du classement par préférence : %{title}"
@@ -541,12 +541,12 @@ fr:
         outcome_announced: '%{actor} a partagé un résultat de classement par préférence.'
         stance_created: '%{actor} a participé à: %{title}'
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
-        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
+        user_mentioned: '%{actor} vous a mentionné·e dans : %{title}'
         user_reminded: '%{actor} attend votre vote sur : %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> a démarré un classement par préférence'
         poll_edited: '<strong>%{actor}</strong> a modifié un classement par préférence'
-        poll_announced: '<strong>%{actor}</strong> vous a invité à classer des options dans un sondage'
+        poll_announced: '<strong>%{actor}</strong> vous a invité·e à classer des options dans un sondage'
         poll_closing_soon: 'Le classement par préférence de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre classement par préférence se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "Le classement par préférence de <strong>%{actor}</strong> est clôturé : %{title}"
@@ -557,7 +557,7 @@ fr:
         outcome_created_author: 'Vous avez partagé un résultat de classement par préférence : %{title}'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de classement par préférence.'
         stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
-        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné·e dans : %{title}'
         user_reminded: '<strong>%{actor}</strong> attend votre vote sur : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -572,7 +572,7 @@ fr:
       title: "Il y a-t-il des allergies alimentaires que nous devrons prendre en compte pour le dîner de jeudi?"
       details: J'ai hâte de vous voir à la maison! Merci d'indiquer les restrictions alimentaires que nous devrions connaître.
     count:
-      title: "Qui est partant pour aider à organiser le pique-nique d'entreprise?"
+      title: "Qui est partant·e pour aider à organiser le pique-nique d'entreprise?"
       details: Marla s'est sentie dépassée la dernière fois, donc cette fois nous voudrions qu'elle ait de l'aide pour que cela soit plus simple pour tous. Merci d'indiquer si vous êtes partant⋅e!
     dot_vote:
       title: "Quelle est notre stratégie d'entreprise pour le trimestre prochain?"
@@ -581,7 +581,7 @@ fr:
       title: "Quels sont les sujets qui vous intéressent pour la prochaine conférence ?"
       details: Nous préparons les sujets qui seront évoqués lors de la prochaine conférence. Merci de nous indiqué quels sont ceux qui vous intéressent.
     ranked_choice:
-      title: "Qui désigner comme maire-adjoint?"
+      title: "Qui désigner comme maire-adjoint·e?"
       details: "C'est l'heure de nos élections semestrielles. Ceci est un vote alternatif officiel, qui désignera notre prochain maire-adjoint. N'oubliez pas de vous renseigner sur les différents candidats sur notre site!"
     meeting:
       title: "Quand devons-nous tenir notre prochaine réunion d'équipe?"
@@ -596,12 +596,22 @@ fr:
     helptext: Vous ne recevrez plus de courriel concernant cette décision
     visit_poll: Voir le sondage
     go_to_dashboad: Aller au tableau de bord
+  microsoft:
+    section_title: "[%{title}](%{url})"
+    new_discussion: "Nouvelle discussion dans %{group}"
+    new_comment: "Nouveau commentaire dans %{group}"
+    outcome_created: "Résultat publié dans %{group}"
+    poll_created: "Nouveau·elle %{poll_type}dans %{group}"
+    stance_created: "Nouvelle réponse à %{poll}"
+    poll_closing_soon: "%{poll_type} se terminera dans 24 heures"
+    poll_expired: "%{poll_type} est terminé·e"
+    group_identity_created: "Les événements de %{group}vont à présent s'afficher dans ce canal"
   slack:
     new_discussion: "Nouvelle discussion dans *%{group}*: *%{discussion}*"
     outcome_created: "Résultat partagé dans *%{group}*: *%{poll}*"
     poll_created: "Nouveau *%{poll_type}* dans *%{group}*: *%{poll}*"
     poll_closing_soon: "Rappel: *%{poll}* se termine dans 24 heures"
-    poll_expired: "*%{poll}* est clôturé"
+    poll_expired: "*%{poll}* est clôturé·e"
     poll_not_found: "Désolé, nous n'avons pas trouvé ce sondage. Tapez '/loomio<poll_type><title>' pour recommencer?"
     unknown_channel: |
         Désolé, on dirait qu'il n'y a pas de groupe Loomio associé à cette chaîne.
@@ -630,7 +640,7 @@ fr:
     stance_created: Merci d'avoir participé! Vous avez voté *%{position}* sur le sondage<%{poll_url}|%{title}>. Si vous voulez changer de vote, ou ajouter une justification à ce vote, <%{stance_url}|cliquez ici>.
     click_to_vote: "Choisissez une option ci-dessous pour voter :"
     time_zone_message: (tous les horaires valent pour le fuseau horaire %{zone})
-    authorized_message: Bravo! Vous êtes maintenant prêts à voter sur Slack.
+    authorized_message: Bravo! Vous êtes maintenant prêt·e·s à voter sur Slack.
     initiate: |
         Ok, allons-y! <%{url}|Cliques ici pour commencer votre %{type}>.
         (NB: ceci sera posté sur cette chaîne, pour que tout le monde puisse participer)

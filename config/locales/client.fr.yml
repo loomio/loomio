@@ -1684,9 +1684,31 @@ fr:
     password: Mot de passe
     reactivate: Réactiver le compte
   install_microsoft:
+    modal_title: Installer Microsoft Teams
     card:
+      install_title: Se connecter à Microsoft Teams
+      install_helptext: Le robot Loomio envoie des notifications à votre équipe concernant les discussions et les décisions qui ont lieu sur Loomio.
+      installed_title: Connecté·e à Microsoft Teams
+      installed_helptext: Les événements de ce groupe seront envoyés vers votre équipe Microsoft Team.
+      install_microsoft: Connecter les équipes
       remove_identity: Retirer cette intégration
+      confirm_remove_title: Retirer Microsoft Teams
+      confirm_remove_helptext: |
+          Votre canal d'équipes Microsoft ne recevra plus les mises à jour de ce groupe.
+          Vous pourrez toujours les ajouter de nouveau.
       identity_removed: Intégration retirée
+    form:
+      webhook_installed: Connecté·e à Microsoft Teams
+      webhook_placeholder: https://outlook.office.com/...
+      event_kind_helptext: Quels événements devraient être postés dans le canal des équipes ?
+    event_kinds:
+      new_discussion: Une nouvelle discussion a été commencée
+      new_comment: Un nouveau commentaire a été publié
+      poll_created: Un sondage a été créé
+      stance_created: Un nouveau vote a été exprimé
+      poll_closing_soon: Un sondage sera bientôt terminé
+      poll_expired: Un sondage est achevé
+      outcome_created: Un bilan a été partagé
   install_slack:
     modal_title: Installer Slack
     modal_helptext: Pour commencer, connectez-vous à Slack. Nous vous redirigerons là dans un instant, ou vous pouvez cliquer ci-dessous pour continuer.
