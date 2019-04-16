@@ -1,7 +1,5 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
 import router from '@/routes.coffee'
-import store from '@/store/main.coffee'
 import i18n from '@/i18n.coffee'
 import app from '@/app.vue'
 import AppConfig from '@/shared/services/app_config'
@@ -42,5 +40,4 @@ bootDat (appConfig) ->
         render: (h) -> h(app)
         router: router
         i18n: i18n
-        store: store
       ).$mount('#app')
