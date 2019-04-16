@@ -45,6 +45,8 @@ export default
       return unless this.user.avatarKind == 'uploaded'
       return this.user.avatarUrl if typeof this.user.avatarUrl is 'string'
       this.user.avatarUrl[this.imageSize]
+    mdiSize: ->
+      if @size == 'small' then 'mdi-18px' else 'mdi-24px'
 
 </script>
 

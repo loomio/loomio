@@ -17,7 +17,7 @@ export default
 </script>
 <template lang="pug">
 .auth-complete
-  //- auth_avatar(user='user')
+  auth-avatar(:user='user')
   h2.lmo-h2(v-t="'auth_form.check_your_email'")
   p(v-if='user.sentLoginLink')
     span(v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")

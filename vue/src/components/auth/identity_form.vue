@@ -24,7 +24,7 @@ export default
 <template lang="pug">
 .auth-identity-form
   h2.lmo-h2(v-t="{ path: 'auth_form.hello', args: { name: user.name || user.email } }")
-  //- auth_avatar(user='user')
+  auth-avatar(:user='user')
   .auth-identity-form__options
     .auth-identity-form__new-account
       p(v-t="{ path: 'auth_form.new_to_loomio', args: { site_name: siteName } }")

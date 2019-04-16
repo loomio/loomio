@@ -1830,6 +1830,7 @@ en:
     check_spam_folder: If the email does not arrive soon, check your spam folder.
     sign_up_helptext: Please complete this form to create a user account
     i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
+    name_placeholder: Your name
     name_required: Please enter a name
     terms_required: You must agree to the Terms of Service
     account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated!

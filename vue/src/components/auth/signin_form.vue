@@ -1,12 +1,41 @@
 <script lang="coffee">
+import AuthService  from '@/shared/services/auth_service'
+import { hardReload } from '@/shared/helpers/window'
+
 export default
   props:
+    user: Object
   data: ->
+    vars: {}
   methods:
+    signIn: ->
+      # EventBus.emit $scope, 'processing'
+      $scope.user.name = $scope.vars.name if $scope.vars.name?
+      finished = ->
+        console.log 'doneProcessing'
+        # EventBus.emit $scope, 'doneProcessing';
+        # $scope.$apply();
+      AuthService.signIn(@user, hardReload, finished).finally finished
+
+    signInAndSetPassword: ->
+      LmoUrlService.params('set_password', true)
+      @signIn()
+
+    sendLoginLink: ->
+      # EventBus.emit $scope, 'processing'
+      AuthService.sendLoginLink(@user).finally ->
+        # EventBus.emit $scope, 'doneProcessing'
+        console.log 'doneProcessing'
+
+    submit: ->
+      if @user.hasPassword or @user.hasToken
+        @signIn()
+      else
+        @sendLoginLink()
 </script>
 <template lang="pug">
 .auth-signin-form
-  //- auth_avatar(user='user')
+  auth-avatar(:user='user')
   md-block.auth-signin-form__magic-link
     h2.lmo-h2.align-center(v-t="{ path: 'auth_form.welcomeback', args: { name: user.firstName() } }")
   .auth-signin-form__token.align-center(v-if='user.hasToken')
@@ -28,7 +57,7 @@ export default
         v-text-field#password.lmo-primary-form-input(name='password', type='password', md-autofocus='true', ng-required='ng-required', v-model='user.password')
         //- validation_errors(subject='user', field='password')
       .lmo-md-actions
-        v-btn.auth-signin-form__login-link(@click='sendLoginLink()', :class="{md-primary: !user.password}")
+        v-btn.auth-signin-form__login-link(@click='sendLoginLink()', :class="{'md-primary': !user.password}")
           span(v-t="'auth_form.login_link'")
         v-btn.md-primary.md-raised.auth-signin-form__submit(@click='submit()', :disabled='!user.password', v-if='user.hasPassword')
           span(v-t="'auth_form.sign_in'")
@@ -40,42 +69,3 @@ export default
 </template>
 <style lang="scss">
 </style>
-
-<!-- AuthService   = require 'shared/services/auth_service'
-EventBus      = require 'shared/services/event_bus'
-LmoUrlService = require 'shared/services/lmo_url_service'
-
-{ hardReload }    = require 'shared/helpers/window'
-{ submitOnEnter } = require 'shared/helpers/keyboard'
-
-angular.module('loomioApp').directive 'authSigninForm', ->
-  scope: {user: '='}
-  templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
-  controller: ['$scope', ($scope) ->
-    $scope.vars = {}
-
-    $scope.signIn = ->
-      EventBus.emit $scope, 'processing'
-      $scope.user.name = $scope.vars.name if $scope.vars.name?
-      finished = ->
-        EventBus.emit $scope, 'doneProcessing';
-        $scope.$apply();
-      AuthService.signIn($scope.user, hardReload, finished).finally finished
-
-    $scope.signInAndSetPassword = ->
-      LmoUrlService.params('set_password', true)
-      $scope.signIn()
-
-    $scope.sendLoginLink = ->
-      EventBus.emit $scope, 'processing'
-      AuthService.sendLoginLink($scope.user).finally -> EventBus.emit $scope, 'doneProcessing'
-
-    $scope.submit = ->
-      if $scope.user.hasPassword or $scope.user.hasToken
-        $scope.signIn()
-      else
-        $scope.sendLoginLink()
-
-    submitOnEnter($scope, anyEnter: true)
-    EventBus.emit $scope, 'focus'
-  ] -->
