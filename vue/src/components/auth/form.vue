@@ -31,7 +31,7 @@ export default
         auth-inactive-form.animated(v-if='user.authForm == "inactive"', :user='user')
         auth-signin-form.animated(v-if='user.authForm == "signIn"', :user='user')
         auth-signup-form.animated(v-if='user.authForm == "signUp"', :user='user')
-  //- auth_complete.animated(v-if='loginComplete', :user='user')
+  auth-complete.animated(v-if='loginComplete', :user='user')
 </template>
 <style lang="scss">
 </style>
