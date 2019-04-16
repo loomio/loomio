@@ -130,5 +130,7 @@ module.exports = {
   AuthEmailForm: 'auth/email_form',
   AuthProviderForm: 'auth/provider_form',
   AuthIdentityForm: 'auth/identity_form',
-  AuthInactiveForm: 'auth/inactive_form'
+  AuthInactiveForm: 'auth/inactive_form',
+  AuthSigninForm: 'auth/signin_form',
+  AuthSignupForm: 'auth/signup_form'
 }

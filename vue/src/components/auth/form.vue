@@ -29,8 +29,8 @@ export default
       auth-identity-form.animated(v-if='pendingProviderIdentity && !user.createAccount', :user='user', :identity='pendingProviderIdentity')
       .auth-form__no-pending-identity.animated(v-if='!pendingProviderIdentity || user.createAccount')
         auth-inactive-form.animated(v-if='user.authForm == "inactive"', :user='user')
-      //-   auth_signin_form.animated(v-if='user.authForm == "signIn"', :user='user')
-      //-   auth_signup_form.animated(v-if='user.authForm == "signUp"', :user='user')
+        auth-signin-form.animated(v-if='user.authForm == "signIn"', :user='user')
+        auth-signup-form.animated(v-if='user.authForm == "signUp"', :user='user')
   //- auth_complete.animated(v-if='loginComplete', :user='user')
 </template>
 <style lang="scss">
