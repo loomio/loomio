@@ -35,16 +35,16 @@ export default new class AuthService
       if user.hasToken or data.signed_in
         onSuccess()
       else
-        user.sentLoginLink = true
+        user.update({sentLoginLink: true})
       data
 
   reactivate: (user) ->
     Records.users.reactivate(user).then ->
-      user.sentLoginLink = true
+      user.update({sentLoginLink: true})
 
   sendLoginLink: (user) ->
     Records.loginTokens.fetchToken(user.email).then ->
-      user.sentLoginLink = true
+      user.update({sentLoginLink: true})
 
   validSignup: (vars, user) ->
     user.errors = {}

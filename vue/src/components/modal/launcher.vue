@@ -43,7 +43,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model="isOpen")
+v-dialog(v-model="isOpen" max-width="600px")
   component(:is="componentName" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
 
 </template>

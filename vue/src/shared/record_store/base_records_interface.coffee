@@ -1,6 +1,7 @@
 import RestfulClient from './restful_client'
 import utils         from './utils'
 import {pick, each, merge, keys, isNumber, isString, isArray } from 'lodash'
+import Vue           from 'vue'
 
 export default class BaseRecordsInterface
   model: 'undefinedModel'
@@ -29,6 +30,7 @@ export default class BaseRecordsInterface
 
   build: (attributes = {}) ->
     record = new @model @, attributes
+    Vue.observable(record)
 
   create: (attributes = {}) ->
     record = @build(attributes)

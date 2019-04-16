@@ -8,12 +8,18 @@ export default
   props:
     preventClose: Boolean
     close: Function
+
   data: ->
     siteName: AppConfig.theme.site_name
-    user: AuthService.applyEmailStatus Records.users.build(), AppConfig.pendingIdentity
+    user: Records.users.build()
     isDisabled: false
+
+  mounted: ->
+    AuthService.applyEmailStatus(@user, AppConfig.pendingIdentity)
+
   methods:
     back: -> @user.emailStatus = null
+
   computed:
     showBackButton: ->
       @user.emailStatus and
@@ -23,6 +29,7 @@ export default
 <template lang="pug">
 v-card
   .lmo-disabled-form(v-show='isDisabled')
+  span {{user}}
   v-card-title
     i.mdi.mdi-lock-open(ng-if='!showBackButton()')
     a.auth-modal__back(ng-click='back()', ng-if='showBackButton()')

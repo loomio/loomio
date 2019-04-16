@@ -22,7 +22,6 @@ export default
   .lmo-disabled-form(v-show='isDisabled')
   .auth-form__logging-in.animated(v-if='!loginComplete')
     .auth-form__email-not-set.animated(v-if='!user.emailStatus')
-      span {{ user }}
       auth-provider-form(:user='user')
       auth-email-form(:user='user', v-if='emailLogin')
       .auth-form__privacy-notice.md-caption.lmo-hint-text(v-if='privacyUrl', v-t="{ path: 'auth_form.privacy_notice', args: { siteName: siteName, privacyUrl: privacyUrl } }")

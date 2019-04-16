@@ -7,8 +7,8 @@ export default
   data: ->
     session: Records.sessions.build(email: @user.email)
     attempts: 0
-  methods:
-    submit: -> submitForm @, @session,
+  created: ->
+    @submit = submitForm @, @session,
       successCallback: -> hardReload()
       failureCallback: ->
         @attempts += 1

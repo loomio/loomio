@@ -1,4 +1,5 @@
 import utils from './utils'
+import Vue from 'vue'
 
 export default class BaseModel
   @singular: 'undefinedSingular'
@@ -69,7 +70,7 @@ export default class BaseModel
   baseUpdate: (attributes) ->
     @bumpVersion()
     @attributeNames = _.union(@attributeNames, _.keys(attributes))
-    _.assign(@, attributes)
+    _.forEach attributes, (value, key) => Vue.set(@, key, value)
 
     @recordsInterface.collection.update(@) if @inCollection()
 
