@@ -10,7 +10,7 @@ export default
   methods:
     signIn: ->
       # EventBus.emit $scope, 'processing'
-      $scope.user.name = $scope.vars.name if $scope.vars.name?
+      @user.name = @vars.name if @vars.name?
       finished = ->
         console.log 'doneProcessing'
         # EventBus.emit $scope, 'doneProcessing';
