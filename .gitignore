@@ -44,6 +44,7 @@ client/angular/test/screenshots
 client/angular/test/nightwatch/plugins
 client/angular/test/log
 vue/node_modules
+vue/tests/reports
 
 .DS_Store
 node_modules

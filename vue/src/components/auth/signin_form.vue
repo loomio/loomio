@@ -1,8 +1,12 @@
 <script lang="coffee">
 import AuthService  from '@/shared/services/auth_service'
 import { hardReload } from '@/shared/helpers/window'
+import Session from '@/shared/services/session'
+import AuthModalMixin from '@/mixins/auth_modal'
+import Flash from '@/shared/services/flash'
 
 export default
+  mixins: [AuthModalMixin]
   props:
     user: Object
   data: ->
@@ -11,11 +15,15 @@ export default
     signIn: ->
       # EventBus.emit $scope, 'processing'
       @user.name = @vars.name if @vars.name?
+      onSuccess = (data) =>
+        Session.apply(data)
+        @closeModal()
+        Flash.success('auth_form.signed_in')
       finished = ->
         console.log 'doneProcessing'
         # EventBus.emit $scope, 'doneProcessing';
         # $scope.$apply();
-      AuthService.signIn(@user, hardReload, finished).finally finished
+      AuthService.signIn(@user, onSuccess, finished).finally finished
 
     signInAndSetPassword: ->
       LmoUrlService.params('set_password', true)

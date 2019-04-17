@@ -1,5 +1,6 @@
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
+import i18n from '@/i18n.coffee'
 
 export default new class AuthService
   emailStatus: (user) ->
@@ -18,14 +19,14 @@ export default new class AuthService
   signIn: (user = {}, onSuccess, finished) ->
     Records.sessions.build(
       _.pick(user, ['email', 'name', 'password'])
-    ).save().then ->
-      onSuccess()
+    ).save().then (data) ->
+      onSuccess(data)
     , (response) ->
       response.json().then (data) ->
         user.errors = if user.hasToken
-          { token:    [I18n.t('auth_form.invalid_token')] }
+          { token:    [i18n.t('auth_form.invalid_token')] }
         else
-          { password: _.map(data.errors.password, (key) -> I18n.t(key)) }
+          { password: _.map(data.errors.password, (key) -> i18n.t(key)) }
         finished()
 
   signUp: (user, onSuccess) ->
@@ -50,10 +51,10 @@ export default new class AuthService
     user.errors = {}
 
     if !vars.name
-      user.errors.name = [I18n.t('auth_form.name_required')]
+      user.errors.name = [i18n.t('auth_form.name_required')]
 
     if AppConfig.theme.terms_url && !vars.legalAccepted
-      user.errors.legalAccepted = [I18n.t('auth_form.terms_required')]
+      user.errors.legalAccepted = [i18n.t('auth_form.terms_required')]
 
     if _.keys(user.errors)
       user.name           = vars.name
