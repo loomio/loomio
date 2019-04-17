@@ -69,12 +69,12 @@ momentLocaleFor = (locale) ->
 
 
 # loggedIn: ->
-#   FlashService.success AppConfig.userPayload.flash.notice
+#   Flash.success AppConfig.userPayload.flash.notice
 # $scope.pageError = null
 # $scope.refreshing  = true
 # $injector.get('$timeout') ->
 #   $scope.refreshing = false
-  # FlashService.success AppConfig.userPayload.flash.notice
+  # Flash.success AppConfig.userPayload.flash.notice
 #   delete AppConfig.userPayload.flash.notice
 # if LmoUrlService.params().set_password
 #   delete LmoUrlService.params().set_password

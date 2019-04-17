@@ -55,4 +55,5 @@ v-app
   v-content
     router-view(:key="$route.path")
   modal-launcher
+  flash
 </template>

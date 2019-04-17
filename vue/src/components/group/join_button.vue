@@ -3,7 +3,7 @@ import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 import ModalService   from '@/shared/services/modal_service'
 
 export default
@@ -21,7 +21,7 @@ export default
       if AbilityService.isLoggedIn()
         Records.memberships.joinGroup(@group).then =>
           EventBus.$emit 'joinedGroup', {group: @group}
-          FlashService.success('join_group_button.messages.joined_group', group: @group.fullName)
+          Flash.success('join_group_button.messages.joined_group', group: @group.fullName)
       else
         ModalService.open 'AuthModal'
 

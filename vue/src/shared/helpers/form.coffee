@@ -2,7 +2,7 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Records        from '@/shared/services/records'
 import Session        from '@/shared/services/session'
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { scrollTo }          from '@/shared/helpers/layout'
@@ -125,7 +125,7 @@ submit = (scope, model, options = {}) ->
       cleanup(scope, model, options)
 
 prepare = (scope, model, options, prepareArgs) ->
-  FlashService.loading(options.loadingMessage)
+  Flash.loading(options.loadingMessage)
   options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
   EventBus.$emit 'processing'
   model.cancelDraftFetch()       if typeof model.cancelDraftFetch is 'function'
@@ -147,16 +147,16 @@ progress = (scope) ->
 
 success = (scope, model, options) ->
   (data) ->
-    # FlashService.dismiss()
+    # Flash.dismiss()
     if options.flashSuccess?
       flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
-      FlashService.success flashKey, calculateFlashOptions(options.flashOptions)
+      Flash.success flashKey, calculateFlashOptions(options.flashOptions)
     scope.$close()                if !options.skipClose? and typeof scope.$close is 'function'
     options.successCallback(data) if typeof options.successCallback is 'function'
 
 failure = (scope, model, options) ->
   (response) ->
-    # FlashService.dismiss()
+    # Flash.dismiss()
     options.failureCallback(response) if typeof options.failureCallback is 'function'
     setErrors(scope, model, response) if _.includes([401, 422], response.status)
     EventBus.$emit errorTypes[response.status] or 'unknownError',
@@ -165,7 +165,7 @@ failure = (scope, model, options) ->
 
 cleanup = (scope, model, options = {}) ->
   ->
-    FlashService.dismiss()
+    Flash.dismiss()
     options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
     EventBus.$emit 'doneProcessing' unless options.skipDoneProcessing
     scope.isDisabled = false

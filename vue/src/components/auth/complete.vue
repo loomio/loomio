@@ -2,8 +2,11 @@
 import Records       from '@/shared/services/records'
 import { submitForm }    from '@/shared/helpers/form'
 import Session from '@/shared/services/session'
+import Flash from '@/shared/services/flash'
+import AuthModalMixin from '@/mixins/auth_modal'
 
 export default
+  mixins: [AuthModalMixin]
   props:
     user: Object
   data: ->
@@ -11,7 +14,10 @@ export default
     attempts: 0
   created: ->
     @submit = submitForm @, @session,
-      successCallback: (data) -> Session.apply(data)
+      successCallback: (data) =>
+        Session.apply(data)
+        @closeModal()
+        Flash.success('auth_form.signed_in')
       failureCallback: ->
         @attempts += 1
         # EventBus.emit $scope, 'doneProcessing'

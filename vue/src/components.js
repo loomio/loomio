@@ -134,5 +134,6 @@ module.exports = {
   AuthSigninForm: 'auth/signin_form',
   AuthSignupForm: 'auth/signup_form',
   AuthComplete: 'auth/complete',
-  AuthAvatar: 'auth/avatar'
+  AuthAvatar: 'auth/avatar',
+  Flash: 'common/flash'
 }

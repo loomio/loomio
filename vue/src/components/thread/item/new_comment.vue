@@ -6,7 +6,7 @@ import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 import ModalService   from '@/shared/services/modal_service'
 import CommentModalMixin from '@/mixins/comment_modal.coffee'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
@@ -62,7 +62,7 @@ export default
     #   canPerform: => clipboard.supported
     #   perform:    =>
     #     clipboard.copyText(LmoUrlService.event(@event, {}, absolute: true))
-    #     FlashService.success("action_dock.comment_copied")
+    #     Flash.success("action_dock.comment_copied")
     # ,
       name: 'show_history'
       icon: 'mdi-history'

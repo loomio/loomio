@@ -38,7 +38,7 @@ import EventBus       from '@/shared/services/event_bus'
 import utils          from '@/shared/record_store/utils'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import AbilityService from '@/shared/services/ability_service'
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
 import _each from 'lodash/each'
 import _sortBy from 'lodash/sortBy'
@@ -74,7 +74,7 @@ export default {
       avatarKind: 'mdi-email-outline'
 
     copied: ->
-      FlashService.success('common.copied')
+      Flash.success('common.copied')
 
     addRecipient: (recipient) ->
       return unless recipient

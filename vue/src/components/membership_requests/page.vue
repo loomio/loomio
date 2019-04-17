@@ -39,7 +39,7 @@ import AppConfig      from '@/shared/services/app_config'
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 import _isEmpty     from 'lodash/isEmpty'
 
 export default
@@ -62,11 +62,11 @@ export default
 
     approve: (membershipRequest) ->
       Records.membershipRequests.approve(membershipRequest).then =>
-        # FlashService.success "membership_requests_page.messages.request_approved_success"
+        # Flash.success "membership_requests_page.messages.request_approved_success"
 
     ignore: (membershipRequest) ->
       Records.membershipRequests.ignore(membershipRequest).then =>
-        # FlashService.success "membership_requests_page.messages.request_ignored_success"
+        # Flash.success "membership_requests_page.messages.request_ignored_success"
   computed:
     pendingRequests: ->
       @group.pendingMembershipRequests()

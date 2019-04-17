@@ -1,6 +1,6 @@
 import Vue from 'vue'
 EventBus = new Vue()
-export default
+wrapper =
   $on: (...args) ->
     console.log "eventbus.$on", args
     EventBus.$on(...args)
@@ -8,3 +8,7 @@ export default
   $emit: (...args) ->
     console.log "eventbus.$emit", args
     EventBus.$emit(...args)
+
+window.Loomio.eventBus = wrapper
+
+export default wrapper

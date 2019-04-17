@@ -5,3 +5,6 @@ export default
     openAuthModal: ->
       EventBus.$emit('openModal',
                       component: 'AuthModal')
+
+    closeModal: ->
+      EventBus.$emit('closeModal')

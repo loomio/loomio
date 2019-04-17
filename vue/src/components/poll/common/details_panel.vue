@@ -16,7 +16,7 @@ import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
 import PollModalMixin from '@/mixins/poll_modal'
 
