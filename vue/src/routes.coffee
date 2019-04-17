@@ -59,6 +59,7 @@ export default new Router
     {path: '/apps/registered/:id/:stub', component: RegisteredAppPage},
     {path: '/slack/install', component: InstallSlackPage},
     {path: '/:handle', component: GroupPage },
+    {path: '/', redirect: '/dashboard' }
   ]
 
 # {path: '/groups', component: 'groupsPage' },

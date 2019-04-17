@@ -52,7 +52,7 @@ export default
       params:
         filter: @filter
         per: 50
-  created: ->
+  mounted: ->
     EventBus.$emit 'currentComponent',
       titleKey: @titleKey
       page: 'dashboardPage'

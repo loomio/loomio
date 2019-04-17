@@ -28,7 +28,7 @@ export default
     componentName: ""
     componentProps: {}
 
-  mounted: ->
+  created: ->
     EventBus.$on('openModal', @openModal)
     EventBus.$on('closeModal', @closeModal)
 
