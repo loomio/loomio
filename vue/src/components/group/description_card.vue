@@ -35,7 +35,7 @@ v-card.description-card(aria-labelledby='description-card-title')
     .description-card__text.lmo-markdown-wrapper(v-if="group.descriptionFormat == 'md'" v-marked='group.description')
     .description-card__text.lmo-markdown-wrapper(v-if="group.descriptionFormat == 'html'" v-html='group.description')
     attachment-list(:attachments="group.attachments")
-    document-list(:model='group')
+    //- document-list(:model='group')
     .lmo-md-action
       action-dock(:model='group', :actions='actions')
 </template>

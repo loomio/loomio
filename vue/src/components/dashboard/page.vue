@@ -7,10 +7,7 @@ import AbilityService     from '@/shared/services/ability_service'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadQueryService from '@/shared/services/thread_query_service'
 import GroupModalMixin from '@/mixins/group_modal.coffee'
-import _capitalize from 'lodash/capitalize'
-import _take from 'lodash/take'
-import _keys from 'lodash/keys'
-import _every from 'lodash/every'
+import { capitalize, take, keys, every } from 'lodash'
 
 export default
   mixins: [GroupModalMixin]
@@ -62,9 +59,9 @@ export default
   methods:
     viewName: (name) ->
       if @filter == 'show_muted'
-        "dashboard#{_capitalize(name)}Muted"
+        "dashboard#{capitalize(name)}Muted"
       else
-        "dashboard#{_capitalize(name)}"
+        "dashboard#{capitalize(name)}"
 
     filters: (filters) ->
       ['only_threads_in_my_groups', 'show_opened', @filter].concat(filters)
@@ -75,11 +72,11 @@ export default
       # else
       'dashboard_page.filtering.all'
 
-    viewNames: -> _keys(@views)
-    loadingViewNames: -> _take @viewNames, 3
+    viewNames: -> keys(@views)
+    loadingViewNames: -> take @viewNames, 3
     noGroups: -> !Session.user().hasAnyGroups()
     promptStart: -> !Session.user().hasAnyGroups() && AbilityService.canStartGroups()
-    noThreads: -> _every @views, (view) => !view.any()
+    noThreads: -> every @views, (view) => !view.any()
     userHasMuted: -> Session.user().hasExperienced("mutingThread")
     showLargeImage: -> true
 

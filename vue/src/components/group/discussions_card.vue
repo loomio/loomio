@@ -4,13 +4,13 @@ import AbilityService     from '@/shared/services/ability_service'
 import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadQueryService from '@/shared/services/thread_query_service'
-import ModalService       from '@/shared/services/modal_service'
+import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
-import _isEmpty from 'lodash/isEmpty'
-import _map from 'lodash/map'
-import _throttle from 'lodash/throttle'
+import { isEmpty, map, throttle } from 'lodash'
+
 
 export default
+  mixins: [DiscussionModalMixin]
   props:
     group: Object
   mounted: ->
@@ -39,16 +39,13 @@ export default
     fragment: ''
     discussionStartIsOpen: false
   methods:
-    openNewDiscussionModal: ->
-      ModalService.newDiscussionModal(@group)
-
-    searchThreads: _throttle ->
+    searchThreads: throttle ->
       return Promise.resolve(true) unless !isEmpty @fragment
       Records.discussions.search(@group.key, @fragment).then (data) =>
         @searched = Object.assign {}, @searched, ThreadQueryService.queryFor
           name: "group_#{@group.key}_searched"
           group: @group
-          ids: _map(data.discussions, 'id')
+          ids: map(data.discussions, 'id')
           overwrite: true
     , 250
 
@@ -63,7 +60,7 @@ export default
     setFilter: (newFilter) ->
       @filter = newFilter
     isEmpty: (o) ->
-      _isEmpty(o)
+      isEmpty(o)
 
     closeDiscussionStart: ->
       @discussionStartIsOpen = false
@@ -102,7 +99,7 @@ v-card.discussions-card(aria-labelledby='threads-card-title', v-if='discussions'
     .lmo-flex__grow
     .discussions-card__filter.discussions-card__filter--open.lmo-link.lmo-pointer(v-if="!searchOpen && filter == 'show_closed'", @click="setFilter('show_opened')", v-t="{ path: 'group_page.show_opened', args: { count: group.openDiscussionsCount } }")
     .discussions-card__filter.discussions-card__filter--closed.lmo-link.lmo-pointer(v-if="!searchOpen && filter == 'show_opened' && group.closedDiscussionsCount > 0", @click="setFilter('show_closed')", v-t="{ path: 'group_page.show_closed', args: { count: group.closedDiscussionsCount } }")
-    v-btn.discussions-card__new-thread-button(@click= 'openNewDiscussionModal', flat='', color='primary', v-if='canStartThread' :title="$t('navbar.start_thread')", v-t="{ path: 'navbar.start_thread' }")
+    v-btn.discussions-card__new-thread-button(@click= 'openStartDiscussionModal(group)', flat='', color='primary', v-if='canStartThread' :title="$t('navbar.start_thread')", v-t="{ path: 'navbar.start_thread' }")
   .discussions-card__content
     .discussions-card__list--empty(v-if='noThreads')
       p.lmo-hint-text(v-t="{ path: 'group_page.no_threads_here' }")

@@ -7,9 +7,8 @@ import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import PaginationService from '@/shared/services/pagination_service'
-import { subscribeTo } from '@/shared/helpers/cable'
-
-import urlFor from '@/mixins/url_for.coffee'
+import { subscribeTo }   from '@/shared/helpers/cable'
+import urlFor            from '@/mixins/url_for.coffee'
 
 export default
   mixins: [urlFor]
@@ -75,8 +74,8 @@ v-container.lmo-main-container.group-page(grid-list-lg)
             membership-card(:group='group', :pending='true')
           v-flex
             subgroups-card(:group='group')
-          v-flex
-            document-card(:group='group')
+          //- v-flex
+          //-   document-card(:group='group')
           v-flex
             poll-common-index-card(:model='group', :limit='5', :view-more-link='true')
             // <outlet name="after-slack-card" model="group"></outlet>

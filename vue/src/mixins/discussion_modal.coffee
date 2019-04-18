@@ -3,13 +3,13 @@ import AbilityService from '@/shared/services/ability_service'
 import Records        from '@/shared/services/records'
 import Session        from '@/shared/services/session'
 
-import _some from 'lodash/some'
+import { some } from 'lodash'
 
 export default
   methods:
     canStartThreads: ->
       Session.user().id &&
-      _some(Session.user().groups(), (group) => AbilityService.canStartThread(group))
+      some(Session.user().groups(), (group) => AbilityService.canStartThread(group))
 
     openStartDiscussionModal: (group) ->
       EventBus.$emit('openModal',
