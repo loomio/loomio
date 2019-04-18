@@ -13,6 +13,7 @@ class FormalGroup < Group
 
   validate :limit_inheritance
   validates :subscription, absence: true, if: :is_subgroup?
+  validate :handle_is_valid
 
 
   scope :parents_only, -> { where(parent_id: nil) }
@@ -199,6 +200,13 @@ class FormalGroup < Group
   end
 
   private
+  def handle_is_valid
+    self.handle = nil && return if handle.blank?
+    self.handle = handle.to_lowercase
+    if is_subgroup? && parent.handle && !handle.begins_with?("#{parent.handle}-")
+      errors.add(:handle, I18n.t(:'group.error.handle_must_begin_with_parent_handle', parent_handle: parent.handle))
+    end
+  end
 
   def limit_inheritance
     if parent_id.present?
