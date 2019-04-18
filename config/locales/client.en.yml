@@ -637,6 +637,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
+      become_coordinator: Become Coordinator
       export_data: Export Group Data
       export_data_as_json: Export Group Data as JSON
       export_data_as_csv: Export Group Data as CSV
