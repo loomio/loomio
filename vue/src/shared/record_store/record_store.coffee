@@ -40,14 +40,3 @@ export default class RecordStore
 
   bumpVersion: ->
     @_version = (@_version || 0) + 1
-
-  memoize: (func, obj) ->
-    cache = {}
-    obj = obj || @
-    ->
-      args = Array.prototype.slice.call(arguments)
-      key = "#{obj._version}#{args.join()}"
-      if cache[key]?
-        cache[key]
-      else
-        cache[key] = func.apply(this, arguments)

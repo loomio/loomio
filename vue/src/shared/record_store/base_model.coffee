@@ -20,8 +20,6 @@ export default class BaseModel
   # what is the key to use when serializing the record?
   @serializationRoot: null
 
-  @memoize: []
-
   constructor: (recordsInterface, attributes = {}) ->
     @processing = false # not returning/throwing on already processing rn
     @_version = 0
@@ -35,11 +33,6 @@ export default class BaseModel
     @buildRelationships() if @relationships?
     @applyMemoization()
     @afterConstruction()
-
-  applyMemoization: ->
-    _.each @constructor.memoize, (name) =>
-      func = @[name]
-      @[name] = @recordStore.memoize func, @
 
   bumpVersion: ->
     # @recordStore.bumpVersion()
