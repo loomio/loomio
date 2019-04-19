@@ -31,7 +31,6 @@ export default class BaseModel
     @update(@defaultValues())
     @update(attributes)
     @buildRelationships() if @relationships?
-    @applyMemoization()
     @afterConstruction()
 
   bumpVersion: ->
