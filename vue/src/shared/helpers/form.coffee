@@ -143,7 +143,6 @@ progress = (scope) ->
   (progress) ->
     return unless progress.total > 0
     scope.percentComplete = Math.floor(100 * progress.loaded / progress.total)
-    scope.$apply()
 
 success = (scope, model, options) ->
   (data) ->
@@ -191,7 +190,6 @@ actionName = (model) ->
 setErrors = (scope, model, response) ->
   response.json().then (r) ->
     model.setErrors(r.errors)
-    scope.$apply()
 
 eventKind = (model) ->
   if model.isA('discussion') and model.isNew()

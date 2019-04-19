@@ -108,7 +108,7 @@ v-card-text.context-panel
   .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'html'", v-html='discussion.description')
 
   translation.lmo-markdown-wrapper(v-if='discussion.translation', :model='discussion', field='description')
-  document-list(:model='discussion', :skip-fetch='true')
+  //- document-list(:model='discussion', :skip-fetch='true')
   attachment-list(:attachments="discussion.attachments")
   .lmo-md-actions
     // <reactions_display model="discussion" load="true" class="context-panel__actions-left"></reactions_display>

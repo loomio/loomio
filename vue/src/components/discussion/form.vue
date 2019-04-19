@@ -76,7 +76,7 @@ v-card.discussion-form
           label.discussion-form__privacy-notice.lmo-flex(layout='row')
             i.mdi.mdi-24px.mdi-lock-outline.lmo-margin-right(v-if='discussion.private')
             i.mdi.mdi-24px.mdi-earth.lmo-margin-right(v-if='!discussion.private')
-            discussion-privacy-icon(discussion='discussion')
+            discussion-privacy-icon(:discussion='discussion')
   v-card-actions
     .discussion-form-actions.lmo-md-actions
       v-btn(@click="submit()" ng-disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()" class="md-primary md-raised discussion-form__submit")

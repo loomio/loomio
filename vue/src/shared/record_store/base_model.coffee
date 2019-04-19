@@ -70,7 +70,9 @@ export default class BaseModel
   baseUpdate: (attributes) ->
     @bumpVersion()
     @attributeNames = _.union(@attributeNames, _.keys(attributes))
-    _.forEach attributes, (value, key) => Vue.set(@, key, value)
+    _.forEach attributes, (value, key) =>
+      Vue.set(@, key, value)
+      true
 
     @recordsInterface.collection.update(@) if @inCollection()
 
@@ -126,20 +128,15 @@ export default class BaseModel
       of: 'id'
       dynamicView: true
 
-    @[name] = if args.dynamicView
-      # sets up a dynamic view which will be kept updated as matching elements are added to the collection
-      => @buildView("#{@constructor.singular}_#{@keyOrId()}_#{name}", args).data()
-    else
-      # adds a simple Records.collection.where with no db overhead
-      => @recordStore[args.from].find("#{args.with}": @[args.of])
+    @[name] = => @recordStore[args.from].find("#{args.with}": @[args.of])
 
-  buildView: (viewName, args = {}) ->
-    # create the view which references the records
-    if !@views[viewName]
-      @views[viewName] = @recordStore[args.from].collection.addDynamicView(viewName)
-      @views[viewName].applyFind("#{args.with}": @[args.of])
-      @views[viewName].applySimpleSort(args.sortBy, args.sortDesc) if args.sortBy
-    @views[viewName]
+  # buildView: (viewName, args = {}) ->
+  #   # create the view which references the records
+  #   if !@views[viewName]
+  #     @views[viewName] = @recordStore[args.from].collection.addDynamicView(viewName)
+  #     @views[viewName].applyFind("#{args.with}": @[args.of])
+  #     @views[viewName].applySimpleSort(args.sortBy, args.sortDesc) if args.sortBy
+  #   @views[viewName]
 
   belongsTo: (name, userArgs) ->
     defaults =
@@ -148,8 +145,7 @@ export default class BaseModel
 
     args = _.assign defaults, userArgs
 
-    @[name] = =>
-      @recordStore[args.from].find(@[args.by])
+    @[name] = => @recordStore[args.from].find(@[args.by])
 
   translationOptions: ->
 
