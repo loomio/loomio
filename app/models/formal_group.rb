@@ -99,12 +99,6 @@ class FormalGroup < Group
 
   alias_method :draft_parent, :parent
 
-  before_validation :ensure_handle_is_not_empty
-
-  def ensure_handle_is_not_empty
-    self.handle = nil if self.handle.to_s.strip == ""
-  end
-
   def update_undecided_count
     polls.active.each(&:update_undecided_count)
   end
@@ -183,14 +177,6 @@ class FormalGroup < Group
     @id_and_subgroup_ids ||= (Array(id) | subgroup_ids)
   end
 
-  def handle
-    if is_subgroup?
-      parent.handle
-    else
-      super
-    end
-  end
-
   def slack_identity
     identity_for(:slack)
   end
@@ -201,9 +187,11 @@ class FormalGroup < Group
 
   private
   def handle_is_valid
-    self.handle = nil && return if handle.blank?
+    self.handle = nil if self.handle.to_s.strip == ""
+    return if handle.nil?
     self.handle = handle.downcase
-    if is_subgroup? && parent.handle && !handle.begins_with?("#{parent.handle}-")
+    if is_subgroup? && parent.handle && !handle.starts_with?("#{parent.handle}-")
+      debugger
       errors.add(:handle, I18n.t(:'group.error.handle_must_begin_with_parent_handle', parent_handle: parent.handle))
     end
   end
