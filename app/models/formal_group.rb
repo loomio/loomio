@@ -202,7 +202,7 @@ class FormalGroup < Group
   private
   def handle_is_valid
     self.handle = nil && return if handle.blank?
-    self.handle = handle.to_lowercase
+    self.handle = handle.downcase
     if is_subgroup? && parent.handle && !handle.begins_with?("#{parent.handle}-")
       errors.add(:handle, I18n.t(:'group.error.handle_must_begin_with_parent_handle', parent_handle: parent.handle))
     end
