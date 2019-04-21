@@ -1,6 +1,6 @@
 import Session       from '@/shared/services/session'
 import Records       from '@/shared/services/records'
-import FlashService  from '@/shared/services/flash_service'
+import Flash  from '@/shared/services/flash'
 import ModalService  from '@/shared/services/modal_service'
 
 export default new class ThreadService
@@ -17,13 +17,13 @@ export default new class ThreadService
     else
       previousVolume = thread.volume()
       thread.saveVolume('mute').then =>
-        FlashService.success "discussion.volume.mute_message",
+        Flash.success "discussion.volume.mute_message",
           name: thread.title
         , 'undo', => @unmute(thread, previousVolume)
 
   unmute: (thread, previousVolume = 'normal') ->
     thread.saveVolume(previousVolume).then =>
-      FlashService.success "discussion.volume.unmute_message",
+      Flash.success "discussion.volume.unmute_message",
         name: thread.title
       , 'undo', => @mute(thread)
 
@@ -39,11 +39,11 @@ export default new class ThreadService
             flash:    'discussion.closed.closed'
     else
       thread.close().then =>
-        FlashService.success "discussion.closed.closed", {}, 'undo', => @reopen(thread)
+        Flash.success "discussion.closed.closed", {}, 'undo', => @reopen(thread)
 
   reopen: (thread) ->
     thread.reopen().then =>
-      FlashService.success "discussion.closed.reopened", {}, 'undo', => @close(thread)
+      Flash.success "discussion.closed.reopened", {}, 'undo', => @close(thread)
 
   dismiss: (thread) ->
     if !Session.user().hasExperienced("dismissThread")
@@ -57,11 +57,11 @@ export default new class ThreadService
           flash:    'dashboard_page.thread_dismissed'
     else
       thread.dismiss().then =>
-        FlashService.success "dashboard_page.thread_dismissed", {}, 'undo', => @recall(thread)
+        Flash.success "dashboard_page.thread_dismissed", {}, 'undo', => @recall(thread)
 
   recall: (thread) ->
     thread.recall().then =>
-      FlashService.success "dashboard_page.thread_recalled", {}, 'undo', => @dismiss(thread)
+      Flash.success "dashboard_page.thread_recalled", {}, 'undo', => @dismiss(thread)
 
   pin: (thread) ->
     if !Session.user().hasExperienced("pinningThread")
@@ -74,8 +74,8 @@ export default new class ThreadService
             fragment: 'pin_thread'
     else
       thread.savePin().then =>
-        FlashService.success "discussion.pin.pinned", 'undo', => @unpin(thread)
+        Flash.success "discussion.pin.pinned", 'undo', => @unpin(thread)
 
   unpin: (thread) ->
     thread.savePin().then =>
-      FlashService.success "discussion.pin.unpinned", 'undo', => @pin(thread)
+      Flash.success "discussion.pin.unpinned", 'undo', => @pin(thread)

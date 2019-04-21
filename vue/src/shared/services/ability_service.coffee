@@ -4,7 +4,6 @@ import Session       from '@/shared/services/session'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 
 export default new class AbilityService
-
   isNotEmailVerified: ->
     @isLoggedIn() and !Session.user().emailVerified
 

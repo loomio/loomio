@@ -1,23 +1,40 @@
 <script lang="coffee">
 import EventBus from "@/shared/services/event_bus"
-import DiscussionStartModal from '@/components/discussion/start.vue'
-import GroupStartModal from '@/components/group/start.vue'
+import GroupForm from '@/components/group/form.vue'
+import DiscussionForm from '@/components/discussion/form.vue'
+import EditCommentForm from '@/components/thread/edit_comment_form.vue'
+import ConfirmModal from '@/components/common/confirm_modal.vue'
+import ChangeVolumeForm from '@/components/common/change_volume_form'
+import PollCommonStartModal from '@/components/poll/common/start_modal'
+import PollCommonEditVoteModal from '@/components/poll/common/edit_vote_modal'
+import PollCommonEditModal from '@/components/poll/common/edit_modal'
+import ContactRequestForm from '@/components/contact/request_form'
+import AuthModal from '@/components/auth/modal'
 
 export default
   components:
-    'DiscussionStart': DiscussionStartModal
-    'GroupStart': GroupStartModal
+    'GroupForm': GroupForm
+    'DiscussionForm': DiscussionForm
+    'EditCommentForm': EditCommentForm
+    'ConfirmModal': ConfirmModal
+    'ChangeVolumeForm': ChangeVolumeForm
+    'PollCommonStartModal': PollCommonStartModal
+    'PollCommonEditVoteModal': PollCommonEditVoteModal
+    'PollCommonEditModal': PollCommonEditModal
+    'ContactRequestForm': ContactRequestForm
+    'AuthModal': AuthModal
   data: ->
     isOpen: false
     componentName: ""
     componentProps: {}
 
-  mounted: ->
+  created: ->
     EventBus.$on('openModal', @openModal)
     EventBus.$on('closeModal', @closeModal)
 
   methods:
     openModal: (opts) ->
+      console.log 'openModal', opts
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
@@ -26,13 +43,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model="isOpen")
-  modal-template(title="placeholder title")
-    template(v-slot:content)
-      component(:is="componentName" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
-    template(v-slot:actions)
-      span action 1
-      span action 2
-      span action 3
+v-dialog(v-model="isOpen" max-width="600px")
+  component(:is="componentName" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
 
 </template>

@@ -37,4 +37,8 @@ v-menu(offset-y)
       v-list-tile-content(v-t="{path: 'user_dropdown.contact_site_name', args: {site_name: siteName}}")
       v-list-tile-avatar
         v-icon mdi-email-outline
+    v-list-tile(@click="signOut()")
+      v-list-tile-content(v-t="'user_dropdown.sign_out'")
+      v-list-tile-avatar
+        v-icon mdi-exit-to-app
 </template>

@@ -28,12 +28,9 @@ export default
         group:  @discussion.group().name
         parent: @discussion.group().parentName()
 </script>
-<template>
-  <span class="discussion-privacy-icon">
-    <div class="discussion-privacy-icon__title">
-      <strong v-t="'common.privacy.' + translateKey"></strong>
-    </div>
-    <div v-html="privacyDescription" class="discussion-privacy-icon__subtitle">
-    </div>
-  </span>
+<template lang="pug">
+span.discussion-privacy-icon
+  .discussion-privacy-icon__title
+    strong(v-t="'common.privacy.' + translateKey")
+  .discussion-privacy-icon__subtitle(v-html='privacyDescription')
 </template>

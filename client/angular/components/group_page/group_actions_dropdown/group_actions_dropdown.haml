@@ -7,6 +7,9 @@
       %md-menu-item.group-page-actions__edit-group-link{ng-if: "canEditGroup()"}
         %md-button{ng-click: "editGroup()"}
           %span{translate: "group_page.options.edit_group"}
+      %md-menu-item.group-page-actions__edit-group-link{ng-if: "canBecomeCoordinator()"}
+        %md-button{ng-click: "becomeCoordinator()"}
+          %span{translate: "group_page.options.become_coordinator"}
       %md-menu-item.group-page-actions__change-volume-link{ng-if: "canChangeVolume()"}
         %md-button{ng-click: "openChangeVolumeForm()"}
           %span{translate: "group_page.options.email_settings"}

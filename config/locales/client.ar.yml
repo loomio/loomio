@@ -86,6 +86,8 @@ ar:
     mute: 'كتم'
     unmute: 'الغاء الكتم'
   change_volume_form:
+    loud_label: "كافة النشاط"
+    normal_label: "الإعلانات"
     mute_label: "كتم"
   mute_explanation_modal:
     aria_label: كتم الخيط
@@ -115,15 +117,20 @@ ar:
       label: 'نشر'
     private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
     public_privacy_notice: 'تعليقك سيظهر للجميع'
+    sign_in: "قم بتسجيل الدخول للانضمام إلى المحادثة"
   sidebar:
     start_group: 'منظمة جديدة'
+    start_thread: موضوع جديد
+    start_decision: قرار جديد
     aria_labels:
       groups_list: 'الفِرَق'
   navbar:
     recent_title: 'اذهب إلى لوحة التحكم'
     unread_title: 'أظهر النشاطات الغير مقروءة'
+    start_thread: 'موضوع جديد'
     notifications: 'لوحة التبليغات'
     search:
+      results_aria_label: 'نتائج البحث'
       no_results: 'لا يوجد مواضيع'
       close: 'أغلق منصة البحث'
       placeholder: 'بحث'
@@ -171,6 +178,8 @@ ar:
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
     privacy_organisation: 'سيكون الموضوع ظاهراً لأعضاء {{parent}} و أعضاء {{group}}.'
   action_dock:
+    add_comment: تعليق
+    edit_poll: تعديل استطلاع الرأي
     edit_stance: تغيير الموقف
   join_group_button:
     join_group: انضم للمجموعة
@@ -180,6 +189,8 @@ ar:
     heading: قم بطلب الانضمام للمجموعة
     name_label: الإسم
     email_label: البريد الإلكتروني
+    introduction_label: لماذا ترغب في الانضمام؟
+    submit_button: قم بطلب الانضمام إلى المجموعة
     messages:
       membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'
   revision_history_modal:
@@ -211,6 +222,7 @@ ar:
       manage_members: 'إدارة الأعضاء'
       add_subgroup: 'زيادة مجموعة فرعية'
       manage_subscription: 'إدارة اشتراكات المجموعة'
+      email_settings: 'إعدادات البريد الإلكتروني'
       leave_group: 'غادر المجموعة'
       deactivate_group: 'إلغاء المجموعة'
     volume:
@@ -375,9 +387,25 @@ ar:
     email_label: 'البريد الإلكتروني'
     locale_label: 'اللغة'
     update_profile: 'تحديث الملف الشخصي'
+    deactivate_account: 'إيقاف الحساب'
+  change_picture_form:
+    title: 'تغيير الصورة'
+    use_uploaded: 'تحميل صورة جديدة'
+  change_password_form:
+    change_password_title: قم بتغيير كلمة السر
+    change_password: تغيير كلمة المرور
+  deactivation_modal:
+    aria_label: 'إيقاف الحساب'
+  deactivate_user_form:
+    title: 'إيقاف الحساب'
+    submit: 'إيقاف الحساب'
   email_settings_page:
     header: إعدادات البريد الإلكتروني
     daily_summary_label: الرسالة الكترونية للملخص اليومي
+    announcement_label: الإعلانات
+    mentioned_label: الإشارات والردود
+    update_settings: حفظ التغييرات
+    edit: تعديل
     messages:
       updated: تم تحديث إعدادات البريد الإلكتروني
   dashboard_page:
@@ -389,6 +417,7 @@ ar:
     view_recent: إظهار كافة المواضيع الحديثة؟
     load_more: تحميل المزيد من المواضيع
     mark_as_read: تمت قراءته
+    dismiss: إلغاء
     filtering:
       filter_threads: خيارات المواضيع
       filter_threads_aria_label: خيارات المواضيع
@@ -417,6 +446,8 @@ ar:
     no_threads: مبروك! لقد قمت بقراءة كل المواضيع في بريدك.
     unread_threads: المواضيع الغير مقروءة
     view_more: إظهار المزيد
+    no_groups:
+      or: أو
   discussion:
     activity: 'نشاط'
     activity_placeholder: 'لا يوجد نشاط بعد!'
@@ -434,14 +465,19 @@ ar:
     aria_label: 'سياق الموضوع'
     thread_options: 'خيارات الموضوع'
     email_settings: 'إعدادات البريد الإلكتروني'
+    edit: 'تعديل'
+    edit_thread: 'تعديل'
     close_thread: 'مغلق'
     mute_thread: 'كتم'
     move_thread: 'نقل'
     print_thread: 'طباعة'
     delete_thread: 'حذف'
+    add_comment: 'تعليق'
   delete_thread_form:
+    aria_label: 'المواضيع المحذوفة'
     title: حذف الموضوع
     body: هل أنت متأكد أنك تريد حذف الموضوع؟
+    confirm: 'حذف الموضوع'
     messages:
       success: تم حذف الموضوع
   move_thread_form:
@@ -515,6 +551,7 @@ ar:
     vote: 'يمكنك تغيير رأيك في أي وقت'
   global:
     messages:
+      app_update: 'هناك نسخة جديدة متوفرة من التطبيق'
       reload: 'إعادة تحميل'
   emoji_picker:
     no_emojis_found: "لم يتم إيجاد أي رموز تعبيرية ل'{{term}}'!"
@@ -561,12 +598,45 @@ ar:
     proposal_title: اقتراح
     poll_title: استطلاع رأي
   poll_common:
+    reason: السبب
+    results: النتائج
+    vote: صوت
+    votes: أصوات
+    details: التفاصيل
     save_changes: حفظ
   poll_common_attachment_form:
     label: المرفقات
+  current_polls_card:
+    start_poll: قرار جديد
+  poll_common_notify_group:
+    notify_group: إعلان
   poll_common_form:
+    details: التفاصيل
     closed: مغلقة
+  poll_poll_form:
+    edit_header: تعديل استطلاع الرأي
+  poll_proposal_vote_form:
+    vote: صوت
   poll_count_options:
+    'yes': 'نعم'
     'no': 'لا'
+  poll_common_subscribe_form:
+    no_thanks: لا شكرًا
   polls_page:
     heading: القرارات
+    start_new_poll: قرار جديد
+  auth_form:
+    sign_in: تسجيل الدخول
+    more_providers: المزيد
+    email_placeholder: you@example.com
+    hello: "أهلا {{name}}!"
+    name: 'الاسم '
+    email: البريد الإلكتروني
+    password: الكلمة السرية
+  install_slack:
+    install:
+      group_name: اسم الفريق
+    invite:
+      custom_message: رسالة مخصصة
+  powered_by:
+    privacy_policy: سياسة الخصوصية

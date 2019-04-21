@@ -613,7 +613,7 @@ en:
     messages:
       privacy:
         members: 'This group is now visible only to members'
-        parent_members: 'This group is now visible only to members of your organisation'
+        parent_members: 'This group is now visible only to members of your organization'
         public: 'This group is now visible to the public'
       leave_group_success: 'You have left this group'
       archive_group_success: 'This group has been deactivated'
@@ -637,6 +637,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
+      become_coordinator: Become Coordinator
       export_data: Export Group Data
       export_data_as_json: Export Group Data as JSON
       export_data_as_csv: Export Group Data as CSV
@@ -688,6 +689,7 @@ en:
 
   group_form:
     aria_label: 'Group form'
+    new_organisation:
     start_group_heading: 'Start a group'
     start_subgroup_heading: 'Start a subgroup'
     edit_group_heading: 'Edit group settings'
@@ -1829,6 +1831,7 @@ en:
     check_spam_folder: If the email does not arrive soon, check your spam folder.
     sign_up_helptext: Please complete this form to create a user account
     i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
+    name_placeholder: Your name
     name_required: Please enter a name
     terms_required: You must agree to the Terms of Service
     account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated!

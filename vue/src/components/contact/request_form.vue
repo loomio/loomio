@@ -7,6 +7,7 @@ import { submitOnEnter } from '@/shared/helpers/keyboard'
 export default
   props:
     user: Object
+    close: Function
   data: ->
     contactRequest: Records.contactRequests.build(recipientId: @user.id)
   created: ->
@@ -17,12 +18,17 @@ export default
         EventBus.$emit '$close'
 </script>
 <template lang="pug">
-.contact-user-form
-  .md-block
-    v-textarea.contact-request-form__message(v-model="contactRequest.message", maxlength="500", :label="$t('contact_request_form.message_placeholder')")
-    validation-errors(:subject="contactRequest", field="message")
+v-card.contact-user-modal
+  v-card-title
+    h1.lmo-h1(v-t="{ path: 'contact_request_form.modal_title', args: { name: user.name }}")
+    dismiss-modal-button(:close="close")
+  v-card-text
+    .contact-user-form
+      .md-block
+        v-textarea.contact-request-form__message(v-model="contactRequest.message", maxlength="500", :label="$t('contact_request_form.message_placeholder')")
+        validation-errors(:subject="contactRequest", field="message")
 
-  .lmo-md-actions
-    p(v-t="{ path: 'contact_request_form.helptext', args: { name: user.firstName() }}")
-    v-btn.contact-request-form__submit(@click="submit()", v-t="'common.action.send'", primary, raised)
+      .lmo-md-actions
+        p(v-t="{ path: 'contact_request_form.helptext', args: { name: user.firstName() }}")
+        v-btn.contact-request-form__submit(@click="submit()", v-t="'common.action.send'", primary, raised)
 </template>

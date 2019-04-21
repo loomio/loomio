@@ -10,7 +10,7 @@
 </style>
 
 <script lang="coffee">
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 import AbilityService from '@/shared/services/ability_service'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 
@@ -26,7 +26,7 @@ export default
 
     remind: ->
       @user.remind(@poll).then =>
-        FlashService.success 'poll_common_undecided_user.reminder_sent'
+        Flash.success 'poll_common_undecided_user.reminder_sent'
 </script>
 
 <template>

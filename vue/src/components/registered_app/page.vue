@@ -26,7 +26,7 @@
 <script lang="coffee">
 import Records      from '@/shared/services/records'
 import EventBus     from '@/shared/services/event_bus'
-import FlashService from '@/shared/services/flash_service'
+import Flash from '@/shared/services/flash'
 import ModalService from '@/shared/services/modal_service'
 
 import _isEmpty     from 'lodash/isEmpty'
@@ -45,7 +45,7 @@ export default
         # EventBus.broadcast $rootScope, 'currentComponent', { title: application.name, page: 'oauthApplicationPage'}
 
     copied: ->
-      FlashService.success('common.copied')
+      Flash.success('common.copied')
 
     openRemoveForm: ->
       ModalService.open 'RemoveAppForm', application: => @application

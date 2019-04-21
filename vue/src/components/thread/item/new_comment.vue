@@ -6,18 +6,22 @@ import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 import ModalService   from '@/shared/services/modal_service'
+import CommentModalMixin from '@/mixins/comment_modal.coffee'
+import ConfirmModalMixin from '@/mixins/confirm_modal'
 
 import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
 
 export default
+  mixins: [
+    CommentModalMixin,
+    ConfirmModalMixin
+  ]
   props:
     event: Object
     eventable: Object
   data: ->
-    isEditCommentModalOpen: false
-    isDeleteCommentModalOpen: false
     confirmOpts:
       submit: @eventable.destroy
       text:
@@ -25,18 +29,6 @@ export default
         helptext: 'delete_comment_dialog.question'
         confirm:  'delete_comment_dialog.confirm'
         flash:    'comment_form.messages.destroyed'
-  methods:
-    openEditCommentModal: ->
-      @isEditCommentModalOpen = true
-
-    closeEditCommentModal: ->
-      @isEditCommentModalOpen = false
-
-    openDeleteCommentModal: ->
-      @isDeleteCommentModalOpen = true
-
-    closeDeleteCommentModal: ->
-      @isDeleteCommentModalOpen = false
   created: ->
     @actions = [
       name: 'react'
@@ -50,8 +42,8 @@ export default
     ,
       name: 'edit_comment'
       icon: 'mdi-pencil'
-      canPerform: => AbilityService.canEditComment(@eventable)
-      perform:    => @openEditCommentModal()
+      canPerform: => @canEditComment(@eventable)
+      perform:    => @openEditCommentModal(@eventable)
     ,
       name: 'fork_comment'
       icon: 'mdi-call-split'
@@ -70,7 +62,7 @@ export default
     #   canPerform: => clipboard.supported
     #   perform:    =>
     #     clipboard.copyText(LmoUrlService.event(@event, {}, absolute: true))
-    #     FlashService.success("action_dock.comment_copied")
+    #     Flash.success("action_dock.comment_copied")
     # ,
       name: 'show_history'
       icon: 'mdi-history'
@@ -80,7 +72,7 @@ export default
       name: 'delete_comment'
       icon: 'mdi-delete'
       canPerform: => AbilityService.canDeleteComment(@eventable)
-      perform:    => @openDeleteCommentModal()
+      perform:    => @openConfirmModal(@confirmOpts)
     ]
   # mounted: ->
   #   listenForReactions($scope, $scope.eventable)
@@ -94,15 +86,8 @@ export default
     .thread-item__body.new-comment__body.lmo-markdown-wrapper(v-if='eventable.bodyFormat == "md"', v-marked='eventable.cookedBody()')
     .thread-item__body.new-comment__body.lmo-markdown-wrapper(v-if='eventable.bodyFormat == "html"', v-html='eventable.body')
     translation.thread-item__body(v-if='eventable.translation', :model='eventable', field='body')
-    //- <outlet name="after-comment-body" model="eventable"></outlet>
     document-list(:model='eventable', :skip-fetch='true')
     attachment-list(:attachments="eventable.attachments")
     .lmo-md-actions
-      //- <reactions_display model="eventable"></reactions_display>
       action-dock(:model='eventable', :actions='actions')
-      v-dialog(v-model="isEditCommentModalOpen", lazy persistent)
-        edit-comment-form(:comment="eventable", :close="closeEditCommentModal")
-      v-dialog(v-model="isDeleteCommentModalOpen", lazy persistent)
-        confirm-modal(:confirm="confirmOpts", :close="closeDeleteCommentModal")
-    //- <outlet name="after-comment-event" model="eventable"></outlet>
 </template>

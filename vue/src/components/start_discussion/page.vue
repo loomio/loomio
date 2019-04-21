@@ -42,7 +42,6 @@ export default
           <h2 v-t="'discussion_form.new_discussion_title'" class="lmo-card-heading"></h2></div>
         <div class="discussion-start-discussion">
           <discussion-form :discussion="discussion"></discussion-form>
-          <discussion-form-actions :discussion="discussion"></discussion-form-actions>
         </div>
       </div>
     </main>
