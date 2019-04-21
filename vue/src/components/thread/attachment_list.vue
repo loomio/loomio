@@ -4,7 +4,7 @@ import prettyBytes from 'pretty-bytes'
 
 export default
   props:
-    attachments: Array
+    attachments: [Array, Object]
   methods:
     prettifyBytes: (s) -> prettyBytes(s)
 </script>

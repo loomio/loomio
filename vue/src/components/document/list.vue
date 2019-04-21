@@ -12,6 +12,9 @@ export default
     skipFetch: Boolean
     placeholder: String
 
+  data: ->
+    documents: Records.documents.newAndPersistedDocumentsFor(@model).data()
+
   created: ->
     unless @model.isNew() or @skipFetch
       Records.documents.fetchByModel(@model)
@@ -21,12 +24,6 @@ export default
       EventBus.$emit 'initializeDocument', doc, $mdMenu
 
   computed:
-    documents: ->
-      @$store.getters.documentsFor(@model)
-
-    orderedDocuments: ->
-      _.orderBy(@$store.getters.newAndPersistedDocumentsFor(@model), ['-createdAt'])
-
     showTitle: ->
       (@model.showDocumentTitle or @showEdit) and
       (@model.hasDocuments() or @placeholder)
@@ -37,7 +34,7 @@ section.document-list
   h3.document-list__heading.lmo-card-heading(v-if='showTitle', v-t="{ path: 'document.list.title' }")
   p.lmo-hint-text.md-caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
   .document-list__documents.md-block.lmo-flex.lmo-flex--column
-    .document-list__document.lmo-flex.lmo-flex--column(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in orderedDocuments', :key='document.id')
+    .document-list__document.lmo-flex.lmo-flex--column(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
       .document-list__image(v-if='document.isAnImage() && !hidePreview')
         router-link.lmo-pointer(:to='document.url', target='_blank')
           img(:src='document.webUrl', :alt='document.title')

@@ -1,8 +1,16 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import DocumentModel        from '@/shared/models/document_model'
+import {flatten, capitalize, includes} from 'lodash'
 
 export default class DocumentRecordsInterface extends BaseRecordsInterface
   model: DocumentModel
+
+  newAndPersistedDocumentsFor: (model) ->
+    @view "newAndPersistedDocumentsFor(#{model.constructor.singular}, #{model.id})", (v) ->
+      v.applyFind(modelId: $in: flatten([model.id, model.newDocumentIds]) )
+      v.applyFind(modelType: capitalize(model.constructor.singular))
+      v.applyWhere((doc) -> !includes model.removedDocumentIds, doc.id)
+      v.applySimpleSort('createdAt', true)
 
   fetchByModel: (model) ->
     @fetch

@@ -4,6 +4,7 @@ import {pick, each, merge, keys, isNumber, isString, isArray } from 'lodash'
 import Vue           from 'vue'
 
 export default class BaseRecordsInterface
+  views: []
   model: 'undefinedModel'
 
   # override this if your apiEndPoint is not the model.plural
@@ -36,6 +37,11 @@ export default class BaseRecordsInterface
     record = @build(attributes)
     @collection.insert(record)
     record
+
+  view: (name, fn) ->
+    if !@views[name]
+      fn(@views[name] = @collection.addDynamicView(name))
+    @views[name]
 
   fetch: (args) ->
     @remote.fetch(args)
