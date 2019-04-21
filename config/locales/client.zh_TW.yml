@@ -591,6 +591,7 @@ zh_TW:
     options:
       label: '選項'
       edit_group: '編輯群組設定'
+      become_coordinator: 成為協調者
       export_data: 匯出群組資料
       export_data_as_json: 將群組資料匯出為 JSON
       export_data_as_csv: 將群組資料匯出為 CSV

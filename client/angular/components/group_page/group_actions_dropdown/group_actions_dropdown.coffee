@@ -3,6 +3,7 @@ Session        = require 'shared/services/session'
 Records        = require 'shared/services/records'
 AbilityService = require 'shared/services/ability_service'
 ModalService   = require 'shared/services/modal_service'
+FlashService   = require 'shared/services/flash_service'
 
 angular.module('loomioApp').directive 'groupActionsDropdown', ->
   scope: {group: '='}
@@ -12,6 +13,17 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
   controller: ['$scope', ($scope) ->
 
     $scope.baseUrl = AppConfig.baseUrl
+
+    $scope.becomeCoordinator = ->
+      membership = $scope.group.membershipFor(Session.user())
+      Records.memberships.makeAdmin(membership).then ->
+        FlashService.success "memberships_page.messages.make_admin_success", name: Session.user().name
+
+    $scope.canBecomeCoordinator = ->
+      membership = $scope.group.membershipFor(Session.user())
+      membership.admin == false &&
+      (membership.group().adminMembershipsCount == 0 or
+      Session.user().isAdminOf(membership.group().parent()))
 
     $scope.canExportData = ->
       Session.user().isAdminOf($scope.group)
