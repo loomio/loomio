@@ -6,11 +6,13 @@ import ChronologicalEventWindow from '@/shared/services/chronological_event_wind
 import NestedEventWindow        from '@/shared/services/nested_event_window'
 import ModalService             from '@/shared/services/modal_service'
 import AbilityService           from '@/shared/services/ability_service'
+import AuthModalMixin from '@/mixins/auth_modal'
 
 
 import { print } from '@/shared/helpers/window'
 
 export default
+  mixins: [ AuthModalMixin ]
   props:
     discussion: Object
   data: ->
@@ -45,6 +47,7 @@ export default
     canAddComment: -> AbilityService.canAddComment(@discussion)
 
   methods:
+    signIn: -> @openAuthModal()
     isLoggedIn: -> AbilityService.isLoggedIn()
     positionForSelect: ->
       if _.includes(['requested', 'context'], @initialPosition())
@@ -146,7 +149,7 @@ section.activity-card(aria-labelledby='activity-card-title')
     comment-form(v-if='canAddComment' :discussion='discussion')
     .add-comment-panel__join-actions(v-if='!canAddComment')
       join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn()', :block='true')
-      button.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
+      v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
 
 </template>
 <style lang="scss">

@@ -9,7 +9,7 @@ import ModalService   from '@/shared/services/modal_service'
 export default
   props:
     group: Object
-    block: Object
+    block: Boolean
   methods:
     askToJoinText: ->
       if @hasRequestedMembership()

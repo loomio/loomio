@@ -26,13 +26,14 @@ module.exports = {
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
-    page.click('.auth-signup-form__legal-accepted')
+    page.click('.auth-signup-form__legal-accepted label')
     page.click('.auth-signup-form__submit')
     page.expectElement('.auth-complete')
 
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
+    // TODO: GK: component is not updating after user has logged in 
     page.expectText('.context-panel__heading', 'I carried a watermelon')
     page.click('.add-comment-panel__join-actions button')
     page.pause(2000)

@@ -133,7 +133,7 @@ export default
         # EventBus.broadcast $scope, 'initActivityCard'
 
     Records.discussions.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
-      EventBus.broadcast $rootScope, 'pageError', error
+      EventBus.$emit 'pageError', error
 
     # EventBus.listen $scope, 'threadPageScrollToSelector', (e, selector) =>
     #   scrollTo selector, offset: 150
