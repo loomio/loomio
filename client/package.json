@@ -52,7 +52,7 @@
     "@mdi/font": "3.5.95",
     "ment.io": "~0.9.15",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.23",
+    "moment-timezone": "^0.5.25",
     "promise-polyfill": "^8.1.0",
     "promise.prototype.finally": "^3.1.0",
     "raven-js": "latest",
