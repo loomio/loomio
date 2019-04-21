@@ -48,7 +48,7 @@ export default
       //- v-btn(icon)
       //-   v-icon mdi-dots-vertical
     v-toolbar-items(v-if='!isLoggedIn')
-      v-btn(flat v-t="'navbar.sign_in'" @click='signIn()')
+      v-btn.navbar__sign-in(flat v-t="'navbar.sign_in'" @click='signIn()')
     //- .navbar__left
     //-   v-toolbar-side-icon.navbar__sidenav-toggle(v-show='isLoggedIn()', @click='toggleSidebar()', aria-label="$t('navbar.toggle_sidebar')")
     //-     v-icon mdi-menu
