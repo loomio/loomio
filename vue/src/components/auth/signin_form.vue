@@ -45,9 +45,9 @@ export default
 .auth-signin-form
   auth-avatar(:user='user')
   .auth-signin-form__magic-link
-    h2.lmo-h2.align-center(v-t="{ path: 'auth_form.welcomeback', args: { name: user.firstName() } }")
+    h2.lmo-h2.align-center(v-t="{ path: 'auth_form.welcome_back', args: { name: user.firstName() } }")
   .auth-signin-form__token.align-center(v-if='user.hasToken')
-    //- validation_errors(subject='user', field='token')
+    validation-errors(:subject='user', field='token')
     v-btn.md-primary.md-raised.auth-signin-form__submit(@click='submit()', v-if='!user.errors.token')
       span(v-t="{ path: 'auth_form.sign_in_as', args: {name: user.name}}")
     v-btn.md-primary.md-raised.auth-signin-form__submit(@click='sendLoginLink()', v-if='user.errors.token')
@@ -63,7 +63,7 @@ export default
       .md-block
         label(v-t="'auth_form.password'")
         v-text-field#password.lmo-primary-form-input(name='password', type='password', md-autofocus='true', ng-required='ng-required', v-model='user.password')
-        //- validation_errors(subject='user', field='password')
+        validation-errors(:subject='user', field='password')
       .lmo-md-actions
         v-btn.auth-signin-form__login-link(@click='sendLoginLink()', :class="{'md-primary': !user.password}")
           span(v-t="'auth_form.login_link'")
