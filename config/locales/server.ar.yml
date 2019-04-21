@@ -4,12 +4,15 @@ ar:
       title: العنوان
       details: التفاصيل
       group_name: اسم المجموعة
+      reason: السبب
   email:
     custom: "%{text}"
     group_email:
       intro: "%{who}قام بإعلان على %{group}:"
     by_who: من قبل %{person}
     reply_to_this_discussion: شارك في هذا النقاش
+    to_join_group:
+      accept_invitation: "اقبل الدعوة"
     unsubscribe: 'قم بإلغاء الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> لإلغاء الاشتراك أو تغيير تفضيلات البريد الإلكتروني."
     catch_up:
@@ -33,6 +36,28 @@ ar:
     terms: شروط الخدمة
     independent_install_html: '%{hostname} يقوم بتشغيل نسخة مستقلة من لوميو:  <a href="http://github.com/loomio/loomio">قم بمعرفة المزيد</a>.'
   password_reset:
+    change_your_password: قم بتغيير كلمة السر
+    change_my_password: تغيير كلمة المرور
+    confirm_new_password: تأكيد كلمة السر
+    new_password: كلمة السر الجديدة
     reset_email_timeframe: 'قد يستغرق الأمر حتى 5 دقائق لكي يتم استقبال الرسالة الالكترونية. إن لم تستقبل الرسالة الالكترونية، تأكد من صندوق البريد المؤذي. '
     length_restriction: على كلمة المرور أن تتألف من 8 محارف.
     forbidden_passwords: كلمات المرور المألوفة مثل "password" ممنوعة لإبقاء حسابك آمناً.
+  introduction_thread:
+    title: أهلا بك، الرجاء قم بتعريف نفسك
+  how_it_works_thread:
+    title: كيفية استخدام لوميو
+  markdown:
+    paragraphs:
+      title: |
+          ## الفقرات
+    lists:
+      title: |
+          ## القوائم
+    links:
+      title: |
+          ## الروابط والصور
+  poll_mailer:
+    common:
+      or: أو
+      results: النتائج
