@@ -28,7 +28,8 @@ module.exports = {
      '/login_tokens': {target: 'http://localhost:3000'},
      '/theme': {target: 'http://localhost:3000'},
      '/fonts': {target: 'http://localhost:3000'},
-     '/img': {target: 'http://localhost:3000'}
+     '/img': {target: 'http://localhost:3000'},
+     '/join': {target: 'http://localhost:3000'}
    }
   },
   css: {
