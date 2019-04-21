@@ -21,12 +21,14 @@ export default new class AuthService
       _.pick(user, ['email', 'name', 'password'])
     ).save().then (data) ->
       onSuccess(data)
-    , (response) ->
-      response.json().then (data) ->
-        user.errors = if user.hasToken
+    , (err) ->
+      console.log 'error signing in'
+      err.json().then (data) ->
+        errors = if user.hasToken
           { token:    [i18n.t('auth_form.invalid_token')] }
         else
           { password: _.map(data.errors.password, (key) -> i18n.t(key)) }
+        user.update(errors: errors)
         finished()
 
   signUp: (user, onSuccess) ->
