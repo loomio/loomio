@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.6.2'
+ruby '2.6.3'
 gem 'rails', '~> 5.2.3'
 gem 'actioncable'
 gem 'rake'
