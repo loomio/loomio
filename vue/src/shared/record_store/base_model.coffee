@@ -118,7 +118,6 @@ export default class BaseModel
       from: name
       with:  @constructor.singular+'Id'
       of: 'id'
-      dynamicView: true
 
     @[name] = => @recordStore[args.from].find("#{args.with}": @[args.of])
 

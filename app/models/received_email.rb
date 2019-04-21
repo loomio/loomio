@@ -18,6 +18,21 @@ class ReceivedEmail
         json:         params)
   end
 
+  email_hash = email.to.select{|h| h[:host] == reply_host }.first || {}
+  params = {}
+
+  email_hash[:token].to_s.split('&').each do |segment|
+    key_and_value = segment.split('=')
+    params[key_and_value[0]] = key_and_value[1]
+  end
+
+  @discussion_id = params['d']
+  @user_id       = params['u']
+  @parent_id     = params['c']
+  @email_api_key = params['k']
+  @body          = email.body
+
+
   def valid?
     email_addresses.length <= Rails.application.secrets.max_pending_emails
     recipient_address finishes with the reply_hostname

@@ -2,12 +2,11 @@ class ReceivedEmailService
   def self.create(received_email: )
     return false unless received_email.valid?
     case route_for_email(received_email|)
-    when :discussion_create
-    when :poll_create
-      UserMailer.start_decision(received_email: self).deliver_now
-    when :comment_create
-    when :user_not_found
-    when :group_not_found
+    when :discussion
+      
+      authorize user can create discussion
+    when :comment
+      authorize user can create comment
     else
       false
     end
@@ -15,17 +14,11 @@ class ReceivedEmailService
   private
 
   def self.route_for_email(received_email)
-    case recipient_local_part
-    if received_email.receipient_address
-      recipient address minus reply_hostname is a group handle?
-      :discussion_create
-      if discussion is recorgnised in the group
-      else
-        create discussion
-        invite everyone listed in the email.
-      end
-    elsif recipient_local
-    if subect matches these conditions
-
+    local_part = received_email.receiving_address.split('@').first
+    if /(d=\d+)&(u=\d+)&(k=\w+)/.match(local_part)
+      :comment
+    elsif Group.find_by(handle: local_part)
+      :discussion
+    end
   end
 end

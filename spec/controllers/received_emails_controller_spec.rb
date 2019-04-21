@@ -16,6 +16,17 @@ describe ReceivedEmailsController do
       headers: {}
     }
   }}
+  let(:discussion_params) {{
+    mailinMsg: {
+      html: "<html><body>Hi this is a new discussion thread!</body></html>",
+      text: "Hi everyone, this is a new discussion thread!",
+      subject: "Greetings!",
+      from: [{ name: user.name, address: user.email }],
+      to: [], # we're stubbing out to with the value below
+      cc: [],
+      headers: {}
+    }
+  }}
   let(:comment_email_params) { EmailParams.new(
     OpenStruct.new(
       to: [{
@@ -38,6 +49,13 @@ describe ReceivedEmailsController do
   before do
     discussion.group.add_member! user
     discussion.group.add_member! another_user
+  end
+
+  describe "starting a discussion via email" do
+    it "replies with error if your email is not recognised"
+    it "replies with error if your group handle is not recognised"
+    it "creates discussion and sends reciept email"
+    it "notifies CC'd people"
   end
 
   it "creates a comment via email" do
