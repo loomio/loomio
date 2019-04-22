@@ -29,7 +29,8 @@ module.exports = {
      '/theme': {target: 'http://localhost:3000'},
      '/fonts': {target: 'http://localhost:3000'},
      '/img': {target: 'http://localhost:3000'},
-     '/join': {target: 'http://localhost:3000'}
+     '/join': {target: 'http://localhost:3000'},
+     '/invitations': {target: 'http://localhost:3000'}
    }
   },
   css: {
