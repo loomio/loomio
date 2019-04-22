@@ -9,10 +9,9 @@ import LmoUrlService     from '@/shared/services/lmo_url_service'
 import PaginationService from '@/shared/services/pagination_service'
 import { subscribeTo }   from '@/shared/helpers/cable'
 import urlFor            from '@/mixins/url_for.coffee'
-import AuthModalMixin from '@/mixins/auth_modal'
 
 export default
-  mixins: [urlFor, AuthModalMixin]
+  mixins: [urlFor]
   data: ->
     group: null
   created: ->
@@ -21,8 +20,7 @@ export default
     , (error) ->
       EventBus.$emit 'pageError', error
   mounted: ->
-    if !Session.isSignedIn()
-      @openAuthModal()
+    EventBus.$emit 'currentComponent', { key: @$route.params.key, page: 'groupPage'}
   methods:
     init: (group) ->
       @group = group
