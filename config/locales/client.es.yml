@@ -590,6 +590,7 @@ es:
     options:
       label: 'Opciones'
       edit_group: 'Editar la configuración del grupo'
+      become_coordinator: Conviértase en coordinador
       export_data: Exportar los datos del grupo
       export_data_as_json: Exportar los datos del grupo en formato JSON
       export_data_as_csv: Exportar los datos del grupo en formato CSV
@@ -882,6 +883,8 @@ es:
     update_profile: 'Actualizar perfil'
     deactivate_account: 'Desactiva cuenta'
     help_translate: "Ayúdanos a traducir Loomio"
+  text_editor:
+    insert_link: Inserte un enlace
   change_picture_form:
     aria_label: 'Formulario de cambio de imagen'
     title: 'Cambiar imagen'
@@ -1117,6 +1120,7 @@ es:
     description_private: 'actualizó el contexto y la privacidad del hilo'
     description_private_title: 'actualizó el título, el contexto y la privacidad del hilo'
   contact_message_form:
+    title: "¡Hola! ¿Cómo podemos ayudarle?"
     contact_us: 'Contáctanos'
     name_label: 'Su nombre'
     name_placeholder: 'Introduzca su nombre...'
