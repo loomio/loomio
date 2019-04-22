@@ -3,9 +3,12 @@ import EventBus    from '@/shared/services/event_bus'
 import AuthService from '@/shared/services/auth_service'
 import AppConfig from '@/shared/services/app_config'
 import Session from '@/shared/services/session'
+import AuthModalMixin from '@/mixins/auth_modal'
+import Flash from '@/shared/services/flash'
 import { hardReload } from '@/shared/helpers/window'
 
 export default
+  mixins: [AuthModalMixin]
   props:
     user: Object
   data: ->

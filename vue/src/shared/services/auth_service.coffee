@@ -36,7 +36,7 @@ export default new class AuthService
       _.pick(user, ['email', 'name', 'recaptcha', 'legalAccepted'])
     ).save().then (data) ->
       if user.hasToken or data.signed_in
-        onSuccess()
+        onSuccess(data)
       else
         user.update({sentLoginLink: true})
       data
