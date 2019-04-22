@@ -84,10 +84,12 @@ import urlFor    from '@/mixins/url_for'
 import _truncate from 'lodash/truncate'
 import _map      from 'lodash/map'
 import _sortBy   from 'lodash/sortBy'
+import Session        from '@/shared/services/session'
+import AuthModalMixin from '@/mixins/auth_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 
 export default
-  mixins: [urlFor]
+  mixins: [urlFor, AuthModalMixin]
   data: ->
     groupIds: []
     resultsCount: 0
@@ -98,6 +100,9 @@ export default
     EventBus.$emit 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
     # applyLoadingFunction(@, 'search')
     # @search()
+  mounted: ->
+    if !Session.isSignedIn()
+      @openAuthModal()
   methods:
     groups: ->
       Records.groups.find(@groupIds)

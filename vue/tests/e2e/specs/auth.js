@@ -158,7 +158,6 @@ module.exports = {
     page.click('.auth-signin-form__submit')
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
-    // TODO: GK: test expects the auth modal to pop-up automatically if not signed in? but in the last test the sign in button is clicked?
     page.click('.auth-signin-form__submit')
 
     page.expectText('.flash-root__message', 'Signed in successfully')
