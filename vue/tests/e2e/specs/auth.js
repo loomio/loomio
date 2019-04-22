@@ -175,6 +175,7 @@ module.exports = {
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
+    // GK: TODO: same problem as before - component doesn't react to user being logged in
     page.expectText('.group-theme__name', 'Closed Dirty Dancing Shoes')
     page.expectText('.thread-preview-collection__container', 'This thread is private')
     page.ensureSidebar()
@@ -185,6 +186,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_visitor')
+    // TODO: GK: expects auth modal to pop up automatically (group page)
     page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
@@ -204,6 +206,7 @@ module.exports = {
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
+    // TODO: GK: once again, group page does not update when user has logged in
     page.expectNoElement('.join-group-button')
   },
 
@@ -214,8 +217,9 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signup-form', 'New to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
-    page.click('.auth-signup-form__legal-accepted')
+    page.click('.auth-signup-form__legal-accepted label')
     page.click('.auth-signup-form__submit')
+    // TODO: GK: why doesn't this button click lol
     page.expectText('.flash-root__message', 'Signed in successfully', 8000)
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes', 16000)
   },
