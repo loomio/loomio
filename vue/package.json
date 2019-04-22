@@ -8,7 +8,7 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
-    "@mdi/font": "^3.5.95",
+    "@mdi/font": "^3.6.95",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "bowser": "^2.3.0",
