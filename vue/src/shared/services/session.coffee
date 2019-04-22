@@ -4,7 +4,7 @@ import Records       from '@/shared/services/records'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import RestfulClient from '@/shared/record_store/restful_client'
 import EventBus      from '@/shared/services/event_bus'
-
+import Vue from 'vue'
 import { hardReload } from '@/shared/helpers/window'
 
 export default new class Session
@@ -14,8 +14,8 @@ export default new class Session
     client.get('user', unsubscribe_token: token).then (res) -> res.json()
 
   apply: (data) ->
-    AppConfig.currentUserId = data.current_user_id
-    AppConfig.pendingIdentity = data.pending_identity
+    Vue.set(AppConfig, 'currentUserId', data.current_user_id)
+    Vue.set(AppConfig, 'pendingIdentity', data.pending_identity)
     Records.import(data)
 
     # afterSignIn() if typeof afterSignIn is 'function'
@@ -37,7 +37,7 @@ export default new class Session
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
   isSignedIn: ->
-    AppConfig.currentUserId
+    AppConfig.currentUserId and !@user().restricted?
 
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()

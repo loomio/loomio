@@ -74,5 +74,5 @@ module.exports = (test) ->
     test.acceptAlert()
     @pause()
 
-  waitFor: (selector, wait = 10000) ->
+  waitFor: (selector, wait = 1000000) ->
     test.waitForElementVisible(selector, wait) if selector?

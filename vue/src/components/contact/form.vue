@@ -33,7 +33,7 @@ export default
       @message.userId = Session.user().id
   computed:
     isLoggedIn: ->
-      AbilityService.isLoggedIn()
+      Session.isSignedIn()
 </script>
 
 <template>

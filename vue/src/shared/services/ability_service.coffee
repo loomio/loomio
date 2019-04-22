@@ -5,22 +5,19 @@ import LmoUrlService from '@/shared/services/lmo_url_service'
 
 export default new class AbilityService
   isNotEmailVerified: ->
-    @isLoggedIn() and !Session.user().emailVerified
-
-  isLoggedIn: ->
-    @isUser() and !Session.user().restricted?
+    Session.isSignedIn() and !Session.user().emailVerified
 
   isSiteAdmin: ->
-    @isLoggedIn() and Session.user().isAdmin
+    Session.isSignedIn() and Session.user().isAdmin
 
   isEmailVerified: ->
-    @isLoggedIn() && Session.user().emailVerified
+    Session.isSignedIn() && Session.user().emailVerified
 
   isUser: ->
     AppConfig.currentUserId?
 
   canContactUser: (user) ->
-    @isLoggedIn() &&
+    Session.isSignedIn() &&
     Session.user().id != user.id &&
     _.intersection(Session.user().groupIds(), user.groupIds()).length
 

@@ -34,11 +34,11 @@ module.exports = {
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
     // TODO: GK: component is not updating after user has logged in
-    // page.expectText('.context-panel__heading', 'I carried a watermelon')
-    // page.click('.add-comment-panel__join-actions button')
-    // page.pause(2000)
-    // page.expectText('.flash-root__message', 'You are now a member of Open Dirty Dancing Shoes')
-    // page.expectElement('.comment-form__submit-button')
+    page.expectText('.context-panel__heading', 'I carried a watermelon')
+    page.click('.add-comment-panel__join-actions button')
+    page.pause(2000)
+    page.expectText('.flash-root__message', 'You are now a member of Open Dirty Dancing Shoes')
+    page.expectElement('.comment-form__submit-button')
   },
 
   'can_login_via_token': (test) => {

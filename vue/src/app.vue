@@ -28,7 +28,7 @@ export default
     shouldForceSignIn: (options = {}) ->
       # return false if options.page == "pollPage" and Session.user() !AbilityService.isEmailVerified()
       # return false if AbilityService.isEmailVerified()
-      return false if AbilityService.isLoggedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
+      return false if Session.isSignedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
       return true  if AppConfig.pendingIdentity.identity_type?
 
       switch options.page

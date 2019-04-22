@@ -41,12 +41,12 @@ export default
     @init()
   methods:
     init: ->
-      return unless AbilityService.isLoggedIn() or Session.user().restricted?
+      return unless Session.isSignedIn() or Session.user().restricted?
       @user = Session.user().clone()
       @submit = submitForm @, @user,
         submitFn: Records.users.updateProfile
         flashSuccess: 'email_settings_page.messages.updated'
-        successCallback: -> LmoUrlService.goTo '/dashboard' if AbilityService.isLoggedIn()
+        successCallback: -> LmoUrlService.goTo '/dashboard' if Session.isSignedIn()
 
     groupVolume: (group) ->
       group.membershipFor(Session.user()).volume

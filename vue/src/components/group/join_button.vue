@@ -18,7 +18,7 @@ export default
         'join_group_button.ask_to_join_group'
 
     joinGroup: ->
-      if AbilityService.isLoggedIn()
+      if Session.isSignedIn()
         Records.memberships.joinGroup(@group).then =>
           EventBus.$emit 'joinedGroup', {group: @group}
           Flash.success('join_group_button.messages.joined_group', group: @group.fullName)
@@ -26,7 +26,7 @@ export default
         ModalService.open 'AuthModal'
 
     requestToJoinGroup: ->
-      if AbilityService.isLoggedIn()
+      if Session.isSignedIn()
         ModalService.open 'MembershipRequestForm', group: => @group
       else
         ModalService.open 'AuthModal'
@@ -45,7 +45,7 @@ export default
       @group.hasPendingMembershipRequestFrom(Session.user())
 
     isLoggedIn: ->
-      AbilityService.isLoggedIn()
+      Session.isSignedIn()
 
   created: ->
     Records.membershipRequests.fetchMyPendingByGroup(@group.key)

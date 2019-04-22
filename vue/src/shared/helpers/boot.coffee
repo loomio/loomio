@@ -1,4 +1,5 @@
 import 'url-search-params-polyfill';
+import Vue from 'vue'
 import RestfulClient from '@/shared/record_store/restful_client'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
@@ -10,8 +11,9 @@ export default (callback) ->
   client = new RestfulClient('boot')
   client.get('site').then (siteResponse) ->
     siteResponse.json().then (appConfig) ->
-      _merge AppConfig, _merge appConfig,
-        timeZone: moment.tz.guess()
+      appConfig.timeZone = moment.tz.guess()
+      _forEach appConfig, (v, k) ->
+        Vue.set(AppConfig, k, v)
 
       _forEach Records, (recordInterface, k) ->
         model = Object.getPrototypeOf(recordInterface).model

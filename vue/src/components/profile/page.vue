@@ -59,7 +59,7 @@ export default
       successCallback: hardReload
   methods:
     init: ->
-      # return unless AbilityService.isLoggedIn()
+      # return unless Session.isSignedIn()
       @user = Session.user().clone()
       Session.updateLocale(@user.locale)
       @submit = submitForm @, @user,

@@ -6,6 +6,7 @@ import ChronologicalEventWindow from '@/shared/services/chronological_event_wind
 import NestedEventWindow        from '@/shared/services/nested_event_window'
 import ModalService             from '@/shared/services/modal_service'
 import AbilityService           from '@/shared/services/ability_service'
+import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 
 
@@ -45,10 +46,10 @@ export default
     # EventBus.listen $scope, 'initActivityCard', -> $scope.init()
   computed:
     canAddComment: -> AbilityService.canAddComment(@discussion)
-
+    isLoggedIn: -> Session.isSignedIn()
   methods:
     signIn: -> @openAuthModal()
-    isLoggedIn: -> AbilityService.isLoggedIn()
+    # isLoggedIn: -> Session.isSignedIn()
     positionForSelect: ->
       if _.includes(['requested', 'context'], @initialPosition())
         "beginning"
@@ -148,8 +149,8 @@ section.activity-card(aria-labelledby='activity-card-title')
   .add-comment-panel.lmo-card-padding
     comment-form(v-if='canAddComment' :discussion='discussion')
     .add-comment-panel__join-actions(v-if='!canAddComment')
-      join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn()', :block='true')
-      v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
+      join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn', :block='true')
+      v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn')
 
 </template>
 <style lang="scss">

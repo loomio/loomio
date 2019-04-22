@@ -17,7 +17,7 @@ export subscribeTo = (model) ->
 export initLiveUpdate = ->
   subscribeToApplication()
 
-  if AbilityService.isLoggedIn()
+  if Session.isSignedIn()
     subscribeToUser()
     _.each Session.user().groups(), subscribeToGroup
   else
