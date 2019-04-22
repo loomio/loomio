@@ -7,6 +7,10 @@ export default
     user: Object
   data: ->
     email: @user.email
+  watch:
+    # GK: NB: not sure why this hack is necessary, but email is not set otherwise
+    'user.email': ->
+      @email = @user.email
   methods:
     submit: ->
       return unless @validateEmail()

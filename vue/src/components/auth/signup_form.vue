@@ -2,6 +2,7 @@
 import EventBus    from '@/shared/services/event_bus'
 import AuthService from '@/shared/services/auth_service'
 import AppConfig from '@/shared/services/app_config'
+import Session from '@/shared/services/session'
 import { hardReload } from '@/shared/helpers/window'
 
 export default
@@ -18,9 +19,13 @@ export default
 
     submitForm: (recaptcha) ->
       @user.recaptcha = recaptcha
+      onSuccess = (data) =>
+        Session.apply(data)
+        @closeModal()
+        Flash.success('auth_form.signed_in')
       if AuthService.validSignup(@vars, @user)
         # EventBus.emit $scope, 'processing'
-        AuthService.signUp(@user, hardReload).finally ->
+        AuthService.signUp(@user, onSuccess).finally ->
           # EventBus.emit $scope, 'doneProcessing'
   computed:
     recaptchaKey: -> AppConfig.recaptchaKey
