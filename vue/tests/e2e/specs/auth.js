@@ -219,7 +219,6 @@ module.exports = {
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
     page.click('.auth-signup-form__legal-accepted label')
     page.click('.auth-signup-form__submit')
-    // TODO: GK: why doesn't this button click lol
     page.expectText('.flash-root__message', 'Signed in successfully', 8000)
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes', 16000)
   },
@@ -229,10 +228,12 @@ module.exports = {
 
     page.loadPath('setup_invitation_to_visitor')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@merciless.com')
+    // GK: NB: clearValue is not working right now - so the existing input value is being appended to instead
+    // https://github.com/nightwatchjs/nightwatch/issues/1939
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signup-form', 'New to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
-    page.click('.auth-signup-form__legal-accepted')
+    page.click('.auth-signup-form__legal-accepted label')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email')
   },
@@ -250,6 +251,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_user_reactivation_email')
+    // TODO: GK: user_reactivated template uses login_token_url which provides a url for localhost:3000
     page.click('.base-mailer__button')
     page.pause(2000)
     page.click('.auth-signin-form__submit')
