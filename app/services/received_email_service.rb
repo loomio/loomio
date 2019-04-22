@@ -1,9 +1,9 @@
 class ReceivedEmailService
   def self.create(received_email: )
-    if !User.active.find_by(email: received_email.sender_address)
-      user_not_found(received_email)
-    elsif /(d=\d+)&(u=\d+)&(k=\w+)/.match(received_email.receiving_address_local_part)
+    if /(d=\d+)&(u=\d+)&(k=\w+)/.match(received_email.receiving_address_local_part)
       comment(received_email)
+    elsif !User.active.find_by(email: received_email.sender_address)
+      user_not_found(received_email)
     elsif Group.find_by(handle: received_email.receiving_address_local_part)
       discussion(received_email)
     else
