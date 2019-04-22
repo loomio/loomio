@@ -185,12 +185,12 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_visitor')
-    // TODO: GK: expects auth modal to pop up automatically (group page)
     page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
+    // TODO: GK: once again, group page does not update when user has logged in
     page.expectText('.group-theme__name', 'Secret Dirty Dancing Shoes')
     page.ensureSidebar()
     page.expectElement('.sidebar__content')
