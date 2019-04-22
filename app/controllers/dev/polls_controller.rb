@@ -38,7 +38,7 @@ class Dev::PollsController < Dev::BaseController
 
   def start_poll_with_received_email
     sign_in saved fake_user
-    email = saved(fake_received_email(sender_email: fake_user.user))
+    email = saved(fake_received_email(sender_address: fake_user.email))
     UserMailer.start_decision(received_email: email).deliver_now
     last_email
   end

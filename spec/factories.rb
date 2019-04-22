@@ -329,7 +329,7 @@ FactoryBot.define do
   end
 
   factory :received_email do
-    sender_email { "John Doe <john@doe.com>" }
+    sender_address { "John Doe <john@doe.com>" }
     body { "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah" }
   end
 

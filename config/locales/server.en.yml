@@ -98,6 +98,18 @@ en:
         Your two loomio accounts have been merged into one account.
         To access loomio from now on, please use <strong>%{email}</strong> when you sign in.
 
+  received_email_mailer:
+    user_not_found:
+      subject: "Error starting thread: Your email address was not recognised"
+      body: |
+        Someone using the email address %{sender_address} emailed but we could
+        not find any users with that email, so the message was ignored.
+    group_not_found:
+      subject: "Error starting thread: %{handle} is not a group"
+      body: |
+        Someone using the email address %{sender_address} emailed but we could
+        not find the group specified.
+
   email:
     common:
       or_enter_code: Or, enter the code below

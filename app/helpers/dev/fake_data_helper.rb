@@ -147,7 +147,7 @@ module Dev::FakeDataHelper
 
   def fake_received_email(args = {})
     ReceivedEmail.new({
-      sender_email: Faker::Internet.email,
+      sender_address: Faker::Internet.email,
       subject: Faker::ChuckNorris.fact,
       body: "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah",
     })
