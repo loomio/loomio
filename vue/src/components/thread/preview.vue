@@ -132,11 +132,11 @@ v-list-tile.thread-preview(:to='urlFor(thread)', md-colors="{'border-color': 'pr
       .lmo-badge.lmo-pointer(v-if='thread.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}", v-t="'common.privacy.closed'")
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")
       v-icon mdi-pin
-      //- .thread-preview__actions.lmo-hide-on-xs(v-if='thread.discussionReaderId')
-      //-   button.md-raised.thread-preview__dismiss(@click='dismiss()', :disabled='!thread.isUnread()', :class='{disabled: !thread.isUnread()}', :title="$t('dashboard_page.dismiss')")
-      //-     .mdi.mdi-check
-      //-   button.md-raised.thread-preview__mute(@click='muteThread()', v-show='!thread.isMuted()', :title="$t('volume_levels.mute')")
-      //-     .mdi.mdi-volume-mute
-      //-   button.md-raised.thread-preview__unmute(@click='unmuteThread()', v-show='thread.isMuted()', :title="$t('volume_levels.unmute')")
-      //-     .mdi.mdi-volume-plus
+      .thread-preview__actions.lmo-hide-on-xs(v-if='thread.discussionReaderId')
+        v-btn.md-raised.thread-preview__dismiss(@click='dismiss()', :disabled='!thread.isUnread()', :class='{disabled: !thread.isUnread()}', :title="$t('dashboard_page.dismiss')")
+          .mdi.mdi-check
+        v-btn.md-raised.thread-preview__mute(@click='muteThread()', v-show='!thread.isMuted()', :title="$t('volume_levels.mute')")
+          .mdi.mdi-volume-mute
+        v-btn.md-raised.thread-preview__unmute(@click='unmuteThread()', v-show='thread.isMuted()', :title="$t('volume_levels.unmute')")
+          .mdi.mdi-volume-plus
 </template>
