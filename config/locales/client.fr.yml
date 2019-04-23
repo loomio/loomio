@@ -590,6 +590,7 @@ fr:
     options:
       label: 'Options'
       edit_group: 'Modifier les paramètres du groupe'
+      become_coordinator: Devenir coordinateur
       export_data: Exporter les données du groupe
       export_data_as_json: Exporter les données du groupe au format JSON
       export_data_as_csv: Exporter les données du groupe au format CSV

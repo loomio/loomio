@@ -288,7 +288,7 @@ GEM
       ruby_parser (~> 3.5)
     htmlentities (4.3.4)
     http_accept_language (2.1.1)
-    httparty (0.16.4)
+    httparty (0.17.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     i18n (1.6.0)
@@ -355,7 +355,7 @@ GEM
     multipart-post (2.0.0)
     newrelic_rpm (6.2.0.354)
     nio4r (2.3.1)
-    nokogiri (1.10.2)
+    nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     oj (3.7.12)
     orm_adapter (0.5.0)
@@ -463,7 +463,7 @@ GEM
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
-    rinku (2.0.5)
+    rinku (2.0.6)
     rspec-activemodel-mocks (1.1.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -617,7 +617,7 @@ DEPENDENCIES
   has_secure_token
   heroku-deflater
   http_accept_language
-  httparty (~> 0.16.4)
+  httparty (~> 0.17.0)
   icalendar
   image_processing (~> 1.9)
   js_regex

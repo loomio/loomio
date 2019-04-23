@@ -78,7 +78,7 @@ es:
   email:
     common:
       or_enter_code: O, ingresa el código debajo
-      resend: 'Este enlace perderá validez en 24hrs y solo puede ser usado una vez. '
+      resend: 'Este enlace perderá validez en 24 horas y solo puede ser usado una vez. '
     login:
       subject: Ingresa a %{site_name}
       intro: Hola %{name}, aquí esta el enlace para ingresar en tu cuenta en %{site_name}
@@ -233,15 +233,15 @@ es:
   first_proposal:
     name: Propuesta de demostración
     description: |
-        Esta es una **Propuesta**, donde tomas las decisiones juntos. Puedes iniciar un propuesta una vez que la discusión está en camino.
+        Esto es una **Propuesta**, donde pueden tomar decisiones conjuntamente. Puede iniciar un propuesta en cuanto haya una discusión iniciada.
 
-        Se les pide a todos que **tomen una posición** antes de la **fecha de cierre**. Puedes extender la fecha de cierre si lo necesitas o puedes cerrar la propuesta con anticipación.
+        Se solicita a todos los integrantes del grupo a que **tomen posición** antes de la **fecha de cierre**. Puede extender la fecha de cierre si lo necesita o cerrar la propuesta con antelación.
 
-        Puede que reconsideres tu posición al escuchar a otros, podrás **cambiar tu posición** en cualquier momento mientras la propuesta aún esté activa.
+        Puede que reconsidere su posición al escuchar a otros, podrás **cambiar de posición** en cualquier momento en que la propuesta esté activa.
 
-        A veces grupo trabajan con una **serie de propuestas** para construir una solución juntos. Puedes crear propuestas en secuencia en este hilo.
+        Los grupos pueden trabajar con una **serie de propuestas** para construir una solución entre todos. Puedes crear una serie de propuestas en este hilo.
 
-        **Prueba participar, haz clic en uno de los 4 botones**
+        **Pruebe a participar, haga clic en uno de los 4 botones**
   markdown:
     intro:
       title: |
@@ -328,7 +328,7 @@ es:
         poll_edited: '%{actor} editó la propuesta: %{title}'
         poll_announced: '%{actor} te invitó a participar en una propuesta: %{title}'
         poll_closing_soon: 'Propuesta cerrando en 24hr: %{title}'
-        poll_closing_soon_author: 'Tu propuesta cierra en 24hr: %{title}'
+        poll_closing_soon_author: 'Su propuesta cierra en 24hr: %{title}'
         poll_expired: "Propuesta cerrada: %{title}"
         poll_expired_author: ' Tu propuesta ha cerrado. Comparte un resultado para: %{title}'
         outcome_created: '%{actor} publicó el resultado de la propuesta: %{title}'
@@ -340,8 +340,8 @@ es:
         poll_created: '<strong>%{actor}</strong> inicio una propuesta'
         poll_edited: '<strong>%{actor}</strong> edito la propuesta'
         poll_announced: '<strong>%{actor}</strong> te invitó a votar en una propuesta'
-        poll_closing_soon: 'La propuesta de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
-        poll_closing_soon_author: 'Tu propuesta cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
+        poll_closing_soon: 'La propuesta de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar.'
+        poll_closing_soon_author: 'Su propuesta cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
         poll_expired: "<strong>%{actor}</strong> propuesta cerrada: %{title}"
         poll_expired_author: 'Tu propuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
         outcome_created: '<strong>%{actor}</strong> publicó el resultado de la propuesta.'
@@ -357,7 +357,7 @@ es:
         poll_edited: '%{actor} editó la encuesta: %{title}'
         poll_announced: '%{actor} te invitó a votar en una encuesta: %{title}'
         poll_closing_soon: 'Encuesta cerrando en 24hr: %{title}'
-        poll_closing_soon_author: 'Tu encuesta cierra en 24hr: %{title}'
+        poll_closing_soon_author: 'Su encuesta cierra en 24hr: %{title}'
         poll_expired: "Resultado de la encuesta: %{title}"
         poll_expired_author: ' Tu encuesta ha cerrado. Comparte el resultado para: %{title}'
         poll_option_added: '%{actor} ha añadido opciones en: %{title} '
@@ -372,9 +372,9 @@ es:
         poll_created: '<strong>%{actor}</strong> inicio una encuesta'
         poll_edited: '<strong>%{actor}</strong> edito la encuesta'
         poll_announced: '<strong>%{actor}</strong> te invitó a votar en una encuesta'
-        poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
-        poll_closing_soon_author: 'Tu encuesta cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
-        poll_expired: "La propuesta de<strong>%{actor}</strong> ha cerrado: %{title}"
+        poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar.'
+        poll_closing_soon_author: 'Su encuesta cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
+        poll_expired: "La propuesta %{title} de <strong>%{actor}</strong> está cerrada"
         poll_expired_author: 'Tu encuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
         poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
         poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
@@ -406,8 +406,8 @@ es:
         poll_created: '<strong>%{actor}</strong> inicio una encuesta'
         poll_edited: '<strong>%{actor}</strong> edito la encuesta'
         poll_announced: '<strong>%{actor}</strong> te invitó a votar en una encuesta'
-        poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
-        poll_closing_soon_author: 'Tu encuesta cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
+        poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar. '
+        poll_closing_soon_author: 'Tu encuesta cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
         poll_expired: "La propuesta de<strong>%{actor}</strong> ha cerrado: %{title}"
         poll_expired_author: 'Tu encuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
         poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
@@ -425,8 +425,8 @@ es:
         poll_edited: '%{actor} editó la comprobación: %{title}'
         poll_announced: '%{actor} te invitó a participar en: %{title}'
         poll_closing_soon: 'Quedan 24 horas para participar en: %{title}'
-        poll_closing_soon_author: 'Tu comprobación cierra en 24hr: %{title}'
-        poll_expired: "Comprobación cerrada: %{title}"
+        poll_closing_soon_author: 'Su comprobación %{title} cierra en 24 horas'
+        poll_expired: "Comprobación %{title} cerrada"
         poll_expired_author: ' Tu comprobación ha cerrado. Comparte el resultado para: %{title}'
         outcome_created: '%{actor} publicó el resultado: %{title}'
         outcome_announced: '%{actor} publicó el resultado: %{title}'
@@ -438,9 +438,9 @@ es:
         poll_created: '<strong>%{actor}</strong> esta mirando'
         poll_edited: '<strong>%{actor}</strong> editó la comprobación'
         poll_announced: '<strong>%{actor}</strong> te invitó a participar '
-        poll_closing_soon: 'La comprobació de <strong>%{actor}</strong> cierra en 24hrs'
-        poll_closing_soon_author: 'Tu comprobación cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
-        poll_expired: "La comprobación de<strong>%{actor}</strong> ha cerrado: %{title}"
+        poll_closing_soon: 'La comprobació de <strong>%{actor}</strong> cierra en 24 horas.'
+        poll_closing_soon_author: 'Su comprobación cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
+        poll_expired: "La comprobación %{title} de<strong>%{actor}</strong> ha cerrado"
         poll_expired_author: 'Este es el resultado de tu comprobación. De ser necesario <strong> comparte el resultado</strong> para que la gente sepa lo que sucederá a continuación.'
         outcome_created: '<strong>%{actor}</strong> publicó el resultado.'
         outcome_announced: '<strong>%{actor}</strong> publicó el resultado.'
@@ -454,8 +454,8 @@ es:
         poll_created: '%{actor} inició un voto de puntos: %{title}'
         poll_edited: '%{actor} editó un voto de puntos: %{title}'
         poll_announced: '%{actor} te invitó a participar en el voto de puntos: %{title}'
-        poll_closing_soon: 'Voto de puntos cerrando en 24hr: %{title}'
-        poll_closing_soon_author: 'Tu voto de puntos cierra en 24hr: %{title}'
+        poll_closing_soon: 'Voto de puntos %{title} cerrando en 24 horas'
+        poll_closing_soon_author: 'Tu voto de puntos %{title} cierra en 24 horas'
         poll_expired: "Resultado del voto de puntos: %{title}"
         poll_expired_author: ' Tu voto de puntos ha cerrado. Comparte un resultado para: %{title}'
         poll_option_added: '%{actor} ha añadido opciones en: %{title}'
@@ -470,8 +470,8 @@ es:
         poll_created: '<strong>%{actor}</strong> inició un voto de puntos'
         poll_edited: '<strong>%{actor}</strong> editó el voto de puntos'
         poll_announced: '<strong>%{actor}</strong> te invitó a participar en un voto de puntos'
-        poll_closing_soon: 'El voto de puntos de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
-        poll_closing_soon_author: 'Tu voto de puntos cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra si es necesario.'
+        poll_closing_soon: 'El voto de puntos de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar. '
+        poll_closing_soon_author: 'Tu voto de puntos cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
         poll_expired: "Resultados para el voto de puntos: %{title} de <strong>%{actor}</strong>"
         poll_expired_author: 'Tu voto de puntos ha <strong>cerrado</strong>. Considera lo que se ha dicho y <strong>comparte el resultado</strong> con el grupo para que todos sepan que sucederá a continuación.  '
         poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
@@ -505,8 +505,8 @@ es:
         poll_created: '<strong>%{actor}</strong> inició una coordinación de horario'
         poll_edited: '<strong>%{actor}</strong> editó la coordinación de horario'
         poll_announced: '<strong>%{actor}</strong> te invitó a participar en una coordinación horaria'
-        poll_closing_soon: 'La coordinación de horario de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
-        poll_closing_soon_author: 'Tu coordinación de horario cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra si es necesario.'
+        poll_closing_soon: 'La coordinación de horario de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar. '
+        poll_closing_soon_author: 'Tu coordinación de horario cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
         poll_expired: "La coordinación de horario de<strong>%{actor}</strong> ha cerrado"
         poll_expired_author: 'Tu coordinación de horario ha <strong>cerrado</strong>. Considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos sepan que pasará a continuación.  '
         poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
@@ -541,8 +541,8 @@ es:
         poll_created: '<strong>%{actor}</strong> inició una opción priorizada'
         poll_edited: '<strong>%{actor}</strong> editó la opción priorizada '
         poll_announced: '<strong>%{actor}</strong> te invitó a votar en una encuesta'
-        poll_closing_soon: 'La opción priorizada de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar.'
-        poll_closing_soon_author: 'Tu opción priorizada cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra si es necesario. '
+        poll_closing_soon: 'La opción priorizada de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar.'
+        poll_closing_soon_author: 'Tu opción priorizada cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
         poll_expired: "La opción priorizada de<strong>%{actor}</strong> ha cerrado"
         poll_expired_author: 'Tu opción priorizada ha <strong>cerrado</strong>. Considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
         poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'

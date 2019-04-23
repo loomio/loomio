@@ -69,6 +69,9 @@ de:
       must_close_in_future: Vorschlag muss in der Zukunft enden.
       one_at_a_time: Es gibt einen weiteren aktiven Vorschlag.
   user_mailer:
+    group_export_ready:
+      body_html: |
+          Daten für deine Gruppe können <a href="%{url}">hier</a> heruntergeladen werden. Bitte beachte, dass dieser link in einer Woche abläuft.
     accounts_merged:
       subject: "Deine %{site_name} Benutzerkonten wurden zusammengeführt."
       body_html: |

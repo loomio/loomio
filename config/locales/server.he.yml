@@ -94,11 +94,97 @@ he:
       subject: 'אקטב מחדש את חשבונך %{site_name} '
       intro: היי %{name}, הנה הלינק כדי לאקטב מחדש את חשבונך %{site_name}.
       login: אקטב מחדש%{name}
-    reply_to_this_discussion: השיבו לדיון זה
+    contact_request:
+      subject: "%{name} מעוניין להתחבר איתך ב%{site_name}!"
+      intro: "%{name} (%{email}) שלח לך הזמנה להתחברות."
+      footer: "תוכל לענות ל%{name} על ידי השבה במייל חזרה."
+    reset_password:
+      greeting: |
+          היי %{name}
+          הנה הלינק איתו תוכל לאפס את סיסמת החשבון שלך:
+      link_text: איפוס סיסמתך
+      signoff: |
+          קיבלת הודעה זו בגלל שהמייל שהזנת לטופס "שכחתי את הסיסמה" באתר %{hostname}.
+          הסיסמה לא תשתנה עד שתלחץ על הלינק למטה ותמלא את הטופס שנפתח.
+          אם בעיות ההתחברות ממשיכים, השב למייל זה ליצירת קשר עם איש תמיכה.
+    start_decision:
+      subject: התחל החלטה במערכת
+      intro: שלום, <strong>%{name}</strong>!
+      action: מה תרצה לעשות?
+      proposal: העלה הצעה
+      count: התחל בדיקה
+      poll: התחל סקר
+      dot_vote: התחל הצבעת נקודות
+      meeting: קבע זמן
+      ranked_choice: התחל בחירה מדורגת
+    custom: "%{text}"
+    group_email:
+      intro: "%{who} ביצע הכרזה ב%{group}:"
+    by_who: לפי %{person}
+    reply_to_this_discussion: השב לדיון זה
+    value_proposition: "%{site_name} הוא מקום לקבוצות לקבל החלטות יחד"
+    view_group: צפיה בקבוצה
+    to_join_group:
+      subject: "%{member} הזמין אותך להצטטרף ל%{group_name} ב%{site_name}"
+      invitation_text: "%{member} הזמין אותך להצטרף לקבוצתו %{group_name}."
+      invitation_text_html: "הזמין אותך להצטרך לקבוצתו"
+      link_help: "לחץ על הלינק למטה לאשר את ההזמנה:"
+      accept_invitation: "אשר הזמנה"
+    resend_to_join_group:
+      subject: "%{member} ממתין להצטרפותך ל%{group_name} ב%{site_name}"
+    user_added_to_group:
+      subject: "%{who} הוסיף אותך ל%{which_group} ב%{site_name}"
+      content: "%{who} הוסיף אותך ל%{which_group}."
+      content_html: "<strong>%{who}</strong> הוסיף אותך ל<strong>%{which_group}</strong>."
+      link_help: "לחץ על הלינק למטה כדי לעבור לקבוצה:"
+    unsubscribe: 'בטל את המנוי או שנה את העדפות הדוא"ל שלך:'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> לביטול המנוי או שינוי העדפות הדוא\"ל שלך."
     catch_up:
+      daily_subject: אתמול ב%{site_name}
+      weekly_subject: בשבוע שעבר ב%{site_name}
+      do_not_reply: נא לא להגיב למייל זה.
       mark_as_read: סמן כנקרא
       thanks_for_reading: תודה שקראת. יום טוב!
+      marked_as_read_success: כל הדברים במייל סומנו כנקראו
       click_here: הקליקו כאן
+    group_membership_approved:
+      intro: "בקשתך להכנס לקבוצה %{group_name} אושרה."
+      intro_html: "בקשתך להכנס לקבוצה <strong>%{group_name}</strong> אושרה."
+      link_help: "לחץ על הלינק למטה להצטרף ל%{group_name} ולהתחיל:"
+      subject: "בקשתך להצטרף ל%{group_name} אושרה"
+      join_group: "הצטרף לקבוצה"
+    membership_request:
+      intro_html: ביקש רשות להצטרף לאחת הקבוצות שלך.
+      subject: "%{who} ביקש להצטרף %{which_group}"
+      view_group: אתה יכול לאשר או לשלול בקשות כאן
+      button_text: צפה בבקשה
+  announcement_count_emails: "%{count} מיילים"
+  email_actions:
+    unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.
+  discussion_mailer:
+    resend: 'תזכורת: %{actor} ממתין שתצטרף ל%{discussion}'
+    new_discussion:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> התחיל שיחה: %{discussion}"
+    discussion_edited:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> ערך את השיחה: %{discussion}"
+    discussion_announced:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> הזמין אותך להצטרף ל: %{discussion}"
+    new_comment:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> הגיב ב: %{discussion}"
+    comment_replied_to:
+      subject: '%{actor} הגיב לך ב: %{discussion}'
+      subject_html: '<strong>%{actor}</strong> הגיב לך ב: %{discussion}'
+    user_mentioned:
+      subject: '%{actor} הזכיר אותך ב: %{discussion}'
+      subject_html: "<strong>%{actor}</strong> הזכיר אותך ב%{discussion}"
+    reply_or_view_online_html: הגב ישירות למייל זה או <a href='%{url}'>צפה בו ב%{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>השבת מיילים</a> לדיון זה."
+    change_email_preferences_html: "שנה את<a href='%{email_preferences_url}'>העדפות הדוא\"ל שלך</a>."
+    discussion_closed: "%{actor} סגר את הדיון"
   footer:
     about: אודות
     blog: בלוג
@@ -108,6 +194,7 @@ he:
     pricing: תמחור
     public_groups: קבוצות ציבוריות
     terms: תנאי שימוש
+    independent_install_html: '%{hostname} מריץ עותק עצמאי של לומיו: <a href="http://github.com/loomio/loomio">לפרטים נוספים</a>.'
   password_reset:
     change_your_password: שנה את הסיסמה שלך
     change_my_password: שנה סיסמה
