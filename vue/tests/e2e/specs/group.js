@@ -12,7 +12,7 @@ module.exports = {
     page.expectText('.sidebar__groups', 'Point Break')
   },
 
-  'should allow you to join an open group': (test) => {
+  'should_allow_you_to_join_an_open_group': (test) => {
     page     = pageHelper(test)
 
     page.loadPath('view_open_group_as_visitor')
@@ -21,10 +21,11 @@ module.exports = {
     page.click('.join-group-button__join-group')
     page.ensureSidebar()
     page.expectElement('.sidebar__content')
+    // TODO: GK: sidebar not updating with new membership/group
     page.expectText('.group-theme__name', 'Open Dirty Dancing Shoes')
   },
 
-  'does not allow mark as read or mute': (test) => {
+  'does_not_allow_mark_as_read_or_mute': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_visitor')
@@ -32,7 +33,7 @@ module.exports = {
     page.expectNoElement('.thread-preview__mute')
   },
 
-  'join an open group': (test) => {
+  'join_an_open_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_non_member')
@@ -40,31 +41,33 @@ module.exports = {
     page.expectText('.flash-root__message', 'You are now a member')
   },
 
-  'request to join a closed group group': (test) => {
+  'request_to_join_a_closed_group_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_closed_group_as_non_member')
     page.click('.join-group-button__ask-to-join-group')
+    // TODO: GK: membership request form component needs to be converted
     page.fillIn('.membership-request-form__introduction', 'I have a reason')
     page.click('.membership-request-form__submit-btn')
     page.expectText('.flash-root__message', 'You have requested membership')
   },
 
-  'secret group': (test) => {
+  'secret_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_non_member')
+    // TODO: GK: no error page?
     page.expectElement('.error-page')
   },
 
-  'closed group': (test) => {
+  'closed_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_closed_group_as_non_member')
     page.expectElement('.join-group-button__ask-to-join-group')
   },
 
-  'open group': (test) => {
+  'open_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_non_member')
@@ -76,10 +79,11 @@ module.exports = {
 
     page.loadPath('setup_group_with_subgroups')
     page.pause(2000)
+    // TODO: GK: something's up with the thread query service - can't see threads from subgroups
     page.expectText('.discussions-card__list', 'Vaya con dios', 20000)
   },
 
-  'starts an open group': (test) => {
+  'starts_an_open_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard')
@@ -87,7 +91,7 @@ module.exports = {
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-open')
     page.click('.group-form__advanced-link')
-
+    // TODO: GK: advanced settings form not showing up
     page.expectElement('.group-form__joining')
     page.expectNoElement('.group-form__allow-public-threads')
 
@@ -96,7 +100,7 @@ module.exports = {
     page.expectText('.group-privacy-button', 'OPEN')
   },
 
-  'starts a closed group': (test) => {
+  'starts_a_closed_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard')
@@ -104,7 +108,7 @@ module.exports = {
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-closed')
     page.click('.group-form__advanced-link')
-
+    // TODO: GK: advanced settings form not showing up
     page.expectNoElement('.group-form__joining')
     page.expectElement('.group-form__allow-public-threads')
 
@@ -113,7 +117,7 @@ module.exports = {
     page.expectText('.group-privacy-button', 'CLOSED')
   },
 
-  'starts a secret group': (test) => {
+  'starts_a_secret_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard')
@@ -130,7 +134,7 @@ module.exports = {
     page.expectText('.group-privacy-button', 'SECRET')
   },
 
-  'open subgroup': (test) => {
+  'open_subgroup': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
@@ -147,6 +151,7 @@ module.exports = {
 
     page.loadPath('setup_open_group')
     page.click('.subgroups-card__start')
+    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-closed')
     page.expectNoElement('.group-form__joining')
@@ -154,11 +159,12 @@ module.exports = {
     page.expectElement('.group-form__allow-public-threads')
   },
 
-  'secret subgroup': (test) => {
+  'secret_subgroup': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
     page.click('.subgroups-card__start')
+    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-secret')
     page.expectNoElement('.group-form__joining')
@@ -166,11 +172,12 @@ module.exports = {
     page.expectNoElement('.group-form__allow-public-threads')
   },
 
-  'open subgroup': (test) => {
+  'open_subgroup': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_closed_group')
     page.click('.subgroups-card__start')
+    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-open')
     page.expectElement('.group-form__joining')
@@ -178,11 +185,12 @@ module.exports = {
     page.expectNoElement('.group-form__parent-members-can-see-discussions')
   },
 
-  'closed subgroup': (test) => {
+  'closed_subgroup': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_closed_group')
     page.click('.subgroups-card__start')
+    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-closed')
     page.expectNoElement('.group-form__joining')
@@ -190,11 +198,12 @@ module.exports = {
     page.expectElement('.group-form__allow-public-threads')
   },
 
-  'secret subgroup': (test) => {
+  'secret_subgroup': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_closed_group')
     page.click('.subgroups-card__start')
+    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-secret')
     page.expectNoElement('.group-form__joining')
@@ -202,20 +211,22 @@ module.exports = {
     page.expectNoElement('.group-form__allow-public-threads')
   },
 
-  'open subgroup': (test) => {
+  'open_subgroup': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_secret_group')
     page.click('.subgroups-card__start')
+    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
     page.click('.group-form__advanced-link')
     page.expectNoElement('.group-form__privacy-open')
   },
 
-  'closed subgroup': (test) => {
+  'closed_subgroup': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_secret_group')
     page.click('.subgroups-card__start')
+    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-closed')
     page.expectText('.group-form__privacy', 'Members of Secret Dirty Dancing Shoes can find this subgroup and ask to join. All threads are private. Only members can see who is in the group.')
@@ -224,11 +235,12 @@ module.exports = {
     page.expectNoElement('.group-form__allow-public-threads')
   },
 
-  'secret subgroup': (test) => {
+  'secret_subgroup': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_secret_group')
     page.click('.subgroups-card__start')
+    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-secret')
     page.expectNoElement('.group-form__joining')
@@ -236,38 +248,41 @@ module.exports = {
     page.expectNoElement('.group-form__allow-public-threads')
   },
 
-  'successfully edits group name and description': (test) => {
+  'successfully_edits_group_name_and_description': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
     page.fillIn('#group-name', 'Clean Dancing Shoes')
-    page.fillIn('.group-form .lmo-textarea textarea', 'Dusty sandles')
+    // TODO: GK: still having trouble with fillIn
+    page.fillIn('.group-form__group-description textarea', 'Dusty sandles')
     page.click('.group-form__submit-button')
     page.expectText('.group-theme__name', 'Clean Dancing Shoes')
     page.expectText('.description-card__text', 'Dusty sandles')
   },
 
-  'displays a validation error when name is blank': (test) => {
+  'displays_a_validation_error_when_name_is_blank': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
     page.fillIn('#group-name', '')
+    // TODO: GK: trouble with .fillIn
     page.click('.group-form__submit-button')
     page.pause()
     page.expectText('.lmo-validation-error', "can't be blank")
   },
 
-  'can be a very open group': (test) => {
+  'can_be_a_very_open_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
     page.click('.group-form__advanced-link')
+    // TODO: GK: advanced settings form not showing up
     page.click('.group-form__privacy-open')
     page.click('.group-form__membership-granted-upon-request')
     page.click('.group-form__members-can-create-subgroups md-checkbox')
@@ -288,13 +303,14 @@ module.exports = {
     page.expectElement('.group-form__members-can-create-subgroups .md-checked')
   },
 
-  'can be a very locked down group': (test) => {
+  'can_be_a_very_locked_down_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
     page.click('.group-form__advanced-link')
+    // TODO: GK: advanced settings form not showing up
     page.click('.group-form__privacy-secret')
     page.click('.group-form__members-can-start-discussions md-checkbox')
     page.click('.group-form__members-can-edit-discussions md-checkbox')
@@ -329,6 +345,7 @@ module.exports = {
     page.click('.group-page-actions__leave-group')
     page.click('.confirm-modal__submit')
     page.pause()
+    // TODO: GK no flash message
     page.expectText('.flash-root__message', 'You have left this group')
     page.expectElement('.group-modal')
     // page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
@@ -342,52 +359,56 @@ module.exports = {
     page.click('.group-page-actions__archive-group')
     page.click('.confirm-modal__submit')
     page.pause()
+    // TODO: GK no flash message
     page.expectText('.flash-root__message', 'This group has been deactivated')
     page.expectElement('.group-modal')
     // page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
   },
 
-  'handles empty draft privacy gracefully': (test) => {
+  'handles_empty_draft_privacy_gracefully': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_empty_draft')
     page.click('.discussions-card__new-thread-button')
+    // TODO: GK: unsure what the context and expected behaviour are for this
     page.expectText('.discussion-privacy-icon', 'The thread will only be visible')
   },
 
-  'successfully starts a discussion': (test) => {
+  'successfully_starts_a_discussion': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.discussions-card__new-thread-button')
     page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
-    page.fillIn('.discussion-form textarea', "I've had the time of my life")
+    page.fillIn('.discussion-form .ProseMirror', "I've had the time of my life")
     page.click('.discussion-form__submit')
     page.expectText('.flash-root__message',('Thread started'))
     page.expectText('.context-panel__heading', 'Nobody puts baby in a corner' )
     page.expectText('.context-panel__description', "I've had the time of my life" )
   },
 
-  'automatically saves drafts': (test) => {
+  'automatically_saves_drafts': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.discussions-card__new-thread-button')
     page.fillIn('.discussion-form__title-input', 'Nobody puts baby in a corner')
-    page.fillIn('.discussion-form textarea', "I've had the time of my life")
-    page.click('.modal-cancel')
+    page.fillIn('.discussion-form .ProseMirror', "I've had the time of my life")
+    page.click('.dismiss-modal-button')
     page.pause()
     page.click('.discussions-card__new-thread-button')
+    // TODO: GK: not really sure how these drafts are saved?
     page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
     page.expectValue('.discussion-form textarea', "I've had the time of my life" )
   },
 
-  'lets you change membership volume': (test) => {
+  'lets_you_change_membership_volume': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__change-volume-link')
+    // TODO: GK: Fix the volume form
     page.click('#volume-loud')
     page.click('.change-volume-form__submit')
     page.expectText('.flash-root__message', 'You will be emailed all activity in this group.')
@@ -399,16 +420,18 @@ module.exports = {
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__change-volume-link')
+    // TODO: GK: Fix the volume form
     page.click('#volume-loud')
     page.click('.change-volume-form__apply-to-all')
     page.click('.change-volume-form__submit')
     page.expectText('.flash-root__message', 'You will be emailed all activity in all your groups.')
   },
 
-  'handles subdomain redirects': (test) => {
+  'handles_subdomain_redirects': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_handle')
+    // TODO: GK: not sure how this redirect works
     page.expectText('.group-theme__name', 'Ghostbusters')
   },
 
