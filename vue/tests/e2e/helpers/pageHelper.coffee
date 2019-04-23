@@ -30,7 +30,7 @@ module.exports = (test) ->
     test.elements 'css selector', '.sidenav-left', (result) =>
       if result.value.length == 0
         test.click('.navbar__sidenav-toggle')
-        @waitFor('.md-sidenav-left')
+        @waitFor('.sidenav-left')
 
   pause: (time = 1000) ->
     test.pause(time)
