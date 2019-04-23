@@ -78,8 +78,9 @@ v-card.group-form
         h1.headline(v-if='!group.isNew()', v-t="'group_form.edit_group_heading'")
       dismiss-modal-button(:close='close')
   v-card-text
-    v-text-field(v-model='group.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255', :label="$t('group_form.group_name')")
-    lmo-textarea(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')")
+    v-text-field#group-name(v-model='group.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255', :label="$t('group_form.group_name')")
+    lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')")
+    validation-errors(:subject="group", field="name")
     .group-form__privacy-statement.lmo-hint-text {{privacyStatement}}
     section.group-form__section.group-form__privacy
       h3.lmo-h3(v-t="'group_form.privacy'")
