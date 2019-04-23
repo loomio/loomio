@@ -187,8 +187,6 @@ module.exports = {
     page.expectText('.flash-root__message', 'Signed in successfully')
     // TODO: GK: once again, group page does not update when user has logged in
     page.expectText('.group-theme__name', 'Secret Dirty Dancing Shoes')
-    page.ensureSidebar()
-    page.expectElement('.sidebar__content')
   },
 
   'can_invite_existing_user': (test) => {

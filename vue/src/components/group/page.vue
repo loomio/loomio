@@ -14,39 +14,41 @@ export default
   mixins: [urlFor]
   data: ->
     group: null
-  created: ->
-    Records.groups.findOrFetch(@$route.params.key, {}, true).then (group) =>
-      @init(group)
-    , (error) ->
-      EventBus.$emit 'pageError', error
   mounted: ->
+    @init()
     EventBus.$emit 'currentComponent', { key: @$route.params.key, page: 'groupPage'}
+    EventBus.$on 'signedIn', => @init()
   methods:
-    init: (group) ->
-      @group = group
-      subscribeTo(@group)
-      Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
+    init: ->
+      Records.groups.findOrFetch(@$route.params.key, {}, true).then (group) =>
+        @group = group
+        subscribeTo(@group)
+        Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
-      maxDiscussions = if AbilityService.canViewPrivateContent(@group)
-        @group.discussionsCount
-      else
-        @group.publicDiscussionsCount
-      @pageWindow = PaginationService.windowFor
-        current:  parseInt(@$route.params.from or 0)
-        min:      0
-        max:      maxDiscussions
-        pageType: 'groupThreads'
+        maxDiscussions = if AbilityService.canViewPrivateContent(@group)
+          @group.discussionsCount
+        else
+          @group.publicDiscussionsCount
 
-      EventBus.$emit 'currentComponent',
-        title: @group.fullName
-        page: 'groupPage'
-        group: @group
-        key: @group.key
-        links:
-          canonical:   LmoUrlService.group(@group, {}, absolute: true)
-          rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
-          prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
-          next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
+        @pageWindow = PaginationService.windowFor
+          current:  parseInt(@$route.params.from or 0)
+          min:      0
+          max:      maxDiscussions
+          pageType: 'groupThreads'
+
+        EventBus.$emit 'currentComponent',
+          title: @group.fullName
+          page: 'groupPage'
+          group: @group
+          key: @group.key
+          links:
+            canonical:   LmoUrlService.group(@group, {}, absolute: true)
+            rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
+            prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
+            next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
+      , (error) ->
+        EventBus.$emit 'pageError', error
+
 
 </script>
 

@@ -7,9 +7,10 @@ import Session from '@/shared/services/session'
 
 export default
   mixins: [AuthModalMixin]
-  created: ->
-    console.log "okokok"
+  mounted: ->
     EventBus.$on('currentComponent', @setCurrentComponent)
+    EventBus.$on 'pageError', (error) =>
+      @openAuthModal() if !Session.isSignedIn() and error.status == 403
 
   methods:
     setCurrentComponent: (options) ->
