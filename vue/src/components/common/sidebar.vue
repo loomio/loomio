@@ -74,7 +74,7 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
+v-navigation-drawer.lmo-no-print.sidenav-left(app, dark, width="250", v-model="showSidebar")
   v-list
     v-list-tile.sidebar__list-item-button--decisions(to='/polls')
       v-list-tile-action
@@ -103,7 +103,7 @@ v-navigation-drawer.lmo-no-print(app, dark, width="250", v-model="showSidebar")
         v-list-tile-title(v-t="'sidebar.start_thread'")
   v-divider.sidebar__divider
   v-list
-    div(v-for='group in orderedGroups', :key='group.id')
+    div.sidebar__groups(v-for='group in orderedGroups', :key='group.id')
       v-list-tile(:to='groupUrl(group)', v-if='group.isParent()')
         v-list-tile-action
           img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo(:src='group.logoUrl()')

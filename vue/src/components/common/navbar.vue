@@ -32,9 +32,10 @@ export default
 <template lang="pug">
   v-toolbar(app)
     //- v-toolbar-side-icon
-    v-btn(icon, @click="toggleSidebar()")
-      v-avatar(tile size="36px")
-        img(:src='icon')
+    .navbar__left
+      v-btn.navbar__sidenav-toggle(icon, @click="toggleSidebar()")
+        v-avatar(tile size="36px")
+          img(:src='icon')
     v-toolbar-title {{title}}
     v-spacer
     v-toolbar-items(v-if='isLoggedIn')
