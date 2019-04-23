@@ -8,6 +8,7 @@ import ModalService             from '@/shared/services/modal_service'
 import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
+import Records from '@/shared/services/records'
 
 
 import { print } from '@/shared/helpers/window'
@@ -45,7 +46,8 @@ export default
     @init()
     # EventBus.listen $scope, 'initActivityCard', -> $scope.init()
   computed:
-    canAddComment: -> AbilityService.canAddComment(@discussion)
+    canAddComment: ->
+      AbilityService.canAddComment(@discussion)
     isLoggedIn: -> Session.isSignedIn()
   methods:
     signIn: -> @openAuthModal()

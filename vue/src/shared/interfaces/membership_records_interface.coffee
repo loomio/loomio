@@ -1,8 +1,14 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import MemberhipModel       from '@/shared/models/membership_model'
+import {includes} from 'lodash'
 
 export default class MemberhipRecordsInterface extends BaseRecordsInterface
   model: MemberhipModel
+
+  forModel: (model) ->
+    @view "membershipsForModel(#{model.constructor.singular}, #{model.id})", (v) ->
+      v.applyWhere (membership) =>
+        includes(model.groupIds(), membership.groupId)
 
   joinGroup: (group) ->
     @remote.post 'join_group', group_id: group.id

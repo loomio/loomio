@@ -52,14 +52,12 @@ export default
 </script>
 
 <template>
-      <div class="blank">
-        <div v-if="!isMember" class="join-group-button">
-          <div v-if="canJoinGroup" class="blank">
-            <button md-button :class="{'btn-block': block}" v-t="'join_group_button.join_group'" @click="joinGroup()" class="md-raised md-primary join-group-button__join-group"></button>
-          </div>
-          <div v-if="canRequestMembership" class="blank">
-            <button md-button :class="{'btn-block': block}" :disabled="hasRequestedMembership" v-t="'join_group_button.join_group'" @click="requestToJoinGroup()" class="md-raised md-primary join-group-button__ask-to-join-group"></button>
-          </div>
-        </div>
-      </div>
+<div v-if="!isMember" class="join-group-button">
+  <div v-if="canJoinGroup" class="blank">
+    <button md-button :class="{'btn-block': block}" v-t="'join_group_button.join_group'" @click="joinGroup()" class="md-raised md-primary join-group-button__join-group"></button>
+  </div>
+  <div v-if="canRequestMembership" class="blank">
+    <button md-button :class="{'btn-block': block}" :disabled="hasRequestedMembership" v-t="'join_group_button.join_group'" @click="requestToJoinGroup()" class="md-raised md-primary join-group-button__ask-to-join-group"></button>
+  </div>
+</div>
 </template>

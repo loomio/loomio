@@ -13,7 +13,7 @@ export default
     placeholder: String
 
   data: ->
-    documents: Records.documents.newAndPersistedDocumentsFor(@model).data()
+    documents: Records.documents.newAndPersistedDocumentsFor(@model)
 
   created: ->
     unless @model.isNew() or @skipFetch
