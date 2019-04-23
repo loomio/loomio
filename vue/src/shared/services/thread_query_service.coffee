@@ -1,6 +1,6 @@
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
-
+import Vue from 'vue'
 export default new class ThreadQueryService
 
   queryFor: (options = {}) ->
@@ -46,7 +46,7 @@ export default new class ThreadQueryService
               {groupId: {$in: userGroupIds}}
             ]
 
-    view
+    Vue.observable(view)
 
   parseTimeOption = (options) ->
     # we pass times in something human-readable like '1 month ago'

@@ -82,7 +82,7 @@ export default
       lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :helptext="helptext" :shouldReset="shouldReset")
       v-card-actions
         v-spacer
-        v-btn(:disabled="!canSubmit" flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
+        v-btn.comment-form__submit-button(:disabled="!canSubmit" flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
 
 </template>
 

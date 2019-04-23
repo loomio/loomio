@@ -40,10 +40,11 @@ export default class BaseRecordsInterface
 
   view: (name, fn) ->
     if !@views[name]
-      # view = @collection.addDynamicView(name, {persistent: true})
-      view = @collection.addDynamicView(name)
+      view = @collection.addDynamicView(name, {persistent: true})
+      # view = @collection.addDynamicView(name)
       fn(view)
       @views[name] = Vue.observable(view)
+    console.log @views[name]
     @views[name].data()
 
   fetch: (args) ->

@@ -33,7 +33,6 @@ module.exports = {
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
-    // TODO: GK: component is not updating after user has logged in
     page.expectText('.context-panel__heading', 'I carried a watermelon')
     page.click('.add-comment-panel__join-actions button')
     page.pause(2000)
@@ -129,8 +128,7 @@ module.exports = {
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
-    // TODO: GK: again, component not updating on login
-    page.fillIn('.comment-form textarea', 'I am new!')
+    page.fillIn('.comment-form .ProseMirror', 'I am new!')
     page.click('.comment-form__submit-button')
     page.pause(2000)
     page.expectText('.flash-root__message', 'Comment added')

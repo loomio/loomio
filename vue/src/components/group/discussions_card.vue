@@ -7,6 +7,7 @@ import ThreadQueryService from '@/shared/services/thread_query_service'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 import { isEmpty, map, throttle } from 'lodash'
+import Session from '@/shared/services/session'
 
 
 export default
@@ -69,6 +70,9 @@ export default
     searchOpen: ->
       if @searchOpen
         this.$nextTick -> document.querySelector('.discussions-card__search--open input').focus()
+    isLoggedIn: ->
+      console.log 'change in login status'
+      @loader.fetchRecords()
   computed:
     loading: ->
       @loader.loadingFirst || @searchThreadsExecuting
@@ -82,6 +86,8 @@ export default
       AbilityService.canViewPrivateContent(@group)
     canStartThread: ->
       AbilityService.canStartThread(@group)
+    isLoggedIn: ->
+      Session.isSignedIn()
 
 </script>
 

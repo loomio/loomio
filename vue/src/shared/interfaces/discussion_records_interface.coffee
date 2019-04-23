@@ -1,9 +1,16 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import DiscussionModel      from '@/shared/models/discussion_model'
-
+import {includes} from 'lodash'
 export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel
-
+  inGroup: (group, options) ->
+    data = @view "inGroup(#{group.id})", (v) =>
+      v.applyWhere (discussion) =>
+        console.log "discussion", discussion.groupId, group.id
+        console.log "wtf", includes(group.organisationIds(), discussion.groupId)
+        includes(group.organisationIds(), discussion.groupId)
+    console.log "data, orgids:",  data, group.organisationIds()
+    data
   search: (groupKey, fragment, options = {}) ->
     options.group_id = groupKey
     options.q = fragment
