@@ -5,8 +5,10 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
 import ModalService   from '@/shared/services/modal_service'
+import AuthModalMixin from '@/mixins/auth_modal'
 
 export default
+  mixins: [AuthModalMixin]
   props:
     group: Object
     block: Boolean
@@ -23,13 +25,13 @@ export default
           EventBus.$emit 'joinedGroup', {group: @group}
           Flash.success('join_group_button.messages.joined_group', group: @group.fullName)
       else
-        ModalService.open 'AuthModal'
+        @openAuthModal()
 
     requestToJoinGroup: ->
       if Session.isSignedIn()
         ModalService.open 'MembershipRequestForm', group: => @group
       else
-        ModalService.open 'AuthModal'
+        @openAuthModal()
 
   computed:
     isMember: ->
@@ -54,10 +56,10 @@ export default
 <template>
 <div v-if="!isMember" class="join-group-button">
   <div v-if="canJoinGroup" class="blank">
-    <button md-button :class="{'btn-block': block}" v-t="'join_group_button.join_group'" @click="joinGroup()" class="md-raised md-primary join-group-button__join-group"></button>
+    <v-btn :class="{'btn-block': block}" v-t="'join_group_button.join_group'" @click="joinGroup()" class="md-raised md-primary join-group-button__join-group"></v-btn>
   </div>
   <div v-if="canRequestMembership" class="blank">
-    <button md-button :class="{'btn-block': block}" :disabled="hasRequestedMembership" v-t="'join_group_button.join_group'" @click="requestToJoinGroup()" class="md-raised md-primary join-group-button__ask-to-join-group"></button>
+    <v-btn md-button :class="{'btn-block': block}" :disabled="hasRequestedMembership" v-t="'join_group_button.join_group'" @click="requestToJoinGroup()" class="md-raised md-primary join-group-button__ask-to-join-group"></v-btn>
   </div>
 </div>
 </template>
