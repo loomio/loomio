@@ -24,12 +24,12 @@ export default
       name: "group_#{@group.key}_pinned"
       group: @group
       filters: ['show_pinned', @filter]
-      overwrite: true
+      # overwrite: true
     discussions: ThreadQueryService.queryFor
       name: "group_#{@group.key}_unpinned"
       group: @group
       filters: ['hide_pinned', @filter]
-      overwrite: true
+      # overwrite: true
     loader: new RecordLoader
       collection: 'discussions'
       params:

@@ -40,6 +40,14 @@ class ApplicationController < ActionController::Base
     head :ok
   end
 
+  def redirect_to(path)
+    if !Rails.env.production? && ENV['USE_VUE']
+      super "http://localhost:8080#{URI(path).path}"
+    else
+      super
+    end
+  end
+
   protected
   def prevent_caching
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate' # HTTP 1.1.

@@ -16,7 +16,7 @@ export default new class ThreadQueryService
   applyFilters = (options) ->
     return view if view = Records.discussions.collection.getDynamicView(options.name)
 
-    view = Records.discussions.collection.addDynamicView(options.name)
+    view = Records.discussions.collection.addDynamicView(options.name, persistent: true)
     view.applyFind(groupId: { $in: options.group.organisationIds() })      if options.group
     view.applyFind(lastActivityAt: { $gt: parseTimeOption(options.from) }) if options.from
     view.applyFind(lastActivityAt: { $lt: parseTimeOption(options.to) })   if options.to

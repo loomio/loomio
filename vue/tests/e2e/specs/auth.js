@@ -172,11 +172,8 @@ module.exports = {
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
-    // GK: TODO: same problem as before - component doesn't react to user being logged in
     page.expectText('.group-theme__name', 'Closed Dirty Dancing Shoes')
     page.expectText('.thread-preview-collection__container', 'This thread is private')
-    page.ensureSidebar()
-    page.expectElement('.sidebar__content')
   },
 
   'can_login_from_a_secret_group_page': (test) => {
