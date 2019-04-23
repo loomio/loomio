@@ -15,7 +15,10 @@ export default
     isDisabled: false
   created: ->
     @submit = submitDiscussion @, @discussion,
-      successCallback: => @close()
+      successCallback: (data) =>
+        discussionKey = data.discussions[0].key
+        @close()
+        @$router.push("/d/#{discussionKey}")
     if @discussion.isNew()
       @showGroupSelect = true
   methods:
@@ -79,6 +82,6 @@ v-card.discussion-form
             discussion-privacy-icon(:discussion='discussion')
   v-card-actions
     .discussion-form-actions.lmo-md-actions
-      v-btn(@click="submit()" ng-disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()" class="md-primary md-raised discussion-form__submit")
-      v-btn(@click="submit()" ng-disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()" class="md-primary md-raised discussion-form__submit")
+      v-btn.discussion-form__submit(@click="submit()" ng-disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()" class="md-primary md-raised discussion-form__submit")
+      v-btn.discussion-form__submit(@click="submit()" ng-disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()" class="md-primary md-raised discussion-form__submit")
 </template>
