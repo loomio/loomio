@@ -17,6 +17,9 @@ de:
     deleted_user: "gelöschter Nutzer"
     placeholder_name: "eingeladener Nutzer (%{hostname})"
     error:
+      sign_in_required_html: |
+          Sie müssen eingeloggt sein um fortfahren zu können.
+          Bitte <a href="/dashboard">melden Sie sich an</a> und aktualisieren Sie diese Seite.
       recaptcha: "Es war uns nicht möglich zu bestätigen, dass du kein Computer bist. Bitte versuche es erneut."
       bad_login: "Sorry, das Passwort passt nicht zu dem, welches wir in unserer Datei haben."
       username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
@@ -68,8 +71,12 @@ de:
     motion:
       must_close_in_future: Vorschlag muss in der Zukunft enden.
       one_at_a_time: Es gibt einen weiteren aktiven Vorschlag.
+  subscriptions:
+    active: Aktiv
+    inactive: Inaktiv
   user_mailer:
     group_export_ready:
+      subject: Daten für Gruppe %{group_name} exportieren
       body_html: |
           Daten für deine Gruppe können <a href="%{url}">hier</a> heruntergeladen werden. Bitte beachte, dass dieser link in einer Woche abläuft.
     accounts_merged:
@@ -573,6 +580,9 @@ de:
     dot_vote:
       title: "Was ist unsere Unternehmensstrategie für das nächste Quartal?"
       details: Dies ist ein großes Jahr für unser Unternehmen und wir müssen strategisch darauf achten, wofür wir unsere begrenzten Ressourcen einsetzen. Bitte geben Sie an, auf welche Bereiche Sie sich im nächsten Quartal konzentrieren sollten.
+    score:
+      title: "Welche Themen interessieren dich für die nächste Konferenz?"
+      details: Wir bereiten die Themen vor, die an der nächsten Konferenz besprochen werden sollen. Bitte gib an, welche der folgenden Themen dich interessieren.
     ranked_choice:
       title: "Wer sollte unser nächster stellvertretender Bürgermeister sein?"
       details: "Es ist Zeit für unsere halbjährlichen Wahlen! Dies ist eine offizielle Instant-Runoff-Umfrage, die unseren nächsten stellvertretenden Bürgermeister bestimmen wird. Überzeugen Sie sich bei jedem Kandidaten auf unserer Website!"
@@ -589,6 +599,16 @@ de:
     helptext: Du wirst keine Mails mehr zu dieser Entscheidung erhalten.
     visit_poll: Umfrage ansehen
     go_to_dashboad: zum Dashboard
+  microsoft:
+    section_title: "[%{title}](%{url})"
+    new_discussion: "Neue Diskussion in %{group}"
+    new_comment: "Neuer Kommentar in %{group}"
+    outcome_created: "Ergebnis veröffentlicht in %{group}"
+    poll_created: "Neue Abstimmung (%{poll_type}) in %{group}"
+    stance_created: "Neue Antwort zu %{poll}"
+    poll_closing_soon: "%{poll_type} wird in 24 Stunden geschlossen"
+    poll_expired: "%{poll_type} wurde geschlossen"
+    group_identity_created: "Ereignisse aus %{group} werden nun in diesem Channel angezeigt"
   slack:
     new_discussion: "Neuer Diskussion in *%{group}*: *%{discussion}*"
     outcome_created: "Ergebnis wurde in *%{group}* gepostet: *%{poll}*"
