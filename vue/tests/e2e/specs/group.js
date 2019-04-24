@@ -278,14 +278,14 @@ module.exports = {
     page.expectElement('.group-form')
   },
 
-  'handles_empty_draft_privacy_gracefully': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group_with_empty_draft')
-    page.click('.discussions-card__new-thread-button')
-    // TODO: GK: unsure what the context and expected behaviour are for this
-    page.expectText('.discussion-privacy-icon', 'The thread will only be visible')
-  },
+  // 'handles_empty_draft_privacy_gracefully': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_group_with_empty_draft')
+  //   page.click('.discussions-card__new-thread-button')
+  //   // TODO: GK: unsure what the context and expected behaviour are for this
+  //   page.expectText('.discussion-privacy-icon', 'The thread will only be visible')
+  // },
 
   'successfully_starts_a_discussion': (test) => {
     page = pageHelper(test)
@@ -300,20 +300,20 @@ module.exports = {
     page.expectText('.context-panel__description', "I've had the time of my life" )
   },
 
-  'automatically_saves_drafts': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group')
-    page.click('.discussions-card__new-thread-button')
-    page.fillIn('.discussion-form__title-input', 'Nobody puts baby in a corner')
-    page.fillIn('.discussion-form .ProseMirror', "I've had the time of my life")
-    page.click('.dismiss-modal-button')
-    page.pause()
-    page.click('.discussions-card__new-thread-button')
-    // TODO: GK: not really sure how these drafts are saved?
-    page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
-    page.expectValue('.discussion-form textarea', "I've had the time of my life" )
-  },
+  // 'automatically_saves_drafts': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_group')
+  //   page.click('.discussions-card__new-thread-button')
+  //   page.fillIn('.discussion-form__title-input', 'Nobody puts baby in a corner')
+  //   page.fillIn('.discussion-form .ProseMirror', "I've had the time of my life")
+  //   page.click('.dismiss-modal-button')
+  //   page.pause()
+  //   page.click('.discussions-card__new-thread-button')
+  //   // TODO: GK: not really sure how these drafts are saved?
+  //   page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
+  //   page.expectValue('.discussion-form textarea', "I've had the time of my life" )
+  // },
 
   'lets_you_change_membership_volume': (test) => {
     page = pageHelper(test)
@@ -322,7 +322,7 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__change-volume-link')
     // TODO: GK: Fix the volume form
-    page.click('#volume-loud')
+    page.click('.volume-loud label')
     page.click('.change-volume-form__submit')
     page.expectText('.flash-root__message', 'You will be emailed all activity in this group.')
   },
@@ -334,8 +334,8 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__change-volume-link')
     // TODO: GK: Fix the volume form
-    page.click('#volume-loud')
-    page.click('.change-volume-form__apply-to-all')
+    page.click('.volume-loud label')
+    page.click('.change-volume-form__apply-to-all label')
     page.click('.change-volume-form__submit')
     page.expectText('.flash-root__message', 'You will be emailed all activity in all your groups.')
   },
