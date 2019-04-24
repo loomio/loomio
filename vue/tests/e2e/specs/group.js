@@ -321,7 +321,6 @@ module.exports = {
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__change-volume-link')
-    // TODO: GK: Fix the volume form
     page.click('.volume-loud label')
     page.click('.change-volume-form__submit')
     page.expectText('.flash-root__message', 'You will be emailed all activity in this group.')
@@ -333,7 +332,6 @@ module.exports = {
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__change-volume-link')
-    // TODO: GK: Fix the volume form
     page.click('.volume-loud label')
     page.click('.change-volume-form__apply-to-all label')
     page.click('.change-volume-form__submit')
