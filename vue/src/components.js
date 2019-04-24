@@ -50,6 +50,7 @@ module.exports = {
   Loading: 'common/loading',
   MatrixChart: 'poll/meeting/matrix_chart',
   MembershipCard: 'group/membership_card',
+  MembershipRequestForm: 'group/membership_request_form',
   MembershipRequestsCard: 'group/membership_requests_card',
   ModalLauncher: 'modal/launcher',
   ModalTemplate: 'modal/template',

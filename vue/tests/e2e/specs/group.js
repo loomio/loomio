@@ -46,8 +46,7 @@ module.exports = {
 
     page.loadPath('view_closed_group_as_non_member')
     page.click('.join-group-button__ask-to-join-group')
-    // TODO: GK: membership request form component needs to be converted
-    page.fillIn('.membership-request-form__introduction', 'I have a reason')
+    page.fillIn('.membership-request-form__introduction textarea', 'I have a reason')
     page.click('.membership-request-form__submit-btn')
     page.expectText('.flash-root__message', 'You have requested membership')
   },
@@ -339,14 +338,6 @@ module.exports = {
     page.click('.change-volume-form__apply-to-all')
     page.click('.change-volume-form__submit')
     page.expectText('.flash-root__message', 'You will be emailed all activity in all your groups.')
-  },
-
-  'handles_subdomain_redirects': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group_with_handle')
-    // TODO: GK: not sure how this redirect works
-    page.expectText('.group-theme__name', 'Ghostbusters')
   },
 
   'handles_advanced_group_settings': (test) => {
