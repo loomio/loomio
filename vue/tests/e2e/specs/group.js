@@ -144,12 +144,11 @@ module.exports = {
     page.expectNoElement('.group-form__parent-members-can-see-discussions')
   },
 
-  'closed subgroup': (test) => {
+  'closed_subgroup': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
     page.click('.subgroups-card__start')
-    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-closed')
     page.expectNoElement('.group-form__joining')
@@ -162,83 +161,6 @@ module.exports = {
 
     page.loadPath('setup_open_group')
     page.click('.subgroups-card__start')
-    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
-    page.click('.group-form__advanced-link')
-    page.click('.group-form__privacy-secret')
-    page.expectNoElement('.group-form__joining')
-    page.expectNoElement('.group-form__parent-members-can-see-discussions')
-    page.expectNoElement('.group-form__allow-public-threads')
-  },
-
-  'open_subgroup': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_closed_group')
-    page.click('.subgroups-card__start')
-    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
-    page.click('.group-form__advanced-link')
-    page.click('.group-form__privacy-open')
-    page.expectElement('.group-form__joining')
-    page.expectNoElement('.group-form__allow-public-threads')
-    page.expectNoElement('.group-form__parent-members-can-see-discussions')
-  },
-
-  'closed_subgroup': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_closed_group')
-    page.click('.subgroups-card__start')
-    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
-    page.click('.group-form__advanced-link')
-    page.click('.group-form__privacy-closed')
-    page.expectNoElement('.group-form__joining')
-    page.expectElement('.group-form__parent-members-can-see-discussions')
-    page.expectElement('.group-form__allow-public-threads')
-  },
-
-  'secret_subgroup': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_closed_group')
-    page.click('.subgroups-card__start')
-    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
-    page.click('.group-form__advanced-link')
-    page.click('.group-form__privacy-secret')
-    page.expectNoElement('.group-form__joining')
-    page.expectNoElement('.group-form__parent-members-can-see-discussions')
-    page.expectNoElement('.group-form__allow-public-threads')
-  },
-
-  'open_subgroup': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_secret_group')
-    page.click('.subgroups-card__start')
-    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
-    page.click('.group-form__advanced-link')
-    page.expectNoElement('.group-form__privacy-open')
-  },
-
-  'closed_subgroup': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_secret_group')
-    page.click('.subgroups-card__start')
-    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
-    page.click('.group-form__advanced-link')
-    page.click('.group-form__privacy-closed')
-    page.expectText('.group-form__privacy', 'Members of Secret Dirty Dancing Shoes can find this subgroup and ask to join. All threads are private. Only members can see who is in the group.')
-    page.expectNoElement('.group-form__joining')
-    page.expectElement('.group-form__parent-members-can-see-discussions')
-    page.expectNoElement('.group-form__allow-public-threads')
-  },
-
-  'secret_subgroup': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_secret_group')
-    page.click('.subgroups-card__start')
-    // TODO: GK: add subgroup button doesn't work and there's probably no modal setup
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-secret')
     page.expectNoElement('.group-form__joining')

@@ -5,9 +5,10 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import urlFor         from '@/mixins/url_for'
 import truncate       from '@/mixins/truncate'
+import GroupModalMixin from '@/mixins/group_modal'
 
 export default
-  mixins: [urlFor, truncate]
+  mixins: [urlFor, truncate, GroupModalMixin]
   props:
     group: Object
   created: ->
@@ -24,7 +25,8 @@ export default
       AbilityService.canCreateSubgroups(@group)
 
     startSubgroup: ->
-       ModalService.open 'GroupModal', group: => Records.groups.build(parentId: @group.id)
+      @openStartSubgroupModal(@group)
+      
 </script>
 
 <template lang="pug">
