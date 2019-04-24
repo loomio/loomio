@@ -55,7 +55,7 @@ export default
       page: 'dashboardPage'
       # filter: $routeParams.filter
     @loader.fetchRecords().then => @dashboardLoaded = true
-    @openStartGroupModal if @noGroups && @canStartGroup()
+    @openStartGroupModal() if @promptStart
   methods:
     viewName: (name) ->
       if @filter == 'show_muted'
@@ -75,7 +75,8 @@ export default
     viewNames: -> keys(@views)
     loadingViewNames: -> take @viewNames, 3
     noGroups: -> !Session.user().hasAnyGroups()
-    promptStart: -> !Session.user().hasAnyGroups() && AbilityService.canStartGroups()
+    promptStart: ->
+      @noGroups && AbilityService.canStartGroups()
     noThreads: -> every @views, (view) => !view.any()
     userHasMuted: -> Session.user().hasExperienced("mutingThread")
     showLargeImage: -> true

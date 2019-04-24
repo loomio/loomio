@@ -26,3 +26,6 @@ export default
                       props: {
                         group: Records.groups.build(parentId: group.id)
                       })
+
+    closeModal: ->
+      EventBus.$emit('closeModal')

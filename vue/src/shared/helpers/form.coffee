@@ -150,7 +150,6 @@ success = (scope, model, options) ->
     if options.flashSuccess?
       flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
       Flash.success flashKey, calculateFlashOptions(options.flashOptions)
-    scope.$close()                if !options.skipClose? and typeof scope.$close is 'function'
     options.successCallback(data) if typeof options.successCallback is 'function'
 
 failure = (scope, model, options) ->

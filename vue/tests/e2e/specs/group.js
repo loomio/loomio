@@ -91,7 +91,6 @@ module.exports = {
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-open')
     page.click('.group-form__advanced-link')
-    // TODO: GK: advanced settings form not showing up
     page.expectElement('.group-form__joining')
     page.expectNoElement('.group-form__allow-public-threads')
 
@@ -108,7 +107,6 @@ module.exports = {
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-closed')
     page.click('.group-form__advanced-link')
-    // TODO: GK: advanced settings form not showing up
     page.expectNoElement('.group-form__joining')
     page.expectElement('.group-form__allow-public-threads')
 
@@ -285,7 +283,7 @@ module.exports = {
     // TODO: GK: advanced settings form not showing up
     page.click('.group-form__privacy-open')
     page.click('.group-form__membership-granted-upon-request')
-    page.click('.group-form__members-can-create-subgroups md-checkbox')
+    page.click('.group-form__members-can-create-subgroups')
     page.click('.group-form__submit-button')
 
     // confirm privacy change
@@ -297,10 +295,10 @@ module.exports = {
     page.click('.group-form__advanced-link')
 
     // confirm the settings have stuck
-    page.expectElement('.group-form__privacy-open.md-checked')
-    page.expectElement('.group-form__membership-granted-upon-request.md-checked')
-    page.expectElement('.group-form__members-can-add-members .md-checked')
-    page.expectElement('.group-form__members-can-create-subgroups .md-checked')
+    page.expectElement('.group-form__privacy-open input[aria-checked="true"]')
+    page.expectElement('.group-form__membership-granted-upon-request input[aria-checked="true"]')
+    page.expectElement('.group-form__members-can-add-members input[aria-checked="true"]')
+    page.expectElement('.group-form__members-can-create-subgroups input[aria-checked="true"]')
   },
 
   'can_be_a_very_locked_down_group': (test) => {
@@ -345,10 +343,8 @@ module.exports = {
     page.click('.group-page-actions__leave-group')
     page.click('.confirm-modal__submit')
     page.pause()
-    // TODO: GK no flash message
     page.expectText('.flash-root__message', 'You have left this group')
-    page.expectElement('.group-modal')
-    // page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
+    page.expectElement('.group-form')
   },
 
   'allows_a_coordinator_to_archive_a_group': (test) => {
@@ -359,10 +355,8 @@ module.exports = {
     page.click('.group-page-actions__archive-group')
     page.click('.confirm-modal__submit')
     page.pause()
-    // TODO: GK no flash message
     page.expectText('.flash-root__message', 'This group has been deactivated')
-    page.expectElement('.group-modal')
-    // page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
+    page.expectElement('.group-form')
   },
 
   'handles_empty_draft_privacy_gracefully': (test) => {
