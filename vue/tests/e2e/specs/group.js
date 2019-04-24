@@ -216,10 +216,10 @@ module.exports = {
     page.click('.group-form__advanced-link')
 
     // confirm the settings have stuck
-    page.expectElement('.group-form__privacy-open input[aria-checked="true"]')
-    page.expectElement('.group-form__membership-granted-upon-request input[aria-checked="true"]')
-    page.expectElement('.group-form__members-can-add-members input[aria-checked="true"]')
-    page.expectElement('.group-form__members-can-create-subgroups input[aria-checked="true"]')
+    page.expectElementNow('.group-form__privacy-open input[aria-checked="true"]')
+    page.expectElementNow('.group-form__membership-granted-upon-request input[aria-checked="true"]')
+    page.expectElementNow('.group-form__members-can-add-members input[aria-checked="true"]')
+    page.expectElementNow('.group-form__members-can-create-subgroups input[aria-checked="true"]')
   },
 
   'can_be_a_very_locked_down_group': (test) => {
@@ -246,7 +246,7 @@ module.exports = {
     page.click('.group-form__advanced-link')
 
     // confirm the settings have stuck
-    page.expectElement('.group-form__privacy-secret input[aria-checked="true"]')
+    page.expectElementNow('.group-form__privacy-secret input[aria-checked="true"]')
     page.expectNoElement('.group-form__members-can-start-discussions input[aria-checked="true"]')
     page.expectNoElement('.group-form__members-can-edit-discussions input[aria-checked="true"]')
     page.expectNoElement('.group-form__members-can-edit-comments input[aria-checked="true"]')

@@ -14,6 +14,9 @@ module.exports = (test) ->
     @waitFor(selector, wait)
     test.expect.element(selector).to.be.present
 
+  expectElementNow: (selector) ->
+    test.expect.element(selector).to.be.present
+
   expectNoElement: (selector, wait = 1000) ->
     test.expect.element(selector).to.not.be.present.after(wait)
 
