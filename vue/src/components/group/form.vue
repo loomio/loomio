@@ -100,7 +100,7 @@ v-card.group-form
     .group-form__advanced(v-if='isExpanded')
       section.group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
         h3.lmo-h3(v-t="'group_form.how_do_people_join'")
-        v-radio-group(ng-model='group.membershipGrantedUpon')
+        v-radio-group(v-model='group.membershipGrantedUpon')
           v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
             template(slot='label')
               span(v-t="'group_form.membership_granted_upon_' + granted")

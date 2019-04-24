@@ -280,10 +280,9 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
     page.click('.group-form__advanced-link')
-    // TODO: GK: advanced settings form not showing up
-    page.click('.group-form__privacy-open')
-    page.click('.group-form__membership-granted-upon-request')
-    page.click('.group-form__members-can-create-subgroups')
+    page.click('.group-form__privacy-open label')
+    page.click('.group-form__membership-granted-upon-request label')
+    page.click('.group-form__members-can-create-subgroups label')
     page.click('.group-form__submit-button')
 
     // confirm privacy change
@@ -308,13 +307,12 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
     page.click('.group-form__advanced-link')
-    // TODO: GK: advanced settings form not showing up
     page.click('.group-form__privacy-secret')
-    page.click('.group-form__members-can-start-discussions md-checkbox')
-    page.click('.group-form__members-can-edit-discussions md-checkbox')
-    page.click('.group-form__members-can-edit-comments md-checkbox')
-    page.click('.group-form__members-can-raise-motions md-checkbox')
-    page.click('.group-form__members-can-vote md-checkbox')
+    page.click('.group-form__members-can-start-discussions label')
+    page.click('.group-form__members-can-edit-discussions label')
+    page.click('.group-form__members-can-edit-comments label')
+    page.click('.group-form__members-can-raise-motions label')
+    page.click('.group-form__members-can-vote label')
     page.click('.group-form__submit-button')
 
     // confirm privacy change
@@ -326,12 +324,12 @@ module.exports = {
     page.click('.group-form__advanced-link')
 
     // confirm the settings have stuck
-    page.expectElement('.group-form__privacy-secret.md-checked')
-    page.expectNoElement('.group-form__members-can-start-discussions .md-checked')
-    page.expectNoElement('.group-form__members-can-edit-discussions .md-checked')
-    page.expectNoElement('.group-form__members-can-edit-comments .md-checked')
-    page.expectNoElement('.group-form__members-can-raise-motions .md-checked')
-    page.expectNoElement('.group-form__members-can-vote .md-checked')
+    page.expectElement('.group-form__privacy-secret input[aria-checked="true"]')
+    page.expectNoElement('.group-form__members-can-start-discussions input[aria-checked="true"]')
+    page.expectNoElement('.group-form__members-can-edit-discussions input[aria-checked="true"]')
+    page.expectNoElement('.group-form__members-can-edit-comments input[aria-checked="true"]')
+    page.expectNoElement('.group-form__members-can-raise-motions input[aria-checked="true"]')
+    page.expectNoElement('.group-form__members-can-vote input[aria-checked="true"]')
   },
 
   'allows_group_members_to_leave_the_group': (test) => {
