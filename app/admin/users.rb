@@ -117,7 +117,8 @@ ActiveAdmin.register User do
     end
 
     panel("Identities") do
-      table_for user.identities.each do |m|
+      table_for user.identities.each do |identity|
+        column :id
         column :identity_type
         column :uid
         column :name
