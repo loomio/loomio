@@ -3,9 +3,11 @@ import AbilityService from '@/shared/services/ability_service'
 import ThreadService from '@/shared/services/thread_service'
 import Session from '@/shared/services/session'
 import DiscussionModalMixin from '@/mixins/discussion_modal'
+import ConfirmModalMixin from '@/mixins/confirm_modal'
+import LmoUrlService from '@/shared/services/lmo_url_service'
 
 export default
-  mixins: [ DiscussionModalMixin ]
+  mixins: [ DiscussionModalMixin, ConfirmModalMixin ]
   props:
     discussion: Object
   # data: ->
@@ -64,14 +66,15 @@ export default
       AbilityService.canDeleteThread(@discussion)
 
     deleteThread: ->
-      ModalService.open 'ConfirmModal', confirm: ->
+      @openConfirmModal(
         submit:     @discussion.destroy
         text:
           title:    'delete_thread_form.title'
           helptext: 'delete_thread_form.body'
           submit:   'delete_thread_form.confirm'
           flash:    'delete_thread_form.messages.success'
-        redirect:   LmoUrlService.group $scope.discussion.group()
+        redirect:   LmoUrlService.group @discussion.group()
+      )
 </script>
 <template lang="pug">
 .context-panel-dropdown.pull-right.lmo-no-print
