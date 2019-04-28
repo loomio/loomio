@@ -27,7 +27,7 @@ class ReceivedEmail
   end
 
   def receiving_address_local_part
-    receiving_address.split('@').first
+    receiving_address.to_s.split('@').first
   end
 
   def headers
@@ -59,7 +59,7 @@ class ReceivedEmail
   end
 
   def receiving_address
-    params['to'].find{|contact| contact['address'].ends_with?(ENV['REPLY_HOSTNAME'])}['address']
+    Array(params['to']).find{|contact| contact['address'].ends_with?(ENV['REPLY_HOSTNAME'])}&.fetch('address', nil)
   end
 
   #  these methods below were extracted from Griddler. Thank you.

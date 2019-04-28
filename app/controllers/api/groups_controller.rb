@@ -7,6 +7,10 @@ class API::GroupsController < API::RestfulController
     respond_with_resource scope: {include_token: true}
   end
 
+  def suggest_handle
+    render json: { handle: service.suggest_handle(name: params[:name], parent_handle: params[:parent_handle])  }
+  end
+
   def show
     self.resource = load_and_authorize(:formal_group)
     respond_with_resource

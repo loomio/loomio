@@ -31,7 +31,7 @@ describe UserMailer do
     end
 
     it 'assigns confirmation_url for email body' do
-      @mail.body.encoded.should match(@group.key)
+      @mail.body.encoded.should match(@group.handle)
     end
 
   end

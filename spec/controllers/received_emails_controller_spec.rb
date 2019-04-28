@@ -25,8 +25,9 @@ describe ReceivedEmailsController do
 
     it "replies with error if your email is not recognised" do
       post :create,
-           params: {mailinMsg:
-                     {from: [{ name: "Ulrich Unknown",
+           params: {mailinMsg: {
+                     to: [],
+                     from: [{ name: "Ulrich Unknown",
                                address: "urlich@example.com" }]}}
 
       expect(response.status).to eq 200
