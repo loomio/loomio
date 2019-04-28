@@ -57,7 +57,6 @@ v-card.discussion-form
       v-flex(shrink)
         dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
-    span {{ discussion }}
     .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !discussion.isForking()')
     .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEvents.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
     .md-block(v-show='showGroupSelect')

@@ -118,7 +118,7 @@ export default
 </script>
 
 <template lang="pug">
-v-list-tile.thread-preview(:to='urlFor(thread)', md-colors="{'border-color': 'primary-500'}", :class="{'thread-preview__link--unread': thread.isUnread()}")
+v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)', md-colors="{'border-color': 'primary-500'}", :class="{'thread-preview__link--unread': thread.isUnread()}")
   v-list-tile-avatar
     user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium')
     poll-common-chart-preview(v-if='thread.activePoll()', :poll='thread.activePoll()')
