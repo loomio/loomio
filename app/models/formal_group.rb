@@ -14,7 +14,7 @@ class FormalGroup < Group
   validate :limit_inheritance
   validates :subscription, absence: true, if: :is_subgroup?
   validate :handle_is_valid
-  validates :handle, uniqueness: true
+  validates :handle, uniqueness: true, allow_nil: true
 
 
   scope :parents_only, -> { where(parent_id: nil) }
