@@ -20,6 +20,7 @@ module.exports = {
   ContactRequestForm: 'contact/request_form',
   ContactRequestModal: 'contact/request_modal',
   ContextPanel: 'thread/context_panel',
+  ContextPanelDropdown: 'thread/context_panel_dropdown',
   CurrentPollsCard: 'group/current_polls_card',
   DecisionToolsCard: 'thread/decision_tools_card',
   DiscussionForkActions: 'discussion/fork_actions',

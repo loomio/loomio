@@ -81,7 +81,7 @@ v-card-text.context-panel
         span(v-if='!discussion.translation') {{discussion.title}}
         span(v-if='discussion.translation')
           translation(:model='discussion', field='title')
-    // <context_panel_dropdown discussion="discussion"></context_panel_dropdown>
+    context-panel-dropdown(:discussion="discussion")
   v-layout.context-panel__details(align-center)
     user-avatar.lmo-margin-right(:user='discussion.author()', size='medium')
     span
