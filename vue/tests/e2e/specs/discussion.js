@@ -6,6 +6,7 @@ module.exports = {
     page = pageHelper(test)
     page.loadPath('setup_start_thread_form_from_url')
     // TODO: GK: where did the old client pull the stuff out of params?
+    // start discussion page controller
     page.expectText('discussion_form', "Dirty Dancing Shoes")
     page.expectValue('.discussion-form__title-input', "testing title")
   },
@@ -38,7 +39,7 @@ module.exports = {
     page.expectElement('.timeago')
   },
 
-  'can close and reopen a thread': (test) => {
+  'can_close_and_reopen_a_thread': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_open_and_closed_discussions')
@@ -52,25 +53,26 @@ module.exports = {
     page.click('.context-panel-dropdown__option--close')
     page.expectText('.flash-root__message', 'Thread closed')
     page.click('.flash-root__action')
+    // TODO: GK: implement flash action
     page.expectText('.flash-root__message', 'Thread reopened')
   },
 
-  'doesnt store drafts after submission': (test) => {
-    page = pageHelper(test)
+  // 'doesnt store drafts after submission': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.fillIn('.comment-form textarea', 'This is a comment')
+  //   page.click('.comment-form__submit-button')
+  //   page.expectNoText('.comment-form textarea', 'This is a comment')
+  // },
 
-    page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', 'This is a comment')
-    page.click('.comment-form__submit-button')
-    page.expectNoText('.comment-form textarea', 'This is a comment')
-  },
-
-  'lets you edit title, context and privacy': (test) => {
+  'lets_you_edit_title,_context_and_privacy': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
     page.click('.context-panel-dropdown__button')
-    page.click('.context-panel-dropdown__option--edit')
-    page.fillIn('.discussion-form__title-input', 'better title')
+    page.click('.context-panel-dropdown__option--edit a')
+    page.fillIn('.discussion-form__title-input input', 'better title')
     page.fillIn('.discussion-form textarea', 'improved description')
     page.click('.discussion-form__private')
     page.click('.discussion-form__submit')
