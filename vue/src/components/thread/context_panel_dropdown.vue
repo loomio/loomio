@@ -4,10 +4,11 @@ import ThreadService from '@/shared/services/thread_service'
 import Session from '@/shared/services/session'
 import DiscussionModalMixin from '@/mixins/discussion_modal'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
+import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 
 export default
-  mixins: [ DiscussionModalMixin, ConfirmModalMixin ]
+  mixins: [ DiscussionModalMixin, ConfirmModalMixin, ChangeVolumeModalMixin ]
   props:
     discussion: Object
   # data: ->
@@ -16,7 +17,7 @@ export default
       AbilityService.canChangeVolume(@discussion)
 
     openChangeVolumeForm: ->
-      ModalService.open 'ChangeVolumeForm', model: => @discussion
+      @openChangeVolumeModal(@discussion)
 
     canEditThread: ->
       AbilityService.canEditThread(@discussion)

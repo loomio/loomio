@@ -165,27 +165,27 @@ module.exports = {
     page.expectNoText('.discussions-card', 'What star sign are you?')
   },
 
-  'can pin from the discussion page': (test) => {
+  'can_pin_from_the_discussion_page': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
     page.click('.context-panel-dropdown__button')
-    page.click('.context-panel-dropdown__option--pin button')
+    page.click('.context-panel-dropdown__option--pin')
 
-    page.expectText('.confirm-modal', 'Pinned threads always appear')
+    page.expectText('.confirm-modal', 'Pin thread')
     page.click('.confirm-modal__submit')
 
     page.expectText('.flash-root__message', 'Thread pinned')
     page.expectElement('.context-panel__status .mdi-pin')
   },
 
-  'lets you change thread volume': (test) => {
+  'lets_you_change_thread_volume': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--email-settings')
-    page.click('#volume-loud')
+    page.click('.volume-loud')
     page.click('.change-volume-form__submit')
     page.expectText('.flash-root__message', 'You will be emailed activity in this thread.')
   },
