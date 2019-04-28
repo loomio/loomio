@@ -90,28 +90,32 @@ module.exports = {
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--edit')
 
-    page.fillIn('.discussion-form__title-input', 'dumb title')
+    page.fillIn('.discussion-form__title-input input', 'dumb title')
     page.fillIn('.discussion-form textarea', 'rubbish description')
 
-    page.click('.discussion-modal .modal-cancel')
+    page.click('.dismiss-modal-button')
+
+    // TODO: GK: cancel changes?
 
     page.pause()
 
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--edit')
 
-    page.expectNoText('.discussion-form__title-input', 'dumb title')
+    page.expectNoText('.discussion-form__title-input input', 'dumb title')
     page.expectNoText('.discussion-form textarea', 'rubbish description')
+
+    // TODO: GK: these last two assertions don't work properly
   },
 
-  'can display an unread content line': (test) => {
+  'can_display_an_unread_content_line': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_unread_discussion')
     page.expectElement('.thread-item--unread')
   },
 
-  'lets you mute and unmute': (test) => {
+  'lets_you_mute_and_unmute': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_multiple_discussions')
