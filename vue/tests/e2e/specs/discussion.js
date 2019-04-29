@@ -249,45 +249,46 @@ module.exports = {
     page.expectText('.new-comment', 'hi this is my comment', 8000)
   },
 
-  'can add emojis': (test) => {
+  // 'can add emojis': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.fillIn('.comment-form textarea', 'Here is a dragon!')
+  //   page.click('.comment-form .emoji-picker__toggle')
+  //   page.fillIn('.md-open-menu-container.md-active .emoji-picker__search input', 'dragon_face')
+  //   page.pause(250)
+  //   page.click('.md-open-menu-container.md-active .emoji-picker__link')
+  //   page.pause(250)
+  //   page.click('.comment-form__submit-button')
+  //   page.expectText('.new-comment .thread-item__body','Here is a dragon!')
+  //   page.expectElement('.new-comment .thread-item__body img')
+  // },
+
+  'replies_to_a_comment': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', 'Here is a dragon!')
-    page.click('.comment-form .emoji-picker__toggle')
-    page.fillIn('.md-open-menu-container.md-active .emoji-picker__search input', 'dragon_face')
-    page.pause(250)
-    page.click('.md-open-menu-container.md-active .emoji-picker__link')
-    page.pause(250)
-    page.click('.comment-form__submit-button')
-    page.expectText('.new-comment .thread-item__body','Here is a dragon!')
-    page.expectElement('.new-comment .thread-item__body img')
-  },
-
-  'replies to a comment': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', 'original comment right heerrr')
+    page.fillIn('.comment-form .ProseMirror', 'original comment right heerrr')
     page.click('.comment-form__submit-button')
     page.click('.action-dock__button--reply_to_comment')
-    page.fillIn('.comment-form textarea', 'hi this is my comment')
+    page.fillIn('.comment-form .ProseMirror', 'hi this is my comment')
     page.click('.comment-form__submit-button')
+    // TODO: GK: nested comment not showing up
     page.expectText('.thread-item--indent .new-comment__body', 'hi this is my comment')
     page.expectText('.flash-root__message', 'Patrick Swayze notified of reply')
   },
 
-  'can react to a comment': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.expectNoElement('.reaction')
-    page.click('.action-dock__button--react')
-    page.click('.md-active .emoji-picker__link:first-child')
-    page.pause()
-    page.click('.action-dock__button--react')
-    page.expectElement('.reaction__emoji', 10000)
-  },
+  // 'can react to a comment': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.expectNoElement('.reaction')
+  //   page.click('.action-dock__button--react')
+  //   page.click('.md-active .emoji-picker__link:first-child')
+  //   page.pause()
+  //   page.click('.action-dock__button--react')
+  //   page.expectElement('.reaction__emoji', 10000)
+  // },
 
   // 'mentions a user': (test) => {
   //   page = pageHelper(test)
@@ -301,52 +302,54 @@ module.exports = {
   //   page.expectText('.new-comment', '@jennifergrey')
   // },
 
-  'edits a comment': (test) => {
+  'edits_a_comment': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', 'original comment right hur')
+    page.fillIn('.comment-form .ProseMirror', 'original comment right hur')
     page.click('.comment-form__submit-button')
     page.click('.action-dock__button--edit_comment')
-    page.fillIn('.edit-comment-form textarea', 'edited comment right thur')
+    page.fillIn('.edit-comment-form .ProseMirror', 'edited comment right thur')
     page.click('.edit-comment-form .comment-form__submit-button')
+    page.pause()
     page.expectText('.new-comment', 'edited comment right thur')
   },
 
-  'lets_you_view_comment_revision_history': (test) => {
-    page = pageHelper(test)
+  // 'lets_you_view_comment_revision_history': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_comment_with_versions')
+  //   page.click('.action-dock__button--show_history')
+  //   page.expectText('.revision-history-nav', 'Latest')
+  //   page.expectText('.revision-history-content--markdown del', 'star')
+  //   page.expectText('.revision-history-content--markdown ins', 'moon')
+  //   page.click('.revision-history-nav--previous')
+  //   page.expectText('.revision-history-nav', 'Original')
+  //   page.expectText('.revision-history-content--markdown', 'What star sign are you?')
+  // },
+  //
+  // 'lets_you_view_discussion_revision_history': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion_with_versions')
+  //   page.click('.action-dock__button--show_history')
+  //   page.expectText('.revision-history-nav', 'Latest')
+  //   page.expectText('.revision-history-content--header del', 'star')
+  //   page.expectText('.revision-history-content--header ins', 'moon')
+  //   page.click('.revision-history-nav--previous')
+  //   page.expectText('.revision-history-nav', 'Original')
+  //   page.expectText('.revision-history-content--header ins', 'What star sign are you?')
+  // },
 
-    page.loadPath('setup_comment_with_versions')
-    page.click('.action-dock__button--show_history')
-    page.expectText('.revision-history-nav', 'Latest')
-    page.expectText('.revision-history-content--markdown del', 'star')
-    page.expectText('.revision-history-content--markdown ins', 'moon')
-    page.click('.revision-history-nav--previous')
-    page.expectText('.revision-history-nav', 'Original')
-    page.expectText('.revision-history-content--markdown', 'What star sign are you?')
-  },
-
-  'lets_you_view_discussion_revision_history': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion_with_versions')
-    page.click('.action-dock__button--show_history')
-    page.expectText('.revision-history-nav', 'Latest')
-    page.expectText('.revision-history-content--header del', 'star')
-    page.expectText('.revision-history-content--header ins', 'moon')
-    page.click('.revision-history-nav--previous')
-    page.expectText('.revision-history-nav', 'Original')
-    page.expectText('.revision-history-content--header ins', 'What star sign are you?')
-  },
-
-  'deletes a comment': (test) => {
+  'deletes_a_comment': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', 'original comment right hur')
+    page.fillIn('.comment-form .ProseMirror', 'original comment right hur')
     page.click('.comment-form__submit-button')
     page.click('.action-dock__button--delete_comment')
     page.click('.confirm-modal__submit')
+    // TODO: GK: comment remains, and expectNoText isn't behaving as expected
     page.expectNoText('.activity-card', 'original comment right thur')
   },
 
@@ -357,7 +360,7 @@ module.exports = {
     page.click('.thread-mailer__subject a')
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
-    page.fillIn('.comment-form textarea', 'Hello world!')
+    page.fillIn('.comment-form .ProseMirror', 'Hello world!')
     page.click('.comment-form__submit-button')
     page.expectText('.thread-item__title', 'Jennifer Grey', 10000)
     page.expectText('.thread-item__body', 'Hello world!')
@@ -373,6 +376,8 @@ module.exports = {
     page.click('.thread-mailer__subject a')
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
+    page.pause(3000)
+    // TODO: GK: after sign up, discussion page does not react/live update
     page.expectText('.context-panel__heading', 'go to the moon', 10000)
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
