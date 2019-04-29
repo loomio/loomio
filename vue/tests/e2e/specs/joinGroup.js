@@ -29,7 +29,7 @@ module.exports = {
     page.expectText('.membership-card', 'Jennifer')
   },
 
-  'requests membership when button is clicked': (test) => {
+  'requests_membership_when_button_is_clicked': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_closed_group_to_join')
