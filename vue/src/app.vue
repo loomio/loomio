@@ -8,6 +8,7 @@ import Session from '@/shared/services/session'
 export default
   mixins: [AuthModalMixin]
   mounted: ->
+    @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
     EventBus.$on('currentComponent', @setCurrentComponent)
     EventBus.$on 'pageError', (error) =>
       @openAuthModal() if !Session.isSignedIn() and error.status == 403
@@ -21,8 +22,6 @@ export default
       AppConfig.currentDiscussion = options.discussion
       AppConfig.currentPoll       = options.poll
 
-      @openAuthModal() if @shouldForceSignIn(options)
-
       # scrollTo(options.scrollTo or 'h1') unless options.skipScroll
       # updateCover()
 
@@ -32,19 +31,32 @@ export default
       return false if Session.isSignedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
       return true  if AppConfig.pendingIdentity.identity_type?
 
-      switch options.page
-        when 'emailSettingsPage' then !Session.user().restricted?
-        when 'dashboardPage',      \
-             'inboxPage',          \
-             'profilePage',        \
-             'authorizedAppsPage', \
-             'registeredAppsPage', \
-             'registeredAppPage',  \
-             'pollsPage',          \
+      switch @$route.path
+        when '/email_preferences' then !Session.user().restricted?
+        when '/dashboard',      \
+             '/inbox',          \
+             '/profile',        \
+             # 'authorizedAppsPage', \
+             # 'registeredAppsPage', \
+             # 'registeredAppPage',  \
+             '/p',          \
              'pollPage',           \
-             'startPollPage',      \
+             '/p/new',      \
              'upgradePage',        \
-             'startGroupPage' then true
+             '/g/new' then true
+      # switch options.page
+      #   when 'emailSettingsPage' then !Session.user().restricted?
+      #   when 'dashboardPage',      \
+      #        'inboxPage',          \
+      #        'profilePage',        \
+      #        'authorizedAppsPage', \
+      #        'registeredAppsPage', \
+      #        'registeredAppPage',  \
+      #        'pollsPage',          \
+      #        'pollPage',           \
+      #        'startPollPage',      \
+      #        'upgradePage',        \
+      #        'startGroupPage' then true
 
 
 </script>
