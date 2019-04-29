@@ -190,37 +190,38 @@ module.exports = {
     page.expectText('.flash-root__message', 'You will be emailed activity in this thread.')
   },
 
-  'lets you change the volume for all threads in the group': (test) => {
+  'lets_you_change_the_volume_for_all_threads_in_the_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--email-settings')
-    page.click('#volume-loud')
+    page.click('.volume-loud')
     page.click('.change-volume-form__apply-to-all')
     page.click('.change-volume-form__submit')
     page.expectText('.flash-root__message', 'You will be emailed all activity in this group.')
   },
 
-  'allows logged in users to join a group and comment': (test) => {
+  'allows_logged_in_users_to_join_a_group_and_comment': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_non_member')
+
     page.click('.thread-preview__link')
     page.click('.join-group-button__join-group')
     page.expectText('.flash-root__message', 'You are now a member of Open Dirty Dancing Shoes')
 
-    page.fillIn('.comment-form textarea', 'I am new!')
+    page.fillIn('.comment-form .ProseMirror', 'I am new!')
     page.click('.comment-form__submit-button')
     page.pause(2000)
     page.expectText('.flash-root__message', 'Comment added')
   },
 
-  'allows guests to comment and view thread in dashboard': (test) => {
+  'allows_guests_to_comment_and_view_thread_in_dashboard': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_as_guest')
-    page.fillIn('.comment-form textarea', 'I am a guest!')
+    page.fillIn('.comment-form .ProseMirror', 'I am a guest!')
     page.click('.comment-form__submit-button')
     page.expectText('.flash-root__message', 'Comment added')
 
@@ -229,7 +230,7 @@ module.exports = {
     page.expectText('.thread-preview__text-container', 'Dirty Dancing Shoes')
   },
 
-  'allows logged in users to request to join a closed group': (test) => {
+  'allows_logged_in_users_to_request_to_join_a_closed_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_closed_group_as_non_member')
@@ -243,7 +244,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', 'hi this is my comment')
+    page.fillIn('.comment-form .ProseMirror', 'hi this is my comment')
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', 'hi this is my comment', 8000)
   },
