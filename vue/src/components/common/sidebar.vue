@@ -63,8 +63,7 @@ export default
       $mdSidenav('left').close() if !@canLockSidebar()
 
     groups: ->
-      _filter Session.user().groups().concat(Session.user().orphanParents()), (group) =>
-        group.type == "FormalGroup"
+      Records.groups.sidebarGroups(@currentUser())
 
     currentUser: ->
       Session.user()
