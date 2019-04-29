@@ -15,13 +15,15 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
+import ChangePasswordModalMixin from '@/mixins/change_password_modal'
 
 import { submitForm }   from '@/shared/helpers/form'
 import { hardReload }   from '@/shared/helpers/window'
 
 export default
   mixins: [
-    ConfirmModalMixin
+    ConfirmModalMixin,
+    ChangePasswordModalMixin
   ]
   data: ->
     isDisabled: false
@@ -40,7 +42,9 @@ export default
         title: 'deactivate_user_form.title'
         submit: 'deactivation_modal.submit'
         fragment: 'deactivate_user'
-      submit: => Promise.resolve @openConfirmModal(@reallyDeactivateUserConfirmOpts)
+      submit: -> Promise.resolve console.log 'submit'
+      successCallback: =>
+        Promise.resolve @openConfirmModal(@reallyDeactivateUserConfirmOpts)
     deleteUserConfirmOpts: ->
       text:
         title: 'delete_user_modal.title'
@@ -71,7 +75,7 @@ export default
       ModalService.open 'ChangePictureForm'
 
     changePassword: ->
-      ModalService.open 'ChangePasswordForm'
+      @openChangePasswordModal(@user)
 
     openDeleteUserModal: ->
       @isDeleteUserModalOpen = true

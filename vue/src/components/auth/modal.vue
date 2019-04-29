@@ -27,7 +27,7 @@ export default
       !@user.sentPasswordLink
 </script>
 <template lang="pug">
-v-card
+v-card.auth-modal
   .lmo-disabled-form(v-show='isDisabled')
   v-card-title
     i.mdi.mdi-lock-open(ng-if='!showBackButton()')
