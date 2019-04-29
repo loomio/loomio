@@ -240,7 +240,7 @@ module.exports = {
     page.expectText('.flash-root__message', 'You have requested membership to Closed Dirty Dancing Shoes')
   },
 
-  'adds a comment': (test) => {
+  'adds_a_comment': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
