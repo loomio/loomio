@@ -58,7 +58,7 @@ export default class LmoUrlService
     @buildModelRoute('apps/registered', a.id, a.name, params, options)
 
   @buildModelRoute: (path, key, name, params, options) ->
-    result = if options.absolute then AppConfig.baseUrl else ""
+    result = if options.absolute then AppConfig.baseUrl else "/"
     result += "#{options.namespace || path}/" if (options.namespace || path || "").length > 0
     result += "#{key}"
     result += "/" + @stub(name)             unless !name? or options.noStub?

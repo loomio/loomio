@@ -50,7 +50,7 @@ export default
         helptext: 'leave_group_form.question'
         confirm:  'leave_group_form.submit'
         flash:    'group_page.messages.leave_group_success'
-      redirect: 'dashboard'
+      redirect: '/dashboard'
 
     archiveGroupModalConfirmOpts: ->
       submit:     @group.archive
@@ -58,7 +58,7 @@ export default
         title:    'archive_group_form.title'
         helptext: 'archive_group_form.question'
         flash:    'group_page.messages.archive_group_success'
-      redirect:   'dashboard'
+      redirect:   '/dashboard'
 
     canExportData: ->
       Session.user().isMemberOf(@group)

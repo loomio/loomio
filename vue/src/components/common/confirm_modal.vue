@@ -16,7 +16,7 @@ export default
       @isDisabled = true
       @confirm.submit(args...).then =>
         @close()
-        @$router.push "/#{@confirm.redirect}"     if @confirm.redirect?
+        @$router.push "#{@confirm.redirect}"     if @confirm.redirect?
         @confirm.successCallback(args...)        if typeof @confirm.successCallback is 'function'
         Flash.success @confirm.text.flash if @confirm.text.flash
       .finally =>
