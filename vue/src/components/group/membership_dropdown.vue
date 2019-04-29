@@ -5,10 +5,11 @@ import AbilityService from '@/shared/services/ability_service'
 import FlashService   from '@/shared/services/flash'
 import ModalService   from '@/shared/services/modal_service'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
+import MembershipModalMixin from '@/mixins/membership_modal'
 import { snakeCase } from 'lodash'
 
 export default
-  mixins: [ConfirmModalMixin]
+  mixins: [ConfirmModalMixin, MembershipModalMixin]
   props:
     membership: Object
   methods:
@@ -22,7 +23,7 @@ export default
       AbilityService.canSetMembershipTitle(@membership)
 
     setTitle: ->
-      ModalService.open 'MembershipModal', membership: -> @membership
+      @openMembershipModal(@membership)
 
     canResendMembership: ->
       AbilityService.canResendMembership(@membership)
@@ -61,7 +62,7 @@ export default
     toggleAdmin: (membership) ->
       method = if @membership.admin then 'removeAdmin' else 'makeAdmin'
       return if @membership.admin and @membership.user() == Session.user() and !confirm(@$t('memberships_page.remove_admin_from_self.question'))
-      Records.memberships[method](@membership).then ->
+      Records.memberships[method](@membership).then =>
         FlashService.success "memberships_page.messages.#{snakeCase method}_success", name: (@membership.userName() || @membership.userEmail())
 </script>
 <template lang="pug">
