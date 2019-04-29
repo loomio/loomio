@@ -13,6 +13,8 @@ export default
       flashSuccess: 'membership_request_form.messages.membership_requested'
       flashOptions:
         group: @group.fullName
+      successCallback: =>
+        @close()
   data: ->
     membershipRequest: Records.membershipRequests.build
       groupId: @group.id
