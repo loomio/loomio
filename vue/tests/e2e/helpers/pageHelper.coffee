@@ -1,9 +1,9 @@
 module.exports = (test) ->
   loadPath: (path, opts = {}) ->
-    test.url "http://localhost:3000/dev/#{opts.controller || 'nightwatch'}/#{path}?vue=1"
+    test.url "http://localhost:8080/dev/#{opts.controller || 'nightwatch'}/#{path}?vue=1"
 
   goTo: (path) ->
-    test.url "http://localhost:3000/#{path}"
+    test.url "http://localhost:8080/#{path}"
 
   expectCount: (selector, count, wait) ->
     @waitFor(selector, wait)
