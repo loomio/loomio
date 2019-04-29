@@ -118,7 +118,7 @@ v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pe
         v-list-tile-sub-title.membership-card__last-seen
           span(v-if='membership.user().lastSeenAt', v-t="{ path: 'user_page.online_field', args: { value: fromNow(membership.user().lastSeenAt) } }")
           span(v-if='!membership.acceptedAt', v-t="{ path: 'user_page.invited', args: { value: fromNow(membership.user().createdAt) } }")
-      // <membership_dropdown membership="membership"></membership_dropdown>
+        membership-dropdown(:membership="membership")
     loading(v-if='loader.loading')
   v-card-actions(v-if='showLoadMore()')
     v-btn(flat color="accent", v-if='showLoadMore()', @click='loader.loadMore()', v-t="'common.action.load_more'")
