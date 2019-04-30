@@ -55,7 +55,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_non_member')
-    // TODO: GK: no error page?
     page.expectElement('.error-page')
   },
 
