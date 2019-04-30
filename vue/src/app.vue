@@ -7,11 +7,14 @@ import Session from '@/shared/services/session'
 
 export default
   mixins: [AuthModalMixin]
+  data: ->
+    pageError: null
   mounted: ->
     @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
     EventBus.$on('currentComponent', @setCurrentComponent)
     EventBus.$on 'pageError', (error) =>
       @openAuthModal() if !Session.isSignedIn() and error.status == 403
+      @pageError = error
 
   methods:
     setCurrentComponent: (options) ->
@@ -66,7 +69,8 @@ v-app
   navbar
   sidebar
   v-content
-    router-view(:key="$route.path")
+    router-view(v-if="!pageError" :key="$route.path")
+    error(v-if="pageError" :error="pageError")
   modal-launcher
   flash
 </template>

@@ -35,6 +35,7 @@ module.exports = {
   DocumentManagement: 'document/management',
   EditCommentForm: 'thread/edit_comment_form',
   EventChildren: 'thread/event_children',
+  Error: 'common/error',
   Flash: 'common/flash',
   GroupActionsDropdown: 'group/actions_dropdown',
   GroupAvatar: 'group/avatar',
