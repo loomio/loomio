@@ -51,7 +51,7 @@ module.exports = {
     page.click('.context-panel-dropdown__option--close')
     page.expectText('.flash-root__message', 'Thread closed')
     page.click('.flash-root__action')
-    // TODO: GK: implement flash action
+    page.pause(300)
     page.expectText('.flash-root__message', 'Thread reopened')
   },
 
