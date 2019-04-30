@@ -90,12 +90,10 @@ module.exports = {
 
     page.fillIn('.discussion-form__title-input input', 'dumb title')
     page.fillIn('.discussion-form textarea', 'rubbish description')
-
     page.click('.dismiss-modal-button')
-
-    // TODO: GK: cancel changes?
-
     page.pause()
+
+    // TODO: GK: changes are still there
 
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--edit')
@@ -247,20 +245,22 @@ module.exports = {
     page.expectText('.new-comment', 'hi this is my comment', 8000)
   },
 
-  // 'can add emojis': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_discussion')
-  //   page.fillIn('.comment-form textarea', 'Here is a dragon!')
-  //   page.click('.comment-form .emoji-picker__toggle')
-  //   page.fillIn('.md-open-menu-container.md-active .emoji-picker__search input', 'dragon_face')
-  //   page.pause(250)
-  //   page.click('.md-open-menu-container.md-active .emoji-picker__link')
-  //   page.pause(250)
-  //   page.click('.comment-form__submit-button')
-  //   page.expectText('.new-comment .thread-item__body','Here is a dragon!')
-  //   page.expectElement('.new-comment .thread-item__body img')
-  // },
+  'can_add_emojis': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.fillIn('.comment-form .ProseMirror', 'Here is a dragon!')
+    page.click('.comment-form .emoji-picker__toggle')
+    // page.pause(30000)
+    page.fillIn('.emoji-mart-search input', 'dragon_face')
+    page.pause(250)
+    page.click('.emoji-mart-emoji')
+    page.pause(250)
+    page.click('.comment-form__submit-button')
+    page.expectText('.new-comment .thread-item__body','Here is a dragon!🐲')
+    // page.expectText('.new-comment .thread-item__body','U+1F432')
+    // page.expectElement('.new-comment .thread-item__body img')
+  },
 
   'replies_to_a_comment': (test) => {
     page = pageHelper(test)
