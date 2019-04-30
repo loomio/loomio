@@ -29,11 +29,13 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import AppConfig      from '@/shared/services/app_config'
-import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
+import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import { submitForm }   from '@/shared/helpers/form'
 
+
 export default
+  mixins: [ChangeVolumeModalMixin]
   data: ->
     newsletterEnabled: AppConfig.newsletterEnabled
     user: null
@@ -46,16 +48,15 @@ export default
       @submit = submitForm @, @user,
         submitFn: Records.users.updateProfile
         flashSuccess: 'email_settings_page.messages.updated'
-        successCallback: -> LmoUrlService.goTo '/dashboard' if Session.isSignedIn()
 
     groupVolume: (group) ->
       group.membershipFor(Session.user()).volume
 
     changeDefaultMembershipVolume: ->
-      ModalService.open 'ChangeVolumeForm', model: => Session.user()
+      @openChangeVolumeModal(Session.user())
 
     editSpecificGroupVolume: (group) ->
-      ModalService.open 'ChangeVolumeForm', model: => group.membershipFor(Session.user())
+      @openChangeVolumeModal(Session.user())
   computed:
     defaultSettingsDescription: ->
       "email_settings_page.default_settings.#{Session.user().defaultMembershipVolume}_description"
@@ -67,7 +68,7 @@ main.email-settings-page(v-if='user')
     h1.lmo-h1-medium(v-t="'email_settings_page.header'")
   .email-settings-page__email-settings
     .email-settings-page__global-settings
-      form(@submit='submit()')
+      form
         .email-settings-page__global-settings
           v-checkbox#daily-summary-email.md-checkbox--with-summary.email-settings-page__daily-summary(v-model='user.emailCatchUp')
             div(slot="label")
@@ -85,7 +86,7 @@ main.email-settings-page(v-if='user')
             div(slot="label")
               strong(v-t="'email_settings_page.email_newsletter'")
               .email-settings-page__input-description(v-t="'email_settings_page.email_newsletter_description'")
-        v-btn.md-primary.md-raised.email-settings-page__update-button(type='submit', ng-disabled='isDisabled', v-t="'email_settings_page.update_settings'")
+        v-btn.md-primary.md-raised.email-settings-page__update-button(@click="submit()" ng-disabled='isDisabled', v-t="'email_settings_page.update_settings'")
     .email-settings-page__specific-group-settings
       h3.lmo-h3(v-t="'email_settings_page.specific_groups'")
       v-list(class='email-settings-page__groups')
