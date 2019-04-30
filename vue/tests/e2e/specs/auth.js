@@ -52,7 +52,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_closed_group_with_shareable_link')
-    // TODO: GK: the redirect from memberships controller's join method isn't being overridden, as it doesn't use the dev controller
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
@@ -243,7 +242,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_user_reactivation_email')
-    // TODO: GK: user_reactivated template uses login_token_url which provides a url for localhost:3000
     page.click('.base-mailer__button')
     page.pause(2000)
     page.click('.auth-signin-form__submit')
