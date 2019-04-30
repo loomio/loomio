@@ -5,10 +5,8 @@ module.exports = {
   'presents_new_discussion_form_for_a_group_from_params': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_start_thread_form_from_url')
-    // TODO: GK: where did the old client pull the stuff out of params?
-    // start discussion page controller
-    page.expectText('discussion_form', "Dirty Dancing Shoes")
-    page.expectValue('.discussion-form__title-input', "testing title")
+    page.expectText('.discussion-form__group-select', "Dirty Dancing Shoes")
+    page.expectValue('.discussion-form__title-input input', "testing title")
   },
   'preselects_current_group': (test) => {
     page = pageHelper(test)

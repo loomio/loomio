@@ -21,8 +21,8 @@ export default
     init: ->
       # $rootScope.$broadcast('currentComponent', { page: 'startDiscussionPage', skipScroll: true })
       @discussion = Records.discussions.build
-        title:       @$route.params.title
-        groupId:     parseInt(@$route.params.group_id)
+        title:       @$route.query.title
+        groupId:     parseInt(@$route.query.group_id)
 
       # listenForLoading $scope
 
