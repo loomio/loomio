@@ -1,7 +1,11 @@
 module PendingActionsHelper
   private
+  def save_membership_token_in_session
+    session[:pending_membership_token] = params[:membership_token] if params[:membership_token]
+  end
 
   def handle_pending_memberships
+    save_membership_token_in_session
     if current_user.is_logged_in?
       consume_pending_group(current_user)
       consume_pending_membership(current_user)
@@ -58,7 +62,11 @@ module PendingActionsHelper
   end
 
   def pending_membership
-    Membership.pending.find_by(token: session[:pending_membership_token]) if session[:pending_membership_token]
+    Membership.pending.find_by(token: pending_membership_token) if pending_membership_token
+  end
+
+  def pending_membership_token
+    params[:membership_token] || session[:pending_membership_token]
   end
 
   def pending_identity
