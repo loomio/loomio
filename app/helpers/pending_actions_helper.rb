@@ -58,7 +58,11 @@ module PendingActionsHelper
   end
 
   def pending_membership
-    Membership.pending.find_by(token: session[:pending_membership_token]) if session[:pending_membership_token]
+    Membership.pending.find_by(token: pending_membership_token) if pending_membership_token
+  end
+
+  def pending_membership_token
+    params[:membership_token] || session[:pending_membership_token]
   end
 
   def pending_identity
