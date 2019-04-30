@@ -21,6 +21,7 @@ export default
   data: ->
     threadLimit: 50
     views: InboxService.queryByGroup()
+    loading: false
   created: ->
     EventBus.$emit 'currentComponent',
       titleKey: 'inbox_page.unread_threads'
@@ -30,8 +31,8 @@ export default
     startGroup: ->
       ModalService.open 'GroupModal', group: => Records.groups.build()
   computed:
-    loading: ->
-      !InboxService.loaded
+    # loading: ->
+    #   !InboxService.loaded
 
     groups: ->
       Records.groups.find(_.keys(@views))
@@ -49,7 +50,7 @@ export default
 <template lang="pug">
 v-container.lmo-main-container.inbox-page(grid-list-lg)
   .thread-preview-collection__container
-    //- h1.lmo-h1-medium.inbox-page__heading(v-t="'inbox_page.unread_threads'")
+    h1.lmo-h1-medium.inbox-page__heading(v-t="'inbox_page.unread_threads'")
     section.dashboard-page__loading(v-if='loading', aria-hidden='true')
       .thread-previews-container
         // <loading_content line-count="2" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10] track by $index" class="thread-preview"></loading_content>
