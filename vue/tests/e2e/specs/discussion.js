@@ -368,6 +368,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_mailer_invitation_created_email')
+    // TODO: GK: incorrect url from mailer (3000)
     page.click('.thread-mailer__subject a')
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
