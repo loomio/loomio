@@ -10,8 +10,12 @@ module PendingActionsHelper
       consume_pending_group(current_user)
       consume_pending_membership(current_user)
     else
-      current_user.membership_token = pending_membership&.token
+      attach_pending_membership_token_to_user
     end
+  end
+
+  def attach_pending_membership_token_to_user
+    current_user.membership_token = pending_membership&.token
   end
 
   def handle_pending_actions(user)

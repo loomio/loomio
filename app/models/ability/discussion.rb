@@ -9,6 +9,7 @@ module Ability::Discussion
       !discussion.group.archived_at && (
         discussion.public? ||
         discussion.members.include?(user) ||
+        discussion.guest_group.memberships.find_by(token: user.membership_token) ||
         discussion.anyone_can_participate ||
         (discussion.group.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id))
       )
