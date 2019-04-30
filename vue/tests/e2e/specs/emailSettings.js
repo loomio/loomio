@@ -26,7 +26,6 @@ module.exports = {
     page.loadPath('setup_group')
     page.click('.user-dropdown__dropdown-button')
     page.click('.user-dropdown__list-item-button--email-settings')
-    // TODO: GK: where does applyToAll come from, in the component?
     testMembershipUpdate(page)
   },
 
@@ -81,5 +80,6 @@ testMembershipUpdate = (page) => {
   page.click('.volume-loud')
   page.click('.change-volume-form__apply-to-all')
   page.click('.change-volume-form__submit')
-  page.expectText('.email-settings-page__membership-volume', 'All activity')
+  // TODO: GK: groups are not showing up - user.formalGroups()
+  page.expectText('.email-settings-page__membership-volume', 'You will be emailed all activity in all your groups.')
 }

@@ -54,8 +54,8 @@ v-card.change-volume-form
     v-card-text
       v-radio-group(v-model='volume')
         v-radio(v-for='level in volumeLevels', :value='level', :class="'volume-' + level", :key="'volume-' + level", :label="$t(translateKey() + '.' + level + '_description')")
-        v-checkbox#apply-to-all.change-volume-form__apply-to-all(v-model='applyToAll', :label="$t(translateKey() + '.apply_to_all')")
-      v-card-actions.lmo-md-actions
-        v-btn.change-volume-form__cancel(type='button', v-t="'common.action.cancel'", @click='close()')
-        v-btn.md-raised.md-primary.change-volume-form__submit(type='button', :disabled='isDisabled', v-t="'common.action.update'" @click='submit()')
+      v-checkbox#apply-to-all.change-volume-form__apply-to-all(v-model='applyToAll', :label="$t(translateKey() + '.apply_to_all')")
+    v-card-actions.lmo-md-actions
+      v-btn.change-volume-form__cancel(type='button', v-t="'common.action.cancel'", @click='close()')
+      v-btn.md-raised.md-primary.change-volume-form__submit(type='button', :disabled='isDisabled', v-t="'common.action.update'" @click='submit()')
 </template>
