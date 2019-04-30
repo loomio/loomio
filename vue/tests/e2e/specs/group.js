@@ -77,7 +77,7 @@ module.exports = {
 
     page.loadPath('setup_group_with_subgroups')
     page.pause(2000)
-    // TODO: GK: something's up with the thread query service - can't see threads from subgroups
+    // TODO: GK: work out dynamic view issues
     page.expectText('.discussions-card__list', 'Vaya con dios', 20000)
   },
 
