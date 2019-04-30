@@ -4,7 +4,6 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 
-import { submitOnEnter } from '@/shared/helpers/keyboard'
 import { submitStance }  from '@/shared/helpers/form'
 import { buttonStyle }   from '@/shared/helpers/style'
 
@@ -26,8 +25,6 @@ export default
         @stance.id = null
         @stance.stanceChoicesAttributes = _map @selectedOptionIds, (id) =>
           poll_option_id: id
-  mounted: ->
-    submitOnEnter @, element: @$el
   methods:
     orderedPollOptions: ->
       _sortBy @stance.poll().pollOptions(), 'priority'
