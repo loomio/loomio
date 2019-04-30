@@ -251,15 +251,12 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .ProseMirror', 'Here is a dragon!')
     page.click('.comment-form .emoji-picker__toggle')
-    // page.pause(30000)
     page.fillIn('.emoji-mart-search input', 'dragon_face')
     page.pause(250)
     page.click('.emoji-mart-emoji')
     page.pause(250)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment .thread-item__body','Here is a dragon!🐲')
-    // page.expectText('.new-comment .thread-item__body','U+1F432')
-    // page.expectElement('.new-comment .thread-item__body img')
   },
 
   'replies_to_a_comment': (test) => {
