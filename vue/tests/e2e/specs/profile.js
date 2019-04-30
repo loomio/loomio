@@ -106,7 +106,6 @@ module.exports = {
     page.click('.confirm-modal__submit')
     page.pause(2000)
     page.click('.confirm-modal__submit')
-    // TODO: GK: why do we get the prompt that we do
     page.expectText('.auth-modal', 'Sign into Loomio')
   },
 

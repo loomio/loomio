@@ -60,7 +60,7 @@ export default
         title:    'deactivate_user_form.title'
         submit:   'deactivate_user_form.submit'
         fragment: 'deactivate_user_confirmation'
-      successCallback: hardReload
+      successCallback: -> Session.signOut()
   methods:
     init: ->
       # return unless Session.isSignedIn()
