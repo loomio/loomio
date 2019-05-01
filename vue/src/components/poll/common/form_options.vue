@@ -46,7 +46,7 @@ export default
       poll-meeting-time.poll-meeting-form__option-text.lmo-flex__grow(v-if='datesAsOptions', :name='name', :zone='zone')
       v-btn.poll-poll-form__option-button(v-if="canRemoveOption(name)", @click="removeOption(name)")
         i.mdi.mdi-close.mdi-24px.poll-poll-form__option-icon
-    //- poll_meeting_time_field(v-if='datesAsOptions', poll='poll')
+    poll-meeting-time-field(v-if='datesAsOptions', :poll='poll')
     v-list-tile.poll-common-form__add-option(v-if='!datesAsOptions', flex='true', layout='row')
       .poll-poll-form__add-option-field
         v-text-field.poll-poll-form__add-option-input(v-model='poll.newOptionName', type='text', :placeholder="$t('poll_common_form.options_placeholder')")

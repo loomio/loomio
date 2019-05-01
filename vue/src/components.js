@@ -115,6 +115,7 @@ module.exports = {
   PollMeetingForm: 'poll/meeting/form',
   PollMeetingStanceIcon: 'poll/meeting/stance_icon',
   PollMeetingTime: 'poll/meeting/time',
+  PollMeetingTimeField: 'poll/meeting/time_field',
   PollMeetingVoteForm: 'poll/meeting/vote_form',
   PollMeetingVotesPanelStance: 'poll/meeting/votes_panel_stance',
   PollPollChartPanel: 'poll/poll/chart_panel',
