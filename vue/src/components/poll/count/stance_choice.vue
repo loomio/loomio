@@ -5,13 +5,10 @@
 export default
   props:
     stanceChoice: Object
-  mounted: ->
-    console.log 'poll common stance choice count'
 </script>
 
 <template>
     <div class="poll-common-stance-choice poll-common-stance-choice--count">
-      <h1>WHERE AM I</h1>
       <poll-common-stance-icon :stance-choice="stanceChoice"></poll-common-stance-icon>
       <span v-t="'poll_count_options.' + stanceChoice.pollOption().name" class="poll-common-stance-choice__option-name"></span>
     </div>
