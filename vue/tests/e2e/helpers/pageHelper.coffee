@@ -1,4 +1,7 @@
 module.exports = (test) ->
+  refresh: ->
+    test.refresh()
+    
   loadPath: (path, opts = {}) ->
     test.url "http://localhost:8080/dev/#{opts.controller || 'nightwatch'}/#{path}?vue=1"
 
