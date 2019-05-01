@@ -60,9 +60,7 @@ export default
 <template lang="pug">
 .poll-meeting-form
   poll-common-form-fields(:poll="poll")
-
-  .md-block
-    v-select(v-model="poll.customFields.meeting_duration", :label="$t('poll_meeting_form.meeting_duration')", :items="durations", item-text="label", item-value="minutes")
+  v-select(v-model="poll.customFields.meeting_duration", :label="$t('poll_meeting_form.meeting_duration')", :items="durations", item-text="label", item-value="minutes")
   poll-common-form-options(:poll="poll")
   poll-common-closing-at-field.md-block(:poll="poll")
   poll-common-settings(:poll="poll")

@@ -35,7 +35,7 @@ export default
 <template lang="pug">
 .poll-common-vote-form
   v-subheader(v-t="'poll_common.your_response'", v-if='stance.isNew()')
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous')
+  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-layout
     v-btn.poll-common-vote-form__button(fab large flat md-colors='mdColors(option)', v-for='option in orderedPollOptions()', :key='option.id', @click='select(option)')
       v-badge(overlap)

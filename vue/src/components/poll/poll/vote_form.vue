@@ -50,7 +50,7 @@ export default
 <template lang="pug">
 .poll-poll-vote-form.lmo-drop-animation
   v-subheader(v-t="'poll_common.your_response'")
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous')
+  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-list(column)
     v-list-tile.poll-common-vote-form__button(flat align-center :md-colors='mdColors(option)', @click='select(option)', v-for='option in orderedPollOptions()', :key='option.id')
       .poll-common-stance-icon__chip(:style="{'border-color': option.color}")
