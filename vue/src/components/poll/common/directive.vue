@@ -28,6 +28,7 @@ import PollMeetingVoteForm from '@/components/poll/meeting/vote_form.vue'
 import PollMeetingChartPanel from '@/components/poll/meeting/chart_panel.vue'
 import PollMeetingChangeYourVote from '@/components/poll/meeting/change_your_vote.vue'
 import PollMeetingVotesPanelStance from '@/components/poll/meeting/votes_panel_stance.vue'
+import PollCommonVotesPanel from '@/components/poll/common/votes_panel.vue'
 
 export default
   components:
@@ -60,6 +61,8 @@ export default
     'poll-meeting-chart-panel': PollMeetingChartPanel
     'poll-meeting-change-your-vote': PollMeetingChangeYourVote
     'poll-meeting-votes-panel-stance': PollMeetingVotesPanelStance
+    'poll-common-votes-panel': PollCommonVotesPanel
+
   props:
     poll: Object
     stance: Object
