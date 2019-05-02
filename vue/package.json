@@ -52,7 +52,7 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "coffee-loader": "^0.9.0",
     "coffeescript": "^2.4.1",
-    "fibers": "^4.0.0",
+    "fibers": "^4.0.1",
     "sass": "^1.19.0",
     "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",
