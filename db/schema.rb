@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_27_215607) do
+ActiveRecord::Schema.define(version: 2019_05_02_051804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -733,6 +733,8 @@ ActiveRecord::Schema.define(version: 2019_03_27_215607) do
     t.string "unlock_token"
     t.datetime "locked_at"
     t.jsonb "attachments", default: {}, null: false
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
