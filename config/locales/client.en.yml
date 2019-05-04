@@ -1042,7 +1042,7 @@ en:
   dashboard_page:
     aria_label: 'Dashboard'
     no_groups:
-      show_all: You don't have any recent threads because you are not a member of any groups.
+      show_all: Welcome! You are not a member of any groups yet. <a href="/explore">Browse public groups</a> or <a href="/g/new">Start a group</a>.
       show_muted: You don't have any muted threads because you are not a member of any groups.
     no_threads:
       show_all: You don't have any recent threads.
