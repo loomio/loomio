@@ -332,8 +332,7 @@ module.exports = {
     page.click('.confirm-modal__submit')
     page.pause()
     page.expectText('.flash-root__message', 'You have left this group')
-    page.expectElement('.group-modal')
-    // page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
+    page.expectElement('.dashboard-page__empty')
   },
 
   'allows_a_coordinator_to_archive_a_group': (test) => {
@@ -345,8 +344,7 @@ module.exports = {
     page.click('.confirm-modal__submit')
     page.pause()
     page.expectText('.flash-root__message', 'This group has been deactivated')
-    page.expectElement('.group-modal')
-    // page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
+    page.expectElement('.dashboard-page__empty')
   },
 
   'handles empty draft privacy gracefully': (test) => {
