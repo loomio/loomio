@@ -1,9 +1,0 @@
-%meta{property: 'og:site_name',    content: AppConfig.theme[:site_name]}
-%meta{property: 'og:locale',       content: current_user.locale}
-%meta{property: 'og:url',          content: request.original_url}
-%meta{property: 'fb:app_id',       content: ENV['FB_APP_ID_META']}
-
-- if @metadata
-  %meta{property: 'og:title',                               content: @metadata[:title]}
-  %meta{property: 'og:description',  name: 'description',   content: @metadata[:description]}
-  %meta{property: 'og:image',                               content: @metadata[:image_url]}

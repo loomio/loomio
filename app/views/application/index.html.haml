@@ -1,11 +1,10 @@
 !!!
 %html{'lang' => current_user.locale, 'ng-app' => 'loomioApp', 'ng-strict-di' => 'true', 'ng-controller' => 'RootController as app'}
   %head
-    %title
-    %meta{:content => "no-cache, no-store, must-revalidate", "http-equiv" => "Cache-Control"}/
-    %meta{:content => "no-cache", "http-equiv" => "Pragma"}/
-    %meta{:content => "0", "http-equiv" => "Expires"}/
     %meta{charset: 'utf-8'}
+    %meta{content: "no-cache, no-store, must-revalidate", "http-equiv": "Cache-Control"}/
+    %meta{content: "no-cache", "http-equiv": "Pragma"}/
+    %meta{content: "0", "http-equiv": "Expires"}/
     %meta{content: 'IE=Edge', 'http-equiv' => 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=5, user-scalable=no', name: "viewport"}
     %meta{content: '{{theme.text_on_primary_color}}', 'ng-if' => 'theme', name: "theme-color"}
@@ -24,7 +23,7 @@
 
     = action_cable_meta_tag
 
-    = render 'angular/metadata'
+    = render 'application/social_metadata'
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %noscript= I18n.t(:"errors.noscript")
