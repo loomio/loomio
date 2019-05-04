@@ -1,5 +1,5 @@
 class Metadata::UserSerializer < ActiveModel::Serializer
-  attributes :title, :description, :image_url
+  attributes :title, :description, :image_urls
   root false
 
   def title
@@ -10,8 +10,7 @@ class Metadata::UserSerializer < ActiveModel::Serializer
     object.username
   end
 
-  def image_url
-    object.avatar_url(:large)
+  def image_urls
+    [object.avatar_url(:large)]
   end
-
 end
