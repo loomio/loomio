@@ -23,7 +23,7 @@
 
     = action_cable_meta_tag
 
-    = render 'application/social_metadata' if @metadata
+    = render 'application/social_metadata'
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %noscript= I18n.t(:"errors.noscript")
