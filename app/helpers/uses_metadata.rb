@@ -2,9 +2,9 @@ module UsesMetadata
   def show
     metadata
     respond_to do |format|
-      # format.xml
-      format.rss  { render :"show.xml" }
       format.html { index }
+      format.rss  { render :"show.xml" }
+      format.xml
     end
   end
 
