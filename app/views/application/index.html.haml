@@ -1,6 +1,7 @@
 !!!
 %html{'lang' => current_user.locale, 'ng-app' => 'loomioApp', 'ng-strict-di' => 'true', 'ng-controller' => 'RootController as app'}
   %head
+    = render 'application/social_metadata'
     %meta{charset: 'utf-8'}
     %meta{content: "no-cache, no-store, must-revalidate", "http-equiv": "Cache-Control"}/
     %meta{content: "no-cache", "http-equiv": "Pragma"}/
@@ -23,7 +24,6 @@
 
     = action_cable_meta_tag
 
-    = render 'application/social_metadata'
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %noscript= I18n.t(:"errors.noscript")
