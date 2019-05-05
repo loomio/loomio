@@ -3,12 +3,13 @@
 - description = @metadata[:description]
 - image_urls = @metadata[:image_urls] || []
 
-%title= @metadata[:title]
-%meta{property: 'og:url', content: request.original_url}
-%meta{property: 'og:title', content: title }
-%meta{property: 'og:description', name: 'description', content: description }
+<title>#{@metadata[:title]}</title>
+<meta property="og:url" content="#{request.original_url}" />
+<meta property="og:title" content="#{title}" />
+<meta property="og:description" name="description" content="#{description}" />
 - image_urls.each do |image_url|
-  %meta{property: 'og:image', content: image_url}
-%meta{property: 'og:site_name', content: AppConfig.theme[:site_name]}
-%meta{property: 'og:locale', content: I18n.locale}
-%meta{property: 'og:type', content: 'website'}
+  <meta property="og:image" content="#{image_url}" />
+<meta property="og:site_name" content="#{AppConfig.theme[:site_name]}" />
+<meta property="og:locale" content="#{I18n.locale}" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="#{ENV['FB_APP_ID_META']}" />
