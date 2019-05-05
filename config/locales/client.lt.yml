@@ -1,5 +1,8 @@
 lt:
   loomio_tags:
+    tags: Žymės
+    apply_tags: Taikyti žymes
+    new_tag: Sukurti žymę
     color_label: Spalva
     modal_title: Sukurti naują žymę
     modal_edit_title: Taisyti žymę
@@ -46,6 +49,8 @@ lt:
     learn_more: Sužinoti daugiau
     not_found: Nerastas
     time_zone: Laiko zona
+    local_time: Vietinis laikas
+    attachments: Priedai
     confirm_discard_changes: Atmesti jūsų pakeitimus?
     time:
       am: am
@@ -184,7 +189,11 @@ lt:
     members_can_edit_comments: 'Nariai gali bet kuriuo metu redaguoti savo komentarus.'
     submit_update: 'Atnaujinti nustatymus'
   documents_page:
+    title: Priedai
     confirm_remove_title: Šalinti priedą
+  document:
+    list:
+      title: Priedai
   group_previous_proposals_card:
     heading: Ankstesni pasiūlymai
   invitation_form:
@@ -287,6 +296,8 @@ lt:
     meeting_title: Laiko apklausa
   poll_common:
     save_changes: Įrašyti
+  poll_common_attachment_form:
+    label: Priedai
   poll_common_form:
     closed: Uždarytas
   poll_count_options:

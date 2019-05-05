@@ -877,7 +877,6 @@ it:
   dashboard_page:
     aria_label: 'Dashboard'
     no_groups:
-      show_all: Non ci sono nuove discussioni da visualizzare perchè non sei membro di alcun gruppo.
       show_muted: Non ci sono discussioni silenziate perchè non sei membro di alcun gruppo.
     no_threads:
       show_all: Non hai alcuna discussione recente

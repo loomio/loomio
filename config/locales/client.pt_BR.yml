@@ -798,7 +798,6 @@ pt_BR:
   dashboard_page:
     aria_label: 'Painel'
     no_groups:
-      show_all: Você não possui nenhuma conversa recente, porque você não é membro de nenhum grupo.
       show_muted: Você não possui nenhuma conversa silenciada, porque você não é membro de nenhum grupo.
     no_threads:
       show_all: Você não tem nenhuma conversa recente.

@@ -753,7 +753,6 @@ nl_NL:
   dashboard_page:
     aria_label: 'Dashboard'
     no_groups:
-      show_all: Je hebt geen recente discussies, omdat je geen lid bent van een groep.
       show_muted: Je hebt geen gedempte discussies, omdat je geen lid bent van een groep.
     no_threads:
       show_all: Je hebt geen recente borden.

@@ -9,12 +9,12 @@ de:
     name_label: Name
     color_label: Farbe
     card_title: Schlagwörter kategorisieren
-    modal_title: neues Schlagwort erstellen
+    modal_title: Neues Schlagwort erstellen
     modal_edit_title: Schlagwort bearbeiten
     modal_destroy_title: Schlagwort entfernen
     destroy_tag: Schlagwort entfernen
-    destroy_helptext: Dies wird das Schlagwort löschen und es aus allen Diskussionen entfernen. Bist du sicher?
-    helptext: Schlagwörter können Konversationen kategorisieren und lassen sich später leicht finden.
+    destroy_helptext: Hiermit löscht du das Schlagwort und entfernst es aus allen Diskussionen. Bist du sicher?
+    helptext: Schlagwörter können Konversationen kategorisieren, damit du sie später leicht findest.
     discussions_count_singular: ({{count}} thread)
     discussions_count_plural: ({{count}} threads)
     tags_marked: Themen mit '{{name}}' in {{groupName}}
@@ -25,13 +25,13 @@ de:
     laughing: Lachen
     clap: Klatschen
     hugging: Umarmen
-    sunglasses: cool
-    wink: zwinkern
-    nerd: schlau
+    sunglasses: Cool
+    wink: Zwinkern
+    nerd: Schlau
     relieved: Erleichtert
     worried: Besorgt
     confused: Verwirrt
-    confounded: verwirrt
+    confounded: Verlegen
     neutral_face: neutral
     slight_frown: Stirn runzeln
     disappointed: Enttäuscht
@@ -42,13 +42,13 @@ de:
     cry: Weinen
     scream: Schreien
     sleeping: Gelangweilt
-    thinking: Denken
+    thinking: 'Überlegen '
     raised_hands: Hände heben
     pray: Beten
     fingers_crossed: Finger gekreuzt
     v: Frieden
     metal: Metall
-    ok_hand: ok
+    ok_hand: Ok
     wave: Winken
     thumbsup: Daumen hoch
     thumbsdown: Daumen runter
@@ -932,7 +932,6 @@ de:
   dashboard_page:
     aria_label: 'Schreibtisch'
     no_groups:
-      show_all: Es gibt keine aktuellen Diskussionen, da Sie noch keiner Gruppe angehören.
       show_muted: Sie haben keine stummgeschalteten Diskussionen, weil Sie kein Mitglied einer Gruppe sind.
     no_threads:
       show_all: Sie haben derzeit keine aktuellen Diskussionen.

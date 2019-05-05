@@ -944,7 +944,6 @@ es:
   dashboard_page:
     aria_label: 'Escritorio'
     no_groups:
-      show_all: 'No tienes ningún hilo reciente porque no eres miembro de ningún grupo. '
       show_muted: No tienes ningún hilo silenciado porque no eres miembro de ningún grupo.
     no_threads:
       show_all: No tienes ningún hilo reciente.

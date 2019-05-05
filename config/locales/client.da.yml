@@ -592,7 +592,6 @@ da:
   dashboard_page:
     aria_label: 'Dashboard'
     no_groups:
-      show_all: Du har ikke nogen seneste debatter da du ikke er medlem af nogen grupper.
       show_muted: Du har ikke nogen debatter uden notifikationer da du ikke er medlem af nogen grupper.
     no_threads:
       show_all: Du har ikke nogen seneste debatter.

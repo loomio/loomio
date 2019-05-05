@@ -949,7 +949,6 @@ he:
   dashboard_page:
     aria_label: 'לוח מכוונים'
     no_groups:
-      show_all: אין לך שיחות אחרונות בגלל שאתה לא חבר באף קבוצה.
       show_muted: אין לך אף שיחה מושתקת כי אתה לא חבר באף קבוצה.
     no_threads:
       show_all: אין לך אף שיחות אחרונות.
