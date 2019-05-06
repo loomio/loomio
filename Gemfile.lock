@@ -373,8 +373,8 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    parallel (1.14.0)
-    parallel_tests (2.28.0)
+    parallel (1.17.0)
+    parallel_tests (2.29.0)
       parallel
     pg (1.1.4)
     poltergeist (1.18.1)
