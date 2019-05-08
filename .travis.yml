@@ -29,10 +29,10 @@ env:
     - MAX_THREADS=3
     - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
   matrix:
-    - TASK=e2e
+    # - TASK=e2e
     - TASK=rspec
     - TASK=plugins
-    # - TASK=vue
+    - TASK=vue
 
 before_install:
   - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
@@ -41,6 +41,7 @@ before_install:
   - gem install bundler
   - nvm install 10.11.0
   - nvm use 10.11.0
+  - npm install -g @vue/cli
   - npm install -g gulp
 
 install:

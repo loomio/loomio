@@ -317,9 +317,9 @@ div
           v-icon mdi-paperclip
         v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
           template(v-slot:activator="{on}")
-            v-btn(v-on="on" flat small :class="{ 'is-active': isActive.underline() }")
+            v-btn.emoji-picker__toggle(v-on="on" flat small :class="{ 'is-active': isActive.underline() }")
               v-icon mdi-emoticon-outline
-          picker(@select="emojiPicked" emoji="point_up" :recent="recentEmojis" :title="$t('emoji_picker.search')" :native="true" set="apple")
+          picker.emoji-picker(@select="emojiPicked" emoji="point_up" :recent="recentEmojis" :title="$t('emoji_picker.search')" :native="true" set="apple")
         v-dialog(v-model="linkDialogIsOpen")
           template(v-slot:activator="{on}")
             v-btn(flat small v-on="on")

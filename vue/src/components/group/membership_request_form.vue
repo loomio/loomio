@@ -13,6 +13,8 @@ export default
       flashSuccess: 'membership_request_form.messages.membership_requested'
       flashOptions:
         group: @group.fullName
+      successCallback: =>
+        @close()
   data: ->
     membershipRequest: Records.membershipRequests.build
       groupId: @group.id
@@ -33,10 +35,10 @@ v-card.membership-request-form
     .membership-request-form__visitor(v-if='!isSignedIn')
       .md-block
         label(for='membership-request-name', v-t="'membership_request_form.name_label'")
-        v-textfield#membership-request-name.membership-request-form__name(v-model='membershipRequest.name', :required='true')
+        v-text-field#membership-request-name.membership-request-form__name(v-model='membershipRequest.name', :required='true')
       .md-block
         label(for='membership-request-email', v-t="'membership_request_form.email_label'")
-        v-textfield#membership-request-email.membership-request-form__email(v-model='membershipRequest.email', :required='true')
+        v-text-field#membership-request-email.membership-request-form__email(v-model='membershipRequest.email', :required='true')
         validation-errors(:subject='membershipRequest', field='email')
     .membership-request-form__reason
       .md-block

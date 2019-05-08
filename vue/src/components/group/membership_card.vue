@@ -92,14 +92,22 @@ export default
   computed:
     pollType: ->
       @$t(@group.targetModel().pollTypeKey()) if @group.targetModel().isA('poll')
+  watch:
+    fragment: ->
+      @fetchMemberships()
 </script>
 
 <template lang="pug">
 v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pending': pending}")
   v-layout(justify-space-between)
     v-subheader(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }', v-if='!searchOpen')
-    v-btn(icon)
+    v-btn.membership-card__search-button(v-if="!searchOpen" icon @click="toggleSearch()")
       v-icon mdi-magnify
+    .membership-card__search(v-if="searchOpen" )
+      v-text-field.membership-card__filter(v-model="fragment" :placeholder="$t('memberships_page.fragment_placeholder')")
+      v-btn(@click="toggleSearch()")
+        v-icon mdi-close
+
   v-list(two-line)
     plus-button.membership-card__membership.membership-card__invite(v-if='canAddMembers()', :click='invite', :message="'membership_card.invite_to_' + group.targetModel().constructor.singular")
     v-list-tile(v-for='membership in orderedMemberships()', :key='membership.id', data-username='membership.user().username')
@@ -110,7 +118,7 @@ v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pe
         v-list-tile-sub-title.membership-card__last-seen
           span(v-if='membership.user().lastSeenAt', v-t="{ path: 'user_page.online_field', args: { value: fromNow(membership.user().lastSeenAt) } }")
           span(v-if='!membership.acceptedAt', v-t="{ path: 'user_page.invited', args: { value: fromNow(membership.user().createdAt) } }")
-      // <membership_dropdown membership="membership"></membership_dropdown>
+        membership-dropdown(:membership="membership")
     loading(v-if='loader.loading')
   v-card-actions(v-if='showLoadMore()')
     v-btn(flat color="accent", v-if='showLoadMore()', @click='loader.loadMore()', v-t="'common.action.load_more'")

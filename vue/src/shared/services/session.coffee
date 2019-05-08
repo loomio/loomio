@@ -46,6 +46,7 @@ export default new class Session
     @currentGroup? && @currentGroup.id
 
   updateLocale: (locale) ->
+    return if _.isNil(locale)
     locale = locale.toLowerCase().replace('_','-')
     # TODO I18n.useLocale(locale)
     return if momentLocaleFor(locale) == "en"

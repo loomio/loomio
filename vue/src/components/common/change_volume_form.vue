@@ -37,6 +37,11 @@ export default
         when 'discussion' then @model.volume()
         when 'membership' then @model.volume
         when 'user'       then @model.defaultMembershipVolume
+    groupName: ->
+      if @model.groupName
+        @model.groupName()
+      else
+        ''
 </script>
 <template lang="pug">
 v-card.change-volume-form
@@ -44,13 +49,13 @@ v-card.change-volume-form
     .lmo-disabled-form(v-show='isDisabled')
     v-card-title
       .md-toolbar-tools.lmo-flex__space-between
-        h1.lmo-h1.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: model.title || model.groupName() } }")
+        h1.lmo-h1.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: model.title || model.name || groupName() } }")
         dismiss-modal-button(:close="close")
     v-card-text
       v-radio-group(v-model='volume')
         v-radio(v-for='level in volumeLevels', :value='level', :class="'volume-' + level", :key="'volume-' + level", :label="$t(translateKey() + '.' + level + '_description')")
-        v-checkbox#apply-to-all.change-volume-form__apply-to-all(v-model='applyToAll', :label="$t(translateKey() + '.apply_to_all')")
-      v-card-actions.lmo-md-actions
-        v-btn.change-volume-form__cancel(type='button', v-t="'common.action.cancel'", @click='close()')
-        v-btn.md-raised.md-primary.change-volume-form__submit(type='button', :disabled='isDisabled', v-t="'common.action.update'" @click='submit()')
+      v-checkbox#apply-to-all.change-volume-form__apply-to-all(v-model='applyToAll', :label="$t(translateKey() + '.apply_to_all')")
+    v-card-actions.lmo-md-actions
+      v-btn.change-volume-form__cancel(type='button', v-t="'common.action.cancel'", @click='close()')
+      v-btn.md-raised.md-primary.change-volume-form__submit(type='button', :disabled='isDisabled', v-t="'common.action.update'" @click='submit()')
 </template>

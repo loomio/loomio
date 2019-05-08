@@ -35,12 +35,14 @@ export default
 <template lang="pug">
 .poll-common-vote-form
   v-subheader(v-t="'poll_common.your_response'", v-if='stance.isNew()')
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous')
+  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-layout
     v-btn.poll-common-vote-form__button(fab large flat md-colors='mdColors(option)', v-for='option in orderedPollOptions()', :key='option.id', @click='select(option)')
-      v-avatar(size="64px")
-        img(:src="'/img/' + option.name + '.svg'")
-      //- span.poll-common-vote-form__chosen-option--name(v-t="'poll_' + stance.poll().pollType + '_options.' + option.name", aria-label='option.name')
+      v-badge(overlap)
+        template(v-slot:badge)
+          span.poll-common-vote-form__chosen-option--name(v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
+        v-avatar(size="64px")
+          img(:src="'/img/' + option.name + '.svg'")
       // <md-tooltip md-delay="750" class="poll-common-vote-form__tooltip"><span translate="poll_{{stance.poll().pollType}}_options.{{option.name}}_meaning"></span></md-tooltip>
   poll-common-stance-reason.animated(:stance='stance', v-show='selectedOptionId', v-if='stance')
   v-card-actions

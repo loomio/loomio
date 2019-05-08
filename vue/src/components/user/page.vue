@@ -48,7 +48,7 @@ export default
       Records.memberships.fetchByUser(user)
   computed:
     canContactUser: ->
-      @$store.getters.canContactUser(@user)
+      AbilityService.canContactUser(@user)
 
     isEmptyUser: ->
       _isEmpty @user

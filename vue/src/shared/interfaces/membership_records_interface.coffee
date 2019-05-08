@@ -5,6 +5,10 @@ import {includes} from 'lodash'
 export default class MemberhipRecordsInterface extends BaseRecordsInterface
   model: MemberhipModel
 
+  forUser: (user) ->
+    @view "membershipsFor(#{user.id})", (v) ->
+      v.applyFind(userId: user.id)
+
   forModel: (model) ->
     @view "membershipsForModel(#{model.constructor.singular}, #{model.id})", (v) ->
       v.applyWhere (membership) =>

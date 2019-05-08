@@ -40,9 +40,11 @@ class ApplicationController < ActionController::Base
     head :ok
   end
 
-  def redirect_to(path)
+  def redirect_to(url)
     if !Rails.env.production? && ENV['USE_VUE']
-      super "http://localhost:8080#{URI(path).path}"
+      path = URI(url).path
+      query = URI(url).query ? "?#{URI(url).query}" : ""
+      super "http://localhost:8080#{path}#{query}"
     else
       super
     end

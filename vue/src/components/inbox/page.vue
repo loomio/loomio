@@ -12,7 +12,7 @@ import AppConfig     from '@/shared/services/app_config'
 import Session       from '@/shared/services/session'
 import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
-import InboxService  from '@/shared/services/inbox_service'
+import ThreadQueryService from '@/shared/services/thread_query_service'
 import ModalService  from '@/shared/services/modal_service'
 import urlFor        from '@/mixins/url_for'
 
@@ -20,24 +20,52 @@ export default
   mixins: [urlFor]
   data: ->
     threadLimit: 50
-    views: InboxService.queryByGroup()
+    views: @queryByGroup()
+    loading: false
+    loaded: false
+    filters: [
+      'only_threads_in_my_groups',
+      'show_unread',
+      'show_recent',
+      'hide_muted',
+      'hide_dismissed'
+    ],
   created: ->
     EventBus.$emit 'currentComponent',
       titleKey: 'inbox_page.unread_threads'
       page: 'inboxPage'
-    InboxService.load()
+    @load()
   methods:
     startGroup: ->
       ModalService.open 'GroupModal', group: => Records.groups.build()
+    load: (options = {}) ->
+      Records.discussions.fetchInbox(options).then => @loaded = true
+
+    unreadCount: ->
+      if @loaded
+        @query().length()
+      else
+        "..."
+
+    query: ->
+      ThreadQueryService.queryFor(name: "inbox", filters: @filters)
+
+    queryByGroup: ->
+      _.fromPairs _.map Session.user().inboxGroups(), (group) =>
+        [
+          group.key,
+          ThreadQueryService.queryFor(name: "group_#{group.key}_inbox", filters: @filters, group: group)
+        ]
+
   computed:
-    loading: ->
-      !InboxService.loaded
+    # loading: ->
+    #   !InboxService.loaded
 
     groups: ->
       Records.groups.find(_.keys(@views))
 
     hasThreads: ->
-      InboxService.unreadCount() > 0
+      @unreadCount() > 0
 
     noGroups: ->
       !Session.user().hasAnyGroups()
@@ -49,7 +77,7 @@ export default
 <template lang="pug">
 v-container.lmo-main-container.inbox-page(grid-list-lg)
   .thread-preview-collection__container
-    //- h1.lmo-h1-medium.inbox-page__heading(v-t="'inbox_page.unread_threads'")
+    h1.lmo-h1-medium.inbox-page__heading(v-t="'inbox_page.unread_threads'")
     section.dashboard-page__loading(v-if='loading', aria-hidden='true')
       .thread-previews-container
         // <loading_content line-count="2" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10] track by $index" class="thread-preview"></loading_content>

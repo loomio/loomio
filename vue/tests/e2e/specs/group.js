@@ -55,7 +55,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_non_member')
-    // TODO: GK: no error page?
     page.expectElement('.error-page')
   },
 
@@ -78,7 +77,7 @@ module.exports = {
 
     page.loadPath('setup_group_with_subgroups')
     page.pause(2000)
-    // TODO: GK: something's up with the thread query service - can't see threads from subgroups
+    // TODO: GK: work out dynamic view issues
     page.expectText('.discussions-card__list', 'Vaya con dios', 20000)
   },
 
@@ -188,7 +187,7 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
     page.fillIn('#group-name', '')
-    // TODO: GK: trouble with .fillIn
+    // TODO: GK: still having trouble with fillIn
     page.click('.group-form__submit-button')
     page.pause()
     page.expectText('.lmo-validation-error', "can't be blank")

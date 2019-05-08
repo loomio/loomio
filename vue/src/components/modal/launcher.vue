@@ -11,6 +11,8 @@ import PollCommonEditModal from '@/components/poll/common/edit_modal'
 import ContactRequestForm from '@/components/contact/request_form'
 import AuthModal from '@/components/auth/modal'
 import MembershipRequestForm from '@/components/group/membership_request_form'
+import MembershipModal from '@/components/group/membership_modal'
+import ChangePasswordForm from '@/components/profile/change_password_form'
 
 export default
   components:
@@ -25,6 +27,8 @@ export default
     'ContactRequestForm': ContactRequestForm
     'AuthModal': AuthModal
     'MembershipRequestForm': MembershipRequestForm
+    'MembershipModal': MembershipModal
+    'ChangePasswordForm': ChangePasswordForm
   data: ->
     isOpen: false
     componentName: ""

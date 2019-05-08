@@ -25,8 +25,6 @@ export default
 <template>
     <div v-if="showPanel()" class="poll-common-set-outcome-panel">
       <p v-t="'poll_common_set_outcome_panel.' + poll.pollType" class="lmo-hint-text"></p>
-      <!-- <md-dialog-actions>
-        <md-button ng-click="openOutcomeForm()" translate="poll_common_set_outcome_panel.share_outcome" aria-label="{{poll_common.set_outcome | translate}}" class="md-primary md-raised poll-common-set-outcome-panel__submit"></md-button>
-      </md-dialog-actions> -->
+      <v-btn @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.share_outcome'" :aria-label="$t('poll_common.set_outcome')" class="md-primary md-raised poll-common-set-outcome-panel__submit"></v-btn>
     </div>
 </template>
