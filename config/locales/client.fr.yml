@@ -956,7 +956,6 @@ fr:
   dashboard_page:
     aria_label: 'Tableau de bord'
     no_groups:
-      show_all: Aucune discussion à afficher car vous n’êtes membre d’aucun groupe.
       show_muted: Aucune discussion ignorée car vous n’êtes membre d’aucun groupe.
     no_threads:
       show_all: Vous n’avez aucune discussion récente.

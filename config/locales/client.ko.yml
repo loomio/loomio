@@ -461,7 +461,6 @@ ko:
   dashboard_page:
     aria_label: '대시보드'
     no_groups:
-      show_all: 당신은 가입된 그룹이 없기 때문에 최근 모둠이 없습니다.
       show_muted: 가입된 그룹이 없기 때문에 대기중인 모둠이 없습니다.
     no_threads:
       show_all: 최근 주제가 없습니다.

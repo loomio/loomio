@@ -26,8 +26,8 @@ ar:
     closed_ago: 'مغلق {{time}}'
     volume: 'الحجم'
     notification_volume: 'صوت التبليغات'
-    group: 'المجموعة'
-    groups: 'المجموعات'
+    group: 'الفريق'
+    groups: 'الفِرَق'
     organization: "المنظمة"
     organizations: "المنظمات"
     decisions: 'القرارات'
@@ -69,12 +69,13 @@ ar:
       show_more: "أظهر المزيد"
       view_all: "استعراض الكل"
       new_thread: "موضوع جديد"
-      add_subgroup: 'أضف مجموعة فرعية'
+      add_subgroup: 'أضف فريقا فرعيا'
       loading: 'تحميل'
       translate: 'ترجم'
       translated: 'ترجم باستخدام مترجم بينغ'
       upload: 'تحميل'
       uploading: 'تحميل'
+      invite: دعوة
   error_page:
     forbidden: 'ليس لديك صلاحية للقيام بذلك.'
     page_not_found: 'لم نستطع إيجاد ذلك. من الممكن أن يكون قد جرى حذفه أو نقله.'
@@ -113,6 +114,8 @@ ar:
     delete_comment: 'حذف التعليق'
     cancel_reply: 'إلغاء الرد'
     confirm_delete_message: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
+    confirm_delete: 'حذف التعليق'
+    in_reply_to: "إجابة على {{name}}"
     submit_button:
       label: 'نشر'
     private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
@@ -134,7 +137,7 @@ ar:
       no_results: 'لا يوجد مواضيع'
       close: 'أغلق منصة البحث'
       placeholder: 'بحث'
-      loading: 'تحميل النتائج'
+      loading: 'تحميل النتائج...'
       discussions: 'المواضيع'
       proposals: 'المقترحات'
       comments: 'التعليقات'
@@ -155,8 +158,9 @@ ar:
   position_buttons_panel:
     heading: شارك برأيك
   extend_proposal_form:
-    title: 'قم بتغيير زمن الإغلاق.'
-    success: 'تم تحديث زمن إغلاق المقترح.'
+    aria_label: قم بتغيير زمن الإغلاق
+    title: 'قم بتغيير زمن الإغلاق'
+    success: 'تم تحديث زمن إغلاق المقترح'
     submit: 'قم بتحديث زمن الإغلاق'
   discussion_record:
     created: 'تم بدء موضوع {{title}} في مجموعة {{groupName}} بنجاح.'
@@ -167,13 +171,13 @@ ar:
       updated: 'تم تحديث الموضوع'
     new_discussion_title: 'البدء بموضوع جديد'
     edit_discussion_title: 'تعديل الموضوع'
-    group_label: 'المجموعة'
-    group_placeholder: 'اختر مجموعة'
+    group_label: 'الفريق'
+    group_placeholder: 'اختر فريقا'
     title_label: 'العنوان'
     title_placeholder: 'ماهو الموضوع الذي ترغب في مناقشته؟'
     context_label: 'سياق النقاش'
     context_placeholder: 'قم بتزويد معلومات كافية حول خلفية الموضوع للمجموعة ليكون النقاش مفيداً. يمكن تحديث هذا خلال سير النقاش. '
-    privacy_label: 'خصوصية'
+    privacy_label: 'الخصوصية'
     privacy_public: 'يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.'
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
     privacy_organisation: 'سيكون الموضوع ظاهراً لأعضاء {{parent}} و أعضاء {{group}}.'
@@ -181,16 +185,17 @@ ar:
     add_comment: تعليق
     edit_poll: تعديل استطلاع الرأي
     edit_stance: تغيير الموقف
+    delete_comment: حذف التعليق
   join_group_button:
-    join_group: انضم للمجموعة
+    join_group: انضم إلى الفريق
     messages:
       joined_group: 'أنت الآن عضو في مجموعة {{group}}'
   membership_request_form:
-    heading: قم بطلب الانضمام للمجموعة
+    heading: قم بطلب الانضمام إلى الفريق
     name_label: الإسم
     email_label: البريد الإلكتروني
     introduction_label: لماذا ترغب في الانضمام؟
-    submit_button: قم بطلب الانضمام إلى المجموعة
+    submit_button: قم بطلب الانضمام إلى الفريق
     messages:
       membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'
   revision_history_modal:
@@ -208,22 +213,23 @@ ar:
         public: 'هذه المجموعة ظاهرة الآن للعموم.'
       leave_group_success: 'لقد قمت بمغادرة المجموعة.'
       archive_group_success: 'تم إلغاء المجموعة.'
-    group_logo: 'شعار المجموعة'
+    group_logo: 'شعار الفريق'
     new_photo: 'صورة جديدة'
     discussions_placeholder: 'الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.'
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
-    subgroups: 'مجموعة فرعية'
+    subgroups: 'الفِرَق الفرعية'
+    invite_people: 'دعوة'
     visibility_label: 'الظهور'
     options_label: 'الخيارات'
     options:
       label: 'الخيارات'
-      edit_group: 'تعديل خيارات المجموعة'
+      edit_group: 'تعديل خيارات الفريق'
       manage_members: 'إدارة الأعضاء'
-      add_subgroup: 'زيادة مجموعة فرعية'
+      add_subgroup: 'أضف فريقا فرعيا'
       manage_subscription: 'إدارة اشتراكات المجموعة'
       email_settings: 'إعدادات البريد الإلكتروني'
-      leave_group: 'غادر المجموعة'
+      leave_group: 'غادر الفريق'
       deactivate_group: 'إلغاء المجموعة'
     volume:
       loud: قم بإرسال رسالة الكترونية عندما يكون هناك أي نشاط.
@@ -315,6 +321,7 @@ ar:
   invitation_form:
     invite_people: 'قم بدعوة أشخاص'
     group: 'مجموعة'
+    group_placeholder: 'اختر فريقا'
     shareable_link: 'رابط قابل للمشاركة'
     copy_link: 'نسخ'
     email_addresses: 'عناوين البريد الإلكتروني'
@@ -362,7 +369,7 @@ ar:
   pending_invitations_card:
     heading: دعوات في الانتظار
     email: بريد الكتروني
-    invitation_link: رابط دعوة
+    invitation_link: رابط الدعوة
     sent: تم الإرسال
   cancel_invitation_form:
     heading: إلغاء الدعوة
@@ -378,8 +385,9 @@ ar:
       password_changed: 'تم تحديث كلمة المرور'
       deactivated: 'تم إلغاء الحساب'
     change_picture_link: 'تغيير الصورة'
+    change_password_link: 'إعادة تعيين الكلمة السرية'
     deactivate_user_link: 'إلغاء الحساب'
-    profile: 'ملف شخصي'
+    profile: 'الملف الشخصي'
     edit_profile: 'تعديل الملف الشخصي'
     picture_label: 'صورة'
     name_label: 'الإسم'
@@ -428,6 +436,7 @@ ar:
       proposals: المقترحات
       proposals_aria_label: يتم إظهار المواضيع ذات المقترحات النشطة
       proposals_description: إظهار المواضيع ذات المقترحات النشطة فقط
+      muted: المواضيع المكتومة
       muted_aria_label: يتم إظهار المواضيع الصامتة
       muted_description: إظهار المواضيع الصامتة فقط
     aria_thread:
@@ -449,10 +458,12 @@ ar:
     no_groups:
       or: أو
   discussion:
-    activity: 'نشاط'
+    activity: 'النشاط'
     activity_placeholder: 'لا يوجد نشاط بعد!'
     load_previous: 'تحميل النشاطات السابقة'
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong> '
+    volume:
+      mute_message: 'تم كتم الموضوع'
   activity_card:
     unread: غير مقروءة
     latest: الأحدث
@@ -608,6 +619,8 @@ ar:
     label: المرفقات
   current_polls_card:
     start_poll: قرار جديد
+  poll_common_select_group:
+    loomio_group: الفريق
   poll_common_notify_group:
     notify_group: إعلان
   poll_common_form:
@@ -634,6 +647,8 @@ ar:
     email: البريد الإلكتروني
     password: الكلمة السرية
   install_slack:
+    progress:
+      invite: دعوة
     install:
       group_name: اسم الفريق
     invite:

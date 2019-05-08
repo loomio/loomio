@@ -83,7 +83,7 @@ $controller = ($rootScope, $routeParams, $mdMedia) ->
   @userHasMuted    = -> Session.user().hasExperienced("mutingThread")
   @showLargeImage  = -> $mdMedia("gt-sm")
 
-  @startGroup() if @noGroups() && AbilityService.canStartGroups()
+  # @startGroup() if @noGroups() && AbilityService.canStartGroups()
 
   return
 

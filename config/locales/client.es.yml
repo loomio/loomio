@@ -922,6 +922,7 @@ es:
     submit: 'Desactiva cuenta '
   email_settings_page:
     header: Ajustes de correo
+    email_newsletter: Boletín de noticias de Loomio
     daily_summary_label: Correo electrónico de resumen diario
     daily_summary_description: "Cada mañana, recibirás un correo electrónico con la actividad no leída el día anterior. Este correo electrónico facilita  el estar al día con la actividad."
     on_participation_label: 'Suscribirte a la participación '
@@ -943,7 +944,6 @@ es:
   dashboard_page:
     aria_label: 'Escritorio'
     no_groups:
-      show_all: 'No tienes ningún hilo reciente porque no eres miembro de ningún grupo. '
       show_muted: No tienes ningún hilo silenciado porque no eres miembro de ningún grupo.
     no_threads:
       show_all: No tienes ningún hilo reciente.
@@ -1226,6 +1226,7 @@ es:
     publish_poll: Compartir encuesta
     view_all: Ver todo
     save_changes: Guardar
+    change_vote: Cambiar voto
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -1641,6 +1642,12 @@ es:
     card:
       remove_identity: Eliminar esta integración
       identity_removed: 'Integración eliminada '
+    event_kinds:
+      poll_created: 'Se '
+      stance_created: Se ha emitido un nuevo voto
+      poll_closing_soon: Una encuesta está próxima a expirar
+      poll_expired: Ha expirado una encuesta 
+      outcome_created: Se ha compartido un resultado
   install_slack:
     modal_title: Installar Slack
     modal_helptext: 'Primero, deberás ingresar en Slack. Te enviaremos ahí automáticamente en un segundo, o puedes hacer clic en el siguiente botón para continuar. '
@@ -1700,3 +1707,8 @@ es:
         Desde ahora cuando cualquier persona use una de las herramientas de decisión en este grupo, tendrán la opción de
         publicar actualizaciones sobre la misma en un canal de su equipo Slack.
     start_poll_now: Toma una decisión ahora
+  powered_by:
+    powered_by_loomio: Creado por Loomio
+    privacy_policy: Política de privacidad
+    terms_of_service: Términos de servicio
+    front_page: Portada

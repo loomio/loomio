@@ -32,10 +32,10 @@
         %md_button.sidebar__list-item-button--subgroup.lmo-flex{ng-href: "{{groupUrl(group)}}", lmo-href: "{{groupUrl(group)}}", ng-if: "!group.isParent()", ng-class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
           {{group.name}}
         .sidebar__list-item-padding
-      -# %md_list_item{ng-if: "canViewPublicGroups()"}
-      -#   %md_button.sidebar__list-item-button.sidebar__list-item-button--explore{ng-href: "/explore", lmo-href: "/explore", aria-label: "{{ 'sidebar.explore' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('explorePage')}"}
-      -#     %i.sidebar__list-item-icon.mdi.mdi-earth
-      -#     %span{translate: "sidebar.explore"}
+      %md_list_item{ng-if: "canViewPublicGroups()"}
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--explore{ng-href: "/explore", lmo-href: "/explore", aria-label: "{{ 'sidebar.explore' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('explorePage')}"}
+          %i.sidebar__list-item-icon.mdi.mdi-earth
+          %span{translate: "sidebar.explore"}
       %md_list_item{ng-if: "canStartGroup()"}
         %md_button.sidebar__list-item-button.sidebar__list-item-button--start-group{href: "", ng-click: "startGroup()", aria-label: "{{ 'sidebar.start_group' | translate }}"}
           %i.sidebar__list-item-icon.mdi.mdi-plus

@@ -957,7 +957,7 @@ zh_TW:
   dashboard_page:
     aria_label: '儀表板'
     no_groups:
-      show_all: 您沒有任何最近的討論串，因為您還不是任何群組的成員。
+      show_all: 歡迎！您還不是任何群組的成員。<a href="/explore">瀏覽公開群組</a>或<a href="/g/new">啟動群組</a>。
       show_muted: 您沒有任何已靜音的討論串，因為您不是任何群組的成員。
     no_threads:
       show_all: 您沒有任何最近的討論串

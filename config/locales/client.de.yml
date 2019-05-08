@@ -9,14 +9,16 @@ de:
     name_label: Name
     color_label: Farbe
     card_title: Schlagwörter kategorisieren
-    modal_title: neues Schlagwort erstellen
+    modal_title: Neues Schlagwort erstellen
     modal_edit_title: Schlagwort bearbeiten
     modal_destroy_title: Schlagwort entfernen
     destroy_tag: Schlagwort entfernen
-    destroy_helptext: Dies wird das Schlagwort löschen und es aus allen Diskussionen entfernen. Bist du sicher?
-    helptext: Schlagwörter können Konversationen kategorisieren und lassen sich später leicht finden.
+    destroy_helptext: Hiermit löscht du das Schlagwort und entfernst es aus allen Diskussionen. Bist du sicher?
+    helptext: Schlagwörter können Konversationen kategorisieren, damit du sie später leicht findest.
     discussions_count_singular: ({{count}} thread)
     discussions_count_plural: ({{count}} threads)
+    tag_created: Schlagwort gespeichert
+    tag_destroyed: Schlagwort gelöscht
     tags_marked: Themen mit '{{name}}' in {{groupName}}
     no_tags_present: Zu diesem Schlagwort wurden keine Diskussionen gefunden! Versuche es mit einem anderen.
   reactions:
@@ -25,13 +27,13 @@ de:
     laughing: Lachen
     clap: Klatschen
     hugging: Umarmen
-    sunglasses: cool
-    wink: zwinkern
-    nerd: schlau
+    sunglasses: Cool
+    wink: Zwinkern
+    nerd: Schlau
     relieved: Erleichtert
     worried: Besorgt
     confused: Verwirrt
-    confounded: verwirrt
+    confounded: Verlegen
     neutral_face: neutral
     slight_frown: Stirn runzeln
     disappointed: Enttäuscht
@@ -42,13 +44,13 @@ de:
     cry: Weinen
     scream: Schreien
     sleeping: Gelangweilt
-    thinking: Denken
+    thinking: 'Überlegen '
     raised_hands: Hände heben
     pray: Beten
     fingers_crossed: Finger gekreuzt
     v: Frieden
     metal: Metall
-    ok_hand: ok
+    ok_hand: Ok
     wave: Winken
     thumbsup: Daumen hoch
     thumbsdown: Daumen runter
@@ -127,14 +129,14 @@ de:
       update: 'Aktualisieren'
       cancel: 'Abbrechen'
       show_more: "Mehr anzeigen"
-      view_all: "Zeige alle"
+      view_all: "Alles anzeigen"
       new_thread: "Neue Diskussion"
       add_subgroup: 'Untergruppe anlegen'
       loading: 'Laden'
       translate: 'Übersetzen'
-      translated: 'Übersetzung durch Bing Translator'
+      translated: 'Übersetzung mit Bing Translator'
       upload: 'Hochladen'
-      uploading: 'Hochladen ...'
+      uploading: 'Lädt hoch ...'
       load_more: 'Mehr anzeigen'
       share: Teilen
       ok: ok
@@ -153,6 +155,7 @@ de:
       resent: Einladung erneut versendet
       export: Exportieren
       fork: Abzweigung
+      apply: Anwenden
     formatting_help:
       label: 'Markdown-Formatierung'
       title: 'Lernen Sie mehr über die Textformatierung mit Markdown'
@@ -424,6 +427,12 @@ de:
       voters: alle, die abgestimmt haben
       non_voters: alle, die noch nicht abgestimmt haben
     form:
+      too_many_invitations: |
+          Einladungsgrenze erreicht. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
+      no_invitations_remaining: |
+          <p>Diese Gruppe ist auf {{maxMitglieder}} Einladungen begrenzt. </p>
+          <p>Nächster Schritt<a href="{{upgradeUrl}}" target="_blank">wähle einen Tarif</a>um weiter mit Loomio zu arbeiten. </p>
+      invitations_remaining: '{{count}} Einladungen noch verfügbar.<a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
       group_announced:
         title: zur Gruppe einladen
         helptext: Wen möchten Sie zu der Gruppe einladen?
@@ -932,7 +941,6 @@ de:
   dashboard_page:
     aria_label: 'Schreibtisch'
     no_groups:
-      show_all: Es gibt keine aktuellen Diskussionen, da Sie noch keiner Gruppe angehören.
       show_muted: Sie haben keine stummgeschalteten Diskussionen, weil Sie kein Mitglied einer Gruppe sind.
     no_threads:
       show_all: Sie haben derzeit keine aktuellen Diskussionen.

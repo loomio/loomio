@@ -1,9 +1,11 @@
 !!!
-%html{lang: "en"}
+%html{lang: I18n.locale}
   %head
     %title= AppConfig.theme[:site_name]
     %meta{charset: 'utf-8'}
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    = csrf_meta_tags
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    %link{rel: "shortcut icon",    href: AppConfig.theme[:icon_src]}
     = stylesheet_link_tag 'basic/all'
   %body
     %header

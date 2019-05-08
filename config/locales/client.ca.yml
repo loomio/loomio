@@ -442,7 +442,6 @@ ca:
   dashboard_page:
     aria_label: 'Panell'
     no_groups:
-      show_all: No teniu cap discussió recent perquè no sou membres de cap grup.
       show_muted: No teniu cap discussió silenciada perquè no sou membres de cap grup.
     no_threads:
       show_all: No teniu cap discussió recent.
