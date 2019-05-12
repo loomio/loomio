@@ -70,7 +70,7 @@ export default
     stanceChoice: Object
     back: Object
     name: String
-  methods:
+  computed:
     componentName: ->
       pollType = (@stance or @outcome or @stanceChoice or @poll).poll().pollType
 
@@ -85,5 +85,5 @@ export default
 </script>
 
 <template>
-  <component :is="componentName()" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back'></component>
+  <component :is="componentName" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back'></component>
 </template>
