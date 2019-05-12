@@ -14,6 +14,7 @@ import _isEmpty     from 'lodash/isEmpty'
 export default
   data: ->
     discussion: {}
+    activePolls: []
   created: ->
     # EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }
     if @requestedCommentId
@@ -42,6 +43,11 @@ export default
     init: (discussion) ->
       if discussion and _isEmpty @discussion?
         @discussion = discussion
+        Records.view
+          name: "activePollsForDiscussion(#{@discussion.id})"
+          collections: ["polls"]
+          query: (records) =>
+            @activePolls = @discussion.activePolls()
         @discussion.markAsSeen()
         @discussion.requestedSequenceId = @chompRequestedSequenceId
 
@@ -92,7 +98,7 @@ v-container.lmo-main-container.thread-page(grid-list-lg)
       v-flex(md4)
         v-layout(column)
           // <outlet name="before-thread-page-column-right" model="discussion" class="before-column-right lmo-column-right"></outlet>
-          v-flex(v-for="poll in discussion.activePolls()", :key="poll.id")
+          v-flex(v-for="poll in activePolls", :key="poll.id")
             poll-common-card(:poll="poll")
           v-flex
             decision-tools-card(:discussion='discussion')
