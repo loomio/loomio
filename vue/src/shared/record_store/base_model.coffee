@@ -34,7 +34,6 @@ export default class BaseModel
     @afterConstruction()
 
   bumpVersion: ->
-    # @recordStore.bumpVersion()
     @_version = @_version + 1
 
   afterConstruction: ->
@@ -121,14 +120,6 @@ export default class BaseModel
       dynamicView: true
 
     @[name] = => @recordStore[args.from].find("#{args.with}": @[args.of])
-
-  # buildView: (viewName, args = {}) ->
-  #   # create the view which references the records
-  #   if !@views[viewName]
-  #     @views[viewName] = @recordStore[args.from].collection.addDynamicView(viewName)
-  #     @views[viewName].applyFind("#{args.with}": @[args.of])
-  #     @views[viewName].applySimpleSort(args.sortBy, args.sortDesc) if args.sortBy
-  #   @views[viewName]
 
   belongsTo: (name, userArgs) ->
     defaults =

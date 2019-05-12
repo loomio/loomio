@@ -6,13 +6,13 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface
   model: MemberhipModel
 
   forUser: (user) ->
-    @view "membershipsFor(#{user.id})", (v) ->
-      v.applyFind(userId: user.id)
+    @collection.find(userId: user.id)
 
   forModel: (model) ->
-    @view "membershipsForModel(#{model.constructor.singular}, #{model.id})", (v) ->
-      v.applyWhere (membership) =>
-        includes(model.groupIds(), membership.groupId)
+    @collection.find(groupId: {$in: model.groupIds()})
+
+  forGroup: (group) ->
+    @collection.find(groupId: group.id)
 
   joinGroup: (group) ->
     @remote.post 'join_group', group_id: group.id

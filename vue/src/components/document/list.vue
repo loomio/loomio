@@ -2,6 +2,7 @@
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
+import {flatten, capitalize, includes} from 'lodash'
 
 export default
   props:
@@ -13,11 +14,21 @@ export default
     placeholder: String
 
   data: ->
-    documents: Records.documents.newAndPersistedDocumentsFor(@model)
+    documents: []
 
   created: ->
     unless @model.isNew() or @skipFetch
       Records.documents.fetchByModel(@model)
+    Records.view
+      name: "newAndPersistedDocumentsFor(#{@model.constructor.singular}.#{@model.id})"
+      collections: ['documents']
+      query: (store) =>
+        console.log store
+        store.documents.collection.chain().find(
+          modelId: {$in: flatten([@model.id, @model.newDocumentIds])}
+          modelType: capitalize(@model.constructor.singular)).
+          where((doc) -> !includes @model.removedDocumentIds, doc.id).
+          simplesort('createdAt', true).data()
 
   methods:
     edit: (doc, $mdMenu) ->

@@ -22,14 +22,10 @@ export default new class AbilityService
     _.intersection(Session.user().groupIds(), user.groupIds()).length
 
   canAddComment: (thread) ->
-    console.log "can add comment", _.includes(Records.users.membersOf(thread), Session.user())
-    console.log "session user", Session.user()
-    console.log "names of members of thread", _.map(Records.users.membersOf(thread), 'name')
-    console.log "members of thread", Records.users.membersOf(thread)
-    _.includes Records.users.membersOf(thread), Session.user()
+    _.includes thread.members(), Session.user()
 
   canRespondToComment: (comment) ->
-    _.includes Records.users.membersOf(comment.discussion()), Session.user()
+    _.includes comment.discussion().members(), Session.user()
 
   canForkComment: (comment) ->
     @canMoveThread(comment.discussion()) &&

@@ -33,11 +33,14 @@ export default class UserModel extends BaseModel
     _.map(@memberships(), 'groupId')
 
   groups: ->
-    groups = _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()
-    _.sortBy groups, 'fullName'
+    @recordStore.groups.collection.chain().
+      find(id: { $in: @groupIds() }, archivedAt: null).
+      simplesort('fullName').data()
 
   formalGroups: ->
-    _.filter @groups(), (group) -> group.type == "FormalGroup"
+    @recordStore.groups.collection.chain().
+      find(id: { $in: @groupIds() }, type: "FormalGroup", archivedAt: null).
+      simplesort('fullName').data()
 
   adminGroups: ->
     _.invokeMap @adminMemberships(), 'group'

@@ -1,32 +1,41 @@
+import RecordView from '@/shared/record_store/record_view'
+import { snakeCase, isEmpty, camelCase, map, keys, each, intersection } from 'lodash'
+
 export default class RecordStore
   constructor: (db) ->
     @db = db
     @collectionNames = []
+    @views = {}
 
   addRecordsInterface: (recordsInterfaceClass) ->
     recordsInterface = new recordsInterfaceClass(@)
     recordsInterface.setRemoteCallbacks(@defaultRemoteCallbacks())
-    name = recordsInterface.model.plural
-    @[_.camelCase(name)] = recordsInterface
+    name = camelCase(recordsInterface.model.plural)
+    @[name] = recordsInterface
     recordsInterface.onInterfaceAdded()
     @collectionNames.push name
 
   import: (data) ->
-    return if _.isEmpty(data)
-    @bumpVersion()
-    _.each @collectionNames, (name) =>
-      snakeName = _.snakeCase(name)
-      camelName = _.camelCase(name)
+    return if isEmpty(data)
+    each @collectionNames, (name) =>
+      snakeName = snakeCase(name)
+      camelName = camelCase(name)
       if data[snakeName]?
-        _.each data[snakeName], (recordData) =>
+        each data[snakeName], (recordData) =>
           @[camelName].importJSON(recordData)
+          true
+
     @afterImport(data)
+
+    each @views, (view) =>
+      if intersection(view.collectionNames, map(keys(data), camelCase))
+        view.query(@)
     data
 
   afterImport: (data) ->
 
   setRemoteCallbacks: (callbacks) ->
-    _.each @collectionNames, (name) => @[_.camelCase(name)].setRemoteCallbacks(callbacks)
+    each @collectionNames, (name) => @[camelCase(name)].setRemoteCallbacks(callbacks)
 
   defaultRemoteCallbacks: ->
     onUploadSuccess: (data) => @import(data)
@@ -38,5 +47,8 @@ export default class RecordStore
         throw response
     onFailure: (response) => throw response
 
-  bumpVersion: ->
-    @_version = (@_version || 0) + 1
+  view: ({name, collections, query}) ->
+    if !@views[name]
+      console.log "creating view:", name, collections
+      @views[name] = new RecordView(name: name, recordStore: @, collections: collections, query: query)
+    @views[name]
