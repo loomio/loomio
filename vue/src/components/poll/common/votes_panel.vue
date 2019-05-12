@@ -41,6 +41,8 @@ sortFn =
     -(stance.pollOption().priority)
 
 export default
+  components:
+    PollCommonDirective: -> import('@/components/poll/common/directive')
   props:
     poll: Object
   data: ->
@@ -80,7 +82,7 @@ export default
         option(v-for='opt in sortOptions', :value='opt', v-t="'poll_common_votes_panel.' + opt")
     .poll-common-votes-panel__no-votes(v-if='!hasSomeVotes()', v-t="'poll_common_votes_panel.no_votes_yet'")
     .poll-common-votes-panel__has-votes(v-if='hasSomeVotes()')
-      poll-common-directive3(:stance='stance', name='votes-panel-stance', v-for='stance in stances()', :key='stance.id')
+      poll-common-directive(:stance='stance', name='votes-panel-stance', v-for='stance in stances()', :key='stance.id')
       button(v-if='moreToLoad()', v-t="'common.action.load_more'", @click='loader.loadMore()')
     poll-common-undecided-panel(:poll='poll')
 </template>
