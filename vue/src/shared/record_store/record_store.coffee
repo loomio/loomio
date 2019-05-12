@@ -49,6 +49,5 @@ export default class RecordStore
 
   view: ({name, collections, query}) ->
     if !@views[name]
-      console.log "creating view:", name, collections
       @views[name] = new RecordView(name: name, recordStore: @, collections: collections, query: query)
     @views[name]

@@ -6,12 +6,6 @@ export default class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
   apiEndPoint: 'profile'
 
-  membersOf: (model) ->
-    data = @view "membersOf(#{model.constructor.singular}, #{model.id})", (v) =>
-      v.applyWhere (user) => includes(model.memberIds(), user.id)
-    data
-
-
   fetchMentionable: (q, model) =>
     model = model.discussion() if !model.id? && model.discussionId
     model = model.group() if !model.id? && !model.discussionId

@@ -38,15 +38,6 @@ export default class BaseRecordsInterface
     @collection.insert(record)
     record
 
-  # view: (name, fn) ->
-  #   if !@views[name]
-  #     view = @collection.addDynamicView(name, {persistent: true, sortPriority: 'active'})
-  #     # view = @collection.addDynamicView(name)
-  #     fn(view)
-  #     @views[name] = Vue.observable(view)
-  #     @views[name].on('rebuild', -> console.log "rebuilding for #{name}", @collection.name)
-  #   @views[name].data()
-
   fetch: (args) ->
     @remote.fetch(args)
 
