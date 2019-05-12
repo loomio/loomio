@@ -45,11 +45,15 @@ export default
       @componentName = opts.component
       @componentProps = opts.props
     closeModal: -> @isOpen = false
+    componentKey: ->
+      date = new Date()
+      date.getTime()
+
 
 </script>
 
 <template lang="pug">
 v-dialog(v-model="isOpen" max-width="600px")
-  component(:is="componentName" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
+  component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
 
 </template>
