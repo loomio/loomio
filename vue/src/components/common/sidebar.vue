@@ -32,7 +32,6 @@ export default
         parentGroups = uniq compact concat(groups, map(groups, (group) -> group.parent()))
         @groups = sortBy parentGroups, 'fullName'
 
-
     InboxService.load()
     EventBus.$on 'toggleSidebar', (event, show) =>
       @showSidebar = !@showSidebar

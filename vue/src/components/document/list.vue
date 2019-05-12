@@ -24,7 +24,7 @@ export default
       collections: ['documents']
       query: (store) =>
         console.log store
-        store.documents.collection.chain().find(
+        @documents = store.documents.collection.chain().find(
           modelId: {$in: flatten([@model.id, @model.newDocumentIds])}
           modelType: capitalize(@model.constructor.singular)).
           where((doc) -> !includes @model.removedDocumentIds, doc.id).
