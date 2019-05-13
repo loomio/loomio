@@ -15,17 +15,13 @@ module.exports = {
     // page.expectElement('.announcement-form__submit')
     // page.click('.dismiss-modal-button')
     page.pause(3000)
-    // TODO: GK: no poll live update for poll card
-    page.refresh() // GK: this is a hack since live-update doesn't work yet
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
     page.click('.poll-common-vote-form__button:first-child')
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
-    page.refresh() // GK: this is a hack since live-update doesn't work yet
 
-    // TODO: GK: circular dependency problems with poll-common-directive
     page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
       page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
@@ -42,9 +38,6 @@ module.exports = {
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
     page.click('.poll-common-form__submit')
     // page.expectElement('.announcement-form__submit')
-    // page.click('.dismiss-modal-button')
-    // page.expectNoElement('.poll-common-modal')
-    page.refresh() // GK: this is a hack since live-update doesn't work yet
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
@@ -52,9 +45,7 @@ module.exports = {
     page.click('.poll-common-vote-form__button:first-child')
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
-    page.refresh() // GK: this is a hack since live-update doesn't work yet
 
-    // TODO: GK: circular dependency problems with poll-common-directive
     page.scrollTo('.poll-common-stance-choice--count', () => {
       page.expectText('.poll-common-stance-choice__option-name', 'Yes')
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
