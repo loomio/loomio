@@ -93,6 +93,7 @@ module.exports = {
   PollCommonPercentVoted: 'poll/common/percent_voted',
   PollCommonPreview: 'poll/common/preview',
   PollCommonPreviewRepeater: 'poll/common/preview_repeater',
+  PollCommonReopenFormActions: 'poll/common/reopen_form_actions',
   PollCommonSetOutcomePanel: 'poll/common/set_outcome_panel',
   PollCommonSettings: 'poll/common/settings',
   PollCommonShowResultsButton: 'poll/common/show_results_button',

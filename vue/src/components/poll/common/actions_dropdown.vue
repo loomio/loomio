@@ -38,7 +38,7 @@ export default
       @openClosePollModal(@poll)
 
     reopenPoll: ->
-      ModalService.open 'PollCommonReopenModal', poll: => @poll
+      @openReopenPollModal(@poll)
 
     deletePoll: ->
       ModalService.open 'PollCommonDeleteModal', poll: => @poll

@@ -9,7 +9,7 @@ export default
     close: Function
   data: ->
     isDisabled: false
-  methods:
+  computed:
     icon: ->
       iconFor(@poll)
 </script>
@@ -18,7 +18,7 @@ v-card.poll-common-modal
   .lmo-disabled-form(v-show='isDisabled')
   v-card-title
     .md-toolbar-tools.lmo-flex__space-between
-      v-icon icon()
+      v-icon {{ icon }}
       h1.lmo-h1(v-t="'poll_common_reopen_form.title'")
       dismiss-modal-button(:close="close")
   v-card-text
@@ -29,7 +29,7 @@ v-card.poll-common-modal
 
     //- dialog_scroll_indicator
   v-card-actions.lmo-slide-animation
-    //- poll_common_reopen_form_actions.animated(poll='poll')
+    poll-common-reopen-form-actions.animated(:poll='poll' :close="close")
 </template>
 <style lang="scss">
 </style>
