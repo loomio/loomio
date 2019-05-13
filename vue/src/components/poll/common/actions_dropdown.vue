@@ -5,6 +5,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import PollModalMixin from '@/mixins/poll_modal'
 
 export default
+  mixins: [PollModalMixin]
   props:
     poll: Object
   methods:
@@ -34,7 +35,7 @@ export default
       @openEditPollModal(@poll)
 
     closePoll: ->
-      ModalService.open 'PollCommonCloseModal', poll: => @poll
+      @openClosePollModal(@poll)
 
     reopenPoll: ->
       ModalService.open 'PollCommonReopenModal', poll: => @poll

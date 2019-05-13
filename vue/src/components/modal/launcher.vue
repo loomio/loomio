@@ -14,6 +14,7 @@ import MembershipRequestForm from '@/components/group/membership_request_form'
 import MembershipModal from '@/components/group/membership_modal'
 import ChangePasswordForm from '@/components/profile/change_password_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
+import PollCommonCloseModal from '@/components/poll/common/close_modal'
 
 export default
   components:
@@ -31,6 +32,7 @@ export default
     'MembershipModal': MembershipModal
     'ChangePasswordForm': ChangePasswordForm
     'PollCommonOutcomeModal': PollCommonOutcomeModal
+    'PollCommonCloseModal': PollCommonCloseModal
   data: ->
     isOpen: false
     componentName: ""

@@ -39,6 +39,6 @@ v-card.poll-common-modal
     announcement-form(announcement="announcement", v-if="currentStep == 'announce'")
     //- dialog_scroll_indicator
   v-card-actions
-    poll-common-form-actions(:poll="poll", v-if="currentStep == 'save'")
+    poll-common-form-actions(:poll="poll", v-if="currentStep == 'save'" :close="close")
     announcement-form-actions(:announcement="announcement", v-if="currentStep == 'announce'")
 </template>
