@@ -2,6 +2,7 @@
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
+import PollModalMixin from '@/mixins/poll_modal'
 
 export default
   props:
@@ -30,7 +31,7 @@ export default
       ModalService.open 'PollCommonShareModal', poll: => @poll
 
     editPoll: ->
-      ModalService.open 'PollCommonEditModal', poll: => @poll
+      @openEditPollModal(@poll)
 
     closePoll: ->
       ModalService.open 'PollCommonCloseModal', poll: => @poll

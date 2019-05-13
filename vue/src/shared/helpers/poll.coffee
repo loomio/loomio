@@ -1,5 +1,6 @@
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
+import i18n from '@/i18n.coffee'
 
 # A series of helpers for interacting with polls, such as template values for a
 # particular poll or getting the last stance from a given user
@@ -30,4 +31,4 @@ export participantName = (stance) ->
   if stance.participant()
     stance.participant().nameWithTitle(stance.poll())
   else
-    I18n.t('common.anonymous')
+    i18n.t('common.anonymous')

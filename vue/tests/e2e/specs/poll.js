@@ -225,7 +225,7 @@ module.exports = {
     page.scrollTo('.poll-actions-dropdown__button', () => {
       page.click('.poll-actions-dropdown__button')
       page.click('.poll-actions-dropdown__reopen')
-      // TODO: GK: modal missing
+      // TODO: GK: poll reopen modal has some datepicker stuff in its tree
       page.click('.poll-common-reopen-form__submit')
     })
   },
@@ -236,7 +236,6 @@ module.exports = {
     page.loadPath('test_proposal_poll_anonymous', { controller: 'polls' })
     page.click('.show-results-button')
 
-    // TODO: GK: circular dependency problems with poll-common-directive
     page.expectText('.poll-common-votes-panel__stance-content', 'Anonymous')
     page.expectNoElement('.poll-common-undecided-panel__button')
   },
@@ -246,7 +245,7 @@ module.exports = {
 
     page.loadPath('test_meeting_poll_closed', { controller: 'polls' })
     page.click('.poll-common-set-outcome-panel__submit')
-    // TODO: GK: poll common outcome panel modal missing
+    // TODO: GK: dependent on a date picker?
 
     page.fillIn('.poll-common-outcome-form__statement textarea', 'Here is a statement')
     page.fillIn('.poll-common-calendar-invite__summary', 'This is a meeting title')

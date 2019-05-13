@@ -51,7 +51,7 @@ export default
 </script>
 
 <template lang="pug">
-v-avatar(:title='user.name' :size='width')
+v-avatar(v-if="user" :title='user.name' :size='width')
   v-gravatar(v-if="user.avatarKind === 'gravatar'", :hash='user.emailHash', :gravatar-size='gravatarSize', :alt='user.name')
   img(v-else-if="user.avatarKind === 'uploaded'", :alt='user.name', :src='uploadedAvatarUrl')
   span.white--text.headline(v-else-if="user.avatarKind === 'initials'") {{user.avatarInitials}}
