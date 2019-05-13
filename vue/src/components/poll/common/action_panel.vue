@@ -12,25 +12,27 @@ export default
     poll: Object
 
   data: ->
-    stance: @getLastStance()
+    stance: @lastStanceOrNew()
+    userHasVoted: false
 
   created: ->
-    EventBus.$on 'refreshStance', @refreshStance
-
-  computed:
-    userHasVoted: ->
-      myLastStanceFor(@poll)?
-    userCanParticipate: ->
-      AbilityService.canParticipateInPoll(@poll)
+    Records.view
+      name: "myLastStanceForjhf(#{@poll.id})"
+      collections: ["stances"]
+      query: (records) =>
+        @stance = @lastStanceOrNew()
+        @userHasVoted = !@stance.isNew()
 
   methods:
-    refreshStance: -> @stance = @getLastStance()
-    getLastStance: ->
-      myLastStanceFor(@poll) or
-                      Records.stances.build(
-                        pollId:    @poll.id,
-                        userId:    AppConfig.currentUserId
-                      ).choose(@$route.params.poll_option_id)
+    lastStanceOrNew: ->
+      myLastStanceFor(@poll) || Records.stances.build(
+        pollId:    @poll.id,
+        userId:    AppConfig.currentUserId
+      ).choose(@$route.params.poll_option_id)
+
+  computed:
+    userCanParticipate: ->
+      AbilityService.canParticipateInPoll(@poll)
 
 </script>
 
