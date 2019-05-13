@@ -7,9 +7,10 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
+import PollModalMixin from '@/mixins/poll_modal'
 
 export default
+  mixins: [PollModalMixin]
   props:
     poll: Object
   methods:
@@ -17,9 +18,9 @@ export default
       !@poll.outcome() and AbilityService.canSetPollOutcome(@poll)
 
     openOutcomeForm: ->
-      ModalService.open 'PollCommonOutcomeModal', outcome: =>
-        @poll.outcome() or
-        Records.outcomes.build(pollId: @poll.id)
+      outcome = @poll.outcome() or
+      Records.outcomes.build(pollId: @poll.id)
+      @openPollOutcomeModal(outcome)
 </script>
 
 <template>

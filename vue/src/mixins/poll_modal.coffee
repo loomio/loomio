@@ -25,3 +25,10 @@ export default
                       props: {
                         poll: poll
                       })
+
+    openPollOutcomeModal: (outcome) ->
+      EventBus.$emit('openModal',
+                      component: 'PollCommonOutcomeModal',
+                      props: {
+                        outcome: outcome
+                      })
