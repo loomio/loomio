@@ -32,3 +32,6 @@ export default
                       props: {
                         outcome: outcome
                       })
+
+    closeModal: ->
+      EventBus.$emit('closeModal')

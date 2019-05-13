@@ -210,9 +210,8 @@ module.exports = {
 
     page.loadPath('test_proposal_poll_closed', { controller: 'polls' })
     page.click('.poll-common-set-outcome-panel__submit')
-    // TODO: GK: modal missing
 
-    page.fillIn('.poll-common-outcome-form__statement textarea', 'This is an outcome')
+    page.fillIn('.poll-common-outcome-form__statement .ProseMirror', 'This is an outcome')
     page.click('.poll-common-outcome-form__submit')
 
     page.expectText('.poll-common-outcome-panel', 'This is an outcome')
