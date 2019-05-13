@@ -6,17 +6,20 @@ export default
   props:
     outcome: Object
   created: ->
-    @outcome.calendarInvite = true
-    @outcome.pollOptionId = @outcome.pollOptionId or bestOption.id
-    @outcome.customFields.event_summary = @outcome.customFields.event_summary or @outcome.poll().title
-  data: ->
-    options: map @outcome.poll().pollOptions(), (option) ->
+    @options = map @outcome.poll().pollOptions(), (option) ->
       id:        option.id
       value:     TimeService.displayDateAndTime(option.name)
       attendees: option.stances().length
 
-    bestOption: head sortBy @options, (option) ->
+    @bestOption = head sortBy @options, (option) ->
       -1 * option.attendees # sort descending, so the best option is first
+
+    @outcome.calendarInvite = true
+    @outcome.pollOptionId = @outcome.pollOptionId or @bestOption.id
+    @outcome.customFields.event_summary = @outcome.customFields.event_summary or @outcome.poll().title
+  data: ->
+    options: []
+    bestOption: null
 </script>
 <template lang="pug">
 .poll-common-calendar-invite.lmo-drop-animation

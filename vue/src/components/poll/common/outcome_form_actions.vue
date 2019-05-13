@@ -1,4 +1,5 @@
 <script lang="coffee">
+import { submitOutcome } from '@/shared/helpers/form'
 import PollModalMixin from '@/mixins/poll_modal'
 
 export default

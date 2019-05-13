@@ -1,7 +1,11 @@
 <script lang="coffee">
+import { fieldFromTemplate } from '@/shared/helpers/poll'
+
 export default
   props:
     outcome: Object
+  data: ->
+    isDisabled: false
   methods:
     datesAsOptions: ->
       fieldFromTemplate @outcome.poll().pollType, 'dates_as_options'
