@@ -3,13 +3,15 @@
 
 <script lang="coffee">
 import ModalService   from '@/shared/services/modal_service'
+import PollModalMixin from '@/mixins/poll_modal'
 
 export default
+  mixins: [PollModalMixin]
   props:
     stance: Object
   methods:
     openStanceForm: ->
-      ModalService.open 'PollCommonEditVoteModal', stance: => @stance
+      @openEditVoteModal(@stance)
 </script>
 
 <template lang="pug">
