@@ -4,7 +4,6 @@
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import EventBus       from '@/shared/services/event_bus'
-import { registerKeyEvent }  from '@/shared/helpers/keyboard'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import _pull from 'lodash/pull'
 import _includes from 'lodash/includes'
@@ -16,9 +15,6 @@ export default
   data: ->
     existingOptions: _clone @poll.pollOptionNames
     datesAsOptions: fieldFromTemplate(@poll.pollType, 'dates_as_options')
-  created: ->
-    # registerKeyEvent $scope, 'pressedEnter', $scope.poll.addOption, (active) ->
-    #   active.classList.contains('poll-poll-form__add-option-input')
   methods:
     removeOption: (name) ->
       _pull(@poll.pollOptionNames, name)
@@ -43,7 +39,7 @@ export default
       p.lmo-hint-text(v-if='!datesAsOptions', v-t="'poll_common_form.no_options'")
     v-list-tile.poll-common-form__list-item(v-for='name in poll.pollOptionNames' :key="name")
       span.poll-poll-form__option-text(v-if="!datesAsOptions") {{name}}
-      poll-meeting-time.poll-meeting-form__option-text.lmo-flex__grow(v-if='datesAsOptions', :name='name', :zone='zone')
+      poll-meeting-time.poll-meeting-form__option-text.lmo-flex__grow(v-if='datesAsOptions', :name='name', :zone='currentZone')
       v-btn.poll-poll-form__option-button(v-if="canRemoveOption(name)", @click="removeOption(name)")
         v-icon.mdi-24px.poll-poll-form__option-icon mdi-close
     poll-meeting-time-field(v-if='datesAsOptions', :poll='poll')

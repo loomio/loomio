@@ -26,7 +26,7 @@ v-list-tile.poll-meeting-time-field(flex='true', layout='row')
           v-btn(flat='', color='primary', @click='isShowingDatePicker = false') Cancel
           v-btn(flat='', color='primary', @click='$refs.menu.save(poll.optionDate)') OK
 
-  .poll-meeting-time-field__timepicker-container(ng-if='poll.customFields.meeting_duration')
+  .poll-meeting-time-field__timepicker-container(v-if='poll.customFields.meeting_duration')
     v-select(v-model='poll.optionTime', :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
   .lmo-flex__grow
   .poll-meeting-time-field__add

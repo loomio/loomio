@@ -60,7 +60,7 @@ export default
 
         @stance.stanceChoicesAttributes = attrs if _some(attrs)
   mounted: ->
-    submitOnEnter @, element: @$el
+    # submitOnEnter @, element: @$el
   methods:
     selectedColor: (option, score) ->
       buttonStyle(score == @stanceValuesMap[option.id])
