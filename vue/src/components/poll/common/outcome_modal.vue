@@ -1,8 +1,6 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import { applySequence } from '@/shared/helpers/apply'
-import { fieldFromTemplate } from '@/shared/helpers/poll'
-import { submitOutcome } from '@/shared/helpers/form'
 
 export default
   props:

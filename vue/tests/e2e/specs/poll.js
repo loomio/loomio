@@ -223,7 +223,6 @@ module.exports = {
     page.scrollTo('.poll-actions-dropdown__button', () => {
       page.click('.poll-actions-dropdown__button')
       page.click('.poll-actions-dropdown__reopen')
-      // TODO: GK: poll reopen modal has some datepicker stuff in its tree
       page.click('.poll-common-reopen-form__submit')
     })
   },
