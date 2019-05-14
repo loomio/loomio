@@ -18,6 +18,7 @@ export default
   props:
     discussion: Object
   data: ->
+    canAddComment: false
     per: AppConfig.pageSize.threadItems
     renderMode: 'nested'
     position: @positionForSelect()
@@ -43,11 +44,14 @@ export default
     #     $scope.eventWindow.showAll().then ->
     #       $mdDialog.cancel()
     #       print()
+    Records.view
+      name:"activityCardGroups"
+      collections: ['groups', 'memberships']
+      query: (store) =>
+        @canAddComment = AbilityService.canAddComment(@discussion)
     @init()
     # EventBus.listen $scope, 'initActivityCard', -> $scope.init()
   computed:
-    canAddComment: ->
-      AbilityService.canAddComment(@discussion)
     isLoggedIn: -> Session.isSignedIn()
   methods:
     signIn: -> @openAuthModal()

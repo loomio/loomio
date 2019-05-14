@@ -93,15 +93,12 @@ module.exports = {
     page.click('.dismiss-modal-button')
     page.pause()
 
-    // TODO: GK: changes are still there
-
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--edit')
 
     page.expectNoText('.discussion-form__title-input input', 'dumb title')
     page.expectNoText('.discussion-form textarea', 'rubbish description')
 
-    // TODO: GK: these last two assertions don't work properly
   },
 
   'can_display_an_unread_content_line': (test) => {
