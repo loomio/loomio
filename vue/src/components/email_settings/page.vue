@@ -44,6 +44,8 @@ export default
   methods:
     init: ->
       return unless Session.isSignedIn() or Session.user().restricted?
+      Session.user().attributeNames.push('unsubscribeToken')
+      @originalUser = Session.user()
       @user = Session.user().clone()
       @submit = submitForm @, @user,
         submitFn: Records.users.updateProfile
