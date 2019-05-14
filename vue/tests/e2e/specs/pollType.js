@@ -10,11 +10,11 @@ module.exports = {
   'starts a dot vote': (test) => { startPollTest(test, 'dot_vote', (page) => {
     page.fillIn(".poll-poll-form__add-option-input input", "bananas")
   }) },
-  // 'starts a time poll': (test) => { startPollTest(test, 'meeting', (page) => {
-  //   // TODO: GK: time poll is still WIP
-  //   page.fillIn(".poll-meeting-time-field__datepicker input", "2030-03-23")
-  //   page.pause()
-  // }) },
+  'starts_a_time_poll': (test) => { startPollTest(test, 'meeting', (page) => {
+    // TODO: GK: time poll is still WIP
+    page.fillIn(".poll-meeting-time-field__datepicker-container input", "2030-03-23")
+    page.pause()
+  }) },
   'starts a ranked choice': (test) => { startPollTest(test, 'ranked_choice', (page) => {
     page.fillIn(".poll-poll-form__add-option-input input", "bananas")
   }) }
