@@ -49,6 +49,11 @@ export default
       collections: ['groups', 'memberships']
       query: (store) =>
         @canAddComment = AbilityService.canAddComment(@discussion)
+    Records.view
+      name:"activityCardEvents"
+      collections: ['events', 'comments']
+      query: (store) =>
+        @setupEventWindow(@initialPosition())
     @init()
     # EventBus.listen $scope, 'initActivityCard', -> $scope.init()
   computed:

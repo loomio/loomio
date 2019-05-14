@@ -265,7 +265,6 @@ module.exports = {
     page.click('.action-dock__button--reply_to_comment')
     page.fillIn('.comment-form .ProseMirror', 'hi this is my comment')
     page.click('.comment-form__submit-button')
-    // TODO: GK: nested comment not showing up
     page.expectText('.thread-item--indent .new-comment__body', 'hi this is my comment')
     page.expectText('.flash-root__message', 'Patrick Swayze notified of reply')
   },
