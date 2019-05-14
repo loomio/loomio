@@ -244,10 +244,10 @@ module.exports = {
     page.click('.poll-common-set-outcome-panel__submit')
     // TODO: GK: dependent on a date picker?
 
-    page.fillIn('.poll-common-outcome-form__statement textarea', 'Here is a statement')
-    page.fillIn('.poll-common-calendar-invite__summary', 'This is a meeting title')
-    page.fillIn('.poll-common-calendar-invite__location', '123 Any St, USA')
-    page.fillIn('.poll-common-calendar-invite__description', 'Here is a meeting agenda')
+    page.fillIn('.poll-common-outcome-form__statement .ProseMirror', 'Here is a statement')
+    page.fillIn('.poll-common-calendar-invite__summary input', 'This is a meeting title')
+    page.fillIn('.poll-common-calendar-invite__location input', '123 Any St, USA')
+    page.fillIn('.poll-common-calendar-invite__description textarea', 'Here is a meeting agenda')
 
     page.click('.poll-common-outcome-form__submit')
     page.expectText('.flash-root__message', 'Outcome created')
