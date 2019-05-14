@@ -39,8 +39,9 @@ export default
     EventBus.$emit 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}
     # applyLoadingFunction @, 'loadMore'
     # applyLoadingFunction @, 'fetchRecords'
-    @fetchRecords()
     # applyLoadingFunction(@, 'searchPolls')
+    @init()
+    EventBus.$on 'signedIn', => @init()
   computed:
     statusFilters: -> _map AppConfig.searchFilters.status, (filter) =>
       { name: _capitalize(filter), value: filter }
@@ -70,7 +71,7 @@ export default
     loadMore: ->
       @loader.loadMore().then (response) =>
         @pollIds = @pollIds.concat _map(response.polls, 'id')
-    fetchRecords: ->
+    init: ->
       LmoUrlService.params 'group_key', @groupFilter
       LmoUrlService.params 'status',    @statusFilter
       @pollIds = []

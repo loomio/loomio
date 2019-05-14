@@ -50,13 +50,16 @@ export default
         filter: @filter
         per: 50
   mounted: ->
-    EventBus.$emit 'currentComponent',
-      titleKey: @titleKey
-      page: 'dashboardPage'
-      # filter: $routeParams.filter
-    @loader.fetchRecords().then => @dashboardLoaded = true
-    @openStartGroupModal() if @promptStart
+    @init()
+    EventBus.$on 'signedIn', => @init()
   methods:
+    init: ->
+      EventBus.$emit 'currentComponent',
+        titleKey: @titleKey
+        page: 'dashboardPage'
+        # filter: $routeParams.filter
+      @loader.fetchRecords().then => @dashboardLoaded = true
+      @openStartGroupModal() if @promptStart
     viewName: (name) ->
       if @filter == 'show_muted'
         "dashboard#{capitalize(name)}Muted"

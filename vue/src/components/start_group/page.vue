@@ -3,16 +3,23 @@ import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import ModalService  from '@/shared/services/modal_service'
+import Session from '@/shared/services/session'
 
 import _isEmpty     from 'lodash/isEmpty'
 
 export default
   data: ->
-    group: Records.groups.build
-      name: @$route.params.name
-      customFields:
-        pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
-
+    group: null
+  mounted: ->
+    EventBus.$on 'signedIn', =>
+      @init()
+    @init() if Session.isSignedIn()
+  methods:
+    init: ->
+      @group = Records.groups.build
+        name: @$route.params.name
+        customFields:
+          pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
   created: ->
     EventBus.$emit 'currentComponent', { page: 'startGroupPage', skipScroll: true }
     # EventBus.listen $scope, 'nextStep', (_, group) ->

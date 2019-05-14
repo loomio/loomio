@@ -4,6 +4,7 @@ import { hardReload } from '@/shared/helpers/window'
 import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Flash from '@/shared/services/flash'
+import EventBus from '@/shared/services/event_bus'
 
 export default
   mixins: [AuthModalMixin]
@@ -18,6 +19,7 @@ export default
       onSuccess = (data) =>
         Session.apply(data)
         @closeModal()
+        EventBus.$emit('signedIn')
         Flash.success('auth_form.signed_in')
       finished = ->
         console.log 'doneProcessing'
