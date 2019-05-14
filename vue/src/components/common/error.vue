@@ -1,7 +1,7 @@
 <script lang="coffee">
 export default
   props:
-    error: Object
+    error: Response
 </script>
 <template lang="pug">
   .error-page

@@ -340,7 +340,6 @@ module.exports = {
     page.click('.comment-form__submit-button')
     page.click('.action-dock__button--delete_comment')
     page.click('.confirm-modal__submit')
-    // TODO: GK: comment remains, and expectNoText isn't behaving as expected
     page.expectNoText('.activity-card', 'original comment right thur')
   },
 
@@ -364,12 +363,15 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_mailer_invitation_created_email')
-    // TODO: GK: incorrect url from mailer (3000)
     page.click('.thread-mailer__subject a')
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
-    page.pause(3000)
-    // TODO: GK: after sign up, discussion page does not react/live update
+    page.loadPath('use_last_login_token')
+    page.click('.auth-signin-form__submit')
+    page.expectText('.flash-root__message', 'Signed in successfully')
+    // TODO: GK: after sign up, still not signed in
+    // with this sign-up flow, registrations#create returns signed_in: false
+    // what should happen on the client in this instance?
     page.expectText('.context-panel__heading', 'go to the moon', 10000)
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
