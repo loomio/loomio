@@ -34,11 +34,12 @@ export default
     EventBus.$emit 'currentComponent',
       titleKey: 'inbox_page.unread_threads'
       page: 'inboxPage'
-    @load()
+    @init()
+    EventBus.$on 'signedIn', => @init()
   methods:
     startGroup: ->
       ModalService.open 'GroupModal', group: => Records.groups.build()
-    load: (options = {}) ->
+    init: (options = {}) ->
       Records.discussions.fetchInbox(options).then => @loaded = true
 
     unreadCount: ->

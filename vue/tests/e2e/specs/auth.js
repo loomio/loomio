@@ -184,7 +184,6 @@ module.exports = {
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
-    // TODO: GK: once again, group page does not update when user has logged in
     page.expectText('.group-theme__name', 'Secret Dirty Dancing Shoes')
   },
 

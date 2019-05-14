@@ -15,6 +15,8 @@ export default
     EventBus.$on 'pageError', (error) =>
       @openAuthModal() if !Session.isSignedIn() and error.status == 403
       @pageError = error
+    EventBus.$on 'signedIn', =>
+      @pageError = null
 
   methods:
     setCurrentComponent: (options) ->
@@ -39,13 +41,8 @@ export default
         when '/dashboard',      \
              '/inbox',          \
              '/profile',        \
-             # 'authorizedAppsPage', \
-             # 'registeredAppsPage', \
-             # 'registeredAppPage',  \
              '/p',          \
-             'pollPage',           \
              '/p/new',      \
-             'upgradePage',        \
              '/g/new' then true
       # switch options.page
       #   when 'emailSettingsPage' then !Session.user().restricted?

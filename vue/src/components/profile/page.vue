@@ -32,6 +32,7 @@ export default
     @init()
     EventBus.$emit 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}
     EventBus.$on 'updateProfile', => @init()
+    EventBus.$on 'signedIn', => @init()
   computed:
     showHelpTranslate: ->
       AppConfig.features.app.help_link
