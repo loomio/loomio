@@ -18,11 +18,10 @@ module.exports = {
     page.loadPath('view_open_group_as_visitor')
     page.click('.join-group-button__join-group')
     page.signInViaEmail('new@account.com')
+    page.pause(3000)
     page.click('.join-group-button__join-group')
     page.ensureSidebar()
-    page.expectElement('.sidebar__content')
-    // TODO: GK: sidebar not updating with new membership/group
-    page.expectText('.group-theme__name', 'Open Dirty Dancing Shoes')
+    page.expectText('.sidebar__groups', 'Open Dirty Dancing Shoes')
   },
 
   'does_not_allow_mark_as_read_or_mute': (test) => {
