@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     head :ok
   end
 
-  def redirect_to(url)
+  def redirect_to(url, opts = {})
     if !Rails.env.production? && ENV['USE_VUE']
       path = URI(url).path
       query = URI(url).query ? "?#{URI(url).query}" : ""
