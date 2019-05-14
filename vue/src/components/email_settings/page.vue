@@ -41,6 +41,7 @@ export default
     user: null
   created: ->
     @init()
+    EventBus.$on 'signedIn', => @init()
   methods:
     init: ->
       return unless Session.isSignedIn() or Session.user().restricted?
