@@ -33,7 +33,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('email_settings_as_restricted_user')
-    // TODO: GK: get a 403 back
     testUpdate(page)
   },
 
