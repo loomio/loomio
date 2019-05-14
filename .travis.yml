@@ -31,7 +31,7 @@ env:
   matrix:
     # - TASK=e2e
     - TASK=rspec
-    - TASK=plugins
+    # - TASK=plugins
     - TASK=vue
 
 before_install:
@@ -39,10 +39,9 @@ before_install:
   - gem update --system
   - gem --version
   - gem install bundler
-  - nvm install 10.11.0
-  - nvm use 10.11.0
+  - nvm install 11
+  - nvm use 11
   - npm install -g @vue/cli
-  - npm install -g @vue/cli-service-global
   - npm install -g gulp
 
 install:
