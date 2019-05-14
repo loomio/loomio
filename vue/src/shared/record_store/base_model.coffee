@@ -42,12 +42,14 @@ export default class BaseModel
     {}
 
   clone: ->
-    cloneAttributes = _.transform @attributeNames, (clone, attr) =>
+    cloneAttributes = {}
+    _.forEach @attributeNames, (attr) =>
       if _.isArray(@[attr])
-        clone[attr] = @[attr].slice(0)
+        cloneAttributes[attr] = @[attr].slice(0)
       else
-        clone[attr] = @[attr]
+        cloneAttributes[attr] = @[attr]
       true
+    cloneAttributes.cloney = true
     cloneRecord = new @constructor(@recordsInterface, cloneAttributes)
     cloneRecord.clonedFrom = @
     cloneRecord
@@ -61,9 +63,10 @@ export default class BaseModel
   baseUpdate: (attributes) ->
     @bumpVersion()
     @attributeNames = _.union(@attributeNames, _.keys(attributes))
-    _.forEach attributes, (value, key) =>
+    _.forEach(attributes, (value, key) =>
       Vue.set(@, key, value)
-      true
+      return true
+    )
 
     @recordsInterface.collection.update(@) if @inCollection()
 
