@@ -369,9 +369,6 @@ module.exports = {
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
-    // TODO: GK: after sign up, still not signed in
-    // with this sign-up flow, registrations#create returns signed_in: false
-    // what should happen on the client in this instance?
     page.expectText('.context-panel__heading', 'go to the moon', 10000)
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
