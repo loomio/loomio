@@ -9,9 +9,10 @@ import { hardReload } from '@/shared/helpers/window'
 
 export default new class Session
   fetch: ->
-    token  = new URLSearchParams(location.search).get('unsubscribe_token')
+    unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token')
+    membership_token  = new URLSearchParams(location.search).get('membership_token')
     client = new RestfulClient('boot')
-    client.get('user', unsubscribe_token: token).then (res) -> res.json()
+    client.get('user', unsubscribe_token: unsubscribe_token, membership_token: membership_token).then (res) -> res.json()
 
   apply: (data) ->
     Vue.set(AppConfig, 'currentUserId', data.current_user_id)
