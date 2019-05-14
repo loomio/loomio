@@ -47,7 +47,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('email_settings_as_restricted_user')
-    // TODO: GK: where does applyToAll come from, in the component?
     testMembershipUpdate(page)
   },
 
@@ -77,8 +76,8 @@ testDefaultUpdate = (page) => {
 testMembershipUpdate = (page) => {
   page.click('.email-settings-page__change-default-link')
   page.click('.volume-loud')
-  page.click('.change-volume-form__apply-to-all')
+  page.click('.change-volume-form__apply-to-all label')
   page.click('.change-volume-form__submit')
-  // TODO: GK: groups are not showing up - user.formalGroups()
-  page.expectText('.email-settings-page__membership-volume', 'You will be emailed all activity in all your groups.')
+  page.expectText('.flash-root__message', 'You will be emailed all activity in all your groups.')
+  page.expectText('.email-settings-page__membership-volume', 'All activity')
 }

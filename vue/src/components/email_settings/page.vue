@@ -32,6 +32,7 @@ import AppConfig      from '@/shared/services/app_config'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import { submitForm }   from '@/shared/helpers/form'
+import { uniq, compact, concat, sortBy, map } from 'lodash'
 
 
 export default
@@ -39,9 +40,18 @@ export default
   data: ->
     newsletterEnabled: AppConfig.newsletterEnabled
     user: null
+    groups: []
   created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
+    Records.view
+      name:"emailSettingsGroups"
+      collections: ['groups', 'memberships']
+      query: (store) =>
+        groups = Session.user().formalGroups()
+        user = Session.user()
+        @groups = sortBy groups, 'fullName'
+
   methods:
     init: ->
       return unless Session.isSignedIn() or Session.user().restricted?
@@ -98,7 +108,7 @@ main.email-settings-page(v-if='user')
             i.mdi.mdi-account-multiple-plus.mdi-24px
           .email-settings-page__default-description(v-html="$t(defaultSettingsDescription)")
           v-btn.md-accent.email-settings-page__change-default-link(@click='changeDefaultMembershipVolume()', v-t="'common.action.edit'")
-        v-list-tile.email-settings-page__group.lmo-flex.lmo-flex__space-between(v-for='group in user.formalGroups()', key='group.id')
+        v-list-tile.email-settings-page__group.lmo-flex.lmo-flex__space-between(v-for='group in groups', key='group.id')
           group-avatar.lmo-margin-right(:group='group', size='medium')
           .email-settings-page__group-details.lmo-flex__grow
             strong.email-settings-page__group-name
