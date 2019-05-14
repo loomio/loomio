@@ -76,7 +76,6 @@ module.exports = {
 
     page.loadPath('setup_group_with_subgroups')
     page.pause(2000)
-    // TODO: GK: work out dynamic view issues
     page.expectText('.discussions-card__list', 'Vaya con dios', 20000)
   },
 
