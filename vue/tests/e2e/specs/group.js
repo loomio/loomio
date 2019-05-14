@@ -172,7 +172,6 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
     page.fillIn('#group-name', 'Clean Dancing Shoes')
-    // TODO: GK: still having trouble with fillIn
     page.fillIn('.group-form__group-description textarea', 'Dusty sandles')
     page.click('.group-form__submit-button')
     page.expectText('.group-theme__name', 'Clean Dancing Shoes')
@@ -186,7 +185,6 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
     page.fillIn('#group-name', '')
-    // TODO: GK: still having trouble with fillIn
     page.click('.group-form__submit-button')
     page.pause()
     page.expectText('.lmo-validation-error', "can't be blank")
