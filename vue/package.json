@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue serve",
     "build": "vue build",
-    "test:e2e": "vue test:e2e",
+    "test:e2e": "./node_modules/.bin/vue-cli-service test:e2e",
     "test:e2e:standalone": "npx nightwatch --config ./tests/e2e/nightwatch.conf.js --test tests/e2e/specs/auth.js"
   },
   "dependencies": {
