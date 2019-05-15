@@ -1,7 +1,7 @@
 module.exports = (test) ->
   refresh: ->
     test.refresh()
-    
+
   loadPath: (path, opts = {}) ->
     test.url "http://localhost:8080/dev/#{opts.controller || 'nightwatch'}/#{path}?vue=1"
 
@@ -109,5 +109,5 @@ module.exports = (test) ->
     page.click('.auth-signup-form__legal-accepted label')
     page.click '.auth-signup-form__submit'
 
-  waitFor: (selector, wait = 1000000) ->
+  waitFor: (selector, wait = 10000) ->
     test.waitForElementVisible(selector, wait) if selector?
