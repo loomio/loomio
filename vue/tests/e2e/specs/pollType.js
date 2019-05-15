@@ -11,7 +11,6 @@ module.exports = {
     page.fillIn(".poll-poll-form__add-option-input input", "bananas")
   }) },
   'starts_a_time_poll': (test) => { startPollTest(test, 'meeting', (page) => {
-    // TODO: GK: time poll is still WIP
     page.fillIn(".poll-meeting-time-field__datepicker-container input", "2030-03-23")
     page.pause()
   }) },

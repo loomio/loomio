@@ -242,7 +242,6 @@ module.exports = {
 
     page.loadPath('test_meeting_poll_closed', { controller: 'polls' })
     page.click('.poll-common-set-outcome-panel__submit')
-    // TODO: GK: dependent on a date picker?
 
     page.fillIn('.poll-common-outcome-form__statement .ProseMirror', 'Here is a statement')
     page.fillIn('.poll-common-calendar-invite__summary input', 'This is a meeting title')

@@ -278,7 +278,6 @@ module.exports = {
   //
   //   page.loadPath('setup_group_with_empty_draft')
   //   page.click('.discussions-card__new-thread-button')
-  //   // TODO: GK: unsure what the context and expected behaviour are for this
   //   page.expectText('.discussion-privacy-icon', 'The thread will only be visible')
   // },
 
@@ -305,7 +304,6 @@ module.exports = {
   //   page.click('.dismiss-modal-button')
   //   page.pause()
   //   page.click('.discussions-card__new-thread-button')
-  //   // TODO: GK: not really sure how these drafts are saved?
   //   page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
   //   page.expectValue('.discussion-form textarea', "I've had the time of my life" )
   // },
