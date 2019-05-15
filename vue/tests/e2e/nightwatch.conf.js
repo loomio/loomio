@@ -15,6 +15,12 @@ module.exports = {
   },
   test_settings: {
     default: {
+      "screenshots" : {
+        "enabled" : false,
+        "path" : "./tests/reports/",
+        "on_failure": true
+        "on_error": true
+      },
       launch_url: 'http://localhost:8080/',
       selenium_port: 4444,
       selenium_host: 'localhost',
