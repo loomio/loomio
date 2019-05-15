@@ -3,7 +3,7 @@ var chromedriver = require('chromedriver');
 
 module.exports = {
   src_folders: ['./tests/e2e/specs'],
-  output_folder: './tests/reports',
+  output_folder: './tests/e2e/reports',
   selenium: {
     start_process: true,
     server_path: selenium.path,
@@ -17,7 +17,7 @@ module.exports = {
     default: {
       "screenshots" : {
         "enabled" : false,
-        "path" : "./tests/reports/",
+        "path" : "./tests/e2e/reports/",
         "on_failure": true
         "on_error": true
       },
