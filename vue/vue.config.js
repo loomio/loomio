@@ -30,7 +30,8 @@ module.exports = {
      '/fonts': {target: 'http://localhost:3000'},
      '/img': {target: 'http://localhost:3000'},
      '/join': {target: 'http://localhost:3000'},
-     '/invitations': {target: 'http://localhost:3000'}
+     '/invitations': {target: 'http://localhost:3000'},
+     '/system': {target: 'http://localhost:3000'}
    }
   },
   css: {

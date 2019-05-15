@@ -28,7 +28,7 @@ namespace :travis do
     system("wget http://localhost:3000/")
     # ok now start running the tests
     puts "Starting to run vue nightwatch..."
-    system("cd vue && ./node_modules/.bin/vue-cli-service test:e2e")
+    system("cd vue && npm run test:e2e")
     raise "e2e failed!" unless $?.exitstatus == 0
   end
 

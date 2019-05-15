@@ -42,8 +42,6 @@ before_install:
   - gem install bundler
   - nvm install 11
   - nvm use 11
-  - export PATH=$PATH:$(npm config --global get prefix)/bin
-  - npm install -g @vue/cli
   - npm install -g gulp
 
 install:

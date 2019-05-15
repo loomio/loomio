@@ -16,6 +16,7 @@ import ChangePasswordForm from '@/components/profile/change_password_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonCloseModal from '@/components/poll/common/close_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
+import AnnouncementForm from '@/components/announcement/form'
 
 export default
   components:
@@ -35,6 +36,7 @@ export default
     'PollCommonOutcomeModal': PollCommonOutcomeModal
     'PollCommonCloseModal': PollCommonCloseModal
     'PollCommonReopenModal': PollCommonReopenModal
+    'AnnouncementForm': AnnouncementForm
   data: ->
     isOpen: false
     componentName: ""

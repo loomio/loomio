@@ -4,9 +4,10 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import fromNow        from '@/mixins/from_now'
+import AnnouncementModalMixin from '@/mixins/announcement_modal'
 
 export default
-  mixins: [fromNow]
+  mixins: [fromNow, AnnouncementModalMixin]
   props:
     group: Object
     pending: Boolean
@@ -76,8 +77,7 @@ export default
         @group.activeMemberships()
 
     invite: ->
-      ModalService.open 'AnnouncementModal', announcement: =>
-        Records.announcements.buildFromModel(@group.targetModel())
+      @openAnnouncementModal(Records.announcements.buildFromModel(@group.targetModel()))
 
     fetchMemberships: ->
       return unless !_.isEmpty @fragment
