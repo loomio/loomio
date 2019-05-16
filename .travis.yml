@@ -46,23 +46,25 @@ before_install:
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - gem install s3_uploader
-  - cd client; npm install; cd ..
+  - if [ "$TASK" = "e2e" ]; then cd client; npm install; cd ..; fi
+  - if [ "$TASK" = "vue" ]; then cd vue; rm -rf node_modules; npm i; cd ..; fi
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
   - createdb loomio_test
   - bundle exec rake db:setup
+  - if [ "$TASK" = "vue" ];     then export USE_VUE=1; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
-  - if [ "$TASK" != "rspec" ];  then bundle exec rails server -b 0.0.0.0 > /dev/null & fi
+  - if [ "$TASK" = "vue" ] || [ "$TASK" = "e2e" ]; then bundle exec rails server -b 0.0.0.0 > /dev/null & fi
   - if [ "$TASK" = "e2e" ];     then bundle exec rake client:build; fi
   - if [ "$TASK" = "vue" ];     then cd vue && npm run build && cd ..; fi
-  - if [ "$TASK" != "rspec" ];  then wget http://localhost:3000/; fi
+  - if [ "$TASK" = "vue" ] || [ "$TASK" = "e2e" ]; then wget http://localhost:3000/; fi
 
 script:
   - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
-  - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 3; fi
+  - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 1; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
-  - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e; fi
+  - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone; fi
 
 after_script:
   - bundle exec rake travis:cleanup
