@@ -24,7 +24,7 @@ env:
     - DISPLAY=:99.0
     - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
     - RAILS_ENV=test
-    - PUMA_WORKERS=1
+    - PUMA_WORKERS=2
     - MIN_THREADS=3
     - MAX_THREADS=3
     - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
@@ -62,7 +62,7 @@ before_script:
 
 script:
   - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
-  - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 1; fi
+  - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 2; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
   - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone; fi
 
