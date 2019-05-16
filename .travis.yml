@@ -45,8 +45,8 @@ before_install:
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - gem install s3_uploader
-  - if [ "$TASK" != "rspec" ]; cd client; npm install; cd ..; fi
-  - if [ "$TASK" != "rspec" ]; cd vue; npm install; cd ..; fi
+  - if [ "$TASK" != "rspec" ]; then cd client; npm install; cd ..; fi
+  - if [ "$TASK" != "rspec" ]; then cd vue; npm install; cd ..; fi
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
