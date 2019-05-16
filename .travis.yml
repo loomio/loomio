@@ -55,6 +55,7 @@ before_script:
   - createdb loomio_test
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
+  - if [ "$TASK" = "vue" ]; then export USE_VUE=1; fi
   - bundle exec rails server -b 0.0.0.0 > /dev/null &
 
 script:

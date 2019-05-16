@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:e2e:standalone": "npx nightwatch --config ./tests/e2e/nightwatch.conf.js --test tests/e2e/specs/auth.js"
+    "test:e2e:standalone": "npx nightwatch --config ./tests/e2e/nightwatch.conf.js"
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
