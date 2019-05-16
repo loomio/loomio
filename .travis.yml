@@ -54,14 +54,14 @@ before_script:
   - bundle exec rake db:setup
   - if [ "$TASK" = "vue" ];     then export USE_VUE=1; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
-  - if [ "$TASK" != "rspec" ];  then bundle exec rails server -b 0.0.0.0 > /dev/null & fi
+  - if [ "$TASK" = "vue" ] || [ "$TASK" = "e2e" ]; then bundle exec rails server -b 0.0.0.0 > /dev/null & fi
   - if [ "$TASK" = "e2e" ];     then bundle exec rake client:build; fi
   - if [ "$TASK" = "vue" ];     then cd vue && npm run build && cd ..; fi
-  - if [ "$TASK" != "rspec" ];  then wget http://localhost:3000/; fi
+  - if [ "$TASK" = "vue" ] || [ "$TASK" = "e2e" ]; then wget http://localhost:3000/; fi
 
 script:
   - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
-  - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 3; fi
+  - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 1; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
   - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone; fi
 
