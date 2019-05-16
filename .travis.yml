@@ -65,7 +65,7 @@ script:
   - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
   - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 3; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
-  - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e; fi
+  - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone; fi
 
 after_script:
   - bundle exec rake travis:cleanup
