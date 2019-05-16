@@ -18,7 +18,7 @@ module.exports = {
       "screenshots" : {
         "enabled" : false,
         "path" : "./tests/e2e/reports/",
-        "on_failure": true
+        "on_failure": true,
         "on_error": true
       },
       launch_url: 'http://localhost:8080/',

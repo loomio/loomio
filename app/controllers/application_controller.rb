@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     expires_now
     prevent_caching
 
-    if current_user.is_logged_in? && current_user.experiences['vue_client']
+    if (ENV['USE_VUE'] && ENV['TRAVIS_MODE']) or (current_user.is_logged_in? && current_user.experiences['vue_client'])
       render file: 'public/client/vue/index.html', layout: false
     else
       render 'application/index', layout: false
@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to(url, opts = {})
-    if !Rails.env.production? && ENV['USE_VUE']
+    if !Rails.env.production? && ENV['USE_VUE'] && !ENV['TRAVIS_MODE']
       path = URI(url).path
       query = URI(url).query ? "?#{URI(url).query}" : ""
       super "http://localhost:8080#{path}#{query}"
