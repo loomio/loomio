@@ -1,6 +1,6 @@
 <script lang="coffee">
 import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
+# import 'tippy.js/dist/tippy.css'
 import Records from '@/shared/services/records'
 import _concat from 'lodash/concat'
 import _sortBy from 'lodash/sortBy'
