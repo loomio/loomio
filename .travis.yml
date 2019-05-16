@@ -40,15 +40,13 @@ before_install:
   - gem update --system
   - gem --version
   - gem install bundler
-  - nvm install 11
-  - nvm use 11
-  - npm install -g gulp
+  - if [ "$TASK" != "rspec" ]; nvm install 11 && nvm use 11 && npm install -g gulp; fi
 
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - gem install s3_uploader
-  - cd client; npm install; cd ..
-  - cd vue; npm install; cd ..
+  - if [ "$TASK" != "rspec" ]; cd client; npm install; cd ..; fi
+  - if [ "$TASK" != "rspec" ]; cd vue; npm install; cd ..; fi
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
