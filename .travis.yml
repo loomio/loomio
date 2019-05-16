@@ -53,10 +53,10 @@ before_script:
   - createdb loomio_test
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
-  - bundle exec rails server -b 0.0.0.0 > /dev/null &
-  - if [ "$TASK" = "e2e" ]; then bundle exec rake client:build; fi
-  - if [ "$TASK" = "vue" ]; then cd vue && npm run build && cd ..; fi
-  - wget http://localhost:3000/
+  - if [ "$TASK" != "rspec" ];  then bundle exec rails server -b 0.0.0.0 > /dev/null &; fi
+  - if [ "$TASK" = "e2e" ];     then bundle exec rake client:build; fi
+  - if [ "$TASK" = "vue" ];     then cd vue && npm run build && cd ..; fi
+  - if [ "$TASK" != "rspec" ];  then wget http://localhost:3000/; fi
 
 script:
   - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
