@@ -67,4 +67,4 @@ script:
   - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone; fi
 
 after_script:
-  - bundle exec rake travis:cleanup
+  - s3uploader -r us-east-1 -k $ARTIFACTS_KEY -s $ARTIFACTS_SECRET -d `date +"%Y-%m-%d-%T"` client/angular/test/screenshots $ARTIFACTS_BUCKET
