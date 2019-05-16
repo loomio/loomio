@@ -40,7 +40,7 @@ before_install:
   - gem update --system
   - gem --version
   - gem install bundler
-  - if [ "$TASK" != "rspec" ]; nvm install 11 && nvm use 11 && npm install -g gulp; fi
+  - if [ "$TASK" != "rspec" ]; then nvm install 11 && nvm use 11 && npm install -g gulp; fi
 
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
