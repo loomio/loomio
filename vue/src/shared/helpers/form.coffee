@@ -147,10 +147,10 @@ progress = (scope) ->
 success = (scope, model, options) ->
   (data) ->
     # Flash.dismiss()
+    options.successCallback(data) if typeof options.successCallback is 'function'
     if options.flashSuccess?
       flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
       Flash.success flashKey, calculateFlashOptions(options.flashOptions)
-    options.successCallback(data) if typeof options.successCallback is 'function'
 
 failure = (scope, model, options) ->
   (response) ->
