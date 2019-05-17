@@ -117,8 +117,8 @@ v-card
     .announcement-form
       div(v-if="!canInvite")
         .announcement-form__invite
-          p(v-if="invitationsRemaining < 1" v-t="{path: 'announcement.form.no_invitations_remaining', args: {upgradeUrl: upgradeUrl, maxMembers: maxMembers}}")
-          p(v-if="!subscriptionActive" v-t="{path: 'discussion.subscription_canceled', args: {upgradeUrl: upgradeUrl}}")
+          p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: maxMembers})")
+          p(v-if="!subscriptionActive" v-html="$('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
       div(v-if="canInvite")
         .announcement-form__invite

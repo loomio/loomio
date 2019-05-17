@@ -34,12 +34,12 @@ export default class UserModel extends BaseModel
 
   groups: ->
     @recordStore.groups.collection.chain().
-      find(id: { $in: @groupIds() }, archivedAt: {'$exists': false}).
+      find(id: { $in: @groupIds() }, archivedAt: null).
       simplesort('fullName').data()
 
   formalGroups: ->
     @recordStore.groups.collection.chain().
-      find(id: { $in: @groupIds() }, type: "FormalGroup", archivedAt: {'$exists': false}).
+      find(id: { $in: @groupIds() }, type: "FormalGroup", archivedAt: null).
       simplesort('fullName').data()
 
   adminGroups: ->
