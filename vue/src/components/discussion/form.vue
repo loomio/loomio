@@ -5,14 +5,20 @@ import { discussionPrivacy } from '@/shared/helpers/helptext'
 import { submitDiscussion } from '@/shared/helpers/form'
 import _map from 'lodash/map'
 import _sortBy from 'lodash/sortBy'
+import AppConfig from '@/shared/services/app_config'
 
 export default
   props:
     discussion: Object
     close: Function
+
   data: ->
     showGroupSelect: false
     isDisabled: false
+    canStartThread: true
+    showUpgradeMessage: false
+    upgradeUrl: AppConfig.baseUrl + 'upgrade'
+
   created: ->
     @submit = submitDiscussion @, @discussion,
       successCallback: (data) =>
@@ -21,6 +27,7 @@ export default
         @$router.push("/d/#{discussionKey}")
     if @discussion.isNew()
       @showGroupSelect = true
+
   methods:
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
@@ -45,6 +52,28 @@ export default
         text: group.fullName,
         value: group.id
       }), 'fullName')
+
+  computed:
+    maxThreads: ->
+      return null unless @discussion.groupId
+      @discussion.group().parentOrSelf().subscriptionMaxThreads
+
+    threadCount: ->
+      return unless @discussion.groupId
+      @discussion.group().parentOrSelf().orgDiscussionsCount
+
+    maxThreadsReached: ->
+      @maxThreads && @threadCount >= $scope.maxThreads
+
+    subscriptionActive: ->
+      @discussion.group().parentOrSelf().subscriptionActive
+
+    canStartThread: ->
+      @subscriptionActive && !@maxThreadsReached
+
+    showUpgradeMessage: ->
+      @discussion.isNew() && !@canStartThread
+
 </script>
 
 <template lang="pug">
@@ -61,9 +90,14 @@ v-card.discussion-form
     .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEvents.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
     .md-block(v-show='showGroupSelect')
       label(for='discussion-group-field', v-t="'discussion_form.group_label'")
-      v-select#discussion-group-field.discussion-form__group-select(v-model='discussion.groupId', :placeholder="$t('discussion_form.group_placeholder')", :items='groupSelectOptions', ng-required='true', @change='discussion.fetchAndRestoreDraft(); updatePrivacy()')
+      v-select#discussion-group-field.discussion-form__group-select(v-model='discussion.groupId' :placeholder="$t('discussion_form.group_placeholder')" :items='groupSelectOptions' required='true' @change='discussion.fetchAndRestoreDraft(); updatePrivacy()')
       .md-errors-spacer
-    .discussion-form__group-selected(v-if='discussion.groupId')
+
+    .md-body-1(v-if="showUpgradeMessage")
+      p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
+      p(v-if="!subscriptionActive" v-html="$('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+
+    .discussion-form__group-selected(v-if='discussion.groupId && !showUpgradeMessage')
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')", :placeholder="$t('discussion_form.title_placeholder')", v-model='discussion.title', maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(:model='discussion' field="description" :placeholder="$t('discussion_form.context_placeholder')")

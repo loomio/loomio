@@ -18,7 +18,8 @@ addons:
   firefox: latest
   postgresql: "9.6"
   chrome: stable
-  artifacts: true
+  artifacts:
+    working_dir: vue/tests/reports
 
 env:
   global:
@@ -65,6 +66,3 @@ script:
   - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 1; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
   - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone; fi
-
-after_script:
-  - bundle exec rake travis:cleanup
