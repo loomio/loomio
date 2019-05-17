@@ -18,6 +18,7 @@ addons:
   firefox: latest
   postgresql: "9.6"
   chrome: stable
+  artifacts: true
 
 env:
   global:
