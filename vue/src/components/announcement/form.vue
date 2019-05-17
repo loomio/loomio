@@ -5,25 +5,47 @@ import EventBus       from '@/shared/services/event_bus'
 import utils          from '@/shared/record_store/utils'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import AbilityService from '@/shared/services/ability_service'
+import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
 import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
-import {each , sortBy, includes, map, pull, uniq} from 'lodash'
+import {each , sortBy, includes, map, pull, uniq, throttle, debounce} from 'lodash'
 import { submitForm } from '@/shared/helpers/form'
-export default {
+
+
+
+export default
   props:
     announcement: Object
 
   data: ->
-    dannouncement: @announcement # does dannouncement get 'reset' when new announcement props?
     shareableLink: LmoUrlService.shareableLink(@announcement.model)
     query: ''
     recipients: []
     searchResults: @announcement.model.members()
+    upgradeUrl: AppConfig.baseUrl + 'upgrade'
+    invitationsRemaining: 1000
+    showInvitationsRemaining: false
+    subscriptionActive: true
+    canInvite: true
+    maxMembers: @announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0
 
   created: ->
     if @announcement.model.isA('group')
       @announcement.model.fetchToken().then =>
         @shareableLink = LmoUrlService.shareableLink(@announcement.model)
+
+    if @announcement.model.group()
+      @invitationsRemaining =
+        (@announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0) -
+        @announcement.model.group().parentOrSelf().orgMembershipsCount
+
+      @showInvitationsRemaining =
+        @announcement.model.isA('group') &&
+        @announcement.model.group().parentOrSelf().subscriptionMaxMembers
+
+      @subscriptionActive = @announcement.model.group().parentOrSelf().subscriptionActive
+
+      @canInvite = @subscriptionActive && (!@announcement.model.group().parentOrSelf().subscriptionMaxMembers || @invitationsRemaining > 0)
 
   mounted: ->
     @submit = submitForm @, @announcement,
@@ -37,14 +59,18 @@ export default {
         count: => @announcement.membershipsCount
 
   methods:
+    tooManyInvitations: ->
+        @showInvitationsRemaining && (@invitationsRemaining < @recipients.length)
     audiences: -> audiencesFor(@announcement.model)
     audienceValues: -> audienceValuesFor(@announcement.model)
-    search: (query) ->
+    search: throttle (query) ->
       Records.announcements.search(query, @announcement.model).then (data) =>
         if data && data.length == 1 && data[0].id == 'multiple'
           each map(data[0].emails, @buildRecipientFromEmail), @addRecipient
         else
           @searchResults = uniq @recipients.concat @announcement.model.members().concat utils.parseJSONList(data)
+    , 300
+    , {trailing: true}
 
     buildRecipientFromEmail: (email) ->
       id: email
@@ -80,7 +106,6 @@ export default {
   watch:
     query: (q) ->
       @search q if q && q.length > 2
-}
 </script>
 
 <template lang="pug">
@@ -90,38 +115,51 @@ v-card
     dismiss-modal-button
   v-card-text
     .announcement-form
-      .announcement-form__invite
-        p.announcement-form__help.md-subhead(v-t="'announcement.form.' + announcement.kind + '.helptext'")
-        v-list
-          v-list-tile.announcement-form__audience.md-whiteframe-1dp(avatar v-for='audience in audiences()', :key='audience', @click='loadAudience(audience)')
-            v-list-tile-avatar
-              v-icon mdi-account-multiple
-            v-list-tile-content
-              span(v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
-        v-autocomplete(multiple chips return-object autofocus v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
-          template(v-slot:selection='data')
-            v-chip.chip--select-multi(:selected='data.selected', close, @input='remove(data.item)')
-              user-avatar(:user="data.item" size="small" :no-link="true")
-              span {{ data.item.name }}
-          template(v-slot:item='data')
-            v-list-tile-avatar
-              user-avatar(:user="data.item" size="small" :no-link="true")
-            v-list-tile-content
-              v-list-tile-title(v-html='data.item.name')
+      div(v-if="!canInvite")
+        .announcement-form__invite
+          p(v-if="invitationsRemaining < 1" v-t="{path: 'announcement.form.no_invitations_remaining', args: {upgradeUrl: upgradeUrl, maxMembers: maxMembers}}")
+          p(v-if="!subscriptionActive" v-t="{path: 'discussion.subscription_canceled', args: {upgradeUrl: upgradeUrl}}")
 
-      .announcement-form__share-link(v-if="!announcement.model.isA('discussion') && announcement.recipients.length == 0")
-        p.announcement-form__help.md-subhead(v-if="announcement.model.isA('group')", v-t="'invitation_form.shareable_link'")
-        .announcement-shareable-link__content.lmo-flex--column
-          .lmo-flex--row.lmo-flex__center(v-if='canUpdateAnyoneCanParticipate || announcement.model.anyoneCanParticipate')
-            v-checkbox.announcement-form__checkbox(v-model='announcement.model.anyoneCanParticipate', @change='announcement.model.save()', v-if='canUpdateAnyoneCanParticipate')
-              label(v-t="'announcement.form.anyone_can_participate'")
-          .lmo-flex--row.lmo-flex__center(v-if="announcement.model.anyoneCanParticipate || announcement.model.isA('group')")
-            .lmo-flex__grow.md-no-errors.announcement-form__shareable-link
-              input(:value='shareableLink', :disabled='true')
-            v-btn.md-accent.md-button--tiny.announcement-form__copy(title="$t('common.copy')", clipboard='true', text='shareableLink', on-copied='copied()')
-              span(v-t="'common.copy'")
+      div(v-if="canInvite")
+        .announcement-form__invite
+          p.announcement-form__help.md-subhead(v-t="'announcement.form.' + announcement.kind + '.helptext'")
+          v-list
+            v-list-tile.announcement-form__audience.md-whiteframe-1dp(avatar v-for='audience in audiences()', :key='audience', @click='loadAudience(audience)')
+              v-list-tile-avatar
+                v-icon mdi-account-multiple
+              v-list-tile-content
+                span(v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
+          v-autocomplete(multiple chips return-object autofocus v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
+            template(v-slot:selection='data')
+              v-chip.chip--select-multi(:selected='data.selected', close, @input='remove(data.item)')
+                user-avatar(:user="data.item" size="small" :no-link="true")
+                span {{ data.item.name }}
+            template(v-slot:item='data')
+              v-list-tile-avatar
+                user-avatar(:user="data.item" size="small" :no-link="true")
+              v-list-tile-content
+                v-list-tile-title(v-html='data.item.name')
+
+        .lmo-flex.lmo-flex__space-between(v-if="showInvitationsRemaining")
+          .spacer
+          p.md-caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
+
+        .announcement-form__share-link(v-if="!announcement.model.isA('discussion') && recipients.length == 0")
+          p.announcement-form__help.md-subhead(v-if="announcement.model.isA('group')", v-t="'invitation_form.shareable_link'")
+          .announcement-shareable-link__content.lmo-flex--column
+            .lmo-flex--row.lmo-flex__center(v-if='canUpdateAnyoneCanParticipate || announcement.model.anyoneCanParticipate')
+              v-checkbox.announcement-form__checkbox(v-model='announcement.model.anyoneCanParticipate', @change='announcement.model.save()', v-if='canUpdateAnyoneCanParticipate')
+                label(v-t="'announcement.form.anyone_can_participate'")
+            .lmo-flex--row.lmo-flex__center(v-if="announcement.model.anyoneCanParticipate || announcement.model.isA('group')")
+              .lmo-flex__grow.md-no-errors.announcement-form__shareable-link
+                input(:value='shareableLink', :disabled='true')
+              v-btn.md-accent.md-button--tiny.announcement-form__copy(title="$t('common.copy')", clipboard='true', text='shareableLink', on-copied='copied()')
+                span(v-t="'common.copy'")
   v-card-actions
-    v-btn(@click="submit()") Submit
+    div(v-if="recipients.length")
+      p(v-show="tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
+    v-btn.announcement-form__cancel(v-if="!recipients.length" @click="$emit('$close')" v-t="'common.action.close'")
+    v-btn.announcement-form__submit(:disabled="!recipients.length || tooManyInvitations()" @click="submit()" v-t="'common.action.send'")
 </template>
 
 <style lang="scss">
