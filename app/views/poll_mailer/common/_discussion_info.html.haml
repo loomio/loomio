@@ -9,3 +9,5 @@
       = link_to discussion.group.full_name, @info.target_url(back_to: group_url(discussion.group))
       %span -
       = link_to discussion.title, @info.target_url(back_to: discussion_url(discussion))
+%p= render_rich_text(discussion.body, discussion.body_format)
+= render "discussion_mailer/attachments", resource: discussion
