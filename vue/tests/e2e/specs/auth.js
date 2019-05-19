@@ -14,7 +14,7 @@ module.exports = {
     page.pause(3000)
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
-    page.pause(3000)
+    page.pause(6000)
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
     page.expectText('.dashboard-page__heading', 'Recent Threads')
