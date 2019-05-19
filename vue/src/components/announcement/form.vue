@@ -129,7 +129,7 @@ v-card
                 v-icon mdi-account-multiple
               v-list-tile-content
                 span(v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
-          v-autocomplete(multiple chips return-object autofocus v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
+          v-autocomplete.announcement-form__input(multiple chips return-object autofocus v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
             template(v-slot:selection='data')
               v-chip.chip--select-multi(:selected='data.selected', close, @input='remove(data.item)')
                 user-avatar(:user="data.item" size="small" :no-link="true")
@@ -137,7 +137,7 @@ v-card
             template(v-slot:item='data')
               v-list-tile-avatar
                 user-avatar(:user="data.item" size="small" :no-link="true")
-              v-list-tile-content
+              v-list-tile-content.announcement-chip__content
                 v-list-tile-title(v-html='data.item.name')
 
         .lmo-flex.lmo-flex__space-between(v-if="showInvitationsRemaining")
