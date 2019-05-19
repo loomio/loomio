@@ -14,7 +14,7 @@ module.exports = {
     page.expectNoText('.dashboard-page__collections', 'Old discussion')
   },
 
-  'dismisses a thread': (test) => {
+  'dismisses_a_thread': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_with_one_thread')

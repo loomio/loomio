@@ -42,7 +42,6 @@
   right: 40px;
   transition: opacity 0.25s ease-in-out;
   top: 0;
-  opacity: 0;
   margin: $thinPaddingSize $cardPaddingSize;
   .md-button {
     align-items: center;
@@ -115,6 +114,8 @@ export default
     unmuteThread: -> ThreadService.unmute(this.thread)
   computed:
     threadUrl: -> "/d/#{this.thread.key}"
+  mounted: ->
+    console.log 'thread', @thread
 </script>
 
 <template lang="pug">
@@ -132,11 +133,11 @@ v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)', md-colors=
       .lmo-badge.lmo-pointer(v-if='thread.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}", v-t="'common.privacy.closed'")
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")
       v-icon mdi-pin
-      .thread-preview__actions.lmo-hide-on-xs(v-if='thread.discussionReaderId')
-        v-btn.md-raised.thread-preview__dismiss(@click='dismiss()', :disabled='!thread.isUnread()', :class='{disabled: !thread.isUnread()}', :title="$t('dashboard_page.dismiss')")
-          .mdi.mdi-check
-        v-btn.md-raised.thread-preview__mute(@click='muteThread()', v-show='!thread.isMuted()', :title="$t('volume_levels.mute')")
-          .mdi.mdi-volume-mute
-        v-btn.md-raised.thread-preview__unmute(@click='unmuteThread()', v-show='thread.isMuted()', :title="$t('volume_levels.unmute')")
-          .mdi.mdi-volume-plus
+    .thread-preview__actions.lmo-hide-on-xs(v-if='thread.discussionReaderId')
+      v-btn.md-raised.thread-preview__dismiss(@click='dismiss()', v-show='thread.isUnread()', :class='{disabled: !thread.isUnread()}', :title="$t('dashboard_page.dismiss')")
+        v-icon.mdi mdi-check
+      v-btn.md-raised.thread-preview__mute(@click='muteThread()', v-show='!thread.isMuted()', :title="$t('volume_levels.mute')")
+        v-icon.mdi mdi-volume-mute
+      v-btn.md-raised.thread-preview__unmute(@click='unmuteThread()', v-show='thread.isMuted()', :title="$t('volume_levels.unmute')")
+        v-icon.mdi mdi-volume-plus
 </template>
