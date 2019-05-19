@@ -6,8 +6,10 @@ import { submitDiscussion } from '@/shared/helpers/form'
 import { map, sortBy, filter } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
+import AnnouncementModalMixin from '@/mixins/announcement_modal'
 
 export default
+  mixins: [AnnouncementModalMixin]
   props:
     discussion: Object
     close: Function
@@ -22,8 +24,11 @@ export default
     @submit = submitDiscussion @, @discussion,
       successCallback: (data) =>
         discussionKey = data.discussions[0].key
-        @close()
-        @$router.push("/d/#{discussionKey}")
+        Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
+          @close()
+          @$router.push("/d/#{discussionKey}")
+          @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
+
 
     Records.view
       name:"startThreadGroups"
