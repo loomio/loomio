@@ -9,12 +9,13 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import Flash   from '@/shared/services/flash'
 import urlFor         from '@/mixins/url_for'
 import exactDate      from '@/mixins/exact_date'
+import DiscussionModalMixin from '@/mixins/discussion_modal'
 
 import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
 import { scrollTo }                                  from '@/shared/helpers/layout'
 
 export default
-  mixins: [urlFor, exactDate]
+  mixins: [urlFor, exactDate, DiscussionModalMixin]
   props:
     discussion: Object
   created: ->
@@ -50,7 +51,7 @@ export default
       name: 'edit_thread'
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canEditThread(@discussion)
-      perform:    => ModalService.open 'DiscussionEditModal', discussion: => @discussion
+      perform:    => @openEditDiscussionModal(@discussion)
     ]
 
   # mounted: ->

@@ -34,6 +34,6 @@ export default
       EventBus.$emit('openModal',
                       component: 'DiscussionForm',
                       props: {
-                        discussion: discussion
+                        discussion: discussion.clone()
                       }
                       titleKey: 'group_form.new_organization')
