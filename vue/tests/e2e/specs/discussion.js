@@ -51,7 +51,6 @@ module.exports = {
     page.click('.context-panel-dropdown__option--close')
     page.expectText('.flash-root__message', 'Thread closed')
     page.click('.flash-root__action')
-    page.pause(300)
     page.expectText('.flash-root__message', 'Thread reopened')
   },
 
@@ -75,7 +74,6 @@ module.exports = {
     page.click('.discussion-form__private')
     page.click('.discussion-form__submit')
     page.click('.dismiss-modal-button')
-    page.pause()
     page.expectText('.context-panel__heading', 'better title')
     page.expectText('.context-panel__description', 'improved description')
     page.expectText('.context-panel', 'Private')
@@ -91,7 +89,6 @@ module.exports = {
     page.fillIn('.discussion-form__title-input input', 'dumb title')
     page.fillIn('.discussion-form textarea', 'rubbish description')
     page.click('.dismiss-modal-button')
-    page.pause()
 
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--edit')
@@ -116,7 +113,6 @@ module.exports = {
     page.click('.context-panel-dropdown__option--mute')
     page.click('.confirm-modal__submit')
     page.expectText('.flash-root__message', 'Thread muted')
-    page.pause()
 
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--unmute')
@@ -206,7 +202,6 @@ module.exports = {
 
     page.fillIn('.comment-form .ProseMirror', 'I am new!')
     page.click('.comment-form__submit-button')
-    page.pause(2000)
     page.expectText('.flash-root__message', 'Comment added')
   },
 
@@ -249,9 +244,7 @@ module.exports = {
     page.fillIn('.comment-form .ProseMirror', 'Here is a dragon!')
     page.click('.comment-form .emoji-picker__toggle')
     page.fillIn('.emoji-mart-search input', 'dragon_face')
-    page.pause(250)
     page.click('.emoji-mart-emoji')
-    page.pause(250)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment .thread-item__body','Here is a dragon!🐲')
   },
@@ -286,7 +279,6 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .ProseMirror', '@jennifer')
-    page.pause()
     page.expectText('.suggestion-list', 'Jennifer Grey')
     page.click('.suggestion-list')
     page.click('.comment-form__submit-button')
@@ -302,7 +294,6 @@ module.exports = {
     page.click('.action-dock__button--edit_comment')
     page.fillIn('.edit-comment-form .ProseMirror', 'edited comment right thur')
     page.click('.edit-comment-form .comment-form__submit-button')
-    page.pause()
     page.expectText('.new-comment', 'edited comment right thur')
   },
 

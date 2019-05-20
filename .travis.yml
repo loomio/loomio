@@ -20,7 +20,10 @@ addons:
   chrome: stable
   artifacts:
     paths:
-      - $(git ls-files -o vue/tests/reports | tr "\n" ":")
+      - $(ls vue/tests/reports | tr "\n" ":")
+    target_paths:
+      - /`date "+%Y-%m-%d_%H:%M"`/${TRAVIS_REPO_SLUG}/
+
 
 env:
   global:

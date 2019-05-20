@@ -14,7 +14,6 @@ module.exports = {
     page.click('.poll-common-form__submit')
     // page.expectElement('.announcement-form__submit')
     // page.click('.dismiss-modal-button')
-    page.pause(3000)
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
@@ -152,7 +151,6 @@ module.exports = {
 
     page.fillIn('.poll-meeting-time-field__datepicker-container input', moment().format('D MMMM YYYY'))
     page.click('.poll-meeting-time-field__timepicker-container')
-    page.pause(500)
     page.fillIn('.poll-meeting-time-field__timepicker-container input', "10:00 am")
 
     page.click('.poll-meeting-form__option-button')
