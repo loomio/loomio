@@ -92,7 +92,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
-    ahoy_email (0.5.2)
+    ahoy_email (1.0.3)
       actionmailer
       activerecord
       addressable (>= 2.3.2)
@@ -588,7 +588,7 @@ DEPENDENCIES
   activeadmin (~> 2.0.0)
   activerecord-import (= 1.0.1)
   activerecord-nulldb-adapter
-  ahoy_email (~> 0.5.2)
+  ahoy_email (~> 1.0.3)
   ahoy_matey (~> 2.2.0)
   autoprefixer-rails
   awesome_print
