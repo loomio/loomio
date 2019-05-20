@@ -338,7 +338,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_mailer_new_discussion_email')
-    page.click('.thread-mailer__subject a')
+    page.click('.thread-mailer__subject a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.fillIn('.comment-form .ProseMirror', 'Hello world!')
@@ -354,7 +354,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_mailer_invitation_created_email')
-    page.click('.thread-mailer__subject a')
+    page.click('.thread-mailer__subject a', 2000)
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
     page.loadPath('use_last_login_token')
