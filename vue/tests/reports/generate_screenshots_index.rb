@@ -3,8 +3,8 @@ require 'cgi'
 
 File.open("index.html", 'w') do |index|
   index.puts("<ul>")
-  Dir.glob('./**/*').each do |filename|
-    index.puts("<li><a href='#{CGI::escapeHTML(filename)}'>#{filename}</a></li>")
+  Dir.glob('./**/*.png').each do |filename|
+    index.puts("<li><a href='#{CGI::escapeHTML(filename)}'>#{filename}</a><br/><img src='#{CGI::escapeHTML(filename)}' /></li>")
   end
   index.puts("</ul>")
 end

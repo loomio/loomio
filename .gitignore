@@ -50,8 +50,9 @@ vue/tests/reports
 node_modules
 /vue/dist
 
-/vue/tests/e2e/reports/
+vue/tests/reports/
 !vue/tests/reports/generate_screenshots_index.rb
+!vue/tests/reports/rename_screenshots.rb
 
 selenium-debug.log
 
