@@ -19,12 +19,11 @@ addons:
   postgresql: "9.6"
   chrome: stable
   artifacts:
+    debug: true
     paths:
-      - $(ls ${TRAVIS_BUILD_DIR}/vue/tests/reports | tr "\n" ":")
+      - vue/tests/reports/ 
     target_paths:
       - /`date "+%Y-%m-%d_%H:%M"`/${TRAVIS_REPO_SLUG}/
-
-
 env:
   global:
     - DB=postgresql

@@ -16,7 +16,7 @@ module.exports = {
   test_settings: {
     default: {
       screenshots: {
-        enabled: false,
+        enabled: true,
         path: "./tests/reports/",
         on_failure: true,
         on_error: true
