@@ -28,6 +28,7 @@ module.exports = (test) ->
   click: (selector, wait) ->
     @waitFor(selector, wait)
     test.click(selector)
+    test.pause(wait)
 
   scrollTo: (selector, callback, wait) ->
     @waitFor(selector, wait)

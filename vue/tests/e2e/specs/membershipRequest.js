@@ -8,7 +8,6 @@ module.exports = {
     page.loadPath('setup_membership_requests')
     page.click('.membership-requests-card__link')
     page.click('.membership-requests-page__approve')
-    page.pause(3000)
     page.expectText('.membership-requests-page__previous-requests', 'Approved by Patrick Swayze')
   },
 
@@ -41,7 +40,6 @@ module.exports = {
     page.loadPath('setup_membership_requests')
     page.click('.membership-requests-card__link')
     page.click('.membership-requests-page__ignore')
-    page.pause(3000)
     page.expectText('.membership-requests-page__previous-requests', 'Ignored by Patrick Swayze')
   },
 
@@ -60,11 +58,8 @@ module.exports = {
     page.loadPath('setup_membership_requests')
     page.click('.membership-requests-card__link')
     page.click('.membership-requests-page__approve')
-    page.pause(300)
     page.click('.membership-requests-page__approve')
-    page.pause(300)
     page.click('.membership-requests-page__approve')
-    page.pause(2000)
     page.expectText('.membership-requests-page__pending-requests', 'There are currently no pending membership requests for this group.')
   }
 }

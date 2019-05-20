@@ -11,10 +11,8 @@ module.exports = {
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__legal-accepted label')
     page.click('.auth-signup-form__submit')
-    page.pause(3000)
-    page.expectText('.auth-complete', 'Check your email')
+    page.expectText('.auth-complete', 'Check your email', 3000)
     page.loadPath('use_last_login_token')
-    page.pause(6000)
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
     page.expectText('.dashboard-page__heading', 'Recent Threads')
@@ -30,15 +28,12 @@ module.exports = {
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__legal-accepted label')
     page.click('.auth-signup-form__submit')
-    page.pause(3000)
     page.expectElement('.auth-complete')
     page.loadPath('use_last_login_token')
-    page.pause(3000)
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
     page.expectText('.context-panel__heading', 'I carried a watermelon')
     page.click('.add-comment-panel__join-actions button')
-    page.pause(2000)
     page.expectText('.flash-root__message', 'You are now a member of Open Dirty Dancing Shoes')
     page.expectElement('.comment-form__submit-button')
   },
@@ -76,7 +71,6 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'w0rstmovie')
     page.click('.auth-signin-form__submit')
-    page.pause(1000)
     page.expectText('.auth-form', "that password doesn't match")
   },
 
@@ -132,7 +126,6 @@ module.exports = {
     page.expectText('.flash-root__message', 'Signed in successfully')
     page.fillIn('.comment-form .ProseMirror', 'I am new!')
     page.click('.comment-form__submit-button')
-    page.pause(2000)
     page.expectText('.flash-root__message', 'Comment added')
   },
 
@@ -244,7 +237,6 @@ module.exports = {
 
     page.loadPath('setup_user_reactivation_email')
     page.click('.base-mailer__button')
-    page.pause(2000)
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
   }

@@ -18,7 +18,6 @@ module.exports = {
     page.loadPath('view_open_group_as_visitor')
     page.click('.join-group-button__join-group')
     page.signInViaEmail('new@account.com')
-    page.pause(3000)
     page.click('.join-group-button__join-group')
     page.ensureSidebar()
     page.expectText('.sidebar__groups', 'Open Dirty Dancing Shoes')
@@ -75,7 +74,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_subgroups')
-    page.pause(2000)
     page.expectText('.discussions-card__list', 'Vaya con dios', 20000)
   },
 
@@ -256,7 +254,6 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__leave-group')
     page.click('.confirm-modal__submit')
-    page.pause()
     page.expectText('.flash-root__message', 'You have left this group')
     page.expectElement('.group-form')
   },
@@ -268,7 +265,6 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__archive-group')
     page.click('.confirm-modal__submit')
-    page.pause()
     page.expectText('.flash-root__message', 'This group has been deactivated')
     page.expectElement('.group-form')
   },
@@ -348,7 +344,6 @@ module.exports = {
 
     page.loadPath('setup_group_with_pending_invitations')
     page.expectElement('.membership-card--pending')
-    page.pause(3000)
     page.expectText('.membership-card--pending', 'shown@test.com')
     page.expectNoText('.membership-card--pending', 'hidden@test.com')
   }
