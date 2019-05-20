@@ -2,19 +2,19 @@ require('coffeescript/register')
 pageHelper = require('../helpers/pageHelper.coffee')
 
 module.exports = {
-  'starts a proposal': (test) => { startPollTest(test, 'proposal') },
-  'starts a count': (test) => { startPollTest(test, 'count') },
-  'starts a poll': (test) => { startPollTest(test, 'poll', (page) => {
+  'starts_a_proposal': (test) => { startPollTest(test, 'proposal') },
+  'starts_a_count': (test) => { startPollTest(test, 'count') },
+  'starts_a_poll': (test) => { startPollTest(test, 'poll', (page) => {
     page.fillIn(".poll-poll-form__add-option-input input", "bananas")
   }) },
-  'starts a dot vote': (test) => { startPollTest(test, 'dot_vote', (page) => {
+  'starts_a_dot_vote': (test) => { startPollTest(test, 'dot_vote', (page) => {
     page.fillIn(".poll-poll-form__add-option-input input", "bananas")
   }) },
   'starts_a_time_poll': (test) => { startPollTest(test, 'meeting', (page) => {
     page.fillIn(".poll-meeting-time-field__datepicker-container input", "2030-03-23")
     page.pause()
   }) },
-  'starts a ranked choice': (test) => { startPollTest(test, 'ranked_choice', (page) => {
+  'starts_a_ranked_choice': (test) => { startPollTest(test, 'ranked_choice', (page) => {
     page.fillIn(".poll-poll-form__add-option-input input", "bananas")
   }) }
 }
