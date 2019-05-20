@@ -71,4 +71,4 @@ script:
   - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone && cd .. ;  fi
 
 after_script:
-  - if [ "$TASK" = "vue" ];     then cd ${TRAVIS_BUILD_DIR}/vue/tests/reports && ruby generate_screenshots_index.rb && cd.. ; fi
+  - if [ "$TASK" = "vue" ];     then cd ${TRAVIS_BUILD_DIR}/vue/tests/reports && bundle exec ruby generate_screenshots_index.rb && cd.. ; fi
