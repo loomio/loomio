@@ -6,13 +6,11 @@ module.exports = {
     page = pageHelper(test)
     page.loadPath('setup_group')
     page.click('.membership-card__invite')
-    page.pause(3000)
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.click('.lmo-h1')
     page.click('.announcement-form__submit')
-    page.pause(3000)
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
@@ -25,10 +23,8 @@ module.exports = {
     page.click('.discussion-form__submit')
     page.expectText('.flash-root__message', 'Thread started')
     page.expectElement('.announcement-form')
-    page.pause(3000)
     page.click('.announcement-form__audience a')
     page.click('.announcement-form__submit')
-    page.pause(3000)
     page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
@@ -42,7 +38,6 @@ module.exports = {
     page.expectElement('.announcement-form')
     page.click('.announcement-form__audience')
     page.click('.announcement-form__submit')
-    page.pause(3000)
     page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
@@ -57,7 +52,6 @@ module.exports = {
     page.click('.announcement-chip__content')
     page.click('.lmo-h1')
     page.click('.announcement-form__submit')
-    page.pause(3000)
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
@@ -76,7 +70,6 @@ module.exports = {
     page.click('.announcement-chip__content')
     page.click('.lmo-h1')
     page.click('.announcement-form__submit')
-    page.pause(3000)
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
@@ -90,7 +83,6 @@ module.exports = {
     page.expectElement('.announcement-form')
     page.click('.announcement-form__audience')
     page.click('.announcement-form__submit')
-    page.pause(3000)
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
