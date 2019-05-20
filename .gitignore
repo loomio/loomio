@@ -51,6 +51,8 @@ node_modules
 /vue/dist
 
 /vue/tests/e2e/reports/
+!vue/tests/reports/generate_screenshots_index.rb
+
 selenium-debug.log
 
 # local env files

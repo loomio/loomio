@@ -7,4 +7,4 @@ File.open("index.html", 'w') do |index|
   end
   index.puts("</ul>")
 end
-puts "https://s3.amazonaws.com/loomio-e2e-screenshots/"
+puts "https://s3.amazonaws.com/loomio-e2e-screenshots/#{ENV['SCREENSHOTS_PATH']}/index.html"

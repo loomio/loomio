@@ -19,11 +19,10 @@ addons:
   postgresql: "9.6"
   chrome: stable
   artifacts:
-    debug: true
     paths:
-      - vue/tests/reports/ 
+      - vue/tests/reports/
     target_paths:
-      - /`date "+%Y-%m-%d_%H:%M"`/${TRAVIS_REPO_SLUG}/
+      - ${SCREENSHOTS_PATH}
 env:
   global:
     - DB=postgresql
@@ -34,6 +33,7 @@ env:
     - MIN_THREADS=3
     - MAX_THREADS=3
     - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
+    - SCREENSHOTS_PATH=/`date "+%Y-%m-%d_%H:%M"`/${TRAVIS_REPO_SLUG}/
   matrix:
     # - TASK=e2e
     - TASK=rspec
