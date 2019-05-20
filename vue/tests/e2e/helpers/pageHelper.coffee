@@ -4,9 +4,11 @@ module.exports = (test) ->
 
   loadPath: (path, opts = {}) ->
     test.url "http://localhost:3000/dev/#{opts.controller || 'nightwatch'}/#{path}?vue=1"
+    test.waitForElementVisible('body', 10000)
 
   goTo: (path) ->
     test.url "http://localhost:3000/#{path}"
+
 
   expectCount: (selector, count, wait) ->
     @waitFor(selector, wait)
@@ -109,5 +111,5 @@ module.exports = (test) ->
     page.click('.auth-signup-form__legal-accepted label')
     page.click '.auth-signup-form__submit'
 
-  waitFor: (selector, wait = 10000) ->
+  waitFor: (selector, wait = 5000) ->
     test.waitForElementVisible(selector, wait) if selector?
