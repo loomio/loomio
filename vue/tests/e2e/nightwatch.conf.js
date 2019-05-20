@@ -21,7 +21,8 @@ module.exports = {
         on_failure: true,
         on_error: true
       },
-      launch_url: 'http://localhost:8080/',
+      launch_url: "about:blank",
+      skip_testcases_on_fail: false,
       selenium_port: 4444,
       selenium_host: 'localhost',
       desiredCapabilities: {
