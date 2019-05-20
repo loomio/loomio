@@ -7,7 +7,7 @@ module.exports = {
 
     page.loadPath('setup_membership_requests')
     page.click('.membership-requests-card__link')
-    page.click('.membership-requests-page__approve')
+    page.click('.membership-requests-page__approve', 500)
     page.expectText('.membership-requests-page__previous-requests', 'Approved by Patrick Swayze')
   },
 
