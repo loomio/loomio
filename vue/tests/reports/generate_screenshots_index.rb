@@ -1,9 +1,10 @@
 #!/usr/bin/ruby
+require 'CGI'
 
 File.open("index.html", 'w') do |index|
   index.puts("<ul>")
   Dir.glob('./**/*').each do |filename|
-    index.puts("<li><a href='#{filename}'>#{filename}</a></li>")
+    index.puts("<li><a href='#{CGI::escapeHTML(filename)}'>#{filename}</a></li>")
   end
   index.puts("</ul>")
 end
