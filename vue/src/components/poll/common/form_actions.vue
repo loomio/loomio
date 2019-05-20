@@ -16,7 +16,6 @@ export default
         pollKey = data.polls[0].key
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
           @close()
-          @$router.push("/p/#{pollKey}")
           @openAnnouncementModal(Records.announcements.buildFromModel(poll))
 </script>
 

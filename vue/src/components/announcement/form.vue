@@ -148,8 +148,7 @@ v-card
           p.announcement-form__help.md-subhead(v-if="announcement.model.isA('group')", v-t="'invitation_form.shareable_link'")
           .announcement-shareable-link__content.lmo-flex--column
             .lmo-flex--row.lmo-flex__center(v-if='canUpdateAnyoneCanParticipate || announcement.model.anyoneCanParticipate')
-              v-checkbox.announcement-form__checkbox(v-model='announcement.model.anyoneCanParticipate', @change='announcement.model.save()', v-if='canUpdateAnyoneCanParticipate')
-                label(v-t="'announcement.form.anyone_can_participate'")
+              v-checkbox.announcement-form__checkbox(v-model='announcement.model.anyoneCanParticipate', @change='announcement.model.save()', v-if='canUpdateAnyoneCanParticipate' :label="$t('announcement.form.anyone_can_participate')")
             .lmo-flex--row.lmo-flex__center(v-if="announcement.model.anyoneCanParticipate || announcement.model.isA('group')")
               .lmo-flex__grow.md-no-errors.announcement-form__shareable-link
                 input(:value='shareableLink', :disabled='true')
