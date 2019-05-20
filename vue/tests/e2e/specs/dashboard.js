@@ -25,14 +25,14 @@ module.exports = {
     page.expectFlash('Thread dismissed')
   },
 
-  'explains muting if you have not yet muted a thread': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.ensureSidebar()
-    page.click('.sidebar__list-item-button--muted')
-    page.expectText('.dashboard-page__explain-mute', "You haven't muted any threads yet")
-  },
+  // 'explains_muting_if_you_have_not_yet_muted_a_thread': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.ensureSidebar()
+  //   page.click('.sidebar__list-item-button--muted')
+  //   page.expectText('.dashboard-page__explain-mute', "You haven't muted any threads yet")
+  // },
 
   'lets you mute a thread': (test) => {
     page = pageHelper(test)
