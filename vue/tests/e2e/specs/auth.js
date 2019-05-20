@@ -9,7 +9,7 @@ module.exports = {
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
-    page.click('.auth-signup-form__legal-accepted input')
+    page.click('.auth-signup-form__legal-accepted label')
     page.click('.auth-signup-form__submit')
     page.pause(3000)
     page.expectText('.auth-complete', 'Check your email')
