@@ -8,4 +8,4 @@ File.open("index.html", 'w') do |index|
   end
   index.puts("</ul>")
 end
-puts "https://s3.amazonaws.com/loomio-e2e-screenshots#{ENV['SCREENSHOTS_PATH']}/#{ENV['ARTIFACTS_PATH']}/index.html"
+puts "https://s3.amazonaws.com/loomio-e2e-screenshots#{ENV['SCREENSHOTS_PATH']}/vue/tests/reports/index.html"
