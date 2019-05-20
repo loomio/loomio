@@ -6,10 +6,14 @@ module.exports = {
     page = pageHelper(test)
     page.loadPath('setup_group')
     page.click('.membership-card__invite')
-    page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
+    page.pause(3000)
+    page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
+    page.click('.announcement-chip__content')
+    page.click('.lmo-h1')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '1 notifications sent')
+    page.pause(3000)
+    page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
   'new_discussion': (test) => {
@@ -17,13 +21,15 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.click('.discussions-card__new-thread-button')
-    page.fillIn('.discussion-form__title-input', 'Immannounce dis')
+    page.fillIn('.discussion-form__title-input input', 'Immannounce dis')
     page.click('.discussion-form__submit')
     page.expectText('.flash-root__message', 'Thread started')
     page.expectElement('.announcement-form')
-    page.click('.announcement-form__audience')
+    page.pause(3000)
+    page.click('.announcement-form__audience a')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '2 notifications sent')
+    page.pause(3000)
+    page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
   'discussion_edited': (test) => {
@@ -36,7 +42,8 @@ module.exports = {
     page.expectElement('.announcement-form')
     page.click('.announcement-form__audience')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '2 notifications sent')
+    page.pause(3000)
+    page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
   'announcement_created': (test) => {
@@ -45,10 +52,13 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.click('.membership-card__invite')
     page.expectElement('.announcement-form')
-    page.selectFromAutocomplete('.announcement-form__invite input', 'jenn')
-    page.expectText('.announcement-chip__content', 'Jennifer Grey')
+    page.fillIn('.announcement-form__input input', 'test@example.com')
+    page.expectText('.announcement-chip__content', 'test@example.com')
+    page.click('.announcement-chip__content')
+    page.click('.lmo-h1')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '1 notifications sent')
+    page.pause(3000)
+    page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
   'poll_created': (test) => {
@@ -56,14 +66,18 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.click('.decision-tools-card__poll-type--proposal')
-    page.fillIn('.poll-common-form-fields__title', 'Immanounce dis too')
+    page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
+    page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
     page.click('.poll-common-form__submit')
     page.expectText('.flash-root__message', 'Proposal started')
     page.expectElement('.announcement-form')
-    page.selectFromAutocomplete('.announcement-form__invite input', 'jenn')
-    page.expectText('.announcement-chip__content', 'Jennifer Grey')
+    page.fillIn('.announcement-form__input input', 'test@example.com')
+    page.expectText('.announcement-chip__content', 'test@example.com')
+    page.click('.announcement-chip__content')
+    page.click('.lmo-h1')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '1 notifications sent')
+    page.pause(3000)
+    page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
   'poll_edited': (test) => {
@@ -76,7 +90,8 @@ module.exports = {
     page.expectElement('.announcement-form')
     page.click('.announcement-form__audience')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '1 notifications sent')
+    page.pause(3000)
+    page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
   // 'outcome_created': (test) => {
@@ -92,6 +107,6 @@ module.exports = {
   //   page.expectText('.announcement-chip__content', 'test@example.com')
   //   page.click('.announcement-form__submit')
   //   page.pause(3000)
-  //   page.expectText('.flash-root__message', '1 notifications sent')
+  //   page.expectText('.flash-root__message', '1 notifications sent', 6000)
   // }
 }
