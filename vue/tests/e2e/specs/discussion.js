@@ -46,6 +46,8 @@ module.exports = {
     page.expectNoText('.thread-preview__title', 'This thread is old and closed')
     page.expectText('.thread-preview__title', 'What star sign are you?')
 
+    // TODO: GK: the thread query service needs an overhaul
+
     page.click('.thread-preview')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--close')
@@ -357,7 +359,8 @@ module.exports = {
     page.click('.thread-mailer__subject a')
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
-    page.loadPath('use_last_login_token')
+
+    page.loadPath('use_last_login_token') // TODO: GK: Timed out while waiting for element <main> to be present for 10000 milliseconds.  - expected "visible" but got: "not found"
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
     page.expectText('.context-panel__heading', 'go to the moon', 10000)

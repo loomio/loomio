@@ -180,7 +180,7 @@ module.exports = {
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
-    page.fillIn('#group-name', '')
+    page.fillIn('.group-form__name input', '') // TODO: GK: setValue is not clearing the input
     page.click('.group-form__submit-button')
     page.pause()
     page.expectText('.lmo-validation-error', "can't be blank")
