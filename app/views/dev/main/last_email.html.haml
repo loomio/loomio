@@ -5,27 +5,25 @@
     = stylesheet_link_tag 'email'
     = stylesheet_link_tag 'poll_mailer'
     %title=action_name
-    %script{type: 'text/javascript', src: "//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"}
-    :javascript
-      angular.module('lastEmail', []).controller('ctrl', function(){})
 
-  %body{'ng-controller' => 'ctrl'}
-    %p.email-to
-      to:
-      = @email.to
+  %body
+    %main
+      %p.email-to
+        to:
+        = @email.to
 
-    %p.email-from
-      from:
-      = @email.from
+      %p.email-from
+        from:
+        = @email.from
 
-    %p.email-subject
-      subject:
-      = @email.subject
+      %p.email-subject
+        subject:
+        = @email.subject
 
-    %p.email-reply-to
-      reply to:
-      = @email.reply_to
+      %p.email-reply-to
+        reply to:
+        = @email.reply_to
 
-    %p.email-body
-      body:
-      =  raw @email.body.parts.last.decoded
+      %p.email-body
+        body:
+        =  raw @email.body.parts.last.decoded
