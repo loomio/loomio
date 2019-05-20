@@ -66,9 +66,9 @@ before_script:
 
 script:
   - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
-  - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 1 ; cd .. ; fi
+  - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 1 && cd .. ; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
-  - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone; cd .. ;  fi
+  - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone && cd .. ;  fi
 
 after_script:
   - if [ "$TASK" = "vue" ];     then cd vue/tests/reports && ruby generate_screenshots_index.rb && cd.. ; fi
