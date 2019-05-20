@@ -11,6 +11,7 @@ export default
   mixins: [urlFor, truncate, GroupModalMixin]
   props:
     group: Object
+  data: ->
     subgroups: []
   created: ->
     Records.groups.fetchByParent(@group).then =>
