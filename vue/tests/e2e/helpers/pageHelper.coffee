@@ -4,11 +4,10 @@ module.exports = (test) ->
 
   loadPath: (path, opts = {}) ->
     test.url "http://localhost:3000/dev/#{opts.controller || 'nightwatch'}/#{path}?vue=1"
-    test.waitForElementVisible('body', 10000)
+    test.waitForElementVisible('main', 10000)
 
   goTo: (path) ->
     test.url "http://localhost:3000/#{path}"
-
 
   expectCount: (selector, count, wait) ->
     @waitFor(selector, wait)

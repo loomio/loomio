@@ -204,8 +204,8 @@ module.exports = {
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
     page.click('.auth-signup-form__legal-accepted label')
     page.click('.auth-signup-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully', 8000)
-    page.expectText('.group-theme__name', 'Dirty Dancing Shoes', 16000)
+    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
   },
 
   'requires_verification_if_email_is_changed': (test) => {

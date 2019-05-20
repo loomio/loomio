@@ -234,7 +234,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .ProseMirror', 'hi this is my comment')
     page.click('.comment-form__submit-button')
-    page.expectText('.new-comment', 'hi this is my comment', 8000)
+    page.expectText('.new-comment', 'hi this is my comment')
   },
 
   'can_add_emojis': (test) => {

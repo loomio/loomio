@@ -66,7 +66,7 @@ module.exports = {
     page.fillIn('.change-password-form__password input', 'Smush')
     page.fillIn('.change-password-form__password-confirmation input', 'Smush')
     page.click('.change-password-form__submit')
-    page.expectText('.change-password-form__password-container .lmo-validation-error__message', "is too short", 8000)
+    page.expectText('.change-password-form__password-container .lmo-validation-error__message', "is too short")
   },
 
   'does_not_accept_mismatched_passwords': (test) => {
@@ -79,7 +79,7 @@ module.exports = {
     page.fillIn('.change-password-form__password input', 'SmushDemBerries')
     page.fillIn('.change-password-form__password-confirmation input', 'SmishDemBorries')
     page.click('.change-password-form__submit')
-    page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match", 8000)
+    page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match")
   },
 
   'can_set_a_password': (test) => {

@@ -6,6 +6,7 @@ import AbilityService from '@/shared/services/ability_service'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
 import GroupModalMixin from '@/mixins/group_modal'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
+import Flash from '@/shared/services/flash'
 
 export default
   mixins: [
@@ -15,7 +16,13 @@ export default
   ]
   props:
     group: Object
+
   methods:
+    becomeCoordinator: ->
+      membership = @group.membershipFor(Session.user())
+      Records.memberships.makeAdmin(membership).then ->
+        Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
+
     openChangeVolumeForm: ->
       @openChangeVolumeModal(@group.membershipFor(Session.user()))
 
@@ -35,6 +42,12 @@ export default
       @openConfirmModal(@archiveGroupModalConfirmOpts)
 
   computed:
+    canBecomeCoordinator: ->
+      membership = @group.membershipFor(Session.user())
+      membership.admin == false &&
+      (membership.group().adminMembershipsCount == 0 or
+      Session.user().isAdminOf(membership.group().parent()))
+
     groupExportModalConfirmOpts: ->
       submit: @group.export
       text:
@@ -89,8 +102,11 @@ v-menu.group-page-actions.lmo-no-print(offset-y)
     v-icon mdi-chevron-down
   v-list.group-actions-dropdown__menu-content
 
-    v-list-tile.group-page-actions__edit-group-link(v-if='true', @click='editGroup()')
+    v-list-tile.group-page-actions__edit-group-link(v-if='canEditGroup', @click='editGroup()')
       v-list-tile-title(v-t="'group_page.options.edit_group'")
+
+    v-list-tile.group-page-actions__become-coordinator(v-if='canBecomeCoordinator', @click='becomeCoordinator()')
+      v-list-tile-title(v-t="'group_page.options.become_coordinator'")
 
     v-list-tile.group-page-actions__change-volume-link(v-if='canChangeVolume', @click='openChangeVolumeForm()')
       v-list-tile-title(v-t="'group_page.options.email_settings'")
