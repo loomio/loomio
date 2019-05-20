@@ -120,8 +120,7 @@ module.exports = {
     page.expectNoElement('.group-form__joining')
 
     page.click('.group-form__advanced-link')
-
-    page.fillIn('.group-form__name', 'Secret please')
+    page.fillIn('.group-form__name input', 'Secret please')
     page.click('.group-form__submit-button')
     page.expectText('.group-privacy-button', 'SECRET')
   },
