@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-require 'CGI'
+require 'cgi'
 
 File.open("index.html", 'w') do |index|
   index.puts("<ul>")
