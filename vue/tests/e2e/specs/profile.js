@@ -49,7 +49,7 @@ module.exports = {
     page.fillIn('.contact-request-form__message textarea', 'Here is a request to connect!')
     page.click('.contact-request-form__submit')
     page.expectNoElement('.flash-root__loading', 1000)
-    page.expectText('.flash-root__message', 'Email sent to Jennifer Grey')
+    page.expectFlash('Email sent to Jennifer Grey')
 
     page.goTo('u/patrickswayze')
     page.expectElement('.user-page')
@@ -92,7 +92,7 @@ module.exports = {
     page.fillIn('.change-password-form__password input', 'SmushDemBerries')
     page.fillIn('.change-password-form__password-confirmation input', 'SmushDemBerries')
     page.click('.change-password-form__submit')
-    page.expectText('.flash-root__message', 'Your password has been set')
+    page.expectFlash('Your password has been set')
   },
 
   'successfully_deactivates_the_account': (test) => {

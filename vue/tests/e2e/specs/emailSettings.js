@@ -61,7 +61,7 @@ module.exports = {
 testUpdate = (page) => {
   page.click('.email-settings-page__daily-summary label')
   page.click('.email-settings-page__update-button')
-  page.expectText('.flash-root__message', 'Email settings updated')
+  page.expectFlash('Email settings updated')
 }
 
 testDefaultUpdate = (page) => {
@@ -69,7 +69,7 @@ testDefaultUpdate = (page) => {
   page.expectText('.change-volume-form__title', 'Email settings for new groups')
   page.click('.volume-loud')
   page.click('.change-volume-form__submit')
-  page.expectText('.flash-root__message', 'You will be emailed all activity in new groups.')
+  page.expectFlash('You will be emailed all activity in new groups.')
   page.expectText('.email-settings-page__default-description', 'When you join a new group, you will be emailed whenever there is activity.')
 }
 
@@ -78,6 +78,6 @@ testMembershipUpdate = (page) => {
   page.click('.volume-loud')
   page.click('.change-volume-form__apply-to-all label')
   page.click('.change-volume-form__submit')
-  page.expectText('.flash-root__message', 'You will be emailed all activity in all your groups.')
+  page.expectFlash('You will be emailed all activity in all your groups.')
   page.expectText('.email-settings-page__membership-volume', 'All activity')
 }

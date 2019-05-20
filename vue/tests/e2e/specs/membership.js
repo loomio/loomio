@@ -13,7 +13,7 @@ module.exports = {
     // page.expectText('.confirm-modal p', 'Jennifer')
     page.expectText('.confirm-modal h1', 'Remove member')
     page.click('.confirm-modal__submit')
-    page.expectText('.flash-root__message', 'Member removed')
+    page.expectFlash('Member removed')
     page.expectNoText('.membership-card', 'Jennifer Grey')
   },
 
@@ -25,7 +25,7 @@ module.exports = {
     page.fillIn('.membership-card__filter input', 'Jennifer')
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Jennifer Grey is now a coordinator')
+    page.expectFlash('Jennifer Grey is now a coordinator')
   },
 
   'allows_non-coordinators_to_add_members_if_the_group_settings_allow': (test) => {
@@ -44,7 +44,7 @@ module.exports = {
     page.fillIn('.membership-card__filter input', 'Emilio')
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Emilio Estevez is no longer a coordinator')
+    page.expectFlash('Emilio Estevez is no longer a coordinator')
     page.expectNoElement('.user-avatar--coordinator')
   },
 
@@ -56,7 +56,7 @@ module.exports = {
     page.fillIn('.membership-card__filter input', 'Patrick')
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Patrick Swayze is now a coordinator')
+    page.expectFlash('Patrick Swayze is now a coordinator')
   },
 
   'can_self_promote_when_admin_of_parent_group': (test) => {
@@ -67,7 +67,7 @@ module.exports = {
     page.fillIn('.membership-card__filter input', 'Jennifer')
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Jennifer Grey is now a coordinator')
+    page.expectFlash('Jennifer Grey is now a coordinator')
   },
 
   'cannot_self_promote_when_coordinators': (test) => {
@@ -90,7 +90,7 @@ module.exports = {
     page.click('.membership-dropdown__set-title')
     page.fillIn('.membership-form__title-input input', 'Suzerain')
     page.click('.membership-form__submit')
-    page.expectText('.flash-root__message', 'Membership title updated')
+    page.expectFlash('Membership title updated')
     page.expectText('.membership-card', 'Patrick Swayze · Suzerain')
   }
 }

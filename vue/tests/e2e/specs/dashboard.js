@@ -22,7 +22,7 @@ module.exports = {
     page.mouseOver('.thread-preview', () => { page.click('.thread-preview__dismiss') })
     page.expectText('.confirm-modal h1', 'Dismiss thread')
     page.click('.confirm-modal__submit')
-    page.expectText('.flash-root__message', 'Thread dismissed')
+    page.expectFlash('Thread dismissed')
   },
 
   'explains muting if you have not yet muted a thread': (test) => {
@@ -42,6 +42,6 @@ module.exports = {
     page.mouseOver('.thread-preview', () => { page.click('.thread-preview__mute') })
     page.expectText('.confirm-modal h1', 'Mute thread')
     page.click('.confirm-modal__submit')
-    page.expectText('.flash-root__message', 'Thread muted')
+    page.expectFlash('Thread muted')
   }
 }

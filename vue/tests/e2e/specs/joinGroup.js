@@ -25,7 +25,7 @@ module.exports = {
 
     page.loadPath('setup_public_group_to_join_upon_request')
     page.click('.join-group-button__join-group')
-    page.expectText('.flash-root__message', 'You are now a member of')
+    page.expectFlash('You are now a member of')
     page.expectText('.membership-card', 'Jennifer')
   },
 
@@ -35,7 +35,7 @@ module.exports = {
     page.loadPath('setup_closed_group_to_join')
     page.click('.join-group-button__ask-to-join-group')
     page.click('.membership-request-form__submit-btn')
-    page.expectText('.flash-root__message', 'You have requested membership')
+    page.expectFlash('You have requested membership')
   },
 
   'can_join_closed_subgroup_when_admin_of_parent_group': (test) => {
@@ -43,6 +43,6 @@ module.exports = {
 
     page.loadPath('setup_group_with_subgroups_as_admin_landing_in_other_subgroup')
     page.click('.join-group-button__join-group')
-    page.expectText('.flash-root__message', 'You are now a member of Point Break - Bodhi')
+    page.expectFlash('You are now a member of Point Break - Bodhi')
   },
 }

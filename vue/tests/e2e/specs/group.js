@@ -36,7 +36,7 @@ module.exports = {
 
     page.loadPath('view_open_group_as_non_member')
     page.click('.join-group-button__join-group')
-    page.expectText('.flash-root__message', 'You are now a member')
+    page.expectFlash('You are now a member')
   },
 
   'request_to_join_a_closed_group_group': (test) => {
@@ -46,7 +46,7 @@ module.exports = {
     page.click('.join-group-button__ask-to-join-group')
     page.fillIn('.membership-request-form__introduction textarea', 'I have a reason')
     page.click('.membership-request-form__submit-btn')
-    page.expectText('.flash-root__message', 'You have requested membership')
+    page.expectFlash('You have requested membership')
   },
 
   'secret_group': (test) => {
@@ -254,7 +254,7 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__leave-group')
     page.click('.confirm-modal__submit')
-    page.expectText('.flash-root__message', 'You have left this group')
+    page.expectFlash('You have left this group')
     page.expectElement('.group-form')
   },
 
@@ -265,7 +265,7 @@ module.exports = {
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__archive-group')
     page.click('.confirm-modal__submit')
-    page.expectText('.flash-root__message', 'This group has been deactivated')
+    page.expectFlash('This group has been deactivated')
     page.expectElement('.group-form')
   },
 
@@ -312,7 +312,7 @@ module.exports = {
     page.click('.group-page-actions__change-volume-link')
     page.click('.volume-loud label')
     page.click('.change-volume-form__submit')
-    page.expectText('.flash-root__message', 'You will be emailed all activity in this group.')
+    page.expectFlash('You will be emailed all activity in this group.')
   },
 
   'lets you change the membership volume for all memberships': (test) => {
@@ -324,7 +324,7 @@ module.exports = {
     page.click('.volume-loud label')
     page.click('.change-volume-form__apply-to-all label')
     page.click('.change-volume-form__submit')
-    page.expectText('.flash-root__message', 'You will be emailed all activity in all your groups.')
+    page.expectFlash('You will be emailed all activity in all your groups.')
   },
 
   'handles_advanced_group_settings': (test) => {

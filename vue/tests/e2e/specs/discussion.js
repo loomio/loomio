@@ -49,9 +49,9 @@ module.exports = {
     page.click('.thread-preview')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--close')
-    page.expectText('.flash-root__message', 'Thread closed')
+    page.expectFlash('Thread closed')
     page.click('.flash-root__action')
-    page.expectText('.flash-root__message', 'Thread reopened')
+    page.expectFlash('Thread reopened')
   },
 
   // 'doesnt store drafts after submission': (test) => {
@@ -112,11 +112,11 @@ module.exports = {
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--mute')
     page.click('.confirm-modal__submit')
-    page.expectText('.flash-root__message', 'Thread muted')
+    page.expectFlash('Thread muted')
 
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--unmute')
-    page.expectText('.flash-root__message', 'Thread unmuted')
+    page.expectFlash('Thread unmuted')
   },
 
   // 'lets you move a thread': (test) => {
@@ -128,7 +128,7 @@ module.exports = {
   //   page.click('.move-thread-form__group-dropdown')
   //   page.click('.md-select-menu-container.md-active md-option')
   //   page.click('.move-thread-form__submit')
-  //   page.expectText('.flash-root__message', 'Thread has been moved to Point Break')
+  //   page.expectFlash('Thread has been moved to Point Break')
   //   page.expectText('.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes')
   //   page.expectText('.group-theme__name--compact','Point Break')
   // },
@@ -149,7 +149,7 @@ module.exports = {
     page.click('.context-panel-dropdown__option--delete')
     page.click('.confirm-modal__submit')
 
-    page.expectText('.flash-root__message', 'Thread deleted')
+    page.expectFlash('Thread deleted')
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
     page.expectNoText('.discussions-card', 'What star sign are you?')
   },
@@ -164,7 +164,7 @@ module.exports = {
     page.expectText('.confirm-modal', 'Pin thread')
     page.click('.confirm-modal__submit')
 
-    page.expectText('.flash-root__message', 'Thread pinned')
+    page.expectFlash('Thread pinned')
     page.expectElement('.context-panel__status .mdi-pin')
   },
 
@@ -176,7 +176,7 @@ module.exports = {
     page.click('.context-panel-dropdown__option--email-settings')
     page.click('.volume-loud')
     page.click('.change-volume-form__submit')
-    page.expectText('.flash-root__message', 'You will be emailed activity in this thread.')
+    page.expectFlash('You will be emailed activity in this thread.')
   },
 
   'lets_you_change_the_volume_for_all_threads_in_the_group': (test) => {
@@ -188,7 +188,7 @@ module.exports = {
     page.click('.volume-loud')
     page.click('.change-volume-form__apply-to-all')
     page.click('.change-volume-form__submit')
-    page.expectText('.flash-root__message', 'You will be emailed all activity in this group.')
+    page.expectFlash('You will be emailed all activity in this group.')
   },
 
   'allows_logged_in_users_to_join_a_group_and_comment': (test) => {
@@ -198,11 +198,11 @@ module.exports = {
 
     page.click('.thread-preview__link')
     page.click('.join-group-button__join-group')
-    page.expectText('.flash-root__message', 'You are now a member of Open Dirty Dancing Shoes')
+    page.expectFlash('You are now a member of Open Dirty Dancing Shoes')
 
     page.fillIn('.comment-form .ProseMirror', 'I am new!')
     page.click('.comment-form__submit-button')
-    page.expectText('.flash-root__message', 'Comment added')
+    page.expectFlash('Comment added')
   },
 
   'allows_guests_to_comment_and_view_thread_in_dashboard': (test) => {
@@ -211,7 +211,7 @@ module.exports = {
     page.loadPath('setup_discussion_as_guest')
     page.fillIn('.comment-form .ProseMirror', 'I am a guest!')
     page.click('.comment-form__submit-button')
-    page.expectText('.flash-root__message', 'Comment added')
+    page.expectFlash('Comment added')
 
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--recent')
@@ -225,7 +225,7 @@ module.exports = {
     page.click('.thread-preview__link')
     page.click('.join-group-button__ask-to-join-group')
     page.click('.membership-request-form__submit-btn')
-    page.expectText('.flash-root__message', 'You have requested membership to Closed Dirty Dancing Shoes')
+    page.expectFlash('You have requested membership to Closed Dirty Dancing Shoes')
   },
 
   'adds_a_comment': (test) => {
@@ -259,7 +259,7 @@ module.exports = {
     page.fillIn('.comment-form .ProseMirror', 'hi this is my comment')
     page.click('.comment-form__submit-button')
     page.expectText('.thread-item--indent .new-comment__body', 'hi this is my comment')
-    page.expectText('.flash-root__message', 'Patrick Swayze notified of reply')
+    page.expectFlash('Patrick Swayze notified of reply')
   },
 
   // 'can react to a comment': (test) => {
@@ -359,7 +359,7 @@ module.exports = {
     page.signUpViaInvitation("Jennifer")
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.context-panel__heading', 'go to the moon', 10000)
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
@@ -382,7 +382,7 @@ module.exports = {
   //   page.click('.discussion-fork-actions__submit')
   //   page.fillIn('.discussion-form__title-input', 'Forked thread')
   //   page.click('.discussion-form__submit')
-  //   page.expectText('.flash-root__message', 'Thread fork created')
+  //   page.expectFlash('Thread fork created')
   //   page.click('.dismiss-modal-button')
   //   page.expectText('.context-panel__heading', 'Forked thread')
   //   page.expectText('.context-panel__details', 'Forked from What star sign are you?')

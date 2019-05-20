@@ -13,7 +13,7 @@ module.exports = {
     page.click('.lmo-h1')
     page.click('.announcement-form__submit')
     page.pause(3000)
-    page.expectText('.flash-root__message', '1 notifications sent', 6000)
+    page.expectFlash('1 notifications sent')
   },
 
   'new_discussion': (test) => {
@@ -23,13 +23,13 @@ module.exports = {
     page.click('.discussions-card__new-thread-button')
     page.fillIn('.discussion-form__title-input input', 'Immannounce dis')
     page.click('.discussion-form__submit')
-    page.expectText('.flash-root__message', 'Thread started')
+    page.expectFlash('Thread started')
     page.expectElement('.announcement-form')
     page.pause(3000)
     page.click('.announcement-form__audience a')
     page.click('.announcement-form__submit')
     page.pause(3000)
-    page.expectText('.flash-root__message', '2 notifications sent', 6000)
+    page.expectFlash('2 notifications sent')
   },
 
   'discussion_edited': (test) => {
@@ -43,7 +43,7 @@ module.exports = {
     page.click('.announcement-form__audience')
     page.click('.announcement-form__submit')
     page.pause(3000)
-    page.expectText('.flash-root__message', '2 notifications sent', 6000)
+    page.expectFlash('2 notifications sent')
   },
 
   'announcement_created': (test) => {
@@ -58,7 +58,7 @@ module.exports = {
     page.click('.lmo-h1')
     page.click('.announcement-form__submit')
     page.pause(3000)
-    page.expectText('.flash-root__message', '1 notifications sent', 6000)
+    page.expectFlash('1 notifications sent')
   },
 
   'poll_created': (test) => {
@@ -69,7 +69,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
     page.click('.poll-common-form__submit')
-    page.expectText('.flash-root__message', 'Proposal started')
+    page.expectFlash('Proposal started')
     page.expectElement('.announcement-form')
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
@@ -77,7 +77,7 @@ module.exports = {
     page.click('.lmo-h1')
     page.click('.announcement-form__submit')
     page.pause(3000)
-    page.expectText('.flash-root__message', '1 notifications sent', 6000)
+    page.expectFlash('1 notifications sent')
   },
 
   'poll_edited': (test) => {
@@ -91,7 +91,7 @@ module.exports = {
     page.click('.announcement-form__audience')
     page.click('.announcement-form__submit')
     page.pause(3000)
-    page.expectText('.flash-root__message', '1 notifications sent', 6000)
+    page.expectFlash('1 notifications sent')
   },
 
   // 'outcome_created': (test) => {
@@ -101,12 +101,12 @@ module.exports = {
   //   page.click('.poll-common-set-outcome-panel__submit')
   //   page.fillIn('.poll-common-outcome-form__statement textarea', 'Immannounce all yall')
   //   page.click('.poll-common-outcome-form__submit')
-  //   page.expectText('.flash-root__message', 'Outcome created')
+  //   page.expectFlash('Outcome created')
   //   page.expectElement('.announcement-form')
   //   page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
   //   page.expectText('.announcement-chip__content', 'test@example.com')
   //   page.click('.announcement-form__submit')
   //   page.pause(3000)
-  //   page.expectText('.flash-root__message', '1 notifications sent', 6000)
+  //   page.expectFlash('1 notifications sent')
   // }
 }

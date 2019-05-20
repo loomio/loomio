@@ -14,7 +14,7 @@ module.exports = {
     page.expectText('.auth-complete', 'Check your email', 3000)
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.dashboard-page__heading', 'Recent Threads')
   },
 
@@ -31,10 +31,10 @@ module.exports = {
     page.expectElement('.auth-complete')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.context-panel__heading', 'I carried a watermelon')
     page.click('.add-comment-panel__join-actions button')
-    page.expectText('.flash-root__message', 'You are now a member of Open Dirty Dancing Shoes')
+    page.expectFlash('You are now a member of Open Dirty Dancing Shoes')
     page.expectElement('.comment-form__submit-button')
   },
 
@@ -43,7 +43,7 @@ module.exports = {
 
     page.loadPath('setup_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully', 20000)
+    page.expectFlash('Signed in successfully', 20000)
   },
 
   'can_use_a_shareable_link': (test) => {
@@ -58,7 +58,7 @@ module.exports = {
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
   },
 
@@ -84,7 +84,7 @@ module.exports = {
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.dashboard-page__heading', 'Recent Threads')
   },
 
@@ -97,7 +97,7 @@ module.exports = {
     page.click('.auth-signin-form__submit')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
   },
 
   'can_login_from_the_dashboard': (test) => {
@@ -110,7 +110,7 @@ module.exports = {
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.dashboard-page__heading', 'Recent Threads')
   },
 
@@ -123,10 +123,10 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.fillIn('.comment-form .ProseMirror', 'I am new!')
     page.click('.comment-form__submit-button')
-    page.expectText('.flash-root__message', 'Comment added')
+    page.expectFlash('Comment added')
   },
 
   'can_login_from_the_explore_page': (test) => {
@@ -138,7 +138,7 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
   },
 
   'can_login_from_the_explore_page_via_link': (test) => {
@@ -153,7 +153,7 @@ module.exports = {
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
 
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.explore-page', 'Explore groups')
   },
 
@@ -166,7 +166,7 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.group-theme__name', 'Closed Dirty Dancing Shoes')
     page.expectText('.thread-preview-collection__container', 'This thread is private')
   },
@@ -179,7 +179,7 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.group-theme__name', 'Secret Dirty Dancing Shoes')
   },
 
@@ -190,7 +190,7 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signin-form', 'Welcome back, Jennifer!')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
     page.expectNoElement('.join-group-button')
   },
@@ -204,7 +204,7 @@ module.exports = {
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
     page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input')
     page.click('.auth-signup-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
   },
 
@@ -238,7 +238,7 @@ module.exports = {
     page.loadPath('setup_user_reactivation_email')
     page.click('.base-mailer__button')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectFlash('Signed in successfully')
   }
 
 }

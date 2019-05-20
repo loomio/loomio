@@ -31,7 +31,7 @@ module.exports = {
     page.loadPath('setup_membership_requests')
     page.click('.membership-requests-card__link')
     page.click('.membership-requests-page__approve')
-    page.expectText('.flash-root__message', 'Membership request approved')
+    page.expectFlash('Membership request approved')
   },
 
   'successfully_ignores_a_membership_request': (test) => {
@@ -49,7 +49,7 @@ module.exports = {
     page.loadPath('setup_membership_requests')
     page.click('.membership-requests-card__link')
     page.click('.membership-requests-page__ignore')
-    page.expectText('.flash-root__message', 'Membership request ignored')
+    page.expectFlash('Membership request ignored')
   },
 
   'tells_you_there_are_no_pending_membership_requests': (test) => {

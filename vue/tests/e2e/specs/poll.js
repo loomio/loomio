@@ -246,7 +246,7 @@ module.exports = {
     page.fillIn('.poll-common-calendar-invite__description textarea', 'Here is a meeting agenda')
 
     page.click('.poll-common-outcome-form__submit')
-    page.expectText('.flash-root__message', 'Outcome created')
+    page.expectFlash('Outcome created')
     page.expectText('.poll-common-outcome-panel', 'Here is a statement')
   },
 
@@ -258,7 +258,7 @@ module.exports = {
   //   page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
   //   page.expectText('.announcement-chip__content', 'test@example.com')
   //   page.click('.announcement-form__submit')
-  //   page.expectText('.flash-root__message', '1 notifications sent')
+  //   page.expectFlash('1 notifications sent')
   // },
 
   'can_show_undecided_users': (test) => {
@@ -277,6 +277,6 @@ module.exports = {
     page.click('.show-results-button')
     page.click('.poll-common-undecided-panel__button')
     page.click('.poll-common-undecided-user__remind')
-    page.expectText('.flash-root__message', 'Reminder notification sent')
+    page.expectFlash('Reminder notification sent')
   }
 }
