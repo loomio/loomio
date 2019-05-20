@@ -71,7 +71,7 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'w0rstmovie')
     page.click('.auth-signin-form__submit')
-    page.expectText('.auth-form', "that password doesn't match")
+    page.expectText('.lmo-validation-error__message', "that password doesn't match")
   },
 
   'can_send_login_link_to_user_with_a_password': (test) => {

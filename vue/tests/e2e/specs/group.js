@@ -120,8 +120,7 @@ module.exports = {
     page.expectNoElement('.group-form__joining')
 
     page.click('.group-form__advanced-link')
-
-    page.fillIn('.group-form__name', 'Secret please')
+    page.fillIn('.group-form__name input', 'Secret please')
     page.click('.group-form__submit-button')
     page.expectText('.group-privacy-button', 'SECRET')
   },
@@ -181,7 +180,7 @@ module.exports = {
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__edit-group-link')
-    page.fillIn('#group-name', '')
+    page.fillIn('.group-form__name input', '') // TODO: GK: setValue is not clearing the input
     page.click('.group-form__submit-button')
     page.pause()
     page.expectText('.lmo-validation-error', "can't be blank")

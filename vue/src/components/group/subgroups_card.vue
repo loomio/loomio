@@ -11,12 +11,19 @@ export default
   mixins: [urlFor, truncate, GroupModalMixin]
   props:
     group: Object
+  data: ->
+    subgroups: []
   created: ->
     Records.groups.fetchByParent(@group).then =>
       EventBus.$emit 'subgroupsLoaded', @group
+      Records.view
+        name:"subgroupsCard"
+        collections: ['groups']
+        query: (store) =>
+          @subgroups = @group.subgroups()
   methods:
     orderedSubgroups: ->
-      _.sortBy @group.subgroups(), 'name'
+      _.sortBy @subgroups, 'name'
 
     show: ->
       @group.isParent()
@@ -26,7 +33,7 @@ export default
 
     startSubgroup: ->
       @openStartSubgroupModal(@group)
-      
+
 </script>
 
 <template lang="pug">

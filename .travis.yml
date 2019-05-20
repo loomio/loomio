@@ -36,7 +36,7 @@ env:
     - SCREENSHOTS_PATH=/`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
   matrix:
     # - TASK=e2e
-    - TASK=rspec
+    # - TASK=rspec
     # - TASK=plugins
     - TASK=vue
 
