@@ -88,7 +88,7 @@ module.exports = {
 
     page.fillIn('.discussion-form__title-input input', 'dumb title')
     page.fillIn('.discussion-form textarea', 'rubbish description')
-    page.click('.dismiss-modal-button')
+    page.click('.dismiss-modal-button', 500)
 
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--edit')

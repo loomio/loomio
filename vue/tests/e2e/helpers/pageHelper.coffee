@@ -24,9 +24,10 @@ module.exports = (test) ->
   expectNoElement: (selector, wait = 1000) ->
     test.expect.element(selector).to.not.be.present.after(wait)
 
-  click: (selector, wait) ->
-    @waitFor(selector, wait)
+  click: (selector, pause) ->
+    @waitFor(selector)
     test.click(selector)
+    test.pause(pause) if pause
 
   scrollTo: (selector, callback, wait) ->
     @waitFor(selector, wait)
