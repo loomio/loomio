@@ -6,7 +6,7 @@ module.exports = {
     page = pageHelper(test)
     page.loadPath('setup_group')
     page.click('.membership-card__invite')
-    page.fillIn('.announcement-form__input input', 'test@example.com')
+    page.fillIn('.announcement-form__input input', 'test@example.com') // TODO: GK: inconsistent behaviour
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.click('.lmo-h1')

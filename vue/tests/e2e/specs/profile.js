@@ -20,7 +20,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.goTo('u/jennifergrey')
+    page.goTo('u/jennifergrey') // TODO: GK: fix this
     page.expectText('.user-page__content', 'Jennifer Grey')
     page.expectText('.user-page__content', '@jennifergrey')
     page.expectText('.user-page__groups', 'Dirty Dancing Shoes')
@@ -44,14 +44,14 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.goTo('u/jennifergrey')
+    page.goTo('u/jennifergrey') // TODO: GK: fix this
     page.click('.user-page__contact-user')
     page.fillIn('.contact-request-form__message textarea', 'Here is a request to connect!')
     page.click('.contact-request-form__submit')
     page.expectNoElement('.flash-root__loading', 1000)
     page.expectFlash('Email sent to Jennifer Grey')
 
-    page.goTo('u/patrickswayze')
+    page.goTo('u/patrickswayze') // TODO: GK: fix this
     page.expectElement('.user-page')
     page.expectNoElement('.user-page__contact-user')
   },
@@ -63,8 +63,8 @@ module.exports = {
     page.click('.user-dropdown__dropdown-button')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__change-password')
-    page.fillIn('.change-password-form__password input', 'Smush')
-    page.fillIn('.change-password-form__password-confirmation input', 'Smush')
+    page.fillIn('.change-password-form__password input', 'Smush') // TODO: GK: inputs not working properly
+    page.fillIn('.change-password-form__password-confirmation input', 'Smush') // TODO: GK: inputs not working properly
     page.click('.change-password-form__submit')
     page.expectText('.change-password-form__password-container .lmo-validation-error__message', "is too short")
   },
@@ -76,8 +76,9 @@ module.exports = {
     page.click('.user-dropdown__dropdown-button')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__change-password')
-    page.fillIn('.change-password-form__password input', 'SmushDemBerries')
-    page.fillIn('.change-password-form__password-confirmation input', 'SmishDemBorries')
+    page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
+    page.fillIn('.change-password-form__password-confirmation input', 'SmishDemBorries') // TODO: GK: inputs not working properly
+    page.pause(100000)
     page.click('.change-password-form__submit')
     page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match")
   },
@@ -89,8 +90,8 @@ module.exports = {
     page.click('.user-dropdown__dropdown-button')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__change-password')
-    page.fillIn('.change-password-form__password input', 'SmushDemBerries')
-    page.fillIn('.change-password-form__password-confirmation input', 'SmushDemBerries')
+    page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
+    page.fillIn('.change-password-form__password-confirmation input', 'SmushDemBerries') // TODO: GK: inputs not working properly
     page.click('.change-password-form__submit')
     page.expectFlash('Your password has been set')
   },
