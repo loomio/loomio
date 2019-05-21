@@ -40,14 +40,18 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
-import _isEmpty     from 'lodash/isEmpty'
+import { isEmpty }    from 'lodash'
 
 export default
   data: ->
     group: {}
+    pendingRequests: []
+    previousRequests: []
+
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', { page: 'membershipRequestsPage'}
+    EventBus.$emit 'currentComponent', { page: 'membershipRequestsPage'}
     @init()
+
   methods:
     init: ->
       Records.groups.findOrFetchById(@$route.params.key).then (group) =>
@@ -55,6 +59,12 @@ export default
           @group = group
           Records.membershipRequests.fetchPendingByGroup(group.key, per: 100)
           Records.membershipRequests.fetchPreviousByGroup(group.key, per: 100)
+          Records.view
+            name: "membershipRequestsFor#{@group.id}"
+            collections: ['membershipRequests']
+            query: (store) =>
+              @pendingRequests = @group.pendingMembershipRequests()
+              @previousRequests = @group.previousMembershipRequests()
         else
           EventBus.$emit 'pageError', {status: 403}
       , (error) ->
@@ -69,18 +79,10 @@ export default
       Records.membershipRequests.ignore(membershipRequest).then =>
         @init()
         Flash.success "membership_requests_page.messages.request_ignored_success"
+
   computed:
-    pendingRequests: ->
-      @group.pendingMembershipRequests()
+    isEmptyGroup: -> isEmpty @group
 
-    previousRequests: ->
-      @group.previousMembershipRequests()
-
-    noPendingRequests: ->
-      @pendingRequests.length == 0
-
-    isEmptyGroup: ->
-      _isEmpty @group
 </script>
 
 <template lang="pug">
@@ -91,7 +93,7 @@ export default
       group-theme(:group='group')
       .membership-requests-page__pending-requests
         h2.lmo-h2(v-t="'membership_requests_page.heading'")
-        ul(v-if='group.hasPendingMembershipRequests()')
+        ul(v-if='pendingRequests.length')
           li.lmo-flex.membership-requests-page__pending-request(layout='row', v-for='request in pendingRequests', :key='request.id')
             user-avatar.lmo-margin-right(:user='request.actor()', size='medium')
             .lmo-flex(layout='column')
@@ -104,10 +106,10 @@ export default
               .membership-requests-page__actions
                 v-btn.membership-requests-page__ignore(@click='ignore(request)', v-t="'membership_requests_page.ignore'")
                 v-btn.md-primary.md-raised.membership-requests-page__approve(@click='approve(request)', v-t="'membership_requests_page.approve'")
-        .membership-requests-page__no-pending-requests(v-if='!group.hasPendingMembershipRequests()', v-t="'membership_requests_page.no_pending_requests'")
+        .membership-requests-page__no-pending-requests(v-if='pendingRequests.length == 0', v-t="'membership_requests_page.no_pending_requests'")
       .membership-requests-page__previous-requests
         h3.lmo-card-heading(v-t="'membership_requests_page.previous_requests'")
-        ul(v-if='group.hasPreviousMembershipRequests()')
+        ul(v-if='previousRequests.length')
           li.lmo-flex.membership-requests-page__previous-request(layout='row', v-for='request in previousRequests', :key='request.id')
             user-avatar.lmo-margin-right(:user='request.actor()', size='medium')
             .lmo-flex(layout='column')
@@ -119,6 +121,6 @@ export default
                 span ·
                 time-ago(:date='request.respondedAt')
               .membership-requests-page__previous-request-introduction {{request.introduction}}
-        .membership-requests-page__no-previous-requests(v-if='!group.hasPreviousMembershipRequests()', v-t="'membership_requests_page.no_previous_requests'")
+        .membership-requests-page__no-previous-requests(v-if='previousRequests.length == 0', v-t="'membership_requests_page.no_previous_requests'")
 
 </template>
