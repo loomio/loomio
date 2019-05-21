@@ -61,7 +61,7 @@ es:
     dot_vote: Asignación por puntos
     meeting: Votación de horarios
     ranked_choice: Opción priorizada
-    score: Valoración
+    score: Encuesta de puntuación
   timezones:
     local: Hora local ({{value}})
   common:
@@ -536,6 +536,7 @@ es:
     discussion_header: 'Historial de revisión de la discusión '
     comment_header: Historial de revisión del comentario
     poll_header: Historial de revisión de la encuesta
+    stance_header: Historial de revisión de posturas
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited_by: 'Editado por <strong>{{name}}</strong>'
     posted: Enviado
@@ -696,6 +697,7 @@ es:
   group_export_modal:
     title: Exportar la data grupal
     submit: Iniciar la exportación
+    flash: Iniciada la exportación de datos del grupo
   group_features:
     useAnonymous: 'Activar votos anónimos '
     nested_comments: Activar comentarios agrupados
@@ -884,6 +886,7 @@ es:
     deactivate_account: 'Desactiva cuenta'
     help_translate: "Ayúdanos a traducir Loomio"
   text_editor:
+    select_text_to_link: Selecciona algún texto para el enlace
     insert_link: Inserte un enlace
   change_picture_form:
     aria_label: 'Formulario de cambio de imagen'
@@ -923,6 +926,7 @@ es:
   email_settings_page:
     header: Ajustes de correo
     email_newsletter: Boletín de noticias de Loomio
+    email_newsletter_description: "Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año."
     daily_summary_label: Correo electrónico de resumen diario
     daily_summary_description: "Cada mañana, recibirás un correo electrónico con la actividad no leída el día anterior. Este correo electrónico facilita  el estar al día con la actividad."
     on_participation_label: 'Suscribirte a la participación '
@@ -944,6 +948,7 @@ es:
   dashboard_page:
     aria_label: 'Escritorio'
     no_groups:
+      show_all: Bienvenido! Todavía no eres miembro de ningún grupo. <a href="/explore"> Explora grupos públicos</a> o <a href="/g/new"> comienza un grupo</a>.
       show_muted: No tienes ningún hilo silenciado porque no eres miembro de ningún grupo.
     no_threads:
       show_all: No tienes ningún hilo reciente.
@@ -1003,6 +1008,12 @@ es:
       or: 'o '
       join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.   '
   discussion:
+    max_threads_reached: |
+        <p>Has usado todos {{maxThreads}} los hilos disponibles en este grupo.</p>
+        <p>Siguiente paso, <a href="{{upgradeUrl}}" target="_blank">elije un plan</a>para continuar participando en Loomio.</p>
+    subscription_canceled: |
+        <p>Lo sentimos! Tu subscripción no está activa.</p>
+        <p>Por favor <a href="{{upgradeUrl}}" target="_blank"> actualiza </a> para continuar usando Loomio.</p>
     activity: 'Actividad'
     activity_placeholder: 'No hay actividad todavía'
     load_previous: 'Cargar actividad más reciente'
@@ -1121,16 +1132,22 @@ es:
     description_private_title: 'actualizó el título, el contexto y la privacidad del hilo'
   contact_message_form:
     title: "¡Hola! ¿Cómo podemos ayudarle?"
+    read_the_manual: |
+        ¿Has visto nuestro <a href="{{link}}" target="_blank">Manual de Ayuda</a>? Lo actualizamos a menudo con preguntas y respuestas más comunes.
+    contact_us_email: "También puedes enviarnos un email: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Contáctanos'
     name_label: 'Su nombre'
     name_placeholder: 'Introduzca su nombre...'
     subject_label: "Asunto"
+    subject_placeholder: |
+        Ej: Problemas para iniciar sesión o una sugerencia distintiva
     email_label: 'Su correo electrónico'
     email_placeholder: 'Introduzca su correo electrónico...'
     message_label: 'Su mensaje'
     message_placeholder: 'Si solicita ayuda, intente dar tanta información como sea posible.'
     send_message: 'Enviar mensaje'
     new_contact_message: "Gracias por contactarnos, te responderemos en breve"
+    success: "Gracias por tu mensaje,{{nombre}}. Nos pondremos en contacto contigo."
   hint:
     context: 'Consejos para usar el panel de contexto'
     discussion: 'Consejos para empezar una discusión participativa'
@@ -1192,10 +1209,11 @@ es:
       success: "'{{name}}' ya no puede usar su cuenta."
   decision_tools_card:
     title: Herramientas para decisiones
+    help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda</a>
     proposal_title: Propuesta
     count_title: Comprobación
     poll_title: 'Encuesta '
-    score_title: Valoración
+    score_title: Encuesta de puntuación
     dot_vote_title: Voto de Punto
     meeting_title: Coordinar horario
     ranked_choice_title: Opción priorizada
@@ -1312,7 +1330,7 @@ es:
     ranked_choice_closed: Encuesta de opción priorizada ha cerrado
   poll_common_reopen_form:
     title: 'Reabrir una decisión cerrada '
-    helptext: ¿Una decisión cerró antes de que contestaran? Reábrala para poder recoger más posicionamientos del grupo
+    helptext: ¿Se cerró una decisión antes de estar listos? Reábrala para poder recoger más posicionamientos del grupo.
     proposal_reopened: Propuesta reabierta
     poll_reopened: Encuesta reabierta
     count_reopened: Comprobación reabierta
@@ -1380,6 +1398,8 @@ es:
     closed: 'Cerrado '
     start: Iniciar
     update: Actualizar
+    loomio_school_link: |
+        <p>Descubre más en <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda Loomio</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
         <p>Una propuesta es una herramienta para buscar el acuerdo colectivo sobre una declaración o curso de acción</p>
@@ -1442,8 +1462,18 @@ es:
     dot_vote_created: Voto de punto creado
     dot_vote_updated: Voto de punto actualizado
   poll_score_form:
+    tool_tip_expanded: |
+        <p>La encuesta de puntuación permite a la gente expresar su grado de preferencia para cada opción.</p>
+        <p>La puntuación total de cada opción se muestra como parte de los resultados.</p>
+    tool_tip_collapsed: Puntúa cada opción
+    start_header: Comienza la encuesta de puntuación
+    edit_header: Edita la encuesta de puntuación
+    tip: Puntúa cada opción
+    title_placeholder: 'Ej: Puntúa los candidatos en una escala del 0 al 9'
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
     add_option_placeholder: Agregar opción
+    score_created: Se ha creado la encuesta de puntuación
+    score_updated: Se ha actualizado la encuesta de puntuación
   poll_meeting_form:
     tool_tip_expanded: |
         <p>Usa una coordinación de horario para saber cuándo hay disponibilidad de la gente para reunirse.</p>
@@ -1608,9 +1638,13 @@ es:
     invalid_email: "Lo lamentamos, eso no parece una dirección de correo electrónico válida"
     invalid_password: "Lo lamentamos, esa contraseña no coincide con la que tenemos archivada"
     invalid_token: "Perdón pero no pudimos usar ese enlace para que ingreses. Haz clic debajo para que te enviemos uno nuevo"
+    account_locked: "Tu cuenta se ha bloqueado después de demasiados intentos fallidos para acceder. Consulta tu email para un enlace de desbloqueo."
     email_not_found: "Lo lamentamos, no pudimos encontrar una cuenta con esa dirección de correo electrónico"
     email_placeholder: correo@dominio.com
+    login_with_token: Ya está todo listo! Haz click en el enlace de abajo para continuar
+    login_link_helptext: Haz click en el botón de abajo y te enviaremos un enlace para iniciar sesión.
     login_link_helptext_with_password: "Introduzca su contraseña, o inicie sesión con un correo electrónico."
+    check_spam_folder: Si no te llega el email pronto consulta la carpeta de correo spam.
     sign_up_helptext: Porfavor completa este formulario para crear una cuenta de usuario
     i_accept: "Acepto los <a href='{{termsUrl}}' target='_blank'>Términos del servicio</a> y la <a href='{{privacyUrl}}' target='_blank'>Política de privacidad</a>"
     name_required: Por favor ingresa un nombre
@@ -1621,6 +1655,7 @@ es:
     welcome_back: Bienvenido nuevamente, {{name}}!
     login_link: Entra a través de un correo electrónico
     set_password: Configura la contraseña
+    set_password_helptext: ¿Quieres usar una contraseña la próxima vez?
     hello: "Hola, {{name}}!"
     new_to_loomio: ¿Primera vez en {{site_name}}? Crea una nueva cuenta
     create_account: Crear una cuenta
@@ -1639,10 +1674,27 @@ es:
     password: Contraseña
     reactivate: 'Reactiva la cuenta '
   install_microsoft:
+    modal_title: Instala Equipos de Microsoft
     card:
+      install_title: Conecta a Equipos de Microsoft
+      install_helptext: El robot de Loomio notifica a tu equipo acerca de discusiones y decisiones en Loomio.
+      installed_title: Conectado a los Equipos de Microsoft
+      installed_helptext: Se enviarán eventos de este grupo a tu Equipo de Microsoft.
+      install_microsoft: Conecta equipos
       remove_identity: Eliminar esta integración
+      confirm_remove_title: Elimina Equipos de Microsoft
+      confirm_remove_helptext: |
+          Tu canal de equipos de microsoft ya no recibirá actualizaciones del grupo.
+          Siempre puedes retroceder y añadirlo de nuevo.
       identity_removed: 'Integración eliminada '
+    form:
+      webhook_label: Webhook URL
+      webhook_installed: Conectado a los Equipos de Microsoft
+      webhook_placeholder: https://outlook.office.com/...
+      event_kind_helptext: ¿Que eventos se deberían publicar en el canal de los equipos?
     event_kinds:
+      new_discussion: Se ha iniciado un nuevo hilo
+      new_comment: Se ha hecho un nuevo comentario
       poll_created: 'Se '
       stance_created: Se ha emitido un nuevo voto
       poll_closing_soon: Una encuesta está próxima a expirar

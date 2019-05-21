@@ -1,6 +1,7 @@
 it:
   current_plan_button:
     upgrade: Aggiorna
+    tooltip: Acquista un abbonamento a Loomio per invitare più persone ed iniziare più discussioni.
   loomio_tags:
     tags: Etichette
     apply_tags: Inserisci etichette
@@ -16,6 +17,8 @@ it:
     helptext: 'Le etichette ti permettono di categorizzare le conversazioni e trovarle facilmente dopo '
     discussions_count_singular: ({{count}} discussione)
     discussions_count_plural: ({{count}} discussioni)
+    tag_created: Etichetta salvata
+    tag_destroyed: Etichetta rimossa
     tags_marked: Discussioni marcate con '{{name}}' nel gruppo {{groupName}}
     no_tags_present: 'Non è stata trovata nessuna discussione con questa etichetta!  '
   reactions:
@@ -152,6 +155,7 @@ it:
       resent: Invito reinviato
       export: Esporta
       fork: Biforca
+      apply: Applica
     formatting_help:
       label: 'Formattazione'
       title: 'Impara come usare il Markdown per formattare il tuo testo'
