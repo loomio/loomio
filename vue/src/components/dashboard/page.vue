@@ -5,8 +5,8 @@ import Session            from '@/shared/services/session'
 import EventBus           from '@/shared/services/event_bus'
 import AbilityService     from '@/shared/services/ability_service'
 import RecordLoader       from '@/shared/services/record_loader'
-import ThreadQueryService from '@/shared/services/thread_query_service'
-import GroupModalMixin from '@/mixins/group_modal.coffee'
+import ThreadFilter       from '@/shared/services/thread_filter'
+import GroupModalMixin    from '@/mixins/group_modal.coffee'
 import { capitalize, take, keys, every } from 'lodash'
 
 export default
@@ -15,34 +15,12 @@ export default
     dashboardLoaded: Records.discussions.collection.data.length > 0
     filter: @$route.params.filter || 'hide_muted'
     views:
-      proposals: ThreadQueryService.queryFor
-        name:    @viewName("proposals")
-        filters: @filters('show_proposals')
-      today:     ThreadQueryService.queryFor
-        name:    @viewName("today")
-        from:    '1 second ago'
-        to:      '-10 year ago' # into the future!
-        filters: @filters('hide_proposals')
-      yesterday: ThreadQueryService.queryFor
-        name:    @viewName("yesterday")
-        from:    '1 day ago'
-        to:      '1 second ago'
-        filters: @filters('hide_proposals')
-      thisweek: ThreadQueryService.queryFor
-        name:    @viewName("thisWeek")
-        from:    '1 week ago'
-        to:      '1 day ago'
-        filters: @filters('hide_proposals')
-      thismonth: ThreadQueryService.queryFor
-        name:    @viewName("thisMonth")
-        from:    '1 month ago'
-        to:      '1 week ago'
-        filters: @filters('hide_proposals')
-      older: ThreadQueryService.queryFor
-        name:    @viewName("older")
-        from:    '3 month ago'
-        to:      '1 month ago'
-        filters: @filters('hide_proposals')
+      proposals: []
+      today: []
+      yesteday: []
+      thisweek: []
+      thismonth: []
+      older: []
     loader: new RecordLoader
       collection: 'discussions'
       path: 'dashboard'
@@ -60,6 +38,19 @@ export default
         # filter: $routeParams.filter
       @loader.fetchRecords().then => @dashboardLoaded = true
       @openStartGroupModal() if @promptStart
+
+      Records.view
+        name: "dashboard"
+        collections: ['discussions']
+        query: (store) =>
+          @views.proposals = ThreadFilter(store, filters: @filters('show_proposals'))
+          @views.today     = ThreadFilter(store, filters: @filters('hide_proposals'), from: '1 second ago', to: '-10 year ago')
+          @views.yesterday = ThreadFilter(store, filters: @filters('hide_proposals'), from: '1 day ago',    to: '1 second ago')
+          @views.thisweek  = ThreadFilter(store, filters: @filters('hide_proposals'), from: '1 week ago',   to: '1 day ago')
+          @views.thismonth = ThreadFilter(store, filters: @filters('hide_proposals'), from: '1 month ago',  to: '1 week ago')
+          @views.older     = ThreadFilter(store, filters: @filters('hide_proposals'), from: '3 month ago',  to: '1 month ago')
+          console.log @proposals
+
     viewName: (name) ->
       if @filter == 'show_muted'
         "dashboard#{capitalize(name)}Muted"
@@ -68,11 +59,12 @@ export default
 
     filters: (filters) ->
       ['only_threads_in_my_groups', 'show_opened', @filter].concat(filters)
+
   computed:
     titleKey: ->
-      # if @filter == 'show_muted'
-      #   'dashboard_page.filtering.muted'
-      # else
+      if @filter == 'show_muted'
+        'dashboard_page.filtering.muted'
+      else
       'dashboard_page.filtering.all'
 
     viewNames: -> keys(@views)
@@ -80,7 +72,7 @@ export default
     noGroups: -> !Session.user().hasAnyGroups()
     promptStart: ->
       @noGroups && AbilityService.canStartGroups()
-    noThreads: -> every @views, (view) => !view.any()
+    noThreads: -> every @views, (view) => view.length == 0
     userHasMuted: -> Session.user().hasExperienced("mutingThread")
     showLargeImage: -> true
 
@@ -105,9 +97,9 @@ v-container.lmo-main-container.dashboard-page
         router-link(to='/dashboard', v-show="filter != 'show_all' && userHasMuted")
           span(v-t="'dashboard_page.view_recent'")
     .dashboard-page__collections(v-if='!noThreads')
-      v-card.mb-3(v-if='views[viewName].any()', :class="'thread-preview-collection__container dashboard-page__' + viewName", v-for='viewName in viewNames' :key='viewName')
+      v-card.mb-3(v-if='views[viewName].length', :class="'thread-preview-collection__container dashboard-page__' + viewName", v-for='viewName in viewNames' :key='viewName')
         v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
-        thread-preview-collection.thread-previews-container(:query='views[viewName]')
+        thread-preview-collection.thread-previews-container(:threads='views[viewName]')
       .dashboard-page__footer(v-if='!loader.exhausted', in-view='$inview && loader.loadMore()', in-view-options='{debounce: 200}')  
       loading(v-show='loader.loading')
 </template>

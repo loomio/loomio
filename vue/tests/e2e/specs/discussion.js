@@ -43,8 +43,8 @@ module.exports = {
     page.loadPath('setup_open_and_closed_discussions')
     page.expectText('.discussions-card__header', 'Open threads')
     page.expectText('.discussions-card__header', '1 Closed')
-    page.expectNoText('.thread-preview__title', 'This thread is old and closed')
-    page.expectText('.thread-preview__title', 'What star sign are you?')
+    page.expectNoText('.discussions-card', 'This thread is old and closed')
+    page.expectText('.discussions-card', 'What star sign are you?')
 
     // TODO: GK: the thread query service needs an overhaul
 

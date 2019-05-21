@@ -3,11 +3,12 @@ import Records            from '@/shared/services/records'
 import AbilityService     from '@/shared/services/ability_service'
 import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
-import ThreadQueryService from '@/shared/services/thread_query_service'
+import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
-import { isEmpty, map, throttle } from 'lodash'
+import { map, throttle } from 'lodash'
 import Session from '@/shared/services/session'
+
 
 
 export default
@@ -16,20 +17,22 @@ export default
     group: Object
   mounted: ->
     @loader.fetchRecords()
-    # EventBus.listen this, 'subgroupsLoaded', -> @init(@filter)
+    # EventBus.$on this, 'subgroupsLoaded', -> @init(@filter)
     applyLoadingFunction(this, 'searchThreads')
+    Records.view
+      name: "group_#{@group.key}_pinned"
+      collections: ['discussions', 'groups']
+      query: @filterPinned
+
+    Records.view
+      name: "group_#{@group.key}_unpinned"
+      collections: ['discussions', 'groups']
+      query: @filterDiscussions
+
   data: ->
     filter: @$route.params.filter or 'show_opened'
-    pinned: ThreadQueryService.queryFor
-      name: "group_#{@group.key}_pinned"
-      group: @group
-      filters: ['show_pinned', @filter]
-      # overwrite: true
-    discussions: ThreadQueryService.queryFor
-      name: "group_#{@group.key}_unpinned"
-      group: @group
-      filters: ['hide_pinned', @filter]
-      # overwrite: true
+    pinned: []
+    discussions: []
     loader: new RecordLoader
       collection: 'discussions'
       params:
@@ -39,9 +42,15 @@ export default
     searched: {}
     fragment: ''
     discussionStartIsOpen: false
+
   methods:
+    filterDiscussions: ->
+      @discussions = ThreadFilter(Records, filters: ['hide_pinned', @filter])
+    filterPinned: ->
+      @pinned = ThreadFilter(Records, filters: ['show_pinned', @filter])
+
     searchThreads: throttle ->
-      return Promise.resolve(true) unless !isEmpty @fragment
+      return Promise.resolve(true) unless @fragment.length
       Records.discussions.search(@group.key, @fragment).then (data) =>
         @searched = Object.assign {}, @searched, ThreadQueryService.queryFor
           name: "group_#{@group.key}_searched"
@@ -55,13 +64,15 @@ export default
 
     openSearch: ->
       @searchOpen = true
+
     closeSearch: ->
       @fragment = ''
       @searchOpen = false
+
     setFilter: (newFilter) ->
       @filter = newFilter
-    isEmpty: (o) ->
-      isEmpty(o)
+      @filterPinned()
+      @filterDiscussions()
 
     closeDiscussionStart: ->
       @discussionStartIsOpen = false
@@ -73,26 +84,31 @@ export default
     isLoggedIn: ->
       console.log 'change in login status'
       @loader.fetchRecords()
+
   computed:
     loading: ->
       @loader.loadingFirst || @searchThreadsExecuting
+
     noThreads: ->
       return if @loading
-      if !@isEmpty @fragment
-        @isEmpty @searched || !@searched.any()
+      if @fragment.length
+        @searched.length == 0
       else
-        !@discussions.any() && !@pinned.any()
+        (@discussions.length + @pinned.length) == 0
+
     canViewPrivateContent: ->
       AbilityService.canViewPrivateContent(@group)
+
     canStartThread: ->
       AbilityService.canStartThread(@group)
+
     isLoggedIn: ->
       Session.isSignedIn()
 
 </script>
 
 <template lang="pug">
-v-card.discussions-card(aria-labelledby='threads-card-title', v-if='discussions')
+v-card.discussions-card(aria-labelledby='threads-card-title')
   .discussions-card__header
     h3#threads-card-title.discussions-card__title.lmo-card-heading(v-if='!searchOpen')
       span(v-if="filter == 'show_opened'", v-t="{ path: 'group_page.open_discussions' }")
@@ -110,17 +126,17 @@ v-card.discussions-card(aria-labelledby='threads-card-title', v-if='discussions'
     .discussions-card__list--empty(v-if='noThreads')
       p.lmo-hint-text(v-t="{ path: 'group_page.no_threads_here' }")
       p.lmo-hint-text(v-if='!canViewPrivateContent', v-t="{ path: 'group_page.private_threads' }")
-    .discussions-card__list(v-if='isEmpty(fragment)')
-      section.thread-preview-collection__container(v-if='discussions.any() || pinned.any()')
-        thread-preview-collection.thread-previews-container--pinned(v-if='pinned.any()', :query='pinned', :limit='loader.numRequested', order='title')
-        thread-preview-collection.thread-previews-container--unpinned(v-if='discussions.any()', :query='discussions', :limit='loader.numRequested')
+    .discussions-card__list(v-if='fragment.length == 0')
+      section.thread-preview-collection__container(v-if='discussions.length || pinned.length')
+        thread-preview-collection.thread-previews-container--pinned(v-if='pinned.length', :threads='pinned', :limit='loader.numRequested', order='title')
+        thread-preview-collection.thread-previews-container--unpinned(v-if='discussions.length', :threads='discussions', :limit='loader.numRequested')
       .lmo-show-more(v-if='!loader.exhausted && !loader.loadingMore')
         button.discussions-card__show-more(v-show='!loading', @click='loader.loadMore', v-t="{ path: 'common.action.show_more' }")
       .lmo-hint-text.discussions-card__no-more-threads(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
       loading(v-if='loader.loadingMore')
-    .discussions-card__list(v-if='!isEmpty(fragment)')
-      section.thread-preview-collection__container(v-if='!isEmpty(searched) && searched.any()')
-        thread-preview-collection.thread-previews-container--searched(:query='searched')
+    .discussions-card__list(v-if='fragment.length')
+      section.thread-preview-collection__container(v-if='searched.length')
+        thread-preview-collection.thread-previews-container--searched(:threads='searched')
     loading(v-show='loading')
 </template>
 
