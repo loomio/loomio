@@ -16,7 +16,7 @@ module.exports = {
 
     page.loadPath('setup_closed_group_to_join')
     page.expectText('.description-card__text', 'An FBI agent goes undercover')
-    page.expectText('.thread-preview__text-container', "The name's Johnny Utah!")
+    page.expectText('.thread-previews', "The name's Johnny Utah!")
     page.expectText('.subgroups-card', 'Johnny Utah')
   },
 
