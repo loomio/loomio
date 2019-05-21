@@ -78,7 +78,6 @@ module.exports = {
     page.click('.profile-page__change-password')
     page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
     page.fillIn('.change-password-form__password-confirmation input', 'SmishDemBorries') // TODO: GK: inputs not working properly
-    page.pause(100000)
     page.click('.change-password-form__submit')
     page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match")
   },
@@ -93,7 +92,7 @@ module.exports = {
     page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
     page.fillIn('.change-password-form__password-confirmation input', 'SmushDemBerries') // TODO: GK: inputs not working properly
     page.click('.change-password-form__submit')
-    page.expectFlash('Your password has been set')
+    page.expectFlash('Your password has been updated')
   },
 
   'successfully_deactivates_the_account': (test) => {

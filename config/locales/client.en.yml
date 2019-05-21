@@ -986,14 +986,10 @@ en:
     use_uploaded: 'Upload new picture'
 
   change_password_form:
-    set_password_title: Set a password
-    change_password_title: Change your password
-    set_password_helptext: Please enter a password to log in with - minimum 8 characters
-    change_password_helptext: Forgotten your password or want to change it? Simply enter a new password here.
+    set_password_title: Set your password
+    set_password_helptext: Please enter a password - minimum 8 characters
     set_password: Set password
-    change_password: Change password
     password_changed: Your password has been updated
-    password_set: Your password has been set
 
   deactivation_modal:
     aria_label: 'Deactivate account'

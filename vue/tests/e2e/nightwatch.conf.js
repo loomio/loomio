@@ -1,6 +1,12 @@
 var selenium = require('selenium-server-standalone-jar');
 var chromedriver = require('chromedriver');
 
+var chromeOptions = []
+if (process.env.TRAVIS_MODE) {
+  console.log("WORD UP!!!!!!!!! running in HEADLESS MODE")
+  chromeOptions = [ "headless" ]
+}
+
 module.exports = {
   src_folders: ['./tests/e2e/specs'],
   output_folder: './tests/reports',
@@ -27,20 +33,10 @@ module.exports = {
       selenium_host: 'localhost',
       desiredCapabilities: {
         browserName: 'chrome',
+        chromeOptions : { args: chromeOptions },
         javascriptEnabled: true,
         acceptSslCerts: true
       },
-    }
-  },
-  "chrome" : {
-    "desiredCapabilities" : {
-      "browserName" : "chrome",
-      "chromeOptions" : {
-        "args" : [
-          "use-fake-device-for-media-stream",
-          "use-fake-ui-for-media-stream"
-        ]
-      }
     }
   }
 };
