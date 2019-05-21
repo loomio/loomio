@@ -8,6 +8,8 @@ import { take } from 'lodash'
 export default
   props:
     model: Object
+  data: ->
+    polls: []
   created: ->
     applyLoadingFunction @, 'fetchRecords'
     @init()

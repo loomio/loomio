@@ -18,6 +18,6 @@ export default
 </script>
 
 <template lang="pug">
-v-list.thread-previews(two-line)
+v-list.thread-previews(three-line)
   thread-preview(v-for="thread in orderedThreads", :key="thread.id", :thread="thread")
 </template>

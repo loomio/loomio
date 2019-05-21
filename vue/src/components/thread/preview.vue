@@ -109,17 +109,15 @@ export default
   data: ->
     dthread: @thread
   methods:
-    dismiss: -> ThreadService.dismiss(this.thread)
-    muteThread: -> ThreadService.mute(this.thread)
-    unmuteThread: -> ThreadService.unmute(this.thread)
-  computed:
-    threadUrl: -> "/d/#{this.thread.key}"
+    dismiss: -> ThreadService.dismiss(@thread)
+    muteThread: -> ThreadService.mute(@thread)
+    unmuteThread: -> ThreadService.unmute(@thread)
   mounted: ->
     console.log 'thread', @thread
 </script>
 
 <template lang="pug">
-v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)', md-colors="{'border-color': 'primary-500'}", :class="{'thread-preview__link--unread': thread.isUnread()}")
+v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)')
   v-list-tile-avatar
     user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium')
     poll-common-chart-preview(v-if='thread.activePoll()', :poll='thread.activePoll()')
@@ -131,13 +129,16 @@ v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)', md-colors=
       span.thread-preview__group-name {{ thread.group().fullName }} ·
       time-ago(:date='thread.lastActivityAt')
       .lmo-badge.lmo-pointer(v-if='thread.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}", v-t="'common.privacy.closed'")
+  v-list-tile-action
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")
-      v-icon mdi-pin
-    .thread-preview__actions.lmo-hide-on-xs(v-if='thread.discussionReaderId')
-      v-btn.md-raised.thread-preview__dismiss(@click='dismiss()', v-show='thread.isUnread()', :class='{disabled: !thread.isUnread()}', :title="$t('dashboard_page.dismiss')")
-        v-icon.mdi mdi-check
-      v-btn.md-raised.thread-preview__mute(@click='muteThread()', v-show='!thread.isMuted()', :title="$t('volume_levels.mute')")
-        v-icon.mdi mdi-volume-mute
-      v-btn.md-raised.thread-preview__unmute(@click='unmuteThread()', v-show='thread.isMuted()', :title="$t('volume_levels.unmute')")
-        v-icon.mdi mdi-volume-plus
+      v-icon mdi-pin)
+  v-list-tile-action(v-if='thread.discussionReaderId')
+    v-btn.thread-preview__dismiss(@click.prevent='dismiss()' icon flat v-show='thread.isUnread()' :class='{disabled: !thread.isUnread()}' :title="$t('dashboard_page.dismiss')")
+      v-icon.mdi mdi-check
+  v-list-tile-action(v-if='thread.discussionReaderId')
+    v-btn.thread-preview__mute(@click.prevent='muteThread()' icon flat v-show='!thread.isMuted()' :title="$t('volume_levels.mute')")
+      v-icon.mdi mdi-volume-mute
+  v-list-tile-action(v-if='thread.discussionReaderId')
+    v-btn.thread-preview__unmute(@click.prevent='unmuteThread()' icon flat v-show='thread.isMuted()' :title="$t('volume_levels.unmute')")
+      v-icon.mdi mdi-volume-plus
 </template>
