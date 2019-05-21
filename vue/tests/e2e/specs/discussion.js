@@ -198,12 +198,12 @@ module.exports = {
 
     page.loadPath('view_open_group_as_non_member')
 
-    page.click('.thread-preview__link')
+    page.click('.thread-preview__link', 500)
     page.click('.join-group-button__join-group')
     page.expectFlash('You are now a member of Open Dirty Dancing Shoes')
 
     page.fillIn('.comment-form .ProseMirror', 'I am new!')
-    page.click('.comment-form__submit-button')
+    page.click('.comment-form__submit-button', 500)
     page.expectFlash('Comment added')
   },
 
