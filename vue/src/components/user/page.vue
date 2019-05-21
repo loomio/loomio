@@ -30,22 +30,33 @@ export default
     urlFor,
     UserModalMixin
   ]
+
   data: ->
     user: {}
     isMembershipsFetchingDone: false
+    groups: []
+
   created: ->
     # applyLoadingFunction(@, 'loadGroupsFor')
-    @setUser()
-    Records.users.findOrFetchById(@$route.params.key).then @setUser, (error) ->
+    @init()
+    Records.users.findOrFetchById(@$route.params.key).then @init, (error) ->
       # EventBus.broadcast $rootScope, 'pageError', error
+
   methods:
-    setUser: ->
+    init: ->
       if @user = (Records.users.find(@$route.params.key) or Records.users.find(username: @$route.params.key))[0]
-      # EventBus.broadcast $rootScope, 'currentComponent', {title: @user.name, page: 'userPage'}
+        EventBus.$emit 'currentComponent', {title: @user.name, page: 'userPage'}
         @loadGroupsFor(@user)
+        Records.view
+          name: "userPageGroups#{@user.id}"
+          collections: ['groups', 'memberships']
+          query: (store) =>
+            console.log('hi', @user.formalGroups())
+            @groups = @user.formalGroups()
 
     loadGroupsFor: (user) ->
       Records.memberships.fetchByUser(user)
+
   computed:
     canContactUser: ->
       AbilityService.canContactUser(@user)
@@ -53,8 +64,6 @@ export default
     isEmptyUser: ->
       _isEmpty @user
 
-    orderedFormalGroups: ->
-      _sortBy @user.formalGroups(), 'fullName'
 </script>
 
 <template lang="pug">
@@ -76,7 +85,7 @@ export default
           .user-page__groups
             h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
             v-list
-              v-list-tile.user-page__group.lmo-flex.lmo-flex__center(v-for='group in user.formalGroups()', :key='group.id')
+              v-list-tile.user-page__group.lmo-flex.lmo-flex__center(v-for='group in groups', :key='group.id')
                 img.md-avatar.lmo-box--small.lmo-margin-right(:src='group.logoUrl()')
                 router-link(:to='urlFor(group)') {{group.fullName}}
             // <loading v-if="loadGroupsForExecuting"></loading>

@@ -225,7 +225,7 @@ module.exports = {
 
     page.loadPath('view_closed_group_as_non_member')
     page.click('.thread-preview__link')
-    page.click('.join-group-button__ask-to-join-group')
+    page.click('.join-group-button__ask-to-join-group', 1000)
     page.click('.membership-request-form__submit-btn')
     page.expectFlash('You have requested membership to Closed Dirty Dancing Shoes')
   },

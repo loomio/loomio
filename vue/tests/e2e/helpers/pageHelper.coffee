@@ -1,7 +1,7 @@
-if process.env.RAILS_ENV == 'development'
-  base_url = "http://localhost:8080"
-else
+if process.env.RAILS_ENV == 'test'
   base_url = "http://localhost:3000"
+else
+  base_url = "http://localhost:8080"
 
 module.exports = (test) ->
   refresh: ->
@@ -9,7 +9,7 @@ module.exports = (test) ->
 
   loadPath: (path, opts = {}) ->
     test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}?vue=1"
-    test.waitForElementVisible('main', 10000)
+    test.waitForElementVisible('main', 20000) # TODO should be 10K max
 
   goTo: (path) ->
     test.url "#{base_url}/#{path}"
