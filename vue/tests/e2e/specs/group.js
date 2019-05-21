@@ -174,17 +174,18 @@ module.exports = {
     page.expectText('.description-card__text', 'Dusty sandles')
   },
 
-  'displays_a_validation_error_when_name_is_blank': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group')
-    page.click('.group-page-actions__button')
-    page.click('.group-page-actions__edit-group-link')
-    page.fillIn('.group-form__name input', '') // TODO: GK: setValue is not clearing the input
-    page.click('.group-form__submit-button')
-    page.pause()
-    page.expectText('.lmo-validation-error', "can't be blank")
-  },
+  // TODO reenable when clearValue bug is fixed
+  // 'displays_a_validation_error_when_name_is_blank': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_group')
+  //   page.click('.group-page-actions__button')
+  //   page.click('.group-page-actions__edit-group-link')
+  //   page.fillIn('.group-form__name input', '') // TODO: GK: setValue is not clearing the input
+  //   page.click('.group-form__submit-button')
+  //   page.pause()
+  //   page.expectText('.lmo-validation-error', "can't be blank")
+  // },
 
   'can_be_a_very_open_group': (test) => {
     page = pageHelper(test)
@@ -334,6 +335,7 @@ module.exports = {
     page.expectNoElement('.subgroups-card__start')
     page.expectNoElement('.discussions-card__new-thread-button')
     page.expectNoElement('.membership-card__invite')
+    page.pause(10000)
     page.click('.poll-common-preview')
     page.expectNoElement('.poll-common-vote-form__submit')
   },

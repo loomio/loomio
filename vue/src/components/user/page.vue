@@ -35,6 +35,7 @@ export default
     user: {}
     isMembershipsFetchingDone: false
     groups: []
+    canContactUser: false
 
   created: ->
     # applyLoadingFunction(@, 'loadGroupsFor')
@@ -51,16 +52,13 @@ export default
           name: "userPageGroups#{@user.id}"
           collections: ['groups', 'memberships']
           query: (store) =>
-            console.log('hi', @user.formalGroups())
             @groups = @user.formalGroups()
+            @canContactUser = AbilityService.canContactUser(@user)
 
     loadGroupsFor: (user) ->
       Records.memberships.fetchByUser(user)
 
   computed:
-    canContactUser: ->
-      AbilityService.canContactUser(@user)
-
     isEmptyUser: ->
       _isEmpty @user
 
