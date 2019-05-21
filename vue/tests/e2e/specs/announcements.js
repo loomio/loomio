@@ -6,6 +6,7 @@ module.exports = {
     page = pageHelper(test)
     page.loadPath('setup_group')
     page.click('.membership-card__invite')
+    page.pause(500)
     page.fillIn('.announcement-form__input input', 'test@example.com') // TODO: GK: inconsistent behaviour
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
@@ -47,6 +48,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.click('.membership-card__invite')
     page.expectElement('.announcement-form')
+    page.pause(500)
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
@@ -65,6 +67,7 @@ module.exports = {
     page.click('.poll-common-form__submit')
     page.expectFlash('Proposal started')
     page.expectElement('.announcement-form')
+    page.pause(500)
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')

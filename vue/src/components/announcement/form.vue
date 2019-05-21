@@ -12,7 +12,6 @@ import {each , sortBy, includes, map, pull, uniq, throttle, debounce} from 'loda
 import { submitForm } from '@/shared/helpers/form'
 
 
-
 export default
   props:
     announcement: Object

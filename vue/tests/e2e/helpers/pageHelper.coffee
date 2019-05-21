@@ -78,7 +78,7 @@ module.exports = (test) ->
     test.expect.element(selector).text.to.contain(value)
 
   expectFlash: (value, wait) ->
-    test.pause(500)
+    test.pause(1000)
     selector = '.flash-root__message'
     @waitFor(selector, wait)
     test.expect.element(selector).text.to.contain(value)
