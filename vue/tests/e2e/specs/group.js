@@ -284,7 +284,7 @@ module.exports = {
     page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
     page.fillIn('.discussion-form .ProseMirror', "I've had the time of my life")
     page.click('.discussion-form__submit')
-    page.expectText('.flash-root__message',('Thread started'))
+    page.expectFlash("Thread started")
     page.expectText('.context-panel__heading', 'Nobody puts baby in a corner' )
     page.expectText('.context-panel__description', "I've had the time of my life" )
   },
