@@ -43,7 +43,7 @@ module.exports = {
 
     page.loadPath('setup_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectFlash('Signed in successfully', 20000)
+    page.expectFlash('Signed in successfully')
   },
 
   'can_use_a_shareable_link': (test) => {

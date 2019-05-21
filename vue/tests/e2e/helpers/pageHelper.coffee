@@ -1,13 +1,18 @@
+if process.env.RAILS_ENV == 'development'
+  base_url = "http://localhost:8080"
+else
+  base_url = "http://localhost:3000"
+
 module.exports = (test) ->
   refresh: ->
     test.refresh()
 
   loadPath: (path, opts = {}) ->
-    test.url "http://localhost:3000/dev/#{opts.controller || 'nightwatch'}/#{path}?vue=1"
+    test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}?vue=1"
     test.waitForElementVisible('main', 10000)
 
   goTo: (path) ->
-    test.url "http://localhost:3000/#{path}"
+    test.url "#{base_url}/#{path}"
 
   expectCount: (selector, count, wait) ->
     @waitFor(selector, wait)
