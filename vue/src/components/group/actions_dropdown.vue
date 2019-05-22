@@ -3,39 +3,51 @@ import AppConfig      from '@/shared/services/app_config'
 import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
+import ConfirmModalMixin from '@/mixins/confirm_modal'
+import GroupModalMixin from '@/mixins/group_modal'
+import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
+import Flash from '@/shared/services/flash'
 
 export default
+  mixins: [
+    ConfirmModalMixin,
+    GroupModalMixin,
+    ChangeVolumeModalMixin
+  ]
   props:
     group: Object
-  data: ->
-    isGroupExportModalOpen: false
-    isLeaveGroupModalOpen: false
-    isArchiveGroupModalOpen: false
+
   methods:
+    becomeCoordinator: ->
+      membership = @group.membershipFor(Session.user())
+      Records.memberships.makeAdmin(membership).then ->
+        Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
+
     openChangeVolumeForm: ->
-      ModalService.open 'ChangeVolumeForm', model: => @group.membershipFor(Session.user())
+      @openChangeVolumeModal(@group.membershipFor(Session.user()))
 
     editGroup: ->
-      ModalService.open 'GroupModal', group: => @group
+      @openEditGroupModal(@group)
 
     addSubgroup: ->
-      ModalService.open 'GroupModal', group: => Records.groups.build(parentId: @group.id)
+      @openStartSubgroupModal(@group)
 
     openGroupExportModal: ->
-      @isGroupExportModalOpen = true
-    closeGroupExportModal: ->
-      @isGroupExportModalOpen = false
+      @openConfirmModal(@groupExportModalConfirmOpts)
+
     openLeaveGroupModal: ->
-      @isLeaveGroupModalOpen = true
-    closeLeaveGroupModal: ->
-      @isLeaveGroupModalOpen = false
+      @openConfirmModal(@leaveGroupModalConfirmOpts)
+
     openArchiveGroupModal: ->
-      @isArchiveGroupModalOpen = true
-    closeArchiveGroupModal: ->
-      @isArchiveGroupModalOpen = false
+      @openConfirmModal(@archiveGroupModalConfirmOpts)
 
   computed:
+    canBecomeCoordinator: ->
+      membership = @group.membershipFor(Session.user())
+      membership.admin == false &&
+      (membership.group().adminMembershipsCount == 0 or
+      Session.user().isAdminOf(membership.group().parent()))
+
     groupExportModalConfirmOpts: ->
       submit: @group.export
       text:
@@ -51,7 +63,7 @@ export default
         helptext: 'leave_group_form.question'
         confirm:  'leave_group_form.submit'
         flash:    'group_page.messages.leave_group_success'
-      redirect: 'dashboard'
+      redirect: '/dashboard'
 
     archiveGroupModalConfirmOpts: ->
       submit:     @group.archive
@@ -59,7 +71,7 @@ export default
         title:    'archive_group_form.title'
         helptext: 'archive_group_form.question'
         flash:    'group_page.messages.archive_group_success'
-      redirect:   'dashboard'
+      redirect:   '/dashboard'
 
     canExportData: ->
       Session.user().isMemberOf(@group)
@@ -89,24 +101,22 @@ v-menu.group-page-actions.lmo-no-print(offset-y)
     span(v-t="'group_page.options.label'")
     v-icon mdi-chevron-down
   v-list.group-actions-dropdown__menu-content
-    v-list-tile.group-page-actions__edit-group-link(v-if='canEditGroup', @click='editGroup()' v-t="'group_page.options.edit_group'")
+
+    v-list-tile.group-page-actions__edit-group-link(v-if='canEditGroup', @click='editGroup()')
       v-list-tile-title(v-t="'group_page.options.edit_group'")
+
+    v-list-tile.group-page-actions__become-coordinator(v-if='canBecomeCoordinator', @click='becomeCoordinator()')
+      v-list-tile-title(v-t="'group_page.options.become_coordinator'")
+
     v-list-tile.group-page-actions__change-volume-link(v-if='canChangeVolume', @click='openChangeVolumeForm()')
       v-list-tile-title(v-t="'group_page.options.email_settings'")
-      //- <outlet name="after-group-actions-manage-memberships" model="group"></outlet>
-      //- <outlet name="after-group-actions-manage-memberships-2" model="group"></outlet>
+
     v-list-tile.group-page-actions__export-json(v-if='canExportData', @click='openGroupExportModal()')
       v-list-tile-title(v-t="'group_page.options.export_data'")
-    v-dialog(v-model="isGroupExportModalOpen", lazy persistent)
-      confirm-modal(:confirm="groupExportModalConfirmOpts", :close="closeGroupExportModal")
 
     v-list-tile.group-page-actions__leave-group(v-if='canLeaveGroup', @click='openLeaveGroupModal()')
       v-list-tile-title(v-t="'group_page.options.leave_group'")
-    v-dialog(v-model="isLeaveGroupModalOpen", lazy persistent)
-      confirm-modal(:confirm="leaveGroupModalConfirmOpts", :close="closeLeaveGroupModal")
 
     v-list-tile.group-page-actions__archive-group(v-if='canArchiveGroup', @click='openArchiveGroupModal()')
       v-list-tile-title(v-t="'group_page.options.deactivate_group'")
-    v-dialog(v-model="isArchiveGroupModalOpen", lazy persistent)
-      confirm-modal(:confirm="archiveGroupModalConfirmOpts", :close="closeArchiveGroupModal")
 </template>

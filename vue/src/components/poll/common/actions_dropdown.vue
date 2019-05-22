@@ -2,8 +2,10 @@
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
+import PollModalMixin from '@/mixins/poll_modal'
 
 export default
+  mixins: [PollModalMixin]
   props:
     poll: Object
   methods:
@@ -30,13 +32,13 @@ export default
       ModalService.open 'PollCommonShareModal', poll: => @poll
 
     editPoll: ->
-      ModalService.open 'PollCommonEditModal', poll: => @poll
+      @openEditPollModal(@poll)
 
     closePoll: ->
-      ModalService.open 'PollCommonCloseModal', poll: => @poll
+      @openClosePollModal(@poll)
 
     reopenPoll: ->
-      ModalService.open 'PollCommonReopenModal', poll: => @poll
+      @openReopenPollModal(@poll)
 
     deletePoll: ->
       ModalService.open 'PollCommonDeleteModal', poll: => @poll
@@ -46,8 +48,8 @@ export default
 </script>
 
 <template lang="pug">
-v-menu
-  v-btn(flat icon slot="activator")
+v-menu.poll-actions-dropdown
+  v-btn.poll-actions-dropdown__button(flat icon slot="activator")
     .sr-only(v-t="'group_page.options_label'")
     v-icon mdi-chevron-down
   v-list

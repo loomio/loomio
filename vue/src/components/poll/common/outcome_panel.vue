@@ -1,4 +1,6 @@
 <style lang="scss">
+@import 'app.scss';
+@import 'variables.scss';
 .poll-common-outcome-panel__authored-by {
   @include fontSmall;
   color: $grey-on-white;
@@ -11,8 +13,10 @@ import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
+import PollModalMixin from '@/mixins/poll_modal'
 
 export default
+  mixins: [PollModalMixin]
   props:
     poll: Object
   created: ->
@@ -30,7 +34,7 @@ export default
       name: 'edit_outcome'
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canSetPollOutcome(@poll)
-      perform:    => ModalService.open 'PollCommonOutcomeModal', outcome: => @poll.outcome()
+      perform:    => @openPollOutcomeModal(@poll.outcome())
     ,
       name: 'translate_outcome'
       icon: 'mdi-translate'

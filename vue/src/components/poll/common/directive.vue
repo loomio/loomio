@@ -28,6 +28,8 @@ import PollMeetingVoteForm from '@/components/poll/meeting/vote_form.vue'
 import PollMeetingChartPanel from '@/components/poll/meeting/chart_panel.vue'
 import PollMeetingChangeYourVote from '@/components/poll/meeting/change_your_vote.vue'
 import PollMeetingVotesPanelStance from '@/components/poll/meeting/votes_panel_stance.vue'
+import PollCommonVotesPanel from '@/components/poll/common/votes_panel.vue'
+import PollRankedChoiceChartPanel from '@/components/poll/ranked_choice/chart_panel'
 
 export default
   components:
@@ -60,6 +62,9 @@ export default
     'poll-meeting-chart-panel': PollMeetingChartPanel
     'poll-meeting-change-your-vote': PollMeetingChangeYourVote
     'poll-meeting-votes-panel-stance': PollMeetingVotesPanelStance
+    'poll-common-votes-panel': PollCommonVotesPanel
+    'poll-ranked_choice-chart-panel': PollRankedChoiceChartPanel
+
   props:
     poll: Object
     stance: Object
@@ -67,7 +72,7 @@ export default
     stanceChoice: Object
     back: Object
     name: String
-  methods:
+  computed:
     componentName: ->
       pollType = (@stance or @outcome or @stanceChoice or @poll).poll().pollType
 
@@ -82,5 +87,5 @@ export default
 </script>
 
 <template>
-  <component :is="componentName()" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back'></component>
+  <component :is="componentName" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back'></component>
 </template>

@@ -3,16 +3,13 @@ export default
   props:
     group: Object
     setting: String
-    translateValues: Boolean
+    translateValues: Object
   computed:
     translateKey: ->
       "group_form.#{_.snakeCase(@setting)}"
 </script>
 
-<template>
-    <div class="group-setting-checkbox">
-      <v-checkbox v-model="group[setting]">
-        <span v-t="{ path: translateKey, args: translateValues }"></span>
-      </v-checkbox>
-    </div>
+<template lang="pug">
+.group-setting-checkbox
+  v-checkbox(v-model="group[setting]" :label="$t(translateKey, translateValues)")
 </template>

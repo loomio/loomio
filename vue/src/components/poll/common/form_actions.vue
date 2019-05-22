@@ -1,17 +1,22 @@
 <script lang="coffee">
 import { submitOnEnter } from '@/shared/helpers/keyboard'
 import { submitPoll }    from '@/shared/helpers/form'
+import Records from '@/shared/services/records'
+import AnnouncementModalMixin from '@/mixins/announcement_modal'
 
 export default
+  mixins: [AnnouncementModalMixin]
   props:
     poll: Object
     close: Function
   created: ->
     @submit = submitPoll @, @poll,
       broadcaster: @
-      successCallback: =>
-        @close()
-    # submitOnEnter $scope
+      successCallback: (data) =>
+        pollKey = data.polls[0].key
+        Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
+          @close()
+          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
 </script>
 
 <template>

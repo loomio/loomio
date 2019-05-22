@@ -2,7 +2,7 @@
 import Records      from '@/shared/services/records'
 import ModalService from '@/shared/services/modal_service'
 import urlFor       from '@/mixins/url_for'
-import _isEmpty     from 'lodash/isEmpty'
+import { isEmpty }  from 'lodash'
 
 export default
   mixins: [urlFor]
@@ -11,7 +11,7 @@ export default
   created: ->
     Records.documents.fetchByGroup(@group)
   computed:
-    isEmpty: -> _isEmpty(@group)
+    isEmpty: -> isEmpty(@group)
 </script>
 
 <template lang="pug">

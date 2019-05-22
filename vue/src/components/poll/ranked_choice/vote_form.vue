@@ -32,8 +32,6 @@
 
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-
-import { submitOnEnter, registerKeyEvent } from '@/shared/helpers/keyboard'
 import { submitStance }                    from '@/shared/helpers/form'
 
 import _sortBy from 'lodash/sortBy'
@@ -54,22 +52,12 @@ export default
   created: ->
     @submit = submitStance @, @stance,
       prepareFn: =>
-        EventBus.$emit $scope, 'processing'
+        EventBus.$emit 'processing'
         @stance.id = null
         selected = _take @pollOptions, @numChoices
         @stance.stanceChoicesAttributes = _map selected, (option, index) =>
           poll_option_id: option.id
           score:         @numChoices - index
-  mounted: ->
-    submitOnEnter @, element: @$el
-    registerKeyEvent @, 'pressedUpArrow', =>
-      swap(@selectedOptionIndex(), @selectedOptionIndex() - 1)
-
-    registerKeyEvent @, 'pressedDownArrow', =>
-      swap(@selectedOptionIndex(), @selectedOptionIndex() + 1)
-
-    registerKeyEvent @, 'pressedEsc', =>
-      @selectedOption = null
   methods:
     orderedPollOptions: ->
       _sortBy @pollOptions(), 'priority'

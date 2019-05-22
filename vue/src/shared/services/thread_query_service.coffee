@@ -1,6 +1,6 @@
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
-
+import Vue from 'vue'
 export default new class ThreadQueryService
 
   queryFor: (options = {}) ->
@@ -16,7 +16,7 @@ export default new class ThreadQueryService
   applyFilters = (options) ->
     return view if view = Records.discussions.collection.getDynamicView(options.name)
 
-    view = Records.discussions.collection.addDynamicView(options.name)
+    view = Records.discussions.collection.addDynamicView(options.name, persistent: true)
     view.applyFind(groupId: { $in: options.group.organisationIds() })      if options.group
     view.applyFind(lastActivityAt: { $gt: parseTimeOption(options.from) }) if options.from
     view.applyFind(lastActivityAt: { $lt: parseTimeOption(options.to) })   if options.to
@@ -46,7 +46,7 @@ export default new class ThreadQueryService
               {groupId: {$in: userGroupIds}}
             ]
 
-    view
+    Vue.observable(view)
 
   parseTimeOption = (options) ->
     # we pass times in something human-readable like '1 month ago'

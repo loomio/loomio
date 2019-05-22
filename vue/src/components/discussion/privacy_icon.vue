@@ -12,28 +12,18 @@ import { discussionPrivacy } from '@/shared/helpers/helptext'
 export default
   props:
     discussion: Object
-    private: Boolean
   computed:
-    computedPrivate: ->
-      if @private == 'undefined'
-        return @discussion.private
-      else
-        @private
-
     translateKey: ->
-      if @private then 'private' else 'public'
+      if @discussion.private then 'private' else 'public'
 
     privacyDescription: ->
-      @$t discussionPrivacy(@discussion, @computedPrivate),
+      @$t discussionPrivacy(@discussion, @discussion.private),
         group:  @discussion.group().name
         parent: @discussion.group().parentName()
 </script>
-<template>
-  <span class="discussion-privacy-icon">
-    <div class="discussion-privacy-icon__title">
-      <strong v-t="'common.privacy.' + translateKey"></strong>
-    </div>
-    <div v-html="privacyDescription" class="discussion-privacy-icon__subtitle">
-    </div>
-  </span>
+<template lang="pug">
+span.discussion-privacy-icon
+  .discussion-privacy-icon__title
+    strong(v-t="'common.privacy.' + translateKey")
+  .discussion-privacy-icon__subtitle(v-html='privacyDescription')
 </template>

@@ -12,12 +12,18 @@ cache:
   directories:
     - vendor/bundle
     - client/node_modules
+    - vue/node_modules
 
 addons:
-  firefox: "65.0"
+  firefox: latest
   postgresql: "9.6"
   chrome: stable
-
+  artifacts:
+    paths:
+      - vue/tests/reports/
+      - client/angular/test/
+    target_paths:
+      - ${SCREENSHOTS_PATH}
 env:
   global:
     - DB=postgresql
@@ -27,26 +33,22 @@ env:
     - PUMA_WORKERS=2
     - MIN_THREADS=3
     - MAX_THREADS=3
-    - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
+    - SCREENSHOTS_PATH=/`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
   matrix:
     - TASK=e2e
     - TASK=rspec
     - TASK=plugins
-    # - TASK=vue
+    - TASK=vue
 
 before_install:
   - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
-  - gem update --system
   - gem install bundler
-  - nvm install 11
-  - nvm use 11
-  - npm install -g gulp
+  - if [ "$TASK" != "rspec" ]; then nvm install 11 && nvm use 11 && npm install -g gulp; fi
 
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
-  - gem install s3_uploader
   - if [ "$TASK" = "e2e" ]; then cd client; npm install; cd ..; fi
-  - if [ "$TASK" = "vue" ]; then cd vue; rm -rf node_modules; npm i; cd ..; fi
+  - if [ "$TASK" = "vue" ]; then cd vue; npm install; cd ..; fi
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
@@ -61,9 +63,10 @@ before_script:
 
 script:
   - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
-  - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 2; fi
+  - if [ "$TASK" = "e2e" ];     then cd client && gulp nightwatch:core --retries 2 && cd .. ; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
-  - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone; fi
+  - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone && cd .. ;  fi
 
 after_script:
-  - s3uploader -r us-east-1 -k $ARTIFACTS_KEY -s $ARTIFACTS_SECRET -d `date +"%Y-%m-%d-%T"` client/angular/test/screenshots $ARTIFACTS_BUCKET
+  - if [ "$TASK" = "vue" ];     then cd ${TRAVIS_BUILD_DIR}/vue/tests/reports && bundle exec ruby rename_screenshots.rb && bundle exec ruby generate_screenshots_index.rb && cd.. ; fi
+  - if [ "$TASK" = "e2e" ];     then cd ${TRAVIS_BUILD_DIR}/client/angular/test && bundle exec ruby rename_screenshots.rb && bundle exec ruby generate_screenshots_index.rb && cd.. ; fi

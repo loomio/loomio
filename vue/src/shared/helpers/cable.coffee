@@ -3,7 +3,7 @@ import AppConfig      from '@/shared/services/app_config'
 import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import ModalService   from '@/shared/services/modal_service'
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 import AuthService    from '@/shared/services/auth_service'
 import AbilityService from '@/shared/services/ability_service'
 
@@ -17,7 +17,7 @@ export subscribeTo = (model) ->
 export initLiveUpdate = ->
   subscribeToApplication()
 
-  if AbilityService.isLoggedIn()
+  if Session.isSignedIn()
     subscribeToUser()
     _.each Session.user().groups(), subscribeToGroup
   else
@@ -62,7 +62,7 @@ subscribeToApplication = ->
   ensureConnection().subscriptions.create { channel: "ApplicationChannel" },
     received: (data) ->
       if data.version?
-        FlashService.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', hardReload
+        Flash.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', hardReload
 
 ensureConnection = ->
   AppConfig.cable = AppConfig.cable or ActionCable.createConsumer("/cable")

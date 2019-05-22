@@ -94,10 +94,11 @@ export default
     perPage: AppConfig.pageSize.exploreGroups
     canLoadMoreGroups: true
     query: ""
-  created: ->
+  mounted: ->
     EventBus.$emit 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
     # applyLoadingFunction(@, 'search')
     # @search()
+
   methods:
     groups: ->
       Records.groups.find(@groupIds)

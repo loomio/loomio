@@ -9,7 +9,9 @@ class Metadata::GroupSerializer < ActiveModel::Serializer
   end
 
   def description
-    Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(object.description.to_s)
+    if object.is_visible_to_public?
+      Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(object.description.to_s)
+    end
   end
 
   def image_urls

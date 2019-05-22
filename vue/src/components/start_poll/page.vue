@@ -22,14 +22,14 @@ import { applyPollStartSequence } from '@/shared/helpers/apply'
 export default
   data: ->
     poll: Records.polls.build
-      title:       @$route.params.title
+      title:       @$route.query.title
       pollType:    @$route.params.poll_type
-      groupId:     parseInt(@$route.params.group_id)
+      groupId:     parseInt(@$route.query.group_id)
       customFields:
         pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
   created: ->
     EventBus.$emit 'currentComponent', { page: 'startPollPage', skipScroll: true }
-    Records.groups.findOrFetch(@$route.params.group_id).then =>
+    Records.groups.findOrFetch(@$route.query.group_id).then =>
       # applyPollStartSequence @,
       #   emitter: @
       #   afterSaveComplete: (event) =>
@@ -50,7 +50,7 @@ export default
           <h2 v-t="'poll_common.start_poll'" class="lmo-card-heading"></h2>
         </div>
         <div v-if="poll.pollType" class="poll-common-start-poll__header lmo-flex">
-          <i :class="'mdi' + icon()"></i>
+          <i :class="'mdi' + icon"></i>
           <h2 v-t="'poll_types.' + poll.pollType" class="lmo-card-heading poll-common-card-header__poll-type"></h2>
         </div>
         <div class="poll-common-start-poll">

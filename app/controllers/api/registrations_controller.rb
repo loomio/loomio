@@ -11,7 +11,7 @@ class API::RegistrationsController < Devise::RegistrationsController
       if @email_is_verified
         sign_in resource
         flash[:notice] = t(:'devise.sessions.signed_in')
-        render json: { success: :ok, signed_in: true }
+        render json: Boot::User.new(resource).payload.merge({ success: :ok, signed_in: true })
       else
         LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
         render json: { success: :ok, signed_in: false }

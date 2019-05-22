@@ -16,6 +16,9 @@ export default
   props:
     parentEvent: Object
     parentEventWindow: Object
+  components:
+    ThreadItem: -> import('@/components/thread/item')
+
   data: ->
     eventWindow: new NestedEventWindow
       parentEvent:       @parentEvent

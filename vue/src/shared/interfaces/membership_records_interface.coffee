@@ -1,8 +1,18 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import MemberhipModel       from '@/shared/models/membership_model'
+import {includes} from 'lodash'
 
 export default class MemberhipRecordsInterface extends BaseRecordsInterface
   model: MemberhipModel
+
+  forUser: (user) ->
+    @collection.find(userId: user.id)
+
+  forModel: (model) ->
+    @collection.find(groupId: {$in: model.groupIds()})
+
+  forGroup: (group) ->
+    @collection.find(groupId: group.id)
 
   joinGroup: (group) ->
     @remote.post 'join_group', group_id: group.id

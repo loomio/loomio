@@ -26,13 +26,13 @@ export default
     comment: Object
     close: Function
   data: ->
-    dcomment: @comment.clone()
     isDisabled: false
   created: ->
-    @submit = submitForm @, @dcomment,
+    @submit = submitForm @, @comment,
       flashSuccess: 'comment_form.messages.updated'
       successCallback: =>
         _invokeMap Records.documents.find(@comment.removedDocumentIds), 'remove'
+        @close()
 </script>
 <template lang="pug">
 v-card.edit-comment-form
@@ -41,7 +41,7 @@ v-card.edit-comment-form
     dismiss-modal-button(:close="close")
   v-card-text
     .lmo-disabled-form(v-show='isDisabled')
-    lmo-textarea(:model='dcomment' field="body" :placeholder="$t('comment_form.say_something')")
+    lmo-textarea(:model='comment' field="body" :placeholder="$t('comment_form.say_something')")
   v-card-actions
     comment-form-actions(:comment="comment", :submit="submit")
 </template>

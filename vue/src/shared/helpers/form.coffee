@@ -2,9 +2,8 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Records        from '@/shared/services/records'
 import Session        from '@/shared/services/session'
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 
-import { signIn }            from '@/shared/helpers/user'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { scrollTo }          from '@/shared/helpers/layout'
 
@@ -44,7 +43,6 @@ export submitStance = (scope, model, options = {}) ->
       model.poll().clearStaleStances()
       scrollTo '.poll-common-card__results-shown'
       EventBus.$emit 'stanceSaved'
-      signIn(data, data.stances[0].participant_id, -> EventBus.$emit 'loggedIn') unless Session.user().emailVerified
     cleanupFn: ->
       EventBus.$emit 'doneProcessing'
   , options))
@@ -107,7 +105,7 @@ upload = (scope, model, options) ->
 
 submit = (scope, model, options = {}) ->
   # fetch draft from server and listen for changes to it
-  # if model.hasDrafts and model.isNew() and AbilityService.isLoggedIn()
+  # if model.hasDrafts and model.isNew() and Session.isSignedIn()
   #   model.fetchAndRestoreDraft()
   #   EventBus.watch scope, model.draftFields, model.planDraftFetch, true
 
@@ -127,7 +125,7 @@ submit = (scope, model, options = {}) ->
       cleanup(scope, model, options)
 
 prepare = (scope, model, options, prepareArgs) ->
-  FlashService.loading(options.loadingMessage)
+  Flash.loading(options.loadingMessage)
   options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
   EventBus.$emit 'processing'
   model.cancelDraftFetch()       if typeof model.cancelDraftFetch is 'function'
@@ -145,20 +143,18 @@ progress = (scope) ->
   (progress) ->
     return unless progress.total > 0
     scope.percentComplete = Math.floor(100 * progress.loaded / progress.total)
-    scope.$apply()
 
 success = (scope, model, options) ->
   (data) ->
-    # FlashService.dismiss()
+    # Flash.dismiss()
+    options.successCallback(data) if typeof options.successCallback is 'function'
     if options.flashSuccess?
       flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
-      FlashService.success flashKey, calculateFlashOptions(options.flashOptions)
-    scope.$close()                if !options.skipClose? and typeof scope.$close is 'function'
-    options.successCallback(data) if typeof options.successCallback is 'function'
+      Flash.success flashKey, calculateFlashOptions(options.flashOptions)
 
 failure = (scope, model, options) ->
   (response) ->
-    # FlashService.dismiss()
+    # Flash.dismiss()
     options.failureCallback(response) if typeof options.failureCallback is 'function'
     setErrors(scope, model, response) if _.includes([401, 422], response.status)
     EventBus.$emit errorTypes[response.status] or 'unknownError',
@@ -167,7 +163,7 @@ failure = (scope, model, options) ->
 
 cleanup = (scope, model, options = {}) ->
   ->
-    FlashService.dismiss()
+    Flash.dismiss()
     options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
     EventBus.$emit 'doneProcessing' unless options.skipDoneProcessing
     scope.isDisabled = false
@@ -193,7 +189,6 @@ actionName = (model) ->
 setErrors = (scope, model, response) ->
   response.json().then (r) ->
     model.setErrors(r.errors)
-    scope.$apply()
 
 eventKind = (model) ->
   if model.isA('discussion') and model.isNew()

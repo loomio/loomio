@@ -10,7 +10,7 @@ module Dev::Scenarios::Auth
   def setup_invitation_to_user_with_password
     membership = create_group.membership_for(jennifer)
     membership.update(accepted_at: nil)
-    redirect_to membership
+    redirect_to membership_url(membership)
   end
 
   def setup_deactivated_user

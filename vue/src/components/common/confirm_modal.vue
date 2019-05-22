@@ -1,5 +1,5 @@
 <script lang="coffee">
-import FlashService  from '@/shared/services/flash_service'
+import Flash  from '@/shared/services/flash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 
 export default
@@ -16,9 +16,9 @@ export default
       @isDisabled = true
       @confirm.submit(args...).then =>
         @close()
-        @$router.push @confirm.redirect     if @confirm.redirect?
+        @$router.push "#{@confirm.redirect}"     if @confirm.redirect?
         @confirm.successCallback(args...)        if typeof @confirm.successCallback is 'function'
-        # FlashService.success $scope.confirm.text.flash if $scope.confirm.text.flash
+        Flash.success @confirm.text.flash if @confirm.text.flash
       .finally =>
         @isDisabled = false
 

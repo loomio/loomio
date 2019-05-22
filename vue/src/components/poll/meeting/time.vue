@@ -7,7 +7,7 @@ import TimeService from '@/shared/services/time_service'
 export default
   props:
     name: String
-    zone: Object
+    zone: String
   data: ->
     sameYear    : TimeService.sameYear
     displayYear : TimeService.displayYear
@@ -17,11 +17,10 @@ export default
     fullDayDate : TimeService.fullDayDate
 </script>
 
-<template>
-    <div class="poll-meeting-time">
-      <span v-if="!sameYear(name)">{{ displayYear(name, zone) }}</span>
-      <span>{{ displayDate(name, zone) }}</span>
-      <span>{{ displayDay(name, zone) }}</span>
-      <span v-if="!fullDayDate(name)">{{ displayTime(name, zone) }}</span>
-    </div>
+<template lang="pug">
+.poll-meeting-time
+  span(v-if='!sameYear(name)') {{ displayYear(name, zone) }}
+  span {{ displayDate(name, zone) }}
+  span {{ displayDay(name, zone) }}
+  span(v-if='!fullDayDate(name)') {{ displayTime(name, zone) }}
 </template>

@@ -26,21 +26,19 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import _times from 'lodash/times'
+import TimeService from '@/shared/services/time_service'
+import moment from 'moment'
 
 export default
   props:
     poll: Object
   data: ->
     closingHour: @poll.closingAt.format('H')
-    closingDate: @poll.closingAt.toDate()
-    minDate: new Date().toString()
-    hours: _times 24, (i) ->
-
-    times: _times 24, (i) ->
-      i = "0#{i}" if i < 10
-      moment("2015-01-01 #{i}:00").format('h a')
+    closingDate: moment(@poll.closingAt.toDate()).format('YYYY-MM-DD')
     dateToday: moment().format('YYYY-MM-DD')
+    times: TimeService.timesOfDay()
     timeZone: AppConfig.timeZone
+    isShowingDatePicker: false
   methods:
     updateClosingAt: ->
       @poll.closingAt = moment(@closingDate).startOf('day').add(@closingHour, 'hours')
@@ -57,13 +55,19 @@ export default
 .poll-common-closing-at-field
   .poll-common-closing-at-field__inputs
     .md-no-errors
-      label.poll-common-closing-at-field__label
-        poll-common-closing-at(:poll="poll")
-      //- v-date-picker(v-model="closingDate", :min="minDate", md-hide-icons="calendar")
+      v-menu(ref='menu', v-model='isShowingDatePicker', :close-on-content-click='false', :nudge-right='40', :return-value.sync='closingDate', lazy='', transition='scale-transition', offset-y='', full-width='', min-width='290px')
+        template(v-slot:activator='{ on }')
+          v-text-field(v-model='closingDate', :label="$t('poll-common-closing-at-field__label')", readonly='', v-on='on')
+            template(v-slot:label)
+              poll-common-closing-at(:poll="poll")
+        v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate', no-title='', scrollable='', :min='dateToday')
+          v-spacer
+            v-btn(flat='', color='primary', @click='isShowingDatePicker = false') Cancel
+            v-btn(flat='', color='primary', @click='$refs.menu.save(closingDate)') OK
     .md-input-container
-      //- v-time-picker(v-model="closingHour" :allowed-minutes="allowedMinutes")
-      //- v-select(v-model="closingHour", :items="hours")
-        //- md-option(ng-repeat="hour in hours", ng-value: "hour", @change="hour == closingHour")
-          {{ times[hour] }}
+      v-select.poll-common-closing-at-field__timepicker(v-model='poll.closingHour', :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
   validation-errors(:subject="poll", field="closingAt")
 </template>
+
+template(v-slot:label)
+  span(v-html="$t('auth_form.i_accept', { termsUrl: termsUrl, privacyUrl: privacyUrl })")

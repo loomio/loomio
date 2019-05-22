@@ -54,8 +54,7 @@ export default class DiscussionModel extends BaseModel
     @belongsTo 'createdEvent', from: 'events'
     @belongsTo 'forkedEvent', from: 'events'
 
-  discussion: ->
-    @
+  discussion: -> @
 
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Discussion")

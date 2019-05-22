@@ -10,7 +10,7 @@ import EventBus         from '@/shared/services/event_bus'
 export default class PollModel extends BaseModel
   @singular: 'poll'
   @plural: 'polls'
-  @indices: ['discussionId', 'authorId']
+  @indices: ['discussionId', 'authorId', 'latest']
   @draftParent: 'draftParent'
   @draftPayloadAttributes: ['title', 'details']
 

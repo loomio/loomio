@@ -19,13 +19,13 @@ export default
 </script>
 <template lang="pug">
 v-menu.notifications(offset-y)
-  v-btn(icon slot="activator", :aria-label="$t('navbar.notifications')")
+  v-btn.notifications__button(icon slot="activator", :aria-label="$t('navbar.notifications')")
     v-icon(v-if="!hasUnread") mdi-bell
     v-icon(v-if="hasUnread") mdi-bell-ring
-    //- %span.badge.notifications__activity{ng-if: "hasUnread()"} {{unreadCount()}}
-  v-list
+    span.badge.notifications__activity(v-if="hasUnread") {{unreadCount}}
+  v-list.notifications__dropdown
     div(v-for="notification in notifications", :key="notification.id")
       notification(:notification="notification")
-    div(v-if="notifications.length == 0" v-t="notifications.no_notifications")
+    div(v-if="notifications.length == 0" v-t="'notifications.no_notifications'")
 
 </template>

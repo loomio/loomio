@@ -22,7 +22,17 @@ module.exports = {
   outputDir: '../public/client/vue',
   assetsDir: '../../client/vue',
   devServer: {
-   proxy: 'http://localhost:3000'
+   proxy: {
+     '/api': {target: 'http://localhost:3000'},
+     '/dev': {target: 'http://localhost:3000'},
+     '/login_tokens': {target: 'http://localhost:3000'},
+     '/theme': {target: 'http://localhost:3000'},
+     '/fonts': {target: 'http://localhost:3000'},
+     '/img': {target: 'http://localhost:3000'},
+     '/join': {target: 'http://localhost:3000'},
+     '/invitations': {target: 'http://localhost:3000'},
+     '/system': {target: 'http://localhost:3000'}
+   }
   },
   css: {
     loaderOptions: {

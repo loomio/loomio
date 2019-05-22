@@ -58,10 +58,10 @@ class GroupExportService
     tables = File.open(filename, 'r').map { |line| JSON.parse(line)['table'] }.uniq
     tables.each do |table|
       klass = table.classify.constantize
-      existing_ids = klass.pluck(:id)
+      # existing_ids = klass.pluck(:id)
       new_records = File.open(filename, 'r').map do |line|
         data = JSON.parse(line)
-        next unless (data['table'] == table && !existing_ids.include?(data['record']['id']))
+        next unless (data['table'] == table)
         klass.new(data['record'])
       end.compact!
       klass.import(new_records, validate: false, on_duplicate_key_ignore: true)

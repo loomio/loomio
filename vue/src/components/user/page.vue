@@ -17,6 +17,7 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import fromNow        from '@/mixins/from_now'
 import urlFor         from '@/mixins/url_for'
+import UserModalMixin from '@/mixins/user_modal'
 
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 
@@ -24,39 +25,43 @@ import _isEmpty     from 'lodash/isEmpty'
 import _sortBy     from 'lodash/sortBy'
 
 export default
-  mixins: [fromNow, urlFor]
+  mixins: [
+    fromNow,
+    urlFor,
+    UserModalMixin
+  ]
+
   data: ->
     user: {}
     isMembershipsFetchingDone: false
-    isModalOpen: false
+    groups: []
+    canContactUser: false
+
   created: ->
     # applyLoadingFunction(@, 'loadGroupsFor')
-    @setUser()
-    Records.users.findOrFetchById(@$route.params.key).then @setUser, (error) ->
+    @init()
+    Records.users.findOrFetchById(@$route.params.key).then @init, (error) ->
       # EventBus.broadcast $rootScope, 'pageError', error
+
   methods:
-    setUser: ->
+    init: ->
       if @user = (Records.users.find(@$route.params.key) or Records.users.find(username: @$route.params.key))[0]
-      # EventBus.broadcast $rootScope, 'currentComponent', {title: @user.name, page: 'userPage'}
+        EventBus.$emit 'currentComponent', {title: @user.name, page: 'userPage'}
         @loadGroupsFor(@user)
-
-    openModal: ->
-      @isModalOpen = true
-
-    closeModal: ->
-      @isModalOpen = false
+        Records.view
+          name: "userPageGroups#{@user.id}"
+          collections: ['groups', 'memberships']
+          query: (store) =>
+            @groups = @user.formalGroups()
+            @canContactUser = AbilityService.canContactUser(@user)
 
     loadGroupsFor: (user) ->
       Records.memberships.fetchByUser(user)
-  computed:
-    canContactUser: ->
-      @$store.getters.canContactUser(@user)
 
+  computed:
     isEmptyUser: ->
       _isEmpty @user
 
-    orderedFormalGroups: ->
-      _sortBy @user.formalGroups(), 'fullName'
 </script>
 
 <template lang="pug">
@@ -67,9 +72,7 @@ export default
       .user-page__content.lmo-flex(layout='row')
         .user-page__avatar.lmo-margin-right
           user-avatar(:user='user', size='featured')
-          v-btn.md-block.md-primary.md-raised.user-page__contact-user(v-if='canContactUser', @click='openModal()', v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
-          v-dialog(v-model="isModalOpen", lazy, persistent)
-            contact-request-modal(:user="user", :close="closeModal")
+          v-btn.md-block.md-primary.md-raised.user-page__contact-user(v-if='canContactUser', @click='openContactRequestModal(user)', v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
         .user-page__info
           h1.lmo-h1 {{user.name}}
           .lmo-hint-text @{{user.username}}
@@ -80,7 +83,7 @@ export default
           .user-page__groups
             h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
             v-list
-              v-list-tile.user-page__group.lmo-flex.lmo-flex__center(v-for='group in user.formalGroups()', :key='group.id')
+              v-list-tile.user-page__group.lmo-flex.lmo-flex__center(v-for='group in groups', :key='group.id')
                 img.md-avatar.lmo-box--small.lmo-margin-right(:src='group.logoUrl()')
                 router-link(:to='urlFor(group)') {{group.fullName}}
             // <loading v-if="loadGroupsForExecuting"></loading>

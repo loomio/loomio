@@ -5,17 +5,25 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import urlFor         from '@/mixins/url_for'
 import truncate       from '@/mixins/truncate'
+import GroupModalMixin from '@/mixins/group_modal'
 
 export default
-  mixins: [urlFor, truncate]
+  mixins: [urlFor, truncate, GroupModalMixin]
   props:
     group: Object
+  data: ->
+    subgroups: []
   created: ->
     Records.groups.fetchByParent(@group).then =>
       EventBus.$emit 'subgroupsLoaded', @group
+      Records.view
+        name:"subgroupsCard"
+        collections: ['groups']
+        query: (store) =>
+          @subgroups = @group.subgroups()
   methods:
     orderedSubgroups: ->
-      _.sortBy @group.subgroups(), 'name'
+      _.sortBy @subgroups, 'name'
 
     show: ->
       @group.isParent()
@@ -24,7 +32,8 @@ export default
       AbilityService.canCreateSubgroups(@group)
 
     startSubgroup: ->
-       ModalService.open 'GroupModal', group: => Records.groups.build(parentId: @group.id)
+      @openStartSubgroupModal(@group)
+
 </script>
 
 <template lang="pug">

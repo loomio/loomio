@@ -1,13 +1,17 @@
 import EventBus from '@/shared/services/event_bus'
 
-service = new class ModalService
-  # open: (->
-  #   true
-  # @forceSignIn: ->
-  #   return if @forcedSignIn
-  #   @forcedSignIn = true
-  #   @open 'AuthModal', preventClose: -> true
+export default new class ModalService
+  openNewDiscussionModal: (group) ->
+    EventBus.$emit('openModal',
+                    component: 'DiscussionForm',
+                    titleKey: 'discussion_form.new_discussion_title')
 
-EventBus.$on('open', service.open)
+  openStartGroupModal: ->
+    EventBus.$emit('openModal',
+                    component: 'GroupForm',
+                    titleKey: 'group_form.new_organization')
 
-export default service
+  openStartSubgroupModal: (parentGroup) ->
+    EventBus.$emit('openModal',
+                    component: 'GroupForm',
+                    titleKey: 'group_form.new_organization')

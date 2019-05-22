@@ -1,6 +1,10 @@
 class AnnouncementRecipientSerializer < ActiveModel::Serializer
   attributes :id, :email, :name, :avatar_kind, :avatar_initials, :avatar_url, :email_hash, :emails
 
+  def id
+    object.id || object.email
+  end
+
   def email_hash
     Digest::MD5.hexdigest(object.email.to_s.downcase)
   end

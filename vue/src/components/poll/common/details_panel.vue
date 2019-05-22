@@ -16,21 +16,20 @@ import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
-import FlashService   from '@/shared/services/flash_service'
+import Flash   from '@/shared/services/flash'
 import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
+import PollModalMixin from '@/mixins/poll_modal'
 
 export default
+  mixins: [
+    PollModalMixin
+  ]
   props:
     poll: Object
   data: ->
-    isPollCommonEditModalOpen: false
     isAnnouncementModalOpen: false
     isRevisionHistoryModalOpen: false
   methods:
-    openPollCommonEditModal: ->
-      @isPollCommonEditModalOpen = true
-    closePollCommonEditModal: ->
-      @isPollCommonEditModalOpen = false
     openRevisionHistoryModal: ->
       @isRevisionHistoryModalOpen = true
     openAnnouncementModal: ->
@@ -51,7 +50,7 @@ export default
       name: 'edit_poll'
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canEditPoll(@poll)
-      perform:    => @openPollCommonEditModal()
+      perform:    => @openEditPollModal(@poll)
     ,
       name: 'show_history'
       icon: 'mdi-history'
@@ -82,10 +81,4 @@ export default
     // <reactions_display model="poll" load="true"></reactions_display>
     v-spacer
     action-dock(:model='poll', :actions='actions')
-  v-dialog(v-model='isPollCommonEditModalOpen' lazy persistent)
-    poll-common-edit-modal(:poll='poll', :close="closePollCommonEditModal")
-  //- v-dialog(v-model='isThreadModalOpen' lazy persistent)
-  //-   discussion-start(:discussion='newThread()', :close='closeThreadModal')
-  //- v-dialog(v-model='isThreadModalOpen' lazy persistent)
-  //-   discussion-start(:discussion='newThread()', :close='closeThreadModal')
 </template>

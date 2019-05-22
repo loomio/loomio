@@ -1,4 +1,5 @@
 import utils from './utils'
+import Vue from 'vue'
 
 export default class BaseModel
   @singular: 'undefinedSingular'
@@ -19,8 +20,6 @@ export default class BaseModel
   # what is the key to use when serializing the record?
   @serializationRoot: null
 
-  @memoize: []
-
   constructor: (recordsInterface, attributes = {}) ->
     @processing = false # not returning/throwing on already processing rn
     @_version = 0
@@ -32,16 +31,9 @@ export default class BaseModel
     @update(@defaultValues())
     @update(attributes)
     @buildRelationships() if @relationships?
-    @applyMemoization()
     @afterConstruction()
 
-  applyMemoization: ->
-    _.each @constructor.memoize, (name) =>
-      func = @[name]
-      @[name] = @recordStore.memoize func, @
-
   bumpVersion: ->
-    # @recordStore.bumpVersion()
     @_version = @_version + 1
 
   afterConstruction: ->
@@ -50,12 +42,14 @@ export default class BaseModel
     {}
 
   clone: ->
-    cloneAttributes = _.transform @attributeNames, (clone, attr) =>
+    cloneAttributes = {}
+    _.forEach @attributeNames, (attr) =>
       if _.isArray(@[attr])
-        clone[attr] = @[attr].slice(0)
+        cloneAttributes[attr] = @[attr].slice(0)
       else
-        clone[attr] = @[attr]
+        cloneAttributes[attr] = @[attr]
       true
+    cloneAttributes.cloney = true
     cloneRecord = new @constructor(@recordsInterface, cloneAttributes)
     cloneRecord.clonedFrom = @
     cloneRecord
@@ -69,7 +63,10 @@ export default class BaseModel
   baseUpdate: (attributes) ->
     @bumpVersion()
     @attributeNames = _.union(@attributeNames, _.keys(attributes))
-    _.assign(@, attributes)
+    _.forEach(attributes, (value, key) =>
+      Vue.set(@, key, value)
+      return true
+    )
 
     @recordsInterface.collection.update(@) if @inCollection()
 
@@ -125,20 +122,7 @@ export default class BaseModel
       of: 'id'
       dynamicView: true
 
-    @[name] = if args.dynamicView
-      # sets up a dynamic view which will be kept updated as matching elements are added to the collection
-      => @buildView("#{@constructor.singular}_#{@keyOrId()}_#{name}", args).data()
-    else
-      # adds a simple Records.collection.where with no db overhead
-      => @recordStore[args.from].find("#{args.with}": @[args.of])
-
-  buildView: (viewName, args = {}) ->
-    # create the view which references the records
-    if !@views[viewName]
-      @views[viewName] = @recordStore[args.from].collection.addDynamicView(viewName)
-      @views[viewName].applyFind("#{args.with}": @[args.of])
-      @views[viewName].applySimpleSort(args.sortBy, args.sortDesc) if args.sortBy
-    @views[viewName]
+    @[name] = => @recordStore[args.from].find("#{args.with}": @[args.of])
 
   belongsTo: (name, userArgs) ->
     defaults =
@@ -147,8 +131,7 @@ export default class BaseModel
 
     args = _.assign defaults, userArgs
 
-    @[name] = =>
-      @recordStore[args.from].find(@[args.by])
+    @[name] = => @recordStore[args.from].find(@[args.by])
 
   translationOptions: ->
 
