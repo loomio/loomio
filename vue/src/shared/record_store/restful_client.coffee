@@ -2,6 +2,7 @@ window.Promise = window.Promise or require 'promise-polyfill' # polyfill for Pro
 require('promise.prototype.finally').shim()                   # polyfill for Promise.finally
 require 'whatwg-fetch'                                        # polyfill for Fetch API
 
+
 export default class RestfulClient
   defaultParams: {}
   currentUpload: null
@@ -15,6 +16,9 @@ export default class RestfulClient
   onUploadSuccess: (response) -> response
 
   constructor: (resourcePlural) ->
+    @defaultParams.unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token')
+    @defaultParams.membership_token = new URLSearchParams(location.search).get('membership_token')
+    @defaultParams = _.omitBy(@defaultParams, _.isNil)
     @processing = []
     @resourcePlural = _.snakeCase(resourcePlural)
 

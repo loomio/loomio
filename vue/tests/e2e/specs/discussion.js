@@ -359,9 +359,6 @@ module.exports = {
     page.click('.thread-mailer__subject a', 2000)
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
-
-    page.loadPath('use_last_login_token') // TODO: GK: Timed out while waiting for element <main> to be present for 10000 milliseconds.  - expected "visible" but got: "not found"
-    page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
     page.expectText('.context-panel__heading', 'go to the moon', 10000)
     page.expectText('.context-panel__description', 'A description for this discussion')

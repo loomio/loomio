@@ -31,9 +31,7 @@ module.exports = (test) ->
 
   click: (selector, pause) ->
     @waitFor(selector)
-    test.pause(200)
     test.click(selector)
-    test.pause(200)
     test.pause(pause) if pause
 
   scrollTo: (selector, callback, wait) ->
@@ -85,7 +83,7 @@ module.exports = (test) ->
     test.expect.element(selector).text.to.contain(value)
 
   expectFlash: (value, wait) ->
-    test.pause(1200)
+    test.pause(1000)
     selector = '.flash-root__message'
     @waitFor(selector, wait)
     test.expect.element(selector).text.to.contain(value)
