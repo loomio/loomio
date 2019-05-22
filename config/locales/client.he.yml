@@ -1,4 +1,7 @@
 he:
+  current_plan_button:
+    upgrade: שדרג
+    tooltip: רכוש חבילת Loomio להזמין עוד אנשים ולהתחיל עוד שירשורים
   loomio_tags:
     tags: תגיות
     apply_tags: החל תגיות
@@ -426,6 +429,9 @@ he:
     form:
       too_many_invitations: |
           הגעת לגבול ההזמנות המותר. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>
+      no_invitations_remaining: |
+          <p>השתמשת בכל {{maxMembers}} ההזמנות האפשרויות לקבוצה זו.</p>
+          <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
       invitations_remaining: '{{count}} הזמנות נותרו. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>'
       group_announced:
         title: הזמן לקבוצה
@@ -584,6 +590,7 @@ he:
     options:
       label: 'אפשרויות'
       edit_group: 'עריכת הגדרות הקבוצה'
+      become_coordinator: הפוך למתאם
       export_data: יצוא דאטה של הקבוצה
       export_data_as_json: יצא את נתוני הקבוצה כקובץ JSON
       export_data_as_csv: יצא את נתוני הקבוצה כקובץ CSV
@@ -949,6 +956,7 @@ he:
   dashboard_page:
     aria_label: 'לוח מכוונים'
     no_groups:
+      show_all: ברוך הבא! אתה עוד לא חבר באף קבוצה עוד. <a href="/explore">חפש בקבוצות הפומביות</a> או <a href="/g/new">פתח קבוצה</a>.
       show_muted: אין לך אף שיחה מושתקת כי אתה לא חבר באף קבוצה.
     no_threads:
       show_all: אין לך אף שיחות אחרונות.
@@ -1008,6 +1016,9 @@ he:
       or: או
       join_group: <a href="/explore">הצטרף</a> לקבוצה כדי לצפות בשיחות.
   discussion:
+    max_threads_reached: |
+        <p>השתמשת בכל {{maxThreads}} השירשורים הפנויים בקבוצה זו.</p>
+        <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> בכדי להמשיך לשתף פעולה בLoomio.</p>
     subscription_canceled: |
         <p>מצטערים! החשבון שלך לא פעיל.</p>
         <p>אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> כדי להמשיך להשתמש בלומיו.</p>
@@ -1674,9 +1685,33 @@ he:
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
   install_microsoft:
+    modal_title: התקן Microsoft Teams
     card:
+      install_title: התחבר לMicrosoft Teams
+      install_helptext: הבוט של Loomio הודיע לקבוצה שלך על הדיונים וההחלטות בLoomio
+      installed_title: מחובר לMicrosoft Teams
+      installed_helptext: אירועים מקבוצה זו יישלחו לMicrosoft Teams שלך.
+      install_microsoft: חבר צוותים
       remove_identity: הסר אינטגרציה זו
+      confirm_remove_title: הסר Microsoft Teams
+      confirm_remove_helptext: |
+          ערוץ הMicrosoft Teams שלך לא יקבל עוד עדכונים על קבוצה זו.
+          אתה יכול תמיד להחזיר אותו שוב.
       identity_removed: אינטגרציה הוסרה
+    form:
+      webhook_helptext: הזן את הwebhook URL שקיבלת בערוץ הצוותים שלך. <a href="/microsoft">למד עוד על הגדרת Microsoft Teams עם Loomio</a>
+      webhook_label: Webhook URL
+      webhook_installed: מחובר לMicrosoft Teams
+      webhook_placeholder: https://outlook.office.com/...
+      event_kind_helptext: אילו אירועים צריכים להתפרסם בערוץ הצוותים?
+    event_kinds:
+      new_discussion: שירשור חדש נפתח
+      new_comment: 'נוספה תגובה חדשה '
+      poll_created: נוצר סקר
+      stance_created: בוצעה הצבעה חדשה
+      poll_closing_soon: הסקר מסתיים בקרוב
+      poll_expired: סקר הסתיים
+      outcome_created: שותפה תוצאה
   install_slack:
     modal_title: התקן Slack
     modal_helptext: ראשית כל, עליך להתחבר לסלאק. אנחנו נעביר אותך לשם אוטומטית עוד שניה, או שאתה יכול ללחוץ על הכפתור למטה להמשיך.
