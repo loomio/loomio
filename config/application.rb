@@ -118,10 +118,12 @@ module Loomio
     end
 
     port = case Rails.env
-    when 'development' then '8080'
+    when 'development' && ENV['USE_VUE'] then 8080
     when 'production' then ENV['CANONICAL_PORT']
-    when 'test' then '3000'
+    else
+      3000
     end
+
     config.action_mailer.default_url_options = config.action_controller.default_url_options = {
       host:     ENV['CANONICAL_HOST'],
       # port:     (!Rails.env.production? && ENV['USE_VUE'] && !ENV['TRAVIS_MODE']) ? 8080 : ENV['CANONICAL_PORT'],
