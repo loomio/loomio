@@ -35,9 +35,9 @@ env:
     - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
     - SCREENSHOTS_PATH=/`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
   matrix:
-    # - TASK=e2e
-    # - TASK=rspec
-    # - TASK=plugins
+    - TASK=e2e
+    - TASK=rspec
+    - TASK=plugins
     - TASK=vue
 
 before_install:
