@@ -21,6 +21,7 @@ addons:
   artifacts:
     paths:
       - vue/tests/reports/
+      - client/angular/test/
     target_paths:
       - ${SCREENSHOTS_PATH}
 env:
@@ -68,3 +69,4 @@ script:
 
 after_script:
   - if [ "$TASK" = "vue" ];     then cd ${TRAVIS_BUILD_DIR}/vue/tests/reports && bundle exec ruby rename_screenshots.rb && bundle exec ruby generate_screenshots_index.rb && cd.. ; fi
+  - if [ "$TASK" = "e2e" ];     then cd ${TRAVIS_BUILD_DIR}/client/angular/test && bundle exec ruby rename_screenshots.rb && bundle exec ruby generate_screenshots_index.rb && cd.. ; fi
