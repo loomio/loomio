@@ -26,7 +26,7 @@ module.exports = new class AbilityService
     _.intersection(Session.user().groupIds(), user.groupIds()).length
 
   canAddComment: (thread) ->
-    _.includes Records.users.membersOf(thread), Session.user()
+    _.includes thread.members(), Session.user()
 
   canRespondToComment: (comment) ->
     _.includes comment.discussion().members(), Session.user()

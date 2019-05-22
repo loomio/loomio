@@ -13,7 +13,7 @@ module.exports = class AnnouncementModel extends BaseModel
     announcement:
       kind: @kind
       recipients:
-        user_ids: _.compact _.map @recipients, (r) -> r.id    if isNumber(r.id)
+        user_ids: _.compact _.map @recipients, (r) -> r.id    if _.isNumber(r.id)
         emails:   _.compact _.map @recipients, (r) -> r.email if r.id == r.email
 
   modelName: ->
