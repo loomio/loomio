@@ -6,7 +6,6 @@ import AppConfig from '@/shared/services/app_config'
 import moment from 'moment-timezone'
 import marked from '@/marked.coffee'
 import vuetify from '@/vuetify.coffee'
-
 import './registerServiceWorker'
 
 Vue.config.productionTip = false

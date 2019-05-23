@@ -6,6 +6,8 @@ import Records from '@/shared/services/records'
 import _forEach from 'lodash/forEach'
 import _merge from 'lodash/merge'
 import i18n from '@/i18n.coffee'
+import * as Sentry from '@sentry/browser';
+import * as Integrations from '@sentry/integrations';
 
 export default (callback) ->
   client = new RestfulClient('boot')
@@ -14,6 +16,15 @@ export default (callback) ->
       appConfig.timeZone = moment.tz.guess()
       _forEach appConfig, (v, k) ->
         Vue.set(AppConfig, k, v)
+
+      if AppConfig.sentry_dsn
+        Sentry.init
+          dsn: AppConfig.sentry_dsn
+          integrations: [
+            new Integrations.Vue
+              Vue: Vue
+              attachProps: true
+          ]
 
       _forEach Records, (recordInterface, k) ->
         model = Object.getPrototypeOf(recordInterface).model
