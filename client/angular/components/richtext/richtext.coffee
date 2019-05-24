@@ -11,6 +11,7 @@ angular.module('loomioApp').directive 'richtext', ['marked', '$compile', (marked
 
   link: (scope, element, attrs) ->
     set = (text) ->
+      return unless text
       if scope.format == "html"
         element.html(text)
       else
