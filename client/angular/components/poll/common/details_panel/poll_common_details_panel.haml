@@ -7,7 +7,7 @@
       %span{ng-if: "poll.anonymous"}>·
       %span.lmo-badge.lmo-pointer{ng-if: "poll.anonymous", md-colors: "{color: 'primary-600', 'border-color': 'primary-600'}", translate: "common.anonymous"}
 
-    .poll-common-details-panel__details.lmo-markdown-wrapper{ng-if: "!translation", marked: "poll.cookedDetails()"}
+    .poll-common-details-panel__details.lmo-markdown-wrapper{ng-if: "!translation", richtext: "poll.cookedDetails()", format: "poll.detailsFormat"}
     .poll-common-details-panel__details{ng-if: "poll.translation"}
       %translation.lmo-markdown-wrapper{model: "poll", field: "details"}
     %document_list{model: "poll"}
