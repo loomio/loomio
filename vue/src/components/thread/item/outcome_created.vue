@@ -12,6 +12,7 @@ export default
   props:
     event: Object
     eventable: Object
+    eventWindow: Object
 
   mounted: ->
     listenForTranslations(@)
@@ -35,9 +36,11 @@ export default
 
 <template lang="pug">
 .outcome-created
-  p(v-if="!eventable.translation" v-marked="eventable.statement" class="thread-item__body lmo-markdown-wrapper")
-  translation(v-if="eventable.translation" :model="eventable" field="statement" class="thread-item__body")
-  .lmo-md-actions
+  thread-item-headline(:event="event" :actions="actions" :eventWindow="eventWindow")
+  .thread-item__body
+    p(v-if="!eventable.translation" v-marked="eventable.statement" class="thread-item__body lmo-markdown-wrapper")
+    translation(v-if="eventable.translation" :model="eventable" field="statement" class="thread-item__body")
+  .thread-item__reactions
     reaction-display(:model="eventable")
-    action-dock(:model="eventable" :actions="actions")
+    //- action-dock(:model="eventable" :actions="actions")
 </template>

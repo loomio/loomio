@@ -3,10 +3,8 @@ import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
 
 import { submitForm } from '@/shared/helpers/form'
-import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
 import { includes, camelCase } from 'lodash'
 
 import NewComment from '@/components/thread/item/new_comment.vue'
@@ -27,58 +25,49 @@ export default
     PollCreated: PollCreated
     StanceCreated: StanceCreated
     OutcomeCreated: OutcomeCreated
+
   props:
     event: Object
     eventWindow: Object
+
   data: ->
     isDisabled: false
     showCommentForm: false
     parentComment: null
+    actions: [
+        name: 'remove-event'
+        icon: 'mdi-delete'
+        canPerform: => AbilityService.canAddComment(@eventable.discussion())
+        perform: => submitForm @, @event,
+          submitFn: @event.removeFromThread
+          flashSuccess: 'thread_item.event_removed'
+        ]
 
-  watch:
-    showCommentForm: (a,b) ->
-      console.log "showCommentForm", a, b
+  computed:
+    canRemoveEvent: -> AbilityService.canRemoveEventFromThread(@event)
 
-  methods:
     hasComponent: ->
       includes(threadItemComponents, camelCase(@event.kind))
 
+    isUnread: ->
+      (Session.user().id != @event.actorId) && @eventWindow.isUnread(@event)
+
+    indent: ->
+      @event.isNested() && @eventWindow.useNesting
+
+    isFocused: -> @eventWindow.discussion.requestedSequenceId == @event.sequenceId
+
+  methods:
     debug: -> window.Loomio.debug
 
-    canRemoveEvent: -> AbilityService.canRemoveEventFromThread(@event)
-
-    removeEvent: -> submitForm @, @event,
-      submitFn: @event.removeFromThread
-      flashSuccess: 'thread_item.event_removed'
+    camelCase: camelCase
 
     mdColors: ->
       obj = {'border-color': 'primary-500'}
       obj['background-color'] = 'accent-50' if @isFocused
       obj
 
-    isFocused: -> @eventWindow.discussion.requestedSequenceId == @event.sequenceId
-
-    indent: ->
-      @event.isNested() && @eventWindow.useNesting
-
-    isUnread: ->
-      (Session.user().id != @event.actorId) && @eventWindow.isUnread(@event)
-
-    headline: ->
-      @$t eventHeadline(@event, @eventWindow.useNesting),
-        author:   @event.actorName() || @$t('common.anonymous')
-        username: @event.actorUsername()
-        key:      @event.model().key
-        title:    eventTitle(@event)
-        polltype: @$t(eventPollType(@event)).toLowerCase()
-
-    link: ->
-      LmoUrlService.event @event
-
-    camelCase: camelCase
-
     handleReplyButtonClicked: (obj) ->
-      console.log "reply button clicked", @event
       @parentComment = obj.eventable
       @showCommentForm = true
 
@@ -89,28 +78,17 @@ export default
 
 <template lang="pug">
 div
-  .thread-item(md-colors='mdColors()', :class="{'thread-item--indent': indent(), 'thread-item--unread': isUnread()}", in-view='$inview&&event.markAsRead()', in-view-options='{throttle: 200}')
-    .lmo-flex.lmo-relative.lmo-action-dock-wrapper.lmo-flex--row(:id="'sequence-' + event.sequenceId")
+  .thread-item(md-colors='mdColors()', :class="{'thread-item--indent': indent, 'thread-item--unread': isUnread}", in-view='$inview&&event.markAsRead()', in-view-options='{throttle: 200}')
+    div(v-if='debug()')
+      | id: {{event.id}}cpid: {{event.comment().parentId}}pid: {{event.parentId}}sid: {{event.sequenceId}}position: {{event.position}}depth: {{event.depth}}unread: {{isUnread()}}cc: {{event.childCount}}
+    // <md-checkbox ng-if="event.isForkable()" ng-disabled="!event.canFork()" ng-click="event.toggleFromFork()" ng-checked="event.isForking()"></md-checkbox>
+    .thread-item__liner(:id="'sequence-' + event.sequenceId")
       .lmo-disabled-form(v-show='isDisabled')
-      .thread-item__avatar.lmo-margin-right
+      .thread-item__avatar
         user-avatar(v-if='!event.isForkable() && event.actor()', :user='event.actor()', size='medium')
-        // <md-checkbox ng-if="event.isForkable()" ng-disabled="!event.canFork()" ng-click="event.toggleFromFork()" ng-checked="event.isForking()"></md-checkbox>
-      .thread-item__body.lmo-flex.lmo-flex__horizontal-center.lmo-flex--column
-        .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between
-          h3.thread-item__title(:id="'event-' + event.id")
-            div(v-if='debug()')
-              | id: {{event.id}}cpid: {{event.comment().parentId}}pid: {{event.parentId}}sid: {{event.sequenceId}}position: {{event.position}}depth: {{event.depth}}unread: {{isUnread()}}cc: {{event.childCount}}
-            span(v-html='headline()')
-            |
-            |
-            span(aria-hidden='true') ·
-            |
-            |
-            router-link.thread-item__link.lmo-pointer(:to='link()')
-              time-ago.timeago--inline(:date='event.createdAt')
-          button.md-button--tiny(v-if='canRemoveEvent()', @click='removeEvent()')
-            i.mdi.mdi-delete
-        component(v-if='hasComponent()' :is='camelCase(event.kind)' @reply-button-clicked="handleReplyButtonClicked" :event='event', :eventable='event.model()')
+      .thread-item__main
+        thread-item-headline(v-if='!hasComponent' :event="event" :eventable="eventable" :actions="actions" :eventWindow="eventWindow")
+        component(v-if='hasComponent' :is='camelCase(event.kind)' @reply-button-clicked="handleReplyButtonClicked" :event='event' :eventable='event.model()' :eventWindow="eventWindow")
     comment-form(v-if="showCommentForm" @comment-submitted="handleCommentSubmitted" :parentComment="parentComment" :discussion="eventWindow.discussion")
   template(v-if='event.isSurface() && eventWindow.useNesting')
     event-children(:parent-event='event' :parent-event-window='eventWindow')
@@ -121,6 +99,12 @@ div
 @import 'mixins';
 .thread-item {
   padding: 4px $cardPaddingSize;
+}
+
+.thread-item__liner {
+  display: flex;
+  position: relative;
+  flex-direction: row;
 }
 
 .thread-item--unread {
@@ -140,25 +124,10 @@ div
   margin-left: $cardPaddingSize + 42px;
 }
 
-.thread-item__title {
-  /* these styles break with BEM but they keep the translations clean*/
-  color: $grey-on-white;
-  strong, a {
-    color: $primary-text-color;
-    @include md-body-2;
-  }
-  strong:nth-child(2) {
-    font-weight: normal;
-    color: $grey-on-white;
-  }
-}
-
-
-.thread-item__headline {
-  min-height: 28px;
-}
-
-.thread-item__body {
+.thread-item__main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   width: 100%;
   min-width: 0;
 }
@@ -167,7 +136,6 @@ div
     margin-left: -42px;
   }
 }
-
 
 .thread-item__footer {
   @include fontSmall();
@@ -184,10 +152,6 @@ div
   text-decoration: underline;
 }
 
-.thread-item__link abbr span {
-  font-weight: normal;
-  color: $grey-on-white;
-}
 
 .thread-item__action {
   @include lmoBtnLink;
