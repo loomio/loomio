@@ -13,6 +13,10 @@ export default
 
   data: ->
     stance: @lastStanceOrNew()
+    newStance: Records.stances.build(
+      pollId:    @poll.id,
+      userId:    AppConfig.currentUserId
+    ).choose(@$route.params.poll_option_id)
     userHasVoted: false
 
   created: ->
@@ -25,10 +29,7 @@ export default
 
   methods:
     lastStanceOrNew: ->
-      myLastStanceFor(@poll) || Records.stances.build(
-        pollId:    @poll.id,
-        userId:    AppConfig.currentUserId
-      ).choose(@$route.params.poll_option_id)
+      myLastStanceFor(@poll) || @newStance
 
   computed:
     userCanParticipate: ->
