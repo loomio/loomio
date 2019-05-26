@@ -23,7 +23,6 @@ export default
       name: "newAndPersistedDocumentsFor(#{@model.constructor.singular}.#{@model.id})"
       collections: ['documents']
       query: (store) =>
-        console.log store
         @documents = store.documents.collection.chain().find(
           modelId: {$in: flatten([@model.id, @model.newDocumentIds])}
           modelType: capitalize(@model.constructor.singular)).

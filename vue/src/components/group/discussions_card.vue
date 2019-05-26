@@ -9,8 +9,6 @@ import { applyLoadingFunction } from '@/shared/helpers/apply'
 import { map, throttle } from 'lodash'
 import Session from '@/shared/services/session'
 
-
-
 export default
   mixins: [DiscussionModalMixin]
   props:
@@ -45,9 +43,9 @@ export default
 
   methods:
     filterDiscussions: ->
-      @discussions = ThreadFilter(Records, filters: ['hide_pinned', @filter])
+      @discussions = ThreadFilter(Records, {group: @group, filters: ['hide_pinned', @filter]})
     filterPinned: ->
-      @pinned = ThreadFilter(Records, filters: ['show_pinned', @filter])
+      @pinned = ThreadFilter(Records, {group: @group, filters: ['show_pinned', @filter]})
 
     searchThreads: throttle ->
       return Promise.resolve(true) unless @fragment.length

@@ -112,8 +112,6 @@ export default
     dismiss: -> ThreadService.dismiss(@thread)
     muteThread: -> ThreadService.mute(@thread)
     unmuteThread: -> ThreadService.unmute(@thread)
-  mounted: ->
-    console.log 'thread', @thread
 </script>
 
 <template lang="pug">

@@ -49,7 +49,6 @@ export default
           @views.thisweek  = ThreadFilter(store, filters: @filters('hide_proposals'), from: '1 week ago',   to: '1 day ago')
           @views.thismonth = ThreadFilter(store, filters: @filters('hide_proposals'), from: '1 month ago',  to: '1 week ago')
           @views.older     = ThreadFilter(store, filters: @filters('hide_proposals'), from: '3 month ago',  to: '1 month ago')
-          console.log @proposals
 
     viewName: (name) ->
       if @filter == 'show_muted'

@@ -151,5 +151,7 @@ module.exports = {
   UserAvatar: 'user/avatar',
   UserAvatarBody: 'user/avatar_body',
   UserDropdown: 'common/user_dropdown',
-  ValidationErrors: 'common/validation_errors'
+  ValidationErrors: 'common/validation_errors',
+  ReactionDisplay: 'reaction/display',
+  ReactionInput: 'reaction/input'
 }
