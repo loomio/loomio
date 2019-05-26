@@ -9,6 +9,7 @@ class Identities::Base < ApplicationRecord
 
   PROVIDERS = YAML.load_file(Rails.root.join("config", "providers.yml"))['identity']
   self.inheritance_column = :identity_type
+  self.store_full_sti_class = false
   scope :with_user, -> { where.not(user: nil) }
   scope :slack, -> { where(identity_type: :slack) }
 
