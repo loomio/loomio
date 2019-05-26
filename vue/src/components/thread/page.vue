@@ -16,7 +16,6 @@ export default
     discussion: {}
     activePolls: []
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }
     if @requestedCommentId
       Records.events.fetch
         path: 'comment'
