@@ -44,6 +44,7 @@ export default
   created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
+    EventBus.$emit 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}
     Records.view
       name:"emailSettingsGroups"
       collections: ['groups', 'memberships']
@@ -51,7 +52,6 @@ export default
         groups = Session.user().formalGroups()
         user = Session.user()
         @groups = sortBy groups, 'fullName'
-
   methods:
     init: ->
       return unless Session.isSignedIn() or Session.user().restricted?

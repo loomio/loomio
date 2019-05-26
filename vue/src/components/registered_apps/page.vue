@@ -34,7 +34,7 @@ export default
     loading: true
     applications: Records.oauthApplications.collection.data
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', {title: 'OAuth Application Dashboard', page: 'registeredAppsPage'}
+    EventBus.$emit 'currentComponent', {title: 'OAuth Application Dashboard', page: 'registeredAppsPage'}
     Records.oauthApplications.fetchOwned().then => @loading = false
   methods:
     openApplicationForm: (application) ->
