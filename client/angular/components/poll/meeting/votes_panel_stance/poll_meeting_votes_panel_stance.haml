@@ -4,5 +4,5 @@
     .poll-common-votes-panel__stance-name-and-option
       %strong> {{ participantName() }}
     .poll-common-votes-panel__stance-reason{ng-if: "stance.reason"}
-      %span.lmo-markdown-wrapper{ng-if: "!stance.translation", marked: "stance.reason"}
+      %span.lmo-markdown-wrapper{ng-if: "!stance.translation", richtext: "stance.reason", format: "stance.reasonFormat"}
       %translation{ng-if: "stance.translation", model: "stance", field: "reason"}

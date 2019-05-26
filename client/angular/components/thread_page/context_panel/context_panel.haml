@@ -36,7 +36,7 @@
       %md-tooltip {{ discussion.closedAt | exactDateWithTime }}
     %tag_display.lmo-flex{discussion: "discussion"}
 
-  .context-panel__description.lmo-markdown-wrapper{ng-if: "!discussion.translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
+  .context-panel__description.lmo-markdown-wrapper{ng-if: "!discussion.translation", richtext: "discussion.cookedDescription()", format: "discussion.descriptionFormat", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
   %translation.lmo-markdown-wrapper{ng-if: "discussion.translation", model: "discussion", field: "description"}
 
   %document_list{model: "discussion", skip-fetch: "true"}

@@ -1,5 +1,5 @@
 .new-comment{id: "comment-{{eventable.id}}"}
-  .thread-item__body.new-comment__body.lmo-markdown-wrapper{ng-if: "!eventable.translation", marked: "eventable.cookedBody()"}
+  .thread-item__body.new-comment__body.lmo-markdown-wrapper{ng-if: "!eventable.translation", richtext: "eventable.cookedBody()", format: "eventable.bodyFormat"}
   %translation.thread-item__body{ng-if: "eventable.translation", model: "eventable", field: "body"}
 
   %outlet{name: "after-comment-body", model: "eventable"}
