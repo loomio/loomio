@@ -25,11 +25,11 @@ export default
       query: (store) =>
         @reactionHash = {all: []}
         each Records.reactions.find(@reactionParams), (reaction) =>
-          name = reaction.user().name
           unless @reactionHash[reaction.reaction]?
             @reactionHash[reaction.reaction] = []
-          @reactionHash[reaction.reaction].push(name)
-          @reactionHash['all'].push(name)
+          user = Records.users.find(reaction.userId)
+          @reactionHash[reaction.reaction].push(user)
+          @reactionHash['all'].push(user)
           true
 
     if @load
@@ -93,8 +93,11 @@ export default
             .fake-chip(v-on="on")
               emoji(:emoji="smileCorrect(reaction)" :size="diameter")
               span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
-          .reactions-display__name(v-for="name in reactionHash[reaction]" :key="name") {{ name }}
-    //- .reactions-display__names(v-iVjjjf="myReaction")
+              user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" size="tiny")
+
+          .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
+            span {{ user.name }}
+    //- .reactions-display__names(v-if="myReaction")
     //-   span(v-if="reactionHash.all.length == 1" v-t="'reactions_display.you'")
     //-   span(v-if="reactionHash.all.length == 2" v-t="{path: 'reactions_display.you_and_name', args: {name: otherReaction.user().name}}")
     //-   span(v-if="reactionHash.all.length > 2"  v-t="{path: 'reactions_display.you_and_name_and_count_more', args: {name: otherReaction.user().name, count: reactionHash.all.length - 2}}")
