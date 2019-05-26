@@ -58,6 +58,12 @@ export default
       difference keys(@reactionHash), ['all']
 
   methods:
+    smileCorrect: (shortcode) ->
+      if shortcode == ":slight_smile:"
+        ":smile:"
+      else
+        shortcode
+
     removeMine: (reaction) ->
       mine = Records.reactions.find(merge({}, @reactionParams,
         userId:   Session.user().id
@@ -85,7 +91,7 @@ export default
         v-tooltip(bottom)
           template(v-slot:activator="{ on }")
             .fake-chip(v-on="on")
-              emoji(:emoji="reaction" :size="diameter")
+              emoji(:emoji="smileCorrect(reaction)" :size="diameter")
               span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
           .reactions-display__name(v-for="name in reactionHash[reaction]" :key="name") {{ name }}
     //- .reactions-display__names(v-iVjjjf="myReaction")
