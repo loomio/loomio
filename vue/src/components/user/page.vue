@@ -40,7 +40,7 @@ export default
   created: ->
     # applyLoadingFunction(@, 'loadGroupsFor')
     @init()
-    EventBus.$emit 'currentComponent', {title: @user.name, page: 'userPage'}
+    EventBus.$emit 'currentComponent', {page: 'userPage'}
     Records.users.findOrFetchById(@$route.params.key).then @init, (error) ->
       EventBus.$emit 'pageError', error
 
