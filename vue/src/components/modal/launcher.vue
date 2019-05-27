@@ -48,7 +48,6 @@ export default
 
   methods:
     openModal: (opts) ->
-      console.log 'openModal', opts
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props

@@ -138,6 +138,6 @@ module Loomio
 
     # expecting something like wss://hostname/cable, defaults to wss://canonical_host/cable
     config.action_cable.url = ENV['ACTION_CABLE_URL'] if ENV['ACTION_CABLE_URL']
-    config.action_cable.allowed_request_origins = [ENV['CANONICAL_HOST']]
+    config.action_cable.allowed_request_origins = [ENV['CANONICAL_HOST'], 'http://localhost:8080']
   end
 end

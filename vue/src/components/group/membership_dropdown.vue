@@ -81,9 +81,9 @@ export default
         v-list-tile-title(v-t="'membership_dropdown.make_coordinator'", v-if='!membership.admin')
         v-list-tile-title(v-t="'membership_dropdown.demote_coordinator'", v-if='membership.admin')
       v-list-tile.membership-dropdown__remove(v-if='canRemoveMembership()' @click='removeMembership()')
-        //- v-list-tile-title(v-t="{ path: 'membership_dropdown.remove_from.' + membership.group().targetModel().constructor.singular, args: {pollType: membership.group().targetModel().translatedPollType()} }" v-if='membership.acceptedAt')
-        v-list-tile-title(v-if='membership.acceptedAt')
-          span "remove membership"
+        v-list-tile-title(v-if='membership.acceptedAt' v-t="{ path: 'membership_dropdown.remove_from.' + membership.group().targetModel().constructor.singular, args: {pollType: membership.group().targetModel().isA('poll') && membership.group().targetModel().translatedPollType()} }")
+        //- v-list-tile-title(v-if='membership.acceptedAt')
+        //-   span "remove membership"
         v-list-tile-title(v-t="'membership_dropdown.cancel_invitation'", v-if='!membership.acceptedAt')
 </template>
 <style lang="scss">

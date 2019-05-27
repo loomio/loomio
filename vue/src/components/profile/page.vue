@@ -112,7 +112,7 @@ export default
           validation-errors(:subject='user', field='email')
         .md-block
           label(for='user-short-bio-field', translate='profile_page.short_bio_label')
-          lmo-textarea(:model='user' field="shortBio" :placeholder="$t('profile_page.short_bio_placeholder')")
+          lmo-textarea(:model='user' field="shortBio" :placeholder="'profile_page.short_bio_placeholder'")
           validation-errors(:subject='user', field='shortBio')
         .md-block
           label(for='user-location-field', v-t="'profile_page.location_label'")

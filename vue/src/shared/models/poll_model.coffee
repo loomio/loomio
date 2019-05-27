@@ -6,6 +6,7 @@ import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import HasGuestGroup    from '@/shared/mixins/has_guest_group'
 import EventBus         from '@/shared/services/event_bus'
+import I18n             from '@/i18n'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -146,6 +147,10 @@ export default class PollModel extends BaseModel
       'publish'
     else
       'edit'
+
+  translatedPollType: ->
+    
+    I18n.t("poll_types.#{@pollType}")
 
   addOption: =>
     @handleDateOption()

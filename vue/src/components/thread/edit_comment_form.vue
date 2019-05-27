@@ -41,7 +41,7 @@ v-card.edit-comment-form
     dismiss-modal-button(:close="close")
   v-card-text
     .lmo-disabled-form(v-show='isDisabled')
-    lmo-textarea(:model='comment' field="body" :placeholder="$t('comment_form.say_something')")
+    lmo-textarea(:model='comment' field="body" :placeholder="'comment_form.say_something'")
   v-card-actions
     comment-form-actions(:comment="comment", :submit="submit")
 </template>
