@@ -8,12 +8,16 @@ export default
     model: Object
     limit: Number
     viewMoreLink: Boolean
+  data: ->
+    fetchRecordsExecuting: false
   created: ->
     applyLoadingFunction(@, 'fetchRecords')
     @fetchRecords()
   methods:
     fetchRecords: ->
-      Records.polls.fetchFor(@model, limit: @limit, status: 'closed')
+      @fetchRecordsExecuting = true
+      Records.polls.fetchFor(@model, limit: @limit, status: 'closed').then =>
+        @fetchRecordsExecuting = false
 
     displayViewMore: ->
       @viewMoreLink and
@@ -39,5 +43,5 @@ v-card.poll-common-index-card
   v-card-actions
     v-btn.poll-common-index-card__view-more(flat, @click='viewMore()', v-if='displayViewMore()')
       span(v-t="{ path: 'poll_common_index_card.count', args: { count: model.closedPollsCount } }")
-    // <loading v-if="fetchRecordsExecuting"></loading>
+  loading(v-if="fetchRecordsExecuting")
 </template>

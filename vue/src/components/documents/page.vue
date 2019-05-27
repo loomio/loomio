@@ -30,6 +30,7 @@ export default
   data: ->
     group: {}
     fragment: ''
+    fetchDocumentsExecuting: false
   created: ->
     EventBus.$emit 'currentComponent', { page: 'documentsPage'}
     # applyLoadingFunction @, 'fetchDocuments'
@@ -43,7 +44,9 @@ export default
       EventBus.$emit 'pageError', error
   methods:
     fetchDocuments: _debounce ->
-      Records.documents.fetchByGroup(@group, @fragment)
+      @fetchDocumentsExecuting = true
+      Records.documents.fetchByGroup(@group, @fragment). then =>
+        @fetchDocumentsExecuting = false
     , 250
 
     documents: (filter) ->
@@ -68,30 +71,23 @@ export default
 
 </script>
 
-<template>
-  <div class="loading-wrapper lmo-one-column-layout">
-    <loading v-if="isEmptyGroup"></loading>
-    <main v-if="!isEmptyGroup" class="documents-page">
-      <div class="lmo-group-theme-padding"></div>
-      <group-theme :group="group"></group-theme>
-      <div class="lmo-card">
-        <div class="documents-page__top-bar lmo-flex lmo-flex__space-between lmo-flex__baseline">
-          <h2 v-t="'documents_page.title'" class="lmo-h2 md-title"></h2>
-          <v-btn @click="addDocument()" v-if="canAdministerGroup" class="md-primary md-raised documents-page__invite">
-            <span v-t="'documents_page.add_document'"></span>
-          </v-btn>
-        </div>
-        <p v-if="!group.hasDocuments(true)" v-t="'documents_page.no_documents'" class="lmo-hint-text"></p>
-        <div v-if="group.hasRelatedDocuments()" class="documents-page__documents">
-          <div md-no-float="true" class="md-block documents-page__search-filter">
-            <input v-model="fragment" @input="fetchDocuments()" placeholder="$t('documents_page.fragment_placeholder')" class="membership-page__search-filter">
-            <i class="mdi mdi-magnify mdi-24px"></i>
-          </div>
-          <p v-if="!hasDocuments" v-t="{ path: 'documents_page.no_documents_from_fragment', args: { fragment: fragment } }" class="lmo-hint-text"></p>
-          <document-management :group="group" :fragment="fragment"></document-management>
-        </div>
-      </div>
-      <!-- <loading v-if="fetchDocumentsExecuting"></loading> -->
-    </main>
-  </div>
+<template lang="pug">
+  .loading-wrapper.lmo-one-column-layout
+    loading(v-if='isEmptyGroup')
+    main.documents-page(v-if='!isEmptyGroup')
+      .lmo-group-theme-padding
+      group-theme(:group='group')
+      .lmo-card
+        .documents-page__top-bar.lmo-flex.lmo-flex__space-between.lmo-flex__baseline
+          h2.lmo-h2.md-title(v-t="'documents_page.title'")
+          v-btn.md-primary.md-raised.documents-page__invite(@click='addDocument()', v-if='canAdministerGroup')
+            span(v-t="'documents_page.add_document'")
+        p.lmo-hint-text(v-if='!group.hasDocuments(true)', v-t="'documents_page.no_documents'")
+        .documents-page__documents(v-if='group.hasRelatedDocuments()')
+          .md-block.documents-page__search-filter(md-no-float='true')
+            input.membership-page__search-filter(v-model='fragment', @input='fetchDocuments()', placeholder="$t('documents_page.fragment_placeholder')")
+            i.mdi.mdi-magnify.mdi-24px
+          p.lmo-hint-text(v-if='!hasDocuments', v-t="{ path: 'documents_page.no_documents_from_fragment', args: { fragment: fragment } }")
+          document-management(:group='group', :fragment='fragment')
+      loading(v-if='fetchDocumentsExecuting')
 </template>

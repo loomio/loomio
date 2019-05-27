@@ -85,7 +85,7 @@ v-container.lmo-main-container.dashboard-page
   section(v-if='!dashboardLoaded', v-for='(viewName, index) in loadingViewNames', :key='index', :class="'dashboard-page__loading dashboard-page__' + viewName", aria-hidden='true')
     h2.dashboard-page__date-range(v-t="'dashboard_page.threads_from.' + viewName")
     .thread-previews-container
-      // <loading_content line-count="2" ng-repeat="i in [1,2] track by $index" class="thread-preview"></loading_content>
+      loading-content(:lineCount='2' v-for='(item, index) in [1,2]' :key='index')
   section.dashboard-page__loaded(v-if='dashboardLoaded')
     .dashboard-page__empty(v-if='noThreads')
       p(v-t="'dashboard_page.no_groups.show_all'", v-if='noGroups')

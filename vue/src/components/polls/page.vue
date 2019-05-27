@@ -35,6 +35,8 @@ export default
       per: 25
     fragment: null
     pollsCount: null
+    fetchRecordsExecuting: false
+    loadMoreExecuting: false
   created: ->
     EventBus.$emit 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}
     # applyLoadingFunction @, 'loadMore'
@@ -56,7 +58,7 @@ export default
       !@fragment && @loadedCount < @pollsCount
 
     fetching: ->
-      # @fetchRecordsExecuting || @loadMoreExecuting
+      @fetchRecordsExecuting || @loadMoreExecuting
 
     orderedPolls: ->
       _sortBy(@pollCollection().polls(), 'pollImportance')
@@ -69,7 +71,9 @@ export default
     groupFilter: -> LmoUrlService.params().group_key
     pollImportance: (poll) -> poll.importance(@now)
     loadMore: ->
+      @loadMoreExecuting = true
       @loader.loadMore().then (response) =>
+        @loadMoreExecuting = false
         @pollIds = @pollIds.concat _map(response.polls, 'id')
     init: ->
       LmoUrlService.params 'group_key', @groupFilter
@@ -79,10 +83,13 @@ export default
       Records.polls.searchResultsCount(LmoUrlService.params()).then (response) =>
         @pollsCount = response.count
 
+      @fetchRecordsExecuting = true
       @loader.fetchRecords().then (response) =>
+        @fetchRecordsExecuting = false
         @group   = Records.groups.find(LmoUrlService.params().group_key)
         @pollIds = _map(response.polls, 'id')
       , (error) ->
+        @fetchRecordsExecuting = false
         # EventBus.broadcast $rootScope, 'pageError', error
     startNewPoll: ->
       ModalService.open 'PollCommonStartModal', poll: -> Records.polls.build(authorId: Session.user().id)

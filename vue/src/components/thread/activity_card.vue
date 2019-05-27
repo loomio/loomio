@@ -140,7 +140,7 @@ section.activity-card(aria-labelledby='activity-card-title')
       v-select(flat :items='renderModeItems', v-model='renderMode', @change='init()', solo='')
   div(v-if='debug()')
     | first: {{eventWindow.firstInSequence()}}last: {{eventWindow.lastInSequence()}}total: {{eventWindow.numTotal()}}min: {{eventWindow.min}}max: {{eventWindow.max}}per: {{per}}firstLoaded: {{eventWindow.firstLoaded()}}lastLoaded: {{eventWindow.lastLoaded()}}loadedCount: {{eventWindow.numLoaded()}}read: {{discussion.readItemsCount()}}unread: {{discussion.unreadItemsCount()}}firstUnread {{discussion.firstUnreadSequenceId()}}initialSequenceId: {{initialSequenceId(initialPosition())}}requestedSequenceId: {{discussion.requestedSequenceId}}position: {{initialPosition()}}
-  // <loading_content v-if="loader.loading" block-count="2" class="lmo-card-left-right-padding"></loading_content>
+  loading-content(v-if='loader.loading' :blockCount='2')
   .activity-card__content(v-if='!loader.loading')
     a.activity-card__load-more.lmo-flex.lmo-flex__center.lmo-no-print(v-show='eventWindow.anyPrevious() && !eventWindow.loader.loadingPrevious', @click='eventWindow.showPrevious()', tabindex='0')
       i.mdi.mdi-autorenew
