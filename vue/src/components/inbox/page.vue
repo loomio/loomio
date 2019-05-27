@@ -24,7 +24,6 @@ export default
     views: {}
     groups: []
     loading: false
-    loaded: false
     unreadCount: 0
     filters: [
       'only_threads_in_my_groups',
@@ -55,7 +54,8 @@ export default
       ModalService.open 'GroupModal', group: => Records.groups.build()
 
     init: (options = {}) ->
-      Records.discussions.fetchInbox(options).then => @loaded = true
+      @loading = true
+      Records.discussions.fetchInbox(options).then => @loading = false
 
     query: ->
       ThreadQueryService.queryFor(name: "inbox", filters: @filters)
