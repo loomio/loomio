@@ -26,7 +26,7 @@ export default
         @documents = store.documents.collection.chain().find(
           modelId: {$in: flatten([@model.id, @model.newDocumentIds])}
           modelType: capitalize(@model.constructor.singular)).
-          where((doc) -> !includes @model.removedDocumentIds, doc.id).
+          where((doc) => !includes @model.removedDocumentIds, doc.id).
           simplesort('createdAt', true).data()
 
   methods:
