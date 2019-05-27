@@ -108,7 +108,7 @@ v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pe
       v-btn(@click="toggleSearch()")
         v-icon mdi-close
 
-  v-list(two-line)
+  v-list(two-line avatar)
     plus-button.membership-card__membership.membership-card__invite(v-if='canAddMembers()', :click='invite', :message="'membership_card.invite_to_' + group.targetModel().constructor.singular")
     v-list-tile(v-for='membership in orderedMemberships()', :key='membership.id', data-username='membership.user().username')
       v-list-tile-avatar
@@ -118,6 +118,7 @@ v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pe
         v-list-tile-sub-title.membership-card__last-seen
           span(v-if='membership.user().lastSeenAt', v-t="{ path: 'user_page.online_field', args: { value: fromNow(membership.user().lastSeenAt) } }")
           span(v-if='!membership.acceptedAt', v-t="{ path: 'user_page.invited', args: { value: fromNow(membership.user().createdAt) } }")
+      v-list-tile-action
         membership-dropdown(:membership="membership")
     loading(v-if='loader.loading')
   v-card-actions(v-if='showLoadMore()')
