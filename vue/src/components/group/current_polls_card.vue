@@ -10,12 +10,15 @@ export default
     model: Object
   data: ->
     polls: []
+    fetchRecordsExecuting: false
   created: ->
-    applyLoadingFunction @, 'fetchRecords'
+    # applyLoadingFunction @, 'fetchRecords'
     @init()
   methods:
     init: ->
-      Records.polls.fetchFor(@model, status: 'active')
+      @fetchRecordsExecuting = true
+      Records.polls.fetchFor(@model, status: 'active').then =>
+        @fetchRecordsExecuting = false
       Records.view
         name: "currentPollsFor#{@model.id}"
         collections: ['polls']

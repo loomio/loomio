@@ -36,6 +36,7 @@ export default
     isMembershipsFetchingDone: false
     groups: []
     canContactUser: false
+    loadingGroupsForExecuting: false
 
   created: ->
     # applyLoadingFunction(@, 'loadGroupsFor')
@@ -57,7 +58,9 @@ export default
             @canContactUser = AbilityService.canContactUser(@user)
 
     loadGroupsFor: (user) ->
-      Records.memberships.fetchByUser(user)
+      @loadingGroupsForExecuting = true
+      Records.memberships.fetchByUser(user).then =>
+        @loadingGroupsForExecuting = false
 
   computed:
     isEmptyUser: ->
@@ -87,5 +90,5 @@ export default
               v-list-tile.user-page__group.lmo-flex.lmo-flex__center(v-for='group in groups', :key='group.id')
                 img.md-avatar.lmo-box--small.lmo-margin-right(:src='group.logoUrl()')
                 router-link(:to='urlFor(group)') {{group.fullName}}
-            // <loading v-if="loadGroupsForExecuting"></loading>
+            loading(v-if='loadingGroupsForExecuting')
 </template>

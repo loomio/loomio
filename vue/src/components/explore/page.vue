@@ -94,6 +94,7 @@ export default
     perPage: AppConfig.pageSize.exploreGroups
     canLoadMoreGroups: true
     query: ""
+    searchExecuting: false
   mounted: ->
     EventBus.$emit 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
     # applyLoadingFunction(@, 'search')
@@ -108,9 +109,10 @@ export default
         @resultsCount = data.count
       @groupIds = @groupIds.concat _map(response.groups, 'id')
       @canLoadMoreGroups = (response.groups || []).length == @perPage
-
+      @searchExecuting = false
     # changing the search term
     search: ->
+      @searchExecuting = true
       @groupIds = []
       Records.groups.fetchExploreGroups(@query, per: @perPage).then(@handleSearchResults)
 
@@ -142,39 +144,34 @@ export default
       _sortBy @groups(), '-recentActivityCount'
 </script>
 
-<template>
-  <div class="lmo-one-column-layout">
-    <main class="explore-page">
-      <h1 v-t="'explore_page.header'" class="lmo-h1-medium"></h1>
-      <!-- <md-input-container class="explore-page__search-field">
-          <input ng-model="query" ng-model-options="{debounce: 600}" ng-change="search()" placeholder="{{ \'explore_page.search_placeholder\' | translate }}" id="search-field"><i aria-hidden="true" class="mdi mdi-magnify"></i>
-          <loading ng-show="searchExecuting"></loading>
-      </md-input-container> -->
-      <div v-show="showMessage" v-t="{ path: searchResultsMessage, args: { resultCount: resultsCount, searchTerm: query } }" class="explore-page__search-results"></div>
-      <div class="explore-page__groups">
-        <router-link v-for="group in orderedGroups" :key="group.id" :to="urlFor(group)" class="explore-page__group">
-          <div :style="groupCover(group)" class="explore-page__group-cover"></div>
-          <div class="explore-page__group-details">
-            <h2 class="lmo-h2">{{group.name}}</h2>
-            <div class="explore-page__group-description">{{groupDescription(group)}}</div>
-            <div class="explore-page__group-stats lmo-flex lmo-flex__start lmo-flex__center">
-              <i class="mdi mdi-account-multiple lmo-margin-right"></i>
-              <span class="lmo-margin-right">{{group.membershipsCount}}</span>
-              <i class="mdi mdi-comment-text-outline lmo-margin-right"></i>
-              <span class="lmo-margin-right">{{group.discussionsCount}}</span>
-              <i class="mdi mdi-thumbs-up-down lmo-margin-right"></i>
-              <span class="lmo-margin-right">{{group.pollsCount}}</span>
-              <i></i>
-              <span></span>
-            </div>
-          </div>
-        </router-link>
-      </div>
-      <div v-show="canLoadMoreGroups" class="lmo-show-more">
-        <!-- <button v-show="!searchExecuting" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more"></button> -->
-      </div>
-      <!-- <loading v-show="searchExecuting"></loading> -->
-      <div v-show="noResultsFound" v-html="$t('explore_page.no_results_found')" class="explore-page__no-results-found"></div>
-    </main>
-  </div>
+<template lang='pug'>
+.lmo-one-column-layout
+  main.explore-page
+    h1.lmo-h1-medium(v-t="'explore_page.header'")
+    //
+      <md-input-container class="explore-page__search-field">
+      <input ng-model="query" ng-model-options="{debounce: 600}" ng-change="search()" placeholder="{{ \'explore_page.search_placeholder\' | translate }}" id="search-field"><i aria-hidden="true" class="mdi mdi-magnify"></i>
+      <loading ng-show="searchExecuting"></loading>
+      </md-input-container>
+    .explore-page__search-results(v-show='showMessage', v-t='{ path: searchResultsMessage, args: { resultCount: resultsCount, searchTerm: query } }')
+    .explore-page__groups
+      router-link.explore-page__group(v-for='group in orderedGroups', :key='group.id', :to='urlFor(group)')
+        .explore-page__group-cover(:style='groupCover(group)')
+        .explore-page__group-details
+          h2.lmo-h2 {{group.name}}
+          .explore-page__group-description {{groupDescription(group)}}
+          .explore-page__group-stats.lmo-flex.lmo-flex__start.lmo-flex__center
+            i.mdi.mdi-account-multiple.lmo-margin-right
+            span.lmo-margin-right {{group.membershipsCount}}
+            i.mdi.mdi-comment-text-outline.lmo-margin-right
+            span.lmo-margin-right {{group.discussionsCount}}
+            i.mdi.mdi-thumbs-up-down.lmo-margin-right
+            span.lmo-margin-right {{group.pollsCount}}
+            i
+            span
+    .lmo-show-more(v-show='canLoadMoreGroups')
+      // <button v-show="!searchExecuting" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more"></button>
+    loading(v-show='searchExecuting')
+    .explore-page__no-results-found(v-show='noResultsFound', v-html="$t('explore_page.no_results_found')")
+
 </template>

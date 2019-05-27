@@ -24,7 +24,6 @@ export default
     views: {}
     groups: []
     loading: false
-    loaded: false
     unreadCount: 0
     filters: [
       'only_threads_in_my_groups',
@@ -55,7 +54,8 @@ export default
       ModalService.open 'GroupModal', group: => Records.groups.build()
 
     init: (options = {}) ->
-      Records.discussions.fetchInbox(options).then => @loaded = true
+      @loading = true
+      Records.discussions.fetchInbox(options).then => @loading = false
 
     query: ->
       ThreadQueryService.queryFor(name: "inbox", filters: @filters)
@@ -68,7 +68,7 @@ v-container.lmo-main-container.inbox-page(grid-list-lg)
     h1.lmo-h1-medium.inbox-page__heading(v-t="'inbox_page.unread_threads'")
     section.dashboard-page__loading(v-if='loading', aria-hidden='true')
       .thread-previews-container
-        // <loading_content line-count="2" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10] track by $index" class="thread-preview"></loading_content>
+        loading-content.thread-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')
     section.inbox-page__threads(v-if='!loading')
       .inbox-page__no-threads(v-show='unreadCount == 0')
         span(v-t="'inbox_page.no_threads'")

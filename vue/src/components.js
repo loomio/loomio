@@ -51,6 +51,7 @@ module.exports = {
   JoinGroupButton: 'group/join_button',
   LmoTextarea: 'lmo_textarea/lmo_textarea',
   Loading: 'common/loading',
+  LoadingContent: 'common/loading_content',
   MatrixChart: 'poll/meeting/matrix_chart',
   MembershipCard: 'group/membership_card',
   MembershipDropdown: 'group/membership_dropdown',
