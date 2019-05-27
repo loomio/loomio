@@ -110,29 +110,31 @@ export default
 </script>
 <template lang="pug">
 v-container.lmo-main-container.polls-page
-  .lmo-flex.lmo-flex__space-between.lmo-flex__baseline
-    h1.lmo-h1.dashboard-page__heading.polls-page__heading(v-if='hasGroup')
-      router-link(:to='urlFor(group)')
-        span(v-t="{ path: 'polls_page.heading_with_group', args: { name: group.fullName }}")
-    h1.lmo-h1.dashboard-page__heading.polls-page__heading(v-if='!hasGroup', v-t="'polls_page.heading'")
-  v-card
-    //
-      <div class="polls-page__filters lmo-flex">
-      <md-input-container md-no-float="true" class="polls-page__search md-block"><i class="mdi mdi-magnify mdi-18px"></i>
-      <input ng-model="fragment" placeholder="{{\'polls_page.search_placeholder\' | translate}}" ng-change="searchPolls()" ng-model-options="{debounce: 250}">
-      </md-input-container>
-      <md-select ng-model="statusFilter" placeholder="{{ \'polls_page.filter_placeholder\' | translate }}" ng-change="fetchRecords()" class="polls-page__status-filter">
-      <md-option ng-value="null">{{ 'polls_page.filter_placeholder' | translate }}</md-option>
-      <md-option ng-repeat="filter in statusFilters track by filter.value" ng-value="filter.value">{{filter.name}}</md-option>
-      </md-select>
-      <md-select ng-model="groupFilter" placeholder="{{ \'polls_page.groups_placeholder\' | translate }}" ng-change="fetchRecords()" class="polls-page__group-filter">
-      <md-option ng-value="null">{{ 'polls_page.groups_placeholder' | translate }}</md-option>
-      <md-option ng-repeat="filter in groupFilters track by filter.value" ng-value="filter.value">{{filter.name}}</md-option>
-      </md-select>
-      </div>
-    loading(v-if='fetchRecordsExecuting')
-    .polls-page__polls(v-if='!fetchRecordsExecuting')
-      poll-common-preview(v-for='poll in orderedPolls', :key='poll.id', :poll='poll', :display-group-name='!group')
+  h1.lmo-h1.dashboard-page__heading.polls-page__heading(v-if='hasGroup')
+    router-link(:to='urlFor(group)')
+      span(v-t="{ path: 'polls_page.heading_with_group', args: { name: group.fullName }}")
+  h1.lmo-h1.dashboard-page__heading.polls-page__heading(v-if='!hasGroup', v-t="'polls_page.heading'")
+  v-card.lmo-main-container.polls-page
+    v-card-text
+      //
+        <div class="polls-page__filters lmo-flex">
+        <md-input-container md-no-float="true" class="polls-page__search md-block"><i class="mdi mdi-magnify mdi-18px"></i>
+        <input ng-model="fragment" placeholder="{{\'polls_page.search_placeholder\' | translate}}" ng-change="searchPolls()" ng-model-options="{debounce: 250}">
+        </md-input-container>
+        <md-select ng-model="statusFilter" placeholder="{{ \'polls_page.filter_placeholder\' | translate }}" ng-change="fetchRecords()" class="polls-page__status-filter">
+        <md-option ng-value="null">{{ 'polls_page.filter_placeholder' | translate }}</md-option>
+        <md-option ng-repeat="filter in statusFilters track by filter.value" ng-value="filter.value">{{filter.name}}</md-option>
+        </md-select>
+        <md-select ng-model="groupFilter" placeholder="{{ \'polls_page.groups_placeholder\' | translate }}" ng-change="fetchRecords()" class="polls-page__group-filter">
+        <md-option ng-value="null">{{ 'polls_page.groups_placeholder' | translate }}</md-option>
+        <md-option ng-repeat="filter in groupFilters track by filter.value" ng-value="filter.value">{{filter.name}}</md-option>
+        </md-select>
+        </div>
+      loading(v-if='fetchRecordsExecuting')
+      v-list.polls-page__polls(v-if='!fetchRecordsExecuting' two-line)
+        v-list-tile(v-for='poll in orderedPolls', :key='poll.id')
+          v-list-tile-content
+            poll-common-preview(:key='poll.id', :poll='poll', :display-group-name='!group')
       loading(v-if='loadMoreExecuting')
       .polls-page__count(v-t="{ path: 'polls_page.polls_count', args: { count: loadedCount, total: pollsCount }}")
       .polls-page__load-more(v-if='canLoadMore')
