@@ -434,7 +434,6 @@ pl:
     messages:
       privacy:
         members: 'Ta grupa jest teraz widoczna tylko dla członków'
-        parent_members: 'Ta grupa jest teraz widoczna tylko dla członków Twojej organizacji'
         public: 'Ta grupa jest teraz publiczna'
       leave_group_success: 'Opuściłeś/aś tę grupę'
       archive_group_success: 'Ta grupa została dezaktywowana'
@@ -655,6 +654,8 @@ pl:
   polls_page:
     heading: Decyzje
     start_new_poll: Nowa decyzja
+  auth_form:
+    name_placeholder: Twoja nazwa
   install_slack:
     progress:
       invite: Zaproś

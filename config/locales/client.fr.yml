@@ -566,7 +566,6 @@ fr:
     messages:
       privacy:
         members: 'Ce groupe est désormais visible uniquement aux membres'
-        parent_members: 'Ce groupe est désormais visible uniquement aux membres de votre organisation'
         public: 'Ce groupe est désormais visible au public'
       leave_group_success: 'Vous avez quitté ce groupe'
       archive_group_success: 'Ce groupe a été désactivé'
@@ -904,14 +903,8 @@ fr:
     use_gravatar: 'Utiliser gravatar'
     use_uploaded: 'Télécharger une nouvelle image'
   change_password_form:
-    set_password_title: Définir un mot de passe
-    change_password_title: Modifier votre mot de passe
-    set_password_helptext: Merci de choisir un mot de passe de plus de 8 caractères
-    change_password_helptext: Vous voulez changer votre mot de passe oublié ? Saisissez-en un nouveau ici.
     set_password: Définir un mot de passe
-    change_password: Modifier mon mot de passe
     password_changed: Votre mot de passe a été mis à jour
-    password_set: Votre mot de passe a été défini
   deactivation_modal:
     aria_label: 'Désactiver mon compte'
     introduction: 'Quand vous désactivez votre compte :'
@@ -1657,6 +1650,7 @@ fr:
     check_spam_folder: Si vous ne recevez pas l'e-mail, veuillez vérifier le répertoire des spams.
     sign_up_helptext: Merci de remplir ce formulaire pour créer un compte
     i_accept: "J'accepte les <a href='{{termsUrl}}' target='_blank'>Conditions d'utilisation</a> et la <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a>"
+    name_placeholder: Votre nom
     name_required: Entrez un nom
     terms_required: Vous devez accepter les Conditions d'utilisation
     account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé !

@@ -118,3 +118,5 @@ ja:
   poll_count_options:
     'yes': 'はい'
     'no': 'いいえ'
+  auth_form:
+    name_placeholder: あなたの名前

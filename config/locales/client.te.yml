@@ -161,6 +161,8 @@ te:
     total: మొత్తం
   polls_page:
     heading: నిర్ణయాలు
+  auth_form:
+    name_placeholder: మీ పేరు
   install_slack:
     progress:
       invite: ఆహ్నానించు

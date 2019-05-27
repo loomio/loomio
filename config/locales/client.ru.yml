@@ -416,9 +416,6 @@ ru:
     name_label: 'Имя'
     email_label: 'Email'
     locale_label: 'Язык'
-  change_password_form:
-    change_password_title: Сменить ваш пароль
-    change_password: Сменить пароль
   email_settings_page:
     header: Настройки email
     announcement_label: Объявления
@@ -552,6 +549,7 @@ ru:
   auth_form:
     invalid_password: "Извините, этот пароль не совпадает с тем, который у нас есть в файле"
     email_placeholder: You@example.com
+    name_placeholder: Ваше имя
     name: Название
   install_slack:
     progress:

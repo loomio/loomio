@@ -476,4 +476,5 @@ ro:
     heading: Decizii
     start_new_poll: Decizie noua
   auth_form:
+    name_placeholder: Nume
     name: Nume

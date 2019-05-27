@@ -445,6 +445,7 @@ el:
     start_new_poll: Νέα απόφαση
   auth_form:
     email_placeholder: you@example.com
+    name_placeholder: Το όνομα σας
   install_slack:
     progress:
       invite: Πρόσκληση

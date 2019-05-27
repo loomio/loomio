@@ -905,14 +905,10 @@ zh_TW:
     use_gravatar: '使用 gravatar'
     use_uploaded: '上傳新照片'
   change_password_form:
-    set_password_title: 設定密碼
-    change_password_title: 變更您的密碼
-    set_password_helptext: 請輸入密碼以登入，最少需要 8 個字元
-    change_password_helptext: 忘記您的密碼或是想要變更密碼嗎？只要在這裡輸入新的密碼就可以了。
+    set_password_title: 設定您的密碼
+    set_password_helptext: 請輸入密碼，最少需要 8 個字元
     set_password: 設定密碼
-    change_password: 變更密碼
     password_changed: 您的密碼已更新
-    password_set: 您的密碼已設定
   deactivation_modal:
     aria_label: '凍結帳號'
     introduction: '當您停用您的帳號：'
@@ -1661,6 +1657,7 @@ zh_TW:
     check_spam_folder: 如果電子郵件未在短時間內抵達，請檢查您的垃圾信資料夾。
     sign_up_helptext: 請完成此表單以建立使用者帳號
     i_accept: "我接受<a href='{{termsUrl}}' target='_blank'>服務條款</a>與<a href='{{privacyUrl}}' target='_blank'>隱私權政策</a>"
+    name_placeholder: 您的大名
     name_required: 請輸入名稱
     terms_required: 您必須同意服務條款
     account_inactive: 喔喔，看起來 {{email}} 的帳號已經被停用囉！

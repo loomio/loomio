@@ -566,7 +566,6 @@ he:
     messages:
       privacy:
         members: 'רק חברים יכולים לצפות בקבוצה'
-        parent_members: 'רק חברים בארגון שלך יכולים לצפות בקבוצה'
         public: 'קבוצה זו פתוחה לצפיה לכולם'
       leave_group_success: 'עזבת את הקבוצה'
       archive_group_success: 'קבוצה זו הפכה ללא פעילה'
@@ -904,14 +903,8 @@ he:
     use_gravatar: 'השתמש באווטר'
     use_uploaded: 'העלה תמונה חדשה'
   change_password_form:
-    set_password_title: הגדר סיסמה
-    change_password_title: שנה את הסיסמה שלך
-    set_password_helptext: אנא הזן סיסמה עם לפחות 8 תווים  כדי להרשם
-    change_password_helptext: שכחת את הסיסמה או שאתה רוצה לשנותה? פשוט הזן סיסמה חדשה כאן.
     set_password: הגדר סיסמה
-    change_password: שנה סיסמה
     password_changed: סיסמתך עודכנה
-    password_set: סיסמתך נקבעה
   deactivation_modal:
     aria_label: 'השבת חשבון'
     introduction: 'כשאתה משבית את חשבונך:'
@@ -1658,6 +1651,7 @@ he:
     check_spam_folder: אם המייל לא מגיע אליך בקרוב, בדוק בתיקיית הספאם.
     sign_up_helptext: אנא השלם טופס זה ליצירת חשבון משתמש
     i_accept: "אני מאשר את <a href='{{termsUrl}}' target='_blank'>תנאי השימוש</a> ואת <a href='{{privacyUrl}}' target='_blank'>מדיניות הפרטיות</a>"
+    name_placeholder: שמך
     name_required: אנה הכנס שם
     terms_required: עליך לאשר את תנאי השימוש
     account_inactive: אוי, נראה שהחשבון עבור {{email}} אינו פעיל!

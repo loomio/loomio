@@ -233,7 +233,6 @@ tr:
     messages:
       privacy:
         members: 'Bu grup şu an sadece grup üyeleri tarafından görülebilir'
-        parent_members: 'Bu grup şu an sadece organizasyonunuzun üyeleri tarafından görülebilir'
         public: 'Bu grup şu an herkese görünür'
       leave_group_success: 'Bu grubu terkettin'
       archive_group_success: 'Bu grup devre dışı bırakıldı'
@@ -607,4 +606,5 @@ tr:
   polls_page:
     heading: Kararlar
   auth_form:
+    name_placeholder: Adın
     name: İsim

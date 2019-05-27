@@ -228,7 +228,6 @@ ga_IE:
     messages:
       privacy:
         members: 'Is iad na comhaltaí amháin ar féidir leo an bhaicle seo a fheiceáil'
-        parent_members: 'Is iad na comhaltaí de d''eagraíocht amháin ar féidir leo an bhaicle seo a fheiceáil'
         public: 'Tá an saol mór in ann an bhaicle seo a fheiceáil anois'
       leave_group_success: 'D''fhág tú an bhaicle seo'
       archive_group_success: 'Cuireadh deireadh leis an mbaicle seo'
@@ -526,6 +525,8 @@ ga_IE:
   polls_page:
     heading: Cinntí
     start_new_poll: Cinneadh nua
+  auth_form:
+    name_placeholder: D'ainm
   install_slack:
     progress:
       invite: Tabhair cuireadh

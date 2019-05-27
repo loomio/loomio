@@ -509,7 +509,6 @@ pt_BR:
     messages:
       privacy:
         members: 'Este grupo agora está visível apenas para membros'
-        parent_members: 'Este grupo agora está visível apenas para membros da sua organização'
         public: 'Este grupo agora é visível publicamente'
       leave_group_success: 'Você deixou este grupo'
       archive_group_success: 'Este grupo foi desativado'
@@ -763,8 +762,6 @@ pt_BR:
     use_gravatar: 'Usar gravatar'
     use_uploaded: 'Enviar uma nova foto'
   change_password_form:
-    change_password_title: Mude sua senha
-    change_password: Mudar senha
     password_changed: Sua senha foi atualizada
   deactivation_modal:
     aria_label: 'Desativar conta'
@@ -1178,6 +1175,7 @@ pt_BR:
     groups_placeholder: (Todos os grupos)
   auth_form:
     more_providers: Mais
+    name_placeholder: Seu nome
     hello: "Olá, {{name}}!"
     create_account: Criar conta
     check_your_email: Consulte o seu e-mail!

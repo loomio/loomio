@@ -103,7 +103,9 @@ lt:
       new_thread: "Nauja gija"
       add_subgroup: 'Pridėti pogrupį'
       loading: 'Įkeliama'
+      load_more: 'Įkelti daugiau'
       ok: Gerai
+      apply: Taikyti
   error_page:
     forbidden: 'Jūs neturite leidimo tai padaryti.'
     internal_server_error: 'Atleiskite, bet įvyko kažkokia klaida. Prašome bandyti dar kartą.'
@@ -128,6 +130,7 @@ lt:
     delete_comment: 'Ištrinti komentarą'
     cancel_reply: 'Atsisakyti atsakymo'
     confirm_delete_message: 'Ar jūs tikrai norite ištrinti šį komentarą?'
+    confirm_delete: 'Ištrinti komentarą'
     submit_button:
       label: 'Išsiųsti'
     private_privacy_notice: 'Jūsų komentaras bus matomas tik {{groupName}} grupės nariams.'
@@ -154,6 +157,8 @@ lt:
     title_placeholder: 'Kokia tema diskutuosite?'
     context_label: 'Kontekstas'
     privacy_label: 'Privatumas'
+  action_dock:
+    delete_comment: Ištrinti komentarą
   join_group_button:
     messages:
       joined_group: 'Dabar jūs esate {{group}} grupės narys'
@@ -165,7 +170,6 @@ lt:
     messages:
       privacy:
         members: 'Dabar ši grupė yra matoma tik nariams'
-        parent_members: 'Dabar ši grupė yra matoma tik jūsų organizacijos nariams'
         public: 'Dabar ši grupė yra matoma viešai'
     group_logo: 'Grupės logotipas'
     discussions_placeholder: 'Gija - tai vieta, kurioje visi gali diskutuoti tam tikra tema ir kartu priiminėti sprendimus.'

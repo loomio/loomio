@@ -256,7 +256,6 @@ ca:
     messages:
       privacy:
         members: 'Ara aquest grup és visible només als seus membres'
-        parent_members: 'Ara aquest grup és visible només als membres de la vostra organització'
         public: 'Ara aquest grup és visible per a tothom'
       leave_group_success: 'Heu deixat aquest grup'
       archive_group_success: 'Aquest grup està desactivat'
@@ -642,4 +641,5 @@ ca:
   poll_meeting_chart_panel:
     total: Total
   auth_form:
+    name_placeholder: El teu nom
     name: Nom

@@ -68,7 +68,13 @@ es:
     motion:
       must_close_in_future: La propuesta debe cerrar en el futuro.
       one_at_a_time: Ya hay una propuesta activa.
+  subscriptions:
+    active: Activo
+    inactive: Inactivo
   user_mailer:
+    group_export_ready:
+      body_html: |
+          Descarga tus datos <a href="%{url}">aquí</a>. Por favor toma nota que este link caducará en una semana.
     accounts_merged:
       subject: "Tus %{site_name} cuentas de usuario han sido unificadas. "
       body_html: |
@@ -571,6 +577,8 @@ es:
     dot_vote:
       title: "¿Cuál es la estrategia de nuestra empresa para el próximo cuatrimestre? "
       details: 'Este es un gran año para nuestra empresa y necesitamos ser estratégicos acerca de como invertimos nuestros limitados recursos. Por favor indica cuales son las áreas que crees son más importantes para que nos enfoquemos el próximo cuatrimestre. '
+    score:
+      title: "¿Qué temas te interesan para la próxima conferencia?"
     ranked_choice:
       title: "¿Quién debe ser nuestro próximo alcalde adjunto?"
       details: "Es tiempo de nuestras elecciones de medio año! Esta es una encuesta oficial para determinar quien será nuestro nuevo alcalde adjunto. Tomate el tiempo de leer sobre cada candidato en nuestra página web."
@@ -587,6 +595,8 @@ es:
     helptext: 'Ya no recibirás emails sobre esta decisión. '
     visit_poll: Ver encuesta
     go_to_dashboad: Ir al panel de control
+  microsoft:
+    new_discussion: "Nuevo hilo en %{group}"
   slack:
     new_discussion: "Nuevo hilo en *%{group}*: *%{discussion}* "
     outcome_created: "Resultado publicado en *%{group}*: *%{poll}*"

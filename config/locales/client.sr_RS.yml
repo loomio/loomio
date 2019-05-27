@@ -184,3 +184,5 @@ sr_RS:
   poll_count_options:
     'yes': 'Да'
     'no': 'Не'
+  auth_form:
+    name_placeholder: Твоје име

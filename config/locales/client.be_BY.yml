@@ -150,3 +150,5 @@ be_BY:
   poll_count_options:
     'yes': 'Так'
     'no': 'Не'
+  auth_form:
+    name_placeholder: Ваша імя

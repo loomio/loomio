@@ -561,7 +561,6 @@ uk:
     messages:
       privacy:
         members: 'Тепер групу можуть бачити тільки учасники'
-        parent_members: 'Тепер групу можуть бачити тільки учасники вашої організації'
         public: 'Тепер групу можуть бачити усі'
       leave_group_success: 'Ви вийшли з групи'
       archive_group_success: 'Цю групу було відключено'
@@ -895,14 +894,8 @@ uk:
     use_gravatar: 'Використовувати глобальний аватар (gravatar)'
     use_uploaded: 'Завантажити нову обкладинку'
   change_password_form:
-    set_password_title: Встановити пароль
-    change_password_title: Змінити свій пароль
-    set_password_helptext: Введіть пароль для входу - мінімум 8 символів
-    change_password_helptext: Забули свій пароль або хочете його змінити? Просто введіть новий пароль тут.
     set_password: Встановити пароль
-    change_password: Змінити пароль
     password_changed: Ваш пароль оновлено
-    password_set: Ваш пароль збережено
   deactivation_modal:
     aria_label: 'Відключити обліковий запис'
     introduction: 'У разі якщо ви відключите обліковий запис:'
@@ -1645,6 +1638,7 @@ uk:
     check_spam_folder: Якщо лист не надійшов, перевірте папку зі спамом.
     sign_up_helptext: Заповніть цю форму, щоб створити обліковий запис
     i_accept: "Я погоджуюсь з <a href='{{termsUrl}}' target='_blank'>Умовами використання</a> та <a href='{{privacyUrl}}' target='_blank'>Політикою конфіденційності</a>"
+    name_placeholder: Ваше ім'я
     name_required: Бідь ласка введіть ім'я
     terms_required: Ви маєте прийняти Умови використання
     account_inactive: Гм, схоже, обліковий запис для {{email}} був відключений!

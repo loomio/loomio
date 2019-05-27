@@ -202,7 +202,6 @@ sr:
     messages:
       privacy:
         members: 'Ova grupa je sada vidljiva samo za članove'
-        parent_members: 'Ova grupa je sada vidljiva samo članovima Vaše organizacije'
         public: 'Ova grupa je javno vidljiva'
       leave_group_success: 'Napustili ste ovu grupu'
       archive_group_success: 'Ova grupa je bila deaktivirana'
@@ -594,3 +593,5 @@ sr:
   poll_count_options:
     'yes': 'Da'
     'no': 'Ne'
+  auth_form:
+    name_placeholder: Tvoje ime

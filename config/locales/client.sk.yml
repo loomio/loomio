@@ -112,3 +112,5 @@ sk:
   poll_count_options:
     'yes': 'Áno'
     'no': 'Nie'
+  auth_form:
+    name_placeholder: Vaše meno

@@ -337,7 +337,6 @@ da:
     messages:
       privacy:
         members: 'Denne gruppe er nu kun synlig for medlemmer'
-        parent_members: 'Denne gruppe er nu kun synlig for medlemmer af din organisation'
         public: 'Denne gruppe er ny synlig for offentligheden'
       leave_group_success: 'Du har forladt denne gruppe'
       archive_group_success: 'Denne gruppe er deaktiveret'
@@ -1018,6 +1017,7 @@ da:
     start_new_poll: Ny måling
   auth_form:
     email_placeholder: you@example.com
+    name_placeholder: Dit navn
     name: Navn
     email: Email
   install_slack:

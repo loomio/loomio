@@ -567,7 +567,6 @@ es:
     messages:
       privacy:
         members: 'Ahora este grupo es visible sólo para integrantes.'
-        parent_members: 'Ahora este grupo es visible sólo para integrantes de la organización'
         public: 'Ahora este grupo es visible para el público'
       leave_group_success: 'Has dejado este grupo'
       archive_group_success: 'Este grupo ha sido desactivado '
@@ -896,14 +895,8 @@ es:
     use_gravatar: 'Usar Gravatar'
     use_uploaded: 'Subir una imagen nueva'
   change_password_form:
-    set_password_title: Ingresa una contraseña
-    change_password_title: Cambiar contraseña
-    set_password_helptext: 'Por favor ingresa una contraseña para ingresar - mínimo 8 caracteres '
-    change_password_helptext: ¿Olvidó su contraseña o quiere cambiarla? Simplemente introduzca una nueva contraseña aquí.
     set_password: Configura la contraseña
-    change_password: Cambiar la contraseña
     password_changed: Su contraseña ha sido actualizada.
-    password_set: Ha establecido su contraseña
   deactivation_modal:
     aria_label: 'Desactiva cuenta '
     introduction: 'Cuando desactiva su cuenta:'
@@ -1647,6 +1640,7 @@ es:
     check_spam_folder: Si no te llega el email pronto consulta la carpeta de correo spam.
     sign_up_helptext: Porfavor completa este formulario para crear una cuenta de usuario
     i_accept: "Acepto los <a href='{{termsUrl}}' target='_blank'>Términos del servicio</a> y la <a href='{{privacyUrl}}' target='_blank'>Política de privacidad</a>"
+    name_placeholder: Su nombre
     name_required: Por favor ingresa un nombre
     terms_required: 'Debes aceptar los Términos del Servicio '
     account_inactive: '¡Vaya! parece que la cuenta de {{correo electrónico}} está desactivada. '

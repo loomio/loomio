@@ -34,7 +34,7 @@ de:
     worried: Besorgt
     confused: Verwirrt
     confounded: Verlegen
-    neutral_face: neutral
+    neutral_face: Neutral
     slight_frown: Stirn runzeln
     disappointed: Enttäuscht
     angry: Wütend
@@ -139,7 +139,7 @@ de:
       uploading: 'Lädt hoch ...'
       load_more: 'Mehr anzeigen'
       share: Teilen
-      ok: ok
+      ok: Ok
       retry: Nochmal versuchen
       done: Fertig
       start: Beginnen
@@ -149,8 +149,8 @@ de:
       remind: Erinnern
       resend: Neu senden
       send: Senden
-      joined: eingetreten
-      last_seen: zuletzt angesehen
+      joined: Eingetreten
+      last_seen: Zuletzt angesehen
       invite: Einladen
       resent: Einladung erneut versendet
       export: Exportieren
@@ -158,7 +158,7 @@ de:
       apply: Anwenden
     formatting_help:
       label: 'Markdown-Formatierung'
-      title: 'Lernen Sie mehr über die Textformatierung mit Markdown'
+      title: 'Mehr über die Textformatierung mit Markdown lernen'
   ordinal:
     _1: erste/s
     _2: zweite/s
@@ -565,7 +565,6 @@ de:
     messages:
       privacy:
         members: 'Diese Gruppe ist nun nur für Mitglieder sichtbar'
-        parent_members: 'Diese Gruppe ist nur für Gruppenmitglieder sichtbar'
         public: 'Diese Gruppe ist nun im Web sichtbar'
       leave_group_success: 'Sie haben diese Gruppe verlassen'
       archive_group_success: 'Diese Gruppe wurde deaktiviert'
@@ -890,14 +889,8 @@ de:
     use_gravatar: 'Verwende Gravatar'
     use_uploaded: 'Neues Bild hochladen'
   change_password_form:
-    set_password_title: Legen Sie ein Passwort fest
-    change_password_title: Passwort ändern
-    set_password_helptext: Bitte legen Sie ein Passwort fest um sich einzuloggen - mindestens 8 Buchstaben
-    change_password_helptext: Haben Sie ihr Passwort vergessen und möchten es ändern? Einfach ein neues Passwort hier einfügen.
     set_password: Passwort festlegen
-    change_password: Passwort ändern
     password_changed: Ihr Passwort wurde aktualisiert
-    password_set: Ihr Passwort wurde festgelegt
   deactivation_modal:
     aria_label: 'Benutzerkonto deaktivieren'
     introduction: 'Wenn Sie ihren Account deaktivieren:'
@@ -1616,6 +1609,7 @@ de:
     login_link_helptext_with_password: "Geben Sie Ihre Passwort ein oder melden Sie Sich per E-Mail an"
     sign_up_helptext: Bitte füllen Sie dieses Formular aus, um ein Benutzerkonto zu erstellen
     i_accept: "Ich akzeptiere die <a href='{{termsUrl}}' target='_blank'>Nutzungsbedingungen</a> und <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>"
+    name_placeholder: Ihr Name
     name_required: Bitte geben Sie einen Namen ein.
     terms_required: Sie müssen die Nutzungsbedingungen bestätigen.
     account_inactive: Es scheint als wurde das Benutzerkonto für {{email}} deaktiviert.

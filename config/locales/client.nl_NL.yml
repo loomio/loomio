@@ -440,7 +440,6 @@ nl_NL:
     messages:
       privacy:
         members: 'Deze groep is nu uitsluitend zichtbaar voor leden'
-        parent_members: 'Deze groep is nu alleen zichtbaar voor leden van je organisatie'
         public: 'Deze groep is nu voor het publiek zichtbaar'
       leave_group_success: 'U heeft deze groep verlaten'
       archive_group_success: 'Deze groep is gedeactiveerd'
@@ -712,14 +711,8 @@ nl_NL:
     use_gravatar: 'Gebruik gravatar'
     use_uploaded: 'Upload nieuwe foto'
   change_password_form:
-    set_password_title: Stel een wachtwoord in
-    change_password_title: Verander je wachtwoord
-    set_password_helptext: Gelieve een wachtwoord om in te loggen in te typen - minimum 8 tekens
-    change_password_helptext: Wachtwoord vergeten of wil je het gewoon veranderen? Typ hier gewoon een nieuw wachtwoord in.
     set_password: Wachtwoord instellen
-    change_password: Wachtwoord veranderen
     password_changed: Je wachtwoord is geüpdatet
-    password_set: Je wachtwoord is ingesteld
   deactivation_modal:
     aria_label: 'Deactiveer account'
     introduction: 'Als je je account deactiveert:'
@@ -1356,6 +1349,7 @@ nl_NL:
     email_not_found: "Helaas konden we geen account vinden met dat e-mailadres"
     email_placeholder: you@example.com
     login_link_helptext_with_password: "Typ je wachtwoord in of log in via e-mail."
+    name_placeholder: Je naam
     name_required: Geef aub een naam in
     welcome_back: Welkom terug, {{name}}!
     login_link: Log in via e-mail

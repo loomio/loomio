@@ -522,7 +522,6 @@ it:
     messages:
       privacy:
         members: 'Ora il gruppo è visibile solo alle persone che ne fanno parte.'
-        parent_members: 'Il gruppo è ora visibile solo ai membri della tua organizzazione.'
         public: 'Ora il gruppo è pubblico '
       leave_group_success: 'Hai lasciato il gruppo.'
       archive_group_success: 'Gruppo disattivato'
@@ -830,14 +829,8 @@ it:
     use_gravatar: 'Usa gravatar'
     use_uploaded: 'Carica nuova foto'
   change_password_form:
-    set_password_title: Imposta password
-    change_password_title: Cambia password
-    set_password_helptext: Inserisci una password per autenticarti (minimo 8 caratteri)
-    change_password_helptext: 'Hai perso la password o vuoi cambiarla? Inserisci una nuova password qui:'
     set_password: Imposta password
-    change_password: Cambia password
     password_changed: La tua password è stata aggiornata
-    password_set: La tua password è stata impostata
   deactivation_modal:
     aria_label: 'Disattiva l''account'
     introduction: 'Quando disattivi il tuo account:'
@@ -1263,6 +1256,7 @@ it:
     continue_with_email: Continua con l'email
     or_enter_your_email: Oppure, inserisci il tuo indirizzo di email
     login_link_helptext_with_password: "Inserisci la tua password, o autenticati via email."
+    name_placeholder: Il tuo nome
     login_link: Iscriviti via email
     set_password: Imposta password
     check_your_email: Guarda nella tua casella di posta!

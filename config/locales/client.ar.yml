@@ -209,7 +209,6 @@ ar:
     messages:
       privacy:
         members: 'هذه المجموعة ظاهرة الآن للأعضاء فقط.'
-        parent_members: 'هذه المجموعة ظاهرة الآن فقط لأعضاء منظمتك.'
         public: 'هذه المجموعة ظاهرة الآن للعموم.'
       leave_group_success: 'لقد قمت بمغادرة المجموعة.'
       archive_group_success: 'تم إلغاء المجموعة.'
@@ -399,9 +398,6 @@ ar:
   change_picture_form:
     title: 'تغيير الصورة'
     use_uploaded: 'تحميل صورة جديدة'
-  change_password_form:
-    change_password_title: قم بتغيير كلمة السر
-    change_password: تغيير كلمة المرور
   deactivation_modal:
     aria_label: 'إيقاف الحساب'
   deactivate_user_form:
@@ -642,6 +638,7 @@ ar:
     sign_in: تسجيل الدخول
     more_providers: المزيد
     email_placeholder: you@example.com
+    name_placeholder: اسمك
     hello: "أهلا {{name}}!"
     name: 'الاسم '
     email: البريد الإلكتروني
