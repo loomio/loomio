@@ -5,7 +5,7 @@ import ModalService from '@/shared/services/modal_service'
 
 export default
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', { page: 'installSlackPage' }
+    EventBus.$emit 'currentComponent', { page: 'installSlackPage' }
     ModalService.open('InstallSlackModal', group: (-> null), preventClose: (-> true)) if Session.user().identityFor('slack')
 </script>
 

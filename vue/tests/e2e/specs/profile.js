@@ -20,7 +20,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.goTo('u/jennifergrey') // TODO: GK: fix this
+    page.goTo('u/jennifergrey')
     page.expectText('.user-page__content', 'Jennifer Grey')
     page.expectText('.user-page__content', '@jennifergrey')
     page.expectText('.user-page__groups', 'Dirty Dancing Shoes')

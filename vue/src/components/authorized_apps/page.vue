@@ -18,7 +18,7 @@ export default {
   data: ->
     loading: true
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', {title: 'Apps', page: 'authorizedAppsPage'}
+    EventBus.$emit 'currentComponent', {title: 'Apps', page: 'authorizedAppsPage'}
     Records.oauthApplications.fetchAuthorized().then => @loading = false
   methods:
     applications: ->

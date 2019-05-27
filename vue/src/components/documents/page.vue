@@ -31,16 +31,16 @@ export default
     group: {}
     fragment: ''
   created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', { page: 'documentsPage'}
+    EventBus.$emit 'currentComponent', { page: 'documentsPage'}
     # applyLoadingFunction @, 'fetchDocuments'
     Records.groups.findOrFetchById(@$route.params.key).then (group) =>
       @group = group
-      # EventBus.broadcast $rootScope, 'currentComponent',
-      #   group: @group
-      #   page: 'documentsPage'
+      EventBus.$emit 'currentComponent',
+        group: @group
+        page: 'documentsPage'
       @fetchDocuments()
     , (error) ->
-      # EventBus.broadcast $rootScope, 'pageError', error
+      EventBus.$emit 'pageError', error
   methods:
     fetchDocuments: _debounce ->
       Records.documents.fetchByGroup(@group, @fragment)
