@@ -14,13 +14,17 @@ export default
   mixins: [urlFor]
   data: ->
     group: null
+
   mounted: ->
     @init()
-    EventBus.$emit 'currentComponent', { key: @$route.params.key, page: 'groupPage'}
     EventBus.$on 'signedIn', => @init()
+
   methods:
+    groupKey: ->
+      @$route.params.handle || @$route.params.key
+
     init: ->
-      Records.groups.findOrFetch(@$route.params.key, {}, true).then (group) =>
+      Records.groups.findOrFetch(@groupKey(), {}, true).then (group) =>
         @group = group
         subscribeTo(@group)
         Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
