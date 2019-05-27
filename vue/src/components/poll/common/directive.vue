@@ -76,13 +76,10 @@ export default
     componentName: ->
       pollType = (@stance or @outcome or @stanceChoice or @poll).poll().pollType
 
-      console.log "poll-#{pollType}-#{@name}"
-
       if @$options.components["poll-#{pollType}-#{@name}"]
-        console.log 'match with ', "poll-#{pollType}-#{@name}"
         "poll-#{pollType}-#{@name}"
       else
-        console.log 'no match, falling through to common ', "poll-common-#{@name}"
+        # console.log 'no match, falling through to common ', "poll-common-#{@name}"
         "poll-common-#{@name}"
 </script>
 

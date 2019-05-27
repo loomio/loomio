@@ -6,9 +6,9 @@ export default
 </script>
 
 <template lang="pug">
-.action-dock.lmo-flex.lmo-no-print(layout='row')
+.action-dock.lmo-no-print
   .action-dock__action(v-for='action in actions', v-if='action.canPerform()')
-    //- // <reactions_input class="action-dock__button--react" model="model" v-if="action.name == 'react'"></reactions_input>
+    reaction-input.action-dock__button--react(:model="model" v-if="action.name == 'react'")
     v-tooltip(bottom)
       v-btn(slot='activator' icon :class='`md-button--tiny action-dock__button--${action.name}`' v-if="action.name != 'react'" @click='action.perform()')
         .sr-only(v-t="'action_dock.' + action.name")
@@ -20,7 +20,9 @@ export default
 </template>
 
 <style lang="scss">
-  .action-dock {
-    transition: opacity ease-in-out 0.25s;
-  }
+.action-dock {
+  display: flex;
+  align-items: center;
+  transition: opacity ease-in-out 0.25s;
+}
 </style>

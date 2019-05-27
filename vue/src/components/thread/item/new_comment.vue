@@ -11,7 +11,7 @@ import ModalService   from '@/shared/services/modal_service'
 import CommentModalMixin from '@/mixins/comment_modal.coffee'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
 
-import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
+import { listenForTranslations } from '@/shared/helpers/listen'
 
 export default
   mixins: [
@@ -21,6 +21,7 @@ export default
   props:
     event: Object
     eventable: Object
+
   data: ->
     confirmOpts:
       submit: @eventable.destroy
@@ -29,8 +30,7 @@ export default
         helptext: 'delete_comment_dialog.question'
         confirm:  'delete_comment_dialog.confirm'
         flash:    'comment_form.messages.destroyed'
-  created: ->
-    @actions = [
+    actions: [
       name: 'react'
       canPerform: => AbilityService.canAddComment(@eventable.discussion())
     ,
@@ -74,9 +74,6 @@ export default
       canPerform: => AbilityService.canDeleteComment(@eventable)
       perform:    => @openConfirmModal(@confirmOpts)
     ]
-  # mounted: ->
-  #   listenForReactions($scope, $scope.eventable)
-  #   listenForTranslations($scope)
 
 </script>
 
@@ -89,5 +86,6 @@ export default
     document-list(:model='eventable', :skip-fetch='true')
     attachment-list(:attachments="eventable.attachments")
     .lmo-md-actions
+      reaction-display(:model="eventable")
       action-dock(:model='eventable', :actions='actions')
 </template>

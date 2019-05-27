@@ -17,7 +17,7 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import Flash   from '@/shared/services/flash'
-import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
+import { listenForTranslations } from '@/shared/helpers/listen'
 import PollModalMixin from '@/mixins/poll_modal'
 
 export default
@@ -29,6 +29,10 @@ export default
   data: ->
     isAnnouncementModalOpen: false
     isRevisionHistoryModalOpen: false
+
+  mounted: ->
+    listenForTranslations(@)
+
   methods:
     openRevisionHistoryModal: ->
       @isRevisionHistoryModalOpen = true
@@ -57,28 +61,25 @@ export default
       canPerform: => @poll.edited()
       perform:    => ModalService.open 'RevisionHistoryModal', model: => @poll
     ]
-  # mounted: ->
-  #   listenForTranslations(@)
-  #   listenForReactions(@, @poll)
 </script>
 
 <template lang="pug">
 .poll-common-details-panel
-  v-subheader(v-t="'poll_common.details'", v-if='poll.outcome()')
+  v-subheader(v-t="'poll_common.details'" v-if='poll.outcome()')
   .poll-common-details-panel__started-by
     span(v-t="{ path: 'poll_card.started_by', args: { name: poll.authorName() } }")
     span(aria-hidden='true') ·
     poll-common-closing-at(:poll='poll')
     span(v-if='poll.anonymous') ·
-    span(v-if='poll.anonymous', md-colors="{color: 'primary-600', 'border-color': 'primary-600'}", v-t="'common.anonymous'")
-  .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='!poll.translation && poll.detailsFormat == "md"', v-marked='poll.cookedDetails()')
-  .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='!poll.translation && poll.detailsFormat == "html"', v-html='poll.details')
+    span(v-if='poll.anonymous', md-colors="{color: 'primary-600', 'border-color': 'primary-600'}" v-t="'common.anonymous'")
+  .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='!poll.translation && poll.detailsFormat == "md"' v-marked='poll.cookedDetails()')
+  .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='!poll.translation && poll.detailsFormat == "html"' v-html='poll.details')
   .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='poll.translation')
     translation(:model='poll', :field='details')
   attachment-list(:attachments="poll.attachments")
   document-list(:model='poll')
   v-card-actions.lmo-md-actions
-    // <reactions_display model="poll" load="true"></reactions_display>
+    reaction-display(:model="poll" :load="true")
     v-spacer
-    action-dock(:model='poll', :actions='actions')
+    action-dock(:model='poll' :actions='actions')
 </template>

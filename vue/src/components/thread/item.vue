@@ -7,9 +7,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 
 import { submitForm } from '@/shared/helpers/form'
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
-
-import _includes from 'lodash/includes'
-import _camelCase from 'lodash/camelCase'
+import { includes, camelCase } from 'lodash'
 
 import NewComment from '@/components/thread/item/new_comment.vue'
 import PollCreated from '@/components/thread/item/poll_created.vue'
@@ -40,9 +38,10 @@ export default
   watch:
     showCommentForm: (a,b) ->
       console.log "showCommentForm", a, b
+
   methods:
     hasComponent: ->
-      _includes(threadItemComponents, _camelCase(@event.kind))
+      includes(threadItemComponents, camelCase(@event.kind))
 
     debug: -> window.Loomio.debug
 
@@ -76,8 +75,7 @@ export default
     link: ->
       LmoUrlService.event @event
 
-    camelCase: (str) ->
-      _camelCase(str)
+    camelCase: camelCase
 
     handleReplyButtonClicked: (obj) ->
       console.log "reply button clicked", @event
