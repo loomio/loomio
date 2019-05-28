@@ -19,7 +19,7 @@ export default
     views:
       proposals: []
       today: []
-      yesteday: []
+      yesterday: []
       thisweek: []
       thismonth: []
       older: []

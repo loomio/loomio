@@ -63,11 +63,6 @@ export default
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.sidenav-left(app, dark, width="250", v-model="showSidebar")
   v-list
-    v-list-tile.sidebar__list-item-button--decisions(to='/polls')
-      v-list-tile-action
-        v-icon mdi-thumbs-up-down
-      v-list-tile-content
-        v-list-tile-title(v-t="'common.decisions'")
     v-list-tile.sidebar__list-item-button--recent(to='/dashboard')
       v-list-tile-action
         v-icon mdi-forum
@@ -83,6 +78,11 @@ v-navigation-drawer.lmo-no-print.sidenav-left(app, dark, width="250", v-model="s
         v-icon mdi-volume-mute
       v-list-tile-content
         v-list-tile-title(v-t="'sidebar.muted_threads'")
+    v-list-tile.sidebar__list-item-button--decisions(to='/polls')
+      v-list-tile-action
+        v-icon mdi-thumbs-up-down
+      v-list-tile-content
+        v-list-tile-title(v-t="'common.decisions'")
     v-list-tile.sidebar__list-item-button--start-thread(v-if='canStartThreads()', @click='openStartDiscussionModal(currentGroup())')
       v-list-tile-action
         v-icon mdi-plus

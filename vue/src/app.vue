@@ -42,7 +42,7 @@ export default
         when '/dashboard',      \
              '/inbox',          \
              '/profile',        \
-             '/p',          \
+             '/polls',          \
              '/p/new',      \
              '/g/new' then true
       # switch options.page
