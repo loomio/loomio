@@ -77,17 +77,17 @@ export default
         @loadMoreExecuting = false
         @pollIds = @pollIds.concat _map(response.polls, 'id')
     init: ->
-      @statusFilter = @$route.params.status
-      @groupFilter = @$route.params.group_key
+      @statusFilter = @$route.query.status
+      @groupFilter = @$route.query.group_key
       @pollIds = []
 
-      Records.polls.searchResultsCount(@$route.params).then (response) =>
+      Records.polls.searchResultsCount(@$route.query).then (response) =>
         @pollsCount = response.count
 
       @fetchRecordsExecuting = true
       @loader.fetchRecords().then (response) =>
         @fetchRecordsExecuting = false
-        @group   = Records.groups.find(@$route.params.group_key)
+        @group   = Records.groups.find(@$route.query.group_key)
         @pollIds = _map(response.polls, 'id')
       , (error) ->
         @fetchRecordsExecuting = false
@@ -106,6 +106,14 @@ export default
         _sortBy(
           _filter(Records.polls.find(@pollIds), (poll) =>
             _isEmpty(@fragment) or poll.title.match(///#{@fragment}///i)), '-createdAt')
+  watch:
+    statusFilter: (v) ->
+      @$router.push({ path: '/polls', query: { status: v, group_key: @groupFilter } })
+      @init()
+    groupFilter: (v) ->
+      @$router.push({ path: '/polls', query: { group_key: v, status: @statusFilter } })
+      @init()
+
 
 </script>
 <template lang="pug">
@@ -116,6 +124,9 @@ v-container.lmo-main-container.polls-page
   h1.lmo-h1.dashboard-page__heading.polls-page__heading(v-if='!hasGroup', v-t="'polls_page.heading'")
   v-card.lmo-main-container.polls-page
     v-card-text
+      .polls-page__filters
+        v-select.polls-page__status-filter(v-model="statusFilter" :placeholder="$t('polls_page.filter_placeholder')" :items="statusFilters" item-value="value" item-text="name")
+        v-select.polls-page__group-filter(v-model="groupFilter" :placeholder="$t('polls_page.groups_placeholder')" :items="groupFilters" item-value="value" item-text="name")
       //
         <div class="polls-page__filters lmo-flex">
         <md-input-container md-no-float="true" class="polls-page__search md-block"><i class="mdi mdi-magnify mdi-18px"></i>
@@ -153,14 +164,14 @@ v-container.lmo-main-container.polls-page
   align-items: center;
 }
 
-.polls-page__status-filter {
-  margin-left: 30px;
-  margin-right: 30px;
-}
-
-.polls-page__group-filter {
-  min-width: 200px;
-}
+// .polls-page__status-filter {
+//   margin-left: 30px;
+//   margin-right: 30px;
+// }
+//
+// .polls-page__group-filter {
+//   min-width: 200px;
+// }
 
 .polls-page__icon {
   vertical-align: middle;
