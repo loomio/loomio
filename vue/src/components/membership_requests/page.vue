@@ -8,6 +8,8 @@ import { isEmpty }    from 'lodash'
 import WatchRecords from '@/mixins/watch_records'
 
 export default
+  mixins: [WatchRecords]
+  
   data: ->
     group: {}
     pendingRequests: []

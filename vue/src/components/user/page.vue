@@ -29,7 +29,8 @@ export default
   mixins: [
     fromNow,
     urlFor,
-    UserModalMixin
+    UserModalMixin,
+    WatchRecords
   ]
 
   data: ->
