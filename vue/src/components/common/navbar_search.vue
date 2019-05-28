@@ -20,7 +20,6 @@ export default
         document.querySelector('.navbar-search input').focus()
 
     search: (query) ->
-      # return [] unless query && query.length > 3
       Records.searchResults.fetchByFragment(query).then =>
         @searchResults = sortBy(Records.searchResults.find(query: query), ['-rank', '-lastActivityAt'])
 
@@ -40,14 +39,15 @@ export default
     .sr-only(v-t="'navbar.search.placeholder'")
     v-icon mdi-magnify
   v-autocomplete.navbar-search__input(return-object hide-no-data v-if='isOpen' v-model='selected' @change="goToItem" :search-input.sync="query" :items='searchResults' :placeholder="$t('navbar.search.placeholder')" item-text='title' item-value='key')
-    template(v-slot:selection='data')
-      span asdasd {{ data.item.title }}
-    //-   v-chip.chip--select-single(:selected='data.selected', close, @input='goToItem(data.item)')
-    //-     span {{ data.item.title }}
-
-  //- md-autocomplete.navbar-search__input(ng-if='isOpen', md-min-length='3', md-delay='300', md-menu-class='navbar-search__results', md-selected-item='selectedResult', md-search-text='query', md-selected-item-change='goToItem(result)', md-items='result in search(query)', placeholder="{{ \'navbar.search.placeholder\' | translate }}")
-  //-   md-item-template
-  //-     search_result(result='result')
-  //-   md-not-found
-  //-     span(translate='navbar.search.no_results')
+    template(v-slot:item='data')
+      v-list-tile-content.search-result-item
+        v-list-tile-title.search-result-title(v-html='data.item.title')
+        v-list-tile-sub-title.search-result-group-name(v-if='data.item.resultGroupName')
+          span {{ data.item.resultGroupName }}·
+          time-ago(:timestamp='data.item.lastActivityAt')
 </template>
+<style lang="scss">
+.search-result-item {
+  height: auto;
+}
+</style>
