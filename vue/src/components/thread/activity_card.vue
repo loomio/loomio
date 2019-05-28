@@ -151,8 +151,8 @@ section.activity-card(aria-labelledby='activity-card-title')
   .add-comment-panel.lmo-card-padding(v-if="eventWindow")
     comment-form(v-if='canAddComment' :discussion='discussion')
     .add-comment-panel__join-actions(v-if='!canAddComment')
-      join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn', :block='true')
-      v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn')
+      join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn()', :block='true')
+      v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
 
 </template>
 <style lang="scss">
