@@ -108,14 +108,10 @@ export default
             _isEmpty(@fragment) or poll.title.match(///#{@fragment}///i)), '-createdAt')
   watch:
     statusFilter: (v) ->
-      console.log 'statusFilter changed', v
       @$router.push({ path: '/polls', query: { status: v, group_key: @groupFilter } })
-      console.log '@$route query status changed', @$route.query.status
       @init()
     groupFilter: (v) ->
-      console.log 'groupFilter changed', v
       @$router.push({ path: '/polls', query: { group_key: v, status: @statusFilter } })
-      console.log '@$route query group key changed', @$route.query.group_key
       @init()
 
 
