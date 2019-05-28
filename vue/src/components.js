@@ -60,6 +60,7 @@ module.exports = {
   ModalLauncher: 'modal/launcher',
   ModalTemplate: 'modal/template',
   Navbar: 'common/navbar',
+  NavbarSearch: 'common/navbar_search',
   NewComment: 'thread/item/new_comment',
   Notification: 'common/notification',
   Notifications: 'common/notifications',

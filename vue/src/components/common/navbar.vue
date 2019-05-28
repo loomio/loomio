@@ -40,8 +40,7 @@ export default
     v-spacer
     .navbar__right
       v-toolbar-items(v-if='isLoggedIn')
-        v-btn(icon)
-          v-icon mdi-magnify
+        navbar-search
         notifications
         user-dropdown
       v-toolbar-items(v-if='!isLoggedIn')
