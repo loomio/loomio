@@ -8,13 +8,15 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import InboxService   from '@/shared/services/inbox_service'
 import GroupModalMixin from '@/mixins/group_modal.coffee'
 import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
+import WatchRecords from '@/mixins/watch_records'
 
 import { isUndefined, sortBy, filter, find, head, uniq, map, compact, concat } from 'lodash'
 
 export default
   mixins: [
     GroupModalMixin,
-    DiscussionModalMixin
+    DiscussionModalMixin,
+    WatchRecords
   ]
   data: ->
     currentState: ""
@@ -24,8 +26,7 @@ export default
     groups: []
 
   created: ->
-    Records.view
-      name:"sidebarGroups"
+    @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
         groups = Session.user().formalGroups()

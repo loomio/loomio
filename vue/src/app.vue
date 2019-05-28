@@ -9,6 +9,7 @@ export default
   mixins: [AuthModalMixin]
   data: ->
     pageError: null
+    
   mounted: ->
     @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
     EventBus.$on('currentComponent', @setCurrentComponent)
@@ -66,7 +67,7 @@ v-app
   navbar
   sidebar
   v-content
-    router-view(v-if="!pageError" :key="$route.path")
+    router-view(v-if="!pageError")
     error(v-if="pageError" :error="pageError")
   modal-launcher
   flash

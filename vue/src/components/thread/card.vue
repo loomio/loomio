@@ -13,6 +13,6 @@ export default
 <template>
   <v-card class="thread-card">
     <context-panel :discussion="discussion"></context-panel>
-    <activity-card :discussion="discussion" v-if="discussion.createdEvent()"></activity-card>
+    <activity-card :discussion="discussion"></activity-card>
   </v-card>
 </template>

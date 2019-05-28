@@ -29,7 +29,9 @@ class DiscussionSerializer < ActiveModel::Serializer
              :versions_count,
              :importance,
              :pinned,
-             :attachments
+             :attachments,
+             :mentioned_usernames
+
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,

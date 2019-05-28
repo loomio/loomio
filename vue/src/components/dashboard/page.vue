@@ -8,9 +8,11 @@ import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import GroupModalMixin    from '@/mixins/group_modal.coffee'
 import { capitalize, take, keys, every } from 'lodash'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [GroupModalMixin]
+  mixins: [GroupModalMixin, WatchRecords]
+
   data: ->
     dashboardLoaded: Records.discussions.collection.data.length > 0
     filter: @$route.params.filter || 'hide_muted'
@@ -21,26 +23,33 @@ export default
       thisweek: []
       thismonth: []
       older: []
-    loader: new RecordLoader
-      collection: 'discussions'
-      path: 'dashboard'
-      params:
-        filter: @filter
-        per: 50
-  mounted: ->
+    loader: {}
+
+  created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
+
+  watch:
+    $route: 'init'
+
   methods:
     init: ->
+      @loader = new RecordLoader
+        collection: 'discussions'
+        path: 'dashboard'
+        params:
+          filter: @filter
+          per: 50
+
       EventBus.$emit 'currentComponent',
         titleKey: @titleKey
         page: 'dashboardPage'
         # filter: $routeParams.filter
+
       @loader.fetchRecords().then => @dashboardLoaded = true
       @openStartGroupModal() if @promptStart
 
-      Records.view
-        name: "dashboard"
+      @watchRecords
         collections: ['discussions']
         query: (store) =>
           @views.proposals = ThreadFilter(store, filters: @filters('show_proposals'))

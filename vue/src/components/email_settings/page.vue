@@ -33,6 +33,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import { submitForm }   from '@/shared/helpers/form'
 import { uniq, compact, concat, sortBy, map } from 'lodash'
+import WatchRecords from '@/mixins/watch_records'
 
 
 export default
@@ -45,8 +46,7 @@ export default
     @init()
     EventBus.$on 'signedIn', => @init()
     EventBus.$emit 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}
-    Records.view
-      name:"emailSettingsGroups"
+    @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
         groups = Session.user().formalGroups()

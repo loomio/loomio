@@ -20,6 +20,7 @@ import urlFor         from '@/mixins/url_for'
 import UserModalMixin from '@/mixins/user_modal'
 
 import { applyLoadingFunction } from '@/shared/helpers/apply'
+import WatchRecords from '@/mixins/watch_records'
 
 import _isEmpty     from 'lodash/isEmpty'
 import _sortBy     from 'lodash/sortBy'
@@ -50,8 +51,8 @@ export default
       if @user = (Records.users.find(@$route.params.key) or Records.users.find(username: @$route.params.key))[0]
         EventBus.$emit 'currentComponent', {title: @user.name, page: 'userPage'}
         @loadGroupsFor(@user)
-        Records.view
-          name: "userPageGroups#{@user.id}"
+        @watchRecords
+          key: @user.id
           collections: ['groups', 'memberships']
           query: (store) =>
             @groups = @user.formalGroups()

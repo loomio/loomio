@@ -4,8 +4,10 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 import { take } from 'lodash'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
+  mixins: [WatchRecords]
   props:
     model: Object
   data: ->
@@ -19,8 +21,7 @@ export default
       @fetchRecordsExecuting = true
       Records.polls.fetchFor(@model, status: 'active').then =>
         @fetchRecordsExecuting = false
-      Records.view
-        name: "currentPollsFor#{@model.id}"
+      @watchRecords
         collections: ['polls']
         query: (store) =>
           @polls = take @model.activePolls(), (@limit or 50)

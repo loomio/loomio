@@ -7,7 +7,7 @@ export default class RecordLoader
     @params       = _.merge({from: 0, per: 25, order: 'id'}, opts.params)
     @path         = opts.path
     @numLoaded    = opts.numLoaded or 0
-    @numRequested = opts.numRequested or 0
+    @numRequested = opts.numRequested or @params['per']
     @then         = opts.then or (data) -> data
     @loading      = false
 

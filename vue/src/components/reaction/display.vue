@@ -3,8 +3,10 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import { Emoji } from 'emoji-mart-vue'
 import {merge, capitalize, difference, keys, throttle, startsWith, each} from 'lodash'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
+  mixins: [WatchRecords]
   props:
     model: Object
     load: Boolean
@@ -19,8 +21,7 @@ export default
     reactionHash: {all: []}
 
   mounted: ->
-    Records.view
-      name: "reactionsTo#{@model.constructor.singular}#{@model.id}"
+    @watchRecords
       collections: ['reactions']
       query: (store) =>
         @reactionHash = {all: []}

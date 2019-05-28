@@ -5,6 +5,7 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
 import { isEmpty }    from 'lodash'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
   data: ->
@@ -23,8 +24,7 @@ export default
           @group = group
           Records.membershipRequests.fetchPendingByGroup(group.key, per: 100)
           Records.membershipRequests.fetchPreviousByGroup(group.key, per: 100)
-          Records.view
-            name: "membershipRequestsFor#{@group.id}"
+          @watchRecords
             collections: ['membershipRequests']
             query: (store) =>
               @pendingRequests = @group.pendingMembershipRequests()

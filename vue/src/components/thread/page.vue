@@ -5,89 +5,66 @@ import Records           from '@/shared/services/records'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import PaginationService from '@/shared/services/pagination_service'
+import WatchRecords from '@/mixins/watch_records'
 
 import { scrollTo }         from '@/shared/helpers/layout'
 import { registerKeyEvent } from '@/shared/helpers/keyboard'
 
-import _isEmpty     from 'lodash/isEmpty'
-
 export default
+  mixins: [WatchRecords]
   data: ->
-    discussion: {}
+    discussion: null
     activePolls: []
-  created: ->
-    if @requestedCommentId
-      Records.events.fetch
-        path: 'comment'
-        params:
-          discussion_id: @$route.params.key
-          comment_id: requestedCommentId()
-      .then =>
-        comment = Records.comments.find(requestedCommentId())
-        @discussion = comment.discussion()
-        @discussion.requestedSequenceId = comment.createdEvent().sequenceId
-        # EventBus.broadcast $scope, 'initActivityCard'
+    requestedSequenceId: 0
 
-    Records.discussions.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
-      EventBus.$emit 'pageError', error
+  created: -> @init()
 
-    # EventBus.listen $scope, 'threadPageScrollToSelector', (e, selector) =>
-    #   scrollTo selector, offset: 150
+  watch:
+    $route: 'init'
 
-    # registerKeyEvent $scope, 'pressedUpArrow', checkInView
-    # registerKeyEvent $scope, 'pressedDownArrow', checkInView
   methods:
-    # checkInView = ->
-    #   angular.element(window).triggerHandler('checkInView')
-    init: (discussion) ->
-      if discussion and _isEmpty @discussion?
+    init: ->
+      @requestedSequenceId = parseInt(@$route.params.sequence_id)
+      if !@requestedSequenceId && requestedCommentId = parseInt(@$route.params.comment_id)
+        Records.events.fetch
+          path: 'comment'
+          params:
+            discussion_id: @$route.params.key
+            comment_id: requestedCommentId
+        .then =>
+          comment = Records.comments.find(requestedCommentId)
+          @requestedSequenceId = comment.createdEvent().sequenceId
+          @init()
+
+      Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
         @discussion = discussion
-        Records.view
-          name: "activePollsForDiscussion(#{@discussion.id})"
+        @discussion.requestedSequenceId = @requestedSequenceId
+        @discussion.markAsSeen()
+        Records.documents.fetchByDiscussion(@discussion)
+
+        @watchRecords
+          key: @discussion.id
           collections: ["polls"]
           query: (records) =>
             @activePolls = @discussion.activePolls()
-        @discussion.markAsSeen()
-        @discussion.requestedSequenceId = @chompRequestedSequenceId
 
-        Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true) if @discussion.forkedEvent()
-        Records.documents.fetchByDiscussion(@discussion)
-
-        # @pageWindow = PaginationService.windowFor
-        #   current:  @discussion.requestedSequenceId || @discussion.firstSequenceId()
-        #   min:      @discussion.firstSequenceId()
-        #   max:      @discussion.lastSequenceId()
-        #   pageType: 'activityItems'
+        if @discussion.forkedEvent()
+          Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true)
 
         EventBus.$emit 'currentComponent',
           title: @discussion.title
           page: 'threadPage'
           group: @discussion.group()
           discussion: @discussion
-          # links:
-          #   canonical:   LmoUrlService.discussion(@discussion, {}, absolute: true)
-          #   rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private
-          #   prev:        LmoUrlService.discussion(@discussion, from: @pageWindow.prev) if @pageWindow.prev?
-          #   next:        LmoUrlService.discussion(@discussion, from: @pageWindow.next) if @pageWindow.next?
-          # skipScroll: true
-  computed:
-    requestedCommentId: ->
-      parseInt(@$route.params.comment)
 
-    chompRequestedSequenceId: ->
-      requestedSequenceId = parseInt(@$route.params.sequence_id)
-      # LmoUrlService.params('from', null)
-      requestedSequenceId
-
-    isEmptyDiscussion: ->
-      _isEmpty @discussion
-
+      , (error) ->
+        EventBus.$emit 'pageError', error
 </script>
 
 <template lang="pug">
 v-container.lmo-main-container.thread-page(grid-list-lg)
   loading(v-if='!discussion')
-  div(v-if='!isEmptyDiscussion')
+  div(v-if='discussion')
     group-theme(:group='discussion.group()', :compact='true')
     discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
     //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")

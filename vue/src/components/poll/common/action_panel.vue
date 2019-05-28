@@ -6,8 +6,11 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import { myLastStanceFor } from '@/shared/helpers/poll'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
+  mixins: [WatchRecords]
+  
   props:
     poll: Object
 
@@ -20,8 +23,7 @@ export default
     userHasVoted: false
 
   created: ->
-    Records.view
-      name: "myLastStanceForjhf(#{@poll.id})"
+    @watchRecords
       collections: ["stances"]
       query: (records) =>
         @stance = @lastStanceOrNew()
