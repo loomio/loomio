@@ -15,7 +15,7 @@
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "bowser": "^2.4.0",
-    "core-js": "^2.6.7",
+    "core-js": "^2.6.9",
     "diff-match-patch": "^1.0.4",
     "emoji-mart-vue": "^2.6.6",
     "emojione": "~> 2.2.7",
