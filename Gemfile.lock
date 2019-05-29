@@ -99,7 +99,7 @@ GEM
       nokogiri
       railties
       safely_block (>= 0.1.1)
-    ahoy_matey (2.2.0)
+    ahoy_matey (2.2.1)
       addressable
       browser (~> 2.0)
       device_detector
@@ -589,7 +589,7 @@ DEPENDENCIES
   activerecord-import (= 1.0.1)
   activerecord-nulldb-adapter
   ahoy_email (~> 0.5.2)
-  ahoy_matey (~> 2.2.0)
+  ahoy_matey (~> 2.2.1)
   autoprefixer-rails
   awesome_print
   aws-sdk-s3
