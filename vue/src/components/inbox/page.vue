@@ -19,7 +19,7 @@ import {each, keys, sum, values, sortBy} from 'lodash'
 import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [urlFor]
+  mixins: [urlFor, WatchRecords]
   data: ->
     threadLimit: 50
     views: {}

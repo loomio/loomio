@@ -37,7 +37,7 @@ import WatchRecords from '@/mixins/watch_records'
 
 
 export default
-  mixins: [ChangeVolumeModalMixin]
+  mixins: [ChangeVolumeModalMixin, WatchRecords]
   data: ->
     newsletterEnabled: AppConfig.newsletterEnabled
     user: null

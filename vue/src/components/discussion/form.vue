@@ -10,7 +10,7 @@ import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [AnnouncementModalMixin]
+  mixins: [AnnouncementModalMixin, WatchRecords]
   props:
     discussion: Object
     close: Function
