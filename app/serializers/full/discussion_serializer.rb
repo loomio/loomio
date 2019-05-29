@@ -1,8 +1,6 @@
 class Full::DiscussionSerializer < ::DiscussionSerializer
-  attributes :mentioned_usernames, :complete
+  attributes :complete
   has_many :documents, serializer: DocumentSerializer, root: :documents
-  has_one :created_event, serializer: Events::SimpleSerializer, root: :events
-  has_one :forked_event, serializer: Events::SimpleSerializer, root: :events
 
   def complete
     true
