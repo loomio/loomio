@@ -3,6 +3,9 @@ import Records from '@/shared/services/records'
 export default class RecordLoader
   constructor: (opts = {}) ->
     @loadingFirst = true
+    @loading = false
+    @loadingMore = false
+    @loadingPrevious = false
     @collection   = opts.collection
     @params       = _.merge({from: 0, per: 25, order: 'id'}, opts.params)
     @path         = opts.path

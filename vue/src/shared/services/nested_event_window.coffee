@@ -1,5 +1,4 @@
 import Records         from '@/shared/services/records'
-import RecordLoader    from '@/shared/services/record_loader'
 import BaseEventWindow from '@/shared/services/base_event_window'
 
 export default class NestedEventWindow extends BaseEventWindow
@@ -8,15 +7,11 @@ export default class NestedEventWindow extends BaseEventWindow
     @columnName = "position"
     @parentEvent = parentEvent
     @initialSequenceId = initialSequenceId
+    @setMinMax()
+
+  setMinMax: ->
     @setMin(@positionFromSequenceId() || @firstLoaded())
     @setMax(@lastLoaded() || false)
-    @loader = new RecordLoader
-      collection: 'events'
-      params:
-        discussion_id: @discussion.id
-        parent_id: @parentEvent.id
-        order: 'position'
-        per: @per
 
   positionFromSequenceId: ->
     initialEvent = Records.events.find(discussionId: @discussion.id, sequenceId: @initialSequenceId)[0]

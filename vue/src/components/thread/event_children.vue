@@ -11,25 +11,52 @@
 import AppConfig         from '@/shared/services/app_config'
 import EventBus          from '@/shared/services/event_bus'
 import NestedEventWindow from '@/shared/services/nested_event_window'
+import WatchRecords from '@/mixins/watch_records'
+import RecordLoader from '@/shared/services/record_loader'
 
 export default
+  mixins: [WatchRecords]
   props:
     parentEvent: Object
     parentEventWindow: Object
+
   components:
     ThreadItem: -> import('@/components/thread/item')
 
   data: ->
-    eventWindow: new NestedEventWindow
+    eventWindow: null
+    events: []
+    loader: null
+
+  created: ->
+    @eventWindow = new NestedEventWindow
       parentEvent:       @parentEvent
       discussion:        @parentEventWindow.discussion
       initialSequenceId: @parentEventWindow.initialSequenceId
       per:               @parentEventWindow.per
-  # mounted: ->
-  #   EventBus.listen @, 'replyToEvent', (e, event, comment) ->
-  #     if event.id == @parentEvent.id
-  #       @eventWindow.max = false
+
+    @loader = new RecordLoader
+      collection: 'events'
+      params:
+        discussion_id: @parentEventWindow.discussion.id
+        parent_id: @parentEvent.id
+        order: 'position'
+        per: @parentEventWindow.per
+
+    @watchRecords
+      collections: ['events']
+      query: (store) =>
+        @events = @eventWindow.windowedEvents()
+
   methods:
+    loadPrevious: ->
+      @eventWindow.decreaseMin()
+      @loader.loadPrevious(@eventWindow.min())
+
+    loadNext: ->
+      @eventWindow.increaseMax()
+      @loader.loadMore(@eventWindow.lastLoaded()+1) if @eventWindow.canLoadNext()
+
     debug: -> AppConfig.debug
 </script>
 
@@ -37,13 +64,13 @@ export default
 .event-children
   div(v-if='debug()')
     | event-childrenparentId: {{eventWindow.parentEvent.id}}cc: {{eventWindow.parentEvent.childCount}}min: {{eventWindow.min}}max: {{eventWindow.max}}first: {{eventWindow.firstLoaded()}}last: {{eventWindow.lastLoaded()}}anyPrevious: {{eventWindow.anyPrevious()}}anyNext: {{eventWindow.anyNext()}}
-  a.activity-card__load-more.lmo-no-print.thread-item--indent-margin(v-show='eventWindow.anyPrevious() && !eventWindow.loader.loadingPrevious', @click='eventWindow.showPrevious()')
+  a.activity-card__load-more.lmo-no-print.thread-item--indent-margin(v-show='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()')
     i.mdi.mdi-autorenew
     span(v-t="{ path: 'activity_card.n_previous', args: { count: eventWindow.numPrevious() } }")
-  loading.activity-card__loading.page-loading(v-show='eventWindow.loader.loadingPrevious')
-  thread-item(v-for='event in eventWindow.windowedEvents()', :key='event.id', :event-window='eventWindow', :event='event')
-  a.activity-card__load-more.lmo-no-print.thread-item--indent-margin(v-show='eventWindow.anyNext() && !eventWindow.loader.loadingMore', @click='eventWindow.showNext()')
+  loading.activity-card__loading.page-loading(v-show='loader.loadingPrevious')
+  thread-item(v-for='event in events', :key='event.id', :event-window='eventWindow', :event='event')
+  a.activity-card__load-more.lmo-no-print.thread-item--indent-margin(v-show='eventWindow.anyNext() && !loader.loadingMore', @click='loadNext()')
     i.mdi.mdi-autorenew
     span(v-t="{ path: 'activity_card.n_more', args: { count: eventWindow.numNext() } }")
-  loading.activity-card__loading.page-loading(v-show='eventWindow.loader.loadingMore')
+  loading.activity-card__loading.page-loading(v-show='loader.loadingMore')
 </template>

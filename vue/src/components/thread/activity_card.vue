@@ -13,7 +13,7 @@ import Records from '@/shared/services/records'
 import WatchRecords from '@/mixins/watch_records'
 
 import { print } from '@/shared/helpers/window'
-
+# window.Loomio.debug= 1
 export default
   mixins: [ AuthModalMixin, WatchRecords ]
 
@@ -27,17 +27,40 @@ export default
     position: @positionForSelect()
     eventWindow: null
     loader: null
+    events: []
     positionItems: []
     renderModeItems: [
       {text: @$t('activity_card.chronological'), value: 'chronological'},
       {text: @$t('activity_card.nested'), value: 'nested'}
     ]
 
-  created: -> @init()
+  created: ->
+    @init()
+    @watchRecords
+      key: @discussion.id
+      collections: ['groups', 'memberships']
+      query: (store) =>
+        @canAddComment = AbilityService.canAddComment(@discussion)
+
+    @watchRecords
+      key: @discussion.id
+      collections: ['events']
+      query: (store) =>
+        @events = @eventWindow.windowedEvents()
+
+    @positionItems = [
+      {text: @$t('activity_card.beginning'), value: 'beginning'},
+      {text: @$t('activity_card.unread'), value: 'unread', disabled: !@eventWindow.anyUnread()},
+      {text: @$t('activity_card.latest'), value: 'latest'}
+    ]
+
 
   methods:
     init: ->
       @setupEventWindow(@position)
+
+      console.log @eventWindow.initialSequenceId, @initialSequenceId(@position)
+
       @loader = new RecordLoader
         collection: 'events'
         params:
@@ -46,27 +69,19 @@ export default
           from: @initialSequenceId(@position)
           per: @per
 
-      @loader.loadMore(@initialSequenceId(@position)).then =>
-        @setupEventWindow(@position)
+      @loader.fetchRecords().then =>
+        @eventWindow.setMinMax()
+        @events = @eventWindow.windowedEvents()
 
-      @positionItems = [
-        {text: @$t('activity_card.beginning'), value: 'beginning'},
-        {text: @$t('activity_card.unread'), value: 'unread', disabled: !@eventWindow.anyUnread()},
-        {text: @$t('activity_card.latest'), value: 'latest'}
-      ]
+    loadPrevious: ->
+      if @eventWindow.anyPrevious()
+        @eventWindow.decreaseMin()
+        @loader.loadPrevious()
 
-      @watchRecords
-        key: @discussion.id
-        collections: ['groups', 'memberships']
-        query: (store) =>
-          @canAddComment = AbilityService.canAddComment(@discussion)
-
-      @watchRecords
-        key: @discussion.id
-        collections: ['events', 'comments']
-        query: (store) =>
-          @setupEventWindow(@initialPosition())
-
+    loadNext: ->
+      if @eventWindow.anyNext()
+        @eventWindow.increaseMax()
+        @loader.loadMore()
 
     positionForSelect: ->
       if _.includes(['requested', 'context'], @initialPosition())
@@ -124,21 +139,38 @@ export default
 <template lang="pug">
 section.activity-card(aria-labelledby='activity-card-title')
   div(v-if='debug()')
-    | first: {{eventWindow.firstInSequence()}}last: {{eventWindow.lastInSequence()}}total: {{eventWindow.numTotal()}}min: {{eventWindow.min}}max: {{eventWindow.max}}per: {{per}}firstLoaded: {{eventWindow.firstLoaded()}}lastLoaded: {{eventWindow.lastLoaded()}}loadedCount: {{eventWindow.numLoaded()}}read: {{discussion.readItemsCount()}}unread: {{discussion.unreadItemsCount()}}firstUnread {{discussion.firstUnreadSequenceId()}}initialSequenceId: {{initialSequenceId(initialPosition())}}requestedSequenceId: {{discussion.requestedSequenceId}}position: {{initialPosition()}}
-  loading-content(v-if='loader.loading' :blockCount='2')
+    p first: {{eventWindow.firstInSequence()}}
+    p last: {{eventWindow.lastInSequence()}}
+    p total: {{eventWindow.numTotal()}}
+    p min: {{eventWindow.min}}
+    p max: {{eventWindow.max}}
+    p per: {{per}}
+    p firstLoaded: {{eventWindow.firstLoaded()}}
+    p lastLoaded: {{eventWindow.lastLoaded()}}
+    p loadedCount: {{eventWindow.numLoaded()}}
+    p read: {{discussion.readItemsCount()}}
+    p unread: {{discussion.unreadItemsCount()}}
+    p firstUnread {{discussion.firstUnreadSequenceId()}}
+    p initialSequenceId: {{initialSequenceId(initialPosition())}}
+    p requestedSequenceId: {{discussion.requestedSequenceId}}
+    p position: {{initialPosition()}}
+    p loader.loadingFirst {{loader.loadingFirst}}
 
-  v-layout.activity-card__settings(justify-space-between v-if='eventWindow && eventWindow.anyLoaded()')
+  v-layout.activity-card__settings(justify-space-between)
     v-flex
-      v-select(flat :items='positionItems', v-model='position', @change='init()', solo='')
+      v-select(flat :items='positionItems', v-model='position', @change='init()', solo)
     v-flex
-      v-select(flat :items='renderModeItems', v-model='renderMode', @change='init()', solo='')
-  .activity-card__content(v-if='!loader.loading && eventWindow')
-    a.activity-card__load-more.lmo-flex.lmo-flex__center.lmo-no-print(v-show='eventWindow.anyPrevious() && !eventWindow.loader.loadingPrevious', @click='eventWindow.showPrevious()', tabindex='0')
+      v-select(flat :items='renderModeItems', v-model='renderMode', @change='init()', solo)
+
+  loading-content(v-if='loader.loadingFirst' :blockCount='2')
+
+  .activity-card__content(v-if='!loader.loadingFirst')
+    a.activity-card__load-more.lmo-flex.lmo-flex__center.lmo-no-print(v-show='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()', tabindex='0')
       i.mdi.mdi-autorenew
       span(v-t="{ path: 'discussion.load_previous', args: { count: eventWindow.numPrevious() }}")
-    loading.activity-card__loading.page-loading(v-show='eventWindow.loader.loadingPrevious')
+    loading.activity-card__loading.page-loading(v-show='loader.loadingPrevious')
     ul.activity-card__activity-list
-      li.activity-card__activity-list-item(v-for='event in eventWindow.windowedEvents()', :key='event.id')
+      li.activity-card__activity-list-item(v-for='event in events', :key='event.id')
         thread-item(:event='event', :event-window='eventWindow')
     //
       <div
@@ -146,7 +178,7 @@ section.activity-card(aria-labelledby='activity-card-title')
       in-view-options="{throttle: 200}"
       class="activity-card__load-more-sensor lmo-no-print"
       ></div>
-    loading.activity-card__loading.page-loading(v-show='eventWindow.loader.loadingMore')
+    loading.activity-card__loading.page-loading(v-show='loader.loadingMore')
   //- add-comment-panel(v-if='eventWindow', :event-window='eventWindow', :parent-event='discussion.createdEvent()')
   .add-comment-panel.lmo-card-padding(v-if="eventWindow")
     comment-form(v-if='canAddComment' :discussion='discussion')

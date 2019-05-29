@@ -65,6 +65,8 @@ export default
         ':thinking:': 'thinking_face'
         ':fingers_crossed:': ':crossed_fingers:'
         ':nerd:': ':nerd_face:'
+        ':hugging:': ':hugging_face:'
+        ':slight_frown:': ':slightly_frowning_face:'
 
       if corrections[shortcode]?
         corrections[shortcode]

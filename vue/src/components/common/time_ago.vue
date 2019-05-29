@@ -6,12 +6,13 @@
 
 <script lang="coffee">
 export default
-  params: ['date']
-  computed:
+  props:
+    date: Object
+  methods:
     ago: ->
       moment(@date).fromNow()
 </script>
 
 <template>
-    <abbr class="timeago"><span>{{ ago }}</span></abbr>
+    <abbr class="timeago"><span>{{ ago() }}</span></abbr>
 </template>

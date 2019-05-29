@@ -51,18 +51,8 @@ export default class BaseEventWindow
   numNext:         -> _.max([@windowNumNext(), @lastInSequence() - @lastLoaded()])
   anyPrevious:     -> @numPrevious() > 0
   anyNext:         -> @numNext() > 0
-
-  showNext:  ->
-    @increaseMax()
-    if (@max > @lastLoaded()) || ((@max == false) && (@lastLoaded() < @numTotal()))
-      @loader.loadMore(@lastLoaded()+1)
-
-  showPrevious: ->
-    @decreaseMin()
-    @loader.loadPrevious(@min) # if @min < @firstLoaded() # if we don't already have all the records.
+  canLoadNext:     -> (@max > @lastLoaded()) || ((@max == false) && (@lastLoaded() < @numTotal()))
 
   showAll: ->
-    @loader.params.per = Number.MAX_SAFE_INTEGER
     @setMin(@firstInSequence())
     @setMax(Number.MAX_SAFE_INTEGER)
-    @loader.loadMore(@min)
