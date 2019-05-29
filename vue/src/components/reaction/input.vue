@@ -31,7 +31,7 @@ export default
 </script>
 
 <template lang="pug">
-v-menu(:close-on-content-click="true" v-model="closeEmojiMenu").reactions-input
+v-menu(:close-on-content-click="true" v-model="closeEmojiMenu" lazy).reactions-input
   template(v-slot:activator="{on}")
     v-btn.emoji-picker__toggle(v-on="on" flat icon)
       v-icon mdi-emoticon-outline

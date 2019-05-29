@@ -256,7 +256,7 @@ div
   .editor(v-if="format == 'html'")
     editor-menu-bar.menubar(:editor='editor')
       div.lmo-flex.lmo-flex__center(slot-scope='{ commands, isActive }')
-        v-menu
+        v-menu(lazy)
           template(v-slot:activator="{on}")
             v-btn(small flat v-on="on")
               v-icon mdi-format-size
@@ -274,7 +274,7 @@ div
             v-list-tile
               v-btn(small flat :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
                 v-icon mdi-format-text
-        v-menu
+        v-menu(lazy)
           template(v-slot:activator="{on}")
             v-btn(small flat v-on="on")
               v-icon mdi-format-bold
@@ -298,7 +298,7 @@ div
             v-list-tile
               v-btn(small flat :class="{ 'is-active': isActive.code() }", @click='commands.code')
                 v-icon mdi-code-braces
-        v-menu
+        v-menu(lazy)
           template(v-slot:activator="{on}")
             v-btn(small flat v-on="on")
               v-icon mdi-format-list-bulleted
@@ -315,7 +315,7 @@ div
                 v-icon mdi-format-list-checks
         v-btn(flat small :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
           v-icon mdi-paperclip
-        v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+        v-menu(lazy :close-on-content-click="false" v-model="closeEmojiMenu")
           template(v-slot:activator="{on}")
             v-btn.emoji-picker__toggle(v-on="on" flat small :class="{ 'is-active': isActive.underline() }")
               v-icon mdi-emoticon-outline

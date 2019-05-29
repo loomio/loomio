@@ -60,8 +60,14 @@ export default
 
   methods:
     smileCorrect: (shortcode) ->
-      if shortcode == ":slight_smile:"
-        ":smile:"
+      corrections =
+        ':slight_smile:': ':smile:'
+        ':thinking:': 'thinking_face'
+        ':fingers_crossed:': ':crossed_fingers:'
+        ':nerd:': ':nerd_face:'
+
+      if corrections[shortcode]?
+        corrections[shortcode]
       else
         shortcode
 
@@ -92,8 +98,9 @@ export default
         v-tooltip(bottom)
           template(v-slot:activator="{ on }")
             .fake-chip(v-on="on")
+              //- span {{reaction}}
               emoji(:emoji="smileCorrect(reaction)" :size="diameter")
-              span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
+              //- span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
               user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" size="tiny")
 
           .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
