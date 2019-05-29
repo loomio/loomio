@@ -3,6 +3,7 @@ class API::DiscussionsController < API::RestfulController
   include UsesDiscussionReaders
   include UsesPolls
   include UsesFullSerializer
+  include UsesDiscussionEvents
 
   def tags
     instantiate_collection do |collection|
