@@ -154,5 +154,6 @@ module.exports = {
   UserDropdown: 'common/user_dropdown',
   ValidationErrors: 'common/validation_errors',
   ReactionDisplay: 'reaction/display',
-  ReactionInput: 'reaction/input'
+  ReactionInput: 'reaction/input',
+  EmojiPicker: 'emoji/picker'
 }
