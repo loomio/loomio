@@ -99,16 +99,11 @@ GEM
       nokogiri
       railties
       safely_block (>= 0.1.1)
-    ahoy_matey (2.2.1)
-      addressable
-      browser (~> 2.0)
+    ahoy_matey (3.0.0)
+      activesupport (>= 5)
       device_detector
       geocoder (>= 1.4.5)
-      railties (>= 4.2)
-      referer-parser (>= 0.3)
-      request_store
       safely_block (>= 0.2.1)
-      user_agent_parser
     arbre (1.2.1)
       activesupport (>= 3.0.0)
     arel (9.0.0)
@@ -388,7 +383,7 @@ GEM
     premailer-rails (1.10.2)
       actionmailer (>= 3, < 6)
       premailer (~> 1.7, >= 1.7.9)
-    public_suffix (3.0.3)
+    public_suffix (3.1.0)
     puma (3.12.1)
     rack (2.0.7)
     rack-attack (6.0.0)
@@ -459,7 +454,6 @@ GEM
       redis-store (>= 1.2, < 2)
     redis-store (1.6.0)
       redis (>= 2.2, < 5)
-    referer-parser (0.3.0)
     regexp_parser (1.5.0)
     regexp_property_values (0.3.5)
     request_store (1.4.1)
@@ -565,7 +559,6 @@ GEM
       unf_ext
     unf_ext (0.0.7.6)
     uniform_notifier (1.12.1)
-    user_agent_parser (2.5.1)
     uuidtools (2.1.5)
     warden (1.2.8)
       rack (>= 2.0.6)
@@ -589,7 +582,7 @@ DEPENDENCIES
   activerecord-import (= 1.0.1)
   activerecord-nulldb-adapter
   ahoy_email (~> 0.5.2)
-  ahoy_matey (~> 2.2.1)
+  ahoy_matey (~> 3.0.0)
   autoprefixer-rails
   awesome_print
   aws-sdk-s3
