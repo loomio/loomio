@@ -1,18 +1,12 @@
 <style lang="scss">
-.time-ago {
-  border: 0;
-}
+.time-ago { border: 0; }
 </style>
 
 <script lang="coffee">
 export default
+  functional: true
   props:
     date: Object
-  methods:
-    ago: ->
-      moment(@date).fromNow()
+  render: (createElement, context) ->
+    createElement('abbr', {class: 'timeago'}, [moment(context.props.date).fromNow()])
 </script>
-
-<template>
-    <abbr class="timeago"><span>{{ ago() }}</span></abbr>
-</template>
