@@ -184,7 +184,7 @@ div
   text-decoration: underline;
 }
 
-.thread-item__link abbr span {
+.thread-item__link abbr {
   font-weight: normal;
   color: $grey-on-white;
 }
