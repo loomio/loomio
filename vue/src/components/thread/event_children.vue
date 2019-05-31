@@ -51,7 +51,7 @@ export default
   methods:
     loadPrevious: ->
       @eventWindow.decreaseMin()
-      @loader.loadPrevious(@eventWindow.min())
+      @loader.loadPrevious(@eventWindow.min)
 
     loadNext: ->
       @eventWindow.increaseMax()

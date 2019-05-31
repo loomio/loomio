@@ -19,6 +19,7 @@ export default
 
   props:
     discussion: Object
+    loader: Object
 
   data: ->
     canAddComment: false
@@ -26,7 +27,6 @@ export default
     renderMode: 'nested'
     position: @positionForSelect()
     eventWindow: null
-    loader: null
     events: []
     positionItems: []
     renderModeItems: [
@@ -58,30 +58,23 @@ export default
   methods:
     init: ->
       @setupEventWindow(@position)
+      # @eventWindow.setMinMax()
+      # @events = @eventWindow.windowedEvents()
+      # unless @eventWindow.allLoaded()
+      #   @loader.fetchRecords().then =>
+      #     @eventWindow.setMinMax()
+      #     @events = @eventWindow.windowedEvents()
 
-      console.log @eventWindow.initialSequenceId, @initialSequenceId(@position)
-
-      @loader = new RecordLoader
-        collection: 'events'
-        params:
-          discussion_id: @discussion.id
-          order: 'sequence_id'
-          from: @initialSequenceId(@position)
-          per: @per
-
-      @loader.fetchRecords().then =>
-        @eventWindow.setMinMax()
-        @events = @eventWindow.windowedEvents()
 
     loadPrevious: ->
       if @eventWindow.anyPrevious()
         @eventWindow.decreaseMin()
-        @loader.loadPrevious()
+        @loader.loadPrevious(@eventWindow.min) # unless @eventWindow.allLoaded()
 
     loadNext: ->
       if @eventWindow.anyNext()
         @eventWindow.increaseMax()
-        @loader.loadMore()
+        @loader.loadMore() #unless @eventWindow.allLoaded()
 
     positionForSelect: ->
       if _.includes(['requested', 'context'], @initialPosition())
@@ -147,7 +140,9 @@ section.activity-card(aria-labelledby='activity-card-title')
     p per: {{per}}
     p firstLoaded: {{eventWindow.firstLoaded()}}
     p lastLoaded: {{eventWindow.lastLoaded()}}
-    p loadedCount: {{eventWindow.numLoaded()}}
+    p numLoaded: {{eventWindow.numLoaded()}}
+    p windowLength: {{eventWindow.windowLength()}}
+    p allLoaded: {{eventWindow.allLoaded()}}
     p read: {{discussion.readItemsCount()}}
     p unread: {{discussion.unreadItemsCount()}}
     p firstUnread {{discussion.firstUnreadSequenceId()}}
@@ -155,6 +150,7 @@ section.activity-card(aria-labelledby='activity-card-title')
     p requestedSequenceId: {{discussion.requestedSequenceId}}
     p position: {{initialPosition()}}
     p loader.loadingFirst {{loader.loadingFirst}}
+    p loader.loadingPrevious {{loader.loadingPrevious}}
 
   v-layout.activity-card__settings(justify-space-between)
     v-flex

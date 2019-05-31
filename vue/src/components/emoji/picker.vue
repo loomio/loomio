@@ -32,8 +32,6 @@ export default
 
 <template lang="pug">
 .emoji-picker
-  div
-    input(type='text', v-model='search' :placeholder="$t('emoji_picker.search')")
   div(v-for='(emojiGroup, category) in emojis', :key='category')
     h5(v-t="'emoji_picker.'+category")
     div.emoji-picker__emojis

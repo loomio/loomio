@@ -32,6 +32,7 @@ export default class RecordLoader
     .then(@then)
     .finally =>
       @loadingFirst = false
+      @loadingPrevious = false
       @loading = false
 
   loadMore: (from) ->
@@ -45,4 +46,4 @@ export default class RecordLoader
     else
       @params['from'] -= @params['per'] if @numLoaded > 0
     @loadingPrevious = true
-    @fetchRecords().finally => @loadingPrevious = false
+    @fetchRecords()
