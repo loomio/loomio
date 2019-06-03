@@ -24,7 +24,7 @@ module.exports = {
   devServer: {
    proxy: {
      '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system)': {target: 'http://localhost:3000'},
-     '^/(cable|sockjs-node)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
+     '^/(cable)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
    }
   },
   css: {

@@ -20,8 +20,6 @@ import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
 import { insertText } from 'tiptap-commands'
 import Image from '@/shared/tiptap_extentions/image.js'
 
-import { Picker } from 'emoji-mart-vue'
-
 export default
   props:
     model: Object
@@ -34,7 +32,6 @@ export default
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
     FilesList: FilesList
-    Picker: Picker
     # EditorMenuBubble: EditorMenuBubble
 
   data: ->
@@ -146,11 +143,12 @@ export default
     emitUploading: ->
       @$emit('is-uploading', !(@model.files.length == @files.length && @model.imageFiles.length == @imageFiles.length))
 
-    emojiPicked: (a,b,c) ->
+    emojiPicked: (shortcode, unicode) ->
       { view } = this.editor
-      insertText(a.native)(view.state, view.dispatch, view)
+      insertText(unicode)(view.state, view.dispatch, view)
       @closeEmojiMenu = false
       @editor.focus()
+
     updateModel: ->
       @model[@field] = @editor.getHTML()
       @model.files = @files.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
@@ -319,7 +317,7 @@ div
           template(v-slot:activator="{on}")
             v-btn.emoji-picker__toggle(v-on="on" flat small :class="{ 'is-active': isActive.underline() }")
               v-icon mdi-emoticon-outline
-          picker.emoji-picker(@select="emojiPicked" emoji="point_up" :recent="recentEmojis" :title="$t('emoji_picker.search')" :native="true" set="apple")
+          emoji-picker(:insert="emojiPicked")
         v-dialog(v-model="linkDialogIsOpen")
           template(v-slot:activator="{on}")
             v-btn(flat small v-on="on")

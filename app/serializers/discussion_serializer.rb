@@ -83,4 +83,5 @@ class DiscussionSerializer < ActiveModel::Serializer
   def scope
     super || {}
   end
+
 end

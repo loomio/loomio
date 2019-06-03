@@ -5,7 +5,7 @@ class CommentSerializer < ActiveModel::Serializer
              :versions_count, :attachments
 
   has_one :author, serializer: UserSerializer, root: :users
-  has_one :discussion, serializer: DiscussionSerializer
+  has_one :discussion, serializer: Simple::DiscussionSerializer
   has_many :reactions, serializer: ReactionSerializer, root: :reactions
   has_many :documents, serializer: DocumentSerializer, root: :documents
 
