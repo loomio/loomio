@@ -4,7 +4,7 @@ var chromedriver = require('chromedriver');
 var chromeOptions = []
 if (process.env.RAILS_ENV == 'test') {
   console.log("WORD UP!!!!!!!!! running in HEADLESS MODE")
-  chromeOptions = [ "headless", "window-size=1280,800" ]
+  chromeOptions = [ "headless" ]
 
 }
 
