@@ -15,17 +15,23 @@ export default
   data: ->
     group: null
 
-  mounted: ->
+  created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
+
+  watch:
+    '$route': 'init'
 
   methods:
     groupKey: ->
       @$route.params.handle || @$route.params.key
 
     init: ->
-      Records.groups.findOrFetch(@groupKey(), {}, true).then (group) =>
+      Records.groups.findOrFetch(@groupKey()).then (group) =>
         @group = group
+
+        # Records.groups.findOrFetch(@groupKey(), {}, true).then (group) => @group = group
+
         subscribeTo(@group)
         Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
@@ -82,8 +88,8 @@ v-container.lmo-main-container.group-page(grid-list-lg)
             membership-card(:group='group', :pending='true')
           v-flex
             subgroups-card(:group='group')
-          //- v-flex
-          //-   document-card(:group='group')
+          v-flex
+            document-card(:group='group')
           v-flex
             poll-common-index-card(:model='group', :limit='5', :view-more-link='true')
             // <outlet name="after-slack-card" model="group"></outlet>

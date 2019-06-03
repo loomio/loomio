@@ -84,7 +84,7 @@ export default
   //-   md-button.context-panel-dropdown__button(ng-click='$mdMenu.open()')
   //-     .sr-only(translate='thread_context.thread_options')
   //-     i.mdi.mdi-24px.mdi-chevron-down
-  v-menu.lmo-dropdown-menu(offset-y)
+  v-menu.lmo-dropdown-menu(offset-y lazy)
     v-btn.context-panel-dropdown__button(flat slot='activator')
       span(v-t="'thread_context.thread_options'")
       v-icon mdi-chevron-down

@@ -5,26 +5,30 @@ import EventBus from '@/shared/services/event_bus'
 import { listenForLoading } from '@/shared/helpers/listen'
 import { myLastStanceFor }  from '@/shared/helpers/poll'
 import PollCommonDirective from '@/components/poll/common/directive'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
+  mixins: [WatchRecords]
   components:
     PollCommonDirective: PollCommonDirective
 
   props:
     poll: Object
+
   created: ->
     # Records.polls.findOrFetchById(@poll.key)
     EventBus.$on 'showResults', => @buttonPressed = true
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
-    Records.view
-      name: "myLastStanceFor(#{@poll.id})"
+    @watchRecords
       collections: ["stances"]
       query: (records) =>
         @myLastStance = myLastStanceFor(@poll)?
     # listenForLoading @
+
   data: ->
     buttonPressed: false
     myLastStance: null
+    
   computed:
     showResults: ->
       @buttonPressed || @myLastStance || @poll.isClosed()

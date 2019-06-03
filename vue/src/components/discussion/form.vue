@@ -7,9 +7,10 @@ import { map, sortBy, filter } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [AnnouncementModalMixin]
+  mixins: [AnnouncementModalMixin, WatchRecords]
   props:
     discussion: Object
     close: Function
@@ -30,8 +31,7 @@ export default
           @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
 
 
-    Records.view
-      name:"startThreadGroups"
+    @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
         console.log "running query:", @discussion, Session.user().formalGroups()

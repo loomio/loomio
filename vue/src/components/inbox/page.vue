@@ -16,9 +16,10 @@ import ThreadFilter from '@/shared/services/thread_filter'
 import ModalService  from '@/shared/services/modal_service'
 import urlFor        from '@/mixins/url_for'
 import {each, keys, sum, values, sortBy} from 'lodash'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [urlFor]
+  mixins: [urlFor, WatchRecords]
   data: ->
     threadLimit: 50
     views: {}
@@ -34,20 +35,8 @@ export default
     ]
 
   created: ->
-    EventBus.$emit 'currentComponent',
-      titleKey: 'inbox_page.unread_threads'
-      page: 'inboxPage'
     @init()
     EventBus.$on 'signedIn', => @init()
-    Records.view
-      name: "inbox"
-      collections: ['discussions', 'groups']
-      query: (store) =>
-        @groups = sortBy Session.user().inboxGroups(), 'name'
-        @views = {}
-        each @groups, (group) =>
-          @views[group.key] = ThreadFilter(store, filters: @filters, group: group)
-        @unreadCount = sum values(@views), (v) -> v.length
 
   methods:
     startGroup: ->
@@ -56,6 +45,20 @@ export default
     init: (options = {}) ->
       @loading = true
       Records.discussions.fetchInbox(options).then => @loading = false
+
+      EventBus.$emit 'currentComponent',
+        titleKey: 'inbox_page.unread_threads'
+        page: 'inboxPage'
+
+      @watchRecords
+        collections: ['discussions', 'groups']
+        query: (store) =>
+          @groups = sortBy Session.user().inboxGroups(), 'name'
+          @views = {}
+          each @groups, (group) =>
+            @views[group.key] = ThreadFilter(store, filters: @filters, group: group)
+          @unreadCount = sum values(@views), (v) -> v.length
+
 
     query: ->
       ThreadQueryService.queryFor(name: "inbox", filters: @filters)

@@ -15,7 +15,11 @@ export default class BaseEventWindow
   firstLoaded:       -> (_.head(@loadedEvents()) || {})[@columnName] || 0
   lastLoaded:        -> (_.last(@loadedEvents())  || {})[@columnName] || 0
   numLoaded:         -> @loadedEvents().length
-  anyLoaded:         -> @numLoaded() > 0
+  windowNumLoaded:   -> @windowedEvents().length
+  anyLoaded:         -> @windowNumLoaded() > 0
+  allLoaded:         -> @windowLength() == @windowNumLoaded()
+
+    # subtract [firstinSequence, min] and [max, lastInSequence] from ranges, then length
   # these are correct, but unused
   # canLoadPrevious:   -> @numTotal() > 0 && @firstLoaded() > @firstInSequence()
   # canLoadNext:       -> @numTotal() > 0 && @lastInSequence() > @lastLoaded()
@@ -32,6 +36,10 @@ export default class BaseEventWindow
   # min and max are the minimum and maximum values permitted in the window
   setMin: (val) -> @min = _.max([val, @firstInSequence()])
   setMax: (val) -> @max = if val < @lastInSequence() then val else false
+  setMinMax: ->
+    @setMin(@positionFromSequenceId() || @firstLoaded())
+    @setMax(@lastLoaded() || false)
+
 
   isUnread: (event) =>
     !_.some @readRanges, (range) ->
@@ -51,18 +59,8 @@ export default class BaseEventWindow
   numNext:         -> _.max([@windowNumNext(), @lastInSequence() - @lastLoaded()])
   anyPrevious:     -> @numPrevious() > 0
   anyNext:         -> @numNext() > 0
-
-  showNext:  ->
-    @increaseMax()
-    if (@max > @lastLoaded()) || ((@max == false) && (@lastLoaded() < @numTotal()))
-      @loader.loadMore(@lastLoaded()+1)
-
-  showPrevious: ->
-    @decreaseMin()
-    @loader.loadPrevious(@min) # if @min < @firstLoaded() # if we don't already have all the records.
+  canLoadNext:     -> (@max > @lastLoaded()) || ((@max == false) && (@lastLoaded() < @numTotal()))
 
   showAll: ->
-    @loader.params.per = Number.MAX_SAFE_INTEGER
     @setMin(@firstInSequence())
     @setMax(Number.MAX_SAFE_INTEGER)
-    @loader.loadMore(@min)

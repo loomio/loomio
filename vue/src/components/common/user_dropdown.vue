@@ -17,7 +17,7 @@ export default
 </script>
 
 <template lang="pug">
-v-menu(offset-y)
+v-menu(offset-y lazy)
   v-btn.user-dropdown__dropdown-button(icon slot="activator", :aria-label="$t('user_dropdown.button_label')")
     v-icon mdi-dots-vertical
   v-list

@@ -8,44 +8,48 @@ import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 import { map, throttle } from 'lodash'
 import Session from '@/shared/services/session'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [DiscussionModalMixin]
+  mixins: [DiscussionModalMixin, WatchRecords]
   props:
     group: Object
-  mounted: ->
-    @loader.fetchRecords()
-    # EventBus.$on this, 'subgroupsLoaded', -> @init(@filter)
-    applyLoadingFunction(this, 'searchThreads')
-    Records.view
-      name: "group_#{@group.key}_pinned"
-      collections: ['discussions', 'groups']
-      query: @filterPinned
 
-    Records.view
-      name: "group_#{@group.key}_unpinned"
-      collections: ['discussions', 'groups']
-      query: @filterDiscussions
+  created: -> @init()
 
   data: ->
     filter: @$route.params.filter or 'show_opened'
     pinned: []
     discussions: []
-    loader: new RecordLoader
-      collection: 'discussions'
-      params:
-        group_id: @group.id
-        filter:   @filter
+    loader: null
     searchOpen: false
     searched: {}
     fragment: ''
     discussionStartIsOpen: false
 
   methods:
-    filterDiscussions: ->
-      @discussions = ThreadFilter(Records, {group: @group, filters: ['hide_pinned', @filter]})
-    filterPinned: ->
-      @pinned = ThreadFilter(Records, {group: @group, filters: ['show_pinned', @filter]})
+    init: ->
+      console.log "group discussions card init"
+      @loader = new RecordLoader
+        collection: 'discussions'
+        params:
+          group_id: @group.id
+          filter: @filter
+
+      @loader.fetchRecords()
+
+      # EventBus.$on this, 'subgroupsLoaded', -> @init(@filter)
+      # applyLoadingFunction(this, 'searchThreads')
+
+      @watchRecords
+        key: @group.id
+        collections: ['discussions', 'groups']
+        query: (store) =>
+          @pinned = ThreadFilter(Records, {group: @group, filters: ['show_pinned', @filter]})
+          @discussions = ThreadFilter(store, {group: @group, filters: ['hide_pinned', @filter]})
+
+    loading: ->
+      @loader.loadingFirst || @searchThreadsExecuting
 
     searchThreads: throttle ->
       return Promise.resolve(true) unless @fragment.length
@@ -69,26 +73,26 @@ export default
 
     setFilter: (newFilter) ->
       @filter = newFilter
-      @filterPinned()
-      @filterDiscussions()
+      @init()
 
     closeDiscussionStart: ->
       @discussionStartIsOpen = false
 
   watch:
+    group: (a, b) ->
+      @init() if a.id != b.id
+
     searchOpen: ->
       if @searchOpen
         this.$nextTick -> document.querySelector('.discussions-card__search--open input').focus()
+
     isLoggedIn: ->
       console.log 'change in login status'
       @loader.fetchRecords()
 
   computed:
-    loading: ->
-      @loader.loadingFirst || @searchThreadsExecuting
-
     noThreads: ->
-      return if @loading
+      return false if @loading
       if @fragment.length
         @searched.length == 0
       else
@@ -129,13 +133,13 @@ v-card.discussions-card(aria-labelledby='threads-card-title')
         thread-preview-collection.thread-previews-container--pinned(v-if='pinned.length', :threads='pinned', :limit='loader.numRequested', order='title')
         thread-preview-collection.thread-previews-container--unpinned(v-if='discussions.length', :threads='discussions', :limit='loader.numRequested')
       .lmo-show-more(v-if='!loader.exhausted && !loader.loadingMore')
-        button.discussions-card__show-more(v-show='!loading', @click='loader.loadMore', v-t="{ path: 'common.action.show_more' }")
+        v-btn.discussions-card__show-more(v-show='!loading()', @click='loader.loadMore', v-t="{ path: 'common.action.show_more' }")
       .lmo-hint-text.discussions-card__no-more-threads(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
       loading(v-if='loader.loadingMore')
     .discussions-card__list(v-if='fragment.length')
       section.thread-preview-collection__container(v-if='searched.length')
         thread-preview-collection.thread-previews-container--searched(:threads='searched')
-    loading(v-show='loading')
+    loading(v-show='loading()')
 </template>
 
 <style lang="scss">

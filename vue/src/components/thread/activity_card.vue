@@ -10,65 +10,81 @@ import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
 
+import WatchRecords from '@/mixins/watch_records'
 
 import { print } from '@/shared/helpers/window'
-
+# window.Loomio.debug= 1
 export default
-  mixins: [ AuthModalMixin ]
+  mixins: [ AuthModalMixin, WatchRecords ]
+
   props:
     discussion: Object
+    loader: Object
+
   data: ->
     canAddComment: false
     per: AppConfig.pageSize.threadItems
     renderMode: 'nested'
     position: @positionForSelect()
-    eventWindow: {}
-    loader: new RecordLoader
-      collection: 'events'
-      params:
-        discussion_id: @discussion.id
-        order: 'sequence_id'
-        from: @initialSequenceId(@initialPosition())
-        per: @per
+    eventWindow: null
+    events: []
     positionItems: []
     renderModeItems: [
       {text: @$t('activity_card.chronological'), value: 'chronological'},
       {text: @$t('activity_card.nested'), value: 'nested'}
     ]
+
   created: ->
-    # EventBus.listen $scope, 'fetchRecordsForPrint', ->
-    #   if $scope.discussion.allEventsLoaded()
-    #     print()
-    #   else
-    #     ModalService.open 'PrintModal', preventClose: -> true
-    #     $scope.eventWindow.showAll().then ->
-    #       $mdDialog.cancel()
-    #       print()
-    Records.view
-      name:"activityCardGroups"
+    @init()
+    @watchRecords
+      key: @discussion.id
       collections: ['groups', 'memberships']
       query: (store) =>
         @canAddComment = AbilityService.canAddComment(@discussion)
-    Records.view
-      name:"activityCardEvents"
-      collections: ['events', 'comments']
+
+    @watchRecords
+      key: @discussion.id
+      collections: ['events']
       query: (store) =>
-        @setupEventWindow(@initialPosition())
-    @init()
-    # EventBus.listen $scope, 'initActivityCard', -> $scope.init()
-  computed:
-    isLoggedIn: -> Session.isSignedIn()
+        @events = @eventWindow.windowedEvents()
+
+    @positionItems = [
+      {text: @$t('activity_card.beginning'), value: 'beginning'},
+      {text: @$t('activity_card.unread'), value: 'unread', disabled: !@eventWindow.anyUnread()},
+      {text: @$t('activity_card.latest'), value: 'latest'}
+    ]
+
+
   methods:
-    signIn: -> @openAuthModal()
-    # isLoggedIn: -> Session.isSignedIn()
+    init: ->
+      @setupEventWindow(@position)
+      # @eventWindow.setMinMax()
+      # @events = @eventWindow.windowedEvents()
+      # unless @eventWindow.allLoaded()
+      #   @loader.fetchRecords().then =>
+      #     @eventWindow.setMinMax()
+      #     @events = @eventWindow.windowedEvents()
+
+
+    loadPrevious: ->
+      if @eventWindow.anyPrevious()
+        @eventWindow.decreaseMin()
+        @loader.loadPrevious(@eventWindow.min) # unless @eventWindow.allLoaded()
+
+    loadNext: ->
+      if @eventWindow.anyNext() && !@loader.loadingMore
+        @eventWindow.increaseMax()
+        @loader.loadMore() #unless @eventWindow.allLoaded()
+
     positionForSelect: ->
       if _.includes(['requested', 'context'], @initialPosition())
         "beginning"
       else
         @initialPosition()
 
-    debug: ->
-      window.Loomio.debug
+    signIn:     -> @openAuthModal()
+    isLoggedIn: -> Session.isSignedIn()
+    debug:      -> window.Loomio.debug
 
     initialPosition: ->
       switch
@@ -111,43 +127,49 @@ export default
           initialSequenceId: @initialSequenceId(position)
           per: @per
 
-    init: (position = @initialPosition()) ->
-      @loader = new RecordLoader
-        collection: 'events'
-        params:
-          discussion_id: @discussion.id
-          order: 'sequence_id'
-          from: @initialSequenceId(position)
-          per: @per
+    shouldLoadMore: (visible) ->
+      @loadNext() if visible
 
-      @setupEventWindow(position)
-      @loader.loadMore(@initialSequenceId(position)).then =>
-        @setupEventWindow(position)
-        # EventBus.$emit $scope, 'threadPageScrollToSelector', $scope.elementToFocus(position)
-      @positionItems = [
-        {text: @$t('activity_card.beginning'), value: 'beginning'},
-        {text: @$t('activity_card.unread'), value: 'unread', disabled: !@eventWindow.anyUnread()},
-        {text: @$t('activity_card.latest'), value: 'latest'}
-      ]
 </script>
 
 <template lang="pug">
 section.activity-card(aria-labelledby='activity-card-title')
-  v-layout.activity-card__settings(justify-space-between v-show='eventWindow.anyLoaded()')
-    v-flex
-      v-select(flat :items='positionItems', v-model='position', @change='init(position)', solo='')
-    v-flex
-      v-select(flat :items='renderModeItems', v-model='renderMode', @change='init()', solo='')
   div(v-if='debug()')
-    | first: {{eventWindow.firstInSequence()}}last: {{eventWindow.lastInSequence()}}total: {{eventWindow.numTotal()}}min: {{eventWindow.min}}max: {{eventWindow.max}}per: {{per}}firstLoaded: {{eventWindow.firstLoaded()}}lastLoaded: {{eventWindow.lastLoaded()}}loadedCount: {{eventWindow.numLoaded()}}read: {{discussion.readItemsCount()}}unread: {{discussion.unreadItemsCount()}}firstUnread {{discussion.firstUnreadSequenceId()}}initialSequenceId: {{initialSequenceId(initialPosition())}}requestedSequenceId: {{discussion.requestedSequenceId}}position: {{initialPosition()}}
-  loading-content(v-if='loader.loading' :blockCount='2')
-  .activity-card__content(v-if='!loader.loading')
-    a.activity-card__load-more.lmo-flex.lmo-flex__center.lmo-no-print(v-show='eventWindow.anyPrevious() && !eventWindow.loader.loadingPrevious', @click='eventWindow.showPrevious()', tabindex='0')
+    p first: {{eventWindow.firstInSequence()}}
+    p last: {{eventWindow.lastInSequence()}}
+    p total: {{eventWindow.numTotal()}}
+    p min: {{eventWindow.min}}
+    p max: {{eventWindow.max}}
+    p per: {{per}}
+    p firstLoaded: {{eventWindow.firstLoaded()}}
+    p lastLoaded: {{eventWindow.lastLoaded()}}
+    p numLoaded: {{eventWindow.numLoaded()}}
+    p windowLength: {{eventWindow.windowLength()}}
+    p allLoaded: {{eventWindow.allLoaded()}}
+    p read: {{discussion.readItemsCount()}}
+    p unread: {{discussion.unreadItemsCount()}}
+    p firstUnread {{discussion.firstUnreadSequenceId()}}
+    p initialSequenceId: {{initialSequenceId(initialPosition())}}
+    p requestedSequenceId: {{discussion.requestedSequenceId}}
+    p position: {{initialPosition()}}
+    p loader.loadingFirst {{loader.loadingFirst}}
+    p loader.loadingPrevious {{loader.loadingPrevious}}
+
+  v-layout.activity-card__settings(justify-space-between)
+    v-flex
+      v-select(flat :items='positionItems', v-model='position', @change='init()', solo)
+    v-flex
+      v-select(flat :items='renderModeItems', v-model='renderMode', @change='init()', solo)
+
+  loading-content(v-if='loader.loadingFirst' :blockCount='2')
+
+  .activity-card__content(v-if='!loader.loadingFirst')
+    a.activity-card__load-more.lmo-flex.lmo-flex__center.lmo-no-print(v-show='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()', tabindex='0')
       i.mdi.mdi-autorenew
       span(v-t="{ path: 'discussion.load_previous', args: { count: eventWindow.numPrevious() }}")
-    loading.activity-card__loading.page-loading(v-show='eventWindow.loader.loadingPrevious')
+    loading.activity-card__loading.page-loading(v-show='loader.loadingPrevious')
     ul.activity-card__activity-list
-      li.activity-card__activity-list-item(v-for='event in eventWindow.windowedEvents()', :key='event.id')
+      li.activity-card__activity-list-item(v-for='event in events', :key='event.id')
         thread-item(:event='event', :event-window='eventWindow')
     //
       <div
@@ -155,13 +177,14 @@ section.activity-card(aria-labelledby='activity-card-title')
       in-view-options="{throttle: 200}"
       class="activity-card__load-more-sensor lmo-no-print"
       ></div>
-    loading.activity-card__loading.page-loading(v-show='eventWindow.loader.loadingMore')
+    .activity-card__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadMore")
+    loading.activity-card__loading.page-loading(v-show='loader.loadingMore')
   //- add-comment-panel(v-if='eventWindow', :event-window='eventWindow', :parent-event='discussion.createdEvent()')
-  .add-comment-panel.lmo-card-padding
+  .add-comment-panel.lmo-card-padding(v-if="eventWindow")
     comment-form(v-if='canAddComment' :discussion='discussion')
     .add-comment-panel__join-actions(v-if='!canAddComment')
-      join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn', :block='true')
-      v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn')
+      join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn()', :block='true')
+      v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
 
 </template>
 <style lang="scss">
