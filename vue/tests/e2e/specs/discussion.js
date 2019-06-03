@@ -383,7 +383,7 @@ module.exports = {
     page.expectFlash('Thread fork created')
     page.click('.dismiss-modal-button', 500)
     page.expectText('.context-panel__heading', 'Forked thread')
-    page.expectText('.context-panel__description', 'Forked from What star sign are you?')
+    page.expectText('.context-panel__fork-details', 'What star sign are you?')
     page.expectText('.thread-item__directive', 'This is totally on topic!', 8000)
   }
 }
