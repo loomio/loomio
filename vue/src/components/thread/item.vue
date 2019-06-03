@@ -110,11 +110,9 @@ div
             div(v-if='debug()')
               | id: {{event.id}}cpid: {{event.model().parentId}}pid: {{event.parentId}}sid: {{event.sequenceId}}position: {{event.position}}depth: {{event.depth}}unread: {{isUnread()}}cc: {{event.childCount}}
             span(v-html='headline')
-            |
-            |
+            | &nbsp;
             span(aria-hidden='true') ·
-            |
-            |
+            | &nbsp;
             router-link.thread-item__link.lmo-pointer(:to='link')
               time-ago.timeago--inline(:date='event.createdAt')
           button.md-button--tiny(v-if='canRemoveEvent', @click='removeEvent()')
