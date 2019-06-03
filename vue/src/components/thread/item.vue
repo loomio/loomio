@@ -103,7 +103,7 @@ div
       .lmo-disabled-form(v-show='isDisabled')
       .thread-item__avatar.lmo-margin-right
         user-avatar(v-if='!event.isForkable() && event.actor()', :user='event.actor()', size='medium')
-        v-checkbox(v-if="event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
+        v-checkbox.thread-item__is-forking(v-if="event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
       .thread-item__body.lmo-flex.lmo-flex__horizontal-center.lmo-flex--column
         .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between
           h3.thread-item__title(:id="'event-' + event.id")
@@ -119,7 +119,7 @@ div
             i.mdi.mdi-delete
         component(v-if='hasComponent()' :is='camelCase(event.kind)' @reply-button-clicked="handleReplyButtonClicked" :event='event', :eventable='event.model()')
     comment-form(v-if="showCommentForm" @comment-submitted="handleCommentSubmitted" :parentComment="parentComment" :discussion="eventWindow.discussion")
-  template(v-if='event.isSurface() && eventWindow.useNesting')
+  template.thread-item__directive(v-if='event.isSurface() && eventWindow.useNesting')
     event-children(:parent-event='event' :parent-event-window='eventWindow')
 </template>
 
