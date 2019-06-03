@@ -36,22 +36,6 @@
   text-align: center;
 }
 
-.thread-preview__actions {
-  position: absolute;
-  display: flex;
-  right: 40px;
-  transition: opacity 0.25s ease-in-out;
-  top: 0;
-  margin: $thinPaddingSize $cardPaddingSize;
-  .md-button {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    min-width: 40px;
-    .mdi { font-size: 16px; }
-  }
-}
-
 .thread-preview__mute,
 .thread-preview__unmute { margin-left: 8px }
 
