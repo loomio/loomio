@@ -42,7 +42,7 @@ export default
 .emoji-picker {
   padding: 4px;
   background-color: #fff;
-  max-width: 200px;
+  max-width: 220px;
   max-height: 400px;
   overflow-y: auto;
 }
@@ -59,6 +59,7 @@ export default
     text-align: center;
     display: block;
     border-radius: 50%;
+    margin: 4px;
   }
 }
 </style>
