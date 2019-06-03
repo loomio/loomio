@@ -49,7 +49,7 @@ export default
       icon: 'mdi-call-split'
       canPerform: => AbilityService.canForkComment(@eventable)
       perform:    =>
-        EventBus.broadcast $rootScope, 'toggleSidebar', false
+        # EventBus.broadcast $rootScope, 'toggleSidebar', false
         @event.toggleFromFork()
     ,
       name: 'translate_comment'
