@@ -17,6 +17,7 @@ import Records      from '@/shared/services/records.coffee'
 import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
 
 export default
+  mixins: [DiscussionModalMixin]
   props:
     discussion: Object
   methods:
