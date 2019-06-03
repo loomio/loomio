@@ -27,6 +27,8 @@ export default
                           groupId:        discussion.groupId
                           private:        discussion.private
                           forkedEventIds: discussion.forkedEventIds
+                          description: discussion.description
+                          descriptionFormat: discussion.descriptionFormat
                       }
                       titleKey: 'group_form.new_organization')
 
