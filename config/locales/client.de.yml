@@ -565,6 +565,7 @@ de:
     messages:
       privacy:
         members: 'Diese Gruppe ist nun nur für Mitglieder sichtbar'
+        parent_members: 'Diese Gruppe ist nun ausschliesslich für Mitglieder deiner Organization sichtbar. '
         public: 'Diese Gruppe ist nun im Web sichtbar'
       leave_group_success: 'Sie haben diese Gruppe verlassen'
       archive_group_success: 'Diese Gruppe wurde deaktiviert'
@@ -588,6 +589,7 @@ de:
     options:
       label: 'Optionen'
       edit_group: 'Gruppeneinstellungen bearbeiten'
+      become_coordinator: 'Koordinator werden '
       export_data: Gruppendaten exportieren
       export_data_as_json: Gruppendaten im JSON-Format exportieren
       export_data_as_csv: Gruppendaten im CSV-Format exportieren
@@ -692,6 +694,14 @@ de:
       group_updated: 'Gruppe aktualisiert'
   group_export_modal:
     title: Gruppendaten exportieren
+    body: |
+        <p>
+        Du kannst jederzeit die Daten deiner Gruppe herunterladen.
+        <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Mehr erfahren.</a>
+        </p>
+        <p>
+        Abhängig von der Größe deiner Gruppe, dauert der Vorgang einige Minuten.
+        Sobald es fertig ist, schicken wir dir eine E-mail mit dem Link zum Herunterladen.
     submit: Mit Export beginnen
     flash: Export der Gruppendaten hat begonnen
   group_features:
@@ -881,6 +891,9 @@ de:
     update_profile: 'Profil aktualisieren'
     deactivate_account: 'Benutzerkonto deaktivieren'
     help_translate: "Hilf mit, Loomio zu übersetzen"
+  text_editor:
+    select_text_to_link: Text zum verlinken markieren
+    insert_link: Link einfügen
   change_picture_form:
     aria_label: 'Bildform ändern'
     title: 'Profilbild ändern'
@@ -889,6 +902,8 @@ de:
     use_gravatar: 'Verwende Gravatar'
     use_uploaded: 'Neues Bild hochladen'
   change_password_form:
+    set_password_title: Passwort erstellen
+    set_password_helptext: 'Füge bitte ein Passwort mit minimal 8 Zeichen ein '
     set_password: Passwort festlegen
     password_changed: Ihr Passwort wurde aktualisiert
   deactivation_modal:
@@ -913,6 +928,7 @@ de:
   email_settings_page:
     header: E-Mail-Einstellungen
     email_newsletter: Loomio Newsletter
+    email_newsletter_description: "Updates über neue Funktionen, Trainings, Events in deiner Stadt und die Zukunft von Loomio erhalten. Sind ca. 2-3 E-mails pro Jahr. "
     daily_summary_label: Tägliche Übersichts-E-Mail
     daily_summary_description: "Sie erhalten jeden Morgen eine E-Mail mit allen Aktivitäten des Vortages. So bleiben Sie stets auf dem Laufenden über alle Aktivitäten."
     on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
@@ -934,6 +950,7 @@ de:
   dashboard_page:
     aria_label: 'Schreibtisch'
     no_groups:
+      show_all: Willkommen! Du bist noch kein Mitglied dieser Gruppe. <a href="/explore">Siehe öffentliche Gruppen</a>oder<a href="/g/new">Eröffne eine Gruppe
       show_muted: Sie haben keine stummgeschalteten Diskussionen, weil Sie kein Mitglied einer Gruppe sind.
     no_threads:
       show_all: Sie haben derzeit keine aktuellen Diskussionen.
@@ -993,6 +1010,12 @@ de:
       or: oder
       join_group: <a href="/explore">tritt einer Gruppe bei</a> um Diskussionen zu sehen.
   discussion:
+    max_threads_reached: |
+        Diese Gruppe ist auf {{maxDiskussionen}] Diskussionen begrenzt.<p>
+        <p>Nächster Schritt<a href="{{upgradeUrl}}" target="_blank">wähle einen Tarif </a>um weiter mit Loomio zu arbeiten. </p>
+    subscription_canceled: |
+        <p>Es tut uns leid! Dein Abonnement is nicht aktiviert. </p>
+        <p>Bitte<a href="{{upgradeUrl}}" target="_blank">hole dir ein Upgrade</a>um weiter mit Loomio arbeiten zu können. </p>
     activity: 'Beiträge'
     activity_placeholder: 'Noch keine Beiträge vorhanden!'
     load_previous: 'Lade ältere Beiträge'
@@ -1110,15 +1133,26 @@ de:
     description_private: 'aktualisierte die Diskussionsbeschreibung und Privatsphäre'
     description_private_title: 'aktualisierte Diskussionstitel, Diskussionsbeschreibung und Privatsphäre'
   contact_message_form:
+    title: "Hey! Wie können wir dir helfen?"
+    read_the_manual: |
+        Schon unser <a href="{{link}}" target="_blank">Hilfe-Handbuch</a>gesehen? Wir aktualisieren es regelmäßig mit häufig gestellten Fragen und Antworten.
+    contact_us_email: "Oder schicke uns eine E-Mail: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Kontakt aufnehmen'
     name_label: 'Ihr Name'
     name_placeholder: 'Geben Sie Ihren Namen ein...'
     subject_label: "Betreff"
+    subject_placeholder: |
+        Z.b. Probleme beim Einloggen oder Funktionsvorschlag
     email_label: 'Ihre E-Mail-Adresse'
     email_placeholder: 'Geben Sie Ihre E-Mail-Adresse ein...'
     message_label: 'Ihre Nachricht'
+    message_placeholder: 'Bitte bereite uns mit so viel Information wie möglich, wenn du Hilfe brauchst.  '
     send_message: 'Nachricht abschicken'
     new_contact_message: "Danke, dass Sie sich gemeldet haben. Wir melden uns bald bei Ihnen!"
+    consent_message: |
+        Indem du mit uns in Kontakt tretest, stimmst du zu, dass unsere Mitarbeiter bei Bedarf auf Ihr Konto zugreifen können.
+        Bitte beachte auch, dass unser Support-Team Englisch spricht und deine Nachricht  bei Bedarf mit Google Translate übersetzt.
+        Wir bemühen uns, alle Nachrichten innerhalb von 24 Stunden zu beantworten.
     success: "Danke für Ihre Nachricht. Wir werden uns mit Ihnen in Verbindung setzen."
   hint:
     context: 'Hinweise zur Verwendung des Kontext-Felds'
@@ -1137,6 +1171,7 @@ de:
       app_update: 'Eine neue Version der App ist verfügbar'
       reload: 'Reload'
   emoji_picker:
+    search: "Wähle dein Emoji..."
     no_emojis_found: "Kein Emoji für '{{term}}' gefunden!"
   authorized_apps_page:
     title: Autorisierte Apps
@@ -1190,6 +1225,7 @@ de:
     ranked_choice_title: Prioritätensetzung
   poll_common:
     your_response: Ihre Antwort
+    change_your_response: Antwort bearbeiten
     reason: Begründung
     reason_placeholder: Ergänzender Kommentar?
     message: Nachricht
@@ -1202,6 +1238,7 @@ de:
     update_outcome: Abstimmungsergebnis aktualisieren
     outcome: Abstimmungsergebnis
     statement: Einschätzung
+    change_your_stance: Antwort bearbeiten
     load_more: Mehr anzeigen
     details: Details
     participant_name: Ihr Name
@@ -1213,6 +1250,7 @@ de:
     publish_poll: Abstimmung teilen
     view_all: alles sehen
     save_changes: Speichern
+    change_vote: Stimme ändern
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -1378,6 +1416,9 @@ de:
     tool_tip_collapsed: Gemeinschaftlich abstimmen
     start_header: Vorschlag starten
     edit_header: Angebot bearbeiten
+    tip: 'Triff gemeinsam Entscheidungen durch ein Verfahren, dass alle Stimmen mit einbezieht. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">
+
+      Mehr erfahren '
     title_placeholder: z. B. Lasst uns zum Mond fliegen!
     details_placeholder: Geben Sie genügend Informationen, damit jeder weiß, was es bedeutet, zuzustimmen oder zu widersprechen
     proposal_created: Vorschlag gestartet
@@ -1436,6 +1477,7 @@ de:
     start_header: Bewertung beginnen
     edit_header: Bewertung bearbeiten
     tip: Mehrere Optionen bewerten
+    title_placeholder: 'Z.b. Kandidaten auf einer Skala von 0-9 bewerten.  '
     details_placeholder: Geben Sie alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
     add_option_placeholder: Option hinzufügen
     score_created: Bewertung erstellt
@@ -1604,9 +1646,13 @@ de:
     invalid_email: "Entschuldigung, diese E-Mail-Adresse scheint ungültig zu sein."
     invalid_password: "Entschuldigung, das Passwort passt nicht zu dem, welches wir in unserer Datei haben."
     invalid_token: "Entschuldigung, wir konnten dieses Zeichen nicht verwenden, um Sie  einzuloggen. Klicke unten, um einen anderen zu senden."
+    account_locked: "Die Anzahl an Anmeldeversuche wurde überschritten und dein Konto gesperrt. Ein Link zum Entsperren wurde dir per E-mail geschickt. "
     email_not_found: "Entschuldigung, wir konnten keinen Account zu dieser E-Mail-Adresse finden"
     email_placeholder: sie@domain.com
+    login_with_token: 'Fertig! Klicke auf den folgenden Link, um fortzufahren. '
+    login_link_helptext: 'Klicke auf den folgenden Button um einen Link für deine Anmeldung zu erhalten. '
     login_link_helptext_with_password: "Geben Sie Ihre Passwort ein oder melden Sie Sich per E-Mail an"
+    check_spam_folder: 'Solltest du keine E-mail erhalten, überprüfe bitte deinen Spam Ordner. '
     sign_up_helptext: Bitte füllen Sie dieses Formular aus, um ein Benutzerkonto zu erstellen
     i_accept: "Ich akzeptiere die <a href='{{termsUrl}}' target='_blank'>Nutzungsbedingungen</a> und <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>"
     name_placeholder: Ihr Name
@@ -1618,6 +1664,7 @@ de:
     welcome_back: Willkommen zuück, {{name}}!
     login_link: Via Mail anmelden
     set_password: Passwort festlegen
+    set_password_helptext: Möchtest du nächstes Mal ein Passwort verwenden?
     hello: "Hallo, {{name}}!"
     new_to_loomio: Das erste mal auf {{site_name}}? Erstellen Sie einen Account
     create_account: Benutzerkonto erstellen
@@ -1636,9 +1683,33 @@ de:
     password: Passwort
     reactivate: Account wieder aktivieren
   install_microsoft:
+    modal_title: Microsoft Teams installieren
     card:
+      install_title: Mit Microsoft Teams verbinden
+      install_helptext: 'Der Loomio bot informiert dein Team über Diskussionen und Entscheidungen die Loomio passieren. '
+      installed_title: Mit Microsoft Teams verbunden
+      installed_helptext: Ereignisse aus dieser Gruppe werden an Ihr Microsoft Team gesendet.
+      install_microsoft: Teams verbinden
       remove_identity: Diese Eingliederung entfernen
+      confirm_remove_title: Microsoft Teams entfernen
+      confirm_remove_helptext: |
+          Dein Microsoft Teams Kanal wird keine Updates mehr zu dieser Gruppe erhalten.
+          Du kannst sie natürlich jederzeit wieder hinzufügen.
       identity_removed: Eingliederung entfernt
+    form:
+      webhook_helptext: Bitte gebe die entsprechende webhook URL des Team Channels ein. <a href="/microsoft">Mehr zum Einrichten von Microsoft Teams mit Loomio erfahren</a>
+      webhook_label: Webhook URL
+      webhook_installed: Mit Microsoft Teams verbunden
+      webhook_placeholder: https://outlook.office.com/...
+      event_kind_helptext: 'Welche Ereignisse kommen in den Team Channel? '
+    event_kinds:
+      new_discussion: 'Ein neue Diskussion wurde eröffnet '
+      new_comment: 'Es gibt einen neuen Kommentar '
+      poll_created: Eine Umfrage wurde erstellt
+      stance_created: Eine neue Stimme wurde abgegeben
+      poll_closing_soon: Eine Umfrage läuft bald ab
+      poll_expired: Eine Umfrage ist abgelaufen
+      outcome_created: 'Ein Ergebnis wurde geteilt  '
   install_slack:
     modal_title: Slack installieren
     modal_helptext: Als erstes müssen Sie sich bei Slack anmelden. Wir werden Sie sofort  automatisch weiterleiten, alternativ können Sie zum Fortfahren auch auf den Button unten klicken.
@@ -1698,3 +1769,8 @@ de:
         Wenn jetzt jemand eine Umfrage in der Gruppe beginnt, hat man die Option
         Aktualisierungen der Umfrage in einen Kanal in Ihrem Slack-Team zu posten.
     start_poll_now: Jetzt eine Entscheidung machen
+  powered_by:
+    powered_by_loomio: Powered by Loomio
+    privacy_policy: Datenschutz-Bestimmungen
+    terms_of_service: Nutzungsbedingungen
+    front_page: Titelseite
