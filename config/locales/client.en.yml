@@ -165,6 +165,16 @@ en:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
 
+  emoji_picker:
+    search: Search
+    common: Frequently used
+    hands: Hands
+    people: Faces and people
+    nature: Nature
+    objects: Things
+    places: Places
+
+
   ordinal:
     _1: 1st
     _2: 2nd
@@ -1282,10 +1292,6 @@ en:
     messages:
       app_update: 'A new version of the app is available'
       reload: 'Reload'
-
-  emoji_picker:
-    search: "Pick your emoji…"
-    no_emojis_found: "No emojis found for '{{term}}'!"
 
   authorized_apps_page:
     title: Authorized Apps

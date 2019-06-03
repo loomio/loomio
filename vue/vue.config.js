@@ -2,17 +2,17 @@ const components = require('./src/components.js')
 
 module.exports = {
   chainWebpack: config => {
-          config
-          .plugin('VuetifyLoaderPlugin')
-          .tap(args => {
-              return [{
-                  match (originalTag, { kebabTag, camelTag, path, component }) {
-                    if (components[camelTag]) {
-                      return [camelTag, `import ${camelTag} from '@/components/${components[camelTag]}.vue'`]
-                    }
-                  }
-              }]
-          })
+    config
+    .plugin('VuetifyLoaderPlugin')
+    .tap(args => {
+        return [{
+            match (originalTag, { kebabTag, camelTag, path, component }) {
+              if (components[camelTag]) {
+                return [camelTag, `import ${camelTag} from '@/components/${components[camelTag]}.vue'`]
+              }
+            }
+        }]
+    })
   },
   configureWebpack: {
     entry: {
@@ -24,7 +24,7 @@ module.exports = {
   devServer: {
    proxy: {
      '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system)': {target: 'http://localhost:3000'},
-     '^/(cable|sockjs-node)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
+     '^/(cable)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
    }
   },
   css: {

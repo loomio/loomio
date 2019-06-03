@@ -67,7 +67,7 @@ export default
 </script>
 <template lang="pug">
 .membership-dropdown.lmo-no-print(v-if='canPerformAction()')
-  v-menu.lmo-dropdown-menu(offset-y)
+  v-menu.lmo-dropdown-menu(offset-y lazy)
     v-btn.membership-dropdown__button(icon flat slot='activator')
       //- span(v-t="'membership_dropdown.membership_options'")
       v-icon mdi-dots-vertical

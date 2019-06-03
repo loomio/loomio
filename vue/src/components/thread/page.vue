@@ -2,6 +2,7 @@
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import Session           from '@/shared/services/session'
 import Records           from '@/shared/services/records'
+import RecordLoader      from '@/shared/services/record_loader'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import PaginationService from '@/shared/services/pagination_service'
@@ -16,6 +17,7 @@ export default
     discussion: null
     activePolls: []
     requestedSequenceId: 0
+    loader: null
 
   created: -> @init()
 
@@ -25,22 +27,34 @@ export default
   methods:
     init: ->
       @requestedSequenceId = parseInt(@$route.params.sequence_id)
-      if !@requestedSequenceId && requestedCommentId = parseInt(@$route.params.comment_id)
-        Records.events.fetch
-          path: 'comment'
-          params:
-            discussion_id: @$route.params.key
-            comment_id: requestedCommentId
-        .then =>
-          comment = Records.comments.find(requestedCommentId)
-          @requestedSequenceId = comment.createdEvent().sequenceId
-          @init()
+      @requestedCommentId = parseInt(@$route.params.comment_id)
 
       Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
         @discussion = discussion
-        @discussion.requestedSequenceId = @requestedSequenceId
+
+      @loader = new RecordLoader
+        collection: 'events'
+        params:
+          discussion_id: @$route.params.key
+          from: @requestedSequenceId
+          comment_id: @requestedCommentId
+          order: 'sequence_id'
+          per: @per
+
+      @loader.fetchRecords().then =>
+        if @requestedCommentId
+          @discussion.requestedSequenceId = Records.events.find(
+            discussionId: discussion.id
+            kind: 'new_comment'
+            eventableId: @requestedCommentId
+            ).sequenceId
+
+        if @requestedSequenceId
+          @discussion.requestedSequenceId = @requestedSequenceId
+
         @discussion.markAsSeen()
-        Records.documents.fetchByDiscussion(@discussion)
+
+        # Records.documents.fetchByDiscussion(@discussion)
 
         @watchRecords
           key: @discussion.id
@@ -70,7 +84,7 @@ v-container.lmo-main-container.thread-page(grid-list-lg)
     //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")
     v-layout
       v-flex(md8)
-        thread-card(:discussion='discussion')
+        thread-card(:loader='loader' :discussion='discussion')
       v-flex(md4)
         v-layout(column)
           // <outlet name="before-thread-page-column-right" model="discussion" class="before-column-right lmo-column-right"></outlet>

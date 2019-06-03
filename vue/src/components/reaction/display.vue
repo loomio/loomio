@@ -1,18 +1,15 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
-import { Emoji } from 'emoji-mart-vue'
 import {merge, capitalize, difference, keys, throttle, startsWith, each} from 'lodash'
 import WatchRecords from '@/mixins/watch_records'
+import { colonToUnicode, stripColons } from '@/shared/helpers/emojis'
 
 export default
   mixins: [WatchRecords]
   props:
     model: Object
     load: Boolean
-
-  components:
-    Emoji: Emoji
 
   data: ->
     diameter: 20
@@ -59,12 +56,8 @@ export default
       difference keys(@reactionHash), ['all']
 
   methods:
-    smileCorrect: (shortcode) ->
-      if shortcode == ":slight_smile:"
-        ":smile:"
-      else
-        shortcode
-
+    stripColons: stripColons
+    colonToUnicode: colonToUnicode
     removeMine: (reaction) ->
       mine = Records.reactions.find(merge({}, @reactionParams,
         userId:   Session.user().id
@@ -91,27 +84,22 @@ export default
       .reaction.lmo-pointer(v-if="loaded" @click="removeMine(reaction)" v-for="reaction in reactionTypes")
         v-tooltip(bottom)
           template(v-slot:activator="{ on }")
-            .fake-chip(v-on="on")
-              emoji(:emoji="smileCorrect(reaction)" :size="diameter")
-              span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
+            .reactions-display__group(v-on="on")
+              span {{colonToUnicode(reaction)}}
+              //- span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
               user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" size="tiny")
-
           .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
             span {{ user.name }}
-    //- .reactions-display__names(v-if="myReaction")
-    //-   span(v-if="reactionHash.all.length == 1" v-t="'reactions_display.you'")
-    //-   span(v-if="reactionHash.all.length == 2" v-t="{path: 'reactions_display.you_and_name', args: {name: otherReaction.user().name}}")
-    //-   span(v-if="reactionHash.all.length > 2"  v-t="{path: 'reactions_display.you_and_name_and_count_more', args: {name: otherReaction.user().name, count: reactionHash.all.length - 2}}")
-    //- .reactions-display__names(v-if="!myReaction")
-    //-   span(v-if="reactionHash.all.length == 1") {{reactionHash.all[0]}}
-    //-   span(v-if="reactionHash.all.length > 1" v-t="{path: 'reactions_display.name_and_count_more', args: {name: reactionHash.all[0], count: reactionHash.all.length - 1}}")
 </template>
 
 <style lang="scss">
-.fake-chip {
+.reactions-display__group {
   display: flex;
   align-items: center;
   margin-right: 2px;
+  span {
+    font-size: 20px;
+  }
 }
 .reactions-display__emojis {
   display: flex;

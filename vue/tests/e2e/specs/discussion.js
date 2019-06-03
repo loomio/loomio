@@ -243,12 +243,11 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.fillIn('.comment-form .ProseMirror', 'Here is a dragon!')
+    page.fillIn('.comment-form .ProseMirror', 'Here is a heart!')
     page.click('.comment-form .emoji-picker__toggle')
-    page.fillIn('.emoji-mart-search input', 'dragon_face')
-    page.click('.emoji-mart-emoji')
+    page.click('.emoji-picker__emojis span[title="heart"]')
     page.click('.comment-form__submit-button')
-    page.expectText('.new-comment .thread-item__body','Here is a dragon!🐲')
+    page.expectText('.new-comment .thread-item__body','Here is a heart!❤️')
   },
 
   'replies_to_a_comment': (test) => {

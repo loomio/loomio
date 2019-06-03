@@ -37,8 +37,8 @@ export default
       switch this.size
         when 'tiny'     then 20
         when 'small'    then 24
-        when 'medium'   then 36
-        when 'large'    then 48
+        when 'medium'   then 48
+        when 'large'    then 64
         when 'featured' then 200
     gravatarSize: ->
       if is2x() then 2*@width else @width
