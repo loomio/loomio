@@ -23,6 +23,7 @@ export default
   methods:
     submit: ->
       @openForkedDiscussionModal(@discussion)
+      @discussion.forkedEventIds = []
 </script>
 
 <template lang='pug'>
