@@ -26,11 +26,11 @@ export default
 
   methods:
     init: ->
-      @requestedSequenceId = parseInt(@$route.params.sequence_id)
-      @requestedCommentId = parseInt(@$route.params.comment_id)
-
       Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
         @discussion = discussion
+
+      @requestedSequenceId = parseInt(@$route.params.sequence_id)
+      @requestedCommentId = parseInt(@$route.params.comment_id)
 
       @loader = new RecordLoader
         collection: 'events'
@@ -42,34 +42,37 @@ export default
           per: @per
 
       @loader.fetchRecords().then =>
-        if @requestedCommentId
-          @discussion.requestedSequenceId = Records.events.find(
-            discussionId: discussion.id
-            kind: 'new_comment'
-            eventableId: @requestedCommentId
-            ).sequenceId
+        Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
+          @discussion = discussion
 
-        if @requestedSequenceId
-          @discussion.requestedSequenceId = @requestedSequenceId
+          if @requestedCommentId
+            @discussion.requestedSequenceId = Records.events.find(
+              discussionId: discussion.id
+              kind: 'new_comment'
+              eventableId: @requestedCommentId
+              ).sequenceId
 
-        @discussion.markAsSeen()
+          if @requestedSequenceId
+            @discussion.requestedSequenceId = @requestedSequenceId
 
-        # Records.documents.fetchByDiscussion(@discussion)
+          @discussion.markAsSeen()
 
-        @watchRecords
-          key: @discussion.id
-          collections: ["polls"]
-          query: (records) =>
-            @activePolls = @discussion.activePolls()
+          # Records.documents.fetchByDiscussion(@discussion)
 
-        if @discussion.forkedEvent()
-          Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true)
+          @watchRecords
+            key: @discussion.id
+            collections: ["polls"]
+            query: (records) =>
+              @activePolls = @discussion.activePolls()
 
-        EventBus.$emit 'currentComponent',
-          title: @discussion.title
-          page: 'threadPage'
-          group: @discussion.group()
-          discussion: @discussion
+          if @discussion.forkedEvent()
+            Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true)
+
+          EventBus.$emit 'currentComponent',
+            title: @discussion.title
+            page: 'threadPage'
+            group: @discussion.group()
+            discussion: @discussion
 
       , (error) ->
         EventBus.$emit 'pageError', error

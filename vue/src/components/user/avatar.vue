@@ -37,6 +37,7 @@ export default
       switch this.size
         when 'tiny'     then 20
         when 'small'    then 24
+        when 'forty'    then 40
         when 'medium'   then 48
         when 'large'    then 64
         when 'featured' then 200
@@ -49,13 +50,16 @@ export default
     mdiSize: ->
       if @size == 'small' then 'mdi-18px' else 'mdi-24px'
 
+    bgColor: ->
+      @$vuetify.theme.accent
+
 </script>
 
 <template lang="pug">
-v-avatar(v-if="user" :title='user.name' :size='width')
+v-avatar(v-if="user" :title='user.name' :size='width' :color="bgColor")
   v-gravatar(v-if="user.avatarKind === 'gravatar'", :hash='user.emailHash', :gravatar-size='gravatarSize', :alt='user.name')
   img(v-else-if="user.avatarKind === 'uploaded'", :alt='user.name', :src='uploadedAvatarUrl')
-  span(v-else-if="user.avatarKind === 'initials'") {{user.avatarInitials}}
+  span(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px'}") {{user.avatarInitials}}
   v-icon(v-else='', :class='[boxClass, mdiSize]') {{user.avatarKind}}
   //- // <div aria-hidden="true"  class="user-avatar" :class="[boxClass]">
   //- router-link(:to='urlFor(user)', v-if='!noLink')

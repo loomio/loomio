@@ -115,13 +115,14 @@ v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pe
 
     v-list-tile.membership-card__membership.membership-card__invite(v-if='!searchOpen && canAddMembers()', @click="invite()")
       v-list-tile-avatar
-        v-icon mdi-plus
+        v-avatar(:size='40')
+          v-icon(color="primary") mdi-plus
       v-list-tile-content
         v-list-tile-title(v-t="'membership_card.invite_to_' + group.targetModel().constructor.singular")
 
     v-list-tile(v-for='membership in orderedMemberships()', :key='membership.id', data-username='membership.user().username')
       v-list-tile-avatar
-        user-avatar.lmo-margin-right(:user='membership.user()', size='medium', :coordinator='membership.admin', :no-link='!membership.acceptedAt')
+        user-avatar(:user='membership.user()', size='forty', :coordinator='membership.admin', :no-link='!membership.acceptedAt')
       v-list-tile-content
         v-list-tile-title {{membership.userName() || membership.user().email }}
         v-list-tile-sub-title.membership-card__last-seen

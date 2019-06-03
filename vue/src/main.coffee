@@ -4,8 +4,9 @@ import i18n from '@/i18n.coffee'
 import app from '@/app.vue'
 import AppConfig from '@/shared/services/app_config'
 import moment from 'moment-timezone'
-import marked from '@/marked.coffee'
-import vuetify from '@/vuetify.coffee'
+import marked from '@/marked'
+import '@/vuetify'
+import '@/observe_visibility'
 import './registerServiceWorker'
 
 Vue.config.productionTip = false

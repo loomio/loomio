@@ -72,7 +72,7 @@ export default
         @loader.loadPrevious(@eventWindow.min) # unless @eventWindow.allLoaded()
 
     loadNext: ->
-      if @eventWindow.anyNext()
+      if @eventWindow.anyNext() && !@loader.loadingMore
         @eventWindow.increaseMax()
         @loader.loadMore() #unless @eventWindow.allLoaded()
 
@@ -127,6 +127,9 @@ export default
           initialSequenceId: @initialSequenceId(position)
           per: @per
 
+    shouldLoadMore: (visible) ->
+      @loadNext() if visible
+
 </script>
 
 <template lang="pug">
@@ -174,6 +177,7 @@ section.activity-card(aria-labelledby='activity-card-title')
       in-view-options="{throttle: 200}"
       class="activity-card__load-more-sensor lmo-no-print"
       ></div>
+    .activity-card__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadMore")
     loading.activity-card__loading.page-loading(v-show='loader.loadingMore')
   //- add-comment-panel(v-if='eventWindow', :event-window='eventWindow', :parent-event='discussion.createdEvent()')
   .add-comment-panel.lmo-card-padding(v-if="eventWindow")
