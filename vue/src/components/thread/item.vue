@@ -103,6 +103,7 @@ div
       .lmo-disabled-form(v-show='isDisabled')
       .thread-item__avatar.lmo-margin-right
         user-avatar(v-if='!event.isForkable() && event.actor()', :user='event.actor()', size='medium')
+        v-checkbox(v-if="event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFork()" :value="event.isForking()")
         // <md-checkbox ng-if="event.isForkable()" ng-disabled="!event.canFork()" ng-click="event.toggleFromFork()" ng-checked="event.isForking()"></md-checkbox>
       .thread-item__body.lmo-flex.lmo-flex__horizontal-center.lmo-flex--column
         .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between
