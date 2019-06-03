@@ -8,9 +8,11 @@ import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import GroupModalMixin    from '@/mixins/group_modal.coffee'
 import { capitalize, take, keys, every } from 'lodash'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [GroupModalMixin]
+  mixins: [GroupModalMixin, WatchRecords]
+
   data: ->
     dashboardLoaded: Records.discussions.collection.data.length > 0
     filter: @$route.params.filter || 'hide_muted'
@@ -21,26 +23,33 @@ export default
       thisweek: []
       thismonth: []
       older: []
-    loader: new RecordLoader
-      collection: 'discussions'
-      path: 'dashboard'
-      params:
-        filter: @filter
-        per: 50
-  mounted: ->
+    loader: {}
+
+  created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
+
+  watch:
+    $route: 'init'
+
   methods:
     init: ->
+      @loader = new RecordLoader
+        collection: 'discussions'
+        path: 'dashboard'
+        params:
+          filter: @filter
+          per: 50
+
       EventBus.$emit 'currentComponent',
         titleKey: @titleKey
         page: 'dashboardPage'
         # filter: $routeParams.filter
+
       @loader.fetchRecords().then => @dashboardLoaded = true
       @openStartGroupModal() if @promptStart
 
-      Records.view
-        name: "dashboard"
+      @watchRecords
         collections: ['discussions']
         query: (store) =>
           @views.proposals = ThreadFilter(store, filters: @filters('show_proposals'))
@@ -82,10 +91,11 @@ v-container.lmo-main-container.dashboard-page
   h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'")
   //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'" v-show="filter == 'hide_muted'")
   //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
-  section(v-if='!dashboardLoaded', v-for='(viewName, index) in loadingViewNames', :key='index', :class="'dashboard-page__loading dashboard-page__' + viewName", aria-hidden='true')
-    h2.dashboard-page__date-range(v-t="'dashboard_page.threads_from.' + viewName")
-    .thread-previews-container
-      loading-content(:lineCount='2' v-for='(item, index) in [1,2]' :key='index')
+  v-card.mb-3(v-if='!dashboardLoaded', v-for='(viewName, index) in loadingViewNames', :key='index', :class="'dashboard-page__loading dashboard-page__' + viewName", aria-hidden='true')
+    v-list
+      v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
+    v-list-item(v-for='(item, index) in [1,2,3]' :key='index')
+      loading-content(:lineCount='2' )
   section.dashboard-page__loaded(v-if='dashboardLoaded')
     .dashboard-page__empty(v-if='noThreads')
       p(v-t="'dashboard_page.no_groups.show_all'", v-if='noGroups')

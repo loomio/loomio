@@ -63,11 +63,14 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_subgroups_as_admin')
-    page.click('.membership-card__search-button')
-    page.fillIn('.membership-card__filter input', 'Jennifer')
-    page.click('.membership-dropdown__button')
-    page.click('.membership-dropdown__toggle-admin')
+    page.click('.group-page-actions__button')
+    page.click('.group-page-actions__become-coordinator')
     page.expectFlash('Jennifer Grey is now a coordinator')
+    // page.click('.membership-card__search-button')
+    // page.fillIn('.membership-card__filter input', 'Jennifer')
+    // page.click('.membership-dropdown__button')
+    // page.click('.membership-dropdown__toggle-admin')
+    // page.expectFlash('Jennifer Grey is now a coordinator')
   },
 
   'cannot_self_promote_when_coordinators': (test) => {

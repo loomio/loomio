@@ -12,4 +12,3 @@ Vue.use(Vuetify,
   options:
     customProperties: true
 )
-export default {}

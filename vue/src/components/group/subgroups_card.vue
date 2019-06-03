@@ -6,9 +6,10 @@ import ModalService   from '@/shared/services/modal_service'
 import urlFor         from '@/mixins/url_for'
 import truncate       from '@/mixins/truncate'
 import GroupModalMixin from '@/mixins/group_modal'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [urlFor, truncate, GroupModalMixin]
+  mixins: [urlFor, truncate, GroupModalMixin, WatchRecords]
   props:
     group: Object
   data: ->
@@ -16,8 +17,7 @@ export default
   created: ->
     Records.groups.fetchByParent(@group).then =>
       EventBus.$emit 'subgroupsLoaded', @group
-      Records.view
-        name:"subgroupsCard"
+      @watchRecords
         collections: ['groups']
         query: (store) =>
           @subgroups = @group.subgroups()

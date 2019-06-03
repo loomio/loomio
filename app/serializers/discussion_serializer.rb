@@ -29,7 +29,9 @@ class DiscussionSerializer < ActiveModel::Serializer
              :versions_count,
              :importance,
              :pinned,
-             :attachments
+             :attachments,
+             :mentioned_usernames
+
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,
@@ -41,6 +43,8 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :group, serializer: GroupSerializer, root: :groups
   has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_many :active_polls, serializer: Full::PollSerializer, root: :polls
+  has_one :created_event, serializer: Events::SimpleSerializer, root: :events
+  has_one :forked_event, serializer: Events::SimpleSerializer, root: :events
 
   has_many :discussion_tags
 
@@ -60,7 +64,24 @@ class DiscussionSerializer < ActiveModel::Serializer
     @reader ||= scope[:reader_cache].get_for(object) if scope[:reader_cache]
   end
 
+  def created_event
+    @created_event ||= scope[:discussion_event_cache].get_for(object).find {|event| event.kind == "new_discussion" }
+  end
+
+  def forked_event
+    @forked_event ||= scope[:discussion_event_cache].get_for(object).find {|event| event.kind == "discussion_forked"}
+  end
+
+  def include_created_event?
+    scope[:discussion_event_cache].present?
+  end
+
+  def include_forked_event?
+    scope[:discussion_event_cache].present?
+  end
+
   def scope
     super || {}
   end
+
 end

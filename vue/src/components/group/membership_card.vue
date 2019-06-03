@@ -99,20 +99,30 @@ export default
 
 <template lang="pug">
 v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pending': pending}")
-  v-layout(justify-space-between)
-    v-subheader(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }', v-if='!searchOpen')
-    v-btn.membership-card__search-button(v-if="!searchOpen" icon @click="toggleSearch()")
-      v-icon mdi-magnify
-    .membership-card__search(v-if="searchOpen" )
-      v-text-field.membership-card__filter(v-model="fragment" :placeholder="$t('memberships_page.fragment_placeholder')")
-      v-btn(@click="toggleSearch()")
-        v-icon mdi-close
-
   v-list(two-line avatar)
-    plus-button.membership-card__membership.membership-card__invite(v-if='canAddMembers()', :click='invite', :message="'membership_card.invite_to_' + group.targetModel().constructor.singular")
+    v-list-tile(v-if="!searchOpen")
+      v-list-tile-content
+        span.grey--text(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }')
+      v-list-tile-action
+        v-btn.membership-card__search-button(icon @click="toggleSearch()")
+          v-icon mdi-magnify
+
+    v-list-tile(v-if="searchOpen")
+      v-text-field.membership-card__filter(autofocus v-model="fragment" :placeholder="$t('memberships_page.fragment_placeholder')")
+        template(slot="append")
+          v-btn(icon @click="toggleSearch()")
+            v-icon mdi-close
+
+    v-list-tile.membership-card__membership.membership-card__invite(v-if='!searchOpen && canAddMembers()', @click="invite()")
+      v-list-tile-avatar
+        v-avatar(:size='40')
+          v-icon(color="primary") mdi-plus
+      v-list-tile-content
+        v-list-tile-title(v-t="'membership_card.invite_to_' + group.targetModel().constructor.singular")
+
     v-list-tile(v-for='membership in orderedMemberships()', :key='membership.id', data-username='membership.user().username')
       v-list-tile-avatar
-        user-avatar.lmo-margin-right(:user='membership.user()', size='medium', :coordinator='membership.admin', :no-link='!membership.acceptedAt')
+        user-avatar(:user='membership.user()', size='forty', :coordinator='membership.admin', :no-link='!membership.acceptedAt')
       v-list-tile-content
         v-list-tile-title {{membership.userName() || membership.user().email }}
         v-list-tile-sub-title.membership-card__last-seen

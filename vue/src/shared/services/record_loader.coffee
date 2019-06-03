@@ -3,11 +3,14 @@ import Records from '@/shared/services/records'
 export default class RecordLoader
   constructor: (opts = {}) ->
     @loadingFirst = true
+    @loading = false
+    @loadingMore = false
+    @loadingPrevious = false
     @collection   = opts.collection
     @params       = _.merge({from: 0, per: 25, order: 'id'}, opts.params)
     @path         = opts.path
     @numLoaded    = opts.numLoaded or 0
-    @numRequested = opts.numRequested or 0
+    @numRequested = opts.numRequested or @params['per']
     @then         = opts.then or (data) -> data
     @loading      = false
 
@@ -29,6 +32,7 @@ export default class RecordLoader
     .then(@then)
     .finally =>
       @loadingFirst = false
+      @loadingPrevious = false
       @loading = false
 
   loadMore: (from) ->
@@ -42,4 +46,4 @@ export default class RecordLoader
     else
       @params['from'] -= @params['per'] if @numLoaded > 0
     @loadingPrevious = true
-    @fetchRecords().finally => @loadingPrevious = false
+    @fetchRecords()

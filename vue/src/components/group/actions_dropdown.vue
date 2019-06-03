@@ -96,7 +96,7 @@ export default
 </script>
 
 <template lang="pug">
-v-menu.group-page-actions.lmo-no-print(offset-y)
+v-menu.group-page-actions.lmo-no-print(offset-y lazy)
   v-btn.group-page-actions__button(flat slot='activator')
     span(v-t="'group_page.options.label'")
     v-icon mdi-chevron-down

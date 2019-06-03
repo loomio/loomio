@@ -40,7 +40,7 @@ export default new Router
     {path: '/d/:key', component: ThreadPage },
     {path: '/d/:key/:stub', component: ThreadPage },
     {path: '/d/:key/:stub/:sequence_id', component: ThreadPage },
-    {path: '/d/:key/comment/:comment', component: ThreadPage},
+    {path: '/d/:key/comment/:comment_id', component: ThreadPage},
     {path: '/p/new', component: StartPollPage},
     {path: '/p/new/:poll_type', component: StartPollPage},
     {path: '/p/:key/', component: PollPage},

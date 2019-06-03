@@ -51,4 +51,5 @@ export default class RecordStore
   view: ({name, collections, query}) ->
     if !@views[name]
       @views[name] = new RecordView(name: name, recordStore: @, collections: collections, query: query)
+    @views[name].query(@)
     @views[name]

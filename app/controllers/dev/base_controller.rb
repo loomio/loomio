@@ -8,6 +8,12 @@ class Dev::BaseController < ApplicationController
     render 'dev/main/index', layout: false
   end
 
+  def import_test_data
+    GroupExportService.import('tmp/test.json')
+    sign_in User.first
+    redirect_to Group.order('memberships_count desc').first
+  end
+
   def last_email(to: nil)
     @email = if to.present?
       ActionMailer::Base.deliveries.select { |email| Array(email.to).include?(to.email) }

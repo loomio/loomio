@@ -1,5 +1,6 @@
 import Records         from '@/shared/services/records'
-import RecordLoader    from '@/shared/services/record_loader'
+import RangeSet from '@/shared/services/range_set'
+# import RecordLoader    from '@/shared/services/record_loader'
 import BaseEventWindow from '@/shared/services/base_event_window'
 
 export default class ChronologicalEventWindow extends BaseEventWindow
@@ -8,16 +9,21 @@ export default class ChronologicalEventWindow extends BaseEventWindow
     @columnName = 'sequenceId'
     @setMin(initialSequenceId)
     @setMax(@min + @per)
-    @loader = new RecordLoader
-      collection: 'events'
-      params:
-        discussion_id: @discussion.id
-        order: 'sequence_id'
-        per: @per
 
   numTotal:        -> @discussion.itemsCount
   firstInSequence: -> @discussion.firstSequenceId()
   lastInSequence:  -> @discussion.lastSequenceId()
+  windowLength:      ->
+    # how many records should exist between min and max?
+    ranges = _.clone(@discussion.ranges)
+    if @min > @firstInSequence()
+      ranges = RangeSet.subtractRanges(ranges, [[@firstInSequence(), @min - 1]])
+
+    if @max && @max < @lastInSequence()
+      ranges = RangeSet.subtractRanges(ranges, [[@max, @lastInSequence()]])
+
+    RangeSet.length(ranges)
+
 
   eventsQuery: ->
     query =

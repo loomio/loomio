@@ -48,7 +48,7 @@ export default
 </script>
 
 <template lang="pug">
-v-menu.poll-actions-dropdown
+v-menu.poll-actions-dropdown(lazy)
   v-btn.poll-actions-dropdown__button(flat icon slot="activator")
     .sr-only(v-t="'group_page.options_label'")
     v-icon mdi-chevron-down
