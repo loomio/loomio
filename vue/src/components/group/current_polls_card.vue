@@ -41,7 +41,7 @@ export default
 v-card.current-polls-card(v-if='polls.length')
   v-subheader(v-t="'current_polls_card.title'")
   .current-polls-card__no-polls.lmo-hint-text(v-if='!canStartPoll() && polls.length == 0', v-t="'current_polls_card.no_polls'")
-  v-list(v-if='polls.length')
+  v-list(two-line avatar v-if='polls.length')
     poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
   // <loading v-if="fetchRecordsExecuting"></loading>
 </template>
