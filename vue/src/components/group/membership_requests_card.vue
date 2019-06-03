@@ -1,6 +1,4 @@
 <style lang="scss">
-@import 'app.scss';
-
 .membership-requests-card__request-link {
   margin: 0;
   padding: 8px 0;
@@ -8,7 +6,6 @@
   text-transform: none;
   text-align: left;
 }
-
 </style>
 
 <script lang="coffee">
@@ -50,7 +47,6 @@ v-card.membership-requests-card(v-if='canManageMembershipRequests() && membershi
       v-list-tile-avatar
         user-avatar(:user='request.actor()', size='forty')
       v-list-tile-content
-        //- router-link.md-button.membership-requests-card__request-link.lmo-flex(layout='row', :to="urlFor(group, 'membership_requests')", title="$t('membership_requests_card.manage_requests')")
         v-list-tile-title.membership-requests-card__requestor-name {{request.actor().name || request.actor().email}}
         v-list-tile-sub-title.membership-requests-card__requestor-introduction {{request.introduction}}
   v-card-actions
