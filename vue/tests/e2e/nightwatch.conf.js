@@ -5,6 +5,7 @@ var chromeOptions = []
 if (process.env.RAILS_ENV == 'test') {
   console.log("WORD UP!!!!!!!!! running in HEADLESS MODE")
   chromeOptions = [ "headless" ]
+
 }
 
 module.exports = {

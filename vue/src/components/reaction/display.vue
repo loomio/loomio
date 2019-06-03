@@ -81,12 +81,13 @@ export default
   loading(v-if="!loaded" :diameter="diameter")
   .lmo-flex.lmo-flex__center(v-if="loaded")
     .reactions-display__emojis
-      .reaction.lmo-pointer(v-if="loaded" @click="removeMine(reaction)" v-for="reaction in reactionTypes")
+      .reaction.lmo-pointer(@click="removeMine(reaction)" v-for="reaction in reactionTypes")
         v-tooltip(bottom)
           template(v-slot:activator="{ on }")
             .reactions-display__group(v-on="on")
               span {{colonToUnicode(reaction)}}
               //- span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
+              //- span(v-if="reactionHash[reaction]") list present
               user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" size="tiny")
           .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
             span {{ user.name }}

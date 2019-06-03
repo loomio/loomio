@@ -32,8 +32,6 @@ export default
 
 <template lang="pug">
 .emoji-picker
-  div
-    input(type='text', v-model='search' :placeholder="$t('emoji_picker.search')")
   div(v-for='(emojiGroup, category) in emojis', :key='category')
     h5(v-t="'emoji_picker.'+category")
     div.emoji-picker__emojis
@@ -44,7 +42,7 @@ export default
 .emoji-picker {
   padding: 4px;
   background-color: #fff;
-  max-width: 200px;
+  max-width: 220px;
   max-height: 400px;
   overflow-y: auto;
 }
@@ -61,6 +59,7 @@ export default
     text-align: center;
     display: block;
     border-radius: 50%;
+    margin: 4px;
   }
 }
 </style>

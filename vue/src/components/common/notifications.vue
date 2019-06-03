@@ -23,7 +23,7 @@ v-menu.notifications(offset-y lazy)
     v-icon(v-if="!hasUnread") mdi-bell
     v-icon(v-if="hasUnread") mdi-bell-ring
     span.badge.notifications__activity(v-if="hasUnread") {{unreadCount}}
-  v-list.notifications__dropdown
+  v-list.notifications__dropdown(avatar)
     div(v-for="notification in notifications", :key="notification.id")
       notification(:notification="notification")
     div(v-if="notifications.length == 0" v-t="'notifications.no_notifications'")

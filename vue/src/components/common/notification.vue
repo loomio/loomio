@@ -24,9 +24,13 @@ export default
 <template lang="pug">
 v-list-tile.notification(:to="notification.url", :class="{'lmo-active': !notification.viewed}")
   v-list-tile-avatar
-    user-avatar(v-if="actor", :user="actor", size="medium")
+    user-avatar(v-if="actor", :user="actor", size="forty")
     //- .thread-item__proposal-icon{ng-if: "!actor()"}
   v-list-tile-content
-    span(v-html="contentFor")
-    time-ago(:date="notification.createdAt")
+    v-list-tile-title.body-1
+      span(v-html="contentFor")
+      | &nbsp;
+      span(aria-hidden='true') ·
+      | &nbsp;
+      time-ago(:date="notification.createdAt")
 </template>

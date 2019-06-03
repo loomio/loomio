@@ -19,6 +19,7 @@ export default
 
   props:
     discussion: Object
+    loader: Object
 
   data: ->
     canAddComment: false
@@ -26,7 +27,6 @@ export default
     renderMode: 'nested'
     position: @positionForSelect()
     eventWindow: null
-    loader: null
     events: []
     positionItems: []
     renderModeItems: [
@@ -58,30 +58,23 @@ export default
   methods:
     init: ->
       @setupEventWindow(@position)
+      # @eventWindow.setMinMax()
+      # @events = @eventWindow.windowedEvents()
+      # unless @eventWindow.allLoaded()
+      #   @loader.fetchRecords().then =>
+      #     @eventWindow.setMinMax()
+      #     @events = @eventWindow.windowedEvents()
 
-      console.log @eventWindow.initialSequenceId, @initialSequenceId(@position)
-
-      @loader = new RecordLoader
-        collection: 'events'
-        params:
-          discussion_id: @discussion.id
-          order: 'sequence_id'
-          from: @initialSequenceId(@position)
-          per: @per
-
-      @loader.fetchRecords().then =>
-        @eventWindow.setMinMax()
-        @events = @eventWindow.windowedEvents()
 
     loadPrevious: ->
       if @eventWindow.anyPrevious()
         @eventWindow.decreaseMin()
-        @loader.loadPrevious()
+        @loader.loadPrevious(@eventWindow.min) # unless @eventWindow.allLoaded()
 
     loadNext: ->
-      if @eventWindow.anyNext()
+      if @eventWindow.anyNext() && !@loader.loadingMore
         @eventWindow.increaseMax()
-        @loader.loadMore()
+        @loader.loadMore() #unless @eventWindow.allLoaded()
 
     positionForSelect: ->
       if _.includes(['requested', 'context'], @initialPosition())
@@ -134,6 +127,9 @@ export default
           initialSequenceId: @initialSequenceId(position)
           per: @per
 
+    shouldLoadMore: (visible) ->
+      @loadNext() if visible
+
 </script>
 
 <template lang="pug">
@@ -147,7 +143,9 @@ section.activity-card(aria-labelledby='activity-card-title')
     p per: {{per}}
     p firstLoaded: {{eventWindow.firstLoaded()}}
     p lastLoaded: {{eventWindow.lastLoaded()}}
-    p loadedCount: {{eventWindow.numLoaded()}}
+    p numLoaded: {{eventWindow.numLoaded()}}
+    p windowLength: {{eventWindow.windowLength()}}
+    p allLoaded: {{eventWindow.allLoaded()}}
     p read: {{discussion.readItemsCount()}}
     p unread: {{discussion.unreadItemsCount()}}
     p firstUnread {{discussion.firstUnreadSequenceId()}}
@@ -155,6 +153,7 @@ section.activity-card(aria-labelledby='activity-card-title')
     p requestedSequenceId: {{discussion.requestedSequenceId}}
     p position: {{initialPosition()}}
     p loader.loadingFirst {{loader.loadingFirst}}
+    p loader.loadingPrevious {{loader.loadingPrevious}}
 
   v-layout.activity-card__settings(justify-space-between)
     v-flex
@@ -178,6 +177,7 @@ section.activity-card(aria-labelledby='activity-card-title')
       in-view-options="{throttle: 200}"
       class="activity-card__load-more-sensor lmo-no-print"
       ></div>
+    .activity-card__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadMore")
     loading.activity-card__loading.page-loading(v-show='loader.loadingMore')
   //- add-comment-panel(v-if='eventWindow', :event-window='eventWindow', :parent-event='discussion.createdEvent()')
   .add-comment-panel.lmo-card-padding(v-if="eventWindow")

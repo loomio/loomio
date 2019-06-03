@@ -9,10 +9,6 @@ export default class NestedEventWindow extends BaseEventWindow
     @initialSequenceId = initialSequenceId
     @setMinMax()
 
-  setMinMax: ->
-    @setMin(@positionFromSequenceId() || @firstLoaded())
-    @setMax(@lastLoaded() || false)
-
   positionFromSequenceId: ->
     initialEvent = Records.events.find(discussionId: @discussion.id, sequenceId: @initialSequenceId)[0]
     # ensure that we set the min position of the window to bring the initialSequenceId to the top
@@ -37,6 +33,8 @@ export default class NestedEventWindow extends BaseEventWindow
   numTotal:        -> @parentEvent.childCount
   firstInSequence: -> 1
   lastInSequence:  -> @parentEvent.childCount
+  windowLength: ->
+    (@max || @lastInSequence()) - (@min - 1)
 
   eventsQuery: ->
     Records.events.collection.chain().find(parentId: @parentEvent.id)

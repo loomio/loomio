@@ -91,10 +91,11 @@ v-container.lmo-main-container.dashboard-page
   h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'")
   //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'" v-show="filter == 'hide_muted'")
   //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
-  section(v-if='!dashboardLoaded', v-for='(viewName, index) in loadingViewNames', :key='index', :class="'dashboard-page__loading dashboard-page__' + viewName", aria-hidden='true')
-    h2.dashboard-page__date-range(v-t="'dashboard_page.threads_from.' + viewName")
-    .thread-previews-container
-      loading-content(:lineCount='2' v-for='(item, index) in [1,2]' :key='index')
+  v-card.mb-3(v-if='!dashboardLoaded', v-for='(viewName, index) in loadingViewNames', :key='index', :class="'dashboard-page__loading dashboard-page__' + viewName", aria-hidden='true')
+    v-list
+      v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
+    v-list-item(v-for='(item, index) in [1,2,3]' :key='index')
+      loading-content(:lineCount='2' )
   section.dashboard-page__loaded(v-if='dashboardLoaded')
     .dashboard-page__empty(v-if='noThreads')
       p(v-t="'dashboard_page.no_groups.show_all'", v-if='noGroups')
