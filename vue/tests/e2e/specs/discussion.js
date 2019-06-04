@@ -384,6 +384,6 @@ module.exports = {
     page.click('.dismiss-modal-button', 500)
     page.expectText('.context-panel__heading', 'Forked thread')
     page.expectText('.context-panel__fork-details', 'What star sign are you?')
-    page.expectText('.thread-item__directive', 'This is totally on topic!', 8000)
+    page.expectText('.thread-item__body', 'This is totally on topic!', 8000)
   }
 }
