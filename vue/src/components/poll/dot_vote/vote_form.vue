@@ -138,6 +138,7 @@ export default
           v-btn.poll-dot-vote-vote-form__dot-button(type='button', @click='adjust(choice, 1)', :disabled='dotsRemaining() == 0')
             .mdi.mdi-24px.mdi-plus-circle-outline
   validation-errors(:subject='stance', field='stanceChoices')
+  poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     poll-common-show-results-button(v-if='stance.isNew()')

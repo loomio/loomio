@@ -56,6 +56,7 @@ export default
       .poll-common-stance-icon__chip(:style="{'border-color': option.color}")
       v-list-tile-title {{ option.name }}
   validation-errors(:subject='stance', field='stanceChoices')
+  poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason.animated(:stance='stance', v-show='stance.poll().multipleChoice || selectedOptionIds.length', v-if='stance')
   v-card-actions
     poll-common-show-results-button(v-if='stance.isNew()')
