@@ -103,6 +103,7 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
+    page.pause(1000)
     page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
       page.expectText('.poll-common-stance-choice--dot-vote', 'An option')
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
@@ -162,6 +163,7 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
+    page.pause(1000)
     page.expectElement('.poll-meeting-chart-panel--yes')
     page.scrollTo('.poll-common-votes-panel__stance', () => {
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
