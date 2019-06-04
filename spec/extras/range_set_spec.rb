@@ -34,6 +34,15 @@ describe RangeSet do
     expected_result = [[55, 61], [64, 64], [66, 66], [69, 75], [78, 78], [81, 84], [87, 88], [92, 96], [98, 99], [101, 111], [113, 114], [116, 119], [121, 125], [127, 133], [135, 136], [139, 140], [156, 166], [181, 183], [186, 186], [188, 191], [211, 218]]
     expect(RangeSet.subtract_ranges(ranges, read_ranges)).to eq expected_result
 
+    ranges = [[1, 5], [10,20]]
+    read_ranges = [[1,1], [3,5], [11,14],[18,19]]
+    expected_result = [[2,2],[10,10],[15,17],[20,20]]
+    expect(RangeSet.subtract_ranges(ranges, read_ranges)).to eq expected_result
+
+    ranges = [[1, 5]]
+    read_ranges = [[6,6]]
+    expected_result = [[1,5]]
+    expect(RangeSet.subtract_ranges(ranges, read_ranges)).to eq expected_result
   end
 
   it 'reduces to minimal sets' do
