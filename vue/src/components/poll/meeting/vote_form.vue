@@ -24,6 +24,7 @@ $box-width:60px;
 
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
+import WatchRecords from '@/mixins/watch_records'
 
 import { submitOnEnter } from '@/shared/helpers/keyboard'
 import { submitStance }  from '@/shared/helpers/form'
@@ -37,8 +38,10 @@ import _some from 'lodash/some'
 import _sortBy from 'lodash/sortBy'
 
 export default
+  mixins: [WatchRecords]
   props:
     stance: Object
+    pollOptions: []
   data: ->
     vars: {}
     zone: null
@@ -49,7 +52,10 @@ export default
     stanceValues: if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
   created: ->
     EventBus.$on 'timeZoneSelected', (e, zone) => @zone = zone
-
+    @watchRecords
+      collections: ['poll_options']
+      query: (records) =>
+        @pollOptions = @stance.poll().pollOptions()
     @submit = submitStance @, @stance,
       prepareFn: =>
         @$emit 'processing'
@@ -69,7 +75,7 @@ export default
       @stanceValuesMap[optionId] = score
 
     orderedPollOptions: ->
-      _sortBy @stance.poll().pollOptions(), 'name'
+      _sortBy @pollOptions, 'name'
 
 </script>
 

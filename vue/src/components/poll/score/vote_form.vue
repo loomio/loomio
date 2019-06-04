@@ -42,6 +42,7 @@
 <script lang="coffee">
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
+import WatchRecords from '@/mixins/watch_records'
 
 import { submitStance }  from '@/shared/helpers/form'
 import { submitOnEnter } from '@/shared/helpers/keyboard'
@@ -51,20 +52,22 @@ import _filter from 'lodash/filter'
 import _map from 'lodash/map'
 
 export default
+  mixins: [WatchRecords]
   props:
     stance: Object
   data: ->
+    pollOptions: []
     vars: {}
   created: ->
-    @setStanceChoices()
-    EventBus.$on 'pollOptionsAdded', @setStanceChoices
     @submit = submitStance @, @stance,
       prepareFn: =>
         @$emit 'processing'
         @stance.id = null
         @stance.stanceChoicesAttributes = @stanceChoices
-  # mounted: ->
-  #   submitOnEnter @, element: @$el
+    @watchRecords
+      collections: ['poll_options']
+      query: (records) =>
+        @pollOptions = @stance.poll().pollOptions()
   methods:
     stanceChoiceFor: (option) ->
       _head(_filter(@stance.stanceChoices(), (choice) =>
@@ -74,11 +77,11 @@ export default
     optionFor: (choice) ->
       Records.pollOptions.find(choice.poll_option_id)
 
-    setStanceChoices: ->
-      @stanceChoices = _map @stance.poll().pollOptions(), (option) =>
+  computed:
+    stanceChoices: ->
+      _map @pollOptions, (option) =>
         poll_option_id: option.id
         score: @stanceChoiceFor(option).score
-
 
 </script>
 

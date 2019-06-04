@@ -32,6 +32,7 @@
 
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
+import WatchRecords from '@/mixins/watch_records'
 import { submitStance }                    from '@/shared/helpers/form'
 
 import _sortBy from 'lodash/sortBy'
@@ -42,26 +43,27 @@ import _map from 'lodash/map'
 import _findIndex from 'lodash/findIndex'
 
 export default
+  mixins: [WatchRecords]
   props:
     stance: Object
   data: ->
+    pollOptions: []
     numChoices: @stance.poll().customFields.minimum_stance_choices
-    pollOptions: _sortBy @stance.poll().pollOptions(), (option) =>
-      choice = _find(@stance.stanceChoices(), _matchesProperty('pollOptionId', option.id))
-      -(choice or {}).score
   created: ->
+    @watchRecords
+      collections: ['poll_options']
+      query: (records) =>
+        @pollOptions = @stance.poll().pollOptions()
+
     @submit = submitStance @, @stance,
       prepareFn: =>
         EventBus.$emit 'processing'
         @stance.id = null
-        selected = _take @pollOptions, @numChoices
+        selected = _take @sortedPollOptions, @numChoices
         @stance.stanceChoicesAttributes = _map selected, (option, index) =>
           poll_option_id: option.id
           score:         @numChoices - index
   methods:
-    orderedPollOptions: ->
-      _sortBy @pollOptions(), 'priority'
-
     setSelected: (option) ->
       @selectedOption = option
 
@@ -76,6 +78,15 @@ export default
                     toIndex   >= 0 and toIndex   < @pollOptions.length
       @pollOptions[fromIndex]   = @pollOptions[toIndex]
       @pollOptions[toIndex]     = @selectedOption
+
+  computed:
+    sortedPollOptions: ->
+      _sortBy @pollOptions, (option) =>
+        choice = _find(@stance.stanceChoices(), _matchesProperty('pollOptionId', option.id))
+        -(choice or {}).score
+
+    orderedPollOptions: ->
+      _sortBy @sortedPollOptions, 'priority'
 
 </script>
 
