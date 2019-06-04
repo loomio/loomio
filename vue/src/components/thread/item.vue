@@ -119,8 +119,8 @@ div
             i.mdi.mdi-delete
         component(v-if='hasComponent()' :is='camelCase(event.kind)' @reply-button-clicked="handleReplyButtonClicked" :event='event', :eventable='event.model()')
     comment-form(v-if="showCommentForm" @comment-submitted="handleCommentSubmitted" :parentComment="parentComment" :discussion="eventWindow.discussion")
-  template.thread-item__directive(v-if='event.isSurface() && eventWindow.useNesting')
-    event-children(:parent-event='event' :parent-event-window='eventWindow')
+  template(v-if='event.isSurface() && eventWindow.useNesting')
+    event-children.thread-item__directive(:parent-event='event' :parent-event-window='eventWindow')
 </template>
 
 <style lang="scss">
