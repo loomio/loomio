@@ -61,7 +61,6 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
     page.fillIn('.poll-poll-form__add-option-input input', 'An option')
-    page.fillIn('.poll-poll-form__add-option-input input', 'An option')
     page.click('.poll-poll-form__option-button')
     page.click('.poll-common-form__submit')
     page.expectElement('.announcement-form__submit')
@@ -88,7 +87,6 @@ module.exports = {
     // page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
-    page.fillIn('.poll-poll-form__add-option-input input', 'An option')
     page.fillIn('.poll-poll-form__add-option-input input', 'An option')
 
     page.click('.poll-poll-form__option-button')
@@ -119,7 +117,6 @@ module.exports = {
     // page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
-    page.fillIn('.poll-poll-form__add-option-input input', 'An option')
     page.fillIn('.poll-poll-form__add-option-input input', 'An option')
     page.click('.poll-poll-form__option-button')
     page.click('.poll-common-form__submit')
@@ -179,7 +176,6 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
 
-    page.fillIn('.poll-poll-form__add-option-input input', 'An option')
     page.fillIn('.poll-poll-form__add-option-input input', 'An option')
     page.click('.poll-poll-form__option-button')
     page.fillIn('.poll-poll-form__add-option-input input', 'Another option')
