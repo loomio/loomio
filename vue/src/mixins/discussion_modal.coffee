@@ -16,8 +16,7 @@ export default
                       component: 'DiscussionForm',
                       props: {
                         discussion: Records.discussions.build(groupId: group.id)
-                      }
-                      titleKey: 'group_form.new_organization')
+                      })
 
     openForkedDiscussionModal: (discussion) ->
       EventBus.$emit('openModal',
@@ -27,13 +26,20 @@ export default
                           groupId:        discussion.groupId
                           private:        discussion.private
                           forkedEventIds: discussion.forkedEventIds
-                      }
-                      titleKey: 'group_form.new_organization')
+                          description: discussion.description
+                          descriptionFormat: discussion.descriptionFormat
+                      })
 
     openEditDiscussionModal: (discussion) ->
       EventBus.$emit('openModal',
                       component: 'DiscussionForm',
                       props: {
                         discussion: discussion.clone()
-                      }
-                      titleKey: 'group_form.new_organization')
+                      })
+
+    openMoveDiscussionModal: (discussion) ->
+      EventBus.$emit('openModal',
+                      component: 'MoveThreadForm',
+                      props: {
+                        discussion: discussion.clone()
+                      })

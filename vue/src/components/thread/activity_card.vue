@@ -54,6 +54,9 @@ export default
       {text: @$t('activity_card.latest'), value: 'latest'}
     ]
 
+  watch:
+    discussion: (currentDiscussion, prevDiscussion) ->
+      @init() if currentDiscussion.id != prevDiscussion.id
 
   methods:
     init: ->

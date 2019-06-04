@@ -65,12 +65,12 @@ export default
   div(v-if='debug()')
     | event-childrenparentId: {{eventWindow.parentEvent.id}}cc: {{eventWindow.parentEvent.childCount}}min: {{eventWindow.min}}max: {{eventWindow.max}}first: {{eventWindow.firstLoaded()}}last: {{eventWindow.lastLoaded()}}anyPrevious: {{eventWindow.anyPrevious()}}anyNext: {{eventWindow.anyNext()}}
   a.activity-card__load-more.lmo-no-print.thread-item--indent-margin(v-show='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()')
-    i.mdi.mdi-autorenew
+    v-icon mdi-autorenew
     span(v-t="{ path: 'activity_card.n_previous', args: { count: eventWindow.numPrevious() } }")
   loading.activity-card__loading.page-loading(v-show='loader.loadingPrevious')
   thread-item(v-for='event in events' :key='event.id' :event-window='eventWindow' :event='event')
   a.activity-card__load-more.lmo-no-print.thread-item--indent-margin(v-show='eventWindow.anyNext() && !loader.loadingMore', @click='loadNext()')
-    i.mdi.mdi-autorenew
+    v-icon mdi-autorenew
     span(v-t="{ path: 'activity_card.n_more', args: { count: eventWindow.numNext() } }")
   loading.activity-card__loading.page-loading(v-show='loader.loadingMore')
 </template>

@@ -23,10 +23,12 @@ export default
 
   watch:
     $route: 'init'
+    discussion: (currentDiscussion, prevDiscussion) ->
+      @init() if prevDiscussion && currentDiscussion && (currentDiscussion.id != prevDiscussion.id)
 
   methods:
     init: ->
-      @discussion = Records.discussions.find(@$route.params.key)
+      @discussion = Records.discussions.findOrNull(@$route.params.key)
 
       @requestedSequenceId = parseInt(@$route.params.sequence_id)
       @requestedCommentId = parseInt(@$route.params.comment_id)
@@ -46,14 +48,14 @@ export default
           @discussion = discussion
 
           if @requestedCommentId
-            @discussion.requestedSequenceId = Records.events.find(
-              discussionId: discussion.id
+            @requestedSequenceId = Records.events.find(
+              discussionId: @discussion.id
               kind: 'new_comment'
               eventableId: @requestedCommentId
-              ).sequenceId
+              )[0].sequenceId
 
           if @requestedSequenceId
-            @discussion.requestedSequenceId = @requestedSequenceId
+            @discussion.update({requestedSequenceId: @requestedSequenceId})
 
           @discussion.markAsSeen()
 
@@ -63,7 +65,7 @@ export default
             key: @discussion.id
             collections: ["polls"]
             query: (records) =>
-              @activePolls = @discussion.activePolls()
+              @activePolls = @discussion.activePolls() if @discussion
 
           if @discussion.forkedEvent()
             Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true)
@@ -74,8 +76,9 @@ export default
             group: @discussion.group()
             discussion: @discussion
 
-      , (error) ->
-        EventBus.$emit 'pageError', error
+      # , (error) =>
+      #   debugger
+      #   EventBus.$emit 'pageError', error
 </script>
 
 <template lang="pug">

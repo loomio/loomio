@@ -57,7 +57,7 @@ export default
       AbilityService.canCloseThread(@discussion)
 
     moveThread: ->
-      ModalService.open 'MoveThreadForm', discussion: => @discussion
+      @openMoveDiscussionModal(@discussion)
 
     requestPagePrinted: ->
       EventBus.broadcast $rootScope, 'toggleSidebar', false

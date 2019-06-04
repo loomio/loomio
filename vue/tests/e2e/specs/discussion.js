@@ -46,8 +46,6 @@ module.exports = {
     page.expectNoText('.discussions-card', 'This thread is old and closed')
     page.expectText('.discussions-card', 'What star sign are you?')
 
-    // TODO: GK: the thread query service needs an overhaul
-
     page.click('.thread-preview')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--close')
@@ -120,20 +118,6 @@ module.exports = {
     page.click('.context-panel-dropdown__option--unmute')
     page.expectFlash('Thread unmuted')
   },
-
-  // 'lets you move a thread': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_multiple_discussions')
-  //   page.click('.context-panel-dropdown__button')
-  //   page.click('.context-panel-dropdown__option--move')
-  //   page.click('.move-thread-form__group-dropdown')
-  //   page.click('.md-select-menu-container.md-active md-option')
-  //   page.click('.move-thread-form__submit')
-  //   page.expectFlash('Thread has been moved to Point Break')
-  //   page.expectText('.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes')
-  //   page.expectText('.group-theme__name--compact','Point Break')
-  // },
 
   'marks_a_discussion_as_seen': (test) => {
     page = pageHelper(test)
@@ -372,19 +356,34 @@ module.exports = {
     page.expectText('.activity-feed', 'Patrick Swayze closed the discussion')
   },
 
-  // 'can_fork_a_thread': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_forkable_discussion')
-  //   page.click('.action-dock__button--fork_comment')
-  //   page.expectElement('md-checkbox.md-checked')
-  //   page.click('.discussion-fork-actions__submit')
-  //   page.fillIn('.discussion-form__title-input', 'Forked thread')
-  //   page.click('.discussion-form__submit')
-  //   page.expectFlash('Thread fork created')
-  //   page.click('.dismiss-modal-button')
-  //   page.expectText('.context-panel__heading', 'Forked thread')
-  //   page.expectText('.context-panel__details', 'Forked from What star sign are you?')
-  //   page.expectText('.thread-item__directive', 'This is totally on topic!', 8000)
-  // }
+  'can_fork_a_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_forkable_discussion')
+    page.click('.action-dock__button--fork_comment')
+    page.click('.discussion-fork-actions__submit')
+    page.fillIn('.discussion-form__title-input input', 'Forked thread')
+    page.click('.discussion-form__submit')
+    page.expectFlash('Thread fork created')
+    page.click('.dismiss-modal-button', 500)
+    page.expectText('.context-panel__heading', 'Forked thread')
+    page.expectText('.context-panel__fork-details', 'What star sign are you?')
+    page.expectText('.thread-item__body', 'This is totally on topic!', 8000)
+  },
+
+  'can_move_a_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_multiple_discussions')
+    page.click('.context-panel-dropdown__button')
+    page.click('.context-panel-dropdown__option--move')
+    page.pause(1000)
+    page.click('.move-thread-form__group-dropdown')
+    page.expectText('.group-dropdown-item-group-name:last-child', 'Point Break')
+    page.click('.group-dropdown-item-group-name:last-child')
+    page.click('.move-thread-form__submit')
+    page.expectFlash('Thread has been moved to Point Break')
+    page.expectText('.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes')
+    page.expectText('.group-theme__name--compact','Point Break')
+  },
 }

@@ -99,7 +99,7 @@ v-card-text.context-panel
       span(v-show='discussion.seenByCount > 0')
         span.mx-1(aria-hidden='true') ·
         span.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }")
-      span(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
+      span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
         span.mx-1(aria-hidden='true') ·
         span(v-t="'thread_context.forked_from'")
         router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}

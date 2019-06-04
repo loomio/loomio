@@ -17,20 +17,20 @@ import Records      from '@/shared/services/records.coffee'
 import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
 
 export default
+  mixins: [DiscussionModalMixin]
   props:
     discussion: Object
   methods:
     submit: ->
       @openForkedDiscussionModal(@discussion)
+      @discussion.forkedEventIds = []
 </script>
 
-<template>
-  <div class="discussion-fork-actions lmo-drop-animation">
-    <div v-show="discussion.isForking()" class="discussion-fork-actions__notice animated lmo-card lmo-flex--row lmo-flex__center">
-      <i class="mdi mdi-call-split mdi-18px lmo-margin-right"></i>
-      <span v-t="'discussion_fork_actions.helptext'" class="lmo-flex__grow"></span>
-      <v-btn @click="discussion.forkedEventIds = []" v-t="'common.action.cancel'" class="md-accent"></v-btn>
-      <v-btn @click="submit()" v-t="'common.action.fork'" class="md-primary md-raised discussion-fork-actions__submit"></v-btn>
-    </div>
-  </div>
+<template lang='pug'>
+.discussion-fork-actions.lmo-drop-animation
+  .discussion-fork-actions__notice.animated.lmo-card.lmo-flex--row.lmo-flex__center(v-show='discussion.isForking()')
+    v-icon.mdi.mdi-18px.lmo-margin-right mdi-call-split
+    span.lmo-flex__grow(v-t="'discussion_fork_actions.helptext'")
+    v-btn.md-accent(@click='discussion.forkedEventIds = []', v-t="'common.action.cancel'")
+    v-btn.discussion-fork-actions__submit(@click='submit()', v-t="'common.action.fork'")
 </template>
