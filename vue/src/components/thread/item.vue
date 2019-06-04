@@ -103,12 +103,12 @@ div
       .lmo-disabled-form(v-show='isDisabled')
       .thread-item__avatar.lmo-margin-right
         user-avatar(v-if='!event.isForkable() && event.actor()', :user='event.actor()', size='medium')
-        // <md-checkbox ng-if="event.isForkable()" ng-disabled="!event.canFork()" ng-click="event.toggleFromFork()" ng-checked="event.isForking()"></md-checkbox>
+        v-checkbox.thread-item__is-forking(v-if="event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
       .thread-item__body.lmo-flex.lmo-flex__horizontal-center.lmo-flex--column
         .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between
           h3.thread-item__title(:id="'event-' + event.id")
             div(v-if='debug()')
-              | id: {{event.id}}cpid: {{event.model().parentId}}pid: {{event.parentId}}sid: {{event.sequenceId}}position: {{event.position}}depth: {{event.depth}}unread: {{isUnread()}}cc: {{event.childCount}}
+              | id: {{event.id}}cpid: {{event.model().parentId}}pid: {{event.parentId}}sid: {{event.sequenceId}}position: {{event.position}}depth: {{event.depth}}unread: {{isUnread}}cc: {{event.childCount}}
             span(v-html='headline')
             | &nbsp;
             span(aria-hidden='true') ·

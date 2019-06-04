@@ -89,7 +89,8 @@ v-card.discussion-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       v-flex
-        .headline(v-t="'discussion_form.new_discussion_title'")
+        .headline(v-if="!discussion.isForking()" v-t="'discussion_form.new_discussion_title'")
+        .headline(v-if="discussion.isForking()" v-t="'discussion_form.fork_discussion_title'")
       v-flex(shrink)
         dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
@@ -107,7 +108,7 @@ v-card.discussion-form
     .discussion-form__group-selected(v-if='discussion.groupId && !showUpgradeMessage')
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')", :placeholder="$t('discussion_form.title_placeholder')", v-model='discussion.title', maxlength='255')
       validation-errors(:subject='discussion', field='title')
-      lmo-textarea(:model='discussion' field="description" :placeholder="'discussion_form.context_placeholder'")
+      lmo-textarea(v-if="!discussion.isForking()" :model='discussion' field="description" :placeholder="'discussion_form.context_placeholder'")
       v-list.discussion-form__options
         v-list-tile.discussion-form__privacy-form(v-if='showPrivacyForm')
           v-radio-group(v-model='discussion.private')

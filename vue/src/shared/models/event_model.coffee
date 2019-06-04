@@ -70,7 +70,7 @@ export default class EventModel extends BaseModel
 
   toggleFromFork: ->
     if @isForking()
-      _.pull @discussion().forkedEventIds, @id
+      @discussion().update(forkedEventIds: _.without @discussion().forkedEventIds, @id)
     else
       @discussion().forkedEventIds.push @id
     _.invokeMap @recordStore.events.find(parentId: @id), 'toggleFromFork'

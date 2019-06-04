@@ -23,6 +23,8 @@ export default
 
   watch:
     $route: 'init'
+    discussion: (currentDiscussion, prevDiscussion) ->
+      @init() if prevDiscussion && currentDiscussion && (currentDiscussion.id != prevDiscussion.id)
 
   methods:
     init: ->
