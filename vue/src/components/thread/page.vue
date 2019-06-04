@@ -26,8 +26,7 @@ export default
 
   methods:
     init: ->
-      Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
-        @discussion = discussion
+      @discussion = Records.discussions.find(@$route.params.key)
 
       @requestedSequenceId = parseInt(@$route.params.sequence_id)
       @requestedCommentId = parseInt(@$route.params.comment_id)
@@ -40,6 +39,7 @@ export default
           comment_id: @requestedCommentId
           order: 'sequence_id'
           per: @per
+
 
       @loader.fetchRecords().then =>
         Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>

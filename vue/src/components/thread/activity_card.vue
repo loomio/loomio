@@ -170,13 +170,7 @@ section.activity-card(aria-labelledby='activity-card-title')
     loading.activity-card__loading.page-loading(v-show='loader.loadingPrevious')
     ul.activity-card__activity-list
       li.activity-card__activity-list-item(v-for='event in events', :key='event.id')
-        thread-item(:event='event', :event-window='eventWindow')
-    //
-      <div
-      in-view="$inview && !eventWindow.loader.loadingMore && eventWindow.anyNext() && eventWindow.showNext()"
-      in-view-options="{throttle: 200}"
-      class="activity-card__load-more-sensor lmo-no-print"
-      ></div>
+        thread-item(:event='event' :event-window='eventWindow')
     .activity-card__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadMore")
     loading.activity-card__loading.page-loading(v-show='loader.loadingMore')
   //- add-comment-panel(v-if='eventWindow', :event-window='eventWindow', :parent-event='discussion.createdEvent()')

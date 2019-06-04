@@ -92,10 +92,9 @@ v-container.lmo-main-container.dashboard-page
   //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'" v-show="filter == 'hide_muted'")
   //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
   v-card.mb-3(v-if='!dashboardLoaded', v-for='(viewName, index) in loadingViewNames', :key='index', :class="'dashboard-page__loading dashboard-page__' + viewName", aria-hidden='true')
-    v-list
+    v-list(two-line)
       v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
-    v-list-item(v-for='(item, index) in [1,2,3]' :key='index')
-      loading-content(:lineCount='2' )
+      loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
   section.dashboard-page__loaded(v-if='dashboardLoaded')
     .dashboard-page__empty(v-if='noThreads')
       p(v-t="'dashboard_page.no_groups.show_all'", v-if='noGroups')

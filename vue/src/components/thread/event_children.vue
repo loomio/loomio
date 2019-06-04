@@ -68,7 +68,7 @@ export default
     i.mdi.mdi-autorenew
     span(v-t="{ path: 'activity_card.n_previous', args: { count: eventWindow.numPrevious() } }")
   loading.activity-card__loading.page-loading(v-show='loader.loadingPrevious')
-  thread-item(v-for='event in events', :key='event.id', :event-window='eventWindow', :event='event')
+  thread-item(v-for='event in events' :key='event.id' :event-window='eventWindow' :event='event')
   a.activity-card__load-more.lmo-no-print.thread-item--indent-margin(v-show='eventWindow.anyNext() && !loader.loadingMore', @click='loadNext()')
     i.mdi.mdi-autorenew
     span(v-t="{ path: 'activity_card.n_more', args: { count: eventWindow.numNext() } }")

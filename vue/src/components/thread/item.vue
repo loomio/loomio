@@ -93,12 +93,17 @@ export default
     unreadColor: ->
       @$vuetify.theme.primary
 
+    styles: ->
+      styles = {'border-color': @$vuetify.theme.primary}
+      styles['background-color'] =  @$vuetify.theme.accent if @isFocused
+      styles
+
 
 </script>
 
 <template lang="pug">
 div
-  .thread-item(md-colors='mdColors', :class="{'thread-item--unread': isUnread}" :style="{'border-color': unreadColor}" v-observe-visibility="{callback: viewed, once: true}")
+  .thread-item(:class="{'thread-item--unread': isUnread}" :style="styles" v-observe-visibility="{callback: viewed, once: true}")
     .lmo-flex.lmo-relative.lmo-action-dock-wrapper.lmo-flex--row(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
       .lmo-disabled-form(v-show='isDisabled')
       .thread-item__avatar.lmo-margin-right
@@ -108,7 +113,8 @@ div
         .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between
           h3.thread-item__title(:id="'event-' + event.id")
             div(v-if='debug()')
-              | id: {{event.id}}cpid: {{event.model().parentId}}pid: {{event.parentId}}sid: {{event.sequenceId}}position: {{event.position}}depth: {{event.depth}}unread: {{isUnread()}}cc: {{event.childCount}}
+              //- | id: {{event.id}} cpid: {{event.model().parentId}} pid: {{event.parentId}} sid: {{event.sequenceId}} position: {{event.position}} depth: {{event.depth}} unread: {{isUnread}} cc: {{event.childCount}} eventableId: {{event.eventableId}}
+            | sid: {{event.sequenceId}} position: {{event.position}} commentId: {{event.eventableId}}
             span(v-html='headline')
             | &nbsp;
             span(aria-hidden='true') ·
