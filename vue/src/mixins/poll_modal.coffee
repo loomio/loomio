@@ -16,12 +16,36 @@ export default
       EventBus.$emit('openModal',
                       component: 'PollCommonEditVoteModal',
                       props: {
-                        stance: stance
+                        stance: stance.clone()
                       })
 
     openEditPollModal: (poll) ->
       EventBus.$emit('openModal',
                       component: 'PollCommonEditModal',
                       props: {
+                        poll: poll.clone()
+                      })
+
+    openPollOutcomeModal: (outcome) ->
+      EventBus.$emit('openModal',
+                      component: 'PollCommonOutcomeModal',
+                      props: {
+                        outcome: outcome
+                      })
+
+    openClosePollModal: (poll) ->
+      EventBus.$emit('openModal',
+                      component: 'PollCommonCloseModal',
+                      props: {
                         poll: poll
                       })
+
+    openReopenPollModal: (poll) ->
+      EventBus.$emit('openModal',
+                      component: 'PollCommonReopenModal',
+                      props: {
+                        poll: poll
+                      })
+
+    closeModal: ->
+      EventBus.$emit('closeModal')

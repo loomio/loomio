@@ -20,6 +20,7 @@ import urlFor         from '@/mixins/url_for'
 import UserModalMixin from '@/mixins/user_modal'
 
 import { applyLoadingFunction } from '@/shared/helpers/apply'
+import WatchRecords from '@/mixins/watch_records'
 
 import _isEmpty     from 'lodash/isEmpty'
 import _sortBy     from 'lodash/sortBy'
@@ -28,33 +29,45 @@ export default
   mixins: [
     fromNow,
     urlFor,
-    UserModalMixin
+    UserModalMixin,
+    WatchRecords
   ]
+
   data: ->
     user: {}
     isMembershipsFetchingDone: false
+    groups: []
+    canContactUser: false
+    loadingGroupsForExecuting: false
+
   created: ->
     # applyLoadingFunction(@, 'loadGroupsFor')
-    @setUser()
-    Records.users.findOrFetchById(@$route.params.key).then @setUser, (error) ->
-      # EventBus.broadcast $rootScope, 'pageError', error
+    @init()
+    EventBus.$emit 'currentComponent', {page: 'userPage'}
+    Records.users.findOrFetchById(@$route.params.key).then @init, (error) ->
+      EventBus.$emit 'pageError', error
+
   methods:
-    setUser: ->
+    init: ->
       if @user = (Records.users.find(@$route.params.key) or Records.users.find(username: @$route.params.key))[0]
-      # EventBus.broadcast $rootScope, 'currentComponent', {title: @user.name, page: 'userPage'}
+        EventBus.$emit 'currentComponent', {title: @user.name, page: 'userPage'}
         @loadGroupsFor(@user)
+        @watchRecords
+          key: @user.id
+          collections: ['groups', 'memberships']
+          query: (store) =>
+            @groups = @user.formalGroups()
+            @canContactUser = AbilityService.canContactUser(@user)
 
     loadGroupsFor: (user) ->
-      Records.memberships.fetchByUser(user)
-  computed:
-    canContactUser: ->
-      @$store.getters.canContactUser(@user)
+      @loadingGroupsForExecuting = true
+      Records.memberships.fetchByUser(user).then =>
+        @loadingGroupsForExecuting = false
 
+  computed:
     isEmptyUser: ->
       _isEmpty @user
 
-    orderedFormalGroups: ->
-      _sortBy @user.formalGroups(), 'fullName'
 </script>
 
 <template lang="pug">
@@ -76,8 +89,8 @@ export default
           .user-page__groups
             h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
             v-list
-              v-list-tile.user-page__group.lmo-flex.lmo-flex__center(v-for='group in user.formalGroups()', :key='group.id')
+              v-list-tile.user-page__group.lmo-flex.lmo-flex__center(v-for='group in groups', :key='group.id')
                 img.md-avatar.lmo-box--small.lmo-margin-right(:src='group.logoUrl()')
                 router-link(:to='urlFor(group)') {{group.fullName}}
-            // <loading v-if="loadGroupsForExecuting"></loading>
+            loading(v-if='loadingGroupsForExecuting')
 </template>

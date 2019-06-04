@@ -16,8 +16,8 @@ export default
   user-avatar(:user="stance.participant()", size="small")
   .poll-common-votes-panel__stance-content
     .poll-common-votes-panel__stance-name-and-option
-      strong > {{ participantName }}
+      strong {{ participantName }}
     .poll-common-votes-panel__stance-reason(v-if="stance.reason")
-      span(v-if="!stance.translation", :marked="stance.reason")
+      span(v-if="!stance.translation", v-marked="stance.reason")
       translation(v-if="stance.translation", :model="stance", field="reason")
 </template>

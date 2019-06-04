@@ -5,12 +5,12 @@ import ModalService     from '@/shared/services/modal_service'
 import { viewportSize } from '@/shared/helpers/window'
 
 export scrollTo = (target, options) ->
-  setTimeout ->
-    ScrollService.scrollTo(
-      document.querySelector(target),
-      document.querySelector(options.container or '.lmo-main-content'),
-      options
-    )
+  # setTimeout ->
+  #   ScrollService.scrollTo(
+  #     document.querySelector(target),
+  #     document.querySelector(options.container or '.lmo-main-content'),
+  #     options
+  #   )
 
 export updateCover = ->
   $cover = document.querySelector('.lmo-main-background')

@@ -105,3 +105,5 @@ gl:
   poll_count_options:
     'yes': 'Si'
     'no': 'Non'
+  auth_form:
+    name_placeholder: O teu nome

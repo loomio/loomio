@@ -22,7 +22,8 @@ class DiscussionEmailInfo
   end
 
   def target_url(args = {})
-    polymorphic_url(membership || eventable, utm_hash(args))
+    args.merge!(membership_token: membership.token) if membership
+    polymorphic_url(eventable, utm_hash(args))
   end
 
   def unfollow_url(args = {})

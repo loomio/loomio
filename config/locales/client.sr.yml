@@ -202,7 +202,6 @@ sr:
     messages:
       privacy:
         members: 'Ova grupa je sada vidljiva samo za članove'
-        parent_members: 'Ova grupa je sada vidljiva samo članovima Vaše organizacije'
         public: 'Ova grupa je javno vidljiva'
       leave_group_success: 'Napustili ste ovu grupu'
       archive_group_success: 'Ova grupa je bila deaktivirana'
@@ -397,7 +396,6 @@ sr:
   dashboard_page:
     aria_label: 'Tabla'
     no_groups:
-      show_all: Nemaš novih niti jer nisi član ni jedne grupe.
       show_muted: Nemaš prigušenih niti jer nisi član ni jedne grupe.
     no_threads:
       show_all: Nemate skorih niti
@@ -595,3 +593,5 @@ sr:
   poll_count_options:
     'yes': 'Da'
     'no': 'Ne'
+  auth_form:
+    name_placeholder: Tvoje ime

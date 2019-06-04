@@ -34,7 +34,6 @@ export default class BaseModel
     @afterConstruction()
 
   bumpVersion: ->
-    # @recordStore.bumpVersion()
     @_version = @_version + 1
 
   afterConstruction: ->
@@ -43,12 +42,14 @@ export default class BaseModel
     {}
 
   clone: ->
-    cloneAttributes = _.transform @attributeNames, (clone, attr) =>
+    cloneAttributes = {}
+    _.forEach @attributeNames, (attr) =>
       if _.isArray(@[attr])
-        clone[attr] = @[attr].slice(0)
+        cloneAttributes[attr] = @[attr].slice(0)
       else
-        clone[attr] = @[attr]
+        cloneAttributes[attr] = @[attr]
       true
+    cloneAttributes.cloney = true
     cloneRecord = new @constructor(@recordsInterface, cloneAttributes)
     cloneRecord.clonedFrom = @
     cloneRecord
@@ -62,9 +63,10 @@ export default class BaseModel
   baseUpdate: (attributes) ->
     @bumpVersion()
     @attributeNames = _.union(@attributeNames, _.keys(attributes))
-    _.forEach attributes, (value, key) =>
+    _.forEach(attributes, (value, key) =>
       Vue.set(@, key, value)
-      true
+      return true
+    )
 
     @recordsInterface.collection.update(@) if @inCollection()
 
@@ -120,14 +122,6 @@ export default class BaseModel
       of: 'id'
 
     @[name] = => @recordStore[args.from].find("#{args.with}": @[args.of])
-
-  # buildView: (viewName, args = {}) ->
-  #   # create the view which references the records
-  #   if !@views[viewName]
-  #     @views[viewName] = @recordStore[args.from].collection.addDynamicView(viewName)
-  #     @views[viewName].applyFind("#{args.with}": @[args.of])
-  #     @views[viewName].applySimpleSort(args.sortBy, args.sortDesc) if args.sortBy
-  #   @views[viewName]
 
   belongsTo: (name, userArgs) ->
     defaults =

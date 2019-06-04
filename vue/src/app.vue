@@ -7,9 +7,17 @@ import Session from '@/shared/services/session'
 
 export default
   mixins: [AuthModalMixin]
-  created: ->
-    console.log "okokok"
+  data: ->
+    pageError: null
+    
+  mounted: ->
+    @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
     EventBus.$on('currentComponent', @setCurrentComponent)
+    EventBus.$on 'pageError', (error) =>
+      @openAuthModal() if !Session.isSignedIn() and error.status == 403
+      @pageError = error
+    EventBus.$on 'signedIn', =>
+      @pageError = null
 
   methods:
     setCurrentComponent: (options) ->
@@ -20,30 +28,36 @@ export default
       AppConfig.currentDiscussion = options.discussion
       AppConfig.currentPoll       = options.poll
 
-      @openAuthModal() if @shouldForceSignIn(options)
-
       # scrollTo(options.scrollTo or 'h1') unless options.skipScroll
       # updateCover()
 
     shouldForceSignIn: (options = {}) ->
       # return false if options.page == "pollPage" and Session.user() !AbilityService.isEmailVerified()
       # return false if AbilityService.isEmailVerified()
-      return false if AbilityService.isLoggedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
+      return false if Session.isSignedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
       return true  if AppConfig.pendingIdentity.identity_type?
 
-      switch options.page
-        when 'emailSettingsPage' then !Session.user().restricted?
-        when 'dashboardPage',      \
-             'inboxPage',          \
-             'profilePage',        \
-             'authorizedAppsPage', \
-             'registeredAppsPage', \
-             'registeredAppPage',  \
-             'pollsPage',          \
-             'pollPage',           \
-             'startPollPage',      \
-             'upgradePage',        \
-             'startGroupPage' then true
+      switch @$route.path
+        when '/email_preferences' then !Session.user().restricted?
+        when '/dashboard',      \
+             '/inbox',          \
+             '/profile',        \
+             '/polls',          \
+             '/p/new',      \
+             '/g/new' then true
+      # switch options.page
+      #   when 'emailSettingsPage' then !Session.user().restricted?
+      #   when 'dashboardPage',      \
+      #        'inboxPage',          \
+      #        'profilePage',        \
+      #        'authorizedAppsPage', \
+      #        'registeredAppsPage', \
+      #        'registeredAppPage',  \
+      #        'pollsPage',          \
+      #        'pollPage',           \
+      #        'startPollPage',      \
+      #        'upgradePage',        \
+      #        'startGroupPage' then true
 
 
 </script>
@@ -53,7 +67,8 @@ v-app
   navbar
   sidebar
   v-content
-    router-view(:key="$route.path")
+    router-view(v-if="!pageError")
+    error(v-if="pageError" :error="pageError")
   modal-launcher
   flash
 </template>

@@ -186,6 +186,7 @@ module Dev::NintiesMoviesHelper
                                      parent: create_another_group,
                                      discussion_privacy_options: 'public_or_private',
                                      group_privacy: 'closed')
+      @subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
       @subgroup.add_admin! patrick
     end
     @subgroup

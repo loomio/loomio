@@ -337,7 +337,6 @@ da:
     messages:
       privacy:
         members: 'Denne gruppe er nu kun synlig for medlemmer'
-        parent_members: 'Denne gruppe er nu kun synlig for medlemmer af din organisation'
         public: 'Denne gruppe er ny synlig for offentligheden'
       leave_group_success: 'Du har forladt denne gruppe'
       archive_group_success: 'Denne gruppe er deaktiveret'
@@ -592,7 +591,6 @@ da:
   dashboard_page:
     aria_label: 'Dashboard'
     no_groups:
-      show_all: Du har ikke nogen seneste debatter da du ikke er medlem af nogen grupper.
       show_muted: Du har ikke nogen debatter uden notifikationer da du ikke er medlem af nogen grupper.
     no_threads:
       show_all: Du har ikke nogen seneste debatter.
@@ -1019,6 +1017,7 @@ da:
     start_new_poll: Ny måling
   auth_form:
     email_placeholder: you@example.com
+    name_placeholder: Dit navn
     name: Navn
     email: Email
   install_slack:

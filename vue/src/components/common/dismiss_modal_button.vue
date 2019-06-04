@@ -1,7 +1,8 @@
 <script lang="coffee">
+import EventBus from '@/shared/services/event_bus'
 export default
-  props:
-    close: Function
+  methods:
+    close: -> EventBus.$emit('closeModal')
 </script>
 
 <template lang="pug">

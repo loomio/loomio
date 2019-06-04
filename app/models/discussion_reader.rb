@@ -82,6 +82,10 @@ class DiscussionReader < ApplicationRecord
     self.read_ranges_string = RangeSet.serialize(ranges)
   end
 
+  def first_unread_sequence_id
+    Array(unread_ranges.first).first.to_i
+  end
+  
   # maybe yagni, because the client should do this locally
   def unread_ranges
     RangeSet.subtract_ranges(discussion.ranges, read_ranges)
@@ -99,6 +103,10 @@ class DiscussionReader < ApplicationRecord
 
   def read_items_count
     RangeSet.length(read_ranges)
+  end
+
+  def unread_items_count
+    RangeSet.length(unread_ranges)
   end
 
   private

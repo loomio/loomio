@@ -14,37 +14,51 @@ export default
   mixins: [urlFor]
   data: ->
     group: null
+
   created: ->
-    Records.groups.findOrFetch(@$route.params.key, {}, true).then (group) =>
-      @init(group)
-    , (error) ->
-      EventBus.$emit 'pageError', error
+    @init()
+    EventBus.$on 'signedIn', => @init()
+
+  watch:
+    '$route': 'init'
+
   methods:
-    init: (group) ->
-      @group = group
-      subscribeTo(@group)
-      Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
+    groupKey: ->
+      @$route.params.handle || @$route.params.key
 
-      maxDiscussions = if AbilityService.canViewPrivateContent(@group)
-        @group.discussionsCount
-      else
-        @group.publicDiscussionsCount
-      @pageWindow = PaginationService.windowFor
-        current:  parseInt(@$route.params.from or 0)
-        min:      0
-        max:      maxDiscussions
-        pageType: 'groupThreads'
+    init: ->
+      Records.groups.findOrFetch(@groupKey()).then (group) =>
+        @group = group
 
-      EventBus.$emit 'currentComponent',
-        title: @group.fullName
-        page: 'groupPage'
-        group: @group
-        key: @group.key
-        links:
-          canonical:   LmoUrlService.group(@group, {}, absolute: true)
-          rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
-          prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
-          next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
+        # Records.groups.findOrFetch(@groupKey(), {}, true).then (group) => @group = group
+
+        subscribeTo(@group)
+        Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
+
+        maxDiscussions = if AbilityService.canViewPrivateContent(@group)
+          @group.discussionsCount
+        else
+          @group.publicDiscussionsCount
+
+        @pageWindow = PaginationService.windowFor
+          current:  parseInt(@$route.params.from or 0)
+          min:      0
+          max:      maxDiscussions
+          pageType: 'groupThreads'
+
+        EventBus.$emit 'currentComponent',
+          title: @group.fullName
+          page: 'groupPage'
+          group: @group
+          key: @group.key
+          links:
+            canonical:   LmoUrlService.group(@group, {}, absolute: true)
+            rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
+            prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
+            next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
+      , (error) ->
+        EventBus.$emit 'pageError', error
+
 
 </script>
 
@@ -74,8 +88,8 @@ v-container.lmo-main-container.group-page(grid-list-lg)
             membership-card(:group='group', :pending='true')
           v-flex
             subgroups-card(:group='group')
-          //- v-flex
-          //-   document-card(:group='group')
+          v-flex
+            document-card(:group='group')
           v-flex
             poll-common-index-card(:model='group', :limit='5', :view-more-link='true')
             // <outlet name="after-slack-card" model="group"></outlet>

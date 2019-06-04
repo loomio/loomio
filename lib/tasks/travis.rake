@@ -28,7 +28,7 @@ namespace :travis do
     system("wget http://localhost:3000/")
     # ok now start running the tests
     puts "Starting to run vue nightwatch..."
-    system("cd vue && npm run test:e2e")
+    system("cd vue && npm run build && npm run test:e2e:standalone")
     raise "e2e failed!" unless $?.exitstatus == 0
   end
 
@@ -49,6 +49,7 @@ namespace :travis do
     puts "Uploading failure screenshots..."
     date = `date "+%Y%m%d%H%M%S"`.chomp
     system("s3uploader -r us-east-1 -k $ARTIFACTS_KEY -s $ARTIFACTS_SECRET -d #{date} client/angular/test/screenshots $ARTIFACTS_BUCKET")
+    system("s3uploader -r us-east-1 -k $ARTIFACTS_KEY -s $ARTIFACTS_SECRET -d #{date} vue/tests/e2e/reports $ARTIFACTS_BUCKET")
     puts "Screenshots uploaded to https://s3.console.aws.amazon.com/s3/buckets/loomio-protractor-screenshots/#{date}"
     puts "Uploading test coverage results..."
     system("./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT")

@@ -1,26 +1,14 @@
-- title ||= t(:'meta_tags.default_title')
-- description ||= t(:'meta_tags.default_description')
-- twitter_creator ||= "@Loomio"
+- @metadata ||= {}
+- title = @metadata[:title]
+- description = @metadata[:description]
+- image_urls = @metadata[:image_urls] || []
 
-%meta{ name: 'description', content: description }
-
-%meta{ name: 'twitter:card', content: 'summary'}
-%meta{ name: 'twitter:creator', content: twitter_creator }
-%meta{ name: 'twitter:title', content: title }
-%meta{ name: 'twitter:description', content: description }
-
-%meta{ property: 'og:title', content: title }
-%meta{ property: 'og:description', content: description }
-%meta{ property: 'og:type', content: 'website' }
-%meta{ property: 'og:site_name', content: AppConfig.theme[:site_name]}
-%meta{ property: 'og:image:type', content: 'image/png' }
-%meta{ property: 'og:image:width', content: '1200' }
-%meta{ property: 'og:image:height', content: '1200' }
-%meta{ property: 'og:url', content: request.original_url }
-%meta{ property: 'fb:app_id', content:ENV['FB_APP_ID_META']}
-
-%meta{property:'og:locale', content: I18n.locale}
-- supported_locales.each do |locale|
-  %meta{property:'og:locale:alternate', content: locale}
-
-%link{href: 'https://plus.google.com/116342080294548871960/', rel: 'publisher'}
+<title>#{@metadata[:title]}</title>
+<meta property="og:url" content="#{request.original_url}" />
+<meta property="og:title" content="#{title}" />
+<meta property="og:description" name="description" content="#{description}" />
+- image_urls.each do |image_url|
+  <meta property="og:image" content="#{image_url}" />
+<meta property="og:site_name" content="#{AppConfig.theme[:site_name]}" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="#{ENV['FB_APP_ID_META']}" />

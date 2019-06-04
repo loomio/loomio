@@ -51,10 +51,18 @@ export default class DiscussionModel extends BaseModel
     @hasMany 'versions', sortBy: 'createdAt'
     @belongsTo 'group'
     @belongsTo 'author', from: 'users'
-    @belongsTo 'createdEvent', from: 'events'
-    @belongsTo 'forkedEvent', from: 'events'
+    # @belongsTo 'createdEvent', from: 'events'
+    # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
+
+  createdEvent: ->
+    res = @recordStore.events.find(kind: 'new_discussion', eventableId: @id)
+    res[0] unless _.isEmpty(res)
+
+  forkedEvent: ->
+    res = @recordStore.events.find(kind: 'discussion_forked', eventableId: @id)
+    res[0] unless _.isEmpty(res)
 
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Discussion")

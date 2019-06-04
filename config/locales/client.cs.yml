@@ -506,7 +506,6 @@ cs:
     help_translate: "Pomozte nám překládat Loomio"
   change_password_form:
     set_password: Nastavení hesla
-    change_password: Změna hesla
     password_changed: Vaše heslo bylo aktualizováno
   deactivation_modal:
     aria_label: 'Deaktivovat účet'
@@ -734,6 +733,7 @@ cs:
     email_not_found: "Je nám líto, nenašli jsme účet s touto e-mailovou adresou"
     email_placeholder: vy@priklad.cz
     login_link_helptext_with_password: "Zadejte své heslo nebo se přihlaste e-mailem."
+    name_placeholder: Vaše jméno
     name_required: Zadejte prosím jméno
     welcome_back: Vítejte zpět, {{name}}!
     login_link: Přihlaste se prostřednictvím e-mailu

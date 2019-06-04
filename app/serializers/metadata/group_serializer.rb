@@ -1,7 +1,7 @@
 require 'redcarpet/render_strip'
 
 class Metadata::GroupSerializer < ActiveModel::Serializer
-  attributes :title, :description, :image_url
+  attributes :title, :description, :image_urls
   root false
 
   def title
@@ -9,10 +9,12 @@ class Metadata::GroupSerializer < ActiveModel::Serializer
   end
 
   def description
-    Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(object.description.to_s)
+    if object.is_visible_to_public?
+      Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(object.description.to_s)
+    end
   end
 
-  def image_url
-    object.logo.url
+  def image_urls
+    [object.group.cover_photo.url, object.group.logo.url]
   end
 end

@@ -7,6 +7,7 @@
 import Records       from '@/shared/services/records'
 import ModalService  from '@/shared/services/modal_service'
 import LmoUrlService from '@/shared/services/lmo_url_service'
+import EventBus      from '@/shared/services/event_bus'
 
 import { applyDiscussionStartSequence } from '@/shared/helpers/apply'
 import { listenForLoading }             from '@/shared/helpers/listen'
@@ -19,10 +20,10 @@ export default
     @init()
   methods:
     init: ->
-      # $rootScope.$broadcast('currentComponent', { page: 'startDiscussionPage', skipScroll: true })
+      EventBus.$emit 'currentComponent', { page: 'startDiscussionPage', skipScroll: true }
       @discussion = Records.discussions.build
-        title:       @$route.params.title
-        groupId:     parseInt(@$route.params.group_id)
+        title:       @$route.query.title
+        groupId:     parseInt(@$route.query.group_id)
 
       # listenForLoading $scope
 

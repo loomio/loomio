@@ -2,8 +2,11 @@
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
+import {flatten, capitalize, includes} from 'lodash'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
+  mixins: [WatchRecords]
   props:
     model: Object
     showEdit: Boolean
@@ -13,11 +16,19 @@ export default
     placeholder: String
 
   data: ->
-    documents: Records.documents.newAndPersistedDocumentsFor(@model).data()
+    documents: []
 
   created: ->
     unless @model.isNew() or @skipFetch
       Records.documents.fetchByModel(@model)
+    @watchRecords
+      collections: ['documents']
+      query: (store) =>
+        @documents = store.documents.collection.chain().find(
+          modelId: {$in: flatten([@model.id, @model.newDocumentIds])}
+          modelType: capitalize(@model.constructor.singular)).
+          where((doc) => !includes @model.removedDocumentIds, doc.id).
+          simplesort('createdAt', true).data()
 
   methods:
     edit: (doc, $mdMenu) ->

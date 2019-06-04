@@ -17,6 +17,9 @@ zh_TW:
     deleted_user: "已刪除的使用者"
     placeholder_name: "已邀請的使用者 (%{hostname})"
     error:
+      sign_in_required_html: |
+          您必須登入以繼續。
+          請<a href="/dashboard">登入</a>然後重新載入此頁面以繼續。
       recaptcha: "我們無法確認您是不是機器人。請再試一次！"
       bad_login: "抱歉，這個密碼與我們的檔案上的不一樣"
       username_must_be_alphanumeric: "使用者名稱只能為小寫字母與數字"

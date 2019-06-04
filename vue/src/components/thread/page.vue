@@ -1,3 +1,108 @@
+<script lang="coffee">
+import LmoUrlService     from '@/shared/services/lmo_url_service'
+import Session           from '@/shared/services/session'
+import Records           from '@/shared/services/records'
+import RecordLoader      from '@/shared/services/record_loader'
+import EventBus          from '@/shared/services/event_bus'
+import AbilityService    from '@/shared/services/ability_service'
+import PaginationService from '@/shared/services/pagination_service'
+import WatchRecords from '@/mixins/watch_records'
+
+import { scrollTo }         from '@/shared/helpers/layout'
+import { registerKeyEvent } from '@/shared/helpers/keyboard'
+
+export default
+  mixins: [WatchRecords]
+  data: ->
+    discussion: null
+    activePolls: []
+    requestedSequenceId: 0
+    loader: null
+
+  created: -> @init()
+
+  watch:
+    $route: 'init'
+
+  methods:
+    init: ->
+      Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
+        @discussion = discussion
+
+      @requestedSequenceId = parseInt(@$route.params.sequence_id)
+      @requestedCommentId = parseInt(@$route.params.comment_id)
+
+      @loader = new RecordLoader
+        collection: 'events'
+        params:
+          discussion_id: @$route.params.key
+          from: @requestedSequenceId
+          comment_id: @requestedCommentId
+          order: 'sequence_id'
+          per: @per
+
+      @loader.fetchRecords().then =>
+        Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
+          @discussion = discussion
+
+          if @requestedCommentId
+            @discussion.requestedSequenceId = Records.events.find(
+              discussionId: discussion.id
+              kind: 'new_comment'
+              eventableId: @requestedCommentId
+              ).sequenceId
+
+          if @requestedSequenceId
+            @discussion.requestedSequenceId = @requestedSequenceId
+
+          @discussion.markAsSeen()
+
+          # Records.documents.fetchByDiscussion(@discussion)
+
+          @watchRecords
+            key: @discussion.id
+            collections: ["polls"]
+            query: (records) =>
+              @activePolls = @discussion.activePolls()
+
+          if @discussion.forkedEvent()
+            Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true)
+
+          EventBus.$emit 'currentComponent',
+            title: @discussion.title
+            page: 'threadPage'
+            group: @discussion.group()
+            discussion: @discussion
+
+      , (error) ->
+        EventBus.$emit 'pageError', error
+</script>
+
+<template lang="pug">
+v-container.lmo-main-container.thread-page(grid-list-lg)
+  loading(v-if='!discussion')
+  div(v-if='discussion')
+    group-theme(:group='discussion.group()', :compact='true')
+    discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
+    //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")
+    v-layout
+      v-flex(md8)
+        thread-card(:loader='loader' :discussion='discussion')
+      v-flex(md4)
+        v-layout(column)
+          // <outlet name="before-thread-page-column-right" model="discussion" class="before-column-right lmo-column-right"></outlet>
+          v-flex(v-for="poll in activePolls", :key="poll.id")
+            poll-common-card(:poll="poll")
+          v-flex
+            decision-tools-card(:discussion='discussion')
+          v-flex
+            membership-card(:group='discussion.guestGroup()')
+          v-flex
+            membership-card(:group='discussion.guestGroup()', :pending='true')
+          v-flex
+            poll-common-index-card(:model='discussion')
+          // <outlet name="thread-page-column-right" class="after-column-right lmo-column-right"></outlet>
+</template>
 <style lang="scss">
 @import 'variables';
 @import 'boxes';
@@ -101,110 +206,3 @@
   .after-column-right      { order: 90; }
 }
 </style>
-
-<script lang="coffee">
-import LmoUrlService     from '@/shared/services/lmo_url_service'
-import Session           from '@/shared/services/session'
-import Records           from '@/shared/services/records'
-import EventBus          from '@/shared/services/event_bus'
-import AbilityService    from '@/shared/services/ability_service'
-import PaginationService from '@/shared/services/pagination_service'
-
-import { scrollTo }         from '@/shared/helpers/layout'
-import { registerKeyEvent } from '@/shared/helpers/keyboard'
-
-import _isEmpty     from 'lodash/isEmpty'
-
-export default
-  data: ->
-    discussion: {}
-  created: ->
-    # EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }
-    if @requestedCommentId
-      Records.events.fetch
-        path: 'comment'
-        params:
-          discussion_id: @$route.params.key
-          comment_id: requestedCommentId()
-      .then =>
-        comment = Records.comments.find(requestedCommentId())
-        @discussion = comment.discussion()
-        @discussion.requestedSequenceId = comment.createdEvent().sequenceId
-        # EventBus.broadcast $scope, 'initActivityCard'
-
-    Records.discussions.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
-      EventBus.broadcast $rootScope, 'pageError', error
-
-    # EventBus.listen $scope, 'threadPageScrollToSelector', (e, selector) =>
-    #   scrollTo selector, offset: 150
-
-    # registerKeyEvent $scope, 'pressedUpArrow', checkInView
-    # registerKeyEvent $scope, 'pressedDownArrow', checkInView
-  methods:
-    # checkInView = ->
-    #   angular.element(window).triggerHandler('checkInView')
-    init: (discussion) ->
-      if discussion and _isEmpty @discussion?
-        @discussion = discussion
-        @discussion.markAsSeen()
-        @discussion.requestedSequenceId = @chompRequestedSequenceId
-
-        Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true) if @discussion.forkedEvent()
-        Records.documents.fetchByDiscussion(@discussion)
-
-        # @pageWindow = PaginationService.windowFor
-        #   current:  @discussion.requestedSequenceId || @discussion.firstSequenceId()
-        #   min:      @discussion.firstSequenceId()
-        #   max:      @discussion.lastSequenceId()
-        #   pageType: 'activityItems'
-
-        EventBus.$emit 'currentComponent',
-          title: @discussion.title
-          page: 'threadPage'
-          group: @discussion.group()
-          discussion: @discussion
-          # links:
-          #   canonical:   LmoUrlService.discussion(@discussion, {}, absolute: true)
-          #   rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private
-          #   prev:        LmoUrlService.discussion(@discussion, from: @pageWindow.prev) if @pageWindow.prev?
-          #   next:        LmoUrlService.discussion(@discussion, from: @pageWindow.next) if @pageWindow.next?
-          # skipScroll: true
-  computed:
-    requestedCommentId: ->
-      parseInt(@$route.params.comment)
-
-    chompRequestedSequenceId: ->
-      requestedSequenceId = parseInt(@$route.params.sequence_id)
-      # LmoUrlService.params('from', null)
-      requestedSequenceId
-
-    isEmptyDiscussion: ->
-      _isEmpty @discussion
-
-</script>
-
-<template lang="pug">
-v-container.lmo-main-container.thread-page(grid-list-lg)
-  loading(v-if='!discussion')
-  div(v-if='!isEmptyDiscussion')
-    group-theme(:group='discussion.group()', :compact='true')
-    discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
-    //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")
-    v-layout
-      v-flex(md8)
-        thread-card(:discussion='discussion')
-      v-flex(md4)
-        v-layout(column)
-          // <outlet name="before-thread-page-column-right" model="discussion" class="before-column-right lmo-column-right"></outlet>
-          v-flex(v-for="poll in discussion.activePolls()", :key="poll.id")
-            poll-common-card(:poll="poll")
-          v-flex
-            decision-tools-card(:discussion='discussion')
-          v-flex
-            membership-card(:group='discussion.guestGroup()')
-          v-flex
-            membership-card(:group='discussion.guestGroup()', :pending='true')
-          v-flex
-            poll-common-index-card(:model='discussion')
-          // <outlet name="thread-page-column-right" class="after-column-right lmo-column-right"></outlet>
-</template>

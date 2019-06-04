@@ -9,16 +9,21 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import Flash   from '@/shared/services/flash'
 import urlFor         from '@/mixins/url_for'
 import exactDate      from '@/mixins/exact_date'
+import DiscussionModalMixin from '@/mixins/discussion_modal'
 
-import { listenForTranslations, listenForReactions } from '@/shared/helpers/listen'
+import { listenForTranslations } from '@/shared/helpers/listen'
 import { scrollTo }                                  from '@/shared/helpers/layout'
 
 export default
-  mixins: [urlFor, exactDate]
+  mixins: [urlFor, exactDate, DiscussionModalMixin]
   props:
     discussion: Object
-  created: ->
-    @actions = [
+
+  mounted: ->
+    listenForTranslations(@)
+
+  data: ->
+    actions: [
       name: 'react'
       canPerform: => AbilityService.canAddComment(@discussion)
     ,
@@ -50,12 +55,8 @@ export default
       name: 'edit_thread'
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canEditThread(@discussion)
-      perform:    => ModalService.open 'DiscussionEditModal', discussion: => @discussion
+      perform:    => @openEditDiscussionModal(@discussion)
     ]
-
-  # mounted: ->
-    # listenForTranslations(@)
-    # listenForReactions(@, @discussion)
 
   computed:
     status: ->
@@ -81,7 +82,7 @@ v-card-text.context-panel
         span(v-if='!discussion.translation') {{discussion.title}}
         span(v-if='discussion.translation')
           translation(:model='discussion', field='title')
-    // <context_panel_dropdown discussion="discussion"></context_panel_dropdown>
+    context-panel-dropdown(:discussion="discussion")
   v-layout.context-panel__details(align-center)
     user-avatar.lmo-margin-right(:user='discussion.author()', size='medium')
     span
@@ -111,9 +112,8 @@ v-card-text.context-panel
   document-list(:model='discussion', :skip-fetch='true')
   attachment-list(:attachments="discussion.attachments")
   .lmo-md-actions
-    // <reactions_display model="discussion" load="true" class="context-panel__actions-left"></reactions_display>
+    reaction-display.context-panel__actions-left(:model="discussion" :load="true")
     action-dock(:model='discussion', :actions='actions')
-
 </template>
 <style lang="scss">
 @import 'variables';

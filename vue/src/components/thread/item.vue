@@ -7,9 +7,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 
 import { submitForm } from '@/shared/helpers/form'
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
-
-import _includes from 'lodash/includes'
-import _camelCase from 'lodash/camelCase'
+import { includes, camelCase } from 'lodash'
 
 import NewComment from '@/components/thread/item/new_comment.vue'
 import PollCreated from '@/components/thread/item/poll_created.vue'
@@ -29,35 +27,51 @@ export default
     PollCreated: PollCreated
     StanceCreated: StanceCreated
     OutcomeCreated: OutcomeCreated
+
   props:
     event: Object
     eventWindow: Object
+
   data: ->
     isDisabled: false
     showCommentForm: false
     parentComment: null
 
-  watch:
-    showCommentForm: (a,b) ->
-      console.log "showCommentForm", a, b
   methods:
+    viewed: (viewed) ->
+      @event.markAsRead() if viewed
+
     hasComponent: ->
-      _includes(threadItemComponents, _camelCase(@event.kind))
+      includes(threadItemComponents, camelCase(@event.kind))
 
-    debug: -> window.Loomio.debug
-
-    canRemoveEvent: -> AbilityService.canRemoveEventFromThread(@event)
+    debug: ->
+      window.Loomio.debug
 
     removeEvent: -> submitForm @, @event,
       submitFn: @event.removeFromThread
       flashSuccess: 'thread_item.event_removed'
 
+    camelCase: camelCase
+
+    handleReplyButtonClicked: (obj) ->
+      console.log "reply button clicked", @event
+      @parentComment = obj.eventable
+      @showCommentForm = true
+
+    handleCommentSubmitted: ->
+      @showCommentForm = false
+
+  computed:
     mdColors: ->
       obj = {'border-color': 'primary-500'}
       obj['background-color'] = 'accent-50' if @isFocused
       obj
 
-    isFocused: -> @eventWindow.discussion.requestedSequenceId == @event.sequenceId
+    isFocused: ->
+      @eventWindow.discussion.requestedSequenceId == @event.sequenceId
+
+    canRemoveEvent: ->
+      AbilityService.canRemoveEventFromThread(@event)
 
     indent: ->
       @event.isNested() && @eventWindow.useNesting
@@ -76,23 +90,16 @@ export default
     link: ->
       LmoUrlService.event @event
 
-    camelCase: (str) ->
-      _camelCase(str)
+    unreadColor: ->
+      @$vuetify.theme.primary
 
-    handleReplyButtonClicked: (obj) ->
-      console.log "reply button clicked", @event
-      @parentComment = obj.eventable
-      @showCommentForm = true
-
-    handleCommentSubmitted: ->
-      @showCommentForm = false
 
 </script>
 
 <template lang="pug">
 div
-  .thread-item(md-colors='mdColors()', :class="{'thread-item--indent': indent(), 'thread-item--unread': isUnread()}", in-view='$inview&&event.markAsRead()', in-view-options='{throttle: 200}')
-    .lmo-flex.lmo-relative.lmo-action-dock-wrapper.lmo-flex--row(:id="'sequence-' + event.sequenceId")
+  .thread-item(md-colors='mdColors', :class="{'thread-item--unread': isUnread}" :style="{'border-color': unreadColor}" v-observe-visibility="{callback: viewed, once: true}")
+    .lmo-flex.lmo-relative.lmo-action-dock-wrapper.lmo-flex--row(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
       .lmo-disabled-form(v-show='isDisabled')
       .thread-item__avatar.lmo-margin-right
         user-avatar(v-if='!event.isForkable() && event.actor()', :user='event.actor()', size='medium')
@@ -101,16 +108,14 @@ div
         .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between
           h3.thread-item__title(:id="'event-' + event.id")
             div(v-if='debug()')
-              | id: {{event.id}}cpid: {{event.comment().parentId}}pid: {{event.parentId}}sid: {{event.sequenceId}}position: {{event.position}}depth: {{event.depth}}unread: {{isUnread()}}cc: {{event.childCount}}
-            span(v-html='headline()')
-            |
-            |
+              | id: {{event.id}}cpid: {{event.model().parentId}}pid: {{event.parentId}}sid: {{event.sequenceId}}position: {{event.position}}depth: {{event.depth}}unread: {{isUnread()}}cc: {{event.childCount}}
+            span(v-html='headline')
+            | &nbsp;
             span(aria-hidden='true') ·
-            |
-            |
-            router-link.thread-item__link.lmo-pointer(:to='link()')
+            | &nbsp;
+            router-link.thread-item__link.lmo-pointer(:to='link')
               time-ago.timeago--inline(:date='event.createdAt')
-          button.md-button--tiny(v-if='canRemoveEvent()', @click='removeEvent()')
+          button.md-button--tiny(v-if='canRemoveEvent', @click='removeEvent()')
             i.mdi.mdi-delete
         component(v-if='hasComponent()' :is='camelCase(event.kind)' @reply-button-clicked="handleReplyButtonClicked" :event='event', :eventable='event.model()')
     comment-form(v-if="showCommentForm" @comment-submitted="handleCommentSubmitted" :parentComment="parentComment" :discussion="eventWindow.discussion")
@@ -186,7 +191,7 @@ div
   text-decoration: underline;
 }
 
-.thread-item__link abbr span {
+.thread-item__link abbr {
   font-weight: normal;
   color: $grey-on-white;
 }

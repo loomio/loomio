@@ -41,7 +41,7 @@ export default
 </script>
 
 <template lang="pug">
-v-list.decision-tools-card__poll-types
+v-list.decision-tools-card__poll-types(two-line)
   v-list-tile.decision-tools-card__poll-type(:class="'decision-tools-card__poll-type--' + pollType", @click='openPollModal(pollType)', v-for='(pollType, index) in pollTypes()', :key='index', :aria-label='getAriaLabelForPollType(pollType)')
     v-list-tile-avatar
       v-icon {{callFieldFromTemplate(pollType, 'material_icon')}}

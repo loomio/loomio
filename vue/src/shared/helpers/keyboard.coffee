@@ -15,7 +15,7 @@ export registerKeyEvent = (scope, eventCode, execute, shouldExecute) ->
 export registerHotkeys = (scope, hotkeys) ->
   _.each hotkeys, (execute, key) =>
     registerKeyEvent scope, key, execute, (event) ->
-      defaultShouldExecute(event) and !AppConfig.currentModal and AbilityService.isLoggedIn()
+      defaultShouldExecute(event) and !AppConfig.currentModal and Session.isSignedIn()
 
 export submitOnEnter = (scope, opts = {}) ->
   registerKeyEvent scope, 'pressedEnter', scope[opts.submitFn or 'submit'], (active, event) =>

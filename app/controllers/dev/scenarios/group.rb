@@ -20,8 +20,9 @@ module Dev::Scenarios::Group
 
   def setup_group_with_handle
     sign_in patrick
-    create_group.update_attributes(name: 'Ghostbusters', handle: 'ghostbusters')
-    redirect_to "http://ghostbusters.lvh.me:3000/"
+    group = create_group
+    group.update_attributes(name: 'Ghostbusters', handle: 'ghostbusters')
+    redirect_to group_url(group)
   end
 
   def setup_group_with_pending_invitations

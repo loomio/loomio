@@ -95,3 +95,5 @@ mk:
   poll_count_options:
     'yes': 'Да'
     'no': 'Не'
+  auth_form:
+    name_placeholder: Твоето име

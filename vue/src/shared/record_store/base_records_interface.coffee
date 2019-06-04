@@ -38,11 +38,6 @@ export default class BaseRecordsInterface
     @collection.insert(record)
     record
 
-  view: (name, fn) ->
-    if !@views[name]
-      fn(@views[name] = @collection.addDynamicView(name))
-    @views[name]
-
   fetch: (args) ->
     @remote.fetch(args)
 

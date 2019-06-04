@@ -26,3 +26,12 @@ export default
                       props: {
                         group: Records.groups.build(parentId: group.id)
                       })
+
+    openMembershipRequestModal: (group) ->
+      EventBus.$emit('openModal',
+                      component: 'MembershipRequestForm',
+                      props: {
+                        group: group
+                      })
+    closeModal: ->
+      EventBus.$emit('closeModal')

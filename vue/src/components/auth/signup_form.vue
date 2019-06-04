@@ -2,9 +2,13 @@
 import EventBus    from '@/shared/services/event_bus'
 import AuthService from '@/shared/services/auth_service'
 import AppConfig from '@/shared/services/app_config'
+import Session from '@/shared/services/session'
+import AuthModalMixin from '@/mixins/auth_modal'
+import Flash from '@/shared/services/flash'
 import { hardReload } from '@/shared/helpers/window'
 
 export default
+  mixins: [AuthModalMixin]
   props:
     user: Object
   data: ->
@@ -18,9 +22,13 @@ export default
 
     submitForm: (recaptcha) ->
       @user.recaptcha = recaptcha
+      onSuccess = (data) =>
+        Session.apply(data)
+        @closeModal()
+        Flash.success('auth_form.signed_in')
       if AuthService.validSignup(@vars, @user)
         # EventBus.emit $scope, 'processing'
-        AuthService.signUp(@user, hardReload).finally ->
+        AuthService.signUp(@user, onSuccess).finally ->
           # EventBus.emit $scope, 'doneProcessing'
   computed:
     recaptchaKey: -> AppConfig.recaptchaKey
@@ -47,12 +55,12 @@ div
     .md-block.auth-signup-form__name
       label(v-t="'auth_form.name'")
       v-text-field.lmo-primary-form-input(type='text', md-autofocus='true', :placeholder="$t('auth_form.name_placeholder')" v-model='vars.name', required='true')
-      //- validation_errors(subject='user', field='name')
+      validation-errors(:subject='user', field='name')
     .auth-signup-form__consent(v-if='termsUrl')
       v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted')
         template(v-slot:label)
           span(v-html="$t('auth_form.i_accept', { termsUrl: termsUrl, privacyUrl: privacyUrl })")
-      //- validation_errors(subject='user', field='legalAccepted')
+      validation-errors(:subject='user', field='legalAccepted')
     v-btn.md-primary.md-raised.auth-signup-form__submit(:disabled='!vars.name || (termsUrl && !vars.legalAccepted)', v-t="'auth_form.create_account'", @click='submit()')
     div(vc-recaptcha='true', size='invisible', key='recaptchaKey', v-if='useRecaptcha', on-success='submitForm(response)')
 </template>

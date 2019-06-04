@@ -1,5 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
+import {isNumber, compact, map} from 'lodash'
 
 export default class AnnouncementModel extends BaseModel
   @singular: 'announcement'
@@ -13,8 +14,9 @@ export default class AnnouncementModel extends BaseModel
     announcement:
       kind: @kind
       recipients:
-        user_ids: _.compact _.map @recipients, (r) -> r.id    if     r.id
-        emails:   _.compact _.map @recipients, (r) -> r.email unless r.id
+        user_ids: compact map @recipients, (r) -> r.id    if isNumber(r.id)
+        emails:   compact map @recipients, (r) -> r.email if r.email
+
 
   modelName: ->
     @model.constructor.singular

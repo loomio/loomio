@@ -29,3 +29,11 @@ export default
                           forkedEventIds: discussion.forkedEventIds
                       }
                       titleKey: 'group_form.new_organization')
+
+    openEditDiscussionModal: (discussion) ->
+      EventBus.$emit('openModal',
+                      component: 'DiscussionForm',
+                      props: {
+                        discussion: discussion.clone()
+                      }
+                      titleKey: 'group_form.new_organization')

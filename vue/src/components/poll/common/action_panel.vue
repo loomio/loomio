@@ -6,31 +6,36 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import { myLastStanceFor } from '@/shared/helpers/poll'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
+  mixins: [WatchRecords]
+  
   props:
     poll: Object
 
   data: ->
-    stance: @getLastStance()
+    stance: @lastStanceOrNew()
+    newStance: Records.stances.build(
+      pollId:    @poll.id,
+      userId:    AppConfig.currentUserId
+    ).choose(@$route.params.poll_option_id)
+    userHasVoted: false
 
   created: ->
-    EventBus.$on 'refreshStance', @refreshStance
-
-  computed:
-    userHasVoted: ->
-      myLastStanceFor(@poll)?
-    userCanParticipate: ->
-      AbilityService.canParticipateInPoll(@poll)
+    @watchRecords
+      collections: ["stances"]
+      query: (records) =>
+        @stance = @lastStanceOrNew()
+        @userHasVoted = !@stance.isNew()
 
   methods:
-    refreshStance: -> @stance = @getLastStance()
-    getLastStance: ->
-      myLastStanceFor(@poll) or
-                      Records.stances.build(
-                        pollId:    @poll.id,
-                        userId:    AppConfig.currentUserId
-                      ).choose(@$route.params.poll_option_id)
+    lastStanceOrNew: ->
+      myLastStanceFor(@poll) || @newStance
+
+  computed:
+    userCanParticipate: ->
+      AbilityService.canParticipateInPoll(@poll)
 
 </script>
 

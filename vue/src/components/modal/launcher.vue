@@ -10,6 +10,13 @@ import PollCommonEditVoteModal from '@/components/poll/common/edit_vote_modal'
 import PollCommonEditModal from '@/components/poll/common/edit_modal'
 import ContactRequestForm from '@/components/contact/request_form'
 import AuthModal from '@/components/auth/modal'
+import MembershipRequestForm from '@/components/group/membership_request_form'
+import MembershipModal from '@/components/group/membership_modal'
+import ChangePasswordForm from '@/components/profile/change_password_form'
+import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
+import PollCommonCloseModal from '@/components/poll/common/close_modal'
+import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
+import AnnouncementForm from '@/components/announcement/form'
 
 export default
   components:
@@ -23,6 +30,13 @@ export default
     'PollCommonEditModal': PollCommonEditModal
     'ContactRequestForm': ContactRequestForm
     'AuthModal': AuthModal
+    'MembershipRequestForm': MembershipRequestForm
+    'MembershipModal': MembershipModal
+    'ChangePasswordForm': ChangePasswordForm
+    'PollCommonOutcomeModal': PollCommonOutcomeModal
+    'PollCommonCloseModal': PollCommonCloseModal
+    'PollCommonReopenModal': PollCommonReopenModal
+    'AnnouncementForm': AnnouncementForm
   data: ->
     isOpen: false
     componentName: ""
@@ -34,16 +48,19 @@ export default
 
   methods:
     openModal: (opts) ->
-      console.log 'openModal', opts
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
     closeModal: -> @isOpen = false
+    componentKey: ->
+      date = new Date()
+      date.getTime()
+
 
 </script>
 
 <template lang="pug">
 v-dialog(v-model="isOpen" max-width="600px")
-  component(:is="componentName" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
+  component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
 
 </template>

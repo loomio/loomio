@@ -41,6 +41,8 @@ sortFn =
     -(stance.pollOption().priority)
 
 export default
+  components:
+    PollCommonDirective: -> import('@/components/poll/common/directive')
   props:
     poll: Object
   data: ->
@@ -72,19 +74,15 @@ export default
       @loader.fetchRecords()
 </script>
 
-<template>
-    <div class="poll-common-votes-panel">
-      <div class="poll-common-votes-panel__header">
-        <h3 v-t="'poll_common.votes'" class="lmo-card-subheading"></h3>
-        <select v-model="fix.votesOrder" @change="changeOrder()" aria-label="$t('poll_common_votes_panel.change_results_order')" class="md-no-underline">
-          <option v-for="opt in sortOptions" :value="opt" v-t="'poll_common_votes_panel.' + opt"></option>
-        </select>
-      </div>
-      <div v-if="!hasSomeVotes()" v-t="'poll_common_votes_panel.no_votes_yet'" class="poll-common-votes-panel__no-votes"></div>
-      <div v-if="hasSomeVotes()" class="poll-common-votes-panel__has-votes">
-        <poll-common-directive :stance="stance" name="votes-panel-stance" v-for="stance in stances()" :key="stance.id"></poll-common-directive>
-        <button v-if="moreToLoad()" v-t="'common.action.load_more'" @click="loader.loadMore()"></button>
-      </div>
-      <poll-common-undecided-panel :poll="poll"></poll-common-undecided-panel>
-    </div>
+<template lang="pug">
+  .poll-common-votes-panel
+    .poll-common-votes-panel__header
+      h3.lmo-card-subheading(v-t="'poll_common.votes'")
+      select.md-no-underline(v-model='fix.votesOrder', @change='changeOrder()', aria-label="$t('poll_common_votes_panel.change_results_order')")
+        option(v-for='opt in sortOptions', :value='opt', v-t="'poll_common_votes_panel.' + opt")
+    .poll-common-votes-panel__no-votes(v-if='!hasSomeVotes()', v-t="'poll_common_votes_panel.no_votes_yet'")
+    .poll-common-votes-panel__has-votes(v-if='hasSomeVotes()')
+      poll-common-directive(:stance='stance', name='votes-panel-stance', v-for='stance in stances()', :key='stance.id')
+      button(v-if='moreToLoad()', v-t="'common.action.load_more'", @click='loader.loadMore()')
+    poll-common-undecided-panel(:poll='poll')
 </template>

@@ -2,17 +2,17 @@ const components = require('./src/components.js')
 
 module.exports = {
   chainWebpack: config => {
-          config
-          .plugin('VuetifyLoaderPlugin')
-          .tap(args => {
-              return [{
-                  match (originalTag, { kebabTag, camelTag, path, component }) {
-                    if (components[camelTag]) {
-                      return [camelTag, `import ${camelTag} from '@/components/${components[camelTag]}.vue'`]
-                    }
-                  }
-              }]
-          })
+    config
+    .plugin('VuetifyLoaderPlugin')
+    .tap(args => {
+        return [{
+            match (originalTag, { kebabTag, camelTag, path, component }) {
+              if (components[camelTag]) {
+                return [camelTag, `import ${camelTag} from '@/components/${components[camelTag]}.vue'`]
+              }
+            }
+        }]
+    })
   },
   configureWebpack: {
     entry: {
@@ -23,12 +23,8 @@ module.exports = {
   assetsDir: '../../client/vue',
   devServer: {
    proxy: {
-     '/api': {target: 'http://localhost:3000'},
-     '/dev': {target: 'http://localhost:3000'},
-     '/login_tokens': {target: 'http://localhost:3000'},
-     '/theme': {target: 'http://localhost:3000'},
-     '/fonts': {target: 'http://localhost:3000'},
-     '/img': {target: 'http://localhost:3000'}
+     '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system)': {target: 'http://localhost:3000'},
+     '^/(cable)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
    }
   },
   css: {

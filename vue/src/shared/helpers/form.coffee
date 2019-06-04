@@ -105,7 +105,7 @@ upload = (scope, model, options) ->
 
 submit = (scope, model, options = {}) ->
   # fetch draft from server and listen for changes to it
-  # if model.hasDrafts and model.isNew() and AbilityService.isLoggedIn()
+  # if model.hasDrafts and model.isNew() and Session.isSignedIn()
   #   model.fetchAndRestoreDraft()
   #   EventBus.watch scope, model.draftFields, model.planDraftFetch, true
 
@@ -147,11 +147,10 @@ progress = (scope) ->
 success = (scope, model, options) ->
   (data) ->
     # Flash.dismiss()
+    options.successCallback(data) if typeof options.successCallback is 'function'
     if options.flashSuccess?
       flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
       Flash.success flashKey, calculateFlashOptions(options.flashOptions)
-    scope.$close()                if !options.skipClose? and typeof scope.$close is 'function'
-    options.successCallback(data) if typeof options.successCallback is 'function'
 
 failure = (scope, model, options) ->
   (response) ->

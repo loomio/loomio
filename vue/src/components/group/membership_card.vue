@@ -4,9 +4,10 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import fromNow        from '@/mixins/from_now'
+import AnnouncementModalMixin from '@/mixins/announcement_modal'
 
 export default
-  mixins: [fromNow]
+  mixins: [fromNow, AnnouncementModalMixin]
   props:
     group: Object
     pending: Boolean
@@ -76,8 +77,7 @@ export default
         @group.activeMemberships()
 
     invite: ->
-      ModalService.open 'AnnouncementModal', announcement: =>
-        Records.announcements.buildFromModel(@group.targetModel())
+      @openAnnouncementModal(Records.announcements.buildFromModel(@group.targetModel()))
 
     fetchMemberships: ->
       return unless !_.isEmpty @fragment
@@ -92,25 +92,44 @@ export default
   computed:
     pollType: ->
       @$t(@group.targetModel().pollTypeKey()) if @group.targetModel().isA('poll')
+  watch:
+    fragment: ->
+      @fetchMemberships()
 </script>
 
 <template lang="pug">
 v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pending': pending}")
-  v-layout(justify-space-between)
-    v-subheader(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }', v-if='!searchOpen')
-    v-btn(icon)
-      v-icon mdi-magnify
-  v-list(two-line)
-    plus-button.membership-card__membership.membership-card__invite(v-if='canAddMembers()', :click='invite', :message="'membership_card.invite_to_' + group.targetModel().constructor.singular")
+  v-list(two-line avatar)
+    v-list-tile(v-if="!searchOpen")
+      v-list-tile-content
+        span.grey--text(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }')
+      v-list-tile-action
+        v-btn.membership-card__search-button(icon @click="toggleSearch()")
+          v-icon mdi-magnify
+
+    v-list-tile(v-if="searchOpen")
+      v-text-field.membership-card__filter(autofocus v-model="fragment" :placeholder="$t('memberships_page.fragment_placeholder')")
+        template(slot="append")
+          v-btn(icon @click="toggleSearch()")
+            v-icon mdi-close
+
+    v-list-tile.membership-card__membership.membership-card__invite(v-if='!searchOpen && canAddMembers()', @click="invite()")
+      v-list-tile-avatar
+        v-avatar(:size='40')
+          v-icon(color="primary") mdi-plus
+      v-list-tile-content
+        v-list-tile-title(v-t="'membership_card.invite_to_' + group.targetModel().constructor.singular")
+
     v-list-tile(v-for='membership in orderedMemberships()', :key='membership.id', data-username='membership.user().username')
       v-list-tile-avatar
-        user-avatar.lmo-margin-right(:user='membership.user()', size='medium', :coordinator='membership.admin', :no-link='!membership.acceptedAt')
+        user-avatar(:user='membership.user()', size='forty', :coordinator='membership.admin', :no-link='!membership.acceptedAt')
       v-list-tile-content
         v-list-tile-title {{membership.userName() || membership.user().email }}
         v-list-tile-sub-title.membership-card__last-seen
           span(v-if='membership.user().lastSeenAt', v-t="{ path: 'user_page.online_field', args: { value: fromNow(membership.user().lastSeenAt) } }")
           span(v-if='!membership.acceptedAt', v-t="{ path: 'user_page.invited', args: { value: fromNow(membership.user().createdAt) } }")
-      // <membership_dropdown membership="membership"></membership_dropdown>
+      v-list-tile-action
+        membership-dropdown(:membership="membership")
     loading(v-if='loader.loading')
   v-card-actions(v-if='showLoadMore()')
     v-btn(flat color="accent", v-if='showLoadMore()', @click='loader.loadMore()', v-t="'common.action.load_more'")

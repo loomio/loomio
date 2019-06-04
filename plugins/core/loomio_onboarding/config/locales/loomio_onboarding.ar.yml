@@ -1,7 +1,18 @@
 ar:
   loomio_onboarding:
+    group_progress_card:
+      title: قم بتنشيط فريقك
+      activities:
+        set_logo: قم باختيار شعار لفريقك
+        set_cover_photo: اختر صورة كغلاف لفريقك
+        invite_people_in: قم بدعوة أشخاص
     user_progress_card:
+      title: قم بإعداد ملفك الشخصي
       activities:
         enter_name: ادخل اسمك
+        set_profile_picture: قم بإعداد صورتك
+        set_bio: قم بكتابة وصف مُختصَر
         join_group: انضم إلى فريق
         make_decision: صوّت على قرار
+      celebration_message: إنّ ملفك الشخصي جاهز!
+      dismiss: إلغاء

@@ -1,9 +1,9 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import DiscussionModel      from '@/shared/models/discussion_model'
-
+import {includes} from 'lodash'
 export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel
-
+  
   search: (groupKey, fragment, options = {}) ->
     options.group_id = groupKey
     options.q = fragment

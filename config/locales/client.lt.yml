@@ -1,5 +1,8 @@
 lt:
   loomio_tags:
+    tags: Žymės
+    apply_tags: Taikyti žymes
+    new_tag: Sukurti žymę
     color_label: Spalva
     modal_title: Sukurti naują žymę
     modal_edit_title: Taisyti žymę
@@ -46,6 +49,8 @@ lt:
     learn_more: Sužinoti daugiau
     not_found: Nerastas
     time_zone: Laiko zona
+    local_time: Vietinis laikas
+    attachments: Priedai
     confirm_discard_changes: Atmesti jūsų pakeitimus?
     time:
       am: am
@@ -98,7 +103,9 @@ lt:
       new_thread: "Nauja gija"
       add_subgroup: 'Pridėti pogrupį'
       loading: 'Įkeliama'
+      load_more: 'Įkelti daugiau'
       ok: Gerai
+      apply: Taikyti
   error_page:
     forbidden: 'Jūs neturite leidimo tai padaryti.'
     internal_server_error: 'Atleiskite, bet įvyko kažkokia klaida. Prašome bandyti dar kartą.'
@@ -123,6 +130,7 @@ lt:
     delete_comment: 'Ištrinti komentarą'
     cancel_reply: 'Atsisakyti atsakymo'
     confirm_delete_message: 'Ar jūs tikrai norite ištrinti šį komentarą?'
+    confirm_delete: 'Ištrinti komentarą'
     submit_button:
       label: 'Išsiųsti'
     private_privacy_notice: 'Jūsų komentaras bus matomas tik {{groupName}} grupės nariams.'
@@ -149,6 +157,8 @@ lt:
     title_placeholder: 'Kokia tema diskutuosite?'
     context_label: 'Kontekstas'
     privacy_label: 'Privatumas'
+  action_dock:
+    delete_comment: Ištrinti komentarą
   join_group_button:
     messages:
       joined_group: 'Dabar jūs esate {{group}} grupės narys'
@@ -160,7 +170,6 @@ lt:
     messages:
       privacy:
         members: 'Dabar ši grupė yra matoma tik nariams'
-        parent_members: 'Dabar ši grupė yra matoma tik jūsų organizacijos nariams'
         public: 'Dabar ši grupė yra matoma viešai'
     group_logo: 'Grupės logotipas'
     discussions_placeholder: 'Gija - tai vieta, kurioje visi gali diskutuoti tam tikra tema ir kartu priiminėti sprendimus.'
@@ -184,7 +193,11 @@ lt:
     members_can_edit_comments: 'Nariai gali bet kuriuo metu redaguoti savo komentarus.'
     submit_update: 'Atnaujinti nustatymus'
   documents_page:
+    title: Priedai
     confirm_remove_title: Šalinti priedą
+  document:
+    list:
+      title: Priedai
   group_previous_proposals_card:
     heading: Ankstesni pasiūlymai
   invitation_form:
@@ -287,6 +300,8 @@ lt:
     meeting_title: Laiko apklausa
   poll_common:
     save_changes: Įrašyti
+  poll_common_attachment_form:
+    label: Priedai
   poll_common_form:
     closed: Uždarytas
   poll_count_options:

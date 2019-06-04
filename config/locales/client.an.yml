@@ -112,3 +112,5 @@ an:
   poll_count_options:
     'yes': 'Sí'
     'no': 'No'
+  auth_form:
+    name_placeholder: O tuyo nombre

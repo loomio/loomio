@@ -232,7 +232,6 @@ ko:
     messages:
       privacy:
         members: '이 그룹은 회원들에게만 보입니다.'
-        parent_members: '이 그룹은 당신 조직의 회원에게만 보입니다.'
         public: '이 그룹은 이제 누구나 볼 수 있습니다.'
       leave_group_success: '이 그룹을 떠났습니다.'
       archive_group_success: '이 그룹은 현재 사용할수 없습니다.'
@@ -461,7 +460,6 @@ ko:
   dashboard_page:
     aria_label: '대시보드'
     no_groups:
-      show_all: 당신은 가입된 그룹이 없기 때문에 최근 모둠이 없습니다.
       show_muted: 가입된 그룹이 없기 때문에 대기중인 모둠이 없습니다.
     no_threads:
       show_all: 최근 주제가 없습니다.
@@ -606,3 +604,5 @@ ko:
   poll_count_options:
     'yes': '네'
     'no': '아니요'
+  auth_form:
+    name_placeholder: 이름

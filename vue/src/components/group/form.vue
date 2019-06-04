@@ -6,8 +6,10 @@ import { scrollTo }            from '@/shared/helpers/layout'
 import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import { submitOnEnter }       from '@/shared/helpers/keyboard'
+import GroupModalMixin from '@/mixins/group_modal'
 
 export default
+  mixins: [GroupModalMixin]
   props:
     group: Object
     close: Function
@@ -18,10 +20,10 @@ export default
         !!value || 'Required.'
     }
     submit: null
+    isExpanded: false
   mounted: ->
     @featureNames = AppConfig.features.group
     @submit = submitForm @, @group,
-      skipClose: true
       prepareFn: =>
         allowPublic = @group.allowPublicThreads
         @group.discussionPrivacyOptions = switch @group.groupPrivacy
@@ -35,9 +37,14 @@ export default
           when 'secret' then false
       confirmFn: (model)          => @$t groupPrivacyConfirm(model)
       flashSuccess:               => "group_form.messages.group_#{@actionName}"
+      successCallback: (data) =>
+        @isExpanded = false
+        groupKey = data.groups[0].key
+        @closeModal()
+        @$router.push("/g/#{groupKey}")
   methods:
     expandForm: ->
-      Vue.set(@group, 'expanded', true) # probably a bad idea
+      @isExpanded = true
       scrollTo '.group-form__permissions', container: '.group-modal md-dialog-content'
 
     privacyStringFor: (privacy) ->
@@ -78,8 +85,9 @@ v-card.group-form
         h1.headline(v-if='!group.isNew()', v-t="'group_form.edit_group_heading'")
       dismiss-modal-button(:close='close')
   v-card-text
-    v-text-field(v-model='group.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255', :label="$t('group_form.group_name')")
-    lmo-textarea(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')")
+    v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255', :label="$t('group_form.group_name')")
+    lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="'group_form.description_placeholder'")
+    validation-errors(:subject="group", field="name")
     .group-form__privacy-statement.lmo-hint-text {{privacyStatement}}
     section.group-form__section.group-form__privacy
       h3.lmo-h3(v-t="'group_form.privacy'")
@@ -89,10 +97,10 @@ v-card.group-form
             .group-form__privacy-title
               strong(v-t="'common.privacy.' + privacy")
             .group-form__privacy-subtitle {{ privacyStringFor(privacy) }}
-    .group-form__advanced(v-show='group.expanded')
+    .group-form__advanced(v-if='isExpanded')
       section.group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
         h3.lmo-h3(v-t="'group_form.how_do_people_join'")
-        v-radio-group(ng-model='group.membershipGrantedUpon')
+        v-radio-group(v-model='group.membershipGrantedUpon')
           v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
             template(slot='label')
               span(v-t="'group_form.membership_granted_upon_' + granted")
@@ -113,7 +121,7 @@ v-card.group-form
         .group-form__feature(v-for='name in featureNames', :key='name')
           // <md-checkbox id="{{name}}" ng-model="group.features[name]" class="md-checkbox--with-summary"><span for="{{name}}" translate="group_features.{{name}}"></span></md-checkbox>
   v-card-actions
-    v-btn.group-form__advanced-link(flat color="accent", v-if='!group.expanded', @click='expandForm()', v-t="'group_form.advanced_settings'")
+    v-btn.group-form__advanced-link(flat color="accent", v-if='!isExpanded', @click='expandForm()', v-t="'group_form.advanced_settings'")
     v-btn.group-form__submit-button(flat color="primary", @click='submit()')
       span(v-if='group.isNew() && group.isParent()', v-t="'group_form.submit_start_group'")
       span(v-if='group.isNew() && !group.isParent()', v-t="'group_form.submit_start_subgroup'")

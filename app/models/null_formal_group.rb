@@ -5,6 +5,14 @@ class NullFormalGroup
     apply_null_methods!
   end
 
+  def cover_photo
+    FormalGroup.new.cover_photo
+  end
+
+  def logo
+    FormalGroup.new.logo
+  end
+
   def parent_or_self
     self
   end

@@ -15,13 +15,15 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
+import ChangePasswordModalMixin from '@/mixins/change_password_modal'
 
 import { submitForm }   from '@/shared/helpers/form'
 import { hardReload }   from '@/shared/helpers/window'
 
 export default
   mixins: [
-    ConfirmModalMixin
+    ConfirmModalMixin,
+    ChangePasswordModalMixin
   ]
   data: ->
     isDisabled: false
@@ -30,6 +32,7 @@ export default
     @init()
     EventBus.$emit 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}
     EventBus.$on 'updateProfile', => @init()
+    EventBus.$on 'signedIn', => @init()
   computed:
     showHelpTranslate: ->
       AppConfig.features.app.help_link
@@ -40,7 +43,9 @@ export default
         title: 'deactivate_user_form.title'
         submit: 'deactivation_modal.submit'
         fragment: 'deactivate_user'
-      submit: => Promise.resolve @openConfirmModal(@reallyDeactivateUserConfirmOpts)
+      submit: -> Promise.resolve console.log 'submit'
+      successCallback: =>
+        Promise.resolve @openConfirmModal(@reallyDeactivateUserConfirmOpts)
     deleteUserConfirmOpts: ->
       text:
         title: 'delete_user_modal.title'
@@ -56,10 +61,10 @@ export default
         title:    'deactivate_user_form.title'
         submit:   'deactivate_user_form.submit'
         fragment: 'deactivate_user_confirmation'
-      successCallback: hardReload
+      successCallback: -> Session.signOut()
   methods:
     init: ->
-      # return unless AbilityService.isLoggedIn()
+      # return unless Session.isSignedIn()
       @user = Session.user().clone()
       Session.updateLocale(@user.locale)
       @submit = submitForm @, @user,
@@ -71,7 +76,7 @@ export default
       ModalService.open 'ChangePictureForm'
 
     changePassword: ->
-      ModalService.open 'ChangePasswordForm'
+      @openChangePasswordModal(@user)
 
     openDeleteUserModal: ->
       @isDeleteUserModalOpen = true
@@ -107,7 +112,7 @@ export default
           validation-errors(:subject='user', field='email')
         .md-block
           label(for='user-short-bio-field', translate='profile_page.short_bio_label')
-          lmo-textarea(:model='user' field="shortBio" :placeholder="$t('profile_page.short_bio_placeholder')")
+          lmo-textarea(:model='user' field="shortBio" :placeholder="'profile_page.short_bio_placeholder'")
           validation-errors(:subject='user', field='shortBio')
         .md-block
           label(for='user-location-field', v-t="'profile_page.location_label'")

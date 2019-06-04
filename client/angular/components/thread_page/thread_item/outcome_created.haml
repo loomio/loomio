@@ -1,5 +1,5 @@
 .outcome-created
-  %p.thread-item__body.lmo-markdown-wrapper{ng-if: "!eventable.translation", marked: "eventable.statement"}
+  %p.thread-item__body.lmo-markdown-wrapper{ng-if: "!eventable.translation", richtext: "eventable.statement", format: "eventable.statementFormat"}
   %translation.thread-item__body{ng-if: "eventable.translation", model: "eventable", field: "statement"}
 
   .lmo-md-actions

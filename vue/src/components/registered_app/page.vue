@@ -37,12 +37,12 @@ export default
   created: ->
     @setApplication Records.oauthApplications.find parseInt(@$route.params.id)
     Records.oauthApplications.findOrFetchById(parseInt(@$route.params.id)).then @setApplication, (error) ->
-      # EventBus.broadcast $rootScope, 'pageError', error
+      EventBus.$emit 'pageError', error
   methods:
     setApplication: (application) ->
       if application and isEmptyApplication?
         @application = application
-        # EventBus.broadcast $rootScope, 'currentComponent', { title: application.name, page: 'oauthApplicationPage'}
+        EventBus.$emit 'currentComponent', { title: application.name, page: 'oauthApplicationPage'}
 
     copied: ->
       Flash.success('common.copied')

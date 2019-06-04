@@ -248,9 +248,6 @@ eo:
     help_translate: "Helpu nin traduki Loomion!"
   change_picture_form:
     title: 'Ŝanĝi bildon'
-  change_password_form:
-    change_password_title: Ŝanĝi vian pasvorton
-    change_password: Ŝanĝi pasvorton
   email_settings_page:
     edit: Redakti
   dashboard_page:
@@ -404,6 +401,7 @@ eo:
     sign_in: Registriĝi
     sign_in_as: Registriĝi kiel {{name}}
     more_providers: Pli
+    name_placeholder: Via nomo
     name_required: Bonvolu entajpi nomon.
     hello: "Saluton, {{name}}!"
     create_account: Krei konton

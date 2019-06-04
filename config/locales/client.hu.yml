@@ -525,6 +525,8 @@ hu:
   polls_page:
     heading: Döntések
     start_new_poll: Új döntés
+  auth_form:
+    name_placeholder: Neved
   install_slack:
     progress:
       invite: Meghív

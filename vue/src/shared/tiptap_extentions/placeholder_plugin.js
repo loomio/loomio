@@ -17,7 +17,6 @@ export const placeholderPlugin = new Plugin({
       set = set.map(tr.mapping, tr.doc)
       // See if the transaction adds or removes any placeholders
       let action = tr.getMeta(this)
-      debugger
       if (action && action.add) {
         let widget = document.createElement("placeholder")
         let deco = Decoration.widget(action.add.pos, widget, {id: action.add.id})

@@ -1,6 +1,6 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import GroupModel           from '@/shared/models/group_model'
-
+import {uniq, concat, compact, map, includes} from 'lodash'
 export default class GroupRecordsInterface extends BaseRecordsInterface
   model: GroupModel
 

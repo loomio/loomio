@@ -419,6 +419,8 @@ sv:
   polls_page:
     heading: Beslut
     start_new_poll: Nytt beslut
+  auth_form:
+    name_placeholder: Ditt namn
   install_slack:
     progress:
       invite: Bjud in
