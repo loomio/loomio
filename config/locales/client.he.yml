@@ -159,6 +159,8 @@ he:
     formatting_help:
       label: 'פורמט'
       title: 'למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך'
+  emoji_picker:
+    search: חיפוש
   ordinal:
     _1: ראשון
     _2: שני
@@ -1169,9 +1171,6 @@ he:
     messages:
       app_update: 'גרסה חדשה של האפליקציה זמינה לעדכון'
       reload: 'טען מחדש'
-  emoji_picker:
-    search: "בחר אימוג'י"
-    no_emojis_found: "ללא נמצאו אימוג'ים ל-'{{term}}'!"
   authorized_apps_page:
     title: אפליקציות מורשות
     no_applications: "לא נתת הרשאה לאף אפליקציית צד שלישי עוד."

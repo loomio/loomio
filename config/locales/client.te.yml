@@ -47,6 +47,8 @@ te:
       delete: తొలగించు
       send: పంపించు
       invite: ఆహ్నానించు
+  emoji_picker:
+    search: వెతుకు
   sign_up_form:
     password_label: 'సంకేతపదం:'
     password_confirmation_label: 'అదే సంకేతపదం మరోసారి:'

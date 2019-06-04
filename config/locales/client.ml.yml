@@ -15,6 +15,8 @@ ml:
       like: 'ഇഷ്ടപെടുക'
       unlike: 'ഇഷ്ടം തിരിച്ചെടുക്കുക'
       cancel: 'റദ്ദുചെയ്യുക'
+  emoji_picker:
+    search: തിരയുക
   error_page:
     forbidden: 'നിങ്ങള്‍ക്ക് ഇതു ചെയ്യാനുള്ള അനുമതിയില്ല'
   comment_form:

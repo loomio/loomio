@@ -15,6 +15,8 @@ id:
       like: 'Suka'
       unlike: 'Tidak sukai'
       cancel: 'Batal'
+  emoji_picker:
+    search: Cari
   error_page:
     forbidden: 'Anda tidak dapat melakukan hal ini.'
   comment_form:

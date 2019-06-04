@@ -104,6 +104,8 @@ da:
       invite: Inviter
     formatting_help:
       label: 'Formatering'
+  emoji_picker:
+    search: Søg
   devise:
     failure:
       inactive: 'Der er en deaktiveret konto tilknyttet til denne emailadresse. Hvis du ønsker at aktivere din konto, kontakt os.'
@@ -758,8 +760,6 @@ da:
   global:
     messages:
       reload: 'Genopfrisk'
-  emoji_picker:
-    no_emojis_found: "Kunne ikke finde emoji for '{{term}}'!"
   authorized_apps_page:
     title: Godkendte apps
     no_applications: "Du har ikke godkendt nogle 3parts apps endnu."

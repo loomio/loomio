@@ -134,6 +134,8 @@ nb_NO:
     formatting_help:
       label: 'Formatering'
       title: 'Lær hvordan du kan bruke Markdown for å formatere teksten din'
+  emoji_picker:
+    search: Søk
   ordinal:
     _1: '1.'
     _2: '2.'

@@ -56,6 +56,8 @@ ko:
       upload: '업로드'
       uploading: '업로딩중...'
       ok: OK
+  emoji_picker:
+    search: 검색
   devise:
     failure:
       inactive: '이 이메일 주소와 연결된 비활성화된 계정이 있습니다. 당신의 계정을 재활성화시키려면, 우리에게 연락하십시요.'

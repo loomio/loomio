@@ -110,6 +110,8 @@ cs:
       resent: Pozvánka přeposlána
     formatting_help:
       label: 'Formátování'
+  emoji_picker:
+    search: Vyhledávat
   ordinal:
     _1: První
     _2: Druhý

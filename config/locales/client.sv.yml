@@ -137,6 +137,8 @@ sv:
     formatting_help:
       label: 'Utformning'
       title: 'Lär dig hur du använder Märkspråk för att formatera din text'
+  emoji_picker:
+    search: Sök
   ordinal:
     _1: 1:a
     _2: 2:a

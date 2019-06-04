@@ -20,6 +20,8 @@ an:
       like: 'Me fa goyo'
       unlike: 'Ya no me fa goyo'
       cancel: 'Cancelar'
+  emoji_picker:
+    search: Buscar
   error_page:
     forbidden: 'No tiens permisos ta fer isto.'
   inbox:

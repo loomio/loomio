@@ -14,6 +14,8 @@ km:
       like: 'ចូលចិត្ត'
       unlike: 'មិនចូលចិត្ត'
       cancel: 'លុបចោល'
+  emoji_picker:
+    search: ស្វែងរក
   error_page:
     forbidden: 'អ្នកមិនត្រូវបានអនុញ្ញាតឲ្យធ្វើវានោះទេ'
   comment_form:

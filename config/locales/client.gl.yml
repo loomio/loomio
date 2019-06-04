@@ -20,6 +20,8 @@ gl:
       like: 'Gústame'
       unlike: 'Desgustar'
       cancel: 'Cancelar'
+  emoji_picker:
+    search: Buscar
   error_page:
     forbidden: 'Non tes permisos para facer iso.'
   inbox:
