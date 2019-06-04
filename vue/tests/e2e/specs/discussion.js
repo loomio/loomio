@@ -46,8 +46,6 @@ module.exports = {
     page.expectNoText('.discussions-card', 'This thread is old and closed')
     page.expectText('.discussions-card', 'What star sign are you?')
 
-    // TODO: GK: the thread query service needs an overhaul
-
     page.click('.thread-preview')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--close')
@@ -120,20 +118,6 @@ module.exports = {
     page.click('.context-panel-dropdown__option--unmute')
     page.expectFlash('Thread unmuted')
   },
-
-  // 'lets you move a thread': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_multiple_discussions')
-  //   page.click('.context-panel-dropdown__button')
-  //   page.click('.context-panel-dropdown__option--move')
-  //   page.click('.move-thread-form__group-dropdown')
-  //   page.click('.md-select-menu-container.md-active md-option')
-  //   page.click('.move-thread-form__submit')
-  //   page.expectFlash('Thread has been moved to Point Break')
-  //   page.expectText('.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes')
-  //   page.expectText('.group-theme__name--compact','Point Break')
-  // },
 
   'marks_a_discussion_as_seen': (test) => {
     page = pageHelper(test)
@@ -385,5 +369,20 @@ module.exports = {
     page.expectText('.context-panel__heading', 'Forked thread')
     page.expectText('.context-panel__fork-details', 'What star sign are you?')
     page.expectText('.thread-item__body', 'This is totally on topic!', 8000)
-  }
+  },
+
+  'can_move_a_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_multiple_discussions')
+    page.click('.context-panel-dropdown__button')
+    page.click('.context-panel-dropdown__option--move')
+    page.click('.move-thread-form__group-dropdown')
+    page.expectText('.v-menu__content', 'Point Break')
+    page.click('.v-menu__content')
+    page.click('.move-thread-form__submit')
+    page.expectFlash('Thread has been moved to Point Break')
+    page.expectText('.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes')
+    page.expectText('.group-theme__name--compact','Point Break')
+  },
 }
