@@ -14,7 +14,7 @@ export default
 
   computed:
     actor: ->
-      @membershipRequestActor() || @notification.actor()
+      @notification.actor() || @membershipRequestActor()
 
     contentFor: ->
       @$t("notifications.#{@notification.kind}", @notification.translationValues)
@@ -22,7 +22,7 @@ export default
 </script>
 
 <template lang="pug">
-v-list-tile.notification(:to="notification.url", :class="{'lmo-active': !notification.viewed}")
+v-list-tile.notification(:to="'/'+notification.url", :class="{'lmo-active': !notification.viewed}")
   v-list-tile-avatar
     user-avatar(v-if="actor", :user="actor", size="forty")
     //- .thread-item__proposal-icon{ng-if: "!actor()"}

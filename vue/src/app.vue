@@ -9,7 +9,7 @@ export default
   mixins: [AuthModalMixin]
   data: ->
     pageError: null
-    
+
   mounted: ->
     @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
     EventBus.$on('currentComponent', @setCurrentComponent)
@@ -21,6 +21,7 @@ export default
 
   methods:
     setCurrentComponent: (options) ->
+      @pageError = null
       title = _.truncate(options.title or @$t(options.titleKey), {length: 300})
       document.querySelector('title').text = _.compact([title, AppConfig.theme.site_name]).join(' | ')
 

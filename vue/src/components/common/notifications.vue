@@ -1,31 +1,27 @@
 <script lang="coffee">
 import Records   from '@/shared/services/records'
 import AppConfig from '@/shared/services/app_config'
+import WatchRecords from '@/mixins/watch_records'
 
 export default
+  mixins: [WatchRecords]
   created: ->
-    @notificationsView = Records.notifications.collection.addDynamicView("notifications")
-                               .applyFind(kind: { $in: AppConfig.notifications.kinds })
-
-    @unreadView =        Records.notifications.collection.addDynamicView("unread")
-                               .applyFind(kind: { $in: AppConfig.notifications.kinds })
-                               .applyFind(viewed: { $ne: true })
-  computed:
-    notifications: -> @notificationsView.data()
-    count: -> @notificationsView.data().length
-    unreadCount: -> @unreadView.data().length
-    hasUnread: -> @unreadCount > 0
+    @watchRecords
+      collections: ['notifications']
+      query: (store) =>
+        @notifications = store.notifications.find(kind: {$in: AppConfig.notifications.kinds})
+        @unread = store.notifications.find(kind: {$in: AppConfig.notifications.kinds}, viewed: { $ne: true })
+        @unreadCount = @unread.length
 
 </script>
 <template lang="pug">
 v-menu.notifications(offset-y lazy)
   v-btn.notifications__button(icon slot="activator", :aria-label="$t('navbar.notifications')")
-    v-icon(v-if="!hasUnread") mdi-bell
-    v-icon(v-if="hasUnread") mdi-bell-ring
-    span.badge.notifications__activity(v-if="hasUnread") {{unreadCount}}
+    v-icon(v-if="!unread.length") mdi-bell
+    v-icon(v-if="unread.length") mdi-bell-ring
+    span.badge.notifications__activity(v-if="unread.length") {{unread.length}}
   v-list.notifications__dropdown(avatar)
-    div(v-for="notification in notifications", :key="notification.id")
-      notification(:notification="notification")
+    notification(:notification="notification" v-for="notification in notifications", :key="notification.id")
     div(v-if="notifications.length == 0" v-t="'notifications.no_notifications'")
 
 </template>
