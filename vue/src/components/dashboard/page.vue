@@ -25,7 +25,7 @@ export default
       older: []
     loader: {}
 
-  created: ->
+  mounted: ->
     @init()
     EventBus.$on 'signedIn', => @init()
 
@@ -73,7 +73,7 @@ export default
       if @filter == 'show_muted'
         'dashboard_page.filtering.muted'
       else
-      'dashboard_page.filtering.all'
+        'dashboard_page.filtering.all'
 
     viewNames: -> keys(@views)
     loadingViewNames: -> take @viewNames, 3
@@ -88,9 +88,9 @@ export default
 
 <template lang="pug">
 v-container.lmo-main-container.dashboard-page
-  h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'")
-  //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'" v-show="filter == 'hide_muted'")
-  //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
+  //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'")
+  h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'" v-show="filter == 'hide_muted'")
+  h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
   v-card.mb-3(v-if='!dashboardLoaded', v-for='(viewName, index) in loadingViewNames', :key='index', :class="'dashboard-page__loading dashboard-page__' + viewName", aria-hidden='true')
     v-list(two-line)
       v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
@@ -100,7 +100,7 @@ v-container.lmo-main-container.dashboard-page
       p(v-t="'dashboard_page.no_groups.show_all'", v-if='noGroups')
       .dashboard-page__no-threads(v-if='!noGroups')
         span(v-show="filter == 'show_all'", v-t="'dashboard_page.no_threads.show_all'")
-        p(v-t="'dashboard_page.no_threads.show_all'")
+        //- p(v-t="'dashboard_page.no_threads.show_all'")
         span(v-show="filter == 'show_muted' && userHasMuted", v-t="'dashboard_page.no_threads.show_muted'")
         router-link(to='/dashboard', v-show="filter != 'show_all' && userHasMuted")
           span(v-t="'dashboard_page.view_recent'")

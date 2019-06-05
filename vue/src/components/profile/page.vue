@@ -86,45 +86,47 @@ export default
 
 </script>
 <template lang="pug">
-.loading-wrapper
+v-container.profile-page
   loading(v-if='!user')
-  main.profile-page(v-if='user')
-    h1.lmo-h1-medium(v-t="'profile_page.profile'")
-    .profile-page-card
+  div(v-if='user')
+    v-card
       //- .lmo-disabled-form(v-show='isDisabled')
-      h3.lmo-h3(v-t="'profile_page.edit_profile'")
-      .profile-page__profile-fieldset
-        user-avatar(:user='user', size='featured')
-        v-btn.md-accent.md-button--no-h-margin.profile-page__change-picture(@click='changePicture()', v-t="'profile_page.change_picture_link'")
-      .profile-page__profile-fieldset
-        .md-block
-          label(for='user-name-field', translate='profile_page.name_label')
-          input#user-name-field.profile-page__name-input(required='ng-required', v-model='user.name')
-          validation-errors(:subject='user', field='name')
-        .md-block
-          label(for='user-username-field', translate='profile_page.username_label')
-          input#user-username-field.profile-page__username-input(required='ng-required', v-model='user.username')
-          .md-caption(v-t="'profile_page.username_helptext'")
-          validation-errors(:subject='user', field='username')
-        .md-block
-          label(for='user-email-field', translate='profile_page.email_label')
-          input#user-email-field.profile-page__email-input(required='ng-required', v-model='user.email')
-          validation-errors(:subject='user', field='email')
-        .md-block
-          label(for='user-short-bio-field', translate='profile_page.short_bio_label')
-          lmo-textarea(:model='user' field="shortBio" :placeholder="'profile_page.short_bio_placeholder'")
-          validation-errors(:subject='user', field='shortBio')
-        .md-block
-          label(for='user-location-field', v-t="'profile_page.location_label'")
-          input#user-location-field.profile-page__location-input(v-model='user.location', :placeholder="$t('profile_page.location_placeholder')")
-        .md-block
-          label(for='user-locale-field', translate='profile_page.locale_label')
-            //- <md-select v-model="user.selectedLocale" required="true" class="profile-page__language-input" id="user-locale-field">
-            //- <md-option ng-repeat="locale in availableLocales" ng-value="locale.key">{{locale.name}}</md-option>
-            //- </md-select>
-          validation-errors(:subject='user', field='selectedLocale')
-        p(v-if='showHelpTranslate')
-          router-link.md-caption(v-t="'profile_page.help_translate'", to='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation', target='_blank')
+      v-card-title
+        h1.headline(v-t="'profile_page.edit_profile'")
+      v-card-content
+        v-layout
+          v-flex.profile-page__details
+            .md-block
+              label(for='user-name-field', translate='profile_page.name_label')
+              input#user-name-field.profile-page__name-input(required='ng-required', v-model='user.name')
+              validation-errors(:subject='user', field='name')
+            .md-block
+              label(for='user-username-field', translate='profile_page.username_label')
+              input#user-username-field.profile-page__username-input(required='ng-required', v-model='user.username')
+              .md-caption(v-t="'profile_page.username_helptext'")
+              validation-errors(:subject='user', field='username')
+            .md-block
+              label(for='user-email-field', translate='profile_page.email_label')
+              input#user-email-field.profile-page__email-input(required='ng-required', v-model='user.email')
+              validation-errors(:subject='user', field='email')
+            .md-block
+              label(for='user-short-bio-field', translate='profile_page.short_bio_label')
+              lmo-textarea(:model='user' field="shortBio" :placeholder="'profile_page.short_bio_placeholder'")
+              validation-errors(:subject='user', field='shortBio')
+            .md-block
+              label(for='user-location-field', v-t="'profile_page.location_label'")
+              input#user-location-field.profile-page__location-input(v-model='user.location', :placeholder="$t('profile_page.location_placeholder')")
+            .md-block
+              label(for='user-locale-field', translate='profile_page.locale_label')
+                //- <md-select v-model="user.selectedLocale" required="true" class="profile-page__language-input" id="user-locale-field">
+                //- <md-option ng-repeat="locale in availableLocales" ng-value="locale.key">{{locale.name}}</md-option>
+                //- </md-select>
+              validation-errors(:subject='user', field='selectedLocale')
+            p(v-if='showHelpTranslate')
+              router-link.md-caption(v-t="'profile_page.help_translate'", to='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation', target='_blank')
+          v-flex.profile-page__avatar
+            user-avatar(:user='user', size='featured')
+            v-btn.md-accent.md-button--no-h-margin.profile-page__change-picture(@click='changePicture()', v-t="'profile_page.change_picture_link'")
       .profile-page__update-account.lmo-flex.lmo-flex__space-between
         v-btn.md-accent.profile-page__change-password(@click='changePassword()', v-t="'profile_page.change_password_link'")
         v-btn.md-primary.md-raised.profile-page__update-button(@click='submit()', :disabled='isDisabled', v-t="'profile_page.update_profile'")

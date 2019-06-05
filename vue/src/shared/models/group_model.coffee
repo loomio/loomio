@@ -159,11 +159,11 @@ export default class GroupModel extends BaseModel
     else
       AppConfig.theme.icon_src
 
-  coverUrl: (size) ->
+  coverUrl: (size = 'large') ->
     if @isSubgroup() && !@hasCustomCover
       @parent().coverUrl(size)
     else
-      @coverUrls[size] || @coverUrls.small
+      @coverUrls[size]
 
   archive: =>
     @remote.patchMember(@key, 'archive').then =>

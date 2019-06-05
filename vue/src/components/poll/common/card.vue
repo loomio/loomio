@@ -28,7 +28,7 @@ export default
   data: ->
     buttonPressed: false
     myLastStance: null
-    
+
   computed:
     showResults: ->
       @buttonPressed || @myLastStance || @poll.isClosed()
@@ -40,18 +40,20 @@ v-card
   //- loading(v-if='!poll.complete')
   //- .lmo-blank(v-if='poll.complete')
   poll-common-card-header.px-4(:poll='poll')
+
+  v-card-title
+    h1.poll-common-card__title.headline
+      span(v-if='!poll.translation') {{poll.title}}
+      translation(v-if="poll.translation" :model='poll', :field='title')
   v-card-text
     poll-common-set-outcome-panel(:poll='poll')
-    h1.poll-common-card__title(v-if='!poll.translation') {{poll.title}}
-    h3.lmo-h1.poll-common-card__title(v-if='poll.translation')
-      translation(:model='poll', :field='title')
     poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')
     poll-common-details-panel(:poll='poll')
     .poll-common-card__results-shown(v-if='showResults')
       poll-common-directive(:poll='poll', name='chart-panel')
       poll-common-add-option-button(:poll='poll')
       poll-common-percent-voted(:poll='poll')
-  poll-common-action-panel(:poll='poll')
-  .poll-common-card__results-shown(v-if='showResults')
-    poll-common-votes-panel(:poll='poll')
+    poll-common-action-panel(:poll='poll')
+    .poll-common-card__results-shown(v-if='showResults')
+      poll-common-votes-panel(:poll='poll')
 </template>

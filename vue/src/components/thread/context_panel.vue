@@ -13,6 +13,7 @@ import DiscussionModalMixin from '@/mixins/discussion_modal'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
 import { scrollTo }                                  from '@/shared/helpers/layout'
+import { map, compact } from 'lodash'
 
 export default
   mixins: [urlFor, exactDate, DiscussionModalMixin]
@@ -37,21 +38,21 @@ export default
       canPerform: => AbilityService.canAddComment(@discussion)
       perform:    => scrollTo('.comment-form textarea')
     ,
-      name: 'pin_thread'
-      icon: 'mdi-pin'
-      canPerform: => AbilityService.canPinThread(@discussion)
-      perform:    => ThreadService.pin(@discussion)
-    ,
-      name: 'unpin_thread'
-      icon: 'mdi-pin-off'
-      canPerform: => AbilityService.canUnpinThread(@discussion)
-      perform:    => ThreadService.unpin(@discussion)
-    ,
-      name: 'show_history',
-      icon: 'mdi-history'
-      canPerform: => @discussion.edited()
-      perform:    => ModalService.open 'RevisionHistoryModal', model: => @discussion
-    ,
+    #   name: 'pin_thread'
+    #   icon: 'mdi-pin'
+    #   canPerform: => AbilityService.canPinThread(@discussion)
+    #   perform:    => ThreadService.pin(@discussion)
+    # ,
+    #   name: 'unpin_thread'
+    #   icon: 'mdi-pin-off'
+    #   canPerform: => AbilityService.canUnpinThread(@discussion)
+    #   perform:    => ThreadService.unpin(@discussion)
+    # ,
+    #   name: 'show_history',
+    #   icon: 'mdi-history'
+    #   canPerform: => @discussion.edited()
+    #   perform:    => ModalService.open 'RevisionHistoryModal', model: => @discussion
+    # ,
       name: 'edit_thread'
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canEditThread(@discussion)
@@ -63,6 +64,12 @@ export default
       return 'pinned' if @discussion.pinned
     statusTitle: ->
       @$t("context_panel.thread_status.#{@status}")
+    groups: ->
+      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
+        text: group.name
+        disabled: false
+        to: @urlFor(group)
+
 
   methods:
     # showLintel: (bool) ->
@@ -73,52 +80,61 @@ export default
 
 <template lang="pug">
 //- section.context-panel.lmo-card-padding.lmo-action-dock-wrapper(aria-label="$t('thread_context.aria_label')")
-v-card-text.context-panel
-  .context-panel__top
-    .context-panel__status(v-if='status', :title='statusTitle')
-      i.mdi.mdi-pin(v-if="status == 'pinned'")
-    .context-panel__h1.lmo-flex__grow
-      h1.headline.context-panel__heading
-        span(v-if='!discussion.translation') {{discussion.title}}
-        span(v-if='discussion.translation')
-          translation(:model='discussion', field='title')
+div.context-panel
+  v-layout(justify-space-between align-items-center mx-2 pt-2)
+    v-breadcrumbs(:items="groups" divider=">")
     context-panel-dropdown(:discussion="discussion")
-  v-layout.context-panel__details(align-center)
-    user-avatar.lmo-margin-right(:user='discussion.author()', size='medium')
-    span
-      strong {{discussion.authorName()}}
-      span.mx-1(aria-hidden='true') ·
-      time-ago.nowrap(:date='discussion.createdAt')
-      span.mx-1(aria-hidden='true') ·
-      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
-        i.mdi.mdi-lock-outline
-        span(v-t="'common.privacy.private'")
-      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
-        i.mdi.mdi-earth
-        span(v-t="'common.privacy.public'")
-      span(v-show='discussion.seenByCount > 0')
-        span.mx-1(aria-hidden='true') ·
-        span.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }")
-      span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
-        span.mx-1(aria-hidden='true') ·
-        span(v-t="'thread_context.forked_from'")
-        router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
-    .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
-      v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
-  .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'md'", v-marked='discussion.cookedDescription()')
-  .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'html'", v-html='discussion.description')
 
-  translation.lmo-markdown-wrapper(v-if='discussion.translation', :model='discussion', field='description')
-  document-list(:model='discussion', :skip-fetch='true')
-  attachment-list(:attachments="discussion.attachments")
-  .lmo-md-actions
-    reaction-display.context-panel__actions-left(:model="discussion" :load="true")
+  h1.headline.context-panel__heading.px-3
+    span(v-if='!discussion.translation') {{discussion.title}}
+    span(v-if='discussion.translation')
+      translation(:model='discussion', field='title')
+    i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
+
+  v-card-text
+    .context-panel__details(align-center)
+      user-avatar.mr-2(:user='discussion.author()', size='small')
+      span
+        strong {{discussion.authorName()}}
+        span.mx-1(aria-hidden='true') ·
+        time-ago.nowrap(:date='discussion.createdAt')
+        span.mx-1(aria-hidden='true') ·
+        span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
+          i.mdi.mdi-lock-outline
+          span(v-t="'common.privacy.private'")
+        span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
+          i.mdi.mdi-earth
+          span(v-t="'common.privacy.public'")
+        span(v-show='discussion.seenByCount > 0')
+          span.mx-1(aria-hidden='true') ·
+          span.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }")
+        span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
+          span.mx-1(aria-hidden='true') ·
+          span(v-t="'thread_context.forked_from'")
+          router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
+      .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
+        v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
+    .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'md'", v-marked='discussion.cookedDescription()')
+    .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'html'", v-html='discussion.description')
+
+    translation.lmo-markdown-wrapper(v-if='discussion.translation', :model='discussion', field='description')
+    document-list(:model='discussion', :skip-fetch='true')
+    attachment-list(:attachments="discussion.attachments")
+  v-card-actions
+    reaction-display.ml-2(:model="discussion" :load="true")
+    v-spacer
     action-dock(:model='discussion', :actions='actions')
 </template>
 <style lang="scss">
 @import 'variables';
+.context-panel__heading-pin {
+  margin-left: 4px;
+}
 .context-panel {
-  .lmo-card-heading { margin-top: 7px; }
+  .v-breadcrumbs {
+    padding: 0px 10px;
+    // margin-left: 0;
+  }
   border-bottom: 1px solid $border-color;
 }
 

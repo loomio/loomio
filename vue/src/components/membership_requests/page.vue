@@ -9,7 +9,7 @@ import WatchRecords from '@/mixins/watch_records'
 
 export default
   mixins: [WatchRecords]
-  
+
   data: ->
     group: {}
     pendingRequests: []
@@ -56,7 +56,7 @@ export default
     loading(v-if='isEmptyGroup')
     main.membership-requests-page(v-if='!isEmptyGroup')
       .lmo-group-theme-padding
-      group-theme(:group='group')
+      //- group-theme(:group='group')
 
       v-list.membership-requests-page__pending-requests(subheader)
         v-subheader(v-if='pendingRequests.length' v-t="'membership_requests_page.heading'")

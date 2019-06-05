@@ -10,10 +10,11 @@ import WatchRecords from '@/mixins/watch_records'
 
 import { scrollTo }         from '@/shared/helpers/layout'
 import { registerKeyEvent } from '@/shared/helpers/keyboard'
-
+import {compact} from 'lodash'
 export default
   mixins: [WatchRecords]
   data: ->
+    coverUrl: "https://loomio-uploads.s3.amazonaws.com/groups/cover_photos/000/000/002/largedesktop/IMG_6150.JPG?1551260138"
     discussion: null
     activePolls: []
     requestedSequenceId: 0
@@ -71,10 +72,8 @@ export default
             Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true)
 
           EventBus.$emit 'currentComponent',
-            title: @discussion.title
             page: 'threadPage'
-            group: @discussion.group()
-            discussion: @discussion
+            breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
 
       # , (error) =>
       #   debugger
@@ -82,29 +81,33 @@ export default
 </script>
 
 <template lang="pug">
-v-container.lmo-main-container.thread-page(grid-list-lg)
-  loading(v-if='!discussion')
-  div(v-if='discussion')
-    group-theme(:group='discussion.group()', :compact='true')
-    discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
-    //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")
+div
+  group-cover-image(:group="discussion.group()")
+  v-container.thread-page(grid-list-lg)
     v-layout
-      v-flex(md8)
-        thread-card(:loader='loader' :discussion='discussion')
-      v-flex(md4)
-        v-layout(column)
-          // <outlet name="before-thread-page-column-right" model="discussion" class="before-column-right lmo-column-right"></outlet>
-          v-flex(v-for="poll in activePolls", :key="poll.id")
-            poll-common-card(:poll="poll")
-          v-flex
-            decision-tools-card(:discussion='discussion')
-          v-flex
-            membership-card(:group='discussion.guestGroup()')
-          v-flex
-            membership-card(:group='discussion.guestGroup()', :pending='true')
-          v-flex
-            poll-common-index-card(:model='discussion')
-          // <outlet name="thread-page-column-right" class="after-column-right lmo-column-right"></outlet>
+      v-flex(v-if='!discussion')
+        loading
+      v-flex(v-if='discussion')
+        //- group-theme(:group='discussion.group()', :compact='true')
+        discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
+        //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")
+        v-layout
+          v-flex(md8)
+            thread-card(:loader='loader' :discussion='discussion')
+          v-flex(md4)
+            v-layout(column)
+              // <outlet name="before-thread-page-column-right" model="discussion" class="before-column-right lmo-column-right"></outlet>
+              v-flex(v-for="poll in activePolls", :key="poll.id")
+                poll-common-card(:poll="poll")
+              v-flex
+                decision-tools-card(:discussion='discussion')
+              v-flex
+                membership-card(:group='discussion.guestGroup()')
+              v-flex
+                membership-card(:group='discussion.guestGroup()', :pending='true')
+              v-flex
+                poll-common-index-card(:model='discussion')
+              // <outlet name="thread-page-column-right" class="after-column-right lmo-column-right"></outlet>
 </template>
 <style lang="scss">
 @import 'variables';

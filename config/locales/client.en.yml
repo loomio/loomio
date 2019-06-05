@@ -324,6 +324,7 @@ en:
     sign_in: "Log in to join the conversation"
 
   sidebar:
+    threads: 'Threads'
     recent_threads: 'Recent threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'

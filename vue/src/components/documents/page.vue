@@ -76,7 +76,7 @@ export default
     loading(v-if='isEmptyGroup')
     main.documents-page(v-if='!isEmptyGroup')
       .lmo-group-theme-padding
-      group-theme(:group='group')
+      //- group-theme(:group='group')
       .lmo-card
         .documents-page__top-bar.lmo-flex.lmo-flex__space-between.lmo-flex__baseline
           h2.lmo-h2.md-title(v-t="'documents_page.title'")
