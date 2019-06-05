@@ -14,5 +14,5 @@ export default
       EventBus.$emit('openModal',
                       component: 'EditCommentForm',
                       props: {
-                        comment: eventable
+                        comment: eventable.clone()
                       })

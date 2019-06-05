@@ -17,7 +17,7 @@ export default
       EventBus.$emit('openModal',
                       component: 'GroupForm',
                       props: {
-                        group: group
+                        group: group.clone()
                       })
 
     openStartSubgroupModal: (group) ->
