@@ -79,7 +79,17 @@ class RangeSet
   end
 
   # all ranges: [[1,2]] , some ranges: [[1,1]]
+
   def self.subtract_ranges(wholes, parts)
+    # take parts from wholes, returning wholes minus parts
+    output = wholes
+    parts.in_groups_of(1, false) do |part|
+      output = subtract_ranges_old(output, part)
+    end
+    reduce output
+  end
+
+  def self.subtract_ranges_old(wholes, parts)
     output = wholes
     while (subtract_ranges_loop(output, parts) != output) do
       output = subtract_ranges_loop(output, parts)

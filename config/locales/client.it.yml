@@ -159,6 +159,8 @@ it:
     formatting_help:
       label: 'Formattazione'
       title: 'Impara come usare il Markdown per formattare il tuo testo'
+  emoji_picker:
+    search: Ricerca
   ordinal:
     _1: 1*
     _2: 2°

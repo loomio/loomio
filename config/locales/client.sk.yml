@@ -20,6 +20,8 @@ sk:
       like: 'To sa mi páči'
       unlike: 'To sa mi nepáči'
       cancel: 'Zrušiť'
+  emoji_picker:
+    search: Vyhľadávať
   error_page:
     forbidden: 'Na túto akciu nemáte oprávnenie.'
   inbox:

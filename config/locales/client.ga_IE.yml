@@ -86,6 +86,8 @@ ga_IE:
       invite: Tabhair cuireadh
     formatting_help:
       label: 'Formáidiú'
+  emoji_picker:
+    search: Cuardaigh
   error_page:
     forbidden: 'Níl cead agat é sin a dhéanamh.'
     page_not_found: 'Theip orainn sin a aimsiú. B''fhéidir gur scriosadh é nó bogadh é.'

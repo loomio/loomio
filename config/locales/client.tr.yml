@@ -96,6 +96,8 @@ tr:
       invite: Davet et
     formatting_help:
       label: 'Biçimlendirme'
+  emoji_picker:
+    search: Arama
   devise:
     failure:
       inactive: 'Bu e-posta adresiyle ilişkili devre dışı bırakılmış bir hesap var. Hesabınızı yeniden etkinleştirmek istiyorsanız, bizimle iletişime geçin.'
@@ -581,8 +583,6 @@ tr:
   global:
     messages:
       reload: 'Tekrar yükle'
-  emoji_picker:
-    no_emojis_found: "'{{term}}' için hiçbir emoji bulunamadı!"
   registered_apps_page:
     name: İsim
   registered_app_form:

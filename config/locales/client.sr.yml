@@ -54,6 +54,8 @@ sr:
       upload: 'Prosledi'
       uploading: 'Prosleđivanje'
       ok: U redu
+  emoji_picker:
+    search: Traži
   error_page:
     forbidden: 'Nemate dozvolu da ovo uradite.'
     page_not_found: 'Nismo u mogućnosti da to pronađemo. Možda je obrisano ili premešteno.'
@@ -545,8 +547,6 @@ sr:
   global:
     messages:
       reload: 'Osveži'
-  emoji_picker:
-    no_emojis_found: "Nema emoja za '{{term}}'!"
   authorized_apps_page:
     title: Odobrene Aplikacije
     no_applications: "Niste odobrili ni jednu aplikaciju treće strane još uvek."

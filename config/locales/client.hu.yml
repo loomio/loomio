@@ -136,6 +136,8 @@ hu:
     formatting_help:
       label: 'Formázás'
       title: 'Tanuld meg formázni a szöveged'
+  emoji_picker:
+    search: Keresés
   ordinal:
     _1: '1.'
     _2: '2.'

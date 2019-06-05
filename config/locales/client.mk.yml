@@ -16,6 +16,8 @@ mk:
       like: 'Ми се допаѓа'
       unlike: 'Не ми се допаѓа'
       cancel: 'Откажи'
+  emoji_picker:
+    search: Пребарувај
   error_page:
     forbidden: 'Немате дозвола за да го направите ова.'
   comment_form:

@@ -33,6 +33,8 @@ ja:
       unlike: 'いいね！を消す'
       update: '更新'
       cancel: 'キャンセル'
+  emoji_picker:
+    search: 検索
   error_page:
     forbidden: 'このアクションの許可がありません'
   comment_form:

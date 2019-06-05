@@ -31,6 +31,8 @@ sl:
       view_all: "Pokaži vse"
       add_subgroup: 'Dodaj podskupino'
       loading: 'Nalagam'
+  emoji_picker:
+    search: Išči
   error_page:
     forbidden: 'Nimaš dovoljenja za to.'
   volume_levels:

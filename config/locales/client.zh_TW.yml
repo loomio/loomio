@@ -159,6 +159,14 @@ zh_TW:
     formatting_help:
       label: '格式化'
       title: '學習如何使用 Markdown 來格式化您的文字'
+  emoji_picker:
+    search: 搜尋
+    common: 經常使用
+    hands: 手
+    people: 臉與人
+    nature: 自然
+    objects: 事物
+    places: 地方
   ordinal:
     _1: 第一名
     _2: 第二名
@@ -1174,9 +1182,6 @@ zh_TW:
     messages:
       app_update: '新版的應用程式已經可用'
       reload: '重新整理'
-  emoji_picker:
-    search: "挑選您的表情符號……"
-    no_emojis_found: "找不到 '{{term}}' 的 emoji！"
   authorized_apps_page:
     title: 已授權的應用程式
     no_applications: "您尚未授權任何第三方的應用程式。"

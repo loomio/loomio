@@ -146,6 +146,8 @@ ru:
       export: Экспортировать
     formatting_help:
       label: 'Форматирование'
+  emoji_picker:
+    search: Поиск
   ordinal:
     _1: 1ый
     _2: 2ый

@@ -147,6 +147,8 @@ nl_NL:
     formatting_help:
       label: 'Aan het formatteren'
       title: 'Leer hoe je Markdown kan gebruiken om tekst op te maken'
+  emoji_picker:
+    search: Zoek
   ordinal:
     _1: 1e
     _2: 2e
@@ -934,8 +936,6 @@ nl_NL:
     messages:
       app_update: 'Er is een nieuwe versie van de app beschikbaar'
       reload: 'Herladen'
-  emoji_picker:
-    no_emojis_found: "Geen emojis gevonden voor '{{term}}'"
   authorized_apps_page:
     title: Toegestane apps
     no_applications: "Je hebt nog geen andere apps toestemming gegeven."
