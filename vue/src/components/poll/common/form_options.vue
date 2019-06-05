@@ -13,6 +13,7 @@ export default
   props:
     poll: Object
   data: ->
+    newOptionName: ''
     existingOptions: _clone @poll.pollOptionNames
     datesAsOptions: fieldFromTemplate(@poll.pollType, 'dates_as_options')
   methods:
@@ -22,6 +23,11 @@ export default
 
     canRemoveOption: (name) ->
       _includes(@existingOptions, name) || AbilityService.canRemovePollOptions(@poll)
+
+    addOption: ->
+      @poll.newOptionName = @newOptionName
+      @newOptionName = ''
+      @poll.addOption()
   computed:
     currentZone: ->
       Session.user().timeZone
@@ -45,8 +51,8 @@ export default
     poll-meeting-time-field(v-if='datesAsOptions', :poll='poll')
     v-list-tile.poll-common-form__add-option(v-if='!datesAsOptions', flex='true', layout='row')
       .poll-poll-form__add-option-field
-        v-text-field.poll-poll-form__add-option-input(v-model='poll.newOptionName', type='text', :placeholder="$t('poll_common_form.options_placeholder')")
+        v-text-field.poll-poll-form__add-option-input(v-model='newOptionName', type='text', :placeholder="$t('poll_common_form.options_placeholder')")
       div
-        v-btn.poll-poll-form__option-button(@click='poll.addOption()')
+        v-btn.poll-poll-form__option-button(@click='addOption()')
           i.mdi.mdi-plus.mdi-24px.poll-poll-form__option-icon.poll-poll-form__option-icon--add
 </template>
