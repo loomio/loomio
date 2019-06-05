@@ -18,6 +18,7 @@ import PollCommonCloseModal from '@/components/poll/common/close_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
 import AnnouncementForm from '@/components/announcement/form'
 import MoveThreadForm from '@/components/thread/move_thread_form'
+import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 
 export default
   components:
@@ -39,6 +40,7 @@ export default
     'PollCommonReopenModal': PollCommonReopenModal
     'AnnouncementForm': AnnouncementForm
     'MoveThreadForm': MoveThreadForm
+    'PollCommonAddOptionModal': PollCommonAddOptionModal
   data: ->
     isOpen: false
     componentName: ""

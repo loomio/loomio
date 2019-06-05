@@ -47,5 +47,12 @@ export default
                         poll: poll
                       })
 
+    openAddOptionModal: (poll) ->
+      EventBus.$emit('openModal',
+                      component: 'PollCommonAddOptionModal',
+                      props: {
+                        poll: poll.clone()
+                      })
+
     closeModal: ->
       EventBus.$emit('closeModal')

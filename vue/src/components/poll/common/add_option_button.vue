@@ -2,19 +2,18 @@
 </style>
 
 <script lang="coffee">
-import ModalService from '@/shared/services/modal_service'
+import PollModalMixin from '@/mixins/poll_modal'
 
 export default
+  mixins: [PollModalMixin]
   props:
     poll: Object
   methods:
     open: ->
-      ModalService.open 'PollCommonAddOptionModal', poll: => @poll
+      @openAddOptionModal(@poll)
 </script>
 
-<template>
-    <div v-if="poll.voterCanAddOptions" class="poll-common-add-option-button lmo-flex lmo-flex__space-between">
-      <div></div>
-      <button @click="open()" v-t="'poll_common_add_option.button.add_option'"></button>
-    </div>
+<template lang='pug'>
+.poll-common-add-option-button(v-if='poll.voterCanAddOptions')
+  v-btn(@click='open()', v-t="'poll_common_add_option.button.add_option'")
 </template>

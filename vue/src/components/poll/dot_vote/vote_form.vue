@@ -55,6 +55,7 @@
 <script lang="coffee">
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
+import WatchRecords from '@/mixins/watch_records'
 
 import { submitStance }  from '@/shared/helpers/form'
 import { submitOnEnter } from '@/shared/helpers/keyboard'
@@ -65,22 +66,24 @@ import _head from 'lodash/head'
 import _filter from 'lodash/filter'
 
 export default
+  mixins: [WatchRecords]
   props:
     stance: Object
 
   data: ->
-    vars: {}
+    pollOptions: []
 
   created: ->
+    @watchRecords
+      collections: ['poll_options']
+      query: (records) =>
+        @pollOptions = @stance.poll().pollOptions()
     @submit = submitStance @, @stance,
       prepareFn: =>
         EventBus.$emit 'processing'
         @stance.id = null
         return unless _sum(_map(@stanceChoices, 'score')) > 0
         @stance.stanceChoicesAttributes = @stanceChoices
-
-    @setStanceChoices()
-    EventBus.$on 'pollOptionsAdded', @setStanceChoices
     # submitOnEnter @, element: @$el
 
   methods:
@@ -115,8 +118,9 @@ export default
     tooManyDots: ->
       @dotsRemaining() < 0
 
-    setStanceChoices: ->
-      @stanceChoices = _map @stance.poll().pollOptions(), (option) =>
+  computed:
+    stanceChoices: ->
+      _map @pollOptions, (option) =>
         poll_option_id: option.id
         score: @stanceChoiceFor(option).score
 </script>
@@ -138,6 +142,7 @@ export default
           v-btn.poll-dot-vote-vote-form__dot-button(type='button', @click='adjust(choice, 1)', :disabled='dotsRemaining() == 0')
             .mdi.mdi-24px.mdi-plus-circle-outline
   validation-errors(:subject='stance', field='stanceChoices')
+  poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     poll-common-show-results-button(v-if='stance.isNew()')
