@@ -18,12 +18,9 @@ export default
   methods:
     getVersion: ->
       EventBus.$emit 'versionFetching'
-      console.log 'emitting versionFetching'
       Records.versions.fetchVersion(@model, @currentIndex).then (data) =>
-        console.log 'version fetched', data
         @version = Records.versions.find(data.versions[0].id)
         @version.index = @currentIndex
-        console.log 'emitting versionFetched'
         EventBus.$emit 'versionFetched', @version
         Records.groups.findOrFetchById(@version.changes.group_id[1]) if @version.changes.group_id
 

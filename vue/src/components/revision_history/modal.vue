@@ -10,7 +10,6 @@ export default
     close: Function
   created: ->
     EventBus.$on 'versionFetching', =>
-      console.log 'on versionFetching'
       @version = null
       @loading = true
     EventBus.$on 'versionFetched', (version) =>
