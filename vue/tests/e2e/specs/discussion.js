@@ -278,7 +278,7 @@ module.exports = {
     page.click('.comment-form__submit-button')
     page.click('.action-dock__button--edit_comment')
     page.fillIn('.edit-comment-form .ProseMirror', 'edited comment right thur')
-    page.click('.edit-comment-form .comment-form__submit-button')
+    page.click('.edit-comment-form .comment-form__submit-button', 1000)
     page.expectText('.new-comment', 'edited comment right thur')
   },
 
