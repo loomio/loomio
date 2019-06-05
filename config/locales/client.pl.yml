@@ -133,6 +133,8 @@ pl:
     formatting_help:
       label: 'Formatowanie'
       title: 'Naucz się używać Markdown, by sformatować swój tekst'
+  emoji_picker:
+    search: Szukaj
   ordinal:
     _1: '1.'
     _2: '2.'

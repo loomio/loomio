@@ -76,6 +76,8 @@ ar:
       upload: 'تحميل'
       uploading: 'تحميل'
       invite: دعوة
+  emoji_picker:
+    search: بحث
   error_page:
     forbidden: 'ليس لديك صلاحية للقيام بذلك.'
     page_not_found: 'لم نستطع إيجاد ذلك. من الممكن أن يكون قد جرى حذفه أو نقله.'
@@ -560,8 +562,6 @@ ar:
     messages:
       app_update: 'هناك نسخة جديدة متوفرة من التطبيق'
       reload: 'إعادة تحميل'
-  emoji_picker:
-    no_emojis_found: "لم يتم إيجاد أي رموز تعبيرية ل'{{term}}'!"
   authorized_apps_page:
     title: التطبيقات المخولة
     no_applications: "لم تقم بتخويل أي تطبيقات من طرف ثالث بعد."

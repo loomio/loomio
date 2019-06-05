@@ -123,6 +123,8 @@ ro:
       resent: Invitatie retrimisa
     formatting_help:
       label: 'Formatare'
+  emoji_picker:
+    search: Cauta
   ordinal:
     _1: 1st
     _2: 2nd

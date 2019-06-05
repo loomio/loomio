@@ -12,6 +12,8 @@ vi:
       like: 'Thích'
       unlike: 'Không thích'
       cancel: 'Hủy bỏ'
+  emoji_picker:
+    search: Tìm kiếm
   error_page:
     forbidden: 'Bạn không có quyền thực hiện thao tác này.'
   comment_form:

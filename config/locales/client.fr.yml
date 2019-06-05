@@ -159,6 +159,8 @@ fr:
     formatting_help:
       label: 'Mise en forme'
       title: 'Apprenez à utiliser Markdown pour mettre en forme votre texte'
+  emoji_picker:
+    search: Rechercher
   ordinal:
     _1: 1er
     _2: 2e
@@ -1168,9 +1170,6 @@ fr:
     messages:
       app_update: 'Une nouvelle version de l’application est disponible'
       reload: 'Recharger'
-  emoji_picker:
-    search: "Choisissez votre emoji..."
-    no_emojis_found: "Aucune émoticône trouvée pour « {{term}} » !"
   authorized_apps_page:
     title: Applications autorisées
     no_applications: "Vous n’avez pas encore autorisé d’application tierce."

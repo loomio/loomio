@@ -53,6 +53,8 @@ sr_RS:
       translated: 'Превео Bing Translator'
       upload: 'Отпремљено'
       uploading: 'Отпремање'
+  emoji_picker:
+    search: Тражи
   error_page:
     forbidden: 'Немате дозволу да ово урадите.'
   volume_levels:

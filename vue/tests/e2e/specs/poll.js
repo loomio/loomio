@@ -170,6 +170,7 @@ module.exports = {
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
     })
   },
+
   'can_start_a_ranked_choice_in_a_group': (test) => {
     page = pageHelper(test)
 

@@ -149,6 +149,8 @@ pt_BR:
     formatting_help:
       label: 'Formatação'
       title: 'Aprenda como usar Markdown para formatar seu texto'
+  emoji_picker:
+    search: Pesquisar
   ordinal:
     _1: 1°
     _2: 2°
@@ -985,8 +987,6 @@ pt_BR:
   global:
     messages:
       reload: 'Recarregar'
-  emoji_picker:
-    no_emojis_found: "Nenhum emoji encontrado para '{{term}}'!"
   authorized_apps_page:
     title: Apps Autorizados
     no_applications: "Você ainda não autorizou nenhum aplicativo de terceiros."

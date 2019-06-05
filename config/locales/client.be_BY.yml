@@ -31,6 +31,8 @@ be_BY:
       like: 'Падабаецца'
       unlike: 'Не падабаецца'
       cancel: 'Скасаваць'
+  emoji_picker:
+    search: Пошук
   error_page:
     forbidden: 'Вы не маеце дазволу на гэтае дзеянне.'
   volume_levels:

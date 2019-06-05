@@ -101,6 +101,8 @@ eo:
       ok: Bone!
       retry: Reprovi
       invite: Inviti
+  emoji_picker:
+    search: Serĉi
   ordinal:
     _1: 1a
     _2: 2a

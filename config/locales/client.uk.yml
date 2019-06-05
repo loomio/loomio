@@ -156,6 +156,8 @@ uk:
     formatting_help:
       label: 'Форматувати'
       title: 'Дізнайтесь як використовувати Markdown для форматування текту'
+  emoji_picker:
+    search: Пошук
   ordinal:
     _1: 1-ий
     _2: 2-ий
@@ -1156,8 +1158,6 @@ uk:
     messages:
       app_update: 'Доступна нова версія додатку'
       reload: 'Перезавантажити'
-  emoji_picker:
-    no_emojis_found: "Не знайдено смайлика для '{{term}}'!"
   authorized_apps_page:
     title: Підключені додатки
     no_applications: "Ви ще не підключили жодного з сторонніх додатків."

@@ -96,6 +96,8 @@ ca:
       start: Comença
       delete: Esborrar
       unsubscribe: Cancel·lar la subscripció
+  emoji_picker:
+    search: Cerca
   ordinal:
     _1: 1r
     _2: 2n
@@ -593,8 +595,6 @@ ca:
   global:
     messages:
       reload: 'Recarrega'
-  emoji_picker:
-    no_emojis_found: "No s'ha trobat cap emoticona per '{{term}}'."
   authorized_apps_page:
     title: Aplicacions autoritzades
     no_applications: "Encara no heu autoritzat cap aplicació d'un tercer."

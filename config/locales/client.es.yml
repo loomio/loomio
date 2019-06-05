@@ -159,6 +159,8 @@ es:
     formatting_help:
       label: 'Formato '
       title: 'Aprenda a usar Markdown para dar formato a su texto'
+  emoji_picker:
+    search: Buscar
   ordinal:
     _1: 1º
     _2: 2º
@@ -1157,9 +1159,6 @@ es:
     messages:
       app_update: 'Una nueva versión de la app está disponible '
       reload: 'Actualizar'
-  emoji_picker:
-    search: "Seleccione su emoji..."
-    no_emojis_found: "No se han encontrado emojis /emoticonos para  '{{term}}'!"
   authorized_apps_page:
     title: 'Apps autorizados '
     no_applications: "No has autorizado ningún app de terceros todavía."

@@ -86,6 +86,8 @@ mi:
       resent: Kua tukua anō te pōwhiri
     formatting_help:
       label: 'He whakanikoniko pūreta'
+  emoji_picker:
+    search: Rapu
   ordinal:
     _1: Tuatahi
     _2: Tuarua
