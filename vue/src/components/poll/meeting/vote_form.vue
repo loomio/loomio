@@ -41,8 +41,8 @@ export default
   mixins: [WatchRecords]
   props:
     stance: Object
-    pollOptions: []
   data: ->
+    pollOptions: []
     vars: {}
     zone: null
     stanceValuesMap: _fromPairs _map @stance.poll().pollOptions(), (option) =>
