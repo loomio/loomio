@@ -282,31 +282,31 @@ module.exports = {
     page.expectText('.new-comment', 'edited comment right thur')
   },
 
-  // 'lets_you_view_comment_revision_history': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_comment_with_versions')
-  //   page.click('.action-dock__button--show_history')
-  //   page.expectText('.revision-history-nav', 'Latest')
-  //   page.expectText('.revision-history-content--markdown del', 'star')
-  //   page.expectText('.revision-history-content--markdown ins', 'moon')
-  //   page.click('.revision-history-nav--previous')
-  //   page.expectText('.revision-history-nav', 'Original')
-  //   page.expectText('.revision-history-content--markdown', 'What star sign are you?')
-  // },
-  //
-  // 'lets_you_view_discussion_revision_history': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_discussion_with_versions')
-  //   page.click('.action-dock__button--show_history')
-  //   page.expectText('.revision-history-nav', 'Latest')
-  //   page.expectText('.revision-history-content--header del', 'star')
-  //   page.expectText('.revision-history-content--header ins', 'moon')
-  //   page.click('.revision-history-nav--previous')
-  //   page.expectText('.revision-history-nav', 'Original')
-  //   page.expectText('.revision-history-content--header ins', 'What star sign are you?')
-  // },
+  'lets_you_view_comment_revision_history': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_comment_with_versions')
+    page.click('.action-dock__button--show_history')
+    page.expectText('.revision-history-nav', 'Latest')
+    page.expectText('.revision-history-content--markdown del', 'star')
+    page.expectText('.revision-history-content--markdown ins', 'moon')
+    page.click('.revision-history-nav--previous')
+    page.expectText('.revision-history-nav', 'Original')
+    page.expectText('.revision-history-content--markdown', 'What star sign are you?')
+  },
+
+  'lets_you_view_discussion_revision_history': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_with_versions')
+    page.click('.action-dock__button--show_history')
+    page.expectText('.revision-history-nav', 'Latest')
+    page.expectText('.revision-history-content--header del', 'star')
+    page.expectText('.revision-history-content--header ins', 'moon')
+    page.click('.revision-history-nav--previous')
+    page.expectText('.revision-history-nav', 'Original')
+    page.expectText('.revision-history-content--header ins', 'What star sign are you?')
+  },
 
   'deletes_a_comment': (test) => {
     page = pageHelper(test)
