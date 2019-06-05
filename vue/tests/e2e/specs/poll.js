@@ -159,11 +159,12 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
-    page.click('.poll-common-vote-form__option button:first-child')
-    page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
-    page.click('.poll-common-vote-form__submit')
+    page.scrollTo('.poll-common-card-header', () => {
+      page.click('.poll-common-vote-form__option button:first-child', 500)
+      page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
+      page.click('.poll-common-vote-form__submit', 1000)
+    })
 
-    page.pause(1000)
     page.expectElement('.poll-meeting-chart-panel--yes')
     page.scrollTo('.poll-common-votes-panel__stance', () => {
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
