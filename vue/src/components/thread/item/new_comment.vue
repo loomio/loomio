@@ -10,13 +10,15 @@ import Flash   from '@/shared/services/flash'
 import ModalService   from '@/shared/services/modal_service'
 import CommentModalMixin from '@/mixins/comment_modal.coffee'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
+import RevisionHistoryModalMixin from '@/mixins/revision_history_modal'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
 
 export default
   mixins: [
     CommentModalMixin,
-    ConfirmModalMixin
+    ConfirmModalMixin,
+    RevisionHistoryModalMixin
   ]
   props:
     event: Object
@@ -67,7 +69,7 @@ export default
       name: 'show_history'
       icon: 'mdi-history'
       canPerform: => @eventable.edited()
-      perform:    => ModalService.open 'RevisionHistoryModal', model: => @eventable
+      perform:    => @openRevisionHistoryModal(@eventable)
     ,
       name: 'delete_comment'
       icon: 'mdi-delete'
