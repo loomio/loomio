@@ -10,12 +10,13 @@ import Flash   from '@/shared/services/flash'
 import urlFor         from '@/mixins/url_for'
 import exactDate      from '@/mixins/exact_date'
 import DiscussionModalMixin from '@/mixins/discussion_modal'
+import RevisionHistoryModalMixin from '@/mixins/revision_history_modal'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
 import { scrollTo }                                  from '@/shared/helpers/layout'
 
 export default
-  mixins: [urlFor, exactDate, DiscussionModalMixin]
+  mixins: [urlFor, exactDate, DiscussionModalMixin, RevisionHistoryModalMixin]
   props:
     discussion: Object
 
@@ -50,7 +51,7 @@ export default
       name: 'show_history',
       icon: 'mdi-history'
       canPerform: => @discussion.edited()
-      perform:    => ModalService.open 'RevisionHistoryModal', model: => @discussion
+      perform:    => @openRevisionHistoryModal(@discussion)
     ,
       name: 'edit_thread'
       icon: 'mdi-pencil'
