@@ -14,6 +14,7 @@ export default
   mixins: [DiscussionModalMixin, WatchRecords]
   props:
     group: Object
+    flat: Boolean
 
   created: -> @init()
 
@@ -110,7 +111,7 @@ export default
 </script>
 
 <template lang="pug">
-v-card.discussions-card(aria-labelledby='threads-card-title')
+v-card.discussions-card(flat)
   .discussions-card__header
     h3#threads-card-title.discussions-card__title.lmo-card-heading(v-if='!searchOpen')
       span(v-if="filter == 'show_opened'", v-t="{ path: 'group_page.open_discussions' }")

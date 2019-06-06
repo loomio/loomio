@@ -45,12 +45,13 @@ export default new Router
     {path: '/p/new/:poll_type', component: StartPollPage},
     {path: '/p/:key/', component: PollPage},
     {path: '/p/:key/:stub', component: PollPage},
-    {path: '/g/:key/memberships', component: GroupPage},
-    {path: '/g/:key/membership_requests', component: MembershipRequestsPage},
-    {path: '/g/:key/documents', component: DocumentsPage},
+    # {path: '/g/:key/memberships', component: GroupPage},
+    # {path: '/g/:key/membership_requests', component: MembershipRequestsPage},
+    # {path: '/g/:key/documents', component: DocumentsPage},
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key', component: GroupPage },
-    {path: '/g/:key/:stub', component: GroupPage},
+    # {path: '/g/:key/:stub', component: GroupPage},
+    {path: '/g/:key/:tab', component: GroupPage},
     {path: '/u/:key', component: UserPage },
     {path: '/u/:key/:stub', component: UserPage },
     {path: '/apps/authorized', component: AuthorizedAppsPage},
@@ -59,6 +60,7 @@ export default new Router
     {path: '/apps/registered/:id/:stub', component: RegisteredAppPage},
     {path: '/slack/install', component: InstallSlackPage},
     {path: '/:handle', component: GroupPage },
+    {path: '/:handle/:tab', component: GroupPage },
     {path: '/', redirect: '/dashboard' }
   ]
 

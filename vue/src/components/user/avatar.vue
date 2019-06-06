@@ -53,14 +53,21 @@ export default
     bgColor: ->
       @$vuetify.theme.accent
 
+    componentType:  ->
+      if @noLink
+        'div'
+      else
+        'router-link'
+
 </script>
 
 <template lang="pug">
-v-avatar(v-if="user" :title='user.name' :size='width' :color="bgColor")
-  v-gravatar(v-if="user.avatarKind === 'gravatar'", :hash='user.emailHash', :gravatar-size='gravatarSize', :alt='user.name')
-  img(v-else-if="user.avatarKind === 'uploaded'", :alt='user.name', :src='uploadedAvatarUrl')
-  span.body-1(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px'}") {{user.avatarInitials}}
-  v-icon(v-else='', :class='[boxClass, mdiSize]') {{user.avatarKind}}
+component(:is="componentType" :to="urlFor(user)")
+  v-avatar(v-if="user" :title='user.name' :size='width' :color="bgColor")
+    v-gravatar(v-if="user.avatarKind === 'gravatar'", :hash='user.emailHash', :gravatar-size='gravatarSize', :alt='user.name')
+    img(v-else-if="user.avatarKind === 'uploaded'", :alt='user.name', :src='uploadedAvatarUrl')
+    span.body-1(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px'}") {{user.avatarInitials}}
+    v-icon(v-else='', :class='[boxClass, mdiSize]') {{user.avatarKind}}
   //- // <div aria-hidden="true"  class="user-avatar" :class="[boxClass]">
   //- router-link(:to='urlFor(user)', v-if='!noLink')
   //-   user-avatar-body(:user='user', :coordinator='coordinator', :size='size', :colors='colors')

@@ -65,7 +65,7 @@ v-navigation-drawer.lmo-no-print.sidenav-left(app width="250" v-model="open")
   v-toolbar
     img(style="height: 50%" :src="logoUrl" :alt="siteName")
     v-spacer
-    v-btn.navbar__sidenav-toggle(icon v-if="!sidebarOpen" @click="open = !open")
+    v-btn.navbar__sidenav-toggle(icon @click="open = !open")
       v-avatar(tile size="36px")
         v-icon mdi-menu
   v-expansion-panel

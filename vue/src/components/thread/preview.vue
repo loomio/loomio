@@ -101,7 +101,7 @@ export default
 <template lang="pug">
 v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)')
   v-list-tile-avatar
-    user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium')
+    user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium' no-link)
     poll-common-chart-preview(v-if='thread.activePoll()', :poll='thread.activePoll()')
   v-list-tile-content
     v-list-tile-title.thread-preview__text-container
