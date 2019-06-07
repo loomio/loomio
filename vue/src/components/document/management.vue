@@ -25,16 +25,12 @@
 <script lang="coffee">
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
-import urlFor         from '@/mixins/url_for'
+import UrlFor         from '@/mixins/url_for'
 import truncate       from '@/mixins/truncate'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
 
 export default
-  mixins: [
-    urlFor,
-    truncate,
-    ConfirmModalMixin
-  ]
+  mixins: [ UrlFor, truncate, ConfirmModalMixin ]
   props:
     group: Object
     fragment: Object

@@ -14,12 +14,12 @@ import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import ThreadFilter from '@/shared/services/thread_filter'
 import ModalService  from '@/shared/services/modal_service'
-import urlFor        from '@/mixins/url_for'
+import UrlFor        from '@/mixins/url_for'
 import {each, keys, sum, values, sortBy} from 'lodash'
 import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [urlFor, WatchRecords]
+  mixins: [UrlFor, WatchRecords]
   data: ->
     threadLimit: 50
     views: {}

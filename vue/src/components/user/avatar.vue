@@ -1,12 +1,12 @@
 <script lang="coffee">
-import urlFor from '@/mixins/url_for'
+import UrlFor from '@/mixins/url_for'
 import { is2x } from '@/shared/helpers/window'
 import Gravatar from 'vue-gravatar';
 
 export default
   components:
     'v-gravatar': Gravatar
-  mixins: [urlFor]
+  mixins: [UrlFor]
   props:
     thread: Object
     user: Object

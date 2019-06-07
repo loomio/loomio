@@ -1,6 +1,6 @@
 <script lang="coffee">
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
-import urlFor                                 from '@/mixins/url_for'
+import UrlFor                                 from '@/mixins/url_for'
 
 import BarChart from '@/components/poll/common/bar_chart.vue'
 import ProcessChart from '@/components/poll/common/progress_chart.vue'
@@ -10,7 +10,7 @@ import MatrixChart from '@/components/poll/meeting/matrix_chart.vue'
 export default
   components:
     BarChart: BarChart
-  mixins: [urlFor]
+  mixins: [UrlFor]
   props:
     poll: Object
   computed:
