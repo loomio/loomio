@@ -19,7 +19,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.discussions-card__new-thread-button')
+    page.click('.discussions-panel__new-thread-button')
     page.fillIn('.discussion-form__title-input input', 'Immannounce dis')
     page.click('.discussion-form__submit')
     page.expectFlash('Thread started')

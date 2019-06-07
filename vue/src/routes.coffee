@@ -1,4 +1,3 @@
-import GroupPage from './components/group/page.vue'
 import DashboardPage from './components/dashboard/page.vue'
 import PollsPage from './components/polls/page.vue'
 import InboxPage from './components/inbox/page.vue'
@@ -8,7 +7,14 @@ import ProfilePage from './components/profile/page.vue'
 import StartPollPage from './components/start_poll/page.vue'
 import PollPage from './components/poll/page.vue'
 import MembershipRequestsPage from './components/membership_requests/page.vue'
-import DocumentsPage from './components/documents/page.vue'
+
+import GroupPage from './components/group/page.vue'
+import GroupDiscussionsPanel from './components/group/discussions_panel'
+import GroupPollsPanel from './components/group/polls_panel'
+import GroupMembersPanel from './components/group/members_panel'
+import GroupSubgroupsPanel from './components/group/subgroups_panel'
+import GroupFilesPanel from './components/group/files_panel'
+
 import StartGroupPage from './components/start_group/page.vue'
 import ContactPage from './components/contact/page.vue'
 import EmailSettingsPage from './components/email_settings/page.vue'
@@ -23,6 +29,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
+
+groupPageChildren = [
+  {path: '', component: GroupDiscussionsPanel},
+  {path: 'polls', component: GroupPollsPanel},
+  {path: 'members', component: GroupMembersPanel},
+  {path: 'subgroups', component: GroupSubgroupsPanel}
+  {path: 'files', component: GroupFilesPanel},
+]
+
 
 export default new Router
   mode: 'history',
@@ -45,13 +60,6 @@ export default new Router
     {path: '/p/new/:poll_type', component: StartPollPage},
     {path: '/p/:key/', component: PollPage},
     {path: '/p/:key/:stub', component: PollPage},
-    # {path: '/g/:key/memberships', component: GroupPage},
-    # {path: '/g/:key/membership_requests', component: MembershipRequestsPage},
-    # {path: '/g/:key/documents', component: DocumentsPage},
-    {path: '/g/new', component: StartGroupPage},
-    {path: '/g/:key', component: GroupPage },
-    # {path: '/g/:key/:stub', component: GroupPage},
-    {path: '/g/:key/:tab', component: GroupPage},
     {path: '/u/:key', component: UserPage },
     {path: '/u/:key/:stub', component: UserPage },
     {path: '/apps/authorized', component: AuthorizedAppsPage},
@@ -59,10 +67,11 @@ export default new Router
     {path: '/apps/registered/:id', component: RegisteredAppPage},
     {path: '/apps/registered/:id/:stub', component: RegisteredAppPage},
     {path: '/slack/install', component: InstallSlackPage},
-    {path: '/:handle', component: GroupPage },
-    {path: '/:handle/:tab', component: GroupPage },
+    {path: '/g/new', component: StartGroupPage},
+    {path: '/g/:key', component: GroupPage, children: groupPageChildren},
+    {path: '/g/:key/:tab', component: GroupPage, children: groupPageChildren},
+    # key is actually handle
+    {path: '/:key/:tab', component: GroupPage, children: groupPageChildren},
+    {path: '/:key', component: GroupPage, children: groupPageChildren},
     {path: '/', redirect: '/dashboard' }
   ]
-
-# {path: '/groups', component: 'groupsPage' },
-# {path: '/g/:key/previous_polls', component: 'previousPollsPage'},

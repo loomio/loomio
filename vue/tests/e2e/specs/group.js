@@ -74,7 +74,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_subgroups')
-    page.expectText('.discussions-card__list', 'Vaya con dios', 20000)
+    page.expectText('.discussions-panel__list', 'Vaya con dios', 20000)
   },
 
   'starts_an_open_group': (test) => {
@@ -273,7 +273,7 @@ module.exports = {
   //   page = pageHelper(test)
   //
   //   page.loadPath('setup_group_with_empty_draft')
-  //   page.click('.discussions-card__new-thread-button')
+  //   page.click('.discussions-panel__new-thread-button')
   //   page.expectText('.discussion-privacy-icon', 'The thread will only be visible')
   // },
 
@@ -281,7 +281,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.discussions-card__new-thread-button')
+    page.click('.discussions-panel__new-thread-button')
     page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
     page.fillIn('.discussion-form .ProseMirror', "I've had the time of my life")
     page.click('.discussion-form__submit')
@@ -294,12 +294,12 @@ module.exports = {
   //   page = pageHelper(test)
   //
   //   page.loadPath('setup_group')
-  //   page.click('.discussions-card__new-thread-button')
+  //   page.click('.discussions-panel__new-thread-button')
   //   page.fillIn('.discussion-form__title-input', 'Nobody puts baby in a corner')
   //   page.fillIn('.discussion-form .ProseMirror', "I've had the time of my life")
   //   page.click('.dismiss-modal-button')
   //   page.pause()
-  //   page.click('.discussions-card__new-thread-button')
+  //   page.click('.discussions-panel__new-thread-button')
   //   page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
   //   page.expectValue('.discussion-form textarea', "I've had the time of my life" )
   // },
@@ -333,7 +333,7 @@ module.exports = {
     page.loadPath('setup_group_with_restrictive_settings')
     page.expectNoElement('.current-polls-card__start-poll')
     page.expectNoElement('.subgroups-card__start')
-    page.expectNoElement('.discussions-card__new-thread-button')
+    page.expectNoElement('.discussions-panel__new-thread-button')
     page.expectNoElement('.membership-card__invite')
     page.pause(10000)
     page.click('.poll-common-preview')

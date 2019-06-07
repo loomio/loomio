@@ -41,10 +41,10 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_and_closed_discussions')
-    page.expectText('.discussions-card__header', 'Open threads')
-    page.expectText('.discussions-card__header', '1 Closed')
-    page.expectNoText('.discussions-card', 'This thread is old and closed')
-    page.expectText('.discussions-card', 'What star sign are you?')
+    page.expectText('.discussions-panel__header', 'Open threads')
+    page.expectText('.discussions-panel__header', '1 Closed')
+    page.expectNoText('.discussions-panel', 'This thread is old and closed')
+    page.expectText('.discussions-panel', 'What star sign are you?')
 
     page.click('.thread-preview')
     page.click('.context-panel-dropdown__button')
@@ -137,7 +137,7 @@ module.exports = {
 
     page.expectFlash('Thread deleted')
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
-    page.expectNoText('.discussions-card', 'What star sign are you?')
+    page.expectNoText('.discussions-panel', 'What star sign are you?')
   },
 
   'can_pin_from_the_discussion_page': (test) => {

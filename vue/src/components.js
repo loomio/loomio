@@ -41,8 +41,14 @@ module.exports = {
   GroupAvatar: 'group/avatar',
   GroupForm: 'group/form',
   GroupFormActions: 'group/form_actions',
-  GroupPageDescriptionCard: 'group/description_card',
-  GroupPageDiscussionsCard: 'group/discussions_card',
+
+  GroupDescriptionCard: 'group/description_card',
+  // GroupDiscussionsPanel: 'group/discussions_panel',
+  // GroupMembersPanel: 'group/members_panel',
+  // GroupPollsPanel: 'group/polls_panel',
+  // GroupSubgroupsPanel: 'group/subgroups_panel',
+  // GroupFilesPanel: 'group/files_panel',
+
   GroupPrivacyButton: 'group/privacy_button',
   GroupSettingCheckbox: 'group/setting_checkbox',
   GroupCoverImage: 'group/cover_image',

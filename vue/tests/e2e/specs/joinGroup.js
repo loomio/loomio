@@ -7,7 +7,7 @@ module.exports = {
 
     page.loadPath('setup_closed_group_to_join')
     page.expectNoElement('.group-page-actions button')
-    page.expectNoElement('.discussions-card__new-thread-button')
+    page.expectNoElement('.discussions-panel__new-thread-button')
     page.expectNoElement('.members-card')
   },
 
