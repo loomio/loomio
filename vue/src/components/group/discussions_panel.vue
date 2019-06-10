@@ -126,8 +126,8 @@ export default
 <template lang="pug">
 .discussions-panel
   v-toolbar(flat)
-    v-toolbar-items
-      v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')")
+    //- v-toolbar-items
+    v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')")
     v-switch(v-model="showClosed" :label="$t('discussions_panel.closed')")
     v-switch(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
