@@ -36,7 +36,9 @@ class API::PollsController < API::RestfulController
   end
 
   def search
-    self.collection = page_collection poll_search.perform(search_filters)
+    instantiate_collection do | colleciton |
+      poll_search.perform(search_filters)
+    end
     respond_with_collection
   end
 

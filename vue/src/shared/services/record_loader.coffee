@@ -3,6 +3,7 @@ import {merge, camelCase, defaults } from 'lodash'
 
 export default class RecordLoader
   constructor: (opts = {}) ->
+    @exhausted = false
     @loadingFirst = true
     @loading = false
     @loadingMore = false
@@ -21,6 +22,7 @@ export default class RecordLoader
 
   fetchRecords: (opts = {}) ->
     @loading = true
+    @exhausted = false
     Records[camelCase(@collection)].fetch
       path:   @path
       params: defaults({}, opts, @params)

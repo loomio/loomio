@@ -9,9 +9,7 @@ import _map from 'lodash/map'
 import _reduce from 'lodash/reduce'
 
 export default
-  mixins: [
-    PollModalMixin
-  ]
+  mixins: [ PollModalMixin ]
   props:
     discussion:
       type: Object

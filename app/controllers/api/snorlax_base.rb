@@ -61,11 +61,12 @@ class API::SnorlaxBase < ActionController::Base
     self.resource = resource_class.new(resource_params)
   end
 
-  def instantiate_collection(timeframe_collection: true, page_collection: true)
+  def instantiate_collection
     collection = accessible_records
     collection = yield collection                if block_given?
-    collection = timeframe_collection collection if timeframe_collection
-    collection = page_collection collection      if page_collection
+    collection = timeframe_collection collection
+    collection = page_collection collection
+    collection = order_collection collection
     self.collection = collection.to_a
   end
 
@@ -86,6 +87,15 @@ class API::SnorlaxBase < ActionController::Base
     collection.offset(params[:from].to_i).limit((params[:per] || default_page_size).to_i)
   end
 
+  def order_collection(collection)
+    if valid_orders.include?(params[:order])
+      collection.order(params[:order])
+    else
+      collection
+    end
+  end
+
+
   def accessible_records
     if current_user.is_logged_in?
       visible_records
@@ -96,6 +106,10 @@ class API::SnorlaxBase < ActionController::Base
 
   def visible_records
     raise NotImplementedError.new
+  end
+
+  def valid_orders
+    []
   end
 
   def public_records

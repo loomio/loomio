@@ -16,7 +16,7 @@ export default
 
   data: ->
     group: null
-    activeTab:  @urlFor(@group)
+    activeTab: @urlFor(@group)
 
   created: ->
     @init()
@@ -37,34 +37,17 @@ export default
 
   methods:
     init: ->
-      console.log "activeTab", @activeTab
-      console.log "group page route", @$route
       Records.groups.findOrFetch(@$route.params.key).then (group) =>
         @group = group
 
         subscribeTo(@group)
         Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
-        maxDiscussions = if AbilityService.canViewPrivateContent(@group)
-          @group.discussionsCount
-        else
-          @group.publicDiscussionsCount
-
-        @pageWindow = PaginationService.windowFor
-          current:  parseInt(@$route.params.from or 0)
-          min:      0
-          max:      maxDiscussions
-          pageType: 'groupThreads'
 
         EventBus.$emit 'currentComponent',
           page: 'groupPage'
           breadcrumbs: compact([@group.parent(), @group])
-          key: @group.key
-          links:
-            canonical:   LmoUrlService.group(@group, {}, absolute: true)
-            rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
-            prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
-            next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
+          group: @group
       , (error) ->
         EventBus.$emit 'pageError', error
 
@@ -73,24 +56,11 @@ export default
 <template lang="pug">
 loading(:until='group')
   group-cover-image(:group="group")
-  v-container.group-page
+  v-container.group-page(style="min-height: 1000px")
     group-description-card(:group='group')
     v-card
-      v-tabs(fixed-tabs v-model="activeTab")
+      v-tabs(fixed-tabs lazy v-model="activeTab")
         v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" exact)
           | {{tab.name}}
-        v-tab-item(v-for="tab of tabs" :key="tab.id" :value="tab.route")
-          router-view(v-if="activeTab == tab.route")
-        //- v-card
-        //-   group-page-discussions-panel(v-if="tab == 'threads'" :group='group' flat)
-        //-   current-polls-card(v-if="tab == 'polls'" :model='group' flat)
-        //-   poll-common-index-card(v-if="tab == 'polls'" :model='group', :limit='5', :view-more-link='true' flat)
-        //-   div(v-if="tab == 'members'")
-        //-     membership-requests-card(:group='group' flat)
-        //-     membership-card(:group='group' flat)
-        //-     membership-card(:group='group', :pending='true' flat)
-        //-   subgroups-card(v-if="tab == 'subgroups'" :group='group' flat)
-        //-   document-card(v-if="tab == 'files'" :group='group' flat)
-        //-     // <outlet name="after-slack-card" model="group"></outlet>
-        //-     // <installslack_card group="group"></install_slack_card>
+      router-view
 </template>

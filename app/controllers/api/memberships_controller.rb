@@ -52,12 +52,32 @@ class API::MembershipsController < API::RestfulController
   end
 
   def autocomplete
-    @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
-                                                     pending: params[:pending],
-                                                     group: load_and_authorize(:group, :members_autocomplete),
-                                                     current_user: current_user,
-                                                     limit: 10)
+    instantiate_collection do |collection|
+      collection = collection.where(group: model.groups)
+
+      if params.has_key?(:pending)
+        collection = if params[:pending]
+          collection.pending
+        else
+          collection.active
+        end
+      end
+
+      query = params[:q].to_s
+      if query.length > 0
+        collection = collection.joins(:user)
+                               .where("users.name ilike :first OR
+                                       users.name ilike :last OR
+                                       users.username ilike :first",
+                                       first: "#{query}%", last: "% #{query}%")
+      end
+      collection
+    end
     respond_with_collection
+  end
+
+  def valid_orders
+    ['created_at', 'created_at desc', 'users.name', 'admin desc']
   end
 
   def resend
@@ -93,6 +113,9 @@ class API::MembershipsController < API::RestfulController
   end
 
   private
+  def valid_orders
+    ['users.name', 'created_at', 'created_at desc']
+  end
 
   def index_scope
     { email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id) } if params[:pending]

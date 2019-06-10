@@ -63,7 +63,7 @@ export default
 
 <template lang="pug">
 component(:is="componentType" :to="urlFor(user)")
-  v-avatar(v-if="user" :title='user.name' :size='width' :color="bgColor")
+  v-avatar(v-if="user" :title='user.name' :size='width')
     v-gravatar(v-if="user.avatarKind === 'gravatar'", :hash='user.emailHash', :gravatar-size='gravatarSize', :alt='user.name')
     img(v-else-if="user.avatarKind === 'uploaded'", :alt='user.name', :src='uploadedAvatarUrl')
     span.body-1(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px'}") {{user.avatarInitials}}

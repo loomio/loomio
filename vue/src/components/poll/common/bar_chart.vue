@@ -20,7 +20,7 @@ import AppConfig from '@/shared/services/app_config'
 export default
   props:
     stanceCounts: Array
-    size: String # IK: seems bad
+    size: Number
   data: ->
     svgEl: null
     shapes: []

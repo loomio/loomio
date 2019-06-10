@@ -95,6 +95,14 @@ class API::DiscussionsController < API::RestfulController
   end
 
   private
+  def group_ids
+    if params.has_key?(:include_subgroups) && params[:include_subgroups] == 'false'
+      [@group&.id]
+    else
+      @group&.id_and_subgroup_ids
+    end
+  end
+
   def default_scope
     super.merge(tag_cache: DiscussionTagCache.new(Array(resource || collection)).data)
   end
@@ -104,7 +112,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def accessible_records
-    Queries::VisibleDiscussions.new(user: current_user, group_ids: @group&.id_and_subgroup_ids)
+    Queries::VisibleDiscussions.new(user: current_user, group_ids: group_ids)
   end
 
   def update_reader(params = {})

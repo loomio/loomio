@@ -33,7 +33,7 @@ describe API::ProfileController do
       another_user.update deactivated_at: 1.day.ago
       get :show, params: { id: another_user.key }, format: :json
       expect(response.status).to eq 403
-      expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+      expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
     end
   end
 
@@ -98,7 +98,7 @@ describe API::ProfileController do
       it "responds with an error when there are unpermitted params" do
         user_params[:dontmindme] = 'wild wooly byte virus'
         post :update_profile, params: { user: user_params }, format: :json
-        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
+        expect(JSON.parse(response.body)['exception']).to include 'ActionController::UnpermittedParameters'
       end
     end
   end

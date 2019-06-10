@@ -1,11 +1,20 @@
 <script lang="coffee">
+import UrlFor from '@/mixins/url_for'
 export default
+  mixins: [UrlFor]
   props:
     group: Object
 </script>
 
 <template lang="pug">
-//- div(style="width: 100%; height: 200px;background-image: url(https://loomio-uploads.s3.amazonaws.com/groups/cover_photos/000/000/002/largedesktop/IMG_6150.JPG?1551260138);    position: absolute; width: 100%; min-width: 100%; background-size: cover; background-repeat: no-repeat; background-position: top center;") hello
 .group-cover-image
-  v-img(height="320px" :src="group.coverUrl()")
+  v-parallax(height="300" :src="group.coverUrl()")
+    v-layout(align-center column justify-center)
+     h1.display-1
+       span(v-if="group.parent()")
+         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
+         | &nbsp;
+         | &gt;
+         | &nbsp;
+       span {{group.name}}
 </template>
