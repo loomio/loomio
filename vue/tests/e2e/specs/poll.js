@@ -105,6 +105,7 @@ module.exports = {
     })
 
     page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
+      page.pause(1000)
       page.expectText('.poll-common-stance-choice--dot-vote', 'An option')
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
     })
