@@ -6,7 +6,7 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import WatchRecords   from '@/mixins/watch_records'
 
-import { isEmpty, throttle, filter, some } from 'lodash'
+import { isEmpty, debounce, filter, some } from 'lodash'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 
 export default
@@ -22,6 +22,13 @@ export default
 
   created: ->
     @group = Records.groups.fuzzyFind(@$route.params.key)
+
+    @loader = new RecordLoader
+      collection: 'documents'
+      path: 'for_group'
+      params:
+        group_id: @group.id
+        per: @limit
 
     @fetch()
 
@@ -40,19 +47,14 @@ export default
     fragment: -> @fetch()
 
   methods:
-    fetch: throttle ->
+    fetch: debounce ->
       @offset = 0
-      @loader = new RecordLoader
-        collection: 'documents'
-        path: 'for_group'
-        params:
-          q: @fragment
-          group_id: @group.id
-          per: @limit
-          from: @offset
+      @loader.fetchRecords
+        q: @fragment
+        from: @offset
       @loader.fetchRecords()
     ,
-      200
+      300
 
     addDocument: ->
       ModalService.open 'DocumentModal', doc: =>
@@ -70,9 +72,9 @@ export default
   //- at this stage, just list documents
   //- then list "attachments" and convert documents to attachments
   //- then provide ability to add files
-  v-toolbar
+  v-toolbar(flat)
     v-toolbar-items
-      v-text-field(solo v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')")
+      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')")
     v-spacer
     v-btn.group-files-panel__addFile(outline color="primary" @click='addDocument()' v-if='canAdministerGroup' v-t="'documents_page.add_document'")
 
@@ -86,6 +88,6 @@ export default
           a(:href="props.item.url") {{props.item.title}}
       td
         user-avatar(:user="props.item.author()")
-        | {{props.item.author().name}}
-      td {{props.item.createdAt}}
+      td
+        time-ago(:date="props.item.createdAt")
 </template>

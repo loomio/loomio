@@ -58,7 +58,7 @@ class API::PollsController < API::RestfulController
   end
 
   def search_filters
-    params.slice(:group_key, :discussion_key, :status, :user, :query)
+    params.slice(:group_key, :include_subgroups, :discussion_key, :status, :user, :query)
   end
 
   def default_scope

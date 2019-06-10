@@ -9,7 +9,7 @@ import LmoUrlService     from '@/shared/services/lmo_url_service'
 import PaginationService from '@/shared/services/pagination_service'
 import { subscribeTo }   from '@/shared/helpers/cable'
 import UrlFor        from '@/mixins/url_for.coffee'
-import {compact, head, includes} from 'lodash'
+import {compact, head, includes, filter} from 'lodash'
 
 export default
   mixins: [UrlFor]
@@ -27,13 +27,15 @@ export default
 
   computed:
     tabs: ->
+      return unless @group
       [
         {id: 0, name: 'threads',   route: @urlFor(@group)}
         {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')},
         {id: 2, name: 'members',   route: @urlFor(@group, 'members')},
         {id: 3, name: 'subgroups', route: @urlFor(@group, 'subgroups')},
         {id: 4, name: 'files',     route: @urlFor(@group, 'files')}
-      ]
+      ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
+
 
   methods:
     init: ->

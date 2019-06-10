@@ -5,6 +5,7 @@ import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import fromNow        from '@/mixins/from_now'
 import UrlFor         from '@/mixins/url_for'
+import Session        from '@/shared/services/session'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import WatchRecords from '@/mixins/watch_records'
 import {includes, some} from 'lodash'
@@ -16,6 +17,7 @@ export default
     group: Records.groups.fuzzyFind(@$route.params.key)
     fragment: ''
     loader: null
+    includeSubgroups: false
     order: 'created_at desc'
     orders: [
       {text: @$t('members_panel.order_by_name'),  value:'users.name' }
@@ -47,7 +49,11 @@ export default
   methods:
     runQuery: ->
       chain = Records.memberships.collection.chain()
-      chain = chain.find(groupId: @group.id)
+      if @includeSubgroups
+        chain = chain.find(groupId: {$in: @group.organisationIds()})
+      else
+        chain = chain.find(groupId: @group.id)
+
       if @fragment
         chain = chain.where (membership) =>
           some [membership.user().name, membership.user().username], (name) =>
@@ -77,6 +83,7 @@ export default
         q: @fragment
         from: @from
         order: @order
+        include_subgroups: @includeSubgroups
 
     show: ->
       return false if (@recordCount() == 0 && @pending)
@@ -115,6 +122,8 @@ export default
         "membership_card.#{@group.targetModel().constructor.singular}_members"
 
   computed:
+    currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
+
     showLoadMore: ->
       !@loader.loading && @loader.numRequested < @totalRecords && @fragment
 
@@ -128,18 +137,30 @@ export default
         @group.membershipsCount - @group.pendingMembershipsCount
 
   watch:
-    order: -> @fetch()
-    page: -> @fetch()
-    fragment: -> @fetch()
+    order: ->
+      @fetch()
+      @runQuery()
+    page: ->
+      @fetch()
+      @runQuery()
+    fragment: ->
+      @fetch()
+      @runQuery()
+    includeSubgroups: ->
+      @fetch()
+      @runQuery()
 </script>
 
 <template lang="pug">
 div
   v-toolbar(flat align-center)
     v-toolbar-items
-    v-text-field(v-model="fragment" append-icon="mdi-search" label="Search" single-line hide-details)
-    span(v-t="'members_panel.sort'")
-    v-select(solo flat v-model="order" :items="orders" :label="$t('members_panel.order_label')")
+      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')")
+    v-toolbar-items
+      span(v-t="'members_panel.sort'")
+      v-select(solo flat v-model="order" :items="orders" :label="$t('members_panel.order_label')")
+    //- just for group admins
+    v-switch(v-if="currentUserIsAdmin && group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-spacer
     v-btn.membership-card__invite(outline color="primary" primary v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
   v-progress-linear(indeterminate :active="loader.loadingMore")
@@ -155,6 +176,7 @@ div
           router-link(:to="urlFor(props.item.user())") {{props.item.user().name}}
       td {{props.item.user().username}}
       td {{props.item.title}}
+      td(v-if="includeSubgroups") {{props.item.group().name}}
       td
         timeAgo(:date="props.item.createdAt")
       td

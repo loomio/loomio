@@ -14,6 +14,7 @@ export default
     loader: null
     per: 25
     from: 0
+    includeSubgroups: false
 
   created: ->
     @loader = new RecordLoader
@@ -21,16 +22,21 @@ export default
       path: 'search'
       params:
         group_key: @group.key
-        from: @from
         per: @per
-        query: @fragment
 
     @fetch()
 
     @watchRecords
       collections: ['polls']
       query: (store) =>
-        chain = store.polls.collection.chain().find(groupId: @group.id)
+        chain = store.polls.collection.chain()
+
+        if @includeSubgroups
+          chain = chain.find(groupId: {$in: @group.organisationIds()})
+        else
+          chain = chain.find(groupId: @group.id)
+
+
         if @fragment
           chain = chain.where (poll) =>
             some [poll.title, poll.details], (field) =>
@@ -43,6 +49,7 @@ export default
       @loader.fetchRecords
         from: @from
         query: @fragment
+        include_subgroups: @includeSubgroups
     ,
       300
 
@@ -52,18 +59,17 @@ export default
       !@loader.loading && @loader.numRequested < @totalRecords && !@fragment.length
   watch:
     fragment: -> @fetch()
-
+    includeSubgroups: -> @fetch()
 
 </script>
 
 <template lang="pug">
 div
-  v-toolbar
-    v-text-field(solo append-icon="mdi-magnify" v-model="fragment" :placeholder="$t('common.action.search')")
+  v-toolbar(flat)
+    v-toolbar-items
+      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')")
     v-spacer
-
-    //- order by name, created at
-    //- kind: all, or something specific
+    v-switch(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
   v-progress-linear(indeterminate :active="loader.loading && !loader.loadingFirst")
   loading(:until="!loader.loadingFirst").group-polls-panel
     v-list(two-line avatar v-if='polls.length')

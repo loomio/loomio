@@ -20,6 +20,7 @@ export default
     discussions: []
     loader: null
     showClosed: false
+    showUnread: false
     fragment: ''
     includeSubgroups: false
 
@@ -58,6 +59,9 @@ export default
       else
         chain = chain.find(closedAt: null)
 
+      if @showUnread
+        chain = chain.where (discussion) -> discussion.isUnread()
+
       chain = chain.compoundsort([['pinned', true], ['lastActivityAt', true]])
 
       @discussions = chain.data()
@@ -82,20 +86,25 @@ export default
     , 250
 
   watch:
+    showUnread: ->
+      @from = 0
+      @loader.numRequested = 0
+      @fetch()
+      @query()
     showClosed: ->
+      @from = 0
+      @loader.numRequested = 0
       @fetch()
       @query()
 
     includeSubgroups: ->
+      @from = 0
+      @loader.numRequested = 0
       @fetch()
       @query()
 
     group: (a, b) ->
       @init() if a.id != b.id
-
-    searchOpen: ->
-      if @searchOpen
-        this.$nextTick -> document.querySelector('.discussions-panel__search--open input').focus()
 
     isLoggedIn: -> @fetch()
 
@@ -116,20 +125,20 @@ export default
 
 <template lang="pug">
 .discussions-panel
-  v-toolbar(flat dense)
-    //- v-toolbar-items
+  v-toolbar(flat)
     v-toolbar-items
-      v-text-field(solo append-icon="mdi-magnify" v-model="fragment" :placeholder="$t('group_page.search_threads')", @change='fetch')
-      v-switch(v-model="showClosed" :label="$t('discussions_panel.closed')")
-      v-switch(v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
+      v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')")
+    v-switch(v-model="showClosed" :label="$t('discussions_panel.closed')")
+    v-switch(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
+    v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
     v-spacer
     v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outline color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-progress-linear(indeterminate :active="loader.loading")
   .discussions-panel__content
-    .discussions-panel__list--empty(v-if='noThreads')
-      p.lmo-hint-text(v-t="{ path: 'group_page.no_threads_here' }")
-      p.lmo-hint-text(v-if='!canViewPrivateContent', v-t="{ path: 'group_page.private_threads' }")
+    v-alert.discussions-panel__list--empty(v-if='noThreads' :value="true" color="info" icon="info")
+      p(v-t="'group_page.no_threads_here'")
+      p(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
     .discussions-panel__list(v-if="discussions.length")
       section.thread-preview-collection__container
         thread-preview-collection(:threads='discussions', :limit='loader.numRequested')

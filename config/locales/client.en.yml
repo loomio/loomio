@@ -1404,6 +1404,7 @@ en:
     count: "See all: ({{count}}) decisions"
 
   discussions_panel:
+    unread: Unread
     closed: Closed
     include_subgroups: Include subgroups
 

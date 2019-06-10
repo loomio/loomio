@@ -53,7 +53,11 @@ class API::MembershipsController < API::RestfulController
 
   def autocomplete
     instantiate_collection do |collection|
-      collection = collection.where(group: model.groups)
+      if params[:include_subgroups] == "true"
+        collection = collection.where(group_id: model.group.id_and_subgroup_ids)
+      else
+        collection = collection.where(group_id: model.groups)
+      end
 
       if params.has_key?(:pending)
         collection = if params[:pending]
@@ -130,8 +134,11 @@ class API::MembershipsController < API::RestfulController
   def accessible_records
     visible = resource_class.joins(:group).joins(:user).includes(:inviter, {group: [:parent]})
     if current_user.group_ids.any?
-      visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR groups.is_visible_to_public = 't'")
+      visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR
+                     groups.parent_id IN (#{current_user.adminable_group_ids.join(',')}) OR
+                     groups.is_visible_to_public = 't'")
     else
+      # why do we do this?
       visible.where("groups.is_visible_to_public = 't'")
     end
   end

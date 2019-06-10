@@ -102,6 +102,9 @@ export default class GroupModel extends BaseModel
   hasPendingInvitations: ->
     _.some @pendingInvitations()
 
+  hasSubgroups: ->
+    @isParent() && @subgroups().length
+
   organisationDiscussions: ->
     @recordStore.discussions.find(groupId: { $in: @organisationIds() }, discussionReaderId: { $ne: null })
 
