@@ -97,13 +97,13 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
-    page.click('.poll-dot-vote-vote-form__dot-button:last-child')
-    page.click('.poll-dot-vote-vote-form__dot-button:last-child')
+    page.scrollTo('.poll-common-card-header', () => {
+      page.click('.poll-dot-vote-vote-form__dot-button:last-child')
+      page.click('.poll-dot-vote-vote-form__dot-button:last-child')
+      page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
+      page.click('.poll-common-vote-form__submit', 1000)
+    })
 
-    page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
-    page.click('.poll-common-vote-form__submit')
-
-    page.pause(1000)
     page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
       page.expectText('.poll-common-stance-choice--dot-vote', 'An option')
       page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
