@@ -6,7 +6,7 @@ import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
-import { map, debounce, sortBy } from 'lodash'
+import { map, debounce, orderBy } from 'lodash'
 import Session from '@/shared/services/session'
 import WatchRecords from '@/mixins/watch_records'
 import UrlFor       from '@/mixins/url_for'
@@ -56,8 +56,7 @@ export default
                     find(query: @fragment).
                     find(resultGroupName: {$in: @groupNames}).data()
 
-
-        @searchResults = sortBy(results, ['-rank', '-lastActivityAt'])
+        @searchResults = orderBy(results, 'rank', 'desc')
       else
         chain = Records.discussions.collection.chain()
 
@@ -177,7 +176,7 @@ export default
     v-list(two-line v-for="result in searchResults" :key="result.id")
       v-list-tile.thread-preview.thread-preview__link(:to="urlFor(result)")
         v-list-tile-content
-          v-list-tile-title {{result.title}}
+          v-list-tile-title {{result.title}} {{result.rank}}
           v-list-tile-sub-title
             span(v-html="result.resultGroupName")
             | &nbsp;
