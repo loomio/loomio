@@ -167,7 +167,7 @@ module.exports = {
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
-    page.expectText('.group-theme__name', 'Closed Dirty Dancing Shoes')
+    page.expectText('.group-cover-image', 'Closed Dirty Dancing Shoes')
     page.expectText('.thread-preview-collection__container', 'This thread is private')
   },
 
