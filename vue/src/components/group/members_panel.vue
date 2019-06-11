@@ -124,7 +124,7 @@ export default
   computed:
     currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
 
-    showLoadMore: -> !@loader.loading && !@loader.exhausted
+    showLoadMore: -> !@loader.exhausted
 
     pollType: ->
       @$t(@group.targetModel().pollTypeKey()) if @group.targetModel().isA('poll')
@@ -162,7 +162,7 @@ div
     v-switch(v-if="currentUserIsAdmin && group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-spacer
     v-btn.membership-card__invite(outline color="primary" primary v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
-  v-progress-linear(indeterminate :active="loader.loadingMore")
+  v-progress-linear(indeterminate :active="loader.loading")
   v-data-table(:items="memberships" disable-initial-sort :total-items="totalRecords" hide-actions)
     template(v-slot:no-results)
       | No results
@@ -181,8 +181,7 @@ div
       td
         membership-dropdown(:membership="props.item")
   | Showing x of {{totalRecords}} total
-  v-btn(v-if="showLoadMore" @click="loader.loadMore()" v-t="'common.action.load_more'")
-    //- v-alert(v-if='memberships.length == 0' :value="true" color="grey" outline icon="info" v-t="'group_polls_panel.no_polls'")
+  v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 
     //- v-list(two-line avatar)
     //-   v-list-tile(v-if="!searchOpen")
