@@ -5,9 +5,9 @@ module.exports = {
   'invite_to_group': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_group')
-    page.click('.membership-card__invite')
-    page.pause(500)
-    page.fillIn('.announcement-form__input input', 'test@example.com') // TODO: GK: inconsistent behaviour
+    page.click('.group-page-members-tab')
+    page.click('.membership-card__invite', 1000)
+    page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.click('.lmo-h1')
