@@ -124,8 +124,7 @@ export default
   computed:
     currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
 
-    showLoadMore: ->
-      !@loader.loading && @loader.numRequested < @totalRecords && @fragment
+    showLoadMore: -> !@loader.loading && !@loader.exhausted
 
     pollType: ->
       @$t(@group.targetModel().pollTypeKey()) if @group.targetModel().isA('poll')

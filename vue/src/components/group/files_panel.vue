@@ -18,8 +18,8 @@ export default
     attachmentLoader: null
     fragment: ''
     items: []
-    limit: 20
-    offset: 0
+    per: 25
+    from: 0
 
   created: ->
     @group = Records.groups.fuzzyFind(@$route.params.key)
@@ -29,13 +29,15 @@ export default
       path: 'for_group'
       params:
         group_id: @group.id
-        per: @limit
+        per: @per
+        from: @from
 
     @attachmentLoader = new RecordLoader
       collection: 'attachments'
       params:
         group_id: @group.id
-        per: @limit
+        per: @per
+        from: @from
 
     @fetch()
 
@@ -55,26 +57,31 @@ export default
       documents = Records.documents.collection.chain().
                      find(groupId: @group.id).
                      find(title: {$regex: ///#{@fragment}///i}).
-                     simplesort('title').
-                     limit(@limit).offset(@offset).data()
+                     limit(@loader.numRequested).data()
 
       attachments = Records.attachments.collection.chain().
                      find(groupId: @group.id).
                      find(filename: {$regex: ///#{@fragment}///i}).
-                     simplesort('filename').
-                     limit(@limit).offset(@offset).data()
+                     limit(@loader.numRequested).data()
 
       @items = orderBy(documents.concat(attachments), 'createdAt', 'desc')
+
     fetch: ->
       @loader.fetchRecords
         q: @fragment
-        from: @offset
+        from: @from
 
       @attachmentLoader.fetchRecords
         q: @fragment
-        from: @offset
+        from: @from
+
+    loadMore: ->
+      @from += @per
+      @fetch()
+
 
   computed:
+    showLoadMore: -> true || !@loader.exhausted && !@attachmentLoader.exhausted
     loading: -> @loader.loading || @attachmentLoader.loading
     canAdministerGroup: -> AbilityService.canAdministerGroup(@group)
 
@@ -99,6 +106,5 @@ export default
         user-avatar(:user="props.item.author()")
       td
         time-ago(:date="props.item.createdAt")
-
-  v-alert(v-if='!loading && items.length == 0' :value="true" color="grey" outline icon="info" v-t="'group_files_panel.no_files'")
+  v-btn(v-if="showLoadMore" :disabled="loading" @click="loadMore()" v-t="'common.action.load_more'")
 </template>
