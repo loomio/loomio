@@ -75,8 +75,10 @@ div
     v-list(two-line avatar v-if='polls.length')
       poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
 
-    //- | Showing x of {{totalRecords}} total
-    v-btn(v-if="showLoadMore" @click="loader.loadMore()" v-t="'common.action.load_more'")
-    v-alert(v-if='polls.length == 0' :value="true" color="grey" outline icon="info" v-t="'group_polls_panel.no_polls'")
-    | {{ {loading: loader.loading, numRequested: loader.numRequested, totalRecords: totalRecords,  fragment: fragment, length: polls.length} }}
+  v-alert(v-if='polls.length == 0 && !loader.loading' :value="true" color="grey" outline icon="info" v-t="'group_polls_panel.no_polls'")
+
+    //- | Showing x of {{totalRecords}} totalj
+  v-layout(align-center)
+    span(v-if="!includeSubgroups && !fragment" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
+    v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 </template>

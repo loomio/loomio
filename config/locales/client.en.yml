@@ -1414,6 +1414,7 @@ en:
     order_by_created: 'Oldest'
     order_by_created_desc: 'Newest'
     order_by_admin_desc: 'Coordinators'
+    loaded_of_total: '{{loaded}} of {{total}}'
 
   group_polls_panel:
     no_polls: No polls found.

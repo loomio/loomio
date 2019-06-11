@@ -180,8 +180,10 @@ div
         timeAgo(:date="props.item.createdAt")
       td
         membership-dropdown(:membership="props.item")
-  | Showing x of {{totalRecords}} total
-  v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+
+  v-layout(align-center)
+    span(v-if="!includeSubgroups" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
+    v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 
     //- v-list(two-line avatar)
     //-   v-list-tile(v-if="!searchOpen")
