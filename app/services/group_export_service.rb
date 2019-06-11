@@ -65,8 +65,8 @@ class GroupExportService
         klass.new(data['record'])
       end.compact!
       klass.import(new_records, validate: false, on_duplicate_key_ignore: true)
-      
-      SearchVector.index_everything!
+
+      # SearchVector.index_everything!
     end
   end
 end
