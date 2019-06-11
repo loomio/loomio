@@ -59,7 +59,7 @@ module.exports = {
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
-    page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
+    page.expectText('.group-cover-image', 'Dirty Dancing Shoes')
   },
 
   'does_not_log_in_when_password_is_incorrect': (test) => {
@@ -180,7 +180,7 @@ module.exports = {
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
-    page.expectText('.group-theme__name', 'Secret Dirty Dancing Shoes')
+    page.expectText('.group-cover-image', 'Secret Dirty Dancing Shoes')
   },
 
   'can_invite_existing_user': (test) => {
@@ -191,7 +191,7 @@ module.exports = {
     page.expectText('.auth-signin-form', 'Welcome back, Jennifer!')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
-    page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
+    page.expectText('.group-cover-image', 'Dirty Dancing Shoes')
     page.expectNoElement('.join-group-button')
   },
 
@@ -205,7 +205,7 @@ module.exports = {
     page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input')
     page.click('.auth-signup-form__submit')
     page.expectFlash('Signed in successfully')
-    page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
+    page.expectText('.group-cover-image', 'Dirty Dancing Shoes')
   },
 
   // commented out because selenium clearValue is broken on Chrome.
