@@ -44,6 +44,7 @@ export default
   computed:
     canBecomeCoordinator: ->
       membership = @group.membershipFor(Session.user())
+      return unless membership
       membership.admin == false &&
       (membership.group().adminMembershipsCount == 0 or
       Session.user().isAdminOf(membership.group().parent()))
