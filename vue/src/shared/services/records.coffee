@@ -31,6 +31,7 @@ import GroupIdentityRecordsInterface from '@/shared/interfaces/group_identity_re
 import ReactionRecordsInterface from '@/shared/interfaces/reaction_records_interface'
 import ContactRequestRecordsInterface from '@/shared/interfaces/contact_request_records_interface'
 import DocumentRecordsInterface from '@/shared/interfaces/document_records_interface'
+import AttachmentRecordsInterface from '@/shared/interfaces/attachment_records_interface'
 import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_interface'
 import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_records_interface'
 import LocaleRecordsInterface from '@/shared/interfaces/locale_records_interface'
@@ -68,6 +69,7 @@ records.addRecordsInterface GroupIdentityRecordsInterface
 records.addRecordsInterface ReactionRecordsInterface
 records.addRecordsInterface ContactRequestRecordsInterface
 records.addRecordsInterface DocumentRecordsInterface
+records.addRecordsInterface AttachmentRecordsInterface
 records.addRecordsInterface LoginTokenRecordsInterface
 records.addRecordsInterface MessageChannelRecordsInterface
 records.addRecordsInterface LocaleRecordsInterface

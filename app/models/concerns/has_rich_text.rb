@@ -25,6 +25,17 @@ module HasRichText
     has_many_attached :files
     has_many_attached :image_files
     before_save :build_attachments
+    before_save :associate_attachments_with_group
+  end
+
+  def associate_attachments_with_group
+    if group
+      [files, image_files].each do |association|
+        association.each do |attachment|
+          attachment.group_id = group.id unless attachment.persisted?
+        end
+      end
+    end
   end
 
   def build_attachments
