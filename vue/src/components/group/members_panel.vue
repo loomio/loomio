@@ -154,7 +154,7 @@ export default
 div
   v-toolbar(flat align-center)
     v-toolbar-items
-      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')")
+      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
     v-toolbar-items
       span(v-t="'members_panel.sort'")
       v-select(solo flat v-model="order" :items="orders" :label="$t('members_panel.order_label')")

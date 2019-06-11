@@ -67,7 +67,7 @@ export default
 div
   v-toolbar(flat)
     v-toolbar-items
-      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')")
+      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
     v-spacer
     v-switch(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
   v-progress-linear(indeterminate :active="loader.loading")

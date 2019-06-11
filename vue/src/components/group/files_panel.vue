@@ -91,7 +91,7 @@ export default
 .group-files-panel
   v-toolbar(flat)
     v-toolbar-items
-      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')")
+      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
     v-spacer
 
   v-data-table(:items="items" :loading="loading" disable-initial-sort hide-actions)

@@ -52,18 +52,16 @@ export default
 
     query: (store) ->
       if @fragment
+        console.log @groupIds
         results = Records.searchResults.collection.chain().
                     find(query: @fragment).
-                    find(resultGroupName: {$in: @groupNames}).data()
+                    find(resultGroupId: {$in: @groupIds}).data()
 
         @searchResults = orderBy(results, 'rank', 'desc')
       else
         chain = Records.discussions.collection.chain()
 
-        if @includeSubgroups
-          chain = chain.find(groupId: {$in: @group.organisationIds()})
-        else
-          chain = chain.find(groupId: @group.id)
+        chain = chain.find(groupId: {$in: @groupIds})
 
         if @showClosed
           chain = chain.find(closedAt: {$ne: null})
@@ -123,12 +121,11 @@ export default
     isLoggedIn: -> @fetch()
 
   computed:
-    groupNames: ->
-      if @fragment
-        if @includeSubgroups
-          @group.subgroups().map (g) -> g.name
-        else
-          [@group.name]
+    groupIds: ->
+      if @includeSubgroups
+        @group.organisationIds()
+      else
+        [@group.id]
 
     loading: ->
       @loader.loading || @searchLoader.loading
@@ -151,7 +148,7 @@ export default
 .discussions-panel
   v-toolbar(flat)
     //- v-toolbar-items
-    v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')")
+    v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
     v-switch(v-model="showClosed" :label="$t('discussions_panel.closed')")
     v-switch(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
@@ -176,7 +173,7 @@ export default
     v-list(two-line v-for="result in searchResults" :key="result.id")
       v-list-tile.thread-preview.thread-preview__link(:to="urlFor(result)")
         v-list-tile-content
-          v-list-tile-title {{result.title}} {{result.rank}}
+          v-list-tile-title {{result.title}}
           v-list-tile-sub-title
             span(v-html="result.resultGroupName")
             | &nbsp;
