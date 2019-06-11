@@ -6,18 +6,20 @@ import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
-import { map, throttle } from 'lodash'
+import { map, debounce, sortBy } from 'lodash'
 import Session from '@/shared/services/session'
 import WatchRecords from '@/mixins/watch_records'
+import UrlFor       from '@/mixins/url_for'
 
 export default
-  mixins: [DiscussionModalMixin, WatchRecords]
+  mixins: [DiscussionModalMixin, WatchRecords, UrlFor]
 
   created: -> @init()
 
   data: ->
     group: Records.groups.fuzzyFind(@$route.params.key)
     discussions: []
+    searchResults: []
     loader: null
     showClosed: false
     showUnread: false
@@ -31,10 +33,12 @@ export default
         params:
           group_id: @group.id
 
-      @fetch()
+      @searchLoader = new RecordLoader
+        collection: 'searchResults'
+        params:
+          group_id: @group.id
 
-      # EventBus.$on this, 'subgroupsLoaded', -> @init(@filter)
-      # applyLoadingFunction(this, 'searchThreads')
+      @fetch()
 
       @watchRecords
         key: @group.id
@@ -47,50 +51,61 @@ export default
       #   @group.publicDiscussionsCount
 
     query: (store) ->
-      chain = Records.discussions.collection.chain()
+      if @fragment
+        results = Records.searchResults.collection.chain().
+                    find(query: @fragment).
+                    find(resultGroupName: {$in: @groupNames}).data()
 
-      if @includeSubgroups
-        chain = chain.find(groupId: {$in: @group.organisationIds()})
+
+        @searchResults = sortBy(results, ['-rank', '-lastActivityAt'])
       else
-        chain = chain.find(groupId: @group.id)
+        chain = Records.discussions.collection.chain()
 
-      if @showClosed
-        chain = chain.find(closedAt: {$ne: null})
+        if @includeSubgroups
+          chain = chain.find(groupId: {$in: @group.organisationIds()})
+        else
+          chain = chain.find(groupId: @group.id)
+
+        if @showClosed
+          chain = chain.find(closedAt: {$ne: null})
+        else
+          chain = chain.find(closedAt: null)
+
+        if @showUnread
+          chain = chain.where (discussion) -> discussion.isUnread()
+
+        chain = chain.compoundsort([['pinned', true], ['lastActivityAt', true]])
+
+        @discussions = chain.data()
+
+
+    fetch: debounce ->
+      if @fragment
+        params = {q: @fragment}
+        params.include_subgroups = @includeSubgroups
+        @searchLoader.fetchRecords params
       else
-        chain = chain.find(closedAt: null)
-
-      if @showUnread
-        chain = chain.where (discussion) -> discussion.isUnread()
-
-      chain = chain.compoundsort([['pinned', true], ['lastActivityAt', true]])
-
-      @discussions = chain.data()
-
-
-    fetch: ->
-      params = {from: @from}
-      params.filter = 'show_closed' if @showClosed
-      params.include_subgroups = @includeSubgroups
-
-      @loader.fetchRecords(params)
-
-
-    searchThreads: throttle ->
-      return Promise.resolve(true) unless @fragment.length
-      Records.discussions.search(@group.key, @fragment).then (data) =>
-        @searched = Object.assign {}, @searched, ThreadFilter.queryFor
-          name: "group_#{@group.key}_searched"
-          group: @group
-          ids: map(data.discussions, 'id')
-          overwrite: true
-    , 250
+        params = {from: @from}
+        params.filter = 'show_closed' if @showClosed
+        params.include_subgroups = @includeSubgroups
+        @loader.fetchRecords(params)
+    ,
+      300
 
   watch:
+    fragment: ->
+      @from = 0
+      @loader.numRequested = 0
+      @searchLoader.numRequested = 0
+      @fetch()
+      @query()
+
     showUnread: ->
       @from = 0
       @loader.numRequested = 0
       @fetch()
       @query()
+
     showClosed: ->
       @from = 0
       @loader.numRequested = 0
@@ -109,6 +124,16 @@ export default
     isLoggedIn: -> @fetch()
 
   computed:
+    groupNames: ->
+      if @fragment
+        if @includeSubgroups
+          @group.subgroups().map (g) -> g.name
+        else
+          [@group.name]
+
+    loading: ->
+      @loader.loading || @searchLoader.loading
+
     noThreads: ->
       !@loading && @discussions.length == 0
 
@@ -134,8 +159,9 @@ export default
     v-spacer
     v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outline color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
-  v-progress-linear(indeterminate :active="loader.loading")
-  .discussions-panel__content
+  v-progress-linear(indeterminate :active="loading")
+
+  .discussions-panel__content(v-if="!fragment")
     v-alert.discussions-panel__list--empty(v-if='noThreads' :value="true" color="info" icon="info")
       p(v-t="'group_page.no_threads_here'")
       p(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
@@ -144,4 +170,22 @@ export default
         thread-preview-collection(:threads='discussions', :limit='loader.numRequested')
       v-btn.discussions-panel__show-more(v-if="!loader.exhausted" :disabled="loader.loading" @click='loader.loadMore()', v-t="{ path: 'common.action.show_more' }")
       .lmo-hint-text.discussions-panel__no-more-threads(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
+
+  .discussions-panel__content(v-if="fragment")
+    v-alert.discussions-panel__list--empty(v-if='!searchResults.length' :value="true" color="info" icon="info")
+      p(v-t="'group_page.no_threads_here'")
+    v-list(two-line v-for="result in searchResults" :key="result.id")
+      v-list-tile.thread-preview.thread-preview__link(:to="urlFor(result)")
+        v-list-tile-content
+          v-list-tile-title {{result.title}}
+          v-list-tile-sub-title
+            span(v-html="result.resultGroupName")
+            | &nbsp;
+            | ·
+            | &nbsp;
+            time-ago(:date='result.lastActivityAt')
+            | &nbsp;
+            | ·
+            | &nbsp;
+            span(v-html="result.blurb")
 </template>
