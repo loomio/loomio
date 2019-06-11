@@ -3,6 +3,7 @@
 
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
+import WatchRecords from '@/mixins/watch_records'
 
 import { submitStance }  from '@/shared/helpers/form'
 import { buttonStyle }   from '@/shared/helpers/style'
@@ -14,11 +15,17 @@ import _pull from 'lodash/pull'
 import _includes from 'lodash/includes'
 
 export default
+  mixins: [WatchRecords]
   props:
     stance: Object
   data: ->
     selectedOptionIds: _compact @stance.pollOptionIds()
+    pollOptions: []
   created: ->
+    @watchRecords
+      collections: ['poll_options']
+      query: (records) =>
+        @pollOptions = @stance.poll().pollOptions()
     @submit = submitStance @, @stance,
       prepareFn: =>
         @$emit 'processing'
@@ -27,7 +34,7 @@ export default
           poll_option_id: id
   methods:
     orderedPollOptions: ->
-      _sortBy @stance.poll().pollOptions(), 'priority'
+      _sortBy @pollOptions, 'priority'
 
     select: (option) ->
       if @stance.poll().multipleChoice
@@ -56,6 +63,7 @@ export default
       .poll-common-stance-icon__chip(:style="{'border-color': option.color}")
       v-list-tile-title {{ option.name }}
   validation-errors(:subject='stance', field='stanceChoices')
+  poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason.animated(:stance='stance', v-show='stance.poll().multipleChoice || selectedOptionIds.length', v-if='stance')
   v-card-actions
     poll-common-show-results-button(v-if='stance.isNew()')

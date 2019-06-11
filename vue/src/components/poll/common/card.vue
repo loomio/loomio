@@ -51,7 +51,6 @@ v-card
     poll-common-details-panel(:poll='poll')
     .poll-common-card__results-shown(v-if='showResults')
       poll-common-directive(:poll='poll', name='chart-panel')
-      poll-common-add-option-button(:poll='poll')
       poll-common-percent-voted(:poll='poll')
     poll-common-action-panel(:poll='poll')
     .poll-common-card__results-shown(v-if='showResults')

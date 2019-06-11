@@ -31,20 +31,31 @@
 
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
+import WatchRecords from '@/mixins/watch_records'
 
 import _reduce from 'lodash/reduce'
 import _sortBy from 'lodash/sortBy'
 
 export default
+  mixins: [WatchRecords]
   props:
     poll: Object
     zone: Object
+  data: ->
+    pollOptions: []
+    latestStances: []
   created: ->
+    @watchRecords
+      collections: ['stances', 'poll_options']
+      query: (store) =>
+        @latestStances = @poll.latestStances()
+        @pollOptions = @poll.pollOptions()
     # EventBus.listen $scope, 'timeZoneSelected', (e, zone) ->
     #   $scope.zone = zone
+
   methods:
     totalFor: (option) ->
-      _reduce(@poll.latestStances(), (total, stance) =>
+      _reduce(@latestStances, (total, stance) =>
         scoreForStance = stance.scoreFor(option)
         total[scoreForStance] += 1
         total
@@ -52,7 +63,7 @@ export default
 
   computed:
     orderedPollOptions: ->
-      _sortBy @poll.pollOptions(), 'name'
+      _sortBy @pollOptions, 'name'
 </script>
 
 <template lang="pug">
