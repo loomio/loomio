@@ -113,6 +113,7 @@ en:
     models:
       proposal: 'Proposal'
     copy: 'Copy'
+    reset: 'Reset'
     copy_text: 'Copy text'
     copied: 'Copied to clipboard'
     points_abbrev: Each vote worth {{score}} points
@@ -859,7 +860,8 @@ en:
     copy_link: 'Copy'
     email_addresses: 'Email addresses'
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Copy the link and send it to anyone you want to join the group. This will give them access to all threads in the group.'
+    shareable_link_explanation: 'Anyone with the sharable link can join the group as if they were invited. Do not share it with people who you do not want in your group.'
+    shareable_link_reset: 'Shareable link reset. The previous link will no longer work.'
     email_explanation: 'Alternatively, enter email addresses below to send invitations by email.'
     add_custom_message: 'Make your invite personal, '
     add_custom_message_link: 'add a custom message.'

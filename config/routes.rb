@@ -57,6 +57,7 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:index, :show, :create, :update] do
       member do
         get :token
+        post :reset_token
         get :subgroups
         post :export
         patch :archive

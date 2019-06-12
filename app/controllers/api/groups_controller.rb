@@ -7,6 +7,12 @@ class API::GroupsController < API::RestfulController
     respond_with_resource scope: {include_token: true}
   end
 
+  def reset_token
+    self.resource = load_and_authorize(:formal_group, :invite_people)
+    resource.update(token: resource.class.generate_unique_secure_token)
+    respond_with_resource scope: {include_token: true}
+  end
+
   def show
     self.resource = load_and_authorize(:formal_group)
     respond_with_resource
