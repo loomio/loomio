@@ -31,12 +31,12 @@ export default
     from: 0
     headers: [
       {text: '', align: 'center', sortable: false},
-      {text: @$t('members_panel.header_name'), align: 'center', sortable: false},
-      {text: @$t('members_panel.header_username'), align: 'center', sortable: false},
-      {text: @$t('members_panel.header_role'), align: 'center', sortable: false},
-      {text: @$t('members_panel.header_invited_by'), align: 'center', sortable: false},
-      {text: @$t('members_panel.header_invited'), align: 'center', sortable: false},
-      {text: @$t('members_panel.header_actions'), align: 'center', sortable: false},
+      {text: @$t('members_panel.header_name'), sortable: false},
+      {text: @$t('members_panel.header_username'), sortable: false},
+      {text: @$t('members_panel.header_role'), sortable: false},
+      {text: @$t('members_panel.header_invited_by'), sortable: false},
+      {text: @$t('members_panel.header_invited'), sortable: false},
+      {text: @$t('members_panel.header_actions'), sortable: false},
     ]
 
   created: ->
