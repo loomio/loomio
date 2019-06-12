@@ -58,6 +58,11 @@ angular.module('loomioApp').directive 'announcementForm', ->
     $scope.audiences      = -> audiencesFor($scope.announcement.model)
     $scope.audienceValues = -> audienceValuesFor($scope.announcement.model)
 
+    $scope.resetSharableLink = ->
+      $scope.announcement.model.resetToken().then ->
+        $scope.shareableLink = LmoUrlService.shareableLink($scope.announcement.model)
+        FlashService.success('invitation_form.shareable_link_reset')
+
     $scope.search = (query) ->
       Records.announcements.search(query, $scope.announcement.model).then (users) ->
         utils.parseJSONList(users)
