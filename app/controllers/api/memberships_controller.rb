@@ -77,7 +77,7 @@ class API::MembershipsController < API::RestfulController
       end
       collection
     end
-    respond_with_collection
+    respond_with_collection(scope: index_scope)
   end
 
   def valid_orders
@@ -122,7 +122,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def index_scope
-    { email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id) } if params[:pending]
+    { email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id), include_inviter: true }
   end
 
   def model

@@ -29,6 +29,15 @@ export default
 
     per: 25
     from: 0
+    headers: [
+      {text: '', align: 'center', sortable: false},
+      {text: @$t('members_panel.header_name'), align: 'center', sortable: false},
+      {text: @$t('members_panel.header_username'), align: 'center', sortable: false},
+      {text: @$t('members_panel.header_role'), align: 'center', sortable: false},
+      {text: @$t('members_panel.header_invited_by'), align: 'center', sortable: false},
+      {text: @$t('members_panel.header_invited'), align: 'center', sortable: false},
+      {text: @$t('members_panel.header_actions'), align: 'center', sortable: false},
+    ]
 
   created: ->
     @loader = new RecordLoader
@@ -122,6 +131,12 @@ export default
       else
         "membership_card.#{@group.targetModel().constructor.singular}_members"
 
+    componentType: (membership) ->
+      if membership.acceptedAt
+        'router-link'
+      else
+        'div'
+
   computed:
     membershipRequestsPath: -> LmoUrlService.membershipRequest(@group)
     currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
@@ -166,19 +181,24 @@ div
     v-btn(flat color="primary" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
     v-btn.membership-card__invite(flat color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
   v-progress-linear(indeterminate :active="loader.loading")
-  v-data-table(:items="memberships" disable-initial-sort :total-items="totalRecords" hide-actions)
+  v-data-table(:items="memberships" :headers="headers" disable-initial-sort :total-items="totalRecords" hide-actions)
     template(v-slot:no-results)
       | No results
     template(v-slot:items="props")
       td
         v-icon(v-if="props.item.admin") mdi-star
-      td
+      td(v-if="props.item.acceptedAt")
         v-layout(align-center)
           user-avatar.mr-3(:user='props.item.user()', size='forty')
           router-link(:to="urlFor(props.item.user())") {{props.item.user().name}}
+      td(v-else)
+        v-layout(align-center)
+          user-avatar.mr-3(:user='props.item.user()', size='forty')
+          span {{props.item.user().email || props.item.user().name}}
       td {{props.item.user().username}}
       td {{props.item.title}}
       td(v-if="includeSubgroups") {{props.item.group().name}}
+      td {{props.item.inviter() && props.item.inviter().name}}
       td
         timeAgo(:date="props.item.createdAt")
       td
