@@ -59,10 +59,6 @@ export default
             @views[group.key] = ThreadFilter(store, filters: @filters, group: group)
           @unreadCount = sum values(@views), (v) -> v.length
 
-
-    query: ->
-      ThreadQueryService.queryFor(name: "inbox", filters: @filters)
-
 </script>
 
 <template lang="pug">

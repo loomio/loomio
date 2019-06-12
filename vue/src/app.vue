@@ -69,7 +69,8 @@ v-app
   sidebar
   v-content
     router-view(v-if="!pageError")
-    error(v-if="pageError" :error="pageError")
+    common-error(v-if="pageError" :error="pageError")
+    common-footer
   modal-launcher
-  flash
+  common-flash
 </template>
