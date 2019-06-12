@@ -1418,6 +1418,12 @@ en:
     order_by_admin_desc: 'Coordinators'
     loaded_of_total: '{{loaded}} of {{total}}'
     view_requests: View requests
+    header_name: 'Name'
+    header_username: 'Username'
+    header_role: 'Role'
+    header_invited_by: 'Invited by'
+    header_invited: 'Invited'
+    header_actions: 'Actions'
 
   group_polls_panel:
     no_polls: No polls found
