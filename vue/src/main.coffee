@@ -9,6 +9,9 @@ import '@/vuetify'
 import '@/observe_visibility'
 import './registerServiceWorker'
 
+import VueClipboard from 'vue-clipboard2'
+Vue.use(VueClipboard)
+
 Vue.config.productionTip = false
 
 # { pluginConfigFor } = require '@/shared/helpers/plugin'

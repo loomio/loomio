@@ -1402,7 +1402,7 @@ en:
 
   poll_common_index_card:
     title: Previous decisions
-    no_polls: No previous decisions found.
+    no_polls: No previous decisions found
     count: "See all: ({{count}}) decisions"
 
   discussions_panel:
@@ -1417,12 +1417,13 @@ en:
     order_by_created_desc: 'Newest'
     order_by_admin_desc: 'Coordinators'
     loaded_of_total: '{{loaded}} of {{total}}'
+    view_requests: View requests
 
   group_polls_panel:
-    no_polls: No polls found.
+    no_polls: No polls found
 
   group_files_panel:
-    no_files: No files found.
+    no_files: No files found
 
   poll_common_action_panel:
     anonymous: Votes will be anonymous

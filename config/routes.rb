@@ -46,7 +46,7 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :attachments, only: :index
-    
+
     resources :boot, only: [] do
       get :site, on: :collection
       get :user, on: :collection

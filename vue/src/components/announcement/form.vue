@@ -17,10 +17,9 @@ export default
     announcement: Object
 
   data: ->
-    shareableLink: LmoUrlService.shareableLink(@announcement.model)
     query: ''
     recipients: []
-    searchResults: @announcement.model.members()
+    searchResults: if @announcement.model.isA('group') then [] else @announcement.model.members()
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
     invitationsRemaining: 1000
     showInvitationsRemaining: false
@@ -30,8 +29,7 @@ export default
 
   created: ->
     if @announcement.model.isA('group')
-      @announcement.model.fetchToken().then =>
-        @shareableLink = LmoUrlService.shareableLink(@announcement.model)
+      @announcement.model.fetchToken()
 
     if @announcement.model.group()
       @invitationsRemaining =
@@ -60,14 +58,17 @@ export default
   methods:
     tooManyInvitations: ->
         @showInvitationsRemaining && (@invitationsRemaining < @recipients.length)
+
     audiences: -> audiencesFor(@announcement.model)
+
     audienceValues: -> audienceValuesFor(@announcement.model)
+
     search: throttle (query) ->
       Records.announcements.search(query, @announcement.model).then (data) =>
         if data && data.length == 1 && data[0].id == 'multiple'
           each map(data[0].emails, @buildRecipientFromEmail), @addRecipient
         else
-          @searchResults = uniq @recipients.concat @announcement.model.members().concat utils.parseJSONList(data)
+          @searchResults = uniq @recipients.concat utils.parseJSONList(data)
     , 300
     , {trailing: true}
 
@@ -78,7 +79,8 @@ export default
       emailHash: email
       avatarKind: 'mdi-email-outline'
 
-    copied: ->
+    copied: (e) ->
+      @$copyText(e.text, @$refs.copyContainer.$el)
       Flash.success('common.copied')
 
     remove: (item) ->
@@ -99,13 +101,18 @@ export default
 
     resetShareableLink: ->
       @announcement.model.resetToken().then =>
-        @shareableLink = LmoUrlService.shareableLink(@announcement.model)
         Flash.success('invitation_form.shareable_link_reset')
 
   computed:
     canUpdateAnyoneCanParticipate: ->
       @announcement.model.isA('poll') &&
       AbilityService.canAdminister(@announcement.model)
+
+    shareableLink: ->
+      if @announcement.model.token
+        LmoUrlService.shareableLink(@announcement.model)
+      else
+        @$t('common.action.loading')
 
   watch:
     query: (q) ->
@@ -126,9 +133,9 @@ v-card
 
       div(v-if="canInvite")
         .announcement-form__invite
-          p.announcement-form__help.md-subhead(v-t="'announcement.form.' + announcement.kind + '.helptext'")
+          p.announcement-form__help(v-t="'announcement.form.' + announcement.kind + '.helptext'")
           v-list
-            v-list-tile.announcement-form__audience.md-whiteframe-1dp(avatar v-for='audience in audiences()', :key='audience', @click='loadAudience(audience)')
+            v-list-tile.announcement-form__audience(avatar v-for='audience in audiences()', :key='audience', @click='loadAudience(audience)')
               v-list-tile-avatar
                 v-icon mdi-account-multiple
               v-list-tile-content
@@ -144,24 +151,21 @@ v-card
               v-list-tile-content.announcement-chip__content
                 v-list-tile-title(v-html='data.item.name')
 
-        .lmo-flex.lmo-flex__space-between(v-if="showInvitationsRemaining")
-          .spacer
-          p.md-caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
+        v-layout(v-if="showInvitationsRemaining")
+          v-spacer
+          p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
 
         .announcement-form__share-link(v-if="!announcement.model.isA('discussion') && recipients.length == 0")
-          p.announcement-form__help.md-subhead(v-if="announcement.model.isA('group')", v-t="'invitation_form.shareable_link'")
-          .announcement-shareable-link__content.lmo-flex--column
-            .lmo-flex--row.lmo-flex__center(v-if='canUpdateAnyoneCanParticipate || announcement.model.anyoneCanParticipate')
+          p.announcement-form__help(v-if="announcement.model.isA('group')", v-t="'invitation_form.shareable_link'")
+          v-layout
+            v-flex(v-if='canUpdateAnyoneCanParticipate || announcement.model.anyoneCanParticipate')
               v-checkbox.announcement-form__checkbox(v-model='announcement.model.anyoneCanParticipate', @change='announcement.model.save()', v-if='canUpdateAnyoneCanParticipate' :label="$t('announcement.form.anyone_can_participate')")
-            .lmo-flex--column.lmo-flex__center(v-if="announcement.model.anyoneCanParticipate || announcement.model.isA('group')")
-              .lmo-flex--row.lmo-flex__center
-                .lmo-flex__grow.md-no-errors.announcement-form__shareable-link
-                  input(:value='shareableLink', :disabled='true')
-                v-btn.md-accent.md-button--tiny.announcement-form__copy(v-t="'common.copy'" title="$t('common.copy')", clipboard='true', text='shareableLink', on-copied='copied()')
-              .lmo-flex--row.lmo-flex__center
-                v-btn.md-accent.md-button--tiny.announcement-form__reset(v-t="'common.reset'" @click="resetShareableLink()")
-              .lmo-flex--row.lmo-flex__center
-                p.md-caption(v-t="'invitation_form.shareable_link_explanation'")
+            v-flex(v-if="announcement.model.anyoneCanParticipate || announcement.model.isA('group')")
+              v-layout(align-center)
+                v-text-field.announcement-form__shareable-link(:value='shareableLink' :disabled='true')
+                v-btn.announcement-form__copy(ref="copyContainer" flat color="accent" v-t="'common.copy'" v-clipboard:copy='shareableLink' v-clipboard:success='copied' v-clipboard:error='"fuck"')
+                v-btn.announcement-form__reset(flat color="warning" v-t="'common.reset'" @click="resetShareableLink()")
+              p.caption(v-t="'invitation_form.shareable_link_explanation'")
   v-card-actions
     div(v-if="recipients.length")
       p(v-show="tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
