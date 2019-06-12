@@ -97,6 +97,11 @@ export default
       Records.announcements.fetchAudience(@announcement.model, kind).then (data) =>
         each sortBy(utils.parseJSONList(data), (e) => e.name || e.email ), @addRecipient
 
+    resetShareableLink: ->
+      @announcement.model.resetToken().then =>
+        @shareableLink = LmoUrlService.shareableLink(@announcement.model)
+        Flash.success('invitation_form.shareable_link_reset')
+
   computed:
     canUpdateAnyoneCanParticipate: ->
       @announcement.model.isA('poll') &&
@@ -148,11 +153,15 @@ v-card
           .announcement-shareable-link__content.lmo-flex--column
             .lmo-flex--row.lmo-flex__center(v-if='canUpdateAnyoneCanParticipate || announcement.model.anyoneCanParticipate')
               v-checkbox.announcement-form__checkbox(v-model='announcement.model.anyoneCanParticipate', @change='announcement.model.save()', v-if='canUpdateAnyoneCanParticipate' :label="$t('announcement.form.anyone_can_participate')")
-            .lmo-flex--row.lmo-flex__center(v-if="announcement.model.anyoneCanParticipate || announcement.model.isA('group')")
-              .lmo-flex__grow.md-no-errors.announcement-form__shareable-link
-                input(:value='shareableLink', :disabled='true')
-              v-btn.md-accent.md-button--tiny.announcement-form__copy(title="$t('common.copy')", clipboard='true', text='shareableLink', on-copied='copied()')
-                span(v-t="'common.copy'")
+            .lmo-flex--column.lmo-flex__center(v-if="announcement.model.anyoneCanParticipate || announcement.model.isA('group')")
+              .lmo-flex--row.lmo-flex__center
+                .lmo-flex__grow.md-no-errors.announcement-form__shareable-link
+                  input(:value='shareableLink', :disabled='true')
+                v-btn.md-accent.md-button--tiny.announcement-form__copy(v-t="'common.copy'" title="$t('common.copy')", clipboard='true', text='shareableLink', on-copied='copied()')
+              .lmo-flex--row.lmo-flex__center
+                v-btn.md-accent.md-button--tiny.announcement-form__reset(v-t="'common.reset'" @click="resetShareableLink()")
+              .lmo-flex--row.lmo-flex__center
+                p.md-caption(v-t="'invitation_form.shareable_link_explanation'")
   v-card-actions
     div(v-if="recipients.length")
       p(v-show="tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")

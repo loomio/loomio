@@ -69,6 +69,9 @@ export default class GroupModel extends BaseModel
   fetchToken: ->
     @remote.getMember(@id, 'token').then => @token
 
+  resetToken: ->
+    @remote.postMember(@id, 'reset_token').then => @token
+
   closedPolls: ->
     _.filter @polls(), (poll) ->
       !poll.isActive()
