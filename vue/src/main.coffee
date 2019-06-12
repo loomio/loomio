@@ -23,6 +23,13 @@ exportGlobals()
 
 boot ->
   Session.fetch().then (data) ->
+
+    ['shortcut icon', 'apple-touch-icon'].forEach (name) =>
+      link = document.createElement('link')
+      link.rel = name
+      link.href = AppConfig.theme.icon_src
+      document.getElementsByTagName('head')[0].appendChild(link)
+
     Session.apply(data)
 
     new Vue(
