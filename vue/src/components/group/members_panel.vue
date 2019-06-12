@@ -9,6 +9,7 @@ import Session        from '@/shared/services/session'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import WatchRecords from '@/mixins/watch_records'
 import {includes, some} from 'lodash'
+import LmoUrlService from '@/shared/services/lmo_url_service'
 
 export default
   mixins: [fromNow, AnnouncementModalMixin, WatchRecords, UrlFor]
@@ -122,6 +123,7 @@ export default
         "membership_card.#{@group.targetModel().constructor.singular}_members"
 
   computed:
+    membershipRequestsPath: -> LmoUrlService.membershipRequest(@group)
     currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
 
     showLoadMore: -> !@loader.exhausted
@@ -161,7 +163,8 @@ div
     //- just for group admins
     v-switch(v-if="currentUserIsAdmin && group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-spacer
-    v-btn.membership-card__invite(outline color="primary" primary v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
+    v-btn(flat color="primary" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
+    v-btn.membership-card__invite(flat color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
   v-progress-linear(indeterminate :active="loader.loading")
   v-data-table(:items="memberships" disable-initial-sort :total-items="totalRecords" hide-actions)
     template(v-slot:no-results)

@@ -11,7 +11,7 @@ export default
   mixins: [WatchRecords]
 
   data: ->
-    group: {}
+    group: null
     pendingRequests: []
     previousRequests: []
 
@@ -52,44 +52,43 @@ export default
 </script>
 
 <template lang="pug">
-  .loading-wrapper.lmo-one-column-layout
-    loading(v-if='isEmptyGroup')
-    main.membership-requests-page(v-if='!isEmptyGroup')
-      .lmo-group-theme-padding
-      //- group-theme(:group='group')
+loading(:until="group")
+  group-cover-image(:group="group")
+  v-container.membership-requests-page
+    h1.headline(v-t="'membership_requests_page.heading'")
+    v-card
+      v-card-text
+        v-list.membership-requests-page__pending-requests(subheader)
+          v-subheader.membership-requests-page__no-pending-requests(v-if='pendingRequests.length == 0' v-t="'membership_requests_page.no_pending_requests'")
+          v-list-tile.membership-requests-page__pending-request(v-for='request in pendingRequests' :key='request.id' avatar)
+            v-list-tile-avatar
+              user-avatar(:user='request.actor()', size='medium')
+            v-list-tile-content
+              v-list-tile-title.membership-requests-page__pending-request-name {{request.actor().name}} ({{request.email}})
+              v-list-tile-sub-title.membership-requests-page__pending-request-introduction
+                span {{request.introduction}}
+                time-ago(:date='request.createdAt')
+            v-list-tile-action
+              //- , v-t="'membership_requests_page.ignore'"
+              //- , v-t="'membership_requests_page.approve'"
+              v-btn.membership-requests-page__approve(flat icon @click='approve(request)')
+                v-icon mdi-check
+            v-list-tile-action
+              v-btn.membership-requests-page__ignore(flat icon @click='ignore(request)')
+                v-icon mdi-close
 
-      v-list.membership-requests-page__pending-requests(subheader)
-        v-subheader(v-if='pendingRequests.length' v-t="'membership_requests_page.heading'")
-        v-subheader.membership-requests-page__no-pending-requests(v-if='pendingRequests.length == 0' v-t="'membership_requests_page.no_pending_requests'")
-        v-list-tile.membership-requests-page__pending-request(v-for='request in pendingRequests' :key='request.id' avatar)
-          v-list-tile-avatar
-            user-avatar(:user='request.actor()', size='medium')
-          v-list-tile-content
-            v-list-tile-title.membership-requests-page__pending-request-name {{request.actor().name}} ({{request.email}})
-            v-list-tile-sub-title.membership-requests-page__pending-request-introduction
-              span {{request.introduction}}
-              time-ago(:date='request.createdAt')
-          v-list-tile-action
-            //- , v-t="'membership_requests_page.ignore'"
-            //- , v-t="'membership_requests_page.approve'"
-            v-btn.membership-requests-page__approve(flat icon @click='approve(request)')
-              v-icon mdi-check
-          v-list-tile-action
-            v-btn.membership-requests-page__ignore(flat icon @click='ignore(request)')
-              v-icon mdi-close
-
-      v-list.membership-requests-page__previous-requests(subheader three-line)
-        v-subheader(v-if='previousRequests.length' v-t="'membership_requests_page.previous_requests'")
-        v-subheader.membership-requests-page__no-previous-requests(v-if='previousRequests.length == 0' v-t="'membership_requests_page.no_previous_requests'")
-        v-list-tile.membership-requests-page__previous-request(v-for='request in previousRequests' :key='request.id' avatar)
-          v-list-tile-avatar
-            user-avatar(:user='request.actor()', size='medium')
-          v-list-tile-content
-            v-list-tile-title.membership-requests-page__previous-request-name {{request.actor().name}} {{request.email}}
-            v-list-tile-sub-title.membership-requests-page__previous-request-response
-              span(v-t="{ path: 'membership_requests_page.previous_request_response', args: { response: request.formattedResponse(), responder: request.responder().name } }")
-              span ·
-              time-ago(:date='request.respondedAt')
-              .membership-requests-page__previous-request-introduction {{request.introduction}}
+        v-list.membership-requests-page__previous-requests(subheader three-line)
+          v-subheader(v-if='previousRequests.length' v-t="'membership_requests_page.previous_requests'")
+          v-subheader.membership-requests-page__no-previous-requests(v-if='previousRequests.length == 0' v-t="'membership_requests_page.no_previous_requests'")
+          v-list-tile.membership-requests-page__previous-request(v-for='request in previousRequests' :key='request.id' avatar)
+            v-list-tile-avatar
+              user-avatar(:user='request.actor()', size='medium')
+            v-list-tile-content
+              v-list-tile-title.membership-requests-page__previous-request-name {{request.actor().name}} {{request.email}}
+              v-list-tile-sub-title.membership-requests-page__previous-request-response
+                span(v-t="{ path: 'membership_requests_page.previous_request_response', args: { response: request.formattedResponse(), responder: request.responder().name } }")
+                span ·
+                time-ago(:date='request.respondedAt')
+                .membership-requests-page__previous-request-introduction {{request.introduction}}
 
 </template>

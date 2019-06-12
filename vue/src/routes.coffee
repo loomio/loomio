@@ -69,6 +69,7 @@ export default new Router
     {path: '/slack/install', component: InstallSlackPage},
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren},
+    {path: '/g/:key/membership_requests', component: MembershipRequestsPage},
     {path: '/g/:key/:tab', component: GroupPage, children: groupPageChildren},
     # key is actually handle
     {path: '/:key/:tab', component: GroupPage, children: groupPageChildren},
