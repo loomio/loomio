@@ -283,7 +283,7 @@ class User < ApplicationRecord
 
   # Provide can? and cannot? as methods for checking permissions
   def ability
-    @ability ||= Ability::Base.new(self)
+    @ability ||= ::Ability::Base.new(self)
   end
 
   delegate :can?, :cannot?, :to => :ability

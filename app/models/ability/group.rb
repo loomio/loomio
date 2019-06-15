@@ -8,6 +8,7 @@ module Ability::Group
       else
         group.is_visible_to_public? or
         user_is_member_of?(group.id) or
+        accept_pending_membership_for!(group) or 
         (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
       end
     end
