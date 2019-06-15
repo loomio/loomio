@@ -18,7 +18,7 @@ class Group < ApplicationRecord
 
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
   has_many :all_members, through: :all_memberships, source: :user
-  
+
   has_many :memberships, -> { where archived_at: nil }
   has_many :members, through: :memberships, source: :user
 
@@ -61,10 +61,6 @@ class Group < ApplicationRecord
 
   def guest_group
     self
-  end
-
-  def headcount
-    memberships_count + pending_memberships_count
   end
 
   def mailer
