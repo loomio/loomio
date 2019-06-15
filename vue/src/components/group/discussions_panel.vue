@@ -158,9 +158,9 @@ export default
   v-progress-linear(indeterminate :active="loading")
 
   .discussions-panel__content(v-if="!fragment")
-    v-alert.discussions-panel__list--empty(v-if='noThreads' :value="true" color="info" icon="info")
-      p(v-t="'group_page.no_threads_here'")
-      p(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
+    .discussions-panel__list--empty(v-if='noThreads' :value="true")
+      p.text-xs-center(v-t="'group_page.no_threads_here'")
+      p.text-xs-center(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
     .discussions-panel__list(v-if="discussions.length")
       section.thread-preview-collection__container
         thread-preview-collection(:threads='discussions', :limit='loader.numRequested')

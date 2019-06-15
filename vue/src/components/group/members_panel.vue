@@ -68,7 +68,6 @@ export default
         chain = chain.where (membership) =>
           some [membership.user().name, membership.user().username], (name) =>
             RegExp("^#{@fragment}", "i").test(name) or RegExp(" #{@fragment}", "i").test(name)
-            # includes(membership.user().username.toLowerCase(), @fragment.toLowerCase())
 
       switch @order
         when 'users.name'

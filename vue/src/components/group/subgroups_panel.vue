@@ -13,6 +13,7 @@ export default
 
   data: ->
     group: Records.groups.fuzzyFind(@$route.params.key)
+    fragment: ''
     subgroups: []
 
   created: ->
@@ -26,6 +27,10 @@ export default
                          simplesort('name').data()
 
   computed:
+    filteredSubgroups: ->
+      rx = RegExp(@fragment, 'i');
+      @subgroups.filter((group) -> rx.test(group.name))
+
     canCreateSubgroups: ->
       AbilityService.canCreateSubgroups(@group)
 
@@ -38,10 +43,11 @@ export default
 <template lang="pug">
 .group-subgroups-panel
   v-toolbar(flat)
+    v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
     v-spacer
     v-btn.subgroups-card__start(outline color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
   v-list(avatar three-line)
-    v-list-tile.subgroups-card__list-item(v-for='group in subgroups', :key='group.id')
+    v-list-tile.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id')
       v-list-tile-avatar.subgroups-card__list-item-logo
         group-avatar(:group="group" size="medium")
       v-list-tile-content.subgroups-card__list-item-name

@@ -16,7 +16,6 @@ export default (store, options) ->
   if options.ids
     chain = chain.find(id: {$in: options.ids})
   else
-    console.log options
     each [].concat(options.filters), (filter) ->
       chain = switch filter
         when 'show_recent'    then chain.find(lastActivityAt: { $gt: moment().startOf('day').subtract(6, 'week').toDate() })

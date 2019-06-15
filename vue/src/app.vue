@@ -68,9 +68,10 @@ v-app
   navbar
   sidebar
   v-content
-    router-view(v-if="!pageError")
-    common-error(v-if="pageError" :error="pageError")
-    common-footer
+    v-layout(column fill-height justify-space-between)
+      router-view(v-if="!pageError")
+      //- common-error(v-if="pageError" :error="pageError")
+      common-footer
   modal-launcher
   common-flash
 </template>

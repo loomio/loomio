@@ -30,7 +30,7 @@ export default
       @isLoggedIn = true
 
     EventBus.$on 'currentComponent', (data) =>
-      console.log "currentComponent", data
+      # console.log "currentComponent", data
 
       if data.title?
         @title = data.title
