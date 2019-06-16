@@ -109,6 +109,7 @@ fr:
     models:
       proposal: 'Proposition'
     copy: 'Copier'
+    reset: 'Réinitialiser'
     copy_text: 'Copier le texte'
     copied: 'Copié dans le presse papier'
     points_abbrev: Chaque vote vaut {{score}} points
@@ -777,7 +778,6 @@ fr:
     copy_link: 'Copier'
     email_addresses: 'Adresses e-mail'
     email_addresses_placeholder: 'ex. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Copiez le lien et envoyez-le à tous ceux que vous voulez ajouter au groupe. Cela leur donnera accès à toutes les discussions du groupe.'
     email_explanation: 'Ou alors saisissez les adresses e-mail ci-dessous pour envoyer les invitations.'
     add_custom_message: 'Personnalisez votre invitation'
     add_custom_message_link: 'ajouter un message personnalisé'

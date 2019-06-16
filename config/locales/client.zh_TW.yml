@@ -109,6 +109,7 @@ zh_TW:
     models:
       proposal: '提案'
     copy: '複製'
+    reset: '重設'
     copy_text: '複製文字'
     copied: '已經複製到剪貼簿'
     points_abbrev: 每個投票價值 {{score}} 分
@@ -785,7 +786,8 @@ zh_TW:
     copy_link: '複製'
     email_addresses: '電子郵件地址'
     email_addresses_placeholder: '範例：helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: '複製連結並傳送給任何您想要讓他加入群組的人。這將會給予他們存取在該群組中的所有討論串的權限。'
+    shareable_link_explanation: '任何持有分享出去的連結的人都可以如同他們被邀請那樣加入。所以不要把連結分享給您不想要他加入的人。'
+    shareable_link_reset: '可分享的連結已重設。先前的連結已不再可用。'
     email_explanation: '替代方案是，在下面輸入電子郵件地址來以電子郵件傳送邀請。'
     add_custom_message: '讓您的邀請變為私人的，'
     add_custom_message_link: '加入一段自訂的訊息。'
