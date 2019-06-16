@@ -36,6 +36,8 @@ import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_
 import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_records_interface'
 import LocaleRecordsInterface from '@/shared/interfaces/locale_records_interface'
 import MemberRecordsInterface from '@/shared/interfaces/member_records_interface'
+import DiscussionTagRecordsInterface from '@/shared/interfaces/discussion_tag_records_interface'
+import TagRecordsInterface from '@/shared/interfaces/tag_records_interface'
 
 db      = new loki('default.db')
 records = new RecordStore(db)
@@ -74,6 +76,8 @@ records.addRecordsInterface LoginTokenRecordsInterface
 records.addRecordsInterface MessageChannelRecordsInterface
 records.addRecordsInterface LocaleRecordsInterface
 records.addRecordsInterface MemberRecordsInterface
+records.addRecordsInterface DiscussionTagRecordsInterface
+records.addRecordsInterface TagRecordsInterface
 
 AppConfig.records = records
 export default records
