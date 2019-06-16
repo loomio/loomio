@@ -50,6 +50,7 @@ export default
           page: 'groupPage'
           breadcrumbs: compact([@group.parent(), @group])
           group: @group
+
       , (error) ->
         EventBus.$emit 'pageError', error
 

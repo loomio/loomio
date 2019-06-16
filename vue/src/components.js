@@ -156,6 +156,8 @@ module.exports = {
   ThreadItem: 'thread/item',
   ThreadPreview: 'thread/preview',
   ThreadPreviewCollection: 'thread/preview_collection',
+  ThreadPollsPanel: 'thread/polls_panel',
+  ThreadMembersPanel: 'thread/members_panel',
   TimeAgo: 'common/time_ago',
   TimeZoneSelect: 'poll/meeting/time_zone_select',
   Translation: 'common/translation',

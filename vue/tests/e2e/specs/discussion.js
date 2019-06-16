@@ -316,7 +316,7 @@ module.exports = {
     page.click('.comment-form__submit-button')
     page.click('.action-dock__button--delete_comment')
     page.click('.confirm-modal__submit')
-    page.expectNoText('.activity-card', 'original comment right thur')
+    page.expectNoText('.activity-panel', 'original comment right thur')
   },
 
   'invites_a_user_to_a_discussion': (test) => {
