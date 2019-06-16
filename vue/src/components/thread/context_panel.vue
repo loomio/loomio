@@ -11,13 +11,14 @@ import UrlFor         from '@/mixins/url_for'
 import exactDate      from '@/mixins/exact_date'
 import DiscussionModalMixin from '@/mixins/discussion_modal'
 import RevisionHistoryModalMixin from '@/mixins/revision_history_modal'
+import TagsModalMixin from '@/mixins/tags_modal'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
 import { scrollTo }                                  from '@/shared/helpers/layout'
 import { map, compact } from 'lodash'
 
 export default
-  mixins: [UrlFor, exactDate, DiscussionModalMixin, RevisionHistoryModalMixin]
+  mixins: [UrlFor, exactDate, DiscussionModalMixin, RevisionHistoryModalMixin, TagsModalMixin]
   props:
     discussion: Object
 
@@ -58,6 +59,12 @@ export default
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canEditThread(@discussion)
       perform:    => @openEditDiscussionModal(@discussion)
+    ,
+      name: 'tag_thread'
+      icon: 'mdi-tag'
+      # canPerform: -> some Records.tags.find(groupId: scope.discussion.group().parentOrSelf().id)
+      canPerform: => true
+      perform:    => @openTagsModal(@discussion)
     ]
 
   computed:
@@ -115,6 +122,7 @@ div.context-panel
           router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
         v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
+      tags-display(:discussion="discussion")
     .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'md'", v-marked='discussion.cookedDescription()')
     .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'html'", v-html='discussion.description')
 
