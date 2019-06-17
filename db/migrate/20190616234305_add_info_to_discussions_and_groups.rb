@@ -5,7 +5,7 @@ class AddInfoToDiscussionsAndGroups < ActiveRecord::Migration[5.2]
 
     # Discussion.where(id: DiscussionTag.pluck(:discussion_id)).each do |discussion|
     #   discussion.info[:tags] = DiscussionTag.joins(:tag).where(discussion_id: discussion.id).pluck('tags.name')
-    #   discusison.save(validate: false)
+    #   discussion.save(validate: false)
     # end
     #
     # Group.where(id: Tag.pluck(:group_id)).each do |group|
