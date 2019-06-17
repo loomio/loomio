@@ -30,7 +30,8 @@ class DiscussionSerializer < ActiveModel::Serializer
              :importance,
              :pinned,
              :attachments,
-             :mentioned_usernames
+             :mentioned_usernames,
+             :info
 
 
   attributes_from_reader :discussion_reader_id,
