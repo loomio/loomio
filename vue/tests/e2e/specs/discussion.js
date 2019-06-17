@@ -24,7 +24,7 @@ module.exports = {
     page.loadPath('view_open_group_as_visitor')
     page.expectText('.group-cover-image', 'Open Dirty Dancing Shoes')
     page.expectText('.thread-preview-collection__container', 'I carried a watermelon')
-    page.expectText('.navbar__right', 'LOG IN')
+    page.expectText('.navbar__sign-in', 'LOG IN')
 
     page.click('.thread-preview__link a')
     page.expectText('.context-panel__heading', 'I carried a watermelon')
