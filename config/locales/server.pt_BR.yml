@@ -67,6 +67,9 @@ pt_BR:
     motion:
       must_close_in_future: Proposta deve encerrar no futuro.
       one_at_a_time: Há outra proposta ativa.
+  subscriptions:
+    active: Ativo
+    inactive: Inativo
   user_mailer:
     group_export_ready:
       subject: Dados do Grupo para exportar %{group_name}

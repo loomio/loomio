@@ -8,7 +8,7 @@ describe API::SearchController do
 
   describe 'index' do
     before do
-      group.admins << user
+      group.add_admin! user
       sign_in user
     end
 

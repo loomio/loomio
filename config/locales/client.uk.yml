@@ -771,7 +771,6 @@ uk:
     copy_link: 'Копіювати'
     email_addresses: 'Адреса електроної пошти'
     email_addresses_placeholder: 'наприклад helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Скопіюйте посилання та надішліть його тим, кого ви хочете долучити до групи. За його допомогою вони отримають доступ до всіх тем групи.'
     email_explanation: 'Або введіть адреси електронної пошти нижче, щоб надіслати запрошення поштою.'
     add_custom_message: 'Зробіть ваше запрошення особистим,'
     add_custom_message_link: 'додати власне повідомлення'

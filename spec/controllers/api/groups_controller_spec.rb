@@ -9,7 +9,7 @@ describe API::GroupsController do
   let(:another_group) { create :guest_group }
 
   before do
-    group.admins << user
+    group.add_admin! user
     sign_in user
   end
 
@@ -71,7 +71,6 @@ describe API::GroupsController do
         expect(response.status).to eq 403
       end
     end
-
   end
 
   describe 'update' do

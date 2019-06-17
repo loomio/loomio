@@ -708,7 +708,6 @@ it:
     copy_link: 'Copia'
     email_addresses: 'Indirizzi email'
     email_addresses_placeholder: 'Ad esempio: helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Copia il link e invialo a chiunque tu voglia iscrivere al gruppo. Darai loro accesso a tutte le discussioni del gruppo. '
     email_explanation: 'In alternativa, inserisci gli indirizzi email qui sotto per inviare inviti via email. '
     add_custom_message: 'Rendi il tuo invito personale,'
     add_custom_message_link: 'aggiungi un messaggio.'
