@@ -14,7 +14,7 @@ module.exports = {
     page.expectText('.confirm-modal h1', 'Remove member')
     page.click('.confirm-modal__submit')
     page.expectFlash('Member removed')
-    page.expectNoText('.membership-card', 'Jennifer Grey')
+    page.expectNoText('.members-panel', 'Jennifer Grey')
   },
 
   'successfully_assigns_coordinator_privileges': (test) => {
@@ -33,7 +33,7 @@ module.exports = {
 
     page.loadPath('setup_group_as_member')
     page.click('.group-page-members-tab')
-    page.expectElement('.membership-card__invite')
+    page.expectElement('.members-panel__invite')
   },
 
   'can_remove_coordinator_privileges': (test) => {
@@ -92,6 +92,6 @@ module.exports = {
     page.fillIn('.membership-form__title-input input', 'Suzerain')
     page.click('.membership-form__submit')
     page.expectFlash('Membership title updated')
-    page.expectText('.membership-card', 'Patrick Swayze · Suzerain')
+    page.expectText('.members-panel', 'Patrick Swayze · Suzerain')
   }
 }

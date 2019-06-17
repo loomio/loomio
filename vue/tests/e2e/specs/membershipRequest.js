@@ -18,13 +18,13 @@ module.exports = {
     page.loadPath('setup_membership_requests')
     page.click('.group-page-members-tab')
     page.pause(2000)
-    page.expectCount('.membership-card__membership', 4)
+    page.expectCount('.members-panel__table tbody', 4)
     page.click('.membership-requests-link')
     page.click('.membership-requests-page__approve')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--group')
     page.pause()
-    page.expectCount('.membership-card__membership', 5)
+    page.expectCount('.members-panel__table tbody', 5)
   },
 
   'displays_the_correct_flash_message_for_approval': (test) => {
