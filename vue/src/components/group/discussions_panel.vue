@@ -24,7 +24,7 @@ export default
     showClosed: false
     showUnread: false
     fragment: ''
-    tags: ['carrots']
+    tags: []
     includeSubgroups: false
 
   methods:
@@ -57,8 +57,8 @@ export default
       if @fragment
         chain = Records.searchResults.collection.chain()
         chain = chain.find(resultGroupId: {$in: @groupIds})
-        @tags.each (tag) ->
-          chain = chain.find(info: {tags: {$contains: tag}})
+        @tags.forEach (tag) ->
+          chain = chain.find({tags: {'$contains': tag}})
         chain = chain.find(query: @fragment).data()
 
         @searchResults = orderBy(chain, 'rank', 'desc')
@@ -67,8 +67,10 @@ export default
 
         chain = chain.find(groupId: {$in: @groupIds})
 
-        @tags.each (tag) ->
-          chain = chain.find(info: {tags: {$contains: tag}})
+        # chain = chain.find({'tags': {'$contains': 'ya' }})
+
+        @tags.forEach (tag) ->
+          chain = chain.find({tags: {'$contains': tag}})
 
         if @showClosed
           chain = chain.find(closedAt: {$ne: null})
@@ -99,26 +101,21 @@ export default
   watch:
     fragment: ->
       @from = 0
-      @loader.numRequested = 0
-      @searchLoader.numRequested = 0
       @fetch()
       @query()
 
     showUnread: ->
       @from = 0
-      @loader.numRequested = 0
       @fetch()
       @query()
 
     showClosed: ->
       @from = 0
-      @loader.numRequested = 0
       @fetch()
       @query()
 
     includeSubgroups: ->
       @from = 0
-      @loader.numRequested = 0
       @fetch()
       @query()
 
@@ -126,6 +123,11 @@ export default
       @init() if a.id != b.id
 
     isLoggedIn: -> @fetch()
+
+    tags: ->
+      @from = 0
+      @fetch()
+      @query()
 
   computed:
     groupIds: ->
@@ -149,6 +151,9 @@ export default
     isLoggedIn: ->
       Session.isSignedIn()
 
+    groupTags: ->
+      @group.parentOrSelf().info.tags || []
+
 </script>
 
 <template lang="pug">
@@ -160,6 +165,7 @@ export default
     v-switch(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
     v-spacer
+    v-combobox(v-model='tags' :items='groupTags' :label='$t("loomio_tags.tags")' item-text="name" multiple solo chips)
     v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outline color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-progress-linear(indeterminate :active="loading")

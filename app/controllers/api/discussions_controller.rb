@@ -104,7 +104,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def tags
-    params[:tags].split('|')
+    params[:tags].to_s.split('|')
   end
 
   def default_scope
