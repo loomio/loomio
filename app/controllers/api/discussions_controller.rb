@@ -103,6 +103,10 @@ class API::DiscussionsController < API::RestfulController
     end
   end
 
+  def tags
+    params[:tags].split('|')
+  end
+
   def default_scope
     super.merge(tag_cache: DiscussionTagCache.new(Array(resource || collection)).data)
   end
@@ -112,7 +116,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def accessible_records
-    Queries::VisibleDiscussions.new(user: current_user, group_ids: group_ids)
+    Queries::VisibleDiscussions.new(user: current_user, group_ids: group_ids, tags: tags)
   end
 
   def update_reader(params = {})

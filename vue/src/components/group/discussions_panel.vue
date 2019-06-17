@@ -24,6 +24,7 @@ export default
     showClosed: false
     showUnread: false
     fragment: ''
+    tags: ['carrots']
     includeSubgroups: false
 
   methods:
@@ -32,10 +33,12 @@ export default
         collection: 'discussions'
         params:
           group_id: @group.id
+          tags: @tags.join("|")
 
       @searchLoader = new RecordLoader
         collection: 'searchResults'
         params:
+          tags: @tags.join("|")
           group_id: @group.id
 
       @fetch()
@@ -52,16 +55,20 @@ export default
 
     query: (store) ->
       if @fragment
-        console.log @groupIds
-        results = Records.searchResults.collection.chain().
-                    find(query: @fragment).
-                    find(resultGroupId: {$in: @groupIds}).data()
+        chain = Records.searchResults.collection.chain()
+        chain = chain.find(resultGroupId: {$in: @groupIds})
+        @tags.each (tag) ->
+          chain = chain.find(info: {tags: {$contains: tag}})
+        chain = chain.find(query: @fragment).data()
 
-        @searchResults = orderBy(results, 'rank', 'desc')
+        @searchResults = orderBy(chain, 'rank', 'desc')
       else
         chain = Records.discussions.collection.chain()
 
         chain = chain.find(groupId: {$in: @groupIds})
+
+        @tags.each (tag) ->
+          chain = chain.find(info: {tags: {$contains: tag}})
 
         if @showClosed
           chain = chain.find(closedAt: {$ne: null})
