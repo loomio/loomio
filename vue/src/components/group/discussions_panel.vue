@@ -24,6 +24,7 @@ export default
     showClosed: false
     showUnread: false
     fragment: ''
+    tags: []
     includeSubgroups: false
 
   methods:
@@ -32,10 +33,12 @@ export default
         collection: 'discussions'
         params:
           group_id: @group.id
+          tags: @tags.join("|")
 
       @searchLoader = new RecordLoader
         collection: 'searchResults'
         params:
+          tags: @tags.join("|")
           group_id: @group.id
 
       @fetch()
@@ -52,16 +55,22 @@ export default
 
     query: (store) ->
       if @fragment
-        console.log @groupIds
-        results = Records.searchResults.collection.chain().
-                    find(query: @fragment).
-                    find(resultGroupId: {$in: @groupIds}).data()
+        chain = Records.searchResults.collection.chain()
+        chain = chain.find(resultGroupId: {$in: @groupIds})
+        @tags.forEach (tag) ->
+          chain = chain.find({tags: {'$contains': tag}})
+        chain = chain.find(query: @fragment).data()
 
-        @searchResults = orderBy(results, 'rank', 'desc')
+        @searchResults = orderBy(chain, 'rank', 'desc')
       else
         chain = Records.discussions.collection.chain()
 
         chain = chain.find(groupId: {$in: @groupIds})
+
+        # chain = chain.find({'tags': {'$contains': 'ya' }})
+
+        @tags.forEach (tag) ->
+          chain = chain.find({tags: {'$contains': tag}})
 
         if @showClosed
           chain = chain.find(closedAt: {$ne: null})
@@ -92,26 +101,21 @@ export default
   watch:
     fragment: ->
       @from = 0
-      @loader.numRequested = 0
-      @searchLoader.numRequested = 0
       @fetch()
       @query()
 
     showUnread: ->
       @from = 0
-      @loader.numRequested = 0
       @fetch()
       @query()
 
     showClosed: ->
       @from = 0
-      @loader.numRequested = 0
       @fetch()
       @query()
 
     includeSubgroups: ->
       @from = 0
-      @loader.numRequested = 0
       @fetch()
       @query()
 
@@ -119,6 +123,11 @@ export default
       @init() if a.id != b.id
 
     isLoggedIn: -> @fetch()
+
+    tags: ->
+      @from = 0
+      @fetch()
+      @query()
 
   computed:
     groupIds: ->
@@ -142,6 +151,9 @@ export default
     isLoggedIn: ->
       Session.isSignedIn()
 
+    groupTags: ->
+      @group.parentOrSelf().info.tags || []
+
 </script>
 
 <template lang="pug">
@@ -149,10 +161,11 @@ export default
   v-toolbar(flat)
     //- v-toolbar-items
     v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
-    v-switch(v-model="showClosed" :label="$t('discussions_panel.closed')")
-    v-switch(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
+    v-switch.discussions-panel__toggle-closed(v-model="showClosed" :label="$t('discussions_panel.closed')")
+    v-switch.discussions-panel__toggle-include-subgroups(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
     v-spacer
+    v-combobox(v-model='tags' :items='groupTags' :label='$t("loomio_tags.tags")' item-text="name" multiple solo chips)
     v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outline color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-progress-linear(indeterminate :active="loading")

@@ -1,5 +1,5 @@
 class Queries::VisibleDiscussions < Delegator
-  def initialize(user:, group_ids: nil)
+  def initialize(user:, group_ids: nil, tags: [])
     @user = user || LoggedOutUser.new
     @group_ids = group_ids.presence || user.group_ids
 
@@ -7,6 +7,11 @@ class Queries::VisibleDiscussions < Delegator
                   joins(:group).
                   where('groups.archived_at IS NULL').
                   includes(:author, :polls, {group: [:parent]})
+
+    if tags.any?
+      @relation = @relation.where("(discussions.info->'tags')::jsonb ?& ARRAY[:tags]", tags: tags)
+    end
+
     @relation = self.class.apply_privacy_sql(user: @user, group_ids: @group_ids, relation: @relation)
     super(@relation)
   end

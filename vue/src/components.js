@@ -152,6 +152,7 @@ module.exports = {
   Sidebar: 'common/sidebar',
   StanceCreated: 'thread/item/stance_created',
   SubgroupsCard: 'group/subgroups_card',
+  TagsDisplay: 'tags/display',
   ThreadCard: 'thread/card',
   ThreadItem: 'thread/item',
   ThreadPreview: 'thread/preview',

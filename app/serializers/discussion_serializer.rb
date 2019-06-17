@@ -30,7 +30,9 @@ class DiscussionSerializer < ActiveModel::Serializer
              :importance,
              :pinned,
              :attachments,
-             :mentioned_usernames
+             :mentioned_usernames,
+             :info,
+             :tags
 
 
   attributes_from_reader :discussion_reader_id,
@@ -47,6 +49,10 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :forked_event, serializer: Events::SimpleSerializer, root: :events
 
   has_many :discussion_tags
+
+  def tags
+    object.info['tags'] || []
+  end
 
   def discussion_tags
     Array(Hash(scope).dig(:tag_cache, object.id))

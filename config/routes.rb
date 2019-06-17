@@ -157,7 +157,12 @@ Loomio::Application.routes.draw do
     end
 
     resources :discussion_tags, only: [:create, :destroy]
-    resources :tags
+    
+    resources :tags do
+      collection do
+        post :update_model
+      end
+    end
 
 
     resources :search, only: :index

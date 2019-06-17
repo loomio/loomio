@@ -42,7 +42,8 @@ class GroupSerializer < Simple::GroupSerializer
              :has_discussions,
              :admin_memberships_count,
              :archived_at,
-             :attachments
+             :attachments,
+             :info
 
   attributes_for_formal :cover_urls,
                         :has_custom_cover,

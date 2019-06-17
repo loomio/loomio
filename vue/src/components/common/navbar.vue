@@ -66,7 +66,7 @@ export default
     v-btn.navbar__sidenav-toggle(icon v-if="!sidebarOpen" @click="toggleSidebar()")
       v-avatar(tile size="36px")
         v-icon mdi-menu
-    v-btn.navbar__sidenav-toggle(icon v-if="group" :to="urlFor(group)")
+    v-btn.navbar__group-toggle(icon v-if="group" :to="urlFor(group)")
       v-avatar(tile size="36px")
         img(:src='group.logoUrlMedium')
     v-toolbar-title
