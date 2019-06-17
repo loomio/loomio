@@ -5,18 +5,12 @@ export default
   mixins: [WatchRecords]
   props:
     discussion: Object
-  data: ->
-    tags: []
-  created: ->
-    @watchRecords
-      collections: ['tags', 'discussion_tags']
-      query: (store) =>
-        @tags = Records.discussionTags.find discussionId: @discussion.id
-        console.log 'tags', @tags
+  computed:
+    tags: -> @discussion.info.tags || []
 </script>
 <template lang="pug">
 .thread-tags(v-if="tags.length")
-  v-chip(close v-for="tag in tags" :key="tag.id") {{ tag.tag().name }}
+  v-chip(small outline v-for="tag in tags" :key="tag") {{ tag }}
 </template>
 <style lang="scss">
 </style>

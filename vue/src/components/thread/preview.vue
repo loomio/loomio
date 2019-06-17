@@ -111,7 +111,6 @@ v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)')
       span.thread-preview__group-name {{ thread.group().fullName }} ·
       time-ago(:date='thread.lastActivityAt')
       .lmo-badge.lmo-pointer(v-if='thread.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}", v-t="'common.privacy.closed'")
-      tags-display(:discussion="discussion")
   v-list-tile-action
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")
       v-icon mdi-pin
