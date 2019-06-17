@@ -31,7 +31,7 @@ module.exports = {
     page.expectFlash('You are now a member of')
     page.click('.group-page-members-tab')
 
-    page.expectText('.membership-panel', 'Jennifer')
+    page.expectText('.members-panel', 'Jennifer')
   },
 
   'requests_membership_when_button_is_clicked': (test) => {

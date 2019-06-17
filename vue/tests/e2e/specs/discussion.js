@@ -131,7 +131,7 @@ module.exports = {
     page.loadPath('setup_discussion_for_jennifer')
     page.ensureSidebar()
     page.click('.sidebar-threads-menu')
-    page.expectText('.sidebar__list-item-button--unread', 'Unread threads(0)')
+    page.expectText('.sidebar__list-item-button--unread', 'Unread threads (0)')
   },
 
   'lets_coordinators_and_thread_authors_delete_threads': (test) => {

@@ -33,7 +33,7 @@ module.exports = {
 
     page.loadPath('setup_group_as_member')
     page.click('.group-page-members-tab')
-    page.expectElement('.members-panel__invite')
+    page.expectElement('.membership-card__invite')
   },
 
   'can_remove_coordinator_privileges': (test) => {
@@ -92,6 +92,6 @@ module.exports = {
     page.fillIn('.membership-form__title-input input', 'Suzerain')
     page.click('.membership-form__submit')
     page.expectFlash('Membership title updated')
-    page.expectText('.members-panel', 'Patrick Swayze · Suzerain')
+    page.expectText('..members-panel__table tbody', 'Patrick Swayze · Suzerain')
   }
 }

@@ -22,8 +22,10 @@ module.exports = {
     page.click('.membership-requests-link')
     page.click('.membership-requests-page__approve')
     page.ensureSidebar()
-    page.click('.sidebar__list-item-button--group')
+    page.click('.sidebar-groups-menu')
+    page.click('.sidebar__groups')
     page.pause()
+    page.click('.group-page-members-tab')
     page.expectCount('.members-panel__table tbody', 5)
   },
 
