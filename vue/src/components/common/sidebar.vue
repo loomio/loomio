@@ -109,7 +109,7 @@ v-navigation-drawer.lmo-no-print.sidenav-left(app width="250" v-model="open")
             v-list-tile-title(v-t="'sidebar.start_thread'")
     v-expansion-panel-content
       template(v-slot:header)
-        v-subheader(v-t="'common.groups'")
+        v-subheader.sidebar-groups-menu(v-t="'common.groups'")
 
       v-list
         div.sidebar__groups(v-for='group in groups', :key='group.id')
