@@ -12,9 +12,10 @@ module.exports = {
     page.fillIn('.profile-page__name-input', 'Ferris Bueller')
     page.fillIn('.profile-page__username-input', 'ferrisbueller')
     page.click('.profile-page__update-button')
-    page.click('.user-dropdown__dropdown-button')
-    page.expectText('.user-dropdown__user-details', 'Ferris Bueller')
-    page.expectText('.user-dropdown__user-details', 'ferrisbueller')
+
+    page.ensureSidebar()
+    page.expectText('.sidebar__user-dropdown', 'Ferris Bueller')
+    page.expectText('.sidebar__user-dropdown', 'ferrisbueller')
   },
 
   'displays_a_user_and_their_non-secret_groups': (test) => {
@@ -89,7 +90,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.user-dropdown__dropdown-button')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__change-password')
     page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
