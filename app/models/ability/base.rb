@@ -32,7 +32,7 @@ module Ability
     # expect to replace this with proper accept membership modal soon
     def accept_pending_membership_for!(group)
       if membership = group.memberships.pending.find_by(user: @user)
-        MembershipService.redeem(membership)
+        MembershipService.redeem(membership, @user)
       end
     end
 
