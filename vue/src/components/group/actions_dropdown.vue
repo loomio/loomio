@@ -74,6 +74,9 @@ export default
         flash:    'group_page.messages.archive_group_success'
       redirect:   '/dashboard'
 
+    canSeeGroupActions: ->
+      Session.user().isMemberOf(@group)
+
     canExportData: ->
       Session.user().isMemberOf(@group)
 
@@ -97,7 +100,7 @@ export default
 </script>
 
 <template lang="pug">
-v-menu.group-page-actions.lmo-no-print(offset-y lazy)
+v-menu.group-page-actions.lmo-no-print(v-if="canSeeGroupActions" offset-y lazy)
   v-btn.group-page-actions__button(flat slot='activator')
     span(v-t="'group_page.options.label'")
     v-icon mdi-chevron-down

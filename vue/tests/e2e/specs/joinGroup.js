@@ -8,7 +8,8 @@ module.exports = {
     page.loadPath('setup_closed_group_to_join')
     page.expectNoElement('.group-page-actions button')
     page.expectNoElement('.discussions-panel__new-thread-button')
-    page.expectNoElement('.members-card')
+    // TODO: GK: clarify what people can and can't see when not a member
+    // page.expectNoElement('.members-card')
   },
 
   'displays_public_content': (test) => {
@@ -17,6 +18,7 @@ module.exports = {
     page.loadPath('setup_closed_group_to_join')
     page.expectText('.description-card__text', 'An FBI agent goes undercover')
     page.expectText('.thread-previews', "The name's Johnny Utah!")
+    page.click('.group-page-subgroups-tab')
     page.expectText('.subgroups-card', 'Johnny Utah')
   },
 
@@ -26,6 +28,7 @@ module.exports = {
     page.loadPath('setup_public_group_to_join_upon_request')
     page.click('.join-group-button__join-group')
     page.expectFlash('You are now a member of')
+    page.click('.group-page-members-tab')
     page.expectText('.membership-card', 'Jennifer')
   },
 
