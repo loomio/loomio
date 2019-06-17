@@ -13,6 +13,7 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.ensureSidebar()
+    page.click('.sidebar-threads-menu')
     page.click('.sidebar__list-item-button--start-thread')
     page.expectText('.discussion-form__group-select', 'Dirty Dancing Shoes')
   },
@@ -21,7 +22,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_visitor')
-    page.expectText('.group-theme__name', 'Open Dirty Dancing Shoes')
+    page.expectText('.group-cover-image', 'Open Dirty Dancing Shoes')
     page.expectText('.thread-previews-container--unpinned', 'I carried a watermelon')
     page.expectText('.navbar__right', 'LOG IN')
 
@@ -136,7 +137,7 @@ module.exports = {
     page.click('.confirm-modal__submit')
 
     page.expectFlash('Thread deleted')
-    page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
+    page.expectText('.group-cover-image', 'Dirty Dancing Shoes')
     page.expectNoText('.discussions-panel', 'What star sign are you?')
   },
 

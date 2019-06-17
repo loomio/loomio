@@ -6,7 +6,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('visit_group_as_subgroup_member')
-    page.expectText('.group-theme__name', 'Point Break')
+    page.expectText('.group-cover-image', 'Point Break')
     page.expectElement('.join-group-button__ask-to-join-group')
     page.ensureSidebar()
     page.expectText('.sidebar__groups', 'Point Break')
@@ -170,7 +170,7 @@ module.exports = {
     page.fillIn('#group-name', 'Clean Dancing Shoes')
     page.fillIn('.group-form__group-description textarea', 'Dusty sandles')
     page.click('.group-form__submit-button')
-    page.expectText('.group-theme__name', 'Clean Dancing Shoes')
+    page.expectText('.group-cover-image', 'Clean Dancing Shoes')
     page.expectText('.description-card__text', 'Dusty sandles')
   },
 

@@ -80,7 +80,7 @@ v-navigation-drawer.lmo-no-print.sidenav-left(app width="250" v-model="open")
 
     v-expansion-panel-content
       template(v-slot:header)
-        v-subheader(v-t="'sidebar.threads'")
+        v-subheader.sidebar-threads-menu(v-t="'sidebar.threads'")
       v-list
         v-list-tile.sidebar__list-item-button--recent(to='/dashboard')
           v-list-tile-action
