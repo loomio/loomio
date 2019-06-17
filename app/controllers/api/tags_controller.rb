@@ -15,15 +15,17 @@ class API::TagsController < API::RestfulController
       Tag.create(name: tag_name, group: @discussion.group, color: "#bbb")
     end
 
+    DiscussionTag.where(discussion: @discussion).destroy_all
+
     tag_names.each do |tag_name|
       tag = Tag.find_by(group: group, name: tag_name)
-      DiscussionTag.find_or_create_by(discussion: @discussion, group: group, tag: tag)
+      DiscussionTag.create(discussion: @discussion, group: group, tag: tag)
     end
 
     @discussion.info[:tags] = tag_names
     @discussion.save(validate: false)
 
-    group.info[:tags] = Tag.where(group: group).pluck(:name)
+    group.info[:tags] = Tag.where(group: group).where('discussion_tags_count > 0').pluck(:name)
     group.save(validate: false)
 
     render json: Array(@discussion), scope: {}, each_serializer: DiscussionSerializer, root: 'discussions'
