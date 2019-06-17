@@ -20,6 +20,7 @@ import AnnouncementForm from '@/components/announcement/form'
 import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
+import TagsModal from '@/components/tags/modal'
 
 export default
   components:
@@ -43,6 +44,7 @@ export default
     'MoveThreadForm': MoveThreadForm
     'PollCommonAddOptionModal': PollCommonAddOptionModal
     'RevisionHistoryModal': RevisionHistoryModal
+    'TagsModal': TagsModal
   data: ->
     isOpen: false
     componentName: ""
@@ -66,7 +68,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model="isOpen" max-width="600px")
-  component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal" lazy scrollable persistent)
+v-dialog(v-model="isOpen" max-width="600px" lazy scrollable persistent)
+  component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal")
 
 </template>

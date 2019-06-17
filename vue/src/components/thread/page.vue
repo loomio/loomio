@@ -82,23 +82,24 @@ export default
 
 <template lang="pug">
 loading(:until="discussion")
-  group-cover-image(:group="discussion.group()")
-  v-container.thread-page(grid-list-lg)
-    discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
-    //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")
-    v-layout
-      v-flex(md8)
-        thread-card(:loader='loader' :discussion='discussion')
-      v-flex(md4)
-        v-layout(column)
-          v-flex(v-for="poll in activePolls", :key="poll.id")
-            poll-common-card(:poll="poll")
-          v-flex
-            decision-tools-card(:discussion='discussion')
-          v-flex
-            membership-card(:group='discussion.guestGroup()')
-          v-flex
-            membership-card(:group='discussion.guestGroup()', :pending='true')
-          v-flex
-            poll-common-index-card(:model='discussion')
+  div(v-if="discussion")
+    group-cover-image(:group="discussion.group()")
+    v-container.thread-page(grid-list-lg)
+      discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
+      //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")
+      v-layout
+        v-flex(md8)
+          thread-card(:loader='loader' :discussion='discussion')
+        v-flex(md4)
+          v-layout(column)
+            v-flex(v-for="poll in activePolls", :key="poll.id")
+              poll-common-card(:poll="poll")
+            v-flex
+              decision-tools-card(:discussion='discussion')
+            v-flex
+              membership-card(:group='discussion.guestGroup()')
+            v-flex
+              membership-card(:group='discussion.guestGroup()', :pending='true')
+            v-flex
+              poll-common-index-card(:model='discussion')
 </template>
