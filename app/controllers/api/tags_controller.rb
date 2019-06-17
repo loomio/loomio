@@ -23,6 +23,9 @@ class API::TagsController < API::RestfulController
     @discussion.info[:tags] = tag_names
     @discussion.save(validate: false)
 
+    group.info[:tags] = Tag.where(group: group).pluck(:name)
+    group.save(validate: false)
+
     render json: Array(@discussion), scope: {}, each_serializer: DiscussionSerializer, root: 'discussions'
   end
 

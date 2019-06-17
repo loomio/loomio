@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_16_234305) do
+ActiveRecord::Schema.define(version: 2019_06_10_212331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -208,7 +208,6 @@ ActiveRecord::Schema.define(version: 2019_06_16_234305) do
     t.integer "guest_group_id"
     t.string "description_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: {}, null: false
-    t.jsonb "info", default: {}, null: false
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
