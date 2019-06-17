@@ -6,7 +6,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.user-dropdown__dropdown-button')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
     page.fillIn('.profile-page__name-input', 'Ferris Bueller')
     page.fillIn('.profile-page__username-input', 'ferrisbueller')
@@ -60,7 +61,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.user-dropdown__dropdown-button')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__change-password')
     page.fillIn('.change-password-form__password input', 'Smush') // TODO: GK: inputs not working properly
@@ -73,7 +75,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.user-dropdown__dropdown-button')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__change-password')
     page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
@@ -99,7 +102,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_multiple_coordinators')
-    page.click('.user-dropdown__dropdown-button')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__deactivate')
     page.click('.confirm-modal__submit')
@@ -111,7 +115,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_multiple_coordinators')
-    page.click('.user-dropdown__dropdown-button')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__delete')
     page.click('.confirm-modal__submit')
