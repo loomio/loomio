@@ -6,7 +6,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.user-dropdown__dropdown-button')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--email-settings')
     testUpdate(page)
   },
@@ -15,7 +16,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.user-dropdown__dropdown-button')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--email-settings')
     testDefaultUpdate(page)
   },
@@ -24,7 +26,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.user-dropdown__dropdown-button')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--email-settings')
     testMembershipUpdate(page)
   },

@@ -71,7 +71,7 @@ v-navigation-drawer.lmo-no-print.sidenav-left(app width="250" v-model="open")
   v-expansion-panel
     v-expansion-panel-content
       template(v-slot:header)
-        v-layout
+        v-layout.sidebar__user-dropdown
           user-avatar.mr-2(:user="user" size="medium")
           v-flex
             .body-1 {{user.name}}
