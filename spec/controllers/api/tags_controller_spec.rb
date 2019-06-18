@@ -14,7 +14,7 @@ describe API::TagsController, type: :controller do
       group.add_member! user
       post :update_model, params: {discussion_id: discussion.id, tags: ['apple', 'orange', 'orange']}
       json = JSON.parse(response.body)
-      expect(json['discussions'][0]['info']['tags']).to eq ['apple', 'orange']
+      expect(json['discussions'][0]['tags']).to eq ['apple', 'orange']
     end
 
     it 'removes tags from a resource' do
@@ -22,7 +22,7 @@ describe API::TagsController, type: :controller do
       post :update_model, params: {discussion_id: discussion.id, tags: ['apple', 'orange', 'orange']}
       post :update_model, params: {discussion_id: discussion.id, tags: []}
       json = JSON.parse(response.body)
-      expect(json['discussions'][0]['info']['tags']).to eq []
+      expect(json['discussions'][0]['tags']).to eq []
     end
   end
 
