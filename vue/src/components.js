@@ -1,6 +1,6 @@
 module.exports = {
   ActionDock: 'common/action_dock',
-  ActivityCard: 'thread/activity_card',
+  ActivityPanel: 'thread/activity_panel',
   AnnouncementForm: 'announcement/form',
   AttachmentList: 'thread/attachment_list',
   AuthAvatar: 'auth/avatar',

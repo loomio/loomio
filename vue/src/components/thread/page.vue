@@ -14,7 +14,6 @@ import {compact} from 'lodash'
 export default
   mixins: [WatchRecords]
   data: ->
-    coverUrl: "https://loomio-uploads.s3.amazonaws.com/groups/cover_photos/000/000/002/largedesktop/IMG_6150.JPG?1551260138"
     discussion: null
     activePolls: []
     requestedSequenceId: 0
@@ -60,24 +59,12 @@ export default
 
           @discussion.markAsSeen()
 
-          # Records.documents.fetchByDiscussion(@discussion)
-
-          @watchRecords
-            key: @discussion.id
-            collections: ["polls"]
-            query: (records) =>
-              @activePolls = @discussion.activePolls() if @discussion
-
           if @discussion.forkedEvent()
             Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true)
 
           EventBus.$emit 'currentComponent',
             page: 'threadPage'
             breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
-
-      # , (error) =>
-      #   debugger
-      #   EventBus.$emit 'pageError', error
 </script>
 
 <template lang="pug">
@@ -87,19 +74,4 @@ loading(:until="discussion")
     v-container.thread-page(grid-list-lg)
       discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
       thread-card(:loader='loader' :discussion='discussion')
-        //- //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")
-        //- v-layout
-        //-   v-flex(md8)
-        //-   v-flex(md4)
-        //-     v-layout(column)
-        //-       v-flex(v-for="poll in activePolls", :key="poll.id")
-        //-         poll-common-card(:poll="poll")
-        //-       v-flex
-        //-         decision-tools-card(:discussion='discussion')
-        //-       v-flex
-        //-         membership-card(:group='discussion.guestGroup()')
-        //-       v-flex
-        //-         membership-card(:group='discussion.guestGroup()', :pending='true')
-        //-       v-flex
-        //-         poll-common-index-card(:model='discussion')
 </template>

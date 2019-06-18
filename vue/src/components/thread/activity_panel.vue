@@ -15,16 +15,15 @@ import { compact } from 'lodash'
 # window.Loomio.debug= 1
 export default
   mixins: [ AuthModalMixin, WatchRecords ]
+  props:
+    loader: Object
+    discussion: Object
 
   data: ->
-    discussion: null
-    requestedSequenceId: 0
-    requestedCommentId: 0
-    loader: null
     canAddComment: false
     per: AppConfig.pageSize.threadItems
     renderMode: 'nested'
-    position: 'unread'
+    position: @initialPosition()
     eventWindow: null
     events: []
     positionItems: []
@@ -45,53 +44,31 @@ export default
     canStartPoll: ->
       AbilityService.canStartPoll(@discussion)
     init: ->
-      @requestedSequenceId = parseInt(@$route.params.sequence_id)
-      @requestedCommentId = parseInt(@$route.params.comment_id)
+      @setupEventWindow(@position)
 
-      @loader = new RecordLoader
-        collection: 'events'
-        params:
-          discussion_id: @$route.params.key
-          from: @requestedSequenceId
-          comment_id: @requestedCommentId
-          order: 'sequence_id'
-          per: @per
+      @watchRecords
+        key: @discussion.id
+        collections: ['groups', 'memberships']
+        query: (store) =>
+          @canAddComment = AbilityService.canAddComment(@discussion)
 
-      @loader.fetchRecords().then =>
-        @discussion = Records.discussions.find(@$route.params.key)
-        if @requestedCommentId
-          @requestedSequenceId = Records.events.finda(
-            discussionId: @discussion.id
-            kind: 'new_comment'
-            eventableId: @requestedCommentId
-            )[0].sequenceId
+      @watchRecords
+        key: @discussion.id
+        collections: ['events']
+        query: (store) =>
+          @events = @eventWindow.windowedEvents()
 
-        @setupEventWindow(@position)
+        @positionItems = [
+          {text: @$t('activity_card.beginning'), value: 'beginning'},
+          {text: @$t('activity_card.unread'), value: 'unread', disabled: !@eventWindow.anyUnread()},
+          {text: @$t('activity_card.latest'), value: 'latest'}
+        ]
 
-        if @discussion.forkedEvent()
-          Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true)
-
-        EventBus.$emit 'currentComponent',
-          page: 'threadPage'
-          breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
-
-        @watchRecords
-          key: @discussion.id
-          collections: ['groups', 'memberships']
-          query: (store) =>
-            @canAddComment = AbilityService.canAddComment(@discussion)
-
-        @watchRecords
-          key: @discussion.id
-          collections: ['events']
-          query: (store) =>
-            @events = @eventWindow.windowedEvents()
-
-          @positionItems = [
-            {text: @$t('activity_card.beginning'), value: 'beginning'},
-            {text: @$t('activity_card.unread'), value: 'unread', disabled: !@eventWindow.anyUnread()},
-            {text: @$t('activity_card.latest'), value: 'latest'}
-          ]
+        # @watchRecords
+        #   key: @discussion.id
+        #   collections: ["polls"]
+        #   query: (records) =>
+        #     @activePolls = @discussion.activePolls() if @discussion
 
     loadPrevious: ->
       if @eventWindow.anyPrevious()
@@ -115,7 +92,7 @@ export default
 
     initialPosition: ->
       switch
-        when @requestedSequenceId
+        when @discussion.requestedSequenceId
           "requested"
         when (!@discussion.lastReadAt) || @discussion.itemsCount == 0
           'context'
@@ -128,7 +105,7 @@ export default
 
     initialSequenceId: (position) ->
       switch position
-        when "requested"            then @requestedSequenceId
+        when "requested"            then @discussion.requestedSequenceId
         when "beginning", "context" then @discussion.firstSequenceId()
         when "unread"               then @discussion.firstUnreadSequenceId()
         when "latest"               then @discussion.lastSequenceId() - @per + 2
@@ -136,7 +113,7 @@ export default
     elementToFocus: (position) ->
       switch position
         when "context"   then ".context-panel h1"
-        when "requested" then "#sequence-#{@requestedSequenceId}"
+        when "requested" then "#sequence-#{@discussion.requestedSequenceId}"
         when "beginning" then "#sequence-#{@discussion.firstSequenceId()}"
         when "unread"    then "#sequence-#{@discussion.firstUnreadSequenceId()}"
         when "latest"    then "#sequence-#{@discussion.lastSequenceId()}"
