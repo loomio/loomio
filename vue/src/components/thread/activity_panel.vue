@@ -32,6 +32,7 @@ export default
       {text: @$t('activity_card.chronological'), value: 'chronological'},
       {text: @$t('activity_card.nested'), value: 'nested'}
     ]
+    currentAction: 'add-comment'
 
   created: ->
     @init()
@@ -41,6 +42,8 @@ export default
   #     @init() if currentDiscussion.id != prevDiscussion.id
 
   methods:
+    canStartPoll: ->
+      AbilityService.canStartPoll(@discussion)
     init: ->
       @requestedSequenceId = parseInt(@$route.params.sequence_id)
       @requestedCommentId = parseInt(@$route.params.comment_id)
@@ -198,11 +201,28 @@ export default
     .activity-panel__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadMore")
     loading.activity-panel__loading.page-loading(v-show='loader.loadingMore')
   //- add-comment-panel(v-if='eventWindow', :event-window='eventWindow', :parent-event='discussion.createdEvent()')
-  .add-comment-panel.lmo-card-padding(v-if="eventWindow")
-    comment-form(v-if='canAddComment' :discussion='discussion')
-    .add-comment-panel__join-actions(v-if='!canAddComment')
-      join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn()', :block='true')
-      v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
+
+  v-tabs(centered icons-and-text v-model="currentAction")
+    v-tab(href='#add-comment')
+      span(v-t="'activity_card.add_comment'")
+      v-icon mdi-comment
+    v-tab(href='#add-poll' v-if="canStartPoll()")
+      span(v-t="'activity_card.add_poll'")
+      v-icon mdi-thumbs-up-down
+    v-tab(href='#add-outcome')
+      span(v-t="'activity_card.add_outcome'")
+      v-icon mdi-flag-checkered
+  v-tabs-items(v-model="currentAction")
+    v-tab-item(value="add-comment")
+      .add-comment-panel.lmo-card-padding(v-if="eventWindow")
+        comment-form(v-if='canAddComment' :discussion='discussion')
+        .add-comment-panel__join-actions(v-if='!canAddComment')
+          join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn()', :block='true')
+          v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
+    v-tab-item(value="add-poll")
+      v-subheader(v-t="'decision_tools_card.title'")
+      poll-common-start-form(:discussion='discussion')
+    v-tab-item(value="add-outcome")
 
 </template>
 <style lang="scss">

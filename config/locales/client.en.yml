@@ -1148,6 +1148,9 @@ en:
       image_alt: 'Attached image'
     n_previous: 'Load {{count}} previous responses'
     n_more: 'Load {{count}} responses'
+    add_comment: Add comment
+    add_poll: Add poll
+    add_outcome: Add outcome
 
   thread_group:
     aria_label: 'Group name'
