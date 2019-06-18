@@ -92,6 +92,7 @@ module.exports = {
     page.fillIn('.membership-form__title-input input', 'Suzerain')
     page.click('.membership-form__submit')
     page.expectFlash('Membership title updated')
-    page.expectText('..members-panel__table tbody', 'Patrick Swayze · Suzerain')
+    page.expectText('.members-panel__title', 'Suzerain')
+    // page.expectText('.members-panel__table tbody', 'Patrick Swayze · Suzerain')
   }
 }

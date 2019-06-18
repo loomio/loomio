@@ -195,7 +195,7 @@ div.members-panel
           user-avatar.mr-3(:user='props.item.user()', size='forty')
           span {{props.item.user().email || props.item.user().name}}
       td {{props.item.user().username}}
-      td {{props.item.title}}
+      td.members-panel__title {{props.item.title}}
       td(v-if="includeSubgroups") {{props.item.group().name}}
       td {{props.item.inviter() && props.item.inviter().name}}
       td

@@ -16,17 +16,15 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_membership_requests')
-    page.click('.group-page-members-tab')
-    page.pause(2000)
-    page.expectCount('.members-panel__table tbody', 4)
+    page.click('.group-page-members-tab', 500)
+    page.expectCount('.members-panel__name', 3)
     page.click('.membership-requests-link')
     page.click('.membership-requests-page__approve')
     page.ensureSidebar()
     page.click('.sidebar-groups-menu')
-    page.click('.sidebar__groups')
-    page.pause()
+    page.click('.sidebar__groups', 500)
     page.click('.group-page-members-tab')
-    page.expectCount('.members-panel__table tbody', 5)
+    page.expectCount('.members-panel__name', 4)
   },
 
   'displays_the_correct_flash_message_for_approval': (test) => {

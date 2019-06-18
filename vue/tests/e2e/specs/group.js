@@ -337,18 +337,19 @@ module.exports = {
     page.expectFlash('You will be emailed all activity in all your groups.')
   },
 
-  'handles_advanced_group_settings': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_group_with_restrictive_settings')
-    page.expectNoElement('.current-polls-card__start-poll')
-    page.expectNoElement('.subgroups-card__start')
-    page.expectNoElement('.discussions-panel__new-thread-button')
-    page.expectNoElement('.membership-card__invite')
-    page.pause(10000)
-    page.click('.poll-common-preview')
-    page.expectNoElement('.poll-common-vote-form__submit')
-  },
+  // TODO: GK: think about what this test means with respect to the new UI
+  // 'handles_advanced_group_settings': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_group_with_restrictive_settings')
+  //   page.expectNoElement('.current-polls-card__start-poll')
+  //   page.expectNoElement('.subgroups-card__start')
+  //   page.expectNoElement('.discussions-panel__new-thread-button')
+  //   page.expectNoElement('.membership-card__invite')
+  //   page.pause(10000)
+  //   page.click('.poll-common-preview')
+  //   page.expectNoElement('.poll-common-vote-form__submit')
+  // },
 
   'displays_emails_only_for_your_pending_invites': (test) => {
     page = pageHelper(test)
