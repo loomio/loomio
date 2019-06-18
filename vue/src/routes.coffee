@@ -34,11 +34,11 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 groupPageChildren = [
-  {path: '', component: GroupDiscussionsPanel},
-  {path: 'polls', component: GroupPollsPanel},
-  {path: 'members', component: GroupMembersPanel},
+  {path: 'polls', component: GroupPollsPanel}
+  {path: 'members', component: GroupMembersPanel}
   {path: 'subgroups', component: GroupSubgroupsPanel}
-  {path: 'files', component: GroupFilesPanel},
+  {path: 'files', component: GroupFilesPanel}
+  {path: ':stub?', component: GroupDiscussionsPanel}
 ]
 
 threadPageChildren = [
@@ -62,11 +62,6 @@ export default new Router
     {path: '/profile', component: ProfilePage},
     {path: '/contact', component: ContactPage},
     {path: '/email_preferences', component: EmailSettingsPage },
-    {path: '/d/new', component: StartDiscussionPage },
-    {path: '/d/:key', component: ThreadPage, children: threadPageChildren },
-    # {path: '/d/:key', component: ThreadPage },
-    # {path: '/d/:key/comment/:comment_id', component: ThreadPage},
-    # {path: '/d/:key/:stub/:sequence_id', component: ThreadPage },
     {path: '/p/new', component: StartPollPage},
     {path: '/p/new/:poll_type', component: StartPollPage},
     {path: '/p/:key/:stub?', component: PollPage},
@@ -76,11 +71,11 @@ export default new Router
     {path: '/apps/registered/:id', component: RegisteredAppPage},
     {path: '/apps/registered/:id/:stub', component: RegisteredAppPage},
     {path: '/slack/install', component: InstallSlackPage},
+    {path: '/d/new', component: StartDiscussionPage },
+    {path: '/d/:key', component: ThreadPage, children: threadPageChildren },
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key/membership_requests', component: MembershipRequestsPage},
-    {path: '/g/:key/:tab?', component: GroupPage, children: groupPageChildren},
-    # key is actually handle
-    {path: '/:key/:tab', component: GroupPage, children: groupPageChildren},
+    {path: '/g/:key', component: GroupPage, children: groupPageChildren},
     {path: '/:key', component: GroupPage, children: groupPageChildren},
     {path: '/', redirect: '/dashboard' }
   ]
