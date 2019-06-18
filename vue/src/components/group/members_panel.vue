@@ -167,35 +167,35 @@ export default
 </script>
 
 <template lang="pug">
-div
+div.members-panel
   v-toolbar(flat align-center)
     v-toolbar-items
-      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
+      v-text-field.members-panel__filter(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
     v-toolbar-items
       span(v-t="'members_panel.sort'")
       v-select(solo flat v-model="order" :items="orders" :label="$t('members_panel.order_label')")
     //- just for group admins
     v-switch(v-if="currentUserIsAdmin && group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-spacer
-    v-btn(flat color="primary" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
+    v-btn.membership-requests-link(flat color="primary" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
     v-btn.membership-card__invite(flat color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
   v-progress-linear(indeterminate :active="loader.loading")
-  v-data-table(:items="memberships" :headers="headers" disable-initial-sort :total-items="totalRecords" hide-actions)
+  v-data-table.members-panel__table(:items="memberships" :headers="headers" disable-initial-sort :total-items="totalRecords" hide-actions)
     template(v-slot:no-results)
       | No results
     template(v-slot:items="props")
       td
         v-icon(v-if="props.item.admin") mdi-star
-      td(v-if="props.item.acceptedAt")
+      td.members-panel__name(v-if="props.item.acceptedAt")
         v-layout(align-center)
           user-avatar.mr-3(:user='props.item.user()', size='forty')
           router-link(:to="urlFor(props.item.user())") {{props.item.user().name}}
-      td(v-else)
+      td.members-panel__name(v-else)
         v-layout(align-center)
           user-avatar.mr-3(:user='props.item.user()', size='forty')
           span {{props.item.user().email || props.item.user().name}}
       td {{props.item.user().username}}
-      td {{props.item.title}}
+      td.members-panel__title {{props.item.title}}
       td(v-if="includeSubgroups") {{props.item.group().name}}
       td {{props.item.inviter() && props.item.inviter().name}}
       td

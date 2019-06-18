@@ -7,5 +7,5 @@
   .lmo-md-actions
     %a.lmo-card-minor-action{lmo-href-for: "group", lmo-href-action: "documents"}
       %span{translate: "document.card.view_documents"}
-    %md-button.md-primary.md-raised{ng-click: "addDocument()"}
+    %md-button.md-primary.md-raised{ng-if: "canAddDocuments()", ng-click: "addDocument()"}
       %span{translate: "documents_page.add_document"}

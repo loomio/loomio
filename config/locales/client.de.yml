@@ -109,6 +109,7 @@ de:
     models:
       proposal: 'Vorschlag'
     copy: 'Kopieren'
+    reset: 'Zurücksetzen'
     copy_text: 'Text kopieren'
     copied: 'In die Zwischenablage kopiert'
     points_abbrev: Jede Stimme ist {{score}} Punkte wert
@@ -116,7 +117,7 @@ de:
     action:
       next: 'Weiter'
       close: 'Schliessen'
-      reopen: 'erneut öffnen'
+      reopen: 'Erneut öffnen'
       save: 'Speichern'
       save_changes: 'Änderungen speichern'
       update_settings: 'Einstellungen aktualisieren'
@@ -161,6 +162,12 @@ de:
       title: 'Mehr über die Textformatierung mit Markdown lernen'
   emoji_picker:
     search: Suchen
+    common: 'Oft verwendet '
+    hands: Hände
+    people: Gesichter und Personen
+    nature: Natur
+    objects: Dinge
+    places: Orte
   ordinal:
     _1: erste/s
     _2: zweite/s
@@ -176,13 +183,13 @@ de:
     sessions:
       signed_up: Erfolgreich angemeldet!
     failure:
-      inactive: 'Diese E-Mail-Adresse gehört zu einem deaktivierten Benutzerkonto. Wenn Sie den Account wieder aktivieren möchten, nehmen Sie Kontakt mit uns auf.'
+      inactive: 'Diese E-Mail-Adresse gehört zu einem deaktivierten Benutzerkonto. Nehme bitte Kontakt mit uns auf, um den Account neu zu aktivieren .'
   error_page:
-    forbidden: 'Sie sind nicht berechtigt, diese Aktion auszuführen.'
-    page_not_found: 'Das konnten wir nicht finden. Es wurde entweder gelöscht oder verschoben.'
-    internal_server_error: 'Entschuldigung, etwas ist schiefgegangen. Bitte versuchen Sie es erneut.'
+    forbidden: 'Du bist nicht berechtigt, diese Aktion auszuführen.'
+    page_not_found: 'Es gibt keine Ergebnisse zu deiner Suche. Es wurde womöglich gelöscht oder verschoben.'
+    internal_server_error: 'Entschuldigung, etwas ist schiefgegangen. Bitte versuche es erneut.'
   verify_email_notice:
-    please_verify: Vielen Dank für die Teilnahme. Wir haben Ihnen eine E-Mail mit einem Link geschickt, mit dem Sie Ihre Teilnahme bestätigen kannst.
+    please_verify: 'Vielen Dank für dein Teilnahme! Bitte bestätige jetzt deine Stimme via dem Link den wir dir per E-mail zugesendet haben. '
   previous_polls_page:
     heading: Aktivitäten in {{name}}
     polls_count: Zeige {{loaded}} von {{total}} Entscheidungen
@@ -200,9 +207,9 @@ de:
     quiet_label: "Keine E-Mails"
     mute_label: "Stummschalten"
     discussion:
-      title: "E-Mail-Einstellungen zur Diskussion"
+      title: "E-Mail Einstellungen zur Diskussion"
       loud_description: "Sie werden per E-Mail benachrichtigt, sobald in dieser Diskussion etwas passiert."
-      normal_description: "Sie werden per E-Mail benachrichtigt, sobald eine Abstimmung eröffnet wurde oder demnächst beendet wird oder wenn ein Abstimmungsergebnis veröffentlicht wurde."
+      normal_description: "Du wirst per E-Mail benachrichtigt, sobald eine Abstimmung eröffnet, demnächst beendet wird oder ein Abstimmungsergebnis veröffentlicht wurde."
       quiet_description: "Sie werden zu dieser Diskussion nicht per E-Mail benachrichtigt"
       apply_to_all: "Diese Einstellungen für alle Diskussionen in dieser Gruppe übernehmen."
       messages:
@@ -776,7 +783,8 @@ de:
     copy_link: 'Kopieren'
     email_addresses: 'E-Mail-Adressen'
     email_addresses_placeholder: 'z. B. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Kopiere den Link und sende ihn an alle, die der Gruppe beitreten sollen. So erhalten die Teilnehmer Zugriff auf alle in der Gruppe vorhandenen Diskussionsbeiträge.'
+    shareable_link_explanation: 'Jeder mit einem teilbaren Link kann dieser Gruppe als Mitglied beitreten. Bitte teile ihn nicht mit Personen die du nicht in deiner Gruppe haben möchtest. '
+    shareable_link_reset: 'Der teilbare Link wurde zurückgesetzt. Der vorherige Link funktioniert nicht mehr.'
     email_explanation: 'Alternativ können Sie im Folgenden E-Mail-Adressen eingeben, um Einladungen per E-Mail zu senden.'
     add_custom_message: 'Personalisieren Sie die Einladung,'
     add_custom_message_link: 'füge eine persönliche Nachricht hinzu.'
@@ -1086,7 +1094,7 @@ de:
     helptext: Nur eine Sekunde, wir bereiten alle Ereignisse in dieser Diskussion zum Drucken vor ...
   delete_comment_dialog:
     title: 'Kommentar löschen'
-    question: 'Sind Sie sicher, dass Sie diesen Kommentar löschen möchten?'
+    question: 'Bist du sicher, dass du dieses Kommentar löschen möchtest?'
     confirm: 'Kommentar löschen'
   new_comment_item:
     aria_label: 'Kommentar von {{author}}'
@@ -1140,7 +1148,7 @@ de:
         Schon unser <a href="{{link}}" target="_blank">Hilfe-Handbuch</a>gesehen? Wir aktualisieren es regelmäßig mit häufig gestellten Fragen und Antworten.
     contact_us_email: "Oder schicke uns eine E-Mail: <a href=\"mailto:{{email}}\">{{email}}</a>"
     contact_us: 'Kontakt aufnehmen'
-    name_label: 'Ihr Name'
+    name_label: 'Dein Name'
     name_placeholder: 'Geben Sie Ihren Namen ein...'
     subject_label: "Betreff"
     subject_placeholder: |
@@ -1247,7 +1255,7 @@ de:
     share_count: Bestätigung teilen
     start_poll: Entscheidung vorbereiten
     publish_poll: Abstimmung teilen
-    view_all: alles sehen
+    view_all: Alles sehen
     save_changes: Speichern
     change_vote: Stimme ändern
   poll_common_attachment_form:

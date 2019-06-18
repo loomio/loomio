@@ -19,7 +19,8 @@ module.exports = {
     page.expectText('.description-card__text', 'An FBI agent goes undercover')
     page.expectText('.thread-previews', "The name's Johnny Utah!")
     page.click('.group-page-subgroups-tab')
-    page.expectText('.subgroups-card', 'Johnny Utah')
+
+    page.expectText('.group-subgroups-panel', 'Johnny Utah')
   },
 
   'adds_you_to_the_group_when_button_is_clicked': (test) => {
@@ -29,7 +30,8 @@ module.exports = {
     page.click('.join-group-button__join-group')
     page.expectFlash('You are now a member of')
     page.click('.group-page-members-tab')
-    page.expectText('.membership-card', 'Jennifer')
+
+    page.expectText('.members-panel', 'Jennifer')
   },
 
   'requests_membership_when_button_is_clicked': (test) => {

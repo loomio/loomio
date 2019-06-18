@@ -23,8 +23,8 @@ module.exports = {
 
     page.loadPath('view_open_group_as_visitor')
     page.expectText('.group-cover-image', 'Open Dirty Dancing Shoes')
-    page.expectText('.thread-previews-container--unpinned', 'I carried a watermelon')
-    page.expectText('.navbar__right', 'LOG IN')
+    page.expectText('.thread-preview-collection__container', 'I carried a watermelon')
+    page.expectText('.navbar__sign-in', 'LOG IN')
 
     page.click('.thread-preview__link a')
     page.expectText('.context-panel__heading', 'I carried a watermelon')
@@ -130,7 +130,8 @@ module.exports = {
 
     page.loadPath('setup_discussion_for_jennifer')
     page.ensureSidebar()
-    page.expectText('.sidenav-left', 'Unread threads')
+    page.click('.sidebar-threads-menu')
+    page.expectText('.sidebar__list-item-button--unread', 'Unread threads (0)')
   },
 
   'lets_coordinators_and_thread_authors_delete_threads': (test) => {
@@ -206,6 +207,7 @@ module.exports = {
     page.expectFlash('Comment added')
 
     page.ensureSidebar()
+    page.click('.sidebar-threads-menu')
     page.click('.sidebar__list-item-button--recent')
     page.expectText('.thread-preview__text-container', 'Dirty Dancing Shoes')
   },

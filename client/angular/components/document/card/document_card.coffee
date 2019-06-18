@@ -1,5 +1,6 @@
 Records      = require 'shared/services/records'
 ModalService = require 'shared/services/modal_service'
+AbilityService = require 'shared/services/ability_service'
 
 angular.module('loomioApp').directive 'documentCard', ->
   scope: {group: '='}
@@ -18,6 +19,9 @@ angular.module('loomioApp').directive 'documentCard', ->
           hasDocuments:             -> _.some(documents)
           newAndPersistedDocuments: -> documents
     $scope.init()
+
+    $scope.canAddDocuments = ->
+      AbilityService.canEditGroup($scope.group)
 
     $scope.addDocument = ->
       ModalService.open 'DocumentModal', doc: =>

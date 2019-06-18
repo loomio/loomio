@@ -1,12 +1,9 @@
 <script lang="coffee">
 import UrlFor from '@/mixins/url_for'
-import EventBus from '@/shared/services/event_bus'
 export default
   mixins: [UrlFor]
-
   props:
     group: Object
-
 </script>
 
 <template lang="pug">

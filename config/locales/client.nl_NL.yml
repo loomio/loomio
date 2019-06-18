@@ -609,7 +609,6 @@ nl_NL:
     copy_link: 'Kopiëren'
     email_addresses: 'E-mailadressen'
     email_addresses_placeholder: 'bijv. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Kopieer de link en stuur die aan iedereen die je uit wil nodigen om aan de groep deel te nemen. Dit geeft hen toegang tot alle discussies in de groep.'
     email_explanation: 'Anders, kan je e-mailadressen hieronder uittypen om uitnodigen per e-mail te versturen.'
     add_custom_message: 'Personaliseer je uitnodiging,'
     add_custom_message_link: 'voeg een aangepast bericht toe.'

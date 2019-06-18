@@ -6,30 +6,33 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_membership_requests')
-    page.click('.membership-requests-card__link')
+    page.click('.group-page-members-tab')
+    page.click('.membership-requests-link')
     page.click('.membership-requests-page__approve', 500)
     page.expectText('.membership-requests-page__previous-requests', 'Approved by Patrick Swayze')
   },
 
-//   'adds_existing_users_to_group_upon_approval': (test) => {
-//     page = pageHelper(test)
+  'adds_existing_users_to_group_upon_approval': (test) => {
+    page = pageHelper(test)
 
-//     page.loadPath('setup_membership_requests')
-//     page.pause(2000)
-//     page.expectCount('.membership-card__membership', 4)
-//     page.click('.membership-requests-card__link')
-//     page.click('.membership-requests-page__approve')
-//     page.ensureSidebar()
-//     page.click('.sidebar__list-item-button--group')
-//     page.pause()
-//     page.expectCount('.membership-card__membership', 5)
-//   },
+    page.loadPath('setup_membership_requests')
+    page.click('.group-page-members-tab', 500)
+    page.expectCount('.members-panel__name', 3)
+    page.click('.membership-requests-link')
+    page.click('.membership-requests-page__approve')
+    page.ensureSidebar()
+    page.click('.sidebar-groups-menu')
+    page.click('.sidebar__groups', 500)
+    page.click('.group-page-members-tab')
+    page.expectCount('.members-panel__name', 4)
+  },
 
   'displays_the_correct_flash_message_for_approval': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_membership_requests')
-    page.click('.membership-requests-card__link')
+    page.click('.group-page-members-tab')
+    page.click('.membership-requests-link')
     page.click('.membership-requests-page__approve')
     page.expectFlash('Membership request approved')
   },
@@ -38,7 +41,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_membership_requests')
-    page.click('.membership-requests-card__link')
+    page.click('.group-page-members-tab')
+    page.click('.membership-requests-link')
     page.click('.membership-requests-page__ignore')
     page.expectText('.membership-requests-page__previous-requests', 'Ignored by Patrick Swayze')
   },
@@ -47,7 +51,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_membership_requests')
-    page.click('.membership-requests-card__link')
+    page.click('.group-page-members-tab')
+    page.click('.membership-requests-link')
     page.click('.membership-requests-page__ignore')
     page.expectFlash('Membership request ignored')
   },
@@ -56,7 +61,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_membership_requests')
-    page.click('.membership-requests-card__link')
+    page.click('.group-page-members-tab')
+    page.click('.membership-requests-link')
     page.click('.membership-requests-page__approve', 500)
     page.click('.membership-requests-page__approve', 500)
     page.click('.membership-requests-page__approve', 500)

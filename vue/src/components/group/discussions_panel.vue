@@ -33,12 +33,10 @@ export default
         collection: 'discussions'
         params:
           group_id: @group.id
-          tags: @tags.join("|")
 
       @searchLoader = new RecordLoader
         collection: 'searchResults'
         params:
-          tags: @tags.join("|")
           group_id: @group.id
 
       @fetch()
@@ -58,7 +56,7 @@ export default
         chain = Records.searchResults.collection.chain()
         chain = chain.find(resultGroupId: {$in: @groupIds})
         @tags.forEach (tag) ->
-          chain = chain.find({tags: {'$contains': tag}})
+          chain = chain.find({tagNames: {'$contains': tag}})
         chain = chain.find(query: @fragment).data()
 
         @searchResults = orderBy(chain, 'rank', 'desc')
@@ -70,7 +68,7 @@ export default
         # chain = chain.find({'tags': {'$contains': 'ya' }})
 
         @tags.forEach (tag) ->
-          chain = chain.find({tags: {'$contains': tag}})
+          chain = chain.find({tagNames: {'$contains': tag}})
 
         if @showClosed
           chain = chain.find(closedAt: {$ne: null})
@@ -89,11 +87,13 @@ export default
       if @fragment
         params = {q: @fragment}
         params.include_subgroups = @includeSubgroups
+        params.tags = @tags.join("|")
         @searchLoader.fetchRecords params
       else
         params = {from: @from}
         params.filter = 'show_closed' if @showClosed
         params.include_subgroups = @includeSubgroups
+        params.tags = @tags.join("|")
         @loader.fetchRecords(params)
     ,
       300
@@ -152,7 +152,7 @@ export default
       Session.isSignedIn()
 
     groupTags: ->
-      @group.parentOrSelf().info.tags || []
+      @group.parentOrSelf().tagNames || []
 
 </script>
 
