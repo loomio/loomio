@@ -13,7 +13,7 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.ensureSidebar()
-    page.click('.sidebar-threads-menu')
+
     page.click('.sidebar__list-item-button--start-thread')
     page.expectText('.discussion-form__group-select', 'Dirty Dancing Shoes')
   },
@@ -130,7 +130,7 @@ module.exports = {
 
     page.loadPath('setup_discussion_for_jennifer')
     page.ensureSidebar()
-    page.click('.sidebar-threads-menu')
+
     page.expectText('.sidebar__list-item-button--unread', 'Unread threads (0)')
   },
 
@@ -207,7 +207,7 @@ module.exports = {
     page.expectFlash('Comment added')
 
     page.ensureSidebar()
-    page.click('.sidebar-threads-menu')
+
     page.click('.sidebar__list-item-button--recent')
     page.expectText('.thread-preview__text-container', 'Dirty Dancing Shoes')
   },

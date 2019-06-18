@@ -21,7 +21,7 @@ module.exports = {
     page.click('.membership-requests-link')
     page.click('.membership-requests-page__approve')
     page.ensureSidebar()
-    page.click('.sidebar-groups-menu')
+    
     page.click('.sidebar__groups', 500)
     page.click('.group-page-members-tab')
     page.expectCount('.members-panel__name', 4)
