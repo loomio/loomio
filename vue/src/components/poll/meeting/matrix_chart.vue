@@ -7,12 +7,12 @@ import svg from 'svg.js'
 export default
   props:
     matrixCounts: Array
-    size: String
+    size: Number
   data: ->
     svgEl: null
     shapes: []
   mounted: ->
-    this.svgEl = svg(this.$el).size('100%', '100%')
+    this.svgEl = svg(this.$el).size(@size, @size)
     this.draw()
   methods:
     draw: ->

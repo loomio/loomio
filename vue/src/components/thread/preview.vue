@@ -84,10 +84,10 @@
 
 <script lang="coffee">
 import ThreadService from '@/shared/services/thread_service'
-import urlFor        from '@/mixins/url_for'
+import UrlFor        from '@/mixins/url_for'
 
 export default
-  mixins: [urlFor]
+  mixins: [UrlFor]
   props:
     thread: Object
   data: ->
@@ -101,7 +101,7 @@ export default
 <template lang="pug">
 v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)')
   v-list-tile-avatar
-    user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium')
+    user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium' no-link)
     poll-common-chart-preview(v-if='thread.activePoll()', :poll='thread.activePoll()')
   v-list-tile-content
     v-list-tile-title.thread-preview__text-container
@@ -113,7 +113,7 @@ v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)')
       .lmo-badge.lmo-pointer(v-if='thread.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}", v-t="'common.privacy.closed'")
   v-list-tile-action
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")
-      v-icon mdi-pin)
+      v-icon mdi-pin
   v-list-tile-action(v-if='thread.discussionReaderId')
     v-btn.thread-preview__dismiss(@click.prevent='dismiss()' icon flat v-show='thread.isUnread()' :class='{disabled: !thread.isUnread()}' :title="$t('dashboard_page.dismiss')")
       v-icon.mdi mdi-check

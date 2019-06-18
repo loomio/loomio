@@ -62,17 +62,18 @@ export default
       @discussion.isNew()
 
     maxThreads: ->
-      return null unless @discussion.groupId
+      return null unless @discussion.group()
       @discussion.group().parentOrSelf().subscriptionMaxThreads
 
     threadCount: ->
-      return unless @discussion.groupId
+      return unless @discussion.group()
       @discussion.group().parentOrSelf().orgDiscussionsCount
 
     maxThreadsReached: ->
       @maxThreads && @threadCount >= @maxThreads
 
     subscriptionActive: ->
+      return true unless @discussion.group()
       @discussion.group().parentOrSelf().subscriptionActive
 
     canStartThread: ->

@@ -52,12 +52,36 @@ class API::MembershipsController < API::RestfulController
   end
 
   def autocomplete
-    @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
-                                                     pending: params[:pending],
-                                                     group: load_and_authorize(:group, :members_autocomplete),
-                                                     current_user: current_user,
-                                                     limit: 10)
-    respond_with_collection
+    instantiate_collection do |collection|
+      if params[:include_subgroups] == "true"
+        collection = collection.where(group_id: model.group.id_and_subgroup_ids)
+      else
+        collection = collection.where(group_id: model.groups)
+      end
+
+      if params.has_key?(:pending)
+        collection = if params[:pending]
+          collection.pending
+        else
+          collection.active
+        end
+      end
+
+      query = params[:q].to_s
+      if query.length > 0
+        collection = collection.joins(:user)
+                               .where("users.name ilike :first OR
+                                       users.name ilike :last OR
+                                       users.username ilike :first",
+                                       first: "#{query}%", last: "% #{query}%")
+      end
+      collection
+    end
+    respond_with_collection(scope: index_scope)
+  end
+
+  def valid_orders
+    ['created_at', 'created_at desc', 'users.name', 'admin desc']
   end
 
   def resend
@@ -93,9 +117,12 @@ class API::MembershipsController < API::RestfulController
   end
 
   private
+  def valid_orders
+    ['users.name', 'created_at', 'created_at desc']
+  end
 
   def index_scope
-    { email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id) } if params[:pending]
+    { email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id), include_inviter: true }
   end
 
   def model
@@ -107,8 +134,11 @@ class API::MembershipsController < API::RestfulController
   def accessible_records
     visible = resource_class.joins(:group).joins(:user).includes(:inviter, {group: [:parent]})
     if current_user.group_ids.any?
-      visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR groups.is_visible_to_public = 't'")
+      visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR
+                     groups.parent_id IN (#{current_user.adminable_group_ids.join(',')}) OR
+                     groups.is_visible_to_public = 't'")
     else
+      # why do we do this?
       visible.where("groups.is_visible_to_public = 't'")
     end
   end

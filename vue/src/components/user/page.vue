@@ -16,7 +16,7 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import fromNow        from '@/mixins/from_now'
-import urlFor         from '@/mixins/url_for'
+import UrlFor         from '@/mixins/url_for'
 import UserModalMixin from '@/mixins/user_modal'
 
 import { applyLoadingFunction } from '@/shared/helpers/apply'
@@ -26,12 +26,7 @@ import _isEmpty     from 'lodash/isEmpty'
 import _sortBy     from 'lodash/sortBy'
 
 export default
-  mixins: [
-    fromNow,
-    urlFor,
-    UserModalMixin,
-    WatchRecords
-  ]
+  mixins: [ UrlFor, fromNow, UserModalMixin, WatchRecords ]
 
   data: ->
     user: {}

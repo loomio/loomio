@@ -36,7 +36,9 @@ class API::PollsController < API::RestfulController
   end
 
   def search
-    self.collection = page_collection poll_search.perform(search_filters)
+    instantiate_collection do | colleciton |
+      poll_search.perform(search_filters)
+    end
     respond_with_collection
   end
 
@@ -56,7 +58,7 @@ class API::PollsController < API::RestfulController
   end
 
   def search_filters
-    params.slice(:group_key, :discussion_key, :status, :user, :query)
+    params.slice(:group_key, :include_subgroups, :discussion_key, :status, :user, :query)
   end
 
   def default_scope

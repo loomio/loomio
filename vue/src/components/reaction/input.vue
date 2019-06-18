@@ -28,12 +28,13 @@ export default
 
 <template lang="pug">
 v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu" lazy)
-  template(v-slot:activator="{on}")
-    v-btn.emoji-picker__toggle(flat icon v-on="on")
-      v-icon mdi-emoticon-outline
+  template(v-slot:activator="{on:menu}")
+    v-tooltip(bottom)
+      template(v-slot:activator="{on:tooltip}")
+        v-btn.emoji-picker__toggle(flat icon v-on="{ ...tooltip, ...menu }")
+          v-icon mdi-emoticon-outline
+      span(v-t="'reactions_input.add_your_reaction'")
   emoji-picker(:insert="insert")
-  //- md-tooltip{md-delay: "500"}
-  //-   %span{translate: "reactions_input.add_your_reaction"}
 </template>
 
 <style lang="scss">

@@ -37,4 +37,4 @@ export default (store, options) ->
             {guestGroupId: {$in: userGroupIds}}
             {groupId: {$in: userGroupIds}}
           ]
-  chain.simplesort('-lastActivityAt').data()
+  chain.simplesort('lastActivityAt', true).data()

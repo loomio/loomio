@@ -24,12 +24,12 @@
 import Records      from '@/shared/services/records'
 import EventBus     from '@/shared/services/event_bus'
 import ModalService from '@/shared/services/modal_service'
-import urlFor       from '@/mixins/url_for'
+import UrlFor       from '@/mixins/url_for'
 
 import _sortBy   from 'lodash/sortBy'
 
 export default
-  mixins: [urlFor]
+  mixins: [UrlFor]
   data: ->
     loading: true
     applications: Records.oauthApplications.collection.data

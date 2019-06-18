@@ -7,8 +7,9 @@ module.exports = {
 
     page.loadPath('setup_closed_group_to_join')
     page.expectNoElement('.group-page-actions button')
-    page.expectNoElement('.discussions-card__new-thread-button')
-    page.expectNoElement('.members-card')
+    page.expectNoElement('.discussions-panel__new-thread-button')
+    // TODO: GK: clarify what people can and can't see when not a member
+    // page.expectNoElement('.members-card')
   },
 
   'displays_public_content': (test) => {
@@ -17,7 +18,9 @@ module.exports = {
     page.loadPath('setup_closed_group_to_join')
     page.expectText('.description-card__text', 'An FBI agent goes undercover')
     page.expectText('.thread-previews', "The name's Johnny Utah!")
-    page.expectText('.subgroups-card', 'Johnny Utah')
+    page.click('.group-page-subgroups-tab')
+
+    page.expectText('.group-subgroups-panel', 'Johnny Utah')
   },
 
   'adds_you_to_the_group_when_button_is_clicked': (test) => {
@@ -26,7 +29,9 @@ module.exports = {
     page.loadPath('setup_public_group_to_join_upon_request')
     page.click('.join-group-button__join-group')
     page.expectFlash('You are now a member of')
-    page.expectText('.membership-card', 'Jennifer')
+    page.click('.group-page-members-tab')
+
+    page.expectText('.members-panel', 'Jennifer')
   },
 
   'requests_membership_when_button_is_clicked': (test) => {

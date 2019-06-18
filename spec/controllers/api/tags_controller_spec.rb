@@ -7,6 +7,25 @@ describe API::TagsController, type: :controller do
   let!(:tag) { create :tag, name: "test", color: "#ffffff", group: group }
   let!(:another_tag) { create :tag, name: "anothertag", color: "#654321", group: create(:formal_group, is_visible_to_public: false) }
 
+  describe 'update_model' do
+    before { sign_in user }
+    let(:discussion) { create :discussion, group: group }
+    it 'updates a resource with given tags' do
+      group.add_member! user
+      post :update_model, params: {discussion_id: discussion.id, tags: ['apple', 'orange', 'orange']}
+      json = JSON.parse(response.body)
+      expect(json['discussions'][0]['info']['tags']).to eq ['apple', 'orange']
+    end
+
+    it 'removes tags from a resource' do
+      group.add_member! user
+      post :update_model, params: {discussion_id: discussion.id, tags: ['apple', 'orange', 'orange']}
+      post :update_model, params: {discussion_id: discussion.id, tags: []}
+      json = JSON.parse(response.body)
+      expect(json['discussions'][0]['info']['tags']).to eq []
+    end
+  end
+
   describe 'show' do
     before { sign_in user }
 

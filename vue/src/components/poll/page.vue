@@ -5,7 +5,7 @@ import EventBus      from '@/shared/services/event_bus'
 import ModalService  from '@/shared/services/modal_service'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 
-import _isEmpty     from 'lodash/isEmpty'
+import {compact, isEmpty}  from 'lodash'
 
 import { subscribeTo }     from '@/shared/helpers/cable'
 import { myLastStanceFor } from '@/shared/helpers/poll'
@@ -13,15 +13,17 @@ import { myLastStanceFor } from '@/shared/helpers/poll'
 export default
   data: ->
     poll: {}
+
   created: ->
     Records.polls.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
       EventBus.$emit 'pageError', error
     EventBus.$on 'signedIn', =>
       Records.polls.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
         EventBus.$emit 'pageError', error
+
   methods:
     init: (poll) ->
-      if poll and _isEmpty @poll?
+      if poll and isEmpty @poll?
         @poll = poll
 
         EventBus.$emit 'currentComponent',
@@ -30,6 +32,7 @@ export default
           title: poll.title
           page: 'pollPage'
           skipScroll: true
+          breadcrumbs: compact([poll.group().parent(), poll.group(), poll.discussion(), poll])
 
         subscribeTo(@poll)
 
@@ -38,23 +41,24 @@ export default
 
         if @$route.params.change_vote
           ModalService.open 'PollCommonEditVoteModal', stance: => myLastStanceFor(@poll)
+
   computed:
-    isEmptyPoll: ->
-      _isEmpty @poll
+    isEmptyPoll: -> isEmpty @poll
 
 </script>
 
-<template>
-  <div class="lmo-two-column-layout">
-    <loading v-if="isEmptyPoll"></loading>
-    <main v-if="!isEmptyPoll" class="poll-page lmo-row">
-      <poll-common-example-card v-if="poll.example" :poll="poll"></poll-common-example-card>
-      <group-theme v-if="poll.group()" :group="poll.group()" :discussion="poll.discussion()" :compact="true"></group-theme>
-      <div class="poll-page__main-content">
-        <membership-card :group="poll.guestGroup()"></membership-card>
-        <membership-card :group="poll.guestGroup()" :pending="true"></membership-card>
-        <poll-common-card :poll="poll" class="lmo-card--no-padding lmo-column-left"></poll-common-card>
-      </div>
-    </main>
-  </div>
+<template lang="pug">
+div
+  group-cover-image(:group="poll.group()")
+  v-container.poll-page
+    loading(v-if='isEmptyPoll')
+    v-layout(column v-if='!isEmptyPoll')
+      poll-common-example-card(v-if='poll.example', :poll='poll')
+
+      //- group-theme(v-if='poll.group()', :group='poll.group()', :discussion='poll.discussion()', :compact='true')
+      v-layout
+        poll-common-card(:poll='poll')
+        v-flex
+          membership-card(:group='poll.guestGroup()')
+          membership-card(:group='poll.guestGroup()', :pending='true')
 </template>

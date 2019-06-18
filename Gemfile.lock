@@ -536,8 +536,6 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    snorlax (0.1.8)
-      rails (> 4.1)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
@@ -666,7 +664,6 @@ DEPENDENCIES
   sentry-raven
   sequenced (~> 3.1.1)
   simplecov
-  snorlax (= 0.1.8)
   spring
   spring-commands-rspec
   sprockets-rails

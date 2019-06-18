@@ -45,6 +45,8 @@ Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
+    resources :attachments, only: :index
+
     resources :boot, only: [] do
       get :site, on: :collection
       get :user, on: :collection
@@ -155,7 +157,12 @@ Loomio::Application.routes.draw do
     end
 
     resources :discussion_tags, only: [:create, :destroy]
-    resources :tags
+    
+    resources :tags do
+      collection do
+        post :update_model
+      end
+    end
 
 
     resources :search, only: :index

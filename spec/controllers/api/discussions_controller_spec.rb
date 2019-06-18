@@ -440,13 +440,13 @@ describe API::DiscussionsController do
       it "responds with an error when there are unpermitted params" do
         discussion_params[:dontmindme] = 'wild wooly byte virus'
         put :update, params: { id: discussion.id, discussion: discussion_params }
-        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
+        expect(JSON.parse(response.body)['exception']).to include 'ActionController::UnpermittedParameters'
       end
 
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
         put :update, params: { id: discussion.id, discussion: discussion_params }
-        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+        expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
       end
 
       it "responds with validation errors when they exist" do
@@ -503,13 +503,13 @@ describe API::DiscussionsController do
       it "responds with an error when there are unpermitted params" do
         discussion_params[:dontmindme] = 'wild wooly byte virus'
         post :create, params: { discussion: discussion_params }
-        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
+        expect(JSON.parse(response.body)['exception']).to include 'ActionController::UnpermittedParameters'
       end
 
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
         post :create, params: { discussion: discussion_params }
-        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+        expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
       end
 
       it "responds with validation errors when they exist" do

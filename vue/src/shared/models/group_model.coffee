@@ -69,6 +69,9 @@ export default class GroupModel extends BaseModel
   fetchToken: ->
     @remote.getMember(@id, 'token').then => @token
 
+  resetToken: ->
+    @remote.postMember(@id, 'reset_token').then => @token
+
   closedPolls: ->
     _.filter @polls(), (poll) ->
       !poll.isActive()
@@ -101,6 +104,9 @@ export default class GroupModel extends BaseModel
 
   hasPendingInvitations: ->
     _.some @pendingInvitations()
+
+  hasSubgroups: ->
+    @isParent() && @subgroups().length
 
   organisationDiscussions: ->
     @recordStore.discussions.find(groupId: { $in: @organisationIds() }, discussionReaderId: { $ne: null })
@@ -159,11 +165,11 @@ export default class GroupModel extends BaseModel
     else
       AppConfig.theme.icon_src
 
-  coverUrl: (size) ->
+  coverUrl: (size = 'large') ->
     if @isSubgroup() && !@hasCustomCover
       @parent().coverUrl(size)
     else
-      @coverUrls[size] || @coverUrls.small
+      @coverUrls[size]
 
   archive: =>
     @remote.patchMember(@key, 'archive').then =>

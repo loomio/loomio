@@ -119,6 +119,7 @@ en:
     points_abbrev: Each vote worth {{score}} points
     total: Total
     action:
+      search: 'Search'
       back: 'Back'
       next: 'Next'
       close: 'Close'
@@ -325,6 +326,7 @@ en:
     sign_in: "Log in to join the conversation"
 
   sidebar:
+    threads: 'Threads'
     recent_threads: 'Recent threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
@@ -678,6 +680,8 @@ en:
       public: 'Privacy: This group is visible on the web'
       aria_label: 'Group privacy: {{privacy}}'
 
+  polls_panel:
+    new_poll: New poll
   description_card:
     title: 'Group description'
     placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
@@ -1398,8 +1402,34 @@ en:
 
   poll_common_index_card:
     title: Previous decisions
-    no_polls: No previous decisions found.
+    no_polls: No previous decisions found
     count: "See all: ({{count}}) decisions"
+
+  discussions_panel:
+    unread: Unread
+    closed: Closed
+    include_subgroups: Include subgroups
+
+  members_panel:
+    sort: 'Sort'
+    order_by_name: 'Name'
+    order_by_created: 'Oldest'
+    order_by_created_desc: 'Newest'
+    order_by_admin_desc: 'Coordinators'
+    loaded_of_total: '{{loaded}} of {{total}}'
+    view_requests: View requests
+    header_name: 'Name'
+    header_username: 'Username'
+    header_role: 'Role'
+    header_invited_by: 'Invited by'
+    header_invited: 'Invited'
+    header_actions: 'Actions'
+
+  group_polls_panel:
+    no_polls: No polls found
+
+  group_files_panel:
+    no_files: No files found
 
   poll_common_action_panel:
     anonymous: Votes will be anonymous

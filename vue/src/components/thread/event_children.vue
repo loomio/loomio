@@ -1,10 +1,10 @@
 <style lang="scss">
-.thread-item--indent {
-  margin-left: 42px;
-}
-.event-children__un-indent {
-  margin-left: -42px;
-}
+// .thread-item--indent {
+//   margin-left: 42px;
+// }
+// .event-children__un-indent {
+//   margin-left: -42px;
+// }
 </style>
 
 <script lang="coffee">

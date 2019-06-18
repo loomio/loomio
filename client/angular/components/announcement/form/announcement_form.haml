@@ -39,7 +39,7 @@
             %input{value: "{{shareableLink}}", disabled: "true"}
           %md-button.md-accent.md-button--tiny.announcement-form__copy{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
             %span{translate: "common.copy"}
-          %md-button.md-accent.md-button--tiny.announcement-form__copy{ng-click: "resetSharableLink()"}
+          %md-button.md-accent.md-button--tiny.announcement-form__reset{ng-click: "resetSharableLink()"}
             %span{translate: "common.reset"}
       %p.md-caption{translate: "invitation_form.shareable_link_explanation"}>
   %md-dialog-actions{ng-if: "canInvite"}

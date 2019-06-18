@@ -16,7 +16,7 @@ export default
   props:
     stanceCounts: Array
     goal: Number
-    size: String # IK: seems bad
+    size: Number
   data: ->
     svgEl: null
   methods:

@@ -29,7 +29,7 @@ describe API::MembershipRequestsController do
       it 'returns AccessDenied' do
         group.update_attribute(:members_can_add_members, false)
         get :pending, params: { group_id: group.id }
-        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+        expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
         expect(response.status).to eq 403
       end
     end
@@ -49,7 +49,7 @@ describe API::MembershipRequestsController do
       it 'returns AccessDenied' do
         group.update_attribute(:members_can_add_members, false)
         get :previous, params: { group_id: group.id }
-        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+        expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
         expect(response.status).to eq 403
       end
     end
@@ -68,7 +68,7 @@ describe API::MembershipRequestsController do
     context 'not permitted' do
       it 'raises AccessDenied exception' do
         post :approve, params: { id: other_pending_membership_request.id }
-        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+        expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
         expect(response.status).to eq 403
       end
     end
@@ -87,7 +87,7 @@ describe API::MembershipRequestsController do
     context 'not permitted' do
       it 'raises AccessDenied exception' do
         post :ignore, params: { id: other_pending_membership_request.id }
-        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+        expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
         expect(response.status).to eq 403
       end
     end
