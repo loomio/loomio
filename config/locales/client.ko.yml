@@ -361,7 +361,6 @@ ko:
     shareable_link: '공유가능링크 '
     email_addresses: '이메일 주소'
     email_addresses_placeholder: '예를 들어 helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: '링크를 복사해서 그룹에 초대하고 싶은 사람에게 보내십시요. 초대받은 사람은 그룹의 모든 모둠(Threads)에 접근할 수 있다.'
     add_custom_message: '초대하기'
     add_custom_message_link: '개인 메시지 추가'
     custom_message: '개인 메시지'

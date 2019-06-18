@@ -777,7 +777,6 @@ he:
     copy_link: 'העתק'
     email_addresses: 'כתובת דואר אלקטרוני'
     email_addresses_placeholder: 'לדוגמא: helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'העתק את הלינק ושלח אותו לכל מי שתרצה לצרף לקבוצה. זה יאפשר להם כניסה לכל השיחות בקבוצה.'
     email_explanation: 'לחלופין, הזן כתובות דואר אלקטרוני מתחת ושלח הזמנה במייל.'
     add_custom_message: 'עשו את הזמנתכם אישית.'
     add_custom_message_link: 'הוסף הודעה אישית.'

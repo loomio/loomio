@@ -485,7 +485,6 @@ da:
     copy_link: 'Kopier'
     email_addresses: 'Emailadresser'
     email_addresses_placeholder: 'f.eks. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Kopier linket og send det til enhver som du vil ønsker skal være medlem af gruppen. Dette vil give dem adgang til alle debatter i gruppen.'
     add_custom_message: 'Gør din invitation personlig, '
     add_custom_message_link: 'skriv en personlig besked.'
     custom_message: 'Personlig besked'
