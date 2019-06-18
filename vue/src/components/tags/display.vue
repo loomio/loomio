@@ -6,7 +6,7 @@ export default
   props:
     discussion: Object
   computed:
-    tags: -> @discussion.info.tags || []
+    tags: -> @discussion.tagNames || []
 </script>
 <template lang="pug">
 .thread-tags(v-if="tags.length")

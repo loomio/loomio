@@ -55,6 +55,7 @@ class GroupExportService
   end
 
   def self.import(filename)
+    group_ids = []
     tables = File.open(filename, 'r').map { |line| JSON.parse(line)['table'] }.uniq
     tables.each do |table|
       klass = table.classify.constantize
@@ -62,11 +63,12 @@ class GroupExportService
       new_records = File.open(filename, 'r').map do |line|
         data = JSON.parse(line)
         next unless (data['table'] == table)
-        klass.new(data['record'])
+        record = klass.new(data['record'])
+        group_ids << record.id if table == "groups"
+        record
       end.compact!
       klass.import(new_records, validate: false, on_duplicate_key_ignore: true)
-
-      # SearchVector.index_everything!
     end
+    SearchVector.index_without_delay! Discussion.where(group_id: group_ids).pluck(:id)
   end
 end

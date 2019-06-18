@@ -86,6 +86,7 @@ loading(:until="discussion")
     group-cover-image(:group="discussion.group()")
     v-container.thread-page(grid-list-lg)
       discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
+<<<<<<< Updated upstream
       //- .thread-page__main-content(:class="{'thread-page__forking': discussion.isForking()}")
       v-layout
         v-flex(md8)
@@ -102,4 +103,23 @@ loading(:until="discussion")
               membership-card(:group='discussion.guestGroup()', :pending='true')
             v-flex
               poll-common-index-card(:model='discussion')
+||||||| merged common ancestors
+      thread-card(:discussion="discussion")
+    //- v-layout
+    //-   v-flex(md8)
+      //- v-flex(md4)
+      //-   v-layout(column)
+      //-     v-flex(v-for="poll in activePolls", :key="poll.id")
+      //-       poll-common-card(:poll="poll")
+      //-     v-flex
+      //-       decision-tools-card(:discussion='discussion')
+      //-     v-flex
+      //-       membership-card(:group='discussion.guestGroup()')
+      //-     v-flex
+      //-       membership-card(:group='discussion.guestGroup()', :pending='true')
+      //-     v-flex
+      //-       poll-common-index-card(:model='discussion')
+=======
+      thread-card(:discussion="discussion")
+>>>>>>> Stashed changes
 </template>
