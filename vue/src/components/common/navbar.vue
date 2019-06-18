@@ -78,6 +78,24 @@ export default
           | &gt;
           | &nbsp;
       span(v-if="!breadcrumbs") {{title}}
+      v-menu
+        template(v-slot:activator="{ on }")
+          v-btn(icon v-on="on")
+            v-icon mdi-unfold-more-horizontal
+        v-list
+          v-subheader Jump to:
+          v-list-tile
+            v-list-tile-title Discussion Context
+          v-list-tile
+            v-list-tile-title First comment
+          v-list-tile
+            v-list-tile-title First unread
+          v-list-tile
+            v-list-tile-title Last comment
+          v-list-tile
+            v-list-tile-title Add comment
+          v-list-tile
+            v-list-tile-title Start poll
     v-spacer
     v-toolbar-items
       notifications(v-if='isLoggedIn')
