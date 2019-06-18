@@ -183,7 +183,7 @@ export default
     v-tab(href='#add-comment')
       span(v-t="'activity_card.add_comment'")
       v-icon mdi-comment
-    v-tab(href='#add-poll' v-if="canStartPoll()")
+    v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll()")
       span(v-t="'activity_card.add_poll'")
       v-icon mdi-thumbs-up-down
     v-tab(href='#add-outcome')
