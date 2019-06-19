@@ -66,7 +66,7 @@ export default
 .poll-proposal-chart-panel
   h3.lmo-card-subheading(v-t="'poll_common.results'")
   .poll-proposal-chart-panel__chart-container
-    poll-proposal-chart.poll-proposal-chart-panel__chart(:stance_counts="poll.stanceCounts", :diameter="200")
+    poll-proposal-chart.poll-proposal-chart-panel__chart(:stance-counts="poll.stanceCounts", :diameter="200")
     table.poll-proposal-chart-panel__legend(role="presentation")
       tbody
         tr(v-for="(name, index) in pollOptionNames" :key="index")

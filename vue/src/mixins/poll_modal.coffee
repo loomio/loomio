@@ -33,13 +33,6 @@ export default
                         outcome: outcome
                       })
 
-    openClosePollModal: (poll) ->
-      EventBus.$emit('openModal',
-                      component: 'PollCommonCloseModal',
-                      props: {
-                        poll: poll
-                      })
-
     openReopenPollModal: (poll) ->
       EventBus.$emit('openModal',
                       component: 'PollCommonReopenModal',

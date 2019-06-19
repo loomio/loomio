@@ -19,15 +19,18 @@ export default
   data: ->
     query: ''
     recipients: []
-    searchResults: if @announcement.model.isA('group') then [] else @announcement.model.members()
+    searchResults: []
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
     invitationsRemaining: 1000
     showInvitationsRemaining: false
     subscriptionActive: true
     canInvite: true
-    maxMembers: @announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0
+    maxMembers: 0
 
   created: ->
+    console.log "announcement", @announcement
+    @searchResults = if @announcement.model.isA('group') then [] else @announcement.model.members()
+    @maxMembers = @announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0
     if @announcement.model.isA('group')
       @announcement.model.fetchToken()
 
