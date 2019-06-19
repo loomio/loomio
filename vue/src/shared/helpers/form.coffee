@@ -190,7 +190,7 @@ setErrors = (scope, model, response) ->
   response.json().then (r) ->
     model.setErrors(r.errors)
 
-eventKind = (model) ->
+export eventKind = (model) ->
   if model.isA('discussion') and model.isNew()
     return if model.isForking() then 'discussion_forked' else 'new_discussion'
 

@@ -30,6 +30,7 @@ import PollMeetingChangeYourVote from '@/components/poll/meeting/change_your_vot
 import PollMeetingVotesPanelStance from '@/components/poll/meeting/votes_panel_stance.vue'
 import PollCommonVotesPanel from '@/components/poll/common/votes_panel.vue'
 import PollRankedChoiceChartPanel from '@/components/poll/ranked_choice/chart_panel'
+import PollMeetingStanceChoice from '@/components/poll/meeting/stance_choice'
 
 export default
   components:
@@ -59,6 +60,7 @@ export default
     'poll-common-stance-choice': PollCommonStanceChoice
     'poll-ranked_choice-vote-form': PollRankedChoiceVoteForm
     'poll-meeting-vote-form': PollMeetingVoteForm
+    'poll-meeting-stance-choice': PollMeetingStanceChoice
     'poll-meeting-chart-panel': PollMeetingChartPanel
     'poll-meeting-change-your-vote': PollMeetingChangeYourVote
     'poll-meeting-votes-panel-stance': PollMeetingVotesPanelStance

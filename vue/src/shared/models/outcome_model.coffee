@@ -31,6 +31,9 @@ export default class OutcomeModel extends BaseModel
   group: ->
     @poll().group() if @poll()
 
+  members: ->
+    @poll().members()
+    
   memberIds: ->
     @poll().memberIds()
 

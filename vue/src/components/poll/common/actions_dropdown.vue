@@ -3,12 +3,15 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import PollModalMixin from '@/mixins/poll_modal'
+import ConfirmModalMixin from '@/mixins/confirm_modal'
+import Records           from '@/shared/services/records'
 
 export default
-  mixins: [PollModalMixin]
+  mixins: [PollModalMixin, ConfirmModalMixin]
   props:
     poll: Object
-  methods:
+
+  computed:
     canEditPoll: ->
       AbilityService.canEditPoll(@poll)
 
@@ -24,6 +27,7 @@ export default
     canDeletePoll: ->
       AbilityService.canDeletePoll(@poll)
 
+  methods:
     exportPoll: ->
       # exportPath = LmoUrlService.poll(@poll, {}, action:'export', absolute:true)
       # LmoUrlService.goTo(exportPath,true)
@@ -35,7 +39,16 @@ export default
       @openEditPollModal(@poll)
 
     closePoll: ->
-      @openClosePollModal(@poll)
+      @openConfirmModal
+        submit: => @poll.close()
+        successCallback: =>
+          outcome = Records.outcomes.build(pollId: @poll.id)
+          @openPollOutcomeModal(outcome)
+        text:
+          title:    'poll_common_close_form.title'
+          helptext: 'poll_common_close_form.helptext'
+          confirm:  'poll_common_close_form.close_poll'
+          flash:    'poll_common_close_form.poll_closed'
 
     reopenPoll: ->
       @openReopenPollModal(@poll)
@@ -43,8 +56,6 @@ export default
     deletePoll: ->
       ModalService.open 'PollCommonDeleteModal', poll: => @poll
 
-    toggleSubscription: ->
-      ModalService.open 'PollCommonUnsubscribeModal', poll: => @poll
 </script>
 
 <template lang="pug">
@@ -53,17 +64,14 @@ v-menu.poll-actions-dropdown(lazy)
     .sr-only(v-t="'group_page.options_label'")
     v-icon mdi-chevron-down
   v-list
-    v-list-tile.poll-actions-dropdown__subscribe(@click="toggleSubscription()")
-      span(v-t="'common.action.unsubscribe'", v-if="poll.subscribed")
-      span(v-t="'common.action.subscribe'", v-if="!poll.subscribed")
-    v-list-tile.poll-actions-dropdown__edit(v-if="canEditPoll()", @click="editPoll()")
+    v-list-tile.poll-actions-dropdown__edit(v-if="canEditPoll", @click="editPoll()")
       span(v-t="'common.action.edit'")
-    v-list-tile.poll-actions-dropdown__close(v-if="canClosePoll()", @click="closePoll()")
+    v-list-tile.poll-actions-dropdown__close(v-if="canClosePoll", @click="closePoll()")
       span(v-t="{ path: 'poll_common.close_poll_type', args: { 'poll-type': $t(poll.pollTypeKey()) } }")
-    v-list-tile.poll-actions-dropdown__reopen(v-if="canReopenPoll()", @click="reopenPoll()")
+    v-list-tile.poll-actions-dropdown__reopen(v-if="canReopenPoll", @click="reopenPoll()")
       span(v-t="'common.action.reopen'")
-    v-list-tile.poll-actions-dropdown__export(v-if="canExportPoll()", @click="exportPoll()")
+    v-list-tile.poll-actions-dropdown__export(v-if="canExportPoll", @click="exportPoll()")
       span(v-t="'common.action.export'")
-    v-list-tile.poll-actions-dropdown__delete(v-if="canDeletePoll()", @click="deletePoll()")
+    v-list-tile.poll-actions-dropdown__delete(v-if="canDeletePoll", @click="deletePoll()")
       span(v-t="'common.action.delete'")
 </template>
