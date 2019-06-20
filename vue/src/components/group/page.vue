@@ -62,7 +62,7 @@ loading(:until='group')
   v-container.group-page
     group-description-card(:group='group')
     v-card
-      v-tabs(fixed-tabs v-model="activeTab")
+      v-tabs(fixed-tabs v-model="activeTab" show-arrows)
         v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
           | {{tab.name}}
       router-view

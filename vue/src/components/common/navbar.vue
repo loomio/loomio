@@ -18,6 +18,7 @@ export default
 
   methods:
     toggleSidebar: -> EventBus.$emit 'toggleSidebar'
+    toggleThreadNav: -> EventBus.$emit 'toggleThreadNav'
     signIn: -> @openAuthModal()
     last: last
 
@@ -30,14 +31,13 @@ export default
       @isLoggedIn = true
 
     EventBus.$on 'currentComponent', (data) =>
-      # console.log "currentComponent", data
-
       if data.title?
         @title = data.title
       else if data.titleKey?
         @title = @$t(data.titleKey)
 
       @group = data.group
+      @discussion = data.discussion
       @breadcrumbs = data.breadcrumbs
 
       if data.breadcrumbs
@@ -53,7 +53,6 @@ export default
         last(@breadcrumbs).last = true
         @title = last(@breadcrumbs).text
 
-
   computed:
     logo: ->
       AppConfig.theme.app_logo_src
@@ -62,7 +61,7 @@ export default
 </script>
 
 <template lang="pug">
-  v-toolbar(app :scroll-threshold="100")
+  v-toolbar(app clipped-right)
     v-btn.navbar__sidenav-toggle(icon v-if="!sidebarOpen" @click="toggleSidebar()")
       v-avatar(tile size="36px")
         v-icon mdi-menu
@@ -78,24 +77,6 @@ export default
           | &gt;
           | &nbsp;
       span(v-if="!breadcrumbs") {{title}}
-      v-menu
-        template(v-slot:activator="{ on }")
-          v-btn(icon v-on="on")
-            v-icon mdi-unfold-more-horizontal
-        v-list
-          v-subheader Jump to:
-          v-list-tile
-            v-list-tile-title Discussion Context
-          v-list-tile
-            v-list-tile-title First comment
-          v-list-tile
-            v-list-tile-title First unread
-          v-list-tile
-            v-list-tile-title Last comment
-          v-list-tile
-            v-list-tile-title Add comment
-          v-list-tile
-            v-list-tile-title Start poll
     v-spacer
     v-toolbar-items
       notifications(v-if='isLoggedIn')

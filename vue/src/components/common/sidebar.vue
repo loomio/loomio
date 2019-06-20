@@ -53,6 +53,7 @@ export default
       InboxService.unreadCount()
 
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
+    
   computed:
     user: -> Session.user()
     siteName: -> AppConfig.theme.site_name

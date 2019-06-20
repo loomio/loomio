@@ -59,12 +59,13 @@ export default
 
 <template lang="pug">
 .poll-created
-  poll-common-actions-dropdown(:poll="poll", v-if="pollHasActions")
+  v-layout(justify-space-between)
+    h1.poll-common-card__title.headline
+      span(v-if='!poll.translation') {{poll.title}}
+      translation(v-if="poll.translation" :model='poll', :field='title')
+    poll-common-actions-dropdown(:poll="poll", v-if="pollHasActions")
   p(v-if="!eventable.translation" v-marked="eventable.statement" class="thread-item__body lmo-markdown-wrapper")
   translation(v-if="eventable.translation" :model="eventable" field="statement" class="thread-item__body")
-  h1.poll-common-card__title.headline
-    span(v-if='!poll.translation') {{poll.title}}
-    translation(v-if="poll.translation" :model='poll', :field='title')
   poll-common-set-outcome-panel(:poll='poll')
   poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')
   .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='!poll.translation && poll.detailsFormat == "md"' v-marked='poll.cookedDetails()')

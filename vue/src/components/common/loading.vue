@@ -8,7 +8,7 @@ export default
 </script>
 
 <template lang="pug">
-div(style="min-height: 100%")
+div
   .page-loading(v-if="!until")
     v-progress-circular(indeterminate color='amber')
   slot(v-if="until")

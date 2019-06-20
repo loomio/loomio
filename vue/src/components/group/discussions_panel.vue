@@ -17,7 +17,7 @@ export default
   created: -> @init()
 
   data: ->
-    group: Records.groups.fuzzyFind(@$route.params.key)
+    group: null
     discussions: []
     searchResults: []
     loader: null
@@ -29,6 +29,8 @@ export default
 
   methods:
     init: ->
+      @group = Records.groups.fuzzyFind(@$route.params.key)
+
       @loader = new RecordLoader
         collection: 'discussions'
         params:
@@ -39,33 +41,32 @@ export default
         params:
           group_id: @group.id
 
-      @fetch()
-
       @watchRecords
         key: @group.id
         collections: ['discussions', 'groups']
         query: (store) => @query(store)
 
-      # @maxDiscussions = if AbilityService.canViewPrivateContent(@group)
-      #   @group.discussionsCount
-      # else
-      #   @group.publicDiscussionsCount
+      @refresh()
+
+    refresh: ->
+      @from = 0
+      @fetch()
+      @query()
 
     query: (store) ->
       if @fragment
         chain = Records.searchResults.collection.chain()
         chain = chain.find(resultGroupId: {$in: @groupIds})
+
         @tags.forEach (tag) ->
           chain = chain.find({tagNames: {'$contains': tag}})
+
         chain = chain.find(query: @fragment).data()
 
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
         chain = Records.discussions.collection.chain()
-
         chain = chain.find(groupId: {$in: @groupIds})
-
-        # chain = chain.find({'tags': {'$contains': 'ya' }})
 
         @tags.forEach (tag) ->
           chain = chain.find({tagNames: {'$contains': tag}})
@@ -81,7 +82,6 @@ export default
         chain = chain.compoundsort([['pinned', true], ['lastActivityAt', true]])
 
         @discussions = chain.data()
-
 
     fetch: debounce ->
       if @fragment
@@ -99,35 +99,13 @@ export default
       300
 
   watch:
-    fragment: ->
-      @from = 0
-      @fetch()
-      @query()
-
-    showUnread: ->
-      @from = 0
-      @fetch()
-      @query()
-
-    showClosed: ->
-      @from = 0
-      @fetch()
-      @query()
-
-    includeSubgroups: ->
-      @from = 0
-      @fetch()
-      @query()
-
-    group: (a, b) ->
-      @init() if a.id != b.id
-
-    isLoggedIn: -> @fetch()
-
-    tags: ->
-      @from = 0
-      @fetch()
-      @query()
+    fragment: -> @refresh()
+    showUnread: -> @refresh()
+    showClosed: -> @refresh()
+    includeSubgroups: -> @refresh()
+    isLoggedIn: -> @refresh()
+    tags: -> @refresh()
+    $route: (a, b) -> @init()
 
   computed:
     groupIds: ->

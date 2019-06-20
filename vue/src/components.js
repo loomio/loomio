@@ -153,6 +153,7 @@ module.exports = {
   SubgroupsCard: 'group/subgroups_card',
   TagsDisplay: 'tags/display',
   ThreadCard: 'thread/card',
+  ThreadNav: 'thread/nav',
   ThreadItem: 'thread/item',
   ThreadPreview: 'thread/preview',
   ThreadPreviewCollection: 'thread/preview_collection',
