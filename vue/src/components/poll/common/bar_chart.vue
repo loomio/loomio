@@ -3,8 +3,6 @@
   border: 0;
   margin: 0;
   padding: 0;
-  width: 50px;
-  height: 50px;
 }
 
 .bar-chart svg {
@@ -66,5 +64,5 @@ export default
 </script>
 
 <template>
-<div class="bar-chart"></div>
+<div :style="{height: size+'px', width: size+'px'}" class="bar-chart"></div>
 </template>

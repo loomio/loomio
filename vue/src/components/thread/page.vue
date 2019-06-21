@@ -23,30 +23,40 @@ export default
 
   watch:
     '$route.params.key': 'init'
+    '$route.params.comment_id': 'init'
 
   methods:
     init: ->
       @discussion = Records.discussions.findOrNull(@$route.params.key)
+      @commentId = parseInt(@$route.params.comment_id)
+      @sequenceId = parseInt(@$route.params.sequence_id)
 
       @loader = new RecordLoader
         collection: 'events'
         params:
           discussion_id: @$route.params.key
-          from: parseInt(@$route.params.sequence_id)
-          comment_id: parseInt(@$route.params.comment_id)
+          from: @sequenceId
+          comment_id: @commentId
           order: 'sequence_id'
           per: @per
 
       @loader.fetchRecords().then =>
-        @discussion = Records.discussions.findOrNull(@$route.params.key)
+        Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
+          @discussion = discussion
+          if @commentId
+            event = Records.events.find(
+                      discussionId: @discussion.id,
+                      kind: 'new_comment',
+                      eventableId: @commentId)[0]
+            @$router.push(LmoUrlService.discussion(@discussion)+'/'+event.sequenceId)
+          else
+            if @discussion.forkedEvent()
+              Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId)
 
-        if @discussion.forkedEvent()
-          Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId)
-
-        EventBus.$emit 'currentComponent',
-          page: 'threadPage'
-          discussion: @discussion
-          breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
+            EventBus.$emit 'currentComponent',
+              page: 'threadPage'
+              discussion: @discussion
+              breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
 </script>
 
 <template lang="pug">

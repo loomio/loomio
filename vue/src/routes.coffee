@@ -72,7 +72,7 @@ export default new Router
     {path: '/apps/registered/:id/:stub', component: RegisteredAppPage},
     {path: '/slack/install', component: InstallSlackPage},
     {path: '/d/new', component: StartDiscussionPage },
-    {path: '/d/:key', component: ThreadPage, children: threadPageChildren },
+    {path: '/d/:key', name: 'discussion', component: ThreadPage, children: threadPageChildren },
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key/membership_requests', component: MembershipRequestsPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren},

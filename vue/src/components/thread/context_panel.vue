@@ -89,7 +89,7 @@ export default
 
 <template lang="pug">
 //- section.context-panel.lmo-card-padding.lmo-action-dock-wrapper(aria-label="$t('thread_context.aria_label')")
-div.context-panel
+div.context-panel#sequence-0
   v-layout(justify-space-between align-items-center mx-2 pt-2)
     v-breadcrumbs(:items="groups" divider=">")
     context-panel-dropdown(:discussion="discussion")

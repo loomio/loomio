@@ -5,6 +5,7 @@ export default class BaseEventWindow
     @discussion = discussion
     @per        = per
     @readRanges = _.clone(@discussion.readRanges)
+    @sequenceId = 0
 
   # to be implemented by the super class
   # firstInSequence

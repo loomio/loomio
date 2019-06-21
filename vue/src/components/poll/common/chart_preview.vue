@@ -13,26 +13,21 @@ export default
   mixins: [UrlFor]
   props:
     poll: Object
+    showMyStance:
+      type: Boolean
+      default: true
     size:
-      type: String
-      default: 'medium'
+      type: Number
+      default: 48
   computed:
-    width: ->
-      switch this.size
-        when 'tiny'     then 20
-        when 'small'    then 24
-        when 'forty'    then 40
-        when 'medium'   then 48
-        when 'large'    then 64
-        when 'featured' then 200
-    chartType: -> fieldFromTemplate(this.poll.pollType, 'chart_type')
-    myStance: -> myLastStanceFor(this.poll)
+    chartType: -> fieldFromTemplate(@poll.pollType, 'chart_type')
+    myStance: -> myLastStanceFor(@poll)
 </script>
 
 <template lang="pug">
 .poll-common-chart-preview
-  bar-chart(v-if="chartType == 'bar'", :stance-counts='this.poll.stanceCounts', :size='width')
-  progress-chart(v-if="chartType == 'progress'", :stance-counts='this.poll.stanceCounts', :goal='this.poll.goal()', :size='width')
-  poll-proposal-chart-preview(v-if="chartType == 'pie'", :stance-counts='this.poll.stanceCounts', :my-stance='this.myStance' :size='width')
-  matrix-chart(v-if="chartType == 'matrix'", :matrix-counts='this.poll.matrixCounts', :size='width')
+  bar-chart(v-if="chartType == 'bar'", :stance-counts='this.poll.stanceCounts' :showMyStance="showMyStance"  :size='size')
+  progress-chart(v-if="chartType == 'progress'", :stance-counts='this.poll.stanceCounts', :goal='this.poll.goal()' :showMyStance="showMyStance"  :size='size')
+  poll-proposal-chart-preview(v-if="chartType == 'pie'", :stance-counts='this.poll.stanceCounts', :my-stance='myStance' :showMyStance="showMyStance" :size='size')
+  matrix-chart(v-if="chartType == 'matrix'", :matrix-counts='this.poll.matrixCounts' :showMyStance="showMyStance"  :size='size')
 </template>

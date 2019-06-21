@@ -32,12 +32,19 @@ export default
     event: Object
     eventWindow: Object
 
+  watch:
+    '$route.params.sequence_id': 'updateIsFocused'
+
   data: ->
     isDisabled: false
     showCommentForm: false
     parentComment: null
+    isFocused: @updateIsFocused()
 
   methods:
+    updateIsFocused: ->
+      @isFocused = parseInt(@$route.params.sequence_id) == @event.sequenceId
+
     viewed: (viewed) ->
       @event.markAsRead() if viewed
 
@@ -54,7 +61,6 @@ export default
     camelCase: camelCase
 
     handleReplyButtonClicked: (obj) ->
-      console.log "reply button clicked", @event
       @parentComment = obj.eventable
       @showCommentForm = true
 
@@ -62,14 +68,6 @@ export default
       @showCommentForm = false
 
   computed:
-    mdColors: ->
-      obj = {'border-color': 'primary-500'}
-      obj['background-color'] = 'accent-50' if @isFocused
-      obj
-
-    isFocused: ->
-      @eventWindow.initialSequenceId == @event.sequenceId
-
     canRemoveEvent: ->
       AbilityService.canRemoveEventFromThread(@event)
 
@@ -97,7 +95,7 @@ export default
 
     styles: ->
       styles = {'border-color': @$vuetify.theme.primary}
-      styles['background-color'] =  'var(--v-accent-lighten5)' if @isFocused
+      styles['background-color'] = 'var(--v-accent-lighten5)' if @isFocused
       styles
 
 
@@ -109,7 +107,6 @@ div
     .lmo-flex.lmo-relative.lmo-action-dock-wrapper.lmo-flex--row(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
       .lmo-disabled-form(v-show='isDisabled')
       .thread-item__avatar.lmo-margin-right
-        | {{event.sequenceId}}
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='isNested ? "thirtysix" : "medium"')
         v-checkbox.thread-item__is-forking(v-if="event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
       .thread-item__body.lmo-flex.lmo-flex__horizontal-center.lmo-flex--column

@@ -2,7 +2,7 @@ import Records         from '@/shared/services/records'
 import BaseEventWindow from '@/shared/services/base_event_window'
 
 export default class NestedEventWindow extends BaseEventWindow
-  constructor: ({discussion, parentEvent, initialSequenceId, per}) ->
+  constructor: ({discussion, parentEvent, sequenceId, per}) ->
     super(discussion: discussion, per: per)
     @columnName = "position"
     @parentEvent = parentEvent

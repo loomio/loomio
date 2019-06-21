@@ -30,10 +30,9 @@ export default
 
   created: ->
     @eventWindow = new NestedEventWindow
-      parentEvent:       @parentEvent
-      discussion:        @parentEventWindow.discussion
-      initialSequenceId: @parentEventWindow.initialSequenceId
-      per:               @parentEventWindow.per
+      parentEvent: @parentEvent
+      discussion:  @parentEventWindow.discussion
+      per:         @parentEventWindow.per
 
     @loader = new RecordLoader
       collection: 'events'

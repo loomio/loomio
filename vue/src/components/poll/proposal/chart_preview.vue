@@ -2,8 +2,6 @@
 @import 'variables';
 
 .poll-proposal-chart-preview {
-  width: 50px;
-  height: 50px;
   position: relative;
 }
 
@@ -54,26 +52,17 @@
 <script lang="coffee">
 export default
   props:
+    size: Number
     stanceCounts: Array
     myStance: Object
+    showMyStance: Boolean
+
 </script>
 
-<template>
-    <div class="poll-proposal-chart-preview">
-      <poll-proposal-chart
-        :stance-counts="stanceCounts"
-        :diameter="50"
-        class="poll-common-collapsed__pie-chart"
-      ></poll-proposal-chart>
-      <div class="poll-proposal-chart-preview__stance-container">
-        <div
-          v-if="this.myStance"
-          :class="`poll-proposal-chart-preview__stance poll-proposal-chart-preview__stance--${this.myStance.pollOption().name}`"
-        ></div>
-        <div
-          v-if="!this.myStance"
-          class="poll-proposal-chart-preview__stance poll-proposal-chart-preview__stance--undecided"
-        >?</div>
-      </div>
-    </div>
+<template lang="pug">
+.poll-proposal-chart-preview(:style="{width: size+'px', height: size+'px'}")
+  poll-proposal-chart.poll-common-collapsed__pie-chart(:stance-counts='stanceCounts', :diameter='size')
+  .poll-proposal-chart-preview__stance-container(v-if='showMyStance')
+    div(v-if='myStance', :class='`poll-proposal-chart-preview__stance poll-proposal-chart-preview__stance--${this.myStance.pollOption().name}`')
+    .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-if='!myStance') ?
 </template>

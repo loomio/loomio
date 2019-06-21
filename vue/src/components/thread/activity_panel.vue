@@ -26,6 +26,7 @@ export default
     per: AppConfig.pageSize.threadItems
     renderMode: 'nested'
     eventWindow: null
+    sequenceId: 0
     events: []
     positionItems: []
     renderModeItems: [
@@ -40,48 +41,33 @@ export default
   updated: ->
 
   watch:
-    '$route.params.comment_id': ->
-      # if event = Records.events.find(discussionId: @discussion.id kind: 'new_comment' eventableId: @requestedCommentId)[0]
-      # else
-      #   Records.events.findOrFetchByCommentId
-      #   parseInt(@$route.params.comment_id)find
-      #
-      # .sequenceId
-      # else fetch it and then update url to be seqence_id
-    '$route.params.sequence_id': -> @goToRequestedSequenceId()
+    '$route.params.sequence_id': 'refresh'
 
   computed:
-    requestedElement: ->
-
     canStartPoll: ->
       AbilityService.canStartPoll(@discussion)
 
   methods:
-    goToRequestedSequenceId: ->
-      if RangeSet.includesValue(@discussion.ranges, parseInt(@$route.params.sequence_id))
-        @requestedSequenceId = parseInt(@$route.params.sequence_id)
+    findEvent: (sequenceId) ->
+      if sequenceId == 0
+        @discussion.createdEvent()
       else
-        @requestedSequenceId = 0
+        Records.events.find(discussionId: @discussion.id, sequenceId: sequenceId)[0]
 
-      min = @positionFromSequenceId(@requestedSequenceId)
-      console.log "rsid #{@requestedSequenceId} setting min to #{min} and max to #{min+@per}"
+    refresh: ->
+      sequenceId = parseInt(@$route.params.sequence_id) || 0
+      if event = @findEvent(sequenceId)
+        @alignWindowTo(event)
+      else
+        @loader.loadMore(sequenceId).then =>
+          @alignWindowTo(@findEvent(sequenceId))
+
+    alignWindowTo: (event) ->
+      min = @parentPositionOf(event)
       @eventWindow.setMin(min)
       @eventWindow.setMax(min+@per)
-
-      if @requestedSequenceId == 0 || Records.events.find(discussionId: @discussion.id, sequenceId: @requestedSequenceId)[0]
-        console.log "already loaded #{@requestedSequenceId}"
-        @scrollToRequestedSequenceId()
-      else
-        console.log "loading #{@requestedSequenceId}"
-        @loader.loadMore(@requestedSequenceId).then =>
-          @scrollToRequestedSequenceId()
-
-    scrollToRequestedSequenceId: ->
-      @$nextTick =>
-        @$vuetify.goTo if @requestedSequenceId
-          "#sequence-#{@requestedSequenceId}"
-        else
-          ".context-panel h1"
+      @events = @eventWindow.windowedEvents()
+      @$nextTick => @$nextTick => @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
 
     init: ->
       # if @renderMode == "chronological"
@@ -107,11 +93,9 @@ export default
         query: (store) =>
           @events = @eventWindow.windowedEvents()
 
-      @goToRequestedSequenceId()
+      @refresh()
 
-
-    positionFromSequenceId: (sequenceId) ->
-      event = Records.events.find(discussionId: @discussion.id, sequenceId: sequenceId)[0]
+    parentPositionOf: (event) ->
       # ensure that we set the min position of the window to bring the initialSequenceId to the top
       # if this is the outside window, then the initialEvent might be nested, in which case, position to the parent of initialEvent
       # if the initialEvent is not child of our parentEvent
@@ -119,16 +103,12 @@ export default
       # if the initialEvent is a child of the parentEvent then min = initialEvent.position
       # if the initialEvent is a grandchild of the parentEvent then min = initialEvent.parent().position
       # if the initialEvent is not a child or grandchild, then min = 0
-      console.log "found event for #{sequenceId}", event
-      console.log "parent for #{sequenceId}", event.parent()
-      return 0 if event == undefined
-
-      if event.parentId == @eventWindow.parentEvent.id
+      if event == @discussion.createdEvent()
+        0
+      else if event.parentId == @eventWindow.parentEvent.id
         event.position
       else if event.parent().parentId == @eventWindow.parentEvent.id
         event.parent().position
-      else
-        0
 
     loadPrevious: ->
       if @eventWindow.anyPrevious()
@@ -177,7 +157,7 @@ export default
   //-   v-flex
   //-     v-select(flat :items='renderModeItems', v-model='renderMode', @change='init()', solo)
 
-  loading-content(v-if='eventWindow.numLoaded() == 0' :blockCount='2')
+  loading-content(v-if='loader.loading && eventWindow.numLoaded() == 0' :blockCount='2')
 
   .activity-panel__content(v-if='!loader.loadingFirst')
     a.activity-panel__load-more.lmo-flex.lmo-flex__center.lmo-no-print(v-show='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()', tabindex='0')
