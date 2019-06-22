@@ -75,7 +75,7 @@ div
     v-list(two-line avatar v-if='polls.length')
       poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
 
-  v-alert(v-if='polls.length == 0 && !loader.loading' :value="true" color="grey" outline icon="info" v-t="'group_polls_panel.no_polls'")
+  v-alert(v-if='polls.length == 0 && !loader.loading' :value="true" color="grey" outlined icon="info" v-t="'group_polls_panel.no_polls'")
 
     //- | Showing x of {{totalRecords}} totalj
   v-layout(align-center)

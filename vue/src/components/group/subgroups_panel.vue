@@ -45,7 +45,7 @@ export default
   v-toolbar(flat)
     v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
     v-spacer
-    v-btn.subgroups-card__start(outline color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
+    v-btn.subgroups-card__start(outlined color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
   v-list(avatar three-line)
     v-list-item.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id')
       v-list-item-avatar.subgroups-card__list-item-logo

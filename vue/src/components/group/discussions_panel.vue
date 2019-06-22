@@ -144,7 +144,7 @@ export default
     v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
     v-spacer
     v-combobox(v-model='tags' :items='groupTags' :label='$t("loomio_tags.tags")' item-text="name" multiple solo chips)
-    v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outline color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outlined color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-progress-linear(indeterminate :active="loading")
 

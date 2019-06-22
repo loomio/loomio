@@ -10,7 +10,7 @@ export default
 </script>
 <template lang="pug">
 .thread-tags(v-if="tags.length")
-  v-chip(small outline v-for="tag in tags" :key="tag") {{ tag }}
+  v-chip(small outlined v-for="tag in tags" :key="tag") {{ tag }}
 </template>
 <style lang="scss">
 </style>

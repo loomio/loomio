@@ -96,7 +96,7 @@ export default
 
   v-data-table(:items="items" :loading="loading" disable-initial-sort hide-actions)
     template(v-slot:no-data)
-      v-alert(:value="true" color="info" outline icon="info" v-t="'group_files_panel.no_files'")
+      v-alert(:value="true" color="info" outlined icon="info" v-t="'group_files_panel.no_files'")
     template(v-slot:items="props")
       td
         v-layout(align-center)
