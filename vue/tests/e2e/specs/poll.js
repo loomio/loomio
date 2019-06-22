@@ -7,6 +7,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.activity-panel__add-poll')
     page.click('.decision-tools-card__poll-type--proposal')
     // page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
@@ -21,9 +22,9 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
-    page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
-      page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
-      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    page.scrollTo('.stance-created', () => {
+      page.expectText('.poll-common-stance-choice__option-name', 'Agree')
+      page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
 
@@ -31,6 +32,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.activity-panel__add-poll')
     page.click('.decision-tools-card__poll-type--count')
     // page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
@@ -46,9 +48,9 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
-    page.scrollTo('.poll-common-stance-choice--count', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-choice__option-name', 'Yes')
-      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+      page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
 
@@ -56,6 +58,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.activity-panel__add-poll')
     page.click('.decision-tools-card__poll-type--poll')
     // page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
@@ -73,49 +76,49 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
-    page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
-      page.expectText('.poll-common-stance-choice--poll', 'An option')
-      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    page.scrollTo('.stance-created', () => {
+      page.expectText('.poll-common-stance-choice__option-name', 'An option')
+      page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
 
-  // TODO: GK: inconsistent for unknown reasons
-  // 'can_start_a_dot_vote_in_a_group': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('test_discussion', { controller: 'polls' })
-  //   page.click('.decision-tools-card__poll-type--dot_vote')
-  //   // page.click(".poll-common-tool-tip__collapse")
-  //   page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
-  //   page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
-  //   page.fillIn('.poll-poll-form__add-option-input input', 'An option')
-  //
-  //   page.click('.poll-poll-form__option-button')
-  //   page.click('.poll-common-form__submit')
-  //   page.expectElement('.announcement-form__submit')
-  //   page.click('.dismiss-modal-button')
-  //
-  //   page.expectText('.poll-common-card__title', 'A new proposal')
-  //   page.expectText('.poll-common-details-panel__details p', 'Some details')
-  //
-  //   page.scrollTo('.poll-common-card-header', () => {
-  //     page.click('.poll-dot-vote-vote-form__dot-button:last-child')
-  //     page.click('.poll-dot-vote-vote-form__dot-button:last-child')
-  //     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
-  //     page.click('.poll-common-vote-form__submit', 1000)
-  //   })
-  //
-  //   page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
-  //     page.pause(1000)
-  //     page.expectText('.poll-common-stance-choice--dot-vote', 'An option')
-  //     page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
-  //   })
-  // },
+  'can_start_a_dot_vote_in_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('test_discussion', { controller: 'polls' })
+  page.click('.activity-panel__add-poll')
+    page.click('.decision-tools-card__poll-type--dot_vote')
+    // page.click(".poll-common-tool-tip__collapse")
+    page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
+    page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
+    page.fillIn('.poll-poll-form__add-option-input input', 'An option')
+
+    page.click('.poll-poll-form__option-button')
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details p', 'Some details')
+
+    page.scrollTo('.poll-common-card__title', () => {
+      page.click('.poll-dot-vote-vote-form__dot-button:last-child')
+      page.click('.poll-dot-vote-vote-form__dot-button:last-child')
+      page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
+      page.click('.poll-common-vote-form__submit', 1000)
+    })
+
+    page.scrollTo('.stance-created', () => {
+      page.expectText('.poll-common-stance-choice--dot-vote', 'An option')
+      page.expectText('.poll-common-stance-created__reason', 'A reason')
+    })
+  },
 
   'can_start_a_score_poll_in_a_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.activity-panel__add-poll')
     page.click('.decision-tools-card__poll-type--score')
     // page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
@@ -133,9 +136,9 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
-    page.scrollTo('.poll-common-votes-panel__stance', () => {
-      page.expectText('.poll-common-stance-choice', 'An option')
-      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    page.scrollTo('.stance-created', () => {
+      page.expectText('.poll-common-stance-choice--score', 'An option')
+      page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
 
@@ -143,6 +146,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.activity-panel__add-poll')
     page.click('.decision-tools-card__poll-type--meeting')
     // page.click('.poll-common-tool-tip__collapse')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
@@ -161,15 +165,15 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
-    page.scrollTo('.poll-common-card-header', () => {
+    page.scrollTo('.poll-common-card__title', () => {
       page.click('.poll-common-vote-form__option button:first-child', 500)
       page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
       page.click('.poll-common-vote-form__submit', 1000)
     })
 
-    page.expectElement('.poll-meeting-chart-panel--yes')
-    page.scrollTo('.poll-common-votes-panel__stance', () => {
-      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    page.scrollTo('.stance-created', () => {
+      page.expectElement('.poll-meeting-stance-icon poll-meeting-stance-icon--thread-item')
+      page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
 
@@ -177,6 +181,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.activity-panel__add-poll')
     page.click('.decision-tools-card__poll-type--ranked_choice')
     // page.click('.poll-common-tool-tip__collapse')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
@@ -196,9 +201,9 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
-    page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
-      page.expectText('.poll-common-stance-choice--ranked_choice:last-child', 'An option')
-      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    page.scrollTo('.stance-created', () => {
+      page.expectText('.poll-common-stance-choice--ranked_choice:first-child', 'An option')
+      page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
 
