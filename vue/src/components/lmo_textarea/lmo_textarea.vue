@@ -313,7 +313,7 @@ div
                 v-icon mdi-format-list-checks
         v-btn(text small :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
           v-icon mdi-paperclip
-        v-menu(lazy :close-on-content-click="false" v-model="closeEmojiMenu")
+        v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
           template(v-slot:activator="{on}")
             v-btn.emoji-picker__toggle(v-on="on" flat small :class="{ 'is-active': isActive.underline() }")
               v-icon mdi-emoticon-outline

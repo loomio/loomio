@@ -100,7 +100,7 @@ export default
 </script>
 
 <template lang="pug">
-v-menu.group-page-actions.lmo-no-print(v-if="canSeeGroupActions" offset-y lazy)
+v-menu.group-page-actions.lmo-no-print(v-if="canSeeGroupActions" offset-y)
   template(v-slot:activator="{on}")
     v-btn.group-page-actions__button(text v-on="on")
       span(v-t="'group_page.options.label'")
