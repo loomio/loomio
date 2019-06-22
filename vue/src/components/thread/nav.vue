@@ -47,6 +47,9 @@ export default
       EventBus.$emit('updateThreadPosition', 0 - @requestedPosition)
     ,
       250
+  computed:
+    tickLabels: ->
+      ['Context','','','','Proposal',''].reverse()
 
   watch:
     open: (val) ->
@@ -57,25 +60,26 @@ export default
 <template lang="pug">
 v-navigation-drawer(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped)
   .thread-nav
-    v-slider(v-model="requestedPosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="refreshThread()")
+    v-subheader Navigation
+    v-slider(v-model="requestedPosition" :tick-size="0" :tick-labels="tickLabels" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="refreshThread()")
       template(v-slot:thumb-label)
         | {{0 - requestedPosition}}
-    v-list(dense)
-      v-subheader Navigation
-      v-list-item(:to="urlFor(discussion)")
-        v-list-item-title Context
-      v-list-item(:to="urlFor(discussion)+'/'+discussion.firstSequenceId()" :disabled="!discussion.firstSequenceId()")
-        v-list-item-title First
-      v-list-item(:disabled="!discussion.firstUnreadSequenceId()" :to="urlFor(discussion)+'/'+discussion.firstUnreadSequenceId()")
-        v-list-item-title Unread
-      v-list-item(:to="urlFor(discussion)+'/'+discussion.lastSequenceId()" :disabled="!discussion.lastSequenceId()")
-        v-list-item-title Latest
-      v-list-item(@click="scrollTo('.activity-panel__actions')")
-        v-list-item-title Add comment
-      v-subheader Polls
-      v-list-item(v-for="event in keyEvents" :key="event.id" :to="urlFor(discussion)+'/'+event.sequenceId")
-        v-list-item-avatar
-          poll-common-chart-preview(:poll='event.model()' :size="28" :showMyStance="false")
-        v-list-item-title
-          span {{title(event.model())}}
+    //- v-list(dense)
+    //-   v-subheader Navigation
+    //-   v-list-item(:to="urlFor(discussion)")
+    //-     v-list-item-title Context
+    //-   v-list-item(:to="urlFor(discussion)+'/'+discussion.firstSequenceId()" :disabled="!discussion.firstSequenceId()")
+    //-     v-list-item-title First
+    //-   v-list-item(:disabled="!discussion.firstUnreadSequenceId()" :to="urlFor(discussion)+'/'+discussion.firstUnreadSequenceId()")
+    //-     v-list-item-title Unread
+    //-   v-list-item(:to="urlFor(discussion)+'/'+discussion.lastSequenceId()" :disabled="!discussion.lastSequenceId()")
+    //-     v-list-item-title Latest
+    //-   v-list-item(@click="scrollTo('.activity-panel__actions')")
+    //-     v-list-item-title Add comment
+    v-subheader Polls
+    v-list-item(v-for="event in keyEvents" :key="event.id" :to="urlFor(discussion)+'/'+event.sequenceId")
+      v-list-item-avatar
+        poll-common-chart-preview(:poll='event.model()' :size="28" :showMyStance="false")
+      v-list-item-title
+        span {{title(event.model())}}
 </template>

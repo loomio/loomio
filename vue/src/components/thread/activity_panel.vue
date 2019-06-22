@@ -67,9 +67,11 @@ export default
       if position == 0
         @alignWindowTo(@discussion.createdEvent())
       else if event = @findEvent(position: position, depth: 1)
+        console.log 'event found', event
         @alignWindowTo(event)
       else
-        @loader.fetchRecords(params: {order: 'position', from: position, depth: 1}).then =>
+        @loader.fetchRecords(order: 'position', from: position, depth: 1).then =>
+          console.log 'event loaded', @findEvent(position: position, depth: 1)
           @alignWindowTo(@findEvent(position: position, depth: 1))
 
     alignWindowTo: (event) ->
@@ -114,6 +116,7 @@ export default
       # if the initialEvent is a child of the parentEvent then min = initialEvent.position
       # if the initialEvent is a grandchild of the parentEvent then min = initialEvent.parent().position
       # if the initialEvent is not a child or grandchild, then min = 0
+      console.log event
       if event == @discussion.createdEvent()
         0
       else if event.parentId == @eventWindow.parentEvent.id
