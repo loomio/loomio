@@ -254,7 +254,7 @@ div
   .editor(v-if="format == 'html'")
     editor-menu-bar.menubar(:editor='editor')
       div.lmo-flex.lmo-flex__center(slot-scope='{ commands, isActive }')
-        v-menu(lazy)
+        v-menu
           template(v-slot:activator="{on}")
             v-btn(small flat v-on="on")
               v-icon mdi-format-size
@@ -272,7 +272,7 @@ div
             v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
                 v-icon mdi-format-text
-        v-menu(lazy)
+        v-menu
           template(v-slot:activator="{on}")
             v-btn(small flat v-on="on")
               v-icon mdi-format-bold
@@ -296,7 +296,7 @@ div
             v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.code() }", @click='commands.code')
                 v-icon mdi-code-braces
-        v-menu(lazy)
+        v-menu
           template(v-slot:activator="{on}")
             v-btn(small flat v-on="on")
               v-icon mdi-format-list-bulleted

@@ -15,7 +15,7 @@ export default
 
 </script>
 <template lang="pug">
-v-menu.notifications(offset-y lazy bottom)
+v-menu.notifications(offset-y bottom)
   template(v-slot:activator="{on}")
     v-btn.notifications__button(icon v-on="on" :aria-label="$t('navbar.notifications')")
       v-icon(v-if="!unread.length") mdi-bell
