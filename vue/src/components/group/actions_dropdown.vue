@@ -101,7 +101,7 @@ export default
 
 <template lang="pug">
 v-menu.group-page-actions.lmo-no-print(v-if="canSeeGroupActions" offset-y lazy)
-  v-btn.group-page-actions__button(flat slot='activator')
+  v-btn.group-page-actions__button(text slot='activator')
     span(v-t="'group_page.options.label'")
     v-icon mdi-chevron-down
   v-list.group-actions-dropdown__menu-content

@@ -311,7 +311,7 @@ div
             v-list-item
               v-btn(small flat @click='commands.todo_list')
                 v-icon mdi-format-list-checks
-        v-btn(flat small :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
+        v-btn(text small :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
           v-icon mdi-paperclip
         v-menu(lazy :close-on-content-click="false" v-model="closeEmojiMenu")
           template(v-slot:activator="{on}")
@@ -320,7 +320,7 @@ div
           emoji-picker(:insert="emojiPicked")
         v-dialog(v-model="linkDialogIsOpen")
           template(v-slot:activator="{on}")
-            v-btn(flat small v-on="on")
+            v-btn(text small v-on="on")
               v-icon mdi-link-variant
           v-card
             .needsSelection(v-if="editor.view.state.tr.selection.empty")

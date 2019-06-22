@@ -16,7 +16,7 @@ export default
 
 <template lang="pug">
 v-tooltip(bottom)
-  v-btn.group-privacy-button(flat slot='activator', :aria-label='privacyDescription')
+  v-btn.group-privacy-button(text slot='activator', :aria-label='privacyDescription')
     .screen-only.lmo-flex.lmo-flex__center(aria-hidden='true')
       v-icon {{iconClass}}
       span(v-t="'common.privacy.' + group.groupPrivacy")

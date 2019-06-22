@@ -167,7 +167,7 @@ v-card
               v-layout(align-center)
                 v-text-field.announcement-form__shareable-link(:value='shareableLink' :disabled='true')
                 v-btn.announcement-form__copy(ref="copyContainer" flat color="accent" v-t="'common.copy'" v-clipboard:copy='shareableLink' v-clipboard:success='copied' v-clipboard:error='"fuck"')
-                v-btn.announcement-form__reset(flat color="warning" v-t="'common.reset'" @click="resetShareableLink()")
+                v-btn.announcement-form__reset(text color="warning" v-t="'common.reset'" @click="resetShareableLink()")
               p.caption(v-t="'invitation_form.shareable_link_explanation'")
   v-card-actions
     div(v-if="recipients.length")

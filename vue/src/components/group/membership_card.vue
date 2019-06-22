@@ -132,6 +132,6 @@ v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pe
         membership-dropdown(:membership="membership")
     loading(v-if='loader.loading')
   v-card-actions(v-if='showLoadMore()')
-    v-btn(flat color="accent", v-if='showLoadMore()', @click='loader.loadMore()', v-t="'common.action.load_more'")
+    v-btn(text color="accent", v-if='showLoadMore()', @click='loader.loadMore()', v-t="'common.action.load_more'")
     span {{recordsDisplayed()}} / {{recordCount()}}
 </template>

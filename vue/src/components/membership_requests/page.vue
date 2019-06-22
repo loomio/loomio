@@ -71,10 +71,10 @@ loading(:until="group")
             v-list-item-action
               //- , v-t="'membership_requests_page.ignore'"
               //- , v-t="'membership_requests_page.approve'"
-              v-btn.membership-requests-page__approve(flat icon @click='approve(request)')
+              v-btn.membership-requests-page__approve(text icon @click='approve(request)')
                 v-icon mdi-check
             v-list-item-action
-              v-btn.membership-requests-page__ignore(flat icon @click='ignore(request)')
+              v-btn.membership-requests-page__ignore(text icon @click='ignore(request)')
                 v-icon mdi-close
 
         v-list.membership-requests-page__previous-requests(subheader three-line)

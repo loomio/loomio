@@ -153,9 +153,9 @@ export default
 
   //- v-layout.activity-panel__settings(justify-space-between)
   //-   v-flex
-  //-     v-select(flat :items='positionItems', v-model='position', @change='init()', solo)
+  //-     v-select(text :items='positionItems', v-model='position', @change='init()', solo)
   //-   v-flex
-  //-     v-select(flat :items='renderModeItems', v-model='renderMode', @change='init()', solo)
+  //-     v-select(text :items='renderModeItems', v-model='renderMode', @change='init()', solo)
 
   loading-content(v-if='loader.loading && eventWindow.numLoaded() == 0' :blockCount='2')
 

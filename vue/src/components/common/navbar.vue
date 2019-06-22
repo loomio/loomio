@@ -80,5 +80,5 @@ export default
     v-spacer
     v-toolbar-items
       notifications(v-if='isLoggedIn')
-      v-btn.navbar__sign-in(flat v-if='!isLoggedIn' v-t="'navbar.sign_in'" @click='signIn()')
+      v-btn.navbar__sign-in(text v-if='!isLoggedIn' v-t="'navbar.sign_in'" @click='signIn()')
 </template>
