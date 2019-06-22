@@ -3,6 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import UrlFor from '@/mixins/url_for'
 import Records from '@/shared/services/records'
 import WatchRecords from '@/mixins/watch_records'
+import { debounce } from 'lodash'
 
 export default
   mixins: [UrlFor, WatchRecords]
@@ -10,9 +11,12 @@ export default
     discussion: null
     open: null
     keyEvents: []
+    requestedPosition: null
 
   mounted: ->
     EventBus.$on 'toggleThreadNav', => @open = !@open
+    EventBus.$on 'updateRequestedPosition', (position) =>
+      @requestedPosition = 0 - position
     EventBus.$on 'currentComponent', (options) =>
       @discussion = options.discussion
       return unless @discussion
@@ -39,6 +43,10 @@ export default
     title: (model) ->
       model.title || model.statement
 
+    refreshThread: debounce ->
+      EventBus.$emit('updateThreadPosition', 0 - @requestedPosition)
+    ,
+      250
 
   watch:
     open: (val) ->
@@ -49,6 +57,9 @@ export default
 <template lang="pug">
 v-navigation-drawer(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped)
   .thread-nav
+    v-slider(v-model="requestedPosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="refreshThread()")
+      template(v-slot:thumb-label)
+        | {{0 - requestedPosition}}
     v-list(dense)
       v-subheader Navigation
       v-list-item(:to="urlFor(discussion)")

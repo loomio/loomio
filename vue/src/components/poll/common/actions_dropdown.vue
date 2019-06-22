@@ -60,9 +60,10 @@ export default
 
 <template lang="pug">
 v-menu.poll-actions-dropdown
-  v-btn.poll-actions-dropdown__button(text icon slot="activator")
-    .sr-only(v-t="'group_page.options_label'")
-    v-icon mdi-chevron-down
+  template(v-slot:activator="{on}")
+    v-btn.poll-actions-dropdown__button(text icon v-on="on")
+      .sr-only(v-t="'group_page.options_label'")
+      v-icon mdi-chevron-down
   v-list
     v-list-item.poll-actions-dropdown__edit(v-if="canEditPoll", @click="editPoll()")
       span(v-t="'common.action.edit'")

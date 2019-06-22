@@ -256,66 +256,66 @@ div
       div.lmo-flex.lmo-flex__center(slot-scope='{ commands, isActive }')
         v-menu
           template(v-slot:activator="{on}")
-            v-btn(small flat v-on="on")
+            v-btn(small text v-on="on")
               v-icon mdi-format-size
               v-icon mdi-menu-down
           v-list.menubar__dropdown
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
+              v-btn(small text :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
                 v-icon mdi-format-header-1
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
+              v-btn(small text :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
                 v-icon mdi-format-header-2
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
+              v-btn(small text :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
                 v-icon mdi-format-header-3
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
+              v-btn(small text :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
                 v-icon mdi-format-text
         v-menu
           template(v-slot:activator="{on}")
-            v-btn(small flat v-on="on")
+            v-btn(small text v-on="on")
               v-icon mdi-format-bold
               v-icon mdi-menu-down
           v-list.menubar__dropdown
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
+              v-btn(small text :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
                 v-icon mdi-format-bold
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
+              v-btn(small text :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
                 v-icon mdi-format-italic
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
+              v-btn(small text :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
                 v-icon mdi-format-strikethrough
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
+              v-btn(small text :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
                 v-icon mdi-format-underline
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
+              v-btn(small text :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
                 v-icon mdi-format-quote-close
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.code() }", @click='commands.code')
+              v-btn(small text :class="{ 'is-active': isActive.code() }", @click='commands.code')
                 v-icon mdi-code-braces
         v-menu
           template(v-slot:activator="{on}")
-            v-btn(small flat v-on="on")
+            v-btn(small text v-on="on")
               v-icon mdi-format-list-bulleted
               v-icon mdi-menu-down
           v-list.menubar__dropdown
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
+              v-btn(small text :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
                 v-icon mdi-format-list-bulleted
             v-list-item
-              v-btn(small flat :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
+              v-btn(small text :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
                 v-icon mdi-format-list-numbered
             v-list-item
-              v-btn(small flat @click='commands.todo_list')
+              v-btn(small text @click='commands.todo_list')
                 v-icon mdi-format-list-checks
         v-btn(text small :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
           v-icon mdi-paperclip
         v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
           template(v-slot:activator="{on}")
-            v-btn.emoji-picker__toggle(v-on="on" flat small :class="{ 'is-active': isActive.underline() }")
+            v-btn.emoji-picker__toggle(v-on="on" small text :class="{ 'is-active': isActive.underline() }")
               v-icon mdi-emoticon-outline
           emoji-picker(:insert="emojiPicked")
         v-dialog(v-model="linkDialogIsOpen")
@@ -356,19 +356,61 @@ div
 <style lang="scss">
 @import 'variables.scss';
 
+.lmo-markdown-wrapper {
+  word-wrap: break-word;
+
+  // p { @include md-body-1; }
+  img { max-width: 100%; }
+  h1 {
+    // @include fontLarge;
+    margin: 1em 0 0.5em;
+    font-weight: 500;
+  }
+  h2 {
+    // @include fontMedLarge;
+    margin: 1em 0 0.5em;
+    font-weight: 500;
+  }
+  h3 {
+    margin: 1em 0 0.5em;
+    font-weight: 500;
+  }
+  ul{ padding: 0 0 10px 24px; }
+  ul li{ list-style: disc; }
+  pre {
+    overflow: auto;
+    padding: 10px;
+    // background: $modal-background-color;
+  }
+  blockquote{
+    font-style: italic;
+    font-size: inherit;
+  }
+  table {
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  table td {
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+  }
+  thead td { font-weight: bold; }
+}
+
 $color-black: #000;
 $color-white: #fff;
 
 progress {
   -webkit-appearance: none;
   appearance: none;
-  background-color: $color-white;
-  border: 1px solid $border-color;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
 
 progress::-webkit-progress-bar {
-  background-color: $color-white;
-  border: 1px solid $border-color;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
 
 progress::-webkit-progress-value {
@@ -393,7 +435,7 @@ progress::-moz-progress-bar {
       min-width: 0;
       .v-icon {
         font-size: 16px;
-        color: $grey-on-white;
+        // color: #aaa;
       }
     }
   }
@@ -410,7 +452,7 @@ progress::-moz-progress-bar {
     margin-right: 0;
     .v-icon {
       font-size: 16px;
-      color: $grey-on-white;
+      // color: $grey-on-white;
     }
   }
 }
@@ -548,4 +590,6 @@ li[data-done="true"] .todo-checkbox {
 li[data-done="false"] {
   text-decoration: none;
 }
+
+input[type="file"] { display: none; }
 </style>

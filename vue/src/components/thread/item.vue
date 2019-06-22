@@ -74,7 +74,7 @@ export default
     isNested: -> @event.isNested()
 
     indent: ->
-      @event.isNested() && @eventWindow.useNesting
+      @$vuetify.breakpoint.smAndUp && @event.isNested() && @eventWindow.useNesting
 
     isUnread: ->
       (Session.user().id != @event.actorId) && @eventWindow.isUnread(@event)
@@ -104,14 +104,14 @@ export default
 <template lang="pug">
 div
   .thread-item(:class="{'thread-item--unread': isUnread}" :style="styles" v-observe-visibility="{callback: viewed, once: true}")
-    .lmo-flex.lmo-relative.lmo-action-dock-wrapper.lmo-flex--row(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
+    v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
       .lmo-disabled-form(v-show='isDisabled')
-      .thread-item__avatar.lmo-margin-right
+      .thread-item__avatar.mr-3
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='isNested ? "thirtysix" : "medium"')
         v-checkbox.thread-item__is-forking(v-if="event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
-      .thread-item__body.lmo-flex.lmo-flex__horizontal-center.lmo-flex--column
-        .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between
-          h3.thread-item__title(:id="'event-' + event.id")
+      v-layout.thread-item__body(column)
+        v-layout.thread-item__headline
+          h3.thread-item__title.body-2.d-flex.wrap(:id="'event-' + event.id")
             div(v-if='debug()')
               | id: {{event.id}} cpid: {{event.model().parentId}} pid: {{event.parentId}} sid: {{event.sequenceId}} position: {{event.position}} depth: {{event.depth}} unread: {{isUnread}} cc: {{event.childCount}} eventableId: {{event.eventableId}}
               //- | sid: {{event.sequenceId}} position: {{event.position}} commentId: {{event.eventableId}}
@@ -119,12 +119,12 @@ div
             | &nbsp;
             span(aria-hidden='true') ·
             | &nbsp;
-            router-link.thread-item__link.lmo-pointer(:to='link')
+            router-link.thread-item__link(:to='link')
               time-ago.timeago--inline(:date='event.createdAt')
-            | &nbsp;
-            span(aria-hidden='true') ·
-            | &nbsp;
-            | {{event.sequenceId}}
+            //- | &nbsp;
+            //- span(aria-hidden='true') ·
+            //- | &nbsp;
+            //- | {{event.sequenceId}}
           button.md-button--tiny(v-if='canRemoveEvent', @click='removeEvent()')
             i.mdi.mdi-delete
         component(v-if='hasComponent()' :is='camelCase(event.kind)' @reply-button-clicked="handleReplyButtonClicked" :event='event', :eventable='event.model()')
@@ -135,7 +135,8 @@ div
 
 <style lang="scss">
 @import 'variables';
-@import 'mixins';
+@import 'utilities';
+// @import 'mixins';
 .thread-item {
   padding: 4px $cardPaddingSize;
 }
@@ -162,14 +163,13 @@ div
   color: $grey-on-white;
   strong, a {
     color: $primary-text-color;
-    @include md-body-2;
+    // @include md-body-2;
   }
   strong:nth-child(2) {
     font-weight: normal;
     color: $grey-on-white;
   }
 }
-
 
 .thread-item__headline {
   min-height: 28px;
@@ -179,15 +179,15 @@ div
   width: 100%;
   min-width: 0;
 }
+
 @media (max-width: $tiny-max-px){
   .thread-item__directive {
     margin-left: -42px;
   }
 }
 
-
 .thread-item__footer {
-  @include fontSmall();
+  // @include fontSmall();
   color: $grey-on-white;
   clear: both;
 }
@@ -207,12 +207,12 @@ div
 }
 
 .thread-item__action {
-  @include lmoBtnLink;
+  // @include lmoBtnLink;
   color: $link-color;
 }
 
 .thread-item__action--view-edits {
-  @include lmoBtnLink;
+  // @include lmoBtnLink;
   color: $grey-on-white;
 }
 

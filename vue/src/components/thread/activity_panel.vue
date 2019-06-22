@@ -37,6 +37,7 @@ export default
 
   created: ->
     @init()
+    EventBus.$on 'updateThreadPosition', (position) => @refreshOnPosition(position)
 
   updated: ->
 
@@ -48,25 +49,35 @@ export default
       AbilityService.canStartPoll(@discussion)
 
   methods:
-    findEvent: (sequenceId) ->
-      if sequenceId == 0
-        @discussion.createdEvent()
-      else
-        Records.events.find(discussionId: @discussion.id, sequenceId: sequenceId)[0]
+    findEvent: (args) ->
+      Records.events.find(Object.assign({discussionId: @discussion.id}, args))[0]
 
     refresh: ->
       sequenceId = parseInt(@$route.params.sequence_id) || 0
-      if event = @findEvent(sequenceId)
+      if sequenceId == 0
+        @alignWindowTo(@discussion.createdEvent())
+      else if event = @findEvent(sequenceId: sequenceId)
         @alignWindowTo(event)
       else
         @loader.loadMore(sequenceId).then =>
-          @alignWindowTo(@findEvent(sequenceId))
+          @alignWindowTo(@findEvent(sequenceId: sequenceId))
+
+    refreshOnPosition: (position) ->
+      console.log 'refreshing position', position
+      if position == 0
+        @alignWindowTo(@discussion.createdEvent())
+      else if event = @findEvent(position: position, depth: 1)
+        @alignWindowTo(event)
+      else
+        @loader.fetchRecords(params: {order: 'position', from: position, depth: 1}).then =>
+          @alignWindowTo(@findEvent(position: position, depth: 1))
 
     alignWindowTo: (event) ->
       min = @parentPositionOf(event)
       @eventWindow.setMin(min)
       @eventWindow.setMax(min+@per)
       @events = @eventWindow.windowedEvents()
+      EventBus.$emit 'updateRequestedPosition', event.position
       @$nextTick => @$nextTick => @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
 
     init: ->
@@ -164,9 +175,7 @@ export default
       i.mdi.mdi-autorenew
       span(v-t="{ path: 'discussion.load_previous', args: { count: eventWindow.numPrevious() }}")
     loading.activity-panel__loading.page-loading(v-show='loader.loadingPrevious')
-    ul.activity-panel__activity-list
-      li.activity-panel__activity-list-item(v-for='event in events', :key='event.id')
-        thread-item(:event='event' :event-window='eventWindow')
+    thread-item(v-for='event in events' :key='event.id' :event='event' :event-window='eventWindow')
     .activity-panel__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadMore")
     loading.activity-panel__loading.page-loading(v-show='loader.loadingMore')
 
@@ -195,7 +204,7 @@ export default
 </template>
 <style lang="scss">
 @import 'variables';
-@import 'mixins';
+/* @import 'mixins'; */
 
 .add-comment-panel__sign-in-btn { width: 100% }
 .add-comment-panel__join-actions button {
@@ -207,7 +216,7 @@ export default
 }
 
 .activity-panel__load-more{
-  @include fontSmall;
+  /* @include fontSmall; */
   display: flex;
   align-items: center;
   color: $grey-on-grey;
@@ -228,11 +237,6 @@ export default
   visibility: hidden; /* can't display none because scrolling won't work */
   line-height: 0px;
   margin: -10px 0;
-}
-
-.activity-panel__activity-list{
-  list-style: none;
-  padding: 0;
 }
 
 </style>

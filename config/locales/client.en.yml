@@ -120,6 +120,7 @@ en:
     total: Total
     action:
       search: 'Search'
+      filter: 'Filter'
       back: 'Back'
       next: 'Next'
       close: 'Close'

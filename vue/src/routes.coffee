@@ -20,9 +20,6 @@ import ContactPage from './components/contact/page.vue'
 import EmailSettingsPage from './components/email_settings/page.vue'
 import StartDiscussionPage from './components/start_discussion/page.vue'
 import UserPage from './components/user/page.vue'
-import AuthorizedAppsPage from './components/authorized_apps/page.vue'
-import RegisteredAppsPage from './components/registered_apps/page.vue'
-import RegisteredAppPage from './components/registered_app/page.vue'
 import InstallSlackPage from './components/install_slack/page.vue'
 
 import ActivityPanel from './components/thread/activity_panel'
@@ -66,10 +63,6 @@ export default new Router
     {path: '/p/new/:poll_type', component: StartPollPage},
     {path: '/p/:key/:stub?', component: PollPage},
     {path: '/u/:key/:stub?', component: UserPage },
-    {path: '/apps/authorized', component: AuthorizedAppsPage},
-    {path: '/apps/registered', component: RegisteredAppsPage},
-    {path: '/apps/registered/:id', component: RegisteredAppPage},
-    {path: '/apps/registered/:id/:stub', component: RegisteredAppPage},
     {path: '/slack/install', component: InstallSlackPage},
     {path: '/d/new', component: StartDiscussionPage },
     {path: '/d/:key', name: 'discussion', component: ThreadPage, children: threadPageChildren },

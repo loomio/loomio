@@ -43,14 +43,15 @@ export default
 <template lang="pug">
 .group-subgroups-panel
   v-toolbar(flat)
-    v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
+    v-toolbar-items
+      v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
     v-spacer
-    v-btn.subgroups-card__start(outlined color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
-  v-list(avatar three-line)
-    v-list-item.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id')
+    v-btn.subgroups-card__start(text color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
+  v-list(avatar two-line)
+    v-list-item.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id' :to='urlFor(group)')
       v-list-item-avatar.subgroups-card__list-item-logo
         group-avatar(:group="group" size="medium")
-      v-list-item-content.subgroups-card__list-item-name
-        router-link(:to='urlFor(group)') {{ group.name }}
-        .caption.subgroups-card__list-item-description {{ truncate(group.description) }}
+      v-list-item-content
+        v-list-item-title {{ group.name }}
+        v-list-item-subtitle {{ group.description }}
 </template>

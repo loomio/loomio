@@ -77,3 +77,10 @@ v-app
   modal-launcher
   common-flash
 </template>
+
+<style lang="scss">
+$mdi-font-path: '/fonts/mdi';
+@import '@mdi/font/scss/materialdesignicons.scss';
+
+a { text-decoration: none; }
+</style>

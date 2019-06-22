@@ -1,7 +1,7 @@
 <style lang="scss">
-@import 'mixins';
+@import 'variables';
 .poll-common-details-panel__started-by {
-  @include fontSmall;
+  // @include fontSmall;
   color: $grey-on-white;
 }
 

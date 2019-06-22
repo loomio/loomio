@@ -1,7 +1,6 @@
 <style lang="scss">
-@import 'variables';
 .poll-common-stance-choice {
-  color: $primary-text-color;
+  // color: $primary-text-color;
   line-height: 32px;
   margin-right: 8px;
 }

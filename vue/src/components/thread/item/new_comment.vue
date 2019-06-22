@@ -1,6 +1,3 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
@@ -87,7 +84,9 @@ export default
     translation.thread-item__body(v-if='eventable.translation', :model='eventable', field='body')
     document-list(:model='eventable', :skip-fetch='true')
     attachment-list(:attachments="eventable.attachments")
-    .lmo-md-actions
-      reaction-display(:model="eventable")
-      action-dock(:model='eventable', :actions='actions')
+    v-card-actions
+      v-layout(wrap)
+        reaction-display(:model="eventable")
+        v-spacer
+        action-dock(:model='eventable', :actions='actions')
 </template>

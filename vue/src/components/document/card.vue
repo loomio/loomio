@@ -23,5 +23,5 @@ v-card.document-card.lmo-no-print
       .lmo-hint-text(v-t="'document.card.no_documents'", v-if='!group.hasDocuments()')
       document-list(:model='group', :hide-preview='true', :hide-date='true')
   v-card-actions
-    v-btn(flat='', :to="urlFor(group, 'documents')", v-t="'document.card.view_documents'")
+    v-btn(text :to="urlFor(group, 'documents')", v-t="'document.card.view_documents'")
 </template>

@@ -66,7 +66,7 @@ section.document-list
 </template>
 
 <style lang="scss">
-@import 'mixins';
+@import 'variables';
 
 .document-list {
   .md-button--tiny { opacity: 0.5; }
@@ -79,7 +79,7 @@ section.document-list
   margin: 8px 0;
   line-height: 32px;
   background: $modal-background-color;
-  @include roundedCorners;
+  // @include roundedCorners;
   &--image { padding-top: 8px; }
 }
 

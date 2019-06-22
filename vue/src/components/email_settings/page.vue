@@ -1,25 +1,6 @@
 <style lang="scss">
-.email-settings-page {
-  @import 'layout';
-  @include lmoRow;
-}
-
-.email-settings-page__email-settings {
-  @import 'lmo_card';
-  @include card;
-}
-
 .email-settings-page__specific-group-settings {
   margin-top: 40px;
-}
-
-.email-settings-page__group {
-  padding: 12px 0 !important;
-}
-
-.email-settings-page__learn-more-link {
-  @import 'lmo_card';
-  @include cardMinorAction;
 }
 </style>
 

@@ -1,29 +1,29 @@
 <style lang="scss">
-@import 'variables';
-@import 'mixins';
-@import 'lmo_card';
+// @import 'variables';
+// @import 'mixins';
+// @import 'lmo_card';
 .explore-page {
-  @include cardPadding;
+  // @include cardPadding;
 }
 
 .explore-page__search-field {
   position: relative;
-  background-color: $background-color;
-  color: $primary-text-color;
+  // background-color: $background-color;
+  // color: $primary-text-color;
   width: 100%;
   margin: 20px 0;
   i {
     position: absolute;
     top: 4px;
     right: 4px;
-    color: $grey-on-white;
+    // color: $grey-on-white;
   }
 }
 
 .explore-page__no-results-found, .explore-page__search-results {
   margin: 20px 0;
   text-align: left;
-  color: $grey-on-white;
+  // color: $grey-on-white;
 }
 
 .explore-page__groups {
@@ -39,7 +39,7 @@
 
 .explore-page__group {
   width: 365px;
-  @include cardNoPadding;
+  // @include cardNoPadding;
 }
 
 @media (max-width: 768px) {
@@ -54,7 +54,7 @@
 }
 
 .explore-page__group-details {
-  @include cardPadding;
+  // @include cardPadding;
 }
 
 .explore-page__group-description {
@@ -62,17 +62,17 @@
 }
 
 .explore-page__show-more {
-  @include cardMinorAction;
-  @include lmoBtnLink;
+  // @include cardMinorAction;
+  // @include lmoBtnLink;
 }
 
 .explore-page__group {
-  color: $primary-text-color;
+  // color: $primary-text-color;
 }
 
 .explore-page__group:hover {
   text-decoration: none;
-  color: $primary-text-color;
+  // color: $primary-text-color;
 }
 </style>
 

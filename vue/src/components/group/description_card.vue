@@ -44,15 +44,16 @@ export default
 
 <template lang="pug">
 .description-card(aria-labelledby='description-card-title')
+  v-layout(mb-3)
+    v-spacer
+    join-group-button(:group='group')
+    group-privacy-button(:group='group')
+    group-actions-dropdown(:group='group')
   .description-card__placeholder.lmo-hint-text(v-t="'description_card.placeholder'", v-if='!group.description')
   .description-card__text.lmo-markdown-wrapper(v-if="group.descriptionFormat == 'md'" v-marked='group.description')
   .description-card__text.lmo-markdown-wrapper(v-if="group.descriptionFormat == 'html'" v-html='group.description')
   attachment-list(:attachments="group.attachments")
   document-list(:model='group')
-  join-group-button(:group='group')
-  //- .group-theme__member-actions(v-if='canPerformActions')
-  group-privacy-button(:group='group')
-  group-actions-dropdown(:group='group')
   //- .group-theme__upload-photo(v-if='canUploadPhotos')
   //-   button.lmo-flex.lmo-flex__center(@click='openUploadCoverForm()', :title="$t('group_page.new_cover_photo')")
   //-     i.mdi.mdi-camera.mdi-24px
@@ -62,6 +63,6 @@ export default
   //-     i.mdi.mdi-camera.mdi-24px
   //-     span.group-theme__upload-help-text(v-t="'group_page.new_photo'")
 
-  .lmo-md-action
-    action-dock(:model='group', :actions='actions')
+  //- .lmo-md-action
+  //-   action-dock(:model='group', :actions='actions')
 </template>

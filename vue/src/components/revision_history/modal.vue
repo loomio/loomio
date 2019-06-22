@@ -39,10 +39,10 @@ v-card.revision-history-modal
       revision-history-content(v-if='!loading', :model='model', :version='version')
 </template>
 <style lang="scss">
-@import 'mixins';
+// @import 'mixins';
 
 .revision-history-modal__thread-details {
-  @include fontSmall;
+  // @include fontSmall;
 }
 
 .revision-history-modal__divider {

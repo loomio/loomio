@@ -177,7 +177,7 @@ v-card
 </template>
 
 <style lang="scss">
-@import 'variables';
+// @import 'variables';
 .announcement-form__checkbox {
   margin: 16px 0;
 }
@@ -204,7 +204,7 @@ v-card
   height: 42px;
   min-height: 42px;
   margin-bottom: 8px;
-  color: $primary-text-color;
+  // color: $primary-text-color;
   i { opacity: 0.8; }
 }
 </style>

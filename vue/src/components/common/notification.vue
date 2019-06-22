@@ -24,10 +24,10 @@ export default
 <template lang="pug">
 v-list-item.notification(:to="'/'+notification.url", :class="{'lmo-active': !notification.viewed}")
   v-list-item-avatar
-    user-avatar(v-if="actor", :user="actor", size="forty")
+    user-avatar(v-if="actor", :user="actor", size="thirtysix")
     //- .thread-item__proposal-icon{ng-if: "!actor()"}
   v-list-item-content
-    v-list-item-title.body-1
+    v-list-item-title
       span(v-html="contentFor")
       | &nbsp;
       span(aria-hidden='true') ·

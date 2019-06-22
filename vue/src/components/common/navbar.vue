@@ -61,24 +61,24 @@ export default
 </script>
 
 <template lang="pug">
-  v-app-bar(app clipped-right)
-    v-btn.navbar__sidenav-toggle(icon v-if="!sidebarOpen" @click="toggleSidebar()")
-      v-avatar(tile size="36px")
-        v-icon mdi-menu
-    v-btn.navbar__group-toggle(icon v-if="group" :to="urlFor(group)")
-      v-avatar(tile size="36px")
-        img(:src='group.logoUrlMedium')
-    v-toolbar-title
-      span(v-if="breadcrumbs" v-for="crumb in breadcrumbs" :key="crumb.i")
-        router-link(v-if="!crumb.last" :to="crumb.to") {{crumb.text}}
-        span(v-if="crumb.last") {{crumb.text}}
-        span(v-if="!crumb.last")
-          | &nbsp;
-          | &gt;
-          | &nbsp;
-      span(v-if="!breadcrumbs") {{title}}
-    v-spacer
-    v-toolbar-items
-      notifications(v-if='isLoggedIn')
-      v-btn.navbar__sign-in(text v-if='!isLoggedIn' v-t="'navbar.sign_in'" @click='signIn()')
+v-app-bar(app clipped-right)
+  v-btn.navbar__sidenav-toggle(icon v-if="!sidebarOpen" @click="toggleSidebar()")
+    v-avatar(tile size="36px")
+      v-icon mdi-menu
+  v-btn.navbar__group-toggle(icon v-if="group" :to="urlFor(group)")
+    v-avatar(tile size="36px")
+      img(:src='group.logoUrlMedium')
+  v-toolbar-title
+    span(v-if="breadcrumbs" v-for="crumb in breadcrumbs" :key="crumb.i")
+      router-link(v-if="!crumb.last" :to="crumb.to") {{crumb.text}}
+      span(v-if="crumb.last") {{crumb.text}}
+      span(v-if="!crumb.last")
+        | &nbsp;
+        | &gt;
+        | &nbsp;
+    span(v-if="!breadcrumbs") {{title}}
+  v-spacer
+  notifications(v-if='isLoggedIn')
+  v-toolbar-items
+    v-btn.navbar__sign-in(text v-if='!isLoggedIn' v-t="'navbar.sign_in'" @click='signIn()')
 </template>

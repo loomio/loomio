@@ -18,8 +18,7 @@ export default
 v-tooltip(bottom)
   template(v-slot:activator="{on}")
     v-btn.group-privacy-button(text v-on="on" :aria-label='privacyDescription')
-      .screen-only.lmo-flex.lmo-flex__center(aria-hidden='true')
-        v-icon {{iconClass}}
-        span(v-t="'common.privacy.' + group.groupPrivacy")
+      v-icon {{iconClass}}
+      span(v-t="'common.privacy.' + group.groupPrivacy")
   | {{privacyDescription}}
 </template>

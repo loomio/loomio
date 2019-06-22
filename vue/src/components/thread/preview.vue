@@ -1,6 +1,6 @@
 <style lang="scss">
-@import 'mixins';
-@import 'boxes';
+// @import 'mixins';
+// @import 'boxes';
 
 // .thread-preview {
 //   @include md-body-1;
@@ -32,7 +32,7 @@
 .thread-preview__pin {
   width: 32px;
   font-size: 20px;
-  color: $grey-on-white;
+  // color: $grey-on-white;
   text-align: center;
 }
 
@@ -47,7 +47,7 @@
 // }
 
 .thread-preview__unread-count {
-  color: $grey-on-white;
+  // color: $grey-on-white;
   min-width: 33px;
   padding-left: 5px;
 }

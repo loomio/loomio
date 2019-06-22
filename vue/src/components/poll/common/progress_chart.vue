@@ -2,7 +2,7 @@
 @import 'variables';
 
 .progress-chart {
-  background-color: $background-color;
+  background-color: #ccc;
 }
 </style>
 

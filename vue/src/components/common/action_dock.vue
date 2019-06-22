@@ -13,7 +13,7 @@ export default
       v-tooltip(bottom)
         template(v-slot:activator="{on}")
           v-btn(v-on="on" icon :class='`md-button--tiny action-dock__button--${action.name}`' v-if="action.name != 'react'" @click='action.perform()')
-            .sr-only(v-t="'action_dock.' + action.name")
+            //- .sr-only(v-t="'action_dock.' + action.name")
             v-icon {{action.icon}}
             div(v-if='action.active && action.active()', md-colors="{'color': 'warn-200'}")
               i.mdi.mdi-alert-circle-outline.mdi-16px.lmo-margin-right
@@ -27,4 +27,9 @@ export default
   align-items: center;
   transition: opacity ease-in-out 0.25s;
 }
+.lmo-action-dock-wrapper {
+  .action-dock { opacity: 0.5; }
+  &:hover .action-dock { opacity: 1 }
+}
+
 </style>

@@ -23,8 +23,8 @@ v-list-item.poll-meeting-time-field(flex='true', layout='row')
         v-text-field(v-model='poll.optionDate', :label="$t('poll_meeting_time_field.new_time_slot')", readonly='', v-on='on')
       v-date-picker.poll-meeting-time-field__datepicker(v-model='poll.optionDate', no-title='', scrollable='', :min='dateToday')
         v-spacer
-          v-btn(flat='', color='primary', @click='isShowingDatePicker = false') Cancel
-          v-btn(flat='', color='primary', @click='$refs.menu.save(poll.optionDate)') OK
+          v-btn(text color='primary', @click='isShowingDatePicker = false') Cancel
+          v-btn(text color='primary', @click='$refs.menu.save(poll.optionDate)') OK
 
   .poll-meeting-time-field__timepicker-container(v-if='poll.customFields.meeting_duration')
     v-select(v-model='poll.optionTime', :label="$t('poll_meeting_time_field.closing_hour')" :items="times")

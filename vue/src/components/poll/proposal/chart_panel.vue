@@ -1,6 +1,6 @@
 <style lang="scss">
 @import 'variables';
-@import 'mixins';
+// @import 'mixins';
 .poll-proposal-chart-panel__chart-container {
   display: flex;
 }
@@ -14,7 +14,7 @@
 .poll-proposal-chart-panel__label{
   border-width: 2px;
   border-bottom-style: solid;
-  @include fontSmall;
+  // @include fontSmall;
 }
 
 .poll-proposal-chart-panel__legend {

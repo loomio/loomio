@@ -1,10 +1,9 @@
 <style lang="scss">
-@import 'variables';
 .discussion-fork-actions {
   position: fixed;
   left: 0;
   width: 100%;
-  z-index: $z-low;
+  z-index: 10;
 }
 
 .discussion-fork-actions__notice {
