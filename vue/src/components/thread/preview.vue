@@ -115,12 +115,12 @@ v-list-item.thread-preview.thread-preview__link(:to='urlFor(thread)')
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")
       v-icon mdi-pin
   v-list-item-action(v-if='thread.discussionReaderId')
-    v-btn.thread-preview__dismiss(@click.prevent='dismiss()' icon flat v-show='thread.isUnread()' :class='{disabled: !thread.isUnread()}' :title="$t('dashboard_page.dismiss')")
+    v-btn.thread-preview__dismiss(@click.prevent='dismiss()' icon v-show='thread.isUnread()' :class='{disabled: !thread.isUnread()}' :title="$t('dashboard_page.dismiss')")
       v-icon.mdi mdi-check
   v-list-item-action(v-if='thread.discussionReaderId')
-    v-btn.thread-preview__mute(@click.prevent='muteThread()' icon flat v-show='!thread.isMuted()' :title="$t('volume_levels.mute')")
+    v-btn.thread-preview__mute(@click.prevent='muteThread()' icon v-show='!thread.isMuted()' :title="$t('volume_levels.mute')")
       v-icon.mdi mdi-volume-mute
   v-list-item-action(v-if='thread.discussionReaderId')
-    v-btn.thread-preview__unmute(@click.prevent='unmuteThread()' icon flat v-show='thread.isMuted()' :title="$t('volume_levels.unmute')")
+    v-btn.thread-preview__unmute(@click.prevent='unmuteThread()' icon v-show='thread.isMuted()' :title="$t('volume_levels.unmute')")
       v-icon.mdi mdi-volume-plus
 </template>

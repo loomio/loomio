@@ -101,9 +101,10 @@ export default
 
 <template lang="pug">
 v-menu.group-page-actions.lmo-no-print(v-if="canSeeGroupActions" offset-y lazy)
-  v-btn.group-page-actions__button(text slot='activator')
-    span(v-t="'group_page.options.label'")
-    v-icon mdi-chevron-down
+  template(v-slot:activator="{on}")
+    v-btn.group-page-actions__button(text v-on="on")
+      span(v-t="'group_page.options.label'")
+      v-icon mdi-chevron-down
   v-list.group-actions-dropdown__menu-content
 
     v-list-item.group-page-actions__edit-group-link(v-if='canEditGroup', @click='editGroup()')

@@ -85,7 +85,7 @@ export default
   //-     .sr-only(translate='thread_context.thread_options')
   //-     i.mdi.mdi-24px.mdi-chevron-down
   v-menu.lmo-dropdown-menu(offset-y lazy)
-    v-btn.context-panel-dropdown__button(icon flat slot='activator')
+    v-btn.context-panel-dropdown__button(icon slot='activator')
       //- span(v-t="'thread_context.thread_options'")
       v-icon mdi-chevron-down
 

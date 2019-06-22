@@ -68,9 +68,10 @@ export default
 <template lang="pug">
 .membership-dropdown.lmo-no-print(v-if='canPerformAction()')
   v-menu.lmo-dropdown-menu(offset-y lazy)
-    v-btn.membership-dropdown__button(icon flat slot='activator')
-      //- span(v-t="'membership_dropdown.membership_options'")
-      v-icon mdi-dots-vertical
+    template(v-slot:activator="{on}")
+      v-btn.membership-dropdown__button(icon v-on="on")
+        //- span(v-t="'membership_dropdown.membership_options'")
+        v-icon mdi-dots-vertical
     v-list.group-actions-dropdown__menu-content
       v-list-item.membership-dropdown__set-title(v-if='canSetTitle()' @click='setTitle()')
         v-list-item-title(v-t="'membership_dropdown.set_title'")
@@ -86,5 +87,3 @@ export default
         //-   span "remove membership"
         v-list-item-title(v-t="'membership_dropdown.cancel_invitation'", v-if='!membership.acceptedAt')
 </template>
-<style lang="scss">
-</style>
