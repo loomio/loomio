@@ -162,10 +162,10 @@ export default
     v-alert.discussions-panel__list--empty(v-if='!searchResults.length' :value="true" color="info" icon="info")
       p(v-t="'group_page.no_threads_here'")
     v-list(two-line v-for="result in searchResults" :key="result.id")
-      v-list-tile.thread-preview.thread-preview__link(:to="urlFor(result)")
-        v-list-tile-content
-          v-list-tile-title {{result.title}}
-          v-list-tile-sub-title
+      v-list-item.thread-preview.thread-preview__link(:to="urlFor(result)")
+        v-list-item-content
+          v-list-item-title {{result.title}}
+          v-list-item-subtitle
             span(v-html="result.resultGroupName")
             | &nbsp;
             | ·

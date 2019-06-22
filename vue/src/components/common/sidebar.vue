@@ -79,47 +79,47 @@ v-navigation-drawer.lmo-no-print.sidenav-left(app width="250" v-model="open")
             .body-1 @{{user.username}}
       user-dropdown
   v-list(dense)
-    v-list-tile.sidebar__list-item-button--recent(to='/dashboard')
-      v-list-tile-avatar
+    v-list-item.sidebar__list-item-button--recent(to='/dashboard')
+      v-list-item-avatar
         v-icon mdi-forum
-      v-list-tile-content
-        v-list-tile-title(v-t="'sidebar.recent_threads'")
-    v-list-tile.sidebar__list-item-button--unread(to='/inbox')
-      v-list-tile-avatar
+      v-list-item-content
+        v-list-item-title(v-t="'sidebar.recent_threads'")
+    v-list-item.sidebar__list-item-button--unread(to='/inbox')
+      v-list-item-avatar
         v-icon mdi-inbox
-      v-list-tile-content
-        v-list-tile-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
-    v-list-tile.sidebar__list-item-button--muted(to='/dashboard/show_muted')
-      v-list-tile-avatar
+      v-list-item-content
+        v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
+    v-list-item.sidebar__list-item-button--muted(to='/dashboard/show_muted')
+      v-list-item-avatar
         v-icon mdi-volume-mute
-      v-list-tile-content
-        v-list-tile-title(v-t="'sidebar.muted_threads'")
-    v-list-tile.sidebar__list-item-button--decisions(to='/polls')
-      v-list-tile-avatar
+      v-list-item-content
+        v-list-item-title(v-t="'sidebar.muted_threads'")
+    v-list-item.sidebar__list-item-button--decisions(to='/polls')
+      v-list-item-avatar
         v-icon mdi-thumbs-up-down
-      v-list-tile-content
-        v-list-tile-title(v-t="'common.decisions'")
-    v-list-tile.sidebar__list-item-button--start-thread(v-if='canStartThreads()', @click='openStartDiscussionModal(currentGroup())')
-      v-list-tile-avatar
+      v-list-item-content
+        v-list-item-title(v-t="'common.decisions'")
+    v-list-item.sidebar__list-item-button--start-thread(v-if='canStartThreads()', @click='openStartDiscussionModal(currentGroup())')
+      v-list-item-avatar
         v-icon mdi-plus
-      v-list-tile-content
-        v-list-tile-title(v-t="'sidebar.start_thread'")
+      v-list-item-content
+        v-list-item-title(v-t="'sidebar.start_thread'")
   v-divider.sidebar__divider
   v-list(dense)
     div.sidebar__groups(v-for='group in groups', :key='group.id')
-      v-list-tile(:to='groupUrl(group)', v-if='group.isParent()')
-        v-list-tile-avatar(tile)
+      v-list-item(:to='groupUrl(group)', v-if='group.isParent()')
+        v-list-item-avatar(tile)
           v-avatar(tile size="28px")
             img.sidebar__list-item-group-logo(:src='group.logoUrl()')
-        v-list-tile-content
-          v-list-tile-title {{group.name}}
-      v-list-tile(:to='groupUrl(group)', v-if='!group.isParent()')
-        v-list-tile-avatar
-        v-list-tile-content
-          v-list-tile-title {{group.name}}
-    v-list-tile.sidebar__list-item-button--start-group(v-if="canStartGroup()", @click="openStartGroupModal()")
-      v-list-tile-action
+        v-list-item-content
+          v-list-item-title {{group.name}}
+      v-list-item(:to='groupUrl(group)', v-if='!group.isParent()')
+        v-list-item-avatar
+        v-list-item-content
+          v-list-item-title {{group.name}}
+    v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroup()", @click="openStartGroupModal()")
+      v-list-item-action
         v-icon mdi-plus
-      v-list-tile-content
+      v-list-item-content
         span(v-t="'sidebar.start_group'")
 </template>

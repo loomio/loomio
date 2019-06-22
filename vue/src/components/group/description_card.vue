@@ -65,14 +65,3 @@ export default
   .lmo-md-action
     action-dock(:model='group', :actions='actions')
 </template>
-
-<style lang="scss">
-
-@import 'app.scss';
-
-.description-card__documents-link {
-  @include cardMinorAction;
-  margin: 0 0 0 4px;
-  line-height: 32px;
-}
-</style>

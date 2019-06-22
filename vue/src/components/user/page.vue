@@ -84,7 +84,7 @@ export default
           .user-page__groups
             h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
             v-list
-              v-list-tile.user-page__group.lmo-flex.lmo-flex__center(v-for='group in groups', :key='group.id')
+              v-list-item.user-page__group.lmo-flex.lmo-flex__center(v-for='group in groups', :key='group.id')
                 img.md-avatar.lmo-box--small.lmo-margin-right(:src='group.logoUrl()')
                 router-link(:to='urlFor(group)') {{group.fullName}}
             loading(v-if='loadingGroupsForExecuting')

@@ -16,7 +16,7 @@ export default
 
 </script>
 <template lang="pug">
-v-list-tile.poll-meeting-time-field(flex='true', layout='row')
+v-list-item.poll-meeting-time-field(flex='true', layout='row')
   .poll-meeting-time-field__datepicker-container
     v-menu(ref='menu', v-model='isShowingDatePicker', :close-on-content-click='false', :nudge-right='40', :return-value.sync='poll.optionDate', lazy='', transition='scale-transition', offset-y='', full-width='', min-width='290px')
       template(v-slot:activator='{ on }')

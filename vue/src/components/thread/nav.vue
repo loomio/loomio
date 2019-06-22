@@ -51,20 +51,20 @@ v-navigation-drawer(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" w
   .thread-nav
     v-list(dense)
       v-subheader Navigation
-      v-list-tile(:to="urlFor(discussion)")
-        v-list-tile-title Context
-      v-list-tile(:to="urlFor(discussion)+'/'+discussion.firstSequenceId()" :disabled="!discussion.firstSequenceId()")
-        v-list-tile-title First
-      v-list-tile(:disabled="!discussion.firstUnreadSequenceId()" :to="urlFor(discussion)+'/'+discussion.firstUnreadSequenceId()")
-        v-list-tile-title Unread
-      v-list-tile(:to="urlFor(discussion)+'/'+discussion.lastSequenceId()" :disabled="!discussion.lastSequenceId()")
-        v-list-tile-title Latest
-      v-list-tile(@click="scrollTo('.activity-panel__actions')")
-        v-list-tile-title Add comment
+      v-list-item(:to="urlFor(discussion)")
+        v-list-item-title Context
+      v-list-item(:to="urlFor(discussion)+'/'+discussion.firstSequenceId()" :disabled="!discussion.firstSequenceId()")
+        v-list-item-title First
+      v-list-item(:disabled="!discussion.firstUnreadSequenceId()" :to="urlFor(discussion)+'/'+discussion.firstUnreadSequenceId()")
+        v-list-item-title Unread
+      v-list-item(:to="urlFor(discussion)+'/'+discussion.lastSequenceId()" :disabled="!discussion.lastSequenceId()")
+        v-list-item-title Latest
+      v-list-item(@click="scrollTo('.activity-panel__actions')")
+        v-list-item-title Add comment
       v-subheader Polls
-      v-list-tile(v-for="event in keyEvents" :key="event.id" :to="urlFor(discussion)+'/'+event.sequenceId")
-        v-list-tile-avatar
+      v-list-item(v-for="event in keyEvents" :key="event.id" :to="urlFor(discussion)+'/'+event.sequenceId")
+        v-list-item-avatar
           poll-common-chart-preview(:poll='event.model()' :size="28" :showMyStance="false")
-        v-list-tile-title
+        v-list-item-title
           span {{title(event.model())}}
 </template>

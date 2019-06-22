@@ -47,10 +47,10 @@ export default
     v-spacer
     v-btn.subgroups-card__start(outline color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
   v-list(avatar three-line)
-    v-list-tile.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id')
-      v-list-tile-avatar.subgroups-card__list-item-logo
+    v-list-item.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id')
+      v-list-item-avatar.subgroups-card__list-item-logo
         group-avatar(:group="group" size="medium")
-      v-list-tile-content.subgroups-card__list-item-name
+      v-list-item-content.subgroups-card__list-item-name
         router-link(:to='urlFor(group)') {{ group.name }}
         .caption.subgroups-card__list-item-description {{ truncate(group.description) }}
 </template>

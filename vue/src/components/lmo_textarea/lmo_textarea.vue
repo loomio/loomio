@@ -260,16 +260,16 @@ div
               v-icon mdi-format-size
               v-icon mdi-menu-down
           v-list.menubar__dropdown
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
                 v-icon mdi-format-header-1
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
                 v-icon mdi-format-header-2
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
                 v-icon mdi-format-header-3
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
                 v-icon mdi-format-text
         v-menu(lazy)
@@ -278,22 +278,22 @@ div
               v-icon mdi-format-bold
               v-icon mdi-menu-down
           v-list.menubar__dropdown
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
                 v-icon mdi-format-bold
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
                 v-icon mdi-format-italic
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
                 v-icon mdi-format-strikethrough
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
                 v-icon mdi-format-underline
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
                 v-icon mdi-format-quote-close
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.code() }", @click='commands.code')
                 v-icon mdi-code-braces
         v-menu(lazy)
@@ -302,13 +302,13 @@ div
               v-icon mdi-format-list-bulleted
               v-icon mdi-menu-down
           v-list.menubar__dropdown
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
                 v-icon mdi-format-list-bulleted
-            v-list-tile
+            v-list-item
               v-btn(small flat :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
                 v-icon mdi-format-list-numbered
-            v-list-tile
+            v-list-item
               v-btn(small flat @click='commands.todo_list')
                 v-icon mdi-format-list-checks
         v-btn(flat small :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')

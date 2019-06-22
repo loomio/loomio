@@ -22,12 +22,12 @@ export default
 </script>
 
 <template lang="pug">
-v-list-tile.notification(:to="'/'+notification.url", :class="{'lmo-active': !notification.viewed}")
-  v-list-tile-avatar
+v-list-item.notification(:to="'/'+notification.url", :class="{'lmo-active': !notification.viewed}")
+  v-list-item-avatar
     user-avatar(v-if="actor", :user="actor", size="forty")
     //- .thread-item__proposal-icon{ng-if: "!actor()"}
-  v-list-tile-content
-    v-list-tile-title.body-1
+  v-list-item-content
+    v-list-item-title.body-1
       span(v-html="contentFor")
       | &nbsp;
       span(aria-hidden='true') ·

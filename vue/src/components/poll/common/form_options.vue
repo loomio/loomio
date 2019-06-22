@@ -40,16 +40,16 @@ export default
     label.nowrap.poll-common-form__options-label.md-caption.lmo-flex__grow(v-t="'poll_meeting_form.timeslots'")
   v-list.md-block.poll-common-form__options
     validation-errors(:subject='poll', field='pollOptions')
-    v-list-tile(v-if="!poll.pollOptionNames.length")
+    v-list-item(v-if="!poll.pollOptionNames.length")
       p.lmo-hint-text(v-if="datesAsOptions", v-t="{ path: 'poll_meeting_form.no_options', args: { zone: currentZone } }")
       p.lmo-hint-text(v-if='!datesAsOptions', v-t="'poll_common_form.no_options'")
-    v-list-tile.poll-common-form__list-item(v-for='name in poll.pollOptionNames' :key="name")
+    v-list-item.poll-common-form__list-item(v-for='name in poll.pollOptionNames' :key="name")
       span.poll-poll-form__option-text(v-if="!datesAsOptions") {{name}}
       poll-meeting-time.poll-meeting-form__option-text.lmo-flex__grow(v-if='datesAsOptions', :name='name', :zone='currentZone')
       v-btn.poll-poll-form__option-button(v-if="canRemoveOption(name)", @click="removeOption(name)")
         v-icon.mdi-24px.poll-poll-form__option-icon mdi-close
     poll-meeting-time-field(v-if='datesAsOptions', :poll='poll')
-    v-list-tile.poll-common-form__add-option(v-if='!datesAsOptions', flex='true', layout='row')
+    v-list-item.poll-common-form__add-option(v-if='!datesAsOptions', flex='true', layout='row')
       .poll-poll-form__add-option-field
         v-text-field.poll-poll-form__add-option-input(v-model='newOptionName', type='text', :placeholder="$t('poll_common_form.options_placeholder')")
       div

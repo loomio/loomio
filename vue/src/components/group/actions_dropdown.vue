@@ -106,21 +106,21 @@ v-menu.group-page-actions.lmo-no-print(v-if="canSeeGroupActions" offset-y lazy)
     v-icon mdi-chevron-down
   v-list.group-actions-dropdown__menu-content
 
-    v-list-tile.group-page-actions__edit-group-link(v-if='canEditGroup', @click='editGroup()')
-      v-list-tile-title(v-t="'group_page.options.edit_group'")
+    v-list-item.group-page-actions__edit-group-link(v-if='canEditGroup', @click='editGroup()')
+      v-list-item-title(v-t="'group_page.options.edit_group'")
 
-    v-list-tile.group-page-actions__become-coordinator(v-if='canBecomeCoordinator', @click='becomeCoordinator()')
-      v-list-tile-title(v-t="'group_page.options.become_coordinator'")
+    v-list-item.group-page-actions__become-coordinator(v-if='canBecomeCoordinator', @click='becomeCoordinator()')
+      v-list-item-title(v-t="'group_page.options.become_coordinator'")
 
-    v-list-tile.group-page-actions__change-volume-link(v-if='canChangeVolume', @click='openChangeVolumeForm()')
-      v-list-tile-title(v-t="'group_page.options.email_settings'")
+    v-list-item.group-page-actions__change-volume-link(v-if='canChangeVolume', @click='openChangeVolumeForm()')
+      v-list-item-title(v-t="'group_page.options.email_settings'")
 
-    v-list-tile.group-page-actions__export-json(v-if='canExportData', @click='openGroupExportModal()')
-      v-list-tile-title(v-t="'group_page.options.export_data'")
+    v-list-item.group-page-actions__export-json(v-if='canExportData', @click='openGroupExportModal()')
+      v-list-item-title(v-t="'group_page.options.export_data'")
 
-    v-list-tile.group-page-actions__leave-group(v-if='canLeaveGroup', @click='openLeaveGroupModal()')
-      v-list-tile-title(v-t="'group_page.options.leave_group'")
+    v-list-item.group-page-actions__leave-group(v-if='canLeaveGroup', @click='openLeaveGroupModal()')
+      v-list-item-title(v-t="'group_page.options.leave_group'")
 
-    v-list-tile.group-page-actions__archive-group(v-if='canArchiveGroup', @click='openArchiveGroupModal()')
-      v-list-tile-title(v-t="'group_page.options.deactivate_group'")
+    v-list-item.group-page-actions__archive-group(v-if='canArchiveGroup', @click='openArchiveGroupModal()')
+      v-list-item-title(v-t="'group_page.options.deactivate_group'")
 </template>

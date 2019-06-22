@@ -59,9 +59,9 @@ export default
   v-subheader(v-t="'poll_common.your_response'")
   poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-list(column)
-    v-list-tile.poll-common-vote-form__button(flat align-center :md-colors='mdColors(option)', @click='select(option)', v-for='option in orderedPollOptions()', :key='option.id')
+    v-list-item.poll-common-vote-form__button(flat align-center :md-colors='mdColors(option)', @click='select(option)', v-for='option in orderedPollOptions()', :key='option.id')
       .poll-common-stance-icon__chip(:style="{'border-color': option.color}")
-      v-list-tile-title {{ option.name }}
+      v-list-item-title {{ option.name }}
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason.animated(:stance='stance', v-show='stance.poll().multipleChoice || selectedOptionIds.length', v-if='stance')

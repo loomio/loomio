@@ -9,7 +9,6 @@
     "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2"
   },
   "dependencies": {
-    "@mdi/font": "^3.6.95",
     "@sentry/browser": "^5.4.0",
     "@sentry/integrations": "^5.4.1",
     "actioncable": "^5.2.2",
@@ -42,10 +41,11 @@
     "vue-i18n": "8.11.2",
     "vue-observe-visibility": "^0.4.4",
     "vue-router": "^3.0.6",
-    "vuetify": "1.5.14",
+    "vuetify": "2.0.0-beta.3",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
+    "@mdi/font": "^3.6.95",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-e2e-nightwatch": "^3.8.0",
     "@vue/cli-plugin-pwa": "^3.8.0",
@@ -57,6 +57,7 @@
     "fibers": "^4.0.1",
     "sass": "^1.21.0",
     "sass-loader": "^7.1.0",
+    "selenium-server-standalone-jar": "latest",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue-cli-plugin-coffee": "latest",
@@ -64,7 +65,6 @@
     "vue-cli-plugin-vuetify": "^0.5.0",
     "vue-template-compiler": "^2.5.21",
     "vuetify-loader": "^1.2.2",
-    "webpack": "latest",
-    "selenium-server-standalone-jar": "latest"
+    "webpack": "latest"
   }
 }

@@ -17,7 +17,7 @@ export default
 
 <template lang="pug">
 v-list.poll-common-settings
-  v-list-tile.poll-common-checkbox-option(v-for="(setting, index) in settings", :key="index")
+  v-list-item.poll-common-checkbox-option(v-for="(setting, index) in settings", :key="index")
     v-checkbox(v-model="poll[setting]")
       v-layout(slot="label" align-center)
         span.pr-1(v-t="'poll_common_settings.' + snakify(setting) + '.title'")

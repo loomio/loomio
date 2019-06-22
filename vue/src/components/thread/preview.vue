@@ -99,28 +99,28 @@ export default
 </script>
 
 <template lang="pug">
-v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)')
-  v-list-tile-avatar
+v-list-item.thread-preview.thread-preview__link(:to='urlFor(thread)')
+  v-list-item-avatar
     user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium' no-link)
     poll-common-chart-preview(v-if='thread.activePoll()', :poll='thread.activePoll()')
-  v-list-tile-content
-    v-list-tile-title.thread-preview__text-container
+  v-list-item-content
+    v-list-item-title.thread-preview__text-container
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
       span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()') ({{thread.unreadItemsCount()}})
-    v-list-tile-sub-title.thread-preview__text-container
+    v-list-item-subtitle.thread-preview__text-container
       span.thread-preview__group-name {{ thread.group().fullName }} ·
       time-ago(:date='thread.lastActivityAt')
       .lmo-badge.lmo-pointer(v-if='thread.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}", v-t="'common.privacy.closed'")
-  v-list-tile-action
+  v-list-item-action
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")
       v-icon mdi-pin
-  v-list-tile-action(v-if='thread.discussionReaderId')
+  v-list-item-action(v-if='thread.discussionReaderId')
     v-btn.thread-preview__dismiss(@click.prevent='dismiss()' icon flat v-show='thread.isUnread()' :class='{disabled: !thread.isUnread()}' :title="$t('dashboard_page.dismiss')")
       v-icon.mdi mdi-check
-  v-list-tile-action(v-if='thread.discussionReaderId')
+  v-list-item-action(v-if='thread.discussionReaderId')
     v-btn.thread-preview__mute(@click.prevent='muteThread()' icon flat v-show='!thread.isMuted()' :title="$t('volume_levels.mute')")
       v-icon.mdi mdi-volume-mute
-  v-list-tile-action(v-if='thread.discussionReaderId')
+  v-list-item-action(v-if='thread.discussionReaderId')
     v-btn.thread-preview__unmute(@click.prevent='unmuteThread()' icon flat v-show='thread.isMuted()' :title="$t('volume_levels.unmute')")
       v-icon.mdi mdi-volume-plus
 </template>

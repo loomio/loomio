@@ -208,24 +208,24 @@ div.members-panel
     v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 
     //- v-list(two-line avatar)
-    //-   v-list-tile(v-if="!searchOpen")
-    //-     v-list-tile-content
+    //-   v-list-item(v-if="!searchOpen")
+    //-     v-list-item-content
     //-       span.grey--text(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }')
-    //-     v-list-tile-action
+    //-     v-list-item-action
     //-       v-btn.membership-card__search-button(icon @click="toggleSearch()")
     //-         v-icon mdi-magnify
     //-
-    //-   v-list-tile(v-if="searchOpen")
+    //-   v-list-item(v-if="searchOpen")
     //-     v-text-field.membership-card__filter(autofocus v-model="fragment" :placeholder="$t('memberships_page.fragment_placeholder')")
     //-       template(slot="append")
     //-         v-btn(icon @click="toggleSearch()")
     //-           v-icon mdi-close
     //-
-    //-   v-list-tile.membership-card__membership.membership-card__invite(v-if='!searchOpen && canAddMembers()', @click="invite()")
-    //-     v-list-tile-avatar
+    //-   v-list-item.membership-card__membership.membership-card__invite(v-if='!searchOpen && canAddMembers()', @click="invite()")
+    //-     v-list-item-avatar
     //-       v-avatar(:size='40')
     //-         v-icon(color="primary") mdi-plus
-    //-     v-list-tile-content
-    //-       v-list-tile-title(v-t="'membership_card.invite_to_' + group.targetModel().constructor.singular")
+    //-     v-list-item-content
+    //-       v-list-item-title(v-t="'membership_card.invite_to_' + group.targetModel().constructor.singular")
 
 </template>

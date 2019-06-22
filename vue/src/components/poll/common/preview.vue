@@ -13,12 +13,12 @@ export default
 </script>
 
 <template lang="pug">
-v-list-tile.poll-common-preview(:to='urlFor(poll)')
-  v-list-tile-avatar
+v-list-item.poll-common-preview(:to='urlFor(poll)')
+  v-list-item-avatar
     poll-common-chart-preview(:poll='poll')
-  v-list-tile-content
-    v-list-tile-title {{poll.title}}
-    v-list-tile-sub-title
+  v-list-item-content
+    v-list-item-title {{poll.title}}
+    v-list-item-subtitle
       span(v-if='showGroupName()') {{ poll.group().fullName }}
       span(v-if='!showGroupName()', v-t="{ path: 'poll_common_collapsed.by_who', args: { name: poll.authorName() } }")
       span ·

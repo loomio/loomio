@@ -61,7 +61,7 @@ export default
 </script>
 
 <template lang="pug">
-  v-toolbar(app clipped-right)
+  v-app-bar(app clipped-right)
     v-btn.navbar__sidenav-toggle(icon v-if="!sidebarOpen" @click="toggleSidebar()")
       v-avatar(tile size="36px")
         v-icon mdi-menu
