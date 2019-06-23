@@ -26,8 +26,7 @@ export default
     per: AppConfig.pageSize.threadItems
     renderMode: 'nested'
     eventWindow: null
-    requestedSequenceId: 0
-    requestedPosition: 0
+    lastSequenceId: 0
     event: null
     events: []
     positionItems: []
@@ -62,12 +61,10 @@ export default
           @events = @eventWindow.windowedEvents()
 
       EventBus.$on 'threadPositionRequest', (position) => @positionRequested(position)
-      @requestedSequenceId = parseInt(@$route.params.sequence_id) || @discussion.firstUnreadSequenceId() || 0
-      @sequenceIdRequested(@requestedSequenceId)
+      @sequenceIdRequested(parseInt(@$route.params.sequence_id) || @discussion.firstUnreadSequenceId() || 0)
 
     routeUpdated: ->
-      @requestedSequenceId = parseInt(@$route.params.sequence_id) || 0
-      @sequenceIdRequested(@requestedSequenceId)
+      @sequenceIdRequested(parseInt(@$route.params.sequence_id) || 0)
 
     findEvent: (column, id) ->
       records = Records
@@ -89,13 +86,13 @@ export default
         when 'position'
           discussion_id: @discussion.id
           order: 'sequence_id'
-          from_sequence_id_of_position: 1
+          from_sequence_id_of_position: id
           from: null
           per: @per
         when 'sequence_id'
           discussion_id: @discussion.id
           order: 'sequence_id'
-          from: 1
+          from: id
           per: @per
       @loader.fetchRecords(args)
 
@@ -113,20 +110,27 @@ export default
           return @findEvent(column, id)
 
     sequenceIdRequested: (id) ->
+      return if @eventWindow.focalEvent.sequenceId == id
       @findOrFetchEvent('sequenceId', id).then (event) =>
         console.log "event", event
         @alignWindowTo(event)
 
     positionRequested: (id) ->
-      @findOrFetchEvent('position', id).then (event) =>
-        @alignWindowTo(event)
+      return if @eventWindow.focalEvent.position == id
+      if id == @discussion.createdEvent().childCount + 1
+        @$vuetify.goTo ".activity-panel__actions"
+      else
+        @findOrFetchEvent('position', id).then (event) =>
+          @alignWindowTo(event)
 
     alignWindowTo: (event) ->
       console.log "aligning to event", event
+      @eventWindow.focalEvent = event
       min = @parentPositionOf(event)
       @eventWindow.setMin(min)
       @eventWindow.setMax(min+@per)
       @events = @eventWindow.windowedEvents()
+      @$router.replace(params: {sequence_id: event.sequenceId})
       EventBus.$emit 'threadPositionUpdated', event.position
       @$nextTick => @$nextTick => @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
 
