@@ -25,6 +25,8 @@ class API::EventsController < API::RestfulController
   def from
     if params[:from]
       params[:from]
+    elsif params[:from_sequence_id_of_position]
+      Event.find_by!(discussion: @discussion, depth: 1, position: params[:from_sequence_id_of_position])&.sequence_id
     elsif params[:comment_id]
       Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])&.sequence_id
     else

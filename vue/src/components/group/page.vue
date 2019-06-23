@@ -36,7 +36,6 @@ export default
         {id: 4, name: 'files',     route: @urlFor(@group, 'files')}
       ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
 
-
   methods:
     init: ->
       Records.groups.findOrFetch(@$route.params.key).then (group) =>
@@ -64,6 +63,6 @@ loading(:until='group')
     v-card
       v-tabs(fixed-tabs v-model="activeTab" show-arrows)
         v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
-          | {{tab.name}}
+          span(v-t="'group_page.'+tab.name")
       router-view
 </template>

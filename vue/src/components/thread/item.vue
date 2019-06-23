@@ -121,10 +121,11 @@ div
             | &nbsp;
             router-link.thread-item__link(:to='link')
               time-ago.timeago--inline(:date='event.createdAt')
-            //- | &nbsp;
-            //- span(aria-hidden='true') ·
-            //- | &nbsp;
-            //- | {{event.sequenceId}}
+            | &nbsp;
+            span(aria-hidden='true') ·
+            | &nbsp;
+            | sid {{event.sequenceId}}
+            | pos {{event.position}}
           button.md-button--tiny(v-if='canRemoveEvent', @click='removeEvent()')
             i.mdi.mdi-delete
         component(v-if='hasComponent()' :is='camelCase(event.kind)' @reply-button-clicked="handleReplyButtonClicked" :event='event', :eventable='event.model()')

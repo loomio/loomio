@@ -11,7 +11,7 @@ import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
 import WatchRecords from '@/mixins/watch_records'
 import { print } from '@/shared/helpers/window'
-import { compact } from 'lodash'
+import { compact, snakeCase, camelCase, max } from 'lodash'
 import RangeSet from '@/shared/services/range_set'
 
 # window.Loomio.debug= 1
@@ -26,8 +26,11 @@ export default
     per: AppConfig.pageSize.threadItems
     renderMode: 'nested'
     eventWindow: null
-    sequenceId: 0
+    requestedSequenceId: 0
+    requestedPosition: 0
+    event: null
     events: []
+    backPrefetch: 2
     positionItems: []
     renderModeItems: [
       {text: @$t('activity_card.chronological'), value: 'chronological'},
@@ -35,60 +38,13 @@ export default
     ]
     currentAction: 'add-comment'
 
-  created: ->
-    @init()
-    EventBus.$on 'updateThreadPosition', (position) => @refreshOnPosition(position)
-
-  updated: ->
-
   watch:
-    '$route.params.sequence_id': 'refresh'
+    '$route.params.sequence_id': 'routeUpdated'
 
-  computed:
-    canStartPoll: ->
-      AbilityService.canStartPoll(@discussion)
+  created: -> @init()
 
   methods:
-    findEvent: (args) ->
-      Records.events.find(Object.assign({discussionId: @discussion.id}, args))[0]
-
-    refresh: ->
-      sequenceId = parseInt(@$route.params.sequence_id) || 0
-      if sequenceId == 0
-        @alignWindowTo(@discussion.createdEvent())
-      else if event = @findEvent(sequenceId: sequenceId)
-        @alignWindowTo(event)
-      else
-        @loader.loadMore(sequenceId).then =>
-          @alignWindowTo(@findEvent(sequenceId: sequenceId))
-
-    refreshOnPosition: (position) ->
-      console.log 'refreshing position', position
-      if position == 0
-        @alignWindowTo(@discussion.createdEvent())
-      else if event = @findEvent(position: position, depth: 1)
-        console.log 'event found', event
-        @alignWindowTo(event)
-      else
-        @loader.fetchRecords(order: 'position', from: position, depth: 1).then =>
-          console.log 'event loaded', @findEvent(position: position, depth: 1)
-          @alignWindowTo(@findEvent(position: position, depth: 1))
-
-    alignWindowTo: (event) ->
-      min = @parentPositionOf(event)
-      @eventWindow.setMin(min)
-      @eventWindow.setMax(min+@per)
-      @events = @eventWindow.windowedEvents()
-      EventBus.$emit 'updateRequestedPosition', event.position
-      @$nextTick => @$nextTick => @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
-
     init: ->
-      # if @renderMode == "chronological"
-      #   @eventWindow = new ChronologicalEventWindow
-      #     discussion: @discussion
-      #     initialSequenceId: @requestedSequenceId
-      #     per: @per
-      # else
       @eventWindow = new NestedEventWindow
         discussion: @discussion
         parentEvent: @discussion.createdEvent()
@@ -106,7 +62,74 @@ export default
         query: (store) =>
           @events = @eventWindow.windowedEvents()
 
-      @refresh()
+      EventBus.$on 'threadPositionRequest', (position) => @positionRequested(position)
+      @requestedSequenceId = parseInt(@$route.params.sequence_id) || @discussion.firstUnreadSequenceId() || 0
+      @sequenceIdRequested(@requestedSequenceId)
+
+    routeUpdated: ->
+      @requestedSequenceId = parseInt(@$route.params.sequence_id) || 0
+      @sequenceIdRequested(@requestedSequenceId)
+
+    findEvent: (column, id) ->
+      records = Records
+      if id == 0
+        @discussion.createdEvent()
+      else
+        args = switch camelCase(column)
+          when 'position'
+            discussionId: @discussion.id
+            position: id
+            depth: 1
+          when 'sequenceId'
+            discussionId: @discussion.id
+            sequenceId: id
+        Records.events.find(args)[0]
+
+    fetchEvents: (column, id) ->
+      args = switch snakeCase(column)
+        when 'position'
+          discussion_id: @discussion.id
+          order: 'sequence_id'
+          from_sequence_id_of_position: max([id - @backPrefetch, 1])
+          from: null
+          per: @per
+        when 'sequence_id'
+          discussion_id: @discussion.id
+          order: 'sequence_id'
+          from: max([id - @backPrefetch, 1])
+          per: @per
+      @loader.fetchRecords(args)
+
+    # return immediately if first event found, always fetches
+    findOrFetchEvent: (column, id) ->
+      # if requesting by position, also request a sequence_id & depth 2
+      event = @findEvent(column, id)
+      if event
+        console.log "event found: #{column}, #{id}"
+        # @fetchEvents(column, id)
+        Promise.resolve(event)
+      else
+        console.log "fetching event: #{column}, #{id}"
+        @fetchEvents(column, id).then =>
+          return @findEvent(column, id)
+
+    sequenceIdRequested: (id) ->
+      @findOrFetchEvent('sequenceId', id).then (event) =>
+        console.log "event", event
+        @alignWindowTo(event)
+
+    positionRequested: (id) ->
+      @findOrFetchEvent('position', id).then (event) =>
+        @alignWindowTo(event)
+
+    alignWindowTo: (event) ->
+      console.log "aligning to event", event
+      min = @parentPositionOf(event) - @backPrefetch
+      @eventWindow.setMin(min)
+      @eventWindow.setMax(min+@per)
+      @events = @eventWindow.windowedEvents()
+      EventBus.$emit 'threadPositionUpdated', event.position
+      @$nextTick => @$nextTick => @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
 
     parentPositionOf: (event) ->
       # ensure that we set the min position of the window to bring the initialSequenceId to the top
@@ -140,6 +163,11 @@ export default
 
     shouldLoadMore: (visible) ->
       @loadNext() if visible
+    shouldLoadPrevious: (visible) ->
+      @loadPrevious() if visible
+  computed:
+    canStartPoll: ->
+      AbilityService.canStartPoll(@discussion)
 
 </script>
 
@@ -177,6 +205,7 @@ export default
     a.activity-panel__load-more.lmo-flex.lmo-flex__center.lmo-no-print(v-show='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()', tabindex='0')
       i.mdi.mdi-autorenew
       span(v-t="{ path: 'discussion.load_previous', args: { count: eventWindow.numPrevious() }}")
+    //- .activity-panel__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadPrevious")
     loading.activity-panel__loading.page-loading(v-show='loader.loadingPrevious')
     thread-item(v-for='event in events' :key='event.id' :event='event' :event-window='eventWindow')
     .activity-panel__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadMore")
@@ -186,7 +215,7 @@ export default
     v-tab(href='#add-comment')
       span(v-t="'activity_card.add_comment'")
       v-icon mdi-comment
-    v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll()")
+    v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
       span(v-t="'activity_card.add_poll'")
       v-icon mdi-thumbs-up-down
     v-tab(href='#add-outcome')

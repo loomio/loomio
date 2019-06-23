@@ -11,12 +11,15 @@ export default
     discussion: null
     open: null
     keyEvents: []
-    requestedPosition: null
+    inversePosition: 0
 
   mounted: ->
+    # threadPositionRequest (use slides the slider, tell others)
+    # threadPositionUpdated (slider position needs updating)
     EventBus.$on 'toggleThreadNav', => @open = !@open
-    EventBus.$on 'updateRequestedPosition', (position) =>
-      @requestedPosition = 0 - position
+    EventBus.$on 'threadPositionUpdated', (position) =>
+      @inversePosition = 0 - position
+      
     EventBus.$on 'currentComponent', (options) =>
       @discussion = options.discussion
       return unless @discussion
@@ -35,8 +38,19 @@ export default
                         .find(kind: {$in: ['poll_created']})
                         .simplesort('sequenceId')
                         .data()
+  computed:
+    childCount: -> @discussion.createdEvent().childCount
+    position: -> 0 - @inversePosition
+    thumbLabel: ->
+      if @position > @childCount
+        "+1"
+      else
+        "#{@position} / #{@childCount}"
 
   methods:
+    emitPosition: ->
+      EventBus.$emit 'threadPositionRequest', @position
+
     scrollTo: (selector) ->
       @$vuetify.goTo(selector)
 
@@ -47,9 +61,6 @@ export default
       EventBus.$emit('updateThreadPosition', 0 - @requestedPosition)
     ,
       250
-  computed:
-    tickLabels: ->
-      ['Context','','','','Proposal',''].reverse()
 
   watch:
     open: (val) ->
@@ -60,10 +71,10 @@ export default
 <template lang="pug">
 v-navigation-drawer(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped)
   .thread-nav
-    v-subheader Navigation
-    v-slider(v-model="requestedPosition" :tick-size="0" :tick-labels="tickLabels" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="refreshThread()")
+    v-subheader Jump to
+    v-slider(color="accent" track-color="accent" thumb-color="accent" thumb-size="64" v-model="inversePosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount - 1" thumb-label @change="emitPosition()")
       template(v-slot:thumb-label)
-        | {{0 - requestedPosition}}
+        | {{thumbLabel}}
     //- v-list(dense)
     //-   v-subheader Navigation
     //-   v-list-item(:to="urlFor(discussion)")
@@ -76,7 +87,7 @@ v-navigation-drawer(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" w
     //-     v-list-item-title Latest
     //-   v-list-item(@click="scrollTo('.activity-panel__actions')")
     //-     v-list-item-title Add comment
-    v-subheader Polls
+    v-subheader(v-if="keyEvents.length" v-t="'group_page.polls'")
     v-list-item(v-for="event in keyEvents" :key="event.id" :to="urlFor(discussion)+'/'+event.sequenceId")
       v-list-item-avatar
         poll-common-chart-preview(:poll='event.model()' :size="28" :showMyStance="false")

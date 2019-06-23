@@ -618,6 +618,11 @@ en:
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
   group_page:
+    threads: Threads
+    polls: Polls
+    members: Members
+    files: Files
+    subgroups: Subgroups
     show_opened: '{{count}} Open'
     show_closed: '{{count}} Closed'
     no_threads_here: No threads to see here!
@@ -638,7 +643,6 @@ en:
     open_discussions: 'Open threads'
     closed_discussions: 'Closed threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
-    members: '{{count}} Members'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
     see_all_members: 'See all {{count}} members'

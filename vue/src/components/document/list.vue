@@ -43,24 +43,17 @@ export default
 <template lang="pug">
 section.document-list
   h3.document-list__heading.lmo-card-heading(v-if='showTitle', v-t="{ path: 'document.list.title' }")
-  p.lmo-hint-text.md-caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
-  .document-list__documents.md-block.lmo-flex.lmo-flex--column
-    .document-list__document.lmo-flex.lmo-flex--column(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
-      .document-list__image(v-if='document.isAnImage() && !hidePreview')
+  p.caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
+  .document-list__documents
+    .document-list__document(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
+      v-layout.document-list__image(column align-center v-if='document.isAnImage() && !hidePreview')
         router-link.lmo-pointer(:to='document.url', target='_blank')
           img(:src='document.webUrl', :alt='document.title')
-      .document-list__entry.lmo-flex.lmo-flex__center(layout='row')
+      v-layout.document-list__entry(align-center)
         i(:class='`mdi lmo-margin-right mdi-${document.icon}`', :style='{color: document.color}')
-        router-link.lmo-pointer.lmo-relative.lmo-truncate.lmo-flex.lmo-flex__grow(:to='document.url', target='_blank')
-          .document-list__title.lmo-truncate.lmo-flex__grow
-            | {{ document.title }}
-        .document-list__upload-time.md-caption.lmo-flex__shrink(v-if='!hideDate && !showEdit')
-          | {{ document.createdAt.fromNow() }}
-        //
-          <document_list_edit
-          document="document"
-          ng-if="showEdit"
-          ></document_list_edit>
+        router-link.document-list__title.truncate(:to='document.url', target='_blank') {{ document.title }}
+        v-spacer
+        .document-list__upload-time.caption(v-if='!hideDate && !showEdit') {{ document.createdAt.fromNow() }}
         button.md-button--tiny(v-if='showEdit', @click="$emit('documentRemoved', document)")
           i.mdi.mdi-close
 </template>
