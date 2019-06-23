@@ -30,7 +30,6 @@ export default
     requestedPosition: 0
     event: null
     events: []
-    backPrefetch: 2
     positionItems: []
     renderModeItems: [
       {text: @$t('activity_card.chronological'), value: 'chronological'},
@@ -90,13 +89,13 @@ export default
         when 'position'
           discussion_id: @discussion.id
           order: 'sequence_id'
-          from_sequence_id_of_position: max([id - @backPrefetch, 1])
+          from_sequence_id_of_position: 1
           from: null
           per: @per
         when 'sequence_id'
           discussion_id: @discussion.id
           order: 'sequence_id'
-          from: max([id - @backPrefetch, 1])
+          from: 1
           per: @per
       @loader.fetchRecords(args)
 
@@ -124,7 +123,7 @@ export default
 
     alignWindowTo: (event) ->
       console.log "aligning to event", event
-      min = @parentPositionOf(event) - @backPrefetch
+      min = @parentPositionOf(event)
       @eventWindow.setMin(min)
       @eventWindow.setMax(min+@per)
       @events = @eventWindow.windowedEvents()
