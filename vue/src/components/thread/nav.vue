@@ -3,10 +3,11 @@ import EventBus from '@/shared/services/event_bus'
 import UrlFor from '@/mixins/url_for'
 import Records from '@/shared/services/records'
 import WatchRecords from '@/mixins/watch_records'
+import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import { debounce } from 'lodash'
 
 export default
-  mixins: [UrlFor, WatchRecords]
+  mixins: [UrlFor, WatchRecords, AnnouncementModalMixin]
   data: ->
     discussion: null
     open: null
@@ -58,6 +59,9 @@ export default
     ,
       250
 
+    addPeople: ->
+      @openAnnouncementModal(Records.announcements.buildFromModel(@discussion))
+
   watch:
     open: (val) ->
       console.log 'sidebar open', val
@@ -72,6 +76,7 @@ v-navigation-drawer(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" w
       template(v-slot:thumb-label)
         | {{thumbLabel}}
     v-btn(color="accent" :to="urlFor(discussion)+'/'+discussion.firstUnreadSequenceId()") {{discussion.unreadItemsCount()}} Unread {{discussion.firstUnreadSequenceId()}}
+    v-btn.thread-nav__add-people(@click="addPeople()" v-t="'common.action.add_people'")
     //- v-list(dense)
     //-   v-subheader Navigation
     //-   v-list-item(:to="urlFor(discussion)")

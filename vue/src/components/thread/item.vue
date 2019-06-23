@@ -110,12 +110,12 @@ div
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='isNested ? "thirtysix" : "medium"')
         v-checkbox.thread-item__is-forking(v-if="event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
-        v-layout.thread-item__headline
+        v-layout
           h3.thread-item__title.body-2.d-flex.wrap(:id="'event-' + event.id")
             div(v-if='debug()')
               | id: {{event.id}} cpid: {{event.model().parentId}} pid: {{event.parentId}} sid: {{event.sequenceId}} position: {{event.position}} depth: {{event.depth}} unread: {{isUnread}} cc: {{event.childCount}} eventableId: {{event.eventableId}}
               //- | sid: {{event.sequenceId}} position: {{event.position}} commentId: {{event.eventableId}}
-            span(v-html='headline')
+            span.thread-item__headline(v-html='headline')
             | &nbsp;
             span(aria-hidden='true') ·
             | &nbsp;

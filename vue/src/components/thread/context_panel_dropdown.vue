@@ -26,7 +26,6 @@ export default
       Session.isSignedIn()
 
     editThread: ->
-      # ModalService.open 'DiscussionEditModal', discussion: => @discussion
       @openEditDiscussionModal(@discussion)
 
     canPinThread: ->

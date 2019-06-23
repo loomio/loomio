@@ -138,14 +138,14 @@ v-card
         .announcement-form__invite
           p.announcement-form__help(v-t="'announcement.form.' + announcement.kind + '.helptext'")
           v-list
-            v-list-item.announcement-form__audience(avatar v-for='audience in audiences()', :key='audience', @click='loadAudience(audience)')
+            v-list-item.announcement-form__audience(v-for='audience in audiences()', :key='audience', @click='loadAudience(audience)')
               v-list-item-avatar
                 v-icon mdi-account-multiple
               v-list-item-content
                 span(v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
           v-autocomplete.announcement-form__input(multiple chips return-object autofocus v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
             template(v-slot:selection='data')
-              v-chip.chip--select-multi(:selected='data.selected', close, @input='remove(data.item)')
+              v-chip.chip--select-multi(:value='data.selected', close, @input='remove(data.item)')
                 user-avatar(:user="data.item" size="small" :no-link="true")
                 span {{ data.item.name }}
             template(v-slot:item='data')

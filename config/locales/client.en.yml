@@ -164,6 +164,7 @@ en:
       export: Export
       fork: Fork
       apply: Apply
+      add_people: Add People
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
