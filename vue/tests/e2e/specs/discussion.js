@@ -171,30 +171,17 @@ module.exports = {
     page.expectFlash('You will be emailed activity in this thread.')
   },
 
-  'lets_you_change_the_volume_for_all_activity_in_this_thread': (test) => {
+  'lets_you_change_the_volume_for_all_threads_in_the_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--email-settings')
     page.click('.volume-loud')
-    page.click('.change-volume-form__apply-to-all')
+    page.click('.change-volume-form__apply-to-all .v-input--selection-controls__input')
     page.click('.change-volume-form__submit')
-    page.expectFlash('You will be emailed all activity in this thread.')
+    page.expectFlash('You will be emailed all activity in this group.')
   },
-
-  // TODO: GK: unsure why/how this test made sense in this context previously?
-  // 'lets_you_change_the_volume_for_all_threads_in_the_group': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_discussion')
-  //   page.click('.context-panel-dropdown__button')
-  //   page.click('.context-panel-dropdown__option--email-settings')
-  //   page.click('.volume-loud')
-  //   page.click('.change-volume-form__apply-to-all')
-  //   page.click('.change-volume-form__submit')
-  //   page.expectFlash('You will be emailed all activity in this group.')
-  // },
 
   'allows_logged_in_users_to_join_a_group_and_comment': (test) => {
     page = pageHelper(test)
@@ -376,7 +363,6 @@ module.exports = {
     page.expectText('.activity-feed', 'Patrick Swayze closed the discussion')
   },
 
-  // TODO: GK: after forking, the thread items are from the old thread
   'can_fork_a_thread': (test) => {
     page = pageHelper(test)
 
