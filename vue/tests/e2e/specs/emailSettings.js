@@ -79,7 +79,7 @@ testDefaultUpdate = (page) => {
 testMembershipUpdate = (page) => {
   page.click('.email-settings-page__change-default-link')
   page.click('.volume-loud')
-  page.click('.change-volume-form__apply-to-all label')
+  page.click('.change-volume-form__apply-to-all .v-input--selection-controls__input')
   page.click('.change-volume-form__submit')
   page.expectFlash('You will be emailed all activity in all your groups.')
   page.expectText('.email-settings-page__membership-volume', 'All activity')
