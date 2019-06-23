@@ -24,5 +24,4 @@ v-menu.notifications(offset-y bottom)
   v-list.notifications__dropdown(avatar)
     notification(:notification="notification" v-for="notification in notifications", :key="notification.id")
     div(v-if="notifications.length == 0" v-t="'notifications.no_notifications'")
-
 </template>

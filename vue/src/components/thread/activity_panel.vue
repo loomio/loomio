@@ -117,11 +117,8 @@ export default
 
     positionRequested: (id) ->
       return if @eventWindow.focalEvent.position == id
-      if id == @discussion.createdEvent().childCount + 1
-        @$vuetify.goTo ".activity-panel__actions"
-      else
-        @findOrFetchEvent('position', id).then (event) =>
-          @alignWindowTo(event)
+      @findOrFetchEvent('position', id).then (event) =>
+        @alignWindowTo(event)
 
     alignWindowTo: (event) ->
       console.log "aligning to event", event

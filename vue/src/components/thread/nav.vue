@@ -19,7 +19,7 @@ export default
     EventBus.$on 'toggleThreadNav', => @open = !@open
     EventBus.$on 'threadPositionUpdated', (position) =>
       @inversePosition = 0 - position
-      
+
     EventBus.$on 'currentComponent', (options) =>
       @discussion = options.discussion
       return unless @discussion
@@ -41,11 +41,7 @@ export default
   computed:
     childCount: -> @discussion.createdEvent().childCount
     position: -> 0 - @inversePosition
-    thumbLabel: ->
-      if @position > @childCount
-        "+1"
-      else
-        "#{@position} / #{@childCount}"
+    thumbLabel: -> "#{@position} / #{@childCount}"
 
   methods:
     emitPosition: ->
@@ -72,9 +68,10 @@ export default
 v-navigation-drawer(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped)
   .thread-nav
     v-subheader Jump to
-    v-slider(color="accent" track-color="accent" thumb-color="accent" thumb-size="64" v-model="inversePosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount - 1" thumb-label @change="emitPosition()")
+    v-slider(color="accent" track-color="accent" thumb-color="accent" thumb-size="64" v-model="inversePosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="emitPosition()")
       template(v-slot:thumb-label)
         | {{thumbLabel}}
+    v-btn(color="accent" :to="urlFor(discussion)+'/'+discussion.firstUnreadSequenceId()") {{discussion.unreadItemsCount()}} Unread {{discussion.firstUnreadSequenceId()}}
     //- v-list(dense)
     //-   v-subheader Navigation
     //-   v-list-item(:to="urlFor(discussion)")
