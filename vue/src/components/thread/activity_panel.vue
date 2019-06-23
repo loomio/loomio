@@ -37,6 +37,7 @@ export default
     currentAction: 'add-comment'
 
   watch:
+    '$route.params.key': 'init'
     '$route.params.sequence_id': 'routeUpdated'
 
   created: -> @init()

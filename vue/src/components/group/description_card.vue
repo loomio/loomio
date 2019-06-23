@@ -43,7 +43,7 @@ export default
 </script>
 
 <template lang="pug">
-.description-card(aria-labelledby='description-card-title')
+.description-card.px-3.pb-3
   v-layout(mb-3)
     v-spacer
     join-group-button(:group='group')
