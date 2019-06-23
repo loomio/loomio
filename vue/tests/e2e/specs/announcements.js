@@ -42,13 +42,11 @@ module.exports = {
     page.expectFlash('2 notifications sent')
   },
 
-  // TODO: GK: how do we invite people to a discussion?
   'announcement_created': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.pause(9999999)
-    page.click('.membership-card__invite')
+    page.click('.thread-nav__add-people')
     page.expectElement('.announcement-form')
     page.pause(500)
     page.fillIn('.announcement-form__input input', 'test@example.com')
