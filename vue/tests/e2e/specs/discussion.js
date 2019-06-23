@@ -25,8 +25,7 @@ module.exports = {
     page.expectText('.group-cover-image', 'Open Dirty Dancing Shoes')
     page.expectText('.thread-preview-collection__container', 'I carried a watermelon')
     page.expectText('.navbar__sign-in', 'LOG IN')
-
-    page.click('.thread-preview__link a')
+    page.click('.thread-preview__link')
     page.expectText('.context-panel__heading', 'I carried a watermelon')
   },
 
@@ -74,7 +73,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.click('.context-panel-dropdown__button')
-    page.click('.context-panel-dropdown__option--edit a')
+    page.click('.context-panel-dropdown__option--edit')
     page.fillIn('.discussion-form__title-input input', 'better title')
     page.fillIn('.discussion-form textarea', 'improved description')
     page.click('.discussion-form__private')
@@ -172,7 +171,7 @@ module.exports = {
     page.expectFlash('You will be emailed activity in this thread.')
   },
 
-  'lets_you_change_the_volume_for_all_threads_in_the_group': (test) => {
+  'lets_you_change_the_volume_for_all_activity_in_this_thread': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
@@ -181,8 +180,21 @@ module.exports = {
     page.click('.volume-loud')
     page.click('.change-volume-form__apply-to-all')
     page.click('.change-volume-form__submit')
-    page.expectFlash('You will be emailed all activity in this group.')
+    page.expectFlash('You will be emailed all activity in this thread.')
   },
+
+  // TODO: GK: unsure why/how this test made sense in this context previously?
+  // 'lets_you_change_the_volume_for_all_threads_in_the_group': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.click('.context-panel-dropdown__button')
+  //   page.click('.context-panel-dropdown__option--email-settings')
+  //   page.click('.volume-loud')
+  //   page.click('.change-volume-form__apply-to-all')
+  //   page.click('.change-volume-form__submit')
+  //   page.expectFlash('You will be emailed all activity in this group.')
+  // },
 
   'allows_logged_in_users_to_join_a_group_and_comment': (test) => {
     page = pageHelper(test)
@@ -364,6 +376,7 @@ module.exports = {
     page.expectText('.activity-feed', 'Patrick Swayze closed the discussion')
   },
 
+  // TODO: GK: after forking, the thread items are from the old thread
   'can_fork_a_thread': (test) => {
     page = pageHelper(test)
 
@@ -376,7 +389,7 @@ module.exports = {
     page.click('.dismiss-modal-button', 500)
     page.expectText('.context-panel__heading', 'Forked thread')
     page.expectText('.context-panel__fork-details', 'What star sign are you?')
-    page.expectText('.thread-item__body', 'This is totally on topic!', 8000)
+    page.expectText('.thread-item__body new-comment__body', 'This is totally on topic!', 8000)
   },
 
   'can_move_a_thread': (test) => {
