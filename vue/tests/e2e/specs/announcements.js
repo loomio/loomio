@@ -10,7 +10,7 @@ module.exports = {
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.click('.lmo-h1')
+    page.click('.headline')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
   },
@@ -46,6 +46,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
+    page.pause(500)
     page.click('.thread-nav__add-people')
     page.expectElement('.announcement-form')
     page.pause(500)
@@ -72,7 +73,7 @@ module.exports = {
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.click('.lmo-h1')
+    page.click('.headline')
     page.click('.announcement-form__submit', 1000)
     page.expectFlash('1 notifications sent')
   },

@@ -268,7 +268,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('test_proposal_poll_with_guest', { controller: 'polls' })
-    page.expectText('.poll-common-undecided-panel__button', 'Show 5 undecided')
+    page.expectText('.poll-common-undecided-panel__button', 'SHOW 5 UNDECIDED')
     page.click('.poll-common-undecided-panel__button')
     page.expectText('.poll-common-undecided-panel', 'Undecided (5)')
   },
