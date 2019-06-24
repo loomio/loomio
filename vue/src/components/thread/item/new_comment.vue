@@ -78,7 +78,7 @@ export default
 
 <template lang="pug">
   .new-comment(id="'comment-'+ eventable.id")
-    formatted-text.thread-item__body(:model="comment" column="body")
+    formatted-text.thread-item__body(:model="eventable" column="body")
     document-list(:model='eventable', :skip-fetch='true')
     attachment-list(:attachments="eventable.attachments")
     v-card-actions
