@@ -88,21 +88,22 @@ export default
 v-card.discussion-form
   .lmo-disabled-form(v-show='isDisabled')
   v-card-title
-    v-layout(justify-space-between style="align-items: center")
-      v-flex
-        .headline(v-if="!discussion.isForking()" v-t="'discussion_form.new_discussion_title'")
-        .headline(v-if="discussion.isForking()" v-t="'discussion_form.fork_discussion_title'")
-      v-flex(shrink)
-        dismiss-modal-button(aria-hidden='true', :close='close')
+    h1.headline
+      span(v-if="!discussion.isForking()")
+        span(v-if="discussion.isNew()" v-t="'discussion_form.new_discussion_title'")
+        span(v-if="!discussion.isNew()" v-t="'discussion_form.edit_discussion_title'")
+      span(v-if="discussion.isForking()" v-t="'discussion_form.fork_discussion_title'")
+    v-spacer
+    dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
     .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !discussion.isForking()')
     .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEvents.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
-    .md-block(v-show='showGroupSelect')
+
+    div(v-show='showGroupSelect')
       label(for='discussion-group-field', v-t="'discussion_form.group_label'")
       v-select#discussion-group-field.discussion-form__group-select(v-model='discussion.groupId' :placeholder="$t('discussion_form.group_placeholder')" :items='groupSelectOptions' required='true' @change='discussion.fetchAndRestoreDraft(); updatePrivacy()')
-      .md-errors-spacer
 
-    .md-body-1(v-if="showUpgradeMessage")
+    .body-1(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
@@ -113,17 +114,18 @@ v-card.discussion-form
       v-list.discussion-form__options
         v-list-item.discussion-form__privacy-form(v-if='showPrivacyForm')
           v-radio-group(v-model='discussion.private')
-            v-radio.md-checkbox--with-summary.discussion-form__public(:value='false')
+            v-radio.discussion-form__public(:value='false')
               discussion-privacy-icon(slot='label', :discussion='discussion', :private='false')
-            v-radio.md-checkbox--with-summary.discussion-form__private(:value='true')
+            v-radio.discussion-form__private(:value='true')
               discussion-privacy-icon(slot='label', :discussion='discussion', :private='true')
         v-list-item.discussion-form__privacy-notice(v-if='!showPrivacyForm')
-          label.discussion-form__privacy-notice.lmo-flex(layout='row')
-            i.mdi.mdi-24px.mdi-lock-outline.lmo-margin-right(v-if='discussion.private')
-            i.mdi.mdi-24px.mdi-earth.lmo-margin-right(v-if='!discussion.private')
+          v-list-item-avatar
+            v-icon(v-if='discussion.private') mdi-lock-outline
+            v-icon(v-if='!discussion.private') mdi-earth
+          v-list-item-content
             discussion-privacy-icon(:discussion='discussion')
-  v-card-actions
-    .discussion-form-actions.lmo-md-actions
-      v-btn.discussion-form__submit(@click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()" class="md-primary md-raised discussion-form__submit")
-      v-btn.discussion-form__submit(@click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()" class="md-primary md-raised discussion-form__submit")
+  v-card-actions.discussion-form-actions
+    v-spacer
+    v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()")
+    v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()")
 </template>

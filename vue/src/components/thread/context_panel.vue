@@ -60,12 +60,6 @@ export default
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canEditThread(@discussion)
       perform:    => @openEditDiscussionModal(@discussion)
-    ,
-      name: 'tag_thread'
-      icon: 'mdi-tag'
-      # canPerform: -> some Records.tags.find(groupId: scope.discussion.group().parentOrSelf().id)
-      canPerform: => true
-      perform:    => @openTagsModal(@discussion)
     ]
 
   computed:
@@ -90,8 +84,10 @@ export default
 <template lang="pug">
 //- section.context-panel.lmo-card-padding.lmo-action-dock-wrapper(aria-label="$t('thread_context.aria_label')")
 div.context-panel#sequence-0
-  v-layout(justify-space-between align-items-center mx-2 pt-2)
+  v-layout(align-center mx-2 pt-2)
     v-breadcrumbs(:items="groups" divider=">")
+    v-spacer
+    tags-display(:discussion="discussion")
     context-panel-dropdown(:discussion="discussion")
 
   h1.headline.context-panel__heading.px-3
@@ -123,7 +119,6 @@ div.context-panel#sequence-0
           router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
         v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
-      tags-display(:discussion="discussion")
     .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'md'", v-marked='discussion.cookedDescription()')
     .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'html'", v-html='discussion.description')
 

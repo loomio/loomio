@@ -125,7 +125,8 @@ export default
 <template lang="pug">
 v-card
   v-card-title
-    h1.lmo-h1(v-t="'announcement.form.' + announcement.kind + '.title'")
+    h1.headline(v-t="'announcement.form.' + announcement.kind + '.title'")
+    v-spacer
     dismiss-modal-button
   v-card-text
     .announcement-form
@@ -172,8 +173,8 @@ v-card
   v-card-actions
     div(v-if="recipients.length")
       p(v-show="tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
-    v-btn.announcement-form__cancel(v-if="!recipients.length" @click="$emit('$close')" v-t="'common.action.close'")
-    v-btn.announcement-form__submit(:disabled="!recipients.length || tooManyInvitations()" @click="submit()" v-t="'common.action.send'")
+    v-spacer
+    v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || tooManyInvitations()" @click="submit()" v-t="'common.action.send'")
 </template>
 
 <style lang="scss">

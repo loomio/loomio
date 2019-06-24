@@ -30,12 +30,14 @@ export default
 <template lang="pug">
 v-card.tags-modal
   v-card-title
-    h1.lmo-h1.modal-title(v-t="'loomio_tags.card_title'")
+    h1.headline(v-t="'loomio_tags.card_title'")
+    v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    v-combobox(v-model='discussionTags' :items='groupTags' label='Select tags to apply' item-text="name" multiple solo chips)
+    v-combobox(v-model='discussionTags' :items='groupTags' label='Select tags to apply' item-text="name" multiple solo deletable-chips chips)
   v-card-actions
-    v-btn.md-primary.md-raised.tag-form__submit(@click="updateTags()" v-t="'common.action.save'" :loading="loading")
+    v-spacer
+    v-btn.tag-form__submit(color="primary" @click="updateTags()" v-t="'common.action.save'" :loading="loading")
 </template>
 <style lang="scss">
 </style>

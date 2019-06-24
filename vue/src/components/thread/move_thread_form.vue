@@ -48,7 +48,8 @@ export default
 v-card.move-thread-form
   .lmo-disabled-form(v-show='isDisabled')
   v-card-title
-    h1(v-t="'move_thread_form.title'")
+    h1.headline(v-t="'move_thread_form.title'")
+    v-spacer
     dismiss-modal-button(:close='close')
   v-card-text
     v-select#group-dropdown.move-thread-form__group-dropdown(v-model='discussion.groupId' :required='true' @change='updateTarget()' :items='availableGroups' item-value='id' item-text='fullName' :label="$t('move_thread_form.body')")
@@ -57,6 +58,6 @@ v-card.move-thread-form
           v-list-item-title.group-dropdown-item-group-name
             span {{ data.item.fullName }}
   v-card-actions
-    v-btn(@click='close()', type='button', v-t="'common.action.cancel'")
-    v-btn.move-thread-form__submit(type='button', v-t="'move_thread_form.confirm'", @click='moveThread()')
+    v-spacer
+    v-btn.move-thread-form__submit(color="primary" type='button', v-t="'move_thread_form.confirm'", @click='moveThread()')
 </template>
