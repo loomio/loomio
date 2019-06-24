@@ -63,7 +63,7 @@ export default
 loading(:until="discussion")
   div(v-if="discussion")
     group-cover-image(:group="discussion.group()")
-    v-container.thread-page(style="max-width: 800px")
+    v-container.thread-page.v-container-max-width
       discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
       thread-card(:loader='loader' :discussion='discussion')
 </template>
