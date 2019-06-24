@@ -46,7 +46,7 @@ export default
       // <md-tooltip md-delay="750" class="poll-common-vote-form__tooltip"><span translate="poll_{{stance.poll().pollType}}_options.{{option.name}}_meaning"></span></md-tooltip>
   poll-common-stance-reason.animated(:stance='stance', v-show='selectedOptionId', v-if='stance')
   v-card-actions
-    div(v-if='!stance.isNew()')
+    v-spacer
     poll-common-show-results-button(v-if='stance.isNew()')
     v-btn.poll-common-vote-form__submit(color="primary", @click='submit()', v-t="'poll_common.vote'", :disabled='!selectedOptionId')
 </template>

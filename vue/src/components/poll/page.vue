@@ -50,15 +50,11 @@ export default
 <template lang="pug">
 div
   group-cover-image(:group="poll.group()")
-  v-container.poll-page
+  v-container.poll-page.v-container-max-width
     loading(v-if='isEmptyPoll')
     v-layout(column v-if='!isEmptyPoll')
       poll-common-example-card(v-if='poll.example', :poll='poll')
-
-      //- group-theme(v-if='poll.group()', :group='poll.group()', :discussion='poll.discussion()', :compact='true')
-      v-layout
-        poll-common-card(:poll='poll')
-        v-flex
-          membership-card(:group='poll.guestGroup()')
-          membership-card(:group='poll.guestGroup()', :pending='true')
+      poll-common-card.mb-3(:poll='poll')
+      membership-card(:group='poll.guestGroup()')
+      membership-card(:group='poll.guestGroup()', :pending='true')
 </template>

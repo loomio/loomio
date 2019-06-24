@@ -83,4 +83,8 @@ $mdi-font-path: '/fonts/mdi';
 @import '@mdi/font/scss/materialdesignicons.scss';
 
 a { text-decoration: none; }
+
+.v-container-max-width {
+  max-width: 800px;
+}
 </style>

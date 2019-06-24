@@ -4,10 +4,6 @@
   align-items: flex-start;
   margin: 7px 0;
 }
-
-.poll-common-votes-panel__stance-content {
-  margin-left: 10px;
-}
 </style>
 
 <script lang="coffee">
@@ -29,9 +25,10 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-votes-panel__stance
-  user-avatar.lmo-flex__no-shrink(:user='stance.participant()', size='small')
-  .poll-common-votes-panel__stance-content
+v-list-item.poll-common-votes-panel__stance
+  v-list-item-avatar
+    user-avatar.lmo-flex__no-shrink(:user='stance.participant()', size='thirtysix')
+  v-list-item-content.poll-common-votes-panel__stance-content
     .poll-common-votes-panel__stance-name-and-option
       strong {{ participantName }}
       span.lmo-hint-text(v-t="'poll_common_votes_panel.none_of_the_above'", v-if='!stance.stanceChoices().length')
