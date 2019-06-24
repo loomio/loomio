@@ -72,10 +72,7 @@ export default
     poll-common-closing-at(:poll='poll')
     span(v-if='poll.anonymous') ·
     span(v-if='poll.anonymous', md-colors="{color: 'primary-600', 'border-color': 'primary-600'}" v-t="'common.anonymous'")
-  .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='!poll.translation && poll.detailsFormat == "md"' v-marked='poll.cookedDetails()')
-  .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='!poll.translation && poll.detailsFormat == "html"' v-html='poll.details')
-  .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='poll.translation')
-    translation(:model='poll', :field='details')
+  formatted-text.poll-common-details-panel__details(:model="poll" column="details")
   attachment-list(:attachments="poll.attachments")
   document-list(:model='poll')
   v-card-actions.lmo-md-actions

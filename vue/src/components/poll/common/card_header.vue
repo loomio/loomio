@@ -29,7 +29,6 @@ export default
 v-layout.poll-common-card-header(align-center mx-2 pt-2)
   //- v-icon {{'mdi ' + icon()}}
   v-breadcrumbs(:items="groups" divider=">")
-  v-chip(outlined small color="info" v-t="'poll_types.' + poll.pollType")
   v-spacer
   poll-common-actions-dropdown(:poll="poll", v-if="pollHasActions")
 </template>

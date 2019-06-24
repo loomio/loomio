@@ -27,10 +27,9 @@ export default
 
 <template lang="pug">
 .outcome-created
-  p.thread-item__body.lmo-markdown-wrapper(v-if="!eventable.translation && eventable.statementFormat =='html'" v-html="eventable.statement")
-  p.thread-item__body.lmo-markdown-wrapper(v-if="!eventable.translation && eventable.statementFormat =='md'" v-marked="eventable.statement")
-  translation(v-if="eventable.translation" :model="eventable" field="statement" class="thread-item__body")
-  .lmo-md-actions
+  formatted-text.thread-item__body(:model="eventable" column="statement")
+  v-card-actions(wrap)
     reaction-display(:model="eventable")
+    v-spacer
     action-dock(:model="eventable" :actions="actions")
 </template>

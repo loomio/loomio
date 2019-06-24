@@ -29,9 +29,9 @@ export default
 v-card.confirm-modal
   //- .lmo-disabled-form(v-show="isDisabled")
   v-card-title
-    v-layout(justify-space-between, align-center)
-      h1.lmo-h1(v-t="confirm.text.title")
-      dismiss-modal-button(v-if="!confirm.forceSubmit", :close="close")
+    h1.headline(v-t="confirm.text.title")
+    v-spacer
+    dismiss-modal-button(v-if="!confirm.forceSubmit", :close="close")
   v-card-text
     p(v-html="$t(confirm.text.helptext)", v-if="confirm.text.helptext")
     //- p(ng-include="fragment", ng-if="fragment")

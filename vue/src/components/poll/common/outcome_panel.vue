@@ -45,8 +45,7 @@ div(v-if="poll.outcome()" class="poll-common-outcome-panel lmo-action-dock-wrapp
   .poll-common-outcome-panel__authored-by.caption
     span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: poll.outcome().authorName() } }")
     time-ago(:date="poll.outcome().createdAt")
-  p(v-marked="poll.outcome().statement" v-if="!poll.outcome().translation" class="lmo-markdown-wrapper")
-  translation(:model="poll.outcome()" :field="statement" v-if="poll.outcome().translation")
+  formatted-text(:model="poll.outcome()" column="statement")
   document-list(:model="poll.outcome()")
   .lmo-md-actions
     reaction-display(:model="poll.outcome()" :load="true")

@@ -3,7 +3,6 @@ import AppConfig        from '@/shared/services/app_config'
 import RangeSet         from '@/shared/services/range_set'
 import HasDrafts        from '@/shared/mixins/has_drafts'
 import HasDocuments     from '@/shared/mixins/has_documents'
-import HasMentions      from '@/shared/mixins/has_mentions'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import HasGuestGroup    from '@/shared/mixins/has_guest_group'
 
@@ -19,7 +18,6 @@ export default class DiscussionModel extends BaseModel
     @private = @privateDefaultValue() if @isNew()
     HasDocuments.apply @, showTitle: true
     HasDrafts.apply @
-    HasMentions.apply @, 'description'
     HasTranslations.apply @
     HasGuestGroup.apply @
 

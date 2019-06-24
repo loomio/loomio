@@ -78,10 +78,7 @@ export default
 
 <template lang="pug">
   .new-comment(id="'comment-'+ eventable.id")
-    div(v-if='!eventable.translation')
-    .thread-item__body.new-comment__body.lmo-markdown-wrapper(v-if='eventable.bodyFormat == "md"', v-marked='eventable.cookedBody()')
-    .thread-item__body.new-comment__body.lmo-markdown-wrapper(v-if='eventable.bodyFormat == "html"', v-html='eventable.body')
-    translation.thread-item__body(v-if='eventable.translation', :model='eventable', field='body')
+    formatted-text.thread-item__body(:model="comment" column="body")
     document-list(:model='eventable', :skip-fetch='true')
     attachment-list(:attachments="eventable.attachments")
     v-card-actions

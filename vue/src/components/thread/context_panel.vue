@@ -119,10 +119,7 @@ div.context-panel#sequence-0
           router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
         v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
-    .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'md'", v-marked='discussion.cookedDescription()')
-    .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'html'", v-html='discussion.description')
-
-    translation.lmo-markdown-wrapper(v-if='discussion.translation', :model='discussion', field='description')
+    formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion', :skip-fetch='true')
     attachment-list(:attachments="discussion.attachments")
   v-card-actions

@@ -1,5 +1,5 @@
 class Full::PollSerializer < ::PollSerializer
-  attributes :poll_option_names, :mentioned_usernames, :complete
+  attributes  :complete
 
   has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions

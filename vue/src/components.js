@@ -38,6 +38,7 @@ module.exports = {
   CommonError: 'common/error',
   CommonFlash: 'common/flash',
   CommonFooter: 'common/footer',
+  FormattedText: 'common/formatted_text',
   GroupActionsDropdown: 'group/actions_dropdown',
   GroupAvatar: 'group/avatar',
   GroupForm: 'group/form',

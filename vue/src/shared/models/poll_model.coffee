@@ -1,6 +1,5 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
-import HasMentions      from '@/shared/mixins/has_mentions'
 import HasDrafts        from '@/shared/mixins/has_drafts'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
@@ -18,7 +17,6 @@ export default class PollModel extends BaseModel
   afterConstruction: ->
     HasDocuments.apply @, showTitle: true
     HasDrafts.apply @
-    HasMentions.apply @, 'details'
     HasTranslations.apply @
     HasGuestGroup.apply @
 
@@ -149,7 +147,7 @@ export default class PollModel extends BaseModel
       'edit'
 
   translatedPollType: ->
-    
+
     I18n.t("poll_types.#{@pollType}")
 
   addOption: =>
