@@ -52,7 +52,7 @@ module.exports = {
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.click('.lmo-h1')
+    page.click('.headline')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
   },
