@@ -146,19 +146,19 @@ module.exports = {
     page.expectNoText('.discussions-panel', 'What star sign are you?')
   },
 
-  'can_pin_from_the_discussion_page': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.click('.context-panel-dropdown__button')
-    page.click('.context-panel-dropdown__option--pin')
-
-    page.expectText('.confirm-modal', 'Pin thread')
-    page.click('.confirm-modal__submit')
-
-    page.expectFlash('Thread pinned')
-    page.expectElement('.context-panel__heading-pin')
-  },
+  // 'can_pin_from_the_discussion_page': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.click('.context-panel-dropdown__button')
+  //   page.click('.context-panel-dropdown__option--pin')
+  //
+  //   page.expectText('.confirm-modal', 'Pin thread')
+  //   page.click('.confirm-modal__submit')
+  //
+  //   page.expectFlash('Thread pinned')
+  //   page.expectElement('.context-panel__heading-pin')
+  // },
 
   'lets_you_change_thread_volume': (test) => {
     page = pageHelper(test)

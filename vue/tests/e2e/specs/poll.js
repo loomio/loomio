@@ -151,11 +151,7 @@ module.exports = {
     // page.click('.poll-common-tool-tip__collapse')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
-
     page.fillIn('.poll-meeting-time-field__datepicker-container input', moment().format('D MMMM YYYY'))
-    page.click('.poll-meeting-time-field__timepicker-container')
-    page.fillIn('.poll-meeting-time-field__timepicker-container input', "10:00 am")
-
     page.click('.poll-meeting-form__option-button')
 
     page.click('.poll-common-form__submit')
@@ -172,7 +168,7 @@ module.exports = {
     })
 
     page.scrollTo('.stance-created', () => {
-      page.expectElement('.poll-meeting-stance-icon poll-meeting-stance-icon--thread-item')
+      page.expectText('.poll-meeting-time', 'Jun 24Mon8am')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
@@ -272,7 +268,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('test_proposal_poll_with_guest', { controller: 'polls' })
-    page.expectText('.poll-common-undecided-panel__button', 'Show 5 undecided')
+    page.expectText('.poll-common-undecided-panel__button', 'SHOW 5 UNDECIDED')
     page.click('.poll-common-undecided-panel__button')
     page.expectText('.poll-common-undecided-panel', 'Undecided (5)')
   },
