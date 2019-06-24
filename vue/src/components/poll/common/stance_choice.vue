@@ -27,12 +27,13 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-stance-choice(:class="'poll-common-stance-choice--' + stanceChoice.poll().pollType")
+v-layout.poll-common-stance-choice(:class="'poll-common-stance-choice--' + stanceChoice.poll().pollType" row)
   poll-common-stance-icon(:stance-choice="stanceChoice")
-  span(v-if="hasVariableScore()")
-    | > {{stanceChoice.score}} -
+  span(v-if="hasVariableScore()") {{stanceChoice.score}}
+  | &nbsp;
+  | ·
+  | &nbsp;
   span.poll-common-stance-choice__option-name(v-if="translateOptionName()", v-t="'poll_' + stanceChoice.poll().pollType + '_options.' + stanceChoice.pollOption().name")
   poll-meeting-time(v-if="!translateOptionName() && datesAsOptions()", name="stanceChoice.pollOption().name")
-  span(v-if="!translateOptionName() && !datesAsOptions()")
-    |{{stanceChoice.pollOption().name}}
+  span(v-if="!translateOptionName() && !datesAsOptions()") {{stanceChoice.pollOption().name}}
 </template>
