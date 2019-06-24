@@ -16,6 +16,8 @@ export default
 <template lang="pug">
 .poll-common-change-your-vote
   v-subheader(v-t="'poll_common.your_response'")
-  poll-common-directive(:stanceChoice='choice', name='stance-choice', v-if='choice.id && choice.score > 0', v-for='choice in orderedStanceChoices', :key='choice.id')
-  v-btn(color='accent', @click='openEditVoteModal(stance)', v-t="'poll_common.change_your_stance'", aria-label="$t('poll_common.change_your_stance')")
+  v-layout
+    poll-common-directive(:size="48" :stanceChoice='choice', name='stance-choice', v-if='choice.id && choice.score > 0', v-for='choice in orderedStanceChoices', :key='choice.id')
+    p.lmo-markdown-wrapper {{stance.reason}}
+    v-btn(outlined color='accent', @click='openEditVoteModal(stance)', v-t="'common.action.edit'")
 </template>

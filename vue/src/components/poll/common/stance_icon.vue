@@ -15,6 +15,9 @@ import { fieldFromTemplate } from '@/shared/helpers/poll'
 export default
   props:
     stanceChoice: Object
+    size:
+      type: Number
+      default: 24
   methods:
     useOptionIcon: ->
       fieldFromTemplate(@stanceChoice.poll().pollType, 'has_option_icons')
@@ -23,7 +26,7 @@ export default
 
 <template lang="pug">
 .poll-common-stance-icon
-  v-avatar.poll-common-stance-icon__svg(tile :size="24" v-if='useOptionIcon()')
+  v-avatar.poll-common-stance-icon__svg(tile :size="size" v-if='useOptionIcon()')
     img(:src="'/img/' + stanceChoice.pollOption().name + '.svg'", alt='stanceChoice.pollOption().name')
   .poll-common-stance-icon__chip(v-if='!useOptionIcon()', :style="{'border-color': stanceChoice.pollOption().color}")
 </template>

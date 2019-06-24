@@ -78,7 +78,7 @@ export default
     poll-common-percent-voted(:poll='poll')
   poll-common-action-panel(:poll='poll')
   document-list(:model='poll')
-  .lmo-md-actions
-    reaction-display(:model="eventable")
-    action-dock(:model="eventable" :actions="actions")
+  //- .lmo-md-actions
+  //-   reaction-display(:model="eventable")
+  //-   action-dock(:model="eventable" :actions="actions")
 </template>

@@ -22,8 +22,8 @@ export default
 <template lang="pug">
 v-card.revision-history-modal
   v-card-title
-    v-icon mdi-history
-    h1.lmo-h1.modal-title(v-t="'revision_history_modal.' + model.constructor.singular + '_header'")
+    h1.headline(v-t="'revision_history_modal.' + model.constructor.singular + '_header'")
+    v-spacer
     dismiss-modal-button(:close="close")
   v-card-text.md-dialog-content.revision-history-modal__body
     revision-history-nav(:model='model')
