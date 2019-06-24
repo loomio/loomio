@@ -1,14 +1,4 @@
 <style lang="scss">
-.poll-common-stance-icon {
-  display: inline-block;
-}
-
-.poll-common-stance-icon__svg {
-  margin-right: 4px;
-  position: relative;
-  bottom: -4px;
-}
-
 .poll-common-stance-icon__chip {
   border-left: 8px solid;
   padding-left: 4px;
@@ -31,9 +21,9 @@ export default
 
 </script>
 
-<template>
-    <div class="poll-common-stance-icon">
-      <img v-if="useOptionIcon()" :src="'/img/' + stanceChoice.pollOption().name + '.svg'" alt="stanceChoice.pollOption().name" class="lmo-box--tiny poll-common-stance-icon__svg">
-      <div v-if="!useOptionIcon()" :style="{'border-color': stanceChoice.pollOption().color}" class="poll-common-stance-icon__chip"></div>
-    </div>
+<template lang="pug">
+.poll-common-stance-icon
+  v-avatar.poll-common-stance-icon__svg(tile :size="24" v-if='useOptionIcon()')
+    img(:src="'/img/' + stanceChoice.pollOption().name + '.svg'", alt='stanceChoice.pollOption().name')
+  .poll-common-stance-icon__chip(v-if='!useOptionIcon()', :style="{'border-color': stanceChoice.pollOption().color}")
 </template>

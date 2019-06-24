@@ -1,21 +1,3 @@
-<style lang="scss">
-@import 'variables';
-// .poll-common-votes-panel__no-votes {
-//   color: $grey-on-white;
-//   font-style: italic;
-// }
-
-.poll-common-votes-panel__did-not-voter {
-  display: flex;
-  align-items: center;
-  margin: 8px 0;
-}
-
-.poll-common-votes-panel__stance-name-and-option .poll-common-stance-choice {
-  display: inline-block;
-}
-</style>
-
 <script lang="coffee">
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus     from '@/shared/services/event_bus'

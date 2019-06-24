@@ -12,7 +12,7 @@ import { myLastStanceFor } from '@/shared/helpers/poll'
 
 export default
   data: ->
-    poll: {}
+    poll: null
 
   created: ->
     Records.polls.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
@@ -48,13 +48,14 @@ export default
 </script>
 
 <template lang="pug">
-div
-  group-cover-image(:group="poll.group()")
-  v-container.poll-page.v-container-max-width
-    loading(v-if='isEmptyPoll')
-    v-layout(column v-if='!isEmptyPoll')
-      poll-common-example-card(v-if='poll.example', :poll='poll')
-      poll-common-card.mb-3(:poll='poll')
-      membership-card(:group='poll.guestGroup()')
-      membership-card(:group='poll.guestGroup()', :pending='true')
+loading(:until="poll")
+  div(v-if="poll")
+    group-cover-image(:group="poll.group()")
+    v-container.poll-page.v-container-max-width
+      loading(v-if='isEmptyPoll')
+      v-layout(column v-if='!isEmptyPoll')
+        poll-common-example-card(v-if='poll.example', :poll='poll')
+        poll-common-card.mb-3(:poll='poll')
+        membership-card(:group='poll.guestGroup()')
+        membership-card(:group='poll.guestGroup()', :pending='true')
 </template>
