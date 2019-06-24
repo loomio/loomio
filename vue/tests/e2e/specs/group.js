@@ -19,7 +19,9 @@ module.exports = {
     page.loadPath('view_open_group_as_visitor')
     page.click('.join-group-button__join-group')
     page.signInViaEmail('new@account.com')
-    page.click('.join-group-button__join-group')
+    page.pause(500)
+    page.click('.join-group-button__join-group', 500)
+
     page.ensureSidebar()
 
     page.expectText('.sidebar__groups', 'Open Dirty Dancing Shoes')

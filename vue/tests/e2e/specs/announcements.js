@@ -42,6 +42,7 @@ module.exports = {
     page.expectFlash('2 notifications sent')
   },
 
+  // TODO: GK: need to 'ensure' the thread-nav
   'announcement_created': (test) => {
     page = pageHelper(test)
 
