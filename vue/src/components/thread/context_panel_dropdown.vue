@@ -77,7 +77,7 @@ export default
       )
 </script>
 <template lang="pug">
-.context-panel-dropdown.pull-right.lmo-no-print
+.context-panel-dropdown.lmo-no-print
   //- outlet.context-panel__before-thread-actions(name='before-thread-actions', model='discussion')
   //- md-menu.lmo-dropdown-menu(md-position-mode='target-right target')
   //-   md-button.context-panel-dropdown__button(ng-click='$mdMenu.open()')
@@ -87,7 +87,7 @@ export default
     template(v-slot:activator="{on}")
       v-btn.context-panel-dropdown__button(icon v-on="on")
         //- span(v-t="'thread_context.thread_options'")
-        v-icon mdi-chevron-down
+        v-icon mdi-dots-vertical
 
     v-list
       v-list-item.context-panel-dropdown__option--email-settings(v-if='canChangeVolume()' @click='openChangeVolumeForm()')

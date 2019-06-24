@@ -78,6 +78,7 @@ en:
     time_zone: Time zone
     local_time: Local time
     attachments: Attachments
+    active_time_ago: active {{time_ago}}
     confirm_discard_changes: Discard your changes?
     time:
       am: am
@@ -1058,6 +1059,9 @@ en:
       updated: Email settings updated
     learn_more: Learn more about email settings...
 
+  thread_preview:
+    replies_unread: "{{replies}} replies {{unread}} unread"
+    replies_count: "{{replies}} replies"
   dashboard_page:
     aria_label: 'Dashboard'
     no_groups:

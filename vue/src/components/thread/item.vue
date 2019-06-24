@@ -116,14 +116,10 @@ div
               | id: {{event.id}} cpid: {{event.model().parentId}} pid: {{event.parentId}} sid: {{event.sequenceId}} position: {{event.position}} depth: {{event.depth}} unread: {{isUnread}} cc: {{event.childCount}} eventableId: {{event.eventableId}}
               //- | sid: {{event.sequenceId}} position: {{event.position}} commentId: {{event.eventableId}}
             span.thread-item__headline(v-html='headline')
-            | &nbsp;
-            span(aria-hidden='true') ·
-            | &nbsp;
+            mid-dot
             router-link.thread-item__link(:to='link')
               time-ago.timeago--inline(:date='event.createdAt')
-            | &nbsp;
-            span(aria-hidden='true') ·
-            | &nbsp;
+            mid-dot
             | sid {{event.sequenceId}}
             | pos {{event.position}}
           button.md-button--tiny(v-if='canRemoveEvent', @click='removeEvent()')

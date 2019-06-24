@@ -46,12 +46,6 @@
 //   color: $grey-on-white;
 // }
 
-.thread-preview__unread-count {
-  // color: $grey-on-white;
-  min-width: 33px;
-  padding-left: 5px;
-}
-
 .thread-preview--unread {
   font-weight: 500;
 }
@@ -90,6 +84,9 @@ export default
   mixins: [UrlFor]
   props:
     thread: Object
+    showGroupName:
+      type: Boolean
+      default: true
   data: ->
     dthread: @thread
   methods:
@@ -104,13 +101,19 @@ v-list-item.thread-preview.thread-preview__link(:to='urlFor(thread)')
     user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium' no-link)
     poll-common-chart-preview(v-if='thread.activePoll()', :poll='thread.activePoll()')
   v-list-item-content
-    v-list-item-title.thread-preview__text-container
+    v-list-item-title.thread-preview__text-container(style="align-items: center")
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
-      span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()') ({{thread.unreadItemsCount()}})
+      v-chip.ml-1(small outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
+      v-chip.thread-preview__tag.ml-1(small outlined v-for="tag in thread.tagNames" :key="tag") {{tag}}
     v-list-item-subtitle.thread-preview__text-container
-      span.thread-preview__group-name {{ thread.group().fullName }} ·
-      time-ago(:date='thread.lastActivityAt')
-      .lmo-badge.lmo-pointer(v-if='thread.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}", v-t="'common.privacy.closed'")
+      .caption
+        span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}
+        mid-dot(v-if="showGroupName")
+        span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()' v-t="{path: 'thread_preview.replies_unread', args: {replies: thread.itemsCount, unread: thread.unreadItemsCount()}}")
+        span.thread-preview__items-count(v-if='!thread.hasUnreadActivity()' v-t="{path: 'thread_preview.replies_count', args: {replies: thread.itemsCount}}")
+        mid-dot
+        active-time-ago(:date="thread.lastActivityAt")
+
   v-list-item-action
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")
       v-icon mdi-pin
