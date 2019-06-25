@@ -48,6 +48,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.pause(500)
+    page.ensureThreadNav()
     page.click('.thread-nav__add-people')
     page.expectElement('.announcement-form')
     page.pause(500)

@@ -236,7 +236,7 @@ module.exports = {
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
 
-    page.scrollTo('.poll-common-card__title', () => {
+    page.scrollTo('.context-panel__heading', () => {
       page.click('.poll-actions-dropdown__button')
       page.click('.poll-actions-dropdown__close')
       page.click('.confirm-modal__submit', 1000)

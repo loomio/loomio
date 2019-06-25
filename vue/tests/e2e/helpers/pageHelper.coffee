@@ -48,6 +48,11 @@ module.exports = (test) ->
     #   else
     #     console.log 'not there'
 
+  ensureThreadNav: ->
+    test.isVisible '.thread-nav__add-people' , (result) ->
+      if !result.value
+        test.click('.thread-page__open-thread-nav')
+
   pause: (time = 1000) ->
     test.pause(time)
 
