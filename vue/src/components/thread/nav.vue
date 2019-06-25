@@ -69,7 +69,7 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped)
+v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped)
   .thread-nav
     v-subheader Jump to
     v-slider(color="accent" track-color="accent" thumb-color="accent" thumb-size="64" v-model="inversePosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="emitPosition()")

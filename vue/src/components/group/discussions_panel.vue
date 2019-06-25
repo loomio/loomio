@@ -145,8 +145,8 @@ export default
     v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
     v-spacer
     v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outlined color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
 
-  v-progress-linear(indeterminate :active="loading")
 
   .discussions-panel__content(v-if="!fragment")
     .discussions-panel__list--empty(v-if='noThreads' :value="true")

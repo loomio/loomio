@@ -19,6 +19,6 @@ export default new Vuetify(
         info: colors.blueGrey.base
         success: colors.green.base
         anchor: colors.cyan.base
-  options:
-    customProperties: true
+    options:
+      customProperties: true
 )

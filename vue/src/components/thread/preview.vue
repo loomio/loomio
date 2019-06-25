@@ -50,6 +50,14 @@
   font-weight: 500;
 }
 
+.thread-preview {
+  border-left: 2px solid #fff;
+}
+
+.thread-preview--unread-border {
+  border-color: var(--v-primary-base);
+}
+
 .thread-preview__position-icon-container {
   width: 23px;
   height: 23px;
@@ -96,7 +104,7 @@ export default
 </script>
 
 <template lang="pug">
-v-list-item.thread-preview.thread-preview__link(:to='urlFor(thread)')
+v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread-border': thread.isUnread()}" :to='urlFor(thread)')
   v-list-item-avatar
     user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium' no-link)
     poll-common-chart-preview(v-if='thread.activePoll()', :poll='thread.activePoll()')
@@ -109,8 +117,9 @@ v-list-item.thread-preview.thread-preview__link(:to='urlFor(thread)')
       .caption
         span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}
         mid-dot(v-if="showGroupName")
-        span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()' v-t="{path: 'thread_preview.replies_unread', args: {replies: thread.itemsCount, unread: thread.unreadItemsCount()}}")
-        span.thread-preview__items-count(v-if='!thread.hasUnreadActivity()' v-t="{path: 'thread_preview.replies_count', args: {replies: thread.itemsCount}}")
+        span.thread-preview__items-count(v-t="{path: 'thread_preview.replies_count', args: {count: thread.itemsCount}}")
+        space
+        span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: thread.unreadItemsCount()}}")
         mid-dot
         active-time-ago(:date="thread.lastActivityAt")
 

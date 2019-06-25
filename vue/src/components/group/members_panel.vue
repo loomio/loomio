@@ -179,7 +179,8 @@ div.members-panel
     v-spacer
     v-btn.membership-requests-link(text color="primary" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
     v-btn.membership-card__invite(text color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
-  v-progress-linear(indeterminate :active="loader.loading")
+    v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute bottom)
+
   v-data-table.members-panel__table(:items="memberships" :headers="headers" disable-initial-sort :total-items="totalRecords" hide-default-footer)
     template(v-slot:no-results)
       | No results

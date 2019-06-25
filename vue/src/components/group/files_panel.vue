@@ -93,8 +93,9 @@ export default
     v-toolbar-items
       v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
     v-spacer
+    v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
 
-  v-data-table(:items="items" :loading="loading" hide-default-footer)
+  v-data-table(:items="items" hide-default-footer)
     template(v-slot:no-data)
       v-alert(:value="true" color="info" outlined icon="info" v-t="'group_files_panel.no_files'")
     template(v-slot:item="{ item }")

@@ -18,6 +18,7 @@ export default
     activePolls: []
     loader: null
     per: 25
+    threadPercentage: 0
 
   created: -> @init()
 
@@ -26,10 +27,16 @@ export default
     '$route.params.comment_id': 'init'
 
   methods:
+    openThreadNav: ->
+      EventBus.$emit('toggleThreadNav')
+
     init: ->
       @discussion = Records.discussions.findOrNull(@$route.params.key)
       @commentId = parseInt(@$route.params.comment_id)
       @sequenceId = parseInt(@$route.params.sequence_id)
+
+      EventBus.$on 'threadPositionUpdated', (position) =>
+        @threadPercentage = parseInt(position / @discussion.createdEvent().childCount * 100)
 
       @loader = new RecordLoader
         collection: 'events'
@@ -66,4 +73,6 @@ loading(:until="discussion")
     v-container.thread-page.v-container-max-width
       discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
       thread-card(:loader='loader' :discussion='discussion')
+      v-btn(fab fixed bottom right @click="openThreadNav()")
+        v-progress-circular(color="accent" :value="threadPercentage")
 </template>

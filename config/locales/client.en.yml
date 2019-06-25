@@ -1060,8 +1060,8 @@ en:
     learn_more: Learn more about email settings...
 
   thread_preview:
-    replies_unread: "{{replies}} replies {{unread}} unread"
-    replies_count: "{{replies}} replies"
+    replies_count: "{{count} replies"
+    unread_count: "{{count}} unread"
   dashboard_page:
     aria_label: 'Dashboard'
     no_groups:

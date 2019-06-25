@@ -90,20 +90,11 @@ export default
     link: ->
       LmoUrlService.event @event
 
-    unreadColor: ->
-      @$vuetify.theme.primary
-
-    styles: ->
-      styles = {'border-color': @$vuetify.theme.primary}
-      styles['background-color'] = 'var(--v-accent-lighten5)' if @isFocused
-      styles
-
-
 </script>
 
 <template lang="pug">
 div
-  .thread-item(:class="{'thread-item--unread': isUnread}" :style="styles" v-observe-visibility="{callback: viewed, once: true}")
+  .thread-item(:class="{'thread-item--unread': isUnread, 'thread-item--focused': isFocused}" v-observe-visibility="{callback: viewed, once: true}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
       .lmo-disabled-form(v-show='isDisabled')
       .thread-item__avatar.mr-3
@@ -138,9 +129,13 @@ div
   padding: 4px $cardPaddingSize;
 }
 
+.thread-item--focused {
+  background-color: var(--v-accent-lighten5);
+}
+
 .thread-item--unread {
   padding-left: $cardPaddingSize - 2px;
-  border-left: 2px solid;
+  border-left: 2px solid var(--v-primary-base);
   &.thread-item--indent {
     padding-left: $cardPaddingSize + 40px;
     // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding))
