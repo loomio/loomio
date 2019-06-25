@@ -6,12 +6,18 @@ import ModalService   from '@/shared/services/modal_service'
 import { listenForTranslations } from '@/shared/helpers/listen'
 
 export default
+  components:
+    ThreadItem: -> import('@/components/thread/item.vue')
+    
   props:
     event: Object
-    eventable: Object
+    eventWindow: Object
 
   mounted: ->
     listenForTranslations(@)
+
+  computed:
+    eventable: -> @event.model()
 
   data: ->
     actions:  [
@@ -26,7 +32,7 @@ export default
 </script>
 
 <template lang="pug">
-.outcome-created
+thread-item.outcome-created(:event="event" :event-window="eventWindow")
   formatted-text.thread-item__body(:model="eventable" column="statement")
   v-card-actions(wrap)
     reaction-display(:model="eventable")

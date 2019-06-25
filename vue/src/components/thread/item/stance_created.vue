@@ -1,18 +1,23 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import RevisionHistoryModalMixin from '@/mixins/revision_history_modal'
+import PollModal from '@/mixins/poll_modal'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
 
 export default
-  mixins: [RevisionHistoryModalMixin]
+  components:
+    ThreadItem: -> import('@/components/thread/item.vue')
+
+  mixins: [RevisionHistoryModalMixin, PollModal]
   props:
     event: Object
-    eventable: Object
+    eventWindow: Object
+  computed:
+    eventable: -> @event.model()
+    choiceInHeadline: -> @eventable.poll().hasOptionIcons() && @eventable.stanceChoices().length == 1
+    canEdit: -> @eventable.latest && @eventable.participant() == Session.user()
   created: ->
     @actions = [
       name: 'translate_stance'
@@ -30,8 +35,15 @@ export default
 </script>
 
 <template lang="pug">
-.stance-created
-  poll-common-stance(:stance="eventable")
+thread-item.stance-created(:event="event" :event-window="eventWindow")
+  template(v-if="choiceInHeadline" v-slot:headline)
+    v-layout(align-center)
+      router-link(:to="event.actor()") {{event.actor().name}}
+      space
+      poll-common-stance-choice(:stance-choice="eventable.stanceChoices()[0]")
+      v-btn(icon v-if="canEdit" color='accent', @click='openEditVoteModal(stance)')
+        v-icon mdi-pencil
+  poll-common-stance(:stance="eventable" :reason-only="choiceInHeadline")
   .lmo-md-actions
     reaction-display(:model="eventable")
     action-dock(:model="eventable" :actions="actions")

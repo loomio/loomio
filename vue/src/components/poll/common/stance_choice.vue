@@ -9,6 +9,9 @@ export default
       type: Number
       default: 24
   computed:
+    poll: ->
+      @stanceChoice.poll()
+
     color: ->
       @pollOption.color
 
@@ -16,27 +19,13 @@ export default
       @stanceChoice.pollOption()
 
     pollType: ->
-      @stanceChoice.poll().pollType
+      @poll.pollType
 
     optionName: ->
-      if @translateOptionName
+      if @poll.translateOptionName()
         @$t('poll_' + @pollType + '_options.' + stanceChoice.pollOption().name)
       else
         @stanceChoice.pollOption().name
-
-    translateOptionName: ->
-      return unless @stanceChoice.poll()
-      fieldFromTemplate(@pollType, 'translate_option_name')
-
-    datesAsOptions: ->
-      return unless @stanceChoice.poll()
-      fieldFromTemplate(@pollType, 'dates_as_options')
-
-    hasVariableScore: ->
-      fieldFromTemplate(@stanceChoice.poll().pollType, 'has_variable_score')
-
-    useOptionIcon: ->
-      fieldFromTemplate(@stanceChoice.poll().pollType, 'has_option_icons')
 
   methods:
     colorFor: (score) ->
@@ -45,20 +34,19 @@ export default
       else
         AppConfig.pollColors.proposal[1]
 
-
 </script>
 
 <template lang="pug">
 .poll-common-stance-choice(:class="'poll-common-stance-choice--' + pollType" row)
-  span(v-if="!datesAsOptions")
-    v-avatar(tile :size="size" v-if='useOptionIcon')
+  span(v-if="!poll.datesAsOptions()")
+    v-avatar(tile :size="size" v-if='poll.hasOptionIcons()')
       img(:src="'/img/' + pollOption.name + '.svg'", alt='optionName')
-    v-chip(small  v-if='!useOptionIcon' :color="pollOption.color")
+    v-chip(small  v-if='!poll.hasOptionIcons()' :color="pollOption.color")
       span {{ optionName }}
-      span(v-if="hasVariableScore")
+      span(v-if="poll.hasVariableScore()")
         mid-dot
         span {{stanceChoice.score}}
-  span(v-if="datesAsOptions")
+  span(v-if="poll.datesAsOptions()")
     v-chip(outlined :color="colorFor(stanceChoice.score)")
       poll-meeting-time(:name="optionName")
 </template>

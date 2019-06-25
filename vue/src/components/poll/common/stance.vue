@@ -10,6 +10,9 @@ export default
 
   props:
     stance: Object
+    reasonOnly:
+      type: Boolean
+      default: false
 
   computed:
     canEdit: ->
@@ -23,7 +26,7 @@ export default
 <template lang="pug">
 .poll-common-stance
   span.caption(v-if='stance.stanceChoices().length == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
-  v-layout(wrap align-center)
+  v-layout(v-if="!reasonOnly" wrap align-center)
     poll-common-stance-choice(:stance-choice='choice', v-if='choice.score > 0', v-for='choice in orderedStanceChoices', :key='choice.id')
     v-btn(icon v-if="canEdit" color='accent', @click='openEditVoteModal(stance)')
       v-icon mdi-pencil

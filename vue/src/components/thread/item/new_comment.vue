@@ -12,6 +12,9 @@ import RevisionHistoryModalMixin from '@/mixins/revision_history_modal'
 import { listenForTranslations } from '@/shared/helpers/listen'
 
 export default
+  components:
+    ThreadItem: -> import('@/components/thread/item.vue')
+
   mixins: [
     CommentModalMixin,
     ConfirmModalMixin,
@@ -19,16 +22,22 @@ export default
   ]
   props:
     event: Object
-    eventable: Object
+    eventWindow: Object
 
-  data: ->
-    confirmOpts:
+  computed:
+    eventable: -> @event.model()
+
+  created: ->
+    @confirmOpts =
       submit: @eventable.destroy
       text:
         title:    'delete_comment_dialog.title'
         helptext: 'delete_comment_dialog.question'
         confirm:  'delete_comment_dialog.confirm'
         flash:    'comment_form.messages.destroyed'
+
+  data: ->
+    confirmOpts: null
     actions: [
       name: 'react'
       canPerform: => AbilityService.canAddComment(@eventable.discussion())
@@ -77,13 +86,13 @@ export default
 </script>
 
 <template lang="pug">
-  .new-comment(id="'comment-'+ eventable.id")
-    formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
-    document-list(:model='eventable', :skip-fetch='true')
-    attachment-list(:attachments="eventable.attachments")
-    v-card-actions
-      v-layout(wrap)
-        reaction-display(:model="eventable")
-        v-spacer
-        action-dock(:model='eventable', :actions='actions')
+thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-window="eventWindow")
+  formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
+  document-list(:model='eventable', :skip-fetch='true')
+  attachment-list(:attachments="eventable.attachments")
+  v-card-actions
+    v-layout(wrap)
+      reaction-display(:model="eventable")
+      v-spacer
+      action-dock(:model='eventable', :actions='actions')
 </template>

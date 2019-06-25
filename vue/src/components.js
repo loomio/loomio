@@ -154,7 +154,7 @@ module.exports = {
   TagsDisplay: 'tags/display',
   ThreadCard: 'thread/card',
   ThreadNav: 'thread/nav',
-  ThreadItem: 'thread/item',
+  // ThreadItem: 'thread/item',
   ThreadPreview: 'thread/preview',
   ThreadPreviewCollection: 'thread/preview_collection',
   ThreadPollsPanel: 'thread/polls_panel',

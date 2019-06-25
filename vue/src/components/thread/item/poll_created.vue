@@ -1,6 +1,3 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
@@ -12,10 +9,13 @@ import { myLastStanceFor }  from '@/shared/helpers/poll'
 import { listenForTranslations } from '@/shared/helpers/listen'
 
 export default
+  components:
+    ThreadItem: -> import('@/components/thread/item.vue')
+
   mixins: [PollModalMixin, WatchRecords]
   props:
+    eventWindow: Object
     event: Object
-    eventable: Object
 
   created: ->
     EventBus.$on 'showResults', => @buttonPressed = true
@@ -41,6 +41,7 @@ export default
     ]
 
   computed:
+    eventable: -> @event.model()
     poll: -> @eventable
 
     showResults: ->
@@ -58,7 +59,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-created
+thread-item.poll-created(:event="event" :event-window="eventWindow")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline
       span(v-if='!poll.translation') {{poll.title}}
@@ -73,7 +74,7 @@ export default
     poll-common-percent-voted(:poll='poll')
   poll-common-action-panel(:poll='poll')
   document-list(:model='poll')
-  //- .lmo-md-actions
-  //-   reaction-display(:model="eventable")
-  //-   action-dock(:model="eventable" :actions="actions")
+  .lmo-md-actions
+    reaction-display(:model="eventable")
+    action-dock(:model="eventable" :actions="actions")
 </template>

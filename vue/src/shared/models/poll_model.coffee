@@ -172,6 +172,20 @@ export default class PollModel extends BaseModel
   hasPollSetting: (setting) =>
     AppConfig.pollTemplates[@pollType][setting]?
 
+  hasVariableScore: ->
+    AppConfig.pollTemplates[@pollType]['has_variable_score']
+
+  hasOptionIcons: ->
+    AppConfig.pollTemplates[@pollType]['has_option_icons']
+
+  translateOptionName: ->
+    AppConfig.pollTemplates[@pollType]['translate_option_name']
+
+  datesAsOptions: ->
+    AppConfig.pollTemplates[@pollType]['dates_as_options']
+
+
+
   removeOrphanOptions: ->
     _.each @pollOptions(), (option) =>
       option.remove() unless _.includes(@pollOptionNames, option.name)

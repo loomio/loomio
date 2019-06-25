@@ -1,12 +1,3 @@
-<style lang="scss">
-// .thread-item--indent {
-//   margin-left: 42px;
-// }
-// .event-children__un-indent {
-//   margin-left: -42px;
-// }
-</style>
-
 <script lang="coffee">
 import AppConfig         from '@/shared/services/app_config'
 import EventBus          from '@/shared/services/event_bus'
@@ -14,14 +5,25 @@ import NestedEventWindow from '@/shared/services/nested_event_window'
 import WatchRecords from '@/mixins/watch_records'
 import RecordLoader from '@/shared/services/record_loader'
 
+import NewComment from '@/components/thread/item/new_comment.vue'
+import PollCreated from '@/components/thread/item/poll_created.vue'
+import StanceCreated from '@/components/thread/item/stance_created.vue'
+import OutcomeCreated from '@/components/thread/item/outcome_created.vue'
+
+import ThreadActivityMixin from '@/mixins/thread_activity'
+
 export default
-  mixins: [WatchRecords]
+  mixins: [WatchRecords, ThreadActivityMixin]
+  
+  components:
+    NewComment: NewComment
+    PollCreated: PollCreated
+    StanceCreated: StanceCreated
+    OutcomeCreated: OutcomeCreated
+
   props:
     parentEvent: Object
     parentEventWindow: Object
-
-  components:
-    ThreadItem: -> import('@/components/thread/item')
 
   data: ->
     eventWindow: null
@@ -67,7 +69,7 @@ export default
     v-icon mdi-autorenew
     span(v-t="{ path: 'activity_card.n_previous', args: { count: eventWindow.numPrevious() } }")
   loading.activity-panel__loading.page-loading(v-show='loader.loadingPrevious')
-  thread-item(v-for='event in events' :key='event.id' :event-window='eventWindow' :event='event')
+  component(:is="componentForKind(event.kind)" v-for='event in events' :key='event.id' :event-window='eventWindow' :event='event')
   a.activity-panel__load-more.lmo-no-print.thread-item--indent-margin(v-show='eventWindow.anyNext() && !loader.loadingMore', @click='loadNext()')
     v-icon mdi-autorenew
     span(v-t="{ path: 'activity_card.n_more', args: { count: eventWindow.numNext() } }")
