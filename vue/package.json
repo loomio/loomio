@@ -9,7 +9,7 @@
     "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2"
   },
   "dependencies": {
-    "@mdi/font": "^3.6.95",
+    "@mdi/font": "^3.7.95",
     "@sentry/browser": "^5.4.0",
     "@sentry/integrations": "^5.4.1",
     "actioncable": "^5.2.2",
