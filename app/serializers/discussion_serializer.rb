@@ -31,8 +31,7 @@ class DiscussionSerializer < ActiveModel::Serializer
              :pinned,
              :attachments,
              :mentioned_usernames,
-             :info,
-             :tags
+             :tag_names
 
 
   attributes_from_reader :discussion_reader_id,
@@ -50,8 +49,8 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   has_many :discussion_tags
 
-  def tags
-    object.info['tags'] || []
+  def tag_names
+    object.info['tag_names'] || []
   end
 
   def discussion_tags

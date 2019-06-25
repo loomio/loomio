@@ -43,7 +43,7 @@ class GroupSerializer < Simple::GroupSerializer
              :admin_memberships_count,
              :archived_at,
              :attachments,
-             :info
+             :tag_names
 
   attributes_for_formal :cover_urls,
                         :has_custom_cover,
@@ -65,6 +65,10 @@ class GroupSerializer < Simple::GroupSerializer
 
   attributes_for_formal :subscription_plan, :subscription_active,
     :subscription_max_members, :subscription_max_threads
+
+  def tag_names
+    object.info['tag_names'] || []
+  end
 
   def subscription_max_members
     subscription.max_members

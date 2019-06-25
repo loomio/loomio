@@ -14,7 +14,7 @@ export default
       required: true
     close: Function
   data: ->
-    discussionTags: @discussion.info.tags || []
+    discussionTags: @discussion.tagNames || []
     loading: false
   methods:
     updateTags: ->
@@ -24,7 +24,7 @@ export default
       .finally =>
         @loading = false
   computed:
-    groupTags: -> @discussion.group().parentOrSelf().info.tags || []
+    groupTags: -> @discussion.group().parentOrSelf().tagNames || []
 
 </script>
 <template lang="pug">

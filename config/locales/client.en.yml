@@ -1148,6 +1148,9 @@ en:
       image_alt: 'Attached image'
     n_previous: 'Load {{count}} previous responses'
     n_more: 'Load {{count}} responses'
+    add_comment: Add comment
+    add_poll: Add poll
+    add_outcome: Add outcome
 
   thread_group:
     aria_label: 'Group name'
@@ -1799,6 +1802,7 @@ en:
     poll_reopened:                 "<strong><a href='u/{{username}}'>{{author}}</a></strong> reopened the {{polltype}}: <strong>{{title}}</strong>"
     poll_closed_by_user:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> closed the {{polltype}}: <strong>{{title}}</strong>"
     poll_created:                  "<strong><a href='u/{{username}}'>{{author}}</a></strong> started a {{polltype}}: <strong>{{title}}</strong>"
+    poll_created_no_title:         "<strong><a href='u/{{username}}'>{{author}}</a></strong> started a {{polltype}}</strong>"
     poll_edited:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the {{polltype}}: <strong>{{title}}</strong>"
     poll_expired:                  "{{polltype}} closed: <strong>{{title}}</strong>"
     stance_created:                "<strong><a href='u/{{username}}'>{{author}}</a></strong> voted on: <strong>{{title}}</strong>"

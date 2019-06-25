@@ -73,6 +73,8 @@ export default
     canRemoveEvent: ->
       AbilityService.canRemoveEventFromThread(@event)
 
+    isNested: -> @event.isNested()
+
     indent: ->
       @event.isNested() && @eventWindow.useNesting
 
@@ -107,7 +109,7 @@ div
     .lmo-flex.lmo-relative.lmo-action-dock-wrapper.lmo-flex--row(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
       .lmo-disabled-form(v-show='isDisabled')
       .thread-item__avatar.lmo-margin-right
-        user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' size='medium')
+        user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='isNested ? "thirtysix" : "medium"')
         v-checkbox.thread-item__is-forking(v-if="event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
       .thread-item__body.lmo-flex.lmo-flex__horizontal-center.lmo-flex--column
         .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between

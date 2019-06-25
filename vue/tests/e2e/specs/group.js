@@ -9,7 +9,7 @@ module.exports = {
     page.expectText('.group-cover-image', 'Point Break')
     page.expectElement('.join-group-button__ask-to-join-group')
     page.ensureSidebar()
-    page.click('.sidebar-groups-menu')
+    
     page.expectText('.sidebar__groups', 'Point Break')
   },
 
@@ -21,7 +21,7 @@ module.exports = {
     page.signInViaEmail('new@account.com')
     page.click('.join-group-button__join-group')
     page.ensureSidebar()
-    page.click('.sidebar-groups-menu')
+    
     page.expectText('.sidebar__groups', 'Open Dirty Dancing Shoes')
   },
 
@@ -86,7 +86,7 @@ module.exports = {
 
     page.loadPath('setup_dashboard')
     page.ensureSidebar()
-    page.click('.sidebar-groups-menu')
+    
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-open')
     page.click('.group-form__advanced-link')
@@ -103,7 +103,7 @@ module.exports = {
 
     page.loadPath('setup_dashboard')
     page.ensureSidebar()
-    page.click('.sidebar-groups-menu')
+    
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-closed')
     page.click('.group-form__advanced-link')
@@ -120,7 +120,7 @@ module.exports = {
 
     page.loadPath('setup_dashboard')
     page.ensureSidebar()
-    page.click('.sidebar-groups-menu')
+    
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-secret')
     page.expectNoElement('.group-form__allow-public-threads', 2000)

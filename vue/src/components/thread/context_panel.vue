@@ -24,6 +24,7 @@ export default
 
   mounted: ->
     listenForTranslations(@)
+    @discussion.markAsSeen()
 
   data: ->
     actions: [

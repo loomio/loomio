@@ -37,6 +37,7 @@ export default
       switch this.size
         when 'tiny'     then 20
         when 'small'    then 24
+        when 'thirtysix'then 36
         when 'forty'    then 40
         when 'medium'   then 48
         when 'large'    then 64
