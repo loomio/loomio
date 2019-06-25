@@ -106,8 +106,8 @@ module.exports = {
       page.click('.poll-common-vote-form__submit', 1000)
     })
 
-    page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-common-stance-choice--dot-vote', 'An option')
+    page.scrollTo('.poll-common-stance-choice', () => {
+      page.expectText('.poll-common-stance-choice--dot_vote', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
