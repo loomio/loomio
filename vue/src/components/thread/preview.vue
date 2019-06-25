@@ -109,19 +109,18 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
     user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium' no-link)
     poll-common-chart-preview(v-if='thread.activePoll()', :poll='thread.activePoll()')
   v-list-item-content
-    v-list-item-title.thread-preview__text-container(style="align-items: center")
+    v-list-item-title(style="align-items: center")
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
       v-chip.ml-1(small outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
       v-chip.thread-preview__tag.ml-1(small outlined v-for="tag in thread.tagNames" :key="tag") {{tag}}
-    v-list-item-subtitle.thread-preview__text-container
-      .caption
-        span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}
-        mid-dot(v-if="showGroupName")
-        span.thread-preview__items-count(v-t="{path: 'thread_preview.replies_count', args: {count: thread.itemsCount}}")
-        space
-        span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: thread.unreadItemsCount()}}")
-        mid-dot
-        active-time-ago(:date="thread.lastActivityAt")
+    v-list-item-subtitle
+      span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}
+      mid-dot(v-if="showGroupName")
+      span.thread-preview__items-count(v-t="{path: 'thread_preview.replies_count', args: {count: thread.itemsCount}}")
+      space
+      span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: thread.unreadItemsCount()}}")
+      mid-dot
+      active-time-ago(:date="thread.lastActivityAt")
 
   v-list-item-action
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")

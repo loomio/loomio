@@ -44,11 +44,11 @@ module.exports = {
     // page.expectText('.discussions-panel__header', 'Open threads')
     // page.expectText('.discussions-panel__header', '1 Closed')
     // page.expectNoText('.discussions-panel', 'This thread is old and closed')
-    page.expectText('.thread-preview__text-container', 'What star sign are you?')
+    page.expectText('.thread-preview', 'What star sign are you?')
     page.click('.discussions-panel__toggle-closed label')
-    page.expectText('.thread-preview__text-container', 'This thread is old and closed')
+    page.expectText('.thread-preview', 'This thread is old and closed')
     page.click('.discussions-panel__toggle-closed label')
-    page.click('.thread-preview__text-container')
+    page.click('.thread-preview')
 
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--close')
@@ -208,7 +208,7 @@ module.exports = {
     page.ensureSidebar()
 
     page.click('.sidebar__list-item-button--recent')
-    page.expectText('.thread-preview__text-container', 'Dirty Dancing Shoes')
+    page.expectText('.thread-preview', 'Dirty Dancing Shoes')
   },
 
   'allows_logged_in_users_to_request_to_join_a_closed_group': (test) => {

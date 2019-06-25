@@ -1,11 +1,3 @@
-<style lang="scss">
-.time-ago { border: 0; }
-.timeago{
-  white-space: nowrap;
-}
-
-</style>
-
 <script lang="coffee">
 export default
   props:
@@ -13,7 +5,6 @@ export default
 
   methods:
     timeAgo: ->
-      console.log @date, moment(@date).fromNow()
       moment(@date).fromNow()
 
 </script>

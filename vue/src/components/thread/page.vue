@@ -73,6 +73,6 @@ loading(:until="discussion")
     v-container.thread-page.v-container-max-width
       discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
       thread-card(:loader='loader' :discussion='discussion')
-      v-btn(fab fixed bottom right @click="openThreadNav()")
+      v-btn.thread-page__open-thread-nav(fab fixed bottom right @click="openThreadNav()")
         v-progress-circular(color="accent" :value="threadPercentage")
 </template>
