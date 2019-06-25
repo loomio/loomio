@@ -208,7 +208,7 @@ export default new class AbilityService
     !@canJoinGroup(group)
 
   canTranslate: (model) ->
-    AppConfig.inlineTranslation.isAvailable? and
+    AppConfig.inlineTranslation.isAvailable and
     _.includes(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
     !model.translation and
     Session.user().locale != model.author().locale

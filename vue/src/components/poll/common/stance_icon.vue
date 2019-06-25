@@ -19,6 +19,9 @@ export default
       type: Number
       default: 24
   methods:
+    hasVariableScore: ->
+      fieldFromTemplate(@stanceChoice.poll().pollType, 'has_variable_score')
+
     useOptionIcon: ->
       fieldFromTemplate(@stanceChoice.poll().pollType, 'has_option_icons')
 
@@ -28,5 +31,9 @@ export default
 .poll-common-stance-icon
   v-avatar.poll-common-stance-icon__svg(tile :size="size" v-if='useOptionIcon()')
     img(:src="'/img/' + stanceChoice.pollOption().name + '.svg'", alt='stanceChoice.pollOption().name')
-  .poll-common-stance-icon__chip(v-if='!useOptionIcon()', :style="{'border-color': stanceChoice.pollOption().color}")
+  v-chip.poll-common-stance-icon__chip(v-if='!useOptionIcon()' :color="stanceChoice.pollOption().color")
+    span(v-if="hasVariableScore")
+      | {{stanceChoice.score}}
+      mid-dot
+    span {{ stanceChoice.pollOption().name }}
 </template>

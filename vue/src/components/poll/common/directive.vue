@@ -10,13 +10,9 @@ import PollRankedChoiceForm from '@/components/poll/ranked_choice/form.vue'
 import PollCommonChangeYourVote from '@/components/poll/common/change_your_vote.vue'
 import PollProposalChartPanel from '@/components/poll/proposal/chart_panel.vue'
 import PollCommonVotesPanelStance from '@/components/poll/common/votes_panel_stance.vue'
-import PollProposalStanceChoice from '@/components/poll/proposal/stance_choice.vue'
-import PollCountStanceChoice from '@/components/poll/count/stance_choice.vue'
 import PollCountChartPanel from '@/components/poll/count/chart_panel.vue'
 import PollPollVoteForm from '@/components/poll/poll/vote_form.vue'
 import PollDotVoteVoteForm from '@/components/poll/dot_vote/vote_form.vue'
-import PollDotVoteStanceChoice from '@/components/poll/dot_vote/stance_choice.vue'
-import PollPollStanceChoice from '@/components/poll/poll/stance_choice.vue'
 import PollPollChartPanel from '@/components/poll/poll/chart_panel.vue'
 import PollCommonBarChartPanel from '@/components/poll/common/bar_chart_panel.vue'
 import PollDotVoteChartPanel from '@/components/poll/dot_vote/chart_panel.vue'
@@ -30,7 +26,6 @@ import PollMeetingChangeYourVote from '@/components/poll/meeting/change_your_vot
 import PollMeetingVotesPanelStance from '@/components/poll/meeting/votes_panel_stance.vue'
 import PollCommonVotesPanel from '@/components/poll/common/votes_panel.vue'
 import PollRankedChoiceChartPanel from '@/components/poll/ranked_choice/chart_panel'
-import PollMeetingStanceChoice from '@/components/poll/meeting/stance_choice'
 
 export default
   components:
@@ -45,13 +40,9 @@ export default
     'poll-common-change-your-vote': PollCommonChangeYourVote
     'poll-proposal-chart-panel': PollProposalChartPanel
     'poll-common-votes-panel-stance': PollCommonVotesPanelStance
-    'poll-proposal-stance-choice': PollProposalStanceChoice
-    'poll-count-stance-choice': PollCountStanceChoice
     'poll-count-chart-panel': PollCountChartPanel
     'poll-poll-vote-form': PollPollVoteForm
     'poll-dot_vote-vote-form': PollDotVoteVoteForm
-    'poll-dot_vote-stance-choice': PollDotVoteStanceChoice
-    'poll-poll-stance-choice': PollPollStanceChoice
     'poll-poll-chart-panel': PollPollChartPanel
     'poll-common-bar-chart-panel': PollCommonBarChartPanel
     'poll-dot_vote-chart-panel': PollDotVoteChartPanel
@@ -60,7 +51,6 @@ export default
     'poll-common-stance-choice': PollCommonStanceChoice
     'poll-ranked_choice-vote-form': PollRankedChoiceVoteForm
     'poll-meeting-vote-form': PollMeetingVoteForm
-    'poll-meeting-stance-choice': PollMeetingStanceChoice
     'poll-meeting-chart-panel': PollMeetingChartPanel
     'poll-meeting-change-your-vote': PollMeetingChangeYourVote
     'poll-meeting-votes-panel-stance': PollMeetingVotesPanelStance
