@@ -44,10 +44,9 @@ export default
   span(v-if="!datesAsOptions")
     v-avatar(tile :size="size" v-if='useOptionIcon')
       img(:src="'/img/' + pollOption.name + '.svg'", alt='optionName')
-    v-chip(v-if='!useOptionIcon' :color="pollOption.color")
-      span(v-if="hasVariableScore")
-        | {{stanceChoice.score}}
-        mid-dot
+    v-chip(:pill="hasVariableScore" v-if='!useOptionIcon' :color="pollOption.color")
+      span {{stanceChoice.score}}
+      mid-dot
       span {{ optionName }}
   span(v-if="datesAsOptions")
     v-chip(pill)
