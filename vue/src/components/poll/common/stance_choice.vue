@@ -1,5 +1,6 @@
 <script lang="coffee">
 import { fieldFromTemplate } from '@/shared/helpers/poll'
+import AppConfig from '@/shared/services/app_config'
 
 export default
   props:
@@ -37,6 +38,14 @@ export default
     useOptionIcon: ->
       fieldFromTemplate(@stanceChoice.poll().pollType, 'has_option_icons')
 
+  methods:
+    colorFor: (score) ->
+      if score == 2
+        AppConfig.pollColors.proposal[0]
+      else
+        AppConfig.pollColors.proposal[1]
+
+
 </script>
 
 <template lang="pug">
@@ -44,14 +53,12 @@ export default
   span(v-if="!datesAsOptions")
     v-avatar(tile :size="size" v-if='useOptionIcon')
       img(:src="'/img/' + pollOption.name + '.svg'", alt='optionName')
-    v-chip(:pill="hasVariableScore" v-if='!useOptionIcon' :color="pollOption.color")
-      span {{stanceChoice.score}}
-      mid-dot
+    v-chip(small  v-if='!useOptionIcon' :color="pollOption.color")
       span {{ optionName }}
+      span(v-if="hasVariableScore")
+        mid-dot
+        span {{stanceChoice.score}}
   span(v-if="datesAsOptions")
-    v-chip(pill)
-      v-avatar(left)
-        img(src="/img/abstain.svg" v-if="stanceChoice.score == 1")
-        img(src="/img/agree.svg" v-if="stanceChoice.score == 2")
+    v-chip(outlined :color="colorFor(stanceChoice.score)")
       poll-meeting-time(:name="optionName")
 </template>

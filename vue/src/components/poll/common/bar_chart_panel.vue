@@ -10,8 +10,8 @@
   display: flex;
   align-items: center;
   min-width: 4px;
-  min-height: 48px;
-  margin-top: 10px;
+  min-height: 30px;
+  margin-top: 8px;
   background-repeat: no-repeat;
   word-break: break-word;
   white-space: normal;
@@ -33,7 +33,7 @@ export default
     countFor: (option) ->
       this.poll.stanceData[option.name] or 0
     barTextFor: (option) ->
-      "#{this.countFor(option)} - #{option.name}".replace(/\s/g, '\u00a0')
+      "#{option.name} - #{this.countFor(option)}".replace(/\s/g, '\u00a0')
     percentageFor: (option) ->
       max = _.max(_.values(this.poll.stanceData))
       return unless max > 0
@@ -48,15 +48,8 @@ export default
       _.orderBy(this.poll.pollOptions(), ['priority'])
 </script>
 
-<template>
-<div class="poll-common-bar-chart">
-  <div
-    v-for="option in orderedPollOptions"
-    :key="option.id"
-    :style="styleData(option)"
-    class="poll-common-bar-chart__bar"
-  >
-    {{barTextFor(option)}}
-  </div>
-</div>
+<template lang="pug">
+.poll-common-bar-chart
+  .poll-common-bar-chart__bar(v-for="option in orderedPollOptions" :key="option.id" :style="styleData(option)")
+    | {{barTextFor(option)}}
 </template>

@@ -1764,7 +1764,7 @@ en:
     stance_updated: Vote updated
 
   poll_common_percent_voted:
-    sentence: "{{percent}}% of members have stated their position ({{numerator}}/{{denominator}})"
+    sentence: "{{numerator}} people have voted ({{percent}}%)"
 
   poll_count_chart_panel:
     out_of: out of {{goal}}
