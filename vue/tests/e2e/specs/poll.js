@@ -214,12 +214,34 @@ module.exports = {
     page.expectText('.poll-common-outcome-panel', 'This is an outcome')
   },
 
-  'can_reopen_a_poll': (test) => {
+  'can_close_and_reopen_a_poll': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('test_proposal_poll_closed', { controller: 'polls' })
+    page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.activity-panel__add-poll')
+    page.click('.decision-tools-card__poll-type--proposal')
+    // page.click(".poll-common-tool-tip__collapse")
+    page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
+    page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details p', 'Some details')
 
-    page.scrollTo('.poll-actions-dropdown__button', () => {
+    page.click('.poll-common-vote-form__button:first-child')
+    page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
+    page.click('.poll-common-vote-form__submit')
+
+    page.scrollTo('.stance-created', () => {
+      page.expectText('.poll-common-stance-created__reason', 'A reason')
+    })
+
+    page.scrollTo('.poll-common-card__title .headline', () => {
+      page.click('.poll-actions-dropdown__button')
+      page.click('.poll-actions-dropdown__close')
+      page.click('.confirm-modal__submit', 1000)
+      page.click('.dismiss-modal-button')
       page.click('.poll-actions-dropdown__button')
       page.click('.poll-actions-dropdown__reopen')
       page.click('.poll-common-reopen-form__submit')

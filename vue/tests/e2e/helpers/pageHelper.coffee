@@ -51,7 +51,7 @@ module.exports = (test) ->
   pause: (time = 1000) ->
     test.pause(time)
 
-  debug: -> test.pause(9999999999)
+  debug: -> test.pause(9999999)
 
 
   mouseOver: (selector, callback, wait) ->
