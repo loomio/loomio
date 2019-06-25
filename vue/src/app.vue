@@ -81,6 +81,7 @@ v-app
 <style lang="scss">
 $mdi-font-path: '/fonts/mdi';
 @import '@mdi/font/scss/materialdesignicons.scss';
+@import 'src/css/fonts.scss';
 
 a { text-decoration: none; }
 
