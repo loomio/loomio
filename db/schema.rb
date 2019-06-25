@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_16_234305) do
+ActiveRecord::Schema.define(version: 2019_06_25_114859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -260,6 +260,8 @@ ActiveRecord::Schema.define(version: 2019_06_16_234305) do
     t.integer "position", default: 0, null: false
     t.integer "child_count", default: 0, null: false
     t.integer "depth", default: 0, null: false
+    t.integer "notifications_count"
+    t.integer "viewed_notifications_count"
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["discussion_id"], name: "index_events_on_discussion_id"

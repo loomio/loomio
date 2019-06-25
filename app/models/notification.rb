@@ -1,4 +1,5 @@
 class Notification < ApplicationRecord
+  include CustomCounterCache::Model
   belongs_to :user
   belongs_to :actor, class_name: "User"
   belongs_to :event
@@ -12,5 +13,9 @@ class Notification < ApplicationRecord
   delegate :locale, to: :user
   delegate :message_channel, to: :user
 
+  update_counter_cache :event, :notifications_count
+  update_counter_cache :event, :viewed_notifications_count
+
   scope :user_mentions, -> { joins(:event).where("events.kind": :user_mentioned) }
+  scope :viewed, -> { where(viewed: true) }
 end

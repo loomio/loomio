@@ -22,6 +22,9 @@ class Event < ApplicationRecord
   after_create  :update_sequence_info!
   after_destroy :update_sequence_info!
 
+  define_counter_cache(:notifications_count)   { |event| event.notifications.count }
+  define_counter_cache(:viewed_notifications_count) { |event| event.notifications.where(viewed: true).count }
+
   update_counter_cache :discussion, :items_count
 
   validates :kind, presence: true
@@ -38,6 +41,20 @@ class Event < ApplicationRecord
     "Events::#{eventable.class.to_s.split('::').last}Serializer".constantize
   rescue NameError
     Events::BaseSerializer
+  end
+
+  def notifications_count
+    if self[:notifications_count] == nil
+      self.update_attribute(:notifications_count, notifications.count)
+    end
+    self[:notifications_count]
+  end
+
+  def viewed_notifications_count
+    if self[:viewed_notifications_count] == nil
+      self.update_attribute(:viewed_notifications_count, notifications.viewed.count)
+    end
+    self[:viewed_notifications_count]
   end
 
   # this is called after create, and calls methods defined by the event concerns
