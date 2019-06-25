@@ -167,7 +167,7 @@ module.exports = {
     })
 
     page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-meeting-time', 'Jun 24Mon8am')
+      page.expectText('.poll-meeting-time', '8am')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
@@ -237,7 +237,7 @@ module.exports = {
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
 
-    page.scrollTo('.poll-common-card__title .headline', () => {
+    page.scrollTo('.poll-common-card__title', () => {
       page.click('.poll-actions-dropdown__button')
       page.click('.poll-actions-dropdown__close')
       page.click('.confirm-modal__submit', 1000)
