@@ -112,6 +112,7 @@ module.exports = {
   PollCommonStanceReason: 'poll/common/stance_reason',
   PollCommonStartForm: 'poll/common/start_form',
   PollCommonStartModal: 'poll/common/start_modal',
+  PollCommonToolTip: 'poll/common/tool_tip',
   PollCommonUndecidedPanel: 'poll/common/undecided_panel',
   PollCommonUndecidedUser: 'poll/common/undecided_user',
   PollCommonVoteForm: 'poll/common/vote_form',
