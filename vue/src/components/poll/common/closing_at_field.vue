@@ -56,12 +56,12 @@ export default
   .poll-common-closing-at-field__inputs
     v-layout(wrap)
       v-flex
-        v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' :nudge-right='40' transition='scale-transition' offset-y full-width min-width='290px')
+        v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y)
           template(v-slot:activator='{ on }')
-            v-text-field(v-model='closingDate' readonly v-on='on' prepend-icon="mdi-calendar")
+            v-text-field(v-model='closingDate' v-on='on' prepend-icon="mdi-calendar")
               template(v-slot:label)
                 poll-common-closing-at(:poll="poll")
-          v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate' :min='dateToday' @input="isShowingDatePicker = false")
+          v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate' :min='dateToday' no-title @input="isShowingDatePicker = false")
       v-spacer
       v-combobox.poll-common-closing-at-field__timepicker(prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
   validation-errors(:subject="poll", field="closingAt")

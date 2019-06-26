@@ -34,6 +34,6 @@ v-sheet
 
   v-card-actions
     v-spacer
-    v-btn.poll-meeting-form__option-button(color="accent" text @click='poll.addOption()' v-t="'common.add'")
+    v-btn.poll-meeting-form__option-button(color="accent" @click='poll.addOption()' v-t="'common.add'")
 
 </template>
