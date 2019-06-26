@@ -1,15 +1,10 @@
 <style lang="scss">
 .lmo-validation-error__message {
-  display: block;
-}
-
-md-input-container label.lmo-validation-error__message {
-  font-size: 11px;
-  // color: $highlight-red !important;
+  position: relative;
+  margin-top: -16px
 }
 
 </style>
-
 <script lang="coffee">
 export default
   props:
@@ -17,10 +12,8 @@ export default
     field: String
 </script>
 
-<template>
-    <div class="lmo-validation-error">
-      <label v-if="subject.errors[field]" for="field + '-error'" class="md-container-ignore md-no-float lmo-validation-error__message">
-        <span>{{subject.errors[field].join(', ')}}</span>
-      </label>
-    </div>
+<template lang="pug">
+.lmo-validation-error
+  .lmo-validation-error__message.error--text.caption(v-if="subject.errors[field]" for="field + '-error'")
+    span {{subject.errors[field].join(', ')}}
 </template>

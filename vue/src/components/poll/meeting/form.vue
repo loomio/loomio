@@ -35,6 +35,8 @@ export default
           v-chip
             poll-meeting-time(:name="data.item")
     poll-meeting-time-field(@close="menuOpen = false" :poll="poll")
+  validation-errors(:subject="poll" field="pollOptions")
+
   v-select(v-model="poll.customFields.meeting_duration" :label="$t('poll_meeting_form.meeting_duration')" :items="durations", item-text="label", item-value="minutes")
   poll-common-closing-at-field.md-block(:poll="poll")
   poll-common-settings(:poll="poll")
