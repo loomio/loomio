@@ -69,6 +69,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    add: Add
     you: You
     expand: Expand
     all_day: All day
@@ -1700,7 +1701,7 @@ en:
     timeslots: Time slots
     no_options: Enter times in your current time zone ({{zone}}). Participants see times translated to their local time zone.
     meeting_duration: Meeting duration
-    add_option_placeholder: Enter a new time
+    add_option_placeholder: Add new time
 
   poll_ranked_choice_form:
     tool_tip_expanded: |

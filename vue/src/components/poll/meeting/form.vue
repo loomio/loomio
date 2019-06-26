@@ -10,7 +10,7 @@ export default
     back: Boolean
   data: ->
     durations: AppConfig.durations
-    menu: false
+    menuOpen: false
   created: ->
     @poll.customFields.meeting_duration = @poll.customFields.meeting_duration or 60
     if @poll.isNew()
@@ -27,11 +27,15 @@ export default
 <template lang="pug">
 .poll-meeting-form
   poll-common-form-fields(:poll="poll")
-  v-menu(ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="poll.pollOptionNames" transition="scale-transition" offset-y full-width min-width="290px")
+
+  v-menu(ref="menu" v-model="menuOpen" :close-on-content-click="false" :return-value.sync="poll.pollOptionNames" offset-y full-width min-width="290px")
     template(v-slot:activator="{ on }" )
-      v-combobox(v-model="poll.pollOptionNames" multiple chips small-chips deletable-chips :label="$t('poll_common_form.options')" readonly v-on="on")
-    poll-meeting-time-field(:poll="poll")
-  v-select(v-model="poll.customFields.meeting_duration", :label="$t('poll_meeting_form.meeting_duration')", :items="durations", item-text="label", item-value="minutes")
+      v-combobox(v-model="poll.pollOptionNames" multiple chips small-chips deletable-chips :label="$t('poll_meeting_form.timeslots')" readonly v-on="on")
+        template(v-slot:selection="data")
+          v-chip
+            poll-meeting-time(:name="data.item")
+    poll-meeting-time-field(@close="menuOpen = false" :poll="poll")
+  v-select(v-model="poll.customFields.meeting_duration" :label="$t('poll_meeting_form.meeting_duration')" :items="durations", item-text="label", item-value="minutes")
   poll-common-closing-at-field.md-block(:poll="poll")
   poll-common-settings(:poll="poll")
 </template>

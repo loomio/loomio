@@ -63,6 +63,6 @@ export default
                 poll-common-closing-at(:poll="poll")
           v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate' :min='dateToday' @input="isShowingDatePicker = false")
       v-spacer
-      v-select.poll-common-closing-at-field__timepicker(prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
+      v-combobox.poll-common-closing-at-field__timepicker(prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
   validation-errors(:subject="poll", field="closingAt")
 </template>
