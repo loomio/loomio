@@ -1,6 +1,6 @@
 <style lang="scss">
 @import 'variables';
-@import 'mixins';
+// @import 'mixins';
 .poll-proposal-chart-panel__chart-container {
   display: flex;
 }
@@ -14,7 +14,7 @@
 .poll-proposal-chart-panel__label{
   border-width: 2px;
   border-bottom-style: solid;
-  @include fontSmall;
+  // @include fontSmall;
 }
 
 .poll-proposal-chart-panel__legend {
@@ -64,7 +64,7 @@ export default
 </script>
 <template lang="pug">
 .poll-proposal-chart-panel
-  h3.lmo-card-subheading(v-t="'poll_common.results'")
+  v-subheader(v-t="'poll_common.results'")
   .poll-proposal-chart-panel__chart-container
     poll-proposal-chart.poll-proposal-chart-panel__chart(:stance-counts="poll.stanceCounts", :diameter="200")
     table.poll-proposal-chart-panel__legend(role="presentation")

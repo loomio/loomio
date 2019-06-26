@@ -8,7 +8,7 @@ export default
 
 <template lang="pug">
 .group-cover-image
-  v-parallax(height="300" :src="group.coverUrl()")
+  v-parallax(height="200" :src="group.coverUrl()")
     v-layout(align-center column justify-center)
      h1.display-1
        span(v-if="group.parent()")

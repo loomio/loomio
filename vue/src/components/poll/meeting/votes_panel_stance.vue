@@ -17,7 +17,5 @@ export default
   .poll-common-votes-panel__stance-content
     .poll-common-votes-panel__stance-name-and-option
       strong {{ participantName }}
-    .poll-common-votes-panel__stance-reason(v-if="stance.reason")
-      span(v-if="!stance.translation", v-marked="stance.reason")
-      translation(v-if="stance.translation", :model="stance", field="reason")
+    formatted-text.poll-common-votes-panel__stance-reason(:model="stance" column="reason")
 </template>

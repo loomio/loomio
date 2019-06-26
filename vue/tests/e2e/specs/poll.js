@@ -23,7 +23,6 @@ module.exports = {
     page.click('.poll-common-vote-form__submit')
 
     page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-common-stance-choice__option-name', 'Agree')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
@@ -49,7 +48,6 @@ module.exports = {
     page.click('.poll-common-vote-form__submit')
 
     page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-common-stance-choice__option-name', 'Yes')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
@@ -77,7 +75,7 @@ module.exports = {
     page.click('.poll-common-vote-form__submit')
 
     page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-common-stance-choice__option-name', 'An option')
+      page.expectText('.poll-common-stance-choice', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
@@ -108,8 +106,8 @@ module.exports = {
       page.click('.poll-common-vote-form__submit', 1000)
     })
 
-    page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-common-stance-choice--dot-vote', 'An option')
+    page.scrollTo('.poll-common-stance-choice', () => {
+      page.expectText('.poll-common-stance-choice--dot_vote', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
@@ -151,11 +149,7 @@ module.exports = {
     // page.click('.poll-common-tool-tip__collapse')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
-
     page.fillIn('.poll-meeting-time-field__datepicker-container input', moment().format('D MMMM YYYY'))
-    page.click('.poll-meeting-time-field__timepicker-container')
-    page.fillIn('.poll-meeting-time-field__timepicker-container input', "10:00 am")
-
     page.click('.poll-meeting-form__option-button')
 
     page.click('.poll-common-form__submit')
@@ -172,7 +166,7 @@ module.exports = {
     })
 
     page.scrollTo('.stance-created', () => {
-      page.expectElement('.poll-meeting-stance-icon poll-meeting-stance-icon--thread-item')
+      page.expectText('.poll-meeting-time', '8am')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
   },
@@ -219,12 +213,34 @@ module.exports = {
     page.expectText('.poll-common-outcome-panel', 'This is an outcome')
   },
 
-  'can_reopen_a_poll': (test) => {
+  'can_close_and_reopen_a_poll': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('test_proposal_poll_closed', { controller: 'polls' })
+    page.loadPath('test_discussion', { controller: 'polls' })
+    page.click('.activity-panel__add-poll')
+    page.click('.decision-tools-card__poll-type--proposal')
+    // page.click(".poll-common-tool-tip__collapse")
+    page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
+    page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
+    page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectText('.poll-common-card__title', 'A new proposal')
+    page.expectText('.poll-common-details-panel__details p', 'Some details')
 
-    page.scrollTo('.poll-actions-dropdown__button', () => {
+    page.click('.poll-common-vote-form__button:first-child')
+    page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
+    page.click('.poll-common-vote-form__submit')
+
+    page.scrollTo('.stance-created', () => {
+      page.expectText('.poll-common-stance-created__reason', 'A reason')
+    })
+
+    page.scrollTo('.context-panel__heading', () => {
+      page.click('.poll-actions-dropdown__button')
+      page.click('.poll-actions-dropdown__close')
+      page.click('.confirm-modal__submit', 1000)
+      page.click('.dismiss-modal-button')
       page.click('.poll-actions-dropdown__button')
       page.click('.poll-actions-dropdown__reopen')
       page.click('.poll-common-reopen-form__submit')
@@ -272,7 +288,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('test_proposal_poll_with_guest', { controller: 'polls' })
-    page.expectText('.poll-common-undecided-panel__button', 'Show 5 undecided')
+    page.expectText('.poll-common-undecided-panel__button', 'SHOW 5 UNDECIDED')
     page.click('.poll-common-undecided-panel__button')
     page.expectText('.poll-common-undecided-panel', 'Undecided (5)')
   },

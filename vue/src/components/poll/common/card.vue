@@ -3,7 +3,7 @@ import Session  from '@/shared/services/session'
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import { listenForLoading } from '@/shared/helpers/listen'
-import { myLastStanceFor }  from '@/shared/helpers/poll'
+import { myLastStanceFor, iconFor }  from '@/shared/helpers/poll'
 import PollCommonDirective from '@/components/poll/common/directive'
 import WatchRecords from '@/mixins/watch_records'
 
@@ -30,6 +30,7 @@ export default
     myLastStance: null
 
   computed:
+    icon: -> iconFor(@poll)
     showResults: ->
       @buttonPressed || @myLastStance || @poll.isClosed()
 </script>
@@ -39,12 +40,13 @@ v-card
   // <div v-if="isDisabled" class="lmo-disabled-form"></div>
   //- loading(v-if='!poll.complete')
   //- .lmo-blank(v-if='poll.complete')
-  poll-common-card-header.px-4(:poll='poll')
-
+  poll-common-card-header(:poll='poll')
   v-card-title
     h1.poll-common-card__title.headline
+      //- v-icon {{'mdi ' + icon}}
       span(v-if='!poll.translation') {{poll.title}}
       translation(v-if="poll.translation" :model='poll', :field='title')
+      v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
   v-card-text
     poll-common-set-outcome-panel(:poll='poll')
     poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')

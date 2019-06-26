@@ -10,7 +10,7 @@ module.exports = {
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.click('.lmo-h1')
+    page.click('.headline')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
   },
@@ -24,8 +24,8 @@ module.exports = {
     page.click('.discussion-form__submit')
     page.expectFlash('Thread started')
     page.expectElement('.announcement-form')
-    page.click('.announcement-form__audience a')
-    page.click('.announcement-form__submit')
+    page.click('.announcement-form__audience')
+    page.click('.announcement-form__submit', 1000)
     page.expectFlash('2 notifications sent')
   },
 
@@ -42,17 +42,20 @@ module.exports = {
     page.expectFlash('2 notifications sent')
   },
 
+  // TODO: GK: need to 'ensure' the thread-nav
   'announcement_created': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.membership-card__invite')
+    page.pause(500)
+    page.ensureThreadNav()
+    page.click('.thread-nav__add-people')
     page.expectElement('.announcement-form')
     page.pause(500)
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.click('.lmo-h1')
+    page.click('.headline')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
   },
@@ -61,6 +64,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
+    page.click('.activity-panel__add-poll')
     page.click('.decision-tools-card__poll-type--proposal')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
@@ -71,8 +75,8 @@ module.exports = {
     page.fillIn('.announcement-form__input input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.click('.lmo-h1')
-    page.click('.announcement-form__submit')
+    page.click('.headline')
+    page.click('.announcement-form__submit', 1000)
     page.expectFlash('1 notifications sent')
   },
 

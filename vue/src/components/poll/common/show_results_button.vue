@@ -12,5 +12,5 @@ export default
 </script>
 
 <template lang="pug">
-v-btn.show-results-button(flat color="accent", v-if='!clicked', @click='press()', v-t="'poll_common_card.show_results'")
+v-btn.show-results-button(text color="accent", v-if='!clicked', @click='press()', v-t="'poll_common_card.show_results'")
 </template>

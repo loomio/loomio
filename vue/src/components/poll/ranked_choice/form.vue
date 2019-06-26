@@ -1,10 +1,10 @@
 <style lang="scss">
-@import 'mixins';
+// @import 'mixins';
 .poll-ranked-choice-form__add-option-field,
 .poll-ranked-choice-form__option-text {
   flex-grow: 1;
   width: 100%;
-  @include truncateText;
+  // @include truncateText;
 }
 
 .poll-ranked-choice-form__option-button {

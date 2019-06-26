@@ -10,7 +10,7 @@ import WatchRecords from '@/mixins/watch_records'
 
 export default
   mixins: [WatchRecords]
-  
+
   props:
     poll: Object
 
@@ -46,7 +46,5 @@ export default
     poll-common-directive(v-if='userCanParticipate', :stance='stance', name='vote-form')
     .poll-common-unable-to-vote(v-if='!userCanParticipate')
       p.lmo-hint-text(v-t="'poll_common_action_panel.unable_to_vote'")
-      .lmo-md-actions
-        poll-common-show-results-button
-        div
+      poll-common-show-results-button
 </template>

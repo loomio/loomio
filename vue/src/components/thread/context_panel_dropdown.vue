@@ -26,7 +26,6 @@ export default
       Session.isSignedIn()
 
     editThread: ->
-      # ModalService.open 'DiscussionEditModal', discussion: => @discussion
       @openEditDiscussionModal(@discussion)
 
     canPinThread: ->
@@ -78,40 +77,41 @@ export default
       )
 </script>
 <template lang="pug">
-.context-panel-dropdown.pull-right.lmo-no-print
+.context-panel-dropdown.lmo-no-print
   //- outlet.context-panel__before-thread-actions(name='before-thread-actions', model='discussion')
   //- md-menu.lmo-dropdown-menu(md-position-mode='target-right target')
   //-   md-button.context-panel-dropdown__button(ng-click='$mdMenu.open()')
   //-     .sr-only(translate='thread_context.thread_options')
   //-     i.mdi.mdi-24px.mdi-chevron-down
-  v-menu.lmo-dropdown-menu(offset-y lazy)
-    v-btn.context-panel-dropdown__button(icon flat slot='activator')
-      //- span(v-t="'thread_context.thread_options'")
-      v-icon mdi-chevron-down
+  v-menu.lmo-dropdown-menu(offset-y)
+    template(v-slot:activator="{on}")
+      v-btn.context-panel-dropdown__button(icon v-on="on")
+        //- span(v-t="'thread_context.thread_options'")
+        v-icon mdi-dots-vertical
 
     v-list
-      v-list-tile.context-panel-dropdown__option--email-settings(v-if='canChangeVolume()' @click='openChangeVolumeForm()')
-        v-list-tile-title(v-t="'thread_context.email_settings'")
-      v-list-tile.context-panel-dropdown__option--edit(v-if='canEditThread()' @click='editThread()')
-        v-list-tile-title(v-t="'thread_context.edit'")
-      v-list-tile.context-panel-dropdown__option--pin(ng-show='!discussion.pinned && canPinThread()' @click='pinThread()')
-        v-list-tile-title(v-t="'thread_context.pin_thread'")
-      v-list-tile.context-panel-dropdown__option--pin(ng-show='discussion.pinned && canPinThread()' @click='unpinThread()')
-        v-list-tile-title(v-t="'thread_context.unpin_thread'")
-      v-list-tile.context-panel-dropdown__option--close(ng-show='!discussion.closedAt && canCloseThread()' @click='closeThread()')
-        v-list-tile-title(v-t="'thread_context.close_thread'")
-      v-list-tile.context-panel-dropdown__option--reopen(ng-show='discussion.closedAt && canCloseThread()' @click='reopenThread()')
-        v-list-tile-title(v-t="'thread_context.reopen_thread'")
-      v-list-tile.context-panel-dropdown__option--mute(v-if='canMuteThread() && !discussion.isMuted()' @click='muteThread()')
-        v-list-tile-title(v-t="'volume_levels.mute'")
-      v-list-tile.context-panel-dropdown__option--unmute(ng-show='discussion.isMuted()' @click='unmuteThread()')
-        v-list-tile-title(v-t="'volume_levels.unmute'")
-      v-list-tile.context-panel-dropdown__option--move(v-if='canMoveThread()' @click='moveThread()')
-        v-list-tile-title(v-t="'thread_context.move_thread'")
-      v-list-tile.context-panel-dropdown__option--print(@click='requestPagePrinted()')
-        v-list-tile-title(v-t="'thread_context.print_thread'")
-      v-list-tile.context-panel-dropdown__option--delete(v-if='canDeleteThread()' @click='deleteThread()')
-        v-list-tile-title(v-t="'thread_context.delete_thread'")
+      v-list-item.context-panel-dropdown__option--email-settings(v-if='canChangeVolume()' @click='openChangeVolumeForm()')
+        v-list-item-title(v-t="'thread_context.email_settings'")
+      v-list-item.context-panel-dropdown__option--edit(v-if='canEditThread()' @click='editThread()')
+        v-list-item-title(v-t="'thread_context.edit'")
+      //- v-list-item.context-panel-dropdown__option--pin(ng-show='!discussion.pinned && canPinThread()' @click='pinThread()')
+      //-   v-list-item-title(v-t="'thread_context.pin_thread'")
+      //- v-list-item.context-panel-dropdown__option--pin(ng-show='discussion.pinned && canPinThread()' @click='unpinThread()')
+      //-   v-list-item-title(v-t="'thread_context.unpin_thread'")
+      v-list-item.context-panel-dropdown__option--close(v-show='!discussion.closedAt && canCloseThread()' @click='closeThread()')
+        v-list-item-title(v-t="'thread_context.close_thread'")
+      v-list-item.context-panel-dropdown__option--reopen(v-show='discussion.closedAt && canCloseThread()' @click='reopenThread()')
+        v-list-item-title(v-t="'thread_context.reopen_thread'")
+      v-list-item.context-panel-dropdown__option--mute(v-if='canMuteThread() && !discussion.isMuted()' @click='muteThread()')
+        v-list-item-title(v-t="'volume_levels.mute'")
+      v-list-item.context-panel-dropdown__option--unmute(v-if='discussion.isMuted()' @click='unmuteThread()')
+        v-list-item-title(v-t="'volume_levels.unmute'")
+      v-list-item.context-panel-dropdown__option--move(v-if='canMoveThread()' @click='moveThread()')
+        v-list-item-title(v-t="'thread_context.move_thread'")
+      v-list-item.context-panel-dropdown__option--print(@click='requestPagePrinted()')
+        v-list-item-title(v-t="'thread_context.print_thread'")
+      v-list-item.context-panel-dropdown__option--delete(v-if='canDeleteThread()' @click='deleteThread()')
+        v-list-item-title(v-t="'thread_context.delete_thread'")
 </template>
 <style lang="scss">
 </style>

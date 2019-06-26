@@ -15,9 +15,11 @@ export default
     group: Records.groups.fuzzyFind(@$route.params.key)
     fragment: ''
     subgroups: []
+    loading: true
 
   created: ->
     Records.groups.fetchByParent(@group).then =>
+      @loading = false
       EventBus.$emit 'subgroupsLoaded', @group
       @watchRecords
         collections: ['groups']
@@ -43,14 +45,17 @@ export default
 <template lang="pug">
 .group-subgroups-panel
   v-toolbar(flat)
-    v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
+    v-toolbar-items
+      v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
     v-spacer
-    v-btn.subgroups-card__start(outline color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
-  v-list(avatar three-line)
-    v-list-tile.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id')
-      v-list-tile-avatar.subgroups-card__list-item-logo
+    v-btn.subgroups-card__start(text color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
+    v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
+
+  v-list(avatar two-line)
+    v-list-item.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id' :to='urlFor(group)')
+      v-list-item-avatar.subgroups-card__list-item-logo
         group-avatar(:group="group" size="medium")
-      v-list-tile-content.subgroups-card__list-item-name
-        router-link(:to='urlFor(group)') {{ group.name }}
-        .caption.subgroups-card__list-item-description {{ truncate(group.description) }}
+      v-list-item-content
+        v-list-item-title {{ group.name }}
+        v-list-item-subtitle {{ group.description }}
 </template>

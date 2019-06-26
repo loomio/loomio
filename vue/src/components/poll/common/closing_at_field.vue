@@ -1,26 +1,26 @@
 <style lang="scss">
-.poll-common-closing-at-field {
-  margin: 16px 0;
-}
-
-.poll-common-closing-at-field__label {
-  overflow: visible !important;
-  color: rgba(0,0,0,0.38) !important;
-}
-
-.poll-common-closing-at-field {
-  display: flex;
-  flex-direction: column;
-}
-
-.poll-common-closing-at-field__zone {
-  color: rgba(0,0,0,0.38);
-  margin: -40px 0 0 0;
-}
-
-.poll-common-closing-at-field__inputs {
-  display: flex;
-}
+// .poll-common-closing-at-field {
+//   margin: 16px 0;
+// }
+//
+// .poll-common-closing-at-field__label {
+//   overflow: visible !important;
+//   color: rgba(0,0,0,0.38) !important;
+// }
+//
+// .poll-common-closing-at-field {
+//   display: flex;
+//   flex-direction: column;
+// }
+//
+// .poll-common-closing-at-field__zone {
+//   color: rgba(0,0,0,0.38);
+//   margin: -40px 0 0 0;
+// }
+//
+// .poll-common-closing-at-field__inputs {
+//   display: flex;
+// }
 </style>
 
 <script lang="coffee">
@@ -33,7 +33,7 @@ export default
   props:
     poll: Object
   data: ->
-    closingHour: @poll.closingAt.format('H')
+    closingHour: moment().startOf('hour').format('h:mm a')
     closingDate: moment(@poll.closingAt.toDate()).format('YYYY-MM-DD')
     dateToday: moment().format('YYYY-MM-DD')
     times: TimeService.timesOfDay()
@@ -52,22 +52,17 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-closing-at-field
+.poll-common-closing-at-field.my-3
   .poll-common-closing-at-field__inputs
-    .md-no-errors
-      v-menu(ref='menu', v-model='isShowingDatePicker', :close-on-content-click='false', :nudge-right='40', :return-value.sync='closingDate', lazy='', transition='scale-transition', offset-y='', full-width='', min-width='290px')
-        template(v-slot:activator='{ on }')
-          v-text-field(v-model='closingDate', :label="$t('poll-common-closing-at-field__label')", readonly='', v-on='on')
-            template(v-slot:label)
-              poll-common-closing-at(:poll="poll")
-        v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate', no-title='', scrollable='', :min='dateToday')
-          v-spacer
-            v-btn(flat='', color='primary', @click='isShowingDatePicker = false') Cancel
-            v-btn(flat='', color='primary', @click='$refs.menu.save(closingDate)') OK
-    .md-input-container
-      v-select.poll-common-closing-at-field__timepicker(v-model='poll.closingHour', :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
+    v-layout(wrap)
+      v-flex
+        v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y)
+          template(v-slot:activator='{ on }')
+            v-text-field(v-model='closingDate' v-on='on' prepend-icon="mdi-calendar")
+              template(v-slot:label)
+                poll-common-closing-at(:poll="poll")
+          v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate' :min='dateToday' no-title @input="isShowingDatePicker = false")
+      v-spacer
+      v-combobox.poll-common-closing-at-field__timepicker(prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
   validation-errors(:subject="poll", field="closingAt")
 </template>
-
-template(v-slot:label)
-  span(v-html="$t('auth_form.i_accept', { termsUrl: termsUrl, privacyUrl: privacyUrl })")

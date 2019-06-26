@@ -1,25 +1,6 @@
 <style lang="scss">
-.email-settings-page {
-  @import 'layout';
-  @include lmoRow;
-}
-
-.email-settings-page__email-settings {
-  @import 'lmo_card';
-  @include card;
-}
-
 .email-settings-page__specific-group-settings {
   margin-top: 40px;
-}
-
-.email-settings-page__group {
-  padding: 12px 0 !important;
-}
-
-.email-settings-page__learn-more-link {
-  @import 'lmo_card';
-  @include cardMinorAction;
 }
 </style>
 
@@ -103,12 +84,12 @@ main.email-settings-page(v-if='user')
     .email-settings-page__specific-group-settings
       h3.lmo-h3(v-t="'email_settings_page.specific_groups'")
       v-list(class='email-settings-page__groups')
-        v-list-tile.email-settings-page__group.lmo-flex.lmo-flex__space-between
+        v-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between
           .lmo-box--medium.lmo-margin-right.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center
             i.mdi.mdi-account-multiple-plus.mdi-24px
           .email-settings-page__default-description(v-html="$t(defaultSettingsDescription)")
           v-btn.md-accent.email-settings-page__change-default-link(@click='changeDefaultMembershipVolume()', v-t="'common.action.edit'")
-        v-list-tile.email-settings-page__group.lmo-flex.lmo-flex__space-between(v-for='group in groups', key='group.id')
+        v-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between(v-for='group in groups', key='group.id')
           group-avatar.lmo-margin-right(:group='group', size='medium')
           .email-settings-page__group-details.lmo-flex__grow
             strong.email-settings-page__group-name

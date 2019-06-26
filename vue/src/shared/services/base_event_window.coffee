@@ -5,6 +5,7 @@ export default class BaseEventWindow
     @discussion = discussion
     @per        = per
     @readRanges = _.clone(@discussion.readRanges)
+    @focalEvent = {}
 
   # to be implemented by the super class
   # firstInSequence
@@ -36,9 +37,9 @@ export default class BaseEventWindow
   # min and max are the minimum and maximum values permitted in the window
   setMin: (val) -> @min = _.max([val, @firstInSequence()])
   setMax: (val) -> @max = if val < @lastInSequence() then val else false
-  setMinMax: ->
-    @setMin(@positionFromSequenceId() || @firstLoaded())
-    @setMax(@lastLoaded() || false)
+  # setMinMax: ->
+  #   @setMin(@positionFromSequenceId() || @firstLoaded())
+  #   @setMax(@lastLoaded() || false)
 
 
   isUnread: (event) =>

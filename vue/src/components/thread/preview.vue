@@ -1,6 +1,6 @@
 <style lang="scss">
-@import 'mixins';
-@import 'boxes';
+// @import 'mixins';
+// @import 'boxes';
 
 // .thread-preview {
 //   @include md-body-1;
@@ -32,7 +32,7 @@
 .thread-preview__pin {
   width: 32px;
   font-size: 20px;
-  color: $grey-on-white;
+  // color: $grey-on-white;
   text-align: center;
 }
 
@@ -46,14 +46,16 @@
 //   color: $grey-on-white;
 // }
 
-.thread-preview__unread-count {
-  color: $grey-on-white;
-  min-width: 33px;
-  padding-left: 5px;
-}
-
 .thread-preview--unread {
   font-weight: 500;
+}
+
+.thread-preview {
+  border-left: 2px solid #fff;
+}
+
+.thread-preview--unread-border {
+  border-color: var(--v-primary-base);
 }
 
 .thread-preview__position-icon-container {
@@ -90,6 +92,9 @@ export default
   mixins: [UrlFor]
   props:
     thread: Object
+    showGroupName:
+      type: Boolean
+      default: true
   data: ->
     dthread: @thread
   methods:
@@ -99,28 +104,34 @@ export default
 </script>
 
 <template lang="pug">
-v-list-tile.thread-preview.thread-preview__link(:to='urlFor(thread)')
-  v-list-tile-avatar
+v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread-border': thread.isUnread()}" :to='urlFor(thread)')
+  v-list-item-avatar
     user-avatar(v-if='!thread.activePoll()', :user='thread.author()', size='medium' no-link)
     poll-common-chart-preview(v-if='thread.activePoll()', :poll='thread.activePoll()')
-  v-list-tile-content
-    v-list-tile-title.thread-preview__text-container
+  v-list-item-content
+    v-list-item-title(style="align-items: center")
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
-      span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()') ({{thread.unreadItemsCount()}})
-    v-list-tile-sub-title.thread-preview__text-container
-      span.thread-preview__group-name {{ thread.group().fullName }} ·
-      time-ago(:date='thread.lastActivityAt')
-      .lmo-badge.lmo-pointer(v-if='thread.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}", v-t="'common.privacy.closed'")
-  v-list-tile-action
+      v-chip.ml-1(small outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
+      v-chip.thread-preview__tag.ml-1(small outlined v-for="tag in thread.tagNames" :key="tag") {{tag}}
+    v-list-item-subtitle
+      span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}
+      mid-dot(v-if="showGroupName")
+      span.thread-preview__items-count(v-t="{path: 'thread_preview.replies_count', args: {count: thread.itemsCount}}")
+      space
+      span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: thread.unreadItemsCount()}}")
+      mid-dot
+      active-time-ago(:date="thread.lastActivityAt")
+
+  v-list-item-action
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")
       v-icon mdi-pin
-  v-list-tile-action(v-if='thread.discussionReaderId')
-    v-btn.thread-preview__dismiss(@click.prevent='dismiss()' icon flat v-show='thread.isUnread()' :class='{disabled: !thread.isUnread()}' :title="$t('dashboard_page.dismiss')")
+  v-list-item-action(v-if='thread.discussionReaderId')
+    v-btn.thread-preview__dismiss(@click.prevent='dismiss()' icon v-show='thread.isUnread()' :class='{disabled: !thread.isUnread()}' :title="$t('dashboard_page.dismiss')")
       v-icon.mdi mdi-check
-  v-list-tile-action(v-if='thread.discussionReaderId')
-    v-btn.thread-preview__mute(@click.prevent='muteThread()' icon flat v-show='!thread.isMuted()' :title="$t('volume_levels.mute')")
+  v-list-item-action(v-if='thread.discussionReaderId')
+    v-btn.thread-preview__mute(@click.prevent='muteThread()' icon v-show='!thread.isMuted()' :title="$t('volume_levels.mute')")
       v-icon.mdi mdi-volume-mute
-  v-list-tile-action(v-if='thread.discussionReaderId')
-    v-btn.thread-preview__unmute(@click.prevent='unmuteThread()' icon flat v-show='thread.isMuted()' :title="$t('volume_levels.unmute')")
+  v-list-item-action(v-if='thread.discussionReaderId')
+    v-btn.thread-preview__unmute(@click.prevent='unmuteThread()' icon v-show='thread.isMuted()' :title="$t('volume_levels.unmute')")
       v-icon.mdi mdi-volume-plus
 </template>

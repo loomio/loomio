@@ -15,13 +15,13 @@ export default
 
 </script>
 <template lang="pug">
-v-menu.notifications(offset-y lazy bottom)
-  v-btn.notifications__button(icon slot="activator", :aria-label="$t('navbar.notifications')")
-    v-icon(v-if="!unread.length") mdi-bell
-    v-icon(v-if="unread.length") mdi-bell-ring
-    span.badge.notifications__activity(v-if="unread.length") {{unread.length}}
+v-menu.notifications(offset-y bottom)
+  template(v-slot:activator="{on}")
+    v-btn.notifications__button(icon v-on="on" :aria-label="$t('navbar.notifications')")
+      v-icon(v-if="!unread.length") mdi-bell
+      v-icon(v-if="unread.length") mdi-bell-ring
+      span.badge.notifications__activity(v-if="unread.length") {{unread.length}}
   v-list.notifications__dropdown(avatar)
     notification(:notification="notification" v-for="notification in notifications", :key="notification.id")
     div(v-if="notifications.length == 0" v-t="'notifications.no_notifications'")
-
 </template>

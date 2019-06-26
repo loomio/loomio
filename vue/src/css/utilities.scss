@@ -20,11 +20,11 @@ textarea .lmo-textarea {
   margin-right: 8px;
 }
 
-.lmo-validation-error {
-  color: $highlight-red;
-  display: block;
-  @include fontSmall;
-}
+// .lmo-validation-error {
+//   color: $highlight-red;
+//   display: block;
+//   @include fontSmall;
+// }
 
 .lmo-badge {
   border: 1px solid;
@@ -94,7 +94,7 @@ textarea .lmo-textarea {
 }
 
 .lmo-truncate {
-  @include truncateText;
+  // @include truncateText;
 }
 
 .lmo-width-75 {
@@ -104,15 +104,15 @@ textarea .lmo-textarea {
 .lmo-markdown-wrapper {
   word-wrap: break-word;
 
-  p { @include md-body-1; }
+  // p {@include md-body-1; }
   img { max-width: 100%; }
   h1 {
-    @include fontLarge;
+    // @include fontLarge;
     margin: 1em 0 0.5em;
     font-weight: 500;
   }
   h2 {
-    @include fontMedLarge;
+    // @include fontMedLarge;
     margin: 1em 0 0.5em;
     font-weight: 500;
   }
@@ -156,7 +156,7 @@ textarea .lmo-textarea {
 }
 
 .lmo-font--small {
-  @include fontSmall;
+  // @include fontSmall;
 }
 
 .lmo-user-mention {
@@ -169,10 +169,6 @@ textarea .lmo-textarea {
 
 .lmo-align-left {
   text-align: left;
-}
-
-.align-center {
-  text-align: center;
 }
 
 .lmo-relative {
@@ -196,7 +192,7 @@ textarea .lmo-textarea {
 }
 
 .lmo-truncate-text {
-  @include truncateText;
+  // @include truncateText;
 }
 
 .lmo-inline-block {

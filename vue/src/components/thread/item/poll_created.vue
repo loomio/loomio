@@ -1,6 +1,3 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
@@ -12,10 +9,13 @@ import { myLastStanceFor }  from '@/shared/helpers/poll'
 import { listenForTranslations } from '@/shared/helpers/listen'
 
 export default
+  components:
+    ThreadItem: -> import('@/components/thread/item.vue')
+
   mixins: [PollModalMixin, WatchRecords]
   props:
+    eventWindow: Object
     event: Object
-    eventable: Object
 
   created: ->
     EventBus.$on 'showResults', => @buttonPressed = true
@@ -41,6 +41,7 @@ export default
     ]
 
   computed:
+    eventable: -> @event.model()
     poll: -> @eventable
 
     showResults: ->
@@ -58,19 +59,15 @@ export default
 </script>
 
 <template lang="pug">
-.poll-created
-  poll-common-actions-dropdown(:poll="poll", v-if="pollHasActions")
-  p(v-if="!eventable.translation" v-marked="eventable.statement" class="thread-item__body lmo-markdown-wrapper")
-  translation(v-if="eventable.translation" :model="eventable" field="statement" class="thread-item__body")
-  h1.poll-common-card__title.headline
-    span(v-if='!poll.translation') {{poll.title}}
-    translation(v-if="poll.translation" :model='poll', :field='title')
+thread-item.poll-created(:event="event" :event-window="eventWindow")
+  v-layout(justify-space-between)
+    h1.poll-common-card__title.headline
+      span(v-if='!poll.translation') {{poll.title}}
+      translation(v-if="poll.translation" :model='poll', :field='title')
+    poll-common-actions-dropdown(:poll="poll", v-if="pollHasActions")
   poll-common-set-outcome-panel(:poll='poll')
   poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')
-  .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='!poll.translation && poll.detailsFormat == "md"' v-marked='poll.cookedDetails()')
-  .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='!poll.translation && poll.detailsFormat == "html"' v-html='poll.details')
-  .poll-common-details-panel__details.lmo-markdown-wrapper(v-if='poll.translation')
-    translation(:model='poll', :field='details')
+  formatted-text.poll-common-details-panel__details(:model="poll" column="details")
   attachment-list(:attachments="poll.attachments")
   .poll-common-card__results-shown(v-if='showResults')
     poll-common-directive(:poll='poll', name='chart-panel')

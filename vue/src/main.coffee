@@ -1,11 +1,11 @@
 import Vue from 'vue'
+import vuetify from '@/vuetify'
 import router from '@/routes.coffee'
 import i18n from '@/i18n.coffee'
 import app from '@/app.vue'
 import AppConfig from '@/shared/services/app_config'
 import moment from 'moment-timezone'
 import marked from '@/marked'
-import '@/vuetify'
 import '@/observe_visibility'
 import './registerServiceWorker'
 
@@ -35,5 +35,6 @@ boot ->
     new Vue(
       render: (h) -> h(app)
       router: router
+      vuetify: vuetify
       i18n: i18n
     ).$mount('#app')

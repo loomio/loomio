@@ -12,8 +12,7 @@ export default
         'small'
 </script>
 
-<template>
-    <div :class="'group-avatar lmo-box--' + size" aria-hidden="true">
-      <img :class="'lmo-box--' + csize" :alt="group.name" :src="group.logoUrl()">
-    </div>
+<template lang="pug">
+v-avatar(:size="56" tile)
+  img(:alt="group.name" :src="group.logoUrl()")
 </template>

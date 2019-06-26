@@ -25,8 +25,7 @@ module.exports = {
     page.expectText('.group-cover-image', 'Open Dirty Dancing Shoes')
     page.expectText('.thread-preview-collection__container', 'I carried a watermelon')
     page.expectText('.navbar__sign-in', 'LOG IN')
-
-    page.click('.thread-preview__link a')
+    page.click('.thread-preview__link')
     page.expectText('.context-panel__heading', 'I carried a watermelon')
   },
 
@@ -45,11 +44,11 @@ module.exports = {
     // page.expectText('.discussions-panel__header', 'Open threads')
     // page.expectText('.discussions-panel__header', '1 Closed')
     // page.expectNoText('.discussions-panel', 'This thread is old and closed')
-    page.expectText('.thread-preview__text-container', 'What star sign are you?')
+    page.expectText('.thread-preview', 'What star sign are you?')
     page.click('.discussions-panel__toggle-closed label')
-    page.expectText('.thread-preview__text-container', 'This thread is old and closed')
+    page.expectText('.thread-preview', 'This thread is old and closed')
     page.click('.discussions-panel__toggle-closed label')
-    page.click('.thread-preview__text-container')
+    page.click('.thread-preview')
 
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--close')
@@ -74,7 +73,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.click('.context-panel-dropdown__button')
-    page.click('.context-panel-dropdown__option--edit a')
+    page.click('.context-panel-dropdown__option--edit')
     page.fillIn('.discussion-form__title-input input', 'better title')
     page.fillIn('.discussion-form textarea', 'improved description')
     page.click('.discussion-form__private')
@@ -147,19 +146,19 @@ module.exports = {
     page.expectNoText('.discussions-panel', 'What star sign are you?')
   },
 
-  'can_pin_from_the_discussion_page': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.click('.context-panel-dropdown__button')
-    page.click('.context-panel-dropdown__option--pin')
-
-    page.expectText('.confirm-modal', 'Pin thread')
-    page.click('.confirm-modal__submit')
-
-    page.expectFlash('Thread pinned')
-    page.expectElement('.context-panel__heading-pin')
-  },
+  // 'can_pin_from_the_discussion_page': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.click('.context-panel-dropdown__button')
+  //   page.click('.context-panel-dropdown__option--pin')
+  //
+  //   page.expectText('.confirm-modal', 'Pin thread')
+  //   page.click('.confirm-modal__submit')
+  //
+  //   page.expectFlash('Thread pinned')
+  //   page.expectElement('.context-panel__heading-pin')
+  // },
 
   'lets_you_change_thread_volume': (test) => {
     page = pageHelper(test)
@@ -179,7 +178,7 @@ module.exports = {
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--email-settings')
     page.click('.volume-loud')
-    page.click('.change-volume-form__apply-to-all')
+    page.click('.change-volume-form__apply-to-all .v-input--selection-controls__input')
     page.click('.change-volume-form__submit')
     page.expectFlash('You will be emailed all activity in this group.')
   },
@@ -209,7 +208,7 @@ module.exports = {
     page.ensureSidebar()
 
     page.click('.sidebar__list-item-button--recent')
-    page.expectText('.thread-preview__text-container', 'Dirty Dancing Shoes')
+    page.expectText('.thread-preview', 'Dirty Dancing Shoes')
   },
 
   'allows_logged_in_users_to_request_to_join_a_closed_group': (test) => {
@@ -376,7 +375,7 @@ module.exports = {
     page.click('.dismiss-modal-button', 500)
     page.expectText('.context-panel__heading', 'Forked thread')
     page.expectText('.context-panel__fork-details', 'What star sign are you?')
-    page.expectText('.thread-item__body', 'This is totally on topic!', 8000)
+    page.expectText('.thread-item__body .new-comment__body', 'This is totally on topic!', 8000)
   },
 
   'can_move_a_thread': (test) => {

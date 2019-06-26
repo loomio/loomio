@@ -60,32 +60,32 @@ loading(:until="group")
       v-card-text
         v-list.membership-requests-page__pending-requests(subheader)
           v-subheader.membership-requests-page__no-pending-requests(v-if='pendingRequests.length == 0' v-t="'membership_requests_page.no_pending_requests'")
-          v-list-tile.membership-requests-page__pending-request(v-for='request in pendingRequests' :key='request.id' avatar)
-            v-list-tile-avatar
+          v-list-item.membership-requests-page__pending-request(v-for='request in pendingRequests' :key='request.id' avatar)
+            v-list-item-avatar
               user-avatar(:user='request.actor()', size='medium')
-            v-list-tile-content
-              v-list-tile-title.membership-requests-page__pending-request-name {{request.actor().name}} ({{request.email}})
-              v-list-tile-sub-title.membership-requests-page__pending-request-introduction
+            v-list-item-content
+              v-list-item-title.membership-requests-page__pending-request-name {{request.actor().name}} ({{request.email}})
+              v-list-item-subtitle.membership-requests-page__pending-request-introduction
                 span {{request.introduction}}
                 time-ago(:date='request.createdAt')
-            v-list-tile-action
+            v-list-item-action
               //- , v-t="'membership_requests_page.ignore'"
               //- , v-t="'membership_requests_page.approve'"
-              v-btn.membership-requests-page__approve(flat icon @click='approve(request)')
+              v-btn.membership-requests-page__approve(text icon @click='approve(request)')
                 v-icon mdi-check
-            v-list-tile-action
-              v-btn.membership-requests-page__ignore(flat icon @click='ignore(request)')
+            v-list-item-action
+              v-btn.membership-requests-page__ignore(text icon @click='ignore(request)')
                 v-icon mdi-close
 
         v-list.membership-requests-page__previous-requests(subheader three-line)
           v-subheader(v-if='previousRequests.length' v-t="'membership_requests_page.previous_requests'")
           v-subheader.membership-requests-page__no-previous-requests(v-if='previousRequests.length == 0' v-t="'membership_requests_page.no_previous_requests'")
-          v-list-tile.membership-requests-page__previous-request(v-for='request in previousRequests' :key='request.id' avatar)
-            v-list-tile-avatar
+          v-list-item.membership-requests-page__previous-request(v-for='request in previousRequests' :key='request.id' avatar)
+            v-list-item-avatar
               user-avatar(:user='request.actor()', size='medium')
-            v-list-tile-content
-              v-list-tile-title.membership-requests-page__previous-request-name {{request.actor().name}} {{request.email}}
-              v-list-tile-sub-title.membership-requests-page__previous-request-response
+            v-list-item-content
+              v-list-item-title.membership-requests-page__previous-request-name {{request.actor().name}} {{request.email}}
+              v-list-item-subtitle.membership-requests-page__previous-request-response
                 span(v-t="{ path: 'membership_requests_page.previous_request_response', args: { response: request.formattedResponse(), responder: request.responder().name } }")
                 span ·
                 time-ago(:date='request.respondedAt')

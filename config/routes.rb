@@ -100,6 +100,7 @@ Loomio::Application.routes.draw do
 
     resources :profile, only: [:show] do
       collection do
+        get  :time_zones
         get  :mentionable_users
         get  :me
         get  :email_status
@@ -157,7 +158,7 @@ Loomio::Application.routes.draw do
     end
 
     resources :discussion_tags, only: [:create, :destroy]
-    
+
     resources :tags do
       collection do
         post :update_model

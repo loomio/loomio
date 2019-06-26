@@ -19,7 +19,7 @@ export default
 </script>
 
 <template>
-    <abbr class="closing-in timeago--inline">
-      <span v-t="{ path: translationKey(), args: { time: fromNow(time()) } }" :title="exactDate(time())"></span>
-    </abbr>
+<abbr class="closing-in timeago--inline">
+  <span v-t="{ path: translationKey(), args: { time: fromNow(time()) } }" :title="exactDate(time())"></span>
+</abbr>
 </template>

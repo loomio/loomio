@@ -1,30 +1,3 @@
-<style lang="scss">
-@import 'variables';
-.poll-common-votes-panel__no-votes {
-  color: $grey-on-white;
-  font-style: italic;
-}
-
-.poll-common-votes-panel__header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.poll-common-votes-panel__header md-select {
-  margin-bottom: 0;
-}
-
-.poll-common-votes-panel__did-not-voter {
-  display: flex;
-  align-items: center;
-  margin: 8px 0;
-}
-
-.poll-common-votes-panel__stance-name-and-option .poll-common-stance-choice {
-  display: inline-block;
-}
-</style>
-
 <script lang="coffee">
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus     from '@/shared/services/event_bus'
@@ -47,7 +20,6 @@ export default
     poll: Object
   data: ->
     fix: {}
-    sortOptions: fieldFromTemplate(@poll.pollType, 'sort_options')
     loader: null
   created: ->
     @fix.votesOrder = @sortOptions[0]
@@ -72,17 +44,24 @@ export default
       @loader.reset()
       @loader.params.order = @fix.votesOrder
       @loader.fetchRecords()
+
+  computed:
+    sortOptions: ->
+      fieldFromTemplate(@poll.pollType, 'sort_options').map (option) =>
+        {text: @$t('poll_common_votes_panel.'+option), value: option}
+
 </script>
 
 <template lang="pug">
-  .poll-common-votes-panel
-    .poll-common-votes-panel__header
-      h3.lmo-card-subheading(v-t="'poll_common.votes'")
-      select.md-no-underline(v-model='fix.votesOrder', @change='changeOrder()', aria-label="$t('poll_common_votes_panel.change_results_order')")
-        option(v-for='opt in sortOptions', :value='opt', v-t="'poll_common_votes_panel.' + opt")
-    .poll-common-votes-panel__no-votes(v-if='!hasSomeVotes()', v-t="'poll_common_votes_panel.no_votes_yet'")
-    .poll-common-votes-panel__has-votes(v-if='hasSomeVotes()')
+.poll-common-votes-panel
+  v-layout.poll-common-votes-panel__header(wrap)
+    v-subheader(v-t="'poll_common.votes'")
+    v-spacer
+    v-select(style="max-width: 200px" small solo v-model='fix.votesOrder' :items="sortOptions" @change='changeOrder()', aria-label="$t('poll_common_votes_panel.change_results_order')")
+  .poll-common-votes-panel__no-votes(v-if='!hasSomeVotes()', v-t="'poll_common_votes_panel.no_votes_yet'")
+  .poll-common-votes-panel__has-votes(v-if='hasSomeVotes()')
+    v-list
       poll-common-directive(:stance='stance', name='votes-panel-stance', v-for='stance in stances()', :key='stance.id')
-      button(v-if='moreToLoad()', v-t="'common.action.load_more'", @click='loader.loadMore()')
-    poll-common-undecided-panel(:poll='poll')
+    button(v-if='moreToLoad()', v-t="'common.action.load_more'", @click='loader.loadMore()')
+  poll-common-undecided-panel(:poll='poll')
 </template>

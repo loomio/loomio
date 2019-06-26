@@ -208,7 +208,7 @@ export default new class AbilityService
     !@canJoinGroup(group)
 
   canTranslate: (model) ->
-    AppConfig.inlineTranslation.isAvailable? and
+    AppConfig.inlineTranslation.isAvailable and
     _.includes(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
     !model.translation and
     Session.user().locale != model.author().locale
@@ -218,9 +218,6 @@ export default new class AbilityService
       @canViewGroup(poll.group())
     else
       @canAdministerPoll() || _.includes(@poll().voters(), Session.user())
-
-  canRemovePollOptions: (poll) ->
-    poll.isNew() || (poll.isActive() && poll.stancesCount == 0)
 
   canEditPoll: (poll) ->
     poll.isActive() and @canAdministerPoll(poll)

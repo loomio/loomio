@@ -8,6 +8,5 @@ export default
 <template lang="pug">
 v-card.thread-card(elevation="1")
   context-panel(:discussion="discussion")
-  v-card
-    activity-panel(:loader="loader" :discussion="discussion")
+  activity-panel(:loader="loader" :discussion="discussion")
 </template>

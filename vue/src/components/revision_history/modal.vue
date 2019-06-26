@@ -22,8 +22,8 @@ export default
 <template lang="pug">
 v-card.revision-history-modal
   v-card-title
-    v-icon mdi-history
-    h1.lmo-h1.modal-title(v-t="'revision_history_modal.' + model.constructor.singular + '_header'")
+    h1.headline(v-t="'revision_history_modal.' + model.constructor.singular + '_header'")
+    v-spacer
     dismiss-modal-button(:close="close")
   v-card-text.md-dialog-content.revision-history-modal__body
     revision-history-nav(:model='model')
@@ -39,10 +39,10 @@ v-card.revision-history-modal
       revision-history-content(v-if='!loading', :model='model', :version='version')
 </template>
 <style lang="scss">
-@import 'mixins';
+// @import 'mixins';
 
 .revision-history-modal__thread-details {
-  @include fontSmall;
+  // @include fontSmall;
 }
 
 .revision-history-modal__divider {

@@ -2,30 +2,10 @@ import Records         from '@/shared/services/records'
 import BaseEventWindow from '@/shared/services/base_event_window'
 
 export default class NestedEventWindow extends BaseEventWindow
-  constructor: ({discussion, parentEvent, initialSequenceId, per}) ->
+  constructor: ({discussion, parentEvent, sequenceId, per}) ->
     super(discussion: discussion, per: per)
     @columnName = "position"
     @parentEvent = parentEvent
-    @initialSequenceId = initialSequenceId
-    @setMinMax()
-
-  positionFromSequenceId: ->
-    initialEvent = Records.events.find(discussionId: @discussion.id, sequenceId: @initialSequenceId)[0]
-    # ensure that we set the min position of the window to bring the initialSequenceId to the top
-    # if this is the outside window, then the initialEvent might be nested, in which case, position to the parent of initialEvent
-    # if the initialEvent is not child of our parentEvent
-
-    # if the initialEvent is a child of the parentEvent then min = initialEvent.position
-    # if the initialEvent is a grandchild of the parentEvent then min = initialEvent.parent().position
-    # if the initialEvent is not a child or grandchild, then min = 0
-    return 0 if ((initialEvent == undefined) || (@parentEvent == undefined))
-
-    if initialEvent.parentId == @parentEvent.id
-      initialEvent.position
-    else if initialEvent.parent().parentId == @parentEvent.id
-      initialEvent.parent().position
-    else
-      0
 
   useNesting: true
 

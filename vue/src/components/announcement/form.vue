@@ -125,7 +125,8 @@ export default
 <template lang="pug">
 v-card
   v-card-title
-    h1.lmo-h1(v-t="'announcement.form.' + announcement.kind + '.title'")
+    h1.headline(v-t="'announcement.form.' + announcement.kind + '.title'")
+    v-spacer
     dismiss-modal-button
   v-card-text
     .announcement-form
@@ -138,21 +139,21 @@ v-card
         .announcement-form__invite
           p.announcement-form__help(v-t="'announcement.form.' + announcement.kind + '.helptext'")
           v-list
-            v-list-tile.announcement-form__audience(avatar v-for='audience in audiences()', :key='audience', @click='loadAudience(audience)')
-              v-list-tile-avatar
+            v-list-item.announcement-form__audience(v-for='audience in audiences()', :key='audience', @click='loadAudience(audience)')
+              v-list-item-avatar
                 v-icon mdi-account-multiple
-              v-list-tile-content
+              v-list-item-content
                 span(v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
           v-autocomplete.announcement-form__input(multiple chips return-object autofocus v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
             template(v-slot:selection='data')
-              v-chip.chip--select-multi(:selected='data.selected', close, @input='remove(data.item)')
+              v-chip.chip--select-multi(:value='data.selected', close, @input='remove(data.item)')
                 user-avatar(:user="data.item" size="small" :no-link="true")
                 span {{ data.item.name }}
             template(v-slot:item='data')
-              v-list-tile-avatar
+              v-list-item-avatar
                 user-avatar(:user="data.item" size="small" :no-link="true")
-              v-list-tile-content.announcement-chip__content
-                v-list-tile-title(v-html='data.item.name')
+              v-list-item-content.announcement-chip__content
+                v-list-item-title(v-html='data.item.name')
 
         v-layout(v-if="showInvitationsRemaining")
           v-spacer
@@ -166,18 +167,18 @@ v-card
             v-flex(v-if="announcement.model.anyoneCanParticipate || announcement.model.isA('group')")
               v-layout(align-center)
                 v-text-field.announcement-form__shareable-link(:value='shareableLink' :disabled='true')
-                v-btn.announcement-form__copy(ref="copyContainer" flat color="accent" v-t="'common.copy'" v-clipboard:copy='shareableLink' v-clipboard:success='copied' v-clipboard:error='"fuck"')
-                v-btn.announcement-form__reset(flat color="warning" v-t="'common.reset'" @click="resetShareableLink()")
+                v-btn.announcement-form__copy(ref="copyContainer" text color="accent" v-t="'common.copy'" v-clipboard:copy='shareableLink' v-clipboard:success='copied' v-clipboard:error='"fuck"')
+                v-btn.announcement-form__reset(text color="warning" v-t="'common.reset'" @click="resetShareableLink()")
               p.caption(v-t="'invitation_form.shareable_link_explanation'")
   v-card-actions
     div(v-if="recipients.length")
       p(v-show="tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
-    v-btn.announcement-form__cancel(v-if="!recipients.length" @click="$emit('$close')" v-t="'common.action.close'")
-    v-btn.announcement-form__submit(:disabled="!recipients.length || tooManyInvitations()" @click="submit()" v-t="'common.action.send'")
+    v-spacer
+    v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || tooManyInvitations()" @click="submit()" v-t="'common.action.send'")
 </template>
 
 <style lang="scss">
-@import 'variables';
+// @import 'variables';
 .announcement-form__checkbox {
   margin: 16px 0;
 }
@@ -204,7 +205,7 @@ v-card
   height: 42px;
   min-height: 42px;
   margin-bottom: 8px;
-  color: $primary-text-color;
+  // color: $primary-text-color;
   i { opacity: 0.8; }
 }
 </style>

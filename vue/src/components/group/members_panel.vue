@@ -177,55 +177,57 @@ div.members-panel
     //- just for group admins
     v-switch(v-if="currentUserIsAdmin && group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-spacer
-    v-btn.membership-requests-link(flat color="primary" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
-    v-btn.membership-card__invite(flat color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
-  v-progress-linear(indeterminate :active="loader.loading")
-  v-data-table.members-panel__table(:items="memberships" :headers="headers" disable-initial-sort :total-items="totalRecords" hide-actions)
+    v-btn.membership-requests-link(text color="primary" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
+    v-btn.membership-card__invite(text color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
+    v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute bottom)
+
+  v-data-table.members-panel__table(:items="memberships" :headers="headers" disable-initial-sort :total-items="totalRecords" hide-default-footer)
     template(v-slot:no-results)
       | No results
-    template(v-slot:items="props")
-      td
-        v-icon(v-if="props.item.admin") mdi-star
-      td.members-panel__name(v-if="props.item.acceptedAt")
-        v-layout(align-center)
-          user-avatar.mr-3(:user='props.item.user()', size='forty')
-          router-link(:to="urlFor(props.item.user())") {{props.item.user().name}}
-      td.members-panel__name(v-else)
-        v-layout(align-center)
-          user-avatar.mr-3(:user='props.item.user()', size='forty')
-          span {{props.item.user().email || props.item.user().name}}
-      td {{props.item.user().username}}
-      td.members-panel__title {{props.item.title}}
-      td(v-if="includeSubgroups") {{props.item.group().name}}
-      td {{props.item.inviter() && props.item.inviter().name}}
-      td
-        timeAgo(:date="props.item.createdAt")
-      td
-        membership-dropdown(:membership="props.item")
+    template(v-slot:item="{item}")
+      tr
+        td
+          v-icon(v-if="item.admin") mdi-star
+        td.members-panel__name(v-if="item.acceptedAt")
+          v-layout(align-center)
+            user-avatar.mr-3(:user='item.user()', size='forty')
+            router-link(:to="urlFor(item.user())") {{item.user().name}}
+        td.members-panel__name(v-else)
+          v-layout(align-center)
+            user-avatar.mr-3(:user='item.user()', size='forty')
+            span {{item.user().email || item.user().name}}
+        td {{item.user().username}}
+        td.members-panel__title {{item.title}}
+        td(v-if="includeSubgroups") {{item.group().name}}
+        td {{item.inviter() && item.inviter().name}}
+        td
+          timeAgo(:date="item.createdAt")
+        td
+          membership-dropdown(:membership="item")
 
   v-layout(align-center)
     span(v-if="!includeSubgroups" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
     v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 
     //- v-list(two-line avatar)
-    //-   v-list-tile(v-if="!searchOpen")
-    //-     v-list-tile-content
+    //-   v-list-item(v-if="!searchOpen")
+    //-     v-list-item-content
     //-       span.grey--text(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }')
-    //-     v-list-tile-action
+    //-     v-list-item-action
     //-       v-btn.membership-card__search-button(icon @click="toggleSearch()")
     //-         v-icon mdi-magnify
     //-
-    //-   v-list-tile(v-if="searchOpen")
+    //-   v-list-item(v-if="searchOpen")
     //-     v-text-field.membership-card__filter(autofocus v-model="fragment" :placeholder="$t('memberships_page.fragment_placeholder')")
     //-       template(slot="append")
     //-         v-btn(icon @click="toggleSearch()")
     //-           v-icon mdi-close
     //-
-    //-   v-list-tile.membership-card__membership.membership-card__invite(v-if='!searchOpen && canAddMembers()', @click="invite()")
-    //-     v-list-tile-avatar
+    //-   v-list-item.membership-card__membership.membership-card__invite(v-if='!searchOpen && canAddMembers()', @click="invite()")
+    //-     v-list-item-avatar
     //-       v-avatar(:size='40')
     //-         v-icon(color="primary") mdi-plus
-    //-     v-list-tile-content
-    //-       v-list-tile-title(v-t="'membership_card.invite_to_' + group.targetModel().constructor.singular")
+    //-     v-list-item-content
+    //-       v-list-item-title(v-t="'membership_card.invite_to_' + group.targetModel().constructor.singular")
 
 </template>

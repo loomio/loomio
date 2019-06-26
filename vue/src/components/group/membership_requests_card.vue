@@ -43,13 +43,13 @@ export default
 v-card.membership-requests-card(v-if='canManageMembershipRequests() && membershipRequests.length')
   v-list(two-line avatar)
     v-subheader(v-t="'membership_requests_card.heading'")
-    v-list-tile.membership-requests-card__request(v-for='request in orderedPendingMembershipRequests()', :key='request.id' :to="urlFor(group, 'membership_requests')")
-      v-list-tile-avatar
+    v-list-item.membership-requests-card__request(v-for='request in orderedPendingMembershipRequests()', :key='request.id' :to="urlFor(group, 'membership_requests')")
+      v-list-item-avatar
         user-avatar(:user='request.actor()', size='forty')
-      v-list-tile-content
-        v-list-tile-title.membership-requests-card__requestor-name {{request.actor().name || request.actor().email}}
-        v-list-tile-sub-title.membership-requests-card__requestor-introduction {{request.introduction}}
+      v-list-item-content
+        v-list-item-title.membership-requests-card__requestor-name {{request.actor().name || request.actor().email}}
+        v-list-item-subtitle.membership-requests-card__requestor-introduction {{request.introduction}}
   v-card-actions
-    v-btn.membership-requests-card__link(flat :to="urlFor(group, 'membership_requests')")
+    v-btn.membership-requests-card__link(text :to="urlFor(group, 'membership_requests')")
       span(v-t="{ path: 'membership_requests_card.manage_requests_with_count', args: { count: group.pendingMembershipRequests().length } }")
 </template>

@@ -1,11 +1,3 @@
-<style lang="scss">
-.profile-page-card {
-  @import 'lmo_card';
-  position: relative;
-  @include card;
-}
-</style>
-
 <script lang="coffee">
 import AppConfig      from '@/shared/services/app_config'
 import Session        from '@/shared/services/session'

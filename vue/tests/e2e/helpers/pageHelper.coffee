@@ -48,8 +48,16 @@ module.exports = (test) ->
     #   else
     #     console.log 'not there'
 
+  ensureThreadNav: ->
+    test.isVisible '.thread-nav__add-people' , (result) ->
+      if !result.value
+        test.click('.thread-page__open-thread-nav')
+
   pause: (time = 1000) ->
     test.pause(time)
+
+  debug: -> test.pause(9999999)
+
 
   mouseOver: (selector, callback, wait) ->
     @waitFor(selector, wait)

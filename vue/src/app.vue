@@ -68,9 +68,24 @@ v-app
   navbar
   sidebar
   v-content
-    router-view(v-if="!pageError")
-    //- common-error(v-if="pageError" :error="pageError")
+    router-view
+      //- router-view(v-if="!pageError")
+      //- common-error(v-if="pageError" :error="pageError")
+    v-spacer
     common-footer
+  thread-nav
   modal-launcher
   common-flash
 </template>
+
+<style lang="scss">
+$mdi-font-path: '/fonts/mdi';
+@import '@mdi/font/scss/materialdesignicons.scss';
+@import 'src/css/fonts.scss';
+
+a { text-decoration: none; }
+
+.v-container-max-width {
+  max-width: 800px;
+}
+</style>

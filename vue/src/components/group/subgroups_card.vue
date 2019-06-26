@@ -51,7 +51,7 @@ v-card.subgroups-card(aria-labelledby='subgroups-card__title', v-if='show()')
     .lmo-flex.lmo-flex__space-between
   v-card-actions
     // <outlet name="subgroup-card-footer"></outlet>
-    v-btn.subgroups-card__start(flat='', @click='startSubgroup()', v-if='canCreateSubgroups()')
+    v-btn.subgroups-card__start(text @click='startSubgroup()', v-if='canCreateSubgroups()')
       span(v-t="'common.action.add_subgroup'")
 
 </template>

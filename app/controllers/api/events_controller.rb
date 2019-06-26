@@ -25,12 +25,19 @@ class API::EventsController < API::RestfulController
   def from
     if params[:from]
       params[:from]
+    elsif params[:from_sequence_id_of_position]
+      Event.find_by!(discussion: @discussion, depth: 1, position: params[:from_sequence_id_of_position])&.sequence_id
     elsif params[:comment_id]
       Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])&.sequence_id
     else
       reader = DiscussionReader.for(user: current_user, discussion: @discussion)
       if reader.unread_items_count == 0
-        @discussion.last_sequence_id - per + 2
+        id = @discussion.last_sequence_id - per + 2
+        if id > 0
+          id
+        else
+          @discussion.first_sequence_id
+        end
       else
         reader.first_unread_sequence_id
       end
@@ -43,6 +50,10 @@ class API::EventsController < API::RestfulController
                 includes(:user, :discussion, :eventable, parent: [:user, :eventable])
 
     records = records.where("#{order} >= ?", from)
+
+    if params[:kind]
+      records = records.where("kind in (?)", params[:kind].split(','))
+    end
 
     %w(parent_id depth sequence_id position).each do |name|
       records = records.where(name => params[name]) if params[name]

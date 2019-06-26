@@ -143,8 +143,8 @@ v-container.lmo-main-container.polls-page
         </div>
       loading(v-if='fetchRecordsExecuting')
       v-list.polls-page__polls(v-if='!fetchRecordsExecuting' two-line)
-        v-list-tile(v-for='poll in orderedPolls', :key='poll.id')
-          v-list-tile-content
+        v-list-item(v-for='poll in orderedPolls', :key='poll.id')
+          v-list-item-content
             poll-common-preview(:key='poll.id', :poll='poll', :display-group-name='!group')
       loading(v-if='loadMoreExecuting')
       .polls-page__count(v-t="{ path: 'polls_page.polls_count', args: { count: loadedCount, total: pollsCount }}")

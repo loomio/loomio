@@ -1,37 +1,54 @@
 <script lang="coffee">
 import moment from 'moment'
 import TimeService from '@/shared/services/time_service'
+import Records     from '@/shared/services/records'
 export default
   props:
     poll: Object
+
   created: ->
-    @poll.optionDate = moment().format('YYYY-MM-DD')
+    @poll.update(optionDate: moment().format('YYYY-MM-DD'))
+    @poll.update(optionTime: "00:00")
+    Records.users.fetchTimeZones().then (data) => @timeZones = data
+
   data: ->
+    timeZones: {}
+    datePickerOpen: false
+    timePickerOpen: false
     dateToday: moment().format('YYYY-MM-DD')
-    times: TimeService.timesOfDay()
-    isShowingDatePicker: false
+    times: TimeService.meetingTimesOfDay()
+
   methods:
-    closeDatePicker: ->
-      @isShowingDatePicker = false
+    timeInZone: (zone) ->
+      @poll.handleDateOption().toLocaleString("en-US", {timeZone: "zone"});
 
 </script>
 <template lang="pug">
-v-list-tile.poll-meeting-time-field(flex='true', layout='row')
-  .poll-meeting-time-field__datepicker-container
-    v-menu(ref='menu', v-model='isShowingDatePicker', :close-on-content-click='false', :nudge-right='40', :return-value.sync='poll.optionDate', lazy='', transition='scale-transition', offset-y='', full-width='', min-width='290px')
-      template(v-slot:activator='{ on }')
-        v-text-field(v-model='poll.optionDate', :label="$t('poll_meeting_time_field.new_time_slot')", readonly='', v-on='on')
-      v-date-picker.poll-meeting-time-field__datepicker(v-model='poll.optionDate', no-title='', scrollable='', :min='dateToday')
-        v-spacer
-          v-btn(flat='', color='primary', @click='isShowingDatePicker = false') Cancel
-          v-btn(flat='', color='primary', @click='$refs.menu.save(poll.optionDate)') OK
+v-sheet
+  v-card-title
+    v-subheader(v-t="'poll_meeting_form.add_option_placeholder'")
+    v-spacer
+    v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='$emit("close")')
+      v-icon mdi-window-close
+  v-card-text
+    v-layout.poll-meeting-time-field
+      v-menu(ref='dateMenu' v-model='datePickerOpen' :close-on-content-click='false' offset-y full-width min-width='290px')
+        template(v-slot:activator='{ on }')
+          v-text-field(v-model='poll.optionDate' readonly v-on='on' prepend-icon="mdi-calendar")
+        v-date-picker.poll-common-closing-at-field__datepicker(v-model='poll.optionDate' no-title :min='dateToday' @input="datePickerOpen = false")
+      v-spacer
+      v-combobox.poll-common-closing-at-field__timepicker(v-model="poll.optionTime" :items="times" prepend-icon="mdi-clock-outline")
+    v-simple-table(dense height="100px")
+      tbody
+        tr(v-for="z in timeZones" :key="z[0]")
+          td {{z[0].replace('_',' ')}}
+          td
+            poll-meeting-time(:name="poll.handleDateOption()" :zone="z[0]")
 
-  .poll-meeting-time-field__timepicker-container(v-if='poll.customFields.meeting_duration')
-    v-select(v-model='poll.optionTime', :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
-  .lmo-flex__grow
-  .poll-meeting-time-field__add
-    v-btn.poll-meeting-form__option-button.lmo-inline-action(@click='poll.addOption()', :aria-label="($t('poll_meeting_form.add_option_placeholder'))")
-      v-icon.poll-meeting-form__option-icon mdi-plus
+  v-card-actions
+    v-spacer
+    v-btn.poll-meeting-form__option-button(color="accent" @click='poll.addOption()' v-t="'common.add'")
+
+
+
 </template>
-<style lang="scss">
-</style>

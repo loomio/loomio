@@ -1,11 +1,11 @@
 <style lang="scss">
-@import 'variables';
+// @import 'variables';
 .document-management {
   margin-bottom: 16px;
 }
 
 .document-management__caption {
-  color: $grey-on-white;
+  // color: $grey-on-white;
 }
 
 .document-management__icon {

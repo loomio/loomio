@@ -1,42 +1,8 @@
-<style lang="scss">
-.poll-meeting-form__closing-at {
-  margin-top: 24px;
-}
-
-.poll-meeting-form__options {
-  margin-top: -20px;
-}
-
-.poll-meeting-form__poll-option-names {
-  padding: 0 0 0 6px !important;
-}
-
-.poll-meeting-form__poll-option-names .poll-meeting-form__option-button {
-  margin-right: 0;
-}
-
-.poll-meeting-form__option-button {
-  margin: 0 16px;
-  font-size: 24px;
-}
-
-.poll-meeting-form__label-and-timezone {
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.poll-meeting-form__datepicker input {
-  max-width: 100%;
-}
-</style>
-
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import EventBus  from '@/shared/services/event_bus'
 
-import _pull from 'lodash/pull'
+import { pull } from 'lodash'
 
 export default
   props:
@@ -44,6 +10,7 @@ export default
     back: Boolean
   data: ->
     durations: AppConfig.durations
+    menuOpen: false
   created: ->
     @poll.customFields.meeting_duration = @poll.customFields.meeting_duration or 60
     if @poll.isNew()
@@ -60,8 +27,17 @@ export default
 <template lang="pug">
 .poll-meeting-form
   poll-common-form-fields(:poll="poll")
-  v-select(v-model="poll.customFields.meeting_duration", :label="$t('poll_meeting_form.meeting_duration')", :items="durations", item-text="label", item-value="minutes")
-  poll-common-form-options(:poll="poll")
+
+  v-menu(ref="menu" v-model="menuOpen" :close-on-content-click="false" :return-value.sync="poll.pollOptionNames" offset-y full-width min-width="290px")
+    template(v-slot:activator="{ on }" )
+      v-combobox(v-model="poll.pollOptionNames" multiple chips small-chips deletable-chips :label="$t('poll_meeting_form.timeslots')" readonly v-on="on")
+        template(v-slot:selection="data")
+          v-chip
+            poll-meeting-time(:name="data.item")
+    poll-meeting-time-field(@close="menuOpen = false" :poll="poll")
+  validation-errors(:subject="poll" field="pollOptions")
+
+  v-select(v-model="poll.customFields.meeting_duration" :label="$t('poll_meeting_form.meeting_duration')" :items="durations", item-text="label", item-value="minutes")
   poll-common-closing-at-field.md-block(:poll="poll")
   poll-common-settings(:poll="poll")
 </template>

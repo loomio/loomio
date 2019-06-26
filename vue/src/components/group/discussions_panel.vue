@@ -17,7 +17,7 @@ export default
   created: -> @init()
 
   data: ->
-    group: Records.groups.fuzzyFind(@$route.params.key)
+    group: null
     discussions: []
     searchResults: []
     loader: null
@@ -29,6 +29,8 @@ export default
 
   methods:
     init: ->
+      @group = Records.groups.fuzzyFind(@$route.params.key)
+
       @loader = new RecordLoader
         collection: 'discussions'
         params:
@@ -39,33 +41,32 @@ export default
         params:
           group_id: @group.id
 
-      @fetch()
-
       @watchRecords
         key: @group.id
         collections: ['discussions', 'groups']
         query: (store) => @query(store)
 
-      # @maxDiscussions = if AbilityService.canViewPrivateContent(@group)
-      #   @group.discussionsCount
-      # else
-      #   @group.publicDiscussionsCount
+      @refresh()
+
+    refresh: ->
+      @from = 0
+      @fetch()
+      @query()
 
     query: (store) ->
       if @fragment
         chain = Records.searchResults.collection.chain()
         chain = chain.find(resultGroupId: {$in: @groupIds})
+
         @tags.forEach (tag) ->
           chain = chain.find({tagNames: {'$contains': tag}})
+
         chain = chain.find(query: @fragment).data()
 
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
         chain = Records.discussions.collection.chain()
-
         chain = chain.find(groupId: {$in: @groupIds})
-
-        # chain = chain.find({'tags': {'$contains': 'ya' }})
 
         @tags.forEach (tag) ->
           chain = chain.find({tagNames: {'$contains': tag}})
@@ -81,7 +82,6 @@ export default
         chain = chain.compoundsort([['pinned', true], ['lastActivityAt', true]])
 
         @discussions = chain.data()
-
 
     fetch: debounce ->
       if @fragment
@@ -99,35 +99,13 @@ export default
       300
 
   watch:
-    fragment: ->
-      @from = 0
-      @fetch()
-      @query()
-
-    showUnread: ->
-      @from = 0
-      @fetch()
-      @query()
-
-    showClosed: ->
-      @from = 0
-      @fetch()
-      @query()
-
-    includeSubgroups: ->
-      @from = 0
-      @fetch()
-      @query()
-
-    group: (a, b) ->
-      @init() if a.id != b.id
-
-    isLoggedIn: -> @fetch()
-
-    tags: ->
-      @from = 0
-      @fetch()
-      @query()
+    fragment: -> @refresh()
+    showUnread: -> @refresh()
+    showClosed: -> @refresh()
+    includeSubgroups: -> @refresh()
+    isLoggedIn: -> @refresh()
+    tags: -> @refresh()
+    $route: (a, b) -> @init()
 
   computed:
     groupIds: ->
@@ -158,25 +136,25 @@ export default
 
 <template lang="pug">
 .discussions-panel
-  v-toolbar(flat)
-    //- v-toolbar-items
-    v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
+  v-toolbar(flat align-center)
+    v-toolbar-items
+      v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
+      v-combobox(solo flat multiple chips v-model='tags' :items='groupTags' :label="$t('common.action.filter')" item-text="name" )
     v-switch.discussions-panel__toggle-closed(v-model="showClosed" :label="$t('discussions_panel.closed')")
     v-switch.discussions-panel__toggle-include-subgroups(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
     v-spacer
-    v-combobox(v-model='tags' :items='groupTags' :label='$t("loomio_tags.tags")' item-text="name" multiple solo chips)
-    v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outline color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outlined color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
 
-  v-progress-linear(indeterminate :active="loading")
 
   .discussions-panel__content(v-if="!fragment")
     .discussions-panel__list--empty(v-if='noThreads' :value="true")
       p.text-xs-center(v-t="'group_page.no_threads_here'")
       p.text-xs-center(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
-    .discussions-panel__list(v-if="discussions.length")
-      section.thread-preview-collection__container
-        thread-preview-collection(:threads='discussions', :limit='loader.numRequested')
+    .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
+      v-list.thread-previews(two-line)
+        thread-preview(:show-group-name="includeSubgroups" v-for="thread in discussions", :key="thread.id", :thread="thread")
       v-btn.discussions-panel__show-more(v-if="!loader.exhausted" :disabled="loader.loading" @click='loader.loadMore()', v-t="{ path: 'common.action.show_more' }")
       .lmo-hint-text.discussions-panel__no-more-threads(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
 
@@ -184,10 +162,10 @@ export default
     v-alert.discussions-panel__list--empty(v-if='!searchResults.length' :value="true" color="info" icon="info")
       p(v-t="'group_page.no_threads_here'")
     v-list(two-line v-for="result in searchResults" :key="result.id")
-      v-list-tile.thread-preview.thread-preview__link(:to="urlFor(result)")
-        v-list-tile-content
-          v-list-tile-title {{result.title}}
-          v-list-tile-sub-title
+      v-list-item.thread-preview.thread-preview__link(:to="urlFor(result)")
+        v-list-item-content
+          v-list-item-title {{result.title}}
+          v-list-item-subtitle
             span(v-html="result.resultGroupName")
             | &nbsp;
             | ·

@@ -9,7 +9,7 @@ module.exports = {
     page.expectText('.group-cover-image', 'Point Break')
     page.expectElement('.join-group-button__ask-to-join-group')
     page.ensureSidebar()
-    
+
     page.expectText('.sidebar__groups', 'Point Break')
   },
 
@@ -19,9 +19,11 @@ module.exports = {
     page.loadPath('view_open_group_as_visitor')
     page.click('.join-group-button__join-group')
     page.signInViaEmail('new@account.com')
-    page.click('.join-group-button__join-group')
+    page.pause(500)
+    page.click('.join-group-button__join-group', 500)
+
     page.ensureSidebar()
-    
+
     page.expectText('.sidebar__groups', 'Open Dirty Dancing Shoes')
   },
 
@@ -86,7 +88,7 @@ module.exports = {
 
     page.loadPath('setup_dashboard')
     page.ensureSidebar()
-    
+
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-open')
     page.click('.group-form__advanced-link')
@@ -103,7 +105,7 @@ module.exports = {
 
     page.loadPath('setup_dashboard')
     page.ensureSidebar()
-    
+
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-closed')
     page.click('.group-form__advanced-link')
@@ -120,7 +122,7 @@ module.exports = {
 
     page.loadPath('setup_dashboard')
     page.ensureSidebar()
-    
+
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-secret')
     page.expectNoElement('.group-form__allow-public-threads', 2000)
@@ -325,14 +327,14 @@ module.exports = {
     page.expectFlash('You will be emailed all activity in this group.')
   },
 
-  'lets you change the membership volume for all memberships': (test) => {
+  'lets_you_change_the_membership_volume_for_all_memberships': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__change-volume-link')
     page.click('.volume-loud label')
-    page.click('.change-volume-form__apply-to-all label')
+    page.click('.change-volume-form__apply-to-all .v-input--selection-controls__input')
     page.click('.change-volume-form__submit')
     page.expectFlash('You will be emailed all activity in all your groups.')
   },

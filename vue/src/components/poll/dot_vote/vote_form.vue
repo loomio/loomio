@@ -132,7 +132,7 @@ export default
     .poll-dot-vote-vote-form__too-many-dots(v-if='tooManyDots()', v-t="'poll_dot_vote_vote_form.too_many_dots'")
     .poll-dot-vote-vote-form__dots-remaining(v-if='!tooManyDots()', v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining() } }")
   v-list.poll-common-vote-form__options
-    v-list-tile.poll-dot-vote-vote-form__option.poll-common-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
+    v-list-item.poll-dot-vote-vote-form__option.poll-common-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
       v-layout
         p.poll-dot-vote-vote-form__chosen-option--name.poll-common-vote-form__border-chip.poll-common-bar-chart__bar(:style='styleData(choice)') {{ optionFor(choice).name }}
         v-layout

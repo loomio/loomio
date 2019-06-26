@@ -2,9 +2,7 @@
 @import 'variables';
 
 .progress-chart {
-  background-color: $background-color;
-  width: 50px;
-  height: 50px;
+  background-color: #ccc;
 }
 </style>
 
@@ -22,30 +20,34 @@ export default
   methods:
     draw: ->
       y = 0
-      _.each this.stanceCounts, (count, index) =>
-        height = (this.size * _.max([parseInt(count), 0])) / this.goal
-        this.svgEl.rect(this.size, height)
+      _.each @stanceCounts, (count, index) =>
+        height = (@size * _.max([parseInt(count), 0])) / @goal
+        @svgEl.rect(@size, height)
             .fill(AppConfig.pollColors.count[index])
             .x(0)
-            .y(this.size - height - y)
+            .y(@size - height - y)
         y += height
 
-      this.svgEl.circle(this.size / 2)
+      @svgEl.circle(@size / 2)
           .fill("#fff")
-          .x(this.size / 4)
-          .y(this.size / 4)
-      this.svgEl.text((_.sum(this.stanceCounts) || 0).toString())
-          .font(size: 16, anchor: 'middle')
-          .x(this.size / 2)
-          .y((this.size / 4) + 3)
+          .x(@size / 4)
+          .y(@size / 4)
+      @svgEl.text((_.sum(@stanceCounts) || 0).toString())
+          .font(size: @fontSize, anchor: 'middle')
+          .x(@size / 2)
+          .y((@size / 4) + 3)
   watch:
-    stanceCounts: -> this.draw()
+    stanceCounts: -> @draw()
+
+  computed:
+    fontSize: -> @size * 0.33
+
   mounted: ->
-    this.svgEl = svg(this.$el).size('100%', '100%')
-    this.draw()
+    @svgEl = svg(@$el).size('100%', '100%')
+    @draw()
 
 </script>
 
-<template>
-<div class="progress-chart"></div>
+<template lang="pug">
+div(:style="{width: size+'px', height: size+'px'}" class="progress-chart")
 </template>

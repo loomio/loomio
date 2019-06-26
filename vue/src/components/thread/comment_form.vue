@@ -73,8 +73,8 @@ export default
 </script>
 
 <template lang="pug">
-.comment-form.lmo-relative.lmo-flex--row
-  .thread-item__avatar.lmo-margin-right
+v-layout.comment-form.mx-3
+  .thread-item__avatar.mr-2
     user-avatar(:user='actor', size='medium')
   .thread-item__body.lmo-flex--column.lmo-flex__horizontal-center
     form(v-on:submit.prevent='submit()')
@@ -82,25 +82,8 @@ export default
       lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :helptext="helptext" :shouldReset="shouldReset")
       v-card-actions
         v-spacer
-        v-btn.comment-form__submit-button(:disabled="!canSubmit" flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
-
+        v-btn.comment-form__submit-button(:disabled="!canSubmit" color="primary" type='submit' v-t="'comment_form.submit_button.label'")
 </template>
 
 <style lang="scss">
-
-.comment-form .lmo-textarea md-input-container {
-  margin-top: -2px;
-}
-.comment-form-attachments input {
-  display: none;
-}
-
-.comment-form-button {
-  margin-left: 10px;
-  &:hover { cursor: pointer; }
-}
-
-.comment-form-container{
-  width: 100%;
-}
 </style>

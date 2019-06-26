@@ -32,12 +32,12 @@ export default
 <template lang="pug">
 .thread-members-panel
   v-list(two-line)
-    v-list-tile(v-for='membership in memberships' :key='membership.id')
-      v-list-tile-avatar
+    v-list-item(v-for='membership in memberships' :key='membership.id')
+      v-list-item-avatar
         user-avatar(:user='membership.user()' size='forty' :coordinator='membership.admin' :no-link='!membership.acceptedAt')
-      v-list-tile-content
-        v-list-tile-title {{membership.userName() || membership.user().email }}
-      v-list-tile-action
+      v-list-item-content
+        v-list-item-title {{membership.userName() || membership.user().email }}
+      v-list-item-action
         membership-dropdown(:membership="membership")
   v-btn.thread-members-panel__show-more(v-if="!loader.exhausted" :disabled="loader.loading" @click='loader.loadMore()', v-t="{ path: 'common.action.show_more' }")
   loading(v-if="loader.loading")

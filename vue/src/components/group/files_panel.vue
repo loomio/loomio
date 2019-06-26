@@ -93,18 +93,20 @@ export default
     v-toolbar-items
       v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
     v-spacer
+    v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
 
-  v-data-table(:items="items" :loading="loading" disable-initial-sort hide-actions)
+  v-data-table(:items="items" hide-default-footer)
     template(v-slot:no-data)
-      v-alert(:value="true" color="info" outline icon="info" v-t="'group_files_panel.no_files'")
-    template(v-slot:items="props")
-      td
-        v-layout(align-center)
-          v-icon mdi-{{props.item.icon}}
-          a(:href="props.item.downloadUrl || props.item.url") {{props.item.filename || props.item.title }}
-      td
-        user-avatar(:user="props.item.author()")
-      td
-        time-ago(:date="props.item.createdAt")
+      v-alert(:value="true" color="info" outlined icon="info" v-t="'group_files_panel.no_files'")
+    template(v-slot:item="{ item }")
+      tr
+        td
+          v-layout(align-center)
+            v-icon mdi-{{item.icon}}
+            a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
+        td
+          user-avatar(:user="item.author()")
+        td
+          time-ago(:date="item.createdAt")
   v-btn(v-if="showLoadMore" :disabled="loading" @click="loadMore()" v-t="'common.action.load_more'")
 </template>

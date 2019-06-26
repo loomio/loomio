@@ -1,7 +1,4 @@
 <style lang="scss">
-@import 'mixins';
-@import 'lmo_card';
-
 .inbox-page .thread-preview__pin {
   display: none;
 }

@@ -16,62 +16,63 @@ export default
   data: ->
     discussion: null
     activePolls: []
-    requestedSequenceId: 0
     loader: null
+    per: 25
+    threadPercentage: 0
 
   created: -> @init()
 
   watch:
-    $route: 'init'
-    discussion: (currentDiscussion, prevDiscussion) ->
-      @init() if prevDiscussion && currentDiscussion && (currentDiscussion.id != prevDiscussion.id)
+    '$route.params.key': 'init'
+    '$route.params.comment_id': 'init'
 
   methods:
+    openThreadNav: ->
+      EventBus.$emit('toggleThreadNav')
+
     init: ->
       @discussion = Records.discussions.findOrNull(@$route.params.key)
+      @commentId = parseInt(@$route.params.comment_id)
+      @sequenceId = parseInt(@$route.params.sequence_id)
 
-      @requestedSequenceId = parseInt(@$route.params.sequence_id)
-      @requestedCommentId = parseInt(@$route.params.comment_id)
+      EventBus.$on 'threadPositionUpdated', (position) =>
+        @threadPercentage = parseInt(position / @discussion.createdEvent().childCount * 100)
 
       @loader = new RecordLoader
         collection: 'events'
         params:
           discussion_id: @$route.params.key
-          from: @requestedSequenceId
-          comment_id: @requestedCommentId
+          from: @sequenceId
+          comment_id: @commentId
           order: 'sequence_id'
           per: @per
-
 
       @loader.fetchRecords().then =>
         Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
           @discussion = discussion
+          if @commentId
+            event = Records.events.find(
+                      discussionId: @discussion.id,
+                      kind: 'new_comment',
+                      eventableId: @commentId)[0]
+            @$router.push(LmoUrlService.discussion(@discussion)+'/'+event.sequenceId)
+          else
+            if @discussion.forkedEvent()
+              Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId)
 
-          if @requestedCommentId
-            @requestedSequenceId = Records.events.find(
-              discussionId: @discussion.id
-              kind: 'new_comment'
-              eventableId: @requestedCommentId
-              )[0].sequenceId
-
-          if @requestedSequenceId
-            @discussion.update({requestedSequenceId: @requestedSequenceId})
-
-          @discussion.markAsSeen()
-
-          if @discussion.forkedEvent()
-            Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId, simple: true)
-
-          EventBus.$emit 'currentComponent',
-            page: 'threadPage'
-            breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
+            EventBus.$emit 'currentComponent',
+              page: 'threadPage'
+              discussion: @discussion
+              breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
 </script>
 
 <template lang="pug">
 loading(:until="discussion")
   div(v-if="discussion")
     group-cover-image(:group="discussion.group()")
-    v-container.thread-page
+    v-container.thread-page.v-container-max-width
       discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
       thread-card(:loader='loader' :discussion='discussion')
+      v-btn.thread-page__open-thread-nav(fab fixed bottom right @click="openThreadNav()")
+        v-progress-circular(color="accent" :value="threadPercentage")
 </template>

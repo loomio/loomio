@@ -60,12 +60,6 @@ export default
       icon: 'mdi-pencil'
       canPerform: => AbilityService.canEditThread(@discussion)
       perform:    => @openEditDiscussionModal(@discussion)
-    ,
-      name: 'tag_thread'
-      icon: 'mdi-tag'
-      # canPerform: -> some Records.tags.find(groupId: scope.discussion.group().parentOrSelf().id)
-      canPerform: => true
-      perform:    => @openTagsModal(@discussion)
     ]
 
   computed:
@@ -89,10 +83,11 @@ export default
 
 <template lang="pug">
 //- section.context-panel.lmo-card-padding.lmo-action-dock-wrapper(aria-label="$t('thread_context.aria_label')")
-div.context-panel
-  v-layout(justify-space-between align-items-center mx-2 pt-2)
+div.context-panel#sequence-0
+  v-layout(align-center mx-2 pt-2)
     v-breadcrumbs(:items="groups" divider=">")
-    context-panel-dropdown(:discussion="discussion")
+    v-spacer
+    tags-display(:discussion="discussion")
 
   h1.headline.context-panel__heading.px-3
     span(v-if='!discussion.translation') {{discussion.title}}
@@ -105,9 +100,9 @@ div.context-panel
       user-avatar.mr-2(:user='discussion.author()', size='small')
       span
         strong {{discussion.authorName()}}
-        span.mx-1(aria-hidden='true') ·
+        mid-dot
         time-ago.nowrap(:date='discussion.createdAt')
-        span.mx-1(aria-hidden='true') ·
+        mid-dot
         span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
           i.mdi.mdi-lock-outline
           span(v-t="'common.privacy.private'")
@@ -115,25 +110,22 @@ div.context-panel
           i.mdi.mdi-earth
           span(v-t="'common.privacy.public'")
         span(v-show='discussion.seenByCount > 0')
-          span.mx-1(aria-hidden='true') ·
+          mid-dot
           span.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }")
         span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
-          span.mx-1(aria-hidden='true') ·
+          mid-dot
           span(v-t="'thread_context.forked_from'")
           router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
         v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
-      tags-display(:discussion="discussion")
-    .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'md'", v-marked='discussion.cookedDescription()')
-    .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'html'", v-html='discussion.description')
-
-    translation.lmo-markdown-wrapper(v-if='discussion.translation', :model='discussion', field='description')
+    formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion', :skip-fetch='true')
     attachment-list(:attachments="discussion.attachments")
   v-card-actions
     reaction-display.ml-2(:model="discussion" :load="true")
     v-spacer
     action-dock(:model='discussion', :actions='actions')
+    context-panel-dropdown(:discussion="discussion")
 </template>
 <style lang="scss">
 @import 'variables';

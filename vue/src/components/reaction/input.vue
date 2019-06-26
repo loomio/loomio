@@ -27,11 +27,11 @@ export default
 </script>
 
 <template lang="pug">
-v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu" lazy)
+v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
   template(v-slot:activator="{on:menu}")
     v-tooltip(bottom)
       template(v-slot:activator="{on:tooltip}")
-        v-btn.emoji-picker__toggle(flat icon v-on="{ ...tooltip, ...menu }")
+        v-btn.emoji-picker__toggle(text icon v-on="{ ...tooltip, ...menu }")
           v-icon mdi-emoticon-outline
       span(v-t="'reactions_input.add_your_reaction'")
   emoji-picker(:insert="insert")
