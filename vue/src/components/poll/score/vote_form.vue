@@ -1,44 +1,3 @@
-<style lang="scss">
-// .poll-score-vote-form__options{
-// }
-//
-// .poll-score-vote-form__option {
-//   padding: 0 !important;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   display: flex;
-// }
-//
-// .poll-score-vote-form__option-label-container {
-//   padding: 0 !important;
-//   display: flex;
-//   flex: 1;
-//   align-self: stretch;
-//   align-items: flex-start;
-//   justify-content: flex-start;
-// }
-//
-// .poll-score-vote-form__option-label {
-//   padding: 0 !important;
-// }
-//
-// .poll-score-vote-form__input-container {
-//   width: 90%;
-//   min-height: 48px;
-//   display: flex;
-// }
-//
-// .poll-score-vote-form__score-input {
-//   margin-left: 4px;
-//   margin-right: 4px;
-//   order: 0 !important;
-//   text-align: center;
-//   position: relative;
-//   top: 4px;
-// }
-</style>
-
 <script lang="coffee">
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
@@ -47,9 +6,7 @@ import WatchRecords from '@/mixins/watch_records'
 import { submitStance }  from '@/shared/helpers/form'
 import { submitOnEnter } from '@/shared/helpers/keyboard'
 
-import _head from 'lodash/head'
-import _filter from 'lodash/filter'
-import _map from 'lodash/map'
+import { head, filter, map } from 'lodash'
 
 export default
   mixins: [WatchRecords]
@@ -70,7 +27,7 @@ export default
         @pollOptions = @stance.poll().pollOptions()
   methods:
     stanceChoiceFor: (option) ->
-      _head(_filter(@stance.stanceChoices(), (choice) =>
+      head(filter(@stance.stanceChoices(), (choice) =>
         choice.pollOptionId == option.id
         ).concat({score: 0}))
 
@@ -79,7 +36,7 @@ export default
 
   computed:
     stanceChoices: ->
-      _map @pollOptions, (option) =>
+      map @pollOptions, (option) =>
         poll_option_id: option.id
         score: @stanceChoiceFor(option).score
 

@@ -14,12 +14,13 @@ import ThreadActivityMixin from '@/mixins/thread_activity'
 
 export default
   mixins: [WatchRecords, ThreadActivityMixin]
-  
+
   components:
     NewComment: NewComment
     PollCreated: PollCreated
     StanceCreated: StanceCreated
     OutcomeCreated: OutcomeCreated
+    ThreadItem: -> import('@/components/thread/item.vue')
 
   props:
     parentEvent: Object

@@ -1,26 +1,26 @@
 <style lang="scss">
-.poll-common-closing-at-field {
-  margin: 16px 0;
-}
-
-.poll-common-closing-at-field__label {
-  overflow: visible !important;
-  color: rgba(0,0,0,0.38) !important;
-}
-
-.poll-common-closing-at-field {
-  display: flex;
-  flex-direction: column;
-}
-
-.poll-common-closing-at-field__zone {
-  color: rgba(0,0,0,0.38);
-  margin: -40px 0 0 0;
-}
-
-.poll-common-closing-at-field__inputs {
-  display: flex;
-}
+// .poll-common-closing-at-field {
+//   margin: 16px 0;
+// }
+//
+// .poll-common-closing-at-field__label {
+//   overflow: visible !important;
+//   color: rgba(0,0,0,0.38) !important;
+// }
+//
+// .poll-common-closing-at-field {
+//   display: flex;
+//   flex-direction: column;
+// }
+//
+// .poll-common-closing-at-field__zone {
+//   color: rgba(0,0,0,0.38);
+//   margin: -40px 0 0 0;
+// }
+//
+// .poll-common-closing-at-field__inputs {
+//   display: flex;
+// }
 </style>
 
 <script lang="coffee">
@@ -52,15 +52,17 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-closing-at-field
+.poll-common-closing-at-field.my-3
   .poll-common-closing-at-field__inputs
-    v-layout
-      v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' :nudge-right='40' transition='scale-transition' offset-y full-width min-width='290px')
-        template(v-slot:activator='{ on }')
-          v-text-field(v-model='closingDate' readonly v-on='on')
-            template(v-slot:label)
-              poll-common-closing-at(:poll="poll")
-        v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate' :min='dateToday' @input="isShowingDatePicker = false")
-      v-select.poll-common-closing-at-field__timepicker(v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
+    v-layout(wrap)
+      v-flex
+        v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' :nudge-right='40' transition='scale-transition' offset-y full-width min-width='290px')
+          template(v-slot:activator='{ on }')
+            v-text-field(v-model='closingDate' readonly v-on='on' prepend-icon="mdi-calendar")
+              template(v-slot:label)
+                poll-common-closing-at(:poll="poll")
+          v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate' :min='dateToday' @input="isShowingDatePicker = false")
+      v-spacer
+      v-select.poll-common-closing-at-field__timepicker(prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
   validation-errors(:subject="poll", field="closingAt")
 </template>

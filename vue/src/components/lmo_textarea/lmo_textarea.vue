@@ -458,15 +458,24 @@ progress::-moz-progress-bar {
 }
 
 .ProseMirror {
-  border: 2px solid $border-color;
+  border-bottom: 1px solid $border-color;
   padding: 4px;
   margin: 4px;
-  border-radius: 4px;
   outline: none;
 }
 
+// .ProseMirror::after{
+//   bottom: -1px;
+//   content: "";
+//   left: 0;
+//   position: absolute;
+//   -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+//   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+//   width: 100%;
+// }
+
 .ProseMirror:focus {
-  border-color: var(--v-accent-base);
+  border-bottom: 2px solid var(--v-primary-base);
 }
 
 .ProseMirror img {
@@ -483,7 +492,7 @@ progress::-moz-progress-bar {
   color: #aaa;
   pointer-events: none;
   height: 0;
-  font-style: italic;
+  // font-style: italic;
 }
 
 .mention {

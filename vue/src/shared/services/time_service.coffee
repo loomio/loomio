@@ -42,12 +42,22 @@ export default new class TimeService
   timesOfDay: ->
     times = []
     _.times 24, (hour) ->
-      hour = (hour + 8) % 24
+      hour = hour % 24
       hour = "0#{hour}" if hour < 10
       times.push moment("2015-01-01 #{hour}:00").format('h:mm a')
-      times.push moment("2015-01-01 #{hour}:30").format('h:mm a')
+      # times.push moment("2015-01-01 #{hour}:30").format('h:mm a')
     times
 
+  meetingTimesOfDay: ->
+    times = []
+    _.times 24, (hour) ->
+      hour = hour % 24
+      hour = "0#{hour}" if hour < 10
+      times.push moment("2015-01-01 #{hour}:00").format('h:mm a')
+      times.push moment("2015-01-01 #{hour}:15").format('h:mm a')
+      times.push moment("2015-01-01 #{hour}:30").format('h:mm a')
+      times.push moment("2015-01-01 #{hour}:45").format('h:mm a')
+    times
 
   inTimeZone: (m, zone) =>
     m.tz(zone || AppConfig.timeZone)

@@ -219,9 +219,6 @@ export default new class AbilityService
     else
       @canAdministerPoll() || _.includes(@poll().voters(), Session.user())
 
-  canRemovePollOptions: (poll) ->
-    poll.isNew() || (poll.isActive() && poll.stancesCount == 0)
-
   canEditPoll: (poll) ->
     poll.isActive() and @canAdministerPoll(poll)
 

@@ -27,6 +27,7 @@ export default
     PollCreated: PollCreated
     StanceCreated: StanceCreated
     OutcomeCreated: OutcomeCreated
+    ThreadItem: -> import('@/components/thread/item.vue')
 
   props:
     loader: Object
