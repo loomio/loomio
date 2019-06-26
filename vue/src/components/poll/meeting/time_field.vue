@@ -1,6 +1,7 @@
 <script lang="coffee">
 import moment from 'moment'
 import TimeService from '@/shared/services/time_service'
+import Records     from '@/shared/services/records'
 export default
   props:
     poll: Object
@@ -8,12 +9,18 @@ export default
   created: ->
     @poll.update(optionDate: moment().format('YYYY-MM-DD'))
     @poll.update(optionTime: "00:00")
+    Records.users.fetchTimeZones().then (data) => @timeZones = data
 
   data: ->
+    timeZones: {}
     datePickerOpen: false
     timePickerOpen: false
     dateToday: moment().format('YYYY-MM-DD')
     times: TimeService.meetingTimesOfDay()
+
+  methods:
+    timeInZone: (zone) ->
+      @poll.handleDateOption().toLocaleString("en-US", {timeZone: "zone"});
 
 </script>
 <template lang="pug">
@@ -31,9 +38,17 @@ v-sheet
         v-date-picker.poll-common-closing-at-field__datepicker(v-model='poll.optionDate' no-title :min='dateToday' @input="datePickerOpen = false")
       v-spacer
       v-combobox.poll-common-closing-at-field__timepicker(v-model="poll.optionTime" :items="times" prepend-icon="mdi-clock-outline")
+    v-simple-table(dense height="100px")
+      tbody
+        tr(v-for="z in timeZones" :key="z[0]")
+          td {{z[0].replace('_',' ')}}
+          td
+            poll-meeting-time(:name="poll.handleDateOption()" :zone="z[0]")
 
   v-card-actions
     v-spacer
     v-btn.poll-meeting-form__option-button(color="accent" @click='poll.addOption()' v-t="'common.add'")
+
+
 
 </template>

@@ -4,6 +4,13 @@ class API::ProfileController < API::RestfulController
     respond_with_resource serializer: UserSerializer
   end
 
+  def time_zones
+    time_zones = User.joins(:memberships).
+                      where('memberships.group_id': current_user.formal_group_ids).
+                      group(:time_zone).count.sort_by {|k,v| -v }
+    render json: time_zones, root: false
+  end
+
   def mentionable_users
     instantiate_collection do |collection|
       collection.mention_search(current_user, model, params[:q])
