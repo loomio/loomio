@@ -12,7 +12,7 @@ export default
 <template lang="pug">
 v-footer
   v-layout(justify-space-around)
-    .powered-by
+    .powered-by.caption
       a(href="https://www.loomio.org/?frontpage" v-t="'powered_by.powered_by_loomio'" target="_blank")
       span(v-if="privacyUrl")
       | &nbsp;

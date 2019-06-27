@@ -42,5 +42,6 @@ v-card.poll-common-modal
       lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :placeholder="'poll_common_outcome_form.statement_placeholder'")
       poll-common-calendar-invite(:outcome='outcome', v-if='datesAsOptions()')
   v-card-actions
-    v-btn.poll-common-outcome-form__submit(@click='submit()', v-t="'poll_common_outcome_form.submit'")
+    v-spacer
+    v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()', v-t="'poll_common_outcome_form.submit'")
 </template>

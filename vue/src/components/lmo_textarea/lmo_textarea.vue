@@ -251,7 +251,7 @@ export default
 <template lang="pug">
 div
   v-textarea(v-if="format == 'md'" lmo_textarea v-model="model[field]" :placeholder="$t('comment_form.say_something')")
-  .editor(v-if="format == 'html'")
+  .editor.mb-4(v-if="format == 'html'")
     editor-menu-bar.menubar(:editor='editor')
       div.lmo-flex.lmo-flex__center(slot-scope='{ commands, isActive }')
         v-menu
@@ -458,9 +458,9 @@ progress::-moz-progress-bar {
 }
 
 .ProseMirror {
-  border-bottom: 1px solid $border-color;
-  padding: 4px;
-  margin: 4px;
+  border-bottom: 1px solid #999;
+  padding: 4px 0px;
+  margin: 4px 0px;
   outline: none;
 }
 
@@ -493,6 +493,9 @@ progress::-moz-progress-bar {
   pointer-events: none;
   height: 0;
   // font-style: italic;
+}
+.editor p.is-empty {
+  font-size: 16px;
 }
 
 .mention {

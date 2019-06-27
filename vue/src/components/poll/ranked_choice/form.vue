@@ -1,23 +1,3 @@
-<style lang="scss">
-// @import 'mixins';
-.poll-ranked-choice-form__add-option-field,
-.poll-ranked-choice-form__option-text {
-  flex-grow: 1;
-  width: 100%;
-  // @include truncateText;
-}
-
-.poll-ranked-choice-form__option-button {
-  display: flex;
-  min-width: 24px;
-  margin: 0 16px;
-}
-
-.poll-ranked-choice-form__option-icon {
-  margin: auto;
-}
-</style>
-
 <script lang="coffee">
 export default
   props:
@@ -29,7 +9,7 @@ export default
 <template lang="pug">
 .poll-ranked-choice-form
   poll-common-form-fields(:poll="poll")
-  poll-common-form-options(:poll="poll")
+  v-combobox(v-model="poll.pollOptionNames" multiple chips deletable-chips :label="$t('poll_common_form.options')" :placeholder="$t('poll_common_form.options_placeholder')")
   poll-common-closing-at-field.md-input-compensate.md-block(:poll="poll")
 
   .md-input-compensate

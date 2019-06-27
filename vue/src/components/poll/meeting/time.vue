@@ -5,6 +5,7 @@ export default
   props:
     name: String
     zone: String
+
   data: ->
     sameYear    : TimeService.sameYear
     displayYear : TimeService.displayYear

@@ -147,20 +147,13 @@ export default class PollModel extends BaseModel
       'edit'
 
   translatedPollType: ->
-
     I18n.t("poll_types.#{@pollType}")
 
-  addOption: =>
-    @handleDateOption()
-    return unless @newOptionName and !_.includes(@pollOptionNames, @newOptionName)
-    @pollOptionNames.push @newOptionName
-    @setErrors({})
-    @setMinimumStanceChoices()
-    @newOptionName = ''
-
-  handleDateOption: =>
-    @newOptionName = moment(@optionDate).format('YYYY-MM-DD')                                     if @optionDate
-    @newOptionName = moment("#{@newOptionName} #{@optionTime}", 'YYYY-MM-DD h:mma').toISOString() if @optionTime
+  addOption: (option) =>
+    return false if @pollOptionNames.includes(option) or !option
+    @pollOptionNames.push option
+    @pollOptionNames.sort() if @pollType == "meeting"
+    option
 
   setMinimumStanceChoices: =>
     return unless @isNew() and @hasRequiredField('minimum_stance_choices')
@@ -183,8 +176,6 @@ export default class PollModel extends BaseModel
 
   datesAsOptions: ->
     AppConfig.pollTemplates[@pollType]['dates_as_options']
-
-
 
   removeOrphanOptions: ->
     _.each @pollOptions(), (option) =>

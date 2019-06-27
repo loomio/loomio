@@ -13,7 +13,7 @@ export default
 <template lang="pug">
 .poll-poll-form
   poll-common-form-fields(:poll="poll")
-  v-combobox(v-model="poll.pollOptionNames" multiple chips deletable-chips :label="$t('poll_common_form.options')")
+  v-combobox(v-model="poll.pollOptionNames" multiple chips deletable-chips :label="$t('poll_common_form.options')" :placeholder="$t('poll_common_form.options_placeholder')")
   validation-errors(:subject="poll" field="pollOptions")
   poll-common-closing-at-field.md-input-compensate.md-block(:poll="poll")
   poll-common-settings(:poll="poll")

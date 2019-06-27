@@ -28,7 +28,7 @@ count:
   material_icon:          mdi-check-circle
   has_option_icons:       true
   must_have_options:      true
-  must_have_options:      true
+  can_remove_options:     true
   require_stance_choices: true
   can_vote_anonymously:    true
   single_choice:          true

@@ -215,7 +215,7 @@ export default
 
   loading-content(v-if='loader.loading && eventWindow.numLoaded() == 0' :blockCount='2')
 
-  .activity-panel__content(v-if='!loader.loadingFirst')
+  .activity-panel__content.mb-4(v-if='!loader.loadingFirst')
     a.activity-panel__load-more.lmo-flex.lmo-flex__center.lmo-no-print(v-show='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()', tabindex='0')
       i.mdi.mdi-autorenew
       span(v-t="{ path: 'discussion.load_previous', args: { count: eventWindow.numPrevious() }}")
@@ -224,8 +224,8 @@ export default
     component(:is="componentForKind(event.kind)" v-for='event in events' :key='event.id' :event='event' :event-window='eventWindow')
     .activity-panel__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadMore")
     loading.activity-panel__loading.page-loading(v-show='loader.loadingMore')
-
-  v-tabs.activity-panel__actions(centered icons-and-text v-model="currentAction")
+  v-divider
+  v-tabs.activity-panel__actions.mb-3(grow icons-and-text v-model="currentAction")
     v-tab(href='#add-comment')
       span(v-t="'activity_card.add_comment'")
       v-icon mdi-comment

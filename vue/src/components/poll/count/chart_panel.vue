@@ -1,8 +1,8 @@
 <style lang="scss">
 @import 'variables';
 .poll-count-chart-panel__chart-container {
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: 140px;
   position: relative;
 }
 
@@ -51,7 +51,7 @@ export default
 
 <template lang="pug">
 .poll-count-chart-panel
-  h3.lmo-card-subheading(v-t="'poll_common.results'")
+  v-subheader(v-t="'poll_common.results'")
   .poll-count-chart-panel__chart-container
     .poll-count-chart-panel__progress
       .poll-count-chart-panel__incomplete

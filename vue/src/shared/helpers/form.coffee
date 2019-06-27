@@ -53,16 +53,9 @@ export submitPoll = (scope, model, options = {}) ->
     prepareFn: =>
       EventBus.$emit 'processing'
       model.customFields.deanonymize_after_close = model.deanonymizeAfterClose if model.anonymous
-      switch model.pollType
-        # for polls with default poll options (proposal, check)
-        when 'proposal', 'count'
-          model.pollOptionNames = _.map fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
-        # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
-        when 'meeting'
-          model.customFields.can_respond_maybe = model.canRespondMaybe
-          model.addOption()
-        else
-          model.addOption()
+      model.customFields.can_respond_maybe = model.canRespondMaybe if model.pollType == 'meeting'
+      model.setErrors({})
+      model.setMinimumStanceChoices()
     failureCallback: ->
       scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
     successCallback: (data) ->

@@ -15,6 +15,8 @@
     "activestorage": "^5.2.2",
     "bowser": "^2.4.0",
     "core-js": "^2.6.9",
+    "date-fns": "2.0.0-beta.1",
+    "date-fns-tz": "1.0.7",
     "deepmerge": "^3.3.0",
     "diff-match-patch": "^1.0.4",
     "jstimezonedetect": "~1.0.5",
@@ -42,6 +44,7 @@
     "vue-i18n": "8.11.2",
     "vue-observe-visibility": "^0.4.4",
     "vue-router": "^3.0.6",
+    "vuebar": "0.0.20",
     "vuetify": "2.0.0-beta.4",
     "whatwg-fetch": "^3.0.0"
   },

@@ -72,6 +72,7 @@ thread-item.poll-created(:event="event" :event-window="eventWindow")
   .poll-common-card__results-shown(v-if='showResults')
     poll-common-directive(:poll='poll', name='chart-panel')
     poll-common-percent-voted(:poll='poll')
+    //- closing in x days
   poll-common-action-panel(:poll='poll')
   document-list(:model='poll')
   .lmo-md-actions

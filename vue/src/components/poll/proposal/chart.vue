@@ -15,20 +15,25 @@
 <script lang="coffee">
 import svg from 'svg.js'
 import AppConfig from '@/shared/services/app_config'
+import { sum, values, compact, keys, each } from 'lodash'
 
 export default
   props:
-    stanceCounts: Array
+    stanceData: Object
     diameter: Number
   data: ->
     svgEl: null
     shapes: []
     pollColors: AppConfig.pollColors
+    positionColors:
+      'agree': AppConfig.pollColors.proposal[0]
+      'abstain': AppConfig.pollColors.proposal[1]
+      'disagree': AppConfig.pollColors.proposal[2]
+      'block': AppConfig.pollColors.proposal[3]
   computed:
     radius: ->
       @diameter / 2.0
-    uniquePositionsCount: ->
-      _.compact(@stanceCounts).length
+
   methods:
     arcPath: (startAngle, endAngle) ->
       rad = Math.PI / 180
@@ -38,10 +43,10 @@ export default
       y2 = @radius + (@radius * Math.sin(-endAngle * rad))
       ["M", @radius, @radius, "L", x1, y1, "A", @radius, @radius, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"].join(' ')
     draw: ->
-      _.each @shapes, (shape) -> shape.remove()
+      @shapes.forEach (shape) -> shape.remove()
       start = 90
 
-      switch @uniquePositionsCount
+      switch values(@stanceData).filter((v) -> v > 0).length
         when 0
           @shapes.push @svgEl.circle(@diameter).attr
             'stroke-width': 0
@@ -49,17 +54,19 @@ export default
         when 1
           @shapes.push @svgEl.circle(@diameter).attr
             'stroke-width': 0
-            fill: AppConfig.pollColors.proposal[_.findIndex(@stanceCounts, (count) -> count > 0)]
+            fill: @positionColors[keys(@stanceData)[0]]
         else
-          _.each @stanceCounts, (count, index) =>
+          each @stanceData, (count, position) =>
             return unless count > 0
-            angle = 360/_.sum(@stanceCounts)*count
+            console.log @stanceData, sum(values(@stanceData)), 360/sum(values(@stanceData))*count
+            angle = 360/sum(values(@stanceData))*count
             @shapes.push @svgEl.path(@arcPath(start, start + angle)).attr
               'stroke-width': 0
-              fill: AppConfig.pollColors.proposal[index]
+              fill: @positionColors[position]
             start += angle
   watch:
-    stanceCounts: -> @draw()
+    stanceData: -> @draw()
+    
   mounted: ->
     @svgEl = svg(@$el).size('100%', '100%')
     @draw()

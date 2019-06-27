@@ -13,7 +13,7 @@ export default
 <template lang="pug">
 .poll-dot-vote-form
   poll-common-form-fields(:poll="poll")
-  poll-common-form-options(:poll="poll")
+  v-combobox(v-model="poll.pollOptionNames" multiple chips deletable-chips :label="$t('poll_common_form.options')" :placeholder="$t('poll_common_form.options_placeholder')")
   poll-common-closing-at-field(:poll="poll")
   v-layout.poll-common-checkbox-option__text(align-center)
     v-subheader(v-t="'poll_dot_vote_form.dots_per_person'")
