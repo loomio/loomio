@@ -7,7 +7,7 @@ class API::ProfileController < API::RestfulController
   def time_zones
     time_zones = User.where('time_zone is not null').joins(:memberships).
                       where('memberships.group_id': current_user.formal_group_ids).
-                      group(:time_zone).limit(20).count.sort_by {|k,v| -v }
+                      group(:time_zone).count.sort_by {|k,v| -v }
     render json: time_zones, root: false
   end
 
