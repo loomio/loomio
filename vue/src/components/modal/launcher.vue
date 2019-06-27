@@ -66,7 +66,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model="isOpen" max-width="600px" scrollable persistent)
+v-dialog(v-model="isOpen" max-width="600px" scrollable persistent :fullscreen="$vuetify.breakpoint.smAndDown")
   component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal")
 
 </template>

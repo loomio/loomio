@@ -125,13 +125,24 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
   v-list-item-action
     .thread-preview__pin.thread-preview__status-icon(v-if='thread.pinned', :title="$t('context_panel.thread_status.pinned')")
       v-icon mdi-pin
-  v-list-item-action(v-if='thread.discussionReaderId')
-    v-btn.thread-preview__dismiss(@click.prevent='dismiss()' icon v-show='thread.isUnread()' :class='{disabled: !thread.isUnread()}' :title="$t('dashboard_page.dismiss')")
-      v-icon.mdi mdi-check
-  v-list-item-action(v-if='thread.discussionReaderId')
-    v-btn.thread-preview__mute(@click.prevent='muteThread()' icon v-show='!thread.isMuted()' :title="$t('volume_levels.mute')")
-      v-icon.mdi mdi-volume-mute
-  v-list-item-action(v-if='thread.discussionReaderId')
-    v-btn.thread-preview__unmute(@click.prevent='unmuteThread()' icon v-show='thread.isMuted()' :title="$t('volume_levels.unmute')")
-      v-icon.mdi mdi-volume-plus
+
+  v-list-item-action
+    v-menu
+      template(v-slot:activator="{on}")
+        v-btn(icon v-on="on" @click.prevent)
+          v-icon mdi-dots-vertical
+      v-list
+        v-list-item(v-if='thread.isUnread()')
+          v-list-item-avatar
+            v-icon mdi-check
+          v-list-item-title.thread-preview__dismiss(@click.prevent='dismiss()' :class='{disabled: !thread.isUnread()}' v-t="'dashboard_page.dismiss'")
+        v-list-item(v-if='!thread.isMuted()')
+          v-list-item-avatar
+            v-icon mdi-volume-mute
+          v-list-item-title.thread-preview__mute(@click.prevent='muteThread()' icon v-t="'volume_levels.mute'")
+        v-list-item(v-if='thread.isMuted()' )
+          v-list-item-avatar
+            v-icon mdi-volume-plus
+          v-list-item-title.thread-preview__unmute(@click.prevent='unmuteThread()' icon v-t="'volume_levels.unmute'")
+
 </template>

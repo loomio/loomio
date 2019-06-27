@@ -12,7 +12,7 @@ export default
     load: Boolean
 
   data: ->
-    diameter: 20
+    diameter: 24
     maxNamesCount: 10
     loaded: !@load
     reactionHash: {all: []}
@@ -88,7 +88,7 @@ export default
               span {{colonToUnicode(reaction)}}
               //- span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
               //- span(v-if="reactionHash[reaction]") list present
-              user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" size="tiny")
+              user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
           .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
             span {{ user.name }}
 </template>
@@ -99,7 +99,7 @@ export default
   align-items: center;
   margin-right: 2px;
   span {
-    font-size: 20px;
+    font-size: 24px;
   }
 }
 .reactions-display__emojis {

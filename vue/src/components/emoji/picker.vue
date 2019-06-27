@@ -42,7 +42,7 @@ export default
 .emoji-picker {
   padding: 4px;
   background-color: #fff;
-  max-width: 220px;
+  max-width: 232px;
   max-height: 400px;
   overflow-y: auto;
 }
@@ -50,15 +50,14 @@ export default
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  font-size: 20px;
+  font-size: 48px;
 
   span {
-    width: 24px;
-    height: 24px;
+    width: 48px;
+    height: 48px;
     cursor: pointer;
     text-align: center;
     display: block;
-    border-radius: 50%;
     margin: 4px;
   }
 }
