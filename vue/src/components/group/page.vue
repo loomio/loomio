@@ -64,5 +64,6 @@ loading(:until='group')
       v-tabs(fixed-tabs v-model="activeTab" show-arrows)
         v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
           span(v-t="'group_page.'+tab.name")
+      v-divider
       router-view
 </template>
