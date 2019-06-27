@@ -1,5 +1,10 @@
 %h1 use beta client?
 
+%p
+  %a{href: '/dashboard/?use_vue=1'} Try it for one session
+
+%p Or switch on and off
+
 = form_tag(beta_path, method: :put) do
   = hidden_field_tag :enable, value: true
   = submit_tag :enable

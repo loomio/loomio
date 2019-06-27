@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     expires_now
     prevent_caching
 
-    if ENV['USE_VUE'] or (current_user.is_logged_in? && current_user.experiences['vue_client'])
+    if ENV['USE_VUE'] or params['use_vue'] or (current_user.is_logged_in? && current_user.experiences['vue_client'])
       render file: 'public/client/vue/index.html', layout: false
     else
       render 'application/index', layout: false

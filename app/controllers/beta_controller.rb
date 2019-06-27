@@ -11,6 +11,6 @@ class BetaController < ApplicationController
       current_user.experiences.delete('vue_client')
       current_user.save
     end
-    redirect_to '/dashboard'
+    redirect_to '/dashboard?use_vue=1'
   end
 end

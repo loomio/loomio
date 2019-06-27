@@ -22,6 +22,7 @@ export default
   data: ->
     groups: []
     open: null
+    version: AppConfig.version.split('.').slice(-1)[0]
 
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
@@ -66,6 +67,8 @@ v-navigation-drawer.lmo-no-print.sidenav-left(app width="250" v-model="open")
   v-toolbar
     img(style="height: 50%" :src="logoUrl" :alt="siteName")
     v-spacer
+    .caption
+      a(href="/beta") beta {{version}}
     v-btn.navbar__sidenav-toggle(icon @click="open = !open")
       v-avatar(tile size="36px")
         v-icon mdi-menu
