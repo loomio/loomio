@@ -61,7 +61,7 @@ export default
 </script>
 
 <template lang="pug">
-v-app-bar(app)
+v-app-bar(app clipped-right)
   v-btn.navbar__sidenav-toggle(icon v-if="!sidebarOpen" @click="toggleSidebar()")
     v-avatar(tile size="36px")
       v-icon mdi-menu
@@ -77,7 +77,7 @@ v-app-bar(app)
         | &gt;
         | &nbsp;
     span(v-if="!breadcrumbs") {{title}}
-  //- v-spacer
+  v-spacer
   notifications(v-if='isLoggedIn')
   v-toolbar-items
     v-btn.navbar__sign-in(text v-if='!isLoggedIn' v-t="'navbar.sign_in'" @click='signIn()')
