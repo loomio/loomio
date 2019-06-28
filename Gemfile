@@ -60,6 +60,7 @@ gem 'redis-rails'
 gem 'ruby-saml'
 gem 'google-cloud-translate'
 gem 'discourse-diff'
+gem 'puma'
 
 group :development, :test do
   gem 'parallel_tests'
@@ -95,7 +96,6 @@ group :test do
 end
 
 group :production do
-  gem 'puma'
   gem 'rack-timeout'
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'
