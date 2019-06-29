@@ -135,7 +135,7 @@ class API::MembershipsController < API::RestfulController
     visible = resource_class.joins(:group).joins(:user).includes(:inviter, {group: [:parent]})
     if current_user.group_ids.any?
       visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR
-                     groups.parent_id IN (#{current_user.adminable_group_ids.join(',')}) OR
+                     groups.parent_id IN (#{ids_or_null(current_user.adminable_group_ids)}) OR
                      groups.is_visible_to_public = 't'")
     else
       # why do we do this?
@@ -143,6 +143,13 @@ class API::MembershipsController < API::RestfulController
     end
   end
 
+  def ids_or_null(ids)
+    if ids.length == 0
+      'null'
+    else
+      ids.join(',')
+    end
+  end
   def visible_invitables
     load_and_authorize :group, :invite_people
     Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
