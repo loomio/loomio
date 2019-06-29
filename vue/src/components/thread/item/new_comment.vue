@@ -38,6 +38,7 @@ export default
 
   data: ->
     confirmOpts: null
+    showReplyForm: false
     actions: [
       name: 'react'
       canPerform: => AbilityService.canAddComment(@eventable.discussion())
@@ -45,8 +46,7 @@ export default
       name: 'reply_to_comment'
       icon: 'mdi-reply'
       canPerform: => AbilityService.canRespondToComment(@eventable)
-      perform:    =>
-        @$emit('reply-button-clicked', {event: @event, eventable: @eventable})
+      perform:    => @showReplyForm = true
     ,
       name: 'edit_comment'
       icon: 'mdi-pencil'
@@ -95,4 +95,5 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-wind
       reaction-display(:model="eventable")
       v-spacer
       action-dock(:model='eventable', :actions='actions')
+  comment-form(v-if="showReplyForm" :parentComment="event.model()" :discussion="eventWindow.discussion" @comment-submitted="showReplyForm = false")
 </template>

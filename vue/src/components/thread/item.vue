@@ -20,8 +20,6 @@ export default
 
   data: ->
     isDisabled: false
-    showCommentForm: false
-    parentComment: null
     isFocused: @updateIsFocused()
 
   methods:
@@ -42,13 +40,6 @@ export default
       flashSuccess: 'thread_item.event_removed'
 
     camelCase: camelCase
-
-    handleReplyButtonClicked: (obj) ->
-      @parentComment = obj.eventable
-      @showCommentForm = true
-
-    handleCommentSubmitted: ->
-      @showCommentForm = false
 
   computed:
     canRemoveEvent: ->
@@ -100,8 +91,6 @@ div
           button.md-button--tiny(v-if='canRemoveEvent', @click='removeEvent()')
             i.mdi.mdi-delete
         slot
-        //- component(v-if='hasComponent()' :is='camelCase(event.kind)' @reply-button-clicked="handleReplyButtonClicked" :event='event', :eventable='event.model()')
-    comment-form(v-if="showCommentForm" @comment-submitted="handleCommentSubmitted" :parentComment="parentComment" :discussion="eventWindow.discussion")
   template(v-if='event.isSurface() && eventWindow.useNesting')
     event-children(:parent-event='event' :parent-event-window='eventWindow')
 </template>

@@ -40,10 +40,10 @@ v-sheet
       v-icon mdi-window-close
   v-card-text
     date-time-picker(v-model="value" :min="min")
-    v-simple-table(dense height="100px")
+    v-simple-table(dense style="max-height: 100px")
       tbody
         tr(v-for="z in zoneCounts" :key="z[0]")
-          td {{z[0].replace('_',' ')}} ({{z[1]}})
+          td {{z[0].replace('_',' ')}}
           td {{timeInZone(z[0])}}
 
   v-card-actions

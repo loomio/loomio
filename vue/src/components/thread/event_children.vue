@@ -60,6 +60,7 @@ export default
       @loader.loadMore(@eventWindow.lastLoaded()+1) if @eventWindow.canLoadNext()
 
     debug: -> AppConfig.debug
+
 </script>
 
 <template lang="pug">
