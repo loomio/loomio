@@ -27,7 +27,10 @@ export default
       @isFocused = parseInt(@$route.params.sequence_id) == @event.sequenceId
 
     viewed: (viewed) ->
-      @event.markAsRead() if viewed
+     if viewed
+       @event.markAsRead()
+       if @event.depth == 1
+         EventBus.$emit('threadPositionUpdated', @event.position)
 
     hasComponent: ->
       includes(threadItemComponents, camelCase(@event.kind))
@@ -68,7 +71,7 @@ export default
 
 <template lang="pug">
 div
-  .thread-item(:class="{'thread-item--unread': isUnread, 'thread-item--focused': isFocused}" v-observe-visibility="{callback: viewed, once: true}")
+  .thread-item(:class="{'thread-item--unread': isUnread, 'thread-item--focused': isFocused}" v-observe-visibility="{callback: viewed}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
       .lmo-disabled-form(v-show='isDisabled')
       .thread-item__avatar.mr-3
