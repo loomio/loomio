@@ -77,13 +77,16 @@ export default
   methods:
     # showLintel: (bool) ->
     #   EventBus.broadcast $rootScope, 'showThreadLintel', bool
+    viewed: (viewed) ->
+     EventBus.$emit('threadPositionUpdated', 0) if viewed
+
     showRevisionHistory: ->
       ModalService.open 'RevisionHistoryModal', model: => @discussion
 </script>
 
 <template lang="pug">
 //- section.context-panel.lmo-card-padding.lmo-action-dock-wrapper(aria-label="$t('thread_context.aria_label')")
-div.context-panel#sequence-0
+div.context-panel#sequence-0(v-observe-visibility="{callback: viewed}")
   v-layout(align-center mx-2 pt-2)
     v-breadcrumbs(:items="groups" divider=">")
     v-spacer
