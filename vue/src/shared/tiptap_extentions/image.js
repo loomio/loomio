@@ -152,6 +152,7 @@ export default class Image extends Node {
                          event.clipboardData.getData('text/plain') || Date.now(),
                          {lastModified: Date.now(), type: item.type})
               )
+              const coordinates = null;
               handleUploads({files, view, attachFile, attachImageFile, coordinates})
             },
             drop(view, event) {
