@@ -25,7 +25,6 @@ export default
   methods:
     updateNewValue: ->
       @newValue = parse("#{@dateStr} #{@timeStr}", 'yyyy-MM-dd h:mm a', new Date)
-      console.log 'newValue', @newValue, "#{@dateStr} #{@timeStr}"
       @$emit('input', @newValue)
 
   watch:
