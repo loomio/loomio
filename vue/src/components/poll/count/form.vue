@@ -15,7 +15,7 @@ export default
 .poll-count-form
   poll-common-form-fields(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
-  v-combobox(v-model="poll.pollOptionNames" item-avatar="avatar" :items="items" multiple chips deletable-chips :label="$t('poll_common_form.options')")
+  v-select(v-model="poll.pollOptionNames" item-avatar="avatar" :items="items" multiple chips deletable-chips :label="$t('poll_common_form.options')")
     template(v-slot:selection="{item, parent, selected}")
       v-chip(pill :key="item")
         v-avatar(:size="30")
