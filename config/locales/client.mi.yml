@@ -50,6 +50,7 @@ mi:
     copied: 'Kua taruatia ki te papa whakapine'
     total: Tapeke
     action:
+      search: 'Rapu'
       next: 'Kei mua'
       close: 'Katia'
       reopen: 'Tūwhera anō'
@@ -121,6 +122,7 @@ mi:
       label: 'Pānui'
     sign_in: "Me takiuru mai, he whakamana mō te whakawhiti kōrero"
   sidebar:
+    threads: 'Ngā miro'
     muted_threads: 'Ngā miro kāhore e kōrero ana'
   navbar:
     search:
@@ -147,6 +149,8 @@ mi:
   revision_history_modal:
     current_revision: Hou ake
   group_page:
+    threads: Ngā miro
+    members: Ngā Mema
     invite_people: 'Pōwhiri'
     options_label: 'Ngā Kōwhiringa'
     options:
@@ -200,6 +204,12 @@ mi:
     poll_title: Pōti
   poll_common:
     save_changes: Tiaki
+  discussions_panel:
+    unread: Kāhore anō kia kitea
+    closed: Kua kati
+  members_panel:
+    order_by_name: 'Ingoa'
+    header_name: 'Ingoa'
   poll_common_form:
     closed: Kua kati
     start: Tīmatatia

@@ -11,6 +11,7 @@ mk:
     models:
       proposal: 'Предлог'
     action:
+      search: 'Пребарувај'
       save: 'Зачувај'
       edit: 'Измени'
       like: 'Ми се допаѓа'
@@ -24,6 +25,8 @@ mk:
     edit_comment: 'Измени го коментарот'
     delete_comment: 'Избриши го коментарот'
     confirm_delete_message: 'Дали си сигурен/а дека сакаш да го избришиш коментарот?'
+  sidebar:
+    threads: 'Дискусии'
   navbar:
     search:
       placeholder: 'Пребарувај'
@@ -46,6 +49,8 @@ mk:
     name_label: Име
     email_label: Email
   group_page:
+    threads: Дискусии
+    members: Членови
     options_label: 'Опции'
     options:
       label: 'Опции'
@@ -92,6 +97,11 @@ mk:
     message_label: 'Твојата порака'
   poll_common:
     save_changes: Зачувај
+  discussions_panel:
+    closed: Затворено
+  members_panel:
+    order_by_name: 'Име'
+    header_name: 'Име'
   poll_common_form:
     closed: Затворено
   poll_count_options:

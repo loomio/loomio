@@ -9,6 +9,7 @@ km:
     models:
       proposal: 'សំណើ'
     action:
+      search: 'ស្វែងរក'
       save: 'រក្សាទុក​'
       edit: 'កែរសម្រួល'
       like: 'ចូលចិត្ត'
@@ -21,6 +22,8 @@ km:
   comment_form:
     delete_comment: 'លុបមតិយោបល់ '
     confirm_delete_message: 'តើអ្នកប្រាកដថាអ្នកចង់លុបមតិយោបល់នេះ?'
+  sidebar:
+    threads: 'ការពិភាក្សារ'
   navbar:
     search:
       placeholder: 'ស្វែងរក'
@@ -41,6 +44,8 @@ km:
     name_label: ឈ្មោះ
     email_label: អ៊ីម៉ែល
   group_page:
+    threads: ការពិភាក្សារ
+    members: សមាជិក
     options_label: 'ជម្រើស '
     options:
       label: 'ជម្រើស '
@@ -80,6 +85,11 @@ km:
     vote: 'អ្នកអាចផ្លាស់ប្ដូរទីតាំងរបស់អ្នកនៅពេលណាមួួយ'
   poll_common:
     save_changes: រក្សាទុក​
+  discussions_panel:
+    closed: បានបិទ
+  members_panel:
+    order_by_name: 'ឈ្មោះ'
+    header_name: 'ឈ្មោះ'
   poll_common_form:
     closed: បានបិទ
   poll_count_options:

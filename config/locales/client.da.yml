@@ -70,6 +70,7 @@ da:
     copy_text: 'Kopier tekst'
     copied: 'Kopieret til clipboard'
     action:
+      search: 'Søg'
       next: 'Næste'
       close: 'Luk'
       save: 'Gem'
@@ -205,6 +206,7 @@ da:
     public_privacy_notice: 'Din kommentar til kun være synlig for all på internettet.'
     sign_in: "Log ind for at deltage i debatten"
   sidebar:
+    threads: 'Debatter'
     recent_threads: 'Seneste debatter'
     unread_threads: 'Ulæste debatter ({{count}})'
     muted_threads: 'Uden notifikationer'
@@ -336,6 +338,8 @@ da:
     posted: Gemt
     current_revision: Seneste
   group_page:
+    threads: Debatter
+    members: Medlemmer
     messages:
       privacy:
         members: 'Denne gruppe er nu kun synlig for medlemmer'
@@ -831,6 +835,13 @@ da:
     label: Vedhæftede filer
   poll_common_card:
     show_results: Vis resultater
+  discussions_panel:
+    unread: Ulæst
+    closed: Lukket
+  members_panel:
+    order_by_name: 'Navn'
+    header_name: 'Navn'
+    header_username: 'Brugernavn'
   current_polls_card:
     start_poll: Opret stillingtagen
   poll_common_collapsed:
@@ -860,7 +871,6 @@ da:
     meeting_closed: Find tidspunkt afsluttet
   poll_common_closing_at_field:
     closing: Lukker
-    closing_hour: Sluttidspunkt
   poll_card:
     started_by: Oprettet af {{name}}
   poll_common_votes_panel:
@@ -974,8 +984,6 @@ da:
     reason_placeholder: Skrive en besked
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
-  poll_common_percent_voted:
-    sentence: "{{percent}}% af medlemmerne har afgivet deres stemme ({{numerator}}/{{denominator}})"
   poll_count_chart_panel:
     out_of: af {{goal}}
   poll_meeting_chart_panel:

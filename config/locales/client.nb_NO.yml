@@ -90,6 +90,7 @@ nb_NO:
     points_abbrev: Hver stemme er verdt {{score}} poeng
     total: Totalt
     action:
+      search: 'Søk'
       next: 'Neste'
       close: 'Lukk'
       reopen: 'Gjenåpne'
@@ -267,6 +268,7 @@ nb_NO:
     public_privacy_notice: 'Kommentaren din vil være synlig for alle på nettet.'
     sign_in: "Logg inn for å bli med i samtalen"
   sidebar:
+    threads: 'Tråder'
     recent_threads: 'Siste tråder'
     unread_threads: 'Uleste tråder ({{count}})'
     muted_threads: 'Dempede tråder'
@@ -522,6 +524,7 @@ nb_NO:
       pinned: "Denne tråden er festet. Den vil forbli på toppen av gruppelista for alle brukere."
       closed: "Denne tråden har blitt stengt. Den vil ikke være synlig på Skrivebordet, og ligge under 'lukket' på gruppesiden"
   group_page:
+    threads: Tråder
     show_opened: '{{count}} Åpne'
     show_closed: '{{count}} Lukket'
     no_threads_here: Ingen tråder å se her!
@@ -615,6 +618,12 @@ nb_NO:
     ranked_choice_title: Rangering
   poll_common:
     save_changes: Lagre
+  discussions_panel:
+    unread: Ulest
+    closed: Lukket
+  members_panel:
+    order_by_name: 'Navn'
+    header_name: 'Navn'
   current_polls_card:
     start_poll: Ny beslutning
   poll_common_select_group:

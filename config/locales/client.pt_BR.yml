@@ -106,6 +106,7 @@ pt_BR:
     points_abbrev: Cada voto vale {{score}} pontos
     total: Total
     action:
+      search: 'Pesquisar'
       next: 'Próximo'
       close: 'Encerrar'
       reopen: 'Reaberto'
@@ -282,6 +283,7 @@ pt_BR:
     public_privacy_notice: 'Seu comentário será visível para qualquer pessoa na web'
     sign_in: "Entre para se juntar à conversa"
   sidebar:
+    threads: 'Conversas'
     recent_threads: 'Conversas recentes'
     unread_threads: 'Conversas não lidas ({{count}})'
     muted_threads: 'Conversas silenciadas'
@@ -503,6 +505,8 @@ pt_BR:
       pinned: "Esta conversa foi afixada. Ela permanecerá no topo da lista de conversas do grupo para todos os usuários."
       closed: "Esta conversa foi encerrada. Ela não aparecerá no painel, e será listada na categoria 'encerrada' na página do grupo."
   group_page:
+    threads: Conversas
+    members: Membros ({{count}})
     show_closed: '{{count}} Encerrado'
     no_threads_here: Nenhuma conversa para ler aqui!
     search_threads: Buscar por conversas…
@@ -875,6 +879,7 @@ pt_BR:
     attachment_display:
       aria_label: 'Arquivo anexo:'
       image_alt: 'Imagem anexa'
+    add_comment: Adicionar comentário
   thread_group:
     aria_label: 'Nome do grupo'
   thread_context:
@@ -1053,6 +1058,13 @@ pt_BR:
     label: Anexos
   poll_common_card:
     show_results: Mostrar resultados
+  discussions_panel:
+    unread: Não lida
+    closed: Encerrado
+  members_panel:
+    order_by_name: 'Nome'
+    header_name: 'Nome'
+    header_username: 'Nome de usuário'
   poll_common_select_group:
     loomio_group: Grupo
   poll_common_notify_group:

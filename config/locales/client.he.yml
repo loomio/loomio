@@ -114,6 +114,7 @@ he:
     points_abbrev: כל הצבעה שווה {{score}} נקודות
     total: סך הכל
     action:
+      search: 'חיפוש'
       next: 'הבא'
       close: 'סגור'
       reopen: 'פתח מחדש'
@@ -294,6 +295,7 @@ he:
     public_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה לכולם.'
     sign_in: "הרשם להצטרפות לדיון"
   sidebar:
+    threads: 'שיחות'
     recent_threads: 'שיחות אחרונות'
     unread_threads: 'שיחות שלא נקראו ({{count}})'
     muted_threads: 'שיחות שהושתקו'
@@ -559,6 +561,8 @@ he:
       pinned: "השיחה הזו הוצמדה למעלה. היא תשאר בראש רשימת השיחות בקבוצה לכל המשתמשים."
       closed: "השיחה הזו נסגרה. היא לא תופיע בדשבורד, ותופיע כ'סגורה' בדף הקבוצה."
   group_page:
+    threads: שיחות
+    members: חברים
     show_opened: '{{count}} פתוחים'
     show_closed: '{{count}} סגורים'
     no_threads_here: אין שיחות פה!
@@ -578,7 +582,6 @@ he:
     open_discussions: 'שיחות פתוחות'
     closed_discussions: 'שיחות סגורות'
     discussions_placeholder: 'שיחה היא מקום מפגש משותף לדיון על נושא וקבלת החלטות משותפת.'
-    members: '{{count}} חברים'
     members_placeholder: 'רק אתה פה בינתיים... הזמן כמה אנשים להצטרף אליך!'
     member_options: אפשרויות חבר
     see_all_members: 'ראה את כל {{count}} החברים'
@@ -1262,8 +1265,14 @@ he:
     show_results: הראה תוצאות
   poll_common_index_card:
     title: החלטות קודמות
-    no_polls: לא נמצאו החלטות קודמות.
     count: "צפה בכל: ({{count}}) ההחלטות"
+  discussions_panel:
+    unread: לא-נקרא
+    closed: סגור
+  members_panel:
+    order_by_name: 'שם'
+    header_name: 'שם'
+    header_username: 'שם משתמש'
   poll_common_action_panel:
     anonymous: ההצבעות יהיו אנונימיות
     anonymous_until_close: ההצבעות יהיו אנונימיות עד לסגירת הסקר
@@ -1342,7 +1351,6 @@ he:
     ranked_choice_reopened: סקר לפי דירוג נפתחה מחדש
   poll_common_closing_at_field:
     closing: סוגרים
-    closing_hour: שעת סגירה
   poll_card:
     started_by: התחיל לפי {{name}}
   poll_common_votes_panel:
@@ -1395,7 +1403,6 @@ he:
     title: כותרת
     details: פירוט
     options: אפשרויות
-    options_placeholder: הוסף אפשרות חדשה...
     no_options: לא הוספת עוד אף אפשרות.
     closing: סוגרים
     closed: סגור
@@ -1496,7 +1503,6 @@ he:
     timeslots: משבצות זמן
     no_options: הזן זמנים באיזור הזמן שלך ({{zone}}). משתתפים יראו את הזמנים מתורגמים לאיזורי הזמן שלהם.
     meeting_duration: אורך הפגישה
-    add_option_placeholder: הזן זמן חדש
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>דירוג בחירה היא שיטת הצבעה שמאפשרת לכל מצביע להגיב עם העתפותיהם לפי סדר.</p>
@@ -1551,8 +1557,6 @@ he:
     reason_placeholder: השאר הודעה, אם תרצה
     stance_created: הצבעה נוצרה
     stance_updated: הצבעה עודכנה
-  poll_common_percent_voted:
-    sentence: "{{percent}}% החברים הצהירו את עמדתם ({{numerator}}/{{denominator}})"
   poll_count_chart_panel:
     out_of: מחוץ ל{{goal}}
   poll_meeting_chart_panel:

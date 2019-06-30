@@ -69,6 +69,7 @@ ca:
     copied: 'Copiat al porta-retalls'
     total: Total
     action:
+      search: 'Cerca'
       close: 'Tanca'
       save: 'Desa'
       save_changes: 'Desa els canvis'
@@ -185,6 +186,7 @@ ca:
     public_privacy_notice: 'El comentari serà visible per a tothom.'
     sign_in: "Inicieu la sessió per unir-vos a la conversa"
   sidebar:
+    threads: 'Fils'
     explore: 'Grups públics'
     aria_labels:
       heading: 'Barra lateral'
@@ -255,6 +257,8 @@ ca:
   reactions_display:
     you: "Tu"
   group_page:
+    threads: Fils
+    members: Membres
     messages:
       privacy:
         members: 'Ara aquest grup és visible només als seus membres'
@@ -632,6 +636,13 @@ ca:
   poll_common:
     start_poll: Comença una decissió
     save_changes: Desa
+  discussions_panel:
+    unread: No llegit
+    closed: Tancat
+  members_panel:
+    order_by_name: 'Nom'
+    header_name: 'Nom'
+    header_username: 'Nom d''usuari'
   poll_common_form:
     closed: Tancat
     start: Començar

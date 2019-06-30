@@ -15,6 +15,7 @@ gl:
     models:
       proposal: 'Proposta'
     action:
+      search: 'Buscar'
       save: 'Gardar'
       edit: 'Editar'
       like: 'Gústame'
@@ -30,6 +31,8 @@ gl:
   comment_form:
     edit_comment: 'Editar commentario'
     delete_comment: 'Borrar comentario'
+  sidebar:
+    threads: 'Debates'
   navbar:
     search:
       placeholder: 'Buscar'
@@ -50,6 +53,8 @@ gl:
     name_label: Nome
     email_label: Correo electrónico
   group_page:
+    threads: Debates
+    members: Membros
     options_label: 'Opcións'
     options:
       label: 'Opcións'
@@ -102,6 +107,13 @@ gl:
     vote: 'Podes cambiar a proposta en calquera momento'
   poll_common:
     save_changes: Gardar
+  discussions_panel:
+    unread: Sin ler
+    closed: Pechado
+  members_panel:
+    order_by_name: 'Nome'
+    header_name: 'Nome'
+    header_username: 'Usuario'
   poll_common_form:
     closed: Pechado
   poll_count_options:

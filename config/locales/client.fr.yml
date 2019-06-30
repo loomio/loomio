@@ -115,6 +115,7 @@ fr:
     points_abbrev: Chaque vote vaut {{score}} points
     total: Total
     action:
+      search: 'Rechercher'
       next: 'Suivant'
       close: 'Fermer'
       reopen: 'Relancer'
@@ -295,6 +296,7 @@ fr:
     public_privacy_notice: 'Votre commentaire sera visible par tout le monde sur internet.'
     sign_in: "Connectez-vous pour rejoindre la discussion"
   sidebar:
+    threads: 'Discussions'
     recent_threads: 'Discussions récentes'
     unread_threads: 'Discussions non lues ({{count}})'
     muted_threads: 'Discussions ignorées'
@@ -560,6 +562,8 @@ fr:
       pinned: "Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour l’ensemble des utilisateurs."
       closed: "Cette discussion a été close. Elle ne sera plus affichée sur le tableau de bord, et sera affichée dans les discussions closes sur la page du groupe"
   group_page:
+    threads: Discussions
+    members: Membres
     show_opened: '{{count}} ouvertes'
     show_closed: '{{count}} closes'
     no_threads_here: Pas de discussions à afficher ici !
@@ -579,7 +583,6 @@ fr:
     open_discussions: 'Discussions en cours'
     closed_discussions: 'Discussions closes'
     discussions_placeholder: 'Une discussion est l’endroit où tout le monde peut discuter d’un sujet et prendre des décisions collectives.'
-    members: '{{count}} membres'
     members_placeholder: 'Vous êtes le seul membre ici: invitez des personnes à vous rejoindre !'
     member_options: Options des membres
     see_all_members: 'Voir les {{count}} membres'
@@ -1040,6 +1043,7 @@ fr:
       image_alt: 'Image jointe'
     n_previous: 'Afficher {{count}} réponses précédentes'
     n_more: 'Afficher {{count}} réponses'
+    add_comment: Ajouter un commentaire
   thread_group:
     aria_label: 'Nom du groupe'
   thread_context:
@@ -1262,8 +1266,14 @@ fr:
     show_results: Afficher les résultats
   poll_common_index_card:
     title: Décisions précédentes
-    no_polls: Aucune décision précédente trouvée
     count: "Voir tout : ({{count}}) décisions"
+  discussions_panel:
+    unread: Non lu
+    closed: Clôturée
+  members_panel:
+    order_by_name: 'Nom'
+    header_name: 'Nom'
+    header_username: 'Identifiant utilisateur'
   poll_common_action_panel:
     anonymous: Les votes seront anonymes
     anonymous_until_close: Les votes seront anonymes jusqu'à la clôture du sondage
@@ -1342,7 +1352,6 @@ fr:
     ranked_choice_reopened: Classement par préférence rouvert
   poll_common_closing_at_field:
     closing: Fermeture
-    closing_hour: Heure de fin
   poll_card:
     started_by: Démarré par {{name}}
   poll_common_votes_panel:
@@ -1395,7 +1404,6 @@ fr:
     title: Titre
     details: Détails
     options: Options
-    options_placeholder: Saisissez une nouvelle option…
     no_options: Vous n’avez pas encore ajouté d’options
     closing: Fermeture
     closed: Clôturée
@@ -1496,7 +1504,6 @@ fr:
     timeslots: Créneaux horaires
     no_options: Saisissez les horaires dans votre fuseau horaire ({{zone}}). Les participants verront ces horaires traduits dans leur fuseau horaire.
     meeting_duration: Durée de la réunion
-    add_option_placeholder: Entrer un nouvel horaire
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>Un classement par préférence est une méthode de vote qui permet à chaque participant d’exprimer leurs priorités.</p>
@@ -1551,8 +1558,6 @@ fr:
     reason_placeholder: Laissez un message si vous le voulez
     stance_created: Vote créé
     stance_updated: Vote mis à jour
-  poll_common_percent_voted:
-    sentence: "{{percent}}% des membres ont donné leur avis ({{numerator}}/{{denominator}})"
   poll_count_chart_panel:
     out_of: sur {{goal}}
   poll_meeting_chart_panel:

@@ -98,5 +98,8 @@ fi:
       delete_comment: 'Poista kommentti'
   poll_common:
     save_changes: Tallenna
+  discussions_panel:
+    unread: Lukematon
+    closed: Suljettu
   poll_common_form:
     closed: Suljettu

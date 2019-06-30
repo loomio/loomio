@@ -32,6 +32,7 @@ sr_RS:
       proposal: 'Предлог'
     copied: 'Копирано'
     action:
+      search: 'Тражи'
       close: 'Затвори'
       save: 'Сними'
       save_changes: 'Сачувај промене'
@@ -75,6 +76,8 @@ sr_RS:
     edit_comment: 'Измени коментар'
     delete_comment: 'Обриши коментар'
     confirm_delete_message: 'Да ли сте сигурни да желите обрисати овај коментар?'
+  sidebar:
+    threads: 'Низови'
   navbar:
     search:
       placeholder: 'Тражи'
@@ -101,6 +104,8 @@ sr_RS:
     started_by: 'Креирао/ла <strong>{{name}}</strong>'
     posted: Објављено
   group_page:
+    threads: Низови
+    members: Чланови
     options_label: 'Опције'
     options:
       label: 'Опције'
@@ -181,6 +186,13 @@ sr_RS:
     vote: 'Можете променити свој став било када'
   poll_common:
     save_changes: Сними
+  discussions_panel:
+    unread: Непрочитано
+    closed: Истекло
+  members_panel:
+    order_by_name: 'Име'
+    header_name: 'Име'
+    header_username: 'Корисничко Име'
   poll_common_form:
     closed: Истекло
   poll_count_options:

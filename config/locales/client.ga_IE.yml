@@ -52,6 +52,7 @@ ga_IE:
     copy_text: 'Macasamhlaigh an téacs'
     copied: 'Macasamhaltha chuig an ghearrthaisce'
     action:
+      search: 'Cuardaigh'
       next: 'Ar aghaidh'
       close: 'Dún'
       save: 'Taisc'
@@ -154,6 +155,7 @@ ga_IE:
     submit_button:
       label: 'Foilsigh é'
   sidebar:
+    threads: 'Snáitheanna'
     explore: 'Baiclí poiblí'
     start_thread: Snáith nua
     start_decision: Cinneadh nua
@@ -227,6 +229,8 @@ ga_IE:
     posted: Foilsithe
     current_revision: Is déanaí
   group_page:
+    threads: Snáitheanna
+    members: Comhaltaí
     messages:
       privacy:
         members: 'Is iad na comhaltaí amháin ar féidir leo an bhaicle seo a fheiceáil'
@@ -511,6 +515,13 @@ ga_IE:
     poll_title: Vótáil
   poll_common:
     save_changes: Taisc
+  discussions_panel:
+    unread: Neamhléite
+    closed: Dúnta
+  members_panel:
+    order_by_name: 'Ainm'
+    header_name: 'Ainm'
+    header_username: 'Ainm úsáideora'
   current_polls_card:
     start_poll: Cinneadh nua
   poll_common_notify_group:

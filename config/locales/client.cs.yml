@@ -72,6 +72,7 @@ cs:
     copied: 'Zkopírováno'
     total: Celkem
     action:
+      search: 'Vyhledávat'
       next: 'Další'
       close: 'Zavřít'
       save: 'Uložit'
@@ -209,6 +210,7 @@ cs:
     public_privacy_notice: 'Váš komentář bude viditelný všem na webu.'
     sign_in: "Přihlaste se a připojte se ke konverzaci"
   sidebar:
+    threads: 'Vlákna'
     recent_threads: 'Aktuální vlákna'
     unread_threads: 'Nepřečtená vlákna ({{count}})'
     muted_threads: 'Ztlumená vlákna'
@@ -349,6 +351,8 @@ cs:
     thread_status:
       pinned: "Toto vlákno bylo připnuté. Zůstane v horní části seznamu témat pro všechny uživatele."
   group_page:
+    threads: Vlákna
+    members: Členové
     messages:
       leave_group_success: 'Tuto skupinu jste opustil(a)'
       archive_group_success: 'Tato skupina byla deaktivována'
@@ -667,8 +671,14 @@ cs:
       options_added: Volba byla přidána
   poll_common_index_card:
     title: Předchozí rozhodnutí
-    no_polls: Žádná předchozí rozhodnutí.
     count: "Zobrazit všechna: ({{count}}) rozhodnutí"
+  discussions_panel:
+    unread: Nepřečteno
+    closed: Zavřená
+  members_panel:
+    order_by_name: 'Název'
+    header_name: 'Název'
+    header_username: 'Uživatelské jméno'
   current_polls_card:
     title: Aktuální rozhodnutí
     start_poll: Nové rozhodnutí

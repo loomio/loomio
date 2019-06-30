@@ -20,6 +20,7 @@ sl:
     models:
       proposal: 'Predlog'
     action:
+      search: 'Išči'
       save: 'Shrani'
       save_changes: 'Shrani spremembe'
       reply: 'Odvrni'
@@ -47,6 +48,8 @@ sl:
     edit_comment: 'Uredi komentar'
     delete_comment: 'Izbriši komentar'
     confirm_delete_message: 'Si prepričan/a, da želiš izbrisati ta komentar?'
+  sidebar:
+    threads: 'Razprave'
   navbar:
     search:
       placeholder: 'Išči'
@@ -73,6 +76,8 @@ sl:
     messages:
       membership_requested: 'Zaprosil/a si za članstvo v {{group}}'
   group_page:
+    threads: Razprave
+    members: Člani
     options_label: 'Možnosti'
     options:
       label: 'Možnosti'
@@ -144,6 +149,13 @@ sl:
     vote: 'Svojo odločitev lahko spremeniš kadarkoli'
   poll_common:
     save_changes: Shrani
+  discussions_panel:
+    unread: Neprebrano
+    closed: Zaprto
+  members_panel:
+    order_by_name: 'Ime'
+    header_name: 'Ime'
+    header_username: 'Uporabniško ime'
   poll_common_form:
     closed: Zaprto
   poll_count_options:

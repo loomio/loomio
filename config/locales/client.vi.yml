@@ -7,6 +7,7 @@ vi:
     models:
       proposal: 'Lời đề nghị'
     action:
+      search: 'Tìm kiếm'
       save: 'Lưu'
       edit: 'Chỉnh sửa'
       like: 'Thích'
@@ -19,6 +20,8 @@ vi:
   comment_form:
     delete_comment: 'Xóa bình luận'
     confirm_delete_message: 'Bạn có chắc muốn xóa bình luận này?'
+  sidebar:
+    threads: 'Các phần thảo luận'
   navbar:
     search:
       placeholder: 'Tìm kiếm'
@@ -38,6 +41,8 @@ vi:
     name_label: Tên
     email_label: Email
   group_page:
+    threads: Các phần thảo luận
+    members: Thành viên
     options_label: 'Tùy chọn'
     options:
       label: 'Tùy chọn'
@@ -76,6 +81,11 @@ vi:
     vote: 'Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào'
   poll_common:
     save_changes: Lưu
+  discussions_panel:
+    closed: Đã đóng lại
+  members_panel:
+    order_by_name: 'Tên'
+    header_name: 'Tên'
   poll_common_form:
     closed: Đã đóng lại
   poll_count_options:

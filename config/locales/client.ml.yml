@@ -10,6 +10,7 @@ ml:
     models:
       proposal: 'ശുപാര്‍ശ '
     action:
+      search: 'തിരയുക'
       save: 'സൂക്ഷിക്കുക'
       edit: 'തിരുത്തുക'
       like: 'ഇഷ്ടപെടുക'
@@ -22,6 +23,8 @@ ml:
   comment_form:
     delete_comment: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
     confirm_delete_message: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '
+  sidebar:
+    threads: 'ചര്‍ച്ചകള്‍'
   navbar:
     search:
       placeholder: 'തിരയുക'
@@ -42,6 +45,8 @@ ml:
     name_label: പേരു്
     email_label: ഈമെയില്‍
   group_page:
+    threads: ചര്‍ച്ചകള്‍
+    members: അംഗങ്ങള്‍
     options_label: 'ഐച്ഛികങ്ങള്‍'
     options:
       label: 'ഐച്ഛികങ്ങള്‍'
@@ -82,6 +87,11 @@ ml:
     vote: 'എപ്പോള്‍ വേണമെങ്കിലും താങ്കളുടെ സ്ഥാനം മാറ്റാം'
   poll_common:
     save_changes: സൂക്ഷിക്കുക
+  discussions_panel:
+    closed: അടച്ചു
+  members_panel:
+    order_by_name: 'പേരു്'
+    header_name: 'പേരു്'
   poll_common_form:
     closed: അടച്ചു
   poll_count_options:

@@ -112,6 +112,7 @@ uk:
     points_abbrev: Кожен голос вартує {{score}} балів
     total: Разом
     action:
+      search: 'Пошук'
       next: 'Наступна'
       close: 'Закрити'
       reopen: 'Відновити'
@@ -292,6 +293,7 @@ uk:
     public_privacy_notice: 'Ваш коментар зможе бачити будь-хто в мережі'
     sign_in: "Авторизуйтесь, щоб приєднатися до розмови"
   sidebar:
+    threads: 'Теми'
     recent_threads: 'Нещодавні теми'
     unread_threads: 'Не прочитані ({{count}}) тем'
     muted_threads: 'Вимкнуті теми'
@@ -421,8 +423,8 @@ uk:
     fork_notice: 'Буде створено нову тему з {{count}} елементів від {{title}}'
   announcement:
     audiences:
-      parent_group: Учсник {{name}}
-      formal_group: Учсник {{name}}
+      parent_group: Учасник {{name}}
+      formal_group: Учасник {{name}}
       discussion_group: Учасники теми
       voters: Люди, які проголосували
       non_voters: Люди, які не проголосували
@@ -554,6 +556,8 @@ uk:
       pinned: "Ця тема була прикріплена. Вона залишатиметься у верхній частині списку тем групи для всіх користувачів."
       closed: "Цю тему закрито. Вона більш не відображатиметься на інформаційній панелі, і буде знаходитись в розділі \"закрито\" на сторінці групи"
   group_page:
+    threads: Теми
+    members: Учасники
     show_opened: '{{count}} Відкриті'
     show_closed: '{{count}} Закриті'
     no_threads_here: Тут нема тем для перегляду!
@@ -573,7 +577,6 @@ uk:
     open_discussions: 'Відкриті теми'
     closed_discussions: 'Закриті теми'
     discussions_placeholder: 'Тема це місце де всі можуть обговорити питання та прийняти рішення спільно.'
-    members: '{{count}} Учасників'
     members_placeholder: 'Ви єдиний тут: запросіть когось долучитись до вас!'
     member_options: Варіанти участі
     see_all_members: 'Переглянути усіх {{count}} учасників'
@@ -1027,6 +1030,7 @@ uk:
       image_alt: 'Прикріплене зображення'
     n_previous: 'Відобразити попередні {{count}} відповідей'
     n_more: 'Відобразити {{count}} відповідей'
+    add_comment: Додати коментар
   thread_group:
     aria_label: 'Назва групи'
   thread_context:
@@ -1249,8 +1253,14 @@ uk:
     show_results: Показати результати
   poll_common_index_card:
     title: Попередні рішення
-    no_polls: Не знайдено попередніх рішень
     count: "Переглянути усі: ({{count}}) рішень"
+  discussions_panel:
+    unread: Непрочитані
+    closed: Закрита
+  members_panel:
+    order_by_name: 'Ім''я'
+    header_name: 'Ім''я'
+    header_username: 'Ім’я користувача'
   poll_common_action_panel:
     anonymous: Голосування буде анонімним
     anonymous_until_close: Голосування буде анонімним поки не це опитування не буде закрито
@@ -1329,7 +1339,6 @@ uk:
     ranked_choice_reopened: Рейтингове опитування відновлено
   poll_common_closing_at_field:
     closing: Закривається
-    closing_hour: Час закриття
   poll_card:
     started_by: Розпочато {{name}}
   poll_common_votes_panel:
@@ -1382,7 +1391,6 @@ uk:
     title: Назва
     details: Деталі
     options: Варіанти
-    options_placeholder: Введіть новий варіант...
     no_options: Ви ще не додали жодних варіантів.
     closing: Закривається
     closed: Закрита
@@ -1483,7 +1491,6 @@ uk:
     timeslots: Проміжки часу
     no_options: Введіть час у поточному часовому поясі ({{zone}}). Учасники будуть бачити час, відповідно до місцевого часового поясу.
     meeting_duration: Тривалість зустрічі
-    add_option_placeholder: Введіть новий час
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>Ранговий вибір - це метод голосувань, який дозволяє кожному виборцю  упорядковати відповіді згідно власних уподобаннь.</p>
@@ -1539,8 +1546,6 @@ uk:
     reason_placeholder: Якщо бажаєте, залиште повідомлення
     stance_created: Голосування створено
     stance_updated: Голосування оновлено
-  poll_common_percent_voted:
-    sentence: "{{percent}}% o учасників висловили своє ставлення ({{numerator}}/{{denominator}})"
   poll_count_chart_panel:
     out_of: з {{goal}}
   poll_meeting_chart_panel:

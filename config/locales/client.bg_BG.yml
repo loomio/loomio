@@ -17,6 +17,8 @@ bg_BG:
   comment_form:
     delete_comment: 'Изтрий коментар'
     confirm_delete_message: 'Сигурни ли сте, че искате да изтриете този коментар?'
+  sidebar:
+    threads: 'Дискусии'
   navbar:
     search:
       discussions: 'Дискусии'
@@ -34,6 +36,8 @@ bg_BG:
     name_label: Име
     email_label: E-mail
   group_page:
+    threads: Дискусии
+    members: Членове
     options_label: 'Опции'
     options:
       label: 'Опции'
@@ -72,5 +76,10 @@ bg_BG:
     vote: 'Можете да промените позицията си по всяко време'
   poll_common:
     save_changes: Запис
+  discussions_panel:
+    closed: Затворен
+  members_panel:
+    order_by_name: 'Име'
+    header_name: 'Име'
   poll_common_form:
     closed: Затворен

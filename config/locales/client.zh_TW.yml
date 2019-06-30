@@ -65,6 +65,7 @@ zh_TW:
   timezones:
     local: 本地時間 ({{value}})
   common:
+    add: 新增
     you: 您
     expand: 展開
     all_day: 全天
@@ -74,6 +75,7 @@ zh_TW:
     time_zone: 時區
     local_time: 本地時間
     attachments: 附件
+    active_time_ago: 活躍 {{time_ago}}
     confirm_discard_changes: 丟棄您的變更？
     time:
       am: am
@@ -115,6 +117,8 @@ zh_TW:
     points_abbrev: 每個投票價值 {{score}} 分
     total: 總共
     action:
+      search: '搜尋'
+      filter: '過濾器'
       next: '下一個'
       close: '關閉'
       reopen: '重新開啟'
@@ -157,6 +161,7 @@ zh_TW:
       export: 匯出
       fork: 分支
       apply: 套用
+      add_people: 新增夥伴
     formatting_help:
       label: '格式化'
       title: '學習如何使用 Markdown 來格式化您的文字'
@@ -302,6 +307,7 @@ zh_TW:
     public_privacy_notice: '您的意見將會讓任何在網路上的人看到。'
     sign_in: "登入以加入對話"
   sidebar:
+    threads: '討論串'
     recent_threads: '最近的討論串'
     unread_threads: '未讀的討論串 ({{count}})'
     muted_threads: '已靜音的討論串'
@@ -567,6 +573,10 @@ zh_TW:
       pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
       closed: "這個討論串已經關閉。它將不會再出現在儀表板上，並將會在群組頁面中列在「已關閉」下。"
   group_page:
+    threads: 討論串
+    polls: 投票
+    members: 成員 ({{count}})
+    files: 檔案
     show_opened: '{{count}} 開啟'
     show_closed: '{{count}} 已關閉'
     no_threads_here: 這裡沒有討論串可以檢視！
@@ -587,7 +597,6 @@ zh_TW:
     open_discussions: '開啟討論串'
     closed_discussions: '已關閉的討論串'
     discussions_placeholder: '討論串是供每個人討論主題並共同作出決策的地方。'
-    members: '{{count}} 位成員'
     members_placeholder: '不能只有你 ── 邀請一些夥伴來加入吧！'
     member_options: 成員選項
     see_all_members: '檢視全部 {{count}} 個成員'
@@ -629,6 +638,8 @@ zh_TW:
       parent_members: '隱私權：討論串只會被 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員看到。'
       public: '隱私權：此群組現在能在網路上被看到'
       aria_label: '群組隱私：{{privacy}}'
+  polls_panel:
+    new_poll: 新投票
   description_card:
     title: '群組描述'
     placeholder: '群組協調者可以使用這個區域來描述群組的目的，這樣才能讓每個人都知道為什麼他們會在這裡。'
@@ -960,6 +971,9 @@ zh_TW:
     messages:
       updated: 電子郵件設定已更新
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
+  thread_preview:
+    replies_count: "{{count} 個回覆"
+    unread_count: "{{count}} 個未讀"
   dashboard_page:
     aria_label: '儀表板'
     no_groups:
@@ -1054,6 +1068,9 @@ zh_TW:
       image_alt: '已附加的圖片'
     n_previous: '載入 {{count}} 個先前的回應'
     n_more: '載入 {{count}} 個回應'
+    add_comment: 加入意見
+    add_poll: 新增投票
+    add_outcome: 新增結果
   thread_group:
     aria_label: '群組名稱'
   thread_context:
@@ -1276,8 +1293,30 @@ zh_TW:
     show_results: 顯示結果
   poll_common_index_card:
     title: 之前的決策
-    no_polls: 找不到之前的決策。
+    no_polls: 找不到先前的決策
     count: "檢視全部：({{count}}) 個決策"
+  discussions_panel:
+    unread: 未讀
+    closed: 封閉
+    include_subgroups: 包含子群組
+  members_panel:
+    sort: '排序'
+    order_by_name: '名稱'
+    order_by_created: '最舊'
+    order_by_created_desc: '最新'
+    order_by_admin_desc: '協調者'
+    loaded_of_total: '{{total}} 中的 {{loaded}}'
+    view_requests: 檢視請求
+    header_name: '名稱'
+    header_username: '使用者名稱'
+    header_role: '角色'
+    header_invited_by: '邀請由'
+    header_invited: '被邀請'
+    header_actions: '動作'
+  group_polls_panel:
+    no_polls: 找不到投票
+  group_files_panel:
+    no_files: 找不到檔案
   poll_common_action_panel:
     anonymous: 投票將會是匿名的
     anonymous_until_close: 在此投票結束前都會是匿名的
@@ -1356,7 +1395,6 @@ zh_TW:
     ranked_choice_reopened: 已重新開啟排名選擇投票
   poll_common_closing_at_field:
     closing: 關閉
-    closing_hour: 關閉時間
   poll_card:
     started_by: 由 {{name}} 啟動
   poll_common_votes_panel:
@@ -1409,7 +1447,6 @@ zh_TW:
     title: 標題
     details: 詳細內容
     options: 選項
-    options_placeholder: 輸入新選項...
     no_options: 您尚未新增任何選項。
     closing: 定案
     closed: 封閉
@@ -1510,7 +1547,7 @@ zh_TW:
     timeslots: 時間欄位
     no_options: 輸入您目前時區 ({{zone}}) 的時間。參與者可以看到翻譯成他們本地時區的時間。
     meeting_duration: 會面持續時間
-    add_option_placeholder: 輸入新時間
+    add_option_placeholder: 新增新的時間
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>排序選擇是一個讓每個投票者可以以他們偏好的順序回應的投票方式。</p>
@@ -1567,7 +1604,7 @@ zh_TW:
     stance_created: 已建立投票
     stance_updated: 已更新投票
   poll_common_percent_voted:
-    sentence: "{{percent}}% 的成員已經表達了他們的立場 ({{numerator}}/{{denominator}})"
+    sentence: "{{numerator}} 個人已經投票了 ({{percent}}%)"
   poll_count_chart_panel:
     out_of: 沒有 {{goal}}
   poll_meeting_chart_panel:
@@ -1608,6 +1645,7 @@ zh_TW:
     poll_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 重新開啟了 {{polltype}}：<strong>{{title}}</strong>"
     poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 關閉了 {{polltype}}：<strong>{{title}}</strong>"
     poll_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 啟動了 {{polltype}}：<strong>{{title}}</strong>"
+    poll_created_no_title: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 已啟動 {{polltype}}</strong>"
     poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了 {{polltype}}：<strong>{{title}}</strong>"
     poll_expired: "{{polltype}} 已關閉：<strong>{{title}}</strong>"
     stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong>投票給：<strong>{{title}}</strong>"

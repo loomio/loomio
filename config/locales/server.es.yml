@@ -17,6 +17,9 @@ es:
     deleted_user: "Usuario Eliminado"
     placeholder_name: "Usuario invitado (%{hostname})"
     error:
+      sign_in_required_html: |
+          Debes estar registrado para proceder.
+          Por favor <a href="/dashboard">regístrate</a>y luego recarga esta página para continuar.
       recaptcha: "No pudimos verificar que no eres un robot. Por favor intenta de nuevo"
       bad_login: "Lo lamentamos, esa contraseña no coincide con la que tenemos archivada"
       username_must_be_alphanumeric: "El nombre de usuario debe contener solamente letras y dígitos en minúscula "
@@ -73,6 +76,7 @@ es:
     inactive: Inactivo
   user_mailer:
     group_export_ready:
+      subject: Exportar datos del grupo para %{group_name}
       body_html: |
           Descarga tus datos <a href="%{url}">aquí</a>. Por favor toma nota que este link caducará en una semana.
     accounts_merged:
@@ -579,6 +583,7 @@ es:
       details: 'Este es un gran año para nuestra empresa y necesitamos ser estratégicos acerca de como invertimos nuestros limitados recursos. Por favor indica cuales son las áreas que crees son más importantes para que nos enfoquemos el próximo cuatrimestre. '
     score:
       title: "¿Qué temas te interesan para la próxima conferencia?"
+      details: Estamos preparando para que en la nueva conferencia se cubran los nuevos temas. Por favor indica tu interés en cada uno de los siguientes temas.
     ranked_choice:
       title: "¿Quién debe ser nuestro próximo alcalde adjunto?"
       details: "Es tiempo de nuestras elecciones de medio año! Esta es una encuesta oficial para determinar quien será nuestro nuevo alcalde adjunto. Tomate el tiempo de leer sobre cada candidato en nuestra página web."
@@ -596,7 +601,15 @@ es:
     visit_poll: Ver encuesta
     go_to_dashboad: Ir al panel de control
   microsoft:
+    section_title: "[%{title}](%{url})"
     new_discussion: "Nuevo hilo en %{group}"
+    new_comment: "Nuevo comentario en %{group}"
+    outcome_created: "Resultado publicado en %{group}"
+    poll_created: "Nuevo %{poll_type} en %{group}"
+    stance_created: "Nueva respuesta a %{poll}"
+    poll_closing_soon: "%{poll_type}cerrará en 24 horas"
+    poll_expired: "%{poll_type} ha cerrado"
+    group_identity_created: "Los eventos desde %{group} no aparecerán en este canal"
   slack:
     new_discussion: "Nuevo hilo en *%{group}*: *%{discussion}* "
     outcome_created: "Resultado publicado en *%{group}*: *%{poll}*"

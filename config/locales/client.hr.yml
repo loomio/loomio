@@ -22,6 +22,8 @@ hr:
     join_group: 'Pridruži se grupi '
   membership_request_form:
     heading: Zahtjev za pridruženjem grupi
+  group_page:
+    members: Članovi
   membership_requests_page:
     ignore: Ignoriraj
   memberships_page:

@@ -87,6 +87,7 @@ ro:
     copy_text: 'Copiaza text'
     total: Total
     action:
+      search: 'Cauta'
       next: 'Urmatorul'
       close: 'Inchide'
       save: 'Salvare'
@@ -205,6 +206,7 @@ ro:
     public_privacy_notice: 'Comentariul tau va fi vizibil tuturor pe web.'
     sign_in: "Intra in cont pentru a te alatura conversatiei"
   sidebar:
+    threads: 'Discutii'
     recent_threads: 'Conversatii recente'
     unread_threads: 'Conversatii necitite ({{count}})'
     explore: 'Grupuri publice'
@@ -307,6 +309,8 @@ ro:
     you: "Tu"
     you_and_name: "Tu si {{name}}"
   group_page:
+    threads: Discutii
+    members: Membri
     messages:
       privacy:
         public: 'Acest grup este acum vizibil public'
@@ -458,6 +462,13 @@ ro:
   poll_common:
     start_poll: Creeaza o decizie
     save_changes: Salvare
+  discussions_panel:
+    unread: Necitit
+    closed: Inchis
+  members_panel:
+    order_by_name: 'Nume'
+    header_name: 'Nume'
+    header_username: 'Nume utilizator'
   current_polls_card:
     start_poll: Decizie noua
   poll_common_notify_group:

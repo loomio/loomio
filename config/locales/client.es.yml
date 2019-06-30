@@ -114,6 +114,7 @@ es:
     points_abbrev: 'Cada voto vale {{score}} puntos '
     total: Total
     action:
+      search: 'Buscar'
       next: 'Siguiente'
       close: 'Cerrar'
       reopen: 'Reabierto'
@@ -295,6 +296,7 @@ es:
     public_privacy_notice: 'Su comentario será público para cualquiera en internet.'
     sign_in: "Inicia sesión para unirte a la conversación "
   sidebar:
+    threads: 'Hilos'
     recent_threads: 'Hilos recientes'
     unread_threads: 'No leído ({{count}})'
     muted_threads: 'Hilos silenciados '
@@ -560,6 +562,8 @@ es:
       pinned: "Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos del grupo para todos los integrantes."
       closed: "Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo"
   group_page:
+    threads: Hilos
+    members: Integrantes
     show_opened: '{{count}} Abierto'
     show_closed: '{{count}} Cerrado '
     no_threads_here: Ningún hilo para ver aquí!
@@ -579,7 +583,6 @@ es:
     open_discussions: 'Hilos abiertos'
     closed_discussions: 'Hilos cerrados'
     discussions_placeholder: 'Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.'
-    members: ' {{count}} integrantes'
     members_placeholder: 'Está solo aquí: ¡Invite a otras personas! '
     member_options: Opciones de membresía
     see_all_members: 'Mostrar los ({{count}}) integrantes'
@@ -1032,6 +1035,7 @@ es:
       image_alt: 'Imagen adjunta'
     n_previous: 'Mostrar {{count}} respuestas previas'
     n_more: 'Mostrar {{count}} respuestas'
+    add_comment: Añadir comentario
   thread_group:
     aria_label: 'Nombre del grupo'
   thread_context:
@@ -1250,8 +1254,14 @@ es:
     show_results: Mostrar resultados
   poll_common_index_card:
     title: Decisiones anteriores
-    no_polls: No se han encontrado decisiones anteriores
     count: "Ve todas: las ({{count}}) decisiones"
+  discussions_panel:
+    unread: 'No leído '
+    closed: 'Cerrado '
+  members_panel:
+    order_by_name: 'Nombre'
+    header_name: 'Nombre'
+    header_username: 'Nombre de usuario'
   poll_common_action_panel:
     anonymous: 'Votos serán anónimos '
     anonymous_until_close: Votos serán anónimos hasta que cierre la encuesta
@@ -1330,7 +1340,6 @@ es:
     ranked_choice_reopened: Opción priorizada reabierta
   poll_common_closing_at_field:
     closing: Cerrando
-    closing_hour: Hora de cierre
   poll_card:
     started_by: Iniciado por {{name}}
   poll_common_votes_panel:
@@ -1383,7 +1392,6 @@ es:
     title: Título
     details: Detalles
     options: Opciones
-    options_placeholder: Ingresa una nueva opción...
     no_options: No has añadido ninguna opción aún
     closing: Cerrando
     closed: 'Cerrado '
@@ -1484,7 +1492,6 @@ es:
     timeslots: Horarios
     no_options: Introduzca los horarios en su zona horaria actual ({{zone}}). Los integrantes verán los horarios adaptados a su zona horaria local.
     meeting_duration: Duración de reunión
-    add_option_placeholder: Ingrese una nueva hora
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>La opción priorizada es un método de votación que permite a cada persona responder con un orden de preferencia.</p>
@@ -1540,8 +1547,6 @@ es:
     reason_placeholder: 'Deja un mensaje si quieres '
     stance_created: Voto creado
     stance_updated: Voto actualizado
-  poll_common_percent_voted:
-    sentence: "{{percent}}% de integrantes ha manifestado su posición ({{numerator}}/{{denominator}})"
   poll_count_chart_panel:
     out_of: de {{goal}}
   poll_meeting_chart_panel:

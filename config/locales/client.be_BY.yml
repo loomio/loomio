@@ -24,6 +24,7 @@ be_BY:
     models:
       proposal: 'Прапанова'
     action:
+      search: 'Пошук'
       close: 'Зачыніць'
       save: 'Захаваць'
       reply: 'Адказаць'
@@ -48,6 +49,8 @@ be_BY:
     edit_comment: 'Рэдагаваць каментар'
     delete_comment: 'Выдаліць каментар'
     confirm_delete_message: 'Вы ўпэўнены, што хаціце выдаліць гэты каментар?'
+  sidebar:
+    threads: 'Абмеркаванні'
   navbar:
     search:
       placeholder: 'Пошук'
@@ -71,6 +74,8 @@ be_BY:
     name_label: Імя
     email_label: Email
   group_page:
+    threads: Абмеркаванні
+    members: Удзельнікі
     options_label: 'Опцыі'
     options:
       label: 'Опцыі'
@@ -147,6 +152,13 @@ be_BY:
     vote: 'Вы здольны змяніць свой голас у любы час'
   poll_common:
     save_changes: Захаваць
+  discussions_panel:
+    unread: Непрачытаныя
+    closed: Закрыта
+  members_panel:
+    order_by_name: 'Імя'
+    header_name: 'Імя'
+    header_username: 'Імя карыстальніка'
   poll_common_form:
     closed: Закрыта
   poll_count_options:

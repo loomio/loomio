@@ -89,6 +89,7 @@ pl:
     points_abbrev: Każdy głos warty jest {{score}} punktów
     total: W sumie
     action:
+      search: 'Szukaj'
       next: 'Dalej'
       close: 'Zamknij'
       reopen: 'Otworzyć ponownie'
@@ -259,6 +260,7 @@ pl:
     public_privacy_notice: 'Twój komentarz będzie widoczny dla wszystkich.'
     sign_in: "Zaloguj się, by dołączyć do rozmowy"
   sidebar:
+    threads: 'Wątki'
     recent_threads: 'Najnowsze wątki'
     unread_threads: 'Nieprzeczytane wątki ({{count}})'
     muted_threads: 'Wyciszone wątki'
@@ -427,6 +429,8 @@ pl:
       pinned: "Ten wątek został przypięty. Zostanie na samej górze listy wątków dla wszystkich członków grupy."
       closed: "Ten wątek został zamknięty. Nie będzie się więcej pojawiał w głównym panelu i będzie wyświetlał się pod \"Zamkniętymi\" na stronie grupy."
   group_page:
+    threads: Wątki
+    members: Członkowie
     show_opened: '{{count}} Otwarte'
     show_closed: '{{count}} Zamknięte'
     no_threads_here: Nie ma tu żadnych wątków!
@@ -640,6 +644,13 @@ pl:
     meeting_title: Ankieta datowa
   poll_common:
     save_changes: Zapis
+  discussions_panel:
+    unread: Nieprzeczytane
+    closed: Zamknięta
+  members_panel:
+    order_by_name: 'Nazwa'
+    header_name: 'Nazwa'
+    header_username: 'Nazwa użytkownika'
   current_polls_card:
     start_poll: Nowa decyzja
   poll_common_form:

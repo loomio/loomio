@@ -32,6 +32,7 @@ sr:
       proposal: 'Predlog'
     copied: 'Kopirano'
     action:
+      search: 'Traži'
       close: 'Zatvori'
       save: 'Snimi'
       save_changes: 'Sačuvaj promene'
@@ -130,6 +131,7 @@ sr:
     public_privacy_notice: 'Vaš komentar će biti vidljiv svima na mreži.'
     sign_in: "Prijavite se za priključivanje konverzaciji"
   sidebar:
+    threads: 'Niti'
     explore: 'Javne grupe'
     aria_labels:
       heading: 'Traka'
@@ -201,6 +203,8 @@ sr:
     posted: Postavljeno
     current_revision: Poslednje
   group_page:
+    threads: Niti
+    members: Članovi
     messages:
       privacy:
         members: 'Ova grupa je sada vidljiva samo za članove'
@@ -588,6 +592,13 @@ sr:
       success: "'{{name}}' ne može više koristiti Vaš nalog."
   poll_common:
     save_changes: Snimi
+  discussions_panel:
+    unread: Nepročitano
+    closed: Zatvoreno
+  members_panel:
+    order_by_name: 'Ime'
+    header_name: 'Ime'
+    header_username: 'Korisničko Ime'
   poll_common_form:
     closed: Zatvoreno
   poll_count_options:

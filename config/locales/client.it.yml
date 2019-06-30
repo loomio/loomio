@@ -114,6 +114,7 @@ it:
     points_abbrev: Ogni voto vale {{score}} punti
     total: Totale
     action:
+      search: 'Ricerca'
       next: 'Prossimo'
       close: 'Chiudi'
       reopen: 'Riapri'
@@ -290,6 +291,7 @@ it:
     public_privacy_notice: 'Il tuo commento sarà visibile a qualsiasi persona sul web.'
     sign_in: "Entra per partecipare alla discussione"
   sidebar:
+    threads: 'Discussioni'
     recent_threads: 'Discussioni recenti'
     unread_threads: 'Discussioni non lette ({{count}})'
     muted_threads: 'Discussioni silenziate'
@@ -521,6 +523,8 @@ it:
     you_and_name_and_count_more: "Tu, {{name}} e altri {{count}} "
     name_and_count_more: "{{name}} e altri {{count}}"
   group_page:
+    threads: Discussioni
+    members: Membri
     messages:
       privacy:
         members: 'Ora il gruppo è visibile solo alle persone che ne fanno parte.'
@@ -534,7 +538,6 @@ it:
     open_discussions: 'Discussioni aperte'
     closed_discussions: 'Discussioni chiuse'
     discussions_placeholder: 'La discussione è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni.'
-    members: '{{count}} membri'
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
     see_all_members: 'Vedi tutti i {{count}} membri'
@@ -1058,8 +1061,14 @@ it:
     show_results: Mostra risultati
   poll_common_index_card:
     title: Decisioni precedenti
-    no_polls: Nessuna decisione precedente trovata.
     count: "Vedi tutto:  ({{count}}) decisioni"
+  discussions_panel:
+    unread: Non letto
+    closed: Chiuso
+  members_panel:
+    order_by_name: 'Nome'
+    header_name: 'Nome'
+    header_username: 'Nome Utente'
   current_polls_card:
     title: Decisioni in corso
     start_poll: Nuova decisione
@@ -1100,8 +1109,6 @@ it:
       helptext_on: 'I votanti possono indicare ''solo se necessario'' negli orari '
   poll_common_close_form:
     close_proposal: Chiudi la proposta
-  poll_common_closing_at_field:
-    closing_hour: Ora di chiusura
   poll_common_votes_panel:
     newest_first: I voti più nuovi prima
     oldest_first: I voti più vecchi prima
@@ -1125,7 +1132,6 @@ it:
     title: Titolo
     details: Dettagli
     options: Opzioni
-    options_placeholder: Inserisci una nuova opzione
     no_options: Non hai ancora aggiunto nessuna opzione.
     closed: Chiuso
     start: Avvio
@@ -1193,7 +1199,6 @@ it:
     timeslots: Fasce orarie
     no_options: Inserisci gli orari nel tuo attuale fuso orario ({{zone}}). I partecipanti vedranno gli orari nel proprio fuso orario.
     meeting_duration: Durata dell'incontro
-    add_option_placeholder: Inserisci una nuova data
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>La Scelta di preferenze è un metodo di voto che permette ad ogni singolo votante di selezionare le proprie preferenze indicando un ordine di priorità.</p>
@@ -1225,8 +1230,6 @@ it:
     reason_label: Messaggio
     stance_created: Voto creato
     stance_updated: Voto aggiornato
-  poll_common_percent_voted:
-    sentence: "Percentuale di membri che ha votato: {{percent}}% ({{numerator}}/{{denominator}})"
   poll_meeting_chart_panel:
     total: Totale
   poll_poll_vote_form:

@@ -34,6 +34,7 @@ ko:
       proposal: '제안'
     copied: '복사됨'
     action:
+      search: '검색'
       close: '닫기'
       save: '저장'
       save_changes: '수정 저장하기'
@@ -143,6 +144,7 @@ ko:
     public_privacy_notice: '작성하신 댓글은 웹 상의 모두가 볼 수 있습니다.'
     sign_in: "대화에 참여하려면 로그인 하세요"
   sidebar:
+    threads: '토론'
     explore: '공개 그룹'
     aria_labels:
       heading: '사이드 바'
@@ -231,6 +233,8 @@ ko:
     posted: 저장됨
     current_revision: 최신
   group_page:
+    threads: 토론
+    members: 멤버
     messages:
       privacy:
         members: '이 그룹은 회원들에게만 보입니다.'
@@ -600,6 +604,13 @@ ko:
       reload: '다시 불러오기'
   poll_common:
     save_changes: 저장
+  discussions_panel:
+    unread: 읽지않음
+    closed: 종료
+  members_panel:
+    order_by_name: '이름'
+    header_name: '이름'
+    header_username: '아이디'
   poll_common_form:
     closed: 종료
   poll_count_options:

@@ -67,6 +67,7 @@ tr:
     copy_text: 'Metni kopyala'
     copied: 'Panoya kopyalandı'
     action:
+      search: 'Arama'
       close: 'Kapat'
       save: 'Kaydet'
       save_changes: 'Değişiklikleri kaydet'
@@ -150,6 +151,7 @@ tr:
     private_privacy_notice: 'Yorumunuz sadece {{groupName}} grubunun üyelerine görünür olacak.'
     public_privacy_notice: 'Yorumunuz web üzerindeki herkese görünür olacak.'
   sidebar:
+    threads: 'Müzakereler'
     explore: 'Genel gruplar'
     start_thread: Yeni konu
     aria_labels:
@@ -232,6 +234,8 @@ tr:
     posted: Gönderildi
     current_revision: En yeniler
   group_page:
+    threads: Müzakereler
+    members: Üyeler
     messages:
       privacy:
         members: 'Bu grup şu an sadece grup üyeleri tarafından görülebilir'
@@ -593,6 +597,13 @@ tr:
     poll_title: Anket
   poll_common:
     save_changes: Kaydet
+  discussions_panel:
+    unread: Okunmamış
+    closed: Kapalı
+  members_panel:
+    order_by_name: 'İsim'
+    header_name: 'İsim'
+    header_username: 'Kullanıcı adı'
   poll_common_notify_group:
     notify_group: Duyuru
   poll_common_close_form:

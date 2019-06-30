@@ -15,6 +15,7 @@ an:
     models:
       proposal: 'Propuesta'
     action:
+      search: 'Buscar'
       save: 'Alzar'
       edit: 'Editar'
       like: 'Me fa goyo'
@@ -31,6 +32,8 @@ an:
     edit_comment: 'Editar comentario'
     delete_comment: 'Borrar comentario'
     confirm_delete_message: 'Yes seguro que quiers borrar iste comentario?'
+  sidebar:
+    threads: 'Discusions'
   navbar:
     search:
       placeholder: 'Buscar'
@@ -53,6 +56,8 @@ an:
     name_label: Nombre
     email_label: Correu electronico
   group_page:
+    threads: Discusions
+    members: Miembros
     options_label: 'Opcions'
     options:
       label: 'Opcions'
@@ -109,6 +114,13 @@ an:
     vote: 'Puetz cambiar a tuya posición en qualsiquier inte'
   poll_common:
     save_changes: Alzar
+  discussions_panel:
+    unread: No leyiu
+    closed: Zarrau
+  members_panel:
+    order_by_name: 'Nombre'
+    header_name: 'Nombre'
+    header_username: 'Nombre d''usuario'
   poll_common_form:
     closed: Zarrau
   poll_count_options:

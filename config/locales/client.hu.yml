@@ -92,6 +92,7 @@ hu:
     points_abbrev: Minden szavazat {{score}} pontot ér
     total: Teljes
     action:
+      search: 'Keresés'
       next: 'Következő'
       close: 'Bezár'
       reopen: 'Újranyit'
@@ -271,6 +272,7 @@ hu:
     public_privacy_notice: 'A hozzászólás mindenki számára nyilvános lesz.'
     sign_in: "Lépj be, hogy hozzászolhass a témakörhöz."
   sidebar:
+    threads: 'Tredek'
     recent_threads: 'Új tredek'
     unread_threads: 'Olvasatlan tredek ({{count}})'
     muted_threads: 'Némított tredek'
@@ -390,6 +392,8 @@ hu:
   reactions_display:
     you: "Te"
   group_page:
+    threads: Tredek
+    members: Tagok
     group_logo: 'Csoport logó'
     new_photo: 'Új fotó'
     subgroups: 'Alcsoportok'
@@ -512,6 +516,13 @@ hu:
     ranked_choice_title: Sorrend szavazás
   poll_common:
     save_changes: Mentés
+  discussions_panel:
+    unread: Olvasatlan
+    closed: Zárva
+  members_panel:
+    order_by_name: 'Név'
+    header_name: 'Név'
+    header_username: 'Felhasználónév'
   current_polls_card:
     start_poll: Új döntés
   poll_common_form:

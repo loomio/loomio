@@ -106,6 +106,7 @@ ru:
     copied: 'Скопировать в буфер'
     total: Всего
     action:
+      search: 'Поиск'
       next: 'Следующее'
       close: 'Закрыть'
       reopen: 'Открыть вновь'
@@ -249,6 +250,7 @@ ru:
     public_privacy_notice: 'Ваш комментарий будет виден всем пользователям сети'
     sign_in: "Войдите чтобы присоеденится к разговору"
   sidebar:
+    threads: 'Обсуждения'
     recent_threads: 'Последние темы'
     muted_threads: 'Выключить уведомления темы'
     explore: 'Публичная группа'
@@ -353,6 +355,8 @@ ru:
     you: "Вы"
     you_and_name: "Вы и {{name}}"
   group_page:
+    threads: Обсуждения
+    members: Участники
     new_cover_photo: 'Загрузить новое фото обложки'
     new_group_logo: 'Загрузить новый логотип группы'
     open_discussions: 'Открыть тему'
@@ -527,6 +531,12 @@ ru:
     responses: Ответы
     start_poll: Начните решение
     save_changes: Сохранить
+  discussions_panel:
+    unread: Непрочитанные
+    closed: Закрыто
+  members_panel:
+    order_by_name: 'Название'
+    header_name: 'Название'
   current_polls_card:
     start_poll: Новое решение
   poll_common_set_outcome_panel:

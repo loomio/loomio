@@ -109,6 +109,7 @@ fa_IR:
   signed_out_modal:
     ok: "باشه!"
   sidebar:
+    threads: 'موضوعات'
     start_thread: موضوع جدید
     aria_labels:
       groups_list: 'گروه ها'
@@ -129,6 +130,9 @@ fa_IR:
     reply_to_comment: پاسخ دادن
   reactions_display:
     you: "شما"
+  group_page:
+    threads: موضوعات
+    members: اعضا
   group_form:
     privacy: 'حریم شخصی'
     submit_update: 'به روز رسانی تنطیمات'
@@ -162,6 +166,8 @@ fa_IR:
     poll_title: نظرسنجی
   poll_common:
     save_changes: ذخیره
+  discussions_panel:
+    closed: بسته
   poll_common_select_group:
     loomio_group: گروه
   poll_common_form:

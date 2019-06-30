@@ -93,6 +93,7 @@ sv:
     points_abbrev: Varje röst är värd {{score}} poäng
     total: Totalt
     action:
+      search: 'Sök'
       next: 'Nästa'
       close: 'Stäng'
       reopen: 'Öppna igen'
@@ -273,6 +274,7 @@ sv:
     public_privacy_notice: 'Din kommentar kommer att vara synlig för alla på nätet.'
     sign_in: "Logga in för att delta i konversationen"
   sidebar:
+    threads: 'Trådar'
     recent_threads: 'Senaste trådarna'
     unread_threads: 'Olästa trådar ({{count}})'
     muted_threads: 'Stumma trådar'
@@ -316,6 +318,8 @@ sv:
     thread_status:
       closed: "Denna tråd är stängd. Den kommer inte längre att visas på instrumentbrädan, tråden kommer också vara listad som 'stängd' på gruppsidan."
   group_page:
+    threads: Trådar
+    members: Medlemmar
     invite_people: 'Bjud in'
     options_label: 'Alternativ'
     options:
@@ -406,6 +410,13 @@ sv:
     ranked_choice_title: Valfritt val
   poll_common:
     save_changes: Spara
+  discussions_panel:
+    unread: Olästa
+    closed: Stängd
+  members_panel:
+    order_by_name: 'Namn'
+    header_name: 'Namn'
+    header_username: 'Användarnamn'
   current_polls_card:
     start_poll: Nytt beslut
   poll_common_form:

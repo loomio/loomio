@@ -10,6 +10,7 @@ id:
     models:
       proposal: 'Usulan'
     action:
+      search: 'Cari'
       save: 'Simpan'
       edit: 'Ubah'
       like: 'Suka'
@@ -22,6 +23,8 @@ id:
   comment_form:
     delete_comment: 'Hapus komentar'
     confirm_delete_message: 'Apakah Anda ingin menghapus komentar ini?'
+  sidebar:
+    threads: 'Diskusi'
   navbar:
     search:
       placeholder: 'Cari'
@@ -42,6 +45,8 @@ id:
     name_label: Nama
     email_label: Surel
   group_page:
+    threads: Diskusi
+    members: Anggota
     options_label: 'Pilihan'
     options:
       label: 'Pilihan'
@@ -82,6 +87,11 @@ id:
     vote: 'Anda dapat mengubah pendapat Anda kapanpun'
   poll_common:
     save_changes: Simpan
+  discussions_panel:
+    closed: Ditutup
+  members_panel:
+    order_by_name: 'Nama'
+    header_name: 'Nama'
   poll_common_form:
     closed: Ditutup
   poll_count_options:

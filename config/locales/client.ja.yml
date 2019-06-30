@@ -24,6 +24,7 @@ ja:
     models:
       proposal: '提案'
     action:
+      search: '検索'
       save: '保存'
       save_changes: '変更を保存'
       update_settings: '設定更新'
@@ -40,6 +41,8 @@ ja:
   comment_form:
     delete_comment: 'コメントを削除します'
     confirm_delete_message: '本当にコメントを削除しますか？'
+  sidebar:
+    threads: 'ディスカッション'
   navbar:
     search:
       placeholder: '検索'
@@ -61,6 +64,8 @@ ja:
     name_label: 氏名
     email_label: Eメール
   group_page:
+    threads: ディスカッション
+    members: メンバー
     options_label: 'オプション'
     options:
       label: 'オプション'
@@ -115,6 +120,11 @@ ja:
     vote: 'いつでも意見を変更することができます'
   poll_common:
     save_changes: 保存
+  discussions_panel:
+    closed: 議論終了
+  members_panel:
+    order_by_name: '氏名'
+    header_name: '氏名'
   poll_common_form:
     closed: 議論終了
   poll_count_options:

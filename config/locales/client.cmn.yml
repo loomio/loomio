@@ -50,6 +50,8 @@ cmn:
   comment_form:
     delete_comment: '删掉评论'
     confirm_delete_message: '你确定你想要删掉这条评论吗？'
+  sidebar:
+    threads: '讨论'
   navbar:
     search:
       discussions: '讨论'
@@ -61,6 +63,8 @@ cmn:
     name_label: 名字
     email_label: 邮件
   group_page:
+    threads: 讨论
+    members: 成员
     options_label: '选项'
     options:
       label: '选项'
@@ -94,6 +98,11 @@ cmn:
     proposal_title: 议案
   poll_common:
     save_changes: 保存
+  discussions_panel:
+    closed: 关闭了
+  members_panel:
+    order_by_name: '名字'
+    header_name: '名字'
   poll_common_form:
     closed: 关闭了
   poll_count_options:

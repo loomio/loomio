@@ -81,6 +81,7 @@ eo:
     points_abbrev: Ĉiu voĉo valoras {{score}} poentojn
     total: Entute
     action:
+      search: 'Serĉi'
       next: 'Sekva'
       close: 'Fermigi'
       save: 'Konservi'
@@ -152,6 +153,7 @@ eo:
     submit_button:
       label: 'Afiŝu'
   sidebar:
+    threads: 'Fadenoj'
     start_thread: Nova fadeno
     aria_labels:
       groups_list: 'Grupoj'
@@ -205,6 +207,8 @@ eo:
     you_and_name_and_count_more: "Vi, {{name}} kaj {{count}} pli"
     name_and_count_more: "{{name}} kaj {{count}} pli"
   group_page:
+    threads: Fadenoj
+    members: Membroj
     show_closed: '{{count}} Fermita'
     new_group_logo: 'Alŝuti novan emblemon de grupo'
     subgroups: 'Subgrupoj'
@@ -346,13 +350,18 @@ eo:
     participant_name: Via nomo
     participant_email: Retadreso
     save_changes: Konservi
+  discussions_panel:
+    unread: Nelegitaj
+    closed: Fermita
+  members_panel:
+    order_by_name: 'Nomo'
+    header_name: 'Nomo'
+    header_username: 'Uzantnomo'
   poll_common_select_group:
     loomio_group: Grupo
   poll_common_calendar_invite:
     event_duration: Daŭro
     event_summary: Resumo
-  poll_common_closing_at_field:
-    closing_hour: Horo de fermo
   poll_common_form:
     title: Titolo
     details: Detaloj

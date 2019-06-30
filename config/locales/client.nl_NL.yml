@@ -108,6 +108,7 @@ nl_NL:
     points_abbrev: Ieder stem is {{score}} punten waard
     total: Totaal
     action:
+      search: 'Zoek'
       next: 'Volgende'
       close: 'Sluiten'
       save: 'Bewaren'
@@ -268,6 +269,7 @@ nl_NL:
     public_privacy_notice: 'Je commentaar is zichtbaar voor iedereen op het web.'
     sign_in: "Log in om mee te praten"
   sidebar:
+    threads: 'Borden'
     recent_threads: 'Recente borden'
     unread_threads: 'Ongelezen borden ({{count}})'
     muted_threads: 'Gedempte borden'
@@ -439,6 +441,8 @@ nl_NL:
     thread_status:
       pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
   group_page:
+    threads: Borden
+    members: Leden
     messages:
       privacy:
         members: 'Deze groep is nu uitsluitend zichtbaar voor leden'
@@ -823,6 +827,7 @@ nl_NL:
       image_alt: 'Toegevoegde afbeelding'
     n_previous: 'Laad {{count}} eerdere antwoorden'
     n_more: 'Laad {{count}} antwoorden'
+    add_comment: Opmerking toevoegen
   thread_group:
     aria_label: 'Groepsnaam'
   thread_context:
@@ -1019,8 +1024,14 @@ nl_NL:
     show_results: Toon resultaten
   poll_common_index_card:
     title: Vorige beslissingen
-    no_polls: Geen vorige beslissingen teruggevonden.
     count: "Zie alles: ({{count}}) beslissingen"
+  discussions_panel:
+    unread: Ongelezen
+    closed: Gesloten
+  members_panel:
+    order_by_name: 'Naam'
+    header_name: 'Naam'
+    header_username: 'Gebruikersnaam'
   poll_common_action_panel:
     unable_to_vote: Je hebt geen toestemming om een stem uit te brengen voor deze beslissing.
   current_polls_card:
@@ -1075,7 +1086,6 @@ nl_NL:
     ranked_choice_closed: De peiling 'Keuzes rangschikken' is gesloten
   poll_common_closing_at_field:
     closing: Sluit
-    closing_hour: Sluitingstijd
   poll_card:
     started_by: Gestart door {{name}}
   poll_common_votes_panel:
@@ -1128,7 +1138,6 @@ nl_NL:
     title: Titel
     details: Details
     options: Opties
-    options_placeholder: Typ een nieuwe optie...
     no_options: Je hebt nog geen opties toegevoegd.
     closing: Sluiten
     closed: Gesloten
@@ -1214,7 +1223,6 @@ nl_NL:
     meeting_updated: '''Moment bevragen'' geactualiseerd'
     timeslots: Tijdvensters
     meeting_duration: Duur van de vergadering
-    add_option_placeholder: Geef een nieuwe tijd op
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>'Keuzes rangschikken' is een kiesmethode die toelaat om iedere kiezer zijn voorkeuren te laten rangschikken.</p>
@@ -1270,8 +1278,6 @@ nl_NL:
     reason_placeholder: Laat een bericht achter als je wil
     stance_created: Stemming gemaakt
     stance_updated: Stemming geactualiseerd
-  poll_common_percent_voted:
-    sentence: "{{percent}}% van de leden heeft zijn standpunt ingenomen ({{numerator}}/{{denominator}})"
   poll_count_chart_panel:
     out_of: uit {{goal}}
   poll_meeting_chart_panel:

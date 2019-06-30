@@ -15,6 +15,7 @@ sk:
     models:
       proposal: 'Návrh'
     action:
+      search: 'Vyhľadávať'
       save: 'Uložiť'
       edit: 'Upraviť'
       like: 'To sa mi páči'
@@ -31,6 +32,8 @@ sk:
     edit_comment: 'Upraviť komentár'
     delete_comment: 'Odstrániť komentár'
     confirm_delete_message: 'Naozaj chcete odstrániť tento komentár?'
+  sidebar:
+    threads: 'Diskusie'
   navbar:
     search:
       placeholder: 'Vyhľadávať'
@@ -53,6 +56,8 @@ sk:
     name_label: Meno
     email_label: E-mail
   group_page:
+    threads: Diskusie
+    members: Členovia
     options_label: 'Nastavenia'
     options:
       label: 'Nastavenia'
@@ -109,6 +114,13 @@ sk:
     vote: 'Môžete kdykoľvek svoj postoj zmeniť'
   poll_common:
     save_changes: Uložiť
+  discussions_panel:
+    unread: Neprečítané
+    closed: Uzatvorené
+  members_panel:
+    order_by_name: 'Meno'
+    header_name: 'Meno'
+    header_username: 'Prihlasovacie meno'
   poll_common_form:
     closed: Uzatvorené
   poll_count_options:

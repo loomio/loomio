@@ -134,6 +134,8 @@ lt:
     submit_button:
       label: 'Išsiųsti'
     private_privacy_notice: 'Jūsų komentaras bus matomas tik {{groupName}} grupės nariams.'
+  sidebar:
+    threads: 'Temos'
   navbar:
     recent_title: 'Pereiti į skydelį'
     unread_title: 'Žiūrėti neskaitytas veiklas'
@@ -167,6 +169,7 @@ lt:
   reactions_display:
     you: "Tu"
   group_page:
+    threads: Temos
     messages:
       privacy:
         members: 'Dabar ši grupė yra matoma tik nariams'
@@ -302,6 +305,10 @@ lt:
     save_changes: Įrašyti
   poll_common_attachment_form:
     label: Priedai
+  discussions_panel:
+    closed: Uždarytas
+  members_panel:
+    header_username: 'Naudotojo vardas'
   poll_common_form:
     closed: Uždarytas
   poll_count_options:

@@ -115,6 +115,7 @@ de:
     points_abbrev: Jede Stimme ist {{score}} Punkte wert
     total: Gesamt
     action:
+      search: 'Suchen'
       next: 'Weiter'
       close: 'Schliessen'
       reopen: 'Erneut öffnen'
@@ -301,6 +302,7 @@ de:
     public_privacy_notice: 'Ihr Kommentar wird für alle im Web sichtbar sein.'
     sign_in: "Melde Dich an, um an der Diskussion teilzunehmen"
   sidebar:
+    threads: 'Diskussionsbeiträge'
     recent_threads: 'Aktuelle Diskussionen'
     unread_threads: 'Ungelesene Diskussionen ({{count}})'
     muted_threads: 'Stummgeschaltete Diskussionen'
@@ -565,6 +567,8 @@ de:
       pinned: "Diese Diskussion wurde gepinnt. Sie wird für alle Nutzer zuoberst in der Diskussionsliste angezeigt."
       closed: "Diese Diskussion wurde geschlossen. Sie wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter \"Geschlossen\" angezeigt"
   group_page:
+    threads: Diskussionsbeiträge
+    members: Mitglieder
     show_opened: '{{count}} Offen'
     show_closed: '{{count}} Geschlossen'
     no_threads_here: Keine Themen hier zu sehen!
@@ -585,7 +589,6 @@ de:
     open_discussions: 'Aktuelle Diskussionen'
     closed_discussions: 'geschlossene Diskussionen'
     discussions_placeholder: 'An einer Diskussion können sich alle Mitglieder beteiligen und gemeinsam Abstimmungen durchführen.'
-    members: '{{count}} Mitglieder'
     members_placeholder: 'Sie sind zurzeit ganz alleine hier: Laden Sie mehr Leute ein!'
     member_options: Mitgliedseinstellungen
     see_all_members: 'Alle {{count}} Mitglieder anzeigen'
@@ -1272,8 +1275,14 @@ de:
     show_results: Ergebnis anzeigen
   poll_common_index_card:
     title: Bisherige Abstimmungen
-    no_polls: Bislang sind noch keine Abstimmungen vorhanden.
     count: "Zeige alles: ({{count}}) Entscheidungen"
+  discussions_panel:
+    unread: Ungelesen
+    closed: Geschlossen
+  members_panel:
+    order_by_name: 'Name'
+    header_name: 'Name'
+    header_username: 'Benutzername'
   poll_common_action_panel:
     anonymous: Stimmen werden anonym sein
     anonymous_until_close: Stimmen werden anonym bleiben, bis diese Umfrage endet
@@ -1352,7 +1361,6 @@ de:
     ranked_choice_reopened: Prioritätensetzung wiedereröffnet
   poll_common_closing_at_field:
     closing: Schluss
-    closing_hour: Schließ-Stunde
   poll_card:
     started_by: Erstellt von {{name}}
   poll_common_votes_panel:
@@ -1405,7 +1413,6 @@ de:
     title: Titel
     details: Details
     options: Optionen
-    options_placeholder: Neue Handlungsoption hinzufügen...
     no_options: Sie haben noch keine Optionen hinzugefügt.
     closing: Schluss
     closed: Geschlossen
@@ -1508,7 +1515,6 @@ de:
     timeslots: Zeitfenster
     no_options: Geben Sie Zeiten in Ihrer aktuellen Zeitzone ({{zone}}) ein. Teilnehmer sehen Zeiten in ihre lokale Zeitzone übersetzt.
     meeting_duration: Dauer des Meetings
-    add_option_placeholder: neue Zeit einfügen
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>Die Ranglistenwahl ist eine Methode, die es jedem Teilnehmer ermöglicht, mit seinen Präferenzen in Form einer Reihenfolge zu antworten.</p>
@@ -1564,8 +1570,6 @@ de:
     reason_placeholder: Hinterlassen Sie eine Nachricht, wenn Sie möchten
     stance_created: Wahl erstellt
     stance_updated: Wahl aktualisiert
-  poll_common_percent_voted:
-    sentence: "{{percent}}% der Mitglieder haben ihre Abstimmungsposition mitgeteilt ({{numerator}}/{{denominator}})"
   poll_count_chart_panel:
     out_of: von {{goal}}
   poll_meeting_chart_panel:

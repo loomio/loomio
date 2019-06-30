@@ -29,6 +29,7 @@ te:
     copy: 'కాపీ చేయి'
     total: మొత్తం
     action:
+      search: 'వెతుకు'
       next: 'తదుపరి'
       close: 'మూసివేయి'
       save: 'భద్రపరుచు'
@@ -57,6 +58,7 @@ te:
   comment_form:
     delete_comment: 'వ్యాఖ్యను తొలగించు'
   sidebar:
+    threads: 'చర్చలు'
     aria_labels:
       user_list: 'వాడుకరి చర్యలు'
   navbar:
@@ -89,6 +91,8 @@ te:
   reactions_display:
     you: "మీరు"
   group_page:
+    threads: చర్చలు
+    members: సభ్యులు
     invite_people: 'ఆహ్నానించు'
     options_label: 'ఐచ్ఛికాలు'
     options:
@@ -153,6 +157,11 @@ te:
     name_label: పేరు
   poll_common:
     save_changes: భద్రపరుచు
+  discussions_panel:
+    closed: మూసివేయబడింది
+  members_panel:
+    order_by_name: 'పేరు'
+    header_name: 'పేరు'
   poll_common_form:
     closed: మూసివేయబడింది
     update: తాజాకరించు
