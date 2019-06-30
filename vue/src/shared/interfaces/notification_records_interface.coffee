@@ -6,7 +6,7 @@ export default class NotificationRecordsInterface extends BaseRecordsInterface
 
   viewed: ->
     any = false
-    _.each @collection.find(viewed: { $ne: true}), (n) =>
+    @collection.find(viewed: { $ne: true}).forEach (n) =>
       any = true
       n.update(viewed: true)
 
