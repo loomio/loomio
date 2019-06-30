@@ -50,6 +50,8 @@ export default class PollModel extends BaseModel
     pollOptionNames: []
     pollOptionIds: []
     customFields: {}
+    files: []
+    imageFiles: []
     # optionDate: moment().format('YYYY-MM-DD')
 
   audienceValues: ->
