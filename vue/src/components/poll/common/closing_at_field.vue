@@ -1,40 +1,15 @@
-<style lang="scss">
-// .poll-common-closing-at-field {
-//   margin: 16px 0;
-// }
-//
-// .poll-common-closing-at-field__label {
-//   overflow: visible !important;
-//   color: rgba(0,0,0,0.38) !important;
-// }
-//
-// .poll-common-closing-at-field {
-//   display: flex;
-//   flex-direction: column;
-// }
-//
-// .poll-common-closing-at-field__zone {
-//   color: rgba(0,0,0,0.38);
-//   margin: -40px 0 0 0;
-// }
-//
-// .poll-common-closing-at-field__inputs {
-//   display: flex;
-// }
-</style>
-
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
-import _times from 'lodash/times'
 import TimeService from '@/shared/services/time_service'
 import moment from 'moment'
+# import { format} from 'date-fns'
 
 export default
   props:
     poll: Object
   data: ->
-    closingHour: moment().startOf('hour').format('h:mm a')
-    closingDate: moment(@poll.closingAt.toDate()).format('YYYY-MM-DD')
+    closingHour: moment(@poll.closingAt).format('h:mm a')
+    closingDate: moment(@poll.closingAt).format('YYYY-MM-DD')
     dateToday: moment().format('YYYY-MM-DD')
     times: TimeService.timesOfDay()
     timeZone: AppConfig.timeZone
