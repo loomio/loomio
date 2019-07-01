@@ -17,15 +17,17 @@ export default
     stanceChoices: []
     pollOptions: []
     zone: null
-    canRespondMaybe: @stance.poll().customFields.can_respond_maybe
-    stanceValues: if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
+    canRespondMaybe: null
+    stanceValues: []
 
   created: ->
     EventBus.$on 'timeZoneSelected', (e, zone) => @zone = zone
 
     @watchRecords
-      collections: ['poll_options']
+      collections: ['poll_options', 'poll']
       query: (records) =>
+        @canRespondMaybe =  @stance.poll().customFields.can_respond_maybe
+        @stanceValues = if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
         @pollOptions = sortBy @stance.poll().pollOptions(), 'name'
 
         @stanceChoices = @pollOptions.map (option) =>
@@ -58,6 +60,17 @@ export default
         when 1 then 'abstain'
         when 0 then 'disagree'
       "/img/#{name}.svg"
+
+    incrementScore: (choice) ->
+      if @canRespondMaybe
+        choice.score = (choice.score + 5) % 3
+      else
+        choice.score = if choice.score == 2
+          0
+        else
+          2
+
+
 </script>
 
 <template lang='pug'>
@@ -69,7 +82,7 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
     //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.unable'")
     //- time-zone-select.lmo-margin-left
     v-layout.poll-common-vote-form__option(v-for='choice in stanceChoices' :key='choice.id')
-      poll-common-stance-choice(:stance-choice='choice' :zone='zone' @click="choice.score = (choice.score + 5) % 3")
+      poll-common-stance-choice(:stance-choice='choice' :zone='zone' @click="incrementScore(choice)")
       v-spacer
       v-btn.poll-meeting-vote-form--box(icon :style="buttonStyleFor(choice, i)" v-for='i in stanceValues', :key='i', @click='choice.score = i')
         v-avatar(:size="36")
