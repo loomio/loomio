@@ -28,17 +28,6 @@ export default
   data: ->
     buttonPressed: false
     myLastStance: null
-    actions:  [
-      name: 'edit_poll'
-      icon: 'mdi-pencil'
-      canPerform: => AbilityService.canEditPoll(@eventable)
-      perform:    => @openEditPollModal @eventable
-    ,
-      name: 'translate_outcome'
-      icon: 'mdi-translate'
-      canPerform: => AbilityService.canTranslate(@eventable)
-      perform:    => @eventable.translate(Session.user().locale)
-    ]
 
   computed:
     eventable: -> @event.model()
@@ -75,7 +64,4 @@ thread-item.poll-created(:event="event" :event-window="eventWindow")
     //- closing in x days
   poll-common-action-panel(:poll='poll')
   document-list(:model='poll')
-  .lmo-md-actions
-    reaction-display(:model="eventable")
-    action-dock(:model="eventable" :actions="actions")
 </template>

@@ -37,11 +37,11 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-stance-choice(:class="'poll-common-stance-choice--' + pollType" row)
+.poll-common-stance-choice.mr-1(:class="'poll-common-stance-choice--' + pollType" row)
   span(v-if="!poll.datesAsOptions()")
     v-avatar(tile :size="size" v-if='poll.hasOptionIcons()')
       img(:src="'/img/' + pollOption.name + '.svg'", alt='optionName')
-    v-chip(small  v-if='!poll.hasOptionIcons()' :color="pollOption.color")
+    v-chip(v-if='!poll.hasOptionIcons()' :color="pollOption.color")
       span {{ optionName }}
       span(v-if="poll.hasVariableScore()")
         mid-dot

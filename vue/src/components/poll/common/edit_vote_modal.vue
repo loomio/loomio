@@ -17,15 +17,9 @@ export default
     PollCommonDirective: PollCommonDirective
 
   created: ->
-    @submit = submitStance @, @stance,
-      # prepareFn: ->
-        # EventBus.emit 'processing'
-      successCallback: =>
-        @close()
-
-    # EventBus.listen $scope, 'stanceSaved', ->
-    #   $scope.$close()
-    #   EventBus.broadcast $rootScope, 'refreshStance'
+    @submit = submitStance(@, @stance)
+    EventBus.$on 'stanceSaved', => @close()
+    # EventBus.broadcast $rootScope, 'refreshStance'
     #
     # listenForLoading $scope
   methods:

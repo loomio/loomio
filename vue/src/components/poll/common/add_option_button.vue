@@ -15,5 +15,5 @@ export default
 
 <template lang='pug'>
 .poll-common-add-option-button(v-if='poll.voterCanAddOptions')
-  v-btn(@click='open()', v-t="'poll_common_add_option.button.add_option'")
+  v-btn(outlined rounded color="accent" @click='open()', v-t="'poll_common_add_option.button.add_option'")
 </template>
