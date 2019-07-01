@@ -97,6 +97,7 @@ module.exports = {
   PollCommonFormActions: 'poll/common/form_actions',
   PollCommonFormFields: 'poll/common/form_fields',
   PollCommonIndexCard: 'poll/common/index_card',
+  PollCommonOptionsField: 'poll/common/options_field',
   PollCommonOutcomePanel: 'poll/common/outcome_panel',
   PollCommonPercentVoted: 'poll/common/percent_voted',
   PollCommonPreview: 'poll/common/preview',
