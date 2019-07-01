@@ -3,7 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import WatchRecords from '@/mixins/watch_records'
 import AppConfig from '@/shared/services/app_config'
 
-import {reduce, sortBy, find, compact} from 'lodash'
+import {reduce, sortBy, find, compact, uniq} from 'lodash'
 
 export default
   mixins: [WatchRecords]
@@ -30,10 +30,10 @@ export default
         when 0 then AppConfig.pollColors.proposal[2]
 
     yesVotersFor: (option) ->
-      @choicesFor(option, 2).map (choice) -> choice.stance().participant()
+      uniq @choicesFor(option, 2).map (choice) -> choice.stance().participant()
 
     maybeVotersFor: (option) ->
-      @choicesFor(option, 1).map (choice) -> choice.stance().participant()
+      uniq @choicesFor(option, 1).map (choice) -> choice.stance().participant()
 
     choicesFor: (option, score) ->
       compact @latestStances.map (stance) ->

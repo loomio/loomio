@@ -42,7 +42,8 @@ export default
         attrs = compact @stanceChoices.map (choice) ->
           {poll_option_id: choice.id, score: choice.score} if choice.score > 0
 
-        @stance.stanceChoicesAttributes = attrs if some(attrs)
+        if some(attrs)
+          @stance.stanceChoicesAttributes = attrs
 
   methods:
     buttonStyleFor: (choice, score) ->
