@@ -12,19 +12,26 @@ export default
   mixins: [WatchRecords]
   props:
     stance: Object
+
   data: ->
     pollOptions: []
-    vars: {}
+    stanceChoices: []
+
   created: ->
     @submit = submitStance @, @stance,
       prepareFn: =>
         @$emit 'processing'
         @stance.id = null
         @stance.stanceChoicesAttributes = @stanceChoices
+
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
         @pollOptions = @stance.poll().pollOptions()
+
+        @stanceChoices = map @pollOptions, (option) =>
+            poll_option_id: option.id
+            score: @stanceChoiceFor(option).score
   methods:
     stanceChoiceFor: (option) ->
       head(filter(@stance.stanceChoices(), (choice) =>
@@ -34,17 +41,10 @@ export default
     optionFor: (choice) ->
       Records.pollOptions.find(choice.poll_option_id)
 
-  computed:
-    stanceChoices: ->
-      map @pollOptions, (option) =>
-        poll_option_id: option.id
-        score: @stanceChoiceFor(option).score
-
 </script>
 
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
-  h3.lmo-card-subheading(v-t="'poll_common.your_response'")
   .poll-score-vote-form__options
     .poll-score-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
       v-subheader.poll-score-vote-form__option-label {{ optionFor(choice).name }}
@@ -54,8 +54,8 @@ form.poll-score-vote-form(@submit.prevent='submit()')
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
-  .poll-common-form-actions.lmo-flex.lmo-flex__space-between
+  v-card-actions.poll-common-form-actions
     poll-common-show-results-button(v-if='stance.isNew()')
-    div(v-if='!stance.isNew()')
-    v-btn.md-primary.md-raised.poll-common-vote-form__submit(type='submit', v-t="'poll_common.vote'", aria-label="$t('poll_poll_vote_form.vote')")
+    v-spacer
+    v-btn.poll-common-vote-form__submit(color="primary" type='submit' v-t="'poll_common.vote'")
 </template>
