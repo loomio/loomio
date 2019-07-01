@@ -5,9 +5,8 @@ import DiscussionForm from '@/components/discussion/form.vue'
 import EditCommentForm from '@/components/thread/edit_comment_form.vue'
 import ConfirmModal from '@/components/common/confirm_modal.vue'
 import ChangeVolumeForm from '@/components/common/change_volume_form'
-import PollCommonStartModal from '@/components/poll/common/start_modal'
+import PollCommonModal from '@/components/poll/common/modal'
 import PollCommonEditVoteModal from '@/components/poll/common/edit_vote_modal'
-import PollCommonEditModal from '@/components/poll/common/edit_modal'
 import ContactRequestForm from '@/components/contact/request_form'
 import AuthModal from '@/components/auth/modal'
 import MembershipRequestForm from '@/components/group/membership_request_form'
@@ -28,9 +27,8 @@ export default
     'EditCommentForm': EditCommentForm
     'ConfirmModal': ConfirmModal
     'ChangeVolumeForm': ChangeVolumeForm
-    'PollCommonStartModal': PollCommonStartModal
+    'PollCommonModal': PollCommonModal
     'PollCommonEditVoteModal': PollCommonEditVoteModal
-    'PollCommonEditModal': PollCommonEditModal
     'ContactRequestForm': ContactRequestForm
     'AuthModal': AuthModal
     'MembershipRequestForm': MembershipRequestForm

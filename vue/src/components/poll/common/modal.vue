@@ -13,6 +13,16 @@ export default
     applyPollStartSequence @,
       afterSaveComplete: (event) =>
         @announcement = Records.announcements.buildFromModel(event)
+
+  computed:
+    title_key: ->
+      mode = if @poll.isNew()
+        'start'
+      else
+        'edit'
+      'poll_' + @poll.pollType + '_form.'+mode+'_header'
+
+
   methods:
     icon: ->
       iconFor(@poll)
@@ -22,7 +32,7 @@ export default
 v-card.poll-common-modal
   // <div ng-show="isDisabled" class="lmo-disabled-form"></div>
   v-card-title
-    h1.headline(v-t="'poll_common.start_poll'")
+    h1.headline(v-t="title_key")
     v-spacer
     dismiss-modal-button(:close='close')
   v-card-text
