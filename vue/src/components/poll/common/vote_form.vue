@@ -24,8 +24,9 @@ export default
     isSelected: (option) ->
       @selectedOptionId == option.id
 
-    mdColors: (option) ->
-      buttonStyle(@selectedOptionId == option.id)
+    style: (option) ->
+      if @selectedOptionId != option.id
+        {opacity: 0.3}
 
     select: (option) ->
       @selectedOptionId = option.id
@@ -37,7 +38,7 @@ export default
   v-subheader(v-t="'poll_common.your_response'", v-if='stance.isNew()')
   poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-layout(justify-space-around)
-    v-btn.poll-common-vote-form__button.mr-2(fab x-large :elevation="0" text md-colors='mdColors(option)' v-for='option in orderedPollOptions()' :key='option.id' @click='select(option)')
+    v-btn.poll-common-vote-form__button.mr-2(:style="style(option)" fab x-large text v-for='option in orderedPollOptions()' :key='option.id' @click='select(option)')
       //- v-badge(overlap)
       //-   template(v-slot:badge)
       //-     span.poll-common-vote-form__chosen-option--name(v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")

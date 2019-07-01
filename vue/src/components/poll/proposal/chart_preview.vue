@@ -53,7 +53,7 @@
 export default
   props:
     size: Number
-    stanceCounts: Array
+    stanceData: Object
     myStance: Object
     showMyStance: Boolean
 
@@ -61,7 +61,7 @@ export default
 
 <template lang="pug">
 .poll-proposal-chart-preview(:style="{width: size+'px', height: size+'px'}")
-  poll-proposal-chart.poll-common-collapsed__pie-chart(:stance-counts='stanceCounts', :diameter='size')
+  poll-proposal-chart.poll-common-collapsed__pie-chart(:stance-data='stanceData', :diameter='size')
   .poll-proposal-chart-preview__stance-container(v-if='showMyStance')
     div(v-if='myStance', :class='`poll-proposal-chart-preview__stance poll-proposal-chart-preview__stance--${this.myStance.pollOption().name}`')
     .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-if='!myStance') ?

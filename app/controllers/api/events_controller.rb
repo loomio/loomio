@@ -14,6 +14,10 @@ class API::EventsController < API::RestfulController
 
   private
 
+  def default_scope
+    super.merge(current_user: current_user, my_stances_cache: Caches::Stance.new(user: current_user, parents: resources_to_serialize))
+  end
+  
   def order
     %w(sequence_id position).detect {|col| col == params[:order] } || "sequence_id"
   end

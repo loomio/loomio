@@ -41,7 +41,7 @@ thread-item.stance-created(:event="event" :event-window="eventWindow")
       router-link(:to="event.actor()") {{event.actor().name}}
       space
       poll-common-stance-choice(:stance-choice="eventable.stanceChoices()[0]")
-      v-btn(icon v-if="canEdit" color='accent', @click='openEditVoteModal(stance)')
+      v-btn(icon v-if="canEdit" color='accent', @click='openEditVoteModal(eventable)')
         v-icon mdi-pencil
   poll-common-stance(:stance="eventable" :reason-only="choiceInHeadline")
   .lmo-md-actions

@@ -52,13 +52,14 @@ export default
             'stroke-width': 0
             fill: '#aaa'
         when 1
-          @shapes.push @svgEl.circle(@diameter).attr
-            'stroke-width': 0
-            fill: @positionColors[keys(@stanceData)[0]]
+          each @stanceData, (count, position) =>
+            return unless count > 0
+            @shapes.push @svgEl.circle(@diameter).attr
+              'stroke-width': 0
+              fill: @positionColors[position]
         else
           each @stanceData, (count, position) =>
             return unless count > 0
-            console.log @stanceData, sum(values(@stanceData)), 360/sum(values(@stanceData))*count
             angle = 360/sum(values(@stanceData))*count
             @shapes.push @svgEl.path(@arcPath(start, start + angle)).attr
               'stroke-width': 0
@@ -66,7 +67,7 @@ export default
             start += angle
   watch:
     stanceData: -> @draw()
-    
+
   mounted: ->
     @svgEl = svg(@$el).size('100%', '100%')
     @draw()

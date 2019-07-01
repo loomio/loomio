@@ -22,7 +22,6 @@ export default
         'edit'
       'poll_' + @poll.pollType + '_form.'+mode+'_header'
 
-
   methods:
     icon: ->
       iconFor(@poll)
