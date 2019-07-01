@@ -103,7 +103,7 @@ class API::DiscussionsController < API::RestfulController
     end
   end
 
-  def tags
+  def split_tags
     params[:tags].to_s.split('|')
   end
 
@@ -116,7 +116,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def accessible_records
-    Queries::VisibleDiscussions.new(user: current_user, group_ids: group_ids, tags: tags)
+    Queries::VisibleDiscussions.new(user: current_user, group_ids: group_ids, tags: split_tags)
   end
 
   def update_reader(params = {})
