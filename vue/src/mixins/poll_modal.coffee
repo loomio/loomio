@@ -7,7 +7,7 @@ export default
 
     openStartPollModal: (poll) ->
       EventBus.$emit('openModal',
-                      component: 'PollCommonStartModal',
+                      component: 'PollCommonModal',
                       props: {
                         poll: poll
                       })
@@ -21,7 +21,7 @@ export default
 
     openEditPollModal: (poll) ->
       EventBus.$emit('openModal',
-                      component: 'PollCommonEditModal',
+                      component: 'PollCommonModal',
                       props: {
                         poll: poll.clone()
                       })

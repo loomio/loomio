@@ -54,6 +54,7 @@ thread-item.poll-created(:event="event" :event-window="eventWindow")
       span(v-if='!poll.translation') {{poll.title}}
       translation(v-if="poll.translation" :model='poll', :field='title')
     poll-common-actions-dropdown(:poll="poll", v-if="pollHasActions")
+  poll-common-closing-at(:poll='poll')
   poll-common-set-outcome-panel(:poll='poll')
   poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')
   formatted-text.poll-common-details-panel__details(:model="poll" column="details")
