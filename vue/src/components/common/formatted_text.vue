@@ -24,7 +24,7 @@ export default
 </script>
 
 <template lang="pug">
-div.lmo-markdown-wrapper
+div.lmo-markdown-wrapper.body-1.text--primary
   div(v-if="!hasTranslation && isMd" v-marked='cookedText')
   div(v-if="!hasTranslation && isHtml" v-html='text')
   translation(v-if="hasTranslation" :model='model' :field='column')
