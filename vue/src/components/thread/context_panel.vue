@@ -135,32 +135,13 @@ div.context-panel#sequence-0(v-observe-visibility="{callback: viewed}")
 .context-panel__heading-pin {
   margin-left: 4px;
 }
+
 .context-panel {
   .v-breadcrumbs {
     padding: 0px 10px;
     // margin-left: 0;
   }
   border-bottom: 1px solid $border-color;
-}
-
-.context-panel__top {
-  display: flex;
-}
-
-.context-panel__status {
-  font-size: 20px;
-  line-height: 34px;
-  margin-right: 8px;
-}
-
-.context-panel__before-thread-actions {
-  order: 1;
-}
-
-.context-panel__thread-actions {
-  margin-right: -10px;
-  display: flex;
-  flex-direction: column;
 }
 
 .context-panel__discussion-privacy i {
@@ -180,13 +161,4 @@ div.context-panel#sequence-0(v-observe-visibility="{callback: viewed}")
   p:last-of-type { margin-bottom: 0; }
 }
 
-@media (min-width: $medium-max-px) {
-  .context-panel__before-thread-actions {
-    order: 0;
-  }
-
-  .context-panel__thread-actions {
-    flex-direction: row;
-  }
-}
 </style>

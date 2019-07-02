@@ -101,47 +101,47 @@ textarea .lmo-textarea {
   width: 75%
 }
 
-.lmo-markdown-wrapper {
-  word-wrap: break-word;
-
-  // p {@include md-body-1; }
-  img { max-width: 100%; }
-  h1 {
-    // @include fontLarge;
-    margin: 1em 0 0.5em;
-    font-weight: 500;
-  }
-  h2 {
-    // @include fontMedLarge;
-    margin: 1em 0 0.5em;
-    font-weight: 500;
-  }
-  h3 {
-    margin: 1em 0 0.5em;
-    font-weight: 500;
-  }
-  ul{ padding: 0 0 10px 24px; }
-  ul li{ list-style: disc; }
-  pre {
-    overflow: auto;
-    padding: 10px;
-    background: $modal-background-color;
-  }
-  blockquote{
-    font-style: italic;
-    font-size: inherit;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  table td {
-    padding: 6px 13px;
-    border: 1px solid #ddd;
-  }
-  thead td { font-weight: bold; }
-}
+// .lmo-markdown-wrapper {
+//   word-wrap: break-word;
+//
+//   // p {@include md-body-1; }
+//   img { max-width: 100%; }
+//   h1 {
+//     // @include fontLarge;
+//     margin: 1em 0 0.5em;
+//     font-weight: 500;
+//   }
+//   h2 {
+//     // @include fontMedLarge;
+//     margin: 1em 0 0.5em;
+//     font-weight: 500;
+//   }
+//   h3 {
+//     margin: 1em 0 0.5em;
+//     font-weight: 500;
+//   }
+//   ul{ padding: 0 0 10px 24px; }
+//   ul li{ list-style: disc; }
+//   pre {
+//     overflow: auto;
+//     padding: 10px;
+//     background: $modal-background-color;
+//   }
+//   blockquote{
+//     font-style: italic;
+//     font-size: inherit;
+//   }
+//   table {
+//     table-layout: fixed;
+//     width: 100%;
+//     margin-bottom: 10px;
+//   }
+//   table td {
+//     padding: 6px 13px;
+//     border: 1px solid #ddd;
+//   }
+//   thead td { font-weight: bold; }
+// }
 
 .lmo-show-more {
   padding: $cardPaddingSize;

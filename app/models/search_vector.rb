@@ -8,7 +8,7 @@ class SearchVector < ApplicationRecord
   ].reverse.freeze
 
   RECENCY_VALUES = [
-    ENV.fetch('SEARCH_RECENCY_A', 1.0),
+    ENV.fetch('SEARCH_RECENCY_A', 4.0),
     ENV.fetch('SEARCH_RECENCY_B', 0.8),
     ENV.fetch('SEARCH_RECENCY_C', 0.5),
     ENV.fetch('SEARCH_RECENCY_D', 0.1)

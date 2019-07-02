@@ -17,7 +17,6 @@ export default
 
 <template lang="pug">
 .poll-meeting-form-options
-  | {{chosenOptionNames}}
   v-menu(ref="menu" v-model="menu" :close-on-content-click="false" offset-y full-width min-width="290px")
     template(v-slot:activator="{ on }" )
       v-combobox(v-on="on" v-model="poll.pollOptionNames" @change="persistOptions()" multiple chips small-chips deletable-chips :label="$t('poll_meeting_form.timeslots')")

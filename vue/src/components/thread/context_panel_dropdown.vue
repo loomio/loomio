@@ -78,11 +78,6 @@ export default
 </script>
 <template lang="pug">
 .context-panel-dropdown.lmo-no-print
-  //- outlet.context-panel__before-thread-actions(name='before-thread-actions', model='discussion')
-  //- md-menu.lmo-dropdown-menu(md-position-mode='target-right target')
-  //-   md-button.context-panel-dropdown__button(ng-click='$mdMenu.open()')
-  //-     .sr-only(translate='thread_context.thread_options')
-  //-     i.mdi.mdi-24px.mdi-chevron-down
   v-menu.lmo-dropdown-menu(offset-y)
     template(v-slot:activator="{on}")
       v-btn.context-panel-dropdown__button(icon v-on="on")
@@ -113,10 +108,3 @@ export default
       v-list-item.context-panel-dropdown__option--delete(v-if='canDeleteThread()' @click='deleteThread()')
         v-list-item-title(v-t="'thread_context.delete_thread'")
 </template>
-<style lang="scss">
-</style>
-
-
-
-
-  ]

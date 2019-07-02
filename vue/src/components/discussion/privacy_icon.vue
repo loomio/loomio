@@ -12,12 +12,13 @@ import { discussionPrivacy } from '@/shared/helpers/helptext'
 export default
   props:
     discussion: Object
+    private: Boolean
   computed:
     translateKey: ->
-      if @discussion.private then 'private' else 'public'
+      if @private then 'private' else 'public'
 
     privacyDescription: ->
-      @$t discussionPrivacy(@discussion, @discussion.private),
+      @$t discussionPrivacy(@discussion, @private),
         group:  @discussion.group().name
         parent: @discussion.group().parentName()
 </script>

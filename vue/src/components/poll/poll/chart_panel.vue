@@ -1,5 +1,3 @@
-<style lang="scss">
-</style>
 <script lang="coffee">
 export default
   props:

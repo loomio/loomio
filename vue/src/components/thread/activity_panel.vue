@@ -47,6 +47,7 @@ export default
       {text: @$t('activity_card.nested'), value: 'nested'}
     ]
     currentAction: 'add-comment'
+    newComment: null
 
   watch:
     '$route.params.key': 'init'
@@ -56,6 +57,11 @@ export default
 
   methods:
     init: ->
+      @newComment = Records.comments.build
+        bodyFormat: "html"
+        body: ""
+        discussionId: @discussion.id
+        authorId: Session.user().id
       @eventWindow = new NestedEventWindow
         discussion: @discussion
         parentEvent: @discussion.createdEvent()
@@ -234,11 +240,11 @@ export default
       v-icon mdi-thumbs-up-down
     v-tab(href='#add-outcome')
       span(v-t="'activity_card.add_outcome'")
-      v-icon mdi-flag-checkered
+      v-icon mdi-lightbulb-on-outline
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel.lmo-card-padding(v-if="eventWindow")
-        comment-form(v-if='canAddComment' :discussion='discussion')
+        comment-form(v-if='canAddComment' :comment="newComment")
         .add-comment-panel__join-actions(v-if='!canAddComment')
           join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn()', :block='true')
           v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
