@@ -253,8 +253,8 @@ export default
 div
   v-textarea(v-if="format == 'md'" lmo_textarea v-model="model[field]" :placeholder="$t('comment_form.say_something')")
   .editor.mb-4(v-if="format == 'html'")
-    editor-menu-bar.menubar(:editor='editor')
-      div.lmo-flex.lmo-flex__center(slot-scope='{ commands, isActive }')
+    editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
+      .menubar.is-hidden(:class="{'is-focused': focused}")
         v-menu
           template(v-slot:activator="{on}")
             v-btn(small text v-on="on")
@@ -356,6 +356,20 @@ div
 
 <style lang="scss">
 @import 'variables.scss';
+
+.menubar.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+.menubar.is-focused {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility .1s .2s,opacity .1s .1s;
+}
+.menubar {
+  margin-bottom: 1rem;
+}
+
 
 .lmo-markdown-wrapper {
   word-wrap: break-word;
