@@ -35,11 +35,11 @@ export default
     handleIsUploading: (val) ->
       @canSubmit = !val
 
-    # reset: ->
-    #   @shouldReset = !@shouldReset
+    reset: ->
+      @shouldReset = !@shouldReset
 
     init: ->
-      # @reset()
+      @reset()
       @newComment = @comment.isNew()
       @submit = submitForm @, @comment,
         submitFn: =>
