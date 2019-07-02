@@ -13,7 +13,7 @@ export default
 <template lang="pug">
 .poll-dot-vote-form
   poll-common-form-fields(:poll="poll")
-  poll-common-options-field(:poll="poll")
+  poll-common-form-options-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
   v-layout.poll-common-checkbox-option__text(align-center)
     v-subheader(v-t="'poll_dot_vote_form.dots_per_person'")

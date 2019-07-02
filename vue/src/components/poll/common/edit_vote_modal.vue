@@ -45,7 +45,7 @@ v-card.poll-common-edit-vote-modal
 
   div(v-if="isEditing")
     v-card-text
-      v-layout.mb-3(align-center)
+      v-layout.mb-3(align-center wrap)
         poll-common-directive(:size="48" :stance-choice="choice", name="stance-choice", v-if="choice.id && choice.score > 0", v-for="choice in orderedStanceChoices" :key="choice.id")
         v-btn(color="accent" outlined @click="toggleCreation()", v-t="'poll_common.change_vote'")
       .poll-common-stance-reason

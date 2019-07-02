@@ -17,25 +17,8 @@ export default
   data: ->
     isDisabled: false
     submit: null
-    savedOptionsNames: []
-
-  methods:
-    persistSavedOptions: ->
-      @poll.pollOptionNames = uniq(@savedOptionNames.concat(@poll.pollOptionNames))
-
-    colorFor: (optionName) ->
-      AppConfig.pollColors.poll[@poll.pollOptionNames.indexOf(optionName) % AppConfig.pollColors.poll.length]
-
-    removeOptionName: (name) ->
-      @poll.pollOptionNames = without(@poll.pollOptionNames, name)
-      @persistSavedOptions()
-
-  computed:
-    noNewOptions: ->
-      isEqual @savedOptionNames, @poll.pollOptionNames
 
   created: ->
-    @savedOptionNames = @poll.pollOptionNames
     @submit = submitPoll @, @poll,
       submitFn: @poll.addOptions
       prepareFn: =>
@@ -53,12 +36,9 @@ v-card.poll-common-modal
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    //- .poll-common-add-option-form
-    //-   poll-common-form-options(:poll='poll')
-    v-combobox(v-model="poll.pollOptionNames" @change="persistSavedOptions()" multiple chips :label="$t('poll_common_form.options')" :placeholder="$t('poll_common_form.options_placeholder')")
-      template(v-slot:selection="data")
-        v-chip(:close="!savedOptionNames.includes(data.item)" :color="colorFor(data.item)" @click.stop="removeOptionName(data.item)") {{data.item}}
+    poll-common-form-options-field(:poll="poll" v-if="poll.pollType != 'meeting'" add-options-only)
+    poll-meeting-form-options-field(:poll="poll" v-if="poll.pollType == 'meeting'" add-options-only)
   v-card-actions
     v-spacer
-    v-btn(color="primary" :disabled="noNewOptions" @click='submit()' v-t="'poll_common_add_option.form.add_options'")
+    v-btn(color="primary" :disabled="!poll.isModified()" @click='submit()' v-t="'poll_common_add_option.form.add_options'")
 </template>

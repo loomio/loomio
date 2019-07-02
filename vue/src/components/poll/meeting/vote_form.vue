@@ -81,7 +81,7 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
     //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.if_need_be'", v-if='canRespondMaybe')
     //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.unable'")
     //- time-zone-select.lmo-margin-left
-    v-layout.poll-common-vote-form__option(v-for='choice in stanceChoices' :key='choice.id')
+    v-layout.poll-common-vote-form__option(wrap v-for='choice in stanceChoices' :key='choice.id')
       poll-common-stance-choice(:stance-choice='choice' :zone='zone' @click="incrementScore(choice)")
       v-spacer
       v-btn.poll-meeting-vote-form--box(icon :style="buttonStyleFor(choice, i)" v-for='i in stanceValues', :key='i', @click='choice.score = i')
