@@ -2,21 +2,18 @@
 import tippy from 'tippy.js'
 # import 'tippy.js/dist/tippy.css'
 import Records from '@/shared/services/records'
-import _concat from 'lodash/concat'
-import _sortBy from 'lodash/sortBy'
-import _isString from 'lodash/isString'
-import _filter from 'lodash/filter'
-import _uniq from 'lodash/uniq'
-import _map from 'lodash/map'
-import _forEach from 'lodash/forEach'
+import {concat, sortBy, isString, filter, uniq, map, forEach} from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
 import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
-  OrderedList, BulletList, ListItem, TodoItem, TodoList, Bold, Code,
+  OrderedList, BulletList, ListItem, TodoList, Bold, Code,
   Italic, Link, Strike, Underline, History, Mention, Placeholder } from 'tiptap-extensions'
+  
+import TodoItem from './todo_item'
+
 import { insertText } from 'tiptap-commands'
 import Image from '@/shared/tiptap_extentions/image.js'
 
@@ -44,7 +41,6 @@ export default
     closeEmojiMenu: false
     linkUrl: null
     linkDialogIsOpen: false
-    recentEmojis: 'thumbsup thumbsdown laughing wink sunglasses neutral_face sleeping relieved confused astonished confounded disappointed worried cry weary scream angry v ok_hand wave clap raised_hands pray heart'.split(" ")
     insertMention: () => {}
     editor: new Editor
       extensions: [
@@ -125,12 +121,12 @@ export default
     hasResults: -> @filteredUsers.length
     showSuggestions: -> @query || @hasResults
     filteredUsers: ->
-      unsorted = _filter Records.users.collection.chain().find(@mentionableUserIds).data(), (u) =>
-        _isString(u.username) &&
+      unsorted = filter Records.users.collection.chain().find(@mentionableUserIds).data(), (u) =>
+        isString(u.username) &&
         (u.name.toLowerCase().startsWith(@query) or
         (u.username || "").toLowerCase().startsWith(@query) or
         u.name.toLowerCase().includes(" #{@query}"))
-      _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
+      sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
     format: ->
       @model["#{@field}Format"]
   methods:
@@ -156,7 +152,7 @@ export default
       @emitUploading()
 
     removeFile: (name) ->
-      @files = _filter @files, (wrapper) -> wrapper.file.name != name
+      @files = filter @files, (wrapper) -> wrapper.file.name != name
 
     attachFile: ({file}) ->
       wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null}
@@ -184,11 +180,11 @@ export default
       , onFailure)
 
     fileSelected: ->
-      _forEach(@$refs.filesField.files, (file) => @attachFile(file: file))
+      forEach(@$refs.filesField.files, (file) => @attachFile(file: file))
 
     fetchMentionable: ->
       Records.users.fetchMentionable(@query, @model).then (response) =>
-        @mentionableUserIds.concat(_.uniq @mentionableUserIds + _.map(response.users, 'id'))
+        @mentionableUserIds.concat(uniq @mentionableUserIds + map(response.users, 'id'))
 
     # navigate to the previous item
     # if it's the first item, navigate to the last one
@@ -464,6 +460,18 @@ progress::-moz-progress-bar {
   outline: none;
 }
 
+.ProseMirror:focus {
+  border-bottom: 2px solid var(--v-primary-base);
+}
+
+.ProseMirror img {
+  display: block;
+}
+
+.ProseMirror progress {
+  // display: block;
+}
+
 ul[data-type="todo_list"] {
   padding-left: 0;
 }
@@ -471,8 +479,9 @@ li[data-type="todo_item"] {
   display: flex;
   flex-direction: row;
 }
+
 .todo-checkbox {
-  border: 2px solid $color-black;
+  border: 2px solid #000;
   height: 0.9em;
   width: 0.9em;
   box-sizing: border-box;
@@ -485,6 +494,7 @@ li[data-type="todo_item"] {
   background-color: transparent;
   transition: 0.4s background;
 }
+
 .todo-content {
   flex: 1;
   > p:last-of-type {
@@ -501,7 +511,7 @@ li[data-done="true"] {
     }
   }
   > .todo-checkbox {
-    background-color: $color-black;
+    background-color: #000;
   }
 }
 li[data-done="false"] {
@@ -516,18 +526,6 @@ li[data-done="false"] {
 //   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 //   width: 100%;
 // }
-
-.ProseMirror:focus {
-  border-bottom: 2px solid var(--v-primary-base);
-}
-
-.ProseMirror img {
-  display: block;
-}
-
-.ProseMirror progress {
-  // display: block;
-}
 
 .editor p.is-empty:first-child::before {
   content: attr(data-empty-text);
@@ -606,44 +604,6 @@ li[data-done="false"] {
   .tippy-popper[x-placement^=right] & .tippy-arrow {
     border-right-color: $color-black;
   }
-}
-
-ul[data-type="todo_list"] {
-  padding-left: 0;
-}
-
-li[data-type="todo_item"] {
-  display: flex;
-  flex-direction: row;
-}
-
-.todo-checkbox {
-  border: 2px solid $color-black;
-  height: 0.9em;
-  width: 0.9em;
-  box-sizing: border-box;
-  margin-right: 10px;
-  margin-top: 0.3rem;
-  user-select: none;
-  -webkit-user-select: none;
-  cursor: pointer;
-  border-radius: 0.2em;
-  background-color: transparent;
-  transition: 0.4s background;
-}
-
-.todo-content {
-  flex: 1;
-}
-
-li[data-done="true"] {
-  text-decoration: line-through;
-}
-li[data-done="true"] .todo-checkbox {
-  background-color: $color-black;
-}
-li[data-done="false"] {
-  text-decoration: none;
 }
 
 input[type="file"] { display: none; }
