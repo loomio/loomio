@@ -10,8 +10,6 @@ export default
 .poll-score-form
   poll-common-form-fields(:poll="poll")
   poll-common-form-options-field(:poll="poll")
-  poll-common-closing-at-field.md-input-compensate.md-block(:poll="poll")
-
-  .md-input-compensate
-    poll-common-settings(:poll="poll")
+  poll-common-closing-at-field(:poll="poll")
+  poll-common-settings(:poll="poll")
 </template>
