@@ -11,7 +11,7 @@ import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
   OrderedList, BulletList, ListItem, TodoList, Bold, Code,
   Italic, Link, Strike, Underline, History, Mention, Placeholder } from 'tiptap-extensions'
-  
+
 import TodoItem from './todo_item'
 
 import { insertText } from 'tiptap-commands'
@@ -24,6 +24,9 @@ export default
     placeholder: [String, Object]
     helptext: [String, Object]
     shouldReset: Boolean
+    autoFocus:
+      type: Boolean
+      default: false
 
   components:
     EditorContent: EditorContent
@@ -116,6 +119,7 @@ export default
       ]
       content: @model[@field]
       onUpdate: @updateModel
+      autoFocus: @autoFocus
 
   computed:
     hasResults: -> @filteredUsers.length
@@ -129,6 +133,7 @@ export default
       sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
     format: ->
       @model["#{@field}Format"]
+
   methods:
     setLinkUrl: (command) ->
       command({ href: @linkUrl })
