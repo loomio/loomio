@@ -319,7 +319,7 @@ div
             v-btn.emoji-picker__toggle(v-on="on" small text :class="{ 'is-active': isActive.underline() }")
               v-icon mdi-emoticon-outline
           emoji-picker(:insert="emojiPicked")
-        v-dialog(v-model="linkDialogIsOpen")
+        v-dialog(v-model="linkDialogIsOpen" max-width="600px")
           template(v-slot:activator="{on}")
             v-btn(text small v-on="on")
               v-icon mdi-link-variant
@@ -333,7 +333,7 @@ div
                 v-text-field(type="url" label="https://www.example.com" v-model="linkUrl")
               v-card-actions
                 v-spacer
-                v-btn(@click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
+                v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
         //-
         //- v-btn-toggle(slot-scope='{ commands, isActive }')
         //- v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
