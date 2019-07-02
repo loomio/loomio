@@ -52,7 +52,6 @@ export default
         parent: @discussion.group().parentName()
 
     groupSelectOptions: ->
-      console.log "uppdating group select options", @availableGroups
       sortBy map(@availableGroups, (group) -> {
          text: group.fullName,
          value: group.id
