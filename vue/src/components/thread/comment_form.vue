@@ -39,7 +39,6 @@ export default
       @shouldReset = !@shouldReset
 
     init: ->
-      @reset()
       @newComment = @comment.isNew()
       @submit = submitForm @, @comment,
         submitFn: =>
@@ -57,6 +56,7 @@ export default
             @comment.parent().authorName() if @comment.isReply()
         successCallback: =>
           @$emit('comment-submitted')
+          @reset()
           @init()
 
       # submitOnEnter @, element: $element

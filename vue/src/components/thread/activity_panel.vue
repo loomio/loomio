@@ -240,7 +240,7 @@ export default
       v-icon mdi-thumbs-up-down
     v-tab(href='#add-outcome')
       span(v-t="'activity_card.add_outcome'")
-      v-icon mdi-flag-checkered
+      v-icon mdi-lightbulb-on-outline
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel.lmo-card-padding(v-if="eventWindow")
