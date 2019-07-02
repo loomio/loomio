@@ -8,6 +8,7 @@ import ModalService   from '@/shared/services/modal_service'
 import CommentModalMixin from '@/mixins/comment_modal.coffee'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
 import RevisionHistoryModalMixin from '@/mixins/revision_history_modal'
+import Records from '@/shared/services/records'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
 
@@ -46,7 +47,14 @@ export default
       name: 'reply_to_comment'
       icon: 'mdi-reply'
       canPerform: => AbilityService.canRespondToComment(@eventable)
-      perform:    => @showReplyForm = true
+      perform:    =>
+        @newComment = Records.comments.build
+          bodyFormat: "html"
+          body: ""
+          discussionId: @eventable.discussion().id
+          authorId: Session.user().id
+          parentId: @eventable.id
+        @showReplyForm = true
     ,
       name: 'edit_comment'
       icon: 'mdi-pencil'
@@ -95,5 +103,5 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-wind
       reaction-display(:model="eventable")
       v-spacer
       action-dock(:model='eventable', :actions='actions')
-  comment-form(v-if="showReplyForm" :parentComment="event.model()" :discussion="eventWindow.discussion" @comment-submitted="showReplyForm = false")
+  comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" :autoFocus="true")
 </template>
