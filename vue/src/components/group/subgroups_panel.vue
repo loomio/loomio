@@ -54,7 +54,7 @@ export default
   v-list(avatar two-line)
     v-list-item.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id' :to='urlFor(group)')
       v-list-item-avatar.subgroups-card__list-item-logo
-        group-avatar(:group="group" size="medium")
+        group-avatar(:group="group" size="28px")
       v-list-item-content
         v-list-item-title {{ group.name }}
         v-list-item-subtitle {{ group.description }}

@@ -66,8 +66,7 @@ v-app-bar(app clipped-right)
     v-avatar(tile size="36px")
       v-icon mdi-menu
   v-btn.navbar__group-toggle(icon v-if="group" :to="urlFor(group)")
-    v-avatar(tile size="36px")
-      img(:src='group.logoUrlMedium')
+    group-avatar(:group="group" size="36px")
   v-toolbar-title
     span(v-if="breadcrumbs" v-for="crumb in breadcrumbs" :key="crumb.i")
       router-link(v-if="!crumb.last" :to="crumb.to") {{crumb.text}}
