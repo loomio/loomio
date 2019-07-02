@@ -2,17 +2,11 @@
 export default
   props:
     group: Object
-    size: String
-  computed:
-    csize: ->
-      sizes = ['small', 'medium', 'large']
-      if _.includes(sizes, @size)
-        @size
-      else
-        'small'
+    size:
+      default: '28px'
 </script>
 
 <template lang="pug">
-v-avatar(:size="56" tile)
-  img(:alt="group.name" :src="group.logoUrl()")
+v-avatar(:size="size" tile)
+  img(:alt="group.name" src="https://www.loomio.org/theme/icon.png")
 </template>

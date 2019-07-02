@@ -90,7 +90,7 @@ main.email-settings-page(v-if='user')
           .email-settings-page__default-description(v-html="$t(defaultSettingsDescription)")
           v-btn.md-accent.email-settings-page__change-default-link(@click='changeDefaultMembershipVolume()', v-t="'common.action.edit'")
         v-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between(v-for='group in groups', key='group.id')
-          group-avatar.lmo-margin-right(:group='group', size='medium')
+          group-avatar.lmo-margin-right(:group='group', size='28px')
           .email-settings-page__group-details.lmo-flex__grow
             strong.email-settings-page__group-name
               span(v-if='group.isSubgroup()') {{group.parentName()}} -
