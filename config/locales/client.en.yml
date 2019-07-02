@@ -1790,7 +1790,7 @@ en:
 
   poll_dot_vote_vote_form:
     dots_remaining: "{{count}} dots remaining"
-    too_many_dots: Too many dots
+    too_many_dots: You have used too many dots
     stance_created: Vote created
     stance_updated: Vote updated
 
