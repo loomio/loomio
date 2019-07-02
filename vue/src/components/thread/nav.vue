@@ -35,8 +35,12 @@ export default
         key: @discussion.id
         collections: ["events"]
         query: (records) =>
+          return unless @discussion
           @keyEvents = records.events.collection.chain()
-                        .find(kind: {$in: ['poll_created']})
+                        .find({
+                          kind: {$in: ['poll_created']}
+                          discussionId: @discussion.id
+                        })
                         .simplesort('sequenceId')
                         .data()
   computed:
