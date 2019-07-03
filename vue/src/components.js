@@ -40,6 +40,8 @@ module.exports = {
   CommonError: 'common/error',
   CommonFlash: 'common/flash',
   CommonFooter: 'common/footer',
+  SortableList: 'common/sortable_list',
+  SortableItem: 'common/sortable_item',
   FormattedText: 'common/formatted_text',
   GroupActionsDropdown: 'group/actions_dropdown',
   GroupAvatar: 'group/avatar',

@@ -69,6 +69,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    option: Option
     add: Add
     you: You
     expand: Expand
@@ -1725,6 +1726,8 @@ en:
     minimum_stance_choices_helptext: Number of options each voter may rank
     ranked_choice_created: Ranked choice created
     ranked_choice_updated: Ranked choice updated
+    rank: Rank
+    points: Points
 
   poll_meeting_time_field:
     new_time_slot: New time slot

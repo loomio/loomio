@@ -19,8 +19,11 @@ export default
       @stance.latest && @stance.participant() == Session.user()
 
     orderedStanceChoices: ->
-      orderBy @stance.stanceChoices(), 'rankOrScore', 'desc'
-
+      order = if @stance.poll().pollType == 'ranked_choice'
+        'asc'
+      else
+        'desc'
+      orderBy @stance.stanceChoices(), 'rankOrScore', order
 </script>
 
 <template lang="pug">

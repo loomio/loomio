@@ -8,6 +8,9 @@ export default
     size:
       type: Number
       default: 24
+    hideScore:
+      type: Boolean
+      default: false
   computed:
     poll: ->
       @stanceChoice.poll()
@@ -46,9 +49,9 @@ export default
       img(:src="'/img/' + pollOption.name + '.svg'", :alt='optionName')
     v-chip(v-if='!poll.hasOptionIcons()' :color="pollOption.color")
       span {{ optionName }}
-      span(v-if="poll.hasVariableScore()")
+      span(v-if="!hideScore && poll.hasVariableScore()")
         mid-dot
-        span {{stanceChoice.score}}
+        span {{stanceChoice.rankOrScore}}
   span(v-if="poll.datesAsOptions()")
     v-chip(outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
       poll-meeting-time(:name="optionName")
