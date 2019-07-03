@@ -49,7 +49,9 @@ export default class PollModel extends BaseModel
     closingAt: moment().add(3, 'days').startOf('hour')
     pollOptionNames: []
     pollOptionIds: []
-    customFields: {}
+    customFields: {
+      minimum_stance_choices: null
+    }
     files: []
     imageFiles: []
     # optionDate: moment().format('YYYY-MM-DD')

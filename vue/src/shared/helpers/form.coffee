@@ -55,7 +55,6 @@ export submitPoll = (scope, model, options = {}) ->
       model.customFields.deanonymize_after_close = model.deanonymizeAfterClose if model.anonymous
       model.customFields.can_respond_maybe = model.canRespondMaybe if model.pollType == 'meeting'
       model.setErrors({})
-      model.setMinimumStanceChoices()
     failureCallback: ->
       scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
     successCallback: (data) ->
