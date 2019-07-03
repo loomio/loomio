@@ -29,6 +29,11 @@ export default
         when 1 then AppConfig.pollColors.proposal[1]
         when 0 then AppConfig.pollColors.proposal[2]
 
+    bgColor: (score) ->
+      switch score
+        when 2 then "rgba(0, 209, 119, 0.5)"
+        when 1 then "rgba(246, 168, 43, 0.5)"
+
     yesVotersFor: (option) ->
       uniq @choicesFor(option, 2).map (choice) -> choice.stance().participant()
 
@@ -64,19 +69,25 @@ export default
       td
         poll-meeting-time(:name='option.name' :zone='zone')
       td
-        span.poll-meeting-chart__bar(v-if="yesVotersFor(option).length" :style="{'border-color': scoreColor(2)}")
-          user-avatar(size="24" :user="user" v-for="user in yesVotersFor(option)" :key="user.id")
-        span.poll-meeting-chart__bar(v-if="maybeVotersFor(option).length" :style="{'border-color': scoreColor(1)}")
-          user-avatar(size="24" :user="user" v-for="user in maybeVotersFor(option)" :key="user.id")
-
-
+        v-layout
+          span.poll-meeting-chart__bar(v-if="yesVotersFor(option).length" :style="{'border-color': scoreColor(2), 'background-color': bgColor(2)}")
+            user-avatar(size="24" :user="user" v-for="user in yesVotersFor(option)" :key="user.id")
+          span.poll-meeting-chart__bar(v-if="maybeVotersFor(option).length" :style="{'border-color': scoreColor(1), 'background-color': bgColor(1)}")
+            user-avatar(size="24" :user="user" v-for="user in maybeVotersFor(option)" :key="user.id")
 </template>
 <style lang="scss">
 .poll-meeting-chart__bar {
-  padding: 3px;
+  // padding: 3px 0px;
+  margin: 4px 0px;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  height: 36px;
+  border-radius: 2px;
   border: 1px solid;
-  border-radius: 20px
+
+  .user-avatar {
+    padding: 0px 4px;
+  }
 }
 </style>
