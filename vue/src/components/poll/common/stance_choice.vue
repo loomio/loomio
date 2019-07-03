@@ -26,7 +26,7 @@ export default
 
     optionName: ->
       if @poll.translateOptionName()
-        @$t('poll_' + @pollType + '_options.' + stanceChoice.pollOption().name)
+        @$t('poll_' + @pollType + '_options.' + @stanceChoice.pollOption().name)
       else
         @stanceChoice.pollOption().name
 
