@@ -49,7 +49,7 @@ export default
     join-group-button(:group='group')
     group-privacy-button(:group='group')
     group-actions-dropdown(:group='group')
-  .description-card__placeholder.lmo-hint-text(v-t="'description_card.placeholder'", v-if='!group.description')
+  .description-card__placeholder(v-t="'description_card.placeholder'", v-if='!group.description')
   formatted-text.description-card__text(:model="group" column="description")
   attachment-list(:attachments="group.attachments")
   document-list(:model='group')

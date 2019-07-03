@@ -79,8 +79,8 @@ v-navigation-drawer.lmo-no-print.sidenav-left(app width="250" v-model="open")
           v-layout.sidebar__user-dropdown
             user-avatar.mr-2(:user="user" size="medium")
             v-flex
-              .body-1 {{user.name}}
-              .body-1 @{{user.username}}
+              .body-2 {{user.name}}
+              .body-2 @{{user.username}}
         v-expansion-panel-content
           user-dropdown
     v-list-item.sidebar__list-item-button--recent(shaped to='/dashboard')
