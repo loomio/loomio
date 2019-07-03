@@ -45,7 +45,7 @@
     "vue-observe-visibility": "^0.4.4",
     "vue-router": "^3.0.6",
     "vuebar": "0.0.20",
-    "vuetify": "2.0.0-beta.4",
+    "vuetify": "2.0.0-beta.5",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
