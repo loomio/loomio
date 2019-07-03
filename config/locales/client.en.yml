@@ -1790,8 +1790,8 @@ en:
     reason_placeholder: Explain when you're free (or busy), in case the author wants to add options.
 
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} dots remaining."
-    too_many_dots: You have used too many dots.
+    dots_remaining: "{{count}} dots remaining"
+    too_many_dots: You have used too many dots
     stance_created: Vote created
     stance_updated: Vote updated
 
