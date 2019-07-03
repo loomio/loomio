@@ -46,13 +46,8 @@ export default class BaseEventWindow
     !_.some @readRanges, (range) ->
       _.inRange(event.sequenceId, range[0], range[1]+1)
 
-  increaseMax: =>
-    return false if @max == false
-    @setMax(@max + @per)
-
-  decreaseMin: =>
-    return false unless @min > @firstInSequence()
-    @setMin(@min - @per)
+  increaseMax: => @setMax(@max + @per)
+  decreaseMin: => @setMin(@min - @per)
 
   # these talk about the window over the events
   windowNumNext:   -> if @max == false then 0 else @lastInSequence() - @max

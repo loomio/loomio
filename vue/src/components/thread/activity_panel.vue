@@ -38,7 +38,6 @@ export default
     per: AppConfig.pageSize.threadItems
     renderMode: 'nested'
     eventWindow: null
-    lastSequenceId: 0
     event: null
     events: []
     positionItems: []
@@ -62,6 +61,7 @@ export default
         body: ""
         discussionId: @discussion.id
         authorId: Session.user().id
+
       @eventWindow = new NestedEventWindow
         discussion: @discussion
         parentEvent: @discussion.createdEvent()
@@ -158,7 +158,6 @@ export default
       # if the initialEvent is a child of the parentEvent then min = initialEvent.position
       # if the initialEvent is a grandchild of the parentEvent then min = initialEvent.parent().position
       # if the initialEvent is not a child or grandchild, then min = 0
-      console.log event
       if event == @discussion.createdEvent()
         0
       else if event.parentId == @eventWindow.parentEvent.id
@@ -238,9 +237,9 @@ export default
     v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
       span(v-t="'activity_card.add_poll'")
       v-icon mdi-thumbs-up-down
-    v-tab(href='#add-outcome')
-      span(v-t="'activity_card.add_outcome'")
-      v-icon mdi-lightbulb-on-outline
+    //- v-tab(href='#add-outcome')
+    //-   span(v-t="'activity_card.add_outcome'")
+    //-   v-icon mdi-lightbulb-on-outline
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel.lmo-card-padding(v-if="eventWindow")

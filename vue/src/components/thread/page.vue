@@ -27,34 +27,36 @@ export default
     '$route.params.comment_id': 'init'
 
   methods:
-    openThreadNav: ->
-      EventBus.$emit('toggleThreadNav')
+    openThreadNav: -> EventBus.$emit('toggleThreadNav')
 
     init: ->
-      @discussion = Records.discussions.findOrNull(@$route.params.key)
-      @commentId = parseInt(@$route.params.comment_id)
-      @sequenceId = parseInt(@$route.params.sequence_id)
-
       EventBus.$on 'threadPositionUpdated', (position) =>
         @threadPercentage = parseInt(position / @discussion.createdEvent().childCount * 100)
+
+      commentId = parseInt(@$route.params.comment_id)
+      sequenceId = parseInt(@$route.params.sequence_id)
+      fromUnread = 1 if !@$route.params.comment_id && !@$route.params.sequence_id
 
       @loader = new RecordLoader
         collection: 'events'
         params:
           discussion_id: @$route.params.key
-          from: @sequenceId
-          comment_id: @commentId
           order: 'sequence_id'
+          comment_id: commentId
+          from: sequenceId
+          from_unread: fromUnread
           per: @per
 
       @loader.fetchRecords().then =>
+        delete @loader.params.comment_id
+        delete @loader.params.from_unread
         Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
           @discussion = discussion
-          if @commentId
+          if commentId
             event = Records.events.find(
                       discussionId: @discussion.id,
                       kind: 'new_comment',
-                      eventableId: @commentId)[0]
+                      eventableId: commentId)[0]
             @$router.push(LmoUrlService.discussion(@discussion)+'/'+event.sequenceId)
           else
             if @discussion.forkedEvent()
