@@ -6,6 +6,13 @@ export default
     item: Object
 </script>
 <template lang="pug">
-v-list-item.list-item
+v-list-item.sortable-list-item
   slot
 </template>
+
+<style lang="scss">
+.sortable-list-item {
+  z-index: 999;
+  font-family: Roboto, sans-serif !important
+}
+</style>

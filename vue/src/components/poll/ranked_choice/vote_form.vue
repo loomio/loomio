@@ -102,7 +102,9 @@ export default
 
   sortable-list(v-model="pollOptions")
     sortable-item(v-for="(option, index) in pollOptions" :index="index" :key="option.id" :item="option")
-      v-chip {{ option.name }}
+      | {{index+1}}
+      space
+      v-chip.mr-2(:color="option.color" :index="index" :key="index") {{ option.name }}
 
   //- .lmo-flex(sv-root='true', layout='row')
   //-   ul.lmo-flex(md-list='', layout='column')
