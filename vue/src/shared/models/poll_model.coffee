@@ -51,6 +51,8 @@ export default class PollModel extends BaseModel
     pollOptionIds: []
     customFields: {
       minimum_stance_choices: null
+      max_score: null
+      min_score: null
     }
     files: []
     imageFiles: []
