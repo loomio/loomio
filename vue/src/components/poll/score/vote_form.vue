@@ -27,7 +27,7 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @stance.poll().pollOptions()
+        @pollOptions = @poll.pollOptions()
 
         @stanceChoices = map @pollOptions, (option) =>
             poll_option_id: option.id
@@ -41,6 +41,8 @@ export default
     optionFor: (choice) ->
       Records.pollOptions.find(choice.poll_option_id)
 
+  computed:
+    poll: -> @stance.poll()
 </script>
 
 <template lang='pug'>
@@ -48,7 +50,7 @@ form.poll-score-vote-form(@submit.prevent='submit()')
   .poll-score-vote-form__options
     .poll-score-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
       v-subheader.poll-score-vote-form__option-label {{ optionFor(choice).name }}
-      v-slider.poll-score-vote-form__score-slider(v-model='choice.score' :color="optionFor(choice).color" :thumb-color="optionFor(choice).color" :track-color="optionFor(choice).color" :height="4" :thumb-size="24" :thumb-label="(choice.score > 0) ? 'always' : true" :min="0" :max="9")
+      v-slider.poll-score-vote-form__score-slider(v-model='choice.score' :color="optionFor(choice).color" :thumb-color="optionFor(choice).color" :track-color="optionFor(choice).color" :height="4" :thumb-size="24" :thumb-label="(choice.score > 0) ? 'always' : true" :min="poll.customFields.min_score" :max="poll.customFields.max_score")
         //- template(v-slot:append)
         //-   v-text-field.poll-score-vote-form__score-input(v-model='choice.score' class="mt-0 pt-0" hide-details single-line type="number" style="width: 60px")
   validation-errors(:subject='stance', field='stanceChoices')

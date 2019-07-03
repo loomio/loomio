@@ -1399,6 +1399,8 @@ en:
     view_all: View all
     save_changes: Save
     change_vote: Change vote
+    max_score: Maximum score
+    min_score: Minimum score
 
   poll_common_attachment_form:
     label: Attachments

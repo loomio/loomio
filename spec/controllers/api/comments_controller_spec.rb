@@ -10,6 +10,7 @@ describe API::CommentsController do
 
   before do
     group.add_member! user
+
   end
 
   describe "signed in" do
@@ -127,6 +128,7 @@ describe API::CommentsController do
     describe 'destroy' do
       context 'allowed to delete' do
         it "destroys a comment" do
+          CommentService.create(comment: comment, actor: user)
           delete :destroy, params: { id: comment.id }
           expect(response).to be_success
           expect(Comment.where(id: comment.id).count).to be 0
@@ -135,6 +137,7 @@ describe API::CommentsController do
 
       context 'not allowed to delete' do
         it "gives error of some kind" do
+          CommentService.create(comment: another_comment, actor: another_user)
           delete(:destroy, params: { id: another_comment.id })
           expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
           expect(Comment.where(id: another_comment.id)).to exist

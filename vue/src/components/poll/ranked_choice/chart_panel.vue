@@ -1,27 +1,28 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
-import { max, values, sortBy, map, find } from 'lodash'
+import { max, values, orderBy, map, find } from 'lodash'
 
 export default
   props:
     poll: Object
-  methods:
-    rankFor: (score) ->
-      @poll.customFields.minimum_stance_choices - score + 1
-
   computed:
     rankedOptions: ->
-      sortBy map(@poll.stanceData, (score, name) =>
+      sortedByScore = orderBy map(@poll.stanceData, (score, name) =>
         name: name
         score: score
-        rank: @rankFor(score)
-        rankOrScore: @rankFor(score)
         poll: => @poll
         pollOption: => find(@poll.pollOptions(), (option) -> option.name == name)
       )
       ,
-        'rank'
+        'score', 'desc'
+
+      sortedByScore.forEach (option, index) =>
+        option.rank = index+1
+        option.rankOrScore = index+1
+
+      sortedByScore
+
 </script>
 <template lang="pug">
 .poll-common-ranked-choice-chart
@@ -37,7 +38,6 @@ export default
         td
           poll-common-stance-choice(:stance-choice="option" hide-score)
         td {{option.score}}
-
 </template>
 <style lang="scss">
 .poll-common-ranked-choice-chart {

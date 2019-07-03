@@ -16,7 +16,6 @@ export default
     stance: Object
   data: ->
     pollOptions: []
-    numChoices: @stance.poll().customFields.minimum_stance_choices
 
   created: ->
     @watchRecords
@@ -41,6 +40,8 @@ export default
     scoreFor: (option) ->
       choice = _find(@stance.stanceChoices(), _matchesProperty('pollOptionId', option.id))
       (choice or {}).score
+  computed:
+    numChoices: -> @stance.poll().customFields.minimum_stance_choices
 
 </script>
 
@@ -51,7 +52,7 @@ export default
   p.lmo-hint-text(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
   sortable-list(v-model="pollOptions")
     sortable-item(v-for="(option, index) in pollOptions" :index="index" :key="option.id" :item="option")
-      | {{index+1}}
+      span(v-if="index+1 <= numChoices") {{index+1}}
       space
       v-chip.mr-2(:color="option.color" :index="index" :key="index") {{ option.name }}
   validation-errors(:subject='stance', field='stanceChoices')
