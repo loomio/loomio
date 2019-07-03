@@ -38,7 +38,7 @@ export default
   //- v-subheader(v-t="'poll_common.your_response'", v-if='stance.isNew()')
   poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-layout.mb-4(justify-space-around)
-    v-btn.poll-common-vote-form__button(color="accent" :style="style(option)" text v-for='option in orderedPollOptions()' :key='option.id' @click='select(option)')
+    v-btn.poll-common-vote-form__button.poll-proposal-vote-form__button(color="accent" :style="style(option)" text v-for='option in orderedPollOptions()' :key='option.id' @click='select(option)')
       v-layout(column align-center)
         //- v-badge(overlap)
         //-   template(v-slot:badge)
@@ -54,7 +54,7 @@ export default
     v-btn.poll-common-vote-form__submit(color="primary", @click='submit()', v-t="'poll_common.vote'", :disabled='!selectedOptionId')
 </template>
 <style lang="scss">
-.poll-common-vote-form__button {
+.poll-proposal-vote-form__button {
   height: 112px !important;
 }
 </style>
