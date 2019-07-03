@@ -6,7 +6,7 @@ import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
-import { map, debounce, orderBy } from 'lodash'
+import { map, debounce, orderBy, intersection, compact } from 'lodash'
 import Session from '@/shared/services/session'
 import WatchRecords from '@/mixins/watch_records'
 import UrlFor       from '@/mixins/url_for'
@@ -21,15 +21,22 @@ export default
     discussions: []
     searchResults: []
     loader: null
-    showClosed: false
-    showUnread: false
     fragment: ''
-    tags: []
-    includeSubgroups: false
+    filters: []
+    selectedFilters: []
 
   methods:
     init: ->
       @group = Records.groups.fuzzyFind(@$route.params.key)
+      @filters = compact [
+        ({name: @$t('discussions_panel.include_subgroups'), value: 'includeSubgroups'} if @group.hasSubgroups())
+        {name: @$t('discussions_panel.closed'), value: 'showClosed'}
+        {name: @$t('discussions_panel.unread'), value: 'showUnread'}
+      ]
+
+      @groupTags.forEach (tag) => @filters.push({name: tag, value: tag})
+
+      @selectedFilters.push('includeSubgroups') if @group.hasSubgroups()
 
       @loader = new RecordLoader
         collection: 'discussions'
@@ -100,14 +107,23 @@ export default
 
   watch:
     fragment: -> @refresh()
-    showUnread: -> @refresh()
-    showClosed: -> @refresh()
-    includeSubgroups: -> @refresh()
+    selectedFilters: -> @refresh()
     isLoggedIn: -> @refresh()
-    tags: -> @refresh()
     $route: (a, b) -> @init()
 
   computed:
+    showClosed: ->
+      @selectedFilters.includes('showClosed')
+
+    showUnread: ->
+      @selectedFilters.includes('showUnread')
+
+    includeSubgroups: ->
+      @selectedFilters.includes('includeSubgroups')
+
+    tags: ->
+      intersection(@selectedFilters, @groupTags)
+
     groupIds: ->
       if @includeSubgroups
         @group.organisationIds()
@@ -139,10 +155,10 @@ export default
   v-toolbar(flat align-center)
     v-toolbar-items
       v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
-      v-combobox(solo flat multiple chips v-model='tags' :items='groupTags' :label="$t('common.action.filter')" item-text="name" )
-    v-switch.discussions-panel__toggle-closed(v-model="showClosed" :label="$t('discussions_panel.closed')")
-    v-switch.discussions-panel__toggle-include-subgroups(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
-    v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
+      v-select(solo flat multiple chips v-model='selectedFilters' :items='filters' :label="$t('common.action.filter')" item-text="name")
+    //- v-switch.discussions-panel__toggle-closed(v-model="showClosed" :label="$t('discussions_panel.closed')")
+    //- v-switch.discussions-panel__toggle-include-subgroups(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
+    //- v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
     v-spacer
     v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outlined color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
     v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)

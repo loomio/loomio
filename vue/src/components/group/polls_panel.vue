@@ -2,7 +2,7 @@
 import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import WatchRecords from '@/mixins/watch_records'
-import { debounce, some, every } from 'lodash'
+import { debounce, some, every, compact } from 'lodash'
 
 export default
   mixins: [WatchRecords]
@@ -14,9 +14,15 @@ export default
     loader: null
     per: 25
     from: 0
-    includeSubgroups: false
+    filters: []
+    selectedFilters: []
 
   created: ->
+    @filters = compact [
+      ({name: @$t('discussions_panel.include_subgroups'), value: 'includeSubgroups'} if @group.hasSubgroups())
+    ]
+    @selectedFilters.push('includeSubgroups') if @group.hasSubgroups()
+
     @loader = new RecordLoader
       collection: 'polls'
       path: 'search'
@@ -57,9 +63,12 @@ export default
     totalRecords: -> @group.pollsCount
     showLoadMore: ->
       !@loader.loading && @loader.numRequested < @totalRecords && !@fragment.length
+    includeSubgroups: ->
+      @selectedFilters.includes('includeSubgroups')
+
   watch:
     fragment: -> @fetch()
-    includeSubgroups: -> @fetch()
+    selectedFilters: -> @fetch()
 
 </script>
 
@@ -68,8 +77,8 @@ div
   v-toolbar(flat)
     v-toolbar-items
       v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
+      v-select(solo flat multiple chips v-model='selectedFilters' :items='filters' :label="$t('common.action.filter')" item-text="name")
     v-spacer
-    v-switch(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute bottom)
 
   .group-polls-panel

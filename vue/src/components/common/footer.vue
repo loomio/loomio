@@ -15,18 +15,13 @@ v-footer
     .powered-by.caption
       a(href="https://www.loomio.org/?frontpage" v-t="'powered_by.powered_by_loomio'" target="_blank")
       span(v-if="privacyUrl")
-      | &nbsp;
-      | ·
-      | &nbsp;
-      a(:href="privacyUrl" v-t="'powered_by.privacy_policy'" target="_blank")
+        | &nbsp;
+        | ·
+        | &nbsp;
+        a(:href="privacyUrl" v-t="'powered_by.privacy_policy'" target="_blank")
       span(v-if="termsUrl")
-      | &nbsp;
-      | ·
-      | &nbsp;
-      a(:href="termsUrl" v-t="'powered_by.terms_of_service'" target="_blank")
-      span(v-if="showFrontPage")
-      | &nbsp;
-      | ·
-      | &nbsp;
-      a(:href="frontPageUrl" v-t="'powered_by.front_page'" target="_blank")
+        | &nbsp;
+        | ·
+        | &nbsp;
+        a(:href="termsUrl" v-t="'powered_by.terms_of_service'" target="_blank")
 </template>

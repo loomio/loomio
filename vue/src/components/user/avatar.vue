@@ -12,8 +12,7 @@ export default
     coordinator: Boolean
     size:
       type: [String, Number]
-      required: true
-      default: 24
+      default: 36
     noLink: Boolean
     colors: Object
 

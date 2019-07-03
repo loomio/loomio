@@ -8,7 +8,7 @@ import UrlFor         from '@/mixins/url_for'
 import Session        from '@/shared/services/session'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import WatchRecords from '@/mixins/watch_records'
-import {includes, some} from 'lodash'
+import {includes, some, compact} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 
 export default
@@ -18,7 +18,8 @@ export default
     group: Records.groups.fuzzyFind(@$route.params.key)
     fragment: ''
     loader: null
-    includeSubgroups: false
+    filters: []
+    selectedFilters: []
     order: 'created_at desc'
     orders: [
       {text: @$t('members_panel.order_by_name'),  value:'users.name' }
@@ -40,6 +41,9 @@ export default
     ]
 
   created: ->
+    @filters = compact [
+      ({name: @$t('discussions_panel.include_subgroups'), value: 'includeSubgroups'} if @currentUserIsAdmin && @group.hasSubgroups())
+    ]
     @loader = new RecordLoader
       collection: 'memberships'
       path: 'autocomplete'
@@ -137,6 +141,7 @@ export default
         'div'
 
   computed:
+    includeSubgroups: -> @selectedFilters.includes('includeSubgroups')
     membershipRequestsPath: -> LmoUrlService.membershipRequest(@group)
     currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
 
@@ -171,17 +176,15 @@ div.members-panel
   v-toolbar(flat align-center)
     v-toolbar-items
       v-text-field.members-panel__filter(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
-    v-toolbar-items
-      span(v-t="'members_panel.sort'")
       v-select(solo flat v-model="order" :items="orders" :label="$t('members_panel.order_label')")
-    //- just for group admins
-    v-switch(v-if="currentUserIsAdmin && group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
+      v-select(v-if="filters.length" solo flat multiple chips v-model='selectedFilters' :items='filters' :label="$t('common.action.filter')" item-text="name")
+      v-spacer
     v-spacer
     v-btn.membership-requests-link(text color="primary" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
     v-btn.membership-card__invite(text color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
     v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute bottom)
 
-  v-data-table.members-panel__table(:items="memberships" :headers="headers" disable-initial-sort :total-items="totalRecords" hide-default-footer)
+  v-data-table.members-panel__table(:items="memberships" :headers="headers" :server-items-length="totalRecords" hide-default-footer)
     template(v-slot:no-results)
       | No results
     template(v-slot:item="{item}")

@@ -1426,6 +1426,7 @@ en:
 
   members_panel:
     sort: 'Sort'
+    order_label: "Order"
     order_by_name: 'Name'
     order_by_created: 'Oldest'
     order_by_created_desc: 'Newest'
