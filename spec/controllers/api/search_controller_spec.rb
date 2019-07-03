@@ -23,7 +23,7 @@ describe API::SearchController do
       search_for('find')
 
       expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3] * SearchVector::RECENCY_VALUES[0]
     end
 
     # TODO: Pull this stuff out so it's not so magic number-y
@@ -47,7 +47,7 @@ describe API::SearchController do
       search_for('find')
 
       expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[1]
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[1] * SearchVector::RECENCY_VALUES[0]
     end
 
     it "can find a discussion by comment body" do
@@ -55,7 +55,7 @@ describe API::SearchController do
       SearchVector.index! comment.discussion_id
       result = search_for('find')
       expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[0]
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[0] * SearchVector::RECENCY_VALUES[0]
     end
 
     it "does not display content the user does not have access to" do
