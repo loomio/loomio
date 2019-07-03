@@ -508,10 +508,13 @@ li[data-type="todo_item"] {
   margin-top: 0.3rem;
   user-select: none;
   -webkit-user-select: none;
-  cursor: pointer;
   border-radius: 0.2em;
   background-color: transparent;
   transition: 0.4s background;
+}
+
+.ProseMirror .todo-checkbox {
+  cursor: pointer;
 }
 
 .todo-content {
