@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records'
-import {merge, camelCase, defaults } from 'lodash'
+import {merge, camelCase, defaults, max } from 'lodash'
 
 export default class RecordLoader
   constructor: (opts = {}) ->
@@ -21,6 +21,7 @@ export default class RecordLoader
     @numLoaded  = 0
 
   fetchRecords: (opts = {}) ->
+    console.log defaults({}, opts, @params)
     @loading = true
     @exhausted = false
     Records[camelCase(@collection)].fetch
@@ -47,6 +48,7 @@ export default class RecordLoader
     if from?
       @params['from'] = from
     else
-      @params['from'] -= @params['per'] if @numLoaded > 0
+      @params['from'] = max([1, @params['from'] - @params['per']])
+
     @loadingPrevious = true
     @fetchRecords()

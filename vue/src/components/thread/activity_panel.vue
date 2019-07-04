@@ -30,23 +30,23 @@ export default
     ThreadItem: -> import('@/components/thread/item.vue')
 
   props:
-    loader: Object
     discussion: Object
 
   data: ->
+    loadingFirst: true
+    loadingNext: false
+    loadingPrevious: false
+    loader: null
     canAddComment: false
     per: AppConfig.pageSize.threadItems
     renderMode: 'nested'
     eventWindow: null
-    event: null
     events: []
-    positionItems: []
-    renderModeItems: [
-      {text: @$t('activity_card.chronological'), value: 'chronological'},
-      {text: @$t('activity_card.nested'), value: 'nested'}
-    ]
-    currentAction: 'add-comment'
-    newComment: null
+    # positionItems: []
+    # renderModeItems: [
+    #   {text: @$t('activity_card.chronological'), value: 'chronological'},
+    #   {text: @$t('activity_card.nested'), value: 'nested'}
+    # ]
 
   watch:
     '$route.params.key': 'init'
@@ -56,12 +56,6 @@ export default
 
   methods:
     init: ->
-      @newComment = Records.comments.build
-        bodyFormat: "html"
-        body: ""
-        discussionId: @discussion.id
-        authorId: Session.user().id
-
       @eventWindow = new NestedEventWindow
         discussion: @discussion
         parentEvent: @discussion.createdEvent()
@@ -79,8 +73,34 @@ export default
         query: (store) =>
           @events = @eventWindow.windowedEvents()
 
+      commentId = parseInt(@$route.params.comment_id)
+      sequenceId = parseInt(@$route.params.sequence_id) || @discussion.lastReadSequenceId() || 0
+
+      @loader = new RecordLoader
+        collection: 'events'
+        params:
+          discussion_id: @$route.params.key
+          order: 'sequence_id'
+          comment_id: commentId
+          from: sequenceId
+          per: @per
+
+
+      @loader.fetchRecords().then =>
+        @alignWindowTo if commentId
+            Records.events.find(
+              discussionId: @discussion.id,
+              kind: 'new_comment',
+              eventableId: commentId)[0]
+          else
+            @findEvent('sequenceId', sequenceId)
+        # @eventWindow.setMin(focalEvent.position)
+        # @eventWindow.setMax(focalEvent.position + @per)
+        # @$router.push(LmoUrlService.discussion(@discussion)+'/'+focalEvent.sequenceId)
+        # @sequenceIdRequested(sequenceId)
+
+
       EventBus.$on 'threadPositionRequest', (position) => @positionRequested(position)
-      @sequenceIdRequested(parseInt(@$route.params.sequence_id) || @discussion.firstUnreadSequenceId() || 0)
 
     routeUpdated: ->
       @sequenceIdRequested(parseInt(@$route.params.sequence_id) || 0)
@@ -100,17 +120,20 @@ export default
             sequenceId: id
         Records.events.find(args)[0]
 
-    fetchEvents: (column, id) ->
+    fetchEvents: (column, min, max) ->
       args = switch snakeCase(column)
         when 'position'
           discussion_id: @discussion.id
           order: 'sequence_id'
-          from_sequence_id_of_position: id
+          from_sequence_id_of_position: min
+          until_sequence_id_of_position: max
+          comment_id: null
           from: null
-          per: @per
+          per: null
         when 'sequence_id'
           discussion_id: @discussion.id
           order: 'sequence_id'
+          comment_id: null
           from: id
           per: @per
       @loader.fetchRecords(args)
@@ -141,6 +164,7 @@ export default
 
     alignWindowTo: (event) ->
       console.log "aligning to event", event
+      @loadingFirst = false
       @eventWindow.focalEvent = event
       min = @parentPositionOf(event)
       @eventWindow.setMin(min)
@@ -167,13 +191,21 @@ export default
 
     loadPrevious: ->
       if @eventWindow.anyPrevious()
+        @loadingPrevious = true
+        oldMin = @eventWindow.min
         @eventWindow.decreaseMin()
-        @loader.loadPrevious(@eventWindow.min) # unless @eventWindow.allLoaded()
+        newMin = @eventWindow.min
+        @fetchEvents('position', newMin, oldMin).then =>
+          @loadingPrevious = false
 
     loadNext: ->
       if @eventWindow.anyNext() && !@loader.loadingMore
+        @loadingNext = true
+        oldMax = @eventWindow.max
         @eventWindow.increaseMax()
-        @loader.loadMore() #unless @eventWindow.allLoaded()
+        newMax = @eventWindow.max
+        @fetchEvents('position', oldMax, newMax).then =>
+          @loadingNext = false
 
     signIn:     -> @openAuthModal()
     isLoggedIn: -> Session.isSignedIn()
@@ -181,6 +213,7 @@ export default
 
     shouldLoadMore: (visible) ->
       @loadNext() if visible
+
     shouldLoadPrevious: (visible) ->
       @loadPrevious() if visible
 
@@ -191,66 +224,47 @@ export default
 </script>
 
 <template lang="pug">
-.activity-panel(v-if="discussion" aria-labelledby='activity-panel-title')
-  //- div(v-if='debug()')
-  //-   p first: {{eventWindow.firstInSequence()}}
-  //-   p last: {{eventWindow.lastInSequence()}}
-  //-   p total: {{eventWindow.numTotal()}}
-  //-   p min: {{eventWindow.min}}
-  //-   p max: {{eventWindow.max}}
-  //-   p per: {{per}}
-  //-   p firstLoaded: {{eventWindow.firstLoaded()}}
-  //-   p lastLoaded: {{eventWindow.lastLoaded()}}
-  //-   p numLoaded: {{eventWindow.numLoaded()}}
-  //-   p windowLength: {{eventWindow.windowLength()}}
-  //-   p allLoaded: {{eventWindow.allLoaded()}}
-  //-   p read: {{discussion.readItemsCount()}}
-  //-   p unread: {{discussion.unreadItemsCount()}}
-  //-   p firstUnread {{discussion.firstUnreadSequenceId()}}
-  //-   p initialSequenceId: {{eventWindow.initialSequenceId}}
-  //-   p position: {{initialPosition()}}
-  //-   p loader.loadingFirst {{loader.loadingFirst}}
-  //-   p loader.loadingPrevious {{loader.loadingPrevious}}
-  //-
+.activity-panel
+  div(v-if='debug()')
+    p first: {{eventWindow.firstInSequence()}}
+    p last: {{eventWindow.lastInSequence()}}
+    //- p total: {{eventWindow.numTotal()}}
+    p min: {{eventWindow.min}}
+    p max: {{eventWindow.max}}
+    //- p per: {{per}}
+    //- p firstLoaded: {{eventWindow.firstLoaded()}}
+    //- p lastLoaded: {{eventWindow.lastLoaded()}}
+    //- p numLoaded: {{eventWindow.numLoaded()}}
+    //- p windowLength: {{eventWindow.windowLength()}}
+    //- p allLoaded: {{eventWindow.allLoaded()}}
+    //- p read: {{discussion.readItemsCount()}}
+    //- p unread: {{discussion.unreadItemsCount()}}
+    //- p firstUnread {{discussion.firstUnreadSequenceId()}}
+    //- p initialSequenceId: {{eventWindow.initialSequenceId}}
+    //- p position: {{initialPosition()}}
+    //- p loader.loadingFirst {{loader.loadingFirst}}
+    //- p loader.loadingPrevious {{loader.loadingPrevious}}
+
   //- v-layout.activity-panel__settings(justify-space-between)
   //-   v-flex
   //-     v-select(text :items='positionItems', v-model='position', @change='init()', solo)
   //-   v-flex
   //-     v-select(text :items='renderModeItems', v-model='renderMode', @change='init()', solo)
 
-  loading-content(v-if='loader.loading && eventWindow.numLoaded() == 0' :blockCount='2')
+  loading-content(v-if='loadingFirst' :blockCount='6')
 
   .activity-panel__content.mb-4(v-if='!loader.loadingFirst')
-    a.activity-panel__load-more.lmo-flex.lmo-flex__center.lmo-no-print(v-show='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()', tabindex='0')
+    a.activity-panel__load-more.lmo-no-print(v-show='eventWindow.anyPrevious() && !loadingPrevious', @click='loadPrevious()', tabindex='0')
       i.mdi.mdi-autorenew
       span(v-t="{ path: 'discussion.load_previous', args: { count: eventWindow.numPrevious() }}")
     //- .activity-panel__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadPrevious")
-    loading.activity-panel__loading.page-loading(v-show='loader.loadingPrevious')
+    //- loading.activity-panel__loading.page-loading(v-show='loadingPrevious')
+    loading-content(v-show='loadingPrevious' :blockCount='4')
     component(:is="componentForKind(event.kind)" v-for='event in events' :key='event.id' :event='event' :event-window='eventWindow')
     .activity-panel__load-more-sensor.lmo-no-print(v-observe-visibility="shouldLoadMore")
-    loading.activity-panel__loading.page-loading(v-show='loader.loadingMore')
-  v-divider
-  v-tabs.activity-panel__actions.mb-3(grow icons-and-text v-model="currentAction")
-    v-tab(href='#add-comment')
-      span(v-t="'activity_card.add_comment'")
-      v-icon mdi-comment
-    v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
-      span(v-t="'activity_card.add_poll'")
-      v-icon mdi-thumbs-up-down
-    //- v-tab(href='#add-outcome')
-    //-   span(v-t="'activity_card.add_outcome'")
-    //-   v-icon mdi-lightbulb-on-outline
-  v-tabs-items(v-model="currentAction")
-    v-tab-item(value="add-comment")
-      .add-comment-panel.lmo-card-padding(v-if="eventWindow")
-        comment-form(v-if='canAddComment' :comment="newComment")
-        .add-comment-panel__join-actions(v-if='!canAddComment')
-          join-group-button(:group='eventWindow.discussion.group()', v-if='isLoggedIn()', :block='true')
-          v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
-    v-tab-item(value="add-poll")
-      v-subheader(v-t="'decision_tools_card.title'")
-      poll-common-start-form(:discussion='discussion')
-    v-tab-item(value="add-outcome")
+    loading.activity-panel__loading.page-loading(v-show='loadingNext')
+    loading-content(v-show='loadingNext' :blockCount='4')
+  thread-actions-panel(:discussion="discussion")
 
 </template>
 <style lang="scss">
