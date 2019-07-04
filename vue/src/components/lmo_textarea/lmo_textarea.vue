@@ -374,7 +374,7 @@ div
 .lmo-markdown-wrapper {
   word-wrap: break-word;
 
-  // p { @include md-body-1; }
+  p { margin-bottom: 8px;}
   img { max-width: 100%; }
   h1 {
     // @include fontLarge;

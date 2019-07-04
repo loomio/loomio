@@ -74,20 +74,20 @@ div
   .thread-item(:class="{'thread-item--unread': isUnread, 'thread-item--focused': isFocused}" v-observe-visibility="{callback: viewed}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
       .lmo-disabled-form(v-show='isDisabled')
-      .thread-item__avatar.mr-3
+      .thread-item__avatar.mr-3.mt-2
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='isNested ? "thirtysix" : "medium"')
         v-checkbox.thread-item__is-forking(v-if="event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
         v-layout
-          h3.thread-item__title.body-2.d-flex.align-center.wrap(:id="'event-' + event.id")
+          h3.thread-item__title.body-2.my-1.d-flex.align-center.wrap(:id="'event-' + event.id")
             div(v-if='debug()')
               mid-dot
               | sid {{event.sequenceId}}
               | pos {{event.position}}
-              | pid: {{event.model().parentId}}
+              //- | pid: {{event.model().parentId}}
               | depth: {{event.depth}}
             slot(name="headline")
-              span.thread-item__headline(v-html='headline')
+              span(v-html='headline')
             mid-dot
             router-link.thread-item__link(:to='link')
               time-ago.timeago--inline(:date='event.createdAt')
@@ -102,8 +102,24 @@ div
 @import 'variables';
 @import 'utilities';
 // @import 'mixins';
+
+.thread-item__title {
+  strong {
+    font-weight: normal;
+  }
+  a {
+    // color: var(--text-primary);
+  }
+}
 .thread-item {
-  padding: 4px $cardPaddingSize;
+  padding: 0px 16px 0 16px;
+}
+
+.thread-item {
+  .v-card__actions {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .thread-item--focused {
@@ -120,7 +136,7 @@ div
 }
 
 .thread-item--indent {
-  padding-left: $cardPaddingSize + 42px;
+  padding-left: 64px;
 }
 
 .thread-item--indent-margin {
