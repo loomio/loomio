@@ -60,7 +60,7 @@
     "coffee-loader": "^0.9.0",
     "coffeescript": "^2.4.1",
     "fibers": "^4.0.1",
-    "sass": "^1.22.1",
+    "sass": "^1.22.3",
     "sass-loader": "^7.1.0",
     "selenium-server-standalone-jar": "latest",
     "stylus": "^0.54.5",
