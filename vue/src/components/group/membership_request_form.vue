@@ -44,7 +44,8 @@ v-card.membership-request-form
       .md-block
         label(for='membership-request-introduction', v-t="'membership_request_form.introduction_label'")
         v-textarea#membership-request-introduction.lmo-textarea.membership-request-form__introduction(v-model='membershipRequest.introduction', :required='false', maxlength='250')
-  v-card-actions.lmo-md-actions
-    v-btn.membership-request-form__cancel-btn(@click='close()', type='button', v-t="'common.action.cancel'")
-    v-btn.md-raised.md-primary.membership-request-form__submit-btn(@click='submit()', v-t="'membership_request_form.submit_button'")
+  v-card-actions
+    v-btn.membership-request-form__cancel-btn(@click='close()' v-t="'common.action.cancel'")
+    v-spacer
+    v-btn.membership-request-form__submit-btn(color="primary" @click='submit()' v-t="'membership_request_form.submit_button'")
 </template>

@@ -96,6 +96,8 @@ export default
   margin-right: 2px;
   span {
     font-size: 24px;
+    line-height: 1;
+    margin-bottom: -4px;
   }
 }
 .reactions-display__emojis {

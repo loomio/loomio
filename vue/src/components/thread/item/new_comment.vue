@@ -99,9 +99,8 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-wind
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
   v-card-actions
-    v-layout(wrap)
-      reaction-display(:model="eventable")
-      v-spacer
-      action-dock(:model='eventable', :actions='actions')
+    reaction-display(:model="eventable")
+    v-spacer
+    action-dock(:model='eventable', :actions='actions')
   comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" :autoFocus="true")
 </template>

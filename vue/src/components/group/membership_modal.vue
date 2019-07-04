@@ -27,8 +27,7 @@ v-card.membership-modal
     label(for='membership-title', v-t="'membership_form.title_label'")
     v-text-field#membership-title.membership-form__title-input.lmo-primary-form-input(:placeholder="$t('membership_form.title_placeholder')" v-model='membership.title', maxlength='255')
     validation-errors(:subject='membership', field='title')
-  v-card-actions.membership-form-actions.lmo-md-action
-    v-btn.md-primary.md-raised.membership-form__submit(@click='submit()' v-t="'common.action.save'")
+  v-card-actions.membership-form-actions
+    v-spacer
+    v-btn.membership-form__submit(color="primary" @click='submit()' v-t="'common.action.save'")
 </template>
-<style lang="scss">
-</style>

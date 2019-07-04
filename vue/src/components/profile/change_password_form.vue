@@ -39,7 +39,6 @@ v-card.change-password-form
       v-text-field.change-password-form__password-confirmation(required='true' type='password' v-model='user.passwordConfirmation')
       validation-errors(:subject='user', field='passwordConfirmation')
   v-card-actions
-    .lmo-md-actions
-      v-btn.md-accent(ng-click='$close()', v-t="'common.action.cancel'")
-      v-btn.md-primary.md-raised.change-password-form__submit(@click='submit()' v-t="'change_password_form.set_password'")
+    //- v-btn.md-accent(ng-click='$close()', v-t="'common.action.cancel'")
+    v-btn.change-password-form__submit(color="primary" @click='submit()' v-t="'change_password_form.set_password'")
 </template>
