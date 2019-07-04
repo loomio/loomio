@@ -46,9 +46,9 @@ div(v-if="poll.outcome()" class="poll-common-outcome-panel lmo-action-dock-wrapp
     span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: poll.outcome().authorName() } }")
     time-ago(:date="poll.outcome().createdAt")
   formatted-text(:model="poll.outcome()" column="statement")
-  document-list(:model="poll.outcome()")
+  document-list(:model="poll.outcome()" skip-fetch)
   .lmo-md-actions
-    reaction-display(:model="poll.outcome()" :load="true")
+    reaction-display(:model="poll.outcome()")
     action-dock(:model="poll.outcome()" :actions="actions")
   </div>
 </div>

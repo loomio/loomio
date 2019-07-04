@@ -64,5 +64,5 @@ thread-item.poll-created(:event="event" :event-window="eventWindow")
     poll-common-percent-voted(:poll='poll')
     //- closing in x days
   poll-common-action-panel(:poll='poll')
-  document-list(:model='poll')
+  document-list(:model='poll' skip-fetch)
 </template>

@@ -85,8 +85,8 @@ export default
 
   poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
-  .poll-common-form-actions.lmo-flex.lmo-flex__space-between
+  .poll-common-form-actions
     poll-common-show-results-button(v-if='stance.isNew()')
-    v-spacer(v-if='!stance.isNew()')
-    v-btn.poll-common-vote-form__submit(:disabled="dotsRemaining < 0" type='button', @click="submit()", v-t="'poll_common.vote'")
+    v-spacer
+    v-btn.poll-common-vote-form__submit(color="primary" :disabled="dotsRemaining < 0" @click="submit()" v-t="'poll_common.vote'")
 </template>

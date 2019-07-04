@@ -74,9 +74,9 @@ export default
     span(v-if='poll.anonymous', md-colors="{color: 'primary-600', 'border-color': 'primary-600'}" v-t="'common.anonymous'")
   formatted-text.poll-common-details-panel__details(:model="poll" column="details")
   attachment-list(:attachments="poll.attachments")
-  document-list(:model='poll')
+  document-list(:model='poll' skip-fetch)
   v-card-actions.lmo-md-actions
-    reaction-display(:model="poll" :load="true")
+    reaction-display(:model="poll")
     v-spacer
     action-dock(:model='poll' :actions='actions')
 </template>

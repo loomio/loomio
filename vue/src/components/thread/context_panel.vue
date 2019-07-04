@@ -122,10 +122,10 @@ div.context-panel#sequence-0(v-observe-visibility="{callback: viewed}")
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
         v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
     formatted-text.context-panel__description(:model="discussion" column="description")
-    document-list(:model='discussion', :skip-fetch='true')
+    document-list(:model='discussion' skip-fetch)
     attachment-list(:attachments="discussion.attachments")
   v-card-actions
-    reaction-display.ml-2(:model="discussion" :load="true")
+    reaction-display.ml-2(:model="discussion")
     v-spacer
     action-dock(:model='discussion', :actions='actions')
     context-panel-dropdown(:discussion="discussion")
