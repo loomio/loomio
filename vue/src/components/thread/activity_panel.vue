@@ -61,8 +61,8 @@ export default
             @eventsBySlot[i+1] = null
 
           store.events.collection.chain().
-            find(discussionId: @discussion.id).data().
-            forEach (event) =>
+            find(discussionId: @discussion.id).
+            find(depth: 1).data().forEach (event) =>
               @eventsBySlot[event.position] = event
 
           console.log 'eventsBySlot', @eventsBySlot
@@ -83,7 +83,7 @@ export default
             order: 'sequence_id'
             comment_id: commentId
             from: sequenceId
-            from_unread: if !commentId && !sequenceId then 1 else null
+            # from_unread: if !commentId && !sequenceId then 1 else null
             per: @pageSize
         @loader.fetchRecords().then =>
           if event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
@@ -116,6 +116,7 @@ export default
     slotVisible: (isVisible, entry, slot, event) ->
       slot = parseInt(slot)
       if isVisible
+        @$emit('updateThreadPosition', slot)
         @visibleSlots = uniq(@visibleSlots.concat([slot])).sort()
         @missingPositions = uniq(@missingPositions.push(slot)) unless event
       else
@@ -131,7 +132,7 @@ export default
         find(discussionId: @discussion.id).
         find(depth: 1).
         find(position: {$between: [min, max]}).data().length
-        
+
       length == expectedLength
 
   watch:

@@ -40,7 +40,8 @@ class API::EventsController < API::RestfulController
         reader.first_unread_sequence_id
       end
     elsif params[:from_sequence_id_of_position]
-      Event.find_by!(discussion: @discussion, depth: 1, position: params[:from_sequence_id_of_position])&.sequence_id
+      position = [params[:from_sequence_id_of_position].to_i, 1].max
+      Event.find_by!(discussion: @discussion, depth: 1, position: position)&.sequence_id
     elsif params[:comment_id]
       Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])&.sequence_id
     else
@@ -69,7 +70,8 @@ class API::EventsController < API::RestfulController
 
   def page_collection(collection)
     if params[:until_sequence_id_of_position]
-      max_sequence_id = Event.find_by!(discussion: @discussion, depth: 1, position: params[:until_sequence_id_of_position])&.sequence_id
+      position = [params[:until_sequence_id_of_position].to_i, @discussion.created_event.child_count].min
+      max_sequence_id = Event.find_by!(discussion: @discussion, depth: 1, position: position)&.sequence_id
       collection.order(order).where('sequence_id <= ?', max_sequence_id)
     else
       collection.order(order).limit(per)
