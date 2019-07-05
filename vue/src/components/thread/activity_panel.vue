@@ -113,21 +113,6 @@ export default
     positionRequested: (id) ->
       @$vuetify.goTo "#position-#{id}"
 
-    # parentPositionOf: (event) ->
-    #   # ensure that we set the min position of the window to bring the initialSequenceId to the top
-    #   # if this is the outside window, then the initialEvent might be nested, in which case, position to the parent of initialEvent
-    #   # if the initialEvent is not child of our parentEvent
-    #
-    #   # if the initialEvent is a child of the parentEvent then min = initialEvent.position
-    #   # if the initialEvent is a grandchild of the parentEvent then min = initialEvent.parent().position
-    #   # if the initialEvent is not a child or grandchild, then min = 0
-    #   if event == @discussion.createdEvent()
-    #     0
-    #   else if event.parentId == @eventWindow.parentEvent.id
-    #     event.position
-    #   else if event.parent().parentId == @eventWindow.parentEvent.id
-    #     event.parent().position
-
     slotVisible: (isVisible, entry, slot, event) ->
       slot = parseInt(slot)
       if isVisible
@@ -142,11 +127,11 @@ export default
         when 'position' then (max - min) + 1
         when 'sequenceId' then console.error('sequenceId not implemented yet')
 
-      length =  Records.events.collection.chain().
+      length = Records.events.collection.chain().
         find(discussionId: @discussion.id).
         find(depth: 1).
         find(position: {$between: [min, max]}).data().length
-      console.log 'haveAllEventsBetween', min, max, length, expectedLength
+        
       length == expectedLength
 
   watch:
@@ -154,27 +139,21 @@ export default
     '$route.params.sequence_id': 'scrollToInitialPosition'
     '$route.params.comment_id': 'scrollToInitialPosition'
     visibleSlots: throttle (newVal, oldVal) ->
-      # return if @fetching = true
       return if isEqual(newVal, oldVal)
-      console.log newVal: newVal, oldVal: oldVal
       minPosition = min(newVal) || 1
       maxPosition = max(newVal) || 1
 
-      console.log newVal: newVal, a:1, minPosition: minPosition, maxPosition: maxPosition, missingPositions: @missingPositions, newVal: newVal
       if @missingPositions.length
         minPosition = min(@missingPositions)
         maxPosition = max(@missingPositions)
 
-      console.log newVal: newVal, a:2, minPosition: minPosition, lastMin: min(oldVal), maxPosition: maxPosition, missingPositions: @missingPositions, newVal: newVal
       if min(newVal) < min(oldVal)
         #scrolled up
         minPosition = minPosition - @pageSize
       else # assume going to scroll down
         maxPosition = maxPosition + parseInt(@pageSize)
 
-      console.log newVal: newVal, a:3, minPosition: minPosition, maxPosition: maxPosition, missingPositions: @missingPositions, newVal: newVal
       if @missingPositions.length or !@haveAllEventsBetween('position', minPosition, maxPosition)
-        @fetching = true
         @loader.fetchRecords(
           comment_id: null
           from: null
@@ -182,9 +161,9 @@ export default
           discussion_id: @discussion.id
           order: 'sequence_id'
           from_sequence_id_of_position: minPosition
-          until_sequence_id_of_position: maxPosition).then => @fetching = false
+          until_sequence_id_of_position: maxPosition)
     ,
-      1000
+      500
 
   computed:
     canStartPoll: ->

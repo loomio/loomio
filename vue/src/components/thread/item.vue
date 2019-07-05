@@ -77,7 +77,7 @@ div
       v-layout.thread-item__body(column)
         v-layout
           h3.thread-item__title.body-2.my-1.d-flex.align-center.wrap(:id="'event-' + event.id")
-            div
+            //- div
               | sid {{event.sequenceId}}
               | pos {{event.position}}
               //- | pid: {{event.model().parentId}}

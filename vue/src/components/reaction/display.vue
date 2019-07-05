@@ -91,6 +91,7 @@ export default
 
 <style lang="scss">
 .reactions-display__group {
+  opacity: 0.7;
   display: flex;
   align-items: center;
   margin-right: 2px;
