@@ -18,8 +18,11 @@ export default
     # threadPositionRequest (use slides the slider, tell others)
     # threadPositionUpdated (slider position needs updating)
     EventBus.$on 'toggleThreadNav', => @open = !@open
-    EventBus.$on 'threadPositionUpdated', (position) =>
+    EventBus.$on 'threadPositionUpdated', debounce (position) =>
+      console.log position
       @inversePosition = 0 - position
+    ,
+      250
 
     EventBus.$on 'currentComponent', (options) =>
       @discussion = options.discussion
@@ -75,12 +78,47 @@ export default
 <template lang="pug">
 v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped)
   .thread-nav
-    v-subheader Jump to
-    v-slider(color="accent" track-color="accent" thumb-color="accent" thumb-size="64" v-model="inversePosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="emitPosition()")
-      template(v-slot:thumb-label)
-        | {{thumbLabel}}
-    v-btn(color="accent" :to="urlFor(discussion)+'/'+discussion.firstUnreadSequenceId()") {{discussion.unreadItemsCount()}} Unread {{discussion.firstUnreadSequenceId()}}
-    v-btn.thread-nav__add-people(@click="addPeople()" v-t="'common.action.add_people'")
+    v-list(dense)
+      v-list-item(:to="urlFor(discussion)" @click="scrollTo('#context')")
+        v-list-item-avatar
+          v-icon mdi-format-vertical-align-top
+        v-list-item-title Context
+      //- v-slider(color="accent" track-color="accent" thumb-color="accent" thumb-size="64" v-model="inversePosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="emitPosition()")
+      //-   template(v-slot:thumb-label)
+      //-     | {{thumbLabel}}
+      v-list-item(:to="urlFor(discussion)+'/'+(discussion.firstUnreadSequenceId() || '')" :disabled="!discussion.isUnread()")
+        v-list-item-avatar
+          v-icon mdi-bookmark-outline
+        v-list-item-title {{discussion.unreadItemsCount()}} Unread
+      v-list-item(v-for="event in keyEvents" :key="event.id" :to="urlFor(discussion)+'/'+event.sequenceId")
+        v-list-item-avatar
+          poll-common-chart-preview(:poll='event.model()' :size="28" :showMyStance="false")
+        v-list-item-title
+          span {{title(event.model())}}
+      v-list-item(:to="urlFor(discussion)+'/'+discussion.lastSequenceId()")
+        v-list-item-avatar
+          v-icon mdi-format-vertical-align-bottom
+        v-list-item-title Latest
+      v-list-item(:to="urlFor(discussion)+'#add-comment'" @click="scrollTo('#add-comment')")
+        v-list-item-avatar
+          v-icon mdi-comment
+        v-list-item-title Add comment
+    v-divider
+    v-list(dense)
+      v-list-item
+        v-list-item-avatar
+          v-icon mdi-account-plus
+        v-list-item-title Add people
+    v-subheader Notification settings
+    v-list(dense)
+      v-list-item
+        v-list-item-avatar
+          v-icon mdi-email-outline
+        v-list-item-title All activity
+        //- v-list-item-subtitle You will be emailed whenever there is activity in this thread.
+    v-divider
+
+
     //- v-list(dense)
     //-   v-subheader Navigation
     //-   v-list-item(:to="urlFor(discussion)")
@@ -93,10 +131,4 @@ v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakp
     //-     v-list-item-title Latest
     //-   v-list-item(@click="scrollTo('.activity-panel__actions')")
     //-     v-list-item-title Add comment
-    v-subheader(v-if="keyEvents.length" v-t="'group_page.polls'")
-    v-list-item(v-for="event in keyEvents" :key="event.id" :to="urlFor(discussion)+'/'+event.sequenceId")
-      v-list-item-avatar
-        poll-common-chart-preview(:poll='event.model()' :size="28" :showMyStance="false")
-      v-list-item-title
-        span {{title(event.model())}}
 </template>

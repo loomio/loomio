@@ -51,14 +51,14 @@ export default
 </script>
 
 <template lang="pug">
-.actions-panel
+.actions-panel#add-comment
   v-divider
   v-tabs.activity-panel__actions.mb-3(grow icons-and-text v-model="currentAction")
     v-tab(href='#add-comment')
       span(v-t="'activity_card.add_comment'")
       v-icon mdi-comment
     v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
-      span(v-t="'activity_card.add_poll'")
+      span Actions
       v-icon mdi-thumbs-up-down
     //- v-tab(href='#add-outcome')
     //-   span(v-t="'activity_card.add_outcome'")
@@ -71,7 +71,6 @@ export default
           join-group-button(:group='discussion.group()', v-if='isLoggedIn()', :block='true')
           v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
     v-tab-item(value="add-poll")
-      v-subheader(v-t="'decision_tools_card.title'")
       poll-common-start-form(:discussion='discussion')
     v-tab-item(value="add-outcome")
 

@@ -116,7 +116,7 @@ export default
     slotVisible: (isVisible, entry, slot, event) ->
       slot = parseInt(slot)
       if isVisible
-        @$emit('updateThreadPosition', slot)
+        EventBus.$emit('threadPositionUpdated', slot)
         @visibleSlots = uniq(@visibleSlots.concat([slot])).sort()
         @missingPositions = uniq(@missingPositions.push(slot)) unless event
       else
