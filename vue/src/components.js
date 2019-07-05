@@ -156,6 +156,7 @@ module.exports = {
   StanceCreated: 'thread/item/stance_created',
   SubgroupsCard: 'group/subgroups_card',
   TagsDisplay: 'tags/display',
+  ThreadActionsPanel: 'thread/actions_panel',
   ThreadCard: 'thread/card',
   ThreadNav: 'thread/nav',
   // ThreadItem: 'thread/item',

@@ -86,13 +86,13 @@ export default
 
 <template lang="pug">
 //- section.context-panel.lmo-card-padding.lmo-action-dock-wrapper(aria-label="$t('thread_context.aria_label')")
-div.context-panel#sequence-0(v-observe-visibility="{callback: viewed}")
+div.context-panel#context(v-observe-visibility="{callback: viewed}")
   v-layout(align-center mx-2 pt-2)
     v-breadcrumbs(:items="groups" divider=">")
     v-spacer
     tags-display(:discussion="discussion")
 
-  h1.headline.context-panel__heading.px-3
+  h1.headline.context-panel__heading.px-3#sequence-0
     span(v-if='!discussion.translation') {{discussion.title}}
     span(v-if='discussion.translation')
       translation(:model='discussion', field='title')
@@ -125,8 +125,8 @@ div.context-panel#sequence-0(v-observe-visibility="{callback: viewed}")
     document-list(:model='discussion' skip-fetch)
     attachment-list(:attachments="discussion.attachments")
   v-card-actions
-    reaction-display.ml-2(:model="discussion")
     v-spacer
+    reaction-display.ml-2(:model="discussion")
     action-dock(:model='discussion', :actions='actions')
     context-panel-dropdown(:discussion="discussion")
 </template>

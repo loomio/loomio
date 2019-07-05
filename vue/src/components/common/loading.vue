@@ -9,7 +9,7 @@ export default
 
 <template lang="pug">
 div
-  .page-loading(v-if="!until")
+  v-layout.page-loading(justify-center v-if="!until")
     v-progress-circular(indeterminate color='amber')
   slot(v-if="until")
 </template>

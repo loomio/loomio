@@ -16,7 +16,6 @@ export default
   data: ->
     discussion: null
     activePolls: []
-    loader: null
     per: 25
     threadPercentage: 0
 
@@ -33,39 +32,14 @@ export default
       EventBus.$on 'threadPositionUpdated', (position) =>
         @threadPercentage = parseInt(position / @discussion.createdEvent().childCount * 100)
 
-      commentId = parseInt(@$route.params.comment_id)
-      sequenceId = parseInt(@$route.params.sequence_id)
-      fromUnread = 1 if !@$route.params.comment_id && !@$route.params.sequence_id
+      Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
+        @discussion = discussion
+        EventBus.$emit 'currentComponent',
+          page: 'threadPage'
+          discussion: @discussion
+          breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
 
-      @loader = new RecordLoader
-        collection: 'events'
-        params:
-          discussion_id: @$route.params.key
-          order: 'sequence_id'
-          comment_id: commentId
-          from: sequenceId
-          from_unread: fromUnread
-          per: @per
 
-      @loader.fetchRecords().then =>
-        delete @loader.params.comment_id
-        delete @loader.params.from_unread
-        Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
-          @discussion = discussion
-          if commentId
-            event = Records.events.find(
-                      discussionId: @discussion.id,
-                      kind: 'new_comment',
-                      eventableId: commentId)[0]
-            @$router.push(LmoUrlService.discussion(@discussion)+'/'+event.sequenceId)
-          else
-            if @discussion.forkedEvent()
-              Records.discussions.findOrFetchById(@discussion.forkedEvent().discussionId)
-
-            EventBus.$emit 'currentComponent',
-              page: 'threadPage'
-              discussion: @discussion
-              breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
 </script>
 
 <template lang="pug">
@@ -74,7 +48,7 @@ loading(:until="discussion")
     group-cover-image(:group="discussion.group()")
     v-container.thread-page.v-container-max-width
       discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
-      thread-card(:loader='loader' :discussion='discussion')
+      thread-card(:discussion='discussion')
       v-btn.thread-page__open-thread-nav(fab fixed bottom right @click="openThreadNav()")
         v-progress-circular(color="accent" :value="threadPercentage")
 </template>

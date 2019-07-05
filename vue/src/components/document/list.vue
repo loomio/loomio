@@ -53,7 +53,6 @@ section.document-list
         i(:class='`mdi lmo-margin-right mdi-${document.icon}`', :style='{color: document.color}')
         router-link.document-list__title.truncate(:to='document.url', target='_blank') {{ document.title }}
         v-spacer
-        .document-list__upload-time.caption(v-if='!hideDate && !showEdit') {{ document.createdAt.fromNow() }}
         button.md-button--tiny(v-if='showEdit', @click="$emit('documentRemoved', document)")
           i.mdi.mdi-close
 </template>

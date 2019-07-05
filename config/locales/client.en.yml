@@ -65,6 +65,16 @@ en:
     meeting: Time poll
     ranked_choice: Ranked choice
     score: Score poll
+
+  new_poll_types:
+    proposal: Proposal
+    count: Count
+    poll: Poll
+    score: Score
+    ranked_choice: Rank
+    dot_vote: Budget
+    meeting: Time poll
+
   timezones:
     local: Local time ({{value}})
 
@@ -1614,7 +1624,7 @@ en:
       <p>A pie chart gives an overview of the positions in the group, while the statements allow individual voices to be heard. </p>
       <p>Don't be discouraged if you don't see agreement at first, proposals are designed to surface issues that need resolving.</p>
       <p>With good participation a proposal is a powerful mandate to take action.</p>
-    tool_tip_collapsed: Seek collective agreement
+    tool_tip_collapsed: Confirm agreement, seek clarification, or check for objection
     start_header: Start proposal
     edit_header: Edit proposal
     tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Learn more</a>
@@ -1631,7 +1641,7 @@ en:
     tool_tip_collapsed: Measure popularity or offer a choice
     start_header: Start poll
     edit_header: Edit poll
-    tip: Measure the popularity of different options
+    tip: Offer a choice between options
     title_placeholder: E.g. Where do you want to go on holiday?
     details_placeholder: Provide any clarifying details people might need to answer the question.
     add_option_placeholder: Add option
@@ -1646,10 +1656,10 @@ en:
       <p>Or use it to track completion of a task: "I've checked my contact details are correct", or "I've read the document and left my feedback".</p>
       <p>A check has a <em>goal</em>, which is the number of participants you'd like. The goal indicates to the group if something needs more attention or is well subscribed.</p>
       <p>A day before the check closes, it will remind those who have not participated to do so - like a digital cat herder.</p>
-    tool_tip_collapsed: Track participation and find volunteers
+    tool_tip_collapsed: Count how many people have completed a task, or ask for volunteers
     start_header: Start check
     edit_header: Edit check
-    tip: Engage people with an offer or request
+    tip: Ask who has completed a task, or wishes to volunteer
     title_placeholder: E.g. Who wants to join the working group?
     details_placeholder: Explain what commitment is involved, or give details about how to participate.
     count_created: Check started
@@ -1660,10 +1670,10 @@ en:
       <p>Dot voting is a way to prioritise a list of options.</p>
       <p>Participants are given a limited number of ‘dots’ which they can allocate however they like among the options provided to represent their own preferences.</p>
       <p>The totals of the results are shown, as well as and the individual votes, so you can consider various points of view.</p>
-    tool_tip_collapsed: Prioritise options
+    tool_tip_collapsed: Allocate a budget to prioritise options
     start_header: Start dot vote
     edit_header: Edit dot vote
-    tip: Allocate resources collectively
+    tip: Allocate budget across options. (Dot voting)
     title_placeholder: E.g. How should we allocate our budget?
     details_placeholder: Provide any clarifying details people might need to participate
     add_option_placeholder: Add option
@@ -1676,10 +1686,10 @@ en:
     tool_tip_expanded: |
       <p>Score polls allow people to express their degree of preference for each option.</p>
       <p>The total score of each option is shown as part of the results.</p>
-    tool_tip_collapsed: Score each option
+    tool_tip_collapsed: Score options on a scale
     start_header: Start score poll
     edit_header: Edit score poll
-    tip: Score each option
+    tip: Score options on a scale
     title_placeholder: E.g. Score candidates on scale of 0-9
     details_placeholder: Provide any clarifying details people might need to participate
     add_option_placeholder: Add option
@@ -1694,10 +1704,10 @@ en:
       <p>If you add new times during a time poll, people who have already voted are prompted to update their response.</p>
       <p>You can then see who’s available when, and decide when to meet.</p>
       <p>Times are automatically converted to the participant's local time zone.</p>
-    tool_tip_collapsed: Find a time to meet
+    tool_tip_collapsed: Find when people are available to meet
     start_header: Start time poll
     edit_header: Edit time poll
-    tip: Find out when people are available to meet
+    tip: Find when people are available to meet
     title_placeholder: E.g. When should we have our next meetup?
     details_placeholder: Provide any clarifying details people might need to participate
     meeting_created: Time poll created
@@ -1715,10 +1725,10 @@ en:
       <p>It's preferable when 'vote stealing' is a concern (ie, two somewhat popular options are similar enough that they
          end up sharing votes between them), and can be used to implement a Condorcet, or Instant Runoff style election.
       </p>
-    tool_tip_collapsed: Rank options in order
+    tool_tip_collapsed: Rank options from first to last
     start_header: Start ranked choice
     edit_header: Edit ranked choice
-    tip: Find out when people are available to meet
+    tip: Rank options from first to last
     title_placeholder: E.g. Who would you like as mayor?
     details_placeholder: Provide any clarifying details people might need to participate
     meeting_created: Ranked choice created

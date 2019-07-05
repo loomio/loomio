@@ -27,10 +27,7 @@ export default
       @isFocused = parseInt(@$route.params.sequence_id) == @event.sequenceId
 
     viewed: (viewed) ->
-     if viewed
-       @event.markAsRead()
-       if @event.depth == 1
-         EventBus.$emit('threadPositionUpdated', @event.position)
+      @event.markAsRead() if viewed
 
     hasComponent: ->
       includes(threadItemComponents, camelCase(@event.kind))
@@ -51,13 +48,13 @@ export default
     isNested: -> @event.isNested()
 
     indent: ->
-      @$vuetify.breakpoint.smAndUp && @event.isNested() && @eventWindow.useNesting
+      @$vuetify.breakpoint.smAndUp && @event.isNested() # && @eventWindow.useNesting
 
     isUnread: ->
-      (Session.user().id != @event.actorId) && @eventWindow.isUnread(@event)
+      (Session.user().id != @event.actorId) && false # @eventWindow.isUnread(@event)
 
     headline: ->
-      @$t eventHeadline(@event, @eventWindow.useNesting),
+      @$t eventHeadline(@event, true ), # useNesting
         author:   @event.actorName() || @$t('common.anonymous')
         username: @event.actorUsername()
         key:      @event.model().key
@@ -74,36 +71,51 @@ div
   .thread-item(:class="{'thread-item--unread': isUnread, 'thread-item--focused': isFocused}" v-observe-visibility="{callback: viewed}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
       .lmo-disabled-form(v-show='isDisabled')
-      .thread-item__avatar.mr-3
+      .thread-item__avatar.mr-3.mt-2
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='isNested ? "thirtysix" : "medium"')
         v-checkbox.thread-item__is-forking(v-if="event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
         v-layout
-          h3.thread-item__title.body-2.d-flex.align-center.wrap(:id="'event-' + event.id")
-            div(v-if='debug()')
-              mid-dot
+          h3.thread-item__title.body-2.my-1.d-flex.align-center.wrap(:id="'event-' + event.id")
+            //- div
               | sid {{event.sequenceId}}
               | pos {{event.position}}
-              | pid: {{event.model().parentId}}
+              //- | pid: {{event.model().parentId}}
               | depth: {{event.depth}}
             slot(name="headline")
-              span.thread-item__headline(v-html='headline')
+              span(v-html='headline')
             mid-dot
             router-link.thread-item__link(:to='link')
               time-ago.timeago--inline(:date='event.createdAt')
           button.md-button--tiny(v-if='canRemoveEvent', @click='removeEvent()')
             i.mdi.mdi-delete
         slot
-  template(v-if='event.isSurface() && eventWindow.useNesting')
-    event-children(:parent-event='event' :parent-event-window='eventWindow')
+  template(v-if='event.isSurface()')
+    event-children(:parent-event='event')
 </template>
 
 <style lang="scss">
 @import 'variables';
 @import 'utilities';
 // @import 'mixins';
+
+.thread-item__title {
+  strong {
+    font-weight: normal;
+  }
+  a {
+    // color: var(--text-primary);
+  }
+}
 .thread-item {
-  padding: 4px $cardPaddingSize;
+  padding: 0px 16px 0 16px;
+}
+
+.thread-item {
+  .v-card__actions {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .thread-item--focused {
@@ -120,7 +132,7 @@ div
 }
 
 .thread-item--indent {
-  padding-left: $cardPaddingSize + 42px;
+  padding-left: 64px;
 }
 
 .thread-item--indent-margin {

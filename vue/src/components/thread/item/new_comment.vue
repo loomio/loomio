@@ -27,6 +27,7 @@ export default
 
   computed:
     eventable: -> @event.model()
+    link: -> LmoUrlService.event @event
 
   created: ->
     @confirmOpts =
@@ -99,8 +100,10 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-wind
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
   v-card-actions
-    reaction-display(:model="eventable")
     v-spacer
+    reaction-display(:model="eventable")
+    space
     action-dock(:model='eventable', :actions='actions')
+
   comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" :autoFocus="true")
 </template>

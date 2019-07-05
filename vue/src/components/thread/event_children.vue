@@ -24,7 +24,6 @@ export default
 
   props:
     parentEvent: Object
-    parentEventWindow: Object
 
   data: ->
     eventWindow: null
@@ -34,16 +33,16 @@ export default
   created: ->
     @eventWindow = new NestedEventWindow
       parentEvent: @parentEvent
-      discussion:  @parentEventWindow.discussion
-      per:         @parentEventWindow.per
+      discussion:  @parentEvent.discussionId
+      per:         10
 
     @loader = new RecordLoader
       collection: 'events'
       params:
-        discussion_id: @parentEventWindow.discussion.id
+        discussion_id: @parentEvent.discussionId
         parent_id: @parentEvent.id
         order: 'position'
-        per: @parentEventWindow.per
+        per: 10
 
     @watchRecords
       collections: ['events']

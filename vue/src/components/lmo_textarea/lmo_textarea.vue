@@ -253,6 +253,7 @@ export default
 div
   v-textarea(v-if="format == 'md'" lmo_textarea v-model="model[field]" :placeholder="$t('comment_form.say_something')")
   .editor.mb-4(v-if="format == 'html'")
+    editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
       .menubar.is-hidden(:class="{'is-focused': focused}")
         v-menu
@@ -340,7 +341,6 @@ div
         //-   v-icon mdi-paperclip
         //- v-btn(small icon @click='commands.horizontal_rule')
         //-   v-icon mdi-format-page-break
-    editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
 
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')
@@ -374,7 +374,7 @@ div
 .lmo-markdown-wrapper {
   word-wrap: break-word;
 
-  // p { @include md-body-1; }
+  p { margin-bottom: 8px;}
   img { max-width: 100%; }
   h1 {
     // @include fontLarge;
