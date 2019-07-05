@@ -125,8 +125,8 @@ div.context-panel#sequence-0(v-observe-visibility="{callback: viewed}")
     document-list(:model='discussion' skip-fetch)
     attachment-list(:attachments="discussion.attachments")
   v-card-actions
-    reaction-display.ml-2(:model="discussion")
     v-spacer
+    reaction-display.ml-2(:model="discussion")
     action-dock(:model='discussion', :actions='actions')
     context-panel-dropdown(:discussion="discussion")
 </template>
