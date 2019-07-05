@@ -70,7 +70,7 @@ class API::EventsController < API::RestfulController
   def page_collection(collection)
     if params[:until_sequence_id_of_position]
       max_sequence_id = Event.find_by!(discussion: @discussion, depth: 1, position: params[:until_sequence_id_of_position])&.sequence_id
-      collection.order(order).where('sequence_id <= ?', max_sequence_id) 
+      collection.order(order).where('sequence_id <= ?', max_sequence_id)
     else
       collection.order(order).limit(per)
     end
