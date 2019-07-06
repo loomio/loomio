@@ -4,10 +4,11 @@ import UrlFor from '@/mixins/url_for'
 import Records from '@/shared/services/records'
 import WatchRecords from '@/mixins/watch_records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import { debounce } from 'lodash'
 
 export default
-  mixins: [UrlFor, WatchRecords, AnnouncementModalMixin]
+  mixins: [UrlFor, WatchRecords, AnnouncementModalMixin, ChangeVolumeModalMixin]
   data: ->
     discussion: null
     open: null
@@ -67,6 +68,8 @@ export default
       250
 
     addPeople: ->
+      records = Records
+      announcement = Records.announcements.buildFromModel(@discussion)
       @openAnnouncementModal(Records.announcements.buildFromModel(@discussion))
 
   watch:
@@ -80,41 +83,33 @@ v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakp
   .thread-nav
     v-list(dense)
       v-list-item(:to="urlFor(discussion)" @click="scrollTo('#context')")
-        v-list-item-avatar
-          v-icon mdi-format-vertical-align-top
+        v-list-item-avatar(:size="20")
+          v-icon(:size="20") mdi-format-vertical-align-top
         v-list-item-title Context
       //- v-slider(color="accent" track-color="accent" thumb-color="accent" thumb-size="64" v-model="inversePosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="emitPosition()")
       //-   template(v-slot:thumb-label)
       //-     | {{thumbLabel}}
       v-list-item(:to="urlFor(discussion)+'/'+(discussion.firstUnreadSequenceId() || '')" :disabled="!discussion.isUnread()")
-        v-list-item-avatar
-          v-icon mdi-bookmark-outline
+        v-list-item-avatar(:size="20")
+          v-icon(:size="20") mdi-bookmark-outline
         v-list-item-title {{discussion.unreadItemsCount()}} Unread
       v-list-item(v-for="event in keyEvents" :key="event.id" :to="urlFor(discussion)+'/'+event.sequenceId")
-        v-list-item-avatar
-          poll-common-chart-preview(:poll='event.model()' :size="28" :showMyStance="false")
+        v-list-item-avatar(:size="20")
+          poll-common-chart-preview(:poll='event.model()' :size="20" :showMyStance="false")
         v-list-item-title
           span {{title(event.model())}}
       v-list-item(:to="urlFor(discussion)+'/'+discussion.lastSequenceId()")
-        v-list-item-avatar
-          v-icon mdi-format-vertical-align-bottom
+        v-list-item-avatar(:size="20")
+          v-icon(:size="20") mdi-format-vertical-align-bottom
         v-list-item-title Latest
-      v-list-item(:to="urlFor(discussion)+'#add-comment'" @click="scrollTo('#add-comment')")
-        v-list-item-avatar
-          v-icon mdi-comment
-        v-list-item-title Add comment
     v-divider
     v-list(dense)
-      v-list-item
-        v-list-item-avatar
-          v-icon mdi-account-plus
+      v-list-item(@click="addPeople()")
         v-list-item-title Add people
-    v-subheader Notification settings
-    v-list(dense)
-      v-list-item
-        v-list-item-avatar
-          v-icon mdi-email-outline
-        v-list-item-title All activity
+      v-list-item(@click="scrollTo('#add-comment')")
+        v-list-item-title Add comment
+      v-list-item(@click="openChangeVolumeModal(discussion)")
+        v-list-item-title Notification settings
         //- v-list-item-subtitle You will be emailed whenever there is activity in this thread.
     v-divider
 

@@ -21,6 +21,7 @@ export default
 
   data: ->
     groups: []
+    parentGroups: []
     open: null
     version: AppConfig.version.split('.').slice(-1)[0]
 
@@ -30,9 +31,11 @@ export default
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
-        groups = Session.user().formalGroups()
-        parentGroups = uniq compact concat(groups, map(groups, (group) -> group.parent()))
-        @groups = sortBy parentGroups, 'fullName'
+        @groups = Session.user().parentGroups().concat(Session.user().orphanSubgroups()).filter (g) -> g.type == "FormalGroup"
+        # @groups = Session.user().formalGroups().filter (group) ->
+        #   group.isParent() or !Session.user().isMemberOf(group.parent())
+        # @ = uniq compact concat(groups, map(groups, (group) -> group.parent()))
+        @groups = sortBy @groups, 'fullName'
 
     InboxService.load()
 
@@ -63,66 +66,68 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print.sidenav-left(app width="250" v-model="open")
-  v-toolbar
-    img(style="height: 50%" :src="logoUrl" :alt="siteName")
-    v-spacer
-    .caption
+v-navigation-drawer.sidenav-left(app v-model="open")
+  template(v-slot:prepend)
+    v-toolbar
+      img(style="height: 50%" :src="logoUrl" :alt="siteName")
+      v-spacer
+      v-btn.navbar__sidenav-toggle(icon @click="open = !open")
+        v-avatar(tile size="36px")
+          v-icon mdi-menu
+  v-list-group.sidebar__user-dropdown()
+    template(v-slot:activator)
+      v-list-item(dense).pa-0
+        v-list-item-icon
+          user-avatar(:user="user" :size="24")
+        v-list-item-content
+          v-list-item-title {{user.name}}
+          v-list-item-subtitle {{user.email}}
+        //-   v-list-item-title {{user.name}}
+    user-dropdown
+  v-divider
+  //- v-list(nav)
+  v-list-item.sidebar__list-item-button--recent(dense to='/dashboard')
+    v-list-item-icon
+      v-icon mdi-forum
+    v-list-item-title(v-t="'sidebar.recent_threads'")
+  v-list-item.sidebar__list-item-button--unread(dense to='/inbox')
+    v-list-item-icon
+      v-icon mdi-inbox
+    v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
+    //- v-list-item.sidebar__list-item-button--muted(to='/dashboard/show_muted')
+    //-   v-list-item-avatar(:size="20")
+    //-     v-icon(:size="20") mdi-volume-mute
+    //-   v-list-item-title(v-t="'sidebar.muted_threads'")
+    //- v-list-item.sidebar__list-item-button--decisions(to='/polls')
+    //-   v-list-item-avatar(:size="20")
+    //-     v-icon(:size="20") mdi-thumbs-up-down
+    //-   v-list-item-title(v-t="'common.decisions'")
+  v-list-item.sidebar__list-item-button--start-thread(dense v-if='canStartThreads()', @click='openStartDiscussionModal(currentGroup())')
+    v-list-item-icon
+      v-icon mdi-plus
+    v-list-item-title(v-t="'sidebar.start_thread'")
+  v-divider.sidebar__divider
+  div.sidebar__groups(v-for='group in groups', :key='group.id')
+    v-list-item(:to='groupUrl(group)' dense)
+      v-list-item-avatar(:size="28" tile)
+        v-avatar(tile size="28px")
+          img.sidebar__list-item-group-logo(:src='group.logoUrl()')
+      v-list-item-title {{group.name}}
+    v-list-item(v-for="subgroup in group.subgroups()" dense :to='groupUrl(subgroup)' :key="subgroup.id")
+      v-list-item-avatar(:size="28")
+      v-list-item-title {{subgroup.name}}
+  v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroup()", @click="openStartGroupModal()")
+    v-list-item-action
+      v-icon mdi-plus
+    v-list-item-content
+      span(v-t="'sidebar.start_group'")
+  v-list-item
+    v-list-item-title
       a(href="/beta") beta {{version}}
-    v-btn.navbar__sidenav-toggle(icon @click="open = !open")
-      v-avatar(tile size="36px")
-        v-icon mdi-menu
-  v-list
-    v-expansion-panels(accordion :elevation="0")
-      v-expansion-panel
-        v-expansion-panel-header
-          v-layout.sidebar__user-dropdown
-            user-avatar.mr-2(:user="user" size="medium")
-            v-flex
-              .body-2 {{user.name}}
-              .body-2 @{{user.username}}
-        v-expansion-panel-content
-          user-dropdown
-    v-list-item.sidebar__list-item-button--recent(shaped to='/dashboard')
-      v-list-item-avatar
-        v-icon mdi-forum
-      v-list-item-content
-        v-list-item-title(v-t="'sidebar.recent_threads'")
-    v-list-item.sidebar__list-item-button--unread(to='/inbox')
-      v-list-item-avatar
-        v-icon mdi-inbox
-      v-list-item-content
-        v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
-    v-list-item.sidebar__list-item-button--muted(to='/dashboard/show_muted')
-      v-list-item-avatar
-        v-icon mdi-volume-mute
-      v-list-item-content
-        v-list-item-title(v-t="'sidebar.muted_threads'")
-    v-list-item.sidebar__list-item-button--decisions(to='/polls')
-      v-list-item-avatar
-        v-icon mdi-thumbs-up-down
-      v-list-item-content
-        v-list-item-title(v-t="'common.decisions'")
-    v-list-item.sidebar__list-item-button--start-thread(v-if='canStartThreads()', @click='openStartDiscussionModal(currentGroup())')
-      v-list-item-avatar
-        v-icon mdi-plus
-      v-list-item-content
-        v-list-item-title(v-t="'sidebar.start_thread'")
-    v-divider.sidebar__divider
-    div.sidebar__groups(v-for='group in groups', :key='group.id')
-      v-list-item(:to='groupUrl(group)', v-if='group.isParent()')
-        v-list-item-avatar(tile)
-          v-avatar(tile size="28px")
-            img.sidebar__list-item-group-logo(:src='group.logoUrl()')
-        v-list-item-content
-          v-list-item-title.font-weight-medium {{group.name}}
-      v-list-item(:to='groupUrl(group)', v-if='!group.isParent()')
-        v-list-item-avatar
-        v-list-item-content
-          v-list-item-title.body-2 {{group.name}}
-    v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroup()", @click="openStartGroupModal()")
-      v-list-item-action
-        v-icon mdi-plus
-      v-list-item-content
-        span(v-t="'sidebar.start_group'")
 </template>
+
+<style lang="scss">
+.sidebar__user-dropdown .v-list-group__header {
+  // padding: 0;
+}
+</style>

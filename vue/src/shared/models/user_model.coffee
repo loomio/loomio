@@ -65,7 +65,7 @@ export default class UserModel extends BaseModel
       group.discussions()
 
   orphanSubgroups: ->
-    _.filter @groups(), (group) =>
+    _.filter @formalGroups(), (group) =>
       group.isSubgroup() and !@isMemberOf(group.parent())
 
   orphanParents: ->

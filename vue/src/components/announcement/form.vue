@@ -14,7 +14,9 @@ import { submitForm } from '@/shared/helpers/form'
 
 export default
   props:
-    announcement: Object
+    announcement:
+      type: Object
+      required: true
 
   data: ->
     query: ''
