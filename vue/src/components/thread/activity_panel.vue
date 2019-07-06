@@ -133,6 +133,7 @@ export default
         find(depth: 1).
         find(position: {$between: [min, max]}).data().length
 
+      console.log "haveAllEventsBetween", length == expectedLength, min, max
       length == expectedLength
 
   watch:
@@ -153,6 +154,9 @@ export default
         minPosition = minPosition - @pageSize
       else # assume going to scroll down
         maxPosition = maxPosition + parseInt(@pageSize)
+
+      minPosition = max([1, minPosition])
+      maxPosition = min([maxPosition, @discussion.createdEvent().childCount])
 
       if @missingPositions.length or !@haveAllEventsBetween('position', minPosition, maxPosition)
         @loader.fetchRecords(
