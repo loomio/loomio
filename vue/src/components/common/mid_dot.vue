@@ -1,3 +1,3 @@
 <template>
-<span aria-hidden='true'>&nbsp;·&nbsp;</span>
+<span><span aria-hidden='true'>&nbsp;·&nbsp;</span><slot></slot></span>
 </template>
