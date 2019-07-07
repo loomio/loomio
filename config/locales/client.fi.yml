@@ -1,4 +1,6 @@
 fi:
+  new_poll_types:
+    proposal: Ehdotus
   common:
     confirm_discard_changes: Hylätäänkö muutoksesi?
     time:

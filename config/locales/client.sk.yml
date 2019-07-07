@@ -1,6 +1,8 @@
 sk:
   loomio_tags:
     name_label: Meno
+  new_poll_types:
+    proposal: Návrh
   common:
     time:
       am: dop.

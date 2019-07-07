@@ -62,9 +62,18 @@ zh_TW:
     meeting: 時間投票
     ranked_choice: 排序選擇
     score: 分數投票
+  new_poll_types:
+    proposal: 提案
+    count: 數量
+    poll: 投票
+    score: 分數
+    ranked_choice: 排名
+    dot_vote: 預算
+    meeting: 時間投票
   timezones:
     local: 本地時間 ({{value}})
   common:
+    option: 選項
     add: 新增
     you: 您
     expand: 展開
@@ -1279,6 +1288,8 @@ zh_TW:
     view_all: 檢視全部
     save_changes: 儲存
     change_vote: 變更投票
+    max_score: 最大分數
+    min_score: 最小分數
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -1301,6 +1312,7 @@ zh_TW:
     include_subgroups: 包含子群組
   members_panel:
     sort: '排序'
+    order_label: "訂購"
     order_by_name: '名稱'
     order_by_created: '最舊'
     order_by_created_desc: '最新'
@@ -1395,6 +1407,7 @@ zh_TW:
     ranked_choice_reopened: 已重新開啟排名選擇投票
   poll_common_closing_at_field:
     closing: 關閉
+    closing_hour: 關閉時間
   poll_card:
     started_by: 由 {{name}} 啟動
   poll_common_votes_panel:
@@ -1447,6 +1460,7 @@ zh_TW:
     title: 標題
     details: 詳細內容
     options: 選項
+    options_placeholder: 列出可用的選項
     no_options: 您尚未新增任何選項。
     closing: 定案
     closed: 封閉
@@ -1461,7 +1475,7 @@ zh_TW:
         <p>一份圓餅圖會顯示在群組中對於該議題的立場，讓每個人的聲音都能被聽到。</p>
         <p>若您一開始沒看到同意的人，別氣餒，提案就是設計用來突顯需要解決的問題。</p>
         <p>在有良好參與者的狀況下，一個提案就是採與行動的有利動作。</p>
-    tool_tip_collapsed: 尋求共識
+    tool_tip_collapsed: 確認協議、尋求澄清或檢查異議
     start_header: 啟動提案
     edit_header: 編輯提案
     tip: 透過一個所有聲音都可以被聽到的過程尋求共識。<a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">更多資訊</a>
@@ -1477,7 +1491,7 @@ zh_TW:
     tool_tip_collapsed: 測量人氣或是提供選項
     start_header: 啟動投票
     edit_header: 編輯投票
-    tip: 測量不同選項的人氣
+    tip: 提供多種選項
     title_placeholder: 例如：您假日想要去哪裡？
     details_placeholder: 提供人們回答此問題可能需要的資訊。
     add_option_placeholder: 新增選項
@@ -1491,10 +1505,10 @@ zh_TW:
         <p>或是使用其來追蹤工作的完成度：「我已經檢查過我的連絡人詳細資訊，一切都沒錯」，或是「我已經讀過文件且留下了我的意見了」。</p>
         <p>勾選是有<em>目標</em>的，其應該是您想要有多少參與者的數量。如果某些事情需要更多的關注或是需要更多參與者訂閱，那麼目標就是向團隊表明這些事情。</p>
         <p>在勾選關閉的前一天，它將會提醒那些還沒參與的人（也許是數位游牧者？）。</p>
-    tool_tip_collapsed: 追蹤參與者與找到志願者
+    tool_tip_collapsed: 計算完成工作的人數，或是徵求志願者
     start_header: 啟動勾選
     edit_header: 編輯勾選
-    tip: 吸引人們提出邀約或要求
+    tip: 詢問誰完成了工作，或是希望自願參與
     title_placeholder: 例如：誰想要加入工作小組？
     details_placeholder: '參與解釋為什麼要參與，或是詳細說明要如何參與。 '
     count_created: 勾選已啟動
@@ -1504,10 +1518,10 @@ zh_TW:
         <p>點投票是列出選項清單順序的方法。</p>
         <p>參與者會被給予有限的「點」，其可以被分配在他們喜歡的的選項來表示自己的偏好。</p>
         <p>這個過程會產生一個累計的長條圖以及個別分配，讓您可以考慮各種觀點。</p>
-    tool_tip_collapsed: 選項排序
+    tool_tip_collapsed: 分配預算以將選項排序
     start_header: 啟動點投票
     edit_header: 編輯點投票
-    tip: 共同分配資源
+    tip: 在選項間分配預算。（點投票）
     title_placeholder: 例如：我們要如何分配預算？
     details_placeholder: 提供更詳細的資訊給需要參與的夥伴們
     add_option_placeholder: 新增選項
@@ -1519,10 +1533,10 @@ zh_TW:
     tool_tip_expanded: |
         <p>分數投票讓夥伴們可以表達他們對每個選項的喜好程度。</p>
         <p>每個選項的總分會顯示在結果中。</p>
-    tool_tip_collapsed: 對每個選項評分
+    tool_tip_collapsed: 以比例為選項評分
     start_header: 啟動分數投票
     edit_header: 編輯分數投票
-    tip: 對每個選項評分
+    tip: 以比例為選項評分
     title_placeholder: 例如：以 0-9 的分數對候選人評分
     details_placeholder: 提供任何參與的人可能需要知道的細節
     add_option_placeholder: 新增選項
@@ -1536,10 +1550,10 @@ zh_TW:
         <p>若您在時間投票中新增了新的時間，已經投票的夥伴將會被提醒要更新他們的回應。</p>
         <p>您可以看到哪些人什麼時候有空，並決定何時要會面。</p>
         <p>時間將會被自動轉換為參與者的時區。</p>
-    tool_tip_collapsed: 找到會面的時間
+    tool_tip_collapsed: 尋找人們什麼時候可以會面
     start_header: 啟動時間投票
     edit_header: 編輯時間投票
-    tip: 了解人們何時可以會面
+    tip: 尋找人們什麼時候可以會面
     title_placeholder: 例如：我們何時可以進行下一次會面？
     details_placeholder: 提供更詳細的資訊給需要參與的夥伴們
     meeting_created: 時間投票已建立
@@ -1548,16 +1562,18 @@ zh_TW:
     no_options: 輸入您目前時區 ({{zone}}) 的時間。參與者可以看到翻譯成他們本地時區的時間。
     meeting_duration: 會面持續時間
     add_option_placeholder: 新增新的時間
+    time_slot_added: 已新增時間欄位
+    time_slot_already_added: 已新增時間欄位
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>排序選擇是一個讓每個投票者可以以他們偏好的順序回應的投票方式。</p>
         <p>這可以用在有「投票竊取」的問題時（亦即有兩個受歡迎的選項類似
         ，而投票會在兩個選項間共享），並可用 Condorcet 或即時投票的風格來實作。
         </p>
-    tool_tip_collapsed: 排序選項
+    tool_tip_collapsed: 將選項從第一個排序到最後一個
     start_header: 開始排序選擇
     edit_header: 編輯排序選擇
-    tip: 找到夥伴們可以會面的時間
+    tip: 將選項從第一個排序到最後一個
     title_placeholder: 範例：您想讓誰當市長？
     details_placeholder: 提供任何參與的人可能需要知道的細節
     meeting_created: 已建立排序選擇
@@ -1568,6 +1584,8 @@ zh_TW:
     minimum_stance_choices_helptext: 每個投票人可以排序的選項
     ranked_choice_created: 已建立排序選擇
     ranked_choice_updated: 已更新排序選擇
+    rank: 排名
+    points: 點
   poll_meeting_time_field:
     new_time_slot: 新時間欄位
     closing_hour: 關閉時間
@@ -1621,8 +1639,8 @@ zh_TW:
     stance_updated: 可用度已更新
     reason_placeholder: 解釋您何時有空（或是忙碌），讓作者新增新的選項。
   poll_dot_vote_vote_form:
-    dots_remaining: "剩餘 {{count}} 點。"
-    too_many_dots: 您使用了太多點數。
+    dots_remaining: "剩 {{count}} 點"
+    too_many_dots: 您已使用了太多點
     stance_created: 已建立投票
     stance_updated: 已更新投票
   poll_ranked_choice_vote_form:

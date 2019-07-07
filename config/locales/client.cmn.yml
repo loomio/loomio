@@ -33,6 +33,8 @@ cmn:
     wave: 挥手
   poll_types:
     proposal: 议案
+  new_poll_types:
+    proposal: 议案
   common:
     group: '组'
     groups: '组群'

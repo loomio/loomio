@@ -62,6 +62,10 @@ fr:
     meeting: Sondage horaire de réunion
     ranked_choice: Classement par préférence
     score: Vote pondéré
+  new_poll_types:
+    proposal: Proposition
+    poll: Sondage
+    meeting: Sondage horaire de réunion
   timezones:
     local: Heure locale ({{value}})
   common:
@@ -1418,7 +1422,6 @@ fr:
         <p>Un diagramme circulaire donne un aperçu des avis dans le groupe, tandis que les explications permettent aux voix individuelles d’être entendues. </p>
         <p>Ne soyez pas découragé⋅e si vous ne voyez pas d’accord au début, les propositions sont faites pour faire émerger les problèmes qui ont besoin d’être résolus.</p>
         <p>Avec une bonne participation, une proposition est un mandat puissant pour passer à l’action.
-    tool_tip_collapsed: Cherchez l’accord collectif
     start_header: Faire une proposition
     edit_header: Modifier la proposition
     tip: Recherche le consensus par un processus permettant à tous de s'exprimer.<a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Apprenez-en plus</a>
@@ -1434,7 +1437,6 @@ fr:
     tool_tip_collapsed: Mesurez une opinion ou proposez un choix
     start_header: Démarrer le sondage
     edit_header: Éditer le sondage
-    tip: Mesurez la popularité de différentes options
     title_placeholder: Par exemple « Où voulez-vous aller en vacances ? »
     details_placeholder: Partagez toutes les informations utiles pour répondre à la question
     add_option_placeholder: Ajouter une option
@@ -1448,10 +1450,8 @@ fr:
         <p>Ou utilisez-le pour suivre la progression d’une tâche : « J’ai vérifié mes coordonnées » ou « J’ai lu le document et ai fait mes retours »</p>
         <p>Une vérification a pour <em>objectif</em> le nombre de participants souhaité. L’objectif indique au groupe si un point nécessite leur attention ou s’il est déjà bien suivi.</p>
         <p>Un jour avant la fin de la vérification, une notification sera envoyée à ceux qui n’ont pas répondu, pour obtenir la plus grande participation sans que vous n’ayez à relancer les membres.</p>
-    tool_tip_collapsed: Suivez la participation et trouvez des volontaires
     start_header: Démarrer la vérification
     edit_header: Modifier la vérification
-    tip: Engagez les gens avec une offre ou une demande
     title_placeholder: Par exemple « Qui veut rejoindre le groupe de travail ? »
     details_placeholder: Expliquez quelle implication est demandée, ou donnez des détails sur la façon de participer.
     count_created: Vérification démarrée
@@ -1461,10 +1461,8 @@ fr:
         <p>Le vote à points est une manière de prioriser une liste d’options.</p>
         <p>Les participants disposent d’un nombre limité de « points » qu’ils peuvent allouer comme ils le veulent aux différentes options pour refléter leurs préférences.</p>
         <p>Le total des résultats est affiché, tout comme les votes individuels, pour vous permettre de connaître différents points de vue.</p>
-    tool_tip_collapsed: Priorisez des options
     start_header: Démarrer un vote à points
     edit_header: Éditer le vote à points
-    tip: Allouer des ressources collectivement
     title_placeholder: Par exemple « Comment devrions-nous allouer notre budget ? »
     details_placeholder: Partagez toutes les informations utiles pour participer
     add_option_placeholder: Ajouter une option
@@ -1476,10 +1474,8 @@ fr:
     tool_tip_expanded: |
         <p>Le votes pondéré permet à chacun d'exprimer son degré d'adhésion à chacune des propositions.</p>
         <p>Le score total de chaque proposition est affiché dans le résultat.</p>
-    tool_tip_collapsed: Pondérer chaque choix
     start_header: Initier un vote pondéré
     edit_header: Modifier un vote pondéré
-    tip: Pondérer chaque choix
     title_placeholder: Par exemple, pondérer les candidats sur une échelle de 0 à 9
     details_placeholder: Partagez toutes les informations utiles pour participer
     add_option_placeholder: Ajouter une option
@@ -1493,10 +1489,8 @@ fr:
         <p>Si vous ajoutez de nouvelles options pendant un sondage réunion, ceux qui ont déjà voté sont sollicités pour mettre à jour leur réponse.</p>
         <p>Vous pouvez voir qui est disponible à quel moment et décider quand aura lieu la rencontre.</p>
         <p>Les horaires sont automatiquement convertis dans le fuseau horaire des participants.</p>
-    tool_tip_collapsed: Trouvez un moment pour vous réunir
     start_header: Commencer un sondage réunion
     edit_header: Éditer le sondage réunion
-    tip: Trouvez quand les personnes sont disponibles pour se réunir
     title_placeholder: Par exemple « Quand devrions-nous nous réunir ? »
     details_placeholder: Partagez toutes les informations utiles pour participer
     meeting_created: Sondage réunion créé
@@ -1509,10 +1503,8 @@ fr:
         <p>Un classement par préférence est une méthode de vote qui permet à chaque participant d’exprimer leurs priorités.</p>
         <p>C’est une solution quand deux choix populaires sont suffisamment proches pour qu’on risque de diviser les voix qui pourraient s’y rallier, pour éviter que les deux soient ainsi écartés dans un vote majoritaire. Elle peut être utilisée pour mettre en place la méthode Condorcet ou un vote alternatif (<i>Instant-runoff voting</i>).
         </p>
-    tool_tip_collapsed: Classez les options dans l’ordre
     start_header: Démarrer un classement par préférence
     edit_header: Modifier le classement par préférence
-    tip: Trouvez quand les personnes sont disponibles pour se réunir
     title_placeholder: Par exemple, « Qui aimeriez-vous avoir comme maire ? »
     details_placeholder: Partagez toutes les informations utiles pour participer
     meeting_created: Classement par préférence créé
@@ -1574,8 +1566,6 @@ fr:
     stance_updated: Disponibilité mise à jour
     reason_placeholder: Expliquez quand vous êtes libre (ou occupé), dans le cas où l’auteur veut ajouter des options.
   poll_dot_vote_vote_form:
-    dots_remaining: "Il vous reste {{count}} points à utiliser."
-    too_many_dots: Vous avez utilisé trop de points
     stance_created: Vote créé
     stance_updated: Vote mis à jour
   poll_ranked_choice_vote_form:

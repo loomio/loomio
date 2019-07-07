@@ -25,6 +25,10 @@ cs:
     count: Kontrola
     poll: Hlasování
     meeting: Doba hlasování
+  new_poll_types:
+    proposal: Návrh
+    poll: Hlasování
+    meeting: Doba hlasování
   timezones:
     local: Místní čas ({{value}})
   common:

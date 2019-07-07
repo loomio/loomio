@@ -23,6 +23,9 @@ tr:
     count: Kontrol et
     poll: Anket
     dot_vote: Oy kullan
+  new_poll_types:
+    proposal: Öneri
+    poll: Anket
   timezones:
     local: Yerel saat ({{value}})
   common:

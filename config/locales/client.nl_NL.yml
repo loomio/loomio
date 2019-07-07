@@ -58,6 +58,11 @@ nl_NL:
     dot_vote: Dotmocracy
     meeting: Moment bevragen
     ranked_choice: Keuzes rangschikken
+  new_poll_types:
+    proposal: Voorstel
+    count: Telling
+    poll: Peiling
+    meeting: Moment bevragen
   timezones:
     local: Plaatselijke tijd ({{value}})
   common:
@@ -1150,7 +1155,6 @@ nl_NL:
         <p>Een taartgrafiek geeft het overzicht van de standpunten in de groep, terwijl de opmerkingen de individuele stemmen een platform geeft. </p>
         <p>Laat je niet ontmoedigen als er in het begin geen akkoord zichtbaar is, voorstellen zijn ontworpen om problemen aan de oppervlakte te brengen.</p>
         <p>Als er goed deelgenomen word is een 'Voorstel' een krachtig instrument om actie te ondernemen.</p>
-    tool_tip_collapsed: Beoog een gemeenschappelijk akkoord
     start_header: '''Voorstel'' starten'
     edit_header: Voorstel bewerken
     title_placeholder: M.a.w. Laten we naar de maan gaan!
@@ -1165,7 +1169,6 @@ nl_NL:
     tool_tip_collapsed: Meet de populariteit van de verschillende opties
     start_header: '''Peiling'' starten'
     edit_header: Peiling bewerken
-    tip: Meet de populariteit van de verschillende opties
     title_placeholder: bijv. Waar wil je je verlof doorbrengen?
     details_placeholder: Geef verhelderende details die mensen mogelijk nodig hebben om de vraag te beantwoorden.
     add_option_placeholder: Voeg optie toe
@@ -1179,10 +1182,8 @@ nl_NL:
         <p>Of gebruik het om een stand van zaken te weten te komen: "Ik heb mijn contactgegevens nagezien", of "Ik heb het document gelezen en mijn feedback gegeven".</p>
         <p>Een 'Check' heeft een<em>doel</em>, zijnde het aantal deelnemers dat je zou willen hebben. Dit doel geeft aan de groep weer of er iets meer aandacht vraagt of genoeg mensen bereikt heeft .</p>
         <p>De dag voordat de 'Check' sluit zal het de deelnemers die nog moeten antwoorden herinneren dit te doen - en deze digitale harde noot kraken.</p>
-    tool_tip_collapsed: Traceer medewerking en vind vrijwilligers
     start_header: '''Check'' starten'
     edit_header: '''Check'' bewerken'
-    tip: Betrek mensen met een aanbod of vraag
     title_placeholder: M.a.w. Wie wil deelnemen aan de werkgroep?
     details_placeholder: Verduidelijk welk engagement erbij komt kijken, of geef details over hoe ze kunnen deelnemen.
     count_created: '''Check'' aangemaakt'
@@ -1192,10 +1193,8 @@ nl_NL:
         <p>'Dotmocracy' is een manier om een lijst met opties prioriteiten toe te kennen.</p>
         <p>Deelnemers krijgen een beperkt aantal dots, zijnde stippen, die ze zelf kunnen verdelen over de voorgestelde opties.</p>
         <p>De totalen van de resultaten worden getoond, alsook de individuele stemmen, zo kan je verschillende invalshoeken evalueren.</p>
-    tool_tip_collapsed: Opties prioriteiten toekennen
     start_header: '''Dotmocracy'' starten'
     edit_header: '''Dotmocracy'' bewerken'
-    tip: Middelen gemeenschappelijk toebedelen
     title_placeholder: bijv. Hoe zouden we ons budget toebedelen?
     details_placeholder: Geef verhelderende details die mensen nodig kunnen hebben om mee te kunnen doen
     add_option_placeholder: Optie toevoegen
@@ -1213,10 +1212,8 @@ nl_NL:
         <p>Wanneer je nieuwe tijden tijdens een 'Moment afspreken' toevoegt worden de mensen die al gekozen hadden gevraagd hun keuze te actualiseren.</p>
         <p>Zo krijg je een overzicht van wie het wanneer past en kan je kiezen wanneer je de vergadering wilt houden.</p>
         <p>Tijden worden automatisch aangepast aan de tijdzone van de deelnemers.</p>
-    tool_tip_collapsed: Zoek een moment om af te spreken
     start_header: '''Moment bevragen'' starten'
     edit_header: '''Moment bevragen'' bewerken'
-    tip: Ontdek wanneer mensen beschikbaar zijn om af te spreken
     title_placeholder: M.a.w. Wanneer moeten we weer bij elkaar komen?
     details_placeholder: Geef verhelderende details die mensen nodig kunnen hebben om mee te kunnen doen
     meeting_created: '''Moment bevragen'' aangemaakt'
@@ -1229,10 +1226,8 @@ nl_NL:
         <p>Het is aan te raden wanneer 'het stelen van stemmen' kan optreden (bijv, twee populaire opties die
         bijna hetzelfde zijn en bijgevolg de stemmen tussen elkaar verdeeld zien worden), en het kan gebruikt worden om een Condorcet te implementeren of een Instant Runoff stijl van verkiezing.
         </p>
-    tool_tip_collapsed: Opties rangschikken
     start_header: '''Keuzes rangschikken'' starten'
     edit_header: '''Keuzes rangschikken'' bewerken'
-    tip: Ontdek wanneer mensen beschikbaar zijn om af te spreken
     title_placeholder: bijv. Wie zou je graag als burgemeester zien?
     details_placeholder: Verschaf de nodige uitleg die mensen zouden nodig hebben om te participeren
     meeting_created: '''Keuzes rangschikken'' aangemaakt'
@@ -1291,8 +1286,6 @@ nl_NL:
     stance_updated: Beschikbaarheid geactualiseerd
     reason_placeholder: Leg uit wanneer je vrij (of bezet) bent, voor het geval de auteur opties wil toevoegen.
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} stippen over."
-    too_many_dots: Je hebt teveel stippen gebruikt.
     stance_created: Stemming aangemaakt
     stance_updated: Stemming geactualiseerd
   poll_ranked_choice_vote_form:

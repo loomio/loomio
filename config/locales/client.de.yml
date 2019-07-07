@@ -62,6 +62,10 @@ de:
     meeting: Terminfindung
     ranked_choice: Gewichtete Auswahl
     score: Bewertung
+  new_poll_types:
+    proposal: Vorschlag
+    poll: Umfrage
+    meeting: Terminfindung
   timezones:
     local: Ortszeit ({{value}})
   common:
@@ -1427,7 +1431,6 @@ de:
         <p>Ein Kuchendiagramm zeigt die verschiedenen Abstimmungspositionen in der Gruppe übersichtlich an, während durch die Abstimmungsbegründungen auch einzelne Meinungen nicht unter den Tisch fallen und gehört werden. </p>
         <p>Lass dich nicht entmutigen, wenn es zunächst nicht zu einer Einigung kommt, Vorschläge sind dafür vorgesehen, Diskussionspunkte in den Fokus zu rücken, die einer Klärung bedürfen.</p>
         <p>Mit einer ausreichend großen Abstimmungsbeteiligung ist ein Vorschlag somit ein mächtiges Werkzeug, um der Abstimmung im nächsten Schritt Handlungen und Taten folgen zu lassen.</p>
-    tool_tip_collapsed: Gemeinschaftlich abstimmen
     start_header: Vorschlag starten
     edit_header: Angebot bearbeiten
     tip: 'Triff gemeinsam Entscheidungen durch ein Verfahren, dass alle Stimmen mit einbezieht. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">
@@ -1445,7 +1448,6 @@ de:
     tool_tip_collapsed: Abstimmung mit Mehrfachauswahl
     start_header: Umfrage beginnen
     edit_header: Umfrage bearbeiten
-    tip: Messen Sie die Beliebtheit verschiedener Optionen
     title_placeholder: z. B. In welchem Land wollen wir unseren Urlaub verbringen?
     details_placeholder: Zusätzliche Details, die die Teilnehmer benötigen, um die Abstimmungsfrage beantworten zu können.
     add_option_placeholder: Option hinzufügen
@@ -1459,10 +1461,8 @@ de:
         <p>Verwende es auch, um den Abschluss einer Aufgabe zu verfolgen, z.B.: "Ich habe überprüft, ob meine Kontaktdaten korrekt sind" oder "Ich habe das Dokument gelesen und mein Feedback hinterlassen".</p>
         <p>Ein Check hat ein <em>Ziel</em>, dass du die Anzahl der Teilnehmer für eine Abstimmung kennst. Das Ergebnis zeigt der Gruppe an, ob noch etwas mehr Aufmerksamkeit benötigt wird oder nicht. </p>
         <p>Einen Tag, bevor der Check schließt, werden diejenigen, die noch nicht daran teilgenommen haben, mit einer Erinnerung kontaktiert.</p>
-    tool_tip_collapsed: Teilnahmebestätigung einholen oder Freiwillige finden
     start_header: Starten Sie die Überprüfung
     edit_header: Bestätigungsanfrage bearbeiten
-    tip: Engagieren Sie Menschen mit einem Angebot oder einer Anfrage
     title_placeholder: z. B. Wer möchte in der Arbeitsgruppe mitmachen?
     details_placeholder: Erläutern Sie, um welches Engagement es sich handelt, oder geben Sie Einzelheiten darüber an, wie Sie teilnehmen können.
     count_created: Bestätigung gestartet
@@ -1472,10 +1472,8 @@ de:
         <p>Punktabstimmung ist eine Möglichkeit, eine Liste von Optionen zu priorisieren.</p>
         <p>Den Teilnehmern wird eine begrenzte Anzahl von "digitalen Klebepunkten" zur Verfügung gestellt, die sie beliebig unter den zur Verfügung gestellten Optionen aufteilen können, um ihre eigenen Präferenzen darzustellen.</p>
         <p>Die Gesamtsumme der Ergebnisse werden angezeigt sowie die einzelnen Stimmen, sodass die verschiedenen Standpunkte betrachtet werden können.</p>
-    tool_tip_collapsed: Verschiedene Optionen priorisieren
     start_header: Starten Sie die Punktabstimmung
     edit_header: Bearbeiten Sie die Punktabstimmung
-    tip: Ressourcen gemeinsam zuweisen
     title_placeholder: Zum Beispiel "Wie sollen wir unser Budget zuordnen?"
     details_placeholder: Geben Sie alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
     add_option_placeholder: Option hinzufügen
@@ -1487,10 +1485,8 @@ de:
     tool_tip_expanded: |
         <p>Durch Bewertungen können Teilnehmer den Grad der Zustimmung zu jeder Option ausdrücken.</p>
         <p>Die Gesamtbewertung für jede Option wird als Teil des Umfrageergebnisses angezeigt.</p>
-    tool_tip_collapsed: Mehrere Optionen bewerten
     start_header: Bewertung beginnen
     edit_header: Bewertung bearbeiten
-    tip: Mehrere Optionen bewerten
     title_placeholder: 'Z.b. Kandidaten auf einer Skala von 0-9 bewerten.  '
     details_placeholder: Geben Sie alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
     add_option_placeholder: Option hinzufügen
@@ -1504,10 +1500,8 @@ de:
         <p>Wenn du während einer Zeitumfrage neue Zeiten hinzufügst, werden Personen, die bereits abgestimmt haben, aufgefordert, ihre Antwort zu aktualisieren.</p>
         <p>Du kannst so sehen, wer wann verfügbar ist und entscheiden, wann das Treffen stattfinden kann.</p>
         <p>Zeiten werden automatisch in die lokale Zeitzone des Teilnehmers konvertiert.</p>
-    tool_tip_collapsed: Gemeinsam geeignete Zeiten für Meetings finden
     start_header: Startzeit-Umfrage
     edit_header: Zeitumfrage bearbeiten
-    tip: Finden Sie heraus, wann Leute sich treffen können
     title_placeholder: z. B. Wann sollen wir unser nächstes Meeting ansetzen?
     details_placeholder: Geben Sie alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
     meeting_created: Zeitumfrage erstellt
@@ -1521,10 +1515,8 @@ de:
         <p>Es lohnt sich besonders, wenn es um Entscheidungen zwischen zwei oder mehreren beliebte Optionen geht, die recht ähnlich sind. Die Abstimmung wird dann einer Unterscheidung erzielen.</p>
         <p>Die Anwendung lohnt sich auch, wenn es darum geht, eine Entscheidung nach Mehrheit zu erwirken.</p>
         <p>Außerdem eignet sich das Instrument bei Stichwahl-Entscheidungen.</p>
-    tool_tip_collapsed: Verschiedene Optionen priorisieren
     start_header: Mit Prioritätensetzung beginnen
     edit_header: Prioritätensetzung bearbeiten
-    tip: Finden Sie heraus, wann Leute sich treffen können
     title_placeholder: z. B. Wer soll Bürgermeister werden?
     details_placeholder: Geben Sie alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
     meeting_created: Prioritätensetzung erstellt
@@ -1586,8 +1578,6 @@ de:
     stance_updated: Verfügbarkeit aktualisiert
     reason_placeholder: Erklären Sie, wann Sie frei sind (oder beschäftigt sind), falls der Autor Optionen hinzufügen möchte.
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} Klebepunkt(e) übrig."
-    too_many_dots: Sie haben zu viele Klebepunkte verwendet.
     stance_created: Wahl erstellt
     stance_updated: Wahl aktualisiert
   poll_ranked_choice_vote_form:

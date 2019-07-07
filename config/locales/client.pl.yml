@@ -40,6 +40,10 @@ pl:
     poll: Ankieta
     dot_vote: Głosowanie kropkowe
     meeting: Ankieta datowa
+  new_poll_types:
+    proposal: Propozycja
+    poll: Ankieta
+    meeting: Ankieta datowa
   timezones:
     local: Czas lokalny ({{value}})
   common:

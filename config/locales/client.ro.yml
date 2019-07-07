@@ -44,6 +44,9 @@ ro:
     proposal: Propunere
     count: Verifica
     poll: Sondaj
+  new_poll_types:
+    proposal: Propunere
+    poll: Sondaj
   timezones:
     local: Ora locala ({{value}})
   common:

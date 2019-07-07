@@ -8,6 +8,9 @@ mi:
     count: Whakatika
     poll: Pōti
     dot_vote: Pōti ira
+  new_poll_types:
+    proposal: He whakatakoto
+    poll: Pōti
   common:
     expand: Whakanui
     ok_got_it: Kei te pai, kua mau

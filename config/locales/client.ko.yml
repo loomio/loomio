@@ -3,6 +3,8 @@ ko:
     upgrade: 업그레이드
   loomio_tags:
     name_label: 이름
+  new_poll_types:
+    proposal: 제안
   common:
     confirm_discard_changes: 수정을 취소하시겠습니까?
     time:

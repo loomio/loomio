@@ -1,6 +1,8 @@
 mk:
   loomio_tags:
     name_label: Име
+  new_poll_types:
+    proposal: Предлог
   common:
     group: 'Група'
     groups: 'Групи'

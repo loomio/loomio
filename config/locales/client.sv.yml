@@ -44,6 +44,10 @@ sv:
     meeting: Tidsröstning
     ranked_choice: Valfritt val
     score: Ränka röster
+  new_poll_types:
+    proposal: Förslag
+    poll: Röstning
+    meeting: Tidsröstning
   timezones:
     local: Lokal tid ({{value}})
   common:

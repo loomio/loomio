@@ -3,6 +3,8 @@ te:
     name_label: పేరు
   reactions:
     ok_hand: సరే
+  new_poll_types:
+    proposal: ప్రతిపాదన
   common:
     you: మీరు
     ok_got_it: సరే, అర్థమయింది

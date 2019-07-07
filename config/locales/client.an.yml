@@ -1,6 +1,8 @@
 an:
   loomio_tags:
     name_label: Nombre
+  new_poll_types:
+    proposal: Propuesta
   common:
     time:
       am: am

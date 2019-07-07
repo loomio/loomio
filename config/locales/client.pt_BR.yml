@@ -56,6 +56,11 @@ pt_BR:
     dot_vote: Voto de ponto
     meeting: Tempo de votação
     ranked_choice: Escolha classificada
+  new_poll_types:
+    proposal: Proposta
+    count: Contagem
+    poll: Votação
+    meeting: Tempo de votação
   timezones:
     local: Hora local ({{value}})
   common:
@@ -1111,7 +1116,6 @@ pt_BR:
     start: Começo
     update: Atualizar
   poll_proposal_form:
-    tool_tip_collapsed: Busque um acordo coletivo
     start_header: Iniciar proposta
     edit_header: Editar proposta
     title_placeholder: 'Exemplo: Vamos para a Lua!'
@@ -1119,7 +1123,6 @@ pt_BR:
     proposal_created: Proposta iniciada
     proposal_updated: Proposta atualizada
   poll_poll_form:
-    tip: Medir a popularidade de diferentes opções
     title_placeholder: 'Exemplo: Onde você quer passar o feriado?'
     add_option_placeholder: Adicionar opção
     remove_option: Remover opção

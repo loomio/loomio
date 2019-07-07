@@ -62,6 +62,11 @@ es:
     meeting: Votación de horarios
     ranked_choice: Opción priorizada
     score: Encuesta de puntuación
+  new_poll_types:
+    proposal: Propuesta
+    count: Conteo
+    poll: Encuesta
+    meeting: Votación de horarios
   timezones:
     local: Hora local ({{value}})
   common:
@@ -1406,7 +1411,6 @@ es:
         <p>Un gráfico circular, permite tener una visión general de las posiciones del grupo, mientras que las explicaciones o fundamentos, permiten que todas las voces sean escuchadas. </p>
         <p>No te desanimes si al comienzo no ves que haya acuerdo, las propuestas están diseñadas para hacer visibles los problemas que necesitan resolución..</p>
         <p>Si hay buena participación, una propuesta es un poderoso mandato para pasar a la acción.</p>
-    tool_tip_collapsed: 'Busca el acuerdo colectivo  '
     start_header: Inicia una propuesta
     edit_header: Edita una propuesta
     tip: Busque acuerdos colectivos a través de un proceso que permite que todas las voces sean escuchadas <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Aprender más</a>
@@ -1422,7 +1426,6 @@ es:
     tool_tip_collapsed: 'Mida la popularidad u ofrezca una opción '
     start_header: Iniciar encuesta
     edit_header: Editar encuesta
-    tip: Mida la popularidad de diferentes opciones
     title_placeholder: 'Ej. ¿A dónde quieres ir de vacaciones? '
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para contestar la pregunta.
     add_option_placeholder: Agregar opción
@@ -1436,10 +1439,8 @@ es:
         <p>O úsalo para hacer seguimiento a una tarea: "confirmé que mis datos de contacto están correctos", o "leí el documento y dejé mis comentarios".</p>
         <p>Una comprobación tiene un <em>objetivo</em>, que es el número de participantes que quisieras. La meta indica al grupo que algo requiere más atención o cuenta con amplio acuerdo.</p>
         <p>Un día antes de que se cierre la comprobación, se le recordará a quienes no han participado todavía.</p>
-    tool_tip_collapsed: Comprobar la participación y encontrar voluntarios
     start_header: 'Iniciar Comprobación '
     edit_header: 'Editar Comprobación '
-    tip: Motiva a las personas con una oferta o un pedido
     title_placeholder: P.ej. ¿Quién quiere unirse al grupo de trabajo?
     details_placeholder: Explica lo que implica participar o brinda detalles sobre cómo participar.
     count_created: 'Comprobación iniciada '
@@ -1449,10 +1450,8 @@ es:
         <p>El voto de puntos es una manera de priorizar un listado de alternativas.</p>
         <p>Los participantes tienen un número limitado de ‘puntos’ que pueden distribuir del modo que quieran entre las opciones que representen sus preferencias.</p>
         <p>El proceso da como resultado un gráfico de barras acumulativas además de las asignaciones individuales, con lo que se pueden considerar los distintos puntos de vista.</p>
-    tool_tip_collapsed: Priorizar opciones
     start_header: Iniciar voto de puntos
     edit_header: Editar voto de puntos
-    tip: 'Asignar recursos colectivamente '
     title_placeholder: Ej. ¿Cómo debemos asignar el presupuesto?
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
     add_option_placeholder: Agregar opción
@@ -1464,10 +1463,8 @@ es:
     tool_tip_expanded: |
         <p>La encuesta de puntuación permite a la gente expresar su grado de preferencia para cada opción.</p>
         <p>La puntuación total de cada opción se muestra como parte de los resultados.</p>
-    tool_tip_collapsed: Puntúa cada opción
     start_header: Comienza la encuesta de puntuación
     edit_header: Edita la encuesta de puntuación
-    tip: Puntúa cada opción
     title_placeholder: 'Ej: Puntúa los candidatos en una escala del 0 al 9'
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
     add_option_placeholder: Agregar opción
@@ -1481,10 +1478,8 @@ es:
         <p>Si agregas nuevos horarios durante la coordinación de horario, se le pedirá a la gente que ya ha votado que actualice su respuesta.</p>
         <p>Así puedes saber cuándo está disponible cada uno y decidir el momento de la reunión.</p>
         <p>Las horas se convierten automáticamente a la zona horaria del participante.</p>
-    tool_tip_collapsed: Encuentra un tiempo para reunirse
     start_header: Iniciar coordinación horaria
     edit_header: Editar coordinación horaria
-    tip: 'Averigua cuando la gente está disponible para reunirse '
     title_placeholder: Ej. ¿Cuándo debemos tener nuestra próxima reunión?
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
     meeting_created: Coordinación horaria iniciada
@@ -1498,10 +1493,8 @@ es:
         <p>Es preferente cuando el 'robo de votos' es una preocupación (ej. dos opciones bastante populares son tan similares
         que los votos terminan siendo compartidos entre ambas), y pueden ser usadas para implementar un Condorcet o  una sistema de elección de segunda vuelta instantáneas (Instant Runoff Voting).
         </p>
-    tool_tip_collapsed: 'Prioriza las opciones en orden '
     start_header: 'Inicia una opción priorizada '
     edit_header: 'Editar opción priorizada '
-    tip: 'Averigua cuando la gente está disponible para reunirse '
     title_placeholder: Ej, ¿Quién debe ser el próximo alcalde?
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
     meeting_created: Opción priorizada creada
@@ -1563,8 +1556,6 @@ es:
     stance_updated: Disponibilidad actualizada
     reason_placeholder: Explica cuando estarás libre (u ocupado), para el caso de que el autor quiera agregar opciones.
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} puntos restantes."
-    too_many_dots: Usaste demasiados votos.
     stance_created: Voto creado
     stance_updated: Voto actualizado
   poll_ranked_choice_vote_form:

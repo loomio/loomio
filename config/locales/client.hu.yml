@@ -43,6 +43,10 @@ hu:
     dot_vote: Pont-szavazás
     meeting: Idő szavazás
     ranked_choice: Sorrend szavazás
+  new_poll_types:
+    proposal: Javaslat
+    poll: Szavazás
+    meeting: Idő szavazás
   timezones:
     local: Helyi idő ({{value}})
   common:

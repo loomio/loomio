@@ -27,6 +27,9 @@ ca:
     ok_hand: D'acord
   poll_types:
     poll: Enquesta
+  new_poll_types:
+    proposal: Proposta
+    poll: Enquesta
   common:
     you: Tu
     expand: Expandeix

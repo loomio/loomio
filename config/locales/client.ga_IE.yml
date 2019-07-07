@@ -7,6 +7,9 @@ ga_IE:
     proposal: Togra
     count: Dearbháil
     poll: Vótáil
+  new_poll_types:
+    proposal: Togra
+    poll: Vótáil
   timezones:
     local: An t-am áitiúil ({{luach}})
   common:

@@ -9,6 +9,10 @@ el:
     poll: Ψηφοφορία
     dot_vote: Ψήφος κουκίδας
     meeting: Χρόνος ψηφοφορίας
+  new_poll_types:
+    proposal: Πρόταση
+    poll: Ψηφοφορία
+    meeting: Χρόνος ψηφοφορίας
   timezones:
     local: Τοπική ώρα ({{value}})
   common:

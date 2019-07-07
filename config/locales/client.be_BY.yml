@@ -1,6 +1,8 @@
 be_BY:
   loomio_tags:
     name_label: Імя
+  new_poll_types:
+    proposal: Прапанова
   common:
     confirm_discard_changes: Скасаваць змены?
     time:

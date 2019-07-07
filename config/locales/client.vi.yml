@@ -1,6 +1,8 @@
 vi:
   loomio_tags:
     name_label: Tên
+  new_poll_types:
+    proposal: Lời đề nghị
   common:
     group: 'Nhóm'
     groups: 'Các nhóm'

@@ -1,6 +1,8 @@
 sr:
   loomio_tags:
     name_label: Ime
+  new_poll_types:
+    proposal: Predlog
   common:
     confirm_discard_changes: Otkaži promene?
     time:

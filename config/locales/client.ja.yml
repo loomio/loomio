@@ -1,6 +1,8 @@
 ja:
   loomio_tags:
     name_label: 氏名
+  new_poll_types:
+    proposal: 提案
   common:
     confirm_discard_changes: 編集内容を破棄しますか？
     time:

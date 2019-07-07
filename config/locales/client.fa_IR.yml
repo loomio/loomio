@@ -22,6 +22,8 @@ fa_IR:
     wave: دست تکان دادن
   poll_types:
     poll: نظرسنجی
+  new_poll_types:
+    poll: نظرسنجی
   common:
     you: شما
     ok_got_it: باشه، فهمیدم!

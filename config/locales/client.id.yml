@@ -1,6 +1,8 @@
 id:
   loomio_tags:
     name_label: Nama
+  new_poll_types:
+    proposal: Usulan
   common:
     group: 'Kelompok'
     groups: 'Kelompok'

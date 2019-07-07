@@ -41,6 +41,10 @@ lt:
     count: Patikrinti
     poll: Apklausa
     meeting: Laiko apklausa
+  new_poll_types:
+    proposal: Pasiūlymas
+    poll: Apklausa
+    meeting: Laiko apklausa
   common:
     you: Tu
     expand: Išplėsti

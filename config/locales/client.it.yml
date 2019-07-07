@@ -62,6 +62,10 @@ it:
     meeting: Sondaggio per incontro
     ranked_choice: Scelta di preferenze
     score: Punteggio votazione
+  new_poll_types:
+    proposal: Proposta
+    poll: Sondaggio
+    meeting: Sondaggio per incontro
   timezones:
     local: Ora locale ({{value}})
   common:
@@ -1144,7 +1148,6 @@ it:
         <p>Un grafico a torta esprime la panoramica delle posizioni espresse nel gruppo, mentre le dichiarazioni permettono agli individui di far ascoltare la propria posizione dettagliatamente.</p>
         <p> Non vi scoraggiate se non trovate subito un accordo, le proposte sono progettate per risolvere problemi che devono essere risolti. </p>
         <p>Con una buona partecipazione una proposta è un potente mandato ad agire.</p>
-    tool_tip_collapsed: Cercare un accordo collettivo
     start_header: Lancia proposta
     edit_header: Aggiorna proposta
     tip: Cercare un accordo collettivo attraverso un processo che permetta a tutte le voci di essere ascoltate. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Impara di pù</a>
@@ -1160,7 +1163,6 @@ it:
     tool_tip_collapsed: Misurare la popolarità di un opzione o offrire una scelta
     start_header: Lancia sondaggio
     edit_header: Modifica sondaggio
-    tip: Misurare la popolarità di differenti opzioni
     title_placeholder: 'Ad esempio: Dove vuoi andare in vacanza?'
     details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano rispondere alla domanda.
   poll_count_form:
@@ -1170,7 +1172,6 @@ it:
         <p>Puoi usare la verifica per tracciare il completamento di un compito: "Ho controllato che i miei dati di contatto sono corretti" o "Ho letto il documento e ho lasciato il mio feedback".</p>
         <p>Una verifica ha un <em>obiettivo</em>, qualunque sia il numero di partecipanti. L'obiettivo indica al gruppo se qualcosa ha bisogno di più attenzione o è ben eseguito. </p>
         <p> Un giorno prima che la verifica chiuda, viene inviata una notifica a coloro che non hanno ancora partecipato per invitarli a farlo.</p>
-    tool_tip_collapsed: Tracciare la partecipazione e trovare volontari
     title_placeholder: 'Ad esempio: Chi vuole unirsi al gruppo di lavoro?'
     details_placeholder: Specifica quale impegno è necessario, o dai dettagli come partecipare
   poll_dot_vote_form:
@@ -1178,7 +1179,6 @@ it:
         <p>Il Voto a punti è un modo per assegnare priorità ad una lista di opzioni. </p>
         <p>Ai partecipanti viene dato un numero limitato di 'punti' che possono  assegnare a loro piacimento alle opzioni fornite per rappresentare le proprie preferenze.</p>
         <p>I risultati sono mostrati come totale dei voti per gruppo e come voti individuali, così è possibile considerare i diversi punti di vista.</p>
-    tool_tip_collapsed: Assegnare priorità
     title_placeholder: 'Ad esempio: Come volete distribuire il nostro budget?'
     details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
     dots_per_person: Punti disponibili a persona
@@ -1193,7 +1193,6 @@ it:
         <p>Se aggiungi nuovi orari durante un sondaggio per incontro, ai partecipanti che hanno già votato  verrà chiesto di aggiornare la propria risposta. </p>
         <p>A questo punto potrai vedere chi è disponibile e quando, e decidere quando tenere l'incontro. </p>
         <p>Gli orari sono convertiti automaticamente nei fusi orari dei partecipanti. </p>
-    tool_tip_collapsed: Trovare un orario per incontrarsi
     title_placeholder: 'Ad esempio: Quando si terrà il nostro prossimo incontro?'
     details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
     timeslots: Fasce orarie
@@ -1204,7 +1203,6 @@ it:
         <p>La Scelta di preferenze è un metodo di voto che permette ad ogni singolo votante di selezionare le proprie preferenze indicando un ordine di priorità.</p>
         <p>Questo metodo è preferibile quando il 'furto di voto' è un problema  (per esempio, quando due opzioni piuttosto popolari sono abbastanza simili da finire per condividere voti tra di loro)
         e può essere utilizzato per implementare un'elezione in stile Condorcet, o a voto preferenziale (instant-runoff).</p>
-    tool_tip_collapsed: Selezionare un ordine di preferenze
     title_placeholder: 'Ad esempio: Chi vorresti eleggere come sindaco?'
     details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
     no_options: "Non hai ancora aggiunto nessuna opzione."
@@ -1239,8 +1237,6 @@ it:
     if_need_be: Solo se necessario
     your_response: Quando puoi esserci?
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} punti rimanenti"
-    too_many_dots: Hai usato troppi punti
     stance_created: Voto creato
     stance_updated: Voto aggiornato
   thread_item:

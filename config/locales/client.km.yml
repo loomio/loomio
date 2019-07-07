@@ -1,6 +1,8 @@
 km:
   loomio_tags:
     name_label: ឈ្មោះ
+  new_poll_types:
+    proposal: សំណើ
   common:
     group: 'ក្រុម'
     groups: 'ក្រុម'

@@ -1,6 +1,8 @@
 sr_RS:
   loomio_tags:
     name_label: Име
+  new_poll_types:
+    proposal: Предлог
   common:
     confirm_discard_changes: Поништити промене?
     time:

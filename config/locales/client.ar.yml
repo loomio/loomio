@@ -13,6 +13,9 @@ ar:
   poll_types:
     proposal: اقتراح
     poll: استطلاع رأي
+  new_poll_types:
+    proposal: اقتراح
+    poll: استطلاع رأي
   common:
     you: أنت
     learn_more: تعلم المزيد

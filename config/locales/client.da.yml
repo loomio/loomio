@@ -24,6 +24,10 @@ da:
     poll: Meningsmåling
     dot_vote: Prikafstemning
     meeting: Find tidspunkt
+  new_poll_types:
+    proposal: Forslag
+    poll: Meningsmåling
+    meeting: Find et tidspunkt
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -906,7 +910,6 @@ da:
     start: Start
     update: Opdater
   poll_proposal_form:
-    tool_tip_collapsed: Søg kollektiv enighed
     start_header: Opret forslag
     edit_header: Rediger forslag
     title_placeholder: F.eks. Lad os flyve til månen!
@@ -917,7 +920,6 @@ da:
     tool_tip_collapsed: Mål popularitet eller find det rigtige valg
     start_header: Opret meningsmåling
     edit_header: Rediger meningsmåling
-    tip: Mål de forskellige valgmuligheders popularitet
     title_placeholder: F.eks. hvor vil du på ferie?
     details_placeholder: Beskriv alle de detaljer der skal til for at deltagerene kan træffe sin beslutning.
     add_option_placeholder: Tilføj valgmulighed
@@ -925,18 +927,14 @@ da:
     poll_created: Meningsmåling oprettet
     poll_updated: Meningsmpling redigeret
   poll_count_form:
-    tool_tip_collapsed: Track participation and find volunteers
     start_header: Opret checkmåling
     edit_header: Rediger checkmåling
-    tip: Inddrag folk med et tilbud eller en forespørgsel
     title_placeholder: F.eks. Hvem ønsker at være med i arbejdsgruppen?
     count_created: Checkmåling oprettet
     count_updated: Checkmåling redigeret
   poll_dot_vote_form:
-    tool_tip_collapsed: Prioriter muligheder
     start_header: Opret prikafstemning
     edit_header: Rediger prikafstemning
-    tip: Tildel resourcer kollektivt
     title_placeholder: F.eks. HVordan skal vi fordele vores budget?
     details_placeholder: Beskriv alle detaljer som er nødvendige for at folk deltage
     add_option_placeholder: Tilføj mulighed
@@ -947,10 +945,8 @@ da:
     details_placeholder: Bekriv udførligt hvad der skal foregå så at deltagerne har de bedste forudsætninger at melde tilbage
     add_option_placeholder: Tilføj mulighed
   poll_meeting_form:
-    tool_tip_collapsed: Find et tidspunkt hvor alle kan mødes
     start_header: Opret Fund tidspunkt
     edit_header: Rediger Find tidspunkt
-    tip: Find et tidspunkt hvor folk har tid til at deltage
     title_placeholder: F.eks. Hvornår skal vi afholde vores næste styregruppemøde?
     details_placeholder: Bekriv udførligt hvad der skal foregå så at deltagerne har de bedste forudsætninger at melde tilbage
     meeting_created: Find tidspunkt oprettet
@@ -996,7 +992,6 @@ da:
     stance_created: Tilgængeligt tidspunkt gemt
     stance_updated: Tilgængeligt tidspunkt opdateret
   poll_dot_vote_vote_form:
-    too_many_dots: Du har brugt for mange prikker.
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
   poll_admin_page:

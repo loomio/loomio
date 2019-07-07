@@ -1,4 +1,6 @@
 hr:
+  new_poll_types:
+    proposal: Prijedlog
   common:
     privacy:
       public: 'Javno'

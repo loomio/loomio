@@ -41,6 +41,10 @@ nb_NO:
     dot_vote: Steiner i kurver
     meeting: Tidspunkt
     ranked_choice: Rangering
+  new_poll_types:
+    proposal: Forslag
+    poll: Avstemning
+    meeting: Tidspunkt
   timezones:
     local: Lokal tid ({{value}})
   common:

@@ -34,6 +34,9 @@ eo:
     proposal: Propozicio
     count: Kontroli
     poll: Enketo
+  new_poll_types:
+    proposal: Propozicio
+    poll: Enketo
   common:
     you: Vi
     expand: Klarigu!
@@ -396,7 +399,6 @@ eo:
     unable: "Nekapabla"
     your_response: Kiam vi povas ĉeesti?
   poll_dot_vote_vote_form:
-    too_many_dots: Vi uzis tro da punktoj.
     stance_created: Voĉdono kreis
     stance_updated: Voĉdono ĝisdatigita
   thread_item:
