@@ -871,7 +871,7 @@ en:
 
   invitation_form:
     aria_label: 'Invitation form'
-    invite_people: 'Invite People'
+    invite_people: 'Invite people'
     invite_people_to_group: 'Invite to {{name}}'
     group: 'Group'
     group_placeholder: 'Select a group'
@@ -1161,8 +1161,9 @@ en:
 
   activity_card:
     beginning: Beginning
-    unread: Unread
+    unread: "Unread ({{count}})"
     latest: Latest
+    context: Context
     chronological: Chronological
     nested: Nested
     attachment_display:
@@ -1173,6 +1174,8 @@ en:
     add_comment: Add comment
     add_poll: Add poll
     add_outcome: Add outcome
+    comment: Comment
+    facilitate: Facilitate
 
   thread_group:
     aria_label: 'Group name'

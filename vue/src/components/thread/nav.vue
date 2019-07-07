@@ -85,14 +85,14 @@ v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakp
       v-list-item(:to="urlFor(discussion)" @click="scrollTo('#context')")
         v-list-item-avatar(:size="20")
           v-icon(:size="20") mdi-format-vertical-align-top
-        v-list-item-title Context
+        v-list-item-title(v-t="'activity_card.context'")
       //- v-slider(color="accent" track-color="accent" thumb-color="accent" thumb-size="64" v-model="inversePosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="emitPosition()")
       //-   template(v-slot:thumb-label)
       //-     | {{thumbLabel}}
       v-list-item(:to="urlFor(discussion)+'/'+(discussion.firstUnreadSequenceId() || '')" :disabled="!discussion.isUnread()")
         v-list-item-avatar(:size="20")
           v-icon(:size="20") mdi-bookmark-outline
-        v-list-item-title {{discussion.unreadItemsCount()}} Unread
+        v-list-item-title(v-t="{path: 'activity_card.unread', args: {count: discussion.unreadItemsCount()}}")
       v-list-item(v-for="event in keyEvents" :key="event.id" :to="urlFor(discussion)+'/'+event.sequenceId")
         v-list-item-avatar(:size="20")
           poll-common-chart-preview(:poll='event.model()' :size="20" :showMyStance="false")
@@ -101,15 +101,15 @@ v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakp
       v-list-item(:to="urlFor(discussion)+'/'+discussion.lastSequenceId()")
         v-list-item-avatar(:size="20")
           v-icon(:size="20") mdi-format-vertical-align-bottom
-        v-list-item-title Latest
+        v-list-item-title(v-t="'activity_card.latest'")
     v-divider
     v-list(dense)
       v-list-item(@click="addPeople()")
-        v-list-item-title Add people
+        v-list-item-title(v-t="'invitation_form.invite_people'")
       v-list-item(@click="scrollTo('#add-comment')")
-        v-list-item-title Add comment
+        v-list-item-title(v-t="'activity_card.add_comment'")
       v-list-item(@click="openChangeVolumeModal(discussion)")
-        v-list-item-title Notification settings
+        v-list-item-title(v-t="'thread_context.email_settings'")
         //- v-list-item-subtitle You will be emailed whenever there is activity in this thread.
     v-divider
 

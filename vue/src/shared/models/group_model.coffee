@@ -43,7 +43,6 @@ export default class GroupModel extends BaseModel
     @hasMany 'polls'
     @hasMany 'membershipRequests'
     @hasMany 'memberships'
-    @hasMany 'invitations'
     @hasMany 'groupIdentities'
     @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'

@@ -55,10 +55,10 @@ export default
   v-divider
   v-tabs.activity-panel__actions.mb-3(grow icons-and-text v-model="currentAction")
     v-tab(href='#add-comment')
-      span(v-t="'activity_card.add_comment'")
+      span(v-t="'activity_card.comment'")
       v-icon mdi-comment
     v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
-      span Actions
+      span(v-t="'activity_card.facilitate'")
       v-icon mdi-thumbs-up-down
     //- v-tab(href='#add-outcome')
     //-   span(v-t="'activity_card.add_outcome'")
