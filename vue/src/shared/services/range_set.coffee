@@ -1,3 +1,4 @@
+
 export default new class RangeSet
   parse: (outer) ->
     _.map(outer.split(','), (pair) -> _.map(pair.split('-'), (s) -> parseInt(s)))
@@ -19,6 +20,22 @@ export default new class RangeSet
 
   length: (ranges) ->
     _.sum _.map(ranges, (range) -> range[1] - range[0] + 1)
+
+  arrayToRanges: (ary) -> @reduce(ary.map (id) -> [id,id] )
+
+  intersectRanges: (readRanges, ranges) ->
+    # remove any items in readRanges that do not exist in ranges
+    @arrayToRanges(@rangesToArray(readRanges).filter (v) => @includesValue(ranges, v))
+
+  rangesToArray: (ranges) ->
+    list = []
+    ranges.forEach (range) ->
+      list.concat(@rangeToArray(range[0], range[1], 1))
+    list
+
+  # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+  rangeToArray = (start, stop, step) ->
+    Array.from({length: (stop - start) / step + 1}, (_, i) => start + (i * step));
 
   overlaps: (a, b) ->
     ab = _.sortBy [a, b], (r) -> r[0]

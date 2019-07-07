@@ -122,7 +122,8 @@ v-card.group-form
           // <md-checkbox id="{{name}}" ng-model="group.features[name]" class="md-checkbox--with-summary"><span for="{{name}}" translate="group_features.{{name}}"></span></md-checkbox>
   v-card-actions
     v-btn.group-form__advanced-link(text color="accent", v-if='!isExpanded', @click='expandForm()', v-t="'group_form.advanced_settings'")
-    v-btn.group-form__submit-button(text color="primary", @click='submit()')
+    v-spacer
+    v-btn.group-form__submit-button(color="primary", @click='submit()')
       span(v-if='group.isNew() && group.isParent()', v-t="'group_form.submit_start_group'")
       span(v-if='group.isNew() && !group.isParent()', v-t="'group_form.submit_start_subgroup'")
       span(v-if='!group.isNew()', v-t="'common.action.update_settings'")
