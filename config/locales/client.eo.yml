@@ -402,7 +402,7 @@ eo:
     stance_created: Voĉdono kreis
     stance_updated: Voĉdono ĝisdatigita
   thread_item:
-    poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> fermis la {{polltype}}: <strong>{{title}}</strong>"
+    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> fermis la {{polltype}}: <strong>{{title}}</strong>"
   poll_common_publish_facebook_preview:
     link: ligilo
     just_now: Ĝuste nun

@@ -1163,16 +1163,16 @@ pt_BR:
   poll_dot_vote_vote_form:
     stance_updated: Voto atualizado
   thread_item:
-    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> editou o título da conversa"
-    discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> editou o contexto da conversa"
-    discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> editou os anexos da conversa"
-    discussion_privacy_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> editou as configurações de privacidade da conversa"
-    discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> editou a conversa"
-    discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> mudou a conversa desde <strong>{{title}}</strong>"
-    discussion_closed: "<strong><a href='u/{{username}}'>{{author}}</a></strong>encerrou a conversa"
-    discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> reabriu a conversa"
-    discussion_forked: "<strong><a href='u/{{username}}'>{{author}}</a></strong> dividiu nessa conversa: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> compartilhou um resultado para <strong>{{title}}</strong>"
+    discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editou o título da conversa"
+    discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editou o contexto da conversa"
+    discussion_attachments_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editou os anexos da conversa"
+    discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editou as configurações de privacidade da conversa"
+    discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editou a conversa"
+    discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> mudou a conversa desde <strong>{{title}}</strong>"
+    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>encerrou a conversa"
+    discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> reabriu a conversa"
+    discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> dividiu nessa conversa: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> compartilhou um resultado para <strong>{{title}}</strong>"
     event_removed: "Apagado da conversa"
   poll_admin_page:
     title: Administrador - {{title}}
