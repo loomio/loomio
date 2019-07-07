@@ -152,7 +152,7 @@ export default class DiscussionModel extends BaseModel
 
   update: (attributes) ->
     if _.isArray(@readRanges) && _.isArray(attributes.readRanges) && !_.isEqual(attributes.readRanges, @readRanges)
-      attributes.readRanges = RangeSet.intersectRanges(@readRanges.concat(attributes.readRanges), @ranges)
+      attributes.readRanges = RangeSet.reduce(@readRanges.concat(attributes.readRanges))
     @baseUpdate(attributes)
 
   updateReadRanges: _.throttle ->
