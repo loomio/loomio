@@ -85,48 +85,41 @@ v-container.profile-page
       //- .lmo-disabled-form(v-show='isDisabled')
       v-card-title
         h1.headline(v-t="'profile_page.edit_profile'")
-      v-card-content
+      v-card-text
         v-layout
           v-flex.profile-page__details
-            .md-block
-              label(for='user-name-field', translate='profile_page.name_label')
-              input#user-name-field.profile-page__name-input(required='ng-required', v-model='user.name')
-              validation-errors(:subject='user', field='name')
-            .md-block
-              label(for='user-username-field', translate='profile_page.username_label')
-              input#user-username-field.profile-page__username-input(required='ng-required', v-model='user.username')
-              .md-caption(v-t="'profile_page.username_helptext'")
-              validation-errors(:subject='user', field='username')
-            .md-block
-              label(for='user-email-field', translate='profile_page.email_label')
-              input#user-email-field.profile-page__email-input(required='ng-required', v-model='user.email')
-              validation-errors(:subject='user', field='email')
-            .md-block
-              label(for='user-short-bio-field', translate='profile_page.short_bio_label')
-              lmo-textarea(:model='user' field="shortBio" :placeholder="'profile_page.short_bio_placeholder'")
-              validation-errors(:subject='user', field='shortBio')
-            .md-block
-              label(for='user-location-field', v-t="'profile_page.location_label'")
-              input#user-location-field.profile-page__location-input(v-model='user.location', :placeholder="$t('profile_page.location_placeholder')")
-            .md-block
-              label(for='user-locale-field', translate='profile_page.locale_label')
-                //- <md-select v-model="user.selectedLocale" required="true" class="profile-page__language-input" id="user-locale-field">
-                //- <md-option ng-repeat="locale in availableLocales" ng-value="locale.key">{{locale.name}}</md-option>
-                //- </md-select>
-              validation-errors(:subject='user', field='selectedLocale')
+            v-text-field.profile-page__name-input(:label="$t('profile_page.name_label')" required v-model="user.name")
+            validation-errors(:subject='user', field='name')
+
+            v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username")
+            validation-errors(:subject='user', field='username')
+
+            v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required='ng-required', v-model='user.email')
+            validation-errors(:subject='user', field='email')
+
+            lmo-textarea(:model='user' field="shortBio" :label="$t('profile_page.short_bio_label')" :placeholder="'profile_page.short_bio_placeholder'")
+            validation-errors(:subject='user', field='shortBio')
+
+            v-text-field#user-location-field.profile-page__location-input(v-model='user.location' :label="$t('profile_page.location_label')" :placeholder="$t('profile_page.location_placeholder')")
+
+            v-select#user-locale-field(:label="$t('profile_page.locale_label')" :items="availableLocales" v-model="user.selectedLocale" item-text="name" item-value="key")
+            validation-errors(:subject='user', field='selectedLocale')
             p(v-if='showHelpTranslate')
               router-link.md-caption(v-t="'profile_page.help_translate'", to='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation', target='_blank')
-          v-flex.profile-page__avatar
+          v-flex.profile-page__avatar.mx-3
             user-avatar(:user='user', size='featured')
             v-btn.md-accent.md-button--no-h-margin.profile-page__change-picture(@click='changePicture()', v-t="'profile_page.change_picture_link'")
-      .profile-page__update-account.lmo-flex.lmo-flex__space-between
-        v-btn.md-accent.profile-page__change-password(@click='changePassword()', v-t="'profile_page.change_password_link'")
-        v-btn.md-primary.md-raised.profile-page__update-button(@click='submit()', :disabled='isDisabled', v-t="'profile_page.update_profile'")
-    .profile-page-card
-      h3.lmo-h3(v-t="'profile_page.deactivate_account'")
-      v-btn.md-warn.md-button--no-h-margin.profile-page__deactivate(@click='openConfirmModal(deactivateUserConfirmOpts)', v-t="'profile_page.deactivate_user_link'")
+      v-card-actions.profile-page__update-account
+        v-btn.profile-page__change-password(color="accent" outlined @click='changePassword()' v-t="'profile_page.change_password_link'")
+        v-spacer
+        v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='isDisabled' v-t="'profile_page.update_profile'")
 
-      h3.lmo-h3(v-t="'profile_page.delete_account'")
-      v-btn.md-warn.md-button--no-h-margin.profile-page__delete(@click='openConfirmModal(deleteUserConfirmOpts)', v-t="'profile_page.delete_user_link'")
+    v-card.profile-page-card.mt-4
+      v-card-text
+        h3.lmo-h3(v-t="'profile_page.deactivate_account'")
+        v-btn.profile-page__deactivate(outlined color="warning" @click='openConfirmModal(deactivateUserConfirmOpts)', v-t="'profile_page.deactivate_user_link'")
+
+        h3.lmo-h3(v-t="'profile_page.delete_account'")
+        v-btn.profile-page__delete(outlined color="warning" @click='openConfirmModal(deleteUserConfirmOpts)', v-t="'profile_page.delete_user_link'")
 
 </template>

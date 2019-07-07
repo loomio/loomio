@@ -38,36 +38,33 @@ export default
 </script>
 
 <template lang="pug">
-v-container
-  v-card.contact-page
-    .contact-form(v-show='!submitted')
-      .lmo-disabled-form(v-show='isDisabled')
-      h1.lmo-h2(v-t="'contact_message_form.title'")
+v-container.contact-page
+  v-card.contact-form(v-show='!submitted')
+    .lmo-disabled-form(v-show='isDisabled')
+    v-card-title
+      h1.headline(v-t="'contact_message_form.title'")
+    v-card-text
       p(v-html="$t('contact_message_form.read_the_manual', { link: helpLink })")
-      p  
-      .md-block(md-input-container='', v-if='!isLoggedIn')
-        label(v-t="'contact_message_form.name_label'")
-        input(type='text', :placeholder="$t('contact_message_form.name_placeholder')", v-model='message.name')
+      p
+      div(v-if='!isLoggedIn')
+        label(v-t="")
+        v-text-field(:label="$t('contact_message_form.name_label')" :placeholder="$t('contact_message_form.name_placeholder')" v-model='message.name')
         validation-errors(:subject='message', field='name')
-      .md-block(md-input-container='', v-if='!isLoggedIn')
-        label(v-t="'contact_message_form.email_label'")
-        input(type='text', :placeholder="$t('contact_message_form.email_placeholder')", v-model='message.email')
+      div(v-if='!isLoggedIn')
+        v-text-field(:label="$t('contact_message_form.email_label')" :placeholder="$t('contact_message_form.email_placeholder')", v-model='message.email')
         validation-errors(:subject='message', field='email')
-      .md-block(md-input-container='')
-        label(v-t="'contact_message_form.subject_label'")
-        input(type='text', :placeholder="$t('contact_message_form.subject_placeholder')", v-model='message.subject')
-        validation-errors(:subject='message', field='subject')
-      .md-block(md-input-container='')
-        label(v-t="'contact_message_form.message_label'")
-        textarea(v-model='message.message', :placeholder="$t('contact_message_form.message_placeholder')")
-        validation-errors(:subject='message', field='message')
-      p.lmo-hint-text(v-html="$t('contact_message_form.contact_us_email', { email: contactEmail })")
-      .lmo-md-actions
-        div
-        button.md-primary.md-raised(md-button='', @click='submit', v-t="'contact_message_form.send_message'")
-    .contact-form__success(v-show='submitted')
-      h1.lmo-h2(v-html="$t('contact_message_form.success', { name: message.name })")
-</template>
 
-<style lang="scss">
-</style>
+      v-text-field(:label="$t('contact_message_form.subject_label')" :placeholder="$t('contact_message_form.subject_placeholder')", v-model='message.subject')
+      validation-errors(:subject='message', field='subject')
+
+      v-textarea(:label="$t('contact_message_form.message_label')" v-model='message.message', :placeholder="$t('contact_message_form.message_placeholder')")
+      validation-errors(:subject='message', field='message')
+
+      p.lmo-hint-text(v-html="$t('contact_message_form.contact_us_email', { email: contactEmail })")
+      v-card-actions
+        v-spacer
+        v-btn(color="primary" @click='submit', v-t="'contact_message_form.send_message'")
+
+    v-card.contact-form__success(v-show='submitted')
+      h1.headline(v-html="$t('contact_message_form.success', { name: message.name })")
+</template>

@@ -1,9 +1,3 @@
-<style lang="scss">
-.email-settings-page__specific-group-settings {
-  margin-top: 40px;
-}
-</style>
-
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
@@ -57,46 +51,48 @@ export default
 </script>
 
 <template lang="pug">
-main.email-settings-page(v-if='user')
-  .lmo-page-heading
-    h1.lmo-h1-medium(v-t="'email_settings_page.header'")
-  .email-settings-page__email-settings
-    .email-settings-page__global-settings
-      form
+v-container.email-settings-page(v-if='user')
+  v-card
+    v-card-title
+      h1.headline(v-t="'email_settings_page.header'")
+    v-card-text
+      .email-settings-page__email-settings
         .email-settings-page__global-settings
-          v-checkbox#daily-summary-email.md-checkbox--with-summary.email-settings-page__daily-summary(v-model='user.emailCatchUp')
-            div(slot="label")
-              strong(v-t="'email_settings_page.daily_summary_label'")
-              .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
-          v-checkbox#on-participation-email.md-checkbox--with-summary.email-settings-page__on-participation(v-model='user.emailOnParticipation')
-            div(slot="label")
-              strong(v-t="'email_settings_page.on_participation_label'")
-              .email-settings-page__input-description(v-t="'email_settings_page.on_participation_description'")
-          v-checkbox#mentioned-email.md-checkbox--with-summary.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
-            div(slot="label")
-              strong(v-t="'email_settings_page.mentioned_label'")
-              .email-settings-page__input-description(v-t="'email_settings_page.mentioned_description'")
-          v-checkbox#email-promotions.md-checkbox--with-summary.email-settings-page__promotions(v-model='user.emailNewsletter', v-if='newsletterEnabled')
-            div(slot="label")
-              strong(v-t="'email_settings_page.email_newsletter'")
-              .email-settings-page__input-description(v-t="'email_settings_page.email_newsletter_description'")
-        v-btn.md-primary.md-raised.email-settings-page__update-button(@click="submit()" ng-disabled='isDisabled', v-t="'email_settings_page.update_settings'")
-    .email-settings-page__specific-group-settings
-      h3.lmo-h3(v-t="'email_settings_page.specific_groups'")
-      v-list(class='email-settings-page__groups')
-        v-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between
-          .lmo-box--medium.lmo-margin-right.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center
-            i.mdi.mdi-account-multiple-plus.mdi-24px
-          .email-settings-page__default-description(v-html="$t(defaultSettingsDescription)")
-          v-btn.md-accent.email-settings-page__change-default-link(@click='changeDefaultMembershipVolume()', v-t="'common.action.edit'")
-        v-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between(v-for='group in groups', key='group.id')
-          group-avatar.lmo-margin-right(:group='group', size='28px')
-          .email-settings-page__group-details.lmo-flex__grow
-            strong.email-settings-page__group-name
-              span(v-if='group.isSubgroup()') {{group.parentName()}} -
-              span {{group.name}}
-            .email-settings-page__membership-volume(v-t="'change_volume_form.' + groupVolume(group) + '_label'")
-          .email-settings-page__edit
-            v-btn.md-accent.email-settings-page__edit-membership-volume-link(@click='editSpecificGroupVolume(group)', v-t="'email_settings_page.edit'")
-      router-link.email-settings-page__learn-more-link(to='https://help.loomio.org/en/user_manual/users/email_settings/', target='_blank', v-t="'email_settings_page.learn_more'")
+          form
+            .email-settings-page__global-settings
+              v-checkbox#daily-summary-email.md-checkbox--with-summary.email-settings-page__daily-summary(v-model='user.emailCatchUp')
+                div(slot="label")
+                  strong(v-t="'email_settings_page.daily_summary_label'")
+                  .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
+              v-checkbox#on-participation-email.md-checkbox--with-summary.email-settings-page__on-participation(v-model='user.emailOnParticipation')
+                div(slot="label")
+                  strong(v-t="'email_settings_page.on_participation_label'")
+                  .email-settings-page__input-description(v-t="'email_settings_page.on_participation_description'")
+              v-checkbox#mentioned-email.md-checkbox--with-summary.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
+                div(slot="label")
+                  strong(v-t="'email_settings_page.mentioned_label'")
+                  .email-settings-page__input-description(v-t="'email_settings_page.mentioned_description'")
+              v-checkbox#email-promotions.md-checkbox--with-summary.email-settings-page__promotions(v-model='user.emailNewsletter', v-if='newsletterEnabled')
+                div(slot="label")
+                  strong(v-t="'email_settings_page.email_newsletter'")
+                  .email-settings-page__input-description(v-t="'email_settings_page.email_newsletter_description'")
+            v-btn.md-primary.md-raised.email-settings-page__update-button(@click="submit()" ng-disabled='isDisabled', v-t="'email_settings_page.update_settings'")
+        .email-settings-page__specific-group-settings
+          h3.lmo-h3(v-t="'email_settings_page.specific_groups'")
+          v-list(class='email-settings-page__groups')
+            v-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between
+              .lmo-box--medium.lmo-margin-right.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center
+                i.mdi.mdi-account-multiple-plus.mdi-24px
+              .email-settings-page__default-description(v-html="$t(defaultSettingsDescription)")
+              v-btn.md-accent.email-settings-page__change-default-link(@click='changeDefaultMembershipVolume()', v-t="'common.action.edit'")
+            v-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between(v-for='group in groups', key='group.id')
+              group-avatar.lmo-margin-right(:group='group', size='28px')
+              .email-settings-page__group-details.lmo-flex__grow
+                strong.email-settings-page__group-name
+                  span(v-if='group.isSubgroup()') {{group.parentName()}} -
+                  span {{group.name}}
+                .email-settings-page__membership-volume(v-t="'change_volume_form.' + groupVolume(group) + '_label'")
+              .email-settings-page__edit
+                v-btn.md-accent.email-settings-page__edit-membership-volume-link(@click='editSpecificGroupVolume(group)', v-t="'email_settings_page.edit'")
+          router-link.email-settings-page__learn-more-link(to='https://help.loomio.org/en/user_manual/users/email_settings/', target='_blank', v-t="'email_settings_page.learn_more'")
 </template>

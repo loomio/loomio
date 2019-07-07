@@ -24,21 +24,18 @@ export default
 v-card.change-password-form
   .lmo-disabled-form(v-show='processing')
   v-card-title
-    .md-toolbar-tools.lmo-flex__space-between
-      div
-      h1.lmo-h1(v-t="'change_password_form.set_password_title'")
-      dismiss-modal-button(:close="close")
+    h1.headline(v-t="'change_password_form.set_password_title'")
+    v-spacer
+    dismiss-modal-button(:close="close")
   v-card-text
     p.lmo-hint-text(v-t="'change_password_form.set_password_helptext'")
-    .md-block.change-password-form__password-container
-      label(v-t="'sign_up_form.password_label'")
-      v-text-field.change-password-form__password(required='true' type='password' v-model='user.password')
+    .change-password-form__password-container
+      v-text-field.change-password-form__password(:label="$t('sign_up_form.password_label')" required type='password' v-model='user.password')
       validation-errors(:subject='user', field='password')
-    .md-block.change-password-form__password-confirmation-container
-      label(v-t="'sign_up_form.password_confirmation_label'")
-      v-text-field.change-password-form__password-confirmation(required='true' type='password' v-model='user.passwordConfirmation')
+    .change-password-form__password-confirmation-container
+      v-text-field.change-password-form__password-confirmation(:label="$t('sign_up_form.password_confirmation_label')" required='true' type='password' v-model='user.passwordConfirmation')
       validation-errors(:subject='user', field='passwordConfirmation')
   v-card-actions
-    //- v-btn.md-accent(ng-click='$close()', v-t="'common.action.cancel'")
+    v-spacer
     v-btn.change-password-form__submit(color="primary" @click='submit()' v-t="'change_password_form.set_password'")
 </template>
