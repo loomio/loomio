@@ -44,6 +44,7 @@ export default
       EventBus.$emit("sidebarOpen", val)
 
   methods:
+    sortGroups: (groups) -> sortBy groups, 'fullName'
     availableGroups: -> Session.user().formalGroups()
 
     currentGroup: ->
@@ -113,7 +114,7 @@ v-navigation-drawer.sidenav-left(app v-model="open")
         v-avatar(tile size="28px")
           img.sidebar__list-item-group-logo(:src='group.logoUrl()')
       v-list-item-title {{group.name}}
-    v-list-item(v-for="subgroup in group.subgroups()" dense :to='groupUrl(subgroup)' :key="subgroup.id")
+    v-list-item(v-for="subgroup in sortGroups(group.subgroups())" dense :to='groupUrl(subgroup)' :key="subgroup.id")
       v-list-item-avatar(:size="28")
       v-list-item-title {{subgroup.name}}
   v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroup()", @click="openStartGroupModal()")
