@@ -8,9 +8,10 @@ import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import WatchRecords from '@/mixins/watch_records'
+import UrlFor       from '@/mixins/url_for'
 
 export default
-  mixins: [AnnouncementModalMixin, WatchRecords]
+  mixins: [AnnouncementModalMixin, WatchRecords, UrlFor]
   props:
     discussion: Object
     close: Function
@@ -22,13 +23,15 @@ export default
     submitIsDisabled: false
 
   mounted: ->
+    isNew = @discussion.isNew()
     @submit = submitDiscussion @, @discussion,
       successCallback: (data) =>
         discussionKey = data.discussions[0].key
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           @close()
-          @$router.push("/d/#{discussionKey}")
-          @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
+          if isNew
+            @$router.push @urlFor(discussion)
+            @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
 
 
     @watchRecords
