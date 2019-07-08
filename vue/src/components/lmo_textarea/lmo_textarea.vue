@@ -134,6 +134,10 @@ export default
     format: ->
       @model["#{@field}Format"]
 
+  mounted: ->
+    @model.files = []
+    @model.imageFiles = []
+    
   methods:
     setLinkUrl: (command) ->
       command({ href: @linkUrl })
