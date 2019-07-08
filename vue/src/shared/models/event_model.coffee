@@ -3,7 +3,7 @@ import BaseModel from '@/shared/record_store/base_model'
 export default class EventModel extends BaseModel
   @singular: 'event'
   @plural: 'events'
-  @indices: ['id', 'actorId', 'discussionId']
+  @indices: ['id', 'actorId', 'discussionId', 'sequenceId', 'position', 'depth', 'parentId']
 
   @eventTypeMap:
     group:              'groups'
