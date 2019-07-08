@@ -7,5 +7,6 @@ export default
 <template lang="pug">
 .poll-common-stance-reason
   lmo-textarea.poll-common-vote-form__reason(:model='stance' field="reason" :placeholder="'poll_common.reason_placeholder'" maxlength='500')
+  validation-errors(:subject="stance" field="reason")
 
 </template>
