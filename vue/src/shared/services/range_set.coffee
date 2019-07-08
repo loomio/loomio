@@ -29,12 +29,12 @@ export default new class RangeSet
 
   rangesToArray: (ranges) ->
     list = []
-    ranges.forEach (range) ->
-      list.concat(@rangeToArray(range[0], range[1], 1))
+    ranges.forEach (range) =>
+      list = list.concat(@rangeToArray(range[0], range[1], 1))
     list
 
   # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
-  rangeToArray = (start, stop, step) ->
+  rangeToArray: (start, stop, step) ->
     Array.from({length: (stop - start) / step + 1}, (_, i) => start + (i * step));
 
   overlaps: (a, b) ->

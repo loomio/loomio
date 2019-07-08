@@ -29,6 +29,8 @@ export default class DiscussionModel extends BaseModel
     description: ''
     descriptionFormat: 'html'
     forkedEventIds: []
+    ranges: []
+    readRanges: []
 
   audienceValues: ->
     name: @group().name
@@ -154,6 +156,7 @@ export default class DiscussionModel extends BaseModel
     if _.isArray(@readRanges) && _.isArray(attributes.readRanges) && !_.isEqual(attributes.readRanges, @readRanges)
       attributes.readRanges = RangeSet.reduce(@readRanges.concat(attributes.readRanges))
     @baseUpdate(attributes)
+    @readRanges = RangeSet.intersectRanges(@readRanges, @ranges)
 
   updateReadRanges: _.throttle ->
     @remote.patchMember @keyOrId(), 'mark_as_read', ranges: RangeSet.serialize(@readRanges)
