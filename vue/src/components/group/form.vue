@@ -2,7 +2,6 @@
 import AppConfig      from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
-import { scrollTo }            from '@/shared/helpers/layout'
 import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import { submitOnEnter }       from '@/shared/helpers/keyboard'
@@ -45,7 +44,6 @@ export default
   methods:
     expandForm: ->
       @isExpanded = true
-      scrollTo '.group-form__permissions', container: '.group-modal md-dialog-content'
 
     privacyStringFor: (privacy) ->
       @$t groupPrivacy(@group, privacy),

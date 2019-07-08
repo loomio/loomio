@@ -6,6 +6,7 @@ import AbilityService from '@/shared/services/ability_service'
 
 import { submitForm }    from '@/shared/helpers/form'
 import { submitOnEnter } from '@/shared/helpers/keyboard'
+import { last } from 'lodash'
 
 export default
   props:
@@ -54,7 +55,9 @@ export default
         flashOptions:
           name: =>
             @comment.parent().authorName() if @comment.isReply()
-        successCallback: =>
+        successCallback: (data) =>
+          if @comment.isReply()
+            @$vuetify.goTo("#sequence-#{last(data.events).sequence_id}")
           @$emit('comment-submitted')
           @reset()
           @init()
