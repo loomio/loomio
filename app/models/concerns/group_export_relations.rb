@@ -2,10 +2,13 @@ module GroupExportRelations
   extend ActiveSupport::Concern
 
   included do
+    #tags
+    has_many :discussion_tags, through: :discussions
+    has_many :tags
     # polls
     has_many :discussion_polls, through: :discussions
     has_many :exportable_polls, -> { where anonymous: false }, class_name: 'Poll', foreign_key: :group_id
-    
+
     has_many :exportable_poll_options,          through: :exportable_polls, source: :poll_options
     has_many :exportable_poll_unsubscriptions,  through: :exportable_polls, source: :poll_unsubscriptions
     has_many :exportable_poll_did_not_votes,    through: :exportable_polls, source: :poll_did_not_votes
