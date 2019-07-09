@@ -41,16 +41,6 @@ export default
       canPerform: => AbilityService.canAddComment(@discussion)
       perform:    => scrollTo('.comment-form textarea')
     ,
-    #   name: 'pin_thread'
-    #   icon: 'mdi-pin'
-    #   canPerform: => AbilityService.canPinThread(@discussion)
-    #   perform:    => ThreadService.pin(@discussion)
-    # ,
-    #   name: 'unpin_thread'
-    #   icon: 'mdi-pin-off'
-    #   canPerform: => AbilityService.canUnpinThread(@discussion)
-    #   perform:    => ThreadService.unpin(@discussion)
-    # ,
       name: 'show_history',
       icon: 'mdi-history'
       canPerform: => @discussion.edited()

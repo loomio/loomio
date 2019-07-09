@@ -36,9 +36,6 @@
   text-align: center;
 }
 
-.thread-preview__mute,
-.thread-preview__unmute { margin-left: 8px }
-
 /* // .thread-preview__group-name{
 //   @include md-caption;
 //   @include truncateText;
@@ -86,6 +83,7 @@
 
 <script lang="coffee">
 import ThreadService from '@/shared/services/thread_service'
+import AbilityService from '@/shared/services/ability_service'
 import UrlFor        from '@/mixins/url_for'
 
 export default
@@ -98,6 +96,10 @@ export default
   data: ->
     dthread: @thread
   methods:
+    pin: -> ThreadService.pin(@thread)
+    unpin: -> ThreadService.unpin(@thread)
+    canPin: -> AbilityService.canPinThread(@thread)
+    canUnpin: -> AbilityService.canUnpinThread(@thread)
     dismiss: -> ThreadService.dismiss(@thread)
     muteThread: -> ThreadService.mute(@thread)
     unmuteThread: -> ThreadService.unmute(@thread)
@@ -132,17 +134,15 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
         v-btn(icon v-on="on" @click.prevent)
           v-icon mdi-dots-vertical
       v-list
+        v-list-item(v-if='canUnpin()')
+          v-list-item-title.thread-preview__dismiss(@click.prevent='unpin()' v-t="'action_dock.unpin_thread'")
+        v-list-item(v-if='canPin()')
+          v-list-item-title.thread-preview__dismiss(@click.prevent='pin()' v-t="'action_dock.pin_thread'")
         v-list-item(v-if='thread.isUnread()')
-          v-list-item-avatar
-            v-icon mdi-check
           v-list-item-title.thread-preview__dismiss(@click.prevent='dismiss()' :class='{disabled: !thread.isUnread()}' v-t="'dashboard_page.dismiss'")
         v-list-item(v-if='!thread.isMuted()')
-          v-list-item-avatar
-            v-icon mdi-volume-mute
-          v-list-item-title.thread-preview__mute(@click.prevent='muteThread()' icon v-t="'volume_levels.mute'")
+          v-list-item-title.thread-preview__mute(@click.prevent='muteThread()' v-t="'volume_levels.mute'")
         v-list-item(v-if='thread.isMuted()' )
-          v-list-item-avatar
-            v-icon mdi-volume-plus
-          v-list-item-title.thread-preview__unmute(@click.prevent='unmuteThread()' icon v-t="'volume_levels.unmute'")
+          v-list-item-title.thread-preview__unmute(@click.prevent='unmuteThread()' v-t="'volume_levels.unmute'")
 
 </template>
