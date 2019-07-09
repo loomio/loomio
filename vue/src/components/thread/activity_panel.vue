@@ -57,7 +57,6 @@ export default
     scrollToInitialPosition: ->
       commentId = parseInt(@$route.params.comment_id)
       sequenceId = parseInt(@$route.params.sequence_id)
-      console.log 'intial position'
       if event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
         @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
       else
@@ -71,8 +70,8 @@ export default
             # from_unread: if !commentId && !sequenceId then 1 else null
             per: @pageSize
         @loader.fetchRecords().then =>
-          if event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
-            @$nextTick => @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
+          event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
+          setTimeout => @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
 
       EventBus.$on 'threadPositionRequest', (position) => @positionRequested(position)
 
