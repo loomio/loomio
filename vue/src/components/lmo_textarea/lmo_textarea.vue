@@ -319,6 +319,8 @@ div
                 v-icon mdi-format-list-checks
         v-btn(text small :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
           v-icon mdi-paperclip
+        v-btn(small icon @click='commands.horizontal_rule')
+          v-icon mdi-minus
         v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
           template(v-slot:activator="{on}")
             v-btn.emoji-picker__toggle(v-on="on" small text :class="{ 'is-active': isActive.underline() }")
@@ -343,8 +345,6 @@ div
         //- v-btn-toggle(slot-scope='{ commands, isActive }')
         //- v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
         //-   v-icon mdi-paperclip
-        //- v-btn(small icon @click='commands.horizontal_rule')
-        //-   v-icon mdi-format-page-break
 
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')
