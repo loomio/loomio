@@ -2,6 +2,7 @@
 import Records   from '@/shared/services/records'
 import AppConfig from '@/shared/services/app_config'
 import WatchRecords from '@/mixins/watch_records'
+import {compact} from 'lodash'
 
 export default
   mixins: [WatchRecords]
@@ -10,10 +11,19 @@ export default
     notifications: []
     unread: []
     unreadCount: 0
+    unreadIds: []
+    open: false
 
-  methods:
-    viewed: ->
-      Records.notifications.viewed()
+  watch:
+    open: (newVal, oldVal) ->
+      console.log newVal, oldVal
+      if oldVal && !newVal
+        @unreadIds = []
+        @unreadCount = 0
+      if newVal && !oldVal
+        @unread = Records.notifications.find(kind: {$in: AppConfig.notifications.kinds}, viewed: { $ne: true })
+        @unreadIds = @unread.map (n) -> n.id
+        Records.notifications.viewed()
 
   created: ->
     @watchRecords
@@ -21,18 +31,26 @@ export default
       query: (store) =>
         @notifications = store.notifications.find(kind: {$in: AppConfig.notifications.kinds})
         @unread = store.notifications.find(kind: {$in: AppConfig.notifications.kinds}, viewed: { $ne: true })
-        @unreadCount = @unread.length
+        @unreadCount = @unreadCount
 
 </script>
 <template lang="pug">
-v-menu.notifications(offset-y bottom)
+v-menu.notifications(offset-y bottom v-model="open")
   template(v-slot:activator="{on}")
     v-btn.notifications__button(icon v-on="on" :aria-label="$t('navbar.notifications')")
       v-badge(color="accent" v-model="unread.length")
         template(v-slot:badge)
           span.notifications__activity {{unread.length}}
         v-icon mdi-bell
-  v-list.notifications__dropdown(avatar v-observe-visibility="{callback: viewed}")
-    notification(:notification="notification" v-for="notification in notifications", :key="notification.id")
+  v-sheet.notifications__dropdown.py-2
+    div(v-for="notification in notifications", :key="notification.id")
+      notification(:notification="notification", :unread="unreadIds.includes(notification.id)")
     div(v-if="notifications.length == 0" v-t="'notifications.no_notifications'")
 </template>
+
+<style lang="sass">
+.notifications__dropdown
+  max-width: 512px
+  overflow-y: scroll
+  max-height: 600px
+</style>
