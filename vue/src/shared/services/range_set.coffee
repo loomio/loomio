@@ -70,24 +70,8 @@ export default new class RangeSet
         output.push whole
     output
 
-  firstMissing: (superset, subset) =>
-    [supersetRange, subsetRange] = @firstMissingRange @reduce(superset), @reduce(subset)
-    return unless supersetRange and subsetRange
-
-    if subsetRange[0] > supersetRange[0]
-      # return the beginning of the superset range if the subset range does not cover it
-      supersetRange[0]
-    else
-      # otherwise return the first value the subset range does not cover
-      subsetRange[1] + 1
-
-  # returns the first range in the subset which does not match the superset's ranges
-  firstMissingRange: (superset, subset) ->
-    for supersetRange in superset
-      if !_.find subset, supersetRange
-        subsetRange = _.head _.filter subset, (range) -> range[0] >= supersetRange[0]
-        return [supersetRange, subsetRange]
-    []
+  firstMissing: (ranges, readRanges) =>
+    @rangesToArray(ranges).find (v) => !@includesValue(readRanges, v)
 
   # # err need to exrtact this to an npm module
   # selfTest: ->
