@@ -14,10 +14,7 @@ export default (callback) ->
   client.get('site').then (siteResponse) ->
     siteResponse.json().then (appConfig) ->
       appConfig.timeZone = moment.tz.guess()
-      forEach appConfig, (v, k) ->
-        Vue.set(AppConfig, k, v)
-
-      AppConfig.setTheme(appConfig.theme.vuetify)
+      forEach appConfig, (v, k) -> Vue.set(AppConfig, k, v)
 
       if AppConfig.sentry_dsn
         Sentry.init

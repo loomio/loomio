@@ -7,7 +7,6 @@ import colors from 'vuetify/lib/util/colors'
 
 export default new Vuetify(
   iconfont: 'mdi'
-  # iconfont: 'mdi'
   theme:
     themes:
       light:
