@@ -64,15 +64,22 @@ export default
 
 <template lang="pug">
 .event-children
-  div(v-if='debug()')
-    | event-childrenparentId: {{eventWindow.parentEvent.id}}cc: {{eventWindow.parentEvent.childCount}}min: {{eventWindow.min}}max: {{eventWindow.max}}first: {{eventWindow.firstLoaded()}}last: {{eventWindow.lastLoaded()}}anyPrevious: {{eventWindow.anyPrevious()}}anyNext: {{eventWindow.anyNext()}}
-  a.activity-panel__load-more.lmo-no-print.thread-item--indent-margin(v-show='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()')
-    v-icon mdi-autorenew
-    span(v-t="{ path: 'activity_card.n_previous', args: { count: eventWindow.numPrevious() } }")
+  //- div(v-if='debug()')
+  //-   | event-childrenparentId: {{eventWindow.parentEvent.id}}cc: {{eventWindow.parentEvent.childCount}}min: {{eventWindow.min}}max: {{eventWindow.max}}first: {{eventWindow.firstLoaded()}}last: {{eventWindow.lastLoaded()}}anyPrevious: {{eventWindow.anyPrevious()}}anyNext: {{eventWindow.anyNext()}}
+  .activity-panel__load-more.lmo-no-print
+    v-btn(block tile outlined color="accent" v-if='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()')
+      v-icon mdi-autorenew
+      span(v-t="{ path: 'activity_card.n_previous', args: { count: eventWindow.numPrevious() } }")
   loading.activity-panel__loading.page-loading(v-show='loader.loadingPrevious')
   component(:is="componentForKind(event.kind)" v-for='event in events' :key='event.id' :event-window='eventWindow' :event='event')
-  a.activity-panel__load-more.lmo-no-print.thread-item--indent-margin(v-show='eventWindow.anyNext() && !loader.loadingMore', @click='loadNext()')
-    v-icon mdi-autorenew
-    span(v-t="{ path: 'activity_card.n_more', args: { count: eventWindow.numNext() } }")
+  .activity-panel__load-more.lmo-no-print
+    v-btn(block tile outlined color="accent" v-if='eventWindow.anyNext() && !loader.loadingMore', @click='loadNext()')
+      v-icon mdi-autorenew
+      span(v-t="{ path: 'activity_card.n_more', args: { count: eventWindow.numNext() } }")
   loading.activity-panel__loading.page-loading(v-show='loader.loadingMore')
 </template>
+<style lang="sass">
+.activity-panel__load-more
+  margin: 4px 16px 4px 80px
+
+</style>

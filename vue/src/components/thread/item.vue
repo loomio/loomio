@@ -155,10 +155,6 @@ div
   padding-left: 64px;
 }
 
-.thread-item--indent-margin {
-  margin-left: $cardPaddingSize + 42px;
-}
-
 .thread-item__body {
   width: 100%;
   min-width: 0;
