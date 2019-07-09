@@ -1,6 +1,3 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
 import PollModalMixin from '@/mixins/poll_modal'
 

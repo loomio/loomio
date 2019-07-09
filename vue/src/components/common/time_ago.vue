@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .time-ago { border: 0; }
 .timeago{
   white-space: nowrap;

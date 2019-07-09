@@ -17,6 +17,8 @@ export default (callback) ->
       forEach appConfig, (v, k) ->
         Vue.set(AppConfig, k, v)
 
+      AppConfig.setTheme(appConfig.theme.vuetify)
+
       if AppConfig.sentry_dsn
         Sentry.init
           dsn: AppConfig.sentry_dsn

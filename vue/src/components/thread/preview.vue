@@ -1,5 +1,5 @@
-<style lang="scss">
-// @import 'mixins';
+<style lang="css">
+/* // @import 'mixins';
 // @import 'boxes';
 
 // .thread-preview {
@@ -23,7 +23,7 @@
 //     border-left: 2px solid;
 //     padding-left: $thinPaddingSize - 2px;
 //   }
-// }
+// } */
 
 .thread-preview__status-icon {
   padding: 4px 8px;
@@ -32,19 +32,19 @@
 .thread-preview__pin {
   width: 32px;
   font-size: 20px;
-  // color: $grey-on-white;
+  /* // color: $grey-on-white; */
   text-align: center;
 }
 
 .thread-preview__mute,
 .thread-preview__unmute { margin-left: 8px }
 
-// .thread-preview__group-name{
+/* // .thread-preview__group-name{
 //   @include md-caption;
 //   @include truncateText;
 //   padding-left: $thinPaddingSize;
 //   color: $grey-on-white;
-// }
+// } */
 
 .thread-preview--unread {
   font-weight: 500;

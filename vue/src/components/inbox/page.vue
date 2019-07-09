@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .inbox-page .thread-preview__pin {
   display: none;
 }

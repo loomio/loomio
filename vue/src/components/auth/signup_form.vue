@@ -64,5 +64,3 @@ div
     v-btn.md-primary.md-raised.auth-signup-form__submit(:disabled='!vars.name || (termsUrl && !vars.legalAccepted)', v-t="'auth_form.create_account'", @click='submit()')
     div(vc-recaptcha='true', size='invisible', key='recaptchaKey', v-if='useRecaptcha', on-success='submitForm(response)')
 </template>
-<style lang="scss">
-</style>

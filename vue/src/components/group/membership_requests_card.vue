@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .membership-requests-card__request-link {
   margin: 0;
   padding: 8px 0;

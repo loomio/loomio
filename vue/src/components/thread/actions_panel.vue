@@ -75,7 +75,7 @@ export default
     v-tab-item(value="add-outcome")
 
 </template>
-<style lang="scss">
+<style lang="css">
 .add-comment-panel__sign-in-btn { width: 100% }
 .add-comment-panel__join-actions button {
   width: 100%;

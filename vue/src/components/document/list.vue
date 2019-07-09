@@ -57,23 +57,14 @@ section.document-list
           i.mdi.mdi-close
 </template>
 
-<style lang="scss">
-@import 'variables';
-
-.document-list {
-  .md-button--tiny { opacity: 0.5; }
-  &:hover {
-    .md-button--tiny { opacity: 1; }
-  }
-}
-
+<style lang="css">
 .document-list__document {
   margin: 8px 0;
   line-height: 32px;
-  background: $modal-background-color;
-  // @include roundedCorners;
-  &--image { padding-top: 8px; }
+  /* // background: $modal-background-color;
+  // @include roundedCorners; */
 }
+.document-list__document--image { padding-top: 8px; }
 
 .document-list__entry {
   padding-left: 8px;
@@ -82,16 +73,11 @@ section.document-list
 .document-list__image {
   margin: auto;
   max-width: 100%;
-  img {
-    max-width: 100%;
-    max-height: 240px;
-  }
 }
 
-.document-list .md-button--tiny {
-  opacity: 0.5;
-  transition: opacity ease-in-out 0.25s;
-  &:hover { opacity: 1; }
+.document-list__image img {
+  max-width: 100%;
+  max-height: 240px;
 }
 
 .document-list__heading {
@@ -108,7 +94,6 @@ section.document-list
 }
 
 .document-list__title {
-  color: $primary-text-color;
   font-size: 14px;
 }
 

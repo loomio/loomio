@@ -38,11 +38,10 @@ v-card.revision-history-modal
           time-ago.lmo-margin-right--small(:timestamp='version.createdAt')
       revision-history-content(v-if='!loading', :model='model', :version='version')
 </template>
-<style lang="scss">
-// @import 'mixins';
+
+<style lang="css">
 
 .revision-history-modal__thread-details {
-  // @include fontSmall;
 }
 
 .revision-history-modal__divider {

@@ -1,5 +1,4 @@
-<style lang="scss">
-@import 'variables';
+<style lang="css">
 .poll-count-chart-panel__chart-container {
   width: 140px;
   height: 140px;
@@ -15,7 +14,7 @@
 
 .poll-count-chart-panel__incomplete {
   flex-grow: 1;
-  background-color: $background-color;
+  background-color: #ccc;
 }
 
 .poll-count-chart-panel__data {

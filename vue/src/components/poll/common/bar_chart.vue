@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .bar-chart {
   border: 0;
   margin: 0;

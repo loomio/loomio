@@ -179,8 +179,7 @@ v-card
     v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || tooManyInvitations()" @click="submit()" v-t="'common.action.send'")
 </template>
 
-<style lang="scss">
-// @import 'variables';
+<style lang="css">
 .announcement-form__checkbox {
   margin: 16px 0;
 }
@@ -207,7 +206,7 @@ v-card
   height: 42px;
   min-height: 42px;
   margin-bottom: 8px;
-  // color: $primary-text-color;
-  i { opacity: 0.8; }
+  /* // color: $primary-text-color;
+  i { opacity: 0.8; } */
 }
 </style>

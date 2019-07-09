@@ -22,8 +22,7 @@ export default
         img(:src="wrapper.blob.preview_url")
 </template>
 
-<style lang="scss">
-// @import 'variables';
+<style lang="css">
 .files-list {
 }
 .files-list ul {
@@ -48,7 +47,7 @@ export default
   flex-grow: 1;
   display: flex;
   height: 16px;
-  // border: 1px solid $border-color;
+  /* // border: 1px solid $border-color; */
 }
 
 .files-list__progress-bar {

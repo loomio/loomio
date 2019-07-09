@@ -77,5 +77,3 @@ export default
         v-btn.md-primary.md-raised.auth-signin-form__submit(@click='sendLoginLink()')
           span(v-t="'auth_form.login_link'")
 </template>
-<style lang="scss">
-</style>

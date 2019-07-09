@@ -39,5 +39,3 @@ v-card.tags-modal
     v-spacer
     v-btn.tag-form__submit(color="primary" @click="updateTags()" v-t="'common.action.save'" :loading="loading")
 </template>
-<style lang="scss">
-</style>

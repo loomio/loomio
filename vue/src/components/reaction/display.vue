@@ -89,18 +89,20 @@ export default
           span {{ user.name }}
 </template>
 
-<style lang="scss">
+<style lang="css">
 .reactions-display__group {
   opacity: 0.7;
   display: flex;
   align-items: center;
   margin-right: 2px;
-  span {
+}
+
+.reactions-display__group span {
     font-size: 24px;
     line-height: 1;
     margin-bottom: -4px;
-  }
 }
+
 .reactions-display__emojis {
   display: flex;
 }

@@ -1,8 +1,3 @@
-<style lang="scss">
-.text-field-container {
-  max-width: 30px;
-}
-</style>
 <script lang="coffee">
 export default
   props:
@@ -15,11 +10,9 @@ export default
   poll-common-form-fields(:poll="poll")
   poll-common-form-options-field(:poll="poll")
   poll-common-closing-at-field(:poll="poll")
-  v-layout.poll-common-checkbox-option__text(align-center)
-    v-subheader(v-t="'poll_dot_vote_form.dots_per_person'")
-    help-bubble(helptext="poll_dot_vote_form.dots_per_person_helptext")
-    validation-errors(:subject="poll", field="dotsPerPerson")
-    div.text-field-container
-      v-text-field(type="number", min="1", v-model="poll.customFields.dots_per_person", single-line)
+  v-subheader(v-t="'poll_dot_vote_form.dots_per_person'")
+  help-bubble(helptext="poll_dot_vote_form.dots_per_person_helptext")
+  v-text-field(type="number", min="1", v-model="poll.customFields.dots_per_person", single-line)
+  validation-errors(:subject="poll", field="dotsPerPerson")
   poll-common-settings(:poll="poll")
 </template>

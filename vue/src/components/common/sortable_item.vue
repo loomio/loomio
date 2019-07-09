@@ -10,7 +10,7 @@ v-list-item.sortable-list-item
   slot
 </template>
 
-<style lang="scss">
+<style lang="css">
 .sortable-list-item {
   z-index: 999;
   font-family: Roboto, sans-serif !important

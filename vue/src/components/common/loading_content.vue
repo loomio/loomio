@@ -12,14 +12,14 @@ export default
   .loading-content__background-wrapper(v-for='(block, index) in blocks' :key='index')
     .loading-content__background(v-for='(line, index) in lines' :key='index')
 </template>
-<style lang="scss">
-// @import 'variables';
+<style lang="css">
+/* // @import 'variables';
 // @import 'lmo_animations';
 //
 // @keyframes loadingWipe {
 //   from { background-position: 100% 0; }
 //   to   { background-position: -100% 0; }
-// }
+// } */
 
 .loading-content__background-wrapper {
   padding: 8px 0;
@@ -27,7 +27,7 @@ export default
 
 .loading-content__background {
   animation: loadingWipe 2s ease-in-out infinite;
-  // background: $light-grey-on-white;
+  /* // background: $light-grey-on-white; */
   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
   background-size: 200% 100%;
   height: 12px;

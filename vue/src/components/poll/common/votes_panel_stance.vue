@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .poll-common-votes-panel__stance {
   display: flex;
   align-items: flex-start;

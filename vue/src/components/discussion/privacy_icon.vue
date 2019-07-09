@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .discussion-privacy-icon i {
   font-size: 16px;
   width: 16px;

@@ -1,9 +1,5 @@
-<style lang="scss">
-@import 'variables';
-
-.progress-chart {
-  background-color: #ccc;
-}
+<style lang="css">
+.progress-chart { background-color: #ccc; }
 </style>
 
 <script lang="coffee">

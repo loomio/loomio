@@ -120,28 +120,22 @@ div
     event-children(:parent-event='event')
 </template>
 
-<style lang="scss">
-@import 'variables';
+<style lang="css">
+/* @import 'variables';
 @import 'utilities';
-// @import 'mixins';
+// @import 'mixins'; */
 
-.thread-item__title {
-  strong {
+.thread-item__title strong {
     font-weight: normal;
-  }
-  a {
-    // color: var(--text-primary);
-  }
 }
+
 .thread-item {
   padding: 0px 16px 0 16px;
 }
 
-.thread-item {
-  .v-card__actions {
+.thread-item .v-card__actions {
     padding-left: 0;
     padding-right: 0;
-  }
 }
 
 .thread-item--focused {
@@ -150,11 +144,11 @@ div
 
 .thread-item--unread {
   padding-left: $cardPaddingSize - 2px;
-  border-left: 2px solid var(--v-primary-base);
-  &.thread-item--indent {
+  border-left: 2px solid var(--v-accent-base);
+}
+.thread-item--unread .thread-item--indent {
     padding-left: $cardPaddingSize + 40px;
-    // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding))
-  }
+    /* // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding)) */
 }
 
 .thread-item--indent {
@@ -177,7 +171,7 @@ div
 }
 
 .thread-item__footer {
-  // @include fontSmall();
+  /* // @include fontSmall(); */
   color: $grey-on-white;
   clear: both;
 }
@@ -197,12 +191,12 @@ div
 }
 
 .thread-item__action {
-  // @include lmoBtnLink;
+  /* // @include lmoBtnLink; */
   color: $link-color;
 }
 
 .thread-item__action--view-edits {
-  // @include lmoBtnLink;
+  /* // @include lmoBtnLink; */
   color: $grey-on-white;
 }
 

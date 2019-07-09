@@ -1,15 +1,3 @@
-<style lang="scss">
-@import 'variables';
-.poll-common-details-panel__started-by {
-  // @include fontSmall;
-  color: $grey-on-white;
-}
-
-.poll-common-details-panel__details {
-  margin-top: 10px;
-}
-</style>
-
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import Session        from '@/shared/services/session'

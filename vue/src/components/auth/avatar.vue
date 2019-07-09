@@ -25,5 +25,3 @@ export default
 .auth-avatar
   user-avatar.auth-avatar__avatar(:user='avatarUser', size='large', :no-link='true')
 </template>
-<style lang="scss">
-</style>

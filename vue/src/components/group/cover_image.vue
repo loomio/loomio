@@ -18,13 +18,10 @@ export default
          | &nbsp;
        span {{group.name}}
 </template>
-<style lang="scss">
-.group-cover-image__text {
-  text-shadow: 0px 0px 8px rgba(0,0,0,1);
-  span {
-    a {
-      color: #fff;
-    }
-  }
-}
+<style lang="sass">
+.group-cover-image__text
+  text-shadow: 0px 0px 8px rgba(0,0,0,1)
+  span
+    a
+      color: #fff
 </style>

@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .lmo-validation-error__message {
   position: relative;
   margin-top: -16px

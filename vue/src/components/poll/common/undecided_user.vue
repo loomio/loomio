@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .poll-common-undecided-user__name {
   margin-left: 12px;
 }

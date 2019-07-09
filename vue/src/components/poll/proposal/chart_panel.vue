@@ -1,41 +1,34 @@
-<style lang="scss">
-@import 'variables';
-// @import 'mixins';
-.poll-proposal-chart-panel__chart-container {
-  display: flex;
-}
+<style lang="sass">
+@import 'variables'
 
-.poll-proposal-chart-panel__label{
-  border-width: 2px;
-  border-bottom-style: solid;
-}
+.poll-proposal-chart-panel__chart-container
+  display: flex
 
-.poll-proposal-chart-panel__legend {
-  margin-left: 16px;
-  min-width: 80px;
-}
+.poll-proposal-chart-panel__label
+  border-width: 2px
+  border-bottom-style: solid
 
-.poll-proposal-chart-panel__legend td {
-  padding-bottom: 10px;
-}
+.poll-proposal-chart-panel__legend
+  margin-left: 16px
+  min-width: 80px
 
-.poll-proposal-chart-panel__label--agree {
-  border-color: $agree-color;
-}
+.poll-proposal-chart-panel__legend td
+  padding-bottom: 10px
 
-.poll-proposal-chart-panel__label--abstain{
-  border-color: $abstain-color;
-}
+.poll-proposal-chart-panel__label--agree
+  border-color: $agree-color
 
-.poll-proposal-chart-panel__label--disagree {
-  border-color: $disagree-color;
-}
+.poll-proposal-chart-panel__label--abstain
+  border-color: $abstain-color
 
-.poll-proposal-chart-panel__label--block{
-  border-color: $block-color;
-}
+.poll-proposal-chart-panel__label--disagree
+  border-color: $disagree-color
+
+.poll-proposal-chart-panel__label--block
+  border-color: $block-color
 
 </style>
+
 <script lang="coffee">
 import Records from '@/shared/services/records'
 

@@ -15,5 +15,3 @@ export default
     v-icon(small) mdi-tag
   v-chip.ml-1(small outlined color="accent" v-for="tag in tags" :key="tag") {{ tag }}
 </template>
-<style lang="scss">
-</style>

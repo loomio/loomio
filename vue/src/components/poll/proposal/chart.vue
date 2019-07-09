@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .poll-proposal-chart {
   border: 0;
   margin: 0;
@@ -9,7 +9,6 @@
    height: 100%;
    width: 100%;
 }
-
 </style>
 
 <script lang="coffee">

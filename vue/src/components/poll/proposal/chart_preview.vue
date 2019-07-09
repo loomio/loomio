@@ -1,6 +1,4 @@
-<style lang="scss">
-@import 'variables';
-
+<style lang="css">
 .poll-proposal-chart-preview {
   position: relative;
 }
@@ -40,7 +38,7 @@
 }
 
 .poll-proposal-chart-preview__stance--undecided {
-  color: $grey-on-white;
+  color: #ccc;
   font-weight: bold;
   font-size: 16px;
   margin-top: 2px;

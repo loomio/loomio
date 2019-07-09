@@ -45,5 +45,3 @@ export default
       label(v-t="'poll_common_calendar_invite.event_description'")
       v-textarea.md-input.lmo-primary-form-input.poll-common-calendar-invite__description(type='text', :placeholder="$t('poll_common_calendar_invite.event_description_placeholder')", v-model='outcome.customFields.event_description')
 </template>
-<style lang="scss">
-</style>

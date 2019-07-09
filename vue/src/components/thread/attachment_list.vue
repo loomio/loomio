@@ -22,7 +22,7 @@ export default
         |
         span.lmo-grey-on-white {{ prettifyBytes(attachment.byte_size) }}
 </template>
-<style lang="scss">
+<style lang="css">
 
 .attachment-list__item {
   display: flex;

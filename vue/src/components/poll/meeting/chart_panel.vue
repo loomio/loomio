@@ -75,9 +75,9 @@ export default
           span.poll-meeting-chart__bar(v-if="maybeVotersFor(option).length" :style="{'border-color': scoreColor(1), 'background-color': bgColor(1)}")
             user-avatar(size="24" :user="user" v-for="user in maybeVotersFor(option)" :key="user.id")
 </template>
-<style lang="scss">
+
+<style lang="css">
 .poll-meeting-chart__bar {
-  // padding: 3px 0px;
   margin: 4px 0px;
   display: flex;
   flex-direction: row;
@@ -85,9 +85,9 @@ export default
   height: 36px;
   border-radius: 2px;
   border: 1px solid;
+}
 
-  .user-avatar {
-    padding: 0px 4px;
-  }
+.poll-meeting-chart__bar .user-avatar {
+  padding: 0px 4px;
 }
 </style>

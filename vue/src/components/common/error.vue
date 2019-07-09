@@ -9,5 +9,3 @@ export default
     .error-page__page-not-found(v-t="'error_page.page_not_found'" v-if="error.status == 404")
     .error-page__internal-server-error(v-t="'error_page.internal_server_error'" v-if="error.status == 500")
 </template>
-<style lang="scss">
-</style>

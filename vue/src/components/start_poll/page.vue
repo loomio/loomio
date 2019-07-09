@@ -1,14 +1,3 @@
-<style lang="scss">
-@import 'variables';
-.start-poll-page {
-  margin-top: $cardPaddingSize;
-}
-
-.start-poll-page__main-content {
-  justify-content: center;
-}
-</style>
-
 <script lang="coffee">
 import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'

@@ -37,5 +37,3 @@ export default
         //- validation_errors(subject='user', field='email')
       v-btn(@click='submit()', v-t="'auth_form.link_accounts'")
 </template>
-<style lang="scss">
-</style>

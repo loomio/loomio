@@ -126,9 +126,3 @@ v-navigation-drawer.sidenav-left(app v-model="open")
     v-list-item-title
       a(href="/beta") beta {{version}}
 </template>
-
-<style lang="scss">
-.sidebar__user-dropdown .v-list-group__header {
-  // padding: 0;
-}
-</style>

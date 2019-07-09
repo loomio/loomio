@@ -151,27 +151,27 @@ v-container.lmo-main-container.polls-page
       .polls-page__load-more(v-if='canLoadMore')
         v-btn.md-primary(md-button='', v-t="'poll_common.load_more'", @click='loadMore()')
 </template>
-<style lang="scss">
+<style lang="css">
 .polls-page {
   margin-top: 16px;
 }
 
 .polls-page__heading a {
-  // color: $primary-text-color;
+  /* // color: $primary-text-color; */
 }
 
 .polls-page__filters {
   align-items: center;
 }
 
-// .polls-page__status-filter {
+/* // .polls-page__status-filter {
 //   margin-left: 30px;
 //   margin-right: 30px;
 // }
 //
 // .polls-page__group-filter {
 //   min-width: 200px;
-// }
+// } */
 
 .polls-page__icon {
   vertical-align: middle;
@@ -193,16 +193,16 @@ v-container.lmo-main-container.polls-page
   i {
     position: absolute;
     right: 0;
-    // color: $grey-on-white;
+    /* // color: $grey-on-white; */
   }
 }
 
-// @media (max-width: $small-max-px) {
+/* // @media (max-width: $small-max-px) {
 //   .polls-page__filters { flex-direction: column; }
 //   .polls-page__search { width: 100%; }
 //   .polls-page__status-filter,
 //   .polls-page__group-filter {
 //     width: 100%;
 //   }
-// }
+// } */
 </style>

@@ -137,7 +137,7 @@ export default
   mounted: ->
     @model.files = []
     @model.imageFiles = []
-    
+
   methods:
     setLinkUrl: (command) ->
       command({ href: @linkUrl })
@@ -358,191 +358,156 @@ div
     input(ref="filesField" type="file" name="files" multiple=true)
 </template>
 
-<style lang="scss">
-@import 'variables.scss';
+<style lang="sass">
 
-.menubar.is-hidden {
-  visibility: hidden;
-  opacity: 0;
-}
-.menubar.is-focused {
-  visibility: visible;
-  opacity: 1;
-  transition: visibility .1s .2s,opacity .1s .1s;
-}
-.menubar {
-  margin-bottom: 1rem;
-}
+.menubar.is-hidden
+  visibility: hidden
+  opacity: 0
+
+.menubar.is-focused
+  visibility: visible
+  opacity: 1
+  transition: visibility .1s .2s,opacity .1s .1s
+
+.menubar
+  margin-bottom: 1rem
 
 
-.lmo-markdown-wrapper {
-  word-wrap: break-word;
+.lmo-markdown-wrapper
+  word-wrap: break-word
 
-  p { margin-bottom: 8px;}
-  img { max-width: 100%; }
-  h1 {
-    // @include fontLarge;
-    margin: 1em 0 0.5em;
-    font-weight: 500;
-  }
-  h2 {
-    // @include fontMedLarge;
-    margin: 1em 0 0.5em;
-    font-weight: 500;
-  }
-  h3 {
-    margin: 1em 0 0.5em;
-    font-weight: 500;
-  }
-  ul{ padding: 0 0 10px 24px; }
-  ul li{ list-style: disc; }
-  pre {
-    overflow: auto;
-    padding: 10px;
-    // background: $modal-background-color;
-  }
-  blockquote{
-    font-style: italic;
-    font-size: inherit;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  table td {
-    padding: 6px 13px;
-    border: 1px solid #ddd;
-  }
-  thead td { font-weight: bold; }
-}
+  p
+    margin-bottom: 8px
+  img
+    max-width: 100%
+  h1
+    margin: 1em 0 0.5em
+    font-weight: 500
+  h2
+    margin: 1em 0 0.5em
+    font-weight: 500
+  h3
+    margin: 1em 0 0.5em
+    font-weight: 500
+  ul
+    padding: 0 0 10px 24px
+  ul li
+    list-style: disc
+  pre
+    overflow: auto
+    padding: 10px
 
-$color-black: #000;
-$color-white: #fff;
+  blockquote
+    font-style: italic
+    font-size: inherit
 
-progress {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #fff;
-  border: 1px solid #ccc;
-}
+  table
+    table-layout: fixed
+    width: 100%
+    margin-bottom: 10px
+  table td
+    padding: 6px 13px
+    border: 1px solid #ddd
+  thead td
+    font-weight: bold
 
-progress::-webkit-progress-bar {
-  background-color: #fff;
-  border: 1px solid #ccc;
-}
+progress
+  -webkit-appearance: none
+  appearance: none
+  background-color: #fff
+  border: 1px solid #ccc
 
-progress::-webkit-progress-value {
-  background-color: lightblue;
-  border: 0;
-  transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
-}
+progress::-webkit-progress-bar
+  background-color: #fff
+  border: 1px solid #ccc
 
-progress::-moz-progress-bar {
-  background-color: lightblue;
-  border: 0;
-  transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
-}
+progress::-webkit-progress-value
+  background-color: lightblue
+  border: 0
+  transition: width 120ms ease-out, opacity 60ms 60ms ease-in
 
-.menubar__dropdown {
-  .v-list__tile {
-    height: 40px;;
+progress::-moz-progress-bar
+  background-color: lightblue
+  border: 0
+  transition: width 120ms ease-out, opacity 60ms 60ms ease-in
 
-    .v-btn {
-      margin-left: 0;
-      margin-right: 0;
-      min-width: 0;
-      .v-icon {
-        font-size: 16px;
-        // color: #aaa;
-      }
-    }
-  }
-}
+.menubar__dropdown
+  .v-list__tile
+    height: 40px
 
-.menubar {
-  .v-btn--icon {
-    width: 32px;
-    height: 32px;
-  }
-  .v-btn {
-    min-width: 0;
-    margin-left: 0;
-    margin-right: 0;
-    .v-icon {
-      font-size: 16px;
-      // color: $grey-on-white;
-    }
-  }
-}
+    .v-btn
+      margin-left: 0
+      margin-right: 0
+      min-width: 0
+      .v-icon
+        font-size: 16px
 
-.ProseMirror {
-  border-bottom: 1px solid #999;
-  padding: 4px 0px;
-  margin: 4px 0px;
-  outline: none;
-}
+.menubar
+  .v-btn--icon
+    width: 32px
+    height: 32px
 
-.ProseMirror:focus {
-  border-bottom: 2px solid var(--v-primary-base);
-}
+  .v-btn
+    min-width: 0
+    margin-left: 0
+    margin-right: 0
+    .v-icon
+      font-size: 16px
 
-.ProseMirror img {
-  display: block;
-}
+.ProseMirror
+  border-bottom: 1px solid #999
+  padding: 4px 0px
+  margin: 4px 0px
+  outline: none
 
-.ProseMirror progress {
+.ProseMirror:focus
+  border-bottom: 2px solid var(--v-primary-base)
+
+.ProseMirror img
+  display: block
+
+.ProseMirror progress
   // display: block;
-}
 
-ul[data-type="todo_list"] {
-  padding-left: 0;
-}
-li[data-type="todo_item"] {
-  display: flex;
-  flex-direction: row;
-}
+ul[data-type="todo_list"]
+  padding-left: 0
+li[data-type="todo_item"]
+  display: flex
+  flex-direction: row
 
-.todo-checkbox {
-  border: 2px solid #000;
-  height: 0.9em;
-  width: 0.9em;
-  box-sizing: border-box;
-  margin-right: 10px;
-  margin-top: 0.3rem;
-  user-select: none;
-  -webkit-user-select: none;
-  border-radius: 0.2em;
-  background-color: transparent;
-  transition: 0.4s background;
-}
+.todo-checkbox
+  border: 2px solid #000
+  height: 0.9em
+  width: 0.9em
+  box-sizing: border-box
+  margin-right: 10px
+  margin-top: 0.3rem
+  user-select: none
+  -webkit-user-select: none
+  border-radius: 0.2em
+  background-color: transparent
+  transition: 0.4s background
 
-.ProseMirror .todo-checkbox {
-  cursor: pointer;
-}
+.ProseMirror .todo-checkbox
+  cursor: pointer
 
-.todo-content {
-  flex: 1;
-  > p:last-of-type {
-    margin-bottom: 0;
-  }
-  > ul[data-type="todo_list"] {
-    margin: .5rem 0;
-  }
-}
-li[data-done="true"] {
-  > .todo-content {
-    > p {
-      text-decoration: line-through;
-    }
-  }
-  > .todo-checkbox {
-    background-color: #000;
-  }
-}
-li[data-done="false"] {
-  text-decoration: none;
-}
+.todo-content
+  flex: 1
+  > p:last-of-type
+    margin-bottom: 0
+  > ul[data-type="todo_list"]
+    margin: .5rem 0
+
+li[data-done="true"]
+  > .todo-content
+    > p
+      text-decoration: line-through
+  > .todo-checkbox
+    background-color: #000
+
+li[data-done="false"]
+  text-decoration: none
+
 // .ProseMirror::after{
 //   bottom: -1px;
 //   content: "";
@@ -553,84 +518,67 @@ li[data-done="false"] {
 //   width: 100%;
 // }
 
-.editor p.is-empty:first-child::before {
-  content: attr(data-empty-text);
-  float: left;
-  color: #aaa;
-  pointer-events: none;
-  height: 0;
-  // font-style: italic;
-}
-.editor p.is-empty {
-  font-size: 16px;
-}
+.editor p.is-empty:first-child::before
+  content: attr(data-empty-text)
+  float: left
+  color: #aaa
+  pointer-events: none
+  height: 0
 
-.mention {
-  background: rgba($color-black, 0.1);
-  color: rgba($color-black, 0.6);
-  font-size: 0.8rem;
-  font-weight: bold;
-  border-radius: 5px;
-  padding: 0.2rem 0.5rem;
-  white-space: nowrap;
-}
+.editor p.is-empty
+  font-size: 16px
 
-.mention-suggestion {
-  color: rgba($color-black, 0.6);
-}
+.mention
+  background: rgba(#000, 0.1)
+  color: rgba(#000, 0.6)
+  font-size: 0.8rem
+  font-weight: bold
+  border-radius: 5px
+  padding: 0.2rem 0.5rem
+  white-space: nowrap
 
-.suggestion-list {
-  padding: 0.2rem;
-  border: 2px solid rgba($color-black, 0.1);
-  font-size: 0.8rem;
-  font-weight: bold;
-  &__no-results {
-    padding: 0.2rem 0.5rem;
-  }
-  &__item {
-    border-radius: 5px;
-    padding: 0.2rem 0.5rem;
-    margin-bottom: 0.2rem;
-    cursor: pointer;
-    &:last-child {
-      margin-bottom: 0;
-    }
-    &.is-selected,
-    &:hover {
-      background-color: rgba($color-white, 0.2);
-    }
-    &.is-empty {
-      opacity: 0.5;
-    }
-  }
-}
+.mention-suggestion
+  color: rgba(#000, 0.6)
 
-.tippy-tooltip.dark-theme {
-  background-color: $color-black;
-  padding: 0;
-  font-size: 1rem;
-  text-align: inherit;
-  color: $color-white;
-  border-radius: 5px;
-  .tippy-backdrop {
-    display: none;
-  }
-  .tippy-roundarrow {
-    fill: $color-black;
-  }
-  .tippy-popper[x-placement^=top] & .tippy-arrow {
-    border-top-color: $color-black;
-  }
-  .tippy-popper[x-placement^=bottom] & .tippy-arrow {
-    border-bottom-color: $color-black;
-  }
-  .tippy-popper[x-placement^=left] & .tippy-arrow {
-    border-left-color: $color-black;
-  }
-  .tippy-popper[x-placement^=right] & .tippy-arrow {
-    border-right-color: $color-black;
-  }
-}
+.suggestion-list
+  padding: 0.2rem
+  border: 2px solid rgba(#000, 0.1)
+  font-size: 0.8rem
+  font-weight: bold
+  &__no-results
+    padding: 0.2rem 0.5rem
+  &__item
+    border-radius: 5px
+    padding: 0.2rem 0.5rem
+    margin-bottom: 0.2rem
+    cursor: pointer
+    &:last-child
+      margin-bottom: 0
+    &.is-selected, &:hover
+      background-color: rgba(#fff, 0.2)
+    &.is-empty
+      opacity: 0.5
 
-input[type="file"] { display: none; }
+.tippy-tooltip.dark-theme
+  background-color: #000
+  padding: 0
+  font-size: 1rem
+  text-align: inherit
+  color: #fff
+  border-radius: 5px
+  .tippy-backdrop
+    display: none
+  .tippy-roundarrow
+    fill: #000
+  .tippy-popper[x-placement^=top] & .tippy-arrow
+    border-top-color: #000
+  .tippy-popper[x-placement^=bottom] & .tippy-arrow
+    border-bottom-color: #000
+  .tippy-popper[x-placement^=left] & .tippy-arrow
+    border-left-color: #000
+  .tippy-popper[x-placement^=right] & .tippy-arrow
+    border-right-color: #000
+
+input[type="file"]
+  display: none
 </style>

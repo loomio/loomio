@@ -21,15 +21,16 @@ export default
         div(v-t="'action_dock.' + action.name")
 </template>
 
-<style lang="scss">
-.action-dock {
-  display: flex;
-  align-items: center;
-  transition: opacity ease-in-out 0.25s;
-}
-.lmo-action-dock-wrapper {
-  .action-dock { opacity: 0.5; }
-  &:hover .action-dock { opacity: 1 }
-}
+<style lang="sass">
+.action-dock
+  display: flex
+  align-items: center
+  transition: opacity ease-in-out 0.25s
+
+.lmo-action-dock-wrapper
+  .action-dock
+    opacity: 0.5
+  &:hover .action-dock
+    opacity: 1
 
 </style>

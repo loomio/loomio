@@ -35,5 +35,3 @@ export default
     mid-dot
     a.poll-common-tool-tip__learn-more(v-t="'common.expand'" @click='show()')
 </template>
-<style lang="scss">
-</style>

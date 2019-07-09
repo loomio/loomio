@@ -31,5 +31,3 @@ v-card.poll-common-modal
   v-card-actions.lmo-slide-animation
     poll-common-reopen-form-actions.animated(:poll='poll' :close="close")
 </template>
-<style lang="scss">
-</style>

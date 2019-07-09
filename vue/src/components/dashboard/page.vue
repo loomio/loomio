@@ -111,7 +111,7 @@ v-container.dashboard-page
       .dashboard-page__footer(v-if='!loader.exhausted', in-view='$inview && loader.loadMore()', in-view-options='{debounce: 200}')  
       loading(v-show='loader.loading')
 </template>
-<style lang="scss">
+<style lang="css">
 .dashboard-page {
 }
 
@@ -142,10 +142,10 @@ v-container.dashboard-page
 }
 
 .dashboard-page__mute-image--large {
-  img {
-    /* max-width: $small-max-px; */
+  /* img {
+    max-width: $small-max-px;
     padding: 0px 40px 0 0;
-  }
+  } */
   text-align: center;
   margin: 0 0 10px;
 }

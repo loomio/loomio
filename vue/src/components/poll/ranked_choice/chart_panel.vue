@@ -39,11 +39,9 @@ export default
           poll-common-stance-choice(:stance-choice="option" hide-score)
         td {{option.score}}
 </template>
-<style lang="scss">
-.poll-common-ranked-choice-chart {
-  .min {
-    width: 1%;
-    white-space: nowrap;
-  }
-}
+<style lang="sass">
+.poll-common-ranked-choice-chart
+  .min
+    width: 1%
+    white-space: nowrap
 </style>

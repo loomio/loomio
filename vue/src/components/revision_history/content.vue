@@ -36,32 +36,28 @@ export default
     p.text-diff(v-if='version.changes.closing_at')
       ins(v-t='{ path: "revision_history_modal.closing_at_changed", args: { time: noticeValues("closing_at") }}')
 </template>
-<style lang="scss">
-@import 'variables';
-.revision-history-content {
-  margin-top: 16px;
-}
+<style lang="sass">
+.revision-history-content
+  margin-top: 16px
 
-.revision-history-modal__version {
-  max-height: 440px;
-  overflow: auto;
-}
+.revision-history-modal__version
+  max-height: 440px
+  overflow: auto
 
-.revision-history-content--header {
-  display: block;
-  margin-bottom: 16px;
-}
+.revision-history-content--header
+  display: block
+  margin-bottom: 16px
 
-.revision-history-content--markdown {
-  table.markdown { width: 100% }
-  tr:not(:last-child) td { padding-bottom: 16px; }
-  td {
-    width: 50%;
-    &:first-child {
-      border-right: 1px solid $border-color;
-      padding-right: 8px;
-    }
-    &:last-child { padding-left: 8px; }
-  }
-}
+.revision-history-content--markdown
+  table.markdown
+    width: 100%
+  tr:not(:last-child) td
+    padding-bottom: 16px
+  td
+    width: 50%
+    &:first-child
+      border-right: 1px solid #ccc
+      padding-right: 8px
+    &:last-child
+      padding-left: 8px
 </style>

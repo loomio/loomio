@@ -1,26 +1,3 @@
-<style lang="scss">
-@import 'variables';
-.md-dialog .md-virtual-repeat-container.md-autocomplete-suggestions-container {
-  z-index: $z-extreme !important;
-}
-
-.time-zone-select__change-button {
-  // text-transform: none !important;
-}
-
-.time-zone-select {
-  max-width: 4em;
-}
-.time-zone-select__selected {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-}
-.poll-meeting-form .time-zone-select__change {
-  padding: 0 0 0 16px;
-}
-</style>
-
 <script lang="coffee">
 import AppConfig   from '@/shared/services/app_config'
 import EventBus    from '@/shared/services/event_bus'

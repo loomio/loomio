@@ -43,5 +43,3 @@ export default
     .lmo-md-action
       v-btn.md-raised.md-primary(@click='submit()', :disabled='!session.code', v-t="'auth_form.sign_in'")
 </template>
-<style lang="scss">
-</style>

@@ -69,10 +69,10 @@ en:
   new_poll_types:
     proposal: Proposal
     count: Count
-    poll: Poll
+    poll: Choose
     score: Score
     ranked_choice: Rank
-    dot_vote: Budget
+    dot_vote: Allocate
     meeting: Time poll
 
   timezones:
@@ -1627,7 +1627,7 @@ en:
       <p>A pie chart gives an overview of the positions in the group, while the statements allow individual voices to be heard. </p>
       <p>Don't be discouraged if you don't see agreement at first, proposals are designed to surface issues that need resolving.</p>
       <p>With good participation a proposal is a powerful mandate to take action.</p>
-    tool_tip_collapsed: Confirm agreement, seek clarification, or check for objection
+    tool_tip_collapsed: Confirm agreement, seek clarification or check for objection
     start_header: Start proposal
     edit_header: Edit proposal
     tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Learn more</a>
@@ -1641,7 +1641,7 @@ en:
       <p>Use a poll to measure popularity or offer a choice.</p>
       <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
       <p>Everyone votes, and can enter a statement too if they like. Results are represented in a bar graph.</p>
-    tool_tip_collapsed: Measure popularity or offer a choice
+    tool_tip_collapsed: Choose from a list of options
     start_header: Start poll
     edit_header: Edit poll
     tip: Offer a choice between options
@@ -1673,15 +1673,15 @@ en:
       <p>Dot voting is a way to prioritise a list of options.</p>
       <p>Participants are given a limited number of ‘dots’ which they can allocate however they like among the options provided to represent their own preferences.</p>
       <p>The totals of the results are shown, as well as and the individual votes, so you can consider various points of view.</p>
-    tool_tip_collapsed: Allocate a budget to prioritise options
+    tool_tip_collapsed: Allocate a budget of points
     start_header: Start dot vote
     edit_header: Edit dot vote
-    tip: Allocate budget across options. (Dot voting)
+    tip: Allocate a budget of points
     title_placeholder: E.g. How should we allocate our budget?
     details_placeholder: Provide any clarifying details people might need to participate
     add_option_placeholder: Add option
-    dots_per_person: Dots per person
-    dots_per_person_helptext: The number of dots each participant will distribute
+    dots_per_person:  Points per person
+    dots_per_person_helptext: The total number of points each person is asked to allocate.
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
 
@@ -1692,7 +1692,7 @@ en:
     tool_tip_collapsed: Score options on a scale
     start_header: Start score poll
     edit_header: Edit score poll
-    tip: Score options on a scale
+    tip: Score each option on a sliding scale
     title_placeholder: E.g. Score candidates on scale of 0-9
     details_placeholder: Provide any clarifying details people might need to participate
     add_option_placeholder: Add option

@@ -30,5 +30,3 @@ export default
       span
     p.md-subhead.auth-email-form__or-enter-email(v-if='emailLogin', v-t="'auth_form.or_enter_your_email'")
 </template>
-<style lang="scss">
-</style>

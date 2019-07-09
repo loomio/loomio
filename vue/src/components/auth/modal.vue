@@ -39,5 +39,3 @@ v-card.auth-modal
   v-card-text
     auth-form(:user='user')
 </template>
-<style lang="scss">
-</style>

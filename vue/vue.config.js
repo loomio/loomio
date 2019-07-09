@@ -30,7 +30,8 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        includePaths: [ "src/css", "node_modules/" ]
+        includePaths: ["src/css", "node_modules/"],
+        data: `@import "main.scss"`,
       },
       postcss: {
         // options here will be passed to postcss-loader

@@ -20,5 +20,3 @@ export default
 .lmo-md-action
   v-btn.md-raised.md-primary.poll-common-reopen-form__submit(@click='submit()', v-t="'common.action.reopen'")
 </template>
-<style lang="scss">
-</style>

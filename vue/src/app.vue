@@ -78,14 +78,14 @@ v-app
   common-flash
 </template>
 
-<style lang="scss">
-$mdi-font-path: '/fonts/mdi';
-@import '@mdi/font/scss/materialdesignicons.scss';
-@import 'src/css/fonts.scss';
+<style lang="sass">
+$mdi-font-path: '/fonts/mdi'
+@import '@mdi/font/scss/materialdesignicons.scss'
 
-a { text-decoration: none; }
+a
+  text-decoration: none
 
-.v-container-max-width {
-  max-width: 800px;
-}
+.v-container-max-width
+  max-width: 800px
+
 </style>

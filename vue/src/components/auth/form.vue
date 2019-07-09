@@ -33,5 +33,3 @@ export default
         auth-signup-form.animated(v-if='user.authForm == "signUp"', :user='user')
   auth-complete.animated(v-if='loginComplete', :user='user')
 </template>
-<style lang="scss">
-</style>

@@ -1,8 +1,3 @@
-<style lang="scss">
-.start-discussion-page {
-  // margin-top: $cardPaddingSize;
-}
-</style>
 <script lang="coffee">
 import Records       from '@/shared/services/records'
 import ModalService  from '@/shared/services/modal_service'

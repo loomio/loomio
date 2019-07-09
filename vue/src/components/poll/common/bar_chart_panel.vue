@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .poll-common-bar-chart {
   display: flex;
   flex-direction: column;

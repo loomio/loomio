@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .user-page { margin-top: 16px; }
 .user-page__groups { margin-top: 24px; }
 .user-page__groups-title { margin: 0; }

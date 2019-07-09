@@ -130,35 +130,30 @@ div.context-panel#context(v-observe-visibility="{callback: viewed}")
     action-dock(:model='discussion', :actions='actions')
     context-panel-dropdown(:discussion="discussion")
 </template>
-<style lang="scss">
-@import 'variables';
-.context-panel__heading-pin {
-  margin-left: 4px;
-}
+<style lang="sass">
+@import 'variables'
+.context-panel__heading-pin
+  margin-left: 4px
 
-.context-panel {
-  .v-breadcrumbs {
-    padding: 0px 10px;
+.context-panel
+  border-bottom: 1px solid $border-color
+  .v-breadcrumbs
+    padding: 0px 10px
     // margin-left: 0;
-  }
-  border-bottom: 1px solid $border-color;
-}
 
-.context-panel__discussion-privacy i {
-  position: relative;
-  font-size: 14px;
-  top: 2px;
-}
+.context-panel__discussion-privacy i
+  position: relative
+  font-size: 14px
+  top: 2px
 
-.context-panel__details {
-  color: $grey-on-white;
-  align-items: center;
-  margin-bottom: 16px;
-}
+.context-panel__details
+  color: $grey-on-white
+  align-items: center
+  margin-bottom: 16px
 
-.context-panel__description {
-  margin-bottom: 16px;
-  p:last-of-type { margin-bottom: 0; }
-}
+.context-panel__description
+  margin-bottom: 16px
+  p:last-of-type
+    margin-bottom: 0
 
 </style>
