@@ -155,7 +155,7 @@ export default
   v-toolbar(flat align-center)
     v-toolbar-items
       v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
-      v-select(solo flat multiple chips v-model='selectedFilters' :items='filters' :label="$t('common.action.filter')" item-text="name")
+      v-select(solo flat multiple chips deletable-chips v-model='selectedFilters' :items='filters' :label="$t('common.action.filter')" item-text="name")
     //- v-switch.discussions-panel__toggle-closed(v-model="showClosed" :label="$t('discussions_panel.closed')")
     //- v-switch.discussions-panel__toggle-include-subgroups(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
     //- v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
