@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_045352) do
+ActiveRecord::Schema.define(version: 2019_07_09_054110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -260,12 +260,14 @@ ActiveRecord::Schema.define(version: 2019_07_09_045352) do
     t.integer "position", default: 0, null: false
     t.integer "child_count", default: 0, null: false
     t.integer "depth", default: 0, null: false
+    t.boolean "pinned", default: false, null: false
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["discussion_id"], name: "index_events_on_discussion_id"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id"
+    t.index ["pinned"], name: "index_events_on_pinned_true", where: "(pinned IS TRUE)"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 

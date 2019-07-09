@@ -5,6 +5,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import PollModalMixin from '@/mixins/poll_modal'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
 import Records           from '@/shared/services/records'
+import Flash           from '@/shared/services/flash'
 import RevisionHistoryModalMixin from '@/mixins/revision_history_modal'
 
 export default
@@ -28,7 +29,19 @@ export default
     canDeletePoll: ->
       AbilityService.canDeletePoll(@poll)
 
+    canDeletePoll: ->
+      AbilityService.canDeletePoll(@poll)
+      name: 'pin_event'
+      icon: 'mdi-pin'
+
+    canPinPoll: -> AbilityService.canPinEvent(@poll.createdEvent())
+    canUnpinPoll: -> AbilityService.canUnpinEvent(@poll.createdEvent())
+
+
   methods:
+    pinPoll: -> @poll.createdEvent().pin().then => Flash.success('activity_card.event_pinned')
+    unpinPoll: -> @poll.createdEvent().unpin().then => Flash.success('activity_card.event_unpinned')
+
     exportPoll: ->
       # exportPath = LmoUrlService.poll(@poll, {}, action:'export', absolute:true)
       # LmoUrlService.goTo(exportPath,true)
@@ -68,6 +81,10 @@ v-menu.poll-actions-dropdown
   v-list
     v-list-item.poll-actions-dropdown__edit(v-if="canEditPoll", @click="editPoll()")
       span(v-t="'common.action.edit'")
+    v-list-item.poll-actions-dropdown__edit(v-if="canPinPoll", @click="pinPoll()")
+      span(v-t="'action_dock.pin_event'")
+    v-list-item.poll-actions-dropdown__edit(v-if="canUnpinPoll", @click="unpinPoll()")
+      span(v-t="'action_dock.unpin_event'")
     v-list-item.poll-actions-dropdown__edit(@click="openRevisionHistoryModal(poll)")
       span(v-t="'action_dock.show_history'")
     v-list-item.poll-actions-dropdown__close(v-if="canClosePoll", @click="closePoll()")

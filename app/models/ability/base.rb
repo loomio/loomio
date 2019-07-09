@@ -20,6 +20,7 @@ module Ability
     prepend Ability::User
     prepend Ability::Tag
     prepend Ability::DiscussionTag
+    prepend Ability::Event
 
 
     def initialize(user)

@@ -5,7 +5,7 @@ import Records from '@/shared/services/records'
 import WatchRecords from '@/mixins/watch_records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
-import { debounce } from 'lodash'
+import { debounce, truncate } from 'lodash'
 
 export default
   mixins: [UrlFor, WatchRecords, AnnouncementModalMixin, ChangeVolumeModalMixin]
@@ -32,7 +32,7 @@ export default
       Records.events.fetch
         params:
           discussion_id: @discussion.id
-          kind: ['poll_created', 'outcome_created']
+          pinned: true
           per: 200
 
       @watchRecords
@@ -42,7 +42,7 @@ export default
           return unless @discussion
           @keyEvents = records.events.collection.chain()
                         .find({
-                          kind: {$in: ['poll_created']}
+                          pinned: true
                           discussionId: @discussion.id
                         })
                         .simplesort('sequenceId')
@@ -60,7 +60,7 @@ export default
       @$vuetify.goTo(selector)
 
     title: (model) ->
-      model.title || model.statement
+      truncate (model.title || model.statement || model.body).replace(///<[^>]*>?///gm, ''), 50
 
     refreshThread: debounce ->
       EventBus.$emit('updateThreadPosition', 0 - @requestedPosition)
@@ -95,7 +95,8 @@ v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakp
         v-list-item-title(v-t="{path: 'activity_card.unread', args: {count: discussion.unreadItemsCount()}}")
       v-list-item(v-for="event in keyEvents" :key="event.id" :to="urlFor(discussion)+'/'+event.sequenceId")
         v-list-item-avatar(:size="20")
-          poll-common-chart-preview(:poll='event.model()' :size="20" :showMyStance="false")
+          user-avatar(v-if="event.kind == 'new_comment'" :user="event.actor()" :size="20")
+          poll-common-chart-preview(v-if="event.kind == 'poll_created'" :poll='event.model()' :size="20" :showMyStance="false")
         v-list-item-title
           span {{title(event.model())}}
       v-list-item(:to="urlFor(discussion)+'/'+discussion.lastSequenceId()")

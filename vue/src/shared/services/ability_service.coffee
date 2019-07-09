@@ -76,6 +76,12 @@ export default new class AbilityService
   canUnpinThread: (thread) ->
     !thread.closedAt && thread.pinned && @canAdministerGroup(thread.group())
 
+  canPinEvent: (event) ->
+    !event.pinned && @canEditThread(event.discussion())
+
+  canUnpinEvent: (event) ->
+    event.pinned && @canEditThread(event.discussion())
+
   canMoveThread: (thread) ->
     @canAdministerGroup(thread.group()) or
     Session.user().isAuthorOf(thread)

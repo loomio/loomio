@@ -22,6 +22,9 @@ export default class EventModel extends BaseModel
     @belongsTo 'discussion'
     @hasMany  'notifications'
 
+  defaultValues: ->
+    pinned: false
+
   parentOrSelf: ->
     if @parentId
       @parent()
@@ -58,6 +61,9 @@ export default class EventModel extends BaseModel
 
   removeFromThread: =>
     @remote.patchMember(@id, 'remove_from_thread').then => @remove()
+
+  pin: -> @remote.patchMember(@id, 'pin')
+  unpin: -> @remote.patchMember(@id, 'unpin')
 
   canFork: ->
     @kind == 'new_comment' && @isSurface()

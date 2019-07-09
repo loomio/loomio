@@ -13,6 +13,25 @@ describe API::EventsController do
     group.add_member! another_user
   end
 
+  describe 'pinning' do
+    before { sign_in user }
+
+    it 'pin event' do
+      DiscussionService.create(discussion: discussion, actor: user)
+      event = CommentService.create(comment: create(:comment, discussion: discussion), actor: user)
+      patch :pin, params: {id: event.id}
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+      expect(json['events'].map { |d| d['id'] }).to include event.id
+      expect(event.reload.pinned).to be true
+    end
+
+    context 'unpin event' do
+    end
+    context 'not permitted' do
+    end
+  end
+
   describe 'index' do
 
     before { sign_in user }

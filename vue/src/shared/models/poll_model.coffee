@@ -111,6 +111,9 @@ export default class PollModel extends BaseModel
   outcome: ->
     @recordStore.outcomes.find(pollId: @id, latest: true)[0]
 
+  createdEvent: ->
+    @recordStore.events.find(eventableId: @id, kind: 'poll_created')[0]
+
   clearStaleStances: ->
     existing = []
     _.each @latestStances('-createdAt'), (stance) ->

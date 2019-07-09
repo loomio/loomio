@@ -7,6 +7,7 @@ class Events::PollCreated < Event
     super poll,
           user: actor,
           parent: poll.parent_event,
-          discussion: poll.discussion
+          discussion: poll.discussion,
+          pinned: true
   end
 end

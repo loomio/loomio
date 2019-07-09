@@ -90,6 +90,16 @@ export default
       icon: 'mdi-delete'
       canPerform: => AbilityService.canDeleteComment(@eventable)
       perform:    => @openConfirmModal(@confirmOpts)
+    ,
+      name: 'pin_event'
+      icon: 'mdi-pin'
+      canPerform: => AbilityService.canPinEvent(@event)
+      perform: => @event.pin().then => Flash.success('activity_card.event_pinned')
+    ,
+      name: 'unpin_event'
+      icon: 'mdi-pin-off'
+      canPerform: => AbilityService.canUnpinEvent(@event)
+      perform: => @event.unpin().then => Flash.success('activity_card.event_unpinned')
     ]
 
 </script>

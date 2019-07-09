@@ -1,6 +1,6 @@
 class Events::BaseSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :sequence_id, :position, :depth, :child_count, :kind, :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields
+  attributes :id, :sequence_id, :position, :depth, :child_count, :kind, :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields, :pinned
 
   has_one :actor, serializer: UserSerializer, root: :users
   has_one :eventable, polymorphic: true

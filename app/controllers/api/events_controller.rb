@@ -12,6 +12,20 @@ class API::EventsController < API::RestfulController
     respond_with_resource
   end
 
+  def pin
+    @event = Event.find(params[:id])
+    current_user.ability.authorize!(:pin, @event)
+    @event.update(pinned: true)
+    render json: EventCollection.new(@event).serialize!(default_scope)
+  end
+
+  def unpin
+    @event = Event.find(params[:id])
+    current_user.ability.authorize!(:unpin, @event)
+    @event.update(pinned: false)
+    render json: EventCollection.new(@event).serialize!(default_scope)
+  end
+
   private
 
   def default_scope
@@ -55,6 +69,10 @@ class API::EventsController < API::RestfulController
                 includes(:user, :discussion, :eventable, parent: [:user, :eventable])
 
     records = records.where("#{order} >= ?", from)
+
+    if params[:pinned] == 'true'
+      records = records.where(pinned: true)
+    end
 
     if params[:kind]
       records = records.where("kind in (?)", params[:kind].split(','))
