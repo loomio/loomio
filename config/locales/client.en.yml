@@ -1075,7 +1075,7 @@ en:
     learn_more: Learn more about email settings...
 
   thread_preview:
-    replies_count: "{{count} replies"
+    replies_count: "{{count}} replies"
     unread_count: "{{count}} unread"
   dashboard_page:
     aria_label: 'Dashboard'
