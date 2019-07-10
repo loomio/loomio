@@ -127,7 +127,7 @@ export default
         find(depth: 1).
         find(position: {$between: [min, max]}).data().length
 
-      console.log "haveAllEventsBetween", length == expectedLength, min, max
+      # console.log "haveAllEventsBetween", length == expectedLength, min, max
       length == expectedLength
 
   watch:
