@@ -24,6 +24,12 @@ export default (callback) ->
               attachProps: true
           ]
 
+      ['shortcut icon', 'apple-touch-icon'].forEach (name) =>
+        link = document.createElement('link')
+        link.rel = name
+        link.href = AppConfig.theme.icon_src
+        document.getElementsByTagName('head')[0].appendChild(link)
+
       forEach Records, (recordInterface, k) ->
         model = Object.getPrototypeOf(recordInterface).model
         if model && AppConfig.permittedParams[model.singular]

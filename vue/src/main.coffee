@@ -9,7 +9,9 @@ import marked from '@/marked'
 import '@/observe_visibility'
 import './registerServiceWorker'
 import { initLiveUpdate } from '@/shared/helpers/cable'
+import { pick } from 'lodash'
 
+import * as Sentry from '@sentry/browser';
 import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
 
@@ -24,14 +26,12 @@ exportGlobals()
 
 boot ->
   Session.fetch().then (data) ->
-
-    ['shortcut icon', 'apple-touch-icon'].forEach (name) =>
-      link = document.createElement('link')
-      link.rel = name
-      link.href = AppConfig.theme.icon_src
-      document.getElementsByTagName('head')[0].appendChild(link)
-
     Session.apply(data)
+
+    if AppConfig.sentry_dsn
+      Sentry.configureScope (scope) =>
+        scope.setUser pick(Session.user(), ['id', 'email', 'username'])
+
     initLiveUpdate()
 
     new Vue(
