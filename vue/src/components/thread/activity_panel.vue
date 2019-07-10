@@ -1,4 +1,5 @@
 <script lang="coffee">
+import Vue from 'vue'
 import AppConfig                from '@/shared/services/app_config'
 import EventBus                 from '@/shared/services/event_bus'
 import RecordLoader             from '@/shared/services/record_loader'
@@ -70,8 +71,17 @@ export default
             # from_unread: if !commentId && !sequenceId then 1 else null
             per: @pageSize
         @loader.fetchRecords().then =>
+          waitFor = (selector, fn) ->
+            if document.querySelector(selector)
+              fn()
+            else
+              setTimeout ->
+                waitFor(selector, fn)
+              , 50
+
           event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
-          setTimeout => @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
+          waitFor "#sequence-#{event.sequenceId || 0}", =>
+            @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
 
       EventBus.$on 'threadPositionRequest', (position) => @positionRequested(position)
 
