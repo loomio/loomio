@@ -15,7 +15,7 @@ export default class AnnouncementModel extends BaseModel
       kind: @kind
       recipients:
         user_ids: compact map @recipients, (r) -> r.id    if isNumber(r.id)
-        emails:   compact map @recipients, (r) -> r.email if r.email
+        emails:   compact map @recipients, (r) -> r.email if r.email and !isNumber(r.email)
 
 
   modelName: ->

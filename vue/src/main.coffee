@@ -8,6 +8,7 @@ import moment from 'moment-timezone'
 import marked from '@/marked'
 import '@/observe_visibility'
 import './registerServiceWorker'
+import { initLiveUpdate } from '@/shared/helpers/cable'
 
 import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
@@ -31,6 +32,7 @@ boot ->
       document.getElementsByTagName('head')[0].appendChild(link)
 
     Session.apply(data)
+    initLiveUpdate()
 
     new Vue(
       render: (h) -> h(app)
