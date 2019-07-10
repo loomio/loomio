@@ -56,8 +56,6 @@ export default
           name: =>
             @comment.parent().authorName() if @comment.isReply()
         successCallback: (data) =>
-          if @comment.isReply()
-            @$vuetify.goTo("#sequence-#{last(data.events).sequence_id}")
           @$emit('comment-submitted')
           @reset()
           @init()
