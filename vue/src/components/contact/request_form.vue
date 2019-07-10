@@ -14,8 +14,7 @@ export default
     @submit = submitForm @, @contactRequest,
       flashSuccess: "contact_request_form.email_sent"
       flashOptions: {name: @user.name}
-      successCallback: ->
-        EventBus.$emit '$close'
+      successCallback: => @close()
 </script>
 <template lang="pug">
 v-card.contact-user-modal
