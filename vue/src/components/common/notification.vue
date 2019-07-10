@@ -1,5 +1,6 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
+import { colonToUnicode } from '@/shared/helpers/emojis'
 
 export default
   props:
@@ -13,11 +14,21 @@ export default
         avatarKind:     'initials'
 
   computed:
+    path: ->
+      if @notification.kind == "reaction_created"
+        "notifications.reaction_created_vue"
+      else
+        "notifications.#{@notification.kind}"
+
+    args: ->
+      name: @notification.translationValues.name
+      reaction: colonToUnicode(@notification.translationValues.reaction) if @notification.kind == "reaction_created"
+      title: @notification.translationValues.title
+      poll_type: @notification.translationValues.poll_type
+      model: @notification.translationValues.model
+
     actor: ->
       @notification.actor() || @membershipRequestActor()
-
-    contentFor: ->
-      @$t("notifications.#{@notification.kind}", @notification.translationValues)
 
 </script>
 
@@ -26,9 +37,8 @@ router-link(:to="'/'+notification.url")
   v-layout.notification.body-2(align-center :class="{'notification--unread': unread}")
     .notification__avatar.ma-2
       user-avatar(v-if="actor", :user="actor", size="thirtysix")
-      //- .thread-item__proposal-icon{ng-if: "!actor()"}
     .notification__content.text--primary.py-2.px-1
-      span(v-html="contentFor")
+      span(v-html="$t(path, args)")
       space
       span(aria-hidden='true') ·
       space

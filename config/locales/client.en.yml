@@ -423,6 +423,7 @@ en:
     new_comment: "<strong>{{name}}</strong> commented on <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{title}}</strong>"
     reaction_created: "<strong>{{name}}</strong> reacted <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> to your {{model}}<strong>{{title}}</strong>"
+    reaction_created_vue: "<strong>{{name}}</strong> reacted {{reaction}} to your {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> is waiting on you to participate in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{title}}</strong>"
