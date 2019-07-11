@@ -21,13 +21,13 @@ export default
 <style lang="sass">
 .action-dock
   display: flex
-  align-items: center
+.action-dock, .action-menu
   transition: opacity ease-in-out 0.25s
 
 .lmo-action-dock-wrapper
-  .action-dock
-    opacity: 0.5
-  &:hover .action-dock
+  .action-dock, .action-menu
+    opacity: 0.3
+  &:hover .action-dock, &:hover .action-menu
     opacity: 1
 
 </style>

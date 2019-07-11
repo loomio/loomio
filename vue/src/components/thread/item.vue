@@ -37,16 +37,10 @@ export default
     debug: ->
       window.Loomio.debug
 
-    removeEvent: -> submitForm @, @event,
-      submitFn: @event.removeFromThread
-      flashSuccess: 'thread_item.event_removed'
-
     camelCase: camelCase
 
   computed:
     iconSize: -> if @isNested then 36 else 48
-    canRemoveEvent: ->
-      AbilityService.canRemoveEventFromThread(@event)
 
     isNested: -> @event.isNested()
 
@@ -113,8 +107,8 @@ div
             mid-dot
             router-link.thread-item__link(:to='link')
               time-ago.timeago--inline(:date='event.createdAt')
-          button.md-button--tiny(v-if='canRemoveEvent', @click='removeEvent()')
-            i.mdi.mdi-delete
+          v-spacer
+          slot(name="top-right")
         slot
   template(v-if='!collapsed && event.isSurface()')
     event-children(:parent-event='event')

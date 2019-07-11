@@ -19,10 +19,10 @@ export default
 
   computed:
     dockActions: ->
-      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', 'edit_thread']
+      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', "edit_tags"]
 
     menuActions: ->
-      pick ThreadService.actions(@discussion, @), ['show_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+      pick ThreadService.actions(@discussion, @), ['edit_thread', 'show_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -43,11 +43,13 @@ export default
 </script>
 
 <template lang="pug">
-div.context-panel#context(v-observe-visibility="{callback: viewed, once: true}")
+.context-panel.lmo-action-dock-wrapper.mb-3#context(v-observe-visibility="{callback: viewed, once: true}")
   v-layout(align-center mx-2 pt-2)
     v-breadcrumbs(:items="groups" divider=">")
-    v-spacer
     tags-display(:discussion="discussion")
+    v-spacer
+    action-dock(:model='discussion' :actions='dockActions')
+    action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
 
   h1.headline.context-panel__heading.px-3#sequence-0
     span(v-if='!discussion.translation') {{discussion.title}}
@@ -84,8 +86,7 @@ div.context-panel#context(v-observe-visibility="{callback: viewed, once: true}")
   v-card-actions
     v-spacer
     reaction-display.ml-2(:model="discussion")
-    action-dock(:model='discussion' :actions='dockActions')
-    action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
+  v-divider
 </template>
 <style lang="sass">
 @import 'variables'
@@ -93,7 +94,6 @@ div.context-panel#context(v-observe-visibility="{callback: viewed, once: true}")
   margin-left: 4px
 
 .context-panel
-  border-bottom: 2px solid $border-color
   .v-breadcrumbs
     padding: 0px 10px
     // margin-left: 0;

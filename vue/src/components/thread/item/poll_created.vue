@@ -1,5 +1,6 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
+import PollService    from '@/shared/services/poll_service'
 import AbilityService from '@/shared/services/ability_service'
 import PollModalMixin from '@/mixins/poll_modal'
 import EventBus       from '@/shared/services/event_bus'
@@ -36,12 +37,8 @@ export default
     showResults: ->
       @buttonPressed || @myLastStance || @poll.isClosed()
 
-    pollHasActions: ->
-      AbilityService.canEditPoll(@poll)  ||
-      AbilityService.canClosePoll(@poll) ||
-      AbilityService.canDeletePoll(@poll)||
-      AbilityService.canExportPoll(@poll)
-
+    actions: ->
+      PollService.actions(@poll, @)
 
   mounted: ->
     listenForTranslations @
@@ -49,11 +46,12 @@ export default
 
 <template lang="pug">
 thread-item.poll-created(:event="event" :event-window="eventWindow")
+  template(v-slot:top-right)
+    action-menu(:actions="actions")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline
       span(v-if='!poll.translation') {{poll.title}}
       translation(v-if="poll.translation" :model='poll', :field='title')
-    poll-common-actions-dropdown(:poll="poll", v-if="pollHasActions")
   poll-common-closing-at(:poll='poll')
   poll-common-set-outcome-panel(:poll='poll')
   poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')

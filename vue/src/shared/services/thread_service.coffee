@@ -12,10 +12,19 @@ export default new class ThreadService
     react:
       canPerform: -> AbilityService.canAddComment(discussion)
 
+    edit_tags:
+      icon: 'mdi-tag'
+      name: 'loomio_tags.card_title'
+      canPerform: -> AbilityService.canEditThread(discussion)
+      perform: ->
+        openModal
+          component: 'TagsModal',
+          props: { discussion: discussion }
+
     add_comment:
       icon: 'mdi-reply'
       canPerform: -> AbilityService.canAddComment(discussion)
-      perform:    -> vm.$vuetify.goTo('#add-comment')
+      perform: -> vm.$vuetify.goTo('#add-comment')
 
     show_history:
       icon: 'mdi-history'
@@ -29,7 +38,7 @@ export default new class ThreadService
     edit_thread:
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread(discussion)
-      perform:    ->
+      perform: ->
         openModal
           component: 'DiscussionForm',
           props:
@@ -39,7 +48,7 @@ export default new class ThreadService
       icon: 'mdi-translate'
       menu: true
       canPerform: -> AbilityService.canTranslate(discussion)
-      perform:    -> discussion.translate(Session.user().locale)
+      perform: -> discussion.translate(Session.user().locale)
 
     close_thread:
       menu: true
@@ -69,18 +78,18 @@ export default new class ThreadService
             confirm:
               submit: discussion.destroy
               text:
-                title:    'delete_thread_form.title'
+                title: 'delete_thread_form.title'
                 helptext: 'delete_thread_form.body'
-                submit:   'delete_thread_form.confirm'
-                flash:    'delete_thread_form.messages.success'
-              redirect:   LmoUrlService.group discussion.group()
+                submit: 'delete_thread_form.confirm'
+                flash: 'delete_thread_form.messages.success'
+              redirect: LmoUrlService.group discussion.group()
 
   mute: (thread, override = false) ->
     if !Session.user().hasExperienced("mutingThread") and !override
       Records.users.saveExperience("mutingThread")
       Records.users.updateProfile(Session.user()).then ->
         ConfirmModalMixin.methods.openConfirmModal(
-          submit: => thread.saveVolume('mute', true)
+          submit: -> thread.saveVolume('mute', true)
           text:
             title: 'mute_explanation_modal.mute_thread'
             flash: 'discussion.volume.mute_message'
@@ -106,9 +115,9 @@ export default new class ThreadService
         ConfirmModalMixin.methods.openConfirmModal(
           submit: thread.close
           text:
-            title:    'close_explanation_modal.close_thread'
+            title: 'close_explanation_modal.close_thread'
             fragment: 'close_thread'
-            flash:    'discussion.closed.closed'
+            flash: 'discussion.closed.closed'
         )
     else
       thread.close().then =>
@@ -124,10 +133,10 @@ export default new class ThreadService
       ConfirmModalMixin.methods.openConfirmModal(
         submit: => @dismiss(thread)
         text:
-          title:    'dismiss_explanation_modal.dismiss_thread'
+          title: 'dismiss_explanation_modal.dismiss_thread'
           helptext: 'dismiss_explanation_modal.body_html'
-          submit:   'dismiss_explanation_modal.dismiss_thread'
-          flash:    'dashboard_page.thread_dismissed'
+          submit: 'dismiss_explanation_modal.dismiss_thread'
+          flash: 'dashboard_page.thread_dismissed'
       )
     else
       thread.dismiss().then =>
@@ -141,10 +150,10 @@ export default new class ThreadService
     if !Session.user().hasExperienced("pinningThread")
       Records.users.saveExperience("pinningThread").then ->
         ConfirmModalMixin.methods.openConfirmModal(
-          submit:  thread.savePin
+          submit: thread.savePin
           text:
-            title:    'pin_thread_modal.title'
-            flash:    'discussion.pin.pinned'
+            title: 'pin_thread_modal.title'
+            flash: 'discussion.pin.pinned'
             fragment: 'pin_thread'
         )
     else

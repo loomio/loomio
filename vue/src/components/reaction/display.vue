@@ -91,7 +91,7 @@ export default
 
 <style lang="css">
 .reactions-display__group {
-  opacity: 0.7;
+  opacity: 0.8;
   display: flex;
   align-items: center;
   margin-right: 2px;
