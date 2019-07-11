@@ -44,7 +44,7 @@ export default
 
 <template lang="pug">
 .context-panel.lmo-action-dock-wrapper.mb-3#context(v-observe-visibility="{callback: viewed, once: true}")
-  v-layout(align-center mx-2 pt-2)
+  v-layout(align-center mx-2 pt-2 wrap)
     v-breadcrumbs(:items="groups" divider=">")
     tags-display(:discussion="discussion")
     v-spacer
@@ -59,7 +59,7 @@ export default
 
   v-card-text
     .context-panel__details(align-center)
-      user-avatar.mr-2(:user='discussion.author()', size='small')
+      user-avatar.mr-2(:user='discussion.author()', :size='32')
       span
         strong {{discussion.authorName()}}
         mid-dot

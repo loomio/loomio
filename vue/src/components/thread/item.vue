@@ -40,7 +40,7 @@ export default
     camelCase: camelCase
 
   computed:
-    iconSize: -> if @isNested then 36 else 48
+    iconSize: -> if @isNested then 32 else 48
 
     isNested: -> @event.isNested()
 
@@ -95,8 +95,8 @@ div
           user-avatar(v-if='!hover && !event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
           v-checkbox.thread-item__is-forking(v-if="!hover && event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
-        v-layout
-          h3.thread-item__title.body-2.my-1.d-flex.align-center.wrap(:id="'event-' + event.id")
+        v-layout.my-1.align-center.wrap
+          h3.thread-item__title.body-2(:id="'event-' + event.id")
             //- div
               | sid {{event.sequenceId}}
               | pos {{event.position}}
@@ -104,10 +104,13 @@ div
               | depth: {{event.depth}}
             slot(name="headline")
               span(v-html='headline')
-            mid-dot
-            router-link.thread-item__link(:to='link')
-              time-ago.timeago--inline(:date='event.createdAt')
+            //- mid-dot
+            //- v-spacer
           v-spacer
+          .thread-item__link.grey--text.body-2.action-menu
+            router-link.grey--text(:to='link')
+              time-ago(:date='event.createdAt')
+            space
           slot(name="top-right")
         slot
   template(v-if='!collapsed && event.isSurface()')
@@ -115,12 +118,8 @@ div
 </template>
 
 <style lang="css">
-/* @import 'variables';
-@import 'utilities';
-// @import 'mixins'; */
-
 .thread-item__title strong {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .thread-item {
