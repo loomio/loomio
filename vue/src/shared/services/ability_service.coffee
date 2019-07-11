@@ -65,10 +65,10 @@ export default new class AbilityService
     event.kind == 'discussion_edited' && @canAdministerDiscussion(event.discussion())
 
   canCloseThread: (thread) ->
-    @canAdministerDiscussion(thread)
+    !thread.closedAt && @canAdministerDiscussion(thread)
 
   canReopenThread: (thread) ->
-    @canAdministerDiscussion(thread)
+    thread.closedAt && @canAdministerDiscussion(thread)
 
   canPinThread: (thread) ->
     !thread.closedAt && !thread.pinned && @canAdministerGroup(thread.group())

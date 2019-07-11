@@ -1,9 +1,80 @@
 import Session       from '@/shared/services/session'
 import Records       from '@/shared/services/records'
-import Flash  from '@/shared/services/flash'
-import ConfirmModalMixin from '@/mixins/confirm_modal'
+import Flash         from '@/shared/services/flash'
+import EventBus       from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
+import openModal      from '@/shared/helpers/open_modal'
+
 
 export default new class ThreadService
+  actions: (discussion, vm) ->
+    react:
+      canPerform: -> AbilityService.canAddComment(discussion)
+
+    add_comment:
+      icon: 'mdi-reply'
+      canPerform: -> AbilityService.canAddComment(discussion)
+      perform:    -> vm.$vuetify.goTo('#add-comment')
+
+    show_history:
+      icon: 'mdi-history'
+      canPerform: -> discussion.edited()
+      perform: ->
+        openModal
+          component: 'RevisionHistoryModal'
+          props:
+            model: discussion
+
+    edit_thread:
+      icon: 'mdi-pencil'
+      canPerform: -> AbilityService.canEditThread(discussion)
+      perform:    ->
+        openModal
+          component: 'DiscussionForm',
+          props:
+            discussion: discussion.clone()
+
+    translate_thread:
+      icon: 'mdi-translate'
+      menu: true
+      canPerform: -> AbilityService.canTranslate(discussion)
+      perform:    -> discussion.translate(Session.user().locale)
+
+    close_thread:
+      menu: true
+      perform: => @close(discussion)
+      canPerform: -> !discussion.closedAt
+
+    reopen_thread:
+      menu: true
+      perform: => @reopen(discussion)
+      canPerform: -> AbilityService.canReopenThread(discussion)
+
+    move_thread:
+      menu: true
+      perform: ->
+        openModal
+          component: 'MoveThreadForm'
+          props: { discussion: discussion.clone() }
+      canPerform: -> AbilityService.canMoveThread(discussion)
+
+    delete_thread:
+      menu: true
+      canPerform: -> AbilityService.canDeleteThread(discussion)
+      perform: ->
+        openModal
+          component: 'ConfirmModal',
+          props:
+            confirm:
+              submit: discussion.destroy
+              text:
+                title:    'delete_thread_form.title'
+                helptext: 'delete_thread_form.body'
+                submit:   'delete_thread_form.confirm'
+                flash:    'delete_thread_form.messages.success'
+              redirect:   LmoUrlService.group discussion.group()
+
   mute: (thread, override = false) ->
     if !Session.user().hasExperienced("mutingThread") and !override
       Records.users.saveExperience("mutingThread")
