@@ -40,7 +40,7 @@ export default
     camelCase: camelCase
 
   computed:
-    iconSize: -> if @isNested then 32 else 48
+    iconSize: -> if @isNested then 32 else 40
 
     isNested: -> @event.isNested()
 

@@ -59,7 +59,7 @@ export default
 
   v-card-text
     .context-panel__details(align-center)
-      user-avatar.mr-2(:user='discussion.author()', :size='32')
+      user-avatar.mr-2(:user='discussion.author()', :size='40')
       span
         strong {{discussion.authorName()}}
         mid-dot
