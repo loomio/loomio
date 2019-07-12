@@ -10,9 +10,9 @@ export default class NestedEventWindow extends BaseEventWindow
   useNesting: true
 
   # first, last, total are the values we actually have - within the window
-  numTotal:        -> @parentEvent.childCount
+  numTotal: -> @parentEvent.childCount
   firstInSequence: -> 1
-  lastInSequence:  -> @parentEvent.childCount
+  lastInSequence: -> @parentEvent.childCount
   windowLength: ->
     (@max || @lastInSequence()) - (@min - 1)
 
@@ -25,6 +25,7 @@ export default class NestedEventWindow extends BaseEventWindow
   # windowed Events
   windowedEvents: ->
     query =
+      parentId: @parentEvent.id
       position:
         $between: [@min, (@max || Number.MAX_VALUE)]
     @eventsQuery().find(query).simplesort('position').data()

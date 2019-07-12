@@ -87,7 +87,7 @@ export default class GroupModel extends BaseModel
     _.some @pendingMembershipRequests()
 
   hasPendingMembershipRequestFrom: (user) ->
-     _.some @pendingMembershipRequests(), (request) ->
+    _.some @pendingMembershipRequests(), (request) ->
       request.requestorId == user.id
 
   previousMembershipRequests: ->
