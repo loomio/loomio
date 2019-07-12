@@ -58,6 +58,9 @@ export default
       InboxService.unreadCount()
 
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
+    isCurrentOrganization: (group) ->
+      if AppConfig.currentGroup
+        AppConfig.currentGroup.parentOrSelf().id == group.id
 
   computed:
     user: -> Session.user()
@@ -114,7 +117,7 @@ v-navigation-drawer.sidenav-left(app v-model="open")
         v-avatar(tile size="28px")
           img.sidebar__list-item-group-logo(:src='group.logoUrl()')
       v-list-item-title {{group.name}}
-    v-list-item(v-for="subgroup in sortGroups(group.subgroups())" dense :to='groupUrl(subgroup)' :key="subgroup.id")
+    v-list-item(v-if="isCurrentOrganization(group)" v-for="subgroup in sortGroups(group.subgroups())" dense :to='groupUrl(subgroup)' :key="subgroup.id")
       v-list-item-avatar(:size="28")
       v-list-item-title {{subgroup.name}}
   v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroup()", @click="openStartGroupModal()")
