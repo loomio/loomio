@@ -6,7 +6,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import Flash   from '@/shared/services/flash'
 import Records from '@/shared/services/records'
 
-import { pick, assign } from 'lodash'
+import { pick, assign, compact } from 'lodash'
 import { listenForTranslations } from '@/shared/helpers/listen'
 import openModal      from '@/shared/helpers/open_modal'
 import CommentService from '@/shared/services/comment_service'
@@ -24,11 +24,21 @@ export default
     eventable: -> @event.model()
     link: -> LmoUrlService.event @event
     dockActions: ->
-      pick CommentService.actions(@eventable, @), ['react', 'reply_to_comment', 'show_history']
+      if AbilityService.canEditComment(@eventable)
+        edit_comment = 'edit_comment'
+        show_history = null
+      else
+        edit_comment = null
+        show_history = 'show_history'
+
+      pick CommentService.actions(@eventable, @), compact ['react', 'reply_to_comment', edit_comment, show_history]
 
     menuActions: ->
+      if AbilityService.canEditComment(@eventable)
+        show_history = 'show_history'
+
       assign(
-        pick CommentService.actions(@eventable, @), ['edit_comment', 'fork_comment', 'translate_comment' , 'delete_comment']
+        pick CommentService.actions(@eventable, @), compact [show_history, 'fork_comment', 'translate_comment' , 'delete_comment']
       ,
         pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
       )
