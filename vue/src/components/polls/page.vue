@@ -41,7 +41,10 @@ export default
     groupFilter: null
 
   created: ->
-    EventBus.$emit 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}
+    EventBus.$emit 'currentComponent', {
+      group: poll.group(),
+      titleKey: 'polls_page.heading',
+      page: 'pollsPage'}
     # applyLoadingFunction @, 'loadMore'
     # applyLoadingFunction @, 'fetchRecords'
     # applyLoadingFunction(@, 'searchPolls')

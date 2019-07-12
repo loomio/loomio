@@ -35,6 +35,7 @@ export default
         EventBus.$emit 'currentComponent',
           page: 'threadPage'
           discussion: @discussion
+          group: @discussion.group()
           breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
 
 
