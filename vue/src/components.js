@@ -1,5 +1,6 @@
 module.exports = {
   ActionDock: 'common/action_dock',
+  ActionMenu: 'common/action_menu',
   ActivityPanel: 'thread/activity_panel',
   AnnouncementForm: 'announcement/form',
   AttachmentList: 'thread/attachment_list',
@@ -79,7 +80,6 @@ module.exports = {
   OutcomeCreated: 'thread/item/outcome_created',
   PlusButton: 'common/plus_button',
   PollCommonActionPanel: 'poll/common/action_panel',
-  PollCommonActionsDropdown: 'poll/common/actions_dropdown',
   PollCommonAddOptionButton: 'poll/common/add_option_button',
   PollCommonAnonymousHelptext: 'poll/common/anonymous_helptext',
   PollCommonBarChart: 'poll/common/bar_chart',

@@ -58,6 +58,7 @@ export default
     scrollToInitialPosition: ->
       commentId = parseInt(@$route.params.comment_id)
       sequenceId = parseInt(@$route.params.sequence_id)
+
       if event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
         @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
       else
@@ -79,9 +80,9 @@ export default
                 waitFor(selector, fn)
               , 50
 
-          event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
-          waitFor "#sequence-#{event.sequenceId || 0}", =>
-            @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
+          if event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
+            waitFor "#sequence-#{event.sequenceId || 0}", =>
+              @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
 
       EventBus.$on 'threadPositionRequest', (position) => @positionRequested(position)
 

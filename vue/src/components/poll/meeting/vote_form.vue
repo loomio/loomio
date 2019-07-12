@@ -5,7 +5,6 @@ import Records from '@/shared/services/records'
 
 import { submitOnEnter } from '@/shared/helpers/keyboard'
 import { submitStance }  from '@/shared/helpers/form'
-import { buttonStyle }   from '@/shared/helpers/style'
 
 import {compact, map, toPairs, fromPairs, some, sortBy} from 'lodash'
 

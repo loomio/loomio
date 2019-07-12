@@ -37,7 +37,7 @@ export default
 
 <template lang="pug">
 v-card
-  // <div v-if="isDisabled" class="lmo-disabled-form"></div>
+  //- // <div v-if="isDisabled" class="lmo-disabled-form"></div>
   //- loading(v-if='!poll.complete')
   //- .lmo-blank(v-if='poll.complete')
   poll-common-card-header(:poll='poll')

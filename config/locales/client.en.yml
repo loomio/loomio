@@ -569,9 +569,13 @@ en:
     pin_event: Pin to timeline
     unpin_event: Remove from timeline
     comment_copied: Comment URL copied to clipboard
+    move_thread: Move to group
     poll_copied: Decision URL copied to clipboard
     discussion_copied: Thread URL copied to clipboard
     tag_thread: Manage tags
+    close_thread: Close thread
+    reopen_thread: Re-open thread
+    delete_thread: Delete thread
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -1184,6 +1188,7 @@ en:
 
   thread_group:
     aria_label: 'Group name'
+
   thread_context:
     aria_label: 'Thread context'
     thread_options: 'Thread options'

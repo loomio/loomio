@@ -1,4 +1,6 @@
-utils = new class Utils
+import * as moment from 'moment'
+
+export default new class Utils
   parseJSONList: (data) -> _.map(data, @parseJSON)
   parseJSON: (json) ->
     attributes = transformKeys(json, _.camelCase)
@@ -23,5 +25,3 @@ transformKeys = (attributes, transformFn) ->
 
 isTimeAttribute = (attributeName) ->
   /At$/.test(attributeName)
-
-export default utils

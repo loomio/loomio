@@ -13,68 +13,63 @@ export default
     discussion: Object
   # data: ->
   methods:
-    canChangeVolume: ->
-      AbilityService.canChangeVolume(@discussion)
+    # canChangeVolume: ->
+    #   AbilityService.canChangeVolume(@discussion)
+    #
+    # openChangeVolumeForm: ->
+    #   @openChangeVolumeModal(@discussion)
 
-    openChangeVolumeForm: ->
-      @openChangeVolumeModal(@discussion)
+    # canEditThread: ->
+    #   AbilityService.canEditThread(@discussion)
 
-    canEditThread: ->
-      AbilityService.canEditThread(@discussion)
+    # canMuteThread: ->
+    #   Session.isSignedIn()
+    #
+    # editThread: ->
+    #   @openEditDiscussionModal(@discussion)
+    #
+    # canPinThread: ->
+    #   AbilityService.canPinThread(@discussion)
 
-    canMuteThread: ->
-      Session.isSignedIn()
 
-    editThread: ->
-      @openEditDiscussionModal(@discussion)
+    # pinThread: ->
+    #   ThreadService.pin(@discussion)
+    #
+    # unpinThread: ->
+    #   ThreadService.unpin(@discussion)
 
-    canPinThread: ->
-      AbilityService.canPinThread(@discussion)
+    # muteThread: ->
+    #   ThreadService.mute(@discussion)
+    #
+    # unmuteThread: ->
+    #   ThreadService.unmute(@discussion)
 
-    closeThread: ->
-      ThreadService.close(@discussion)
+    # canMoveThread: ->
+    #   AbilityService.canMoveThread(@discussion)
+    #
+    # canCloseThread: ->
+    #   AbilityService.canCloseThread(@discussion)
+    #
+    # moveThread: ->
+    #   @openMoveDiscussionModal(@discussion)
 
-    reopenThread: ->
-      ThreadService.reopen(@discussion)
-
-    pinThread: ->
-      ThreadService.pin(@discussion)
-
-    unpinThread: ->
-      ThreadService.unpin(@discussion)
-
-    muteThread: ->
-      ThreadService.mute(@discussion)
-
-    unmuteThread: ->
-      ThreadService.unmute(@discussion)
-
-    canMoveThread: ->
-      AbilityService.canMoveThread(@discussion)
-
-    canCloseThread: ->
-      AbilityService.canCloseThread(@discussion)
-
-    moveThread: ->
-      @openMoveDiscussionModal(@discussion)
-
-    requestPagePrinted: ->
-      EventBus.broadcast $rootScope, 'toggleSidebar', false
-      EventBus.broadcast $rootScope, 'fetchRecordsForPrint'
-
-    canDeleteThread: ->
-      AbilityService.canDeleteThread(@discussion)
-
-    deleteThread: ->
-      @openConfirmModal(
-        submit:     @discussion.destroy
-        text:
-          title:    'delete_thread_form.title'
-          helptext: 'delete_thread_form.body'
-          submit:   'delete_thread_form.confirm'
-          flash:    'delete_thread_form.messages.success'
-        redirect:   LmoUrlService.group @discussion.group()
-      )
+    # requestPagePrinted: ->
+    #   EventBus.broadcast $rootScope, 'toggleSidebar', false
+    #   EventBus.broadcast $rootScope, 'fetchRecordsForPrint'
+    #
+    # canDeleteThread: ->
+    #   AbilityService.canDeleteThread(@discussion)
+    #
+    # deleteThread: ->
+    #   @openConfirmModal(
+    #     submit:     @discussion.destroy
+    #     text:
+    #       title:    'delete_thread_form.title'
+    #       helptext: 'delete_thread_form.body'
+    #       submit:   'delete_thread_form.confirm'
+    #       flash:    'delete_thread_form.messages.success'
+    #     redirect:   LmoUrlService.group @discussion.group()
+    #   )
 </script>
 <template lang="pug">
 .context-panel-dropdown.lmo-no-print

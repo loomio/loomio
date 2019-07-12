@@ -34,9 +34,6 @@ export default
       AppConfig.currentDiscussion = options.discussion
       AppConfig.currentPoll       = options.poll
 
-      # scrollTo(options.scrollTo or 'h1') unless options.skipScroll
-      # updateCover()
-
     shouldForceSignIn: (options = {}) ->
       # return false if options.page == "pollPage" and Session.user() !AbilityService.isEmailVerified()
       # return false if AbilityService.isEmailVerified()

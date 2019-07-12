@@ -1,4 +1,5 @@
 <script lang="coffee">
+import * as moment from 'moment'
 export default
   props:
     date: Object

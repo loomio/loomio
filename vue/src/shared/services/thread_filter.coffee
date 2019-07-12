@@ -1,5 +1,7 @@
 import Session from '@/shared/services/session'
-import {each} from 'lodash'
+import { each } from 'lodash'
+import * as moment from 'moment'
+
 
 parseTimeOption = (options) ->
   # we pass times in something human-readable like '1 month ago'

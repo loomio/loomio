@@ -1,22 +1,20 @@
 <script lang="coffee">
 import AbilityService from '@/shared/services/ability_service'
-import { iconFor } from '@/shared/helpers/poll'
+import PollService from '@/shared/services/poll_service'
 import UrlFor         from '@/mixins/url_for'
-import { map, compact } from 'lodash'
+import { map, compact, pick } from 'lodash'
+
 export default
   mixins: [UrlFor]
   props:
     poll: Object
 
   computed:
-    pollHasActions: ->
-      AbilityService.canEditPoll(@poll)  ||
-      AbilityService.canClosePoll(@poll) ||
-      AbilityService.canDeletePoll(@poll)||
-      AbilityService.canExportPoll(@poll)
+    menuActions: ->
+      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll']
 
-    icon: ->
-      iconFor(@poll)
+    dockActions: ->
+      pick PollService.actions(@poll, @), ['announce_poll']
 
     groups: ->
       map compact([@poll.group().parent(), @poll.group(), @poll.discussion()]), (model) =>
@@ -27,8 +25,14 @@ export default
 
 <template lang="pug">
 v-layout.poll-common-card-header(align-center mx-2 pt-2)
-  //- v-icon {{'mdi ' + icon()}}
   v-breadcrumbs(:items="groups" divider=">")
   v-spacer
-  poll-common-actions-dropdown(:poll="poll", v-if="pollHasActions")
+  action-dock(:actions="dockActions")
+  action-menu(:actions="menuActions")
 </template>
+
+<style lang="sass">
+.poll-common-card-header
+  .v-breadcrumbs
+    padding: 0px 10px
+</style>

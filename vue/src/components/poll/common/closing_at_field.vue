@@ -1,7 +1,8 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import TimeService from '@/shared/services/time_service'
-import moment from 'moment'
+import * as moment from 'moment'
+
 # import { format} from 'date-fns'
 
 export default

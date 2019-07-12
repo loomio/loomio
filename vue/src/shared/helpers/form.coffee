@@ -5,7 +5,6 @@ import Session        from '@/shared/services/session'
 import Flash   from '@/shared/services/flash'
 
 import { fieldFromTemplate } from '@/shared/helpers/poll'
-import { scrollTo }          from '@/shared/helpers/layout'
 
 # a helper to aid submitting forms throughout the app
 export submitForm = (scope, model, options = {}) ->

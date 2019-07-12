@@ -16,7 +16,6 @@ import ContactRecordsInterface from '@/shared/interfaces/contact_records_interfa
 import VersionRecordsInterface from '@/shared/interfaces/version_records_interface'
 import DraftRecordsInterface from '@/shared/interfaces/draft_records_interface'
 import TranslationRecordsInterface from '@/shared/interfaces/translation_records_interface'
-import OauthRecordsInterface from '@/shared/interfaces/oauth_application_records_interface'
 import SessionRecordsInterface from '@/shared/interfaces/session_records_interface'
 import RegistrationRecordsInterface from '@/shared/interfaces/registration_records_interface'
 import PollRecordsInterface from '@/shared/interfaces/poll_records_interface'
@@ -56,7 +55,6 @@ records.addRecordsInterface ContactRecordsInterface
 records.addRecordsInterface VersionRecordsInterface
 records.addRecordsInterface DraftRecordsInterface
 records.addRecordsInterface TranslationRecordsInterface
-records.addRecordsInterface OauthRecordsInterface
 records.addRecordsInterface SessionRecordsInterface
 records.addRecordsInterface RegistrationRecordsInterface
 records.addRecordsInterface PollRecordsInterface

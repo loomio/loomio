@@ -51,7 +51,7 @@ export default
 </script>
 
 <template lang="pug">
-.actions-panel#add-comment
+.actions-panel.mt-3#add-comment
   v-divider
   v-tabs.activity-panel__actions.mb-3(grow icons-and-text v-model="currentAction")
     v-tab(href='#add-comment')

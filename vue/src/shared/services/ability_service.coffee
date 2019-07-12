@@ -61,14 +61,11 @@ export default new class AbilityService
     Session.user().isMemberOf(thread.group()) and
     (Session.user().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
 
-  canRemoveEventFromThread: (event) ->
-    event.kind == 'discussion_edited' && @canAdministerDiscussion(event.discussion())
-
   canCloseThread: (thread) ->
-    @canAdministerDiscussion(thread)
+    !thread.closedAt && @canAdministerDiscussion(thread)
 
   canReopenThread: (thread) ->
-    @canAdministerDiscussion(thread)
+    thread.closedAt && @canAdministerDiscussion(thread)
 
   canPinThread: (thread) ->
     !thread.closedAt && !thread.pinned && @canAdministerGroup(thread.group())

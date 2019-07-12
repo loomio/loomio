@@ -1,14 +1,14 @@
 <script lang="coffee">
-import Session        from '@/shared/services/session'
-import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
+import OutcomeService from '@/shared/services/outcome_service'
+import EventService from '@/shared/services/event_service'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
+import { pick } from 'lodash'
 
 export default
   components:
     ThreadItem: -> import('@/components/thread/item.vue')
-    
+
   props:
     event: Object
     eventWindow: Object
@@ -18,24 +18,19 @@ export default
 
   computed:
     eventable: -> @event.model()
+    poll: -> @eventable.poll()
+    dockActions: ->
+      OutcomeService.actions(@eventable, @)
+    menuActions: ->
+      pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
 
-  data: ->
-    actions:  [
-      name: 'react'
-      canPerform: => AbilityService.canReactToPoll(@eventable.poll())
-    ,
-      name: 'translate_outcome'
-      icon: 'mdi-translate'
-      canPerform: => AbilityService.canTranslate(@eventable)
-      perform:    => @eventable.translate(Session.user().locale)
-    ]
 </script>
 
 <template lang="pug">
 thread-item.outcome-created(:event="event" :event-window="eventWindow")
+  template(v-slot:actions)
+    action-dock(:model="eventable" :actions="dockActions")
+    action-menu(:model="eventable" :actions="menuActions")
   formatted-text.thread-item__body(:model="eventable" column="statement")
-  v-card-actions(wrap)
-    reaction-display(:model="eventable")
-    v-spacer
-    action-dock(:model="eventable" :actions="actions")
+  reaction-display(:model="eventable")
 </template>

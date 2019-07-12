@@ -1,10 +1,12 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
+import PollService    from '@/shared/services/poll_service'
 import AbilityService from '@/shared/services/ability_service'
 import PollModalMixin from '@/mixins/poll_modal'
 import EventBus       from '@/shared/services/event_bus'
 import WatchRecords   from '@/mixins/watch_records'
 import { myLastStanceFor }  from '@/shared/helpers/poll'
+import { pick } from 'lodash'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
 
@@ -36,12 +38,10 @@ export default
     showResults: ->
       @buttonPressed || @myLastStance || @poll.isClosed()
 
-    pollHasActions: ->
-      AbilityService.canEditPoll(@poll)  ||
-      AbilityService.canClosePoll(@poll) ||
-      AbilityService.canDeletePoll(@poll)||
-      AbilityService.canExportPoll(@poll)
-
+    menuActions: ->
+      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll']
+    dockActions: ->
+      pick PollService.actions(@poll, @), ['announce_poll']
 
   mounted: ->
     listenForTranslations @
@@ -49,11 +49,13 @@ export default
 
 <template lang="pug">
 thread-item.poll-created(:event="event" :event-window="eventWindow")
+  template(v-slot:actions)
+    action-dock(:actions="dockActions")
+    action-menu(:actions="menuActions")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline
       span(v-if='!poll.translation') {{poll.title}}
       translation(v-if="poll.translation" :model='poll', :field='title')
-    poll-common-actions-dropdown(:poll="poll", v-if="pollHasActions")
   poll-common-closing-at(:poll='poll')
   poll-common-set-outcome-panel(:poll='poll')
   poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')
@@ -62,7 +64,6 @@ thread-item.poll-created(:event="event" :event-window="eventWindow")
   .poll-common-card__results-shown(v-if='showResults')
     poll-common-directive(:poll='poll', name='chart-panel')
     poll-common-percent-voted(:poll='poll')
-    //- closing in x days
   poll-common-action-panel(:poll='poll')
   document-list(:model='poll' skip-fetch)
 </template>

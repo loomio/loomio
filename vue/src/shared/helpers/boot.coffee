@@ -1,12 +1,13 @@
-import 'url-search-params-polyfill';
+import 'url-search-params-polyfill'
 import Vue from 'vue'
 import RestfulClient from '@/shared/record_store/restful_client'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
-import * as Sentry from '@sentry/browser';
-import * as Integrations from '@sentry/integrations';
+import * as Sentry from '@sentry/browser'
+import * as Integrations from '@sentry/integrations'
 import { forEach } from 'lodash'
+import * as moment from 'moment'
 
 export default (callback) ->
   client = new RestfulClient('boot')

@@ -4,23 +4,18 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import Flash   from '@/shared/services/flash'
-import ModalService   from '@/shared/services/modal_service'
-import CommentModalMixin from '@/mixins/comment_modal.coffee'
-import ConfirmModalMixin from '@/mixins/confirm_modal'
-import RevisionHistoryModalMixin from '@/mixins/revision_history_modal'
 import Records from '@/shared/services/records'
 
+import { pick, assign } from 'lodash'
 import { listenForTranslations } from '@/shared/helpers/listen'
+import openModal      from '@/shared/helpers/open_modal'
+import CommentService from '@/shared/services/comment_service'
+import EventService from '@/shared/services/event_service'
 
 export default
   components:
     ThreadItem: -> import('@/components/thread/item.vue')
 
-  mixins: [
-    CommentModalMixin,
-    ConfirmModalMixin,
-    RevisionHistoryModalMixin
-  ]
   props:
     event: Object
     eventWindow: Object
@@ -28,92 +23,31 @@ export default
   computed:
     eventable: -> @event.model()
     link: -> LmoUrlService.event @event
+    dockActions: ->
+      pick CommentService.actions(@eventable, @), ['react', 'reply_to_comment', 'show_history']
 
-  created: ->
-    @confirmOpts =
-      submit: @eventable.destroy
-      text:
-        title:    'delete_comment_dialog.title'
-        helptext: 'delete_comment_dialog.question'
-        confirm:  'delete_comment_dialog.confirm'
-        flash:    'comment_form.messages.destroyed'
+    menuActions: ->
+      assign(
+        pick CommentService.actions(@eventable, @), ['edit_comment', 'fork_comment', 'translate_comment' , 'delete_comment']
+      ,
+        pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
+      )
 
   data: ->
     confirmOpts: null
     showReplyForm: false
-    actions: [
-      name: 'react'
-      canPerform: => AbilityService.canAddComment(@eventable.discussion())
-    ,
-      name: 'reply_to_comment'
-      icon: 'mdi-reply'
-      canPerform: => AbilityService.canRespondToComment(@eventable)
-      perform:    =>
-        @newComment = Records.comments.build
-          bodyFormat: "html"
-          body: ""
-          discussionId: @eventable.discussion().id
-          authorId: Session.user().id
-          parentId: @eventable.id
-        @showReplyForm = true
-    ,
-      name: 'edit_comment'
-      icon: 'mdi-pencil'
-      canPerform: => @canEditComment(@eventable)
-      perform:    => @openEditCommentModal(@eventable)
-    ,
-      name: 'fork_comment'
-      icon: 'mdi-call-split'
-      canPerform: => AbilityService.canForkComment(@eventable)
-      perform:    =>
-        # EventBus.broadcast $rootScope, 'toggleSidebar', false
-        @event.toggleFromFork()
-    ,
-      name: 'translate_comment'
-      icon: 'mdi-translate'
-      canPerform: => @eventable.body && AbilityService.canTranslate(@eventable) && !@translation
-      perform:    => @eventable.translate(Session.user().locale)
-    ,
-    #   name: 'copy_url'
-    #   icon: 'mdi-link'
-    #   canPerform: => clipboard.supported
-    #   perform:    =>
-    #     clipboard.copyText(LmoUrlService.event(@event, {}, absolute: true))
-    #     Flash.success("action_dock.comment_copied")
-    # ,
-      name: 'show_history'
-      icon: 'mdi-history'
-      canPerform: => @eventable.edited()
-      perform:    => @openRevisionHistoryModal(@eventable)
-    ,
-      name: 'delete_comment'
-      icon: 'mdi-delete'
-      canPerform: => AbilityService.canDeleteComment(@eventable)
-      perform:    => @openConfirmModal(@confirmOpts)
-    ,
-      name: 'pin_event'
-      icon: 'mdi-pin'
-      canPerform: => AbilityService.canPinEvent(@event)
-      perform: => @event.pin().then => Flash.success('activity_card.event_pinned')
-    ,
-      name: 'unpin_event'
-      icon: 'mdi-pin-off'
-      canPerform: => AbilityService.canUnpinEvent(@event)
-      perform: => @event.unpin().then => Flash.success('activity_card.event_unpinned')
-    ]
+    newComment: null
 
 </script>
 
 <template lang="pug">
 thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-window="eventWindow")
+  template(v-slot:actions)
+    action-dock(:model='eventable', :actions='dockActions')
+    action-menu(:actions='menuActions')
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
-  v-card-actions
-    v-spacer
-    reaction-display(:model="eventable")
-    space
-    action-dock(:model='eventable', :actions='actions')
-
+  reaction-display(:model="eventable")
   comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" :autoFocus="true")
 </template>

@@ -1,86 +1,55 @@
 <script lang="coffee">
-import Records        from '@/shared/services/records'
-import Session        from '@/shared/services/session'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
 import ThreadService  from '@/shared/services/thread_service'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
-import Flash   from '@/shared/services/flash'
 import UrlFor         from '@/mixins/url_for'
 import exactDate      from '@/mixins/exact_date'
-import DiscussionModalMixin from '@/mixins/discussion_modal'
-import RevisionHistoryModalMixin from '@/mixins/revision_history_modal'
-import TagsModalMixin from '@/mixins/tags_modal'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
-import { scrollTo }                                  from '@/shared/helpers/layout'
-import { map, compact } from 'lodash'
+import { map, compact, pick } from 'lodash'
 
 export default
-  mixins: [UrlFor, exactDate, DiscussionModalMixin, RevisionHistoryModalMixin, TagsModalMixin]
+  mixins: [UrlFor, exactDate]
   props:
     discussion: Object
 
   mounted: ->
     listenForTranslations(@)
-    @discussion.markAsSeen()
 
   data: ->
-    actions: [
-      name: 'react'
-      canPerform: => AbilityService.canAddComment(@discussion)
-    ,
-      name: 'translate_thread'
-      icon: 'mdi-translate'
-      canPerform: => AbilityService.canTranslate(@discussion)
-      perform:    => @discussion.translate(Session.user().locale)
-    ,
-      name: 'add_comment'
-      icon: 'mdi-reply'
-      canPerform: => AbilityService.canAddComment(@discussion)
-      perform:    => scrollTo('.comment-form textarea')
-    ,
-      name: 'show_history',
-      icon: 'mdi-history'
-      canPerform: => @discussion.edited()
-      perform:    => @openRevisionHistoryModal(@discussion)
-    ,
-      name: 'edit_thread'
-      icon: 'mdi-pencil'
-      canPerform: => AbilityService.canEditThread(@discussion)
-      perform:    => @openEditDiscussionModal(@discussion)
-    ]
+    actions: ThreadService.actions(@discussion, @)
 
   computed:
+    dockActions: ->
+      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', "edit_tags", "announce_thread"]
+
+    menuActions: ->
+      pick ThreadService.actions(@discussion, @), ['edit_thread', 'show_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+
     status: ->
       return 'pinned' if @discussion.pinned
+
     statusTitle: ->
       @$t("context_panel.thread_status.#{@status}")
+
     groups: ->
       map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
         text: group.name
         disabled: false
         to: @urlFor(group)
 
-
   methods:
-    # showLintel: (bool) ->
-    #   EventBus.broadcast $rootScope, 'showThreadLintel', bool
     viewed: (viewed) ->
-     EventBus.$emit('threadPositionUpdated', 0) if viewed
+      @discussion.markAsSeen() if viewed
 
-    showRevisionHistory: ->
-      ModalService.open 'RevisionHistoryModal', model: => @discussion
 </script>
 
 <template lang="pug">
-//- section.context-panel.lmo-card-padding.lmo-action-dock-wrapper(aria-label="$t('thread_context.aria_label')")
-div.context-panel#context(v-observe-visibility="{callback: viewed}")
-  v-layout(align-center mx-2 pt-2)
+.context-panel.lmo-action-dock-wrapper.mb-3#context(v-observe-visibility="{callback: viewed, once: true}")
+  v-layout(align-center mx-2 pt-2 wrap)
     v-breadcrumbs(:items="groups" divider=">")
-    v-spacer
     tags-display(:discussion="discussion")
+    v-spacer
+    action-dock(:model='discussion' :actions='dockActions')
+    action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
 
   h1.headline.context-panel__heading.px-3#sequence-0
     span(v-if='!discussion.translation') {{discussion.title}}
@@ -90,7 +59,7 @@ div.context-panel#context(v-observe-visibility="{callback: viewed}")
 
   v-card-text
     .context-panel__details(align-center)
-      user-avatar.mr-2(:user='discussion.author()', size='small')
+      user-avatar.mr-2(:user='discussion.author()', :size='40')
       span
         strong {{discussion.authorName()}}
         mid-dot
@@ -117,8 +86,7 @@ div.context-panel#context(v-observe-visibility="{callback: viewed}")
   v-card-actions
     v-spacer
     reaction-display.ml-2(:model="discussion")
-    action-dock(:model='discussion', :actions='actions')
-    context-panel-dropdown(:discussion="discussion")
+  v-divider
 </template>
 <style lang="sass">
 @import 'variables'
@@ -126,7 +94,6 @@ div.context-panel#context(v-observe-visibility="{callback: viewed}")
   margin-left: 4px
 
 .context-panel
-  border-bottom: 1px solid $border-color
   .v-breadcrumbs
     padding: 0px 10px
     // margin-left: 0;

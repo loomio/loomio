@@ -2,35 +2,32 @@
 export default
   props:
     model: Object
-    actions: Array
+    actions: Object
+  created: ->
+    console.log @actions
 </script>
 
 <template lang="pug">
-.lmo-action-dock-wrapper
-  .action-dock.lmo-no-print
-    .action-dock__action(v-for='action in actions', v-if='action.canPerform()')
-      reaction-input.action-dock__button--react(:model="model" v-if="action.name == 'react'")
-      v-tooltip(bottom)
-        template(v-slot:activator="{on}")
-          v-btn(v-on="on" icon :class='`md-button--tiny action-dock__button--${action.name}`' v-if="action.name != 'react'" @click='action.perform()')
-            //- .sr-only(v-t="'action_dock.' + action.name")
-            v-icon {{action.icon}}
-            div(v-if='action.active && action.active()', md-colors="{'color': 'warn-200'}")
-              i.mdi.mdi-alert-circle-outline.mdi-16px.lmo-margin-right
-              span(v-t="'action_dock.' + action.name + '_active'", v-if='action.active && action.active()')
-        div(v-t="'action_dock.' + action.name")
+.action-dock.lmo-no-print
+  .action-dock__action(v-for='(action, name) in actions' v-if='action.canPerform()' :key="name")
+    reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'")
+    v-tooltip(bottom v-if="name != 'react'")
+      template(v-slot:activator="{ on }")
+        v-btn(v-on="on" icon :title="$t(action.name || 'action_dock.' + name)" :class='`action-dock__button--${name}`' @click='action.perform()')
+          v-icon {{action.icon}}
+      span(v-t="action.name || 'action_dock.'+name")
 </template>
 
 <style lang="sass">
 .action-dock
   display: flex
-  align-items: center
+.action-dock, .action-menu
   transition: opacity ease-in-out 0.25s
 
 .lmo-action-dock-wrapper
-  .action-dock
+  .action-dock, .action-menu
     opacity: 0.5
-  &:hover .action-dock
+  &:hover .action-dock, &:hover .action-menu
     opacity: 1
 
 </style>
