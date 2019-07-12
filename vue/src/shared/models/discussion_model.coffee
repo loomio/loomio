@@ -5,6 +5,7 @@ import HasDrafts        from '@/shared/mixins/has_drafts'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import HasGuestGroup    from '@/shared/mixins/has_guest_group'
+import * as moment from 'moment'
 
 export default class DiscussionModel extends BaseModel
   @singular: 'discussion'

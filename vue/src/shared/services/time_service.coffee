@@ -1,4 +1,5 @@
 import AppConfig from '@/shared/services/app_config'
+import * as moment from 'moment'
 
 export default new class TimeService
   nameForZone: (zone, nameForLocal) ->

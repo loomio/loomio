@@ -11,18 +11,17 @@ import './registerServiceWorker'
 import { initLiveUpdate } from '@/shared/helpers/cable'
 import { pick } from 'lodash'
 
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/browser'
 import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
 
 Vue.config.productionTip = false
 
 # { pluginConfigFor } = require '@/shared/helpers/plugin'
-import { exportGlobals, hardReload, unsupportedBrowser } from '@/shared/helpers/window.coffee'
+import { hardReload, unsupportedBrowser } from '@/shared/helpers/window.coffee'
 import boot from '@/shared/helpers/boot'
 import Session from '@/shared/services/session'
 hardReload('/417.html') if unsupportedBrowser()
-exportGlobals()
 
 boot ->
   Session.fetch().then (data) ->

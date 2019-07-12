@@ -3,7 +3,6 @@ import EventBus from '@/shared/services/event_bus'
 import WatchRecords from '@/mixins/watch_records'
 
 import { submitStance }  from '@/shared/helpers/form'
-import { buttonStyle }   from '@/shared/helpers/style'
 
 import { compact, sortBy, without } from 'lodash'
 

@@ -8,6 +8,16 @@ import openModal      from '@/shared/helpers/open_modal'
 
 export default new class PollService
   actions: (poll, vm) ->
+    announce_poll:
+      icon: 'mdi-bullhorn'
+      canPerform: ->
+        AbilityService.canEditPoll(poll)
+      perform: ->
+        openModal
+          component: 'AnnouncementForm'
+          props:
+            announcement: Records.announcements.buildFromModel(poll)
+
     edit_poll:
       name: 'common.action.edit'
       canPerform: ->
@@ -17,6 +27,15 @@ export default new class PollService
           component: 'PollCommonModal'
           props:
             poll: poll.clone()
+
+    show_history:
+      icon: 'mdi-history'
+      canPerform: -> poll.edited()
+      perform: ->
+        openModal
+          component: 'RevisionHistoryModal'
+          props:
+            model: poll
 
     close_poll:
       name:

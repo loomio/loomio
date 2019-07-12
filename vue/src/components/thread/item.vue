@@ -111,7 +111,7 @@ div
             router-link.grey--text(:to='link')
               time-ago(:date='event.createdAt')
             space
-          slot(name="top-right")
+          slot(name="actions")
         slot
   template(v-if='!collapsed && event.isSurface()')
     event-children(:parent-event='event')

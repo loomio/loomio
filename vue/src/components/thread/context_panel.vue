@@ -19,7 +19,7 @@ export default
 
   computed:
     dockActions: ->
-      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', "edit_tags"]
+      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', "edit_tags", "announce_thread"]
 
     menuActions: ->
       pick ThreadService.actions(@discussion, @), ['edit_thread', 'show_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']

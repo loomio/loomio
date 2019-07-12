@@ -8,6 +8,15 @@ import openModal      from '@/shared/helpers/open_modal'
 
 export default new class ThreadService
   actions: (discussion, vm) ->
+    announce_thread:
+      icon: 'mdi-bullhorn'
+      canPerform: -> AbilityService.canEditThread(discussion)
+      perform: ->
+        openModal
+          component: 'AnnouncementForm'
+          props:
+            announcement: Records.announcements.buildFromModel(discussion)
+
     react:
       canPerform: -> AbilityService.canAddComment(discussion)
 

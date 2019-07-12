@@ -42,15 +42,12 @@ export default
 
 <template lang="pug">
 thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-window="eventWindow")
-  template(v-slot:top-right)
+  template(v-slot:actions)
     action-dock(:model='eventable', :actions='dockActions')
     action-menu(:actions='menuActions')
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
-  //- v-card-actions
-  v-layout
-    reaction-display(:model="eventable")
-    v-spacer
+  reaction-display(:model="eventable")
   comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" :autoFocus="true")
 </template>

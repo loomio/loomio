@@ -1,9 +1,8 @@
 <script lang="coffee">
 import AbilityService from '@/shared/services/ability_service'
 import PollService from '@/shared/services/poll_service'
-import { iconFor } from '@/shared/helpers/poll'
 import UrlFor         from '@/mixins/url_for'
-import { map, compact } from 'lodash'
+import { map, compact, pick } from 'lodash'
 
 export default
   mixins: [UrlFor]
@@ -11,8 +10,12 @@ export default
     poll: Object
 
   computed:
-    actions: -> PollService.actions(@poll, @)
-    icon: -> iconFor(@poll)
+    menuActions: ->
+      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll']
+
+    dockActions: ->
+      pick PollService.actions(@poll, @), ['announce_poll']
+
     groups: ->
       map compact([@poll.group().parent(), @poll.group(), @poll.discussion()]), (model) =>
         text: model.name || model.title
@@ -24,5 +27,12 @@ export default
 v-layout.poll-common-card-header(align-center mx-2 pt-2)
   v-breadcrumbs(:items="groups" divider=">")
   v-spacer
-  action-menu(:actions="actions")
+  action-dock(:actions="dockActions")
+  action-menu(:actions="menuActions")
 </template>
+
+<style lang="sass">
+.poll-common-card-header
+  .v-breadcrumbs
+    padding: 0px 10px
+</style>

@@ -6,6 +6,7 @@ import PollModalMixin from '@/mixins/poll_modal'
 import EventBus       from '@/shared/services/event_bus'
 import WatchRecords   from '@/mixins/watch_records'
 import { myLastStanceFor }  from '@/shared/helpers/poll'
+import { pick } from 'lodash'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
 
@@ -37,8 +38,10 @@ export default
     showResults: ->
       @buttonPressed || @myLastStance || @poll.isClosed()
 
-    actions: ->
-      PollService.actions(@poll, @)
+    menuActions: ->
+      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll']
+    dockActions: ->
+      pick PollService.actions(@poll, @), ['announce_poll']
 
   mounted: ->
     listenForTranslations @
@@ -46,8 +49,9 @@ export default
 
 <template lang="pug">
 thread-item.poll-created(:event="event" :event-window="eventWindow")
-  template(v-slot:top-right)
-    action-menu(:actions="actions")
+  template(v-slot:actions)
+    action-dock(:actions="dockActions")
+    action-menu(:actions="menuActions")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline
       span(v-if='!poll.translation') {{poll.title}}

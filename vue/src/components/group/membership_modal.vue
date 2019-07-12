@@ -18,10 +18,9 @@ export default
 v-card.membership-modal
   .lmo-disabled-form(v-show='isDisabled')
   v-card-title
-    .lmo-flex__space-between
-      v-icon mdi-account-settings
-      h1.lmo-h1(v-t="{ path: 'membership_form.modal_title.' + membership.target().constructor.singular, args: { pollType: membership.target().pollType } }")
-      dismiss-modal-button(:close="close")
+    h1.headline(v-t="{ path: 'membership_form.modal_title.' + membership.target().constructor.singular, args: { pollType: membership.target().pollType } }")
+    v-spacer
+    dismiss-modal-button(:close="close")
   v-card-text.membership-form
     p.lmo-hint-text.membership-form__helptext(v-t="{ path: 'membership_form.title_helptext.' + membership.target().constructor.singular, args: { pollType: membership.target().pollType, name: membership.user().name } }")
     label(for='membership-title', v-t="'membership_form.title_label'")
