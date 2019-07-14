@@ -9,13 +9,11 @@ import { submitForm } from '@/shared/helpers/form'
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
 import { includes, camelCase } from 'lodash'
 
-import selection from 'vue-text-selection'
-
 export default
   props:
     event: Object
     eventWindow: Object
-    
+
   watch:
     '$route.params.sequence_id': 'updateIsFocused'
 
