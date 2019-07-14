@@ -24,7 +24,7 @@
     "lokijs": "1.5.6",
     "marked": "^0.7.0",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.25",
+    "moment-timezone": "^0.5.26",
     "pretty-bytes": "^5.2.0",
     "promise-polyfill": "^8.1.2",
     "promise.prototype.finally": "^3.1.0",
