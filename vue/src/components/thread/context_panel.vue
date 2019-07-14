@@ -43,7 +43,7 @@ export default
 </script>
 
 <template lang="pug">
-.context-panel.lmo-action-dock-wrapper.mb-3#context(v-observe-visibility="{callback: viewed, once: true}")
+.context-panel.lmo-action-dock-wrapper#context(v-observe-visibility="{callback: viewed, once: true}")
   v-layout(align-center mx-2 pt-2 wrap)
     v-breadcrumbs(:items="groups" divider=">")
     tags-display(:discussion="discussion")

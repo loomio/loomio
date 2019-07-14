@@ -58,6 +58,7 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-wind
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
+
   reaction-display(:model="eventable")
   comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" :autoFocus="true")
 </template>

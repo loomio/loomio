@@ -9,12 +9,13 @@ import { submitForm } from '@/shared/helpers/form'
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
 import { includes, camelCase } from 'lodash'
 
+import selection from 'vue-text-selection'
 
 export default
   props:
     event: Object
     eventWindow: Object
-
+    
   watch:
     '$route.params.sequence_id': 'updateIsFocused'
 
@@ -123,7 +124,7 @@ div
 }
 
 .thread-item {
-  padding: 0px 16px 0 16px;
+  padding: 8px 16px 16px 16px;
 }
 
 .thread-item .v-card__actions {
