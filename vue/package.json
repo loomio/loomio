@@ -22,7 +22,7 @@
     "jstimezonedetect": "~1.0.5",
     "lodash": "4.17.13",
     "lokijs": "1.5.6",
-    "marked": "^0.6.3",
+    "marked": "^0.7.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
     "pretty-bytes": "^5.2.0",
