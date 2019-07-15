@@ -1,12 +1,14 @@
 <script lang="coffee">
-import fromNow        from '@/mixins/from_now'
-import exactDate      from '@/mixins/exact_date'
+import { exact } from '@/shared/helpers/format_time'
 
 export default
-  mixins: [fromNow, exactDate]
   props:
     poll: Object
+
   methods:
+    exact: exact
+    
+  computed:
     time: ->
       key = if @poll.isActive() then 'closingAt' else 'closedAt'
       @poll[key]
@@ -18,8 +20,7 @@ export default
         'common.closed_ago'
 </script>
 
-<template>
-<abbr class="closing-in timeago--inline">
-  <span v-t="{ path: translationKey(), args: { time: fromNow(time()) } }" :title="exactDate(time())"></span>
-</abbr>
+<template lang="pug">
+abbr.closing-in.timeago--inline
+  span(v-t="{ path: translationKey, args: { time: exact(time) } }" :title="exact(time)")
 </template>

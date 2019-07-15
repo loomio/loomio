@@ -7,13 +7,12 @@ import i18n from '@/i18n.coffee'
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
 import { forEach } from 'lodash'
-import * as moment from 'moment'
 
 export default (callback) ->
   client = new RestfulClient('boot')
   client.get('site').then (siteResponse) ->
     siteResponse.json().then (appConfig) ->
-      appConfig.timeZone = moment.tz.guess()
+      appConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
       forEach appConfig, (v, k) -> Vue.set(AppConfig, k, v)
 
       if AppConfig.sentry_dsn

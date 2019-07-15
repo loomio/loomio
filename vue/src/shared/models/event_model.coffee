@@ -6,14 +6,14 @@ export default class EventModel extends BaseModel
   @indices: ['id', 'actorId', 'discussionId', 'sequenceId', 'position', 'depth', 'parentId']
 
   @eventTypeMap:
-    group:              'groups'
-    discussion:         'discussions'
-    poll:               'polls'
-    outcome:            'outcomes'
-    stance:             'stances'
-    comment:            'comments'
-    comment_vote:       'comments'
-    membership:         'memberships'
+    group: 'groups'
+    discussion: 'discussions'
+    poll: 'polls'
+    outcome: 'outcomes'
+    stance: 'stances'
+    comment: 'comments'
+    comment_vote: 'comments'
+    membership: 'memberships'
     membership_request: 'membershipRequests'
 
   relationships: ->
@@ -69,7 +69,7 @@ export default class EventModel extends BaseModel
     @kind == 'new_comment' && @isSurface()
 
   isForkable: ->
-    @discussion().isForking() && @kind == 'new_comment'
+    @discussion() && @discussion().isForking() && @kind == 'new_comment'
 
   isForking: ->
     _.includes @discussion().forkedEventIds, @id

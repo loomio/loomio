@@ -175,17 +175,16 @@ div
 
 .thread-item__link abbr {
   font-weight: normal;
-  color: $grey-on-white;
 }
 
 .thread-item__action {
   /* // @include lmoBtnLink; */
-  color: $link-color;
+  /* color: $link-color; */
 }
 
 .thread-item__action--view-edits {
   /* // @include lmoBtnLink; */
-  color: $grey-on-white;
+  /* color: $grey-on-white; */
 }
 
 .thread-item__timestamp {

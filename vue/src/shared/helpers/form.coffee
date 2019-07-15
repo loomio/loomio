@@ -15,7 +15,7 @@ export submitDiscussion = (scope, model, options = {}) ->
     submitFn: if model.isForking() then model.fork else model.save
     flashSuccess: "discussion_form.messages.#{actionName(model)}"
     failureCallback: ->
-      scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
+      # scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
     successCallback: (data) ->
       _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
       if model.isForking()
@@ -28,7 +28,7 @@ export submitOutcome = (scope, model, options = {}) ->
   submit(scope, model, _.merge(
     flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
     failureCallback: ->
-      scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+      # scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
     successCallback: (data) ->
       nextOrSkip(data, scope, model)
   , options))
@@ -40,7 +40,6 @@ export submitStance = (scope, model, options = {}) ->
       EventBus.$emit 'processing'
     successCallback: (data) ->
       model.poll().clearStaleStances()
-      scrollTo '.poll-common-card__results-shown'
       EventBus.$emit 'stanceSaved'
     cleanupFn: ->
       EventBus.$emit 'doneProcessing'
@@ -55,7 +54,7 @@ export submitPoll = (scope, model, options = {}) ->
       model.customFields.can_respond_maybe = model.canRespondMaybe if model.pollType == 'meeting'
       model.setErrors({})
     failureCallback: ->
-      scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+      # scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
     successCallback: (data) ->
       _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
       model.removeOrphanOptions()

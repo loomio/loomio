@@ -1,33 +1,33 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import { applySequence } from '@/shared/helpers/apply'
-import { iconFor }       from '@/shared/helpers/poll'
+import { submitForm } from '@/shared/helpers/form'
+import { addDays } from 'date-fns'
 
 export default
   props:
     poll: Object
     close: Function
+
+  created: ->
+    @poll.closingAt = addDays(new Date, 7)
+    @submit = submitForm @, @poll,
+      submitFn: @poll.reopen
+      flashSuccess: "poll_common_reopen_form.#{@poll.pollType}_reopened"
+      successCallback: => @close()
   data: ->
     isDisabled: false
-  computed:
-    icon: ->
-      iconFor(@poll)
 </script>
+
 <template lang="pug">
 v-card.poll-common-modal
   .lmo-disabled-form(v-show='isDisabled')
   v-card-title
-    .md-toolbar-tools.lmo-flex__space-between
-      v-icon {{ icon }}
-      h1.lmo-h1(v-t="'poll_common_reopen_form.title'")
-      dismiss-modal-button(:close="close")
-  v-card-text
-    .lmo-slide-animation
-      .poll-common-reopen-form
-        span.lmo-hint-text(v-t="'poll_common_reopen_form.helptext'")
-        poll-common-closing-at-field(:poll='poll')
-
-    //- dialog_scroll_indicator
-  v-card-actions.lmo-slide-animation
-    poll-common-reopen-form-actions.animated(:poll='poll' :close="close")
+    h1.headline(v-t="'poll_common_reopen_form.title'")
+    v-spacer
+    dismiss-modal-button(:close="close")
+  v-card-text.poll-common-reopen-form
+    span.lmo-hint-text(v-t="'poll_common_reopen_form.helptext'")
+    poll-common-closing-at-field(:poll='poll')
+  v-card-actions
+    v-btn.poll-common-reopen-form__submit(color="primary" @click='submit()', v-t="'common.action.reopen'")
 </template>

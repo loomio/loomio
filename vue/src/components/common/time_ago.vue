@@ -1,18 +1,15 @@
-<style lang="css">
-.time-ago { border: 0; }
-.timeago{
-  white-space: nowrap;
-}
-
-</style>
-
 <script lang="coffee">
-import * as moment from 'moment'
+import { approximate, exact } from '@/shared/helpers/format_time'
 
 export default
   functional: true
   props:
-    date: Object
+    date: Date
   render: (createElement, context) ->
-    createElement('abbr', {class: 'timeago'}, [moment(context.props.date).fromNow()])
+    createElement('abbr', {class: 'time-ago', attrs: {title: exact(context.props.date)}}, [approximate(context.props.date)])
 </script>
+
+<style lang="css">
+.time-ago{ white-space: nowrap; }
+abbr[title] { border-bottom: none; }
+</style>

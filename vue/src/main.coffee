@@ -4,7 +4,6 @@ import vuetify from '@/vuetify'
 import router from '@/routes.coffee'
 import i18n from '@/i18n.coffee'
 import app from '@/app.vue'
-import moment from 'moment-timezone'
 import marked from '@/marked'
 import '@/observe_visibility'
 import './registerServiceWorker'
@@ -28,7 +27,7 @@ boot ->
     Session.apply(data)
 
     if AppConfig.sentry_dsn
-      Sentry.configureScope (scope) =>
+      Sentry.configureScope (scope) ->
         scope.setUser pick(Session.user(), ['id', 'email', 'username'])
 
     initLiveUpdate()

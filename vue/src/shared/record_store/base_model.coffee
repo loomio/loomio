@@ -1,5 +1,6 @@
 import utils from './utils'
 import Vue from 'vue'
+import { isEqual } from 'date-fns'
 
 export default class BaseModel
   @singular: 'undefinedSingular'
@@ -75,7 +76,7 @@ export default class BaseModel
     original = @clonedFrom[attributeName]
     current = @[attributeName]
     if utils.isTimeAttribute(attributeName)
-      !(original == current or current.isSame(original))
+      !(original == current or isEqual(original, current))
     else
       original != current
 
@@ -100,7 +101,7 @@ export default class BaseModel
       snakeName = _.snakeCase(attributeName)
       camelName = _.camelCase(attributeName)
       if utils.isTimeAttribute(camelName)
-        data[snakeName] = @[camelName].utc().format()
+        data[snakeName] = @[camelName].toISOString()
       else
         data[snakeName] = @[camelName]
       true # so if the value is false we don't break the loop
@@ -118,7 +119,7 @@ export default class BaseModel
   hasMany: (name, userArgs = {}) ->
     args = _.defaults userArgs,
       from: name
-      with:  @constructor.singular+'Id'
+      with: @constructor.singular + 'Id'
       of: 'id'
       dynamicView: true
 
@@ -126,8 +127,8 @@ export default class BaseModel
 
   belongsTo: (name, userArgs) ->
     defaults =
-      from: name+'s'
-      by: name+'Id'
+      from: name + 's'
+      by: name + 'Id'
 
     args = _.assign defaults, userArgs
 

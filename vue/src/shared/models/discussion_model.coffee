@@ -5,7 +5,6 @@ import HasDrafts        from '@/shared/mixins/has_drafts'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import HasGuestGroup    from '@/shared/mixins/has_guest_group'
-import * as moment from 'moment'
 
 export default class DiscussionModel extends BaseModel
   @singular: 'discussion'
@@ -145,7 +144,7 @@ export default class DiscussionModel extends BaseModel
   markAsSeen: ->
     return unless @discussionReaderId and !@lastReadAt
     @remote.patchMember @keyOrId(), 'mark_as_seen'
-    @update(lastReadAt: moment())
+    @update(lastReadAt: new Date)
 
   markAsRead: (id) ->
     return if !@discussionReaderId or @hasRead(id)
@@ -185,7 +184,7 @@ export default class DiscussionModel extends BaseModel
     RangeSet.firstMissing(@ranges, @readRanges)
 
   dismiss: ->
-    @update(dismissedAt: moment())
+    @update(dismissedAt: new Date)
     @remote.patchMember @keyOrId(), 'dismiss'
 
   recall: ->

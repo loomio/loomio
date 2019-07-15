@@ -1,7 +1,8 @@
 <script lang="coffee">
-import TimeService from '@/shared/services/time_service'
 import Records     from '@/shared/services/records'
 import { format, parse }  from 'date-fns'
+import { times } from 'lodash'
+import { hoursOfDay } from '@/shared/helpers/format_time'
 
 export default
   props:
@@ -20,7 +21,7 @@ export default
     dateStr: null
     timeStr: null
     dateMenu: false
-    times: TimeService.meetingTimesOfDay()
+    times: hoursOfDay
 
   methods:
     updateNewValue: ->

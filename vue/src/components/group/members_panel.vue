@@ -3,7 +3,6 @@ import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
-import fromNow        from '@/mixins/from_now'
 import UrlFor         from '@/mixins/url_for'
 import Session        from '@/shared/services/session'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
@@ -12,7 +11,7 @@ import {includes, some, compact} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 
 export default
-  mixins: [fromNow, AnnouncementModalMixin, WatchRecords, UrlFor]
+  mixins: [AnnouncementModalMixin, WatchRecords, UrlFor]
 
   data: ->
     group: Records.groups.fuzzyFind(@$route.params.key)

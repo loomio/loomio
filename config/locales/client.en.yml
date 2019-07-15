@@ -90,7 +90,7 @@ en:
     time_zone: Time zone
     local_time: Local time
     attachments: Attachments
-    active_time_ago: active {{time_ago}}
+    active_time_ago: Last active {{time_ago}}
     confirm_discard_changes: Discard your changes?
     time:
       am: am

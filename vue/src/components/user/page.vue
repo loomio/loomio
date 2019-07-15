@@ -15,18 +15,17 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
-import fromNow        from '@/mixins/from_now'
 import UrlFor         from '@/mixins/url_for'
 import UserModalMixin from '@/mixins/user_modal'
 
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 import WatchRecords from '@/mixins/watch_records'
 
-import _isEmpty     from 'lodash/isEmpty'
-import _sortBy     from 'lodash/sortBy'
+import { isEmpty }     from 'lodash'
+import { approximate } from '@/shared/helpers/format_time'
 
 export default
-  mixins: [ UrlFor, fromNow, UserModalMixin, WatchRecords ]
+  mixins: [ UrlFor, UserModalMixin, WatchRecords ]
 
   data: ->
     user: {}
@@ -43,6 +42,7 @@ export default
       EventBus.$emit 'pageError', error
 
   methods:
+    approximate: approximate
     init: ->
       if @user = (Records.users.find(@$route.params.key) or Records.users.find(username: @$route.params.key))[0]
         EventBus.$emit 'currentComponent', {title: @user.name, page: 'userPage'}
@@ -60,8 +60,7 @@ export default
         @loadingGroupsForExecuting = false
 
   computed:
-    isEmptyUser: ->
-      _isEmpty @user
+    isEmptyUser: -> isEmpty @user
 
 </script>
 
@@ -76,7 +75,7 @@ v-container.user-page.v-container-max-width
         p {{user.shortBio}}
         div(v-t="{ path: 'user_page.locale_field', args: { value: user.localeName() } }", v-if='user.localeName()')
         div(v-t="{ path: 'user_page.location_field', args: { value: user.location } }", v-if='user.location')
-        div(v-t="{ path: 'user_page.online_field', args: { value: fromNow(user.lastSeenAt) } }", v-if='user.lastSeenAt')
+        div(v-t="{ path: 'user_page.online_field', args: { value: approximate(user.lastSeenAt) } }", v-if='user.lastSeenAt')
       v-layout.user-page__avatar(column align-center style="max-width: 200px")
         user-avatar(:user='user', size='featured')
         v-btn.user-page__contact-user(color="accent" outlined v-if='canContactUser' @click='openContactRequestModal(user)' v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")

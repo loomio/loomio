@@ -1,13 +1,12 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
 import UrlFor         from '@/mixins/url_for'
-import exactDate      from '@/mixins/exact_date'
-
+import { exact }      from '@/shared/helpers/format_time'
 import { listenForTranslations } from '@/shared/helpers/listen'
 import { map, compact, pick } from 'lodash'
 
 export default
-  mixins: [UrlFor, exactDate]
+  mixins: [UrlFor]
   props:
     discussion: Object
 
@@ -37,6 +36,7 @@ export default
         to: @urlFor(group)
 
   methods:
+    exact: exact
     viewed: (viewed) ->
       @discussion.markAsSeen() if viewed
 
@@ -78,8 +78,8 @@ export default
           mid-dot
           span(v-t="'thread_context.forked_from'")
           router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
-      .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
-        v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
+      .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
+        v-tooltip(bottom) {{ exact(discussion.closedAt) }}
     formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion' skip-fetch)
     attachment-list(:attachments="discussion.attachments")

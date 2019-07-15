@@ -1,6 +1,6 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import { exactDateWithTime } from '@/shared/helpers/filters'
+import { exact } from '@/shared/helpers/format_time'
 
 export default
   props:
@@ -17,7 +17,7 @@ export default
       switch field_name
         when "group_id" then { name: Records.groups.find(@version.changes.group_id[1]).name}
         when "private" then { private: if @version.changes.private[1] then "private" else "public"}
-        when "closing_at" then {time: exactDateWithTime(@version.changes.closing_at[1])}
+        when "closing_at" then {time: exact(@version.changes.closing_at[1])}
 </script>
 <template lang="pug">
 .revision-history-content
