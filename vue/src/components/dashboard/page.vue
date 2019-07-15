@@ -9,6 +9,7 @@ import ThreadFilter       from '@/shared/services/thread_filter'
 import GroupModalMixin    from '@/mixins/group_modal.coffee'
 import { capitalize, take, keys, every } from 'lodash'
 import WatchRecords from '@/mixins/watch_records'
+import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
 
 export default
   mixins: [GroupModalMixin, WatchRecords]
@@ -52,12 +53,13 @@ export default
       @watchRecords
         collections: ['discussions']
         query: (store) =>
+          now = new Date()
           @views.proposals = ThreadFilter(store, filters: @filters('show_proposals'))
-          @views.today     = ThreadFilter(store, filters: @filters('hide_proposals'), from: '1 second ago', to: '-10 year ago')
-          @views.yesterday = ThreadFilter(store, filters: @filters('hide_proposals'), from: '1 day ago',    to: '1 second ago')
-          @views.thisweek  = ThreadFilter(store, filters: @filters('hide_proposals'), from: '1 week ago',   to: '1 day ago')
-          @views.thismonth = ThreadFilter(store, filters: @filters('hide_proposals'), from: '1 month ago',  to: '1 week ago')
-          @views.older     = ThreadFilter(store, filters: @filters('hide_proposals'), from: '3 month ago',  to: '1 month ago')
+          @views.today     = ThreadFilter(store, filters: @filters('hide_proposals'), from: subDays(now, 1), to: addDays(now, 10000))
+          @views.yesterday = ThreadFilter(store, filters: @filters('hide_proposals'), from: subDays(now, 2), to: subDays(now, 1))
+          @views.thisweek  = ThreadFilter(store, filters: @filters('hide_proposals'), from: subWeeks(now, 1), to: subDays(now, 2))
+          @views.thismonth = ThreadFilter(store, filters: @filters('hide_proposals'), from: subMonths(now, 1),  to: subWeeks(now, 1))
+          @views.older     = ThreadFilter(store, filters: @filters('hide_proposals'), from: subMonths(now, 6),  to: subMonths(now, 1))
 
     viewName: (name) ->
       if @filter == 'show_muted'

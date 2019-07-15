@@ -3,11 +3,11 @@ import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
-import fromNow        from '@/mixins/from_now'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import { approximate } from '@/shared/helpers/format_time'
 
 export default
-  mixins: [fromNow, AnnouncementModalMixin]
+  mixins: [AnnouncementModalMixin]
   props:
     group: Object
     pending: Boolean
@@ -24,6 +24,8 @@ export default
         group_id: @group.id
 
   methods:
+    approximate: approximate
+
     show: ->
       return false if (@recordCount() == 0 && @pending)
       @initialFetch() if @canView()
@@ -126,8 +128,8 @@ v-card.membership-card.lmo-no-print(v-if='show()', :class="{'membership-card--pe
       v-list-item-content
         v-list-item-title {{membership.userName() || membership.user().email }}
         v-list-item-subtitle.membership-card__last-seen
-          span(v-if='membership.user().lastSeenAt', v-t="{ path: 'user_page.online_field', args: { value: fromNow(membership.user().lastSeenAt) } }")
-          span(v-if='!membership.acceptedAt', v-t="{ path: 'user_page.invited', args: { value: fromNow(membership.user().createdAt) } }")
+          span(v-if='membership.user().lastSeenAt', v-t="{ path: 'user_page.online_field', args: { value: approximate(membership.user().lastSeenAt) } }")
+          span(v-if='!membership.acceptedAt', v-t="{ path: 'user_page.invited', args: { value: approximate(membership.user().createdAt) } }")
       v-list-item-action
         membership-dropdown(:membership="membership")
     loading(v-if='loader.loading')

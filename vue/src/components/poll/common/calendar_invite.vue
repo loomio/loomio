@@ -1,6 +1,7 @@
 <script lang="coffee">
 import Records     from '@/shared/services/records'
-import TimeService from '@/shared/services/time_service'
+import { exact } from '@/shared/helpers/format_time'
+import { parseISO } from 'date-fns'
 import { map, sortBy, head } from 'lodash'
 export default
   props:
@@ -8,7 +9,7 @@ export default
   created: ->
     @options = map @outcome.poll().pollOptions(), (option) ->
       id:        option.id
-      value:     TimeService.displayDateAndTime(option.name)
+      value:     exact(parseISO(option.name))
       attendees: option.stances().length
 
     @bestOption = head sortBy @options, (option) ->

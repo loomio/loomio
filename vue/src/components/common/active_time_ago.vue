@@ -1,14 +1,14 @@
 <script lang="coffee">
-import * as moment from 'moment'
+import { approximate } from '@/shared/helpers/format_time'
+
 export default
   props:
-    date: Object
+    date: Date
 
   methods:
-    timeAgo: ->
-      moment(@date).fromNow()
+    approximate: approximate
 
 </script>
 <template lang="pug">
-span(v-t="{path: 'common.active_time_ago', args: {time_ago: timeAgo()}}")
+span(v-t="{path: 'common.active_time_ago', args: {time_ago: approximate(date)}}")
 </template>

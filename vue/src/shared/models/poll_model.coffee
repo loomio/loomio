@@ -6,8 +6,7 @@ import HasTranslations  from '@/shared/mixins/has_translations'
 import HasGuestGroup    from '@/shared/mixins/has_guest_group'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
-import * as moment from 'moment'
-
+import { addDays, startOfHour } from 'date-fns'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -33,22 +32,12 @@ export default class PollModel extends BaseModel
   groups: ->
     _.compact [@group(), @discussionGuestGroup(), @guestGroup()]
 
-  # the polls which haven't closed have the highest importance
-  # (and so have the lowest value here)
-  # Both are sorted by distance from the current time
-  # (IE, polls which have closed or will close closest to now are most important)
-  importance: (now) ->
-    if @closedAt?
-      Math.abs(@closedAt - now)
-    else
-      0.0001 * Math.abs(@closingAt - now)
-
   defaultValues: ->
     discussionId: null
     title: ''
     details: ''
     detailsFormat: 'html'
-    closingAt: moment().add(3, 'days').startOf('hour')
+    closingAt: startOfHour(addDays(new Date, 3))
     pollOptionNames: []
     pollOptionIds: []
     customFields: {
@@ -58,7 +47,6 @@ export default class PollModel extends BaseModel
     }
     files: []
     imageFiles: []
-    # optionDate: moment().format('YYYY-MM-DD')
 
   audienceValues: ->
     name: @group().name

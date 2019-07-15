@@ -1,7 +1,6 @@
 <script lang="coffee">
 import AppConfig   from '@/shared/services/app_config'
 import EventBus    from '@/shared/services/event_bus'
-import TimeService from '@/shared/services/time_service'
 
 export default
   props:

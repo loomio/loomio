@@ -1,6 +1,8 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
+import { exact }   from '@/shared/helpers/format_time'
+
 import { format, utcToZonedTime } from 'date-fns-tz'
 import { isSameYear }  from 'date-fns'
 
@@ -23,12 +25,7 @@ export default
       else
         Flash.error('poll_meeting_form.time_slot_already_added')
 
-    timeInZone: (zone) ->
-      formatStr = if isSameYear(@value, @min)
-        'MMMM d, h:mm a'
-      else
-        'yyyy MMMM d, h:mm a'
-      format(utcToZonedTime(@value, zone), formatStr, timeZone: zone)
+    timeInZone: (zone) -> exact(@value, zone)
 
 </script>
 <template lang="pug">

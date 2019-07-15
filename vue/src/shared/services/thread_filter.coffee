@@ -1,26 +1,19 @@
 import Session from '@/shared/services/session'
+import { subWeeks } from 'date-fns'
 import { each } from 'lodash'
-import * as moment from 'moment'
-
-
-parseTimeOption = (options) ->
-  # we pass times in something human-readable like '1 month ago'
-  # this translates that into today.subtract(1, 'month')
-  parts = options.split ' '
-  moment().startOf('day').subtract(parseInt(parts[0]), parts[1])
 
 export default (store, options) ->
   chain = store.discussions.collection.chain()
   chain = chain.find(groupId: { $in: options.group.organisationIds() })      if options.group
-  chain = chain.find(lastActivityAt: { $gt: parseTimeOption(options.from) }) if options.from
-  chain = chain.find(lastActivityAt: { $lt: parseTimeOption(options.to) })   if options.to
+  chain = chain.find(lastActivityAt: { $gt: options.from }) if options.from
+  chain = chain.find(lastActivityAt: { $lt: options.to })   if options.to
 
   if options.ids
     chain = chain.find(id: {$in: options.ids})
   else
     each [].concat(options.filters), (filter) ->
       chain = switch filter
-        when 'show_recent'    then chain.find(lastActivityAt: { $gt: moment().startOf('day').subtract(6, 'week').toDate() })
+        when 'show_recent'    then chain.find(lastActivityAt: { $gt: subWeeks(new Date, 6) })
         when 'show_unread'    then chain.where (thread) -> thread.isUnread()
         when 'hide_unread'    then chain.where (thread) -> !thread.isUnread()
         when 'show_dismissed' then chain.where (thread) -> thread.isDismissed()

@@ -352,7 +352,7 @@ module Dev::NintiesMoviesHelper
     PollService.publish_closing_soon
 
     #'outcome_created'
-    poll = FactoryBot.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
+    poll = FactoryBot.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago, closing_at: 1.day.ago)
 
     PollService.create(poll: poll, actor: jennifer)
     outcome = FactoryBot.build(:outcome, poll: poll)
@@ -364,7 +364,7 @@ module Dev::NintiesMoviesHelper
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
-    poll = FactoryBot.build(:poll, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
+    poll = FactoryBot.build(:poll, closing_at: 4.days.from_now, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
     PollService.create(poll: poll, actor: patrick)
     jennifer_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: jennifer_stance, actor: jennifer)

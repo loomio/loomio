@@ -1,7 +1,6 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import DiscussionModel      from '@/shared/models/discussion_model'
 import { includes } from 'lodash'
-import * as moment from 'moment'
 
 export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel
@@ -29,5 +28,5 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
       params:
         from: options['from'] or 0
         per: options['per'] or 100
-        since: options['since'] or moment().startOf('day').subtract(6, 'week').toDate()
-        timeframe_for: options['timeframe_for'] or 'last_activity_at'
+        # since: options['since'] or moment().startOf('day').subtract(6, 'week').toDate()
+        # timeframe_for: options['timeframe_for'] or 'last_activity_at'

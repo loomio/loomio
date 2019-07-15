@@ -1,6 +1,6 @@
 class API::VersionsController < API::RestfulController
   def show
-    self.resource = service.reduce(model:model, index:params[:index].to_i)
+    self.resource = service.reduce(model: model, index: params[:index].to_i)
     respond_with_resource
   end
 

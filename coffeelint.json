@@ -59,7 +59,7 @@
     },
     "no_throwing_strings": {
         "name": "no_throwing_strings",
-        "level": "error"
+        "level": "ignore"
     },
     "no_backticks": {
         "name": "no_backticks",

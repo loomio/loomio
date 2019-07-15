@@ -1,30 +1,31 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
-import TimeService from '@/shared/services/time_service'
-import * as moment from 'moment'
-
-# import { format} from 'date-fns'
+import { format, formatDistance, parse } from 'date-fns'
+import { hoursOfDay, exact} from '@/shared/helpers/format_time'
 
 export default
   props:
     poll: Object
+
   data: ->
-    closingHour: moment(@poll.closingAt).format('h:mm a')
-    closingDate: moment(@poll.closingAt).format('YYYY-MM-DD')
-    dateToday: moment().format('YYYY-MM-DD')
-    times: TimeService.timesOfDay()
+    closingHour: format(@poll.closingAt, 'h:mm a')
+    closingDate: format(@poll.closingAt, 'yyyy-MM-dd')
+    dateToday: format(new Date, 'yyyy-MM-dd')
+    times: hoursOfDay
     timeZone: AppConfig.timeZone
     isShowingDatePicker: false
+
   methods:
+    exact: exact
     updateClosingAt: ->
-      @poll.closingAt = moment(@closingDate).startOf('day').add(@closingHour, 'hours')
-    allowedMinutes: (m) ->
-      m % 15 == 0
+      @poll.closingAt = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd h:mm a", new Date())
+
+  computed:
+    label: ->
+      formatDistance(@poll.closingAt, new Date, {addSuffix: true})
   watch:
-    closingDate: (val) ->
-      @updateClosingAt()
-    closingHour: (val) ->
-      @updateClosingAt()
+    closingDate: (val) -> @updateClosingAt()
+    closingHour: (val) -> @updateClosingAt()
 </script>
 
 <template lang="pug">
@@ -36,7 +37,7 @@ export default
           template(v-slot:activator='{ on }')
             v-text-field(v-model='closingDate' v-on='on' prepend-icon="mdi-calendar")
               template(v-slot:label)
-                poll-common-closing-at(:poll="poll")
+                span(v-t="{ path: 'common.closing_in', args: { time: label } }" :title="exact(poll.closingAt)")
           v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate' :min='dateToday' no-title @input="isShowingDatePicker = false")
       v-spacer
       v-combobox.poll-common-closing-at-field__timepicker(prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
