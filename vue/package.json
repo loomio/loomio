@@ -61,13 +61,11 @@
     "sass": "^1.22.3",
     "sass-loader": "^7.1.0",
     "selenium-server-standalone-jar": "latest",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1",
     "vue-cli-plugin-coffee": "latest",
-    "vue-cli-plugin-pug": "^1.0.7",
-    "vue-cli-plugin-vuetify": "^0.5.0",
+    "vue-cli-plugin-pug": "latest",
+    "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "^2.5.21",
-    "vuetify-loader": "^1.2.2",
+    "vuetify-loader": "latest",
     "webpack": "latest"
   }
 }

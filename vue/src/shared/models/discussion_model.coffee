@@ -5,6 +5,7 @@ import HasDrafts        from '@/shared/mixins/has_drafts'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import HasGuestGroup    from '@/shared/mixins/has_guest_group'
+import { isEqual, isAfter } from 'date-fns'
 
 export default class DiscussionModel extends BaseModel
   @singular: 'discussion'
@@ -21,7 +22,7 @@ export default class DiscussionModel extends BaseModel
     HasTranslations.apply @
     HasGuestGroup.apply @
 
-  defaultValues: =>
+  defaultValues: ->
     private: null
     usesMarkdown: true
     lastItemAt: null
@@ -68,7 +69,7 @@ export default class DiscussionModel extends BaseModel
     @recordStore.reactions.find(reactableId: @id, reactableType: "Discussion")
 
   translationOptions: ->
-    title:     @title
+    title: @title
     groupName: @groupName()
 
   authorName: ->
@@ -99,7 +100,8 @@ export default class DiscussionModel extends BaseModel
     @discussionReaderId? and (!@lastReadAt? or @unreadItemsCount() > 0)
 
   isDismissed: ->
-    @discussionReaderId? and @dismissedAt? and @dismissedAt.isSameOrAfter(@lastActivityAt)
+    @discussionReaderId? and @dismissedAt? and
+    (isEqual(@dismissedAt, @lastActivityAt) or isAfter(@dismissedAt, @lastActivityAt))
 
   hasUnreadActivity: ->
     @isUnread() && @unreadItemsCount() > 0
