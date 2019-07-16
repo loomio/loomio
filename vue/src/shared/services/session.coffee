@@ -26,7 +26,6 @@ loadLocale = (locale) ->
         "date-fns/locale/#{locale.toLowerCase()}"
       ).then (dateLocale) ->
         i18n.dateLocale = dateLocale
-        Vue.forceUpdate()
       import(
         ###
         webpackChunkName: "locale-[request]"
