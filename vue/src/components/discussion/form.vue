@@ -37,7 +37,7 @@ export default
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
-        console.log "running query:", @discussion, Session.user().formalGroups()
+        # console.log "running query:", @discussion, Session.user().formalGroups()
         @availableGroups = filter(Session.user().formalGroups(), (group) -> AbilityService.canStartThread(group))
 
   methods:
