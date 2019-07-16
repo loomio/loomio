@@ -13,6 +13,7 @@ export default (callback) ->
   client.get('site').then (siteResponse) ->
     siteResponse.json().then (appConfig) ->
       appConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
       forEach appConfig, (v, k) -> Vue.set(AppConfig, k, v)
 
       if AppConfig.sentry_dsn
@@ -24,7 +25,7 @@ export default (callback) ->
               attachProps: true
           ]
 
-      ['shortcut icon', 'apple-touch-icon'].forEach (name) =>
+      ['shortcut icon', 'apple-touch-icon'].forEach (name) ->
         link = document.createElement('link')
         link.rel = name
         link.href = AppConfig.theme.icon_src
@@ -35,7 +36,4 @@ export default (callback) ->
         if model && AppConfig.permittedParams[model.singular]
           model.serializableAttributes = AppConfig.permittedParams[model.singular]
 
-      fetch('/api/v1/translations?lang=en&vue=true').then (res) ->
-        res.json().then (data) ->
-          i18n.setLocaleMessage('en', data)
-          callback()
+      callback()

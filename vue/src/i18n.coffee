@@ -1,7 +1,14 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
+import en from '@/lang/en'
 
 Vue.use(VueI18n)
+
+i18n = new VueI18n
+  locale: 'en'
+  fallbackLocale: 'en'
+  messages: {en: en}
+  silentTranslationWarn: true
 
 Vue.prototype.$lt = (value) ->
   if (typeof value == 'string')
@@ -13,5 +20,4 @@ Vue.prototype.$lt = (value) ->
     choice = value.choice
     @$t(path, args)
 
-
-export default new VueI18n({locale: 'en', fallbackLocale: 'en'})
+export default i18n

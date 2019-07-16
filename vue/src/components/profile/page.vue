@@ -108,7 +108,7 @@ v-container.profile-page
               router-link.md-caption(v-t="'profile_page.help_translate'", to='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation', target='_blank')
           v-flex.profile-page__avatar.mx-3
             user-avatar(:user='user', size='featured')
-            v-btn.md-accent.md-button--no-h-margin.profile-page__change-picture(@click='changePicture()', v-t="'profile_page.change_picture_link'")
+            v-btn.profile-page__change-picture(color="accent" @click='changePicture()' v-t="'profile_page.change_picture_link'")
       v-card-actions.profile-page__update-account
         v-btn.profile-page__change-password(color="accent" outlined @click='changePassword()' v-t="'profile_page.change_password_link'")
         v-spacer

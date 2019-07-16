@@ -16,6 +16,7 @@ export default class UserModel extends BaseModel
   defaultValues: ->
     shortBio: ''
     shortBioFormat: 'html'
+    locale: AppConfig.defaultLocale
 
   localeName: ->
     (_.find(AppConfig.locales, (h) => h.key == @locale) or {}).name

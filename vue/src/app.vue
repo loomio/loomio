@@ -4,7 +4,7 @@ import AuthModalMixin from '@/mixins/auth_modal'
 import EventBus from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
-import { each } from 'lodash'
+import { each, compact, truncate } from 'lodash'
 
 export default
   mixins: [AuthModalMixin]
@@ -14,6 +14,7 @@ export default
   created: ->
     each AppConfig.theme.vuetify, (value, key) =>
       @$vuetify.theme.themes.light[key] = value if value
+      true
 
   mounted: ->
     @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
@@ -27,8 +28,8 @@ export default
   methods:
     setCurrentComponent: (options) ->
       @pageError = null
-      title = _.truncate(options.title or @$t(options.titleKey), {length: 300})
-      document.querySelector('title').text = _.compact([title, AppConfig.theme.site_name]).join(' | ')
+      title = truncate(options.title or @$t(options.titleKey), {length: 300})
+      document.querySelector('title').text = compact([title, AppConfig.theme.site_name]).join(' | ')
 
       AppConfig.currentGroup      = options.group
       AppConfig.currentDiscussion = options.discussion
