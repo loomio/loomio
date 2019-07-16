@@ -13,13 +13,7 @@ namespace :locales do
     end
 
     AppConfig.locales['supported'].each do |locale|
-      path = if locale == "en"
-        "#{Rails.root}/vue/src/lang/en.json"
-      else
-        "#{Rails.root}/public/locales/#{locale}.json"
-      end
-
-      File.open(path, "w") do |f|
+      File.open("#{Rails.root}/vue/src/locales/#{locale}.json", "w") do |f|
         f.write single_curlify(Hash(YAML.load_file("config/locales/client.#{locale}.yml")[locale])).to_json
       end
     end

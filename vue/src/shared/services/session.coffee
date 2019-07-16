@@ -8,21 +8,33 @@ import Vue from 'vue'
 import { hardReload } from '@/shared/helpers/window'
 import { pickBy, identity } from 'lodash'
 
-loadedLanugages = ['en']
+loadedLocales = ['en']
 
-setI18nLanguage = (lang) ->
-  i18n.locale = lang
-  document.querySelector('html').setAttribute('lang', lang)
+setI18nLanguage = (locale) ->
+  i18n.locale = locale
+  document.querySelector('html').setAttribute('lang', locale)
 
-loadLanguageAsync = (lang) ->
-  if (i18n.locale != lang)
-    if loadedLanugages.includes(lang)
-      setI18nLanguage(lang)
+loadLocale = (locale) ->
+  if (i18n.locale != locale)
+    if loadedLocales.includes(locale)
+      setI18nLanguage(locale)
     else
-      fetch("/locales/#{lang}.json").then (res) -> res.json().then (data) ->
-        loadedLanugages.push(lang)
-        i18n.setLocaleMessage(lang, data)
-        setI18nLanguage(lang)
+      import(
+        ###
+        webpackChunkName: "dateLocale-[request]"
+        ###
+        "date-fns/locale/#{locale.toLowerCase()}"
+      ).then (dateLocale) ->
+        i18n.dateLocale = dateLocale
+        Vue.forceUpdate()
+      import(
+        ###
+        webpackChunkName: "locale-[request]"
+        ###
+        "@/locales/#{locale}.json").then (data) ->
+          loadedLocales.push(locale)
+          i18n.setLocaleMessage(locale, data)
+          setI18nLanguage(locale)
 
 export default new class Session
   fetch: ->
@@ -66,7 +78,7 @@ export default new class Session
     @currentGroup? && @currentGroup.id
 
   updateLocale: (locale) ->
-    loadLanguageAsync(locale)
+    loadLocale(locale)
 
   providerIdentity: ->
     validProviders = AppConfig.identityProviders.map (p) -> p.name

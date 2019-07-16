@@ -1,6 +1,10 @@
 import { differenceInHours, formatDistanceStrict, isSameYear, isValid } from 'date-fns'
 import { format, utcToZonedTime } from 'date-fns-tz'
+import { en } from 'date-fns/locale'
 import AppConfig from '@/shared/services/app_config'
+import i18n from '@/i18n'
+
+i18n.dateLocale = en
 
 # human friendly date format
 # given a date
@@ -12,9 +16,9 @@ export approximate = (date, zone) ->
   throw {"invalid date", date} unless isValid(date)
   now = new Date
   if differenceInHours(now, date) < 24
-    formatDistanceStrict(date, new Date(), {addSuffix: true})
+    formatDistanceStrict(date, new Date(), {addSuffix: true, locale: i18n.dateLocale})
   else if isSameYear(date, now)
-    format(date, "MMMM d")
+    format(date, "MMMM d", {locale: i18n.dateLocale})
   else
     format(date, "yyyy-MM-dd")
 
@@ -25,7 +29,7 @@ export exact = (date, zone = AppConfig.timeZone) ->
     'MMMM d, h:mm a'
   else
     'yyyy MMMM d, h:mm a'
-  format(utcToZonedTime(date, zone), formatStr, timeZone: zone)
+  format(utcToZonedTime(date, zone), formatStr, {timeZone: zone, locale: i18n.dateLocale})
 
 export hoursOfDay = [
   "12:00 AM"
