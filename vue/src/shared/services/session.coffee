@@ -22,8 +22,10 @@ loadLocale = (locale) ->
       import(
         ###
         webpackChunkName: "dateLocale-[request]"
+        webpackInclude: /\.js$/
+        webpackExclude: /\.js.flow$/
         ###
-        "date-fns/locale/#{locale.toLowerCase()}"
+        "date-fns/locale/#{locale.replace('_','-')}/index.js"
       ).then (dateLocale) ->
         i18n.dateLocale = dateLocale
       import(

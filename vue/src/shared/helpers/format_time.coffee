@@ -1,10 +1,10 @@
 import { differenceInHours, formatDistanceStrict, isSameYear, isValid } from 'date-fns'
 import { format, utcToZonedTime } from 'date-fns-tz'
-import { en } from 'date-fns/locale'
+import defaultLocale from 'date-fns/locale/en-US'
 import AppConfig from '@/shared/services/app_config'
 import i18n from '@/i18n'
 
-i18n.dateLocale = en
+i18n.dateLocale = defaultLocale
 
 # human friendly date format
 # given a date
