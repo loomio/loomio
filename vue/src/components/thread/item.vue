@@ -109,11 +109,10 @@ div
           .thread-item__link.grey--text.body-2.action-menu
             router-link.grey--text(:to='link')
               time-ago(:date='event.createdAt')
-            space
           slot(name="actions")
         slot
   template(v-if='!collapsed && event.isSurface()')
-    event-children(:parent-event='event')
+    event-children(:parent-event='event' :key="event.id")
 </template>
 
 <style lang="css">
