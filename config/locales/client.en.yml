@@ -1915,7 +1915,7 @@ en:
     name_required: Please enter a name
     terms_required: You must agree to the Terms of Service
     account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated!
-    privacy_notice: "Personal data is collected when you use {{siteName}}. <br/> Read our <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a> to learn more."
+    privacy_notice: "We do not sell your personal data or use third party trackers<br><a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
 
     welcome: New to {{siteName}}?
     welcome_back: Welcome back, {{name}}!

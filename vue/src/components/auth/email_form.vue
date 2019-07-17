@@ -30,10 +30,19 @@ export default
 <template lang="pug">
 .auth-email-form
   .auth-email-form__email
-    label(translate='auth_form.email')
     v-text-field#email.lmo-primary-form-input(name='email' type='email' :placeholder="$t('auth_form.email_placeholder')" v-model='email')
     validation_errors(:subject='user' field='email')
-  v-card-actions
-    v-spacer
     v-btn.auth-email-form__submit(color="primary" @click='submit()' :disabled='!email' v-t="'auth_form.continue_with_email'")
 </template>
+
+<style lang="sass">
+.auth-email-form__email input
+  text-align: center
+
+.auth-email-form
+  max-width: 256px
+  margin: 0 auto
+.auth-email-form__submit
+  margin: 0 auto
+  display: block
+</style>
