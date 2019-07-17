@@ -57,6 +57,8 @@ km:
   membership_requests_page:
     approve: 'អនុម័ត '
     ignore: មិនអើពើ
+  invitation_form:
+    invite_people: 'អញ្ជើញមនុស្ស​'
   memberships_page:
     members: 'សមាជិក'
     name_label: 'ឈ្មោះ'
@@ -66,6 +68,8 @@ km:
     name_label: 'ឈ្មោះ'
     email_label: 'អ៊ីម៉ែល'
     locale_label: 'ភាសា'
+  activity_card:
+    context: 'បរិបទ '
   thread_group:
     aria_label: 'ឈ្មោះក្រុម'
   thread_context:

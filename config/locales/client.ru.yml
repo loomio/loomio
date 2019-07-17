@@ -60,7 +60,6 @@ ru:
     score: Оценка опроса
   new_poll_types:
     proposal: Предложение
-    poll: Опрос
     meeting: Голосование за время встречи
   timezones:
     local: местное время ({{значение}})
@@ -334,6 +333,8 @@ ru:
     translate_outcome: Перевести результат
     pin_thread: Закрепить тему
     tag_thread: Управлять метками
+    close_thread: Закрыть тему
+    delete_thread: Удалить тему
   cover_photo_form:
     heading: 'Новое фото обложки'
     upload_link: 'Загрузить новое фото обложки'
@@ -404,6 +405,7 @@ ru:
   group_previous_proposals_card:
     heading: Предыдущие предложения
   invitation_form:
+    invite_people: 'Пригласите людей'
     copy_link: 'Копировать'
     custom_message: 'Сообщение от пользователя'
     add_members: 'Добавить участников'
@@ -455,10 +457,11 @@ ru:
     closed:
       closed: 'Тема закрыта'
   activity_card:
-    unread: Непрочитанные
     latest: Последний
+    context: Описание
     attachment_display:
       image_alt: 'Прикрепленное изображение'
+    comment: Комментарий
   thread_group:
     aria_label: 'Название группы'
   thread_context:
@@ -538,6 +541,7 @@ ru:
   discussions_panel:
     unread: Непрочитанные
     closed: Закрыто
+    include_subgroups: Подгруппы
   members_panel:
     order_by_name: 'Название'
     header_name: 'Название'

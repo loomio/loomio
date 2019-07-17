@@ -45,7 +45,6 @@ hu:
     ranked_choice: Sorrend szavazás
   new_poll_types:
     proposal: Javaslat
-    poll: Szavazás
     meeting: Idő szavazás
   timezones:
     local: Helyi idő ({{value}})
@@ -385,6 +384,7 @@ hu:
   action_dock:
     edit_stance: Álláspontod megváltoztatása
     delete_comment: Komment törlése
+    close_thread: Tred lezárása
   join_group_button:
     join_group: Kapcsolódj a csoporthoz
   membership_request_form:
@@ -439,7 +439,7 @@ hu:
   group_previous_proposals_card:
     heading: Előző javaslatok
   invitation_form:
-    invite_people: 'Hívj meg másokat'
+    invite_people: 'Hívj meg embereket'
     copy_link: 'Másolás'
     send: 'Küldés'
     done: 'Kész'
@@ -481,8 +481,8 @@ hu:
   discussion:
     started_by: '<strong>{{name}}</strong> indította'
   activity_card:
-    unread: Olvasatlan
     latest: Legutóbbi
+    context: Leírás
   thread_group:
     aria_label: 'Csoport neve'
   thread_context:
@@ -523,6 +523,7 @@ hu:
   discussions_panel:
     unread: Olvasatlan
     closed: Zárva
+    include_subgroups: Alcsoportok
   members_panel:
     order_by_name: 'Név'
     header_name: 'Név'

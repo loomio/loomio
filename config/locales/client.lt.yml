@@ -43,7 +43,6 @@ lt:
     meeting: Laiko apklausa
   new_poll_types:
     proposal: Pasiūlymas
-    poll: Apklausa
     meeting: Laiko apklausa
   common:
     you: Tu
@@ -165,6 +164,7 @@ lt:
     privacy_label: 'Privatumas'
   action_dock:
     delete_comment: Ištrinti komentarą
+    delete_thread: Ištrinti giją
   join_group_button:
     messages:
       joined_group: 'Dabar jūs esate {{group}} grupės narys'
@@ -278,6 +278,8 @@ lt:
   discussion:
     activity: 'Veikla'
     load_previous: 'Įkelti ankstesnę veiklą'
+  activity_card:
+    context: Kontekstas
   thread_group:
     aria_label: 'Grupės pavadinimas'
   thread_context:
@@ -311,6 +313,7 @@ lt:
     label: Priedai
   discussions_panel:
     closed: Uždarytas
+    include_subgroups: Pogrupiai
   members_panel:
     header_username: 'Naudotojo vardas'
   poll_common_form:

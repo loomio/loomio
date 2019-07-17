@@ -46,7 +46,6 @@ ro:
     poll: Sondaj
   new_poll_types:
     proposal: Propunere
-    poll: Sondaj
   timezones:
     local: Ora locala ({{value}})
   common:
@@ -284,6 +283,7 @@ ro:
     show_history: Arata istorie editari
     pin_thread: Marcheaza conversatie
     unpin_thread: De-marcheaza conversatie
+    delete_thread: Sterge discutia
   cover_photo_form:
     aria_label: 'Modificare poza fundal'
     heading: 'Poza noua de fundal'
@@ -357,7 +357,7 @@ ro:
   group_previous_proposals_card:
     heading: Propuneri anterioare
   invitation_form:
-    invite_people: 'Invitare membri'
+    invite_people: 'Invita oameni'
     copy_link: 'Copiaza'
     send: 'Trimite'
     done: 'Gata'
@@ -410,8 +410,9 @@ ro:
   discussion:
     started_by: 'Inceput de <strong>{{name}}</strong>'
   activity_card:
-    unread: Necitit
     latest: Cel mai nou
+    context: Context
+    comment: Comenteaza
   thread_group:
     aria_label: 'Numele grupului'
   thread_context:

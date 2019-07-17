@@ -25,7 +25,6 @@ tr:
     dot_vote: Oy kullan
   new_poll_types:
     proposal: Öneri
-    poll: Anket
   timezones:
     local: Yerel saat ({{value}})
   common:
@@ -211,6 +210,7 @@ tr:
   action_dock:
     edit_stance: Konumunu değiştir
     tag_thread: Etiketleri yönet
+    delete_thread: Müzakereyi sil
   cover_photo_form:
     heading: 'Yeni kapak fotoğrafı'
     upload_link: 'Yeni kapak fotoğrafı yükle'
@@ -360,7 +360,7 @@ tr:
     heading: Geçmiş öneriler
     see_more: Daha fazlasını görün
   invitation_form:
-    invite_people: 'Kişileri Davet Et'
+    invite_people: 'Kişileri davet et'
     group: 'Grup'
     shareable_link: 'Paylaşılabilir bağlantı'
     copy_link: 'Kopyala'
@@ -492,8 +492,8 @@ tr:
     volume:
       mute_message: 'Müzakerenin sesi kısıldı'
   activity_card:
-    unread: Okunmamış
     latest: En yeniler
+    context: İçerik
     attachment_display:
       aria_label: 'Dosya eklendi:'
       image_alt: 'Resim eklendi'
@@ -603,6 +603,7 @@ tr:
   discussions_panel:
     unread: Okunmamış
     closed: Kapalı
+    include_subgroups: Alt gruplar
   members_panel:
     order_by_name: 'İsim'
     header_name: 'İsim'

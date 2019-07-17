@@ -26,7 +26,6 @@ da:
     meeting: Find tidspunkt
   new_poll_types:
     proposal: Forslag
-    poll: Meningsmåling
     meeting: Find et tidspunkt
   timezones:
     local: Lokal tid ({{value}})
@@ -308,6 +307,7 @@ da:
       members_count: '{{count}} mennesker vil blive notificeret'
   action_dock:
     edit_stance: Rediger stillingtagen
+    delete_thread: Slet debat
   cover_photo_form:
     aria_label: 'Skift forsidefoto'
     heading: 'Nyt forsidefoto'
@@ -486,7 +486,7 @@ da:
     see_more: Se mere
   invitation_form:
     aria_label: 'Invitation form'
-    invite_people: 'Invite folk'
+    invite_people: 'Inviter folk'
     group: 'Gruppe'
     group_placeholder: 'Vælg en gruppe'
     shareable_link: 'Delbart link'
@@ -661,11 +661,12 @@ da:
     volume:
       unmute_message: 'Notifikationer slået til.'
   activity_card:
-    unread: Ulæst
     latest: Seneste
+    context: Beskrivelse
     attachment_display:
       aria_label: 'Fil vedhæftet:'
       image_alt: 'Vedhæftet billede'
+    comment: Kommenter
   thread_group:
     aria_label: 'Gruppenavn'
   thread_context:
@@ -842,6 +843,7 @@ da:
   discussions_panel:
     unread: Ulæst
     closed: Lukket
+    include_subgroups: Undergrupper
   members_panel:
     order_by_name: 'Navn'
     header_name: 'Navn'
@@ -917,7 +919,6 @@ da:
     proposal_created: Forslag oprettet
     proposal_updated: Forslag redigeret
   poll_poll_form:
-    tool_tip_collapsed: Mål popularitet eller find det rigtige valg
     start_header: Opret meningsmåling
     edit_header: Rediger meningsmåling
     title_placeholder: F.eks. hvor vil du på ferie?
@@ -938,7 +939,6 @@ da:
     title_placeholder: F.eks. HVordan skal vi fordele vores budget?
     details_placeholder: Beskriv alle detaljer som er nødvendige for at folk deltage
     add_option_placeholder: Tilføj mulighed
-    dots_per_person: Antal prikker til fordeling
     dot_vote_created: Prikafstemning oprettet
     dot_vote_updated: Prikafstemning redigeret
   poll_score_form:

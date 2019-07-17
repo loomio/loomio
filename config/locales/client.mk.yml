@@ -62,6 +62,8 @@ mk:
   membership_requests_page:
     approve: Одобри
     ignore: Игнорирај
+  invitation_form:
+    invite_people: 'Покани луѓе'
   memberships_page:
     members: 'Членови'
     name_label: 'Име'
@@ -80,6 +82,8 @@ mk:
   inbox_page:
     no_groups:
       or: или
+  activity_card:
+    context: Контекст
   thread_group:
     aria_label: 'Име на групата'
   thread_context:

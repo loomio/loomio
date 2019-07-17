@@ -27,7 +27,6 @@ cs:
     meeting: Doba hlasování
   new_poll_types:
     proposal: Návrh
-    poll: Hlasování
     meeting: Doba hlasování
   timezones:
     local: Místní čas ({{value}})
@@ -321,6 +320,8 @@ cs:
     translate_thread: Přeložit kontext
     edit_stance: Změnit postoj
     tag_thread: Správa štítků
+    close_thread: Zavřít vlákno
+    delete_thread: Smazat vlákno
   cover_photo_form:
     image_size_helptext: 'Ideální velikost obrázku je 1400 x 320px'
     upload_success: 'Titulní fotka byla úspěšně aktualizována'
@@ -439,6 +440,7 @@ cs:
   group_decisions_card:
     see_more: "Zobrazit všechna: ({{count}}) rozhodnutí"
   invitation_form:
+    invite_people: 'Pozvat další'
     group: 'Skupina'
     group_placeholder: 'Vybrat skupinu'
     shareable_link: 'Odkaz ke sdílení'
@@ -575,11 +577,12 @@ cs:
     load_previous: 'Načíst dřívější aktivity'
     started_by: 'Vytvořeno <strong>{{name}}</strong>'
   activity_card:
-    unread: Nepřečteno
     latest: Nejnovější
+    context: Souvislost
     attachment_display:
       aria_label: 'Přiložený soubor:'
       image_alt: 'Přiložený obrázek'
+    comment: Komentář
   thread_group:
     aria_label: 'Název skupiny'
   thread_context:
@@ -679,6 +682,7 @@ cs:
   discussions_panel:
     unread: Nepřečteno
     closed: Zavřená
+    include_subgroups: Podskupiny
   members_panel:
     order_by_name: 'Název'
     header_name: 'Název'

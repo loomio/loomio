@@ -15,7 +15,6 @@ ar:
     poll: استطلاع رأي
   new_poll_types:
     proposal: اقتراح
-    poll: استطلاع رأي
   common:
     you: أنت
     learn_more: تعلم المزيد
@@ -193,6 +192,7 @@ ar:
     edit_poll: تعديل استطلاع الرأي
     edit_stance: تغيير الموقف
     delete_comment: حذف التعليق
+    delete_thread: حذف الموضوع
   join_group_button:
     join_group: انضم إلى الفريق
     messages:
@@ -470,11 +470,12 @@ ar:
     volume:
       mute_message: 'تم كتم الموضوع'
   activity_card:
-    unread: غير مقروءة
     latest: الأحدث
+    context: سياق النقاش
     attachment_display:
       aria_label: 'الملف المرفق: '
       image_alt: 'صورة مرفقة'
+    comment: تعليق
   thread_group:
     aria_label: 'اسم المجموعة'
   thread_context:
@@ -623,6 +624,7 @@ ar:
   discussions_panel:
     unread: غير مقروءة
     closed: مغلقة
+    include_subgroups: الفِرَق الفرعية
   members_panel:
     order_by_name: 'الاسم '
     header_name: 'الاسم '

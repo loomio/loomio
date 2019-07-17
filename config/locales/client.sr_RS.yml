@@ -131,7 +131,7 @@ sr_RS:
     heading: Претходни Предлози
     see_more: Види више
   invitation_form:
-    invite_people: 'Позови Људе'
+    invite_people: 'Позови људе'
     group: 'Група'
   memberships_page:
     members: 'Чланови'
@@ -161,7 +161,7 @@ sr_RS:
   discussion:
     started_by: 'Креирао/ла <strong>{{name}}</strong>'
   activity_card:
-    unread: Непрочитано
+    context: Контекст
   thread_group:
     aria_label: 'Назив групе'
   thread_context:

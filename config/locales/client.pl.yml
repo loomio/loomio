@@ -42,7 +42,6 @@ pl:
     meeting: Ankieta datowa
   new_poll_types:
     proposal: Propozycja
-    poll: Ankieta
     meeting: Ankieta datowa
   timezones:
     local: Czas lokalny ({{value}})
@@ -382,6 +381,7 @@ pl:
     comment_copied: Adres URL komentarza skopiowano do schowka
     poll_copied: Adres URL decyzji skopiowano do schowka
     discussion_copied: Adres URL wątku skopiowano do schowka
+    close_thread: Zamknij wątek
   cover_photo_form:
     aria_label: 'Zmień formę zdjęcia głównego'
     heading: 'Nowe zdjęcie główne'
@@ -512,6 +512,7 @@ pl:
       request_approved_success: Zgłoszenie członkostwa zaakceptowane
       request_ignored_success: Zgłoszenie członkostwa zignorowane
   invitation_form:
+    invite_people: 'Zaproś ludzi'
     copy_link: 'Kopiuj'
     send: 'Wyślij'
     done: 'Zrobione'
@@ -600,8 +601,8 @@ pl:
     load_previous: 'Załaduj wcześniejsze aktywności'
     started_by: 'Rozpoczęte przez <strong>{{name}}</strong>'
   activity_card:
-    unread: Nieprzeczytane
     latest: Ostatnie
+    context: Kontekst
     attachment_display:
       aria_label: 'Dołączony plik:'
       image_alt: 'Dołączone zdjęcie'
@@ -651,6 +652,7 @@ pl:
   discussions_panel:
     unread: Nieprzeczytane
     closed: Zamknięta
+    include_subgroups: Podgrupy
   members_panel:
     order_by_name: 'Nazwa'
     header_name: 'Nazwa'

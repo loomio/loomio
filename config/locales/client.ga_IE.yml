@@ -9,7 +9,6 @@ ga_IE:
     poll: Vótáil
   new_poll_types:
     proposal: Togra
-    poll: Vótáil
   timezones:
     local: An t-am áitiúil ({{luach}})
   common:
@@ -214,6 +213,7 @@ ga_IE:
     privacy_label: 'Príobháideachas'
   action_dock:
     edit_stance: Athraigh do sheasamh
+    delete_thread: Scriosadh an tsnáith
   cover_photo_form:
     heading: 'Grianghraf cumhdaigh nua'
     upload_link: 'Uasluchtaigh grianghraf cumhdaigh nua'
@@ -312,7 +312,7 @@ ga_IE:
     heading: Tograí Roimhe Seo
     see_more: Féach tuilleadh
   invitation_form:
-    invite_people: 'Tabhair Cuirí Do Dhaoine'
+    invite_people: 'Tabhair cuirí do dhaoine'
     group: 'Baicle'
     shareable_link: 'Nasc is féidir a roinnt'
     copy_link: 'Macasamhlaigh'
@@ -444,8 +444,8 @@ ga_IE:
     load_previous: 'Luchtaigh gníomhaíocht níos luaithe ná seo'
     started_by: 'Tosaithe ag <strong>{{name}}</strong> '
   activity_card:
-    unread: Neamhléite
     latest: Is déanaí
+    context: Comhthéacs
     attachment_display:
       aria_label: 'Tá comhad ceangailte:'
       image_alt: 'An íomhá cheangailte'
@@ -521,6 +521,7 @@ ga_IE:
   discussions_panel:
     unread: Neamhléite
     closed: Dúnta
+    include_subgroups: Fobhaiclí
   members_panel:
     order_by_name: 'Ainm'
     header_name: 'Ainm'

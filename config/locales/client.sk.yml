@@ -69,6 +69,8 @@ sk:
   membership_requests_page:
     approve: Schváliť
     ignore: Ignorovať
+  invitation_form:
+    invite_people: 'Pozvať ďalších'
   memberships_page:
     members: 'Členovia'
     name_label: 'Meno'
@@ -90,7 +92,7 @@ sk:
     no_groups:
       or: alebo
   activity_card:
-    unread: Neprečítané
+    context: Kontext
   thread_group:
     aria_label: 'Názov skupiny'
   thread_context:

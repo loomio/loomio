@@ -64,7 +64,6 @@ he:
     score: ניקוד סקר
   new_poll_types:
     proposal: הצעה
-    poll: סקר
     meeting: הצבעת זמן
   timezones:
     local: זמן מקומי ({{value}})
@@ -511,6 +510,8 @@ he:
     poll_copied: כתובת הURL של ההחלטה הועתקה לClipboard
     discussion_copied: כתובת הURL של השיחה הועתקה לClipboard
     tag_thread: ניהול תגיות
+    close_thread: סגור שיחה
+    delete_thread: מחיקת שיחה
   cover_photo_form:
     aria_label: 'שנה תמונת קאבר של הטופס'
     heading: 'תמונת קאבר חדשה'
@@ -776,7 +777,7 @@ he:
     see_more: "צפה בכל: ({{count}}) ההחלטות"
   invitation_form:
     aria_label: 'טופס הזמנה'
-    invite_people: 'הזמן אנשים'
+    invite_people: 'הזמינו אנשים'
     invite_people_to_group: 'Iהזמנה ל{{name}}'
     group: 'קבוצה'
     group_placeholder: 'בחירת קבוצה'
@@ -1038,8 +1039,8 @@ he:
       closed: 'השיחה נסגרה'
   activity_card:
     beginning: התחלה
-    unread: לא-נקרא
     latest: אחרונים
+    context: הקשר
     chronological: כרונולוגית
     nested: מקונן
     attachment_display:
@@ -1047,6 +1048,7 @@ he:
       image_alt: 'תמונה מצורפת'
     n_previous: 'טען  {{count}} תגובות קודמות'
     n_more: 'טען {{count}} תגובות'
+    comment: הערה
   thread_group:
     aria_label: 'שם הקבוצה'
   thread_context:
@@ -1273,6 +1275,7 @@ he:
   discussions_panel:
     unread: לא-נקרא
     closed: סגור
+    include_subgroups: תת קבוצה
   members_panel:
     order_by_name: 'שם'
     header_name: 'שם'
@@ -1433,7 +1436,6 @@ he:
         <p>השתמש בסקר למדידת הפופולריות או להצעת אפשרויות.</p>
         <p>תן כמה אפשרויות לבחור מהן, החלט אם משתתפים בוחרים אפשרות אחת או כמה אפשרויות.</p>
         <p>כולם בוחרים ויכולים להוסיף הצהרה אם ירצו. התוצאות תוצגנה בגרף עמודות.</p>
-    tool_tip_collapsed: מדוד פופולריות או הצע אפשרויות
     start_header: התחל סקר
     edit_header: עריכת סקר
     title_placeholder: 'לדוגמא: לאן תרצה ללכת בחופשה?'
@@ -1465,8 +1467,6 @@ he:
     title_placeholder: 'לדוגמא: איך אנחנו צריכים להקצות את התקציב שלנו?'
     details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
     add_option_placeholder: הוסף אפשרות
-    dots_per_person: נקודות פר אדם
-    dots_per_person_helptext: מספר הנקודות שיחלק כל משתתף
     dot_vote_created: הצבעת נקודות נוצרה
     dot_vote_updated: הצבעת נקודות עודכנה
   poll_score_form:
@@ -1572,24 +1572,7 @@ he:
     stance_created: בחירה תועדה במערכת
     stance_updated: בחירה עודכנה
   thread_item:
-    comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> בתגובה ל<strong>{{title}}</strong>"
-    discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ערך את כותרת השיחה"
-    discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ערך את תוכן השיחה"
-    discussion_attachments_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ערך את הקבצים המצורפים לשיחה"
-    discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> עדכן את הגדרות הפרטיות של השיחה"
-    discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ערך את השיחה"
-    discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> העביר את השיחה מ<strong>{{title}}</strong>"
-    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> סגר את השיחה"
-    discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> פתח מחדש את השיחה"
-    discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> יצר פיצול של שיחה: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
-    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> שיתף את התוצאה עבור <strong>{{title}}</strong>"
-    poll_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> פתח מחדש את {{polltype}}: <strong>{{title}}</strong>"
-    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> סגר את {{polltype}}: <strong>{{title}}</strong>"
-    poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> התחיל את {{polltype}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ערך את {{polltype}}: <strong>{{title}}</strong>"
     poll_expired: "{{polltype}} נסגר: <strong>{{title}}</strong>"
-    stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> הצביע על: <strong>{{title}}</strong>"
     event_removed: "הוסר מהשיחה"
   poll_admin_page:
     title: אדמין (מנהל) - {{title}}

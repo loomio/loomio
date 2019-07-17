@@ -49,6 +49,8 @@ bg_BG:
   membership_requests_page:
     approve: Одобряване
     ignore: Игнориране
+  invitation_form:
+    invite_people: 'Поканете хора'
   memberships_page:
     members: 'Членове'
     name_label: 'Име'
@@ -59,6 +61,8 @@ bg_BG:
     name_label: 'Име'
     email_label: 'E-mail'
     locale_label: 'Език'
+  activity_card:
+    context: Контекст
   thread_context:
     close_thread: 'Затваряне'
   delete_comment_dialog:

@@ -108,6 +108,7 @@ te:
     approve: ఆమోదించండి
     ignore: విస్మరించు
   invitation_form:
+    invite_people: 'వ్యక్తులను ఆహ్వానించండి'
     copy_link: 'కాపీ చేయి'
     send: 'పంపించు'
     done: 'పూర్తయింది'
@@ -134,6 +135,8 @@ te:
     threads_from:
       today: 'నేడు'
       yesterday: 'నిన్న'
+  activity_card:
+    context: సందర్భం
   thread_group:
     aria_label: 'సమూహం పేరు'
   thread_context:

@@ -10,7 +10,6 @@ mi:
     dot_vote: Pōti ira
   new_poll_types:
     proposal: He whakatakoto
-    poll: Pōti
   common:
     expand: Whakanui
     ok_got_it: Kei te pai, kua mau
@@ -165,7 +164,6 @@ mi:
     form:
       title_label: Ingoa
   invitation_form:
-    invite_people: 'Pōwhiri atu'
     copy_link: 'Tārua'
     send: 'Tukua'
     done: 'Kua mutu'
@@ -192,7 +190,6 @@ mi:
     volume:
       unmute_message: 'Kua whakahoitia'
   activity_card:
-    unread: Kāhore anō kia kitea
     latest: Hou ake
   thread_group:
     aria_label: 'Ingoa rōpū'

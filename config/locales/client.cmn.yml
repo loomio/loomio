@@ -75,6 +75,8 @@ cmn:
       title_label: 名字
   membership_requests_page:
     approve: 批准
+  invitation_form:
+    invite_people: '邀请人'
   memberships_page:
     members: '成员'
     name_label: '名字'
@@ -83,6 +85,8 @@ cmn:
     name_label: '名字'
     email_label: '邮件'
     locale_label: '语言'
+  activity_card:
+    context: 上下文
   thread_context:
     close_thread: '关闭'
   delete_comment_dialog:

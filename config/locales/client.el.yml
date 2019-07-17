@@ -11,7 +11,6 @@ el:
     meeting: Χρόνος ψηφοφορίας
   new_poll_types:
     proposal: Πρόταση
-    poll: Ψηφοφορία
     meeting: Χρόνος ψηφοφορίας
   timezones:
     local: Τοπική ώρα ({{value}})
@@ -402,8 +401,8 @@ el:
   discussion:
     started_by: 'Ξεκίνησε από τον/την <strong>{{name}}</strong>'
   activity_card:
-    unread: Αδιάβαστα
     latest: Τελευταία
+    context: Περιεχόμενο
   thread_group:
     aria_label: 'Όνομα ομάδας'
   thread_context:
@@ -439,6 +438,7 @@ el:
   discussions_panel:
     unread: Αδιάβαστα
     closed: Έκλεισε
+    include_subgroups: Υποομάδες
   members_panel:
     order_by_name: 'Όνομα'
     header_name: 'Όνομα'

@@ -66,6 +66,8 @@ gl:
   membership_requests_page:
     approve: Dar o visto bo
     ignore: ignorar
+  invitation_form:
+    invite_people: 'Invitar xente'
   memberships_page:
     members: 'Membros'
     name_label: 'Nome'
@@ -86,7 +88,7 @@ gl:
     no_groups:
       or: ou
   activity_card:
-    unread: Sin ler
+    context: Contexto
   thread_group:
     aria_label: 'Nome do grupo'
   thread_context:

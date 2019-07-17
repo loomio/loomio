@@ -64,7 +64,6 @@ fr:
     score: Vote pondéré
   new_poll_types:
     proposal: Proposition
-    poll: Sondage
     meeting: Sondage horaire de réunion
   timezones:
     local: Heure locale ({{value}})
@@ -512,6 +511,8 @@ fr:
     poll_copied: URL de la décision copiée
     discussion_copied: URL de la discussion copiée
     tag_thread: Gérer les mots-clés
+    close_thread: Clore la discussion
+    delete_thread: Supprimer la discussion
   cover_photo_form:
     aria_label: 'Changer la forme de la photo de couverture'
     heading: 'Nouvelle photo de couverture'
@@ -1038,8 +1039,8 @@ fr:
       closed: 'Discussion close'
   activity_card:
     beginning: Début
-    unread: Non lu
     latest: Dernier
+    context: Contexte
     chronological: Chronologique
     nested: Imbriqué
     attachment_display:
@@ -1048,6 +1049,7 @@ fr:
     n_previous: 'Afficher {{count}} réponses précédentes'
     n_more: 'Afficher {{count}} réponses'
     add_comment: Ajouter un commentaire
+    comment: Ajouter un commentaire
   thread_group:
     aria_label: 'Nom du groupe'
   thread_context:
@@ -1274,6 +1276,7 @@ fr:
   discussions_panel:
     unread: Non lu
     closed: Clôturée
+    include_subgroups: Sous-groupes
   members_panel:
     order_by_name: 'Nom'
     header_name: 'Nom'
@@ -1434,7 +1437,6 @@ fr:
         <p>Utilisez un sondage pour mesurer la popularité d’une idée ou offrir un choix.</p>
         <p>Fournissez quelques options parmi lesquelles choisir. Décidez si les participants peuvent choisir une ou plusieurs options dans leur réponse.</p>
         <p>Chacun vote, et peut aussi ajouter une déclaration s’il le souhaite. Les résultats sont représentés dans un histogramme.</p>
-    tool_tip_collapsed: Mesurez une opinion ou proposez un choix
     start_header: Démarrer le sondage
     edit_header: Éditer le sondage
     title_placeholder: Par exemple « Où voulez-vous aller en vacances ? »
@@ -1466,8 +1468,6 @@ fr:
     title_placeholder: Par exemple « Comment devrions-nous allouer notre budget ? »
     details_placeholder: Partagez toutes les informations utiles pour participer
     add_option_placeholder: Ajouter une option
-    dots_per_person: Points par personne
-    dots_per_person_helptext: Le nombre de points dont disposent chaque participant⋅e
     dot_vote_created: Vote à points créé
     dot_vote_updated: Vote à points mis à jour
   poll_score_form:
@@ -1573,24 +1573,7 @@ fr:
     stance_created: Choix enregistré
     stance_updated: Choix mis à jour
   thread_item:
-    comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> en réponse à <strong>{{title}}</strong>"
-    discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a modifié le titre de la discussion"
-    discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a modifié le contexte de la discussion"
-    discussion_attachments_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a modifié la pièce-jointe de la discussion"
-    discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a modifié la visibilité de cette discussion"
-    discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a modifié la discussion"
-    discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a déplacé la discussion de <strong>{{title}}</strong>"
-    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a clos la discussion"
-    discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a relancé la discussion"
-    discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a scindé cette discussion : <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
-    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a partagé un résultat pour <strong>{{title}}</strong>"
-    poll_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a rouvert le {{polltype}}: <strong>{{title}}</strong>"
-    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a fermé le {{polltype}}: <strong>{{title}}</strong>"
-    poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a démarré un {{polltype}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a modifié le {{polltype}}: <strong>{{title}}</strong>"
     poll_expired: "{{polltype}} fermé: <strong>{{title}}</strong>"
-    stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a voté sur: <strong>{{title}}</strong>"
     event_removed: "retiré de la discussion"
   poll_admin_page:
     title: Administration - {{title}}

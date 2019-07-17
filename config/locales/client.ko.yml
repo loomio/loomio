@@ -2,7 +2,19 @@ ko:
   current_plan_button:
     upgrade: 업그레이드
   loomio_tags:
+    tags: 태그
+    apply_tags: 태그 적용
+    new_tag: 태그 만들기
     name_label: 이름
+    color_label: 색깔
+    modal_title: 새 태그 만들기
+    modal_edit_title: 태그 수정
+    modal_destroy_title: 태그 삭제
+    destroy_tag: 태그 삭제
+    discussions_count_singular: ({{count}}개의 토론 주제)
+    discussions_count_plural: ({{count}}개의 토론 주제)
+    tag_created: 태그 저장됨
+    tag_destroyed: 태그 삭제됨
   new_poll_types:
     proposal: 제안
   common:
@@ -16,6 +28,7 @@ ko:
     notification_volume: '알림 볼륨'
     group: '그룹'
     groups: '그룹'
+    threads: '토론 주제'
     help: '도움말'
     privacy:
       privacy: '개인정보'
@@ -80,14 +93,15 @@ ko:
     quiet_label: "이메일 없음"
     mute_label: "음소거"
     discussion:
-      loud_description: "이 쓰레드와 관련한 활동이 있으면 메일을 받습니다."
+      title: "이메일 설정"
+      loud_description: "이 토론 주제에 새로운 활동이 있으면 이메일을 받습니다."
       normal_description: "누군가 제안하거나, 종료시키기 전이나, 성과를 작성할때마다 메일을 받습니다."
-      quiet_description: "이 쓰레드와 관련한 메일을 받지 않습니다."
-      apply_to_all: "이 그룹에 있는 모든 주제에 이 설정을 적용합니다."
+      quiet_description: "이 토론 주제에 대해서는 이메일을 받지 않습니다."
+      apply_to_all: "이 그룹에 있는 모든 토론 주제에 이 설정을 적용합니다."
       messages:
-        loud: "이 쓰레드의 활동 내역을 메일로 받습니다."
-        normal: "이 쓰레드의 제안에 관한 메일을 받습니다."
-        quiet: "이 쓰레드와 관련한 메일을 받지 않습니다."
+        loud: "이 토론 주제의 활동 내역을 이메일로 받게 됩니다."
+        normal: "이 토론 주제의 제안에 관해 이메일을 받게 됩니다."
+        quiet: "이 토론 주제와 관련한 이메일을 더이상 받지 않습니다."
     membership:
       title: " {{title}}을 위한 이메일 환경 설정"
       loud_description: "이 그룹의 모든 활동 내역을 이메일로 받습니다."
@@ -108,9 +122,13 @@ ko:
       messages:
         loud: "새로운 그룹에 모든 활동내역을 이메일로 받습니다."
         quiet: "새로운 그룹에 대해 이메일로 받지 않습니다."
+  close_explanation_modal:
+    aria_label: 토론 주제 닫기
+    close_thread: 토론 주제 닫기
+    image_alt: 모든 토론 주제 닫기
   mute_explanation_modal:
-    aria_label: 쓰레드 알림 해제
-    mute_thread: 쓰레드 알림 해제
+    aria_label: 토론 주제 알림 해제
+    mute_thread: 토론 주제 알림 해제
     image_alt: 사이드바에 있는 대기중인 쓰레드 선택
   dismiss_explanation_modal:
     aria_label: 주제를 기각합니다.
@@ -147,7 +165,11 @@ ko:
     sign_in: "대화에 참여하려면 로그인 하세요"
   sidebar:
     threads: '토론'
+    recent_threads: '최근 토론 주제'
+    unread_threads: '읽지 않은 토론 주제 ({{count}})'
+    muted_threads: '알림을 받지 않는 토론 주제'
     explore: '공개 그룹'
+    start_thread: 새 토론 주제
     aria_labels:
       heading: '사이드 바'
       threads_list: '쓰레드 액션'
@@ -156,6 +178,7 @@ ko:
   navbar:
     recent_title: '대시보드로 이동'
     unread_title: '읽지 않은 활동 보기'
+    start_thread: '새 토론 주제'
     notifications: '알림 패널'
     search:
       results_aria_label: '결과 검색하기'
@@ -169,6 +192,8 @@ ko:
     sign_in: '로그인'
     toggle_sidebar: '토글 사이드바'
     logo_title: '홈페이지'
+  membership_card:
+    discussion_members: "토론에 참여중인 멤버"
   membership_dropdown:
     make_coordinator: '코디네이터로 만들기'
     cancel_invitation: 초대 취소
@@ -205,6 +230,8 @@ ko:
     privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
   action_dock:
     edit_stance: 선택 변경
+    close_thread: 토론 주제 닫기
+    delete_thread: 쓰레드 삭제
   cover_photo_form:
     aria_label: '커버 사진 양식 교체'
     heading: '새로운 커버 사진'
@@ -361,7 +388,7 @@ ko:
     see_more: 더보기
   invitation_form:
     aria_label: '초대양식'
-    invite_people: '초대하기'
+    invite_people: '초대 명단'
     group: '그룹'
     group_placeholder: '그룹을 선택하세요'
     shareable_link: '공유가능링크 '
@@ -516,8 +543,8 @@ ko:
     load_previous: '이전 활동내역 보기'
     started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
   activity_card:
-    unread: 읽지않음
     latest: 최신
+    context: 내용
     attachment_display:
       aria_label: '첨부파일:'
       image_alt: '첨부이미지'
@@ -609,6 +636,7 @@ ko:
   discussions_panel:
     unread: 읽지않음
     closed: 종료
+    include_subgroups: 소그룹
   members_panel:
     order_by_name: '이름'
     header_name: '이름'

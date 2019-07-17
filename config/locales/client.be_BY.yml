@@ -93,6 +93,8 @@ be_BY:
   membership_requests_page:
     approve: Пацвердзіць
     ignore: Ігнараваць
+  invitation_form:
+    invite_people: 'Запрасіць людзей'
   add_members_modal:
     user_added_to_subgroup: '{{name}} дададзены ў падгрупу'
   memberships_page:
@@ -128,7 +130,7 @@ be_BY:
     no_groups:
       or: альбо
   activity_card:
-    unread: Непрачытаныя
+    context: Апісанне
   thread_group:
     aria_label: 'Назва групы'
   thread_context:

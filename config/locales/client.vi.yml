@@ -54,6 +54,8 @@ vi:
   membership_requests_page:
     approve: Chấp thuậ
     ignore: Bỏ qua
+  invitation_form:
+    invite_people: 'Mời thành viên'
   memberships_page:
     members: 'Thành viên'
     name_label: 'Tên'
@@ -64,6 +66,8 @@ vi:
     name_label: 'Tên'
     email_label: 'Email'
     locale_label: 'Ngôn ngữ'
+  activity_card:
+    context: Nội dung
   thread_context:
     close_thread: 'Đóng lại'
   delete_comment_dialog:

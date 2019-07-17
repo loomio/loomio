@@ -65,10 +65,10 @@ zh_TW:
   new_poll_types:
     proposal: 提案
     count: 數量
-    poll: 投票
+    poll: 選擇
     score: 分數
     ranked_choice: 排名
-    dot_vote: 預算
+    dot_vote: 分配
     meeting: 時間投票
   timezones:
     local: 本地時間 ({{value}})
@@ -84,7 +84,7 @@ zh_TW:
     time_zone: 時區
     local_time: 本地時間
     attachments: 附件
-    active_time_ago: 活躍 {{time_ago}}
+    active_time_ago: 最後活躍 {{time_ago}}
     confirm_discard_changes: 丟棄您的變更？
     time:
       am: am
@@ -392,6 +392,7 @@ zh_TW:
     new_comment: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 上評論"
     comment_replied_to: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回覆您的評論"
     reaction_created: "<strong>{{name}}</strong> 對您的 {{model}}<strong>{{title}}</strong> 做出了回應 <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/>"
+    reaction_created_vue: "<strong>{{name}}</strong> 做出了 {{reaction}} 反應到您的 {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您"
     user_reminded: "<strong>{{name}}</strong> 正在等候您參與 <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> 請求 <strong>{{title}}</strong> 的成員資格"
@@ -524,10 +525,16 @@ zh_TW:
     show_history: 顯示編輯歷史
     pin_thread: 釘選討論串
     unpin_thread: 取消釘選討論串
+    pin_event: 釘選到時間軸
+    unpin_event: 從時間軸移除
     comment_copied: 評論的 URL 已複製到剪貼簿
+    move_thread: 移動到群組
     poll_copied: 決策 URL 已複製到剪貼簿
     discussion_copied: 討論串 URL 已複製到剪貼簿
     tag_thread: 管理標籤
+    close_thread: 關閉討論串
+    reopen_thread: 重新開啟討論串
+    delete_thread: 刪除討論串
   cover_photo_form:
     aria_label: '變更封面照片表單'
     heading: '新的封面圖片'
@@ -981,7 +988,7 @@ zh_TW:
       updated: 電子郵件設定已更新
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
   thread_preview:
-    replies_count: "{{count} 個回覆"
+    replies_count: "{{count}} 個回覆"
     unread_count: "{{count}} 個未讀"
   dashboard_page:
     aria_label: '儀表板'
@@ -1067,9 +1074,12 @@ zh_TW:
       reopened: '討論串已重新開啟'
       closed: '討論串已關閉'
   activity_card:
+    event_pinned: "已釘選至時間軸"
+    event_unpinned: "已從時間軸移除"
     beginning: 開始
-    unread: 未讀
+    unread: "未讀 ({{count}})"
     latest: 最新
+    context: 論述
     chronological: 年代
     nested: 巢狀
     attachment_display:
@@ -1080,6 +1090,8 @@ zh_TW:
     add_comment: 加入意見
     add_poll: 新增投票
     add_outcome: 新增結果
+    comment: 意見
+    facilitate: 促進
   thread_group:
     aria_label: '群組名稱'
   thread_context:
@@ -1309,7 +1321,7 @@ zh_TW:
   discussions_panel:
     unread: 未讀
     closed: 封閉
-    include_subgroups: 包含子群組
+    include_subgroups: 子群組
   members_panel:
     sort: '排序'
     order_label: "訂購"
@@ -1488,7 +1500,7 @@ zh_TW:
         <p>使用投票來衡量人氣或是提供選項。</p>
         <p>提供一些選項來供群組成員選取。決定參與者可以選取一個或多個選項來當做他們的回應。</p>
         <p>每個人投票，且如果他們想要的話也可以同時輸入一段陳述。結果會以長條圖呈現。</p>
-    tool_tip_collapsed: 測量人氣或是提供選項
+    tool_tip_collapsed: 從選項清單中選擇
     start_header: 啟動投票
     edit_header: 編輯投票
     tip: 提供多種選項
@@ -1518,15 +1530,15 @@ zh_TW:
         <p>點投票是列出選項清單順序的方法。</p>
         <p>參與者會被給予有限的「點」，其可以被分配在他們喜歡的的選項來表示自己的偏好。</p>
         <p>這個過程會產生一個累計的長條圖以及個別分配，讓您可以考慮各種觀點。</p>
-    tool_tip_collapsed: 分配預算以將選項排序
+    tool_tip_collapsed: 分配點數預算
     start_header: 啟動點投票
     edit_header: 編輯點投票
-    tip: 在選項間分配預算。（點投票）
+    tip: 分配點數預算
     title_placeholder: 例如：我們要如何分配預算？
     details_placeholder: 提供更詳細的資訊給需要參與的夥伴們
     add_option_placeholder: 新增選項
     dots_per_person: 每人幾點
-    dots_per_person_helptext: 每個參與者將會被分配到的點數
+    dots_per_person_helptext: 每個人被要求分配的總點數。
     dot_vote_created: 點投票已建立
     dot_vote_updated: 點投票已更新
   poll_score_form:
@@ -1536,7 +1548,7 @@ zh_TW:
     tool_tip_collapsed: 以比例為選項評分
     start_header: 啟動分數投票
     edit_header: 編輯分數投票
-    tip: 以比例為選項評分
+    tip: 以滑動條對每個選項評分
     title_placeholder: 例如：以 0-9 的分數對候選人評分
     details_placeholder: 提供任何參與的人可能需要知道的細節
     add_option_placeholder: 新增選項
@@ -1663,7 +1675,7 @@ zh_TW:
     poll_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 重新開啟了 {{polltype}}：<strong>{{title}}</strong>"
     poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 關閉了 {{polltype}}：<strong>{{title}}</strong>"
     poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 啟動了 {{polltype}}：<strong>{{title}}</strong>"
-    poll_created_no_title: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 已啟動 {{polltype}}</strong>"
+    poll_created_no_title: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 已啟動 {{polltype}}</strong>"
     poll_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 編輯了 {{polltype}}：<strong>{{title}}</strong>"
     poll_expired: "{{polltype}} 已關閉：<strong>{{title}}</strong>"
     stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>投票給：<strong>{{title}}</strong>"

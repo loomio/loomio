@@ -43,7 +43,6 @@ nb_NO:
     ranked_choice: Rangering
   new_poll_types:
     proposal: Forslag
-    poll: Avstemning
     meeting: Tidspunkt
   timezones:
     local: Lokal tid ({{value}})
@@ -475,6 +474,7 @@ nb_NO:
     comment_copied: Kommentar-URL kopiert til utklippstavlen
     poll_copied: Beslutnings-URL kopiert til utklippstavlen
     discussion_copied: Tråd-URL kopiert til utklippstavlen
+    close_thread: Lukk tråd
   cover_photo_form:
     aria_label: 'Bytt forsidebilde skjema'
     heading: 'Nytt forsidebilde'
@@ -547,7 +547,6 @@ nb_NO:
     form:
       title_label: Navn
   invitation_form:
-    invite_people: 'Inviter folk'
     group: 'Gruppe'
     group_placeholder: 'Velg en gruppe'
     copy_link: 'Kopier'
@@ -588,8 +587,9 @@ nb_NO:
   discussion:
     started_by: 'Startet av <strong>{{name}}</strong>'
   activity_card:
-    unread: Ulest
     latest: Siste
+    context: Kontekst
+    comment: Kommentar
   thread_context:
     email_settings: 'Innstillinger for e-post'
     edit: 'Rediger'

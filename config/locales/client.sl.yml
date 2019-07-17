@@ -93,6 +93,8 @@ sl:
   membership_requests_page:
     approve: Potrdi
     ignore: Prezri
+  invitation_form:
+    invite_people: 'Povabi še koga'
   memberships_page:
     members: 'Člani'
     name_label: 'Ime'
@@ -124,7 +126,7 @@ sl:
   discussion:
     started_by: 'Začel/a <strong>{{name}}</strong>'
   activity_card:
-    unread: Neprebrano
+    context: Opis
   thread_group:
     aria_label: 'Ime skupine'
   thread_context:

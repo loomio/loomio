@@ -61,7 +61,6 @@ nl_NL:
   new_poll_types:
     proposal: Voorstel
     count: Telling
-    poll: Peiling
     meeting: Moment bevragen
   timezones:
     local: Plaatselijke tijd ({{value}})
@@ -401,6 +400,7 @@ nl_NL:
     pin_thread: Bord vastprikken
     unpin_thread: Bord ontprikken
     tag_thread: Labels beheren
+    delete_thread: Bord verwijderen
   cover_photo_form:
     aria_label: 'Formulier groepsfoto veranderen'
     heading: 'Nieuwe groepsfoto'
@@ -610,7 +610,7 @@ nl_NL:
     see_more: "Zie alles: ({{count}}) beslissingen"
   invitation_form:
     aria_label: 'Uitnodiging van'
-    invite_people: 'Nodig mensen uit'
+    invite_people: 'Mensen uitnodigen'
     invite_people_to_group: 'Uitnodiging voor {{name}}'
     group: 'Groep'
     group_placeholder: 'Selecteer een groep'
@@ -823,8 +823,8 @@ nl_NL:
       unmute_message: 'Discussie demping uit'
   activity_card:
     beginning: Eerste
-    unread: Ongelezen
     latest: Laatste
+    context: Beschrijving
     chronological: Chronologisch
     nested: Genesteld
     attachment_display:
@@ -833,6 +833,7 @@ nl_NL:
     n_previous: 'Laad {{count}} eerdere antwoorden'
     n_more: 'Laad {{count}} antwoorden'
     add_comment: Opmerking toevoegen
+    comment: Becommentarieer
   thread_group:
     aria_label: 'Groepsnaam'
   thread_context:
@@ -1033,6 +1034,7 @@ nl_NL:
   discussions_panel:
     unread: Ongelezen
     closed: Gesloten
+    include_subgroups: Subgroepen
   members_panel:
     order_by_name: 'Naam'
     header_name: 'Naam'
@@ -1166,7 +1168,6 @@ nl_NL:
         <p>Gebruik een 'Peiling' om populariteit te meten of een een keuze aan te bieden.</p>
         <p>Voorzie enkele opties om uit te kiezen. Beslis of de deelnemers een of meerdere opties mogen antwoorden. Decide if participants choose single or multiple options as their response.</p>
         <p>Iedereen stemt mee en kan indien gewenst een opmerking meegeven. Resultaten worden voorgesteld in een balkgrafiek.</p>
-    tool_tip_collapsed: Meet de populariteit van de verschillende opties
     start_header: '''Peiling'' starten'
     edit_header: Peiling bewerken
     title_placeholder: bijv. Waar wil je je verlof doorbrengen?
@@ -1198,7 +1199,6 @@ nl_NL:
     title_placeholder: bijv. Hoe zouden we ons budget toebedelen?
     details_placeholder: Geef verhelderende details die mensen nodig kunnen hebben om mee te kunnen doen
     add_option_placeholder: Optie toevoegen
-    dots_per_person: Stippen per persoon
     dot_vote_created: '''Dotmocracy'' aangemaakt'
     dot_vote_updated: '''Dotmocracy'' geactualiseerd'
   poll_score_form:
@@ -1293,18 +1293,7 @@ nl_NL:
     stance_created: Keuze opgenomen
     stance_updated: Keuze upgedatet
   thread_item:
-    comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> als antwoord op <strong>{{title}}</strong>"
-    discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte de bordomschrijving"
-    discussion_attachments_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte de bijlagen van het bord"
-    discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte het bord"
-    discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> verplaatste het bord van <strong>{{title}}</strong>"
-    new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
-    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> deelde een uitkomst van <strong>{{title}}</strong>"
-    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> sloot de {{polltype}}: <strong>{{title}}</strong>"
-    poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> starte een {{polltype}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> bewerkte de {{polltype}}: <strong>{{title}}</strong>"
     poll_expired: "{{polltype}} is gesloten: <strong>{{title}}</strong>"
-    stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> stemde op: <strong>{{title}}</strong>"
   poll_admin_page:
     title: Administrator - {{title}}
   poll_common_publish_facebook_preview:

@@ -29,7 +29,6 @@ ca:
     poll: Enquesta
   new_poll_types:
     proposal: Proposta
-    poll: Enquesta
   common:
     you: Tu
     expand: Expandeix
@@ -241,6 +240,7 @@ ca:
   action_dock:
     edit_stance: Canvia la decisió
     tag_thread: Gestiona etiquetes
+    delete_thread: Elimina la discussió
   join_group_button:
     join_group: Uneix-te al grup
     membership_requested: Sol·licitud de pertinença pendent
@@ -360,7 +360,7 @@ ca:
     heading: Propostes anteriors
     see_more: Veure més
   invitation_form:
-    invite_people: 'Convida a gent'
+    invite_people: 'Convida gent'
     group: 'Grup'
     group_placeholder: 'Seleccioneu un grup'
     shareable_link: 'Enllaç per a compartir'
@@ -503,8 +503,8 @@ ca:
     load_previous: 'Carrega activitats anteriors'
     started_by: 'Destacat per <strong>{{name}}</strong>'
   activity_card:
-    unread: No llegit
     latest: Últim
+    context: Context
     attachment_display:
       aria_label: 'Fitxer adjunt:'
       image_alt: 'Imatge adjunta'
@@ -642,6 +642,7 @@ ca:
   discussions_panel:
     unread: No llegit
     closed: Tancat
+    include_subgroups: Subgrups
   members_panel:
     order_by_name: 'Nom'
     header_name: 'Nom'

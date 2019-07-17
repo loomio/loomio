@@ -59,7 +59,6 @@ pt_BR:
   new_poll_types:
     proposal: Proposta
     count: Contagem
-    poll: Votação
     meeting: Tempo de votação
   timezones:
     local: Hora local ({{value}})
@@ -463,6 +462,8 @@ pt_BR:
     unpin_thread: Desafixar conversa
     discussion_copied: URL da conversa copiada para o clipboard
     tag_thread: Gerenciar tags
+    close_thread: Fechar conversa
+    delete_thread: Apagar conversa
   cover_photo_form:
     aria_label: 'Formulário de modificação da foto de capa'
     heading: 'Nova foto da capa'
@@ -670,7 +671,7 @@ pt_BR:
     see_more: Veja mais
   invitation_form:
     aria_label: 'Formulário de convite'
-    invite_people: 'Convidar Pessoas'
+    invite_people: 'Convidar pessoas'
     group: 'Grupo'
     group_placeholder: 'Selecionar um grupo'
     shareable_link: 'Link compartilhável'
@@ -879,12 +880,13 @@ pt_BR:
       closed: 'Conversa encerrada'
   activity_card:
     beginning: Início
-    unread: Não lida
     latest: Último
+    context: Contexto
     attachment_display:
       aria_label: 'Arquivo anexo:'
       image_alt: 'Imagem anexa'
     add_comment: Adicionar comentário
+    comment: 'Comentario '
   thread_group:
     aria_label: 'Nome do grupo'
   thread_context:
@@ -1066,6 +1068,7 @@ pt_BR:
   discussions_panel:
     unread: Não lida
     closed: Encerrado
+    include_subgroups: Subgrupos
   members_panel:
     order_by_name: 'Nome'
     header_name: 'Nome'
@@ -1163,16 +1166,6 @@ pt_BR:
   poll_dot_vote_vote_form:
     stance_updated: Voto atualizado
   thread_item:
-    discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editou o título da conversa"
-    discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editou o contexto da conversa"
-    discussion_attachments_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editou os anexos da conversa"
-    discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editou as configurações de privacidade da conversa"
-    discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editou a conversa"
-    discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> mudou a conversa desde <strong>{{title}}</strong>"
-    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>encerrou a conversa"
-    discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> reabriu a conversa"
-    discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> dividiu nessa conversa: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> compartilhou um resultado para <strong>{{title}}</strong>"
     event_removed: "Apagado da conversa"
   poll_admin_page:
     title: Administrador - {{title}}

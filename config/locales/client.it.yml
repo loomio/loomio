@@ -64,7 +64,6 @@ it:
     score: Punteggio votazione
   new_poll_types:
     proposal: Proposta
-    poll: Sondaggio
     meeting: Sondaggio per incontro
   timezones:
     local: Ora locale ({{value}})
@@ -484,6 +483,8 @@ it:
     poll_copied: URL della decisione copiato negli appunti
     discussion_copied: URL della discussione copiato negli appunti
     tag_thread: Gestisci le etichette
+    close_thread: Chiudi discussione
+    delete_thread: Cancella discussione
   cover_photo_form:
     aria_label: 'Cambia modulo dell''immagine di copertina'
     heading: 'Nuova immagine di copertina'
@@ -944,13 +945,14 @@ it:
     started_by: 'Iniziato da <strong>{{name}}</strong>'
   activity_card:
     beginning: Iniziale
-    unread: Non letto
     latest: Più recente
+    context: Contesto
     chronological: Cronologico
     nested: Nidificato
     attachment_display:
       aria_label: 'File allegato:'
       image_alt: 'Immagine allegata'
+    comment: Commenta
   thread_group:
     aria_label: 'Nome gruppo'
   thread_context:
@@ -1069,6 +1071,7 @@ it:
   discussions_panel:
     unread: Non letto
     closed: Chiuso
+    include_subgroups: Sottogruppi
   members_panel:
     order_by_name: 'Nome'
     header_name: 'Nome'
@@ -1160,7 +1163,6 @@ it:
         <p> Usa il Sondaggio per misurare la popolarità di diverse opzioni oppure per offrire una scelta.</p>
         <p>Inserisci diverse opzioni tra cui scegliere. Decidi se i partecipanti possono scegliere una sola o più opzioni come risposta.</p>
         <p>Chiunque può votare, e può anche scrivere una dichiarazione se desidera. I risultati sono visualizzati in forma di barra grafica. </p>
-    tool_tip_collapsed: Misurare la popolarità di un opzione o offrire una scelta
     start_header: Lancia sondaggio
     edit_header: Modifica sondaggio
     title_placeholder: 'Ad esempio: Dove vuoi andare in vacanza?'
@@ -1181,8 +1183,6 @@ it:
         <p>I risultati sono mostrati come totale dei voti per gruppo e come voti individuali, così è possibile considerare i diversi punti di vista.</p>
     title_placeholder: 'Ad esempio: Come volete distribuire il nostro budget?'
     details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
-    dots_per_person: Punti disponibili a persona
-    dots_per_person_helptext: Il numero di punti che ogni partecipante può assegnare
   poll_score_form:
     details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
   poll_meeting_form:

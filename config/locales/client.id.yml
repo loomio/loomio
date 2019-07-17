@@ -58,6 +58,8 @@ id:
   membership_requests_page:
     approve: Setuju
     ignore: Abaikan
+  invitation_form:
+    invite_people: 'Undang teman'
   memberships_page:
     members: 'Anggota'
     name_label: 'Nama'
@@ -68,6 +70,8 @@ id:
     name_label: 'Nama'
     email_label: 'Surel'
     locale_label: 'Bahasa'
+  activity_card:
+    context: Konteks
   thread_group:
     aria_label: 'Nama kelompok'
   thread_context:

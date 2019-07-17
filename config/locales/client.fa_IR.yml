@@ -22,8 +22,6 @@ fa_IR:
     wave: دست تکان دادن
   poll_types:
     poll: نظرسنجی
-  new_poll_types:
-    poll: نظرسنجی
   common:
     you: شما
     ok_got_it: باشه، فهمیدم!
@@ -139,6 +137,7 @@ fa_IR:
     privacy: 'حریم شخصی'
     submit_update: 'به روز رسانی تنطیمات'
   invitation_form:
+    invite_people: 'دیگران را دعوت کنید'
     group: 'گروه'
     copy_link: 'کپی'
     send: 'ارسال'

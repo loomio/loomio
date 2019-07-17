@@ -36,7 +36,6 @@ eo:
     poll: Enketo
   new_poll_types:
     proposal: Propozicio
-    poll: Enketo
   common:
     you: Vi
     expand: Klarigu!
@@ -190,6 +189,7 @@ eo:
     edit_poll: Redakti enketon
     translate_poll: Traduki enketon
     delete_comment: Forigi la komenton
+    close_thread: Fermigi fadenon
   logo_photo_form:
     heading: 'Nova emblemo de grupo'
     upload_link: 'Alŝuti novan emblemon de grupo'
@@ -230,7 +230,7 @@ eo:
     approve: Aprobi
     ignore: Ignori
   invitation_form:
-    invite_people: 'Inviti homojn'
+    invite_people: 'Inviti personojn'
     group: 'Grupo'
     copy_link: 'Kopii'
   memberships_page:
@@ -281,8 +281,9 @@ eo:
     no_groups:
       or: aŭ
   activity_card:
-    unread: Nelegitaj
     latest: Plej lasta
+    context: Kunteksto
+    comment: Komenti
   thread_group:
     aria_label: 'Grupnomo'
   thread_context:
@@ -356,6 +357,7 @@ eo:
   discussions_panel:
     unread: Nelegitaj
     closed: Fermita
+    include_subgroups: Subgrupoj
   members_panel:
     order_by_name: 'Nomo'
     header_name: 'Nomo'
@@ -401,8 +403,6 @@ eo:
   poll_dot_vote_vote_form:
     stance_created: Voĉdono kreis
     stance_updated: Voĉdono ĝisdatigita
-  thread_item:
-    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> fermis la {{polltype}}: <strong>{{title}}</strong>"
   poll_common_publish_facebook_preview:
     link: ligilo
     just_now: Ĝuste nun

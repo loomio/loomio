@@ -69,6 +69,8 @@ an:
   membership_requests_page:
     approve: Aprebar
     ignore: Ignorar
+  invitation_form:
+    invite_people: 'Convidar a personas'
   memberships_page:
     members: 'Miembros'
     name_label: 'Nombre'
@@ -90,7 +92,7 @@ an:
     no_groups:
       or: u
   activity_card:
-    unread: No leyiu
+    context: Contexto
   thread_group:
     aria_label: 'Nombre d''o grupo'
   thread_context:

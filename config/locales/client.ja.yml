@@ -80,6 +80,8 @@ ja:
   membership_requests_page:
     approve: 承認
     ignore: 拒否
+  invitation_form:
+    invite_people: 'メンバーを招待する'
   memberships_page:
     members: 'メンバー'
     name_label: '氏名'

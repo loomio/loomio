@@ -58,6 +58,8 @@ ml:
   membership_requests_page:
     approve: സ്ഥിരീകരിക്കുക
     ignore: നിരസ്സിക്കുക
+  invitation_form:
+    invite_people: 'ആളുകളെ ക്ഷണിക്കുക'
   memberships_page:
     members: 'അംഗങ്ങള്‍'
     name_label: 'പേരു്'
@@ -68,6 +70,8 @@ ml:
     name_label: 'പേരു്'
     email_label: 'ഈമെയില്‍'
     locale_label: 'ഭാഷ'
+  activity_card:
+    context: പശ്ചാത്തലം
   thread_group:
     aria_label: 'കൂട്ടത്തിന്റെ പേരു്'
   thread_context:

@@ -65,11 +65,14 @@ es:
   new_poll_types:
     proposal: Propuesta
     count: Conteo
-    poll: Encuesta
+    score: Puntuación
+    ranked_choice: Rango
     meeting: Votación de horarios
   timezones:
     local: Hora local ({{value}})
   common:
+    option: Opción
+    add: Añadir
     you: Tú
     expand: Expandir
     all_day: Todo el día
@@ -114,12 +117,14 @@ es:
     models:
       proposal: 'Propuesta'
     copy: 'Copiar'
+    reset: 'Reiniciar'
     copy_text: 'Copiar texto'
     copied: 'Copiado al portapapeles'
     points_abbrev: 'Cada voto vale {{score}} puntos '
     total: Total
     action:
       search: 'Buscar'
+      filter: 'Filtrar'
       next: 'Siguiente'
       close: 'Cerrar'
       reopen: 'Reabierto'
@@ -162,11 +167,18 @@ es:
       export: Exportar
       fork: Bifurcar
       apply: Enviar una solicitud
+      add_people: Añadir gente
     formatting_help:
       label: 'Formato '
       title: 'Aprenda a usar Markdown para dar formato a su texto'
   emoji_picker:
     search: Buscar
+    common: Usado con frecuencia
+    hands: Manos
+    people: Caras y gente
+    nature: Naturaleza
+    objects: Cosas
+    places: Lugares
   ordinal:
     _1: 1º
     _2: 2º
@@ -513,6 +525,8 @@ es:
     poll_copied: URL de la decisión ha sido copiado al portapapeles
     discussion_copied: URL del hilo ha sido copiado al portapapeles
     tag_thread: Administrar etiquetas
+    close_thread: 'Cerrar hilo '
+    delete_thread: 'Eliminar hilo '
   cover_photo_form:
     aria_label: 'Formulario para cargar la foto de portada '
     heading: 'Nueva foto de portada'
@@ -568,7 +582,9 @@ es:
       closed: "Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo"
   group_page:
     threads: Hilos
+    polls: Sondeos
     members: Integrantes
+    files: Archivos
     show_opened: '{{count}} Abierto'
     show_closed: '{{count}} Cerrado '
     no_threads_here: Ningún hilo para ver aquí!
@@ -578,6 +594,7 @@ es:
     messages:
       privacy:
         members: 'Ahora este grupo es visible sólo para integrantes.'
+        parent_members: 'Este grupo ahora es visible solamente para miembros de tu organización.'
         public: 'Ahora este grupo es visible para el público'
       leave_group_success: 'Has dejado este grupo'
       archive_group_success: 'Este grupo ha sido desactivado '
@@ -629,6 +646,8 @@ es:
       parent_members: 'Privacidad: Este grupo es visible para los integrantes de {{parentGroupName}} y integrantes de {{groupName}} '
       public: 'Privacidad: Este grupo es visible en la red '
       aria_label: 'Privacidad del grupo: {{privacy}}'
+  polls_panel:
+    new_poll: Nuevo sondeo
   description_card:
     title: 'Descripción del Grupo '
     placeholder: 'Los coordinadores del grupo pueden usar esta área para describir el propósito del grupo para que todos sepan porque están aquí.  '
@@ -705,6 +724,15 @@ es:
       group_updated: 'Grupo actualizado'
   group_export_modal:
     title: Exportar la data grupal
+    body: |
+        <p>
+        Puedes descargar una copia de los datos de tu grupo en cualquier momento
+        <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Descubre más.</a>
+        </p>
+        <p>
+        Se demora unos minutos para completar, dependiendo del tamaño de tu grupo.
+        Cuando está listo recibirás un email con un enlace para descargar el archivo.
+        </p>
     submit: Iniciar la exportación
     flash: Iniciada la exportación de datos del grupo
   group_features:
@@ -769,7 +797,7 @@ es:
     see_more: "Ve todas: las ({{count}}) decisiones "
   invitation_form:
     aria_label: 'Formulario de invitación'
-    invite_people: 'Invitar gente'
+    invite_people: 'Invitar personas'
     invite_people_to_group: 'Invitar a {{name}}'
     group: 'Grupo'
     group_placeholder: 'Selecciona un grupo'
@@ -777,6 +805,10 @@ es:
     copy_link: 'Copiar'
     email_addresses: 'Correo electrónico'
     email_addresses_placeholder: 'ej. helperbot@loomio.org, friendlybot@loomio.org'
+    shareable_link_explanation: 'Cualquiera con un enlace compartible puede unirse al grupo si se les invita.
+
+      No lo compartas con personas que no quieras en el grupo.'
+    shareable_link_reset: 'Reiniciar el enlace compartible. El enlace previo no funcionará.'
     email_explanation: 'Como alternativa, puede añadir las direcciones de correo electrónico y enviar invitaciones por correo electrónico.'
     add_custom_message: 'Personalice la invitación, '
     add_custom_message_link: 'agrega un mensaje personalizado '
@@ -904,6 +936,8 @@ es:
     use_gravatar: 'Usar Gravatar'
     use_uploaded: 'Subir una imagen nueva'
   change_password_form:
+    set_password_title: Establece tu contraseña
+    set_password_helptext: Por favor introduce una contraseña - mínimo 8 dígitos
     set_password: Configura la contraseña
     password_changed: Su contraseña ha sido actualizada.
   deactivation_modal:
@@ -947,6 +981,8 @@ es:
     messages:
       updated: Configuración del correo electrónico actualizada
     learn_more: Aprende más sobre la configuración de correo electrónico...
+  thread_preview:
+    unread_count: "{{count} no leídos"
   dashboard_page:
     aria_label: 'Escritorio'
     no_groups:
@@ -1031,8 +1067,9 @@ es:
       closed: 'Hilo cerrado '
   activity_card:
     beginning: 'Inicio '
-    unread: 'No leído '
+    unread: "No leídos {{count}"
     latest: Últimos
+    context: Contexto
     chronological: 'Cronológico '
     nested: 'Agrupado '
     attachment_display:
@@ -1041,6 +1078,10 @@ es:
     n_previous: 'Mostrar {{count}} respuestas previas'
     n_more: 'Mostrar {{count}} respuestas'
     add_comment: Añadir comentario
+    add_poll: Añadir sondeo
+    add_outcome: Añadir resultado
+    comment: Comentario
+    facilitate: Facilitar
   thread_group:
     aria_label: 'Nombre del grupo'
   thread_context:
@@ -1150,6 +1191,10 @@ es:
     message_placeholder: 'Si solicita ayuda, intente dar tanta información como sea posible.'
     send_message: 'Enviar mensaje'
     new_contact_message: "Gracias por contactarnos, te responderemos en breve"
+    consent_message: |
+        Al contactar con nosotros autorizas que nuestro personal acceda a tu cuenta si fuera necesario. <br />
+        Nuestro equipo de apoyo habla Inglés y si fuera necesario traducirá tu mensaje con el Traductor de Google. <br />
+        Esperamos responder todos nuestros mensajes en el espacio de 24 horas.
     success: "Gracias por tu mensaje,{{nombre}}. Nos pondremos en contacto contigo."
   hint:
     context: 'Consejos para usar el panel de contexto'
@@ -1245,6 +1290,8 @@ es:
     view_all: Ver todo
     save_changes: Guardar
     change_vote: Cambiar voto
+    max_score: Máximo marcador
+    min_score: Mínimo Marcador
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -1259,11 +1306,14 @@ es:
     show_results: Mostrar resultados
   poll_common_index_card:
     title: Decisiones anteriores
+    no_polls: No se encontraron decisiones previas
     count: "Ve todas: las ({{count}}) decisiones"
   discussions_panel:
     unread: 'No leído '
     closed: 'Cerrado '
+    include_subgroups: Subgrupos
   members_panel:
+    sort: 'Orden'
     order_by_name: 'Nombre'
     header_name: 'Nombre'
     header_username: 'Nombre de usuario'
@@ -1423,7 +1473,6 @@ es:
         <p>Usa una encuesta para medir popularidad u ofrecer alternativas.</p>
         <p>Proporciona algunas opciones de dónde elegir. Decide si los participantes eligen opciones individuales o múltiples en su respuesta.</p>
         <p>Todos votan y pueden incluir una fundamentación si lo desean. Los resultados se visualizan en un gráfico de barras.</p>
-    tool_tip_collapsed: 'Mida la popularidad u ofrezca una opción '
     start_header: Iniciar encuesta
     edit_header: Editar encuesta
     title_placeholder: 'Ej. ¿A dónde quieres ir de vacaciones? '
@@ -1455,8 +1504,6 @@ es:
     title_placeholder: Ej. ¿Cómo debemos asignar el presupuesto?
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
     add_option_placeholder: Agregar opción
-    dots_per_person: Puntos por persona
-    dots_per_person_helptext: 'El numero de puntos que cada votante distribuirá '
     dot_vote_created: Voto de punto creado
     dot_vote_updated: Voto de punto actualizado
   poll_score_form:
@@ -1505,6 +1552,7 @@ es:
     minimum_stance_choices_helptext: 'Número de opciones que cada persona puede priorizar '
     ranked_choice_created: 'Opción priorizada creada '
     ranked_choice_updated: 'Opción priorizada actualizada '
+    rank: Rango
   poll_meeting_time_field:
     new_time_slot: Nuevo horario
     closing_hour: Hora de finalización
@@ -1563,24 +1611,7 @@ es:
     stance_created: 'Opción registrada '
     stance_updated: Opción actualizada
   thread_item:
-    comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> en respuesta a <strong> {{title}}</strong>"
-    discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editó el titulo del hilo"
-    discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ha editado el contexto del hilo"
-    discussion_attachments_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ha editado los anexos del hilo"
-    discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> cambió la privacidad del hilo"
-    discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ha editado el hilo"
-    discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> movió el hilo de <strong>{{title}}</strong>"
-    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> cerró el hilo"
-    discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> reabrió el hilo"
-    discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ha bifurcado el hilo: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
-    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> compartió un resultado para <strong>{{title}}</strong>"
-    poll_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ha reabierto {{polltype}}: <strong>{{title}}</strong>"
-    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> ha cerrado el {{polltype}}: <strong>{{title}}</strong>"
-    poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> inició un {{polltype}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> editó el {{polltype}}: <strong>{{title}}</strong>"
     poll_expired: "{{polltype}} ha cerrado: <strong>{{title}}</strong>"
-    stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> votó en: <strong> {{title}}</strong>"
     event_removed: "Eliminado del hilo"
   poll_admin_page:
     title: Administrador - {{title}}

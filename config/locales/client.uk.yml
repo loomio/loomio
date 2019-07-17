@@ -63,7 +63,6 @@ uk:
   new_poll_types:
     proposal: Пропозиція
     count: Підрахунок
-    poll: Опитування
     meeting: Опитування щодо часу
   timezones:
     local: За місцевим часом ({{value}})
@@ -507,6 +506,8 @@ uk:
     poll_copied: URL-адресу рішення скопійовано до буферу обміну
     discussion_copied: URL-адресу теми скопійовано до буферу обміну
     tag_thread: Керувати мітками
+    close_thread: Закрити тему
+    delete_thread: Видалити тему
   cover_photo_form:
     aria_label: 'Змінити фото обкладинки'
     heading: 'Нове фото обкладинки'
@@ -1026,8 +1027,8 @@ uk:
       closed: 'Тему закрито'
   activity_card:
     beginning: Початок
-    unread: Непрочитані
     latest: Останній
+    context: Контекст
     chronological: Хронологічно
     nested: Згорнуто
     attachment_display:
@@ -1036,6 +1037,7 @@ uk:
     n_previous: 'Відобразити попередні {{count}} відповідей'
     n_more: 'Відобразити {{count}} відповідей'
     add_comment: Додати коментар
+    comment: Коментар
   thread_group:
     aria_label: 'Назва групи'
   thread_context:
@@ -1262,6 +1264,7 @@ uk:
   discussions_panel:
     unread: Непрочитані
     closed: Закрита
+    include_subgroups: Підгрупи
   members_panel:
     order_by_name: 'Ім''я'
     header_name: 'Ім''я'
@@ -1422,7 +1425,6 @@ uk:
         <p>Використовуйте опитування для оцінки популярності або пропонуючи вибір.</p>
         <p>Надайте кілька варіантів на вибір. Вирішіть, чи може учасник вибирати один або декілька варіантів у відповіді.</p>
         <p>Кожен хто голосує може додати пояснення. Результати опитування представлені у вигляді гістограми.</p>
-    tool_tip_collapsed: Виміряти популярність або запропонувати вибір
     start_header: Розпочати опитування
     edit_header: Редагувати опитування
     title_placeholder: 'Наприклад: Куди ви хочете поїхати у відпустку?'
@@ -1454,8 +1456,6 @@ uk:
     title_placeholder: 'Наприклад: Як ми повинні розподілити наш бюджет?'
     details_placeholder: Надайте будь-які уточнюючі деталі що можливо будуть потрібні людям аби долучитись
     add_option_placeholder: Додати варіант
-    dots_per_person: Кількість точок на особу
-    dots_per_person_helptext: Кількість точок, які буде розподілено кожним учасником
     dot_vote_created: Відбіркове голосування створено
     dot_vote_updated: Відбіркове голосування оновлено
   poll_score_form:
@@ -1562,24 +1562,7 @@ uk:
     stance_created: Вибір записано
     stance_updated: Вибір оновлено
   thread_item:
-    comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> у відповідь на <strong>{{title}}</strong>"
-    discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> відредагував(ла) назву теми"
-    discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> відредагував контекст теми"
-    discussion_attachments_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> відредагував вкладення до теми"
-    discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> змінив(ла) конфіденційність теми"
-    discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> відредагував тему"
-    discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> прибрав тему з <strong>{{title}}</strong>"
-    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> закрив тему"
-    discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> відновив(ла) цю тему"
-    discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> створив гілку від цієї теми: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
-    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> поширив результат у <strong>{{title}}</strong>"
-    poll_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> відновив(ла) {{polltype}}: <strong>{{title}}</strong>"
-    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> закрив {{polltype}}: <strong>{{title}}</strong>"
-    poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> розпочав {{polltype}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> відредагував(ла) {{polltype}}: <strong>{{title}}</strong>"
     poll_expired: "{{polltype}} закрито: <strong>{{title}}</strong>"
-    stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> проголосував у: <strong>{{title}}</strong>"
     event_removed: "Видалені з теми"
   poll_admin_page:
     title: Адміністратор - {{title}}

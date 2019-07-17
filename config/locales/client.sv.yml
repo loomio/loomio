@@ -46,7 +46,6 @@ sv:
     score: Ränka röster
   new_poll_types:
     proposal: Förslag
-    poll: Röstning
     meeting: Tidsröstning
   timezones:
     local: Lokal tid ({{value}})
@@ -308,6 +307,7 @@ sv:
     privacy_label: 'Sekretesspolicy'
   action_dock:
     delete_comment: Ta bort kommentar
+    close_thread: Stäng tråd
   join_group_button:
     join_group: Bli medlem i gruppen
   membership_request_form:
@@ -347,6 +347,7 @@ sv:
     approve: Godkänn
     ignore: Ignorera
   invitation_form:
+    invite_people: 'Bjud in deltagare'
     copy_link: 'Kopiera'
     send: 'Skicka'
     done: 'Klar'
@@ -377,8 +378,8 @@ sv:
       start: Starta
       or: eller
   activity_card:
-    unread: Olästa
     latest: Senaste
+    context: Kontext
   thread_group:
     aria_label: 'Gruppnamn'
   thread_context:

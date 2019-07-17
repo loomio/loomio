@@ -28,6 +28,8 @@ hr:
     members: Članovi
   membership_requests_page:
     ignore: Ignoriraj
+  invitation_form:
+    invite_people: 'Pozovi ljude'
   memberships_page:
     members: 'Članovi'
   profile_page:
