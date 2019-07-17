@@ -18,18 +18,18 @@ export default
       @user.sentLoginLink or @user.sentPasswordLink
 </script>
 <template lang="pug">
-.auth-form.lmo-slide-animation
+.auth-form
   .lmo-disabled-form(v-show='isDisabled')
-  .auth-form__logging-in.animated(v-if='!loginComplete')
-    .auth-form__email-not-set.animated(v-if='!user.emailStatus')
+  .auth-form__logging-in(v-if='!loginComplete')
+    .auth-form__email-not-set(v-if='!user.emailStatus')
       auth-provider-form(:user='user')
-      auth-email-form(:user='user', v-if='emailLogin')
-      .auth-form__privacy-notice.md-caption.lmo-hint-text(v-if='privacyUrl', v-t="{ path: 'auth_form.privacy_notice', args: { siteName: siteName, privacyUrl: privacyUrl } }")
-    .auth-form__email-set.animated(v-if='user.emailStatus')
-      auth-identity-form.animated(v-if='pendingProviderIdentity && !user.createAccount', :user='user', :identity='pendingProviderIdentity')
-      .auth-form__no-pending-identity.animated(v-if='!pendingProviderIdentity || user.createAccount')
-        auth-inactive-form.animated(v-if='user.authForm == "inactive"', :user='user')
-        auth-signin-form.animated(v-if='user.authForm == "signIn"', :user='user')
-        auth-signup-form.animated(v-if='user.authForm == "signUp"', :user='user')
-  auth-complete.animated(v-if='loginComplete', :user='user')
+      auth-email-form(:user='user' v-if='emailLogin')
+      .auth-form__privacy-notice.caption(v-if='privacyUrl' v-html="$t('auth_form.privacy_notice', { siteName: siteName, privacyUrl: privacyUrl })")
+    .auth-form__email-set(v-if='user.emailStatus')
+      auth-identity-form(v-if='pendingProviderIdentity && !user.createAccount' :user='user' :identity='pendingProviderIdentity')
+      .auth-form__no-pending-identity(v-if='!pendingProviderIdentity || user.createAccount')
+        auth-inactive-form(v-if='user.authForm == "inactive"' :user='user')
+        auth-signin-form(v-if='user.authForm == "signIn"' :user='user')
+        auth-signup-form(v-if='user.authForm == "signUp"' :user='user')
+  auth-complete(v-if='loginComplete', :user='user')
 </template>

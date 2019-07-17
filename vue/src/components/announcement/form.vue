@@ -30,7 +30,6 @@ export default
     maxMembers: 0
 
   created: ->
-    console.log "announcement", @announcement
     @searchResults = if @announcement.model.isA('group') then [] else @announcement.model.members()
     @maxMembers = @announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0
     if @announcement.model.isA('group')
@@ -187,10 +186,6 @@ v-card
 .announcement-form__list-item,
 .announcement-form__invited {
   padding: 0 !important;
-}
-
-.announcement-form__copy {
-  margin-bottom: 8px;
 }
 
 .announcement-form__invite {

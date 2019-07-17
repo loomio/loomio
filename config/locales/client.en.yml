@@ -1892,8 +1892,8 @@ en:
     continue: Continue
     create_account: Create account
     sign_in_as: Sign in as {{name}}
-    continue_with_provider: Continue with {{provider}}
-    continue_with_email: Continue with email
+    continue_with_provider: Sign in with {{provider}}
+    continue_with_email: Sign in with email
     or_enter_your_email: Or, enter your email address
     invitation_required: You need an invitation to create an account.
     invitation_required: Account not found. New accounts are by invitation only.
@@ -1919,7 +1919,7 @@ en:
 
     welcome: New to {{siteName}}?
     welcome_back: Welcome back, {{name}}!
-    login_link: Sign in via email
+    login_link: Sign in with email
     set_password: Set password
     set_password_helptext: Want to use a password next time?
 

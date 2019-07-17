@@ -19,23 +19,12 @@ loadLocale = (locale) ->
     if loadedLocales.includes(locale)
       setI18nLanguage(locale)
     else
-      import(
-        ###
-        webpackChunkName: "dateLocale-[request]"
-        webpackInclude: /\.js$/
-        webpackExclude: /\.js.flow$/
-        ###
-        "date-fns/locale/#{locale.replace('_','-')}/index.js"
-      ).then (dateLocale) ->
+      import("date-fns/locale/#{locale.replace('_','-')}/index.js").then (dateLocale) ->
         i18n.dateLocale = dateLocale
-      import(
-        ###
-        webpackChunkName: "locale-[request]"
-        ###
-        "@/locales/#{locale}.json").then (data) ->
-          loadedLocales.push(locale)
-          i18n.setLocaleMessage(locale, data)
-          setI18nLanguage(locale)
+      import("@/locales/#{locale}.json").then (data) ->
+        loadedLocales.push(locale)
+        i18n.setLocaleMessage(locale, data)
+        setI18nLanguage(locale)
 
 export default new class Session
   fetch: ->

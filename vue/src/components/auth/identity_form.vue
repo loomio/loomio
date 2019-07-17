@@ -28,10 +28,10 @@ export default
   .auth-identity-form__options
     .auth-identity-form__new-account
       p(v-t="{ path: 'auth_form.new_to_loomio', args: { site_name: siteName } }")
-      v-btn.md-primary.md-raised(@click='createAccount()', v-t="'auth_form.create_account'")
+      v-btn(color="primary" @click='createAccount()', v-t="'auth_form.create_account'")
     .auth-identity-form__existing-account
       p(v-t="{ path: 'auth_form.already_a_user', args: { site_name: siteName }}")
-      md-block.auth-email-form__email
+      .auth-email-form__email
         label(v-t="'auth_form.email'")
         v-text-field#email.lmo-primary-form-input(name='email', type='text', v-autofocus='true', :placeholder="'auth_form.email_placeholder'", v-model='email')
         //- validation_errors(subject='user', field='email')

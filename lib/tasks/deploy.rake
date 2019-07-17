@@ -20,6 +20,7 @@
 
 def deploy_steps
   [
+    "locales:build",
     "deploy:bump_version",
     "plugins:fetch[#{heroku_plugin_set}]",
     "plugins:install[fetched]",

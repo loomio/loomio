@@ -2,6 +2,7 @@ const components = require('./src/components.js')
 
 module.exports = {
   chainWebpack: config => {
+    config.plugins.delete('prefetch');
     config
     .plugin('VuetifyLoaderPlugin')
     .tap(args => {
@@ -23,7 +24,7 @@ module.exports = {
   assetsDir: '../../client/vue',
   devServer: {
    proxy: {
-     '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|locales)': {target: 'http://localhost:3000'},
+     '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails)': {target: 'http://localhost:3000'},
      '^/(cable)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
    }
   },

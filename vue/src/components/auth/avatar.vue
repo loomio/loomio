@@ -1,6 +1,5 @@
 <script lang="coffee">
-import Records       from '@/shared/services/records'
-import _includes from 'lodash/includes'
+import Records from '@/shared/services/records'
 
 export default
   props:
@@ -10,14 +9,13 @@ export default
   mounted: ->
     if !@user
       @user = { avatarKind: 'initials`' }
-    if _includes(['initials', 'mdi-email-outline'], @user.avatarKind)
+    if ['initials', 'mdi-email-outline'].includes(@user.avatarKind)
       @avatarUser = Records.users.build
-        avatarKind:  'uploaded'
+        avatarKind: 'uploaded'
         avatarUrl:
-          small:  '/img/mascot.png'
-
+          small: '/img/mascot.png'
           medium: '/img/mascot.png'
-          large:  '/img/mascot.png'
+          large: '/img/mascot.png'
     else
       @avatarUser = @user
 </script>
