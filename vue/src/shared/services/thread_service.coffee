@@ -8,6 +8,36 @@ import openModal      from '@/shared/helpers/open_modal'
 
 export default new class ThreadService
   actions: (discussion, vm) ->
+    pin_thread:
+      icon: 'mdi-pin'
+      name: 'action_dock.pin_thread'
+      canPerform: -> AbilityService.canPinThread(discussion)
+      perform: => @pin(discussion)
+
+    unpin_thread:
+      icon: 'mdi-pin-off'
+      name: 'action_dock.unpin_thread'
+      canPerform: -> AbilityService.canUnpinThread(discussion)
+      perform: => @unpin(discussion)
+
+    mute_thread:
+      name: 'volume_levels.mute'
+      icon: 'mdi-volume-mute'
+      canPerform: -> !discussion.isMuted()
+      perform: => @mute(discussion)
+
+    unmute_thread:
+      name: 'volume_levels.unmute'
+      icon: 'mdi-volume-high'
+      canPerform: -> discussion.isMuted()
+      perform: => @mute(discussion)
+
+    dismiss_thread:
+      name: 'dashboard_page.dismiss'
+      icon: 'mdi-check'
+      canPerform: -> discussion.isUnread()
+      perform: => @dismiss(discussion)
+
     announce_thread:
       icon: 'mdi-bullhorn'
       canPerform: -> AbilityService.canEditThread(discussion)

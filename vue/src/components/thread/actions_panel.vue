@@ -66,7 +66,7 @@ export default
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel
-        comment-form(v-if='canAddComment' :comment="newComment" :key="discusison.id")
+        comment-form(v-if='canAddComment' :comment="newComment" :key="discussion.id")
         .add-comment-panel__join-actions(v-if='!canAddComment')
           join-group-button(:group='discussion.group()', v-if='isLoggedIn()', :block='true')
           v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')

@@ -170,7 +170,7 @@ export default
       p.text-xs-center(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
     .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
       v-list.thread-previews(two-line)
-        thread-preview(:show-group-name="includeSubgroups" v-for="thread in discussions", :key="thread.id", :thread="thread")
+        thread-preview(:show-group-name="includeSubgroups" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)
       v-btn.discussions-panel__show-more(v-if="!loader.exhausted" :disabled="loader.loading" @click='loader.loadMore()', v-t="{ path: 'common.action.show_more' }")
       .lmo-hint-text.discussions-panel__no-more-threads(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
 
