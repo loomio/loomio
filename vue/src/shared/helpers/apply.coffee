@@ -32,7 +32,7 @@ export applyPollStartSequence = (scope, options = {}) ->
     chooseComplete: (_, pollType) ->
       scope.poll.pollType = pollType
     saveComplete: (_, event) ->
-      LmoUrlService.goTo LmoUrlService.poll(event.model())
+      scope.$router.push LmoUrlService.poll(event.model())
       options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
 export applyDiscussionStartSequence = (scope, options = {}) ->
@@ -45,7 +45,7 @@ export applyDiscussionStartSequence = (scope, options = {}) ->
     steps: obeyMembersCanAnnounce(['save', 'announce'], scope.discussion.group())
     emitter: options.emitter or scope
     saveComplete: (_, event) ->
-      LmoUrlService.goTo LmoUrlService.discussion(event.model())
+      scope.$router.push LmoUrlService.discussion(event.model())
       options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
 applySequence = (scope, options) ->
