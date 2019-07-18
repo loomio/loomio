@@ -24,7 +24,7 @@ export default
       skipDoneProcessing: true
 </script>
 <template lang="pug">
-.auth-complete
+.auth-complete.text-xs-center
   auth-avatar(:user='user')
   h2.lmo-h2(v-t="'auth_form.check_your_email'")
   p(v-if='user.sentLoginLink')
@@ -35,11 +35,14 @@ export default
   p
   p.lmo-hint-text(v-if='user.sentPasswordLink', v-t="{ path: 'auth_form.password_link_sent', args: { email: user.email }}")
   .auth-complete__code-input(v-if='user.sentLoginLink && attempts < 3')
-    .auth-complete__code.md-no-errors
-      v-text-field.lmo-primary-form-input(type='integer', maxlength='6', v-model='session.code')
-    //- validation_errors(subject='session', field='password')
-    br
+    .auth-complete__code.mx-auto(style="max-width: 256px")
+      v-text-field.lmo-primary-form-input(outlined :placeholder="$t('auth_form.code')" type='integer' maxlength='6' v-model='session.code')
+      validation-errors(:subject='session' field='password')
     span(v-t="'auth_form.check_spam_folder'")
-    .lmo-md-action
-      v-btn.md-raised.md-primary(@click='submit()', :disabled='!session.code', v-t="'auth_form.sign_in'")
+  v-btn(color="primary" @click='submit()', :disabled='!session.code', v-t="'auth_form.sign_in'")
 </template>
+<style lang="sass">
+.auth-complete__code input
+  letter-spacing: 0.5em
+  text-align: center
+</style>

@@ -1884,6 +1884,7 @@ en:
     groups_placeholder: (All groups)
 
   auth_form:
+    code: '000000'
     sign_in_to_loomio: Sign into {{site_name}}
     sign_in: Sign in
     continue: Continue
@@ -1912,18 +1913,15 @@ en:
     terms_required: You must agree to the Terms of Service
     account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated!
     privacy_notice: "We do not sell your personal data or use third party trackers<br><a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
-
     welcome: New to {{siteName}}?
     welcome_back: Welcome back, {{name}}!
     login_link: Sign in with email
     set_password: Set password
     set_password_helptext: Want to use a password next time?
-
     hello: "Hello, {{name}}!"
     new_to_loomio: First time on {{site_name}}? Create an account
     already_a_user: Used {{site_name}} before? Enter the email address you used last time to link it up.
     link_accounts: Link accounts
-
     check_your_email: Check your email!
     login_link_sent: "We've sent an email to {{email}}."
     instructions: "Click the link to sign in, or enter the code below:"
@@ -1932,11 +1930,9 @@ en:
     password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
     signed_in: Signed in successfully
     email_verified: Email verified successfully
-
     name: Name
     email: Email
     password: Password
-
     reactivate: Reactivate account
 
   install_microsoft:

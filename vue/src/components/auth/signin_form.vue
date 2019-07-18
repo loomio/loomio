@@ -73,7 +73,12 @@ export default
         v-btn.auth-signin-form__submit(v-t="'auth_form.sign_in'" @click='submit()' :disabled='!user.password' v-if='user.hasPassword')
 
     .auth-signin-form__no-password(v-if='!user.hasPassword')
-      v-card-actions
-        v-spacer
-        v-btn.md-primary.md-raised.auth-signin-form__submit(@click='sendLoginLink()' v-t="'auth_form.login_link'")
+      v-layout(justify-center)
+        v-btn.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-t="'auth_form.login_link'")
 </template>
+
+<style lang="sass">
+.auth-signin-form__no-password .auth-signin-form__submit
+  display: block
+
+</style>
