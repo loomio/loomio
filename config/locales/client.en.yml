@@ -145,7 +145,6 @@ en:
       edit: 'Edit'
       remove: 'Remove'
       like: 'Like'
-      back: 'Back'
       unlike: 'Unlike'
       update: 'Update'
       cancel: 'Cancel'
@@ -668,7 +667,6 @@ en:
     member_options: Member options
     see_all_members: 'See all {{count}} members'
     pending_invitations: '+ {{count}} pending'
-    subgroups: 'Subgroups'
     subgroups_placeholder: 'Subgroups give teams their own space and keep notifications focused to the right people.'
     invite_people: 'Invite'
     visibility_label: 'Visibility'
@@ -774,7 +772,6 @@ en:
     public_discussions_subgroup: 'Anyone in {{parentGroupName}} can see discussions'
     public_or_private_threads: 'Allow public and private threads'
     private_threads: 'Only members can see discussions'
-    permissions: 'Permissions'
     allow_public_threads: 'Allow public threads in this group.'
     #is_visible_to_parent_members: 'Content is visible to members of {{parentGroupName}}.'
     parent_members_can_see_discussions: 'Members of {{parent}} can see private threads.'
@@ -1896,7 +1893,6 @@ en:
     continue_with_email: Sign in with email
     or_enter_your_email: Or, enter your email address
     invitation_required: You need an invitation to create an account.
-    invitation_required: Account not found. New accounts are by invitation only.
     more_providers: More
     email_not_present: An email address is required
     invalid_email: "Sorry, that doesn't look like a valid email address"
@@ -1925,7 +1921,6 @@ en:
 
     hello: "Hello, {{name}}!"
     new_to_loomio: First time on {{site_name}}? Create an account
-    create_account: Create account
     already_a_user: Used {{site_name}} before? Enter the email address you used last time to link it up.
     link_accounts: Link accounts
 

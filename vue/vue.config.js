@@ -1,7 +1,10 @@
 const components = require('./src/components.js')
+const path = require('path')
 
 module.exports = {
   chainWebpack: config => {
+    config.module.rule('yml').test(/\.yml$/).use('js-yaml-loader').loader('js-yaml-loader').end()
+    config.module.rule('yml').test(/\.yml$/).use('single-curlys-loader').loader('single-curlys-loader').end()
     config.plugins.delete('prefetch');
     config
     .plugin('VuetifyLoaderPlugin')
@@ -18,7 +21,13 @@ module.exports = {
   configureWebpack: {
     entry: {
       'app': './src/main.coffee'
+    },
+    resolveLoader: {
+      alias: {
+        'single-curlys-loader': path.join(__dirname, 'loaders', 'single_curlys.js')
+      }
     }
+
   },
   outputDir: '../public/client/vue',
   assetsDir: '../../client/vue',

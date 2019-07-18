@@ -58,6 +58,7 @@
     "coffee-loader": "^0.9.0",
     "coffeescript": "^2.4.1",
     "fibers": "^4.0.1",
+    "js-yaml-loader": "^1.2.2",
     "sass": "^1.22.4",
     "sass-loader": "^7.1.0",
     "selenium-server-standalone-jar": "latest",

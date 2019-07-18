@@ -21,7 +21,8 @@ loadLocale = (locale) ->
     else
       import("date-fns/locale/#{locale.replace('_','-')}/index.js").then (dateLocale) ->
         i18n.dateLocale = dateLocale
-      import("@/locales/#{locale}.json").then (data) ->
+      import("@/../../config/locales/client.#{locale}.yml").then (data) ->
+        data = data[locale]
         loadedLocales.push(locale)
         i18n.setLocaleMessage(locale, data)
         setI18nLanguage(locale)
