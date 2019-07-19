@@ -727,6 +727,7 @@ en:
     submit: 'Yes, Deactivate this group'
 
   group_form:
+    permissions_explaination: Disabling a permission means only coordinators can perform the action.
     aria_label: 'Group form'
     new_organisation:
     start_group_heading: 'Start a group'
