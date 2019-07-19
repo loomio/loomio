@@ -21,8 +21,8 @@ export default
   props:
     model: Object
     field: String
-    placeholder: [String, Object]
-    helptext: [String, Object]
+    label: String
+    placeholder: String
     shouldReset: Boolean
     autoFocus:
       type: Boolean
@@ -113,7 +113,7 @@ export default
         new History(),
         new Placeholder({
           emptyClass: 'is-empty',
-          emptyNodeText: @$lt(@placeholder),
+          emptyNodeText: @placeholder,
           showOnlyWhenEditable: true,
         })
       ]
@@ -255,8 +255,9 @@ export default
 
 <template lang="pug">
 div
+  label.caption.v-label.v-label--active.theme--light {{label}}
   v-textarea(v-if="format == 'md'" lmo_textarea v-model="model[field]" :placeholder="$t('comment_form.say_something')")
-  .editor.my-3(v-if="format == 'html'")
+  .editor.mb-3(v-if="format == 'html'")
     editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
     editor-menu-bubble(:editor='editor' v-slot='{ commands, isActive, menu }')
       .menububble(:class="{'is-active': menu.isActive}" :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`")
@@ -507,6 +508,8 @@ li[data-type="todo_item"]
     margin-bottom: 0
   > ul[data-type="todo_list"]
     margin: .5rem 0
+  p
+    margin: 0
 
 li[data-done="true"]
   > .todo-content
@@ -539,6 +542,7 @@ li[data-done="false"]
 
 .editor p.is-empty
   font-size: 16px
+  padding-bottom: 16px
 
 .mention
   background: rgba(#000, 0.1)

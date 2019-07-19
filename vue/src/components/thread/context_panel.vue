@@ -106,7 +106,7 @@ export default
   align-items: center
 
 .context-panel__description
-  p:last-of-type
+  > p:last-of-type
     margin-bottom: 24px
 
 </style>

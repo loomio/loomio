@@ -97,7 +97,7 @@ v-card.discussion-form
       span(v-if="discussion.isForking()" v-t="'discussion_form.fork_discussion_title'")
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
-  v-card-text
+  .ma-3
     .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !discussion.isForking()')
     .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEvents.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
 
@@ -110,9 +110,9 @@ v-card.discussion-form
       p(v-if="!subscriptionActive" v-html="$('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
     .discussion-form__group-selected(v-if='discussion.groupId && !showUpgradeMessage')
-      v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')", :placeholder="$t('discussion_form.title_placeholder')", v-model='discussion.title', maxlength='255')
+      v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
-      lmo-textarea(v-if="!discussion.isForking()" :model='discussion' field="description" :placeholder="'discussion_form.context_placeholder'")
+      lmo-textarea(v-if="!discussion.isForking()" :model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
       v-list.discussion-form__options
         v-list-item.discussion-form__privacy-form(v-if='showPrivacyForm')
           v-radio-group(v-model='discussion.private')

@@ -84,45 +84,42 @@ v-card.group-form
       dismiss-modal-button(:close='close')
   v-card-text
     v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255', :label="$t('group_form.group_name')")
-    lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="'group_form.description_placeholder'")
+    lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
     validation-errors(:subject="group", field="name")
-    .group-form__privacy-statement.lmo-hint-text {{privacyStatement}}
     section.group-form__section.group-form__privacy
-      h3.lmo-h3(v-t="'group_form.privacy'")
+      v-subheader(v-t="'group_form.privacy'")
       v-radio-group(v-model='group.groupPrivacy')
         v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
           template(slot='label')
             .group-form__privacy-title
               strong(v-t="'common.privacy.' + privacy")
-            .group-form__privacy-subtitle {{ privacyStringFor(privacy) }}
+              mid-dot
+              span {{ privacyStringFor(privacy) }}
     .group-form__advanced(v-if='isExpanded')
       section.group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
-        h3.lmo-h3(v-t="'group_form.how_do_people_join'")
+        v-subheader(v-t="'group_form.how_do_people_join'")
         v-radio-group(v-model='group.membershipGrantedUpon')
           v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
             template(slot='label')
               span(v-t="'group_form.membership_granted_upon_' + granted")
       section.group-form__section.group-form__permissions
-        h3.lmo-h3(v-t="'group_form.permissions'")
-        group-setting-checkbox.group-form__allow-public-threads(:group='group', setting='allowPublicThreads', v-if='group.privacyIsClosed() && !group.isSubgroupOfSecretParent()')
-        group-setting-checkbox.group-form__parent-members-can-see-discussions(:group='group', setting='parentMembersCanSeeDiscussions', :translate-values='{parent: group.parent().name}', v-if='group.isSubgroup() && group.privacyIsClosed()')
-        group-setting-checkbox.group-form__members-can-add-members(:group='group', setting='membersCanAddMembers')
-        group-setting-checkbox.group-form__members-can-announce(:group='group', setting='membersCanAnnounce')
-        group-setting-checkbox.group-form__members-can-create-subgroups(:group='group', setting='membersCanCreateSubgroups', v-if='group.isParent()')
-        group-setting-checkbox.group-form__members-can-start-discussions(:group='group', setting='membersCanStartDiscussions')
-        group-setting-checkbox.group-form__members-can-edit-discussions(:group='group', setting='membersCanEditDiscussions')
-        group-setting-checkbox.group-form__members-can-edit-comments(:group='group', setting='membersCanEditComments')
-        group-setting-checkbox.group-form__members-can-raise-motions(:group='group', setting='membersCanRaiseMotions')
-        group-setting-checkbox.group-form__members-can-vote(:group='group', setting='membersCanVote')
-      section.group-form__section.group-form__features(v-if='showGroupFeatures')
-        h3.lmo-h3(v-t="'group_form.features'")
-        .group-form__feature(v-for='name in featureNames', :key='name')
-          // <md-checkbox id="{{name}}" ng-model="group.features[name]" class="md-checkbox--with-summary"><span for="{{name}}" translate="group_features.{{name}}"></span></md-checkbox>
+        v-subheader(v-t="'group_form.permissions'")
+        v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='group.privacyIsClosed() && !group.isSubgroupOfSecretParent()')
+        v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: group.parent().name})" v-if='group.isSubgroup() && group.privacyIsClosed()')
+        v-checkbox.group-form__members-can-add-members(hide-details v-model='group["membersCanAddMembers"]' :label="$t('group_form.members_can_add_members')")
+        v-checkbox.group-form__members-can-announce(hide-details v-model='group["membersCanAnnounce"]' :label="$t('group_form.members_can_announce')")
+        v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='group["membersCanCreateSubgroups"]' v-if='group.isParent()' :label="$t('group_form.members_can_create_subgroups')")
+        v-checkbox.group-form__members-can-start-discussions(hide-details v-model='group["membersCanStartDiscussions"]' :label="$t('group_form.members_can_start_discussions')")
+        v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='group["membersCanEditDiscussions"]' :label="$t('group_form.members_can_edit_discussions')")
+        v-checkbox.group-form__members-can-edit-comments(hide-details v-model='group["membersCanEditComments"]' :label="$t('group_form.members_can_edit_comments')")
+        v-checkbox.group-form__members-can-raise-motions(hide-details v-model='group["membersCanRaiseMotions"]' :label="$t('group_form.members_can_raise_motions')")
+        v-checkbox.group-form__members-can-vote(hide-details v-model='group["membersCanVote"]' :label="$t('group_form.members_can_vote')")
+    p.group-form__privacy-statement.body-2 {{privacyStatement}}
   v-card-actions
-    v-btn.group-form__advanced-link(text color="accent", v-if='!isExpanded', @click='expandForm()', v-t="'group_form.advanced_settings'")
+    v-btn.group-form__advanced-link(text color="accent" v-if='!isExpanded' @click='expandForm()' v-t="'group_form.advanced_settings'")
     v-spacer
-    v-btn.group-form__submit-button(color="primary", @click='submit()')
-      span(v-if='group.isNew() && group.isParent()', v-t="'group_form.submit_start_group'")
-      span(v-if='group.isNew() && !group.isParent()', v-t="'group_form.submit_start_subgroup'")
-      span(v-if='!group.isNew()', v-t="'common.action.update_settings'")
+    v-btn.group-form__submit-button(color="primary" @click='submit()')
+      span(v-if='group.isNew() && group.isParent()' v-t="'group_form.submit_start_group'")
+      span(v-if='group.isNew() && !group.isParent()' v-t="'group_form.submit_start_subgroup'")
+      span(v-if='!group.isNew()' v-t="'common.action.update_settings'")
 </template>

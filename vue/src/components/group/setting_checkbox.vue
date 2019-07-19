@@ -10,6 +10,5 @@ export default
 </script>
 
 <template lang="pug">
-.group-setting-checkbox
-  v-checkbox(v-model="group[setting]" :label="$t(translateKey, translateValues)")
+v-checkbox.group-setting-checkbox(v-model="group[setting]" :label="$t(translateKey, translateValues)")
 </template>
