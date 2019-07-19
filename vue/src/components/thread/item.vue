@@ -86,7 +86,6 @@ div
 
   .thread-item(:class="{'thread-item--unread': isUnread, 'thread-item--focused': isFocused}" v-observe-visibility="{callback: viewed}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
-      .lmo-disabled-form(v-show='isDisabled')
       .thread-item__avatar.mr-3.mt-2
         //- div(@mouseover="hover = true" @mouseleave="hover = false")
         //-   v-btn(v-if="hover" :width="iconSize" :height="iconSize"  icon @click="collapsed = true")
@@ -121,7 +120,7 @@ div
 }
 
 .thread-item {
-  padding: 8px 16px 16px 16px;
+  padding: 4px 16px 4px 16px;
 }
 
 .thread-item .v-card__actions {

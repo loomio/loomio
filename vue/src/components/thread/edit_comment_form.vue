@@ -17,7 +17,6 @@ v-card.edit-comment-form
     h1.headline(v-t="'comment_form.edit_comment'")
     v-spacer
     dismiss-modal-button(:close="close")
-  v-card-text
-    .lmo-disabled-form(v-show='isDisabled')
-    comment-form(:comment="comment" @comment-submitted="close()")
+  .lmo-disabled-form(v-show='isDisabled')
+  comment-form(:comment="comment" @comment-submitted="close()")
 </template>

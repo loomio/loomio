@@ -45,7 +45,7 @@ export default
 loading(:until="discussion")
   div(v-if="discussion")
     group-cover-image(:group="discussion.group()")
-    v-container.thread-page.v-container-max-width
+    v-container.thread-page.max-width-800
       discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
       thread-card(:discussion='discussion')
       v-btn.thread-page__open-thread-nav(fab fixed bottom right @click="openThreadNav()")

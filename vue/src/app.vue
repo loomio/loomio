@@ -88,7 +88,9 @@ $mdi-font-path: '/fonts/mdi'
 a
   text-decoration: none
 
-.v-container-max-width
+.max-width-800
   max-width: 800px
+.max-width-1024
+  max-width: 1024px
 
 </style>

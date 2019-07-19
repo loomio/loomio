@@ -32,7 +32,7 @@ export default
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
     FilesList: FilesList
-    # EditorMenuBubble: EditorMenuBubble
+    EditorMenuBubble: EditorMenuBubble
 
   data: ->
     query: null
@@ -256,95 +256,72 @@ export default
 <template lang="pug">
 div
   v-textarea(v-if="format == 'md'" lmo_textarea v-model="model[field]" :placeholder="$t('comment_form.say_something')")
-  .editor.mb-4(v-if="format == 'html'")
+  .editor.my-3(v-if="format == 'html'")
     editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
-    editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
-      .menubar.is-hidden(:class="{'is-focused': focused}")
-        v-menu
-          template(v-slot:activator="{on}")
-            v-btn(small text v-on="on")
-              v-icon mdi-format-size
-              v-icon mdi-menu-down
-          v-list.menubar__dropdown
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
-                v-icon mdi-format-header-1
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
-                v-icon mdi-format-header-2
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
-                v-icon mdi-format-header-3
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
-                v-icon mdi-format-text
-        v-menu
-          template(v-slot:activator="{on}")
-            v-btn(small text v-on="on")
-              v-icon mdi-format-bold
-              v-icon mdi-menu-down
-          v-list.menubar__dropdown
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
-                v-icon mdi-format-bold
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
-                v-icon mdi-format-italic
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
-                v-icon mdi-format-strikethrough
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
-                v-icon mdi-format-underline
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
-                v-icon mdi-format-quote-close
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.code() }", @click='commands.code')
-                v-icon mdi-code-braces
-        v-menu
-          template(v-slot:activator="{on}")
-            v-btn(small text v-on="on")
-              v-icon mdi-format-list-bulleted
-              v-icon mdi-menu-down
-          v-list.menubar__dropdown
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
-                v-icon mdi-format-list-bulleted
-            v-list-item
-              v-btn(small text :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
-                v-icon mdi-format-list-numbered
-            v-list-item
-              v-btn(small text @click='commands.todo_list')
-                v-icon mdi-format-list-checks
-        v-btn(text small :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
-          v-icon mdi-paperclip
-        v-btn(small icon @click='commands.horizontal_rule')
-          v-icon mdi-minus
-        v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-          template(v-slot:activator="{on}")
-            v-btn.emoji-picker__toggle(v-on="on" small text :class="{ 'is-active': isActive.underline() }")
-              v-icon mdi-emoticon-outline
-          emoji-picker(:insert="emojiPicked")
+    editor-menu-bubble(:editor='editor' v-slot='{ commands, isActive, menu }')
+      .menububble(:class="{'is-active': menu.isActive}" :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`")
+        v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
+          v-icon mdi-format-bold
+        v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
+          v-icon mdi-format-italic
+        v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
+          v-icon mdi-format-strikethrough
+        v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
+          v-icon mdi-format-underline
         v-dialog(v-model="linkDialogIsOpen" max-width="600px")
           template(v-slot:activator="{on}")
-            v-btn(text small v-on="on")
+            v-btn(small icon v-on="on")
               v-icon mdi-link-variant
           v-card
-            .needsSelection(v-if="editor.view.state.tr.selection.empty")
-              v-card-title.title(v-t="'text_editor.select_text_to_link'")
+            v-card-title.title(v-t="'text_editor.insert_link'")
+            v-card-text
+              v-text-field(type="url" label="https://www.example.com" v-model="linkUrl")
+            v-card-actions
+              v-spacer
+              v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
 
-            .hasSelection(v-if="!editor.view.state.tr.selection.empty")
-              v-card-title.title(v-t="'text_editor.insert_link'")
-              v-card-text
-                v-text-field(type="url" label="https://www.example.com" v-model="linkUrl")
-              v-card-actions
-                v-spacer
-                v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
+
+    editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
+      .menubar
+        v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
+          v-icon mdi-format-header-1
+        v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
+          v-icon mdi-format-header-2
+        v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
+          v-icon mdi-format-header-3
+        v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
+          v-icon mdi-format-list-bulleted
+        v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
+          v-icon mdi-format-list-numbered
+        v-btn(icon @click='commands.todo_list')
+          v-icon mdi-format-list-checks
+        v-btn(small icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
+          v-icon mdi-format-quote-close
+        v-btn(icon @click='commands.horizontal_rule')
+          v-icon mdi-minus
+        v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
+          v-icon mdi-paperclip
+        v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+          template(v-slot:activator="{on}")
+            v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
+              v-icon mdi-emoticon-outline
+          emoji-picker(:insert="emojiPicked")
+        //- v-dialog(v-model="linkDialogIsOpen" max-width="600px")
+        //-   template(v-slot:activator="{on}")
+        //-     v-btn(text small v-on="on")
+        //-       v-icon mdi-link-variant
+        //-   v-card
+        //-     .needsSelection(v-if="editor.view.state.tr.selection.empty")
+        //-       v-card-title.title(v-t="'text_editor.select_text_to_link'")
         //-
+        //-     .hasSelection(v-if="!editor.view.state.tr.selection.empty")
+        //-       v-card-title.title(v-t="'text_editor.insert_link'")
+        //-       v-card-text
+        //-         v-text-field(type="url" label="https://www.example.com" v-model="linkUrl")
+        //-       v-card-actions
+        //-         v-spacer
+        //-         v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
         //- v-btn-toggle(slot-scope='{ commands, isActive }')
-        //- v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
-        //-   v-icon mdi-paperclip
 
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')
@@ -359,55 +336,96 @@ div
 </template>
 
 <style lang="sass">
-
-.menubar.is-hidden
+.menububble.is-hidden
   visibility: hidden
   opacity: 0
 
-.menubar.is-focused
+.menububble.is-active
   visibility: visible
   opacity: 1
-  transition: visibility .1s .2s,opacity .1s .1s
+
+.menububble
+  position: absolute
+  display: flex
+  z-index: 20
+  background: #fff
+  border: 1px solid #ccc
+  border-radius: 5px
+  padding: .3rem
+  margin-bottom: .5rem
+  transform: translateX(-50%)
+  visibility: hidden
+  opacity: 0
+  transition: opacity .2s,visibility .2s
 
 .menubar
-  margin-bottom: 1rem
-
 
 .lmo-markdown-wrapper
-  word-wrap: break-word
+  h1
+    line-height: 3.5rem
+    font-size: 1.75rem
+    font-weight: 400
+    letter-spacing: .0125em
+
+  h2
+    line-height: 2.5rem
+    font-size: 1.25rem
+    font-weight: 500
+    letter-spacing: .0125em
+
+  h3
+    line-height: 2.5rem
+    font-size: 1rem
+    font-weight: 700
+    letter-spacing: .009375em
 
   p
-    margin-bottom: 8px
+    margin-bottom: 12px
+
+  hr
+    border: 0
+    border-bottom: 2px solid rgba(0,0,0,0.1)
+    margin: 16px 0
+
+  word-wrap: break-word
+
   img
     max-width: 100%
-  h1
-    margin: 1em 0 0.5em
-    font-weight: 500
-  h2
-    margin: 1em 0 0.5em
-    font-weight: 500
-  h3
-    margin: 1em 0 0.5em
-    font-weight: 500
+
+  ol, ul
+    padding-left: 24px
+    margin-bottom: 16px
+    ul
+      margin-bottom: 0
+
   ul
-    padding: 0 0 10px 24px
-  ul li
     list-style: disc
+
+  ol
+    list-style: decimal
+
+  li p
+    margin-bottom: 0
+
   pre
     overflow: auto
     padding: 10px
 
   blockquote
     font-style: italic
-    font-size: inherit
+    border-left: 3px solid rgba(0,0,0,.1)
+    color: rgba(0,0,0,.8)
+    padding-left: .8rem
 
   table
     table-layout: fixed
     width: 100%
     margin-bottom: 10px
+
   table td
     padding: 6px 13px
     border: 1px solid #ddd
+
   thead td
     font-weight: bold
 
@@ -431,18 +449,8 @@ progress::-moz-progress-bar
   border: 0
   transition: width 120ms ease-out, opacity 60ms 60ms ease-in
 
-.menubar__dropdown
-  .v-list__tile
-    height: 40px
 
-    .v-btn
-      margin-left: 0
-      margin-right: 0
-      min-width: 0
-      .v-icon
-        font-size: 16px
-
-.menubar
+.menubar, .menububble
   .v-btn--icon
     width: 32px
     height: 32px
@@ -459,6 +467,8 @@ progress::-moz-progress-bar
   padding: 4px 0px
   margin: 4px 0px
   outline: none
+  max-height: 600px
+  overflow-y: scroll
 
 .ProseMirror:focus
   border-bottom: 2px solid var(--v-primary-base)
@@ -476,7 +486,7 @@ li[data-type="todo_item"]
   flex-direction: row
 
 .todo-checkbox
-  border: 2px solid #000
+  border: 1px solid #000
   height: 0.9em
   width: 0.9em
   box-sizing: border-box
@@ -502,8 +512,10 @@ li[data-done="true"]
   > .todo-content
     > p
       text-decoration: line-through
-  > .todo-checkbox
-    background-color: #000
+  > .todo-checkbox::before
+    position: relative
+    top: -5px
+    content: "✓"
 
 li[data-done="false"]
   text-decoration: none

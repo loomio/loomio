@@ -57,7 +57,7 @@ export default
 <template lang="pug">
 loading(:until='group')
   group-cover-image(:group="group")
-  v-container.group-page
+  v-container.group-page.max-width-1024
     group-description-card(:group='group')
     v-card
       v-tabs(fixed-tabs v-model="activeTab" show-arrows)

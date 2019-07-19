@@ -71,11 +71,10 @@ export default
 v-layout.comment-form.mx-3
   .thread-item__avatar.mr-2
     user-avatar(:user='actor', size='medium')
-  .thread-item__body.lmo-flex--column.lmo-flex__horizontal-center
-    form(v-on:submit.prevent='submit()')
-      .lmo-disabled-form(v-show='isDisabled')
-      lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :helptext="helptext" :shouldReset="shouldReset" :autoFocus="autoFocus")
-      v-card-actions
-        v-spacer
-        v-btn.comment-form__submit-button(:disabled="!canSubmit" color="primary" type='submit' v-t="'comment_form.submit_button.label'")
+  form.thread-item__body(v-on:submit.prevent='submit()')
+    .lmo-disabled-form(v-show='isDisabled')
+    lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :helptext="helptext" :shouldReset="shouldReset" :autoFocus="autoFocus")
+    v-card-actions
+      v-spacer
+      v-btn.comment-form__submit-button(:disabled="!canSubmit" color="primary" type='submit' v-t="'comment_form.submit_button.label'")
 </template>

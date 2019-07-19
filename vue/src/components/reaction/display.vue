@@ -9,6 +9,9 @@ export default
   mixins: [WatchRecords]
   props:
     model: Object
+    fetch:
+      type: Boolean
+      default: false
 
   data: ->
     diameter: 24
@@ -28,11 +31,11 @@ export default
           @reactionHash['all'].push(user)
           true
 
-    # if @load
-    #   Records.reactions.fetch(params:
-    #     reactable_type: capitalize(@model.constructor.singular)
-    #     reactable_id: @model.id
-    #   ).finally => @loaded = true
+    if @fetch
+      Records.reactions.fetch
+        params:
+          reactable_type: capitalize(@model.constructor.singular)
+          reactable_id: @model.id
 
 
   computed:

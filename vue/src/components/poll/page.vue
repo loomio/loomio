@@ -51,7 +51,7 @@ export default
 loading(:until="poll")
   div(v-if="poll")
     group-cover-image(:group="poll.group()")
-    v-container.poll-page.v-container-max-width
+    v-container.poll-page.max-width-800
       loading(v-if='isEmptyPoll')
       v-layout(column v-if='!isEmptyPoll')
         poll-common-example-card(v-if='poll.example', :poll='poll')
