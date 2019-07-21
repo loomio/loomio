@@ -71,6 +71,7 @@ v-layout.comment-form.mx-3
       template(v-slot:actions)
         v-layout
           v-spacer
-          v-btn.comment-form__cancel-reply(text v-if="comment.parentId" @click="$emit('cancel-reply')" v-t="'comment_form.cancel_reply'")
+          v-btn.comment-form__cancel-reply(text v-if="comment.parentId" @click="$emit('cancel-reply')" v-t="'common.action.cancel'")
+          space
           v-btn.comment-form__submit-button(:disabled="!canSubmit" color="primary" type='submit' v-t="'comment_form.submit_button.label'")
 </template>

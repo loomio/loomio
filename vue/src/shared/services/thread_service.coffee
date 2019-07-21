@@ -33,7 +33,7 @@ export default new class ThreadService
       perform: => @mute(discussion)
 
     dismiss_thread:
-      name: 'dashboard_page.dismiss'
+      name: 'dashboard_page.mark_as_read'
       icon: 'mdi-check'
       canPerform: -> discussion.isUnread()
       perform: => @dismiss(discussion)

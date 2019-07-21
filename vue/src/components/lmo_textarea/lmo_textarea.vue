@@ -149,9 +149,9 @@ export default
     filteredUsers: ->
       unsorted = filter Records.users.collection.chain().find(@mentionableUserIds).data(), (u) =>
         isString(u.username) &&
-        (u.name.toLowerCase().startsWith(@query) or
-        (u.username || "").toLowerCase().startsWith(@query) or
-        u.name.toLowerCase().includes(" #{@query}"))
+        ((u.name || '').toLowerCase().startsWith(@query) or
+        (u.username || '').toLowerCase().startsWith(@query) or
+        (u.name || '').toLowerCase().includes(" #{@query}"))
       sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
     format: ->
       @model["#{@field}Format"]
