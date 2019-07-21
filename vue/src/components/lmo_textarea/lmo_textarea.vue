@@ -8,9 +8,29 @@ import FilesList from './files_list.vue'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
-import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
-  OrderedList, BulletList, ListItem, TodoList, Bold, Code,
-  Italic, Link, Strike, Underline, History, Mention, Placeholder } from 'tiptap-extensions'
+import {
+  Blockquote,
+  CodeBlock,
+  HardBreak,
+  Heading,
+  HorizontalRule,
+  OrderedList,
+  BulletList,
+  ListItem,
+  Table,
+  TableHeader,
+  TableCell,
+  TableRow,
+  TodoList,
+  Bold,
+  Code,
+  Italic,
+  Link,
+  Strike,
+  Underline,
+  History,
+  Mention,
+  Placeholder } from 'tiptap-extensions'
 
 import TodoItem from './todo_item'
 
@@ -50,7 +70,6 @@ export default
         new Mention(
           # is called when a suggestion starts
           onEnter: ({ query, range, command, virtualNode }) =>
-            # console.log "suggestion started", items, query, range
             @query = query
             @suggestionRange = range
             @insertMention = command
@@ -59,7 +78,6 @@ export default
 
           # is called when a suggestion has changed
           onChange: ({query, range, virtualNode}) =>
-            # console.log "suggestion changed", items, query, range
             @query = query
             @suggestionRange = range
             @navigatedUserIndex = 0
@@ -104,6 +122,10 @@ export default
         new OrderedList(),
         new TodoItem(),
         new TodoList(),
+        new Table(),
+        new TableHeader(),
+        new TableCell(),
+        new TableRow(),
         new Bold(),
         new Code(),
         new Italic(),
@@ -195,13 +217,10 @@ export default
       Records.users.fetchMentionable(@query, @model).then (response) =>
         @mentionableUserIds.concat(uniq @mentionableUserIds + map(response.users, 'id'))
 
-    # navigate to the previous item
-    # if it's the first item, navigate to the last one
+    # mentioning methods
     upHandler: ->
       @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length
 
-    # navigate to the next item
-    # if it's the last item, navigate to the first one
     downHandler: ->
       @navigatedUserIndex = (@navigatedUserIndex + 1) % @filteredUsers.length
 
@@ -209,8 +228,6 @@ export default
       user = @filteredUsers[@navigatedUserIndex]
       @selectUser(user) if user
 
-    # we have to replace our suggestion text with a mention
-    # so it's important to pass also the position of your suggestion text
     selectUser: (user) ->
       @insertMention
         range: @suggestionRange
@@ -219,28 +236,35 @@ export default
           label: user.name
       @editor.focus()
 
-     # renders a popup with suggestions
-     # tiptap provides a virtualNode object for using popper.js (or tippy.js) for popups
-     renderPopup: (node) ->
-       return if @popup
-       @popup = tippy(node, {
-         content: @$refs.suggestions,
-         trigger: 'mouseenter',
-         interactive: true,
-         theme: 'dark',
-         placement: 'top-start',
-         performance: true,
-         inertia: true,
-         duration: [400, 200],
-         showOnInit: true,
-         arrow: true,
-         arrowType: 'round'
-       })
+    renderPopup: (node) ->
+      return if @popup
+      @popup = tippy(node, {
+        content: @$refs.suggestions,
+        trigger: 'mouseenter',
+        interactive: true,
+        theme: 'dark',
+        placement: 'top-start',
+        inertia: true,
+        duration: [400, 200],
+        showOnInit: true,
+        arrow: true,
+        arrowType: 'round'
+      })
 
-     destroyPopup: ->
-       if (@popup)
-         @popup.destroyAll()
-         @popup = null
+      if MutationObserver
+        @observer = new MutationObserver => @popup.popperInstance.scheduleUpdate()
+        @observer.observe(@$refs.suggestions, {
+          childList: true,
+          subtree: true,
+          characterData: true,
+        })
+
+    destroyPopup: ->
+      if @popup
+        @popup.destroy()
+        @popup = null
+      @observer.disconnect() if @observer
+
   watch:
     files: -> @updateModel()
     imageFiles: -> @updateModel()
@@ -269,6 +293,8 @@ div
           v-icon mdi-format-strikethrough
         v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
           v-icon mdi-format-underline
+        //- v-btn(small icon :class="{ 'is-active': isActive.code() }", @click='commands.code')
+        //-   v-icon mdi-code-tags
         v-dialog(v-model="linkDialogIsOpen" max-width="600px")
           template(v-slot:activator="{on}")
             v-btn(small icon v-on="on")
@@ -281,9 +307,15 @@ div
               v-spacer
               v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
 
-
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
       .menubar
+        v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+          template(v-slot:activator="{on}")
+            v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
+              v-icon mdi-emoticon-outline
+          emoji-picker(:insert="emojiPicked")
+        v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
+          v-icon mdi-paperclip
         v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
           v-icon mdi-format-header-1
         v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
@@ -298,31 +330,29 @@ div
           v-icon mdi-format-list-checks
         v-btn(small icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
           v-icon mdi-format-quote-close
+        v-btn(small icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
+          v-icon mdi-code-braces
         v-btn(icon @click='commands.horizontal_rule')
           v-icon mdi-minus
-        v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
-          v-icon mdi-paperclip
-        v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-          template(v-slot:activator="{on}")
-            v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
-              v-icon mdi-emoticon-outline
-          emoji-picker(:insert="emojiPicked")
-        //- v-dialog(v-model="linkDialogIsOpen" max-width="600px")
-        //-   template(v-slot:activator="{on}")
-        //-     v-btn(text small v-on="on")
-        //-       v-icon mdi-link-variant
-        //-   v-card
-        //-     .needsSelection(v-if="editor.view.state.tr.selection.empty")
-        //-       v-card-title.title(v-t="'text_editor.select_text_to_link'")
-        //-
-        //-     .hasSelection(v-if="!editor.view.state.tr.selection.empty")
-        //-       v-card-title.title(v-t="'text_editor.insert_link'")
-        //-       v-card-text
-        //-         v-text-field(type="url" label="https://www.example.com" v-model="linkUrl")
-        //-       v-card-actions
-        //-         v-spacer
-        //-         v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
-        //- v-btn-toggle(slot-scope='{ commands, isActive }')
+        v-btn(icon @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })")
+          v-icon mdi-table
+        span(v-if="isActive.table()")
+          v-btn(icon @click="commands.deleteTable")
+            v-icon mdi-table-remove
+          v-btn(icon @click="commands.addColumnBefore")
+            v-icon mdi-table-column-plus-before
+          v-btn(icon @click="commands.addColumnAfter")
+            v-icon mdi-table-column-plus-after
+          v-btn(icon @click="commands.deleteColumn")
+            v-icon mdi-table-column-remove
+          v-btn(icon @click="commands.addRowBefore")
+            v-icon mdi-table-row-plus-before
+          v-btn(icon @click="commands.addRowAfter")
+            v-icon mdi-table-row-plus-after
+          v-btn(icon @click="commands.deleteRow")
+            v-icon mdi-table-row-remove
+          v-btn(icon @click="commands.toggleCellMerge")
+            v-icon mdi-table-merge-cells
 
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')
@@ -468,7 +498,7 @@ progress::-moz-progress-bar
   padding: 4px 0px
   margin: 4px 0px
   outline: none
-  max-height: 600px
+  max-height: 500px
   overflow-y: scroll
 
 .ProseMirror:focus
@@ -545,10 +575,7 @@ li[data-done="false"]
   padding-bottom: 16px
 
 .mention
-  background: rgba(#000, 0.1)
-  color: rgba(#000, 0.6)
-  font-size: 0.8rem
-  font-weight: bold
+  background: rgba(#ffb300, 0.3)
   border-radius: 5px
   padding: 0.2rem 0.5rem
   white-space: nowrap
@@ -559,11 +586,10 @@ li[data-done="false"]
 .suggestion-list
   padding: 0.2rem
   border: 2px solid rgba(#000, 0.1)
-  font-size: 0.8rem
-  font-weight: bold
   &__no-results
     padding: 0.2rem 0.5rem
   &__item
+    font-family: roboto, sans-serif
     border-radius: 5px
     padding: 0.2rem 0.5rem
     margin-bottom: 0.2rem
