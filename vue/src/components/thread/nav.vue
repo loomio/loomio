@@ -20,7 +20,6 @@ export default
     # threadPositionUpdated (slider position needs updating)
     EventBus.$on 'toggleThreadNav', => @open = !@open
     EventBus.$on 'threadPositionUpdated', debounce (position) =>
-      console.log position
       @inversePosition = 0 - position
     ,
       250
@@ -71,10 +70,6 @@ export default
       records = Records
       announcement = Records.announcements.buildFromModel(@discussion)
       @openAnnouncementModal(Records.announcements.buildFromModel(@discussion))
-
-  watch:
-    open: (val) ->
-      console.log 'sidebar open', val
 
 </script>
 
