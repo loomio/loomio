@@ -28,9 +28,9 @@ export default
 
     placeholder: ->
       if @comment.parentId
-        {path: 'comment_form.in_reply_to', args: {name: @comment.parent().authorName()}}
+        @$t({path: 'comment_form.in_reply_to', args: {name: @comment.parent().authorName()}})
       else
-        'comment_form.aria_label'
+        @$t('comment_form.aria_label')
 
   methods:
     handleIsUploading: (val) ->
