@@ -60,5 +60,5 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-wind
   attachment-list(:attachments="eventable.attachments")
 
   reaction-display(:model="eventable")
-  comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" :autoFocus="true")
+  comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" :autoFocus="true")
 </template>

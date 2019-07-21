@@ -20,15 +20,9 @@ export default
     canSubmit: true
 
   computed:
-    helptext: ->
-      helptext = if @comment.discussion().private
-        {path: 'comment_form.private_privacy_notice', args: {groupName: @comment.discussion().group().fullName}}
-      else
-        'comment_form.public_privacy_notice'
-
     placeholder: ->
       if @comment.parentId
-        @$t({path: 'comment_form.in_reply_to', args: {name: @comment.parent().authorName()}})
+        @$t('comment_form.in_reply_to', {name: @comment.parent().authorName()})
       else
         @$t('comment_form.aria_label')
 
@@ -73,8 +67,9 @@ v-layout.comment-form.mx-3
     user-avatar(:user='actor', size='medium')
   form.thread-item__body(v-on:submit.prevent='submit()')
     .lmo-disabled-form(v-show='isDisabled')
-    lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :helptext="helptext" :shouldReset="shouldReset" :autoFocus="autoFocus")
+    lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :shouldReset="shouldReset" :autoFocus="autoFocus")
     v-card-actions
+      v-btn.comment-form__cancel-reply(text v-if="comment.parentId" @click="$emit('cancel-reply')" v-t="'comment_form.cancel_reply'")
       v-spacer
       v-btn.comment-form__submit-button(:disabled="!canSubmit" color="primary" type='submit' v-t="'comment_form.submit_button.label'")
 </template>
