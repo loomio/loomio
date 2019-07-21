@@ -308,7 +308,7 @@ div
               v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
 
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
-      .menubar
+      v-layout.menubar(wrap align-center)
         v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
           template(v-slot:activator="{on}")
             v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
@@ -353,6 +353,7 @@ div
             v-icon mdi-table-row-remove
           v-btn(icon @click="commands.toggleCellMerge")
             v-icon mdi-table-merge-cells
+        slot(name="actions")
 
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')
@@ -388,8 +389,6 @@ div
   visibility: hidden
   opacity: 0
   transition: opacity .2s,visibility .2s
-
-.menubar
 
 .lmo-markdown-wrapper
   h1
@@ -517,17 +516,15 @@ li[data-type="todo_item"]
   flex-direction: row
 
 .todo-checkbox
-  border: 1px solid #000
-  height: 0.9em
-  width: 0.9em
+  border: 1px solid #999
+  height: 1em
+  width: 1em
   box-sizing: border-box
-  margin-right: 10px
-  margin-top: 0.3rem
+  margin-right: 8px
+  margin-top: 4px
   user-select: none
-  -webkit-user-select: none
   border-radius: 0.2em
   background-color: transparent
-  transition: 0.4s background
 
 .ProseMirror .todo-checkbox
   cursor: pointer
@@ -547,21 +544,13 @@ li[data-done="true"]
       text-decoration: line-through
   > .todo-checkbox::before
     position: relative
-    top: -5px
+    top: -7px
+    color: var(--v-primary-base)
+    font-size: 1.3rem
     content: "✓"
 
 li[data-done="false"]
   text-decoration: none
-
-// .ProseMirror::after{
-//   bottom: -1px;
-//   content: "";
-//   left: 0;
-//   position: absolute;
-//   -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-//   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-//   width: 100%;
-// }
 
 .editor p.is-empty:first-child::before
   content: attr(data-empty-text)

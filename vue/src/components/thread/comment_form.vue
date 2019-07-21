@@ -68,8 +68,9 @@ v-layout.comment-form.mx-3
   form.thread-item__body(v-on:submit.prevent='submit()')
     .lmo-disabled-form(v-show='isDisabled')
     lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :shouldReset="shouldReset" :autoFocus="autoFocus")
-    v-card-actions
-      v-btn.comment-form__cancel-reply(text v-if="comment.parentId" @click="$emit('cancel-reply')" v-t="'comment_form.cancel_reply'")
-      v-spacer
-      v-btn.comment-form__submit-button(:disabled="!canSubmit" color="primary" type='submit' v-t="'comment_form.submit_button.label'")
+      template(v-slot:actions)
+        v-layout
+          v-spacer
+          v-btn.comment-form__cancel-reply(text v-if="comment.parentId" @click="$emit('cancel-reply')" v-t="'comment_form.cancel_reply'")
+          v-btn.comment-form__submit-button(:disabled="!canSubmit" color="primary" type='submit' v-t="'comment_form.submit_button.label'")
 </template>
