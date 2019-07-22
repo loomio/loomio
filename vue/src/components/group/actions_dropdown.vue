@@ -7,15 +7,27 @@ import ConfirmModalMixin from '@/mixins/confirm_modal'
 import GroupModalMixin from '@/mixins/group_modal'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import Flash from '@/shared/services/flash'
-
+import WatchRecords    from '@/mixins/watch_records'
 export default
-  mixins: [
-    ConfirmModalMixin,
-    GroupModalMixin,
-    ChangeVolumeModalMixin
-  ]
+  mixins: [ WatchRecords, ConfirmModalMixin, GroupModalMixin, ChangeVolumeModalMixin]
   props:
     group: Object
+
+  data: ->
+    canBecomeCoordinator: false
+    canSeeGroupActions: false
+    canExportData: false
+
+  created: ->
+    @watchRecords
+      collections: ['memberships']
+      query: =>
+        membership = @group.membershipFor(Session.user())
+        @canBecomeCoordinator = membership.admin == false &&
+          (membership.group().adminMembershipsCount == 0 or
+          Session.user().isAdminOf(membership.group().parent()))
+
+        @canSeeGroupActions = @canExportData = Session.user().isMemberOf(@group)
 
   methods:
     becomeCoordinator: ->
@@ -42,12 +54,6 @@ export default
       @openConfirmModal(@archiveGroupModalConfirmOpts)
 
   computed:
-    canBecomeCoordinator: ->
-      membership = @group.membershipFor(Session.user())
-      return unless membership
-      membership.admin == false &&
-      (membership.group().adminMembershipsCount == 0 or
-      Session.user().isAdminOf(membership.group().parent()))
 
     groupExportModalConfirmOpts: ->
       submit: @group.export
@@ -74,11 +80,6 @@ export default
         flash:    'group_page.messages.archive_group_success'
       redirect:   '/dashboard'
 
-    canSeeGroupActions: ->
-      Session.user().isMemberOf(@group)
-
-    canExportData: ->
-      Session.user().isMemberOf(@group)
 
     canAdministerGroup: ->
       AbilityService.canAdministerGroup(@group)

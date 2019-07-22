@@ -99,7 +99,7 @@ v-container.dashboard-page
       loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
   section.dashboard-page__loaded(v-if='dashboardLoaded')
     .dashboard-page__empty(v-if='noThreads')
-      p(v-t="'dashboard_page.no_groups.show_all'", v-if='noGroups')
+      p(v-html="$t('dashboard_page.no_groups.show_all')" v-if='noGroups')
       .dashboard-page__no-threads(v-if='!noGroups')
         span(v-show="filter == 'show_all'", v-t="'dashboard_page.no_threads.show_all'")
         //- p(v-t="'dashboard_page.no_threads.show_all'")

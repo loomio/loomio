@@ -592,7 +592,7 @@ en:
 
   join_group_button:
     join_group: Join group
-    membership_requested: Membership request pending
+    membership_requested: Membership requested
     messages:
       joined_group: 'You are now a member of {{group}}'
 
