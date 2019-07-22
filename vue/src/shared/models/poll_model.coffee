@@ -179,6 +179,3 @@ export default class PollModel extends BaseModel
   removeOrphanOptions: ->
     _.each @pollOptions(), (option) =>
       option.remove() unless _.includes(@pollOptionNames, option.name)
-
-  edited: ->
-    @versionsCount > 1

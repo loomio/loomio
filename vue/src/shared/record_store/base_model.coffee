@@ -194,3 +194,6 @@ export default class BaseModel
 
   isValid: ->
     @errors.length > 0
+
+  edited: ->
+    @versionsCount > 1

@@ -1,7 +1,12 @@
 class API::VersionsController < API::RestfulController
   def show
-    self.resource = service.reduce(model: model, index: params[:index].to_i)
-    respond_with_resource
+    if params['use_vue']
+      self.resource = model.versions[params[:index].to_i]
+      respond_with_resource
+    else
+      self.resource = service.reduce(model: model, index: params[:index].to_i)
+      respond_with_resource
+    end
   end
 
   private

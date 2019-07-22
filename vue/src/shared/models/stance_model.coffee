@@ -65,9 +65,6 @@ export default class StanceModel extends BaseModel
   votedFor: (option) ->
     _.includes _.map(@pollOptions(), 'id'), option.id
 
-  edited: ->
-    @versionsCount > 1
-
   scoreFor: (option) ->
     choiceForOption = _.find @stanceChoices(), (choice)->
       choice.pollOptionId == option.id

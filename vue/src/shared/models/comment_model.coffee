@@ -72,6 +72,3 @@ export default class CommentModel extends BaseModel
 
   beforeDestroy: ->
     _.invokeMap @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'
-
-  edited: ->
-    @versionsCount > 1

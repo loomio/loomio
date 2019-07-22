@@ -6,7 +6,8 @@ class VersionSerializer < ActiveModel::Serializer
              :previous_id,
              :created_at,
              :item_id,
-             :item_type
+             :item_type,
+             :object_changes
 
   has_one :discussion
   has_one :comment
@@ -40,6 +41,7 @@ class VersionSerializer < ActiveModel::Serializer
   def previous_id
     object.previous.try :id
   end
+
 
   def include_discussion?
     object.item_type == 'Discussion'

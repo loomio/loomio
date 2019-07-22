@@ -1,63 +1,68 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import { exact } from '@/shared/helpers/format_time'
+import { parseISO } from 'date-fns'
+
+import marked from 'marked'
+import {customRenderer, options} from '@/shared/helpers/marked.coffee'
+marked.setOptions Object.assign({renderer: customRenderer()}, options)
 
 export default
   props:
     model: Object
     version: Object
+
   methods:
-    diffType: (field_name) ->
-      # depending on the model type we will have different kinds
-      switch field_name
-        when "body", "description", "title", "reason" then (if @version.changes[field_name][0] then "diff" else "original");
-        when "group_id", "private" then "notice";
+    exact: exact
 
-    noticeValues: (field_name) ->
-      switch field_name
-        when "group_id" then { name: Records.groups.find(@version.changes.group_id[1]).name}
-        when "private" then { private: if @version.changes.private[1] then "private" else "public"}
-        when "closing_at" then {time: exact(@version.changes.closing_at[1])}
+  computed:
+    modelKind: -> @model.constructor.singular
+
+    bodyField: ->
+      switch @model.constructor.singular
+        when "comment" then "body"
+        when "stance" then "reason"
+        when "discussion" then "description"
+        when "poll" then "details"
+        when "outcome" then "statement"
+
+    bodyChanges: ->
+      if @model[@bodyField+"Format"] == "md"
+        @version.objectChanges[@bodyField].map (val) -> marked(val || '')
+      else
+        @version.objectChanges[@bodyField]
+
+    titleChanges: ->
+      @version.objectChanges.title
+
+    bodyLabel: ->
+      switch @model.constructor.singular
+        when "comment" then "activity_card.comment"
+        when "stance" then "poll_common.reason"
+        when "discussion" then "discussion_form.context_label"
+        when "poll" then "poll_common.details"
+        when "outcome" then "poll_common.statement"
+
+    closingAtChanges: ->
+      if @version.objectChanges.closing_at
+        @version.objectChanges.closing_at.map (iso) ->
+          exact(parseISO(iso)) if iso
+
 </script>
+
 <template lang="pug">
+
 .revision-history-content
-  .revision-history-content--markdown.text-diff(v-if='model.constructor.singular == "comment"', v-html='version.changes.body')
-  .revision-history-content--markdown.text-diff(v-if='model.constructor.singular == "stance"', v-html='version.changes.reason')
-  div(v-if='model.constructor.singular == "discussion"')
-    revision-history-text-diff.revision-history-content--header(:before='version.changes.title[0]', :after='version.changes.title[1]')
-    .revision-history-content--markdown.text-diff(v-html='version.changes.description')
-    p.text-diff(v-if='version.changes.private && !version.isOriginal()')
-      ins(v-t='{ path: "revision_history_modal.private_changed", args: { private: noticeValues("private") }}')
-    p.text-diff(v-if='version.changes.group_id && !version.isOriginal()')
-      ins(v-t='{ path: "revision_history_modal.group_id_changed", args: { name: noticeValues("group_id") }}')
-  div(v-if='model.constructor.singular == "poll"')
-    revision-history-text-diff.poll-common-card__title.revision-history-content--header(:before='version.changes.title[0]', :after='version.changes.title[1]')
-    .revision-history-content--markdown.text-diff(v-html='version.changes.details')
-    p.text-diff(v-if='version.changes.closing_at')
-      ins(v-t='{ path: "revision_history_modal.closing_at_changed", args: { time: noticeValues("closing_at") }}')
+  .mb-3(v-if="titleChanges")
+    v-label(v-t="'discussion_form.title_label'")
+    html-diff.headline(:before="titleChanges[0]" :after="titleChanges[1]")
+
+  .mb-3(v-if="closingAtChanges")
+    v-label(v-t="'poll_common_closing_at_field.closing'")
+    p(v-t="{path: 'revision_history_modal.closing_at_changed', args: {time: closingAtChanges[1]}}")
+
+  .mb-3(v-if="bodyChanges")
+    v-label(v-t="bodyLabel")
+    html-diff.lmo-markdown-wrapper(:before="bodyChanges[0]" :after="bodyChanges[1]")
+
 </template>
-<style lang="sass">
-.revision-history-content
-  margin-top: 16px
-
-.revision-history-modal__version
-  max-height: 440px
-  overflow: auto
-
-.revision-history-content--header
-  display: block
-  margin-bottom: 16px
-
-.revision-history-content--markdown
-  table.markdown
-    width: 100%
-  tr:not(:last-child) td
-    padding-bottom: 16px
-  td
-    width: 50%
-    &:first-child
-      border-right: 1px solid #ccc
-      padding-right: 8px
-    &:last-child
-      padding-left: 8px
-</style>

@@ -39,7 +39,7 @@ v-card.poll-common-modal
     .poll-common-outcome-form
       .lmo-disabled-form(v-if='isDisabled')
       label(v-t="'poll_common.statement'")
-      lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :placeholder="'poll_common_outcome_form.statement_placeholder'")
+      lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       validation-errors(:subject="outcome" field="statement")
       poll-common-calendar-invite(:outcome='outcome', v-if='datesAsOptions()')
   v-card-actions

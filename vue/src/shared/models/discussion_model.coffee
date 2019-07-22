@@ -208,9 +208,6 @@ export default class DiscussionModel extends BaseModel
   fork: =>
     @remote.post 'fork', @serialize()
 
-  edited: ->
-    @versionsCount > 1
-
   isForking: ->
     @forkedEventIds.length > 0
 

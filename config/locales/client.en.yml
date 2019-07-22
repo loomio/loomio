@@ -615,12 +615,14 @@ en:
     stance_header: Stance revision history
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
+    edit_by: "Edit by {{name}} · {{date}}"
     posted: Posted
     original_text: Original
     current_revision: Latest
     closing_at_changed: "closing time set to {{time}}"
     private_changed: "privacy set to {{private}}"
     group_id_changed: "moved to {{name}}"
+
 
   reactions_input:
     add_your_reaction: Add your reaction
