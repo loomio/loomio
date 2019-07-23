@@ -82,14 +82,6 @@ export groupPrivacyConfirm = (group) ->
     if group.discussionPrivacyOptions == 'private_only'
       'group_form.confirm_change_to_private_discussions_only'
 
-export discussionPrivacy = (discussion, is_private = null) ->
-  if is_private == false
-    'discussion_form.privacy_public'
-  else if discussion.group().parentMembersCanSeeDiscussions
-    'discussion_form.privacy_organisation'
-  else
-    'discussion_form.privacy_private'
-
 newCommentKey = (event, useNesting) ->
   if event.isNested() && !useNesting
     'comment_replied_to'

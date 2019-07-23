@@ -30,7 +30,6 @@ module.exports = {
   DiscussionForkActions: 'discussion/fork_actions',
   DiscussionForm: 'discussion/form',
   DiscussionFormActions: 'discussion/form_actions',
-  DiscussionPrivacyIcon: 'discussion/privacy_icon',
   DiscussionStart: 'discussion/start',
   DismissModalButton: 'common/dismiss_modal_button',
   DocumentCard: 'document/card',

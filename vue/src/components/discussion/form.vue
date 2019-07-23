@@ -1,7 +1,6 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { discussionPrivacy } from '@/shared/helpers/helptext'
 import { submitDiscussion } from '@/shared/helpers/form'
 import { map, sortBy, filter } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
@@ -45,14 +44,21 @@ export default
       @discussion.private = @discussion.privateDefaultValue()
 
   computed:
-    showPrivacyForm: ->
-      return unless @discussion.group()
-      @discussion.group().discussionPrivacyOptions == 'public_or_private'
+    privacyTitle: ->
+      if @discussion.private
+        'common.privacy.private'
+      else
+        'common.privacy.public'
 
-    privacyPrivateDescription: ->
-      @$t discussionPrivacy(discussion, true),
-        group:  @discussion.group().name,
-        parent: @discussion.group().parentName()
+    privacyDescription: ->
+
+      path = if @discussion.private == false
+               'discussion_form.privacy_public'
+             else if @discussion.group().parentMembersCanSeeDiscussions
+               'discussion_form.privacy_organisation'
+             else
+               'discussion_form.privacy_private'
+      @$t(path, {group:  @discussion.group().name, parent: @discussion.group().parentName()})
 
     groupSelectOptions: ->
       sortBy map(@availableGroups, (group) -> {
@@ -113,19 +119,13 @@ v-card.discussion-form
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(v-if="!discussion.isForking()" :model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
-      v-list.discussion-form__options
-        v-list-item.discussion-form__privacy-form(v-if='showPrivacyForm')
-          v-radio-group(v-model='discussion.private')
-            v-radio.discussion-form__public(:value='false')
-              discussion-privacy-icon(slot='label', :discussion='discussion', :private='false')
-            v-radio.discussion-form__private(:value='true')
-              discussion-privacy-icon(slot='label', :discussion='discussion', :private='true')
-        v-list-item.discussion-form__privacy-notice(v-if='!showPrivacyForm')
-          v-list-item-avatar
-            v-icon(v-if='discussion.private') mdi-lock-outline
-            v-icon(v-if='!discussion.private') mdi-earth
-          v-list-item-content
-            discussion-privacy-icon(:discussion='discussion')
+      v-list-item.discussion-form__privacy-notice
+        v-list-item-avatar
+          v-icon(v-if='discussion.private') mdi-lock-outline
+          v-icon(v-if='!discussion.private') mdi-earth
+        v-list-item-content
+          v-list-item-title.discussion-privacy-icon__title(v-t="privacyTitle")
+          v-list-item-subtitle.discussion-privacy-icon__subtitle(v-html='privacyDescription')
   v-card-actions.discussion-form-actions
     v-spacer
     v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()")
