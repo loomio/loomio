@@ -61,7 +61,7 @@ export default
 </script>
 
 <template lang="pug">
-v-layout.comment-form.mx-3.absolute
+v-layout.comment-form.mx-3
   .thread-item__avatar.mr-3
     user-avatar(:user='actor', size='medium')
   form.thread-item__body(v-on:submit.prevent='submit()')
