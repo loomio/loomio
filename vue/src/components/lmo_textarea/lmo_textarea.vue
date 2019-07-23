@@ -497,7 +497,6 @@ progress::-moz-progress-bar
   padding: 4px 0px
   margin: 4px 0px
   outline: none
-  max-height: 500px
   overflow-y: scroll
 
 .ProseMirror:focus
