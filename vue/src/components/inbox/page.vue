@@ -77,7 +77,7 @@ v-container.lmo-main-container.inbox-page(grid-list-lg)
       .inbox-page__group(v-for='group in groups', :key='group.id')
         v-card.mb-3(v-if='views[group.key].length > 0')
           v-card-title
-            v-avatar.mr-2(tile size="48px")
+            v-avatar.mr-3(tile size="48px")
               v-img(:src='group.logoUrl()', aria-hidden='true')
             router-link.inbox-page__group-name(:to="'/g/' + group.key")
               span.subheading {{group.name}}

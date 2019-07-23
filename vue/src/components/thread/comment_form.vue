@@ -63,7 +63,7 @@ export default
 
 <template lang="pug">
 v-layout.comment-form.mx-3
-  .thread-item__avatar.mr-2
+  .thread-item__avatar.mr-3
     user-avatar(:user='actor', size='medium')
   form.thread-item__body(v-on:submit.prevent='submit()')
     .lmo-disabled-form(v-show='isDisabled')

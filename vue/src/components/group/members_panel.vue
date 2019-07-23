@@ -192,11 +192,11 @@ div.members-panel
           v-icon(v-if="item.admin") mdi-star
         td.members-panel__name(v-if="item.acceptedAt")
           v-layout(align-center)
-            user-avatar.mr-3(:user='item.user()', size='forty')
+            user-avatar.mr-4(:user='item.user()', size='forty')
             router-link(:to="urlFor(item.user())") {{item.user().name}}
         td.members-panel__name(v-else)
           v-layout(align-center)
-            user-avatar.mr-3(:user='item.user()', size='forty')
+            user-avatar.mr-4(:user='item.user()', size='forty')
             span {{item.user().email || item.user().name}}
         td {{item.user().username}}
         td.members-panel__title {{item.title}}

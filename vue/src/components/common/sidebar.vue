@@ -111,21 +111,20 @@ v-navigation-drawer.sidenav-left(app v-model="open")
       v-icon mdi-plus
     v-list-item-title(v-t="'sidebar.start_thread'")
   v-divider.sidebar__divider
-  div.sidebar__groups(v-for='group in groups', :key='group.id')
+  div.sidebar__groups(v-for='group in groups' :key='group.id')
     v-list-item(:to='groupUrl(group)' dense)
-      v-list-item-avatar(:size="28" tile)
+      v-list-item-avatar(size="28px")
         v-avatar(tile size="28px")
           img.sidebar__list-item-group-logo(:src='group.logoUrl()')
       v-list-item-title {{group.name}}
-    v-list-item(v-if="isCurrentOrganization(group)" v-for="subgroup in sortGroups(group.subgroups())" dense :to='groupUrl(subgroup)' :key="subgroup.id")
+    v-list-item(dense v-if="isCurrentOrganization(group)" v-for="subgroup in sortGroups(group.subgroups())" :to='groupUrl(subgroup)' :key="subgroup.id")
       v-list-item-avatar(:size="28")
       v-list-item-title {{subgroup.name}}
-  v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroup()", @click="openStartGroupModal()")
-    v-list-item-action
-      v-icon mdi-plus
-    v-list-item-content
-      span(v-t="'sidebar.start_group'")
-  v-list-item
+  v-list-item.sidebar__list-item-button--start-group(dense v-if="canStartGroup()", @click="openStartGroupModal()")
+    v-list-item-avatar(:size="28")
+      v-icon(:size="28" tile) mdi-plus
+    v-list-item-title(v-t="'sidebar.start_group'")
+  v-list-item(dense)
     v-list-item-title
       a(href="/beta") beta {{version}}
 </template>

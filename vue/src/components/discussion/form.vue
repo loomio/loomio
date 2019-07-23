@@ -103,7 +103,7 @@ v-card.discussion-form
       span(v-if="discussion.isForking()" v-t="'discussion_form.fork_discussion_title'")
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
-  .ma-3
+  .ma-4
     .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !discussion.isForking()')
     .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEvents.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
 
