@@ -25,7 +25,7 @@ export default
       p.text-xs-center Loomio is a place to have discussions and collaborate
       auth-provider-form(:user='user')
       auth-email-form(:user='user' v-if='emailLogin')
-      .auth-form__privacy-notice.caption.text-xs-center.mt-3(v-if='privacyUrl' v-html="$t('auth_form.privacy_notice', { siteName: siteName, privacyUrl: privacyUrl })")
+      .auth-form__privacy-notice.caption.text-xs-center.mt-4(v-if='privacyUrl' v-html="$t('auth_form.privacy_notice', { siteName: siteName, privacyUrl: privacyUrl })")
     .auth-form__email-set(v-if='user.emailStatus')
       auth-identity-form(v-if='pendingProviderIdentity && !user.createAccount' :user='user' :identity='pendingProviderIdentity')
       .auth-form__no-pending-identity(v-if='!pendingProviderIdentity || user.createAccount')

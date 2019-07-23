@@ -59,7 +59,7 @@ export default
 
   .mx-3
     .context-panel__details.my-2.body-2(align-center)
-      user-avatar.mr-3(:user='discussion.author()', :size='40')
+      user-avatar.mr-4(:user='discussion.author()', :size='40')
       span
         router-link(:to="urlFor(discussion.author())") {{discussion.authorName()}}
         mid-dot

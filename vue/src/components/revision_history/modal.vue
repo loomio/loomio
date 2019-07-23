@@ -50,7 +50,7 @@ v-card.revision-history-modal
     h1.headline(v-t="'revision_history_modal.' + model.constructor.singular + '_header'")
     v-spacer
     dismiss-modal-button(:close="close")
-  .revision-history-modal__body.ma-3
+  .revision-history-modal__body.ma-4
     v-layout(align-center justify-space-between)
       v-btn.revision-history-nav--previous(icon :disabled='isOldest' @click='getPrevious()')
         v-icon mdi-arrow-left

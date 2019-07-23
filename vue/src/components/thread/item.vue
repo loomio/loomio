@@ -66,7 +66,7 @@ export default
 div
   //- .thread-item.thread-item--collapsed(v-if="collapsed")
   //-   v-layout(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
-  //-     .thread-item__avatar.mr-3.mt-2.d-flex(@mouseover="hover = true" @mouseleave="hover = false")
+  //-     .thread-item__avatar.mr-4.mt-2.d-flex(@mouseover="hover = true" @mouseleave="hover = false")
   //-       v-btn(v-if="hover" icon :width="iconSize" :height="iconSize"  @click="collapsed = false")
   //-         v-icon mdi-arrow-expand-vertical
   //-       user-avatar(v-if='!hover && !event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
@@ -86,7 +86,7 @@ div
 
   .thread-item(:class="{'thread-item--unread': isUnread, 'thread-item--focused': isFocused}" v-observe-visibility="{callback: viewed}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
-      .thread-item__avatar.mr-3.mt-2
+      .thread-item__avatar.mr-4.mt-2
         //- div(@mouseover="hover = true" @mouseleave="hover = false")
         //-   v-btn(v-if="hover" :width="iconSize" :height="iconSize"  icon @click="collapsed = true")
         //-     v-icon mdi-arrow-collapse-vertical
