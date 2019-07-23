@@ -23,7 +23,7 @@ export default
       collections: ['memberships']
       query: =>
         membership = @group.membershipFor(Session.user())
-        @canBecomeCoordinator = membership.admin == false &&
+        @canBecomeCoordinator = membership && membership.admin == false &&
           (membership.group().adminMembershipsCount == 0 or
           Session.user().isAdminOf(membership.group().parent()))
 

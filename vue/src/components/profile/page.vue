@@ -56,7 +56,7 @@ export default
       successCallback: -> Session.signOut()
   methods:
     init: ->
-      # return unless Session.isSignedIn()
+      return unless Session.isSignedIn()
       @user = Session.user().clone()
       Session.updateLocale(@user.locale)
       @submit = submitForm @, @user,
@@ -82,7 +82,7 @@ v-container.profile-page
   loading(v-if='!user')
   div(v-if='user')
     v-card
-      //- .lmo-disabled-form(v-show='isDisabled')
+      submit-overlay(:value='user.processing')
       v-card-title
         h1.headline(v-t="'profile_page.edit_profile'")
       v-card-text

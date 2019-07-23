@@ -40,7 +40,7 @@ export default
 <template lang="pug">
 v-container.contact-page
   v-card.contact-form(v-show='!submitted')
-    .lmo-disabled-form(v-show='isDisabled')
+    submit-overlay(:value='message.processing')
     v-card-title
       h1.headline(v-t="'contact_message_form.title'")
     v-card-text

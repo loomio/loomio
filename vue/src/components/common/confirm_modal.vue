@@ -27,7 +27,7 @@ export default
 
 <template lang="pug">
 v-card.confirm-modal
-  //- .lmo-disabled-form(v-show="isDisabled")
+  submit-overlay(:value='isDisabled')
   v-card-title
     h1.headline(v-t="confirm.text.title")
     v-spacer

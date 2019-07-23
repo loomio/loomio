@@ -48,7 +48,8 @@ export default
 </script>
 
 <template lang="pug">
-.poll-poll-vote-form.lmo-drop-animation
+.poll-poll-vote-form
+  submit-overlay(:value="stance.processing")
   poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-list(column)
     v-list-item.poll-common-vote-form__button(align-center @click='select(option)' v-for='option in orderedPollOptions()' :key='option.id')

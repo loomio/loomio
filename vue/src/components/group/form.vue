@@ -73,7 +73,7 @@ export default
 
 <template lang="pug">
 v-card.group-form
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='group.processing')
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title

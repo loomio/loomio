@@ -30,6 +30,7 @@ export default
 <template lang="pug">
 v-card.poll-common-modal
   // <div ng-show="isDisabled" class="lmo-disabled-form"></div>
+  submit-overlay(:value="poll.processing")
   v-card-title
     h1.headline(v-t="title_key")
     v-spacer

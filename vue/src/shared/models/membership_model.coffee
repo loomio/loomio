@@ -30,10 +30,12 @@ export default class MembershipModel extends BaseModel
     @recordStore.polls.find(guestGroupId: @groupId)[0]
 
   saveVolume: (volume, applyToAll = false) ->
+    @processing = true
     @remote.patchMember(@keyOrId(), 'set_volume',
       volume: volume
       apply_to_all: applyToAll
-      unsubscribe_token: @user().unsubscribeToken).then =>
+      unsubscribe_token: @user().unsubscribeToken
+    ).then =>
       if applyToAll
         _.each @user().allThreads(), (thread) ->
           thread.update(discussionReaderVolume: null)
@@ -42,6 +44,8 @@ export default class MembershipModel extends BaseModel
       else
         _.each @group().discussions(), (discussion) ->
           discussion.update(discussionReaderVolume: null)
+    .finally =>
+      @processing = false
 
   resend: ->
     @remote.postMember(@keyOrId(), 'resend').then =>

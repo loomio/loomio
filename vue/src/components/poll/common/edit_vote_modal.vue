@@ -33,6 +33,7 @@ export default
 </script>
 <template lang="pug">
 v-card.poll-common-edit-vote-modal
+  submit-overlay(:value="stance.processing")
   v-card-title
     h1.headline
       span(v-if="stance.isNew()", v-t="'poll_common.your_response'")

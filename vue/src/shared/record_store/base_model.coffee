@@ -160,7 +160,7 @@ export default class BaseModel
     @processing = true
     @beforeDestroy()
     @remove()
-    @remote.destroy(@keyOrId()).then =>
+    @remote.destroy(@keyOrId()).finally =>
       @processing = false
 
   beforeDestroy: =>
@@ -171,9 +171,9 @@ export default class BaseModel
     @processing = true
 
     if @isNew()
-      @remote.create(@serialize()).then(@afterSave)
+      @remote.create(@serialize()).then(@afterSave).finally => @processing = false
     else
-      @remote.update(@keyOrId(), @serialize()).then(@afterSave)
+      @remote.update(@keyOrId(), @serialize()).then(@afterSave).finally => @processing = false
 
   afterSave: (data) =>
     @processing = false

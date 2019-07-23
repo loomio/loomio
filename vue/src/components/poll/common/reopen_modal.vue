@@ -20,7 +20,7 @@ export default
 
 <template lang="pug">
 v-card.poll-common-modal
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='poll.processing')
   v-card-title
     h1.headline(v-t="'poll_common_reopen_form.title'")
     v-spacer
@@ -29,5 +29,5 @@ v-card.poll-common-modal
     span.lmo-hint-text(v-t="'poll_common_reopen_form.helptext'")
     poll-common-closing-at-field(:poll='poll')
   v-card-actions
-    v-btn.poll-common-reopen-form__submit(color="primary" @click='submit()', v-t="'common.action.reopen'")
+    v-btn.poll-common-reopen-form__submit(color="primary" @click='submit' v-t="'common.action.reopen'")
 </template>

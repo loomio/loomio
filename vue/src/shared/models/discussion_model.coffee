@@ -134,11 +134,13 @@ export default class DiscussionModel extends BaseModel
     @discussionReaderVolume or @membershipVolume()
 
   saveVolume: (volume, applyToAll = false) =>
+    @processing = true
     if applyToAll
-      @membership().saveVolume(volume)
+      @membership().saveVolume(volume).finally => @processing = false
     else
       @discussionReaderVolume = volume if volume?
-      @remote.patchMember @keyOrId(), 'set_volume', { volume: @discussionReaderVolume }
+      @remote.patchMember(@keyOrId(), 'set_volume', { volume: @discussionReaderVolume }).finally =>
+        @processing = false
 
   isMuted: ->
     @volume() == 'mute'
@@ -187,26 +189,33 @@ export default class DiscussionModel extends BaseModel
 
   dismiss: ->
     @update(dismissedAt: new Date)
-    @remote.patchMember @keyOrId(), 'dismiss'
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'dismiss').finally => @processing = false
 
   recall: ->
     @update(dismissedAt: null)
-    @remote.patchMember @keyOrId(), 'recall'
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'recall').finally => @processing = false
 
   move: =>
-    @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'move', { group_id: @groupId }).finally => @processing = false
 
   savePin: =>
-    @remote.patchMember @keyOrId(), 'pin'
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'pin').finally => @processing = false
 
   close: =>
-    @remote.patchMember @keyOrId(), 'close'
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'close').finally => @processing = false
 
   reopen: =>
-    @remote.patchMember @keyOrId(), 'reopen'
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'reopen').finally => @processing = false
 
   fork: =>
-    @remote.post 'fork', @serialize()
+    @processing = true
+    @remote.post('fork', @serialize()).finally => @processing = false
 
   isForking: ->
     @forkedEventIds.length > 0

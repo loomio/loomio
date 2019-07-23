@@ -89,15 +89,19 @@ export default class UserModel extends BaseModel
     @name.split(' ').slice(1).join(' ')
 
   saveVolume: (volume, applyToAll) ->
+    @processing = true
     @remote.post('set_volume',
       volume: volume
       apply_to_all: applyToAll
-      unsubscribe_token: @unsubscribeToken).then =>
+      unsubscribe_token: @unsubscribeToken
+    ).then =>
       return unless applyToAll
-      _.each @allThreads(), (thread) ->
+      @allThreads().forEach (thread) ->
         thread.update(discussionReaderVolume: null)
-      _.each @memberships(), (membership) ->
+      @memberships().forEach (membership) ->
         membership.update(volume: volume)
+    .finally =>
+      @processing = false
 
   remind: (model) ->
     @remote.postMember(@id, 'remind', {"#{model.constructor.singular}_id": model.id}).then =>

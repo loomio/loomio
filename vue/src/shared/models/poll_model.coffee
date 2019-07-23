@@ -128,13 +128,16 @@ export default class PollModel extends BaseModel
     @customFields.goal or @membersCount()
 
   close: =>
-    @remote.postMember(@key, 'close')
+    @processing = true
+    @remote.postMember(@key, 'close').finally => @processing = false
 
   reopen: =>
-    @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt})
+    @processing = true
+    @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt}).finally => @processing = false
 
   addOptions: =>
-    @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
+    @processing = true
+    @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames).finally => @processing = false
 
   toggleSubscription: =>
     @remote.postMember(@key, 'toggle_subscription')

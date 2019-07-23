@@ -6,6 +6,6 @@ export default
 </script>
 
 <template lang="pug">
-v-btn.dismiss-modal-button(icon, :aria-label="$t('common.action.cancel')", @click='close()')
+v-btn.dismiss-modal-button(icon small :aria-label="$t('common.action.cancel')" @click='close()')
   v-icon mdi-window-close
 </template>

@@ -8,6 +8,7 @@ export default
   props:
     group: Object
     close: Function
+
   created: ->
     @submit = submitForm @, @membershipRequest,
       flashSuccess: 'membership_request_form.messages.membership_requested'
@@ -15,18 +16,19 @@ export default
         group: @group.fullName
       successCallback: =>
         @close()
+
   data: ->
     membershipRequest: Records.membershipRequests.build
       groupId: @group.id
       name:    Session.user().name
       email:   Session.user().email
-    isDisabled: false
+      
   computed:
     isSignedIn: -> Session.isSignedIn()
 </script>
 <template lang="pug">
 v-card.membership-request-form
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='membershipRequest.processing')
   v-card-title
     h1.headline(v-t="'membership_request_form.heading'")
     v-spacer

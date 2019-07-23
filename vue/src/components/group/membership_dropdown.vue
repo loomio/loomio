@@ -23,7 +23,7 @@ export default
       AbilityService.canSetMembershipTitle(@membership)
 
     setTitle: ->
-      @openMembershipModal(@membership)
+      @openMembershipModal(@membership.clone())
 
     canResendMembership: ->
       AbilityService.canResendMembership(@membership)

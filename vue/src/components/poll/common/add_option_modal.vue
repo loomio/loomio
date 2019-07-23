@@ -30,7 +30,7 @@ export default
 
 <template lang="pug">
 v-card.poll-common-modal
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='poll.processing')
   v-card-title
     h1.headline(v-t="'poll_common_add_option.modal.title'")
     v-spacer

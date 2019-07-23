@@ -13,7 +13,6 @@ export default
     close: Function
   data: ->
     targetGroup: null
-    isDisabled: false
     submit: null
     availableGroups: []
   created: ->
@@ -46,7 +45,7 @@ export default
 </script>
 <template lang="pug">
 v-card.move-thread-form
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='discussion.processing')
   v-card-title
     h1.headline(v-t="'move_thread_form.title'")
     v-spacer

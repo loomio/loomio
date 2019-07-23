@@ -28,7 +28,7 @@ export default
 </script>
 <template lang="pug">
 v-card.auth-modal
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='isDisabled')
   v-card-title
     //- i.mdi.mdi-lock-open(ng-if='!showBackButton()')
     //- a.auth-modal__back(ng-click='back()', ng-if='showBackButton()')

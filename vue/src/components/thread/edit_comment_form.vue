@@ -13,10 +13,10 @@ export default
 
 <template lang="pug">
 v-card.edit-comment-form
+  submit-overlay(:value='comment.processing')
   v-card-title
     h1.headline(v-t="'comment_form.edit_comment'")
     v-spacer
     dismiss-modal-button(:close="close")
-  .lmo-disabled-form(v-show='isDisabled')
   comment-form(:comment="comment" @comment-submitted="close()")
 </template>

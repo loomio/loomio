@@ -16,7 +16,7 @@ export default
 </script>
 <template lang="pug">
 v-card.membership-modal
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='membership.processing')
   v-card-title
     h1.headline(v-t="{ path: 'membership_form.modal_title.' + membership.target().constructor.singular, args: { pollType: membership.target().pollType } }")
     v-spacer

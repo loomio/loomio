@@ -16,7 +16,6 @@ export default
     close: Function
 
   data: ->
-    isDisabled: false
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
     availableGroups: []
     submitIsDisabled: false
@@ -94,7 +93,7 @@ export default
 
 <template lang="pug">
 v-card.discussion-form
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='discussion.processing')
   v-card-title
     h1.headline
       span(v-if="!discussion.isForking()")

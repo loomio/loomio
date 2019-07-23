@@ -16,7 +16,6 @@ export default
   data: ->
     actor: Session.user()
     shouldReset: false
-    isDisabled: null
     canSubmit: true
 
   computed:
@@ -62,11 +61,11 @@ export default
 </script>
 
 <template lang="pug">
-v-layout.comment-form.mx-3
+v-layout.comment-form.mx-3.absolute
   .thread-item__avatar.mr-3
     user-avatar(:user='actor', size='medium')
   form.thread-item__body(v-on:submit.prevent='submit()')
-    .lmo-disabled-form(v-show='isDisabled')
+    submit-overlay(:value='comment.processing')
     lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :shouldReset="shouldReset" :autoFocus="autoFocus")
       template(v-slot:actions)
         v-layout

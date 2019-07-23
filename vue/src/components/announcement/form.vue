@@ -125,6 +125,7 @@ export default
 
 <template lang="pug">
 v-card
+  submit-overlay(:value="announcement.processing")
   v-card-title
     h1.headline(v-t="'announcement.form.' + announcement.kind + '.title'")
     v-spacer

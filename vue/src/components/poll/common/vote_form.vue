@@ -34,7 +34,7 @@ export default
 
 <template lang="pug">
 .poll-common-vote-form
-  //- v-subheader(v-t="'poll_common.your_response'", v-if='stance.isNew()')
+  submit-overlay(:value="stance.processing")
   v-layout
     v-spacer
     poll-common-show-results-button(v-if='stance.isNew()')

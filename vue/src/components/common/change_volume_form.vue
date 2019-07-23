@@ -46,7 +46,7 @@ export default
 <template lang="pug">
 v-card.change-volume-form
   form
-    .lmo-disabled-form(v-show='isDisabled')
+    submit-overlay(:value='model.processing')
     v-card-title
       h1.headline.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: model.title || model.name || groupName() } }")
       v-spacer

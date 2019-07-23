@@ -28,7 +28,7 @@ export default
 
 <template lang="pug">
 v-card.poll-common-modal
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='outcome.processing')
   v-card-title
     h1.headline
       span(v-if='outcome.isNew()' v-t="'poll_common_outcome_form.new_title'")
@@ -37,9 +37,7 @@ v-card.poll-common-modal
     dismiss-modal-button(:close="close")
   v-card-text
     .poll-common-outcome-form
-      .lmo-disabled-form(v-if='isDisabled')
-      label(v-t="'poll_common.statement'")
-      lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
+      lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       validation-errors(:subject="outcome" field="statement")
       poll-common-calendar-invite(:outcome='outcome', v-if='datesAsOptions()')
   v-card-actions

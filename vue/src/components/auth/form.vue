@@ -19,7 +19,7 @@ export default
 </script>
 <template lang="pug">
 .auth-form
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='isDisabled')
   .auth-form__logging-in(v-if='!loginComplete')
     .auth-form__email-not-set(v-if='!user.emailStatus')
       p.text-xs-center Loomio is a place to have discussions and collaborate
