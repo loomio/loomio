@@ -480,6 +480,11 @@ progress::-moz-progress-bar
   transition: width 120ms ease-out, opacity 60ms 60ms ease-in
 
 
+.menubar
+  position: sticky
+  bottom: 0
+  background-color: #fff
+
 .menubar, .menububble
   .v-btn--icon
     width: 32px
