@@ -116,6 +116,9 @@ v-card.discussion-form
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
       lmo-textarea(v-if="!discussion.isForking()" :model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
+        template(v-slot:actions)
+          v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()")
+          v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()")
       v-list-item.discussion-form__privacy-notice
         v-list-item-avatar
           v-icon(v-if='discussion.private') mdi-lock-outline
@@ -123,8 +126,4 @@ v-card.discussion-form
         v-list-item-content
           v-list-item-title.discussion-privacy-icon__title(v-t="privacyTitle")
           v-list-item-subtitle.discussion-privacy-icon__subtitle(v-html='privacyDescription')
-  v-card-actions.discussion-form-actions
-    v-spacer
-    v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()")
-    v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()")
 </template>

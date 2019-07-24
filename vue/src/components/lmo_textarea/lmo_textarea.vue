@@ -280,7 +280,11 @@ export default
 <template lang="pug">
 div
   label.caption.v-label.v-label--active.theme--light {{label}}
-  v-textarea(v-if="format == 'md'" lmo_textarea v-model="model[field]" :placeholder="$t('comment_form.say_something')")
+  div(v-if="format == 'md'")
+    v-textarea(lmo_textarea v-model="model[field]" :placeholder="$t('comment_form.say_something')")
+    v-layout
+      v-spacer
+      slot(name="actions")
   .editor.mb-3(v-if="format == 'html'")
     editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
     editor-menu-bubble(:editor='editor' v-slot='{ commands, isActive, menu }')
@@ -309,51 +313,54 @@ div
 
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
       v-layout.menubar(wrap align-center)
-        v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-          template(v-slot:activator="{on}")
-            v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
-              v-icon mdi-emoticon-outline
-          emoji-picker(:insert="emojiPicked")
-        v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
-          v-icon mdi-paperclip
-        v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
-          v-icon mdi-format-header-1
-        v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
-          v-icon mdi-format-header-2
-        v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
-          v-icon mdi-format-header-3
-        v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
-          v-icon mdi-format-list-bulleted
-        v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
-          v-icon mdi-format-list-numbered
-        v-btn(icon @click='commands.todo_list')
-          v-icon mdi-format-list-checks
-        v-btn(small icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
-          v-icon mdi-format-quote-close
-        v-btn(small icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
-          v-icon mdi-code-braces
-        v-btn(icon @click='commands.horizontal_rule')
-          v-icon mdi-minus
-        v-btn(icon @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })")
-          v-icon mdi-table
-        span(v-if="isActive.table()")
-          v-btn(icon @click="commands.deleteTable")
-            v-icon mdi-table-remove
-          v-btn(icon @click="commands.addColumnBefore")
-            v-icon mdi-table-column-plus-before
-          v-btn(icon @click="commands.addColumnAfter")
-            v-icon mdi-table-column-plus-after
-          v-btn(icon @click="commands.deleteColumn")
-            v-icon mdi-table-column-remove
-          v-btn(icon @click="commands.addRowBefore")
-            v-icon mdi-table-row-plus-before
-          v-btn(icon @click="commands.addRowAfter")
-            v-icon mdi-table-row-plus-after
-          v-btn(icon @click="commands.deleteRow")
-            v-icon mdi-table-row-remove
-          v-btn(icon @click="commands.toggleCellMerge")
-            v-icon mdi-table-merge-cells
-        slot(name="actions")
+        span
+          v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+            template(v-slot:activator="{on}")
+              v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
+                v-icon mdi-emoticon-outline
+            emoji-picker(:insert="emojiPicked")
+          v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
+            v-icon mdi-paperclip
+          v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
+            v-icon mdi-format-header-1
+          v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
+            v-icon mdi-format-header-2
+          v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
+            v-icon mdi-format-header-3
+          v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
+            v-icon mdi-format-list-bulleted
+          v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
+            v-icon mdi-format-list-numbered
+          v-btn(icon @click='commands.todo_list')
+            v-icon mdi-format-list-checks
+          v-btn(small icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
+            v-icon mdi-format-quote-close
+          v-btn(small icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
+            v-icon mdi-code-braces
+          v-btn(icon @click='commands.horizontal_rule')
+            v-icon mdi-minus
+          v-btn(icon @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })")
+            v-icon mdi-table
+          span(v-if="isActive.table()")
+            v-btn(icon @click="commands.deleteTable")
+              v-icon mdi-table-remove
+            v-btn(icon @click="commands.addColumnBefore")
+              v-icon mdi-table-column-plus-before
+            v-btn(icon @click="commands.addColumnAfter")
+              v-icon mdi-table-column-plus-after
+            v-btn(icon @click="commands.deleteColumn")
+              v-icon mdi-table-column-remove
+            v-btn(icon @click="commands.addRowBefore")
+              v-icon mdi-table-row-plus-before
+            v-btn(icon @click="commands.addRowAfter")
+              v-icon mdi-table-row-plus-after
+            v-btn(icon @click="commands.deleteRow")
+              v-icon mdi-table-row-remove
+            v-btn(icon @click="commands.toggleCellMerge")
+              v-icon mdi-table-merge-cells
+        v-layout
+          v-spacer
+          slot(name="actions")
 
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')
