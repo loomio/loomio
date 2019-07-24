@@ -164,8 +164,8 @@ export default
 
   .discussions-panel__content(v-if="!fragment")
     .discussions-panel__list--empty(v-if='noThreads' :value="true")
-      p.text-xs-center(v-t="'group_page.no_threads_here'")
-      p.text-xs-center(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
+      p.text-center(v-t="'group_page.no_threads_here'")
+      p.text-center(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
     .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
       v-list.thread-previews(two-line)
         thread-preview(:show-group-name="includeSubgroups" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)

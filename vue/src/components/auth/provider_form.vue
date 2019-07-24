@@ -35,7 +35,7 @@ export default
       v-icon {{ iconClass(provider.name) }}
       space
       span(v-t="{ path: 'auth_form.continue_with_provider', args: { provider: capitalize(provider.name) } }")
-    p.my-2.text-xs-center.auth-email-form__or-enter-email(v-if='emailLogin', v-t="'auth_form.or_enter_your_email'")
+    p.my-2.text-center.auth-email-form__or-enter-email(v-if='emailLogin', v-t="'auth_form.or_enter_your_email'")
 </template>
 
 <style lang="sass">

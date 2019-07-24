@@ -48,7 +48,7 @@ export default
   v-layout(justify-center)
     auth-avatar(:user='user')
   .auth-signin-form__magic-link
-    h2.title.text-xs-center(v-t="{ path: 'auth_form.welcome_back', args: { name: user.firstName() } }")
+    h2.title.text-center(v-t="{ path: 'auth_form.welcome_back', args: { name: user.firstName() } }")
   .auth-signin-form__token.align-center(v-if='user.hasToken')
     validation-errors(:subject='user', field='token')
     v-btn.auth-signin-form__submit(color="primary" @click='submit()' v-if='!user.errors.token')
@@ -59,7 +59,7 @@ export default
       span(v-t="'auth_form.set_password_helptext'")
       a.lmo-pointer(@click='signInAndSetPassword()' v-t="'auth_form.set_password'")
   .auth-signin-form__no-token(v-if='!user.hasToken')
-    p.text-xs-center
+    p.text-center
       span(v-t="'auth_form.login_link_helptext'" v-if='!user.hasPassword')
       span(v-t="'auth_form.login_link_helptext_with_password'" v-if='user.hasPassword')
 
