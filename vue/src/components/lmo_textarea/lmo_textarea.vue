@@ -287,12 +287,7 @@ export default
 <template lang="pug">
 div
   label.caption.v-label.v-label--active.theme--light {{label}}
-  div(v-if="format == 'md'")
-    v-textarea(lmo_textarea v-model="model[field]" :placeholder="$t('comment_form.say_something')")
-    v-layout
-      v-spacer
-      slot(name="actions")
-  .editor.mb-3(v-if="format == 'html'")
+  .editor.mb-3
     editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
     editor-menu-bubble(:editor='editor' v-slot='{ commands, isActive, menu }')
       .menububble(:class="{'is-active': menu.isActive}" :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`")
@@ -319,7 +314,7 @@ div
               v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
 
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
-      v-layout.menubar(wrap align-center)
+      v-layout.menubar.py-2(wrap align-center)
         span
           v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
             template(v-slot:activator="{on}")
