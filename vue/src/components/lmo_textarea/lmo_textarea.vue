@@ -1,6 +1,5 @@
 <script lang="coffee">
 import tippy from 'tippy.js'
-# import 'tippy.js/dist/tippy.css'
 import Records from '@/shared/services/records'
 import {concat, sortBy, isString, filter, uniq, map, forEach} from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
@@ -36,6 +35,10 @@ import TodoItem from './todo_item'
 
 import { insertText } from 'tiptap-commands'
 import Image from '@/shared/tiptap_extentions/image.js'
+
+import marked from 'marked'
+import {customRenderer, options} from '@/shared/helpers/marked.coffee'
+marked.setOptions Object.assign({renderer: customRenderer()}, options)
 
 export default
   props:
@@ -139,7 +142,11 @@ export default
           showOnlyWhenEditable: true,
         })
       ]
-      content: @model[@field]
+      content: (if @model[@field+'Format'] == "md"
+        @model[@field+'Format'] = 'html'
+        @model[@field] = marked(@model[@field])
+      else
+        @model[@field])
       onUpdate: @updateModel
       autoFocus: @autoFocus
 
@@ -399,16 +406,18 @@ div
 
 .lmo-markdown-wrapper
   h1
-    line-height: 3.5rem
-    font-size: 1.75rem
+    line-height: 2.75rem
+    font-size: 2rem
     font-weight: 400
     letter-spacing: .0125em
+    margin-bottom: 0.5em
 
   h2
-    line-height: 2.5rem
+    line-height: 2rem
     font-size: 1.25rem
     font-weight: 500
     letter-spacing: .0125em
+    margin-bottom: 0.75em
 
   h3
     line-height: 2.5rem
