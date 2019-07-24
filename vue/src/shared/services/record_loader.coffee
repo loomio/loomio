@@ -21,7 +21,6 @@ export default class RecordLoader
     @numLoaded  = 0
 
   fetchRecords: (opts = {}) ->
-    console.log defaults({}, opts, @params)
     @loading = true
     @exhausted = false
     Records[camelCase(@collection)].fetch

@@ -29,7 +29,7 @@ v-banner.current-poll-banner.mb-4(v-if="event && $route.params.sequence_id != ev
     mid-dot
     poll-common-closing-at.caption(approximate :poll="poll")
   template(v-slot:actions)
-    v-btn(text color="primary" :to="urlFor(event)") vote
+    v-btn(outlined color="primary" :to="urlFor(event)" v-t="'poll_common.vote'")
 </template>
 
 <style lang="sass">

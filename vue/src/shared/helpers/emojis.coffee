@@ -17,9 +17,6 @@ export stripColons = (colons) ->
   else
     colons
 
-debugColons = (colons) ->
-  console.log colons, stripColons(colons), shortcodeCorrect(stripColons(colons)), shortCodeToUnicode(shortcodeCorrect(stripColons(colons)))
-
 export colonToUnicode = (colons) ->
   shortCodeToUnicode(stripColons(colons))
 

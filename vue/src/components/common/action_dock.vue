@@ -3,8 +3,6 @@ export default
   props:
     model: Object
     actions: Object
-  created: ->
-    console.log @actions
 </script>
 
 <template lang="pug">
