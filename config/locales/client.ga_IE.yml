@@ -55,6 +55,7 @@ ga_IE:
     copied: 'Macasamhaltha chuig an ghearrthaisce'
     action:
       search: 'Cuardaigh'
+      back: 'Siar'
       next: 'Ar aghaidh'
       close: 'Dún'
       save: 'Taisc'
@@ -64,7 +65,6 @@ ga_IE:
       edit: 'Cuir in eagar é'
       remove: 'Bain é'
       like: 'Is maith liom é'
-      back: 'Siar'
       unlike: 'Ní maith liom é'
       update: 'Nuashonraigh é'
       cancel: 'Cealaigh'
@@ -219,6 +219,7 @@ ga_IE:
     upload_link: 'Uasluchtaigh grianghraf cumhdaigh nua'
   join_group_button:
     join_group: Cláraigh leis an mbaicle
+    membership_requested: Iarratas ballraíocht déanta
     messages:
       joined_group: 'Is comhalta de {{group}} anois thú'
   membership_request_form:
@@ -234,6 +235,7 @@ ga_IE:
   group_page:
     threads: Snáitheanna
     members: Comhaltaí
+    subgroups: Fobhaiclí
     messages:
       privacy:
         members: 'Is iad na comhaltaí amháin ar féidir leo an bhaicle seo a fheiceáil'
@@ -246,7 +248,6 @@ ga_IE:
     discussions_placeholder: 'Is áit í snáithe inar féidir le gach duine ábhar a phlé agus cinntí a dhéanamh le chéile.'
     members_placeholder: 'Is tusa an t-aon duine anseo: tabhair cuirí do dhaoine bheith leat!'
     member_options: Roghanna na gcomhaltaí
-    subgroups: 'Fobhaiclí'
     invite_people: 'Tabhair cuireadh'
     visibility_label: 'Infheictheacht'
     options_label: 'Roghanna'
@@ -284,8 +285,8 @@ ga_IE:
     privacy: 'Príobháideachas'
     advanced_settings: "Ardroghanna"
     how_do_people_join: "Conas mar is féidir le daoine clárú?"
-    private_threads: 'Is iad na comhaltaí amháin atá in ann pléití a fheiceáil'
     permissions: 'Ceadanna'
+    private_threads: 'Is iad na comhaltaí amháin atá in ann pléití a fheiceáil'
     submit_start_group: 'Cuir baicle ar bun'
     submit_update: 'Nuashonraigh na socruithe'
     messages:

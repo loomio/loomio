@@ -58,6 +58,7 @@ el:
     copied: 'Αντιγράφηκε στο πρόχειρο'
     action:
       search: 'Εύρεση'
+      back: 'Πίσω'
       next: 'Επόμενο'
       close: 'Κλείσε'
       save: 'Αποθήκευση'
@@ -67,7 +68,6 @@ el:
       edit: 'Επεξεργασία'
       remove: 'Αφαίρεση'
       like: 'Αρέσει'
-      back: 'Πίσω'
       unlike: 'Δεν μ''άρέσει'
       update: 'Ενημέρωση'
       cancel: 'Ακύρωση'
@@ -255,7 +255,7 @@ el:
     upload_success: 'Το λογότυπο ανανεώθηκε επιτυχώς'
   join_group_button:
     join_group: Συμμετάσχετε στην ομάδα
-    membership_requested: Το αίτημα της ιδιότητας μέλους εκκρεμεί
+    membership_requested: Αίτηση μέλους έχει ζητηθεί.
     messages:
       joined_group: 'Τώρα είστε μέλος της ομάδας {{group}}'
   membership_request_form:
@@ -277,6 +277,7 @@ el:
   group_page:
     threads: Θέματα
     members: Μέλη
+    subgroups: Υποομάδες
     messages:
       archive_group_success: 'Αυτή η ομάδα έχει απενεργοποιηθεί'
     group_logo: 'Λογότυπο ομάδας'
@@ -286,7 +287,6 @@ el:
     discussions_placeholder: 'Ένα νήμα είναι όπου όλοι μπορούν να συζητήσουν ένα θέμα και να πάρουν αποφάσεις μαζί.'
     members_placeholder: 'Είστε ο μοναδικός εδώ: προσκαλέστε κάποια άτομα να συμμετάσχουν μαζί σας!'
     member_options: Επιλογές μέλους
-    subgroups: 'Υποομάδες'
     invite_people: 'Πρόσκληση'
     visibility_label: 'Ορατότητα'
     options_label: 'Ρυθμίσεις'
@@ -331,12 +331,12 @@ el:
       private_to_group: 'Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη.'
       private_to_parent_members: 'Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη του {{parent}}'
     privacy: 'Ιδιωτικότητα'
+    permissions: 'Δικαιώματα'
     thread_privacy: 'Ιδιωτικότητα του θέματος'
     public_threads: 'Μόνο δημόσια θέματα'
     public_discussions_subgroup: 'Οποιοσδήποτε στο {{parentGroupName}} μπορεί να δει τις συζητήσεις'
     public_or_private_threads: 'Επιτρέπονται δημόσια και ιδιωτικά θέματα'
     private_threads: 'Μόνο τα μέλη μπορούν να δεις τις συζητήσεις'
-    permissions: 'Δικαιώματα'
     allow_public_threads: 'Επιτρέπονται δημόσια θέματα σε αυτή την ομάδα.'
     parent_members_can_see_discussions: 'Τα μέλη του {{parent}} μπορούν να δουν τα ιδιωτικά θέματα.'
     members_can_add_members: 'Τα μέλη μπορούν να προσκαλέσουν ανθρώπους και να εγκρίνουν τις αιτήσεις συμμετοχής.'

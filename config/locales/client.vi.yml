@@ -39,6 +39,8 @@ vi:
     title_label: 'Tiêu đề'
     context_label: 'Nội dung'
     privacy_label: 'Quyền riêng tư'
+  join_group_button:
+    membership_requested: Đã gửi yêu cầu làm thành viên
   membership_request_form:
     name_label: Tên
     email_label: Email

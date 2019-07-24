@@ -97,6 +97,7 @@ sv:
     total: Totalt
     action:
       search: 'Sök'
+      back: 'Tillbaka'
       next: 'Nästa'
       close: 'Stäng'
       reopen: 'Öppna igen'
@@ -107,7 +108,6 @@ sv:
       edit: 'Redigera'
       remove: 'Ta bort'
       like: 'Gilla'
-      back: 'Tillbaka'
       unlike: 'Sluta gilla'
       update: 'Uppdatera'
       cancel: 'Ångra'
@@ -310,6 +310,7 @@ sv:
     close_thread: Stäng tråd
   join_group_button:
     join_group: Bli medlem i gruppen
+    membership_requested: Förfrågan om medlemskap
   membership_request_form:
     heading: Be att få gå med
     name_label: Namn

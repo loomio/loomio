@@ -119,6 +119,7 @@ de:
     total: Gesamt
     action:
       search: 'Suchen'
+      back: 'Zurück'
       next: 'Weiter'
       close: 'Schliessen'
       reopen: 'Erneut öffnen'
@@ -129,7 +130,6 @@ de:
       edit: 'Bearbeiten'
       remove: 'Entfernen'
       like: 'Gefällt mir'
-      back: 'Zurück'
       unlike: 'Gefällt mir nicht mehr'
       update: 'Aktualisieren'
       cancel: 'Abbrechen'
@@ -533,7 +533,7 @@ de:
     upload_success: 'Das Logo wurde erfolgreich hochgeladen'
   join_group_button:
     join_group: Der Gruppe beitreten
-    membership_requested: Mitgliedschaftsanfrage läuft noch
+    membership_requested: Mitgliedschaft angefragt
     messages:
       joined_group: 'Sie sind nun ein Mitglied von {{group}}'
   membership_request_form:
@@ -574,6 +574,7 @@ de:
   group_page:
     threads: Diskussionsbeiträge
     members: Mitglieder
+    subgroups: Untergruppen
     show_opened: '{{count}} Offen'
     show_closed: '{{count}} Geschlossen'
     no_threads_here: Keine Themen hier zu sehen!
@@ -598,7 +599,6 @@ de:
     member_options: Mitgliedseinstellungen
     see_all_members: 'Alle {{count}} Mitglieder anzeigen'
     pending_invitations: '+ {{count}} ausstehend'
-    subgroups: 'Untergruppen'
     subgroups_placeholder: 'Untergruppen bieten einen eigenen Raum für Teams und sorgen dafür, dass Benachrichtigungen zielgerichtet die richtigen Leute erreichen.'
     invite_people: 'Einladen'
     visibility_label: 'Sichtbarkeit'
@@ -686,13 +686,13 @@ de:
     membership_granted_upon_request: 'Gruppe ist zugänglich für alle'
     membership_granted_upon_approval: 'Jeder kann um Aufnahme bitten. Diese wird dann geprüft.'
     membership_granted_upon_approval_secret_parent: '<strong>Auf Anfrage</strong> - jede.r von {{parent}} kann um Aufnahme in die Gruppe bitten.'
+    permissions: 'Berechtigungen'
     features: 'Gruppenspezifische Funktionen'
     thread_privacy: 'Diskussions-Privatsphäre'
     public_threads: 'Nur öffentliche Diskussionen'
     public_discussions_subgroup: 'Jeder in {{parentGroupName}} kann Diskussionen sehen'
     public_or_private_threads: 'Öffentliche und private Diskussionen erlauben'
     private_threads: 'Nur Mitglieder können Diskussionen sehen'
-    permissions: 'Berechtigungen'
     allow_public_threads: 'Öffentliche Diskussionen in der Gruppe erlauben.'
     parent_members_can_see_discussions: 'Mitglieder von {{parent}} können private Diskussionen sehen.'
     members_can_announce: 'Mitglieder können alle anderen in der Gruppe benachrichtigen'
@@ -1620,11 +1620,9 @@ de:
     sign_in_to_loomio: Einloggen bei {{site_name}}
     sign_in: einloggen
     continue: fortfahren
+    create_account: Benutzerkonto erstellen
     sign_in_as: als {{name}} einloggen
-    continue_with_provider: mit {{provider}} fortfahren
-    continue_with_email: mit E-Mail fortfahren
     or_enter_your_email: oder geben Sie Ihre Mailadresse ein
-    invitation_required: 'Der Account wurde nicht gefunden. Neue Accounts nur per Einladung. '
     more_providers: mehr
     email_not_present: Eine Mailadresse ist erforderlich
     invalid_email: "Entschuldigung, diese E-Mail-Adresse scheint ungültig zu sein."
@@ -1643,15 +1641,12 @@ de:
     name_required: Bitte geben Sie einen Namen ein.
     terms_required: Sie müssen die Nutzungsbedingungen bestätigen.
     account_inactive: Es scheint als wurde das Benutzerkonto für {{email}} deaktiviert.
-    privacy_notice: "Persönliche Daten werden gesammelt, wenn Sie {{siteName}} verwenden. <br/>Lesen Sie unsere <a href='{{privacyUrl}}' target='_blank'>Datenschutzerklärung</a>, um mehr zu erfahren."
     welcome: Neu bei {{siteName}}?
     welcome_back: Willkommen zuück, {{name}}!
-    login_link: Via Mail anmelden
     set_password: Passwort festlegen
     set_password_helptext: Möchtest du nächstes Mal ein Passwort verwenden?
     hello: "Hallo, {{name}}!"
     new_to_loomio: Das erste mal auf {{site_name}}? Erstellen Sie einen Account
-    create_account: Benutzerkonto erstellen
     already_a_user: Haben Sie {{site_name}} bereits davor verwendet? Geben Sie die Mail-Adresse ein, die sie als letzte nutzen, um sie miteinander zu koppeln.
     link_accounts: Verbinden
     check_your_email: Überprüfen Sie Ihren E-Mail-Posteingang

@@ -31,6 +31,7 @@ fi:
       proposal: 'Ehdotus'
     copied: 'Kopioitu leikepöydälle'
     action:
+      back: 'Back'
       close: 'Sulje'
       save: 'Tallenna'
       save_changes: 'Tallenna muutokset'
@@ -39,7 +40,6 @@ fi:
       edit: 'Muokkaa'
       remove: 'Poista'
       like: 'Tykkää'
-      back: 'Back'
       unlike: 'En tykkääkkään'
       update: 'Päivitä'
       cancel: 'Peruuta'

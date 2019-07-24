@@ -118,6 +118,7 @@ he:
     total: סך הכל
     action:
       search: 'חיפוש'
+      back: 'חזרה'
       next: 'הבא'
       close: 'סגור'
       reopen: 'פתח מחדש'
@@ -128,7 +129,6 @@ he:
       edit: 'עריכה'
       remove: 'הסרה'
       like: 'אהבתי'
-      back: 'חזרה'
       unlike: 'לא אהבתי'
       update: 'עדכון'
       cancel: 'ביטול'
@@ -526,7 +526,6 @@ he:
     upload_success: 'לוגו עודכן בהצלחה'
   join_group_button:
     join_group: הצטרפו לקבוצה
-    membership_requested: בקשת חברות בהמתנה
     messages:
       joined_group: 'את/ה עכשיו חבר/ה ב{{group}}'
   membership_request_form:
@@ -568,6 +567,7 @@ he:
   group_page:
     threads: שיחות
     members: חברים
+    subgroups: תת קבוצה
     show_opened: '{{count}} פתוחים'
     show_closed: '{{count}} סגורים'
     no_threads_here: אין שיחות פה!
@@ -591,7 +591,6 @@ he:
     member_options: אפשרויות חבר
     see_all_members: 'ראה את כל {{count}} החברים'
     pending_invitations: '+ {{count}} ממתינים'
-    subgroups: 'תת קבוצה'
     subgroups_placeholder: 'תת קבוצות נותנות לצוותים את המקום שלהם להתעדכן לתכנים הרלוונטיים להם.'
     invite_people: 'הזמן'
     visibility_label: 'נראות'
@@ -679,13 +678,13 @@ he:
     membership_granted_upon_request: 'כל אחד יכול להצטרף לקבוצה.'
     membership_granted_upon_approval: 'כל אחד יכול לבקש להצטרף אבל חייב לקבל אישור.'
     membership_granted_upon_approval_secret_parent: '<strong>כל אחד מה{{parent}} יכול לבקש להצטרף לקבוצה</strong>.'
+    permissions: 'הרשאות'
     features: 'מאפייני הקבוצה'
     thread_privacy: 'פרטיות השיחה'
     public_threads: 'שיחות פומביות בלבד'
     public_discussions_subgroup: 'כל אחד מ{{parentGroupName}} יכול לצפות בדיונים'
     public_or_private_threads: 'אפשר שיחות פומביות ופרטיות'
     private_threads: 'רק חברים יכולים לראות את הדיונים'
-    permissions: 'הרשאות'
     allow_public_threads: 'אפשר שיחות פומביות בקבוצה זו.'
     parent_members_can_see_discussions: 'חברי {{parent}} יכולים לראות שיחות פרטיות.'
     members_can_announce: 'חברים יכולים להודיע לכולם בקבוצה זו.'
@@ -1607,11 +1606,9 @@ he:
     sign_in_to_loomio: התחבר ל{{site_name}}
     sign_in: התחבר
     continue: המשך
+    create_account: צור חשבון
     sign_in_as: הרשם כ{{name}}
-    continue_with_provider: המשך עם {{provider}}
-    continue_with_email: המשך עם המייל
     or_enter_your_email: או, הכנס את המייל שלך
-    invitation_required: חשבון לא נמצא. חשבונות חדשים הם לפי הזמנה בלבד.
     more_providers: עוד
     email_not_present: כתובת מייל נדרשת כאן
     invalid_email: "סליחה, אבל זה לא נראה כמו כתובת מייל תקינה"
@@ -1630,15 +1627,12 @@ he:
     name_required: אנה הכנס שם
     terms_required: עליך לאשר את תנאי השימוש
     account_inactive: אוי, נראה שהחשבון עבור {{email}} אינו פעיל!
-    privacy_notice: "מידע אישי נאסף בעת שימוש ב{{siteName}}. <br/> קרא את <a href='{{privacyUrl}}' target='_blank'>מדיניות הפרטיות</a> כדי ללמוד עוד את הנושא."
     welcome: חדש ב{{siteName}}?
     welcome_back: ברוך השב, {{name}}!
-    login_link: הרשם עם המייל
     set_password: הגדר סיסמה
     set_password_helptext: תרצה להשתמש בסיסמה בפעם הבאה?
     hello: "שלום, {{name}}!"
     new_to_loomio: פעם ראשונה ב{{site_name}}? צור חשבון
-    create_account: צור חשבון
     already_a_user: השתמשת ב{{site_name}} בעבר? הכנס את כתובת המייל בה השתמשת בפעם האחרונה לחיבורה.
     link_accounts: חבר חשבונות
     check_your_email: בדוק את המייל שלך!

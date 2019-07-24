@@ -42,6 +42,8 @@ ml:
     title_label: 'തലക്കെട്ട്'
     context_label: 'പശ്ചാത്തലം'
     privacy_label: 'സ്വകാര്യത'
+  join_group_button:
+    membership_requested: അംഗത്വം അപേക്ഷിച്ചിരിക്കുന്നു
   membership_request_form:
     heading: കൂട്ടത്തില്‍ ചേരാന്‍ ചോദിക്കുക
     name_label: പേരു്

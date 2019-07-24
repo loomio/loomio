@@ -93,6 +93,7 @@ pl:
     total: W sumie
     action:
       search: 'Szukaj'
+      back: 'Wstecz'
       next: 'Dalej'
       close: 'Zamknij'
       reopen: 'Otworzyć ponownie'
@@ -103,7 +104,6 @@ pl:
       edit: 'Edycja'
       remove: 'Usuń'
       like: 'Lubię'
-      back: 'Wstecz'
       unlike: 'Nie lubię'
       update: 'Zaktualizuj'
       cancel: 'Anuluj'
@@ -396,7 +396,7 @@ pl:
     upload_success: 'Zaktualizowano logo'
   join_group_button:
     join_group: Dołączenie do grupy
-    membership_requested: Oczekująca prośba o członkostwo
+    membership_requested: Zgłoszono członkostwo
     messages:
       joined_group: 'Jesteś teraz członkiem grupy {{group}}'
   membership_request_form:
@@ -435,6 +435,7 @@ pl:
   group_page:
     threads: Wątki
     members: Członkowie
+    subgroups: Podgrupy
     show_opened: '{{count}} Otwarte'
     show_closed: '{{count}} Zamknięte'
     no_threads_here: Nie ma tu żadnych wątków!
@@ -456,7 +457,6 @@ pl:
     discussions_placeholder: 'Wątek jest miejscem gdzie wszyscy mogą dyskutować temat i podejmować wspólne decyzje.'
     members_placeholder: 'Jesteś jedynym członkiem: zaproś inne osoby!'
     member_options: Opcje członka
-    subgroups: 'Podgrupy'
     subgroups_placeholder: 'Subgrupy dają zespołom własną przestrzeń i wysyłają powiadomienia do właściwych osób.'
     invite_people: 'Zaproś'
     visibility_label: 'Widoczność'

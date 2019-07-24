@@ -58,6 +58,7 @@ fa_IR:
     copied: 'در کلیپ برد ذخیره شد'
     total: مقدار کلی
     action:
+      back: 'برگشت'
       next: 'بعدی'
       close: 'بستن'
       save: 'ذخیره'
@@ -67,7 +68,6 @@ fa_IR:
       edit: 'ویرایش'
       remove: 'حذف کردن'
       like: 'دوست داشتن'
-      back: 'برگشت'
       unlike: 'دوست نداشتن'
       update: 'به روز رسانی'
       cancel: 'لغو'
@@ -128,6 +128,8 @@ fa_IR:
     privacy_label: 'محرمانگی'
   action_dock:
     reply_to_comment: پاسخ دادن
+  join_group_button:
+    membership_requested: درخواست عضویت شد
   reactions_display:
     you: "شما"
   group_page:

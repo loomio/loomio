@@ -7,6 +7,7 @@ ko:
     new_tag: 태그 만들기
     name_label: 이름
     color_label: 색깔
+    card_title: 카테고리 태그
     modal_title: 새 태그 만들기
     modal_edit_title: 태그 수정
     modal_destroy_title: 태그 삭제
@@ -50,6 +51,7 @@ ko:
     copied: '복사됨'
     action:
       search: '검색'
+      back: '이전'
       close: '닫기'
       save: '저장'
       save_changes: '수정 저장하기'
@@ -58,7 +60,6 @@ ko:
       edit: '편집'
       remove: '제거'
       like: '좋아요'
-      back: '이전'
       unlike: '싫어요'
       update: '업데이트'
       cancel: '취소'
@@ -246,6 +247,7 @@ ko:
     upload_success: '로고를 수정하였습니다'
   join_group_button:
     join_group: 그룹에 가입
+    membership_requested: 요청 받은 멤버십
     messages:
       joined_group: '{{group}}의 새로운 멤버가 되었습니다'
   membership_request_form:
@@ -264,6 +266,7 @@ ko:
   group_page:
     threads: 토론
     members: 멤버
+    subgroups: 소그룹
     messages:
       privacy:
         members: '이 그룹은 회원들에게만 보입니다.'
@@ -277,7 +280,6 @@ ko:
     discussions_placeholder: '이 쓰레드는 누구나 토론할 수 있고, 함께 의사결정을 하는 곳입니다.'
     members_placeholder: '이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.'
     member_options: 멤버 옵션
-    subgroups: '소그룹'
     visibility_label: '공개도'
     options_label: '선택사항'
     options:
@@ -343,12 +345,12 @@ ko:
     how_do_people_join: "가입 방법은 무엇인가요?"
     membership_granted_upon_request: '누구나 가입할 수 있습니다.'
     membership_granted_upon_approval: '누구나 가입 신청을 할 수 있습니다만, 가입 허가가 필요합니다.'
+    permissions: '허용'
     thread_privacy: '쓰레드 프라이버시'
     public_threads: '공개 쓰레드만'
     public_discussions_subgroup: '{{parentGroupName}}의 누구나 이 토론을 볼 수 있습니다.'
     public_or_private_threads: '공개 및 비공개 쓰레드 허용'
     private_threads: '오직 멤버만 이 토론을 볼 수 있습니다.'
-    permissions: '허용'
     allow_public_threads: '이 그룹에 공개 쓰레드를 허용합니다.'
     members_can_add_members: '멤버는 다른 사람을 초대할 수 있고 가입요청을 승인할 수 있습니다.'
     members_can_create_subgroups: '멤버는 소그룹을 만들수 있습니다.'

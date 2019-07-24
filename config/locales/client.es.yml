@@ -125,6 +125,7 @@ es:
     action:
       search: 'Buscar'
       filter: 'Filtrar'
+      back: 'Atrás'
       next: 'Siguiente'
       close: 'Cerrar'
       reopen: 'Reabierto'
@@ -135,7 +136,6 @@ es:
       edit: 'Editar'
       remove: 'Eliminar'
       like: 'Me gusta'
-      back: 'Atrás'
       unlike: 'Ya no me gusta'
       update: 'Actualizar '
       cancel: 'Cancelar'
@@ -541,7 +541,7 @@ es:
     upload_success: 'El logo ha sido cargado con éxito'
   join_group_button:
     join_group: Unirse al grupo
-    membership_requested: Petición de membresía pendiente
+    membership_requested: Membresía solicitada.
     messages:
       joined_group: 'Ahora eres integrante de {{group}}'
   membership_request_form:
@@ -585,6 +585,7 @@ es:
     polls: Sondeos
     members: Integrantes
     files: Archivos
+    subgroups: Subgrupos
     show_opened: '{{count}} Abierto'
     show_closed: '{{count}} Cerrado '
     no_threads_here: Ningún hilo para ver aquí!
@@ -609,7 +610,6 @@ es:
     member_options: Opciones de membresía
     see_all_members: 'Mostrar los ({{count}}) integrantes'
     pending_invitations: '+ {{count}} pendientes'
-    subgroups: 'Subgrupos'
     subgroups_placeholder: 'Los subgrupos le dan su propio espacio a los equipos y mantienen las notificaciones enfocadas en las personas indicadas.'
     invite_people: 'Invitar'
     visibility_label: 'Visibilidad'
@@ -699,13 +699,13 @@ es:
     membership_granted_upon_request: 'Cualquiera puede unirse al grupo.'
     membership_granted_upon_approval: 'Cualquiera puede pedir la membresía, pero debe ser aprobada.'
     membership_granted_upon_approval_secret_parent: 'Cualquiera en {{parent}} puede pedir apuntarse al grupo <strong>por petición</strong>.'
+    permissions: 'Permisos'
     features: 'Herramientas especificas de este grupo'
     thread_privacy: 'Privacidad del hilo'
     public_threads: 'Sólo hilos públicos'
     public_discussions_subgroup: 'Cualquiera que pertenezca a {{parentGroupName}} puede ver las discusiones'
     public_or_private_threads: 'Permitir hilos públicos y privados'
     private_threads: 'Solamente los integrantes pueden ver las discusiones'
-    permissions: 'Permisos'
     allow_public_threads: 'Permitir hilos públicos en este grupo.'
     parent_members_can_see_discussions: 'Los integrantes de {{parent}} pueden ver los hilos privados.'
     members_can_announce: 'Las personas integrantes pueden notificar al resto de integrantes del grupo.'
@@ -1646,11 +1646,9 @@ es:
     sign_in_to_loomio: Entrar a {{site_name}}
     sign_in: Entrar
     continue: 'Continua '
+    create_account: Crear una cuenta
     sign_in_as: Ingresa como {{name}}
-    continue_with_provider: Continua con {{provider}}
-    continue_with_email: Continua con correo electrónico
     or_enter_your_email: O, introduzca su dirección de correo electrónico
-    invitation_required: Cuenta no encontrada. Para crear una cuentas nuevas necesita una invitación.
     more_providers: Más
     email_not_present: Se necesita una dirección de correo
     invalid_email: "Lo lamentamos, eso no parece una dirección de correo electrónico válida"
@@ -1669,15 +1667,12 @@ es:
     name_required: Por favor ingresa un nombre
     terms_required: 'Debes aceptar los Términos del Servicio '
     account_inactive: '¡Vaya! parece que la cuenta de {{correo electrónico}} está desactivada. '
-    privacy_notice: "Data personal es colectada cuando usas {{siteName}}. <br/>Lee nuestra <a href='{{privacyUrl}}' target='_blank'>Política de privacidad</a>para saber más."
     welcome: ¿Es nuevo en {{siteName}}?
     welcome_back: Bienvenido nuevamente, {{name}}!
-    login_link: Entra a través de un correo electrónico
     set_password: Configura la contraseña
     set_password_helptext: ¿Quieres usar una contraseña la próxima vez?
     hello: "Hola, {{name}}!"
     new_to_loomio: ¿Primera vez en {{site_name}}? Crea una nueva cuenta
-    create_account: Crear una cuenta
     already_a_user: ¿Usaste {{site_name}} antes? Ingresa la dirección de correo electrónico que usaste la ultima vez para enlazar la cuenta
     link_accounts: Enlazar cuentas
     check_your_email: ¡Revise su correo electrónico!

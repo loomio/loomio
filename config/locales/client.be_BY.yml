@@ -71,6 +71,7 @@ be_BY:
     privacy_label: 'Канфідэнцыяльнасць'
   join_group_button:
     join_group: Далучыцца да групы
+    membership_requested: Запыт чалецтва
   membership_request_form:
     heading: Запытаць пра далучэнне да групы
     name_label: Імя

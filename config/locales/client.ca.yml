@@ -72,6 +72,7 @@ ca:
     total: Total
     action:
       search: 'Cerca'
+      back: 'Enrere'
       close: 'Tanca'
       save: 'Desa'
       save_changes: 'Desa els canvis'
@@ -80,7 +81,6 @@ ca:
       edit: 'Edita'
       remove: 'Elimina'
       like: 'M''agrada'
-      back: 'Enrere'
       unlike: 'No m''agrada'
       update: 'Actualitza'
       cancel: 'Cancel·la'
@@ -243,7 +243,7 @@ ca:
     delete_thread: Elimina la discussió
   join_group_button:
     join_group: Uneix-te al grup
-    membership_requested: Sol·licitud de pertinença pendent
+    membership_requested: Afiliació sol·licitada
     messages:
       joined_group: 'Ara sou membre de {{group}}'
   membership_request_form:
@@ -262,6 +262,7 @@ ca:
   group_page:
     threads: Fils
     members: Membres
+    subgroups: Subgrups
     messages:
       privacy:
         members: 'Ara aquest grup és visible només als seus membres'
@@ -272,7 +273,6 @@ ca:
     new_photo: 'Nova fotografia'
     discussions_placeholder: 'Una discussió és el lloc on tothom pot discutir un tema i prendre decisions junts.'
     member_options: Opcions de membres
-    subgroups: 'Subgrups'
     visibility_label: 'Visibilitat'
     options_label: 'Opcions'
     options:
@@ -316,12 +316,12 @@ ca:
     how_do_people_join: "Com s'uneix la gent?"
     membership_granted_upon_request: 'Tothom es pot unir al grup.'
     membership_granted_upon_approval: 'Tothom pot sol·licitar unir-se però és necessària l''aprovació.'
+    permissions: 'Permisos'
     thread_privacy: 'Privacitat de la discussió'
     public_threads: 'Només discussions públiques'
     public_discussions_subgroup: 'Qualsevol en {{parentGroupName}} pot veure les discussions'
     public_or_private_threads: 'Permet discussions públiques i privades'
     private_threads: 'Només els membres poden veure les discussions'
-    permissions: 'Permisos'
     allow_public_threads: 'Permet les discussions públiques en aquest grup.'
     parent_members_can_see_discussions: 'Els membres de {{parent}} poden veure les discussions privades.'
     members_can_add_members: 'Els membres poden convidar gent i aprovar sol·licituds d''unió.'

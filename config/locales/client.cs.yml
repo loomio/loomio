@@ -76,6 +76,7 @@ cs:
     total: Celkem
     action:
       search: 'Vyhledávat'
+      back: 'Zpět'
       next: 'Další'
       close: 'Zavřít'
       save: 'Uložit'
@@ -85,7 +86,6 @@ cs:
       edit: 'Upravit'
       remove: 'Odebrat'
       like: 'To se mi líbí'
-      back: 'Zpět'
       unlike: 'To se mi nelíbí'
       update: 'Aktualizovat'
       cancel: 'Zrušit'
@@ -333,6 +333,7 @@ cs:
     upload_success: 'Logo úspěšně aktualizováno'
   join_group_button:
     join_group: Připojit ke skupině
+    membership_requested: Žádost o členství odeslána
     messages:
       joined_group: 'Nyní jste členem {{group}}'
   membership_request_form:
@@ -358,6 +359,7 @@ cs:
   group_page:
     threads: Vlákna
     members: Členové
+    subgroups: Podskupiny
     messages:
       leave_group_success: 'Tuto skupinu jste opustil(a)'
       archive_group_success: 'Tato skupina byla deaktivována'
@@ -366,7 +368,6 @@ cs:
     new_group_logo: 'Nahrát nové logo skupiny'
     discussions_placeholder: 'Vlákno je místem, kde každý může diskutovat o tématu a tvořit společně rozhodnutí.'
     members_placeholder: 'Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!'
-    subgroups: 'Podskupiny'
     subgroups_placeholder: 'Podskupiny poskytují týmům svůj vlastní prostor a nezávislá upozornění zaměřená pouze těm správným uživatelům'
     invite_people: 'Pozvat'
     visibility_label: 'Viditelnost'
@@ -409,10 +410,10 @@ cs:
     how_do_people_join: "Jak se lidé připojí?"
     membership_granted_upon_request: 'Každý se může připojit ke skupině.'
     membership_granted_upon_approval: 'Kdokoli může požádat o připojení, ale musí být schválen.'
+    permissions: 'Oprávnění'
     thread_privacy: 'Soukromí vlákna'
     public_threads: 'Pouze veřejná vlákna'
     public_or_private_threads: 'Povolit veřejné a soukromé vlákna'
-    permissions: 'Oprávnění'
     allow_public_threads: 'Povolit v této skupině veřejná vlákna'
     parent_members_can_see_discussions: 'Členové {{parent}} mohou vidět soukromá vlákna. '
     members_can_edit_discussions: 'Členové mohou aktualizovat kontext a název každého vlákna.'
@@ -746,6 +747,7 @@ cs:
     groups_placeholder: (Všechny skupiny)
   auth_form:
     sign_in: Přihlásit se
+    create_account: Vytvořit účet
     more_providers: Více
     email_not_present: Je vyžadována e-mailová adresa
     invalid_email: "Je nám líto, ale nevypadá to jako platná e-mailová adresa"
@@ -756,10 +758,8 @@ cs:
     name_placeholder: Vaše jméno
     name_required: Zadejte prosím jméno
     welcome_back: Vítejte zpět, {{name}}!
-    login_link: Přihlaste se prostřednictvím e-mailu
     set_password: Nastavit heslo
     hello: "Ahoj, {{name}}!"
-    create_account: Vytvořit účet
     check_your_email: Zkontrolujte svůj e-mail!
     signed_in: Úspěšně jste se přihlásili
     name: Jméno

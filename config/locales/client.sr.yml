@@ -35,6 +35,7 @@ sr:
     copied: 'Kopirano'
     action:
       search: 'Traži'
+      back: 'Nazad'
       close: 'Zatvori'
       save: 'Snimi'
       save_changes: 'Sačuvaj promene'
@@ -43,7 +44,6 @@ sr:
       edit: 'Uredi'
       remove: 'Ukloni'
       like: 'Sviđa mi se'
-      back: 'Nazad'
       unlike: 'Ne Sviđa'
       update: 'Ažuriraj'
       cancel: 'Otkaži'
@@ -191,7 +191,7 @@ sr:
     delete_thread: Obriši nit
   join_group_button:
     join_group: Pridruži se grupi
-    membership_requested: Zahtev za članstvom je na čekanju
+    membership_requested: Članstvo je zatraženo
     messages:
       joined_group: 'Vi ste sada član {{group}}'
   membership_request_form:
@@ -208,6 +208,7 @@ sr:
   group_page:
     threads: Niti
     members: Članovi
+    subgroups: Podgrupe
     messages:
       privacy:
         members: 'Ova grupa je sada vidljiva samo za članove'
@@ -219,7 +220,6 @@ sr:
     discussions_placeholder: 'Nit je mesto gde svako može diskutovati o temi i donositi odluke sa drugima.'
     members_placeholder: 'Samo si ti ovde: pozovi neke ljude da ti se pridruže!'
     member_options: Opcije člana
-    subgroups: 'Podgrupe'
     visibility_label: 'Vidljivost'
     options_label: 'Opcije'
     options:
@@ -270,12 +270,12 @@ sr:
     how_do_people_join: "Kako se ljudi pridružuju?"
     membership_granted_upon_request: 'Svako se može pridružiti grupi.'
     membership_granted_upon_approval: 'Svako može tražiti da se pridruži ali mora biti odobreno.'
+    permissions: 'Dozvole'
     thread_privacy: 'Privatnost niti'
     public_threads: 'Samo javne niti'
     public_discussions_subgroup: 'Svako u {{parentGroupName}} može videti diskusije'
     public_or_private_threads: 'Omogući javne i privatne niti'
     private_threads: 'Samo članovi mogu videti diskusije'
-    permissions: 'Dozvole'
     allow_public_threads: 'Dopusti javne niti u ovoj grupi.'
     parent_members_can_see_discussions: 'Članovi {{parent}} mogu videti privatne niti.'
     members_can_add_members: 'Članovi mogu pozivati ljude i odobravati zahteve da se pridruže.'

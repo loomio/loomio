@@ -94,6 +94,7 @@ nb_NO:
     total: Totalt
     action:
       search: 'Søk'
+      back: 'Tilbake'
       next: 'Neste'
       close: 'Lukk'
       reopen: 'Gjenåpne'
@@ -104,7 +105,6 @@ nb_NO:
       edit: 'Rediger'
       remove: 'Fjern'
       like: 'Liker'
-      back: 'Tilbake'
       unlike: 'U-lik'
       update: 'Oppdater'
       cancel: 'Avbryt'
@@ -489,7 +489,6 @@ nb_NO:
     upload_success: 'Logo oppdatert'
   join_group_button:
     join_group: Bli med i gruppe
-    membership_requested: Venter på forespørsel om medlemskap
     messages:
       joined_group: 'Du er nå medlem av gruppen: {{group}}'
   membership_request_form:

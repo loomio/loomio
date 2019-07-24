@@ -113,6 +113,7 @@ nl_NL:
     total: Totaal
     action:
       search: 'Zoek'
+      back: 'Terug'
       next: 'Volgende'
       close: 'Sluiten'
       save: 'Bewaren'
@@ -122,7 +123,6 @@ nl_NL:
       edit: 'Bewerken'
       remove: 'Verwijderen'
       like: 'Vind ik leuk'
-      back: 'Terug'
       unlike: 'Vind ik niet meer leuk'
       update: 'Bijwerken'
       cancel: 'Annuleren'
@@ -415,7 +415,7 @@ nl_NL:
     upload_success: 'Logo succesvol bijgewerkt'
   join_group_button:
     join_group: Word lid van de groep
-    membership_requested: Lidmaatschapsverzoek in behandeling
+    membership_requested: Lidmaatschap aangevraagd
     messages:
       joined_group: 'Je bent nu lid van {{group}}'
   membership_request_form:
@@ -448,6 +448,7 @@ nl_NL:
   group_page:
     threads: Borden
     members: Leden
+    subgroups: Subgroepen
     messages:
       privacy:
         members: 'Deze groep is nu uitsluitend zichtbaar voor leden'
@@ -461,7 +462,6 @@ nl_NL:
     discussions_placeholder: 'Op een bord kan iedereen over een onderwerp discussiëren en gezamenlijk beslissingen nemen.'
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
     member_options: Opties voor leden
-    subgroups: 'Subgroepen'
     subgroups_placeholder: 'Subgroepen geven teams hun eigen ruimte en beperken meldingen tot de relevante personen.'
     invite_people: 'Uitnodigen'
     visibility_label: 'Zichtbaarheid'
@@ -542,12 +542,12 @@ nl_NL:
     membership_granted_upon_request: 'Iedereen kan zich bij de groep aansluiten.'
     membership_granted_upon_approval: 'Iedereen kan verzoeken om mee te mogen doen, maar moet goedgekeurd worden.'
     membership_granted_upon_approval_secret_parent: '<strong>Op verzoek</strong> kan iedereen van {{parent}} vragen om deel te nemen aan de groep.'
+    permissions: 'Toestemmingen'
     thread_privacy: 'Bordprivacy'
     public_threads: 'Alleen openbare borden'
     public_discussions_subgroup: 'Iedereen in {{parentGroupName}} kan discussies zien'
     public_or_private_threads: 'Sta openbare en privéborden toe'
     private_threads: 'Enkel leden kunnen discussies zien'
-    permissions: 'Toestemmingen'
     allow_public_threads: 'Sta openbare borden toe in deze groep.'
     parent_members_can_see_discussions: 'Leden van {{parent}} kunnen privéborden zien.'
     members_can_add_members: 'Leden kunnen mensen uitnodigen en instemmen met verzoeken om deelname.'
@@ -1326,8 +1326,8 @@ nl_NL:
   auth_form:
     sign_in_to_loomio: Log in op {{site_name}}
     sign_in: Inloggen
+    create_account: Account aanmaken
     sign_in_as: Log in als {{name}}
-    invitation_required: Account niet gevonden. Nieuwe account zijn enkel op uitnodiging.
     more_providers: Meer
     email_not_present: Een e-mailadres is vereist
     invalid_email: "Het spijt me, maar dat ziet er niet uit als een geldig e-mailadres"
@@ -1339,10 +1339,8 @@ nl_NL:
     name_placeholder: Je naam
     name_required: Geef aub een naam in
     welcome_back: Welkom terug, {{name}}!
-    login_link: Log in via e-mail
     set_password: Wachtwoord instellen
     hello: "Hallo, {{name}}!"
-    create_account: Account aanmaken
     link_accounts: Accounts linken
     check_your_email: Check je e-mails!
     password_link_sent: "We hebben je een e-mail gestuurd naar {{email}} met instructies om je wachtwoord in te stellen."

@@ -119,6 +119,7 @@ fr:
     total: Total
     action:
       search: 'Rechercher'
+      back: 'Retour'
       next: 'Suivant'
       close: 'Fermer'
       reopen: 'Relancer'
@@ -129,7 +130,6 @@ fr:
       edit: 'Modifier'
       remove: 'Supprimer'
       like: 'J’aime'
-      back: 'Retour'
       unlike: 'Je n’aime plus'
       update: 'Mettre à jour'
       cancel: 'Annuler'
@@ -527,7 +527,7 @@ fr:
     upload_success: 'Le logo a été mis à jour avec succès'
   join_group_button:
     join_group: Rejoindre le groupe
-    membership_requested: Demandes d’ajout en attente
+    membership_requested: Adhésion demandée
     messages:
       joined_group: 'Vous êtes désormais membre de {{group}}'
   membership_request_form:
@@ -569,6 +569,7 @@ fr:
   group_page:
     threads: Discussions
     members: Membres
+    subgroups: Sous-groupes
     show_opened: '{{count}} ouvertes'
     show_closed: '{{count}} closes'
     no_threads_here: Pas de discussions à afficher ici !
@@ -592,7 +593,6 @@ fr:
     member_options: Options des membres
     see_all_members: 'Voir les {{count}} membres'
     pending_invitations: '+ {{count}} en attente'
-    subgroups: 'Sous-groupes'
     subgroups_placeholder: 'Les sous-groupes permettent à chaque équipe de disposer de son propre espace et d’envoyer les notifications aux bonnes personnes.'
     invite_people: 'Inviter'
     visibility_label: 'Visibilité'
@@ -680,13 +680,13 @@ fr:
     membership_granted_upon_request: 'N’importe qui peut rejoindre le groupe'
     membership_granted_upon_approval: 'N’importe qui peut demander à rejoindre le groupe, mais la demande doit être approuvée.'
     membership_granted_upon_approval_secret_parent: '<strong>Sur proposition,</strong> n’importe qui de {{parent}} peut demander à rejoindre le groupe.'
+    permissions: 'Permissions'
     features: 'Fonctionnalités pour le groupe'
     thread_privacy: 'Confidentialité de la discussion'
     public_threads: 'Discussions publiques seulement'
     public_discussions_subgroup: 'N’importe qui de {{parentGroupName}} peut voir les discussions'
     public_or_private_threads: 'Autoriser les discussions privées et publiques'
     private_threads: 'Seuls les membres peuvent voir les discussions'
-    permissions: 'Permissions'
     allow_public_threads: 'Autoriser les discussions publiques dans ce groupe.'
     parent_members_can_see_discussions: 'Les membres de {{parent}} peuvent voir les discussions privées.'
     members_can_announce: 'Les membres peuvent notifier toutes les personnes du groupe.'
@@ -1608,11 +1608,9 @@ fr:
     sign_in_to_loomio: Identifiez-vous sur {{site_name}}
     sign_in: Se connecter
     continue: Continuer
+    create_account: Créez un compte
     sign_in_as: Se connecter comme  {{name}}
-    continue_with_provider: Continuer avec {{provider}}
-    continue_with_email: Continuer avec l'adresse e-mail
     or_enter_your_email: Ou saisir votre adresse e-mail
-    invitation_required: Compte utilisateur introuvable. Une invitation est nécessaire pour créer un nouveau compte utilisateur.
     more_providers: Plus
     email_not_present: Une adresse e-mail est nécessaire
     invalid_email: "Désolé, ça ne semble pas être une adresse e-mail valide."
@@ -1631,15 +1629,12 @@ fr:
     name_required: Entrez un nom
     terms_required: Vous devez accepter les Conditions d'utilisation
     account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé !
-    privacy_notice: "Des données personnelles sont recueillies quand vous utilisez {{siteName}}. <br/> Lisez notre <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a> pour en savoir plus."
     welcome: Nouveau sur {{siteName}} ?
     welcome_back: Content de vous revoir, {{name}} !
-    login_link: Recevoir un courriel de connexion
     set_password: Définir un mot de passe
     set_password_helptext: Vous souhaitez un mot de passe pour la prochaine fois ?
     hello: "Bonjour, {{name}} !"
     new_to_loomio: Nouveau sur {{site_name}} ? Créez un compte !
-    create_account: Créez un compte
     already_a_user: Vous avez déjà un compte {{site_name}} ? Entrez votre adresse e-mail pour connecter à ce compte au vôtre.
     link_accounts: Comptes associés
     check_your_email: Vérifier votre e-mail !

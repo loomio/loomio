@@ -74,6 +74,7 @@ da:
     copied: 'Kopieret til clipboard'
     action:
       search: 'Søg'
+      back: 'Tilbage'
       next: 'Næste'
       close: 'Luk'
       save: 'Gem'
@@ -83,7 +84,6 @@ da:
       edit: 'Rediger'
       remove: 'Slet'
       like: 'Synes om'
-      back: 'Tilbage'
       unlike: 'Synes ikke om'
       update: 'Opdater'
       cancel: 'Annuller'
@@ -322,7 +322,7 @@ da:
     upload_success: 'Gruppelogo gemt'
   join_group_button:
     join_group: Bliv medlem
-    membership_requested: Medlemsanmodning afventern
+    membership_requested: Anmodet om medlemsskab
     messages:
       joined_group: 'Du er nu medlem af {{group}}'
   membership_request_form:
@@ -344,6 +344,7 @@ da:
   group_page:
     threads: Debatter
     members: Medlemmer
+    subgroups: Undergrupper
     messages:
       privacy:
         members: 'Denne gruppe er nu kun synlig for medlemmer'
@@ -357,7 +358,6 @@ da:
     discussions_placeholder: 'En debat er et sted hvor alle kan give deres mening til kende omkring et specifikt emne og tage beslutninger sammen.'
     members_placeholder: 'Du er det eneste medlem her, inviter nogle mennesker til at være med!'
     member_options: Medlemsinstaillinger
-    subgroups: 'Undergrupper'
     invite_people: 'Inviter'
     visibility_label: 'Visibility'
     options_label: 'Indstillinger'
@@ -437,12 +437,12 @@ da:
     membership_granted_upon_request: 'Alle kan blive medlem'
     membership_granted_upon_approval: 'Alle kan anmode om at blive medlem, men skal godkendes.'
     membership_granted_upon_approval_secret_parent: '<strong>På anmodning</strong> så kan alle fra {{parent}} anmode om at blive medlem af gruppen.'
+    permissions: 'Rettigheder'
     thread_privacy: 'Debat privatindstillinger'
     public_threads: 'Kun offentlige debatter'
     public_discussions_subgroup: 'Alle i {{parentGroupName}} kan læse debatter'
     public_or_private_threads: 'Tillad både offentlige og private debatter'
     private_threads: 'Det er kun medlemmer der kan se debatter'
-    permissions: 'Rettigheder'
     allow_public_threads: 'Tillad offentlige debatter i denne gruppe.'
     parent_members_can_see_discussions: 'Medlemmer af {{parent}} kan se private debatter.'
     members_can_add_members: 'Madlemmer kan invitere andre og godkende andmodninger om at blive medlem.'

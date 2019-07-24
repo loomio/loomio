@@ -117,6 +117,7 @@ uk:
     total: Разом
     action:
       search: 'Пошук'
+      back: 'Назад'
       next: 'Наступна'
       close: 'Закрити'
       reopen: 'Відновити'
@@ -127,7 +128,6 @@ uk:
       edit: 'Редагувати'
       remove: 'Вилучити'
       like: 'Подобається'
-      back: 'Назад'
       unlike: 'Не подобається'
       update: 'Оновити'
       cancel: 'Скасувати'
@@ -522,7 +522,7 @@ uk:
     upload_success: 'Логотип успішно оновлено'
   join_group_button:
     join_group: Приєднатись до групи
-    membership_requested: Запити на участь в очікувані
+    membership_requested: Запит на участь відправлено
     messages:
       joined_group: 'Тепер ви учасник {{group}}'
   membership_request_form:
@@ -564,6 +564,7 @@ uk:
   group_page:
     threads: Теми
     members: Учасники
+    subgroups: Підгрупи
     show_opened: '{{count}} Відкриті'
     show_closed: '{{count}} Закриті'
     no_threads_here: Тут нема тем для перегляду!
@@ -587,7 +588,6 @@ uk:
     member_options: Варіанти участі
     see_all_members: 'Переглянути усіх {{count}} учасників'
     pending_invitations: '+ {{count}} в очікуванні'
-    subgroups: 'Підгрупи'
     subgroups_placeholder: 'Підгрупи надають командам власний простір та забезпечують сповіщення, спрямовані на потрібних людей.'
     invite_people: 'Запросити'
     visibility_label: 'Видимість'
@@ -674,13 +674,13 @@ uk:
     membership_granted_upon_request: 'Будь-хто може долучитись до групи.'
     membership_granted_upon_approval: 'Будь-хто може зробити запит на долучення але воно має бути схвалено.'
     membership_granted_upon_approval_secret_parent: '<strong>За запитом</strong> будь-хто з {{parent}} може попросити долучитись до групи.'
+    permissions: 'Дозволи'
     features: 'Специфічні функції для групи'
     thread_privacy: 'Конфіденційність тем'
     public_threads: 'Тільки загальнодоступні теми'
     public_discussions_subgroup: 'Будь-хто з {{parentGroupName}} може бачити обговорення'
     public_or_private_threads: 'Дозволити загальнодоступні та закриті теми'
     private_threads: 'Тільки учасники можуть бачити обговорення'
-    permissions: 'Дозволи'
     allow_public_threads: 'Дозволити загальнодоступні теми в цій групі.'
     parent_members_can_see_discussions: 'Учасники {{parent}} можуть бачити закриті теми.'
     members_can_announce: 'Учасники можуть сповіщати всіх у групі.'
@@ -1597,11 +1597,9 @@ uk:
     sign_in_to_loomio: Увійти до {{site_name}}
     sign_in: Увійти
     continue: Продовжити
+    create_account: Створити обліковий запис
     sign_in_as: Увійти як {{name}}
-    continue_with_provider: Продовжити через {{provider}}
-    continue_with_email: Продовжити за допомогою електронної пошти
     or_enter_your_email: Або введіть свою адресу електронної пошти
-    invitation_required: Обліковий запис не знайдено. Нові облікові записи доступні лише за запрошенням.
     more_providers: Бiльше
     email_not_present: Потрібна адреса електронної пошти
     invalid_email: "На жаль, це не виглядає як дійсна адреса електронної пошти"
@@ -1620,15 +1618,12 @@ uk:
     name_required: Бідь ласка введіть ім'я
     terms_required: Ви маєте прийняти Умови використання
     account_inactive: Гм, схоже, обліковий запис для {{email}} був відключений!
-    privacy_notice: "При використанні {{siteName}} збираються персональні дані. <br/> Прочитайте нашу <a href='{{privacyUrl}}' target='_blank'>Політику конфіденційності</a> щоб дізнатися більше."
     welcome: Вперше на {{siteName}}?
     welcome_back: З поверненням, {{name}}!
-    login_link: Авторизуйтесь через пошту
     set_password: Встановити пароль
     set_password_helptext: Бажаєте використовувати пароль наступного разу?
     hello: "Вітаємо, {{name}}!"
     new_to_loomio: Вперше на {{site_name}}? Створити обліковий запис
-    create_account: Створити обліковий запис
     already_a_user: Використовували {{site_name}} раніше? Введіть адресу електронної пошти, яку ви використовували останній раз, щоб прив'язати її.
     link_accounts: Пов'язані облікові записи
     check_your_email: Перевірте пошту

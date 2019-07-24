@@ -51,7 +51,7 @@ export default
 </script>
 
 <template lang="pug">
-v-container.email-settings-page(v-if='user')
+v-container.email-settings-page.max-width-1024(v-if='user')
   v-card
     v-card-title
       h1.headline(v-t="'email_settings_page.header'")

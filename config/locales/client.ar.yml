@@ -57,6 +57,7 @@ ar:
     copied: 'تم النسخ'
     action:
       search: 'بحث'
+      back: 'عودة'
       close: 'مغلق'
       save: 'حفظ'
       save_changes: 'حفظ التغييرات'
@@ -65,7 +66,6 @@ ar:
       edit: 'تحرير'
       remove: 'إزالة'
       like: 'يعجبني'
-      back: 'عودة'
       unlike: 'لا يعجبني'
       update: 'تحديث'
       cancel: 'إلغاء'
@@ -195,6 +195,7 @@ ar:
     delete_thread: حذف الموضوع
   join_group_button:
     join_group: انضم إلى الفريق
+    membership_requested: تم طلب الإنضمام
     messages:
       joined_group: 'أنت الآن عضو في مجموعة {{group}}'
   membership_request_form:
@@ -215,6 +216,7 @@ ar:
   group_page:
     threads: المواضيع
     members: أعضاء
+    subgroups: الفِرَق الفرعية
     messages:
       privacy:
         members: 'هذه المجموعة ظاهرة الآن للأعضاء فقط.'
@@ -226,7 +228,6 @@ ar:
     discussions_placeholder: 'الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.'
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
-    subgroups: 'الفِرَق الفرعية'
     invite_people: 'دعوة'
     visibility_label: 'الظهور'
     options_label: 'الخيارات'
@@ -279,12 +280,12 @@ ar:
     how_do_people_join: "كيف يمكن للأشخاص الانضمام؟"
     membership_granted_upon_request: 'يمكن لأي شخص الانضمام'
     membership_granted_upon_approval: 'يمكن لأي شخص طلب الانضمام و لكن يجب الموافقة على طلب الانضمام.'
+    permissions: 'السماح'
     thread_privacy: 'خصوصية المواضيع'
     public_threads: 'المواضيع العامة فقط'
     public_discussions_subgroup: 'يمكن لأي شخص من {{parentGroupName}} رؤية النقاش'
     public_or_private_threads: 'السماح بموضوعات خاصة و عامة'
     private_threads: 'يمكن للأعضاء فقط رؤية النقاشات'
-    permissions: 'السماح'
     allow_public_threads: 'السماح بمواضيع عامة في هذه المجموعة.'
     parent_members_can_see_discussions: 'يمكن لأعضاء {{parent}} رؤية المواضيع الخاصة.'
     members_can_add_members: 'يمكن للأعضاء دعوة أشخاص و الموافقة عى طلبات الانضمام.'

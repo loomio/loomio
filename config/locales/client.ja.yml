@@ -61,6 +61,7 @@ ja:
     privacy_label: '個人情報'
   join_group_button:
     join_group: グループに参加する
+    membership_requested: メンバーリクエストが送られました
   membership_request_form:
     heading: グループへの参加依頼
     name_label: 氏名

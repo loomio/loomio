@@ -111,6 +111,7 @@ pt_BR:
     total: Total
     action:
       search: 'Pesquisar'
+      back: 'Voltar'
       next: 'Próximo'
       close: 'Encerrar'
       reopen: 'Reaberto'
@@ -121,7 +122,6 @@ pt_BR:
       edit: 'Editar'
       remove: 'Remover'
       like: 'Curtir'
-      back: 'Voltar'
       unlike: 'Curtir (desfazer)'
       update: 'Atualização'
       cancel: 'Cancelar'
@@ -478,7 +478,7 @@ pt_BR:
     upload_success: 'Logo atualizada com sucesso'
   join_group_button:
     join_group: Entrar no grupo
-    membership_requested: Solicitação de membro pendente
+    membership_requested: Inclusão de membro solicitada
     messages:
       joined_group: 'Você agora é um membro do(a) {{group}}'
   membership_request_form:
@@ -513,6 +513,7 @@ pt_BR:
   group_page:
     threads: Conversas
     members: Membros ({{count}})
+    subgroups: Subgrupos
     show_closed: '{{count}} Encerrado'
     no_threads_here: Nenhuma conversa para ler aqui!
     search_threads: Buscar por conversas…
@@ -533,7 +534,6 @@ pt_BR:
     discussions_placeholder: 'A conversa é o lugar onde todos podem discutir um tema e tomar decisões juntos.'
     members_placeholder: 'Você é a única pessoa aqui: convide outras para se juntar a você!'
     member_options: Opçoes de membros
-    subgroups: 'Subgrupos'
     invite_people: 'Convidar'
     visibility_label: 'Visibilidade'
     options_label: 'Opções'
@@ -612,12 +612,12 @@ pt_BR:
     how_do_people_join: "Como as pessoas participam?"
     membership_granted_upon_request: 'Qualquer um pode entrar no grupo'
     membership_granted_upon_approval: 'Qualquer pessoa pode pedir para participar, mas deve ser aprovada.'
+    permissions: 'Permissões'
     thread_privacy: 'Privacidade da conversa'
     public_threads: 'Somente conversas públicas'
     public_discussions_subgroup: 'Qualquer pessoa em {{parentGroupName}} pode ver as discussões'
     public_or_private_threads: 'Permitir conversas públicas e privadas'
     private_threads: 'Apenas os membros podem ver discussões'
-    permissions: 'Permissões'
     allow_public_threads: 'Permitir conversas públicas neste grupo.'
     parent_members_can_see_discussions: 'Membros de {{parent}} podem ver conversas privadas.'
     members_can_add_members: 'Membros podem convidar pessoas e aprovar pedidos de adesão.'
@@ -1181,10 +1181,10 @@ pt_BR:
     start_new_poll: Nova decisão
     groups_placeholder: (Todos os grupos)
   auth_form:
+    create_account: Criar conta
     more_providers: Mais
     name_placeholder: Seu nome
     hello: "Olá, {{name}}!"
-    create_account: Criar conta
     check_your_email: Consulte o seu e-mail!
     name: Nome
     email: E-mail

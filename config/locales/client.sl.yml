@@ -69,6 +69,7 @@ sl:
     privacy_label: 'Zasebnost'
   join_group_button:
     join_group: Pridruži se skupini
+    membership_requested: Prošnja za včlanitev
     messages:
       joined_group: 'Sedaj si član/ica {{group}}'
   membership_request_form:

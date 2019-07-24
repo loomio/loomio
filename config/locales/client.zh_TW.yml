@@ -128,6 +128,7 @@ zh_TW:
     action:
       search: '搜尋'
       filter: '過濾器'
+      back: '返回'
       next: '下一個'
       close: '關閉'
       reopen: '重新開啟'
@@ -138,7 +139,6 @@ zh_TW:
       edit: '編輯'
       remove: '移除'
       like: '讚'
-      back: '返回'
       unlike: '收回讚'
       update: '更新'
       cancel: '取消'
@@ -549,7 +549,7 @@ zh_TW:
     upload_success: '成功更新圖示'
   join_group_button:
     join_group: 加入群組
-    membership_requested: 擱置中的成員資格請求
+    membership_requested: 已申請成員資格
     messages:
       joined_group: '您現在是 {{group}} 的成員了'
   membership_request_form:
@@ -570,6 +570,7 @@ zh_TW:
     stance_header: 立場調整歷史
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited_by: '由 <strong>{{name}}</strong> 所編輯'
+    edit_by: "編輯由 {{name}} · {{date}}"
     posted: 已貼出
     original_text: 原版
     current_revision: 最新
@@ -593,6 +594,7 @@ zh_TW:
     polls: 投票
     members: 成員 ({{count}})
     files: 檔案
+    subgroups: 子群組
     show_opened: '{{count}} 開啟'
     show_closed: '{{count}} 已關閉'
     no_threads_here: 這裡沒有討論串可以檢視！
@@ -617,7 +619,6 @@ zh_TW:
     member_options: 成員選項
     see_all_members: '檢視全部 {{count}} 個成員'
     pending_invitations: '+ {{count}} 個擱置'
-    subgroups: '子群組'
     subgroups_placeholder: '子群組給團隊擁有自己的空間，並可以注重於通知對的夥伴。'
     invite_people: '邀請'
     visibility_label: '能見度'
@@ -674,6 +675,7 @@ zh_TW:
     question: '您確定您想要停用此群組嗎？'
     submit: '是的，停用此群組'
   group_form:
+    permissions_explaination: 停用某權限代表只有協調者才能執行此動作。
     aria_label: '群組表單'
     start_group_heading: '啟動群組'
     start_subgroup_heading: '啟動子群組'
@@ -707,13 +709,13 @@ zh_TW:
     membership_granted_upon_request: '任何人都能加入此群組。'
     membership_granted_upon_approval: '任何人都可以要求加入，但必須經過審核。'
     membership_granted_upon_approval_secret_parent: '<strong>根據要求</strong>：任何在 {{parent}} 群組的人都可以要求加入群組。'
+    permissions: '權限'
     features: '特定群組功能'
     thread_privacy: '討論串隱私權'
     public_threads: '僅限公開討論串'
     public_discussions_subgroup: '任何在 {{parentGroupName}} 群組的人都能看到這則討論串'
     public_or_private_threads: '允許公開與非公開討論串'
     private_threads: '只有成員才能看到討論串'
-    permissions: '權限'
     allow_public_threads: '允許在此群組中公開討論串。'
     parent_members_can_see_discussions: '{{parent}} 的成員可以看到私密討論串。'
     members_can_announce: '成員可以通知任何在群組裡的人。'
@@ -1710,14 +1712,16 @@ zh_TW:
     filter_placeholder: （所有投票）
     groups_placeholder: （所有群組）
   auth_form:
+    code: '000000'
     sign_in_to_loomio: 登入到 {{site_name}}
     sign_in: 登入
     continue: 繼續
+    create_account: 建立帳號
     sign_in_as: 登入為 {{name}}
-    continue_with_provider: 使用 {{provider}} 繼續
-    continue_with_email: 以電子郵件繼續
+    continue_with_provider: 使用 {{provider}} 登入
+    continue_with_email: 使用電子郵件登入
     or_enter_your_email: 或是輸入您的電子郵件地址
-    invitation_required: 找不到帳號。新帳號為邀請制。
+    invitation_required: 您需要邀請函以建立帳號。
     more_providers: 詳細
     email_not_present: 需要電子郵件地址
     invalid_email: "抱歉，這看起來不是有效的電子郵件地址"
@@ -1736,15 +1740,14 @@ zh_TW:
     name_required: 請輸入名稱
     terms_required: 您必須同意服務條款
     account_inactive: 喔喔，看起來 {{email}} 的帳號已經被停用囉！
-    privacy_notice: "當您使用 {{siteName}} 時將會收集個人資料。<br/>閱讀我們的<a href='{{privacyUrl}}' target='_blank'>隱私權政策</a>來取得更多資訊。"
+    privacy_notice: "我們不會販賣您的個人資料或使用第三方追蹤程式<br><a href='{{privacyUrl}}' target='_blank'>隱私權政策</a>"
     welcome: 新加入 {{siteName}}？
     welcome_back: 歡迎回來，{{name}}！
-    login_link: 透過電子郵件登入
+    login_link: 使用電子郵件登入
     set_password: 設定密碼
     set_password_helptext: 下次想要使用密碼嗎？
     hello: "您好，{{name}}！"
     new_to_loomio: 第一次來到 {{site_name}}？建立帳號
-    create_account: 建立帳號
     already_a_user: 您曾用過 {{site_name}}？輸入您上次使用的電子郵件地址以把它們連結起來。
     link_accounts: 連結帳號
     check_your_email: 檢查您的電子郵件

@@ -70,6 +70,7 @@ tr:
     copied: 'Panoya kopyalandı'
     action:
       search: 'Arama'
+      back: 'Geri'
       close: 'Kapat'
       save: 'Kaydet'
       save_changes: 'Değişiklikleri kaydet'
@@ -78,7 +79,6 @@ tr:
       edit: 'Düzenle'
       remove: 'Kaldır'
       like: 'Beğen'
-      back: 'Geri'
       unlike: 'Beğenmekten vazgeç'
       update: 'Güncelle'
       cancel: 'İptal et'
@@ -219,6 +219,7 @@ tr:
     upload_link: 'Yeni grup logosu yükle'
   join_group_button:
     join_group: Gruba katıl
+    membership_requested: Üyelik talep edildi
     messages:
       joined_group: 'Şu an {{group}} grubunun bir üyesisin.'
   membership_request_form:
@@ -239,6 +240,7 @@ tr:
   group_page:
     threads: Müzakereler
     members: Üyeler
+    subgroups: Alt gruplar
     messages:
       privacy:
         members: 'Bu grup şu an sadece grup üyeleri tarafından görülebilir'
@@ -252,7 +254,6 @@ tr:
     discussions_placeholder: 'Müzakere, herkesin bir başlık hakkında tartışarak birlikte kararlar aldığı yerdir.'
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
-    subgroups: 'Alt gruplar'
     invite_people: 'Davet et'
     visibility_label: 'Görünürlük'
     options_label: 'Seçenekler'
@@ -315,12 +316,12 @@ tr:
     how_do_people_join: "Kişiler nasıl katılabilir?"
     membership_granted_upon_request: 'Herkes gruba katılabilir.'
     membership_granted_upon_approval: 'Herkes katılım talebinde bulunabilir, ancak onaylanması gerekir.'
+    permissions: 'İzinler'
     thread_privacy: 'Müzakere gizliliği'
     public_threads: 'Sadece kamuya açık olan müzakereler'
     public_discussions_subgroup: '{{parentGroupName}} grubunda bulunan herkes müzakereleri görebilir'
     public_or_private_threads: 'Kamuya açık ve gizli müzakerelere izin ver'
     private_threads: 'Sadece üyeler müzakereleri görebilir'
-    permissions: 'İzinler'
     allow_public_threads: 'Bu grupta kamuya açık müzakerelere izin ver.'
     parent_members_can_see_discussions: '{{parent}} grubunun üyeleri gizli müzakereleri görebilir.'
     members_can_add_members: 'Üyeler başkalarını davet edebilir ve katılım isteklerini onaylayabilir.'

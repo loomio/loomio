@@ -46,6 +46,7 @@ mk:
     privacy_label: 'Приватност'
   join_group_button:
     join_group: Приклучи се во групата
+    membership_requested: Барањето за членство е игнорирано.
   membership_request_form:
     heading: Побарај да се придружиш на групата
     name_label: Име

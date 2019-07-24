@@ -35,6 +35,7 @@ sr_RS:
     copied: 'Копирано'
     action:
       search: 'Тражи'
+      back: 'Назад'
       close: 'Затвори'
       save: 'Сними'
       save_changes: 'Сачувај промене'
@@ -43,7 +44,6 @@ sr_RS:
       edit: 'Уреди'
       remove: 'Уклони'
       like: 'Свиђа ми се'
-      back: 'Назад'
       unlike: 'Не Свиђа'
       update: 'Ажурирај'
       cancel: 'Откажи'
@@ -98,6 +98,7 @@ sr_RS:
     privacy_label: 'Приватност'
   join_group_button:
     join_group: Придружи се групи
+    membership_requested: Чланство је затражено
   membership_request_form:
     heading: Питај да се придружиш групи
     name_label: Име

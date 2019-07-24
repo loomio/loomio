@@ -22,6 +22,7 @@ hr:
     privacy_label: 'Privatnost'
   join_group_button:
     join_group: 'Pridruži se grupi '
+    membership_requested: Članstvo zatraženo
   membership_request_form:
     heading: Zahtjev za pridruženjem grupi
   group_page:

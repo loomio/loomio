@@ -96,6 +96,7 @@ hu:
     total: Teljes
     action:
       search: 'Keresés'
+      back: 'Vissza'
       next: 'Következő'
       close: 'Bezár'
       reopen: 'Újranyit'
@@ -106,7 +107,6 @@ hu:
       edit: 'Módosítás'
       remove: 'Visszavonás'
       like: 'Tetszik'
-      back: 'Vissza'
       unlike: 'Nem tetszik'
       update: 'Frissítés'
       cancel: 'Mégse'
@@ -387,6 +387,7 @@ hu:
     close_thread: Tred lezárása
   join_group_button:
     join_group: Kapcsolódj a csoporthoz
+    membership_requested: Felvétel kérve
   membership_request_form:
     heading: Kérj belépőt a csoportba
     name_label: Név
@@ -398,9 +399,9 @@ hu:
   group_page:
     threads: Tredek
     members: Tagok
+    subgroups: Alcsoportok
     group_logo: 'Csoport logó'
     new_photo: 'Új fotó'
-    subgroups: 'Alcsoportok'
     invite_people: 'Meghív'
     visibility_label: 'Láthatóság'
     options_label: 'Lehetőségek'

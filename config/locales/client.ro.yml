@@ -90,6 +90,7 @@ ro:
     total: Total
     action:
       search: 'Cauta'
+      back: 'Inapoi'
       next: 'Urmatorul'
       close: 'Inchide'
       save: 'Salvare'
@@ -99,7 +100,6 @@ ro:
       edit: 'Editeaza'
       remove: 'Sterge'
       like: 'Apreciez'
-      back: 'Inapoi'
       unlike: 'Nu apreciez'
       update: 'Actualizeaza'
       cancel: 'Anuleaza'
@@ -293,6 +293,7 @@ ro:
     upload_link: 'Incarcare nou logo de grup'
   join_group_button:
     join_group: Alatură-te grupului
+    membership_requested: Cerere de intrare in grup primita.
   membership_request_form:
     heading: Cere sa fi inclus in grup
     name_label: Nume

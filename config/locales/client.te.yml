@@ -32,6 +32,7 @@ te:
     total: మొత్తం
     action:
       search: 'వెతుకు'
+      back: 'వెనుకకు'
       next: 'తదుపరి'
       close: 'మూసివేయి'
       save: 'భద్రపరుచు'
@@ -39,7 +40,6 @@ te:
       edit: 'సవరించు'
       remove: 'తీసివేయి'
       like: 'ఇష్టం'
-      back: 'వెనుకకు'
       unlike: 'అయిష్టం'
       update: 'తాజాకరించు'
       cancel: 'రద్దుచేయి'
@@ -86,6 +86,8 @@ te:
     title_label: 'శీర్షిక'
     context_label: 'సందర్భం'
     privacy_label: 'గోప్యత'
+  join_group_button:
+    membership_requested: సభ్యత్వం అభ్యర్థించబడింది
   membership_request_form:
     heading: సమూహంలో చేరుటకు అడగండి
     name_label: పేరు

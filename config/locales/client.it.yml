@@ -118,6 +118,7 @@ it:
     total: Totale
     action:
       search: 'Ricerca'
+      back: 'Indietro'
       next: 'Prossimo'
       close: 'Chiudi'
       reopen: 'Riapri'
@@ -128,7 +129,6 @@ it:
       edit: 'Modifica'
       remove: 'Rimuovi'
       like: 'Like'
-      back: 'Indietro'
       unlike: 'Unlike'
       update: 'Aggiorna'
       cancel: 'Annulla'
@@ -499,7 +499,7 @@ it:
     upload_success: 'Logo aggiornato con successo'
   join_group_button:
     join_group: Iscriviti al gruppo
-    membership_requested: Richiesta di iscrizione pendente
+    membership_requested: Iscrizione richiesta
     messages:
       joined_group: 'Sei membro/a del gruppo {{group}}'
   membership_request_form:
@@ -530,6 +530,7 @@ it:
   group_page:
     threads: Discussioni
     members: Membri
+    subgroups: Sottogruppi
     messages:
       privacy:
         members: 'Ora il gruppo è visibile solo alle persone che ne fanno parte.'
@@ -546,7 +547,6 @@ it:
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
     see_all_members: 'Vedi tutti i {{count}} membri'
-    subgroups: 'Sottogruppi'
     subgroups_placeholder: 'I sottogruppi danno ai gruppi il proprio spazio e permettono di inviare notiifiche focalizzate sulle persone giuste. '
     invite_people: 'Invita'
     visibility_label: 'Visibilità'
@@ -628,12 +628,12 @@ it:
     membership_granted_upon_request: 'Chiunque si può unire al gruppo.'
     membership_granted_upon_approval: 'Chiunque può richiedere di essere aggiunto ma dev''essere approvato.'
     membership_granted_upon_approval_secret_parent: '<strong>Su richiesta</strong> chiunque da {{parent}} può chiedere di unirsi al gruppo.'
+    permissions: 'Permessi'
     thread_privacy: 'Pricacy della discussione'
     public_threads: 'Solo discussioni pubbliche'
     public_discussions_subgroup: 'Chiunque nel gruppo {{parentGroupName}} può vedere le discussioni'
     public_or_private_threads: 'Permetti discussioni pubbliche e private'
     private_threads: 'Solo i membri possono vedere le discussioni'
-    permissions: 'Permessi'
     allow_public_threads: 'Permetti discussioni pubbliche in questo gruppo.'
     parent_members_can_see_discussions: 'I membri del gruppo {{parent}} possono vedere le discussioni private. '
     members_can_add_members: 'I membri possono invitare persone e approvare richieste di iscrizione.'
@@ -1252,12 +1252,9 @@ it:
     sign_in_to_loomio: Iscriviti a {{site_name}}
     sign_in: Iscriviti
     sign_in_as: Autenticati come {{name}}
-    continue_with_provider: Continua con {{provider}}
-    continue_with_email: Continua con l'email
     or_enter_your_email: Oppure, inserisci il tuo indirizzo di email
     login_link_helptext_with_password: "Inserisci la tua password, o autenticati via email."
     name_placeholder: Il tuo nome
-    login_link: Iscriviti via email
     set_password: Imposta password
     check_your_email: Guarda nella tua casella di posta!
     name: Nome

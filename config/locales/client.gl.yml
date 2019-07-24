@@ -50,6 +50,7 @@ gl:
     privacy_label: 'Privacidade'
   join_group_button:
     join_group: Unirse ó grupo
+    membership_requested: Admisión solicitada
   membership_request_form:
     heading: Pedir unirse ó grupo
     name_label: Nome

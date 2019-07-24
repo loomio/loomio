@@ -89,6 +89,7 @@ lt:
     copied: 'Nukopijuota į iškarpinę'
     total: Iš viso
     action:
+      back: 'Atgal'
       next: 'Kitas'
       close: 'Užverti'
       save: 'Įrašyti'
@@ -98,7 +99,6 @@ lt:
       edit: 'Redaguoti'
       remove: 'Šalinti'
       like: 'Patinka'
-      back: 'Atgal'
       unlike: 'Nebepatinka'
       update: 'Atnaujinti'
       cancel: 'Atsisakyti'
@@ -174,6 +174,7 @@ lt:
     you: "Tu"
   group_page:
     threads: Temos
+    subgroups: Pogrupiai
     messages:
       privacy:
         members: 'Dabar ši grupė yra matoma tik nariams'
@@ -181,7 +182,6 @@ lt:
     group_logo: 'Grupės logotipas'
     discussions_placeholder: 'Gija - tai vieta, kurioje visi gali diskutuoti tam tikra tema ir kartu priiminėti sprendimus.'
     members_placeholder: 'Čia esate tik jūs: pakvieskite žmones prisjungti prie jūsų!'
-    subgroups: 'Pogrupiai'
     visibility_label: 'Matomumas'
     options_label: 'Parinktys'
     options:

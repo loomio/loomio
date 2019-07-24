@@ -53,6 +53,7 @@ mi:
     total: Tapeke
     action:
       search: 'Rapu'
+      back: 'E hoki'
       next: 'Kei mua'
       close: 'Katia'
       reopen: 'Tūwhera anō'
@@ -63,7 +64,6 @@ mi:
       edit: 'Whakatikaina'
       remove: 'Unuhia'
       like: 'Rawe'
-      back: 'E hoki'
       unlike: 'Kaua te rawe'
       update: 'Whakahoungia'
       cancel: 'Whakakorea'

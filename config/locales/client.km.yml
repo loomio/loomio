@@ -41,6 +41,8 @@ km:
     title_label: 'ចំណងជើង'
     context_label: 'បរិបទ '
     privacy_label: 'ភាពជាឯកជន​'
+  join_group_button:
+    membership_requested: សំណើសមាជិកភាព
   membership_request_form:
     heading: សួរទៅក្រុមចូលរួម
     name_label: ឈ្មោះ

@@ -53,6 +53,7 @@ sk:
     privacy_label: 'Súkromie'
   join_group_button:
     join_group: Pripojiť sa ku skupine
+    membership_requested: Žiadosť o členstvo odoslaná
   membership_request_form:
     heading: Požiadať o členstvo
     name_label: Meno

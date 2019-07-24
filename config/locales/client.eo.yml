@@ -195,6 +195,7 @@ eo:
     upload_link: 'Alŝuti novan emblemon de grupo'
   join_group_button:
     join_group: Aliĝi al la grupo
+    membership_requested: Membreco petiĝis
     messages:
       joined_group: 'Vi nun estas membro de {{group}}'
   membership_request_form:
@@ -212,9 +213,9 @@ eo:
   group_page:
     threads: Fadenoj
     members: Membroj
+    subgroups: Subgrupoj
     show_closed: '{{count}} Fermita'
     new_group_logo: 'Alŝuti novan emblemon de grupo'
-    subgroups: 'Subgrupoj'
     invite_people: 'Inviti'
     options_label: 'Opcioj'
     options:
@@ -412,12 +413,12 @@ eo:
     heading: Decidoj
   auth_form:
     sign_in: Registriĝi
+    create_account: Krei konton
     sign_in_as: Registriĝi kiel {{name}}
     more_providers: Pli
     name_placeholder: Via nomo
     name_required: Bonvolu entajpi nomon.
     hello: "Saluton, {{name}}!"
-    create_account: Krei konton
     link_accounts: Ligi kontojn
     name: Nomo
     email: Retadreso

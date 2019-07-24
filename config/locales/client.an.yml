@@ -53,6 +53,7 @@ an:
     privacy_label: 'Privacidat'
   join_group_button:
     join_group: Unir-se a o grupo
+    membership_requested: Pertenencia demandada.
   membership_request_form:
     heading: Pedir pertenencia a o grupo
     name_label: Nombre
