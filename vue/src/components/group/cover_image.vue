@@ -1,7 +1,5 @@
 <script lang="coffee">
-import UrlFor from '@/mixins/url_for'
 export default
-  mixins: [UrlFor]
   props:
     group: Object
 </script>

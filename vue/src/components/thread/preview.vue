@@ -1,11 +1,9 @@
 <script lang="coffee">
 import ThreadService from '@/shared/services/thread_service'
 import AbilityService from '@/shared/services/ability_service'
-import UrlFor        from '@/mixins/url_for'
 import { pick, some } from 'lodash'
 
 export default
-  mixins: [UrlFor]
   props:
     thread: Object
 

@@ -3,10 +3,8 @@ import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
 import { submitForm } from '@/shared/helpers/form'
 import ModalService   from '@/shared/services/modal_service'
-import UrlFor         from '@/mixins/url_for'
 
 export default
-  mixins: [UrlFor]
   props:
     group: Object
   methods:

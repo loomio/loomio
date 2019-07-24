@@ -1,12 +1,10 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
-import UrlFor         from '@/mixins/url_for'
 import { exact }      from '@/shared/helpers/format_time'
 import { listenForTranslations } from '@/shared/helpers/listen'
 import { map, compact, pick } from 'lodash'
 
 export default
-  mixins: [UrlFor]
   props:
     discussion: Object
 

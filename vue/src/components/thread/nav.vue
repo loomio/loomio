@@ -1,14 +1,12 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-import UrlFor from '@/mixins/url_for'
 import Records from '@/shared/services/records'
-import WatchRecords from '@/mixins/watch_records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import { debounce, truncate } from 'lodash'
 
 export default
-  mixins: [UrlFor, WatchRecords, AnnouncementModalMixin, ChangeVolumeModalMixin]
+  mixins: [AnnouncementModalMixin, ChangeVolumeModalMixin]
   data: ->
     discussion: null
     open: null

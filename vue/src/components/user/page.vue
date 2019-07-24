@@ -15,17 +15,15 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
-import UrlFor         from '@/mixins/url_for'
 import UserModalMixin from '@/mixins/user_modal'
 
 import { applyLoadingFunction } from '@/shared/helpers/apply'
-import WatchRecords from '@/mixins/watch_records'
 
 import { isEmpty }     from 'lodash'
 import { approximate } from '@/shared/helpers/format_time'
 
 export default
-  mixins: [ UrlFor, UserModalMixin, WatchRecords ]
+  mixins: [UserModalMixin]
 
   data: ->
     user: {}

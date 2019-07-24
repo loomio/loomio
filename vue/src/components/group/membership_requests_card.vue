@@ -11,12 +11,9 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
-import UrlFor         from '@/mixins/url_for'
 import { slice, orderBy } from 'lodash'
-import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [UrlFor, WatchRecords]
   props:
     group: Object
   data: ->

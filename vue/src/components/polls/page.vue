@@ -7,7 +7,6 @@ import AbilityService from '@/shared/services/ability_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
-import UrlFor from '@/mixins/url_for'
 
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 import Loading from '@/components/common/loading.vue'
@@ -23,7 +22,6 @@ export default
   components:
     Loading: Loading
     PollCommonPreview: PollCommonPreview
-  mixins: [UrlFor]
   data: ->
     group: {}
     now: moment()

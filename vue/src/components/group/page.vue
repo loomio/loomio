@@ -7,12 +7,9 @@ import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import { subscribeTo }   from '@/shared/helpers/cable'
-import UrlFor        from '@/mixins/url_for.coffee'
 import {compact, head, includes, filter} from 'lodash'
 
 export default
-  mixins: [UrlFor]
-
   data: ->
     group: null
     activeTab: @urlFor(@group)

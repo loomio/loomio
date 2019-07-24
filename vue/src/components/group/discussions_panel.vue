@@ -8,11 +8,9 @@ import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 import { map, debounce, orderBy, intersection, compact } from 'lodash'
 import Session from '@/shared/services/session'
-import WatchRecords from '@/mixins/watch_records'
-import UrlFor       from '@/mixins/url_for'
 
 export default
-  mixins: [DiscussionModalMixin, WatchRecords, UrlFor]
+  mixins: [DiscussionModalMixin]
 
   created: -> @init()
 

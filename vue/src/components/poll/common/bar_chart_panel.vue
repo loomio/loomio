@@ -23,10 +23,8 @@
 
 <script lang="coffee">
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
-import UrlFor                                 from '@/mixins/url_for'
 
 export default
-  mixins: [UrlFor]
   props:
     poll: Object
   methods:

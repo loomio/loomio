@@ -4,11 +4,10 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Session        from '@/shared/services/session'
-import UrlFor         from '@/mixins/url_for'
 import {tail, map, last}         from 'lodash'
 
 export default
-  mixins: [ AuthModalMixin, UrlFor ]
+  mixins: [ AuthModalMixin ]
   data: ->
     title: AppConfig.theme.site_name
     isLoggedIn: Session.isSignedIn()

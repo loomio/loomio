@@ -9,8 +9,10 @@ import WatchRecords from '@/mixins/watch_records'
 
 import { registerKeyEvent } from '@/shared/helpers/keyboard'
 import {compact} from 'lodash'
+
 export default
   mixins: [WatchRecords]
+
   data: ->
     discussion: null
     activePolls: []
@@ -46,6 +48,7 @@ loading(:until="discussion")
   div(v-if="discussion")
     group-cover-image(:group="discussion.group()")
     v-container.thread-page.max-width-800
+      thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
       thread-card(:discussion='discussion')
       v-btn.thread-page__open-thread-nav(fab fixed bottom right @click="openThreadNav()")

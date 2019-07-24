@@ -6,11 +6,9 @@ import { map, sortBy, filter } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
-import WatchRecords from '@/mixins/watch_records'
-import UrlFor       from '@/mixins/url_for'
 
 export default
-  mixins: [AnnouncementModalMixin, WatchRecords, UrlFor]
+  mixins: [AnnouncementModalMixin]
   props:
     discussion: Object
     close: Function

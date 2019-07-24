@@ -1,11 +1,9 @@
 <script lang="coffee">
 import Records      from '@/shared/services/records'
 import ModalService from '@/shared/services/modal_service'
-import UrlFor       from '@/mixins/url_for'
 import { isEmpty }  from 'lodash'
 
 export default
-  mixins: [UrlFor]
   props:
     group: Object
   created: ->

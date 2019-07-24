@@ -1,9 +1,7 @@
 <script lang="coffee">
 import Session from '@/shared/services/session'
-import UrlFor  from '@/mixins/url_for'
 
 export default
-  mixins: [UrlFor]
   props:
     poll: Object
     displayGroupName: Boolean

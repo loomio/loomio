@@ -2,7 +2,6 @@
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import openModal from '@/shared/helpers/open_modal'
-import UrlFor         from '@/mixins/url_for'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
 
@@ -10,7 +9,6 @@ export default
   components:
     ThreadItem: -> import('@/components/thread/item.vue')
 
-  mixins: [UrlFor]
   props:
     event: Object
     eventWindow: Object

@@ -1,11 +1,9 @@
 <script lang="coffee">
 import AbilityService from '@/shared/services/ability_service'
 import PollService from '@/shared/services/poll_service'
-import UrlFor         from '@/mixins/url_for'
 import { map, compact, pick } from 'lodash'
 
 export default
-  mixins: [UrlFor]
   props:
     poll: Object
 
