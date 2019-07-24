@@ -106,7 +106,7 @@ v-container.profile-page
             validation-errors(:subject='user', field='selectedLocale')
             p(v-if='showHelpTranslate')
               router-link.md-caption(v-t="'profile_page.help_translate'", to='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation', target='_blank')
-          v-flex.profile-page__avatar.mx-3
+          v-flex.profile-page__avatar.mx-4
             user-avatar(:user='user', size='featured')
             v-btn.profile-page__change-picture(color="accent" @click='changePicture()' v-t="'profile_page.change_picture_link'")
       v-card-actions.profile-page__update-account

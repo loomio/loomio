@@ -55,7 +55,7 @@ export default
       translation(:model='discussion', field='title')
     i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
 
-  .mx-3
+  .mx-4
     .context-panel__details.my-2.body-2(align-center)
       user-avatar.mr-4(:user='discussion.author()', :size='40')
       span
