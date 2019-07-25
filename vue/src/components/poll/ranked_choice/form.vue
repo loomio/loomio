@@ -21,7 +21,6 @@ export default
       h3(v-t="'poll_ranked_choice_form.minimum_stance_choices'")
       p(v-t="'poll_ranked_choice_form.minimum_stance_choices_helptext'")
       validation-errors(:subject="poll", field="minimumStanceChoices")
-    span {{ poll.customFields.minimum_stance_choices}}
     v-text-field.lmo-number-input(type="number", :min="1", :max="poll.pollOptionNames.length" v-model="poll.customFields.minimum_stance_choices")
 
   poll-common-settings(:poll="poll")

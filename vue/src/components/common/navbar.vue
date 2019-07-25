@@ -69,7 +69,7 @@ v-app-bar(app clipped-right)
   v-toolbar-title
     span(v-if="breadcrumbs" v-for="crumb in breadcrumbs" :key="crumb.i")
       router-link(v-if="!crumb.last" :to="crumb.to") {{crumb.text}}
-      span(v-if="crumb.last") {{crumb.text}}
+      span(v-if="crumb.last" @click="$vuetify.goTo('head')") {{crumb.text}}
       span(v-if="!crumb.last")
         | &nbsp;
         | &gt;
