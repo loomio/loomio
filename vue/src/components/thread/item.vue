@@ -8,6 +8,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import { submitForm } from '@/shared/helpers/form'
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
 import { includes, camelCase } from 'lodash'
+import RangeSet from '@/shared/services/range_set'
 
 export default
   props:
@@ -39,6 +40,7 @@ export default
     camelCase: camelCase
 
   computed:
+    discussion: -> @event.discussion()
     iconSize: -> if @isNested then 32 else 40
 
     isNested: -> @event.isNested()
@@ -47,7 +49,7 @@ export default
       @$vuetify.breakpoint.smAndUp && @event.isNested() # && @eventWindow.useNesting
 
     isUnread: ->
-      (Session.user().id != @event.actorId) && false # @eventWindow.isUnread(@event)
+      (Session.user().id != @event.actorId) && !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
     headline: ->
       @$t eventHeadline(@event, true ), # useNesting
@@ -121,6 +123,8 @@ div
 
 .thread-item {
   padding: 4px 16px 4px 16px;
+  transition: border-color 5s;
+  border-left: 2px solid #fff;
 }
 
 .thread-item .v-card__actions {

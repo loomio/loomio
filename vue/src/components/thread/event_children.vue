@@ -66,10 +66,10 @@ export default
 .event-children
   //- div(v-if='debug()')
   //-   | event-childrenparentId: {{eventWindow.parentEvent.id}}cc: {{eventWindow.parentEvent.childCount}}min: {{eventWindow.min}}max: {{eventWindow.max}}first: {{eventWindow.firstLoaded()}}last: {{eventWindow.lastLoaded()}}anyPrevious: {{eventWindow.anyPrevious()}}anyNext: {{eventWindow.anyNext()}}
-  .activity-panel__load-more.lmo-no-print
-    v-btn(block tile outlined color="accent" v-if='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()')
-      v-icon mdi-autorenew
-      span(v-t="{ path: 'activity_card.n_previous', args: { count: eventWindow.numPrevious() } }")
+
+  v-btn.activity-panel__load-more.lmo-no-print(block tile outlined color="accent" v-if='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()')
+    v-icon mdi-autorenew
+    span(v-t="{ path: 'activity_card.n_previous', args: { count: eventWindow.numPrevious() } }")
   loading.activity-panel__loading.page-loading(v-show='loader.loadingPrevious')
   component(:is="componentForKind(event.kind)" v-for='event in events' :key='event.id' :event-window='eventWindow' :event='event')
   .activity-panel__load-more.lmo-no-print
@@ -80,6 +80,6 @@ export default
 </template>
 <style lang="sass">
 .activity-panel__load-more
-  margin: 4px 16px 4px 80px
+  margin: 0px 16px 0px 80px
 
 </style>
