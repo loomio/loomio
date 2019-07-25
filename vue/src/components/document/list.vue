@@ -47,14 +47,11 @@ section.document-list
   .document-list__documents
     .document-list__document(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
       v-layout.document-list__image(column align-center v-if='document.isAnImage() && !hidePreview')
-        router-link.lmo-pointer(:to='document.url', target='_blank')
+        a.lmo-pointer(:href='document.url' target='_blank')
           img(:src='document.webUrl', :alt='document.title')
       v-layout.document-list__entry(align-center)
         i(:class='`mdi lmo-margin-right mdi-${document.icon}`', :style='{color: document.color}')
-        router-link.document-list__title.truncate(:to='document.url', target='_blank') {{ document.title }}
-        v-spacer
-        button.md-button--tiny(v-if='showEdit', @click="$emit('documentRemoved', document)")
-          i.mdi.mdi-close
+        a.document-list__title(:href='document.url' target='_blank') {{ document.title }}
 </template>
 
 <style lang="css">
