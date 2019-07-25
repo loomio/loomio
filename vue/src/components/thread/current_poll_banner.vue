@@ -33,10 +33,8 @@ v-card.current-poll-banner.mb-4.py-2.px-4(:style="styles" v-if="event && $route.
     poll-common-chart-preview(:poll='poll' :size="36")
   .current-poll-banner__title.mr-4
     span {{poll.title}}
-    space
-    v-chip(small outlined)
-      poll-common-closing-at.caption(approximate :poll="poll")
   v-spacer
+  poll-common-closing-at.caption.mr-4(approximate :poll="poll")
   v-btn(color="primary" :to="urlFor(event)" v-t="'poll_common.vote'")
 </template>
 

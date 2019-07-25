@@ -1404,6 +1404,7 @@ en:
     responses: Responses
     close_poll_type: Close {{pollType}}
     totals: Totals
+    participate: Participate
     vote: Vote
     votes: Votes
     update_outcome: Update outcome

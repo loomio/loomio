@@ -21,7 +21,7 @@ export default
     template(v-slot:activator="{ on }" )
       v-combobox(v-on="on" v-model="poll.pollOptionNames" @change="persistOptions()" multiple chips small-chips deletable-chips :label="$t('poll_meeting_form.timeslots')")
         template(v-slot:selection="data")
-          v-chip(:close="canRemove(data.item)" :color="colorFor(data.item)" @click.stop="removeOptionName(data.item)")
+          v-chip(:close="canRemove(data.item)" :color="colorFor(data.item)" @click:close="removeOptionName(data.item)")
             poll-meeting-time(:name="data.item")
     poll-meeting-add-option-menu(@close="menu = false" :poll="poll")
   validation-errors(:subject="poll" field="pollOptions")
