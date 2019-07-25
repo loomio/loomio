@@ -57,6 +57,11 @@ class Comment < ApplicationRecord
     [:body]
   end
 
+  def should_pin
+    return false if body_format != "html"
+    Nokogiri::HTML(self.body).css("h1,h2,h3").length > 0
+  end
+
   def created_event_kind
     :new_comment
   end

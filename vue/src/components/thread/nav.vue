@@ -57,7 +57,15 @@ export default
       @$vuetify.goTo(selector)
 
     title: (model) ->
-      truncate (model.title || model.statement || model.body).replace(///<[^>]*>?///gm, ''), 50
+      if model.title or model.statement
+        truncate (model.title || model.statement || model.body).replace(///<[^>]*>?///gm, ''), 50
+      else
+        parser = new DOMParser()
+        doc = parser.parseFromString(model.statement || model.body, 'text/html')
+        if el = doc.querySelector('h1,h2,h3')
+          el.textContent
+        else
+          truncate (model.body).replace(///<[^>]*>?///gm, ''), 50
 
     refreshThread: debounce ->
       EventBus.$emit('updateThreadPosition', 0 - @requestedPosition)
