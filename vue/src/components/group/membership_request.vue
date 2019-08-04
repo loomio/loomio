@@ -1,7 +1,21 @@
 <script lang="coffee">
+import Records        from '@/shared/services/records'
+import Flash   from '@/shared/services/flash'
+
 export default
   props:
     request: Object
+  methods:
+    approve: (membershipRequest) ->
+      Records.membershipRequests.approve(membershipRequest).then =>
+        # @init()
+        Flash.success "membership_requests_page.messages.request_approved_success"
+
+    ignore: (membershipRequest) ->
+      Records.membershipRequests.ignore(membershipRequest).then =>
+        # @init()
+        Flash.success "membership_requests_page.messages.request_ignored_success"
+
 </script>
 
 <template lang="pug">

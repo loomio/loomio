@@ -67,6 +67,7 @@ module.exports = {
   MatrixChart: 'poll/meeting/matrix_chart',
   MembershipCard: 'group/membership_card',
   MembershipDropdown: 'group/membership_dropdown',
+  MembershipRequest: 'group/membership_request',
   MembershipRequestForm: 'group/membership_request_form',
   MembershipRequestsCard: 'group/membership_requests_card',
   MidDot: 'common/mid_dot',

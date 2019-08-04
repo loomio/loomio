@@ -27,7 +27,7 @@ export default
       {text: @$t('members_panel.order_by_created_desc'), value:'created_at desc' }
       {text: @$t('members_panel.order_by_admin_desc'), value:'admin desc' }
     ]
-
+    requests: []
 
   created: ->
     if AbilityService.canManageMembershipRequests(@group)
@@ -36,7 +36,7 @@ export default
       @watchRecords
         collections: ['membershipRequests']
         query: (store) =>
-          @requests = orderBy @group.membershipRequests(), ['respondedAt', 'desc'], ['createdAt', 'desc']
+          @requests = @group.membershipRequests()
 
     @loader = new RecordLoader
       collection: 'memberships'
@@ -155,6 +155,11 @@ export default
       else
         @group.membershipsCount - @group.pendingMembershipsCount
 
+    membershipsByPending: ->
+      orderBy @memberships, [(m) -> m.acceptedAt || ''], ['asc']
+
+    requestsByPending: ->
+      orderBy @requests, [(r) -> r.respondedAt || ''], ['asc']
   watch:
     '$route.query.subgroups': (val) ->
       if ['mine', 'all'].includes(val)
@@ -219,7 +224,7 @@ v-card.members-panel
             th Invited by
             th Sent
         tbody
-          tr(v-for="(membership, index) in memberships")
+          tr(v-for="(membership, index) in membershipsByPending")
             td
               user-avatar.mr-4(:user='membership.user()', size='forty')
             td.members-panel__name
@@ -233,7 +238,7 @@ v-card.members-panel
               timeAgo(:date="membership.createdAt")
     v-tab-item(key="requests")
       v-list(two-line)
-        membership-request(v-for="request in requests" :request="request" :key="request.id")
+        membership-request(v-for="request in requestsByPending" :request="request" :key="request.id")
 
   v-layout(align-center)
     //- span(v-if="!includeSubgroups" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
