@@ -5,19 +5,22 @@ import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
-import {includes, some, compact} from 'lodash'
+import {includes, some, compact, intersection, orderBy, slice} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
+import { exact, approximate } from '@/shared/helpers/format_time'
 
 export default
   mixins: [AnnouncementModalMixin]
 
   data: ->
-    group: Records.groups.fuzzyFind(@$route.params.key)
-    fragment: ''
     loader: null
-    filters: []
-    selectedFilters: []
-    order: 'created_at desc'
+    group: Records.groups.fuzzyFind(@$route.params.key)
+    search: @$route.query.q || ''
+    subgroups: @$route.query.subgroups || 'none'
+    per: 50
+    from: 0
+    tab: 'directory'
+    order: 'accepted_at desc'
     orders: [
       {text: @$t('members_panel.order_by_name'),  value:'users.name' }
       {text: @$t('members_panel.order_by_created'), value:'created_at' }
@@ -25,28 +28,24 @@ export default
       {text: @$t('members_panel.order_by_admin_desc'), value:'admin desc' }
     ]
 
-    per: 25
-    from: 0
-    headers: [
-      {text: '', align: 'center', sortable: false},
-      {text: @$t('members_panel.header_name'), sortable: false},
-      {text: @$t('members_panel.header_username'), sortable: false},
-      {text: @$t('members_panel.header_role'), sortable: false},
-      {text: @$t('members_panel.header_invited_by'), sortable: false},
-      {text: @$t('members_panel.header_invited'), sortable: false},
-      {text: @$t('members_panel.header_actions'), sortable: false},
-    ]
 
   created: ->
-    @filters = compact [
-      ({name: @$t('discussions_panel.include_subgroups'), value: 'includeSubgroups'} if @currentUserIsAdmin && @group.hasSubgroups())
-    ]
+    if AbilityService.canManageMembershipRequests(@group)
+      Records.membershipRequests.fetchPendingByGroup(@group.key, per: 100)
+      Records.membershipRequests.fetchPreviousByGroup(@group.key, per: 100)
+      @watchRecords
+        collections: ['membershipRequests']
+        query: (store) =>
+          @requests = orderBy @group.membershipRequests(), ['respondedAt', 'desc'], ['createdAt', 'desc']
+
     @loader = new RecordLoader
       collection: 'memberships'
       path: 'autocomplete'
       params:
-        q: @fragment
+        q: @search
         group_id: @group.id
+        subgroups: @subgroups
+        pending: true
         per: @per
         from: @from
         order: @order
@@ -55,22 +54,32 @@ export default
 
     @watchRecords
       collections: ['memberships']
-      query: @runQuery
+      query: @query
 
   methods:
-    runQuery: ->
-      chain = Records.memberships.collection.chain()
-      if @includeSubgroups
-        chain = chain.find(groupId: {$in: @group.organisationIds()})
-      else
-        chain = chain.find(groupId: @group.id)
+    exact: exact
+    approximate: approximate
+    refresh: ->
+      @fetch()
+      @query()
 
-      if @fragment
+    query: ->
+      chain = Records.memberships.collection.chain()
+      switch @subgroups
+        when 'mine'
+          chain = chain.find(groupId: {$in: intersection(@group.organisationIds(), Session.user().groupIds())})
+        when 'all'
+          chain = chain.find(groupId: {$in: @group.organisationIds()})
+        else
+          chain = chain.find(groupId: @group.id)
+
+      if @search
         chain = chain.where (membership) =>
           some [membership.user().name, membership.user().username], (name) =>
-            RegExp("^#{@fragment}", "i").test(name) or RegExp(" #{@fragment}", "i").test(name)
+            RegExp("^#{@search}", "i").test(name) or RegExp(" #{@search}", "i").test(name)
 
-      switch @order
+
+      records = switch @order
         when 'users.name'
           chain = chain.sort (ma,mb) ->
             a = ma.user().name.toLowerCase()
@@ -79,21 +88,25 @@ export default
               when a == b then 0
               when a > b then 1
               when a < b then -1
+          chain.data()
         when 'admin desc'
-          chain = chain.simplesort('admin', true)
+          chain.simplesort('admin', true).data()
         when 'created_at'
-          chain = chain.simplesort('createdAt')
+          chain.simplesort('createdAt').data()
         when 'created_at desc'
-          chain = chain.simplesort('createdAt', true)
+          chain.simplesort('createdAt', true).data()
+        when 'accepted_at desc'
+          console.log orderBy(chain.data(), ['acceptedAt', 'desc'])
+          orderBy(chain.data(), ['acceptedAt', 'desc'])
 
-      @memberships = chain.limit(@loader.numRequested).data()
+      @memberships = slice(records, @loader.numRquested)
 
     fetch: ->
       @loader.fetchRecords
-        q: @fragment
+        q: @search
         from: @from
         order: @order
-        include_subgroups: @includeSubgroups
+        subgroups: @subgroups
 
     show: ->
       return false if (@recordCount() == 0 && @pending)
@@ -106,17 +119,8 @@ export default
       else
         AbilityService.canViewMemberships(@group)
 
-    recordCount: ->
-
-    toggleSearch: ->
-      @fragment = ''
-      @searchOpen = !@searchOpen
-      @$nextTick => document.querySelector('.membership-card__search input').focus()
-
-
     canAddMembers: ->
       AbilityService.canAddMembers(@group.targetModel().group() || @group) && !@pending
-
 
     recordsDisplayed: ->
       _.min [@loader.numRequested, @recordCount()]
@@ -124,21 +128,19 @@ export default
     invite: ->
       @openAnnouncementModal(Records.announcements.buildFromModel(@group.targetModel()))
 
-
     cardTitle: ->
       if @pending
         'membership_card.invitations'
       else
         "membership_card.#{@group.targetModel().constructor.singular}_members"
 
-    componentType: (membership) ->
-      if membership.acceptedAt
-        'router-link'
-      else
-        'div'
+    # componentType: (membership) ->
+    #   if membership.acceptedAt
+    #     'router-link'
+    #   else
+    #     'div'
 
   computed:
-    includeSubgroups: -> @selectedFilters.includes('includeSubgroups')
     membershipRequestsPath: -> LmoUrlService.membershipRequest(@group)
     currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
 
@@ -154,80 +156,87 @@ export default
         @group.membershipsCount - @group.pendingMembershipsCount
 
   watch:
-    order: ->
-      @fetch()
-      @runQuery()
-    page: ->
-      @fetch()
-      @runQuery()
-    fragment: ->
-      @fetch()
-      @runQuery()
-    includeSubgroups: ->
-      @fetch()
-      @runQuery()
+    '$route.query.subgroups': (val) ->
+      if ['mine', 'all'].includes(val)
+        @subgroups = val
+      else
+        @subgroups = 'none'
+
+    '$route.query.q': (val) ->
+      @search = val
+      @refresh()
+
 </script>
 
 <template lang="pug">
-div.members-panel
-  v-toolbar(flat align-center)
-    v-toolbar-items
-      v-text-field.members-panel__filter(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
-      v-select(solo flat v-model="order" :items="orders" :label="$t('members_panel.order_label')")
-      v-select(v-if="filters.length" solo flat multiple chips v-model='selectedFilters' :items='filters' :label="$t('common.action.filter')" item-text="name")
-      v-spacer
-    v-spacer
-    v-btn.membership-requests-link(text color="primary" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
-    v-btn.membership-card__invite(text color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
-    v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute bottom)
+v-card.members-panel
+  v-tabs(fixed-tabs v-model="tab")
+    v-tab(key="direcory") Directory
+    v-tab(key="invitations") Invitations
+    v-tab(key="requests") Requests
+  v-tabs-items(v-model="tab")
+    v-tab-item(key="directory")
+      v-toolbar(flat align-center)
+        v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
+        v-btn.membership-requests-link(outlined color="accent" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
+        v-spacer
+        v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute bottom)
+      v-divider
 
-  v-data-table.members-panel__table(:items="memberships" :headers="headers" :server-items-length="totalRecords" hide-default-footer)
-    template(v-slot:no-results)
-      | No results
-    template(v-slot:item="{item}")
-      tr
-        td
-          v-icon(v-if="item.admin") mdi-star
-        td.members-panel__name(v-if="item.acceptedAt")
-          v-layout(align-center)
-            user-avatar.mr-4(:user='item.user()', size='forty')
-            router-link(:to="urlFor(item.user())") {{item.user().name}}
-        td.members-panel__name(v-else)
-          v-layout(align-center)
-            user-avatar.mr-4(:user='item.user()', size='forty')
-            span {{item.user().email || item.user().name}}
-        td {{item.user().username}}
-        td.members-panel__title {{item.title}}
-        td(v-if="includeSubgroups") {{item.group().name}}
-        td {{item.inviter() && item.inviter().name}}
-        td
-          timeAgo(:date="item.createdAt")
-        td
-          membership-dropdown(:membership="item")
+      v-list(two-line)
+        template(v-for="(membership, index) in memberships")
+          v-list-item
+            v-icon(v-if="membership.admin") mdi-star
+            v-list-item-avatar(size='64')
+              router-link(:to="urlFor(membership.user())")
+                user-avatar(:user='membership.user()' size='64')
+            v-list-item-content
+              v-list-item-title
+                router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
+                space
+                span.caption {{membership.title}}
+              v-list-item-subtitle {{ membership.user().shortBio }}
+            v-list-item-action
+              v-list-item-action-text {{ approximate(membership.createdAt) }}
+              membership-dropdown(:membership="membership")
+              //- v-menu(offset-y)
+              //-   template(v-slot:activator="{on}")
+              //-     v-btn(icon v-on="on")
+              //-       v-icon mdi-dots-vertical
+              //-   v-list
+              //-     v-list-item Contact
+          v-divider(v-if="index + 1 < memberships.length" :key="index")
+
+    v-tab-item(key="invitations")
+      v-simple-table
+        thead
+          tr
+            th Photo
+            th Name
+            th Email
+            th Accepted
+            td(v-if="subgroups != 'none'") Subgroup
+            th Invited by
+            th Sent
+        tbody
+          tr(v-for="(membership, index) in memberships")
+            td
+              user-avatar.mr-4(:user='membership.user()', size='forty')
+            td.members-panel__name
+              v-layout(align-center)
+                router-link(:to="urlFor(membership.user())") {{membership.user().name}}
+            td.members-panel__email {{membership.user().email}}
+            td.members-panel__accepted {{membership.acceptedAt ? approximate(membership.acceptedAt) : '' }}
+            td(v-if="subgroups != 'none'") {{membership.group().name}}
+            td {{membership.inviter() && membership.inviter().name}}
+            td
+              timeAgo(:date="membership.createdAt")
+    v-tab-item(key="requests")
+      v-list(two-line)
+        membership-request(v-for="request in requests" :request="request" :key="request.id")
 
   v-layout(align-center)
-    span(v-if="!includeSubgroups" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
+    //- span(v-if="!includeSubgroups" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
     v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
-
-    //- v-list(two-line avatar)
-    //-   v-list-item(v-if="!searchOpen")
-    //-     v-list-item-content
-    //-       span.grey--text(v-t='{ path: cardTitle(), args: { values: { pollType: pollType } } }')
-    //-     v-list-item-action
-    //-       v-btn.membership-card__search-button(icon @click="toggleSearch()")
-    //-         v-icon mdi-magnify
-    //-
-    //-   v-list-item(v-if="searchOpen")
-    //-     v-text-field.membership-card__filter(autofocus v-model="fragment" :placeholder="$t('memberships_page.fragment_placeholder')")
-    //-       template(slot="append")
-    //-         v-btn(icon @click="toggleSearch()")
-    //-           v-icon mdi-close
-    //-
-    //-   v-list-item.membership-card__membership.membership-card__invite(v-if='!searchOpen && canAddMembers()', @click="invite()")
-    //-     v-list-item-avatar
-    //-       v-avatar(:size='40')
-    //-         v-icon(color="primary") mdi-plus
-    //-     v-list-item-content
-    //-       v-list-item-title(v-t="'membership_card.invite_to_' + group.targetModel().constructor.singular")
 
 </template>

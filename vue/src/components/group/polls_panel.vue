@@ -1,8 +1,9 @@
 <script lang="coffee">
+import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import WatchRecords from '@/mixins/watch_records'
-import { debounce, some, every, compact } from 'lodash'
+import { debounce, some, every, compact, omit, values, keys } from 'lodash'
 
 export default
   mixins: [WatchRecords]
@@ -10,85 +11,125 @@ export default
   data: ->
     group: Records.groups.fuzzyFind(@$route.params.key)
     polls: []
-    fragment: ''
+    search: ''
     loader: null
-    per: 25
+    per: 50
     from: 0
-    filters: []
-    selectedFilters: []
+    filter: 'all'
+    subgroups: 'none'
+    pollTypes: AppConfig.pollTypes
 
   created: ->
-    @filters = compact [
-      ({name: @$t('discussions_panel.include_subgroups'), value: 'includeSubgroups'} if @group.hasSubgroups())
-    ]
-    @selectedFilters.push('includeSubgroups') if @group.hasSubgroups()
-
     @loader = new RecordLoader
       collection: 'polls'
       path: 'search'
-      params:
-        group_key: @group.key
-        per: @per
-
-    @fetch()
 
     @watchRecords
       collections: ['polls']
-      query: (store) =>
-        chain = store.polls.collection.chain()
+      query: => @query()
 
-        if @includeSubgroups
-          chain = chain.find(groupId: {$in: @group.organisationIds()})
-        else
-          chain = chain.find(groupId: @group.id)
-
-
-        if @fragment
-          chain = chain.where (poll) =>
-            some [poll.title, poll.details], (field) =>
-              every @fragment.split(' '), (frag) -> RegExp(frag, "i").test(field)
-
-        @polls = chain.simplesort('closing_at').limit(@loader.numRequested).data()
+    @refresh()
 
   methods:
+    refresh: ->
+      @fetch()
+      @query()
+
+    query: (store) ->
+      chain = Records.polls.collection.chain()
+      chain = chain.find(groupId: {$in: @groupIds})
+
+      switch
+        when @filter == 'all'
+          true
+          # do nothing
+        when @filter == 'active'
+          chain = chain.find({'closedAt': null})
+        when @filter == 'closed'
+          chain = chain.find({'closedAt': {$ne: null}})
+        when @pollTypes.includes(@filter)
+          chain = chain.find({'pollType': @filter})
+        else
+          true
+          # it's a group tag
+
+      if @search
+        chain = chain.where (poll) =>
+          some [poll.title, poll.details], (field) =>
+            every @search.split(' '), (frag) -> RegExp(frag, "i").test(field)
+
+      @polls = chain.simplesort('-createdAt').limit(@from + @per).data()
+
+    selectFilter: (pair) ->
+      name = keys(pair)[0]
+      value  = values(pair)[0]
+
+      params = omit(@$route.query, ['t', 'status', 'poll_type'])
+
+      if value == "all"
+        @$router.replace(query: params)
+      else
+        @$router.replace(query: Object.assign({}, params, {"#{name}": value}))
+
+      @filter = value
+
     fetch: debounce ->
       @loader.fetchRecords
+        group_key: @group.key
+        status: @$route.query.status
+        poll_type: @$route.query.poll_type
+        per: @per
         from: @from
-        query: @fragment
-        include_subgroups: @includeSubgroups
+        query: @search
+        subgroups: @subgroups
     ,
       300
 
   computed:
+    groupIds: ->
+      switch @subgroups
+        when 'none' then [@group.id]
+        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
+        when 'all' then @group.organisationIds()
+
     totalRecords: -> @group.pollsCount
+
     showLoadMore: ->
-      !@loader.loading && @loader.numRequested < @totalRecords && !@fragment.length
-    includeSubgroups: ->
-      @selectedFilters.includes('includeSubgroups')
+      !@loader.loading && @loader.numRequested < @totalRecords && !@search.length
 
   watch:
-    fragment: -> @fetch()
-    selectedFilters: -> @fetch()
+    filter: -> @refresh()
+    '$route.query.q': (val) ->
+      @search = val
+      @refresh()
+    subgroups: -> @refresh()
 
 </script>
 
 <template lang="pug">
-div
-  v-toolbar(flat)
-    v-toolbar-items
-      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
-      v-select(solo flat multiple chips v-model='selectedFilters' :items='filters' :label="$t('common.action.filter')" item-text="name")
-    v-spacer
+.polls-panel
+  v-chip-group.pl-2(v-model="filter" active-class="accent--text")
+    v-chip(label outlined value="all" @click="selectFilter({status: 'all'})")
+      span(v-t="'polls_panel.all'")
+    v-chip(label outlined value="active" @click="selectFilter({status: 'active'})")
+      span(v-t="'polls_panel.open'")
+    v-chip(label outlined value="closed" @click="selectFilter({status: 'closed'})")
+      span(v-t="'polls_panel.closed'")
+    v-divider.mr-2.ml-1(inset vertical)
+    span(v-for="pollType in pollTypes" :key="pollType")
+      v-chip(label outlined :value="pollType" @click="selectFilter({poll_type: pollType})")
+        span(v-t="'poll_types.'+pollType")
+    v-divider.mr-2.ml-1(inset vertical)
+
     v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute bottom)
 
-  .group-polls-panel
+  v-card
     v-list(two-line avatar v-if='polls.length')
       poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
 
-  v-alert(v-if='polls.length == 0 && !loader.loading' :value="true" color="grey" outlined icon="info" v-t="'group_polls_panel.no_polls'")
+    v-alert(v-if='polls.length == 0 && !loader.loading' :value="true" color="grey" outlined icon="info" v-t="'group_polls_panel.no_polls'")
 
-    //- | Showing x of {{totalRecords}} totalj
-  v-layout(align-center)
-    span(v-if="!includeSubgroups && !fragment" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
-    v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+    v-layout(align-center)
+      span(v-if="!search" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
+      v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 </template>

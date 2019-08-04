@@ -151,6 +151,7 @@ module.exports = {
   StanceCreated: 'thread/item/stance_created',
   SubmitOverlay: 'common/submit_overlay',
   SubgroupsCard: 'group/subgroups_card',
+  SubgroupsSelect: 'group/subgroups_select',
   TagsDisplay: 'tags/display',
   ThreadActionsPanel: 'thread/actions_panel',
   ThreadCard: 'thread/card',

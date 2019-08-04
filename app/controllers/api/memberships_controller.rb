@@ -53,19 +53,16 @@ class API::MembershipsController < API::RestfulController
 
   def autocomplete
     instantiate_collection do |collection|
-      if params[:include_subgroups] == "true"
-        collection = collection.where(group_id: model.group.id_and_subgroup_ids)
-      else
-        collection = collection.where(group_id: model.groups)
-      end
-
-      if params.has_key?(:pending)
-        collection = if params[:pending]
-          collection.pending
+      group_ids = case params[:subgroups]
+        when 'mine', 'all'
+          model.group.id_and_subgroup_ids
         else
-          collection.active
+          model.groups
         end
-      end
+
+      collection = collection.where(group_id: group_ids)
+
+      collection = collection.active unless params.has_key?(:pending)
 
       query = params[:q].to_s
       if query.length > 0
@@ -78,10 +75,6 @@ class API::MembershipsController < API::RestfulController
       collection
     end
     respond_with_collection(scope: index_scope)
-  end
-
-  def valid_orders
-    ['created_at', 'created_at desc', 'users.name', 'admin desc']
   end
 
   def resend
@@ -118,8 +111,9 @@ class API::MembershipsController < API::RestfulController
 
   private
   def valid_orders
-    ['users.name', 'created_at', 'created_at desc']
+    ['created_at', 'created_at desc', 'users.name', 'admin desc', 'accepted_at desc', 'accepted_at']
   end
+
 
   def index_scope
     { email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id), include_inviter: true }

@@ -3,6 +3,7 @@ import ThreadService  from '@/shared/services/thread_service'
 import { exact }      from '@/shared/helpers/format_time'
 import { listenForTranslations } from '@/shared/helpers/listen'
 import { map, compact, pick } from 'lodash'
+import EventBus from '@/shared/services/event_bus'
 
 export default
   props:
@@ -35,6 +36,9 @@ export default
 
   methods:
     exact: exact
+    titleVisible: (visible) ->
+      EventBus.$emit('content-title-visible', visible)
+
     viewed: (viewed) ->
       @discussion.markAsSeen() if viewed
 
@@ -45,11 +49,12 @@ export default
   v-layout(align-center mr-3 ml-2 pt-2 wrap)
     v-breadcrumbs(:items="groups" divider=">")
     tags-display(:discussion="discussion")
+    span
     v-spacer
     action-dock(:model='discussion' :actions='dockActions')
     action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
 
-  h1.headline.context-panel__heading.px-3#sequence-0
+  h1.headline.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
     span(v-if='!discussion.translation') {{discussion.title}}
     span(v-if='discussion.translation')
       translation(:model='discussion', field='title')

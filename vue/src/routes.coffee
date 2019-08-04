@@ -39,8 +39,6 @@ groupPageChildren = [
 ]
 
 threadPageChildren = [
-  {path: 'polls', component: ThreadPollsPanel}
-  {path: 'members', component: ThreadMembersPanel}
   {path: 'comment/:comment_id', component: ActivityPanel}
   {path: ':stub?/:sequence_id?', component: ActivityPanel}
   {path: '', component: ActivityPanel}

@@ -5,8 +5,9 @@ PollSearch = Struct.new(:user) do
 
   def perform(filters = {})
     results = searchable_records.with_includes
-    results = results.where(group_id: filter_group(filters[:group_key], filters[:include_subgroups]))                if filters[:group_key]
+    results = results.where(group_id: filter_group(filters[:group_key], filters[:subgroups])) if filters[:group_key]
     results = results.where(discussion_id: filter_discussion(filters[:discussion_key]).id) if filters[:discussion_key]
+    results = results.where(poll_type: filters[:poll_type]) if filters[:poll_type]
     results = results.send(filters[:status])      if STATUS_FILTERS.include?(filters[:status].to_s)
     results = results.send(filters[:user], user)  if USER_FILTERS.include?(filters[:user].to_s)
     results = results.search_for(filters[:query]) if filters[:query].present?
@@ -28,11 +29,11 @@ PollSearch = Struct.new(:user) do
     ].map(&:to_sql).map(&:presence).compact.join(" UNION ")
   end
 
-  def filter_group(key, include_subgroups)
-    if include_subgroups == "true"
-      Group.friendly.find(key).id_and_subgroup_ids
-    else
+  def filter_group(key, subgroups)
+    if subgroups == "none"
       Group.friendly.find(key).id
+    else
+      Group.friendly.find(key).id_and_subgroup_ids
     end
   end
 

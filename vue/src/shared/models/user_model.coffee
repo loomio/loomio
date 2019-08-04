@@ -61,7 +61,7 @@ export default class UserModel extends BaseModel
   hasMultipleGroups: ->
     @groups().length > 1
 
-  allThreads:->
+  allThreads: ->
     _.flatten _.map @groups(), (group) ->
       group.discussions()
 
@@ -70,7 +70,7 @@ export default class UserModel extends BaseModel
       group.isSubgroup() and !@isMemberOf(group.parent())
 
   orphanParents: ->
-    _.uniq _.map @orphanSubgroups(), (group) =>
+    _.uniq _.map @orphanSubgroups(), (group) ->
       group.parent()
 
   isAuthorOf: (object) ->

@@ -151,7 +151,7 @@ en:
       show_more: "Show more"
       view_all: "View All"
       new_thread: "New thread"
-      add_subgroup: 'Add subgroup'
+      add_subgroup: 'New subgroup'
       loading: 'Loading'
       translate: 'Translate'
       translated: 'Translation by Bing Translator'
@@ -355,6 +355,11 @@ en:
       user_list: 'User actions'
 
   navbar:
+    search_threads: 'Search threads in {{name}}'
+    search_polls: 'Search polls in {{name}}'
+    search_members: 'Search members in {{name}}'
+    search_subgroups: 'Search members in {{name}}'
+    search_files: 'Search files in {{name}}'
     recent_title: 'Go to dashboard'
     unread_title: 'View unread activity'
     start_thread: 'New thread'
@@ -394,8 +399,8 @@ en:
     set_title: "Set title"
     resend: "Resend invitation"
     invitation_resent: "Invitation resent"
-    make_coordinator: 'Make coordinator'
-    demote_coordinator: 'Demote coordinator'
+    make_coordinator: 'Make admin'
+    demote_coordinator: 'Demote admin'
     remove_from:
       discussion: "Remove from thread"
       group: "Remove from group"
@@ -433,7 +438,7 @@ en:
     motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> accepted your invitation to join <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> made you a coordinator of <strong>{{title}}</strong>"
+    new_coordinator: "<strong>{{name}}</strong> made you an admin of <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> started a {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> edited a {{poll_type}}: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> shared a {{poll_type}}: <strong>{{title}}</strong>"
@@ -676,7 +681,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
-      become_coordinator: Become Coordinator
+      become_coordinator: Become Admin
       export_data: Export Group Data
       export_data_as_json: Export Group Data as JSON
       export_data_as_csv: Export Group Data as CSV
@@ -706,11 +711,9 @@ en:
       public: 'Privacy: This group is visible on the web'
       aria_label: 'Group privacy: {{privacy}}'
 
-  polls_panel:
-    new_poll: New poll
   description_card:
     title: 'Group description'
-    placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
+    placeholder: 'Group admins can use this area to describe the group’s purpose, so everyone knows why they are here.'
     messages:
       description_updated: 'Description updated'
 
@@ -719,8 +722,6 @@ en:
     title: 'Leave group'
     question: 'Are you sure you want to leave this group?'
     submit: 'Yes, leave this group'
-    cannot_leave_group: 'You cannot leave this group because you are the last coordinator. You will need to choose another coordinator or deactivate the group.'
-    add_coordinator: 'Add a coordinator'
 
   archive_group_form:
     aria_label: 'Deactivate group'
@@ -729,7 +730,7 @@ en:
     submit: 'Yes, Deactivate this group'
 
   group_form:
-    permissions_explaination: Disabling a permission means only coordinators can perform the action.
+    permissions_explaination: 'There are two levels of membership: admin and member. Admins have all permissions. Select member permissions:'
     aria_label: 'Group form'
     new_organisation:
     start_group_heading: 'Start a group'
@@ -916,15 +917,15 @@ en:
   memberships_page:
     members: 'Members'
     name_label: 'Name'
-    coordinator_label: 'Coordinator'
+    coordinator_label: 'Admin'
     remove_member_label: 'Remove'
     fragment_placeholder: 'Filter users by name or username...'
     messages:
       remove_member_success: 'Removed {{name}}'
-      make_admin_success: '{{name}} is now a coordinator'
-      remove_admin_success: '{{name}} is no longer a coordinator'
+      make_admin_success: '{{name}} is now an admin'
+      remove_admin_success: '{{name}} is no longer an admin'
     remove_admin_from_self:
-      question: 'Are you sure you no longer want to be a coordinator?'
+      question: 'Are you sure you no longer want to be an admin?'
 
   membership_remove_modal:
     invitation:
@@ -941,8 +942,8 @@ en:
       submit: Remove member
 
   memberships_panel:
-    add_coordinator: Make coordinator
-    remove_coordinator: Demote coordinator
+    add_coordinator: Make Admin
+    remove_coordinator: Demote admin
 
   membership_form:
     modal_title:
@@ -1330,7 +1331,7 @@ en:
     search_placeholder: Search for public groups
     single_search_result: "1 public group matching <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} public groups matching <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>Can't find the group you're looking for?</strong> If a group's privacy is set to 'secret', it won't appear here. If you know who coordinates the group, you could ask them for an invite."
+    no_results_found: "<strong>Can't find the group you're looking for?</strong> If a group's privacy is set to 'secret', it won't appear here."
 
   global:
     messages:
@@ -1447,9 +1448,12 @@ en:
     count: "See all: ({{count}}) decisions"
 
   discussions_panel:
+    open: Open
     unread: Unread
     closed: Closed
-    include_subgroups: Subgroups
+    include_subgroups_mine: '{{name}} and my subgroups'
+    include_subgroups_all: '{{name}} and all subgroups'
+    no_results_found: No results for "{{search}}"
 
   members_panel:
     sort: 'Sort'
@@ -1457,7 +1461,7 @@ en:
     order_by_name: 'Name'
     order_by_created: 'Oldest'
     order_by_created_desc: 'Newest'
-    order_by_admin_desc: 'Coordinators'
+    order_by_admin_desc: 'Admins'
     loaded_of_total: '{{loaded}} of {{total}}'
     view_requests: View requests
     header_name: 'Name'
@@ -1467,8 +1471,12 @@ en:
     header_invited: 'Invited'
     header_actions: 'Actions'
 
-  group_polls_panel:
-    no_polls: No polls found
+  polls_panel:
+    new_poll: New poll
+    all: 'All'
+    open: 'Open'
+    closed: 'Closed'
+    no_polls: 'No polls found'
 
   group_files_panel:
     no_files: No files found
