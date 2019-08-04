@@ -24,17 +24,27 @@ div
     v-list-item-avatar
       user-avatar(:user='request.actor()' size='40')
     v-list-item-content
-      v-list-item-title.membership-request__name {{request.actor().name || request.actor().email}}
+      v-list-item-title.membership-request__name
+        span {{request.actor().name || request.actor().email || request.name || request.email }}
+        span.caption.lmo-grey-text(v-if="!request.respondedAt")
+          space
+          mid-dot
+          time-ago(:date='request.createdAt')
+        span.caption.lmo-grey-text(v-if="request.respondedAt")
+          space
+          span(v-t="{ path: 'membership_requests_page.previous_request_response', args: { response: request.formattedResponse(), responder: request.responder().name } }")
+          mid-dot
+          time-ago(:date='request.respondedAt')
       v-list-item-subtitle.membership-request__introduction {{request.introduction}}
 
-    //- , v-t="'membership_requests_page.ignore'"
-    //- , v-t="'membership_requests_page.approve'"
     v-list-item-action(v-if="!request.respondedAt")
-      v-list-item-action-text
-        time-ago(:date='request.createdAt')
       v-btn.membership-requests-page__approve(text icon @click='approve(request)')
         v-icon mdi-check
     v-list-item-action(v-if="!request.respondedAt")
       v-btn.membership-requests-page__ignore(text icon @click='ignore(request)')
         v-icon mdi-close
 </template>
+<style lang="sass">
+.lmo-grey-text
+  color: rgba(0, 0, 0, 0.54)
+</style>
