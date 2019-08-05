@@ -43,6 +43,7 @@ groupPageChildren = [
   {path: 'files', component: GroupFilesPanel}
   {path: 'membership_requests', redirect: 'members/requests' }
   {path: ':stub?', component: GroupDiscussionsPanel}
+  {path: 'slack/install', component: InstallSlackPage},
 ]
 
 threadPageChildren = [
@@ -68,7 +69,6 @@ export default new Router
     {path: '/p/new/:poll_type', component: StartPollPage},
     {path: '/p/:key/:stub?', component: PollPage},
     {path: '/u/:key/:stub?', component: UserPage },
-    {path: '/slack/install', component: InstallSlackPage},
     {path: '/d/new', component: StartDiscussionPage },
     {path: '/d/:key', name: 'discussion', component: ThreadPage, children: threadPageChildren },
     {path: '/g/new', component: StartGroupPage},
