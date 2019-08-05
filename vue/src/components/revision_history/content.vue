@@ -28,6 +28,7 @@ export default
         when "outcome" then "statement"
 
     bodyChanges: ->
+      return unless @version.objectChanges[@bodyField]
       if @model[@bodyField+"Format"] == "md"
         @version.objectChanges[@bodyField].map (val) -> marked(val || '')
       else
