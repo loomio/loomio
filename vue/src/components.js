@@ -70,6 +70,7 @@ module.exports = {
   MembershipRequest: 'group/membership_request',
   MembershipRequestForm: 'group/membership_request_form',
   MembershipRequestsCard: 'group/membership_requests_card',
+  MembersTabs: 'group/members_tabs',
   MidDot: 'common/mid_dot',
   ModalLauncher: 'modal/launcher',
   ModalTemplate: 'modal/template',

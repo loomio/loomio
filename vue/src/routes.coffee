@@ -11,9 +11,12 @@ import MembershipRequestsPage from './components/membership_requests/page.vue'
 import GroupPage from './components/group/page.vue'
 import GroupDiscussionsPanel from './components/group/discussions_panel'
 import GroupPollsPanel from './components/group/polls_panel'
-import GroupMembersPanel from './components/group/members_panel'
+import MembersPanel from './components/group/members_panel'
 import GroupSubgroupsPanel from './components/group/subgroups_panel'
 import GroupFilesPanel from './components/group/files_panel'
+import MembersTabs from './components/group/members_tabs'
+import InvitationsPanel from './components/group/invitations_panel'
+import MembershipRequestsPanel from './components/group/requests_panel'
 
 import StartGroupPage from './components/start_group/page.vue'
 import ContactPage from './components/contact/page.vue'
@@ -32,7 +35,11 @@ Vue.use(Router)
 
 groupPageChildren = [
   {path: 'polls', component: GroupPollsPanel}
-  {path: 'members', component: GroupMembersPanel}
+  {path: 'members', component: MembersTabs, children: [
+    {path: '', component: MembersPanel}
+    {path: 'invitations', component: InvitationsPanel}
+    {path: 'requests', component: MembershipRequestsPanel}
+    ]}
   {path: 'subgroups', component: GroupSubgroupsPanel}
   {path: 'files', component: GroupFilesPanel}
   {path: ':stub?', component: GroupDiscussionsPanel}
