@@ -64,10 +64,14 @@ it:
     score: Punteggio votazione
   new_poll_types:
     proposal: Proposta
+    score: Punteggio
+    ranked_choice: Posizione
     meeting: Sondaggio per incontro
   timezones:
     local: Ora locale ({{value}})
   common:
+    option: Opzione
+    add: Aggiungi
     you: Tu
     expand: Espandi
     all_day: Tutto il giorno
@@ -160,11 +164,15 @@ it:
       export: Esporta
       fork: Biforca
       apply: Applica
+      add_people: Aggiungi Persone
     formatting_help:
       label: 'Formattazione'
       title: 'Impara come usare il Markdown per formattare il tuo testo'
   emoji_picker:
     search: Ricerca
+    hands: Mani
+    people: Facce e persone
+    nature: Natura
   ordinal:
     _1: 1*
     _2: 2°
@@ -243,6 +251,8 @@ it:
     close_thread: Chiudi discussione
     body_header: |
         <p>Chiudi i threads vecchi o irrilevanti per rimuoverli dalla vista e indicare che la discussione è conclusa.</p>
+    body_footer: |
+        <p>Chiuque può ancora commentare o iniziare un sondaggio in una discussione chiusa, ma non appariranno nella lista delle discussioni del gruppo o nel cruscotto</p>
     image_alt: Chiudi tutte le discussioni
   mute_explanation_modal:
     aria_label: Silenzia discussione
@@ -1209,6 +1219,7 @@ it:
     add_option_placeholder: Inserisci una nuova scelta
     minimum_stance_choices: Opzioni di classifica
     minimum_stance_choices_helptext: Numero di opzioni che il votante può scegliere
+    rank: Posizione
   poll_meeting_time_field:
     closing_hour: Ora di chiusura
   poll_proposal_vote_form:

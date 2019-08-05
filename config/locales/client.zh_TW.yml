@@ -1284,6 +1284,7 @@ zh_TW:
     responses: 回應
     close_poll_type: 關閉 {{pollType}}
     totals: 全部
+    participate: 參與
     vote: 投票
     votes: 投票
     update_outcome: 更新結果
