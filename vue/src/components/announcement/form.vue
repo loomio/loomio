@@ -146,10 +146,10 @@ v-card
                 v-icon mdi-account-multiple
               v-list-item-content
                 span(v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
-          v-autocomplete.announcement-form__input(multiple chips return-object autofocus v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
+          v-autocomplete.announcement-form__input(multiple chips return-object autofocus hide-no-data hide-selected v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
             template(v-slot:selection='data')
               v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
-                user-avatar(:user="data.item" size="small" :no-link="true")
+                user-avatar.mr-1(:user="data.item" size="small" :no-link="true")
                 span {{ data.item.name }}
             template(v-slot:item='data')
               v-list-item-avatar
