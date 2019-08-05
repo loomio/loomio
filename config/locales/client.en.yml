@@ -1473,6 +1473,8 @@ en:
     directory: 'Directory'
     invitations: 'Invitations'
     requests: 'Requests'
+    admin: 'Admin'
+    sharable_link: 'Shareable Link'
 
   polls_panel:
     new_poll: New poll

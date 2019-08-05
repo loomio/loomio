@@ -42,6 +42,7 @@ groupPageChildren = [
     ]}
   {path: 'subgroups', component: GroupSubgroupsPanel}
   {path: 'files', component: GroupFilesPanel}
+  {path: 'membership_requests', redirect: 'members/requests' }
   {path: ':stub?', component: GroupDiscussionsPanel}
 ]
 
@@ -72,7 +73,6 @@ export default new Router
     {path: '/d/new', component: StartDiscussionPage },
     {path: '/d/:key', name: 'discussion', component: ThreadPage, children: threadPageChildren },
     {path: '/g/new', component: StartGroupPage},
-    {path: '/g/:key/membership_requests', component: MembershipRequestsPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren},
     {path: '/:key', component: GroupPage, children: groupPageChildren},
     {path: '/', redirect: '/dashboard' }

@@ -2,7 +2,7 @@
 import Records        from '@/shared/services/records'
 import RecordLoader   from '@/shared/services/record_loader'
 import { exact, approximate } from '@/shared/helpers/format_time'
-import {orderBy, slice} from 'lodash'
+import {orderBy, slice, some} from 'lodash'
 export default
   data: ->
     loader: null
@@ -83,6 +83,9 @@ export default
         order: @order
         subgroups: @subgroups
 
+  computed:
+    showLoadMore: -> !@loader.exhausted
+
   watch:
     '$route.query.subgroups': (val) ->
       if ['mine', 'all'].includes(val)
@@ -106,6 +109,7 @@ export default
         td(v-if="subgroups != 'none'") Subgroup
         th Invited by
         th Sent
+        th Actions
     tbody
       tr(v-for="(membership, index) in memberships")
         td
@@ -119,4 +123,8 @@ export default
         td {{membership.inviter() && membership.inviter().name}}
         td
           timeAgo(:date="membership.createdAt")
+        td
+          membership-dropdown(:membership="membership")
+  v-layout(justify-center)
+    v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 </template>

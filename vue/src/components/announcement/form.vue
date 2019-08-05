@@ -161,17 +161,6 @@ v-card
           v-spacer
           p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
 
-        .announcement-form__share-link(v-if="!announcement.model.isA('discussion') && recipients.length == 0")
-          p.announcement-form__help(v-if="announcement.model.isA('group')", v-t="'invitation_form.shareable_link'")
-          v-layout
-            v-flex(v-if='canUpdateAnyoneCanParticipate || announcement.model.anyoneCanParticipate')
-              v-checkbox.announcement-form__checkbox(v-model='announcement.model.anyoneCanParticipate', @change='announcement.model.save()', v-if='canUpdateAnyoneCanParticipate' :label="$t('announcement.form.anyone_can_participate')")
-            v-flex(v-if="announcement.model.anyoneCanParticipate || announcement.model.isA('group')")
-              v-layout(align-center)
-                v-text-field.announcement-form__shareable-link(:value='shareableLink' :disabled='true')
-                v-btn.announcement-form__copy(ref="copyContainer" text color="accent" v-t="'common.copy'" v-clipboard:copy='shareableLink' v-clipboard:success='copied' v-clipboard:error='"fuck"')
-                v-btn.announcement-form__reset(text color="warning" v-t="'common.reset'" @click="resetShareableLink()")
-              p.caption(v-t="'invitation_form.shareable_link_explanation'")
   v-card-actions
     div(v-if="recipients.length")
       p(v-show="tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")

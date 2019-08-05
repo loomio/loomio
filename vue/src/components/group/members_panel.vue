@@ -4,14 +4,11 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import {includes, some, compact, intersection, orderBy, slice} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import { exact, approximate } from '@/shared/helpers/format_time'
 
 export default
-  mixins: [AnnouncementModalMixin]
-
   data: ->
     loader: null
     group: Records.groups.fuzzyFind(@$route.params.key)
@@ -162,32 +159,26 @@ export default
 
 <template lang="pug">
 .members-panel
-  v-toolbar(flat align-center)
-    v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
-    v-spacer
-    v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute bottom)
-  v-divider
-
+  v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute top)
   v-list(two-line)
     template(v-for="(membership, index) in memberships")
       v-list-item
-        v-icon(v-if="membership.admin") mdi-star
-        v-list-item-avatar(size='64')
+        v-list-item-avatar(size='48')
           router-link(:to="urlFor(membership.user())")
-            user-avatar(:user='membership.user()' size='64')
+            user-avatar(:user='membership.user()' size='48')
         v-list-item-content
           v-list-item-title
             router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
             space
             span.caption {{membership.title}}
+            space
+            v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
           v-list-item-subtitle {{ membership.user().shortBio }}
         v-list-item-action
           v-list-item-action-text {{ approximate(membership.createdAt) }}
           membership-dropdown(:membership="membership")
       v-divider(v-if="index + 1 < memberships.length" :key="index")
-  //-
-  //- v-layout(align-center)
-  //-   //- span(v-if="!includeSubgroups" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
-  //-   v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+  v-layout(justify-center)
+    v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 
 </template>

@@ -24,8 +24,7 @@ export default
   computed:
     requestsByPending: ->
       orderBy @requests, [(r) -> r.respondedAt || ''], ['asc']
-  # data: ->
-  # methods:
+
 </script>
 <template lang="pug">
 .requests-panel

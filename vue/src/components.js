@@ -148,6 +148,7 @@ module.exports = {
   ProgressChart: 'poll/common/progress_chart',
   RevisionHistoryContent: 'revision_history/content',
   HtmlDiff: 'revision_history/html_diff',
+  ShareableLinkModal: 'group/shareable_link_modal',
   Sidebar: 'common/sidebar',
   Space: 'common/space',
   StanceCreated: 'thread/item/stance_created',
