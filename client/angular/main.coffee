@@ -9,6 +9,11 @@ AppConfig = require 'shared/services/app_config'
 hardReload('/417.html') if unsupportedBrowser()
 exportGlobals()
 
+if(window.navigator && navigator.serviceWorker)
+  navigator.serviceWorker.getRegistrations().then (registrations) ->
+    _.each registrations, (registration) -> registration.unregister()
+
+
 bootDat (appConfig) ->
   _.merge AppConfig, _.merge appConfig,
     timeZone: moment.tz.guess()
