@@ -33,15 +33,13 @@ v-card.install-microsoft-modal
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text.install-microsoft-form
-    p.lmo-hint-text(v-t="'install_microsoft.form.webhook_helptext'")
+    p.lmo-hint-text(v-html="$t('install_microsoft.form.webhook_helptext')")
     v-text-field#microsoft-webhook-url.discussion-form__title-input(v-model='groupIdentity.webhookUrl' :placeholder="$t('install_microsoft.form.webhook_placeholder')" maxlength='255')
       div(slot="label")
         span(v-html="$t('install_microsoft.form.webhook_label')")
     validation-errors(:subject='groupIdentity' field='webhookUrl')
     p.lmo-hint-text(v-t="'install_microsoft.form.event_kind_helptext'")
-    v-checkbox.install-microsoft-form__event-kinds(v-for='kind in groupIdentity.constructor.validEventKinds' v-model='groupIdentity.eventKinds[kind]' :key="kind")
-      div(slot="label")
-        span(v-t="'install_microsoft.event_kinds.' + kind")
+    v-checkbox.install-microsoft-form__event-kinds(hide-details v-for='kind in groupIdentity.constructor.validEventKinds' v-model='groupIdentity.eventKinds[kind]' :key="kind" :label="$t('install_microsoft.event_kinds.' + kind)")
   v-card-actions
     v-spacer
     v-btn(color='primary' @click='submit()', v-t="'common.action.save'")
