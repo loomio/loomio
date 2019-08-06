@@ -69,6 +69,9 @@ export default
     linkDialogIsOpen: false
     insertMention: () => {}
     editor: new Editor
+      editorProps:
+        scrollThreshold: 100
+        scrollMargin: 100
       extensions: [
         new Mention(
           # is called when a suggestion starts
