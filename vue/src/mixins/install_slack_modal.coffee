@@ -10,10 +10,5 @@ export default
                         preventClose: preventClose
                       })
 
-    openInstallSlackInstallForm: () ->
-      console.log 'openInstallSlackInstallForm'
-      EventBus.$emit('openModal',
-                      component: 'InstallSlackInstallForm')
-
     closeModal: ->
       EventBus.$emit('closeModal')

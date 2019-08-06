@@ -18,7 +18,7 @@ export default
   created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
-    setTimeout => @openInstallSlackInstallForm() if @$route.query.install_slack
+    setTimeout => @openInstallSlackModal() if @$route.query.install_slack
 
   watch:
     '$route.params.key': 'init'

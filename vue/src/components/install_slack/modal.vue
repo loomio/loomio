@@ -22,15 +22,17 @@ export default
 <template lang="pug">
 v-card.install-slack-modal.lmo-modal__narrow
   v-card-title
-    h1.lmo-h1(v-t="'install_slack.modal_title'")
+    h1.headline(v-t="'install_slack.modal_title'")
+    v-spacer
     dismiss-modal-button(v-if='!preventClose' :close="close")
-  v-card-text
-    install-slack-form(v-if='hasIdentity()', :group='group')
-    .install-slack-form__redirect(@click='redirect()', v-if='!hasIdentity')
-      auth-avatar
-      p.lmo-hint-text(v-t="'install_slack.modal_helptext'")
-  v-card-actions
-    v-btn(@click='redirect()', v-t="'install_slack.login_to_slack'")
+  install-slack-install-form(v-if='hasIdentity()' :group='group')
+  v-card-text(v-if="!hasIdentity()")
+    p.lmo-hint-text(v-t="'install_slack.modal_helptext'")
+  v-card-actions(v-if="!hasIdentity()" )
+    v-spacer
+    v-btn(color='primary' @click='redirect()' v-t="'install_slack.login_to_slack'")
 </template>
 
-<!-- group options dropdown -> (remove/)install slack button -> modal -> form -> install_form (for choosing between multiple groups) -> invite form (individual group) -->
+
+<!-- remove integration button -->
+<!--

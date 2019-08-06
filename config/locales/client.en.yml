@@ -692,7 +692,6 @@ en:
       email_settings: 'Email Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
-      install_slack: 'Install Slack Integration'
     volume:
       loud: Email whenever there is activity.
       loud_aria_description: Your notification volume for this group is set to Loud. You will be emailed whenever there is activity.
@@ -2024,8 +2023,7 @@ en:
 
     invite:
       heading: 'Step 2: Setup a Slack channel'
-      helptext: |
-        Success! Now, select a channel you'd like us to post updates into.
+      helptext: Select a channel you'd like us to post updates into.
       select_a_channel: Select a channel
       publish_group: Post a welcome message
       publish_group_helptext_on: We'll post the a message into this channel to instruct people how to use LoomioBot.

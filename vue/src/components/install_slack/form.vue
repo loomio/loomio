@@ -17,18 +17,3 @@ v-card.install-slack-form
     install-slack-invite-form(:group='group', ng-switch-when='invite')
     install-slack-decide-form(:group='group', ng-switch-when='decide')
 </template>
-
-
-<!--
-angular.module('loomioApp').directive 'installSlackForm', ->
-  scope: {group: '='}
-  templateUrl: 'generated/components/install_slack/form/install_slack_form.html'
-  controller: ['$scope', ($scope) ->
-
-    applySequence $scope,
-      steps:           ['install', 'invite', 'decide']
-      initialStep:     if $scope.group then 'invite' else 'install'
-      installComplete: (_, group) -> $scope.group = group
-
-    listenForLoading $scope
-  ] -->

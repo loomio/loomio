@@ -20,7 +20,6 @@ import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsModal from '@/components/tags/modal'
 import InstallSlackModal from '@/components/install_slack/modal'
-import InstallSlackInstallForm from '@/components/install_slack/install_form'
 
 export default
   components:
@@ -44,7 +43,6 @@ export default
     'RevisionHistoryModal': RevisionHistoryModal
     'TagsModal': TagsModal
     'InstallSlackModal': InstallSlackModal
-    'InstallSlackInstallForm': InstallSlackInstallForm
   data: ->
     isOpen: false
     componentName: ""
