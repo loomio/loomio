@@ -41,13 +41,11 @@ export default
 </script>
 
 <template lang="pug">
-.group-subgroups-panel
+v-card.group-subgroups-panel
   v-toolbar(flat)
-    v-toolbar-items
-      v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
-    v-spacer
-    v-btn.subgroups-card__start(text color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
+    v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
     v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
+  v-divider
 
   v-list(avatar two-line)
     v-list-item.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id' :to='urlFor(group)')

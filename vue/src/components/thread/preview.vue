@@ -45,7 +45,7 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
   v-list-item-content
     v-list-item-title(style="align-items: center")
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
-      v-chip.ml-1(small outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
+      v-chip.ml-1(small label outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
       v-chip.thread-preview__tag.ml-1(small outlined v-for="tag in thread.tagNames" :key="tag") {{tag}}
       span(v-if='thread.pinned' :title="$t('context_panel.thread_status.pinned')")
         v-icon mdi-pin

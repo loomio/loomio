@@ -70,7 +70,7 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer.sidenav-left(app v-model="open")
+v-navigation-drawer.sidenav-left(app dark v-model="open")
   template(v-slot:prepend)
     v-toolbar
       img(style="height: 50%" :src="logoUrl" :alt="siteName")

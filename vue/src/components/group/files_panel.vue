@@ -88,12 +88,11 @@ export default
 </script>
 
 <template lang="pug">
-.group-files-panel
-  v-toolbar(flat)
-    v-toolbar-items
-      v-text-field(solo flat v-model="fragment" append-icon="mdi-magnify" :label="$t('common.action.search')" clearable)
+v-card.group-files-panel
+  v-toolbar(flat transparent)
     v-spacer
     v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
+  v-divider
 
   v-data-table(:items="items" hide-default-footer)
     template(v-slot:no-data)

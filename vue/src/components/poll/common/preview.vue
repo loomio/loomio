@@ -19,6 +19,8 @@ v-list-item.poll-common-preview(:to='urlFor(poll)')
     v-list-item-subtitle
       span(v-if='showGroupName()') {{ poll.group().fullName }}
       span(v-if='!showGroupName()', v-t="{ path: 'poll_common_collapsed.by_who', args: { name: poll.authorName() } }")
+      space
       span ·
-      poll-common-closing-at(:poll='poll')
+      space
+      poll-common-closing-at(:poll='poll' approximate)
 </template>
