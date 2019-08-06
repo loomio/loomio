@@ -8,8 +8,9 @@ import GroupModalMixin from '@/mixins/group_modal'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import Flash from '@/shared/services/flash'
 import WatchRecords    from '@/mixins/watch_records'
+import InstallSlackModalMixin from '@/mixins/install_slack_modal'
 export default
-  mixins: [ WatchRecords, ConfirmModalMixin, GroupModalMixin, ChangeVolumeModalMixin]
+  mixins: [ WatchRecords, ConfirmModalMixin, GroupModalMixin, ChangeVolumeModalMixin, InstallSlackModalMixin]
   props:
     group: Object
 
@@ -117,6 +118,9 @@ v-menu.group-page-actions.lmo-no-print(v-if="canSeeGroupActions" offset-y)
 
     v-list-item.group-page-actions__export-json(v-if='canExportData', @click='openGroupExportModal()')
       v-list-item-title(v-t="'group_page.options.export_data'")
+
+    v-list-item.group-page-actions__install-slack(v-if='true', @click='openInstallSlackModal()')
+      v-list-item-title(v-t="'group_page.options.install_slack'")
 
     v-list-item.group-page-actions__leave-group(v-if='canLeaveGroup', @click='openLeaveGroupModal()')
       v-list-item-title(v-t="'group_page.options.leave_group'")

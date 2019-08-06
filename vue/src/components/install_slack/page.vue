@@ -46,7 +46,7 @@ export default
   h2.lmo-card-heading(v-if='groupIdentity()', v-t="'install_slack.card.installed_title'")
   h2.lmo-card-heading(v-if='!groupIdentity()', v-t="'install_slack.card.install_title'")
   .lmo-flex
-    //- v-img.install-slack-card__logo(src='/img/slack-icon-color.svg')
+    v-img.install-slack-card__logo(src='/img/slack-icon-color.svg')
     div(v-if='groupIdentity()')
       p.install-slack-card__helptext.lmo-hint-text(v-t="{ path: 'install_slack.card.installed_helptext', args: { channel: groupIdentity().slackChannelName(), team: groupIdentity().slackTeamName() } }")
       a.lmo-pointer(v-if='canRemoveIdentity()', @click='remove()', v-t="'install_slack.card.remove_identity'")

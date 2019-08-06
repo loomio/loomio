@@ -41,7 +41,8 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to(url, opts = {})
-    if ENV['USE_VUE'] && Rails.env.development?
+    host = URI(url).host
+    if ENV['USE_VUE'] && Rails.env.development? && host == "localhost"
       path = URI(url).path
       query = URI(url).query ? "?#{URI(url).query}" : ""
       super "http://localhost:8080#{path}#{query}"

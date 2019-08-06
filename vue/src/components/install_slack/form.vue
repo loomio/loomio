@@ -9,7 +9,7 @@ export default
     group: Object
 </script>
 <template lang="pug">
-.install-slack-form
+v-card.install-slack-form
   .lmo-disabled-form(v-show='isDisabled')
   install-slack-progress(:slack-progress='progress()')
   .install-slack-form__form(ng-switch='currentStep')

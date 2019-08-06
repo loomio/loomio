@@ -9,7 +9,6 @@ export default
     group: Object
   data: ->
     poll: Records.polls.build groupId: $scope.group.id
-  methods:
   created: ->
     applyPollStartSequence @,
       afterSaveComplete: (event) ->

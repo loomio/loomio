@@ -692,6 +692,7 @@ en:
       email_settings: 'Email Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
+      install_slack: 'Install Slack Integration'
     volume:
       loud: Email whenever there is activity.
       loud_aria_description: Your notification volume for this group is set to Loud. You will be emailed whenever there is activity.

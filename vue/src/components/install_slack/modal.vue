@@ -2,6 +2,7 @@
 import Session       from '@/shared/services/session'
 import EventBus      from '@/shared/services/event_bus'
 import LmoUrlService from '@/shared/services/lmo_url_service'
+import { hardReload } from '@/shared/helpers/window'
 
 export default
   props:
@@ -12,7 +13,8 @@ export default
     hasIdentity: -> Session.user().identityFor('slack')
 
     redirect: ->
-      @$router.push({path: 'oauth', query: { install_slack: true }})
+      @$router.push({ query: { install_slack: true } })
+      hardReload('/slack/oauth')
 
   created: ->
     setTimeout @redirect, 500 unless @hasIdentity()
@@ -30,3 +32,5 @@ v-card.install-slack-modal.lmo-modal__narrow
   v-card-actions
     v-btn(@click='redirect()', v-t="'install_slack.login_to_slack'")
 </template>
+
+<!-- group options dropdown -> (remove/)install slack button -> modal -> form -> install_form (for choosing between multiple groups) -> invite form (individual group) -->
