@@ -3,12 +3,16 @@ moment = require 'moment-timezone'
 AppConfig = require 'shared/services/app_config'
 { pluginConfigFor } = require 'shared/helpers/plugin'
 
-{ exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window'
+{ exportGlobals, hardReload, unsupportedBrowser } = require 'shared/helpers/window'
 { bootDat } = require 'shared/helpers/boot'
 
 hardReload('/417.html') if unsupportedBrowser()
 exportGlobals()
-initServiceWorker()
+
+if(window.navigator && navigator.serviceWorker)
+  navigator.serviceWorker.getRegistrations().then (registrations) ->
+    _.each registrations, (registration) -> registration.unregister()
+
 
 bootDat (appConfig) ->
   _.merge AppConfig, _.merge appConfig,

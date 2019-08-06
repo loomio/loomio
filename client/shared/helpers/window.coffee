@@ -17,11 +17,6 @@ module.exports =
     window._      = require 'lodash'
     _.extend window._, require 'shared/helpers/lodash_ext'
 
-  initServiceWorker: ->
-    version = document.querySelector('meta[name=version]').content
-    if (version == 'development' || document.location.protocol.match(/https/)) && navigator.serviceWorker?
-      navigator.serviceWorker.register("#{document.location.origin}/service-worker.js?#{version}", scope: "./")
-
   triggerResize: (delay) ->
     setTimeout ->
       window.dispatchEvent(new window.Event('resize'))
