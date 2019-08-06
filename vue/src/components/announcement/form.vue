@@ -30,9 +30,9 @@ export default
     maxMembers: 0
 
   created: ->
-    @searchResults = if @announcement.model.isA('group') then [] else @announcement.model.members()
+    @searchResults = if @invitingToGroup then [] else @announcement.model.members()
     @maxMembers = @announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0
-    if @announcement.model.isA('group')
+    if @invitingToGroup
       @announcement.model.fetchToken()
 
     if @announcement.model.group()
@@ -41,7 +41,7 @@ export default
         @announcement.model.group().parentOrSelf().orgMembershipsCount
 
       @showInvitationsRemaining =
-        @announcement.model.isA('group') &&
+        @invitingToGroup &&
         @announcement.model.group().parentOrSelf().subscriptionMaxMembers
 
       @subscriptionActive = @announcement.model.group().parentOrSelf().subscriptionActive
@@ -118,6 +118,9 @@ export default
       else
         @$t('common.action.loading')
 
+    invitingToGroup: ->
+      @announcement.model.isA('group')
+
   watch:
     query: (q) ->
       @search q if q && q.length > 2
@@ -132,12 +135,12 @@ v-card
     dismiss-modal-button
   v-card-text
     .announcement-form
-      div(v-if="!canInvite")
+      div(v-if="invitingToGroup && !canInvite")
         .announcement-form__invite
           p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: maxMembers})")
           p(v-if="!subscriptionActive" v-html="$('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
-      div(v-if="canInvite")
+      div(v-if="!invitingToGroup || canInvite")
         .announcement-form__invite
           p.announcement-form__help(v-t="'announcement.form.' + announcement.kind + '.helptext'")
           v-list
@@ -163,9 +166,9 @@ v-card
 
   v-card-actions
     div(v-if="recipients.length")
-      p(v-show="tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
+      p(v-show="invitingToGroup && tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
     v-spacer
-    v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || tooManyInvitations()" @click="submit()" v-t="'common.action.send'")
+    v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || (invitingToGroup && tooManyInvitations())" @click="submit()" v-t="'common.action.send'")
 </template>
 
 <style lang="css">
