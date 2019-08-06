@@ -51,7 +51,11 @@ export default new class AbilityService
     _.some _.compact(model.groups()), (group) -> Session.user().isAdminOf(group)
 
   canReactToPoll: (poll) ->
-    @isEmailVerified() and @canParticipateInPoll(poll)
+    return false unless @isEmailVerified()
+    return false unless poll
+    poll.anyoneCanParticipate or
+    @adminOf(poll) or
+    (@memberOf(poll) and (!poll.group() or poll.group().membersCanVote))
 
   canEditStance: (stance) ->
     Session.user() == stance.author()
