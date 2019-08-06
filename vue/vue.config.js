@@ -33,7 +33,7 @@ module.exports = {
   assetsDir: '../../client/vue',
   devServer: {
    proxy: {
-     '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails)': {target: 'http://localhost:3000'},
+     '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth)': {target: 'http://localhost:3000'},
      '^/(cable)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
    }
   },

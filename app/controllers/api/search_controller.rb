@@ -8,12 +8,11 @@ class API::SearchController < API::RestfulController
 
   private
   def group_ids
-    if params[:group_id]
-      if params[:include_subgroups] == "true"
-        Group.find(params[:group_id]).id_and_subgroup_ids
-      else
-        [params[:group_id]]
-      end
+    case params[:subgroups]
+    when 'all', 'mine'
+      Group.find(params[:group_id]).parent_or_self.id_and_subgroup_ids
+    else
+      Array(params[:group_id])
     end
   end
 

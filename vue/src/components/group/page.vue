@@ -6,31 +6,22 @@ import Records           from '@/shared/services/records'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
+import InstallSlackModalMixin from '@/mixins/install_slack_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
 import {compact, head, includes, filter} from 'lodash'
 
 export default
+  mixins: [InstallSlackModalMixin]
   data: ->
     group: null
-    activeTab: @urlFor(@group)
 
   created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
+    setTimeout => @openInstallSlackModal() if @$route.query.install_slack
 
   watch:
-    '$route': 'init'
-
-  computed:
-    tabs: ->
-      return unless @group
-      [
-        {id: 0, name: 'threads',   route: @urlFor(@group)}
-        {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')},
-        {id: 2, name: 'members',   route: @urlFor(@group, 'members')},
-        {id: 3, name: 'subgroups', route: @urlFor(@group, 'subgroups')},
-        {id: 4, name: 'files',     route: @urlFor(@group, 'files')}
-      ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
+    '$route.params.key': 'init'
 
   methods:
     init: ->
@@ -44,6 +35,7 @@ export default
         EventBus.$emit 'currentComponent',
           page: 'groupPage'
           breadcrumbs: compact([@group.parent(), @group])
+          title: @group.name
           group: @group
 
       , (error) ->
@@ -53,13 +45,12 @@ export default
 
 <template lang="pug">
 loading(:until='group')
-  group-cover-image(:group="group")
+  //- group-cover-image(:group="group")
   v-container.group-page.max-width-1024
-    group-description-card(:group='group')
-    v-card
-      v-tabs(fixed-tabs v-model="activeTab" show-arrows)
-        v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
-          span(v-t="'group_page.'+tab.name")
-      v-divider
-      router-view
+    //- group-description-card(:group='group')
+    router-view
+      //-   v-tabs(fixed-tabs v-model="activeTab" show-arrows)
+      //-     v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
+      //-       span(v-t="'group_page.'+tab.name")
+      //-   v-divider
 </template>

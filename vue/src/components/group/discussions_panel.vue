@@ -6,7 +6,7 @@ import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
-import { map, debounce, orderBy, intersection, compact } from 'lodash'
+import { map, debounce, orderBy, intersection, compact, omit, identity } from 'lodash'
 import Session from '@/shared/services/session'
 
 export default
@@ -19,22 +19,15 @@ export default
     discussions: []
     searchResults: []
     loader: null
-    fragment: ''
-    filters: []
-    selectedFilters: []
+    searchLoader: null
+    search: ''
+    filter: 'open'
+    subgroups: 'none'
+    showSearch: false
 
   methods:
     init: ->
       @group = Records.groups.fuzzyFind(@$route.params.key)
-      @filters = compact [
-        ({name: @$t('discussions_panel.include_subgroups'), value: 'includeSubgroups'} if @group.hasSubgroups())
-        {name: @$t('discussions_panel.closed'), value: 'showClosed'}
-        {name: @$t('discussions_panel.unread'), value: 'showUnread'}
-      ]
-
-      @groupTags.forEach (tag) => @filters.push({name: tag, value: tag})
-
-      @selectedFilters.push('includeSubgroups') if @group.hasSubgroups()
 
       @loader = new RecordLoader
         collection: 'discussions'
@@ -44,6 +37,7 @@ export default
       @searchLoader = new RecordLoader
         collection: 'searchResults'
         params:
+          subgroups: 'all'
           group_id: @group.id
 
       @watchRecords
@@ -59,74 +53,73 @@ export default
       @query()
 
     query: (store) ->
-      if @fragment
+      if @search.length
         chain = Records.searchResults.collection.chain()
-        chain = chain.find(resultGroupId: {$in: @groupIds})
-
-        @tags.forEach (tag) ->
-          chain = chain.find({tagNames: {'$contains': tag}})
-
-        chain = chain.find(query: @fragment).data()
-
+        chain = chain.find(resultGroupId: {$in: @group.parentOrSelf().organisationIds()})
+        chain = chain.find(query: @search).data()
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
         chain = Records.discussions.collection.chain()
         chain = chain.find(groupId: {$in: @groupIds})
 
-        @tags.forEach (tag) ->
-          chain = chain.find({tagNames: {'$contains': tag}})
-
-        if @showClosed
-          chain = chain.find(closedAt: {$ne: null})
-        else
-          chain = chain.find(closedAt: null)
-
-        if @showUnread
-          chain = chain.where (discussion) -> discussion.isUnread()
+        switch @filter
+          when 'open'
+            chain = chain.find(closedAt: null)
+          when 'unread'
+            chain = chain.where (discussion) -> discussion.isUnread()
+          when 'closed'
+            chain = chain.find(closedAt: {$ne: null})
+          else
+            chain = chain.find({tagNames: {'$contains': @filter}})
 
         chain = chain.compoundsort([['pinned', true], ['lastActivityAt', true]])
 
         @discussions = chain.data()
 
     fetch: debounce ->
-      if @fragment
-        params = {q: @fragment}
-        params.include_subgroups = @includeSubgroups
-        params.tags = @tags.join("|")
-        @searchLoader.fetchRecords params
+      if @search
+        @searchLoader.fetchRecords(q: @search)
       else
         params = {from: @from}
-        params.filter = 'show_closed' if @showClosed
-        params.include_subgroups = @includeSubgroups
+        params.filter = 'show_closed' if @filter == 'closed'
+        params.subgroups = @subgroups
         params.tags = @tags.join("|")
         @loader.fetchRecords(params)
     ,
       300
 
+    selectFilter: (filter) ->
+      params = if filter == "open"
+        omit @$route.query, ['t']
+      else
+        Object.assign({}, @$route.query, {t: filter})
+
+      @$router.replace(query: params)
+
+      @filter = filter
+
   watch:
-    fragment: -> @refresh()
-    selectedFilters: -> @refresh()
-    isLoggedIn: -> @refresh()
-    $route: (a, b) -> @init()
+    '$route.params.key': 'init'
+    '$route.query': (query) ->
+      @search = ''
+      @filter = 'open'
+      @subgroups = 'none'
+
+      @filter = @$route.query.t if @$route.query.t
+      @search = @$route.query.q if @$route.query.q
+      @subgroups = @$route.query.subgroups if @$route.query.subgroups
+
+      @refresh()
 
   computed:
-    showClosed: ->
-      @selectedFilters.includes('showClosed')
-
-    showUnread: ->
-      @selectedFilters.includes('showUnread')
-
-    includeSubgroups: ->
-      @selectedFilters.includes('includeSubgroups')
-
     tags: ->
-      intersection(@selectedFilters, @groupTags)
+      intersection([@filter], @groupTags)
 
     groupIds: ->
-      if @includeSubgroups
-        @group.organisationIds()
-      else
-        [@group.id]
+      switch @subgroups
+        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
+        when 'all' then @group.organisationIds()
+        else [@group.id]
 
     loading: ->
       @loader.loading || @searchLoader.loading
@@ -149,44 +142,55 @@ export default
 </script>
 
 <template lang="pug">
-.discussions-panel
-  v-toolbar(flat align-center)
-    v-toolbar-items
-      v-text-field(solo flat append-icon="mdi-magnify" v-model="fragment" :label="$t('common.action.search')" clearable)
-      v-select(solo flat multiple chips deletable-chips v-model='selectedFilters' :items='filters' :label="$t('common.action.filter')" item-text="name")
-    //- v-switch.discussions-panel__toggle-closed(v-model="showClosed" :label="$t('discussions_panel.closed')")
-    //- v-switch.discussions-panel__toggle-include-subgroups(v-if="group.hasSubgroups()" v-model="includeSubgroups" :label="$t('discussions_panel.include_subgroups')")
-    //- v-switch(v-model="showUnread" :label="$t('discussions_panel.unread')")
-    v-spacer
-    v-btn.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' outlined color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
-    v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
+div.discussions-panel
+  v-chip-group.pl-2(v-if="!search" v-model="filter" active-class="accent--text")
+    v-btn.mr-4.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-divider.mr-2.ml-1(inset vertical)
+    v-chip(label outlined value="open" @click="selectFilter('open')")
+      span(v-t="'discussions_panel.open'")
+    v-chip(label outlined value="unread" @click="selectFilter('unread')")
+      span(v-t="'discussions_panel.unread'")
+    v-chip(label outlined value="closed" @click="selectFilter('closed')")
+      span(v-t="'discussions_panel.closed'")
+    v-divider.mr-2.ml-1(inset vertical)
+    v-chip(v-for="tag in groupTags" :key="tag" :value="tag" @click="selectFilter(tag)" outlined) {{tag}}
 
+  v-card.discussions-panel
+    v-progress-linear(color="accent" indeterminate :active="loading" absolute top)
+    .discussions-panel__content(v-if="!search")
+      .discussions-panel__list--empty(v-if='noThreads' :value="true")
+        p.text-center(v-t="'group_page.no_threads_here'")
+        p.text-center(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
+      .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
+        v-list.thread-previews(two-line)
+          thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)
+        v-btn.discussions-panel__show-more(v-if="!loader.exhausted" :disabled="loader.loading" @click='loader.loadMore()', v-t="{ path: 'common.action.show_more' }")
+        .lmo-hint-text.discussions-panel__no-more-threads(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
 
-  .discussions-panel__content(v-if="!fragment")
-    .discussions-panel__list--empty(v-if='noThreads' :value="true")
-      p.text-center(v-t="'group_page.no_threads_here'")
-      p.text-center(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
-    .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
-      v-list.thread-previews(two-line)
-        thread-preview(:show-group-name="includeSubgroups" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)
-      v-btn.discussions-panel__show-more(v-if="!loader.exhausted" :disabled="loader.loading" @click='loader.loadMore()', v-t="{ path: 'common.action.show_more' }")
-      .lmo-hint-text.discussions-panel__no-more-threads(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
-
-  .discussions-panel__content(v-if="fragment")
-    v-alert.discussions-panel__list--empty(v-if='!searchResults.length' :value="true" color="info" icon="info")
-      p(v-t="'group_page.no_threads_here'")
-    v-list(two-line v-for="result in searchResults" :key="result.id")
-      v-list-item.thread-preview.thread-preview__link(:to="urlFor(result)")
-        v-list-item-content
-          v-list-item-title {{result.title}}
-          v-list-item-subtitle
-            span(v-html="result.resultGroupName")
-            | &nbsp;
-            | ·
-            | &nbsp;
-            time-ago(:date='result.lastActivityAt')
-            | &nbsp;
-            | ·
-            | &nbsp;
-            span(v-html="result.blurb")
+    .discussions-panel__content(v-if="search")
+      v-alert.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading')
+        p(v-t="{path: 'discussions_panel.no_results_found', args: {search: search}}")
+      v-list(two-line v-for="result in searchResults" :key="result.id")
+        v-list-item.thread-preview.thread-preview__link(:to="urlFor(result)")
+          v-list-item-content
+            v-list-item-title {{result.title}}
+            v-list-item-subtitle
+              span(v-html="result.resultGroupName")
+              | &nbsp;
+              | ·
+              | &nbsp;
+              time-ago(:date='result.lastActivityAt')
+              | &nbsp;
+              | ·
+              | &nbsp;
+              span(v-html="result.blurb")
 </template>
+
+<style lang="sass">
+.discussions-panel
+  div.v-slide-group__prev--disabled
+    display: none
+
+.overflow-x-auto
+  overflow-x: auto
+</style>

@@ -42,11 +42,11 @@ export default
 
 <template lang="pug">
 .description-card.px-3.pb-3
-  v-layout(mb-3)
-    v-spacer
-    join-group-button(:group='group')
-    group-privacy-button(:group='group')
-    group-actions-dropdown(:group='group')
+  //- v-layout(mb-3)
+  //-   v-spacer
+  //-   join-group-button(:group='group')
+  //-   group-privacy-button(:group='group')
+  //-   group-actions-dropdown(:group='group')
   .description-card__placeholder(v-t="'description_card.placeholder'", v-if='!group.description')
   formatted-text.description-card__text(:model="group" column="description")
   attachment-list(:attachments="group.attachments")
