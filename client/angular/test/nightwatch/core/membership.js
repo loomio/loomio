@@ -26,7 +26,7 @@ module.exports = {
     page.pause()
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Jennifer Grey is now a admin')
+    page.expectText('.flash-root__message', 'Jennifer Grey is now an admin')
   },
 
   'allows non-admins to add members if the group settings allow': (test) => {
@@ -46,7 +46,7 @@ module.exports = {
     page.pause()
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Emilio Estevez is no longer a admin')
+    page.expectText('.flash-root__message', 'Emilio Estevez is no longer an admin')
     page.expectNoElement('.user-avatar--admin')
   },
 
@@ -59,7 +59,7 @@ module.exports = {
     page.pause()
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Patrick Swayze is now a admin')
+    page.expectText('.flash-root__message', 'Patrick Swayze is now an admin')
   },
 
   'can_self_promote_when_admin_of_parent_group': (test) => {
@@ -71,7 +71,7 @@ module.exports = {
     page.pause()
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Jennifer Grey is now a admin')
+    page.expectText('.flash-root__message', 'Jennifer Grey is now an admin')
   },
 
   'cannot_self_promote_when_admins': (test) => {
