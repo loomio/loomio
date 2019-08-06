@@ -1470,6 +1470,11 @@ en:
     header_invited_by: 'Invited by'
     header_invited: 'Invited'
     header_actions: 'Actions'
+    directory: 'Directory'
+    invitations: 'Invitations'
+    requests: 'Requests'
+    admin: 'Admin'
+    sharable_link: 'Shareable Link'
 
   polls_panel:
     new_poll: New poll

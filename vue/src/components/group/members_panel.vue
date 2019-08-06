@@ -4,14 +4,11 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
-import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import {includes, some, compact, intersection, orderBy, slice} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import { exact, approximate } from '@/shared/helpers/format_time'
 
 export default
-  mixins: [AnnouncementModalMixin]
-
   data: ->
     loader: null
     group: Records.groups.fuzzyFind(@$route.params.key)
@@ -27,17 +24,9 @@ export default
       {text: @$t('members_panel.order_by_created_desc'), value:'created_at desc' }
       {text: @$t('members_panel.order_by_admin_desc'), value:'admin desc' }
     ]
-
+    requests: []
 
   created: ->
-    if AbilityService.canManageMembershipRequests(@group)
-      Records.membershipRequests.fetchPendingByGroup(@group.key, per: 100)
-      Records.membershipRequests.fetchPreviousByGroup(@group.key, per: 100)
-      @watchRecords
-        collections: ['membershipRequests']
-        query: (store) =>
-          @requests = orderBy @group.membershipRequests(), ['respondedAt', 'desc'], ['createdAt', 'desc']
-
     @loader = new RecordLoader
       collection: 'memberships'
       path: 'autocomplete'
@@ -169,74 +158,27 @@ export default
 </script>
 
 <template lang="pug">
-v-card.members-panel
-  v-tabs(fixed-tabs v-model="tab")
-    v-tab(key="direcory") Directory
-    v-tab(key="invitations") Invitations
-    v-tab(key="requests") Requests
-  v-tabs-items(v-model="tab")
-    v-tab-item(key="directory")
-      v-toolbar(flat align-center)
-        v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
-        v-btn.membership-requests-link(outlined color="accent" :to="membershipRequestsPath" v-t="'members_panel.view_requests'")
-        v-spacer
-        v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute bottom)
-      v-divider
-
-      v-list(two-line)
-        template(v-for="(membership, index) in memberships")
-          v-list-item
-            v-icon(v-if="membership.admin") mdi-star
-            v-list-item-avatar(size='64')
-              router-link(:to="urlFor(membership.user())")
-                user-avatar(:user='membership.user()' size='64')
-            v-list-item-content
-              v-list-item-title
-                router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
-                space
-                span.caption {{membership.title}}
-              v-list-item-subtitle {{ membership.user().shortBio }}
-            v-list-item-action
-              v-list-item-action-text {{ approximate(membership.createdAt) }}
-              membership-dropdown(:membership="membership")
-              //- v-menu(offset-y)
-              //-   template(v-slot:activator="{on}")
-              //-     v-btn(icon v-on="on")
-              //-       v-icon mdi-dots-vertical
-              //-   v-list
-              //-     v-list-item Contact
-          v-divider(v-if="index + 1 < memberships.length" :key="index")
-
-    v-tab-item(key="invitations")
-      v-simple-table
-        thead
-          tr
-            th Photo
-            th Name
-            th Email
-            th Accepted
-            td(v-if="subgroups != 'none'") Subgroup
-            th Invited by
-            th Sent
-        tbody
-          tr(v-for="(membership, index) in memberships")
-            td
-              user-avatar.mr-4(:user='membership.user()', size='forty')
-            td.members-panel__name
-              v-layout(align-center)
-                router-link(:to="urlFor(membership.user())") {{membership.user().name}}
-            td.members-panel__email {{membership.user().email}}
-            td.members-panel__accepted {{membership.acceptedAt ? approximate(membership.acceptedAt) : '' }}
-            td(v-if="subgroups != 'none'") {{membership.group().name}}
-            td {{membership.inviter() && membership.inviter().name}}
-            td
-              timeAgo(:date="membership.createdAt")
-    v-tab-item(key="requests")
-      v-list(two-line)
-        membership-request(v-for="request in requests" :request="request" :key="request.id")
-
-  v-layout(align-center)
-    //- span(v-if="!includeSubgroups" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
-    v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+.members-panel
+  v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute top)
+  v-list(two-line)
+    template(v-for="(membership, index) in memberships")
+      v-list-item
+        v-list-item-avatar(size='48')
+          router-link(:to="urlFor(membership.user())")
+            user-avatar(:user='membership.user()' size='48')
+        v-list-item-content
+          v-list-item-title
+            router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
+            space
+            span.caption {{membership.title}}
+            space
+            v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
+          v-list-item-subtitle {{ membership.user().shortBio }}
+        v-list-item-action
+          v-list-item-action-text {{ approximate(membership.createdAt) }}
+          membership-dropdown(:membership="membership")
+      v-divider(v-if="index + 1 < memberships.length" :key="index")
+  v-layout(justify-center)
+    v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 
 </template>

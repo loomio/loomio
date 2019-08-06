@@ -146,10 +146,10 @@ v-card
                 v-icon mdi-account-multiple
               v-list-item-content
                 span(v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
-          v-autocomplete.announcement-form__input(multiple chips return-object autofocus v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
+          v-autocomplete.announcement-form__input(multiple chips return-object autofocus hide-no-data hide-selected v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
             template(v-slot:selection='data')
               v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
-                user-avatar(:user="data.item" size="small" :no-link="true")
+                user-avatar.mr-1(:user="data.item" size="small" :no-link="true")
                 span {{ data.item.name }}
             template(v-slot:item='data')
               v-list-item-avatar
@@ -161,17 +161,6 @@ v-card
           v-spacer
           p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
 
-        .announcement-form__share-link(v-if="!announcement.model.isA('discussion') && recipients.length == 0")
-          p.announcement-form__help(v-if="announcement.model.isA('group')", v-t="'invitation_form.shareable_link'")
-          v-layout
-            v-flex(v-if='canUpdateAnyoneCanParticipate || announcement.model.anyoneCanParticipate')
-              v-checkbox.announcement-form__checkbox(v-model='announcement.model.anyoneCanParticipate', @change='announcement.model.save()', v-if='canUpdateAnyoneCanParticipate' :label="$t('announcement.form.anyone_can_participate')")
-            v-flex(v-if="announcement.model.anyoneCanParticipate || announcement.model.isA('group')")
-              v-layout(align-center)
-                v-text-field.announcement-form__shareable-link(:value='shareableLink' :disabled='true')
-                v-btn.announcement-form__copy(ref="copyContainer" text color="accent" v-t="'common.copy'" v-clipboard:copy='shareableLink' v-clipboard:success='copied' v-clipboard:error='"fuck"')
-                v-btn.announcement-form__reset(text color="warning" v-t="'common.reset'" @click="resetShareableLink()")
-              p.caption(v-t="'invitation_form.shareable_link_explanation'")
   v-card-actions
     div(v-if="recipients.length")
       p(v-show="tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
