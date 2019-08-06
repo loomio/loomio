@@ -25,6 +25,11 @@ export default class OutcomeModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'poll'
 
+  reactions: ->
+    @recordStore.reactions.find
+      reactableId: @id
+      reactableType: _.capitalize(@constructor.singular)
+      
   authorName: ->
     @author().nameWithTitle(@poll()) if @author()
 
@@ -33,7 +38,7 @@ export default class OutcomeModel extends BaseModel
 
   members: ->
     @poll().members()
-    
+
   memberIds: ->
     @poll().memberIds()
 
