@@ -80,6 +80,34 @@ export default new class GroupService
                 helptext: 'install_slack.card.confirm_remove_helptext'
                 flash:    'install_slack.card.identity_removed'
 
+    install_microsoft_teams:
+      name: 'install_microsoft.card.install_microsoft'
+      canPerform: ->
+        # AppConfig.features.app.show_microsoft_card &&
+        !group.groupIdentityFor('microsoft') &&
+        AbilityService.canAdministerGroup(group)
+      perform: ->
+        openModal
+          component: 'InstallMicrosoftTeamsModal'
+          props:
+            group: group
+
+    remove_microsoft_teams:
+      name: 'install_microsoft.card.remove_identity'
+      canPerform: ->
+        group.groupIdentityFor('microsoft') &&
+        AbilityService.canAdministerGroup(group)
+      perform: ->
+        openModal
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit:     group.groupIdentityFor('microsoft').destroy
+              text:
+                title:    'install_microsoft.card.confirm_remove_title'
+                helptext: 'install_microsoft.card.confirm_remove_helptext'
+                flash:    'install_microsoft.card.identity_removed'
+
     leave_group:
       name: 'group_page.options.leave_group'
       canPerform: ->

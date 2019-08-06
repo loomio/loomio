@@ -20,6 +20,7 @@ import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsModal from '@/components/tags/modal'
 import InstallSlackModal from '@/components/install_slack/modal'
+import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/modal'
 
 export default
   components:
@@ -43,6 +44,7 @@ export default
     'RevisionHistoryModal': RevisionHistoryModal
     'TagsModal': TagsModal
     'InstallSlackModal': InstallSlackModal
+    'InstallMicrosoftTeamsModal': InstallMicrosoftTeamsModal
   data: ->
     isOpen: false
     componentName: ""

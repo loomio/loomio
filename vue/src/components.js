@@ -60,6 +60,7 @@ module.exports = {
   GroupCoverImage: 'group/cover_image',
   GroupStart: 'group/start',
   HelpBubble: 'common/help_bubble',
+  InstallMicrosoftTeamsModal: 'install_microsoft_teams/modal',
   InstallSlackForm: 'install_slack/form',
   InstallSlackInstallForm: 'install_slack/install_form',
   InstallSlackModal: 'install_slack/modal',

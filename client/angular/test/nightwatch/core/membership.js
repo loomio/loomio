@@ -17,7 +17,7 @@ module.exports = {
     page.expectNoText('.membership-card', 'Jennifer Grey')
   },
 
-  'successfully assigns coordinator privileges': (test) => {
+  'successfully assigns admin privileges': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
@@ -26,40 +26,40 @@ module.exports = {
     page.pause()
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Jennifer Grey is now a coordinator')
+    page.expectText('.flash-root__message', 'Jennifer Grey is now a admin')
   },
 
-  'allows non-coordinators to add members if the group settings allow': (test) => {
+  'allows non-admins to add members if the group settings allow': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_as_member')
     page.expectElement('.membership-card__invite')
   },
 
-  'can remove coordinator privileges': (test) => {
+  'can remove admin privileges': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_group_with_multiple_coordinators')
+    page.loadPath('setup_group_with_multiple_admins')
 
     page.click('.membership-card__search-button')
     page.fillIn('.membership-card__filter', 'Emilio')
     page.pause()
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Emilio Estevez is no longer a coordinator')
-    page.expectNoElement('.user-avatar--coordinator')
+    page.expectText('.flash-root__message', 'Emilio Estevez is no longer a admin')
+    page.expectNoElement('.user-avatar--admin')
   },
 
-  'can_self_promote_when_no_coordinators': (test) => {
+  'can_self_promote_when_no_admins': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_group_with_no_coordinators')
+    page.loadPath('setup_group_with_no_admins')
     page.click('.membership-card__search-button')
     page.fillIn('.membership-card__filter', 'Patrick')
     page.pause()
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Patrick Swayze is now a coordinator')
+    page.expectText('.flash-root__message', 'Patrick Swayze is now a admin')
   },
 
   'can_self_promote_when_admin_of_parent_group': (test) => {
@@ -71,10 +71,10 @@ module.exports = {
     page.pause()
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectText('.flash-root__message', 'Jennifer Grey is now a coordinator')
+    page.expectText('.flash-root__message', 'Jennifer Grey is now a admin')
   },
 
-  'cannot_self_promote_when_coordinators': (test) => {
+  'cannot_self_promote_when_admins': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_as_member')
@@ -82,7 +82,7 @@ module.exports = {
     page.fillIn('.membership-card__filter', 'Jennifer')
     page.pause()
     page.click('.membership-dropdown__button')
-    page.expectNoText('.membership-dropdown', 'Demote coordinator')
+    page.expectNoText('.membership-dropdown', 'Demote admin')
   },
 
   'can_set_membership_title': (test) => {
