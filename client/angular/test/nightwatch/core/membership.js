@@ -39,7 +39,7 @@ module.exports = {
   'can remove admin privileges': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_group_with_multiple_admins')
+    page.loadPath('setup_group_with_multiple_coordinators')
 
     page.click('.membership-card__search-button')
     page.fillIn('.membership-card__filter', 'Emilio')
@@ -53,7 +53,7 @@ module.exports = {
   'can_self_promote_when_no_admins': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_group_with_no_admins')
+    page.loadPath('setup_group_with_no_coordinators')
     page.click('.membership-card__search-button')
     page.fillIn('.membership-card__filter', 'Patrick')
     page.pause()

@@ -11,7 +11,7 @@ notificationTexts = [
   'Poll is closing soon',
   'started a Poll',
   'reacted to your comment',
-  'made you a coordinator',
+  'made you an admin',
   'participated in',
   'added options to'
 ]
