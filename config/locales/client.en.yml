@@ -1096,7 +1096,7 @@ en:
     load_more: Load more threads
     mark_as_read: Mark as read
     dismiss: Dismiss
-    thread_dismissed: Thread dismissed
+    thread_dismissed: Thread marked as read
     thread_recalled: Thread recalled
     explain_mute:
       title: You haven't muted any threads yet.
