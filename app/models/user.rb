@@ -234,8 +234,8 @@ class User < ApplicationRecord
       existing.update(access_token: identity.access_token)
     else
       identities.push(identity)
-      identity.assign_logo! if avatar_kind == 'initials'
     end
+    identity.assign_logo!
     self
   end
 
