@@ -96,7 +96,6 @@ export default class RestfulClient
       data = new FormData();
       data.append(options.fileField     || 'file',     file)
       data.append(options.filenameField || 'filename', file.name.replace(/[^a-z0-9_\-\.]/gi, '_'))
-      data.append('kind', options.kind) if options.kind
 
       @currentUpload = new XMLHttpRequest()
       @currentUpload.open('POST', @buildUrl(path), true)
