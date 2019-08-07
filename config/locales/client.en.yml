@@ -1021,12 +1021,13 @@ en:
     insert_link: Insert link
 
   change_picture_form:
-    aria_label: 'Change picture form'
-    title: 'Change picture'
+    aria_label: 'Change photo form'
+    title: 'Change photo'
     helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account, you can use that.'
     use_initials: 'Use initials'
-    use_gravatar: 'Use gravatar'
-    use_uploaded: 'Upload new picture'
+    use_gravatar: 'Use Gravatar'
+    use_uploaded: 'Upload new photo'
+    use_provider: 'Use {{provider}} photo'
 
   change_password_form:
     set_password_title: Set your password
