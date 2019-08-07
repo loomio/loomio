@@ -1,6 +1,7 @@
 <script lang="coffee">
 import AppConfig      from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
+import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
@@ -19,6 +20,8 @@ export default
         !!value || 'Required.'
     }
     submit: null
+    uploading: false
+    progress: 0
   mounted: ->
     @featureNames = AppConfig.features.group
     @submit = submitForm @, @group,
@@ -47,6 +50,27 @@ export default
     privacyStringFor: (privacy) ->
       @$t groupPrivacy(@group, privacy),
         parent: @group.parentName()
+
+    selectCoverPhoto: ->
+      @$refs.coverPhotoInput.click()
+
+    selectLogo: ->
+      @$refs.logoInput.click()
+
+    uploadCoverPhoto: ->
+      @uploading = true
+      Records.groups.remote.onUploadSuccess = (response) =>
+        Records.import response
+        @uploading = false
+      Records.groups.remote.upload("#{@group.id}/upload_photo/cover_photo", @$refs.coverPhotoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
+
+    uploadLogo: ->
+      @uploading = true
+      Records.groups.remote.onUploadSuccess = (response) =>
+        Records.import response
+        @uploading = false
+      Records.groups.remote.upload("#{@group.id}/upload_photo/logo", @$refs.logoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
+
   computed:
     actionName: ->
       if @group.isNew() then 'created' else 'updated'
@@ -73,6 +97,8 @@ export default
 
 <template lang="pug">
 v-card.group-form
+  v-overlay(:value="uploading")
+    v-progress-circular(size="64" :value="progress")
   submit-overlay(:value='group.processing')
   v-card-title
     v-layout(justify-space-between style="align-items: center")
@@ -85,6 +111,10 @@ v-card.group-form
     v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255', :label="$t('group_form.group_name')")
     lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
     validation-errors(:subject="group", field="name")
+    v-btn.change-picture-form__option(@click='selectCoverPhoto()' v-t="'group_form.upload_cover_photo'")
+    input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto')
+    v-btn.change-picture-form__option(@click='selectLogo()' v-t="'group_form.upload_logo'")
+    input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo')
 
     v-tabs(fixed-tabs)
       v-tab(v-t="'group_form.privacy'")

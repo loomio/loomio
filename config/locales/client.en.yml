@@ -796,6 +796,9 @@ en:
       group_created: 'Group started'
       group_updated: 'Group updated'
 
+    upload_logo: 'Upload logo'
+    upload_cover_photo: 'Upload cover photo'
+
   group_export_modal:
     title: Export group data
     body: |
