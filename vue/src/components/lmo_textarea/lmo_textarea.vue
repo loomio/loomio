@@ -147,7 +147,7 @@ export default
       ]
       content: (if @model[@field+'Format'] == "md"
         @model[@field+'Format'] = 'html'
-        @model[@field] = marked(@model[@field])
+        @model[@field] = marked(@model[@field] || '')
       else
         @model[@field])
       onUpdate: @updateModel
