@@ -37,6 +37,12 @@ export default new class PollService
           props:
             model: poll
 
+    translate_poll:
+      icon: 'mdi-translate'
+      menu: true
+      canPerform: -> AbilityService.canTranslate(poll)
+      perform: -> poll.translate(Session.user().locale)
+
     close_poll:
       name:
         path: 'poll_common.close_poll_type'

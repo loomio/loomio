@@ -39,7 +39,7 @@ export default
       @buttonPressed || @myLastStance || @poll.isClosed()
 
     menuActions: ->
-      pick PollService.actions(@poll, @), ['edit_poll', 'show_history', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll']
+      pick PollService.actions(@poll, @), ['edit_poll', 'show_history', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll', 'translate_poll']
     dockActions: ->
       pick PollService.actions(@poll, @), ['announce_poll']
 
@@ -55,7 +55,7 @@ thread-item.poll-created(:event="event" :event-window="eventWindow")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline
       span(v-if='!poll.translation') {{poll.title}}
-      translation(v-if="poll.translation" :model='poll', :field='title')
+      translation(v-if="poll.translation" :model='poll', field='title')
   poll-common-closing-at(:poll='poll')
   poll-common-set-outcome-panel(:poll='poll')
   poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')

@@ -9,7 +9,7 @@ export default
 
   computed:
     menuActions: ->
-      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll']
+      pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll', 'translate_poll']
 
     dockActions: ->
       pick PollService.actions(@poll, @), ['announce_poll']
