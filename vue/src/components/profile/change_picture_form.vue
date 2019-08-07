@@ -15,6 +15,8 @@ export default
   data: ->
     user: Session.user().clone()
     providers: AppConfig.identityProviders
+    uploading: false
+    progress: 0
   methods:
     capitalize: capitalize
     iconClass: (provider) ->
@@ -34,10 +36,12 @@ export default
       @$refs.fileInput.click()
 
     uploadFile: ->
+      @uploading = true
       Records.users.remote.onUploadSuccess = (response) =>
         Records.import response
         EventBus.$emit 'closeModal'
-      Records.users.remote.upload('upload_avatar', @$refs.fileInput.files[0], {}, (args) => console.log 'progress', args)
+        @uploading = false
+      Records.users.remote.upload('upload_avatar', @$refs.fileInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
 
   created: ->
     @submit = submitForm @, @user,
@@ -49,6 +53,8 @@ export default
 </script>
 <template lang="pug">
 v-card.change-picture-form
+  v-overlay(:value="uploading")
+    v-progress-circular(size="64" :value="progress")
   v-card-title
     h1.headline(v-t="'change_picture_form.title'")
     v-spacer
