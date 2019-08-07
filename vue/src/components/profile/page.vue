@@ -58,7 +58,8 @@ export default
   methods:
     init: ->
       return unless Session.isSignedIn()
-      @user = Session.user().clone()
+      @originalUser = Session.user()
+      @user = @originalUser.clone()
       Session.updateLocale(@user.locale)
       @submit = submitForm @, @user,
         flashSuccess: 'profile_page.messages.updated'
@@ -111,7 +112,7 @@ v-container.profile-page.max-width-1024
             p(v-if='showHelpTranslate')
               router-link.md-caption(v-t="'profile_page.help_translate'", to='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation', target='_blank')
           v-flex.profile-page__avatar.mx-4
-            user-avatar(:user='user', size='featured')
+            user-avatar(:user='originalUser', size='featured')
             v-btn.profile-page__change-picture(color="accent" @click='changePicture()' v-t="'profile_page.change_picture_link'")
       v-card-actions.profile-page__update-account
         v-btn.profile-page__change-password(color="accent" outlined @click='changePassword()' v-t="'profile_page.change_password_link'")
