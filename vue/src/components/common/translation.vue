@@ -12,12 +12,15 @@ export default
     model: Object
     field: String
   computed:
+    isMd: -> @format == 'md'
+    isHtml: -> @format == 'html'
     translated: ->
       @model.translation[@field]
+    format: -> @model[@field+"Format"]
 </script>
 
-<template>
-    <div class="translation">
-      <div v-marked="translated" class="translation__body"></div>
-    </div>
+<template lang="pug">
+.translation
+  .translated-body(v-if="isMd" v-marked='translated')
+  .translated-body(v-if="isHtml" v-html='translated')
 </template>

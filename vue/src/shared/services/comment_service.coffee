@@ -38,7 +38,7 @@ export default new class CommentService
     translate_comment:
       icon: 'mdi-translate'
       canPerform: ->
-        comment.body && AbilityService.canTranslate(comment) && !vm.translation
+        comment.body && AbilityService.canTranslate(comment)
       perform: ->
         comment.translate(Session.user().locale)
 

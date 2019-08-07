@@ -14,7 +14,7 @@ export default
     isHtml: -> @format == 'html'
     format: -> @model[@column+"Format"]
     text: -> @model[@column]
-    hasTranslation: -> @model.translation
+    hasTranslation: -> @model.translation[@column]
     cookedText: ->
       return @model[@column] unless @model.mentionedUsernames
       cooked = @model[@column]

@@ -216,8 +216,9 @@ export default new class AbilityService
 
   canTranslate: (model) ->
     AppConfig.inlineTranslation.isAvailable and
-    _.includes(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
-    !model.translation and model.author() and Session.user().locale != model.author().locale
+    Object.keys(model.translation).length == 0
+    # _.includes(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
+    # !model.translation and Session.user().locale != model.author().locale
 
   canSubscribeToPoll: (poll) ->
     if poll.group()
