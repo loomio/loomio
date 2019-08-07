@@ -21,6 +21,7 @@ import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsModal from '@/components/tags/modal'
 import InstallSlackModal from '@/components/install_slack/modal'
 import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/modal'
+import ChangePictureForm from '@/components/profile/change_picture_form'
 
 export default
   components:
@@ -45,6 +46,7 @@ export default
     'TagsModal': TagsModal
     'InstallSlackModal': InstallSlackModal
     'InstallMicrosoftTeamsModal': InstallMicrosoftTeamsModal
+    'ChangePictureForm': ChangePictureForm
   data: ->
     isOpen: false
     componentName: ""

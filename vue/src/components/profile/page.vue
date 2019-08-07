@@ -8,6 +8,7 @@ import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
 import ChangePasswordModalMixin from '@/mixins/change_password_modal'
+import openModal      from '@/shared/helpers/open_modal'
 
 import { submitForm }   from '@/shared/helpers/form'
 import { hardReload }   from '@/shared/helpers/window'
@@ -65,7 +66,10 @@ export default
         successCallback: @init
 
     changePicture: ->
-      ModalService.open 'ChangePictureForm'
+      openModal
+        component: 'ChangePictureForm'
+        # props:
+        #   model: membership
 
     changePassword: ->
       @openChangePasswordModal(@user)
@@ -97,7 +101,7 @@ v-container.profile-page.max-width-1024
             v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required='ng-required', v-model='user.email')
             validation-errors(:subject='user', field='email')
 
-            lmo-textarea(:model='user' field="shortBio" :label="$t('profile_page.short_bio_label')" :placeholder="'profile_page.short_bio_placeholder'")
+            lmo-textarea(:model='user' field="shortBio" :label="$t('profile_page.short_bio_label')" :placeholder="$t('profile_page.short_bio_placeholder')")
             validation-errors(:subject='user', field='shortBio')
 
             v-text-field#user-location-field.profile-page__location-input(v-model='user.location' :label="$t('profile_page.location_label')" :placeholder="$t('profile_page.location_placeholder')")
