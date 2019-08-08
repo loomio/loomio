@@ -52,7 +52,7 @@
     "@mdi/font": "^3.8.95",
     "@vue/cli-plugin-babel": "^3.9.2",
     "@vue/cli-plugin-e2e-nightwatch": "^3.9.2",
-    "@vue/cli-plugin-pwa": "^3.9.0",
+    "@vue/cli-plugin-pwa": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
     "acorn": "^6.2.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
