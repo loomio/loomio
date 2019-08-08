@@ -2,6 +2,12 @@ Records      = require 'shared/services/records'
 EventBus     = require 'shared/services/event_bus'
 ModalService = require 'shared/services/modal_service'
 
+showdown  = require('showdown')
+converter = new showdown.Converter()
+
+# TurndownService = require('turndown')
+# turndownService = new TurndownService()
+
 { listenForMentions, listenForEmoji } = require 'shared/helpers/listen'
 { upload } = require 'shared/helpers/form'
 
@@ -12,6 +18,12 @@ angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
   replace: true
   controller: ['$scope', '$element', ($scope, $element) ->
     $scope.init = (model) ->
+      if model[$scope.field + 'Format'] == 'html'
+        # model[$scope.field] = turndownService.turndown(model[$scope.field])
+        model[$scope.field] = converter.makeMarkdown(model[$scope.field])
+        model[$scope.field + 'Format'] = "md"
+
+
       $scope.model = model
       listenForMentions $scope, $scope.model
       listenForEmoji $scope, $scope.model, $scope.field, $element
