@@ -39,8 +39,6 @@ gl:
     search:
       placeholder: 'Buscar'
       discussions: 'Debates'
-  membership_dropdown:
-    make_coordinator: 'Facer coordinador/a'
   notifications:
     header: "Notificacións"
   discussion_form:
@@ -72,7 +70,6 @@ gl:
   memberships_page:
     members: 'Membros'
     name_label: 'Nome'
-    coordinator_label: 'Coordinador/a'
     remove_member_label: 'Borrar'
   profile_page:
     profile: 'Perfil'
@@ -81,6 +78,8 @@ gl:
     username_label: 'Usuario'
     email_label: 'Correo electrónico'
     locale_label: 'Lingua'
+  change_picture_form:
+    use_gravatar: 'Usar Gravatar'
   dashboard_page:
     aria_label: 'Panel de control'
     threads_from:
@@ -119,6 +118,9 @@ gl:
     order_by_name: 'Nome'
     header_name: 'Nome'
     header_username: 'Usuario'
+  polls_panel:
+    all: 'Todo'
+    closed: 'Pechado'
   poll_common_form:
     closed: Pechado
   poll_count_options:

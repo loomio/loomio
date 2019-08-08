@@ -117,7 +117,6 @@ te:
   memberships_page:
     members: 'సభ్యులు'
     name_label: 'పేరు'
-    coordinator_label: 'సమన్వయకర్త'
     remove_member_label: 'తీసివేయి'
   membership_remove_modal:
     invitation:
@@ -169,6 +168,9 @@ te:
   members_panel:
     order_by_name: 'పేరు'
     header_name: 'పేరు'
+    invitations: 'ఆహ్వానాలు'
+  polls_panel:
+    closed: 'మూసివేయబడింది'
   poll_common_form:
     closed: మూసివేయబడింది
     update: తాజాకరించు

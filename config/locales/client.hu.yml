@@ -113,7 +113,6 @@ hu:
       show_more: "Bővebben"
       view_all: "Mutasd mind"
       new_thread: "Új tred"
-      add_subgroup: 'Alcsoport létrehozása'
       loading: 'Betöltés'
       translate: 'Fordítás'
       translated: '"Bing-Translator"-ral fordítva'
@@ -324,8 +323,7 @@ hu:
     set_title: "Cím megadása"
     resend: "Meghívás újraküldése"
     invitation_resent: "Meghívás újraküldve"
-    make_coordinator: 'Koordonátori jogok megadása'
-    demote_coordinator: 'Koordinátori jogok elvétele'
+    make_coordinator: 'Adminisztrátor jogok megadása'
     remove_from:
       discussion: "Eltávolítás a tredből"
       group: "Eltávolítás a csoportból"
@@ -360,7 +358,6 @@ hu:
     motion_outcome_created: "<strong>{{name}}</strong> közzétett egy végeredményt a <strong>{{title}}</strong> szavazásban"
     motion_outcome_updated: "<strong>{{name}}</strong> frissített egy végeredményt a <strong>{{title}}</strong>szavazásban"
     invitation_accepted: "<strong>{{name}}</strong> elfogadta a csatlakozási kérelmed itt: <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> koordinátorrá tett itt: <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Szólj bele
   extend_proposal_form:
@@ -447,14 +444,11 @@ hu:
   memberships_page:
     members: 'Tagok'
     name_label: 'Név'
-    coordinator_label: 'Koordonátor'
     remove_member_label: 'Visszavonás'
   membership_remove_modal:
     invitation:
       title: Meghívás elvetése
       submit: Meghívás elvetése
-  memberships_panel:
-    remove_coordinator: Koordinátori jogok elvétele
   cancel_invitation_form:
     heading: Meghívás elvetése
   profile_page:
@@ -464,6 +458,8 @@ hu:
     username_label: 'Felhasználónév'
     email_label: 'E-mail'
     locale_label: 'Nyelv'
+  change_picture_form:
+    use_gravatar: 'Használj Gravatart'
   email_settings_page:
     header: Email beállítások
     announcement_label: Bejelentések
@@ -522,13 +518,18 @@ hu:
   poll_common:
     save_changes: Mentés
   discussions_panel:
+    open: Nyitva
     unread: Olvasatlan
     closed: Zárva
-    include_subgroups: Alcsoportok
   members_panel:
     order_by_name: 'Név'
     header_name: 'Név'
     header_username: 'Felhasználónév'
+    invitations: 'Meghívások'
+  polls_panel:
+    all: 'Minden'
+    open: 'Nyitva'
+    closed: 'Zárva'
   current_polls_card:
     start_poll: Új döntés
   poll_common_form:

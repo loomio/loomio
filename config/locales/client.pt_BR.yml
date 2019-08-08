@@ -128,7 +128,6 @@ pt_BR:
       show_more: "Mostrar mais"
       view_all: "Ver Tudo"
       new_thread: "Nova conversa"
-      add_subgroup: 'Adicionar subgrupo'
       loading: 'Carregando'
       translate: 'Traduzir'
       translated: 'Tradução do Bing Tradutor'
@@ -336,7 +335,7 @@ pt_BR:
     set_title: "Configurar o título"
     resend: "Re-enviar convite"
     invitation_resent: "Convide reenviado"
-    make_coordinator: 'Tornar coordenador(a)'
+    make_coordinator: 'Tornar Administrador'
     remove_from:
       discussion: "Apagar da conversa"
     cancel_invitation: Cancelar convite
@@ -565,7 +564,6 @@ pt_BR:
       aria_label: 'Privacidade do grupo: {{privacy}}'
   description_card:
     title: 'Descrição do grupo'
-    placeholder: 'Coordenadores de grupo podem usar esta área para descrever a finalidade do grupo, para que assim todos saibam porque estão aqui.'
     messages:
       description_updated: 'Descrição atualizada'
   leave_group_form:
@@ -573,8 +571,6 @@ pt_BR:
     title: 'Sair do grupo'
     question: 'Você tem certeza que deseja sair deste grupo?'
     submit: 'Sim, sair deste grupo'
-    cannot_leave_group: 'Você não pode deixar este grupo porque você é o último coordenador. Você precisa escolher um outro coordenador ou desativar o grupo.'
-    add_coordinator: 'Adicionar um coordenador'
   archive_group_form:
     aria_label: 'Desativar grupo'
     title: 'Desativar grupo'
@@ -702,15 +698,10 @@ pt_BR:
   memberships_page:
     members: 'Membros'
     name_label: 'Nome'
-    coordinator_label: 'Coordenador(a)'
     remove_member_label: 'Remover'
     fragment_placeholder: 'Filtrar usuários por nome ou nome de usuário...'
     messages:
       remove_member_success: 'Removido {{name}}'
-      make_admin_success: '{{name}} agora é um coordenador'
-      remove_admin_success: '{{name}} não é mais um coordenador'
-    remove_admin_from_self:
-      question: 'Você tem certeza que não deseja mais ser coordenador?'
   membership_remove_modal:
     invitation:
       title: Cancelar convite
@@ -767,11 +758,8 @@ pt_BR:
     deactivate_account: 'Desativar conta'
     help_translate: "Nos ajude a traduzir a Loomio"
   change_picture_form:
-    aria_label: 'Formulário para mudar foto'
-    title: 'Mudar foto'
     use_initials: 'Usar iniciais'
-    use_gravatar: 'Usar gravatar'
-    use_uploaded: 'Enviar uma nova foto'
+    use_gravatar: 'Use Gravatar'
   change_password_form:
     password_changed: Sua senha foi atualizada
   deactivation_modal:
@@ -815,7 +803,6 @@ pt_BR:
     load_more: Carregar mais conversas
     mark_as_read: Marcar como lida
     dismiss: Dispensar
-    thread_dismissed: Conversa dispensada
     thread_recalled: Conversa recordada
     explain_mute:
       title: Você ainda não silenciou nenhuma conversa.
@@ -994,7 +981,6 @@ pt_BR:
   explore_page:
     single_search_result: "1 grupo público que corresponde a <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} grupos públicos correspondentes <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>Não é possível localizar o grupo que você está procurando?</strong> Se a privacidade de um grupo está definida como \"secreto\", não vai aparecer aqui. Se você conhece quem coordena o grupo, você poderia pedir um convite."
   global:
     messages:
       reload: 'Recarregar'
@@ -1066,13 +1052,18 @@ pt_BR:
   poll_common_card:
     show_results: Mostrar resultados
   discussions_panel:
+    open: Aberto
     unread: Não lida
     closed: Encerrado
-    include_subgroups: Subgrupos
   members_panel:
     order_by_name: 'Nome'
     header_name: 'Nome'
     header_username: 'Nome de usuário'
+    invitations: 'Convites'
+  polls_panel:
+    all: 'Tudo'
+    open: 'Aberto'
+    closed: 'Encerrado'
   poll_common_select_group:
     loomio_group: Grupo
   poll_common_notify_group:

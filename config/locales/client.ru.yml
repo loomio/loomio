@@ -127,7 +127,6 @@ ru:
       show_more: "Показать больше"
       view_all: "Показать все"
       new_thread: "Новая тема"
-      add_subgroup: 'Добавить подгруппу'
       loading: 'Загрузка'
       translate: 'Перевести'
       translated: 'Переведено с помощью Бинг'
@@ -286,7 +285,6 @@ ru:
     sign_out: 'Выйти'
   membership_dropdown:
     invitation_resent: "Переслать приглашение"
-    make_coordinator: 'Сделать координатором'
   notifications:
     header: "Уведомления"
     no_notifications: "У Вас нет уведомлений"
@@ -379,7 +377,6 @@ ru:
       deactivate_group: 'Деактивировать группу'
   leave_group_form:
     submit: 'Да, покинуть эту группу'
-    add_coordinator: 'Добавить координатора'
   archive_group_form:
     aria_label: 'Деактивировать группу'
     title: 'Деактивировать группу'
@@ -420,7 +417,6 @@ ru:
   memberships_page:
     members: 'Участники'
     name_label: 'Имя'
-    coordinator_label: 'Координатор'
     remove_member_label: 'Удалить'
   pending_invitations_card:
     copy_url: Скопировать ссылку
@@ -540,12 +536,16 @@ ru:
     start_poll: Начните решение
     save_changes: Сохранить
   discussions_panel:
+    open: Открыто
     unread: Непрочитанные
     closed: Закрыто
-    include_subgroups: Подгруппы
   members_panel:
     order_by_name: 'Название'
     header_name: 'Название'
+  polls_panel:
+    all: 'Все'
+    open: 'Открыто'
+    closed: 'Закрыто'
   current_polls_card:
     start_poll: Новое решение
   poll_common_set_outcome_panel:
@@ -589,8 +589,6 @@ ru:
       use_existing_group: Использовать существующую группу
     invite:
       heading: 'Шаг 2: Настройте канал Slack-мессенджера'
-      helptext: |
-          Успешно! Теперь выберите канал, на который мы будем отправлять обновления.
       select_a_channel: Выбрать канал
       publish_group: Отправить приветственное сообщение
       publish_group_helptext_on: Мы отправим сообщение на этот канал, чтобы проинструктировать людей о том, как использовать LoomioBot.

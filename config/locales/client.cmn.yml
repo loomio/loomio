@@ -109,6 +109,8 @@ cmn:
   members_panel:
     order_by_name: '名字'
     header_name: '名字'
+  polls_panel:
+    closed: '关闭了'
   poll_common_form:
     closed: 关闭了
   poll_count_options:

@@ -66,7 +66,6 @@ ko:
       show_more: "더 보기"
       view_all: "모두 보기"
       new_thread: "새로운 쓰레드"
-      add_subgroup: '소그룹 추가하기'
       loading: '로딩중...'
       translate: '번역'
       translated: 'Bing으로 번역'
@@ -196,7 +195,6 @@ ko:
   membership_card:
     discussion_members: "토론에 참여중인 멤버"
   membership_dropdown:
-    make_coordinator: '코디네이터로 만들기'
     cancel_invitation: 초대 취소
   notifications:
     header: "알림"
@@ -317,8 +315,6 @@ ko:
     title: '그룹 탈퇴'
     question: '정말 이 그룹을 떠나겠습니까?'
     submit: '네, 이 그룹을 떠나겠습니다.'
-    cannot_leave_group: '당신은 마지막 코디네이터이기 때문에 이 그룹을 떠날 수 없습니다.  다른 코디네이터를 지정하거나, 그룹을 비활성화하거나 해야 합니다.'
-    add_coordinator: '코디네이터 추가하기'
   archive_group_form:
     aria_label: '그룹 비활성화'
     title: '그룹 비활성화'
@@ -420,15 +416,10 @@ ko:
   memberships_page:
     members: '멤버'
     name_label: '이름'
-    coordinator_label: '코디네이터'
     remove_member_label: '삭제'
     fragment_placeholder: '이름 혹은 아이디로 거르기'
     messages:
       remove_member_success: '삭제된 {{name}}'
-      make_admin_success: '이제 {{name}}님은 코디네이터입니다.'
-      remove_admin_success: '{{name}}은 더 이상 코디네이터가 아닙니다.'
-    remove_admin_from_self:
-      question: '코디네이터를 그만 두시겠습니까?'
   membership_remove_modal:
     invitation:
       title: 초대 취소
@@ -467,11 +458,7 @@ ko:
     update_profile: '프로필 저장'
     deactivate_account: '계정 비활성화'
   change_picture_form:
-    aria_label: '사진폼 교체'
-    title: '사진 교체'
     use_initials: '이니셜 사용'
-    use_gravatar: '그라바타 사용'
-    use_uploaded: '새 사진 올리기'
   deactivation_modal:
     aria_label: '계정 비활성화'
     introduction: '계정 비활성화된 때 '
@@ -636,13 +623,16 @@ ko:
   poll_common:
     save_changes: 저장
   discussions_panel:
+    open: 진행중
     unread: 읽지않음
     closed: 종료
-    include_subgroups: 소그룹
   members_panel:
     order_by_name: '이름'
     header_name: '이름'
     header_username: '아이디'
+  polls_panel:
+    open: '진행중'
+    closed: '종료'
   poll_common_form:
     closed: 종료
   poll_count_options:

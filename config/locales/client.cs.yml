@@ -92,7 +92,6 @@ cs:
       show_more: "Zobrazit více"
       view_all: "Zobrazit vše"
       new_thread: "Nové vlákno"
-      add_subgroup: 'Přidat podskupinu'
       loading: 'Načítá se'
       translate: 'Přeložit'
       translated: 'Překlad Bing Translator'
@@ -254,7 +253,6 @@ cs:
     invite_to_poll: "Pozvat k hlasování"
   membership_dropdown:
     invitation_resent: "Pozvánka přeposlána"
-    make_coordinator: 'Vytvořit koordinátora'
     remove_from:
       group: "Odstranit ze skupiny"
     cancel_invitation: Stornovat pozvánku
@@ -388,8 +386,6 @@ cs:
     title: 'Opustit skupinu'
     question: 'Opravdu chcete tuto skupinu opustit?'
     submit: 'Ano, opustit tuto skupinu'
-    cannot_leave_group: 'Tuto skupinu nemůžete opustit, protože jste poslední koordinátor. Budete muset vybrat jiného koordinátora nebo skupinu deaktivovat.'
-    add_coordinator: 'Přidat koordinátora'
   archive_group_form:
     question: 'Opravdu chcete deaktivovat tuto skupinu?'
     submit: 'Ano, deaktivovat tuto skupinu'
@@ -463,12 +459,9 @@ cs:
   memberships_page:
     members: 'Členové'
     name_label: 'Jméno'
-    coordinator_label: 'Koordinátor'
     remove_member_label: 'Vyloučit'
     messages:
       remove_member_success: 'Odebrán {{name}}'
-      make_admin_success: '{{name}} je nyní koordinátorem'
-      remove_admin_success: '{{name}} již není koordinátor'
   membership_remove_modal:
     invitation:
       title: Stornovat pozvánku
@@ -477,8 +470,6 @@ cs:
     membership:
       title: Odebrat člena
       submit: Odebrat člena
-  memberships_panel:
-    add_coordinator: Vytvořit koordinátora
   membership_form:
     modal_title:
       group: Nastavit název skupiny
@@ -517,6 +508,8 @@ cs:
     update_profile: 'Aktualizovat profil'
     deactivate_account: 'Deaktivovat účet'
     help_translate: "Pomozte nám překládat Loomio"
+  change_picture_form:
+    use_gravatar: 'Použít Gravatar'
   change_password_form:
     set_password: Nastavení hesla
     password_changed: Vaše heslo bylo aktualizováno
@@ -681,13 +674,17 @@ cs:
     title: Předchozí rozhodnutí
     count: "Zobrazit všechna: ({{count}}) rozhodnutí"
   discussions_panel:
+    open: Otevřená
     unread: Nepřečteno
     closed: Zavřená
-    include_subgroups: Podskupiny
   members_panel:
     order_by_name: 'Název'
     header_name: 'Název'
     header_username: 'Uživatelské jméno'
+  polls_panel:
+    all: 'Vše'
+    open: 'Otevřená'
+    closed: 'Zavřená'
   current_polls_card:
     title: Aktuální rozhodnutí
     start_poll: Nové rozhodnutí

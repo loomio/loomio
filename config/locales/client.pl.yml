@@ -110,7 +110,6 @@ pl:
       show_more: "Pokaż więcej"
       view_all: "Pokaż wszystko"
       new_thread: "Nowy wątek"
-      add_subgroup: 'Dodanie podgrupy'
       loading: 'Ładowanie'
       translate: 'Tłumacz'
       translated: 'Przetłumaczono przez Translator Bing'
@@ -309,8 +308,6 @@ pl:
     set_title: "Nadaj tytuł"
     resend: "Wyślij zaproszenie ponownie"
     invitation_resent: "Zaproszenie wysłane ponownie"
-    make_coordinator: 'Definicja koordynatora'
-    demote_coordinator: 'Odwołaj koordynatora'
     remove_from:
       discussion: "Usuń z wątku"
       group: "Usuń z grupy"
@@ -479,8 +476,6 @@ pl:
       quiet_aria_description: Poziom powiadamianie dla tej grupy jest ustawiony na Cicho. Nie będziesz otrzymywać maili o aktywnościach z tej grupy. Jej aktywność będzie wyświetlana na Pulpicie.
       mute: Ukryj tę grupę na pulpicie i nie przesyłaj powiadomień z wyjątkiem @wzmianek
       mute_aria_description: Poziom powiadamiania dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie.
-  leave_group_form:
-    add_coordinator: 'Dodaj koordynatora/kę'
   archive_group_form:
     aria_label: 'Dezaktywuj grupę'
     title: 'Dezaktywuj grupę'
@@ -519,13 +514,10 @@ pl:
   memberships_page:
     members: 'Członkowie'
     name_label: 'Nazwa'
-    coordinator_label: 'Koordynator'
     remove_member_label: 'Usunięcie'
     fragment_placeholder: 'Filtrowanie użytkowników przez nazwę lub login'
     messages:
       remove_member_success: 'Usunięto {{name}}'
-      make_admin_success: '{{name}} został/a koordynatorem'
-      remove_admin_success: '{{name}} przestał/a być koordynatorem'
   membership_remove_modal:
     invitation:
       title: Anuluj zaproszenie
@@ -533,8 +525,6 @@ pl:
     membership:
       title: Usunięcie członka
       submit: Usunięcie członka
-  memberships_panel:
-    remove_coordinator: Odwołaj koordynatora
   cancel_invitation_form:
     heading: Anuluj zaproszenie
   profile_page:
@@ -650,13 +640,17 @@ pl:
   poll_common:
     save_changes: Zapis
   discussions_panel:
+    open: Otwarta
     unread: Nieprzeczytane
     closed: Zamknięta
-    include_subgroups: Podgrupy
   members_panel:
     order_by_name: 'Nazwa'
     header_name: 'Nazwa'
     header_username: 'Nazwa użytkownika'
+    invitations: 'Zaproszenia'
+  polls_panel:
+    open: 'Otwarta'
+    closed: 'Zamknięta'
   current_polls_card:
     start_poll: Nowa decyzja
   poll_common_form:

@@ -85,7 +85,6 @@ tr:
       show_more: "Daha fazla göster"
       view_all: "Hepsini görüntüle"
       new_thread: "Yeni müzakere"
-      add_subgroup: 'Alt grup ekle'
       loading: 'Yükleniyor'
       translate: 'Tercüme et'
       translated: 'Bing Translator tercümesi'
@@ -176,7 +175,6 @@ tr:
     sign_in: 'Oturum aç'
     logo_title: 'Ana sayfa'
   membership_dropdown:
-    make_coordinator: 'Koordinatör yap'
     cancel_invitation: Davetiyeyi iptal et
   notifications:
     header: "Bildirimler"
@@ -390,15 +388,10 @@ tr:
   memberships_page:
     members: 'Üyeler'
     name_label: 'İsim'
-    coordinator_label: 'Koordinatör'
     remove_member_label: 'Kaldır'
     fragment_placeholder: 'Kullanıcıları ad ya da kullanıcı adına göre filtrele...'
     messages:
       remove_member_success: '{{name}} kaldırıldı'
-      make_admin_success: '{{name}} şimdi bir koordinatör'
-      remove_admin_success: '{{name}} artık bir koordinatör değil'
-    remove_admin_from_self:
-      question: 'Artık bir koordinatör olmak istemediğinizden emin misiniz?'
   membership_remove_modal:
     invitation:
       title: Davetiyeyi iptal et
@@ -435,6 +428,8 @@ tr:
     email_label: 'E-posta'
     locale_label: 'Dil'
     update_profile: 'Profili güncelle'
+  change_picture_form:
+    use_gravatar: 'Gravatar kullan'
   email_settings_page:
     header: E-posta ayarları
     daily_summary_label: Günlük özet e-postası
@@ -602,13 +597,17 @@ tr:
   poll_common:
     save_changes: Kaydet
   discussions_panel:
+    open: Açık
     unread: Okunmamış
     closed: Kapalı
-    include_subgroups: Alt gruplar
   members_panel:
     order_by_name: 'İsim'
     header_name: 'İsim'
     header_username: 'Kullanıcı adı'
+  polls_panel:
+    all: 'Hepsi'
+    open: 'Açık'
+    closed: 'Kapalı'
   poll_common_notify_group:
     notify_group: Duyuru
   poll_common_close_form:

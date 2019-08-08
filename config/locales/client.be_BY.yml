@@ -58,8 +58,6 @@ be_BY:
       placeholder: 'Пошук'
       discussions: 'Абмеркаванні'
       proposals: 'Прапановы'
-  membership_dropdown:
-    make_coordinator: 'Зрабіць каардынатарам'
   notifications:
     header: "Апавяшчэнні"
   position_buttons_panel:
@@ -101,7 +99,6 @@ be_BY:
   memberships_page:
     members: 'Удзельнікі'
     name_label: 'Імя'
-    coordinator_label: 'Каардынатар'
     remove_member_label: 'Выдаліць'
   membership_remove_modal:
     membership:
@@ -118,6 +115,8 @@ be_BY:
     username_label: 'Імя карыстальніка'
     email_label: 'Email'
     locale_label: 'Мова'
+  change_picture_form:
+    use_gravatar: 'Выкарыстоўваць Gravatar'
   dashboard_page:
     aria_label: 'Галоўная'
     mark_as_read: Адзначыць як прачытанае
@@ -164,6 +163,9 @@ be_BY:
     order_by_name: 'Імя'
     header_name: 'Імя'
     header_username: 'Імя карыстальніка'
+  polls_panel:
+    all: 'Усе'
+    closed: 'Закрыта'
   poll_common_form:
     closed: Закрыта
   poll_count_options:

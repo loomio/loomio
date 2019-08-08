@@ -30,8 +30,6 @@ km:
     search:
       placeholder: 'ស្វែងរក'
       discussions: 'ការពិភាក្សារ'
-  membership_dropdown:
-    make_coordinator: 'ធ្វើឲ្យអ្នកសម្របសម្រួល'
   notifications:
     header: "ការជូនដំណឹង"
   position_buttons_panel:
@@ -64,7 +62,6 @@ km:
   memberships_page:
     members: 'សមាជិក'
     name_label: 'ឈ្មោះ'
-    coordinator_label: 'សម្របសម្រួល'
     remove_member_label: 'យក'
   profile_page:
     name_label: 'ឈ្មោះ'
@@ -98,6 +95,8 @@ km:
   members_panel:
     order_by_name: 'ឈ្មោះ'
     header_name: 'ឈ្មោះ'
+  polls_panel:
+    closed: 'បានបិទ'
   poll_common_form:
     closed: បានបិទ
   poll_count_options:

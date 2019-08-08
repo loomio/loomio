@@ -50,7 +50,6 @@ sr:
       show_more: "Prikaži više"
       view_all: "Vidi Sve"
       new_thread: "Nova nit"
-      add_subgroup: 'Dodaj podgrupu'
       loading: 'Učitavanje'
       translate: 'Prevedi'
       translated: 'Prevod Bing Translator'
@@ -155,7 +154,6 @@ sr:
     sign_in: 'Prijavi se'
     toggle_sidebar: 'Uklj/Isklj traku'
   membership_dropdown:
-    make_coordinator: 'Učini koordinatorom'
     cancel_invitation: Otkaži poziv
   notifications:
     header: "Obaveštenja"
@@ -344,15 +342,10 @@ sr:
   memberships_page:
     members: 'Članovi'
     name_label: 'Ime'
-    coordinator_label: 'Koordinator'
     remove_member_label: 'Ukloni'
     fragment_placeholder: 'Filtriraj korisnike po imenu ili korisničkom imenu...'
     messages:
       remove_member_success: 'Uklonjen(a) {{name}}'
-      make_admin_success: '{{name}} je sada koordinator'
-      remove_admin_success: '{{name}} nije više koordinator'
-    remove_admin_from_self:
-      question: 'Da li ste sigurni da ne želite više biti koordinator?'
   membership_remove_modal:
     invitation:
       title: Otkaži poziv
@@ -389,6 +382,8 @@ sr:
     email_label: 'ePošta'
     locale_label: 'Jezik'
     update_profile: 'Promena profila'
+  change_picture_form:
+    use_gravatar: 'Koristi Gravatar'
   email_settings_page:
     header: ePoruke
     daily_summary_label: Dnevni izveštaj ePorukom
@@ -550,7 +545,6 @@ sr:
   explore_page:
     single_search_result: "1 javna grupa se podudara sa <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} javnih grupa se podudara sa <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>Ne možeš naći grupu koju tražiš?</strong> Ako je grupa 'tajna', neće se pojaviti ovde. Ako poznaješ koordinatora grupe, možeš ga pitati za pozivnicu."
   global:
     messages:
       reload: 'Osveži'
@@ -596,13 +590,17 @@ sr:
   poll_common:
     save_changes: Snimi
   discussions_panel:
+    open: Otvoreno
     unread: Nepročitano
     closed: Zatvoreno
-    include_subgroups: Podgrupe
   members_panel:
     order_by_name: 'Ime'
     header_name: 'Ime'
     header_username: 'Korisničko Ime'
+  polls_panel:
+    all: 'Sve'
+    open: 'Otvoreno'
+    closed: 'Zatvoreno'
   poll_common_form:
     closed: Zatvoreno
   poll_count_options:

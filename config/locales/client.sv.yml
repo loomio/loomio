@@ -114,7 +114,6 @@ sv:
       show_more: "Visa mer"
       view_all: "Visa Alla"
       new_thread: "Ny tråd"
-      add_subgroup: 'Skapa undergrupp'
       loading: 'Laddar'
       translate: 'Översätt'
       translated: 'Översättning av Bing Translator'
@@ -295,7 +294,6 @@ sv:
     logo_title: 'Hemsida'
   membership_dropdown:
     invitation_resent: "Inbjudan skickad igen"
-    make_coordinator: 'Gör till koordinator'
   notifications:
     header: "Notifieringar"
   position_buttons_panel:
@@ -355,7 +353,6 @@ sv:
   memberships_page:
     members: 'Medlemmar'
     name_label: 'Namn'
-    coordinator_label: 'Koordinator'
     remove_member_label: 'Ta bort'
   profile_page:
     profile: 'Profil'
@@ -364,6 +361,8 @@ sv:
     username_label: 'Användarnamn'
     email_label: 'Email'
     locale_label: 'Språk'
+  change_picture_form:
+    use_gravatar: 'Använd Gravatar'
   email_settings_page:
     announcement_label: Meddelanden
   dashboard_page:
@@ -417,12 +416,17 @@ sv:
   poll_common:
     save_changes: Spara
   discussions_panel:
+    open: Öppen
     unread: Olästa
     closed: Stängd
   members_panel:
     order_by_name: 'Namn'
     header_name: 'Namn'
     header_username: 'Användarnamn'
+  polls_panel:
+    all: 'Alla'
+    open: 'Öppen'
+    closed: 'Stängd'
   current_polls_card:
     start_poll: Nytt beslut
   poll_common_form:

@@ -129,7 +129,6 @@ nl_NL:
       show_more: "Laat meer zien"
       view_all: "Bekijk alles"
       new_thread: "Nieuw bord"
-      add_subgroup: 'Toevoegen subgroep'
       loading: 'Aan het laden'
       translate: 'Vertalen'
       translated: 'Vertaling door Bing vertaler'
@@ -311,8 +310,7 @@ nl_NL:
     sign_out: 'Uitloggen'
   membership_dropdown:
     invitation_resent: "Uitnodiging opniew verstuurd"
-    make_coordinator: 'Duid een coördinator aan'
-    demote_coordinator: 'Degradeer een coördinator'
+    make_coordinator: 'Admin maken'
     cancel_invitation: Annuleer uitnodiging
   notifications:
     header: "Meldingen"
@@ -336,7 +334,6 @@ nl_NL:
     motion_outcome_created: "<strong>{{name}}</strong> heeft een uitkomst gepubliceerd voor het voorstel <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> heeft de uitkomst voor het voorstel <strong>{{title}}</strong> geactualiseerd"
     invitation_accepted: "<strong>{{name}}</strong> heeft je uitnodiging geaccepteerd om deel te nemen aan <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> heeft je coördinator gemaakt van <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> heeft een {{poll_type}} gestart <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> heeft een {{poll_type}} aangepast <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} sluit binnenkort <strong>{{title}}</strong>"
@@ -494,7 +491,6 @@ nl_NL:
       aria_label: 'Groepsprivacy: {{privacy}}'
   description_card:
     title: 'Groepsbeschrijving'
-    placeholder: 'Groepscoördinatoren kunnen deze zone gebruiken om het doel van de groep te omschrijven, zodat iedereen weet waarom ze hier zijn.'
     messages:
       description_updated: 'Beschrijving vernieuwd'
   leave_group_form:
@@ -502,8 +498,6 @@ nl_NL:
     title: 'Verlaat groep'
     question: 'Weet je zeker dat je de groep wil verlaten?'
     submit: 'Ja, verlaat deze groep'
-    cannot_leave_group: 'Je kunt deze groep niet verlaten, omdat je de laatste coördinator bent. Je moet een andere coördinator kiezen of de groep deactiveren.'
-    add_coordinator: 'Voeg een coördinator toe'
   archive_group_form:
     aria_label: 'Deactiveer groep'
     title: 'Deactiveer groep'
@@ -644,15 +638,10 @@ nl_NL:
   memberships_page:
     members: 'Leden'
     name_label: 'Naam'
-    coordinator_label: 'Coördinator'
     remove_member_label: 'Verwijder'
     fragment_placeholder: 'Filter gebruikers op naam of gebruiksnaam'
     messages:
       remove_member_success: '{{name}} verwijderd'
-      make_admin_success: '{{name}} is nu coördinator'
-      remove_admin_success: '{{name}} is geen coördinator meer'
-    remove_admin_from_self:
-      question: 'Weet je zeker dat je geen coördinator meer wil zijn?'
   membership_remove_modal:
     invitation:
       title: Annuleer uitnodiging
@@ -661,9 +650,6 @@ nl_NL:
     membership:
       title: Verwijder lid
       submit: Verwijder lid
-  memberships_panel:
-    add_coordinator: Duid een coördinator aan
-    remove_coordinator: Degradeer een coördinator
   pending_invitations_card:
     heading: Uitnodigingen in behandeling
     email: Email
@@ -714,12 +700,9 @@ nl_NL:
     deactivate_account: 'Deactiveer account'
     help_translate: "Help ons Loomio te vertalen"
   change_picture_form:
-    aria_label: 'Verander fotoformulier'
-    title: 'Verander foto'
     helptext: 'Je kunt je eigen profiel foto uploaden, of als je een <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account hebt, kun je dat gebruiken.'
     use_initials: 'Gebruik initialen'
-    use_gravatar: 'Gebruik gravatar'
-    use_uploaded: 'Upload nieuwe foto'
+    use_gravatar: 'Gebruik Gravatar'
   change_password_form:
     set_password: Wachtwoord instellen
     password_changed: Je wachtwoord is geüpdatet
@@ -941,7 +924,6 @@ nl_NL:
     search_placeholder: Zoek naar openbare groepen
     single_search_result: "1 openbare groep die overeen komt met <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} openbare groepen die overeen komen met <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>Kun je de groep die je zoekt niet vinden? </strong> Als de privacy van een groep op 'geheim' staat, verschijnt die hier niet. Als je weet wie de groep coördineert, kun je hem of haar vragen om een uitnodiging."
   global:
     messages:
       app_update: 'Er is een nieuwe versie van de app beschikbaar'
@@ -1032,13 +1014,17 @@ nl_NL:
     title: Vorige beslissingen
     count: "Zie alles: ({{count}}) beslissingen"
   discussions_panel:
+    open: Openen
     unread: Ongelezen
     closed: Gesloten
-    include_subgroups: Subgroepen
   members_panel:
     order_by_name: 'Naam'
     header_name: 'Naam'
     header_username: 'Gebruikersnaam'
+  polls_panel:
+    all: 'Alle'
+    open: 'Openen'
+    closed: 'Gesloten'
   poll_common_action_panel:
     unable_to_vote: Je hebt geen toestemming om een stem uit te brengen voor deze beslissing.
   current_polls_card:
@@ -1388,8 +1374,6 @@ nl_NL:
       use_existing_group: Gebruik een bestaande groep
     invite:
       heading: 'Stap 2: Stel een Slack kanaal op'
-      helptext: |
-          Succes! Nu, kies een kanaal dat je graag zou gebruiken om updates op te posten.
       select_a_channel: Kies een kanaal
       publish_group: Post een welkomstbericht
       publish_group_helptext_on: We zullen het bericht op dit kanaal posten om mensen te instrueren hoe ze LoomioBot kunnen gebruiken.

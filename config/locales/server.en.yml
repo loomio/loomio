@@ -639,37 +639,37 @@ en:
   comment_by: Comment by %{comment_author}
 
   personal_data:
-    title: Personal data of %{user_name} in on %{host_name}
+    title: Personal data of %{user_name} on %{host_name}
 
 
-  poll_generator:
-    proposal:
-      title: "Extend offer letters to Shelley and Jack"
-      details: Shelley and Jack have been working with us as interns for the past 3 months, and both have displayed admirable dedication and are clearly assets to our team. Shall we extend them formal offers of employment?
-
-    poll:
-      title: "Any food allergies we should be aware of for the dinner party Thursday?"
-      details: Looking forward to seeing you all at our place! Please indicate if there are any dietary restrictions we should be aware of.
-
-    count:
-      title: "Who's up for helping to organize the company picnic?"
-      details: Marsha felt totally overloaded last time, so this time we'd like to get her a couple helpers to ensure it's a bit easier on everyone. Please indicate if you'd like to help!
-
-    dot_vote:
-      title: "What's our company strategy for next quarter?"
-      details: This is a big year for our company and we need to be strategic about what we put our limited resourcing into. Please indicate which areas you think are most important to focus on over the next quarter.
-
-    score:
-      title: "What topics are you interested in for the next conference?"
-      details: We're preparing the topics to be covered for the next conference. Please indicate your interest in each of the following topics.
-
-    ranked_choice:
-      title: "Who should be our next deputy mayor?"
-      details: "It's time for our semi-annual elections! This is an official instant runoff poll which will determine our next deputy mayor. Be sure to read up on each of the candidates on our website!"
-
-    meeting:
-      title: "When should we have our next staff meeting?"
-      details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?
+  # poll_generator:
+  #   proposal:
+  #     title: "Extend offer letters to Shelley and Jack"
+  #     details: Shelley and Jack have been working with us as interns for the past 3 months, and both have displayed admirable dedication and are clearly assets to our team. Shall we extend them formal offers of employment?
+  #
+  #   poll:
+  #     title: "Any food allergies we should be aware of for the dinner party Thursday?"
+  #     details: Looking forward to seeing you all at our place! Please indicate if there are any dietary restrictions we should be aware of.
+  #
+  #   count:
+  #     title: "Who's up for helping to organize the company picnic?"
+  #     details: Marsha felt totally overloaded last time, so this time we'd like to get her a couple helpers to ensure it's a bit easier on everyone. Please indicate if you'd like to help!
+  #
+  #   dot_vote:
+  #     title: "What's our company strategy for next quarter?"
+  #     details: This is a big year for our company and we need to be strategic about what we put our limited resourcing into. Please indicate which areas you think are most important to focus on over the next quarter.
+  #
+  #   score:
+  #     title: "What topics are you interested in for the next conference?"
+  #     details: We're preparing the topics to be covered for the next conference. Please indicate your interest in each of the following topics.
+  #
+  #   ranked_choice:
+  #     title: "Who should be our next deputy mayor?"
+  #     details: "It's time for our semi-annual elections! This is an official instant runoff poll which will determine our next deputy mayor. Be sure to read up on each of the candidates on our website!"
+  #
+  #   meeting:
+  #     title: "When should we have our next staff meeting?"
+  #     details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?
 
   notified:
     no_matches_found: "No results found matching '%{query}'"

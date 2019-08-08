@@ -71,7 +71,6 @@ ga_IE:
       show_more: "Taispeáin tuilleadh"
       view_all: "Féach Orthu Uile"
       new_thread: "Snáith nua"
-      add_subgroup: 'Cuir fobhaicle leis'
       loading: 'Ag luchtú'
       translate: 'Aistrigh'
       translated: 'Aistriúchán ó Bing Translator'
@@ -271,7 +270,6 @@ ga_IE:
     title: 'Fág an bhaicle'
     question: 'An bhfuil tú cinnte gur mian leat an bhaicle seo a fhágáil?'
     submit: 'Táim, fág an bhaicle'
-    add_coordinator: 'Cuir comheagraí leis'
   archive_group_form:
     aria_label: 'Díghníomhachtaigh an bhaicle'
     title: 'Díghníomhachtaigh an bhaicle'
@@ -333,13 +331,10 @@ ga_IE:
   memberships_page:
     members: 'Comhaltaí'
     name_label: 'Ainm'
-    coordinator_label: 'Comhordaitheoir'
     remove_member_label: 'Bain é'
     fragment_placeholder: 'Scag na hainmneacha nó ainmneacha úsáideora...'
     messages:
       remove_member_success: 'Baineadh {{name}}'
-      make_admin_success: 'Is comhordaitheoir anois {{name}}'
-      remove_admin_success: 'Ní comhordaitheoir a thuilleadh é {{name}}'
   membership_remove_modal:
     invitation:
       title: 'Cealaigh an cuireadh '
@@ -381,8 +376,7 @@ ga_IE:
     update_profile: 'Nuashonraigh an bheathaisnéisín'
     deactivate_account: 'Díghníomhachtaigh an cuntas'
   change_picture_form:
-    title: 'Athraigh an pictiúr'
-    use_uploaded: 'Uasluchtaigh pictiúr nua'
+    use_gravatar: 'Bain feidhm as Gravatar'
   deactivation_modal:
     aria_label: 'Díghníomhachtaigh an cuntas'
     introduction: 'Nuair a dhíghníomhachtaíonn tú do chuntas:'
@@ -520,13 +514,17 @@ ga_IE:
   poll_common:
     save_changes: Taisc
   discussions_panel:
+    open: Ar oscailt
     unread: Neamhléite
     closed: Dúnta
-    include_subgroups: Fobhaiclí
   members_panel:
     order_by_name: 'Ainm'
     header_name: 'Ainm'
     header_username: 'Ainm úsáideora'
+  polls_panel:
+    all: 'Uile'
+    open: 'Ar oscailt'
+    closed: 'Dúnta'
   current_polls_card:
     start_poll: Cinneadh nua
   poll_common_notify_group:

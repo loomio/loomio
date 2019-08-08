@@ -135,7 +135,6 @@ he:
       show_more: "הראה עוד"
       view_all: "צפייה בכל"
       new_thread: "שיחה חדשה"
-      add_subgroup: 'הוסף תת קבוצה'
       loading: 'נטען'
       translate: 'תרגום'
       translated: 'תרגום ע"י מתרגם של בינג'
@@ -348,8 +347,6 @@ he:
     set_title: "הגדר כותרת"
     resend: "שלח הזמנה שוב"
     invitation_resent: "הזמנה נשלחה שוב"
-    make_coordinator: 'הפיכה למתאם'
-    demote_coordinator: 'הורדת דרגת המתאם'
     remove_from:
       discussion: "הסר מהשיחה"
       group: "הסר מהקבוצה"
@@ -384,7 +381,6 @@ he:
     motion_outcome_created: "<strong>{{name}}</strong> פרסמ/ה תוצאה להצעה <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> עדכן את התוצאה להצעה <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> אישר את הזמנתך להצטרפות <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> נתן לך הרשאה של מתאם של <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> התחיל את {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> ערך את {{poll_type}}: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> שיתף את {{poll_type}}: <strong>{{title}}</strong>"
@@ -598,7 +594,6 @@ he:
     options:
       label: 'אפשרויות'
       edit_group: 'עריכת הגדרות הקבוצה'
-      become_coordinator: הפוך למתאם
       export_data: יצוא דאטה של הקבוצה
       export_data_as_json: יצא את נתוני הקבוצה כקובץ JSON
       export_data_as_csv: יצא את נתוני הקבוצה כקובץ CSV
@@ -629,7 +624,6 @@ he:
       aria_label: 'פרטיות הקבוצה: {{privacy}}'
   description_card:
     title: 'תאור הקבוצה'
-    placeholder: 'מתאמי קבוצות יכולים להשתמש באיזור זה לתיאור מטרות הקבוצה, כך שכולם ידעו למה הם פה.'
     messages:
       description_updated: 'תאור עודכן'
   leave_group_form:
@@ -637,8 +631,6 @@ he:
     title: 'עזוב את הקבוצה'
     question: 'אתם בטוחים שאתם רוצים לצאת מהקבוצה?'
     submit: 'כן, צא מהקבוצה'
-    cannot_leave_group: 'אינך יכול לצאת בגלל שאתה המתאם האחרון בקבוצה. תדרשו לבחור מתאם אחר במקומכם או להפוך את הקבוצה ללא פעילה'
-    add_coordinator: 'הוסף מתאם'
   archive_group_form:
     aria_label: 'הפוך קבוצה ללא פעילה'
     title: 'הפוך קבוצה ללא פעילה'
@@ -810,15 +802,10 @@ he:
   memberships_page:
     members: 'חברים'
     name_label: 'שם'
-    coordinator_label: 'מתאם'
     remove_member_label: 'הסרה'
     fragment_placeholder: 'סנן משתמשים לפי שם או שם משתמש'
     messages:
       remove_member_success: '{{name}} הןסר'
-      make_admin_success: '{{name}} עכשיו מתאם'
-      remove_admin_success: '{{name}} כבר אינו מתאם'
-    remove_admin_from_self:
-      question: 'אתה בטוח שאתה לא רוצה להיות מתאם יותר?'
   membership_remove_modal:
     invitation:
       title: בטל הזמנה
@@ -832,9 +819,6 @@ he:
       impact_for_subgroups: זה יסיר את הגישה שלהם לכל תת הקבוצות של הקבוצה.
       flash: משתתף הוסר
       submit: הסרת משתתף
-  memberships_panel:
-    add_coordinator: הפוך למתאם
-    remove_coordinator: הורדת דרגת המתאם
   membership_form:
     modal_title:
       group: תן שם לקבוצה
@@ -904,12 +888,9 @@ he:
     select_text_to_link: בחר טקסט לחיבור
     insert_link: הכנס לינק
   change_picture_form:
-    aria_label: 'שנה צורת התמונה'
-    title: 'שנה תמונה'
     helptext: 'אתה יכול לעלות תמונת פרופיל משלך או, אם יש לך חשבון <a href="https://en.gravatar.com/support/whatisgravatar/">אווטר</a>, אתה יכול להשתמש בו.'
     use_initials: 'השתמש בראשי תיבות'
-    use_gravatar: 'השתמש באווטר'
-    use_uploaded: 'העלה תמונה חדשה'
+    use_gravatar: 'שימוש בGravatar'
   change_password_form:
     set_password: הגדר סיסמה
     password_changed: סיסמתך עודכנה
@@ -967,7 +948,6 @@ he:
     load_more: הצג עוד שיחות
     mark_as_read: סמן כנקרא
     dismiss: בטל
-    thread_dismissed: שיחה שוחררה
     thread_recalled: שיחה הושבה
     explain_mute:
       title: לא השתקת אף שיחה עוד.
@@ -1173,7 +1153,6 @@ he:
     search_placeholder: חיפוש בקבוצות פומביות
     single_search_result: "התאמה עם קבוצה פומבית אחת <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} התאמות לקבוצות פומביות <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>לא מוצא את הקבוצה שאתה מחפש?</strong> אם הפרטיות של קבוצה מוגדרת כ-'סודי', היא לא תופיע כאן. אם ידוע לך מי מתאם בקבוצה, תוכל לבקש ממנו הזמנה."
   global:
     messages:
       app_update: 'גרסה חדשה של האפליקציה זמינה לעדכון'
@@ -1272,13 +1251,18 @@ he:
     title: החלטות קודמות
     count: "צפה בכל: ({{count}}) ההחלטות"
   discussions_panel:
+    open: פתוח
     unread: לא-נקרא
     closed: סגור
-    include_subgroups: תת קבוצה
   members_panel:
     order_by_name: 'שם'
     header_name: 'שם'
     header_username: 'שם משתמש'
+    invitations: 'הזמנה'
+  polls_panel:
+    all: 'הכל'
+    open: 'פתוח'
+    closed: 'סגור'
   poll_common_action_panel:
     anonymous: ההצבעות יהיו אנונימיות
     anonymous_until_close: ההצבעות יהיו אנונימיות עד לסגירת הסקר
@@ -1711,8 +1695,6 @@ he:
       use_existing_group: השתמש בקבוצה קיימת
     invite:
       heading: 'שלב 2: הגדר ערוץ סלאק'
-      helptext: |
-          הצלחה! עכשיו בחר ערוץ שתרצה להכניס עדכונים לתוכו.
       select_a_channel: בחר ערוץ
       publish_group: פרסם הודעת פתיחה
       publish_group_helptext_on: אנחנו נפרסם הודעה לתוך ערוץ זה כדי להדריך אנשים איך להשתמש בבוט של לומיו.

@@ -90,7 +90,6 @@ da:
       show_more: "Vis mere"
       view_all: "Se alle"
       new_thread: "Ny tråd"
-      add_subgroup: 'Tilføj undergruppe'
       loading: 'Indlæser'
       translate: 'Oversæt'
       translated: 'Oversættelse via Bing Translator'
@@ -240,7 +239,6 @@ da:
     toggle_sidebar: 'Vis/skjul menu'
     logo_title: 'Hjem'
   membership_dropdown:
-    make_coordinator: 'Gør koordinator'
     cancel_invitation: Fortryd invitation
   notifications:
     header: "Notifikationer"
@@ -263,7 +261,6 @@ da:
     motion_outcome_created: "<strong>{{name}}</strong> publicerede et resultat af forslaget <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> opdaterede resultatet af forslaget <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> accepterede din invitation til at blev medlem af <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> gjorde dig til koordinator af <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> startede en {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> redigerede en  {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} lukker snart: <strong>{{title}}</strong>"
@@ -389,7 +386,6 @@ da:
       aria_label: 'Privatinstillinger: {{privacy}}'
   description_card:
     title: 'Gruppe beskrivelse'
-    placeholder: 'Gruppe koordinatorer kan benytte dette område til at beskrive gruppens formål, så at alle ved hvorfor de er her.'
     messages:
       description_updated: 'Beskrivelse gemt'
   leave_group_form:
@@ -397,8 +393,6 @@ da:
     title: 'Forlad gruppe'
     question: 'Er du sikker på at du vil forlade denne gruppe?'
     submit: 'Ja, forlad denne gruppe'
-    cannot_leave_group: 'Du kan ikke forlade denne gruppe da du er den sidste koordinator. Du bliver nødt til at vælge en anden koordinator eller deaktivere gruppen.'
-    add_coordinator: 'Tilføj en koordinator'
   archive_group_form:
     aria_label: 'Deaktiver gruppe'
     title: 'Deaktiver gruppe'
@@ -518,15 +512,10 @@ da:
   memberships_page:
     members: 'Medlemmer'
     name_label: 'Navn'
-    coordinator_label: 'Koordinator'
     remove_member_label: 'Slet'
     fragment_placeholder: 'Filtrer brugere på navn eller brugernavn...'
     messages:
       remove_member_success: '{{name}} slettet'
-      make_admin_success: '{{name}} er nu koordinator'
-      remove_admin_success: '{{name}} er ikke længere koordinator'
-    remove_admin_from_self:
-      question: 'Er du sikker på at du ikke længere ønsker at være koordinator?'
   membership_remove_modal:
     invitation:
       title: Fortryd invitation
@@ -566,12 +555,9 @@ da:
     update_profile: 'Gem profil'
     deactivate_account: 'Deaktiver konto'
   change_picture_form:
-    aria_label: 'Rediger billede'
-    title: 'Rediger billede'
     helptext: 'Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.'
     use_initials: 'Benyt initialer'
-    use_gravatar: 'Benyt gravatar'
-    use_uploaded: 'Upload et nyt billede'
+    use_gravatar: 'Brug Gravatar'
   deactivation_modal:
     aria_label: 'Deaktiver konto'
     introduction: 'Når du deaktiverer din konto:'
@@ -764,7 +750,6 @@ da:
   explore_page:
     single_search_result: "1 offentlig gruppe der matcher <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} offentlige grupper der matcher <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>Kan du ikke finde den gruppe du leder efter?</strong> Hvis en gruppes privatindstillinger er sat til hemmelig, så vil du ikke kunne finde den her. Hvis du kender gruppens koodinator, så kan du anmode dem om at blive medlem."
   global:
     messages:
       reload: 'Genopfrisk'
@@ -841,13 +826,17 @@ da:
   poll_common_card:
     show_results: Vis resultater
   discussions_panel:
+    open: Offentlig
     unread: Ulæst
     closed: Lukket
-    include_subgroups: Undergrupper
   members_panel:
     order_by_name: 'Navn'
     header_name: 'Navn'
     header_username: 'Brugernavn'
+  polls_panel:
+    all: 'Alle'
+    open: 'Offentlig'
+    closed: 'Lukket'
   current_polls_card:
     start_poll: Opret stillingtagen
   poll_common_collapsed:

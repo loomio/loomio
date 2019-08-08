@@ -31,8 +31,6 @@ id:
     search:
       placeholder: 'Cari'
       discussions: 'Diskusi'
-  membership_dropdown:
-    make_coordinator: 'Buat jadi koordinator'
   notifications:
     header: "Notifikasi"
   position_buttons_panel:
@@ -65,7 +63,6 @@ id:
   memberships_page:
     members: 'Anggota'
     name_label: 'Nama'
-    coordinator_label: 'Koordinator'
     remove_member_label: 'Hapus'
   profile_page:
     picture_label: 'Gambar'
@@ -100,6 +97,8 @@ id:
   members_panel:
     order_by_name: 'Nama'
     header_name: 'Nama'
+  polls_panel:
+    closed: 'Ditutup'
   poll_common_form:
     closed: Ditutup
   poll_count_options:

@@ -40,8 +40,6 @@ sk:
     search:
       placeholder: 'Vyhľadávať'
       discussions: 'Diskusie'
-  membership_dropdown:
-    make_coordinator: 'Urobiť koordinátorom'
   notifications:
     header: "Upozornenie"
   position_buttons_panel:
@@ -75,7 +73,6 @@ sk:
   memberships_page:
     members: 'Členovia'
     name_label: 'Meno'
-    coordinator_label: 'Koordinátor'
     remove_member_label: 'Vylúčiť'
   profile_page:
     profile: 'Profil'
@@ -84,6 +81,8 @@ sk:
     username_label: 'Prihlasovacie meno'
     email_label: 'E-mail'
     locale_label: 'Jazyk'
+  change_picture_form:
+    use_gravatar: 'Použiť Gravatar'
   dashboard_page:
     aria_label: 'Ovládací panel'
     mark_as_read: Označiť ako prečítané
@@ -126,6 +125,9 @@ sk:
     order_by_name: 'Meno'
     header_name: 'Meno'
     header_username: 'Prihlasovacie meno'
+  polls_panel:
+    all: 'Všetko'
+    closed: 'Uzatvorené'
   poll_common_form:
     closed: Uzatvorené
   poll_count_options:

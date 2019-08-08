@@ -106,7 +106,6 @@ ro:
       show_more: "Vezi mai mult"
       view_all: "Vezi tot"
       new_thread: "Discutie noua"
-      add_subgroup: 'Adauga sub-grup'
       loading: 'Se incarca'
       translate: 'Traducere'
       upload: 'Incarca'
@@ -241,7 +240,7 @@ ro:
     sign_out: 'Iesire din cont'
   membership_dropdown:
     invitation_resent: "Invitatie retrimisa"
-    make_coordinator: 'Promoveaza coordonator'
+    make_coordinator: 'Promoveaza ca admin'
   notifications:
     header: "Notificari"
     no_notifications: "Nu ai nici o notificare"
@@ -365,7 +364,6 @@ ro:
   memberships_page:
     members: 'Membri'
     name_label: 'Nume'
-    coordinator_label: 'Coordonator'
     remove_member_label: 'Elimina'
   profile_page:
     profile: 'Profil'
@@ -374,6 +372,8 @@ ro:
     username_label: 'Nume utilizator'
     email_label: 'Email'
     locale_label: 'Limba'
+  change_picture_form:
+    use_gravatar: 'Foloseste Gravatar'
   email_settings_page:
     header: Setari email
     announcement_label: Anunturi
@@ -468,12 +468,17 @@ ro:
     start_poll: Creeaza o decizie
     save_changes: Salvare
   discussions_panel:
+    open: Deschis
     unread: Necitit
     closed: Inchis
   members_panel:
     order_by_name: 'Nume'
     header_name: 'Nume'
     header_username: 'Nume utilizator'
+  polls_panel:
+    all: 'Toate'
+    open: 'Deschis'
+    closed: 'Inchis'
   current_polls_card:
     start_poll: Decizie noua
   poll_common_notify_group:

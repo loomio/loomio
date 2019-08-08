@@ -31,8 +31,6 @@ ml:
     search:
       placeholder: 'തിരയുക'
       discussions: 'ചര്‍ച്ചകള്‍'
-  membership_dropdown:
-    make_coordinator: 'എകോപകൻ ആക്കുക'
   notifications:
     header: "അറിയിപ്പുകള്‍"
   position_buttons_panel:
@@ -65,7 +63,6 @@ ml:
   memberships_page:
     members: 'അംഗങ്ങള്‍'
     name_label: 'പേരു്'
-    coordinator_label: 'എകോപകൻ'
     remove_member_label: 'നീക്കുക'
   profile_page:
     picture_label: 'ചിത്രം'
@@ -100,6 +97,8 @@ ml:
   members_panel:
     order_by_name: 'പേരു്'
     header_name: 'പേരു്'
+  polls_panel:
+    closed: 'അടച്ചു'
   poll_common_form:
     closed: അടച്ചു
   poll_count_options:

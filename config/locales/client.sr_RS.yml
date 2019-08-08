@@ -50,7 +50,6 @@ sr_RS:
       show_more: "Прикажи још"
       view_all: "Прикажи Све"
       new_thread: "Нова нит"
-      add_subgroup: 'Додај подгрупу'
       loading: 'Учитавање'
       translate: 'Преведи'
       translated: 'Превео Bing Translator'
@@ -85,8 +84,6 @@ sr_RS:
       placeholder: 'Тражи'
       discussions: 'Низови'
       proposals: 'Предлози'
-  membership_dropdown:
-    make_coordinator: 'Учини координатором'
   notifications:
     header: "Обавештења"
   position_buttons_panel:
@@ -137,7 +134,6 @@ sr_RS:
   memberships_page:
     members: 'Чланови'
     name_label: 'Име'
-    coordinator_label: 'Координатор'
     remove_member_label: 'Уклони'
   profile_page:
     profile: 'Профил'
@@ -146,6 +142,8 @@ sr_RS:
     username_label: 'Корисничко Име'
     email_label: 'еПорука'
     locale_label: 'Језик'
+  change_picture_form:
+    use_gravatar: 'Користи Граватар'
   email_settings_page:
     header: Опције еПорука
   dashboard_page:
@@ -190,12 +188,17 @@ sr_RS:
   poll_common:
     save_changes: Сними
   discussions_panel:
+    open: Отворено
     unread: Непрочитано
     closed: Истекло
   members_panel:
     order_by_name: 'Име'
     header_name: 'Име'
     header_username: 'Корисничко Име'
+  polls_panel:
+    all: 'Све'
+    open: 'Отворено'
+    closed: 'Истекло'
   poll_common_form:
     closed: Истекло
   poll_count_options:

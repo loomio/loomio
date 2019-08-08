@@ -32,7 +32,6 @@ sl:
       cancel: 'Prekliči'
       show_more: "Pokaži več"
       view_all: "Pokaži vse"
-      add_subgroup: 'Dodaj podskupino'
       loading: 'Nalagam'
   emoji_picker:
     search: Išči
@@ -56,8 +55,6 @@ sl:
     search:
       placeholder: 'Išči'
       discussions: 'Razprave'
-  membership_dropdown:
-    make_coordinator: 'Napravi v koordinatorja/ko'
   notifications:
     header: "Obvestila"
   position_buttons_panel:
@@ -99,7 +96,6 @@ sl:
   memberships_page:
     members: 'Člani'
     name_label: 'Ime'
-    coordinator_label: 'Koordinator'
     remove_member_label: 'Odstrani'
   pending_invitations_card:
     email: Email
@@ -110,6 +106,8 @@ sl:
     username_label: 'Uporabniško ime'
     email_label: 'Email'
     locale_label: 'Jezik'
+  change_picture_form:
+    use_gravatar: 'Uporabi Gravatarja'
   email_settings_page:
     header: Email nastavitve
     daily_summary_label: Dnevni email s povzetki
@@ -161,6 +159,9 @@ sl:
     order_by_name: 'Ime'
     header_name: 'Ime'
     header_username: 'Uporabniško ime'
+  polls_panel:
+    all: 'Vse'
+    closed: 'Zaprto'
   poll_common_form:
     closed: Zaprto
   poll_count_options:

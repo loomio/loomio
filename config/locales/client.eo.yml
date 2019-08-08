@@ -97,7 +97,6 @@ eo:
       show_more: "Montri pli"
       view_all: "Vidi ĉiujn"
       new_thread: "Nova fadeno"
-      add_subgroup: 'Aldoni subgrupon'
       loading: 'Ŝargiĝas'
       translate: 'Traduki'
       uploading: 'Alŝutiĝas'
@@ -173,8 +172,6 @@ eo:
     help: 'Helpo'
     contact_site_name: 'Kontakti {{site_name}}'
     sign_out: 'Elsaluti'
-  membership_dropdown:
-    make_coordinator: 'Kunordigantigi'
   notifications:
     header: "Sciigoj"
   position_buttons_panel:
@@ -237,7 +234,6 @@ eo:
   memberships_page:
     members: 'Membroj'
     name_label: 'Nomo'
-    coordinator_label: 'Kunordiganto'
     remove_member_label: 'Forviŝi'
   pending_invitations_card:
     email: Retadreso
@@ -257,7 +253,7 @@ eo:
     update_profile: 'Ĝisdatigi profilon'
     help_translate: "Helpu nin traduki Loomion!"
   change_picture_form:
-    title: 'Ŝanĝi bildon'
+    use_gravatar: 'Uzi Gravataron'
   email_settings_page:
     edit: Redakti
   dashboard_page:
@@ -356,13 +352,17 @@ eo:
     participant_email: Retadreso
     save_changes: Konservi
   discussions_panel:
+    open: Malfermita
     unread: Nelegitaj
     closed: Fermita
-    include_subgroups: Subgrupoj
   members_panel:
     order_by_name: 'Nomo'
     header_name: 'Nomo'
     header_username: 'Uzantnomo'
+  polls_panel:
+    all: 'Ĉiuj'
+    open: 'Malfermita'
+    closed: 'Fermita'
   poll_common_select_group:
     loomio_group: Grupo
   poll_common_calendar_invite:

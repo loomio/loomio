@@ -24,8 +24,6 @@ bg_BG:
   navbar:
     search:
       discussions: 'Дискусии'
-  membership_dropdown:
-    make_coordinator: 'Направи координатор'
   notifications:
     header: "Известия"
   position_buttons_panel:
@@ -56,7 +54,6 @@ bg_BG:
   memberships_page:
     members: 'Членове'
     name_label: 'Име'
-    coordinator_label: 'Координатор'
     remove_member_label: 'Отстраняване'
   profile_page:
     picture_label: 'Изображение'
@@ -89,5 +86,7 @@ bg_BG:
   members_panel:
     order_by_name: 'Име'
     header_name: 'Име'
+  polls_panel:
+    closed: 'Затворен'
   poll_common_form:
     closed: Затворен

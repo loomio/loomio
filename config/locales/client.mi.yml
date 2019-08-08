@@ -70,7 +70,6 @@ mi:
       show_more: "Me whakaatu etahi atu"
       view_all: "Tirohia katoatia"
       new_thread: "Aho hou"
-      add_subgroup: 'Tapirihia he ropu whaiti'
       loading: 'Kei te utaina '
       translate: 'Whakawhitihia te reo'
       translated: 'Whakawhitihia ma te whakawhiti Bing'
@@ -205,11 +204,15 @@ mi:
   poll_common:
     save_changes: Tiaki
   discussions_panel:
+    open: E huaki ana
     unread: Kāhore anō kia kitea
     closed: Kua kati
   members_panel:
     order_by_name: 'Ingoa'
     header_name: 'Ingoa'
+  polls_panel:
+    open: 'E huaki ana'
+    closed: 'Kua kati'
   poll_common_form:
     closed: Kua kati
     start: Tīmatatia

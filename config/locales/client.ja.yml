@@ -49,8 +49,6 @@ ja:
     search:
       placeholder: '検索'
       discussions: 'ディスカッション'
-  membership_dropdown:
-    make_coordinator: 'コーディネーターにする'
   notifications:
     header: "通知"
   position_buttons_panel:
@@ -86,7 +84,6 @@ ja:
   memberships_page:
     members: 'メンバー'
     name_label: '氏名'
-    coordinator_label: 'コーディネーター'
     remove_member_label: '削除'
   profile_page:
     profile: 'プロフィール'
@@ -126,10 +123,14 @@ ja:
   poll_common:
     save_changes: 保存
   discussions_panel:
+    open: 議論中
     closed: 議論終了
   members_panel:
     order_by_name: '氏名'
     header_name: '氏名'
+  polls_panel:
+    open: '議論中'
+    closed: '議論終了'
   poll_common_form:
     closed: 議論終了
   poll_count_options:

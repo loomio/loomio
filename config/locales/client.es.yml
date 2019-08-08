@@ -142,7 +142,6 @@ es:
       show_more: "Mostrar más"
       view_all: "Mostrar todo"
       new_thread: "Nuevo hilo"
-      add_subgroup: 'Añadir subgrupo'
       loading: 'Cargando'
       translate: 'Traducir'
       translated: 'Traducido mediante Bing Translator'
@@ -363,8 +362,7 @@ es:
     set_title: "Añada un título"
     resend: "Reenviar la invitación"
     invitation_resent: "Invitación reenviada"
-    make_coordinator: 'Hacer coordinador '
-    demote_coordinator: 'Remover coordinador'
+    make_coordinator: 'Convertir en admin'
     remove_from:
       discussion: "Eliminar del hilo"
       group: "Eliminar del grupo"
@@ -399,7 +397,6 @@ es:
     motion_outcome_created: "<strong>{{name}}</strong> ha publicado un resultado para la propuesta <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> ha actualizado el resultado de la propuesta <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> ha aceptado su invitación a unirse a <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> te ha añadido como coordinador de <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> empezó una {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> editó una {{poll_type}}: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> compartió un {{poll_type}}: <strong>{{title}}</strong>"
@@ -617,7 +614,6 @@ es:
     options:
       label: 'Opciones'
       edit_group: 'Editar la configuración del grupo'
-      become_coordinator: Conviértase en coordinador
       export_data: Exportar los datos del grupo
       export_data_as_json: Exportar los datos del grupo en formato JSON
       export_data_as_csv: Exportar los datos del grupo en formato CSV
@@ -646,11 +642,8 @@ es:
       parent_members: 'Privacidad: Este grupo es visible para los integrantes de {{parentGroupName}} y integrantes de {{groupName}} '
       public: 'Privacidad: Este grupo es visible en la red '
       aria_label: 'Privacidad del grupo: {{privacy}}'
-  polls_panel:
-    new_poll: Nuevo sondeo
   description_card:
     title: 'Descripción del Grupo '
-    placeholder: 'Los coordinadores del grupo pueden usar esta área para describir el propósito del grupo para que todos sepan porque están aquí.  '
     messages:
       description_updated: 'Descripción actualizada'
   leave_group_form:
@@ -658,8 +651,6 @@ es:
     title: 'Abandonar el grupo '
     question: '¿Estás seguro de que quieres abandonar este grupo?'
     submit: 'Sí, quiero abandonar este grupo'
-    cannot_leave_group: 'No puedes irte de este grupo porque eres el último coordinador. Tendrás que elegir a otro coordinador o desactivar el grupo.'
-    add_coordinator: 'Añadir coordinador'
   archive_group_form:
     aria_label: 'Desactivar el grupo'
     title: 'Desactivar el grupo '
@@ -835,15 +826,10 @@ es:
   memberships_page:
     members: 'Integrantes'
     name_label: 'Nombre'
-    coordinator_label: 'Coordinador'
     remove_member_label: 'Eliminar'
     fragment_placeholder: 'Filtrar usuarios por nombre o nombre de usuario...'
     messages:
       remove_member_success: '{{name}} eliminado'
-      make_admin_success: 'Ahora {{name}} es un coordinador'
-      remove_admin_success: '{{name}} ya no es un coordinador'
-    remove_admin_from_self:
-      question: '¿Estás seguro que ya no quieres ser un coordinador? '
   membership_remove_modal:
     invitation:
       title: Cancelar la invitación
@@ -857,9 +843,6 @@ es:
       impact_for_subgroups: 'Esto también removerá su acceso a todos los subgrupos del grupo.  '
       flash: Miembro eliminado.
       submit: 'Eliminar miembro '
-  memberships_panel:
-    add_coordinator: 'Hacer coordinador '
-    remove_coordinator: Remover coordinador
   membership_form:
     modal_title:
       group: Añadir título del grupo
@@ -929,12 +912,9 @@ es:
     select_text_to_link: Selecciona algún texto para el enlace
     insert_link: Inserte un enlace
   change_picture_form:
-    aria_label: 'Formulario de cambio de imagen'
-    title: 'Cambiar imagen'
     helptext: 'Puede cargar su propia foto de perfil, o puede usarla la de <href="https://en.gravatar.com/support/whatisgravatar/"> Gravatar </a>, si tiene cuenta.'
     use_initials: 'Usar iniciales'
     use_gravatar: 'Usar Gravatar'
-    use_uploaded: 'Subir una imagen nueva'
   change_password_form:
     set_password_title: Establece tu contraseña
     set_password_helptext: Por favor introduce una contraseña - mínimo 8 dígitos
@@ -996,7 +976,6 @@ es:
     load_more: Cargar más hilos
     mark_as_read: Marcar como leído
     dismiss: Ignorar
-    thread_dismissed: 'Hilo ignorado '
     thread_recalled: 'Hilo recuperado '
     explain_mute:
       title: No tienes ningún hilo silenciado.
@@ -1207,7 +1186,6 @@ es:
     search_placeholder: Buscar grupos públicos
     single_search_result: "1 grupo público coincide con <strong>{{searchTerm}}:</strong> "
     multiple_search_results: "{{resultCount}} grupos públicos coinciden con <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>¿No puede encontrar el grupo que busca?</strong> Si la privacidad de ese grupo es 'Secreto', no aparecerá aquí. Si conoce a un/a coordinador/a del grupo, puede pedirle una invitación."
   global:
     messages:
       app_update: 'Una nueva versión de la app está disponible '
@@ -1309,14 +1287,20 @@ es:
     no_polls: No se encontraron decisiones previas
     count: "Ve todas: las ({{count}}) decisiones"
   discussions_panel:
+    open: Abierto
     unread: 'No leído '
     closed: 'Cerrado '
-    include_subgroups: Subgrupos
   members_panel:
     sort: 'Orden'
     order_by_name: 'Nombre'
     header_name: 'Nombre'
     header_username: 'Nombre de usuario'
+    invitations: 'Invitaciones'
+  polls_panel:
+    new_poll: Nuevo sondeo
+    all: 'Todos/as'
+    open: 'Abierto'
+    closed: 'Cerrado '
   poll_common_action_panel:
     anonymous: 'Votos serán anónimos '
     anonymous_until_close: Votos serán anónimos hasta que cierre la encuesta
@@ -1750,8 +1734,6 @@ es:
       use_existing_group: 'Usa un grupo ya existente '
     invite:
       heading: 'Paso 2: Crea un canal en Slack'
-      helptext: |
-          Hecho! Ahora, selecciona el canal donde quieres que mandemos notificaciones.
       select_a_channel: Selecciona un canal
       publish_group: Publica un mensaje de bienvenida
       publish_group_helptext_on: Publicaremos un mensaje en ese canal para informarle a la gente como usar Loomio Bot.

@@ -139,7 +139,6 @@ it:
       show_more: "Mostra di più"
       view_all: "Vedi tutti"
       new_thread: "Nuova discussione"
-      add_subgroup: 'Aggiungi sottogruppo'
       loading: 'In caricamento...'
       translate: 'Traduci'
       translated: 'Tradotto da Bing Traduttore'
@@ -353,8 +352,7 @@ it:
     set_title: "Imposta titolo"
     resend: "Invia di nuovo invito"
     invitation_resent: "Invito reinviato"
-    make_coordinator: 'Inserisci come coordinatore'
-    demote_coordinator: 'Disinserisci come coordinatore'
+    make_coordinator: 'Rendi amministratore'
     remove_from:
       discussion: "Rimuovi dalla discussione"
       group: "Rimuovi dal gruppo"
@@ -387,7 +385,6 @@ it:
     motion_outcome_created: "<strong>{{name}}</strong> ha pubblicato un risultato per la proposta <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> ha aggiornato il risultato della proposta <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> ha accettato il tuo invito a iscriversi a <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> ti ha reso coordinatore/trice di <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> ha lanciato {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> ha modificato {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} si chiude tra poco: <strong>{{title}}</strong>"
@@ -589,7 +586,6 @@ it:
       aria_label: 'Privacy del gruppo: {{privacy}}'
   description_card:
     title: 'Descrizione del gruppo'
-    placeholder: 'I coordinatori del gruppo possono utilizzare quest''area per descrivere lo scopo del gruppo, in modo tale che tutti sappiano perché sono qui.'
     messages:
       description_updated: 'Descrizione aggiornata'
   leave_group_form:
@@ -597,8 +593,6 @@ it:
     title: 'Lascia il gruppo'
     question: 'Sei sicuro/a di voler lasciare il gruppo?'
     submit: ' Sì, lascia questo gruppo'
-    cannot_leave_group: 'Non puoi lasciare questo gruppo perché sei l''ultimo coordinatore/trice. Devi trovare un''altro coordinatore/trice per disattivare il gruppo.'
-    add_coordinator: 'Aggiungi un coordinatore/trice'
   archive_group_form:
     aria_label: 'Disattiva gruppo'
     title: 'Disattiva gruppo'
@@ -752,15 +746,10 @@ it:
   memberships_page:
     members: 'Membri'
     name_label: 'Nome'
-    coordinator_label: 'Coordinatore'
     remove_member_label: 'Rimuovi'
     fragment_placeholder: 'Filtra gli utenti per nome o per username...'
     messages:
       remove_member_success: '{{name}} rimosso.'
-      make_admin_success: '{{name}} è ora coordinatore/ice'
-      remove_admin_success: '{{name}} non è più un coordinatore/trice'
-    remove_admin_from_self:
-      question: 'Sei sicuro di non voler più essere coordinatore di questo gruppo?'
   membership_remove_modal:
     invitation:
       title: Revoca invito
@@ -774,9 +763,6 @@ it:
       impact_for_subgroups: Questa azione impedirà loro di accedere anche a tutti i sottogruppi.
       flash: Membro rimosso
       submit: Rimuovi membro
-  memberships_panel:
-    add_coordinator: Inserisci come coordinatore
-    remove_coordinator: Disinserisci come coordinatore
   membership_form:
     modal_title:
       group: Imposta il nome del gruppo
@@ -841,12 +827,9 @@ it:
     deactivate_account: 'Disattiva l''account'
     help_translate: "Aiutaci a tradurre Loomio"
   change_picture_form:
-    aria_label: 'Formulario per il cambio della foto'
-    title: 'Cambia la foto'
     helptext: 'Puoi caricare la foto sul tuo profilo, o se disponi di un account su <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, puoi usare quella foto.'
     use_initials: 'Usa iniziali'
-    use_gravatar: 'Usa gravatar'
-    use_uploaded: 'Carica nuova foto'
+    use_gravatar: 'Usa Gravatar'
   change_password_form:
     set_password: Imposta password
     password_changed: La tua password è stata aggiornata
@@ -902,7 +885,6 @@ it:
     load_more: Carica altre discussioni
     mark_as_read: Contrassegnato come letto
     dismiss: Ignora
-    thread_dismissed: Discussione abbandonata
     thread_recalled: Discussione riattivata
     explain_mute:
       title: Non hai ancora silenziato nessuna discussione
@@ -1079,13 +1061,18 @@ it:
     title: Decisioni precedenti
     count: "Vedi tutto:  ({{count}}) decisioni"
   discussions_panel:
+    open: Aperto
     unread: Non letto
     closed: Chiuso
-    include_subgroups: Sottogruppi
   members_panel:
     order_by_name: 'Nome'
     header_name: 'Nome'
     header_username: 'Nome Utente'
+    invitations: 'Inviti'
+  polls_panel:
+    all: 'Tutte'
+    open: 'Aperto'
+    closed: 'Chiuso'
   current_polls_card:
     title: Decisioni in corso
     start_poll: Nuova decisione

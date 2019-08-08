@@ -33,8 +33,6 @@ mk:
     search:
       placeholder: 'Пребарувај'
       discussions: 'Дискусии'
-  membership_dropdown:
-    make_coordinator: 'Направи координатор'
   notifications:
     header: "Известувања"
   position_buttons_panel:
@@ -68,7 +66,6 @@ mk:
   memberships_page:
     members: 'Членови'
     name_label: 'Име'
-    coordinator_label: 'Координатор'
     remove_member_label: 'Избриши'
   profile_page:
     profile: 'Профил'
@@ -109,6 +106,8 @@ mk:
   members_panel:
     order_by_name: 'Име'
     header_name: 'Име'
+  polls_panel:
+    closed: 'Затворено'
   poll_common_form:
     closed: Затворено
   poll_count_options:

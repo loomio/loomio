@@ -28,8 +28,6 @@ vi:
     search:
       placeholder: 'Tìm kiếm'
       discussions: 'Các phần thảo luận'
-  membership_dropdown:
-    make_coordinator: 'Tạo điều hành viên'
   notifications:
     header: "Thông báo"
   position_buttons_panel:
@@ -61,7 +59,6 @@ vi:
   memberships_page:
     members: 'Thành viên'
     name_label: 'Tên'
-    coordinator_label: 'Điều hành viên'
     remove_member_label: 'Loại bỏ'
   profile_page:
     picture_label: 'Hình ảnh'
@@ -94,6 +91,8 @@ vi:
   members_panel:
     order_by_name: 'Tên'
     header_name: 'Tên'
+  polls_panel:
+    closed: 'Đã đóng lại'
   poll_common_form:
     closed: Đã đóng lại
   poll_count_options:

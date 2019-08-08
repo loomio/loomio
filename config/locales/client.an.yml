@@ -40,8 +40,6 @@ an:
     search:
       placeholder: 'Buscar'
       discussions: 'Discusions'
-  membership_dropdown:
-    make_coordinator: 'Fer coordinador'
   notifications:
     header: "Notificacions"
   position_buttons_panel:
@@ -75,7 +73,6 @@ an:
   memberships_page:
     members: 'Miembros'
     name_label: 'Nombre'
-    coordinator_label: 'Coordinador'
     remove_member_label: 'Borrar'
   profile_page:
     profile: 'Perfil'
@@ -84,6 +81,8 @@ an:
     username_label: 'Nombre d''usuario'
     email_label: 'Correu electronico'
     locale_label: 'Idioma'
+  change_picture_form:
+    use_gravatar: 'Usar Gravatar'
   dashboard_page:
     aria_label: 'Panel de control'
     mark_as_read: Marcar como leyiu
@@ -126,6 +125,9 @@ an:
     order_by_name: 'Nombre'
     header_name: 'Nombre'
     header_username: 'Nombre d''usuario'
+  polls_panel:
+    all: 'Totz/as'
+    closed: 'Zarrau'
   poll_common_form:
     closed: Zarrau
   poll_count_options:

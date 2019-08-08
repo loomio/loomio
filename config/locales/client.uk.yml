@@ -134,7 +134,6 @@ uk:
       show_more: "Показати більше"
       view_all: "Переглянути всі"
       new_thread: "Нова тема"
-      add_subgroup: 'Додати підгрупу'
       loading: 'Завантаження'
       translate: 'Перекласти'
       translated: 'Переклад Bing Translator'
@@ -347,8 +346,6 @@ uk:
     set_title: "Вкажіть назву"
     resend: "Запросити повторно"
     invitation_resent: "Надіслати запрошення повторно"
-    make_coordinator: 'Зробити координатором'
-    demote_coordinator: 'Усунути координатора'
     remove_from:
       discussion: "Видалити з теми"
       group: "Видалити з групи"
@@ -383,7 +380,6 @@ uk:
     motion_outcome_created: "<strong>{{name}}</strong> опублікував(ла) результат щодо пропозиції <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> оновив(ла) результат щодо пропозиції <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> схвалив(ла) ваше запрошення долучитися до <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> зробив(ла) вас координатором <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> розпочав(ла) {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> відредагував(ла) {{poll_type}}: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> опублікував(ла) {{poll_type}}: <strong>{{title}}</strong>"
@@ -625,7 +621,6 @@ uk:
       aria_label: 'Конфіденційність групи: {{privacy}}'
   description_card:
     title: 'Опис групи'
-    placeholder: 'Координатори груп можуть використовувати цей розділ для опису цілей групи, аби кожен розумів, чому вони тут зібралися.'
     messages:
       description_updated: 'Опис оновлено'
   leave_group_form:
@@ -633,8 +628,6 @@ uk:
     title: 'Залишити групу'
     question: 'Ви дійсно хочете залишити цю групу?'
     submit: 'Так, залишити групу'
-    cannot_leave_group: 'Ви не можете залишити цю групу, тому що ви в ній останній координатор. Вам потрібно вибрати іншого координатора або відключити групу.'
-    add_coordinator: 'Додати координатора'
   archive_group_form:
     aria_label: 'Відключити групу'
     title: 'Відключити групу'
@@ -806,15 +799,10 @@ uk:
   memberships_page:
     members: 'Учасники'
     name_label: 'Ім’я'
-    coordinator_label: 'Координатор'
     remove_member_label: 'Видалити'
     fragment_placeholder: 'Фільтрувати користувачів за власним іменем або за іменем користувача...'
     messages:
       remove_member_success: '{{name}} вилучено'
-      make_admin_success: '{{name}} тепер координатор'
-      remove_admin_success: '{{name}} більше не координатор'
-    remove_admin_from_self:
-      question: 'Ви дійсно більше не хочете бути координатором?'
   membership_remove_modal:
     invitation:
       title: Скасувати запрошення
@@ -828,9 +816,6 @@ uk:
       impact_for_subgroups: Це також забере в них право доступу до всіх підгруп цієї групи.
       flash: Учасника видалено
       submit: Видалити учасника(цю)
-  memberships_panel:
-    add_coordinator: Зробити координатором
-    remove_coordinator: Усунути координатора
   membership_form:
     modal_title:
       group: Вкажіть назву групи
@@ -897,12 +882,9 @@ uk:
     deactivate_account: 'Відключити обліковий запис'
     help_translate: "Допоможіть нам перекласти Loomio"
   change_picture_form:
-    aria_label: 'Змінити обкладинку форми'
-    title: 'Змінити обкладинку'
     helptext: 'Ви можете завантажити ваш власний малюнок профілю, або якщо ви зареєстровані на <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, можете використати його.'
     use_initials: 'Використовувати ініціали'
-    use_gravatar: 'Використовувати глобальний аватар (gravatar)'
-    use_uploaded: 'Завантажити нову обкладинку'
+    use_gravatar: 'Використати Gravatar'
   change_password_form:
     set_password: Встановити пароль
     password_changed: Ваш пароль оновлено
@@ -959,7 +941,6 @@ uk:
     load_more: Завантажити більше тем
     mark_as_read: Відмітити як прочитане
     dismiss: Відхилити
-    thread_dismissed: Тему відхилено
     thread_recalled: Тему відкликано
     explain_mute:
       title: Ви поки що не вимкали жодну з тем.
@@ -1163,7 +1144,6 @@ uk:
     search_placeholder: Шукати відкриті групи
     single_search_result: "1 відкрита група відповідає запиту <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} відкритих груп відповідають запиту <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>Не можете знайти групу, яку шукаєте?</strong> Якщо конфіденційність групи має значення \"секртна\", вона не буде тут з'являтися. Якщо ви знаєте, хто координує групу, ви можете попросити в них запрошення."
   global:
     messages:
       app_update: 'Доступна нова версія додатку'
@@ -1262,13 +1242,18 @@ uk:
     title: Попередні рішення
     count: "Переглянути усі: ({{count}}) рішень"
   discussions_panel:
+    open: Відкрита
     unread: Непрочитані
     closed: Закрита
-    include_subgroups: Підгрупи
   members_panel:
     order_by_name: 'Ім''я'
     header_name: 'Ім''я'
     header_username: 'Ім’я користувача'
+    invitations: 'Запрошення'
+  polls_panel:
+    all: 'Всі'
+    open: 'Відкрита'
+    closed: 'Закрита'
   poll_common_action_panel:
     anonymous: Голосування буде анонімним
     anonymous_until_close: Голосування буде анонімним поки не це опитування не буде закрито
@@ -1678,8 +1663,6 @@ uk:
       use_existing_group: Використати існуючу групу
     invite:
       heading: 'Крок 2: Налаштувати канал в Slack'
-      helptext: |
-          Успішно! Тепер виберіть канал, в який ви хочете щоб розміщувались оновлення.
       select_a_channel: Вибрати канал
       publish_group: Дати вітальне повідомлення
       publish_group_helptext_on: Ми будемо публікувати повідомлення в цей канал, щоб навчати людей, як використовувати LoomioBot.

@@ -74,7 +74,6 @@ fa_IR:
       show_more: "نمایش بیشتر"
       view_all: "نمایش همه"
       new_thread: "موضوع جدید"
-      add_subgroup: 'اضافه کردن زیر گروه'
       loading: 'در حال بارگذاری'
       translate: 'ترجمه'
       translated: 'ترجمه از موتور ترجمه Bing'
@@ -170,7 +169,11 @@ fa_IR:
   poll_common:
     save_changes: ذخیره
   discussions_panel:
+    open: باز
     closed: بسته
+  polls_panel:
+    open: 'باز'
+    closed: 'بسته'
   poll_common_select_group:
     loomio_group: گروه
   poll_common_form:

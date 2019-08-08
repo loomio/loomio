@@ -111,7 +111,6 @@ nb_NO:
       show_more: "Vis mer"
       view_all: "Vis alle"
       new_thread: "Ny tråd"
-      add_subgroup: 'Legg til undergruppe'
       loading: 'Laster'
       translate: 'Oversett'
       translated: 'Oversettelse av Bing '
@@ -320,8 +319,6 @@ nb_NO:
     set_title: "Sett tittel"
     resend: "Send  invitasjon på nytt"
     invitation_resent: "Invitasjon sendt på nytt"
-    make_coordinator: 'Sett som koordinator'
-    demote_coordinator: 'Fjern som koordinator'
     remove_from:
       discussion: "Fjern fra tråd"
       group: "Fjern fra gruppe"
@@ -356,7 +353,6 @@ nb_NO:
     motion_outcome_created: "<strong>{{name}}</strong> publiserte resultatet fra beslutningen <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> oppdaterte resultatet for beslutningen <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> godkjente din invitasjon til å bli med i  <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> gjorde deg til koordinator for  <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> startet en {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> redigerte en {{poll_type}}: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> delte en {{poll_type}}: <strong>{{title}}</strong>"
@@ -558,9 +554,6 @@ nb_NO:
     invitation:
       title: Avslutt invitasjon
       submit: Avslutt invitasjon
-  memberships_panel:
-    add_coordinator: Sett som koordinator
-    remove_coordinator: Fjern som koordinator
   pending_invitations_card:
     email: E-post
     copy_url: Kopier URL
@@ -622,11 +615,16 @@ nb_NO:
   poll_common:
     save_changes: Lagre
   discussions_panel:
+    open: Åpen
     unread: Ulest
     closed: Lukket
   members_panel:
     order_by_name: 'Navn'
     header_name: 'Navn'
+    invitations: 'Invitasjoner'
+  polls_panel:
+    open: 'Åpen'
+    closed: 'Lukket'
   current_polls_card:
     start_poll: Ny beslutning
   poll_common_select_group:

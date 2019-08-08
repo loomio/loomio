@@ -136,7 +136,6 @@ de:
       show_more: "Mehr anzeigen"
       view_all: "Alles anzeigen"
       new_thread: "Neue Diskussion"
-      add_subgroup: 'Untergruppe anlegen'
       loading: 'Laden'
       translate: 'Übersetzen'
       translated: 'Übersetzung mit Bing Translator'
@@ -355,8 +354,6 @@ de:
     set_title: "Überschrift festlegen"
     resend: "Einladung erneut versenden"
     invitation_resent: "Einladung erneut versendet"
-    make_coordinator: 'Zum Koordinator machen'
-    demote_coordinator: 'Koordinatorrechte entfernen'
     remove_from:
       discussion: "von Diskussion entfernen"
       group: "aus der Gruppe entfernen"
@@ -391,7 +388,6 @@ de:
     motion_outcome_created: "<strong>{{name}}</strong> hat ein Ergebnis für den Vorschlag <strong>{{title}}</strong> veröffentlicht"
     motion_outcome_updated: "<strong>{{name}}</strong> hat das Ergebnis für den Vorschlag <strong>{{title}}</strong> bearbeitet"
     invitation_accepted: "<strong>{{name}}</strong> hat Ihre Einladung zur Gruppe <strong>{{title}}</strong> angenommen"
-    new_coordinator: "<strong>{{name}}</strong> hat dich zum Koordinator von <strong>{{title}}</strong> gemacht"
     poll_created: "<strong>{{name}}</strong> hat einen {{poll_type}} angelegt: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> hat einen {{poll_type}} bearbeitet: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> teilte ein/e {{poll_type}}: <strong>{{title}}</strong>"
@@ -606,7 +602,6 @@ de:
     options:
       label: 'Optionen'
       edit_group: 'Gruppeneinstellungen bearbeiten'
-      become_coordinator: 'Koordinator werden '
       export_data: Gruppendaten exportieren
       export_data_as_json: Gruppendaten im JSON-Format exportieren
       export_data_as_csv: Gruppendaten im CSV-Format exportieren
@@ -637,7 +632,6 @@ de:
       aria_label: 'Sichtbarkeit der Gruppe: {{privacy}}'
   description_card:
     title: 'Gruppenbeschreibung'
-    placeholder: 'Gruppen-Koordinatoren können dieses Feld benutzen, um die Zielsetzung der Gruppe zu beschreiben, damit alle Teilnehmer wissen, warum sie hier sind.'
     messages:
       description_updated: 'Beschreibung aktualisiert '
   leave_group_form:
@@ -645,8 +639,6 @@ de:
     title: 'Gruppe verlassen'
     question: 'Sind Sie sicher, dass Sie diese Gruppe verlassen möchten?'
     submit: 'Ja, Gruppe verlassen'
-    cannot_leave_group: 'Sie können diese Gruppe nicht verlassen, da Sie der letzte verbliebene Koordinator sind. Bitte bestimmen Sie zunächst einen neuen Koordinator oder deaktivieren Sie die Gruppe.'
-    add_coordinator: 'Koordinator hinzufügen'
   archive_group_form:
     aria_label: 'Gruppe deaktivieren'
     title: 'Gruppe deaktivieren'
@@ -819,15 +811,10 @@ de:
   memberships_page:
     members: 'Mitglieder'
     name_label: 'Name'
-    coordinator_label: 'Koordinator'
     remove_member_label: 'entfernen'
     fragment_placeholder: 'Benutzer anhand des Namens oder des Benutzernamens filtern...'
     messages:
       remove_member_success: '{{name}} enfernt'
-      make_admin_success: '{{name}} ist nun ein Koordinator'
-      remove_admin_success: '{{name}} ist kein Koordinator mehr'
-    remove_admin_from_self:
-      question: 'Sind Sie sicher, dass Sie nicht mehr Koordinator sein möchten?'
   membership_remove_modal:
     invitation:
       title: Einladung abbrechen
@@ -841,9 +828,6 @@ de:
       impact_for_subgroups: Dies wird auch Ihren Zugang zu den Untergruppen dieser Gruppe entfernen.
       flash: Mitglied entfernt
       submit: Mitglied entfernen
-  memberships_panel:
-    add_coordinator: Zum Koordinator machen
-    remove_coordinator: Koordinatorrechte entfernen
   membership_form:
     modal_title:
       group: Gruppen-Überschrift festlegen
@@ -913,12 +897,9 @@ de:
     select_text_to_link: Text zum verlinken markieren
     insert_link: Link einfügen
   change_picture_form:
-    aria_label: 'Bildform ändern'
-    title: 'Profilbild ändern'
     helptext: 'Sie können Ihr eigenes Profilbild hochladen, oder Sie verwenden Ihr <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar-Konto</a>, wenn Sie eins besitzen.'
     use_initials: 'Nutzen Sie Initialien'
-    use_gravatar: 'Verwende Gravatar'
-    use_uploaded: 'Neues Bild hochladen'
+    use_gravatar: 'Gravatar benutzen'
   change_password_form:
     set_password_title: Passwort erstellen
     set_password_helptext: 'Füge bitte ein Passwort mit minimal 8 Zeichen ein '
@@ -978,7 +959,6 @@ de:
     load_more: Mehr Diskussionen anzeigen
     mark_as_read: Als gelesen markieren
     dismiss: Ausblenden
-    thread_dismissed: Diskussion wurde geschlossen
     thread_recalled: Diskussion zurückgerufen
     explain_mute:
       title: Sie haben noch keine Diskussionen stumm geschaltet.
@@ -1184,7 +1164,6 @@ de:
     search_placeholder: Nach öffentlichen Gruppen suchen
     single_search_result: "1 öffentliche Gruppe für <strong>{{searchTerm}}</strong> gefunden:"
     multiple_search_results: "{{resultCount}} öffentliche Gruppen für <strong>{{searchTerm}}</strong> gefunden:"
-    no_results_found: "<strong>Sie können keine Gruppe finden?</strong> Wenn eine Gruppe auf \"geheim\" gestellt ist, wird sie nicht angezeigt. Bitten Sie eine/n Koordinator/in um eine Einladung."
   global:
     messages:
       app_update: 'Eine neue Version der App ist verfügbar'
@@ -1283,13 +1262,18 @@ de:
     title: Bisherige Abstimmungen
     count: "Zeige alles: ({{count}}) Entscheidungen"
   discussions_panel:
+    open: Offen
     unread: Ungelesen
     closed: Geschlossen
-    include_subgroups: Untergruppen
   members_panel:
     order_by_name: 'Name'
     header_name: 'Name'
     header_username: 'Benutzername'
+    invitations: 'Einladungen'
+  polls_panel:
+    all: 'Alle'
+    open: 'Offen'
+    closed: 'Geschlossen'
   poll_common_action_panel:
     anonymous: Stimmen werden anonym sein
     anonymous_until_close: Stimmen werden anonym bleiben, bis diese Umfrage endet
@@ -1725,8 +1709,6 @@ de:
       use_existing_group: eine bereits existierende Gruppe nutzen
     invite:
       heading: 'Schritt 2: Richten Sie einen Slack-Kanal ein'
-      helptext: |
-          Erfolg! Wählen Sie nun einen Kanal aus, in welchem Sie Updates posten möchten.
       select_a_channel: Wählen Sie einen Kanal aus
       publish_group: Eine Willkommens-Nachricht verfassen
       publish_group_helptext_on: Wir werden eine Nachricht in diesen Kanal posten um zu erklären, wie LoomioBot genutzt wird.

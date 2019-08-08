@@ -74,7 +74,6 @@ el:
       show_more: "Δείξε περισσότερα"
       view_all: "Εμφάνιση όλων"
       new_thread: "Νέο θέμα"
-      add_subgroup: 'Προσθήκη υπο-ομάδας'
       loading: 'Φορτώνει'
       translate: 'Μετάφραση'
       translated: 'Μεταφράση από τον Μεταφραστή Bing'
@@ -208,7 +207,7 @@ el:
     toggle_sidebar: 'Εναλλαγή πλευρικής στήλης'
     logo_title: 'Κεντρική σελίδα'
   membership_dropdown:
-    make_coordinator: 'Κάντε τον/την συντονιστή/τρια'
+    make_coordinator: 'Κάντε τον/την διαχειριστή'
   notifications:
     header: "Ειδοποιήσεις"
     no_notifications: "Δεν έχετε καμία ειδοποίηση"
@@ -301,7 +300,6 @@ el:
       mute: Απόκρυψη αυτής της ομάδας από το ταμπλό και καμμία ειδοποιήση εκτός εάν @αναφερθώ.
   description_card:
     title: 'Περιγραφή ομάδας'
-    placeholder: 'Οι συντονιστές της ομάδας μπορούν να χρησιμοποιούν αυτή την περιοχή για να περιγράψουν τον σκοπό της ομάδας, ώστε όλοι να γνωρίζουν γιατί είναι εδώ.'
     messages:
       description_updated: 'Η περιγραφή ανανεώθηκε'
   leave_group_form:
@@ -309,8 +307,6 @@ el:
     title: 'Φύγετε από την ομάδα '
     question: 'Είστε σίγουροι ότι θέλετε να φύγετε από την ομάδα;'
     submit: 'Ναι, φύγετε από την ομάδα'
-    cannot_leave_group: 'Δεν μπορείτε να φύγετε από αυτή την ομάδα διότι είστε ο τελευταίος συντονιστής. Χρειάζεται να επιλέξετε άλλο συντονιστή ή να απενεργοποίησετε την ομάδα.'
-    add_coordinator: 'Προσθήκη συντονιστή'
   archive_group_form:
     aria_label: 'Απενεργοποίηση ομάδας'
     title: 'Απενεργοποίηση ομάδας'
@@ -374,7 +370,6 @@ el:
   memberships_page:
     members: 'Μέλη'
     name_label: 'Όνομα'
-    coordinator_label: 'Συντονιστής'
     remove_member_label: 'Αφαιρέστε'
   profile_page:
     profile: 'Προφίλ'
@@ -383,6 +378,8 @@ el:
     username_label: 'Όνομα χρήστη'
     email_label: 'Ηλεκτρονική Διεύθυνση'
     locale_label: 'Γλώσσα'
+  change_picture_form:
+    use_gravatar: 'Χρησιμοποιήστε Gravatar'
   email_settings_page:
     header: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου
     announcement_label: Ανακοινώσεις
@@ -436,13 +433,17 @@ el:
   poll_common:
     save_changes: Αποθήκευση
   discussions_panel:
+    open: Άνοιγμα
     unread: Αδιάβαστα
     closed: Έκλεισε
-    include_subgroups: Υποομάδες
   members_panel:
     order_by_name: 'Όνομα'
     header_name: 'Όνομα'
     header_username: 'Όνομα χρήστη'
+  polls_panel:
+    all: 'Όλα'
+    open: 'Άνοιγμα'
+    closed: 'Έκλεισε'
   current_polls_card:
     start_poll: Νέα απόφαση
   poll_common_notify_group:

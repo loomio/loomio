@@ -104,7 +104,6 @@ lt:
       cancel: 'Atsisakyti'
       show_more: "Rodyti daugiau"
       new_thread: "Nauja gija"
-      add_subgroup: 'Pridėti pogrupį'
       loading: 'Įkeliama'
       load_more: 'Įkelti daugiau'
       ok: Gerai
@@ -212,14 +211,8 @@ lt:
     group: 'Grupė'
     copy_link: 'Kopijuoti'
   memberships_page:
-    coordinator_label: 'Koordinatorius'
     remove_member_label: 'Šalinti'
     fragment_placeholder: 'Filtruokite naudotojus pagal vardą ar naudotojo vardą...'
-    messages:
-      make_admin_success: '{{name}} dabar yra koordinatorius'
-      remove_admin_success: '{{name}} daugiau nebėra koordinatorius'
-    remove_admin_from_self:
-      question: 'Ar tikrai daugiau nebenorite būti koordinatoriumi?'
   membership_remove_modal:
     invitation:
       title: Atsisakyti pakvietimo
@@ -312,10 +305,13 @@ lt:
   poll_common_attachment_form:
     label: Priedai
   discussions_panel:
+    open: Atidaryti
     closed: Uždarytas
-    include_subgroups: Pogrupiai
   members_panel:
     header_username: 'Naudotojo vardas'
+  polls_panel:
+    open: 'Atidaryti'
+    closed: 'Uždarytas'
   poll_common_form:
     closed: Uždarytas
   poll_count_options:

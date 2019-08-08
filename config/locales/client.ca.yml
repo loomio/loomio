@@ -87,7 +87,6 @@ ca:
       show_more: "Mostra més"
       view_all: "Mostra-ho tot"
       new_thread: "Crea una discussió"
-      add_subgroup: 'Afegeix un subgrup'
       loading: 'Carregant'
       translate: 'Tradueix'
       translated: 'Traducció realitzada per Bing Translator'
@@ -206,7 +205,6 @@ ca:
       comments: 'Comentaris'
     sign_in: 'Inicia la sessió'
   membership_dropdown:
-    make_coordinator: 'Fes coordinador/a'
     cancel_invitation: Cancel·la la invitació
   notifications:
     header: "Notificacions"
@@ -390,15 +388,10 @@ ca:
   memberships_page:
     members: 'Membres'
     name_label: 'Nom'
-    coordinator_label: 'Coordinador'
     remove_member_label: 'Eliminar'
     fragment_placeholder: 'Filtra els usuaris per nom o per cognom...'
     messages:
       remove_member_success: '{{name}} eliminat'
-      make_admin_success: '{{name}} ara és un coordinador'
-      remove_admin_success: '{{name}} ha deixat de ser coordinador'
-    remove_admin_from_self:
-      question: 'Esteu segur de deixar de ser coordinador?'
   membership_remove_modal:
     invitation:
       title: Cancel·la la invitació
@@ -598,7 +591,6 @@ ca:
   explore_page:
     single_search_result: "Coincideix 1 grup públic <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "Coincideixen {{resultCount}} grups públics <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>No s'ha trobat el grup que esteu buscant.</strong> Si la privacitat d'un grup està marcada com a 'secret', el grup no apareixerà aquí. Si coneixeu qui coordina el grup, podeu demanar-li una invitació."
   global:
     messages:
       reload: 'Recarrega'
@@ -640,13 +632,17 @@ ca:
     start_poll: Comença una decissió
     save_changes: Desa
   discussions_panel:
+    open: Obert
     unread: No llegit
     closed: Tancat
-    include_subgroups: Subgrups
   members_panel:
     order_by_name: 'Nom'
     header_name: 'Nom'
     header_username: 'Nom d''usuari'
+  polls_panel:
+    all: 'Tot'
+    open: 'Obert'
+    closed: 'Tancat'
   poll_common_form:
     closed: Tancat
     start: Començar

@@ -14,8 +14,6 @@ hr:
     edit_comment: 'Ažuriranje komentara'
     delete_comment: 'Obriši komentar'
     confirm_delete_message: 'Jeste li sigurni da želite obrisati komentar?'
-  membership_dropdown:
-    make_coordinator: 'Postavljanje koordinatora'
   notifications:
     header: "Notifikacije"
   discussion_form:

@@ -145,7 +145,7 @@ zh_TW:
       show_more: "顯示詳細內容"
       view_all: "檢視所有"
       new_thread: "新討論串"
-      add_subgroup: '新增子群組'
+      add_subgroup: '新的子群組'
       loading: '讀取中'
       translate: '翻譯'
       translated: '採用 Bing 翻譯'
@@ -330,6 +330,11 @@ zh_TW:
       groups_list: '群組'
       user_list: '使用者動作'
   navbar:
+    search_threads: '在 {{name}} 中搜尋討論串'
+    search_polls: '在 {{name}} 中搜尋投票'
+    search_members: '在 {{name}} 中搜尋成員'
+    search_subgroups: '在 {{name}} 中搜尋成員'
+    search_files: '在 {{name}} 中搜尋檔案'
     recent_title: '到儀表板'
     unread_title: '檢視未讀取的動態'
     start_thread: '新討論串'
@@ -366,8 +371,8 @@ zh_TW:
     set_title: "設定標題"
     resend: "重新寄送邀請函"
     invitation_resent: "重新傳送邀請"
-    make_coordinator: '成為協作者'
-    demote_coordinator: '移除協作者'
+    make_coordinator: '升為管理員'
+    demote_coordinator: '拔除管理員'
     remove_from:
       discussion: "自討論串移除"
       group: "自群組移除"
@@ -403,7 +408,7 @@ zh_TW:
     motion_outcome_created: "<strong>{{name}}</strong> 發佈了提案 <strong>{{title}}</strong> 的成果"
     motion_outcome_updated: "<strong>{{name}}</strong> 更新了提案 <strong>{{title}}</strong> 的成果"
     invitation_accepted: "<strong>{{name}}</strong> 接受您的邀請加入 <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> 讓您成為 <strong>{{title}}</strong> 的協調者"
+    new_coordinator: "<strong>{{name}}</strong> 讓您變成了 <strong>{{title}}</strong> 的管理員"
     poll_created: "<strong>{{name}}</strong> 啟動了一個 {{poll_type}}：<strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> 編輯了一個 {{poll_type}}：<strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> 分享了 {{poll_type}}: <strong>{{title}}</strong>"
@@ -626,7 +631,7 @@ zh_TW:
     options:
       label: '選項'
       edit_group: '編輯群組設定'
-      become_coordinator: 成為協調者
+      become_coordinator: 成為管理員
       export_data: 匯出群組資料
       export_data_as_json: 將群組資料匯出為 JSON
       export_data_as_csv: 將群組資料匯出為 CSV
@@ -655,11 +660,9 @@ zh_TW:
       parent_members: '隱私權：討論串只會被 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員看到。'
       public: '隱私權：此群組現在能在網路上被看到'
       aria_label: '群組隱私：{{privacy}}'
-  polls_panel:
-    new_poll: 新投票
   description_card:
     title: '群組描述'
-    placeholder: '群組協調者可以使用這個區域來描述群組的目的，這樣才能讓每個人都知道為什麼他們會在這裡。'
+    placeholder: '群組管理員可以使用此區域來描述群組的用途，這樣可以讓所有人知道他們為什麼會在這裡。'
     messages:
       description_updated: '描述已更新'
   leave_group_form:
@@ -667,15 +670,13 @@ zh_TW:
     title: '離開群組'
     question: '您確定您想要離開此群組嗎？'
     submit: '是的，離開此群組'
-    cannot_leave_group: '您無法離開這個群組，因為您是僅存的協調者。您將會需要選擇其他的協調者或是停用這個群組。'
-    add_coordinator: '新增協調者'
   archive_group_form:
     aria_label: '停用群組'
     title: '停用群組'
     question: '您確定您想要停用此群組嗎？'
     submit: '是的，停用此群組'
   group_form:
-    permissions_explaination: 停用某權限代表只有協調者才能執行此動作。
+    permissions_explaination: '有兩種等級的成員資格：管理員與成員。管理員擁有所有權限。選取成員權限：'
     aria_label: '群組表單'
     start_group_heading: '啟動群組'
     start_subgroup_heading: '啟動子群組'
@@ -843,15 +844,15 @@ zh_TW:
   memberships_page:
     members: '成員'
     name_label: '名字'
-    coordinator_label: '協調者'
+    coordinator_label: '管理員'
     remove_member_label: '移除'
     fragment_placeholder: '以名稱或使用者名稱過濾使用者...'
     messages:
       remove_member_success: '已移除 {{name}}'
-      make_admin_success: '{{name}} 現在是新的協調者'
-      remove_admin_success: '{{name}} 已不再是協調者'
+      make_admin_success: '{{name}} 現在是管理員了'
+      remove_admin_success: '{{name}} 不再是管理員了'
     remove_admin_from_self:
-      question: '您確定您真的不想要再當協調者？'
+      question: '您確定您不想要再當管理員了嗎？'
   membership_remove_modal:
     invitation:
       title: 取消邀請函
@@ -866,8 +867,8 @@ zh_TW:
       flash: 成員已移除
       submit: 移除成員
   memberships_panel:
-    add_coordinator: 成為協作者
-    remove_coordinator: 移除協作者
+    add_coordinator: 升為管理員
+    remove_coordinator: 拔除管理員
   membership_form:
     modal_title:
       group: 設定群組標題
@@ -937,12 +938,9 @@ zh_TW:
     select_text_to_link: 選取要連結的文字
     insert_link: 插入連結
   change_picture_form:
-    aria_label: '變更照片表單'
-    title: '變更照片'
     helptext: '您可以上傳您自己的簡歷照片，或是若您有一個 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> 帳號，您可以使用它。'
     use_initials: '使用縮寫'
-    use_gravatar: '使用 gravatar'
-    use_uploaded: '上傳新照片'
+    use_gravatar: '使用 Gravatar 的大頭貼'
   change_password_form:
     set_password_title: 設定您的密碼
     set_password_helptext: 請輸入密碼，最少需要 8 個字元
@@ -1005,7 +1003,6 @@ zh_TW:
     load_more: 載入更多討論串
     mark_as_read: 設為已讀
     dismiss: 暫時忽略
-    thread_dismissed: 討論串已忽略
     thread_recalled: 討論串已收回
     explain_mute:
       title: 您尚未靜音任何討論串。
@@ -1219,7 +1216,7 @@ zh_TW:
     search_placeholder: 搜尋公開群組
     single_search_result: "1 個公開群組符合 <strong>{{searchTerm}}：</strong>"
     multiple_search_results: "{{resultCount}} 個公開群組符合 <strong>{{searchTerm}}：</strong>"
-    no_results_found: "<strong>找不到您要找的群組？</strong>如果群組的隱私設定為「私密」，它將不會出現在這裡。若您知道誰協調該群組，您必須請他們邀請您。"
+    no_results_found: "<strong>找不到您要找的群組嗎？</strong>如果群組的隱私設定為「私密」，那它就不會在此出現。"
   global:
     messages:
       app_update: '新版的應用程式已經可用'
@@ -1322,16 +1319,19 @@ zh_TW:
     no_polls: 找不到先前的決策
     count: "檢視全部：({{count}}) 個決策"
   discussions_panel:
+    open: 公開
     unread: 未讀
     closed: 封閉
-    include_subgroups: 子群組
+    include_subgroups_mine: '{{name}} 與我的子群組'
+    include_subgroups_all: '{{name}} 與所有子群組'
+    no_results_found: 「{{search}}」無結果
   members_panel:
     sort: '排序'
     order_label: "訂購"
     order_by_name: '名稱'
     order_by_created: '最舊'
     order_by_created_desc: '最新'
-    order_by_admin_desc: '協調者'
+    order_by_admin_desc: '管理員'
     loaded_of_total: '{{total}} 中的 {{loaded}}'
     view_requests: 檢視請求
     header_name: '名稱'
@@ -1340,8 +1340,17 @@ zh_TW:
     header_invited_by: '邀請由'
     header_invited: '被邀請'
     header_actions: '動作'
-  group_polls_panel:
-    no_polls: 找不到投票
+    directory: '目錄'
+    invitations: '邀請函'
+    requests: '請求'
+    admin: '管理員'
+    sharable_link: '可分享的連結'
+  polls_panel:
+    new_poll: 新投票
+    all: '全部'
+    open: '公開'
+    closed: '封閉'
+    no_polls: '找不到投票'
   group_files_panel:
     no_files: 找不到檔案
   poll_common_action_panel:
@@ -1795,6 +1804,7 @@ zh_TW:
     modal_title: 安裝 Slack
     modal_helptext: 首先，您將需要登入到 Slack 中。我們將會在一秒內將您重新導向到那裡，或是您可以點選下面的按鈕來繼續。
     login_to_slack: 登入到 Slack
+    remove_slack: 移除 Slack
     card:
       install_title: 連線至 Slack
       install_helptext: Loomio 機器人會通知您的 Slack 團隊在 Loomio 上的討論與決策。您也可以從 Slack 上啟動討論與投票。
@@ -1827,8 +1837,7 @@ zh_TW:
       use_existing_group: 使用已有的群組
     invite:
       heading: '第二步：設定 Slack 頻道'
-      helptext: |
-          成功！現在，選擇一個您想要讓我們貼出更新資訊的頻道。
+      helptext: 選取您想要讓我們張貼更新訊息的頻道。
       select_a_channel: 選取頻道
       publish_group: 貼出歡迎訊息
       publish_group_helptext_on: 我們將會貼出一則訊息到這個頻道裡以讓夥伴們知道如何使用 LoomioBot。

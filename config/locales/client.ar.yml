@@ -72,7 +72,6 @@ ar:
       show_more: "أظهر المزيد"
       view_all: "استعراض الكل"
       new_thread: "موضوع جديد"
-      add_subgroup: 'أضف فريقا فرعيا'
       loading: 'تحميل'
       translate: 'ترجم'
       translated: 'ترجم باستخدام مترجم بينغ'
@@ -358,15 +357,10 @@ ar:
   memberships_page:
     members: 'الأعضاء'
     name_label: 'الإسم'
-    coordinator_label: 'المنسق'
     remove_member_label: 'إزالة'
     fragment_placeholder: 'اختيار المستخدمين حسب الاسم أو اسم المستخدم..'
     messages:
       remove_member_success: 'تمت إزالة {{name}}'
-      make_admin_success: 'تم تعيين {{name}} منسقاً'
-      remove_admin_success: '{{name}} لم يعد منسقاً'
-    remove_admin_from_self:
-      question: 'هل أنت متأكد أنك لا ترغب أن تكون منسقاً بعد الآن؟'
   membership_remove_modal:
     invitation:
       title: إلغاء الدعوة
@@ -405,9 +399,6 @@ ar:
     locale_label: 'اللغة'
     update_profile: 'تحديث الملف الشخصي'
     deactivate_account: 'إيقاف الحساب'
-  change_picture_form:
-    title: 'تغيير الصورة'
-    use_uploaded: 'تحميل صورة جديدة'
   deactivation_modal:
     aria_label: 'إيقاف الحساب'
   deactivate_user_form:
@@ -623,13 +614,18 @@ ar:
   poll_common_attachment_form:
     label: المرفقات
   discussions_panel:
+    open: مفتوحة
     unread: غير مقروءة
     closed: مغلقة
-    include_subgroups: الفِرَق الفرعية
   members_panel:
     order_by_name: 'الاسم '
     header_name: 'الاسم '
     header_username: 'إسم المستخدم'
+    invitations: 'الدعوات'
+  polls_panel:
+    all: 'الكل'
+    open: 'مفتوحة'
+    closed: 'مغلقة'
   current_polls_card:
     start_poll: قرار جديد
   poll_common_select_group:

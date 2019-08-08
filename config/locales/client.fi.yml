@@ -46,7 +46,6 @@ fi:
       show_more: "Näytä lisää"
       view_all: "Näytä kaikki"
       new_thread: "Uusi aihe"
-      add_subgroup: 'Lisää alaryhmä'
       loading: 'Ladataan'
       translate: 'Käännä'
       translated: 'Tekstin käänsi Bing-kääntäjä'
@@ -99,7 +98,11 @@ fi:
   poll_common:
     save_changes: Tallenna
   discussions_panel:
+    open: Avoin
     unread: Lukematon
     closed: Suljettu
+  polls_panel:
+    open: 'Avoin'
+    closed: 'Suljettu'
   poll_common_form:
     closed: Suljettu
