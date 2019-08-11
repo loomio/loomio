@@ -78,7 +78,7 @@ export default
         {id: 0, name: 'threads',   route: @urlFor(@group)}
         {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')},
         {id: 2, name: 'members',   route: @urlFor(@group, 'members')},
-        {id: 3, name: 'subgroups', route: @urlFor(@group, 'subgroups')},
+        # {id: 3, name: 'subgroups', route: @urlFor(@group, 'subgroups')},
         {id: 4, name: 'files',     route: @urlFor(@group, 'files')}
       ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
 
@@ -102,7 +102,6 @@ v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shri
       v-tabs(background-color="transparent" v-model="activeTab" show-arrows)
         v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
           span(v-t="'group_page.'+tab.name")
-      v-spacer
       join-group-button(v-if="groupPage" :group='group')
       group-privacy-button(v-if="groupPage" :group='group')
       group-actions-dropdown(v-if="groupPage" :group='group')

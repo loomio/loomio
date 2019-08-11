@@ -45,7 +45,7 @@ export default class GroupModel extends BaseModel
     @hasMany 'memberships'
     @hasMany 'groupIdentities'
     @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
-    @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
+    @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'
 
   activeMemberships: ->

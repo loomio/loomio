@@ -20,8 +20,7 @@ export default
   ]
 
   data: ->
-    groups: []
-    parentGroups: []
+    currentParentGroup: null
     open: null
     version: AppConfig.version.split('.').slice(-1)[0]
 
@@ -51,9 +50,6 @@ export default
       return head(@availableGroups()) if @availableGroups().length == 1
       find(@availableGroups(), (g) => g.id == (AppConfig.currentGroup or {}).id) || Records.groups.build()
 
-    groupUrl: (group) ->
-      LmoUrlService.group(group)
-
     unreadThreadCount: ->
       InboxService.unreadCount()
 
@@ -64,67 +60,74 @@ export default
 
   computed:
     user: -> Session.user()
+    parentGroups: -> Session.user().parentGroups()
     siteName: -> AppConfig.theme.site_name
     logoUrl: -> AppConfig.theme.app_logo_src
+    subgroups: -> @currentParentGroup.subgroups()
+    canStartSubGroup: -> true
+
+  watch:
+    $route: ->
+      console.log AppConfig.currentGroup
+      @currentParentGroup = AppConfig.currentGroup.parentOrSelf()
 
 </script>
 
 <template lang="pug">
-v-navigation-drawer.sidenav-left(app dark v-model="open")
-  template(v-slot:prepend)
-    v-toolbar
-      img(style="height: 50%" :src="logoUrl" :alt="siteName")
-      v-spacer
-      v-btn.navbar__sidenav-toggle(icon @click="open = !open")
-        v-avatar(tile size="36px")
-          v-icon mdi-menu
-  v-list-group.sidebar__user-dropdown()
-    template(v-slot:activator)
-      v-list-item(dense).pa-0
-        v-list-item-icon
-          user-avatar(:user="user" :size="24")
-        v-list-item-content
-          v-list-item-title {{user.name}}
-          v-list-item-subtitle {{user.email}}
-        //-   v-list-item-title {{user.name}}
-    user-dropdown
-  v-divider
-  //- v-list(nav)
-  v-list-item.sidebar__list-item-button--recent(dense to='/dashboard')
-    v-list-item-icon
-      v-icon mdi-forum
-    v-list-item-title(v-t="'sidebar.recent_threads'")
-  v-list-item.sidebar__list-item-button--unread(dense to='/inbox')
-    v-list-item-icon
-      v-icon mdi-inbox
-    v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
-    //- v-list-item.sidebar__list-item-button--muted(to='/dashboard/show_muted')
-    //-   v-list-item-avatar(:size="20")
-    //-     v-icon(:size="20") mdi-volume-mute
-    //-   v-list-item-title(v-t="'sidebar.muted_threads'")
-    //- v-list-item.sidebar__list-item-button--decisions(to='/polls')
-    //-   v-list-item-avatar(:size="20")
-    //-     v-icon(:size="20") mdi-thumbs-up-down
-    //-   v-list-item-title(v-t="'common.decisions'")
-  v-list-item.sidebar__list-item-button--start-thread(dense v-if='canStartThreads()', @click='openStartDiscussionModal(currentGroup())')
-    v-list-item-icon
-      v-icon mdi-plus
-    v-list-item-title(v-t="'sidebar.start_thread'")
-  v-divider.sidebar__divider
-  div.sidebar__groups(v-for='group in groups' :key='group.id')
-    v-list-item(:to='groupUrl(group)' dense)
-      v-list-item-avatar(size="28px")
-        v-avatar(tile size="28px")
-          img.sidebar__list-item-group-logo(:src='group.logoUrl()')
-      v-list-item-title {{group.name}}
-    v-list-item(dense v-if="isCurrentOrganization(group)" v-for="subgroup in sortGroups(group.subgroups())" :to='groupUrl(subgroup)' :key="subgroup.id")
-      v-list-item-avatar(:size="28")
-      v-list-item-title {{subgroup.name}}
-  v-list-item.sidebar__list-item-button--start-group(dense v-if="canStartGroup()", @click="openStartGroupModal()")
-    v-list-item-avatar(:size="28")
-      v-icon(:size="28" tile) mdi-plus
-    v-list-item-title(v-t="'sidebar.start_group'")
-  v-list-item(dense)
-    v-list-item-title
-      a(href="/beta") beta {{version}}
+v-navigation-drawer.sidenav-left(app v-model="open")
+  //- template(v-slot:prepend)
+  //-   v-toolbar(flat)
+  //-     img(style="height: 50%" :src="logoUrl" :alt="siteName")
+  //-     v-spacer
+  //-     v-btn.navbar__sidenav-toggle(icon @click="open = !open")
+  //-       v-avatar(tile size="36px")
+  //-         v-icon mdi-menu
+
+  v-layout(fill-height)
+    v-navigation-drawer(mini-variant mini-variant-width="56")
+      v-list-item
+        v-list-item-avatar(:size="28")
+          user-avatar(:user="user")
+      v-list-item(v-for='group in parentGroups' :key='group.id' :to='urlFor(group)' dense)
+        v-list-item-avatar(size="28px")
+          v-avatar(tile size="28px")
+            img.sidebar__list-item-group-logo(:src='group.logoUrl()')
+      v-list-item
+        v-list-item-avatar(:size="28")
+          v-icon(:size="28" tile) mdi-plus
+
+    //- v-list-group.sidebar__user-dropdown()
+    //-   template(v-slot:activator)
+    //-     v-list-item(dense).pa-0
+    //-       v-list-item-icon
+    //-         user-avatar(:user="user" :size="24")
+    //-       v-list-item-content
+    //-         v-list-item-title {{user.name}}
+    //-         v-list-item-subtitle {{user.email}}
+    //-       //-   v-list-item-title {{user.name}}
+    //-   user-dropdown
+
+    v-navigation-drawer(v-if="currentParentGroup")
+      v-list-item.sidebar__list-item-button--recent(dense :to='urlFor(currentParentGroup)')
+        v-list-item-title {{currentParentGroup.name}}
+      v-divider
+      v-list-item.sidebar__list-item-button--recent(dense :to='urlFor(currentParentGroup, null, {subgroups: "mine"})')
+        v-list-item-title My groups
+      v-list-item.sidebar__list-item-button--recent(dense :to='urlFor(currentParentGroup, null, {subgroups: "all"})')
+        v-list-item-title All groups
+      v-divider
+      v-list-item.sidebar__groups(dense v-for="subgroup in currentParentGroup.subgroups()" :to='urlFor(subgroup)' :key="subgroup.id")
+        v-list-item-title {{subgroup.name}}
+        //- v-list-item(:to='groupUrl(group)' dense)
+        //-   //- v-list-item-avatar(size="28px")
+        //-   //-   v-avatar(tile size="28px")
+        //-   //-     img.sidebar__list-item-group-logo(:src='group.logoUrl()')
+        //-   v-list-item-title {{group.name}}
+          //- v-list-item-avatar(:size="28")
+      v-divider
+      v-list-item.sidebar__list-item-button--start-group(dense v-if="canStartSubGroup", @click="openStartSubGroupModal()")
+        v-list-item-title(v-t="'sidebar.start_subgroup'")
+      v-list-item(dense)
+        v-list-item-title
+          a(href="/beta") beta {{version}}
 </template>

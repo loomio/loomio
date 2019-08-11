@@ -345,6 +345,7 @@ en:
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
     start_group: 'New organization'
+    start_subgroup: 'New subgroup'
     explore: 'Public groups'
     start_thread: New thread
     start_decision: New decision
