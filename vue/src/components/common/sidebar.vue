@@ -30,7 +30,10 @@ export default
 
     EventBus.$on 'currentComponent', (data) =>
       @group = data.group
-      @organization = data.group.parentOrSelf()
+      if @group
+        @organization = data.group.parentOrSelf()
+      else
+        @organization = null
 
     @watchRecords
       collections: ['groups', 'memberships']
@@ -82,9 +85,9 @@ v-navigation-drawer.sidenav-left(app v-model="open")
 
   v-layout(fill-height)
     v-navigation-drawer(stateless mini-variant mini-variant-width="56" :value="open")
-      v-list-item
+      v-list-item(to="/dashboard")
         v-list-item-avatar(:size="28")
-          user-avatar(:user="user")
+          user-avatar(no-link :user="user")
       v-list-item(v-for='group in parentGroups' :key='group.id' :to='urlFor(group)' dense)
         v-list-item-avatar(size="28px")
           v-avatar(tile size="28px")
@@ -92,6 +95,20 @@ v-navigation-drawer.sidenav-left(app v-model="open")
       v-list-item
         v-list-item-avatar(:size="28")
           v-icon(:size="28" tile) mdi-plus
+
+    v-navigation-drawer(stateless v-if="!organization" :value="open")
+      v-list-item(dense)
+        v-list-item-content
+          v-list-item-title {{user.name}}
+          v-list-item-subtitle {{user.email}}
+      v-divider
+      v-list-item(dense to="/dashboard")
+        v-list-item-title(v-t="'sidebar.recent_threads'")
+      v-list-item(dense to="/inbox")
+        v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
+      v-divider
+      v-list-item
+        user-dropdown
 
     v-navigation-drawer(stateless v-if="organization" :value="open")
       v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization)')

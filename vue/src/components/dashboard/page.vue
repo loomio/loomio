@@ -46,6 +46,7 @@ export default
         titleKey: @titleKey
         page: 'dashboardPage'
         # filter: $routeParams.filter
+        group: null
 
       @loader.fetchRecords().then => @dashboardLoaded = true
       @openStartGroupModal() if @promptStart
