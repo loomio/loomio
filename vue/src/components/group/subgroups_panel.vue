@@ -3,11 +3,11 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
-import truncate       from '@/mixins/truncate'
 import GroupModalMixin from '@/mixins/group_modal'
+import { truncate } from 'lodash'
 
 export default
-  mixins: [truncate, GroupModalMixin]
+  mixins: [GroupModalMixin]
 
   data: ->
     group: Records.groups.fuzzyFind(@$route.params.key)
@@ -38,6 +38,8 @@ export default
     startSubgroup: ->
       @openStartSubgroupModal(@group)
 
+    stripDescription: (description) ->
+      truncate (description).replace(///<[^>]*>?///gm, ''), 50
 </script>
 
 <template lang="pug">
@@ -53,5 +55,5 @@ v-card.group-subgroups-panel
         group-avatar(:group="group" size="28px")
       v-list-item-content
         v-list-item-title {{ group.name }}
-        v-list-item-subtitle {{ group.description }}
+        v-list-item-subtitle {{ stripDescription(group.description) }}
 </template>

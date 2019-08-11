@@ -42,7 +42,7 @@ export default
 
       @watchRecords
         key: @group.id
-        collections: ['discussions', 'groups']
+        collections: ['discussions', 'groups', 'memberships']
         query: (store) => @query(store)
 
       @refresh()
@@ -100,22 +100,25 @@ export default
 
   watch:
     '$route.params.key': 'init'
-    '$route.query': (query) ->
-      @search = ''
-      @filter = 'open'
-      @subgroups = 'none'
+    '$route.query':
+      immediate: true
+      handler: (query) ->
+        @search = ''
+        @filter = 'open'
+        @subgroups = 'none'
 
-      @filter = @$route.query.t if @$route.query.t
-      @search = @$route.query.q if @$route.query.q
-      @subgroups = @$route.query.subgroups if @$route.query.subgroups
+        @filter = @$route.query.t if @$route.query.t
+        @search = @$route.query.q if @$route.query.q
+        @subgroups = @$route.query.subgroups if @$route.query.subgroups
 
-      @refresh()
+        @refresh()
 
   computed:
     tags: ->
       intersection([@filter], @groupTags)
 
     groupIds: ->
+      return [] unless @group
       switch @subgroups
         when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
         when 'all' then @group.organisationIds()

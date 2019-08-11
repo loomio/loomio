@@ -10,7 +10,7 @@ import GroupModalMixin from '@/mixins/group_modal.coffee'
 import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
 import WatchRecords from '@/mixins/watch_records'
 
-import { isUndefined, sortBy, filter, find, head, uniq, map, compact, concat } from 'lodash'
+import { isUndefined, sortBy, filter, find, head, uniq, map, compact, concat, intersection, difference } from 'lodash'
 
 export default
   mixins: [
@@ -24,6 +24,7 @@ export default
     open: null
     group: null
     version: AppConfig.version.split('.').slice(-1)[0]
+    myGroups: []
 
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
@@ -38,6 +39,9 @@ export default
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
+        if @organization
+          @myGroups = intersection Session.user().formalGroups(), @organization.subgroups()
+
         @groups = Session.user().parentGroups().concat(Session.user().orphanSubgroups()).filter (g) -> g.type == "FormalGroup"
         # @groups = Session.user().formalGroups().filter (group) ->
         #   group.isParent() or !Session.user().isMemberOf(group.parent())
@@ -107,24 +111,20 @@ v-navigation-drawer.sidenav-left(app v-model="open")
       v-list-item(dense to="/inbox")
         v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
       v-divider
-      v-list-item
-        user-dropdown
+      user-dropdown
 
     v-navigation-drawer(stateless v-if="organization" :value="open")
       v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization)')
         v-list-item-title {{organization.name}}
+      div(v-if="myGroups.length > 0")
+        v-divider
+        v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization, null, {subgroups: "mine"})')
+          v-list-item-title My groups
+        v-list-item(dense v-for="group in myGroups" :key="group.id" :to="urlFor(group)")
+          v-list-item-title {{ group.name }}
       v-divider
-      v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization, null, {subgroups: "mine"})')
-        v-list-item-title My groups
-      v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization, null, {subgroups: "all"})')
-        v-list-item-title All groups
-      v-divider
-      v-list-item.sidebar__groups(dense v-for="subgroup in organization.subgroups()" :to='urlFor(subgroup)' :key="subgroup.id")
-        v-list-item-title {{subgroup.name}}
-
-      v-divider
-      v-list-item.sidebar__list-item-button--start-group(dense v-if="canStartSubGroup", @click="openStartSubGroupModal()")
-        v-list-item-title(v-t="'sidebar.start_subgroup'")
+      v-list-item.sidebar__list-item-button--recent(dense exact :to="urlFor(organization, 'subgroups')")
+        v-list-item-title(v-t="'sidebar.all_groups'")
       v-list-item(dense)
         v-list-item-title
           a(href="/beta") beta {{version}}
