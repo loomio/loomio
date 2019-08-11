@@ -20,12 +20,17 @@ export default
   ]
 
   data: ->
-    currentParentGroup: null
+    organization: null
     open: null
+    group: null
     version: AppConfig.version.split('.').slice(-1)[0]
 
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
+
+    EventBus.$on 'currentComponent', (data) =>
+      @group = data.group
+      @organization = data.group.parentOrSelf()
 
     @watchRecords
       collections: ['groups', 'memberships']
@@ -41,6 +46,10 @@ export default
   watch:
     open: (val) ->
       EventBus.$emit("sidebarOpen", val)
+
+    '$route': ->
+      console.log '$route', @$route
+
 
   methods:
     sortGroups: (groups) -> sortBy groups, 'fullName'
@@ -63,28 +72,16 @@ export default
     parentGroups: -> Session.user().parentGroups()
     siteName: -> AppConfig.theme.site_name
     logoUrl: -> AppConfig.theme.app_logo_src
-    subgroups: -> @currentParentGroup.subgroups()
+    subgroups: -> @organization.subgroups()
     canStartSubGroup: -> true
-
-  watch:
-    $route: ->
-      console.log AppConfig.currentGroup
-      @currentParentGroup = AppConfig.currentGroup.parentOrSelf()
 
 </script>
 
 <template lang="pug">
 v-navigation-drawer.sidenav-left(app v-model="open")
-  //- template(v-slot:prepend)
-  //-   v-toolbar(flat)
-  //-     img(style="height: 50%" :src="logoUrl" :alt="siteName")
-  //-     v-spacer
-  //-     v-btn.navbar__sidenav-toggle(icon @click="open = !open")
-  //-       v-avatar(tile size="36px")
-  //-         v-icon mdi-menu
 
   v-layout(fill-height)
-    v-navigation-drawer(mini-variant mini-variant-width="56")
+    v-navigation-drawer(stateless mini-variant mini-variant-width="56" :value="open")
       v-list-item
         v-list-item-avatar(:size="28")
           user-avatar(:user="user")
@@ -96,34 +93,18 @@ v-navigation-drawer.sidenav-left(app v-model="open")
         v-list-item-avatar(:size="28")
           v-icon(:size="28" tile) mdi-plus
 
-    //- v-list-group.sidebar__user-dropdown()
-    //-   template(v-slot:activator)
-    //-     v-list-item(dense).pa-0
-    //-       v-list-item-icon
-    //-         user-avatar(:user="user" :size="24")
-    //-       v-list-item-content
-    //-         v-list-item-title {{user.name}}
-    //-         v-list-item-subtitle {{user.email}}
-    //-       //-   v-list-item-title {{user.name}}
-    //-   user-dropdown
-
-    v-navigation-drawer(v-if="currentParentGroup")
-      v-list-item.sidebar__list-item-button--recent(dense :to='urlFor(currentParentGroup)')
-        v-list-item-title {{currentParentGroup.name}}
+    v-navigation-drawer(stateless v-if="organization" :value="open")
+      v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization)')
+        v-list-item-title {{organization.name}}
       v-divider
-      v-list-item.sidebar__list-item-button--recent(dense :to='urlFor(currentParentGroup, null, {subgroups: "mine"})')
+      v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization, null, {subgroups: "mine"})')
         v-list-item-title My groups
-      v-list-item.sidebar__list-item-button--recent(dense :to='urlFor(currentParentGroup, null, {subgroups: "all"})')
+      v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization, null, {subgroups: "all"})')
         v-list-item-title All groups
       v-divider
-      v-list-item.sidebar__groups(dense v-for="subgroup in currentParentGroup.subgroups()" :to='urlFor(subgroup)' :key="subgroup.id")
+      v-list-item.sidebar__groups(dense v-for="subgroup in organization.subgroups()" :to='urlFor(subgroup)' :key="subgroup.id")
         v-list-item-title {{subgroup.name}}
-        //- v-list-item(:to='groupUrl(group)' dense)
-        //-   //- v-list-item-avatar(size="28px")
-        //-   //-   v-avatar(tile size="28px")
-        //-   //-     img.sidebar__list-item-group-logo(:src='group.logoUrl()')
-        //-   v-list-item-title {{group.name}}
-          //- v-list-item-avatar(:size="28")
+
       v-divider
       v-list-item.sidebar__list-item-button--start-group(dense v-if="canStartSubGroup", @click="openStartSubGroupModal()")
         v-list-item-title(v-t="'sidebar.start_subgroup'")
