@@ -6,7 +6,7 @@ import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
-import { map, debounce, orderBy, intersection, compact, omit, identity } from 'lodash'
+import { map, debounce, orderBy, intersection, compact, omit, identity, filter } from 'lodash'
 import Session from '@/shared/services/session'
 
 export default
@@ -142,6 +142,9 @@ export default
     groupTags: ->
       @group.parentOrSelf().tagNames || []
 
+    unreadCount: ->
+      filter(@discussions, (discussion) -> discussion.isUnread()).length
+
 </script>
 
 <template lang="pug">
@@ -152,7 +155,7 @@ div.discussions-panel
     v-chip(label outlined value="open" @click="selectFilter('open')")
       span(v-t="'discussions_panel.open'")
     v-chip(label outlined value="unread" @click="selectFilter('unread')")
-      span(v-t="'discussions_panel.unread'")
+      span(v-t="{ path: 'discussions_panel.unread', args: { count: unreadCount }}")
     v-chip(label outlined value="closed" @click="selectFilter('closed')")
       span(v-t="'discussions_panel.closed'")
     v-divider.mr-2.ml-1(inset vertical)

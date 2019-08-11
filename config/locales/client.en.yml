@@ -1455,7 +1455,7 @@ en:
 
   discussions_panel:
     open: Open
-    unread: Unread
+    unread: Unread ({{count}})
     closed: Closed
     include_subgroups_mine: '{{name}} and my subgroups'
     include_subgroups_all: '{{name}} and all subgroups'

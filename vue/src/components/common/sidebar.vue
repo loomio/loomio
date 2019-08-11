@@ -25,6 +25,7 @@ export default
     group: null
     version: AppConfig.version.split('.').slice(-1)[0]
     myGroups: []
+    unreadCounts: {}
 
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
@@ -47,6 +48,15 @@ export default
         #   group.isParent() or !Session.user().isMemberOf(group.parent())
         # @ = uniq compact concat(groups, map(groups, (group) -> group.parent()))
         @groups = sortBy @groups, 'fullName'
+
+    @watchRecords
+      collections: ['groups', 'discussions']
+      query: (store) =>
+        return unless @organization
+        @unreadCounts = {}
+        @myGroups.forEach (group) =>
+          @unreadCounts[group.id] = filter(group.discussions(), (discussion) -> discussion.isUnread()).length
+        @unreadCounts[@organization.id] = filter(@organization.discussions(), (discussion) -> discussion.isUnread()).length
 
     InboxService.load()
 
@@ -115,13 +125,15 @@ v-navigation-drawer.sidenav-left(app v-model="open")
 
     v-navigation-drawer(stateless v-if="organization" :value="open")
       v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization)')
-        v-list-item-title {{organization.name}}
+        v-list-item-title(v-if="unreadCounts[organization.id]") {{organization.name}} ({{ unreadCounts[organization.id] }})
+        v-list-item-title(v-if="!unreadCounts[organization.id]") {{organization.name}}
       div(v-if="myGroups.length > 0")
         v-divider
         v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization, null, {subgroups: "mine"})')
           v-list-item-title My groups
         v-list-item(dense v-for="group in myGroups" :key="group.id" :to="urlFor(group)")
-          v-list-item-title {{ group.name }}
+          v-list-item-title(v-if="unreadCounts[group.id]") {{ group.name }} ({{ unreadCounts[group.id] }})
+          v-list-item-title(v-if="!unreadCounts[group.id]") {{ group.name }}
       v-divider
       v-list-item.sidebar__list-item-button--recent(dense exact :to="urlFor(organization, 'subgroups')")
         v-list-item-title(v-t="'sidebar.all_groups'")
