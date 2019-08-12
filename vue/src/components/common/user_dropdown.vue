@@ -19,23 +19,23 @@ export default
 <template lang="pug">
 div
   v-list-item.user-dropdown__list-item-button--profile(to="/profile" dense)
+    v-list-item-title(v-t="'user_dropdown.edit_profile'")
     v-list-item-icon
       v-icon mdi-account
-    v-list-item-title(v-t="'user_dropdown.edit_profile'")
   v-list-item.user-dropdown__list-item-button--email-settings(to="/email_preferences" dense)
+    v-list-item-title(v-t="'user_dropdown.email_settings'")
     v-list-item-icon
       v-icon mdi-settings
-    v-list-item-title(v-t="'user_dropdown.email_settings'")
   v-list-item(v-if="showHelp", :href="helpLink", target="_blank" dense)
+    v-list-item-title(v-t="'user_dropdown.help'")
     v-list-item-icon
       v-icon mdi-help-circle-outline
-    v-list-item-title(v-t="'user_dropdown.help'")
   v-list-item(to="/contact" dense)
+    v-list-item-title(v-t="{path: 'user_dropdown.contact_site_name', args: {site_name: siteName}}")
     v-list-item-icon
       v-icon mdi-email-outline
-    v-list-item-title(v-t="{path: 'user_dropdown.contact_site_name', args: {site_name: siteName}}")
   v-list-item(@click="signOut()" dense)
+    v-list-item-title(v-t="'user_dropdown.sign_out'")
     v-list-item-icon
       v-icon mdi-exit-to-app
-    v-list-item-title(v-t="'user_dropdown.sign_out'")
 </template>
