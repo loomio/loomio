@@ -31,9 +31,12 @@ export default
     '$route':
       immediate: true
       handler: (newVal, oldVal) ->
-        if newVal.query.q.length
+        if newVal.query.q
           @searchQuery = newVal.query.q
           @searchOpen = true
+        else
+          @searchQuery = ''
+          @searchOpen = false
 
     searchQuery: debounce (val, old)->
       @$router.replace(query: {q: val})
