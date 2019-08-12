@@ -68,6 +68,7 @@ angular.module('loomioApp').directive 'announcementForm', ->
         utils.parseJSONList(users)
 
     buildRecipientFromEmail = (email) ->
+      id: email
       email: email
       emailHash: email
       avatarKind: 'mdi-email-outline'
