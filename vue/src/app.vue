@@ -71,9 +71,8 @@ v-app
   navbar
   sidebar
   v-content
-    router-view
-      //- router-view(v-if="!pageError")
-      //- common-error(v-if="pageError" :error="pageError")
+    router-view(v-if="!pageError")
+    common-error(v-if="pageError" :error="pageError")
     v-spacer
     common-footer
   thread-nav

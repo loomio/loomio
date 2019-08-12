@@ -33,12 +33,15 @@ export default
         @threadPercentage = parseInt(position / @discussion.createdEvent().childCount * 100)
 
       Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
-        @discussion = discussion
-        EventBus.$emit 'currentComponent',
-          page: 'threadPage'
-          discussion: @discussion
-          group: @discussion.group()
-          title: @discussion.title
+          @discussion = discussion
+          EventBus.$emit 'currentComponent',
+            page: 'threadPage'
+            discussion: @discussion
+            group: @discussion.group()
+
+            title: @discussion.title
+      ,
+        (error) -> EventBus.$emit 'pageError', error
 
 
 </script>
