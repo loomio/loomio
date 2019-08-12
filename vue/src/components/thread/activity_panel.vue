@@ -44,6 +44,8 @@ export default
         key: @discussion.id
         collections: ['events']
         query: (store) =>
+          return unless @discussion.createdEvent()
+
           @eventsBySlot = {}
           times @discussion.createdEvent().childCount, (i) =>
             @eventsBySlot[i+1] = null
