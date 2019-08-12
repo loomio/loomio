@@ -119,7 +119,7 @@ v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shri
 
   v-toolbar-title.d-flex.align-center(v-if="!searchOpen && groupPage") {{group.name}}
 
-  v-toolbar-title(v-if="!searchOpen && threadPage" @click="$vuetify.goTo('head')") {{title}}
+  v-toolbar-title(v-if="!searchOpen && threadPage && showTitle" @click="$vuetify.goTo('head')") {{title}}
 
   v-spacer(v-if="!searchOpen")
   v-btn(icon v-if="search && !searchOpen" @click="searchOpen = true")
