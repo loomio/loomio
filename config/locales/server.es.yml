@@ -566,30 +566,6 @@ es:
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: Comentario de %{comment_author}
-  personal_data:
-    title: La data personal de %{user_name} esta en %{host_name}
-  poll_generator:
-    proposal:
-      title: "Ofrecer un empleo formal a Shelley y Jack"
-      details: 'Shelley y Jack han estado trabajando para nosotros como internos por los últimos 3 meses, ambos han demostrado una dedicación admirable, y claramente son un gran recurso para nuestro equipo. ¿Les ofrecemos una oferta formal de trabajo? '
-    poll:
-      title: "¿Hay alguna alergia de la que debamos saber antes de la cena del Jueves?"
-      details: 'Espero verlos a todos en mi casa! Por favor indica si tienes alguna restricción alimenticia de la que debamos saber. '
-    count:
-      title: "¿Quién quiere organizar el picnic de la empresa?  "
-      details: 'Marsha se sintió muy abrumada la ultima vez, así que esta vez nos gustaría darle un par de ayudantes para que sea más fácil para todos. Por favor indica si te gustaría ayudar. '
-    dot_vote:
-      title: "¿Cuál es la estrategia de nuestra empresa para el próximo cuatrimestre? "
-      details: 'Este es un gran año para nuestra empresa y necesitamos ser estratégicos acerca de como invertimos nuestros limitados recursos. Por favor indica cuales son las áreas que crees son más importantes para que nos enfoquemos el próximo cuatrimestre. '
-    score:
-      title: "¿Qué temas te interesan para la próxima conferencia?"
-      details: Estamos preparando para que en la nueva conferencia se cubran los nuevos temas. Por favor indica tu interés en cada uno de los siguientes temas.
-    ranked_choice:
-      title: "¿Quién debe ser nuestro próximo alcalde adjunto?"
-      details: "Es tiempo de nuestras elecciones de medio año! Esta es una encuesta oficial para determinar quien será nuestro nuevo alcalde adjunto. Tomate el tiempo de leer sobre cada candidato en nuestra página web."
-    meeting:
-      title: "¿Cuándo debemos tener nuestra próxima reunión de personal?"
-      details: Es tiempo nuevamente para nuestra reunión de personal bimestral. Idealmente nos gustaría reunirnos antes del fin de la semana que viene. ¿Qué día y horario funciona mejor para todos?
   notified:
     no_matches_found: "No hemos encontrado nada que concuerde con '%{query}'"
     group_users: "(%{count} personas)"

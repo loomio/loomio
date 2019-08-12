@@ -598,7 +598,6 @@ tr:
     save_changes: Kaydet
   discussions_panel:
     open: Açık
-    unread: Okunmamış
     closed: Kapalı
   members_panel:
     order_by_name: 'İsim'

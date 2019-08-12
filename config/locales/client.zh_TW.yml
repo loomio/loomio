@@ -321,15 +321,18 @@ zh_TW:
     unread_threads: '未讀的討論串 ({{count}})'
     muted_threads: '已靜音的討論串'
     start_group: '新組織'
+    start_subgroup: '新的子群組'
     explore: '公開群組'
     start_thread: 新討論串
     start_decision: 新決策
+    all_groups: 所有群組
     aria_labels:
       heading: '側邊欄'
       threads_list: '討論串動作'
       groups_list: '群組'
       user_list: '使用者動作'
   navbar:
+    search_all_threads: 搜尋所有討論串
     search_threads: '在 {{name}} 中搜尋討論串'
     search_polls: '在 {{name}} 中搜尋投票'
     search_members: '在 {{name}} 中搜尋成員'
@@ -733,6 +736,8 @@ zh_TW:
     messages:
       group_created: '群組已啟動'
       group_updated: '群組已更新'
+    upload_logo: '上傳圖示'
+    upload_cover_photo: '上傳封面圖片'
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -938,9 +943,13 @@ zh_TW:
     select_text_to_link: 選取要連結的文字
     insert_link: 插入連結
   change_picture_form:
+    aria_label: '變更照片表單'
+    title: '變更照片'
     helptext: '您可以上傳您自己的簡歷照片，或是若您有一個 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> 帳號，您可以使用它。'
     use_initials: '使用縮寫'
     use_gravatar: '使用 Gravatar 的大頭貼'
+    use_uploaded: '上傳新照片'
+    use_provider: '使用 {{provider}} 照片'
   change_password_form:
     set_password_title: 設定您的密碼
     set_password_helptext: 請輸入密碼，最少需要 8 個字元
@@ -1003,6 +1012,7 @@ zh_TW:
     load_more: 載入更多討論串
     mark_as_read: 設為已讀
     dismiss: 暫時忽略
+    thread_dismissed: 討論串標記為已讀
     thread_recalled: 討論串已收回
     explain_mute:
       title: 您尚未靜音任何討論串。
@@ -1262,7 +1272,7 @@ zh_TW:
     messages:
       success: "「{{name}}」已無法使用您的帳號"
   decision_tools_card:
-    title: 決策工具
+    title: 促進
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">說明</a>
     proposal_title: 提案
     count_title: 勾選
@@ -1302,6 +1312,7 @@ zh_TW:
     change_vote: 變更投票
     max_score: 最大分數
     min_score: 最小分數
+    too_long: 太長
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -1320,7 +1331,7 @@ zh_TW:
     count: "檢視全部：({{count}}) 個決策"
   discussions_panel:
     open: 公開
-    unread: 未讀
+    unread: 未讀 ({{count}})
     closed: 封閉
     include_subgroups_mine: '{{name}} 與我的子群組'
     include_subgroups_all: '{{name}} 與所有子群組'

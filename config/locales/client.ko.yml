@@ -624,7 +624,6 @@ ko:
     save_changes: 저장
   discussions_panel:
     open: 진행중
-    unread: 읽지않음
     closed: 종료
   members_panel:
     order_by_name: '이름'

@@ -1,16 +1,72 @@
 sl:
+  current_plan_button:
+    upgrade: Nadgradi
   loomio_tags:
+    tags: Oznake
+    apply_tags: Uporabi oznake
+    new_tag: Ustvari oznako
     name_label: Ime
+    color_label: Barva
+    modal_title: Ustvari novo oznako
+    modal_edit_title: Uredi oznako
+    modal_destroy_title: Odstrani oznako
+    destroy_tag: Odstrani oznako
+    tag_created: Oznaka shranjena
+    tag_destroyed: Oznaka odstranjena
+    tags_marked: Razprave z oznako '{{name}}' v {{groupName}}
+  reactions:
+    slight_smile: Všečkaj
+    heart: Ljubezen
+    laughing: Smeh
+    clap: Ploskanje
+    hugging: Objem
+    wink: Mežik
+    nerd: Pameten
+    relieved: Olajšanje
+    worried: Zaskrbljen
+    confused: Zmeden
+    slight_frown: Namrščen
+    disappointed: Razočaran
+    angry: Jezen
+    weary: Utrujen
+    astonished: Začuden
+    rolling_eyes: Kolutne oči
+    cry: Jok
+    scream: Krik
+    sleeping: Dolgčas
+    thinking: Zamišljen
+    raised_hands: Dvignjene roke
+    pray: Molitev
+    fingers_crossed: Držim pesti
+    v: Mir
+    metal: Metal
+    ok_hand: V redu
+    wave: Mahanje
+    thumbsup: Palec gor
+    thumbsdown: Palec dol
+  poll_types:
+    proposal: Predlog
+    poll: Anketa
   new_poll_types:
     proposal: Predlog
   common:
+    time_zone: Časovni pas
+    local_time: Lokalni čas
+    attachments: Priloge
     time:
       am: dopoldan
       pm: popoldan
     volume: 'Pogostost obveščanj'
     group: 'Skupina'
     groups: 'Skupine'
+    organization: "Organizacija"
+    organizations: "Organizacije"
+    threads: 'Teme'
+    decisions: 'Odločitve'
+    settings: 'Nastavitve'
+    help: 'Pomoč'
     privacy:
+      privacy: 'Zasebnost'
       public: 'Javno'
       private: 'Zasebno'
     date_range:
@@ -32,7 +88,11 @@ sl:
       cancel: 'Prekliči'
       show_more: "Pokaži več"
       view_all: "Pokaži vse"
+      new_thread: "Nova tema"
       loading: 'Nalagam'
+      ok: V redu
+      invite: Povabi
+      resent: Povabilo ponovno poslano
   emoji_picker:
     search: Išči
   error_page:
@@ -42,28 +102,134 @@ sl:
     normal: 'Normalno'
     quiet: 'Tiho'
     mute: 'Neslišno'
+  close_explanation_modal:
+    aria_label: Zapri temo
+    close_thread: Zapri temo
+  mute_explanation_modal:
+    aria_label: Utišaj temo
+    mute_thread: Utišaj temo
+  dismiss_explanation_modal:
+    aria_label: Opusti temo
+    dismiss_thread: Opusti temo
   inbox:
     clear: 'Počisti'
     unread: 'Neprebrano'
+  signed_out_modal:
+    aria_label: 'Seja se je končala'
+    title: "Vaša seja se je končala"
+    message: "Odjavili ste se v drugem oknu. Prosimo, prijavite se nazaj, preden nadaljujete."
+    ok: "V redu"
+  comment_reply_form:
+    aria_label: 'Dodaj odgovor'
   comment_form:
+    aria_label: 'Dodaj komentar'
+    attachments:
+      add_attachment: 'Priloži datoteko'
+      remove_attachment: 'Odstrani prilogo'
+    messages:
+      created: 'Komentar dodan'
+      replied: '{{name}} obveščen o odgovoru'
+      updated: 'Komentar posodobljen'
+      destroyed: 'Komentar izbrisan'
+    say_something: Povejte kaj...
     edit_comment: 'Uredi komentar'
     delete_comment: 'Izbriši komentar'
+    cancel_reply: 'Prekliči odgovor'
     confirm_delete_message: 'Si prepričan/a, da želiš izbrisati ta komentar?'
+    confirm_delete: 'Izbriši komentar'
+    sign_in: "Vpišite se, da se pridružite pogovoru"
   sidebar:
     threads: 'Razprave'
+    recent_threads: 'Nedavne teme'
+    unread_threads: 'Neprebrane teme ({{count}})'
+    muted_threads: 'Utišane teme'
+    start_group: 'Nova organizacija'
+    explore: 'Javne skupine'
+    start_thread: Nova tema
+    start_decision: Nova odločitev
+    aria_labels:
+      heading: 'Stranska vrstica'
+      threads_list: 'Dejanja tem'
+      groups_list: 'Skupine'
+      user_list: 'Uporabniška dejanja'
   navbar:
+    search_threads: 'Iskanje tem v {{name}}'
+    search_polls: 'Iskanje anket v {{name}}'
+    search_members: 'Iskanje članov v {{name}}'
+    search_subgroups: 'Iskanje članov v {{name}}'
+    search_files: 'Iskanje datotek v {{name}}'
+    start_thread: 'Nova razprava'
+    notifications: 'Obvestilni pult'
     search:
+      label: 'Iskalno polje; išči skupine in razprave'
+      results_aria_label: 'Iskalni rezultati'
+      no_results: 'Najdena ni bila nobena razprava'
+      close: 'Zapri iskalni pult'
       placeholder: 'Išči'
+      loading: 'Nalagam rezultate...'
       discussions: 'Razprave'
+      proposals: 'Predlogi'
+      comments: 'Komentarji'
+    sign_in: 'Prijava'
+    logo_title: 'Domača stran'
+  user_dropdown:
+    button_label: 'Uporabniški meni'
+    edit_profile: 'Uredi profil'
+    help: 'Pomoč'
+    sign_out: 'Odjava'
+  membership_card:
+    group_members: "Člani skupine"
+    discussion_members: "Člani razprave"
+    invite_to_group: "Povabi v skupino"
+    invite_to_discussion: "Povabi v razpravo"
+    invite_to_poll: "Povabi h glasovanju"
+    invitations: "Povabila"
+  membership_dropdown:
+    resend: "Ponovno pošlji povabilo"
+    invitation_resent: "Povabilo ponovno poslano"
+    remove_from:
+      discussion: "Odstrani iz razprave"
+      group: "Odstrani iz skupine"
+    cancel_invitation: Prekliči povabilo
   notifications:
     header: "Obvestila"
   position_buttons_panel:
     heading: Izrazi svoje mnenje
   discussion_form:
     group_label: 'Skupina'
+    group_placeholder: 'Izberi skupino'
     title_label: 'Naslov'
     context_label: 'Opis'
     privacy_label: 'Zasebnost'
+  announcement:
+    form:
+      group_announced:
+        title: Povabi v skupino
+        helptext: Koga bi radi povabili v skupino?
+      discussion_announced:
+        title: Povabi v razpravo
+        helptext: Koga bi radi povabili v razpravo?
+      poll_announced:
+        title: Povabi h glasovanju
+    group_form:
+      modal_title: Izberi člane skupine
+  action_dock:
+    add_resource: Dodaj priponko
+    announce_thread: Povabi ljudi k razpravi
+    edit_poll: Urejanje ankete
+    announce_poll: Povabi ljudi h glasovanju
+    edit_comment: Urejanje komentarja
+    delete_comment: Izbriši komentar
+    reply_to_comment: Odgovor
+    show_history: Pokaži zgodovino urejanja
+    pin_thread: Pripni razpravo
+    unpin_thread: Odpni razpravo
+    pin_event: Pripni na časovnico
+    unpin_event: Odstrani iz časovnice
+    tag_thread: Upravljanje oznak
+    close_thread: Zapri razpravo
+    reopen_thread: Ponovno odpri razpravo
+    delete_thread: Izbriši razpravo
   join_group_button:
     join_group: Pridruži se skupini
     membership_requested: Prošnja za včlanitev
@@ -78,14 +244,63 @@ sl:
   group_page:
     threads: Razprave
     members: Člani
+    files: Datoteke
+    subgroups: Podskupine
+    show_opened: '{{count}} Odprtih'
+    show_closed: '{{count}} Zaprtih'
+    no_threads_here: Tukaj ni nobenih razprav!
+    search_threads: Iskanje razprav...
+    messages:
+      privacy:
+        members: 'Ta skupina je zdaj vidna samo članom'
+        parent_members: 'Ta skupina je zdaj vidna samo članom vaše organizacije'
+        public: 'Ta skupina je zdaj vidna javnosti'
+      leave_group_success: 'Zapustili ste to skupino'
+      archive_group_success: 'Ta skupina je bila deaktivirana'
+    group_logo: 'Logotip skupine'
+    new_photo: 'nova fotografija'
+    open_discussions: 'Odprte razprave'
+    closed_discussions: 'Zaprte razprave'
+    invite_people: 'Povabi'
+    visibility_label: 'Vidnost'
     options_label: 'Možnosti'
     options:
       label: 'Možnosti'
+      edit_group: 'Urejanje nastavitev skupine'
+      become_coordinator: Postani skrbnik
+      export_data: Izvozi podatke skupine
+      export_data_as_json: Izvozi podatke skupine kot JSON
+      export_data_as_csv: Izvozi podatke skupine kot CSV
+      export_data_as_html: Izvozi podatke skupine kot HTML
+      manage_members: 'Upravljanje članov'
+      add_subgroup: 'Dodaj podskupino'
+      leave_group: 'Zapusti skupino'
+      deactivate_group: 'Deaktiviraj skupino'
     volume:
       loud: Pošlji email ob vsaki aktivnosti.
+      normal: 'Pošlji email samo za pomembne aktivnosti: Nove razprave in predlogi, izidi itd.'
       quiet: Ne pošiljaj emailov za to skupino. Nove aktivnosti bodo objavljene na nadzorni plošči.
       mute: Skrij to skupino iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a.
+  leave_group_form:
+    aria_label: 'Zapusti skupino'
+    title: 'Zapusti skupino'
+    question: 'Ali res želite zapustiti to skupino?'
+    submit: 'Da, zapusti to skupino'
+  archive_group_form:
+    aria_label: 'Deaktiviraj skupino'
+    title: 'Deaktiviraj skupino'
+    question: 'Ali res želite deaktivirati to skupino?'
+    submit: 'Da, deaktiviraj to skupino'
+  group_form:
+    privacy: 'Zasebnost'
+  documents_page:
+    title: Priloge
+    confirm_remove_title: Odstrani prilogo
   document:
+    list:
+      title: Priloge
+    modal:
+      title: Dodaj priponko
     form:
       title_label: Ime
   membership_requests_page:
@@ -93,12 +308,25 @@ sl:
     ignore: Prezri
   invitation_form:
     invite_people: 'Povabi še koga'
+    group_placeholder: 'Izberi skupino'
   memberships_page:
     members: 'Člani'
     name_label: 'Ime'
     remove_member_label: 'Odstrani'
+  membership_remove_modal:
+    invitation:
+      title: Prekliči povabilo
+      flash: Povabilo preklicano
+      submit: Prekliči povabilo
   pending_invitations_card:
     email: Email
+  cancel_invitation_form:
+    heading: Prekliči povabilo
+    question: Ali res želite preklicati to povabilo?
+    submit: "Da, prekliči povabilo"
+    cancel: 'Ne'
+    messages:
+      success: Povabilo preklicano
   profile_page:
     profile: 'Profil'
     picture_label: 'Slika'
@@ -116,6 +344,8 @@ sl:
   dashboard_page:
     aria_label: 'Nadzorna plošča'
     mark_as_read: Označi kot prebrano
+    filtering:
+      proposals: Predlogi
     threads_from:
       today: 'Danes'
       yesterday: 'Včeraj'
@@ -130,6 +360,13 @@ sl:
     aria_label: 'Ime skupine'
   thread_context:
     close_thread: 'Zapri'
+  pin_thread_modal:
+    title: Pripni razpravo
+    pin_thread: Pripni razpravo
+  delete_thread_form:
+    aria_label: 'Izbriši temo'
+    title: Izbriši temo
+    confirm: 'Izbriši temo'
   delete_comment_dialog:
     title: 'Izbriši komentar'
     question: 'Si prepričan/a, da želiš izbrisati ta komentar?'
@@ -150,22 +387,42 @@ sl:
     invitation: 'Nasveti za pisanje prepričljivih vabil'
     proposal: 'Nasveti za pisanje jasnih predlogov'
     vote: 'Svojo odločitev lahko spremeniš kadarkoli'
+  registered_apps_page:
+    name: Ime
+  registered_app_form:
+    name_label: Ime
+  decision_tools_card:
+    proposal_title: Predlog
+    poll_title: Anketa
   poll_common:
     save_changes: Shrani
+  poll_common_attachment_form:
+    label: Priloge
   discussions_panel:
-    unread: Neprebrano
     closed: Zaprto
   members_panel:
     order_by_name: 'Ime'
     header_name: 'Ime'
     header_username: 'Uporabniško ime'
+    invitations: 'Povabila'
   polls_panel:
     all: 'Vse'
     closed: 'Zaprto'
+  current_polls_card:
+    start_poll: Nova odločitev
   poll_common_form:
     closed: Zaprto
+  poll_poll_form:
+    edit_header: Urejanje ankete
   poll_count_options:
     'yes': 'Da'
     'no': 'Ne'
+  polls_page:
+    heading: Odločitve
+    start_new_poll: Nova odločitev
   auth_form:
     name_placeholder: Tvoje ime
+    name: Ime
+  install_slack:
+    progress:
+      invite: Povabi

@@ -1024,7 +1024,6 @@ pt_BR:
     messages:
       success: "'{{name}}' não poderá mais usar a sua conta."
   decision_tools_card:
-    title: Ferramentas de decisão
     proposal_title: Proposta
     count_title: Checar
     poll_title: Votação
@@ -1053,7 +1052,6 @@ pt_BR:
     show_results: Mostrar resultados
   discussions_panel:
     open: Aberto
-    unread: Não lida
     closed: Encerrado
   members_panel:
     order_by_name: 'Nome'

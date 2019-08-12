@@ -1,4 +1,21 @@
 sl:
+  explore:
+    header: Razišči javne skupine
+  activerecord:
+    errors:
+      messages:
+        blank: ne more biti prazno
+        invalid: ni veljavna vrednost
+  errors:
+    noscript: Loomio za delovanje potrebuje javascript! Za nadaljevanje prosimo omogočite javascript v vašem brskalniku
+    return_home: Vrni se domov
+    not_found: 404 datoteka ni bila najdena.
+    messages:
+      email: ni veljaven email naslov
+      spoofed_media_type: Vsebina te datoteke se ne ujema z imenom
+  user:
+    deleted_user: "Izbrisan uporabnik"
+    placeholder_name: "Povabljen uporabnik (%{hostname})"
   poll:
     export:
       title: Naslov

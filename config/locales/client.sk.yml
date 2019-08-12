@@ -119,7 +119,6 @@ sk:
   poll_common:
     save_changes: Uložiť
   discussions_panel:
-    unread: Neprečítané
     closed: Uzatvorené
   members_panel:
     order_by_name: 'Meno'

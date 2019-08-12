@@ -641,7 +641,6 @@ pl:
     save_changes: Zapis
   discussions_panel:
     open: Otwarta
-    unread: Nieprzeczytane
     closed: Zamknięta
   members_panel:
     order_by_name: 'Nazwa'

@@ -645,7 +645,6 @@ cs:
     messages:
       logo_changed: Logo aktualizováno.
   decision_tools_card:
-    title: Nástroje pro rozhodování
     proposal_title: Návrh
     count_title: Kontrola
     poll_title: Hlasování
@@ -675,7 +674,6 @@ cs:
     count: "Zobrazit všechna: ({{count}}) rozhodnutí"
   discussions_panel:
     open: Otevřená
-    unread: Nepřečteno
     closed: Zavřená
   members_panel:
     order_by_name: 'Název'

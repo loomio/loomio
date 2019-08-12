@@ -2,16 +2,47 @@ ga_IE:
   current_plan_button:
     upgrade: Uasghrádaigh
   loomio_tags:
+    tags: Clibeanna
+    apply_tags: Cuir na clibeanna i bhfeidhm
+    new_tag: Cruthaigh clib
     name_label: Ainm
+    color_label: Dath
+    modal_title: Cruthaigh clib nua
+    modal_edit_title: Cuir clib in eagar
+    modal_destroy_title: Bain clib
+    destroy_tag: Bain clib
+  reactions:
+    laughing: Gáire
+    clap: Bualadh bos
+    hugging: Barróg
+    sunglasses: Seolta
+    nerd: Cliste
+    worried: Buartha
+    confused: Mearbhall
+    neutral_face: Neodrach
+    angry: Feargach
+    cry: Ag gol
+    scream: Scread
+    ok_hand: Tá go maith
+    wave: Crith láimhe
+    thumbsup: Ordóg in airde
+    thumbsdown: Ordóg thíos
   poll_types:
     proposal: Togra
     count: Dearbháil
     poll: Vótáil
   new_poll_types:
     proposal: Togra
+    count: Ríomh
+    poll: Roghnaigh
+    ranked_choice: Rangaigh
+    dot_vote: Leithdháil
   timezones:
     local: An t-am áitiúil ({{luach}})
   common:
+    option: Rogha
+    add: Cuir leis
+    you: Tusa
     expand: Fairsingigh
     all_day: An lá ar fad
     ok_got_it: Maith go leor, tuigim é
@@ -19,6 +50,7 @@ ga_IE:
     not_found: Níor aimsíodh é
     time_zone: An crios ama
     local_time: An t-am áitiúil
+    attachments: Ceangaltáin
     confirm_discard_changes: Caith amach na hathruithe seo?
     time:
       am: rn
@@ -29,10 +61,13 @@ ga_IE:
     notification_volume: 'Airde an Fhógra'
     group: 'Baicle'
     groups: 'Baiclí'
+    organization: "Eagraíocht"
+    organizations: "Eagraíochtaí"
     threads: 'Snáitheanna'
     decisions: 'Cinntí'
     settings: 'Socruithe'
     help: 'Cabhair'
+    anonymous: Anaithnid
     privacy:
       privacy: 'Príobháideachas'
       public: 'Poiblí'
@@ -51,13 +86,17 @@ ga_IE:
     models:
       proposal: 'Togra'
     copy: 'Macasamhlaigh'
+    reset: 'Athshocraigh é'
     copy_text: 'Macasamhlaigh an téacs'
     copied: 'Macasamhaltha chuig an ghearrthaisce'
+    total: Iomlán
     action:
       search: 'Cuardaigh'
+      filter: 'Scagaire'
       back: 'Siar'
       next: 'Ar aghaidh'
       close: 'Dún'
+      reopen: 'Athoscail é'
       save: 'Taisc'
       save_changes: 'Taisc na hathruithe'
       update_settings: 'Nuashonraigh na socruithe'
@@ -85,6 +124,9 @@ ga_IE:
       delete: Scrios
       unsubscribe: Díliostáil
       subscribe: Liostáil
+      resend: Athsheol é
+      send: Seol
+      last_seen: Feicthe an uair dheiridh
       invite: Tabhair cuireadh
     formatting_help:
       label: 'Formáidiú'
@@ -231,6 +273,8 @@ ga_IE:
   revision_history_modal:
     posted: Foilsithe
     current_revision: Is déanaí
+  reactions_display:
+    you: "Tusa"
   group_page:
     threads: Snáitheanna
     members: Comhaltaí
@@ -294,8 +338,11 @@ ga_IE:
     heading: 'Iarratais le bheith mar chomhalta'
     manage_requests: Riar na hiarratais
   documents_page:
+    title: Ceangaltáin
     confirm_remove_title: Bain ceangaltán
   document:
+    list:
+      title: Ceangaltáin
     form:
       title_label: Ainm
   membership_requests_page:
@@ -452,6 +499,7 @@ ga_IE:
     email_settings: 'Socruithe ríomhphoist'
     edit: 'Eagar'
     close_thread: 'Dún'
+    reopen_thread: 'Athoscail é'
     move_thread: 'Bog é'
     print_thread: 'Clóbhuail'
     delete_thread: 'Scrios'
@@ -513,9 +561,10 @@ ga_IE:
     poll_title: Vótáil
   poll_common:
     save_changes: Taisc
+  poll_common_attachment_form:
+    label: Ceangaltáin
   discussions_panel:
     open: Ar oscailt
-    unread: Neamhléite
     closed: Dúnta
   members_panel:
     order_by_name: 'Ainm'
@@ -534,15 +583,35 @@ ga_IE:
   poll_common_form:
     closed: Dúnta
     start: Tosaigh
+  poll_ranked_choice_form:
+    rank: Rangaigh
   poll_count_options:
     'no': 'Ná cealaigh é'
+  poll_meeting_chart_panel:
+    total: Iomlán
   poll_common_subscribe_form:
     subscribe: Liostáil
   polls_page:
     heading: Cinntí
     start_new_poll: Cinneadh nua
   auth_form:
+    more_providers: Tusa
+    email_not_present: Tá seoladh ríomhphoist de dhíth
+    email_placeholder: tusa@suíomh.com
     name_placeholder: D'ainm
+    name_required: Cuir isteach ainm
+    hello: "Hóra a {{name}}!"
+    name: Ainm
+    email: Seoladh ríomhphoist
+    password: Focal faire
   install_slack:
     progress:
+      install: Suiteáil
       invite: Tabhair cuireadh
+      decide: Déan cinneadh
+    install:
+      install_slack: Suiteáil Slack anois
+    common:
+      do_it_later: Déanfaidh mé sin ar ball
+  slack_added_modal:
+    title: D'éirigh leis!

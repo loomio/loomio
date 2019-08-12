@@ -1189,7 +1189,6 @@ uk:
     messages:
       success: "'{{name}}' не буде далі використовувати ваш обліковий запис."
   decision_tools_card:
-    title: Інструмент прийняття рішень
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Допомога</a>
     proposal_title: Пропозиція
     count_title: Контрольний список
@@ -1243,7 +1242,6 @@ uk:
     count: "Переглянути усі: ({{count}}) рішень"
   discussions_panel:
     open: Відкрита
-    unread: Непрочитані
     closed: Закрита
   members_panel:
     order_by_name: 'Ім''я'
