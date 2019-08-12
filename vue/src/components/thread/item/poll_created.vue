@@ -5,8 +5,9 @@ import AbilityService from '@/shared/services/ability_service'
 import PollModalMixin from '@/mixins/poll_modal'
 import EventBus       from '@/shared/services/event_bus'
 import WatchRecords   from '@/mixins/watch_records'
+import EventService from '@/shared/services/event_service'
 import { myLastStanceFor }  from '@/shared/helpers/poll'
-import { pick } from 'lodash'
+import { pick, assign } from 'lodash'
 
 import { listenForTranslations } from '@/shared/helpers/listen'
 
@@ -39,7 +40,11 @@ export default
       @buttonPressed || @myLastStance || @poll.isClosed()
 
     menuActions: ->
-      pick PollService.actions(@poll, @), ['edit_poll', 'show_history', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll', 'translate_poll']
+      assign(
+        pick PollService.actions(@poll, @), ['edit_poll', 'show_history', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll', 'translate_poll']
+      ,
+        pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
+      )
     dockActions: ->
       pick PollService.actions(@poll, @), ['announce_poll']
 
