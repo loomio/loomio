@@ -43,12 +43,12 @@ env:
 before_install:
   - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
   - gem install bundler
-  - if [ "$TASK" = "e2e" ]; then nvm install 10 && nvm use 10 && npm install -g gulp; fi
+  - if [ "$TASK" = "e2e" ]; then nvm install 11 && nvm use 11 && npm install -g gulp; fi
   - if [ "$TASK" = "vue" ]; then nvm install 12 && nvm use 12; fi
 
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
-  - if [ "$TASK" = "e2e" ]; then cd client; npm install; cd ..; fi
+  - if [ "$TASK" = "e2e" ]; then cd client; npm rebuild node-sass; npm install; cd ..; fi
   - if [ "$TASK" = "vue" ]; then cd vue; npm install; cd ..; fi
 
 before_script:
