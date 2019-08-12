@@ -40,7 +40,7 @@ export default
     startSubgroup: ->
       @openStartSubgroupModal(@group)
 
-    stripDescription: (description) ->
+    stripDescription: (description = '') ->
       truncate (description).replace(///<[^>]*>?///gm, ''), 50
 </script>
 

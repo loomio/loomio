@@ -280,13 +280,13 @@ Loomio::Application.routes.draw do
   get 'apps/registered/:id/:slug'          => 'application#index'
   get 'd/:key/comment/:comment'            => 'application#index', as: :discussion_comment
   get 'g/:key/membership_requests'         => 'application#index', as: :group_membership_requests
+  get 'g/:key/members/requests'            => 'application#index', as: :group_members_requests
   get 'g/:key/memberships'                 => 'application#index', as: :group_memberships
   get 'g/:key/previous_polls'              => 'application#index', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#index', as: :group_memberships_username
   get 'g/new'                              => 'application#index', as: :new_group
   get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
-  get 'p/example(/:type)'                  => 'polls#example',               as: :example_poll
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
