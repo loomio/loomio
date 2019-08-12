@@ -31,6 +31,8 @@ import {
   Mention,
   Placeholder } from 'tiptap-extensions'
 
+import ExternalLink from './external_link'
+
 import TodoItem from './todo_item'
 
 import { insertText } from 'tiptap-commands'
@@ -136,7 +138,7 @@ export default
         new Bold(),
         new Code(),
         new Italic(),
-        new Link(),
+        new ExternalLink(),
         new Strike(),
         new Underline(),
         new History(),
@@ -312,7 +314,7 @@ div
           v-card
             v-card-title.title(v-t="'text_editor.insert_link'")
             v-card-text
-              v-text-field(type="url" label="https://www.example.com" v-model="linkUrl")
+              v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus)
             v-card-actions
               v-spacer
               v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
