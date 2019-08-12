@@ -47,6 +47,7 @@ export default
     label: String
     placeholder: String
     shouldReset: Boolean
+    maxLength: Number
     autoFocus:
       type: Boolean
       default: false
@@ -366,7 +367,8 @@ div
         v-layout
           v-spacer
           slot(name="actions")
-
+    v-alert(v-if="maxLength && model[field].length > maxLength" color='error')
+      span( v-t="'poll_common.too_long'")
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')
       .suggestion-list__item(v-for='(user, index) in filteredUsers', :key='user.id', :class="{ 'is-selected': navigatedUserIndex === index }", @click='selectUser(user)')

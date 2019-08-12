@@ -1433,6 +1433,7 @@ en:
     change_vote: Change vote
     max_score: Maximum score
     min_score: Minimum score
+    too_long: Too long
 
   poll_common_attachment_form:
     label: Attachments
