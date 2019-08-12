@@ -31,13 +31,6 @@ export default
         subscribeTo(@group)
         Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
-
-        EventBus.$emit 'currentComponent',
-          page: 'groupPage'
-          breadcrumbs: compact([@group.parent(), @group])
-          title: @group.name
-          group: @group
-
       , (error) ->
         EventBus.$emit 'pageError', error
 

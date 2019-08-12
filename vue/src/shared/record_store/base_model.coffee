@@ -123,7 +123,11 @@ export default class BaseModel
       of: 'id'
       dynamicView: true
 
-    @[name] = => @recordStore[args.from].find("#{args.with}": @[args.of])
+    @[name] = =>
+      if userArgs.orderBy
+        _.orderBy @recordStore[args.from].find("#{args.with}": @[args.of]), userArgs.orderBy
+      else
+        @recordStore[args.from].find("#{args.with}": @[args.of])
 
   belongsTo: (name, userArgs) ->
     defaults =

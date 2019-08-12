@@ -24,6 +24,13 @@ export default
   created: ->
     @group = Records.groups.fuzzyFind(@$route.params.key)
 
+    EventBus.$emit 'currentComponent',
+      page: 'groupPage'
+      title: @group.name
+      group: @group
+      search:
+        placeholder: @$t('navbar.search_files', name: @group.parentOrSelf().name)
+
     @loader = new RecordLoader
       collection: 'documents'
       path: 'for_group'

@@ -3,6 +3,7 @@ import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import WatchRecords from '@/mixins/watch_records'
+import EventBus       from '@/shared/services/event_bus'
 import { debounce, some, every, compact, omit, values, keys } from 'lodash'
 
 export default
@@ -20,6 +21,13 @@ export default
     pollTypes: AppConfig.pollTypes
 
   created: ->
+    EventBus.$emit 'currentComponent',
+      page: 'groupPage'
+      title: @group.name
+      group: @group
+      search:
+        placeholder: @$t('navbar.search_polls', name: @group.parentOrSelf().name)
+
     @loader = new RecordLoader
       collection: 'polls'
       path: 'search'

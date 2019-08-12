@@ -18,7 +18,8 @@ export default
     activeTab: ''
     showTitle: true
     page: null
-    search: ''
+    searchQuery: ''
+    search: null
 
   methods:
     toggleSidebar: -> EventBus.$emit 'toggleSidebar'
@@ -27,7 +28,17 @@ export default
     last: last
 
   watch:
-    search: debounce (val, old)->
+    '$route':
+      immediate: true
+      handler: (newVal, oldVal) ->
+        if newVal.query.q
+          @searchQuery = newVal.query.q
+          @searchOpen = true
+        else
+          @searchQuery = ''
+          @searchOpen = false
+
+    searchQuery: debounce (val, old)->
       @$router.replace(query: {q: val})
     ,
       200
@@ -49,22 +60,20 @@ export default
       else if data.titleKey?
         @title = @$t(data.titleKey)
 
+      @search = data.search
+
       @group = data.group
       @discussion = data.discussion
       @page = data.page
 
 
   computed:
-    searchPath: ->
-      page = last(@$route.path.split('/'))
-      pages ='polls members subgroups files'.split(' ')
-      if pages.includes(page)
-        "navbar.search_#{page}"
-      else
-        "navbar.search_threads"
-
-    groupName: -> @group.name
-    parentName: -> @group.parentOrSelf().name
+    groupName: ->
+      return unless @group
+      @group.name
+    parentName: ->
+      return unless @group
+      @group.parentOrSelf().name
     groupPage: -> @page == 'groupPage'
     threadPage: -> @page == 'threadPage'
     coverImageSrc: ->
@@ -78,7 +87,7 @@ export default
         {id: 0, name: 'threads',   route: @urlFor(@group)}
         {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')},
         {id: 2, name: 'members',   route: @urlFor(@group, 'members')},
-        {id: 3, name: 'subgroups', route: @urlFor(@group, 'subgroups')},
+        # {id: 3, name: 'subgroups', route: @urlFor(@group, 'subgroups')},
         {id: 4, name: 'files',     route: @urlFor(@group, 'files')}
       ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
 
@@ -93,7 +102,7 @@ v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shri
   template(v-slot:img="{ props }")
     v-img(v-bind="props" gradient="to top right, rgba(19,84,122,.3), rgba(128,208,199,.5)")
 
-  v-btn.navbar__sidenav-toggle(icon v-if="!sidebarOpen" @click="toggleSidebar()")
+  v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()")
     v-avatar(tile size="36px")
       v-icon mdi-menu
 
@@ -102,19 +111,18 @@ v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shri
       v-tabs(background-color="transparent" v-model="activeTab" show-arrows)
         v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
           span(v-t="'group_page.'+tab.name")
-      v-spacer
       join-group-button(v-if="groupPage" :group='group')
       group-privacy-button(v-if="groupPage" :group='group')
       group-actions-dropdown(v-if="groupPage" :group='group')
 
-  v-text-field(v-if="searchOpen" solo autofocus v-model="search" append-icon='mdi-close' @click:append="searchOpen = false; search = ''" :placeholder="$t(searchPath, {name: parentName})")
+  v-text-field(v-if="search && searchOpen" solo autofocus v-model="searchQuery" append-icon='mdi-close' @click:append="searchOpen = false; searchQuery = ''" :placeholder="search.placeholder")
 
   v-toolbar-title.d-flex.align-center(v-if="!searchOpen && groupPage") {{group.name}}
 
   v-toolbar-title(v-if="!searchOpen && threadPage" @click="$vuetify.goTo('head')") {{title}}
 
   v-spacer(v-if="!searchOpen")
-  v-btn(icon v-if="!searchOpen" @click="searchOpen = true")
+  v-btn(icon v-if="search && !searchOpen" @click="searchOpen = true")
     v-icon mdi-magnify
 
   notifications(v-if='isLoggedIn')

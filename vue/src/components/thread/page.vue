@@ -39,7 +39,6 @@ export default
           discussion: @discussion
           group: @discussion.group()
           title: @discussion.title
-          breadcrumbs: compact([@discussion.group().parent(), @discussion.group(), @discussion])
 
 
 </script>

@@ -345,9 +345,11 @@ en:
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
     start_group: 'New organization'
+    start_subgroup: 'New subgroup'
     explore: 'Public groups'
     start_thread: New thread
     start_decision: New decision
+    all_groups: All groups
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Threads actions'
@@ -355,6 +357,7 @@ en:
       user_list: 'User actions'
 
   navbar:
+    search_all_threads: Search all threads
     search_threads: 'Search threads in {{name}}'
     search_polls: 'Search polls in {{name}}'
     search_members: 'Search members in {{name}}'
@@ -1453,7 +1456,7 @@ en:
 
   discussions_panel:
     open: Open
-    unread: Unread
+    unread: Unread ({{count}})
     closed: Closed
     include_subgroups_mine: '{{name}} and my subgroups'
     include_subgroups_all: '{{name}} and all subgroups'

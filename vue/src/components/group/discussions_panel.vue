@@ -6,7 +6,7 @@ import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
-import { map, debounce, orderBy, intersection, compact, omit, identity } from 'lodash'
+import { map, debounce, orderBy, intersection, compact, omit, identity, filter } from 'lodash'
 import Session from '@/shared/services/session'
 
 export default
@@ -29,6 +29,13 @@ export default
     init: ->
       @group = Records.groups.fuzzyFind(@$route.params.key)
 
+      EventBus.$emit 'currentComponent',
+        page: 'groupPage'
+        title: @group.name
+        group: @group
+        search:
+          placeholder: @$t('navbar.search_threads', name: @group.parentOrSelf().name)
+
       @loader = new RecordLoader
         collection: 'discussions'
         params:
@@ -42,7 +49,7 @@ export default
 
       @watchRecords
         key: @group.id
-        collections: ['discussions', 'groups']
+        collections: ['discussions', 'groups', 'memberships']
         query: (store) => @query(store)
 
       @refresh()
@@ -100,22 +107,25 @@ export default
 
   watch:
     '$route.params.key': 'init'
-    '$route.query': (query) ->
-      @search = ''
-      @filter = 'open'
-      @subgroups = 'none'
+    '$route.query':
+      immediate: true
+      handler: (query) ->
+        @search = ''
+        @filter = 'open'
+        @subgroups = 'none'
 
-      @filter = @$route.query.t if @$route.query.t
-      @search = @$route.query.q if @$route.query.q
-      @subgroups = @$route.query.subgroups if @$route.query.subgroups
+        @filter = @$route.query.t if @$route.query.t
+        @search = @$route.query.q if @$route.query.q
+        @subgroups = @$route.query.subgroups if @$route.query.subgroups
 
-      @refresh()
+        @refresh()
 
   computed:
     tags: ->
       intersection([@filter], @groupTags)
 
     groupIds: ->
+      return [] unless @group
       switch @subgroups
         when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
         when 'all' then @group.organisationIds()
@@ -139,6 +149,9 @@ export default
     groupTags: ->
       @group.parentOrSelf().tagNames || []
 
+    unreadCount: ->
+      filter(@discussions, (discussion) -> discussion.isUnread()).length
+
 </script>
 
 <template lang="pug">
@@ -149,7 +162,7 @@ div.discussions-panel
     v-chip(label outlined value="open" @click="selectFilter('open')")
       span(v-t="'discussions_panel.open'")
     v-chip(label outlined value="unread" @click="selectFilter('unread')")
-      span(v-t="'discussions_panel.unread'")
+      span(v-t="{ path: 'discussions_panel.unread', args: { count: unreadCount }}")
     v-chip(label outlined value="closed" @click="selectFilter('closed')")
       span(v-t="'discussions_panel.closed'")
     v-divider.mr-2.ml-1(inset vertical)
@@ -170,20 +183,7 @@ div.discussions-panel
     .discussions-panel__content(v-if="search")
       v-alert.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading')
         p(v-t="{path: 'discussions_panel.no_results_found', args: {search: search}}")
-      v-list(two-line v-for="result in searchResults" :key="result.id")
-        v-list-item.thread-preview.thread-preview__link(:to="urlFor(result)")
-          v-list-item-content
-            v-list-item-title {{result.title}}
-            v-list-item-subtitle
-              span(v-html="result.resultGroupName")
-              | &nbsp;
-              | ·
-              | &nbsp;
-              time-ago(:date='result.lastActivityAt')
-              | &nbsp;
-              | ·
-              | &nbsp;
-              span(v-html="result.blurb")
+      thread-search-result(v-for="result in searchResults" :key="result.id" :result="result")
 </template>
 
 <style lang="sass">
