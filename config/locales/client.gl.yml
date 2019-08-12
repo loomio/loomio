@@ -112,7 +112,6 @@ gl:
   poll_common:
     save_changes: Gardar
   discussions_panel:
-    unread: Sin ler
     closed: Pechado
   members_panel:
     order_by_name: 'Nome'

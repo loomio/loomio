@@ -560,30 +560,6 @@ pt_BR:
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: Comentário por %{comment_author}
-  personal_data:
-    title: Os dados pessoais de %{user_name} estão em %{host_name}
-  poll_generator:
-    proposal:
-      title: "Oferecer proposta de efetivação para Shelley e Jack"
-      details: Shelley e Jack têm estagiado conosco nos últimos 3 meses, demonstrando uma ótima dedicação, sendo boas adições à nossa equipe. Devemos oferecer uma proposta de efetivação?
-    poll:
-      title: "Alguma alergia alimentar que deveríamos saber pro nosso jantar na quinta?"
-      details: Mal podemos esperar para ver vocês! Por favor indiquem caso tenham alguma restrição alimentar que nós devamos saber.
-    count:
-      title: "Quem anima ajudar a organizar o picnic da empresa?"
-      details: Marsha ficou totalmente sobrecarregada da última vez, então agora nós gostaríamos de conseguir ajudantes para ela e garantir que a carga seja menor para todo o mundo. Por favor indique se gostaria de ajudar!
-    dot_vote:
-      title: "Qual a estratégia da nossa empresa para o próximo trimestre?"
-      details: Este é um grande ano para a nossa empresa e nós precisamos pensar estrategicamente aonde colocamos nossos recursos limitados. Por favor indique em que áreas você acha que deveríamos focar mais no próximo trimestre.
-    score:
-      title: "Quais são os tópicos que você tem interesse em discutir na próxima conferencia?"
-      details: Estamos preparando os tópicos que serão abordados na próxima conferencia. Por favor indique seus interesses em cada um dos seguintes temas.
-    ranked_choice:
-      title: "Quem deveria ocupar a vice-prefeitura?"
-      details: "É hora das nossas eleições semestrais! Esta é uma votação oficial que vai determinar a próxima pessoa a ocupar a vice-prefeitura. Lembre-se de ler as propostas de cada candidatura no nosso site!"
-    meeting:
-      title: "Quando deveriamos ter nossa próxima reunião?"
-      details: É hora da reunião bimestral da nossa equipe; o ideal seria nos encontrarmos até o fim da próxima semana. Que dia e hora fica melhor para todo o mundo?
   notified:
     no_matches_found: "Nenhum resultado encontrado para '%{query}'"
     group_users: "(%{count} pessoa[s])"

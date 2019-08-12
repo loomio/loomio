@@ -128,6 +128,3 @@ cs:
         poll_created: '%{actor} vytvořil návrh: %{title}'
         poll_closing_soon: 'Návrhy uzavřené během 24 hodin: %{title}'
         poll_expired: "Uzavření návrhu: %{title}"
-  poll_generator:
-    meeting:
-      title: "Kdy bychom měli mít příští pracovní setkání?"

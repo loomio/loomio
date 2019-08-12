@@ -434,7 +434,6 @@ el:
     save_changes: Αποθήκευση
   discussions_panel:
     open: Άνοιγμα
-    unread: Αδιάβαστα
     closed: Έκλεισε
   members_panel:
     order_by_name: 'Όνομα'

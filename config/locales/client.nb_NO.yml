@@ -616,7 +616,6 @@ nb_NO:
     save_changes: Lagre
   discussions_panel:
     open: Åpen
-    unread: Ulest
     closed: Lukket
   members_panel:
     order_by_name: 'Navn'

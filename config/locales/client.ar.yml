@@ -615,7 +615,6 @@ ar:
     label: المرفقات
   discussions_panel:
     open: مفتوحة
-    unread: غير مقروءة
     closed: مغلقة
   members_panel:
     order_by_name: 'الاسم '

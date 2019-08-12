@@ -794,7 +794,6 @@ da:
     messages:
       success: "'{{name}}' kan ikke længere bruge din konto."
   decision_tools_card:
-    title: Beslutnings værktøjer
     proposal_title: Forslag
     count_title: Checkmåling
     poll_title: Meningsmåling
@@ -827,7 +826,6 @@ da:
     show_results: Vis resultater
   discussions_panel:
     open: Offentlig
-    unread: Ulæst
     closed: Lukket
   members_panel:
     order_by_name: 'Navn'

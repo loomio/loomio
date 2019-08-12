@@ -119,7 +119,6 @@ an:
   poll_common:
     save_changes: Alzar
   discussions_panel:
-    unread: No leyiu
     closed: Zarrau
   members_panel:
     order_by_name: 'Nombre'

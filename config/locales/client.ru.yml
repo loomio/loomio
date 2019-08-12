@@ -537,7 +537,6 @@ ru:
     save_changes: Сохранить
   discussions_panel:
     open: Открыто
-    unread: Непрочитанные
     closed: Закрыто
   members_panel:
     order_by_name: 'Название'

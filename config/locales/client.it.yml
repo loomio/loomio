@@ -64,8 +64,11 @@ it:
     score: Punteggio votazione
   new_poll_types:
     proposal: Proposta
+    count: Conteggio
+    poll: Scegli
     score: Punteggio
     ranked_choice: Posizione
+    dot_vote: Assegna
     meeting: Sondaggio per incontro
   timezones:
     local: Ora locale ({{value}})
@@ -81,6 +84,7 @@ it:
     time_zone: Fuso orario
     local_time: Ora locale
     attachments: Allegati
+    active_time_ago: Ultimamente attivo {{time_ago}}
     confirm_discard_changes: Scarta le modifiche?
     time:
       am: am
@@ -116,12 +120,14 @@ it:
     models:
       proposal: 'Proposta'
     copy: 'Copia'
+    reset: 'Reimposta'
     copy_text: 'Copia testo'
     copied: 'Copiato negli appunti'
     points_abbrev: Ogni voto vale {{score}} punti
     total: Totale
     action:
       search: 'Ricerca'
+      filter: 'Filtra'
       back: 'Indietro'
       next: 'Prossimo'
       close: 'Chiudi'
@@ -139,6 +145,7 @@ it:
       show_more: "Mostra di più"
       view_all: "Vedi tutti"
       new_thread: "Nuova discussione"
+      add_subgroup: 'Nuovo sottogruppo'
       loading: 'In caricamento...'
       translate: 'Traduci'
       translated: 'Tradotto da Bing Traduttore'
@@ -169,9 +176,12 @@ it:
       title: 'Impara come usare il Markdown per formattare il tuo testo'
   emoji_picker:
     search: Ricerca
+    common: Frequentemente usato
     hands: Mani
     people: Facce e persone
     nature: Natura
+    objects: Cose
+    places: Luoghi
   ordinal:
     _1: 1*
     _2: 2°
@@ -256,6 +266,10 @@ it:
   mute_explanation_modal:
     aria_label: Silenzia discussione
     mute_thread: Silenzia discussione
+    body_html: |
+        Silenziare <strong>significa che non riceverai notifiche sulle proposte</strong>, o nessun altra attività in questa discussione a meno che qualcuno <strong>non ti menzioni.</strong>
+    body_html_2: |
+        Le discussioni silenziate sono nascoste anche dalle pagine <strong>Recenti</strong> e <strong>Non Lette</strong>. Per trovare le discussioni <strong>Silenziate</strong>, seleziona l'opzione Silenziate nella barra laterale.
     image_alt: Opzione discussioni silenziate nella colonna laterale
   dismiss_explanation_modal:
     aria_label: Ignora discussione
@@ -307,6 +321,8 @@ it:
     recent_threads: 'Discussioni recenti'
     unread_threads: 'Discussioni non lette ({{count}})'
     muted_threads: 'Discussioni silenziate'
+    start_group: 'Nuova organizzazione'
+    start_subgroup: 'Nuovo sottogruppo'
     explore: 'Gruppi pubblici'
     start_thread: Nuova discussione
     start_decision: Nuova decisione
@@ -316,6 +332,11 @@ it:
       groups_list: 'Gruppi'
       user_list: 'Azioni utente'
   navbar:
+    search_threads: 'Cerca le discussioni in  {{name}}'
+    search_polls: 'Cerca i sondaggi in  {{name}}'
+    search_members: 'Cerca i membri in  {{name}}'
+    search_subgroups: 'Cerca i membri in  {{name}}'
+    search_files: 'Cerca i files in  {{name}}'
     recent_title: 'Vai alla dashboard'
     unread_title: 'Vedi le attività non lette'
     start_thread: 'Nuova discussione'
@@ -353,6 +374,7 @@ it:
     resend: "Invia di nuovo invito"
     invitation_resent: "Invito reinviato"
     make_coordinator: 'Rendi amministratore'
+    demote_coordinator: 'Rimuovi amministratore'
     remove_from:
       discussion: "Rimuovi dalla discussione"
       group: "Rimuovi dal gruppo"
@@ -763,6 +785,8 @@ it:
       impact_for_subgroups: Questa azione impedirà loro di accedere anche a tutti i sottogruppi.
       flash: Membro rimosso
       submit: Rimuovi membro
+  memberships_panel:
+    remove_coordinator: Rimuovi amministratore
   membership_form:
     modal_title:
       group: Imposta il nome del gruppo
@@ -1027,7 +1051,6 @@ it:
   registered_app_form:
     name_label: Nome
   decision_tools_card:
-    title: Strumenti di decisione
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Aiuto</a>
     proposal_title: Proposta
     count_title: Verifica
@@ -1062,7 +1085,6 @@ it:
     count: "Vedi tutto:  ({{count}}) decisioni"
   discussions_panel:
     open: Aperto
-    unread: Non letto
     closed: Chiuso
   members_panel:
     order_by_name: 'Nome'

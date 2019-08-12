@@ -633,7 +633,6 @@ ca:
     save_changes: Desa
   discussions_panel:
     open: Obert
-    unread: No llegit
     closed: Tancat
   members_panel:
     order_by_name: 'Nom'

@@ -519,7 +519,6 @@ hu:
     save_changes: Mentés
   discussions_panel:
     open: Nyitva
-    unread: Olvasatlan
     closed: Zárva
   members_panel:
     order_by_name: 'Név'

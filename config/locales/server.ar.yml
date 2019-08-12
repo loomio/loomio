@@ -19,6 +19,8 @@ ar:
       mark_as_read: مقروء
       thanks_for_reading: شكرا للقراءة، نتمنى لك يوماً سعيداً!
       marked_as_read_success: تم تحديد كل شيء في الرسالة الالكترونية كمقروء
+    group_membership_approved:
+      join_group: "انضم إلى الفريق"
     membership_request:
       subject: "%{who} قام بطلب الانضمام إلى %{which_group}"
       view_group: يمكنك الموافقة أو إلغاء الطلب هنا

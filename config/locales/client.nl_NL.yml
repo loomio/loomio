@@ -969,7 +969,6 @@ nl_NL:
     messages:
       success: "'{{name}}' kan geen gebruik meer maken van je account."
   decision_tools_card:
-    title: Beslissingsinstrumenten
     proposal_title: Voorstel
     count_title: Check
     poll_title: Peiling
@@ -1015,7 +1014,6 @@ nl_NL:
     count: "Zie alles: ({{count}}) beslissingen"
   discussions_panel:
     open: Openen
-    unread: Ongelezen
     closed: Gesloten
   members_panel:
     order_by_name: 'Naam'

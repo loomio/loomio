@@ -189,7 +189,6 @@ sr_RS:
     save_changes: Сними
   discussions_panel:
     open: Отворено
-    unread: Непрочитано
     closed: Истекло
   members_panel:
     order_by_name: 'Име'

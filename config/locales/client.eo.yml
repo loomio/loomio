@@ -353,7 +353,6 @@ eo:
     save_changes: Konservi
   discussions_panel:
     open: Malfermita
-    unread: Nelegitaj
     closed: Fermita
   members_panel:
     order_by_name: 'Nomo'

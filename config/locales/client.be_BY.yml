@@ -157,7 +157,6 @@ be_BY:
   poll_common:
     save_changes: Захаваць
   discussions_panel:
-    unread: Непрачытаныя
     closed: Закрыта
   members_panel:
     order_by_name: 'Імя'

@@ -567,30 +567,6 @@ de:
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: Kommentar von %{comment_author}
-  personal_data:
-    title: Persönliche Daten von %{user_name} in %{host_name}
-  poll_generator:
-    proposal:
-      title: "Angebotsschreiben an Shelley und Jack verlängern"
-      details: Shelley und Jack haben in den letzten 3 Monaten als Praktikanten mit uns gearbeitet und beide haben bewundernswertes Engagement gezeigt und sind eindeutig Vorteile für unser Team. Sollen wir ihnen formelle Beschäftigungsangebote anbieten?
-    poll:
-      title: "Liegen ggf. Lebensmittelunverträglichkeiten vor, die wir bei unserer Geschäftsfeier am Donnerstag berücksichtigen müssen?"
-      details: Wir freuen uns darauf, euch alle bei uns zu sehen! Bitte gebt an, ob es irgendwelche Diätbeschränkungen gibt, die wir beachten sollten.
-    count:
-      title: "Wer würde helfen das Firmenpicknick zu organisieren?"
-      details: Marsha fühlte sich beim letzten Mal total überfordert, also würden wir ihr diesmal ein Paar Helferinnen geben, um sicherzustellen, dass es für alle etwas einfacher ist. Bitte geben Sie an, ob Sie helfen möchten!
-    dot_vote:
-      title: "Was ist unsere Unternehmensstrategie für das nächste Quartal?"
-      details: Dies ist ein großes Jahr für unser Unternehmen und wir müssen strategisch darauf achten, wofür wir unsere begrenzten Ressourcen einsetzen. Bitte geben Sie an, auf welche Bereiche Sie sich im nächsten Quartal konzentrieren sollten.
-    score:
-      title: "Welche Themen interessieren dich für die nächste Konferenz?"
-      details: Wir bereiten die Themen vor, die an der nächsten Konferenz besprochen werden sollen. Bitte gib an, welche der folgenden Themen dich interessieren.
-    ranked_choice:
-      title: "Wer sollte unser nächster stellvertretender Bürgermeister sein?"
-      details: "Es ist Zeit für unsere halbjährlichen Wahlen! Dies ist eine offizielle Instant-Runoff-Umfrage, die unseren nächsten stellvertretenden Bürgermeister bestimmen wird. Überzeugen Sie sich bei jedem Kandidaten auf unserer Website!"
-    meeting:
-      title: "Wann sollen wir das nächste Personal-Meeting haben?"
-      details: Es ist wieder Zeit für unser halbjährliches Mitarbeitertreffen; idealerweise würden wir uns gerne vor Ende der nächsten Woche treffen. Welche Zeiten funktionieren für alle?
   notified:
     no_matches_found: "Keine Ergebnisse gefunden '%{query}'"
     group_users: "(%{count} Personen)"

@@ -205,7 +205,6 @@ mi:
     save_changes: Tiaki
   discussions_panel:
     open: E huaki ana
-    unread: Kāhore anō kia kitea
     closed: Kua kati
   members_panel:
     order_by_name: 'Ingoa'

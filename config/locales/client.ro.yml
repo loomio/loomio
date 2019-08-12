@@ -469,7 +469,6 @@ ro:
     save_changes: Salvare
   discussions_panel:
     open: Deschis
-    unread: Necitit
     closed: Inchis
   members_panel:
     order_by_name: 'Nume'

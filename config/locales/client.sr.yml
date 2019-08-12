@@ -591,7 +591,6 @@ sr:
     save_changes: Snimi
   discussions_panel:
     open: Otvoreno
-    unread: Nepročitano
     closed: Zatvoreno
   members_panel:
     order_by_name: 'Ime'

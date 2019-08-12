@@ -1198,7 +1198,6 @@ he:
     messages:
       success: "'{{name}}' אינו מורשה להשתמש בחשבונך יותר."
   decision_tools_card:
-    title: כלים לקבלת החלטות
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">עזרה</a>
     proposal_title: הצעה
     count_title: בדיקה
@@ -1252,7 +1251,6 @@ he:
     count: "צפה בכל: ({{count}}) ההחלטות"
   discussions_panel:
     open: פתוח
-    unread: לא-נקרא
     closed: סגור
   members_panel:
     order_by_name: 'שם'

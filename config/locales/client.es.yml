@@ -1231,7 +1231,7 @@ es:
     messages:
       success: "'{{name}}' ya no puede usar su cuenta."
   decision_tools_card:
-    title: Herramientas para decisiones
+    title: Facilitar
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda</a>
     proposal_title: Propuesta
     count_title: Comprobación
@@ -1288,7 +1288,7 @@ es:
     count: "Ve todas: las ({{count}}) decisiones"
   discussions_panel:
     open: Abierto
-    unread: 'No leído '
+    unread: No leídos {{count}
     closed: 'Cerrado '
   members_panel:
     sort: 'Orden'

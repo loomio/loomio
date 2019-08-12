@@ -417,7 +417,6 @@ sv:
     save_changes: Spara
   discussions_panel:
     open: Öppen
-    unread: Olästa
     closed: Stängd
   members_panel:
     order_by_name: 'Namn'

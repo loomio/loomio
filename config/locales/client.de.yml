@@ -1209,7 +1209,6 @@ de:
     messages:
       success: "'{{name}}' kann Ihr Konto nicht mehr nutzen."
   decision_tools_card:
-    title: Entscheidungswerkzeuge
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Hilfe</a>
     proposal_title: Vorschläge
     count_title: Bestätigung
@@ -1263,7 +1262,6 @@ de:
     count: "Zeige alles: ({{count}}) Entscheidungen"
   discussions_panel:
     open: Offen
-    unread: Ungelesen
     closed: Geschlossen
   members_panel:
     order_by_name: 'Name'
