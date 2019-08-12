@@ -25,18 +25,14 @@ export default
       @loading = false
       EventBus.$emit 'subgroupsLoaded', @group
 
-      @watchRecords
-        collections: ['groups']
-        query: (store) =>
-          @subgroups = store.groups.collection.chain().
-                         find(parentId: @group.id).
-                         simplesort('name').data()
+    @watchRecords
+      collections: ['memberships', 'groups']
+      query: (store) =>
+        @subgroups = store.groups.collection.chain().
+                       find(parentId: @group.id).
+                       simplesort('name').data()
 
   computed:
-    filteredSubgroups: ->
-      rx = RegExp(@fragment, 'i');
-      @subgroups.filter((group) -> rx.test(group.name))
-
     canCreateSubgroups: ->
       AbilityService.canCreateSubgroups(@group)
 
@@ -56,7 +52,7 @@ v-card.group-subgroups-panel
   v-divider
 
   v-list(avatar two-line)
-    v-list-item.subgroups-card__list-item(v-for='group in filteredSubgroups', :key='group.id' :to='urlFor(group)')
+    v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
       v-list-item-avatar.subgroups-card__list-item-logo
         group-avatar(:group="group" size="28px")
       v-list-item-content
