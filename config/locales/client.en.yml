@@ -574,7 +574,7 @@ en:
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
     pin_event: Pin to timeline
-    unpin_event: Remove from timeline
+    unpin_event: Unpin from timeline
     comment_copied: Comment URL copied to clipboard
     move_thread: Move to group
     poll_copied: Decision URL copied to clipboard
@@ -1176,7 +1176,7 @@ en:
 
   activity_card:
     event_pinned: "Pinned to timeline"
-    event_unpinned: "Removed from timeline"
+    event_unpinned: "Unpinned from timeline"
     beginning: Beginning
     unread: "Unread ({{count}})"
     latest: Latest
