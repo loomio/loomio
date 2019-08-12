@@ -357,6 +357,7 @@ en:
       user_list: 'User actions'
 
   navbar:
+    search_all_threads: Search all threads
     search_threads: 'Search threads in {{name}}'
     search_polls: 'Search polls in {{name}}'
     search_members: 'Search members in {{name}}'

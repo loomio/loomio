@@ -16,9 +16,15 @@ export default
     loading: true
 
   created: ->
+    EventBus.$emit 'currentComponent',
+      page: 'groupPage'
+      title: @group.name
+      group: @group
+
     Records.groups.fetchByParent(@group).then =>
       @loading = false
       EventBus.$emit 'subgroupsLoaded', @group
+
       @watchRecords
         collections: ['groups']
         query: (store) =>

@@ -29,6 +29,13 @@ export default
     init: ->
       @group = Records.groups.fuzzyFind(@$route.params.key)
 
+      EventBus.$emit 'currentComponent',
+        page: 'groupPage'
+        title: @group.name
+        group: @group
+        search:
+          placeholder: @$t('navbar.search_threads', name: @group.parentOrSelf().name)
+
       @loader = new RecordLoader
         collection: 'discussions'
         params:
@@ -176,20 +183,7 @@ div.discussions-panel
     .discussions-panel__content(v-if="search")
       v-alert.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading')
         p(v-t="{path: 'discussions_panel.no_results_found', args: {search: search}}")
-      v-list(two-line v-for="result in searchResults" :key="result.id")
-        v-list-item.thread-preview.thread-preview__link(:to="urlFor(result)")
-          v-list-item-content
-            v-list-item-title {{result.title}}
-            v-list-item-subtitle
-              span(v-html="result.resultGroupName")
-              | &nbsp;
-              | ·
-              | &nbsp;
-              time-ago(:date='result.lastActivityAt')
-              | &nbsp;
-              | ·
-              | &nbsp;
-              span(v-html="result.blurb")
+      thread-search-result(v-for="result in searchResults" :key="result.id" :result="result")
 </template>
 
 <style lang="sass">
