@@ -22,7 +22,7 @@ export default
 
 </script>
 <template lang="pug">
-.auth-identity-form
+.auth-identity-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()")
   h2.lmo-h2(v-t="{ path: 'auth_form.hello', args: { name: user.name || user.email } }")
   auth-avatar(:user='user')
   .auth-identity-form__options

@@ -21,7 +21,7 @@ export default
 
 </script>
 <template lang="pug">
-v-card.change-password-form
+v-card.change-password-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()" @keydown.enter="submit()")
   .lmo-disabled-form(v-show='processing')
   v-card-title
     h1.headline(v-t="'change_password_form.set_password_title'")
