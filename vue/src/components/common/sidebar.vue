@@ -137,7 +137,15 @@ v-navigation-drawer.sidenav-left(app v-model="open")
       v-divider
       v-list-item.sidebar__list-item-button--recent(dense exact :to="urlFor(organization, 'subgroups')")
         v-list-item-title(v-t="'sidebar.all_groups'")
-      v-list-item(dense)
-        v-list-item-title
-          a(href="/beta") beta {{version}}
+
+      div(v-if="organization.subscriptionPlan == 'trial'")
+        v-divider
+        v-subheader(v-t="'plan_names.trial'")
+        v-list-item(href="/upgrade" dense)
+          v-list-item-title(v-t="'current_plan_button.upgrade'")
+          v-list-item-icon
+            v-icon(color="primary") mdi-rocket
+      v-divider
+      v-list-item(href="/beta" dense)
+        v-list-item-title Loomio 2 - beta {{version}}
 </template>

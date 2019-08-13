@@ -1,4 +1,13 @@
 en:
+  plan_names:
+    free: Free
+    trial: Trial
+    small: Small
+    medium: Medium
+    large: Large
+    monthly: Monthly
+    yearly: Annually
+
   current_plan_button:
     upgrade: Upgrade
     tooltip: Purchase a loomio plan to invite more people and start more threads.
