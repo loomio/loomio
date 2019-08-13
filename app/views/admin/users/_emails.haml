@@ -9,11 +9,10 @@
         %th Opened At
         %th Clicked At
 
-      %tr
-        %td
-          - emails.each do |email|
-            %th= email.mailer
-            %th= email.to
-            %th= email.sent_at
-            %th= email.opened_at
-            %th= email.clicked_at
+      - emails.each do |email|
+        %tr
+          %td= email.mailer
+          %td= email.to
+          %td= email.sent_at
+          %td= email.opened_at
+          %td= email.clicked_at
