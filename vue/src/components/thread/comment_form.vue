@@ -64,7 +64,7 @@ export default
 v-layout.comment-form.mx-4
   .thread-item__avatar.mr-3
     user-avatar(:user='actor', size='medium')
-  form.thread-item__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keyup.meta.enter="submit()")
+  form.thread-item__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()")
     submit-overlay(:value='comment.processing')
     lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :shouldReset="shouldReset" :autoFocus="autoFocus")
       template(v-slot:actions)
