@@ -4,7 +4,6 @@ import InboxPage from './components/inbox/page.vue'
 import ExplorePage from './components/explore/page.vue'
 import ThreadPage from './components/thread/page.vue'
 import ProfilePage from './components/profile/page.vue'
-import StartPollPage from './components/start_poll/page.vue'
 import PollPage from './components/poll/page.vue'
 
 import GroupPage from './components/group/page.vue'
