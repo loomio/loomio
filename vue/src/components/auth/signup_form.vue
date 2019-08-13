@@ -19,7 +19,8 @@ export default
   methods:
     submit: ->
       if @useRecaptcha
-        VueRecaptcha.invisibleRecaptcha.execute()
+        console.log 'submit useRecaptcha'
+        VueRecaptcha.execute()
       else
         @submitForm()
 
