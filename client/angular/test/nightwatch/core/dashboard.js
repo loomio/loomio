@@ -21,7 +21,7 @@ module.exports = {
     page.mouseOver('.thread-preview', () => { page.click('.thread-preview__dismiss') })
     page.expectText('.confirm-modal h1', 'Dismiss thread')
     page.click('.confirm-modal__submit')
-    page.expectText('.flash-root__message', 'Thread dismissed')
+    page.expectText('.flash-root__message', 'Thread marked as read')
   },
 
   'explains muting if you have not yet muted a thread': (test) => {

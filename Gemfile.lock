@@ -130,7 +130,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    bcrypt (3.1.12)
+    bcrypt (3.1.13)
     benchmark-ips (2.7.2)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
@@ -189,7 +189,7 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.8.0)
+    devise-i18n (1.8.1)
       devise (>= 4.6)
     diff-lcs (1.3)
     discourse-diff (0.1.0)
@@ -213,8 +213,8 @@ GEM
     factory_bot_rails (5.0.2)
       factory_bot (~> 5.0.2)
       railties (>= 4.2.0)
-    faker (1.9.6)
-      i18n (>= 0.7)
+    faker (2.1.2)
+      i18n (>= 0.8)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
@@ -295,7 +295,7 @@ GEM
     icalendar (2.5.3)
       ice_cube (~> 0.16)
     ice_cube (0.16.3)
-    image_processing (1.9.2)
+    image_processing (1.9.3)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.13, < 3)
     inherited_resources (1.10.0)
@@ -354,7 +354,7 @@ GEM
     multipart-post (2.1.1)
     newrelic_rpm (6.5.0.357)
     nio4r (2.4.0)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     oj (3.8.1)
     orm_adapter (0.5.0)
@@ -369,7 +369,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     parallel (1.17.0)
-    parallel_tests (2.29.1)
+    parallel_tests (2.29.2)
       parallel
     pg (1.1.4)
     poltergeist (1.18.1)
@@ -384,7 +384,7 @@ GEM
       actionmailer (>= 3)
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (3.1.1)
-    puma (4.0.1)
+    puma (4.1.0)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-attack (6.1.0)
@@ -415,7 +415,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.1.0)
+    rails-html-sanitizer (1.2.0)
       loofah (~> 2.2, >= 2.2.2)
     rails_12factor (0.0.3)
       rails_serve_static_assets
@@ -437,7 +437,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    redcarpet (3.4.0)
+    redcarpet (3.5.0)
     redis (4.1.1)
     redis-actionpack (5.0.2)
       actionpack (>= 4.0, < 6)
@@ -651,7 +651,7 @@ DEPENDENCIES
   rails_serve_static_assets
   rake
   ransack (= 2.1.1)
-  redcarpet (~> 3.4.0)
+  redcarpet (~> 3.5.0)
   redis-rails
   rinku
   rspec-activemodel-mocks
