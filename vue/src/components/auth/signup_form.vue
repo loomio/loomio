@@ -21,6 +21,7 @@ export default
         @submitForm()
 
     submitForm: (recaptcha) ->
+      console.log 'submitForm', recaptcha
       @user.recaptcha = recaptcha
       onSuccess = (data) =>
         Session.apply(data)
