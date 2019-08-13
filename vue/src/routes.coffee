@@ -15,6 +15,7 @@ import GroupFilesPanel from './components/group/files_panel'
 import MembersTabs from './components/group/members_tabs'
 import InvitationsPanel from './components/group/invitations_panel'
 import MembershipRequestsPanel from './components/group/requests_panel'
+import GroupSettingsPanel from './components/group/settings_panel'
 
 import StartGroupPage from './components/start_group/page.vue'
 import ContactPage from './components/contact/page.vue'
@@ -26,6 +27,7 @@ import InstallSlackPage from './components/install_slack/page.vue'
 import ActivityPanel from './components/thread/activity_panel'
 import ThreadPollsPanel from './components/thread/polls_panel'
 import ThreadMembersPanel from './components/thread/members_panel'
+
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -41,8 +43,9 @@ groupPageChildren = [
   {path: 'subgroups', component: GroupSubgroupsPanel}
   {path: 'files', component: GroupFilesPanel}
   {path: 'membership_requests', redirect: 'members/requests' }
+  {path: 'settings', component: GroupSettingsPanel}
   {path: ':stub?', component: GroupDiscussionsPanel}
-  {path: 'slack/install', component: InstallSlackPage},
+  {path: 'slack/install', component: InstallSlackPage}
 ]
 
 threadPageChildren = [

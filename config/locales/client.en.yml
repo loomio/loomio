@@ -661,6 +661,7 @@ en:
     polls: Polls
     members: Members
     files: Files
+    settings: Settings
     subgroups: Subgroups
     show_opened: '{{count}} Open'
     show_closed: '{{count}} Closed'
