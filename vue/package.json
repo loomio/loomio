@@ -49,7 +49,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@mdi/font": "^3.9.97",
+    "@mdi/font": "^3.8.95",
     "@vue/cli-plugin-babel": "^3.9.2",
     "@vue/cli-plugin-e2e-nightwatch": "^3.9.2",
     "@vue/cli-plugin-pwa": "^3.10.0",
