@@ -58,7 +58,6 @@ export default
 
   methods:
     openModal: (opts) ->
-      console.log 'modal launcher opts', opts
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
