@@ -19,7 +19,7 @@ export default
   methods:
     submit: ->
       if @useRecaptcha
-        VueRecaptcha.execute()
+        VueRecaptcha.invisibleRecaptcha.execute()
       else
         @submitForm()
 
@@ -65,5 +65,5 @@ div
       v-spacer
       v-btn.auth-signup-form__submit(color="primary" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
     //- div(vc-recaptcha='true' size='invisible' key='recaptchaKey' v-if='useRecaptcha' on-success='submitForm(response)')
-    v-recaptcha(:sitekey="recaptchaKey" :loadRecaptchaScript="true")
+    v-recaptcha(:sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
 </template>
