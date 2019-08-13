@@ -46,7 +46,7 @@ export default
 
 </script>
 <template lang="pug">
-div(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()")
+div(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()" @keydown.enter="submit()")
   .auth-signup-form(v-if='!allow')
     h2.title(v-t="'auth_form.invitation_required'")
   .auth-signup-form(v-if='allow')
