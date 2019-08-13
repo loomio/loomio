@@ -12,8 +12,6 @@ export default
     pageError: null
 
   created: ->
-    window.addEventListener('keydown', @onKeyDown)
-    EventBus.$on 'keydown', (event) -> console.log 'on keydown', event
     each AppConfig.theme.vuetify, (value, key) =>
       @$vuetify.theme.themes.light[key] = value if value
       true
@@ -27,15 +25,7 @@ export default
     EventBus.$on 'signedIn', =>
       @pageError = null
 
-  beforeDestroy: ->
-    window.removeEventListener('keydown', @onKeyDown)
-
   methods:
-    onKeyDown: (e) ->
-      # if (e.code === "Escape")
-      #   EventBus.$emit 'escapeKeyDown'
-      EventBus.$emit 'keydown', e
-
     setCurrentComponent: (options) ->
       @pageError = null
       title = truncate(options.title or @$t(options.titleKey), {length: 300})
