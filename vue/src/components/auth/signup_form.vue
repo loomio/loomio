@@ -5,9 +5,12 @@ import AppConfig from '@/shared/services/app_config'
 import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Flash from '@/shared/services/flash'
+import VueRecaptcha from 'vue-recaptcha';
 import { hardReload } from '@/shared/helpers/window'
 
 export default
+  components:
+    'v-recaptcha': VueRecaptcha
   mixins: [AuthModalMixin]
   props:
     user: Object
@@ -16,7 +19,7 @@ export default
   methods:
     submit: ->
       if @useRecaptcha
-        grecaptcha.execute()
+        VueRecaptcha.invisibleRecaptcha.execute()
       else
         @submitForm()
 
@@ -39,9 +42,7 @@ export default
     allow: ->
       AppConfig.features.app.create_user or AppConfig.pendingIdentity.identity_type?
     useRecaptcha: ->
-      # TODO: GK: don't know how the recaptcha stuff works so bypassing it for now
-      false
-      # @recaptchaKey && !@user.hasToken
+      @recaptchaKey && !@user.hasToken
 
 </script>
 <template lang="pug">
@@ -64,5 +65,6 @@ div
       v-btn(text color="warning" v-t="'common.action.back'" @click='user.emailStatus = null')
       v-spacer
       v-btn.auth-signup-form__submit(color="primary" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
-    div(vc-recaptcha='true' size='invisible' key='recaptchaKey' v-if='useRecaptcha' on-success='submitForm(response)')
+    //- div(vc-recaptcha='true' size='invisible' key='recaptchaKey' v-if='useRecaptcha' on-success='submitForm(response)')
+    v-recaptcha(:sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
 </template>
