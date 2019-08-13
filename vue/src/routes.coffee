@@ -65,8 +65,6 @@ export default new Router
     {path: '/profile', component: ProfilePage},
     {path: '/contact', component: ContactPage},
     {path: '/email_preferences', component: EmailSettingsPage },
-    {path: '/p/new', component: StartPollPage},
-    {path: '/p/new/:poll_type', component: StartPollPage},
     {path: '/p/:key/:stub?', component: PollPage},
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: StartDiscussionPage },
