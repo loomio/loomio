@@ -113,12 +113,13 @@ v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shri
         v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
           span(v-t="'group_page.'+tab.name")
       join-group-button(v-if="groupPage" :group='group')
-      group-privacy-button(v-if="groupPage" :group='group')
       //- group-actions-dropdown(v-if="groupPage" :group='group')
 
   v-text-field(v-if="search && searchOpen" solo autofocus v-model="searchQuery" append-icon='mdi-close' @click:append="searchOpen = false; searchQuery = ''" :placeholder="search.placeholder")
 
-  v-toolbar-title.d-flex.align-center(v-if="!searchOpen && groupPage") {{group.name}}
+  v-toolbar-title.d-flex.align-center(v-if="!searchOpen && groupPage")
+    span {{group.name}}
+    group-privacy-button(v-if="groupPage" :group='group')
 
   v-toolbar-title(v-if="!searchOpen && threadPage && showTitle" @click="$vuetify.goTo('head')") {{title}}
 
