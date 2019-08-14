@@ -21,8 +21,9 @@ export default
         @membership = @group.membershipFor(Session.user())
 </script>
 <template lang="pug">
-.settings-panel
-  v-card(v-for="(action, name) in actions" :key="name" @click="action.perform()" v-if='action.canPerform()' :class="'group-page-actions__' + name")
-    v-card-title
-      h1.headline(v-t="action.name")
+v-list.settings-panel
+  v-list-item(v-for="(action, name) in actions" :key="name" @click="action.perform()" v-if='action.canPerform()' :class="'group-page-actions__' + name")
+    v-list-item-avatar
+      v-icon {{action.icon}}
+    v-list-item-title(v-t="action.name")
 </template>

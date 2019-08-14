@@ -11,6 +11,7 @@ export default new class GroupService
     membership = group.membershipFor(Session.user())
     edit_group:
       name: 'group_page.options.edit_group'
+      icon: 'mdi-settings'
       canPerform: ->
         AbilityService.canEditGroup(group)
       perform: ->
@@ -21,6 +22,7 @@ export default new class GroupService
 
     become_coordinator:
       name: 'group_page.options.become_coordinator'
+      icon: 'mdi-shield-star'
       canPerform: ->
         membership && membership.admin == false &&
           (group.adminMembershipsCount == 0 or
@@ -31,6 +33,7 @@ export default new class GroupService
 
     change_volume:
       name: 'group_page.options.email_settings'
+      icon: 'mdi-email'
       canPerform: ->
         AbilityService.canChangeGroupVolume(group)
       perform: ->
@@ -41,6 +44,7 @@ export default new class GroupService
 
     export_data:
       name: 'group_page.options.export_data'
+      icon: 'mdi-database-export'
       canPerform: ->
         membership
       perform: ->
@@ -57,6 +61,7 @@ export default new class GroupService
 
     install_slack:
       name: 'install_slack.modal_title'
+      icon: 'mdi-slack'
       canPerform: ->
         AbilityService.canAdministerGroup(group) && !Session.user().identityFor('slack')
       perform: ->
@@ -65,6 +70,7 @@ export default new class GroupService
 
     remove_slack:
       name: 'install_slack.remove_slack'
+      icon: 'mdi-slack'
       canPerform: ->
         AbilityService.canAdministerGroup(group) && Session.user().identityFor('slack')
       perform: ->
@@ -80,6 +86,7 @@ export default new class GroupService
 
     install_microsoft_teams:
       name: 'install_microsoft.card.install_microsoft'
+      icon: 'mdi-microsoft'
       canPerform: ->
         # AppConfig.features.app.show_microsoft_card &&
         !group.groupIdentityFor('microsoft') &&
@@ -92,6 +99,7 @@ export default new class GroupService
 
     remove_microsoft_teams:
       name: 'install_microsoft.card.remove_identity'
+      icon: 'mdi-microsoft'
       canPerform: ->
         group.groupIdentityFor('microsoft') &&
         AbilityService.canAdministerGroup(group)
@@ -108,6 +116,7 @@ export default new class GroupService
 
     leave_group:
       name: 'group_page.options.leave_group'
+      icon: 'mdi-exit-to-app'
       canPerform: ->
         AbilityService.canRemoveMembership(membership)
       perform: ->
@@ -125,6 +134,7 @@ export default new class GroupService
 
     archive_group:
       name: 'group_page.options.deactivate_group'
+      icon: 'mdi-archive'
       canPerform: ->
         AbilityService.canArchiveGroup(group)
       perform: ->
