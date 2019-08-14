@@ -16,11 +16,11 @@ export default new class GroupService
       icon: 'mdi-email'
       canPerform: ->
         AbilityService.canChangeGroupVolume(group)
-        perform: ->
-          openModal
-            component: 'ChangeVolumeForm'
-            props:
-              model: membership
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: membership
 
     edit_group:
       name: 'group_page.options.edit_group'
