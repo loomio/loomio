@@ -57,7 +57,7 @@ export default new class GroupService
       name: 'group_page.options.export_data'
       icon: 'mdi-database-export'
       canPerform: ->
-        membership
+        membership && Session.user().isAdminOf(group)
       perform: ->
         openModal
           component: 'ConfirmModal'
