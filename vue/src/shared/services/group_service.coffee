@@ -18,9 +18,9 @@ export default new class GroupService
         AbilityService.canChangeGroupVolume(group)
         perform: ->
           openModal
-          component: 'ChangeVolumeForm'
-          props:
-            model: membership
+            component: 'ChangeVolumeForm'
+            props:
+              model: membership
 
     edit_group:
       name: 'group_page.options.edit_group'
