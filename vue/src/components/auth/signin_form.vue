@@ -16,16 +16,7 @@ export default
     signIn: ->
       # EventBus.emit $scope, 'processing'
       @user.name = @vars.name if @vars.name?
-      onSuccess = (data) =>
-        Session.apply(data)
-        @closeModal()
-        EventBus.$emit('signedIn')
-        Flash.success('auth_form.signed_in')
-      finished = ->
-        console.log 'doneProcessing'
-        # EventBus.emit $scope, 'doneProcessing';
-        # $scope.$apply();
-      AuthService.signIn(@user, onSuccess, finished).finally finished
+      AuthService.signIn(@user).finally => 'doneProcessing'
 
     signInAndSetPassword: ->
       LmoUrlService.params('set_password', true)

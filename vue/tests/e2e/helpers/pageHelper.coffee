@@ -130,5 +130,5 @@ module.exports = (test) ->
     page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input')
     page.click '.auth-signup-form__submit'
 
-  waitFor: (selector, wait = 8000) ->
+  waitFor: (selector, wait = 9999999) ->
     test.waitForElementVisible(selector, wait) if selector?
