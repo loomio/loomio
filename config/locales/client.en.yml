@@ -661,6 +661,7 @@ en:
     polls: Polls
     members: Members
     files: Files
+    settings: Settings
     subgroups: Subgroups
     show_opened: '{{count}} Open'
     show_closed: '{{count}} Closed'
@@ -1976,9 +1977,9 @@ en:
       install_helptext: Loomio bot notifies your team of discussions and decisions on Loomio.
       installed_title: Connected to Microsoft Teams
       installed_helptext: Events from this group will be sent to your Microsoft Team.
-      install_microsoft: Connect Teams
+      install_microsoft: Integrate Microsoft Teams
       remove_identity: Remove this integration
-      confirm_remove_title: Remove Microsoft Teams
+      confirm_remove_title: Remove Microsoft Teams integration
       confirm_remove_helptext: |
         Your microsoft teams channel will no longer receive updates about this group.
         You can always go back and add it again.
@@ -2001,10 +2002,10 @@ en:
       outcome_created: An outcome has been shared
 
   install_slack:
-    modal_title: Install Slack
+    modal_title: Integrate Slack
     modal_helptext: First up, you'll need to sign in to slack. We'll redirect you there automatically in a second, or you can click the button below to continue.
     login_to_slack: Log in to Slack
-    remove_slack: Remove Slack
+    remove_slack: Remove Slack integration
 
     card:
       install_title: Connect to Slack
