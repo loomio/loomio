@@ -37,8 +37,6 @@ export default new class GroupService
       name: 'group_page.options.manage_subscription'
       icon: 'mdi-rocket'
       canPerform: ->
-        console.log 'Session.user().isAdminOf(group.parent())', Session.user().isAdminOf(group.parent())
-        console.log 'group.subscriptionPlan', group.subscriptionPlan
         group.isParent() && Session.user().isAdminOf(group) && group.subscriptionPlan?
       perform: ->
         window.location = AppConfig.baseUrl + "upgrade"
