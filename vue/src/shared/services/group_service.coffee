@@ -5,10 +5,23 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
+import AppConfig      from '@/shared/services/app_config'
 
 export default new class GroupService
   actions: (group, vm) ->
     membership = group.membershipFor(Session.user())
+
+    change_volume:
+      name: 'group_page.options.email_settings'
+      icon: 'mdi-email'
+      canPerform: ->
+        AbilityService.canChangeGroupVolume(group)
+        perform: ->
+          openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: membership
+
     edit_group:
       name: 'group_page.options.edit_group'
       icon: 'mdi-settings'
@@ -19,6 +32,16 @@ export default new class GroupService
           component: 'GroupForm'
           props:
             group: group.clone()
+
+    manage_subscription:
+      name: 'group_page.options.manage_subscription'
+      icon: 'mdi-rocket'
+      canPerform: ->
+        console.log 'Session.user().isAdminOf(group.parent())', Session.user().isAdminOf(group.parent())
+        console.log 'group.subscriptionPlan', group.subscriptionPlan
+        group.isParent() && Session.user().isAdminOf(group) && group.subscriptionPlan?
+      perform: ->
+        window.location = AppConfig.baseUrl + "upgrade"
 
     become_coordinator:
       name: 'group_page.options.become_coordinator'
@@ -31,16 +54,6 @@ export default new class GroupService
         Records.memberships.makeAdmin(membership).then ->
           Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
 
-    change_volume:
-      name: 'group_page.options.email_settings'
-      icon: 'mdi-email'
-      canPerform: ->
-        AbilityService.canChangeGroupVolume(group)
-      perform: ->
-        openModal
-          component: 'ChangeVolumeForm'
-          props:
-            model: membership
 
     export_data:
       name: 'group_page.options.export_data'
