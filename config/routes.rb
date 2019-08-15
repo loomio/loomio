@@ -282,6 +282,7 @@ Loomio::Application.routes.draw do
   get 'g/:key/membership_requests'         => 'application#index', as: :group_membership_requests
   get 'g/:key/members/requests'            => 'application#index', as: :group_members_requests
   get 'g/:key/memberships'                 => 'application#index', as: :group_memberships
+  get 'g/:key/settings'                    => 'application#index', as: :group_settings
   get 'g/:key/previous_polls'              => 'application#index', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#index', as: :group_memberships_username
   get 'g/new'                              => 'application#index', as: :new_group

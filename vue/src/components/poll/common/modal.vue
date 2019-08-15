@@ -1,9 +1,12 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
+import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import { submitPoll }    from '@/shared/helpers/form'
 import { iconFor }                from '@/shared/helpers/poll'
 import { applyPollStartSequence } from '@/shared/helpers/apply'
 
 export default
+  mixins: [AnnouncementModalMixin]
   props:
     poll: Object
     close: Function
@@ -13,6 +16,14 @@ export default
     applyPollStartSequence @,
       afterSaveComplete: (event) =>
         @announcement = Records.announcements.buildFromModel(event)
+
+    @submit = submitPoll @, @poll,
+      broadcaster: @
+      successCallback: (data) =>
+        pollKey = data.polls[0].key
+        Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
+          @close()
+          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
 
   computed:
     title_key: ->
@@ -28,8 +39,7 @@ export default
 
 </script>
 <template lang="pug">
-v-card.poll-common-modal
-  // <div ng-show="isDisabled" class="lmo-disabled-form"></div>
+v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()")
   submit-overlay(:value="poll.processing")
   v-card-title
     h1.headline(v-t="title_key")
@@ -37,5 +47,9 @@ v-card.poll-common-modal
     dismiss-modal-button(:close='close')
   v-card-text
     poll-common-directive(:poll='poll', name='form', :modal='true')
-  poll-common-form-actions(:poll='poll', :close='close')
+  v-card-actions.poll-common-form-actions
+    v-spacer
+    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='!poll.isNew()', v-t="'poll_common_form.update'", aria-label="$t('poll_common_form.update')")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='poll.isNew() && poll.groupId', v-t="'poll_common_form.start'", aria-label="$t('poll_common_form.start')")
+    v-btn.poll-common-form__submit(color="primary" @click='submit()', v-if='poll.isNew() && !poll.groupId', v-t="'common.action.next'", aria-label="$t('common.action.next')")
 </template>

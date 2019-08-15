@@ -5,32 +5,15 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
+import AppConfig      from '@/shared/services/app_config'
 
 export default new class GroupService
   actions: (group, vm) ->
     membership = group.membershipFor(Session.user())
-    edit_group:
-      name: 'group_page.options.edit_group'
-      canPerform: ->
-        AbilityService.canEditGroup(group)
-      perform: ->
-        openModal
-          component: 'GroupForm'
-          props:
-            group: group.clone()
-
-    become_coordinator:
-      name: 'group_page.options.become_coordinator'
-      canPerform: ->
-        membership && membership.admin == false &&
-          (group.adminMembershipsCount == 0 or
-          Session.user().isAdminOf(group.parent()))
-      perform: ->
-        Records.memberships.makeAdmin(membership).then ->
-          Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
 
     change_volume:
       name: 'group_page.options.email_settings'
+      icon: 'mdi-email'
       canPerform: ->
         AbilityService.canChangeGroupVolume(group)
       perform: ->
@@ -39,10 +22,42 @@ export default new class GroupService
           props:
             model: membership
 
+    edit_group:
+      name: 'group_page.options.edit_group'
+      icon: 'mdi-settings'
+      canPerform: ->
+        AbilityService.canEditGroup(group)
+      perform: ->
+        openModal
+          component: 'GroupForm'
+          props:
+            group: group.clone()
+
+    manage_subscription:
+      name: 'group_page.options.manage_subscription'
+      icon: 'mdi-rocket'
+      canPerform: ->
+        group.isParent() && Session.user().isAdminOf(group) && group.subscriptionPlan?
+      perform: ->
+        window.location = AppConfig.baseUrl + "upgrade"
+
+    become_coordinator:
+      name: 'group_page.options.become_coordinator'
+      icon: 'mdi-shield-star'
+      canPerform: ->
+        membership && membership.admin == false &&
+          (group.adminMembershipsCount == 0 or
+          Session.user().isAdminOf(group.parent()))
+      perform: ->
+        Records.memberships.makeAdmin(membership).then ->
+          Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
+
+
     export_data:
       name: 'group_page.options.export_data'
+      icon: 'mdi-database-export'
       canPerform: ->
-        membership
+        membership && Session.user().isAdminOf(group)
       perform: ->
         openModal
           component: 'ConfirmModal'
@@ -57,6 +72,7 @@ export default new class GroupService
 
     install_slack:
       name: 'install_slack.modal_title'
+      icon: 'mdi-slack'
       canPerform: ->
         AbilityService.canAdministerGroup(group) && !Session.user().identityFor('slack')
       perform: ->
@@ -65,6 +81,7 @@ export default new class GroupService
 
     remove_slack:
       name: 'install_slack.remove_slack'
+      icon: 'mdi-slack'
       canPerform: ->
         AbilityService.canAdministerGroup(group) && Session.user().identityFor('slack')
       perform: ->
@@ -80,6 +97,7 @@ export default new class GroupService
 
     install_microsoft_teams:
       name: 'install_microsoft.card.install_microsoft'
+      icon: 'mdi-microsoft'
       canPerform: ->
         # AppConfig.features.app.show_microsoft_card &&
         !group.groupIdentityFor('microsoft') &&
@@ -92,6 +110,7 @@ export default new class GroupService
 
     remove_microsoft_teams:
       name: 'install_microsoft.card.remove_identity'
+      icon: 'mdi-microsoft'
       canPerform: ->
         group.groupIdentityFor('microsoft') &&
         AbilityService.canAdministerGroup(group)
@@ -108,6 +127,7 @@ export default new class GroupService
 
     leave_group:
       name: 'group_page.options.leave_group'
+      icon: 'mdi-exit-to-app'
       canPerform: ->
         AbilityService.canRemoveMembership(membership)
       perform: ->
@@ -125,6 +145,7 @@ export default new class GroupService
 
     archive_group:
       name: 'group_page.options.deactivate_group'
+      icon: 'mdi-archive'
       canPerform: ->
         AbilityService.canArchiveGroup(group)
       perform: ->

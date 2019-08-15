@@ -33,7 +33,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-vote-form
+.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()")
   submit-overlay(:value="stance.processing")
   v-layout
     v-spacer

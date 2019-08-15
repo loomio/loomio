@@ -4,7 +4,6 @@ import InboxPage from './components/inbox/page.vue'
 import ExplorePage from './components/explore/page.vue'
 import ThreadPage from './components/thread/page.vue'
 import ProfilePage from './components/profile/page.vue'
-import StartPollPage from './components/start_poll/page.vue'
 import PollPage from './components/poll/page.vue'
 
 import GroupPage from './components/group/page.vue'
@@ -16,6 +15,7 @@ import GroupFilesPanel from './components/group/files_panel'
 import MembersTabs from './components/group/members_tabs'
 import InvitationsPanel from './components/group/invitations_panel'
 import MembershipRequestsPanel from './components/group/requests_panel'
+import GroupSettingsPanel from './components/group/settings_panel'
 
 import StartGroupPage from './components/start_group/page.vue'
 import ContactPage from './components/contact/page.vue'
@@ -27,6 +27,7 @@ import InstallSlackPage from './components/install_slack/page.vue'
 import ActivityPanel from './components/thread/activity_panel'
 import ThreadPollsPanel from './components/thread/polls_panel'
 import ThreadMembersPanel from './components/thread/members_panel'
+
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -42,8 +43,9 @@ groupPageChildren = [
   {path: 'subgroups', component: GroupSubgroupsPanel}
   {path: 'files', component: GroupFilesPanel}
   {path: 'membership_requests', redirect: 'members/requests' }
+  {path: 'settings', component: GroupSettingsPanel}
   {path: ':stub?', component: GroupDiscussionsPanel}
-  {path: 'slack/install', component: InstallSlackPage},
+  {path: 'slack/install', component: InstallSlackPage}
 ]
 
 threadPageChildren = [
@@ -65,8 +67,6 @@ export default new Router
     {path: '/profile', component: ProfilePage},
     {path: '/contact', component: ContactPage},
     {path: '/email_preferences', component: EmailSettingsPage },
-    {path: '/p/new', component: StartPollPage},
-    {path: '/p/new/:poll_type', component: StartPollPage},
     {path: '/p/:key/:stub?', component: PollPage},
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: StartDiscussionPage },

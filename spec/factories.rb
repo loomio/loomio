@@ -187,7 +187,7 @@ FactoryBot.define do
   end
 
   factory :membership_request do
-    introduction { Faker::Lorem.sentence(4) }
+    introduction { Faker::Lorem.sentence }
     email { Faker::Internet.email }
     name { Faker::Name.name }
     association :group,     factory: :formal_group

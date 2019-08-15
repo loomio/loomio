@@ -27,7 +27,7 @@ export default
 </script>
 
 <template lang="pug">
-v-card.poll-common-modal
+v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()")
   submit-overlay(:value='outcome.processing')
   v-card-title
     h1.headline

@@ -28,7 +28,7 @@ export default
       !@user.errors.email?
 </script>
 <template lang="pug">
-.auth-email-form
+.auth-email-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()" @keydown.enter="submit()")
   .auth-email-form__email
     v-text-field#email.lmo-primary-form-input(outlined name='email' type='email' :placeholder="$t('auth_form.email_placeholder')" v-model='email')
     validation-errors(:subject='user' field='email')
