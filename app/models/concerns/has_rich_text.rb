@@ -7,15 +7,14 @@ module HasRichText
     def is_rich_text(on: [])
       define_singleton_method :rich_text_fields, -> { Array on }
       rich_text_fields.each do |field|
-        define_method "#{field}=" do |content|
+        define_method "sanitize_#{field}!" do
           if self["#{field}_format"] == "html"
-            tags = %w[strong em b i p code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote]
+            tags = %w[strong em b i p s code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote]
             attributes = %w[href src alt title class data-type data-done data-mention-id]
-            self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(content, tags: tags, attributes: attributes)
-          else
-            self[field] = content
+            self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
           end
         end
+        before_save :"sanitize_#{field}!"
         validates field, {length: {maximum: Rails.application.secrets.max_message_length}}
       end
     end
