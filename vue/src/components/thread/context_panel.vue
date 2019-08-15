@@ -56,7 +56,7 @@ export default
 
   h1.headline.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
     span(v-if='!discussion.translation.title') {{discussion.title}}
-    span(v-if='discussion.translation')
+    span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
     i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
 
