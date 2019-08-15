@@ -154,7 +154,7 @@ export default
       else
         @model[@field])
       onUpdate: @updateModel
-      autoFocus: @autoFocus
+      # autoFocus: @autoFocus
 
   computed:
     hasResults: -> @filteredUsers.length
