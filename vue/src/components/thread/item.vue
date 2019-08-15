@@ -107,9 +107,10 @@ div
             //- mid-dot
             //- v-spacer
           v-spacer
-          .thread-item__link.grey--text.body-2.action-menu
-            router-link.grey--text(:to='link')
-              time-ago(:date='event.createdAt')
+          //- .thread-item__link.grey--text.body-2.action-menu
+          router-link.grey--text.body-2(:to='link')
+            time-ago(:date='event.createdAt')
+          space
           slot(name="actions")
         slot
   template(v-if='event.isSurface()')
