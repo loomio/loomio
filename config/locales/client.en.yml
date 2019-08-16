@@ -350,6 +350,7 @@ en:
 
   sidebar:
     threads: 'Threads'
+    my_groups: 'My groups'
     recent_threads: 'Recent threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
@@ -358,7 +359,7 @@ en:
     explore: 'Public groups'
     start_thread: New thread
     start_decision: New decision
-    all_groups: All groups
+    more_groups: More groups
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Threads actions'
