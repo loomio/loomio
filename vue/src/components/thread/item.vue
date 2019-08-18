@@ -15,19 +15,16 @@ export default
     event: Object
     eventWindow: Object
 
-  watch:
-    '$route.params.sequence_id': 'updateIsFocused'
-
   data: ->
     isDisabled: false
-    isFocused: @updateIsFocused()
+    isFocused: false
     collapsed: false
     hover: false
 
-  methods:
-    updateIsFocused: ->
-      @isFocused = parseInt(@$route.params.sequence_id) == @event.sequenceId
+  created: ->
+    EventBus.$on('focusedEvent', (event) => @isFocused = @event.id == event.id )
 
+  methods:
     viewed: (viewed) ->
       @event.markAsRead() if viewed
 
