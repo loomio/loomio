@@ -138,7 +138,7 @@ export default
     '$route.params.sequence_id': 'scrollToInitialPosition'
     '$route.params.comment_id': 'scrollToInitialPosition'
     visibleSlots: throttle (newVal, oldVal) ->
-      return if isEqual(newVal, oldVal)
+      return if isEqual(newVal, oldVal) || !@loader?
       minPosition = min(newVal) || 1
       maxPosition = max(newVal) || 1
 
