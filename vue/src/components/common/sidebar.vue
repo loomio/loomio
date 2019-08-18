@@ -84,7 +84,7 @@ v-navigation-drawer.sidenav-left(app v-model="open")
     v-navigation-drawer(stateless mini-variant mini-variant-width="56" :value="open")
       v-list-item(to="/dashboard")
         v-list-item-avatar(:size="28")
-          user-avatar(no-link :user="user" v-on="on")
+          user-avatar(no-link :user="user")
       v-list-item(v-for='group in organizations' :key='group.id' :to='urlFor(group)' dense)
         v-list-item-avatar(size="28px")
           v-tooltip
