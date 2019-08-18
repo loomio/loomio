@@ -45,7 +45,7 @@ v-card
     h1.poll-common-card__title.headline
       //- v-icon {{'mdi ' + icon}}
       span(v-if='!poll.translation') {{poll.title}}
-      translation(v-if="poll.translation" :model='poll', :field='title')
+      translation(v-if="poll.translation" :model='poll', field='title')
       v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
   v-card-text
     poll-common-set-outcome-panel(:poll='poll')

@@ -28,7 +28,7 @@ export default
 
 </script>
 <template lang="pug">
-v-card.current-poll-banner.mb-4.py-2.px-4(:style="styles" v-if="poll && $route.params.sequence_id != poll.createdEvent().sequenceId" :elevation="3")
+v-card.current-poll-banner.mb-4.py-2.px-4(:style="styles" v-if="poll && poll.createdEvent() && $route.params.sequence_id != poll.createdEvent().sequenceId" :elevation="3")
   v-avatar.mr-4(:size="36")
     poll-common-chart-preview(:poll='poll' :size="36")
   .current-poll-banner__title.mr-4
