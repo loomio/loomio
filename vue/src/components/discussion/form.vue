@@ -63,8 +63,7 @@ export default
          value: group.id
       }), 'fullName'
 
-    showGroupSelect: ->
-      @discussion.isNew()
+    showGroupSelect: -> @discussion.isForking()
 
     maxThreads: ->
       return null unless @discussion.group()
