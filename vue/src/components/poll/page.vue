@@ -50,7 +50,6 @@ export default
 <template lang="pug">
 loading(:until="poll")
   div(v-if="poll")
-    group-cover-image(:group="poll.group()")
     v-container.poll-page.max-width-800
       loading(v-if='isEmptyPoll')
       v-layout(column v-if='!isEmptyPoll')
