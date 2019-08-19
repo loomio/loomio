@@ -60,15 +60,19 @@ function insertImage(file, view, coordinates, attachImageFile) {
       document.getElementById(id).setAttribute("value", parseInt(e.loaded / e.total * 100))
     },
     onComplete: (blob) => {
-      let pos = finduploadPlaceholder(view.state, id)
-      // If the content around the placeholder has been deleted, drop
-      // the image
-      if (pos == null) return
-      // Otherwise, insert it at the placeholder's position, and remove
-      // the placeholder
-      view.dispatch(view.state.tr
-       .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url}))
-       .setMeta('uploadPlaceholder', {remove: {id}}))
+      var img = document.createElement('img');
+      img.src = blob.preview_url
+      img.onload = function() {
+        let pos = finduploadPlaceholder(view.state, id)
+        // If the content around the placeholder has been deleted, drop
+        // the image
+        if (pos == null) return
+        // Otherwise, insert it at the placeholder's position, and remove
+        // the placeholder
+        view.dispatch(view.state.tr
+         .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url, height: img.naturalHeight, width:img.naturalWidth}))
+         .setMeta('uploadPlaceholder', {remove: {id}}))
+      }
     },
     onFailure: () => {
       // On failure, just clean up the placeholder
@@ -98,22 +102,22 @@ export default class Image extends Node {
       inline: true,
       attrs: {
         src: {},
-        alt: {
-          default: null,
-        },
-        title: {
-          default: null,
-        },
+        alt: { default: null },
+        title: { default: null },
+        width: { default: null },
+        height: { default: null }
       },
       group: 'inline',
       draggable: true,
       parseDOM: [
         {
-          tag: 'img[src]',
+          tag: 'img',
           getAttrs: dom => ({
             src: dom.getAttribute('src'),
             title: dom.getAttribute('title'),
             alt: dom.getAttribute('alt'),
+            width: dom.getAttribute('width'),
+            height: dom.getAttribute('height')
           }),
         },
       ],
