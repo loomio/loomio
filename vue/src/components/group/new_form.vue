@@ -40,8 +40,10 @@ export default
       successCallback: (data) =>
         @isExpanded = false
         groupKey = data.groups[0].key
-        @closeModal()
-        @$router.push("/g/#{groupKey}")
+        Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
+          @closeModal()
+          @$router.push("/g/#{groupKey}")
+          setTimeout => @openGroupWizard(group)
   methods:
     expandForm: ->
       @isExpanded = true

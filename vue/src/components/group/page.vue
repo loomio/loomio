@@ -31,7 +31,6 @@ export default
 
         subscribeTo(@group)
         Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
-        @openGroupWizard(@group) if @group && @group.description.length == 0
 
       , (error) ->
         EventBus.$emit 'pageError', error
