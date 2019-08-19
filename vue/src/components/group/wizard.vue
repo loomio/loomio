@@ -56,6 +56,8 @@ v-carousel.group-wizard
     v-card(height="100%" color="primary")
       v-card-title
         h1.headline(v-t="'group_wizard.setup_profile'")
+        v-spacer
+        dismiss-modal-button(:close="close")
       v-card-text
         span(v-t="'group_wizard.setup_profile_description'")
       v-card-actions
@@ -65,6 +67,8 @@ v-carousel.group-wizard
     v-card(height="100%" color="primary")
       v-card-title
         h1.headline(v-t="'group_wizard.invite_people'")
+        v-spacer
+        dismiss-modal-button(:close="close")
       v-card-text
         span(v-t="'group_wizard.invite_people_description'")
       v-card-actions
@@ -75,6 +79,8 @@ v-carousel.group-wizard
     v-card(height="100%" color="primary")
       v-card-title
         h1.headline(v-t="'group_wizard.setup_integrations'")
+        v-spacer
+        dismiss-modal-button(:close="close")
       v-card-text
         span(v-t="'group_wizard.setup_integrations_description'")
       v-card-actions
@@ -85,6 +91,8 @@ v-carousel.group-wizard
     v-card(height="100%" color="primary")
       v-card-title
         h1.headline(v-t="'group_wizard.start_thread'")
+        v-spacer
+        dismiss-modal-button(:close="close")
       v-card-text
         span(v-t="'group_wizard.start_thread_description'")
       v-card-actions
