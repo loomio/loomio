@@ -657,6 +657,18 @@ en:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
+  group_wizard:
+    setup_profile: Setup profile
+    setup_profile_description: Set your group's description, logo and cover photo
+    invite_people: Invite people
+    invite_people_description: List emails to send invitations to, or copy a link to share with others
+    setup_integrations: Setup integrations
+    setup_integrations_description: Connect Loomio with Slack and/or Microsoft Teams
+    start_thread: Start a discussion
+    start_thread_description: Write a welcome note, discuss the purpose of your group, or share the minutes of your last meeting
+    do_it: Let's go
+
+
   group_page:
     threads: Threads
     polls: Polls
@@ -747,13 +759,13 @@ en:
     permissions_explaination: 'There are two levels of membership: admin and member. Admins have all permissions. Select member permissions:'
     aria_label: 'Group form'
     new_organisation:
-    start_group_heading: 'Start a group'
-    start_subgroup_heading: 'Start a subgroup'
-    edit_group_heading: 'Edit group settings'
-    edit_subgroup_heading: 'Edit subgroup settings'
-    group_name: 'Group Name'
+    start_group_heading: 'New organization'
+    start_subgroup_heading: 'New group'
+    edit_group_heading: 'Edit organization settings'
+    edit_subgroup_heading: 'Edit group settings'
+    group_name: 'Name'
     group_name_placeholder: 'What do you want to call your group?'
-    subgroup_name: 'Subgroup Name'
+    subgroup_name: 'Name'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
     privacy_statement:

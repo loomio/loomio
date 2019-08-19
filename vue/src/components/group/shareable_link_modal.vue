@@ -11,11 +11,15 @@ import Flash   from '@/shared/services/flash'
 export default
   props:
     group: Object
+    hasToken: {
+      type: Boolean
+      default: false
+    }
   data: ->
     dialog: false
 
   created: ->
-    @group.fetchToken()
+    @group.fetchToken() unless @hasToken
 
   methods:
     copied: (e) ->
@@ -38,7 +42,7 @@ export default
 <template lang="pug">
 v-dialog(v-model='dialog' max-width="600px")
   template(v-slot:activator="{ on }")
-    v-btn(v-on="on" outlined color="accent" v-t="'members_panel.sharable_link'") 
+    v-btn(v-on="on" outlined color="accent" v-t="'members_panel.sharable_link'")
   v-card.shareable-link-modal
     v-card-title
       h1.headline(v-t="'invitation_form.shareable_link'")
