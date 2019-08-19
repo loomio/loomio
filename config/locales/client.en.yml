@@ -781,6 +781,7 @@ en:
     confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
     confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
     confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
+    profile: Profile
 
     subgroup_privacy_is_open_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are public."
     subgroup_privacy_is_closed_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are private."
