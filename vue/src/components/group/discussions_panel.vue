@@ -155,9 +155,10 @@ export default
 </script>
 
 <template lang="pug">
-div.discussions-panel
+div.discussions-panel()
+  formatted-text(v-if="group" :model="group" column="description")
   v-chip-group.pl-2(v-if="!search" v-model="filter" active-class="accent--text")
-    v-btn.mr-4.discussions-panel__new-thread-button(@click= 'openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
+    v-btn.mr-4.discussions-panel__new-thread-button(@click='openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
     v-divider.mr-2.ml-1(inset vertical)
     v-chip(label outlined value="open" @click="selectFilter('open')")
       span(v-t="'discussions_panel.open'")
