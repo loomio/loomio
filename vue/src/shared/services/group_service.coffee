@@ -74,7 +74,7 @@ export default new class GroupService
       name: 'install_slack.modal_title'
       icon: 'mdi-slack'
       canPerform: ->
-        AbilityService.canAdministerGroup(group) && !Session.user().identityFor('slack')
+        AbilityService.canAdministerGroup(group) && !group.groupIdentityFor('slack')
       perform: ->
         openModal
           component: 'InstallSlackModal'
@@ -83,7 +83,7 @@ export default new class GroupService
       name: 'install_slack.remove_slack'
       icon: 'mdi-slack'
       canPerform: ->
-        AbilityService.canAdministerGroup(group) && Session.user().identityFor('slack')
+        AbilityService.canAdministerGroup(group) && group.groupIdentityFor('slack')
       perform: ->
         openModal
           component: 'ConfirmModal'
