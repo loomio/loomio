@@ -11,17 +11,6 @@ export default new class GroupService
   actions: (group, vm) ->
     membership = group.membershipFor(Session.user())
 
-    change_volume:
-      name: 'group_page.options.email_settings'
-      icon: 'mdi-email'
-      canPerform: ->
-        AbilityService.canChangeGroupVolume(group)
-      perform: ->
-        openModal
-          component: 'ChangeVolumeForm'
-          props:
-            model: membership
-
     open_group_wizard:
       name: 'group_page.options.open_group_wizard'
       icon: 'mdi-auto-fix'
@@ -32,6 +21,17 @@ export default new class GroupService
           component: 'GroupWizard'
           props:
             group: group
+
+    change_volume:
+      name: 'group_page.options.email_settings'
+      icon: 'mdi-email'
+      canPerform: ->
+        AbilityService.canChangeGroupVolume(group)
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: membership
 
     edit_group:
       name: 'group_page.options.edit_group'
