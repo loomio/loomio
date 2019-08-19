@@ -20,7 +20,7 @@ export default
     @init()
     EventBus.$on 'signedIn', => @init()
     setTimeout => @openInstallSlackModal() if @$route.query.install_slack
-    setTimeout => @openGroupWizard(@group) if @group.description.length == 0
+
   watch:
     '$route.params.key': 'init'
 
@@ -31,6 +31,7 @@ export default
 
         subscribeTo(@group)
         Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
+        @openGroupWizard(@group) if @group && @group.description.length == 0
 
       , (error) ->
         EventBus.$emit 'pageError', error
