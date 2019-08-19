@@ -439,9 +439,10 @@ div
 
   img
     max-width: 100%
+    max-height: 500px
     height: auto
     width: auto
-    
+
   ol, ul
     padding-left: 24px
     margin-bottom: 16px
