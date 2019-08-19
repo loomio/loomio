@@ -1,15 +1,28 @@
-%h1 Try Loomio 2.0 beta.
+%h1 Loomio 2.0 beta
 
-%p This is not ready for general usage. There are bugs to be fixed, and more to be discovered.
+%p Using the buttons below you can enable or disable Loomio 2.0 beta for your user account.
 
 %p
-  %a{href: '/dashboard/?use_vue=1'} Try it just once
+  To report an issue or discuss changes, please join the
+  %a{href:"https://www.loomio.org/g/GN7EFQTK/loomio-community-product-development"} Loomio Community - Product development
+  group.
 
-%p Or switch on and off
+%p Being a beta release, there will be a few bugs, and some things are still changing. This is not ready for general usage like a 2.0 final release will be.
 
-= form_tag(beta_path, method: :put) do
-  = hidden_field_tag :enable, value: true
-  = submit_tag :enable
+%p That said, there is a whole lot of exciting new features and benefits, and we believe many people will be comfortable using 2.0 beta as their main Loomio version.
 
-= form_tag(beta_path, method: :put) do
-  = submit_tag :disable
+%div{style: "display: flex; margin: 0 auto; text-align: center"}
+  = form_tag(beta_path, method: :put) do
+    = hidden_field_tag :enable, value: true
+    = submit_tag "Enable Loomio 2.0 beta"
+
+  &nbsp;
+
+  or
+
+  &nbsp;
+
+  = form_tag(beta_path, method: :put) do
+    = submit_tag "Disable Loomio 2.0 beta"
+
+%p Remember you can return to www.loomio.org/beta to switch back, anytime.
