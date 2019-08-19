@@ -12,7 +12,7 @@ export default
 </script>
 <template lang="pug">
 .invite-button
-  v-btn(color='accent' @click="isOpen = true" v-t="'install_slack.modal_title'")
+  v-btn(color='accent' @click="isOpen = true" v-t="'install_slack.modal_title'" :disabled="group.groupIdentityFor('slack')")
   v-dialog(v-model="isOpen" max-width="600px" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
     install-slack-modal(:group="group" :close="close" :preventClose="true")
 </template>
