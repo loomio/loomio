@@ -6,10 +6,8 @@ import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import { submitOnEnter }       from '@/shared/helpers/keyboard'
-import GroupModalMixin from '@/mixins/group_modal'
 
 export default
-  mixins: [GroupModalMixin]
   props:
     group: Object
     close: Function
@@ -46,7 +44,7 @@ export default
       successCallback: (data) =>
         @isExpanded = false
         groupKey = data.groups[0].key
-        @closeModal()
+        @close()
         @$router.push("/g/#{groupKey}")
   methods:
     expandForm: ->

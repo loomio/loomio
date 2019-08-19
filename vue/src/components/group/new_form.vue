@@ -41,7 +41,7 @@ export default
         @isExpanded = false
         groupKey = data.groups[0].key
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
-          @closeModal()
+          @close()
           @$router.push("/g/#{groupKey}")
           setTimeout => @openGroupWizard(group)
   methods:
