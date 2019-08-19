@@ -32,7 +32,3 @@ v-card.install-slack-modal.lmo-modal__narrow
     v-spacer
     v-btn(color='primary' @click='redirect()' v-t="'install_slack.login_to_slack'")
 </template>
-
-
-<!-- remove integration button -->
-<!--

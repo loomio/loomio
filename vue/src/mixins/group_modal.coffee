@@ -40,6 +40,6 @@ export default
                       props: {
                         group: group
                       })
-                      
+
     closeModal: ->
       EventBus.$emit('closeModal')

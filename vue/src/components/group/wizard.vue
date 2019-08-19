@@ -70,7 +70,7 @@ v-carousel.group-wizard(:continuous="false")
       v-card-text
         span(v-t="'group_wizard.setup_profile_description'")
       v-card-actions
-        v-btn(color="accent" @click="openEditProfileForm()" v-t="'group_wizard.do_it'")
+        group-edit-group-button(:group="group")
 
   v-carousel-item(key='group_wizard.invite_people')
     v-card(height="100%" color="primary")
@@ -81,7 +81,8 @@ v-carousel.group-wizard(:continuous="false")
       v-card-text
         span(v-t="'group_wizard.invite_people_description'")
       v-card-actions
-        v-btn(color="accent" @click="openInvitePeopleForm()" v-t="'group_page.invite_people'")
+        //- v-btn(color="accent" @click="openInvitePeopleForm()" v-t="'group_page.invite_people'")
+        group-invite-button(:group="group")
         shareable-link-modal(:group="group" :hasToken="true")
 
   v-carousel-item(key='group_wizard.setup_integrations')
@@ -93,8 +94,10 @@ v-carousel.group-wizard(:continuous="false")
       v-card-text
         span(v-t="'group_wizard.setup_integrations_description'")
       v-card-actions
-        v-btn(color="accent" @click="openInstallSlackModal()" v-t="'install_slack.modal_title'")
-        v-btn(color="accent" @click="openInstallTeamsModal()" v-t="'install_microsoft.card.install_microsoft'")
+        install-slack-button(:group="group")
+        install-microsoft-teams-button(:group="group")
+        //- v-btn(color="accent" @click="openInstallSlackModal()" v-t="'install_slack.modal_title'")
+        //- v-btn(color="accent" @click="openInstallTeamsModal()" v-t="'install_microsoft.card.install_microsoft'")
 
   v-carousel-item(key='group_wizard.start_thread')
     v-card(height="100%" color="primary")
@@ -105,5 +108,6 @@ v-carousel.group-wizard(:continuous="false")
       v-card-text
         span(v-t="'group_wizard.start_thread_description'")
       v-card-actions
-        v-btn(color="accent" @click="openStartThreadModal()" v-t="'group_wizard.do_it'")
+        //- v-btn(color="accent" @click="openStartThreadModal()" v-t="'group_wizard.do_it'")
+        discussion-form-button(:group="group")
 </template>
