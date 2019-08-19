@@ -51,7 +51,16 @@ export default
 
 </script>
 <template lang="pug">
-v-carousel.group-wizard
+v-carousel.group-wizard(:continuous="false")
+  v-carousel-item(key='group_wizard.welcome')
+    v-card(height="100%" color="primary")
+      v-card-title
+        h1.headline(v-t="'group_wizard.welcome'")
+        v-spacer
+        dismiss-modal-button(:close="close")
+      v-card-text
+        span(v-t="'group_wizard.welcome_description'")
+
   v-carousel-item(key='group_wizard.setup_profile')
     v-card(height="100%" color="primary")
       v-card-title

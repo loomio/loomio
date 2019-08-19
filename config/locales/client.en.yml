@@ -658,6 +658,8 @@ en:
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
   group_wizard:
+    welcome: Success!
+    welcome_description: You've successfully created a new organization on Loomio. In a few steps, you'll have your organization fully setup and ready to start discussions. If you want to skip this wizard for now, you can open it again from the Settings tab.
     setup_profile: Setup profile
     setup_profile_description: Set your group's description, logo and cover photo
     invite_people: Invite people
@@ -707,6 +709,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
+      open_group_wizard: 'Open Group Wizard'
       become_coordinator: Become Admin
       export_data: Export Group Data
       export_data_as_json: Export Group Data as JSON

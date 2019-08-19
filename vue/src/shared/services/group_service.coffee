@@ -22,6 +22,17 @@ export default new class GroupService
           props:
             model: membership
 
+    open_group_wizard:
+      name: 'group_page.options.open_group_wizard'
+      icon: 'mdi-auto-fix'
+      canPerform: ->
+        Session.user().isAdminOf(group)
+      perform: ->
+        openModal
+          component: 'GroupWizard'
+          props:
+            group: group
+
     edit_group:
       name: 'group_page.options.edit_group'
       icon: 'mdi-settings'
