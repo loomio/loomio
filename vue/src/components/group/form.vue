@@ -23,6 +23,11 @@ export default
     uploading: false
     progress: 0
   mounted: ->
+    @watchRecords
+      collections: ['groups']
+      query: (store) =>
+        @group = Records.groups.fuzzyFind(@group.key)
+
     @featureNames = AppConfig.features.group
     @submit = submitForm @, @group,
       prepareFn: =>
@@ -116,11 +121,17 @@ v-card.group-form
 
       v-tab-item
         v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255', :label="$t('group_form.group_name')")
+        v-btn(icon @click="selectLogo()")
+          group-avatar(:group="group" size="28px")
+        v-spacer
+        v-btn(icon @click="selectCoverPhoto()")
+          v-img(:src="group.coverUrl()" max-width="100px" max-height="100px")
+
         lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
         validation-errors(:subject="group", field="name")
-        v-btn.change-picture-form__option(@click='selectCoverPhoto()' v-t="'group_form.upload_cover_photo'")
+        //- v-btn.change-picture-form__option(@click='selectCoverPhoto()' v-t="'group_form.upload_cover_photo'")
         input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto')
-        v-btn.change-picture-form__option(@click='selectLogo()' v-t="'group_form.upload_logo'")
+        //- v-btn.change-picture-form__option(@click='selectLogo()' v-t="'group_form.upload_logo'")
         input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo')
 
       v-tab-item
