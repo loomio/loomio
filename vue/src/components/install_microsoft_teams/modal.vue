@@ -24,7 +24,7 @@ export default
       prepareFn: =>
         @groupIdentity.customFields.event_kinds = _.map @groupIdentity.eventKinds, (value, key) -> key if value
       flashSuccess: 'install_microsoft.form.webhook_installed'
-      successCallback: -> EventBus.$emit 'closeModal'
+      successCallback: -> @close()
 </script>
 <template lang="pug">
 v-card.install-microsoft-modal
