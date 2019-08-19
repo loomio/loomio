@@ -55,7 +55,7 @@ export default
         @announcement.recipients = @recipients
       successCallback: (data) =>
         @announcement.membershipsCount = data.memberships.length
-        EventBus.$emit('closeModal')
+        @close()
       flashSuccess: 'announcement.flash.success'
       flashOptions:
         count: => @announcement.membershipsCount
