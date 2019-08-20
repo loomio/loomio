@@ -21,6 +21,7 @@ export default new class GroupService
           component: 'GroupWizard'
           props:
             group: group
+            showWelcome: false
 
     change_volume:
       name: 'group_page.options.email_settings'

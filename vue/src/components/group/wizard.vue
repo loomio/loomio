@@ -12,6 +12,10 @@ export default
   props:
     group: Object
     close: Function
+    showWelcome: {
+      default: true
+      type: Boolean
+    }
 
   created: ->
     @group.fetchToken()
@@ -52,7 +56,7 @@ export default
 </script>
 <template lang="pug">
 v-carousel.group-wizard(:continuous="false")
-  v-carousel-item(key='group_wizard.welcome')
+  v-carousel-item(v-if="showWelcome" key='group_wizard.welcome')
     v-card(height="100%" color="primary")
       v-card-title
         h1.headline(v-t="'group_wizard.welcome'")
