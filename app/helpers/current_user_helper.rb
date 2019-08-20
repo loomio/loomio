@@ -8,7 +8,7 @@ module CurrentUserHelper
   end
 
   def current_user
-    @current_user ||= token_user || super || restricted_user || LoggedOutUser.new(locale: logged_out_preferred_locale)
+    @current_user ||= token_user || super || LoggedOutUser.new(locale: logged_out_preferred_locale)
   end
 
   private

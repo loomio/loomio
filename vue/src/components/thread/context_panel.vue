@@ -54,7 +54,7 @@ export default
     action-dock(:model='discussion' :actions='dockActions')
     action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
 
-  h1.display-1.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
+  h1.headline.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
