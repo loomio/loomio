@@ -10,7 +10,7 @@ export default
     membershipRequestActor: ->
       Records.users.build
         name:           @notification.translationValues.name
-        avatarInitials: @notification.translationValues.name.toString().split(' ').map((n) -> n[0]).join('')
+        avatarInitials: (@notification.translationValues.name || '').toString().split(' ').map((n) -> n[0]).join('')
         avatarKind:     'initials'
 
   computed:
