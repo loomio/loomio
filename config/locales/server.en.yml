@@ -152,6 +152,7 @@ en:
       invitation_text_html: "has invited you to join their group"
       link_help: "Click the link below to accept the invitation:"
       accept_invitation: "Accept invitation"
+      stop_emails: "Stop receiving emails from %{site_name}"
     resend_to_join_group:
       subject: "%{member} is waiting for you to join %{group_name} on %{site_name}"
     user_added_to_group:

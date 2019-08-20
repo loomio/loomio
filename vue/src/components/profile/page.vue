@@ -6,55 +6,28 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
-import ConfirmModalMixin from '@/mixins/confirm_modal'
-import ChangePasswordModalMixin from '@/mixins/change_password_modal'
 import openModal      from '@/shared/helpers/open_modal'
+import UserService    from '@/shared/services/user_service'
 
 import { submitForm }   from '@/shared/helpers/form'
 import { hardReload }   from '@/shared/helpers/window'
 
 export default
-  mixins: [
-    ConfirmModalMixin,
-    ChangePasswordModalMixin
-  ]
   data: ->
     isDisabled: false
     user: null
+
   created: ->
     @init()
     EventBus.$emit 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}
     EventBus.$on 'updateProfile', => @init()
     EventBus.$on 'signedIn', => @init()
-  computed:
-    showHelpTranslate: ->
-      AppConfig.features.app.help_link
-    availableLocales: ->
-      AppConfig.locales
-    deactivateUserConfirmOpts: ->
-      text:
-        title: 'deactivate_user_form.title'
-        submit: 'deactivation_modal.submit'
-        fragment: 'deactivate_user'
-      submit: -> Promise.resolve console.log 'submit'
-      successCallback: =>
-        Promise.resolve @openConfirmModal(@reallyDeactivateUserConfirmOpts)
-    deleteUserConfirmOpts: ->
-      text:
-        title: 'delete_user_modal.title'
-        submit: 'delete_user_modal.submit'
-        fragment: 'delete_user_modal'
-      submit: -> Records.users.destroy()
-      successCallback: hardReload
 
-    reallyDeactivateUserConfirmOpts: ->
-      scope: {user: Session.user()}
-      submit: -> Records.users.deactivate(Session.user())
-      text:
-        title:    'deactivate_user_form.title'
-        submit:   'deactivate_user_form.submit'
-        fragment: 'deactivate_user_confirmation'
-      successCallback: -> Session.signOut()
+  computed:
+    showHelpTranslate: -> AppConfig.features.app.help_link
+    availableLocales: -> AppConfig.locales
+    actions: -> UserService.actions(Session.user(), @)
+
   methods:
     init: ->
       return unless Session.isSignedIn()
@@ -69,14 +42,13 @@ export default
     changePicture: ->
       openModal
         component: 'ChangePictureForm'
-        # props:
-        #   model: membership
 
     changePassword: ->
       @openChangePasswordModal(@user)
 
     openDeleteUserModal: ->
       @isDeleteUserModalOpen = true
+
     closeDeleteUserModal: ->
       @isDeleteUserModalOpen = false
 
@@ -115,16 +87,22 @@ v-container.profile-page.max-width-1024
             user-avatar(:user='originalUser', size='featured')
             v-btn.profile-page__change-picture(color="accent" @click='changePicture()' v-t="'profile_page.change_picture_link'")
       v-card-actions.profile-page__update-account
-        v-btn.profile-page__change-password(color="accent" outlined @click='changePassword()' v-t="'profile_page.change_password_link'")
         v-spacer
         v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='isDisabled' v-t="'profile_page.update_profile'")
 
     v-card.profile-page-card.mt-4
-      v-card-text
-        h3.lmo-h3(v-t="'profile_page.deactivate_account'")
-        v-btn.profile-page__deactivate(outlined color="warning" @click='openConfirmModal(deactivateUserConfirmOpts)', v-t="'profile_page.deactivate_user_link'")
-
-        h3.lmo-h3(v-t="'profile_page.delete_account'")
-        v-btn.profile-page__delete(outlined color="warning" @click='openConfirmModal(deleteUserConfirmOpts)', v-t="'profile_page.delete_user_link'")
+      v-list
+        v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()")
+          v-list-item-icon
+            v-icon {{action.icon}}
+          v-list-item-title(v-t="action.name")
+      //-
+      //-   v-btn.profile-page__change-password(color="accent" outlined @click='changePassword()' v-t="'profile_page.change_password_link'")
+      //- v-card-text
+      //-   h3.lmo-h3(v-t="'profile_page.deactivate_account'")
+      //-   v-btn.profile-page__deactivate(outlined color="warning" @click='openConfirmModal(deactivateUserConfirmOpts)', v-t="'profile_page.deactivate_account'")
+      //-
+      //-   h3.lmo-h3(v-t="'profile_page.delete_account'")
+      //-   v-btn.profile-page__delete(outlined color="warning" @click='openConfirmModal(deleteUserConfirmOpts)', v-t="'profile_page.delete_user_link'")
 
 </template>
