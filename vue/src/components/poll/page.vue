@@ -32,7 +32,6 @@ export default
           title: poll.title
           page: 'pollPage'
           skipScroll: true
-          breadcrumbs: compact([poll.group().parent(), poll.group(), poll.discussion(), poll])
 
         subscribeTo(@poll)
 
