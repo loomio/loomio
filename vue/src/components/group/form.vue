@@ -148,6 +148,7 @@ v-card.group-form
                 span(v-t="'group_form.membership_granted_upon_' + granted")
       v-tab-item
         .group-form__section.group-form__permissions
+          p.group-form__privacy-statement.body-2(v-t="'group_form.permissions_explaination'")
           //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='group.privacyIsClosed() && !group.isSubgroupOfSecretParent()')
           v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: group.parent().name})" v-if='group.isSubgroup() && group.privacyIsClosed()')
           v-checkbox.group-form__members-can-add-members(hide-details v-model='group["membersCanAddMembers"]' :label="$t('group_form.members_can_add_members')")
@@ -158,7 +159,7 @@ v-card.group-form
           v-checkbox.group-form__members-can-edit-comments(hide-details v-model='group["membersCanEditComments"]' :label="$t('group_form.members_can_edit_comments')")
           v-checkbox.group-form__members-can-raise-motions(hide-details v-model='group["membersCanRaiseMotions"]' :label="$t('group_form.members_can_raise_motions')")
           v-checkbox.group-form__members-can-vote(hide-details v-model='group["membersCanVote"]' :label="$t('group_form.members_can_vote')")
-        p.group-form__privacy-statement.body-2(v-t="'group_form.permissions_explaination'")
+
 
 
   v-card-actions
