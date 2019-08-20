@@ -293,7 +293,6 @@ pl:
   user_dropdown:
     button_label: 'Menu użytkownika'
     edit_profile: 'Edytuj profil'
-    email_settings: 'Ustawienia e-maili'
     help: 'Pomoc'
     sign_out: 'Wyloguj się'
   membership_card:
@@ -432,6 +431,7 @@ pl:
   group_page:
     threads: Wątki
     members: Członkowie
+    settings: Ustawienia
     subgroups: Podgrupy
     show_opened: '{{count}} Otwarte'
     show_closed: '{{count}} Zamknięte'
@@ -544,7 +544,6 @@ pl:
     locale_label: 'Język'
     update_profile: 'Zmiana profilu'
   email_settings_page:
-    header: Ustawienia poczty
     daily_summary_label: Dzienna wiadomość z podsumowaniem
     announcement_label: Ogłoszenia
     messages:
@@ -601,7 +600,6 @@ pl:
   thread_context:
     aria_label: 'Kontekst wątku.'
     thread_options: 'Opcje wątku'
-    email_settings: 'Ustawienia e-maili'
     close_thread: 'Zamknij'
     reopen_thread: 'Otworzyć ponownie'
     mute_thread: 'Wycisz'

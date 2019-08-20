@@ -1,4 +1,6 @@
 it:
+  plan_names:
+    free: Free
   current_plan_button:
     upgrade: Aggiorna
     tooltip: Acquista un abbonamento a Loomio per invitare più persone ed iniziare più discussioni.
@@ -357,7 +359,6 @@ it:
   user_dropdown:
     button_label: 'Menu utente'
     edit_profile: 'Modifica profilo'
-    email_settings: 'Impostazioni email'
     help: 'Aiuto'
     contact_site_name: 'Contatto {{site_name}}'
     sign_out: 'Esci'
@@ -559,6 +560,7 @@ it:
   group_page:
     threads: Discussioni
     members: Membri
+    settings: Configurazione
     subgroups: Sottogruppi
     messages:
       privacy:
@@ -877,7 +879,6 @@ it:
     placeholder: 'Rispondere a questa domanda è facoltativo. Ogni informazione che condividi con noi ci aiuterà a migliorare :)'
     submit: 'Disattiva l''account'
   email_settings_page:
-    header: Impostazioni Email
     email_newsletter: Loomio Newsletter
     email_newsletter_description: "Ricevi aggiornamenti di nuove funzioni, di trainings, eventi nella tua città e sul futuro di Loomio. Di solito due o tre email all'anno."
     daily_summary_label: Notifica giornaliera
@@ -974,7 +975,6 @@ it:
   thread_context:
     aria_label: 'Contesto della discussione'
     thread_options: 'Opzioni delle discussioni'
-    email_settings: 'Configurazione email'
     edit: 'Modifica'
     edit_thread: 'Modifica'
     close_thread: 'Chiudi'

@@ -260,6 +260,7 @@ ca:
   group_page:
     threads: Fils
     members: Membres
+    settings: Configuracions
     subgroups: Subgrups
     messages:
       privacy:
@@ -429,7 +430,6 @@ ca:
     locale_label: 'Idioma'
     update_profile: 'Actualitza el perfil'
   email_settings_page:
-    header: Configuració del correu electrònic
     daily_summary_label: Correu electrònic de resum diari
     on_participation_label: Subscriure a la participació
     specific_groups: Configuració per grups específics
@@ -506,7 +506,6 @@ ca:
   thread_context:
     aria_label: 'Context de la discussió'
     thread_options: 'Opcions de la discussió'
-    email_settings: 'Configuració del correu electrònic'
     close_thread: 'Tanca'
     move_thread: 'Mou'
     print_thread: 'Imprimeix'

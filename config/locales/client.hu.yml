@@ -1,8 +1,25 @@
 hu:
+  plan_names:
+    free: Ingyenes
+    trial: Próbaidőszak
+    small: Kicsi
+    medium: Közepes
+    large: Nagy
+    monthly: Havi
+    yearly: Éves
   current_plan_button:
-    upgrade: Upgrade
+    upgrade: Frissítés
   loomio_tags:
+    tags: Címkék
+    apply_tags: Címkék alkalmazása
+    new_tag: Címke létrehozása
     name_label: Név
+    color_label: Szín
+    card_title: Kategória címkék
+    modal_title: Címke létrehozása
+    modal_edit_title: Címke szerkesztése
+    modal_destroy_title: Címke eltávolítása
+    destroy_tag: Címke eltávolítása
   reactions:
     slight_smile: Tetszik
     heart: Szeret
@@ -307,7 +324,6 @@ hu:
   user_dropdown:
     button_label: 'Felhasználó menü'
     edit_profile: 'Profil szerkesztése'
-    email_settings: 'Email beállítások'
     help: 'Súgó'
     contact_site_name: 'Kapcsolatfelvétel {{site_name}}vel '
     sign_out: 'Kijelentkezés'
@@ -396,6 +412,7 @@ hu:
   group_page:
     threads: Tredek
     members: Tagok
+    settings: Beállítások
     subgroups: Alcsoportok
     group_logo: 'Csoport logó'
     new_photo: 'Új fotó'
@@ -461,7 +478,6 @@ hu:
   change_picture_form:
     use_gravatar: 'Használj Gravatart'
   email_settings_page:
-    header: Email beállítások
     announcement_label: Bejelentések
   dashboard_page:
     aria_label: 'Műszerfal'
@@ -483,7 +499,6 @@ hu:
   thread_group:
     aria_label: 'Csoport neve'
   thread_context:
-    email_settings: 'Email beállítások'
     close_thread: 'Bezár'
     reopen_thread: 'Újranyit'
     delete_thread: 'Törlés'

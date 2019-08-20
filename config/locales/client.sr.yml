@@ -206,6 +206,7 @@ sr:
   group_page:
     threads: Niti
     members: Članovi
+    settings: Podešavanja
     subgroups: Podgrupe
     messages:
       privacy:
@@ -385,7 +386,6 @@ sr:
   change_picture_form:
     use_gravatar: 'Koristi Gravatar'
   email_settings_page:
-    header: ePoruke
     daily_summary_label: Dnevni izveštaj ePorukom
     on_participation_label: Pretplati se na učešće
     on_participation_description: "Kada se priključite niti, sve dalje aktivnosti biće Vam odmah poslate ePorukom."
@@ -460,7 +460,6 @@ sr:
   thread_context:
     aria_label: 'Kontekst niti'
     thread_options: 'Opcije niti'
-    email_settings: 'Opcije ePoruka'
     close_thread: 'Zatvori'
     move_thread: 'Premesti'
     print_thread: 'Štampa'

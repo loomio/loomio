@@ -1,4 +1,10 @@
 ru:
+  plan_names:
+    free: Бесплатная
+    trial: Пробная
+    small: Небольшая
+    medium: Средняя
+    large: Крупная
   current_plan_button:
     upgrade: Обновить
   loomio_tags:
@@ -253,6 +259,7 @@ ru:
     sign_in: "Войдите чтобы присоеденится к разговору"
   sidebar:
     threads: 'Обсуждения'
+    my_groups: 'Мои группы'
     recent_threads: 'Последние темы'
     muted_threads: 'Выключить уведомления темы'
     explore: 'Публичная группа'
@@ -280,7 +287,6 @@ ru:
     logo_title: 'Домашняя страница'
   user_dropdown:
     edit_profile: 'Редактировать профиль'
-    email_settings: 'Настройки эмайла'
     help: 'Помощь'
     sign_out: 'Выйти'
   membership_dropdown:
@@ -361,6 +367,7 @@ ru:
   group_page:
     threads: Обсуждения
     members: Участники
+    settings: Настройки
     subgroups: Подгруппы
     new_cover_photo: 'Загрузить новое фото обложки'
     new_group_logo: 'Загрузить новый логотип группы'
@@ -426,7 +433,6 @@ ru:
     email_label: 'Email'
     locale_label: 'Язык'
   email_settings_page:
-    header: Настройки email
     announcement_label: Объявления
     edit: Редактировать
   dashboard_page:
@@ -463,7 +469,6 @@ ru:
     aria_label: 'Название группы'
   thread_context:
     thread_options: 'Настройки обсуждения'
-    email_settings: 'Настройки Email'
     close_thread: 'Закрыть'
     reopen_thread: 'Открыть вновь'
     pin_thread: 'Закрепить'

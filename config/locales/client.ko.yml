@@ -1,4 +1,6 @@
 ko:
+  plan_names:
+    free: 무료
   current_plan_button:
     upgrade: 업그레이드
   loomio_tags:
@@ -165,6 +167,7 @@ ko:
     sign_in: "대화에 참여하려면 로그인 하세요"
   sidebar:
     threads: '토론'
+    my_groups: '내 그룹'
     recent_threads: '최근 토론 주제'
     unread_threads: '읽지 않은 토론 주제 ({{count}})'
     muted_threads: '알림을 받지 않는 토론 주제'
@@ -469,7 +472,6 @@ ko:
     title: '계정 비활성화'
     submit: '계정 비활성화'
   email_settings_page:
-    header: 이메일 설정
     daily_summary_label: 일별 요약 이메일
     on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
     specific_groups: 특별한 그룹에 적용
@@ -542,7 +544,6 @@ ko:
   thread_context:
     aria_label: '주제 컨텍스트'
     thread_options: '쓰레드 옵션'
-    email_settings: '이메일 설정'
     edit: '편집'
     close_thread: '닫기'
     move_thread: '이동'

@@ -1,4 +1,6 @@
 da:
+  plan_names:
+    free: Gratis
   loomio_tags:
     name_label: Navn
     color_label: Farve
@@ -341,6 +343,7 @@ da:
   group_page:
     threads: Debatter
     members: Medlemmer
+    settings: Indstillinger
     subgroups: Undergrupper
     messages:
       privacy:
@@ -569,7 +572,6 @@ da:
     title: 'Deaktiver konto'
     submit: 'Deaktiver konto'
   email_settings_page:
-    header: Emailindstillinger
     daily_summary_label: Send resumé email hver dag
     on_participation_label: Abonnér ved deltagelse
     on_participation_description: "Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme."
@@ -658,7 +660,6 @@ da:
   thread_context:
     aria_label: 'Debat beskrivelse'
     thread_options: 'Debatindstillinger'
-    email_settings: 'Emailindstillinger '
     edit: 'Rediger'
     edit_thread: 'Rediger'
     close_thread: 'Luk'

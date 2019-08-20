@@ -1,4 +1,10 @@
 es:
+  plan_names:
+    free: 'Gratis '
+    trial: Prueba
+    small: Pequeño
+    medium: Mediano
+    large: Grande
   current_plan_button:
     upgrade: Mejore su abono a Loomio
     tooltip: Compre un abono a Loomio para poder invitar a más personas y abrir más hilos.
@@ -313,6 +319,7 @@ es:
     sign_in: "Inicia sesión para unirte a la conversación "
   sidebar:
     threads: 'Hilos'
+    my_groups: 'Mis grupos'
     recent_threads: 'Hilos recientes'
     unread_threads: 'No leído ({{count}})'
     muted_threads: 'Hilos silenciados '
@@ -346,7 +353,6 @@ es:
   user_dropdown:
     button_label: 'Menú del usuario'
     edit_profile: 'Editar perfil '
-    email_settings: 'Configuración del correo electrónico'
     help: 'Ayuda'
     contact_site_name: 'Contacto {{site_name}}'
     sign_out: 'Salir'
@@ -582,6 +588,7 @@ es:
     polls: Sondeos
     members: Integrantes
     files: Archivos
+    settings: 'Configuración '
     subgroups: Subgrupos
     show_opened: '{{count}} Abierto'
     show_closed: '{{count}} Cerrado '
@@ -621,7 +628,6 @@ es:
       manage_members: 'Administrar integrantes '
       add_subgroup: 'Agregar un Subgrupo'
       manage_subscription: 'Administrar las Suscripciones del grupo '
-      email_settings: 'Configuración del correo electrónico'
       leave_group: 'Dejar el grupo'
       deactivate_group: 'Desactivar el grupo'
     volume:
@@ -940,7 +946,6 @@ es:
     placeholder: 'Contestar a esta pregunta es opcional. Cualquier información que compartas nos ayudará a mejorar :)'
     submit: 'Desactiva cuenta '
   email_settings_page:
-    header: Ajustes de correo
     email_newsletter: Boletín de noticias de Loomio
     email_newsletter_description: "Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año."
     daily_summary_label: Correo electrónico de resumen diario
@@ -1066,7 +1071,6 @@ es:
   thread_context:
     aria_label: 'Contexto del hilo'
     thread_options: 'Preferencias del hilo'
-    email_settings: 'Ajustes de correo '
     edit: 'Editar'
     edit_thread: 'Editar'
     close_thread: 'Cerrar'
@@ -1678,9 +1682,7 @@ es:
       install_helptext: El robot de Loomio notifica a tu equipo acerca de discusiones y decisiones en Loomio.
       installed_title: Conectado a los Equipos de Microsoft
       installed_helptext: Se enviarán eventos de este grupo a tu Equipo de Microsoft.
-      install_microsoft: Conecta equipos
       remove_identity: Eliminar esta integración
-      confirm_remove_title: Elimina Equipos de Microsoft
       confirm_remove_helptext: |
           Tu canal de equipos de microsoft ya no recibirá actualizaciones del grupo.
           Siempre puedes retroceder y añadirlo de nuevo.
@@ -1699,7 +1701,6 @@ es:
       poll_expired: Ha expirado una encuesta 
       outcome_created: Se ha compartido un resultado
   install_slack:
-    modal_title: Installar Slack
     modal_helptext: 'Primero, deberás ingresar en Slack. Te enviaremos ahí automáticamente en un segundo, o puedes hacer clic en el siguiente botón para continuar. '
     login_to_slack: Ingresar en Slack
     card:

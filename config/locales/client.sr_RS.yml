@@ -106,6 +106,7 @@ sr_RS:
   group_page:
     threads: Низови
     members: Чланови
+    settings: Подешавања
     options_label: 'Опције'
     options:
       label: 'Опције'
@@ -144,8 +145,6 @@ sr_RS:
     locale_label: 'Језик'
   change_picture_form:
     use_gravatar: 'Користи Граватар'
-  email_settings_page:
-    header: Опције еПорука
   dashboard_page:
     aria_label: 'Радна табла'
     mark_as_read: Означи као прочитано
@@ -164,7 +163,6 @@ sr_RS:
   thread_group:
     aria_label: 'Назив групе'
   thread_context:
-    email_settings: 'Опције еПорука'
     close_thread: 'Затвори'
   delete_comment_dialog:
     title: 'Обриши коментар'

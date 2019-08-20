@@ -1,4 +1,9 @@
 pt_BR:
+  plan_names:
+    free: Grátis
+    small: Pequeno
+    medium: Médio
+    large: Grande
   current_plan_button:
     upgrade: Assinar um plano
   loomio_tags:
@@ -287,6 +292,7 @@ pt_BR:
     sign_in: "Entre para se juntar à conversa"
   sidebar:
     threads: 'Conversas'
+    my_groups: 'Meus grupos'
     recent_threads: 'Conversas recentes'
     unread_threads: 'Conversas não lidas ({{count}})'
     muted_threads: 'Conversas silenciadas'
@@ -319,7 +325,6 @@ pt_BR:
   user_dropdown:
     button_label: 'Menu do usuário'
     edit_profile: 'Editar perfil'
-    email_settings: 'Configurações de email'
     help: 'Ajuda'
     contact_site_name: 'Contato {{site_name}}'
     sign_out: 'Sair'
@@ -512,6 +517,7 @@ pt_BR:
   group_page:
     threads: Conversas
     members: Membros ({{count}})
+    settings: Configurações
     subgroups: Subgrupos
     show_closed: '{{count}} Encerrado'
     no_threads_here: Nenhuma conversa para ler aqui!
@@ -776,7 +782,6 @@ pt_BR:
     placeholder: 'Responder a essa pergunta é opcional. Qualquer informação que você possa compartilhar irá nos ajudar a melhorar :) '
     submit: 'Desativar conta'
   email_settings_page:
-    header: Configurações de e-mail
     daily_summary_label: E-mail de resumo diário
     daily_summary_description: "Toda manhã você receberá um email com qualquer atividade que você não viu no dia anterior. Isso facilita com que você fique atualizado(a) com as atividades que estão rolando."
     on_participation_label: Inscrever-se na participação
@@ -879,7 +884,6 @@ pt_BR:
   thread_context:
     aria_label: 'Contexto da conversa'
     thread_options: 'Opções da conversa'
-    email_settings: 'Configurações de e-mail'
     edit: 'Editar'
     edit_thread: 'Editar'
     close_thread: 'Encerrar'
@@ -1180,7 +1184,6 @@ pt_BR:
     password: Senha
     reactivate: Reativar a conta
   install_slack:
-    modal_title: Instalar Slack
     card:
       install_slack: Conectar o Slack
     progress:

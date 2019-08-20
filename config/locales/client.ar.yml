@@ -1,4 +1,6 @@
 ar:
+  plan_names:
+    free: مجاني
   current_plan_button:
     upgrade: تحديث
   loomio_tags:
@@ -149,7 +151,6 @@ ar:
     sign_in: 'تسجيل الدخول'
     logo_title: 'الصفحة الرئيسية'
   user_dropdown:
-    email_settings: 'إعدادات البريد الإلكتروني'
     help: 'المساعدة'
     sign_out: 'الخروج'
   membership_card:
@@ -215,6 +216,7 @@ ar:
   group_page:
     threads: المواضيع
     members: أعضاء
+    settings: الإعدادات
     subgroups: الفِرَق الفرعية
     messages:
       privacy:
@@ -236,7 +238,6 @@ ar:
       manage_members: 'إدارة الأعضاء'
       add_subgroup: 'أضف فريقا فرعيا'
       manage_subscription: 'إدارة اشتراكات المجموعة'
-      email_settings: 'إعدادات البريد الإلكتروني'
       leave_group: 'غادر الفريق'
       deactivate_group: 'إلغاء المجموعة'
     volume:
@@ -405,7 +406,6 @@ ar:
     title: 'إيقاف الحساب'
     submit: 'إيقاف الحساب'
   email_settings_page:
-    header: إعدادات البريد الإلكتروني
     daily_summary_label: الرسالة الكترونية للملخص اليومي
     announcement_label: الإعلانات
     mentioned_label: الإشارات والردود
@@ -473,7 +473,6 @@ ar:
   thread_context:
     aria_label: 'سياق الموضوع'
     thread_options: 'خيارات الموضوع'
-    email_settings: 'إعدادات البريد الإلكتروني'
     edit: 'تعديل'
     edit_thread: 'تعديل'
     close_thread: 'مغلق'

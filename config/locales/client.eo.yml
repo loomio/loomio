@@ -1,4 +1,6 @@
 eo:
+  plan_names:
+    free: Senpaga
   loomio_tags:
     name_label: Nomo
   reactions:
@@ -210,6 +212,7 @@ eo:
   group_page:
     threads: Fadenoj
     members: Membroj
+    settings: Agordoj
     subgroups: Subgrupoj
     show_closed: '{{count}} Fermita'
     new_group_logo: 'Alŝuti novan emblemon de grupo'

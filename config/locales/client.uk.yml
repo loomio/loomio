@@ -1,4 +1,10 @@
 uk:
+  plan_names:
+    free: Безкоштовний
+    trial: Пробний
+    small: Малий
+    medium: Середній
+    large: Великий
   current_plan_button:
     upgrade: Оновити
     tooltip: Придбайте план використання loomio, щоб запросити більше людей та розпочати більше тем.
@@ -297,6 +303,7 @@ uk:
     sign_in: "Авторизуйтесь, щоб приєднатися до розмови"
   sidebar:
     threads: 'Теми'
+    my_groups: 'Мої групи'
     recent_threads: 'Нещодавні теми'
     unread_threads: 'Не прочитані ({{count}}) тем'
     muted_threads: 'Вимкнуті теми'
@@ -330,7 +337,6 @@ uk:
   user_dropdown:
     button_label: 'Меню користувача'
     edit_profile: 'Редагувати профіль'
-    email_settings: 'Налаштування пошти'
     help: 'Допомога'
     contact_site_name: 'Зв''язатись з {{site_name}}'
     sign_out: 'Вийти'
@@ -560,6 +566,7 @@ uk:
   group_page:
     threads: Теми
     members: Учасники
+    settings: Налаштування
     subgroups: Підгрупи
     show_opened: '{{count}} Відкриті'
     show_closed: '{{count}} Закриті'
@@ -598,7 +605,6 @@ uk:
       manage_members: 'Керувати учасниками'
       add_subgroup: 'Додати підгрупу'
       manage_subscription: 'Керувати підпискою групи'
-      email_settings: 'Налаштування пошти'
       leave_group: 'Залишити групу'
       deactivate_group: 'Відключити групу'
     volume:
@@ -908,7 +914,6 @@ uk:
     placeholder: 'Відповідь на це питання не є обов''язковою. Та будь-яка інформація, якою ви поділитесь, допоможе нам удосконалюватися :)'
     submit: 'Відключити обліковий запис'
   email_settings_page:
-    header: Налаштування електронної пошти
     email_newsletter: Розсилка Loomio
     email_newsletter_description: "Отримуйте повідомлення про нові функції, навчання, події у вашому місті та щодо майбутнього Loomio. Зазвичай це 2 або 3 листи на рік."
     daily_summary_label: Щоденний підсумковий лист
@@ -1024,7 +1029,6 @@ uk:
   thread_context:
     aria_label: 'Контекст теми'
     thread_options: 'Налаштування теми'
-    email_settings: 'Налаштування електронної пошти'
     edit: 'Редагувати'
     edit_thread: 'Редагувати'
     close_thread: 'Закрити'
@@ -1626,7 +1630,6 @@ uk:
       remove_identity: Видалити цю інтеграцію
       identity_removed: Інтеграцію видалено
   install_slack:
-    modal_title: Встановити Slack
     modal_helptext: По-перше, вам потрібно буде ввійти до slack. Ми перенаправимо вас туди автоматично за секунду, або ви можете натиснути кнопку нижче, щоб продовжити.
     login_to_slack: Увійти до Slack
     card:

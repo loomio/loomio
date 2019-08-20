@@ -173,6 +173,7 @@ lt:
     you: "Tu"
   group_page:
     threads: Temos
+    settings: Nustatymai
     subgroups: Pogrupiai
     messages:
       privacy:
@@ -245,7 +246,6 @@ lt:
     locale_label: 'Kalba'
     update_profile: 'Atnaujinti profilį'
   email_settings_page:
-    header: El. pašto nustatymai
     messages:
       updated: El. pašto nustatymai atnaujinti
   dashboard_page:

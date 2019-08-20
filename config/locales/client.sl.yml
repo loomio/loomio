@@ -225,7 +225,6 @@ sl:
     pin_thread: Pripni razpravo
     unpin_thread: Odpni razpravo
     pin_event: Pripni na časovnico
-    unpin_event: Odstrani iz časovnice
     tag_thread: Upravljanje oznak
     close_thread: Zapri razpravo
     reopen_thread: Ponovno odpri razpravo
@@ -245,6 +244,7 @@ sl:
     threads: Razprave
     members: Člani
     files: Datoteke
+    settings: Nastavitve
     subgroups: Podskupine
     show_opened: '{{count}} Odprtih'
     show_closed: '{{count}} Zaprtih'
@@ -337,7 +337,6 @@ sl:
   change_picture_form:
     use_gravatar: 'Uporabi Gravatarja'
   email_settings_page:
-    header: Email nastavitve
     daily_summary_label: Dnevni email s povzetki
     messages:
       updated: Email nastavitve posodobljene

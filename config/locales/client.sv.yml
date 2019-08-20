@@ -323,6 +323,7 @@ sv:
   group_page:
     threads: Trådar
     members: Medlemmar
+    settings: Inställningar
     invite_people: 'Bjud in'
     options_label: 'Alternativ'
     options:

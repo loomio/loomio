@@ -59,6 +59,7 @@ sk:
   group_page:
     threads: Diskusie
     members: Členovia
+    settings: Nastavenia
     options_label: 'Nastavenia'
     options:
       label: 'Nastavenia'

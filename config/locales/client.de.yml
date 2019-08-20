@@ -1,4 +1,10 @@
 de:
+  plan_names:
+    free: Basis
+    trial: Testphase
+    small: Klein
+    medium: Mittel
+    large: Groß
   current_plan_button:
     upgrade: Upgrade
     tooltip: 'Kaufe ein Loomio Abonnement um mehr Personen einzuladen und mehr Diskussionen zu starten. '
@@ -338,7 +344,6 @@ de:
   user_dropdown:
     button_label: 'Benutzermenü'
     edit_profile: 'Profil bearbeiten'
-    email_settings: 'E-Mail-Einstellungen'
     help: 'Hilfe'
     contact_site_name: '{{site_name}} kontaktieren'
     sign_out: 'Abmelden'
@@ -570,6 +575,7 @@ de:
   group_page:
     threads: Diskussionsbeiträge
     members: Mitglieder
+    settings: Einstellungen
     subgroups: Untergruppen
     show_opened: '{{count}} Offen'
     show_closed: '{{count}} Geschlossen'
@@ -609,7 +615,6 @@ de:
       manage_members: 'Mitglieder verwalten'
       add_subgroup: 'Untergruppe anlegen'
       manage_subscription: 'Gruppenbenachrichtigungen verwalten'
-      email_settings: 'E-Mail-Einstellungen'
       leave_group: 'Gruppe verlassen'
       deactivate_group: 'Gruppe deaktivieren'
     volume:
@@ -925,7 +930,6 @@ de:
     placeholder: 'Diese Frage zu beantworten ist optional. Jegliche Informationen, die Sie mit uns teilen, helfen uns zu verbessern :)'
     submit: 'Benutzerkonto deaktivieren'
   email_settings_page:
-    header: E-Mail-Einstellungen
     email_newsletter: Loomio Newsletter
     email_newsletter_description: "Updates über neue Funktionen, Trainings, Events in deiner Stadt und die Zukunft von Loomio erhalten. Sind ca. 2-3 E-mails pro Jahr. "
     daily_summary_label: Tägliche Übersichts-E-Mail
@@ -1044,7 +1048,6 @@ de:
   thread_context:
     aria_label: 'Diskussionsbeschreibung'
     thread_options: 'Diskussionsoptionen'
-    email_settings: 'E-Mail-Einstellungen'
     edit: 'Bearbeiten'
     edit_thread: 'Bearbeiten'
     close_thread: 'Schliessen'
@@ -1650,9 +1653,7 @@ de:
       install_helptext: 'Der Loomio bot informiert dein Team über Diskussionen und Entscheidungen die Loomio passieren. '
       installed_title: Mit Microsoft Teams verbunden
       installed_helptext: Ereignisse aus dieser Gruppe werden an Ihr Microsoft Team gesendet.
-      install_microsoft: Teams verbinden
       remove_identity: Diese Eingliederung entfernen
-      confirm_remove_title: Microsoft Teams entfernen
       confirm_remove_helptext: |
           Dein Microsoft Teams Kanal wird keine Updates mehr zu dieser Gruppe erhalten.
           Du kannst sie natürlich jederzeit wieder hinzufügen.
@@ -1672,7 +1673,6 @@ de:
       poll_expired: Eine Umfrage ist abgelaufen
       outcome_created: 'Ein Ergebnis wurde geteilt  '
   install_slack:
-    modal_title: Slack installieren
     modal_helptext: Als erstes müssen Sie sich bei Slack anmelden. Wir werden Sie sofort  automatisch weiterleiten, alternativ können Sie zum Fortfahren auch auf den Button unten klicken.
     login_to_slack: bei Slack einloggen
     card:

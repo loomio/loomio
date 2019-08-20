@@ -238,6 +238,7 @@ tr:
   group_page:
     threads: Müzakereler
     members: Üyeler
+    settings: Ayarlar
     subgroups: Alt gruplar
     messages:
       privacy:
@@ -431,7 +432,6 @@ tr:
   change_picture_form:
     use_gravatar: 'Gravatar kullan'
   email_settings_page:
-    header: E-posta ayarları
     daily_summary_label: Günlük özet e-postası
     on_participation_description: "Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir."
     announcement_label: Duyurular
@@ -498,7 +498,6 @@ tr:
   thread_context:
     aria_label: 'Müzakere içeriği'
     thread_options: 'Müzakere seçenekleri'
-    email_settings: 'E-posta ayarları'
     edit: 'Düzenle'
     edit_thread: 'Düzenle'
     close_thread: 'Kapat'

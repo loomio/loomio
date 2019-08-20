@@ -1,4 +1,6 @@
 nl_NL:
+  plan_names:
+    free: Gratis
   current_plan_button:
     upgrade: Upgrade
   loomio_tags:
@@ -273,6 +275,7 @@ nl_NL:
     sign_in: "Log in om mee te praten"
   sidebar:
     threads: 'Borden'
+    my_groups: 'Mijn groepen'
     recent_threads: 'Recente borden'
     unread_threads: 'Ongelezen borden ({{count}})'
     muted_threads: 'Gedempte borden'
@@ -304,7 +307,6 @@ nl_NL:
     logo_title: 'Homepage'
   user_dropdown:
     edit_profile: 'Profiel bewerken'
-    email_settings: 'E-mailinstellingen'
     help: 'Hulp'
     contact_site_name: 'Contacteer {{site_name}}'
     sign_out: 'Uitloggen'
@@ -445,6 +447,7 @@ nl_NL:
   group_page:
     threads: Borden
     members: Leden
+    settings: Instellingen
     subgroups: Subgroepen
     messages:
       privacy:
@@ -720,7 +723,6 @@ nl_NL:
     placeholder: 'Deze vraag beantwoorden is optioneel. Elke informatie die je wil delen zal ons helpen nog te verbeteren :)'
     submit: 'Deactiveer account'
   email_settings_page:
-    header: E-mailinstellingen
     daily_summary_label: Dagelijkse samenvatting per e-mail
     daily_summary_description: "Iedere morgen krijg je een e-mail met de gemiste activiteiten van de dag ervoor. Zo is het gemakkelijk om op de hoogte te blijven van alle activiteiten."
     on_participation_label: Abonneer op deelname
@@ -822,7 +824,6 @@ nl_NL:
   thread_context:
     aria_label: 'Discussie context'
     thread_options: 'Bord opties'
-    email_settings: 'E-mailinstellingen'
     edit: 'Bewerk'
     edit_thread: 'Bewerken'
     close_thread: 'Sluiten'
@@ -1338,7 +1339,6 @@ nl_NL:
       remove_identity: Verwijder deze verbinding
       identity_removed: Verbinding beëindigd
   install_slack:
-    modal_title: Slack installeren
     modal_helptext: Om te beginnen zal je moeten inloggen op slack. We gaan je daar zometeen automatisch naar doorverbinden, of je kan op knop hieronder drukken om verder te gaan.
     login_to_slack: Log in op Slack
     card:

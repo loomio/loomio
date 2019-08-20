@@ -1,4 +1,7 @@
 he:
+  plan_names:
+    free: חינם
+    trial: ניסיון
   current_plan_button:
     upgrade: שדרג
     tooltip: רכוש חבילת Loomio להזמין עוד אנשים ולהתחיל עוד שירשורים
@@ -331,7 +334,6 @@ he:
   user_dropdown:
     button_label: 'תפריט משתמש'
     edit_profile: 'עריכת פרופיל'
-    email_settings: 'הגדרות מייל'
     help: 'עזרה'
     contact_site_name: 'צור קשר עם {{site_name}}'
     sign_out: 'יציאה מהמערכת'
@@ -563,6 +565,7 @@ he:
   group_page:
     threads: שיחות
     members: חברים
+    settings: הגדרות
     subgroups: תת קבוצה
     show_opened: '{{count}} פתוחים'
     show_closed: '{{count}} סגורים'
@@ -601,7 +604,6 @@ he:
       manage_members: 'ניהול חברים'
       add_subgroup: 'הוספת תת קבוצה'
       manage_subscription: 'ניהול מינויים של הקבוצה'
-      email_settings: 'הגדרות מייל'
       leave_group: 'עזוב את הקבוצה'
       deactivate_group: 'הפוך קבוצה ללא פעילה'
     volume:
@@ -914,7 +916,6 @@ he:
     placeholder: 'שאלת רשות. כל מידע שתשתף איתנו יעזור לנו להשתפר :)'
     submit: 'השבת חשבון'
   email_settings_page:
-    header: הגדרות מייל
     email_newsletter: הניוזלטר של לומיו
     email_newsletter_description: "קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד\"כ 2-3 מיילים בשנה."
     daily_summary_label: סיכום יומי במייל
@@ -1033,7 +1034,6 @@ he:
   thread_context:
     aria_label: 'הקשר השיחה'
     thread_options: 'אפשרויות השיחה'
-    email_settings: 'הגדרות מייל'
     edit: 'עריכה'
     edit_thread: 'עריכה'
     close_thread: 'סגירה'
@@ -1636,9 +1636,7 @@ he:
       install_helptext: הבוט של Loomio הודיע לקבוצה שלך על הדיונים וההחלטות בLoomio
       installed_title: מחובר לMicrosoft Teams
       installed_helptext: אירועים מקבוצה זו יישלחו לMicrosoft Teams שלך.
-      install_microsoft: חבר צוותים
       remove_identity: הסר אינטגרציה זו
-      confirm_remove_title: הסר Microsoft Teams
       confirm_remove_helptext: |
           ערוץ הMicrosoft Teams שלך לא יקבל עוד עדכונים על קבוצה זו.
           אתה יכול תמיד להחזיר אותו שוב.
@@ -1658,7 +1656,6 @@ he:
       poll_expired: סקר הסתיים
       outcome_created: שותפה תוצאה
   install_slack:
-    modal_title: התקן Slack
     modal_helptext: ראשית כל, עליך להתחבר לסלאק. אנחנו נעביר אותך לשם אוטומטית עוד שניה, או שאתה יכול ללחוץ על הכפתור למטה להמשיך.
     login_to_slack: התחבר לSlack
     card:

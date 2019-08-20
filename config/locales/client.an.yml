@@ -59,6 +59,7 @@ an:
   group_page:
     threads: Discusions
     members: Miembros
+    settings: Achustes
     options_label: 'Opcions'
     options:
       label: 'Opcions'

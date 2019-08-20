@@ -1,4 +1,6 @@
 el:
+  plan_names:
+    free: Δωρεάν
   current_plan_button:
     upgrade: Αναβάθμιση
   loomio_tags:
@@ -276,6 +278,7 @@ el:
   group_page:
     threads: Θέματα
     members: Μέλη
+    settings: Ρυθμίσεις
     subgroups: Υποομάδες
     messages:
       archive_group_success: 'Αυτή η ομάδα έχει απενεργοποιηθεί'
@@ -381,7 +384,6 @@ el:
   change_picture_form:
     use_gravatar: 'Χρησιμοποιήστε Gravatar'
   email_settings_page:
-    header: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου
     announcement_label: Ανακοινώσεις
   dashboard_page:
     aria_label: 'Πίνακας Εργαλείων'

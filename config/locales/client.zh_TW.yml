@@ -1,4 +1,12 @@
 zh_TW:
+  plan_names:
+    free: 免費
+    trial: 試用
+    small: 小
+    medium: 中
+    large: 大
+    monthly: 每月
+    yearly: 每年
   current_plan_button:
     upgrade: 升級
     tooltip: 購買 Loomio 計畫以邀請更多夥伴並啟動更多討論串。
@@ -317,6 +325,7 @@ zh_TW:
     sign_in: "登入以加入對話"
   sidebar:
     threads: '討論串'
+    my_groups: '我的群組'
     recent_threads: '最近的討論串'
     unread_threads: '未讀的討論串 ({{count}})'
     muted_threads: '已靜音的討論串'
@@ -325,7 +334,7 @@ zh_TW:
     explore: '公開群組'
     start_thread: 新討論串
     start_decision: 新決策
-    all_groups: 所有群組
+    more_groups: 更多群組
     aria_labels:
       heading: '側邊欄'
       threads_list: '討論串動作'
@@ -358,7 +367,7 @@ zh_TW:
   user_dropdown:
     button_label: '使用者選單'
     edit_profile: '編輯簡歷'
-    email_settings: '電子郵件設定'
+    email_settings: '通知設定'
     help: '教學文件'
     contact_site_name: '聯絡 {{site_name}}'
     sign_out: '登出'
@@ -534,7 +543,7 @@ zh_TW:
     pin_thread: 釘選討論串
     unpin_thread: 取消釘選討論串
     pin_event: 釘選到時間軸
-    unpin_event: 從時間軸移除
+    unpin_event: 從時間軸取消釘選
     comment_copied: 評論的 URL 已複製到剪貼簿
     move_thread: 移動到群組
     poll_copied: 決策 URL 已複製到剪貼簿
@@ -602,6 +611,7 @@ zh_TW:
     polls: 投票
     members: 成員 ({{count}})
     files: 檔案
+    settings: 設定
     subgroups: 子群組
     show_opened: '{{count}} 開啟'
     show_closed: '{{count}} 已關閉'
@@ -642,7 +652,7 @@ zh_TW:
       manage_members: '管理成員'
       add_subgroup: '新增子群組'
       manage_subscription: '管理群組訂閱'
-      email_settings: '電子郵件設定'
+      email_settings: '通知設定'
       leave_group: '離開群組'
       deactivate_group: '停用群組'
     volume:
@@ -975,7 +985,7 @@ zh_TW:
     placeholder: '回答這個問題是選擇性的。您分享的任何資訊都可以協助我們改善服務 :)'
     submit: '凍結帳號'
   email_settings_page:
-    header: 電子郵件設定
+    header: 通知設定
     email_newsletter: Loomio 通訊
     email_newsletter_description: "取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。"
     daily_summary_label: 每日摘要電子郵件
@@ -1084,7 +1094,7 @@ zh_TW:
       closed: '討論串已關閉'
   activity_card:
     event_pinned: "已釘選至時間軸"
-    event_unpinned: "已從時間軸移除"
+    event_unpinned: "已從時間軸取消釘選"
     beginning: 開始
     unread: "未讀 ({{count}})"
     latest: 最新
@@ -1106,7 +1116,7 @@ zh_TW:
   thread_context:
     aria_label: '討論串內容'
     thread_options: '討論串選項'
-    email_settings: '電子郵件設定'
+    email_settings: '通知設定'
     edit: '編輯'
     edit_thread: '編輯'
     close_thread: '關閉'
@@ -1790,9 +1800,9 @@ zh_TW:
       install_helptext: Loomio 機器人會通知您的團隊在 Loomio 上的討論與決策。
       installed_title: 已連線至 Microsoft Teams
       installed_helptext: 此群組中的活動會傳送到您的 Microsoft Team。
-      install_microsoft: 連線至 Teams
+      install_microsoft: 整合 Microsoft Teams
       remove_identity: 移除這個整合
-      confirm_remove_title: 移除 Microsoft Teams
+      confirm_remove_title: 移除 Microsoft Teams 整合
       confirm_remove_helptext: |
           您的 Microsoft Teams 頻道將不會再收到關於此群組的更新。
           您還是可以回來並將其重新加入。
@@ -1812,10 +1822,10 @@ zh_TW:
       poll_expired: 投票已過期
       outcome_created: 結果已分享
   install_slack:
-    modal_title: 安裝 Slack
+    modal_title: 整合 Slack
     modal_helptext: 首先，您將需要登入到 Slack 中。我們將會在一秒內將您重新導向到那裡，或是您可以點選下面的按鈕來繼續。
     login_to_slack: 登入到 Slack
-    remove_slack: 移除 Slack
+    remove_slack: 移除 Slack 整合
     card:
       install_title: 連線至 Slack
       install_helptext: Loomio 機器人會通知您的 Slack 團隊在 Loomio 上的討論與決策。您也可以從 Slack 上啟動討論與投票。

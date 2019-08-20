@@ -1,4 +1,6 @@
 ga_IE:
+  plan_names:
+    free: Saor in aisce
   current_plan_button:
     upgrade: Uasghrádaigh
   loomio_tags:
@@ -199,6 +201,7 @@ ga_IE:
       label: 'Foilsigh é'
   sidebar:
     threads: 'Snáitheanna'
+    my_groups: 'Mo bhaiclí'
     explore: 'Baiclí poiblí'
     start_thread: Snáith nua
     start_decision: Cinneadh nua
@@ -278,6 +281,7 @@ ga_IE:
   group_page:
     threads: Snáitheanna
     members: Comhaltaí
+    settings: Socruithe
     subgroups: Fobhaiclí
     messages:
       privacy:
@@ -431,7 +435,6 @@ ga_IE:
     title: 'Díghníomhachtaigh an cuntas'
     submit: 'Díghníomhachtaigh an cuntas'
   email_settings_page:
-    header: Socruithe ríomhphoist
     daily_summary_label: Ríomhphost le hachoimre laethúil
     announcement_label: Fógraí
     edit: Eagar
@@ -496,7 +499,6 @@ ga_IE:
   thread_context:
     aria_label: 'Comhthéacs na snáithe'
     thread_options: 'Roghanna na snáithe'
-    email_settings: 'Socruithe ríomhphoist'
     edit: 'Eagar'
     close_thread: 'Dún'
     reopen_thread: 'Athoscail é'
