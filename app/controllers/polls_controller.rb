@@ -30,6 +30,10 @@ class PollsController < ApplicationController
 
   private
 
+  def current_user
+    restricted_user || super
+  end
+  
   def is_subscribed?
     resource.poll_unsubscriptions.find_by(user: current_user).blank?
   end

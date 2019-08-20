@@ -52,9 +52,6 @@ class API::PollsController < API::RestfulController
   end
 
   private
-  def current_user
-    restricted_user || super
-  end
 
   def poll_search
     PollSearch.new(current_user)
