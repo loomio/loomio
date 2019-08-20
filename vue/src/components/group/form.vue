@@ -124,13 +124,11 @@ v-card.group-form
         v-spacer
         v-btn(icon @click="selectCoverPhoto()")
           v-img(:src="group.coverUrl()" max-width="100px" max-height="100px")
+        input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto')
+        input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo')
 
         lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
         validation-errors(:subject="group", field="name")
-        //- v-btn.change-picture-form__option(@click='selectCoverPhoto()' v-t="'group_form.upload_cover_photo'")
-        input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto')
-        //- v-btn.change-picture-form__option(@click='selectLogo()' v-t="'group_form.upload_logo'")
-        input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo')
 
       v-tab-item
         .group-form__section.group-form__privacy
