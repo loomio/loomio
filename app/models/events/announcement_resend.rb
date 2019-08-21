@@ -20,6 +20,6 @@ class Events::AnnouncementResend < Event
 
   def email_recipients
     # return User.none if eventable.is_a?(Poll) && !eventable.active? # do we want this?
-    User.where(id: Membership.where(id: custom_fields['membership_ids']).pluck(:user_id))
+    User.active.where(id: Membership.where(id: custom_fields['membership_ids']).pluck(:user_id))
   end
 end
