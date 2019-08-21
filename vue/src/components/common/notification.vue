@@ -10,10 +10,16 @@ export default
     membershipRequestActor: ->
       Records.users.build
         name:           @notification.translationValues.name
-        avatarInitials: (@notification.translationValues.name || '').toString().split(' ').map((n) -> n[0]).join('')
+        avatarInitials: @notification.translationValues.name.toString().split(' ').map((n) -> n[0]).join('')
         avatarKind:     'initials'
 
   computed:
+    url: ->
+      if @notification.kind == 'membership_requested' && @notification.url
+        "/"+@notification.url.split('/')[1]+"/members/requests"
+      else
+        "/"+@notification.url
+
     path: ->
       if @notification.kind == "reaction_created"
         "notifications.reaction_created_vue"
@@ -33,7 +39,7 @@ export default
 </script>
 
 <template lang="pug">
-router-link(:to="'/'+notification.url")
+router-link(:to="url")
   v-layout.notification.body-2(align-center :class="{'notification--unread': unread}")
     .notification__avatar.ma-2
       user-avatar(v-if="actor", :user="actor", size="thirtysix")
