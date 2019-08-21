@@ -18,6 +18,8 @@ class CommentService
   def self.update(comment:, params:, actor:)
     comment.edited_at = Time.zone.now
     comment.assign_attributes(params.slice(:body, :body_format, :document_ids))
+    comment.files.attach(params[:files])
+    comment.image_files.attach(params[:image_files])
 
     return false unless comment.valid?
     actor.ability.authorize! :update, comment
