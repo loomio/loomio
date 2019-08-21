@@ -15,9 +15,6 @@ export default
     redirect: ->
       @$router.push({ query: { install_slack: true } })
       hardReload('/slack/oauth')
-
-  created: ->
-    setTimeout @redirect, 500 unless @hasIdentity()
 </script>
 <template lang="pug">
 v-card.install-slack-modal.lmo-modal__narrow

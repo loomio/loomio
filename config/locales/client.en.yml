@@ -2020,7 +2020,7 @@ en:
 
   install_slack:
     modal_title: Integrate Slack
-    modal_helptext: First up, you'll need to sign in to slack. We'll redirect you there automatically in a second, or you can click the button below to continue.
+    modal_helptext: First up, you'll need to sign in to slack. Click the button below to continue.
     login_to_slack: Log in to Slack
     remove_slack: Remove Slack integration
 

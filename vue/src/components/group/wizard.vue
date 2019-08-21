@@ -8,7 +8,12 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import AppConfig      from '@/shared/services/app_config'
 
+import WizardPanel from '@/components/group/wizard_panel'
+
 export default
+  components:
+    WizardPanel: WizardPanel
+
   props:
     group: Object
     close: Function
@@ -17,101 +22,69 @@ export default
       type: Boolean
     }
 
+  data: ->
+    openModals:
+      editGroup: false
+      invitePeople: false
+      installSlack: false
+      installTeams: false
+      startThread: false
+
   created: ->
     @group.fetchToken()
 
+  computed:
+    newDiscussion: -> Records.discussions.build(groupId: @group.id)
+    announcement: -> Records.announcements.buildFromModel(@group.targetModel())
+
   methods:
-    openEditProfileForm: ->
-      openModal
-        component: 'GroupForm'
-        props:
-          group: @group.clone()
-
-    openInvitePeopleForm: ->
-      openModal
-        component: 'AnnouncementForm'
-        props:
-          announcement: Records.announcements.buildFromModel(@group.targetModel())
-
-    openInstallSlackModal: ->
-      openModal
-        component: 'InstallSlackModal'
-        props:
-          group: @group
-          preventClose: true
-
-    openInstallTeamsModal: ->
-      openModal
-        component: 'InstallMicrosoftTeamsModal'
-        props:
-          group: @group
-          preventClose: true
-
-    openStartThreadModal: ->
-      openModal
-        component: 'DiscussionForm'
-        props:
-          discussion: Records.discussions.build(groupId: @group.id)
-
+    closeFor: (name) ->
+      => @openModals[name] = false
 </script>
 <template lang="pug">
 v-carousel.group-wizard(:continuous="false")
-  v-carousel-item(v-if="showWelcome" key='group_wizard.welcome')
-    v-card(height="100%" color="primary")
-      v-card-title
-        h1.headline(v-t="'group_wizard.welcome'")
-        v-spacer
-        dismiss-modal-button(:close="close")
-      v-card-text
-        span(v-t="'group_wizard.welcome_description'")
+  wizard-panel(v-if="showWelcome" title="group_wizard.welcome")
+    v-card-text
+      span(v-t="'group_wizard.welcome_description'")
 
-  v-carousel-item(key='group_wizard.setup_profile')
-    v-card(height="100%" color="primary")
-      v-card-title
-        h1.headline(v-t="'group_wizard.setup_profile'")
-        v-spacer
-        dismiss-modal-button(:close="close")
-      v-card-text
-        span(v-t="'group_wizard.setup_profile_description'")
-      v-card-actions
-        group-edit-group-button(:group="group")
+  wizard-panel(title="group_wizard.setup_profile")
+    v-card-text
+      span(v-t="'group_wizard.setup_profile_description'")
+    v-card-actions
+      .edit-group-button
+        v-btn(color='accent' @click="openModals.editGroup = true" v-t="'group_wizard.do_it'")
+        v-dialog(v-model="openModals.editGroup" max-width="600px" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
+          group-form(:group="group" :close="closeFor('editGroup')")
 
-  v-carousel-item(key='group_wizard.invite_people')
-    v-card(height="100%" color="primary")
-      v-card-title
-        h1.headline(v-t="'group_wizard.invite_people'")
-        v-spacer
-        dismiss-modal-button(:close="close")
-      v-card-text
-        span(v-t="'group_wizard.invite_people_description'")
-      v-card-actions
-        //- v-btn(color="accent" @click="openInvitePeopleForm()" v-t="'group_page.invite_people'")
-        group-invite-button(:group="group")
-        shareable-link-modal(:group="group" :hasToken="true")
+  wizard-panel(title="group_wizard.invite_people")
+    v-card-text
+      span(v-t="'group_wizard.invite_people_description'")
+    v-card-actions
+      .invite-button
+        v-btn(color='accent' @click="openModals.invitePeople = true" v-t="'group_page.invite_people'")
+        v-dialog(v-model="openModals.invitePeople" max-width="600px" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
+          announcement-form(:announcement="announcement" :close="closeFor('invitePeople')")
+      shareable-link-modal(:group="group" :hasToken="true")
 
-  v-carousel-item(key='group_wizard.setup_integrations')
-    v-card(height="100%" color="primary")
-      v-card-title
-        h1.headline(v-t="'group_wizard.setup_integrations'")
-        v-spacer
-        dismiss-modal-button(:close="close")
-      v-card-text
-        span(v-t="'group_wizard.setup_integrations_description'")
-      v-card-actions
-        install-slack-button(:group="group")
-        install-microsoft-teams-button(:group="group")
-        //- v-btn(color="accent" @click="openInstallSlackModal()" v-t="'install_slack.modal_title'")
-        //- v-btn(color="accent" @click="openInstallTeamsModal()" v-t="'install_microsoft.card.install_microsoft'")
+  wizard-panel(title="group_wizard.setup_integrations")
+    v-card-text
+      span(v-t="'group_wizard.setup_integrations_description'")
+    v-card-actions
+      .invite-button
+        v-btn(color='accent' @click="openModals.installSlack = true" v-t="'install_slack.modal_title'" :disabled="group.groupIdentityFor('slack')")
+        v-dialog(v-model="openModals.installSlack" max-width="600px" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
+          install-slack-modal(:group="group" :close="closeFor('installSlack')" :preventClose="true")
+      .invite-button
+        v-btn(color='accent' @click="openModals.installTeams = true" v-t="'install_microsoft.card.install_microsoft'" :disabled="group.groupIdentityFor('microsoft')")
+        v-dialog(v-model="openModals.installTeams" max-width="600px" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
+          install-microsoft-teams-modal(:group="group" :close="closeFor('installTeams')")
 
-  v-carousel-item(key='group_wizard.start_thread')
-    v-card(height="100%" color="primary")
-      v-card-title
-        h1.headline(v-t="'group_wizard.start_thread'")
-        v-spacer
-        dismiss-modal-button(:close="close")
-      v-card-text
-        span(v-t="'group_wizard.start_thread_description'")
-      v-card-actions
-        //- v-btn(color="accent" @click="openStartThreadModal()" v-t="'group_wizard.do_it'")
-        discussion-form-button(:group="group")
+  wizard-panel(title="group_wizard.setup_integrations")
+    v-card-text
+      span(v-t="'group_wizard.start_thread_description'")
+    v-card-actions
+      .edit-group-button
+      v-btn(color='accent' @click="openModals.startThread = true" v-t="'group_wizard.do_it'")
+      v-dialog(v-model="openModals.startThread" max-width="600px" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
+        discussion-form(:discussion="newDiscussion" :close="closeFor('startThread')")
 </template>
