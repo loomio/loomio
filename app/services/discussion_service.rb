@@ -19,12 +19,13 @@ class DiscussionService
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
-    discussion.assign_attributes(params.slice(:private, :title, :description, :description_format, :pinned))
-    discussion.files.attach(params[:files])
-    discussion.image_files.attach(params[:image_files])
+    discussion.assign_attributes(params)
+    # discussion.assign_attributes(params.slice(:private, :title, :description, :description_format, :pinned))
+    # discussion.files.attach(params[:files])
+    # discussion.image_files.attach(params[:image_files])
     version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
-    discussion.assign_attributes(params.slice(:document_ids))
-    discussion.document_ids = [] if params.slice(:document_ids).empty?
+    # discussion.assign_attributes(params.slice(:document_ids))
+    # discussion.document_ids = [] if params.slice(:document_ids).empty?
     is_new_version = discussion.is_new_version?
 
     return false unless discussion.valid?
