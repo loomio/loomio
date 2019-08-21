@@ -101,7 +101,7 @@
     "node-yaml-config": "0.0.5",
     "selenium-server-standalone-jar": "3.141.5",
     "uglify-es": "^3.3.9",
-    "uglifyify": "^5.0.1",
+    "uglifyify": "^5.0.2",
     "vinyl-buffer": "^1.0.1",
     "yargs": "^14.0.0"
   }
