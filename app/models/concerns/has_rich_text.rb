@@ -29,11 +29,8 @@ module HasRichText
 
   def associate_attachments_with_group
     if self[:group_id] && group
-      [files, image_files].each do |association|
-        association.each do |attachment|
-          attachment.group_id = group.id unless attachment.persisted?
-        end
-      end
+      files.update_all(group_id: self[:group_id])
+      image_files.update_all(group_id: self[:group_id])
     end
   end
 
