@@ -99,7 +99,7 @@
     "hamljs": "^0.6.2",
     "node-sass": "^4.12.0",
     "node-yaml-config": "0.0.5",
-    "selenium-server-standalone-jar": "3.141.5",
+    "selenium-server-standalone-jar": "3.141.59",
     "uglify-es": "^3.3.9",
     "uglifyify": "^5.0.2",
     "vinyl-buffer": "^1.0.1",
