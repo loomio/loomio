@@ -320,6 +320,7 @@ it:
     sign_in: "Entra per partecipare alla discussione"
   sidebar:
     threads: 'Discussioni'
+    my_groups: 'I miei gruppi'
     recent_threads: 'Discussioni recenti'
     unread_threads: 'Discussioni non lette ({{count}})'
     muted_threads: 'Discussioni silenziate'
@@ -328,12 +329,14 @@ it:
     explore: 'Gruppi pubblici'
     start_thread: Nuova discussione
     start_decision: Nuova decisione
+    more_groups: Altri gruppi
     aria_labels:
       heading: 'Colonna'
       threads_list: 'Azioni discussioni'
       groups_list: 'Gruppi'
       user_list: 'Azioni utente'
   navbar:
+    search_all_threads: Cerca in tutte le discussioni
     search_threads: 'Cerca le discussioni in  {{name}}'
     search_polls: 'Cerca i sondaggi in  {{name}}'
     search_members: 'Cerca i membri in  {{name}}'
@@ -359,6 +362,7 @@ it:
   user_dropdown:
     button_label: 'Menu utente'
     edit_profile: 'Modifica profilo'
+    email_settings: 'Impostazioni notifiche'
     help: 'Aiuto'
     contact_site_name: 'Contatto {{site_name}}'
     sign_out: 'Esci'
@@ -390,6 +394,7 @@ it:
     header: "Notifiche"
     no_notifications: "Non hai notifiche"
     new_discussion: "<strong>{{name}}</strong> ha iniziato una discussione con titolo<strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> ha condiviso una discussione con titolo <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> ha creato una proposta <strong>{{title}}</strong>"
     motion_closed: "Proposta chiusa: <strong>{{title}}</strong>"
     publish_outcome: "Pubblica un risultato"
@@ -398,6 +403,8 @@ it:
     new_vote: "<strong>{{name}}</strong> {{position}} sulla proposta <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> ha commentato su <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> ha risposto al tuo commento nella discussione con titolo <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> ha reagito con <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> al tuo {{model}}<strong>{{title}}</strong>"
+    reaction_created_vue: "<strong>{{name}}</strong> ha reagito con {{reaction}} al tuo {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> ti ha menzionato in <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong>sta aspettando di partecipare a <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ha chiesto di iscriversi a <strong>{{title}}</strong>"
@@ -408,10 +415,13 @@ it:
     motion_outcome_created: "<strong>{{name}}</strong> ha pubblicato un risultato per la proposta <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> ha aggiornato il risultato della proposta <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> ha accettato il tuo invito a iscriversi a <strong>{{title}}</strong>"
+    new_coordinator: "<strong>{{name}}</strong> ti ha nominato amministratore di <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> ha lanciato {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> ha modificato {{poll_type}}: <strong>{{title}}</strong>"
+    poll_announced: "<strong>{{name}}</strong> ha condiviso un {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} si chiude tra poco: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} si è chiuso: <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> ha aggiunto un'opzione a: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong>ha partecipato a:<strong>{{title}}</strong>"
@@ -425,6 +435,8 @@ it:
   discussion_record:
     created: 'La discussione {{title}} è stata creata con successo nel gruppo {{groupName}}.'
     updated: 'Salva i cambiamenti a {{title}}'
+  discussion_fork_actions:
+    helptext: "Seleziona gli elementi che vuoi spostare in un'altra discussione"
   discussion_form:
     aria_label: 'Modulo discussione'
     messages:
@@ -453,6 +465,8 @@ it:
       voters: Persone che hanno votato
       non_voters: Persone che non hanno votato
     form:
+      too_many_invitations: |
+          Hai superato il limite di inviti. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
       group_announced:
         title: Invita nel gruppo
         helptext: Chi vorresti invitare nel gruppo?
@@ -833,7 +847,6 @@ it:
       deactivated: 'Account disattivato'
     change_picture_link: 'Cambia immagine'
     change_password_link: 'Cambia password'
-    deactivate_user_link: 'Disattiva account...'
     delete_account: 'Cancella l''account permanentemente'
     delete_user_link: 'Rimuovi account'
     profile: 'Profilo'
@@ -850,7 +863,6 @@ it:
     location_label: 'Luogo'
     location_placeholder: 'Di dove sei?'
     update_profile: 'Aggiorna profilo'
-    deactivate_account: 'Disattiva l''account'
     help_translate: "Aiutaci a tradurre Loomio"
   change_picture_form:
     helptext: 'Puoi caricare la foto sul tuo profilo, o se disponi di un account su <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, puoi usare quella foto.'
@@ -860,7 +872,6 @@ it:
     set_password: Imposta password
     password_changed: La tua password è stata aggiornata
   deactivation_modal:
-    aria_label: 'Disattiva l''account'
     introduction: 'Quando disattivi il tuo account:'
     no_longer_group_member: 'Non sarai più listato/a come membro di alcun gruppo.'
     name_removed: 'I tuoi commenti, le tue proposte e le tue discussioni rimarranno, ma il tuo nome verrà rimosso'
@@ -868,7 +879,6 @@ it:
     you_can_reactivate: "Se tu vorrai, potrai riattivare il tuo account in futuro"
     submit: 'Sì, voglio disattivare'
   delete_user_modal:
-    title: 'Cancella il tuo account'
     irreversable: "ATTENZIONE: Questa operazione è irreversibile. Se continuerai:"
     you_will_be_deleted: "Il tuo account, compresi nome, indirizzo email e gli altri dati personali verranno cancellati dal nostro sistema."
     submit: 'Si, voglio che il mio account sia cancellato'
@@ -879,6 +889,7 @@ it:
     placeholder: 'Rispondere a questa domanda è facoltativo. Ogni informazione che condividi con noi ci aiuterà a migliorare :)'
     submit: 'Disattiva l''account'
   email_settings_page:
+    header: Impostazioni notifiche
     email_newsletter: Loomio Newsletter
     email_newsletter_description: "Ricevi aggiornamenti di nuove funzioni, di trainings, eventi nella tua città e sul futuro di Loomio. Di solito due o tre email all'anno."
     daily_summary_label: Notifica giornaliera
@@ -975,6 +986,7 @@ it:
   thread_context:
     aria_label: 'Contesto della discussione'
     thread_options: 'Opzioni delle discussioni'
+    email_settings: 'Impostazioni notifiche'
     edit: 'Modifica'
     edit_thread: 'Modifica'
     close_thread: 'Chiudi'
@@ -1273,6 +1285,7 @@ it:
     sign_in: Iscriviti
     sign_in_as: Autenticati come {{name}}
     or_enter_your_email: Oppure, inserisci il tuo indirizzo di email
+    invalid_password: "Spiacente, ma la password non corrisponde con quella che abbiamo archiviato."
     login_link_helptext_with_password: "Inserisci la tua password, o autenticati via email."
     name_placeholder: Il tuo nome
     set_password: Imposta password

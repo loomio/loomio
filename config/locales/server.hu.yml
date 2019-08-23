@@ -5,11 +5,16 @@ hu:
     errors:
       messages:
         invalid: ez nem egy érvényes érték
+  user:
+    error:
+      bad_login: "Sajnáljuk, de ez a jelszó nem egyezik meg a fájlunkkal"
   poll:
     export:
       title: Cím
       author: Szerző
       details: Részletek
+      group_name: Csoport név
+      reason: Ok
       total: Teljes
   email:
     group_email:
@@ -23,6 +28,8 @@ hu:
       thanks_for_reading: Köszönjük az elolvasást, kellemes napot!
       marked_as_read_success: Minden olvasottként van jelölve
       click_here: Kattints ide
+    group_membership_approved:
+      join_group: "Csapathoz csatlakozni"
     membership_request:
       subject: "%{who} kérte hogy csatlakozhasson a %{which_group} csoporthoz"
       view_group: Jóváhagyhatod vagy elvetheted a kérelmet itt.
@@ -44,4 +51,9 @@ hu:
   poll_mailer:
     common:
       unsubscribe: Leiratkozás
+      results: Eredmények
+      responses: válaszok
+      create_outcome: Ossza meg az eredményt
   comment_by: '%{comment_author} bejegyzése'
+  poll_unsubscribe:
+    go_to_dashboad: Ugrás az irányítópultra

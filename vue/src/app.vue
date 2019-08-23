@@ -12,6 +12,8 @@ export default
     pageError: null
 
   created: ->
+    Session.updateLocale(@$route.query.locale) if @$route.query.locale
+    
     each AppConfig.theme.vuetify, (value, key) =>
       @$vuetify.theme.themes.light[key] = value if value
       true

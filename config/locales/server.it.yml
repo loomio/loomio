@@ -17,7 +17,12 @@ it:
     deleted_user: "Utente eliminato"
     placeholder_name: "Utente invitato"
     error:
+      sign_in_required_html: |
+          Devi essere autenticato per proseguire.
+          Per favore <a href="/dashboard">accedi</a> e poi ricarica la pagina per continuare.
       recaptcha: "Non siamo stati in grado di verificare che tu non sia un robot. Per favore riprova ancora!"
+      bad_login: "Spiacente, ma la password non corrisponde con quella che abbiamo archiviato."
+      username_must_be_alphanumeric: "I nomi utente devono avere solo lettere minuscole e numeri"
   attachment:
     error:
       too_large: Il file che hai tentato di allegare è maggiore di 100 Megabytes, scegli un file più piccolo.
@@ -33,11 +38,20 @@ it:
       created_at: Creato il
       closing_at: Chiude il
       closed_at: Chiuso il
+      is_latest: È l'ultimo
+      engagement: Partecipazione
+      stances: Atteggiamenti
+      participants: Partecipanti
       details: Dettagli
       group_name: Nome del gruppo
       discussion_title: Titolo della discussione
+      outcome_author: Autore Esito
+      outcome_created_at: Esito Creato A
+      outcome_statement: Dichiarazione Finale
+      poll_url: URL Sondaggio
       reason: Motivo
       participant: Partecipante
+      also_available: Disponibile anche in
       total: Totale
   stance:
     error:
@@ -58,6 +72,9 @@ it:
       must_close_in_future: La proposta sarà presto chiusa.
       one_at_a_time: C'è un altra proposta attiva.
   user_mailer:
+    group_export_ready:
+      body_html: |
+          Scarica i dati del tuo gruppo <a href="%{url}">qui</a>. Tieni presente che questo link scade tra una settimana.
     accounts_merged:
       subject: "Gli accounts del tuo sito %{site_name} sono stati fusi."
       body_html: |
@@ -65,6 +82,9 @@ it:
           I tuoi due accounts su Loomio sono stati fusi in un solo account.
           Per accedere a Loomio da ora, usa l'indirizzo email <strong>%{email}</strong> quando ti autentichi.
   email:
+    common:
+      or_enter_code: Oppure inserisci il codice qui sotto
+      resend: Questo link scade tra 24 ore e può essere usato una sola volta.
     login:
       subject: Autenticati al sito %{site_name}
       intro: Ciao %{name}, qui c'è il link per autenticarti all'account del sito %{site_name}.
