@@ -1,1 +1,49 @@
-hu: {}
+hu:
+  loomio_onboarding:
+    onboarding_mailer:
+      welcome:
+        subject: Üdvözlünk a Loomio-ban!
+        body_md: |
+            Üdvözlet %{recipient_name}
+
+            Üdvözöljük a Loomio-ban! Online hely, ahol döntéseket hozhat a csoportjával.
+
+            %{sender_name}vagyok, egy Loomio csapat tagja, és azért vagyok itt, hogy segítsek az indulásban.
+            Szeretne csatlakozni egy ingyenes Loomio képzéshez?
+            Iratkozzon fel a [Loomio 101 webinar kezdő tanfolyamra]( %{webinar_url}). Ez magában foglalja az alkalmazás megismerését és a felmerülő kérdéseket.
+
+            Ellátogattál már a [help.loomio.org](https://help.loomio.org/%{help_locale}) oldalra?
+
+            Néhány oldal amit hasznosnak találhatsz:
+
+            [Starting a group](https://help.loomio.org/%{help_locale}/user_manual/getting_started/starting_a_group/?utm_source=welcome_email) végigvezeti Önt a felállításban, az emberek meghívásában és az első döntések meghozatalában csoportként.
+
+            Similarly, [Joining a group](https://help.loomio.org/%{help_locale}/user_manual/getting_started/joining_a_group/?utm_source=welcome_email) segít a profil beállításában, az e-mail beállítások konfigurálásában, és biztosítja, hogy készen áll a részvételre.
+
+            Ez csak a kezdet! Még több nagyszerű tartalom található, ideértve az útmutatókat, útmutatásokat és még a szervezést támogató tanfolyamot is.
+
+            Ha bármilyen kérdésed van, csak válaszolj erre az email-re.
+
+            Örömteli együttműködést!
+    group_progress_card:
+      title: Aktiváld a csoportodat
+      activities:
+        set_description: Állítsd be a csoportod leírását
+        set_logo: Válassz profilképet a csoportodnak
+        set_cover_photo: Válassz egy borítóképet a csoportodnak
+        invite_people_in: Hívj meg embereket
+        start_thread: Indíts el egy beszélgetési témát
+        make_decision: Indíts el egy döntéshozatalt
+      learn_more: További információ a Loomio Súgóban
+      celebration_message: Remek, a csoportod útra kész!
+      dismiss_this_card: Kártya elvetése
+    user_progress_card:
+      title: Állítsd be a profilod
+      activities:
+        enter_name: Add meg a neved
+        set_profile_picture: Profilkép beállítása
+        set_bio: Írj egy rövid bevezetőt
+        join_group: Csatlakozz egy csoporthoz
+        make_decision: Szavazz egy kérdésről
+      celebration_message: A profilod jó!
+      dismiss: Elvetés

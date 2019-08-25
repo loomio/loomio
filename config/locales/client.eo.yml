@@ -1,8 +1,27 @@
 eo:
   plan_names:
     free: Senpaga
+    trial: Provo
+    small: Malgranda
+    medium: Mezgranda
+    large: Granda
+    monthly: Monate
+    yearly: Jare
+  current_plan_button:
+    upgrade: Ĝisdatigi
+    tooltip: Aĉeti loomio-n produkton por inviti pli da partoprenantoj kaj eklabori pri pliaj fadenoj
   loomio_tags:
+    tags: Etikedoj
+    apply_tags: Alkroĉi etikedon
+    new_tag: Krei etikedon
     name_label: Nomo
+    color_label: Koloro
+    card_title: Kategoriaj etikedoj
+    modal_title: Krei novan etikedon
+    modal_edit_title: Redakti etikedon
+    modal_destroy_title: Forigi etikedon
+    destroy_tag: Forigi etikedon
+    destroy_helptext: Tiu ĉi ago forigos tiun ĉi etikedon kaj ankaŭ forigos ĝin de ĉiuj fadenoj en la grupo. Ĉu vi certas?
   reactions:
     slight_smile: Ŝati
     heart: Ŝategi

@@ -58,7 +58,7 @@ hu:
     fingers_crossed: Drukkol
     v: Béke
     metal: Metál
-    ok_hand: Oké
+    ok_hand: Rendben
     wave: Integet
     thumbsup: Egyetért
     thumbsdown: Nem ért egyet
@@ -76,13 +76,13 @@ hu:
     poll: Választ
     score: Pontszám
     ranked_choice: Rang
-    dot_vote: osztja
+    dot_vote: Hozzárendel
     meeting: Idő szavazás
   timezones:
     local: Helyi idő ({{value}})
   common:
-    option: választási lehetőség
-    add: hozzáad
+    option: Választási lehetőség
+    add: Hozzáad
     you: Te
     expand: Kiterjeszt
     all_day: Egész nap
@@ -93,7 +93,7 @@ hu:
     local_time: Helyi idő
     attachments: Mellékletek
     active_time_ago: Utoljára aktív {{time_ago}}
-    confirm_discard_changes: Elveti a módosításait?
+    confirm_discard_changes: Elveted a módosításokat?
     time:
       am: de
       pm: du
@@ -144,7 +144,7 @@ hu:
       save_changes: 'Változások mentése'
       update_settings: 'Beállítások frissítése'
       reply: 'Válasz'
-      edit: 'Módosítás'
+      edit: 'Szerkesztés'
       remove: 'Visszavonás'
       like: 'Tetszik'
       unlike: 'Nem tetszik'
@@ -161,7 +161,7 @@ hu:
       uploading: 'Feltöltés'
       load_more: 'Több betöltése'
       share: Megosztás
-      ok: Oké
+      ok: Rendben
       retry: Újra
       done: Kész
       start: Indítás
@@ -185,10 +185,10 @@ hu:
   emoji_picker:
     search: Keresés
     common: Gyakran használt
-    hands: Hands
+    hands: Kezek
     people: Arcok és emberek
     nature: Természet
-    objects: dolgok
+    objects: Dolgok
     places: Helyek
   ordinal:
     _1: '1.'
@@ -231,53 +231,53 @@ hu:
     discussion:
       title: "Szál e-mail beállításai"
       loud_description: "Azonnali értesítés e-mailben, új tevékenység esetén ezen a szálon belül."
-      normal_description: "Azonnali értesítés e-mailben, amennyiben egy javaslat született, zárás következik vagy ha összegzést tettek közzé."
-      quiet_description: "Ne küldj e-mailt ezen szál változásairól."
-      apply_to_all: "Ezen beállítások alkalmazása a csoporton belüli összes szálra."
+      normal_description: "Azonnali értesítés e-mailben, amennyiben egy javaslat született, zárás következik vagy ha végeredményt tettek közzé."
+      quiet_description: "Nem fogsz e-mailt kapni ezen téma változásairól."
+      apply_to_all: "Azonos beállítások alkalmazása a csoporton belüli összes témára."
       messages:
-        loud: "Azonnali értesítés e-mailben, új tevékenység esetén ezen a szálon belül."
-        normal: "Azonnali értesítés e-mailben, új javaslat esetén ezen a szálon belül."
-        quiet: "Ne küldj e-mailt ezen témakör változásairól."
+        loud: "A témán belüli új tevékenység esetén értesítést kapsz emailben."
+        normal: "A témán belüli új javaslat esetén értesítést kapsz e-mailben."
+        quiet: "Nem fogsz e-mailt kapni a téma változásairól."
     membership:
-      title: "Email beállítások {{title}}-hez"
-      loud_description: "Azonnali értesítés e-mailben, új tevékenység esetén ezen csoporton belül."
-      normal_description: "Csak ebből a csoportból fogsz jelentéseket kapni. "
-      quiet_description: "Ne küldj e-mailt ezen csoport tevékenységeiről."
+      title: "Email beállítások ehhez: {{title}} "
+      loud_description: "A csoporton belüli tevékenység esetén értesítést kapsz e-mailben."
+      normal_description: "Csak a csoport bejelentéseiről fogsz e-mailt kapni. "
+      quiet_description: "Nem fogsz e-mailt kapni a csoport tevékenységeiről."
       apply_to_all: "Ezen beállítások alkalmazása minden csoportomra."
       messages:
-        loud: "Értesítés e-mailben ezen csoporton belüli összes tevékenységről."
-        normal: "Csak ebből a csoportból fogsz jelentéseket kapni. "
-        quiet: "Ne küldj e-mailt ezen csoport tevékenységeiről."
+        loud: "A csoporton belüli összes tevékenységről értesítést kapsz e-mailben."
+        normal: "Csak a csoport bejelentéseiről fogsz emailt kapni."
+        quiet: "Nem fogsz emailt kapni ezzel a csoporttal kapcsolatban."
     all_groups:
       messages:
-        loud: "Értesítés e-mailben minden csoport összes tevékenységről aminek tagja vagyok."
-        normal: "Minden csoportból kapsz jelentéseket."
-        quiet: "Ne küldj e-mailt egyik csoportom tevékenységeiről sem."
+        loud: "Értesítést kapsz emailben csoportjaid összes tevékenységéről."
+        normal: "Csak a bejelentéseket kapod meg e-mailben minden csoportodból."
+        quiet: "Nem kérek emailt egyik csoportom tevékenységeiről sem."
     user:
-      title: E-mail beállítások új csoportokra
-      loud_description: "Azonnali értesítés e-mailben, új tevékenység esetén valamennyi új csoportomon belül."
-      normal_description: "Minden újonnan csatlakozott csoportodból kapsz jelentéseket."
-      quiet_description: "Ne küldj e-mailt az új csoportjaim tevékenységeiről."
+      title: Email beállítások új csoportokra
+      loud_description: "Új csoportjaidon belül minden új tevékenységről értesítést kapsz emailben."
+      normal_description: "Minden új csoportodból emailben megkapod a bejelentéseket."
+      quiet_description: "Nem kérek emailt az új csoportjaim tevékenységeiről."
       apply_to_all: "Ezen beállítások alkalmazása minden csoportomra."
       messages:
-        loud: "Értesítés e-mailben az új csoportjaim belüli összes tevékenységről."
-        normal: "Új csoportjaidból kapsz jelentéseket. "
-        quiet: "Ne küldj e-mailt új csoportokról."
+        loud: "Az új csoportjaidon belüli összes tevékenységről értesítést kapsz emailben."
+        normal: "Új csoportjaidból a bejelentéseket kapod meg emailben. "
+        quiet: "Nem kérek emailt az új csoportokról."
   close_explanation_modal:
-    aria_label: Szál lezárása
-    close_thread: Szál lezárása
+    aria_label: Téma lezárása
+    close_thread: Téma lezárása
     body_header: |
-        <p>Zárd le a régi vagy a már tárgytalan szálakat, eltüntetve őket a folyamból és jelezd, hogy a vita lezárult.</p>
+        <p>Zárd le a régi vagy már tárgytalan témákat, eltüntetve őket a folyamból és jelezd, hogy a megbeszélés lezárult.</p>
     body_footer: |
-        <p>Bárki hozzászólhat vagy indíthat újabb szavazást a szálban, de nem fog megjelenni a csoportban vagy a kezdőlapon.</p>
-    image_alt: Minden szál lezárása
+        <p>Bárki hozzászólhat vagy indíthat újabb szavazást egy már lezárt témában, de ez nem fog megjelenni a csoport témalistáján vagy a kezdőlapon.</p>
+    image_alt: Minden téma lezárása
   mute_explanation_modal:
-    aria_label: Szál némítása
-    mute_thread: Szál némítása
+    aria_label: Téma némítása
+    mute_thread: Téma némítása
     body_html: |
-        A némítás azt jelenti, hogy <p>nem kapsz értesítést a szavazásokról</p>, vagy bármi más aktivitásról a szálban, kivéve ha valaki <strong>@megemlít téged</strong>.
+        A némítás azt jelenti, hogy <strong>nem kapsz értesítést a javaslatokról</strong>, vagy bármi más tevékenységről a témában, kivéve, ha valaki <strong>@megemlít téged</strong>.
     body_html_2: |
-        A némított szálak nincsenek feltűntetve a <p>friss</p> és <strong>olvasatlan</strong> oldalakon. Hogy megtaláld ezeket a szálakat, menj a <strong>Némított szálak </strong> az oldalsávban.
+        A némított témák nincsenek feltüntetve a <strong>Friss</strong> és <strong>Olvasatlan</strong> oldalakon. Némított témáid megtalálásához válaszd ki a <strong>Némított</strong> menüpontot az oldalsávban.
     image_alt: Némított szálak beállításai az oldalsávban
   dismiss_explanation_modal:
     aria_label: Szál elvetése
@@ -305,12 +305,12 @@ hu:
       add_attachment: 'Fájl csatolása'
       remove_attachment: 'Csatolmány eltávolítása'
     messages:
-      created: 'Hozzászólás megjelenítve'
+      created: 'Hozzászólás hozzáadva.'
       replied: '{{name}} értesítve a válaszról'
       updated: 'Hozzászólás frissítve'
       destroyed: 'Hozzászólás törölve'
-    say_something: Mondj valamit....
-    edit_comment: 'Hozzászólás módosítása'
+    say_something: Mondj valamit...
+    edit_comment: 'Hozzászólás szerkesztése'
     delete_comment: 'Hozzászólás törlése'
     cancel_reply: 'Válasz törlése'
     confirm_delete_message: 'Biztosan törölni akarod ezt a hozzászólást?'
@@ -340,8 +340,8 @@ hu:
       groups_list: 'Csoportok'
       user_list: 'Felhasználói tevékenység'
   navbar:
-    search_all_threads: Keressen minden szálat
-    search_threads: 'Keresési szálak itt: {{name}}'
+    search_all_threads: Keressen minden szálban
+    search_threads: 'Keresés a szálakban itt: {{name}}'
     search_polls: 'Szavazások keresése a (z) {{name}} helyen'
     search_members: 'Tagok keresése itt: {{name}}'
     search_subgroups: 'Tagok keresése itt: {{name}}'
