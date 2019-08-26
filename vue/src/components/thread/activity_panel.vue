@@ -184,5 +184,5 @@ export default
 <template lang="pug">
 .activity-panel
   thread-item-slot(v-for="(event, slot) in eventsBySlot" :id="'position-'+slot" :key="slot" :event="event" :position="slot" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, event)" )
-  thread-actions-panel(:discussion="discussion" :key="discussion.id")
+  thread-actions-panel(:discussion="discussion")
 </template>
