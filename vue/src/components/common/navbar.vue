@@ -36,7 +36,6 @@ export default
           @searchOpen = true
         else
           @searchQuery = ''
-          @searchOpen = false
 
     searchQuery: debounce (val, old)->
       @$router.replace(query: {q: val})
@@ -101,7 +100,7 @@ export default
 <template lang="pug">
 v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shrink-on-scroll :src="coverImageSrc")
   template(v-slot:img="{ props }")
-    v-img(v-bind="props" gradient="to top right, rgba(19,84,122,.3), rgba(128,208,199,.5)")
+    v-img(v-bind="props" gradient="to top right, rgba(19,84,122,.7), rgba(128,208,199,.7)")
 
   v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()")
     v-avatar(tile size="36px")

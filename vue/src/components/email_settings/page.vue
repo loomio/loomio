@@ -67,7 +67,7 @@ v-container.email-settings-page.max-width-1024(v-if='user')
     v-card-title
       h1.headline(v-t="'email_settings_page.header'")
     v-card-text
-      router-link.email-settings-page__learn-more-link(to='https://help.loomio.org/en/user_manual/users/email_settings/' target='_blank' v-t="'email_settings_page.learn_more'")
+      a.email-settings-page__learn-more-link(href='https://help.loomio.org/en/user_manual/users/email_settings/' target='_blank' v-t="'email_settings_page.learn_more'")
       .email-settings-page__email-settings
         .email-settings-page__global-settings
           form

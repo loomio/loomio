@@ -82,7 +82,7 @@ v-container.profile-page.max-width-1024
             v-select#user-locale-field(:label="$t('profile_page.locale_label')" :items="availableLocales" v-model="user.selectedLocale" item-text="name" item-value="key")
             validation-errors(:subject='user', field='selectedLocale')
             p(v-if='showHelpTranslate')
-              router-link.md-caption(v-t="'profile_page.help_translate'", to='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation', target='_blank')
+              a(v-t="'profile_page.help_translate'" href='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation' target='_blank')
           v-flex.profile-page__avatar.mx-4
             user-avatar(:user='originalUser', size='featured')
             v-btn.profile-page__change-picture(color="accent" @click='changePicture()' v-t="'profile_page.change_picture_link'")
