@@ -19,6 +19,7 @@ end
 
 module Loomio
   class Application < Rails::Application
+    config.load_defaults "6.0"
     config.middleware.use Rack::Attack if ENV['USE_RACK_ATTACK']
     config.active_job.queue_adapter = :delayed_job
 
