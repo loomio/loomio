@@ -15,6 +15,7 @@ class VersionSerializer < ActiveModel::Serializer
   has_one :stance
 
   def changes
+    return {} unless object.object_changes
     object.object_changes.map { |key, changes| [key, changes_for(key, changes)] }.to_h
   end
 
