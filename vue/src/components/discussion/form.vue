@@ -101,7 +101,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit(
     dismiss-modal-button(aria-hidden='true', :close='close')
   .pa-4
     .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !discussion.isForking()')
-    .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEvents.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
+    .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEventIds.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
 
     div(v-show='showGroupSelect')
       label(for='discussion-group-field', v-t="'discussion_form.group_label'")
