@@ -11,15 +11,11 @@ import Flash   from '@/shared/services/flash'
 export default
   props:
     group: Object
-    hasToken: {
-      type: Boolean
-      default: false
-    }
   data: ->
     dialog: false
 
   created: ->
-    @group.fetchToken() unless @hasToken
+    @group.fetchToken()
 
   methods:
     copied: (e) ->

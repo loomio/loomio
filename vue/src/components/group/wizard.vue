@@ -64,7 +64,7 @@ v-carousel.group-wizard(:continuous="false")
         v-btn(color='accent' @click="openModals.invitePeople = true" v-t="'group_page.invite_people'")
         v-dialog(v-model="openModals.invitePeople" max-width="600px" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
           announcement-form(:announcement="announcement" :close="closeFor('invitePeople')")
-      shareable-link-modal(:group="group" :hasToken="true")
+      shareable-link-modal(:group="group")
 
   wizard-panel(title="group_wizard.setup_integrations")
     v-card-text
