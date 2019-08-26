@@ -15,14 +15,16 @@
 - if resource.attachments.any?
   %h4= t :attachments
   %ul.thread-mailer__list
-    - resource.attachments.each do |attachment|
+    - resource.files.each do |file|
+      - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, disposition: "attachment", only_path: false, host: ENV['CANONICAL_HOST'])
       %li.thread-mailer__list-item
-        - if attachment['preview_url']
-          %a{href: attachment['download_url'], target: '_blank'}
-            %img{src: attachment['preview_url'], alt: attachment['filename']}
+        - if file.representable?
+          - preview_url = Rails.application.routes.url_helpers.rails_representation_url(file.representation(HasRichText::PREVIEW_OPTIONS), only_path: false, host: ENV['CANONICAL_HOST'])
+          %a{href: download_url, target: '_blank'}
+            %img{src: preview_url, alt: file.blob.filename}
         - else
-          %a.thread-mailer__file-attachment{href: attachment['download_url'], target: '_blank'}
+          %a.thread-mailer__file-attachment{href: download_url, target: '_blank'}
             %span
               = image_tag('thread_mailer/paperclip.png', alt: 'attachment icon', class: 'thread-mailer__attachment-icon')
             %span.thread-mailer__file-attachment-filername
-              = attachment['filename']
+              = file.blob.filename
