@@ -85,13 +85,14 @@ v-navigation-drawer.sidenav-left(app v-model="open")
       v-list-item(to="/dashboard")
         v-list-item-avatar(:size="28")
           user-avatar(no-link :user="user")
-      v-list-item(v-for='group in organizations' :key='group.id' :to='urlFor(group)' dense)
-        v-list-item-avatar(size="28px")
-          v-tooltip
-            template(v-slot:activator="{ on }")
+
+      v-tooltip(v-for='group in organizations' :key='group.id' right)
+        template(v-slot:activator="{ on }")
+          v-list-item( :to='urlFor(group)' dense)
+            v-list-item-avatar(size="28px")
               v-avatar(tile size="28px" v-on="on")
                 img.sidebar__list-item-group-logo(:src='group.logoUrl()')
-            span {{group.name}}
+        span {{group.name}}
       v-list-item
         v-list-item-avatar(:size="28")
           v-icon(:size="28" tile) mdi-plus
