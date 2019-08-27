@@ -1,11 +1,15 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 export default
+  props:
+    close: Function
   methods:
-    close: -> EventBus.$emit('closeModal')
+    closeModal: ->
+      if @close then @close() else EventBus.$emit('closeModal')
+
 </script>
 
 <template lang="pug">
-v-btn.dismiss-modal-button(icon small :aria-label="$t('common.action.cancel')" @click='close()')
+v-btn.dismiss-modal-button(icon small :aria-label="$t('common.action.cancel')" @click='closeModal()')
   v-icon mdi-window-close
 </template>

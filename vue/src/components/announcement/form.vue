@@ -14,6 +14,7 @@ import { submitForm } from '@/shared/helpers/form'
 
 export default
   props:
+    close: Function
     announcement:
       type: Object
       required: true
@@ -54,7 +55,7 @@ export default
         @announcement.recipients = @recipients
       successCallback: (data) =>
         @announcement.membershipsCount = data.memberships.length
-        EventBus.$emit('closeModal')
+        @close()
       flashSuccess: 'announcement.flash.success'
       flashOptions:
         count: => @announcement.membershipsCount
@@ -132,7 +133,7 @@ v-card
   v-card-title
     h1.headline(v-t="'announcement.form.' + announcement.kind + '.title'")
     v-spacer
-    dismiss-modal-button
+    dismiss-modal-button(:close="close")
   v-card-text
     .announcement-form
       div(v-if="invitingToGroup && !canInvite")

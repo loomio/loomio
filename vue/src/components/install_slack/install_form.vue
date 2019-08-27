@@ -36,7 +36,7 @@ export default
           @groupIdentity.customFields.slack_channel_name = '#' + @channel.name
         flashSuccess: 'install_slack.install.slack_installed'
         successCallback: =>
-          EventBus.$emit 'closeModal'
+          @close()
           @$router.replace({ query: {} })
 
   created: ->
