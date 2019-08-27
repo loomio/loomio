@@ -27,6 +27,9 @@ export default
       changePicture: false
       setupProfile: false
 
+  created: ->
+    Records.users.saveExperience("userWizard")
+
   methods:
     closeFor: (name) ->
       => @openModals[name] = false

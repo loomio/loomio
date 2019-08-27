@@ -114,7 +114,7 @@ export default class UserModel extends BaseModel
       @experiences[key]
 
   hasProfilePhoto: ->
-    @avatarKind != 'initials'
+    !@avatarKind
 
   uploadedAvatarUrl: (size = 'medium') ->
     return @avatarUrl if typeof @avatarUrl is 'string'

@@ -25,7 +25,7 @@ export default new class AuthService
     EventBus.$emit('closeModal')
     Flash.success('auth_form.signed_in')
 
-    if user && !user.avatarKind
+    if user && !user.hasExperienced('userWizard')
       openModal
         component: 'UserWizard'
 
