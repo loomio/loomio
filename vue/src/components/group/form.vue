@@ -63,14 +63,14 @@ export default
       Records.groups.remote.onUploadSuccess = (response) =>
         Records.import response
         @uploading = false
-      Records.groups.remote.upload("#{@clone.id}/upload_photo/cover_photo", @$refs.coverPhotoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
+      Records.groups.remote.upload("#{@group.id}/upload_photo/cover_photo", @$refs.coverPhotoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
 
     uploadLogo: ->
       @uploading = true
       Records.groups.remote.onUploadSuccess = (response) =>
         Records.import response
         @uploading = false
-      Records.groups.remote.upload("#{@clone.id}/upload_photo/logo", @$refs.logoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
+      Records.groups.remote.upload("#{@group.id}/upload_photo/logo", @$refs.logoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
 
   computed:
     actionName: ->
@@ -126,20 +126,19 @@ v-card.group-form
       v-tab(v-t="'group_form.privacy'")
       v-tab(v-t="'group_form.permissions'")
 
-      v-tab-item
-        v-text-field.group-form__name#group-name(v-model='clone.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
-        v-btn(icon @click="selectLogo()")
-          group-avatar(:group="group" size="28px")
+      v-tab-item.mt-8
+        v-img.group_form__file-select(:src="group.coverUrl()" width="100%"  @click="selectCoverPhoto()")
+        group-avatar.group_form__file-select.group_form__logo(v-if="!group.parentId" :group="group" size="72px" :on-click="selectLogo" :elevation="4")
+        v-text-field.group-form__name#group-name.mt-4(v-model='clone.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
         v-spacer
-        v-btn(icon @click="selectCoverPhoto()")
-          v-img(:src="clone.coverUrl()" max-width="100px" max-height="100px")
+
         input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto')
         input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo')
 
         lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
         validation-errors(:subject="group", field="name")
 
-      v-tab-item
+      v-tab-item.mt-8
         .group-form__section.group-form__privacy
           v-radio-group(v-model='clone.groupPrivacy')
             v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
@@ -155,7 +154,7 @@ v-card.group-form
             v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
               template(slot='label')
                 span(v-t="'group_form.membership_granted_upon_' + granted")
-      v-tab-item
+      v-tab-item.mt-8
         .group-form__section.group-form__permissions
           p.group-form__privacy-statement.body-2(v-t="'group_form.permissions_explaination'")
           //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='clone.privacyIsClosed() && !clone.isSubgroupOfSecretParent()')
@@ -178,3 +177,14 @@ v-card.group-form
       span(v-if='clone.isNew() && !clone.isParent()' v-t="'group_form.submit_start_subgroup'")
       span(v-if='!clone.isNew()' v-t="'common.action.update_settings'")
 </template>
+<style lang="sass">
+
+.group_form__file-select
+  cursor: pointer
+
+.group_form__logo
+  margin-left: 8px
+  margin-top: -30px
+  border-radius: 8px
+
+</style>

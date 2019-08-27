@@ -43,7 +43,7 @@ export default new class GroupService
         openModal
           component: 'GroupForm'
           props:
-            group: group.clone()
+            group: group
 
     manage_subscription:
       name: 'group_page.options.manage_subscription'
