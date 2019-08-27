@@ -116,7 +116,7 @@ ActiveAdmin.register User do
       end
     end
 
-    render 'emails', { emails: Ahoy::Message.where(user_id: user.id).where('sent_at > ?', 3.months.ago) }
+    render 'emails', { emails: Ahoy::Message.where(user_id: user.id).order("id DESC").limit(30) }
 
     panel("Identities") do
       table_for user.identities.each do |identity|

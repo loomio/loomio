@@ -1,4 +1,12 @@
 de:
+  plan_names:
+    free: Basis
+    trial: Testphase
+    small: Klein
+    medium: Mittel
+    large: Groß
+    monthly: Monatlich
+    yearly: Jährlich
   current_plan_button:
     upgrade: Upgrade
     tooltip: 'Kaufe ein Loomio Abonnement um mehr Personen einzuladen und mehr Diskussionen zu starten. '
@@ -64,11 +72,18 @@ de:
     score: Bewertung
   new_poll_types:
     proposal: Vorschlag
+    count: Anzahl
+    poll: Auswählen
+    score: Punkte
+    ranked_choice: Rang
+    dot_vote: Zuordnen
     meeting: Terminfindung
   timezones:
     local: Ortszeit ({{value}})
   common:
-    you: Sie
+    option: Option
+    add: Hinzufügen
+    you: Du
     expand: Mehr anzeigen
     all_day: Ganztägig
     ok_got_it: Ok, verstanden
@@ -77,7 +92,8 @@ de:
     time_zone: Zeitzone
     local_time: Ortszeit
     attachments: Arbeitsmaterialien
-    confirm_discard_changes: Änderungen verwerfen?
+    active_time_ago: Zu letzte aktiv vor {{time_ago}}
+    confirm_discard_changes: Deine Änderungen verwerfen?
     time:
       am: morgens
       pm: abends
@@ -119,6 +135,7 @@ de:
     total: Gesamt
     action:
       search: 'Suchen'
+      filter: 'Filter'
       back: 'Zurück'
       next: 'Weiter'
       close: 'Schliessen'
@@ -136,6 +153,7 @@ de:
       show_more: "Mehr anzeigen"
       view_all: "Alles anzeigen"
       new_thread: "Neue Diskussion"
+      add_subgroup: 'Neue Untergruppe'
       loading: 'Laden'
       translate: 'Übersetzen'
       translated: 'Übersetzung mit Bing Translator'
@@ -160,6 +178,7 @@ de:
       export: Exportieren
       fork: Abzweigung
       apply: Anwenden
+      add_people: Leute hinzufügen
     formatting_help:
       label: 'Markdown-Formatierung'
       title: 'Mehr über die Textformatierung mit Markdown lernen'
@@ -305,19 +324,28 @@ de:
     sign_in: "Melde Dich an, um an der Diskussion teilzunehmen"
   sidebar:
     threads: 'Diskussionsbeiträge'
+    my_groups: 'Meine Gruppen'
     recent_threads: 'Aktuelle Diskussionen'
     unread_threads: 'Ungelesene Diskussionen ({{count}})'
     muted_threads: 'Stummgeschaltete Diskussionen'
     start_group: 'Neue Organisation'
+    start_subgroup: 'Neue Untergruppe'
     explore: 'Öffentliche Gruppen'
     start_thread: Neue Diskussion
     start_decision: Neue Abstimmung
+    more_groups: Mehr Gruppen
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Diskussions-Aktionen'
       groups_list: 'Gruppen'
       user_list: 'Benutzer-Aktionen'
   navbar:
+    search_all_threads: Alle Diskussion suchen
+    search_threads: 'Diskussionen suchen in {{name}}'
+    search_polls: 'Umfragen suchen in {{name}}'
+    search_members: 'Mitglieder in {{name}} suchen'
+    search_subgroups: 'Mitglieder in {{name}} suchen'
+    search_files: 'Dokumente in {{name}} suchen'
     recent_title: 'Aktuelle Diskussionen sehen'
     unread_title: 'Diskussionen mit ungelesenen Beiträgen anzeigen'
     start_thread: 'Neue Diskussion'
@@ -338,7 +366,7 @@ de:
   user_dropdown:
     button_label: 'Benutzermenü'
     edit_profile: 'Profil bearbeiten'
-    email_settings: 'E-Mail-Einstellungen'
+    email_settings: 'Einstellungen für Benachrichtigungen'
     help: 'Hilfe'
     contact_site_name: '{{site_name}} kontaktieren'
     sign_out: 'Abmelden'
@@ -354,6 +382,8 @@ de:
     set_title: "Überschrift festlegen"
     resend: "Einladung erneut versenden"
     invitation_resent: "Einladung erneut versendet"
+    make_coordinator: 'Zum Admin machen'
+    demote_coordinator: 'Adminrechte entziehen'
     remove_from:
       discussion: "von Diskussion entfernen"
       group: "aus der Gruppe entfernen"
@@ -509,11 +539,14 @@ de:
     show_history: Bearbeitungsverlauf anzeigen
     pin_thread: Diskussion anpinnen
     unpin_thread: Diskussion nicht mehr anpinnen
+    pin_event: An Timeline anheften
+    unpin_event: Von Timeline lösen
     comment_copied: Kommentar-URL in die Zwischenablage kopiert
     poll_copied: Die Entscheidungs-URL wurde in die Zwischenablage kopiert
     discussion_copied: Diskussions-URL in die Zwischenablage kopiert
     tag_thread: Schlagwörter verwalten
     close_thread: Diskussion schließen
+    reopen_thread: Diskussion wieder öffnen
     delete_thread: Diskussion löschen
   cover_photo_form:
     aria_label: 'Titelfoto Änderungsformumlar'
@@ -567,9 +600,16 @@ de:
     thread_status:
       pinned: "Diese Diskussion wurde gepinnt. Sie wird für alle Nutzer zuoberst in der Diskussionsliste angezeigt."
       closed: "Diese Diskussion wurde geschlossen. Sie wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter \"Geschlossen\" angezeigt"
+  group_wizard:
+    welcome: Erfolg!
+    invite_people: Leute einladen
+    start_thread: Diskussion starten
   group_page:
     threads: Diskussionsbeiträge
+    polls: Umfragen
     members: Mitglieder
+    files: Dokumente
+    settings: Einstellungen
     subgroups: Untergruppen
     show_opened: '{{count}} Offen'
     show_closed: '{{count}} Geschlossen'
@@ -602,6 +642,7 @@ de:
     options:
       label: 'Optionen'
       edit_group: 'Gruppeneinstellungen bearbeiten'
+      become_coordinator: Admin werden
       export_data: Gruppendaten exportieren
       export_data_as_json: Gruppendaten im JSON-Format exportieren
       export_data_as_csv: Gruppendaten im CSV-Format exportieren
@@ -609,7 +650,7 @@ de:
       manage_members: 'Mitglieder verwalten'
       add_subgroup: 'Untergruppe anlegen'
       manage_subscription: 'Gruppenbenachrichtigungen verwalten'
-      email_settings: 'E-Mail-Einstellungen'
+      email_settings: 'Einstellungen für Benachrichtigungen'
       leave_group: 'Gruppe verlassen'
       deactivate_group: 'Gruppe deaktivieren'
     volume:
@@ -632,6 +673,7 @@ de:
       aria_label: 'Sichtbarkeit der Gruppe: {{privacy}}'
   description_card:
     title: 'Gruppenbeschreibung'
+    placeholder: 'Nutze diesen Platz um den Zweck der Gruppe zu beschreiben, damit Mitglieder wissen, warum sie da sind.'
     messages:
       description_updated: 'Beschreibung aktualisiert '
   leave_group_form:
@@ -645,14 +687,16 @@ de:
     question: 'Sind Sie sicher, dass Sie diese Gruppe deaktivieren möchten?'
     submit: 'Ja, diese Gruppe deaktivieren'
   group_form:
+    permissions_explaination: 'Es gibt zwei Arten der Mitgliedschaft: Admin und Mitglied. Admins haben immer alle alle Freigaben. Wähle die Freigaben für Mitglieder:'
     aria_label: 'Gruppenform'
     start_group_heading: 'Gruppe erstellen'
     start_subgroup_heading: 'Untergruppe erstellen'
     edit_group_heading: 'Gruppeneinstellungen bearbeiten'
     edit_subgroup_heading: 'Untergruppeneinstellungen bearbeiten'
     group_name: 'Gruppen-Name'
+    start_organization_heading: Neue Organisation
     group_name_placeholder: 'Wie möchten Sie die Gruppe nennen?'
-    subgroup_name: 'Untergruppen-Name'
+    subgroup_name: 'Name'
     description: 'Beschreibung'
     description_placeholder: 'Beschreiben Sie die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.'
     privacy_statement:
@@ -668,6 +712,7 @@ de:
     confirm_change_to_secret_subgroup: 'Wenn Sie fortfahren werden alle Diskussionen privat.'
     confirm_change_to_public: 'Wenn Sie fortfahren werden alle Diskussionen in der Gruppe öffentlich sichtbar im Web.'
     confirm_change_to_private_discussions_only: 'Wenn Sie fortfahren werden alle öffentlichen Diskussionen dieser Gruppe privat.'
+    profile: Profil
     subgroup_privacy_is_open_description: "Jeder kann diese Gruppe finden und Sie nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind öffentlich."
     subgroup_privacy_is_closed_description: "Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind privat."
     subgroup_privacy_is_closed_public_threads_description: "Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Diskussionen können öffentlich oder privat sein."
@@ -701,6 +746,8 @@ de:
     messages:
       group_created: 'Gruppe wurde erstellt'
       group_updated: 'Gruppe aktualisiert'
+    upload_logo: 'Logo hochladen'
+    upload_cover_photo: 'Neues Cover-Bild hochladen'
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -811,10 +858,15 @@ de:
   memberships_page:
     members: 'Mitglieder'
     name_label: 'Name'
+    coordinator_label: 'Admin'
     remove_member_label: 'entfernen'
     fragment_placeholder: 'Benutzer anhand des Namens oder des Benutzernamens filtern...'
     messages:
       remove_member_success: '{{name}} enfernt'
+      make_admin_success: '{{name}} ist jetzt Admin'
+      remove_admin_success: '{{name}} ist nicht mehr Admin'
+    remove_admin_from_self:
+      question: 'Bist Dz sicher, dass Du nicht mehr Admin sein willst?'
   membership_remove_modal:
     invitation:
       title: Einladung abbrechen
@@ -828,6 +880,9 @@ de:
       impact_for_subgroups: Dies wird auch Ihren Zugang zu den Untergruppen dieser Gruppe entfernen.
       flash: Mitglied entfernt
       submit: Mitglied entfernen
+  memberships_panel:
+    add_coordinator: Zum Admin machen
+    remove_coordinator: Adminrechte entziehen
   membership_form:
     modal_title:
       group: Gruppen-Überschrift festlegen
@@ -874,7 +929,6 @@ de:
       deactivated: 'Benutzerkonto deaktiviert'
     change_picture_link: 'Profilbild ändern'
     change_password_link: 'Passwort zurücksetzen'
-    deactivate_user_link: 'Benutzerkonto deaktivieren...'
     delete_account: 'dauerhaft gelöschter Account'
     delete_user_link: 'Account löschen'
     profile: 'Profil'
@@ -897,9 +951,12 @@ de:
     select_text_to_link: Text zum verlinken markieren
     insert_link: Link einfügen
   change_picture_form:
+    title: 'Neues Foto'
     helptext: 'Sie können Ihr eigenes Profilbild hochladen, oder Sie verwenden Ihr <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar-Konto</a>, wenn Sie eins besitzen.'
     use_initials: 'Nutzen Sie Initialien'
     use_gravatar: 'Gravatar benutzen'
+    use_uploaded: 'Neues Foto hochladen'
+    use_provider: 'Neues Foto von {{provider}} hochladen'
   change_password_form:
     set_password_title: Passwort erstellen
     set_password_helptext: 'Füge bitte ein Passwort mit minimal 8 Zeichen ein '
@@ -914,7 +971,7 @@ de:
     you_can_reactivate: "Sie können Ihren Account später wieder aktivieren"
     submit: 'Ja, deaktiveren'
   delete_user_modal:
-    title: 'Löschen Sie Ihren Benutzeraccount'
+    title: 'Benutzerkonto löschen'
     irreversable: "WARNUNG: Dies kann nicht rückgängig gemacht werden. Wenn Sie fortfahren:"
     you_will_be_deleted: "Ihr Account mit Name, Mailadresse und anderen persönlichen Daten wird vom System gelöscht werden"
     submit: 'JA, meinen Account löschen'
@@ -925,7 +982,7 @@ de:
     placeholder: 'Diese Frage zu beantworten ist optional. Jegliche Informationen, die Sie mit uns teilen, helfen uns zu verbessern :)'
     submit: 'Benutzerkonto deaktivieren'
   email_settings_page:
-    header: E-Mail-Einstellungen
+    header: Benachrichtigungseinstellungen
     email_newsletter: Loomio Newsletter
     email_newsletter_description: "Updates über neue Funktionen, Trainings, Events in deiner Stadt und die Zukunft von Loomio erhalten. Sind ca. 2-3 E-mails pro Jahr. "
     daily_summary_label: Tägliche Übersichts-E-Mail
@@ -1044,7 +1101,7 @@ de:
   thread_context:
     aria_label: 'Diskussionsbeschreibung'
     thread_options: 'Diskussionsoptionen'
-    email_settings: 'E-Mail-Einstellungen'
+    email_settings: 'Benachrichtigungseinstellungen'
     edit: 'Bearbeiten'
     edit_thread: 'Bearbeiten'
     close_thread: 'Schliessen'
@@ -1268,6 +1325,7 @@ de:
     header_name: 'Name'
     header_username: 'Benutzername'
     invitations: 'Einladungen'
+    admin: 'Admin'
   polls_panel:
     all: 'Alle'
     open: 'Offen'
@@ -1509,6 +1567,7 @@ de:
     minimum_stance_choices_helptext: Anzahl der Optionen, die die Teilnehmer priorisieren können
     ranked_choice_created: Prioritätensetzung erstellt
     ranked_choice_updated: Prioritätensetzung aktualisiert
+    rank: Rang
   poll_meeting_time_field:
     new_time_slot: Neues Zeitfenster
     closing_hour: Schließ-Stunde
@@ -1650,9 +1709,7 @@ de:
       install_helptext: 'Der Loomio bot informiert dein Team über Diskussionen und Entscheidungen die Loomio passieren. '
       installed_title: Mit Microsoft Teams verbunden
       installed_helptext: Ereignisse aus dieser Gruppe werden an Ihr Microsoft Team gesendet.
-      install_microsoft: Teams verbinden
       remove_identity: Diese Eingliederung entfernen
-      confirm_remove_title: Microsoft Teams entfernen
       confirm_remove_helptext: |
           Dein Microsoft Teams Kanal wird keine Updates mehr zu dieser Gruppe erhalten.
           Du kannst sie natürlich jederzeit wieder hinzufügen.
@@ -1672,8 +1729,7 @@ de:
       poll_expired: Eine Umfrage ist abgelaufen
       outcome_created: 'Ein Ergebnis wurde geteilt  '
   install_slack:
-    modal_title: Slack installieren
-    modal_helptext: Als erstes müssen Sie sich bei Slack anmelden. Wir werden Sie sofort  automatisch weiterleiten, alternativ können Sie zum Fortfahren auch auf den Button unten klicken.
+    modal_title: Mit Slack verbinden
     login_to_slack: bei Slack einloggen
     card:
       install_title: Mit Slack verbinden

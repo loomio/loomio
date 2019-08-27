@@ -45,12 +45,17 @@ km:
     heading: សួរទៅក្រុមចូលរួម
     name_label: ឈ្មោះ
     email_label: អ៊ីម៉ែល
+  group_wizard:
+    invite_people: អញ្ជើញមនុស្ស​
+    start_thread: ចាប់ផ្តើមជាមួយការពិភាក្សារ
   group_page:
     threads: ការពិភាក្សារ
     members: សមាជិក
     options_label: 'ជម្រើស '
     options:
       label: 'ជម្រើស '
+  group_form:
+    subgroup_name: 'ឈ្មោះ'
   document:
     form:
       title_label: ឈ្មោះ

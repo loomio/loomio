@@ -1,4 +1,10 @@
 fr:
+  plan_names:
+    free: Gratuit
+    trial: Essai
+    small: Petite
+    medium: Moyenne
+    large: Grande
   current_plan_button:
     upgrade: Changer d'offre
     tooltip: Acheter un plan Loomio pour inviter plus de personnes et commencer plus de discussions.
@@ -299,6 +305,7 @@ fr:
     sign_in: "Connectez-vous pour rejoindre la discussion"
   sidebar:
     threads: 'Discussions'
+    my_groups: 'Mes groupes'
     recent_threads: 'Discussions récentes'
     unread_threads: 'Discussions non lues ({{count}})'
     muted_threads: 'Discussions ignorées'
@@ -332,7 +339,6 @@ fr:
   user_dropdown:
     button_label: 'Menu de l''utilisateur'
     edit_profile: 'Modifier mon profil'
-    email_settings: 'Paramètres e-mail'
     help: 'Aide'
     contact_site_name: 'Contacter {{site_name}}'
     sign_out: 'Se déconnecter'
@@ -563,9 +569,14 @@ fr:
     thread_status:
       pinned: "Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour l’ensemble des utilisateurs."
       closed: "Cette discussion a été close. Elle ne sera plus affichée sur le tableau de bord, et sera affichée dans les discussions closes sur la page du groupe"
+  group_wizard:
+    welcome: Réussite!
+    invite_people: Inviter des personnes
+    start_thread: Démarrer une discussion
   group_page:
     threads: Discussions
     members: Membres
+    settings: Paramètres
     subgroups: Sous-groupes
     show_opened: '{{count}} ouvertes'
     show_closed: '{{count}} closes'
@@ -604,7 +615,6 @@ fr:
       manage_members: 'Gérer les membres'
       add_subgroup: 'Ajouter un sous-groupe'
       manage_subscription: 'Gérer les inscriptions au groupe'
-      email_settings: 'Paramètres des courriels'
       leave_group: 'Quitter le groupe'
       deactivate_group: 'Désactiver le groupe'
     volume:
@@ -646,8 +656,9 @@ fr:
     edit_group_heading: 'Modifier les paramètres du groupe'
     edit_subgroup_heading: 'Modifier les paramètres du sous-groupe'
     group_name: 'Nom du groupe'
+    start_organization_heading: Nouveau groupe
     group_name_placeholder: 'Comment voulez-vous nommer votre groupe ?'
-    subgroup_name: 'Nom du sous-groupe'
+    subgroup_name: 'Nom'
     description: 'Description'
     description_placeholder: 'Utilisez cet espace pour décrire le but de votre groupe afin que vos membres sachent pourquoi ils sont là.'
     privacy_statement:
@@ -663,6 +674,7 @@ fr:
     confirm_change_to_secret_subgroup: 'Si vous confirmez, toutes les discussions seront rendues privées.'
     confirm_change_to_public: 'Si vous confirmez, toutes les discussions de ce groupe seront rendues publiques.'
     confirm_change_to_private_discussions_only: 'Si vous confirmez, toutes les discussions publiques dans ce groupe seront rendues privées.'
+    profile: Profil
     subgroup_privacy_is_open_description: "Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans le groupe. Toutes les discussions sont publiques."
     subgroup_privacy_is_closed_description: "Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans ce groupe. Toutes les discussions sont privées."
     subgroup_privacy_is_closed_public_threads_description: "Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans le groupe. Les discussions peuvent être publiques ou privées."
@@ -868,7 +880,6 @@ fr:
       deactivated: 'Compte désactivé'
     change_picture_link: 'Changer de photo'
     change_password_link: 'Réinitialiser mon mot de passe'
-    deactivate_user_link: 'Désactiver mon compte…'
     delete_account: 'Supprimer définitivement le compte'
     delete_user_link: 'Supprimer le compte'
     profile: 'Profil'
@@ -885,7 +896,6 @@ fr:
     location_label: 'Lieu'
     location_placeholder: 'Où êtes-vous ?'
     update_profile: 'Mettre à jour mon profil'
-    deactivate_account: 'Désactiver mon compte'
     help_translate: "Aidez-nous à traduire Loomio"
   text_editor:
     select_text_to_link: Sélectionnez le texte du lien
@@ -898,7 +908,6 @@ fr:
     set_password: Définir un mot de passe
     password_changed: Votre mot de passe a été mis à jour
   deactivation_modal:
-    aria_label: 'Désactiver mon compte'
     introduction: 'Quand vous désactivez votre compte :'
     no_longer_group_member: 'Vous ne serez plus enregistré comme membre d’aucun groupe'
     name_removed: 'Les commentaires, les décisions et les discussions que vous avez fait resteront mais votre nom en sera retiré'
@@ -906,7 +915,6 @@ fr:
     you_can_reactivate: "Vous pouvez réactiver votre compte ultérieurement si vous le souhaitez."
     submit: 'Oui, je veux désactiver'
   delete_user_modal:
-    title: 'Supprimer votre compte'
     irreversable: "AVERTISSEMENT : Ceci ne peut pas être annulé. Si vous continuez :"
     you_will_be_deleted: "Votre compte d'utilisateur, y compris votre nom, votre adresse e-mail et d'autres données d'identification personnelle seront supprimés de nos systèmes."
     submit: 'Oui, supprimer mon compte'
@@ -917,7 +925,6 @@ fr:
     placeholder: 'Vous n’êtes pas obligé de répondre à cette question. Toute information que vous nous partagerez nous aidera à nous améliorer :)'
     submit: 'Désactiver mon compte'
   email_settings_page:
-    header: Réglages de courriel
     email_newsletter: Bulletin d'information de Loomio
     email_newsletter_description: "Etre averti des nouvelles fonctionnalités, formation, évènements dans votre ville et du futur de Loomio. 2 à 3 e-mails par an."
     daily_summary_label: Résumé quotidien
@@ -1036,7 +1043,6 @@ fr:
   thread_context:
     aria_label: 'Contexte de la discussion'
     thread_options: 'Options de la discussion'
-    email_settings: 'Paramètres e-mail'
     edit: 'Modifier'
     edit_thread: 'Modifier'
     close_thread: 'Fermer'
@@ -1639,9 +1645,7 @@ fr:
       install_helptext: Le robot Loomio envoie des notifications à votre équipe concernant les discussions et les décisions qui ont lieu sur Loomio.
       installed_title: Connecté·e à Microsoft Teams
       installed_helptext: Les événements de ce groupe seront envoyés vers votre équipe Microsoft Team.
-      install_microsoft: Connecter les équipes
       remove_identity: Retirer cette intégration
-      confirm_remove_title: Retirer Microsoft Teams
       confirm_remove_helptext: |
           Votre canal d'équipes Microsoft ne recevra plus les mises à jour de ce groupe.
           Vous pourrez toujours les ajouter de nouveau.
@@ -1659,8 +1663,6 @@ fr:
       poll_expired: Un sondage est achevé
       outcome_created: Un bilan a été partagé
   install_slack:
-    modal_title: Installer Slack
-    modal_helptext: Pour commencer, connectez-vous à Slack. Nous vous redirigerons là dans un instant, ou vous pouvez cliquer ci-dessous pour continuer.
     login_to_slack: Se connecter à Slack
     card:
       install_title: Se connecter à Slack

@@ -293,7 +293,6 @@ pl:
   user_dropdown:
     button_label: 'Menu użytkownika'
     edit_profile: 'Edytuj profil'
-    email_settings: 'Ustawienia e-maili'
     help: 'Pomoc'
     sign_out: 'Wyloguj się'
   membership_card:
@@ -429,9 +428,13 @@ pl:
     thread_status:
       pinned: "Ten wątek został przypięty. Zostanie na samej górze listy wątków dla wszystkich członków grupy."
       closed: "Ten wątek został zamknięty. Nie będzie się więcej pojawiał w głównym panelu i będzie wyświetlał się pod \"Zamkniętymi\" na stronie grupy."
+  group_wizard:
+    invite_people: Zaproś ludzi
+    start_thread: Rozpocznij dyskusję
   group_page:
     threads: Wątki
     members: Członkowie
+    settings: Ustawienia
     subgroups: Podgrupy
     show_opened: '{{count}} Otwarte'
     show_closed: '{{count}} Zamknięte'
@@ -488,9 +491,10 @@ pl:
     edit_subgroup_heading: 'Edytuj ustawienia subgrupy'
     group_name: 'Nazwa grupy'
     group_name_placeholder: 'Jak chcesz nazwać swoją grupę?'
-    subgroup_name: 'Nazwa subgrupy'
+    subgroup_name: 'Nazwa'
     description: 'Opis'
     privacy: 'Prywatność'
+    profile: Profil
     submit_update: 'Zaktualizuj ustawienia'
   documents_page:
     confirm_remove_title: Usunięcie załącznika
@@ -534,7 +538,6 @@ pl:
       password_changed: 'Hasło zmienione'
       deactivated: 'Konto wyłączone'
     change_picture_link: 'Zmiana zdjęcia'
-    deactivate_user_link: 'Wyłączenie hasła...'
     profile: 'Profil'
     edit_profile: 'Edycja Profilu'
     picture_label: 'Zdjęcie'
@@ -544,7 +547,6 @@ pl:
     locale_label: 'Język'
     update_profile: 'Zmiana profilu'
   email_settings_page:
-    header: Ustawienia poczty
     daily_summary_label: Dzienna wiadomość z podsumowaniem
     announcement_label: Ogłoszenia
     messages:
@@ -601,7 +603,6 @@ pl:
   thread_context:
     aria_label: 'Kontekst wątku.'
     thread_options: 'Opcje wątku'
-    email_settings: 'Ustawienia e-maili'
     close_thread: 'Zamknij'
     reopen_thread: 'Otworzyć ponownie'
     mute_thread: 'Wycisz'

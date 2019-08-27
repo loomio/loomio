@@ -1,4 +1,6 @@
 ko:
+  plan_names:
+    free: 무료
   current_plan_button:
     upgrade: 업그레이드
   loomio_tags:
@@ -165,6 +167,7 @@ ko:
     sign_in: "대화에 참여하려면 로그인 하세요"
   sidebar:
     threads: '토론'
+    my_groups: '내 그룹'
     recent_threads: '최근 토론 주제'
     unread_threads: '읽지 않은 토론 주제 ({{count}})'
     muted_threads: '알림을 받지 않는 토론 주제'
@@ -261,6 +264,9 @@ ko:
     aria_label: 검토 이력
     posted: 저장됨
     current_revision: 최신
+  group_wizard:
+    invite_people: 초대 명단
+    start_thread: 그룹 시작하기
   group_page:
     threads: 토론
     members: 멤버
@@ -326,7 +332,7 @@ ko:
     edit_group_heading: '그룹 설정 편집'
     edit_subgroup_heading: '소그룹 설정 수정하기'
     group_name: '그룹명'
-    subgroup_name: '소그룹 이름'
+    subgroup_name: '이름'
     description: '설명'
     description_placeholder: '그룹의 멤버들이 왜 여기에 모여 있는지 인식할 수 있도록 이 그룹의 목적을 설명해주세요.'
     privacy_statement:
@@ -337,6 +343,7 @@ ko:
     confirm_change_to_secret_subgroup: '모든 쓰레드가 비공개로 전환됩니다. 계속하시겠습니까?'
     confirm_change_to_public: '이 그룹의 모든 쓰레드가 웹에 공개됩니다. 계속하시겠습니까?'
     confirm_change_to_private_discussions_only: '이 그룹의 공개된 모든 쓰레드가 비공개로 전환됩니다. 계속하시겠습니까?'
+    profile: 프로필
     advanced_settings: "상세 설정"
     how_do_people_join: "가입 방법은 무엇인가요?"
     membership_granted_upon_request: '누구나 가입할 수 있습니다.'
@@ -447,7 +454,6 @@ ko:
       password_changed: '비밀번호를 변경했습니다.'
       deactivated: '계정을 비활성화했습니다.'
     change_picture_link: '사진 교체'
-    deactivate_user_link: '계정을 비활성화합니다...'
     profile: '프로필'
     edit_profile: '프로필 수정'
     picture_label: '사진'
@@ -456,11 +462,9 @@ ko:
     email_label: '이메일'
     locale_label: '언어'
     update_profile: '프로필 저장'
-    deactivate_account: '계정 비활성화'
   change_picture_form:
     use_initials: '이니셜 사용'
   deactivation_modal:
-    aria_label: '계정 비활성화'
     introduction: '계정 비활성화된 때 '
     no_longer_group_member: '당신은 모든 그룹에서 탈퇴됩니다.'
     submit: '네, 비활성화하겠습니다.'
@@ -469,7 +473,6 @@ ko:
     title: '계정 비활성화'
     submit: '계정 비활성화'
   email_settings_page:
-    header: 이메일 설정
     daily_summary_label: 일별 요약 이메일
     on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
     specific_groups: 특별한 그룹에 적용
@@ -542,7 +545,6 @@ ko:
   thread_context:
     aria_label: '주제 컨텍스트'
     thread_options: '쓰레드 옵션'
-    email_settings: '이메일 설정'
     edit: '편집'
     close_thread: '닫기'
     move_thread: '이동'

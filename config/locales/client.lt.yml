@@ -171,8 +171,11 @@ lt:
     email_label: El. paštas
   reactions_display:
     you: "Tu"
+  group_wizard:
+    invite_people: Pakviesti žmones
   group_page:
     threads: Temos
+    settings: Nustatymai
     subgroups: Pogrupiai
     messages:
       privacy:
@@ -195,6 +198,7 @@ lt:
   group_form:
     description: 'Aprašas'
     privacy: 'Privatumas'
+    profile: Profilis
     members_can_create_subgroups: 'Nariai gali kurti pogrupius.'
     members_can_edit_comments: 'Nariai gali bet kuriuo metu redaguoti savo komentarus.'
     submit_update: 'Atnaujinti nustatymus'
@@ -236,7 +240,6 @@ lt:
       picture_changed: 'Profilio paveikslas atnaujintas'
       password_changed: 'Slaptažodis atnaujintas'
     change_picture_link: 'Keisti paveikslą'
-    deactivate_user_link: 'Pasyvinti paskyrą...'
     profile: 'Profilis'
     edit_profile: 'Redaguoti profilį'
     picture_label: 'Paveikslas'
@@ -245,7 +248,6 @@ lt:
     locale_label: 'Kalba'
     update_profile: 'Atnaujinti profilį'
   email_settings_page:
-    header: El. pašto nustatymai
     messages:
       updated: El. pašto nustatymai atnaujinti
   dashboard_page:

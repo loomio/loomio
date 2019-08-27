@@ -1,4 +1,6 @@
 el:
+  plan_names:
+    free: Δωρεάν
   current_plan_button:
     upgrade: Αναβάθμιση
   loomio_tags:
@@ -273,9 +275,13 @@ el:
     edited_by: 'Επεξεργάστηκε από <strong>{{name}}</strong>'
     posted: Δημοσιεύθηκε
     current_revision: Τελευταία
+  group_wizard:
+    invite_people: Προσκαλέστε άτομα
+    start_thread: Ξεκινήστε μια συζήτηση
   group_page:
     threads: Θέματα
     members: Μέλη
+    settings: Ρυθμίσεις
     subgroups: Υποομάδες
     messages:
       archive_group_success: 'Αυτή η ομάδα έχει απενεργοποιηθεί'
@@ -320,13 +326,14 @@ el:
     edit_subgroup_heading: 'Επεξεργαστείτε τις ρυθμίσεις της υπο ομάδας'
     group_name: 'Όνομα ομάδας'
     group_name_placeholder: 'Πως θέλετε να λέτε την ομάδα σας;'
-    subgroup_name: 'Όνομα υπο ομάδας'
+    subgroup_name: 'Όνομα'
     description: 'Περιγραφή'
     description_placeholder: 'Περιγράψτε τον σκοπό της ομάδας σας, ώστε τα μέλη της ομάδας σας να γνωρίζουν γιατί είναι εδώ.'
     privacy_statement:
       private_to_group: 'Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη.'
       private_to_parent_members: 'Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη του {{parent}}'
     privacy: 'Ιδιωτικότητα'
+    profile: Προφίλ
     permissions: 'Δικαιώματα'
     thread_privacy: 'Ιδιωτικότητα του θέματος'
     public_threads: 'Μόνο δημόσια θέματα'
@@ -381,7 +388,6 @@ el:
   change_picture_form:
     use_gravatar: 'Χρησιμοποιήστε Gravatar'
   email_settings_page:
-    header: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου
     announcement_label: Ανακοινώσεις
   dashboard_page:
     aria_label: 'Πίνακας Εργαλείων'

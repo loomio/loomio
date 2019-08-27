@@ -71,7 +71,6 @@ te:
     logo_title: 'ముంగిలి పేజీ'
   user_dropdown:
     button_label: 'వాడుకరి మెనూ'
-    email_settings: 'ఈమెయిలు అమరికలు'
     help: 'సహాయం'
   membership_card:
     invitations: "ఆహ్వానాలు"
@@ -94,14 +93,19 @@ te:
     email_label: ఈమెయిలు
   reactions_display:
     you: "మీరు"
+  group_wizard:
+    invite_people: వ్యక్తులను ఆహ్వానించండి
+    start_thread: ఒక చర్చను ప్రారంభించండి
   group_page:
     threads: చర్చలు
     members: సభ్యులు
+    settings: అమరికలు
     invite_people: 'ఆహ్నానించు'
     options_label: 'ఐచ్ఛికాలు'
     options:
       label: 'ఐచ్ఛికాలు'
   group_form:
+    subgroup_name: 'పేరు'
     privacy: 'అంతరంగికత'
   document:
     form:
@@ -130,7 +134,6 @@ te:
     email_label: 'ఈమెయిలు'
     locale_label: 'భాష'
   email_settings_page:
-    header: ఈమెయిలు అమరికలు
     update_settings: మార్పులను భద్రపరచు
   dashboard_page:
     threads_from:
@@ -141,7 +144,6 @@ te:
   thread_group:
     aria_label: 'సమూహం పేరు'
   thread_context:
-    email_settings: 'ఈమెయిలు అమరికలు'
     close_thread: 'మూసివేయి'
     delete_thread: 'తొలగించు'
   delete_comment_dialog:

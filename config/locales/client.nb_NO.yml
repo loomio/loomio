@@ -303,7 +303,6 @@ nb_NO:
   user_dropdown:
     button_label: 'Brukermeny'
     edit_profile: 'Rediger brukerprofil'
-    email_settings: 'Innstillinger for e-post'
     help: 'Hjelp'
     contact_site_name: 'Kontakt {{site_name}}'
     sign_out: 'Logg ut'
@@ -524,6 +523,7 @@ nb_NO:
       closed: "Denne tråden har blitt stengt. Den vil ikke være synlig på Skrivebordet, og ligge under 'lukket' på gruppesiden"
   group_page:
     threads: Tråder
+    settings: Innstillinger
     show_opened: '{{count}} Åpne'
     show_closed: '{{count}} Lukket'
     no_threads_here: Ingen tråder å se her!
@@ -532,6 +532,7 @@ nb_NO:
     new_group_logo: 'Last opp ny gruppelogo'
     invite_people: 'Inviter'
   group_form:
+    subgroup_name: 'Navn'
     privacy: 'Personvern'
     submit_update: 'Oppdater innstillinger'
   documents_page:
@@ -563,7 +564,6 @@ nb_NO:
     name_label: 'Navn'
     email_label: 'E-post'
   email_settings_page:
-    header: Innstillinger for e-post
     announcement_label: Annonseringer
     update_settings: Lagre endringer
     edit: Rediger
@@ -583,7 +583,6 @@ nb_NO:
     context: Kontekst
     comment: Kommentar
   thread_context:
-    email_settings: 'Innstillinger for e-post'
     edit: 'Rediger'
     edit_thread: 'Rediger'
     close_thread: 'Lukk'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_054110) do
+ActiveRecord::Schema.define(version: 2019_08_25_221208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_07_09_054110) do
     t.datetime "opened_at"
     t.datetime "clicked_at"
     t.index ["token"], name: "index_ahoy_messages_on_token"
+    t.index ["user_id"], name: "index_ahoy_messages_on_user_id", where: "(user_id IS NOT NULL)"
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|

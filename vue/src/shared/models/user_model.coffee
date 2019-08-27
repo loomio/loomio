@@ -50,7 +50,7 @@ export default class UserModel extends BaseModel
     _.invokeMap @adminMemberships(), 'groupId'
 
   parentGroups: ->
-    _.filter @groups(), (group) -> group.isParent()
+    _.filter @groups(), (group) -> group.isParent() && group.type == 'FormalGroup'
 
   inboxGroups: ->
     _.flatten [@parentGroups(), @orphanSubgroups()]

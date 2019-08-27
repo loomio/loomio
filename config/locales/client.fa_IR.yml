@@ -131,9 +131,13 @@ fa_IR:
     membership_requested: درخواست عضویت شد
   reactions_display:
     you: "شما"
+  group_wizard:
+    invite_people: دیگران را دعوت کنید
+    start_thread: راه انداختن یک بحث
   group_page:
     threads: موضوعات
     members: اعضا
+    settings: تنظیمات
   group_form:
     privacy: 'حریم شخصی'
     submit_update: 'به روز رسانی تنطیمات'
@@ -147,7 +151,6 @@ fa_IR:
     members: 'اعضا'
     remove_member_label: 'حذف کردن'
   email_settings_page:
-    header: تنظیمات رایانامه
     update_settings: ذخیره کردن تغییرات
     edit: ویرایش
   dashboard_page:

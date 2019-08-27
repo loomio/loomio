@@ -25,6 +25,8 @@ export default
     group: null
     version: AppConfig.version.split('.').slice(-1)[0]
     myGroups: []
+    otherGroups: []
+    organizations: []
     unreadCounts: {}
 
   created: ->
@@ -34,63 +36,50 @@ export default
       @group = data.group
       if @group
         @organization = data.group.parentOrSelf()
+        Records.groups.fetchByParent(@organization)
       else
         @organization = null
 
     @watchRecords
-      collections: ['groups', 'memberships']
-      query: (store) =>
-        if @organization
-          @myGroups = intersection Session.user().formalGroups(), @organization.subgroups()
+      collections: ['groups', 'memberships', 'discussions']
+      query: (store) => @updateGroups()
 
-        @groups = Session.user().parentGroups().concat(Session.user().orphanSubgroups()).filter (g) -> g.type == "FormalGroup"
-        # @groups = Session.user().formalGroups().filter (group) ->
-        #   group.isParent() or !Session.user().isMemberOf(group.parent())
-        # @ = uniq compact concat(groups, map(groups, (group) -> group.parent()))
-        @groups = sortBy @groups, 'fullName'
+    InboxService.load()
 
-    @watchRecords
-      collections: ['groups', 'discussions']
-      query: (store) =>
-        return unless @organization
+  watch:
+    organization: 'updateGroups'
+
+    open: (val) ->
+      EventBus.$emit("sidebarOpen", val)
+
+  methods:
+    updateGroups: ->
+      @organizations = Session.user().parentGroups().concat(Session.user().orphanParents())
+      if @organization
+        @myGroups = intersection Session.user().formalGroups(), @organization.subgroups()
+        @otherGroups = difference @organization.subgroups(), Session.user().formalGroups()
         @unreadCounts = {}
         @myGroups.forEach (group) =>
           @unreadCounts[group.id] = filter(group.discussions(), (discussion) -> discussion.isUnread()).length
         @unreadCounts[@organization.id] = filter(@organization.discussions(), (discussion) -> discussion.isUnread()).length
 
-    InboxService.load()
-
-  watch:
-    open: (val) ->
-      EventBus.$emit("sidebarOpen", val)
-
-    '$route': ->
-      console.log '$route', @$route
-
-
-  methods:
-    sortGroups: (groups) -> sortBy groups, 'fullName'
-    availableGroups: -> Session.user().formalGroups()
-
-    currentGroup: ->
-      return head(@availableGroups()) if @availableGroups().length == 1
-      find(@availableGroups(), (g) => g.id == (AppConfig.currentGroup or {}).id) || Records.groups.build()
+    startOrganization: ->
+      @canStartGroup() && @openStartGroupModal()
 
     unreadThreadCount: ->
       InboxService.unreadCount()
 
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
-    isCurrentOrganization: (group) ->
-      if AppConfig.currentGroup
-        AppConfig.currentGroup.parentOrSelf().id == group.id
+
+    parentGroupLink: (group) ->
+      if Session.user().isMemberOf(group)
+        @urlFor(group)
+      else
+        @urlFor(group)+"?subgroups=mine"
 
   computed:
     user: -> Session.user()
-    parentGroups: -> Session.user().parentGroups()
-    siteName: -> AppConfig.theme.site_name
-    logoUrl: -> AppConfig.theme.app_logo_src
-    subgroups: -> @organization.subgroups()
-    canStartSubGroup: -> true
+    canStartSubGroup: -> @organization && AbilityService.canCreateSubgroups(@organization)
 
 </script>
 
@@ -102,11 +91,15 @@ v-navigation-drawer.sidenav-left(app v-model="open")
       v-list-item(to="/dashboard")
         v-list-item-avatar(:size="28")
           user-avatar(no-link :user="user")
-      v-list-item(v-for='group in parentGroups' :key='group.id' :to='urlFor(group)' dense)
-        v-list-item-avatar(size="28px")
-          v-avatar(tile size="28px")
-            img.sidebar__list-item-group-logo(:src='group.logoUrl()')
-      v-list-item
+
+      v-tooltip(v-for='group in organizations' :key='group.id' right)
+        template(v-slot:activator="{ on }")
+          v-list-item(:to='parentGroupLink(group)' dense)
+            v-list-item-avatar(size="28px")
+              v-avatar(tile size="28px" v-on="on")
+                img.sidebar__list-item-group-logo(:src='group.logoUrl()')
+        span {{group.name}}
+      v-list-item(@click="startOrganization()")
         v-list-item-avatar(:size="28")
           v-icon(:size="28" tile) mdi-plus
 
@@ -130,13 +123,27 @@ v-navigation-drawer.sidenav-left(app v-model="open")
       div(v-if="myGroups.length > 0")
         v-divider
         v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization, null, {subgroups: "mine"})')
-          v-list-item-title My groups
+          v-list-item-title(v-t="'sidebar.my_groups'")
         v-list-item(dense v-for="group in myGroups" :key="group.id" :to="urlFor(group)")
           v-list-item-title(v-if="unreadCounts[group.id]") {{ group.name }} ({{ unreadCounts[group.id] }})
           v-list-item-title(v-if="!unreadCounts[group.id]") {{ group.name }}
+      div(v-if="otherGroups.length > 0")
+        v-divider
+        v-list-item(dense exact :to='urlFor(organization, null, {subgroups: "all"})')
+          v-list-item-title(v-t="'sidebar.all_groups'")
+        v-list-item(dense v-for="group in otherGroups" :key="group.id" :to="urlFor(group)")
+          v-list-item-title {{ group.name }}
+          //- v-list-item-title(v-if="unreadCounts[group.id]") {{ group.name }} ({{ unreadCounts[group.id] }})
+          //- v-list-item-title(v-if="!unreadCounts[group.id]") {{ group.name }}
+          //- v-divider
+          //- v-list-item.sidebar__list-item-button--recent(dense exact :to="urlFor(organization, 'subgroups')")
+          //-   v-list-item-title(v-t="'sidebar.more_groups'")
+
       v-divider
-      v-list-item.sidebar__list-item-button--recent(dense exact :to="urlFor(organization, 'subgroups')")
-        v-list-item-title(v-t="'sidebar.all_groups'")
+      v-list-item(v-if="canStartSubGroup" dense @click="openStartSubgroupModal(organization)")
+        v-list-item-title(v-t="'sidebar.start_subgroup'")
+        v-list-item-avatar
+          v-icon mdi-plus
 
       div(v-if="organization.subscriptionPlan == 'trial'")
         v-divider
@@ -145,7 +152,7 @@ v-navigation-drawer.sidenav-left(app v-model="open")
           v-list-item-title(v-t="'current_plan_button.upgrade'")
           v-list-item-icon
             v-icon(color="primary") mdi-rocket
-      v-divider
-      v-list-item(href="/beta" dense)
-        v-list-item-title Loomio 2 - beta {{version}}
+      template(v-slot:append)
+        v-list-item(href="/beta" dense)
+          v-list-item-title Loomio 2 - beta {{version}}
 </template>

@@ -25,20 +25,25 @@ export default
     link: -> LmoUrlService.event @event
     dockActions: ->
       if AbilityService.canEditComment(@eventable)
+        # reply_to_comment = null
         edit_comment = 'edit_comment'
-        show_history = null
+        # show_history = null
       else
-        edit_comment = null
+        reply_to_comment = 'reply_to_comment'
+        react = 'react'
+        # edit_comment = null
         show_history = 'show_history'
 
-      pick CommentService.actions(@eventable, @), compact ['react', 'reply_to_comment', edit_comment, show_history]
+      pick CommentService.actions(@eventable, @), compact [react, reply_to_comment, edit_comment, show_history]
 
     menuActions: ->
       if AbilityService.canEditComment(@eventable)
+        react = 'react'
         show_history = 'show_history'
+        reply_to_comment = 'reply_to_comment'
 
       assign(
-        pick CommentService.actions(@eventable, @), compact [show_history, 'fork_comment', 'translate_comment' , 'delete_comment']
+        pick CommentService.actions(@eventable, @), compact [react, reply_to_comment, show_history, 'fork_comment', 'translate_comment' , 'delete_comment']
       ,
         pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
       )

@@ -350,6 +350,9 @@ en:
 
   sidebar:
     threads: 'Threads'
+    my_groups: 'My groups'
+    other_groups: 'Other groups'
+    all_groups: 'All groups'
     recent_threads: 'Recent threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
@@ -358,7 +361,7 @@ en:
     explore: 'Public groups'
     start_thread: New thread
     start_decision: New decision
-    all_groups: All groups
+    more_groups: More groups
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Threads actions'
@@ -656,6 +659,20 @@ en:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
+  group_wizard:
+    welcome: Success!
+    welcome_description: You've successfully created a new organization on Loomio. In a few steps, you'll have your organization fully setup and ready to start discussions. If you want to skip this wizard for now, you can open it again from the Settings tab.
+    setup_profile: Setup profile
+    setup_profile_description: Set your group's description, logo and cover photo
+    invite_people: Invite people
+    invite_people_description: List emails to send invitations to, or copy a link to share with others
+    setup_integrations: Setup integrations
+    setup_integrations_description: Connect Loomio with Slack and/or Microsoft Teams
+    start_thread: Start a discussion
+    start_thread_description: Write a welcome note, discuss the purpose of your group, or share the minutes of your last meeting
+    do_it: Let's go
+
+
   group_page:
     threads: Threads
     polls: Polls
@@ -694,6 +711,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
+      open_group_wizard: 'Open Group Wizard'
       become_coordinator: Become Admin
       export_data: Export Group Data
       export_data_as_json: Export Group Data as JSON
@@ -745,13 +763,17 @@ en:
   group_form:
     permissions_explaination: 'There are two levels of membership: admin and member. Admins have all permissions. Select member permissions:'
     aria_label: 'Group form'
-    new_organisation:
+    new_organisation: New Organization
     start_group_heading: 'Start a group'
     start_subgroup_heading: 'Start a subgroup'
     edit_group_heading: 'Edit group settings'
     edit_subgroup_heading: 'Edit subgroup settings'
     group_name: 'Group Name'
+    organization_name: 'Organization Name'
+    start_organization_heading: New organization
+    edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What do you want to call your group?'
+    organization_name_placeholder: 'What do you want to call your organization?'
     subgroup_name: 'Subgroup Name'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
@@ -768,6 +790,7 @@ en:
     confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
     confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
     confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
+    profile: Profile
 
     subgroup_privacy_is_open_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are public."
     subgroup_privacy_is_closed_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are private."
@@ -1012,7 +1035,6 @@ en:
       deactivated: 'Account deactivated'
     change_picture_link: 'Change picture'
     change_password_link: 'Reset password'
-    deactivate_user_link: 'Deactivate account...'
     delete_account: 'Permanently Delete account'
     delete_user_link: 'Delete account'
     profile: 'Profile'
@@ -1029,7 +1051,7 @@ en:
     location_label: 'Location'
     location_placeholder: 'Where are you based?'
     update_profile: 'Update profile'
-    deactivate_account: 'Deactivate account'
+    deactivate_account: 'Deactivate user account'
     help_translate: "Help us translate Loomio"
 
   text_editor:
@@ -1052,7 +1074,7 @@ en:
     password_changed: Your password has been updated
 
   deactivation_modal:
-    aria_label: 'Deactivate account'
+    aria_label: 'Deactivate user account'
     introduction: 'When you deactivate your account:'
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
@@ -1061,7 +1083,7 @@ en:
     submit: 'Yes, I want to deactivate'
 
   delete_user_modal:
-    title: 'Delete your user account'
+    title: 'Delete user account'
     irreversable: "WARNING: This cannot be undone. If you proceed:"
     you_will_be_deleted: "Your user account including your name, email address and other personally identifying data will be deleted from our systems."
     submit: 'Yes, delete my account'
@@ -1075,6 +1097,9 @@ en:
 
   email_settings_page:
     header: Notification settings
+    account_deactivated: Your account has been deactivated. You will not receive any emails, ever.
+    deactivate_header: Stop all emails forever
+    deactivate_description: If you never want to get another email from us ever again, you can deactivate your user account.
     email_newsletter: Loomio Newsletter
     email_newsletter_description: "Get updates about new features, training, events in your city and the future of Loomio. Usually 2 or 3 emails per year."
     daily_summary_label: Daily summary email
@@ -1963,6 +1988,7 @@ en:
     too_many_attempts: "Too many attempts; try clicking the link in the email to log in."
     invalid_code: "Sorry, that code didn't match. Check the email and try again."
     password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
+    reactivate_link_sent: "We've sent you an email with instructions to reactivate your account"
     signed_in: Signed in successfully
     email_verified: Email verified successfully
     name: Name
@@ -2003,7 +2029,7 @@ en:
 
   install_slack:
     modal_title: Integrate Slack
-    modal_helptext: First up, you'll need to sign in to slack. We'll redirect you there automatically in a second, or you can click the button below to continue.
+    modal_helptext: First up, you'll need to sign in to slack. Click the button below to continue.
     login_to_slack: Log in to Slack
     remove_slack: Remove Slack integration
 

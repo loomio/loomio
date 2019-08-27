@@ -16,11 +16,11 @@ class CommentService
   end
 
   def self.update(comment:, params:, actor:)
+    actor.ability.authorize! :update, comment
     comment.edited_at = Time.zone.now
-    comment.assign_attributes(params.slice(:body, :document_ids))
+    comment.assign_attributes(params)
 
     return false unless comment.valid?
-    actor.ability.authorize! :update, comment
     comment.save!
 
     EventBus.broadcast('comment_update', comment, actor)

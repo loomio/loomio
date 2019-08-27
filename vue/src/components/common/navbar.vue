@@ -36,10 +36,9 @@ export default
           @searchOpen = true
         else
           @searchQuery = ''
-          @searchOpen = false
 
     searchQuery: debounce (val, old)->
-      @$router.replace(query: {q: val})
+      @$router.replace(query: {q: val, subgroups: @$route.query.subgroups})
     ,
       200
 
@@ -83,13 +82,16 @@ export default
         ''
     tabs: ->
       return unless @group
+      console.log "route query", @$route.query
+      query = ''
+      query = '?subgroups='+@$route.query.subgroups if @$route.query.subgroups
+
       [
-        {id: 0, name: 'threads',   route: @urlFor(@group)}
-        {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')},
-        {id: 2, name: 'members',   route: @urlFor(@group, 'members')},
-        # {id: 3, name: 'subgroups', route: @urlFor(@group, 'subgroups')},
-        {id: 4, name: 'files',     route: @urlFor(@group, 'files')}
-        {id: 5, name: 'settings',     route: @urlFor(@group, 'settings')}
+        {id: 0, name: 'threads',   route: @urlFor(@group, null)+query}
+        {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')+query},
+        {id: 2, name: 'members',   route: @urlFor(@group, 'members')+query},
+        {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
+        {id: 5, name: 'settings',  route: @urlFor(@group, 'settings')}
       ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
 
     logo: ->
@@ -101,7 +103,7 @@ export default
 <template lang="pug">
 v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shrink-on-scroll :src="coverImageSrc")
   template(v-slot:img="{ props }")
-    v-img(v-bind="props" gradient="to top right, rgba(19,84,122,.3), rgba(128,208,199,.5)")
+    v-img(v-bind="props" gradient="to top right, rgba(19,84,122,.7), rgba(128,208,199,.7)")
 
   v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()")
     v-avatar(tile size="36px")

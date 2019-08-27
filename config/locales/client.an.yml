@@ -56,12 +56,19 @@ an:
     heading: Pedir pertenencia a o grupo
     name_label: Nombre
     email_label: Correu electronico
+  group_wizard:
+    invite_people: Convidar a personas
+    start_thread: Empecipiar una discusión
   group_page:
     threads: Discusions
     members: Miembros
+    settings: Achustes
     options_label: 'Opcions'
     options:
       label: 'Opcions'
+  group_form:
+    subgroup_name: 'Nombre'
+    profile: Perfil
   document:
     form:
       title_label: Nombre

@@ -7,7 +7,8 @@ import AppConfig      from '@/shared/services/app_config'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import { submitForm }   from '@/shared/helpers/form'
-import { uniq, compact, concat, sortBy, map } from 'lodash'
+import { uniq, compact, concat, sortBy, map, pick } from 'lodash'
+import UserService from '@/shared/services/user_service'
 import WatchRecords from '@/mixins/watch_records'
 
 
@@ -27,6 +28,7 @@ export default
         groups = Session.user().formalGroups()
         user = Session.user()
         @groups = sortBy groups, 'fullName'
+
   methods:
     init: ->
       return unless Session.isSignedIn() or Session.user().restricted?
@@ -46,16 +48,26 @@ export default
     editSpecificGroupVolume: (group) ->
       @openChangeVolumeModal(Session.user())
   computed:
+    actions: -> pick UserService.actions(Session.user(), @), ['deactivate_user', 'reactivate_user']
+
     defaultSettingsDescription: ->
       "email_settings_page.default_settings.#{Session.user().defaultMembershipVolume}_description"
 </script>
 
 <template lang="pug">
 v-container.email-settings-page.max-width-1024(v-if='user')
-  v-card
+
+  v-card.mb-4(v-if="user.deactivatedAt")
     v-card-title
       h1.headline(v-t="'email_settings_page.header'")
     v-card-text
+      p(v-t="'email_settings_page.account_deactivated'")
+
+  v-card.mb-4(v-if="!user.deactivatedAt")
+    v-card-title
+      h1.headline(v-t="'email_settings_page.header'")
+    v-card-text
+      a.email-settings-page__learn-more-link(href='https://help.loomio.org/en/user_manual/users/email_settings/' target='_blank' v-t="'email_settings_page.learn_more'")
       .email-settings-page__email-settings
         .email-settings-page__global-settings
           form
@@ -76,23 +88,18 @@ v-container.email-settings-page.max-width-1024(v-if='user')
                 div(slot="label")
                   strong(v-t="'email_settings_page.email_newsletter'")
                   .email-settings-page__input-description(v-t="'email_settings_page.email_newsletter_description'")
-            v-btn.md-primary.md-raised.email-settings-page__update-button(@click="submit()" ng-disabled='isDisabled', v-t="'email_settings_page.update_settings'")
-        .email-settings-page__specific-group-settings
-          h3.lmo-h3(v-t="'email_settings_page.specific_groups'")
-          v-list(class='email-settings-page__groups')
-            v-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between
-              .lmo-box--medium.lmo-margin-right.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center
-                i.mdi.mdi-account-multiple-plus.mdi-24px
-              .email-settings-page__default-description(v-html="$t(defaultSettingsDescription)")
-              v-btn.md-accent.email-settings-page__change-default-link(@click='changeDefaultMembershipVolume()', v-t="'common.action.edit'")
-            v-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between(v-for='group in groups', key='group.id')
-              group-avatar.lmo-margin-right(:group='group', size='28px')
-              .email-settings-page__group-details.lmo-flex__grow
-                strong.email-settings-page__group-name
-                  span(v-if='group.isSubgroup()') {{group.parentName()}} -
-                  span {{group.name}}
-                .email-settings-page__membership-volume(v-t="'change_volume_form.' + groupVolume(group) + '_label'")
-              .email-settings-page__edit
-                v-btn.md-accent.email-settings-page__edit-membership-volume-link(@click='editSpecificGroupVolume(group)', v-t="'email_settings_page.edit'")
-          router-link.email-settings-page__learn-more-link(to='https://help.loomio.org/en/user_manual/users/email_settings/', target='_blank', v-t="'email_settings_page.learn_more'")
+    v-card-actions
+      v-spacer
+      v-btn.email-settings-page__update-button(color="primary" @click="submit()" v-t="'email_settings_page.update_settings'")
+
+  v-card
+    v-card-title
+      h1.headline(v-t="'email_settings_page.deactivate_header'")
+    v-card-text
+      p(v-t="'email_settings_page.deactivate_description'")
+      v-list
+        v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()")
+          v-list-item-icon
+            v-icon {{action.icon}}
+          v-list-item-title(v-t="action.name")
 </template>

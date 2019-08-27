@@ -70,6 +70,9 @@ class API::ProfileController < API::RestfulController
   end
 
   private
+  def current_user
+    restricted_user || super
+  end
 
   def model
     load_and_authorize(:group, optional: true) ||

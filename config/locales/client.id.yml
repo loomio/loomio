@@ -46,12 +46,17 @@ id:
     heading: Minta untuk bergabung dalam kelompok
     name_label: Nama
     email_label: Surel
+  group_wizard:
+    invite_people: Undang teman
+    start_thread: Mulai diskusi
   group_page:
     threads: Diskusi
     members: Anggota
     options_label: 'Pilihan'
     options:
       label: 'Pilihan'
+  group_form:
+    subgroup_name: 'Nama'
   document:
     form:
       title_label: Nama

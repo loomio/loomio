@@ -203,9 +203,13 @@ sr:
     edited_by: 'Izmenjeno od <strong>{{name}}</strong>'
     posted: Postavljeno
     current_revision: Poslednje
+  group_wizard:
+    invite_people: Pozovi ljude
+    start_thread: Započni diskusiju
   group_page:
     threads: Niti
     members: Članovi
+    settings: Podešavanja
     subgroups: Podgrupe
     messages:
       privacy:
@@ -253,7 +257,7 @@ sr:
     edit_subgroup_heading: 'Izmeni opcije podgrupe'
     group_name: 'Naziv Grupe'
     group_name_placeholder: 'Kako želite da se Vaša grupa zove?'
-    subgroup_name: 'Naziv Podgrupe'
+    subgroup_name: 'Ime'
     description: 'Opis'
     description_placeholder: 'Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.'
     privacy_statement:
@@ -264,6 +268,7 @@ sr:
     confirm_change_to_secret_subgroup: 'Ako nastavite, sve niti postaće privatne.'
     confirm_change_to_public: 'Ako nastavite, sve niti u ovoj grupi postaće javne na mreži.'
     confirm_change_to_private_discussions_only: 'Ako nastavite, sve javne niti u ovoj grupi će postati privatne.'
+    profile: Profil
     advanced_settings: "Napredne opcije"
     how_do_people_join: "Kako se ljudi pridružuju?"
     membership_granted_upon_request: 'Svako se može pridružiti grupi.'
@@ -373,7 +378,6 @@ sr:
       password_changed: 'Lozinka izmenjena'
       deactivated: 'Nalog deaktiviran'
     change_picture_link: 'Promeni sliku'
-    deactivate_user_link: 'Deaktiviranje naloga...'
     profile: 'Profil'
     edit_profile: 'Izmena Profila'
     picture_label: 'Slika'
@@ -385,7 +389,6 @@ sr:
   change_picture_form:
     use_gravatar: 'Koristi Gravatar'
   email_settings_page:
-    header: ePoruke
     daily_summary_label: Dnevni izveštaj ePorukom
     on_participation_label: Pretplati se na učešće
     on_participation_description: "Kada se priključite niti, sve dalje aktivnosti biće Vam odmah poslate ePorukom."
@@ -460,7 +463,6 @@ sr:
   thread_context:
     aria_label: 'Kontekst niti'
     thread_options: 'Opcije niti'
-    email_settings: 'Opcije ePoruka'
     close_thread: 'Zatvori'
     move_thread: 'Premesti'
     print_thread: 'Štampa'

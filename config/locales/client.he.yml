@@ -1,4 +1,7 @@
 he:
+  plan_names:
+    free: חינם
+    trial: ניסיון
   current_plan_button:
     upgrade: שדרג
     tooltip: רכוש חבילת Loomio להזמין עוד אנשים ולהתחיל עוד שירשורים
@@ -331,7 +334,6 @@ he:
   user_dropdown:
     button_label: 'תפריט משתמש'
     edit_profile: 'עריכת פרופיל'
-    email_settings: 'הגדרות מייל'
     help: 'עזרה'
     contact_site_name: 'צור קשר עם {{site_name}}'
     sign_out: 'יציאה מהמערכת'
@@ -560,9 +562,14 @@ he:
     thread_status:
       pinned: "השיחה הזו הוצמדה למעלה. היא תשאר בראש רשימת השיחות בקבוצה לכל המשתמשים."
       closed: "השיחה הזו נסגרה. היא לא תופיע בדשבורד, ותופיע כ'סגורה' בדף הקבוצה."
+  group_wizard:
+    welcome: הצלחה!
+    invite_people: הזמינו אנשים
+    start_thread: התחילו בדיון
   group_page:
     threads: שיחות
     members: חברים
+    settings: הגדרות
     subgroups: תת קבוצה
     show_opened: '{{count}} פתוחים'
     show_closed: '{{count}} סגורים'
@@ -601,7 +608,6 @@ he:
       manage_members: 'ניהול חברים'
       add_subgroup: 'הוספת תת קבוצה'
       manage_subscription: 'ניהול מינויים של הקבוצה'
-      email_settings: 'הגדרות מייל'
       leave_group: 'עזוב את הקבוצה'
       deactivate_group: 'הפוך קבוצה ללא פעילה'
     volume:
@@ -643,8 +649,9 @@ he:
     edit_group_heading: 'ערוך הגדרות קבוצה'
     edit_subgroup_heading: 'ערוך הגדרות תת הקבוצה'
     group_name: 'שם הקבוצה'
+    start_organization_heading: ארגון חדש
     group_name_placeholder: 'איך תרצה לקרוא לקבוצה?'
-    subgroup_name: 'שם תת הקבוצה'
+    subgroup_name: 'שם'
     description: 'תיאור'
     description_placeholder: 'תאר את מטרת הקבוצה כך שחבריה ידעו למה הם פה.'
     privacy_statement:
@@ -660,6 +667,7 @@ he:
     confirm_change_to_secret_subgroup: 'אם אתה ממשיך, כל השיחות בו יהיו פרטיות.'
     confirm_change_to_public: 'אם אתה ממשיך, כל השיחות בקבוצה יהיו פומביים וזמינים ברשת.'
     confirm_change_to_private_discussions_only: 'אם אתה ממשיך, כל שיחה פומבית בקבוצה תהפך לפרטית.'
+    profile: פרופיל
     subgroup_privacy_is_open_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פומביות."
     subgroup_privacy_is_closed_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פרטיות."
     subgroup_privacy_is_closed_public_threads_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. השיחות בתת הקבוצה הן פומביות או פרטיות."
@@ -865,7 +873,6 @@ he:
       deactivated: 'החשבון הושבת'
     change_picture_link: 'שנה תמונה'
     change_password_link: 'אפס סיסמה'
-    deactivate_user_link: 'השבת חשבון...'
     delete_account: 'מחר חשבון לצמיתות'
     delete_user_link: 'מחק חשבון'
     profile: 'פרופיל'
@@ -882,7 +889,6 @@ he:
     location_label: 'מיקום'
     location_placeholder: 'איפה אתה ממוקם?'
     update_profile: 'עדכן פרופיל'
-    deactivate_account: 'השבת חשבון'
     help_translate: "עזור לנו לתרגם את המערכת"
   text_editor:
     select_text_to_link: בחר טקסט לחיבור
@@ -895,7 +901,6 @@ he:
     set_password: הגדר סיסמה
     password_changed: סיסמתך עודכנה
   deactivation_modal:
-    aria_label: 'השבת חשבון'
     introduction: 'כשאתה משבית את חשבונך:'
     no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
     name_removed: 'הערות, הצעות ודיונים שביצעת ישראו אבל השם שלך יוסר מהם'
@@ -903,7 +908,6 @@ he:
     you_can_reactivate: "אם תרצה, תוכל לאקטב את החשבון שלך מחדש בשלב מאוחר יותר "
     submit: 'כן, אני רוצה להשבית'
   delete_user_modal:
-    title: 'מחק את חשבון המשתמש שלך'
     irreversable: "אזהרה: פעולה זו לא ניתנת לביטול. אם אתה ממשיך:"
     you_will_be_deleted: "חשבון המשתמש שלך כולל שמך, כתובת הדוא\"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו."
     submit: 'כן, מחק את חשבון המשתמש שלי'
@@ -914,7 +918,6 @@ he:
     placeholder: 'שאלת רשות. כל מידע שתשתף איתנו יעזור לנו להשתפר :)'
     submit: 'השבת חשבון'
   email_settings_page:
-    header: הגדרות מייל
     email_newsletter: הניוזלטר של לומיו
     email_newsletter_description: "קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד\"כ 2-3 מיילים בשנה."
     daily_summary_label: סיכום יומי במייל
@@ -1033,7 +1036,6 @@ he:
   thread_context:
     aria_label: 'הקשר השיחה'
     thread_options: 'אפשרויות השיחה'
-    email_settings: 'הגדרות מייל'
     edit: 'עריכה'
     edit_thread: 'עריכה'
     close_thread: 'סגירה'
@@ -1636,9 +1638,7 @@ he:
       install_helptext: הבוט של Loomio הודיע לקבוצה שלך על הדיונים וההחלטות בLoomio
       installed_title: מחובר לMicrosoft Teams
       installed_helptext: אירועים מקבוצה זו יישלחו לMicrosoft Teams שלך.
-      install_microsoft: חבר צוותים
       remove_identity: הסר אינטגרציה זו
-      confirm_remove_title: הסר Microsoft Teams
       confirm_remove_helptext: |
           ערוץ הMicrosoft Teams שלך לא יקבל עוד עדכונים על קבוצה זו.
           אתה יכול תמיד להחזיר אותו שוב.
@@ -1658,8 +1658,6 @@ he:
       poll_expired: סקר הסתיים
       outcome_created: שותפה תוצאה
   install_slack:
-    modal_title: התקן Slack
-    modal_helptext: ראשית כל, עליך להתחבר לסלאק. אנחנו נעביר אותך לשם אוטומטית עוד שניה, או שאתה יכול ללחוץ על הכפתור למטה להמשיך.
     login_to_slack: התחבר לSlack
     card:
       install_title: קשר לSlack

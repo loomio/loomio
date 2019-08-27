@@ -33,10 +33,9 @@ v-card.confirm-modal
     v-spacer
     dismiss-modal-button(v-if="!confirm.forceSubmit", :close="close")
   v-card-text
-    p(v-html="$t(confirm.text.helptext)", v-if="confirm.text.helptext")
-    //- p(ng-include="fragment", ng-if="fragment")
+    p(v-html="confirm.text.raw_helptext || $t(confirm.text.helptext)", v-if="confirm.text.raw_helptext || confirm.text.helptext")
   v-card-actions
-    v-btn(text v-if="!confirm.forceSubmit", @click="close()", type="button", v-t="'common.action.cancel'")
+    v-btn(text v-if="!confirm.forceSubmit" @click="close()" v-t="'common.action.cancel'")
     v-spacer
-    v-btn.confirm-modal__submit(color="primary" @click="submit() || close()", v-t="confirm.text.submit || 'common.action.ok'", primary, raised)
+    v-btn.confirm-modal__submit(color="primary" @click="submit() || close()" v-t="confirm.text.submit || 'common.action.ok'")
 </template>

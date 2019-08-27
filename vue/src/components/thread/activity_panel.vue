@@ -34,6 +34,9 @@ export default
 
   methods:
     init: ->
+      @loader = new RecordLoader
+        collection: 'events'
+
       @watchRecords
         key: @discussion.id
         collections: ['groups', 'memberships']
@@ -58,33 +61,35 @@ export default
       @scrollToInitialPosition()
 
     scrollToInitialPosition: ->
+      waitFor = (selector, fn) ->
+        if document.querySelector(selector)
+          fn()
+        else
+          setTimeout ->
+            waitFor(selector, fn)
+          , 50
+
+      focusOnEvent = (event) =>
+        waitFor "#sequence-#{event.sequenceId || 0}", =>
+          EventBus.$emit('focusedEvent', event)
+          @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", offset: 96
+
       commentId = parseInt(@$route.params.comment_id)
       sequenceId = parseInt(@$route.params.sequence_id)
 
       if event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
-        @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
+        focusOnEvent(event)
       else
-        @loader = new RecordLoader
-          collection: 'events'
-          params:
-            discussion_id: @discussion.id
-            order: 'sequence_id'
-            comment_id: commentId
-            from: sequenceId
-            # from_unread: if !commentId && !sequenceId then 1 else null
-            per: @pageSize
-        @loader.fetchRecords().then =>
-          waitFor = (selector, fn) ->
-            if document.querySelector(selector)
-              fn()
-            else
-              setTimeout ->
-                waitFor(selector, fn)
-              , 50
-
+        @loader.fetchRecords(
+          discussion_id: @discussion.id
+          order: 'sequence_id'
+          comment_id: commentId
+          from: sequenceId
+          # from_unread: if !commentId && !sequenceId then 1 else null
+          per: @pageSize
+        ).then =>
           if event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
-            waitFor "#sequence-#{event.sequenceId || 0}", =>
-              @$vuetify.goTo "#sequence-#{event.sequenceId || 0}"
+            focusOnEvent(event)
 
       EventBus.$on 'threadPositionRequest', (position) => @positionRequested(position)
 

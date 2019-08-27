@@ -74,9 +74,13 @@ be_BY:
     heading: Запытаць пра далучэнне да групы
     name_label: Імя
     email_label: Email
+  group_wizard:
+    invite_people: Запрасіць людзей
+    start_thread: Распачаць абмеркаванне
   group_page:
     threads: Абмеркаванні
     members: Удзельнікі
+    settings: Налады
     options_label: 'Опцыі'
     options:
       label: 'Опцыі'
@@ -85,7 +89,9 @@ be_BY:
       quiet: Не дасылаць лісты пра гэту групу. Яе дзейнасць будзе бачна на галоўнай старонцы.
       mute: Прыбраць гэту групу з галоўнай старонкі і нагадваць толькі калі @mentioned.
   group_form:
+    subgroup_name: 'Імя'
     description_placeholder: 'Апішыце мэты вашай групы, каб чальцы групы ведалі, навошта яны тут.'
+    profile: Профіль
   document:
     form:
       title_label: Імя

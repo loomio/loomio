@@ -23,8 +23,13 @@ hr:
     membership_requested: Članstvo zatraženo
   membership_request_form:
     heading: Zahtjev za pridruženjem grupi
+  group_wizard:
+    invite_people: Pozovi ljude
+    start_thread: Započni raspravu
   group_page:
     members: Članovi
+  group_form:
+    profile: Profil
   membership_requests_page:
     ignore: Ignoriraj
   invitation_form:

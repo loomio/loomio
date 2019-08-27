@@ -64,12 +64,17 @@ cmn:
   membership_request_form:
     name_label: 名字
     email_label: 邮件
+  group_wizard:
+    invite_people: 邀请人
+    start_thread: 开始讨论
   group_page:
     threads: 讨论
     members: 成员
     options_label: '选项'
     options:
       label: '选项'
+  group_form:
+    subgroup_name: '名字'
   document:
     form:
       title_label: 名字

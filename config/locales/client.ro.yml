@@ -234,7 +234,6 @@ ro:
     logo_title: 'Pagina de start'
   user_dropdown:
     edit_profile: 'Editare profil'
-    email_settings: 'Setari email'
     help: 'Ajutor'
     contact_site_name: 'Contacteaza {{site_name}}'
     sign_out: 'Iesire din cont'
@@ -311,9 +310,13 @@ ro:
     more_reactions: "{{count}} mai multe"
     you: "Tu"
     you_and_name: "Tu si {{name}}"
+  group_wizard:
+    invite_people: Invita oameni
+    start_thread: Discuţie noua
   group_page:
     threads: Discutii
     members: Membri
+    settings: Setari
     messages:
       privacy:
         public: 'Acest grup este acum vizibil public'
@@ -332,11 +335,13 @@ ro:
       mute: Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona.
       mute_aria_description: Volumul notificarilor pentru aceast grup este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar activitatea grupului nu va fi afisata in tabloul tau de bord.
   group_form:
+    subgroup_name: 'Nume'
     privacy: 'Confidentialitate'
     confirm_change_to_secret: "Daca vei continua, toate discutiile acestui grup precum si sub-grupurile lui vor deveni private."
     confirm_change_to_secret_subgroup: 'Daca vei continua, toate discutiile vor deveni private.'
     confirm_change_to_public: 'Daca vei continua, toate discutiile vor deveni publice pe web.'
     confirm_change_to_private_discussions_only: 'Daca vei continua, toate discutiile publice ale acestui grup  vor deveni private.'
+    profile: Profil
     thread_privacy: 'Confidentialitatea discutiei'
     public_threads: 'Doar discutii publice'
     public_or_private_threads: 'Permite discutii publice si private'
@@ -375,7 +380,6 @@ ro:
   change_picture_form:
     use_gravatar: 'Foloseste Gravatar'
   email_settings_page:
-    header: Setari email
     announcement_label: Anunturi
   dashboard_page:
     aria_label: 'Tablou de bord'
@@ -419,7 +423,6 @@ ro:
   thread_context:
     aria_label: 'Contextul discutiei'
     thread_options: 'Optiunile discutiei'
-    email_settings: 'Setari email'
     close_thread: 'Inchide'
     mute_thread: 'Ascunde notificari'
     delete_thread: 'Sterge'

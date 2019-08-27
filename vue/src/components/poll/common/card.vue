@@ -42,10 +42,10 @@ v-card
   //- .lmo-blank(v-if='poll.complete')
   poll-common-card-header(:poll='poll')
   v-card-title
-    h1.poll-common-card__title.headline
+    h1.poll-common-card__title.display-1
       //- v-icon {{'mdi ' + icon}}
-      span(v-if='!poll.translation') {{poll.title}}
-      translation(v-if="poll.translation" :model='poll', :field='title')
+      span(v-if='!poll.translation.title') {{poll.title}}
+      translation(v-if="poll.translation.title" :model='poll', field='title')
       v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
   v-card-text
     poll-common-set-outcome-panel(:poll='poll')

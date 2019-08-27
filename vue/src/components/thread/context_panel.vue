@@ -17,10 +17,10 @@ export default
 
   computed:
     dockActions: ->
-      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', 'edit_thread', "announce_thread"]
+      pick ThreadService.actions(@discussion, @), ['edit_thread']
 
     menuActions: ->
-      pick ThreadService.actions(@discussion, @), ["edit_tags", 'show_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', "announce_thread", "edit_tags", 'show_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -54,9 +54,9 @@ export default
     action-dock(:model='discussion' :actions='dockActions')
     action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
 
-  h1.headline.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
+  h1.display-1.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
     span(v-if='!discussion.translation.title') {{discussion.title}}
-    span(v-if='discussion.translation')
+    span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
     i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
 

@@ -63,8 +63,7 @@ export default
          value: group.id
       }), 'fullName'
 
-    showGroupSelect: ->
-      @discussion.isNew()
+    showGroupSelect: -> @discussion.isForking()
 
     maxThreads: ->
       return null unless @discussion.group()
@@ -102,7 +101,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit(
     dismiss-modal-button(aria-hidden='true', :close='close')
   .pa-4
     .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !discussion.isForking()')
-    .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEvents.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
+    .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEventIds.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
 
     div(v-show='showGroupSelect')
       label(for='discussion-group-field', v-t="'discussion_form.group_label'")
@@ -115,7 +114,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit(
     .discussion-form__group-selected(v-if='discussion.groupId && !showUpgradeMessage')
       v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(:label="$t('discussion_form.title_label')" :placeholder="$t('discussion_form.title_placeholder')" v-model='discussion.title' maxlength='255')
       validation-errors(:subject='discussion', field='title')
-      lmo-textarea(v-if="!discussion.isForking()" :model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
+      lmo-textarea(:model='discussion' field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')")
         template(v-slot:actions)
           v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled || !discussion.groupId" v-t="'common.action.start'" v-if="discussion.isNew()")
           v-btn.discussion-form__submit(color="primary" @click="submit()" :disabled="submitIsDisabled" v-t="'common.action.save'" v-if="!discussion.isNew()")

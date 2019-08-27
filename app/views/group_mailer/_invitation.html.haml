@@ -1,9 +1,0 @@
-= render 'base_mailer/avatar', user: @recipient.inviter
-%strong= @recipient.inviter.name
-= t(:"email.to_join_group.invitation_text_html")
-%br
-%strong= @recipient.group.full_name
-.invite-people-mailer__body--center-text
-  = link_to t(:"email.to_join_group.accept_invitation"), invitation_url(@recipient, @utm_hash), class: "base-mailer__button base-mailer__button--primary"
-.invite-people-mailer__value-proposition
-  = t(:"email.value_proposition", site_name: AppConfig.theme[:site_name])

@@ -42,12 +42,17 @@ vi:
   membership_request_form:
     name_label: Tên
     email_label: Email
+  group_wizard:
+    invite_people: Mời thành viên
+    start_thread: Bắt đầu một cuộc thảo luận
   group_page:
     threads: Các phần thảo luận
     members: Thành viên
     options_label: 'Tùy chọn'
     options:
       label: 'Tùy chọn'
+  group_form:
+    subgroup_name: 'Tên'
   document:
     form:
       title_label: Tên

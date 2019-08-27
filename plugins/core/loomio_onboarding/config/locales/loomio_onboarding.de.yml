@@ -3,6 +3,26 @@ de:
     onboarding_mailer:
       welcome:
         subject: Willkommen bei Loomio!
+        body_md: |
+            Hi%{recipient_name}
+
+            Willkommen bei Loomio! Der Online-Ort, wo du gemeinsam mit deiner Gruppe Entscheidungen treffen kannst.
+
+            Ich heisse %{sender_name}, bin ein Loomio Team-Mitglied, und hier um dir einen guten Start mit Loomio zu versichern.
+
+            Möchtest du an einer kostenlosen Loomio-Schulung teilnehmen? Dann melde dich für unser [Loomio 101-Webinar] an (), und nutze die Gelegenheit, Fragen zu stellen.
+
+            Hast du schon [help.loomio.org](https://help.loomio.org//) gesehen? Hier findest du ein paar sehr nützliche Seiten.
+
+            [Gruppe erstellen] (https://help.loomio.org/%{help_locale}/user_manual/getting_started/starting_a_group/?utm_source=welcome_email) führt Sie durch das Einrichten, Einladen von Personen und Erstellen Ihrer ersten Meetings als Gruppe durch.
+
+            Genauso unterstützt dich [Gruppe Beitreten] (https://help.loomio.org//user_manual/getting_started/joining_a_group/?utm_source=welcome_email) dabei, dein Profil einzurichten, deine E-Mail-Einstellungen zu konfigurieren und sicherzustellen, dass du zum Teilnehmen bereit bist.
+
+            Das ist erst Anfang! Es gibt noch viele tolle Inhalte, inklusive Anleitungen, How-To's und sogar ein Kurs wie man Diskussionen moderiert.
+
+            Bei Fragen oder Kommentare einfach auf diese E-mail antworten.
+
+            Und jetzt viel Spass bei der Zusammenarbeit!
     group_progress_card:
       title: Gruppe aktivieren
       activities:
@@ -10,9 +30,10 @@ de:
         set_logo: Gruppenlogo auswählen
         set_cover_photo: Gruppen-Titelbild wählen
         invite_people_in: Personen einladen
-        start_thread: einen Diskussionensverlauf eröffnen
+        start_thread: Neue Diskussion eröffnen
         make_decision: Entscheidung vorbereiten
-      celebration_message: Super, Ihre Gruppe ist bereit!
+      learn_more: Mehr bei Loomio Help lernen
+      celebration_message: Ta-da! Deine Gruppe ist bereit!
       dismiss_this_card: Karte ablehnen
     user_progress_card:
       title: Profil einrichten
@@ -20,7 +41,7 @@ de:
         enter_name: Name einfügen
         set_profile_picture: Profilbild einstellen
         set_bio: Kurzbeschreibung hinzufügen
-        join_group: einer Gruppe beitreten
-        make_decision: Entscheidung abstimmen
+        join_group: Gruppe beitreten
+        make_decision: Stimme bei einer Entscheidung abgeben
       celebration_message: Dein Profil ist bereit!
       dismiss: Ausblenden

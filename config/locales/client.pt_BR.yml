@@ -1,4 +1,9 @@
 pt_BR:
+  plan_names:
+    free: Grátis
+    small: Pequeno
+    medium: Médio
+    large: Grande
   current_plan_button:
     upgrade: Assinar um plano
   loomio_tags:
@@ -287,6 +292,7 @@ pt_BR:
     sign_in: "Entre para se juntar à conversa"
   sidebar:
     threads: 'Conversas'
+    my_groups: 'Meus grupos'
     recent_threads: 'Conversas recentes'
     unread_threads: 'Conversas não lidas ({{count}})'
     muted_threads: 'Conversas silenciadas'
@@ -319,7 +325,6 @@ pt_BR:
   user_dropdown:
     button_label: 'Menu do usuário'
     edit_profile: 'Editar perfil'
-    email_settings: 'Configurações de email'
     help: 'Ajuda'
     contact_site_name: 'Contato {{site_name}}'
     sign_out: 'Sair'
@@ -509,9 +514,14 @@ pt_BR:
     thread_status:
       pinned: "Esta conversa foi afixada. Ela permanecerá no topo da lista de conversas do grupo para todos os usuários."
       closed: "Esta conversa foi encerrada. Ela não aparecerá no painel, e será listada na categoria 'encerrada' na página do grupo."
+  group_wizard:
+    welcome: Sucesso!
+    invite_people: Convidar pessoas
+    start_thread: Iniciar uma discussão
   group_page:
     threads: Conversas
     members: Membros ({{count}})
+    settings: Configurações
     subgroups: Subgrupos
     show_closed: '{{count}} Encerrado'
     no_threads_here: Nenhuma conversa para ler aqui!
@@ -584,7 +594,7 @@ pt_BR:
     edit_subgroup_heading: 'Editar configurações do subgrupo'
     group_name: 'Nome do Grupo'
     group_name_placeholder: 'Como você quer chamar o seu grupo?'
-    subgroup_name: 'Nome do Subgrupo'
+    subgroup_name: 'Nome'
     description: 'Descrição'
     description_placeholder: 'Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.'
     privacy_statement:
@@ -599,6 +609,7 @@ pt_BR:
     confirm_change_to_secret_subgroup: 'Se você continuar, todas as conversas serão privadas.'
     confirm_change_to_public: 'Se você continuar, as conversas neste grupo serão públicas na web.'
     confirm_change_to_private_discussions_only: 'Se você continuar, qualquer conversa pública deste grupo ficará privada.'
+    profile: Perfil
     subgroup_privacy_is_open_description: "Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são públicas."
     subgroup_privacy_is_closed_description: "Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são privadas."
     subgroup_privacy_is_closed_public_threads_description: "Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Conversas podem ser públicas ou privadas."
@@ -745,7 +756,6 @@ pt_BR:
       password_changed: 'Senha atualizada'
       deactivated: 'Conta desativada'
     change_picture_link: 'Mudar imagem'
-    deactivate_user_link: 'Desativar conta...'
     profile: 'Perfil'
     edit_profile: 'Editar Perfil'
     picture_label: 'Imagem'
@@ -755,7 +765,6 @@ pt_BR:
     short_bio_label: 'Apresentação'
     locale_label: 'Idioma'
     update_profile: 'Atualizar perfil'
-    deactivate_account: 'Desativar conta'
     help_translate: "Nos ajude a traduzir a Loomio"
   change_picture_form:
     use_initials: 'Usar iniciais'
@@ -763,7 +772,6 @@ pt_BR:
   change_password_form:
     password_changed: Sua senha foi atualizada
   deactivation_modal:
-    aria_label: 'Desativar conta'
     introduction: 'Quando você desativa sua conta:'
     no_longer_group_member: 'Você deixará de ser listado como membro de todos os grupos'
     name_removed: 'Comentários, propostas e discussões feitas por você permanecerão, mas seu nome será removido dos mesmos'
@@ -776,7 +784,6 @@ pt_BR:
     placeholder: 'Responder a essa pergunta é opcional. Qualquer informação que você possa compartilhar irá nos ajudar a melhorar :) '
     submit: 'Desativar conta'
   email_settings_page:
-    header: Configurações de e-mail
     daily_summary_label: E-mail de resumo diário
     daily_summary_description: "Toda manhã você receberá um email com qualquer atividade que você não viu no dia anterior. Isso facilita com que você fique atualizado(a) com as atividades que estão rolando."
     on_participation_label: Inscrever-se na participação
@@ -879,7 +886,6 @@ pt_BR:
   thread_context:
     aria_label: 'Contexto da conversa'
     thread_options: 'Opções da conversa'
-    email_settings: 'Configurações de e-mail'
     edit: 'Editar'
     edit_thread: 'Editar'
     close_thread: 'Encerrar'
@@ -1180,7 +1186,6 @@ pt_BR:
     password: Senha
     reactivate: Reativar a conta
   install_slack:
-    modal_title: Instalar Slack
     card:
       install_slack: Conectar o Slack
     progress:

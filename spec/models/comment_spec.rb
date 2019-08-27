@@ -13,7 +13,7 @@ describe Comment do
     it "removes script tags" do
       comment.body_format = "html"
       comment.body = "hi im a hacker <script>alert('hacked')</script>"
-      expect(comment.body).to eq "hi im a hacker alert('hacked')"
+      expect(comment.tap(&:save).body).to eq "hi im a hacker alert('hacked')"
     end
   end
 
