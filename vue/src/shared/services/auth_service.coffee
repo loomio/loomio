@@ -27,7 +27,7 @@ export default new class AuthService
 
     if user && user.avatarKind == 'initials'
       openModal
-        component: 'ChangePictureForm'
+        component: 'UserWizard'
 
   signIn: (user = {} , onSuccess = -> , onFailure = ->) ->
     Records.sessions.build(

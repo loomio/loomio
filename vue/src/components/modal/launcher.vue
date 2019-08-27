@@ -24,6 +24,7 @@ import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/mod
 import ChangePictureForm from '@/components/profile/change_picture_form'
 import GroupNewForm from '@/components/group/new_form'
 import GroupWizard from '@/components/group/wizard'
+import UserWizard from '@/components/profile/wizard'
 
 export default
   components:
@@ -51,6 +52,7 @@ export default
     'ChangePictureForm': ChangePictureForm
     'GroupNewForm': GroupNewForm
     'GroupWizard': GroupWizard
+    'UserWizard': UserWizard
   data: ->
     isOpen: false
     componentName: ""
