@@ -110,6 +110,7 @@ meeting:
   has_variable_score:      true
   has_score_icons:         true
   prevent_anonymous:       true
+  has_option_score_counts: true
   required_custom_fields:
     - can_respond_maybe
   sort_options:
