@@ -54,7 +54,7 @@ module.exports = {
   // GroupPollsPanel: 'group/polls_panel',
   // GroupSubgroupsPanel: 'group/subgroups_panel',
   // GroupFilesPanel: 'group/files_panel',
-
+  GroupNewForm: 'group/new_form',
   GroupPrivacyButton: 'group/privacy_button',
   GroupSettingCheckbox: 'group/setting_checkbox',
   GroupCoverImage: 'group/cover_image',

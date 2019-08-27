@@ -66,6 +66,9 @@ export default
 
 
   methods:
+    startOrganization: ->
+      @canStartGroup() && @openStartGroupModal()
+
     unreadThreadCount: ->
       InboxService.unreadCount()
 
@@ -92,7 +95,7 @@ v-navigation-drawer.sidenav-left(app v-model="open")
               v-avatar(tile size="28px" v-on="on")
                 img.sidebar__list-item-group-logo(:src='group.logoUrl()')
             span {{group.name}}
-      v-list-item
+      v-list-item(@click="startOrganization()")
         v-list-item-avatar(:size="28")
           v-icon(:size="28" tile) mdi-plus
 

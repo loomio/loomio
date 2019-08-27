@@ -11,6 +11,18 @@ export default new class GroupService
   actions: (group, vm) ->
     membership = group.membershipFor(Session.user())
 
+    open_group_wizard:
+      name: 'group_page.options.open_group_wizard'
+      icon: 'mdi-auto-fix'
+      canPerform: ->
+        Session.user().isAdminOf(group)
+      perform: ->
+        openModal
+          component: 'GroupWizard'
+          props:
+            group: group
+            showWelcome: false
+
     change_volume:
       name: 'group_page.options.email_settings'
       icon: 'mdi-email'
@@ -31,7 +43,7 @@ export default new class GroupService
         openModal
           component: 'GroupForm'
           props:
-            group: group.clone()
+            group: group
 
     manage_subscription:
       name: 'group_page.options.manage_subscription'
@@ -74,7 +86,7 @@ export default new class GroupService
       name: 'install_slack.modal_title'
       icon: 'mdi-slack'
       canPerform: ->
-        AbilityService.canAdministerGroup(group) && !Session.user().identityFor('slack')
+        AbilityService.canAdministerGroup(group) && !group.groupIdentityFor('slack')
       perform: ->
         openModal
           component: 'InstallSlackModal'
@@ -83,7 +95,7 @@ export default new class GroupService
       name: 'install_slack.remove_slack'
       icon: 'mdi-slack'
       canPerform: ->
-        AbilityService.canAdministerGroup(group) && Session.user().identityFor('slack')
+        AbilityService.canAdministerGroup(group) && group.groupIdentityFor('slack')
       perform: ->
         openModal
           component: 'ConfirmModal'

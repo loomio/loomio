@@ -22,6 +22,8 @@ import TagsModal from '@/components/tags/modal'
 import InstallSlackModal from '@/components/install_slack/modal'
 import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/modal'
 import ChangePictureForm from '@/components/profile/change_picture_form'
+import GroupNewForm from '@/components/group/new_form'
+import GroupWizard from '@/components/group/wizard'
 
 export default
   components:
@@ -47,6 +49,8 @@ export default
     'InstallSlackModal': InstallSlackModal
     'InstallMicrosoftTeamsModal': InstallMicrosoftTeamsModal
     'ChangePictureForm': ChangePictureForm
+    'GroupNewForm': GroupNewForm
+    'GroupWizard': GroupWizard
   data: ->
     isOpen: false
     componentName: ""

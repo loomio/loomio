@@ -8,6 +8,7 @@ export default
     group: Records.groups.fuzzyFind(@$route.params.key)
     actions: {}
   created: ->
+    Records.groups.remote.fetchById(@group.id)
     EventBus.$emit 'currentComponent',
       page: 'groupPage'
       title: @group.name

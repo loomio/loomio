@@ -26,5 +26,5 @@ export default
 
 <template lang="pug">
 v-container.max-width-800.start-group-page
-  group-form(:group='group')
+  group-new-form(:group='group')
 </template>
