@@ -52,9 +52,6 @@ export default
     open: (val) ->
       EventBus.$emit("sidebarOpen", val)
 
-    '$route': ->
-      console.log '$route', @$route
-
   methods:
     updateGroups: ->
       @organizations = Session.user().parentGroups().concat(Session.user().orphanParents())
