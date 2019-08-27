@@ -46,12 +46,17 @@ ml:
     heading: കൂട്ടത്തില്‍ ചേരാന്‍ ചോദിക്കുക
     name_label: പേരു്
     email_label: ഈമെയില്‍
+  group_wizard:
+    invite_people: ആളുകളെ ക്ഷണിക്കുക
+    start_thread: പുതിയൊരു ചര്‍ച്ച ആരംഭിക്കുക
   group_page:
     threads: ചര്‍ച്ചകള്‍
     members: അംഗങ്ങള്‍
     options_label: 'ഐച്ഛികങ്ങള്‍'
     options:
       label: 'ഐച്ഛികങ്ങള്‍'
+  group_form:
+    subgroup_name: 'പേരു്'
   document:
     form:
       title_label: പേരു്

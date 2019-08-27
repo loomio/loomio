@@ -213,6 +213,9 @@ ar:
     current_revision: الأحدث
   reactions_display:
     you: "أنت"
+  group_wizard:
+    invite_people: قم بدعوة أشخاص
+    start_thread: ابدأ نقاشا
   group_page:
     threads: المواضيع
     members: أعضاء
@@ -264,8 +267,9 @@ ar:
     edit_group_heading: 'تعديل إعدادات المجموعة'
     edit_subgroup_heading: 'تعديل إعدادات المجموعة الفرعية'
     group_name: 'اسم المجموعة'
+    start_organization_heading: منظمة جديدة
     group_name_placeholder: 'ماذا تريد أن تدعو مجموعتك؟'
-    subgroup_name: 'اسم المجموعة الفرعية'
+    subgroup_name: 'الاسم '
     description: 'وصف '
     description_placeholder: 'قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.'
     privacy_statement:
@@ -276,6 +280,7 @@ ar:
     confirm_change_to_secret_subgroup: 'في حالة الاستمرار سيتم تحويل كافة المواضيع إلى خاصة.'
     confirm_change_to_public: 'في حالة الاستمرار سيتم تحويل كافة المواضيع إلى عامة على الشبكة.'
     confirm_change_to_private_discussions_only: 'في حالة الاستمرار سيتم تحويل كافة المواضيع العامة في المجموعة إلى خاصة.'
+    profile: الملف الشخصي
     advanced_settings: "إعدادات متقدمة"
     how_do_people_join: "كيف يمكن للأشخاص الانضمام؟"
     membership_granted_upon_request: 'يمكن لأي شخص الانضمام'
@@ -390,7 +395,6 @@ ar:
       deactivated: 'تم إلغاء الحساب'
     change_picture_link: 'تغيير الصورة'
     change_password_link: 'إعادة تعيين الكلمة السرية'
-    deactivate_user_link: 'إلغاء الحساب'
     profile: 'الملف الشخصي'
     edit_profile: 'تعديل الملف الشخصي'
     picture_label: 'صورة'
@@ -399,9 +403,6 @@ ar:
     email_label: 'البريد الإلكتروني'
     locale_label: 'اللغة'
     update_profile: 'تحديث الملف الشخصي'
-    deactivate_account: 'إيقاف الحساب'
-  deactivation_modal:
-    aria_label: 'إيقاف الحساب'
   deactivate_user_form:
     title: 'إيقاف الحساب'
     submit: 'إيقاف الحساب'

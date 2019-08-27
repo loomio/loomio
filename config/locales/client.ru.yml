@@ -364,6 +364,10 @@ ru:
   reactions_display:
     you: "Вы"
     you_and_name: "Вы и {{name}}"
+  group_wizard:
+    welcome: Успешно!
+    invite_people: Пригласите людей
+    start_thread: Начать дискуссию
   group_page:
     threads: Обсуждения
     members: Участники
@@ -393,7 +397,9 @@ ru:
     edit_group_heading: 'Редактировать настройки группы'
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
     group_name: 'Название группы'
+    subgroup_name: 'Название'
     privacy: 'Конфиденциальность'
+    profile: Профиль
     public_threads: 'Только публичные темы'
     public_or_private_threads: 'Разрешить публичные и закрытые темы'
     submit_update: 'Обновить настройки'

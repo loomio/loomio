@@ -355,6 +355,10 @@ cs:
   context_panel:
     thread_status:
       pinned: "Toto vlákno bylo připnuté. Zůstane v horní části seznamu témat pro všechny uživatele."
+  group_wizard:
+    welcome: Úspěch!
+    invite_people: Pozvat další
+    start_thread: Zahájit diskuzi
   group_page:
     threads: Vlákna
     members: Členové
@@ -397,13 +401,14 @@ cs:
     edit_group_heading: 'Upravit nastavení skupiny'
     edit_subgroup_heading: 'Upravit nastavení podskupiny'
     group_name: 'Název skupiny'
-    subgroup_name: 'Název podskupiny'
+    subgroup_name: 'Název'
     description: 'Popis'
     description_placeholder: 'Můžete popsat účel vaší skupiny, takže Vaši členové skupiny budou vědět, proč jsou tady.'
     privacy: 'Soukromí'
     group_privacy_is_open_description: "Kdokoli může najít skupinu a požádat o členství. Pouze členové mohou vidět, kdo je ve skupině. Všechny vlákna jsou veřejná."
     group_privacy_is_closed_public_threads_description: "Kdokoli může najít skupinu a požádat o členství. Pouze členové mohou vidět, kdo je ve skupině. Vlákna mohou být veřejná nebo soukromá."
     group_privacy_is_secret_description: "Pouze pozvaní členové mohou najít skupinu, zjistit, kdo je v ní a vidět vlákna."
+    profile: Profil
     advanced_settings: "Pokročilé nastavení"
     how_do_people_join: "Jak se lidé připojí?"
     membership_granted_upon_request: 'Každý se může připojit ke skupině.'
@@ -497,7 +502,6 @@ cs:
       deactivated: 'Účet deaktivován'
     change_picture_link: 'Změnit obrázek'
     change_password_link: 'Reset hesla'
-    deactivate_user_link: 'Deaktivovat účet...'
     profile: 'Profil'
     edit_profile: 'Upravit profil'
     picture_label: 'Fotka'
@@ -508,15 +512,12 @@ cs:
     locale_label: 'Jazyk'
     locale_placeholder: Zvolte preferovaný jazyk
     update_profile: 'Aktualizovat profil'
-    deactivate_account: 'Deaktivovat účet'
     help_translate: "Pomozte nám překládat Loomio"
   change_picture_form:
     use_gravatar: 'Použít Gravatar'
   change_password_form:
     set_password: Nastavení hesla
     password_changed: Vaše heslo bylo aktualizováno
-  deactivation_modal:
-    aria_label: 'Deaktivovat účet'
   deactivate_user_form:
     title: 'Deaktivovat účet'
     submit: 'Deaktivovat účet'

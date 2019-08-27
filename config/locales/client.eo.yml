@@ -228,6 +228,10 @@ eo:
     you_and_name: "Vi kaj {{name}}"
     you_and_name_and_count_more: "Vi, {{name}} kaj {{count}} pli"
     name_and_count_more: "{{name}} kaj {{count}} pli"
+  group_wizard:
+    welcome: Sukceso!
+    invite_people: Inviti personojn
+    start_thread: Komenci diskuton
   group_page:
     threads: Fadenoj
     members: Membroj
@@ -240,7 +244,9 @@ eo:
     options:
       label: 'Opcioj'
   group_form:
+    subgroup_name: 'Nomo'
     privacy: 'Privateco'
+    profile: Profilo
   documents_page:
     confirm_remove_title: Forigu alkroĉaĵon.
   document:

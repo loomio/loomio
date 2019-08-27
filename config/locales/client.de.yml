@@ -600,6 +600,10 @@ de:
     thread_status:
       pinned: "Diese Diskussion wurde gepinnt. Sie wird für alle Nutzer zuoberst in der Diskussionsliste angezeigt."
       closed: "Diese Diskussion wurde geschlossen. Sie wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter \"Geschlossen\" angezeigt"
+  group_wizard:
+    welcome: Erfolg!
+    invite_people: Leute einladen
+    start_thread: Diskussion starten
   group_page:
     threads: Diskussionsbeiträge
     polls: Umfragen
@@ -690,8 +694,9 @@ de:
     edit_group_heading: 'Gruppeneinstellungen bearbeiten'
     edit_subgroup_heading: 'Untergruppeneinstellungen bearbeiten'
     group_name: 'Gruppen-Name'
+    start_organization_heading: Neue Organisation
     group_name_placeholder: 'Wie möchten Sie die Gruppe nennen?'
-    subgroup_name: 'Untergruppen-Name'
+    subgroup_name: 'Name'
     description: 'Beschreibung'
     description_placeholder: 'Beschreiben Sie die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.'
     privacy_statement:
@@ -707,6 +712,7 @@ de:
     confirm_change_to_secret_subgroup: 'Wenn Sie fortfahren werden alle Diskussionen privat.'
     confirm_change_to_public: 'Wenn Sie fortfahren werden alle Diskussionen in der Gruppe öffentlich sichtbar im Web.'
     confirm_change_to_private_discussions_only: 'Wenn Sie fortfahren werden alle öffentlichen Diskussionen dieser Gruppe privat.'
+    profile: Profil
     subgroup_privacy_is_open_description: "Jeder kann diese Gruppe finden und Sie nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind öffentlich."
     subgroup_privacy_is_closed_description: "Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind privat."
     subgroup_privacy_is_closed_public_threads_description: "Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Diskussionen können öffentlich oder privat sein."
@@ -1724,7 +1730,6 @@ de:
       outcome_created: 'Ein Ergebnis wurde geteilt  '
   install_slack:
     modal_title: Mit Slack verbinden
-    modal_helptext: Als erstes müssen Sie sich bei Slack anmelden. Wir werden Sie sofort  automatisch weiterleiten, alternativ können Sie zum Fortfahren auch auf den Button unten klicken.
     login_to_slack: bei Slack einloggen
     card:
       install_title: Mit Slack verbinden

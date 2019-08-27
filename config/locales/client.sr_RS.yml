@@ -103,6 +103,9 @@ sr_RS:
   revision_history_modal:
     started_by: 'Креирао/ла <strong>{{name}}</strong>'
     posted: Објављено
+  group_wizard:
+    invite_people: Позови људе
+    start_thread: Започни дискусију
   group_page:
     threads: Низови
     members: Чланови
@@ -117,7 +120,9 @@ sr_RS:
       quiet: Не обавештавај о овој групи. Активност ће бити приказана на почетној страни.
       mute: Сакриј ову групу и не обавештавај док ме неко не @означи.
   group_form:
+    subgroup_name: 'Име'
     description: 'Опис'
+    profile: Профил
     advanced_settings: "Напредне опције"
     submit_update: 'Ажурирај опције'
   document:

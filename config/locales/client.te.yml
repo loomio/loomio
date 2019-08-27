@@ -93,6 +93,9 @@ te:
     email_label: ఈమెయిలు
   reactions_display:
     you: "మీరు"
+  group_wizard:
+    invite_people: వ్యక్తులను ఆహ్వానించండి
+    start_thread: ఒక చర్చను ప్రారంభించండి
   group_page:
     threads: చర్చలు
     members: సభ్యులు
@@ -102,6 +105,7 @@ te:
     options:
       label: 'ఐచ్ఛికాలు'
   group_form:
+    subgroup_name: 'పేరు'
     privacy: 'అంతరంగికత'
   document:
     form:

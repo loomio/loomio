@@ -532,6 +532,7 @@ nb_NO:
     new_group_logo: 'Last opp ny gruppelogo'
     invite_people: 'Inviter'
   group_form:
+    subgroup_name: 'Navn'
     privacy: 'Personvern'
     submit_update: 'Oppdater innstillinger'
   documents_page:

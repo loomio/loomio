@@ -257,6 +257,9 @@ ca:
     current_revision: Últim
   reactions_display:
     you: "Tu"
+  group_wizard:
+    invite_people: Convida gent
+    start_thread: Comença una discussió
   group_page:
     threads: Fils
     members: Membres
@@ -300,7 +303,7 @@ ca:
     edit_subgroup_heading: 'Edita la configuració del subgrup'
     group_name: 'Nom del grup'
     group_name_placeholder: 'Com voleu anomenar el vostre grup?'
-    subgroup_name: 'Nom del subgrup'
+    subgroup_name: 'Nom'
     description: 'Descripció'
     description_placeholder: 'Descriviu el propòsit del grup per tal de que els membres sàpiguen perquè estan aquí.'
     privacy_statement:
@@ -311,6 +314,7 @@ ca:
     confirm_change_to_secret_subgroup: 'Si continueu, totes les discussions seran privades.'
     confirm_change_to_public: 'Si continueu, totes les discussions d''aquest grup es faran públiques a internet.'
     confirm_change_to_private_discussions_only: 'Si continueu, totes les discussions públiques d''aquest grup seran privades.'
+    profile: Perfil
     advanced_settings: "Configuració avançada"
     how_do_people_join: "Com s'uneix la gent?"
     membership_granted_upon_request: 'Tothom es pot unir al grup.'
@@ -420,7 +424,6 @@ ca:
       password_changed: 'Contrasenya actualitzada'
       deactivated: 'Compte desactivat'
     change_picture_link: 'Canvia la fotografia'
-    deactivate_user_link: 'Desactiva el compte...'
     profile: 'Perfil'
     edit_profile: 'Edita el perfil'
     picture_label: 'Fotografia'

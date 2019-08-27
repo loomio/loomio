@@ -131,6 +131,9 @@ fa_IR:
     membership_requested: درخواست عضویت شد
   reactions_display:
     you: "شما"
+  group_wizard:
+    invite_people: دیگران را دعوت کنید
+    start_thread: راه انداختن یک بحث
   group_page:
     threads: موضوعات
     members: اعضا

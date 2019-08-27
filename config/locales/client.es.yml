@@ -583,6 +583,10 @@ es:
     thread_status:
       pinned: "Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos del grupo para todos los integrantes."
       closed: "Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo"
+  group_wizard:
+    welcome: Hecho!
+    invite_people: Invitar personas
+    start_thread: Empieza una discusión
   group_page:
     threads: Hilos
     polls: Sondeos
@@ -669,8 +673,9 @@ es:
     edit_group_heading: 'Editar la configuración del grupo'
     edit_subgroup_heading: 'Editar la configuración del subgrupo'
     group_name: 'Nombre del Grupo'
+    start_organization_heading: Nueva organización
     group_name_placeholder: '¿Cómo quiere nombrar al grupo?'
-    subgroup_name: 'Nombre del sub-grupo '
+    subgroup_name: 'Nombre'
     description: 'Descripción '
     description_placeholder: 'Describa el propósito del grupo para que los integrantes sepan porque están aquí.'
     privacy_statement:
@@ -686,6 +691,7 @@ es:
     confirm_change_to_secret_subgroup: 'Si continuas todos los hilos se harán privados.'
     confirm_change_to_public: 'Si continúas, todos los hilos de este grupo se harán públicos en internet.  '
     confirm_change_to_private_discussions_only: 'Si continuas cualquier hilo público en este grupo se hará privado. '
+    profile: Perfil
     subgroup_privacy_is_open_description: "Cualquier persona puede encontrar este subgrupo y pedir membresía. Solo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son públicos."
     subgroup_privacy_is_closed_description: "Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son privados."
     subgroup_privacy_is_closed_public_threads_description: "Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Los hilos pueden ser públicos o privados."
@@ -895,7 +901,6 @@ es:
       deactivated: 'Cuanta desactivada'
     change_picture_link: 'Cambiar imagen'
     change_password_link: 'Restablece contraseña'
-    deactivate_user_link: 'Desactivar cuenta...'
     delete_account: 'Eliminar cuenta permanentemente '
     delete_user_link: 'Eliminar cuenta '
     profile: 'Perfil'
@@ -912,7 +917,6 @@ es:
     location_label: 'Ubicación '
     location_placeholder: '¿Dónde estas basado?'
     update_profile: 'Actualizar perfil'
-    deactivate_account: 'Desactiva cuenta'
     help_translate: "Ayúdanos a traducir Loomio"
   text_editor:
     select_text_to_link: Selecciona algún texto para el enlace
@@ -927,7 +931,6 @@ es:
     set_password: Configura la contraseña
     password_changed: Su contraseña ha sido actualizada.
   deactivation_modal:
-    aria_label: 'Desactiva cuenta '
     introduction: 'Cuando desactiva su cuenta:'
     no_longer_group_member: 'Ya no serás listado como miembro en ningún grupo'
     name_removed: 'Los comentarios, propuestas e hilos que ha realizado permanecerán, pero su nombre será retirado de los mismos'
@@ -935,7 +938,6 @@ es:
     you_can_reactivate: "Podrá reactivar su cuenta si lo desea"
     submit: 'Si, quiero desactivar mi cuenta'
   delete_user_modal:
-    title: 'Elimine su cuenta de usuario'
     irreversable: "ADVERTENCIA: Esto es permanente, si continuas: "
     you_will_be_deleted: "Su cuenta de usuario, incluyendo nombre, correo electrónico y otros datos personales serán eliminados del sistema."
     submit: 'Sí, elimina mi cuenta '
@@ -1701,7 +1703,6 @@ es:
       poll_expired: Ha expirado una encuesta 
       outcome_created: Se ha compartido un resultado
   install_slack:
-    modal_helptext: 'Primero, deberás ingresar en Slack. Te enviaremos ahí automáticamente en un segundo, o puedes hacer clic en el siguiente botón para continuar. '
     login_to_slack: Ingresar en Slack
     card:
       install_title: Conectar a Slack

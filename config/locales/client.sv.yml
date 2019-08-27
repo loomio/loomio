@@ -320,6 +320,9 @@ sv:
   context_panel:
     thread_status:
       closed: "Denna tråd är stängd. Den kommer inte längre att visas på instrumentbrädan, tråden kommer också vara listad som 'stängd' på gruppsidan."
+  group_wizard:
+    invite_people: Bjud in deltagare
+    start_thread: Starta en diskussion
   group_page:
     threads: Trådar
     members: Medlemmar
@@ -335,7 +338,9 @@ sv:
       mute_aria_description: Din notifikationsvolym för den här gruppen är satt till Stum. Du kommer inte att få epost om inte någon specifikt vidnämner dig och grupp aktivitet kommer inte att visas på din instrumentbräda.
       mute_message: '"{{name}}" har tagits bort från din instrumentbräda.'
   group_form:
+    subgroup_name: 'Namn'
     privacy: 'Integritet'
+    profile: Profil
     submit_start_group: 'Startgrupp'
     submit_update: 'Uppdatera inställningar'
   documents_page:

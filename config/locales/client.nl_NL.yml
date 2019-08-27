@@ -444,6 +444,10 @@ nl_NL:
   context_panel:
     thread_status:
       pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
+  group_wizard:
+    welcome: Succes!
+    invite_people: Mensen uitnodigen
+    start_thread: Begin een discussie
   group_page:
     threads: Borden
     members: Leden
@@ -514,7 +518,7 @@ nl_NL:
     edit_subgroup_heading: 'Bewerk subgroepinstellingen'
     group_name: 'Groepsnaam'
     group_name_placeholder: 'Hoe wil je je groep noemen?'
-    subgroup_name: 'Subgroep naam'
+    subgroup_name: 'Naam'
     description: 'Beschrijving'
     description_placeholder: 'Beschrijf het doel van je groep, zodat je groepsleden weten waarom ze hier zijn.'
     privacy_statement:
@@ -529,6 +533,7 @@ nl_NL:
     confirm_change_to_secret_subgroup: 'Als je verder gaat worden alle borden privé gemaakt.'
     confirm_change_to_public: 'Als je verder gaat worden alle borden in deze groep openbaar gemaakt op het internet.'
     confirm_change_to_private_discussions_only: 'Als je verder gaat worden alle openbare borden in deze groep privé gemaakt.'
+    profile: Profiel
     subgroup_privacy_is_open_description: "Iedereen kan deze subgroep vinden en vragen om mee te mogen doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies zijn openbaar."
     subgroup_privacy_is_closed_description: "Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Alle discussies zijn privé."
     subgroup_privacy_is_closed_public_threads_description: "Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Discussies kunnen openbaar of privé zijn."
@@ -686,7 +691,6 @@ nl_NL:
       deactivated: 'Account gedeactiveerd'
     change_picture_link: 'Wijzigen afbeelding:'
     change_password_link: 'Wachtwoord resetten'
-    deactivate_user_link: 'Deactiveren account...'
     profile: 'Profiel'
     edit_profile: 'Bewerk profiel'
     picture_label: 'Afbeelding'
@@ -700,7 +704,6 @@ nl_NL:
     location_label: 'Locatie'
     location_placeholder: 'Waar ben je gevestigd?'
     update_profile: 'Bijwerken profiel'
-    deactivate_account: 'Deactiveer account'
     help_translate: "Help ons Loomio te vertalen"
   change_picture_form:
     helptext: 'Je kunt je eigen profiel foto uploaden, of als je een <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account hebt, kun je dat gebruiken.'
@@ -710,7 +713,6 @@ nl_NL:
     set_password: Wachtwoord instellen
     password_changed: Je wachtwoord is geüpdatet
   deactivation_modal:
-    aria_label: 'Deactiveer account'
     introduction: 'Als je je account deactiveert:'
     no_longer_group_member: 'Je staat bij geen enkele groep meer geregistreerd als lid '
     name_removed: 'Opmerkingen, voorstellen en gesprekken die je gemaakt hebt blijven bewaard, maar je naam wordt erbij verwijderd'
@@ -1339,7 +1341,6 @@ nl_NL:
       remove_identity: Verwijder deze verbinding
       identity_removed: Verbinding beëindigd
   install_slack:
-    modal_helptext: Om te beginnen zal je moeten inloggen op slack. We gaan je daar zometeen automatisch naar doorverbinden, of je kan op knop hieronder drukken om verder te gaan.
     login_to_slack: Log in op Slack
     card:
       install_title: Connecteer met Slack

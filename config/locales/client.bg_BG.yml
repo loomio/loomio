@@ -37,12 +37,17 @@ bg_BG:
   membership_request_form:
     name_label: Име
     email_label: E-mail
+  group_wizard:
+    invite_people: Поканете хора
+    start_thread: Започни дискусия
   group_page:
     threads: Дискусии
     members: Членове
     options_label: 'Опции'
     options:
       label: 'Опции'
+  group_form:
+    subgroup_name: 'Име'
   document:
     form:
       title_label: Име

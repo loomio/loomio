@@ -49,12 +49,18 @@ mk:
     heading: Побарај да се придружиш на групата
     name_label: Име
     email_label: Email
+  group_wizard:
+    invite_people: Покани луѓе
+    start_thread: Започни дискусија
   group_page:
     threads: Дискусии
     members: Членови
     options_label: 'Опции'
     options:
       label: 'Опции'
+  group_form:
+    subgroup_name: 'Име'
+    profile: Профил
   document:
     form:
       title_label: Име

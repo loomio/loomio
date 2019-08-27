@@ -240,6 +240,9 @@ sl:
     email_label: Email
     messages:
       membership_requested: 'Zaprosil/a si za članstvo v {{group}}'
+  group_wizard:
+    invite_people: Povabi še koga
+    start_thread: Začni razpravo
   group_page:
     threads: Razprave
     members: Člani
@@ -292,7 +295,10 @@ sl:
     question: 'Ali res želite deaktivirati to skupino?'
     submit: 'Da, deaktiviraj to skupino'
   group_form:
+    start_organization_heading: Nova organizacija
+    subgroup_name: 'Ime'
     privacy: 'Zasebnost'
+    profile: Profil
   documents_page:
     title: Priloge
     confirm_remove_title: Odstrani prilogo

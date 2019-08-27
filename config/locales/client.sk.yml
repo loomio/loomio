@@ -56,6 +56,9 @@ sk:
     heading: Požiadať o členstvo
     name_label: Meno
     email_label: E-mail
+  group_wizard:
+    invite_people: Pozvať ďalších
+    start_thread: Zahájiť diskusiu
   group_page:
     threads: Diskusie
     members: Členovia
@@ -63,6 +66,9 @@ sk:
     options_label: 'Nastavenia'
     options:
       label: 'Nastavenia'
+  group_form:
+    subgroup_name: 'Meno'
+    profile: Profil
   document:
     form:
       title_label: Meno

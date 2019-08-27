@@ -340,6 +340,9 @@ da:
     edited_by: 'Redigeret af <strong>{{name}}</strong>'
     posted: Gemt
     current_revision: Seneste
+  group_wizard:
+    invite_people: Inviter folk
+    start_thread: Start en diskussion
   group_page:
     threads: Debatter
     members: Medlemmer
@@ -409,7 +412,7 @@ da:
     edit_subgroup_heading: 'Rediger undergruppe indstillinger'
     group_name: 'Gruppenavn'
     group_name_placeholder: 'Hvilket navn ønsker du at give denne gruppe?'
-    subgroup_name: 'Undergruppe navn'
+    subgroup_name: 'Navn'
     description: 'Beskrivelse'
     description_placeholder: 'Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.'
     privacy_statement:
@@ -424,6 +427,7 @@ da:
     confirm_change_to_secret_subgroup: 'vis du fortsætter så vil alle debatter i denne gruppe være private.'
     confirm_change_to_public: 'Hvis du fortsætter så vil alle debatter i denne gruppe være offentlige (alle på internettet kan læse dem).'
     confirm_change_to_private_discussions_only: 'Hvis du fortsætter så vil alle offentlige debatter i denne gruppe blive lavet om til private debatter.'
+    profile: Profil
     subgroup_privacy_is_open_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er offentlige (alle på internettet kan læse dem)."
     subgroup_privacy_is_closed_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er private."
     subgroup_privacy_is_closed_public_threads_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen.  Debatter kan være offentlige eller private."
@@ -547,7 +551,6 @@ da:
       deactivated: 'Konto deaktiveret'
     change_picture_link: 'Rediger billede'
     change_password_link: 'Skift adgangskode'
-    deactivate_user_link: 'Deaktiver konto...'
     profile: 'Profil'
     edit_profile: 'Rediger Profil'
     picture_label: 'Billede'
@@ -556,13 +559,11 @@ da:
     email_label: 'Email'
     locale_label: 'Sprog'
     update_profile: 'Gem profil'
-    deactivate_account: 'Deaktiver konto'
   change_picture_form:
     helptext: 'Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.'
     use_initials: 'Benyt initialer'
     use_gravatar: 'Brug Gravatar'
   deactivation_modal:
-    aria_label: 'Deaktiver konto'
     introduction: 'Når du deaktiverer din konto:'
     no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
     name_removed: 'Kommentarer, forslag og debatter som du har lavet vil forblive men dit navn vil blive fjernet fra dem'

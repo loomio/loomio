@@ -53,6 +53,9 @@ gl:
     heading: Pedir unirse ó grupo
     name_label: Nome
     email_label: Correo electrónico
+  group_wizard:
+    invite_people: Invitar xente
+    start_thread: Comezar debate
   group_page:
     threads: Debates
     members: Membros
@@ -60,6 +63,9 @@ gl:
     options_label: 'Opcións'
     options:
       label: 'Opcións'
+  group_form:
+    subgroup_name: 'Nome'
+    profile: Perfil
   document:
     form:
       title_label: Nome

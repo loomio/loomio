@@ -606,6 +606,10 @@ zh_TW:
     thread_status:
       pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
       closed: "這個討論串已經關閉。它將不會再出現在儀表板上，並將會在群組頁面中列在「已關閉」下。"
+  group_wizard:
+    welcome: 成功！
+    invite_people: 邀請夥伴
+    start_thread: 啟動新的討論串
   group_page:
     threads: 討論串
     polls: 投票
@@ -696,8 +700,9 @@ zh_TW:
     edit_group_heading: '編輯群組設定'
     edit_subgroup_heading: '編輯子群組設定'
     group_name: '群組名稱'
+    start_organization_heading: 新組織
     group_name_placeholder: '您想要怎麼稱呼您的群組？'
-    subgroup_name: '子群組名稱'
+    subgroup_name: '名稱'
     description: '描述'
     description_placeholder: '描述群組的目的讓您的夥伴們知道他們為什麼在這裡。'
     privacy_statement:
@@ -713,6 +718,7 @@ zh_TW:
     confirm_change_to_secret_subgroup: '若您繼續，所有的討論串都會變為非公開。'
     confirm_change_to_public: '若您繼續，所有在此群組的討論串都將會變為公開在網路上。'
     confirm_change_to_private_discussions_only: '若您繼續，任何在此群組中的公開討論串都將會變為非公開。'
+    profile: 簡歷
     subgroup_privacy_is_open_description: "任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。"
     subgroup_privacy_is_closed_description: "任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。"
     subgroup_privacy_is_closed_public_threads_description: "任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。討論串可以是公開或私密的。"
@@ -930,7 +936,6 @@ zh_TW:
       deactivated: '帳號已停用'
     change_picture_link: '變更照片'
     change_password_link: '重設密碼'
-    deactivate_user_link: '凍結帳號...'
     delete_account: '永久刪除帳號'
     delete_user_link: '刪除帳號'
     profile: '簡歷'
@@ -947,7 +952,7 @@ zh_TW:
     location_label: '位置'
     location_placeholder: '您在哪裡？'
     update_profile: '更新簡歷'
-    deactivate_account: '凍結帳號'
+    deactivate_account: '停用使用者帳號'
     help_translate: "協助我們翻譯 Loomio"
   text_editor:
     select_text_to_link: 選取要連結的文字
@@ -966,7 +971,7 @@ zh_TW:
     set_password: 設定密碼
     password_changed: 您的密碼已更新
   deactivation_modal:
-    aria_label: '凍結帳號'
+    aria_label: '停用使用者帳號'
     introduction: '當您停用您的帳號：'
     no_longer_group_member: '您將不會再被任何群組列為成員'
     name_removed: '您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。'
@@ -974,7 +979,7 @@ zh_TW:
     you_can_reactivate: "如果您想要的話，您可以在稍後重新啟用您的帳號"
     submit: '是的，我想要停用'
   delete_user_modal:
-    title: '刪除您的使用者帳號'
+    title: '刪除使用者帳號'
     irreversable: "警告：這無法復原。如果您要繼續的話："
     you_will_be_deleted: "您的使用者帳號，包含您的名字、電子郵件地址與其他可識別個人的資料，都將會從我們的系統中刪除。"
     submit: '是的，刪除我的帳號'
@@ -986,6 +991,9 @@ zh_TW:
     submit: '凍結帳號'
   email_settings_page:
     header: 通知設定
+    account_deactivated: 您的帳號已被停用。您將不會再收到任何電子郵件。
+    deactivate_header: 永遠停止所有電子郵件
+    deactivate_description: 如果您不想要再從我們這裡收到任何電子郵件，您可以停用您的使用者帳號。
     email_newsletter: Loomio 通訊
     email_newsletter_description: "取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。"
     daily_summary_label: 每日摘要電子郵件
@@ -1787,6 +1795,7 @@ zh_TW:
     too_many_attempts: "嘗試太多次了；試試看點按在電子郵件中的連結來登入。"
     invalid_code: "抱歉，代碼不正確。請檢查電子郵件並再試一次。"
     password_link_sent: "我們已經寄送一封包含了如何設定您的密碼的電子郵件到 {{email}} 了。"
+    reactivate_link_sent: "我們將會傳送一封包含重新啟用您帳號簡介的電子郵件給您"
     signed_in: 登入成功
     email_verified: 電子郵件驗證成功
     name: 名稱
@@ -1823,7 +1832,6 @@ zh_TW:
       outcome_created: 結果已分享
   install_slack:
     modal_title: 整合 Slack
-    modal_helptext: 首先，您將需要登入到 Slack 中。我們將會在一秒內將您重新導向到那裡，或是您可以點選下面的按鈕來繼續。
     login_to_slack: 登入到 Slack
     remove_slack: 移除 Slack 整合
     card:

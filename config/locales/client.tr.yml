@@ -235,6 +235,9 @@ tr:
     edited_by: '<strong>{{name}}</strong> tarafından düzenlendi'
     posted: Gönderildi
     current_revision: En yeniler
+  group_wizard:
+    invite_people: Kişileri davet et
+    start_thread: Bir müzakere başlat
   group_page:
     threads: Müzakereler
     members: Üyeler
@@ -291,7 +294,7 @@ tr:
     edit_subgroup_heading: 'Alt grup ayarlarını düzenle'
     group_name: 'Grup adı'
     group_name_placeholder: 'Grubuna ne ad vermek istiyorsun?'
-    subgroup_name: 'Alt Grup Adı'
+    subgroup_name: 'İsim'
     description: 'Tanım'
     description_placeholder: 'Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.'
     privacy_statement:
@@ -306,6 +309,7 @@ tr:
     confirm_change_to_secret_subgroup: 'Eğer devam ederseniz, tüm müzakereler gizli yapılacaktır.'
     confirm_change_to_public: 'Eğer devam ederseniz, bu gruptaki tüm müzakereler web üzerinde herkese açık olacaktır.'
     confirm_change_to_private_discussions_only: 'Eğer devam ederseniz, bu gruptaki kamuya açık tüm müzakereler gizlenecektir.'
+    profile: Profil
     subgroup_privacy_is_open_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır."
     subgroup_privacy_is_closed_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir."
     subgroup_privacy_is_closed_public_threads_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açık veya gizli olabilir."
@@ -420,7 +424,6 @@ tr:
       password_changed: 'Şifre güncellendi'
       deactivated: 'Hesap devre dışı bırakıldı'
     change_picture_link: 'Resmi değiştir'
-    deactivate_user_link: 'Hesabınızı devre dışı bırakın'
     profile: 'Profil'
     edit_profile: 'Profili düzenle'
     picture_label: 'Resim'

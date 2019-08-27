@@ -571,6 +571,10 @@ it:
     you_and_name: "Tu e {{name}}"
     you_and_name_and_count_more: "Tu, {{name}} e altri {{count}} "
     name_and_count_more: "{{name}} e altri {{count}}"
+  group_wizard:
+    welcome: Successo!
+    invite_people: Invita persone
+    start_thread: Comincia discussione
   group_page:
     threads: Discussioni
     members: Membri
@@ -643,8 +647,9 @@ it:
     edit_group_heading: 'Modifica le impostazioni del gruppo'
     edit_subgroup_heading: 'Modifica le impostazioni del sottogruppo'
     group_name: 'Nome del gruppo'
+    start_organization_heading: Nuova organizzazione
     group_name_placeholder: 'Come vuoi chiamare il tuo gruppo?'
-    subgroup_name: 'Nome del sottogruppo'
+    subgroup_name: 'Nome'
     description: 'Descrizione'
     description_placeholder: 'Descrivi lo scopo del tuo gruppo in modo che gli altri partecipanti sappiano il motivo per cui sono qui.'
     privacy_statement:
@@ -660,6 +665,7 @@ it:
     confirm_change_to_secret_subgroup: 'Se procedi, tutte le discussioni saranno rese private.'
     confirm_change_to_public: 'Se procedi, tutte le discussioni in questo gruppo saranno rese pubbliche e visibili in rete. '
     confirm_change_to_private_discussions_only: 'Se procedi, tutte le discussioni pubbliche in questo gruppo saranno rese private. '
+    profile: Profilo
     subgroup_privacy_is_open_description: "Tutti/e possono trovare questo sotto-gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Tutte le discussioni sono pubbliche."
     subgroup_privacy_is_closed_description: "Tutti/e possono trovare questo sotto-gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Tutte le discussioni sono private."
     subgroup_privacy_is_closed_public_threads_description: "Tutti/e possono trovare questo sotto-gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Le discussioni possono essere pubbliche o private."
