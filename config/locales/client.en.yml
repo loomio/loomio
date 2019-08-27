@@ -351,6 +351,8 @@ en:
   sidebar:
     threads: 'Threads'
     my_groups: 'My groups'
+    other_groups: 'Other groups'
+    all_groups: 'All groups'
     recent_threads: 'Recent threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
@@ -761,7 +763,7 @@ en:
   group_form:
     permissions_explaination: 'There are two levels of membership: admin and member. Admins have all permissions. Select member permissions:'
     aria_label: 'Group form'
-
+    new_organisation: New Organization
     start_group_heading: 'Start a group'
     start_subgroup_heading: 'Start a subgroup'
     edit_group_heading: 'Edit group settings'
@@ -772,7 +774,7 @@ en:
     edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What do you want to call your group?'
     organization_name_placeholder: 'What do you want to call your organization?'
-    subgroup_name: 'Name'
+    subgroup_name: 'Subgroup Name'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
     privacy_statement:

@@ -38,7 +38,7 @@ export default
           @searchQuery = ''
 
     searchQuery: debounce (val, old)->
-      @$router.replace(query: {q: val})
+      @$router.replace(query: {q: val, subgroups: @$route.query.subgroups})
     ,
       200
 
@@ -82,13 +82,16 @@ export default
         ''
     tabs: ->
       return unless @group
+      console.log "route query", @$route.query
+      query = ''
+      query = '?subgroups='+@$route.query.subgroups if @$route.query.subgroups
+
       [
-        {id: 0, name: 'threads',   route: @urlFor(@group)}
-        {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')},
-        {id: 2, name: 'members',   route: @urlFor(@group, 'members')},
-        # {id: 3, name: 'subgroups', route: @urlFor(@group, 'subgroups')},
-        {id: 4, name: 'files',     route: @urlFor(@group, 'files')}
-        {id: 5, name: 'settings',     route: @urlFor(@group, 'settings')}
+        {id: 0, name: 'threads',   route: @urlFor(@group, null)+query}
+        {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')+query},
+        {id: 2, name: 'members',   route: @urlFor(@group, 'members')+query},
+        {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
+        {id: 5, name: 'settings',  route: @urlFor(@group, 'settings')}
       ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
 
     logo: ->

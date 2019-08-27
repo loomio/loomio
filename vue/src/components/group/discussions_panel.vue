@@ -36,6 +36,9 @@ export default
         search:
           placeholder: @$t('navbar.search_threads', name: @group.parentOrSelf().name)
 
+      EventBus.$on 'joinedGroup', (group) =>
+        @fetch()
+
       @loader = new RecordLoader
         collection: 'discussions'
         params:
@@ -155,7 +158,7 @@ export default
 </script>
 
 <template lang="pug">
-div.discussions-panel()
+div.discussions-panel(:key="group.id")
   formatted-text(v-if="group" :model="group" column="description")
   v-chip-group.pl-2(v-if="!search" v-model="filter" active-class="accent--text")
     v-btn.mr-4.discussions-panel__new-thread-button(@click='openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
@@ -173,8 +176,8 @@ div.discussions-panel()
     v-progress-linear(color="accent" indeterminate :active="loading" absolute top)
     .discussions-panel__content(v-if="!search")
       .discussions-panel__list--empty(v-if='noThreads' :value="true")
-        p.text-center(v-t="'group_page.no_threads_here'")
-        p.text-center(v-if='!canViewPrivateContent', v-t="'group_page.private_threads'")
+        p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
+        p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
       .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
         v-list.thread-previews(two-line)
           thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)

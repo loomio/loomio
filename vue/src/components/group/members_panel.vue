@@ -178,6 +178,8 @@ export default
           v-list-item-title
             router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
             space
+            span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
+            space
             span.caption {{membership.title}}
             space
             v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
