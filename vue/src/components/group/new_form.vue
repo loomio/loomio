@@ -43,7 +43,7 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
-          setTimeout => @openGroupWizard(group)
+          setTimeout => @openGroupWizard(group) unless group.parentId
   methods:
     expandForm: ->
       @isExpanded = true
@@ -71,6 +71,18 @@ export default
     privacyStatement: ->
       @$t groupPrivacyStatement(@group),
         parent: @group.parentName()
+
+    groupNamePlaceholder: ->
+      if @group.parentId
+        'group_form.group_name_placeholder'
+      else
+        'group_form.organization_name_placeholder'
+
+    groupNameLabel: ->
+      if @group.parentId
+        'group_form.group_name'
+      else
+        'group_form.organization_name'
 </script>
 
 <template lang="pug">
@@ -81,12 +93,11 @@ v-card.group-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(v-if='group.parentId', v-t="'group_form.start_subgroup_heading'")
-        h1.headline(v-if='!group.parentId', v-t="'group_form.start_group_heading'")
-        //- h1.headline(v-if='!group.isNew()', v-t="'group_form.edit_group_heading'")
+        h1.headline(v-if='group.parentId', v-t="'group_form.start_group_heading'")
+        h1.headline(v-if='!group.parentId', v-t="'group_form.start_organization_heading'")
       dismiss-modal-button(:close='close')
   v-card-text
-    v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255', :label="$t('group_form.group_name')")
+    v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
     validation-errors(:subject="group", field="name")
 
     .group-form__section.group-form__privacy

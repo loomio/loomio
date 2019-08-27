@@ -94,6 +94,18 @@ export default
 
     showGroupFeatures: ->
       AbilityService.isSiteAdmin() and _.some(@featureNames)
+
+    groupNamePlaceholder: ->
+      if @clone.parentId
+        'group_form.group_name_placeholder'
+      else
+        'group_form.organization_name_placeholder'
+
+    groupNameLabel: ->
+      if @clone.parentId
+        'group_form.group_name'
+      else
+        'group_form.organization_name'
 </script>
 
 <template lang="pug">
@@ -104,9 +116,8 @@ v-card.group-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(v-if='clone.isNew() && clone.parentId', v-t="'group_form.start_subgroup_heading'")
-        h1.headline(v-if='clone.isNew() && !clone.parentId', v-t="'group_form.start_group_heading'")
-        h1.headline(v-if='!clone.isNew()', v-t="'group_form.edit_group_heading'")
+        h1.headline(v-if='clone.parentId', v-t="'group_form.edit_group_heading'")
+        h1.headline(v-if='!clone.parentId', v-t="'group_form.edit_organization_heading'")
       dismiss-modal-button(:close='close')
   v-card-text
 
@@ -116,7 +127,7 @@ v-card.group-form
       v-tab(v-t="'group_form.permissions'")
 
       v-tab-item
-        v-text-field.group-form__name#group-name(v-model='clone.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255', :label="$t('group_form.group_name')")
+        v-text-field.group-form__name#group-name(v-model='clone.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
         v-btn(icon @click="selectLogo()")
           group-avatar(:group="group" size="28px")
         v-spacer

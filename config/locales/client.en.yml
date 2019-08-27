@@ -761,13 +761,17 @@ en:
   group_form:
     permissions_explaination: 'There are two levels of membership: admin and member. Admins have all permissions. Select member permissions:'
     aria_label: 'Group form'
-    new_organisation:
-    start_group_heading: 'New organization'
-    start_subgroup_heading: 'New group'
-    edit_group_heading: 'Edit organization settings'
-    edit_subgroup_heading: 'Edit group settings'
-    group_name: 'Name'
+
+    start_group_heading: 'Start a group'
+    start_subgroup_heading: 'Start a subgroup'
+    edit_group_heading: 'Edit group settings'
+    edit_subgroup_heading: 'Edit subgroup settings'
+    group_name: 'Group Name'
+    organization_name: 'Organization Name'
+    start_organization_heading: New organization
+    edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What do you want to call your group?'
+    organization_name_placeholder: 'What do you want to call your organization?'
     subgroup_name: 'Name'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
