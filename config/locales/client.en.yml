@@ -659,6 +659,14 @@ en:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
+  user_wizard:
+    welcome: Welcome!
+    welcome_description: You've successfully created a new user account on Loomio. In a few steps, you'll have your profile fully setup and ready to begin participating.
+    change_picture: Add picture
+    change_picture_description: Add a picture to your profile
+    setup_profile: Setup profile
+    setup_profile_description: Help others
+
   group_wizard:
     welcome: Success!
     welcome_description: You've successfully created a new organization on Loomio. In a few steps, you'll have your organization fully setup and ready to start discussions. If you want to skip this wizard for now, you can open it again from the Settings tab.
@@ -1059,8 +1067,8 @@ en:
     insert_link: Insert link
 
   change_picture_form:
-    aria_label: 'Change photo form'
-    title: 'Change photo'
+    aria_label: 'Profile photo form'
+    title: 'Set profile photo'
     helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account, you can use that.'
     use_initials: 'Use initials'
     use_gravatar: 'Use Gravatar'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_25_221208) do
+ActiveRecord::Schema.define(version: 2019_08_27_220049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -701,7 +701,7 @@ ActiveRecord::Schema.define(version: 2019_08_25_221208) do
     t.string "name", limit: 255
     t.datetime "deactivated_at"
     t.boolean "is_admin", default: false
-    t.string "avatar_kind", limit: 255, default: "initials", null: false
+    t.string "avatar_kind"
     t.string "uploaded_avatar_file_name", limit: 255
     t.string "uploaded_avatar_content_type", limit: 255
     t.integer "uploaded_avatar_file_size"
