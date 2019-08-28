@@ -16,6 +16,7 @@ module.exports = {
   AuthSignupForm: 'auth/signup_form',
   ActiveTimeAgo: 'common/active_time_ago',
   ChangePasswordForm: 'profile/change_password_form',
+  ChangePictureForm: 'profile/change_picture_form',
   CommentForm: 'thread/comment_form',
   CommentFormActions: 'thread/comment_form_actions',
   ConfirmModal: 'common/confirm_modal',

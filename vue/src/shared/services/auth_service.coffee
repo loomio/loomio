@@ -1,6 +1,10 @@
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
+import Session from '@/shared/services/session'
+import EventBus from '@/shared/services/event_bus'
+import Flash from '@/shared/services/flash'
 import i18n from '@/i18n.coffee'
+import openModal      from '@/shared/helpers/open_modal'
 
 export default new class AuthService
   emailStatus: (user) ->
@@ -16,26 +20,37 @@ export default new class AuthService
     user.update(hasToken: data.has_token)
     user
 
-  signIn: (user = {}, onSuccess, finished) ->
+  authSuccess: (data) ->
+    user = Session.apply(data)
+    EventBus.$emit('closeModal')
+    Flash.success('auth_form.signed_in')
+
+    if user && !user.hasExperienced('userWizard')
+      openModal
+        component: 'UserWizard'
+
+  signIn: (user = {} , onSuccess = -> , onFailure = ->) ->
     Records.sessions.build(
-      _.pick(user, ['email', 'name', 'password'])
-    ).save().then (data) ->
+      _.pick(user, ['email', 'name', 'password', 'code'])
+    ).save().then (data) =>
+      @authSuccess(data)
       onSuccess(data)
+      data
     , (err) ->
       console.log 'error signing in'
       err.json().then (data) ->
         errors = if user.hasToken
-          { token:    [i18n.t('auth_form.invalid_token')] }
+          { token: [i18n.t('auth_form.invalid_token')] }
         else
           { password: _.map(data.errors.password, (key) -> i18n.t(key)) }
         user.update(errors: errors)
-        finished()
 
-  signUp: (user, onSuccess) ->
+  signUp: (user, onSuccess = -> , onFailure = -> ) ->
     Records.registrations.build(
       _.pick(user, ['email', 'name', 'recaptcha', 'legalAccepted'])
-    ).save().then (data) ->
+    ).save().then (data) =>
       if user.hasToken or data.signed_in
+        @authSuccess(data)
         onSuccess(data)
       else
         user.update({sentLoginLink: true})

@@ -6,6 +6,7 @@ import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Flash from '@/shared/services/flash'
 import VueRecaptcha from 'vue-recaptcha';
+import openModal      from '@/shared/helpers/open_modal'
 import { hardReload } from '@/shared/helpers/window'
 
 export default
@@ -24,15 +25,10 @@ export default
         @submitForm()
 
     submitForm: (recaptcha) ->
-      console.log 'submitForm', recaptcha
       @user.recaptcha = recaptcha
-      onSuccess = (data) =>
-        Session.apply(data)
-        @closeModal()
-        Flash.success('auth_form.signed_in')
       if AuthService.validSignup(@vars, @user)
         # EventBus.emit $scope, 'processing'
-        AuthService.signUp(@user, onSuccess).finally ->
+        AuthService.signUp(@user).finally ->
           # EventBus.emit $scope, 'doneProcessing'
   computed:
     recaptchaKey: -> AppConfig.recaptchaKey
@@ -65,6 +61,5 @@ div(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()" @keydown.enter="
       v-btn(text color="warning" v-t="'common.action.back'" @click='user.emailStatus = null')
       v-spacer
       v-btn.auth-signup-form__submit(color="primary" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
-    //- div(vc-recaptcha='true' size='invisible' key='recaptchaKey' v-if='useRecaptcha' on-success='submitForm(response)')
-    v-recaptcha(ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
+    v-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
 </template>
