@@ -35,7 +35,7 @@ export default
         @sendLoginLink()
 </script>
 <template lang="pug">
-.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()" @keydown.enter="submit()")
+.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-layout(justify-center)
     auth-avatar(:user='user')
   .auth-signin-form__magic-link

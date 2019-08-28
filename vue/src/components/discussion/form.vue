@@ -89,7 +89,7 @@ export default
 </script>
 
 <template lang="pug">
-v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()")
+v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='discussion.processing')
   v-card-title
     h1.headline

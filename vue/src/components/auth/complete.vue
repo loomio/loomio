@@ -17,7 +17,7 @@ export default
     submit: -> AuthService.signIn(@user, undefined, ( => @attempts += 1) )
 </script>
 <template lang="pug">
-.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()" @keydown.enter="submit()")
+.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   auth-avatar(:user='user')
   h2.lmo-h2(v-t="'auth_form.check_your_email'")
   p(v-if='user.sentLoginLink')
