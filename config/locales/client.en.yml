@@ -1616,6 +1616,7 @@ en:
   poll_common_closing_at_field:
     closing: Closing
     closing_hour: Closing time
+    invalid_date: Invalid date
 
   poll_card:
     started_by: Started by {{name}}

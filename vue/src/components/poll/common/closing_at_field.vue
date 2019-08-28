@@ -1,6 +1,6 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
-import { format, formatDistance, parse } from 'date-fns'
+import { format, formatDistance, parse, startOfHour, isValid } from 'date-fns'
 import { hoursOfDay, exact} from '@/shared/helpers/format_time'
 
 export default
@@ -8,7 +8,7 @@ export default
     poll: Object
 
   data: ->
-    closingHour: format(@poll.closingAt, 'h:mm a')
+    closingHour: format(startOfHour(@poll.closingAt), 'h:mm a')
     closingDate: format(@poll.closingAt, 'yyyy-MM-dd')
     dateToday: format(new Date, 'yyyy-MM-dd')
     times: hoursOfDay
@@ -18,7 +18,11 @@ export default
   methods:
     exact: exact
     updateClosingAt: ->
-      @poll.closingAt = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd h:mm a", new Date())
+      date = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd h:mm a", new Date())
+      if isValid(date)
+        @poll.closingAt = date
+      else
+        alert(@$t('poll_common_closing_at_field.invalid_date'))
 
   computed:
     label: ->
@@ -40,6 +44,7 @@ export default
                 span(v-t="{ path: 'common.closing_in', args: { time: label } }" :title="exact(poll.closingAt)")
           v-date-picker.poll-common-closing-at-field__datepicker(v-model='closingDate' :min='dateToday' no-title @input="isShowingDatePicker = false")
       v-spacer
-      v-combobox.poll-common-closing-at-field__timepicker(prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
+      v-select.poll-common-closing-at-field__timepicker(prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
   validation-errors(:subject="poll", field="closingAt")
+
 </template>
