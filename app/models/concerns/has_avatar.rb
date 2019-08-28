@@ -19,7 +19,7 @@ module HasAvatar
     self.avatar_kind = if has_gravatar?
       :gravatar
     else
-      nil
+      :initials
     end
   end
 
