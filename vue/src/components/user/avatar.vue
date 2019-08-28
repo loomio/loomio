@@ -13,6 +13,9 @@ export default
       default: 36
     noLink: Boolean
     colors: Object
+    onClick:
+      type: Function
+      default: null
 
   computed:
     width: ->
@@ -48,11 +51,18 @@ export default
       else
         'router-link'
 
+    cursor: ->
+      if @onClick
+        'pointer'
+      else
+        'default'
+
+
 </script>
 
 <template lang="pug">
-component.user-avatar(:is="componentType" :to="!noLink && urlFor(user)")
-  v-avatar(:title='user.name' :size='width')
+component.user-avatar(:is="componentType" :to="!noLink && urlFor(user)" @click="onClick()" :style="{ 'max-width': width + 'px', margin: '0 auto' }")
+  v-avatar(:title='user.name' :size='width' :style="{ cursor: cursor }")
     v-gravatar(v-if="user.avatarKind === 'gravatar'" :hash='user.emailHash' :gravatar-size='gravatarSize' :alt='user.name')
     img(v-else-if="user.avatarKind === 'uploaded'" :alt='user.name' :src='uploadedAvatarUrl')
     span(v-else-if="user.avatarKind === 'initials'" :style="{width: width+'px'}") {{user.avatarInitials}}

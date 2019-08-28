@@ -8,7 +8,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import AppConfig      from '@/shared/services/app_config'
 
-import WizardPanel from '@/components/group/wizard_panel'
+import WizardPanel from '@/components/common/wizard_panel'
 
 export default
   components:
