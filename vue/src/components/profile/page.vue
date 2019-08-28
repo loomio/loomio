@@ -65,14 +65,19 @@ v-container.profile-page.max-width-1024
       v-card-text
         v-layout
           v-flex.profile-page__details
-            v-text-field.profile-page__name-input(:label="$t('profile_page.name_label')" required v-model="user.name")
-            validation-errors(:subject='user', field='name')
+            v-layout(:column="$vuetify.breakpoint.xs")
+              v-flex
+                v-text-field.profile-page__name-input(:label="$t('profile_page.name_label')" required v-model="user.name")
+                validation-errors(:subject='user', field='name')
 
-            v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username")
-            validation-errors(:subject='user', field='username')
+                v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username")
+                validation-errors(:subject='user', field='username')
 
-            v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required='ng-required', v-model='user.email')
-            validation-errors(:subject='user', field='email')
+                v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required='ng-required', v-model='user.email')
+                validation-errors(:subject='user', field='email')
+
+              v-flex.profile-page__avatar(justify-center)
+                user-avatar(:user='originalUser' size='featured' :on-click="changePicture" :no-link="true")
 
             lmo-textarea(:model='user' field="shortBio" :label="$t('profile_page.short_bio_label')" :placeholder="$t('profile_page.short_bio_placeholder')")
             validation-errors(:subject='user', field='shortBio')
@@ -83,9 +88,6 @@ v-container.profile-page.max-width-1024
             validation-errors(:subject='user', field='selectedLocale')
             p(v-if='showHelpTranslate')
               a(v-t="'profile_page.help_translate'" href='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation' target='_blank')
-          v-flex.profile-page__avatar.mx-4
-            user-avatar(:user='originalUser', size='featured')
-            v-btn.profile-page__change-picture(color="accent" @click='changePicture()' v-t="'profile_page.change_picture_link'")
       v-card-actions.profile-page__update-account
         v-spacer
         v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='isDisabled' v-t="'profile_page.update_profile'")
