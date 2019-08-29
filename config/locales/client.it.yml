@@ -224,9 +224,6 @@ it:
     mute_label: "Silenzia"
     discussion:
       title: "Impostazioni thread email"
-      loud_description: "Riceverai una notifica ogni volta che c'è attività in questa discussione."
-      normal_description: "Riceverai un email ogni volta che una proposta viene iniziata, sta per concludersi, o un risultato viene pubblicato."
-      quiet_description: "Non riceverai email su questa discussione."
       apply_to_all: "Applica questa configurazione a tutte le discussioni in questo gruppo."
       messages:
         loud: "Riceverai un'email sulle attività di questa discussione."
@@ -649,7 +646,7 @@ it:
     group_name: 'Nome del gruppo'
     start_organization_heading: Nuova organizzazione
     group_name_placeholder: 'Come vuoi chiamare il tuo gruppo?'
-    subgroup_name: 'Nome'
+    subgroup_name: 'Nome del sottogruppo'
     description: 'Descrizione'
     description_placeholder: 'Descrivi lo scopo del tuo gruppo in modo che gli altri partecipanti sappiano il motivo per cui sono qui.'
     privacy_statement:

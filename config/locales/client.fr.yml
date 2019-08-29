@@ -211,9 +211,6 @@ fr:
     mute_label: "Ignorer"
     discussion:
       title: "Paramètres du fil e-mail"
-      loud_description: "Vous recevrez un courriel à chaque fois qu’il y aura une activité dans cette discussion."
-      normal_description: "Vous recevrez un courriel lorsqu’une décision est lancée ou sur le point de fermer, et quand un résultat est publié."
-      quiet_description: "Vous ne recevrez aucun courriel à propos de cette discussion."
       apply_to_all: "Appliquer ces paramètres à toutes les discussions de ce groupe."
       messages:
         loud: "Vous recevrez un courriel lorsqu’il y aura une activité dans cette discussion."
@@ -658,7 +655,7 @@ fr:
     group_name: 'Nom du groupe'
     start_organization_heading: Nouveau groupe
     group_name_placeholder: 'Comment voulez-vous nommer votre groupe ?'
-    subgroup_name: 'Nom'
+    subgroup_name: 'Nom du sous-groupe'
     description: 'Description'
     description_placeholder: 'Utilisez cet espace pour décrire le but de votre groupe afin que vos membres sachent pourquoi ils sont là.'
     privacy_statement:

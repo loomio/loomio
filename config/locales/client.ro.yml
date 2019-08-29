@@ -157,7 +157,6 @@ ro:
     quiet_label: "Nici un email"
     mute_label: "Ascunde notificari"
     discussion:
-      quiet_description: "Nu vei primi emailuri legate de aceasta discutie"
       messages:
         quiet: "Nu vei primi emailuri legate de aceasta discutie"
     membership:
@@ -335,7 +334,6 @@ ro:
       mute: Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona.
       mute_aria_description: Volumul notificarilor pentru aceast grup este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar activitatea grupului nu va fi afisata in tabloul tau de bord.
   group_form:
-    subgroup_name: 'Nume'
     privacy: 'Confidentialitate'
     confirm_change_to_secret: "Daca vei continua, toate discutiile acestui grup precum si sub-grupurile lui vor deveni private."
     confirm_change_to_secret_subgroup: 'Daca vei continua, toate discutiile vor deveni private.'

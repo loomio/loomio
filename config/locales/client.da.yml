@@ -135,9 +135,6 @@ da:
     quiet_label: "Ingen emails"
     mute_label: "Slå fra"
     discussion:
-      loud_description: "Du vil modtage en email hver gang der er aktivitet på denne debat."
-      normal_description: "Du vil modtage en email hver gang et forslag er oprettet, ved at lukke, eller et resultat er publiceret."
-      quiet_description: "Du vil ikke modtage nogen email ved nogen aktiviteter på denne debat."
       apply_to_all: "Gem disse indstillinger for alle debatter i denne gruppe."
       messages:
         loud: "Du vil få emails ved enhver aktivitet i denne debat."
@@ -412,7 +409,7 @@ da:
     edit_subgroup_heading: 'Rediger undergruppe indstillinger'
     group_name: 'Gruppenavn'
     group_name_placeholder: 'Hvilket navn ønsker du at give denne gruppe?'
-    subgroup_name: 'Navn'
+    subgroup_name: 'Undergruppe navn'
     description: 'Beskrivelse'
     description_placeholder: 'Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.'
     privacy_statement:

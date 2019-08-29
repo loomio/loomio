@@ -59,7 +59,6 @@ mk:
     options:
       label: 'Опции'
   group_form:
-    subgroup_name: 'Име'
     profile: Профил
   document:
     form:

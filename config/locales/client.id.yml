@@ -55,8 +55,6 @@ id:
     options_label: 'Pilihan'
     options:
       label: 'Pilihan'
-  group_form:
-    subgroup_name: 'Nama'
   document:
     form:
       title_label: Nama

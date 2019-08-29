@@ -55,8 +55,6 @@ ml:
     options_label: 'ഐച്ഛികങ്ങള്‍'
     options:
       label: 'ഐച്ഛികങ്ങള്‍'
-  group_form:
-    subgroup_name: 'പേരു്'
   document:
     form:
       title_label: പേരു്

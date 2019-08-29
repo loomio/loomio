@@ -154,8 +154,6 @@ ga_IE:
     quiet_label: "Gan ríomhphoist"
     mute_label: "Balbh"
     discussion:
-      loud_description: "Seolfar ríomhphost chugat aon uair a bhíonn gníomhaíocht ar an snáithe seo."
-      quiet_description: "Ní sheolfar ríomhphoist chugat i dtaca leis an snáithe seo."
       messages:
         loud: "Seolfar ríomhphoist chugat i dtaca le gníomhaíocht sa snáithe seo."
         quiet: "Ní sheolfar ríomhphoist chugat i dtaca leis an snáithe seo."
@@ -331,7 +329,6 @@ ga_IE:
     start_group_heading: 'Cuir baicle ar bun'
     group_name: 'Ainm na baicle'
     group_name_placeholder: 'Cén t-ainm ar mhaith leat a bheith ar an do bhaicle?'
-    subgroup_name: 'Ainm'
     description: 'Cur síos'
     privacy: 'Príobháideachas'
     profile: Beathaisnéisín

@@ -64,7 +64,6 @@ gl:
     options:
       label: 'Opcións'
   group_form:
-    subgroup_name: 'Nome'
     profile: Perfil
   document:
     form:

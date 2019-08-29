@@ -128,9 +128,6 @@ ca:
     quiet_label: "Cap correu electrònic"
     mute_label: "Silenci"
     discussion:
-      loud_description: "Rebreu correus electrònics sempre que hi hagi activitat en aquesta discussió."
-      normal_description: "Rebreu correus electrònics sempre que es creï una proposta, quan estigui a punt de tancar-se o quan es publiqui un resultat."
-      quiet_description: "No rebreu cap correu electrònic sobre aquesta discussió."
       apply_to_all: "Aplica aquesta configuració a totes les discussions d'aquest grup."
       messages:
         loud: "Rebreu l'activitat d'aquesta discussió per correu electrònic."
@@ -303,7 +300,7 @@ ca:
     edit_subgroup_heading: 'Edita la configuració del subgrup'
     group_name: 'Nom del grup'
     group_name_placeholder: 'Com voleu anomenar el vostre grup?'
-    subgroup_name: 'Nom'
+    subgroup_name: 'Nom del subgrup'
     description: 'Descripció'
     description_placeholder: 'Descriviu el propòsit del grup per tal de que els membres sàpiguen perquè estan aquí.'
     privacy_statement:

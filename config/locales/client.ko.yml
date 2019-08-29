@@ -96,9 +96,6 @@ ko:
     mute_label: "음소거"
     discussion:
       title: "이메일 설정"
-      loud_description: "이 토론 주제에 새로운 활동이 있으면 이메일을 받습니다."
-      normal_description: "누군가 제안하거나, 종료시키기 전이나, 성과를 작성할때마다 메일을 받습니다."
-      quiet_description: "이 토론 주제에 대해서는 이메일을 받지 않습니다."
       apply_to_all: "이 그룹에 있는 모든 토론 주제에 이 설정을 적용합니다."
       messages:
         loud: "이 토론 주제의 활동 내역을 이메일로 받게 됩니다."
@@ -332,7 +329,7 @@ ko:
     edit_group_heading: '그룹 설정 편집'
     edit_subgroup_heading: '소그룹 설정 수정하기'
     group_name: '그룹명'
-    subgroup_name: '이름'
+    subgroup_name: '소그룹 이름'
     description: '설명'
     description_placeholder: '그룹의 멤버들이 왜 여기에 모여 있는지 인식할 수 있도록 이 그룹의 목적을 설명해주세요.'
     privacy_statement:

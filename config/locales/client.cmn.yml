@@ -73,8 +73,6 @@ cmn:
     options_label: '选项'
     options:
       label: '选项'
-  group_form:
-    subgroup_name: '名字'
   document:
     form:
       title_label: 名字

@@ -198,9 +198,6 @@ pt_BR:
     mute_label: "Mudo"
     discussion:
       title: "Configuração de Conversas de Email"
-      loud_description: "Um email será enviado para você sempre que houver alguma atividade nesta conversa."
-      normal_description: "Você receberá e-mail sempre que uma propostafor iniciado, estiver prestes a fechar, ou um resultado for publicado."
-      quiet_description: "Você não receberá e-mails sobre esta conversa."
       apply_to_all: "Aplicar estas configurações para as conversas neste grupo."
       messages:
         loud: "Serão enviados e-mails das atividades nesta conversa."
@@ -594,7 +591,7 @@ pt_BR:
     edit_subgroup_heading: 'Editar configurações do subgrupo'
     group_name: 'Nome do Grupo'
     group_name_placeholder: 'Como você quer chamar o seu grupo?'
-    subgroup_name: 'Nome'
+    subgroup_name: 'Nome do Subgrupo'
     description: 'Descrição'
     description_placeholder: 'Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.'
     privacy_statement:

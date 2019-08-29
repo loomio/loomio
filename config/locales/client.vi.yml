@@ -51,8 +51,6 @@ vi:
     options_label: 'Tùy chọn'
     options:
       label: 'Tùy chọn'
-  group_form:
-    subgroup_name: 'Tên'
   document:
     form:
       title_label: Tên

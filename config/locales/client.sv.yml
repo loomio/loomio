@@ -182,9 +182,6 @@ sv:
     mute_label: "Tysta ned"
     discussion:
       title: "Tråda e-post inställningar"
-      loud_description: "Du kommer stt få ett e-post när det sker aktivitet i tråden."
-      normal_description: "Du kommer att få en e-post när ett förslag har startats, håller på att stänga, eller resultatet är postat."
-      quiet_description: "Du kommer inte få e-post om denna tråd."
       apply_to_all: "Tillämpa dessa inställningar på alla trådar i denna grupp."
       messages:
         loud: "Du kommer att få e-post om aktivitet i denna tråd."
@@ -338,7 +335,6 @@ sv:
       mute_aria_description: Din notifikationsvolym för den här gruppen är satt till Stum. Du kommer inte att få epost om inte någon specifikt vidnämner dig och grupp aktivitet kommer inte att visas på din instrumentbräda.
       mute_message: '"{{name}}" har tagits bort från din instrumentbräda.'
   group_form:
-    subgroup_name: 'Namn'
     privacy: 'Integritet'
     profile: Profil
     submit_start_group: 'Startgrupp'

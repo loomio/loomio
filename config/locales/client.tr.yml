@@ -121,8 +121,6 @@ tr:
     normal_label: "Duyurular"
     quiet_label: "E-posta yok"
     mute_label: "Sesi kıs"
-    discussion:
-      loud_description: "Bu konuyla ilgili etkinlik olduğunda e-postayla size gönderilecektir."
     membership:
       title: "{{title}} için e-posta ayarları"
   inbox:
@@ -294,7 +292,7 @@ tr:
     edit_subgroup_heading: 'Alt grup ayarlarını düzenle'
     group_name: 'Grup adı'
     group_name_placeholder: 'Grubuna ne ad vermek istiyorsun?'
-    subgroup_name: 'İsim'
+    subgroup_name: 'Alt Grup Adı'
     description: 'Tanım'
     description_placeholder: 'Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.'
     privacy_statement:

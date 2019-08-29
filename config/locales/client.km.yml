@@ -54,8 +54,6 @@ km:
     options_label: 'ជម្រើស '
     options:
       label: 'ជម្រើស '
-  group_form:
-    subgroup_name: 'ឈ្មោះ'
   document:
     form:
       title_label: ឈ្មោះ

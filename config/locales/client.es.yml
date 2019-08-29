@@ -224,9 +224,6 @@ es:
     mute_label: "Silenciar "
     discussion:
       title: "Ajustes de correos del hilo"
-      loud_description: "Recibirás correo electrónico siempre que haya actividad en este hilo."
-      normal_description: "Recibirá un correo electrónico siempre que se inicie una propuesta, cuándo esté a punto de cerrarse o cuándo se publique un resultado."
-      quiet_description: "No recibirás correo electrónico sobre este hilo. "
       apply_to_all: "Aplicar esta configuración para todos los hilos de este grupo."
       messages:
         loud: "Recibirás la actividad de este hilo por correo electrónico. "
@@ -675,7 +672,7 @@ es:
     group_name: 'Nombre del Grupo'
     start_organization_heading: Nueva organización
     group_name_placeholder: '¿Cómo quiere nombrar al grupo?'
-    subgroup_name: 'Nombre'
+    subgroup_name: 'Nombre del sub-grupo '
     description: 'Descripción '
     description_placeholder: 'Describa el propósito del grupo para que los integrantes sepan porque están aquí.'
     privacy_statement:

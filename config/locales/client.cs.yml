@@ -156,9 +156,6 @@ cs:
     quiet_label: "Žádné e-maily"
     mute_label: "Ztlumit"
     discussion:
-      loud_description: "Budete obesláni e-mailem vždy, když bude v tomto vláknu aktivita."
-      normal_description: "Budete obesláni e-mailem vždy, když bude zahájen návrh, bude ukončen, nebo bude zveřejněn výsledek."
-      quiet_description: "Nebudete o tomto vláknu obesíláni e-mailem."
       apply_to_all: "Použít tato nastavení na všechny vlákna v této skupině."
       messages:
         loud: "Budete informován o aktivitě v tomto vlákně emailem."
@@ -401,7 +398,7 @@ cs:
     edit_group_heading: 'Upravit nastavení skupiny'
     edit_subgroup_heading: 'Upravit nastavení podskupiny'
     group_name: 'Název skupiny'
-    subgroup_name: 'Název'
+    subgroup_name: 'Název podskupiny'
     description: 'Popis'
     description_placeholder: 'Můžete popsat účel vaší skupiny, takže Vaši členové skupiny budou vědět, proč jsou tady.'
     privacy: 'Soukromí'

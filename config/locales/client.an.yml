@@ -67,7 +67,6 @@ an:
     options:
       label: 'Opcions'
   group_form:
-    subgroup_name: 'Nombre'
     profile: Perfil
   document:
     form:

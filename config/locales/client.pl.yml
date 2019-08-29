@@ -178,9 +178,6 @@ pl:
     mute_label: "Wycisz"
     discussion:
       title: "Ustawienia e-mailowe wątku"
-      loud_description: "Wyślemy do Ciebie e-mail przy każdej aktywności w tym wątku."
-      normal_description: "Wyślemy do Ciebie e-mail za każdym razem, gdy wysuwana jest jakaś propozycja, gdy niedługo się kończy lub gdy prezentowany jest jej rezultat."
-      quiet_description: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."
       apply_to_all: "Zapisz te ustawienia do wszystkich wątków w tej grupie"
       messages:
         loud: "Pocztą otrzymasz powiadomienie o aktywności w tym wątku."
@@ -491,7 +488,7 @@ pl:
     edit_subgroup_heading: 'Edytuj ustawienia subgrupy'
     group_name: 'Nazwa grupy'
     group_name_placeholder: 'Jak chcesz nazwać swoją grupę?'
-    subgroup_name: 'Nazwa'
+    subgroup_name: 'Nazwa subgrupy'
     description: 'Opis'
     privacy: 'Prywatność'
     profile: Profil

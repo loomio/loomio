@@ -192,9 +192,6 @@ nl_NL:
     quiet_label: "Geen e-mails"
     mute_label: "Dempen"
     discussion:
-      loud_description: "Je ontvangt een e-mail wanneer dit bord activiteit vertoond."
-      normal_description: "Je ontvangt een e-mail wanneer er een voorstel gestart is, op het punt staat te sluiten, of als er een uitkomst bekend is."
-      quiet_description: "Je ontvangt geen e-mails over dit bord."
       apply_to_all: "Pas deze instellingen toe op alle discussies in deze groep"
       messages:
         loud: "Activiteit op dit bord zal je per mail gemeld worden."
@@ -518,7 +515,7 @@ nl_NL:
     edit_subgroup_heading: 'Bewerk subgroepinstellingen'
     group_name: 'Groepsnaam'
     group_name_placeholder: 'Hoe wil je je groep noemen?'
-    subgroup_name: 'Naam'
+    subgroup_name: 'Subgroep naam'
     description: 'Beschrijving'
     description_placeholder: 'Beschrijf het doel van je groep, zodat je groepsleden weten waarom ze hier zijn.'
     privacy_statement:

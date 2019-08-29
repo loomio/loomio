@@ -230,9 +230,6 @@ hu:
     mute_label: "Néma"
     discussion:
       title: "Szál e-mail beállításai"
-      loud_description: "Azonnali értesítés e-mailben, új tevékenység esetén ezen a szálon belül."
-      normal_description: "Azonnali értesítés e-mailben, amennyiben egy javaslat született, zárás következik vagy ha végeredményt tettek közzé."
-      quiet_description: "Nem fogsz e-mailt kapni ezen téma változásairól."
       apply_to_all: "Azonos beállítások alkalmazása a csoporton belüli összes témára."
       messages:
         loud: "A témán belüli új tevékenység esetén értesítést kapsz emailben."
@@ -604,6 +601,8 @@ hu:
     thread_status:
       pinned: "Ezt a szálat rögzítették. Az összes felhasználó számára a szálak listájának tetején marad."
       closed: "Ezt a szálat bezárták. Ez már nem jelenik meg az irányítópulton, és a csoportoldal „bezárt” részében kerül felsorolásra"
+  user_wizard:
+    setup_profile: Profil beállítása
   group_wizard:
     welcome: Siker!
     welcome_description: Sikeresen létrehoztál egy új szervezetet a Loomio-n. Néhány lépésen keresztül a közösségi oldal beállításra kerül, hogy készen álljon a beszélgetések megkezdésére. Ha egyelőre ki akarod hagyni ezt a varázslót, akkor később ismét megnyithatod a Beállítások lapon.
@@ -712,7 +711,7 @@ hu:
     edit_organization_heading: Szervezet beállításainak szerkesztése
     group_name_placeholder: 'Mit akarsz nevezni a csoportodnak?'
     organization_name_placeholder: 'Hogyan szeretnéd nevezni a szervezeted?'
-    subgroup_name: 'Név'
+    subgroup_name: 'Alcsoport neve'
     description: 'Leírás'
     description_placeholder: 'Mutassa be csoportjának célját, hogy a csoport tagjai tudják, miért vannak itt.'
     privacy_statement:
@@ -961,8 +960,6 @@ hu:
     select_text_to_link: Válassza ki a csatolni kívánt szöveget
     insert_link: Helyezzen be linket
   change_picture_form:
-    aria_label: 'Fotó képernyő módosítása'
-    title: 'Fotó megváltoztatása'
     helptext: 'Feltöltheti saját profilképét, vagy ha van egy <a href = "https:'
     use_initials: 'Használjon kezdőbetűket'
     use_gravatar: 'Használj Gravatart'
@@ -1791,7 +1788,6 @@ hu:
           A microsoft team-csatornád már nem kap frissítéseket erről a csoportról.Mindig visszatérhet, és újra hozzáadhatja.
       identity_removed: Az integráció eltávolítva
     form:
-      webhook_helptext: Írja be a webhook URL-jét, amelyet a Teams csatornája biztosít. <a href = "
       webhook_label: Webhook URL
       webhook_installed: Csatlakoztatva van a Microsoft csapatokhoz
       webhook_placeholder: 'https:'

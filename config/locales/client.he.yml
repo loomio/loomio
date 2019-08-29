@@ -207,9 +207,6 @@ he:
     mute_label: "השתקה"
     discussion:
       title: "הגדרות מייל לשיחה"
-      loud_description: "תקבל/י הודעה במייל על כל פעילות בשיחה זו."
-      normal_description: "תקבל/י הודעה במייל כשהצעה מתחילה, עומדת להסגר, או תוצאה מפורסמת"
-      quiet_description: "לא תקבל הודעת מייל על שיחה זו."
       apply_to_all: "יישם את הגדרות אלה על כל השיחות בקבוצה זו."
       messages:
         loud: "מייל ישלח אליך על פעילות בשיחה זו."
@@ -651,7 +648,7 @@ he:
     group_name: 'שם הקבוצה'
     start_organization_heading: ארגון חדש
     group_name_placeholder: 'איך תרצה לקרוא לקבוצה?'
-    subgroup_name: 'שם'
+    subgroup_name: 'שם תת הקבוצה'
     description: 'תיאור'
     description_placeholder: 'תאר את מטרת הקבוצה כך שחבריה ידעו למה הם פה.'
     privacy_statement:
@@ -1644,7 +1641,6 @@ he:
           אתה יכול תמיד להחזיר אותו שוב.
       identity_removed: אינטגרציה הוסרה
     form:
-      webhook_helptext: הזן את הwebhook URL שקיבלת בערוץ הצוותים שלך. <a href="/microsoft">למד עוד על הגדרת Microsoft Teams עם Loomio</a>
       webhook_label: Webhook URL
       webhook_installed: מחובר לMicrosoft Teams
       webhook_placeholder: https://outlook.office.com/...

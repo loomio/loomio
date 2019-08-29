@@ -67,7 +67,6 @@ sk:
     options:
       label: 'Nastavenia'
   group_form:
-    subgroup_name: 'Meno'
     profile: Profil
   document:
     form:

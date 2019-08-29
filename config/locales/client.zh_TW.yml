@@ -230,9 +230,9 @@ zh_TW:
     mute_label: "靜音"
     discussion:
       title: "討論串電子郵件設定"
-      loud_description: "您將會在這個討論串有任何動態時收到電子郵件。"
-      normal_description: "您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。"
-      quiet_description: "您將不會收到任何關於此討論串的電子郵件。"
+      loud_description: "您將會收到此討論串中所有活動的電子郵件。"
+      normal_description: "您只會收到此討論串中重要活動的電子郵件。"
+      quiet_description: "您不會收到此討論串中任何的電子郵件。"
       apply_to_all: "套用這些設定到在此群組中所有的討論串。"
       messages:
         loud: "您將會收到關於此討論串動態的電子郵件。"
@@ -326,6 +326,8 @@ zh_TW:
   sidebar:
     threads: '討論串'
     my_groups: '我的群組'
+    other_groups: '其他群組'
+    all_groups: '所有群組'
     recent_threads: '最近的討論串'
     unread_threads: '未讀的討論串 ({{count}})'
     muted_threads: '已靜音的討論串'
@@ -606,10 +608,25 @@ zh_TW:
     thread_status:
       pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
       closed: "這個討論串已經關閉。它將不會再出現在儀表板上，並將會在群組頁面中列在「已關閉」下。"
+  user_wizard:
+    welcome: 歡迎！
+    welcome_description: 您已成功在 Loomio 上建立新的使用者帳號。只需幾個步驟，您就可以將您的組織策定好並準備開始討論。
+    change_picture: 新增照片
+    change_picture_description: 新增照片到您的簡介
+    setup_profile: 設定簡介
+    setup_profile_description: 協助其他人
   group_wizard:
     welcome: 成功！
+    welcome_description: 您已經在 Loomio 上成功建立新組織。只需幾個步驟，您就可以將您的組織策定好並準備開始討論。如果您現在想要跳過此精靈，您稍後還是可以在設定分頁中再次開啟。
+    setup_profile: 設定簡介
+    setup_profile_description: 設定您的群組描述、圖示與封面圖片
     invite_people: 邀請夥伴
+    invite_people_description: 列出電子郵件以傳送邀請給其他人，或複製連結與其他人分享
+    setup_integrations: 設定整合
+    setup_integrations_description: 將 Loomio 與 Slack 和／或 Microsoft Teams 連線
     start_thread: 啟動新的討論串
+    start_thread_description: 撰寫歡迎註記、您群組的討論目的或分享上次會議的會議紀錄
+    do_it: 我們走吧
   group_page:
     threads: 討論串
     polls: 投票
@@ -648,6 +665,7 @@ zh_TW:
     options:
       label: '選項'
       edit_group: '編輯群組設定'
+      open_group_wizard: '開啟群組精靈'
       become_coordinator: 成為管理員
       export_data: 匯出群組資料
       export_data_as_json: 將群組資料匯出為 JSON
@@ -695,14 +713,18 @@ zh_TW:
   group_form:
     permissions_explaination: '有兩種等級的成員資格：管理員與成員。管理員擁有所有權限。選取成員權限：'
     aria_label: '群組表單'
+    new_organisation: 新組織
     start_group_heading: '啟動群組'
     start_subgroup_heading: '啟動子群組'
     edit_group_heading: '編輯群組設定'
     edit_subgroup_heading: '編輯子群組設定'
     group_name: '群組名稱'
+    organization_name: '組織名稱'
     start_organization_heading: 新組織
+    edit_organization_heading: 編輯組織設定
     group_name_placeholder: '您想要怎麼稱呼您的群組？'
-    subgroup_name: '名稱'
+    organization_name_placeholder: '您想要怎麼稱呼您的組織？'
+    subgroup_name: '子群組名稱'
     description: '描述'
     description_placeholder: '描述群組的目的讓您的夥伴們知道他們為什麼在這裡。'
     privacy_statement:
@@ -958,8 +980,8 @@ zh_TW:
     select_text_to_link: 選取要連結的文字
     insert_link: 插入連結
   change_picture_form:
-    aria_label: '變更照片表單'
-    title: '變更照片'
+    aria_label: '設定檔照片表單'
+    title: '設定簡介照片'
     helptext: '您可以上傳您自己的簡歷照片，或是若您有一個 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> 帳號，您可以使用它。'
     use_initials: '使用縮寫'
     use_gravatar: '使用 Gravatar 的大頭貼'
@@ -1461,6 +1483,7 @@ zh_TW:
   poll_common_closing_at_field:
     closing: 關閉
     closing_hour: 關閉時間
+    invalid_date: 無效日期
   poll_card:
     started_by: 由 {{name}} 啟動
   poll_common_votes_panel:
@@ -1817,7 +1840,7 @@ zh_TW:
           您還是可以回來並將其重新加入。
       identity_removed: 已移除整合
     form:
-      webhook_helptext: 輸入您的 Teams 頻道提供的 webhook URL。<a href="/microsoft">取得更多與 Loomio 一同設定 Microsoft Teams 的資訊</a>
+      webhook_helptext: 輸入您的 Teams 頻道提供的 webhook URL。<a href="https://help.loomio.org/en/user_manual/groups/integrations/#microsoft-teams">取得更多關於在 Loomio 上設定 Microsoft Teams 的資訊</a>
       webhook_label: Webhook URL
       webhook_installed: 已連線至 Microsoft Teams
       webhook_placeholder: https://outlook.office.com/...
@@ -1832,6 +1855,7 @@ zh_TW:
       outcome_created: 結果已分享
   install_slack:
     modal_title: 整合 Slack
+    modal_helptext: 首先，您必須登入到 Slack。點選下方的按鈕以繼續。
     login_to_slack: 登入到 Slack
     remove_slack: 移除 Slack 整合
     card:

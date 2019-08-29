@@ -269,7 +269,7 @@ ar:
     group_name: 'اسم المجموعة'
     start_organization_heading: منظمة جديدة
     group_name_placeholder: 'ماذا تريد أن تدعو مجموعتك؟'
-    subgroup_name: 'الاسم '
+    subgroup_name: 'اسم المجموعة الفرعية'
     description: 'وصف '
     description_placeholder: 'قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.'
     privacy_statement:

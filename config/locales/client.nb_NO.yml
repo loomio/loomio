@@ -179,9 +179,6 @@ nb_NO:
     mute_label: "Dempet"
     discussion:
       title: "Tråd e-post innstillinger "
-      loud_description: "Du vil motta en e-post når det er aktivitet i denne tråden."
-      normal_description: "Du vil motta en e-post når en beslutning er startet, i ferd med å lukkes eller når et resultat av en beslutning er postet."
-      quiet_description: "Du vil ikke motta e-post om denne tråden."
       apply_to_all: "Bruk disse innstillingene på alle tråder i denne gruppen."
       messages:
         loud: "Du vil motta e-post om aktivietet i denne tråden."
@@ -532,7 +529,6 @@ nb_NO:
     new_group_logo: 'Last opp ny gruppelogo'
     invite_people: 'Inviter'
   group_form:
-    subgroup_name: 'Navn'
     privacy: 'Personvern'
     submit_update: 'Oppdater innstillinger'
   documents_page:

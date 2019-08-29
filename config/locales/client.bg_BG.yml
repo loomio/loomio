@@ -46,8 +46,6 @@ bg_BG:
     options_label: 'Опции'
     options:
       label: 'Опции'
-  group_form:
-    subgroup_name: 'Име'
   document:
     form:
       title_label: Име

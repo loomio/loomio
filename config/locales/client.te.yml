@@ -105,7 +105,6 @@ te:
     options:
       label: 'ఐచ్ఛికాలు'
   group_form:
-    subgroup_name: 'పేరు'
     privacy: 'అంతరంగికత'
   document:
     form:

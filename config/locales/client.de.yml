@@ -230,9 +230,6 @@ de:
     mute_label: "Stummschalten"
     discussion:
       title: "E-Mail Einstellungen zur Diskussion"
-      loud_description: "Sie werden per E-Mail benachrichtigt, sobald in dieser Diskussion etwas passiert."
-      normal_description: "Du wirst per E-Mail benachrichtigt, sobald eine Abstimmung eröffnet, demnächst beendet wird oder ein Abstimmungsergebnis veröffentlicht wurde."
-      quiet_description: "Sie werden zu dieser Diskussion nicht per E-Mail benachrichtigt"
       apply_to_all: "Diese Einstellungen für alle Diskussionen in dieser Gruppe übernehmen."
       messages:
         loud: "Sie werden per E-Mail benachrichtigt, sobald in dieser Diskussion etwas passiert."
@@ -696,7 +693,7 @@ de:
     group_name: 'Gruppen-Name'
     start_organization_heading: Neue Organisation
     group_name_placeholder: 'Wie möchten Sie die Gruppe nennen?'
-    subgroup_name: 'Name'
+    subgroup_name: 'Untergruppen-Name'
     description: 'Beschreibung'
     description_placeholder: 'Beschreiben Sie die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.'
     privacy_statement:
@@ -951,7 +948,6 @@ de:
     select_text_to_link: Text zum verlinken markieren
     insert_link: Link einfügen
   change_picture_form:
-    title: 'Neues Foto'
     helptext: 'Sie können Ihr eigenes Profilbild hochladen, oder Sie verwenden Ihr <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar-Konto</a>, wenn Sie eins besitzen.'
     use_initials: 'Nutzen Sie Initialien'
     use_gravatar: 'Gravatar benutzen'
@@ -1715,7 +1711,6 @@ de:
           Du kannst sie natürlich jederzeit wieder hinzufügen.
       identity_removed: Eingliederung entfernt
     form:
-      webhook_helptext: Bitte gebe die entsprechende webhook URL des Team Channels ein. <a href="/microsoft">Mehr zum Einrichten von Microsoft Teams mit Loomio erfahren</a>
       webhook_label: Webhook URL
       webhook_installed: Mit Microsoft Teams verbunden
       webhook_placeholder: https://outlook.office.com/...

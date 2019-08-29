@@ -73,9 +73,6 @@ sr:
     quiet_label: "Nema ePoruka"
     mute_label: "Utišaj"
     discussion:
-      loud_description: "Dobičete ePoruku kada god ima aktivnosti u ovoj niti."
-      normal_description: "Dobićete ePoruku kada se pojavi predlog, pred njegovo zatvaranje ili kada je ishod određen."
-      quiet_description: "Nećete biti obaveštavani o ovoj niti."
       apply_to_all: "Primeni ove opcije na svim nitima u ovoj grupi."
       messages:
         loud: "Dobićete ePoruku o aktivnostima u ovoj niti."
@@ -257,7 +254,7 @@ sr:
     edit_subgroup_heading: 'Izmeni opcije podgrupe'
     group_name: 'Naziv Grupe'
     group_name_placeholder: 'Kako želite da se Vaša grupa zove?'
-    subgroup_name: 'Ime'
+    subgroup_name: 'Naziv Podgrupe'
     description: 'Opis'
     description_placeholder: 'Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.'
     privacy_statement:
