@@ -1,5 +1,5 @@
 import { Link } from 'tiptap-extensions'
-export default class CustomLink extends Link {
+export default class ExternalLink extends Link {
   get schema() {
     return {
       attrs: {
