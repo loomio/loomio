@@ -135,8 +135,8 @@ v-card.group-form
         input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto')
         input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo')
 
-        lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
-        validation-errors(:subject="group", field="name")
+        lmo-textarea.group-form__group-description(:model='clone' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
+        validation-errors(:subject="clone", field="name")
 
       v-tab-item.mt-8
         .group-form__section.group-form__privacy
