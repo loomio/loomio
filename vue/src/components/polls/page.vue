@@ -24,7 +24,7 @@ export default
     PollCommonPreview: PollCommonPreview
   data: ->
     group: {}
-    now: moment()
+    now: new Date
     pollIds: []
     loader: new RecordLoader
       collection: 'polls'
