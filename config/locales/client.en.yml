@@ -2021,7 +2021,7 @@ en:
       identity_removed: Integration removed
 
     form:
-      webhook_helptext: Enter the webhook URL provided by your Teams channel. <a href="/microsoft">Learn more about setting up Microsoft Teams with Loomio</a>
+      webhook_helptext: Enter the webhook URL provided by your Teams channel. <a href="https://help.loomio.org/en/user_manual/groups/integrations/#microsoft-teams">Learn more about setting up Microsoft Teams with Loomio</a>
       webhook_label: Webhook URL
       webhook_installed: Connected to Microsoft Teams
       webhook_placeholder: https://outlook.office.com/...
