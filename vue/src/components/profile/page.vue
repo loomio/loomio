@@ -76,8 +76,8 @@ v-container.profile-page.max-width-1024
                 v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required='ng-required', v-model='user.email')
                 validation-errors(:subject='user', field='email')
 
-              v-flex.profile-page__avatar(justify-center)
-                user-avatar(:user='originalUser' size='featured' :on-click="changePicture" :no-link="true")
+              v-flex.profile-page__avatar(justify-center @click="changePicture()")
+                user-avatar(:user='originalUser' size='featured' :no-link="true")
 
             lmo-textarea(:model='user' field="shortBio" :label="$t('profile_page.short_bio_label')" :placeholder="$t('profile_page.short_bio_placeholder')")
             validation-errors(:subject='user', field='shortBio')
@@ -108,3 +108,7 @@ v-container.profile-page.max-width-1024
       //-   v-btn.profile-page__delete(outlined color="warning" @click='openConfirmModal(deleteUserConfirmOpts)', v-t="'profile_page.delete_user_link'")
 
 </template>
+<style lang="sass">
+.profile-page__avatar
+  cursor: pointer  
+</style>

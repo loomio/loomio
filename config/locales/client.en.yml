@@ -246,9 +246,9 @@ en:
     mute_label: "Mute"
     discussion:
       title: "Thread email settings"
-      loud_description: "You will be emailed whenever there is activity in this thread."
-      normal_description: "You will be emailed whenever a proposal is started, about to close, or an outcome is posted."
-      quiet_description: "You won't be emailed about this thread."
+      loud_description: "You will be emailed all activity in this thread."
+      normal_description: "You will only be emailed important activity in this thread."
+      quiet_description: "You won't be emailed any activity in this thread."
       apply_to_all: "Apply these settings to all threads in this group."
       messages:
         loud: "You will be emailed activity in this thread."

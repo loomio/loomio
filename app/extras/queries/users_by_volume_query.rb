@@ -23,7 +23,7 @@ class Queries::UsersByVolumeQuery
          .joins_guest_memberships(model)
          .joins_formal_memberships(model)
          .where("gm.id is NOT NULL OR fm.id is NOT NULL")
-         .where("coalesce(dr.volume, gm.volume, fm.volume, 2) #{operator} :volume", volume: volume)
+         .where("coalesce(dr.volume, fm.volume, gm.volume, 2) #{operator} :volume", volume: volume)
     end
   end
 end
