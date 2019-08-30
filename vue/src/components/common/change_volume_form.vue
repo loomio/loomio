@@ -8,11 +8,14 @@ export default
   props:
     model: Object
     close: Function
+    showClose:
+      default: true
+      type: Boolean
   data: ->
     volumeLevels: ["loud", "normal", "quiet"]
     isDisabled: false
     applyToAll: if @model.isA('user') then true else false
-    volume: @defaultVolume()
+    volume: if @model.isA('user') then "" else @defaultVolume()
   mounted: ->
     @submit = submitForm @, @model,
       submitFn: (model) =>
@@ -48,7 +51,7 @@ v-card.change-volume-form
     v-card-title
       h1.headline.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: model.title || model.name || groupName() } }")
       v-spacer
-      dismiss-modal-button(:close="close")
+      dismiss-modal-button(v-if="showClose" :close="close")
     v-card-text
       v-radio-group(v-model='volume')
         v-radio(v-for='level in volumeLevels', :value='level', :class="'volume-' + level", :key="'volume-' + level", :label="$t(translateKey() + '.' + level + '_description')")
@@ -59,5 +62,5 @@ v-card.change-volume-form
       v-checkbox#apply-to-all.change-volume-form__apply-to-all(v-if="model.isA('membership')" v-model='applyToAll', :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })")
     v-card-actions
       v-spacer
-      v-btn.change-volume-form__submit(type='button', :disabled='isDisabled', v-t="'common.action.update'" @click='submit()' color="primary")
+      v-btn.change-volume-form__submit(type='button', :disabled='!volume', v-t="'common.action.update'" @click='submit()' color="primary")
 </template>
