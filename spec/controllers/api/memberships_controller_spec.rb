@@ -11,6 +11,7 @@ describe API::MembershipsController do
 
   let(:group) { create :formal_group }
   let(:another_group) { create :formal_group }
+  let(:subgroup) { create :formal_group, parent: group }
   let(:discussion) { create :discussion, group: group }
   let(:comment_params) {{
     body: 'Yo dawg those kittens be trippin for some dippin',
@@ -82,7 +83,7 @@ describe API::MembershipsController do
       @another_discussion = FactoryBot.create(:discussion, group: group)
       @membership = group.membership_for(user)
       @membership.set_volume! 'quiet'
-      @second_membership = another_group.membership_for(user)
+      @second_membership = subgroup.membership_for(user)
       @second_membership.set_volume! 'quiet'
       @reader = DiscussionReader.for(discussion: @discussion, user: user)
       @reader.save!
