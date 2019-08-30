@@ -45,7 +45,7 @@ class DiscussionEmailInfo
 
   def can_unfollow?
     action_name == 'new_comment' &&
-    DiscussionReader.for(discussion: discussion, user: recipient).volume_is_loud?
+    DiscussionReader.for(discussion: discussion, user: recipient).volume_is_normal_or_loud?
   end
 
   private
