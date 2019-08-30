@@ -25,6 +25,7 @@ describe API::MembershipsController do
     another_group.add_member! user
     another_group.add_member! alien_named_bang
     another_group.add_member! alien_named_biff
+    subgroup.add_member! user
     group.memberships.create!(user: pending_named_barb, accepted_at: nil)
     sign_in user
   end
