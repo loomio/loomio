@@ -2,7 +2,7 @@
 import Session from '@/shared/services/session'
 import { submitForm } from '@/shared/helpers/form'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
-
+import GroupService from '@/shared/services/group_service'
 export default
   mixins: [ChangeVolumeModalMixin]
   props:
@@ -16,7 +16,7 @@ export default
   mounted: ->
     @submit = submitForm @, @model,
       submitFn: (model) =>
-        model.saveVolume(@volume, @applyToAll, @setDefault)
+        model.saveVolume(@volume, @applyToAll)
       flashSuccess: @flashTranslation
       successCallback: => @closeModal()
   methods:
@@ -42,6 +42,10 @@ export default
         @model.groupName()
       else
         ''
+    openGroupVolumeModal: ->
+      @closeModal()
+      setTimeout => GroupService.actions(@model.group(), @).change_volume.perform()
+
 </script>
 <template lang="pug">
 v-card.change-volume-form
@@ -54,7 +58,11 @@ v-card.change-volume-form
     v-card-text
       v-radio-group(v-model='volume')
         v-radio(v-for='level in volumeLevels', :value='level', :class="'volume-' + level", :key="'volume-' + level", :label="$t(translateKey() + '.' + level + '_description')")
-      v-checkbox#apply-to-all.change-volume-form__apply-to-all(v-model='applyToAll', :label="$t(translateKey() + '.apply_to_all')")
+      p(v-if="model.isA('discussion')")
+        span This setting only applies to this thread.
+        space
+        a(@click="openGroupVolumeModal()") Change notification settings for group.
+      v-checkbox#apply-to-all.change-volume-form__apply-to-all(v-if="model.isA('membership')" v-model='applyToAll', :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })")
     v-card-actions
       v-spacer
       v-btn.change-volume-form__submit(type='button', :disabled='isDisabled', v-t="'common.action.update'" @click='submit()' color="primary")

@@ -256,10 +256,11 @@ en:
         quiet: "You won't be emailed about this thread."
     membership:
       title: "Email settings for {{title}}"
-      loud_description: "You will be emailed whenever there is activity in this group."
-      normal_description: "You will only be emailed announcements in this group."
-      quiet_description: "You won't be emailed about activity in this group."
+      loud_description: "You will be emailed all activity in this group."
+      normal_description: "You will only be emailed important activity in this group."
+      quiet_description: "You won't be emailed any activity in this group."
       apply_to_all: "Apply these settings to all my groups."
+      apply_to_organization: "Apply this setting to all groups in {{organization}}"
       messages:
         loud: "You will be emailed all activity in this group."
         normal: "You will only be emailed announcements in this group."
