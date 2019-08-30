@@ -110,10 +110,13 @@ v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakp
         v-list-item-title(v-t="'invitation_form.invite_people'")
       v-list-item(@click="scrollTo('#add-comment')")
         v-list-item-title(v-t="'activity_card.add_comment'")
-      v-list-item(@click="openChangeVolumeModal(discussion)")
-        v-list-item-title(v-t="'thread_context.email_settings'")
-        //- v-list-item-subtitle You will be emailed whenever there is activity in this thread.
     v-divider
+    v-list(dense)
+      v-list-item(three-line @click="openChangeVolumeModal(discussion)")
+        v-list-item-content
+          v-list-item-title(v-t="'thread_context.email_settings'")
+          v-list-item-subtitle(v-t="'change_volume_form.discussion.' + discussion.volume() + '_description' ")
+
 
 
     //- v-list(dense)
