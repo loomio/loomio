@@ -11,27 +11,21 @@ export default
   data: ->
     volumeLevels: ["loud", "normal", "quiet"]
     isDisabled: false
-    applyToAll: false
+    applyToAll: if @model.isA('user') then true else false
     volume: @defaultVolume()
   mounted: ->
     @submit = submitForm @, @model,
       submitFn: (model) =>
         model.saveVolume(@volume, @applyToAll)
-      flashSuccess: @flashTranslation
+      flashSuccess: 'change_volume_form.saved'
       successCallback: => @closeModal()
   methods:
     translateKey: (key) ->
-      "change_volume_form.#{key || @model.constructor.singular}"
-    flashTranslation: ->
-      key =
-        if @applyToAll
-          switch @model.constructor.singular
-            when 'discussion' then 'membership'
-            when 'membership' then 'all_groups'
-            when 'user'       then 'all_groups'
-        else
-          @model.constructor.singular
-      "#{@translateKey(key)}.messages.#{@volume}"
+      if @model.isA('user')
+        "change_volume_form.all_groups"
+      else
+        "change_volume_form.#{key || @model.constructor.singular}"
+
     defaultVolume: ->
       switch @model.constructor.singular
         when 'discussion' then @model.volume()
@@ -59,9 +53,9 @@ v-card.change-volume-form
       v-radio-group(v-model='volume')
         v-radio(v-for='level in volumeLevels', :value='level', :class="'volume-' + level", :key="'volume-' + level", :label="$t(translateKey() + '.' + level + '_description')")
       p(v-if="model.isA('discussion')")
-        span This setting only applies to this thread.
+        span(v-t="'change_volume_form.discussion.only_this_thread'")
         space
-        a(@click="openGroupVolumeModal()") Change notification settings for group.
+        a(@click="openGroupVolumeModal()" v-t="'change_volume_form.discussion.group'")
       v-checkbox#apply-to-all.change-volume-form__apply-to-all(v-if="model.isA('membership')" v-model='applyToAll', :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })")
     v-card-actions
       v-spacer

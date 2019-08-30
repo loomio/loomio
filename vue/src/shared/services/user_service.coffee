@@ -11,7 +11,7 @@ export default new class UserService
       icon: 'mdi-lock-reset'
       name: 'profile_page.change_password_link'
       canPerform: -> true
-      perform: =>
+      perform: ->
         EventBus.$emit 'openModal',
           component: 'ChangePasswordForm',
           props:
@@ -21,7 +21,7 @@ export default new class UserService
       icon: 'mdi-exit-run'
       name: 'deactivate_user_form.title'
       canPerform: -> !user.deactivatedAt
-      perform: =>
+      perform: ->
         EventBus.$emit 'openModal',
           component: 'ConfirmModal',
           props:
@@ -43,7 +43,7 @@ export default new class UserService
       icon: 'mdi-account-check'
       name: 'auth_form.reactivate'
       canPerform: -> user.deactivatedAt
-      perform: =>
+      perform: ->
         EventBus.$emit 'openModal',
           component: 'ConfirmModal',
           props:
@@ -58,7 +58,7 @@ export default new class UserService
       icon: 'mdi-account-off'
       name: 'delete_user_modal.title'
       canPerform: -> true
-      perform: =>
+      perform: ->
         EventBus.$emit 'openModal',
           component: 'ConfirmModal',
           props:
@@ -74,3 +74,13 @@ export default new class UserService
                 submit: 'delete_user_modal.submit'
               submit: -> Records.users.destroy()
               successCallback: hardReload
+
+    change_volume:
+      name: 'user_dropdown.email_settings'
+      canPerform: -> true
+      perform: ->
+        EventBus.$emit 'openModal',
+          component: 'ChangeVolumeForm',
+          props:
+            model: Session.user()
+            close: -> EventBus.$emit('closeModal')
