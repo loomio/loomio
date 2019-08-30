@@ -74,13 +74,3 @@ export default new class UserService
                 submit: 'delete_user_modal.submit'
               submit: -> Records.users.destroy()
               successCallback: hardReload
-
-    change_volume:
-      name: 'user_dropdown.email_settings'
-      canPerform: -> true
-      perform: ->
-        EventBus.$emit 'openModal',
-          component: 'ChangeVolumeForm',
-          props:
-            model: Session.user()
-            close: -> EventBus.$emit('closeModal')

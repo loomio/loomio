@@ -48,7 +48,7 @@ export default
     editSpecificGroupVolume: (group) ->
       @openChangeVolumeModal(Session.user())
   computed:
-    actions: -> pick UserService.actions(Session.user(), @), ['change_volume']
+    actions: -> pick UserService.actions(Session.user(), @), ['reactivate_user', 'deactivate_user']
 
     defaultSettingsDescription: ->
       "email_settings_page.default_settings.#{Session.user().defaultMembershipVolume}_description"
@@ -88,5 +88,16 @@ v-container.email-settings-page.max-width-1024(v-if='user')
       v-spacer
       v-btn.email-settings-page__update-button(color="primary" @click="submit()" v-t="'email_settings_page.update_settings'")
 
-  change-volume-form(:model="user" :show-close="false")
+  change-volume-form.mb-4(:model="user" :show-close="false")
+
+  v-card
+    v-card-title
+      h1.headline(v-t="'email_settings_page.deactivate_header'")
+    v-card-text
+      p(v-t="'email_settings_page.deactivate_description'")
+      v-list
+        v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()")
+          v-list-item-icon
+            v-icon {{action.icon}}
+          v-list-item-title(v-t="action.name")
 </template>
