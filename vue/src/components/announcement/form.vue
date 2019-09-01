@@ -180,7 +180,7 @@ v-card
             v-list-item-content.announcement-chip__content
               v-list-item-title(v-html='data.item.name')
         div.text-right(v-if="audiences().length")
-          span Quick add:
+          span(v-t="'announcement.quick_add'")
           space
           span(v-for='(audience, index) in audiences()' :key='audience')
             a.announcement-form__audience(@click='loadAudience(audience)' v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
@@ -189,7 +189,7 @@ v-card
               space
 
       div(v-if="invitableGroups.length")
-        span Any other groups?
+        span(v-t="'announcement.any_other_groups'")
         div(v-for="group in invitableGroups" :key="group.id")
           v-checkbox(v-model="invitedGroupIds" :label="group.name" :value="group.id" hide-details)
 
@@ -200,7 +200,7 @@ v-card
   v-card-actions
     v-dialog(v-model="historyOpen")
       template(v-slot:activator="{on}")
-        v-btn.text(@click="openHistoryModal()" v-on="on" v-t="common.history")
+        v-btn.text(@click="openHistoryModal()" v-on="on" v-t="'common.history'")
       v-card
         v-card-title
           h1.headline(v-t="'announcement.' + modelKind + '_notification_history'")
@@ -214,14 +214,14 @@ v-card
               mid-dot
               span {{event.author_name}}
               space
-              span notified {{event.notifications.length}} people
+              span(v-t="{ path: 'announcement.notified_people', args: { length: event.notifications.length } }")
             br
             ul
               li(v-for="notification in event.notifications" :key="notification.id")
                 span {{notification.to}}
                 space
-                span(v-if="notification.viewed") (seen)
-                span(v-if="!notification.viewed") (not seen)
+                span(v-if="notification.viewed" v-t="'announcement.seen'")
+                span(v-if="!notification.viewed" v-t="'announcement.not_seen'")
     div(v-if="recipients.length")
       p(v-show="invitingToGroup && tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
     v-spacer
