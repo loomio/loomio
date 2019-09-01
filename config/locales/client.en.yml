@@ -269,9 +269,9 @@ en:
         quiet: "You won't be emailed about this thread."
     membership:
       title: "Notifications for {{title}}"
-      loud_description: "You will be emailed all activity in this group."
-      normal_description: "You will only be emailed important activity in this group."
-      quiet_description: "You won't be emailed any activity in this group."
+      loud_description: "You will be emailed whenever there is activity in this group."
+      normal_description: "You will be emailed whenever there is activity in this group."
+      quiet_description: "You won't be emailed about activity in this group."
       apply_to_all: "Apply these settings to all my groups."
       apply_to_organization: "Apply to all groups in {{organization}}"
       messages:
@@ -285,8 +285,8 @@ en:
       quiet_description: "You won't be emailed any activity in any of your groups."
       messages:
         loud: "You will be emailed all activity in all your groups."
-        normal: "You will only be emailed important activity in all your groups."
-        quiet: "You won't be emailed any activity in any of your groups."
+        normal: "You will only be emailed announcements in all your groups."
+        quiet: "You won't be emailed about any of your groups."
     user:
       title: Email settings for new groups
       loud_description: "You will be emailed whenever there is activity in any new groups you join."
