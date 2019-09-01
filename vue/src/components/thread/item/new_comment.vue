@@ -30,20 +30,18 @@ export default
         # show_history = null
       else
         reply_to_comment = 'reply_to_comment'
-        react = 'react'
         # edit_comment = null
         show_history = 'show_history'
 
-      pick CommentService.actions(@eventable, @), compact [react, reply_to_comment, edit_comment, show_history]
+      pick CommentService.actions(@eventable, @), compact ['react', reply_to_comment, edit_comment, show_history]
 
     menuActions: ->
       if AbilityService.canEditComment(@eventable)
-        react = 'react'
         show_history = 'show_history'
         reply_to_comment = 'reply_to_comment'
 
       assign(
-        pick CommentService.actions(@eventable, @), compact [react, reply_to_comment, show_history, 'fork_comment', 'translate_comment' , 'delete_comment']
+        pick CommentService.actions(@eventable, @), compact [reply_to_comment, show_history, 'fork_comment', 'translate_comment' , 'delete_comment']
       ,
         pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
       )
@@ -58,12 +56,13 @@ export default
 <template lang="pug">
 thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-window="eventWindow")
   template(v-slot:actions)
-    action-dock(:model='eventable', :actions='dockActions')
-    action-menu(:actions='menuActions')
+    v-layout.my-2(align-center)
+      reaction-display(:model="eventable")
+      action-dock(:model='eventable', :actions='dockActions')
+      action-menu(:actions='menuActions')
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
-
-  reaction-display(:model="eventable")
-  comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" :autoFocus="true")
+  template(v-slot:append)
+    comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" :autoFocus="true")
 </template>

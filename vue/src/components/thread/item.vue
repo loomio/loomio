@@ -101,17 +101,14 @@ div
               | depth: {{event.depth}}
             slot(name="headline")
               span(v-html='headline')
-            //- mid-dot
-            //- v-spacer
           v-spacer
-          //- .thread-item__link.grey--text.body-2.action-menu
           router-link.grey--text.body-2(:to='link')
             time-ago(:date='event.createdAt')
-          space
-          slot(name="actions")
         slot
+        slot(name="actions")
   template(v-if='event.isSurface()')
     event-children(:parent-event='event' :key="event.id")
+  slot(name="append")
 </template>
 
 <style lang="css">
