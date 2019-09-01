@@ -24,6 +24,18 @@ class API::AnnouncementsController < API::RestfulController
     render json: json, root: false
   end
 
+  def preview
+    # email_method = target_model.kind
+    # byebug
+    # discussion = target_model
+    # announcement = Announcement.create(kind: 'announcement_created')
+    # announcement_event =
+    @email = target_model.send(:mailer).send(params[:kind], current_user, target_model.created_event)
+    @email.perform_deliveries = false
+
+    render template: '/user_mailer/last_email.html', layout: false
+  end
+
   private
   def notifications_for(event)
     Notification.joins(:user).where(event_id: event.id).map do |notification|

@@ -212,6 +212,7 @@ Loomio::Application.routes.draw do
         get :audience
         get :search
         get :history
+        get :preview
       end
     end
 

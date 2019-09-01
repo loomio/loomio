@@ -9,8 +9,9 @@ import Session from '@/shared/services/session'
 import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
 import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
-import {each , sortBy, includes, map, pull, uniq, throttle, debounce} from 'lodash'
+import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash'
 import { submitForm } from '@/shared/helpers/form'
+import { encodeParams } from '@/shared/helpers/encode_params'
 
 
 export default
@@ -144,6 +145,9 @@ export default
     invitingToGroup: ->
       @announcement.model.isA('group')
 
+    previewUrl: ->
+      AppConfig.baseUrl + 'api/v1/announcements/preview?' + encodeParams(merge(@announcement.model.namedId(), {kind: @announcement.kind}))
+
   watch:
     query: (q) ->
       @search q if q && q.length > 2
@@ -220,8 +224,9 @@ v-card
               li(v-for="notification in event.notifications" :key="notification.id")
                 span {{notification.to}}
                 space
-                span(v-if="notification.viewed" v-t="'announcement.seen'")
-                span(v-if="!notification.viewed" v-t="'announcement.not_seen'")
+                span(v-if="notification.viewed") (seen)
+                span(v-if="!notification.viewed") (not seen)
+    v-btn.text(:href="previewUrl" target="_blank") Preview
     div(v-if="recipients.length")
       p(v-show="invitingToGroup && tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
     v-spacer
