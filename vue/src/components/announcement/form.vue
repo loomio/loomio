@@ -116,6 +116,7 @@ export default
     pollType: -> @announcement.model.pollType
     translatedPollType: -> @announcement.model.poll().translatedPollType() if @announcement.model.isA('poll') or @announcement.model.isA('outcome')
     invitableGroups: ->
+      return [] unless @announcement.model.isA('group')
       @announcement.model.subgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
     canUpdateAnyoneCanParticipate: ->
       @announcement.model.isA('poll') &&
