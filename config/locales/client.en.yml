@@ -239,6 +239,17 @@ en:
     unmute: 'Unmute'
 
   change_volume_form:
+    simple:
+      change_global_preferences: Reset notification preference
+      question: What notification level do you want?
+      label: Notifications
+      loud: Subscribed
+      normal: Normal
+      quiet: Ignore
+      loud_explain: whenever there is activity
+      normal_explain: when someone wants your attention
+      quiet_explain: no notifications
+
     aria_label: "Change email settings form"
     loud_label: "All activity"
     normal_label: "Announcements"
@@ -246,30 +257,30 @@ en:
     mute_label: "Mute"
     saved: "Notification settings updated"
     discussion:
-      title: "Thread email settings"
+      title: "Thread notifications"
       loud_description: "You will be emailed all activity in this thread."
       normal_description: "You will only be emailed important activity in this thread."
       quiet_description: "You won't be emailed any activity in this thread."
       apply_to_all: "Apply these settings to all threads in this group."
-      only_this_thread: "This setting only applies to this thread."
-      group: "Change notification settings for group."
+      only_this_thread: "Applies to this thread only"
+      group: "Change notification preferences for group"
       messages:
         loud: "You will be emailed activity in this thread."
         normal: "You will be emailed about proposals in this thread."
         quiet: "You won't be emailed about this thread."
     membership:
-      title: "Email settings for {{title}}"
+      title: "Notifications for {{title}}"
       loud_description: "You will be emailed all activity in this group."
       normal_description: "You will only be emailed important activity in this group."
       quiet_description: "You won't be emailed any activity in this group."
       apply_to_all: "Apply these settings to all my groups."
-      apply_to_organization: "Apply this setting to all groups in {{organization}}"
+      apply_to_organization: "Apply to all groups in {{organization}}"
       messages:
         loud: "You will be emailed all activity in this group."
         normal: "You will only be emailed announcements in this group."
         quiet: "You won't be emailed about this group."
     all_groups:
-      title: "Email settings for all groups"
+      title: "Notification preferences for all groups"
       loud_description: "You will be emailed all activity in all your groups."
       normal_description: "You will only be emailed important activity in all your groups."
       quiet_description: "You won't be emailed any activity in any of your groups."
@@ -572,8 +583,8 @@ en:
     add_comment: Comment
     copy_url: Copy URL
     edit_thread: Edit context
-    announce_thread: Invite people to join the thread
-    announce_thread_active: (No one has been invited yet)
+    announce_thread: Notify people
+    invite_guests: Invite guests
     translate_thread: Translate context
     edit_poll: Edit poll
     announce_poll: Invite people to vote
@@ -727,7 +738,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
-      open_group_wizard: 'Open Group Wizard'
+      open_group_wizard: 'Group Setup Wizard'
       become_coordinator: Become Admin
       export_data: Export Group Data
       export_data_as_json: Export Group Data as JSON
@@ -736,7 +747,7 @@ en:
       manage_members: 'Manage Members'
       add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
-      email_settings: 'Notification Settings'
+      email_settings: 'Email preferences'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
     volume:
@@ -935,6 +946,8 @@ en:
   invitation_form:
     aria_label: 'Invitation form'
     invite_people: 'Invite people'
+    invite_guests: 'Invite guests'
+    notify_people: 'Notify people'
     invite_people_to_group: 'Invite to {{name}}'
     group: 'Group'
     group_placeholder: 'Select a group'
@@ -1229,6 +1242,7 @@ en:
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
     beginning: Beginning
+    end: End
     unread: "Unread ({{count}})"
     latest: Latest
     context: Context
