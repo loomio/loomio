@@ -200,7 +200,7 @@ v-card
   v-card-actions
     v-dialog(v-model="historyOpen")
       template(v-slot:activator="{on}")
-        v-btn(@click="openHistoryModal()" v-on="on") History
+        v-btn.text(@click="openHistoryModal()" v-on="on" v-t="common.history")
       v-card
         v-card-title
           h1.headline(v-t="'announcement.' + modelKind + '_notification_history'")
