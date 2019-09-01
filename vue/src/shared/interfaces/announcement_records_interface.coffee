@@ -17,6 +17,13 @@ eventableOrSelf = (model) ->
 export default class AnnouncementRecordsInterface extends BaseRecordsInterface
   model: AnnouncementModel
 
+  fetchHistoryFor: (model) ->
+    params = model.namedId()
+
+    @remote.fetch
+      path: 'history'
+      params: params
+
   search: (query, model) ->
     params = _.merge({q: query}, model.namedId())
 

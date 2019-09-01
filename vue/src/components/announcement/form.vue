@@ -31,6 +31,9 @@ export default
     canInvite: true
     maxMembers: 0
     invitedGroupIds: if @announcement.model.isA('group') then [@announcement.model.id] else []
+    historyData: []
+    historyLoading: false
+    historyOpen: false
 
   created: ->
     @searchResults = if @invitingToGroup then [] else @announcement.model.members()
@@ -111,6 +114,16 @@ export default
       @announcement.model.resetToken().then =>
         Flash.success('invitation_form.shareable_link_reset')
 
+    closeHistoryModal: -> @historyOpen = false
+    openHistoryModal: ->
+      @historyOpen = true
+      @historyLoading = true
+      Records.announcements.fetchHistoryFor(@announcement.model).then (data) =>
+        console.log data
+        @historyLoading = false
+        @historyData = data
+
+
   computed:
     modelKind: -> @announcement.model.constructor.singular
     pollType: -> @announcement.model.pollType
@@ -176,7 +189,7 @@ v-card
               space
 
       div(v-if="invitableGroups.length")
-        span Add to subgroups?
+        span Any other groups?
         div(v-for="group in invitableGroups" :key="group.id")
           v-checkbox(v-model="invitedGroupIds" :label="group.name" :value="group.id" hide-details)
 
@@ -185,6 +198,30 @@ v-card
         p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
 
   v-card-actions
+    v-dialog(v-model="historyOpen")
+      template(v-slot:activator="{on}")
+        v-btn(@click="openHistoryModal()" v-on="on") History
+      v-card
+        v-card-title
+          h1.headline(v-t="'announcement.' + modelKind + '_notification_history'")
+          v-spacer
+          dismiss-modal-button(:close="closeHistoryModal")
+        v-progress-circular(v-if="historyLoading" indeterminate)
+        v-card-text(v-if="!historyLoading")
+          p(v-for="event in historyData" :key="event.id")
+            span.body-1
+              time-ago(:date="event.created_at")
+              mid-dot
+              span {{event.author_name}}
+              space
+              span notified {{event.notifications.length}} people
+            br
+            ul
+              li(v-for="notification in event.notifications" :key="notification.id")
+                span {{notification.to}}
+                space
+                span(v-if="notification.viewed") (seen)
+                span(v-if="!notification.viewed") (not seen)
     div(v-if="recipients.length")
       p(v-show="invitingToGroup && tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
     v-spacer

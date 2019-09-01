@@ -88,6 +88,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    history: History
     option: Option
     add: Add
     you: You
@@ -527,6 +528,10 @@ en:
     send_poll_explain: Invite people to participate in the {{type}}
     send_outcome: Send outcome
     send_outcome_explain: Notify people about the outcome of the {{type}}
+    discussion_notification_history: Thread notification history
+    group_notification_history: Group invitation history
+    poll_notification_history: Poll notification history
+    outcome_notification_history: Outcome notification history
 
     audiences:
       parent_group: Members of {{name}}
