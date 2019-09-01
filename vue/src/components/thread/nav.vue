@@ -105,7 +105,7 @@ v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakp
           v-icon(:size="20") mdi-format-vertical-align-bottom
         v-list-item-title(v-t="'activity_card.end'")
     v-divider
-    v-subheader Particpants
+    v-subheader(v-t="'thread_nav.participants'")
       //- revent discussion event authors
     v-list(dense)
       v-list-item(@click="addPeople()")

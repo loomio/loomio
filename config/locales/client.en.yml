@@ -366,6 +366,9 @@ en:
     public_privacy_notice: 'Your comment will be visible to anyone on the web.'
     sign_in: "Log in to join the conversation"
 
+  thread_nav:
+    participants: Participants
+    
   sidebar:
     threads: 'Threads'
     my_groups: 'My groups'
