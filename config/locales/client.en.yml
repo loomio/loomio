@@ -522,7 +522,7 @@ en:
     send_discussion: Send thread
     send_discussion_explain: Invite people to particpate in the discussion
     send_group: Invite people to {{name}}
-    send_group_explain: Invite people to particpate in the discussion
+    send_group_explain: ''
     send_poll: Send {{type}}
     send_poll_explain: Invite people to participate in the {{type}}
     send_outcome: Send outcome

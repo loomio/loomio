@@ -5,6 +5,7 @@ import EventBus       from '@/shared/services/event_bus'
 import utils          from '@/shared/record_store/utils'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import AbilityService from '@/shared/services/ability_service'
+import Session from '@/shared/services/session'
 import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
 import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
@@ -29,6 +30,7 @@ export default
     subscriptionActive: true
     canInvite: true
     maxMembers: 0
+    invitedGroupIds: if @announcement.model.isA('group') then [@announcement.model.id] else []
 
   created: ->
     @searchResults = if @invitingToGroup then [] else @announcement.model.members()
@@ -53,6 +55,7 @@ export default
     @submit = submitForm @, @announcement,
       prepareFn: =>
         @announcement.recipients = @recipients
+        @announcement.invitedGroupIds = @invitedGroupIds
       successCallback: (data) =>
         @announcement.membershipsCount = data.memberships.length
         @close()
@@ -68,7 +71,7 @@ export default
 
     audienceValues: -> audienceValuesFor(@announcement.model)
 
-    search: throttle (query) ->
+    search: debounce (query) ->
       Records.announcements.search(query, @announcement.model).then (data) =>
         if data && data.length == 1 && data[0].id == 'multiple'
           each map(data[0].emails, @buildRecipientFromEmail), @addRecipient
@@ -112,6 +115,8 @@ export default
     modelKind: -> @announcement.model.constructor.singular
     pollType: -> @announcement.model.pollType
     translatedPollType: -> @announcement.model.poll().translatedPollType() if @announcement.model.isA('poll') or @announcement.model.isA('outcome')
+    invitableGroups: ->
+      @announcement.model.subgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
     canUpdateAnyoneCanParticipate: ->
       @announcement.model.isA('poll') &&
       AbilityService.canAdminister(@announcement.model)
@@ -160,7 +165,7 @@ v-card
               user-avatar(:user="data.item" size="small" :no-link="true")
             v-list-item-content.announcement-chip__content
               v-list-item-title(v-html='data.item.name')
-        div.text-right
+        div.text-right(v-if="audiences().length")
           span Quick add:
           space
           span(v-for='(audience, index) in audiences()' :key='audience')
@@ -168,6 +173,11 @@ v-card
             span(v-if="index < audiences().length - 1")
               | ,
               space
+
+      div(v-if="invitableGroups.length")
+        span Add to subgroups?
+        div(v-for="group in invitableGroups" :key="group.id")
+          v-checkbox(v-model="invitedGroupIds" :label="group.name" :value="group.id" hide-details)
 
       v-layout(v-if="showInvitationsRemaining")
         v-spacer

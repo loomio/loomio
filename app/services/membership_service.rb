@@ -4,6 +4,12 @@ class MembershipService
 
     membership.update(user: actor, accepted_at: DateTime.now)
 
+    if membership.inviter
+      membership.group.subgroups.where(id: Array(membership.experiences[:invited_group_ids])).each do |group|
+        group.add_member!(current_user, inviter) if membership.inviter.can?(:add_members, group)
+      end
+    end
+
     Events::InvitationAccepted.publish!(membership)
   end
 
