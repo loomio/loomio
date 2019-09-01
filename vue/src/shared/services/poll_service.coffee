@@ -9,7 +9,7 @@ import openModal      from '@/shared/helpers/open_modal'
 export default new class PollService
   actions: (poll, vm) ->
     announce_poll:
-      icon: 'mdi-bullhorn'
+      icon: 'mdi-send'
       canPerform: ->
         AbilityService.canEditPoll(poll)
       perform: ->

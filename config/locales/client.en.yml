@@ -67,22 +67,22 @@ en:
     thumbsdown: Thumb down
 
   poll_types:
-    proposal: Proposal
-    count: Check
-    poll: Poll
-    dot_vote: Dot vote
-    meeting: Time poll
-    ranked_choice: Ranked choice
-    score: Score poll
+    proposal: proposal
+    count: check
+    poll: poll
+    dot_vote: dot vote
+    meeting: time poll
+    ranked_choice: ranked choice
+    score: score poll
 
   new_poll_types:
-    proposal: Proposal
-    count: Count
-    poll: Choose
-    score: Score
-    ranked_choice: Rank
-    dot_vote: Allocate
-    meeting: Time poll
+    proposal: proposal
+    count: count
+    poll: choose
+    score: score
+    ranked_choice: rank
+    dot_vote: allocate
+    meeting: time poll
 
   timezones:
     local: Local time ({{value}})
@@ -240,8 +240,6 @@ en:
 
   change_volume_form:
     simple:
-      change_global_preferences: Reset notification preference
-      question: What notification level do you want?
       label: Notifications
       loud: Subscribed
       normal: Normal
@@ -521,6 +519,15 @@ en:
     fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
 
   announcement:
+    send_discussion: Send thread
+    send_discussion_explain: Invite people to particpate in the discussion
+    send_group: Invite people to {{name}}
+    send_group_explain: Invite people to particpate in the discussion
+    send_poll: Send {{type}}
+    send_poll_explain: Invite people to participate in the {{type}}
+    send_outcome: Send outcome
+    send_outcome_explain: Notify people about the outcome of the {{type}}
+
     audiences:
       parent_group: Members of {{name}}
       formal_group: Members of {{name}}
@@ -583,7 +590,7 @@ en:
     add_comment: Comment
     copy_url: Copy URL
     edit_thread: Edit context
-    announce_thread: Notify people
+    announce_thread: Send thread
     invite_guests: Invite guests
     translate_thread: Translate context
     edit_poll: Edit poll

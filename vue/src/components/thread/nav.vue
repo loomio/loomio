@@ -109,7 +109,7 @@ v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakp
       //- revent discussion event authors
     v-list(dense)
       v-list-item(@click="addPeople()")
-        v-list-item-title(v-t="'action_dock.invite_guests'")
+        v-list-item-title(v-t="'invitation_form.invite_people'")
     v-divider
 
     v-list(dense)
