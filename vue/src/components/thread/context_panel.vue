@@ -17,10 +17,10 @@ export default
 
   computed:
     dockActions: ->
-      pick ThreadService.actions(@discussion, @), ['edit_thread']
+      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', 'edit_thread', "announce_thread"]
 
     menuActions: ->
-      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', "announce_thread", "edit_tags", 'show_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+      pick ThreadService.actions(@discussion, @), [ "edit_tags", 'show_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -51,8 +51,8 @@ export default
     tags-display(:discussion="discussion")
     span
     v-spacer
-    action-dock(:model='discussion' :actions='dockActions')
-    action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
+    span.grey--text.body-2
+      time-ago(:date='discussion.createdAt')
 
   h1.display-1.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
     span(v-if='!discussion.translation.title') {{discussion.title}}
@@ -65,8 +65,6 @@ export default
       user-avatar.mr-4(:user='discussion.author()', :size='40')
       span
         router-link(:to="urlFor(discussion.author())") {{discussion.authorName()}}
-        mid-dot
-        time-ago.nowrap(:date='discussion.createdAt')
         mid-dot
         span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
           i.mdi.mdi-lock-outline
@@ -86,7 +84,10 @@ export default
     formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion' skip-fetch)
     attachment-list(:attachments="discussion.attachments")
-    reaction-display.mb-2(:model="discussion" fetch)
+    v-layout.my-2(align-center)
+      reaction-display.mb-2(:model="discussion" fetch)
+      action-dock(:model='discussion' :actions='dockActions')
+      action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
   v-divider
 </template>
 <style lang="sass">
