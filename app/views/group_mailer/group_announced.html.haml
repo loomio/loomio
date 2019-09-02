@@ -1,6 +1,6 @@
 .center
-  = render 'avatar', user: @membership.inviter
-  %strong= @membership.inviter.name
+  = render 'avatar', user: @inviter
+  %strong= @inviter.name
   = t(:"email.to_join_group.invitation_text_html")
   %br
   %strong= @membership.group.full_name

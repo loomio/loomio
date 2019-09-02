@@ -3,12 +3,13 @@ class GroupMailer < BaseMailer
 
   def group_announced(recipient, event)
     return unless @membership = event.eventable.memberships.find_by(user: recipient)
+    @inviter = @membership.inviter || recipient
     send_single_mail to:     recipient.email,
                      locale: recipient.locale,
-                     from:   from_user_via_loomio(@membership.inviter),
-                     reply_to: @membership.inviter.name_and_email,
+                     from:   from_user_via_loomio(@inviter),
+                     reply_to: @inviter.name_and_email,
                      subject_key: event.email_subject_key || "email.to_join_group.subject",
-                     subject_params: {member: @membership.inviter.name,
+                     subject_params: {member: @inviter.name,
                                       group_name: @membership.group.full_name,
                                       site_name: AppConfig.theme[:site_name]}
   end

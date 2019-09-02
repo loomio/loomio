@@ -1,4 +1,6 @@
 class API::AnnouncementsController < API::RestfulController
+  MockEvent = Struct.new(:eventable, :email_subject_key)
+
   def audience
     self.collection = service.audience_for(target_model, params.require(:kind), current_user)
     respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
@@ -24,13 +26,9 @@ class API::AnnouncementsController < API::RestfulController
     render json: json, root: false
   end
 
-  def preview
-    # email_method = target_model.kind
-    # byebug
-    # discussion = target_model
-    # announcement = Announcement.create(kind: 'announcement_created')
-    # announcement_event =
-    @email = target_model.send(:mailer).send(params[:kind], current_user, target_model.created_event)
+  def preview  
+    event = MockEvent.new(target_model, nil)
+    @email = target_model.send(:mailer).send(params[:kind], current_user, event)
     @email.perform_deliveries = false
 
     render template: '/user_mailer/last_email.html', layout: false

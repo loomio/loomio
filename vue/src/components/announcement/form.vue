@@ -261,6 +261,7 @@ v-card
   height: 42px;
   min-height: 42px;
   margin-bottom: 8px;
+  white-space: nowrap;
   /* // color: $primary-text-color;
   i { opacity: 0.8; } */
 }
