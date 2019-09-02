@@ -1,6 +1,7 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import { colonToUnicode } from '@/shared/helpers/emojis'
+import AppConfig from '@/shared/services/app_config'
 
 export default
   props:
@@ -17,6 +18,8 @@ export default
     url: ->
       if @notification.kind == 'membership_requested' && @notification.url
         "/"+@notification.url.split('/')[1]+"/members/requests"
+      else if @notification.url.startsWith(AppConfig.baseUrl)
+        "/" +@notification.url.replace(AppConfig.baseUrl, '')
       else
         "/"+@notification.url
 
