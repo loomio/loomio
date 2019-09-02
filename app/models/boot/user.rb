@@ -29,17 +29,12 @@ module Boot
     def serializer_scope
       {
         formal_memberships: formal_memberships,
-        notifications:      notifications,
         identities:         identities
       }.compact
     end
 
     def formal_memberships
       @formal_memberships ||= user.memberships.formal.includes(:user, :group)
-    end
-
-    def notifications
-      @notifications ||= NotificationCollection.new(user).notifications unless user.restricted
     end
 
     def identities
