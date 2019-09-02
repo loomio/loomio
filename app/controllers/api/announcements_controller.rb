@@ -17,11 +17,12 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def history
-    notifications = Hash.new([])
+    notifications = {}
 
     events = Event.where(kind: ['announcement_created', 'user_mentioned'], eventable: target_model).order('id').limit(50)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
+      notifications[notification.event_id] = [] unless notifications.has_key?(notification.event_id)
       notifications[notification.event_id] << {id: notification.id, to: (notification.user.name || notification.user.email), viewed: notification.viewed}
     end
     res = events.map do |event|

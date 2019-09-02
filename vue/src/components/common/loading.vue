@@ -10,6 +10,6 @@ export default
 <template lang="pug">
 div
   v-layout.page-loading(justify-center v-if="!until")
-    v-progress-circular(indeterminate color='amber')
+    v-progress-circular(indeterminate color='primary')
   slot(v-if="until")
 </template>

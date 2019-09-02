@@ -537,7 +537,7 @@ en:
     outcome_notification_history: Outcome notification history
     quick_add: "Quick add:"
     any_other_groups: "Any other groups?"
-    notified_people: notified {{length}} people
+    notified_people: "{{name}} notified {{length}} people:"
     preview: Preview
     no_notifications_sent: No notifications have been sent
     history_error: Something went wrong! Could not load history.

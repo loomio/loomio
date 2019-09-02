@@ -121,9 +121,8 @@ export default
       @historyOpen = true
       @historyLoading = true
       Records.announcements.fetchHistoryFor(@announcement.model).then (data) =>
-        console.log data
         @historyLoading = false
-        @historyData = data
+        @historyData = data || []
       , (err) =>
         @historyLoading = false
         @historyError = true
@@ -205,7 +204,7 @@ v-card
         p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
 
   v-card-actions
-    v-dialog(v-model="historyOpen" max-width="600px" persistent)
+    v-dialog(v-model="historyOpen" max-width="600px")
       template(v-slot:activator="{on}")
         v-btn(text @click="openHistoryModal()" v-on="on" v-t="'common.history'")
       v-card
@@ -213,18 +212,17 @@ v-card
           h1.headline(v-t="'announcement.' + modelKind + '_notification_history'")
           v-spacer
           dismiss-modal-button(:close="closeHistoryModal")
-        v-progress-circular(v-if="historyLoading" indeterminate)
+        v-layout(justify-center)
+          v-progress-circular(color="primary" v-if="historyLoading" indeterminate)
         v-card-text(v-if="!historyLoading")
           p(v-if="historyError && historyData.length == 0" v-t="'announcement.history_error'")
           p(v-if="!historyError && historyData.length == 0" v-t="'announcement.no_notifications_sent'")
           div(v-for="event in historyData" :key="event.id")
-            p.body-1
+            h4.mt-4.mb-2
               time-ago(:date="event.created_at")
               mid-dot
-              span {{event.author_name}}
-              space
-              span(v-t="{ path: 'announcement.notified_people', args: { length: event.notifications.length } }")
-            ul
+              span(v-t="{ path: 'announcement.notified_people', args: { name: event.author_name, length: event.notifications.length } }")
+            ul(style="list-style-type: none; padding-left: 0")
               li(v-for="notification in event.notifications" :key="notification.id")
                 span {{notification.to}}
                 space
