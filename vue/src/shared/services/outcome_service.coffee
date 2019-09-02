@@ -10,6 +10,16 @@ export default new class OutcomeService
     react:
       canPerform: -> AbilityService.canReactToPoll(poll)
 
+    notification_history:
+      name: 'action_dock.notification_history'
+      icon: 'mdi-alarm-check'
+      perform: ->
+        openModal
+          component: 'AnnouncementHistory'
+          props:
+            model: outcome
+      canPerform: -> true
+
     announce_outcome:
       icon: 'mdi-send'
       active: -> outcome.announcementsCount == 0

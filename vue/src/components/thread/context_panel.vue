@@ -20,7 +20,7 @@ export default
       pick ThreadService.actions(@discussion, @), ['react', 'add_comment', 'edit_thread', "announce_thread"]
 
     menuActions: ->
-      pick ThreadService.actions(@discussion, @), [ "edit_tags", 'show_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+      pick ThreadService.actions(@discussion, @), [ "edit_tags", 'show_history', 'notification_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned

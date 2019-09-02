@@ -1,5 +1,5 @@
 class API::AnnouncementsController < API::RestfulController
-  MockEvent = Struct.new(:eventable, :email_subject_key)
+  MockEvent = Struct.new(:eventable, :email_subject_key, :user, :id)
 
   def audience
     self.collection = service.audience_for(target_model, params.require(:kind), current_user)
@@ -36,7 +36,7 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def preview
-    event = MockEvent.new(target_model, nil)
+    event = MockEvent.new(target_model, nil, current_user , 1)
     @email = target_model.send(:mailer).send(params[:kind], current_user, event)
     @email.perform_deliveries = false
 

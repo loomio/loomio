@@ -22,7 +22,7 @@ export default
     dockActions: ->
       OutcomeService.actions(@eventable, @)
     menuActions: ->
-      pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
+      pick EventService.actions(@event, @), ['pin_event', 'unpin_event', 'notification_history']
 
 </script>
 
