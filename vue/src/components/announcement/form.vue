@@ -5,11 +5,13 @@ import EventBus       from '@/shared/services/event_bus'
 import utils          from '@/shared/record_store/utils'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import AbilityService from '@/shared/services/ability_service'
+import Session from '@/shared/services/session'
 import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
 import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
-import {each , sortBy, includes, map, pull, uniq, throttle, debounce} from 'lodash'
+import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash'
 import { submitForm } from '@/shared/helpers/form'
+import { encodeParams } from '@/shared/helpers/encode_params'
 
 
 export default
@@ -29,6 +31,10 @@ export default
     subscriptionActive: true
     canInvite: true
     maxMembers: 0
+    invitedGroupIds: if @announcement.model.isA('group') then [@announcement.model.id] else []
+    historyData: []
+    historyLoading: false
+    historyOpen: false
 
   created: ->
     @searchResults = if @invitingToGroup then [] else @announcement.model.members()
@@ -53,6 +59,7 @@ export default
     @submit = submitForm @, @announcement,
       prepareFn: =>
         @announcement.recipients = @recipients
+        @announcement.invitedGroupIds = @invitedGroupIds
       successCallback: (data) =>
         @announcement.membershipsCount = data.memberships.length
         @close()
@@ -68,7 +75,7 @@ export default
 
     audienceValues: -> audienceValuesFor(@announcement.model)
 
-    search: throttle (query) ->
+    search: debounce (query) ->
       Records.announcements.search(query, @announcement.model).then (data) =>
         if data && data.length == 1 && data[0].id == 'multiple'
           each map(data[0].emails, @buildRecipientFromEmail), @addRecipient
@@ -108,7 +115,23 @@ export default
       @announcement.model.resetToken().then =>
         Flash.success('invitation_form.shareable_link_reset')
 
+    closeHistoryModal: -> @historyOpen = false
+    openHistoryModal: ->
+      @historyOpen = true
+      @historyLoading = true
+      Records.announcements.fetchHistoryFor(@announcement.model).then (data) =>
+        console.log data
+        @historyLoading = false
+        @historyData = data
+
+
   computed:
+    modelKind: -> @announcement.model.constructor.singular
+    pollType: -> @announcement.model.pollType
+    translatedPollType: -> @announcement.model.poll().translatedPollType() if @announcement.model.isA('poll') or @announcement.model.isA('outcome')
+    invitableGroups: ->
+      return [] unless @announcement.model.isA('group')
+      @announcement.model.subgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
     canUpdateAnyoneCanParticipate: ->
       @announcement.model.isA('poll') &&
       AbilityService.canAdminister(@announcement.model)
@@ -122,6 +145,9 @@ export default
     invitingToGroup: ->
       @announcement.model.isA('group')
 
+    previewUrl: ->
+      AppConfig.baseUrl + 'api/v1/announcements/preview?' + encodeParams(merge(@announcement.model.namedId(), {kind: @announcement.kind}))
+
   watch:
     query: (q) ->
       @search q if q && q.length > 2
@@ -131,41 +157,76 @@ export default
 v-card
   submit-overlay(:value="announcement.processing")
   v-card-title
-    h1.headline(v-t="'announcement.form.' + announcement.kind + '.title'")
+    h1.headline(v-if="modelKind == 'group'" v-t="{path: 'announcement.send_group', args: {name: announcement.model.name} }")
+    h1.headline(v-if="modelKind == 'discussion'" v-t="{path: 'announcement.send_discussion'}")
+    h1.headline(v-if="modelKind == 'poll'" v-t="{path: 'announcement.send_poll', args: {type: announcement.model.translatedPollType()}}")
+    h1.headline(v-if="modelKind == 'outcome'" v-t="{path: 'announcement.send_outcome'}")
     v-spacer
     dismiss-modal-button(:close="close")
-  v-card-text
-    .announcement-form
-      div(v-if="invitingToGroup && !canInvite")
-        .announcement-form__invite
-          p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: maxMembers})")
-          p(v-if="!subscriptionActive" v-html="$('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+  v-card-text.announcement-form
+    p(v-t="{path: 'announcement.send_'+modelKind+'_explain' , args: {type: translatedPollType}}")
 
-      div(v-if="!invitingToGroup || canInvite")
-        .announcement-form__invite
-          p.announcement-form__help(v-t="'announcement.form.' + announcement.kind + '.helptext'")
-          v-list
-            v-list-item.announcement-form__audience(v-for='audience in audiences()', :key='audience', @click='loadAudience(audience)')
-              v-list-item-avatar
-                v-icon mdi-account-multiple
-              v-list-item-content
-                span(v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
-          v-autocomplete.announcement-form__input(multiple chips return-object autofocus hide-no-data hide-selected v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
-            template(v-slot:selection='data')
-              v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
-                user-avatar.mr-1(:user="data.item" size="small" :no-link="true")
-                span {{ data.item.name }}
-            template(v-slot:item='data')
-              v-list-item-avatar
-                user-avatar(:user="data.item" size="small" :no-link="true")
-              v-list-item-content.announcement-chip__content
-                v-list-item-title(v-html='data.item.name')
+    div(v-if="invitingToGroup && !canInvite")
+      .announcement-form__invite
+        p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: maxMembers})")
+        p(v-if="!subscriptionActive" v-html="$('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
-        v-layout(v-if="showInvitationsRemaining")
-          v-spacer
-          p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
+    div(v-if="!invitingToGroup || canInvite")
+      .announcement-form__invite
+        v-autocomplete.announcement-form__input(multiple chips return-object autofocus hide-no-data hide-selected v-model='recipients' @change="query= ''" :search-input.sync="query" item-text='name' item-value="id" item-avatar="avatar_url.large" :placeholder="$t('announcement.form.placeholder')" :items='searchResults')
+          template(v-slot:selection='data')
+            v-chip.chip--select-multi(:value='data.selected', close, @click:close='remove(data.item)')
+              user-avatar.mr-1(:user="data.item" size="small" :no-link="true")
+              span {{ data.item.name }}
+          template(v-slot:item='data')
+            v-list-item-avatar
+              user-avatar(:user="data.item" size="small" :no-link="true")
+            v-list-item-content.announcement-chip__content
+              v-list-item-title(v-html='data.item.name')
+        div.text-right(v-if="audiences().length")
+          span(v-t="'announcement.quick_add'")
+          space
+          span(v-for='(audience, index) in audiences()' :key='audience')
+            a.announcement-form__audience(@click='loadAudience(audience)' v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
+            span(v-if="index < audiences().length - 1")
+              | ,
+              space
+
+      div(v-if="invitableGroups.length")
+        span(v-t="'announcement.any_other_groups'")
+        div(v-for="group in invitableGroups" :key="group.id")
+          v-checkbox(v-model="invitedGroupIds" :label="group.name" :value="group.id" hide-details)
+
+      v-layout(v-if="showInvitationsRemaining")
+        v-spacer
+        p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
 
   v-card-actions
+    v-dialog(v-model="historyOpen")
+      template(v-slot:activator="{on}")
+        v-btn.text(@click="openHistoryModal()" v-on="on" v-t="'common.history'")
+      v-card
+        v-card-title
+          h1.headline(v-t="'announcement.' + modelKind + '_notification_history'")
+          v-spacer
+          dismiss-modal-button(:close="closeHistoryModal")
+        v-progress-circular(v-if="historyLoading" indeterminate)
+        v-card-text(v-if="!historyLoading")
+          p(v-for="event in historyData" :key="event.id")
+            span.body-1
+              time-ago(:date="event.created_at")
+              mid-dot
+              span {{event.author_name}}
+              space
+              span(v-t="{ path: 'announcement.notified_people', args: { length: event.notifications.length } }")
+            br
+            ul
+              li(v-for="notification in event.notifications" :key="notification.id")
+                span {{notification.to}}
+                space
+                span(v-if="notification.viewed") (seen)
+                span(v-if="!notification.viewed") (not seen)
+    v-btn.text(:href="previewUrl" target="_blank") Preview
     div(v-if="recipients.length")
       p(v-show="invitingToGroup && tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
     v-spacer

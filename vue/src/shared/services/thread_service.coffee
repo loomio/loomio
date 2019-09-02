@@ -40,7 +40,7 @@ export default new class ThreadService
       perform: => @dismiss(discussion)
 
     announce_thread:
-      icon: 'mdi-bullhorn'
+      icon: 'mdi-send'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
         openModal

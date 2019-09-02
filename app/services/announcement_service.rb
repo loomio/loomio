@@ -19,7 +19,8 @@ class AnnouncementService
       group:    model.guest_group,
       inviter:  actor,
       emails:   Array(params.dig(:recipients, :emails)),
-      user_ids: Array(params.dig(:recipients, :user_ids))
+      user_ids: Array(params.dig(:recipients, :user_ids)),
+      invited_group_ids: params[:invited_group_ids]
     ).invite!
     EventBus.broadcast('announcement_create', model, actor, params)
     Events::AnnouncementCreated.publish! model, actor, inviter.invited_memberships, params[:kind]

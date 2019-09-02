@@ -11,7 +11,7 @@ export default new class OutcomeService
       canPerform: -> AbilityService.canReactToPoll(poll)
 
     announce_outcome:
-      icon: 'mdi-bullhorn'
+      icon: 'mdi-send'
       active: -> outcome.announcementsCount == 0
       canPerform: -> AbilityService.canSetPollOutcome(poll)
       perform: ->

@@ -14,7 +14,37 @@ class API::AnnouncementsController < API::RestfulController
     respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
   end
 
+  def history
+    json = Event.where(kind: 'announcement_created', eventable: target_model).order('id').limit(10).map do |event|
+      {event_id: event.id,
+       created_at: event.created_at,
+       author_name: event.user.name,
+       notifications: notifications_for(event) }
+    end
+    render json: json, root: false
+  end
+
+  def preview
+    # email_method = target_model.kind
+    # byebug
+    # discussion = target_model
+    # announcement = Announcement.create(kind: 'announcement_created')
+    # announcement_event =
+    @email = target_model.send(:mailer).send(params[:kind], current_user, target_model.created_event)
+    @email.perform_deliveries = false
+
+    render template: '/user_mailer/last_email.html', layout: false
+  end
+
   private
+  def notifications_for(event)
+    Notification.joins(:user).where(event_id: event.id).map do |notification|
+      {id: notification.id,
+       to: notification.user.name || notification.user.email,
+       viewed: notification.viewed}
+    end
+  end
+
   def create_scope
     { email_user_ids: collection.pending.pluck(:user_id) }
   end

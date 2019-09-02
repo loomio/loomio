@@ -69,6 +69,10 @@ class Event < ApplicationRecord
       created_at: eventable.created_at
     }.merge(args))
   end
+  
+  def email_subject_key
+    nil
+  end
 
   def should_have_parent?
     %w[stance_created
