@@ -4,6 +4,7 @@ class Full::PollSerializer < ::PollSerializer
   has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_many :documents, serializer: DocumentSerializer, root: :documents
+  has_one :created_event, serializer: Events::SimpleSerializer, root: :events
 
   def complete
     true
