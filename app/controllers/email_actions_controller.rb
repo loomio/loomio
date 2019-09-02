@@ -7,6 +7,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     DiscussionService.mark_as_read(discussion: discussion,
                                    params: {ranges: event.sequence_id},
                                    actor: user)
+    event.notifications.where(user: user).update_all(viewed: true)
     respond_with_pixel
   rescue ActiveRecord::RecordNotFound
     respond_with_pixel
