@@ -35,6 +35,7 @@ export default
     historyData: []
     historyLoading: false
     historyOpen: false
+    historyError: false
 
   created: ->
     @searchResults = if @invitingToGroup then [] else @announcement.model.members()
@@ -123,7 +124,9 @@ export default
         console.log data
         @historyLoading = false
         @historyData = data
-
+      , (err) =>
+        @historyLoading = false
+        @historyError = true
 
   computed:
     modelKind: -> @announcement.model.constructor.singular
@@ -202,7 +205,7 @@ v-card
         p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
 
   v-card-actions
-    v-dialog(v-model="historyOpen")
+    v-dialog(v-model="historyOpen" max-width="600px" persistent)
       template(v-slot:activator="{on}")
         v-btn(text @click="openHistoryModal()" v-on="on" v-t="'common.history'")
       v-card
@@ -212,7 +215,8 @@ v-card
           dismiss-modal-button(:close="closeHistoryModal")
         v-progress-circular(v-if="historyLoading" indeterminate)
         v-card-text(v-if="!historyLoading")
-          p(v-if="historyData.length == 0" v-t="'announcement.no_notifications_sent'") 
+          p(v-if="historyError && historyData.length == 0" v-t="'announcement.history_error'")
+          p(v-if="historyData.length == 0" v-t="'announcement.no_notifications_sent'")
           p(v-for="event in historyData" :key="event.id")
             span.body-1
               time-ago(:date="event.created_at")

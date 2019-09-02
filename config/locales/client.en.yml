@@ -542,6 +542,7 @@ en:
     not_seen: "(not seen)"
     preview: Preview
     no_notifications_sent: No notifications have been sent
+    history_error: Something went wrong! Could not load history.
 
     audiences:
       parent_group: Members of {{name}}
