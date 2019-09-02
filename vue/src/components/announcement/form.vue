@@ -186,7 +186,7 @@ v-card
               user-avatar(:user="data.item" size="small" :no-link="true")
             v-list-item-content.announcement-chip__content
               v-list-item-title(v-html='data.item.name')
-        div.text-right(v-if="audiences().length")
+        div(v-if="audiences().length")
           span(v-t="'announcement.quick_add'")
           space
           span(v-for='(audience, index) in audiences()' :key='audience')
