@@ -56,7 +56,7 @@ export default
 
     .auth-signin-form__password(v-if='user.hasPassword')
       label(v-t="'auth_form.password'")
-      v-text-field#password.lmo-primary-form-input(name='password' password autofocus required v-model='user.password')
+      v-text-field#password.lmo-primary-form-input(name='password' type='password' autofocus required v-model='user.password')
       validation-errors(:subject='user', field='password')
 
       v-card-actions

@@ -538,8 +538,6 @@ en:
     quick_add: "Quick add:"
     any_other_groups: "Any other groups?"
     notified_people: notified {{length}} people
-    seen: "(seen)"
-    not_seen: "(not seen)"
     preview: Preview
     no_notifications_sent: No notifications have been sent
     history_error: Something went wrong! Could not load history.
@@ -1704,7 +1702,7 @@ en:
     ranked_choice: 'This ranked choice poll has closed. <strong>Share an outcome</strong> with the group.'
 
   poll_common_outcome_form:
-    new_title: Share an outcome
+    new_title: Enter an outcome
     update_title: Update outcome
     outcome_created: Outcome created
     outcome_updated: Outcome updated

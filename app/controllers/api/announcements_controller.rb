@@ -17,16 +17,24 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def history
-    json = Event.where(kind: 'announcement_created', eventable: target_model).order('id').limit(10).map do |event|
+    notifications = Hash.new([])
+
+    events = Event.where(kind: ['announcement_created', 'user_mentioned'], eventable: target_model).order('id').limit(50)
+
+    Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
+      notifications[notification.event_id] << {id: notification.id, to: (notification.user.name || notification.user.email), viewed: notification.viewed}
+    end
+    res = events.map do |event|
       {event_id: event.id,
        created_at: event.created_at,
        author_name: event.user.name,
-       notifications: notifications_for(event) }
+       notifications: notifications[event.id] }
     end
-    render json: json, root: false
+
+    render root: false, json: res
   end
 
-  def preview  
+  def preview
     event = MockEvent.new(target_model, nil)
     @email = target_model.send(:mailer).send(params[:kind], current_user, event)
     @email.perform_deliveries = false
@@ -35,13 +43,6 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   private
-  def notifications_for(event)
-    Notification.joins(:user).where(event_id: event.id).map do |notification|
-      {id: notification.id,
-       to: notification.user.name || notification.user.email,
-       viewed: notification.viewed}
-    end
-  end
 
   def create_scope
     { email_user_ids: collection.pending.pluck(:user_id) }

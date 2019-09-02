@@ -42,5 +42,5 @@ v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.c
       poll-common-calendar-invite(:outcome='outcome', v-if='datesAsOptions()')
   v-card-actions
     v-spacer
-    v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()', v-t="'poll_common_outcome_form.submit'")
+    v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' v-t="'common.action.save'")
 </template>

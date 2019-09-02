@@ -216,21 +216,19 @@ v-card
         v-progress-circular(v-if="historyLoading" indeterminate)
         v-card-text(v-if="!historyLoading")
           p(v-if="historyError && historyData.length == 0" v-t="'announcement.history_error'")
-          p(v-if="historyData.length == 0" v-t="'announcement.no_notifications_sent'")
-          p(v-for="event in historyData" :key="event.id")
-            span.body-1
+          p(v-if="!historyError && historyData.length == 0" v-t="'announcement.no_notifications_sent'")
+          div(v-for="event in historyData" :key="event.id")
+            p.body-1
               time-ago(:date="event.created_at")
               mid-dot
               span {{event.author_name}}
               space
               span(v-t="{ path: 'announcement.notified_people', args: { length: event.notifications.length } }")
-            br
             ul
               li(v-for="notification in event.notifications" :key="notification.id")
                 span {{notification.to}}
                 space
-                span(v-if="notification.viewed" v-t="'announcement.seen'")
-                span(v-if="!notification.viewed" v-t="'announcement.not_seen'")
+                span(v-if="notification.viewed") ✓
     div(v-if="recipients.length")
       p(v-show="invitingToGroup && tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
     v-spacer
