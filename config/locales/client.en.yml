@@ -535,6 +535,7 @@ en:
     group_notification_history: Group invitation history
     poll_notification_history: Poll notification history
     outcome_notification_history: Outcome notification history
+    comment_notification_history: Comment notification history
     quick_add: "Quick add:"
     any_other_groups: "Any other groups?"
     notified_people: "{{name}} notified {{length}} people:"
@@ -635,6 +636,7 @@ en:
     close_thread: Close thread
     reopen_thread: Re-open thread
     delete_thread: Delete thread
+    notification_history: Notification history
 
   cover_photo_form:
     aria_label: 'Change cover photo form'

@@ -15,6 +15,7 @@ import ChangePasswordForm from '@/components/profile/change_password_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
 import AnnouncementForm from '@/components/announcement/form'
+import AnnouncementHistory from '@/components/announcement/history'
 import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
@@ -43,6 +44,7 @@ export default
     'PollCommonOutcomeModal': PollCommonOutcomeModal
     'PollCommonReopenModal': PollCommonReopenModal
     'AnnouncementForm': AnnouncementForm
+    'AnnouncementHistory': AnnouncementHistory
     'MoveThreadForm': MoveThreadForm
     'PollCommonAddOptionModal': PollCommonAddOptionModal
     'RevisionHistoryModal': RevisionHistoryModal

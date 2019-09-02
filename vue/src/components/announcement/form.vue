@@ -32,10 +32,7 @@ export default
     canInvite: true
     maxMembers: 0
     invitedGroupIds: if @announcement.model.isA('group') then [@announcement.model.id] else []
-    historyData: []
-    historyLoading: false
     historyOpen: false
-    historyError: false
 
   created: ->
     @searchResults = if @invitingToGroup then [] else @announcement.model.members()
@@ -115,17 +112,7 @@ export default
     resetShareableLink: ->
       @announcement.model.resetToken().then =>
         Flash.success('invitation_form.shareable_link_reset')
-
-    closeHistoryModal: -> @historyOpen = false
-    openHistoryModal: ->
-      @historyOpen = true
-      @historyLoading = true
-      Records.announcements.fetchHistoryFor(@announcement.model).then (data) =>
-        @historyLoading = false
-        @historyData = data || []
-      , (err) =>
-        @historyLoading = false
-        @historyError = true
+    closeHistory: -> @historyOpen = false
 
   computed:
     modelKind: -> @announcement.model.constructor.singular
@@ -206,27 +193,8 @@ v-card
   v-card-actions
     v-dialog(v-model="historyOpen" max-width="600px")
       template(v-slot:activator="{on}")
-        v-btn(text @click="openHistoryModal()" v-on="on" v-t="'common.history'")
-      v-card
-        v-card-title
-          h1.headline(v-t="'announcement.' + modelKind + '_notification_history'")
-          v-spacer
-          dismiss-modal-button(:close="closeHistoryModal")
-        v-layout(justify-center)
-          v-progress-circular(color="primary" v-if="historyLoading" indeterminate)
-        v-card-text(v-if="!historyLoading")
-          p(v-if="historyError && historyData.length == 0" v-t="'announcement.history_error'")
-          p(v-if="!historyError && historyData.length == 0" v-t="'announcement.no_notifications_sent'")
-          div(v-for="event in historyData" :key="event.id")
-            h4.mt-4.mb-2
-              time-ago(:date="event.created_at")
-              mid-dot
-              span(v-t="{ path: 'announcement.notified_people', args: { name: event.author_name, length: event.notifications.length } }")
-            ul(style="list-style-type: none; padding-left: 0")
-              li(v-for="notification in event.notifications" :key="notification.id")
-                span {{notification.to}}
-                space
-                span(v-if="notification.viewed") ✓
+        v-btn(text @click="historyOpen = true" v-on="on" v-t="'common.history'")
+      announcement-history(:model="announcement.model" :close="closeHistory")
     div(v-if="recipients.length")
       p(v-show="invitingToGroup && tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
     v-spacer

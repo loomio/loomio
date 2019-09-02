@@ -54,6 +54,7 @@ class API::AnnouncementsController < API::RestfulController
       load_and_authorize(:group, :announce, optional: true) ||
       load_and_authorize(:discussion, :announce, optional: true) ||
       load_and_authorize(:poll, :announce, optional: true) ||
+      load_and_authorize(:comment, :show, optional: true) ||
       load_and_authorize(:outcome, :announce, optional: false)
   end
 end

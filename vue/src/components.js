@@ -3,6 +3,7 @@ module.exports = {
   ActionMenu: 'common/action_menu',
   ActivityPanel: 'thread/activity_panel',
   AnnouncementForm: 'announcement/form',
+  AnnouncementHistory: 'announcement/history',
   AttachmentList: 'thread/attachment_list',
   AuthAvatar: 'auth/avatar',
   AuthForm: 'auth/form',
