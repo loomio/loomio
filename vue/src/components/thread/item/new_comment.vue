@@ -56,7 +56,7 @@ export default
 <template lang="pug">
 thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-window="eventWindow")
   template(v-slot:actions)
-    v-layout.my-2(align-center)
+    v-layout(align-center)
       reaction-display(:model="eventable")
       action-dock(:model='eventable', :actions='dockActions')
       action-menu(:actions='menuActions')
