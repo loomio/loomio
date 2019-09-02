@@ -368,7 +368,7 @@ en:
 
   thread_nav:
     participants: Participants
-    
+
   sidebar:
     threads: 'Threads'
     my_groups: 'My groups'
@@ -524,7 +524,7 @@ en:
 
   announcement:
     send_discussion: Send thread
-    send_discussion_explain: Invite people to particpate in the discussion
+    send_discussion_explain: Invite people to participate in the discussion
     send_group: Invite people to {{name}}
     send_group_explain: ''
     send_poll: Send {{type}}
@@ -540,6 +540,8 @@ en:
     notified_people: notified {{length}} people
     seen: "(seen)"
     not_seen: "(not seen)"
+    preview: Preview
+    no_notifications_sent: No notifications have been sent
 
     audiences:
       parent_group: Members of {{name}}

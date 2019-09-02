@@ -204,7 +204,7 @@ v-card
   v-card-actions
     v-dialog(v-model="historyOpen")
       template(v-slot:activator="{on}")
-        v-btn.text(@click="openHistoryModal()" v-on="on" v-t="'common.history'")
+        v-btn(text @click="openHistoryModal()" v-on="on" v-t="'common.history'")
       v-card
         v-card-title
           h1.headline(v-t="'announcement.' + modelKind + '_notification_history'")
@@ -212,6 +212,7 @@ v-card
           dismiss-modal-button(:close="closeHistoryModal")
         v-progress-circular(v-if="historyLoading" indeterminate)
         v-card-text(v-if="!historyLoading")
+          p(v-if="historyData.length == 0" v-t="'announcement.no_notifications_sent'") 
           p(v-for="event in historyData" :key="event.id")
             span.body-1
               time-ago(:date="event.created_at")
@@ -224,12 +225,12 @@ v-card
               li(v-for="notification in event.notifications" :key="notification.id")
                 span {{notification.to}}
                 space
-                span(v-if="notification.viewed") (seen)
-                span(v-if="!notification.viewed") (not seen)
-    v-btn.text(:href="previewUrl" target="_blank") Preview
+                span(v-if="notification.viewed" v-t="'announcement.seen'")
+                span(v-if="!notification.viewed" v-t="'announcement.not_seen'")
     div(v-if="recipients.length")
       p(v-show="invitingToGroup && tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
     v-spacer
+    v-btn(text color="accent" :href="previewUrl" target="_blank" v-t="'announcement.preview'")
     v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || (invitingToGroup && tooManyInvitations())" @click="submit()" v-t="'common.action.send'")
 </template>
 
