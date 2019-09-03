@@ -40,7 +40,9 @@ class GroupInviter
   end
 
   def generate_memberships!
-    memberships = invited_members.where.not(id: @group.reload.all_member_ids).map { |user| membership_for(user) }
+    # only generate memberships for people who are not in the formal group
+    existing_member_ids = (@group.reload.all_member_ids + @group.target_model.group.all_member_ids).uniq
+    memberships = invited_members.where.not(id: existing_member_ids).map { |user| membership_for(user) }
     Membership.import(memberships).ids
   end
 
