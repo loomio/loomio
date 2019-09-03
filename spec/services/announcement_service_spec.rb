@@ -3,14 +3,15 @@ require 'rails_helper'
 describe AnnouncementService do
 
   describe 'resend_pending_invitations' do
-    let(:discussion) { create :discussion }
-    let(:membership) { create :membership, accepted_at: nil, group: discussion.guest_group, created_at: (24.hours.ago - 30.minutes) }
+    let(:user) { create(:user) }
+    let(:group) { build(:formal_group) }
+    let(:membership) { create :membership, accepted_at: nil, group: group, created_at: (24.hours.ago - 30.minutes) }
     let(:event) {
       Events::AnnouncementCreated.publish!(
-        discussion,
-        discussion.author,
+        group,
+        user,
         Membership.where(id: membership.id),
-        :new_discussion
+        :membership_resent
       )
     }
 
