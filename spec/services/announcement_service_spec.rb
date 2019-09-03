@@ -11,7 +11,7 @@ describe AnnouncementService do
         group,
         user,
         Membership.where(id: membership.id),
-        :membership_resent
+        :group_announced
       )
     }
 
