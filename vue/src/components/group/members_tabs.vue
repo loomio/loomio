@@ -13,19 +13,19 @@ export default
     canAddMembers: ->
       AbilityService.canAddMembers(@group.targetModel().group() || @group) && !@pending
 
+    onlyOneAdminWithMultipleMembers: ->
+      (@group.adminMembershipsCount < 2) && ((@group.membershipsCount - @group.adminMembershipsCount) > 0)
+
 </script>
 <template lang="pug">
 .members-tabs
-  v-toolbar(flat extended extension-height="70px" color="transparent")
-    v-layout(row)
-      v-flex
-        v-alert.mt-12(v-model="canAddMembers" color="primary" type="warning")
-          template(slot="default")
-            span(v-t="{ path: 'poll_common.edit_warning', args: { pollType: 'poll' }}")
-      v-flex
-        v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
-        space
-        shareable-link-modal(:group="group")
+  v-alert(v-model="onlyOneAdminWithMultipleMembers" color="primary" type="warning")
+    template(slot="default")
+      span(v-t="'memberships_page.only_one_admin'")
+  v-toolbar(flat color="transparent")
+    v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
+    space
+    shareable-link-modal(:group="group")
   v-card
     v-tabs(fixed-tabs)
       v-tab(:to="urlFor(group, 'members')" v-t="'members_panel.directory'")
