@@ -2,10 +2,11 @@ module Boot
   class User
     attr_reader :user
 
-    def initialize(user, identity: {}, flash: {})
+    def initialize(user, identity: {}, flash: {}, include_notifications: true)
       @user     = user
       @identity = identity
       @flash    = flash.to_h
+      @include_notifications = include_notifications
     end
 
     def payload
@@ -39,7 +40,11 @@ module Boot
     end
 
     def notifications
-      @notifications ||= NotificationCollection.new(user).notifications unless user.restricted
+      if @include_notifications
+        @notifications ||= NotificationCollection.new(user).notifications unless user.restricted
+      else
+        nil
+      end
     end
 
     def identities
