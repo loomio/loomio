@@ -7,7 +7,6 @@ import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import AppConfig      from '@/shared/services/app_config'
-
 import WizardPanel from '@/components/common/wizard_panel'
 
 export default
@@ -39,6 +38,7 @@ v-carousel.group-wizard(:continuous="false")
   wizard-panel(v-if="showWelcome" title="group_wizard.welcome")
     v-card-text
       span(v-t="'user_wizard.welcome_description'")
+      youtube.mt-6(video-id="SXdl2Oon7bs" player-width="480px" player-height="270px")
 
   wizard-panel(title="user_wizard.change_picture")
     v-card-text
