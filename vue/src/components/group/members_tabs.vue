@@ -7,19 +7,25 @@ export default
   data: ->
     group: Records.groups.fuzzyFind(@$route.params.key)
   methods:
+    invite: ->
+      @openAnnouncementModal(Records.announcements.buildFromModel(@group.targetModel()))
+  computed:
     canAddMembers: ->
       AbilityService.canAddMembers(@group.targetModel().group() || @group) && !@pending
 
-    invite: ->
-      @openAnnouncementModal(Records.announcements.buildFromModel(@group.targetModel()))
 </script>
 <template lang="pug">
 .members-tabs
-  v-toolbar(flat color="transparent")
-    v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers()' @click="invite()" v-t="'common.action.invite'")
-    space
-    shareable-link-modal(:group="group")
-
+  v-toolbar(flat extended extension-height="70px" color="transparent")
+    v-layout(row)
+      v-flex
+        v-alert.mt-12(v-model="canAddMembers" color="primary" type="warning")
+          template(slot="default")
+            span(v-t="{ path: 'poll_common.edit_warning', args: { pollType: 'poll' }}")
+      v-flex
+        v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
+        space
+        shareable-link-modal(:group="group")
   v-card
     v-tabs(fixed-tabs)
       v-tab(:to="urlFor(group, 'members')" v-t="'members_panel.directory'")
