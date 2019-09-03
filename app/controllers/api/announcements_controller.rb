@@ -19,7 +19,7 @@ class API::AnnouncementsController < API::RestfulController
   def history
     notifications = {}
 
-    events = Event.where(kind: ['announcement_created', 'user_mentioned'], eventable: target_model).order('id').limit(50)
+    events = Event.where(kind: ['announcement_created', 'user_mentioned'], eventable: history_model).order('id').limit(50)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       notifications[notification.event_id] = [] unless notifications.has_key?(notification.event_id)
@@ -54,7 +54,14 @@ class API::AnnouncementsController < API::RestfulController
       load_and_authorize(:group, :announce, optional: true) ||
       load_and_authorize(:discussion, :announce, optional: true) ||
       load_and_authorize(:poll, :announce, optional: true) ||
-      load_and_authorize(:comment, :show, optional: true) ||
       load_and_authorize(:outcome, :announce, optional: false)
+  end
+
+  def history_model
+      load_and_authorize(:group, :show, optional: true) ||
+      load_and_authorize(:discussion, :show, optional: true) ||
+      load_and_authorize(:comment, :show, optional: true) ||
+      load_and_authorize(:poll, :show, optional: true) ||
+      load_and_authorize(:outcome, :show, optional: false)
   end
 end
