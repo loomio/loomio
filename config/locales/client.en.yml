@@ -383,6 +383,7 @@ en:
     start_thread: New thread
     start_decision: New decision
     more_groups: More groups
+    try_beta: Try Loomio 2.0 beta!
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Threads actions'

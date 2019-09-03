@@ -17,6 +17,8 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
     $scope.showSidebar = true
     InboxService.load()
 
+    $scope.betaLink = AppConfig.baseUrl + "beta"
+
     $scope.canStartThreads = ->
       _.some Session.user().groups(), (group) -> AbilityService.canStartThread(group)
 
