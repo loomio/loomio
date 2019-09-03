@@ -16,6 +16,9 @@ export default
     actions: ThreadService.actions(@discussion, @)
 
   computed:
+    editThread: ->
+      pick(ThreadService.actions(@discussion, @), ['edit_thread'])['edit_thread']
+
     dockActions: ->
       pick ThreadService.actions(@discussion, @), ['react', 'add_comment', 'edit_thread', "announce_thread"]
 
@@ -45,7 +48,7 @@ export default
 </script>
 
 <template lang="pug">
-.context-panel.lmo-action-dock-wrapper#context(v-observe-visibility="{callback: viewed, once: true}")
+.context-panel.lmo-action-dock-wrapper#context(v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
   v-layout(align-center mr-3 ml-2 pt-2 wrap)
     v-breadcrumbs(:items="groups" divider=">")
     tags-display(:discussion="discussion")
