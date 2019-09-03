@@ -26,7 +26,7 @@ class AnnouncementService
     Events::AnnouncementCreated.publish! model, actor, inviter.invited_memberships, params[:kind]
   end
 
-  def self.resend_pending_memberships(since: 25.hours.ago, till: 24.hours.ago)
-    Event.announcements_in_period(since, till).each { |event| Events::AnnouncementResend.publish!(event) }
+  def self.resend_pending_invitations(since: 25.hours.ago, till: 24.hours.ago)
+    Event.invitations_in_period(since, till).each { |event| Events::AnnouncementResend.publish!(event) }
   end
 end

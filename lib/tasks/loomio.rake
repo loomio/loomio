@@ -32,7 +32,7 @@ namespace :loomio do
       SendDailyCatchUpEmailJob.perform_later
     end
 
-    AnnouncementService.delay.resend_pending_memberships
+    AnnouncementService.delay.resend_pending_invitations
     LocateUsersAndGroupsJob.perform_later
     if (Time.now.hour == 0)
       UsageReportService.send
