@@ -128,12 +128,12 @@ div
 }
 
 .thread-item--focused {
-  background-color: var(--v-accent-lighten5);
+  background-color: var(--v-primary-lighten1);
 }
 
 .thread-item--unread {
   padding-left: $cardPaddingSize - 2px;
-  border-left: 2px solid var(--v-accent-base);
+  border-left: 2px solid var(--v-primary-base);
 }
 .thread-item--unread .thread-item--indent {
     padding-left: $cardPaddingSize + 40px;

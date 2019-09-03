@@ -63,6 +63,14 @@
   color: black;
 }
 
+.beta-link {
+  text-decoration: underline;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  font-size: 16px;
+}
+
 @media (min-width: $tiny-max-px) {
   .md-sidenav-left {
     transition: 0.3s all;

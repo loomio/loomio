@@ -1,7 +1,4 @@
 .poll-mailer-common-summary
-  - if @info.poll.discussion && @info.action_name != :export
-    = render "poll_mailer/common/discussion_info", discussion: @info.poll.discussion
-
   %h1= link_to @info.poll.title, @info.target_url, class: 'poll-mailer__poll-title'
   -if @info.action_name == :export
     %p
