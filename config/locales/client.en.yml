@@ -1011,6 +1011,7 @@ en:
     coordinator_label: 'Admin'
     remove_member_label: 'Remove'
     fragment_placeholder: 'Filter users by name or username...'
+    only_one_admin: There is only one admin in this group. It's recommended that you appoint at least one more member as an admin.
     messages:
       remove_member_success: 'Removed {{name}}'
       make_admin_success: '{{name}} is now an admin'
