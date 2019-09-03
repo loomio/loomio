@@ -15,8 +15,8 @@ class Event < ApplicationRecord
   # we don't use this but I think it's cool so lets see if we use it anytime soon else delete
   # scope :excluding_sequence_ids, -> (ranges) { where RangeSet.to_ranges(ranges).map {|r| "(sequence_id NOT BETWEEN #{r.first} AND #{r.last})"}.join(' AND ') }
 
-  scope :announcements_in_period, ->(since, till) {
-    where(kind: :announcement_created).within(since.beginning_of_hour, till.beginning_of_hour)
+  scope :invitations_in_period, ->(since, till) {
+    where(kind: :announcement_created, eventable_type: 'Group').within(since.beginning_of_hour, till.beginning_of_hour)
   }
 
   after_create  :update_sequence_info!
@@ -69,7 +69,7 @@ class Event < ApplicationRecord
       created_at: eventable.created_at
     }.merge(args))
   end
-  
+
   def email_subject_key
     nil
   end
