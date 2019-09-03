@@ -13,7 +13,7 @@ export default
 
   created: ->
     Session.updateLocale(@$route.query.locale) if @$route.query.locale
-    
+
     each AppConfig.theme.vuetify, (value, key) =>
       @$vuetify.theme.themes.light[key] = value if value
       true
@@ -25,6 +25,10 @@ export default
       @openAuthModal() if !Session.isSignedIn() and error.status == 403
       @pageError = error
     EventBus.$on 'signedIn', =>
+      @pageError = null
+
+  watch:
+    '$route': ->
       @pageError = null
 
   methods:
