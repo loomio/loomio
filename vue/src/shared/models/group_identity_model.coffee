@@ -15,6 +15,7 @@ export default class GroupIdentityModel extends BaseModel
 
   defaultValues: ->
     customFields: {}
+    webhookUrl: null
 
   relationships: ->
     @belongsTo 'group'

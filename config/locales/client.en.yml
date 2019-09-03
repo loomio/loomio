@@ -2058,7 +2058,7 @@ en:
       installed_title: Connected to Microsoft Teams
       installed_helptext: Events from this group will be sent to your Microsoft Team.
       install_microsoft: Integrate Microsoft Teams
-      remove_identity: Remove this integration
+      remove_identity: Remove Microsoft Teams integration
       confirm_remove_title: Remove Microsoft Teams integration
       confirm_remove_helptext: |
         Your microsoft teams channel will no longer receive updates about this group.
