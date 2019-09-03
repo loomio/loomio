@@ -27,6 +27,7 @@ ActiveAdmin.register User do
     column "No. of groups", :memberships_count
     column :deactivated_at
     column :email_verified
+    column :experiences
     actions
   end
 
