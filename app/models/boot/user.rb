@@ -2,10 +2,11 @@ module Boot
   class User
     attr_reader :user
 
-    def initialize(user, identity: {}, flash: {})
+    def initialize(user, identity: {}, flash: {}, include_notifications: true)
       @user     = user
       @identity = identity
       @flash    = flash.to_h
+      @include_notifications = include_notifications
     end
 
     def payload
@@ -29,12 +30,21 @@ module Boot
     def serializer_scope
       {
         formal_memberships: formal_memberships,
+        notifications:      notifications,
         identities:         identities
       }.compact
     end
 
     def formal_memberships
       @formal_memberships ||= user.memberships.formal.includes(:user, :group)
+    end
+
+    def notifications
+      if @include_notifications
+        @notifications ||= NotificationCollection.new(user).notifications unless user.restricted
+      else
+        nil
+      end
     end
 
     def identities

@@ -4,7 +4,7 @@ class API::BootController < API::RestfulController
   end
 
   def user
-    render json: Boot::User.new(current_user, identity: serialized_pending_identity, flash: flash).payload
+    render json: Boot::User.new(current_user, identity: serialized_pending_identity, flash: flash, include_notifications: !params[:drop_notifications] == "1").payload
   end
 
   private
