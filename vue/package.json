@@ -48,7 +48,7 @@
     "vue-slicksort": "^1.1.3",
     "vue-youtube-embed": "^2.2.2",
     "vuebar": "0.0.20",
-    "vuetify": "2.0.11",
+    "vuetify": "2.0.14",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
