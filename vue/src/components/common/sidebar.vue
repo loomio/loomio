@@ -41,9 +41,9 @@ export default
       if @group
         @organization = data.group.parentOrSelf()
         Records.groups.fetchByParent(@organization)
+        @updateTree()
       else
         @organization = null
-      @updateTree()
 
     @watchRecords
       collections: ['groups', 'memberships', 'discussions']
@@ -71,8 +71,10 @@ export default
       groupAsItem = (group) ->
         { id: group.id, name: group.name, group: group, children: childrenFor(group).map groupAsItem}
 
-      childrenFor = (group) ->
+      childrenFor = (group) =>
         intersection(Session.user().formalGroups(), group.subgroups())
+        # +
+        #   {id: 0, name: 'More groups', children: @otherGroups.map (g) -> {id: g.id, name: g.name}}
 
       @tree = @organizations.map (group) -> groupAsItem(group)
 
@@ -114,6 +116,7 @@ export default
     user: -> Session.user()
     canStartSubGroup: -> @organization && AbilityService.canCreateSubgroups(@organization)
     activeGroup: -> if @group then [@group.id] else []
+    logoUrl: -> AppConfig.theme.app_logo_src
 
     # if we expand or collapse active group, then route changes to that active group with respective subgroups query
     # otherwise, watch route to determine what should render
@@ -123,43 +126,43 @@ export default
 
 <template lang="pug">
 v-navigation-drawer.sidenav-left(app v-model="open")
+  template(v-slot:append)
+    div.ml-4.mr-12.my-4
+      div(style="width: 50%")
+        v-img(:src="logoUrl")
+    v-list-item(href="/beta" dense)
+      v-list-item-title Loomio 2 - beta {{version}}
 
-  v-layout(fill-height)
-    v-treeview(hoverable :items="tree" :active="activeGroup" @update:open="userExpandedGroupIds" :open="expandedGroupIds" style="width: 100%")
-      template(v-slot:label="{item, open}")
-        router-link(:to="groupUrl(item.group, open)")
-          group-avatar(:group="item.group"  v-if="item.group.isParent()")
-          span.body-2.ml-2 {{item.group.name}}
+  v-list-group
+    template(v-slot:activator)
+      v-list-item-content
+        v-list-item-title {{user.name}}
+        v-list-item-subtitle {{user.email}}
+    user-dropdown
+  v-divider
+  v-list-item(dense to="/dashboard")
+    v-list-item-title(v-t="'sidebar.recent_threads'")
+  v-list-item(dense to="/inbox")
+    v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
+  v-divider
 
+  //- v-layout(fill-height)
+  v-treeview(hoverable :items="tree" :active="activeGroup" @update:open="userExpandedGroupIds" :open="expandedGroupIds" style="width: 100%")
+    template(v-slot:label="{item, open}")
+      router-link(:to="groupUrl(item.group, open)")
+        group-avatar(:group="item.group"  v-if="item.group.isParent()")
+        span.body-2.ml-2(style="display: inline-block; width: 100%; color: rgba(0, 0, 0, 0.87)") {{item.group.name}}
+
+  v-list-item(@click="startOrganization()" dense)
+    v-list-item-title(v-t="'sidebar.start_group'")
+    v-list-item-avatar(:size="28")
+      v-icon(:size="28" tile) mdi-plus
 
     //- v-navigation-drawer(stateless mini-variant mini-variant-width="56" :value="open")
     //-   v-list-item(to="/dashboard")
     //-     v-list-item-avatar(:size="28")
     //-       user-avatar(no-link :user="user")
     //-
-    //-   v-tooltip(v-for='group in organizations' :key='group.id' right)
-    //-     template(v-slot:activator="{ on }")
-    //-       v-list-item(:to='parentGroupLink(group)' dense)
-    //-         v-list-item-avatar(size="28px")
-    //-           v-avatar(tile size="28px" v-on="on")
-    //-             img.sidebar__list-item-group-logo(:src='group.logoUrl()')
-    //-     span {{group.name}}
-    //-   v-list-item(@click="startOrganization()")
-    //-     v-list-item-avatar(:size="28")
-    //-       v-icon(:size="28" tile) mdi-plus
-
-    //- v-navigation-drawer(stateless v-if="!organization" :value="open")
-    //-   v-list-item(dense)
-    //-     v-list-item-content
-    //-       v-list-item-title {{user.name}}
-    //-       v-list-item-subtitle {{user.email}}
-    //-   v-divider
-    //-   v-list-item(dense to="/dashboard")
-    //-     v-list-item-title(v-t="'sidebar.recent_threads'")
-    //-   v-list-item(dense to="/inbox")
-    //-     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
-    //-   v-divider
-    //-   user-dropdown
 
     //- v-navigation-drawer(stateless v-if="organization" :value="open")
     //-   v-list-item.sidebar__list-item-button--recent(dense exact :to='urlFor(organization)')
@@ -197,7 +200,4 @@ v-navigation-drawer.sidenav-left(app v-model="open")
     //-       v-list-item-title(v-t="'current_plan_button.upgrade'")
     //-       v-list-item-icon
     //-         v-icon(color="primary") mdi-rocket
-    //-   template(v-slot:append)
-    //-     v-list-item(href="/beta" dense)
-    //-       v-list-item-title Loomio 2 - beta {{version}}
 </template>
