@@ -21,6 +21,10 @@ class NullFormalGroup
     []
   end
 
+  def all_member_ids
+    []
+  end
+
   def identities
     Identities::Base.none
   end
