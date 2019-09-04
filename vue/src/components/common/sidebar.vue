@@ -29,6 +29,7 @@ export default
     otherGroups: []
     organizations: []
     unreadCounts: {}
+    expandedGroupIds: []
 
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
@@ -40,6 +41,7 @@ export default
         Records.groups.fetchByParent(@organization)
       else
         @organization = null
+      @updateTree()
 
     @watchRecords
       collections: ['groups', 'memberships', 'discussions']
@@ -52,6 +54,8 @@ export default
 
     open: (val) ->
       EventBus.$emit("sidebarOpen", val)
+
+    '$route.query.subgroups': 'updateTree'
 
   methods:
     updateGroups: ->
@@ -86,22 +90,40 @@ export default
       else
         @urlFor(group)+"?subgroups=mine"
 
-    updateExpandedGroupIds: (ids) ->
-      return unless @group
-      if ids.includes(@group.id)
-        @$router.replace(@urlFor(@group))
+    updateTree: ->
+      if @$route.query.subgroups
+        @expandedGroupIds = []
       else
-        @$router.replace(@urlFor(@group)+'?subgroups=mine')
+        @expandedGroupIds = [@organization.id]
 
+
+    userExpandedGroupIds: (ids) ->
+      return unless @group
+      group = if ids.length == 0 then @organization else @group
+      @$router.replace(
+        if ids.includes(group.id) or group.isSubgroup()
+          {path: @urlFor(group)}
+        else
+          {path: @urlFor(group), query: { subgroups: 'mine' }}
+      ).catch((err) => true)
       @expandedGroupIds = ids
 
     groupUrl: (group, open) ->
-      if open then @urlFor(group) else @urlFor(group)+'?subgroups=mine'
+      if (group.isParent() && !open)
+        @urlFor(group)+'?subgroups=mine'
+      else
+        @urlFor(group)
 
   computed:
     user: -> Session.user()
     canStartSubGroup: -> @organization && AbilityService.canCreateSubgroups(@organization)
     activeGroup: -> if @group then [@group.id] else []
+
+
+
+    # if we expand or collapse active group, then route changes to that active group with respective subgroups query
+    # otherwise, watch route to determine what should render
+      # 1. navigate
 
 </script>
 
@@ -109,7 +131,7 @@ export default
 v-navigation-drawer.sidenav-left(app v-model="open")
 
   v-layout(fill-height)
-    v-treeview(hoverable :items="tree" :active="activeGroup" @update:open="updateExpandedGroupIds")
+    v-treeview(hoverable :items="tree" :active="activeGroup" @update:open="userExpandedGroupIds" :open="expandedGroupIds" style="width: 100%")
       template(v-slot:label="{item, open}")
         router-link(:to="groupUrl(item.group, open)")
           group-avatar(:group="item.group"  v-if="item.group.isParent()")
