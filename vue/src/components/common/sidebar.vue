@@ -30,11 +30,13 @@ export default
     organizations: []
     unreadCounts: {}
     expandedGroupIds: []
+    subgroups: null
 
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
 
     EventBus.$on 'currentComponent', (data) =>
+      @subgroups = @$route.query.subgroups
       @group = data.group
       if @group
         @organization = data.group.parentOrSelf()
@@ -54,8 +56,6 @@ export default
 
     open: (val) ->
       EventBus.$emit("sidebarOpen", val)
-
-    '$route.query.subgroups': 'updateTree'
 
   methods:
     updateGroups: ->
@@ -91,25 +91,21 @@ export default
         @urlFor(group)+"?subgroups=mine"
 
     updateTree: ->
-      if @$route.query.subgroups
+      if @subgroups
         @expandedGroupIds = []
       else
         @expandedGroupIds = [@organization.id]
 
-
     userExpandedGroupIds: (ids) ->
       return unless @group
+      console.log "userExpandedGroupIds", ids, @groupUrl(@group, @subgroups)
+      @expandedGroupIds = ids if ids.includes(@group.id)
       group = if ids.length == 0 then @organization else @group
-      @$router.replace(
-        if ids.includes(group.id) or group.isSubgroup()
-          {path: @urlFor(group)}
-        else
-          {path: @urlFor(group), query: { subgroups: 'mine' }}
-      ).catch((err) => true)
-      @expandedGroupIds = ids
+      @$router.replace(@groupUrl(group, ids.includes(group.id))).catch((err) => true)
+
 
     groupUrl: (group, open) ->
-      if (group.isParent() && !open)
+      if (group.isParent() && group.hasSubgroups() && !open)
         @urlFor(group)+'?subgroups=mine'
       else
         @urlFor(group)
@@ -118,8 +114,6 @@ export default
     user: -> Session.user()
     canStartSubGroup: -> @organization && AbilityService.canCreateSubgroups(@organization)
     activeGroup: -> if @group then [@group.id] else []
-
-
 
     # if we expand or collapse active group, then route changes to that active group with respective subgroups query
     # otherwise, watch route to determine what should render
