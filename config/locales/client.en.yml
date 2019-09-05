@@ -414,7 +414,7 @@ en:
     sign_in: 'Log In'
     toggle_sidebar: 'Toggle sidebar'
     logo_title: 'Home page'
-    included_subgroups_title: '& subgroups'
+    group_and_subgroups: '{{group}} & subgroups'
 
   user_dropdown:
     button_label: 'User menu'

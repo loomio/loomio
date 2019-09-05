@@ -99,7 +99,7 @@ export default
     icon: ->
       AppConfig.theme.icon_src
     groupName: ->
-      if @$route.query.subgroups then @group.name + ' ' + @$t('navbar.included_subgroups_title') else @group.name
+      if @$route.query.subgroups then @$t('navbar.group_and_subgroups', {group: @group.name}) else @group.name
 </script>
 
 <template lang="pug">
