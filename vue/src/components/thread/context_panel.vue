@@ -58,10 +58,10 @@ export default
       time-ago(:date='discussion.createdAt')
 
   h1.display-1.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
+    i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
-    i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
 
   .mx-4
     .context-panel__details.my-2.body-2(align-center)
