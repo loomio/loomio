@@ -19,7 +19,7 @@ class API::AnnouncementsController < API::RestfulController
   def history
     notifications = {}
 
-    events = Event.where(kind: ['announcement_created', 'user_mentioned'], eventable: history_model).order('id').limit(50)
+    events = Event.where(kind: ['announcement_created', 'user_mentioned', 'announcement_resend'], eventable: history_model).order('id').limit(50)
 
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       notifications[notification.event_id] = [] unless notifications.has_key?(notification.event_id)
