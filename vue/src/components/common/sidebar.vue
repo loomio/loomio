@@ -120,7 +120,7 @@ export default
       return unless @group
       @expandedGroupIds = ids if ids.includes(@group.id)
       group = if ids.length == 0 then @organization else @group
-      @$router.replace(@groupUrl(group, ids.includes(group.id))).catch((err) => true) if @$route.path == @groupUrl(group)
+      @$router.replace(@groupUrl(group, ids.includes(group.id))).catch((err) => true) if @$route.path == @urlFor(group)
 
     groupUrl: (group, open) ->
       if (group.isParent() && group.hasSubgroups() && !open)
