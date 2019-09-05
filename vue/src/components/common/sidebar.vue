@@ -59,9 +59,7 @@ export default
 
   methods:
     unreadCountFor: (group, isOpen) ->
-      console.log group.name
       if !isOpen
-        console.log @unreadCounts[group.id], compact(group.subgroups().map((g) => @unreadCounts[g.id])), sum([])
         (@unreadCounts[group.id] || 0) + sum(compact(group.subgroups().map((g) => @unreadCounts[g.id])))
       else
         @unreadCounts[group.id] || 0
@@ -122,7 +120,7 @@ export default
       return unless @group
       @expandedGroupIds = ids if ids.includes(@group.id)
       group = if ids.length == 0 then @organization else @group
-      @$router.replace(@groupUrl(group, ids.includes(group.id))).catch((err) => true)
+      @$router.replace(@groupUrl(group, ids.includes(group.id))).catch((err) => true) if @$route.path == @groupUrl(group)
 
     groupUrl: (group, open) ->
       if (group.isParent() && group.hasSubgroups() && !open)
