@@ -98,6 +98,8 @@ export default
       AppConfig.theme.app_logo_src
     icon: ->
       AppConfig.theme.icon_src
+    groupName: ->
+      if @$route.query.subgroups then @$t('navbar.group_and_subgroups', {group: @group.name}) else @group.name
 </script>
 
 <template lang="pug">
@@ -119,9 +121,9 @@ v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shri
 
   v-text-field(v-if="search && searchOpen" solo autofocus v-model="searchQuery" append-icon='mdi-close' @click:append="searchOpen = false; searchQuery = ''" :placeholder="search.placeholder")
 
-  v-toolbar-title.d-flex.align-center(v-if="!searchOpen && groupPage")
-    span {{group.name}}
-    group-privacy-button(v-if="groupPage" :group='group')
+  v-toolbar-title(v-if="!searchOpen && groupPage")
+    span {{groupName}}
+    //- group-privacy-button(v-if="groupPage" :group='group')
 
   v-toolbar-title(v-if="!searchOpen && threadPage && showTitle" @click="$vuetify.goTo('head')") {{title}}
 

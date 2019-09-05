@@ -16,5 +16,6 @@ export default
 
 <template lang="pug">
 v-avatar(:size="size" tile :class="'elevation-' + elevation")
-  img(:alt="group.name" :src="group.logoUrl() || 'https://www.loomio.org/theme/icon.png'" @click="onClick()")
+  img(:alt="group.name" v-if="group.logoUrl()" :src="group.logoUrl()" @click="onClick()")
+  v-icon(v-if="!group.logoUrl()") mdi-group
 </template>

@@ -93,6 +93,9 @@ $mdi-font-path: '/fonts/mdi'
 a
   text-decoration: none
 
+.text-almost-black
+  color: rgba(0, 0, 0, 0.87)
+
 .max-width-800
   max-width: 800px
 .max-width-1024
