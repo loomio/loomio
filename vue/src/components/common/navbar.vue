@@ -105,7 +105,7 @@ export default
 <template lang="pug">
 v-app-bar(app clipped-right prominent dark color="grey" elevate-on-scroll shrink-on-scroll :src="coverImageSrc")
   template(v-slot:img="{ props }")
-    v-img(v-bind="props" gradient="rgba(0,0,0,.3), rgba(0,0,0, .1), rgba(0,0,0,.8)")
+    v-img(v-bind="props" gradient="rgba(0,0,0,.3), rgba(0,0,0, .3), rgba(0,0,0,.8)")
 
   v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()")
     v-avatar(tile size="36px")
