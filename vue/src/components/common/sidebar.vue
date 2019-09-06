@@ -141,11 +141,14 @@ export default
 
 <template lang="pug">
 v-navigation-drawer.sidenav-left(app v-model="open")
+  template(v-slot:prepend)
   template(v-slot:append)
-    v-layout.ml-4.mr-12.my-4
-      div.mr-4(style="width: 50%")
-        v-img(:src="logoUrl")
-      a(href="/beta" dense) beta {{version}}
+    div.text-center
+      a(href="/beta") Switch off beta
+    v-layout.ma-2(style="width: 50%")
+      v-img(:src="logoUrl")
+      v-layout(align-center)
+        span.ml-4 {{version}}
 
   v-list-group
     template(v-slot:activator)
