@@ -53,7 +53,7 @@ export default
       , [0, 0, 0])
 
     barLength: (count) ->
-      ((count * 32) + 2) + 'px'
+      ((count * 32)) + 'px'
   computed:
     orderedPollOptions: ->
       sortBy @pollOptions, 'name'
@@ -80,16 +80,15 @@ export default
 
 <style lang="css">
 .poll-meeting-chart__bar {
+  border: 1px solid;
   margin: 4px 0px;
+  /* padding: 0 2px; */
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-around;
   height: 36px;
   border-radius: 2px;
-  border: 1px solid;
 }
 
-.poll-meeting-chart__bar .user-avatar {
-  padding: 0px 4px;
-}
 </style>
