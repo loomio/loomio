@@ -1,6 +1,7 @@
 <script lang="coffee">
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import AppConfig from '@/shared/services/app_config'
+import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
@@ -11,6 +12,11 @@ export default
     hideScore:
       type: Boolean
       default: false
+
+  data: ->
+    optionColors: optionColors()
+    optionImages: optionImages()
+
   computed:
     poll: ->
       @stanceChoice.poll()
@@ -46,7 +52,7 @@ export default
 .poll-common-stance-choice.mr-1.mb-1(:class="'poll-common-stance-choice--' + pollType" row)
   span(v-if="!poll.datesAsOptions()")
     v-avatar(tile :size="size" v-if='poll.hasOptionIcons()')
-      img(:src="'/img/' + pollOption.name + '.svg'", :alt='optionName')
+      img(:src="'/img/' + optionImages[pollOption.name] + '.svg'", :alt='optionName')
     v-chip(v-if='!poll.hasOptionIcons()' :color="pollOption.color")
       span {{ optionName }}
       span(v-if="!hideScore && poll.hasVariableScore()")

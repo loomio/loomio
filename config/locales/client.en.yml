@@ -1886,6 +1886,7 @@ en:
 
   poll_proposal_options:
     agree: Agree
+    consent: Consent
     agree_verb: "agreed"
     agree_meaning: This proposal is good enough to be adopted by the group
     abstain: Abstain
@@ -1894,9 +1895,14 @@ en:
     disagree: Disagree
     disagree_verb: "disagreed"
     disagree_meaning: I don’t support the proposal. It should not go ahead.
+    objection: Objection
     block: Block
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
+    agree_abstain_disagree_block: 'Agree, Abstain, Disagree, Block'
+    agree_abstain_disagree: 'Agree, Abstain, Disagree'
+    consent_abstain_object: 'Consent, Abstain, Objection'
+    no_voting: 'No voting'
 
   poll_count_options:
     'yes': 'Yes'

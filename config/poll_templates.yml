@@ -8,6 +8,7 @@ proposal:
   material_icon:           mdi-thumbs-up-down
   has_option_icons:        true
   translate_option_name:   true
+  can_add_options:         true
   can_remove_options:      true
   must_have_options:       false
   voters_review_responses: true

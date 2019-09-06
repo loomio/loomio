@@ -1,34 +1,26 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import { intersection } from 'lodash'
+import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
     poll: Object
   data: ->
-    items: 'agree abstain disagree block'.split(' ')
-    colors:
-      agree: AppConfig.pollColors.proposal[0]
-      abstain: AppConfig.pollColors.proposal[1]
-      disagree: AppConfig.pollColors.proposal[2]
-      block: AppConfig.pollColors.proposal[3]
+    items: [
+      {text: @$t('poll_proposal_options.agree_abstain_disagree_block'), value: ['agree', 'abstain', 'disagree', 'block']}
+      {text: @$t('poll_proposal_options.agree_abstain_disagree'), value: ['agree', 'abstain', 'disagree']}
+      {text: @$t('poll_proposal_options.consent_abstain_object'), value: ['consent', 'abstain', 'objection']}
+      {text: @$t('poll_proposal_options.no_voting'), value: []}
+    ]
+    optionColors: optionColors()
+    optionImages: optionImages()
 </script>
 
 <template lang="pug">
 .poll-proposal-form
   poll-common-form-fields(:poll="poll")
-  v-select(v-model="poll.pollOptionNames" item-avatar="avatar" :items="items" multiple chips deletable-chips :label="$t('poll_common_form.options')")
-    template(v-slot:selection="{item, parent, selected}")
-      v-chip(pill :color="colors[item]" :key="item")
-        v-avatar(:size="30")
-          img(:src="'/img/' + item + '.svg'")
-        span(v-t="'poll_proposal_options.' + item")
-    template(v-slot:item="{index, item}")
-      v-list-item-avatar
-        img(:src="'/img/'+item+'.svg'")
-      v-list-item-content
-        v-list-item-title(v-t="'poll_proposal_options.'+item")
-
+  v-select(:disabled="!poll.isNew()" v-model="poll.pollOptionNames" :items="items" :label="$t('poll_common_form.options')")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")
 </template>

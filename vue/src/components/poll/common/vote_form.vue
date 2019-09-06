@@ -2,12 +2,15 @@
 import EventBus from '@/shared/services/event_bus'
 import { submitOnEnter } from '@/shared/helpers/keyboard'
 import { submitStance }  from '@/shared/helpers/form'
+import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
     stance: Object
   data: ->
     selectedOptionId: @stance.pollOptionId()
+    optionColors: optionColors()
+    optionImages: optionImages()
   mounted: ->
     # submitOnEnter @, element: @$el
     @submit = submitStance @, @stance,
@@ -46,7 +49,7 @@ export default
         //-   template(v-slot:badge)
         //-     span.poll-common-vote-form__chosen-option--name(v-t="'poll_' + stance.poll().pollType + '_options.' + option.name")
         v-avatar(size="52px")
-          img(:src="'/img/' + option.name + '.svg'")
+          img(:src="'/img/' + optionImages[option.name] + '.svg'")
         span {{option.name}}
         //- // <md-tooltip md-delay="750" class="poll-common-vote-form__tooltip"><span translate="poll_{{stance.poll().pollType}}_options.{{option.name}}_meaning"></span></md-tooltip>
   poll-common-stance-reason.animated(:stance='stance', v-show='selectedOptionId', v-if='stance')

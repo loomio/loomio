@@ -6,15 +6,15 @@ export default class EventModel extends BaseModel
   @indices: ['id', 'actorId', 'discussionId', 'sequenceId', 'position', 'depth', 'parentId']
 
   @eventTypeMap:
-    group: 'groups'
-    discussion: 'discussions'
-    poll: 'polls'
-    outcome: 'outcomes'
-    stance: 'stances'
-    comment: 'comments'
-    comment_vote: 'comments'
-    membership: 'memberships'
-    membership_request: 'membershipRequests'
+    Group: 'groups'
+    Discussion: 'discussions'
+    Poll: 'polls'
+    Outcome: 'outcomes'
+    Stance: 'stances'
+    Comment: 'comments'
+    CommentVote: 'comments'
+    Membership: 'memberships'
+    MembershipRequest: 'membershipRequests'
 
   relationships: ->
     @belongsTo 'parent', from: 'events'
@@ -48,7 +48,7 @@ export default class EventModel extends BaseModel
     @actor().username if @actor()
 
   model: ->
-    @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
+    @recordStore[@constructor.eventTypeMap[@eventableType]].find(@eventableId)
 
   isUnread: ->
     !@discussion().hasRead(@sequenceId)
