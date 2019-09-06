@@ -51,7 +51,7 @@ export default
 </script>
 
 <template lang="pug">
-component.user-avatar(:is="componentType" :to="!noLink && urlFor(user)" :style="{ 'max-width': width + 'px', margin: '0 auto' }")
+component.user-avatar(:is="componentType" :to="!noLink && urlFor(user)" :style="{ 'width': width + 'px', margin: '0' }")
   v-avatar(:title='user.name' :size='width')
     v-gravatar(v-if="user.avatarKind === 'gravatar'" :hash='user.emailHash' :gravatar-size='gravatarSize' :alt='user.name')
     img(v-else-if="user.avatarKind === 'uploaded'" :alt='user.name' :src='uploadedAvatarUrl')
