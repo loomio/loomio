@@ -38,7 +38,7 @@ module Ability
     end
 
     def user_is_member_of?(group_id)
-      @user.memberships.active.find_by(group_id: group_id)
+      @user.memberships.find_by(group_id: group_id)
     end
 
     def user_is_admin_of?(group_id)
@@ -46,7 +46,7 @@ module Ability
     end
 
     def user_is_member_of_any?(groups)
-      @user.memberships.active.find_by(group: groups)
+      @user.memberships.find_by(group: groups)
     end
 
     def user_is_admin_of_any?(groups)
