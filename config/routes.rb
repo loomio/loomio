@@ -103,6 +103,7 @@ Loomio::Application.routes.draw do
         get  :time_zones
         get  :mentionable_users
         get  :me
+        get  :groups
         get  :email_status
         post :update_profile
         post :set_volume

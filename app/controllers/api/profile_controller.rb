@@ -4,6 +4,13 @@ class API::ProfileController < API::RestfulController
     respond_with_resource serializer: UserSerializer
   end
 
+  def groups
+    ids = current_user.formal_groups.pluck(:id)
+    self.collection = Group.where('parent_id in (:ids) or id in (:ids)', ids: ids).
+                            where('is_visible_to_parent_members = true or is_visible_to_public = true')
+    respond_with_collection serializer: GroupSerializer, root: :groups
+  end
+
   def time_zones
     time_zones = User.where('time_zone is not null').joins(:memberships).
                       where('memberships.group_id': current_user.formal_group_ids).

@@ -8,6 +8,7 @@ class Simple::GroupSerializer < ActiveModel::Serializer
              :type,
              :created_at,
              :creator_id,
+             :parent_id,
              :is_visible_to_public,
              :memberships_count,
              :pending_memberships_count,

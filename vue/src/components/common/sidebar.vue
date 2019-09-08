@@ -30,18 +30,18 @@ export default
     organizations: []
     unreadCounts: {}
     expandedGroupIds: []
-    subgroups: null
 
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
 
     EventBus.$on 'currentComponent', (data) =>
-      @subgroups = @$route.query.subgroups
       @group = data.group
       if @group
         @organization = data.group.parentOrSelf()
-        Records.groups.fetchByParent(@organization)
-        @updateTree()
+        if @$route.query.subgroups
+          @expandedGroupIds = []
+        else
+          @expandedGroupIds = [@organization.id]
       else
         @organization = null
 
@@ -49,6 +49,7 @@ export default
       collections: ['groups', 'memberships', 'discussions']
       query: (store) => @updateGroups()
 
+    Records.users.fetchGroups()
     InboxService.load()
 
   watch:
@@ -75,7 +76,7 @@ export default
         name: group.name
         group: group
         children: if group.subgroups
-          childrenFor(group).map(groupAsItem).concat(newSubgroupButton(group))
+          group.subgroups().map(groupAsItem).concat(newSubgroupButton(group))
         else
           []
 
@@ -90,9 +91,6 @@ export default
           subgroups: -> []
         else
           []
-
-      childrenFor = (group) =>
-        intersection(Session.user().formalGroups(), group.subgroups())
 
       @tree = @organizations.map (group) -> groupAsItem(group)
 
@@ -109,12 +107,6 @@ export default
         @urlFor(group)
       else
         @urlFor(group)+"?subgroups=mine"
-
-    updateTree: ->
-      if @subgroups
-        @expandedGroupIds = []
-      else
-        @expandedGroupIds = [@organization.id]
 
     userExpandedGroupIds: (ids) ->
       return unless @group
