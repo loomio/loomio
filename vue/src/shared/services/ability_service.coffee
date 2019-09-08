@@ -152,12 +152,12 @@ export default new class AbilityService
     @canAdministerGroup(group)
 
   canEditComment: (comment) ->
-    Session.user().isMemberOf(comment.group()) and
+    comment.discussion().members().includes(Session.user()) and
     Session.user().isAuthorOf(comment) and
     (comment.isMostRecent() or comment.group().membersCanEditComments)
 
   canDeleteComment: (comment) ->
-    (Session.user().isMemberOf(comment.group()) and
+    (comment.discussion().members().includes(Session.user()) and
     Session.user().isAuthorOf(comment)) or
     @canAdministerGroup(comment.group())
 

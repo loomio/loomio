@@ -27,7 +27,6 @@ ActiveAdmin.register User do
     column "No. of groups", :memberships_count
     column :deactivated_at
     column :email_verified
-    column :experiences
     actions
   end
 
@@ -145,6 +144,10 @@ ActiveAdmin.register User do
       a(href: login_as_admin_user_path(user), target: "_blank") do
         "Login as #{user.name}"
       end
+    end
+
+    panel 'experiences' do
+      p user.experiences
     end
 
     if user.deactivation_response.present?
