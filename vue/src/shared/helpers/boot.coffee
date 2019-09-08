@@ -23,6 +23,7 @@ export default (callback) ->
             new Integrations.Vue
               Vue: Vue
               attachProps: true
+              logErrors: true
           ]
         Sentry.configureScope (scope) ->
           scope.setTag("loomio_version", AppConfig.version)
