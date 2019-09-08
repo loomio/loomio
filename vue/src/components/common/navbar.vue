@@ -82,7 +82,6 @@ export default
         ''
     tabs: ->
       return unless @group
-      console.log "route query", @$route.query
       query = ''
       query = '?subgroups='+@$route.query.subgroups if @$route.query.subgroups
 
