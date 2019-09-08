@@ -33,7 +33,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def subgroups
-    self.collection = load_and_authorize(:group).subgroups.select { |g| current_user.can? :show, g }
+    self.collection = Group.where(parent_id: current_user.formal_groups.parents_only.pluck(:id)).select { |g| current_user.can? :show, g }
     respond_with_collection
   end
 

@@ -2,11 +2,10 @@ module Boot
   class User
     attr_reader :user
 
-    def initialize(user, identity: {}, flash: {}, include_notifications: true)
+    def initialize(user, identity: {}, flash: {})
       @user     = user
       @identity = identity
       @flash    = flash.to_h
-      @include_notifications = include_notifications
     end
 
     def payload
@@ -36,15 +35,13 @@ module Boot
     end
 
     def formal_memberships
+      return nil if user.experiences['vue_client']
       @formal_memberships ||= user.memberships.formal.includes(:user, :group)
     end
 
     def notifications
-      if @include_notifications
-        @notifications ||= NotificationCollection.new(user).notifications unless user.restricted
-      else
-        nil
-      end
+      return nil if user.experiences['vue_client']
+      @notifications ||= NotificationCollection.new(user).notifications unless user.restricted
     end
 
     def identities
