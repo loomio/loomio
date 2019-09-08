@@ -85,7 +85,7 @@ export default
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
         v-tooltip(bottom) {{ exact(discussion.closedAt) }}
     formatted-text.context-panel__description(:model="discussion" column="description")
-    document-list(:model='discussion' skip-fetch)
+    document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
     v-layout.my-2(align-center)
       reaction-display.mb-2(:model="discussion" fetch)
