@@ -29,7 +29,7 @@ class API::AnnouncementsController < API::RestfulController
       {event_id: event.id,
        created_at: event.created_at,
        author_name: event.user.name,
-       notifications: notifications[event.id] }
+       notifications: notifications[event.id] || [] }
     end
 
     render root: false, json: res
