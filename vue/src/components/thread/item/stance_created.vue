@@ -18,6 +18,13 @@ export default
       @eventable.poll().hasOptionIcons() &&
       @eventable.stanceChoices().length == 1
     canEdit: ->
+
+    componentType:  ->
+      if @event.actor()
+        'router-link'
+      else
+        'div'
+
   created: ->
     @actions =
       edit_stance:
@@ -54,7 +61,7 @@ thread-item.stance-created(:event="event" :event-window="eventWindow")
     action-dock(:model="eventable" :actions="actions")
   template(v-if="choiceInHeadline" v-slot:headline)
     v-layout(align-center)
-      router-link(:to="urlFor(event.actor())") {{event.actorName()}}
+      component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
       space
       poll-common-stance-choice(:stance-choice="eventable.stanceChoices()[0]")
   poll-common-stance(:stance="eventable" :reason-only="choiceInHeadline")

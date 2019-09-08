@@ -1,4 +1,5 @@
 import BaseModel from '@/shared/record_store/base_model'
+import i18n from '@/i18n.coffee'
 
 export default class EventModel extends BaseModel
   @singular: 'event'
@@ -42,7 +43,10 @@ export default class EventModel extends BaseModel
     @deleted = true
 
   actorName: ->
-    @actor().nameWithTitle(@discussion()) if @actor()
+    if @actor()
+      @actor().nameWithTitle(@discussion())
+    else
+      i18n.t('common.anonymous')
 
   actorUsername: ->
     @actor().username if @actor()
