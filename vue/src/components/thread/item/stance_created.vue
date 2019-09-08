@@ -54,7 +54,7 @@ thread-item.stance-created(:event="event" :event-window="eventWindow")
     action-dock(:model="eventable" :actions="actions")
   template(v-if="choiceInHeadline" v-slot:headline)
     v-layout(align-center)
-      router-link(:to="urlFor(event.actor())") {{event.actor().name}}
+      router-link(:to="urlFor(event.actor())") {{event.actorName()}}
       space
       poll-common-stance-choice(:stance-choice="eventable.stanceChoices()[0]")
   poll-common-stance(:stance="eventable" :reason-only="choiceInHeadline")
