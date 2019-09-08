@@ -8,12 +8,12 @@ class Simple::GroupSerializer < ActiveModel::Serializer
              :type,
              :created_at,
              :creator_id,
-             :parent_id,
              :is_visible_to_public,
              :memberships_count,
              :pending_memberships_count,
              :membership_granted_upon
 
+  has_one :parent, serializer: GroupSerializer, root: :groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
   private
