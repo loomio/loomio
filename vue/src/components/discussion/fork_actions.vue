@@ -8,26 +8,27 @@ export default
   props:
     discussion: Object
   methods:
-    submit: ->
+    # submit: ->
       # @openForkedDiscussionModal(@discussion)
       # @discussion.forkedEventIds = []
+
+    openEditDiscussionModal: ->
       openModal
-        component: 'MoveCommentModal'
+        component: 'DiscussionForm'
         props:
           discussion: @discussion
 
-      openEditDiscussionModal: ->
-        openModal
-          component: 'DiscussionForm'
-            props:
-              discussion: @discussion
-      openNewDiscussionModal: ->
-        openModal
-          component: 'DiscussionForm'
-            props:
-              discussion: Records.discussions.build
-                groupId:        @discussion.groupId
-                forkedEventIds: @discussion.forkedEventIds
+    openNewDiscussionModal: ->
+      newDiscussion =
+      openModal
+        component: 'DiscussionForm'
+        props:
+          discussion: Records.discussions.build
+            groupId:        @discussion.groupId
+            private:        @discussion.private
+            forkedEventIds: @discussion.forkedEventIds
+            description: @discussion.description
+            descriptionFormat: @discussion.descriptionFormat
 </script>
 
 <template lang='pug'>
