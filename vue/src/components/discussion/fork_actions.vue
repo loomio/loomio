@@ -12,14 +12,13 @@ export default
       # @openForkedDiscussionModal(@discussion)
       # @discussion.forkedEventIds = []
 
-    openEditDiscussionModal: ->
+    openMoveCommentsModal: ->
       openModal
-        component: 'DiscussionForm'
+        component: 'MoveCommentsModal'
         props:
           discussion: @discussion
 
     openNewDiscussionModal: ->
-      newDiscussion =
       openModal
         component: 'DiscussionForm'
         props:
@@ -29,6 +28,7 @@ export default
             forkedEventIds: @discussion.forkedEventIds
             description: @discussion.description
             descriptionFormat: @discussion.descriptionFormat
+      @discussion.forkedEventIds = []
 </script>
 
 <template lang='pug'>
@@ -37,7 +37,7 @@ v-banner.discussion-fork-actions(sticky v-model='discussion.isForking()' icon="m
   template(v-slot:actions)
     v-btn(@click='discussion.forkedEventIds = []')
       v-icon mdi-close
-    v-btn(@click="openEditDiscussionModal()") Move comments to existing thread
-    v-btn(@click="openNewDiscussionModal()") Move comments to new thread
+    v-btn(@click="openMoveCommentsModal()") Existing thread
+    v-btn(@click="openNewDiscussionModal()") New thread
     //- v-btn.discussion-fork-actions__submit(@click='submit()', v-t="'common.action.fork'" color="primary")
 </template>
