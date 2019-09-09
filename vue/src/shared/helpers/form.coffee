@@ -11,8 +11,15 @@ export submitForm = (scope, model, options = {}) ->
   submit(scope, model, options)
 
 export submitDiscussion = (scope, model, options = {}) ->
+  if model.isForking && model.isNew()
+    submitFn = model.fork
+  else if model.isForking && !model.isNew()
+    submitFn = model.moveComments
+  else
+    model.save
+
   submit(scope, model, _.merge(
-    submitFn: if model.isForking then model.fork else model.save
+    submitFn: submitFn
     flashSuccess: "discussion_form.messages.#{actionName(model)}"
     failureCallback: ->
       # scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
