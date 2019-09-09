@@ -22,14 +22,6 @@ cs:
     no_tags_present: S tímto štítkem nebyly nalezeny žádná vlákna! Zkuste vybrat jiný.
   reactions:
     ok_hand: Ok
-  poll_types:
-    proposal: Návrh
-    count: Kontrola
-    poll: Hlasování
-    meeting: Doba hlasování
-  new_poll_types:
-    proposal: Návrh
-    meeting: Doba hlasování
   timezones:
     local: Místní čas ({{value}})
   common:
@@ -150,6 +142,10 @@ cs:
     mute: 'Ztlumit'
     unmute: 'Zapnout zvuk'
   change_volume_form:
+    simple:
+      label: Upozornění
+      normal: Normální
+      quiet: Ignorovat
     aria_label: "Změnit formulář nastavení emailu"
     loud_label: "Všechny aktivity"
     normal_label: "Oznámení"
@@ -162,8 +158,8 @@ cs:
         normal: "Budete informován o návrzích v tomto vlákně emailem."
         quiet: "Nebudete o tomto vláknu obesíláni e-mailem."
     membership:
-      title: "Nastavení emailu pro {{title}}"
       loud_description: "Budete obesláni e-mailem vždy, když bude v tomto vláknu aktivita."
+      normal_description: "Budete obesláni e-mailem vždy, když bude v tomto vláknu aktivita."
       apply_to_all: "Použít tato nastavení pro všechny mé skupiny."
     user:
       title: Nastavení e-mailů pro nové skupiny
@@ -378,6 +374,7 @@ cs:
       edit_group: 'Upravit nastavení skupiny'
       manage_members: 'Správa členů'
       add_subgroup: 'Přidání skupiny'
+      email_settings: 'Nastavení emailu'
       leave_group: 'Opuštění skupiny'
       deactivate_group: 'Deaktivování skupiny'
   description_card:

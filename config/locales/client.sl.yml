@@ -44,11 +44,6 @@ sl:
     wave: Mahanje
     thumbsup: Palec gor
     thumbsdown: Palec dol
-  poll_types:
-    proposal: Predlog
-    poll: Anketa
-  new_poll_types:
-    proposal: Predlog
   common:
     time_zone: Časovni pas
     local_time: Lokalni čas
@@ -102,6 +97,11 @@ sl:
     normal: 'Normalno'
     quiet: 'Tiho'
     mute: 'Neslišno'
+  change_volume_form:
+    simple:
+      label: Obvestila
+      normal: Normalno
+      quiet: Prezri
   close_explanation_modal:
     aria_label: Zapri temo
     close_thread: Zapri temo
@@ -215,7 +215,6 @@ sl:
       modal_title: Izberi člane skupine
   action_dock:
     add_resource: Dodaj priponko
-    announce_thread: Povabi ljudi k razpravi
     edit_poll: Urejanje ankete
     announce_poll: Povabi ljudi h glasovanju
     edit_comment: Urejanje komentarja
@@ -277,6 +276,7 @@ sl:
       export_data_as_html: Izvozi podatke skupine kot HTML
       manage_members: 'Upravljanje članov'
       add_subgroup: 'Dodaj podskupino'
+      email_settings: 'Nastavitve e-pošte'
       leave_group: 'Zapusti skupino'
       deactivate_group: 'Deaktiviraj skupino'
     volume:

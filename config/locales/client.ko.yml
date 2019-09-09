@@ -18,8 +18,6 @@ ko:
     discussions_count_plural: ({{count}}개의 토론 주제)
     tag_created: 태그 저장됨
     tag_destroyed: 태그 삭제됨
-  new_poll_types:
-    proposal: 제안
   common:
     confirm_discard_changes: 수정을 취소하시겠습니까?
     time:
@@ -90,26 +88,30 @@ ko:
     mute: '소거'
     unmute: '소거해제'
   change_volume_form:
+    simple:
+      label: 알림
+      normal: 보통
+      quiet: 무시
     aria_label: "이메일 설정 환경 변경"
     loud_label: "모든 활동"
     quiet_label: "이메일 없음"
     mute_label: "음소거"
     discussion:
-      title: "이메일 설정"
       apply_to_all: "이 그룹에 있는 모든 토론 주제에 이 설정을 적용합니다."
       messages:
         loud: "이 토론 주제의 활동 내역을 이메일로 받게 됩니다."
         normal: "이 토론 주제의 제안에 관해 이메일을 받게 됩니다."
         quiet: "이 토론 주제와 관련한 이메일을 더이상 받지 않습니다."
     membership:
-      title: " {{title}}을 위한 이메일 환경 설정"
       loud_description: "이 그룹의 모든 활동 내역을 이메일로 받습니다."
+      normal_description: "이 그룹의 모든 활동 내역을 이메일로 받습니다."
       quiet_description: "당신은 이 그룹의 활동에 대해 이메일을 받지 않습니다."
       apply_to_all: "내 그룹 전체에 이 설정을 적용합니다."
       messages:
         loud: "이 그룹의 활동 내역을 메일로 받습니다."
         quiet: "이 그룹과 관련한 메일을 받지 않습니다."
     all_groups:
+      loud_description: "당신의 모든 그룹의 모든 활동내역을 이메일로 받습니다."
       messages:
         loud: "당신의 모든 그룹의 모든 활동내역을 이메일로 받습니다."
         quiet: "당신의 그룹에 대한 어떤 것도 이메일로 받지 않습니다."
@@ -289,6 +291,7 @@ ko:
       manage_members: '멤버 관리'
       add_subgroup: '소그룹 추가하기'
       manage_subscription: '그룹 가입 관리'
+      email_settings: '이메일 환경설정'
       leave_group: '그룹 떠나기'
       deactivate_group: '그룹 비활성화'
     volume:

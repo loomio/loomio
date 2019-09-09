@@ -3,8 +3,6 @@ te:
     name_label: పేరు
   reactions:
     ok_hand: సరే
-  new_poll_types:
-    proposal: ప్రతిపాదన
   common:
     you: మీరు
     ok_got_it: సరే, అర్థమయింది
@@ -52,6 +50,10 @@ te:
       invite: ఆహ్నానించు
   emoji_picker:
     search: వెతుకు
+  change_volume_form:
+    simple:
+      label: గమనికలు
+      quiet: విస్మరించు
   sign_up_form:
     password_label: 'సంకేతపదం:'
     password_confirmation_label: 'అదే సంకేతపదం మరోసారి:'
@@ -104,6 +106,7 @@ te:
     options_label: 'ఐచ్ఛికాలు'
     options:
       label: 'ఐచ్ఛికాలు'
+      email_settings: 'వేగు అభిరుచులు'
   group_form:
     privacy: 'అంతరంగికత'
   document:

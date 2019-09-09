@@ -1,8 +1,6 @@
 gl:
   loomio_tags:
     name_label: Nome
-  new_poll_types:
-    proposal: Proposta
   common:
     time:
       am: am
@@ -27,6 +25,10 @@ gl:
     search: Buscar
   error_page:
     forbidden: 'Non tes permisos para facer iso.'
+  change_volume_form:
+    simple:
+      label: Notificacións
+      quiet: ignorar
   inbox:
     clear: 'Eliminar'
     unread: 'Sin ler'
@@ -63,6 +65,7 @@ gl:
     options_label: 'Opcións'
     options:
       label: 'Opcións'
+      email_settings: 'Preferencias de correo'
   group_form:
     profile: Perfil
   document:

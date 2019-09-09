@@ -34,15 +34,6 @@ pl:
     wave: Machanie
     thumbsup: Poparcie
     thumbsdown: Dezaprobata
-  poll_types:
-    proposal: Propozycja
-    count: Zaznaczenie
-    poll: Ankieta
-    dot_vote: Głosowanie kropkowe
-    meeting: Ankieta datowa
-  new_poll_types:
-    proposal: Propozycja
-    meeting: Ankieta datowa
   timezones:
     local: Czas lokalny ({{value}})
   common:
@@ -171,22 +162,24 @@ pl:
     mute: 'Wyciszono'
     unmute: 'Wyłącz wyciszenie'
   change_volume_form:
+    simple:
+      label: Powiadomienia
+      normal: Normalnie
+      quiet: Ignoruj
     aria_label: "Formularz zmiany stawień poczty"
     loud_label: "Wszystkie aktywności"
     normal_label: "Ogłoszenia"
     quiet_label: "Brak wiadomości"
     mute_label: "Wycisz"
     discussion:
-      title: "Ustawienia e-mailowe wątku"
       apply_to_all: "Zapisz te ustawienia do wszystkich wątków w tej grupie"
       messages:
         loud: "Pocztą otrzymasz powiadomienie o aktywności w tym wątku."
         normal: "Otrzymasz maila dotyczącego propozycji w tym wątku."
         quiet: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."
     membership:
-      title: "Ustawienia poczty dla {{title}}"
       loud_description: "Otrzymasz maila za każdym razem, gdy w grupie pojawi się jakaś aktywność."
-      normal_description: "Otrzymasz maila tylko odnośnie ogłoszeń w grupie."
+      normal_description: "Otrzymasz maila za każdym razem, gdy w grupie pojawi się jakaś aktywność."
       quiet_description: "Nie otrzymasz żadnych maili dotyczących aktywności w tej grupie."
       apply_to_all: "Zastosuj te ustawienia do wszystkich moich grup."
       messages:
@@ -194,6 +187,7 @@ pl:
         normal: "Otrzymasz maila tylko odnośnie ogłoszeń w grupie."
         quiet: "Nie otrzymasz żadnych maili dotyczących tej grupy."
     all_groups:
+      loud_description: "Otrzymasz maila o  aktywnościach we wszystkich Twoich grupach."
       messages:
         loud: "Otrzymasz maila o  aktywnościach we wszystkich Twoich grupach."
         normal: "Otrzymasz wyłącznie maile z ogłoszeniami ze wszystkich Twoich grup."
@@ -353,7 +347,6 @@ pl:
       poll_announced:
         title: Zaproś do głosowania
   action_dock:
-    announce_thread_active: (Nikt jeszcze nie został/a zaproszony/a)
     announce_poll: Zaproś ludzi do głosowania
     announce_poll_active: (Nikt jeszcze nie został/a zaproszony/a)
     translate_poll: Przetłumacz ankietę
@@ -465,6 +458,7 @@ pl:
       manage_members: 'Zarządzaj użytkownikami'
       add_subgroup: 'Dodaj subgrupę'
       manage_subscription: 'Zarządzaj subskrypcją grupy'
+      email_settings: 'Ustawienia poczty'
       leave_group: 'Opuść grupę'
       deactivate_group: 'Dezaktywuj grupę'
     volume:

@@ -1,8 +1,6 @@
 sr_RS:
   loomio_tags:
     name_label: Име
-  new_poll_types:
-    proposal: Предлог
   common:
     confirm_discard_changes: Поништити промене?
     time:
@@ -65,11 +63,13 @@ sr_RS:
     quiet: 'Тихо'
     mute: 'Искључено'
   change_volume_form:
+    simple:
+      label: Обавештења
+      normal: Нормално
+      quiet: Игнориши
     loud_label: "Сва активност"
     quiet_label: "Без еПорука"
     mute_label: "Утишај"
-    membership:
-      title: "Подешавања еПорука za {{title}}"
   inbox:
     clear: 'Очисти'
     unread: 'Непрочитано'
@@ -113,6 +113,7 @@ sr_RS:
     options_label: 'Опције'
     options:
       label: 'Опције'
+      email_settings: 'Особине еПорука'
       leave_group: 'Напусти Групу'
       deactivate_group: 'Деактивирај Групу'
     volume:

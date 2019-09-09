@@ -1,8 +1,6 @@
 sk:
   loomio_tags:
     name_label: Meno
-  new_poll_types:
-    proposal: Návrh
   common:
     time:
       am: dop.
@@ -27,6 +25,10 @@ sk:
     search: Vyhľadávať
   error_page:
     forbidden: 'Na túto akciu nemáte oprávnenie.'
+  change_volume_form:
+    simple:
+      label: Upozornenie
+      quiet: Ignorovať
   inbox:
     clear: 'Vyčistiť'
     unread: 'Neprečítané'
@@ -66,6 +68,7 @@ sk:
     options_label: 'Nastavenia'
     options:
       label: 'Nastavenia'
+      email_settings: 'Nastavenie emailu'
   group_form:
     profile: Profil
   document:

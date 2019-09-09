@@ -36,14 +36,6 @@ lt:
     metal: Metalas
     ok_hand: Gerai
     wave: Banga
-  poll_types:
-    proposal: Pasiūlymas
-    count: Patikrinti
-    poll: Apklausa
-    meeting: Laiko apklausa
-  new_poll_types:
-    proposal: Pasiūlymas
-    meeting: Laiko apklausa
   common:
     you: Tu
     expand: Išplėsti
@@ -116,6 +108,10 @@ lt:
     normal: 'Normalus'
     quiet: 'Tylus'
     mute: 'Nutildyti'
+  change_volume_form:
+    simple:
+      label: Pranešimai
+      normal: Normalus
   sign_up_form:
     password_label: 'Slaptažodis:'
   signed_out_modal:

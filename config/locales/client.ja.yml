@@ -1,8 +1,6 @@
 ja:
   loomio_tags:
     name_label: 氏名
-  new_poll_types:
-    proposal: 提案
   common:
     confirm_discard_changes: 編集内容を破棄しますか？
     time:
@@ -40,6 +38,10 @@ ja:
     search: 検索
   error_page:
     forbidden: 'このアクションの許可がありません'
+  change_volume_form:
+    simple:
+      label: 通知
+      quiet: 拒否
   comment_form:
     delete_comment: 'コメントを削除します'
     confirm_delete_message: '本当にコメントを削除しますか？'
@@ -73,6 +75,7 @@ ja:
     options_label: 'オプション'
     options:
       label: 'オプション'
+      email_settings: 'Eメールの設定'
   group_form:
     privacy: 'プライバシー'
     profile: プロフィール

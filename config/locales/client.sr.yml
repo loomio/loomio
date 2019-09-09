@@ -1,8 +1,6 @@
 sr:
   loomio_tags:
     name_label: Ime
-  new_poll_types:
-    proposal: Predlog
   common:
     confirm_discard_changes: Otkaži promene?
     time:
@@ -69,6 +67,10 @@ sr:
     mute: 'Isključeno'
     unmute: 'Uključi'
   change_volume_form:
+    simple:
+      label: Obaveštenja
+      normal: Normalno
+      quiet: Ignoriši
     loud_label: "Sva aktivnost"
     quiet_label: "Nema ePoruka"
     mute_label: "Utišaj"
@@ -79,14 +81,15 @@ sr:
         normal: "Bićete obavešteni ePorukom o predlozima u ovoj niti."
         quiet: "Nećete biti obaveštavani ePorukom o ovoj grupi."
     membership:
-      title: "Opcije ePoruka za {{title}}"
       loud_description: "Dobićete ePoruku kada god ima aktivnosti u ovoj grupi."
+      normal_description: "Dobićete ePoruku kada god ima aktivnosti u ovoj grupi."
       quiet_description: "Nećete dobijati ePoruke o aktivnostima u ovoj grupi."
       apply_to_all: "Primeni ove opcije na sve moje grupe."
       messages:
         loud: "Bićete obaveštavani ePorukama o svim aktivnostima u ovoj grupi."
         quiet: "Nećete biti obaveštavani ePorukom o ovoj grupi."
     all_groups:
+      loud_description: "Bićete obaveštavani ePorukama o svim aktivnostima u svakoj Vašoj grupi."
       messages:
         loud: "Bićete obaveštavani ePorukama o svim aktivnostima u svakoj Vašoj grupi."
         quiet: "Nećete primati ePoruke ni o jednoj od vaših grupa."
@@ -227,6 +230,7 @@ sr:
       manage_members: 'Upravljanje Članovima'
       add_subgroup: 'Dodaj Podgrupu'
       manage_subscription: 'Upravljaj Praćenjem Grupa'
+      email_settings: 'Podešavanje ePoruka'
       leave_group: 'Napusti Grupu'
       deactivate_group: 'Deaktiviraj Grupu'
     volume:

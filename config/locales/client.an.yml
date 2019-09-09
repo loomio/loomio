@@ -1,8 +1,6 @@
 an:
   loomio_tags:
     name_label: Nombre
-  new_poll_types:
-    proposal: Propuesta
   common:
     time:
       am: am
@@ -27,6 +25,10 @@ an:
     search: Buscar
   error_page:
     forbidden: 'No tiens permisos ta fer isto.'
+  change_volume_form:
+    simple:
+      label: Notificacions
+      quiet: Ignorar
   inbox:
     clear: 'Limpiar'
     unread: 'No leyiu'
@@ -66,6 +68,7 @@ an:
     options_label: 'Opcions'
     options:
       label: 'Opcions'
+      email_settings: 'Preferencias de correu electronico '
   group_form:
     profile: Perfil
   document:

@@ -36,17 +36,6 @@ sv:
     wave: Vinka
     thumbsup: Tumme upp
     thumbsdown: Tumme ner
-  poll_types:
-    proposal: Förslag
-    count: Bock
-    poll: Röstning
-    dot_vote: Punktröstning
-    meeting: Tidsröstning
-    ranked_choice: Valfritt val
-    score: Ränka röster
-  new_poll_types:
-    proposal: Förslag
-    meeting: Tidsröstning
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -175,22 +164,24 @@ sv:
     mute: 'Tysta ned'
     unmute: 'Ta bort nedtystning'
   change_volume_form:
+    simple:
+      label: Notifieringar
+      normal: Normal
+      quiet: Ignorera
     aria_label: "Byt epostinställningars formulär"
     loud_label: "All aktivitet"
     normal_label: "Meddelanden"
     quiet_label: "Inga e-post"
     mute_label: "Tysta ned"
     discussion:
-      title: "Tråda e-post inställningar"
       apply_to_all: "Tillämpa dessa inställningar på alla trådar i denna grupp."
       messages:
         loud: "Du kommer att få e-post om aktivitet i denna tråd."
         normal: "Du kommer att få e-post om förslag i denna tråd."
         quiet: "Du kommer inte få e-post om denna tråd."
     membership:
-      title: "E-postinställningar för {{title}}"
       loud_description: "Du kommer att få e-post vid aktivitet i denna grupp."
-      normal_description: "Du kommer bara få e-post vid meddelanden i denna grupp."
+      normal_description: "Du kommer att få e-post vid aktivitet i denna grupp."
       quiet_description: "Du kommer inte få e-post om aktivitet i denna grupp."
       apply_to_all: "Tillämpa dessa inställningar i alla mina grupper."
       messages:
@@ -198,6 +189,7 @@ sv:
         normal: "Du kommer bara få e-post vid meddelanden i denna grupp."
         quiet: "Du kommer inte bli mailad om den här grupp."
     all_groups:
+      loud_description: "Du kommer att bli mailad om alla aktivitetera i alla dina grupper"
       messages:
         loud: "Du kommer att bli mailad om alla aktivitetera i alla dina grupper"
         normal: "Du kommer endast att bli mailade meddelanden i alla dina grupper."
@@ -328,6 +320,7 @@ sv:
     options_label: 'Alternativ'
     options:
       label: 'Alternativ'
+      email_settings: 'E-postinställningar'
     volume:
       quiet: Skicka mig inte epost om den här gruppen. Aktivitet kommer att visas på instrumentbrädan.
       quiet_aria_description: Din notifikationsvolym för den här gruppen är satt till Tyst. Du kommer inta att få epost om aktivitet i den här gruppen. Grupp aktivitet kommer att visas på din instrumentbräda.

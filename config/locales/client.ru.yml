@@ -56,17 +56,6 @@ ru:
     ok_hand: Хорошо
     thumbsup: Одобрение
     thumbsdown: Осуждение
-  poll_types:
-    proposal: Предложение
-    count: Проверка
-    poll: Опрос
-    dot_vote: Голосов
-    meeting: Голосование за время встречи
-    ranked_choice: Порядок ранжированния
-    score: Оценка опроса
-  new_poll_types:
-    proposal: Предложение
-    meeting: Голосование за время встречи
   timezones:
     local: местное время ({{значение}})
   common:
@@ -188,21 +177,24 @@ ru:
     mute: 'Заглушен'
     unmute: 'Включить'
   change_volume_form:
+    simple:
+      label: Уведомления
+      normal: Нормальный
+      quiet: Игнорировать
     aria_label: "Изменить настройки почтового ящика"
     loud_label: "Вся активность"
     normal_label: "Объявления"
     quiet_label: "Нет "
     mute_label: "Заглушен"
     discussion:
-      title: "Тема настройки почты"
       apply_to_all: "Применить эти настройки ко всем темам в этой группе."
       messages:
         loud: "Вы будете оповещенны по эмаилу о всей активности в этой теме."
         normal: "Вам будут приходить электронные письма касательно предложений в этой ветке."
         quiet: "Вы не будете получать письма об этой ветке."
     membership:
-      title: "Настройки Email {{title}}"
       loud_description: "Вы будете оповещенны по эмаилу о всей активности в этой группе."
+      normal_description: "Вы будете оповещенны по эмаилу о всей активности в этой группе."
       apply_to_all: "Применить эти настройки для всех моих групп"
     user:
       title: Настройки почты для новых групп
@@ -254,6 +246,8 @@ ru:
       label: 'Опубликовать'
     public_privacy_notice: 'Ваш комментарий будет виден всем пользователям сети'
     sign_in: "Войдите чтобы присоеденится к разговору"
+  thread_nav:
+    participants: Участники
   sidebar:
     threads: 'Обсуждения'
     my_groups: 'Мои группы'
@@ -312,6 +306,7 @@ ru:
     context_label: 'Описание'
     privacy_label: 'Конфиденциальность'
   announcement:
+    preview: Предварительный просмотр
     form:
       outcome_announced:
         title: Поделиться результатами
@@ -381,6 +376,7 @@ ru:
       manage_members: 'Управлять участниками'
       add_subgroup: 'Добавить подгруппу'
       manage_subscription: 'Управлять подписками группы'
+      email_settings: 'Настройки уведомлений'
       leave_group: 'Покинуть группу'
       deactivate_group: 'Деактивировать группу'
   leave_group_form:

@@ -1,8 +1,6 @@
 vi:
   loomio_tags:
     name_label: Tên
-  new_poll_types:
-    proposal: Lời đề nghị
   common:
     group: 'Nhóm'
     groups: 'Các nhóm'
@@ -19,6 +17,10 @@ vi:
     search: Tìm kiếm
   error_page:
     forbidden: 'Bạn không có quyền thực hiện thao tác này.'
+  change_volume_form:
+    simple:
+      label: Thông báo
+      quiet: Bỏ qua
   comment_form:
     delete_comment: 'Xóa bình luận'
     confirm_delete_message: 'Bạn có chắc muốn xóa bình luận này?'
@@ -51,6 +53,7 @@ vi:
     options_label: 'Tùy chọn'
     options:
       label: 'Tùy chọn'
+      email_settings: 'Tùy biến email'
   document:
     form:
       title_label: Tên

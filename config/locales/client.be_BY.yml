@@ -1,8 +1,6 @@
 be_BY:
   loomio_tags:
     name_label: Імя
-  new_poll_types:
-    proposal: Прапанова
   common:
     confirm_discard_changes: Скасаваць змены?
     time:
@@ -44,6 +42,11 @@ be_BY:
     quiet: 'Ціха'
     mute: 'Бязгучна'
     unmute: 'Гучна'
+  change_volume_form:
+    simple:
+      label: Апавяшчэнні
+      normal: Нармальна
+      quiet: Ігнараваць
   inbox:
     clear: 'Ачысціць'
     unread: 'Непрачытаныя'
@@ -84,6 +87,7 @@ be_BY:
     options_label: 'Опцыі'
     options:
       label: 'Опцыі'
+      email_settings: 'Налады электроннай пошты'
     volume:
       loud: Дасылаць лісты пра ўсе новыя падзеі.
       quiet: Не дасылаць лісты пра гэту групу. Яе дзейнасць будзе бачна на галоўнай старонцы.

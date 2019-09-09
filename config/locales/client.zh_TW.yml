@@ -62,22 +62,6 @@ zh_TW:
     wave: 揮手
     thumbsup: 贊成
     thumbsdown: 反對
-  poll_types:
-    proposal: 提案
-    count: 勾選
-    poll: 投票
-    dot_vote: 點投票
-    meeting: 時間投票
-    ranked_choice: 排序選擇
-    score: 分數投票
-  new_poll_types:
-    proposal: 提案
-    count: 數量
-    poll: 選擇
-    score: 分數
-    ranked_choice: 排名
-    dot_vote: 分配
-    meeting: 時間投票
   timezones:
     local: 本地時間 ({{value}})
   common:
@@ -223,13 +207,17 @@ zh_TW:
     mute: '靜音'
     unmute: '解除靜音'
   change_volume_form:
+    simple:
+      label: 通知
+      normal: 普通
+      quiet: 忽略
     aria_label: "變更電子郵件設定表單"
     loud_label: "所有動態"
     normal_label: "公告"
     quiet_label: "不寄電子郵件"
     mute_label: "靜音"
+    saved: "通知設定已更新"
     discussion:
-      title: "討論串電子郵件設定"
       loud_description: "您將會收到此討論串中所有活動的電子郵件。"
       normal_description: "您只會收到此討論串中重要活動的電子郵件。"
       quiet_description: "您不會收到此討論串中任何的電子郵件。"
@@ -239,9 +227,8 @@ zh_TW:
         normal: "您將會收到關於此討論串提案的電子郵件。"
         quiet: "您將不會收到任何關於此討論串的電子郵件。"
     membership:
-      title: "{{title}} 的電子郵件設定"
       loud_description: "您將會在這個群組有任何動態時收到電子郵件。"
-      normal_description: "您將只會收到在這個群組內關於公告的電子郵件。"
+      normal_description: "您將會在這個群組有任何動態時收到電子郵件。"
       quiet_description: "您將不會收到任何關於此群組動態的電子郵件。"
       apply_to_all: "套用這些設定到我所有的群組。"
       messages:
@@ -249,6 +236,9 @@ zh_TW:
         normal: "您將只會收到在這個群組內關於公告的電子郵件。"
         quiet: "您將不會收到任何關於此群組的電子郵件。"
     all_groups:
+      loud_description: "您將會收到關於您的所有群組中所有動態的電子郵件。"
+      normal_description: "您只會收到您所有群組中重要活動的電子郵件。"
+      quiet_description: "您將不會收到任何群組中動態的電子郵件。"
       messages:
         loud: "您將會收到關於您的所有群組中所有動態的電子郵件。"
         normal: "您將只會收到在您的所有群組內關於公告的電子郵件。"
@@ -323,6 +313,8 @@ zh_TW:
     private_privacy_notice: '您的意見只會被 {{groupName}} 群組的成員看到。'
     public_privacy_notice: '您的意見將會讓任何在網路上的人看到。'
     sign_in: "登入以加入對話"
+  thread_nav:
+    participants: 參與者
   sidebar:
     threads: '討論串'
     my_groups: '我的群組'
@@ -465,6 +457,7 @@ zh_TW:
     privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
     fork_notice: '新的討論串將會從 {{title}} 中包含 {{count}} 來建立'
   announcement:
+    preview: 預覽
     audiences:
       parent_group: '{{name}} 的成員'
       formal_group: '{{name}} 的成員'
@@ -523,8 +516,7 @@ zh_TW:
     add_comment: 意見
     copy_url: 複製 URL
     edit_thread: 編輯內容
-    announce_thread: 邀請夥伴加入討論串
-    announce_thread_active: （尚未邀請任何人）
+    invite_guests: 邀請來賓
     translate_thread: 翻譯內容
     edit_poll: 編輯投票
     announce_poll: 邀請夥伴來投票
@@ -665,7 +657,6 @@ zh_TW:
     options:
       label: '選項'
       edit_group: '編輯群組設定'
-      open_group_wizard: '開啟群組精靈'
       become_coordinator: 成為管理員
       export_data: 匯出群組資料
       export_data_as_json: 將群組資料匯出為 JSON
@@ -674,7 +665,7 @@ zh_TW:
       manage_members: '管理成員'
       add_subgroup: '新增子群組'
       manage_subscription: '管理群組訂閱'
-      email_settings: '通知設定'
+      email_settings: '電子郵件設定'
       leave_group: '離開群組'
       deactivate_group: '停用群組'
     volume:
@@ -852,6 +843,7 @@ zh_TW:
   invitation_form:
     aria_label: '邀請表單'
     invite_people: '邀請夥伴'
+    invite_guests: '邀請來賓'
     invite_people_to_group: '邀請到 {{name}}'
     group: '群組'
     group_placeholder: '選擇一個群組'
@@ -1512,7 +1504,6 @@ zh_TW:
     dot_vote: '此點投票已關閉。與群組<strong>分享成果</strong>。'
     ranked_choice: '這個排序投票已關閉。與群組<strong>分享結果</strong>。'
   poll_common_outcome_form:
-    new_title: 分享成果
     update_title: 更新結果
     outcome_created: 結果已建立
     outcome_updated: 結果已更新
@@ -1833,7 +1824,7 @@ zh_TW:
       installed_title: 已連線至 Microsoft Teams
       installed_helptext: 此群組中的活動會傳送到您的 Microsoft Team。
       install_microsoft: 整合 Microsoft Teams
-      remove_identity: 移除這個整合
+      remove_identity: 移除 Microsoft Teams 整合
       confirm_remove_title: 移除 Microsoft Teams 整合
       confirm_remove_helptext: |
           您的 Microsoft Teams 頻道將不會再收到關於此群組的更新。

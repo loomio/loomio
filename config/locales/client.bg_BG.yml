@@ -1,8 +1,6 @@
 bg_BG:
   loomio_tags:
     name_label: Име
-  new_poll_types:
-    proposal: Предложение
   common:
     group: 'Група'
     groups: 'Групи'
@@ -16,6 +14,10 @@ bg_BG:
       cancel: 'Отказ'
   error_page:
     forbidden: 'Нямате права да правите това.'
+  change_volume_form:
+    simple:
+      label: Известия
+      quiet: Игнориране
   comment_form:
     delete_comment: 'Изтрий коментар'
     confirm_delete_message: 'Сигурни ли сте, че искате да изтриете този коментар?'
@@ -46,6 +48,7 @@ bg_BG:
     options_label: 'Опции'
     options:
       label: 'Опции'
+      email_settings: 'Известия'
   document:
     form:
       title_label: Име

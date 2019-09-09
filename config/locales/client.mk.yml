@@ -1,8 +1,6 @@
 mk:
   loomio_tags:
     name_label: Име
-  new_poll_types:
-    proposal: Предлог
   common:
     group: 'Група'
     groups: 'Групи'
@@ -23,6 +21,10 @@ mk:
     search: Пребарувај
   error_page:
     forbidden: 'Немате дозвола за да го направите ова.'
+  change_volume_form:
+    simple:
+      label: Известувања
+      quiet: Игнорирај
   comment_form:
     edit_comment: 'Измени го коментарот'
     delete_comment: 'Избриши го коментарот'
