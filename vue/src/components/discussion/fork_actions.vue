@@ -32,10 +32,10 @@ export default
 </script>
 
 <template lang='pug'>
-v-banner.discussion-fork-actions(sticky v-model='discussion.isForking()' icon="mdi-call-split")
+v-banner.discussion-fork-actions(sticky v-model='discussion.isForking' icon="mdi-call-split")
   span(v-t="'discussion_fork_actions.helptext'")
   template(v-slot:actions)
-    v-btn(@click='discussion.forkedEventIds = []')
+    v-btn(@click='discussion.forkedEventIds = []; discussion.isForking = false')
       v-icon mdi-close
     v-btn(@click="openMoveCommentsModal()") Existing thread
     v-btn(@click="openNewDiscussionModal()") New thread

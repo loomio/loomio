@@ -32,6 +32,7 @@ export default class DiscussionModel extends BaseModel
     forkedEventIds: []
     ranges: []
     readRanges: []
+    isForking: false
 
   audienceValues: ->
     name: @group().name
@@ -217,8 +218,12 @@ export default class DiscussionModel extends BaseModel
     @processing = true
     @remote.post('fork', @serialize()).finally => @processing = false
 
-  isForking: ->
-    @forkedEventIds.length > 0
+  moveComments: =>
+    @processing = true
+    @remote.post('move_comments', @serialize()).finally => @processing = false
+
+  # isForking: ->
+  #   @forkedEventIds.length > 0
 
   forkedEvents: ->
     _.sortBy(@recordStore.events.find(@forkedEventIds), 'sequenceId')

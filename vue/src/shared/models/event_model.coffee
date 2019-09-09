@@ -73,7 +73,7 @@ export default class EventModel extends BaseModel
     @kind == 'new_comment' && @isSurface()
 
   isForkable: ->
-    @discussion() && @discussion().isForking() && @kind == 'new_comment'
+    @discussion() && @discussion().isForking && @kind == 'new_comment'
 
   isForking: ->
     _.includes @discussion().forkedEventIds, @id
@@ -82,6 +82,7 @@ export default class EventModel extends BaseModel
     if @isForking()
       @discussion().update(forkedEventIds: _.without @discussion().forkedEventIds, @id)
     else
+      @discussion().update(isForking: true)
       @discussion().forkedEventIds.push @id
     _.invokeMap @recordStore.events.find(parentId: @id), 'toggleFromFork'
 

@@ -77,7 +77,7 @@ export default
          value: group.id
       }), 'fullName'
 
-    showGroupSelect: -> @discussion.isForking()
+    showGroupSelect: -> @discussion.isForking
 
     maxThreads: ->
       return null unless @discussion.group()
@@ -107,15 +107,15 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
   submit-overlay(:value='discussion.processing')
   v-card-title
     h1.headline
-      span(v-if="!discussion.isForking()")
+      span(v-if="!discussion.isForking")
         span(v-if="discussion.isNew()" v-t="'discussion_form.new_discussion_title'")
         span(v-if="!discussion.isNew()" v-t="'discussion_form.edit_discussion_title'")
-      span(v-if="discussion.isForking()" v-t="'discussion_form.fork_discussion_title'")
+      span(v-if="discussion.isForking" v-t="'discussion_form.fork_discussion_title'")
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
   .pa-4
-    .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !discussion.isForking()')
-    .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEventIds.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking()')
+    .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !discussion.isForking')
+    .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEventIds.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking')
 
     div(v-show='showGroupSelect')
       label(for='discussion-group-field', v-t="'discussion_form.group_label'")
