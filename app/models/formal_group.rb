@@ -182,14 +182,6 @@ class FormalGroup < Group
     @id_and_subgroup_ids ||= (Array(id) | subgroup_ids)
   end
 
-  def handle
-    if is_subgroup?
-      parent.handle
-    else
-      super
-    end
-  end
-
   def slack_identity
     identity_for(:slack)
   end

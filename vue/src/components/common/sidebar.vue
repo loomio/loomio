@@ -49,8 +49,8 @@ export default
       collections: ['groups', 'memberships', 'discussions']
       query: (store) => @updateGroups()
 
-    Records.users.fetchGroups()
-    InboxService.load()
+    EventBus.$on 'signedIn', (user) => @fetchData()
+    @fetchData() if Session.isSignedIn()
 
   watch:
     organization: 'updateGroups'
@@ -59,6 +59,10 @@ export default
       EventBus.$emit("sidebarOpen", val)
 
   methods:
+    fetchData: ->
+      Records.users.fetchGroups()
+      InboxService.load()
+
     unreadCountFor: (group, isOpen) ->
       if !isOpen
         (@unreadCounts[group.id] || 0) + sum(compact(group.subgroups().map((g) => @unreadCounts[g.id])))
