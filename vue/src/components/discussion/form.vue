@@ -7,6 +7,20 @@ import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 
+# # how forking works
+# client
+# 1. event model toggleFromFork() pushes an event id into discussion.forkedEventIds
+# 2. discussion having forkedEventIds renders the discussion-fork-actions component
+# 3. checking checkbox on a comment pushes another event id into discussion.forkedEventIds
+# 4. clicking FORK button pops the DiscussionForm with a new discussion record built with the forkedEventIds (also clears the forkedEventIds from the original discussion)
+# backend
+# 5. clicking submit on discussion form POSTs to discussions#fork
+# 6. discussions#fork calls fork method on discussion service
+# 7. discussion service fork method calls create which creates and persists a new discussion record
+# 8. after saving new discussion record, discussion service fork emits 'discussion_fork' event
+# 9. rails event bus service calls DiscussionForker on 'discussion_fork' event
+# 10. discussion forker takes source discussion and new discussion
+
 export default
   mixins: [AnnouncementModalMixin]
   props:
