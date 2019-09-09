@@ -21,6 +21,8 @@ export default
         successCallback: (data) =>
           @discussion.update(forkedEventIds: [])
           @discussion.update(isForking: false)
+          @selectedDiscussion.update(forkedEventIds: [])
+          @selectedDiscussion.update(isForking: false)
           discussionKey = data.discussions[0].key
           Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
             @close()
