@@ -745,4 +745,47 @@ describe API::DiscussionsController do
       expect(response.status).to eq 403
     end
   end
+
+  describe 'move_events' do
+    let(:user) { create :user }
+    let(:another_user) { create :user }
+    let(:group) { create :formal_group }
+    let!(:source_discussion) { create :discussion, group: group }
+    let!(:target_discussion) { create :discussion, group: group }
+    let(:target_event) { create :event, discussion: source_discussion, kind: :new_comment, eventable: create(:comment, discussion: source_discussion), sequence_id: 2 }
+    let(:another_event) { create :event, discussion: source_discussion, kind: :new_comment, eventable: create(:comment, discussion: source_discussion), sequence_id: 3 }
+
+    let(:move_events_params) {{
+      forked_event_ids: [target_event.id, another_event.id]
+    }}
+
+    before { group.add_admin! user }
+
+    it 'moves comments from one discussion to another' do
+      sign_in user
+      patch :move_events, params: { id: target_discussion.id, move_events_params }
+      expect(response.status).to eq 200
+
+      expect(target_discussion.items).to include target_event
+      expect(target_discussion.items).to include another_event
+
+      items = source_discussion.reload.items
+      expect(items).to_not include target_event
+      expect(items).to_not include another_event
+
+      expect(target_event.reload.eventable.discussion_id).to eq target_discussion.id
+      expect(another_event.reload.eventable.discussion_id).to eq target_discussion.id
+
+      forked_event = items.find_by(kind: :discussion_forked)
+      expect(forked_event).to be_present
+      expect(forked_event.sequence_id).to eq 2
+    end
+
+    it 'access denied for moving comments where you are not an admin of the source discussion' do
+    end
+
+    it 'access denied for moving comments where you are not an admin of the target discussion' do
+    end
+  end
+
 end
