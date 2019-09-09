@@ -61,6 +61,11 @@ module Ability::Discussion
       discussion.forked_event_ids.any? && can?(:move, discussion)
     end
 
+    can :move_events, ::Discussion do |discussion|
+      # discussion.forked_event_ids.any? && can?(:move, discussion)
+      true
+    end
+
     can [:set_volume,
          :show_description_history,
          :preview_version,
