@@ -28,8 +28,6 @@ export submitDiscussion = (scope, model, options = {}) ->
       if model.isForking
         model.forkTarget().discussion().forkedEventIds = []
         _.invokeMap Records.events.find(model.forkedEventIds), 'remove'
-        model.update(isForking: false)
-        model.update(forkedEventIds: [])
       nextOrSkip(data, scope, model)
   , options))
 
