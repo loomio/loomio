@@ -46,6 +46,7 @@ module Dev::Scenarios::Discussion
 
   def setup_forkable_discussion
     create_discussion
+    create_another_discussion
     sign_in patrick
     CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is totally on topic!"), actor: jennifer)
     event = CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is totally **off** topic!"), actor: jennifer)
