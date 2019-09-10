@@ -502,6 +502,8 @@ en:
 
   discussion_fork_actions:
     helptext: "Select items you'd like to move to a new thread"
+    new_thread: New thread
+    existing_thread: Existing thread
 
   discussion_form:
     aria_label: 'Thread form'
