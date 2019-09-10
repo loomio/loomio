@@ -27,7 +27,6 @@ export default
             discussion.update(isForking: false)
             @close()
             @$router.push @urlFor(discussion)
-            @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
   watch:
     selectedDiscussion: 'setSubmit'
 </script>
