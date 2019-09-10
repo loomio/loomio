@@ -639,6 +639,7 @@ en:
     reopen_thread: Re-open thread
     delete_thread: Delete thread
     notification_history: Notification history
+    move_comments: Move comments
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
