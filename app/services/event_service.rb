@@ -27,59 +27,57 @@ class EventService
   end
 
   def self.move_comments(discussion:, actor:, params:)
-    events = Event.where(eventable_type: 'Comment', id: Array(params[:forked_event_ids]).compact)
-    source = events.first.discussion
+    ActiveRecord::Base.transaction do
+      events = Event.where(eventable_type: 'Comment', id: Array(params[:forked_event_ids]).compact)
+      source = events.first.discussion
 
-    actor.ability.authorize! :move_comments, discussion
-    actor.ability.authorize! :move_comments, source
+      actor.ability.authorize! :move_comments, discussion
+      actor.ability.authorize! :move_comments, source
 
-    # strip sequence id from events
-    events.update_all(sequence_id: nil)
+      # strip sequence id from events
+      events.update_all(sequence_id: nil)
 
-    # update discussion_id on events
-    events.update_all(discussion_id: discussion.id)
+      # update discussion_id on events
+      events.update_all(discussion_id: discussion.id)
 
-    # update parent_id on events (flattening everything) to target's created event id
-    events.update_all(parent_id: discussion.created_event.id)
+      # update parent_id on events (flattening everything) to target's created event id
+      events.update_all(parent_id: discussion.created_event.id)
 
-    # update depth=1 on events (flattening everything)
-    events.update_all(depth: 1)
+      # update depth=1 on events (flattening everything)
+      events.update_all(depth: 1)
 
-    # update comments' parent_id=null (flattening everything)
-    comments = Comment.where(id: events.pluck(:eventable_id))
-    comments.update_all(parent_id: nil)
+      # update comments' parent_id=null (flattening everything)
+      comments = Comment.where(id: events.pluck(:eventable_id))
+      comments.update_all(parent_id: nil)
 
-    # update discussion_id on eventable i.e. comment to target discussion
-    comments.update_all(discussion_id: discussion.id)
+      # update discussion_id on eventable i.e. comment to target discussion
+      comments.update_all(discussion_id: discussion.id)
 
-    # apply missing sequence ids to events
-    discussion_max_sequence_id = discussion.items.where.not(sequence_id: nil).maximum('sequence_id') || 0
-    discussion.items.where(sequence_id: nil).order(created_at: :asc).each do |event|
-      discussion_max_sequence_id = discussion_max_sequence_id + 1
-      event.update(sequence_id: discussion_max_sequence_id)
+      # apply missing sequence ids to events
+      discussion_max_sequence_id = discussion.items.where.not(sequence_id: nil).maximum('sequence_id') || 0
+      discussion.items.where(sequence_id: nil).order(created_at: :asc).each do |event|
+        discussion_max_sequence_id = discussion_max_sequence_id + 1
+        event.update(sequence_id: discussion_max_sequence_id)
+      end
+
+      # reorder positions of target discussion
+      Event.reorder_with_parent_id(discussion.created_event.id)
+      # reorder positions of source discussion
+      Event.reorder_with_parent_id(source.created_event.id)
+
+      # update reader info on target discussion
+      discussion.update_sequence_info!
+      # update reader info on source discussion
+      source.update_sequence_info!
+
+      # update items count on target discussion
+      discussion.created_event.update_child_count
+      discussion.items.each(&:update_child_count)
+      discussion.update_items_count
+      # update items count on source discussion
+      source.created_event.update_child_count
+      source.update_items_count
+      source.items.each(&:update_child_count)
     end
-
-    # reorder positions of target discussion
-    Event.reorder_with_parent_id(discussion.created_event.id)
-    # reorder positions of source discussion
-    Event.reorder_with_parent_id(source.created_event.id)
-
-    # update reader info on target discussion
-    discussion.update_sequence_info!
-    # update reader info on source discussion
-    source.update_sequence_info!
-
-    # update items count on target discussion
-    discussion.created_event.update_child_count
-    discussion.items.each(&:update_child_count)
-    discussion.update_items_count
-    # update items count on source discussion
-    source.created_event.update_child_count
-    source.update_items_count
-    source.items.each(&:update_child_count)
-    # rename to move_comments
-
-    # Events::DiscussionForked.publish!(event.eventable, source)
   end
-
 end
