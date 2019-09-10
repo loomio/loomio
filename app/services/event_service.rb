@@ -30,8 +30,8 @@ class EventService
     events = Event.where(eventable_type: 'Comment', id: Array(params[:forked_event_ids]).compact)
     source = events.first.discussion
 
-    actor.ability.authorize! :move_events, discussion
-    actor.ability.authorize! :move_events, source
+    actor.ability.authorize! :move_comments, discussion
+    actor.ability.authorize! :move_comments, source
 
     # strip sequence id from events
     events.update_all(sequence_id: nil)
