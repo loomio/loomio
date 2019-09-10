@@ -85,8 +85,8 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
-  def move_events
-    @event = EventService.move_events(discussion: load_resource, params: params, actor: current_user)
+  def move_comments
+    @event = EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
     respond_with_resource
   end
 

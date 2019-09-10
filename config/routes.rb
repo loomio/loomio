@@ -154,7 +154,7 @@ Loomio::Application.routes.draw do
       patch :unpin_reader, on: :member
       patch :move, on: :member
       post  :fork, on: :collection
-      patch :move_events, on: :member
+      patch :move_comments, on: :member
       get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection

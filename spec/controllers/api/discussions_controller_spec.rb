@@ -746,7 +746,7 @@ describe API::DiscussionsController do
     end
   end
 
-  describe 'move_events' do
+  describe 'move_comments' do
     let(:user) { create :user }
     let(:another_user) { create :user }
     let(:group) { create :formal_group }
@@ -763,7 +763,7 @@ describe API::DiscussionsController do
 
     let(:existing_comment_event) { CommentService.create(comment: existing_comment, actor: existing_comment.author) }
 
-    let(:move_events_params) {{
+    let(:move_comments_params) {{
       forked_event_ids: [first_comment_event.id, second_comment_event.id]
     }}
 
@@ -771,7 +771,7 @@ describe API::DiscussionsController do
 
     it 'moves comments from a discussion to an empty one' do
       sign_in user
-      patch :move_events, params: { id: target_discussion.id }.merge(move_events_params)
+      patch :move_comments, params: { id: target_discussion.id }.merge(move_comments_params)
       expect(response.status).to eq 200
 
       expect(target_discussion.reload.items).to include first_comment_event
@@ -803,7 +803,7 @@ describe API::DiscussionsController do
     it 'moves comments from one discussion to another' do
       existing_comment_event
       sign_in user
-      patch :move_events, params: { id: target_discussion.id }.merge(move_events_params)
+      patch :move_comments, params: { id: target_discussion.id }.merge(move_comments_params)
       expect(response.status).to eq 200
 
       expect(target_discussion.reload.items).to include first_comment_event

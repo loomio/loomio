@@ -26,7 +26,7 @@ class EventService
     end
   end
 
-  def self.move_events(discussion:, actor:, params:)
+  def self.move_comments(discussion:, actor:, params:)
     events = Event.where(eventable_type: 'Comment', id: Array(params[:forked_event_ids]).compact)
     source = events.first.discussion
 
