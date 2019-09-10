@@ -63,7 +63,7 @@
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "add-stream": "^1.0.0",
     "babelify": "^10.0.0",
