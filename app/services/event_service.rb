@@ -27,14 +27,11 @@ class EventService
   end
 
   def self.move_events(discussion:, actor:, params:)
-    actor.ability.authorize! :move_events, discussion
-
-    discussion.forked_event_ids = params[:forked_event_ids]
-    discussion.save!
-
-    events = Event.where(id: discussion.forked_event_ids)
-
+    events = Event.where(eventable_type: 'Comment', id: Array(params[:forked_event_ids]).compact)
     source = events.first.discussion
+
+    actor.ability.authorize! :move_events, discussion
+    actor.ability.authorize! :move_events, source
 
     # strip sequence id from events
     events.update_all(sequence_id: nil)
@@ -49,7 +46,7 @@ class EventService
     events.update_all(depth: 1)
 
     # update comments' parent_id=null (flattening everything)
-    comments = Comment.where(id: events.map { |e| e.eventable.id })
+    comments = Comment.where(id: events.pluck(:eventable_id))
     comments.update_all(parent_id: nil)
 
     # update discussion_id on eventable i.e. comment to target discussion
