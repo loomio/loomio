@@ -52,26 +52,31 @@ class EventService
     # update discussion_id on eventable i.e. comment to target discussion
     comments.update_all(discussion_id: discussion.id)
 
-    # reorder positions
-    Event.reorder_with_parent_id(discussion.created_event.id)
-    Event.reorder_with_parent_id(source.created_event.id)
-
     # apply missing sequence ids to events
     discussion_max_sequence_id = discussion.items.where.not(sequence_id: nil).maximum('sequence_id') || 0
-
-    events.order(created_at: :asc).each do |event|
+    discussion.items.where(sequence_id: nil).order(created_at: :asc).each do |event|
       discussion_max_sequence_id = discussion_max_sequence_id + 1
       event.update(sequence_id: discussion_max_sequence_id)
     end
 
-    # update sequence info on target discussion
+    # reorder positions of target discussion
+    Event.reorder_with_parent_id(discussion.created_event.id)
+    # reorder positions of source discussion
+    Event.reorder_with_parent_id(source.created_event.id)
+
+    # update reader info on target discussion
     discussion.update_sequence_info!
-    # update sequence info on source discussion
+    # update reader info on source discussion
     source.update_sequence_info!
+
     # update items count on target discussion
+    discussion.created_event.update_child_count
+    discussion.items.each(&:update_child_count)
     discussion.update_items_count
     # update items count on source discussion
+    source.created_event.update_child_count
     source.update_items_count
+    source.items.each(&:update_child_count)
     # rename to move_comments
 
     # Events::DiscussionForked.publish!(event.eventable, source)

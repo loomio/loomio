@@ -755,9 +755,11 @@ describe API::DiscussionsController do
 
     let(:first_comment) { create(:comment, discussion: source_discussion) }
     let(:second_comment) { create(:comment, discussion: source_discussion, parent: first_comment) }
+    let(:third_comment) { create(:comment, discussion: source_discussion) }
 
-    let(:first_comment_event) { CommentService.create(comment: first_comment, actor: first_comment.author ) }
-    let(:second_comment_event) { CommentService.create(comment: second_comment, actor: second_comment.author ) }
+    let!(:first_comment_event) { CommentService.create(comment: first_comment, actor: first_comment.author ) }
+    let!(:second_comment_event) { CommentService.create(comment: second_comment, actor: second_comment.author ) }
+    let!(:third_comment_event) { CommentService.create(comment: third_comment, actor: third_comment.author ) }
 
     let(:existing_comment) { create(:comment, discussion: target_discussion) }
 
@@ -776,13 +778,15 @@ describe API::DiscussionsController do
 
       expect(target_discussion.reload.items).to include first_comment_event
       expect(target_discussion.reload.items).to include second_comment_event
-
-      items = source_discussion.reload.items
-      expect(items).to_not include first_comment_event
-      expect(items).to_not include second_comment_event
+      expect(source_discussion.reload.items).to include third_comment_event
+      # items = source_discussion.reload.items
+      # expect(items).to_not include first_comment_event
+      # expect(items).to_not include second_comment_event
+      # expect(items).to include third_comment_event
 
       expect(first_comment_event.reload.eventable.discussion_id).to eq target_discussion.id
       expect(second_comment_event.reload.eventable.discussion_id).to eq target_discussion.id
+      expect(third_comment_event.reload.eventable.discussion_id).to eq source_discussion.id
 
       expect(first_comment_event.reload.parent_id).to eq target_discussion.created_event.id
       expect(second_comment_event.reload.parent_id).to eq target_discussion.created_event.id
@@ -795,9 +799,11 @@ describe API::DiscussionsController do
 
       expect(first_comment_event.reload.position).to eq 1
       expect(second_comment_event.reload.position).to eq 2
+      expect(third_comment_event.reload.position).to eq 1
 
       expect(first_comment_event.reload.sequence_id).to eq 1
       expect(second_comment_event.reload.sequence_id).to eq 2
+      expect(third_comment_event.reload.sequence_id).to eq 3
     end
 
     it 'moves comments from one discussion to another' do
