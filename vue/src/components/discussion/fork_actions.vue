@@ -8,10 +8,6 @@ export default
   props:
     discussion: Object
   methods:
-    # submit: ->
-      # @openForkedDiscussionModal(@discussion)
-      # @discussion.forkedEventIds = []
-
     openMoveCommentsModal: ->
       openModal
         component: 'MoveCommentsModal'
@@ -19,25 +15,27 @@ export default
           discussion: @discussion
 
     openNewDiscussionModal: ->
+      newDiscussion = Records.discussions.build
+        groupId:        @discussion.groupId
+        private:        @discussion.private
+        forkedEventIds: @discussion.forkedEventIds
+        description: @discussion.description
+        descriptionFormat: @discussion.descriptionFormat
+        isForking: true
       openModal
         component: 'DiscussionForm'
         props:
-          discussion: Records.discussions.build
-            groupId:        @discussion.groupId
-            private:        @discussion.private
-            forkedEventIds: @discussion.forkedEventIds
-            description: @discussion.description
-            descriptionFormat: @discussion.descriptionFormat
-      @discussion.forkedEventIds = []
+          discussion: newDiscussion
+      @discussion.update(forkedEventIds: [])
+      @discussion.update(isForking: false)
 </script>
 
 <template lang='pug'>
 v-banner.discussion-fork-actions(sticky v-model='discussion.isForking' icon="mdi-call-split")
   span(v-t="'discussion_fork_actions.helptext'")
   template(v-slot:actions)
-    v-btn(@click='discussion.forkedEventIds = []; discussion.isForking = false')
+    v-btn(@click="openMoveCommentsModal()" v-t="'discussion_fork_actions.existing_thread'")
+    v-btn(@click="openNewDiscussionModal()" v-t="'discussion_fork_actions.new_thread'")
+    v-btn(icon @click='discussion.forkedEventIds = []; discussion.isForking = false')
       v-icon mdi-close
-    v-btn(@click="openMoveCommentsModal()") Existing thread
-    v-btn(@click="openNewDiscussionModal()") New thread
-    //- v-btn.discussion-fork-actions__submit(@click='submit()', v-t="'common.action.fork'" color="primary")
 </template>

@@ -35,12 +35,10 @@ export default
 v-card
   submit-overlay(:value='discussion.processing')
   v-card-title
-    h1.headline Move Comments
+    h1.headline(v-t="'action_dock.move_comments'")
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
-    //- span Select the discussion you want to move these comments to
-    span {{selectedDiscussion}}
     v-select(return-object v-model="selectedDiscussion" :items="discussions" item-text="title" placeholder="Select the discussion you want to move these comments to")
   v-card-actions
     v-spacer

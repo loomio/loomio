@@ -7,20 +7,6 @@ import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 
-# # how forking works
-# client
-# 1. event model toggleFromFork() pushes an event id into discussion.forkedEventIds
-# 2. discussion having forkedEventIds renders the discussion-fork-actions component
-# 3. checking checkbox on a comment pushes another event id into discussion.forkedEventIds
-# 4. clicking FORK button pops the DiscussionForm with a new discussion record built with the forkedEventIds (also clears the forkedEventIds from the original discussion)
-# backend
-# 5. clicking submit on discussion form POSTs to discussions#fork
-# 6. discussions#fork calls fork method on discussion service
-# 7. discussion service fork method calls create which creates and persists a new discussion record
-# 8. after saving new discussion record, discussion service fork emits 'discussion_fork' event
-# 9. rails event bus service calls DiscussionForker on 'discussion_fork' event
-# 10. discussion forker takes source discussion and new discussion
-
 export default
   mixins: [AnnouncementModalMixin]
   props:
@@ -116,7 +102,6 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
   .pa-4
     .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !discussion.isForking')
     .lmo-hint-text(v-t="{ path: 'discussion_form.fork_notice', args: { count: discussion.forkedEventIds.length, title: discussion.forkTarget().discussion().title } }", v-if='discussion.isForking')
-
     div(v-show='showGroupSelect')
       label(for='discussion-group-field', v-t="'discussion_form.group_label'")
       v-select#discussion-group-field.discussion-form__group-select(v-model='discussion.groupId' :placeholder="$t('discussion_form.group_placeholder')" :items='groupSelectOptions' required='true' @change='discussion.fetchAndRestoreDraft(); updatePrivacy()')
