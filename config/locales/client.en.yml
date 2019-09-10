@@ -501,7 +501,7 @@ en:
     updated: 'Saved changes to {{title}}'
 
   discussion_fork_actions:
-    helptext: "Select items you'd like to move to a new thread"
+    helptext: Select items you'd like to move
     new_thread: New thread
     existing_thread: Existing thread
 
