@@ -80,20 +80,6 @@ class DiscussionService
     Events::DiscussionForked.publish!(event.eventable, source)
   end
 
-  def self.move_events(discussion:, actor:, params:)
-    actor.ability.authorize! :move_events, discussion
-
-    # return false unless event = update(discussion: discussion, actor: actor, params: params)
-
-    discussion.forked_event_ids = params[:forked_event_ids]
-    discussion.save!
-
-    source = discussion.forked_items.first.discussion
-
-    EventBus.broadcast('discussion_fork', source, discussion, actor)
-    # Events::DiscussionForked.publish!(event.eventable, source)
-  end
-
   def self.update_reader(discussion:, params:, actor:)
     actor.ability.authorize! :show, discussion
     reader = DiscussionReader.for(discussion: discussion, user: actor)

@@ -16,7 +16,7 @@ module Events::Position
         UPDATE events
         SET position = t.seq
         FROM (
-          SELECT id AS id, row_number() OVER(ORDER BY sequence_id) AS seq
+          SELECT id AS id, row_number() OVER(ORDER BY id) AS seq
           FROM events
           WHERE parent_id = #{parent_id}
           AND   discussion_id IS NOT NULL

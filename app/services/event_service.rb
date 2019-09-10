@@ -25,4 +25,59 @@ class EventService
       event.reload.discussion.update_sequence_info!
     end
   end
+
+  def self.move_events(discussion:, actor:, params:)
+    actor.ability.authorize! :move_events, discussion
+
+    discussion.forked_event_ids = params[:forked_event_ids]
+    discussion.save!
+
+    events = Event.where(id: discussion.forked_event_ids)
+
+    source = events.first.discussion
+
+    # strip sequence id from events
+    events.update_all(sequence_id: nil)
+
+    # update discussion_id on events
+    events.update_all(discussion_id: discussion.id)
+
+    # update parent_id on events (flattening everything) to target's created event id
+    events.update_all(parent_id: discussion.created_event.id)
+
+    # update depth=1 on events (flattening everything)
+    events.update_all(depth: 1)
+
+    # update comments' parent_id=null (flattening everything)
+    comments = Comment.where(id: events.map { |e| e.eventable.id })
+    comments.update_all(parent_id: nil)
+
+    # update discussion_id on eventable i.e. comment to target discussion
+    comments.update_all(discussion_id: discussion.id)
+
+    # reorder positions
+    Event.reorder_with_parent_id(discussion.created_event.id)
+    Event.reorder_with_parent_id(source.created_event.id)
+
+    # apply missing sequence ids to events
+    discussion_max_sequence_id = discussion.items.where.not(sequence_id: nil).maximum('sequence_id') || 0
+
+    events.order(created_at: :asc).each do |event|
+      discussion_max_sequence_id = discussion_max_sequence_id + 1
+      event.update(sequence_id: discussion_max_sequence_id)
+    end
+
+    # update sequence info on target discussion
+    discussion.update_sequence_info!
+    # update sequence info on source discussion
+    source.update_sequence_info!
+    # update items count on target discussion
+    discussion.update_items_count
+    # update items count on source discussion
+    source.update_items_count
+    # rename to move_comments
+
+    # Events::DiscussionForked.publish!(event.eventable, source)
+  end
+
 end
