@@ -11,9 +11,7 @@ export submitForm = (scope, model, options = {}) ->
   submit(scope, model, options)
 
 export submitDiscussion = (scope, model, options = {}) ->
-  if model.isForking && model.isNew()
-    submitFn = model.fork
-  else if model.isForking && !model.isNew()
+  if model.isForking
     submitFn = model.moveComments
   else
     model.save
