@@ -69,9 +69,6 @@ export default class EventModel extends BaseModel
   pin: -> @remote.patchMember(@id, 'pin')
   unpin: -> @remote.patchMember(@id, 'unpin')
 
-  canFork: ->
-    @kind == 'new_comment' && @isSurface()
-
   isForkable: ->
     @discussion() && @discussion().isForking && @kind == 'new_comment'
 
@@ -84,7 +81,6 @@ export default class EventModel extends BaseModel
     else
       @discussion().update(isForking: true)
       @discussion().forkedEventIds.push @id
-    _.invokeMap @recordStore.events.find(parentId: @id), 'toggleFromFork'
 
   next: ->
     @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]

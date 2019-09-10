@@ -42,7 +42,7 @@ export default new class CommentService
 
     move_comments:
       icon: 'mdi-call-split'
-      canPerform: -> AbilityService.canForkComment(comment)
+      canPerform: -> AbilityService.canMoveComment(comment)
       perform: -> comment.createdEvent().toggleFromFork()
 
     translate_comment:
