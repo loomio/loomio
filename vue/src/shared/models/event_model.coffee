@@ -69,21 +69,21 @@ export default class EventModel extends BaseModel
   pin: -> @remote.patchMember(@id, 'pin')
   unpin: -> @remote.patchMember(@id, 'unpin')
 
-  canFork: ->
-    @kind == 'new_comment' && @isSurface()
-
   isForkable: ->
-    @discussion() && @discussion().isForking() && @kind == 'new_comment'
+    @discussion() && @discussion().isForking && @kind == 'new_comment'
 
   isForking: ->
-    _.includes @discussion().forkedEventIds, @id
+    @discussion() && (@discussion().forkedEventIds.includes(@id) or @parentIsForking())
+
+  parentIsForking: ->
+    @parent() && @parent().isForking()
 
   toggleFromFork: ->
     if @isForking()
       @discussion().update(forkedEventIds: _.without @discussion().forkedEventIds, @id)
     else
+      @discussion().update(isForking: true)
       @discussion().forkedEventIds.push @id
-    _.invokeMap @recordStore.events.find(parentId: @id), 'toggleFromFork'
 
   next: ->
     @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]

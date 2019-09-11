@@ -501,7 +501,10 @@ en:
     updated: 'Saved changes to {{title}}'
 
   discussion_fork_actions:
-    helptext: "Select items you'd like to move to a new thread"
+    helptext: Select items you'd like to move
+    move: Move
+    search_placeholder: Find thread by title
+    moved: Comments moved
 
   discussion_form:
     aria_label: 'Thread form'
@@ -640,6 +643,7 @@ en:
     reopen_thread: Re-open thread
     delete_thread: Delete thread
     notification_history: Notification history
+    move_comments: Move comments
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
