@@ -31,14 +31,6 @@ class EventService
       # move all events which are children of above parents (comment parent id untouched)
     # handle any reply comments that don't have parent_id in given ids
 
-    # source_event
-    #   comment_event_1
-    #   comment_event_2 √
-    #     comment_event_3 √
-    #     comment_event_6
-    #   comment_event_4
-    #     comment_event_5 √
-
     ActiveRecord::Base.transaction do
       # ensure you're not moving events you're not allowed to move
       unsafe_ids = Array(params[:forked_event_ids]).compact

@@ -756,10 +756,12 @@ describe API::DiscussionsController do
     let(:first_comment) { create(:comment, discussion: source_discussion) }
     let(:second_comment) { create(:comment, discussion: source_discussion, parent: first_comment) }
     let(:third_comment) { create(:comment, discussion: source_discussion) }
+    let(:alien_comment) { create(:comment) }
 
     let!(:first_comment_event) { CommentService.create(comment: first_comment, actor: first_comment.author ) }
     let!(:second_comment_event) { CommentService.create(comment: second_comment, actor: second_comment.author ) }
     let!(:third_comment_event) { CommentService.create(comment: third_comment, actor: third_comment.author ) }
+    let!(:alien_comment_event) { CommentService.create(comment: alien_comment, actor: alien_comment.author ) }
 
     let(:existing_comment) { create(:comment, discussion: target_discussion) }
 
@@ -769,36 +771,35 @@ describe API::DiscussionsController do
       forked_event_ids: [first_comment_event.id, second_comment_event.id]
     }}
 
-    before { group.add_admin! user }
-
-    it 'moves comments from a discussion to an empty one' do
+    before do
+      group.add_admin! user
       sign_in user
-      patch :move_comments, params: { id: target_discussion.id }.merge(move_comments_params)
+    end
+
+    it 'moves children when moving parents from a discussion to an empty one' do
+      patch :move_comments, params: { id: target_discussion.id, forked_event_ids: [first_comment_event.id] }
       expect(response.status).to eq 200
 
       expect(target_discussion.reload.items).to include first_comment_event
       expect(target_discussion.reload.items).to include second_comment_event
+
       expect(source_discussion.reload.items).to include third_comment_event
-      # items = source_discussion.reload.items
-      # expect(items).to_not include first_comment_event
-      # expect(items).to_not include second_comment_event
-      # expect(items).to include third_comment_event
 
       expect(first_comment_event.reload.eventable.discussion_id).to eq target_discussion.id
       expect(second_comment_event.reload.eventable.discussion_id).to eq target_discussion.id
       expect(third_comment_event.reload.eventable.discussion_id).to eq source_discussion.id
 
       expect(first_comment_event.reload.parent_id).to eq target_discussion.created_event.id
-      expect(second_comment_event.reload.parent_id).to eq target_discussion.created_event.id
+      expect(second_comment_event.reload.parent_id).to eq first_comment_event.id
 
       expect(first_comment_event.reload.depth).to eq 1
-      expect(second_comment_event.reload.depth).to eq 1
+      expect(second_comment_event.reload.depth).to eq 2
 
-      expect(first_comment_event.reload.eventable.parent_id).to eq nil
-      expect(second_comment_event.reload.eventable.parent_id).to eq nil
+      expect(first_comment.reload.parent_id).to eq nil
+      expect(second_comment.reload.parent_id).to eq first_comment.id
 
       expect(first_comment_event.reload.position).to eq 1
-      expect(second_comment_event.reload.position).to eq 2
+      expect(second_comment_event.reload.position).to eq 1
       expect(third_comment_event.reload.position).to eq 1
 
       expect(first_comment_event.reload.sequence_id).to eq 1
@@ -806,45 +807,83 @@ describe API::DiscussionsController do
       expect(third_comment_event.reload.sequence_id).to eq 3
     end
 
-    it 'moves comments from one discussion to another' do
-      existing_comment_event
-      sign_in user
-      patch :move_comments, params: { id: target_discussion.id }.merge(move_comments_params)
+    it 'moves reply comment only from a discussion to an empty one' do
+      patch :move_comments, params: { id: target_discussion.id, forked_event_ids: [second_comment_event.id]}
       expect(response.status).to eq 200
 
-      expect(target_discussion.reload.items).to include first_comment_event
+      expect(source_discussion.reload.items).to include first_comment_event
       expect(target_discussion.reload.items).to include second_comment_event
+      expect(source_discussion.reload.items).to include third_comment_event
 
-      items = source_discussion.reload.items
-      expect(items).to_not include first_comment_event
-      expect(items).to_not include second_comment_event
+      expect(first_comment.reload.discussion_id).to eq source_discussion.id
+      expect(second_comment.reload.discussion_id).to eq target_discussion.id
+      expect(third_comment.reload.discussion_id).to eq source_discussion.id
 
-      expect(first_comment_event.reload.eventable.discussion_id).to eq target_discussion.id
-      expect(second_comment_event.reload.eventable.discussion_id).to eq target_discussion.id
-
-      expect(first_comment_event.reload.parent_id).to eq target_discussion.created_event.id
+      expect(first_comment_event.reload.parent_id).to eq source_discussion.created_event.id
       expect(second_comment_event.reload.parent_id).to eq target_discussion.created_event.id
 
       expect(first_comment_event.reload.depth).to eq 1
       expect(second_comment_event.reload.depth).to eq 1
 
-      expect(first_comment_event.reload.eventable.parent_id).to eq nil
-      expect(second_comment_event.reload.eventable.parent_id).to eq nil
+      expect(first_comment.reload.parent_id).to eq nil
+      expect(second_comment.reload.parent_id).to eq nil
 
-      expect(first_comment_event.reload.position).to eq 2
-      expect(second_comment_event.reload.position).to eq 3
+      expect(first_comment_event.reload.position).to eq 1
+      expect(second_comment_event.reload.position).to eq 1
+      expect(third_comment_event.reload.position).to eq 2
 
-      expect(first_comment_event.reload.sequence_id).to eq 2
-      expect(second_comment_event.reload.sequence_id).to eq 3
+      expect(first_comment_event.reload.sequence_id).to eq 1
+      expect(second_comment_event.reload.sequence_id).to eq 1
+      expect(third_comment_event.reload.sequence_id).to eq 3
+    end
 
-      # forked_event = items.find_by(kind: :discussion_forked)
-      # expect(forked_event).to be_present
+    it 'moves reply comment only from a discussion to a non empty one' do
+      existing_comment_event
+      patch :move_comments, params: { id: target_discussion.id, forked_event_ids: [second_comment_event.id]}
+      expect(response.status).to eq 200
+
+      expect(source_discussion.reload.items).to include first_comment_event
+      expect(target_discussion.reload.items).to include second_comment_event
+      expect(source_discussion.reload.items).to include third_comment_event
+
+      expect(first_comment.reload.discussion_id).to eq source_discussion.id
+      expect(second_comment.reload.discussion_id).to eq target_discussion.id
+      expect(third_comment.reload.discussion_id).to eq source_discussion.id
+
+      expect(first_comment_event.reload.parent_id).to eq source_discussion.created_event.id
+      expect(second_comment_event.reload.parent_id).to eq target_discussion.created_event.id
+
+      expect(first_comment_event.reload.depth).to eq 1
+      expect(second_comment_event.reload.depth).to eq 1
+
+      expect(first_comment.reload.parent_id).to eq nil
+      expect(second_comment.reload.parent_id).to eq nil
+
+      expect(existing_comment_event.reload.position).to eq 1
+      expect(first_comment_event.reload.position).to eq 1
+      expect(second_comment_event.reload.position).to eq 2
+      expect(third_comment_event.reload.position).to eq 2
+
+
+      expect(existing_comment_event.reload.sequence_id).to eq 1
+      expect(first_comment_event.reload.sequence_id).to eq 1
+      expect(second_comment_event.reload.sequence_id).to eq 2
+      expect(third_comment_event.reload.sequence_id).to eq 3
+    end
+
+    it 'does not move events that are not part of the source discussion' do
+      patch :move_comments, params: { id: target_discussion.id, forked_event_ids: [first_comment_event.id, alien_comment_event.id]}
+      expect(response.status).to eq 200
+      expect(alien_comment_event.reload.discussion_id).not_to eq target_discussion.id
     end
 
     it 'access denied for moving comments where you are not an admin of the source discussion' do
+      patch :move_comments, params: { id: target_discussion.id, forked_event_ids: [alien_comment_event.id]}
+      expect(response.status).to eq 403
     end
-
     it 'access denied for moving comments where you are not an admin of the target discussion' do
+      patch :move_comments, params: { id: alien_comment_event.discussion_id, forked_event_ids: [first_comment_event.id]}
+      expect(response.status).to eq 403
     end
   end
 
