@@ -73,7 +73,10 @@ export default class EventModel extends BaseModel
     @discussion() && @discussion().isForking && @kind == 'new_comment'
 
   isForking: ->
-    _.includes @discussion().forkedEventIds, @id
+    @discussion() && (@discussion().forkedEventIds.includes(@id) or @parentIsForking())
+
+  parentIsForking: ->
+    @parent() && @parent().isForking()
 
   toggleFromFork: ->
     if @isForking()
