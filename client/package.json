@@ -44,7 +44,7 @@
     "bowser": "^2.6.0",
     "diff-match-patch": "^1.0.4",
     "emojione": "~> 2.2.7",
-    "jstimezonedetect": "~1.0.5",
+    "jstimezonedetect": "~1.0.7",
     "lodash": "4.17.15",
     "lokijs": "1.5.7",
     "loomio-angular-marked": "^1.2.6",
