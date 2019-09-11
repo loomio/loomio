@@ -34,16 +34,6 @@ nb_NO:
     wave: Vinke
     thumbsup: Tommel opp
     thumbsdown: Tommel ned
-  poll_types:
-    proposal: Forslag
-    count: Ja / Nei
-    poll: Avstemning
-    dot_vote: Steiner i kurver
-    meeting: Tidspunkt
-    ranked_choice: Rangering
-  new_poll_types:
-    proposal: Forslag
-    meeting: Tidspunkt
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -172,22 +162,23 @@ nb_NO:
     mute: 'Dempet'
     unmute: 'U-Demp'
   change_volume_form:
+    simple:
+      label: Varslinger
+      normal: Normalt
     aria_label: "Oppdatere innstillinger for e-post skjema"
     loud_label: "All aktivitet"
     normal_label: "Annonseringer"
     quiet_label: "Ingen e-poster"
     mute_label: "Dempet"
     discussion:
-      title: "Tråd e-post innstillinger "
       apply_to_all: "Bruk disse innstillingene på alle tråder i denne gruppen."
       messages:
         loud: "Du vil motta e-post om aktivietet i denne tråden."
         normal: "Du vil motta e-post om beslutninger i denne tråden."
         quiet: "Du vil ikke motta e-post om denne tråden."
     membership:
-      title: "Innstillinger for e-post for {{title}}"
       loud_description: "Du vil motta en e-post hver gang det er aktivitet i denne gruppa."
-      normal_description: "Du vil bare motta e-post om annonseringer i denne gruppa."
+      normal_description: "Du vil motta en e-post hver gang det er aktivitet i denne gruppa."
       quiet_description: "Du vil ikke motta e-post om aktivetet i denne gruppa."
       apply_to_all: "Bruk disse innstillingene på alle gruppene mine."
       messages:
@@ -195,6 +186,7 @@ nb_NO:
         normal: "Du vil bare få e-post om annonseringer i denne gruppa."
         quiet: "Du vil ikke motta e-post om denne gruppa."
     all_groups:
+      loud_description: "Du vil motta e-post om all aktivitet i dine grupper."
       messages:
         loud: "Du vil motta e-post om all aktivitet i dine grupper."
         normal: "Du vil bare motta e-post om annonseringer i alle dine grupper."
@@ -443,8 +435,6 @@ nb_NO:
     add_comment: Kommentar
     copy_url: Kopier URL
     edit_thread: Rediger kontekst
-    announce_thread: Invitert folk til bli med i tråden
-    announce_thread_active: (Ingen har blitt invitert enda)
     translate_thread: Oversett kontekst
     edit_poll: Rediger avstemning
     announce_poll: Inviter folk til å stemme

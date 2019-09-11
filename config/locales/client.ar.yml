@@ -12,11 +12,6 @@ ar:
     card_title: فئة الوسوم
     modal_title: إنشاء وسم جديد
     modal_edit_title: تعديل الوسم
-  poll_types:
-    proposal: اقتراح
-    poll: استطلاع رأي
-  new_poll_types:
-    proposal: اقتراح
   common:
     you: أنت
     learn_more: تعلم المزيد
@@ -93,9 +88,16 @@ ar:
     mute: 'كتم'
     unmute: 'الغاء الكتم'
   change_volume_form:
+    simple:
+      label: 'تبليغات '
+      normal: متوسط
+      quiet: تجاهل
     loud_label: "كافة النشاط"
     normal_label: "الإعلانات"
     mute_label: "كتم"
+    membership:
+      loud_description: "ستتلقى رسالة إلكترونية بأي نشاط في هذه المجموعة"
+      normal_description: "ستتلقى رسالة إلكترونية بأي نشاط في هذه المجموعة"
   mute_explanation_modal:
     aria_label: كتم الخيط
     mute_thread: كتم الخيط
@@ -187,6 +189,8 @@ ar:
     privacy_public: 'يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.'
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
     privacy_organisation: 'سيكون الموضوع ظاهراً لأعضاء {{parent}} و أعضاء {{group}}.'
+  announcement:
+    preview: معاينة
   action_dock:
     add_comment: تعليق
     edit_poll: تعديل استطلاع الرأي
@@ -241,6 +245,7 @@ ar:
       manage_members: 'إدارة الأعضاء'
       add_subgroup: 'أضف فريقا فرعيا'
       manage_subscription: 'إدارة اشتراكات المجموعة'
+      email_settings: 'إعدادات البريد الإلكتروني'
       leave_group: 'غادر الفريق'
       deactivate_group: 'إلغاء المجموعة'
     volume:

@@ -547,6 +547,7 @@ en:
     preview: Preview
     no_notifications_sent: No notifications have been sent
     history_error: Something went wrong! Could not load history.
+    inviting_guests_to_thread: People who are not members of {{group}} will be added to this thread as guests, and won't get access to other threads in the group.
 
     audiences:
       parent_group: Members of {{name}}

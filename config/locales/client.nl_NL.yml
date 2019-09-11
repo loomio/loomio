@@ -53,17 +53,6 @@ nl_NL:
     metal: Metaal
     ok_hand: Ok
     wave: Golf
-  poll_types:
-    proposal: Voorstel
-    count: Check
-    poll: Peiling
-    dot_vote: Dotmocracy
-    meeting: Moment bevragen
-    ranked_choice: Keuzes rangschikken
-  new_poll_types:
-    proposal: Voorstel
-    count: Telling
-    meeting: Moment bevragen
   timezones:
     local: Plaatselijke tijd ({{value}})
   common:
@@ -186,6 +175,10 @@ nl_NL:
     mute: 'Dempen'
     unmute: 'Dempen uit'
   change_volume_form:
+    simple:
+      label: Meldingen
+      normal: Normaal
+      quiet: Negeer
     aria_label: "Verander e-mail-instellingen formulier"
     loud_label: "Alle activiteit"
     normal_label: "Aankondigingen"
@@ -198,9 +191,8 @@ nl_NL:
         normal: "Je zal ge-e-maild worden over voorstellen op dit bord."
         quiet: "Je ontvangt geen e-mails over dit bord. "
     membership:
-      title: "E-mail-instellingen voor {{title}}"
       loud_description: "Je onvangt een e-mail zodra er activiteit is in deze groep"
-      normal_description: "Enkel de aankondigingen in deze groep zullen je ge-e-mailed worden."
+      normal_description: "Je onvangt een e-mail zodra er activiteit is in deze groep"
       quiet_description: "Je krijgt geen e-mails over activiteit in deze groep."
       apply_to_all: "Pas deze instellingen toe op al mijn groepen"
       messages:
@@ -208,6 +200,7 @@ nl_NL:
         normal: "Enkel de aankondigingen in deze groep zullen je ge-e-mailed worden. "
         quiet: "Je krijgt geen e-mails over deze groep"
     all_groups:
+      loud_description: "Je zal e-mails krijgen over alle activiteiten in al je groepen."
       messages:
         loud: "Je zal e-mails krijgen over alle activiteiten in al je groepen."
         normal: "Enkel de aankondigingen in al je groepen zullen je ge-e-mailed worden. "
@@ -368,6 +361,7 @@ nl_NL:
     privacy_private: 'De discussie zal enkel zichtbaar zijn voor leden van {{group}}'
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
   announcement:
+    preview: Voorbeeld
     form:
       outcome_announced:
         title: Deel uitkomst
@@ -381,6 +375,7 @@ nl_NL:
     add_comment: Becommentarieer
     copy_url: Kopieer URL
     edit_thread: Beschrijving bijwerken
+    invite_guests: Nodig gasten uit
     translate_thread: Beschrijving vertalen
     edit_poll: '''Peiling'' bewerken'
     translate_poll: '''Peiling'' vertalen'
@@ -473,6 +468,7 @@ nl_NL:
       manage_members: 'Beheer leden'
       add_subgroup: 'Voeg subgroep toe'
       manage_subscription: 'Beheer groepsinschrijving'
+      email_settings: 'E-mail voorkeuren'
       leave_group: 'Verlaat groep'
       deactivate_group: 'Deactiveer groep'
     volume:
@@ -610,6 +606,7 @@ nl_NL:
   invitation_form:
     aria_label: 'Uitnodiging van'
     invite_people: 'Mensen uitnodigen'
+    invite_guests: 'Nodig gasten uit'
     invite_people_to_group: 'Uitnodiging voor {{name}}'
     group: 'Groep'
     group_placeholder: 'Selecteer een groep'
@@ -1105,7 +1102,6 @@ nl_NL:
     dot_vote: 'Deze ''Dotmocracy'' werd gesloten. <storng>Deel een uitkomst</strong> met je groep.'
     ranked_choice: 'Deze ''Keuzes rangschikken'' peiling werd gesloten<strong> Deel een uitkomst </strong> met de groep.'
   poll_common_outcome_form:
-    new_title: Deel een uitkomst
     update_title: Uitkomst actualiseren
     outcome_created: Uitkomst aangemaakt
     outcome_updated: Uitkomst bijgewerkt
@@ -1335,7 +1331,6 @@ nl_NL:
     password: Wachtwoord
   install_microsoft:
     card:
-      remove_identity: Verwijder deze verbinding
       identity_removed: Verbinding beëindigd
   install_slack:
     login_to_slack: Log in op Slack

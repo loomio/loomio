@@ -20,8 +20,6 @@ fa_IR:
     v: صلح
     ok_hand: باشه!
     wave: دست تکان دادن
-  poll_types:
-    poll: نظرسنجی
   common:
     you: شما
     ok_got_it: باشه، فهمیدم!
@@ -105,6 +103,9 @@ fa_IR:
     _10: دهم
   error_page:
     forbidden: 'شما اجازه انجام این کار را ندارید.'
+  change_volume_form:
+    simple:
+      label: اطلاعیه ها
   signed_out_modal:
     ok: "باشه!"
   sidebar:

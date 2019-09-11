@@ -1,6 +1,4 @@
 hr:
-  new_poll_types:
-    proposal: Prijedlog
   common:
     privacy:
       public: 'Javno'
@@ -8,6 +6,10 @@ hr:
       proposal: 'Prijedlog'
   error_page:
     forbidden: 'Nepostojeća dozvola za izvršenje.'
+  change_volume_form:
+    simple:
+      label: Notifikacije
+      quiet: Ignoriraj
   inbox:
     clear: 'Obriši'
   comment_form:
@@ -28,6 +30,8 @@ hr:
     start_thread: Započni raspravu
   group_page:
     members: Članovi
+    options:
+      email_settings: 'Postavke e-maila'
   group_form:
     profile: Profil
   membership_requests_page:

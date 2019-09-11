@@ -1,8 +1,6 @@
 ml:
   loomio_tags:
     name_label: പേരു്
-  new_poll_types:
-    proposal: 'ശുപാര്‍ശ '
   common:
     group: 'കൂട്ടം'
     groups: 'കൂട്ടങ്ങള്‍'
@@ -22,6 +20,10 @@ ml:
     search: തിരയുക
   error_page:
     forbidden: 'നിങ്ങള്‍ക്ക് ഇതു ചെയ്യാനുള്ള അനുമതിയില്ല'
+  change_volume_form:
+    simple:
+      label: അറിയിപ്പുകള്‍
+      quiet: നിരസ്സിക്കുക
   comment_form:
     delete_comment: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
     confirm_delete_message: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '
@@ -55,6 +57,7 @@ ml:
     options_label: 'ഐച്ഛികങ്ങള്‍'
     options:
       label: 'ഐച്ഛികങ്ങള്‍'
+      email_settings: 'ഈമെയില്‍ മുന്‍ഗണനകള്‍'
   document:
     form:
       title_label: പേരു്

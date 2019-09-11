@@ -115,6 +115,7 @@ export default
     closeHistory: -> @historyOpen = false
 
   computed:
+    guestCount: -> @recipients.filter((r) -> r.email).length
     modelKind: -> @announcement.model.constructor.singular
     pollType: -> @announcement.model.pollType
     translatedPollType: -> @announcement.model.poll().translatedPollType() if @announcement.model.isA('poll') or @announcement.model.isA('outcome')
@@ -189,6 +190,9 @@ v-card
       v-layout(v-if="showInvitationsRemaining")
         v-spacer
         p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
+
+      div.announcement-form__explain-membership(v-if="guestCount" v-t="{path: 'announcement.inviting_guests_to_thread', args: {group: announcement.model.group().name}}")
+        //- | 8 members of Loomio Community will be notified about this thread.
 
   v-card-actions
     v-dialog(v-model="historyOpen" max-width="600px")

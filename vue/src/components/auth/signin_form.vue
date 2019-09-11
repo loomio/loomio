@@ -40,11 +40,11 @@ export default
     auth-avatar(:user='user')
   .auth-signin-form__magic-link
     h2.title.text-center(v-t="{ path: 'auth_form.welcome_back', args: { name: user.firstName() } }")
-  .auth-signin-form__token.align-center(v-if='user.hasToken')
+  .auth-signin-form__token.text-center(v-if='user.hasToken')
     validation-errors(:subject='user', field='token')
-    v-btn.auth-signin-form__submit(color="primary" @click='submit()' v-if='!user.errors.token')
+    v-btn.my-4.auth-signin-form__submit(color="primary" @click='submit()' v-if='!user.errors.token')
       span(v-t="{ path: 'auth_form.sign_in_as', args: {name: user.name}}")
-    v-btn.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token')
+    v-btn.my-4.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token')
       span(v-t="'auth_form.login_link'")
     p
       span(v-t="'auth_form.set_password_helptext'")

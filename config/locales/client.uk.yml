@@ -58,18 +58,6 @@ uk:
     wave: Помах
     thumbsup: Великий палець вгору
     thumbsdown: Великий палець вниз
-  poll_types:
-    proposal: Пропозиція
-    count: Контрольний список
-    poll: Опитування
-    dot_vote: Відбіркове голосування
-    meeting: Опитування щодо часу
-    ranked_choice: Ранговий вибір
-    score: Оціночне опитування
-  new_poll_types:
-    proposal: Пропозиція
-    count: Підрахунок
-    meeting: Опитування щодо часу
   timezones:
     local: За місцевим часом ({{value}})
   common:
@@ -201,22 +189,24 @@ uk:
     mute: 'Вимкнено'
     unmute: 'Увімкнути'
   change_volume_form:
+    simple:
+      label: Сповіщення
+      normal: Нормально
+      quiet: Ігнорувати
     aria_label: "Форма зміни електронної адреси"
     loud_label: "Всі оновлення"
     normal_label: "Оголошення"
     quiet_label: "Без поштових сповіщень"
     mute_label: "Беззвучно"
     discussion:
-      title: "Налаштування пошти для теми"
       apply_to_all: "Застосуваті ці налаштування до всіх тем в цій групі."
       messages:
         loud: "Ви отримаєте поштове сповіщення про оновлення у цій темі."
         normal: "Вам буде надіслане сповіщення поштою щодо пропозицій у цій темі."
         quiet: "Ви не будете отримувати поштові сповіщення з цієї теми."
     membership:
-      title: "Налаштування електронної пошти для {{title}}"
       loud_description: "Ви отримаєте поштове сповіщення як тільки з'являться оновлення у цій групі."
-      normal_description: "Вам будуть надсилатись поштові сповіщення лише про оголошення в цій групі."
+      normal_description: "Ви отримаєте поштове сповіщення як тільки з'являться оновлення у цій групі."
       quiet_description: "Ви не будете отримувати поштові сповіщення про оновлення у цій групі."
       apply_to_all: "Застосуваті ці налаштування до всіх моїх груп."
       messages:
@@ -224,6 +214,7 @@ uk:
         normal: "Вам будуть надсилатись поштові сповіщення лише про оголошення в цій групі."
         quiet: "Ви не будете отримувати поштові сповіщення з цієї групи."
     all_groups:
+      loud_description: "Ви отримаєте поштове сповіщення про всі оновлення в усіх ваших групах."
       messages:
         loud: "Ви отримаєте поштове сповіщення про всі оновлення в усіх ваших групах."
         normal: "Вам будуть надсилатись поштові сповіщення про оголошення в усіх ваших групах."
@@ -298,6 +289,8 @@ uk:
     private_privacy_notice: 'Ваш коментар зможуть бачити тільки учасники {{groupName}}.'
     public_privacy_notice: 'Ваш коментар зможе бачити будь-хто в мережі'
     sign_in: "Авторизуйтесь, щоб приєднатися до розмови"
+  thread_nav:
+    participants: Учасники
   sidebar:
     threads: 'Теми'
     my_groups: 'Мої групи'
@@ -425,6 +418,7 @@ uk:
     privacy_organisation: 'Тему можуть бачити тільки учасники груп {{parent}} та {{group}}.'
     fork_notice: 'Буде створено нову тему з {{count}} елементів від {{title}}'
   announcement:
+    preview: Попередній перегляд
     audiences:
       parent_group: Учасник {{name}}
       formal_group: Учасник {{name}}
@@ -480,8 +474,7 @@ uk:
     add_comment: Коментар
     copy_url: Скопіювати URL-адресу
     edit_thread: Редагувати контекст
-    announce_thread: Запросити людей долучитись до теми
-    announce_thread_active: (Ще нікого не було запрошено)
+    invite_guests: Запросити гостей
     translate_thread: Перекласти контекст
     edit_poll: Редагувати опитування
     announce_poll: Запросити людей до голосування
@@ -606,6 +599,7 @@ uk:
       manage_members: 'Керувати учасниками'
       add_subgroup: 'Додати підгрупу'
       manage_subscription: 'Керувати підпискою групи'
+      email_settings: 'Налаштування електронної пошти'
       leave_group: 'Залишити групу'
       deactivate_group: 'Відключити групу'
     volume:
@@ -775,6 +769,7 @@ uk:
   invitation_form:
     aria_label: 'Форма для запрошення'
     invite_people: 'Запросити людей'
+    invite_guests: 'Запросити гостей'
     invite_people_to_group: 'Запрошення до {{name}}'
     group: 'Група'
     group_placeholder: 'Вибрати групу'
@@ -1361,7 +1356,6 @@ uk:
     dot_vote: 'Це відбіркове голосування закрито. <strong>Поширте результат</strong> у групі.'
     ranked_choice: 'Цеопитування щодо рангового вибору закрито. <strong>Поширте результат</strong> у групі.'
   poll_common_outcome_form:
-    new_title: Поширити результат
     update_title: Оновити результат
     outcome_created: Результат створено
     outcome_updated: Результат оновлено
@@ -1626,7 +1620,6 @@ uk:
     reactivate: Відновити обліковий запис
   install_microsoft:
     card:
-      remove_identity: Видалити цю інтеграцію
       identity_removed: Інтеграцію видалено
   install_slack:
     login_to_slack: Увійти до Slack

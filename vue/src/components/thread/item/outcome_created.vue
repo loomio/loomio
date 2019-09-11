@@ -29,8 +29,9 @@ export default
 <template lang="pug">
 thread-item.outcome-created(:event="event" :event-window="eventWindow")
   template(v-slot:actions)
-    action-dock(:model="eventable" :actions="dockActions")
-    action-menu(:model="eventable" :actions="menuActions")
+    v-layout(align-center)
+      reaction-display(:model="eventable")
+      action-dock(:model="eventable" :actions="dockActions")
+      action-menu(:model="eventable" :actions="menuActions")
   formatted-text.thread-item__body(:model="eventable" column="statement")
-  reaction-display(:model="eventable")
 </template>

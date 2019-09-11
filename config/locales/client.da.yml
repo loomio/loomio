@@ -20,15 +20,6 @@ da:
     worried: Bekymret
     neutral_face: Neutral
     angry: Sur
-  poll_types:
-    proposal: Forslag
-    count: Checkmåling
-    poll: Meningsmåling
-    dot_vote: Prikafstemning
-    meeting: Find tidspunkt
-  new_poll_types:
-    proposal: Forslag
-    meeting: Find et tidspunkt
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -129,6 +120,10 @@ da:
     mute: 'Slået fra'
     unmute: 'Slået til'
   change_volume_form:
+    simple:
+      label: Notifikationer
+      normal: Normal
+      quiet: Ignorér
     aria_label: "Rediger emailindstillinger"
     loud_label: "Al aktivitet"
     normal_label: "Normal"
@@ -141,9 +136,8 @@ da:
         normal: "Du vil få email ved forslag i denne debat."
         quiet: "Du vil ikke få emails ved aktivitet i denne debat."
     membership:
-      title: "Emailindstillinger for {{title}}"
       loud_description: "Du vil modtage en email hver gang der er aktivitet i denne gruppe."
-      normal_description: "Du vil modtage en email hver ved publiceringer i denne gruppe."
+      normal_description: "Du vil modtage en email hver gang der er aktivitet i denne gruppe."
       quiet_description: "Du vil ikke modtage emails ved nogen aktivitet i denne gruppe."
       apply_to_all: "Gem disse indstillinger for all mine grupper."
       messages:
@@ -151,6 +145,7 @@ da:
         normal: "Du vil få emails ved publiceringer i denne gruppe."
         quiet: "Du vil ikke få emails ved nogen aktivitet i denne gruppe."
     all_groups:
+      loud_description: "Du vil få emails ved enhver aktivitet i alle dine grupper."
       messages:
         loud: "Du vil få emails ved enhver aktivitet i alle dine grupper."
         normal: "Du vil få emails ved publiceringer i alle dine grupper."
@@ -367,6 +362,7 @@ da:
       manage_members: 'Administrer medlemmer'
       add_subgroup: 'Opret undergruppe'
       manage_subscription: 'Administrer gruppe abonnement'
+      email_settings: 'E-mail-indstillinger'
       leave_group: 'Forlad gruppe'
       deactivate_group: 'Deaktiver gruppe'
     volume:
@@ -881,7 +877,6 @@ da:
     meeting: 'Denne Find Tidspunkt måling er afsluttet. <strong>Del tidspunktet</strong> så alle ved hvornår mødet afholdes.'
     dot_vote: 'Denne prikafstemning er afsluttet. <storng>Del resultatet</strong> med gruppen.'
   poll_common_outcome_form:
-    new_title: Del et resultat
     update_title: Rediger resultat
     outcome_created: Resultat oprettet
     outcome_updated: Resultat gemt

@@ -8,7 +8,7 @@ export default
     poll: Object
 
   data: ->
-    closingHour: format(startOfHour(@poll.closingAt), 'h:mm a')
+    closingHour: format(startOfHour(@poll.closingAt), 'HH:mm')
     closingDate: format(@poll.closingAt, 'yyyy-MM-dd')
     dateToday: format(new Date, 'yyyy-MM-dd')
     times: hoursOfDay
@@ -18,7 +18,7 @@ export default
   methods:
     exact: exact
     updateClosingAt: ->
-      date = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd h:mm a", new Date())
+      date = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd HH:mm", new Date())
       if isValid(date)
         @poll.closingAt = date
       else

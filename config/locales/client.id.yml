@@ -1,8 +1,6 @@
 id:
   loomio_tags:
     name_label: Nama
-  new_poll_types:
-    proposal: Usulan
   common:
     group: 'Kelompok'
     groups: 'Kelompok'
@@ -22,6 +20,10 @@ id:
     search: Cari
   error_page:
     forbidden: 'Anda tidak dapat melakukan hal ini.'
+  change_volume_form:
+    simple:
+      label: Notifikasi
+      quiet: Abaikan
   comment_form:
     delete_comment: 'Hapus komentar'
     confirm_delete_message: 'Apakah Anda ingin menghapus komentar ini?'
@@ -55,6 +57,7 @@ id:
     options_label: 'Pilihan'
     options:
       label: 'Pilihan'
+      email_settings: 'Preferensi surel'
   document:
     form:
       title_label: Nama

@@ -60,17 +60,6 @@ fr:
     wave: Salut
     thumbsup: Pouce levé
     thumbsdown: ' Pouce baissé'
-  poll_types:
-    proposal: Proposition
-    count: Vérification
-    poll: Sondage
-    dot_vote: Vote à points
-    meeting: Sondage horaire de réunion
-    ranked_choice: Classement par préférence
-    score: Vote pondéré
-  new_poll_types:
-    proposal: Proposition
-    meeting: Sondage horaire de réunion
   timezones:
     local: Heure locale ({{value}})
   common:
@@ -204,22 +193,24 @@ fr:
     mute: 'Ignorer'
     unmute: 'Suivre de nouveau'
   change_volume_form:
+    simple:
+      label: Notifications
+      normal: Normal
+      quiet: Ignorer
     aria_label: "Formulaire des paramètres de notification"
     loud_label: "Toute l’activité"
     normal_label: "Nouvelles discussions et décisions"
     quiet_label: "Aucun courriel"
     mute_label: "Ignorer"
     discussion:
-      title: "Paramètres du fil e-mail"
       apply_to_all: "Appliquer ces paramètres à toutes les discussions de ce groupe."
       messages:
         loud: "Vous recevrez un courriel lorsqu’il y aura une activité dans cette discussion."
         normal: "Vous recevrez un courriel lorsqu’il y aura une proposition dans cette discussion."
         quiet: "Vous ne recevrez aucun courriel à propos de cette discussion."
     membership:
-      title: "Paramètres courriel pour {{title}}"
       loud_description: "Vous recevrez un courriel à chaque fois qu’il y a une activité dans ce groupe."
-      normal_description: "Vous recevrez un courriel lorsqu’il y aura une nouvelle discussion ou décision dans ce groupe."
+      normal_description: "Vous recevrez un courriel à chaque fois qu’il y a une activité dans ce groupe."
       quiet_description: "Vous ne recevrez aucun courriel concernant l’activité de ce groupe."
       apply_to_all: "Appliquer ces paramètres à tous mes groupes."
       messages:
@@ -227,6 +218,7 @@ fr:
         normal: "Vous recevrez un courriel lorsqu’il y aura une nouvelle discussion ou décision dans ce groupe."
         quiet: "Vous ne recevrez aucun courriel concernant ce groupe."
     all_groups:
+      loud_description: "Vous recevrez un courriel lorsqu’il y aura une activité dans l’un de vos groupes."
       messages:
         loud: "Vous recevrez un courriel lorsqu’il y aura une activité dans l’un de vos groupes."
         normal: "Vous ne recevrez de courriel que s’il y a nouvelle discussion ou décision dans un de vos groupes."
@@ -300,6 +292,8 @@ fr:
     private_privacy_notice: 'Votre commentaire sera visible seulement des membres de {{groupName}}.'
     public_privacy_notice: 'Votre commentaire sera visible par tout le monde sur internet.'
     sign_in: "Connectez-vous pour rejoindre la discussion"
+  thread_nav:
+    participants: Participants
   sidebar:
     threads: 'Discussions'
     my_groups: 'Mes groupes'
@@ -428,6 +422,7 @@ fr:
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
     fork_notice: 'Une nouvelle discussion sera créée avec {{count}} items de {{title}}'
   announcement:
+    preview: Prévisualiser
     audiences:
       parent_group: Membres de {{name}}
       formal_group: Membres de {{name}}
@@ -486,8 +481,7 @@ fr:
     add_comment: Ajouter un commentaire
     copy_url: Copier l’URL
     edit_thread: Modifier le contexte
-    announce_thread: Inviter des personnes dans votre discussion
-    announce_thread_active: (Personne n'a encore été invité)
+    invite_guests: Inviter des personnes
     translate_thread: Afficher une traduction automatique du contexte
     edit_poll: Modifier le sondage
     announce_poll: Inviter des personnes au vote
@@ -612,6 +606,7 @@ fr:
       manage_members: 'Gérer les membres'
       add_subgroup: 'Ajouter un sous-groupe'
       manage_subscription: 'Gérer les inscriptions au groupe'
+      email_settings: 'Préférences de courriel'
       leave_group: 'Quitter le groupe'
       deactivate_group: 'Désactiver le groupe'
     volume:
@@ -781,6 +776,7 @@ fr:
   invitation_form:
     aria_label: 'Formulaire d’invitation'
     invite_people: 'Inviter des personnes'
+    invite_guests: 'Inviter des personnes'
     invite_people_to_group: 'Invitation à {{name}}'
     group: 'Groupe'
     group_placeholder: 'Sélectionnez un groupe'
@@ -1373,7 +1369,6 @@ fr:
     dot_vote: 'Ce vote à point est fermé. <strong>Partagez un résultat</strong> avec le groupe.'
     ranked_choice: 'Ce classement par préférence est fermé. <strong>Partagez un résultat</strong> avec le groupe.'
   poll_common_outcome_form:
-    new_title: Partager un résultat
     update_title: Mettre à jour le résultat
     outcome_created: Résultat créé
     outcome_updated: Résultat mis à jour
@@ -1642,7 +1637,6 @@ fr:
       install_helptext: Le robot Loomio envoie des notifications à votre équipe concernant les discussions et les décisions qui ont lieu sur Loomio.
       installed_title: Connecté·e à Microsoft Teams
       installed_helptext: Les événements de ce groupe seront envoyés vers votre équipe Microsoft Team.
-      remove_identity: Retirer cette intégration
       confirm_remove_helptext: |
           Votre canal d'équipes Microsoft ne recevra plus les mises à jour de ce groupe.
           Vous pourrez toujours les ajouter de nouveau.

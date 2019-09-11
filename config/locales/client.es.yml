@@ -60,20 +60,6 @@ es:
     wave: Saludar
     thumbsup: Pulgar arriba
     thumbsdown: Pulgar abajo
-  poll_types:
-    proposal: Propuesta
-    count: Comprobación
-    poll: Encuesta
-    dot_vote: Asignación por puntos
-    meeting: Votación de horarios
-    ranked_choice: Opción priorizada
-    score: Encuesta de puntuación
-  new_poll_types:
-    proposal: Propuesta
-    count: Conteo
-    score: Puntuación
-    ranked_choice: Rango
-    meeting: Votación de horarios
   timezones:
     local: Hora local ({{value}})
   common:
@@ -217,22 +203,24 @@ es:
     mute: 'Silenciado '
     unmute: 'Des-silenciar '
   change_volume_form:
+    simple:
+      label: Notificaciones
+      normal: Normal
+      quiet: Ignorar
     aria_label: "Formulario para cambiar las notificaciones de correo electrónico"
     loud_label: "Toda la actividad"
     normal_label: "Anuncios"
     quiet_label: "No enviar correo"
     mute_label: "Silenciar "
     discussion:
-      title: "Ajustes de correos del hilo"
       apply_to_all: "Aplicar esta configuración para todos los hilos de este grupo."
       messages:
         loud: "Recibirás la actividad de este hilo por correo electrónico. "
         normal: "Recibirás correo electrónico sobre propuestas en este hilo. "
         quiet: "No recibirás correo electrónico sobre este hilo."
     membership:
-      title: "Configuración de correo electrónico para {{title}} "
       loud_description: "Recibirás correo electrónico siempre que haya actividad en este grupo."
-      normal_description: "Sólo se enviarán anuncios por correo electrónico en este grupo."
+      normal_description: "Recibirás correo electrónico siempre que haya actividad en este grupo."
       quiet_description: "No recibirás correo electrónico sobre la actividad en este grupo."
       apply_to_all: "Aplicar esta configuración para todos mis grupos. "
       messages:
@@ -240,6 +228,7 @@ es:
         normal: "Sólo se enviarán anuncios por correo electrónico en este grupo."
         quiet: "No recibirás correo electrónico sobre este grupo."
     all_groups:
+      loud_description: "Recibirá por correo electrónico toda la actividad de todos sus grupos."
       messages:
         loud: "Recibirá por correo electrónico toda la actividad de todos sus grupos."
         normal: "Sólo se te enviarán anuncios por correo electrónico en todos sus grupos."
@@ -314,6 +303,8 @@ es:
     private_privacy_notice: 'Su comentario solo será visible para integrantes de {{groupName}}.'
     public_privacy_notice: 'Su comentario será público para cualquiera en internet.'
     sign_in: "Inicia sesión para unirte a la conversación "
+  thread_nav:
+    participants: Participantes
   sidebar:
     threads: 'Hilos'
     my_groups: 'Mis grupos'
@@ -442,6 +433,7 @@ es:
     privacy_organisation: 'Los hilos serán visibles para integrantes de {{parent}} e integrantes de {{group}}.'
     fork_notice: 'Un nuevo hilo será creado con {{count}} items de {{title}}'
   announcement:
+    preview: Vista anticipada
     audiences:
       parent_group: Integrantes de {{name}}
       formal_group: 'Integrantes de {{name}} '
@@ -500,8 +492,7 @@ es:
     add_comment: Comentario
     copy_url: Copiar URL
     edit_thread: Editar contexto
-    announce_thread: Invitar a otras personas a unirse al hilo
-    announce_thread_active: (Nadie ha sido invitado aún)
+    invite_guests: Gente invitada
     translate_thread: Traducir contexto
     edit_poll: Editar encuesta
     announce_poll: 'Invitar a personas a votar '
@@ -629,6 +620,7 @@ es:
       manage_members: 'Administrar integrantes '
       add_subgroup: 'Agregar un Subgrupo'
       manage_subscription: 'Administrar las Suscripciones del grupo '
+      email_settings: 'Preferencias de correo electrónico '
       leave_group: 'Dejar el grupo'
       deactivate_group: 'Desactivar el grupo'
     volume:
@@ -798,6 +790,7 @@ es:
   invitation_form:
     aria_label: 'Formulario de invitación'
     invite_people: 'Invitar personas'
+    invite_guests: 'Gente invitada'
     invite_people_to_group: 'Invitar a {{name}}'
     group: 'Grupo'
     group_placeholder: 'Selecciona un grupo'
@@ -1410,7 +1403,6 @@ es:
     dot_vote: 'Este voto por puntos ha cerrado. <strong>Comparte un resultado</strong> con el grupo.'
     ranked_choice: 'Esta encuesta de opción priorizada ha cerrado. <strong>Comparte el resultado</strong> con el grupo.'
   poll_common_outcome_form:
-    new_title: Comparte un resultado
     update_title: Actualizar el resultado
     outcome_created: Resultado creado
     outcome_updated: Resultado actualizado
@@ -1681,7 +1673,6 @@ es:
       install_helptext: El robot de Loomio notifica a tu equipo acerca de discusiones y decisiones en Loomio.
       installed_title: Conectado a los Equipos de Microsoft
       installed_helptext: Se enviarán eventos de este grupo a tu Equipo de Microsoft.
-      remove_identity: Eliminar esta integración
       confirm_remove_helptext: |
           Tu canal de equipos de microsoft ya no recibirá actualizaciones del grupo.
           Siempre puedes retroceder y añadirlo de nuevo.

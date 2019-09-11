@@ -14,7 +14,7 @@ export default
   created: ->
     @newValue = @value
     @dateStr = format(@value, 'yyyy-MM-dd')
-    @timeStr = format(@value, 'h:mm a')
+    @timeStr = format(@value, 'HH:mm')
     @minStr  = format(@min, 'yyyy-MM-dd')
 
   data: ->
@@ -25,7 +25,7 @@ export default
 
   methods:
     updateNewValue: ->
-      @newValue = parse("#{@dateStr} #{@timeStr}", 'yyyy-MM-dd h:mm a', new Date)
+      @newValue = parse("#{@dateStr} #{@timeStr}", 'yyyy-MM-dd HH:mm', new Date)
       @$emit('input', @newValue)
 
   watch:

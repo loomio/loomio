@@ -29,16 +29,6 @@ ga_IE:
     wave: Crith láimhe
     thumbsup: Ordóg in airde
     thumbsdown: Ordóg thíos
-  poll_types:
-    proposal: Togra
-    count: Dearbháil
-    poll: Vótáil
-  new_poll_types:
-    proposal: Togra
-    count: Ríomh
-    poll: Roghnaigh
-    ranked_choice: Rangaigh
-    dot_vote: Leithdháil
   timezones:
     local: An t-am áitiúil ({{luach}})
   common:
@@ -148,6 +138,10 @@ ga_IE:
     mute: 'Gan fhuaim'
     unmute: 'Díbhalbhaigh é'
   change_volume_form:
+    simple:
+      label: Fógraí
+      normal: Gnáth
+      quiet: Déan neamhaird de
     aria_label: "Athraigh foirm shocruithe ríomhphoist"
     loud_label: "Gach gníomhaíocht"
     normal_label: "Fógraí"
@@ -158,7 +152,6 @@ ga_IE:
         loud: "Seolfar ríomhphoist chugat i dtaca le gníomhaíocht sa snáithe seo."
         quiet: "Ní sheolfar ríomhphoist chugat i dtaca leis an snáithe seo."
     membership:
-      title: "Socruithe ríomhphoist i gcomhair {{title}}"
       apply_to_all: "Cuir na socruithe seo i bhfeidhm ar gach ceann de mo bhaiclí."
     user:
       title: Socruithe ríomhphoist i gcomhair baiclí nua
@@ -304,6 +297,7 @@ ga_IE:
       label: 'Roghanna'
       manage_members: 'Riar na comhaltaí'
       add_subgroup: 'Cuir fobhaicle leis'
+      email_settings: 'Sainroghanna ríomhphoist'
       leave_group: 'Fág an bhaicle seo'
       deactivate_group: 'Díghníomhachtaigh an bhaicle'
     volume:

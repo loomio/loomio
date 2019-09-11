@@ -56,22 +56,6 @@ it:
     wave: Onda
     thumbsup: Pollice su
     thumbsdown: Pollice verso
-  poll_types:
-    proposal: Proposta
-    count: Verifica
-    poll: Sondaggio
-    dot_vote: Voto a punti
-    meeting: Sondaggio per incontro
-    ranked_choice: Scelta di preferenze
-    score: Punteggio votazione
-  new_poll_types:
-    proposal: Proposta
-    count: Conteggio
-    poll: Scegli
-    score: Punteggio
-    ranked_choice: Posizione
-    dot_vote: Assegna
-    meeting: Sondaggio per incontro
   timezones:
     local: Ora locale ({{value}})
   common:
@@ -217,22 +201,24 @@ it:
     mute: 'Silenzioso'
     unmute: 'Rimuovi silenzioso'
   change_volume_form:
+    simple:
+      label: Notifiche
+      normal: Normale
+      quiet: Ignora
     aria_label: "Modulo per configurazione email"
     loud_label: "Tutte le attività"
     normal_label: "Annunci"
     quiet_label: "Nessuna email"
     mute_label: "Silenzia"
     discussion:
-      title: "Impostazioni thread email"
       apply_to_all: "Applica questa configurazione a tutte le discussioni in questo gruppo."
       messages:
         loud: "Riceverai un'email sulle attività di questa discussione."
         normal: "Riceverai un'email sulle proposte in questa discussione."
         quiet: "Non riceverai email su questa discussione."
     membership:
-      title: "Configurazione email per {{title}}"
       loud_description: "Riceverai un'email ogni volta che c'è attività in questo gruppo."
-      normal_description: "Riceverai email solo per gli annunci pubblicati in questo gruppo."
+      normal_description: "Riceverai un'email ogni volta che c'è attività in questo gruppo."
       quiet_description: "Non riceverai un'email sulle attività in questo gruppo."
       apply_to_all: "Applica questa configurazione a tutti i miei gruppi."
       messages:
@@ -240,6 +226,7 @@ it:
         normal: "Riceverai email solo per gli annunci pubblicati in questo gruppo."
         quiet: "Non riceverai email per questo gruppo."
     all_groups:
+      loud_description: "Ricevi email per tutte le attività in tutti i tuoi gruppi."
       messages:
         loud: "Ricevi email per tutte le attività in tutti i tuoi gruppi."
         normal: "Ricevi email solo per gli annunci in tutti i tuoi gruppi."
@@ -315,6 +302,8 @@ it:
     private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
     public_privacy_notice: 'Il tuo commento sarà visibile a qualsiasi persona sul web.'
     sign_in: "Entra per partecipare alla discussione"
+  thread_nav:
+    participants: Partecipanti
   sidebar:
     threads: 'Discussioni'
     my_groups: 'I miei gruppi'
@@ -455,6 +444,7 @@ it:
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     fork_notice: 'Una nuova discussione è stata creata con {{count}} argomenti da {{title}}'
   announcement:
+    preview: Anteprima
     audiences:
       parent_group: Membri di {{name}}
       formal_group: Membri di {{name}}
@@ -504,7 +494,6 @@ it:
     add_comment: Commenta
     copy_url: Copia URL
     edit_thread: Modifica il contesto
-    announce_thread: Invita persone ad entrare nella discussione
     translate_thread: Traduci il contesto
     edit_poll: Modifica sondaggio
     translate_poll: Traduci sondaggio
@@ -603,6 +592,7 @@ it:
       manage_members: 'Gestisci membri'
       add_subgroup: 'Aggiungi sottogruppo'
       manage_subscription: 'Gestisci le sottoscrizioni al gruppo'
+      email_settings: 'Opzioni email'
       leave_group: 'Abbandona il gruppo'
       deactivate_group: 'Disattiva gruppo'
     volume:

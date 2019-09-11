@@ -1,8 +1,6 @@
 km:
   loomio_tags:
     name_label: ឈ្មោះ
-  new_poll_types:
-    proposal: សំណើ
   common:
     group: 'ក្រុម'
     groups: 'ក្រុម'
@@ -21,6 +19,10 @@ km:
     search: ស្វែងរក
   error_page:
     forbidden: 'អ្នកមិនត្រូវបានអនុញ្ញាតឲ្យធ្វើវានោះទេ'
+  change_volume_form:
+    simple:
+      label: ការជូនដំណឹង
+      quiet: មិនអើពើ
   comment_form:
     delete_comment: 'លុបមតិយោបល់ '
     confirm_delete_message: 'តើអ្នកប្រាកដថាអ្នកចង់លុបមតិយោបល់នេះ?'
@@ -54,6 +56,7 @@ km:
     options_label: 'ជម្រើស '
     options:
       label: 'ជម្រើស '
+      email_settings: 'ចំណង់ចំណូលចិត្តអ៊ីម៉ែល '
   document:
     form:
       title_label: ឈ្មោះ

@@ -51,12 +51,6 @@ eo:
     fingers_crossed: Bonŝancon!
     v: Pacon!
     ok_hand: Bone!
-  poll_types:
-    proposal: Propozicio
-    count: Kontroli
-    poll: Enketo
-  new_poll_types:
-    proposal: Propozicio
   common:
     you: Vi
     expand: Klarigu!
@@ -148,6 +142,10 @@ eo:
     mute: 'Silentigi'
     unmute: 'Malsilentigi'
   change_volume_form:
+    simple:
+      label: Sciigoj
+      normal: Normala
+      quiet: Ignori
     mute_label: "Silentigi"
   close_explanation_modal:
     aria_label: Fermigi fadenon
@@ -202,6 +200,8 @@ eo:
     title_label: 'Titolo'
     context_label: 'Kunteksto'
     privacy_label: 'Privateco'
+  announcement:
+    preview: Antaŭkontrolo
   action_dock:
     add_comment: Komenti
     edit_poll: Redakti enketon
@@ -243,6 +243,7 @@ eo:
     options_label: 'Opcioj'
     options:
       label: 'Opcioj'
+      email_settings: 'Retpoŝtaj preferoj'
   group_form:
     privacy: 'Privateco'
     profile: Profilo

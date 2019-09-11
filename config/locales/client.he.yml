@@ -57,17 +57,6 @@ he:
     wave: גל
     thumbsup: אגודל למעלה להסכמה
     thumbsdown: אגודל למטה לשלילה
-  poll_types:
-    proposal: הצעה
-    count: בדיקה
-    poll: סקר
-    dot_vote: הצבעה בנקודה
-    meeting: הצבעת זמן
-    ranked_choice: דירוג בחירה
-    score: ניקוד סקר
-  new_poll_types:
-    proposal: הצעה
-    meeting: הצבעת זמן
   timezones:
     local: זמן מקומי ({{value}})
   common:
@@ -200,22 +189,24 @@ he:
     mute: 'השתקה'
     unmute: 'הסר השתקה'
   change_volume_form:
+    simple:
+      label: התרעות
+      normal: רגיל
+      quiet: התעלמ/י
     aria_label: "טופס שינוי הגדרות המייל"
     loud_label: "כל הפעילויות"
     normal_label: "הודעות"
     quiet_label: "אין מיילים"
     mute_label: "השתקה"
     discussion:
-      title: "הגדרות מייל לשיחה"
       apply_to_all: "יישם את הגדרות אלה על כל השיחות בקבוצה זו."
       messages:
         loud: "מייל ישלח אליך על פעילות בשיחה זו."
         normal: "מייל ישלח אליך על הצעות בשיחה זו."
         quiet: "לא תקבל הודעת מייל על שיחה זו."
     membership:
-      title: "הגדרות מייל עבור {{title}}"
       loud_description: "מייל יישלח אליך כשיש פעילות בקבוצה זו."
-      normal_description: "מייל יישלח אליך רק בהכרזות בקבוצה."
+      normal_description: "מייל יישלח אליך כשיש פעילות בקבוצה זו."
       quiet_description: "מייל לא יישלח אליך בנוגע לפעילות בקבוצה."
       apply_to_all: "החל הגדרות אלו על כל הקבוצות שלי"
       messages:
@@ -223,6 +214,7 @@ he:
         normal: "מייל יישלח אליך רק בהכרזות בקבוצה"
         quiet: "לא יישלח אליך מייל בנוגע לקבוצה זו."
     all_groups:
+      loud_description: "מייל יישלח אליך על כל פעולה בקבוצות שלך."
       messages:
         loud: "מייל יישלח אליך על כל פעולה בקבוצות שלך."
         normal: "יישלחו לך מיילים רק עבור הכרזות בקבוצות שלך."
@@ -296,6 +288,8 @@ he:
     private_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה רק לחברים בקבוצה {{groupName}}.'
     public_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה לכולם.'
     sign_in: "הרשם להצטרפות לדיון"
+  thread_nav:
+    participants: משתתפים
   sidebar:
     threads: 'שיחות'
     recent_threads: 'שיחות אחרונות'
@@ -422,6 +416,7 @@ he:
     privacy_organisation: 'משתמשי {{parent}} וה{{group}} יכולו לצפות בשיחה.'
     fork_notice: 'שיחה חדשה תיווצר עם {{count}} פריטים מ{{title}}'
   announcement:
+    preview: תצוגה מקדימה
     audiences:
       parent_group: משתתפי ה{{name}}
       formal_group: משתתפי ה{{name}}
@@ -480,8 +475,6 @@ he:
     add_comment: הערה
     copy_url: העתק כתובת הדף
     edit_thread: ערוך תוכן
-    announce_thread: הזמן אנשים להצטרף לשיחה
-    announce_thread_active: (אף אחד עוד לא הוזמן)
     translate_thread: תרגום תוכן
     edit_poll: עריכת סקר
     announce_poll: הזמן אנשים להצביע
@@ -605,6 +598,7 @@ he:
       manage_members: 'ניהול חברים'
       add_subgroup: 'הוספת תת קבוצה'
       manage_subscription: 'ניהול מינויים של הקבוצה'
+      email_settings: 'העדפות דוא״ל'
       leave_group: 'עזוב את הקבוצה'
       deactivate_group: 'הפוך קבוצה ללא פעילה'
     volume:
@@ -1366,7 +1360,6 @@ he:
     dot_vote: 'בחירת הנקודות הזו נסגרה. <storng>שתף את התוצאה</strong> עם הקבוצה.'
     ranked_choice: 'הסקר הדירוג הזה נסגר. <strong>שתף את התוצאה</strong> עם הקבוצה.'
   poll_common_outcome_form:
-    new_title: שתף תוצאה
     update_title: עדכן תוצאה
     outcome_created: תוצאה נוצרה
     outcome_updated: תוצאה עודכנה
@@ -1635,7 +1628,6 @@ he:
       install_helptext: הבוט של Loomio הודיע לקבוצה שלך על הדיונים וההחלטות בLoomio
       installed_title: מחובר לMicrosoft Teams
       installed_helptext: אירועים מקבוצה זו יישלחו לMicrosoft Teams שלך.
-      remove_identity: הסר אינטגרציה זו
       confirm_remove_helptext: |
           ערוץ הMicrosoft Teams שלך לא יקבל עוד עדכונים על קבוצה זו.
           אתה יכול תמיד להחזיר אותו שוב.

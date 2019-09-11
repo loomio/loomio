@@ -54,17 +54,6 @@ pt_BR:
     metal: Metal
     ok_hand: Ok
     wave: Dar tchauzinho
-  poll_types:
-    proposal: Proposta
-    count: Verificar
-    poll: Votação
-    dot_vote: Voto de ponto
-    meeting: Tempo de votação
-    ranked_choice: Escolha classificada
-  new_poll_types:
-    proposal: Proposta
-    count: Contagem
-    meeting: Tempo de votação
   timezones:
     local: Hora local ({{value}})
   common:
@@ -191,22 +180,24 @@ pt_BR:
     mute: 'Mudo'
     unmute: 'Com som'
   change_volume_form:
+    simple:
+      label: Notificações
+      normal: Normal
+      quiet: 'Ignorar '
     aria_label: "Formulário para alteração de configurações de e-mail"
     loud_label: "Toda atividade"
     normal_label: "Anúncios"
     quiet_label: "Sem e-mails"
     mute_label: "Mudo"
     discussion:
-      title: "Configuração de Conversas de Email"
       apply_to_all: "Aplicar estas configurações para as conversas neste grupo."
       messages:
         loud: "Serão enviados e-mails das atividades nesta conversa."
         normal: "Serão enviados e-mails sobre propostas nesta conversa."
         quiet: "Você não receberá e-mails sobre este conversa."
     membership:
-      title: "Configurações de e-mail para {{title}}"
       loud_description: "Você receberá e-mail sempre que houver atividade neste grupo."
-      normal_description: "Você receberá somente emails de anúncios neste grupo."
+      normal_description: "Você receberá e-mail sempre que houver atividade neste grupo."
       quiet_description: "Você não receberá e-mail sobre atividade neste grupo."
       apply_to_all: "Aplicar estas configurações para todos os meus grupos."
       messages:
@@ -214,6 +205,7 @@ pt_BR:
         normal: "Você receberá somente emails de anúncios neste grupo."
         quiet: "Você não receberá e-mail sobre este grupo."
     all_groups:
+      loud_description: "Você receberá e-mails de todas as atividades em todos os seus grupos."
       messages:
         loud: "Você receberá e-mails de todas as atividades em todos os seus grupos."
         normal: "Você receberá somente emails de anúncios em todos os seus grupos."
@@ -287,6 +279,8 @@ pt_BR:
     private_privacy_notice: 'Seu comentário será visível apenas para os membros de {{groupName}}.'
     public_privacy_notice: 'Seu comentário será visível para qualquer pessoa na web'
     sign_in: "Entre para se juntar à conversa"
+  thread_nav:
+    participants: Participantes
   sidebar:
     threads: 'Conversas'
     my_groups: 'Meus grupos'
@@ -401,6 +395,7 @@ pt_BR:
     privacy_organisation: 'A conversa será visível para os membros de {{parent}} e membros de {{group}}.'
     fork_notice: 'A nova conversa será criada com {{count}} itens de {{title}}'
   announcement:
+    preview: Visualização
     audiences:
       discussion_group: Membros da conversa
       voters: Pessoas que já votaram
@@ -445,7 +440,6 @@ pt_BR:
     add_comment: 'Comentario '
     copy_url: Copiar URL
     edit_thread: Editar contexto
-    announce_thread: Convidar pessoas para se juntar a conversa
     translate_thread: Traduzir contexto
     edit_stance: Modificar posição
     translate_stance: Traduzir voto
@@ -549,6 +543,7 @@ pt_BR:
       manage_members: 'Gerenciar Membros'
       add_subgroup: 'Adicionar Subgrupo'
       manage_subscription: 'Gerenciar Inscrições do Grupo '
+      email_settings: 'Preferências de e-mail'
       leave_group: 'Sair do Grupo'
       deactivate_group: 'Desativar Grupo'
     volume:
@@ -1093,7 +1088,6 @@ pt_BR:
     poll: 'Esta votação foi encerrada. <strong>Compartilhe o resultado</strong>com o grupo.'
     proposal: 'Esta proposta foi encerrada. Por favor considere o que foi discutido e <strong>compartilhe o resultado</strong>, para que as pessoas saibam o que acontecerá na sequência.'
   poll_common_outcome_form:
-    new_title: Compartilhar um resultado
     update_title: Atualizar resultado
     outcome_created: Resultado criado
     outcome_updated: Resultado atualizado
