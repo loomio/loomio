@@ -678,12 +678,21 @@ describe API::DiscussionsController do
     let!(:discussion) { create :discussion, group: group }
     let(:target_event) { create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 2 }
     let(:another_event) { create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 3 }
+    let(:alien_comment) { create(:comment) }
+    let!(:alien_comment_event) { CommentService.create(comment: alien_comment, actor: alien_comment.author ) }
     let(:fork_params) {{
       title: "A forked title",
       group_id: group.id,
       description: "A forked description",
       private: true,
       forked_event_ids: [target_event.id, another_event.id]
+    }}
+    let(:alien_fork_params) {{
+      title: "A forked title",
+      group_id: group.id,
+      description: "A forked description",
+      private: true,
+      forked_event_ids: [target_event.id, alien_comment_event.id, another_event.id]
     }}
 
     before { group.add_admin! user }
@@ -696,6 +705,7 @@ describe API::DiscussionsController do
       new_discussion = Discussion.last
       expect(new_discussion.items).to include target_event
       expect(new_discussion.items).to include another_event
+      expect(new_discussion.items).not_to include alien_comment_event
       expect(new_discussion.title).to eq fork_params[:title]
 
       items = discussion.reload.items
@@ -742,6 +752,12 @@ describe API::DiscussionsController do
     it 'does not allow non admins to fork a thread' do
       sign_in another_user
       post :fork, params: { discussion: fork_params }
+      expect(response.status).to eq 403
+    end
+
+    it 'does not move alien comment events' do
+      sign_in user
+      expect { post :fork, params: { discussion: alien_fork_params } }.to change { Discussion.count }.by(0)
       expect(response.status).to eq 403
     end
   end
