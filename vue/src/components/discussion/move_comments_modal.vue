@@ -1,18 +1,17 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import { submitDiscussion } from '@/shared/helpers/form'
+import { orderBy } from 'lodash'
 
 export default
   data: ->
-    discussions: []
     selectedDiscussion: null
     submit: null
+    searchFragment: null
+    searchResults: []
   props:
     discussion: Object
     close: Function
-  mounted: ->
-    Records.discussions.fetchByGroup(@discussion.groupId).then () =>
-      @discussions = Records.discussions.collection.data.filter((discussion) => discussion.groupId == @discussion.groupId && discussion.id != @discussion.id)
   methods:
     setSubmit: ->
       @selectedDiscussion.update(isForking: true)
@@ -29,6 +28,14 @@ export default
             @$router.push @urlFor(discussion)
   watch:
     selectedDiscussion: 'setSubmit'
+    searchFragment: (fragment) ->
+      return unless fragment.length
+      Records.discussions.search(@discussion.groupId, fragment).then (data) =>
+        @searchResults = Records.discussions.collection.chain()
+          .find(groupId: @discussion.groupId)
+          .find({ id: { $ne: @discussion.id } })
+          .find(title: { $regex: [fragment, 'i'] })
+          .data()
 </script>
 <template lang="pug">
 v-card
@@ -38,8 +45,8 @@ v-card
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
-    v-select(return-object v-model="selectedDiscussion" :items="discussions" item-text="title" placeholder="Select the discussion you want to move these comments to")
+    v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')")
   v-card-actions
     v-spacer
-      v-btn(color="primary" @click="submit()" v-t="'common.action.save'" :disabled="!selectedDiscussion")
+    v-btn(color="primary" @click="submit()" v-t="'common.action.save'" :disabled="!selectedDiscussion")
 </template>
