@@ -41,7 +41,7 @@
     "angular-translate-loader-url": "^2.18.1",
     "angulartics": "1.6.0",
     "angulartics-piwik": "1.0.6",
-    "bowser": "^2.6.0",
+    "bowser": "^2.6.1",
     "diff-match-patch": "^1.0.4",
     "emojione": "~> 2.2.7",
     "jstimezonedetect": "~1.0.7",
