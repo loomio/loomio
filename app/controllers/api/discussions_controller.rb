@@ -86,8 +86,8 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def move_comments
-    @event = EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
-    respond_with_resource
+    EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
+    head :ok
   end
 
   def pin

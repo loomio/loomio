@@ -32,6 +32,7 @@ export default
             discussion.update(isForking: false)
             @close()
             @$router.push @urlFor(discussion)
+            FlashService.success('move_comments.refresh_in_a_minute')
 
   watch:
     selectedDiscussion: 'setSubmit'
