@@ -18,6 +18,8 @@ export optionImages = ->
   block: 'block'
   consent: 'agree'
   objection: 'block'
+  yes: 'yes'
+  no: 'no'
 
 # A series of helpers for interacting with polls, such as template values for a
 # particular poll or getting the last stance from a given user
