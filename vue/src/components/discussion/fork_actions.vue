@@ -1,22 +1,23 @@
 <script lang="coffee">
 import Records      from '@/shared/services/records.coffee'
-import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
+import openModal      from '@/shared/helpers/open_modal'
 
 export default
-  mixins: [DiscussionModalMixin]
   props:
     discussion: Object
   methods:
-    submit: ->
-      @openForkedDiscussionModal(@discussion)
-      @discussion.forkedEventIds = []
+    openMoveCommentsModal: ->
+      openModal
+        component: 'MoveCommentsModal'
+        props:
+          discussion: @discussion
 </script>
 
 <template lang='pug'>
-v-banner.discussion-fork-actions(sticky v-model='discussion.isForking()' icon="mdi-call-split")
+v-banner.discussion-fork-actions(single-line sticky elevation="4" v-model='discussion.isForking' icon="mdi-call-split" color="accent")
   span(v-t="'discussion_fork_actions.helptext'")
   template(v-slot:actions)
-    v-btn(@click='discussion.forkedEventIds = []')
+    v-btn(color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'")
+    v-btn(icon @click='discussion.forkedEventIds = []; discussion.isForking = false')
       v-icon mdi-close
-    v-btn.discussion-fork-actions__submit(@click='submit()', v-t="'common.action.fork'" color="primary")
 </template>

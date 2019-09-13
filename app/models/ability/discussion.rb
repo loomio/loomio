@@ -53,12 +53,14 @@ module Ability::Discussion
       user_is_admin_of?(discussion.group_id)
     end
 
-    can [:destroy, :move], ::Discussion do |discussion|
+    can [:destroy, :move, :move_comments], ::Discussion do |discussion|
       user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
     end
 
     can :fork, ::Discussion do |discussion|
-      discussion.forked_event_ids.any? && can?(:move, discussion)
+      Event.where(id: discussion.forked_event_ids).pluck(:discussion_id).uniq.length == 1 &&
+      can?(:move, Event.find(discussion.forked_event_ids.last).discussion) &&
+      can?(:move, discussion)
     end
 
     can [:set_volume,

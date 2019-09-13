@@ -90,7 +90,7 @@ div
         //-   v-btn(v-if="hover" :width="iconSize" :height="iconSize"  icon @click="collapsed = true")
         //-     v-icon mdi-arrow-collapse-vertical
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
-        v-checkbox.thread-item__is-forking(v-if="!hover && event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
+        v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.parentIsForking()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
         v-layout.my-1.align-center.wrap
           h3.thread-item__title.body-2(:id="'event-' + event.id")

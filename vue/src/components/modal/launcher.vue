@@ -26,6 +26,7 @@ import ChangePictureForm from '@/components/profile/change_picture_form'
 import GroupNewForm from '@/components/group/new_form'
 import GroupWizard from '@/components/group/wizard'
 import UserWizard from '@/components/profile/wizard'
+import MoveCommentsModal from '@/components/discussion/move_comments_modal'
 
 export default
   components:
@@ -55,6 +56,7 @@ export default
     'GroupNewForm': GroupNewForm
     'GroupWizard': GroupWizard
     'UserWizard': UserWizard
+    'MoveCommentsModal': MoveCommentsModal
   data: ->
     isOpen: false
     componentName: ""
