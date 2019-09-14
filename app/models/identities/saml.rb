@@ -15,7 +15,7 @@ class Identities::Saml < Identities::Base
   end
 
   def fetch_user_info
-    return unless response && saml_response.is_valid?
+    return unless saml_response&.is_valid?
     self.email = self.uid = saml_response.nameid
     self.name  = saml_response.attributes['displayName']
   end
@@ -23,6 +23,7 @@ class Identities::Saml < Identities::Base
   private
 
   def saml_response
+    return unless response.present?
     @saml_response ||= OneLogin::RubySaml::Response.new(response, settings: saml_settings, skip_recipient_check: true)
   end
 
