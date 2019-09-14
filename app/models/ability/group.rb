@@ -14,9 +14,9 @@ module Ability::Group
 
     can [:show_via_saml], ::Group do |group|
       if saml_url = group.parent_or_self.identity_for(:saml)&.saml_url
-        user.identity_for(:saml)&.saml_url == saml_url
+        user.saml_identity&.saml_url == saml_url
       else
-        user.ability.can?(:show, group)
+        true
       end
     end
 
