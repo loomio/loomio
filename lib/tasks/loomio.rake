@@ -33,6 +33,7 @@ namespace :loomio do
     end
 
     AnnouncementService.delay.resend_pending_invitations
+    GroupIdentityService.delay.expire_saml_identities
     LocateUsersAndGroupsJob.perform_later
     if (Time.now.hour == 0)
       UsageReportService.send

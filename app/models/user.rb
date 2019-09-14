@@ -231,7 +231,7 @@ class User < ApplicationRecord
 
   def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
-      existing.update(access_token: identity.access_token)
+      existing.update(access_token: identity.access_token, last_authenticated_at: Time.current)
       existing.assign_logo!
     else
       identities.push(identity)

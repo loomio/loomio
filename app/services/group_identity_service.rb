@@ -19,4 +19,12 @@ class GroupIdentityService
     group_identity.destroy
     EventBus.broadcast('group_identity_destroy', group_identity, actor)
   end
+
+  def self.expire_saml_identities
+    Identity::Saml
+      .joins(:group_identities, :user)
+      .where("users.last_seen_at < ?", 1.hour.ago)
+      .where("last_authenticated_at < ?", 1.day.ago)
+      .destroy_all
+  end
 end
