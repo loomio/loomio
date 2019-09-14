@@ -23,6 +23,7 @@ export default
     EventBus.$on('currentComponent', @setCurrentComponent)
     EventBus.$on 'pageError', (error) =>
       @openAuthModal() if !Session.isSignedIn() and error.status == 403
+      error.json().then (json) => @openAuthModal(json.errors) if error.status == 401
       @pageError = error
     EventBus.$on 'signedIn', =>
       @pageError = null

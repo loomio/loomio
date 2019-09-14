@@ -5,13 +5,17 @@ import { capitalize } from 'lodash'
 export default
   props:
     user: Object
+    idp: String
 
   methods:
     capitalize: capitalize
 
     select: (provider) ->
       # EventBus.emit $scope, 'processing'
-      window.location = "#{provider.href}?back_to=#{window.location.href}"
+      window.location = if (provider.name == 'saml')
+        "#{provider.href}?back_to=#{window.location.href}&saml_url=#{@idp}"
+      else
+        "#{provider.href}?back_to=#{window.location.href}"
 
     iconClass: (provider) ->
       "mdi-" + if (provider == 'saml') then 'key-variant' else provider
@@ -25,7 +29,11 @@ export default
 
   computed:
     emailLogin: -> AppConfig.features.app.email_login
-    providers: -> AppConfig.identityProviders.filter (provider) -> provider.name != 'slack'
+    providers: ->
+      if @idp
+        AppConfig.identityProviders.filter (provider) -> provider.name == 'saml'
+      else
+        AppConfig.identityProviders.filter (provider) -> provider.name != 'slack'
 </script>
 
 <template lang="pug">
@@ -35,7 +43,7 @@ export default
       v-icon {{ iconClass(provider.name) }}
       space
       span(v-t="{ path: 'auth_form.continue_with_provider', args: { provider: capitalize(provider.name) } }")
-    p.my-2.text-center.auth-email-form__or-enter-email(v-if='emailLogin', v-t="'auth_form.or_enter_your_email'")
+    p.my-2.text-center.auth-email-form__or-enter-email(v-if='emailLogin && !idp', v-t="'auth_form.or_enter_your_email'")
 </template>
 
 <style lang="sass">

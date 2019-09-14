@@ -4,6 +4,8 @@ class Identities::Saml < Identities::Base
   attr_accessor :response
   set_custom_fields :saml_url
 
+  class AuthenticationRequiredError < StandardError; end
+
   def metadata
     @metadata ||= OneLogin::RubySaml::Metadata.new.generate(saml_settings)
   end

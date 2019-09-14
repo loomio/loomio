@@ -47,4 +47,8 @@ class LoggedOutUser
   def avatar_kind
     'initials'
   end
+
+  def identity_for(provider)
+    nil
+  end
 end

@@ -15,6 +15,7 @@ class API::GroupsController < API::RestfulController
 
   def show
     self.resource = load_and_authorize(:formal_group)
+    raise Identities::Saml::AuthenticationRequiredError.new unless current_user.ability.can?(:show_via_saml, resource)
     respond_with_resource
   end
 

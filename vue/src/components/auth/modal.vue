@@ -8,6 +8,7 @@ export default
   props:
     preventClose: Boolean
     close: Function
+    idp: String
 
   data: ->
     siteName: AppConfig.theme.site_name
@@ -37,5 +38,5 @@ v-card.auth-modal
     v-spacer
     dismiss-modal-button(v-if='!preventClose' :close="close")
   v-card-text
-    auth-form(:user='user')
+    auth-form(:user='user' :idp='idp')
 </template>

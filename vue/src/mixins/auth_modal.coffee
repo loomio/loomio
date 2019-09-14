@@ -2,9 +2,10 @@ import EventBus from '@/shared/services/event_bus'
 
 export default
   methods:
-    openAuthModal: ->
+    openAuthModal: (props) ->
       EventBus.$emit('openModal',
-                      component: 'AuthModal')
+                      component: 'AuthModal'
+                      props: props)
 
     closeModal: ->
       EventBus.$emit('closeModal')
