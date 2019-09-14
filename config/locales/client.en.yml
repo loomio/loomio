@@ -2098,16 +2098,27 @@ en:
 
   install_saml:
     modal_title: Integrate SAML
-    modal_helptext: |
+    url_label: SAML metadata URL
+    url_placeholder: https://capriza.github.io/samling/samling.html
+
+    auth_helptext: |
       In order to set up SAML for your organization, you must log in via your IdP.
       Please enter the URL to the metadata for your SAML provider, and click 'Log in'
       to connect.
-    login_with_saml: Login via your IdP
-    remove_slack: Remove SAML Integration
+    connect_helptext: |
+      Congratulations, you've successfully authenticated with your IdP! If you'd like to
+      enforce that all members of your group must sign in using this IdP, please click 'Connect'
+      below. Beware that this will revoke access for your current group members until they authenticate!
+    remove_helptext: |
+      Are you sure you want to remove your SAML integration? Users will be able to
+      access this group even if they have not authenticated with your IdP.
 
-    form:
-      url_label: SAML metadata URL
-      url_placeholder: https://capriza.github.io/samling/samling.html
+    login_with_saml: Login via SAML
+    connect_with_saml: Enforce login via SAML
+    saml_connected: Connected via SAML
+
+    remove_saml: Remove SAML Integration
+    saml_removed: Integration removed
 
   install_slack:
     modal_title: Integrate Slack

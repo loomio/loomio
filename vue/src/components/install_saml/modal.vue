@@ -18,11 +18,11 @@ export default
 
     redirect: ->
       @$router.push({ query: { install_saml: true } })
-      hardReload('/saml/initiate?saml_url=' + @samlUrl)
+      hardReload('/saml/oauth?saml_url=' + @samlUrl)
 
   created: ->
     @submit = submitForm @, @groupIdentity,
-      flashSuccess: 'install_saml.form.url_saved'
+      flashSuccess: 'install_saml.form.saml_connected'
       successCallback: => @close()
 </script>
 <template lang="pug">
@@ -32,16 +32,16 @@ v-card.install-microsoft-modal
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text(v-if="!hasIdentity()")
-    p.lmo-hint-text(v-t="'install_saml.modal_helptext'")
-    v-text-field#microsoft-webhook-url.discussion-form__title-input(v-model='samlUrl' :placeholder="$t('install_saml.form.url_placeholder')")
+    p.lmo-hint-text(v-t="'install_saml.auth_helptext'")
+    v-text-field#microsoft-webhook-url.discussion-form__title-input(v-model='samlUrl' :placeholder="$t('install_saml.url_placeholder')")
       div(slot="label")
-        span(v-html="$t('install_saml.form.url_label')")
+        span(v-html="$t('install_saml.url_label')")
   v-card-actions(v-if="!hasIdentity()" )
     v-spacer
     v-btn(color='primary' @click='redirect()' v-t="'install_saml.login_with_saml'")
   v-card-text(v-if="hasIdentity()")
-    p.lmo-hint-text(v-html="$t('install_saml.form.connect_helptext')")
+    p.lmo-hint-text(v-html="$t('install_saml.connect_helptext')")
   v-card-actions(v-if="hasIdentity()")
     v-spacer
-    v-btn(color='primary' @click='submit()', v-t="'common.action.save'")
+    v-btn(color='primary' @click='submit()', v-t="'install_saml.connect_with_saml'")
 </template>

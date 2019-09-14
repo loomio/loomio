@@ -130,9 +130,9 @@ export default new class GroupService
             confirm:
               submit: group.groupIdentityFor('saml').destroy
               text:
-                title:    'install_saml.card.confirm_remove_title'
-                helptext: 'install_saml.card.confirm_remove_helptext'
-                flash:    'install_saml.card.identity_removed'
+                title:    'install_saml.remove_saml'
+                helptext: 'install_saml.remove_helptext'
+                flash:    'install_saml.saml_removed'
 
     install_microsoft_teams:
       name: 'install_microsoft.card.install_microsoft'

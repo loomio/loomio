@@ -31,4 +31,8 @@ class Identities::Base < ApplicationRecord
   def requires_access_token?
     true
   end
+
+  def notify!(event)
+    # notify this identity of events that have happened within a group
+  end
 end
