@@ -25,7 +25,7 @@ export default
     .auth-form__email-not-set(v-if='!user.emailStatus')
       p.text-center Loomio is a place to have discussions and collaborate
       auth-provider-form(:user='user' :idp='idp')
-      auth-email-form(v-if='emailLogin && !idp' :user='user')
+      auth-email-form(:user='user' v-if='emailLogin && !idp')
       .auth-form__privacy-notice.caption.text-center.mt-4(v-if='privacyUrl' v-html="$t('auth_form.privacy_notice', { siteName: siteName, privacyUrl: privacyUrl })")
     .auth-form__email-set(v-if='user.emailStatus')
       auth-identity-form(v-if='pendingProviderIdentity && !user.createAccount' :user='user' :identity='pendingProviderIdentity')

@@ -17,7 +17,7 @@ class Identities::SamlController < Identities::BaseController
   end
 
   def store_saml_url
-      session[:saml_metadata_url] = params.fetch(:saml_url, ENV['SAML_IDP_METADATA_URL'])
+    session[:saml_metadata_url] = params.fetch(:saml_url, ENV['SAML_IDP_METADATA_URL'])
   end
 
   def clear_saml_url
