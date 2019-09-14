@@ -87,6 +87,15 @@ FactoryBot.define do
     uid { "https://outlook.office.com/webhook.url" }
   end
 
+  factory :saml_identity, class: Identities::Saml do
+    user
+    identity_type { "saml" }
+    uid { "email@company.com" }
+    sequence(:name) { Faker::Name.name }
+    sequence(:email) { Faker::Internet.email }
+    custom_fields { { saml_url: "example.onelogin.com/key" } }
+  end
+
   factory :contact do
     user
     sequence(:email) { Faker::Internet.email }

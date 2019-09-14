@@ -55,6 +55,29 @@ describe API::GroupsController do
       expect(response.status).to eq 404
     end
 
+    context 'with saml integration' do
+      let(:saml_url) { "example.onelogin.com/key" }
+      let(:saml_identity) { create :saml_identity, custom_fields: { saml_url: saml_url } }
+      let!(:group_identity) { create :group_identity, group: group, identity: saml_identity }
+
+      it 'allows users access if they have a matching saml identity' do
+        create(:saml_identity, user: user, custom_fields: { saml_url: saml_url })
+        get :show, params: { id: group.key }, format: :json
+        expect(response.status).to eq 200
+      end
+
+      it 'denies users access if they have no saml identity' do
+        get :show, params: { id: group.key }, format: :json
+        expect(response.status).to eq 401
+      end
+
+      it 'does not allow users access if they have a non-matching saml identity' do
+        create(:saml_identity, user: user, custom_fields: { saml_url: 'example.okta.com/key' })
+        get :show, params: { id: group.key }, format: :json
+        expect(response.status).to eq 401
+      end
+    end
+
     context 'logged out' do
       before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
       let(:private_group) { create(:formal_group, is_visible_to_public: false) }

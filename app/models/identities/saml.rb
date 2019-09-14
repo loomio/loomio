@@ -6,6 +6,10 @@ class Identities::Saml < Identities::Base
 
   class AuthenticationRequiredError < StandardError; end
 
+  scope :expired, -> {
+    joins(:user).where("users.last_seen_at < ?", 1.hour.ago).where("last_authenticated_at < ?", 1.day.ago)
+  }
+
   def metadata
     @metadata ||= OneLogin::RubySaml::Metadata.new.generate(saml_settings)
   end

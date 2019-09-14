@@ -226,6 +226,17 @@ describe Identities::SlackController do
       expect(response).to redirect_to dashboard_path
     end
 
+    it 'updates an existing identity' do
+      sign_in user
+      valid_oauth
+      identity = create(:slack_identity, user: user, uid: "U123", access_token: "oldtoken")
+      expect(user.identity_for(:slack)).to eq identity
+
+      expect { post :create, params: { code: 'code' } }.to_not change { user.identities.count }
+      expect(user.identity_for(:slack).last_authenticated_at).to be_within(1.minute).of(Time.current)
+      expect(user.identity_for(:slack).access_token).to eq identity_params[:access_token]
+    end
+
     it 'redirects to the session back_to if present' do
       valid_oauth
       session[:back_to] = 'http://example.com'
