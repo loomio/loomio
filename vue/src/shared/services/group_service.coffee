@@ -128,7 +128,9 @@ export default new class GroupService
           component: 'ConfirmModal'
           props:
             confirm:
-              submit: group.groupIdentityFor('saml').destroy
+              submit: ->
+                group.groupIdentityFor('saml').destroy().then ->
+                  Session.user().identityFor('saml').remove()
               text:
                 title:    'install_saml.remove_saml'
                 helptext: 'install_saml.remove_helptext'

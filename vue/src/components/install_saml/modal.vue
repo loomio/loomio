@@ -22,7 +22,7 @@ export default
 
   created: ->
     @submit = submitForm @, @groupIdentity,
-      flashSuccess: 'install_saml.form.saml_connected'
+      flashSuccess: 'install_saml.saml_connected'
       successCallback: => @close()
 </script>
 <template lang="pug">
