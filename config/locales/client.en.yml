@@ -2096,6 +2096,19 @@ en:
       poll_expired: A poll has expired
       outcome_created: An outcome has been shared
 
+  install_saml:
+    modal_title: Integrate SAML
+    modal_helptext: |
+      In order to set up SAML for your organization, you must log in via your IdP.
+      Please enter the URL to the metadata for your SAML provider, and click 'Log in'
+      to connect.
+    login_with_saml: Login via your IdP
+    remove_slack: Remove SAML Integration
+
+    form:
+      url_label: SAML metadata URL
+      url_placeholder: https://capriza.github.io/samling/samling.html
+
   install_slack:
     modal_title: Integrate Slack
     modal_helptext: First up, you'll need to sign in to slack. Click the button below to continue.

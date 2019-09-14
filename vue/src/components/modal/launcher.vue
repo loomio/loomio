@@ -20,6 +20,7 @@ import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsModal from '@/components/tags/modal'
+import InstallSamlModal from '@/components/install_saml/modal'
 import InstallSlackModal from '@/components/install_slack/modal'
 import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/modal'
 import ChangePictureForm from '@/components/profile/change_picture_form'
@@ -50,6 +51,7 @@ export default
     'PollCommonAddOptionModal': PollCommonAddOptionModal
     'RevisionHistoryModal': RevisionHistoryModal
     'TagsModal': TagsModal
+    'InstallSamlModal': InstallSamlModal
     'InstallSlackModal': InstallSlackModal
     'InstallMicrosoftTeamsModal': InstallMicrosoftTeamsModal
     'ChangePictureForm': ChangePictureForm

@@ -107,6 +107,33 @@ export default new class GroupService
                 helptext: 'install_slack.card.confirm_remove_helptext'
                 flash:    'install_slack.card.identity_removed'
 
+    install_saml:
+      name: 'install_saml.modal_title'
+      icon: 'mdi-key-variant'
+      canPerform: ->
+        AbilityService.canAdministerGroup(group) && !group.groupIdentityFor('saml')
+      perform: ->
+        openModal
+          component: 'InstallSamlModal'
+          props:
+            group: group
+
+    remove_saml:
+      name: 'install_saml.remove_saml'
+      icon: 'mdi-key-variant'
+      canPerform: ->
+        AbilityService.canAdministerGroup(group) && group.groupIdentityFor('saml')
+      perform: ->
+        openModal
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit: group.groupIdentityFor('saml').destroy
+              text:
+                title:    'install_saml.card.confirm_remove_title'
+                helptext: 'install_saml.card.confirm_remove_helptext'
+                flash:    'install_saml.card.identity_removed'
+
     install_microsoft_teams:
       name: 'install_microsoft.card.install_microsoft'
       icon: 'mdi-microsoft'

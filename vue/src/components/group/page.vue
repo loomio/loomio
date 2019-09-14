@@ -7,19 +7,19 @@ import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import InstallSlackModalMixin from '@/mixins/install_slack_modal'
+import InstallSamlModalMixin  from '@/mixins/install_saml_modal'
 import GroupModalMixin from '@/mixins/group_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
 import {compact, head, includes, filter} from 'lodash'
 
 export default
-  mixins: [InstallSlackModalMixin, GroupModalMixin]
+  mixins: [InstallSlackModalMixin, InstallSamlModalMixin, GroupModalMixin]
   data: ->
     group: null
 
   created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
-    setTimeout => @openInstallSlackModal() if @$route.query.install_slack
 
   watch:
     '$route.params.key': 'init'
@@ -31,6 +31,10 @@ export default
 
         subscribeTo(@group)
         Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
+
+        setTimeout =>
+          @openInstallSlackModal(@group) if @$route.query.install_slack
+          @openInstallSamlModal(@group) if @$route.query.install_saml
 
       , (error) ->
         EventBus.$emit 'pageError', error
