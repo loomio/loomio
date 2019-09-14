@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_002703) do
+ActiveRecord::Schema.define(version: 2019_09_14_115917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -505,6 +505,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_002703) do
     t.string "access_token", default: ""
     t.string "logo"
     t.jsonb "custom_fields", default: {}, null: false
+    t.datetime "last_authenticated_at", default: -> { "CURRENT_TIMESTAMP" }
     t.index ["email"], name: "index_personas_on_email"
     t.index ["identity_type", "uid"], name: "index_omniauth_identities_on_identity_type_and_uid"
     t.index ["user_id"], name: "index_personas_on_user_id"
