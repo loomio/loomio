@@ -25,19 +25,19 @@ describe EmailHelper do
     let(:utm_hash) { { utm_medium: "wark" }}
 
     it 'returns a discussion url' do
-      expect(helper.polymorphic_url(discussion)).to match "/d/#{discussion.key}"
+      expect(helper.send(:polymorphic_url, discussion)).to match "/d/#{discussion.key}"
     end
 
     it 'returns a group url' do
-      expect(helper.polymorphic_url(group)).to match "/g/#{group.key}"
+      expect(helper.send(:polymorphic_url, group)).to match "/g/#{group.key}"
     end
 
     it 'returns a comment url' do
-      expect(helper.polymorphic_url(comment)).to match "/d/#{comment.discussion.key}/comment/#{comment.id}"
+      expect(helper.send(:polymorphic_url, comment)).to match "/d/#{comment.discussion.key}/comment/#{comment.id}"
     end
 
     it 'can accept a utm hash' do
-      expect(helper.polymorphic_url(comment, utm_hash)).to match "utm_medium=wark"
+      expect(helper.send(:polymorphic_url, comment, utm_hash)).to match "utm_medium=wark"
     end
   end
 end
