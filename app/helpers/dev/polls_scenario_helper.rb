@@ -1,4 +1,5 @@
 module Dev::PollsScenarioHelper
+  private
 
   def poll_created_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
