@@ -1,6 +1,7 @@
 class Identities::SamlController < Identities::BaseController
   before_action :store_saml_url, only: :oauth
   after_action :clear_saml_url, only: :create
+  rescue_from(URI::InvalidURIError) { render "errors/404", layout: 'basic', status: 404 }
 
   def metadata
     render xml: identity.metadata, content_type: "application/samlmetadata+xml"
