@@ -1,4 +1,4 @@
-module ApiErrorRescueHelper
+module APIErrorRescueHelper
   def self.included(base)
     base.rescue_from(GroupInviter::InvitationLimitExceededError) do
       rescue_error(message: 'invitation_form.error.too_many_pending', count: ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i)

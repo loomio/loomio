@@ -53,6 +53,8 @@ module Loomio
     # config.i18n.default_locale = :de
 
     # config.i18n.available_locales = # --> don't use this, make mostly empty yml files e.g. fallback.be.yml
+    config.action_dispatch.use_cookies_with_metadata = false
+    config.active_record.belongs_to_required_by_default = false
     config.i18n.enforce_available_locales = false
     config.i18n.fallbacks = [:en] # --> see initilizers/loomio_i18n
 

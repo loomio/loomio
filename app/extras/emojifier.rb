@@ -1,5 +1,5 @@
 class Emojifier
-  extend JSRuntime
+  extend JsRuntime
 
   def self.emojify!(text)
     eval "execjs.emojify(\"#{asset_url}\", \"?\")", text

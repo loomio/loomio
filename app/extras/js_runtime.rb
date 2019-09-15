@@ -1,4 +1,4 @@
-module JSRuntime
+module JsRuntime
   include AngularHelper
 
   # So functional!

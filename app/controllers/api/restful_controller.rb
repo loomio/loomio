@@ -5,7 +5,7 @@ class API::RestfulController < API::SnorlaxBase
   include ::LoadAndAuthorize
   include ::CurrentUserHelper
   include ::SentryRavenHelper
-  include ::ApiErrorRescueHelper
+  include ::APIErrorRescueHelper
   include ::PendingActionsHelper
 
   before_action :attach_pending_membership_token_to_user
