@@ -213,7 +213,7 @@ class Poll < ApplicationRecord
   end
 
   def poll_option_names
-    poll_options.pluck(:name)
+    poll_options.order(:priority).pluck(:name)
   end
 
   def poll_option_names=(names)

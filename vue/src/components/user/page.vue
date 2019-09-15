@@ -72,6 +72,8 @@ v-container.user-page.max-width-800
         .lmo-hint-text @{{user.username}}
         p {{user.shortBio}}
         div(v-t="{ path: 'user_page.locale_field', args: { value: user.localeName() } }", v-if='user.localeName()')
+        span(v-t="'common.time_zone'")
+        span : {{user.timeZone}}
         div(v-t="{ path: 'user_page.location_field', args: { value: user.location } }", v-if='user.location')
         div(v-t="{ path: 'user_page.online_field', args: { value: approximate(user.lastSeenAt) } }", v-if='user.lastSeenAt')
       v-layout.user-page__avatar(column align-center style="max-width: 200px")

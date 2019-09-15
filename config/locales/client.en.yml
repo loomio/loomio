@@ -67,27 +67,28 @@ en:
     thumbsdown: Thumb down
 
   poll_types:
-    proposal: Proposal
-    count: Check
-    poll: Poll
-    dot_vote: Dot vote
-    meeting: Time poll
-    ranked_choice: Ranked choice
-    score: Score poll
+    proposal: proposal
+    count: check
+    poll: poll
+    dot_vote: dot vote
+    meeting: time poll
+    ranked_choice: ranked choice
+    score: score poll
 
   new_poll_types:
-    proposal: Proposal
-    count: Count
-    poll: Choose
-    score: Score
-    ranked_choice: Rank
-    dot_vote: Allocate
-    meeting: Time poll
+    proposal: proposal
+    count: count
+    poll: choose
+    score: score
+    ranked_choice: rank
+    dot_vote: allocate
+    meeting: time poll
 
   timezones:
     local: Local time ({{value}})
 
   common:
+    history: History
     option: Option
     add: Add
     you: You
@@ -239,32 +240,49 @@ en:
     unmute: 'Unmute'
 
   change_volume_form:
+    simple:
+      label: Notifications
+      loud: Subscribed
+      normal: Normal
+      quiet: Ignore
+      loud_explain: whenever there is activity
+      normal_explain: when someone wants your attention
+      quiet_explain: no notifications
+
     aria_label: "Change email settings form"
     loud_label: "All activity"
     normal_label: "Announcements"
     quiet_label: "No emails"
     mute_label: "Mute"
+    saved: "Notification settings updated"
     discussion:
-      title: "Thread email settings"
-      loud_description: "You will be emailed whenever there is activity in this thread."
-      normal_description: "You will be emailed whenever a proposal is started, about to close, or an outcome is posted."
-      quiet_description: "You won't be emailed about this thread."
+      title: "Thread notifications"
+      loud_description: "You will be emailed all activity in this thread."
+      normal_description: "You will only be emailed important activity in this thread."
+      quiet_description: "You won't be emailed any activity in this thread."
       apply_to_all: "Apply these settings to all threads in this group."
+      only_this_thread: "Applies to this thread only"
+      group: "Change notification preferences for group"
       messages:
         loud: "You will be emailed activity in this thread."
         normal: "You will be emailed about proposals in this thread."
         quiet: "You won't be emailed about this thread."
     membership:
-      title: "Email settings for {{title}}"
+      title: "Notifications for {{title}}"
       loud_description: "You will be emailed whenever there is activity in this group."
-      normal_description: "You will only be emailed announcements in this group."
+      normal_description: "You will be emailed whenever there is activity in this group."
       quiet_description: "You won't be emailed about activity in this group."
       apply_to_all: "Apply these settings to all my groups."
+      apply_to_organization: "Apply to all groups in {{organization}}"
       messages:
         loud: "You will be emailed all activity in this group."
         normal: "You will only be emailed announcements in this group."
         quiet: "You won't be emailed about this group."
     all_groups:
+      title: "Notification preferences for all groups"
+      loud_description: "You will be emailed all activity in all your groups."
+      normal_description: "You will only be emailed important activity in all your groups."
+      quiet_description: "You won't be emailed any activity in any of your groups."
       messages:
         loud: "You will be emailed all activity in all your groups."
         normal: "You will only be emailed announcements in all your groups."
@@ -348,9 +366,14 @@ en:
     public_privacy_notice: 'Your comment will be visible to anyone on the web.'
     sign_in: "Log in to join the conversation"
 
+  thread_nav:
+    participants: Participants
+
   sidebar:
     threads: 'Threads'
     my_groups: 'My groups'
+    other_groups: 'Other groups'
+    all_groups: 'All groups'
     recent_threads: 'Recent threads'
     unread_threads: 'Unread threads ({{count}})'
     muted_threads: 'Muted threads'
@@ -360,6 +383,7 @@ en:
     start_thread: New thread
     start_decision: New decision
     more_groups: More groups
+    try_beta: Try Loomio 2.0 beta!
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Threads actions'
@@ -390,6 +414,7 @@ en:
     sign_in: 'Log In'
     toggle_sidebar: 'Toggle sidebar'
     logo_title: 'Home page'
+    group_and_subgroups: '{{group}} & subgroups'
 
   user_dropdown:
     button_label: 'User menu'
@@ -476,7 +501,10 @@ en:
     updated: 'Saved changes to {{title}}'
 
   discussion_fork_actions:
-    helptext: "Select items you'd like to move to a new thread"
+    helptext: Select items you'd like to move
+    move: Move
+    search_placeholder: Find thread by title
+    moved: Comments moved
 
   discussion_form:
     aria_label: 'Thread form'
@@ -500,6 +528,27 @@ en:
     fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
 
   announcement:
+    send_discussion: Send thread
+    send_discussion_explain: Invite people to participate in the discussion
+    send_group: Invite people to {{name}}
+    send_group_explain: ''
+    send_poll: Send {{type}}
+    send_poll_explain: Invite people to participate in the {{type}}
+    send_outcome: Send outcome
+    send_outcome_explain: Notify people about the outcome of the {{type}}
+    discussion_notification_history: Thread notification history
+    group_notification_history: Group invitation history
+    poll_notification_history: Poll notification history
+    outcome_notification_history: Outcome notification history
+    comment_notification_history: Comment notification history
+    quick_add: "Quick add:"
+    any_other_groups: "Any other groups?"
+    notified_people: "{{name}} notified {{length}} people:"
+    preview: Preview
+    no_notifications_sent: No notifications have been sent
+    history_error: Something went wrong! Could not load history.
+    inviting_guests_to_thread: People who are not members of {{group}} will be added to this thread as guests, and won't get access to other threads in the group.
+
     audiences:
       parent_group: Members of {{name}}
       formal_group: Members of {{name}}
@@ -562,8 +611,8 @@ en:
     add_comment: Comment
     copy_url: Copy URL
     edit_thread: Edit context
-    announce_thread: Invite people to join the thread
-    announce_thread_active: (No one has been invited yet)
+    announce_thread: Send thread
+    invite_guests: Invite guests
     translate_thread: Translate context
     edit_poll: Edit poll
     announce_poll: Invite people to vote
@@ -593,6 +642,8 @@ en:
     close_thread: Close thread
     reopen_thread: Re-open thread
     delete_thread: Delete thread
+    notification_history: Notification history
+    move_comments: Move comments
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -657,6 +708,28 @@ en:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
+  user_wizard:
+    welcome: Welcome!
+    welcome_description: You've successfully created a new user account on Loomio. In a few steps, you'll have your profile fully setup and ready to begin participating.
+    change_picture: Add picture
+    change_picture_description: Add a picture to your profile
+    setup_profile: Setup profile
+    setup_profile_description: Help others
+
+  group_wizard:
+    welcome: Success!
+    welcome_description: You've successfully created a new organization on Loomio. In a few steps, you'll have your organization fully setup and ready to start discussions. If you want to skip this wizard for now, you can open it again from the Settings tab.
+    setup_profile: Setup profile
+    setup_profile_description: Set your group's description, logo and cover photo
+    invite_people: Invite people
+    invite_people_description: List emails to send invitations to, or copy a link to share with others
+    setup_integrations: Setup integrations
+    setup_integrations_description: Connect Loomio with Slack and/or Microsoft Teams
+    start_thread: Start a discussion
+    start_thread_description: Write a welcome note, discuss the purpose of your group, or share the minutes of your last meeting
+    do_it: Let's go
+
+
   group_page:
     threads: Threads
     polls: Polls
@@ -695,6 +768,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
+      open_group_wizard: 'Group Setup Wizard'
       become_coordinator: Become Admin
       export_data: Export Group Data
       export_data_as_json: Export Group Data as JSON
@@ -703,7 +777,7 @@ en:
       manage_members: 'Manage Members'
       add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
-      email_settings: 'Notification Settings'
+      email_settings: 'Email preferences'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
     volume:
@@ -746,13 +820,17 @@ en:
   group_form:
     permissions_explaination: 'There are two levels of membership: admin and member. Admins have all permissions. Select member permissions:'
     aria_label: 'Group form'
-    new_organisation:
+    new_organisation: New Organization
     start_group_heading: 'Start a group'
     start_subgroup_heading: 'Start a subgroup'
     edit_group_heading: 'Edit group settings'
     edit_subgroup_heading: 'Edit subgroup settings'
     group_name: 'Group Name'
+    organization_name: 'Organization Name'
+    start_organization_heading: New organization
+    edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What do you want to call your group?'
+    organization_name_placeholder: 'What do you want to call your organization?'
     subgroup_name: 'Subgroup Name'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
@@ -769,6 +847,7 @@ en:
     confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
     confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
     confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
+    profile: Profile
 
     subgroup_privacy_is_open_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are public."
     subgroup_privacy_is_closed_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are private."
@@ -897,6 +976,8 @@ en:
   invitation_form:
     aria_label: 'Invitation form'
     invite_people: 'Invite people'
+    invite_guests: 'Invite guests'
+    notify_people: 'Notify people'
     invite_people_to_group: 'Invite to {{name}}'
     group: 'Group'
     group_placeholder: 'Select a group'
@@ -937,6 +1018,7 @@ en:
     coordinator_label: 'Admin'
     remove_member_label: 'Remove'
     fragment_placeholder: 'Filter users by name or username...'
+    only_one_admin: There is only one admin in this group. It's recommended that you appoint at least one more member as an admin.
     messages:
       remove_member_success: 'Removed {{name}}'
       make_admin_success: '{{name}} is now an admin'
@@ -1037,8 +1119,8 @@ en:
     insert_link: Insert link
 
   change_picture_form:
-    aria_label: 'Change photo form'
-    title: 'Change photo'
+    aria_label: 'Profile photo form'
+    title: 'Set profile photo'
     helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account, you can use that.'
     use_initials: 'Use initials'
     use_gravatar: 'Use Gravatar'
@@ -1191,6 +1273,7 @@ en:
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
     beginning: Beginning
+    end: End
     unread: "Unread ({{count}})"
     latest: Latest
     context: Context
@@ -1447,6 +1530,7 @@ en:
     max_score: Maximum score
     min_score: Minimum score
     too_long: Too long
+    edit_warning: Editing is only recommended for minor changes or fixing spelling errors. For significant changes, close this {{pollType}} and start a new one.
 
   poll_common_attachment_form:
     label: Attachments
@@ -1594,6 +1678,7 @@ en:
   poll_common_closing_at_field:
     closing: Closing
     closing_hour: Closing time
+    invalid_date: Invalid date
 
   poll_card:
     started_by: Started by {{name}}
@@ -1628,7 +1713,7 @@ en:
     ranked_choice: 'This ranked choice poll has closed. <strong>Share an outcome</strong> with the group.'
 
   poll_common_outcome_form:
-    new_title: Share an outcome
+    new_title: Enter an outcome
     update_title: Update outcome
     outcome_created: Outcome created
     outcome_updated: Outcome updated
@@ -1806,6 +1891,7 @@ en:
 
   poll_proposal_options:
     agree: Agree
+    consent: Consent
     agree_verb: "agreed"
     agree_meaning: This proposal is good enough to be adopted by the group
     abstain: Abstain
@@ -1814,9 +1900,14 @@ en:
     disagree: Disagree
     disagree_verb: "disagreed"
     disagree_meaning: I don’t support the proposal. It should not go ahead.
+    objection: Objection
     block: Block
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
+    agree_abstain_disagree_block: 'Agree, Abstain, Disagree, Block'
+    agree_abstain_disagree: 'Agree, Abstain, Disagree'
+    consent_abstain_object: 'Consent, Abstain, Objection'
+    no_voting: 'No voting'
 
   poll_count_options:
     'yes': 'Yes'
@@ -1982,7 +2073,7 @@ en:
       installed_title: Connected to Microsoft Teams
       installed_helptext: Events from this group will be sent to your Microsoft Team.
       install_microsoft: Integrate Microsoft Teams
-      remove_identity: Remove this integration
+      remove_identity: Remove Microsoft Teams integration
       confirm_remove_title: Remove Microsoft Teams integration
       confirm_remove_helptext: |
         Your microsoft teams channel will no longer receive updates about this group.
@@ -1990,7 +2081,7 @@ en:
       identity_removed: Integration removed
 
     form:
-      webhook_helptext: Enter the webhook URL provided by your Teams channel. <a href="/microsoft">Learn more about setting up Microsoft Teams with Loomio</a>
+      webhook_helptext: Enter the webhook URL provided by your Teams channel. <a href="https://help.loomio.org/en/user_manual/groups/integrations/#microsoft-teams">Learn more about setting up Microsoft Teams with Loomio</a>
       webhook_label: Webhook URL
       webhook_installed: Connected to Microsoft Teams
       webhook_placeholder: https://outlook.office.com/...
@@ -2007,7 +2098,7 @@ en:
 
   install_slack:
     modal_title: Integrate Slack
-    modal_helptext: First up, you'll need to sign in to slack. We'll redirect you there automatically in a second, or you can click the button below to continue.
+    modal_helptext: First up, you'll need to sign in to slack. Click the button below to continue.
     login_to_slack: Log in to Slack
     remove_slack: Remove Slack integration
 

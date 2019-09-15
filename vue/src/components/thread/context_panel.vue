@@ -16,11 +16,14 @@ export default
     actions: ThreadService.actions(@discussion, @)
 
   computed:
+    editThread: ->
+      pick(ThreadService.actions(@discussion, @), ['edit_thread'])['edit_thread']
+
     dockActions: ->
-      pick ThreadService.actions(@discussion, @), ['edit_thread']
+      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', 'edit_thread', 'edit_tags', 'announce_thread']
 
     menuActions: ->
-      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', "announce_thread", "edit_tags", 'show_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+      pick ThreadService.actions(@discussion, @), [ 'show_history', 'notification_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -45,28 +48,26 @@ export default
 </script>
 
 <template lang="pug">
-.context-panel.lmo-action-dock-wrapper#context(v-observe-visibility="{callback: viewed, once: true}")
+.context-panel.lmo-action-dock-wrapper#context(v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
   v-layout(align-center mr-3 ml-2 pt-2 wrap)
     v-breadcrumbs(:items="groups" divider=">")
     tags-display(:discussion="discussion")
     span
     v-spacer
-    action-dock(:model='discussion' :actions='dockActions')
-    action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
+    span.grey--text.body-2
+      time-ago(:date='discussion.createdAt')
 
-  h1.headline.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
+  h1.display-1.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
+    i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
-    i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
 
   .mx-4
     .context-panel__details.my-2.body-2(align-center)
       user-avatar.mr-4(:user='discussion.author()', :size='40')
       span
         router-link(:to="urlFor(discussion.author())") {{discussion.authorName()}}
-        mid-dot
-        time-ago.nowrap(:date='discussion.createdAt')
         mid-dot
         span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
           i.mdi.mdi-lock-outline
@@ -84,9 +85,12 @@ export default
       .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
         v-tooltip(bottom) {{ exact(discussion.closedAt) }}
     formatted-text.context-panel__description(:model="discussion" column="description")
-    document-list(:model='discussion' skip-fetch)
+    document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    reaction-display.mb-2(:model="discussion" fetch)
+    v-layout.my-2(align-center)
+      reaction-display.mb-2(:model="discussion" fetch)
+      action-dock(:model='discussion' :actions='dockActions')
+      action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
   v-divider
 </template>
 <style lang="sass">

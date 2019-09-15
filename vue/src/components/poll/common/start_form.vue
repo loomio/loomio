@@ -66,6 +66,6 @@ v-list.decision-tools-card__poll-types(two-line dense)
     v-list-item-avatar
       v-icon {{callFieldFromTemplate(pollType, 'material_icon')}}
     v-list-item-content
-      v-list-item-title(v-t="'new_poll_types.' + pollType")
+      v-list-item-title.text-capitalize(v-t="'new_poll_types.' + pollType")
       v-list-item-subtitle(v-t="'poll_' + pollType + '_form.tool_tip_collapsed'")
 </template>

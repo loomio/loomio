@@ -80,13 +80,13 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped)
+v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped color="transparent" floating)
   .thread-nav
     v-list(dense)
       v-list-item(:to="urlFor(discussion)" @click="scrollTo('#context')")
         v-list-item-avatar(:size="20")
           v-icon(:size="20") mdi-format-vertical-align-top
-        v-list-item-title(v-t="'activity_card.context'")
+        v-list-item-title(v-t="'activity_card.beginning'")
       //- v-slider(color="accent" track-color="accent" thumb-color="accent" thumb-size="64" v-model="inversePosition" vertical :max="0" :min="0 - discussion.createdEvent().childCount" thumb-label @change="emitPosition()")
       //-   template(v-slot:thumb-label)
       //-     | {{thumbLabel}}
@@ -100,20 +100,27 @@ v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakp
           poll-common-chart-preview(v-if="event.kind == 'poll_created'" :poll='event.model()' :size="20" :showMyStance="false")
         v-list-item-title
           span {{title(event.model())}}
-      v-list-item(:to="urlFor(discussion)+'/'+discussion.lastSequenceId()")
+      v-list-item(@click="scrollTo('#add-comment')")
         v-list-item-avatar(:size="20")
           v-icon(:size="20") mdi-format-vertical-align-bottom
-        v-list-item-title(v-t="'activity_card.latest'")
+        v-list-item-title(v-t="'activity_card.end'")
     v-divider
+    v-subheader(v-t="'thread_nav.participants'")
+      //- revent discussion event authors
     v-list(dense)
       v-list-item(@click="addPeople()")
         v-list-item-title(v-t="'invitation_form.invite_people'")
-      v-list-item(@click="scrollTo('#add-comment')")
-        v-list-item-title(v-t="'activity_card.add_comment'")
-      v-list-item(@click="openChangeVolumeModal(discussion)")
-        v-list-item-title(v-t="'thread_context.email_settings'")
-        //- v-list-item-subtitle You will be emailed whenever there is activity in this thread.
     v-divider
+
+    v-list(dense)
+      v-list-item(two-line @click="openChangeVolumeModal(discussion)")
+        v-list-item-content
+          v-list-item-title(v-t="'change_volume_form.simple.label'")
+          v-list-item-subtitle
+            span(v-t="'change_volume_form.simple.' + discussion.volume()")
+          //- v-list-item-subtitle
+          //-   span(v-t="'change_volume_form.simple.' + discussion.volume() + '_explain'")
+
 
 
     //- v-list(dense)

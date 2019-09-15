@@ -148,6 +148,17 @@ module Dev::NintiesMoviesHelper
     @discussion
   end
 
+  def create_another_discussion
+    unless @another_discussion
+      @another_discussion = Discussion.create(title: 'Waking Up in Reno',
+                                       private: false,
+                                       group: create_group,
+                                       author: jennifer)
+      DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
+    end
+    @another_discussion
+  end
+
   def create_closed_discussion
     unless @closed_discussion
       @closed_discussion = Discussion.create(title: 'This thread is old and closed',

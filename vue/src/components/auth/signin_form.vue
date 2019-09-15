@@ -16,16 +16,7 @@ export default
     signIn: ->
       # EventBus.emit $scope, 'processing'
       @user.name = @vars.name if @vars.name?
-      onSuccess = (data) =>
-        Session.apply(data)
-        @closeModal()
-        EventBus.$emit('signedIn')
-        Flash.success('auth_form.signed_in')
-      finished = ->
-        console.log 'doneProcessing'
-        # EventBus.emit $scope, 'doneProcessing';
-        # $scope.$apply();
-      AuthService.signIn(@user, onSuccess, finished).finally finished
+      AuthService.signIn(@user).finally => 'doneProcessing'
 
     signInAndSetPassword: ->
       LmoUrlService.params('set_password', true)
@@ -44,16 +35,16 @@ export default
         @sendLoginLink()
 </script>
 <template lang="pug">
-.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()" @keydown.enter="submit()")
+.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-layout(justify-center)
     auth-avatar(:user='user')
   .auth-signin-form__magic-link
     h2.title.text-center(v-t="{ path: 'auth_form.welcome_back', args: { name: user.firstName() } }")
-  .auth-signin-form__token.align-center(v-if='user.hasToken')
+  .auth-signin-form__token.text-center(v-if='user.hasToken')
     validation-errors(:subject='user', field='token')
-    v-btn.auth-signin-form__submit(color="primary" @click='submit()' v-if='!user.errors.token')
+    v-btn.my-4.auth-signin-form__submit(color="primary" @click='submit()' v-if='!user.errors.token')
       span(v-t="{ path: 'auth_form.sign_in_as', args: {name: user.name}}")
-    v-btn.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token')
+    v-btn.my-4.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token')
       span(v-t="'auth_form.login_link'")
     p
       span(v-t="'auth_form.set_password_helptext'")
@@ -65,7 +56,7 @@ export default
 
     .auth-signin-form__password(v-if='user.hasPassword')
       label(v-t="'auth_form.password'")
-      v-text-field#password.lmo-primary-form-input(name='password' password autofocus required v-model='user.password')
+      v-text-field#password.lmo-primary-form-input(name='password' type='password' autofocus required v-model='user.password')
       validation-errors(:subject='user', field='password')
 
       v-card-actions

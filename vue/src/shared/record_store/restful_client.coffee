@@ -1,7 +1,7 @@
 window.Promise = window.Promise or require 'promise-polyfill' # polyfill for Promise object
 require('promise.prototype.finally').shim()                   # polyfill for Promise.finally
 require 'whatwg-fetch'                                        # polyfill for Fetch API
-
+import { encodeParams } from '@/shared/helpers/encode_params'
 
 export default class RestfulClient
   defaultParams: {}
@@ -25,13 +25,6 @@ export default class RestfulClient
   buildUrl: (path, params) ->
     path = _.compact([@apiPrefix, @resourcePlural, path]).join('/')
     return path unless params?
-
-    # note to self, untested function.. you'll probably hate yourself for rewriting this rn
-    encodeParams = (params) ->
-      _.map(_.keys(params), (key) ->
-        encodeURIComponent(key) + "=" + encodeURIComponent(params[key])
-      ).join('&')
-
     path + "?" + encodeParams(params)
 
   memberPath: (id, action) ->

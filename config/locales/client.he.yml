@@ -57,17 +57,6 @@ he:
     wave: גל
     thumbsup: אגודל למעלה להסכמה
     thumbsdown: אגודל למטה לשלילה
-  poll_types:
-    proposal: הצעה
-    count: בדיקה
-    poll: סקר
-    dot_vote: הצבעה בנקודה
-    meeting: הצבעת זמן
-    ranked_choice: דירוג בחירה
-    score: ניקוד סקר
-  new_poll_types:
-    proposal: הצעה
-    meeting: הצבעת זמן
   timezones:
     local: זמן מקומי ({{value}})
   common:
@@ -200,25 +189,24 @@ he:
     mute: 'השתקה'
     unmute: 'הסר השתקה'
   change_volume_form:
+    simple:
+      label: התרעות
+      normal: רגיל
+      quiet: התעלמ/י
     aria_label: "טופס שינוי הגדרות המייל"
     loud_label: "כל הפעילויות"
     normal_label: "הודעות"
     quiet_label: "אין מיילים"
     mute_label: "השתקה"
     discussion:
-      title: "הגדרות מייל לשיחה"
-      loud_description: "תקבל/י הודעה במייל על כל פעילות בשיחה זו."
-      normal_description: "תקבל/י הודעה במייל כשהצעה מתחילה, עומדת להסגר, או תוצאה מפורסמת"
-      quiet_description: "לא תקבל הודעת מייל על שיחה זו."
       apply_to_all: "יישם את הגדרות אלה על כל השיחות בקבוצה זו."
       messages:
         loud: "מייל ישלח אליך על פעילות בשיחה זו."
         normal: "מייל ישלח אליך על הצעות בשיחה זו."
         quiet: "לא תקבל הודעת מייל על שיחה זו."
     membership:
-      title: "הגדרות מייל עבור {{title}}"
       loud_description: "מייל יישלח אליך כשיש פעילות בקבוצה זו."
-      normal_description: "מייל יישלח אליך רק בהכרזות בקבוצה."
+      normal_description: "מייל יישלח אליך כשיש פעילות בקבוצה זו."
       quiet_description: "מייל לא יישלח אליך בנוגע לפעילות בקבוצה."
       apply_to_all: "החל הגדרות אלו על כל הקבוצות שלי"
       messages:
@@ -226,6 +214,7 @@ he:
         normal: "מייל יישלח אליך רק בהכרזות בקבוצה"
         quiet: "לא יישלח אליך מייל בנוגע לקבוצה זו."
     all_groups:
+      loud_description: "מייל יישלח אליך על כל פעולה בקבוצות שלך."
       messages:
         loud: "מייל יישלח אליך על כל פעולה בקבוצות שלך."
         normal: "יישלחו לך מיילים רק עבור הכרזות בקבוצות שלך."
@@ -299,6 +288,8 @@ he:
     private_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה רק לחברים בקבוצה {{groupName}}.'
     public_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה לכולם.'
     sign_in: "הרשם להצטרפות לדיון"
+  thread_nav:
+    participants: משתתפים
   sidebar:
     threads: 'שיחות'
     recent_threads: 'שיחות אחרונות'
@@ -425,6 +416,7 @@ he:
     privacy_organisation: 'משתמשי {{parent}} וה{{group}} יכולו לצפות בשיחה.'
     fork_notice: 'שיחה חדשה תיווצר עם {{count}} פריטים מ{{title}}'
   announcement:
+    preview: תצוגה מקדימה
     audiences:
       parent_group: משתתפי ה{{name}}
       formal_group: משתתפי ה{{name}}
@@ -483,8 +475,6 @@ he:
     add_comment: הערה
     copy_url: העתק כתובת הדף
     edit_thread: ערוך תוכן
-    announce_thread: הזמן אנשים להצטרף לשיחה
-    announce_thread_active: (אף אחד עוד לא הוזמן)
     translate_thread: תרגום תוכן
     edit_poll: עריכת סקר
     announce_poll: הזמן אנשים להצביע
@@ -562,6 +552,10 @@ he:
     thread_status:
       pinned: "השיחה הזו הוצמדה למעלה. היא תשאר בראש רשימת השיחות בקבוצה לכל המשתמשים."
       closed: "השיחה הזו נסגרה. היא לא תופיע בדשבורד, ותופיע כ'סגורה' בדף הקבוצה."
+  group_wizard:
+    welcome: הצלחה!
+    invite_people: הזמינו אנשים
+    start_thread: התחילו בדיון
   group_page:
     threads: שיחות
     members: חברים
@@ -604,6 +598,7 @@ he:
       manage_members: 'ניהול חברים'
       add_subgroup: 'הוספת תת קבוצה'
       manage_subscription: 'ניהול מינויים של הקבוצה'
+      email_settings: 'העדפות דוא״ל'
       leave_group: 'עזוב את הקבוצה'
       deactivate_group: 'הפוך קבוצה ללא פעילה'
     volume:
@@ -645,6 +640,7 @@ he:
     edit_group_heading: 'ערוך הגדרות קבוצה'
     edit_subgroup_heading: 'ערוך הגדרות תת הקבוצה'
     group_name: 'שם הקבוצה'
+    start_organization_heading: ארגון חדש
     group_name_placeholder: 'איך תרצה לקרוא לקבוצה?'
     subgroup_name: 'שם תת הקבוצה'
     description: 'תיאור'
@@ -662,6 +658,7 @@ he:
     confirm_change_to_secret_subgroup: 'אם אתה ממשיך, כל השיחות בו יהיו פרטיות.'
     confirm_change_to_public: 'אם אתה ממשיך, כל השיחות בקבוצה יהיו פומביים וזמינים ברשת.'
     confirm_change_to_private_discussions_only: 'אם אתה ממשיך, כל שיחה פומבית בקבוצה תהפך לפרטית.'
+    profile: פרופיל
     subgroup_privacy_is_open_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פומביות."
     subgroup_privacy_is_closed_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פרטיות."
     subgroup_privacy_is_closed_public_threads_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. השיחות בתת הקבוצה הן פומביות או פרטיות."
@@ -867,7 +864,6 @@ he:
       deactivated: 'החשבון הושבת'
     change_picture_link: 'שנה תמונה'
     change_password_link: 'אפס סיסמה'
-    deactivate_user_link: 'השבת חשבון...'
     delete_account: 'מחר חשבון לצמיתות'
     delete_user_link: 'מחק חשבון'
     profile: 'פרופיל'
@@ -884,7 +880,6 @@ he:
     location_label: 'מיקום'
     location_placeholder: 'איפה אתה ממוקם?'
     update_profile: 'עדכן פרופיל'
-    deactivate_account: 'השבת חשבון'
     help_translate: "עזור לנו לתרגם את המערכת"
   text_editor:
     select_text_to_link: בחר טקסט לחיבור
@@ -897,7 +892,6 @@ he:
     set_password: הגדר סיסמה
     password_changed: סיסמתך עודכנה
   deactivation_modal:
-    aria_label: 'השבת חשבון'
     introduction: 'כשאתה משבית את חשבונך:'
     no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
     name_removed: 'הערות, הצעות ודיונים שביצעת ישראו אבל השם שלך יוסר מהם'
@@ -905,7 +899,6 @@ he:
     you_can_reactivate: "אם תרצה, תוכל לאקטב את החשבון שלך מחדש בשלב מאוחר יותר "
     submit: 'כן, אני רוצה להשבית'
   delete_user_modal:
-    title: 'מחק את חשבון המשתמש שלך'
     irreversable: "אזהרה: פעולה זו לא ניתנת לביטול. אם אתה ממשיך:"
     you_will_be_deleted: "חשבון המשתמש שלך כולל שמך, כתובת הדוא\"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו."
     submit: 'כן, מחק את חשבון המשתמש שלי'
@@ -1367,7 +1360,6 @@ he:
     dot_vote: 'בחירת הנקודות הזו נסגרה. <storng>שתף את התוצאה</strong> עם הקבוצה.'
     ranked_choice: 'הסקר הדירוג הזה נסגר. <strong>שתף את התוצאה</strong> עם הקבוצה.'
   poll_common_outcome_form:
-    new_title: שתף תוצאה
     update_title: עדכן תוצאה
     outcome_created: תוצאה נוצרה
     outcome_updated: תוצאה עודכנה
@@ -1636,13 +1628,11 @@ he:
       install_helptext: הבוט של Loomio הודיע לקבוצה שלך על הדיונים וההחלטות בLoomio
       installed_title: מחובר לMicrosoft Teams
       installed_helptext: אירועים מקבוצה זו יישלחו לMicrosoft Teams שלך.
-      remove_identity: הסר אינטגרציה זו
       confirm_remove_helptext: |
           ערוץ הMicrosoft Teams שלך לא יקבל עוד עדכונים על קבוצה זו.
           אתה יכול תמיד להחזיר אותו שוב.
       identity_removed: אינטגרציה הוסרה
     form:
-      webhook_helptext: הזן את הwebhook URL שקיבלת בערוץ הצוותים שלך. <a href="/microsoft">למד עוד על הגדרת Microsoft Teams עם Loomio</a>
       webhook_label: Webhook URL
       webhook_installed: מחובר לMicrosoft Teams
       webhook_placeholder: https://outlook.office.com/...
@@ -1656,7 +1646,6 @@ he:
       poll_expired: סקר הסתיים
       outcome_created: שותפה תוצאה
   install_slack:
-    modal_helptext: ראשית כל, עליך להתחבר לסלאק. אנחנו נעביר אותך לשם אוטומטית עוד שניה, או שאתה יכול ללחוץ על הכפתור למטה להמשיך.
     login_to_slack: התחבר לSlack
     card:
       install_title: קשר לSlack

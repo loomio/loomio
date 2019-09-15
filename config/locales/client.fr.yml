@@ -60,17 +60,6 @@ fr:
     wave: Salut
     thumbsup: Pouce levé
     thumbsdown: ' Pouce baissé'
-  poll_types:
-    proposal: Proposition
-    count: Vérification
-    poll: Sondage
-    dot_vote: Vote à points
-    meeting: Sondage horaire de réunion
-    ranked_choice: Classement par préférence
-    score: Vote pondéré
-  new_poll_types:
-    proposal: Proposition
-    meeting: Sondage horaire de réunion
   timezones:
     local: Heure locale ({{value}})
   common:
@@ -204,25 +193,24 @@ fr:
     mute: 'Ignorer'
     unmute: 'Suivre de nouveau'
   change_volume_form:
+    simple:
+      label: Notifications
+      normal: Normal
+      quiet: Ignorer
     aria_label: "Formulaire des paramètres de notification"
     loud_label: "Toute l’activité"
     normal_label: "Nouvelles discussions et décisions"
     quiet_label: "Aucun courriel"
     mute_label: "Ignorer"
     discussion:
-      title: "Paramètres du fil e-mail"
-      loud_description: "Vous recevrez un courriel à chaque fois qu’il y aura une activité dans cette discussion."
-      normal_description: "Vous recevrez un courriel lorsqu’une décision est lancée ou sur le point de fermer, et quand un résultat est publié."
-      quiet_description: "Vous ne recevrez aucun courriel à propos de cette discussion."
       apply_to_all: "Appliquer ces paramètres à toutes les discussions de ce groupe."
       messages:
         loud: "Vous recevrez un courriel lorsqu’il y aura une activité dans cette discussion."
         normal: "Vous recevrez un courriel lorsqu’il y aura une proposition dans cette discussion."
         quiet: "Vous ne recevrez aucun courriel à propos de cette discussion."
     membership:
-      title: "Paramètres courriel pour {{title}}"
       loud_description: "Vous recevrez un courriel à chaque fois qu’il y a une activité dans ce groupe."
-      normal_description: "Vous recevrez un courriel lorsqu’il y aura une nouvelle discussion ou décision dans ce groupe."
+      normal_description: "Vous recevrez un courriel à chaque fois qu’il y a une activité dans ce groupe."
       quiet_description: "Vous ne recevrez aucun courriel concernant l’activité de ce groupe."
       apply_to_all: "Appliquer ces paramètres à tous mes groupes."
       messages:
@@ -230,6 +218,7 @@ fr:
         normal: "Vous recevrez un courriel lorsqu’il y aura une nouvelle discussion ou décision dans ce groupe."
         quiet: "Vous ne recevrez aucun courriel concernant ce groupe."
     all_groups:
+      loud_description: "Vous recevrez un courriel lorsqu’il y aura une activité dans l’un de vos groupes."
       messages:
         loud: "Vous recevrez un courriel lorsqu’il y aura une activité dans l’un de vos groupes."
         normal: "Vous ne recevrez de courriel que s’il y a nouvelle discussion ou décision dans un de vos groupes."
@@ -303,6 +292,8 @@ fr:
     private_privacy_notice: 'Votre commentaire sera visible seulement des membres de {{groupName}}.'
     public_privacy_notice: 'Votre commentaire sera visible par tout le monde sur internet.'
     sign_in: "Connectez-vous pour rejoindre la discussion"
+  thread_nav:
+    participants: Participants
   sidebar:
     threads: 'Discussions'
     my_groups: 'Mes groupes'
@@ -431,6 +422,7 @@ fr:
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
     fork_notice: 'Une nouvelle discussion sera créée avec {{count}} items de {{title}}'
   announcement:
+    preview: Prévisualiser
     audiences:
       parent_group: Membres de {{name}}
       formal_group: Membres de {{name}}
@@ -489,8 +481,7 @@ fr:
     add_comment: Ajouter un commentaire
     copy_url: Copier l’URL
     edit_thread: Modifier le contexte
-    announce_thread: Inviter des personnes dans votre discussion
-    announce_thread_active: (Personne n'a encore été invité)
+    invite_guests: Inviter des personnes
     translate_thread: Afficher une traduction automatique du contexte
     edit_poll: Modifier le sondage
     announce_poll: Inviter des personnes au vote
@@ -569,6 +560,10 @@ fr:
     thread_status:
       pinned: "Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour l’ensemble des utilisateurs."
       closed: "Cette discussion a été close. Elle ne sera plus affichée sur le tableau de bord, et sera affichée dans les discussions closes sur la page du groupe"
+  group_wizard:
+    welcome: Réussite!
+    invite_people: Inviter des personnes
+    start_thread: Démarrer une discussion
   group_page:
     threads: Discussions
     members: Membres
@@ -611,6 +606,7 @@ fr:
       manage_members: 'Gérer les membres'
       add_subgroup: 'Ajouter un sous-groupe'
       manage_subscription: 'Gérer les inscriptions au groupe'
+      email_settings: 'Préférences de courriel'
       leave_group: 'Quitter le groupe'
       deactivate_group: 'Désactiver le groupe'
     volume:
@@ -652,6 +648,7 @@ fr:
     edit_group_heading: 'Modifier les paramètres du groupe'
     edit_subgroup_heading: 'Modifier les paramètres du sous-groupe'
     group_name: 'Nom du groupe'
+    start_organization_heading: Nouveau groupe
     group_name_placeholder: 'Comment voulez-vous nommer votre groupe ?'
     subgroup_name: 'Nom du sous-groupe'
     description: 'Description'
@@ -669,6 +666,7 @@ fr:
     confirm_change_to_secret_subgroup: 'Si vous confirmez, toutes les discussions seront rendues privées.'
     confirm_change_to_public: 'Si vous confirmez, toutes les discussions de ce groupe seront rendues publiques.'
     confirm_change_to_private_discussions_only: 'Si vous confirmez, toutes les discussions publiques dans ce groupe seront rendues privées.'
+    profile: Profil
     subgroup_privacy_is_open_description: "Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans le groupe. Toutes les discussions sont publiques."
     subgroup_privacy_is_closed_description: "Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans ce groupe. Toutes les discussions sont privées."
     subgroup_privacy_is_closed_public_threads_description: "Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans le groupe. Les discussions peuvent être publiques ou privées."
@@ -778,6 +776,7 @@ fr:
   invitation_form:
     aria_label: 'Formulaire d’invitation'
     invite_people: 'Inviter des personnes'
+    invite_guests: 'Inviter des personnes'
     invite_people_to_group: 'Invitation à {{name}}'
     group: 'Groupe'
     group_placeholder: 'Sélectionnez un groupe'
@@ -874,7 +873,6 @@ fr:
       deactivated: 'Compte désactivé'
     change_picture_link: 'Changer de photo'
     change_password_link: 'Réinitialiser mon mot de passe'
-    deactivate_user_link: 'Désactiver mon compte…'
     delete_account: 'Supprimer définitivement le compte'
     delete_user_link: 'Supprimer le compte'
     profile: 'Profil'
@@ -891,7 +889,6 @@ fr:
     location_label: 'Lieu'
     location_placeholder: 'Où êtes-vous ?'
     update_profile: 'Mettre à jour mon profil'
-    deactivate_account: 'Désactiver mon compte'
     help_translate: "Aidez-nous à traduire Loomio"
   text_editor:
     select_text_to_link: Sélectionnez le texte du lien
@@ -904,7 +901,6 @@ fr:
     set_password: Définir un mot de passe
     password_changed: Votre mot de passe a été mis à jour
   deactivation_modal:
-    aria_label: 'Désactiver mon compte'
     introduction: 'Quand vous désactivez votre compte :'
     no_longer_group_member: 'Vous ne serez plus enregistré comme membre d’aucun groupe'
     name_removed: 'Les commentaires, les décisions et les discussions que vous avez fait resteront mais votre nom en sera retiré'
@@ -912,7 +908,6 @@ fr:
     you_can_reactivate: "Vous pouvez réactiver votre compte ultérieurement si vous le souhaitez."
     submit: 'Oui, je veux désactiver'
   delete_user_modal:
-    title: 'Supprimer votre compte'
     irreversable: "AVERTISSEMENT : Ceci ne peut pas être annulé. Si vous continuez :"
     you_will_be_deleted: "Votre compte d'utilisateur, y compris votre nom, votre adresse e-mail et d'autres données d'identification personnelle seront supprimés de nos systèmes."
     submit: 'Oui, supprimer mon compte'
@@ -1374,7 +1369,6 @@ fr:
     dot_vote: 'Ce vote à point est fermé. <strong>Partagez un résultat</strong> avec le groupe.'
     ranked_choice: 'Ce classement par préférence est fermé. <strong>Partagez un résultat</strong> avec le groupe.'
   poll_common_outcome_form:
-    new_title: Partager un résultat
     update_title: Mettre à jour le résultat
     outcome_created: Résultat créé
     outcome_updated: Résultat mis à jour
@@ -1643,7 +1637,6 @@ fr:
       install_helptext: Le robot Loomio envoie des notifications à votre équipe concernant les discussions et les décisions qui ont lieu sur Loomio.
       installed_title: Connecté·e à Microsoft Teams
       installed_helptext: Les événements de ce groupe seront envoyés vers votre équipe Microsoft Team.
-      remove_identity: Retirer cette intégration
       confirm_remove_helptext: |
           Votre canal d'équipes Microsoft ne recevra plus les mises à jour de ce groupe.
           Vous pourrez toujours les ajouter de nouveau.
@@ -1661,7 +1654,6 @@ fr:
       poll_expired: Un sondage est achevé
       outcome_created: Un bilan a été partagé
   install_slack:
-    modal_helptext: Pour commencer, connectez-vous à Slack. Nous vous redirigerons là dans un instant, ou vous pouvez cliquer ci-dessous pour continuer.
     login_to_slack: Se connecter à Slack
     card:
       install_title: Se connecter à Slack

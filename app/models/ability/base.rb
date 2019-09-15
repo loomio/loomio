@@ -30,15 +30,8 @@ module Ability
 
     private
 
-    # expect to replace this with proper accept membership modal soon
-    def accept_pending_membership_for!(group)
-      if membership = group.memberships.pending.find_by(user: @user)
-        MembershipService.redeem(membership: membership, actor: @user)
-      end
-    end
-
     def user_is_member_of?(group_id)
-      @user.memberships.active.find_by(group_id: group_id)
+      @user.memberships.find_by(group_id: group_id)
     end
 
     def user_is_admin_of?(group_id)
@@ -46,7 +39,7 @@ module Ability
     end
 
     def user_is_member_of_any?(groups)
-      @user.memberships.active.find_by(group: groups)
+      @user.memberships.find_by(group: groups)
     end
 
     def user_is_admin_of_any?(groups)

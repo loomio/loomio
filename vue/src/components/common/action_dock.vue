@@ -7,11 +7,11 @@ export default
 
 <template lang="pug">
 .action-dock.lmo-no-print
-  .action-dock__action(v-for='(action, name) in actions' v-if='action.canPerform()' :key="name")
+  .action-dock__action.mr-1(v-for='(action, name) in actions' v-if='action.canPerform()' :key="name")
     reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'")
     v-tooltip(bottom v-if="name != 'react'")
       template(v-slot:activator="{ on }")
-        v-btn(v-on="on" icon small :title="$t(action.name || 'action_dock.' + name)" :class='`action-dock__button--${name}`' @click.prevent='action.perform()')
+        v-btn(v-on="on" icon title="$t(action.name || 'action_dock.' + name)" :class='`action-dock__button--${name}`' @click.prevent='action.perform()')
           v-icon {{action.icon}}
       span(v-t="action.name || 'action_dock.'+name")
 </template>

@@ -3,13 +3,6 @@ mi:
     name_label: Ingoa
   reactions:
     slight_smile: Rawe
-  poll_types:
-    proposal: He whakatakoto
-    count: Whakatika
-    poll: Pōti
-    dot_vote: Pōti ira
-  new_poll_types:
-    proposal: He whakatakoto
   common:
     expand: Whakanui
     ok_got_it: Kei te pai, kua mau
@@ -101,10 +94,10 @@ mi:
     mute: 'Whakahāngūtia'
     unmute: 'Whakahoitia'
   change_volume_form:
+    simple:
+      label: Ngā kōrero pūrongo
     aria_label: "Whakahuritia ngā kōwhiringa īmēra"
     mute_label: "Whakahāngūtia"
-    membership:
-      title: "Kōwhiringa īmēra o {{title}}"
   mute_explanation_modal:
     aria_label: Whakahāngūtia te miro
     mute_thread: Whakahāngūtia te miro
@@ -142,6 +135,8 @@ mi:
     group_label: 'Rōpū'
     title_label: 'Taitara'
     privacy_label: 'Matatapu'
+  announcement:
+    preview: Arokite
   action_dock:
     edit_stance: Whakahuritia tōu whakapono-ā-tuhi
   membership_request_form:

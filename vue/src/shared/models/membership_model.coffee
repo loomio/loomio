@@ -37,8 +37,7 @@ export default class MembershipModel extends BaseModel
       unsubscribe_token: @user().unsubscribeToken
     ).then =>
       if applyToAll
-        _.each @user().allThreads(), (thread) ->
-          thread.update(discussionReaderVolume: null)
+        @recordStore.discussions.collection.find({ groupId: { $in: @group().organisationIds() } }).forEach((discussion) -> discussion.update(discussionReaderVolume: null))
         _.each @user().memberships(), (membership) ->
           membership.update(volume: volume)
       else

@@ -13,19 +13,19 @@ export eventHeadline = (event, useNesting = false) ->
   "thread_item.#{key}"
 
 export eventTitle = (event) ->
-  switch event.eventable.type
-    when 'comment'             then event.model().parentAuthorName
-    when 'poll', 'outcome'     then event.model().poll().title
-    when 'group', 'membership' then event.model().group().name
-    when 'stance'              then event.model().poll().title
-    when 'discussion'
+  switch event.eventableType
+    when 'Comment'             then event.model().parentAuthorName
+    when 'Poll', 'Outcome'     then event.model().poll().title
+    when 'Group', 'Membership' then event.model().group().name
+    when 'Stance'              then event.model().poll().title
+    when 'Discussion'
       if event.kind == 'discussion_moved'
         Records.groups.find(event.sourceGroupId).fullName
       else
         event.model().title
 
 export eventPollType = (event) ->
-  return "" unless _.includes ['poll', 'stance', 'outcome'], event.eventable.type
+  return "" unless _.includes ['Poll', 'Stance', 'Outcome'], event.eventableType
   "poll_types.#{event.model().poll().pollType}"
 
 export emojiTitle = (shortname) ->

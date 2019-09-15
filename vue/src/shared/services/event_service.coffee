@@ -1,5 +1,6 @@
 import AbilityService from '@/shared/services/ability_service'
 import Flash from '@/shared/services/flash'
+import openModal from '@/shared/helpers/open_modal'
 
 export default new class EventService
   actions: (event, vm) ->

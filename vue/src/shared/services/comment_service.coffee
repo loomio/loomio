@@ -6,6 +6,16 @@ import openModal from '@/shared/helpers/open_modal'
 
 export default new class CommentService
   actions: (comment, vm) ->
+    notification_history:
+      name: 'action_dock.notification_history'
+      icon: 'mdi-alarm-check'
+      perform: ->
+        openModal
+          component: 'AnnouncementHistory'
+          props:
+            model: comment
+      canPerform: -> true
+
     react:
       canPerform: -> AbilityService.canAddComment(comment.discussion())
 
@@ -30,9 +40,9 @@ export default new class CommentService
           props:
             comment: comment.clone()
 
-    fork_comment:
+    move_comments:
       icon: 'mdi-call-split'
-      canPerform: -> AbilityService.canForkComment(comment)
+      canPerform: -> AbilityService.canMoveComment(comment)
       perform: -> comment.createdEvent().toggleFromFork()
 
     translate_comment:

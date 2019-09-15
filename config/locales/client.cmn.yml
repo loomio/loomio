@@ -31,10 +31,6 @@ cmn:
     v: 和平
     ok_hand: 好
     wave: 挥手
-  poll_types:
-    proposal: 议案
-  new_poll_types:
-    proposal: 议案
   common:
     group: '组'
     groups: '组群'
@@ -64,6 +60,9 @@ cmn:
   membership_request_form:
     name_label: 名字
     email_label: 邮件
+  group_wizard:
+    invite_people: 邀请人
+    start_thread: 开始讨论
   group_page:
     threads: 讨论
     members: 成员

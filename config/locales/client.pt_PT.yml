@@ -5,3 +5,6 @@ pt_PT:
     forbidden: 'Não tem permissão para o fazer.'
   discussion_form:
     privacy_label: 'Privacidade'
+  group_page:
+    options:
+      email_settings: 'Preferências de Email'

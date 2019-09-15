@@ -54,17 +54,6 @@ pt_BR:
     metal: Metal
     ok_hand: Ok
     wave: Dar tchauzinho
-  poll_types:
-    proposal: Proposta
-    count: Verificar
-    poll: Votação
-    dot_vote: Voto de ponto
-    meeting: Tempo de votação
-    ranked_choice: Escolha classificada
-  new_poll_types:
-    proposal: Proposta
-    count: Contagem
-    meeting: Tempo de votação
   timezones:
     local: Hora local ({{value}})
   common:
@@ -191,25 +180,24 @@ pt_BR:
     mute: 'Mudo'
     unmute: 'Com som'
   change_volume_form:
+    simple:
+      label: Notificações
+      normal: Normal
+      quiet: 'Ignorar '
     aria_label: "Formulário para alteração de configurações de e-mail"
     loud_label: "Toda atividade"
     normal_label: "Anúncios"
     quiet_label: "Sem e-mails"
     mute_label: "Mudo"
     discussion:
-      title: "Configuração de Conversas de Email"
-      loud_description: "Um email será enviado para você sempre que houver alguma atividade nesta conversa."
-      normal_description: "Você receberá e-mail sempre que uma propostafor iniciado, estiver prestes a fechar, ou um resultado for publicado."
-      quiet_description: "Você não receberá e-mails sobre esta conversa."
       apply_to_all: "Aplicar estas configurações para as conversas neste grupo."
       messages:
         loud: "Serão enviados e-mails das atividades nesta conversa."
         normal: "Serão enviados e-mails sobre propostas nesta conversa."
         quiet: "Você não receberá e-mails sobre este conversa."
     membership:
-      title: "Configurações de e-mail para {{title}}"
       loud_description: "Você receberá e-mail sempre que houver atividade neste grupo."
-      normal_description: "Você receberá somente emails de anúncios neste grupo."
+      normal_description: "Você receberá e-mail sempre que houver atividade neste grupo."
       quiet_description: "Você não receberá e-mail sobre atividade neste grupo."
       apply_to_all: "Aplicar estas configurações para todos os meus grupos."
       messages:
@@ -217,6 +205,7 @@ pt_BR:
         normal: "Você receberá somente emails de anúncios neste grupo."
         quiet: "Você não receberá e-mail sobre este grupo."
     all_groups:
+      loud_description: "Você receberá e-mails de todas as atividades em todos os seus grupos."
       messages:
         loud: "Você receberá e-mails de todas as atividades em todos os seus grupos."
         normal: "Você receberá somente emails de anúncios em todos os seus grupos."
@@ -290,6 +279,8 @@ pt_BR:
     private_privacy_notice: 'Seu comentário será visível apenas para os membros de {{groupName}}.'
     public_privacy_notice: 'Seu comentário será visível para qualquer pessoa na web'
     sign_in: "Entre para se juntar à conversa"
+  thread_nav:
+    participants: Participantes
   sidebar:
     threads: 'Conversas'
     my_groups: 'Meus grupos'
@@ -404,6 +395,7 @@ pt_BR:
     privacy_organisation: 'A conversa será visível para os membros de {{parent}} e membros de {{group}}.'
     fork_notice: 'A nova conversa será criada com {{count}} itens de {{title}}'
   announcement:
+    preview: Visualização
     audiences:
       discussion_group: Membros da conversa
       voters: Pessoas que já votaram
@@ -448,7 +440,6 @@ pt_BR:
     add_comment: 'Comentario '
     copy_url: Copiar URL
     edit_thread: Editar contexto
-    announce_thread: Convidar pessoas para se juntar a conversa
     translate_thread: Traduzir contexto
     edit_stance: Modificar posição
     translate_stance: Traduzir voto
@@ -514,6 +505,10 @@ pt_BR:
     thread_status:
       pinned: "Esta conversa foi afixada. Ela permanecerá no topo da lista de conversas do grupo para todos os usuários."
       closed: "Esta conversa foi encerrada. Ela não aparecerá no painel, e será listada na categoria 'encerrada' na página do grupo."
+  group_wizard:
+    welcome: Sucesso!
+    invite_people: Convidar pessoas
+    start_thread: Iniciar uma discussão
   group_page:
     threads: Conversas
     members: Membros ({{count}})
@@ -548,6 +543,7 @@ pt_BR:
       manage_members: 'Gerenciar Membros'
       add_subgroup: 'Adicionar Subgrupo'
       manage_subscription: 'Gerenciar Inscrições do Grupo '
+      email_settings: 'Preferências de e-mail'
       leave_group: 'Sair do Grupo'
       deactivate_group: 'Desativar Grupo'
     volume:
@@ -605,6 +601,7 @@ pt_BR:
     confirm_change_to_secret_subgroup: 'Se você continuar, todas as conversas serão privadas.'
     confirm_change_to_public: 'Se você continuar, as conversas neste grupo serão públicas na web.'
     confirm_change_to_private_discussions_only: 'Se você continuar, qualquer conversa pública deste grupo ficará privada.'
+    profile: Perfil
     subgroup_privacy_is_open_description: "Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são públicas."
     subgroup_privacy_is_closed_description: "Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Todas as conversas são privadas."
     subgroup_privacy_is_closed_public_threads_description: "Qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente membros podem ver quem está no grupo. Conversas podem ser públicas ou privadas."
@@ -751,7 +748,6 @@ pt_BR:
       password_changed: 'Senha atualizada'
       deactivated: 'Conta desativada'
     change_picture_link: 'Mudar imagem'
-    deactivate_user_link: 'Desativar conta...'
     profile: 'Perfil'
     edit_profile: 'Editar Perfil'
     picture_label: 'Imagem'
@@ -761,7 +757,6 @@ pt_BR:
     short_bio_label: 'Apresentação'
     locale_label: 'Idioma'
     update_profile: 'Atualizar perfil'
-    deactivate_account: 'Desativar conta'
     help_translate: "Nos ajude a traduzir a Loomio"
   change_picture_form:
     use_initials: 'Usar iniciais'
@@ -769,7 +764,6 @@ pt_BR:
   change_password_form:
     password_changed: Sua senha foi atualizada
   deactivation_modal:
-    aria_label: 'Desativar conta'
     introduction: 'Quando você desativa sua conta:'
     no_longer_group_member: 'Você deixará de ser listado como membro de todos os grupos'
     name_removed: 'Comentários, propostas e discussões feitas por você permanecerão, mas seu nome será removido dos mesmos'
@@ -1094,7 +1088,6 @@ pt_BR:
     poll: 'Esta votação foi encerrada. <strong>Compartilhe o resultado</strong>com o grupo.'
     proposal: 'Esta proposta foi encerrada. Por favor considere o que foi discutido e <strong>compartilhe o resultado</strong>, para que as pessoas saibam o que acontecerá na sequência.'
   poll_common_outcome_form:
-    new_title: Compartilhar um resultado
     update_title: Atualizar resultado
     outcome_created: Resultado criado
     outcome_updated: Resultado atualizado

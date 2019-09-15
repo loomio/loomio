@@ -20,15 +20,6 @@ da:
     worried: Bekymret
     neutral_face: Neutral
     angry: Sur
-  poll_types:
-    proposal: Forslag
-    count: Checkmåling
-    poll: Meningsmåling
-    dot_vote: Prikafstemning
-    meeting: Find tidspunkt
-  new_poll_types:
-    proposal: Forslag
-    meeting: Find et tidspunkt
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -129,24 +120,24 @@ da:
     mute: 'Slået fra'
     unmute: 'Slået til'
   change_volume_form:
+    simple:
+      label: Notifikationer
+      normal: Normal
+      quiet: Ignorér
     aria_label: "Rediger emailindstillinger"
     loud_label: "Al aktivitet"
     normal_label: "Normal"
     quiet_label: "Ingen emails"
     mute_label: "Slå fra"
     discussion:
-      loud_description: "Du vil modtage en email hver gang der er aktivitet på denne debat."
-      normal_description: "Du vil modtage en email hver gang et forslag er oprettet, ved at lukke, eller et resultat er publiceret."
-      quiet_description: "Du vil ikke modtage nogen email ved nogen aktiviteter på denne debat."
       apply_to_all: "Gem disse indstillinger for alle debatter i denne gruppe."
       messages:
         loud: "Du vil få emails ved enhver aktivitet i denne debat."
         normal: "Du vil få email ved forslag i denne debat."
         quiet: "Du vil ikke få emails ved aktivitet i denne debat."
     membership:
-      title: "Emailindstillinger for {{title}}"
       loud_description: "Du vil modtage en email hver gang der er aktivitet i denne gruppe."
-      normal_description: "Du vil modtage en email hver ved publiceringer i denne gruppe."
+      normal_description: "Du vil modtage en email hver gang der er aktivitet i denne gruppe."
       quiet_description: "Du vil ikke modtage emails ved nogen aktivitet i denne gruppe."
       apply_to_all: "Gem disse indstillinger for all mine grupper."
       messages:
@@ -154,6 +145,7 @@ da:
         normal: "Du vil få emails ved publiceringer i denne gruppe."
         quiet: "Du vil ikke få emails ved nogen aktivitet i denne gruppe."
     all_groups:
+      loud_description: "Du vil få emails ved enhver aktivitet i alle dine grupper."
       messages:
         loud: "Du vil få emails ved enhver aktivitet i alle dine grupper."
         normal: "Du vil få emails ved publiceringer i alle dine grupper."
@@ -340,6 +332,9 @@ da:
     edited_by: 'Redigeret af <strong>{{name}}</strong>'
     posted: Gemt
     current_revision: Seneste
+  group_wizard:
+    invite_people: Inviter folk
+    start_thread: Start en diskussion
   group_page:
     threads: Debatter
     members: Medlemmer
@@ -367,6 +362,7 @@ da:
       manage_members: 'Administrer medlemmer'
       add_subgroup: 'Opret undergruppe'
       manage_subscription: 'Administrer gruppe abonnement'
+      email_settings: 'E-mail-indstillinger'
       leave_group: 'Forlad gruppe'
       deactivate_group: 'Deaktiver gruppe'
     volume:
@@ -424,6 +420,7 @@ da:
     confirm_change_to_secret_subgroup: 'vis du fortsætter så vil alle debatter i denne gruppe være private.'
     confirm_change_to_public: 'Hvis du fortsætter så vil alle debatter i denne gruppe være offentlige (alle på internettet kan læse dem).'
     confirm_change_to_private_discussions_only: 'Hvis du fortsætter så vil alle offentlige debatter i denne gruppe blive lavet om til private debatter.'
+    profile: Profil
     subgroup_privacy_is_open_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er offentlige (alle på internettet kan læse dem)."
     subgroup_privacy_is_closed_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er private."
     subgroup_privacy_is_closed_public_threads_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen.  Debatter kan være offentlige eller private."
@@ -547,7 +544,6 @@ da:
       deactivated: 'Konto deaktiveret'
     change_picture_link: 'Rediger billede'
     change_password_link: 'Skift adgangskode'
-    deactivate_user_link: 'Deaktiver konto...'
     profile: 'Profil'
     edit_profile: 'Rediger Profil'
     picture_label: 'Billede'
@@ -556,13 +552,11 @@ da:
     email_label: 'Email'
     locale_label: 'Sprog'
     update_profile: 'Gem profil'
-    deactivate_account: 'Deaktiver konto'
   change_picture_form:
     helptext: 'Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.'
     use_initials: 'Benyt initialer'
     use_gravatar: 'Brug Gravatar'
   deactivation_modal:
-    aria_label: 'Deaktiver konto'
     introduction: 'Når du deaktiverer din konto:'
     no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
     name_removed: 'Kommentarer, forslag og debatter som du har lavet vil forblive men dit navn vil blive fjernet fra dem'
@@ -883,7 +877,6 @@ da:
     meeting: 'Denne Find Tidspunkt måling er afsluttet. <strong>Del tidspunktet</strong> så alle ved hvornår mødet afholdes.'
     dot_vote: 'Denne prikafstemning er afsluttet. <storng>Del resultatet</strong> med gruppen.'
   poll_common_outcome_form:
-    new_title: Del et resultat
     update_title: Rediger resultat
     outcome_created: Resultat oprettet
     outcome_updated: Resultat gemt

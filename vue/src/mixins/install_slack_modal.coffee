@@ -8,6 +8,7 @@ export default
                       props: {
                         group: group,
                         preventClose: preventClose
+                        close: -> EventBus.$emit 'closeModal'
                       })
 
     closeModal: ->

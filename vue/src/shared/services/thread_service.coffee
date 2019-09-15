@@ -9,6 +9,16 @@ import ConfirmModalMixin from '@/mixins/confirm_modal'
 
 export default new class ThreadService
   actions: (discussion, vm) ->
+    notification_history:
+      name: 'action_dock.notification_history'
+      icon: 'mdi-alarm-check'
+      perform: ->
+        openModal
+          component: 'AnnouncementHistory'
+          props:
+            model: discussion
+      canPerform: -> true
+
     pin_thread:
       icon: 'mdi-pin'
       name: 'action_dock.pin_thread'
@@ -40,7 +50,7 @@ export default new class ThreadService
       perform: => @dismiss(discussion)
 
     announce_thread:
-      icon: 'mdi-bullhorn'
+      icon: 'mdi-send'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
         openModal

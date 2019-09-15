@@ -15,6 +15,7 @@ import ChangePasswordForm from '@/components/profile/change_password_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
 import AnnouncementForm from '@/components/announcement/form'
+import AnnouncementHistory from '@/components/announcement/history'
 import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
@@ -22,6 +23,10 @@ import TagsModal from '@/components/tags/modal'
 import InstallSlackModal from '@/components/install_slack/modal'
 import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/modal'
 import ChangePictureForm from '@/components/profile/change_picture_form'
+import GroupNewForm from '@/components/group/new_form'
+import GroupWizard from '@/components/group/wizard'
+import UserWizard from '@/components/profile/wizard'
+import MoveCommentsModal from '@/components/discussion/move_comments_modal'
 
 export default
   components:
@@ -40,6 +45,7 @@ export default
     'PollCommonOutcomeModal': PollCommonOutcomeModal
     'PollCommonReopenModal': PollCommonReopenModal
     'AnnouncementForm': AnnouncementForm
+    'AnnouncementHistory': AnnouncementHistory
     'MoveThreadForm': MoveThreadForm
     'PollCommonAddOptionModal': PollCommonAddOptionModal
     'RevisionHistoryModal': RevisionHistoryModal
@@ -47,6 +53,10 @@ export default
     'InstallSlackModal': InstallSlackModal
     'InstallMicrosoftTeamsModal': InstallMicrosoftTeamsModal
     'ChangePictureForm': ChangePictureForm
+    'GroupNewForm': GroupNewForm
+    'GroupWizard': GroupWizard
+    'UserWizard': UserWizard
+    'MoveCommentsModal': MoveCommentsModal
   data: ->
     isOpen: false
     componentName: ""

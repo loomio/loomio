@@ -1,8 +1,6 @@
 sr:
   loomio_tags:
     name_label: Ime
-  new_poll_types:
-    proposal: Predlog
   common:
     confirm_discard_changes: Otkaži promene?
     time:
@@ -69,27 +67,29 @@ sr:
     mute: 'Isključeno'
     unmute: 'Uključi'
   change_volume_form:
+    simple:
+      label: Obaveštenja
+      normal: Normalno
+      quiet: Ignoriši
     loud_label: "Sva aktivnost"
     quiet_label: "Nema ePoruka"
     mute_label: "Utišaj"
     discussion:
-      loud_description: "Dobičete ePoruku kada god ima aktivnosti u ovoj niti."
-      normal_description: "Dobićete ePoruku kada se pojavi predlog, pred njegovo zatvaranje ili kada je ishod određen."
-      quiet_description: "Nećete biti obaveštavani o ovoj niti."
       apply_to_all: "Primeni ove opcije na svim nitima u ovoj grupi."
       messages:
         loud: "Dobićete ePoruku o aktivnostima u ovoj niti."
         normal: "Bićete obavešteni ePorukom o predlozima u ovoj niti."
         quiet: "Nećete biti obaveštavani ePorukom o ovoj grupi."
     membership:
-      title: "Opcije ePoruka za {{title}}"
       loud_description: "Dobićete ePoruku kada god ima aktivnosti u ovoj grupi."
+      normal_description: "Dobićete ePoruku kada god ima aktivnosti u ovoj grupi."
       quiet_description: "Nećete dobijati ePoruke o aktivnostima u ovoj grupi."
       apply_to_all: "Primeni ove opcije na sve moje grupe."
       messages:
         loud: "Bićete obaveštavani ePorukama o svim aktivnostima u ovoj grupi."
         quiet: "Nećete biti obaveštavani ePorukom o ovoj grupi."
     all_groups:
+      loud_description: "Bićete obaveštavani ePorukama o svim aktivnostima u svakoj Vašoj grupi."
       messages:
         loud: "Bićete obaveštavani ePorukama o svim aktivnostima u svakoj Vašoj grupi."
         quiet: "Nećete primati ePoruke ni o jednoj od vaših grupa."
@@ -203,6 +203,9 @@ sr:
     edited_by: 'Izmenjeno od <strong>{{name}}</strong>'
     posted: Postavljeno
     current_revision: Poslednje
+  group_wizard:
+    invite_people: Pozovi ljude
+    start_thread: Započni diskusiju
   group_page:
     threads: Niti
     members: Članovi
@@ -227,6 +230,7 @@ sr:
       manage_members: 'Upravljanje Članovima'
       add_subgroup: 'Dodaj Podgrupu'
       manage_subscription: 'Upravljaj Praćenjem Grupa'
+      email_settings: 'Podešavanje ePoruka'
       leave_group: 'Napusti Grupu'
       deactivate_group: 'Deaktiviraj Grupu'
     volume:
@@ -265,6 +269,7 @@ sr:
     confirm_change_to_secret_subgroup: 'Ako nastavite, sve niti postaće privatne.'
     confirm_change_to_public: 'Ako nastavite, sve niti u ovoj grupi postaće javne na mreži.'
     confirm_change_to_private_discussions_only: 'Ako nastavite, sve javne niti u ovoj grupi će postati privatne.'
+    profile: Profil
     advanced_settings: "Napredne opcije"
     how_do_people_join: "Kako se ljudi pridružuju?"
     membership_granted_upon_request: 'Svako se može pridružiti grupi.'
@@ -374,7 +379,6 @@ sr:
       password_changed: 'Lozinka izmenjena'
       deactivated: 'Nalog deaktiviran'
     change_picture_link: 'Promeni sliku'
-    deactivate_user_link: 'Deaktiviranje naloga...'
     profile: 'Profil'
     edit_profile: 'Izmena Profila'
     picture_label: 'Slika'

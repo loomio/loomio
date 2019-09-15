@@ -1,4 +1,5 @@
 import BaseModel from '@/shared/record_store/base_model'
+import i18n from '@/i18n.coffee'
 
 export default class EventModel extends BaseModel
   @singular: 'event'
@@ -6,15 +7,15 @@ export default class EventModel extends BaseModel
   @indices: ['id', 'actorId', 'discussionId', 'sequenceId', 'position', 'depth', 'parentId']
 
   @eventTypeMap:
-    group: 'groups'
-    discussion: 'discussions'
-    poll: 'polls'
-    outcome: 'outcomes'
-    stance: 'stances'
-    comment: 'comments'
-    comment_vote: 'comments'
-    membership: 'memberships'
-    membership_request: 'membershipRequests'
+    Group: 'groups'
+    Discussion: 'discussions'
+    Poll: 'polls'
+    Outcome: 'outcomes'
+    Stance: 'stances'
+    Comment: 'comments'
+    CommentVote: 'comments'
+    Membership: 'memberships'
+    MembershipRequest: 'membershipRequests'
 
   relationships: ->
     @belongsTo 'parent', from: 'events'
@@ -42,13 +43,16 @@ export default class EventModel extends BaseModel
     @deleted = true
 
   actorName: ->
-    @actor().nameWithTitle(@discussion()) if @actor()
+    if @actor()
+      @actor().nameWithTitle(@discussion())
+    else
+      i18n.t('common.anonymous')
 
   actorUsername: ->
     @actor().username if @actor()
 
   model: ->
-    @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
+    @recordStore[@constructor.eventTypeMap[@eventableType]].find(@eventableId)
 
   isUnread: ->
     !@discussion().hasRead(@sequenceId)
@@ -65,21 +69,21 @@ export default class EventModel extends BaseModel
   pin: -> @remote.patchMember(@id, 'pin')
   unpin: -> @remote.patchMember(@id, 'unpin')
 
-  canFork: ->
-    @kind == 'new_comment' && @isSurface()
-
   isForkable: ->
-    @discussion() && @discussion().isForking() && @kind == 'new_comment'
+    @discussion() && @discussion().isForking && @kind == 'new_comment'
 
   isForking: ->
-    _.includes @discussion().forkedEventIds, @id
+    @discussion() && (@discussion().forkedEventIds.includes(@id) or @parentIsForking())
+
+  parentIsForking: ->
+    @parent() && @parent().isForking()
 
   toggleFromFork: ->
     if @isForking()
       @discussion().update(forkedEventIds: _.without @discussion().forkedEventIds, @id)
     else
+      @discussion().update(isForking: true)
       @discussion().forkedEventIds.push @id
-    _.invokeMap @recordStore.events.find(parentId: @id), 'toggleFromFork'
 
   next: ->
     @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]

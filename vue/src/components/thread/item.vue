@@ -90,7 +90,7 @@ div
         //-   v-btn(v-if="hover" :width="iconSize" :height="iconSize"  icon @click="collapsed = true")
         //-     v-icon mdi-arrow-collapse-vertical
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
-        v-checkbox.thread-item__is-forking(v-if="!hover && event.isForkable()" :disabled="!event.canFork()" @change="event.toggleFromFork()" v-model="event.isForking()")
+        v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.parentIsForking()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
         v-layout.my-1.align-center.wrap
           h3.thread-item__title.body-2(:id="'event-' + event.id")
@@ -101,17 +101,14 @@ div
               | depth: {{event.depth}}
             slot(name="headline")
               span(v-html='headline')
-            //- mid-dot
-            //- v-spacer
           v-spacer
-          //- .thread-item__link.grey--text.body-2.action-menu
           router-link.grey--text.body-2(:to='link')
             time-ago(:date='event.createdAt')
-          space
-          slot(name="actions")
         slot
+        slot(name="actions")
   template(v-if='event.isSurface()')
     event-children(:parent-event='event' :key="event.id")
+  slot(name="append")
 </template>
 
 <style lang="css">
@@ -131,12 +128,12 @@ div
 }
 
 .thread-item--focused {
-  background-color: var(--v-accent-lighten5);
+  background-color: var(--v-primary-lighten1);
 }
 
 .thread-item--unread {
   padding-left: $cardPaddingSize - 2px;
-  border-left: 2px solid var(--v-accent-base);
+  border-left: 2px solid var(--v-primary-base);
 }
 .thread-item--unread .thread-item--indent {
     padding-left: $cardPaddingSize + 40px;

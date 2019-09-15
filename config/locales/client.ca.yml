@@ -25,10 +25,6 @@ ca:
     cry: Plora
     v: Pau
     ok_hand: D'acord
-  poll_types:
-    poll: Enquesta
-  new_poll_types:
-    proposal: Proposta
   common:
     you: Tu
     expand: Expandeix
@@ -124,27 +120,29 @@ ca:
     mute: 'Silenci'
     unmute: 'Activa el so'
   change_volume_form:
+    simple:
+      label: Notificacions
+      normal: Normal
+      quiet: Ignora
     loud_label: "Tota la activitat"
     quiet_label: "Cap correu electrònic"
     mute_label: "Silenci"
     discussion:
-      loud_description: "Rebreu correus electrònics sempre que hi hagi activitat en aquesta discussió."
-      normal_description: "Rebreu correus electrònics sempre que es creï una proposta, quan estigui a punt de tancar-se o quan es publiqui un resultat."
-      quiet_description: "No rebreu cap correu electrònic sobre aquesta discussió."
       apply_to_all: "Aplica aquesta configuració a totes les discussions d'aquest grup."
       messages:
         loud: "Rebreu l'activitat d'aquesta discussió per correu electrònic."
         normal: "Rebreu les propostes d'aquesta discussió per correu electrònic."
         quiet: "No rebreu cap correu electrònic sobre aquesta discussió."
     membership:
-      title: "Configuració de correu electrònic per {{title}}"
       loud_description: "Rebreu correus electrònics sempre que hi hagi activitat en aquest grup."
+      normal_description: "Rebreu correus electrònics sempre que hi hagi activitat en aquest grup."
       quiet_description: "No rebreu cap correu electrònic sobre aquest grup."
       apply_to_all: "Aplica aquesta configuració a tots els meus grups."
       messages:
         loud: "Rebreu l'activitat d'aquest grup per correu electrònic."
         quiet: "No rebreu cap correu electrònic sobre aquest grup."
     all_groups:
+      loud_description: "Rebreu l'activitat de tots els grups per correu electrònic."
       messages:
         loud: "Rebreu l'activitat de tots els grups per correu electrònic."
         quiet: "No rebreu cap correu electrònic sobre cap grup."
@@ -235,6 +233,8 @@ ca:
     privacy_public: 'Tothom pot veure la discussió. Només els membres hi poden participar.'
     privacy_private: 'La discussió només serà visible pels membres del grup {{group}}.'
     privacy_organisation: 'La discussió serà visible pels membres de {{parent}} i pels membres de {{group}}.'
+  announcement:
+    preview: Previsualitza
   action_dock:
     edit_stance: Canvia la decisió
     tag_thread: Gestiona etiquetes
@@ -257,6 +257,9 @@ ca:
     current_revision: Últim
   reactions_display:
     you: "Tu"
+  group_wizard:
+    invite_people: Convida gent
+    start_thread: Comença una discussió
   group_page:
     threads: Fils
     members: Membres
@@ -280,6 +283,7 @@ ca:
       manage_members: 'Administra els membres'
       add_subgroup: 'Afegeix un subgrup'
       manage_subscription: 'Administra les subscripcions del grup'
+      email_settings: 'Preferències del correu electrònic'
       leave_group: 'Abandona el grup'
       deactivate_group: 'Desactiva el grup'
     volume:
@@ -311,6 +315,7 @@ ca:
     confirm_change_to_secret_subgroup: 'Si continueu, totes les discussions seran privades.'
     confirm_change_to_public: 'Si continueu, totes les discussions d''aquest grup es faran públiques a internet.'
     confirm_change_to_private_discussions_only: 'Si continueu, totes les discussions públiques d''aquest grup seran privades.'
+    profile: Perfil
     advanced_settings: "Configuració avançada"
     how_do_people_join: "Com s'uneix la gent?"
     membership_granted_upon_request: 'Tothom es pot unir al grup.'
@@ -420,7 +425,6 @@ ca:
       password_changed: 'Contrasenya actualitzada'
       deactivated: 'Compte desactivat'
     change_picture_link: 'Canvia la fotografia'
-    deactivate_user_link: 'Desactiva el compte...'
     profile: 'Perfil'
     edit_profile: 'Edita el perfil'
     picture_label: 'Fotografia'

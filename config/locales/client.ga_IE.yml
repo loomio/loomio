@@ -29,16 +29,6 @@ ga_IE:
     wave: Crith láimhe
     thumbsup: Ordóg in airde
     thumbsdown: Ordóg thíos
-  poll_types:
-    proposal: Togra
-    count: Dearbháil
-    poll: Vótáil
-  new_poll_types:
-    proposal: Togra
-    count: Ríomh
-    poll: Roghnaigh
-    ranked_choice: Rangaigh
-    dot_vote: Leithdháil
   timezones:
     local: An t-am áitiúil ({{luach}})
   common:
@@ -148,19 +138,20 @@ ga_IE:
     mute: 'Gan fhuaim'
     unmute: 'Díbhalbhaigh é'
   change_volume_form:
+    simple:
+      label: Fógraí
+      normal: Gnáth
+      quiet: Déan neamhaird de
     aria_label: "Athraigh foirm shocruithe ríomhphoist"
     loud_label: "Gach gníomhaíocht"
     normal_label: "Fógraí"
     quiet_label: "Gan ríomhphoist"
     mute_label: "Balbh"
     discussion:
-      loud_description: "Seolfar ríomhphost chugat aon uair a bhíonn gníomhaíocht ar an snáithe seo."
-      quiet_description: "Ní sheolfar ríomhphoist chugat i dtaca leis an snáithe seo."
       messages:
         loud: "Seolfar ríomhphoist chugat i dtaca le gníomhaíocht sa snáithe seo."
         quiet: "Ní sheolfar ríomhphoist chugat i dtaca leis an snáithe seo."
     membership:
-      title: "Socruithe ríomhphoist i gcomhair {{title}}"
       apply_to_all: "Cuir na socruithe seo i bhfeidhm ar gach ceann de mo bhaiclí."
     user:
       title: Socruithe ríomhphoist i gcomhair baiclí nua
@@ -278,6 +269,10 @@ ga_IE:
     current_revision: Is déanaí
   reactions_display:
     you: "Tusa"
+  group_wizard:
+    welcome: D'éirigh leis!
+    invite_people: Tabhair cuirí do dhaoine
+    start_thread: Cuir tús le plé
   group_page:
     threads: Snáitheanna
     members: Comhaltaí
@@ -302,6 +297,7 @@ ga_IE:
       label: 'Roghanna'
       manage_members: 'Riar na comhaltaí'
       add_subgroup: 'Cuir fobhaicle leis'
+      email_settings: 'Sainroghanna ríomhphoist'
       leave_group: 'Fág an bhaicle seo'
       deactivate_group: 'Díghníomhachtaigh an bhaicle'
     volume:
@@ -329,6 +325,7 @@ ga_IE:
     group_name_placeholder: 'Cén t-ainm ar mhaith leat a bheith ar an do bhaicle?'
     description: 'Cur síos'
     privacy: 'Príobháideachas'
+    profile: Beathaisnéisín
     advanced_settings: "Ardroghanna"
     how_do_people_join: "Conas mar is féidir le daoine clárú?"
     permissions: 'Ceadanna'
@@ -414,7 +411,6 @@ ga_IE:
       deactivated: 'Cuireadh deireadh leis an gcuntas'
     change_picture_link: 'Athraigh an grianghraf'
     change_password_link: 'Athshocraigh an focal faire'
-    deactivate_user_link: 'Díghníomhachtaigh an cuntas'
     profile: 'Beathaisnéisín'
     edit_profile: 'Cuir do bheathaisnéisín in eagar'
     picture_label: 'Grianghraf'
@@ -425,11 +421,9 @@ ga_IE:
     locale_label: 'Teanga'
     locale_placeholder: Roghnaigh an teanga is mian leat
     update_profile: 'Nuashonraigh an bheathaisnéisín'
-    deactivate_account: 'Díghníomhachtaigh an cuntas'
   change_picture_form:
     use_gravatar: 'Bain feidhm as Gravatar'
   deactivation_modal:
-    aria_label: 'Díghníomhachtaigh an cuntas'
     introduction: 'Nuair a dhíghníomhachtaíonn tú do chuntas:'
   deactivate_user_form:
     title: 'Díghníomhachtaigh an cuntas'

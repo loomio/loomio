@@ -13,7 +13,7 @@ export default
 
   created: ->
     Session.updateLocale(@$route.query.locale) if @$route.query.locale
-    
+
     each AppConfig.theme.vuetify, (value, key) =>
       @$vuetify.theme.themes.light[key] = value if value
       true
@@ -25,6 +25,10 @@ export default
       @openAuthModal() if !Session.isSignedIn() and error.status == 403
       @pageError = error
     EventBus.$on 'signedIn', =>
+      @pageError = null
+
+  watch:
+    '$route': ->
       @pageError = null
 
   methods:
@@ -88,6 +92,9 @@ $mdi-font-path: '/fonts/mdi'
 
 a
   text-decoration: none
+
+.text-almost-black
+  color: rgba(0, 0, 0, 0.87)
 
 .max-width-800
   max-width: 800px

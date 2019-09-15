@@ -19,13 +19,14 @@ class AnnouncementService
       group:    model.guest_group,
       inviter:  actor,
       emails:   Array(params.dig(:recipients, :emails)),
-      user_ids: Array(params.dig(:recipients, :user_ids))
+      user_ids: Array(params.dig(:recipients, :user_ids)),
+      invited_group_ids: params[:invited_group_ids]
     ).invite!
     EventBus.broadcast('announcement_create', model, actor, params)
     Events::AnnouncementCreated.publish! model, actor, inviter.invited_memberships, params[:kind]
   end
 
-  def self.resend_pending_memberships(since: 25.hours.ago, till: 24.hours.ago)
-    Event.announcements_in_period(since, till).each { |event| Events::AnnouncementResend.publish!(event) }
+  def self.resend_pending_invitations(since: 25.hours.ago, till: 24.hours.ago)
+    Event.invitations_in_period(since, till).each { |event| Events::AnnouncementResend.publish!(event) }
   end
 end

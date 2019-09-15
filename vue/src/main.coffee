@@ -9,16 +9,16 @@ import '@/observe_visibility'
 import './registerServiceWorker'
 import { initLiveUpdate } from '@/shared/helpers/cable'
 import { pick } from 'lodash'
-
 import * as Sentry from '@sentry/browser'
 import VueClipboard from 'vue-clipboard2'
-
 import WatchRecords from '@/mixins/watch_records'
-Vue.mixin(WatchRecords)
+import VueYouTubeEmbed from 'vue-youtube-embed'
 
 import UrlFor from '@/mixins/url_for'
-Vue.mixin(UrlFor)
 
+Vue.mixin(WatchRecords)
+Vue.mixin(UrlFor)
+Vue.use(VueYouTubeEmbed)
 Vue.use(VueClipboard)
 
 Vue.config.productionTip = false

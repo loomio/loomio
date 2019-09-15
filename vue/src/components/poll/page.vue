@@ -26,6 +26,11 @@ export default
       if poll and isEmpty @poll?
         @poll = poll
 
+        if @poll.discussionId
+          discussion = @poll.discussion()
+          discussionUrl = @urlFor(discussion)+'/'+@poll.createdEvent().sequenceId
+          @$router.replace(discussionUrl)
+
         EventBus.$emit 'currentComponent',
           group: poll.group()
           poll:  poll

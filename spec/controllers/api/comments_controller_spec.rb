@@ -66,6 +66,18 @@ describe API::CommentsController do
                                user_id: user.id)).to exist
         end
 
+        it "prevents xss src" do
+          post :create, params: { comment: {discussion_id: discussion.id, body: "<img src=\"javascript:alert('hi')\" >hello", body_format: "html"} }
+          expect(response).to be_success
+          expect(Comment.last.body).to eq "<img>hello"
+        end
+
+        it "prevents xss href" do
+          post :create, params: { comment: {discussion_id: discussion.id, body: "<a href=\"javascript:alert('hi')\" >hello</a>", body_format: "html"} }
+          expect(response).to be_success
+          expect(Comment.last.body).to eq "<a>hello</a>"
+        end
+
         it 'allows guest group members to comment' do
           discussion.group.memberships.find_by(user: user).destroy
           discussion.guest_group.add_member! user

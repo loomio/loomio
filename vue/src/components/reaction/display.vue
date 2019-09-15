@@ -78,7 +78,7 @@ export default
 
 </script>
 <template lang="pug">
-.reactions-display
+.reactions-display.mr-2(v-if="reactionTypes.length")
   .reactions-display__emojis
     .reaction.lmo-pointer(@click="removeMine(reaction)" v-for="reaction in reactionTypes" :key="reaction")
       v-tooltip(bottom)

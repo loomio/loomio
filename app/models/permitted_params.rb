@@ -90,7 +90,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def announcement_attributes
-    [:kind, :recipients, recipients: [{user_ids: []}, {emails: []}]]
+    [:kind, :recipients, {recipients: [{user_ids: []}, {emails: []}]}, :invited_group_ids, {invited_group_ids: []}]
   end
 
   def group_identity_attributes

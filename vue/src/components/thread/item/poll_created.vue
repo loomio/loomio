@@ -41,12 +41,12 @@ export default
 
     menuActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['edit_poll', 'show_history', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll', 'translate_poll']
+        pick PollService.actions(@poll, @), ['show_history', 'notification_history', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll', 'translate_poll']
       ,
         pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
       )
     dockActions: ->
-      pick PollService.actions(@poll, @), ['announce_poll']
+      pick PollService.actions(@poll, @), ['announce_poll', 'edit_poll']
 
   mounted: ->
     listenForTranslations @
@@ -54,9 +54,6 @@ export default
 
 <template lang="pug">
 thread-item.poll-created(:event="event" :event-window="eventWindow")
-  template(v-slot:actions)
-    action-dock(:actions="dockActions")
-    action-menu(:actions="menuActions")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline
       span(v-if='!poll.translation.title') {{poll.title}}
@@ -66,9 +63,14 @@ thread-item.poll-created(:event="event" :event-window="eventWindow")
   poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')
   formatted-text.poll-common-details-panel__details(:model="poll" column="details")
   attachment-list(:attachments="poll.attachments")
-  .poll-common-card__results-shown(v-if='showResults')
-    poll-common-directive(:poll='poll', name='chart-panel')
-    poll-common-percent-voted(:poll='poll')
-  poll-common-action-panel(:poll='poll')
+  div(v-if="poll.pollOptionNames.length")
+    .poll-common-card__results-shown(v-if='showResults')
+      poll-common-directive(:poll='poll', name='chart-panel')
+      poll-common-percent-voted(:poll='poll')
+    poll-common-action-panel(:poll='poll')
   document-list(:model='poll' skip-fetch)
+  template(v-slot:actions)
+    v-layout.my-2(align-center)
+      action-dock(:actions="dockActions")
+      action-menu(:actions="menuActions")
 </template>

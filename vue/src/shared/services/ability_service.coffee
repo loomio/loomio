@@ -27,9 +27,8 @@ export default new class AbilityService
   canRespondToComment: (comment) ->
     _.includes comment.discussion().members(), Session.user()
 
-  canForkComment: (comment) ->
-    @canMoveThread(comment.discussion()) &&
-    !comment.isReply()
+  canMoveComment: (comment) ->
+    @canMoveThread(comment.discussion())
 
   canStartPoll: (model) ->
     return unless model
@@ -152,12 +151,12 @@ export default new class AbilityService
     @canAdministerGroup(group)
 
   canEditComment: (comment) ->
-    Session.user().isMemberOf(comment.group()) and
+    comment.discussion().members().includes(Session.user()) and
     Session.user().isAuthorOf(comment) and
     (comment.isMostRecent() or comment.group().membersCanEditComments)
 
   canDeleteComment: (comment) ->
-    (Session.user().isMemberOf(comment.group()) and
+    (comment.discussion().members().includes(Session.user()) and
     Session.user().isAuthorOf(comment)) or
     @canAdministerGroup(comment.group())
 

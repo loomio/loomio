@@ -6,6 +6,6 @@ export default
 
 <template lang="pug">
 v-card.thread-card(elevation="1")
-  context-panel(:discussion="discussion" :key="discussion.id")
+  context-panel(:discussion="discussion")
   activity-panel(:discussion="discussion")
 </template>

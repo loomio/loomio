@@ -1,11 +1,12 @@
 class GroupInviter
   class InvitationLimitExceededError < Exception; end
 
-  def initialize(group:, inviter: User.helper_bot, user_ids: [], emails: [])
+  def initialize(group:, inviter: User.helper_bot, user_ids: [], emails: [], invited_group_ids: [])
     @group    = group
     @inviter  = inviter
     @user_ids = Array(user_ids)
     @emails   = Array(emails)
+    @invited_group_ids = Array(invited_group_ids)
   end
 
   def invite!
@@ -48,6 +49,6 @@ class GroupInviter
                    user: user,
                    group: @group,
                    volume: (2 if @group.is_formal_group?),
-                   accepted_at: (Time.now if user.email_verified))
+                   experiences: {invited_group_ids: @invited_group_ids}.compact )
   end
 end

@@ -33,19 +33,25 @@ export default
         'edit'
       'poll_' + @poll.pollType + '_form.'+mode+'_header'
 
+    isEditing: ->
+      !@poll.isNew()
+
   methods:
     icon: ->
       iconFor(@poll)
 
 </script>
 <template lang="pug">
-v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()")
+v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="poll.processing")
   v-card-title
     h1.headline(v-t="title_key")
     v-spacer
     dismiss-modal-button(:close='close')
   v-card-text
+    v-alert(v-model="isEditing" color="primary" type="warning")
+      template(slot="default")
+        span(v-t="{ path: 'poll_common.edit_warning', args: { pollType: poll.pollType }}")
     poll-common-directive(:poll='poll', name='form', :modal='true')
   v-card-actions.poll-common-form-actions
     v-spacer

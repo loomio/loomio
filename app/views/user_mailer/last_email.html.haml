@@ -1,0 +1,29 @@
+- raise "No emails sent!" unless @email
+<!DOCTYPE HTML>
+%html{'ng-app' => 'lastEmail'}
+  %head
+    = stylesheet_link_tag 'email'
+    = stylesheet_link_tag 'poll_mailer'
+    %title=action_name
+
+  %body
+    %main
+      %p.email-to
+        to:
+        = @email.to
+
+      %p.email-from
+        from:
+        = @email.from
+
+      %p.email-subject
+        subject:
+        = @email.subject
+
+      %p.email-reply-to
+        reply to:
+        = @email.reply_to
+
+      %p.email-body
+        body:
+        =  raw @email.body

@@ -27,7 +27,7 @@ export default
 </script>
 
 <template lang="pug">
-v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submit()")
+v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='outcome.processing')
   v-card-title
     h1.headline
@@ -42,5 +42,5 @@ v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter="submi
       poll-common-calendar-invite(:outcome='outcome', v-if='datesAsOptions()')
   v-card-actions
     v-spacer
-    v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()', v-t="'poll_common_outcome_form.submit'")
+    v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' v-t="'common.action.save'")
 </template>

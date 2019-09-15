@@ -38,7 +38,7 @@ export default
           @searchQuery = ''
 
     searchQuery: debounce (val, old)->
-      @$router.replace(query: {q: val})
+      @$router.replace(query: {q: val, subgroups: @$route.query.subgroups})
     ,
       200
 
@@ -82,25 +82,29 @@ export default
         ''
     tabs: ->
       return unless @group
+      query = ''
+      query = '?subgroups='+@$route.query.subgroups if @$route.query.subgroups
+
       [
-        {id: 0, name: 'threads',   route: @urlFor(@group)}
-        {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')},
-        {id: 2, name: 'members',   route: @urlFor(@group, 'members')},
-        # {id: 3, name: 'subgroups', route: @urlFor(@group, 'subgroups')},
-        {id: 4, name: 'files',     route: @urlFor(@group, 'files')}
-        {id: 5, name: 'settings',     route: @urlFor(@group, 'settings')}
+        {id: 0, name: 'threads',   route: @urlFor(@group, null)+query}
+        {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')+query},
+        {id: 2, name: 'members',   route: @urlFor(@group, 'members')+query},
+        {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
+        {id: 5, name: 'settings',  route: @urlFor(@group, 'settings')}
       ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
 
     logo: ->
       AppConfig.theme.app_logo_src
     icon: ->
       AppConfig.theme.icon_src
+    groupName: ->
+      if @$route.query.subgroups then @$t('navbar.group_and_subgroups', {group: @group.name}) else @group.name
 </script>
 
 <template lang="pug">
-v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shrink-on-scroll :src="coverImageSrc")
+v-app-bar(app clipped-right prominent dark color="grey" elevate-on-scroll shrink-on-scroll :src="coverImageSrc")
   template(v-slot:img="{ props }")
-    v-img(v-bind="props" gradient="to top right, rgba(19,84,122,.7), rgba(128,208,199,.7)")
+    v-img(v-bind="props" gradient="rgba(0,0,0,.3), rgba(0,0,0, .3), rgba(0,0,0,.8)")
 
   v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()")
     v-avatar(tile size="36px")
@@ -116,9 +120,9 @@ v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shri
 
   v-text-field(v-if="search && searchOpen" solo autofocus v-model="searchQuery" append-icon='mdi-close' @click:append="searchOpen = false; searchQuery = ''" :placeholder="search.placeholder")
 
-  v-toolbar-title.d-flex.align-center(v-if="!searchOpen && groupPage")
-    span {{group.name}}
-    group-privacy-button(v-if="groupPage" :group='group')
+  v-toolbar-title(v-if="!searchOpen && groupPage")
+    span {{groupName}}
+    //- group-privacy-button(v-if="groupPage" :group='group')
 
   v-toolbar-title(v-if="!searchOpen && threadPage && showTitle" @click="$vuetify.goTo('head')") {{title}}
 

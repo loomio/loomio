@@ -1,8 +1,6 @@
 an:
   loomio_tags:
     name_label: Nombre
-  new_poll_types:
-    proposal: Propuesta
   common:
     time:
       am: am
@@ -27,6 +25,10 @@ an:
     search: Buscar
   error_page:
     forbidden: 'No tiens permisos ta fer isto.'
+  change_volume_form:
+    simple:
+      label: Notificacions
+      quiet: Ignorar
   inbox:
     clear: 'Limpiar'
     unread: 'No leyiu'
@@ -56,6 +58,9 @@ an:
     heading: Pedir pertenencia a o grupo
     name_label: Nombre
     email_label: Correu electronico
+  group_wizard:
+    invite_people: Convidar a personas
+    start_thread: Empecipiar una discusión
   group_page:
     threads: Discusions
     members: Miembros
@@ -63,6 +68,9 @@ an:
     options_label: 'Opcions'
     options:
       label: 'Opcions'
+      email_settings: 'Preferencias de correu electronico '
+  group_form:
+    profile: Perfil
   document:
     form:
       title_label: Nombre

@@ -50,8 +50,8 @@ export default
 loading(:until="discussion")
   v-container.thread-page.max-width-800(v-if="discussion")
     thread-current-poll-banner(:discussion="discussion")
-    discussion-fork-actions(:discussion='discussion', v-show='discussion.isForking()')
-    thread-card(:discussion='discussion')
+    discussion-fork-actions(:discussion='discussion' v-show='discussion.isForking' :key="'fork-actions'+ discussion.id")
+    thread-card(:discussion='discussion' :key="discussion.id")
     v-btn.thread-page__open-thread-nav(fab fixed bottom right @click="openThreadNav()")
       v-progress-circular(color="accent" :value="threadPercentage")
 </template>

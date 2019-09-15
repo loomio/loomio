@@ -23,7 +23,10 @@ export default (callback) ->
             new Integrations.Vue
               Vue: Vue
               attachProps: true
+              logErrors: true
           ]
+        Sentry.configureScope (scope) ->
+          scope.setTag("loomio_version", AppConfig.version)
 
       ['shortcut icon', 'apple-touch-icon'].forEach (name) ->
         link = document.createElement('link')

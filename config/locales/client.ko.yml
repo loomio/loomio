@@ -18,8 +18,6 @@ ko:
     discussions_count_plural: ({{count}}개의 토론 주제)
     tag_created: 태그 저장됨
     tag_destroyed: 태그 삭제됨
-  new_poll_types:
-    proposal: 제안
   common:
     confirm_discard_changes: 수정을 취소하시겠습니까?
     time:
@@ -90,29 +88,30 @@ ko:
     mute: '소거'
     unmute: '소거해제'
   change_volume_form:
+    simple:
+      label: 알림
+      normal: 보통
+      quiet: 무시
     aria_label: "이메일 설정 환경 변경"
     loud_label: "모든 활동"
     quiet_label: "이메일 없음"
     mute_label: "음소거"
     discussion:
-      title: "이메일 설정"
-      loud_description: "이 토론 주제에 새로운 활동이 있으면 이메일을 받습니다."
-      normal_description: "누군가 제안하거나, 종료시키기 전이나, 성과를 작성할때마다 메일을 받습니다."
-      quiet_description: "이 토론 주제에 대해서는 이메일을 받지 않습니다."
       apply_to_all: "이 그룹에 있는 모든 토론 주제에 이 설정을 적용합니다."
       messages:
         loud: "이 토론 주제의 활동 내역을 이메일로 받게 됩니다."
         normal: "이 토론 주제의 제안에 관해 이메일을 받게 됩니다."
         quiet: "이 토론 주제와 관련한 이메일을 더이상 받지 않습니다."
     membership:
-      title: " {{title}}을 위한 이메일 환경 설정"
       loud_description: "이 그룹의 모든 활동 내역을 이메일로 받습니다."
+      normal_description: "이 그룹의 모든 활동 내역을 이메일로 받습니다."
       quiet_description: "당신은 이 그룹의 활동에 대해 이메일을 받지 않습니다."
       apply_to_all: "내 그룹 전체에 이 설정을 적용합니다."
       messages:
         loud: "이 그룹의 활동 내역을 메일로 받습니다."
         quiet: "이 그룹과 관련한 메일을 받지 않습니다."
     all_groups:
+      loud_description: "당신의 모든 그룹의 모든 활동내역을 이메일로 받습니다."
       messages:
         loud: "당신의 모든 그룹의 모든 활동내역을 이메일로 받습니다."
         quiet: "당신의 그룹에 대한 어떤 것도 이메일로 받지 않습니다."
@@ -264,6 +263,9 @@ ko:
     aria_label: 검토 이력
     posted: 저장됨
     current_revision: 최신
+  group_wizard:
+    invite_people: 초대 명단
+    start_thread: 그룹 시작하기
   group_page:
     threads: 토론
     members: 멤버
@@ -289,6 +291,7 @@ ko:
       manage_members: '멤버 관리'
       add_subgroup: '소그룹 추가하기'
       manage_subscription: '그룹 가입 관리'
+      email_settings: '이메일 환경설정'
       leave_group: '그룹 떠나기'
       deactivate_group: '그룹 비활성화'
     volume:
@@ -340,6 +343,7 @@ ko:
     confirm_change_to_secret_subgroup: '모든 쓰레드가 비공개로 전환됩니다. 계속하시겠습니까?'
     confirm_change_to_public: '이 그룹의 모든 쓰레드가 웹에 공개됩니다. 계속하시겠습니까?'
     confirm_change_to_private_discussions_only: '이 그룹의 공개된 모든 쓰레드가 비공개로 전환됩니다. 계속하시겠습니까?'
+    profile: 프로필
     advanced_settings: "상세 설정"
     how_do_people_join: "가입 방법은 무엇인가요?"
     membership_granted_upon_request: '누구나 가입할 수 있습니다.'
@@ -450,7 +454,6 @@ ko:
       password_changed: '비밀번호를 변경했습니다.'
       deactivated: '계정을 비활성화했습니다.'
     change_picture_link: '사진 교체'
-    deactivate_user_link: '계정을 비활성화합니다...'
     profile: '프로필'
     edit_profile: '프로필 수정'
     picture_label: '사진'
@@ -459,11 +462,9 @@ ko:
     email_label: '이메일'
     locale_label: '언어'
     update_profile: '프로필 저장'
-    deactivate_account: '계정 비활성화'
   change_picture_form:
     use_initials: '이니셜 사용'
   deactivation_modal:
-    aria_label: '계정 비활성화'
     introduction: '계정 비활성화된 때 '
     no_longer_group_member: '당신은 모든 그룹에서 탈퇴됩니다.'
     submit: '네, 비활성화하겠습니다.'

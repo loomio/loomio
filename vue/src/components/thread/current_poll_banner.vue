@@ -8,7 +8,6 @@ export default
 
   data: ->
     poll: null
-    event: null
 
   created: ->
     @watchRecords
@@ -25,10 +24,12 @@ export default
         position: 'sticky'
         top: "#{bar + top}px"
         zIndex: 1
+    event: ->
+      @poll && @poll.createdEvent()
 
 </script>
 <template lang="pug">
-v-card.current-poll-banner.mb-4.py-2.px-4(:style="styles" v-if="poll && poll.createdEvent() && $route.params.sequence_id != poll.createdEvent().sequenceId" :elevation="3")
+v-card.current-poll-banner.mb-4.py-2.px-4(:style="styles" v-if="event && $route.params.sequence_id != event.sequenceId" :elevation="3")
   v-avatar.mr-4(:size="36")
     poll-common-chart-preview(:poll='poll' :size="36")
   .current-poll-banner__title.mr-4

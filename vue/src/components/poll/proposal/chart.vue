@@ -15,6 +15,7 @@
 import svg from 'svg.js'
 import AppConfig from '@/shared/services/app_config'
 import { sum, values, compact, keys, each } from 'lodash'
+import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
@@ -24,11 +25,7 @@ export default
     svgEl: null
     shapes: []
     pollColors: AppConfig.pollColors
-    positionColors:
-      'agree': AppConfig.pollColors.proposal[0]
-      'abstain': AppConfig.pollColors.proposal[1]
-      'disagree': AppConfig.pollColors.proposal[2]
-      'block': AppConfig.pollColors.proposal[3]
+    positionColors: optionColors()
   computed:
     radius: ->
       @diameter / 2.0

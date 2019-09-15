@@ -103,6 +103,7 @@ Loomio::Application.routes.draw do
         get  :time_zones
         get  :mentionable_users
         get  :me
+        get  :groups
         get  :email_status
         post :update_profile
         post :set_volume
@@ -153,6 +154,7 @@ Loomio::Application.routes.draw do
       patch :unpin_reader, on: :member
       patch :move, on: :member
       post  :fork, on: :collection
+      patch :move_comments, on: :member
       get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection
@@ -211,6 +213,8 @@ Loomio::Application.routes.draw do
       collection do
         get :audience
         get :search
+        get :history
+        get :preview
       end
     end
 

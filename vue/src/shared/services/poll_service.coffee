@@ -8,8 +8,18 @@ import openModal      from '@/shared/helpers/open_modal'
 
 export default new class PollService
   actions: (poll, vm) ->
+    notification_history:
+      name: 'action_dock.notification_history'
+      icon: 'mdi-alarm-check'
+      perform: ->
+        openModal
+          component: 'AnnouncementHistory'
+          props:
+            model: poll
+      canPerform: -> true
+
     announce_poll:
-      icon: 'mdi-bullhorn'
+      icon: 'mdi-send'
       canPerform: ->
         AbilityService.canEditPoll(poll)
       perform: ->
@@ -19,7 +29,8 @@ export default new class PollService
             announcement: Records.announcements.buildFromModel(poll)
 
     edit_poll:
-      name: 'common.action.edit'
+      name: 'action_dock.edit_poll'
+      icon: 'mdi-pencil'
       canPerform: ->
         AbilityService.canEditPoll(poll)
       perform: ->
