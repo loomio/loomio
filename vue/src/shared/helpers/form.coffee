@@ -20,7 +20,7 @@ export submitDiscussion = (scope, model, options = {}) ->
     submitFn: submitFn
     flashSuccess: if model.isForking then "discussion_fork_actions.moved" else "discussion_form.messages.#{actionName(model)}"
     failureCallback: ->
-      # scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
+      console.log "failure"
     successCallback: (data) ->
       _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
       if model.isForking

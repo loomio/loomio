@@ -504,7 +504,7 @@ en:
     helptext: Select items you'd like to move
     move: Move
     search_placeholder: Find thread by title
-    moved: Comments moved
+    moved: Moving comments, please wait
 
   discussion_form:
     aria_label: 'Thread form'
