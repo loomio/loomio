@@ -7,7 +7,11 @@ class Identities::Saml < Identities::Base
   class AuthenticationRequiredError < StandardError; end
 
   scope :expired, -> {
-    joins(:user).where("users.last_seen_at < ?", 1.hour.ago).where("last_authenticated_at < ?", 1.day.ago)
+    joins(:user)
+      .joins("LEFT OUTER JOIN group_identities gi ON gi.identity_id = #{table_name}.id")
+      .where("users.last_seen_at < ?", 1.hour.ago)
+      .where("last_authenticated_at < ?", 1.day.ago)
+      .where("gi.id IS NULL")
   }
 
   def metadata

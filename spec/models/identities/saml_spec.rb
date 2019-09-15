@@ -34,6 +34,11 @@ require 'rails_helper'
        identity.update(last_authenticated_at: 2.hours.ago)
        expect(Identities::Saml.expired).to_not include identity
      end
+
+     it 'does not include identities on a group identity' do
+       create(:group_identity, identity: identity, group: create(:formal_group))
+       expect(Identities::Saml.expired).to_not include identity
+     end
    end
 
  end
