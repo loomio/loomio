@@ -63,7 +63,7 @@ export default
   data: ->
     query: null
     suggestionRange: null
-    files: []
+    files: (@model.attachments || []).filter((a) -> a.signed_id).map (a) -> {blob: a, file: {name: a.filename}}
     imageFiles: []
     mentionableUserIds: []
     navigatedUserIndex: 0

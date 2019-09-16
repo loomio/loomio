@@ -42,11 +42,23 @@ module HasRichText
       i.merge!({ preview_url: Rails.application.routes.url_helpers.rails_representation_path(file.representation(PREVIEW_OPTIONS), only_path: true) }) if file.representable?
       i.merge!({ download_url: Rails.application.routes.url_helpers.rails_blob_path(file, disposition: "attachment", only_path: true) })
       i.merge!({ icon: attachment_icon(file.blob.content_type || file.blob.filename) })
+      i.merge!({ signed_id: file.signed_id })
       i
     end
   end
 
   def attachment_icon(name)
     AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
+  end
+
+  def self.assign_attributes_and_update_files(model, params)
+    # byebug
+    model.files.each do |file|
+      file.purge_later unless Array(params[:files]).include? file.signed_id
+    end
+    existing_ids = model.files.map(&:signed_id)
+    params[:files] = params[:files].filter {|id| !existing_ids.include?(id) }
+    model.reload
+    model.assign_attributes(params)
   end
 end

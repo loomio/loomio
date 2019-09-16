@@ -65,4 +65,5 @@ thread-item.stance-created(:event="event" :event-window="eventWindow")
       space
       poll-common-stance-choice(:stance-choice="eventable.stanceChoices()[0]")
   poll-common-stance(:stance="eventable" :reason-only="choiceInHeadline")
+  attachment-list(:attachments="eventable.attachments")
 </template>
