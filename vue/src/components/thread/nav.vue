@@ -80,7 +80,7 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped color="transparent" floating)
+v-navigation-drawer(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped)
   .thread-nav
     v-list(dense)
       v-list-item(:to="urlFor(discussion)" @click="scrollTo('#context')")
