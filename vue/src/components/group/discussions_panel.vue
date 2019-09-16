@@ -159,6 +159,13 @@ export default
 
 <template lang="pug">
 div.discussions-panel(:key="group.id")
+  v-alert.white--text(color="accent" dense v-if="group.subscriptionPlan == 'trial'")
+    v-layout(align-center)
+      span(v-t="'current_plan_button.tooltip'")
+      v-spacer
+      v-btn(href="/upgrade" target="_blank")
+        v-icon mdi-rocket
+        span(v-t="'current_plan_button.upgrade'") Upgrade
   formatted-text(v-if="group" :model="group" column="description")
   document-list(:model='group')
   attachment-list(:attachments="group.attachments")

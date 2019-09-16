@@ -1,6 +1,8 @@
 module PrettyUrlHelper
   include Routing
 
+  private
+
   def join_url(model, opts = {})
     super opts.merge(model: model.class.to_s.underscore, token: model.guest_group.token)
   end

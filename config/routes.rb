@@ -1,20 +1,19 @@
+def dev_routes_for(namespace)
+  controller = "Dev::#{namespace.to_s.humanize}Controller".constantize.new
+  methods = controller.public_methods - Dev::BaseController.new.public_methods
+
+  namespace namespace do
+    get '/' => :index
+    methods.map { |action| get action }
+  end
+end
+
 Loomio::Application.routes.draw do
   if !Rails.env.production?
     namespace :dev do
-      namespace :discussions do
-        get '/' => :index
-        get ':action'
-      end
-
-      namespace :polls do
-        get '/' => :index
-        get ':action'
-      end
-
-      namespace :nightwatch do
-        get '/' => :index
-        get ':action'
-      end
+      dev_routes_for(:discussions)
+      dev_routes_for(:polls)
+      dev_routes_for(:nightwatch)
 
       get '/', to: 'nightwatch#index'
       get '/:action', to: 'nightwatch#:action'

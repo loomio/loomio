@@ -2,7 +2,7 @@
 import Records   from '@/shared/services/records'
 import AppConfig from '@/shared/services/app_config'
 import WatchRecords from '@/mixins/watch_records'
-import {compact} from 'lodash'
+import {compact, orderBy} from 'lodash'
 
 export default
   mixins: [WatchRecords]
@@ -30,7 +30,7 @@ export default
     @watchRecords
       collections: ['notifications']
       query: (store) =>
-        @notifications = store.notifications.find(kind: {$in: AppConfig.notifications.kinds})
+        @notifications = orderBy(store.notifications.find(kind: {$in: AppConfig.notifications.kinds}), ['createdAt'], ['desc'])
         @unread = store.notifications.find(kind: {$in: AppConfig.notifications.kinds}, viewed: { $ne: true })
         @unreadCount = @unreadCount
 

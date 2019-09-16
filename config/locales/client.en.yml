@@ -10,7 +10,7 @@ en:
 
   current_plan_button:
     upgrade: Upgrade
-    tooltip: Purchase a loomio plan to invite more people and start more threads.
+    tooltip: Free trial. Upgrade to invite more people and start more threads.
 
   loomio_tags:
     tags: Tags
@@ -504,7 +504,7 @@ en:
     helptext: Select items you'd like to move
     move: Move
     search_placeholder: Find thread by title
-    moved: Comments moved
+    moved: Moving comments, this might take a moment
 
   discussion_form:
     aria_label: 'Thread form'
@@ -1581,6 +1581,7 @@ en:
     requests: 'Requests'
     admin: 'Admin'
     sharable_link: 'Shareable Link'
+    last_seen: 'Last seen {{date}}'
 
   polls_panel:
     new_poll: New poll
