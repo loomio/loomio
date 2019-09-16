@@ -20,7 +20,6 @@
     "date-fns-tz": "1.0.7",
     "deepmerge": "^4.0.0",
     "diff-match-patch": "^1.0.4",
-    "htmldiff-js": "^1.0.5",
     "jstimezonedetect": "~1.0.7",
     "lodash": "4.17.15",
     "lokijs": "1.5.7",

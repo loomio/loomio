@@ -16,7 +16,6 @@ export default
   data: ->
     index: 1
     version: null
-    altMode: false
 
   methods:
     getVersion: (index) ->
@@ -57,10 +56,9 @@ v-card.revision-history-modal
         v-icon mdi-arrow-left
 
       span(v-if="version" v-t="{path: 'revision_history_modal.edit_by', args: {name: version.authorName(), date: versionDate}}")
-      v-checkbox(v-model="altMode" label="alt mode")
 
       v-btn.revision-history-nav--next(icon :disabled='isNewest' @click='getNext()')
         v-icon mdi-arrow-right
     v-divider.mb-3
-    revision-history-content(v-if='version' :model='model' :version='version' :alt-mode="altMode")
+    revision-history-content(v-if='version' :model='model' :version='version')
 </template>
