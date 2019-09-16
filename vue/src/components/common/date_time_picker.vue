@@ -35,7 +35,7 @@ export default
 </script>
 <template lang="pug">
 v-layout.date-time-picker
-  v-menu(ref='dateTimePicker' v-model='dateMenu' offset-y full-width min-width='290px')
+  v-menu(ref='dateTimePicker' v-model='dateMenu' offset-y min-width='290px')
     template(v-slot:activator='{ on }')
       v-text-field.date-time-picker__date-field(v-model='dateStr' v-on='on' prepend-icon="mdi-calendar")
     v-date-picker.date-time-picker__date-picker(v-model='dateStr' no-title :min='minStr' @input="dateMenu = false")
