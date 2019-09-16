@@ -191,7 +191,7 @@ v-card
         v-spacer
         p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
 
-      div.announcement-form__explain-membership(v-if="guestCount" v-t="{path: 'announcement.inviting_guests_to_thread', args: {group: announcement.model.group().name}}")
+      div.announcement-form__explain-membership(v-if="!invitingToGroup && guestCount" v-t="{path: 'announcement.inviting_guests_to_thread', args: {group: announcement.model.group().name}}")
         //- | 8 members of Loomio Community will be notified about this thread.
 
   v-card-actions
