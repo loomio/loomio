@@ -1,4 +1,7 @@
 module Dev::DashboardHelper
+
+  private
+
   def pinned_discussion
     create_discussion!(:pinned_discussion) { |discussion| pin!(discussion) }
   end
@@ -22,8 +25,6 @@ module Dev::DashboardHelper
   def muted_group_discussion
     create_discussion!(:muted_group_discussion, group: muted_create_group)
   end
-
-  private
 
   def create_discussion!(name, group: create_group, author: patrick)
     var_name = :"@#{name}"

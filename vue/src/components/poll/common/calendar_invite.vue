@@ -25,24 +25,16 @@ export default
 <template lang="pug">
 .poll-common-calendar-invite.lmo-drop-animation
   .poll-common-calendar-invite__checkbox.poll-common-checkbox-option
-    .poll-common-checkbox-option__text.md-list-item-text
-      h3.lmo-h3(v-t="'poll_common_calendar_invite.calendar_invite'")
-      p.md-caption(v-if='outcome.calendarInvite', v-t="'poll_common_calendar_invite.helptext_on'")
-      p.md-caption(v-if='!outcome.calendarInvite', v-t="'poll_common_calendar_invite.helptext_off'")
     v-checkbox(v-model='outcome.calendarInvite')
-  .poll-common-calendar-invite__form.animated(ng-show='outcome.calendarInvite')
-    .md-block.poll-common-calendar-invite--pad-top
-      label(v-t="'poll_common_calendar_invite.poll_option_id'")
-      v-select.lmo-flex__grow(v-model='outcome.pollOptionId', :items="options", item-value="id", item-text="value")
-        //- md-option(ng-repeat='option in options', ng-value='option.id') {{option.value}}
-    .md-block.poll-common-calendar-invite--pad-top
-      label(v-t="'poll_common_calendar_invite.event_summary'")
-      v-text-field.poll-common-calendar-invite__summary(type='text', :placeholder="$t('poll_common_calendar_invite.event_summary_placeholder')", v-model='outcome.customFields.event_summary')
+      div(slot="label")
+        strong(v-t="'poll_common_calendar_invite.calendar_invite'")
+        .poll-common-calendar-invite__helptext(v-t="'poll_common_calendar_invite.helptext_on'")
+  .poll-common-calendar-invite__form.animated(v-show='outcome.calendarInvite')
+    .poll-common-calendar-invite--pad-top
+      v-select.lmo-flex__grow(v-model='outcome.pollOptionId', :items="options", item-value="id", item-text="value" :label="$t('poll_common_calendar_invite.poll_option_id')")
+    .poll-common-calendar-invite--pad-top
+      v-text-field.poll-common-calendar-invite__summary(type='text', :placeholder="$t('poll_common_calendar_invite.event_summary_placeholder')", v-model='outcome.customFields.event_summary' :label="$t('poll_common_calendar_invite.event_summary')")
       validation-errors(:subject='outcome', field='event_summary')
-    .md-block
-      label(v-t="'poll_common_calendar_invite.location'")
-      v-text-field.poll-common-calendar-invite__location(type='text', :placeholder="$t('poll_common_calendar_invite.location_placeholder')", v-model='outcome.customFields.event_location')
-    .md-block
-      label(v-t="'poll_common_calendar_invite.event_description'")
-      v-textarea.md-input.lmo-primary-form-input.poll-common-calendar-invite__description(type='text', :placeholder="$t('poll_common_calendar_invite.event_description_placeholder')", v-model='outcome.customFields.event_description')
+      v-text-field.poll-common-calendar-invite__location(type='text', :placeholder="$t('poll_common_calendar_invite.location_placeholder')", v-model='outcome.customFields.event_location' :label="$t('poll_common_calendar_invite.location')")
+      v-textarea.md-input.lmo-primary-form-input.poll-common-calendar-invite__description(type='text', :placeholder="$t('poll_common_calendar_invite.event_description_placeholder')", v-model='outcome.customFields.event_description' :label="$t('poll_common_calendar_invite.event_description')")
 </template>

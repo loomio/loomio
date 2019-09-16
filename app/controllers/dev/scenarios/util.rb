@@ -9,6 +9,8 @@ module Dev::Scenarios::Util
     redirect_to(login_token_url(::LoginToken.last.token))
   end
 
+  private
+
   def cleanup_database
     reset_session
     ::User.delete_all

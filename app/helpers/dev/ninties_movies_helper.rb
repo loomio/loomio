@@ -1,6 +1,8 @@
 module Dev::NintiesMoviesHelper
   include Dev::FakeDataHelper
 
+  private
+
   # try to just return objects here. Don't knit them together. Leave that for
   # the development controller action to do if possible
   def patrick
