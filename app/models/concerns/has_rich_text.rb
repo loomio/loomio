@@ -57,7 +57,7 @@ module HasRichText
       file.purge_later unless Array(params[:files]).include? file.signed_id
     end
     existing_ids = model.files.map(&:signed_id)
-    params[:files] = params[:files].filter {|id| !existing_ids.include?(id) }
+    params[:files] = Array(params[:files]).filter {|id| !existing_ids.include?(id) }
     model.reload
     model.assign_attributes(params)
   end
