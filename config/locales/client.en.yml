@@ -1580,6 +1580,7 @@ en:
     requests: 'Requests'
     admin: 'Admin'
     sharable_link: 'Shareable Link'
+    last_seen: 'Last seen {{date}}'
 
   polls_panel:
     new_poll: New poll
