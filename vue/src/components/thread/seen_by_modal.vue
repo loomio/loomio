@@ -32,8 +32,7 @@ v-card
     p(v-if="historyError && historyData.length == 0" v-t="'announcement.history_error'")
     p(v-if="!historyError && historyData.length == 0" v-t="'discussion_last_seen_by.no_one'")
     div(v-for="reader in historyData" :key="reader.id")
-      h4.mt-4.mb-2
-        span {{reader.user_name}}
-        mid-dot
-        time-ago(:date="reader.last_read_at")
+      strong {{reader.user_name}}
+      mid-dot
+      time-ago(:date="reader.last_read_at")
 </template>
