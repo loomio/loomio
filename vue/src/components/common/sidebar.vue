@@ -137,7 +137,7 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer.sidenav-left(app v-model="open")
+v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
     div.text-center
