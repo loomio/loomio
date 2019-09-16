@@ -1270,6 +1270,10 @@ en:
       reopened: 'Thread reopened'
       closed: 'Thread closed'
 
+  discussion_last_seen_by:
+    title: Seen by
+    no_one: No one has seen this yet
+
   activity_card:
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
