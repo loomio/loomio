@@ -26,12 +26,11 @@ export default
         successCallback: (data) =>
           @discussion.update(forkedEventIds: [])
           @discussion.update(isForking: false)
-          discussionKey = data.discussions[0].key
-          Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
-            discussion.update(forkedEventIds: [])
-            discussion.update(isForking: false)
-            @close()
-            @$router.push @urlFor(discussion)
+          @selectedDiscussion.update(forkedEventIds: [])
+          @selectedDiscussion.update(isForking: false)
+          @close()
+          @$router.push @urlFor(@selectedDiscussion)
+
 
   watch:
     selectedDiscussion: 'setSubmit'
