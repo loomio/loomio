@@ -10,7 +10,7 @@ import GroupModalMixin from '@/mixins/group_modal.coffee'
 import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
 import WatchRecords from '@/mixins/watch_records'
 
-import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact, concat, intersection, difference } from 'lodash'
+import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact, concat, intersection, difference, orderBy } from 'lodash'
 
 export default
   mixins: [
@@ -79,8 +79,9 @@ export default
         id: group.id
         name: group.name
         group: group
+        member: Session.user().membershipFor(group)?
         children: if group.subgroups
-          group.subgroups().map(groupAsItem).concat(newSubgroupButton(group))
+          orderBy( group.subgroups().map(groupAsItem), ['member', 'name'], ['desc', 'asc']).concat(newSubgroupButton(group))
         else
           []
 
@@ -96,7 +97,7 @@ export default
         else
           []
 
-      @tree = @organizations.map (group) -> groupAsItem(group)
+      @tree = orderBy( @organizations.map((group) -> groupAsItem(group)), ['name'], ['asc'])
 
     startOrganization: ->
       @canStartGroup() && @openStartGroupModal()
@@ -165,7 +166,7 @@ v-navigation-drawer.sidenav-left(app v-model="open")
       div(v-if="item.click")
         v-icon(v-if="item.icon" @click="item.click") {{item.icon}}
     template(v-slot:prepend="{item, open}")
-      div(v-if="item.click")
+      //- div(v-if="item.click")
         //- v-icon(v-if="item.icon" @click="item.click") {{item.icon}}
       router-link(v-if="!item.click" :to="groupUrl(item.group, open)")
         group-avatar(:group="item.group"  v-if="item.group.isParent()")
