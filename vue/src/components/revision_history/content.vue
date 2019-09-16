@@ -11,7 +11,6 @@ export default
   props:
     model: Object
     version: Object
-    altMode: Boolean
 
   methods:
     exact: exact
@@ -57,7 +56,7 @@ export default
 .revision-history-content
   .mb-3(v-if="titleChanges")
     v-label(v-t="'discussion_form.title_label'")
-    html-diff.headline(:before="titleChanges[0]" :after="titleChanges[1]" :alt-mode="altMode")
+    html-diff.headline(:before="titleChanges[0]" :after="titleChanges[1]")
 
   .mb-3(v-if="closingAtChanges")
     v-label(v-t="'poll_common_closing_at_field.closing'")
@@ -65,6 +64,6 @@ export default
 
   .mb-3(v-if="bodyChanges")
     v-label(v-t="bodyLabel")
-    html-diff.lmo-markdown-wrapper(:before="bodyChanges[0]" :after="bodyChanges[1]" :alt-mode="altMode")
+    html-diff.lmo-markdown-wrapper(:before="bodyChanges[0]" :after="bodyChanges[1]")
 
 </template>

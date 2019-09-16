@@ -19,7 +19,7 @@ class DiscussionService
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
-    discussion.assign_attributes(params.except(:document_ids))
+    HasRichText.assign_attributes_and_update_files(discussion, params.except(:document_ids))
     version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
     discussion.assign_attributes(params.slice(:document_ids))
     discussion.document_ids = [] if params.slice(:document_ids).empty?

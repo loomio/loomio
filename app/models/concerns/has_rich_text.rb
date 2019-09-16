@@ -10,7 +10,7 @@ module HasRichText
         define_method "sanitize_#{field}!" do
           if self["#{field}_format"] == "html"
             tags = %w[strong em b i p s code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote table thead th tr td]
-            attributes = %w[href src alt title class data-type data-done data-mention-id width height target]
+            attributes = %w[href src alt title class data-type data-done data-mention-id width height target colspan]
             self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
           end
         end
@@ -42,11 +42,23 @@ module HasRichText
       i.merge!({ preview_url: Rails.application.routes.url_helpers.rails_representation_path(file.representation(PREVIEW_OPTIONS), only_path: true) }) if file.representable?
       i.merge!({ download_url: Rails.application.routes.url_helpers.rails_blob_path(file, disposition: "attachment", only_path: true) })
       i.merge!({ icon: attachment_icon(file.blob.content_type || file.blob.filename) })
+      i.merge!({ signed_id: file.signed_id })
       i
     end
   end
 
   def attachment_icon(name)
     AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
+  end
+
+  def self.assign_attributes_and_update_files(model, params)
+    # byebug
+    model.files.each do |file|
+      file.purge_later unless Array(params[:files]).include? file.signed_id
+    end
+    existing_ids = model.files.map(&:signed_id)
+    params[:files] = Array(params[:files]).filter {|id| !existing_ids.include?(id) }
+    model.reload
+    model.assign_attributes(params)
   end
 end

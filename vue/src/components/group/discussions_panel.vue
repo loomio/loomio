@@ -159,6 +159,13 @@ export default
 
 <template lang="pug">
 div.discussions-panel(:key="group.id")
+  v-alert.white--text(color="accent" dense v-if="group.subscriptionPlan == 'trial'")
+    v-layout(align-center)
+      span(v-t="'current_plan_button.tooltip'")
+      v-spacer
+      v-btn(href="/upgrade" target="_blank")
+        v-icon mdi-rocket
+        span(v-t="'current_plan_button.upgrade'") Upgrade
   formatted-text(v-if="group" :model="group" column="description")
   document-list(:model='group')
   attachment-list(:attachments="group.attachments")
@@ -184,7 +191,7 @@ div.discussions-panel(:key="group.id")
         v-list.thread-previews(two-line)
           thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)
         v-btn.discussions-panel__show-more(v-if="!loader.exhausted" :disabled="loader.loading" @click='loader.loadMore()', v-t="{ path: 'common.action.show_more' }")
-        .lmo-hint-text.discussions-panel__no-more-threads(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
+        .lmo-hint-text.discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
 
     .discussions-panel__content(v-if="search")
       v-alert.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading')

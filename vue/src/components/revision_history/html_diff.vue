@@ -1,18 +1,12 @@
 <script lang="coffee">
 import htmlDiff from "@/shared/helpers/html_diff"
-import HtmlDuff from 'htmldiff-js'
 
 export default
   props:
-    altMode: Boolean
     before: String
     after: String
   methods:
-    diff: ->
-      if @altMode
-        HtmlDuff.execute(@before, @after)
-      else
-        htmlDiff(@before or '', @after)
+    diff: -> htmlDiff(@before or '', @after)
 
 </script>
 <template lang="pug">

@@ -2,3 +2,7 @@
 @import '~vuetify/src/styles/styles.sass';
 
 $headings: map-merge($headings, ('body-1': ('letter-spacing': normal)));
+
+@media print {
+  .lmo-no-print { display: none !important; }
+}

@@ -10,7 +10,7 @@ en:
 
   current_plan_button:
     upgrade: Upgrade
-    tooltip: Purchase a loomio plan to invite more people and start more threads.
+    tooltip: Free trial. Upgrade to invite more people and start more threads.
 
   loomio_tags:
     tags: Tags
@@ -818,6 +818,7 @@ en:
     submit: 'Yes, Deactivate this group'
 
   group_form:
+    click_to_change_image: Cover Image and Logo (click to change)
     permissions_explaination: 'There are two levels of membership: admin and member. Admins have all permissions. Select member permissions:'
     aria_label: 'Group form'
     new_organisation: New Organization
@@ -1580,6 +1581,7 @@ en:
     requests: 'Requests'
     admin: 'Admin'
     sharable_link: 'Shareable Link'
+    last_seen: 'Last seen {{date}}'
 
   polls_panel:
     new_poll: New poll
