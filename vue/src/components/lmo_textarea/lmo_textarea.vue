@@ -279,6 +279,9 @@ export default
       @observer.disconnect() if @observer
 
   watch:
+    linkDialogIsOpen: (val) ->
+      return unless val
+      requestAnimationFrame => @$refs.focus.focus()
     files: -> @updateModel()
     imageFiles: -> @updateModel()
     shouldReset: ->
@@ -307,14 +310,14 @@ div
           v-icon mdi-format-underline
         //- v-btn(small icon :class="{ 'is-active': isActive.code() }", @click='commands.code')
         //-   v-icon mdi-code-tags
-        v-dialog(v-model="linkDialogIsOpen" max-width="600px")
+        v-dialog(v-model="linkDialogIsOpen" ref="focus" max-width="600px")
           template(v-slot:activator="{on}")
             v-btn(small icon v-on="on")
               v-icon mdi-link-variant
           v-card
             v-card-title.title(v-t="'text_editor.insert_link'")
             v-card-text
-              v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus)
+              v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus v-on:keyup.enter="setLinkUrl(commands.link)")
             v-card-actions
               v-spacer
               v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
