@@ -1,5 +1,6 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
+import { orderBy } from 'lodash'
 
 export default
   props:
@@ -14,7 +15,7 @@ export default
     @historyLoading = true
     Records.discussions.fetchHistoryFor(@discussion).then (data) =>
       @historyLoading = false
-      @historyData = data || []
+      @historyData = orderBy(data, ['last_read_at'], ['desc']) || []
     , (err) =>
       @historyLoading = false
       @historyError = true
