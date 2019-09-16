@@ -10,7 +10,7 @@ en:
 
   current_plan_button:
     upgrade: Upgrade
-    tooltip: Purchase a loomio plan to invite more people and start more threads.
+    tooltip: Free trial. Upgrade to invite more people and start more threads.
 
   loomio_tags:
     tags: Tags
