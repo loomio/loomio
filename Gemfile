@@ -75,6 +75,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet'
   gem "stackprof"
   gem 'spring'
   gem "spring-commands-rspec"

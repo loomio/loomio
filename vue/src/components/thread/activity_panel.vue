@@ -50,7 +50,8 @@ export default
       @scrollToInitialPosition()
 
     renderSlots: ->
-      return unless @discussion.createdEvent()
+      parentEvent = @discussion.createdEvent()
+      return unless parentEvent
 
       @eventsBySlot = {}
       times @discussion.createdEvent().childCount, (i) =>
@@ -58,9 +59,9 @@ export default
 
       Records.events.collection.chain().
         find(discussionId: @discussion.id).
+        find(parentId: parentEvent.id).
         find(position: {$gte: @minRendered}).
-        find(position: {$lte: @maxRendered}).
-        find(depth: 1).data().forEach (event) =>
+        find(position: {$lte: @maxRendered}).data().forEach (event) =>
           @eventsBySlot[event.position] = event
 
 
