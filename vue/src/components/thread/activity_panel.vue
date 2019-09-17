@@ -22,9 +22,7 @@ export default
     discussion: Object
 
   data: ->
-    loadingFirst: true
     loader: null
-    per: 20
     eventsBySlot: {}
     visibleSlots: []
     minRendered: 0

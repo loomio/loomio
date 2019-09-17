@@ -11,6 +11,8 @@ import StanceCreated from '@/components/thread/item/stance_created.vue'
 import OutcomeCreated from '@/components/thread/item/outcome_created.vue'
 
 import ThreadActivityMixin from '@/mixins/thread_activity'
+import Records from '@/shared/services/records'
+import { debounce, min, max, times, difference, isNumber, isEqual, uniq, without } from 'lodash'
 
 export default
   mixins: [WatchRecords, ThreadActivityMixin]
@@ -26,60 +28,88 @@ export default
     parentEvent: Object
 
   data: ->
-    eventWindow: null
-    events: []
     loader: null
+    eventsBySlot: {}
+    visibleSlots: []
+    minRendered: 0
+    maxRendered: 0
+    pageSize: 10
 
-  created: ->
-    @eventWindow = new NestedEventWindow
-      parentEvent: @parentEvent
-      discussion:  @parentEvent.discussionId
-      per:         10
-
-    @loader = new RecordLoader
-      collection: 'events'
-      params:
-        discussion_id: @parentEvent.discussionId
-        parent_id: @parentEvent.id
-        order: 'position'
-        per: 10
-
-    @watchRecords
-      collections: ['events']
-      query: (store) =>
-        @events = @eventWindow.windowedEvents()
+  created: -> @init()
 
   methods:
-    loadPrevious: ->
-      @eventWindow.decreaseMin()
-      @loader.loadPrevious(@eventWindow.min)
+    init: ->
+      @loader = new RecordLoader
+        collection: 'events'
+      @watchRecords
+        key: 'parentEvent'+@parentEvent.id
+        collections: ['events']
+        query: @renderSlots
 
-    loadNext: ->
-      @eventWindow.increaseMax()
-      @loader.loadMore(@eventWindow.lastLoaded()+1) if @eventWindow.canLoadNext()
+    renderSlots: ->
+      return unless @parentEvent
 
-    debug: -> AppConfig.debug
+      @eventsBySlot = {}
+      times @parentEvent.childCount, (i) =>
+        @eventsBySlot[i+1] = null
+
+      Records.events.collection.chain().
+        find(discussionId: @parentEvent.discussionId).
+        find(parentId: @parentEvent.id).
+        find(position: {$gte: @minRendered}).
+        find(position: {$lte: @maxRendered}).data().forEach (event) =>
+          @eventsBySlot[event.position] = event
+
+    slotVisible: (isVisible, entry, slot, event) ->
+      slot = parseInt(slot)
+      if isVisible
+        @visibleSlots = uniq(@visibleSlots.concat([slot])).sort()
+      else
+        @visibleSlots = without @visibleSlots, slot
+
+    haveAllEventsBetween: (column, min, max) ->
+      expectedLength = (max - min) + 1
+
+      length = Records.events.collection.chain().
+        find(discussionId: @parentEvent.discussionId).
+        find(depth: 2).
+        find(position: {$between: [min, max]}).data().length
+
+      # console.log "haveAllEventsBetween", length == expectedLength, min, max
+      length == expectedLength
+
+    fetchMissing: debounce ->
+      if !@haveAllEventsBetween('position', @minRendered, @maxRendered)
+        # console.log 'fetching', @minRendered, @maxRendered
+        @loader.fetchRecords(
+          comment_id: null
+          from_unread: null
+          discussion_id: @parentEvent.discussionId
+          parent_id: @parentEvent.id
+          order: 'position'
+          from: @minRendered
+          per: (@maxRendered - @minRendered))
+    ,
+      250
+
+  watch:
+    visibleSlots: (newVal, oldVal) ->
+      return if isEqual(newVal, oldVal)
+      minVisible = min(newVal) || 1
+      maxVisible = max(newVal) || 1
+
+      @minRendered = max([1, minVisible - @pageSize])
+      @maxRendered = min([maxVisible + @pageSize, @parentEvent.childCount])
+
+      # console.log 'visible', minVisible, maxVisible
+      # console.log 'rendered', @minRendered, @maxRendered
+      @renderSlots()
+      @fetchMissing()
+
 
 </script>
 
 <template lang="pug">
 .event-children
-  //- div(v-if='debug()')
-  //-   | event-childrenparentId: {{eventWindow.parentEvent.id}}cc: {{eventWindow.parentEvent.childCount}}min: {{eventWindow.min}}max: {{eventWindow.max}}first: {{eventWindow.firstLoaded()}}last: {{eventWindow.lastLoaded()}}anyPrevious: {{eventWindow.anyPrevious()}}anyNext: {{eventWindow.anyNext()}}
-
-  v-btn.activity-panel__load-more.lmo-no-print(block tile outlined color="accent" v-if='eventWindow.anyPrevious() && !loader.loadingPrevious', @click='loadPrevious()')
-    v-icon mdi-autorenew
-    span(v-t="{ path: 'activity_card.n_previous', args: { count: eventWindow.numPrevious() } }")
-  loading.activity-panel__loading.page-loading(v-show='loader.loadingPrevious')
-  component(:is="componentForKind(event.kind)" v-for='event in events' :key='event.id' :event-window='eventWindow' :event='event')
-  .activity-panel__load-more.lmo-no-print
-    v-btn(block tile outlined color="accent" v-if='eventWindow.anyNext() && !loader.loadingMore', @click='loadNext()')
-      v-icon mdi-autorenew
-      span(v-t="{ path: 'activity_card.n_more', args: { count: eventWindow.numNext() } }")
-  loading.activity-panel__loading.page-loading(v-show='loader.loadingMore')
+  thread-item-slot(v-for="(event, slot) in eventsBySlot" :key="slot" :event="event" :position="slot" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, event)" )
 </template>
-<style lang="sass">
-.activity-panel__load-more
-  margin: 0px 16px 0px 80px
-
-</style>
