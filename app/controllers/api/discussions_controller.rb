@@ -90,6 +90,16 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def history
+    load_and_authorize(:discussion)
+    res = DiscussionReader.joins(:user).where(discussion: @discussion).where.not(last_read_at: nil).map do |reader|
+      {reader_id: reader.id,
+       last_read_at: reader.last_read_at,
+       user_name: reader.user.name }
+    end
+    render root: false, json: res
+  end
+
   def pin
     service.pin discussion: load_resource, actor: current_user
     respond_with_resource
