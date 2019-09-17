@@ -28,6 +28,8 @@ export default
     eventsBySlot: {}
     visibleSlots: []
     missingPositions: []
+    minRendered: 0
+    maxRendered: 0
     pageSize: 10
 
   created: -> @init()
@@ -40,25 +42,30 @@ export default
       @watchRecords
         key: @discussion.id
         collections: ['groups', 'memberships']
-        query: (store) =>
+        query: =>
           @canAddComment = AbilityService.canAddComment(@discussion)
 
       @watchRecords
         key: @discussion.id
         collections: ['events']
-        query: (store) =>
-          return unless @discussion.createdEvent()
-
-          @eventsBySlot = {}
-          times @discussion.createdEvent().childCount, (i) =>
-            @eventsBySlot[i+1] = null
-
-          store.events.collection.chain().
-            find(discussionId: @discussion.id).
-            find(depth: 1).data().forEach (event) =>
-              @eventsBySlot[event.position] = event
+        query: @renderSlots
 
       @scrollToInitialPosition()
+
+    renderSlots: ->
+      return unless @discussion.createdEvent()
+
+      @eventsBySlot = {}
+      times @discussion.createdEvent().childCount, (i) =>
+        @eventsBySlot[i+1] = null
+
+      Records.events.collection.chain().
+        find(discussionId: @discussion.id).
+        find(position: {$gte: @minRendered}).
+        find(position: {$lte: @maxRendered}).
+        find(depth: 1).data().forEach (event) =>
+          @eventsBySlot[event.position] = event
+
 
     scrollToInitialPosition: ->
       waitFor = (selector, fn) ->
@@ -138,39 +145,38 @@ export default
       # console.log "haveAllEventsBetween", length == expectedLength, min, max
       length == expectedLength
 
-  watch:
-    '$route.params.key': 'init'
-    '$route.params.sequence_id': 'scrollToInitialPosition'
-    '$route.params.comment_id': 'scrollToInitialPosition'
-    visibleSlots: throttle (newVal, oldVal) ->
-      return if isEqual(newVal, oldVal)
-      minPosition = min(newVal) || 1
-      maxPosition = max(newVal) || 1
-
-      if @missingPositions.length
-        minPosition = min(@missingPositions)
-        maxPosition = max(@missingPositions)
-
-      if min(newVal) < min(oldVal)
-        #scrolled up
-        minPosition = minPosition - @pageSize
-      else # assume going to scroll down
-        maxPosition = maxPosition + parseInt(@pageSize)
-
-      minPosition = max([1, minPosition])
-      maxPosition = min([maxPosition, @discussion.createdEvent().childCount])
-
-      if @missingPositions.length or !@haveAllEventsBetween('position', minPosition, maxPosition)
+    fetchMissing: debounce ->
+      if !@haveAllEventsBetween('position', @minRendered, @maxRendered)
+        # console.log 'fetching', @minRendered, @maxRendered
         @loader.fetchRecords(
           comment_id: null
           from: null
           from_unread: null
           discussion_id: @discussion.id
           order: 'sequence_id'
-          from_sequence_id_of_position: minPosition
-          until_sequence_id_of_position: maxPosition)
+          from_sequence_id_of_position: @minRendered
+          until_sequence_id_of_position: @maxRendered)
     ,
-      500
+      250
+
+
+  watch:
+    '$route.params.key': 'init'
+    '$route.params.sequence_id': 'scrollToInitialPosition'
+    '$route.params.comment_id': 'scrollToInitialPosition'
+    visibleSlots: (newVal, oldVal) ->
+      return if isEqual(newVal, oldVal)
+      minVisible = min(newVal) || 1
+      maxVisible = max(newVal) || 1
+
+      @minRendered = max([1, minVisible - @pageSize])
+      @maxRendered = min([maxVisible + @pageSize, @discussion.createdEvent().childCount])
+
+      # console.log 'visible', minVisible, maxVisible
+      # console.log 'rendered', @minRendered, @maxRendered
+      @renderSlots()
+      @fetchMissing()
+
 
   computed:
     canStartPoll: ->
