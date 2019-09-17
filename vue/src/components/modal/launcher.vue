@@ -27,6 +27,7 @@ import GroupNewForm from '@/components/group/new_form'
 import GroupWizard from '@/components/group/wizard'
 import UserWizard from '@/components/profile/wizard'
 import MoveCommentsModal from '@/components/discussion/move_comments_modal'
+import SeenByModal from '@/components/thread/seen_by_modal'
 
 export default
   components:
@@ -57,6 +58,7 @@ export default
     'GroupWizard': GroupWizard
     'UserWizard': UserWizard
     'MoveCommentsModal': MoveCommentsModal
+    'SeenByModal': SeenByModal
   data: ->
     isOpen: false
     componentName: ""

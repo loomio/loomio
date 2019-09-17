@@ -5,6 +5,13 @@ import { includes } from 'lodash'
 export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel
 
+  fetchHistoryFor: (discussion) ->
+    params = discussion.id
+
+    @remote.fetch
+      path: discussion.id + '/history'
+      params: params
+
   search: (groupKey, fragment, options = {}) ->
     options.group_id = groupKey
     options.q = fragment

@@ -185,7 +185,7 @@ export default
             v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
           v-list-item-subtitle {{ membership.user().shortBio }}
         v-list-item-action
-          v-list-item-action-text(v-t="{path: 'members_panel.last_seen', args: {date: approximate(membership.user().lastSeenAt)}}")
+          v-list-item-action-text(v-if="membership.user().lastSeenAt" v-t="{path: 'members_panel.last_seen', args: {date: approximate(membership.user().lastSeenAt)}}")
           membership-dropdown(:membership="membership")
       v-divider(v-if="index + 1 < memberships.length" :key="index")
   v-layout(justify-center)

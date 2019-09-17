@@ -4,6 +4,7 @@ import { exact }      from '@/shared/helpers/format_time'
 import { listenForTranslations } from '@/shared/helpers/listen'
 import { map, compact, pick } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
+import openModal      from '@/shared/helpers/open_modal'
 
 export default
   props:
@@ -45,6 +46,13 @@ export default
     viewed: (viewed) ->
       @discussion.markAsSeen() if viewed
 
+    openSeenByModal: ->
+      openModal
+        component: 'SeenByModal'
+        props:
+          discussion: @discussion
+
+
 </script>
 
 <template lang="pug">
@@ -77,7 +85,7 @@ export default
           span(v-t="'common.privacy.public'")
         span(v-show='discussion.seenByCount > 0')
           mid-dot
-          span.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }")
+          a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
         span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
           mid-dot
           span(v-t="'thread_context.forked_from'")

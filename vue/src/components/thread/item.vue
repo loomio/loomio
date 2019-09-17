@@ -20,6 +20,7 @@ export default
     isFocused: false
     collapsed: false
     hover: false
+    focusStyleClass: null
 
   created: ->
     EventBus.$on('focusedEvent', (event) => @isFocused = @event.id == event.id )
@@ -59,6 +60,14 @@ export default
     link: ->
       LmoUrlService.event @event
 
+  watch:
+    isFocused: ->
+      if @isFocused
+        @focusStyleClass = 'thread-item--focused'
+        changeToPreviouslyFocused = =>
+          @focusStyleClass = 'thread-item--previously-focused'
+        setTimeout(changeToPreviouslyFocused, 1000)
+
 </script>
 
 <template lang="pug">
@@ -83,7 +92,7 @@ div
   //-       mid-dot(v-if="event.childCount")
   //-         span(v-if="event.childCount" v-t="{path: 'thread_preview.replies_count', args: {count: event.childCount}}")
 
-  .thread-item(:class="{'thread-item--unread': isUnread, 'thread-item--focused': isFocused}" v-observe-visibility="{callback: viewed}")
+  .thread-item(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
       .thread-item__avatar.mr-4.mt-2
         //- div(@mouseover="hover = true" @mouseleave="hover = false")
@@ -128,12 +137,17 @@ div
 }
 
 .thread-item--focused {
-  background-color: var(--v-primary-lighten1);
+  background-color: var(--v-accent-lighten1);
+}
+
+.thread-item--previously-focused {
+  background-color: none;
+  transition: background-color 5s;
 }
 
 .thread-item--unread {
   padding-left: $cardPaddingSize - 2px;
-  border-left: 2px solid var(--v-primary-base);
+  border-left: 2px solid var(--v-accent-base);
 }
 .thread-item--unread .thread-item--indent {
     padding-left: $cardPaddingSize + 40px;
