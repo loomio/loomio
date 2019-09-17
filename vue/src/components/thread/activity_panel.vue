@@ -27,7 +27,6 @@ export default
     per: 20
     eventsBySlot: {}
     visibleSlots: []
-    missingPositions: []
     minRendered: 0
     maxRendered: 0
     pageSize: 10
@@ -127,10 +126,8 @@ export default
       if isVisible
         EventBus.$emit('threadPositionUpdated', slot)
         @visibleSlots = uniq(@visibleSlots.concat([slot])).sort()
-        @missingPositions = uniq(@missingPositions.push(slot)) unless event
       else
         @visibleSlots = without @visibleSlots, slot
-        @missingPositions = without @missingPositions, slot
 
     haveAllEventsBetween: (column, min, max) ->
       expectedLength = switch column
