@@ -74,7 +74,7 @@
     "bundle-collapser": "^1.3.0",
     "coffeeify": "^3.0.1",
     "coffeescript": "^2.4.1",
-    "geckodriver": "^1.14.1",
+    "geckodriver": "^1.17.0",
     "globby": "^9.2.0",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^3.0.0",
