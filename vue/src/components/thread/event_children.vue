@@ -1,7 +1,6 @@
 <script lang="coffee">
 import AppConfig         from '@/shared/services/app_config'
 import EventBus          from '@/shared/services/event_bus'
-import NestedEventWindow from '@/shared/services/nested_event_window'
 import WatchRecords from '@/mixins/watch_records'
 import RecordLoader from '@/shared/services/record_loader'
 
