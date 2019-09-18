@@ -6,7 +6,7 @@ module ApiErrorRescueHelper
     end
 
     base.rescue_from(Identities::Saml::AuthenticationRequiredError) do
-      rescue_error(401, { idp: resource.saml_identity.saml_url, provider: :saml })
+      rescue_error(401, { idp: resource.identity_for(:saml).saml_url, provider: :saml })
     end
   end
 

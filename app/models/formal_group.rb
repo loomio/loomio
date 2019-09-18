@@ -182,10 +182,6 @@ class FormalGroup < Group
     @id_and_subgroup_ids ||= (Array(id) | subgroup_ids)
   end
 
-  def saml_identity
-    identity_for(:saml)
-  end
-
   def slack_identity
     identity_for(:slack)
   end
