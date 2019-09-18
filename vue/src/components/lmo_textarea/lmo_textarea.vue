@@ -441,10 +441,10 @@ div
   word-wrap: break-word
 
   img
-    max-width: 100%
-    max-height: 500px
+    // max-width: 100%
+    // max-height: 500px
     height: auto
-    width: auto
+    width: 100%
 
   ol, ul
     padding-left: 24px
