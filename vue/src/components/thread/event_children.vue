@@ -10,12 +10,11 @@ import PollCreated from '@/components/thread/item/poll_created.vue'
 import StanceCreated from '@/components/thread/item/stance_created.vue'
 import OutcomeCreated from '@/components/thread/item/outcome_created.vue'
 
-import ThreadActivityMixin from '@/mixins/thread_activity'
-import Records from '@/shared/services/records'
-import { debounce, min, max, times, difference, isNumber, isEqual, uniq, without } from 'lodash'
+import ThreadRenderer from '@/mixins/thread_renderer_mixin'
+import { debounce } from 'lodash'
 
 export default
-  mixins: [WatchRecords, ThreadActivityMixin]
+  mixins: [ThreadRenderer]
 
   components:
     NewComment: NewComment
@@ -41,46 +40,18 @@ export default
     init: ->
       @loader = new RecordLoader
         collection: 'events'
+
       @watchRecords
         key: 'parentEvent'+@parentEvent.id
         collections: ['events']
         query: @renderSlots
 
-    renderSlots: ->
-      return unless @parentEvent
-
-      @eventsBySlot = {}
-      times @parentEvent.childCount, (i) =>
-        @eventsBySlot[i+1] = null
-
-      Records.events.collection.chain().
-        find(discussionId: @parentEvent.discussionId).
-        find(parentId: @parentEvent.id).
-        find(position: {$gte: @minRendered}).
-        find(position: {$lte: @maxRendered}).data().forEach (event) =>
-          @eventsBySlot[event.position] = event
-
-    slotVisible: (isVisible, entry, slot, event) ->
-      slot = parseInt(slot)
-      if isVisible
-        @visibleSlots = uniq(@visibleSlots.concat([slot])).sort()
-      else
-        @visibleSlots = without @visibleSlots, slot
-
-    haveAllEventsBetween: (column, min, max) ->
-      expectedLength = (max - min) + 1
-
-      length = Records.events.collection.chain().
-        find(discussionId: @parentEvent.discussionId).
-        find(depth: 2).
-        find(position: {$between: [min, max]}).data().length
-
-      # console.log "haveAllEventsBetween", length == expectedLength, min, max
-      length == expectedLength
+      @updateRendered(1, 1)
 
     fetchMissing: debounce ->
+      # return false
       if !@haveAllEventsBetween('position', @minRendered, @maxRendered)
-        # console.log 'fetching', @minRendered, @maxRendered
+        # console.log 'fetching children for ', @parentEvent.id, @minRendered, @maxRendered
         @loader.fetchRecords(
           comment_id: null
           from_unread: null
@@ -88,24 +59,8 @@ export default
           parent_id: @parentEvent.id
           order: 'position'
           from: @minRendered
-          per: (@maxRendered - @minRendered))
-    ,
-      250
-
-  watch:
-    visibleSlots: (newVal, oldVal) ->
-      return if isEqual(newVal, oldVal)
-      minVisible = min(newVal) || 1
-      maxVisible = max(newVal) || 1
-
-      @minRendered = max([1, minVisible - @pageSize])
-      @maxRendered = min([maxVisible + @pageSize, @parentEvent.childCount])
-
-      # console.log 'visible', minVisible, maxVisible
-      # console.log 'rendered', @minRendered, @maxRendered
-      @renderSlots()
-      @fetchMissing()
-
+          per: (@maxRendered - @minRendered)+1)
+    , 100
 
 </script>
 

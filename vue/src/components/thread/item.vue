@@ -104,9 +104,9 @@ div
         v-layout.my-1.align-center.wrap
           h3.thread-item__title.body-2(:id="'event-' + event.id")
             //- div
-              | sid {{event.sequenceId}}
+              | id: {{event.id}}
               | pos {{event.position}}
-              //- | pid: {{event.model().parentId}}
+              | sid {{event.sequenceId}}
               | depth: {{event.depth}}
             slot(name="headline")
               span(v-html='headline')
@@ -115,7 +115,7 @@ div
             time-ago(:date='event.createdAt')
         slot
         slot(name="actions")
-  template(v-if='event.isSurface()')
+  template(v-if='event.childCount > 0')
     event-children(:parent-event='event' :key="event.id")
   slot(name="append")
 </template>

@@ -12,11 +12,13 @@ import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
 import WatchRecords from '@/mixins/watch_records'
 import { print } from '@/shared/helpers/window'
-import { compact, snakeCase, camelCase, min, max, times, map, without, uniq, throttle, debounce, range, difference, isNumber, isEqual } from 'lodash'
 import RangeSet from '@/shared/services/range_set'
+import ThreadRenderer from '@/mixins/thread_renderer_mixin'
+
+import { compact, snakeCase, camelCase, min, max, map, without, uniq, throttle, debounce, range, difference, isNumber, isEqual } from 'lodash'
 
 export default
-  mixins: [ AuthModalMixin, WatchRecords]
+  mixins: [ AuthModalMixin, ThreadRenderer]
 
   props:
     discussion: Object
@@ -28,6 +30,7 @@ export default
     minRendered: 0
     maxRendered: 0
     pageSize: 10
+    parentEvent: @discussion.createdEvent()
 
   created: -> @init()
 
@@ -47,23 +50,9 @@ export default
         collections: ['events']
         query: @renderSlots
 
+      @updateRendered(1, 1)
+
       @scrollToInitialPosition()
-
-    renderSlots: ->
-      parentEvent = @discussion.createdEvent()
-      return unless parentEvent
-
-      @eventsBySlot = {}
-      times @discussion.createdEvent().childCount, (i) =>
-        @eventsBySlot[i+1] = null
-
-      Records.events.collection.chain().
-        find(discussionId: @discussion.id).
-        find(parentId: parentEvent.id).
-        find(position: {$gte: @minRendered}).
-        find(position: {$lte: @maxRendered}).data().forEach (event) =>
-          @eventsBySlot[event.position] = event
-
 
     scrollToInitialPosition: ->
       waitFor = (selector, fn) ->
@@ -120,27 +109,6 @@ export default
     positionRequested: (id) ->
       @$vuetify.goTo "#position-#{id}"
 
-    slotVisible: (isVisible, entry, slot, event) ->
-      slot = parseInt(slot)
-      if isVisible
-        EventBus.$emit('threadPositionUpdated', slot)
-        @visibleSlots = uniq(@visibleSlots.concat([slot])).sort()
-      else
-        @visibleSlots = without @visibleSlots, slot
-
-    haveAllEventsBetween: (column, min, max) ->
-      expectedLength = switch column
-        when 'position' then (max - min) + 1
-        when 'sequenceId' then console.error('sequenceId not implemented yet')
-
-      length = Records.events.collection.chain().
-        find(discussionId: @discussion.id).
-        find(depth: 1).
-        find(position: {$between: [min, max]}).data().length
-
-      # console.log "haveAllEventsBetween", length == expectedLength, min, max
-      length == expectedLength
-
     fetchMissing: debounce ->
       if !@haveAllEventsBetween('position', @minRendered, @maxRendered)
         # console.log 'fetching', @minRendered, @maxRendered
@@ -155,31 +123,14 @@ export default
     ,
       250
 
-
   watch:
     '$route.params.key': 'init'
     '$route.params.sequence_id': 'scrollToInitialPosition'
     '$route.params.comment_id': 'scrollToInitialPosition'
-    visibleSlots: (newVal, oldVal) ->
-      return if isEqual(newVal, oldVal)
-      minVisible = min(newVal) || 1
-      maxVisible = max(newVal) || 1
-
-      @minRendered = max([1, minVisible - @pageSize])
-      @maxRendered = min([maxVisible + @pageSize, @discussion.createdEvent().childCount])
-
-      # console.log 'visible', minVisible, maxVisible
-      # console.log 'rendered', @minRendered, @maxRendered
-      @renderSlots()
-      @fetchMissing()
-
 
   computed:
     canStartPoll: ->
       AbilityService.canStartPoll(@discussion)
-
-    slots: ->
-      times(@discussion.createdEvent().childCount, (p) -> p + 1)
 
 </script>
 
