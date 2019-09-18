@@ -27,11 +27,6 @@ export default
 
   data: ->
     loader: null
-    eventsBySlot: {}
-    visibleSlots: []
-    minRendered: 0
-    maxRendered: 0
-    pageSize: 10
 
   created: -> @init()
 

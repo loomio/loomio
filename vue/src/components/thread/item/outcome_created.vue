@@ -11,7 +11,6 @@ export default
 
   props:
     event: Object
-    eventWindow: Object
 
   mounted: ->
     listenForTranslations(@)
@@ -27,7 +26,7 @@ export default
 </script>
 
 <template lang="pug">
-thread-item.outcome-created(:event="event" :event-window="eventWindow")
+thread-item.outcome-created(:event="event")
   template(v-slot:actions)
     v-layout(align-center)
       reaction-display(:model="eventable")

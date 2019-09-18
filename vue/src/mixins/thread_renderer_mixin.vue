@@ -1,7 +1,22 @@
 <script lang="coffee">
 import { debounce, min, max, times, difference, isNumber, isEqual, uniq, without } from 'lodash'
 import Records from '@/shared/services/records'
+import EventBus from '@/shared/services/event_bus'
+
 export default
+  created: ->
+    EventBus.$on 'focusedEvent', (event) =>
+      @focusedEvent = event          if event.parentId == @parentEvent.id
+      @focusedEvent = event.parent() if event.parent().parentId == @parentEvent.id
+
+  data: ->
+    eventsBySlot: {}
+    visibleSlots: []
+    minRendered: 0
+    maxRendered: 0
+    pageSize: 10
+    focusedEvent: null
+
   methods:
     renderSlots: ->
       return unless @parentEvent
@@ -17,6 +32,8 @@ export default
         find(position: {$lte: @maxRendered}).
         data().forEach (event) =>
           @eventsBySlot[event.position] = event
+
+      @eventsBySlot[@focusedEvent.position] = @focusedEvent if @focusedEvent
 
     slotVisible: (isVisible, entry, slot, event) ->
       slot = parseInt(slot)

@@ -13,7 +13,6 @@ import RangeSet from '@/shared/services/range_set'
 export default
   props:
     event: Object
-    eventWindow: Object
 
   data: ->
     isDisabled: false
@@ -44,7 +43,7 @@ export default
     isNested: -> @event.isNested()
 
     indent: ->
-      @$vuetify.breakpoint.smAndUp && @event.isNested() # && @eventWindow.useNesting
+      @$vuetify.breakpoint.smAndUp && @event.isNested()
 
     isUnread: ->
       (Session.user().id != @event.actorId) && !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
@@ -127,7 +126,7 @@ div
 
 .thread-item {
   padding: 4px 16px 4px 16px;
-  transition: border-color 5s;
+  transition: border-color 50s;
   border-left: 2px solid #fff;
 }
 

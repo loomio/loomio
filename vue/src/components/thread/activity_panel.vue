@@ -22,13 +22,8 @@ export default
     discussion: Object
 
   data: ->
-    loader: null
-    eventsBySlot: {}
-    visibleSlots: []
-    minRendered: 0
-    maxRendered: 0
-    pageSize: 10
     parentEvent: @discussion.createdEvent()
+    loader: null
 
   created: -> @init()
 
@@ -59,9 +54,10 @@ export default
         else
           setTimeout ->
             waitFor(selector, fn)
-          , 50
+          , 250
 
       focusOnEvent = (event) =>
+        EventBus.$emit('focusedEvent', event)
         waitFor "#sequence-#{event.sequenceId || 0}", =>
           EventBus.$emit('focusedEvent', event)
           @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", offset: 96

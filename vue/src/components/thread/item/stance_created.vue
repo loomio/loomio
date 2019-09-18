@@ -11,7 +11,6 @@ export default
 
   props:
     event: Object
-    eventWindow: Object
   computed:
     eventable: -> @event.model()
     choiceInHeadline: ->
@@ -56,7 +55,7 @@ export default
 </script>
 
 <template lang="pug">
-thread-item.stance-created(:event="event" :event-window="eventWindow")
+thread-item.stance-created(:event="event")
   template(v-slot:actions)
     action-dock(:model="eventable" :actions="actions")
   template(v-if="choiceInHeadline" v-slot:headline)

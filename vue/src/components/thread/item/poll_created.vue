@@ -17,7 +17,6 @@ export default
 
   mixins: [PollModalMixin, WatchRecords]
   props:
-    eventWindow: Object
     event: Object
 
   created: ->
@@ -53,7 +52,7 @@ export default
 </script>
 
 <template lang="pug">
-thread-item.poll-created(:event="event" :event-window="eventWindow")
+thread-item.poll-created(:event="event")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline
       span(v-if='!poll.translation.title') {{poll.title}}

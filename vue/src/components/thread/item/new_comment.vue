@@ -18,7 +18,6 @@ export default
 
   props:
     event: Object
-    eventWindow: Object
 
   computed:
     eventable: -> @event.model()
@@ -54,7 +53,7 @@ export default
 </script>
 
 <template lang="pug">
-thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :event-window="eventWindow")
+thread-item.new-comment(id="'comment-'+ eventable.id" :event="event")
   template(v-slot:actions)
     v-layout(align-center)
       reaction-display(:model="eventable")
