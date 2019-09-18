@@ -1118,6 +1118,7 @@ en:
   text_editor:
     select_text_to_link: Select some text to link
     insert_link: Insert link
+    insert_embedded_url: Embed video
 
   change_picture_form:
     aria_label: 'Profile photo form'
