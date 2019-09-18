@@ -360,5 +360,33 @@ module.exports = {
     page.click('.group-page-members-tab')
     page.fillIn('.members-panel__filter input', 'shown@test.com')
     page.expectText('.members-panel__name', 'shown@test.com')
+  },
+
+  'encourage_contact_to_setup_saml': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group')
+    page.click('.group-page-settings-tab')
+    page.click('.group-page-actions__install_saml')
+    page.expectElement('.install-saml-modal__contact')
+  },
+
+  'encourage_contact_to_setup_saml': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_with_saml_feature')
+    page.click('.group-page-settings-tab')
+    page.click('.group-page-actions__install_saml')
+    page.expectElement('.install-saml-modal__login')
+  },
+
+  'allow creation of SAML enforcement': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_with_saml_identity')
+    page.click('.group-page-settings-tab')
+    page.click('.group-page-actions__install_saml')
+    page.click('.install-saml-modal__connect')
+    page.expectFlash('Connected via SAML')
   }
 }

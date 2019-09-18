@@ -45,6 +45,19 @@ module Dev::Scenarios::Group
     redirect_to group_url(create_group)
   end
 
+  def setup_group_with_saml_feature
+    sign_in patrick
+    create_group.update(features: { saml: true })
+    redirect_to group_url(create_group)
+  end
+
+  def setup_group_with_saml_identity
+    sign_in patrick
+    create_group.update(features: { saml: true })
+    Identities::Saml.create!(user: patrick, uid: 'patrick@saml.com')
+    redirect_to group_url(create_group)
+  end
+
   def visit_group_as_subgroup_member
     sign_in jennifer
     create_subgroup.add_member! jennifer

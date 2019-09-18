@@ -34,7 +34,7 @@ export default
 
         setTimeout =>
           @openInstallSlackModal(@group) if @$route.query.install_slack
-          @openInstallSamlModal(@group) if @$route.query.install_saml
+          @openInstallSamlModal(@group.parentOrSelf()) if @$route.query.install_saml
 
       , (error) ->
         EventBus.$emit 'pageError', error

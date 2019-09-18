@@ -48,7 +48,7 @@ class LoggedOutUser
     'initials'
   end
 
-  def identity_for(provider)
+  def identity_for(type)
     nil
   end
 end

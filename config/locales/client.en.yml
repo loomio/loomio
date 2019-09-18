@@ -2098,6 +2098,8 @@ en:
 
   install_saml:
     modal_title: Integrate SAML
+    get_in_touch: |
+      Interested in using SAML with your organization? Contact us at hello@loomio.org to get set up!
     url_label: SAML metadata URL
     url_placeholder: https://capriza.github.io/samling/samling.html
 
