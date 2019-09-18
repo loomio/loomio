@@ -362,11 +362,11 @@ div
           v-dialog(v-model="iframeDialogIsOpen" ref="focus" max-width="600px")
             template(v-slot:activator="{on}")
               v-btn(small icon v-on="on")
-                v-icon mdi-video
+                v-icon mdi-youtube
             v-card
               v-card-title.title(v-t="'text_editor.insert_embedded_url'")
               v-card-text
-                v-text-field(type="url" label="https://www.example.com" v-model="iframeUrl" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
+                v-text-field(type="url" label="https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
               v-card-actions
                 v-spacer
                 v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
