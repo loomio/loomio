@@ -27,7 +27,7 @@ gem 'delayed_job', '~> 4.1.8'
 gem 'delayed_job_active_record', '~> 4.1.4'
 gem 'rinku'
 gem 'friendly_id', '~> 5.2.5'
-gem 'httparty', '~> 0.17.0'
+gem 'httparty', '~> 0.17.1'
 gem 'browser', '~> 2.6.1'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
