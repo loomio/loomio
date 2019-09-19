@@ -79,7 +79,6 @@ group :development do
   gem "stackprof"
   gem 'spring'
   gem "spring-commands-rspec"
-  gem 'bullet'
   gem 'launchy'
   gem 'awesome_print'
 end
