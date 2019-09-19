@@ -61,9 +61,9 @@ export default
         waitFor "#sequence-#{event.sequenceId || 0}", =>
           EventBus.$emit('focusedEvent', event)
           @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", offset: 96
-          setTimeout ->
+          setTimeout =>
             @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", offset: 96
-          , 2000
+          , 3000
 
       commentId = parseInt(@$route.params.comment_id)
       sequenceId = parseInt(@$route.params.sequence_id)
