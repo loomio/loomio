@@ -32,7 +32,7 @@ import {
   Placeholder } from 'tiptap-extensions'
 
 import ExternalLink from './external_link'
-
+import Iframe from './iframe'
 import TodoItem from './todo_item'
 
 import { insertText } from 'tiptap-commands'
@@ -69,7 +69,9 @@ export default
     navigatedUserIndex: 0
     closeEmojiMenu: false
     linkUrl: null
+    iframeUrl: null
     linkDialogIsOpen: false
+    iframeDialogIsOpen: false
     insertMention: () => {}
     editor: new Editor
       editorProps:
@@ -142,6 +144,7 @@ export default
         new Strike(),
         new Underline(),
         new History(),
+        new Iframe(),
         new Placeholder({
           emptyClass: 'is-empty',
           emptyNodeText: @placeholder,
@@ -178,6 +181,14 @@ export default
       command({ href: @linkUrl })
       @linkUrl = null
       @linkDialogIsOpen = false
+      @editor.focus()
+
+    setIframeUrl: (command) ->
+      console.log 'command', command
+      console.log 'iframeUrl', @iframeUrl
+      command({ src: @iframeUrl })
+      @iframeUrl = null
+      @iframeDialogIsOpen = false
       @editor.focus()
 
     emitUploading: ->
@@ -348,6 +359,17 @@ div
             v-icon mdi-format-quote-close
           v-btn(small icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block')
             v-icon mdi-code-braces
+          v-dialog(v-model="iframeDialogIsOpen" ref="focus" max-width="600px")
+            template(v-slot:activator="{on}")
+              v-btn(small icon v-on="on")
+                v-icon mdi-youtube
+            v-card
+              v-card-title.title(v-t="'text_editor.insert_embedded_url'")
+              v-card-text
+                v-text-field(type="url" label="https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
+              v-card-actions
+                v-spacer
+                v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
           v-btn(icon @click='commands.horizontal_rule')
             v-icon mdi-minus
           v-btn(icon @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })")
