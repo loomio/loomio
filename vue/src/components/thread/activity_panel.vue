@@ -60,9 +60,9 @@ export default
         EventBus.$emit('focusedEvent', event)
         waitFor "#sequence-#{event.sequenceId || 0}", =>
           EventBus.$emit('focusedEvent', event)
-          @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", offset: 96
+          @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", offset: 96, duration: 0
           setTimeout =>
-            @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", offset: 96
+            @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", offset: 96, duration: 0
           , 3000
 
       commentId = parseInt(@$route.params.comment_id)
@@ -104,7 +104,7 @@ export default
         Records.events.find(args)[0]
 
     positionRequested: (id) ->
-      @$vuetify.goTo "#position-#{id}"
+      @$vuetify.goTo "#position-#{id}", duration: 0
 
     fetchMissing: debounce ->
       if !@haveAllEventsBetween('position', @minRendered, @maxRendered)

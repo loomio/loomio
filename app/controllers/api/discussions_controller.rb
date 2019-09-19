@@ -2,7 +2,6 @@ class API::DiscussionsController < API::RestfulController
   after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
-  include UsesFullSerializer
   include UsesDiscussionEvents
 
   def tags
