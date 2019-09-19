@@ -54,7 +54,7 @@ export default
       EventBus.$emit 'threadPositionRequest', @position
 
     scrollTo: (selector) ->
-      @$vuetify.goTo(selector)
+      @$vuetify.goTo(selector, duration: 0)
 
     title: (model) ->
       if model.title or model.statement
