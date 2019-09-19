@@ -440,9 +440,9 @@ div
 
   word-wrap: break-word
 
+
   img
-    // max-width: 100%
-    // max-height: 500px
+    aspect-ratio: attr(width) / attr(height)
     height: auto
     width: 100%
 
