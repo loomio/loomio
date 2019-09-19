@@ -7,14 +7,8 @@ export default
   created: ->
     EventBus.$on 'focusedEvent', (event) =>
       @focusedEvent = event          if event.parentId == @parentEvent.id
-<<<<<<< Updated upstream
-      @focusedEvent = event.parent() if event.parent().parentId == @parentEvent.id
-||||||| merged common ancestors
-      @focusedEvent = event.parent() if event.parent() && event.parent().parentId == @parentEvent.id
-=======
       @focusedEvent = event.parent() if event.parent() && event.parent().parentId == @parentEvent.id
       @renderSlots()
->>>>>>> Stashed changes
 
   data: ->
     eventsBySlot: {}

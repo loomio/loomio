@@ -22,7 +22,7 @@ export default
     span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }")
     time-ago(:date="outcome.createdAt")
   formatted-text(:model="outcome" column="statement")
-  document-list(:model="outcome" skip-fetch)
+  document-list(:model="outcome")
   .lmo-md-actions
     reaction-display(:model="outcome")
     action-dock(:model="outcome" :actions="actions")
