@@ -7,7 +7,7 @@ export default
   created: ->
     EventBus.$on 'focusedEvent', (event) =>
       @focusedEvent = event          if event.parentId == @parentEvent.id
-      @focusedEvent = event.parent() if event.parent().parentId == @parentEvent.id
+      @focusedEvent = event.parent() if event.parent() && event.parent().parentId == @parentEvent.id
 
   data: ->
     eventsBySlot: {}
