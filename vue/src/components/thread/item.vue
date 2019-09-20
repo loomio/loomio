@@ -104,6 +104,7 @@ div
           h3.thread-item__title.body-2(:id="'event-' + event.id")
             //- div
               | id: {{event.id}}
+              | parentId: {{event.parentId}}
               | pos {{event.position}}
               | sid {{event.sequenceId}}
               | depth: {{event.depth}}

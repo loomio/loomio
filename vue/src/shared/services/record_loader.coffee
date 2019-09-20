@@ -24,7 +24,7 @@ export default class RecordLoader
     @loading = true
     @exhausted = false
     Records[camelCase(@collection)].fetch
-      path:   @path
+      path: @path
       params: defaults({}, opts, @params)
     .then (data) =>
       records = data[@collection] || []

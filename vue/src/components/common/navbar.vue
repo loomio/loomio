@@ -124,7 +124,7 @@ v-app-bar(app clipped-right prominent dark color="grey" elevate-on-scroll shrink
     span {{groupName}}
     //- group-privacy-button(v-if="groupPage" :group='group')
 
-  v-toolbar-title(v-if="!searchOpen && threadPage && showTitle" @click="$vuetify.goTo('head')") {{title}}
+  v-toolbar-title(v-if="!searchOpen && threadPage && showTitle" @click="$vuetify.goTo('head', {duration: 0})") {{title}}
 
   v-spacer(v-if="!searchOpen")
   v-btn(icon v-if="search && !searchOpen" @click="searchOpen = true")

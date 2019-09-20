@@ -13,7 +13,7 @@ import { print } from '@/shared/helpers/window'
 import RangeSet from '@/shared/services/range_set'
 import ThreadRenderer from '@/mixins/thread_renderer_mixin'
 
-import { compact, snakeCase, camelCase, min, max, map, without, uniq, throttle, debounce, range, difference, isNumber, isEqual } from 'lodash'
+import { compact, snakeCase, camelCase, min, max, map, first, last, without, uniq, throttle, debounce, range, difference, isNumber, isEqual } from 'lodash'
 
 export default
   mixins: [ AuthModalMixin, ThreadRenderer]
@@ -25,28 +25,16 @@ export default
     parentEvent: @discussion.createdEvent()
     loader: null
 
-  created: -> @init()
+  created: ->
+    @watchRecords
+      key: @discussion.id
+      collections: ['groups', 'memberships']
+      query: =>
+        @canAddComment = AbilityService.canAddComment(@discussion)
+
+    @scrollToInitialPosition()
 
   methods:
-    init: ->
-      @loader = new RecordLoader
-        collection: 'events'
-
-      @watchRecords
-        key: @discussion.id
-        collections: ['groups', 'memberships']
-        query: =>
-          @canAddComment = AbilityService.canAddComment(@discussion)
-
-      @watchRecords
-        key: @discussion.id
-        collections: ['events']
-        query: @renderSlots
-
-      @updateRendered(1, 1)
-
-      @scrollToInitialPosition()
-
     scrollToInitialPosition: ->
       waitFor = (selector, fn) ->
         if document.querySelector(selector)
@@ -107,21 +95,18 @@ export default
       @$vuetify.goTo "#position-#{id}", duration: 0
 
     fetchMissing: debounce ->
-      if !@haveAllEventsBetween('position', @minRendered, @maxRendered)
-        # console.log 'fetching', @minRendered, @maxRendered
+      if @missingSlots.length
         @loader.fetchRecords(
           comment_id: null
           from: null
           from_unread: null
           discussion_id: @discussion.id
           order: 'sequence_id'
-          from_sequence_id_of_position: @minRendered
-          until_sequence_id_of_position: @maxRendered)
-    ,
-      250
+          from_sequence_id_of_position: first(@missingSlots)
+          until_sequence_id_of_position: last(@missingSlots))
+    , 500
 
   watch:
-    '$route.params.key': 'init'
     '$route.params.sequence_id': 'scrollToInitialPosition'
     '$route.params.comment_id': 'scrollToInitialPosition'
 

@@ -2,7 +2,6 @@
 import AppConfig         from '@/shared/services/app_config'
 import EventBus          from '@/shared/services/event_bus'
 import WatchRecords from '@/mixins/watch_records'
-import RecordLoader from '@/shared/services/record_loader'
 
 import NewComment from '@/components/thread/item/new_comment.vue'
 import PollCreated from '@/components/thread/item/poll_created.vue'
@@ -10,7 +9,7 @@ import StanceCreated from '@/components/thread/item/stance_created.vue'
 import OutcomeCreated from '@/components/thread/item/outcome_created.vue'
 
 import ThreadRenderer from '@/mixins/thread_renderer_mixin'
-import { debounce } from 'lodash'
+import { debounce, first, last } from 'lodash'
 
 export default
   mixins: [ThreadRenderer]
@@ -25,36 +24,17 @@ export default
   props:
     parentEvent: Object
 
-  data: ->
-    loader: null
-
-  created: -> @init()
-
   methods:
-    init: ->
-      @loader = new RecordLoader
-        collection: 'events'
-
-      @watchRecords
-        key: 'parentEvent'+@parentEvent.id
-        collections: ['events']
-        query: @renderSlots
-
-      @updateRendered(1, 1)
-
-    fetchMissing: debounce ->
-      # return false
-      if !@haveAllEventsBetween('position', @minRendered, @maxRendered)
-        # console.log 'fetching children for ', @parentEvent.id, @minRendered, @maxRendered
+    fetchMissing: ->
+      if @missingSlots.length
         @loader.fetchRecords(
           comment_id: null
           from_unread: null
           discussion_id: @parentEvent.discussionId
           parent_id: @parentEvent.id
           order: 'position'
-          from: @minRendered
-          per: (@maxRendered - @minRendered)+1)
-    , 100
+          from: first(@missingSlots)
+          per: (last(@missingSlots) - first(@missingSlots))+1)
 
 </script>
 
