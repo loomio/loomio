@@ -8,6 +8,8 @@ export default
   created: ->
     @loader = new RecordLoader
       collection: 'events'
+      params:
+        per: @padding * 2
 
     @watchRecords
       key: 'parentEvent'+@parentEvent.id
@@ -26,28 +28,31 @@ export default
     eventsBySlot: {}
     visibleSlots: []
     missingSlots: []
-    padding: 10
+    padding: 20
     focusedEvent: null
 
   methods:
     renderSlots: ->
-      @eventsBySlot = {}
-      times @parentEvent.childCount, (i) =>
-        @eventsBySlot[i+1] = null
+      firstRendered = max([1, (first(@visibleSlots) || 1) - @padding])
+      lastRendered = min([(last(@visibleSlots) || 1) + @padding, @parentEvent.childCount])
 
-      minRendered = max([1, (first(@visibleSlots) || 1) - @padding])
-      maxRendered = min([(last(@visibleSlots) || 1) + @padding, @parentEvent.childCount])
+      firstSlot = max([1, firstRendered - (@padding * 2)])
+      lastSlot = min([lastRendered + (@padding * 2), @parentEvent.childCount])
+
+      @eventsBySlot = {}
+      for i in [firstSlot..lastSlot]
+        @eventsBySlot[i] = null
 
       presentPositions = []
       Records.events.collection.chain().
       find(parentId: @parentEvent.id).
-      find(position: {$between: [minRendered, maxRendered]}).
+      find(position: {$between: [firstRendered, lastRendered]}).
       simplesort('position').
       data().forEach (event) =>
         presentPositions.push(event.position)
         @eventsBySlot[event.position] = event
 
-      expectedPositions = range(minRendered, maxRendered+1)
+      expectedPositions = range(firstRendered, lastRendered+1)
       @missingSlots = difference(expectedPositions, presentPositions)
       @eventsBySlot[@focusedEvent.position] = @focusedEvent if @focusedEvent
 

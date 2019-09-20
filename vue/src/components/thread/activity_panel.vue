@@ -55,6 +55,7 @@ export default
 
       commentId = parseInt(@$route.params.comment_id)
       sequenceId = parseInt(@$route.params.sequence_id)
+      return unless commentId or sequenceId
 
       if event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
         focusOnEvent(event)
