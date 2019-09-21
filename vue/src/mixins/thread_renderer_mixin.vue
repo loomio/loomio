@@ -33,13 +33,14 @@ export default
 
   methods:
     renderSlots: ->
+      @eventsBySlot = {}
+      return unless @parentEvent.childCount
       firstRendered = max([1, (first(@visibleSlots) || 1) - @padding])
       lastRendered = min([(last(@visibleSlots) || 1) + @padding, @parentEvent.childCount])
 
       firstSlot = max([1, firstRendered - (@padding * 2)])
       lastSlot = min([lastRendered + (@padding * 2), @parentEvent.childCount])
 
-      @eventsBySlot = {}
       for i in [firstSlot..lastSlot]
         @eventsBySlot[i] = null
 
