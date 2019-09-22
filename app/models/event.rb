@@ -79,6 +79,7 @@ class Event < ApplicationRecord
     poll_option_added
     poll_expired
     poll_edited
+    poll_reopened
     poll_closing_soon
     poll_closed_by_user
     outcome_created
@@ -96,7 +97,8 @@ class Event < ApplicationRecord
 
   def find_parent_event
     return nil unless should_have_parent?
-    if discussion && discussion.max_depth == eventable.parent_event.depth
+    return eventable.parent_event unless discussion
+    if discussion.max_depth == eventable.parent_event.depth
       eventable.parent_event.parent
     else
       eventable.parent_event

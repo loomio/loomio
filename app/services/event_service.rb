@@ -48,5 +48,22 @@ class EventService
       parent_event.update_child_count
     end
   end
+  
+  # def self.rearrange_events(discussion)
+  #   Event.where(discussion_id: discussion.id).update_all(parent_id: discussion.created_event.id, position: 0, depth: 1, child_count: 0)
+  #
+  #   Event.where(discussion_id: discussion.id).order(:sequence_id).each do |event|
+  #     parent_event = event.find_parent_event
+  #     byebug if parent_event.nil?
+  #     Event.where(id: event.id).update_all(parent_id: parent_event.id, depth: parent_event.depth + 1)
+  #   end
+  #
+  #   parent_ids = Event.where(discussion_id: discussion.id).pluck(:parent_id).sort.uniq
+  #   Event.where(id: parent_ids).order(:sequence_id).each do |parent_event|
+  #     parent_event.reorder
+  #     parent_event.update_child_count
+  #   end
+  # end
+
 
 end

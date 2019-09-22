@@ -25,12 +25,9 @@ class DiscussionService
     discussion.document_ids = [] if params.slice(:document_ids).empty?
     is_new_version = discussion.is_new_version?
     return false unless discussion.valid?
-
-    if discussion.reverse_order_changed? or discussion.max_depth_changed?
-      discussion.save!
-      EventService.rearrange_events(discussion) if discussion
-    else
-      discussion.save!
+    rearrange = discussion.max_depth_changed?
+    discussion.save!
+    EventService.delay.rearrange_events(discussion) if rearrange
     end
 
     version_service.handle_version_update!
