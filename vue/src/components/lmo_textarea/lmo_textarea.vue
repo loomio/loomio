@@ -4,6 +4,7 @@ import Records from '@/shared/services/records'
 import {concat, sortBy, isString, filter, uniq, map, forEach} from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
+import detectIt from 'detect-it'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
@@ -171,6 +172,9 @@ export default
       sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
     format: ->
       @model["#{@field}Format"]
+    isTouchDevice: ->
+      console.log 'detectIt.primaryInput', detectIt.primaryInput
+      detectIt.primaryInput == 'mouse'
 
   mounted: ->
     @model.files = []
@@ -184,8 +188,6 @@ export default
       @editor.focus()
 
     setIframeUrl: (command) ->
-      console.log 'command', command
-      console.log 'iframeUrl', @iframeUrl
       command({ src: @iframeUrl })
       @iframeUrl = null
       @iframeDialogIsOpen = false
@@ -309,7 +311,7 @@ div
   label.caption.v-label.v-label--active.theme--light {{label}}
   .editor.mb-3
     editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
-    editor-menu-bubble(:editor='editor' v-slot='{ commands, isActive, menu }')
+    editor-menu-bubble(v-if="!isTouchDevice" :editor='editor' v-slot='{ commands, isActive, menu }')
       .menububble(:class="{'is-active': menu.isActive}" :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`")
         v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
           v-icon mdi-format-bold
@@ -341,6 +343,28 @@ div
               v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
                 v-icon mdi-emoticon-outline
             emoji-picker(:insert="emojiPicked")
+          span(v-if="isTouchDevice")
+            v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
+              v-icon mdi-format-bold
+            v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
+              v-icon mdi-format-italic
+            v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
+              v-icon mdi-format-strikethrough
+            v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
+              v-icon mdi-format-underline
+            //- v-btn(small icon :class="{ 'is-active': isActive.code() }", @click='commands.code')
+            //-   v-icon mdi-code-tags
+            v-dialog(v-model="linkDialogIsOpen" ref="focus" max-width="600px")
+              template(v-slot:activator="{on}")
+                v-btn(small icon v-on="on")
+                  v-icon mdi-link-variant
+              v-card
+                v-card-title.title(v-t="'text_editor.insert_link'")
+                v-card-text
+                  v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus v-on:keyup.enter="setLinkUrl(commands.link)")
+                v-card-actions
+                  v-spacer
+                  v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
           v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
             v-icon mdi-paperclip
           v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
