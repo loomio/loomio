@@ -28,7 +28,6 @@ class DiscussionService
     rearrange = discussion.max_depth_changed?
     discussion.save!
     EventService.delay.rearrange_events(discussion) if rearrange
-    end
 
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)
@@ -138,4 +137,5 @@ class DiscussionService
       DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
     end
   end
+
 end
