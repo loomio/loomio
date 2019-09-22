@@ -10,7 +10,7 @@ module HasRichText
         define_method "sanitize_#{field}!" do
           if self["#{field}_format"] == "html"
             tags = %w[strong em b i p s code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote table thead th tr td iframe]
-            attributes = %w[href src alt title class data-type data-done data-mention-id width height target colspan rowspan] 
+            attributes = %w[href src alt title class data-type data-done data-mention-id width height target colspan rowspan]
             self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
           end
         end
@@ -23,20 +23,16 @@ module HasRichText
   included do
     has_many_attached :files
     has_many_attached :image_files
-    before_save :build_attachments
-    before_save :associate_attachments_with_group
+    before_save :update_attachments!
   end
 
   def associate_attachments_with_group
-    if self[:group_id] && group
-      files.update_all(group_id: self[:group_id])
-      image_files.update_all(group_id: self[:group_id])
-    end
   end
 
-  def build_attachments
+  def update_attachments!
     # this line is just to help migrations through
     return true unless self.class.column_names.include?('attachments')
+    return true unless [files, image_files].any?{ |list| list.any? {|f| f.changed? }}
     self[:attachments] = files.map do |file|
       i = file.blob.slice(:id, :filename, :content_type, :byte_size)
       i.merge!({ preview_url: Rails.application.routes.url_helpers.rails_representation_path(file.representation(PREVIEW_OPTIONS), only_path: true) }) if file.representable?
@@ -44,6 +40,11 @@ module HasRichText
       i.merge!({ icon: attachment_icon(file.blob.content_type || file.blob.filename) })
       i.merge!({ signed_id: file.signed_id })
       i
+    end
+
+    if self[:group_id] && group
+      files.update_all(group_id: self[:group_id])
+      image_files.update_all(group_id: self[:group_id])
     end
   end
 

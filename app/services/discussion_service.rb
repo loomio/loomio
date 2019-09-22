@@ -26,7 +26,12 @@ class DiscussionService
     is_new_version = discussion.is_new_version?
     return false unless discussion.valid?
 
-    discussion.save!
+    if discussion.reverse_order_changed? or discussion.max_depth_changed?
+      discussion.save!
+      EventService.rearrange_events(discussion) if discussion
+    else
+      discussion.save!
+    end
 
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)
@@ -136,5 +141,4 @@ class DiscussionService
       DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
     end
   end
-
 end

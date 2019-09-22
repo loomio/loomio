@@ -1323,6 +1323,18 @@ en:
     helptext_two: "You may remove pins at any time by selecting 'Unpin' from the thread dropdown"
     pin_thread: Pin thread
 
+  thread_arrangement_form:
+    latest: Newest
+    latest_description: Read the newest things first
+    earliest: Oldest
+    earliest_description: Read things in the order they happened
+    linear: Linear
+    linear_description: One after the other, chronologically
+    nested_once: Nested once
+    nested_once_description: Place replies under original
+    nested_twice: Nested twice
+    nested_twice_description: Replies under original, up to 2 times
+
   delete_thread_form:
     aria_label: 'Delete thread'
     title: Delete thread

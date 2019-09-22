@@ -68,7 +68,8 @@ class API::EventsController < API::RestfulController
     records = @discussion.items.distinct.
                 includes(:user, :discussion, :eventable, parent: [:user, :eventable])
 
-    records = records.where("#{order} >= ?", from)
+    op = @discussion.reverse_order ? '<=' : '>='
+    records = records.where("#{order} #{op} ?", from)
 
     if params[:pinned] == 'true'
       records = records.where(pinned: true)
@@ -90,7 +91,8 @@ class API::EventsController < API::RestfulController
     if params[:until_sequence_id_of_position]
       position = [params[:until_sequence_id_of_position].to_i, @discussion.created_event.child_count].min
       max_sequence_id = Event.find_by!(discussion: @discussion, depth: 1, position: position)&.sequence_id
-      collection.order(order).where('sequence_id <= ?', max_sequence_id)
+      op = @discussion.reverse_order ? '>=' : '<='
+      collection.order(order).where("sequence_id #{op} ?", max_sequence_id)
     else
       collection.order(order).limit(per)
     end

@@ -108,6 +108,7 @@ div
               | pos {{event.position}}
               | sid {{event.sequenceId}}
               | depth: {{event.depth}}
+              | childCount: {{event.childCount}}
             slot(name="headline")
               span(v-html='headline')
           v-spacer
@@ -115,8 +116,8 @@ div
             time-ago(:date='event.createdAt')
         slot
         slot(name="actions")
-  template(v-if='event.childCount > 0')
-    event-children(:parent-event='event' :key="event.id")
+        template(v-if='event.childCount > 0')
+          event-children(:parent-event='event' :key="event.id")
   slot(name="append")
 </template>
 
@@ -154,9 +155,9 @@ div
     /* // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding)) */
 }
 
-.thread-item--indent {
+/* .thread-item--indent {
   padding-left: 64px;
-}
+} */
 
 .thread-item__body {
   width: 100%;

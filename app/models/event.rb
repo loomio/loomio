@@ -91,6 +91,15 @@ class Event < ApplicationRecord
 
   def ensure_parent_present!
     return if self.parent || !should_have_parent?
-    self.update(parent: eventable.parent_event)
+    self.update(parent: find_parent_event)
+  end
+
+  def find_parent_event
+    return nil unless should_have_parent?
+    if discussion && discussion.max_depth == eventable.parent_event.depth
+      eventable.parent_event.parent
+    else
+      eventable.parent_event
+    end
   end
 end
