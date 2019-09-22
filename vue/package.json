@@ -19,6 +19,7 @@
     "date-fns": "2.2.1",
     "date-fns-tz": "1.0.7",
     "deepmerge": "^4.0.0",
+    "detect-it": "^3.0.5",
     "diff-match-patch": "^1.0.4",
     "jstimezonedetect": "~1.0.7",
     "lodash": "4.17.15",
