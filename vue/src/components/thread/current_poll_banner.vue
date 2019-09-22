@@ -36,7 +36,7 @@ v-card.current-poll-banner.mb-4.py-2.px-4.lmo-no-print(:style="styles" v-if="eve
     span {{poll.title}}
   v-spacer
   poll-common-closing-at.caption.mr-4(approximate :poll="poll")
-  v-btn(color="primary" :to="urlFor(event)" v-t="'poll_common.vote'")
+  v-btn(color="primary" :to="urlFor(event)" v-t="'poll_common.view'")
 </template>
 
 <style lang="sass">
