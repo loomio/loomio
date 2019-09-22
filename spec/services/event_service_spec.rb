@@ -56,51 +56,6 @@ describe EventService do
       expect(comment2_event.reload.parent.id).to eq comment1_event.id
       expect(comment3_event.reload.parent.id).to eq comment2_event.id
     end
-
-    it 'reverses max_depth 1' do
-      discussion.update(max_depth: 1, reverse_order: true)
-      EventService.rearrange_events(discussion)
-      [comment1_event, comment2_event, comment3_event].each(&:reload)
-      expect(comment1_event.position).to eq 3
-      expect(comment2_event.position).to eq 2
-      expect(comment3_event.position).to eq 1
-      expect(comment1_event.depth).to eq 1
-      expect(comment2_event.depth).to eq 1
-      expect(comment3_event.depth).to eq 1
-      expect(comment1_event.parent.id).to eq discussion_event.id
-      expect(comment2_event.parent.id).to eq discussion_event.id
-      expect(comment3_event.parent.id).to eq discussion_event.id
-    end
-
-    it 'reverses max_depth 2' do
-      discussion.update(max_depth: 2, reverse_order: true)
-      EventService.rearrange_events(discussion)
-      [comment1_event, comment2_event, comment3_event].each(&:reload)
-      expect(comment1_event.position).to eq 1
-      expect(comment2_event.position).to eq 2
-      expect(comment3_event.position).to eq 1
-      expect(comment1_event.depth).to eq 1
-      expect(comment2_event.depth).to eq 2
-      expect(comment3_event.depth).to eq 2
-      expect(comment1_event.parent.id).to eq discussion_event.id
-      expect(comment2_event.parent.id).to eq comment1_event.id
-      expect(comment3_event.parent.id).to eq comment1_event.id
-    end
-
-    it 'reverses max_depth 3' do
-      discussion.update(max_depth: 3, reverse_order: true)
-      EventService.rearrange_events(discussion)
-      [comment1_event, comment2_event, comment3_event].each(&:reload)
-      expect(comment1_event.position).to eq 1
-      expect(comment2_event.position).to eq 1
-      expect(comment3_event.position).to eq 1
-      expect(comment1_event.depth).to eq 1
-      expect(comment2_event.depth).to eq 2
-      expect(comment3_event.depth).to eq 3
-      expect(comment1_event.parent.id).to eq discussion_event.id
-      expect(comment2_event.parent.id).to eq comment1_event.id
-      expect(comment3_event.parent.id).to eq comment1_event.id
-    end
   end
 
   describe "readd_to_thread" do

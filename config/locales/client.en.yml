@@ -1924,6 +1924,7 @@ en:
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
     agree_abstain_disagree_block: 'Agree, Abstain, Disagree, Block'
+    agree_disagree: 'Agree, Disagree'
     agree_abstain_disagree: 'Agree, Abstain, Disagree'
     consent_abstain_object: 'Consent, Abstain, Objection'
     no_voting: 'No voting'

@@ -16,17 +16,6 @@ describe "Events::Position" do
     expect(e3.reload.position).to eq 3
   end
 
-  describe 'reverse order ' do
-    it "enforces reverse" do
-      discussion.update(max_depth: 3, reverse_order: true)
-      e1 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment1)
-      e2 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment2)
-      e3 = Event.create(kind: "new_comment", discussion: discussion, eventable: comment3)
-      expect(e1.reload.position).to eq 3
-      expect(e2.reload.position).to eq 2
-      expect(e3.reload.position).to eq 1
-    end
-  end
   describe 'depth' do
     let(:comment1) { create :comment, discussion: discussion }
     let(:comment2) { create :comment, discussion: discussion, parent: comment1 }

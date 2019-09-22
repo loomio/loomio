@@ -32,7 +32,7 @@ module Events::Position
 
   def set_parent_and_depth!
     set_parent_and_depth
-    save!
+    save(validate: false)
   end
 
   def reload_position
