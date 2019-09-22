@@ -173,8 +173,7 @@ export default
     format: ->
       @model["#{@field}Format"]
     isTouchDevice: ->
-      console.log 'detectIt.primaryInput', detectIt.primaryInput
-      detectIt.primaryInput == 'mouse'
+      detectIt.primaryInput == 'touch'
 
   mounted: ->
     @model.files = []
