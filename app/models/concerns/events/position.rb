@@ -11,11 +11,11 @@ module Events::Position
     define_counter_cache(:child_count) { |e| e.children.count  }
     update_counter_cache :parent, :child_count
 
-    def self.reorder_with_parent_id(parent_id, reverse)
+    def self.reorder_with_parent_id(parent_id)
       ActiveRecord::Base.connection.execute(
         "UPDATE events SET position = t.seq
           FROM (
-            SELECT id AS id, row_number() OVER(ORDER BY sequence_id #{reverse ? 'DESC' : 'ASC'}) AS seq
+            SELECT id AS id, row_number() OVER(ORDER BY sequence_id) AS seq
             FROM events
             WHERE parent_id = #{parent_id}
             AND   discussion_id IS NOT NULL
@@ -41,7 +41,7 @@ module Events::Position
 
   def reorder
     return unless parent_id
-    self.class.reorder_with_parent_id(parent_id, discussion.reverse_order && depth == 1)
+    self.class.reorder_with_parent_id(parent_id)
     reload_position if self.persisted?
   end
 end

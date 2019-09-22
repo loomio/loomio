@@ -117,7 +117,7 @@ div
         slot
         slot(name="actions")
         template(v-if='event.childCount > 0')
-          event-children(:parent-event='event' :key="event.id")
+          event-children(:discussion='discussion' :parent-event='event' :key="event.id")
   slot(name="append")
 </template>
 

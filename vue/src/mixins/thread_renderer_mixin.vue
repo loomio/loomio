@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { throttle, debounce, map, range, min, max, times, first, last, sortedUniq, sortBy, difference, isNumber, isEqual, uniq, without } from 'lodash'
+import { reverse, throttle, debounce, map, range, min, max, times, first, last, sortedUniq, sortBy, difference, isNumber, isEqual, uniq, without } from 'lodash'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import RecordLoader from '@/shared/services/record_loader'
@@ -28,6 +28,7 @@ export default
     eventsBySlot: {}
     visibleSlots: []
     missingSlots: []
+    slots: []
     padding: 20
     focusedEvent: null
 
@@ -56,6 +57,10 @@ export default
       expectedPositions = range(firstRendered, lastRendered+1)
       @missingSlots = difference(expectedPositions, presentPositions)
       @eventsBySlot[@focusedEvent.position] = @focusedEvent if @focusedEvent
+      @slots = [firstSlot..lastSlot]
+      if @discussion.reverseOrder && @parentEvent.depth == 0
+        @slots = reverse([firstSlot..lastSlot])
+
 
     slotVisible: (isVisible, entry, slot, event) ->
       slot = parseInt(slot)
