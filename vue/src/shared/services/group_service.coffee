@@ -72,15 +72,18 @@ export default new class GroupService
         membership && Session.user().isAdminOf(group)
       perform: ->
         openModal
-          component: 'ConfirmModal'
+          component: 'ExportDataModal'
           props:
-            confirm:
-              submit: group.export
-              text:
-                title:    'group_export_modal.title'
-                helptext: 'group_export_modal.body'
-                submit:   'group_export_modal.submit'
-                flash:    'group_export_modal.flash'
+            group: group
+          # component: 'ConfirmModal'
+          # props:
+          #   confirm:
+          #     submit: group.export
+          #     text:
+          #       title:    'group_export_modal.title'
+          #       helptext: 'group_export_modal.body'
+          #       submit:   'group_export_modal.submit'
+          #       flash:    'group_export_modal.flash'
 
     install_slack:
       name: 'install_slack.modal_title'

@@ -799,6 +799,12 @@ en:
       public: 'Privacy: This group is visible on the web'
       aria_label: 'Group privacy: {{privacy}}'
 
+  export_data_modal:
+    title: How do you want to use your data?
+    as_csv: Open it in a spreadsheet
+    as_html: Open it in a browser
+    as_json: Host this group on my own server
+
   description_card:
     title: 'Group description'
     placeholder: 'Group admins can use this area to describe the group’s purpose, so everyone knows why they are here.'
