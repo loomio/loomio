@@ -45,7 +45,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
           space
           span(v-t="'thread_arrangement_form.latest_description'")
 
-    v-subheader Branching
+    v-subheader Replies
     v-radio-group(v-model="discussion.maxDepth")
       v-radio(:value="1")
         template(v-slot:label)

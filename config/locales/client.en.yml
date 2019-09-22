@@ -1328,8 +1328,8 @@ en:
     latest_description: Read the newest things first
     earliest: Oldest
     earliest_description: Read things in the order they happened
-    linear: Linear
-    linear_description: One after the other, chronologically
+    linear: Not nested
+    linear_description: Each comment placed one after the other
     nested_once: Nested once
     nested_once_description: Place replies under original
     nested_twice: Nested twice
