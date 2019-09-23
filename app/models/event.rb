@@ -80,7 +80,7 @@ class Event < ApplicationRecord
     when 'discussion_forked'   then eventable.created_event
     when 'discussion_moved'    then eventable.created_event
     when 'discussion_reopened' then eventable.created_event
-    when 'outcome_created'     then eventable.poll.created_event
+    when 'outcome_created'     then eventable.parent_event
     when 'new_comment'         then eventable.parent_event
     when 'poll_closed_by_user' then eventable.created_event
     when 'poll_closing_soon'   then eventable.created_event
