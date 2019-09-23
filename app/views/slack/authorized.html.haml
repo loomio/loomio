@@ -1,0 +1,8 @@
+= stylesheet_link_tag 'slack'
+.slack-authorized
+  .slack-authorized__square
+    %img.doorkeeper-logo.doorkeeper-third-party-logo{src: '/img/slack-icon-color.svg'}
+  .slack-authorized__square
+    %img.doorkeeper-logo.doorkeeper-loomio-logo{src: '/img/mascot.png'}
+%p.h4= I18n.t(:"slack.authorized_message")
+%a.slack-authorized__button{href: "https://#{@team}.slack.com"}= I18n.t(:"slack.go_to_slack")
