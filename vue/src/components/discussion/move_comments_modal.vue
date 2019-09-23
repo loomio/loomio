@@ -38,6 +38,7 @@ export default
           .find({ id: { $ne: @discussion.id } })
           .find(title: { $regex: [@searchFragment, 'i'] })
           .where((d) -> AbilityService.canMoveThread(d))
+          .simplesort('title')
           .data()
     , 500
 
