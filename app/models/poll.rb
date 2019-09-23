@@ -135,7 +135,7 @@ class Poll < ApplicationRecord
     if discussion
       discussion.created_event
     else
-      created_event
+      nil
     end
   end
 

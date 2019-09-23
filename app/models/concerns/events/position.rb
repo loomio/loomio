@@ -26,13 +26,23 @@ module Events::Position
   end
 
   def set_parent_and_depth
-    self.parent = find_parent_event
+    self.parent = max_depth_adjusted_parent
     self.depth = parent ? (parent.depth + 1) : 0
+  end
+
+  def max_depth_adjusted_parent
+    original_parent = find_parent_event
+    return nil unless original_parent
+    if discussion && discussion.max_depth == original_parent.depth
+      original_parent.parent
+    else
+      original_parent
+    end
   end
 
   def set_parent_and_depth!
     set_parent_and_depth
-    update_columns(parent_id: parent_id, depth: 1)
+    update_columns(parent_id: parent_id, depth: depth)
   end
 
   def reload_position

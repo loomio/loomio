@@ -1324,16 +1324,21 @@ en:
     pin_thread: Pin thread
 
   thread_arrangement_form:
+    title: Thread layout
+    for_everyone: This changes the layout for everyone, not just you.
+    sorting: Oldest or Newest first?
     latest: Newest
     latest_description: Read the newest things first
     earliest: Oldest
-    earliest_description: Read things in the order they happened
-    linear: Not nested
-    linear_description: Each comment placed one after the other
+    earliest_description: Read from beginning to end
+    replies: How to display replies?
+    linear: Linear
+    linear_description: Arrange things in the order they happened
     nested_once: Nested once
     nested_once_description: Place replies under original
     nested_twice: Nested twice
     nested_twice_description: Replies under original, up to 2 times
+    changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process. Refresh your browser a few minutes after save to see changes.
 
   delete_thread_form:
     aria_label: 'Delete thread'

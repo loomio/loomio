@@ -74,29 +74,24 @@ class Event < ApplicationRecord
     nil
   end
 
-  def should_have_parent?
-    %w[stance_created
-    poll_option_added
-    poll_expired
-    poll_edited
-    poll_reopened
-    poll_closing_soon
-    poll_closed_by_user
-    outcome_created
-    new_comment
-    discussion_moved
-    discussion_forked
-    discussion_edited].include?(self.kind) ||
-    (self.kind == 'poll_created' && self.discussion_id.present?)
-  end
-
   def find_parent_event
-    return nil unless should_have_parent?
-    return eventable.parent_event unless discussion
-    if discussion.max_depth == eventable.parent_event.depth
-      eventable.parent_event.parent
+    case kind
+    when 'discussion_closed'   then eventable.created_event
+    when 'discussion_forked'   then eventable.created_event
+    when 'discussion_moved'    then eventable.created_event
+    when 'discussion_reopened' then eventable.created_event
+    when 'outcome_created'     then eventable.poll.created_event
+    when 'new_comment'         then eventable.parent_event
+    when 'poll_closed_by_user' then eventable.created_event
+    when 'poll_closing_soon'   then eventable.created_event
+    when 'poll_created'        then eventable.parent_event
+    when 'poll_edited'         then eventable.created_event
+    when 'poll_expired'        then eventable.created_event
+    when 'poll_option_added'   then eventable.created_event
+    when 'poll_reopened'       then eventable.created_event
+    when 'stance_created'      then eventable.parent_event
     else
-      eventable.parent_event
+      nil
     end
   end
 end

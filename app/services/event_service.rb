@@ -40,15 +40,17 @@ class EventService
   end
 
   def self.rearrange_events(discussion)
-    Event.where(discussion_id: discussion.id).update_all(parent_id: discussion.created_event.id, position: 0, depth: 1, child_count: 0)
-    Event.where(discussion_id: discussion.id).order(:sequence_id).each(&:set_parent_and_depth!)
-    parent_ids = Event.where(discussion_id: discussion.id).pluck(:parent_id).sort.uniq
+    items = Event.where(discussion_id: discussion.id).order(:sequence_id)
+    items.update_all(parent_id: discussion.created_event.id, position: 0, depth: 1, child_count: 0)
+    items.each(&:set_parent_and_depth!)
+    parent_ids = items.pluck(:parent_id).sort.uniq
     Event.where(id: parent_ids).each do |parent_event|
-      parent_event.reorder
-      parent_event.update_child_count
+      Event.reorder_with_parent_id(parent_event.id)
+      child_count = items.where(parent_id: parent_event.id).count
+      parent_event.update_column(:child_count, child_count)
     end
   end
-  
+
   # def self.rearrange_events(discussion)
   #   Event.where(discussion_id: discussion.id).update_all(parent_id: discussion.created_event.id, position: 0, depth: 1, child_count: 0)
   #
