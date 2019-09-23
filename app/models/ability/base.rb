@@ -12,7 +12,6 @@ module Ability
     prepend Ability::Identity
     prepend Ability::MembershipRequest
     prepend Ability::Membership
-    prepend Ability::OauthApplication
     prepend Ability::Outcome
     prepend Ability::Poll
     prepend Ability::Reaction

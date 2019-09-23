@@ -29,6 +29,7 @@ import GroupWizard from '@/components/group/wizard'
 import UserWizard from '@/components/profile/wizard'
 import MoveCommentsModal from '@/components/discussion/move_comments_modal'
 import SeenByModal from '@/components/thread/seen_by_modal'
+import ExportDataModal from '@/components/group/export_data_modal'
 
 export default
   components:
@@ -61,6 +62,7 @@ export default
     'UserWizard': UserWizard
     'MoveCommentsModal': MoveCommentsModal
     'SeenByModal': SeenByModal
+    'ExportDataModal': ExportDataModal
   data: ->
     isOpen: false
     componentName: ""

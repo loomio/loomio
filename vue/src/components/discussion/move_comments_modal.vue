@@ -3,7 +3,7 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import { submitDiscussion } from '@/shared/helpers/form'
-import { orderBy } from 'lodash'
+import { orderBy, debounce } from 'lodash'
 
 export default
   data: ->
@@ -30,19 +30,22 @@ export default
           @selectedDiscussion.update(isForking: false)
           @close()
           @$router.push @urlFor(@selectedDiscussion)
+    fetch: debounce ->
+      return unless @searchFragment.length
+      Records.discussions.search(@groupId, @searchFragment).then (data) =>
+        @searchResults = Records.discussions.collection.chain()
+          .find(groupId: @groupId)
+          .find({ id: { $ne: @discussion.id } })
+          .find(title: { $regex: [@searchFragment, 'i'] })
+          .where((d) -> AbilityService.canMoveThread(d))
+          .simplesort('title')
+          .data()
+    , 500
 
 
   watch:
     selectedDiscussion: 'setSubmit'
-    searchFragment: (fragment) ->
-      return unless fragment.length
-      Records.discussions.search(@groupId, fragment).then (data) =>
-        @searchResults = Records.discussions.collection.chain()
-          .find(groupId: @groupId)
-          .find({ id: { $ne: @discussion.id } })
-          .find(title: { $regex: [fragment, 'i'] })
-          .where((d) -> AbilityService.canMoveThread(d))
-          .data()
+    searchFragment: 'fetch'
 
 </script>
 <template lang="pug">

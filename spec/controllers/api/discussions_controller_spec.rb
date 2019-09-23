@@ -24,38 +24,6 @@ describe API::DiscussionsController do
     group.add_admin! user
   end
 
-  context 'as an oauthed user' do
-    let(:user) { create(:user) }
-    let(:access_token) { create :access_token, resource_owner_id: user.id }
-
-    it 'can fetch records' do
-      discussion; another_discussion
-      get :dashboard, params: { access_token: access_token.token }
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      discussion_ids = json['discussions'].map { |d| d['id'] }
-      expect(discussion_ids).to include discussion.id
-      expect(discussion_ids).to_not include another_discussion.id
-    end
-
-    it 'returns forbidden if the access token is not found' do
-      get :dashboard, params: { access_token: "blargety blarg" }
-      expect(response.status).to eq 403
-    end
-
-    it 'returns unauthorized if the access token has been revoked' do
-      access_token.update(revoked_at: 2.days.ago)
-      get :dashboard, params: { access_token: access_token.token }
-      expect(response.status).to eq 401
-    end
-
-    it 'returns unauthorized if the access token is expired' do
-      access_token.update(expires_in: 0)
-      get :dashboard, params: { access_token: access_token.token }
-      expect(response.status).to eq 401
-    end
-  end
-
   describe 'tags' do
     it 'fetches discussions by tag' do
       tag = Tag.create(group: discussion.group, name: 'some tag', color: '#333')

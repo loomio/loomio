@@ -19,7 +19,6 @@ records.addRecordsInterface require('shared/interfaces/contact_records_interface
 records.addRecordsInterface require('shared/interfaces/version_records_interface')
 records.addRecordsInterface require('shared/interfaces/draft_records_interface')
 records.addRecordsInterface require('shared/interfaces/translation_records_interface')
-records.addRecordsInterface require('shared/interfaces/oauth_application_records_interface')
 records.addRecordsInterface require('shared/interfaces/session_records_interface')
 records.addRecordsInterface require('shared/interfaces/registration_records_interface')
 records.addRecordsInterface require('shared/interfaces/poll_records_interface')

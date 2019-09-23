@@ -20,9 +20,5 @@ describe ModelLocator do
       expect(ModelLocator.new(:discussion, id: discussion.id).locate).to eq discussion
     end
 
-    it "finds a model with an aggregate model name" do
-      application = create(:application)
-      expect(ModelLocator.new(:oauth_application, id: application.id).locate).to eq application
-    end
   end
 end
