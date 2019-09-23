@@ -16,6 +16,7 @@ module Dev::Scenarios::Tags
     group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes', group_privacy: 'open', enable_experiments: true)
     group.add_admin! patrick
     discussion = group.discussions.create!(title: 'This thread is public', private: false, author: patrick)
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
     tag = group.tags.create(name: "Tag Name", color: "#cccccc")
     discussion_tag = discussion.discussion_tags.create(tag: tag)
     redirect_to discussion_url(discussion)
@@ -25,6 +26,7 @@ module Dev::Scenarios::Tags
     group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes', group_privacy: 'open', enable_experiments: true)
     group.add_admin! patrick
     discussion = group.discussions.create!(title: 'This thread is public', private: false, author: patrick)
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
     tag = group.tags.create(name: "Tag Name", color: "#cccccc")
     discussion_tag = discussion.discussion_tags.create(tag: tag)
     redirect_to "/g/#{group.key}/tags"
