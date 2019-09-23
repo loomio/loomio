@@ -1,10 +1,22 @@
 ActiveAdmin.register Subscription do
+  includes :groups
   actions :new, :create, :index, :show, :edit, :update, :destroy
 
-  filter :kind
+  filter :chargify_subscription_id
+  filter :expires_at
+  filter :payment_method
+  filter :plan
+  filter :state
 
   index do
     column :plan
+    column 'Groups' do |subscription|
+      if subscription.groups.any?
+        subscription.groups.map { |group| link_to(group.name, admin_group_path(group)) }
+      else
+        nil
+      end
+    end
     column :state
     column :expires_at
     column :payment_method
