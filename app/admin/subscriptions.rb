@@ -3,10 +3,10 @@ ActiveAdmin.register Subscription do
   actions :new, :create, :index, :show, :edit, :update, :destroy
 
   filter :chargify_subscription_id
-  filter :expires_at
-  filter :payment_method
-  filter :plan
-  filter :state
+  filter :expires_at, as: :date_range
+  filter :payment_method, as: :select
+  filter :plan, as: :select
+  filter :state, as: :select
 
   index do
     column :plan
