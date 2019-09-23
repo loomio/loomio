@@ -28,7 +28,6 @@ class Event < ApplicationRecord
   validates :eventable, presence: true
 
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
-  scope :chronologically, -> { order(created_at: :asc) }
   scope :thread_events, -> { where.not(kind: BLACKLISTED_KINDS) }
 
   scope :invitations_in_period, ->(since, till) {
@@ -39,7 +38,6 @@ class Event < ApplicationRecord
   delegate :poll, to: :eventable, allow_nil: true
   delegate :groups, to: :eventable, allow_nil: true
   delegate :update_sequence_info!, to: :discussion, allow_nil: true
-
 
   def self.publish!(eventable, **args)
     build(eventable, **args).tap(&:save!).tap(&:trigger!)

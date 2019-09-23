@@ -27,7 +27,6 @@ class Discussion < ApplicationRecord
 
   scope :visible_to_public, -> { where(private: false) }
   scope :not_visible_to_public, -> { where(private: true) }
-  scope :chronologically, -> { order('created_at asc') }
 
   scope :is_open, -> { where(closed_at: nil) }
   scope :is_closed, -> { where.not(closed_at: nil) }

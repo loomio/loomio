@@ -68,7 +68,6 @@ class Poll < ApplicationRecord
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
   scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_id": participant.id) }
   scope :authored_by, ->(user) { where(author: user) }
-  scope :chronologically, -> { order('created_at asc') }
   scope :with_includes, -> { includes(
     :documents,
     :poll_options,

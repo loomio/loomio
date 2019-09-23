@@ -33,7 +33,6 @@ class Comment < ApplicationRecord
   default_scope { includes(:user).includes(:documents).includes(:discussion) }
 
   scope :in_organisation, ->(group) { joins(:discussion).where("discussions.group_id": group.id) }
-  scope :chronologically, -> { order('created_at asc') }
 
   delegate :name, to: :user, prefix: :user
   delegate :name, to: :user, prefix: :author
