@@ -6,6 +6,10 @@ describe "Events::Position" do
   let(:comment1) { create :comment, discussion: discussion }
   let(:comment2) { create :comment, discussion: discussion }
   let(:comment3) { create :comment, discussion: discussion }
+  
+  before do
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
+  end
 
   it "gives events with a parent_id a pos sequence" do
     e1 = Event.create(kind: "new_comment", parent: discussion.created_event, discussion: discussion, eventable: comment1)
