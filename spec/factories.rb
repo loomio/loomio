@@ -243,17 +243,6 @@ FactoryBot.define do
     payload {{ payload: 'payload' }}
   end
 
-  factory :application, class: OauthApplication do
-    name { "More like BROAuth, am I right?" }
-    association :owner, factory: :user
-    redirect_uri { "https://www.loomio.org" }
-  end
-
-  factory :access_token, class: Doorkeeper::AccessToken do
-    resource_owner_id { create(:user).id }
-    association :application, factory: :application
-  end
-
   factory :poll_option do
     name { "Plan A" }
   end
