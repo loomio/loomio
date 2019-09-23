@@ -32,7 +32,7 @@ module Events::Position
 
   def set_parent_and_depth!
     set_parent_and_depth
-    save(validate: false)
+    update_columns(parent_id: parent_id, depth: 1)
   end
 
   def reload_position

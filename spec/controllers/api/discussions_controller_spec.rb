@@ -20,6 +20,7 @@ describe API::DiscussionsController do
   }}
 
   before do
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
     group.add_admin! user
   end
 
@@ -736,7 +737,7 @@ describe API::DiscussionsController do
 
       #the created discussion has two discussion readers (those created on the original discussion)
       d = Discussion.last
-      expect(d.discussion_readers.count).to eq 2
+      expect(d.discussion_readers.count).to eq 3
 
       #the discussion reader is that of the user and its discussion is that which was made it has read ranges representing the entirety for the user
       dr = DiscussionReader.find_by(user: user, discussion: d)

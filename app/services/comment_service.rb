@@ -18,7 +18,7 @@ class CommentService
   def self.update(comment:, params:, actor:)
     actor.ability.authorize! :update, comment
     comment.edited_at = Time.zone.now
-    
+
     return false unless comment.valid?
     HasRichText.assign_attributes_and_update_files(comment, params)
     comment.save!

@@ -90,11 +90,6 @@ class Event < ApplicationRecord
     (self.kind == 'poll_created' && self.discussion_id.present?)
   end
 
-  def ensure_parent_present!
-    return if self.parent || !should_have_parent?
-    self.update(parent: find_parent_event)
-  end
-
   def find_parent_event
     return nil unless should_have_parent?
     return eventable.parent_event unless discussion
