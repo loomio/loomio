@@ -54,9 +54,6 @@ export default class LmoUrlService
   @event: (e, params = {}, options = {}) ->
     @discussion(e.discussion(), params, options) + "/#{e.sequenceId}"
 
-  @oauthApplication: (a, params = {}, options = {}) ->
-    @buildModelRoute('apps/registered', a.id, a.name, params, options)
-
   @buildModelRoute: (path, key, name, params, options) ->
     result = if options.absolute then AppConfig.baseUrl else "/"
     result += "#{options.namespace || path}/" if (options.namespace || path || "").length > 0
