@@ -58,7 +58,7 @@ export default
       @missingSlots = difference(expectedPositions, presentPositions)
       @eventsBySlot[@focusedEvent.position] = @focusedEvent if @focusedEvent
       @slots = [firstSlot..lastSlot]
-      if @discussion.reverseOrder && @parentEvent.depth == 0
+      if @discussion.newestFirst && @parentEvent.depth == 0
         @slots = reverse([firstSlot..lastSlot])
 
 

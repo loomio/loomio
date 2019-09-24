@@ -32,7 +32,7 @@ class DiscussionSerializer < ActiveModel::Serializer
              :attachments,
              :mentioned_usernames,
              :tag_names,
-             :reverse_order,
+             :newest_first,
              :max_depth
 
 

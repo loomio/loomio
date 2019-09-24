@@ -12,11 +12,12 @@ export default
   props:
     discussion: Object
     close: Function
+
   data: ->
     clone: @discussion.clone()
 
   mounted: ->
-    @submit = submitDiscussion @, @clone,
+    @submit = submitDiscussion @, @discussion,
       successCallback: (data) => @close()
 
 </script>
@@ -31,7 +32,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
   .pa-4
     v-alert(type="info" v-t="'thread_arrangement_form.for_everyone'")
     v-subheader(v-t="'thread_arrangement_form.sorting'")
-    v-radio-group(v-model="clone.reverseOrder")
+    v-radio-group(v-model="clone.newestFirst")
       v-radio(:value="false")
         template(v-slot:label)
           strong(v-t="'thread_arrangement_form.earliest'")

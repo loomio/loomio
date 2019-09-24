@@ -115,8 +115,8 @@ export default
       action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
       v-spacer
       v-btn(text @click="openArrangementForm()")
-        span(v-if="discussion.reverseOrder" v-t="'poll_common_votes_panel.newest_first'")
-        span(v-if="!discussion.reverseOrder" v-t="'poll_common_votes_panel.oldest_first'")
+        span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
+        span(v-if="!discussion.newestFirst" v-t="'poll_common_votes_panel.oldest_first'")
   v-divider
 </template>
 <style lang="sass">
