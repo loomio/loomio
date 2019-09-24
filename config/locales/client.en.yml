@@ -543,6 +543,7 @@ en:
     poll_notification_history: Poll notification history
     outcome_notification_history: Outcome notification history
     comment_notification_history: Comment notification history
+    notification_history_explanation: ✓ indicates that the notification has been read or the email has been opened
     quick_add: "Quick add:"
     any_other_groups: "Any other groups?"
     notified_people: "{{name}} notified {{length}} people:"
