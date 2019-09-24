@@ -7,6 +7,8 @@ class Document < ApplicationRecord
   validates :color, presence: true
   before_validation :set_metadata
 
+  before_save :set_group_id
+
   has_attached_file :file, styles: lambda { |f|
     if f.instance.is_an_image?
       { thumb: '100x100#', web: '600x>' }
@@ -54,6 +56,12 @@ class Document < ApplicationRecord
   end
 
   private
+
+  def set_group_id
+    if model && model.respond_to?(:group_id)
+      update_column(:group_id, document.model.group_id)
+    end
+  end
 
   # need this to save model with upload correctly and get metadata,
   # we'll set the finalized path later in set_final_urls

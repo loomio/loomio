@@ -167,7 +167,6 @@ export default
 
 <template lang="pug">
 .members-panel
-  v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute top)
   v-list(two-line)
     template(v-for="(membership, index) in memberships")
       v-list-item
