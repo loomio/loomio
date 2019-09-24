@@ -32,6 +32,7 @@ module Dev::DashboardHelper
       existing
     else
       instance_variable_set(var_name, Discussion.create!(title: name.to_s.humanize, group: group, author: author, private: false).tap do |discussion|
+        DiscussionService.create(discussion: discussion, actor: discussion.author)
         yield discussion if block_given?
       end)
     end

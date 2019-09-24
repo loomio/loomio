@@ -93,6 +93,15 @@ export default new class ThreadService
           props:
             discussion: discussion.clone()
 
+    edit_arrangement:
+      icon: 'mdi-directions-fork'
+      canPerform: -> AbilityService.canEditThread(discussion)
+      perform: ->
+        openModal
+          component: 'ArrangementForm',
+          props:
+            discussion: discussion.clone()
+
     translate_thread:
       icon: 'mdi-translate'
       menu: true

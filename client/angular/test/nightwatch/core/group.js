@@ -42,7 +42,7 @@ module.exports = {
     page.expectText('.flash-root__message', 'You are now a member')
   },
 
-  'request to join a closed group group': (test) => {
+  'request to join a closed group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_closed_group_as_non_member')

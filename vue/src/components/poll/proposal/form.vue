@@ -8,8 +8,9 @@ export default
     poll: Object
   data: ->
     items: [
-      {text: @$t('poll_proposal_options.agree_abstain_disagree_block'), value: ['agree', 'abstain', 'disagree', 'block']}
+      {text: @$t('poll_proposal_options.agree_disagree'), value: ['agree', 'disagree']}
       {text: @$t('poll_proposal_options.agree_abstain_disagree'), value: ['agree', 'abstain', 'disagree']}
+      {text: @$t('poll_proposal_options.agree_abstain_disagree_block'), value: ['agree', 'abstain', 'disagree', 'block']}
       {text: @$t('poll_proposal_options.consent_abstain_object'), value: ['consent', 'abstain', 'objection']}
       {text: @$t('poll_proposal_options.no_voting'), value: []}
     ]

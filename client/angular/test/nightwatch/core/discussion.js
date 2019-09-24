@@ -18,7 +18,7 @@ module.exports = {
     page.expectText('.discussion-form__group-select', 'Dirty Dancing Shoes')
   },
 
-  'should display content for a public thread': (test) => {
+  'should_display_content_for_a_public_thread': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_visitor')
@@ -222,7 +222,7 @@ module.exports = {
     page.expectText('.thread-preview__text-container', 'Dirty Dancing Shoes')
   },
 
-  'allows logged in users to request to join a closed group': (test) => {
+  'allows_logged_in_users_to_request_to_join_a_closed_group': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_closed_group_as_non_member')

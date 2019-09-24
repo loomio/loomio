@@ -27,7 +27,6 @@ class Discussion < ApplicationRecord
 
   scope :visible_to_public, -> { where(private: false) }
   scope :not_visible_to_public, -> { where(private: true) }
-  scope :chronologically, -> { order('created_at asc') }
 
   scope :is_open, -> { where(closed_at: nil) }
   scope :is_closed, -> { where.not(closed_at: nil) }
@@ -117,7 +116,7 @@ class Discussion < ApplicationRecord
     discussion.ranges_string =
      RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
     discussion.last_activity_at = discussion.items.order(:sequence_id).last&.created_at || created_at
-    save!(validate: false)
+    update_columns(ranges_string: discussion.ranges_string, last_activity_at: discussion.last_activity_at)
   end
 
   def public?
@@ -167,7 +166,7 @@ class Discussion < ApplicationRecord
   private
 
   def set_last_activity_at_to_created_at
-    update_attribute(:last_activity_at, created_at)
+    update_column(:last_activity_at, created_at)
   end
 
   def sequence_id_or_0(item)

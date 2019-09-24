@@ -25,8 +25,9 @@ class DiscussionService
     discussion.document_ids = [] if params.slice(:document_ids).empty?
     is_new_version = discussion.is_new_version?
     return false unless discussion.valid?
-
+    rearrange = discussion.max_depth_changed?
     discussion.save!
+    EventService.delay.rearrange_events(discussion) if rearrange
 
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)

@@ -31,6 +31,7 @@ module.exports = {
   DateTimePicker: 'common/date_time_picker',
   DecisionToolsCard: 'thread/decision_tools_card',
   DiscussionForkActions: 'discussion/fork_actions',
+  ArrangementForm: 'thread/arrangement_form',
   DiscussionForm: 'discussion/form',
   DiscussionFormActions: 'discussion/form_actions',
   DiscussionStart: 'discussion/start',

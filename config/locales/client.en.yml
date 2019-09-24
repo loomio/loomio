@@ -1357,6 +1357,23 @@ en:
     helptext_two: "You may remove pins at any time by selecting 'Unpin' from the thread dropdown"
     pin_thread: Pin thread
 
+  thread_arrangement_form:
+    title: Thread layout
+    for_everyone: This changes the layout for everyone, not just you.
+    sorting: Oldest or Newest first?
+    latest: Newest
+    latest_description: Read the newest things first
+    earliest: Oldest
+    earliest_description: Read from beginning to end
+    replies: How to display replies?
+    linear: Linear
+    linear_description: Arrange things in the order they happened
+    nested_once: Nested once
+    nested_once_description: Place replies under original
+    nested_twice: Nested twice
+    nested_twice_description: Replies under original, up to 2 times
+    changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process. Refresh your browser a few minutes after save to see changes.
+
   delete_thread_form:
     aria_label: 'Delete thread'
     title: Delete thread
@@ -1946,6 +1963,7 @@ en:
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
     agree_abstain_disagree_block: 'Agree, Abstain, Disagree, Block'
+    agree_disagree: 'Agree, Disagree'
     agree_abstain_disagree: 'Agree, Abstain, Disagree'
     consent_abstain_object: 'Consent, Abstain, Objection'
     no_voting: 'No voting'
