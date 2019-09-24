@@ -22,8 +22,9 @@ export default
     searchLoader: null
     search: ''
     filter: 'open'
-    subgroups: 'none'
+    subgroups: 'mine'
     showSearch: false
+    groupIds: []
 
   methods:
     init: ->
@@ -63,6 +64,12 @@ export default
       @query()
 
     query: (store) ->
+      return unless @group
+      @groupIds = switch @subgroups
+        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
+        when 'all' then @group.organisationIds()
+        else [@group.id]
+
       if @search.length
         chain = Records.searchResults.collection.chain()
         chain = chain.find(resultGroupId: {$in: @group.parentOrSelf().organisationIds()})
@@ -115,7 +122,7 @@ export default
       handler: (query) ->
         @search = ''
         @filter = 'open'
-        @subgroups = 'none'
+        @subgroups = 'mine'
 
         @filter = @$route.query.t if @$route.query.t
         @search = @$route.query.q if @$route.query.q
@@ -127,12 +134,6 @@ export default
     tags: ->
       intersection([@filter], @groupTags)
 
-    groupIds: ->
-      return [] unless @group
-      switch @subgroups
-        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
-        when 'all' then @group.organisationIds()
-        else [@group.id]
 
     loading: ->
       @loader.loading || @searchLoader.loading
@@ -182,7 +183,6 @@ div.discussions-panel(:key="group.id")
     v-chip(v-for="tag in groupTags" :key="tag" :value="tag" @click="selectFilter(tag)" outlined) {{tag}}
 
   v-card.discussions-panel
-    v-progress-linear(color="accent" indeterminate :active="loading" absolute top)
     .discussions-panel__content(v-if="!search")
       .discussions-panel__list--empty(v-if='noThreads' :value="true")
         p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
@@ -190,7 +190,10 @@ div.discussions-panel(:key="group.id")
       .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
         v-list.thread-previews(two-line)
           thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)
-        v-btn.discussions-panel__show-more(v-if="!loader.exhausted" :disabled="loader.loading" @click='loader.loadMore()', v-t="{ path: 'common.action.show_more' }")
+
+        v-layout(justify-center)
+          v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+
         .lmo-hint-text.discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
 
     .discussions-panel__content(v-if="search")

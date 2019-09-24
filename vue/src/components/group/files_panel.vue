@@ -5,8 +5,9 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import WatchRecords   from '@/mixins/watch_records'
+import Session       from '@/shared/services/session'
 
-import { isEmpty, debounce, filter, some, orderBy } from 'lodash'
+import { isEmpty, intersection, debounce, filter, some, orderBy } from 'lodash'
 import { applyLoadingFunction } from '@/shared/helpers/apply'
 
 export default
@@ -18,6 +19,7 @@ export default
     attachmentLoader: null
     fragment: ''
     items: []
+    subgroups: 'mine'
     per: 25
     from: 0
 
@@ -37,6 +39,7 @@ export default
       params:
         group_id: @group.id
         per: @per
+        subgroups: @subgroups
         from: @from
 
     @attachmentLoader = new RecordLoader
@@ -44,36 +47,42 @@ export default
       params:
         group_id: @group.id
         per: @per
+        subgroups: @subgroups
         from: @from
-
-    @fetch()
 
     @watchRecords
       collections: ['documents', 'attachments']
-      query: @query
+      query: => @query()
+
+    @fragment = @$route.query.q || ''
+    @fetch()
 
   watch:
-    fragment: debounce ->
+    '$route.query.q': (val) ->
+      @fragment = val || ''
       @fetch()
       @query()
-    ,
-      300
 
   methods:
     query: ->
+      groupIds = switch @subgroups
+        when 'none' then [@group.id]
+        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
+        when 'all' then @group.organisationIds()
+
       documents = Records.documents.collection.chain().
-                     find(groupId: @group.id).
+                     find(groupId: {$in: groupIds}).
                      find(title: {$regex: ///#{@fragment}///i}).
-                     limit(@loader.numRequested).data()
+                     limit(@from + @per).data()
 
       attachments = Records.attachments.collection.chain().
-                     find(groupId: @group.id).
+                     find(groupId: {$in: groupIds}).
                      find(filename: {$regex: ///#{@fragment}///i}).
-                     limit(@loader.numRequested).data()
+                     limit(@from + @per).data()
 
       @items = orderBy(documents.concat(attachments), 'createdAt', 'desc')
 
-    fetch: ->
+    fetch: debounce ->
       @loader.fetchRecords
         q: @fragment
         from: @from
@@ -81,6 +90,7 @@ export default
       @attachmentLoader.fetchRecords
         q: @fragment
         from: @from
+    , 500
 
     loadMore: ->
       @from += @per
@@ -88,7 +98,7 @@ export default
 
 
   computed:
-    showLoadMore: -> true || !@loader.exhausted && !@attachmentLoader.exhausted
+    showLoadMore: -> !@loader.exhausted && !@attachmentLoader.exhausted
     loading: -> @loader.loading || @attachmentLoader.loading
     canAdministerGroup: -> AbilityService.canAdministerGroup(@group)
 
@@ -96,16 +106,20 @@ export default
 
 <template lang="pug">
 v-card.group-files-panel
-  v-toolbar(flat transparent)
-    v-spacer
-    v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
-  v-divider
+  //- v-toolbar(flat transparent)
+  //-   v-spacer
+  //- v-divider
+  //-
+  //- v-alert(:value="true" color="info" outlined icon="info" v-t="'group_files_panel.no_files'")
 
-  v-data-table(:items="items" hide-default-footer)
-    template(v-slot:no-data)
-      v-alert(:value="true" color="info" outlined icon="info" v-t="'group_files_panel.no_files'")
-    template(v-slot:item="{ item }")
+  v-simple-table(:items="items" hide-default-footer)
+    thead
       tr
+        th Filename
+        th Author
+        th Date
+    tbody
+      tr(v-for="item in items" :key="item.id")
         td
           v-layout(align-center)
             v-icon mdi-{{item.icon}}
@@ -114,5 +128,6 @@ v-card.group-files-panel
           user-avatar(:user="item.author()")
         td
           time-ago(:date="item.createdAt")
-  v-btn(v-if="showLoadMore" :disabled="loading" @click="loadMore()" v-t="'common.action.load_more'")
+  v-layout(justify-center)
+    v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="loadMore()" v-t="'common.action.load_more'")
 </template>

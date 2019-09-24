@@ -4,7 +4,8 @@ import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import WatchRecords from '@/mixins/watch_records'
 import EventBus       from '@/shared/services/event_bus'
-import { debounce, some, every, compact, omit, values, keys } from 'lodash'
+import Session       from '@/shared/services/session'
+import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash'
 
 export default
   mixins: [WatchRecords]
@@ -17,7 +18,7 @@ export default
     per: 50
     from: 0
     filter: 'all'
-    subgroups: 'none'
+    subgroups: 'mine'
     pollTypes: AppConfig.pollTypes
 
   created: ->
@@ -33,7 +34,7 @@ export default
       path: 'search'
 
     @watchRecords
-      collections: ['polls']
+      collections: ['polls', 'groups', 'memberships']
       query: => @query()
 
     @refresh()
@@ -44,8 +45,13 @@ export default
       @query()
 
     query: (store) ->
+      groupIds = switch @subgroups
+        when 'none' then [@group.id]
+        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
+        when 'all' then @group.organisationIds()
+
       chain = Records.polls.collection.chain()
-      chain = chain.find(groupId: {$in: @groupIds})
+      chain = chain.find(groupId: {$in: groupIds})
 
       switch
         when @filter == 'all'
@@ -66,7 +72,7 @@ export default
           some [poll.title, poll.details], (field) =>
             every @search.split(' '), (frag) -> RegExp(frag, "i").test(field)
 
-      @polls = chain.simplesort('-createdAt').limit(@from + @per).data()
+      @polls = chain.simplesort('-createdAt').limit(@loader.numRequested).data()
 
     selectFilter: (pair) ->
       name = keys(pair)[0]
@@ -93,18 +99,6 @@ export default
     ,
       300
 
-  computed:
-    groupIds: ->
-      switch @subgroups
-        when 'none' then [@group.id]
-        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
-        when 'all' then @group.organisationIds()
-
-    totalRecords: -> @group.pollsCount
-
-    showLoadMore: ->
-      !@loader.loading && @loader.numRequested < @totalRecords && !@search.length
-
   watch:
     filter: -> @refresh()
     '$route.query.q': (val) ->
@@ -129,15 +123,12 @@ export default
         span(v-t="'poll_types.'+pollType")
     v-divider.mr-2.ml-1(inset vertical)
 
-    v-progress-linear(color="accent" indeterminate :active="loader.loading" absolute bottom)
-
   v-card
     v-list(two-line avatar v-if='polls.length')
       poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
 
     v-alert(v-if='polls.length == 0 && !loader.loading' :value="true" color="grey" outlined icon="info" v-t="'group_polls_panel.no_polls'")
 
-    v-layout(align-center)
-      span(v-if="!search" v-t="{path: 'members_panel.loaded_of_total', args: {loaded: loader.numLoaded, total: totalRecords}}")
-      v-btn(v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+    v-layout(justify-center)
+      v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 </template>
