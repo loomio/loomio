@@ -151,7 +151,8 @@ module Dev::Scenarios::Group
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
     @group.add_admin! jennifer
-    @discussion = @group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
+    @discussion = Discussion.new(title: 'I carried a watermelon', private: false, author: jennifer, group: @group)
+    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     redirect_to group_url(@group)
   end
 
