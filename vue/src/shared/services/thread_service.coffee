@@ -62,7 +62,7 @@ export default new class ThreadService
       canPerform: -> AbilityService.canAddComment(discussion)
 
     edit_tags:
-      icon: 'mdi-tag'
+      icon: 'mdi-tag-outline'
       name: 'loomio_tags.card_title'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
