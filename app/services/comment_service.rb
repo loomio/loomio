@@ -20,7 +20,6 @@ class CommentService
     comment.edited_at = Time.zone.now
 
     HasRichText.assign_attributes_and_update_files(comment, params)
-
     return false unless comment.valid?
     comment.save!
 

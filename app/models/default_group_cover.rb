@@ -3,7 +3,7 @@ class DefaultGroupCover < ApplicationRecord
   validates_attachment :cover_photo, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
   def self.sample
-    all.order('random()').first
+    all.order(Arel.sql 'random()').first
   end
 
   def self.store(file)

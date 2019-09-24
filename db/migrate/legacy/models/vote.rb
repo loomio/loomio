@@ -15,7 +15,6 @@ class Vote < ApplicationRecord
 
   scope :for_user,      -> (user_id) { where(user_id: user_id) }
   scope :most_recent,   -> { where(age: 0) }
-  scope :chronologically, -> { order('created_at asc') }
 
   delegate :name, to: :user, prefix: :user # deprecated
   delegate :name, to: :user, prefix: :author

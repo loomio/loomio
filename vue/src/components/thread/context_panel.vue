@@ -17,14 +17,27 @@ export default
     actions: ThreadService.actions(@discussion, @)
 
   computed:
-    editThread: ->
-      pick(ThreadService.actions(@discussion, @), ['edit_thread'])['edit_thread']
+    arrangementAction: -> @actions['edit_arrangement']
+
+    editThread: -> @actions['edit_thread']
 
     dockActions: ->
-      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', 'edit_thread', 'edit_tags', 'announce_thread']
+      pick @actions, ['react', 'add_comment', 'edit_thread', 'edit_tags', 'announce_thread']
 
     menuActions: ->
-      pick ThreadService.actions(@discussion, @), [ 'show_history', 'notification_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+      pick @actions, [ 'show_history', 'notification_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+
+    status: ->
+      return 'pinned' if @discussion.pinned
+
+    statusTitle: ->
+      @$t("context_panel.thread_status.#{@status}")
+
+    groups: ->
+      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
+        text: group.name
+        disabled: false
+        to: @urlFor(group)
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -46,12 +59,13 @@ export default
     viewed: (viewed) ->
       @discussion.markAsSeen() if viewed
 
+    openArrangementForm: -> @actions['edit_arrangement'].perform()
+
     openSeenByModal: ->
       openModal
         component: 'SeenByModal'
         props:
           discussion: @discussion
-
 
 </script>
 
@@ -99,6 +113,10 @@ export default
       reaction-display.mb-2(:model="discussion" fetch)
       action-dock(:model='discussion' :actions='dockActions')
       action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
+      v-spacer
+      v-btn(text @click="openArrangementForm()")
+        span(v-if="discussion.reverseOrder" v-t="'poll_common_votes_panel.newest_first'")
+        span(v-if="!discussion.reverseOrder" v-t="'poll_common_votes_panel.oldest_first'")
   v-divider
 </template>
 <style lang="sass">

@@ -23,6 +23,7 @@ export default
 
   props:
     parentEvent: Object
+    discussion: Object
 
   methods:
     fetchMissing: ->
@@ -40,5 +41,5 @@ export default
 
 <template lang="pug">
 .event-children
-  thread-item-slot(v-for="(event, slot) in eventsBySlot" :key="slot" :event="event" :position="slot" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, event)" )
+  thread-item-slot(v-for="slot in slots" :key="slot" :event="eventsBySlot[slot]" :position="slot" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot])" )
 </template>

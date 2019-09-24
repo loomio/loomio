@@ -31,7 +31,9 @@ class DiscussionSerializer < ActiveModel::Serializer
              :pinned,
              :attachments,
              :mentioned_usernames,
-             :tag_names
+             :tag_names,
+             :reverse_order,
+             :max_depth
 
 
   attributes_from_reader :discussion_reader_id,

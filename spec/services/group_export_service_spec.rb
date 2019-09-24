@@ -10,7 +10,7 @@ describe GroupExportService do
   let!(:sub_discussion)   { create :discussion, group: subgroup }
   let!(:poll)             { create :poll, group: group }
   let!(:sub_poll)         { create :poll, group: subgroup }
-  let!(:discussion_poll)  { create :poll, discussion: discussion }
+  let!(:discussion_poll)  { create :poll, discussion: discussion, group: group }
   let!(:comment)          { create :comment, discussion: discussion }
   let!(:sub_comment)      { create :comment, discussion: sub_discussion }
   let!(:group_doc)        { create :document, model: group }
@@ -18,16 +18,22 @@ describe GroupExportService do
   let!(:poll_doc)         { create :document, model: poll }
   let!(:comment_doc)      { create :document, model: comment }
   let!(:reader)           { create :discussion_reader, discussion: discussion, user: another_user }
-  let!(:event)            { discussion.created_event }
-  let!(:notification)     { event.notifications.create!(user: another_user, url: 'test.com') }
+  let!(:discussion_event) { DiscussionService.create(discussion: discussion, actor: discussion.author) }
+  let!(:notification)     { discussion_event.notifications.create!(user: another_user, url: 'test.com') }
   let!(:discussion_reaction) { create :reaction, reactable: discussion }
   let!(:poll_reaction)       { create :reaction, reactable: poll }
   let!(:comment_reaction)    { create :reaction, reactable: comment }
 
   before do
     group.add_admin! user
+    subgroup.add_member! user
     group.add_member! another_user
     @email_api_key = user.email_api_key
+    [discussion, sub_discussion].each {|d| DiscussionService.create(discussion: d, actor: d.author)}
+    PollService.create(poll: poll, actor: user)
+    PollService.create(poll: sub_poll, actor: user)
+    PollService.create(poll: discussion_poll, actor: user)
+    [comment, sub_comment].each {|c| CommentService.create(comment: c, actor: c.author)}
   end
 
   describe 'export and import' do
@@ -57,7 +63,7 @@ describe GroupExportService do
       expect(poll_reaction.reload).to be_present
       expect(comment_reaction.reload).to be_present
       expect(reader.reload).to be_present
-      expect(event.reload).to be_present
+      expect(discussion_event.reload).to be_present
       expect(notification.reload).to be_present
       expect(group.reload).to be_present
       expect(@email_api_key).to_not eq(user.email_api_key)

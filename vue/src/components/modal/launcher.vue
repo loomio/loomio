@@ -2,6 +2,7 @@
 import EventBus from "@/shared/services/event_bus"
 import GroupForm from '@/components/group/form.vue'
 import DiscussionForm from '@/components/discussion/form.vue'
+import ArrangementForm from '@/components/thread/arrangement_form.vue'
 import EditCommentForm from '@/components/thread/edit_comment_form.vue'
 import ConfirmModal from '@/components/common/confirm_modal.vue'
 import ChangeVolumeForm from '@/components/common/change_volume_form'
@@ -46,6 +47,7 @@ export default
     'ChangePasswordForm': ChangePasswordForm
     'PollCommonOutcomeModal': PollCommonOutcomeModal
     'PollCommonReopenModal': PollCommonReopenModal
+    'ArrangementForm': ArrangementForm
     'AnnouncementForm': AnnouncementForm
     'AnnouncementHistory': AnnouncementHistory
     'MoveThreadForm': MoveThreadForm

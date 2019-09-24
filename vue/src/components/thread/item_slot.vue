@@ -9,7 +9,7 @@ export default
   mixins: [ThreadActivityMixin]
   props:
     event: Object
-    position: String
+    position: Number
 
   components:
     NewComment: NewComment

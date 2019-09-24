@@ -210,6 +210,8 @@ ActiveRecord::Schema.define(version: 2019_09_24_032146) do
     t.string "description_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: {}, null: false
     t.jsonb "info", default: {}, null: false
+    t.integer "max_depth", default: 2, null: false
+    t.boolean "reverse_order", default: false, null: false
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"

@@ -119,6 +119,7 @@ export default
 
 <template lang="pug">
 .activity-panel
-  thread-item-slot(v-for="(event, slot) in eventsBySlot" :id="'position-'+slot" :key="slot" :event="event" :position="slot" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, event)" )
-  thread-actions-panel(:discussion="discussion")
+  thread-actions-panel(v-if="discussion.reverseOrder" :discussion="discussion")
+  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot])" )
+  thread-actions-panel(v-if="!discussion.reverseOrder" :discussion="discussion")
 </template>

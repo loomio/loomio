@@ -20,19 +20,18 @@ export default
     event: Object
 
   computed:
+    commentActions: -> CommentService.actions(@eventable, @)
+    eventActions: -> EventService.actions(@event, @)
     eventable: -> @event.model()
     link: -> LmoUrlService.event @event
     dockActions: ->
       if AbilityService.canEditComment(@eventable)
-        # reply_to_comment = null
         edit_comment = 'edit_comment'
-        # show_history = null
       else
         reply_to_comment = 'reply_to_comment'
-        # edit_comment = null
         show_history = 'show_history'
 
-      pick CommentService.actions(@eventable, @), compact ['react', reply_to_comment, edit_comment, show_history]
+      pick @commentActions, compact ['react', reply_to_comment, edit_comment, show_history]
 
     menuActions: ->
       if AbilityService.canEditComment(@eventable)
@@ -40,9 +39,9 @@ export default
         reply_to_comment = 'reply_to_comment'
 
       assign(
-        pick CommentService.actions(@eventable, @), compact [reply_to_comment, show_history, 'notification_history', 'move_comments', 'translate_comment' , 'delete_comment']
+        pick @commentActions, compact [reply_to_comment, show_history, 'notification_history', 'move_comments', 'translate_comment' , 'delete_comment']
       ,
-        pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
+        pick @eventActions, ['pin_event', 'unpin_event']
       )
 
   data: ->
