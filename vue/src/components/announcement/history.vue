@@ -53,6 +53,7 @@ v-card
   v-card-text(v-if="!historyLoading")
     p(v-if="historyError && historyData.length == 0" v-t="'announcement.history_error'")
     p(v-if="!historyError && historyData.length == 0" v-t="'announcement.no_notifications_sent'")
+    p(v-if="historyData.length" v-t="'announcement.notification_history_explanation'")
     div(v-for="event in historyData" :key="event.id")
       h4.mt-4.mb-2
         time-ago(:date="event.created_at")

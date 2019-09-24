@@ -1,81 +1,3 @@
-<style lang="css">
-/* // @import 'variables';
-// @import 'mixins';
-// @import 'lmo_card'; */
-.explore-page {
-  /* // @include cardPadding; */
-}
-
-.explore-page__search-field {
-  position: relative;
-  /* // background-color: $background-color;
-  // color: $primary-text-color; */
-  width: 100%;
-  margin: 20px 0;
-}
-.explore-page__search-field i {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    /* // color: $grey-on-white; */
-}
-
-.explore-page__no-results-found, .explore-page__search-results {
-  margin: 20px 0;
-  text-align: left;
-  /* // color: $grey-on-white; */
-}
-
-.explore-page__groups {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.explore-page__group-stats {
-  color: #D0D0D0;
-  /* i { color: #D0D0D0; } */
-}
-
-.explore-page__group {
-  width: 365px;
-  /* // @include cardNoPadding; */
-}
-
-@media (max-width: 768px) {
-  .explore-page__group {
-    flex-grow: 1;
-  }
-}
-
-.explore-page__group-cover {
-  height: 100px;
-  background-size: cover;
-}
-
-.explore-page__group-details {
-  /* // @include cardPadding; */
-}
-
-.explore-page__group-description {
-  margin-bottom: 20px;
-}
-
-.explore-page__show-more {
-  /* // @include cardMinorAction;
-  // @include lmoBtnLink; */
-}
-
-.explore-page__group {
-  /* // color: $primary-text-color; */
-}
-
-.explore-page__group:hover {
-  text-decoration: none;
-  /* // color: $primary-text-color; */
-}
-</style>
-
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
@@ -84,7 +6,8 @@ import UrlFor    from '@/mixins/url_for'
 import _truncate from 'lodash/truncate'
 import _map      from 'lodash/map'
 import _sortBy   from 'lodash/sortBy'
-import { applyLoadingFunction } from '@/shared/helpers/apply'
+
+import { debounce } from 'lodash'
 
 export default
   mixins: [UrlFor]
@@ -94,11 +17,10 @@ export default
     perPage: AppConfig.pageSize.exploreGroups
     canLoadMoreGroups: true
     query: ""
-    searchExecuting: false
+    searching: false
   mounted: ->
     EventBus.$emit 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
-    # applyLoadingFunction(@, 'search')
-    # @search()
+    @search()
 
   methods:
     groups: ->
@@ -109,14 +31,13 @@ export default
         @resultsCount = data.count
       @groupIds = @groupIds.concat _map(response.groups, 'id')
       @canLoadMoreGroups = (response.groups || []).length == @perPage
-      @searchExecuting = false
-    # changing the search term
-    search: ->
-      @searchExecuting = true
+      @searching = false
+
+    search: debounce ->
       @groupIds = []
       Records.groups.fetchExploreGroups(@query, per: @perPage).then(@handleSearchResults)
+    , 250
 
-    # clicking 'show more'
     loadMore: ->
       Records.groups.fetchExploreGroups(@query, from: @groupIds.length, per: @perPage).then(@handleSearchResults)
 
@@ -138,40 +59,43 @@ export default
         'explore_page.multiple_search_results'
 
     noResultsFound: ->
-      !@searching && (@groups().length < @perPage || !@canLoadMoreGroups)
+      console.log 'searching', @searching
+      console.log '@groups().length < @perPage', @groups().length < @perPage
+      !@searching && (@groups().length < @perPage)
 
     orderedGroups: ->
       _sortBy @groups(), '-recentActivityCount'
+
+  watch:
+    'query': ->
+      @searching = true
+      @search()
 </script>
 
 <template lang='pug'>
-.lmo-one-column-layout
-  main.explore-page
-    h1.lmo-h1-medium(v-t="'explore_page.header'")
-    //
-      <md-input-container class="explore-page__search-field">
-      <input ng-model="query" ng-model-options="{debounce: 600}" ng-change="search()" placeholder="{{ \'explore_page.search_placeholder\' | translate }}" id="search-field"><i aria-hidden="true" class="mdi mdi-magnify"></i>
-      <loading ng-show="searchExecuting"></loading>
-      </md-input-container>
-    .explore-page__search-results(v-show='showMessage', v-t='{ path: searchResultsMessage, args: { resultCount: resultsCount, searchTerm: query } }')
-    .explore-page__groups
-      router-link.explore-page__group(v-for='group in orderedGroups', :key='group.id', :to='urlFor(group)')
-        .explore-page__group-cover(:style='groupCover(group)')
-        .explore-page__group-details
-          h2.lmo-h2 {{group.name}}
+v-container.explore-page.max-width-1024
+  h1.headline(v-t="'explore_page.header'")
+  v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")
+
+  loading(v-show="searching")
+
+  .explore-page__search-results(v-show='showMessage', v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})")
+  v-row.explore-page__groups.my-4(wrap)
+    v-col(:lg="6" :md="6" :sm="12" v-for='group in orderedGroups', :key='group.id')
+      v-card.explore-page__group.my-4(:to='urlFor(group)')
+        v-img.explore-page__group-cover(:src="group.coverUrl('small')")
+        v-card-title {{ group.name }}
+        v-card-text
           .explore-page__group-description {{groupDescription(group)}}
-          .explore-page__group-stats.lmo-flex.lmo-flex__start.lmo-flex__center
-            i.mdi.mdi-account-multiple.lmo-margin-right
-            span.lmo-margin-right {{group.membershipsCount}}
-            i.mdi.mdi-comment-text-outline.lmo-margin-right
-            span.lmo-margin-right {{group.discussionsCount}}
-            i.mdi.mdi-thumbs-up-down.lmo-margin-right
-            span.lmo-margin-right {{group.pollsCount}}
-            i
-            span
-    .lmo-show-more(v-show='canLoadMoreGroups')
-      // <button v-show="!searchExecuting" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more"></button>
-    loading(v-show='searchExecuting')
-    .explore-page__no-results-found(v-show='noResultsFound', v-html="$t('explore_page.no_results_found')")
+          v-layout.explore-page__group-stats(justify-start align-center)
+            v-icon.mr-2 mdi-account-multiple
+            span.mr-4 {{group.membershipsCount}}
+            v-icon.mr-2 mdi-comment-text-outline
+            span.mr-4 {{group.discussionsCount}}
+            v-icon.mr-2 mdi-thumbs-up-down
+            span.mr-4 {{group.pollsCount}}
+  .lmo-show-more(v-show='canLoadMoreGroups')
+    v-btn(v-show="!searching" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more")
+  .explore-page__no-results-found(v-show='noResultsFound', v-html="$t('explore_page.no_results_found')")
 
 </template>

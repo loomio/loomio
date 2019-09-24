@@ -381,6 +381,7 @@ en:
     start_group: 'New organization'
     start_subgroup: 'New subgroup'
     explore: 'Public groups'
+    explore_groups: Explore groups
     start_thread: New thread
     start_decision: New decision
     more_groups: More groups
@@ -542,6 +543,7 @@ en:
     poll_notification_history: Poll notification history
     outcome_notification_history: Outcome notification history
     comment_notification_history: Comment notification history
+    notification_history_explanation: ✓ indicates that the notification has been read or the email has been opened
     quick_add: "Quick add:"
     any_other_groups: "Any other groups?"
     notified_people: "{{name}} notified {{length}} people:"

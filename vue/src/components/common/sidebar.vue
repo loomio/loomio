@@ -166,6 +166,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="'sidebar.start_group'")
     v-list-item-avatar(:size="28")
       v-icon(:size="28" tile) mdi-plus
+  v-divider
+  v-list-item(dense to="/explore")
+    v-list-item-title(v-t="'sidebar.explore_groups'")
 </template>
 <style lang="css">
 

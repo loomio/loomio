@@ -290,6 +290,7 @@ export default {
     'closed_umbrella': '🌂',
     'fire': '🔥',
     'sparkles': '✨',
+    'star': '⭐',
     'star2': '🌟',
     'dizzy': '💫',
     'boom': '💥',
@@ -588,5 +589,6 @@ export default {
     'no_smoking': '🚭',
     '100': '💯',
     'no_entry_sign': '🚫',
+    'white_check_mark': '✅',
   },
 }
