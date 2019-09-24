@@ -381,6 +381,7 @@ en:
     start_group: 'New organization'
     start_subgroup: 'New subgroup'
     explore: 'Public groups'
+    explore_groups: Explore groups
     start_thread: New thread
     start_decision: New decision
     more_groups: More groups

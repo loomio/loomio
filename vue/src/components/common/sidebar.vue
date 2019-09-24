@@ -140,8 +140,6 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="'sidebar.recent_threads'")
   v-list-item(dense to="/inbox")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
-  v-list-item(dense to="/explore")
-    v-list-item-title(v-t="'sidebar.explore'")
   v-divider
 
   //- v-layout(fill-height)
@@ -168,6 +166,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="'sidebar.start_group'")
     v-list-item-avatar(:size="28")
       v-icon(:size="28" tile) mdi-plus
+  v-divider
+  v-list-item(dense to="/explore")
+    v-list-item-title(v-t="'sidebar.explore_groups'")
 </template>
 <style lang="css">
 
