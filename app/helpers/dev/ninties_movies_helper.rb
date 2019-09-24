@@ -179,6 +179,7 @@ module Dev::NintiesMoviesHelper
                                                     private: false,
                                                     group: create_another_group,
                                                     author: patrick)
+      DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
     end
     @another_discussion
   end
@@ -189,6 +190,7 @@ module Dev::NintiesMoviesHelper
                                                     private: true,
                                                     group: create_another_group,
                                                     author: patrick)
+      DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
     end
     @another_discussion
   end
@@ -199,7 +201,9 @@ module Dev::NintiesMoviesHelper
                                      parent: create_another_group,
                                      discussion_privacy_options: 'public_or_private',
                                      group_privacy: 'closed')
-      @subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
+      discussion = FactoryBot.create :discussion, group: @subgroup, title: "Vaya con dios", private: false
+      # discussion = @subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
+      DiscussionService.create(discussion: discussion, actor: discussion.author)
       @subgroup.add_admin! patrick
     end
     @subgroup
@@ -212,7 +216,8 @@ module Dev::NintiesMoviesHelper
                                              group_privacy: 'closed',
                                              discussion_privacy_options: 'public_or_private',
                                              is_visible_to_parent_members: true)
-      @another_subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
+      discussion = FactoryBot.create :discussion, group: @subgroup, title: "Vaya con dios 2", private: false
+      DiscussionService.create(discussion: discussion, actor: discussion.author)
       @another_subgroup.add_admin! patrick
     end
     @another_subgroup
