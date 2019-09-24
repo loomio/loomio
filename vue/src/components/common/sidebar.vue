@@ -107,24 +107,6 @@ export default
 
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
 
-    parentGroupLink: (group) ->
-      if Session.user().isMemberOf(group)
-        @urlFor(group)
-      else
-        @urlFor(group)+"?subgroups=mine"
-
-    userExpandedGroupIds: (ids) ->
-      return unless @group
-      @expandedGroupIds = ids if ids.includes(@group.id)
-      group = if ids.length == 0 then @organization else @group
-      @$router.replace(@groupUrl(group, ids.includes(group.id))).catch((err) => true) if @$route.path == @urlFor(group)
-
-    groupUrl: (group, open) ->
-      if (group.isParent() && group.hasSubgroups() && !open)
-        @urlFor(group)+'?subgroups=mine'
-      else
-        @urlFor(group)
-
   computed:
     user: -> Session.user()
     activeGroup: -> if @group then [@group.id] else []
@@ -161,19 +143,19 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-divider
 
   //- v-layout(fill-height)
-  v-treeview(hoverable :items="tree" :active="activeGroup" @update:open="userExpandedGroupIds" :open="expandedGroupIds" style="width: 100%")
+  v-treeview(hoverable :items="tree" :active="activeGroup" :open="expandedGroupIds" style="width: 100%")
     template(v-slot:append="{item, open}")
       div(v-if="item.click")
         v-icon(v-if="item.icon" @click="item.click") {{item.icon}}
     template(v-slot:prepend="{item, open}")
       //- div(v-if="item.click")
         //- v-icon(v-if="item.icon" @click="item.click") {{item.icon}}
-      router-link(v-if="!item.click" :to="groupUrl(item.group, open)")
+      router-link(v-if="!item.click" :to="urlFor(item.group)")
         group-avatar(:group="item.group"  v-if="item.group.isParent()")
     template(v-slot:label="{item, open}")
       div(v-if="item.click")
         a.body-2.sidebar-item.text-almost-black(text @click="item.click") {{item.name}}
-      router-link(v-if="!item.click" :to="groupUrl(item.group, open)")
+      router-link(v-if="!item.click" :to="urlFor(item.group)")
         span.body-2.sidebar-item.text-almost-black
           span {{item.group.name}}
           span(v-if='unreadCountFor(item.group, open)')

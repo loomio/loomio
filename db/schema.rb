@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_201541) do
+ActiveRecord::Schema.define(version: 2019_09_24_032146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -234,6 +234,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_201541) do
     t.string "thumb_url"
     t.string "file_file_name"
     t.string "file_content_type"
+    t.integer "group_id"
+    t.index ["group_id"], name: "index_documents_on_group_id"
     t.index ["model_id"], name: "index_documents_on_model_id"
     t.index ["model_type"], name: "index_documents_on_model_type"
   end
