@@ -3,8 +3,11 @@ Ahoy.geocode = :async
 Ahoy.api = true
 Ahoy.server_side_visits = :when_needed
 Ahoy.api_only = true
-AhoyEmail.track click: false
 Ahoy.mask_ips = true
+
+AhoyEmail.api = true
+AhoyEmail.default_options[:open] = true
+AhoyEmail.default_options[:utm_params] = true
 
 class Ahoy::Store < Ahoy::DatabaseStore
 
