@@ -140,6 +140,8 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="'sidebar.recent_threads'")
   v-list-item(dense to="/inbox")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
+  v-list-item(dense to="/explore")
+    v-list-item-title(v-t="'sidebar.explore'")
   v-divider
 
   //- v-layout(fill-height)
