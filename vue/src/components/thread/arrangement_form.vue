@@ -17,7 +17,7 @@ export default
     clone: @discussion.clone()
 
   mounted: ->
-    @submit = submitDiscussion @, @discussion,
+    @submit = submitDiscussion @, @clone,
       successCallback: (data) => @close()
 
 </script>
