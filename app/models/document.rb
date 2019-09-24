@@ -58,9 +58,7 @@ class Document < ApplicationRecord
   private
 
   def set_group_id
-    if model && model.respond_to?(:group_id)
-      update_column(:group_id, document.model.group_id)
-    end
+    self.group_id = model.group_id if model && model.respond_to?(:group_id)
   end
 
   # need this to save model with upload correctly and get metadata,
