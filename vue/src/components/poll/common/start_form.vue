@@ -6,8 +6,7 @@ import { fieldFromTemplate } from '@/shared/helpers/poll'
 import PollModalMixin from '@/mixins/poll_modal'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 
-import _map from 'lodash/map'
-import _reduce from 'lodash/reduce'
+import {map, without} from 'lodash'
 
 export default
   mixins: [ PollModalMixin ]
@@ -25,14 +24,14 @@ export default
     openPollModal: (pollType) ->
       @openStartPollModal(@newPoll(pollType))
 
-    pollTypes: -> AppConfig.pollTypes
+    pollTypes: -> without AppConfig.pollTypes, 'proposal'
 
     newPoll: (pollType) ->
       Records.polls.build
         pollType:              pollType
         discussionId:          @discussion.id
         groupId:               @discussion.groupId or @group.id
-        pollOptionNames:       _map @callFieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
+        pollOptionNames:       map @callFieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
 
     callFieldFromTemplate: (pollType, field) ->
       fieldFromTemplate(pollType, field)

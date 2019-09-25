@@ -120,6 +120,7 @@ export default
 <template lang="pug">
 .activity-panel
   thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
-  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot])" )
+  .py-2
+    thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot])" )
   thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
 </template>

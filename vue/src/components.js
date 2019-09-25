@@ -89,6 +89,7 @@ module.exports = {
   Notifications: 'common/notifications',
   OutcomeCreated: 'thread/item/outcome_created',
   PlusButton: 'common/plus_button',
+  PollProposalCompleteForm: 'poll/proposal/complete_form',
   PollCommonActionPanel: 'poll/common/action_panel',
   PollCommonAddOptionButton: 'poll/common/add_option_button',
   PollCommonAnonymousHelptext: 'poll/common/anonymous_helptext',
