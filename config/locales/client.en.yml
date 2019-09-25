@@ -1807,6 +1807,7 @@ en:
     closed: Closed
     start: Start
     update: Update
+    reminder_note: 24 hours before closing, a reminder will be sent to all participants
     loomio_school_link: |
       <p>Find out more at <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
 

@@ -46,5 +46,6 @@ export default
       v-spacer
       v-select.poll-common-closing-at-field__timepicker(prepend-icon="mdi-clock-outline" v-model='closingHour' :label="$t('poll_meeting_time_field.closing_hour')" :items="times")
   validation-errors(:subject="poll", field="closingAt")
+  p.caption(v-t="'poll_common_form.reminder_note'")
 
 </template>
