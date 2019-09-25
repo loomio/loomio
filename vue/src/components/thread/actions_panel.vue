@@ -9,7 +9,7 @@ import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
 import WatchRecords from '@/mixins/watch_records'
 import { print } from '@/shared/helpers/window'
-import { compact, snakeCase, camelCase, max } from 'lodash'
+import { compact, snakeCase, camelCase, max, map } from 'lodash'
 import ThreadActivityMixin from '@/mixins/thread_activity'
 
 export default
@@ -55,9 +55,12 @@ export default
     v-tab(href='#add-comment')
       span(v-t="'activity_card.comment'")
       v-icon mdi-comment
-    v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
-      span(v-t="'activity_card.facilitate'")
+    v-tab.activity-panel__add-poll(href='#add-proposal' v-if="canStartPoll")
+      span(v-t="'poll_types.proposal'")
       v-icon mdi-thumbs-up-down
+    v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
+      span(v-t="'poll_types.poll'")
+      v-icon mdi-poll
     //- v-tab(href='#add-outcome')
     //-   span(v-t="'activity_card.add_outcome'")
     //-   v-icon mdi-lightbulb-on-outline
@@ -68,6 +71,8 @@ export default
         .add-comment-panel__join-actions(v-if='!canAddComment')
           join-group-button(:group='discussion.group()', v-if='isLoggedIn()', :block='true')
           v-btn.md-primary.md-raised.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'", @click='signIn()', v-if='!isLoggedIn()')
+    v-tab-item(value="add-proposal" v-if="canStartPoll")
+      poll-proposal-complete-form(:discussion="discussion")
     v-tab-item(value="add-poll" v-if="canStartPoll")
       poll-common-start-form(:discussion='discussion')
     //- v-tab-item(value="add-outcome")
