@@ -105,8 +105,6 @@ v-navigation-drawer.lmo-no-print(v-if="discussion" v-model="open" :permanent="$v
           v-icon(:size="20") mdi-format-vertical-align-bottom
         v-list-item-title(v-t="'activity_card.end'")
     v-divider
-    v-subheader(v-t="'thread_nav.participants'")
-      //- revent discussion event authors
     v-list(dense)
       v-list-item(@click="addPeople()")
         v-list-item-title(v-t="'invitation_form.invite_people'")
