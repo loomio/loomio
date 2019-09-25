@@ -33,6 +33,7 @@ export default class DiscussionModel extends BaseModel
     ranges: []
     readRanges: []
     isForking: false
+    newestFirst: false
 
   audienceValues: ->
     name: @group().name

@@ -21,13 +21,15 @@ export default
   created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
-    EventBus.$emit 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
         groups = Session.user().formalGroups()
         user = Session.user()
         @groups = sortBy groups, 'fullName'
+
+  mounted: ->
+    EventBus.$emit 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}
 
   methods:
     init: ->
@@ -58,16 +60,15 @@ export default
 v-container.email-settings-page.max-width-1024(v-if='user')
 
   v-card.mb-4(v-if="user.deactivatedAt")
-    v-card-title
-      h1.headline(v-t="'email_settings_page.header'")
+    //- v-card-title
+    //-   h1.headline(v-t="'email_settings_page.header'")
     v-card-text
       p(v-t="'email_settings_page.account_deactivated'")
 
   v-card.mb-4(v-if="!user.deactivatedAt")
-    v-card-title
-      h1.headline(v-t="'email_settings_page.header'")
+    //- v-card-title
+    //-   h1.headline(v-t="'email_settings_page.header'")
     v-card-text
-      a.email-settings-page__learn-more-link(href='https://help.loomio.org/en/user_manual/users/email_settings/' target='_blank' v-t="'email_settings_page.learn_more'")
       .email-settings-page__email-settings
         .email-settings-page__global-settings
           form
@@ -85,6 +86,7 @@ v-container.email-settings-page.max-width-1024(v-if='user')
                   strong(v-t="'email_settings_page.mentioned_label'")
                   .email-settings-page__input-description(v-t="'email_settings_page.mentioned_description'")
     v-card-actions
+      a.email-settings-page__learn-more-link(href='https://help.loomio.org/en/user_manual/users/email_settings/' target='_blank' v-t="'email_settings_page.learn_more'")
       v-spacer
       v-btn.email-settings-page__update-button(color="primary" @click="submit()" v-t="'email_settings_page.update_settings'")
 

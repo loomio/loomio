@@ -19,7 +19,7 @@ export default
 
   created: ->
     @init()
-    EventBus.$emit 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}
+    EventBus.$emit 'currentComponent', { titleKey: 'profile_page.edit_profile', page: 'profilePage'}
     EventBus.$on 'updateProfile', => @init()
     EventBus.$on 'signedIn', => @init()
 
@@ -60,8 +60,8 @@ v-container.profile-page.max-width-1024
   div(v-if='user')
     v-card
       submit-overlay(:value='user.processing')
-      v-card-title
-        h1.headline(v-t="'profile_page.edit_profile'")
+      //- v-card-title
+      //-   h1.headline(v-t="'profile_page.edit_profile'")
       v-card-text
         v-layout
           v-flex.profile-page__details
@@ -110,5 +110,5 @@ v-container.profile-page.max-width-1024
 </template>
 <style lang="sass">
 .profile-page__avatar
-  cursor: pointer  
+  cursor: pointer
 </style>

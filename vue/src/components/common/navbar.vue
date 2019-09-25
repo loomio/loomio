@@ -100,7 +100,7 @@ export default
 </script>
 
 <template lang="pug">
-v-app-bar(app clipped-right prominent dark color="grey" elevate-on-scroll shrink-on-scroll :src="coverImageSrc")
+v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shrink-on-scroll :src="coverImageSrc")
   template(v-slot:img="{ props }")
     v-img(v-bind="props" gradient="rgba(0,0,0,.3), rgba(0,0,0, .3), rgba(0,0,0,.8)")
 
@@ -122,7 +122,7 @@ v-app-bar(app clipped-right prominent dark color="grey" elevate-on-scroll shrink
     span {{group.name}}
     //- group-privacy-button(v-if="groupPage" :group='group')
 
-  v-toolbar-title(v-if="!searchOpen && threadPage && showTitle" @click="$vuetify.goTo('head', {duration: 0})") {{title}}
+  v-toolbar-title(v-if="!searchOpen && showTitle && !groupPage" @click="$vuetify.goTo('head', {duration: 0})") {{title}}
 
   v-spacer(v-if="!searchOpen")
   v-btn(icon v-if="search && !searchOpen" @click="searchOpen = true")
