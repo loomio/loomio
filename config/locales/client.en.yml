@@ -1590,6 +1590,7 @@ en:
     min_score: Minimum score
     too_long: Too long
     edit_warning: Editing is only recommended for minor changes or fixing spelling errors. For significant changes, close this {{pollType}} and start a new one.
+    no_voting: For discussion only, voting disabled
 
   poll_common_attachment_form:
     label: Attachments

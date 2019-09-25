@@ -13,7 +13,7 @@ export default
     @watchRecords
       collections: ['polls', 'stances']
       query: (store) =>
-        @poll = find @discussion.activePolls(), (poll) ->
+        @poll = find @discussion.activePolls().filter((poll) -> poll.pollOptionNames.length), (poll) ->
           !store.stances.findOrNull(latest: true, pollId: poll.id, participantId: AppConfig.currentUserId)
 
   computed:
@@ -26,6 +26,7 @@ export default
         zIndex: 1
     event: ->
       @poll && @poll.createdEvent()
+
 
 </script>
 <template lang="pug">
