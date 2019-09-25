@@ -105,10 +105,6 @@ v-navigation-drawer.lmo-no-print(v-if="discussion" v-model="open" :permanent="$v
           v-icon(:size="20") mdi-format-vertical-align-bottom
         v-list-item-title(v-t="'activity_card.end'")
     v-divider
-    v-list(dense)
-      v-list-item(@click="addPeople()")
-        v-list-item-title(v-t="'invitation_form.invite_people'")
-    v-divider
 
     v-list(dense)
       v-list-item(two-line @click="openChangeVolumeModal(discussion)")

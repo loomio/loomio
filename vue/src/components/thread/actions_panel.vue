@@ -23,7 +23,10 @@ export default
     currentAction: 'add-comment'
     newComment: null
 
-  created: -> @init()
+  created: ->
+    @init()
+    EventBus.$on 'pollSaved', =>
+      @currentAction = 'add-comment'
 
   methods:
     init: ->

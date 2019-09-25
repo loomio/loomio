@@ -1,6 +1,7 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import EventBus                 from '@/shared/services/event_bus'
 import { submitPoll }    from '@/shared/helpers/form'
 import { iconFor }                from '@/shared/helpers/poll'
 import { applyPollStartSequence } from '@/shared/helpers/apply'
@@ -15,11 +16,12 @@ export default
   data: ->
     poll: null
   created: ->
-    @newPoll()
+    @poll = @newPoll()
     @submit = submitPoll @, @poll,
       successCallback: (data) =>
-        @newPoll()
+        @poll = @newPoll()
         pollKey = data.polls[0].key
+        EventBus.$emit('pollSaved')
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
           @openAnnouncementModal(Records.announcements.buildFromModel(poll))
 
@@ -33,7 +35,7 @@ export default
 
   methods:
     newPoll: ->
-      @poll = Records.polls.build
+      Records.polls.build
         pollType:              'proposal'
         discussionId:          @discussion.id
         groupId:               @discussion.groupId
