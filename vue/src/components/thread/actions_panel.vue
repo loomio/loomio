@@ -53,7 +53,7 @@ export default
 
 <template lang="pug">
 .actions-panel#add-comment
-  v-divider
+  v-divider(v-if="!discussion.newestFirst")
   v-tabs.activity-panel__actions.mb-3(grow icons-and-text v-model="currentAction")
     v-tab(href='#add-comment')
       span(v-t="'activity_card.comment'")
@@ -79,6 +79,7 @@ export default
     v-tab-item(value="add-poll" v-if="canStartPoll")
       poll-common-start-form(:discussion='discussion')
     //- v-tab-item(value="add-outcome")
+  v-divider(v-if="discussion.newestFirst")
 
 </template>
 <style lang="css">
