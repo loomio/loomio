@@ -1,7 +1,7 @@
 <script lang="coffee">
 import tippy from 'tippy.js'
 import Records from '@/shared/services/records'
-import {concat, sortBy, isString, filter, uniq, map, forEach} from 'lodash'
+import {concat, sortBy, isString, filter, uniq, map, forEach, isEmpty} from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
 import detectIt from 'detect-it'
@@ -64,7 +64,7 @@ export default
   data: ->
     query: null
     suggestionRange: null
-    files: (@model.attachments || []).filter((a) -> a.signed_id).map (a) -> {blob: a, file: {name: a.filename}}
+    files: (!isEmpty(@model.attachments) || []).filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
     imageFiles: []
     mentionableUserIds: []
     navigatedUserIndex: 0
