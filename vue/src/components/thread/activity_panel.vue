@@ -20,6 +20,8 @@ export default
 
   props:
     discussion: Object
+    topVisible: Boolean
+    bottomVisible: Boolean
 
   data: ->
     parentEvent: @discussion.createdEvent()
@@ -118,9 +120,6 @@ export default
 </script>
 
 <template lang="pug">
-.activity-panel
-  thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
-  .py-2
-    thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot])" )
-  thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
+.activity-panel.py-2
+  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot])" )
 </template>

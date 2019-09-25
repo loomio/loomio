@@ -33,11 +33,23 @@ export default
     focusedEvent: null
 
   methods:
+    startAtBeginning: ->
+      (@topVisible && !@discussion.newestFirst) || (@bottomVisible && @discussion.newestFirst)
+
     renderSlots: ->
       @eventsBySlot = {}
       return unless @parentEvent.childCount
-      firstRendered = max([1, (first(@visibleSlots) || 1) - @padding])
-      lastRendered = min([(last(@visibleSlots) || 1) + @padding, @parentEvent.childCount])
+
+      if @visibleSlots.length
+        firstRendered = max([1, first(@visibleSlots) - @padding])
+        lastRendered = min([last(@visibleSlots) + @padding, @parentEvent.childCount])
+      else
+        if @startAtBeginning()
+          firstRendered = 1
+          lastRendered = 1 + @padding
+        else
+          firstRendered = max([1, @parentEvent.childCount - @padding])
+          lastRendered = @parentEvent.childCount
 
       firstSlot = max([1, firstRendered - (@padding * 2)])
       lastSlot = min([lastRendered + (@padding * 2), @parentEvent.childCount])

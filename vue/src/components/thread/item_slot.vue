@@ -31,6 +31,7 @@ export default
 .thread-item-slot(ref="box")
   v-sheet.ma-4.pa-4(v-if="!event" color="grey lighten-3" :height="height")
     v-layout.grey--text.text-center(style="height: 100%" justify-center align-center)
+      | {{position}}
       v-progress-circular(indeterminate)
   component(v-if="event" :is="componentForKind(event.kind)" :event='event')
 </template>

@@ -21,6 +21,10 @@ export default
     OutcomeCreated: OutcomeCreated
     ThreadItem: -> import('@/components/thread/item.vue')
 
+  data: ->
+    topVisible: true
+    bottomVisible: false
+
   props:
     parentEvent: Object
     discussion: Object
