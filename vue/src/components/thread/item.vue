@@ -24,6 +24,13 @@ export default
   created: ->
     EventBus.$on('focusedEvent', (event) => @isFocused = @event.id == event.id )
 
+  mounted: ->
+    setTimeout =>
+      @$refs.defaultSlot.querySelectorAll("img[height]").forEach((node) =>
+        ratio = @$refs.defaultSlot.clientWidth / node.getAttribute('width')
+        node.style.height = String(ratio * node.getAttribute('height')) + 'px'
+      )
+
   methods:
     viewed: (viewed) ->
       @event.markAsRead() if viewed
@@ -114,7 +121,8 @@ div
           v-spacer
           router-link.grey--text.body-2(:to='link')
             time-ago(:date='event.createdAt')
-        slot
+        .default-slot(ref="defaultSlot")
+          slot
         slot(name="actions")
         template(v-if='event.childCount > 0')
           event-children(:discussion='discussion' :parent-event='event' :key="event.id")
