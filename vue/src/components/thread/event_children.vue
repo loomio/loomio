@@ -21,13 +21,12 @@ export default
     OutcomeCreated: OutcomeCreated
     ThreadItem: -> import('@/components/thread/item.vue')
 
-  data: ->
-    topVisible: true
-    bottomVisible: false
 
   props:
     parentEvent: Object
     discussion: Object
+    topVisible: Boolean
+    bottomVisible: Boolean
 
   methods:
     fetchMissing: ->

@@ -34,7 +34,10 @@ export default
 
   methods:
     startAtBeginning: ->
-      (@topVisible && !@discussion.newestFirst) || (@bottomVisible && @discussion.newestFirst)
+      if @parentEvent.depth == 1
+        (@topVisible && !@discussion.newestFirst) || (@bottomVisible && @discussion.newestFirst)
+      else
+        true unless @bottomVisible && !@topVisible
 
     renderSlots: ->
       @eventsBySlot = {}
