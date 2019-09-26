@@ -32,6 +32,9 @@ export default class GroupModel extends BaseModel
     membersCanStartDiscussions: true
     membersCanCreateSubgroups: false
     motionsCanBeEdited: false
+    files: []
+    imageFiles: []
+    attachments: []
 
   afterConstruction: ->
     if @privacyIsClosed()

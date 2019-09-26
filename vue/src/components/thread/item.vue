@@ -25,7 +25,8 @@ export default
     EventBus.$on('focusedEvent', (event) => @isFocused = @event.id == event.id )
 
   mounted: ->
-    setTimeout =>
+    @$nextTick =>
+      return unless @$refs.defaultSlot
       @$refs.defaultSlot.querySelectorAll("img[height]").forEach((node) =>
         ratio = @$refs.defaultSlot.clientWidth / node.getAttribute('width')
         node.style.height = String(ratio * node.getAttribute('height')) + 'px'

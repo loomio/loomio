@@ -233,7 +233,7 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
-    friendly_id (5.2.5)
+    friendly_id (5.3.0)
       activerecord (>= 4.0.0)
     gemrat (0.4.6)
       colored (= 1.2)
@@ -597,7 +597,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fog-aws
-  friendly_id (~> 5.2.5)
+  friendly_id (~> 5.3.0)
   gemrat
   geocoder (= 1.5.1)
   google-cloud-translate

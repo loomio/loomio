@@ -16,6 +16,9 @@ export default class UserModel extends BaseModel
   defaultValues: ->
     shortBio: ''
     shortBioFormat: 'html'
+    files: []
+    imageFiles: []
+    attachments: []
     locale: AppConfig.defaultLocale
 
   localeName: ->

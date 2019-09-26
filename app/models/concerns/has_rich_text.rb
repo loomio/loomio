@@ -32,7 +32,6 @@ module HasRichText
   def update_attachments!
     # this line is just to help migrations through
     return true unless self.class.column_names.include?('attachments')
-    return true unless [files, image_files].any?{ |list| list.any? {|f| f.changed? }}
     self[:attachments] = files.map do |file|
       i = file.blob.slice(:id, :filename, :content_type, :byte_size)
       i.merge!({ preview_url: Rails.application.routes.url_helpers.rails_representation_path(file.representation(PREVIEW_OPTIONS), only_path: true) }) if file.representable?
@@ -53,7 +52,6 @@ module HasRichText
   end
 
   def self.assign_attributes_and_update_files(model, params)
-    # byebug
     model.files.each do |file|
       file.purge_later unless Array(params[:files]).include? file.signed_id
     end

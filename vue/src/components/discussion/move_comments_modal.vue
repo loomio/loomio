@@ -9,7 +9,7 @@ export default
   data: ->
     selectedDiscussion: null
     submit: null
-    searchFragment: null
+    searchFragment: ''
     searchResults: []
     groupId: @discussion.groupId
     groups: Session.user().formalGroups()

@@ -18,6 +18,9 @@ export default class StanceModel extends BaseModel
     reason: ''
     reasonFormat: 'html'
     visitorAttributes: {}
+    files: []
+    imageFiles: []
+    attachments: []
 
   relationships: ->
     @belongsTo 'poll'
