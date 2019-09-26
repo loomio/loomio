@@ -16,7 +16,7 @@
     "bowser": "^2.6.1",
     "chromedriver": "^77.0.0",
     "core-js": "^2.6.9",
-    "date-fns": "2.2.1",
+    "date-fns": "2.3.0",
     "date-fns-tz": "1.0.7",
     "deepmerge": "^4.0.0",
     "detect-it": "^3.0.5",
