@@ -19,6 +19,9 @@ export default class CommentModel extends BaseModel
   defaultValues: ->
     usesMarkdown: true
     discussionId: null
+    files: []
+    imageFiles: []
+    attachments: []
     body: ''
     bodyFormat: 'html'
     mentionedUsernames: []

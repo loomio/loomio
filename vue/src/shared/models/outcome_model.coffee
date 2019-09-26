@@ -15,6 +15,9 @@ export default class OutcomeModel extends BaseModel
     statement: ''
     statementFormat: 'html'
     customFields: {}
+    files: []
+    imageFiles: []
+    attachments: []
 
   afterConstruction: ->
     HasDrafts.apply @
@@ -29,7 +32,7 @@ export default class OutcomeModel extends BaseModel
     @recordStore.reactions.find
       reactableId: @id
       reactableType: _.capitalize(@constructor.singular)
-      
+
   authorName: ->
     @author().nameWithTitle(@poll()) if @author()
 

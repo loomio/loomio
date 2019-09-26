@@ -64,7 +64,7 @@ export default
   data: ->
     query: null
     suggestionRange: null
-    files: (!isEmpty(@model.attachments) || []).filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
+    files: []
     imageFiles: []
     mentionableUserIds: []
     navigatedUserIndex: 0
@@ -175,9 +175,11 @@ export default
     isTouchDevice: ->
       detectIt.primaryInput == 'touch'
 
+  created: ->
+    @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
+
   mounted: ->
-    @model.files = []
-    @model.imageFiles = []
+    @updateModel()
 
   methods:
     setLinkUrl: (command) ->

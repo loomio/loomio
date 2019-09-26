@@ -34,6 +34,9 @@ export default class DiscussionModel extends BaseModel
     readRanges: []
     isForking: false
     newestFirst: false
+    files: []
+    imageFiles: []
+    attachments: []
 
   audienceValues: ->
     name: @group().name
