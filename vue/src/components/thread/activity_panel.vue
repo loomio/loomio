@@ -21,7 +21,6 @@ export default
   props:
     discussion: Object
     topVisible: Boolean
-    bottomVisible: Boolean
 
   data: ->
     parentEvent: @discussion.createdEvent()

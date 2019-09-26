@@ -21,7 +21,6 @@ export default
     hover: false
     focusStyleClass: null
     topVisible: false
-    bottomVisible: false
 
   created: ->
     EventBus.$on('focusedEvent', (event) => @isFocused = @event.id == event.id )
@@ -126,13 +125,10 @@ div
             time-ago(:date='event.createdAt')
         .default-slot(ref="defaultSlot")
           slot
-        //- | topVisible {{topVisible}} bottomVisible {{bottomVisible}}
         div.visibilitySensor(v-observe-visibility="(isVisible) => topVisible = isVisible")
         slot(name="actions")
         template(v-if='event.childCount > 0')
-          event-children(:discussion='discussion' :parent-event='event' :key="event.id" :topVisible="topVisible" :bottomVisible="bottomVisible")
-        //- | topVisible {{topVisible}} bottomVisible {{bottomVisible}}
-        div.visibilitySensor(v-observe-visibility="(isVisible) => bottomVisible = isVisible")
+          event-children(:discussion='discussion' :parent-event='event' :key="event.id" :topVisible="topVisible")
   slot(name="append")
 </template>
 

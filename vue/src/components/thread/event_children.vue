@@ -26,7 +26,6 @@ export default
     parentEvent: Object
     discussion: Object
     topVisible: Boolean
-    bottomVisible: Boolean
 
   methods:
     fetchMissing: ->
