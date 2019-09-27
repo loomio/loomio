@@ -43,7 +43,7 @@ export default
 
   computed:
     discussion: -> @event.discussion()
-    iconSize: -> if @isNested then 32 else 40
+    iconSize: -> if (@event.depth == 1) then 40 else 32
     isUnread: ->
       (Session.user().id != @event.actorId) && !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
@@ -90,7 +90,7 @@ div
   //-       mid-dot(v-if="event.childCount")
   //-         span(v-if="event.childCount" v-t="{path: 'thread_preview.replies_count', args: {count: event.childCount}}")
 
-  .thread-item(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed}")
+  .thread-item(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId")
       .thread-item__avatar.mr-4.mt-2
         //- div(@mouseover="hover = true" @mouseleave="hover = false")

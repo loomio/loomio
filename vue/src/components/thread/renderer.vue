@@ -58,8 +58,8 @@ export default
       firstRendered = max([1, (first(@visibleSlots) || defaultFirst) - @padding])
       lastRendered = min([(last(@visibleSlots) || defaultLast) + @padding, @parentEvent.childCount])
 
-      firstSlot = max([1, firstRendered - 1])
-      lastSlot = min([lastRendered + 1, @parentEvent.childCount])
+      firstSlot = max([1, firstRendered - @padding])
+      lastSlot = min([lastRendered + @padding, @parentEvent.childCount])
       # firstSlot = firstRendered
       # lastSlot = lastRendered
 
@@ -112,7 +112,7 @@ export default
 </script>
 <template lang="pug">
 .thread-renderer
-  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="{callback: (isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot]), intersection: {threshold: 0.1, rootMargin: '40px'}}" )
+  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="{callback: (isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot]), intersection: {threshold: 0.1}}" )
   //- div
     | depth {{parentEvent.depth}}
     | position {{parentEvent.position}}
