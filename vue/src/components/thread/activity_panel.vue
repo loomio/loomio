@@ -122,6 +122,6 @@ export default
 </script>
 
 <template lang="pug">
-.activity-panel.py-2
+.activity-panel.pa-4
   thread-renderer(:discussion="discussion" :parent-event="parentEvent" :fetch="fetch" :viewport-is-below="viewportIsBelow" :viewport-is-above="viewportIsAbove")
 </template>

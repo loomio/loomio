@@ -90,7 +90,7 @@ div
   //-       mid-dot(v-if="event.childCount")
   //-         span(v-if="event.childCount" v-t="{path: 'thread_preview.replies_count', args: {count: event.childCount}}")
 
-  .thread-item(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
+  .thread-item.py-2(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId")
       .thread-item__avatar.mr-4.mt-2
         //- div(@mouseover="hover = true" @mouseleave="hover = false")
@@ -126,7 +126,6 @@ div
 }
 
 .thread-item {
-  padding: 4px 16px 4px 16px;
   transition: border-color 50s;
   border-left: 2px solid #fff;
 }
