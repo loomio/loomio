@@ -10,6 +10,7 @@ export default
     parentEvent: Object
     fetch: Function
     viewportIsBelow: Boolean
+    viewportIsAbove: Boolean
 
   created: ->
     identifier = 'parentEvent'+@parentEvent.id
@@ -104,11 +105,14 @@ export default
       @fetch(newVal) unless isEqual(newVal, oldVal)
 
     'discussion.newestFirst': -> @visibleSlots = []
+    # 'viewportIsBelow': (newVal, oldVal) -> @visibleSlots = [] if newVal
+    # 'viewportIsAbove': (newVal, oldVal) -> @visibleSlots = [] if newVal
+
 
 </script>
 <template lang="pug">
 .thread-renderer
-  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="{callback: (isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot]), throttle: 100, intersection: {threshold: 0.1, rootMargin: '40px'}}" )
+  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="{callback: (isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot]), intersection: {threshold: 0.1, rootMargin: '40px'}}" )
   //- div
     | depth {{parentEvent.depth}}
     | position {{parentEvent.position}}

@@ -20,7 +20,7 @@ export default
   props:
     discussion: Object
     viewportIsBelow: Boolean
-    canSeeContext: Boolean
+    viewportIsAbove: Boolean
 
   data: ->
     parentEvent: @discussion.createdEvent()
@@ -123,5 +123,5 @@ export default
 
 <template lang="pug">
 .activity-panel.py-2
-  thread-renderer(:discussion="discussion" :parent-event="parentEvent" :fetch="fetch" :viewport-is-below="viewportIsBelow")
+  thread-renderer(:discussion="discussion" :parent-event="parentEvent" :fetch="fetch" :viewport-is-below="viewportIsBelow" :viewport-is-above="viewportIsAbove")
 </template>

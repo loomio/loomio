@@ -3,13 +3,14 @@ export default
   props:
     discussion: Object
   data: ->
+    viewportIsAbove: false
     viewportIsBelow: false
 </script>
 
 <template lang="pug">
 v-card.thread-card(elevation="1")
-  context-panel(:discussion="discussion")
+  context-panel(:discussion="discussion" v-observe-visibility="(isVisible) => viewportIsAbove = isVisible")
   thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
-  activity-panel(:discussion="discussion" :viewport-is-below="viewportIsBelow")
+  activity-panel(:discussion="discussion" :viewport-is-below="viewportIsBelow" :viewport-is-above="viewportIsAbove")
   thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion" v-observe-visibility="(isVisible) => viewportIsBelow = isVisible")
 </template>

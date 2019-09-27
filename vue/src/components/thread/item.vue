@@ -24,6 +24,9 @@ export default
   created: ->
     EventBus.$on('focusedEvent', @focused)
 
+  beforeDestroy: ->
+    EventBus.$off('focusedEvent', @focused)
+
   mounted: ->
     @$nextTick =>
       return unless @$refs.defaultSlot
@@ -41,12 +44,6 @@ export default
   computed:
     discussion: -> @event.discussion()
     iconSize: -> if @isNested then 32 else 40
-
-    isNested: -> @event.isNested()
-
-    indent: ->
-      @$vuetify.breakpoint.smAndUp && @event.isNested()
-
     isUnread: ->
       (Session.user().id != @event.actorId) && !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
@@ -94,7 +91,7 @@ div
   //-         span(v-if="event.childCount" v-t="{path: 'thread_preview.replies_count', args: {count: event.childCount}}")
 
   .thread-item(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed}")
-    v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
+    v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId")
       .thread-item__avatar.mr-4.mt-2
         //- div(@mouseover="hover = true" @mouseleave="hover = false")
         //-   v-btn(v-if="hover" :width="iconSize" :height="iconSize"  icon @click="collapsed = true")
@@ -104,7 +101,7 @@ div
       v-layout.thread-item__body(column)
         v-layout.my-1.align-center.wrap
           h3.thread-item__title.body-2(:id="'event-' + event.id")
-            div
+            //- div
               | id: {{event.id}}
               | pos {{event.position}}
               | sid {{event.sequenceId}}
