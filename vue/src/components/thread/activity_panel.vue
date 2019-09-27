@@ -11,22 +11,24 @@ import Records from '@/shared/services/records'
 import WatchRecords from '@/mixins/watch_records'
 import { print } from '@/shared/helpers/window'
 import RangeSet from '@/shared/services/range_set'
-import ThreadRenderer from '@/mixins/thread_renderer_mixin'
 
 import { compact, snakeCase, camelCase, min, max, map, first, last, without, uniq, throttle, debounce, range, difference, isNumber, isEqual } from 'lodash'
 
 export default
-  mixins: [ AuthModalMixin, ThreadRenderer]
+  mixins: [ AuthModalMixin ]
 
   props:
     discussion: Object
-    topVisible: Boolean
+    viewportIsBelow: Boolean
 
   data: ->
     parentEvent: @discussion.createdEvent()
     loader: null
 
   created: ->
+    @loader = new RecordLoader
+      collection: 'events'
+
     @watchRecords
       key: @discussion.id
       collections: ['groups', 'memberships']
@@ -96,17 +98,17 @@ export default
     positionRequested: (id) ->
       @$vuetify.goTo "#position-#{id}", duration: 0
 
-    fetchMissing: debounce ->
-      if @missingSlots.length
-        @loader.fetchRecords(
-          comment_id: null
-          from: null
-          from_unread: null
-          discussion_id: @discussion.id
-          order: 'sequence_id'
-          from_sequence_id_of_position: first(@missingSlots)
-          until_sequence_id_of_position: last(@missingSlots))
-    , 500
+    fetch: (slots) ->
+      return unless slots.length
+      @loader.fetchRecords
+        comment_id: null
+        from: null
+        from_unread: null
+        discussion_id: @discussion.id
+        order: 'sequence_id'
+        from_sequence_id_of_position: first(slots)
+        until_sequence_id_of_position: last(slots)
+        per: @padding * 2
 
   watch:
     '$route.params.sequence_id': 'scrollToInitialPosition'
@@ -120,5 +122,5 @@ export default
 
 <template lang="pug">
 .activity-panel.py-2
-  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot])" )
+  thread-renderer(:discussion="discussion" :parent-event="parentEvent" :fetch="fetch" :viewport-is-below="viewportIsBelow")
 </template>

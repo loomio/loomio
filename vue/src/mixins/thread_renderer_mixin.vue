@@ -6,11 +6,6 @@ import RecordLoader from '@/shared/services/record_loader'
 
 export default
   created: ->
-    @loader = new RecordLoader
-      collection: 'events'
-      params:
-        per: @padding * 2
-
     @watchRecords
       key: 'parentEvent'+@parentEvent.id
       collections: ['events']

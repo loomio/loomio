@@ -166,6 +166,7 @@ module.exports = {
   SubgroupsCard: 'group/subgroups_card',
   SubgroupsSelect: 'group/subgroups_select',
   TagsDisplay: 'tags/display',
+  ThreadRenderer: 'thread/renderer',
   ThreadActionsPanel: 'thread/actions_panel',
   ThreadCard: 'thread/card',
   ThreadCurrentPollBanner: 'thread/current_poll_banner',

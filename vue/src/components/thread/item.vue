@@ -20,7 +20,6 @@ export default
     collapsed: false
     hover: false
     focusStyleClass: null
-    topVisible: false
 
   created: ->
     EventBus.$on('focusedEvent', (event) => @isFocused = @event.id == event.id )
@@ -111,9 +110,8 @@ div
       v-layout.thread-item__body(column)
         v-layout.my-1.align-center.wrap
           h3.thread-item__title.body-2(:id="'event-' + event.id")
-            //- div
+            div
               | id: {{event.id}}
-              | parentId: {{event.parentId}}
               | pos {{event.position}}
               | sid {{event.sequenceId}}
               | depth: {{event.depth}}
@@ -125,10 +123,9 @@ div
             time-ago(:date='event.createdAt')
         .default-slot(ref="defaultSlot")
           slot
-        div.visibilitySensor(v-observe-visibility="(isVisible) => topVisible = isVisible")
         slot(name="actions")
         template(v-if='event.childCount > 0')
-          event-children(:discussion='discussion' :parent-event='event' :key="event.id" :topVisible="topVisible")
+          event-children(:discussion='discussion' :parent-event='event' :key="event.id")
   slot(name="append")
 </template>
 
