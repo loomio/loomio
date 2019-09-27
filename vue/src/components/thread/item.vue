@@ -22,7 +22,7 @@ export default
     focusStyleClass: null
 
   created: ->
-    EventBus.$on('focusedEvent', (event) => @isFocused = @event.id == event.id )
+    EventBus.$on('focusedEvent', @focused)
 
   mounted: ->
     @$nextTick =>
@@ -33,16 +33,10 @@ export default
       )
 
   methods:
-    viewed: (viewed) ->
-      @event.markAsRead() if viewed
-
-    hasComponent: ->
-      includes(threadItemComponents, camelCase(@event.kind))
-
-    debug: ->
-      window.Loomio.debug
-
-    camelCase: camelCase
+    focused: (event) -> @isFocused = @event.id == event.id
+    viewed: (viewed) -> @event.markAsRead() if viewed
+    hasComponent: -> includes(threadItemComponents, camelCase(@event.kind))
+    debug: -> window.Loomio.debug
 
   computed:
     discussion: -> @event.discussion()

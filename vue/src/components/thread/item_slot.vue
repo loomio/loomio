@@ -18,20 +18,12 @@ export default
     OutcomeCreated: OutcomeCreated
     ThreadItem: -> import('@/components/thread/item.vue')
 
-  data: ->
-    height: 200
-
-  watch:
-    event: ->
-      if @event
-        setTimeout => @height = @$refs.box.clientHeight
-
 </script>
 <template lang="pug">
 .thread-item-slot(ref="box")
-  v-sheet.ma-4.pa-4(v-if="!event" color="grey lighten-3" :height="height")
-    v-layout.grey--text.text-center(style="height: 100%" justify-center align-center)
-      | {{position}}
+  v-sheet.ma-4.pa-4(v-if="!event" color="grey lighten-3")
+    v-layout.grey--text.text-center(style="height: 200px" justify-center align-center)
       v-progress-circular(indeterminate)
+        | {{position}}
   component(v-if="event" :is="componentForKind(event.kind)" :event='event')
 </template>

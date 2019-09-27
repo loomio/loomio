@@ -20,6 +20,7 @@ export default
   props:
     discussion: Object
     viewportIsBelow: Boolean
+    canSeeContext: Boolean
 
   data: ->
     parentEvent: @discussion.createdEvent()

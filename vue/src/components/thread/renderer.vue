@@ -12,7 +12,7 @@ export default
     viewportIsBelow: Boolean
 
   created: ->
-    console.log "created renderer: parent depth #{@parentEvent.depth}"
+    identifier = 'parentEvent'+@parentEvent.id
     @loader = new RecordLoader
       collection: 'events'
       params:
@@ -23,12 +23,14 @@ export default
       collections: ['events']
       query: @renderSlots
 
-    EventBus.$on 'focusedEvent', (event) =>
-      @focusedEvent = event          if event.parentId == @parentEvent.id
-      @focusedEvent = event.parent() if event.parent() && event.parent().parentId == @parentEvent.id
-      @renderSlots()
+    EventBus.$on 'focusedEvent', @focused
 
     @renderSlots()
+
+  beforeDestroy: ->
+    delete @loader
+    EventBus.$off 'focusedEvent', @focused
+
 
   data: ->
     loader: null
@@ -37,28 +39,30 @@ export default
     recentSlots: []
     missingSlots: []
     slots: []
-    padding: 10
+    padding: 20
     focusedEvent: null
 
   methods:
+    focused: (event) ->
+      @focusedEvent = event          if event.parentId == @parentEvent.id
+      @focusedEvent = event.parent() if event.parent() && event.parent().parentId == @parentEvent.id
 
     renderSlots: ->
-      return unless @parentEvent.childCount
-
-      if @startAtBeginning
-        defaultFirst = 0
-        defaultLast = 0
-      else
+      defaultFirst = 0
+      defaultLast = 0
+      if @parentEvent.depth == 0 && (@discussion.newestFirst || @viewportIsBelow)
         defaultFirst = @parentEvent.childCount
         defaultLast = @parentEvent.childCount
 
       firstRendered = max([1, (first(@visibleSlots) || defaultFirst) - @padding])
       lastRendered = min([(last(@visibleSlots) || defaultLast) + @padding, @parentEvent.childCount])
 
-      firstSlot = max([1, firstRendered - @padding])
-      lastSlot = min([lastRendered + @padding, @parentEvent.childCount])
+      firstSlot = max([1, firstRendered - 1])
+      lastSlot = min([lastRendered + 1, @parentEvent.childCount])
+      # firstSlot = firstRendered
+      # lastSlot = lastRendered
 
-      console.log "rendering slots: parent depth #{@parentEvent.depth} startAtBeginning #{@startAtBeginning} firstrendered #{firstRendered} firstSlot #{firstSlot} lastRendered #{lastRendered} lastSlot #{lastSlot} visible #{@visibleSlots}"
+      # console.log "rendering slots: parent depth #{@parentEvent.depth} startAtBeginning #{@startAtBeginning} firstrendered #{firstRendered} firstSlot #{firstSlot} lastRendered #{lastRendered} lastSlot #{lastSlot} visible #{@visibleSlots}"
       @eventsBySlot = {}
       for i in [firstSlot..lastSlot]
         @eventsBySlot[i] = null
@@ -74,52 +78,41 @@ export default
 
       expectedPositions = range(firstRendered, lastRendered+1)
       @missingSlots = difference(expectedPositions, presentPositions)
-      console.log "expectedPositions: #{expectedPositions}"
+      # console.log "expectedPositions: #{expectedPositions}"
       @eventsBySlot[@focusedEvent.position] = @focusedEvent if @focusedEvent
       @slots = [firstSlot..lastSlot]
       if @discussion.newestFirst && @parentEvent.depth == 0
         @slots = reverse([firstSlot..lastSlot])
 
-    slotVisible: (isVisible, entry, slot, event) ->
-      slot = parseInt(slot)
-      slotsBefore = clone(@visibleSlots)
-      console.log "slotsBefore #{slotsBefore} visibleSlots: #{@visibleSlots}"
-
-      if isVisible
-        @visibleSlots = sortBy uniq(@visibleSlots.concat([slot]))
-        console.log "depth: #{@parentEvent.depth } with slot: #{slot}. visible: #{@visibleSlots}"
-        @renderSlots unless !isEqual(slotsBefore, @visibleSlots)
-      else
-        pull(@visibleSlots, slot)
-        console.log "depth: #{@parentEvent.depth } without slot: #{slot}. visible: #{@visibleSlots}"
-
-
     fetchMissing: debounce (slots) ->
       @fetch(slots)
     , 250
 
-  watch:
-    missingSlots: (newVal, oldVal) ->
-      console.log "parent depth #{@parentEvent.depth} slot #{@parentEvent.position} visible #{@visibleSlots}  missing #{newVal} "
-      @fetchMissing(newVal) unless  isEqual(newVal, oldVal)
-  computed:
-    startAtBeginning: ->
-      if @parentEvent.depth == 0
-        if @viewportIsBelow
-          @discussion.newestFirst
-        else
-          !@discussion.newestFirst
+    slotVisible: (isVisible, entry, slot, event) ->
+      slot = parseInt(slot)
+      if isVisible
+        @visibleSlots = sortedUniq(sortBy(@visibleSlots.concat([slot])))
       else
-        true
+        @visibleSlots = without(@visibleSlots, slot)
 
+  watch:
+    visibleSlots: (newVal, oldVal) ->
+      # console.log "visibleSlots #{@visibleSlots}"
+      @renderSlots() unless isEqual(newVal, oldVal)
+
+    missingSlots: (newVal, oldVal) ->
+      @fetch(newVal) unless isEqual(newVal, oldVal)
+
+    'discussion.newestFirst': -> @visibleSlots = []
 
 </script>
 <template lang="pug">
 .thread-renderer
-  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="{callback: (isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot]), throttle: 500, intersection: {threshold: 0.5, rootMargin: '40px'}}" )
-  | depth {{parentEvent.depth}}
-  | position {{parentEvent.position}}
-  | visible {{visibleSlots}}
-  | missing {{missingSlots}}
-  | viewportIsBelow {{viewportIsBelow}}
+  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="{callback: (isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot]), throttle: 100, intersection: {threshold: 0.1, rootMargin: '40px'}}" )
+  //- div
+    | depth {{parentEvent.depth}}
+    | position {{parentEvent.position}}
+    | visible {{visibleSlots}}
+    | missing {{missingSlots}}
+    | viewportIsBelow {{viewportIsBelow}}
 </template>
