@@ -60,8 +60,13 @@ export default
       firstRendered = max([1, (first(@visibleSlots) || defaultFirst) - @padding])
       lastRendered = min([(last(@visibleSlots) || defaultLast) + @padding, @parentEvent.childCount])
 
-      firstSlot = max([1, firstRendered - (@padding * 2)])
-      lastSlot = min([lastRendered + (@padding * 2), @parentEvent.childCount])
+      if @parentEvent.depth == 0
+        firstSlot = max([1, firstRendered - (@padding * 2)])
+        lastSlot = min([lastRendered + (@padding * 2), @parentEvent.childCount])
+      else
+        firstSlot = 1
+        lastSlot = @parentEvent.childCount
+
       # firstSlot = firstRendered
       # lastSlot = lastRendered
 
