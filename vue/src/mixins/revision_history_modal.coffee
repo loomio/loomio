@@ -8,5 +8,3 @@ export default
                       props: {
                         model: model
                       })
-    closeModal: ->
-      EventBus.$emit('closeModal')

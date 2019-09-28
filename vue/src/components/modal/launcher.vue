@@ -70,14 +70,16 @@ export default
 
   created: ->
     EventBus.$on('openModal', @openModal)
-    EventBus.$on('closeModal', @closeModal)
+    EventBus.$on('closeModal', @doCloseModal)
 
   methods:
     openModal: (opts) ->
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
-    closeModal: -> @isOpen = false
+      
+    doCloseModal: -> @isOpen = false
+
     componentKey: ->
       date = new Date()
       date.getTime()

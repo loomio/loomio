@@ -6,17 +6,12 @@ import RecordLoader             from '@/shared/services/record_loader'
 import ModalService             from '@/shared/services/modal_service'
 import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
-import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
-import WatchRecords from '@/mixins/watch_records'
 import { print } from '@/shared/helpers/window'
-import RangeSet from '@/shared/services/range_set'
 
 import { compact, snakeCase, camelCase, min, max, map, first, last, without, uniq, throttle, debounce, range, difference, isNumber, isEqual } from 'lodash'
 
 export default
-  mixins: [ AuthModalMixin ]
-
   props:
     discussion: Object
     viewportIsBelow: Boolean

@@ -10,6 +10,3 @@ export default
                         preventClose: preventClose
                         close: -> EventBus.$emit 'closeModal'
                       })
-
-    closeModal: ->
-      EventBus.$emit('closeModal')

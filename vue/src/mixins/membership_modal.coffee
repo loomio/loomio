@@ -8,6 +8,3 @@ export default
                       props: {
                         membership: membership
                       })
-
-    closeModal: ->
-      EventBus.$emit('closeModal')

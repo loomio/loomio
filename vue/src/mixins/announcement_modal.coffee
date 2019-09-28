@@ -6,6 +6,3 @@ export default
       EventBus.$emit('openModal',
                       component: 'AnnouncementForm',
                       props: { announcement: announcement })
-
-    closeModal: ->
-      EventBus.$emit('closeModal')

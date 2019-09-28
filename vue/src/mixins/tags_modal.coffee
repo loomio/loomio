@@ -10,6 +10,3 @@ export default
                       props: {
                         discussion: discussion
                       })
-
-    closeModal: ->
-      EventBus.$emit('closeModal')
