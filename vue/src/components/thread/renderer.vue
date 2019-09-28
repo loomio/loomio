@@ -51,7 +51,7 @@ export default
     renderSlots: ->
       defaultFirst = 0
       defaultLast = 0
-      if @parentEvent.depth == 0 && (@discussion.newestFirst || @viewportIsBelow)
+      if @parentEvent.depth == 0 && @discussion.newestFirst && !@viewportIsBelow
         defaultFirst = @parentEvent.childCount
         defaultLast = @parentEvent.childCount
 
@@ -85,9 +85,9 @@ export default
       if @discussion.newestFirst && @parentEvent.depth == 0
         @slots = reverse([firstSlot..lastSlot])
 
-    fetchMissing: debounce (slots) ->
+    fetchMissing: throttle (slots) ->
       @fetch(slots)
-    , 250
+    , 500
 
     slotVisible: (isVisible, entry, slot, event) ->
       slot = parseInt(slot)
@@ -105,15 +105,15 @@ export default
       @fetch(newVal) unless isEqual(newVal, oldVal)
 
     'discussion.newestFirst': -> @visibleSlots = []
-    # 'viewportIsBelow': (newVal, oldVal) -> @visibleSlots = [] if newVal
-    # 'viewportIsAbove': (newVal, oldVal) -> @visibleSlots = [] if newVal
+    'viewportIsBelow': (newVal, oldVal) -> @visibleSlots = [] if newVal
+    'viewportIsAbove': (newVal, oldVal) -> @visibleSlots = [] if newVal
 
 
 </script>
 <template lang="pug">
 .thread-renderer
   thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="{callback: (isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot]), intersection: {threshold: 0.1}}" )
-  //- div
+  div
     | depth {{parentEvent.depth}}
     | position {{parentEvent.position}}
     | visible {{visibleSlots}}
