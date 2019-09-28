@@ -60,8 +60,8 @@ export default
       firstRendered = max([1, (first(@visibleSlots) || defaultFirst) - @padding])
       lastRendered = min([(last(@visibleSlots) || defaultLast) + @padding, @parentEvent.childCount])
 
-      firstSlot = max([1, firstRendered - @padding])
-      lastSlot = min([lastRendered + @padding, @parentEvent.childCount])
+      firstSlot = max([1, firstRendered - (@padding * 2)])
+      lastSlot = min([lastRendered + (@padding * 2), @parentEvent.childCount])
       # firstSlot = firstRendered
       # lastSlot = lastRendered
 
@@ -90,9 +90,9 @@ export default
       else
         @slots = [firstSlot..lastSlot]
 
-    fetchMissing: throttle (slots) ->
+    fetchMissing: debounce (slots) ->
       @fetch(slots)
-    , 500
+    , 250
 
     slotVisible: (isVisible, entry, slot, event) ->
       slot = parseInt(slot)
