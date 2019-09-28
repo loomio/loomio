@@ -113,7 +113,7 @@ export default
 <template lang="pug">
 .thread-renderer
   thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="{callback: (isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot]), intersection: {threshold: 0.1}}" )
-  div
+  //- div
     | depth {{parentEvent.depth}}
     | position {{parentEvent.position}}
     | visible {{visibleSlots}}
