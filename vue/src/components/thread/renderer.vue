@@ -49,8 +49,9 @@ export default
       @focusedEvent = event.parent() if event.parent() && event.parent().parentId == @parentEvent.id
 
     renderSlots: ->
-      defaultFirst = 0
-      defaultLast = 0
+      return if @parentEvent.childCount == 0
+      defaultFirst = 1
+      defaultLast = 1
       if @parentEvent.depth == 0 && @discussion.newestFirst && !@viewportIsBelow
         defaultFirst = @parentEvent.childCount
         defaultLast = @parentEvent.childCount
@@ -64,9 +65,10 @@ export default
       # lastSlot = lastRendered
 
       # console.log "rendering slots: parent depth #{@parentEvent.depth} startAtBeginning #{@startAtBeginning} firstrendered #{firstRendered} firstSlot #{firstSlot} lastRendered #{lastRendered} lastSlot #{lastSlot} visible #{@visibleSlots}"
-      @eventsBySlot = {}
+      eventsBySlot = {}
+
       for i in [firstSlot..lastSlot]
-        @eventsBySlot[i] = null
+        eventsBySlot[i] = null
 
       presentPositions = []
       Records.events.collection.chain().
@@ -75,15 +77,17 @@ export default
       simplesort('position').
       data().forEach (event) =>
         presentPositions.push(event.position)
-        @eventsBySlot[event.position] = event
+        eventsBySlot[event.position] = event
 
       expectedPositions = range(firstRendered, lastRendered+1)
+      @eventsBySlot = eventsBySlot
       @missingSlots = difference(expectedPositions, presentPositions)
-      # console.log "expectedPositions: #{expectedPositions}"
       @eventsBySlot[@focusedEvent.position] = @focusedEvent if @focusedEvent
-      @slots = [firstSlot..lastSlot]
+
       if @discussion.newestFirst && @parentEvent.depth == 0
         @slots = reverse([firstSlot..lastSlot])
+      else
+        @slots = [firstSlot..lastSlot]
 
     fetchMissing: throttle (slots) ->
       @fetch(slots)
