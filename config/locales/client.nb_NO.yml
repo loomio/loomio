@@ -360,8 +360,6 @@ nb_NO:
   discussion_record:
     created: 'Tråden {{title}} ble opprettet i gruppa: {{groupName}}'
     updated: 'Lagret endringer i  {{title}}'
-  discussion_fork_actions:
-    helptext: "Velg de innleggene du vil flytte til en ny tråd"
   discussion_form:
     aria_label: 'Trådskjema'
     messages:
@@ -457,6 +455,8 @@ nb_NO:
     poll_copied: Beslutnings-URL kopiert til utklippstavlen
     discussion_copied: Tråd-URL kopiert til utklippstavlen
     close_thread: Lukk tråd
+  formatting:
+    attach: Legg ved fil
   cover_photo_form:
     aria_label: 'Bytt forsidebilde skjema'
     heading: 'Nytt forsidebilde'

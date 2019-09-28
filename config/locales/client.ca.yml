@@ -217,6 +217,8 @@ ca:
   discussion_record:
     created: 'La discussió {{title}} s''ha creat correctament a {{groupName}}'
     updated: 'Canvis desats a {{title}}'
+  discussion_fork_actions:
+    move: Mou
   discussion_form:
     messages:
       created: 'Discussió creada'

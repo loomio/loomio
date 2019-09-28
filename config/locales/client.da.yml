@@ -272,6 +272,8 @@ da:
   discussion_record:
     created: 'Debatter {{title}} blev oprettet i {{groupName}}'
     updated: '{{title}} blev gemt'
+  discussion_fork_actions:
+    move: Flyt
   discussion_form:
     aria_label: 'Debat'
     messages:
@@ -299,6 +301,8 @@ da:
   action_dock:
     edit_stance: Rediger stillingtagen
     delete_thread: Slet debat
+  formatting:
+    attach: Vedhæft fil
   cover_photo_form:
     aria_label: 'Skift forsidefoto'
     heading: 'Nyt forsidefoto'

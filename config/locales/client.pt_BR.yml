@@ -373,7 +373,7 @@ pt_BR:
     created: 'A conversa {{title}} foi criado com sucesso em {{groupName}}'
     updated: 'Mudanças salvas para {{title}}'
   discussion_fork_actions:
-    helptext: "Selecione os itens que você gostaria de mudar para uma nova conversa"
+    move: Mover
   discussion_form:
     aria_label: 'Formulário da conversa'
     messages:
@@ -459,6 +459,8 @@ pt_BR:
     tag_thread: Gerenciar tags
     close_thread: Fechar conversa
     delete_thread: Apagar conversa
+  formatting:
+    attach: Anexar um arquivo
   cover_photo_form:
     aria_label: 'Formulário de modificação da foto de capa'
     heading: 'Nova foto da capa'

@@ -168,6 +168,8 @@ sr:
   discussion_record:
     created: 'Nit {{title}} je uspešno kreirana u {{groupName}}'
     updated: 'Sačuvane promene za {{title}}'
+  discussion_fork_actions:
+    move: Premesti
   discussion_form:
     messages:
       created: 'Nit kreirana'

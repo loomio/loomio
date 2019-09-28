@@ -3,7 +3,6 @@ it:
     free: Free
   current_plan_button:
     upgrade: Aggiorna
-    tooltip: Acquista un abbonamento a Loomio per invitare più persone ed iniziare più discussioni.
   loomio_tags:
     tags: Etichette
     apply_tags: Inserisci etichette
@@ -313,6 +312,7 @@ it:
     start_group: 'Nuova organizzazione'
     start_subgroup: 'Nuovo sottogruppo'
     explore: 'Gruppi pubblici'
+    explore_groups: Esplora gruppi
     start_thread: Nuova discussione
     start_decision: Nuova decisione
     more_groups: Altri gruppi
@@ -422,7 +422,7 @@ it:
     created: 'La discussione {{title}} è stata creata con successo nel gruppo {{groupName}}.'
     updated: 'Salva i cambiamenti a {{title}}'
   discussion_fork_actions:
-    helptext: "Seleziona gli elementi che vuoi spostare in un'altra discussione"
+    move: Sposta
   discussion_form:
     aria_label: 'Modulo discussione'
     messages:
@@ -515,6 +515,8 @@ it:
     tag_thread: Gestisci le etichette
     close_thread: Chiudi discussione
     delete_thread: Cancella discussione
+  formatting:
+    attach: Allega file
   cover_photo_form:
     aria_label: 'Cambia modulo dell''immagine di copertina'
     heading: 'Nuova immagine di copertina'

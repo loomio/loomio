@@ -293,6 +293,8 @@ ru:
     submit: 'Обновить время закрытия'
   discussion_record:
     updated: 'Сохранить изменения для {{title}}'
+  discussion_fork_actions:
+    move: Переместить
   discussion_form:
     aria_label: 'Форма темы'
     messages:
@@ -331,6 +333,8 @@ ru:
     tag_thread: Управлять метками
     close_thread: Закрыть тему
     delete_thread: Удалить тему
+  formatting:
+    attach: Приложить файл
   cover_photo_form:
     heading: 'Новое фото обложки'
     upload_link: 'Загрузить новое фото обложки'

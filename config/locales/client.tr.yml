@@ -185,6 +185,8 @@ tr:
   discussion_record:
     created: '{{title}} müzakeresi {{groupName}} grubunda başarıyla oluşturuldu '
     updated: 'Değişiklikleri {{title}} konusuna kaydet'
+  discussion_fork_actions:
+    move: Taşı
   discussion_form:
     messages:
       created: 'Müzakere başlatıldı'
@@ -207,6 +209,8 @@ tr:
     edit_stance: Konumunu değiştir
     tag_thread: Etiketleri yönet
     delete_thread: Müzakereyi sil
+  formatting:
+    attach: Dosya ekle
   cover_photo_form:
     heading: 'Yeni kapak fotoğrafı'
     upload_link: 'Yeni kapak fotoğrafı yükle'

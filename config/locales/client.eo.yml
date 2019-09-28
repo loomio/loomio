@@ -9,7 +9,6 @@ eo:
     yearly: Jare
   current_plan_button:
     upgrade: Ĝisdatigi
-    tooltip: Aĉeti loomio-n produkton por inviti pli da partoprenantoj kaj eklabori pri pliaj fadenoj
   loomio_tags:
     tags: Etikedoj
     apply_tags: Alkroĉi etikedon
@@ -174,6 +173,7 @@ eo:
       label: 'Afiŝu'
   sidebar:
     threads: 'Fadenoj'
+    explore_groups: Esplori grupojn
     start_thread: Nova fadeno
     aria_labels:
       groups_list: 'Grupoj'
@@ -195,6 +195,8 @@ eo:
     header: "Sciigoj"
   position_buttons_panel:
     heading: Donu vian opinion
+  discussion_fork_actions:
+    move: Movi
   discussion_form:
     group_label: 'Grupo'
     title_label: 'Titolo'

@@ -212,6 +212,8 @@ ko:
   discussion_record:
     created: '해당 쓰레드 {{title}}은 {{groupName}}에 성공적으로 생성되었습니다.'
     updated: '제목을 {{title}}으로 바꾸었습니다.'
+  discussion_fork_actions:
+    move: 이동
   discussion_form:
     aria_label: '쓰레드 양식'
     messages:

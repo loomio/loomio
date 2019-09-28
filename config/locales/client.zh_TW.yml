@@ -9,7 +9,7 @@ zh_TW:
     yearly: 每年
   current_plan_button:
     upgrade: 升級
-    tooltip: 購買 Loomio 計畫以邀請更多夥伴並啟動更多討論串。
+    tooltip: 免費試用。升級以邀請更多夥伴並開始更多討論串。
   loomio_tags:
     tags: 標籤
     apply_tags: 套用標籤
@@ -62,9 +62,27 @@ zh_TW:
     wave: 揮手
     thumbsup: 贊成
     thumbsdown: 反對
+  poll_types:
+    proposal: 提議
+    count: 勾選
+    poll: 投票
+    dot_vote: 點投票
+    meeting: 時間投票
+    ranked_choice: 排序選擇
+    score: 分數投票
+  new_poll_types:
+    proposal: 提議
+    count: 計數
+    poll: 選擇
+    score: 分數
+    ranked_choice: 排序
+    dot_vote: 分配
+    meeting: 時間投票
   timezones:
     local: 本地時間 ({{value}})
   common:
+    view: 檢視
+    history: 歷史
     option: 選項
     add: 新增
     you: 您
@@ -209,8 +227,12 @@ zh_TW:
   change_volume_form:
     simple:
       label: 通知
+      loud: 已訂閱
       normal: 普通
       quiet: 忽略
+      loud_explain: 只要有活動
+      normal_explain: 當某人想要引起您的注意時
+      quiet_explain: 沒有通知
     aria_label: "變更電子郵件設定表單"
     loud_label: "所有動態"
     normal_label: "公告"
@@ -218,24 +240,30 @@ zh_TW:
     mute_label: "靜音"
     saved: "通知設定已更新"
     discussion:
+      title: "討論串通知"
       loud_description: "您將會收到此討論串中所有活動的電子郵件。"
       normal_description: "您只會收到此討論串中重要活動的電子郵件。"
       quiet_description: "您不會收到此討論串中任何的電子郵件。"
       apply_to_all: "套用這些設定到在此群組中所有的討論串。"
+      only_this_thread: "僅套用到此討論串"
+      group: "變更群組通知偏好設定"
       messages:
         loud: "您將會收到關於此討論串動態的電子郵件。"
         normal: "您將會收到關於此討論串提案的電子郵件。"
         quiet: "您將不會收到任何關於此討論串的電子郵件。"
     membership:
+      title: "{{title}} 的通知"
       loud_description: "您將會在這個群組有任何動態時收到電子郵件。"
       normal_description: "您將會在這個群組有任何動態時收到電子郵件。"
       quiet_description: "您將不會收到任何關於此群組動態的電子郵件。"
       apply_to_all: "套用這些設定到我所有的群組。"
+      apply_to_organization: "套用到所有在 {{organization}} 中的群組"
       messages:
         loud: "您將會收到關於此群組所有動態的電子郵件。"
         normal: "您將只會收到在這個群組內關於公告的電子郵件。"
         quiet: "您將不會收到任何關於此群組的電子郵件。"
     all_groups:
+      title: "所有群組的通知偏好設定"
       loud_description: "您將會收到關於您的所有群組中所有動態的電子郵件。"
       normal_description: "您只會收到您所有群組中重要活動的電子郵件。"
       quiet_description: "您將不會收到任何群組中動態的電子郵件。"
@@ -326,9 +354,11 @@ zh_TW:
     start_group: '新組織'
     start_subgroup: '新的子群組'
     explore: '公開群組'
+    explore_groups: 探索群組
     start_thread: 新討論串
     start_decision: 新決策
     more_groups: 更多群組
+    try_beta: 試試看 Loomio 2.0 beta！
     aria_labels:
       heading: '側邊欄'
       threads_list: '討論串動作'
@@ -358,6 +388,7 @@ zh_TW:
     sign_in: '登入'
     toggle_sidebar: '切換側邊欄'
     logo_title: '首頁'
+    group_and_subgroups: '{{group}} 與子群組'
   user_dropdown:
     button_label: '使用者選單'
     edit_profile: '編輯簡歷'
@@ -435,7 +466,10 @@ zh_TW:
     created: '討論串 {{title}} 已在 {{groupName}} 中成功的被建立'
     updated: '儲存變更到 {{title}}'
   discussion_fork_actions:
-    helptext: "選取您想要移動到新討論串的項目"
+    helptext: 選取您想要移動的項目
+    move: 移動
+    search_placeholder: 利用標題搜尋討論串
+    moved: 正在移動留言，這可能需要一點時間
   discussion_form:
     aria_label: '討論串表單'
     messages:
@@ -457,7 +491,26 @@ zh_TW:
     privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
     fork_notice: '新的討論串將會從 {{title}} 中包含 {{count}} 來建立'
   announcement:
+    send_discussion: 傳送討論串
+    send_discussion_explain: 邀請夥伴參與討論
+    send_group: 邀請夥伴到 {{name}}
+    send_poll: 傳送 {{type}}
+    send_poll_explain: 邀請夥伴參與 {{type}}
+    send_outcome: 傳送結果
+    send_outcome_explain: 通知夥伴關於 {{type}} 的結果
+    discussion_notification_history: 討論串通知歷史
+    group_notification_history: 群組邀請歷史
+    poll_notification_history: 投票通知歷史
+    outcome_notification_history: 結果通知歷史
+    comment_notification_history: 留言通知歷史
+    notification_history_explanation: ✓ 表示通知已被閱讀或電子郵件已被開啟
+    quick_add: "快速新增"
+    any_other_groups: "任何其他群組？"
+    notified_people: "{{name}} 已通知 {{length}} 個夥伴："
     preview: 預覽
+    no_notifications_sent: 未傳送通知
+    history_error: 發生了一點問題！無法載入歷史。
+    inviting_guests_to_thread: 不是 {{group}} 成員的夥伴將會被以訪客的身份新增到此討論串，但不會取得對群組中其他討論串的存取權。
     audiences:
       parent_group: '{{name}} 的成員'
       formal_group: '{{name}} 的成員'
@@ -516,6 +569,7 @@ zh_TW:
     add_comment: 意見
     copy_url: 複製 URL
     edit_thread: 編輯內容
+    announce_thread: 傳送討論串
     invite_guests: 邀請來賓
     translate_thread: 翻譯內容
     edit_poll: 編輯投票
@@ -546,6 +600,34 @@ zh_TW:
     close_thread: 關閉討論串
     reopen_thread: 重新開啟討論串
     delete_thread: 刪除討論串
+    notification_history: 通知歷史
+    move_comments: 移動留言
+  formatting:
+    bold: 粗體
+    italicize: 義大利斜體
+    strikethrough: 刪除線
+    underline: 底線
+    link: 連結
+    code_block: 程式碼區塊
+    attach: 附加檔案
+    heading1: 大標題
+    heading2: 中標題
+    heading3: 小標題
+    bullet_list: 清單
+    number_list: 編號清單
+    check_list: 清單
+    quote: 引用
+    embed: 嵌入
+    divider: 分配者
+    add_table: 新增表格
+    remove_table: 移除表格
+    add_column_before: 新增欄，在這些之前
+    add_column_after: 新增欄，在這些之後
+    remove_column: 移除欄
+    add_row_before: 新增列，在這些之前
+    add_row_after: 新增列，在這些之後
+    remove_row: 移除列
+    merge_selected: 合併選定的儲存格
   cover_photo_form:
     aria_label: '變更封面照片表單'
     heading: '新的封面圖片'
@@ -657,6 +739,7 @@ zh_TW:
     options:
       label: '選項'
       edit_group: '編輯群組設定'
+      open_group_wizard: '群組設定精靈'
       become_coordinator: 成為管理員
       export_data: 匯出群組資料
       export_data_as_json: 將群組資料匯出為 JSON
@@ -686,6 +769,11 @@ zh_TW:
       parent_members: '隱私權：討論串只會被 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員看到。'
       public: '隱私權：此群組現在能在網路上被看到'
       aria_label: '群組隱私：{{privacy}}'
+  export_data_modal:
+    title: 您想要如何使用您的資料？
+    as_csv: 在試算表中開啟它
+    as_html: 在瀏覽器中開啟它
+    as_json: 將此群組在我自己的伺服器上託管
   description_card:
     title: '群組描述'
     placeholder: '群組管理員可以使用此區域來描述群組的用途，這樣可以讓所有人知道他們為什麼會在這裡。'
@@ -702,6 +790,7 @@ zh_TW:
     question: '您確定您想要停用此群組嗎？'
     submit: '是的，停用此群組'
   group_form:
+    click_to_change_image: 封面圖片與圖示（點擊以變更）
     permissions_explaination: '有兩種等級的成員資格：管理員與成員。管理員擁有所有權限。選取成員權限：'
     aria_label: '群組表單'
     new_organisation: 新組織
@@ -844,6 +933,7 @@ zh_TW:
     aria_label: '邀請表單'
     invite_people: '邀請夥伴'
     invite_guests: '邀請來賓'
+    notify_people: '通知夥伴'
     invite_people_to_group: '邀請到 {{name}}'
     group: '群組'
     group_placeholder: '選擇一個群組'
@@ -882,6 +972,7 @@ zh_TW:
     coordinator_label: '管理員'
     remove_member_label: '移除'
     fragment_placeholder: '以名稱或使用者名稱過濾使用者...'
+    only_one_admin: 此群組中只有一個管理員。建議您至少再指定一名成員為管理員。
     messages:
       remove_member_success: '已移除 {{name}}'
       make_admin_success: '{{name}} 現在是管理員了'
@@ -971,6 +1062,7 @@ zh_TW:
   text_editor:
     select_text_to_link: 選取要連結的文字
     insert_link: 插入連結
+    insert_embedded_url: 嵌入影片
   change_picture_form:
     aria_label: '設定檔照片表單'
     title: '設定簡介照片'
@@ -1114,10 +1206,14 @@ zh_TW:
     closed:
       reopened: '討論串已重新開啟'
       closed: '討論串已關閉'
+  discussion_last_seen_by:
+    title: 被這些人看過：
+    no_one: 還沒有人看過這個
   activity_card:
     event_pinned: "已釘選至時間軸"
     event_unpinned: "已從時間軸取消釘選"
     beginning: 開始
+    end: 結束
     unread: "未讀 ({{count}})"
     latest: 最新
     context: 論述
@@ -1157,6 +1253,22 @@ zh_TW:
     helptext: "已釘選的討論串總是會顯示在它們群組討論串清單的頂部。它們可以被用於提醒成員重要的公告，或是推廣一些一般的文章，如行為規範或社群指南等等。"
     helptext_two: "您可以在任何時候透過從討論串下拉式選單選取「取消釘選」來移除釘選"
     pin_thread: 釘選討論串
+  thread_arrangement_form:
+    title: 討論串佈局
+    for_everyone: 這會對所有人變更佈局，不是只有你。
+    sorting: 最舊還是最新優先？
+    latest: 最新
+    latest_description: 先閱讀最新的東西
+    earliest: 最舊
+    earliest_description: 從開始閱讀到結束
+    replies: 如何顯示回覆？
+    linear: 線性
+    linear_description: 安排事情發生的順序
+    nested_once: 巢狀一次
+    nested_once_description: 將回覆置於原始討論串下
+    nested_twice: 巢狀兩次
+    nested_twice_description: 在原始討論串下回覆，兩次
+    changing_nesting_is_slow: 更改巢狀可能需要幾分鐘來處理。在儲存後幾分鐘重新整理您的瀏覽器以檢視變更。
   delete_thread_form:
     aria_label: '刪除討論串'
     title: 刪除討論串
@@ -1345,6 +1457,8 @@ zh_TW:
     max_score: 最大分數
     min_score: 最小分數
     too_long: 太長
+    edit_warning: 小變動或修正拼字錯誤建議使用編輯。若是重大變更，請關閉此 {{pollType}} 並開始一個新的。
+    no_voting: 僅討論，停用投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -1388,6 +1502,7 @@ zh_TW:
     requests: '請求'
     admin: '管理員'
     sharable_link: '可分享的連結'
+    last_seen: '最後檢視 {{date}}'
   polls_panel:
     new_poll: 新投票
     all: '全部'
@@ -1504,6 +1619,7 @@ zh_TW:
     dot_vote: '此點投票已關閉。與群組<strong>分享成果</strong>。'
     ranked_choice: '這個排序投票已關閉。與群組<strong>分享結果</strong>。'
   poll_common_outcome_form:
+    new_title: 輸入結果
     update_title: 更新結果
     outcome_created: 結果已建立
     outcome_updated: 結果已更新
@@ -1533,6 +1649,7 @@ zh_TW:
     closed: 封閉
     start: 啟動
     update: 更新
+    reminder_note: 關閉前 24 小時，將向所有參與者發送提醒
     loomio_school_link: |
         <p>在 <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio 說明</a>取得更多資訊。</p>
   poll_proposal_form:
@@ -1667,6 +1784,7 @@ zh_TW:
     vote: 投票
   poll_proposal_options:
     agree: 贊成
+    consent: 同意
     agree_verb: "同意"
     agree_meaning: 此提案好到可以被群組採納
     abstain: 棄權
@@ -1675,9 +1793,15 @@ zh_TW:
     disagree: 反對
     disagree_verb: "反對"
     disagree_meaning: 我不支持提案。其不應該繼續。
+    objection: 反對
     block: 阻擋
     block_verb: "阻擋"
     block_meaning: 需要群組的關注來解決更深層的問題
+    agree_abstain_disagree_block: '同意、棄權、反對、阻擋'
+    agree_disagree: '同意，不同意'
+    agree_abstain_disagree: '同意、棄權、反對'
+    consent_abstain_object: '同意、棄權、反對'
+    no_voting: '沒有投票'
   poll_count_options:
     'yes': '是'
     'no': '否'

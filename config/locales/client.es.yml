@@ -7,7 +7,6 @@ es:
     large: Grande
   current_plan_button:
     upgrade: Mejore su abono a Loomio
-    tooltip: Compre un abono a Loomio para poder invitar a más personas y abrir más hilos.
   loomio_tags:
     tags: Etiquetas
     apply_tags: Aplicar etiquetas
@@ -313,6 +312,7 @@ es:
     muted_threads: 'Hilos silenciados '
     start_group: 'Nueva organización'
     explore: 'Grupos públicos'
+    explore_groups: Explorar grupos
     start_thread: Nuevo hilo
     start_decision: 'Nueva decisión  '
     aria_labels:
@@ -411,7 +411,7 @@ es:
     created: 'El hilo {{title}} ha sido creado con éxito en {{groupName}}'
     updated: 'Guardar cambios en {{title}}'
   discussion_fork_actions:
-    helptext: "Selecciona lo que quieres mover a un nuevo hilo "
+    move: Mover
   discussion_form:
     aria_label: 'Formulario del hilo'
     messages:
@@ -518,6 +518,8 @@ es:
     tag_thread: Administrar etiquetas
     close_thread: 'Cerrar hilo '
     delete_thread: 'Eliminar hilo '
+  formatting:
+    attach: 'Adjuntar archivos '
   cover_photo_form:
     aria_label: 'Formulario para cargar la foto de portada '
     heading: 'Nueva foto de portada'

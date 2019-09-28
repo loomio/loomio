@@ -4,7 +4,6 @@ he:
     trial: ניסיון
   current_plan_button:
     upgrade: שדרג
-    tooltip: רכוש חבילת Loomio להזמין עוד אנשים ולהתחיל עוד שירשורים
   loomio_tags:
     tags: תגיות
     apply_tags: החל תגיות
@@ -297,6 +296,7 @@ he:
     muted_threads: 'שיחות שהושתקו'
     start_group: 'ארגון חדש'
     explore: 'קבוצות ציבוריות'
+    explore_groups: חקור קבוצות
     start_thread: שיחה חדשה
     start_decision: החלטה חדשה
     aria_labels:
@@ -394,7 +394,7 @@ he:
     created: 'השיחה {{title}} נוצרה בהצלחה ב{{groupName}}'
     updated: 'שמור שינויים ל{{title}}'
   discussion_fork_actions:
-    helptext: "בחר פריטים שהיית רוצה להעביר לשיחה חדשה"
+    move: העבר
   discussion_form:
     aria_label: 'טופס שיחה'
     messages:
@@ -500,6 +500,8 @@ he:
     tag_thread: ניהול תגיות
     close_thread: סגור שיחה
     delete_thread: מחיקת שיחה
+  formatting:
+    attach: צרוף קובץ
   cover_photo_form:
     aria_label: 'שנה תמונת קאבר של הטופס'
     heading: 'תמונת קאבר חדשה'

@@ -7,7 +7,6 @@ uk:
     large: Великий
   current_plan_button:
     upgrade: Оновити
-    tooltip: Придбайте план використання loomio, щоб запросити більше людей та розпочати більше тем.
   loomio_tags:
     tags: Мітки
     apply_tags: Застосувати мітки
@@ -299,6 +298,7 @@ uk:
     muted_threads: 'Вимкнуті теми'
     start_group: 'Нова організація'
     explore: 'Відкриті групи'
+    explore_groups: Переглянути групи
     start_thread: Нова тема
     start_decision: Нове рішення
     aria_labels:
@@ -396,7 +396,7 @@ uk:
     created: 'Тему {{title}} було успішно створено у {{groupName}}'
     updated: 'Зберегти зміни у {{title}}'
   discussion_fork_actions:
-    helptext: "Виберіть елементи, які потрібно перемістити до нової теми"
+    move: Перемістити
   discussion_form:
     aria_label: 'Форма для теми'
     messages:
@@ -500,6 +500,8 @@ uk:
     tag_thread: Керувати мітками
     close_thread: Закрити тему
     delete_thread: Видалити тему
+  formatting:
+    attach: Додати файл
   cover_photo_form:
     aria_label: 'Змінити фото обкладинки'
     heading: 'Нове фото обкладинки'

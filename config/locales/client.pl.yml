@@ -368,6 +368,8 @@ pl:
     poll_copied: Adres URL decyzji skopiowano do schowka
     discussion_copied: Adres URL wątku skopiowano do schowka
     close_thread: Zamknij wątek
+  formatting:
+    attach: Załącz plik
   cover_photo_form:
     aria_label: 'Zmień formę zdjęcia głównego'
     heading: 'Nowe zdjęcie główne'

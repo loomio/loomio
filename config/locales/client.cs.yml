@@ -212,6 +212,7 @@ cs:
     unread_threads: 'Nepřečtená vlákna ({{count}})'
     muted_threads: 'Ztlumená vlákna'
     explore: 'Veřejné skupiny'
+    explore_groups: Prozkoumat skupiny
     start_thread: Nové vlákno
     start_decision: Nové rozhodnutí
     aria_labels:
@@ -275,6 +276,8 @@ cs:
   discussion_record:
     created: 'Vlákno {{title}} bylo úspěšně vytvořeno v {{groupName}}'
     updated: 'Změny k {{title}} uloženy'
+  discussion_fork_actions:
+    move: Přesunout
   discussion_form:
     messages:
       created: 'Vlákno vytvořeno'
@@ -314,6 +317,8 @@ cs:
     tag_thread: Správa štítků
     close_thread: Zavřít vlákno
     delete_thread: Smazat vlákno
+  formatting:
+    attach: Přiložit soubor
   cover_photo_form:
     image_size_helptext: 'Ideální velikost obrázku je 1400 x 320px'
     upload_success: 'Titulní fotka byla úspěšně aktualizována'

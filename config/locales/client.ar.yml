@@ -173,6 +173,8 @@ ar:
   discussion_record:
     created: 'تم بدء موضوع {{title}} في مجموعة {{groupName}} بنجاح.'
     updated: 'حفظ التغييرات في {{title}}'
+  discussion_fork_actions:
+    move: نقل
   discussion_form:
     messages:
       created: 'تم بدء الموضوع'
@@ -197,6 +199,8 @@ ar:
     edit_stance: تغيير الموقف
     delete_comment: حذف التعليق
     delete_thread: حذف الموضوع
+  formatting:
+    attach: إرفاق ملف
   join_group_button:
     join_group: انضم إلى الفريق
     membership_requested: تم طلب الإنضمام

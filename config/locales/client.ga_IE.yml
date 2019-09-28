@@ -233,6 +233,8 @@ ga_IE:
   discussion_record:
     created: 'Cruthaíodh an tsnáithe {{title}} go rathúil i {{groupName}}'
     updated: 'Taisc na hathruithe ar an {{title}}'
+  discussion_fork_actions:
+    move: Bog é
   discussion_form:
     messages:
       created: 'Tosaíodh snáithe'
@@ -249,6 +251,8 @@ ga_IE:
   action_dock:
     edit_stance: Athraigh do sheasamh
     delete_thread: Scriosadh an tsnáith
+  formatting:
+    attach: Ceangail comhad
   cover_photo_form:
     heading: 'Grianghraf cumhdaigh nua'
     upload_link: 'Uasluchtaigh grianghraf cumhdaigh nua'

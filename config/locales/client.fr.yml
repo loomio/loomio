@@ -5,9 +5,10 @@ fr:
     small: Petite
     medium: Moyenne
     large: Grande
+    monthly: Mensuel
+    yearly: Annuel
   current_plan_button:
     upgrade: Changer d'offre
-    tooltip: Acheter un plan Loomio pour inviter plus de personnes et commencer plus de discussions.
   loomio_tags:
     tags: Mots-clés
     apply_tags: Appliquer les mots-clés
@@ -60,9 +61,23 @@ fr:
     wave: Salut
     thumbsup: Pouce levé
     thumbsdown: ' Pouce baissé'
+  poll_types:
+    proposal: Proposition
+    count: Vérification
+    poll: Sondage
+    dot_vote: Vote à points
+    meeting: Sondage horaire de réunion
+    ranked_choice: 'Classement par préférence '
+    score: Sondage pondéré
+  new_poll_types:
+    proposal: Proposition
+    meeting: Sondage horaire de réunion
   timezones:
     local: Heure locale ({{value}})
   common:
+    history: Historique
+    option: Option
+    add: Ajouter
     you: Vous
     expand: Étendre
     all_day: Toute la journée
@@ -72,6 +87,7 @@ fr:
     time_zone: Fuseau horaire
     local_time: Heure locale
     attachments: Pièces jointes
+    active_time_ago: Actif il y à {{time_ago}}
     confirm_discard_changes: Annuler vos modifications ?
     time:
       am: le matin
@@ -114,6 +130,7 @@ fr:
     total: Total
     action:
       search: 'Rechercher'
+      filter: 'Filter :'
       back: 'Retour'
       next: 'Suivant'
       close: 'Fermer'
@@ -131,6 +148,7 @@ fr:
       show_more: "Afficher davantage"
       view_all: "Tout afficher"
       new_thread: "Nouvelle discussion"
+      add_subgroup: 'Nouveau sous-groupe'
       loading: 'Chargement'
       translate: 'Traduire'
       translated: 'Traduit par Bing Translator'
@@ -155,11 +173,15 @@ fr:
       export: Exporter
       fork: Scinder
       apply: Appliquer
+      add_people: Ajouter des personnes
     formatting_help:
       label: 'Mise en forme'
       title: 'Apprenez à utiliser Markdown pour mettre en forme votre texte'
   emoji_picker:
     search: Rechercher
+    common: Fréquemment utilisé
+    objects: Choses
+    places: Lieux
   ordinal:
     _1: 1er
     _2: 2e
@@ -195,30 +217,45 @@ fr:
   change_volume_form:
     simple:
       label: Notifications
+      loud: Abonné
       normal: Normal
       quiet: Ignorer
+      loud_explain: Dès qu'il y a de l'activité
+      normal_explain: Lorsque quelqu'un souhaite votre attention
+      quiet_explain: Pas de notification
     aria_label: "Formulaire des paramètres de notification"
     loud_label: "Toute l’activité"
     normal_label: "Nouvelles discussions et décisions"
     quiet_label: "Aucun courriel"
     mute_label: "Ignorer"
+    saved: "Les paramètres de notification ont été mis à jour"
     discussion:
+      title: "Notifications de la discussion"
+      loud_description: "Vous recevrez un courriel à chaque fois qu’il y aura une activité dans cette discussion."
+      normal_description: "Vous recevrez un courriel uniquement lorsqu'il y aura une activité importante dans cette discussion."
+      quiet_description: "Vous ne recevrez de courriel pour aucune activité dans cette discussion."
       apply_to_all: "Appliquer ces paramètres à toutes les discussions de ce groupe."
+      only_this_thread: "Appliquer à cette discussion uniquement"
+      group: "Modifier les préférences de notification pour le groupe"
       messages:
         loud: "Vous recevrez un courriel lorsqu’il y aura une activité dans cette discussion."
         normal: "Vous recevrez un courriel lorsqu’il y aura une proposition dans cette discussion."
         quiet: "Vous ne recevrez aucun courriel à propos de cette discussion."
     membership:
+      title: "Notifications pour {{title}}"
       loud_description: "Vous recevrez un courriel à chaque fois qu’il y a une activité dans ce groupe."
       normal_description: "Vous recevrez un courriel à chaque fois qu’il y a une activité dans ce groupe."
       quiet_description: "Vous ne recevrez aucun courriel concernant l’activité de ce groupe."
       apply_to_all: "Appliquer ces paramètres à tous mes groupes."
+      apply_to_organization: "Appliquer à tous les groupes dans {{organization}} "
       messages:
         loud: "Vous recevrez un courriel lorsqu’il y aura une activité dans ce groupe."
         normal: "Vous recevrez un courriel lorsqu’il y aura une nouvelle discussion ou décision dans ce groupe."
         quiet: "Vous ne recevrez aucun courriel concernant ce groupe."
     all_groups:
+      title: "Préférences de notification pour tous les groupes"
       loud_description: "Vous recevrez un courriel lorsqu’il y aura une activité dans l’un de vos groupes."
+      normal_description: "Vous recevrez un courriel uniquement lorsqu'il y aura une activité importante dans vos groupes."
       messages:
         loud: "Vous recevrez un courriel lorsqu’il y aura une activité dans l’un de vos groupes."
         normal: "Vous ne recevrez de courriel que s’il y a nouvelle discussion ou décision dans un de vos groupes."
@@ -301,7 +338,9 @@ fr:
     unread_threads: 'Discussions non lues ({{count}})'
     muted_threads: 'Discussions ignorées'
     start_group: 'Nouveau groupe'
+    start_subgroup: 'Ajouter un sous-groupe'
     explore: 'Groupes publics'
+    explore_groups: Explorer les groupes
     start_thread: Nouvelle discussion
     start_decision: Nouvelle décision
     aria_labels:
@@ -400,7 +439,7 @@ fr:
     created: 'La discussion {{title}} a bien été créée dans {{groupName}}'
     updated: 'Modifications de {{title}} enregistrées'
   discussion_fork_actions:
-    helptext: "Sélectionner les items que vous voulez déplacer vers une nouvelle discussion"
+    move: Déplacer
   discussion_form:
     aria_label: 'Forme de la discussion'
     messages:
@@ -507,6 +546,8 @@ fr:
     tag_thread: Gérer les mots-clés
     close_thread: Clore la discussion
     delete_thread: Supprimer la discussion
+  formatting:
+    attach: Joindre un fichier
   cover_photo_form:
     aria_label: 'Changer la forme de la photo de couverture'
     heading: 'Nouvelle photo de couverture'

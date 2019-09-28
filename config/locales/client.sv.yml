@@ -295,6 +295,8 @@ sv:
   action_dock:
     delete_comment: Ta bort kommentar
     close_thread: Stäng tråd
+  formatting:
+    attach: Bifoga fil
   join_group_button:
     join_group: Bli medlem i gruppen
     membership_requested: Förfrågan om medlemskap

@@ -1,4 +1,14 @@
 ro:
+  plan_names:
+    free: Gratuit
+    trial: Versiune de testare
+    small: Mic
+    medium: Mediu
+    large: Mare
+    monthly: Lunar
+    yearly: Anual
+  current_plan_button:
+    tooltip: Versiune gratuită. Alege un plan superior pentru a adăuga mai mulți utilizatori și mai multe subiecte.
   loomio_tags:
     tags: Etichete
     apply_tags: Aplica etichete
@@ -14,6 +24,8 @@ ro:
     helptext: Etichetele te ajuta sa clasifici discutiile si sa le gasesti mai usor
     discussions_count_singular: ({{count}} discutie)
     discussions_count_plural: ({{count}} discutii)
+    tag_created: Etichetă salvată
+    tag_destroyed: Etichetă ștearsă
     tags_marked: Conversatii marcate '{{name}}' in {{groupName}}
     no_tags_present: Nu s-au gasit conversatii cu aceasta eticheta! Incearca din nou selectand alta eticheta.
   reactions:
@@ -23,31 +35,62 @@ ro:
     clap: Aplauda
     hugging: Imbratisare
     sunglasses: Interesant
+    wink: Faceți cu ochiul
     nerd: Inteligent
     relieved: Impacat
     worried: Ingrijorat
     confused: Confuz
+    confounded: Confuz
     neutral_face: Neutru
     slight_frown: Incruntat
     disappointed: Dezamagit
     angry: Suparat
     weary: Satul
+    astonished: Uimit
     cry: Plans
     scream: Striga
     sleeping: Plictisit
     thinking: Gandind
+    pray: Mă rog
     fingers_crossed: Degete incrucisate
     v: Pace
+    metal: Metal
     ok_hand: Ok
     wave: Val
+    thumbsup: Aprobă
+    thumbsdown: Dezaprobă
+  poll_types:
+    proposal: propunere
+    count: verifică
+    poll: sondaj
+    dot_vote: vot cu puncte
+    meeting: sondaj pe perioadă
+    ranked_choice: prioritizarea variantelor
+    score: sondaj cu scor
+  new_poll_types:
+    proposal: propunere
+    count: numarătoare
+    poll: alege
+    score: acordă un scor
+    ranked_choice: loc în clasament
+    dot_vote: alocă
+    meeting: sondaj pe perioadă
   timezones:
     local: Ora locala ({{value}})
   common:
+    history: Istoric
+    option: Opțiune
+    add: Adaugă
     you: Tu
+    expand: Extinde
     all_day: Toata ziua
     ok_got_it: Ok, am inteles
     learn_more: Afla mai multe
+    not_found: Nu am găsit
+    time_zone: Fus orar
     local_time: Ora locala
+    attachments: Atașamente
+    active_time_ago: Activ ultima dată {{time_ago}}
     confirm_discard_changes: Renunti la modificari?
     time:
       am: am
@@ -58,6 +101,9 @@ ro:
     notification_volume: 'Volum Notificari'
     group: 'Grup'
     groups: 'Grupuri'
+    organization: "Organizație"
+    organizations: "Organizații"
+    threads: 'Subiecte'
     decisions: 'Decizii'
     settings: 'Setari'
     help: 'Ajutor'
@@ -80,13 +126,18 @@ ro:
     models:
       proposal: 'Propunere'
     copy: 'Copiaza'
+    reset: 'Resetează'
     copy_text: 'Copiaza text'
+    copied: 'Copiat in clipboard'
+    points_abbrev: Fiecare vot valorează {{score}} puncte
     total: Total
     action:
       search: 'Cauta'
+      filter: 'Filtrează'
       back: 'Inapoi'
       next: 'Urmatorul'
       close: 'Inchide'
+      reopen: 'Redeschide'
       save: 'Salvare'
       save_changes: 'Salvare modificari'
       update_settings: 'Actualizeaza setarile'
@@ -100,8 +151,10 @@ ro:
       show_more: "Vezi mai mult"
       view_all: "Vezi tot"
       new_thread: "Discutie noua"
+      add_subgroup: 'Grup nou subordonat'
       loading: 'Se incarca'
       translate: 'Traducere'
+      translated: 'Tradus cu Bing Translator'
       upload: 'Incarca'
       uploading: 'Se trimite la server'
       load_more: 'Incarca mai mult'
@@ -116,11 +169,20 @@ ro:
       remind: Reamintire
       resend: Retrimitere
       send: Trimite
+      joined: Intrat in grup
+      last_seen: Văzut ultima dată
+      invite: Invită
       resent: Invitatie retrimisa
+      export: Exporta
+      fork: Desparte
+      apply: Aplică
+      add_people: Adaugă persoane
     formatting_help:
       label: 'Formatare'
+      title: 'Invață să folosești Markdown pentru a formata textul'
   emoji_picker:
     search: Cauta
+    common: Utilizate frecvent
   ordinal:
     _1: 1st
     _2: 2nd
@@ -208,6 +270,7 @@ ro:
     threads: 'Discutii'
     recent_threads: 'Conversatii recente'
     unread_threads: 'Conversatii necitite ({{count}})'
+    start_subgroup: 'Grup nou subordonat'
     explore: 'Grupuri publice'
     start_thread: Conversatie noua
     start_decision: Decizie noua
@@ -282,6 +345,8 @@ ro:
     pin_thread: Marcheaza conversatie
     unpin_thread: De-marcheaza conversatie
     delete_thread: Sterge discutia
+  formatting:
+    attach: Ataseaza fisier
   cover_photo_form:
     aria_label: 'Modificare poza fundal'
     heading: 'Poza noua de fundal'
@@ -324,6 +389,7 @@ ro:
     new_cover_photo: 'Uploadeaza o noua poza de fundal'
     new_group_logo: 'Incarcare nou logo de grup'
     discussions_placeholder: 'O discutie este locul unde oricine poate deschide un subiect care să duca la luarea unei decizii..'
+    invite_people: 'Invită'
     options_label: 'Optiuni'
     options:
       label: 'Optiuni'
@@ -350,8 +416,11 @@ ro:
     members_can_start_discussions: 'Membrii pot creare o discutie noua.'
     submit_update: 'Actualizeaza setarile'
   documents_page:
+    title: Atașamente
     confirm_remove_title: Elimina fisierul
   document:
+    list:
+      title: Atașamente
     modal:
       title: Adauga atasament
     form:
@@ -424,6 +493,7 @@ ro:
     aria_label: 'Contextul discutiei'
     thread_options: 'Optiunile discutiei'
     close_thread: 'Inchide'
+    reopen_thread: 'Redeschide'
     mute_thread: 'Ascunde notificari'
     delete_thread: 'Sterge'
     add_comment: 'Comenteaza'
@@ -436,8 +506,9 @@ ro:
     messages:
       success: Discutie stearsa
   move_thread_form:
-    title: Muta discutia
-    confirm: Muta discutia
+    aria_label: Muta discuția
+    title: Muta discuția
+    confirm: Muta discuția
     messages:
       success: Aceasta discutie a fost mutata la {{name}}
   delete_comment_dialog:
@@ -470,6 +541,8 @@ ro:
   poll_common:
     start_poll: Creeaza o decizie
     save_changes: Salvare
+  poll_common_attachment_form:
+    label: Atașamente
   discussions_panel:
     open: Deschis
     closed: Inchis
@@ -503,3 +576,6 @@ ro:
   auth_form:
     name_placeholder: Nume
     name: Nume
+  install_slack:
+    progress:
+      invite: Invită

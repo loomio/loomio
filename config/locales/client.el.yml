@@ -234,6 +234,8 @@ el:
     privacy_organisation: 'Το θέμα θα είναι ορατό μόνο στα μέλη της {{parent}} και μέλη της ομάδα {{group}}.'
   action_dock:
     edit_stance: Αλλάξε θέση
+  formatting:
+    attach: Επισυνάψτε αρχείο
   cover_photo_form:
     aria_label: 'Αλλάξτε την φωτογραφία φόρμας εξωφύλλου'
     heading: 'Νέα φωτογραφία εξωφύλλου'

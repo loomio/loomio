@@ -228,6 +228,8 @@ sl:
     close_thread: Zapri razpravo
     reopen_thread: Ponovno odpri razpravo
     delete_thread: Izbriši razpravo
+  formatting:
+    attach: Priloži datoteko
   join_group_button:
     join_group: Pridruži se skupini
     membership_requested: Prošnja za včlanitev

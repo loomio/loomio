@@ -270,6 +270,7 @@ nl_NL:
     unread_threads: 'Ongelezen borden ({{count}})'
     muted_threads: 'Gedempte borden'
     explore: 'Openbare groepen'
+    explore_groups: Verken groepen
     start_thread: Nieuw bord
     start_decision: Nieuwe beslissing
     aria_labels:
@@ -343,6 +344,8 @@ nl_NL:
   discussion_record:
     created: 'De discussie {{title}} is met succes aangemaakt in {{groupName}}'
     updated: 'Wijzigingen aan {{title}} opgeslagen'
+  discussion_fork_actions:
+    move: Verplaatsen
   discussion_form:
     aria_label: 'Discussieformulier'
     messages:
@@ -392,6 +395,8 @@ nl_NL:
     unpin_thread: Bord ontprikken
     tag_thread: Labels beheren
     delete_thread: Bord verwijderen
+  formatting:
+    attach: Bijlage toevoegen
   cover_photo_form:
     aria_label: 'Formulier groepsfoto veranderen'
     heading: 'Nieuwe groepsfoto'
