@@ -52,7 +52,8 @@ export default
       return if @parentEvent.childCount == 0
       defaultFirst = 1
       defaultLast = 1
-      if @parentEvent.depth == 0 && @discussion.newestFirst && !@viewportIsBelow
+      if @parentEvent.depth == 0 && ((@discussion.newestFirst && !@viewportIsBelow) ||
+                                    (!@discussion.newestFirst &&  @viewportIsBelow))
         defaultFirst = @parentEvent.childCount
         defaultLast = @parentEvent.childCount
 
