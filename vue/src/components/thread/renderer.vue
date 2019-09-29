@@ -3,6 +3,7 @@ import { reverse, throttle, debounce, map, range, min, max, times, first, last, 
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import RecordLoader from '@/shared/services/record_loader'
+import EventHeights from '@/shared/services/event_heights'
 
 export default
   props:
@@ -13,7 +14,10 @@ export default
     viewportIsAbove: Boolean
 
   created: ->
-    identifier = 'parentEvent'+@parentEvent.id
+    @fetchMissing = debounce ->
+      @fetch(@missingSlots)
+    , 500
+
     @loader = new RecordLoader
       collection: 'events'
       params:
@@ -32,7 +36,6 @@ export default
     delete @loader
     EventBus.$off 'focusedEvent', @focused
 
-
   data: ->
     loader: null
     eventsBySlot: {}
@@ -40,7 +43,7 @@ export default
     recentSlots: []
     missingSlots: []
     slots: []
-    padding: 10
+    padding: 20
     focusedEvent: null
 
   methods:
@@ -61,12 +64,23 @@ export default
       lastRendered = min([(last(@visibleSlots) || defaultLast) + @padding, @parentEvent.childCount])
 
       if @parentEvent.depth == 0
+        # replace items with slots
         firstSlot = max([1, firstRendered - (@padding * 2)])
         lastSlot = min([lastRendered + (@padding * 2), @parentEvent.childCount])
+
+        # always render all slots
+        # firstSlot = 1
+        # lastSlot = @parentEvent.childCount
+
+        # firstSlot = firstRendered
+        # lastSlot = lastRendered
+
       else
         firstSlot = 1
         lastSlot = @parentEvent.childCount
 
+      # firstSlot = 1
+      # lastSlot = @parentEvent.childCount
       # firstSlot = firstRendered
       # lastSlot = lastRendered
 
@@ -95,11 +109,7 @@ export default
       else
         @slots = [firstSlot..lastSlot]
 
-    fetchMissing: debounce (slots) ->
-      @fetch(slots)
-    , 250
-
-    slotVisible: (isVisible, entry, slot, event) ->
+    slotVisible: (isVisible, slot) ->
       slot = parseInt(slot)
       if isVisible
         @visibleSlots = sortedUniq(sortBy(@visibleSlots.concat([slot])))
@@ -112,17 +122,35 @@ export default
       @renderSlots() unless isEqual(newVal, oldVal)
 
     missingSlots: (newVal, oldVal) ->
-      @fetch(newVal) unless isEqual(newVal, oldVal)
+      # console.log "fetch pid #{@parentEvent.id} missing #{newVal}"
+      @fetchMissing(newVal) unless isEqual(newVal, oldVal)
 
     'discussion.newestFirst': -> @visibleSlots = []
-    'viewportIsBelow': (newVal, oldVal) -> @visibleSlots = [] if newVal
-    'viewportIsAbove': (newVal, oldVal) -> @visibleSlots = [] if newVal
+    # 'viewportIsBelow': (newVal, oldVal) -> @visibleSlots = [] if newVal
+    # 'viewportIsAbove': (newVal, oldVal) -> @visibleSlots = [] if newVal
 
+  # computed:
+  #   paddingStyle: ->
+  #     sum = 0
+  #     if @parentEvent.depth == 0
+  #       if @discussion.newestFirst
+  #         if first(@slots) < @parentEvent.childCount
+  #           for x in [(first(@slots) + 1)..@parentEvent.childCount]
+  #             if EventHeights[@parentEvent.id]
+  #               sum += EventHeights[@parentEvent.id][x] || 0
+  #       else
+  #         if first(@slots) > 1
+  #           for x in [1..(first(@slots) - 1)]
+  #             if EventHeights[@parentEvent.id]
+  #               sum += EventHeights[@parentEvent.id][x] || 0
+  #     # console.log "parent: #{@parentEvent.id}, height: #{sum}, firstSlot: #{first(@slots)}"
+  #     {'padding-top': sum+'px'}
 
 </script>
 <template lang="pug">
 .thread-renderer
-  thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" :event="eventsBySlot[slot]" :position="parseInt(slot)" v-observe-visibility="{callback: (isVisible, entry) => slotVisible(isVisible, entry, slot, eventsBySlot[slot]), intersection: {threshold: 0.1}}" )
+  .thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" v-observe-visibility="{callback: (isVisible) => slotVisible(isVisible, slot)}" )
+    thread-item-wrapper(:parent-id="parentEvent.id" :event="eventsBySlot[slot]" :position="parseInt(slot)")
   //- div
     | depth {{parentEvent.depth}}
     | position {{parentEvent.position}}

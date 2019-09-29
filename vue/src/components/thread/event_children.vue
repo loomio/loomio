@@ -15,6 +15,7 @@ export default
 
   methods:
     fetch: (slots) ->
+      # console.log "fetch pid #{@parentEvent.id}, missing: #{slots}"
       return unless slots.length
       @loader.fetchRecords(
         comment_id: null

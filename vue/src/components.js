@@ -170,7 +170,7 @@ module.exports = {
   ThreadActionsPanel: 'thread/actions_panel',
   ThreadCard: 'thread/card',
   ThreadCurrentPollBanner: 'thread/current_poll_banner',
-  ThreadItemSlot: 'thread/item_slot',
+  ThreadItemWrapper: 'thread/item_wrapper',
   ThreadNav: 'thread/nav',
   ThreadPreview: 'thread/preview',
   ThreadPreviewCollection: 'thread/preview_collection',
