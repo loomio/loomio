@@ -121,7 +121,6 @@ export default
     translatedPollType: -> @announcement.model.poll().translatedPollType() if @announcement.model.isA('poll') or @announcement.model.isA('outcome')
 
     invitableGroups: ->
-      console.log 'model isAGroup', @announcement.model.isA('group')
       return [] unless @announcement.model.isA('group')
       if @announcement.model.isParent()
         @announcement.model.subgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
