@@ -9,7 +9,7 @@ import Session from '@/shared/services/session'
 import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
 import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
-import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash'
+import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge, orderBy} from 'lodash'
 import { submitForm } from '@/shared/helpers/form'
 import { encodeParams } from '@/shared/helpers/encode_params'
 
@@ -119,9 +119,14 @@ export default
     modelKind: -> @announcement.model.constructor.singular
     pollType: -> @announcement.model.pollType
     translatedPollType: -> @announcement.model.poll().translatedPollType() if @announcement.model.isA('poll') or @announcement.model.isA('outcome')
+
     invitableGroups: ->
       return [] unless @announcement.model.isA('group')
-      @announcement.model.subgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
+      if @announcement.model.isParent()
+        @announcement.model.subgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
+      else
+        orderBy(@announcement.model.parent().subgroups().concat([@announcement.model.parent()]).filter((g) -> AbilityService.canAddMembersToGroup(g)), ['parentId', 'name'], ['desc', 'asc'])
+
     canUpdateAnyoneCanParticipate: ->
       @announcement.model.isA('poll') &&
       AbilityService.canAdminister(@announcement.model)
@@ -185,7 +190,7 @@ v-card
       div(v-if="invitableGroups.length")
         span(v-t="'announcement.any_other_groups'")
         div(v-for="group in invitableGroups" :key="group.id")
-          v-checkbox(v-model="invitedGroupIds" :label="group.name" :value="group.id" hide-details)
+          v-checkbox(:class="{'ml-4': !group.isParent()}" v-model="invitedGroupIds" :label="group.name" :value="group.id" hide-details)
 
       v-layout(v-if="showInvitationsRemaining")
         v-spacer

@@ -5,8 +5,8 @@ class MembershipService
     membership.update(user: actor, accepted_at: DateTime.now)
 
     if membership.inviter
-      membership.group.subgroups.where(id: Array(membership.experiences[:invited_group_ids])).each do |group|
-        group.add_member!(current_user, inviter) if membership.inviter.can?(:add_members, group)
+      membership.inviter.groups.where(id: Array(membership.experiences['invited_group_ids'])).each do |group|
+        group.add_member!(actor, inviter: membership.inviter) if membership.inviter.can?(:add_members, group)
       end
     end
 
