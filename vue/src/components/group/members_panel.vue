@@ -93,7 +93,6 @@ export default
         when 'created_at desc'
           chain.simplesort('createdAt', true).data()
         when 'accepted_at desc'
-          console.log orderBy(chain.data(), ['acceptedAt', 'desc'])
           orderBy(chain.data(), ['acceptedAt', 'desc'])
 
       @memberships = slice(records, @loader.numRquested)
