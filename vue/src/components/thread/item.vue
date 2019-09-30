@@ -128,6 +128,7 @@ div
 .thread-item {
   transition: border-color 50s;
   border-left: 2px solid #fff;
+  padding-left: 14px;
 }
 
 .thread-item .v-card__actions {
