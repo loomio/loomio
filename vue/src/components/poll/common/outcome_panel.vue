@@ -23,7 +23,7 @@ export default
     time-ago(:date="outcome.createdAt")
   formatted-text(:model="outcome" column="statement")
   document-list(:model="outcome")
-  .lmo-md-actions
+  v-layout(align-center)
     reaction-display(:model="outcome")
     action-dock(:model="outcome" :actions="actions")
 </template>
