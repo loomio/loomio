@@ -18,6 +18,9 @@
 .poll-proposal-chart-panel__label--agree
   border-color: $agree-color
 
+.poll-proposal-chart-panel__label--consent
+  border-color: $agree-color
+
 .poll-proposal-chart-panel__label--abstain
   border-color: $abstain-color
 
@@ -25,6 +28,9 @@
   border-color: $disagree-color
 
 .poll-proposal-chart-panel__label--block
+  border-color: $block-color
+
+.poll-proposal-chart-panel__label--objection
   border-color: $block-color
 
 </style>
@@ -37,7 +43,7 @@ export default
     poll: Object
 
   data: ->
-    pollOptionNames: ['agree', 'abstain', 'disagree', 'block'].filter (p) => @poll.pollOptionNames.includes(p)
+    pollOptionNames: ['agree', 'consent', 'abstain', 'disagree', 'block', 'objection'].filter (p) => @poll.pollOptionNames.includes(p)
 
   methods:
     countFor: (name) ->
