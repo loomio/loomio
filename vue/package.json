@@ -35,7 +35,7 @@
     "tippy.js": "^4.3.5",
     "tiptap": "1.25.0",
     "tiptap-commands": "1.12.0",
-    "tiptap-extensions": "1.27.0",
+    "tiptap-extensions": "1.28.0",
     "url-search-params-polyfill": "latest",
     "vinyl-source-stream": "^2.0.0",
     "vue": "^2.6.10",
