@@ -573,8 +573,10 @@ div
 
   img
     aspect-ratio: attr(width) / attr(height)
+    max-width: 100%
+    max-height: 600px
+    width: auto
     height: auto
-    width: 100%
 
   ol, ul
     padding-left: 24px

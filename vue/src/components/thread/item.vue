@@ -32,7 +32,7 @@ export default
       return unless @$refs.defaultSlot
       @$refs.defaultSlot.querySelectorAll("img[height]").forEach((node) =>
         ratio = @$refs.defaultSlot.clientWidth / node.getAttribute('width')
-        node.style.height = String(ratio * node.getAttribute('height')) + 'px'
+        node.style.height = parseInt(ratio * node.getAttribute('height')) + 'px'
       )
 
   methods:
