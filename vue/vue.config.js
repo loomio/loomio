@@ -2,6 +2,7 @@ const components = require('./src/components.js')
 const path = require('path')
 
 module.exports = {
+  transpileDependencies: ['vuetify'],
   chainWebpack: config => {
     config.module.rule('yml').test(/\.yml$/).use('js-yaml-loader').loader('js-yaml-loader').end()
     config.module.rule('yml').test(/\.yml$/).use('single-curlys-loader').loader('single-curlys-loader').end()
