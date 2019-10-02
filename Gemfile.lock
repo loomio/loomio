@@ -343,7 +343,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
-    newrelic_rpm (6.6.0.358)
+    newrelic_rpm (6.7.0.359)
     nio4r (2.5.1)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
