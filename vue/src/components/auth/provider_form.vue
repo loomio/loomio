@@ -43,6 +43,4 @@ export default
   max-width: 256px
   margin: 0 auto
 
-.auth-provider-form__provider
-
 </style>
