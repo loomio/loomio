@@ -60,31 +60,16 @@ export default
         defaultFirst = @parentEvent.childCount
         defaultLast = @parentEvent.childCount
 
-      firstRendered = max([1, (first(@visibleSlots) || defaultFirst) - @padding])
-      lastRendered = min([(last(@visibleSlots) || defaultLast) + @padding, @parentEvent.childCount])
-
       if @parentEvent.depth == 0
         # replace items with slots
+        firstRendered = max([1, (first(@visibleSlots) || defaultFirst) - @padding])
+        lastRendered = min([(last(@visibleSlots) || defaultLast) + @padding, @parentEvent.childCount])
         firstSlot = max([1, firstRendered - (@padding * 2)])
         lastSlot = min([lastRendered + (@padding * 2), @parentEvent.childCount])
-
-        # always render all slots
-        # firstSlot = 1
-        # lastSlot = @parentEvent.childCount
-
-        # firstSlot = firstRendered
-        # lastSlot = lastRendered
-
       else
-        firstSlot = 1
-        lastSlot = @parentEvent.childCount
+        firstSlot = firstRendered = 1
+        lastSlot = lastRendered = @parentEvent.childCount
 
-      # firstSlot = 1
-      # lastSlot = @parentEvent.childCount
-      # firstSlot = firstRendered
-      # lastSlot = lastRendered
-
-      # console.log "rendering slots: parent depth #{@parentEvent.depth} startAtBeginning #{@startAtBeginning} firstrendered #{firstRendered} firstSlot #{firstSlot} lastRendered #{lastRendered} lastSlot #{lastSlot} visible #{@visibleSlots}"
       eventsBySlot = {}
 
       for i in [firstSlot..lastSlot]
@@ -128,23 +113,6 @@ export default
     'discussion.newestFirst': -> @visibleSlots = []
     # 'viewportIsBelow': (newVal, oldVal) -> @visibleSlots = [] if newVal
     # 'viewportIsAbove': (newVal, oldVal) -> @visibleSlots = [] if newVal
-
-  # computed:
-  #   paddingStyle: ->
-  #     sum = 0
-  #     if @parentEvent.depth == 0
-  #       if @discussion.newestFirst
-  #         if first(@slots) < @parentEvent.childCount
-  #           for x in [(first(@slots) + 1)..@parentEvent.childCount]
-  #             if EventHeights[@parentEvent.id]
-  #               sum += EventHeights[@parentEvent.id][x] || 0
-  #       else
-  #         if first(@slots) > 1
-  #           for x in [1..(first(@slots) - 1)]
-  #             if EventHeights[@parentEvent.id]
-  #               sum += EventHeights[@parentEvent.id][x] || 0
-  #     # console.log "parent: #{@parentEvent.id}, height: #{sum}, firstSlot: #{first(@slots)}"
-  #     {'padding-top': sum+'px'}
 
 </script>
 <template lang="pug">

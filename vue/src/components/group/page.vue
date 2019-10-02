@@ -48,3 +48,10 @@ loading(:until='group')
       //-       span(v-t="'group_page.'+tab.name")
       //-   v-divider
 </template>
+
+
+<style lang="css">
+.group-page-tabs .v-tab:not(.v-tab--active) {
+    color: hsla(0,0%,100%,.85) !important;
+}
+</style>

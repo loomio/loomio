@@ -110,7 +110,7 @@ v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shri
 
   template(v-if="groupPage" v-slot:extension)
     v-layout(align-center)
-      v-tabs(background-color="transparent" v-model="activeTab" show-arrows)
+      v-tabs.group-page-tabs(background-color="transparent" v-model="activeTab" show-arrows)
         v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
           span(v-t="'group_page.'+tab.name")
       join-group-button(v-if="groupPage" :group='group')
