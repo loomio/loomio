@@ -1,6 +1,5 @@
 import BaseModel    from '@/shared/record_store/base_model'
 import AppConfig    from '@/shared/services/app_config'
-import HasDrafts    from '@/shared/mixins/has_drafts'
 import HasDocuments from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 
@@ -39,7 +38,6 @@ export default class GroupModel extends BaseModel
   afterConstruction: ->
     if @privacyIsClosed()
       @allowPublicThreads = @discussionPrivacyOptions == 'public_or_private'
-    HasDrafts.apply @
     HasDocuments.apply @, showTitle: true
     HasTranslations.apply @
 

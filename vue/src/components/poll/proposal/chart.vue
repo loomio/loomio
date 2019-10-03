@@ -67,6 +67,10 @@ export default
   mounted: ->
     @svgEl = svg(@$el).size('100%', '100%')
     @draw()
+    
+  beforeDestroy: ->
+    @svgEl.clear()
+    delete @shapes
 </script>
 
 <template lang="pug">
