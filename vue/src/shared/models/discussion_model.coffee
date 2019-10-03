@@ -1,7 +1,6 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
 import RangeSet         from '@/shared/services/range_set'
-import HasDrafts        from '@/shared/mixins/has_drafts'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import HasGuestGroup    from '@/shared/mixins/has_guest_group'
@@ -18,7 +17,6 @@ export default class DiscussionModel extends BaseModel
   afterConstruction: ->
     @private = @privateDefaultValue() if @isNew()
     HasDocuments.apply @, showTitle: true
-    HasDrafts.apply @
     HasTranslations.apply @
     HasGuestGroup.apply @
 

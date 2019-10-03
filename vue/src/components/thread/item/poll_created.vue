@@ -1,21 +1,17 @@
 <script lang="coffee">
-import Session        from '@/shared/services/session'
 import PollService    from '@/shared/services/poll_service'
 import AbilityService from '@/shared/services/ability_service'
 import PollModalMixin from '@/mixins/poll_modal'
 import EventBus       from '@/shared/services/event_bus'
-import WatchRecords   from '@/mixins/watch_records'
 import EventService from '@/shared/services/event_service'
 import { myLastStanceFor }  from '@/shared/helpers/poll'
 import { pick, assign } from 'lodash'
-
-import { listenForTranslations } from '@/shared/helpers/listen'
 
 export default
   components:
     ThreadItem: -> import('@/components/thread/item.vue')
 
-  mixins: [PollModalMixin, WatchRecords]
+  mixins: [PollModalMixin]
   props:
     event: Object
 
@@ -26,6 +22,10 @@ export default
       collections: ["stances"]
       query: (records) =>
         @myLastStance = myLastStanceFor(@poll)?
+
+  beforeDestroy: ->
+    EventBus.$off 'showResults'
+    EventBus.$off 'stanceSaved'
 
   data: ->
     buttonPressed: false
@@ -47,8 +47,6 @@ export default
     dockActions: ->
       pick PollService.actions(@poll, @), ['announce_poll', 'edit_poll']
 
-  mounted: ->
-    listenForTranslations @
 </script>
 
 <template lang="pug">

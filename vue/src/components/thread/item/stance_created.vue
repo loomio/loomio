@@ -3,14 +3,13 @@ import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import openModal from '@/shared/helpers/open_modal'
 
-import { listenForTranslations } from '@/shared/helpers/listen'
-
 export default
   components:
     ThreadItem: -> import('@/components/thread/item.vue')
 
   props:
     event: Object
+
   computed:
     eventable: -> @event.model()
     choiceInHeadline: ->
@@ -50,8 +49,6 @@ export default
             component: 'RevisionHistoryModal'
             props:
               model: @eventable
-  # mounted: ->
-  #   listenForTranslations($scope)
 </script>
 
 <template lang="pug">

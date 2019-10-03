@@ -2,7 +2,6 @@
 import OutcomeService from '@/shared/services/outcome_service'
 import EventService from '@/shared/services/event_service'
 
-import { listenForTranslations } from '@/shared/helpers/listen'
 import { pick } from 'lodash'
 
 export default
@@ -11,9 +10,6 @@ export default
 
   props:
     event: Object
-
-  mounted: ->
-    listenForTranslations(@)
 
   computed:
     eventable: -> @event.model()
