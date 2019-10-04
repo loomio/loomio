@@ -22,7 +22,8 @@ export default
     submit: null
     uploading: false
     progress: 0
-  mounted: ->
+
+  created: ->
     @submit = submitForm @, @group,
       prepareFn: =>
         allowPublic = @group.allowPublicThreads
