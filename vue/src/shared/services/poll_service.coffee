@@ -55,6 +55,7 @@ export default new class PollService
       perform: -> poll.translate(Session.user().locale)
 
     close_poll:
+      icon: 'mdi-close-circle-outline'
       name:
         path: 'poll_common.close_poll_type'
         args: {'poll-type': vm.$t(poll.pollTypeKey())}
@@ -78,6 +79,7 @@ export default new class PollService
                 flash: 'poll_common_close_form.poll_closed'
 
     reopen_poll:
+      icon: 'mdi-refresh'
       name: 'common.action.reopen'
       canPerform: ->
         AbilityService.canReopenPoll(poll)
