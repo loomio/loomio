@@ -1,6 +1,5 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
-import HasDrafts        from '@/shared/mixins/has_drafts'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import HasGuestGroup    from '@/shared/mixins/has_guest_group'
@@ -17,7 +16,6 @@ export default class PollModel extends BaseModel
 
   afterConstruction: ->
     HasDocuments.apply @, showTitle: true
-    HasDrafts.apply @
     HasTranslations.apply @
     HasGuestGroup.apply @
 

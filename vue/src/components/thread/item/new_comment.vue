@@ -1,14 +1,9 @@
 <script lang="coffee">
-import Session        from '@/shared/services/session'
-import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
-import Flash   from '@/shared/services/flash'
-import Records from '@/shared/services/records'
 
 import { pick, assign, compact } from 'lodash'
 import { listenForTranslations } from '@/shared/helpers/listen'
-import openModal      from '@/shared/helpers/open_modal'
 import CommentService from '@/shared/services/comment_service'
 import EventService from '@/shared/services/event_service'
 
