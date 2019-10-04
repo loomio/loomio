@@ -114,7 +114,7 @@ div
 }
 
 .thread-item--focused {
-  background-color: var(--v-accent-lighten1);
+  background-color: var(--v-accent-lighten5);
 }
 
 .thread-item--previously-focused {
