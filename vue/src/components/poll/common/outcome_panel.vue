@@ -20,6 +20,7 @@ v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="outcome" color="primary lighte
   .title(v-t="'poll_common.outcome'")
   .poll-common-outcome-panel__authored-by.caption.my-2
     span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }")
+    space
     time-ago(:date="outcome.createdAt")
   formatted-text(:model="outcome" column="statement")
   document-list(:model="outcome")
