@@ -13,3 +13,9 @@ export default
 <template lang="pug">
 span.poll-meeting-time {{time}}
 </template>
+
+<style lang="css">
+.poll-meeting-time{
+  white-space: nowrap;
+}
+</style>

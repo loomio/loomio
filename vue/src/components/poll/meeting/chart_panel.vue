@@ -3,7 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import WatchRecords from '@/mixins/watch_records'
 import AppConfig from '@/shared/services/app_config'
 
-import {reduce, sortBy, find, compact, uniq} from 'lodash'
+import {sum, map, sortBy, find, compact, uniq} from 'lodash'
 
 export default
   mixins: [WatchRecords]
@@ -13,12 +13,21 @@ export default
   data: ->
     pollOptions: []
     latestStances: []
+    participants: []
+    stancesByUserId: []
+
   created: ->
     @watchRecords
       collections: ['stances', 'poll_options']
       query: (store) =>
         @latestStances = @poll.latestStances()
+
+        @stancesByUserId = {}
+        @latestStances.forEach (stance) =>
+          @stancesByUserId[stance.participantId] = stance
+
         @pollOptions = @poll.pollOptions()
+        @participants = @poll.participants()
     # EventBus.listen $scope, 'timeZoneSelected', (e, zone) ->
     #   $scope.zone = zone
 
@@ -46,14 +55,22 @@ export default
           choice.pollOption() == option && choice.score == score
 
     totalFor: (option) ->
-      _reduce(@latestStances, (total, stance) =>
-        scoreForStance = stance.scoreFor(option)
-        total[scoreForStance] += 1
-        total
-      , [0, 0, 0])
+      sum map(option.stanceChoices().filter((choice) -> choice.stance().latest), 'score')
 
     barLength: (count) ->
       ((count * 32)) + 'px'
+
+    scoreFor: (user, option) ->
+      if @stancesByUserId[user.id]
+        @stancesByUserId[user.id].scoreFor(option)
+      else
+        0
+    classForScore: (score) ->
+      switch score
+        when 2 then 'poll-meeting-chart__cell--yes'
+        when 1 then 'poll-meeting-chart__cell--maybe'
+        when 0 then 'poll-meeting-chart__cell--no'
+
   computed:
     orderedPollOptions: ->
       sortBy @pollOptions, 'name'
@@ -61,24 +78,48 @@ export default
 
 <template lang="pug">
 .poll-meeting-chart-panel
-  table
-    tr
-      td
-        //- time-zone-select
-      td
-        //-
-    tr(v-for="option in orderedPollOptions" :key="option.id")
-      td
-        poll-meeting-time(:name='option.name' :zone='zone')
-      td
-        v-layout
-          span.poll-meeting-chart__bar(v-if="option.scoreCounts['2']" :style="{'border-color': scoreColor(2), 'background-color': bgColor(2), 'width': barLength(option.scoreCounts['2']) }")
-            user-avatar(size="24" :user="user" v-for="user in yesVotersFor(option)" :key="user.id")
-          span.poll-meeting-chart__bar(v-if="option.scoreCounts['1']" :style="{'border-color': scoreColor(1), 'background-color': bgColor(1), 'width': barLength(option.scoreCounts['1']) }")
-            user-avatar(size="24" :user="user" v-for="user in maybeVotersFor(option)" :key="user.id")
+  table.poll-meeting-chart-table.body-2
+    thead
+      tr
+        td Date
+        td(v-for="user in participants" :key="user.id")
+          user-avatar(:user="user")
+        td Total
+    tbody
+      tr(v-for="option in orderedPollOptions" :key="option.id")
+        td
+          poll-meeting-time(:name='option.name' :zone='zone')
+
+        td(v-for="user in participants" :key="user.id")
+          .poll-meeting-chart__cell(:class="classForScore(scoreFor(user, option))")
+            | &nbsp;
+            //- v-layout
+            //-   span.poll-meeting-chart__bar(v-if="option.scoreCounts['2']" :style="{'border-color': scoreColor(2), 'background-color': bgColor(2), 'width': barLength(option.scoreCounts['2']) }")
+            //-     user-avatar(size="24" :user="user" v-for="user in yesVotersFor(option)" :key="user.id")
+            //-   span.poll-meeting-chart__bar(v-if="option.scoreCounts['1']" :style="{'border-color': scoreColor(1), 'background-color': bgColor(1), 'width': barLength(option.scoreCounts['1']) }")
+            //-     user-avatar(size="24" :user="user" v-for="user in maybeVotersFor(option)" :key="user.id")
+        td
+          strong {{totalFor(option)/2}}
 </template>
 
 <style lang="css">
+.poll-meeting-chart-panel {
+  overflow-x: scroll;
+}
+
+.poll-meeting-chart-panel:hover {
+  overflow-x: visible;
+}
+
+.poll-meeting-chart-table {
+  width: auto;
+  background-color: white;
+}
+
+.poll-meeting-chart-table tbody tr:hover {
+  background-color: #EEEEEE;
+}
+
 .poll-meeting-chart__bar {
   border: 1px solid;
   margin: 4px 0px;
@@ -91,4 +132,15 @@ export default
   border-radius: 2px;
 }
 
+.poll-meeting-chart__cell {
+  padding: 0;
+  width: 36px;
+}
+.poll-meeting-chart__cell--yes {
+  background-color: #00D177;
+}
+
+.poll-meeting-chart__cell--maybe {
+  background-color: #F6A82B;
+}
 </style>
