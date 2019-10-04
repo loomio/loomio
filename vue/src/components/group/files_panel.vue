@@ -115,9 +115,9 @@ v-card.group-files-panel
   v-simple-table(:items="items" hide-default-footer)
     thead
       tr
-        th Filename
-        th Author
-        th Date
+        th(v-t="'group_files_panel.filename'")
+        th(v-t="'group_files_panel.uploaded_by'")
+        th(v-t="'group_files_panel.uploaded_at'")
     tbody
       tr(v-for="item in items" :key="item.id")
         td

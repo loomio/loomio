@@ -1651,6 +1651,9 @@ en:
 
   group_files_panel:
     no_files: No files found
+    filename: Filename
+    uploaded_by: Uploaded by
+    uploaded_at: Uploaded at
 
   poll_common_action_panel:
     anonymous: Votes will be anonymous
