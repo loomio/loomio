@@ -30,10 +30,12 @@ export default
   mounted: ->
     @$nextTick =>
       return unless @$refs.defaultSlot
-      @$refs.defaultSlot.querySelectorAll("img[height]").forEach((node) =>
+      @$refs.defaultSlot.querySelectorAll("img[height]").forEach (node) =>
         ratio = @$refs.defaultSlot.clientWidth / node.getAttribute('width')
         node.style.height = parseInt(ratio * node.getAttribute('height')) + 'px'
-      )
+
+      @$refs.defaultSlot.querySelectorAll("a:not([target])").forEach (node) =>
+        node.setAttribute('target', '_blank')
 
   methods:
     focused: (event) -> @isFocused = @event.id == event.id
