@@ -80,7 +80,7 @@ v-app
     router-view(v-if="!pageError")
     common-error(v-if="pageError" :error="pageError")
     v-spacer
-    common-footer
+  common-footer
   thread-nav
   modal-launcher
   common-flash
