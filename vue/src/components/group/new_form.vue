@@ -11,19 +11,25 @@ import GroupModalMixin from '@/mixins/group_modal'
 export default
   mixins: [GroupModalMixin]
   props:
-    group: Object
-    close: Function
+    close:
+      type: Function
+      default: ->
   data: ->
+    group: null
     isDisabled: false
     rules: {
-      required: (value) ->
-        !!value || 'Required.'
+      required: (value) -> !!value || 'Required.'
     }
     submit: null
     uploading: false
     progress: 0
 
   created: ->
+    @group = Records.groups.build
+      name: @$route.params.name
+      customFields:
+        pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
+
     @submit = submitForm @, @group,
       prepareFn: =>
         allowPublic = @group.allowPublicThreads

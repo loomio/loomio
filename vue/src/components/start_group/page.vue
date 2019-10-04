@@ -9,22 +9,11 @@ import _isEmpty     from 'lodash/isEmpty'
 
 export default
   mixins: [AuthModalMixin]
-  data: ->
-    group: null
   mounted: ->
-    if Session.isSignedIn()
-      @init()
-    else
-      @openAuthModal()
-  methods:
-    init: ->
-      @group = Records.groups.build
-        name: @$route.params.name
-        customFields:
-          pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
+    @openAuthModal() unless Session.isSignedIn()
 </script>
 
 <template lang="pug">
 v-container.max-width-800.start-group-page
-  group-new-form(:group='group')
+  group-new-form
 </template>
