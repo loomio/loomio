@@ -35,12 +35,10 @@ v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.c
       span(v-if='!outcome.isNew()' v-t="'poll_common_outcome_form.update_title'")
     v-spacer
     dismiss-modal-button(:close="close")
-  v-card-text
-    .poll-common-outcome-form
-      lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
-      validation-errors(:subject="outcome" field="statement")
-      poll-common-calendar-invite(:outcome='outcome', v-if='datesAsOptions()')
-  v-card-actions
-    v-spacer
-    v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' v-t="'common.action.save'")
+  .poll-common-outcome-form.px-6.py-4
+    poll-common-calendar-invite(:outcome='outcome', v-if='datesAsOptions()')
+    lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
+      template(v-slot:actions)
+        v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' v-t="'common.action.save'")
+    validation-errors(:subject="outcome" field="statement")
 </template>

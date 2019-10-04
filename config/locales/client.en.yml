@@ -1712,7 +1712,7 @@ en:
       helptext_on:  Voters can indicate times as "If need be"
   poll_common_close_form:
     title: Close a poll early
-    helptext: Are you sure you're ready to close early?
+    helptext: Are you sure you're ready to close early? (You can re-open it later if you like)
     close_proposal: Close proposal
     close_poll: Close poll
     close_count: Close check
@@ -1765,6 +1765,7 @@ en:
     reminder_sent: Reminder notification sent
 
   poll_common_set_outcome_panel:
+    enter_outcome: Enter outcome
     share_outcome: Share outcome
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
     proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'

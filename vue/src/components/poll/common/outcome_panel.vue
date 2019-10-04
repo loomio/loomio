@@ -16,9 +16,9 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-outcome-panel(v-if="outcome")
-  h3.lmo-card-subheading(v-t="'poll_common.outcome'")
-  .poll-common-outcome-panel__authored-by.caption
+v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="outcome" color="primary lighten-5" elevation="2")
+  .title(v-t="'poll_common.outcome'")
+  .poll-common-outcome-panel__authored-by.caption.my-2
     span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }")
     time-ago(:date="outcome.createdAt")
   formatted-text(:model="outcome" column="statement")
