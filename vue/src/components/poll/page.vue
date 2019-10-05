@@ -5,7 +5,7 @@ import EventBus      from '@/shared/services/event_bus'
 import ModalService  from '@/shared/services/modal_service'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 
-import {compact, isEmpty}  from 'lodash'
+import {compact, map, isEmpty}  from 'lodash'
 
 import { subscribeTo }     from '@/shared/helpers/cable'
 import { myLastStanceFor } from '@/shared/helpers/poll'
@@ -26,10 +26,10 @@ export default
       if poll and isEmpty @poll?
         @poll = poll
 
-        if @poll.discussionId
-          discussion = @poll.discussion()
-          discussionUrl = @urlFor(discussion)+'/'+@poll.createdEvent().sequenceId
-          @$router.replace(discussionUrl)
+        # if @poll.discussionId
+        #   discussion = @poll.discussion()
+        #   discussionUrl = @urlFor(discussion)+'/'+@poll.createdEvent().sequenceId
+        #   @$router.replace(discussionUrl)
 
         EventBus.$emit 'currentComponent',
           group: poll.group()
@@ -49,16 +49,19 @@ export default
   computed:
     isEmptyPoll: -> isEmpty @poll
 
+    groups: ->
+      map compact([@poll.group().parent(), @poll.group(), @poll.discussion()]), (model) =>
+        text: model.name || model.title
+        disabled: false
+        to: @urlFor(model)
+
 </script>
 
 <template lang="pug">
 loading(:until="poll")
   div(v-if="poll")
     v-container.poll-page.max-width-800
-      loading(v-if='isEmptyPoll')
-      v-layout(column v-if='!isEmptyPoll')
-        poll-common-example-card(v-if='poll.example', :poll='poll')
-        poll-common-card.mb-3(:poll='poll')
-        membership-card(:group='poll.guestGroup()')
-        membership-card(:group='poll.guestGroup()', :pending='true')
+      v-card.pr-4
+        v-breadcrumbs(:items="groups" divider=">")
+        poll-created(:event="poll.createdEvent()")
 </template>
