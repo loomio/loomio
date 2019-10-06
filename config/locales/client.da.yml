@@ -850,7 +850,6 @@ da:
       title: Send en notifikation til mig når folk deltager
   poll_common_close_form:
     title: Afslut en meningsmåling før tid
-    helptext: Er du sikker på at du ønsker at afslutte før tid?
     close_proposal: Luk forslag
     close_poll: Afslut meningsmåling
     close_count: Afslut checkmåling

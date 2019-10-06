@@ -1456,7 +1456,6 @@ hu:
       helptext_on: A szavazók jelölhetik az időpontokat "ha szükséges"
   poll_common_close_form:
     title: Szavazás lezárása a határidő előtt
-    helptext: Biztos benne, hogy készen áll a bezárásra korán?
     close_proposal: Bezárja a javaslatot
     close_poll: Bezárja a szavazást
     close_count: Felmérés lezárása
@@ -1722,7 +1721,6 @@ hu:
     stance_created: A választást rögzítették
     stance_updated: A választás frissítve
   thread_item:
-    poll_expired: "{{polltype}} lezárult: <strong>{{title}}</strong>"
     event_removed: "Eltávolítva a témából"
   poll_admin_page:
     title: Rendszergazda - {{title}}

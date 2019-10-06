@@ -1353,7 +1353,6 @@ es:
       helptext_on: Los votantes pueden indicar tiempos como 'de ser necesario'
   poll_common_close_form:
     title: Cerrar una encuesta antes
-    helptext: ¿Está seguro de que quiere cerrar antes?
     close_proposal: Cerrar la propuesta
     close_poll: Cerrar la encuesta
     close_count: Cerrar comprobación
@@ -1592,7 +1591,6 @@ es:
     stance_created: 'Opción registrada '
     stance_updated: Opción actualizada
   thread_item:
-    poll_expired: "{{polltype}} ha cerrado: <strong>{{title}}</strong>"
     event_removed: "Eliminado del hilo"
   poll_admin_page:
     title: Administrador - {{title}}

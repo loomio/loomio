@@ -1501,7 +1501,6 @@ de:
       helptext_on: Teilnehmer können "wenn nötig" angeben
   poll_common_close_form:
     title: Umfrage früher beenden
-    helptext: Sind Sie sicher, dass Sie die Abstimmung vorzeitig beenden möchten?
     close_proposal: Vorschlag schließen
     close_poll: Abstimmung vorzeitig beenden
     close_count: Bestätigung vorzeitig beenden
@@ -1785,13 +1784,6 @@ de:
     discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die Diskussion neu eröffnet"
     discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat eine Abzweigung für die <strong><a href='d/{{key}}'>{{title}}</a></strong>  Diskussion erstellt"
     new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
-    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat ein Ergebnis für <strong>{{title}}</strong>geteilt"
-    poll_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die {{polltype}}<strong>{{title}}</strong> neu eröffnet"
-    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die {{polltype}}:<strong>{{title}}</strong>beendet. "
-    poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat die  {{polltype}}<strong>{{title}}</strong> eröffnet"
-    poll_created_no_title: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat eine  {{polltype}}</strong> eröffnet"
-    poll_edited: "<strong><a href='/u/{{username}}'> {{author}}</a></strong>hat die {{polltype}}<strong>{{title}}</strong>bearbeitet"
-    poll_expired: "{{polltype}} geschlossen: <strong>{{title}}</strong>"
     stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>hat in <strong>{{title}}</strong>abgestimmt"
     event_removed: "Von der Diskussion entfernt"
   poll_admin_page:

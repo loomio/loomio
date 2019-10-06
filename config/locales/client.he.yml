@@ -1310,7 +1310,6 @@ he:
       helptext_on: מצביעעים יכולים לציין זמנים כ-"אם יש צורך"
   poll_common_close_form:
     title: סגור סקר מוקדם
-    helptext: אתה בטוח שאתה מוכן לסגור מוקדם?
     close_proposal: סגור הצעה
     close_poll: סגור סקר
     close_count: סגור בדיקה
@@ -1547,7 +1546,6 @@ he:
     stance_created: בחירה תועדה במערכת
     stance_updated: בחירה עודכנה
   thread_item:
-    poll_expired: "{{polltype}} נסגר: <strong>{{title}}</strong>"
     event_removed: "הוסר מהשיחה"
   poll_admin_page:
     title: אדמין (מנהל) - {{title}}

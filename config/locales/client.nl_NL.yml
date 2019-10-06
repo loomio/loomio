@@ -1064,7 +1064,6 @@ nl_NL:
       title: Kiezers mogen opties toevoegen
   poll_common_close_form:
     title: Sluit een peiling voortijdig
-    helptext: Ben je er zeker van dat je vroeger wilt sluiten?
     close_proposal: Voorstel sluiten
     close_poll: Peiling sluiten
     close_count: '''Check'' sluiten'
@@ -1277,8 +1276,6 @@ nl_NL:
     helptext: Sleep en drop opties in de volgorde van voorkeur (waarbij 1 de meest geprefereerde optie is). Je {{count}}  beste keuzes zullen worden opgenomen.
     stance_created: Keuze opgenomen
     stance_updated: Keuze upgedatet
-  thread_item:
-    poll_expired: "{{polltype}} is gesloten: <strong>{{title}}</strong>"
   poll_admin_page:
     title: Administrator - {{title}}
   poll_common_publish_facebook_preview:

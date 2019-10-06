@@ -1306,7 +1306,6 @@ uk:
       helptext_on: Виборці можуть вказувати час як "у разі потреби"
   poll_common_close_form:
     title: Закрити опитування раніше
-    helptext: Ві впевнені, що хочете закрити раніше?
     close_proposal: Закрити пропозицію
     close_poll: Закрити опитування
     close_count: Закрити контрольний список
@@ -1544,7 +1543,6 @@ uk:
     stance_created: Вибір записано
     stance_updated: Вибір оновлено
   thread_item:
-    poll_expired: "{{polltype}} закрито: <strong>{{title}}</strong>"
     event_removed: "Видалені з теми"
   poll_admin_page:
     title: Адміністратор - {{title}}

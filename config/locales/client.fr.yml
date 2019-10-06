@@ -9,6 +9,7 @@ fr:
     yearly: Annuel
   current_plan_button:
     upgrade: Changer d'offre
+    tooltip: Essai Gratuit. Changer d'offre pour inviter plus de personnes et créer plus de discussions.
   loomio_tags:
     tags: Mots-clés
     apply_tags: Appliquer les mots-clés
@@ -71,10 +72,15 @@ fr:
     score: Sondage pondéré
   new_poll_types:
     proposal: Proposition
+    poll: Choisissez
+    score: pondéré
+    ranked_choice: classer
+    dot_vote: allouer
     meeting: Sondage horaire de réunion
   timezones:
     local: Heure locale ({{value}})
   common:
+    view: voir
     history: Historique
     option: Option
     add: Ajouter
@@ -180,6 +186,8 @@ fr:
   emoji_picker:
     search: Rechercher
     common: Fréquemment utilisé
+    hands: mains
+    nature: nature
     objects: Choses
     places: Lieux
   ordinal:
@@ -256,6 +264,7 @@ fr:
       title: "Préférences de notification pour tous les groupes"
       loud_description: "Vous recevrez un courriel lorsqu’il y aura une activité dans l’un de vos groupes."
       normal_description: "Vous recevrez un courriel uniquement lorsqu'il y aura une activité importante dans vos groupes."
+      quiet_description: "vous ne recevrez aucun e-mail signalant l'activité dans vos groupes"
       messages:
         loud: "Vous recevrez un courriel lorsqu’il y aura une activité dans l’un de vos groupes."
         normal: "Vous ne recevrez de courriel que s’il y a nouvelle discussion ou décision dans un de vos groupes."
@@ -334,6 +343,7 @@ fr:
   sidebar:
     threads: 'Discussions'
     my_groups: 'Mes groupes'
+    other_groups: 'autres groupes'
     recent_threads: 'Discussions récentes'
     unread_threads: 'Discussions non lues ({{count}})'
     muted_threads: 'Discussions ignorées'
@@ -1358,7 +1368,6 @@ fr:
       helptext_on: Les participants peuvent indiquer « si besoin » sur des horaires
   poll_common_close_form:
     title: Fermer un sondage en avance
-    helptext: Êtes-vous sûr d’être prêt à fermer aussi tôt ?
     close_proposal: Clôturer la proposition
     close_poll: Fermer le sondage
     close_count: Clôturer la vérification
@@ -1498,7 +1507,7 @@ fr:
         <p>Le score total de chaque proposition est affiché dans le résultat.</p>
     start_header: Initier un vote pondéré
     edit_header: Modifier un vote pondéré
-    title_placeholder: Par exemple, pondérer les candidats sur une échelle de 0 à 9
+    title_placeholder: Par exemple, notez les candidats sur une échelle de 0 à 9
     details_placeholder: Partagez toutes les informations utiles pour participer
     add_option_placeholder: Ajouter une option
     score_created: Vote pondéré créé
@@ -1595,7 +1604,6 @@ fr:
     stance_created: Choix enregistré
     stance_updated: Choix mis à jour
   thread_item:
-    poll_expired: "{{polltype}} fermé: <strong>{{title}}</strong>"
     event_removed: "retiré de la discussion"
   poll_admin_page:
     title: Administration - {{title}}
