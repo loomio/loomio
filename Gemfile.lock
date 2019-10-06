@@ -56,7 +56,7 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
     active_model_serializers (0.8.4)
       activemodel (>= 3.0)
-    activeadmin (2.3.1)
+    activeadmin (2.4.0)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (~> 3.1)
       formtastic_i18n (~> 0.4)
@@ -199,9 +199,9 @@ GEM
     erubis (2.7.0)
     excon (0.64.0)
     execjs (2.7.0)
-    factory_bot (5.1.0)
+    factory_bot (5.1.1)
       activesupport (>= 4.2.0)
-    factory_bot_rails (5.1.0)
+    factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
     faker (2.5.0)
@@ -233,7 +233,7 @@ GEM
       activerecord (>= 4.0.0)
     gemrat (0.4.6)
       colored (= 1.2)
-    geocoder (1.5.1)
+    geocoder (1.5.2)
     get_process_mem (0.2.4)
       ffi (~> 1.0)
     globalid (0.4.2)
@@ -347,7 +347,7 @@ GEM
     nio4r (2.5.1)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
-    oj (3.9.1)
+    oj (3.9.2)
     orm_adapter (0.5.0)
     os (1.0.1)
     paper_trail (10.3.1)
@@ -494,7 +494,7 @@ GEM
       errbase (>= 0.1.1)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.2.0)
+    sassc (2.2.1)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -538,7 +538,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (0.20.3)
     thread_safe (0.3.6)
-    tilt (2.0.9)
+    tilt (2.0.10)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
@@ -566,7 +566,7 @@ PLATFORMS
 DEPENDENCIES
   actioncable
   active_model_serializers (~> 0.8.1)
-  activeadmin (~> 2.3.1)
+  activeadmin (~> 2.4.0)
   activerecord-import (= 1.0.2)
   activerecord-nulldb-adapter
   ahoy_email (~> 1.1.0)
@@ -595,7 +595,7 @@ DEPENDENCIES
   fog-aws
   friendly_id (~> 5.3.0)
   gemrat
-  geocoder (= 1.5.1)
+  geocoder (= 1.5.2)
   google-cloud-translate
   gravtastic
   griddler!
