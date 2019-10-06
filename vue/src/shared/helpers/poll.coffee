@@ -9,7 +9,7 @@ export optionColors = ->
   block: AppConfig.pollColors.proposal[3]
   consent: AppConfig.pollColors.proposal[0]
   tension: AppConfig.pollColors.proposal[1]
-  objection: AppConfig.pollColors.proposal[3]
+  objection: AppConfig.pollColors.proposal[2]
 
 export optionImages = ->
   agree: 'agree'
@@ -17,7 +17,7 @@ export optionImages = ->
   disagree: 'disagree'
   block: 'block'
   consent: 'agree'
-  objection: 'block'
+  objection: 'no'
   yes: 'yes'
   no: 'no'
 
