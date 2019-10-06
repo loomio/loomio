@@ -33,7 +33,7 @@
     "svg.js": "^2.7.1",
     "tippy": "0.0.0",
     "tippy.js": "^4.3.5",
-    "tiptap": "1.25.0",
+    "tiptap": "1.26.3",
     "tiptap-extensions": "1.28.1",
     "tiptap-commands": "1.11.0",
     "url-search-params-polyfill": "latest",
