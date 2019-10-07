@@ -16,7 +16,6 @@ export default
 
   watch:
     open: (newVal, oldVal) ->
-      console.log newVal, oldVal
       if oldVal && !newVal
         @unreadIds = []
         @unreadCount = 0
