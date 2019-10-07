@@ -27,9 +27,6 @@ export default new class AbilityService
   canRespondToComment: (comment) ->
     _.includes comment.discussion().members(), Session.user()
 
-  canMoveComment: (comment) ->
-    @canMoveThread(comment.discussion())
-
   canStartPoll: (model) ->
     return unless model
     switch model.constructor.singular

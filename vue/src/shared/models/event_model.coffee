@@ -70,13 +70,16 @@ export default class EventModel extends BaseModel
   unpin: -> @remote.patchMember(@id, 'unpin')
 
   isForkable: ->
-    @discussion() && @discussion().isForking && @kind == 'new_comment'
+    @discussion() && @discussion().isForking
 
   isForking: ->
     @discussion() && (@discussion().forkedEventIds.includes(@id) or @parentIsForking())
 
   parentIsForking: ->
     @parent() && @parent().isForking()
+
+  forkingDisabled: ->
+    @parentIsForking() || (@parent() && @parent().kind == 'poll_created')
 
   toggleFromFork: ->
     if @isForking()

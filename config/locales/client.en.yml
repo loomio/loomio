@@ -504,7 +504,7 @@ en:
     updated: 'Saved changes to {{title}}'
 
   discussion_fork_actions:
-    helptext: Select items you'd like to move
+    helptext: Select items you'd like to move to another thread
     move: Move
     search_placeholder: Find thread by title
     moved: Moving comments, this might take a moment
@@ -619,6 +619,7 @@ en:
     invite_guests: Invite guests
     translate_thread: Translate context
     edit_poll: Edit poll
+    move_items: Move items
     announce_poll: Invite people to vote
     announce_poll_active: (No one has been invited yet)
     translate_poll: Translate poll

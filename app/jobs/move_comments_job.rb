@@ -1,7 +1,7 @@
 MoveCommentsJob = Struct.new(:ids, :source_discussion, :target_discussion) do
   def perform
     #safe
-    safe_ids = Event.where(id: ids, discussion_id: source_discussion.id, eventable_type: 'Comment').pluck(:id)
+    safe_ids = Event.where(id: ids, discussion_id: source_discussion.id).pluck(:id)
 
     # parent events only
     parent_events = Event.where("id in (?)", safe_ids).where(parent_id: source_discussion.created_event.id)
@@ -10,7 +10,7 @@ MoveCommentsJob = Struct.new(:ids, :source_discussion, :target_discussion) do
     child_events = Event.where("parent_id in (?)", parent_events.pluck(:id))
 
     # child events being moved away from their parents
-    orphan_events = Event.where("id in (?)", safe_ids).where.not(parent_id: parent_events.pluck(:id))
+    orphan_events = Event.where("id in (?)", safe_ids).where(eventable_type: 'Comment').where.not(parent_id: parent_events.pluck(:id))
 
     # strip sequence id from all_events
     # update discussion_id on all_events
@@ -24,14 +24,17 @@ MoveCommentsJob = Struct.new(:ids, :source_discussion, :target_discussion) do
       parent_events.update_all(parent_id: target_discussion.created_event.id)
       orphan_events.update_all(parent_id: target_discussion.created_event.id)
 
-      # update depth=1 on all_events (flattening everything)
+      # update depth=1 on orphan_events (flattening everything)
       orphan_events.update_all(depth: 1)
 
       # update comments' parent_id=null (flattening everything)
       Comment.where(id: orphan_events.pluck(:eventable_id)).update_all(parent_id: nil)
 
       # update discussion_id on eventable i.e. comment to target target_discussion
-      Comment.where(id: all_events.pluck(:eventable_id)).update_all(discussion_id: target_discussion.id)
+      Comment.where(id: all_events.where(eventable_type: 'Comment').pluck(:eventable_id)).update_all(discussion_id: target_discussion.id)
+
+      Poll.where(id: all_events.where(eventable_type: 'Poll').pluck(:eventable_id)).update_all(discussion_id: target_discussion.id)
+      Poll.where(id: all_events.where(eventable_type: 'Poll').pluck(:eventable_id)).update_all(group_id: target_discussion.group_id)
 
       # apply missing sequence ids to all_events
       discussion_max_sequence_id = target_discussion.items.where.not(sequence_id: nil).maximum('sequence_id') || 0

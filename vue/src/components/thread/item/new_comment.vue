@@ -33,9 +33,9 @@ export default
         reply_to_comment = 'reply_to_comment'
 
       assign(
-        pick @commentActions, compact [reply_to_comment, show_history, 'notification_history', 'move_comments', 'translate_comment' , 'delete_comment']
+        pick @commentActions, compact [reply_to_comment, show_history, 'notification_history', 'translate_comment' , 'delete_comment']
       ,
-        pick @eventActions, ['pin_event', 'unpin_event']
+        pick @eventActions, ['move_event', 'pin_event', 'unpin_event']
       )
 
   data: ->

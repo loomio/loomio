@@ -4,6 +4,14 @@ import openModal from '@/shared/helpers/open_modal'
 
 export default new class EventService
   actions: (event, vm) ->
+    move_event:
+      name: 'action_dock.move_items'
+      perform: ->
+        event.toggleFromFork()
+
+      canPerform: ->
+        AbilityService.canMoveThread(event.discussion())
+
     remove_event:
       perform: ->
         event.removeFromThread().then ->
