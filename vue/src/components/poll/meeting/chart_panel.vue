@@ -2,6 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import WatchRecords from '@/mixins/watch_records'
 import AppConfig from '@/shared/services/app_config'
+import Session from '@/shared/services/session'
 
 import {sum, map, sortBy, find, compact, uniq} from 'lodash'
 
@@ -74,6 +75,9 @@ export default
   computed:
     orderedPollOptions: ->
       sortBy @pollOptions, 'name'
+
+    currentUserTimeZone: ->
+      Session.user().timeZone
 </script>
 
 <template lang="pug">
@@ -81,13 +85,13 @@ export default
   table.poll-meeting-chart-table.body-2
     thead
       tr
-        td Date
+        td {{currentUserTimeZone}}
         td(v-for="user in participants" :key="user.id")
           user-avatar(:user="user")
-        td Total
+        td.total Total
     tbody
       tr(v-for="option in orderedPollOptions" :key="option.id")
-        td
+        td.poll-meeting-chart__meeting-time
           poll-meeting-time(:name='option.name' :zone='zone')
 
         td(v-for="user in participants" :key="user.id")
@@ -98,7 +102,7 @@ export default
             //-     user-avatar(size="24" :user="user" v-for="user in yesVotersFor(option)" :key="user.id")
             //-   span.poll-meeting-chart__bar(v-if="option.scoreCounts['1']" :style="{'border-color': scoreColor(1), 'background-color': bgColor(1), 'width': barLength(option.scoreCounts['1']) }")
             //-     user-avatar(size="24" :user="user" v-for="user in maybeVotersFor(option)" :key="user.id")
-        td
+        td.total
           strong {{totalFor(option)/2}}
 </template>
 
@@ -113,7 +117,7 @@ export default
 
 .poll-meeting-chart-table {
   width: auto;
-  background-color: white;
+  background-color: none;
 }
 
 .poll-meeting-chart-table tbody tr:hover {
@@ -143,4 +147,13 @@ export default
 .poll-meeting-chart__cell--maybe {
   background-color: #F6A82B;
 }
+
+.poll-meeting-chart__meeting-time {
+  padding-right: 24px;
+}
+
+.total {
+  padding-left: 24px;
+}
+
 </style>

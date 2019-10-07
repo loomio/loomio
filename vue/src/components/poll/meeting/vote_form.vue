@@ -1,6 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
+import { submitStance }  from '@/shared/helpers/form'
 
 import {compact, map, toPairs, fromPairs, some, sortBy} from 'lodash'
 
