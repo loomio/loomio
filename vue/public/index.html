@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -9,43 +9,53 @@
     <!-- = action_cable_meta_tag -->
 
     <style>
-      @keyframes pulse {
-        0% { transform: scale(0.5); opacity: 0.0; }
-        50% { transform: scale(0.75); opacity: 0.5; }
-        100% { transform: scale(1); opacity: 1; }
-      }
+        @keyframes pulse {
+          0% { filter: grayscale(100%); }
+          50% { filter: grayscale(80%); }
+          100% { filter: grayscale(0%); }
+        }
+
+       html, body {
+         height: 100%;
+         margin: 0;
+         padding: 0;
+       }
 
       .loading-placeholder {
         position: fixed;
+        padding: 0;
+        margin: 0;
         display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 100%;
         height: 100%;
-        align-items: center;
+        background-color: #1B1B1B;
         justify-content: center;
-        text-align: center;
-        animation: pulse 3s 1 ease-in-out;
       }
 
       .loading-placeholder img {
-        max-width: 300px;
+        width: 300px;
+        height: auto;
+        animation: pulse 3s 1 ease-in-out;
+      }
+
+      .loading-text {
+        margin-top: 2em;
+        font-size: 18px;
+        font-family: 'roboto', 'Helvetica', sans-serif;
+        color: #aaa;
       }
     </style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
   </head>
 
   <body>
-    <noscript>
-      <strong>Loomio requires javascript!</strong>
-    </noscript>
     <div id="app">
       <div class="loading-placeholder">
-        <img src="/theme/icon.png"/>
+        <img src="/theme/loading-logo.svg"/>
+        <span class="loading-text slogan">Collaborative decision making</span>
       </div>
     </div>
-
     <!-- built files will be auto injected -->
-    <!-- = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]
-    = render 'application/matomo_js' -->
-
   </body>
 </html>

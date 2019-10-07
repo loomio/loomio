@@ -1,4 +1,5 @@
 en:
+
   plan_names:
     free: Free
     trial: Trial
@@ -2232,6 +2233,7 @@ en:
     start_poll_now: Make a decision now
 
   powered_by:
+    slogan: Collaborative decision making
     powered_by_loomio: Powered by Loomio
     privacy_policy: Privacy policy
     terms_of_service: Terms of service

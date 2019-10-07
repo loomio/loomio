@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
   def index
     expires_now
     prevent_caching
-
     if ENV['USE_VUE'] or params['use_vue'] or (current_user.is_logged_in? && current_user.experiences['vue_client'])
-      render file: 'public/client/vue/index.html', layout: false
+      tmpl = File.read('public/client/vue/index.html').gsub('Collaborative decision making', I18n.t(:'powered_by.slogan'))
+      render inline: tmpl, layout: false
     else
       render 'application/index', layout: false
     end
