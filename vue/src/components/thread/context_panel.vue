@@ -105,7 +105,7 @@ export default
     formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    v-layout.my-2(align-center)
+    v-layout.my-2(align-center wrap)
       reaction-display.mb-2(:model="discussion" fetch)
       action-dock(:model='discussion' :actions='dockActions')
       action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')

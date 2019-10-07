@@ -26,9 +26,15 @@ export default
         from: first(slots)
         per: (last(slots) - first(slots))+1)
 
+  computed:
+    negativeMargin: ->
+      if @$vuetify.breakpoint.xsOnly
+        {'margin-left': '-64px'}
+      else
+        {}
 </script>
 
 <template lang="pug">
 .event-children
-  thread-renderer(:discussion="discussion" :parent-event="parentEvent" :fetch="fetch")
+  thread-renderer(:style="negativeMargin" :discussion="discussion" :parent-event="parentEvent" :fetch="fetch")
 </template>

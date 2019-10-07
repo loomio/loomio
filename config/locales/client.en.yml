@@ -2041,6 +2041,7 @@ en:
     poll_created:                  "<strong><a href='/u/{{username}}'>{{author}}</a></strong> started a {{polltype}}"
     poll_created_no_title:         "<strong><a href='/u/{{username}}'>{{author}}</a></strong> started a {{polltype}}"
     poll_edited:                   "<strong><a href='/u/{{username}}'>{{author}}</a></strong> edited the {{polltype}}"
+    poll_option_added:             "<strong><a href='/u/{{username}}'>{{author}}</a></strong> added options to the {{polltype}}"
     poll_expired:                  "{{polltype}} closed"
     stance_created:                "<strong><a href='/u/{{username}}'>{{author}}</a></strong> voted on: <strong>{{title}}</strong>"
     event_removed:                 "Removed from thread"

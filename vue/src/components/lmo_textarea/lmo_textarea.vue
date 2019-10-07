@@ -349,47 +349,46 @@ div
               v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
 
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
-      v-layout.menubar.py-2(wrap align-center)
-        span
+      v-layout.menubar.py-2(align-center)
+        v-layout(style="overflow: scroll")
           v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
             template(v-slot:activator="{on}")
               v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
                 v-icon mdi-emoticon-outline
             emoji-picker(:insert="emojiPicked")
-          span(v-if="isTouchDevice")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' v-on="on")
-                  v-icon mdi-format-bold
-              span(v-t="'formatting.bold'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' v-on="on")
-                  v-icon mdi-format-italic
-              span(v-t="'formatting.italicize'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' v-on="on")
-                  v-icon mdi-format-strikethrough
-              span(v-t="'formatting.strikethrough'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' v-on="on")
-                  v-icon mdi-format-underline
-              span(v-t="'formatting.underline'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(small icon v-on="on" @click="linkDialogIsOpen = true")
-                  v-icon mdi-link-variant
-              span(v-t="'formatting.link'")
-            v-dialog(v-model="linkDialogIsOpen" ref="focus" max-width="600px")
-              v-card
-                v-card-title.title(v-t="'text_editor.insert_link'")
-                v-card-text
-                  v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus v-on:keyup.enter="setLinkUrl(commands.link)")
-                v-card-actions
-                  v-spacer
-                  v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
+          v-tooltip(bottom v-if="isTouchDevice")
+            template(v-slot:activator="{ on }")
+              v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' v-on="on")
+                v-icon mdi-format-bold
+            span(v-t="'formatting.bold'")
+          v-tooltip(bottom v-if="isTouchDevice")
+            template(v-slot:activator="{ on }")
+              v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' v-on="on")
+                v-icon mdi-format-italic
+            span(v-t="'formatting.italicize'")
+          v-tooltip(bottom v-if="isTouchDevice")
+            template(v-slot:activator="{ on }")
+              v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' v-on="on")
+                v-icon mdi-format-strikethrough
+            span(v-t="'formatting.strikethrough'")
+          v-tooltip(bottom v-if="isTouchDevice")
+            template(v-slot:activator="{ on }")
+              v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' v-on="on")
+                v-icon mdi-format-underline
+            span(v-t="'formatting.underline'")
+          v-tooltip(bottom v-if="isTouchDevice")
+            template(v-slot:activator="{ on }")
+              v-btn(small icon v-on="on" @click="linkDialogIsOpen = true")
+                v-icon mdi-link-variant
+            span(v-t="'formatting.link'")
+          v-dialog(v-if="isTouchDevice" v-model="linkDialogIsOpen" ref="focus" max-width="600px")
+            v-card
+              v-card-title.title(v-t="'text_editor.insert_link'")
+              v-card-text
+                v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus v-on:keyup.enter="setLinkUrl(commands.link)")
+              v-card-actions
+                v-spacer
+                v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
           v-tooltip(bottom)
             template(v-slot:activator="{ on }")
               v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()' v-on="on")
@@ -499,9 +498,7 @@ div
                 v-btn(icon @click="commands.toggleCellMerge" v-on="on")
                   v-icon mdi-table-merge-cells
               span(v-t="'formatting.merge_selected'")
-        v-layout
-          v-spacer
-          slot(name="actions")
+        slot(name="actions")
     v-alert(v-if="maxLength && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
   .suggestion-list(v-show='showSuggestions', ref='suggestions')

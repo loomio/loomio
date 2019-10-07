@@ -29,7 +29,7 @@ export default new class CommentService
           discussionId: comment.discussion().id
           authorId: Session.user().id
           parentId: comment.id
-        vm.showReplyForm = true
+        vm.showReplyForm = !vm.showReplyForm
 
     edit_comment:
       icon: 'mdi-pencil'

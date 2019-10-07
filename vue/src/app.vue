@@ -76,7 +76,7 @@ export default
 v-app
   navbar
   sidebar
-  v-content.pb-8
+  v-content.pb-12
     router-view(v-if="!pageError")
     common-error(v-if="pageError" :error="pageError")
     v-spacer
