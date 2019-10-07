@@ -10,7 +10,7 @@ export default
 
 </script>
 <template lang="pug">
-v-footer(app absolute)
+v-footer(absolute)
   v-layout(justify-space-around)
     .powered-by.caption
       a(href="https://www.loomio.org/?frontpage" v-t="'powered_by.powered_by_loomio'" target="_blank")
