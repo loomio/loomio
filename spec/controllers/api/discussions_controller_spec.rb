@@ -770,6 +770,7 @@ describe API::DiscussionsController do
     let!(:third_comment_event) { CommentService.create(comment: third_comment, actor: third_comment.author ) }
     let!(:alien_comment_event) { CommentService.create(comment: alien_comment, actor: alien_comment.author ) }
 
+
     let(:existing_comment) { create(:comment, discussion: target_discussion) }
 
     let(:existing_comment_event) { CommentService.create(comment: existing_comment, actor: existing_comment.author) }
@@ -876,6 +877,38 @@ describe API::DiscussionsController do
       expect(first_comment_event.reload.sequence_id).to eq 1
       expect(second_comment_event.reload.sequence_id).to eq 2
       expect(third_comment_event.reload.sequence_id).to eq 3
+    end
+
+    describe 'move poll, stance, outcome' do
+      let!(:poll)    { create(:poll, discussion: source_discussion, group: source_discussion.group)}
+      let!(:stance)  { create(:stance, poll: poll) }
+      let!(:outcome) { create(:outcome, poll: poll) }
+
+      let!(:poll_event) { PollService.create(poll: poll, actor: user) }
+      let!(:stance_event) { StanceService.create(stance: stance, actor: user) }
+      let(:outcome_event) { OutcomeService.create(outcome: outcome, actor: user) }
+
+      before do
+        poll.update(closed_at: Time.now)
+        outcome_event
+      end
+
+      it 'moves stances and outcomes when polls from a discussion to an empty one' do
+        patch :move_comments, params: { id: target_discussion.id, forked_event_ids: [poll_event.id] }
+        expect(response.status).to eq 200
+
+        expect(target_discussion.reload.items).to include poll_event
+        expect(target_discussion.reload.items).to include stance_event
+        expect(target_discussion.reload.items).to include outcome_event
+
+        expect(poll_event.reload.eventable.discussion_id).to eq target_discussion.id
+        expect(poll_event.reload.eventable.group_id).to eq target_discussion.group_id
+        expect(poll_event.reload.parent_id).to eq target_discussion.created_event.id
+
+        expect(poll_event.reload.depth).to eq 1
+        expect(stance_event.reload.depth).to eq 2
+        expect(outcome_event.reload.depth).to eq 2
+      end
     end
 
     it 'does not move events that are not part of the source discussion' do
