@@ -111,8 +111,8 @@ export default
       @fetchMissing(newVal) unless isEqual(newVal, oldVal)
 
     'discussion.newestFirst': -> @visibleSlots = []
-    # 'viewportIsBelow': (newVal, oldVal) -> @visibleSlots = [] if newVal
-    # 'viewportIsAbove': (newVal, oldVal) -> @visibleSlots = [] if newVal
+    'viewportIsBelow': (newVal, oldVal) -> @visibleSlots = [] if newVal
+    'viewportIsAbove': (newVal, oldVal) -> @visibleSlots = [] if newVal
 
 </script>
 <template lang="pug">
