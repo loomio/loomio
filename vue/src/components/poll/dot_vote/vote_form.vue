@@ -4,7 +4,6 @@ import EventBus from '@/shared/services/event_bus'
 import WatchRecords from '@/mixins/watch_records'
 
 import { submitStance }  from '@/shared/helpers/form'
-import { submitOnEnter } from '@/shared/helpers/keyboard'
 
 import { sum, map, head, filter, without } from 'lodash'
 

@@ -1,11 +1,8 @@
 <script lang="coffee">
 import Records       from '@/shared/services/records'
 import LmoUrlService from '@/shared/services/lmo_url_service'
-import WatchRecords from '@/mixins/watch_records'
-import { applyLoadingFunction } from '@/shared/helpers/apply'
 
 export default
-  mixins: [WatchRecords]
   data: ->
     discussion: null
     loading: false
@@ -30,7 +27,7 @@ export default
 
 <template lang="pug">
 .polls-panel
-  p.text-center(v-if="!polls.length" v-t="'group_polls_panel.no_polls'") 
+  p.text-center(v-if="!polls.length" v-t="'group_polls_panel.no_polls'")
   v-list.poll-common-index-card__polls(two-line v-if='polls.length')
     poll-common-preview(v-for='poll in polls', :key='poll.id', :poll='poll')
   loading(v-if="loading")

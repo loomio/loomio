@@ -5,7 +5,6 @@ import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
-import { applyLoadingFunction } from '@/shared/helpers/apply'
 import { map, debounce, orderBy, intersection, compact, omit, identity, filter } from 'lodash'
 import Session from '@/shared/services/session'
 

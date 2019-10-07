@@ -4,9 +4,6 @@ import ModalService  from '@/shared/services/modal_service'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import EventBus      from '@/shared/services/event_bus'
 
-import { applyDiscussionStartSequence } from '@/shared/helpers/apply'
-import { listenForLoading }             from '@/shared/helpers/listen'
-
 export default
   data: ->
     discussion: null
@@ -19,8 +16,6 @@ export default
       @discussion = Records.discussions.build
         title:       @$route.query.title
         groupId:     parseInt(@$route.query.group_id)
-
-      # listenForLoading $scope
 
       Records.groups.findOrFetch(@$route.params.group_id).then =>
         # applyDiscussionStartSequence @,

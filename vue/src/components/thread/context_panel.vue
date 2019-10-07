@@ -1,7 +1,6 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
 import { exact }      from '@/shared/helpers/format_time'
-import { listenForTranslations } from '@/shared/helpers/listen'
 import { map, compact, pick } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
@@ -9,9 +8,6 @@ import openModal      from '@/shared/helpers/open_modal'
 export default
   props:
     discussion: Object
-
-  mounted: ->
-    listenForTranslations(@)
 
   data: ->
     actions: ThreadService.actions(@discussion, @)

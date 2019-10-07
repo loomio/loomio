@@ -1,5 +1,4 @@
 import DashboardPage from './components/dashboard/page.vue'
-import PollsPage from './components/polls/page.vue'
 import InboxPage from './components/inbox/page.vue'
 import ExplorePage from './components/explore/page.vue'
 import ThreadPage from './components/thread/page.vue'
@@ -60,8 +59,6 @@ export default new Router
   routes: [
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
-    {path: '/polls', component: PollsPage},
-    {path: '/polls/:filter', component: PollsPage},
     {path: '/inbox', component: InboxPage },
     {path: '/explore', component: ExplorePage},
     {path: '/profile', component: ProfilePage},

@@ -2,7 +2,6 @@
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import { submitForm }    from '@/shared/helpers/form'
-import { submitOnEnter } from '@/shared/helpers/keyboard'
 
 export default
   props:

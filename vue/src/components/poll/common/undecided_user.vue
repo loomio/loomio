@@ -12,7 +12,6 @@
 <script lang="coffee">
 import Flash   from '@/shared/services/flash'
 import AbilityService from '@/shared/services/ability_service'
-import { applyLoadingFunction } from '@/shared/helpers/apply'
 
 export default
   props:
@@ -20,8 +19,6 @@ export default
     poll: Object
   data: ->
     remindExecuting: false
-  # created: ->
-  #   applyLoadingFunction @, 'remind'
   methods:
     canAdministerPoll: ->
       AbilityService.canAdministerPoll(@poll)

@@ -2,8 +2,6 @@
 import Records  from '@/shared/services/records'
 import AppConfig  from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
-import { listenForLoading } from '@/shared/helpers/listen'
-import { applySequence }    from '@/shared/helpers/apply'
 import { submitPoll } from '@/shared/helpers/form'
 import PollModalMixin from '@/mixins/poll_modal'
 import {uniq, without, isEqual} from 'lodash'

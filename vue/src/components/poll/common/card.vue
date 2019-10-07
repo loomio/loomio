@@ -2,13 +2,10 @@
 import Session  from '@/shared/services/session'
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
-import { listenForLoading } from '@/shared/helpers/listen'
 import { myLastStanceFor, iconFor }  from '@/shared/helpers/poll'
 import PollCommonDirective from '@/components/poll/common/directive'
-import WatchRecords from '@/mixins/watch_records'
 
 export default
-  mixins: [WatchRecords]
   components:
     PollCommonDirective: PollCommonDirective
 
@@ -23,7 +20,6 @@ export default
       collections: ["stances"]
       query: (records) =>
         @myLastStance = myLastStanceFor(@poll)?
-    # listenForLoading @
 
   data: ->
     buttonPressed: false

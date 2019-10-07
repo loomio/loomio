@@ -1,5 +1,4 @@
 <script lang="coffee">
-import { listenForLoading } from '@/shared/helpers/listen'
 import AppConfig from '@/shared/services/app_config'
 import Session from '@/shared/services/session'
 

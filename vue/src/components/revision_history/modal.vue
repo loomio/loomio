@@ -2,7 +2,6 @@
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 
-import { applyLoadingFunction } from '@/shared/helpers/apply.coffee'
 import { exact } from '@/shared/helpers/format_time'
 
 export default

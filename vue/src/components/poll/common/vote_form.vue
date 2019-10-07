@@ -1,6 +1,5 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-import { submitOnEnter } from '@/shared/helpers/keyboard'
 import { submitStance }  from '@/shared/helpers/form'
 import { optionColors, optionImages } from '@/shared/helpers/poll'
 
@@ -12,7 +11,6 @@ export default
     optionColors: optionColors()
     optionImages: optionImages()
   mounted: ->
-    # submitOnEnter @, element: @$el
     @submit = submitStance @, @stance,
       prepareFn: =>
         @stance.id = null

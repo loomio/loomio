@@ -1,6 +1,5 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-import { listenForLoading } from '@/shared/helpers/listen'
 import { iconFor }          from '@/shared/helpers/poll'
 import { submitStance }  from '@/shared/helpers/form'
 import PollCommonDirective from '@/components/poll/common/directive.vue'
@@ -20,8 +19,6 @@ export default
     @submit = submitStance(@, @stance)
     EventBus.$on 'stanceSaved', => @close()
     # EventBus.broadcast $rootScope, 'refreshStance'
-    #
-    # listenForLoading $scope
   methods:
     toggleCreation: ->
       @isEditing = false

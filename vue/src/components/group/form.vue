@@ -5,7 +5,6 @@ import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
-import { submitOnEnter }       from '@/shared/helpers/keyboard'
 
 export default
   props:

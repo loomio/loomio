@@ -17,8 +17,6 @@ import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import UserModalMixin from '@/mixins/user_modal'
 
-import { applyLoadingFunction } from '@/shared/helpers/apply'
-
 import { isEmpty }     from 'lodash'
 import { approximate } from '@/shared/helpers/format_time'
 
@@ -33,7 +31,6 @@ export default
     loadingGroupsForExecuting: false
 
   created: ->
-    # applyLoadingFunction(@, 'loadGroupsFor')
     @init()
     EventBus.$emit 'currentComponent', {page: 'userPage'}
     Records.users.findOrFetchById(@$route.params.key).then @init, (error) ->

@@ -7,7 +7,6 @@
 </style>
 
 <script lang="coffee">
-import { listenForTranslations } from '@/shared/helpers/listen'
 import { participantName }       from '@/shared/helpers/poll'
 
 export default
@@ -15,8 +14,7 @@ export default
     PollCommonDirective: -> import('@/components/poll/common/directive')
   props:
     stance: Object
-  created: ->
-    # listenForTranslations @
+    
   computed:
     orderedStanceChoices: ->
       _.sortBy @stance.stanceChoices(), 'rank'

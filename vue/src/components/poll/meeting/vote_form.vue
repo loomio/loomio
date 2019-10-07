@@ -1,15 +1,10 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-import WatchRecords from '@/mixins/watch_records'
 import Records from '@/shared/services/records'
-
-import { submitOnEnter } from '@/shared/helpers/keyboard'
-import { submitStance }  from '@/shared/helpers/form'
 
 import {compact, map, toPairs, fromPairs, some, sortBy} from 'lodash'
 
 export default
-  mixins: [WatchRecords]
   props:
     stance: Object
   data: ->
