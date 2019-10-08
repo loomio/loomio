@@ -2240,3 +2240,11 @@ en:
     privacy_policy: Privacy policy
     terms_of_service: Terms of service
     front_page: Front page
+
+  vue_upgraded_modal:
+    use_old_loomio: Use old Loomio
+    title: You're on Loomio 2.0!
+    body: |
+      <p>It's a faster, better Loomio!</p>
+      <p>We think you'll love it, but if you need to, you can switch back to the old version from the sidebar.</p>
+      <p><a href="{{link}}" target="_blank">Find out what's new.</a></p>

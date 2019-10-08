@@ -39,6 +39,14 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     redirect_to admin_groups_path, notice: "#{group_ids.size} spammy groups deleted"
   end
 
+  batch_action :use_vue do |group_ids|
+    all_group_ids = Group.where('id in (:ids) or parent_id in (:ids)', ids: group_ids).pluck(:id)
+    user_ids = Membership.where(group_id: all_group_ids).pluck(:user_id).uniq
+    user_count = User.where(id: user_ids).update_all(experiences: {vue_client: true, show_vue_upgraded_modal: true})
+
+    redirect_to admin_groups_path, notice: "#{user_count} users updated to vue client"
+  end
+
   index :download_links => false do
     selectable_column
     column :id

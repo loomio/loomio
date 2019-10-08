@@ -123,7 +123,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
     div.text-center
-      a(href="/beta") Switch off beta
+      a(href="/beta" v-t="'vue_upgraded_modal.use_old_loomio'") 
     v-layout.ma-2(style="width: 50%")
       v-img(:src="logoUrl")
       v-layout(align-center)

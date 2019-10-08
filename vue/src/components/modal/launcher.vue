@@ -30,6 +30,7 @@ import UserWizard from '@/components/profile/wizard'
 import MoveCommentsModal from '@/components/discussion/move_comments_modal'
 import SeenByModal from '@/components/thread/seen_by_modal'
 import ExportDataModal from '@/components/group/export_data_modal'
+import VueUpgradedModal from '@/components/user/vue_upgraded_modal'
 
 export default
   components:
@@ -63,10 +64,13 @@ export default
     'MoveCommentsModal': MoveCommentsModal
     'SeenByModal': SeenByModal
     'ExportDataModal': ExportDataModal
+    'VueUpgradedModal': VueUpgradedModal
+
   data: ->
     isOpen: false
     componentName: ""
     componentProps: {}
+    maxWidth: 600
 
   created: ->
     EventBus.$on('openModal', @openModal)
@@ -74,10 +78,11 @@ export default
 
   methods:
     openModal: (opts) ->
+      @maxWidth = opts.maxWidth || 600
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
-      
+
     doCloseModal: -> @isOpen = false
 
     componentKey: ->
@@ -88,7 +93,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model="isOpen" max-width="600px" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
+v-dialog(v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
   component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal")
 
 </template>
