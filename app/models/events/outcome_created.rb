@@ -2,6 +2,7 @@ class Events::OutcomeCreated < Event
   include Events::Notify::Author
   include Events::Notify::ThirdParty
   include Events::Notify::Mentions
+  include Events::Notify::InApp
   include Events::LiveUpdate
 
   def self.publish!(outcome)
