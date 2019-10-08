@@ -82,7 +82,7 @@ export default
         new Mention(
           # is called when a suggestion starts
           onEnter: ({ query, range, command, virtualNode }) =>
-            @query = query
+            @query = query.toLowercase()
             @suggestionRange = range
             @insertMention = command
             @renderPopup(virtualNode)
@@ -90,7 +90,7 @@ export default
 
           # is called when a suggestion has changed
           onChange: ({query, range, virtualNode}) =>
-            @query = query
+            @query = query.toLowerCase()
             @suggestionRange = range
             @navigatedUserIndex = 0
             @renderPopup(virtualNode)
