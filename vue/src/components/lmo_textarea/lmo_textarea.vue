@@ -537,6 +537,7 @@ div
   transition: opacity .2s,visibility .2s
 
 .lmo-markdown-wrapper
+
   h1
     line-height: 2.75rem
     font-size: 2rem
@@ -592,7 +593,20 @@ div
 
   pre
     overflow: auto
-    padding: 10px
+    padding: 0
+    font-family: 'Roboto mono', monospace, monospace
+
+  pre:last-of-type
+    padding-bottom: 16px
+
+  code
+    background-color: transparent
+    color: rgba(#000, 0.88)
+    box-shadow: none
+    border-radius: 0
+    white-space: normal
+    font-weight: 400
+    font-family: 'Roboto mono', monospace, monospace
 
   blockquote
     font-style: italic
