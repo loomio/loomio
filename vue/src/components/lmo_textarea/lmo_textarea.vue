@@ -722,8 +722,7 @@ li[data-done="false"]
 
 .mention
   background: rgba(#ffb300, 0.3)
-  border-radius: 5px
-  padding: 0.2rem 0.5rem
+  border-radius: 3px
   white-space: nowrap
 
 .mention-suggestion
