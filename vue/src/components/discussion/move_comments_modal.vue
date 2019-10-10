@@ -31,7 +31,7 @@ export default
           @close()
           @$router.push @urlFor(@selectedDiscussion)
     fetch: debounce ->
-      return unless @searchFragment.length
+      return unless @searchFragment
       Records.discussions.search(@groupId, @searchFragment).then (data) =>
         @searchResults = Records.discussions.collection.chain()
           .find(groupId: @groupId)
