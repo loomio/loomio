@@ -77,7 +77,7 @@ GEM
       activemodel (= 5.2.3)
       activesupport (= 5.2.3)
       arel (>= 9.0)
-    activerecord-import (1.0.2)
+    activerecord-import (1.0.3)
       activerecord (>= 3.2)
     activerecord-nulldb-adapter (0.4.0)
       activerecord (>= 2.0.0)
@@ -567,7 +567,7 @@ DEPENDENCIES
   actioncable
   active_model_serializers (~> 0.8.1)
   activeadmin (~> 2.4.0)
-  activerecord-import (= 1.0.2)
+  activerecord-import (= 1.0.3)
   activerecord-nulldb-adapter
   ahoy_email (~> 1.1.0)
   ahoy_matey (~> 3.0.1)
