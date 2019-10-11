@@ -115,8 +115,8 @@ export default
               @downHandler()
               return true
 
-            # pressing enter
-            if (event.keyCode == 13)
+            # pressing enter or tab
+            if [13,9].includes(event.keyCode)
               @enterHandler()
               return true
 
