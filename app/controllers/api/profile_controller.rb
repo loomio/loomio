@@ -72,7 +72,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def email_status
-    respond_with_resource(serializer: Pending::UserSerializer, scope: {has_token: has_membership_token?})
+    respond_with_resource(serializer: Pending::UserSerializer)
   end
 
   private
@@ -107,11 +107,6 @@ class API::ProfileController < API::RestfulController
 
   def current_user_params
     { user: current_user, actor: current_user, params: permitted_params.user }
-  end
-
-  def has_membership_token?
-    return unless membership = Membership.find_by(token: params[:token])
-    membership.token if resource.email == membership.user.email
   end
 
   def resource_class
