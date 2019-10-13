@@ -159,7 +159,7 @@ export default
 
 <template lang="pug">
 div.discussions-panel(:key="group.id")
-  v-alert.white--text(color="accent" dense v-if="group.subscriptionPlan == 'trial'")
+  v-alert.white--text(color="accent" dense v-if="group.subscriptionState == 'trialing'")
     v-layout(align-center)
       span(v-t="'current_plan_button.tooltip'")
       v-spacer
