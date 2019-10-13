@@ -144,6 +144,10 @@ class FormalGroup < Group
     Membership.not_archived.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
+  def org_members_count
+    Membership.active.where(group_id: id_and_subgroup_ids).count('distinct user_id')
+  end
+
   def org_discussions_count
     FormalGroup.where(id: id_and_subgroup_ids).sum(:discussions_count)
   end

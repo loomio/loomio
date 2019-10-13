@@ -18,4 +18,8 @@ class Subscription < ApplicationRecord
   def is_active?
     ['active', 'trialing'].include? self.state
   end
+
+  def calculate_members_count
+    Group.where(subscription_id: self.id).map(&:org_members_count).sum
+  end
 end
