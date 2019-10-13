@@ -1,15 +1,3 @@
-<style lang="css">
-.user-page { margin-top: 16px; }
-.user-page__groups { margin-top: 24px; }
-.user-page__groups-title { margin: 0; }
-.user-page__group { padding: 0 !important; }
-
-.user-page__contact-user {
-  margin: 8px 0;
-  width: 100%;
-}
-</style>
-
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
@@ -60,11 +48,11 @@ export default
 </script>
 
 <template lang="pug">
-v-container.user-page.max-width-800
+v-container.user-page.max-width-800.mt-4
   loading(v-if='isEmptyUser')
   .user-page__profile(v-if='!isEmptyUser')
-    v-layout.user-page__content
-      v-flex.user-page__info
+    .user-page__content.d-flex
+      .user-page__info
         h1.headline {{user.name}}
         .lmo-hint-text @{{user.username}}
         p {{user.shortBio}}
@@ -73,15 +61,16 @@ v-container.user-page.max-width-800
         span : {{user.timeZone}}
         div(v-t="{ path: 'user_page.location_field', args: { value: user.location } }", v-if='user.location')
         div(v-t="{ path: 'user_page.online_field', args: { value: approximate(user.lastSeenAt) } }", v-if='user.lastSeenAt')
-      v-layout.user-page__avatar(column align-center style="max-width: 200px")
+      .flex-column.align-self-center.align-center
         user-avatar(:user='user', size='featured')
-        v-btn.user-page__contact-user(color="accent" outlined v-if='canContactUser' @click='openContactRequestModal(user)' v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
+        v-btn.my-4.user-page__contact-user(color="accent" outlined @click='openContactRequestModal(user)' v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
     .user-page__groups
       h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
       v-list
-        v-list-item.user-page__group.lmo-flex.lmo-flex__center(v-for='group in groups', :key='group.id')
-          v-avatar(tile size="64")
-            img(:src='group.logoUrl()')
-          router-link(:to='urlFor(group)') {{group.fullName}}
+        v-list-item.user-page__group(v-for='group in groups' :key='group.id' :to='urlFor(group)')
+          v-list-item-avatar
+            v-avatar.mr-2(tile size="48")
+              img(:src='group.logoUrl()')
+          v-list-item-title {{group.fullName}}
       loading(v-if='loadingGroupsForExecuting')
 </template>
