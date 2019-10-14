@@ -34,7 +34,7 @@ export default
 </script>
 
 <template lang="pug">
-v-chip(outlined :color="color")
+v-chip(small outlined :color="color")
   abbr.closing-in.timeago--inline
     span(v-t="{ path: translationKey, args: { time: timeMethod(time) } }" :title="exact(time)")
 </template>
