@@ -14,19 +14,19 @@ export default
   computed:
     eventable: -> @event.model()
     poll: -> @eventable.poll()
-    dockActions: ->
-      OutcomeService.actions(@eventable, @)
-    menuActions: ->
-      pick EventService.actions(@event, @), ['pin_event', 'unpin_event', 'notification_history']
+    # dockActions: ->
+    #   OutcomeService.actions(@eventable, @)
+    # menuActions: ->
+    #   pick EventService.actions(@event, @), ['pin_event', 'unpin_event', 'notification_history']
 
 </script>
 
 <template lang="pug">
 thread-item.outcome-created(:event="event")
-  template(v-slot:actions)
-    v-layout(align-center)
-      reaction-display(:model="eventable")
-      action-dock(:model="eventable" :actions="dockActions")
-      action-menu(:model="eventable" :actions="menuActions")
+  //- template(v-slot:actions)
+  //-   v-layout(align-center)
+  //-     reaction-display(:model="eventable")
+  //-     action-dock(:model="eventable" :actions="dockActions")
+  //-     action-menu(:model="eventable" :actions="menuActions")
   formatted-text.thread-item__body(:model="eventable" column="statement")
 </template>
