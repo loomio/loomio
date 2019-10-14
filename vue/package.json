@@ -9,8 +9,8 @@
     "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2"
   },
   "dependencies": {
-    "@sentry/browser": "^5.6.3",
-    "@sentry/integrations": "^5.6.1",
+    "@sentry/browser": "^5.7.0",
+    "@sentry/integrations": "^5.7.0",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "bowser": "^2.7.0",
@@ -53,10 +53,10 @@
   },
   "devDependencies": {
     "@mdi/font": "^3.8.95",
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-plugin-e2e-nightwatch": "^3.11.0",
-    "@vue/cli-plugin-pwa": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
+    "@vue/cli-plugin-babel": "^3.12.0",
+    "@vue/cli-plugin-e2e-nightwatch": "^3.12.0",
+    "@vue/cli-plugin-pwa": "^3.12.0",
+    "@vue/cli-service": "^3.12.0",
     "acorn": "^7.1.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "coffee-loader": "^0.9.0",
