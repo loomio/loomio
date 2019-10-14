@@ -24,9 +24,17 @@ export default
         'common.closing_in'
       else
         'common.closed_ago'
+
+    color: ->
+      if @poll.isActive()
+        'accent'
+      else
+        'warning'
+
 </script>
 
 <template lang="pug">
-abbr.closing-in.timeago--inline
-  span(v-t="{ path: translationKey, args: { time: timeMethod(time) } }" :title="exact(time)")
+v-chip(outlined :color="color")
+  abbr.closing-in.timeago--inline
+    span(v-t="{ path: translationKey, args: { time: timeMethod(time) } }" :title="exact(time)")
 </template>

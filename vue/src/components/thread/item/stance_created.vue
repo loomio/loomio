@@ -28,12 +28,13 @@ export default
       edit_stance:
         icon: 'mdi-pencil'
         canPerform: =>
-          @eventable.latest && @eventable.participant() == Session.user()
+          @eventable.latest && @eventable.poll().isActive() && @eventable.participant() == Session.user()
         perform: =>
           openModal
             component: 'PollCommonEditVoteModal',
             props:
               stance: @eventable.clone()
+
       translate_stance:
         icon: 'mdi-translate'
         canPerform: =>
