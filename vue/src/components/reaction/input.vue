@@ -28,12 +28,9 @@ export default
 
 <template lang="pug">
 v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
-  template(v-slot:activator="{on:menu}")
-    v-tooltip(bottom)
-      template(v-slot:activator="{on:tooltip}")
-        v-btn.emoji-picker__toggle(icon v-on="{ ...tooltip, ...menu }")
-          v-icon mdi-emoticon-outline
-      span(v-t="'reactions_input.add_your_reaction'")
+  template(v-slot:activator="{on: menu}")
+    v-btn.emoji-picker__toggle(icon v-on="{ ...menu }")
+      v-icon mdi-emoticon-outline
   emoji-picker(:insert="insert")
 </template>
 
