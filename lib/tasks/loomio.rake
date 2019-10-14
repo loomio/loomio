@@ -49,6 +49,6 @@ namespace :loomio do
   end
 
   task update_subscription_members_counts: :environment do
-    SubscriptionService.update_changed_members_counts
+    SubscriptionService.delay.update_changed_members_counts
   end
 end
