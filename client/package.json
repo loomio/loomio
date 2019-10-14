@@ -103,6 +103,6 @@
     "uglify-es": "^3.3.9",
     "uglifyify": "^5.0.2",
     "vinyl-buffer": "^1.0.1",
-    "yargs": "^14.0.0"
+    "yargs": "^14.2.0"
   }
 }
