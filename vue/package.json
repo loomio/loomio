@@ -15,7 +15,7 @@
     "activestorage": "^5.2.2",
     "bowser": "^2.7.0",
     "chromedriver": "^77.0.0",
-    "core-js": "^2.6.9",
+    "core-js": "^2.6.10",
     "date-fns": "2.4.1",
     "date-fns-tz": "1.0.8",
     "deepmerge": "^4.1.1",
