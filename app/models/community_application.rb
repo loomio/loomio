@@ -1,2 +1,0 @@
-class CommunityApplication < ApplicationRecord
-end

@@ -128,16 +128,6 @@ ActiveRecord::Schema.define(version: 2019_10_15_020055) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "community_applications", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "group_id"
-    t.jsonb "info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_community_applications_on_group_id"
-    t.index ["user_id"], name: "index_community_applications_on_user_id"
-  end
-
   create_table "default_group_covers", id: :serial, force: :cascade do |t|
     t.string "cover_photo_file_name"
     t.string "cover_photo_content_type"
