@@ -375,8 +375,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_thread_catch_up')
-    page.expectText('.activity-feed', 'body of the comment')
-    page.expectText('.activity-feed', 'Patrick Swayze closed the discussion')
+    page.expectText('.activity-feed table:first-child', 'body of the comment')
+    page.expectText('.activity-feed table:last-child', 'Patrick Swayze closed the discussion')
   },
 
   // 'can_fork_a_thread': (test) => {

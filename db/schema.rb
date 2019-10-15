@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_001607) do
+ActiveRecord::Schema.define(version: 2019_10_15_193247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -649,6 +649,10 @@ ActiveRecord::Schema.define(version: 2019_09_26_001607) do
     t.integer "max_members"
     t.integer "max_orgs"
     t.string "state", default: "active", null: false
+    t.integer "members_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.jsonb "info"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
