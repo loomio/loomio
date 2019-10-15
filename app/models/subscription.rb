@@ -16,7 +16,7 @@ class Subscription < ApplicationRecord
   end
 
   def is_active?
-    ['active', 'trialing'].include? self.state
+    self.state == 'active' or (self.state == 'trialing' && self.expires_at > Time.current)
   end
 
   def calculate_members_count

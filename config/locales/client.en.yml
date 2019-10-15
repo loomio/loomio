@@ -11,7 +11,8 @@ en:
 
   current_plan_button:
     upgrade: Upgrade
-    tooltip: Free trial. Upgrade to invite more people and start more threads.
+    free_trial: Free trial. {{days}} days remaining.
+    trial_expired: Your trial has expired. Upgrade to continue using Loomio.
 
   loomio_tags:
     tags: Tags
