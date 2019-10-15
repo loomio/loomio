@@ -47,4 +47,8 @@ namespace :loomio do
   task notify_clients_of_update: :environment do
     MessageChannelService.publish_data({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
   end
+
+  task update_subscription_members_counts: :environment do
+    SubscriptionService.delay.update_changed_members_counts
+  end
 end

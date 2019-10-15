@@ -180,6 +180,7 @@ module.exports = {
   TimeAgo: 'common/time_ago',
   TimeZoneSelect: 'poll/meeting/time_zone_select',
   Translation: 'common/translation',
+  TrialBanner: 'group/trial_banner',
   UserAvatar: 'user/avatar',
   UserAvatarBody: 'user/avatar_body',
   UserDropdown: 'common/user_dropdown',

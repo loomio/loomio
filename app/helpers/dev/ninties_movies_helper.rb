@@ -81,9 +81,10 @@ module Dev::NintiesMoviesHelper
 
   def create_group
     unless @group
-      @group = FormalGroup.create!(name: 'Dirty Dancing Shoes',
+      @group = FormalGroup.new(name: 'Dirty Dancing Shoes',
                                   group_privacy: 'closed',
-                                  discussion_privacy_options: 'public_or_private')
+                                  discussion_privacy_options: 'public_or_private', creator: patrick)
+      GroupService.create(group: @group, actor: @group.creator)
       @group.add_admin!  patrick
       @group.add_member! jennifer
       @group.add_member! emilio
@@ -93,10 +94,11 @@ module Dev::NintiesMoviesHelper
 
   def create_poll_group
     unless @poll_group
-      @poll_group = FormalGroup.create!(name: 'Dirty Dancing Shoes',
+      @poll_group = FormalGroup.new(name: 'Dirty Dancing Shoes',
                              group_privacy: 'closed',
                              discussion_privacy_options: 'public_or_private',
-                             features: {use_polls: true})
+                             features: {use_polls: true}, creator: patrick)
+      GroupService.create(group: @poll_group, actor: @poll_group.creator)
       @poll_group.add_admin!  patrick
       @poll_group.add_member! jennifer
       @poll_group.add_member! emilio
@@ -109,8 +111,9 @@ module Dev::NintiesMoviesHelper
     10.times do
       group = FormalGroup.new(name: Faker::Name.name,
                         group_privacy: 'closed',
-                        discussion_privacy_options: 'public_or_private')
+                        discussion_privacy_options: 'public_or_private', creator: patrick)
       group.add_admin! patrick
+      GroupService.create(group: group, actor: group.creator)
       @groups << group
     end
     @groups
@@ -118,9 +121,10 @@ module Dev::NintiesMoviesHelper
 
   def muted_create_group
     unless @muted_group
-      @muted_group = FormalGroup.create!(name: 'Muted Point Blank',
+      @muted_group = FormalGroup.new(name: 'Muted Point Blank',
                                         group_privacy: 'closed',
-                                        discussion_privacy_options: 'public_or_private')
+                                        discussion_privacy_options: 'public_or_private', creator: patrick)
+      GroupService.create(group: @muted_group, actor: @muted_group.creator)
       @muted_group.add_admin! patrick
       Membership.find_by(group: @muted_group, user: patrick).set_volume! :mute
     end
@@ -129,10 +133,11 @@ module Dev::NintiesMoviesHelper
 
   def create_another_group
     unless @another_group
-      @another_group = FormalGroup.create!(name: 'Point Break',
+      @another_group = FormalGroup.new(name: 'Point Break',
                                           group_privacy: 'closed',
                                           discussion_privacy_options: 'public_or_private',
-                                          description: 'An FBI agent goes undercover to catch a gang of bank robbers who may be surfers.')
+                                          description: 'An FBI agent goes undercover to catch a gang of bank robbers who may be surfers.', creator: patrick)
+      GroupService.create(group: @another_group, actor: @another_group.creator)
       @another_group.add_admin! patrick
       @another_group.add_member! max
     end
@@ -197,10 +202,11 @@ module Dev::NintiesMoviesHelper
 
   def create_subgroup
     unless @subgroup
-      @subgroup = FormalGroup.create!(name: 'Johnny Utah',
+      @subgroup = FormalGroup.new(name: 'Johnny Utah',
                                      parent: create_another_group,
                                      discussion_privacy_options: 'public_or_private',
-                                     group_privacy: 'closed')
+                                     group_privacy: 'closed', creator: patrick)
+      GroupService.create(group: @subgroup, actor: @subgroup.creator)
       discussion = FactoryBot.create :discussion, group: @subgroup, title: "Vaya con dios", private: false
       # discussion = @subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
       DiscussionService.create(discussion: discussion, actor: discussion.author)
@@ -211,12 +217,13 @@ module Dev::NintiesMoviesHelper
 
   def another_create_subgroup
     unless @another_subgroup
-      @another_subgroup = FormalGroup.create!(name: 'Bodhi',
+      @another_subgroup = FormalGroup.new(name: 'Bodhi',
                                              parent: create_another_group,
                                              group_privacy: 'closed',
                                              discussion_privacy_options: 'public_or_private',
-                                             is_visible_to_parent_members: true)
-      discussion = FactoryBot.create :discussion, group: @subgroup, title: "Vaya con dios 2", private: false
+                                             is_visible_to_parent_members: true, creator: patrick)
+      GroupService.create(group: @another_subgroup, actor: @another_subgroup.creator)
+      discussion = FactoryBot.create :discussion, group: @another_subgroup, title: "Vaya con dios 2", private: false
       DiscussionService.create(discussion: discussion, actor: discussion.author)
       @another_subgroup.add_admin! patrick
     end
