@@ -13,6 +13,7 @@ en:
     upgrade: Upgrade
     free_trial: Free trial. {{days}} days remaining.
     trial_expired: Your trial has expired. Upgrade to continue using Loomio.
+    tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
 
   loomio_tags:
     tags: Tags
