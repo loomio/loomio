@@ -63,7 +63,7 @@
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
+    "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.2",
     "add-stream": "^1.0.0",
     "babelify": "^10.0.0",
@@ -103,6 +103,6 @@
     "uglify-es": "^3.3.9",
     "uglifyify": "^5.0.2",
     "vinyl-buffer": "^1.0.1",
-    "yargs": "^14.0.0"
+    "yargs": "^14.2.0"
   }
 }
