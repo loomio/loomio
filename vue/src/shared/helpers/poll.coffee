@@ -17,7 +17,7 @@ export optionImages = ->
   disagree: 'disagree'
   block: 'block'
   consent: 'agree'
-  objection: 'no'
+  objection: 'disagree'
   yes: 'yes'
   no: 'no'
 
