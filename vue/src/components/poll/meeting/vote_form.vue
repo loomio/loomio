@@ -1,6 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
+import Session from '@/shared/services/session'
 import { submitStance }  from '@/shared/helpers/form'
 
 import {compact, map, toPairs, fromPairs, some, sortBy} from 'lodash'
@@ -65,12 +66,17 @@ export default
         else
           2
 
+  computed:
+    currentUserTimeZone: ->
+      Session.user().timeZone
+
 
 </script>
 
 <template lang='pug'>
 form.poll-meeting-vote-form(@submit.prevent='submit()')
   h3.lmo-card-subheading.lmo-flex__grow(v-t="'poll_meeting_vote_form.your_response'")
+  p(v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}")
   .poll-common-vote-form__options
     //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.can_attend'")
     //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.if_need_be'", v-if='canRespondMaybe')

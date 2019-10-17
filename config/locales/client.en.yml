@@ -2006,6 +2006,7 @@ en:
     stance_updated: Vote updated
 
   poll_meeting_vote_form:
+    local_time_zone: Local time - {{zone}}
     can_attend: "Can attend"
     unable: "Unable"
     if_need_be: If need be
