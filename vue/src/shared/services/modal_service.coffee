@@ -10,8 +10,3 @@ export default new class ModalService
     EventBus.$emit('openModal',
                     component: 'GroupForm',
                     titleKey: 'group_form.new_organization')
-
-  openStartSubgroupModal: (parentGroup) ->
-    EventBus.$emit('openModal',
-                    component: 'GroupForm',
-                    titleKey: 'group_form.new_organization')

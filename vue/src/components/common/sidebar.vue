@@ -8,7 +8,6 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import InboxService   from '@/shared/services/inbox_service'
 import GroupModalMixin from '@/mixins/group_modal.coffee'
 import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
-import WatchRecords from '@/mixins/watch_records'
 
 import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact, concat, intersection, difference, orderBy } from 'lodash'
 
@@ -16,7 +15,6 @@ export default
   mixins: [
     GroupModalMixin,
     DiscussionModalMixin,
-    WatchRecords
   ]
 
   data: ->
@@ -123,7 +121,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
     div.text-center
-      a(href="/beta" v-t="'vue_upgraded_modal.use_old_loomio'") 
+      a(href="/beta" v-t="'vue_upgraded_modal.use_old_loomio'")
     v-layout.ma-2(style="width: 50%")
       v-img(:src="logoUrl")
       v-layout(align-center)
