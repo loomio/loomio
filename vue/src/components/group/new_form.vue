@@ -10,6 +10,7 @@ import GroupModalMixin from '@/mixins/group_modal'
 export default
   mixins: [GroupModalMixin]
   props:
+    parentId: Number
     close:
       type: Function
       default: ->
@@ -26,6 +27,7 @@ export default
   created: ->
     @group = Records.groups.build
       name: @$route.params.name
+      parentId: @parentId
       customFields:
         pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
 

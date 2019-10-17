@@ -72,6 +72,8 @@ v-card.change-volume-form
       v-spacer
       dismiss-modal-button(v-if="showClose" :close="close")
     v-card-text
+      v-alert(v-if="model.isA('discussion')" dense text type="info" v-t="'change_volume_form.explain_scope.thread'")
+      v-alert(v-if="model.isA('membership')" dense text type="info" v-t="'change_volume_form.explain_scope.group'")
       p.mt-4(v-if="model.isA('membership')")
       v-radio-group(hide-details v-model='volume')
         v-radio.volume-loud(value='loud' :label="labelFor('loud')")

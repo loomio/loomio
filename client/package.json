@@ -52,7 +52,7 @@
     "@mdi/font": "3.6.95",
     "ment.io": "~0.9.15",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.27",
     "promise-polyfill": "^8.1.3",
     "promise.prototype.finally": "^3.1.1",
     "raven-js": "latest",
@@ -64,7 +64,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
     "add-stream": "^1.0.0",
     "babelify": "^10.0.0",
     "browserify": "^16.5.0",
