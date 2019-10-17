@@ -8,7 +8,7 @@ export default
 </script>
 
 <template lang="pug">
-v-card.thread-card(elevation="1")
+v-card.thread-card(outlined)
   context-panel(:discussion="discussion" v-observe-visibility="(isVisible) => viewportIsAbove = isVisible")
   thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
   activity-panel(:discussion="discussion" :viewport-is-below="viewportIsBelow" :viewport-is-above="viewportIsAbove")
