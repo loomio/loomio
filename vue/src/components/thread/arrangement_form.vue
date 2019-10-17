@@ -26,11 +26,12 @@ export default
 v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='discussion.processing')
   v-card-title
-    h1.headline(v-t="'thread_arrangement_form.title'")
+    span(v-t="'thread_arrangement_form.title'")
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
-  .pa-4
-    v-subheader(v-t="'thread_arrangement_form.sorting'")
+  .pt-4
+    v-card-subtitle(v-t="'thread_arrangement_form.sorting'")
+  .px-4
     v-radio-group(v-model="clone.newestFirst")
       v-radio(:value="false")
         template(v-slot:label)
