@@ -244,6 +244,10 @@ en:
     unmute: 'Unmute'
 
   change_volume_form:
+    explain_scope:
+      thread: This changes notification settings for the thread
+      group: This changes notification settings for the group
+
     simple:
       label: Notifications
       loud: Subscribed
@@ -266,7 +270,7 @@ en:
       quiet_description: "You won't be emailed any activity in this thread."
       apply_to_all: "Apply these settings to all threads in this group."
       only_this_thread: "Applies to this thread only"
-      group: "Change notification preferences for group"
+      group: "Change notifications for group"
       messages:
         loud: "You will be emailed activity in this thread."
         normal: "You will be emailed about proposals in this thread."
