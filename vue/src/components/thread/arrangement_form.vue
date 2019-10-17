@@ -30,7 +30,6 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
   .pa-4
-    v-alert(type="info" v-t="'thread_arrangement_form.for_everyone'")
     v-subheader(v-t="'thread_arrangement_form.sorting'")
     v-radio-group(v-model="clone.newestFirst")
       v-radio(:value="false")
@@ -73,6 +72,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
     //-       space
     //-       span(v-t="'thread_arrangement_form.nested_twice_description'")
     //- v-alert(type="warning" v-if="clone.maxDepth != discussion.maxDepth" v-t="'thread_arrangement_form.changing_nesting_is_slow'")
+    v-alert(dense text type="info" v-t="'thread_arrangement_form.for_everyone'")
   v-card-actions
     v-spacer
     v-btn(color="primary" @click="submit()" v-t="'common.action.save'")

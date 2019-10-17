@@ -15,7 +15,7 @@ export default new Vuetify(
         accent: colors.cyan.base
         error: colors.deepOrange.base
         warning: colors.red.base
-        info: colors.blueGrey.base
+        info: colors.lightBlue.base
         success: colors.green.base
         anchor: colors.cyan.base
     options:
