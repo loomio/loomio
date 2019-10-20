@@ -57,6 +57,10 @@ ActiveAdmin.register Subscription do
         "no chargify subscription to refresh"
       end
     end
+
+    if subscription.info.present?
+      render 'community_application', { info: subscription.info }
+    end
   end
 
   form do |f|
