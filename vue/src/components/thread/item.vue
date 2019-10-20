@@ -13,19 +13,13 @@ import RangeSet from '@/shared/services/range_set'
 export default
   props:
     event: Object
+    isFocused: Boolean
 
   data: ->
     isDisabled: false
-    isFocused: false
     collapsed: false
     hover: false
     focusStyleClass: null
-
-  created: ->
-    EventBus.$on('focusedEvent', @focused)
-
-  beforeDestroy: ->
-    EventBus.$off('focusedEvent', @focused)
 
   mounted: ->
     @$nextTick =>
@@ -38,7 +32,6 @@ export default
         node.setAttribute('target', '_blank')
 
   methods:
-    focused: (event) -> @isFocused = @event.id == event.id
     viewed: (viewed) -> @event.markAsRead() if viewed
 
   computed:
@@ -78,7 +71,8 @@ div
       v-layout.thread-item__body(column)
         v-layout.my-1.align-center.wrap
           h3.thread-item__title.body-2(:id="'event-' + event.id")
-            //- div
+            div
+              | focused: {{isFocused}}
               | id: {{event.id}}
               | pos {{event.position}}
               | sid {{event.sequenceId}}

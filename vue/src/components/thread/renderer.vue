@@ -1,5 +1,5 @@
 <script lang="coffee">
-import { reverse, throttle, debounce, map, range, min, max, times, first, last, clone, cloneDeep, sortedUniq, sortBy, difference, isNumber, isEqual, uniq, without, pull } from 'lodash'
+import { reverse, debounce, range, min, max, first, last, sortedUniq, sortBy, difference, isEqual, without } from 'lodash'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import RecordLoader from '@/shared/services/record_loader'
@@ -28,13 +28,13 @@ export default
       collections: ['events']
       query: @renderSlots
 
-    EventBus.$on 'focusedEvent', @focused
+    EventBus.$on 'focusedEvent', @focusOnEvent
 
     @renderSlots()
 
   beforeDestroy: ->
+    EventBus.$off 'focusedEvent', @focusOnEvent
     delete @loader
-    EventBus.$off 'focusedEvent', @focused
 
   data: ->
     loader: null
@@ -47,9 +47,10 @@ export default
     focusedEvent: null
 
   methods:
-    focused: (event) ->
+    focusOnEvent: (event) ->
       @focusedEvent = event          if event.parentId == @parentEvent.id
       @focusedEvent = event.parent() if event.parent() && event.parent().parentId == @parentEvent.id
+      @focusedEvent = event.parent().parent() if event.parent().parent() && event.parent().parent().parentId == @parentEvent.id
 
     renderSlots: ->
       return if @parentEvent.childCount == 0
@@ -102,6 +103,9 @@ export default
         @visibleSlots = without(@visibleSlots, slot)
 
   watch:
+    focusedEvent: (newVal) ->
+      @visibleSlots = [newVal.position]
+
     visibleSlots: (newVal, oldVal) ->
       # console.log "visibleSlots #{@visibleSlots}"
       @renderSlots() unless isEqual(newVal, oldVal)
@@ -118,8 +122,9 @@ export default
 <template lang="pug">
 .thread-renderer
   .thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" v-observe-visibility="{callback: (isVisible) => slotVisible(isVisible, slot)}" )
-    thread-item-wrapper(:parent-id="parentEvent.id" :event="eventsBySlot[slot]" :position="parseInt(slot)")
-  //- div
+    thread-item-wrapper(:parent-id="parentEvent.id" :event="eventsBySlot[slot]" :position="parseInt(slot)" :is-focused="focusedEvent && focusedEvent == eventsBySlot[slot]")
+  div
+    | focusedEvent {{focusedEvent}}
     | depth {{parentEvent.depth}}
     | position {{parentEvent.position}}
     | visible {{visibleSlots}}
