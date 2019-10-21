@@ -54,7 +54,6 @@ export default
       span(v-t="'auth_form.login_link_helptext'" v-if='!user.hasPassword')
       span(v-t="'auth_form.login_link_helptext_with_password'" v-if='user.hasPassword')
 
-    span userHasPassword {{user.hasPassword}}
     .auth-signin-form__password(v-if='user.hasPassword')
       label(v-t="'auth_form.password'")
       v-text-field#password.lmo-primary-form-input(name='password' type='password' autofocus required v-model='user.password')
