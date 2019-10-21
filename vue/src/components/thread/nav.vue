@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
-import { debounce, truncate } from 'lodash'
+import { debounce, truncate, first, last } from 'lodash'
 import { approximate } from '@/shared/helpers/format_time'
 
 export default
@@ -21,6 +21,14 @@ export default
     EventBus.$on 'currentComponent', (options) =>
       @discussion = options.discussion
       return unless @discussion
+
+    EventBus.$on 'visibleSlots', (slots) =>
+      unless slots.length == 0
+        @position = Math.round((first(slots) + last(slots))/2)
+        if @discussion.newestFirst
+          @offset =  @max - (@position * @positionSize)
+        else
+          @offset =  (@position - 1) * @positionSize
 
       # Records.events.fetch
       #   params:
@@ -52,7 +60,7 @@ export default
         else
           @offset = offset
 
-        @position = Math.round(@offset / (@max / (@discussion.createdEvent().childCount - 1))) + 1
+        @position = Math.round(@offset / @positionSize) + 1
         if @discussion.newestFirst
           @position = (@discussion.createdEvent().childCount + 1) - @position
 
@@ -65,6 +73,7 @@ export default
       document.addEventListener 'mouseup', onMouseUp
 
   computed:
+    positionSize: -> @max / (@discussion.createdEvent().childCount - 1)
     thumbLabel: -> "#{@position} / #{@childCount}"
     topLabel: -> approximate(@topDate)
     bottomLabel: -> approximate(@bottomDate)
@@ -74,30 +83,44 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer.thread-nav.lmo-no-print.disable-select(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped)
+v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped color="transparent" floating)
   //- p offset {{offset}}
   //- p max {{max}}
   //- p position {{position}}
-  span {{topLabel}}
-  .thread-nav__track(ref="slider" :style="{height: max+thumbSize+'px'}")
-    .thread-nav__knob(:style="{top: offset+'px', height: thumbSize+'px'}" :class="{'thread-nav__knob-hide': dragging}" ref="knob" @mousedown="onMouseDown")
-      span {{position}} / {{discussion.createdEvent().childCount}}
-  span {{bottomLabel}}
+  .thread-nav
+    .thread-nav__inner
+      span.thread-nav__label {{topLabel}}
+      .thread-nav__track(ref="slider" :style="{height: max+thumbSize+'px'}")
+        .thread-nav__knob(:style="{top: offset+'px', height: thumbSize+'px'}" :class="{'thread-nav__knob-hide': dragging}" ref="knob" @mousedown="onMouseDown")
+          span {{position}} / {{discussion.createdEvent().childCount}}
+      span.thread-nav__label {{bottomLabel}}
 </template>
 
 <style lang="sass">
+.thread-nav
+  margin-top: 32px
+
+.thread-nav__label
+  margin-left: 16px
+
 .thread-nav__track
-  border: 1px solid black
+  border: 1px solid var(--v-accent-base)
   width: 0
   margin: 16px
 
 .thread-nav__knob
   position: relative
-  left: -8px
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  left: -4px
   width: 100px
-  border-left: 8px solid #555
-  background-color: #ccc
+  border-left: 8px solid var(--v-accent-base)
+  background-color: var(--v-accent-lighten5)
   cursor: ns-resize
+  border-top-right-radius: 16px
+  border-bottom-right-radius: 16px
 
 .disable-select
   user-select: none

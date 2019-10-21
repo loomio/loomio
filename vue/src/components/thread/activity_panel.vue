@@ -108,7 +108,11 @@ export default
 
       EventBus.$emit('focusedEvent', event)
       waitFor "#sequence-#{event.sequenceId || 0}", =>
-        @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", offset: 96, duration: 0
+        @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", duration: 0
+        setTimeout =>
+          @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", duration: 0
+        , 2000
+
 
   watch:
     '$route.params.sequence_id': 'respondToRoute'
