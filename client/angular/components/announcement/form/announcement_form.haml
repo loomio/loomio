@@ -44,7 +44,7 @@
             %span{translate: "common.reset"}
       %p.md-caption{translate: "invitation_form.shareable_link_explanation"}>
 
-  %md-dialog-actions{ng-if: "canInvite"}
+  %md-dialog-actions
     .lmo-md-actions
       %div{ng-if: "announcement.recipients.length"}
         %p.md-subhead{ng-show: "invitingToGroup && tooManyInvitations()", translate: "announcement.form.too_many_invitations", translate-values: "{upgradeUrl: upgradeUrl}"}
