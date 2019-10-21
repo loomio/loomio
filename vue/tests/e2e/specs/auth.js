@@ -190,6 +190,9 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signin-form', 'Welcome back, Jennifer!')
     page.click('.auth-signin-form__submit')
+    page.expectText('.auth-complete', 'Check your email')
+    page.loadPath('use_last_login_token')
+    page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
     // page.expectText('.group-cover-image', 'Dirty Dancing Shoes')
     // page.expectNoElement('.join-group-button')
@@ -208,7 +211,7 @@ module.exports = {
     // page.expectText('.group-cover-image', 'Dirty Dancing Shoes')
   },
 
-  // commented out because selenium clearValue is broken on Chrome.
+  // // commented out because selenium clearValue is broken on Chrome.
   // 'requires_verification_if_email_is_changed': (test) => {
   //   page = pageHelper(test)
   //
