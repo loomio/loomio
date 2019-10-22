@@ -1,6 +1,9 @@
 require('coffeescript/register')
 pageHelper = require('../helpers/pageHelper.coffee')
 
+// GK: something wrong with inviting users/emails to threads
+// GK: is muting a thread no longer a thing? it's no longer in the dropdown
+
 module.exports = {
   // 'presents_new_discussion_form_for_a_group_from_params': (test) => {
   //   page = pageHelper(test)
