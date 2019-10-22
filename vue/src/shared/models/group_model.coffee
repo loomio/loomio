@@ -113,6 +113,9 @@ export default class GroupModel extends BaseModel
   organisationDiscussions: ->
     @recordStore.discussions.find(groupId: { $in: @organisationIds() }, discussionReaderId: { $ne: null })
 
+  publicOrganisationIds: ->
+    _.map(_.filter(@subgroups().concat(@), (group) -> group.groupPrivacy == 'open'), 'id')
+
   organisationIds: ->
     _.map(@subgroups(), 'id').concat(@id)
 
