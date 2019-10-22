@@ -28,36 +28,32 @@ module.exports = {
     page.click('.thread-preview__link')
     page.expectText('.context-panel__heading', 'I carried a watermelon')
   },
-  //
-  // 'should_display_timestamps_on_content': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('view_open_group_as_non_member')
-  //   page.click('.thread-preview__link')
-  //   page.expectElement('.timeago')
-  // },
-  //
-  // 'can_close_and_reopen_a_thread': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_open_and_closed_discussions')
-  //   // page.expectText('.discussions-panel__header', 'Open threads')
-  //   // page.expectText('.discussions-panel__header', '1 Closed')
-  //   // page.expectNoText('.discussions-panel', 'This thread is old and closed')
-  //   page.expectText('.thread-preview', 'What star sign are you?')
-  //   page.click('.discussions-panel__toggle-closed label')
-  //   page.expectText('.thread-preview', 'This thread is old and closed')
-  //   page.click('.discussions-panel__toggle-closed label')
-  //   page.click('.thread-preview')
-  //
-  //   page.click('.context-panel-dropdown__button')
-  //   page.click('.context-panel-dropdown__option--close')
-  //   page.expectFlash('Thread closed')
-  //
-  //   page.pause(500)
-  //   page.click('.flash-root__action')
-  //   page.expectFlash('Thread reopened')
-  // },
+
+  'should_display_timestamps_on_content': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('view_open_group_as_non_member')
+    page.click('.thread-preview__link')
+    page.expectElement('.time-ago')
+  },
+
+  'can_close_and_reopen_a_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_open_and_closed_discussions')
+    page.expectText('.thread-preview', 'What star sign are you?')
+    page.click('.discussions-panel__toggle-closed')
+    page.expectText('.thread-preview', 'This thread is old and closed')
+    page.click('.discussions-panel__toggle-open')
+    page.click('.thread-preview')
+    page.click('.context-panel-dropdown')
+    page.click('.context-panel-dropdown__option--close_thread')
+    page.expectFlash('Thread closed')
+
+    page.pause(500)
+    page.click('.flash-root__action')
+    page.expectFlash('Thread reopened')
+  },
   //
   // // 'doesnt store drafts after submission': (test) => {
   // //   page = pageHelper(test)
