@@ -22,7 +22,7 @@
 //     page = pageHelper(test)
 //
 //     page.loadPath('view_open_group_as_visitor')
-//     page.expectText('.group-cover-image', 'Open Dirty Dancing Shoes')
+//     page.expectText('.group-cover-name', 'Open Dirty Dancing Shoes')
 //     page.expectText('.thread-preview-collection__container', 'I carried a watermelon')
 //     page.expectText('.navbar__sign-in', 'LOG IN')
 //     page.click('.thread-preview__link')
@@ -142,7 +142,7 @@
 //     page.click('.confirm-modal__submit')
 //
 //     page.expectFlash('Thread deleted')
-//     page.expectText('.group-cover-image', 'Dirty Dancing Shoes')
+//     page.expectText('.group-cover-name', 'Dirty Dancing Shoes')
 //     page.expectNoText('.discussions-panel', 'What star sign are you?')
 //   },
 //
@@ -189,7 +189,7 @@
 //     page.loadPath('view_open_group_as_non_member')
 //
 //     page.click('.thread-preview__link', 500)
-//     page.click('.join-group-button__join-group')
+//     page.click('.join-group-button')
 //     page.expectFlash('You are now a member of Open Dirty Dancing Shoes')
 //
 //     page.fillIn('.comment-form .ProseMirror', 'I am new!')
@@ -216,7 +216,7 @@
 //
 //     page.loadPath('view_closed_group_as_non_member')
 //     page.click('.thread-preview__link')
-//     page.click('.join-group-button__ask-to-join-group', 1000)
+//     page.click('.join-group-button', 1000)
 //     page.click('.membership-request-form__submit-btn')
 //     page.expectFlash('You have requested membership to Closed Dirty Dancing Shoes')
 //   },
@@ -337,7 +337,7 @@
 //     page.click('.comment-form__submit-button')
 //     page.expectText('.thread-item__title', 'Jennifer Grey', 10000)
 //     page.expectText('.thread-item__body', 'Hello world!')
-//     page.expectText('.group-cover-image', 'Girdy Dancing Shoes')
+//     page.expectText('.group-cover-name', 'Girdy Dancing Shoes')
 //     page.ensureSidebar()
 //     page.expectNoElement('.sidebar__list-item-button--group')
 //   },
@@ -391,6 +391,6 @@
 //     page.click('.move-thread-form__submit')
 //     page.expectFlash('Thread has been moved to Point Break')
 //     page.expectText('.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes')
-//     page.expectText('.group-cover-image','Point Break')
+//     page.expectText('.group-cover-name','Point Break')
 //   },
 // }

@@ -28,9 +28,9 @@ export default
     shareable-link-modal(:group="group")
   v-card
     v-tabs(fixed-tabs)
-      v-tab(:to="urlFor(group, 'members')" v-t="'members_panel.directory'")
-      v-tab(:to="urlFor(group, 'members/invitations')" v-t="'members_panel.invitations'")
-      v-tab(:to="urlFor(group, 'members/requests')" v-t="'members_panel.requests'")
+      v-tab.group-page__directory-tab(:to="urlFor(group, 'members')" v-t="'members_panel.directory'")
+      v-tab.group-page__invitations-tab(:to="urlFor(group, 'members/invitations')" v-t="'members_panel.invitations'")
+      v-tab.group-page__requests-tab(:to="urlFor(group, 'members/requests')" v-t="'members_panel.requests'")
     v-divider
     router-view
 </template>
