@@ -26,26 +26,23 @@ export default
       else
         'thread_item'
 
-  computed:
-    heightStyle: ->
-      if @event
-        {}
-      else
-        {height: (EventHeights[@parentId] && EventHeights[@parentId][@position] || 200)+'px'}
+  # computed:
+  #   heightStyle: ->
+  #     {'min-height': (EventHeights[@parentId] && EventHeights[@parentId][@position] || 40)+'px'}
 
-  watch:
-    event: ->
-      if @event
-        @$nextTick =>
-          return unless @$refs.item
-          EventHeights[@parentId] = {} unless EventHeights[@parentId]
-          EventHeights[@parentId][@position] = @$refs.item.$el.offsetHeight
-
+  # watch:
+    # event: ->
+    #   if @event
+    #     @$nextTick =>
+    #       return unless @$refs.item
+    #       EventHeights[@parentId] = {} unless EventHeights[@parentId]
+    #       EventHeights[@parentId][@position] = @$refs.item.$el.offsetHeight
+    #
 </script>
 <template lang="pug">
-div(:style="heightStyle")
+.thread-item-wrapper(style="min-height: 200px")
   component(ref="item" v-if="event" :is="componentForKind(event.kind)" :event='event')
-  v-sheet.ma-4.pa-4(v-else  color="grey lighten-3" style="height: 100%")
+  v-sheet.ma-4.pa-4(v-else color="grey lighten-3" height="200")
     v-layout.grey--text.text-center(style="height: 100%" justify-center align-center)
       span(v-t="'common.action.loading'")
       space

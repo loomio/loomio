@@ -13,7 +13,6 @@ import RangeSet from '@/shared/services/range_set'
 export default
   props:
     event: Object
-    isFocused: Boolean
 
   data: ->
     isDisabled: false
@@ -52,12 +51,22 @@ export default
       LmoUrlService.event @event
 
   watch:
-    isFocused: ->
-      if @isFocused
-        @focusStyleClass = 'thread-item--focused'
-        changeToPreviouslyFocused = =>
-          @focusStyleClass = 'thread-item--previously-focused'
-        setTimeout(changeToPreviouslyFocused, 1000)
+    '$route.query.p':
+      immediate: true
+      handler: (newVal) ->
+        if parseInt(newVal) == @event.position && @event.depth == 1
+          @focusStyleClass = 'thread-item--focused'
+          # changeToPreviouslyFocused = =>
+          #   @focusStyleClass = 'thread-item--previously-focused'
+          # setTimeout(changeToPreviouslyFocused, 1000)
+    '$route.params.sequence_id':
+      immediate: true
+      handler: (newVal) ->
+        if parseInt(newVal) == @event.sequenceId
+          @focusStyleClass = 'thread-item--focused'
+          # changeToPreviouslyFocused = =>
+          #   @focusStyleClass = 'thread-item--previously-focused'
+          # setTimeout(changeToPreviouslyFocused, 1000)
 
 </script>
 
@@ -71,13 +80,13 @@ div
       v-layout.thread-item__body(column)
         v-layout.my-1.align-center.wrap
           h3.thread-item__title.body-2(:id="'event-' + event.id")
-            div
-              | focused: {{isFocused}}
+            //- div
               | id: {{event.id}}
               | pos {{event.position}}
               | sid {{event.sequenceId}}
               | depth: {{event.depth}}
               | childCount: {{event.childCount}}
+              | eid: {{event.eventableId}}
             slot(name="headline")
               span(v-html='headline')
           v-spacer
@@ -86,8 +95,7 @@ div
         .default-slot(ref="defaultSlot")
           slot
         slot(name="actions")
-        template(v-if='event.childCount > 0')
-          event-children(:discussion='discussion' :parent-event='event' :key="event.id")
+        event-children(v-if='event.childCount > 0' :discussion='discussion' :parent-event='event' :key="event.id")
   slot(name="append")
 </template>
 

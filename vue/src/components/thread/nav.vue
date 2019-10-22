@@ -24,7 +24,12 @@ export default
 
     EventBus.$on 'visibleSlots', (slots) =>
       unless slots.length == 0
-        @position = Math.round((first(slots) + last(slots))/2)
+        totalSlots = @discussion.createdEvent.childCount
+        if @discussion.newestFirst
+          @position = last(slots)
+        else
+          @position = first(slots)
+
         if @discussion.newestFirst
           @offset =  @max - (@position * @positionSize)
         else
@@ -67,7 +72,7 @@ export default
       onMouseUp = =>
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mouseup', onMouseUp);
-        EventBus.$emit 'threadPositionRequest', @position
+        @$router.replace(query: {p: @position})
 
       document.addEventListener 'mousemove', onMouseMove
       document.addEventListener 'mouseup', onMouseUp

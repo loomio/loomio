@@ -21,6 +21,7 @@ export default
     parentEvent: @discussion.createdEvent()
     focusedEvent: null
     loader: null
+    initialSlots: []
 
   created: ->
     @loader = new RecordLoader
@@ -32,8 +33,6 @@ export default
       query: =>
         @canAddComment = AbilityService.canAddComment(@discussion)
 
-    EventBus.$on 'threadPositionRequest', (position) =>
-      @fetchEvent('position', position).then @focusOnEvent
 
     @respondToRoute()
 
@@ -42,9 +41,15 @@ export default
     respondToRoute: ->
       if parseInt(@$route.params.comment_id)
         @fetchEvent('commentId', parseInt(@$route.params.comment_id)).then @focusOnEvent
-
-      if parseInt(@$route.params.sequence_id)
+      else if parseInt(@$route.params.sequence_id)
         @fetchEvent('sequenceId', parseInt(@$route.params.sequence_id)).then @focusOnEvent
+      else if parseInt(@$route.query.p)
+        @fetchEvent('position', parseInt(@$route.query.p)).then @focusOnEvent
+      else
+        if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
+          @fetchEvent('position', @parentEvent.childCount).then @focusOnEvent
+        else
+          @fetchEvent('position', 1).then @focusOnEvent
 
     fetchEvent: (idType, id) ->
       if event = @findEvent(idType, id)
@@ -106,17 +111,17 @@ export default
             waitFor(selector, fn)
           , 250
 
-      EventBus.$emit('focusedEvent', event)
+      @initialSlots = [event.position]
       waitFor "#sequence-#{event.sequenceId || 0}", =>
         @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", duration: 0
         setTimeout =>
           @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", duration: 0
         , 2000
 
-
   watch:
     '$route.params.sequence_id': 'respondToRoute'
     '$route.params.comment_id': 'respondToRoute'
+    '$route.query.p': 'respondToRoute'
 
   computed:
     canStartPoll: ->
@@ -126,5 +131,5 @@ export default
 
 <template lang="pug">
 .activity-panel.pr-4.py-4
-  thread-renderer(:discussion="discussion" :parent-event="parentEvent" :fetch="fetch" :viewport-is-below="viewportIsBelow" :viewport-is-above="viewportIsAbove")
+  thread-renderer(:newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :initial-slots="initialSlots")
 </template>

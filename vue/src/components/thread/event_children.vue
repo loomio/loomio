@@ -9,6 +9,9 @@ export default
     parentEvent: Object
     discussion: Object
 
+  data: ->
+    initialSlots: [1]
+
   created: ->
     @loader = new RecordLoader
       collection: 'events'
@@ -36,5 +39,5 @@ export default
 
 <template lang="pug">
 .event-children
-  thread-renderer(:style="negativeMargin" :discussion="discussion" :parent-event="parentEvent" :fetch="fetch")
+  thread-renderer(:style="negativeMargin" :discussion="discussion" :parent-event="parentEvent" :fetch="fetch" :initial-slots="initialSlots")
 </template>
