@@ -324,7 +324,7 @@ module.exports = {
   //   page.pause()
   //   page.click('.discussions-panel__new-thread-button')
   //   page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
-  //   page.expectValue('.discussion-form textarea', "I've had the time of my life" )
+  //   page.expectValue('.discussion-form .ProseMirror', "I've had the time of my life" )
   // },
 
   'lets_you_change_membership_volume': (test) => {
