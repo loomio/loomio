@@ -3,7 +3,7 @@ import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import RecordLoader from '@/shared/services/record_loader'
 import EventHeights from '@/shared/services/event_heights'
-import { reverse, debounce, range, min, max, first, last, sortedUniq, sortBy, difference, isEqual, without } from 'lodash'
+import { reverse, compact, debounce, range, min, max, first, last, sortedUniq, sortBy, difference, isEqual, without } from 'lodash'
 
 export default
   props:
@@ -28,6 +28,8 @@ export default
     missingSlots: []
     slots: []
     padding: 20
+    firstSlot: null
+    lastSlot: null
 
   methods:
     renderSlots: ->
@@ -41,14 +43,14 @@ export default
 
       firstRendered = max([1, first(visibleSlots) - @padding])
       lastRendered = min([last(visibleSlots) + @padding, @parentEvent.childCount])
-      firstSlot = max([1, firstRendered - (@padding * 2)])
-      lastSlot = min([lastRendered + (@padding * 2), @parentEvent.childCount])
+      @firstSlot = min(compact [@firstSlot, max([1, firstRendered - (@padding * 2)])])
+      @lastSlot = max(compact [@lastSlot, min([lastRendered + (@padding * 2), @parentEvent.childCount])])
       eventsBySlot = {}
       presentPositions = []
       expectedPositions = range(firstRendered, lastRendered+1)
-      # console.log "rendering slots #{visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{firstSlot}, lastSlot #{lastSlot}, padding: #{@padding}, #{@initialSlots}"
+      console.log "rendering slots #{visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, padding: #{@padding}, #{@initialSlots}"
 
-      for i in [firstSlot..lastSlot]
+      for i in [@firstSlot..@lastSlot]
         eventsBySlot[i] = null
 
       Records.events.collection.chain().
@@ -63,9 +65,9 @@ export default
       @missingSlots = difference(expectedPositions, presentPositions)
 
       if @newestFirst && @parentEvent.depth == 0
-        @slots = reverse([firstSlot..lastSlot])
+        @slots = reverse([@firstSlot..@lastSlot])
       else
-        @slots = [firstSlot..lastSlot]
+        @slots = [@firstSlot..@lastSlot]
 
     slotVisible: (isVisible, slot) ->
       slot = parseInt(slot)
