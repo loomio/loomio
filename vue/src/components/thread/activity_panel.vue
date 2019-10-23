@@ -41,15 +41,16 @@ export default
     respondToRoute: ->
       if parseInt(@$route.params.comment_id)
         @fetchEvent('commentId', parseInt(@$route.params.comment_id)).then @focusOnEvent
+      else if parseInt(@$route.query.p)
+        console.log 'reposotion', parseInt(@$route.query.p)
+        @slideToPosition(parseInt(@$route.query.p))
       else if parseInt(@$route.params.sequence_id)
         @fetchEvent('sequenceId', parseInt(@$route.params.sequence_id)).then @focusOnEvent
-      else if parseInt(@$route.query.p)
-        @fetchEvent('position', parseInt(@$route.query.p)).then @focusOnEvent
       else
         if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
-          @fetchEvent('position', @parentEvent.childCount).then @focusOnEvent
+          @slideToPosition(@parentEvent.childCount)
         else
-          @fetchEvent('position', 1).then @focusOnEvent
+          @slideToPosition(1)
 
     fetchEvent: (idType, id) ->
       if event = @findEvent(idType, id)
@@ -102,21 +103,23 @@ export default
         until_sequence_id_of_position: last(slots)
         per: @padding * 2
 
-    focusOnEvent: (event) ->
-      waitFor = (selector, fn) ->
-        if document.querySelector(selector)
-          fn()
-        else
-          setTimeout ->
-            waitFor(selector, fn)
-          , 250
-
-      @initialSlots = [event.position]
-      waitFor "#sequence-#{event.sequenceId || 0}", =>
-        @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", duration: 0
+    waitFor: (selector, fn) ->
+      if document.querySelector(selector)
+        fn()
+      else
         setTimeout =>
-          @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", duration: 0
-        , 2000
+          @waitFor(selector, fn)
+        , 250
+
+    focusOnEvent: (event) ->
+      @initialSlots = [event.position]
+      @waitFor "#d#{event.depth}p#{event.position}", =>
+        @$vuetify.goTo("#d#{event.depth}p#{event.position}", duration: 0)
+
+    slideToPosition: (position) ->
+      @fetchEvent('position', position)
+      @initialSlots = [position]
+      @waitFor "#d1p#{position}", => @$vuetify.goTo("#d1p#{position}", duration: 0)
 
   watch:
     '$route.params.sequence_id': 'respondToRoute'

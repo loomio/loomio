@@ -31,6 +31,7 @@ export default
         'thread_item'
 
   computed:
+    idString: -> "d#{@event.depth}p#{@event.position}" if @event
     minHeightStyle: ->
       if !@event && @minHeight
         {'min-height': @minHeight+'px'}
@@ -45,7 +46,7 @@ export default
 </script>
 
 <template lang="pug">
-.thread-item-wrapper(ref="wrapper" :style="minHeightStyle")
+.thread-item-wrapper(ref="wrapper" :style="minHeightStyle" :id="idString")
   //- | {{minHeight}}
   component(ref="item" v-if="event" :is="componentForKind(event.kind)" :event='event')
   //- div.debug(v-else)
