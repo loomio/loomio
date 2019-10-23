@@ -142,9 +142,10 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
   .thread-nav
     .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="scrollToClick")
       .thread-nav__track-line
-    .thread-nav__preset(v-for="preset in presets" :style="{top: offsetFor(preset.position)+'px'}")
-      .thread-nav__preset--line
-      router-link.thread-nav__preset--title(:to="{query:{p: preset.position}}") {{preset.title}}
+    .thread-nav__presets
+      .thread-nav__preset(v-for="preset in presets" :style="{top: offsetFor(preset.position)+'px'}")
+        .thread-nav__preset--line
+        router-link.thread-nav__preset--title(:to="{query:{p: preset.position}}") {{preset.title}}
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown")
 </template>
 
@@ -158,6 +159,10 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
   position: absolute
   width: 200px
   align-items: flex-start
+
+.thread-nav__preset:last-child
+  margin-top: 4px
+  align-items: flex-end
 
 .thread-nav__preset--title
   font-size: 14px
@@ -191,6 +196,7 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
   position: absolute
   width: 24px
   cursor: pointer
+  z-index: 1000
 
 .thread-nav__track-line
   height: 100%
@@ -202,7 +208,8 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
 // 123456789012345678901234
 // ------------------------ track 24
 // -----------||----------- track-line 11 2 11
-// -------##########------- knob 8 8 8
+// --------########-------- knob 8 8 8
+// ------############------ knob:hover 6 12 6
 // ######################## preset-line 0 24 0
 
 .thread-nav__knob
@@ -213,9 +220,14 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
   background-color: var(--v-accent-base)
   cursor: ns-resize
   border-radius: 4px
-  transition: top 0.3s ease, height 2s ease
+  transition: top 0.3s linear, height 0.5s linear
   margin: 0 8px
-  // transition: scale 0.5s ease
+  z-index: 1001
+
+.thread-nav__knob:hover
+  transition: none
+  width: 12px
+  margin: 0 6px
 
 .disable-select
   user-select: none
