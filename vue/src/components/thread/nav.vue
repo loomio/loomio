@@ -3,19 +3,23 @@ import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import { debounce, truncate, first, last } from 'lodash'
-import { approximate } from '@/shared/helpers/format_time'
+import { approximate, timeline } from '@/shared/helpers/format_time'
 
 export default
   mixins: [ChangeVolumeModalMixin]
 
   data: ->
+    topDate: Date
+    bottomDate: Date
     discussion: null
     open: null
-    offset: 0
+    knobOffset: 0
     max: 300
     thumbSize: 32
     dragging: false
     position: 0
+    mouseY: null
+    boxY: null
 
   mounted: ->
     EventBus.$on 'currentComponent', (options) =>
@@ -23,23 +27,16 @@ export default
       return unless @discussion
 
     EventBus.$on 'visibleSlots', (slots) =>
-      unless slots.length == 0
-        totalSlots = @discussion.createdEvent.childCount
-        if @discussion.newestFirst
-          @position = last(slots)
-        else
-          @position = first(slots)
-
-        if @discussion.newestFirst
-          @offset =  @max - (@position * @positionSize)
-        else
-          @offset =  (@position - 1) * @positionSize
+      unless slots.length == 0 && @discussion
+        totalSlots = @discussion.createdEvent().childCount
+        @knobOffset = @offsetFor(first(slots))
 
       # Records.events.fetch
       #   params:
       #     discussion_id: @discussion.id
       #     pinned: true
       #     per: 200
+
   methods:
     title: (model) ->
       if model.title or model.statement
@@ -56,18 +53,18 @@ export default
 
     onMouseDown: ->
       onMouseMove = (event) =>
-        offset = event.clientY - @$refs.slider.getBoundingClientRect().top;
+        @mouseY = event.clientY
+        @boxY = @$refs.slider.getBoundingClientRect().top
+        offset = event.clientY - @$refs.slider.getBoundingClientRect().top
 
         if offset < 0
-          @offset = 0
+          @knobOffset = 0
         else if offset > @max
-          @offset = @max
+          @knobOffset = @max
         else
-          @offset = offset
+          @knobOffset = offset
 
-        @position = Math.round(@offset / @positionSize) + 1
-        if @discussion.newestFirst
-          @position = (@discussion.createdEvent().childCount + 1) - @position
+        @position = @positionFor(@knobOffset)
 
       onMouseUp = =>
         document.removeEventListener('mousemove', onMouseMove);
@@ -77,43 +74,95 @@ export default
       document.addEventListener 'mousemove', onMouseMove
       document.addEventListener 'mouseup', onMouseUp
 
+    offsetFor: (position) ->
+      parseInt if @discussion.newestFirst
+          @max - ((position) * @positionSize)
+        else
+          (position - 1) * @positionSize
+
+    positionFor: (offset) ->
+      if @discussion.newestFirst
+        Math.round(offset / @positionSize) + 1
+      else
+        @discussion.createdEvent().childCount - Math.round(offset / @positionSize) + 1
+
   computed:
+    # presets: -> [
+    #   position: @bottomPosition
+    #   title: timeline(@bottomDate)
+    # ,
+    #   position: @topPosition
+    #   title: timeline(@topDate)
+    # ]
+    presets: -> []
     positionSize: -> @max / (@discussion.createdEvent().childCount - 1)
     thumbLabel: -> "#{@position} / #{@childCount}"
-    topLabel: -> approximate(@topDate)
-    bottomLabel: -> approximate(@bottomDate)
-    topDate: -> if @discussion.newestFirst then @discussion.lastActivityAt else @discussion.createdAt
-    bottomDate: -> if @discussion.newestFirst then @discussion.createdAt else @discussion.lastActivityAt
+
+  watch:
+    'discussion.newestFirst':
+      immediate: true
+      handler: ->
+        if @discussion.newestFirst
+          @topPosition = @discussion.createdEvent().childCount
+          @topDate = @discussion.lastActivityAt
+
+          @bottomPosition = 1
+          @bottomDate = @discussion.createdAt
+        else
+          @topPosition = 1
+          @topDate = @discussion.createdAt
+
+          @bottomDate = @discussion.lastActivityAt
+          @bottomPosition = @discussion.createdEvent().childCount
 
 </script>
 
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped color="transparent" floating)
-  //- p offset {{offset}}
-  //- p max {{max}}
-  //- p position {{position}}
+  div
+    //- | mouseY {{mouseY}}
+    //- | boxY {{boxY}}
+    //- | offset {{knobOffset}}
+    //- | max {{max}}
+    //- | position {{position}}
   .thread-nav
     .thread-nav__inner
-      span.thread-nav__label {{topLabel}}
       .thread-nav__track(ref="slider" :style="{height: max+thumbSize+'px'}")
-        .thread-nav__knob(:style="{top: offset+'px', height: thumbSize+'px'}" :class="{'thread-nav__knob-hide': dragging}" ref="knob" @mousedown="onMouseDown")
-          span {{position}} / {{discussion.createdEvent().childCount}}
-      span.thread-nav__label {{bottomLabel}}
+      .thread-nav__preset(v-for="preset in presets" :style="{top: offsetFor(preset.position)+'px'}")
+        .thread-nav__preset--line
+        .thread-nav__preset--title {{preset.title}}
+      .thread-nav__knob(:style="{top: knobOffset+'px', height: thumbSize+'px'}" :class="{'thread-nav__knob-hide': dragging}" ref="knob" @mousedown="onMouseDown")
+          span {{knobOffset}} / {{position}} / {{discussion.createdEvent().childCount}}
 </template>
 
 <style lang="sass">
 .thread-nav
   margin-top: 32px
 
-.thread-nav__label
-  margin-left: 16px
+.thread-nav__preset
+  float: left
+  display: flex
+  position: relative
+  width: 160px
+  left: -12px
+  align-items: center
+
+.thread-nav__preset--line
+  border: 1px solid black
+  height: 1px
+  min-width: 24px
+  margin-right: 16px
 
 .thread-nav__track
+  float: left
+  position: relative
   border: 1px solid var(--v-accent-base)
   width: 0
-  margin: 16px
+  margin: 0 16px
+  left: 16px
 
 .thread-nav__knob
+  float: left
   position: relative
   display: flex
   flex-direction: column

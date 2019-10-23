@@ -31,6 +31,8 @@ export exact = (date, zone = AppConfig.timeZone) ->
     'yyyy MMMM d, HH:mm'
   format(utcToZonedTime(date, zone), formatStr, {timeZone: zone, locale: i18n.dateLocale})
 
+export timeline = (date) -> format(date, "yyyy-MM-dd")
+
 export hoursOfDay = [
   "00:00"
   "01:00"

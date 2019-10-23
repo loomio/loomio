@@ -48,7 +48,7 @@ export default
       eventsBySlot = {}
       presentPositions = []
       expectedPositions = range(firstRendered, lastRendered+1)
-      console.log "rendering slots #{visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, padding: #{@padding}, #{@initialSlots}"
+      # console.log "rendering slots #{visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, padding: #{@padding}, #{@initialSlots}"
 
       for i in [@firstSlot..@lastSlot]
         eventsBySlot[i] = null
@@ -86,10 +86,9 @@ export default
             EventBus.$emit 'visibleSlots', newVal
           @renderSlots()
 
-
     missingSlots: (newVal, oldVal) ->
       # console.log "fetch pid #{@parentEvent.id} missing", newVal
-      @fetchMissing()
+      @fetchMissing() # unless isEqual(newVal, oldVal)
 
     initialSlots: (newVal) ->
       # console.log 'initialSlots changed', newVal
