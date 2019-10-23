@@ -12,7 +12,9 @@ export default
     position: Number
 
   data: ->
-    minHeight: 160
+    minHeight: null
+
+  mounted: ->
 
   components:
     NewComment: NewComment
@@ -29,19 +31,22 @@ export default
         'thread_item'
 
   computed:
-    minHeightStyle: -> {'min-height': @minHeight+'px'}
+    minHeightStyle: ->
+      if !@event && @minHeight
+        {'min-height': @minHeight+'px'}
 
   watch:
-    event: (newVal) ->
-      newVal && @$nextTick =>
-        if @$refs.item && @$refs.item.$el
-          @minHeight = @$refs.item.$el.offsetHeight
-          # console.log 'minHeight', @minHeight
-
+    event:
+      immediate: true
+      handler: ->
+        if @event
+          @$nextTick =>
+            @minHeight = @$refs.item.$el.offsetHeight if @$refs.item
 </script>
 
 <template lang="pug">
 .thread-item-wrapper(ref="wrapper" :style="minHeightStyle")
+  //- | {{minHeight}}
   component(ref="item" v-if="event" :is="componentForKind(event.kind)" :event='event')
   //- div.debug(v-else)
   //-   | parentId {{event.parentId}}
@@ -65,7 +70,7 @@ export default
    */
 
   .thread-item-wrapper {
-    // min-height: 160px;
+    min-height: 80px;
     // width: 280px; //demo
     // height: var(--card-height);
     //
