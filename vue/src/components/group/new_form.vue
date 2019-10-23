@@ -51,7 +51,6 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
-          setTimeout => @openGroupWizard(group) unless group.parentId
   methods:
     expandForm: ->
       @isExpanded = true

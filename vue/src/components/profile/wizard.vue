@@ -26,8 +26,8 @@ export default
       changePicture: false
       setupProfile: false
 
-  created: ->
-    Records.users.saveExperience("userWizard")
+  # created: ->
+  #   Records.users.saveExperience("userWizard")
 
   methods:
     closeFor: (name) ->
