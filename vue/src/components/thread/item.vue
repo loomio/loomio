@@ -72,7 +72,7 @@ export default
 
 <template lang="pug">
 div
-  .thread-item.py-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
+  .thread-item(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId")
       .thread-item__avatar.mr-4.mt-2
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
@@ -89,17 +89,20 @@ div
               | eid: {{event.eventableId}}
             slot(name="headline")
               span(v-html='headline')
-          v-spacer
-          router-link.grey--text.body-2(:to='link')
-            time-ago(:date='event.createdAt')
+            mid-dot
+            router-link.grey--text.body-2(:to='link')
+              time-ago(:date='event.createdAt')
         .default-slot(ref="defaultSlot")
           slot
         slot(name="actions")
         event-children(v-if='event.childCount > 0' :discussion='discussion' :parent-event='event' :key="event.id")
   slot(name="append")
 </template>
-
 <style lang="css">
+
+.thread-item__title > .poll-common-stance-choice {
+  display: inline-block;
+}
 .thread-item__title strong {
   font-weight: normal;
 }
@@ -125,11 +128,11 @@ div
 }
 
 .thread-item--unread {
-  padding-left: $cardPaddingSize - 2px;
+  /* // padding-left: $cardPaddingSize - 2px; */
   border-left: 2px solid var(--v-accent-base);
 }
 .thread-item--unread .thread-item--indent {
-    padding-left: $cardPaddingSize + 40px;
+    /* // padding-left: $cardPaddingSize + 40px; */
     /* // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding)) */
 }
 

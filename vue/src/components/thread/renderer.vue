@@ -87,7 +87,7 @@ export default
 
     missingSlots: (newVal, oldVal) ->
       # console.log "fetch pid #{@parentEvent.id} missing", newVal
-      @fetchMissing(newVal) unless isEqual(newVal, oldVal)
+      @fetchMissing()
 
     initialSlots: (newVal) ->
       # console.log 'initialSlots changed', newVal
