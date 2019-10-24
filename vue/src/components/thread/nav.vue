@@ -15,7 +15,7 @@ export default
     open: null
     knobOffset: 0
     knobHeight: 32
-    trackHeight: 100
+    trackHeight: 400
     position: 1
     unitHeight: 1
 
@@ -42,15 +42,11 @@ export default
         collections: ["events"]
         query: =>
           return unless @discussion
-          @presets = []
-          @presets.push({position: @topPosition, title: timeline(@topDate)})
-
-          Records.events.collection.chain()
+          @presets = Records.events.collection.chain()
             .find({pinned: true, parentId: @discussion.createdEvent().id})
-            .simplesort('position').data().forEach (event) =>
-              @presets.push({position: event.position, title: @title(event.model())})
-
-          @presets.push({position: @bottomPosition, title: timeline(@bottomDate)})
+            .simplesort('position').data().map (event) =>
+              position: event.position
+              title: @title(event.model())
 
       Records.events.fetch
         params:
@@ -65,7 +61,7 @@ export default
         else
           @position = first(slots) || 1
 
-        @trackHeight = @discussion.createdEvent().childCount * 14
+        @trackHeight = 400
         @unitHeight = @trackHeight / @discussion.createdEvent().childCount
         @knobOffset = @offsetFor(@position)
         @knobHeight = @unitHeight * (last(slots) - first(slots) + 1)
@@ -85,23 +81,30 @@ export default
         else
           (model.body || '').replace(///<[^>]*>?///gm, '')
 
-    scrollToClick: (event) ->
+    onTrackClicked: (event) ->
+      @moveKnob(event)
+      @goToPosition(@position)
+
+    moveKnob: (event) ->
+      adjust = if @knobHeight < 64
+           32
+        else
+          parseInt(@knobHeight / 2)
+
+      @knobOffset = @getEventOffset(event) - adjust
+      @position = @positionFor(@getEventOffset(event))
+
+    getEventOffset: (event) ->
       offset = event.clientY - @$refs.slider.getBoundingClientRect().top
-      @knobOffset = offset
-      @position = @positionFor(@knobOffset)
+      if offset < 0
+        0
+      else if offset > @trackHeight
+        @trackHeight
+      else
+        offset
 
     onMouseDown: ->
-      onMouseMove = (event) =>
-        offset = event.clientY - @$refs.slider.getBoundingClientRect().top
-
-        if offset < 0
-          @knobOffset = 0
-        else if offset > @trackHeight
-          @knobOffset = @trackHeight
-        else
-          @knobOffset = offset
-
-        @position = @positionFor(@knobOffset)
+      onMouseMove = @moveKnob
 
       onMouseUp = =>
         document.removeEventListener('mousemove', onMouseMove);
@@ -112,7 +115,9 @@ export default
       document.addEventListener 'mouseup', onMouseUp
 
     goToPosition: (position) ->
+      # console.log 'going to posiiton', position
       @$router.replace(query: {p: position})
+      @$vuetify.goTo("#position-#{position}", duration: 0)
 
     offsetFor: (position) ->
       return 0 unless @discussion
@@ -123,7 +128,14 @@ export default
 
     positionFor: (offset) ->
       return 1 unless @discussion
-      position = parseInt(offset / @unitHeight)
+      position = parseInt(offset / @unitHeight) + 1
+      position = if position < 1
+          1
+        else if position > @discussion.createdEvent().childCount
+          @discussion.createdEvent().childCount
+        else
+          position
+
       if @discussion.newestFirst
         @discussion.createdEvent().childCount - position
       else
@@ -140,7 +152,7 @@ export default
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped color="transparent" floating)
   .thread-nav
-    .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="scrollToClick")
+    .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="onTrackClicked")
       .thread-nav__track-line
     .thread-nav__presets
       .thread-nav__preset(v-for="preset in presets" :style="{top: offsetFor(preset.position)+'px'}")
@@ -160,9 +172,9 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
   width: 200px
   align-items: flex-start
 
-.thread-nav__preset:last-child
-  margin-top: 4px
-  align-items: flex-end
+// .thread-nav__preset:last-child
+//   margin-top: 4px
+//   align-items: flex-end
 
 .thread-nav__preset--title
   font-size: 14px
@@ -220,14 +232,16 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
   background-color: var(--v-accent-base)
   cursor: ns-resize
   border-radius: 4px
-  transition: top 0.3s linear, height 0.5s linear
+  transition: top 0.1s linear, height 0.3s linear
   margin: 0 8px
   z-index: 1001
+  min-height: 16px
 
 .thread-nav__knob:hover
   transition: none
   width: 12px
   margin: 0 6px
+  min-height: 64px
 
 .disable-select
   user-select: none

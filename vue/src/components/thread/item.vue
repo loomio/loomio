@@ -32,6 +32,11 @@ export default
 
   methods:
     viewed: (viewed) -> @event.markAsRead() if viewed
+    focusThenFade: ->
+      @focusStyleClass = 'thread-item--focused'
+      setTimeout =>
+        @focusStyleClass = 'thread-item--previously-focused'
+      , 1000
 
   computed:
     discussion: -> @event.discussion()
@@ -54,19 +59,12 @@ export default
     '$route.query.p':
       immediate: true
       handler: (newVal) ->
-        if parseInt(newVal) == @event.position && @event.depth == 1
-          @focusStyleClass = 'thread-item--focused'
-          # changeToPreviouslyFocused = =>
-          #   @focusStyleClass = 'thread-item--previously-focused'
-          # setTimeout(changeToPreviouslyFocused, 1000)
+        @focusThenFade() if parseInt(newVal) == @event.position && @event.depth == 1
+
     '$route.params.sequence_id':
       immediate: true
       handler: (newVal) ->
-        if parseInt(newVal) == @event.sequenceId
-          @focusStyleClass = 'thread-item--focused'
-          # changeToPreviouslyFocused = =>
-          #   @focusStyleClass = 'thread-item--previously-focused'
-          # setTimeout(changeToPreviouslyFocused, 1000)
+        @focusThenFade() if parseInt(newVal) == @event.sequenceId
 
 </script>
 
@@ -108,7 +106,7 @@ div
 }
 
 .thread-item {
-  transition: border-color 50s;
+  transition: border-color 10s;
   border-left: 2px solid #fff;
   padding-left: 14px;
 }
@@ -124,7 +122,7 @@ div
 
 .thread-item--previously-focused {
   background-color: none;
-  transition: background-color 5s;
+  transition: background-color 10s;
 }
 
 .thread-item--unread {

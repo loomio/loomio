@@ -42,8 +42,8 @@ export default
       if parseInt(@$route.params.comment_id)
         @fetchEvent('commentId', parseInt(@$route.params.comment_id)).then @focusOnEvent
       else if parseInt(@$route.query.p)
-        console.log 'reposotion', parseInt(@$route.query.p)
-        @slideToPosition(parseInt(@$route.query.p))
+        # @slideToPosition(parseInt(@$route.query.p))
+        @fetchEvent('position', parseInt(@$route.query.p)).then @focusOnEvent
       else if parseInt(@$route.params.sequence_id)
         @fetchEvent('sequenceId', parseInt(@$route.params.sequence_id)).then @focusOnEvent
       else
@@ -109,12 +109,13 @@ export default
       else
         setTimeout =>
           @waitFor(selector, fn)
-        , 250
+        , 100
 
     focusOnEvent: (event) ->
       @initialSlots = [event.position]
-      @waitFor "#d#{event.depth}p#{event.position}", =>
-        @$vuetify.goTo("#d#{event.depth}p#{event.position}", duration: 0)
+      @$nextTick =>
+        @waitFor "#sequence-#{event.sequenceId}", =>
+          @$vuetify.goTo("#sequence-#{event.sequenceId}", duration: 0)
 
     slideToPosition: (position) ->
       @fetchEvent('position', position)
