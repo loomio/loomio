@@ -29,7 +29,7 @@ export default
 <template lang="pug">
 v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
   template(v-slot:activator="{on: menu}")
-    v-btn.emoji-picker__toggle(icon v-on="{ ...menu }")
+    v-btn.emoji-picker__toggle(icon small v-on="{ ...menu }")
       v-icon mdi-emoticon-outline
   emoji-picker(:insert="insert")
 </template>

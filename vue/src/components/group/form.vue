@@ -122,8 +122,8 @@ v-card.group-form
 
     v-tabs(fixed-tabs)
       v-tab(v-t="'group_form.profile'")
-      v-tab(v-t="'group_form.privacy'")
-      v-tab(v-t="'group_form.permissions'")
+      v-tab.group-form__privacy-tab(v-t="'group_form.privacy'")
+      v-tab.group-form__permissions-tab(v-t="'group_form.permissions'")
 
       v-tab-item.mt-8
         .v-input
@@ -142,7 +142,7 @@ v-card.group-form
       v-tab-item.mt-8
         .group-form__section.group-form__privacy
           v-radio-group(v-model='clone.groupPrivacy')
-            v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
+            v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
               template(slot='label')
                 .group-form__privacy-title
                   strong(v-t="'common.privacy.' + privacy")
@@ -159,15 +159,15 @@ v-card.group-form
         .group-form__section.group-form__permissions
           p.group-form__privacy-statement.body-2(v-t="'group_form.permissions_explaination'")
           //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='clone.privacyIsClosed() && !clone.isSubgroupOfSecretParent()')
-          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: clone.parent().name})" v-if='clone.isSubgroup() && clone.privacyIsClosed()')
-          v-checkbox.group-form__members-can-add-members(hide-details v-model='group["membersCanAddMembers"]' :label="$t('group_form.members_can_add_members')")
-          v-checkbox.group-form__members-can-announce(hide-details v-model='group["membersCanAnnounce"]' :label="$t('group_form.members_can_announce')")
-          v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='group["membersCanCreateSubgroups"]' v-if='clone.isParent()' :label="$t('group_form.members_can_create_subgroups')")
-          v-checkbox.group-form__members-can-start-discussions(hide-details v-model='group["membersCanStartDiscussions"]' :label="$t('group_form.members_can_start_discussions')")
-          v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='group["membersCanEditDiscussions"]' :label="$t('group_form.members_can_edit_discussions')")
-          v-checkbox.group-form__members-can-edit-comments(hide-details v-model='group["membersCanEditComments"]' :label="$t('group_form.members_can_edit_comments')")
-          v-checkbox.group-form__members-can-raise-motions(hide-details v-model='group["membersCanRaiseMotions"]' :label="$t('group_form.members_can_raise_motions')")
-          v-checkbox.group-form__members-can-vote(hide-details v-model='group["membersCanVote"]' :label="$t('group_form.members_can_vote')")
+          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='clone["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: clone.parent().name})" v-if='clone.isSubgroup() && clone.privacyIsClosed()')
+          v-checkbox.group-form__members-can-add-members(hide-details v-model='clone["membersCanAddMembers"]' :label="$t('group_form.members_can_add_members')")
+          v-checkbox.group-form__members-can-announce(hide-details v-model='clone["membersCanAnnounce"]' :label="$t('group_form.members_can_announce')")
+          v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='clone["membersCanCreateSubgroups"]' v-if='clone.isParent()' :label="$t('group_form.members_can_create_subgroups')")
+          v-checkbox.group-form__members-can-start-discussions(hide-details v-model='clone["membersCanStartDiscussions"]' :label="$t('group_form.members_can_start_discussions')")
+          v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='clone["membersCanEditDiscussions"]' :label="$t('group_form.members_can_edit_discussions')")
+          v-checkbox.group-form__members-can-edit-comments(hide-details v-model='clone["membersCanEditComments"]' :label="$t('group_form.members_can_edit_comments')")
+          v-checkbox.group-form__members-can-raise-motions(hide-details v-model='clone["membersCanRaiseMotions"]' :label="$t('group_form.members_can_raise_motions')")
+          v-checkbox.group-form__members-can-vote(hide-details v-model='clone["membersCanVote"]' :label="$t('group_form.members_can_vote')")
 
 
 

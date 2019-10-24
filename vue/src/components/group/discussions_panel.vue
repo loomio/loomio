@@ -5,7 +5,7 @@ import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
-import { map, debounce, orderBy, intersection, compact, omit, identity, filter } from 'lodash'
+import { map, debounce, orderBy, intersection, compact, omit, identity, filter, concat, uniq } from 'lodash'
 import Session from '@/shared/services/session'
 
 export default
@@ -64,8 +64,10 @@ export default
 
     query: (store) ->
       return unless @group
+      @publicGroupIds = @group.publicOrganisationIds()
+
       @groupIds = switch @subgroups
-        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
+        when 'mine' then uniq(concat(intersection(@group.organisationIds(), Session.user().groupIds()), @publicGroupIds)) # the groups that i'm a member of + any public groups?
         when 'all' then @group.organisationIds()
         else [@group.id]
 
@@ -77,6 +79,7 @@ export default
       else
         chain = Records.discussions.collection.chain()
         chain = chain.find(groupId: {$in: @groupIds})
+
 
         switch @filter
           when 'open'
@@ -166,11 +169,11 @@ div.discussions-panel(:key="group.id")
   v-chip-group.pl-2(v-if="!search" v-model="filter" active-class="accent--text")
     v-btn.mr-4.discussions-panel__new-thread-button(@click='openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
     v-divider.mr-2.ml-1(inset vertical)
-    v-chip(label outlined value="open" @click="selectFilter('open')")
+    v-chip.discussions-panel__toggle-open(label outlined value="open" @click="selectFilter('open')")
       span(v-t="'discussions_panel.open'")
-    v-chip(label outlined value="unread" @click="selectFilter('unread')")
+    v-chip.discussions-panel__toggle-unread(label outlined value="unread" @click="selectFilter('unread')")
       span(v-t="{ path: 'discussions_panel.unread', args: { count: unreadCount }}")
-    v-chip(label outlined value="closed" @click="selectFilter('closed')")
+    v-chip.discussions-panel__toggle-closed(label outlined value="closed" @click="selectFilter('closed')")
       span(v-t="'discussions_panel.closed'")
     v-divider.mr-2.ml-1(inset vertical)
     v-chip(v-for="tag in groupTags" :key="tag" :value="tag" @click="selectFilter(tag)" outlined) {{tag}}

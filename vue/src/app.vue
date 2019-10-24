@@ -21,7 +21,7 @@ export default
 
   mounted: ->
     @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
-    if Session.user().experiences['show_vue_upgraded_modal']
+    if Session.isSignedIn() && Session.user().experiences['show_vue_upgraded_modal']
       openModal
         maxWidth: 400
         component: 'VueUpgradedModal'

@@ -118,7 +118,7 @@ v-app-bar(app clipped-right prominent dark color="accent" elevate-on-scroll shri
 
   v-text-field(v-if="search && searchOpen" solo autofocus v-model="searchQuery" append-icon='mdi-close' @click:append="searchOpen = false; searchQuery = ''" :placeholder="search.placeholder")
 
-  v-toolbar-title(v-if="!searchOpen && groupPage")
+  v-toolbar-title.group-cover-name(v-if="!searchOpen && groupPage")
     span {{group.name}}
     //- group-privacy-button(v-if="groupPage" :group='group')
 

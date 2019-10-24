@@ -92,6 +92,7 @@ export default
           click: => @openStartSubgroupModal(parentGroup)
           icon: 'mdi-plus'
           subgroups: -> []
+          isStartSubgroupButton: true
         else
           []
 
@@ -134,14 +135,14 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         v-list-item-subtitle {{user.email}}
     user-dropdown
   v-divider
-  v-list-item(dense to="/dashboard")
+  v-list-item.sidebar__list-item-button--recent(dense to="/dashboard")
     v-list-item-title(v-t="'sidebar.recent_threads'")
   v-list-item(dense to="/inbox")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
   v-divider
 
   //- v-layout(fill-height)
-  v-treeview(hoverable :items="tree" :active="activeGroup" :open="expandedGroupIds" style="width: 100%")
+  v-treeview.sidebar__groups(hoverable :items="tree" :active="activeGroup" :open="expandedGroupIds" style="width: 100%")
     template(v-slot:append="{item, open}")
       div(v-if="item.click")
         v-icon(v-if="item.icon" @click="item.click") {{item.icon}}
@@ -152,7 +153,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         group-avatar(:group="item.group"  v-if="item.group.isParent()")
     template(v-slot:label="{item, open}")
       div(v-if="item.click")
-        a.body-2.sidebar-item.text-almost-black(text @click="item.click") {{item.name}}
+        a.body-2.sidebar-item.text-almost-black(text @click="item.click" :class="{ 'sidebar-start-subgroup': item.isStartSubgroupButton }") {{item.name}}
       router-link(v-if="!item.click" :to="urlFor(item.group)")
         span.body-2.sidebar-item.text-almost-black
           span {{item.group.name}}
@@ -160,7 +161,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
             space
             span ({{unreadCountFor(item.group, open)}})
 
-  v-list-item(@click="startOrganization()" dense)
+  v-list-item.sidebar__list-item-button--start-group(@click="startOrganization()" dense)
     v-list-item-title(v-t="'sidebar.start_group'")
     v-list-item-avatar(:size="28")
       v-icon(:size="28" tile) mdi-plus

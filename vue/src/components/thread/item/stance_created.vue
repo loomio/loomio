@@ -57,10 +57,9 @@ thread-item.stance-created(:event="event")
   template(v-slot:actions)
     action-dock(:model="eventable" :actions="actions")
   template(v-if="choiceInHeadline" v-slot:headline)
-    v-layout(align-center)
-      component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
-      space
-      poll-common-stance-choice(:stance-choice="eventable.stanceChoices()[0]")
+    component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
+    space
+    poll-common-stance-choice(:stance-choice="eventable.stanceChoices()[0]")
   poll-common-stance(:stance="eventable" :reason-only="choiceInHeadline")
   attachment-list(:attachments="eventable.attachments")
 </template>

@@ -49,9 +49,10 @@ export default
 thread-item.new-comment(id="'comment-'+ eventable.id" :event="event")
   template(v-slot:actions)
     v-layout(align-center)
+      v-spacer
       reaction-display(:model="eventable")
       action-dock(:model='eventable', :actions='dockActions')
-      action-menu(:actions='menuActions')
+      action-menu.new-comment-action-menu(:actions='menuActions')
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
