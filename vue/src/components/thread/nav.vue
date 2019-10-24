@@ -18,6 +18,7 @@ export default
     trackHeight: 400
     position: 1
     unitHeight: 1
+    presets: []
 
   mounted: ->
     EventBus.$on 'currentComponent', (options) =>
@@ -141,6 +142,15 @@ export default
       else
         position
 
+  computed:
+    bookendedPresets: ->
+      if !first(@presets) || (first(@presets).position != 1)
+        @presets.unshift({position: @topPosition, title: timeline(@topDate)})
+
+      if !last(@presets) || (last(@presets).position != @discussion.createdEvent().childCount)
+        @presets.push({position: @bottomPosition, title: timeline(@bottomDate)})
+      @presets
+
   watch:
     'discussion.newestFirst':
       immediate: true
@@ -155,9 +165,10 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
     .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="onTrackClicked")
       .thread-nav__track-line
     .thread-nav__presets
-      .thread-nav__preset(v-for="preset in presets" :style="{top: offsetFor(preset.position)+'px'}")
+      router-link.thread-nav__preset(v-for="preset in bookendedPresets"  :to="{query:{p: preset.position}}" :style="{top: offsetFor(preset.position)+'px'}")
         .thread-nav__preset--line
-        router-link.thread-nav__preset--title(:to="{query:{p: preset.position}}") {{preset.title}}
+        .thread-nav__preset--title {{preset.title}}
+        .thread-nav__preset--position {{preset.position}}
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown")
 </template>
 
@@ -183,6 +194,11 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
+
+.thread-nav__preset--position
+  font-size: 12px
+  margin-top: -8px
+  color: #bbb
 
 .thread-nav__preset--title:hover
   overflow: visible !important
