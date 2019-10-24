@@ -11,7 +11,7 @@ export default
     reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'")
     v-tooltip(bottom v-if="name != 'react'")
       template(v-slot:activator="{ on }")
-        v-btn(v-on="on" icon :class='`action-dock__button--${name}`' @click.prevent='action.perform()')
+        v-btn(v-on="on" small icon :class='`action-dock__button--${name}`' @click.prevent='action.perform()')
           v-icon {{action.icon}}
       span(v-t="action.name || 'action_dock.'+name")
 </template>

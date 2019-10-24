@@ -49,6 +49,7 @@ export default
 thread-item.new-comment(id="'comment-'+ eventable.id" :event="event")
   template(v-slot:actions)
     v-layout(align-center)
+      v-spacer
       reaction-display(:model="eventable")
       action-dock(:model='eventable', :actions='dockActions')
       action-menu.new-comment-action-menu(:actions='menuActions')

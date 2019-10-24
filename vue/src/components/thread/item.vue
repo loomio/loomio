@@ -16,16 +16,9 @@ export default
 
   data: ->
     isDisabled: false
-    isFocused: false
     collapsed: false
     hover: false
     focusStyleClass: null
-
-  created: ->
-    EventBus.$on('focusedEvent', @focused)
-
-  beforeDestroy: ->
-    EventBus.$off('focusedEvent', @focused)
 
   mounted: ->
     @$nextTick =>
@@ -38,8 +31,12 @@ export default
         node.setAttribute('target', '_blank')
 
   methods:
-    focused: (event) -> @isFocused = @event.id == event.id
     viewed: (viewed) -> @event.markAsRead() if viewed
+    focusThenFade: ->
+      @focusStyleClass = 'thread-item--focused'
+      setTimeout =>
+        @focusStyleClass = 'thread-item--previously-focused'
+      , 1000
 
   computed:
     discussion: -> @event.discussion()
@@ -59,18 +56,21 @@ export default
       LmoUrlService.event @event
 
   watch:
-    isFocused: ->
-      if @isFocused
-        @focusStyleClass = 'thread-item--focused'
-        changeToPreviouslyFocused = =>
-          @focusStyleClass = 'thread-item--previously-focused'
-        setTimeout(changeToPreviouslyFocused, 1000)
+    '$route.query.p':
+      immediate: true
+      handler: (newVal) ->
+        @focusThenFade() if parseInt(newVal) == @event.position && @event.depth == 1
+
+    '$route.params.sequence_id':
+      immediate: true
+      handler: (newVal) ->
+        @focusThenFade() if parseInt(newVal) == @event.sequenceId
 
 </script>
 
 <template lang="pug">
 div
-  .thread-item.py-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
+  .thread-item(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
     v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId")
       .thread-item__avatar.mr-4.mt-2
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
@@ -84,26 +84,29 @@ div
               | sid {{event.sequenceId}}
               | depth: {{event.depth}}
               | childCount: {{event.childCount}}
+              | eid: {{event.eventableId}}
             slot(name="headline")
               span(v-html='headline')
-          v-spacer
-          router-link.grey--text.body-2(:to='link')
-            time-ago(:date='event.createdAt')
+            mid-dot
+            router-link.grey--text.body-2(:to='link')
+              time-ago(:date='event.createdAt')
         .default-slot(ref="defaultSlot")
           slot
         slot(name="actions")
-        template(v-if='event.childCount > 0')
-          event-children(:discussion='discussion' :parent-event='event' :key="event.id")
+        event-children(v-if='event.childCount > 0' :discussion='discussion' :parent-event='event' :key="event.id")
   slot(name="append")
 </template>
-
 <style lang="css">
+
+.thread-item__title > .poll-common-stance-choice {
+  display: inline-block;
+}
 .thread-item__title strong {
   font-weight: normal;
 }
 
 .thread-item {
-  transition: border-color 50s;
+  transition: border-color 10s;
   border-left: 2px solid #fff;
   padding-left: 14px;
 }
@@ -119,15 +122,15 @@ div
 
 .thread-item--previously-focused {
   background-color: none;
-  transition: background-color 5s;
+  transition: background-color 10s;
 }
 
 .thread-item--unread {
-  padding-left: $cardPaddingSize - 2px;
+  /* // padding-left: $cardPaddingSize - 2px; */
   border-left: 2px solid var(--v-accent-base);
 }
 .thread-item--unread .thread-item--indent {
-    padding-left: $cardPaddingSize + 40px;
+    /* // padding-left: $cardPaddingSize + 40px; */
     /* // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding)) */
 }
 

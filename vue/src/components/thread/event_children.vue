@@ -9,13 +9,16 @@ export default
     parentEvent: Object
     discussion: Object
 
+  data: ->
+    initialSlots: [1]
+
   created: ->
     @loader = new RecordLoader
       collection: 'events'
 
   methods:
     fetch: (slots) ->
-      # console.log "fetch pid #{@parentEvent.id}, missing: #{slots}"
+      # console.log "fetch parent pid #{@parentEvent.id}, missing: #{slots}"
       return unless slots.length
       @loader.fetchRecords(
         comment_id: null
@@ -36,5 +39,5 @@ export default
 
 <template lang="pug">
 .event-children
-  thread-renderer(:style="negativeMargin" :discussion="discussion" :parent-event="parentEvent" :fetch="fetch")
+  thread-renderer(:style="negativeMargin" :discussion="discussion" :parent-event="parentEvent" :fetch="fetch" :initial-slots="initialSlots")
 </template>
