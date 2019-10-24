@@ -42,7 +42,8 @@ export default
       handler: ->
         if @event
           @$nextTick =>
-            @minHeight = @$refs.item.$el.offsetHeight if @$refs.item
+            if @$refs.item && @$refs.item.$el && parseInt(@$refs.item.$el.offsetHeight)
+              @minHeight = @$refs.item.$el.offsetHeight
 </script>
 
 <template lang="pug">
@@ -73,7 +74,7 @@ export default
   .thread-item-wrapper {
 
     &:empty {
-      min-height: 200px;
+      min-height: 100px;
       border-radius: 6px;
       background-color: #ccc;
       margin: 16px;

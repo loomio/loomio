@@ -33,22 +33,23 @@ export default
 
   methods:
     renderSlots: ->
-      if @visibleSlots.length
-        visibleSlots = @visibleSlots
-      else
-        visibleSlots = @initialSlots
-      # console.log visibleSlots if @parentEvent.depth == 1
+      return if @parentEvent.childCount == 0
 
-      return if @parentEvent.childCount == 0 or visibleSlots.length == 0
+      firstByVisible = first(@visibleSlots) && first(@visibleSlots) - (@padding * 2)
+      lastByVisible = last(@visibleSlots) && last(@visibleSlots) + (@padding * 2)
 
-      firstRendered = max([1, first(visibleSlots) - @padding])
-      lastRendered = min([last(visibleSlots) + @padding, @parentEvent.childCount])
-      @firstSlot = min(compact [@firstSlot, max([1, firstRendered - (@padding * 2)])])
-      @lastSlot = max(compact [@lastSlot, min([lastRendered + (@padding * 2), @parentEvent.childCount])])
+      firstByInitial = first(@initialSlots) && first(@initialSlots) - (@padding * 2)
+      lastByInitial = last(@initialSlots) && last(@initialSlots) + (@padding * 2)
+
+      @firstSlot = max([1, min(compact([@firstSlot, firstByInitial, firstByVisible]))])
+      @lastSlot = min([@parentEvent.childCount, max(compact([lastByInitial, lastByVisible]))])
+
+      firstRendered = max([1, first(@visibleSlots) - @padding])
+      lastRendered = min([last(@visibleSlots) + @padding, @parentEvent.childCount])
       eventsBySlot = {}
       presentPositions = []
       expectedPositions = range(firstRendered, lastRendered+1)
-      # console.log "rendering slots #{visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, padding: #{@padding}, #{@initialSlots}"
+      # console.log "rendering slots #{@visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, firstByVisible: #{firstByVisible} lastByVisible: #{lastByVisible} padding: #{@padding}, #{@initialSlots}"
 
       for i in [@firstSlot..@lastSlot]
         eventsBySlot[i] = null
@@ -87,11 +88,9 @@ export default
           @renderSlots()
 
     missingSlots: (newVal, oldVal) ->
-      # console.log "fetch pid #{@parentEvent.id} missing", newVal
-      @fetchMissing() # unless isEqual(newVal, oldVal)
+      @fetchMissing() if @visibleSlots.length
 
     initialSlots: (newVal) ->
-      # console.log 'initialSlots changed', newVal
       @visibleSlots = newVal
 
     newestFirst: -> @visibleSlots = []
