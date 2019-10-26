@@ -160,12 +160,7 @@ export default
 
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="transparent" floating)
-  //- | trackHeight {{trackHeight}}
-  //- | unitHeight {{unitHeight}}
-  //- | childCount {{childCount}}
-  //- | knobOffset {{knobOffset}}
-
-  a.thread-nav__date(:to="urlFor(discussion)" @click="scrollTo('#context')") Context
+  a.thread-nav__date(:to="urlFor(discussion)" @click="scrollTo('#context')" v-t="'activity_card.context'")
   router-link.thread-nav__date(:to="{query:{p: topPosition}, params: {sequence_id: null}}") {{approximateDate(topDate)}}
   .thread-nav(:style="{height: trackHeight+'px'}")
     .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="onTrackClicked")
@@ -200,7 +195,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 //   align-items: flex-end
 
 .thread-nav__preset--title
-  font-size: 14px
+  font-size: 12px
   margin-top: -10px
   white-space: nowrap
   overflow: hidden
