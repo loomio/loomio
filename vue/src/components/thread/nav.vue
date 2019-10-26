@@ -45,9 +45,7 @@ export default
           return unless @discussion
           @presets = Records.events.collection.chain()
             .find({pinned: true, parentId: @discussion.createdEvent().id})
-            .simplesort('position').data().map (event) =>
-              position: event.position
-              title: @title(event.model())
+            .simplesort('position').data()
 
       # move this to activity panel.
       Records.events.fetch
@@ -72,17 +70,6 @@ export default
         # console.log 'visibleSlots', slots
 
   methods:
-    title: (model) ->
-      if model.title or model.statement
-        (model.title || model.statement || model.body).replace(///<[^>]*>?///gm, '')
-      else
-        parser = new DOMParser()
-        doc = parser.parseFromString(model.statement || model.body, 'text/html')
-        if el = doc.querySelector('h1,h2,h3')
-          el.textContent
-        else
-          (model.body || '').replace(///<[^>]*>?///gm, '')
-
     onTrackClicked: (event) ->
       @moveKnob(event)
       @goToPosition(@position)
@@ -143,14 +130,14 @@ export default
       else
         position
 
-  computed:
-    bookendedPresets: ->
-      if !first(@presets) || (first(@presets).position != 1)
-        @presets.unshift({position: @topPosition, title: timeline(@topDate)})
-
-      if !last(@presets) || (last(@presets).position != @discussion.createdEvent().childCount)
-        @presets.push({position: @bottomPosition, title: timeline(@bottomDate)})
-      @presets
+  # computed:
+    # bookendedPresets: ->
+    #   if !first(@presets) || (first(@presets).position != 1)
+    #     @presets.unshift({position: @topPosition, title: timeline(@topDate)})
+    #
+    #   if !last(@presets) || (last(@presets).position != @discussion.createdEvent().childCount)
+    #     @presets.push({position: @bottomPosition, title: timeline(@bottomDate)})
+    #   @presets
 
   watch:
     'discussion.newestFirst':
@@ -166,10 +153,9 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
     .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="onTrackClicked")
       .thread-nav__track-line
     .thread-nav__presets
-      router-link.thread-nav__preset(v-for="preset in bookendedPresets"  :to="{query:{p: preset.position}}" :style="{top: offsetFor(preset.position)+'px'}")
+      router-link.thread-nav__preset(v-for="event in presets"  :to="urlFor(event)" :style="{top: offsetFor(event.position)+'px'}")
         .thread-nav__preset--line
-        .thread-nav__preset--title {{preset.title}}
-        .thread-nav__preset--position {{preset.position}}
+        .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown")
 </template>
 

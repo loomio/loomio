@@ -294,7 +294,7 @@ export default
 
   watch:
     linkDialogIsOpen: (val) ->
-      return unless val
+      return unless val && @$refs.focus
       requestAnimationFrame => @$refs.focus.focus()
     files: -> @updateModel()
     imageFiles: -> @updateModel()

@@ -15,7 +15,7 @@ class API::EventsController < API::RestfulController
   def pin
     @event = Event.find(params[:id])
     current_user.ability.authorize!(:pin, @event)
-    @event.update(pinned: true)
+    @event.update(pinned: true, pinned_title: params[:pinned_title])
     render json: EventCollection.new(@event).serialize!(default_scope)
   end
 

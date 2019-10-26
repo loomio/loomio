@@ -243,6 +243,10 @@ en:
     mute: 'Mute'
     unmute: 'Unmute'
 
+  pin_event_form:
+    title: Pin to timeline
+    title_label: Title
+
   change_volume_form:
     explain_scope:
       thread: This changes notification settings for the thread

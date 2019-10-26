@@ -42,22 +42,19 @@ export default
       if parseInt(@$route.params.comment_id)
         @fetchEvent('commentId', parseInt(@$route.params.comment_id)).then @focusOnEvent
       else if parseInt(@$route.query.p)
-        # @slideToPosition(parseInt(@$route.query.p))
         @fetchEvent('position', parseInt(@$route.query.p)).then @focusOnEvent
       else if parseInt(@$route.params.sequence_id)
         @fetchEvent('sequenceId', parseInt(@$route.params.sequence_id)).then @focusOnEvent
       else
         if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
-          @slideToPosition(@parentEvent.childCount)
+          @fetchEvent('position', @parentEvent.childCount).then @focusOnEvent
         else
-          @slideToPosition(1)
+          @fetchEvent('position', 1).then @focusOnEvent
 
     fetchEvent: (idType, id) ->
       if event = @findEvent(idType, id)
-        console.log 'have event', idType, id, event
         Promise.resolve(event)
       else
-        console.log 'fetching event', idType, id
         param = switch idType
           when 'sequenceId' then 'from'
           when 'commentId' then 'comment_id'
@@ -69,7 +66,6 @@ export default
           per: 5
           "#{param}": id
         ).then =>
-          console.log 'received event', idType, id, @findEvent(idType, id)
           Promise.resolve(@findEvent(idType, id))
 
     findEvent: (column, id) ->

@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   include CustomCounterCache::Model
   include HasTimeframe
+  extend HasCustomFields
   BLACKLISTED_KINDS = ["motion_closed", "motion_outcome_updated", "motion_outcome_created", "new_vote", "new_motion", "motion_closed_by_user", "motion_edited"].freeze
 
   has_many :notifications, dependent: :destroy
@@ -9,6 +10,7 @@ class Event < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :parent, class_name: "Event", required: false
   has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
+  set_custom_fields :pinned_title
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
 
