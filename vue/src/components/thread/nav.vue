@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
-import { debounce, truncate, first, last } from 'lodash'
+import { debounce, truncate, first, last, some, drop } from 'lodash'
 
 export default
   mixins: [ChangeVolumeModalMixin]
@@ -14,9 +14,9 @@ export default
     open: null
     knobOffset: 0
     knobHeight: 32
-    trackHeight: 400
+    trackHeight: 300
     position: 1
-    unitHeight: 1
+    minUnitHeight: 24
     presets: []
 
   mounted: ->
@@ -25,7 +25,7 @@ export default
       return unless @discussion
 
       if @discussion.newestFirst
-        @topPosition = @discussion.createdEvent().childCount
+        @topPosition = @childCount
         @topDate = @discussion.lastActivityAt
 
         @bottomPosition = 1
@@ -35,7 +35,7 @@ export default
         @topDate = @discussion.createdAt
 
         @bottomDate = @discussion.lastActivityAt
-        @bottomPosition = @discussion.createdEvent().childCount
+        @bottomPosition = @childCount
 
       @watchRecords
         key: 'thread-nav'+@discussion.id
@@ -54,21 +54,34 @@ export default
           per: 200
 
     EventBus.$on 'visibleSlots', (slots) =>
-      unless slots.length == 0 && @discussion
-        if @discussion.newestFirst
+      unless slots.length == 0
+        if @discussion && @discussion.newestFirst
           @position = last(slots) || 1
         else
           @position = first(slots) || 1
 
-        @trackHeight = 400
-        @unitHeight = @trackHeight / @discussion.createdEvent().childCount
+        @setHeight()
         @knobOffset = @offsetFor(@position)
         @knobHeight = @unitHeight * (last(slots) - first(slots) + 1)
-
-        # console.log 'knob position, offset, height. unit height', @position, @knobOffset, @knobHeight, @unitHeight
-        # console.log 'visibleSlots', slots
+        @$vuetify.goTo '.thread-nav__knob', container: '.thread-sidebar'
 
   methods:
+    setHeight: ->
+      @trackHeight = 300
+      while @minOffset() < @minUnitHeight
+        @incrementHeight()
+
+    minOffset: ->
+      min = @trackHeight
+      for i in [2..@presets.length]
+        if @presets[i] && @presets[i-1]
+          v = (@presets[i].position * @unitHeight) - (@presets[i-1].position * @unitHeight)
+          min = v if v < min
+      min
+
+    incrementHeight: ->
+      @trackHeight = @trackHeight * 1.2
+
     onTrackClicked: (event) ->
       @moveKnob(event)
       @goToPosition(@position)
@@ -103,13 +116,11 @@ export default
       document.addEventListener 'mouseup', onMouseUp
 
     goToPosition: (position) ->
-      # console.log 'going to posiiton', position
       @$router.replace(query: {p: position}, params: {sequence_id: null})
       @scrollTo("#position-#{position}")
 
     offsetFor: (position) ->
-      return 0 unless @discussion
-      parseInt if @discussion.newestFirst
+      if @discussion && @discussion.newestFirst
           @trackHeight - ((position) * @unitHeight)
         else
           (position - 1) * @unitHeight
@@ -119,24 +130,15 @@ export default
       position = parseInt(offset / @unitHeight) + 1
       position = if position < 1
           1
-        else if position > @discussion.createdEvent().childCount
-          @discussion.createdEvent().childCount
+        else if position > @childCount
+          @childCount
         else
           position
 
       if @discussion.newestFirst
-        @discussion.createdEvent().childCount - position
+        @childCount - position
       else
         position
-
-  # computed:
-    # bookendedPresets: ->
-    #   if !first(@presets) || (first(@presets).position != 1)
-    #     @presets.unshift({position: @topPosition, title: timeline(@topDate)})
-    #
-    #   if !last(@presets) || (last(@presets).position != @discussion.createdEvent().childCount)
-    #     @presets.push({position: @bottomPosition, title: timeline(@bottomDate)})
-    #   @presets
 
   watch:
     'discussion.newestFirst':
@@ -144,10 +146,25 @@ export default
       handler: ->
         return unless @discussion
 
+  computed:
+    unitHeight: ->
+      @trackHeight / @childCount
+
+    childCount: ->
+      if @discussion
+        @discussion.createdEvent().childCount
+      else
+        10
+
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped color="transparent" floating)
+v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="transparent" floating)
+  //- | trackHeight {{trackHeight}}
+  //- | unitHeight {{unitHeight}}
+  //- | childCount {{childCount}}
+  //- | knobOffset {{knobOffset}}
+
   a.thread-nav__date(:to="urlFor(discussion)" @click="scrollTo('#context')") Context
   router-link.thread-nav__date(:to="{query:{p: topPosition}, params: {sequence_id: null}}") {{approximateDate(topDate)}}
   .thread-nav(:style="{height: trackHeight+'px'}")
@@ -175,8 +192,8 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
 .thread-nav__preset
   display: flex
   position: absolute
-  width: 200px
   align-items: flex-start
+  width: 220px
 
 // .thread-nav__preset:last-child
 //   margin-top: 4px
@@ -185,7 +202,6 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
 .thread-nav__preset--title
   font-size: 14px
   margin-top: -10px
-  width: 250px
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
@@ -206,10 +222,11 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
 
 .thread-nav__preset--line
   height: 2px
-  width: 24px
+  width: 18px
   min-width: 24px
   background-color: #aaa
-  margin-right: 8px
+  margin-right: 4px
+  // margin-left: 10px
   // margin-left: 12px
   // margin-right: 8px
   // margin-left: 11px
