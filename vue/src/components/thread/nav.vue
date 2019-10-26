@@ -3,7 +3,6 @@ import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import { debounce, truncate, first, last } from 'lodash'
-import { approximate, timeline } from '@/shared/helpers/format_time'
 
 export default
   mixins: [ChangeVolumeModalMixin]
@@ -105,8 +104,8 @@ export default
 
     goToPosition: (position) ->
       # console.log 'going to posiiton', position
-      @$router.replace(query: {p: position})
-      @$vuetify.goTo("#position-#{position}", duration: 0)
+      @$router.replace(query: {p: position}, params: {sequence_id: null})
+      @scrollTo("#position-#{position}")
 
     offsetFor: (position) ->
       return 0 unless @discussion
@@ -149,7 +148,9 @@ export default
 
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$vuetify.breakpoint.mdAndUp" width="210px" app fixed right clipped color="transparent" floating)
-  .thread-nav
+  a.thread-nav__date(:to="urlFor(discussion)" @click="scrollTo('#context')") Context
+  router-link.thread-nav__date(:to="{query:{p: topPosition}, params: {sequence_id: null}}") {{approximateDate(topDate)}}
+  .thread-nav(:style="{height: trackHeight+'px'}")
     .thread-nav__track(ref="slider" :style="{height: trackHeight+'px'}" @click="onTrackClicked")
       .thread-nav__track-line
     .thread-nav__presets
@@ -157,12 +158,19 @@ v-navigation-drawer.lmo-no-print.disable-select(v-if="discussion" :permanent="$v
         .thread-nav__preset--line
         .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
     .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown")
+  router-link.thread-nav__date(:to="{query:{p: bottomPosition}, params: {sequence_id: null}}") {{approximateDate(bottomDate)}}
 </template>
 
 <style lang="sass">
 .thread-nav
-  margin-top: 32px
   position: relative
+
+.thread-nav__date
+  font-size: 12px
+  display: block
+  margin: 8px 8px
+  // text-align: right
+  color: var(--text-primary) !important
 
 .thread-nav__preset
   display: flex

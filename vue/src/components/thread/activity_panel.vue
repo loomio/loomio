@@ -46,10 +46,14 @@ export default
       else if parseInt(@$route.params.sequence_id)
         @fetchEvent('sequenceId', parseInt(@$route.params.sequence_id)).then @focusOnEvent
       else
+        @fetchEvent('position', first(@initialSlots))
+
         if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
-          @fetchEvent('position', @parentEvent.childCount).then @focusOnEvent
+          @fetchEvent('position', @parentEvent.childCount)
         else
-          @fetchEvent('position', 1).then @focusOnEvent
+          @fetchEvent('position', 1)
+        @scrollTo('#context')
+
 
     fetchEvent: (idType, id) ->
       if event = @findEvent(idType, id)
@@ -111,12 +115,7 @@ export default
       @initialSlots = [event.position]
       @$nextTick =>
         @waitFor "#sequence-#{event.sequenceId}", =>
-          @$vuetify.goTo("#sequence-#{event.sequenceId}", duration: 0)
-
-    slideToPosition: (position) ->
-      @fetchEvent('position', position)
-      @initialSlots = [position]
-      @waitFor "#d1p#{position}", => @$vuetify.goTo("#d1p#{position}", duration: 0)
+          @scrollTo("#sequence-#{event.sequenceId}")
 
   watch:
     '$route.params.sequence_id': 'respondToRoute'
