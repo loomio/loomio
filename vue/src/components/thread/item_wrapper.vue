@@ -76,7 +76,7 @@ export default
     &:empty {
       min-height: 100px;
       border-radius: 6px;
-      background-color: #ccc;
+      background-color: #ddd;
       margin: 16px;
       border-radius: 16px;
     }

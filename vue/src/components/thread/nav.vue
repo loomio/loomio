@@ -49,6 +49,7 @@ export default
               position: event.position
               title: @title(event.model())
 
+      # move this to activity panel.
       Records.events.fetch
         params:
           discussion_id: @discussion.id
