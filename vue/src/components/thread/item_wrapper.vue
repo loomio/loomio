@@ -56,30 +56,13 @@ export default
   //-   | sequence_id {{event.sequenceId}}
 </template>
 
-<style lang="scss">
-// .thread-item-wrapper:empty
-//   margin: 16px
-//   height: 128px
-//   // background-color: #999
-//   border-radius: 16px
-//   background-repeat: no-repeat
-//   background-image: radial-gradient(circle 16px, white 99%, transparent 0), linear-gradient(white 40px, transparent 0), linear-gradient(#ccc 100%, transparent 0)
-//   background-size: 32px 32px, 200px 40px, 100% 100%
-//   background-position: 24px 24px,24px 200px, 0 0
-
-  /*
-   * Card Skeleton for Loading
-   */
-
-  .thread-item-wrapper {
-
-    &:empty {
-      min-height: 100px;
-      border-radius: 6px;
-      background-color: #ddd;
-      margin: 16px;
-      border-radius: 16px;
-    }
-  }
+<style lang="sass">
+.thread-item-wrapper
+  &:empty
+    min-height: 100px
+    border-radius: 6px
+    background-color: #ddd
+    margin: 16px
+    border-radius: 16px
 
 </style>
