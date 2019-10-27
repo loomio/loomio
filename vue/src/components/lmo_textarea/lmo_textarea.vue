@@ -540,15 +540,15 @@ div
 
   h1
     line-height: 2.75rem
-    font-size: 2rem
+    font-size: 1.6rem
     font-weight: 400
     letter-spacing: .0125em
-    margin-bottom: 0.5em
+    margin-top: 0.5em
 
   h2
     line-height: 2rem
-    font-size: 1.25rem
-    font-weight: 500
+    font-size: 1.2rem
+    font-weight: 400
     letter-spacing: .0125em
     margin-bottom: 0.75em
 
