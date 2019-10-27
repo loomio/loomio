@@ -1,6 +1,7 @@
 module.exports = {
   ActionDock: 'common/action_dock',
   ActionMenu: 'common/action_menu',
+  ActionButton: 'common/action_button',
   ActivityPanel: 'thread/activity_panel',
   AnnouncementForm: 'announcement/form',
   AnnouncementHistory: 'announcement/history',

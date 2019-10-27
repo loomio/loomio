@@ -26,6 +26,7 @@ export default
   created: ->
     @actions =
       edit_stance:
+        name: 'poll_common.change_vote'
         icon: 'mdi-pencil'
         canPerform: =>
           @eventable.latest && @eventable.poll().isActive() && @eventable.participant() == Session.user()
@@ -43,6 +44,7 @@ export default
           @eventable.translate(Session.user().locale)
 
       show_history:
+        name: 'action_dock.edited'
         icon: 'mdi-history'
         canPerform: => @eventable.edited()
         perform: =>

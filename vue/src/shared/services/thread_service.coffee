@@ -50,6 +50,7 @@ export default new class ThreadService
       perform: => @dismiss(discussion)
 
     announce_thread:
+      name: 'action_dock.notify'
       icon: 'mdi-send'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
@@ -77,6 +78,7 @@ export default new class ThreadService
 
     show_history:
       icon: 'mdi-history'
+      name: 'action_dock.edited'
       canPerform: -> discussion.edited()
       perform: ->
         openModal
@@ -85,6 +87,7 @@ export default new class ThreadService
             model: discussion
 
     edit_thread:
+      name: 'common.action.edit'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->

@@ -619,7 +619,8 @@ en:
       success: '{{count}} notifications sent'
 
   action_dock:
-    react: Add reaction
+    react: React
+    notify: Notify
     add_resource: Add an attachment
     edit_group: Edit group context
     add_comment: Comment
@@ -645,6 +646,7 @@ en:
     announce_outcome_active: (No one has been notified of this outcome yet)
     translate_outcome: Translate outcome
     show_history: Show edit history
+    edited: Edited
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
     pin_event: Pin to timeline

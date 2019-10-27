@@ -561,6 +561,9 @@ div
   p
     margin-bottom: 12px
 
+  p:last-child
+    margin-bottom: 4px
+
   hr
     border: 0
     border-bottom: 2px solid rgba(0,0,0,0.1)

@@ -9,11 +9,7 @@ export default
 .action-dock.lmo-no-print
   .action-dock__action.mr-1(v-for='(action, name) in actions' v-if='action.canPerform()' :key="name")
     reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'")
-    v-tooltip(bottom v-if="name != 'react'")
-      template(v-slot:activator="{ on }")
-        v-btn(v-on="on" small icon :class='`action-dock__button--${name}`' @click.prevent='action.perform()')
-          v-icon {{action.icon}}
-      span(v-t="action.name || 'action_dock.'+name")
+    action-button(v-if="name != 'react'" :action="action" :name="name")
 </template>
 
 <style lang="sass">
