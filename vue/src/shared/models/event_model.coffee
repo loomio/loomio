@@ -71,15 +71,15 @@ export default class EventModel extends BaseModel
 
   suggestedTitle: ->
     model = @model()
-    if model.title or model.statement
-      (model.title || model.statement).replace(///<[^>]*>?///gm, '')
+    if model.title
+      model.title.replace(///<[^>]*>?///gm, '')
     else
       parser = new DOMParser()
       doc = parser.parseFromString(model.statement || model.body, 'text/html')
       if el = doc.querySelector('h1,h2,h3')
         el.textContent
       else
-        (model.body || '').replace(///<[^>]*>?///gm, '')
+        ''
 
   unpin: -> @remote.patchMember(@id, 'unpin')
 
