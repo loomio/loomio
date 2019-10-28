@@ -2,7 +2,7 @@
 export default
   props:
     action: Object
-    name: Object
+    name: String
 </script>
 
 <template lang="pug">

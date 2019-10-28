@@ -111,6 +111,10 @@ div
   padding-left: 14px;
 }
 
+.thread-item:last-child {
+  margin-bottom: 8px
+}
+
 .thread-item .v-card__actions {
     padding-left: 0;
     padding-right: 0;
