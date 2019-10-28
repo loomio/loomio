@@ -80,8 +80,8 @@ export default
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
-        
-  div.mx-3.mb-3
+
+  div.mx-3.mb-2
     .context-panel__details.my-2.body-2(align-center)
       user-avatar.mr-4(:user='discussion.author()', :size='40')
       span
