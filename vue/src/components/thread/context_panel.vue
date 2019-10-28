@@ -18,7 +18,7 @@ export default
     editThread: -> @actions['edit_thread']
 
     dockActions: ->
-      pick @actions, ['react', 'add_comment','show_history', 'edit_thread', 'announce_thread']
+      pick @actions, ['react', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'show_history', 'edit_thread', 'announce_thread']
 
     menuActions: ->
       pick @actions, ['edit_tags',  'notification_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']

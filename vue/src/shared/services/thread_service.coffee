@@ -9,6 +9,40 @@ import ConfirmModalMixin from '@/mixins/confirm_modal'
 
 export default new class ThreadService
   actions: (discussion, vm) ->
+
+    subscribe:
+      name: 'common.action.subscribe'
+      canPerform: ->
+        discussion.volume() == 'normal' && AbilityService.canChangeVolume(discussion)
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: discussion
+            # newVolume: 'loud'
+
+    unsubscribe:
+      name: 'common.action.unsubscribe'
+      canPerform: ->
+        discussion.volume() == 'loud' && AbilityService.canChangeVolume(discussion)
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: discussion
+            # newVolume: 'normal'
+
+    unignore:
+      name: 'common.action.unignore'
+      canPerform: ->
+        discussion.volume() == 'quiet' && AbilityService.canChangeVolume(discussion)
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: discussion
+            # newVolume: 'quiet'
+
     notification_history:
       name: 'action_dock.notification_history'
       icon: 'mdi-alarm-check'

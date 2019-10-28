@@ -179,6 +179,7 @@ en:
       delete: Delete
       unsubscribe: Unsubscribe
       subscribe: Subscribe
+      unignore: Unignore
       remind: Remind
       resend: Resend
       send: Send
