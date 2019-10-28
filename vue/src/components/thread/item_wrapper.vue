@@ -22,7 +22,6 @@ export default
     StanceCreated: StanceCreated
     OutcomeCreated: OutcomeCreated
     ThreadItem: -> import('@/components/thread/item.vue')
-    ThreadRenderer: -> import('@/components/thread/renderer.vue')
 
   methods:
     componentForKind: (kind) ->

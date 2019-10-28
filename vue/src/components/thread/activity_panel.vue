@@ -12,6 +12,9 @@ import { print } from '@/shared/helpers/window'
 import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash'
 
 export default
+  components:
+    ThreadRenderer: -> import('@/components/thread/renderer.vue')
+    
   props:
     discussion: Object
     viewportIsBelow: Boolean

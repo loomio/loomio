@@ -97,7 +97,7 @@ export default
 
 </script>
 <template lang="pug">
-.thread-renderer
+.thread-renderer.mb-2
   //- div
     | depth {{parentEvent.depth}}
     | childCount {{parentEvent.childCount}}
