@@ -108,19 +108,9 @@ export default
         until_sequence_id_of_position: last(slots)
         per: @padding * 2
 
-    waitFor: (selector, fn) ->
-      if document.querySelector(selector)
-        fn()
-      else
-        setTimeout =>
-          @waitFor(selector, fn)
-        , 100
-
     focusOnEvent: (event) ->
       @initialSlots = [event.position]
-      @$nextTick =>
-        @waitFor "#sequence-#{event.sequenceId}", =>
-          @scrollTo("#sequence-#{event.sequenceId}")
+      @scrollTo("#sequence-#{event.sequenceId}")
 
     openArrangementForm: ->
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
