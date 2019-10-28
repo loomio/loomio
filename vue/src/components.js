@@ -31,6 +31,7 @@ module.exports = {
   DecisionToolsCard: 'thread/decision_tools_card',
   ArrangementForm: 'thread/arrangement_form',
   DiscussionForm: 'discussion/form',
+  DiscussionForkActions: 'discussion/fork_actions',
   DiscussionStart: 'discussion/start',
   DismissModalButton: 'common/dismiss_modal_button',
   DocumentList: 'document/list',
