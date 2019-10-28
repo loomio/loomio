@@ -117,7 +117,7 @@ export default
 
     goToPosition: (position) ->
       @$router.replace(query: {p: position}, params: {sequence_id: null})
-      @scrollTo("#position-#{position}")
+      @scrollTo("#d1p#{position}")
 
     offsetFor: (position) ->
       if @discussion && @discussion.newestFirst
