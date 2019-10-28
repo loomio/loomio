@@ -26,6 +26,7 @@ export default
       {text: @$t('members_panel.order_by_admin_desc'), value:'admin desc' }
     ]
     requests: []
+    memberships: []
 
   created: ->
     EventBus.$emit 'currentComponent',
@@ -50,7 +51,7 @@ export default
     @loader.fetchRecords()
 
     @watchRecords
-      collections: ['memberships']
+      collections: ['memberships', 'groups']
       query: @query
 
   methods:
@@ -168,7 +169,7 @@ export default
 .members-panel
   v-list(two-line)
     template(v-for="(membership, index) in memberships")
-      v-list-item
+      v-list-item(:key="membership.id")
         v-list-item-avatar(size='48')
           router-link(:to="urlFor(membership.user())")
             user-avatar(:user='membership.user()' size='48')

@@ -46,7 +46,7 @@ export default
           membership: @membership
         text:
           title:    "membership_remove_modal.#{namespace}.title"
-          fragment: "membership_remove_modal"
+          raw_helptext: @$t("membership_remove_modal.#{namespace}.message", { name: @membership.user().name })
           flash:    "membership_remove_modal.#{namespace}.flash"
           submit:   "membership_remove_modal.#{namespace}.submit"
         submit:     @membership.destroy
