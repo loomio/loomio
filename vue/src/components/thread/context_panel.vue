@@ -81,7 +81,7 @@ export default
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
 
-  .mx-4
+  .mx-3
     .context-panel__details.my-2.body-2(align-center)
       user-avatar.mr-4(:user='discussion.author()', :size='40')
       span
@@ -105,11 +105,9 @@ export default
     formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    v-layout.my-2(align-center wrap)
-      v-spacer
+    div.d-flex.justify-end.my-2(align-center wrap justify-flex-end)
       reaction-display.mb-2(:model="discussion" fetch)
-      action-dock(:model='discussion' :actions='dockActions')
-      action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
+      action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
       //- v-btn(text @click="openArrangementForm()" v-if="actions['edit_arrangement'].canPerform()")
       //-   span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
       //-   span(v-if="!discussion.newestFirst" v-t="'poll_common_votes_panel.oldest_first'")

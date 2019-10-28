@@ -52,7 +52,7 @@ export default
           @fetchEvent('position', @parentEvent.childCount)
         else
           @fetchEvent('position', 1)
-          
+
         @scrollTo(0)
 
 
@@ -130,6 +130,6 @@ export default
 </script>
 
 <template lang="pug">
-.activity-panel.pr-4.py-4
+.activity-panel.py-4
   thread-renderer(:newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :initial-slots="initialSlots")
 </template>

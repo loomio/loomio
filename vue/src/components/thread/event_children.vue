@@ -5,9 +5,11 @@ import RecordLoader from '@/shared/services/record_loader'
 import { debounce, first, last } from 'lodash'
 
 export default
+  components:
+    ThreadRenderer: -> import('@/components/thread/renderer.vue')
+
   props:
     parentEvent: Object
-    discussion: Object
 
   data: ->
     initialSlots: [1]
@@ -29,15 +31,9 @@ export default
         from: first(slots)
         per: (last(slots) - first(slots))+1)
 
-  computed:
-    negativeMargin: ->
-      if @$vuetify.breakpoint.xsOnly
-        {'margin-left': '-64px'}
-      else
-        {}
 </script>
 
 <template lang="pug">
 .event-children
-  thread-renderer(:style="negativeMargin" :discussion="discussion" :parent-event="parentEvent" :fetch="fetch" :initial-slots="initialSlots")
+  thread-renderer(:parent-event="parentEvent" :fetch="fetch" :initial-slots="initialSlots")
 </template>

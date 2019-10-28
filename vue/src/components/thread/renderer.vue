@@ -105,8 +105,7 @@ export default
     | slots {{slots}}
     | initialSlots {{initialSlots}}
     | visible {{visibleSlots}}
-    | rendered {{firstRendered}}, {{lastRendered}}
     | missing {{missingSlots}}
-  .thread-item-slot(v-for="slot in slots" :id="'position-'+slot" :key="slot" v-observe-visibility="{callback: (isVisible) => slotVisible(isVisible, slot)}" )
+  .thread-item-slot(v-for="slot in slots" :key="slot" v-observe-visibility="{callback: (isVisible) => slotVisible(isVisible, slot)}" )
     thread-item-wrapper(:parent-id="parentEvent.id" :event="eventsBySlot[slot]" :position="parseInt(slot)")
 </template>

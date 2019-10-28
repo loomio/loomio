@@ -22,6 +22,7 @@ export default
     StanceCreated: StanceCreated
     OutcomeCreated: OutcomeCreated
     ThreadItem: -> import('@/components/thread/item.vue')
+    ThreadRenderer: -> import('@/components/thread/renderer.vue')
 
   methods:
     componentForKind: (kind) ->
@@ -50,6 +51,7 @@ export default
 .thread-item-wrapper(ref="wrapper" :style="minHeightStyle" :id="idString")
   //- | {{minHeight}}
   component(ref="item" v-if="event" :is="componentForKind(event.kind)" :event='event')
+  event-children(v-if='event && event.childCount > 0' :parent-event='event')
   //- div.debug(v-else)
   //-   | parentId {{event.parentId}}
   //-   | position {{event.position}}

@@ -68,7 +68,5 @@ thread-item.poll-created(:event="event")
       poll-common-percent-voted(:poll='poll')
     poll-common-action-panel(:poll='poll')
   template(v-slot:actions)
-    v-layout.my-2(align-center)
-      action-dock(:actions="dockActions")
-      action-menu(:actions="menuActions")
+    action-dock(:actions="dockActions" :menu-actions="menuActions")
 </template>
