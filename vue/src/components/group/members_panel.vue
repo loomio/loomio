@@ -179,7 +179,7 @@ export default
             space
             span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
             space
-            span.caption {{membership.title}}
+            span.title.caption {{membership.title}}
             space
             v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
           v-list-item-subtitle {{ membership.user().shortBio }}
