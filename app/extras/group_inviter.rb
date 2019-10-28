@@ -40,7 +40,7 @@ class GroupInviter
   end
 
   def safe_emails
-    @emails.uniq.reject {|email| Regexp.new(ENV['SPAM_REGEX']).match(email) }
+    @emails.uniq.reject {|email| Regexp.new(ENV.fetch('SPAM_REGEX', '.+')).match(email) }
   end
 
   def generate_memberships!
