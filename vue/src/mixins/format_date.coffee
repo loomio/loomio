@@ -10,7 +10,7 @@ export default
         else
           setTimeout ->
             waitFor(selector, fn)
-          , 100
+          , 250
 
       waitFor selector, =>
         @$vuetify.goTo(selector, duration: 0)
