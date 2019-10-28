@@ -16,14 +16,10 @@ export default
     else
       @parsedDate = @date
 
-  computed:
-    approximateDate: -> approximate(@parsedDate)
-    exactDate: -> exact(@parsedDate)
-
 </script>
 
 <template lang="pug">
-abbr.time-ago(:title='exactDate') {{approximateDate}}
+abbr.time-ago(:title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
 </template>
 
 <style lang="css">

@@ -66,7 +66,21 @@ export default class EventModel extends BaseModel
   removeFromThread: =>
     @remote.patchMember(@id, 'remove_from_thread').then => @remove()
 
-  pin: -> @remote.patchMember(@id, 'pin')
+  pin: (title) ->
+    @remote.patchMember(@id, 'pin', {pinned_title: title})
+
+  suggestedTitle: ->
+    model = @model()
+    if model.title
+      model.title.replace(///<[^>]*>?///gm, '')
+    else
+      parser = new DOMParser()
+      doc = parser.parseFromString(model.statement || model.body, 'text/html')
+      if el = doc.querySelector('h1,h2,h3')
+        el.textContent
+      else
+        ''
+
   unpin: -> @remote.patchMember(@id, 'unpin')
 
   isForkable: ->

@@ -18,10 +18,10 @@ export default
     editThread: -> @actions['edit_thread']
 
     dockActions: ->
-      pick @actions, ['react', 'add_comment', 'edit_thread', 'edit_tags', 'announce_thread']
+      pick @actions, ['react', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'show_history', 'edit_thread', 'announce_thread']
 
     menuActions: ->
-      pick @actions, [ 'show_history', 'notification_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+      pick @actions, ['edit_tags',  'notification_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -81,7 +81,7 @@ export default
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
 
-  .mx-4
+  div.mx-3.mb-2
     .context-panel__details.my-2.body-2(align-center)
       user-avatar.mr-4(:user='discussion.author()', :size='40')
       span
@@ -105,14 +105,7 @@ export default
     formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    v-layout.my-2(align-center wrap)
-      reaction-display.mb-2(:model="discussion" fetch)
-      action-dock(:model='discussion' :actions='dockActions')
-      action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
-      v-spacer
-      v-btn(text @click="openArrangementForm()" v-if="actions['edit_arrangement'].canPerform()")
-        span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
-        span(v-if="!discussion.newestFirst" v-t="'poll_common_votes_panel.oldest_first'")
+    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
   v-divider
 </template>
 <style lang="sass">

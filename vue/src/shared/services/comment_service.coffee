@@ -32,6 +32,7 @@ export default new class CommentService
         vm.showReplyForm = !vm.showReplyForm
 
     edit_comment:
+      name: 'common.action.edit'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditComment(comment)
       perform: ->
@@ -54,6 +55,7 @@ export default new class CommentService
 
     show_history:
       icon: 'mdi-history'
+      name: 'action_dock.edited'
       menu: true
       canPerform: -> comment.edited()
       perform: ->

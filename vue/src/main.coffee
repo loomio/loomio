@@ -15,12 +15,14 @@ import WatchRecords from '@/mixins/watch_records'
 import VueYouTubeEmbed from 'vue-youtube-embed'
 import CloseModal from '@/mixins/close_modal'
 import UrlFor from '@/mixins/url_for'
+import FormatDate from '@/mixins/format_date'
 
 Vue.mixin(CloseModal)
 Vue.mixin(WatchRecords)
 Vue.mixin(UrlFor)
 Vue.use(VueYouTubeEmbed)
 Vue.use(VueClipboard)
+Vue.mixin(FormatDate)
 
 Vue.config.productionTip = false
 

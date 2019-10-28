@@ -1,7 +1,6 @@
 <script lang="coffee">
 import Records      from '@/shared/services/records.coffee'
 import openModal      from '@/shared/helpers/open_modal'
-
 export default
   props:
     discussion: Object

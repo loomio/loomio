@@ -14,7 +14,7 @@ export default
       default: false
 
   data: ->
-    diameter: 24
+    diameter: 20
     maxNamesCount: 10
     reactionHash: {all: []}
 
@@ -101,9 +101,9 @@ export default
 }
 
 .reactions-display__group span {
-    font-size: 24px;
-    line-height: 1;
-    margin-bottom: -4px;
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: -5px;
 }
 
 .reactions-display__emojis {

@@ -14,7 +14,7 @@ export default
 .action-menu.lmo-no-print(v-if='canPerformAny')
   v-menu(offset-y)
     template(v-slot:activator="{ on }" )
-      v-btn(icon v-on="on" @click.prevent)
+      v-btn(icon small v-on="on" @click.prevent)
         v-icon mdi-dots-horizontal
     v-list
       v-list-item(v-for="(action, name) in actions" :key="name" @click="action.perform()" v-if='action.canPerform()' :class="'context-panel-dropdown__option--' + name")

@@ -29,7 +29,7 @@ export default new class PollService
             announcement: Records.announcements.buildFromModel(poll)
 
     edit_poll:
-      name: 'action_dock.edit_poll'
+      name: 'common.action.edit'
       icon: 'mdi-pencil'
       canPerform: ->
         AbilityService.canEditPoll(poll)
@@ -41,6 +41,7 @@ export default new class PollService
 
     show_history:
       icon: 'mdi-history'
+      name: 'action_dock.edited'
       canPerform: -> poll.edited()
       perform: ->
         openModal

@@ -8,15 +8,17 @@ export default
   props:
     model: Object
     close: Function
+    newVolume: String
     showClose:
       default: true
       type: Boolean
+
   data: ->
     includeInCatchUp: true
     volumeLevels: ["loud", "normal", "quiet"]
     isDisabled: false
     applyToAll: @defaultApplyToAll()
-    volume: @defaultVolume()
+    volume: @newVolume || @defaultVolume()
 
   mounted: ->
     @submit = submitForm @, @model,

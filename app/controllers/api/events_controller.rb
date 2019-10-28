@@ -7,7 +7,7 @@ class API::EventsController < API::RestfulController
   end
 
   def comment
-    discussion = load_and_authorize(:discussion)
+    load_and_authorize(:discussion)
     self.resource = Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])
     respond_with_resource
   end
@@ -15,7 +15,7 @@ class API::EventsController < API::RestfulController
   def pin
     @event = Event.find(params[:id])
     current_user.ability.authorize!(:pin, @event)
-    @event.update(pinned: true)
+    @event.update(pinned: true, pinned_title: params[:pinned_title])
     render json: EventCollection.new(@event).serialize!(default_scope)
   end
 

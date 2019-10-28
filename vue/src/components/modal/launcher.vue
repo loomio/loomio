@@ -26,6 +26,7 @@ import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/mod
 import ChangePictureForm from '@/components/profile/change_picture_form'
 import GroupNewForm from '@/components/group/new_form'
 import GroupWizard from '@/components/group/wizard'
+import PinEventForm from '@/components/thread/pin_event_form'
 import UserWizard from '@/components/profile/wizard'
 import MoveCommentsModal from '@/components/discussion/move_comments_modal'
 import SeenByModal from '@/components/thread/seen_by_modal'
@@ -59,6 +60,7 @@ export default
     'InstallMicrosoftTeamsModal': InstallMicrosoftTeamsModal
     'ChangePictureForm': ChangePictureForm
     'GroupNewForm': GroupNewForm
+    'PinEventForm': PinEventForm
     'GroupWizard': GroupWizard
     'UserWizard': UserWizard
     'MoveCommentsModal': MoveCommentsModal

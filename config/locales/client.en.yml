@@ -168,7 +168,6 @@ en:
       add_subgroup: 'New subgroup'
       loading: 'Loading'
       translate: 'Translate'
-      translated: 'Translation by Bing Translator'
       upload: 'Upload'
       uploading: 'Uploading'
       load_more: 'Load More'
@@ -180,6 +179,7 @@ en:
       delete: Delete
       unsubscribe: Unsubscribe
       subscribe: Subscribe
+      unignore: Unignore
       remind: Remind
       resend: Resend
       send: Send
@@ -242,6 +242,10 @@ en:
     quiet: 'Quiet'
     mute: 'Mute'
     unmute: 'Unmute'
+
+  pin_event_form:
+    title: Pin to timeline
+    title_label: Title
 
   change_volume_form:
     explain_scope:
@@ -554,7 +558,7 @@ en:
     quick_add: "Quick add:"
     any_other_groups: "Any other groups?"
     notified_people: "{{name}} notified {{length}} people:"
-    preview: Preview
+    preview: Preview Email
     no_notifications_sent: No notifications have been sent
     history_error: Something went wrong! Could not load history.
     inviting_guests_to_thread: People who are not members of {{group}} will be added to this thread as guests, and won't get access to other threads in the group.
@@ -615,7 +619,8 @@ en:
       success: '{{count}} notifications sent'
 
   action_dock:
-    react: Add reaction
+    react: React
+    notify: Notify
     add_resource: Add an attachment
     edit_group: Edit group context
     add_comment: Comment
@@ -641,6 +646,7 @@ en:
     announce_outcome_active: (No one has been notified of this outcome yet)
     translate_outcome: Translate outcome
     show_history: Show edit history
+    edited: Edited
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
     pin_event: Pin to timeline
@@ -1320,6 +1326,7 @@ en:
     no_one: No one has seen this yet
 
   activity_card:
+    count_responses: "{{count}} responses"
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
     beginning: Beginning

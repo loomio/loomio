@@ -294,7 +294,7 @@ export default
 
   watch:
     linkDialogIsOpen: (val) ->
-      return unless val
+      return unless val && @$refs.focus
       requestAnimationFrame => @$refs.focus.focus()
     files: -> @updateModel()
     imageFiles: -> @updateModel()
@@ -540,15 +540,15 @@ div
 
   h1
     line-height: 2.75rem
-    font-size: 2rem
+    font-size: 1.6rem
     font-weight: 400
     letter-spacing: .0125em
-    margin-bottom: 0.5em
+    margin-top: 0.5em
 
   h2
     line-height: 2rem
-    font-size: 1.25rem
-    font-weight: 500
+    font-size: 1.2rem
+    font-weight: 400
     letter-spacing: .0125em
     margin-bottom: 0.75em
 
@@ -560,6 +560,9 @@ div
 
   p
     margin-bottom: 12px
+
+  p:last-child
+    margin-bottom: 4px
 
   hr
     border: 0

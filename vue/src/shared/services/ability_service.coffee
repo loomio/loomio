@@ -74,7 +74,7 @@ export default new class AbilityService
     !thread.closedAt && thread.pinned && @canAdministerGroup(thread.group())
 
   canPinEvent: (event) ->
-    !event.pinned && @canEditThread(event.discussion())
+    !event.pinned && event.depth == 1 && @canEditThread(event.discussion())
 
   canUnpinEvent: (event) ->
     event.pinned && @canEditThread(event.discussion())
@@ -148,14 +148,12 @@ export default new class AbilityService
     @canAdministerGroup(group)
 
   canEditComment: (comment) ->
-    comment.discussion().members().includes(Session.user()) and
     Session.user().isAuthorOf(comment) and
-    (comment.isMostRecent() or comment.group().membersCanEditComments)
+    (comment.isMostRecent() or comment.group().membersCanEditComments) and
+    comment.discussion().members().includes(Session.user())
 
   canDeleteComment: (comment) ->
-    (comment.discussion().members().includes(Session.user()) and
-    Session.user().isAuthorOf(comment)) or
-    @canAdministerGroup(comment.group())
+    (Session.user().isAuthorOf(comment)) or @canAdministerGroup(comment.group())
 
   canRemoveMembership: (membership) ->
     membership and

@@ -25,7 +25,10 @@ export default new class EventService
       name: 'action_dock.pin_event'
       icon: 'mdi-pin'
       canPerform: -> AbilityService.canPinEvent(event)
-      perform: -> event.pin().then -> Flash.success('activity_card.event_pinned')
+      perform: ->
+        openModal
+          component: 'PinEventForm',
+          props: { event: event }
 
     unpin_event:
       name: 'action_dock.unpin_event'

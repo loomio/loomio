@@ -12,20 +12,15 @@ import RangeSet from '@/shared/services/range_set'
 
 export default
   props:
-    event: Object
+    event:
+      type: Object
+      required: true
 
   data: ->
     isDisabled: false
-    isFocused: false
     collapsed: false
     hover: false
     focusStyleClass: null
-
-  created: ->
-    EventBus.$on('focusedEvent', @focused)
-
-  beforeDestroy: ->
-    EventBus.$off('focusedEvent', @focused)
 
   mounted: ->
     @$nextTick =>
@@ -38,12 +33,25 @@ export default
         node.setAttribute('target', '_blank')
 
   methods:
-    focused: (event) -> @isFocused = @event.id == event.id
     viewed: (viewed) -> @event.markAsRead() if viewed
+    focusThenFade: ->
+      @focusStyleClass = 'thread-item--focused'
+      setTimeout =>
+        @focusStyleClass = 'thread-item--previously-focused'
+      , 5000
 
   computed:
+    indentSize: ->
+      switch @event.depth
+        when 0 then 0
+        when 1 then 0
+        when 2 then 12 + 40
+        when 3 then 68
+
     discussion: -> @event.discussion()
-    iconSize: -> if (@event.depth == 1) then 40 else 32
+
+    iconSize: -> if (@event.depth == 1) then 40 else 24
+
     isUnread: ->
       (Session.user().id != @event.actorId) && !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
@@ -59,24 +67,27 @@ export default
       LmoUrlService.event @event
 
   watch:
-    isFocused: ->
-      if @isFocused
-        @focusStyleClass = 'thread-item--focused'
-        changeToPreviouslyFocused = =>
-          @focusStyleClass = 'thread-item--previously-focused'
-        setTimeout(changeToPreviouslyFocused, 1000)
+    '$route.query.p':
+      immediate: true
+      handler: (newVal) ->
+        @focusThenFade() if parseInt(newVal) == @event.position && @event.depth == 1
+
+    '$route.params.sequence_id':
+      immediate: true
+      handler: (newVal) ->
+        @focusThenFade() if parseInt(newVal) == @event.sequenceId
 
 </script>
 
 <template lang="pug">
 div
-  .thread-item.py-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
-    v-layout.lmo-action-dock-wrapper(:id="'sequence-' + event.sequenceId")
-      .thread-item__avatar.mr-4.mt-2
+  .thread-item.px-3.pb-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
+    v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
+      .thread-item__avatar.mr-3.mt-0
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
         v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
       v-layout.thread-item__body(column)
-        v-layout.my-1.align-center.wrap
+        v-layout.align-center.wrap
           h3.thread-item__title.body-2(:id="'event-' + event.id")
             //- div
               | id: {{event.id}}
@@ -84,28 +95,28 @@ div
               | sid {{event.sequenceId}}
               | depth: {{event.depth}}
               | childCount: {{event.childCount}}
+              | eid: {{event.eventableId}}
             slot(name="headline")
               span(v-html='headline')
-          v-spacer
-          router-link.grey--text.body-2(:to='link')
-            time-ago(:date='event.createdAt')
+            mid-dot
+            router-link.grey--text.body-2(:to='link')
+              time-ago(:date='event.createdAt')
         .default-slot(ref="defaultSlot")
           slot
         slot(name="actions")
-        template(v-if='event.childCount > 0')
-          event-children(:discussion='discussion' :parent-event='event' :key="event.id")
   slot(name="append")
 </template>
-
 <style lang="css">
+
+.thread-item__title > .poll-common-stance-choice {
+  display: inline-block;
+}
 .thread-item__title strong {
   font-weight: normal;
 }
 
 .thread-item {
-  transition: border-color 50s;
-  border-left: 2px solid #fff;
-  padding-left: 14px;
+  transition: background 4s ease-out;
 }
 
 .thread-item .v-card__actions {
@@ -119,21 +130,12 @@ div
 
 .thread-item--previously-focused {
   background-color: none;
-  transition: background-color 5s;
+  /* transition: background-color 10s; */
 }
 
 .thread-item--unread {
-  padding-left: $cardPaddingSize - 2px;
-  border-left: 2px solid var(--v-accent-base);
+  background-color:  var(--v-primary-lighten5);
 }
-.thread-item--unread .thread-item--indent {
-    padding-left: $cardPaddingSize + 40px;
-    /* // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding)) */
-}
-
-/* .thread-item--indent {
-  padding-left: 64px;
-} */
 
 .thread-item__body {
   width: 100%;

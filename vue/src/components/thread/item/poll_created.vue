@@ -40,7 +40,7 @@ export default
 
     menuActions: ->
       assign(
-        pick PollService.actions(@poll, @), ['show_history', 'notification_history',  'export_poll', 'delete_poll', 'translate_poll']
+        pick PollService.actions(@poll, @), ['show_history', 'export_poll', 'delete_poll', 'translate_poll']
       ,
         pick EventService.actions(@event, @), ['move_event', 'pin_event', 'unpin_event']
       )
@@ -62,13 +62,11 @@ thread-item.poll-created(:event="event")
   attachment-list(:attachments="poll.attachments")
   document-list(:model='poll' skip-fetch)
   p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
-  div(v-if="poll.pollOptionNames.length")
+  div.body-2(v-if="poll.pollOptionNames.length")
     .poll-common-card__results-shown(v-if='showResults')
       poll-common-directive(:poll='poll', name='chart-panel')
       poll-common-percent-voted(:poll='poll')
     poll-common-action-panel(:poll='poll')
   template(v-slot:actions)
-    v-layout.my-2(align-center)
-      action-dock(:actions="dockActions")
-      action-menu(:actions="menuActions")
+    action-dock(:actions="dockActions" :menu-actions="menuActions")
 </template>

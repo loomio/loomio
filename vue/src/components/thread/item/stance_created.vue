@@ -26,6 +26,7 @@ export default
   created: ->
     @actions =
       edit_stance:
+        name: 'poll_common.change_vote'
         icon: 'mdi-pencil'
         canPerform: =>
           @eventable.latest && @eventable.poll().isActive() && @eventable.participant() == Session.user()
@@ -43,6 +44,7 @@ export default
           @eventable.translate(Session.user().locale)
 
       show_history:
+        name: 'action_dock.edited'
         icon: 'mdi-history'
         canPerform: => @eventable.edited()
         perform: =>
@@ -57,10 +59,9 @@ thread-item.stance-created(:event="event")
   template(v-slot:actions)
     action-dock(:model="eventable" :actions="actions")
   template(v-if="choiceInHeadline" v-slot:headline)
-    v-layout(align-center)
-      component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
-      space
-      poll-common-stance-choice(:stance-choice="eventable.stanceChoices()[0]")
+    component(:is="componentType" :to="event.actor() && urlFor(event.actor())") {{event.actorName()}}
+    space
+    poll-common-stance-choice(:stance-choice="eventable.stanceChoices()[0]")
   poll-common-stance(:stance="eventable" :reason-only="choiceInHeadline")
   attachment-list(:attachments="eventable.attachments")
 </template>

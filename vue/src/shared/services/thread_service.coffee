@@ -9,6 +9,40 @@ import ConfirmModalMixin from '@/mixins/confirm_modal'
 
 export default new class ThreadService
   actions: (discussion, vm) ->
+
+    subscribe:
+      name: 'common.action.subscribe'
+      canPerform: ->
+        discussion.volume() == 'normal' && AbilityService.canChangeVolume(discussion)
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: discussion
+            # newVolume: 'loud'
+
+    unsubscribe:
+      name: 'common.action.unsubscribe'
+      canPerform: ->
+        discussion.volume() == 'loud' && AbilityService.canChangeVolume(discussion)
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: discussion
+            # newVolume: 'normal'
+
+    unignore:
+      name: 'common.action.unignore'
+      canPerform: ->
+        discussion.volume() == 'quiet' && AbilityService.canChangeVolume(discussion)
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: discussion
+            # newVolume: 'quiet'
+
     notification_history:
       name: 'action_dock.notification_history'
       icon: 'mdi-alarm-check'
@@ -50,6 +84,7 @@ export default new class ThreadService
       perform: => @dismiss(discussion)
 
     announce_thread:
+      name: 'action_dock.notify'
       icon: 'mdi-send'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
@@ -77,6 +112,7 @@ export default new class ThreadService
 
     show_history:
       icon: 'mdi-history'
+      name: 'action_dock.edited'
       canPerform: -> discussion.edited()
       perform: ->
         openModal
@@ -85,6 +121,7 @@ export default new class ThreadService
             model: discussion
 
     edit_thread:
+      name: 'common.action.edit'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
