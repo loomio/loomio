@@ -1326,6 +1326,7 @@ en:
     no_one: No one has seen this yet
 
   activity_card:
+    count_responses: "{{count}} responses"
     event_pinned: "Pinned to timeline"
     event_unpinned: "Unpinned from timeline"
     beginning: Beginning

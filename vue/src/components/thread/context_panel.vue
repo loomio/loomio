@@ -106,9 +106,6 @@ export default
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
     action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
-      //- v-btn(text @click="openArrangementForm()" v-if="actions['edit_arrangement'].canPerform()")
-      //-   span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
-      //-   span(v-if="!discussion.newestFirst" v-t="'poll_common_votes_panel.oldest_first'")
   v-divider
 </template>
 <style lang="sass">

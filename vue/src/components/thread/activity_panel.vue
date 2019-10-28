@@ -8,13 +8,14 @@ import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
 import { print } from '@/shared/helpers/window'
+import ThreadService  from '@/shared/services/thread_service'
 
 import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash'
 
 export default
   components:
     ThreadRenderer: -> import('@/components/thread/renderer.vue')
-    
+
   props:
     discussion: Object
     viewportIsBelow: Boolean
@@ -121,6 +122,9 @@ export default
         @waitFor "#sequence-#{event.sequenceId}", =>
           @scrollTo("#sequence-#{event.sequenceId}")
 
+    openArrangementForm: ->
+      ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
+
   watch:
     '$route.params.sequence_id': 'respondToRoute'
     '$route.params.comment_id': 'respondToRoute'
@@ -130,9 +134,18 @@ export default
     canStartPoll: ->
       AbilityService.canStartPoll(@discussion)
 
+    canEditThread: ->
+      AbilityService.canEditThread(@discussion)
+
 </script>
 
 <template lang="pug">
-.activity-panel.py-4
+.activity-panel
+  .text-center.py-2
+    v-btn.action-button.grey--text(text small @click="openArrangementForm()" v-if="canEditThread")
+      span(v-t="{path: 'activity_card.count_responses', args: {count: parentEvent.childCount}}")
+      space
+      span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
+      span(v-if="!discussion.newestFirst" v-t="'poll_common_votes_panel.oldest_first'")
   thread-renderer(:newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :initial-slots="initialSlots")
 </template>
