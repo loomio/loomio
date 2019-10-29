@@ -76,12 +76,13 @@ v-card.change-volume-form
       dismiss-modal-button(v-if="showClose" :close="close")
     v-card-text
       p(v-t="'change_volume_form.simple.question'")
-      v-radio-group.mb-4(hide-details v-model='volume')
+      v-radio-group.text-lowercase.mb-4(hide-details v-model='volume')
         v-radio.volume-loud(value='loud' :label="labelFor('loud')")
         v-radio.volume-normal(value='normal' :label="labelFor('normal')")
         v-radio.volume-quiet(value='quiet' :label="labelFor('quiet')")
 
-      v-alert(v-if="model.isA('discussion')" dense text type="info" v-t="'change_volume_form.explain_scope.thread'")
+      v-alert(v-if="model.isA('discussion')" dense text type="info")
+        span(v-t="'change_volume_form.explain_scope.thread'")
       v-alert(v-if="model.isA('membership')" dense text type="info" v-t="'change_volume_form.explain_scope.group'")
       div(v-if="model.isA('membership') && model.group().parentOrSelf().hasSubgroups()")
         v-checkbox#apply-to-all.mb-4(v-if="model.isA('membership')" v-model='applyToAll', :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })" hide-details)

@@ -251,8 +251,8 @@ en:
 
   change_volume_form:
     explain_scope:
-      thread: This changes notification settings for the thread
-      group: This changes notification settings for the group
+      thread: This changes when you'll be notified about this thread
+      group: This changes when you'll be notified about all threads in the group
 
     simple:
       label: Notifications
