@@ -44,6 +44,7 @@ export default
 
   computed:
     isEmptyUser: -> isEmpty @user
+    canContactUser: -> AbilityService.canContactUser(@user)
 
 </script>
 
@@ -51,8 +52,8 @@ export default
 v-container.user-page.max-width-800.mt-4
   loading(v-if='isEmptyUser')
   .user-page__profile(v-if='!isEmptyUser')
-    .user-page__content.d-flex
-      .user-page__info
+    v-layout.user-page__content
+      v-layout.user-page__info(column)
         h1.headline {{user.name}}
         .lmo-hint-text @{{user.username}}
         p {{user.shortBio}}
@@ -61,9 +62,9 @@ v-container.user-page.max-width-800.mt-4
         span : {{user.timeZone}}
         div(v-t="{ path: 'user_page.location_field', args: { value: user.location } }", v-if='user.location')
         div(v-t="{ path: 'user_page.online_field', args: { value: approximate(user.lastSeenAt) } }", v-if='user.lastSeenAt')
-      .flex-column.align-self-center.align-center
+      v-layout(column)
         user-avatar(:user='user', size='featured')
-        v-btn.my-4.user-page__contact-user(color="accent" outlined @click='openContactRequestModal(user)' v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
+        v-btn.my-4.user-page__contact-user(v-if="canContactUser" color="accent" outlined @click='openContactRequestModal(user)' v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
     .user-page__groups
       h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
       v-list
