@@ -42,7 +42,8 @@ export default
         when 'user'       then null
 
     labelFor: (volume) ->
-      @$t("change_volume_form.simple.#{volume}")+' - '+@$t("change_volume_form.simple.#{volume}_explain")
+      @$t("change_volume_form.simple.#{volume}_explain") + ' ('+@$t("change_volume_form.simple.#{volume}")+')'
+      # @$t("change_volume_form.simple.#{volume}")+' - '+@$t("change_volume_form.simple.#{volume}_explain")
 
     translateKey: (key) ->
       if @model.isA('user')
@@ -74,21 +75,21 @@ v-card.change-volume-form
       v-spacer
       dismiss-modal-button(v-if="showClose" :close="close")
     v-card-text
-      v-alert(v-if="model.isA('discussion')" dense text type="info" v-t="'change_volume_form.explain_scope.thread'")
-      v-alert(v-if="model.isA('membership')" dense text type="info" v-t="'change_volume_form.explain_scope.group'")
-      p.mt-4(v-if="model.isA('membership')")
-      v-radio-group(hide-details v-model='volume')
+      p(v-t="'change_volume_form.simple.question'")
+      v-radio-group.mb-4(hide-details v-model='volume')
         v-radio.volume-loud(value='loud' :label="labelFor('loud')")
         v-radio.volume-normal(value='normal' :label="labelFor('normal')")
         v-radio.volume-quiet(value='quiet' :label="labelFor('quiet')")
 
+      v-alert(v-if="model.isA('discussion')" dense text type="info" v-t="'change_volume_form.explain_scope.thread'")
+      v-alert(v-if="model.isA('membership')" dense text type="info" v-t="'change_volume_form.explain_scope.group'")
       div(v-if="model.isA('membership') && model.group().parentOrSelf().hasSubgroups()")
         v-checkbox#apply-to-all.mb-4(v-if="model.isA('membership')" v-model='applyToAll', :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })" hide-details)
 
       p.mt-4(v-if="model.isA('discussion')")
         a(@click="openGroupVolumeModal()" v-t="'change_volume_form.discussion.group'")
       p.mt-4(v-if="model.isA('membership')")
-        a(@click="openUserPreferences()") Change user email preferences
+        a(@click="openUserPreferences()" v-t="'change_volume_form.discussion.user'")
     v-card-actions(align-center)
       v-spacer
       v-btn.change-volume-form__submit(type='button', :disabled='!formChanged', v-t="'common.action.update'" @click='submit()' color="primary")

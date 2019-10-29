@@ -257,8 +257,9 @@ en:
       loud: Subscribed
       normal: Normal
       quiet: Ignore
+      question: When do you want to be notified?
       loud_explain: whenever there is activity
-      normal_explain: when someone wants your attention
+      normal_explain: when someone asks for your attention
       quiet_explain: no notifications
 
     aria_label: "Change email settings form"
@@ -275,6 +276,7 @@ en:
       apply_to_all: "Apply these settings to all threads in this group."
       only_this_thread: "Applies to this thread only"
       group: "Change notifications for group"
+      user: "Change user notification settings"
       messages:
         loud: "You will be emailed activity in this thread."
         normal: "You will be emailed about proposals in this thread."
