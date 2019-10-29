@@ -79,7 +79,7 @@ export default
     .poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
       v-subheader.poll-dot-vote-vote-form__option-label {{ optionFor(choice).name }}
       v-layout(row align-center)
-        v-slider.poll-dot-vote-vote-form__slider.mr-4(v-model='choice.score' :rules="rulesForChoice(choice)" :color="optionFor(choice).color" :thumb-color="optionFor(choice).color" :track-color="optionFor(choice).color" :height="4" :thumb-size="24" :thumb-label="(choice.score > 0) ? 'always' : true" :min="0" :max="dotsPerPerson")
+        v-slider.poll-dot-vote-vote-form__slider.mr-4(v-model='choice.score' :rules="rulesForChoice(choice)" :color="optionFor(choice).color" :thumb-color="optionFor(choice).color" :track-color="optionFor(choice).color" :height="4" :thumb-size="24" :thumb-label="(choice.score > 0) ? 'always' : true" :min="0" :max="dotsPerPerson" :readonly="false")
     validation-errors(:subject='stance', field='stanceChoices')
 
   poll-common-add-option-button(:poll='stance.poll()')

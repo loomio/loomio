@@ -68,6 +68,11 @@ module.exports = (test) ->
     test.clearValue(selector)
     test.setValue(selector, value)
 
+  fillInAndEnter: (selector, value, wait) ->
+    @waitFor(selector, wait)
+    test.clearValue(selector)
+    test.setValue(selector, [value, test.Keys.ENTER])
+
   execute: (script) ->
     test.execute(script)
 

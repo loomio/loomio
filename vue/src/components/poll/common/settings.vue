@@ -19,7 +19,7 @@ export default
 v-list.poll-common-settings(two-line)
   v-list-item.poll-common-checkbox-option(v-for="(setting, index) in settings", :key="index")
     v-list-item-action
-      v-checkbox(v-model="poll[setting]")
+      v-checkbox(v-model="poll[setting]" :class="'poll-settings-' + setting")
     v-list-item-content
       v-list-item-title(v-t="'poll_common_settings.' + snakify(setting) + '.title'")
       v-list-item-subtitle(v-t="'poll_common_settings.' + snakify(setting) + '.helptext_on'")
