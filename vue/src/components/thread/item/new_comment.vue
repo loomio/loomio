@@ -25,7 +25,11 @@ export default
         reply_to_comment = 'reply_to_comment'
         show_history = 'show_history'
 
-      pick @commentActions, compact ['react', reply_to_comment, edit_comment, show_history]
+      assign(
+        pick @commentActions, compact ['react', reply_to_comment, edit_comment, show_history]
+      ,
+        pick @eventActions, ['pin_event', 'unpin_event']
+      )
 
     menuActions: ->
       if AbilityService.canEditComment(@eventable)
@@ -35,7 +39,7 @@ export default
       assign(
         pick @commentActions, compact [reply_to_comment, show_history, 'notification_history', 'translate_comment' , 'delete_comment']
       ,
-        pick @eventActions, ['move_event', 'pin_event', 'unpin_event']
+        pick @eventActions, ['move_event']
       )
 
   data: ->

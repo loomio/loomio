@@ -22,7 +22,7 @@ export default new class EventService
         AbilityService.canAdministerDiscussion(event.discussion())
 
     pin_event:
-      name: 'action_dock.pin_event'
+      name: 'common.action.pin'
       icon: 'mdi-pin'
       canPerform: -> AbilityService.canPinEvent(event)
       perform: ->
@@ -31,7 +31,7 @@ export default new class EventService
           props: { event: event }
 
     unpin_event:
-      name: 'action_dock.unpin_event'
+      name: 'common.action.unpin'
       icon: 'mdi-pin-off'
       canPerform: -> AbilityService.canUnpinEvent(event)
       perform: -> event.unpin().then -> Flash.success('activity_card.event_unpinned')

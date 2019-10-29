@@ -146,6 +146,8 @@ en:
     points_abbrev: Each vote worth {{score}} points
     total: Total
     action:
+      pin: Pin
+      unpin: Unpin
       search: 'Search'
       filter: 'Filter'
       back: 'Back'

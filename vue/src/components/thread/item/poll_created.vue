@@ -42,10 +42,14 @@ export default
       assign(
         pick PollService.actions(@poll, @), ['show_history', 'export_poll', 'delete_poll', 'translate_poll']
       ,
-        pick EventService.actions(@event, @), ['move_event', 'pin_event', 'unpin_event']
+        pick EventService.actions(@event, @), ['move_event']
       )
     dockActions: ->
-      pick PollService.actions(@poll, @), ['announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
+      assign(
+        pick PollService.actions(@poll, @), ['announce_poll', 'edit_poll', 'close_poll', 'reopen_poll']
+      ,
+        pick EventService.actions(@event, @), ['pin_event', 'unpin_event']
+      )
 
 </script>
 

@@ -92,7 +92,7 @@ export default
         else
           parseInt(@knobHeight / 2)
 
-      @knobOffset = @getEventOffset(event) - adjust
+      @knobOffset = @getEventOffset(event)
       @position = @positionFor(@getEventOffset(event))
 
     getEventOffset: (event) ->
@@ -136,7 +136,7 @@ export default
           position
 
       if @discussion.newestFirst
-        @childCount - position
+        @childCount - position + 1
       else
         position
 
@@ -264,7 +264,6 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   transition: none
   width: 12px
   margin: 0 6px
-  min-height: 64px
 
 .disable-select
   user-select: none
