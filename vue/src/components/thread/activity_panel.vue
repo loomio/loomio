@@ -57,7 +57,7 @@ export default
         else
           @fetchEvent('position', 1)
 
-        @scrollTo(0)
+        @scrollTo('#context')
 
 
     fetchEvent: (idType, id) ->
