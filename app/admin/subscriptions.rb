@@ -67,7 +67,7 @@ ActiveAdmin.register Subscription do
     inputs 'Subscription' do
       input :plan, as: :select, collection: SubscriptionService::PLANS.keys
       input :payment_method, as: :select, collection: Subscription::PAYMENT_METHODS
-      input :state, as: :select, collection: ['active', 'canceled']
+      input :state, as: :select, collection: ['active', 'canceled', 'trialing']
       input :expires_at
       input :max_threads
       input :max_members
