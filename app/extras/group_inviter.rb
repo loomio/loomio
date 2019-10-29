@@ -34,13 +34,17 @@ class GroupInviter
   private
 
   def generate_users!
-    User.import(safe_emails.map do |email|
+    User.import(safe_emails(@emails).map do |email|
       User.new(email: email, time_zone: @inviter.time_zone, detected_locale: @inviter.locale)
     end, on_duplicate_key_ignore: true)
   end
 
-  def safe_emails
-    @emails.uniq.reject {|email| Regexp.new(ENV.fetch('SPAM_REGEX', '.+')).match(email) }
+  def safe_emails(emails)
+    if ENV['SPAM_REGEX']
+      emails.uniq.reject {|email| Regexp.new(ENV['SPAM_REGEX']).match(email) }
+    else
+      emails.uniq
+    end
   end
 
   def generate_memberships!
