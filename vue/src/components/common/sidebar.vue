@@ -128,7 +128,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       v-layout(align-center)
         span.ml-4 {{version}}
 
-  v-list-group
+  v-list-group.sidebar__user-dropdown
     template(v-slot:activator)
       v-list-item-content
         v-list-item-title {{user.name}}

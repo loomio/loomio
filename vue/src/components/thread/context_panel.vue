@@ -68,7 +68,7 @@ export default
 <template lang="pug">
 .context-panel.lmo-action-dock-wrapper#context(v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
   v-layout(align-center mr-3 ml-2 pt-2 wrap)
-    v-breadcrumbs(:items="groups" divider=">")
+    v-breadcrumbs.context-panel__breadcrumbs(:items="groups" divider=">")
     tags-display(:discussion="discussion")
     span
     v-spacer
