@@ -13,7 +13,7 @@ export default
     group: null
     loader: null
     attachmentLoader: null
-    fragment: ''
+    searchQuery: ''
     items: []
     subgroups: 'mine'
     per: 25
@@ -50,14 +50,15 @@ export default
       collections: ['documents', 'attachments']
       query: => @query()
 
-    @fragment = @$route.query.q || ''
+    @searchQuery = @$route.query.q || ''
     @fetch()
 
   watch:
-    '$route.query.q': (val) ->
-      @fragment = val || ''
+    '$route.query.q': debounce (val) ->
+      @searchQuery = val || ''
       @fetch()
       @query()
+    , 500
 
   methods:
     query: ->
@@ -68,23 +69,23 @@ export default
 
       documents = Records.documents.collection.chain().
                      find(groupId: {$in: groupIds}).
-                     find(title: {$regex: ///#{@fragment}///i}).
+                     find(title: {$regex: ///#{@searchQuery}///i}).
                      limit(@from + @per).data()
 
       attachments = Records.attachments.collection.chain().
                      find(groupId: {$in: groupIds}).
-                     find(filename: {$regex: ///#{@fragment}///i}).
+                     find(filename: {$regex: ///#{@searchQuery}///i}).
                      limit(@from + @per).data()
 
       @items = orderBy(documents.concat(attachments), 'createdAt', 'desc')
 
     fetch: debounce ->
       @loader.fetchRecords
-        q: @fragment
+        q: @searchQuery
         from: @from
 
       @attachmentLoader.fetchRecords
-        q: @fragment
+        q: @searchQuery
         from: @from
     , 500
 
@@ -92,6 +93,8 @@ export default
       @from += @per
       @fetch()
 
+    handleSearchQueryChange: (val) ->
+      @$router.replace({ query: { q: val } })
 
   computed:
     showLoadMore: -> !@loader.exhausted && !@attachmentLoader.exhausted
@@ -107,7 +110,8 @@ v-card.group-files-panel
   //- v-divider
   //-
   //- v-alert(:value="true" color="info" outlined icon="info" v-t="'group_files_panel.no_files'")
-
+  v-layout
+    v-text-field(dense clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})")
   v-simple-table(:items="items" hide-default-footer)
     thead
       tr
