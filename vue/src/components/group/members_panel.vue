@@ -5,7 +5,7 @@ import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
-import {includes, some, compact, intersection, orderBy, slice} from 'lodash'
+import {includes, some, compact, intersection, orderBy, slice, debounce} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import { exact, approximate } from '@/shared/helpers/format_time'
 
@@ -159,9 +159,10 @@ export default
       else
         @subgroups = 'none'
 
-    '$route.query.q': (val) ->
+    '$route.query.q': debounce (val) ->
       @searchQuery = val
       @refresh()
+    , 500
 
 </script>
 
