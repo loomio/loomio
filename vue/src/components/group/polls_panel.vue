@@ -36,7 +36,7 @@ export default
     @watchRecords
       collections: ['polls', 'groups', 'memberships']
       query: => @query()
-
+    @handleQueryChange(@$route.query)
     @refresh()
 
   methods:
@@ -74,19 +74,6 @@ export default
 
       @polls = chain.simplesort('-createdAt').limit(@loader.numRequested).data()
 
-    selectFilter: (pair) ->
-      name = keys(pair)[0]
-      value  = values(pair)[0]
-
-      params = omit(@$route.query, ['t', 'status', 'poll_type'])
-
-      if value == "all"
-        @$router.replace(query: params)
-      else
-        @$router.replace(query: Object.assign({}, params, {"#{name}": value}))
-
-      @filter = value
-
     fetch: debounce ->
       @loader.fetchRecords
         group_key: @group.key
@@ -99,30 +86,21 @@ export default
     ,
       300
 
-  watch:
-    filter: -> @refresh()
-    '$route.query.q': (val) ->
-      @search = val
+    handleQueryChange: (val) ->
+      @filter = val.poll_type || val.status
+      @search = val.q
       @refresh()
+
+
+  watch:
+    '$route.query': 'handleQueryChange'
+
     subgroups: -> @refresh()
 
 </script>
 
 <template lang="pug">
 .polls-panel
-  v-chip-group.pl-2(v-model="filter" active-class="accent--text")
-    v-chip(label outlined value="all" @click="selectFilter({status: 'all'})")
-      span(v-t="'polls_panel.all'")
-    v-chip(label outlined value="active" @click="selectFilter({status: 'active'})")
-      span(v-t="'polls_panel.open'")
-    v-chip(label outlined value="closed" @click="selectFilter({status: 'closed'})")
-      span(v-t="'polls_panel.closed'")
-    v-divider.mr-2.ml-1(inset vertical)
-    span(v-for="pollType in pollTypes" :key="pollType")
-      v-chip(label outlined :value="pollType" @click="selectFilter({poll_type: pollType})")
-        span(v-t="'poll_types.'+pollType")
-    v-divider.mr-2.ml-1(inset vertical)
-
   v-card
     v-list(two-line avatar v-if='polls.length')
       poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
