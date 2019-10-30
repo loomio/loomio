@@ -71,10 +71,10 @@ export default
         else
           chain = chain.find(groupId: @group.id)
 
-      if @search
+      if @searchQuery
         chain = chain.where (membership) =>
           some [membership.user().name, membership.user().username], (name) =>
-            RegExp("^#{@search}", "i").test(name) or RegExp(" #{@search}", "i").test(name)
+            RegExp("^#{@searchQuery}", "i").test(name) or RegExp(" #{@searchQuery}", "i").test(name)
 
 
       records = switch @order
@@ -100,7 +100,7 @@ export default
 
     fetch: ->
       @loader.fetchRecords
-        q: @search
+        q: @searchQuery
         from: @from
         order: @order
         subgroups: @subgroups
@@ -160,7 +160,7 @@ export default
         @subgroups = 'none'
 
     '$route.query.q': (val) ->
-      @search = val
+      @searchQuery = val
       @refresh()
 
 </script>

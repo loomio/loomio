@@ -9,6 +9,8 @@ export default
   methods:
     invite: ->
       @openAnnouncementModal(Records.announcements.buildFromModel(@group.targetModel()))
+    handleSearchQueryChange: (val) ->
+      @$router.replace({ query: { q: val } })
   computed:
     canAddMembers: ->
       AbilityService.canAddMembers(@group.targetModel().group() || @group) && !@pending
@@ -26,6 +28,7 @@ export default
     v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
     space
     shareable-link-modal(:group="group")
+    v-text-field(dense clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_members', {name: group.name})")
   v-card
     v-tabs(fixed-tabs)
       v-tab.group-page__directory-tab(:to="urlFor(group, 'members')" v-t="'members_panel.directory'")
