@@ -13,7 +13,7 @@ export default
   data: ->
     group: Records.groups.fuzzyFind(@$route.params.key)
     polls: []
-    search: ''
+    searchQuery: ''
     loader: null
     per: 50
     from: 0
@@ -67,10 +67,10 @@ export default
           true
           # it's a group tag
 
-      if @search
+      if @searchQuery
         chain = chain.where (poll) =>
           some [poll.title, poll.details], (field) =>
-            every @search.split(' '), (frag) -> RegExp(frag, "i").test(field)
+            every @searchQuery.split(' '), (frag) -> RegExp(frag, "i").test(field)
 
       @polls = chain.simplesort('-createdAt').limit(@loader.numRequested).data()
 
@@ -81,19 +81,23 @@ export default
         poll_type: @$route.query.poll_type
         per: @per
         from: @from
-        query: @search
+        query: @searchQuery
         subgroups: @subgroups
     ,
       300
 
     handleQueryChange: (val) ->
       @filter = val.poll_type || val.status
-      @search = val.q
+      @searchQuery = val.q
       @refresh()
 
 
   watch:
     '$route.query': 'handleQueryChange'
+
+    searchQuery: debounce (val) ->
+      @$router.replace(query: { q: val })
+    , 500
 
     subgroups: -> @refresh()
 
@@ -101,11 +105,13 @@ export default
 
 <template lang="pug">
 .polls-panel
+  v-layout
+    v-text-field(dense clearable hide-details solo v-model="searchQuery" :placeholder="$t('navbar.search_polls', {name: group.name})")
   v-card
     v-list(two-line avatar v-if='polls.length')
       poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
 
-    v-alert(v-if='polls.length == 0 && !loader.loading' :value="true" color="grey" outlined icon="info" v-t="'group_polls_panel.no_polls'")
+    v-alert(v-if='polls.length == 0 && !loader.loading' :value="true" color="grey" outlined icon="info" v-t="'polls_panel.no_polls'")
 
     v-layout(justify-center)
       v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
