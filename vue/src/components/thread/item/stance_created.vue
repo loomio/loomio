@@ -39,6 +39,7 @@ export default
       translate_stance:
         icon: 'mdi-translate'
         canPerform: =>
+          @eventable.author().locale != Session.user().locale &&
           @eventable.reason && AbilityService.canTranslate(@eventable)
         perform: =>
           @eventable.translate(Session.user().locale)
