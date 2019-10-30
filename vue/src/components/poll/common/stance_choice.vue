@@ -59,6 +59,6 @@ export default
         mid-dot
         span {{stanceChoice.rankOrScore}}
   span(v-if="poll.datesAsOptions()")
-    v-chip(small outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
+    v-chip(outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
       poll-meeting-time(:name="optionName")
 </template>
