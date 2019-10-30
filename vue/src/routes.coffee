@@ -7,7 +7,11 @@ import PollPage from './components/poll/page.vue'
 
 import GroupPage from './components/group/page.vue'
 import GroupDiscussionsPanel from './components/group/discussions_panel'
+import GroupDiscussionsNav from './components/group/discussions_nav'
+
 import GroupPollsPanel from './components/group/polls_panel'
+import GroupPollsNav from './components/group/polls_nav'
+
 import MembersPanel from './components/group/members_panel'
 import GroupSubgroupsPanel from './components/group/subgroups_panel'
 import GroupFilesPanel from './components/group/files_panel'
@@ -23,9 +27,10 @@ import StartDiscussionPage from './components/start_discussion/page.vue'
 import UserPage from './components/user/page.vue'
 import InstallSlackPage from './components/install_slack/page.vue'
 
-import ActivityPanel from './components/thread/activity_panel'
-import ThreadPollsPanel from './components/thread/polls_panel'
-import ThreadMembersPanel from './components/thread/members_panel'
+# import ActivityPanel from './components/thread/activity_panel'
+# import ThreadPollsPanel from './components/thread/polls_panel'
+# import ThreadMembersPanel from './components/thread/members_panel'
+import ThreadNav from './components/thread/nav'
 
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -33,24 +38,24 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 groupPageChildren = [
-  {path: 'polls', component: GroupPollsPanel}
+  {path: 'polls', components: {default: GroupPollsPanel, nav: GroupPollsNav}}
   {path: 'members', component: MembersTabs, children: [
     {path: '', component: MembersPanel}
     {path: 'invitations', component: InvitationsPanel}
     {path: 'requests', component: MembershipRequestsPanel}
     ]}
-  {path: 'subgroups', component: GroupSubgroupsPanel}
+  # {path: 'subgroups', component: GroupSubgroupsPanel}
   {path: 'files', component: GroupFilesPanel}
   {path: 'membership_requests', redirect: 'members/requests' }
   {path: 'settings', component: GroupSettingsPanel}
-  {path: ':stub?', component: GroupDiscussionsPanel}
+  {path: ':stub?', components: {default: GroupDiscussionsPanel, nav: GroupDiscussionsNav}}
   {path: 'slack/install', component: InstallSlackPage}
 ]
 
 threadPageChildren = [
-  {path: 'comment/:comment_id', component: ActivityPanel}
-  {path: ':stub?/:sequence_id?', component: ActivityPanel}
-  {path: '', component: ActivityPanel}
+  {path: 'comment/:comment_id', components: {nav: ThreadNav}}
+  {path: ':stub?/:sequence_id?', components: {nav: ThreadNav}}
+  {path: '', components: {nav: ThreadNav}}
 ]
 
 
