@@ -8,7 +8,7 @@ export default
 
 <template lang="pug">
 div.d-flex.justify-end.align-center.flex-wrap
-  reaction-display(:model="model")
+  reaction-display(:model="model" v-if="Object.keys(actions).includes('react')")
   .action-dock__action(v-for='(action, name) in actions' v-if='action.canPerform()' :key="name")
     reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'")
     action-button(v-if="name != 'react'" :action="action" :name="name")
