@@ -84,7 +84,7 @@ export default new class ThreadService
       perform: => @dismiss(discussion)
 
     announce_thread:
-      name: 'action_dock.notify'
+      name: 'invitation_form.invite_people'
       icon: 'mdi-send'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
