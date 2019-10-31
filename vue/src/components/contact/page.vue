@@ -65,6 +65,7 @@ v-container.contact-page
         v-spacer
         v-btn(color="primary" @click='submit', v-t="'contact_message_form.send_message'")
 
-    v-card.contact-form__success(v-show='submitted')
-      h1.headline(v-html="$t('contact_message_form.success', { name: message.name })")
+  v-card.contact-form__success(v-show='submitted')
+    v-card-title
+      h1.headline(v-t="$t('contact_message_form.success', { name: message.name })")
 </template>
