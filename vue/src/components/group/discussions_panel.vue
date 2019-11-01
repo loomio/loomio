@@ -156,7 +156,7 @@ div.discussions-panel(:key="group.id")
   attachment-list(:attachments="group.attachments")
   v-layout.py-2(align-center)
     v-btn.mr-2.discussions-panel__new-thread-button(@click='openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
-    v-text-field(dense clearable hide-details solo v-model="searchQuery" :placeholder="$t('navbar.search_threads', {name: group.name})")
+    v-text-field(dense clearable hide-details solo v-model="searchQuery" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify")
 
 
   v-card.discussions-panel

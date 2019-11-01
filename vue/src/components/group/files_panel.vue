@@ -104,30 +104,26 @@ export default
 </script>
 
 <template lang="pug">
-v-card.group-files-panel
-  //- v-toolbar(flat transparent)
-  //-   v-spacer
-  //- v-divider
-  //-
-  //- v-alert(:value="true" color="info" outlined icon="info" v-t="'group_files_panel.no_files'")
-  v-layout
-    v-text-field(dense clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})")
-  v-simple-table(:items="items" hide-default-footer)
-    thead
-      tr
-        th(v-t="'group_files_panel.filename'")
-        th(v-t="'group_files_panel.uploaded_by'")
-        th(v-t="'group_files_panel.uploaded_at'")
-    tbody
-      tr(v-for="item in items" :key="item.id")
-        td
-          v-layout(align-center)
-            v-icon mdi-{{item.icon}}
-            a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
-        td
-          user-avatar(:user="item.author()")
-        td
-          time-ago(:date="item.createdAt")
-  v-layout(justify-center)
-    v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="loadMore()" v-t="'common.action.load_more'")
+div
+  v-layout.py-2(align-center)
+    v-text-field(dense clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
+  v-card.group-files-panel
+    v-simple-table(:items="items" hide-default-footer)
+      thead
+        tr
+          th(v-t="'group_files_panel.filename'")
+          th(v-t="'group_files_panel.uploaded_by'")
+          th(v-t="'group_files_panel.uploaded_at'")
+      tbody
+        tr(v-for="item in items" :key="item.id")
+          td
+            v-layout(align-center)
+              v-icon mdi-{{item.icon}}
+              a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
+          td
+            user-avatar(:user="item.author()")
+          td
+            time-ago(:date="item.createdAt")
+    v-layout(justify-center)
+      v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="loadMore()" v-t="'common.action.load_more'")
 </template>

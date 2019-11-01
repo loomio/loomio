@@ -105,8 +105,8 @@ export default
 
 <template lang="pug">
 .polls-panel
-  v-layout
-    v-text-field(dense clearable hide-details solo v-model="searchQuery" :placeholder="$t('navbar.search_polls', {name: group.name})")
+  v-layout.py-2(align-center)
+    v-text-field(dense clearable hide-details solo v-model="searchQuery" :placeholder="$t('navbar.search_polls', {name: group.name})" append-icon="mdi-magnify")
   v-card
     v-list(two-line avatar v-if='polls.length')
       poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')

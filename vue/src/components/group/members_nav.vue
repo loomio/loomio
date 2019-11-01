@@ -13,14 +13,16 @@ export default
 
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(:permanent="$vuetify.breakpoint.mdAndUp" width="230px" app right clipped color="transparent" floating)
-  v-subheader Status
+  v-subheader Filters
   ul
     li
-      router-link(:to="{query: { status: 'all' }}" v-t="'polls_panel.all'")
+      router-link(:to="{query: {status: 'all' }}") Admins
     li
-      router-link(:to="{query: {status: 'active'}}" v-t="'polls_panel.open'")
+      router-link(:to="{query: {status: 'active'}}") Members
     li
-      router-link(:to="{query: {status: 'closed'}}" v-t="'polls_panel.closed'")
+      router-link(:to="{query: {status: 'closed'}}") Invited
+    li
+      router-link(:to="{query: {status: 'closed'}}") Requests
 
   v-subheader Poll type
   ul
