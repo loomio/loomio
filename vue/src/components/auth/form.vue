@@ -21,7 +21,6 @@ export default
   submit-overlay(:value='isDisabled')
   .auth-form__logging-in(v-if='!loginComplete')
     .auth-form__email-not-set(v-if='!user.emailStatus')
-      p.text-center Loomio is a place to have discussions and collaborate
       auth-provider-form(:user='user')
       auth-email-form(:user='user' v-if='emailLogin')
       .auth-form__privacy-notice.caption.text-center.mt-4(v-if='privacyUrl' v-html="$t('auth_form.privacy_notice', { siteName: siteName, privacyUrl: privacyUrl })")

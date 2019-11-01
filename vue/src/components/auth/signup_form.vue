@@ -17,6 +17,7 @@ export default
     user: Object
   data: ->
     vars: {name: @name, site_name: AppConfig.theme.site_name}
+    loading: false
   methods:
     submit: ->
       if @useRecaptcha
@@ -28,7 +29,9 @@ export default
       @user.recaptcha = recaptcha
       if AuthService.validSignup(@vars, @user)
         # EventBus.emit $scope, 'processing'
+        @loading = true
         AuthService.signUp(@user).finally ->
+          @loading = false
           # EventBus.emit $scope, 'doneProcessing'
   computed:
     recaptchaKey: -> AppConfig.recaptchaKey
@@ -58,8 +61,8 @@ div(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @ke
           span(v-html="$t('auth_form.i_accept', { termsUrl: termsUrl, privacyUrl: privacyUrl })")
       validation-errors(:subject='user', field='legalAccepted')
     v-card-actions
-      v-btn(text color="warning" v-t="'common.action.back'" @click='user.emailStatus = null')
+      v-btn(v-t="'common.action.back'" @click='user.emailStatus = null')
       v-spacer
-      v-btn.auth-signup-form__submit(color="primary" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
+      v-btn.auth-signup-form__submit(color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
     v-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
 </template>

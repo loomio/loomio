@@ -31,7 +31,7 @@ export default
 <template lang="pug">
 .auth-provider-form(v-if='providers.length')
   v-layout.auth-provider-form__providers(column)
-    v-btn.auth-provider-form__provider.my-1(v-for='provider in providers' :key="provider.id" outlined :color="providerColor(provider.name)" @click='select(provider)')
+    v-btn.auth-provider-form__provider.my-2(v-for='provider in providers' :key="provider.id" outlined :color="providerColor(provider.name)" @click='select(provider)')
       v-icon {{ iconClass(provider.name) }}
       space
       span(v-t="{ path: 'auth_form.continue_with_provider', args: { provider: capitalize(provider.name) } }")
