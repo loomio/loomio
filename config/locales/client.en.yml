@@ -16,6 +16,7 @@ en:
     tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
 
   loomio_tags:
+    all_tags: All tags
     tags: Tags
     apply_tags: Apply tags
     new_tag: Create tag

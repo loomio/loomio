@@ -5,7 +5,7 @@ import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
-import { map, debounce, orderBy, intersection, compact, omit, identity, filter, concat, uniq } from 'lodash'
+import { map, debounce, orderBy, intersection, compact, omit, pickBy, identity, filter, concat, uniq } from 'lodash'
 import Session from '@/shared/services/session'
 
 export default
@@ -20,6 +20,7 @@ export default
     loader: null
     searchLoader: null
     searchQuery: ''
+    tag: null
     filter: 'open'
     subgroups: 'mine'
     showSearch: false
@@ -88,8 +89,9 @@ export default
             chain = chain.where (discussion) -> discussion.isUnread()
           when 'closed'
             chain = chain.find(closedAt: {$ne: null})
-          else
-            chain = chain.find({tagNames: {'$contains': @filter}})
+
+        if @tag
+          chain = chain.find({tagNames: {'$contains': @tag}})
 
         chain = chain.compoundsort([['pinned', true], ['lastActivityAt', true]])
 
@@ -102,7 +104,7 @@ export default
         params = {from: @from}
         params.filter = 'show_closed' if @filter == 'closed'
         params.subgroups = @subgroups
-        # params.tags = @tags.join("|")
+        params.tags = @tag
         @loader.fetchRecords(params)
     ,
       300
@@ -114,19 +116,18 @@ export default
         when 'closed' then 'discussions_panel.closed'
         when 'subscribed' then 'change_volume_form.simple.loud'
 
+    mergeRouteQuery: (obj) ->
+      {query: pickBy(Object.assign({}, @$route.query, obj), identity)}
+
   watch:
     '$route.params.key': 'init'
     '$route.query':
       immediate: true
       handler: (query) ->
-        @searchQuery = ''
-        @filter = 'open'
-        @subgroups = 'mine'
-
-        @filter = @$route.query.t if @$route.query.t
-        @searchQuery = @$route.query.q if @$route.query.q
-        @subgroups = @$route.query.subgroups if @$route.query.subgroups
-
+        @tag = @$route.query.tag
+        @filter = @$route.query.t || 'open'
+        @searchQuery = @$route.query.q || ''
+        @subgroups = @$route.query.subgroups || 'mine'
         @refresh()
 
     searchQuery: debounce (val, old)->
@@ -137,6 +138,7 @@ export default
   computed:
     groupTags: ->
       @group && @group.parentOrSelf().tagNames || []
+
     loading: ->
       @loader.loading || @searchLoader.loading
 
@@ -165,35 +167,40 @@ div.discussions-panel(:key="group.id")
   document-list(:model='group')
   attachment-list(:attachments="group.attachments")
   v-layout.py-3(align-center)
+    //- v-select(solo hide-details flat flex-shrink :items="['Open']").mr-2
+    //- v-select(solo hide-details flat flex-shrink :items="['All tags']").mr-2
     v-menu
       template(v-slot:activator="{ on }")
         v-btn.mr-2.text-lowercase(v-on="on" text)
           span(v-t="{path: filterName(filter), args: {count: unreadCount}}")
           v-icon mdi-menu-down
-      v-list
-        v-list-item(:to="{query: {t: null}}")
+      v-list(dense)
+        v-list-item(:to="mergeRouteQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.open'")
-        v-list-item(:to="{query: {t: 'closed'}}")
+        v-list-item(:to="mergeRouteQuery({t: 'closed'})")
           v-list-item-title(v-t="'discussions_panel.closed'")
-        v-list-item(:to="{query: {t: 'unread'}}")
+        v-list-item(:to="mergeRouteQuery({t: 'unread'})")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
-        v-list-item(:to="{query: {t: 'subscribed'}}")
+        v-list-item(:to="mergeRouteQuery({t: 'subscribed'})")
           v-list-item-title(v-t="'change_volume_form.simple.loud'")
 
     v-menu
       template(v-slot:activator="{ on }")
         v-btn.mr-2.text-lowercase(v-on="on" text)
-            | All tags
-            v-icon mdi-menu-down
-      v-list
-        v-list-item(v-for="tag in groupTags" :key="tag" :to="{query: {t: tag}}")
+          span(v-if="tag") {{tag}}
+          span(v-else v-t="'loomio_tags.all_tags'")
+          v-icon mdi-menu-down
+      v-list(dense)
+        v-list-item(:to="mergeRouteQuery({tag: null})")
+          v-list-item-title(v-t="'loomio_tags.all_tags'")
+        v-list-item(v-for="tag in groupTags" :key="tag" :to="mergeRouteQuery({tag: tag})")
           v-list-item-title {{tag}}
-    v-text-field.mr-2(clearable solo hide-details v-model="searchQuery" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify")
+    v-text-field.mr-2.flex-grow-1(clearable solo hide-details v-model="searchQuery" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify")
     v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-card.discussions-panel(outlined)
     .discussions-panel__content(v-if="!searchQuery")
-      .discussions-panel__list--empty(v-if='noThreads' :value="true")
+      .discussions-panel__list--empty.pa-4(v-if='noThreads' :value="true")
         p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
         p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
       .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
@@ -205,7 +212,7 @@ div.discussions-panel(:key="group.id")
 
         .lmo-hint-text.discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
 
-    .discussions-panel__content(v-if="searchQuery")
+    .discussions-panel__content.pa-4(v-if="searchQuery")
       v-alert.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading')
         p(v-t="{path: 'discussions_panel.no_results_found', args: {search: searchQuery}}")
       thread-search-result(v-for="result in searchResults" :key="result.id" :result="result")
