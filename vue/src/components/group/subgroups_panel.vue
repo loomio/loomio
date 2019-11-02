@@ -40,22 +40,21 @@ export default
     startSubgroup: ->
       @openStartSubgroupModal(@group)
 
-    stripDescription: (description = '') ->
-      truncate (description).replace(///<[^>]*>?///gm, ''), 50
+    stripDescription: (description = '') -> (description).replace(///<[^>]*>?///gm, '')
 </script>
 
 <template lang="pug">
-v-card.group-subgroups-panel
-  v-toolbar(flat)
+div
+  v-layout.my-2(align-center)
+    v-spacer
     v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
-    v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
-  v-divider
 
-  v-list(avatar two-line)
-    v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
-      v-list-item-avatar.subgroups-card__list-item-logo
-        group-avatar(:group="group" size="28px")
-      v-list-item-content
-        v-list-item-title {{ group.name }}
-        v-list-item-subtitle {{ stripDescription(group.description) }}
+  v-card.group-subgroups-panel(outlined)
+    v-list(avatar two-line)
+      v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
+        v-list-item-avatar.subgroups-card__list-item-logo
+          group-avatar(:group="group" size="28px")
+        v-list-item-content
+          v-list-item-title {{ group.name }}
+          v-list-item-subtitle {{ stripDescription(group.description) }}
 </template>

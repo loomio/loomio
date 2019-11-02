@@ -19,7 +19,7 @@ export default
 
   data: ->
     organization: null
-    open: null
+    open: false
     group: null
     version: AppConfig.version.split('.').slice(-1)[0]
     tree: []

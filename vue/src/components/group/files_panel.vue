@@ -106,7 +106,7 @@ export default
 <template lang="pug">
 div
   v-layout.py-2(align-center)
-    v-text-field(dense clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
+    v-text-field(clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
   v-card.group-files-panel
     v-simple-table(:items="items" hide-default-footer)
       thead

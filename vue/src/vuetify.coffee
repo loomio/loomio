@@ -18,6 +18,7 @@ export default new Vuetify(
         info: colors.lightBlue.base
         success: colors.green.base
         anchor: colors.cyan.base
+        background: '#fafafa'
     options:
       customProperties: true
 )

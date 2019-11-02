@@ -107,6 +107,13 @@ export default
     ,
       300
 
+    filterName: (filter) ->
+      switch filter
+        when 'open' then 'discussions_panel.open'
+        when 'unread' then 'discussions_panel.unread'
+        when 'closed' then 'discussions_panel.closed'
+        when 'subscribed' then 'change_volume_form.simple.loud'
+
   watch:
     '$route.params.key': 'init'
     '$route.query':
@@ -128,8 +135,8 @@ export default
       200
 
   computed:
-
-
+    groupTags: ->
+      @group && @group.parentOrSelf().tagNames || []
     loading: ->
       @loader.loading || @searchLoader.loading
 
@@ -145,21 +152,46 @@ export default
     isLoggedIn: ->
       Session.isSignedIn()
 
+    unreadCount: ->
+      filter(@discussions, (discussion) -> discussion.isUnread()).length
+
 
 </script>
 
 <template lang="pug">
 div.discussions-panel(:key="group.id")
   trial-banner(:group="group")
-  formatted-text(v-if="group" :model="group" column="description")
+  //- formatted-text(v-if="group" :model="group" column="description")
   document-list(:model='group')
   attachment-list(:attachments="group.attachments")
-  v-layout.py-2(align-center)
-    v-btn.mr-2.discussions-panel__new-thread-button(@click='openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
-    v-text-field(dense clearable hide-details solo v-model="searchQuery" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify")
+  v-layout.py-3(align-center)
+    v-menu
+      template(v-slot:activator="{ on }")
+        v-btn.mr-2.text-lowercase(v-on="on" text)
+          span(v-t="{path: filterName(filter), args: {count: unreadCount}}")
+          v-icon mdi-menu-down
+      v-list
+        v-list-item(:to="{query: {t: null}}")
+          v-list-item-title(v-t="'discussions_panel.open'")
+        v-list-item(:to="{query: {t: 'closed'}}")
+          v-list-item-title(v-t="'discussions_panel.closed'")
+        v-list-item(:to="{query: {t: 'unread'}}")
+          v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
+        v-list-item(:to="{query: {t: 'subscribed'}}")
+          v-list-item-title(v-t="'change_volume_form.simple.loud'")
 
+    v-menu
+      template(v-slot:activator="{ on }")
+        v-btn.mr-2.text-lowercase(v-on="on" text)
+            | All tags
+            v-icon mdi-menu-down
+      v-list
+        v-list-item(v-for="tag in groupTags" :key="tag" :to="{query: {t: tag}}")
+          v-list-item-title {{tag}}
+    v-text-field.mr-2(clearable solo hide-details v-model="searchQuery" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify")
+    v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
-  v-card.discussions-panel
+  v-card.discussions-panel(outlined)
     .discussions-panel__content(v-if="!searchQuery")
       .discussions-panel__list--empty(v-if='noThreads' :value="true")
         p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
@@ -180,10 +212,6 @@ div.discussions-panel(:key="group.id")
 </template>
 
 <style lang="sass">
-.discussions-panel
-  div.v-slide-group__prev--disabled
-    display: none
-
 .overflow-x-auto
   overflow-x: auto
 </style>

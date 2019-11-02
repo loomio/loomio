@@ -24,10 +24,10 @@ export default
   v-alert(v-model="onlyOneAdminWithMultipleMembers" color="primary" type="warning")
     template(slot="default")
       span(v-t="'memberships_page.only_one_admin'")
-  v-layout.py-2(algin-center)
+  v-layout.py-2(align-center)
+    v-text-field.mr-2(clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_members', {name: group.name})" append-icon="mdi-magnify")
     v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'invitation_form.invite_people'")
-    shareable-link-modal.mr-2(:group="group")
-    v-text-field(dense clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_members', {name: group.name})" append-icon="mdi-magnify")
+    shareable-link-modal(:group="group")
   v-card
     v-tabs(fixed-tabs)
       v-tab.group-page__directory-tab(:to="urlFor(group, 'members')" v-t="'members_panel.directory'")

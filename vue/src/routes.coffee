@@ -44,7 +44,7 @@ groupPageChildren = [
     {path: 'invitations', component: InvitationsPanel}
     {path: 'requests', component: MembershipRequestsPanel}
     ]}
-  # {path: 'subgroups', component: GroupSubgroupsPanel}
+  {path: 'subgroups', component: GroupSubgroupsPanel}
   {path: 'files', component: GroupFilesPanel}
   {path: 'membership_requests', redirect: 'members/requests' }
   {path: 'settings', component: GroupSettingsPanel}
