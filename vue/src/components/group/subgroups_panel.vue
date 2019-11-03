@@ -8,38 +8,45 @@ import { debounce, some, every } from 'lodash'
 
 export default
   data: ->
-    group: Records.groups.fuzzyFind(@$route.params.key)
-    searchQuery: null
+    group: null
     loading: true
 
   created: ->
-    EventBus.$emit 'currentComponent',
-      page: 'groupPage'
-      title: @group.name
-      group: @group
+    Records.groups.findOrFetch(@$route.params.key).then (group) =>
+      @group = group
 
-    Records.groups.fetchByParent(@group).then =>
-      @loading = false
-      EventBus.$emit 'subgroupsLoaded', @group
+      EventBus.$emit 'currentComponent',
+        page: 'groupPage'
+        title: @group.name
+        group: @group
 
-    @watchRecords
-      collections: ['memberships', 'groups']
-      query: @query
+      Records.groups.fetchByParent(@group).then =>
+        @loading = false
+        EventBus.$emit 'subgroupsLoaded', @group
+
+      @watchRecords
+        collections: ['memberships', 'groups']
+        query: @findRecords
+
+      @findRecords()
 
   computed:
     canCreateSubgroups: ->
       AbilityService.canCreateSubgroups(@group)
 
   methods:
-    query: ->
+    onQueryInput: (val) ->
+      @$router.replace(@mergeQuery(q: val))
+
+    findRecords: ->
       chain = Records.groups.collection.chain().
                      find(parentId: @group.id).
                      simplesort('name')
 
-      if @searchQuery
+      if @$route.query.q
         chain = chain.where (group) =>
           some [group.name, group.description], (field) =>
-            RegExp(@searchQuery, "i").test(field)
+            RegExp(@$route.query.q, "i").test(field)
 
       @subgroups = chain.data()
 
@@ -54,17 +61,12 @@ export default
     stripDescription: (description = '') -> (description).replace(///<[^>]*>?///gm, '')
 
   watch:
-    searchQuery: debounce (val)->
-      @$router.replace(query: {q: val})
-      @query()
-    ,
-      250
+    '$route.query': 'findRecords'
 </script>
-
 <template lang="pug">
-div
+div(v-if="group")
   v-layout.my-2(align-center)
-    v-text-field.mr-2(clearable hide-details solo v-model="searchQuery" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" append-icon="mdi-magnify")
+    v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" append-icon="mdi-magnify")
     v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
 
   v-card.group-subgroups-panel(outlined)
