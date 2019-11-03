@@ -1679,6 +1679,10 @@ en:
     uploaded_by: Uploaded by
     uploaded_at: Uploaded at
 
+  subgroups_panel:
+    search_subgroups_of_name: 'Search subgroups of {{name}}' 
+
+
   poll_common_action_panel:
     anonymous: Votes will be anonymous
     anonymous_until_close: Votes will be anonymous until this poll closes

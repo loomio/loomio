@@ -4,15 +4,12 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import GroupModalMixin from '@/mixins/group_modal'
-import { truncate } from 'lodash'
+import { debounce, some, every } from 'lodash'
 
 export default
-  mixins: [GroupModalMixin]
-
   data: ->
     group: Records.groups.fuzzyFind(@$route.params.key)
-    fragment: ''
-    subgroups: []
+    searchQuery: null
     loading: true
 
   created: ->
@@ -27,30 +24,51 @@ export default
 
     @watchRecords
       collections: ['memberships', 'groups']
-      query: (store) =>
-        @subgroups = store.groups.collection.chain().
-                       find(parentId: @group.id).
-                       simplesort('name').data()
+      query: @query
 
   computed:
     canCreateSubgroups: ->
       AbilityService.canCreateSubgroups(@group)
 
   methods:
+    query: ->
+      chain = Records.groups.collection.chain().
+                     find(parentId: @group.id).
+                     simplesort('name')
+
+      if @searchQuery
+        chain = chain.where (group) =>
+          some [group.name, group.description], (field) =>
+            RegExp(@searchQuery, "i").test(field)
+
+      @subgroups = chain.data()
+
     startSubgroup: ->
-      @openStartSubgroupModal(@group)
+      EventBus.$emit('openModal',
+                      component: 'GroupNewForm',
+                      props: {
+                        parentId: @group.id
+                      })
+
 
     stripDescription: (description = '') -> (description).replace(///<[^>]*>?///gm, '')
+
+  watch:
+    searchQuery: debounce (val)->
+      @$router.replace(query: {q: val})
+      @query()
+    ,
+      250
 </script>
 
 <template lang="pug">
 div
   v-layout.my-2(align-center)
-    v-spacer
+    v-text-field.mr-2(clearable hide-details solo v-model="searchQuery" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" append-icon="mdi-magnify")
     v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
 
   v-card.group-subgroups-panel(outlined)
-    v-list(avatar two-line)
+    v-list(avatar three-line)
       v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
         v-list-item-avatar.subgroups-card__list-item-logo
           group-avatar(:group="group" size="28px")

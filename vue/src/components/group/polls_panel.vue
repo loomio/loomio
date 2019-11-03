@@ -34,7 +34,6 @@ export default
     @watchRecords
       collections: ['polls', 'groups', 'memberships']
       query: => @query()
-    @handleQueryChange(@$route.query)
     @refresh()
 
   methods:
