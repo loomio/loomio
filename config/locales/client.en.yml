@@ -1664,6 +1664,8 @@ en:
 
   polls_panel:
     new_poll: New poll
+    any_type: 'All types'
+    any_status: 'Any status'
     all: 'All'
     open: 'Open'
     closed: 'Closed'

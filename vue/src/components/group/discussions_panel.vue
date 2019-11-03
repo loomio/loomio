@@ -124,16 +124,16 @@ export default
     '$route.query':
       immediate: true
       handler: (query) ->
-        @tag = @$route.query.tag
-        @filter = @$route.query.t || 'open'
-        @searchQuery = @$route.query.q || ''
-        @subgroups = @$route.query.subgroups || 'mine'
+        @tag = query.tag
+        @filter = query.t || 'open'
+        @searchQuery = query.q || ''
+        @subgroups = query.subgroups || 'mine'
         @refresh()
 
     searchQuery: debounce (val, old)->
       @$router.replace(query: {q: val})
     ,
-      200
+      500
 
   computed:
     groupTags: ->

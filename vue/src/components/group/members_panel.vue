@@ -168,6 +168,15 @@ export default
 
 <template lang="pug">
 .members-panel
+  //- v-subheader Filters
+  //- ul
+  //-   li
+  //-     router-link(:to="{query: {status: 'all' }}") Admins
+  //-   li
+  //-     router-link(:to="{query: {status: 'active'}}") Members
+  //-   li
+  //-     router-link(:to="{query: {status: 'closed'}}") Invited
+
   v-list(two-line)
     template(v-for="(membership, index) in memberships")
       v-list-item(:key="membership.id")

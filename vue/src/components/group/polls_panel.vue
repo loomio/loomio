@@ -2,14 +2,11 @@
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
-import WatchRecords from '@/mixins/watch_records'
 import EventBus       from '@/shared/services/event_bus'
 import Session       from '@/shared/services/session'
-import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash'
+import { debounce, some, every, compact, omit, pickBy, identity, values, keys, intersection } from 'lodash'
 
 export default
-  mixins: [WatchRecords]
-
   data: ->
     group: Records.groups.fuzzyFind(@$route.params.key)
     polls: []
@@ -17,7 +14,8 @@ export default
     loader: null
     per: 50
     from: 0
-    filter: 'all'
+    status: null
+    pollType: null
     subgroups: 'mine'
     pollTypes: AppConfig.pollTypes
 
@@ -54,18 +52,15 @@ export default
       chain = chain.find(groupId: {$in: groupIds})
 
       switch
-        when @filter == 'all'
-          true
-          # do nothing
-        when @filter == 'active'
+        when @status == null
+          true # noop
+        when @status == 'active'
           chain = chain.find({'closedAt': null})
-        when @filter == 'closed'
+        when @status == 'closed'
           chain = chain.find({'closedAt': {$ne: null}})
-        when @pollTypes.includes(@filter)
-          chain = chain.find({'pollType': @filter})
-        else
-          true
-          # it's a group tag
+
+      if @pollType
+        chain = chain.find({'pollType': @pollType})
 
       if @searchQuery
         chain = chain.where (poll) =>
@@ -86,14 +81,19 @@ export default
     ,
       300
 
-    handleQueryChange: (val) ->
-      @filter = val.poll_type || val.status
-      @searchQuery = val.q
-      @refresh()
 
+    mergeRouteQuery: (obj) ->
+      {query: pickBy(Object.assign({}, @$route.query, obj), identity)}
 
   watch:
-    '$route.query': 'handleQueryChange'
+    '$route.query':
+      immediate: true
+      handler: (query) ->
+        @status = query.status
+        @pollType = query.poll_type
+        @subgroups = query.subgroups || 'mine'
+        @searchQuery = query.q
+        @refresh()
 
     searchQuery: debounce (val) ->
       @$router.replace(query: { q: val })
@@ -106,6 +106,29 @@ export default
 <template lang="pug">
 .polls-panel
   v-layout.py-2(align-center)
+    v-menu
+      template(v-slot:activator="{ on }")
+        v-btn.mr-2.text-lowercase(v-on="on" text)
+          span(v-if="status == 'active'" v-t="'polls_panel.open'")
+          span(v-if="status == 'closed'" v-t="'polls_panel.closed'")
+          span(v-if="!status" v-t="'polls_panel.any_status'")
+          v-icon mdi-menu-down
+      v-list(dense)
+        v-list-item(:to="mergeRouteQuery({status: null })" v-t="'polls_panel.any_status'")
+        v-list-item(:to="mergeRouteQuery({status: 'active'})" v-t="'polls_panel.open'")
+        v-list-item(:to="mergeRouteQuery({status: 'closed'})" v-t="'polls_panel.closed'")
+    v-menu
+      template(v-slot:activator="{ on }")
+        v-btn.mr-2.text-lowercase(v-on="on" text)
+          //- span(v-t="{path: filterName(filter), args: {count: unreadCount}}")
+          span(v-if="pollType" v-t="'poll_types.'+pollType")
+          span(v-if="!pollType" v-t="'polls_panel.any_type'")
+          v-icon mdi-menu-down
+      v-list(dense)
+        v-list-item(:to="mergeRouteQuery({poll_type: null})" )
+          v-list-item-title(v-t="'polls_panel.any_type'")
+        v-list-item(v-for="pollType in pollTypes" :key="pollType" :to="mergeRouteQuery({poll_type: pollType})" )
+          v-list-item-title(v-t="'poll_types.'+pollType")
     v-text-field(clearable hide-details solo v-model="searchQuery" :placeholder="$t('navbar.search_polls', {name: group.name})" append-icon="mdi-magnify")
   v-card(outlined)
     v-list(two-line avatar v-if='polls.length')

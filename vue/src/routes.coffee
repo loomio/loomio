@@ -7,10 +7,8 @@ import PollPage from './components/poll/page.vue'
 
 import GroupPage from './components/group/page.vue'
 import GroupDiscussionsPanel from './components/group/discussions_panel'
-import GroupDiscussionsNav from './components/group/discussions_nav'
 
 import GroupPollsPanel from './components/group/polls_panel'
-import GroupPollsNav from './components/group/polls_nav'
 
 import MembersPanel from './components/group/members_panel'
 import GroupSubgroupsPanel from './components/group/subgroups_panel'
@@ -38,7 +36,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 groupPageChildren = [
-  {path: 'polls', components: {default: GroupPollsPanel, nav: GroupPollsNav}}
+  {path: 'polls', component: GroupPollsPanel}
   {path: 'members', component: MembersTabs, children: [
     {path: '', component: MembersPanel}
     {path: 'invitations', component: InvitationsPanel}
@@ -48,7 +46,7 @@ groupPageChildren = [
   {path: 'files', component: GroupFilesPanel}
   {path: 'membership_requests', redirect: 'members/requests' }
   {path: 'settings', component: GroupSettingsPanel}
-  {path: ':stub?', components: {default: GroupDiscussionsPanel, nav: GroupDiscussionsNav}}
+  {path: ':stub?', component: GroupDiscussionsPanel}
   {path: 'slack/install', component: InstallSlackPage}
 ]
 
