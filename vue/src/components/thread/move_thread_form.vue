@@ -5,9 +5,10 @@ import I18n           from '@/i18n'
 import { submitForm } from '@/shared/helpers/form'
 import { filter } from 'lodash'
 import WatchRecords from '@/mixins/watch_records'
+import AnnouncementModalMixin from '@/mixins/announcement_modal'
 
 export default
-  mixins: [WatchRecords]
+  mixins: [WatchRecords, AnnouncementModalMixin]
   props:
     discussion: Object
     close: Function

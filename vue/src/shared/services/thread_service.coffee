@@ -143,7 +143,7 @@ export default new class ThreadService
       icon: 'mdi-translate'
       menu: true
       canPerform: -> AbilityService.canTranslate(discussion)
-      perform: -> discussion.translate(Session.user().locale)
+      perform: -> Session.user() && discussion.translate(Session.user().locale)
 
     close_thread:
       menu: true
