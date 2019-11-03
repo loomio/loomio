@@ -77,7 +77,7 @@ div
             | {{group.name}}
         formatted-text(v-if="group" :model="group" column="description")
         v-divider.mt-4
-        v-tabs(v-model="activeTab" background-color="transparent" centered grow)
+        v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow)
           v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
             span(v-t="'group_page.'+tab.name")
         join-group-button(:group='group')

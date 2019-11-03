@@ -1641,6 +1641,7 @@ en:
     no_results_found: No results for "{{search}}"
 
   members_panel:
+    everyone: 'Everyone'
     sort: 'Sort'
     order_label: "Order"
     order_by_name: 'Name'
@@ -1661,6 +1662,7 @@ en:
     admin: 'Admin'
     sharable_link: 'Shareable Link'
     last_seen: 'Last seen {{date}}'
+    invited_by_name: 'Invited by {{name}}'
 
   polls_panel:
     new_poll: New poll

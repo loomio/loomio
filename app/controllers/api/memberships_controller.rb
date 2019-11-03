@@ -62,7 +62,14 @@ class API::MembershipsController < API::RestfulController
 
       collection = collection.where(group_id: group_ids)
 
-      collection = collection.active unless params.has_key?(:pending)
+      collection = collection.active unless params.has_key?(:pending) #leave alone until 1.0 retired
+
+      case params[:filter]
+      when 'admin'
+        collection = collection.admin
+      when 'pending'
+        collection = collection.pending
+      end
 
       query = params[:q].to_s
       if query.length > 0

@@ -4,7 +4,7 @@ import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus       from '@/shared/services/event_bus'
 import Session       from '@/shared/services/session'
-import { debounce, some, every, compact, omit, pickBy, identity, values, keys, intersection } from 'lodash'
+import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash'
 
 export default
   data: ->
@@ -80,10 +80,6 @@ export default
         subgroups: @subgroups
     ,
       300
-
-
-    mergeRouteQuery: (obj) ->
-      {query: pickBy(Object.assign({}, @$route.query, obj), identity)}
 
   watch:
     '$route.query':

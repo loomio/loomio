@@ -5,7 +5,7 @@ import EventBus           from '@/shared/services/event_bus'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import DiscussionModalMixin     from '@/mixins/discussion_modal'
-import { map, debounce, orderBy, intersection, compact, omit, pickBy, identity, filter, concat, uniq } from 'lodash'
+import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq } from 'lodash'
 import Session from '@/shared/services/session'
 
 export default
@@ -116,8 +116,6 @@ export default
         when 'closed' then 'discussions_panel.closed'
         when 'subscribed' then 'change_volume_form.simple.loud'
 
-    mergeRouteQuery: (obj) ->
-      {query: pickBy(Object.assign({}, @$route.query, obj), identity)}
 
   watch:
     '$route.params.key': 'init'
