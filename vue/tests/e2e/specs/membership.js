@@ -7,7 +7,7 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.click('.group-page-members-tab')
-    page.click('.members-panel .v-list .v-list-item:last-child .membership-dropdown')
+    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__remove')
     page.expectText('.confirm-modal h1', 'Remove member')
     page.click('.confirm-modal__submit')
@@ -20,7 +20,7 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.click('.group-page-members-tab')
-    page.click('.members-panel .v-list .v-list-item:last-child .membership-dropdown')
+    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__toggle-admin')
     page.expectFlash('Emilio Estevez is now an admin')
   },
@@ -39,7 +39,7 @@ module.exports = {
     page.loadPath('setup_group_with_multiple_coordinators')
 
     page.click('.group-page-members-tab')
-    page.click('.members-panel .v-list .v-list-item:last-child .membership-dropdown')
+    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__toggle-admin')
     page.expectFlash('Emilio Estevez is no longer an admin')
   },
@@ -49,7 +49,7 @@ module.exports = {
 
     page.loadPath('setup_group_with_no_coordinators')
     page.click('.group-page-members-tab')
-    page.click('.members-panel .v-list .v-list-item:first-child .membership-dropdown')
+    page.click('.members-panel .v-card .v-list .v-list-item:last-child .membership-dropdown')
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
     page.expectFlash('Patrick Swayze is now an admin')
@@ -60,7 +60,7 @@ module.exports = {
 
     page.loadPath('setup_group_with_subgroups_as_admin')
     page.click('.group-page-members-tab')
-    page.click('.members-panel .v-list .v-list-item:last-child .membership-dropdown')
+    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__toggle-admin')
     page.expectFlash('Jennifer Grey is now an admin')
   },
@@ -79,7 +79,7 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.click('.group-page-members-tab')
-    page.click('.members-panel .v-list .v-list-item:first-child .membership-dropdown')
+    page.click('.members-panel .v-card .v-list .v-list-item:last-child .membership-dropdown')
     page.click('.membership-dropdown__set-title')
     page.fillIn('.membership-form__title-input input', 'Suzerain')
     page.click('.membership-form__submit')

@@ -205,7 +205,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .ProseMirror', 'original comment right heerrr')
     page.click('.comment-form__submit-button')
-    page.click('.new-comment-action-menu')
+    page.click('.thread-item .action-menu')
     page.click('.context-panel-dropdown__option--reply_to_comment')
 
     page.fillIn('.comment-form .ProseMirror', 'hi this is my comment')
@@ -272,7 +272,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .ProseMirror', 'original comment right hur')
     page.click('.comment-form__submit-button')
-    page.click('.new-comment-action-menu')
+    page.click('.thread-item .action-menu')
     page.click('.context-panel-dropdown__option--delete_comment')
     page.click('.confirm-modal__submit')
     page.expectNoText('.activity-panel', 'original comment right thur')
