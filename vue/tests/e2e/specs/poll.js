@@ -139,12 +139,10 @@ module.exports = {
     page.loadPath('test_discussion', { controller: 'polls' })
     page.click('.activity-panel__add-poll')
     page.click('.decision-tools-card__poll-type--meeting')
-    // page.click('.poll-common-tool-tip__collapse')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
-
-    page.fillInAndEnter('.poll-meeting-time-field__datepicker-container input', format(new Date, 'd mmmm yyyy'))
-
+    page.click('.poll-meeting-time-field__datepicker-container input')
+    page.click('.poll-meeting-form__option-button')
     page.click('.poll-common-form__submit')
     page.expectElement('.announcement-form__submit')
     page.click('.dismiss-modal-button')
