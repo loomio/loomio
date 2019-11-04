@@ -1685,7 +1685,7 @@ en:
 
   subgroups_panel:
     search_subgroups_of_name: 'Search subgroups of {{name}}'
-
+    group_without_subgroups: '{{name}} without subgroups'
 
   poll_common_action_panel:
     anonymous: Votes will be anonymous

@@ -105,10 +105,11 @@ export default
 
 <template lang="pug">
 div
-  v-layout.py-2(align-center)
+  v-layout.py-2(align-center wrap)
     v-text-field(clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
   v-card.group-files-panel(outlined)
-    v-simple-table(:items="items" hide-default-footer)
+    p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
+    v-simple-table(v-else :items="items" hide-default-footer)
       thead
         tr
           th(v-t="'group_files_panel.filename'")

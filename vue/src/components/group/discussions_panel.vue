@@ -148,11 +148,7 @@ export default
 
 <template lang="pug">
 div.discussions-panel(v-if="group")
-  trial-banner(:group="group")
-  //- formatted-text(v-if="group" :model="group" column="description")
-  document-list(:model='group')
-  attachment-list(:attachments="group.attachments")
-  v-layout.py-3(align-center)
+  v-layout.py-3(align-center wrap)
     //- v-select(solo hide-details flat flex-shrink :items="['Open']").mr-2
     //- v-select(solo hide-details flat flex-shrink :items="['All tags']").mr-2
     v-menu

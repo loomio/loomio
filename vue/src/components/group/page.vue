@@ -62,27 +62,28 @@ export default
 </script>
 
 <template lang="pug">
-div
-  v-content
-    loading(v-if="!group")
-    v-container.group-page.max-width-1024(v-else)
-      v-img(style="border-radius: 8px" :src="coverImageSrc" eager)
-      h1.display-1.my-4(v-observe-visibility="{callback: titleVisible}")
-        span(v-if="group && group.parent()")
-          router-link(:to="urlFor(group.parent())") {{group.parent().name}}
-          space
-          span.grey--text.text--lighten-1 &gt;
-          space
-        span.mr-4
-          | {{group.name}}
-      formatted-text(v-if="group" :model="group" column="description")
-      v-divider.mt-4
-      v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow)
-        v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
-          span(v-t="'group_page.'+tab.name")
-      join-group-button(:group='group')
-      router-view
-  //- router-view(name="nav")
+v-content
+  loading(v-if="!group")
+  v-container.group-page.max-width-1024(v-else)
+    v-img(style="border-radius: 8px" :src="coverImageSrc" eager)
+    h1.display-1.my-4(v-observe-visibility="{callback: titleVisible}")
+      span(v-if="group && group.parent()")
+        router-link(:to="urlFor(group.parent())") {{group.parent().name}}
+        space
+        span.grey--text.text--lighten-1 &gt;
+        space
+      span.mr-4
+        | {{group.name}}
+    trial-banner(:group="group")
+    formatted-text(v-if="group" :model="group" column="description")
+    document-list(:model='group')
+    attachment-list(:attachments="group.attachments")
+    v-divider.mt-4
+    v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow)
+      v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
+        span(v-t="'group_page.'+tab.name")
+    join-group-button(:group='group')
+    router-view
 </template>
 
 <style lang="css">

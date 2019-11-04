@@ -153,7 +153,7 @@ export default
       template(slot="default")
         span(v-t="'memberships_page.only_one_admin'")
 
-    v-layout.py-2(align-center)
+    v-layout.py-2(align-center wrap)
       v-menu
         template(v-slot:activator="{ on }")
           v-btn.mr-2.text-lowercase(v-on="on" text)

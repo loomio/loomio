@@ -65,12 +65,19 @@ export default
 </script>
 <template lang="pug">
 div(v-if="group")
-  v-layout.my-2(align-center)
+  v-layout.my-2(align-center wrap)
     v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" append-icon="mdi-magnify")
     v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
 
   v-card.group-subgroups-panel(outlined)
-    v-list(avatar three-line)
+    p.text-center.pa-4(v-if="!loading && !subgroups.length" v-t="'common.no_results_found'")
+    v-list(v-else avatar three-line)
+      v-list-item.subgroups-card__list-item(v-if="group.subgroups().length > 0" :to="urlFor(group)+'?subgroups=none'")
+        v-list-item-avatar.subgroups-card__list-item-logo
+          group-avatar(:group="group" size="28px")
+        v-list-item-content
+          v-list-item-title(v-t="{path: 'subgroups_panel.group_without_subgroups', args: {name: group.name}}")
+          v-list-item-subtitle {{ stripDescription(group.description) }}
       v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
         v-list-item-avatar.subgroups-card__list-item-logo
           group-avatar(:group="group" size="28px")

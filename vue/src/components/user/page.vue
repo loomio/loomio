@@ -49,29 +49,30 @@ export default
 </script>
 
 <template lang="pug">
-v-container.user-page.max-width-800.mt-4
-  loading(v-if='isEmptyUser')
-  .user-page__profile(v-if='!isEmptyUser')
-    v-layout.user-page__content
-      v-layout.user-page__info(column)
-        h1.headline {{user.name}}
-        .lmo-hint-text @{{user.username}}
-        p {{user.shortBio}}
-        div(v-t="{ path: 'user_page.locale_field', args: { value: user.localeName() } }", v-if='user.localeName()')
-        span(v-t="'common.time_zone'")
-        span : {{user.timeZone}}
-        div(v-t="{ path: 'user_page.location_field', args: { value: user.location } }", v-if='user.location')
-        div(v-t="{ path: 'user_page.online_field', args: { value: approximate(user.lastSeenAt) } }", v-if='user.lastSeenAt')
-      v-layout(column)
-        user-avatar(:user='user', size='featured')
-        v-btn.my-4.user-page__contact-user(v-if="canContactUser" color="accent" outlined @click='openContactRequestModal(user)' v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
-    .user-page__groups
-      h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
-      v-list
-        v-list-item.user-page__group(v-for='group in groups' :key='group.id' :to='urlFor(group)')
-          v-list-item-avatar
-            v-avatar.mr-2(tile size="48")
-              img(:src='group.logoUrl()')
-          v-list-item-title {{group.fullName}}
-      loading(v-if='loadingGroupsForExecuting')
+v-content
+  v-container.user-page.max-width-800.mt-4
+    loading(v-if='isEmptyUser')
+    .user-page__profile(v-if='!isEmptyUser')
+      v-layout.user-page__content
+        v-layout.user-page__info(column)
+          h1.headline {{user.name}}
+          .lmo-hint-text @{{user.username}}
+          p {{user.shortBio}}
+          div(v-t="{ path: 'user_page.locale_field', args: { value: user.localeName() } }", v-if='user.localeName()')
+          span(v-t="'common.time_zone'")
+          span : {{user.timeZone}}
+          div(v-t="{ path: 'user_page.location_field', args: { value: user.location } }", v-if='user.location')
+          div(v-t="{ path: 'user_page.online_field', args: { value: approximate(user.lastSeenAt) } }", v-if='user.lastSeenAt')
+        v-layout(column)
+          user-avatar(:user='user', size='featured')
+          v-btn.my-4.user-page__contact-user(v-if="canContactUser" color="accent" outlined @click='openContactRequestModal(user)' v-t="{ path: 'user_page.contact_user', args: { name: user.firstName() } }")
+      .user-page__groups
+        h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
+        v-list
+          v-list-item.user-page__group(v-for='group in groups' :key='group.id' :to='urlFor(group)')
+            v-list-item-avatar
+              v-avatar.mr-2(tile size="48")
+                img(:src='group.logoUrl()')
+            v-list-item-title {{group.fullName}}
+        loading(v-if='loadingGroupsForExecuting')
 </template>

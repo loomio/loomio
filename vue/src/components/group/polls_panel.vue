@@ -89,7 +89,7 @@ export default
 .polls-panel
   loading(v-if="!group")
   div(v-if="group")
-    v-layout.py-2(align-center)
+    v-layout.py-2(align-center wrap)
       v-menu
         template(v-slot:activator="{ on }")
           v-btn.mr-2.text-lowercase(v-on="on" text)

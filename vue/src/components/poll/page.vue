@@ -52,13 +52,14 @@ export default
 </script>
 
 <template lang="pug">
-loading(:until="poll")
-  div(v-if="poll")
-    v-container.poll-page.max-width-800
-      loading(v-if='isEmptyPoll')
-      v-layout(column v-if='!isEmptyPoll')
-        poll-common-example-card(v-if='poll.example', :poll='poll')
-        poll-common-card.mb-3(:poll='poll')
-        membership-card(:group='poll.guestGroup()')
-        membership-card(:group='poll.guestGroup()', :pending='true')
+v-content
+  loading(:until="poll")
+    div(v-if="poll")
+      v-container.poll-page.max-width-800
+        loading(v-if='isEmptyPoll')
+        v-layout(column v-if='!isEmptyPoll')
+          poll-common-example-card(v-if='poll.example', :poll='poll')
+          poll-common-card.mb-3(:poll='poll')
+          membership-card(:group='poll.guestGroup()')
+          membership-card(:group='poll.guestGroup()', :pending='true')
 </template>
