@@ -72,7 +72,7 @@ v-content
         space
         span.grey--text.text--lighten-1 &gt;
         space
-      span.mr-4
+      span.group-page__name.mr-4
         | {{group.name}}
     trial-banner(:group="group")
     formatted-text(v-if="group" :model="group" column="description")

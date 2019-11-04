@@ -22,7 +22,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_visitor')
-    page.expectText('.group-cover-name', 'Open Dirty Dancing Shoes')
+    page.expectText('.group-page__name', 'Open Dirty Dancing Shoes')
     page.expectText('.thread-preview-collection__container', 'I carried a watermelon')
     page.expectText('.navbar__sign-in', 'LOG IN')
     page.click('.thread-preview__link')
@@ -42,11 +42,13 @@ module.exports = {
 
     page.loadPath('setup_open_and_closed_discussions')
     page.expectText('.thread-preview', 'What star sign are you?')
-    page.click('.discussions-panel__toggle-closed')
+    page.click('.discussions-panel__filters')
+    page.click('.discussions-panel__filters-closed')
     page.expectText('.thread-preview', 'This thread is old and closed')
-    page.click('.discussions-panel__toggle-open')
+    page.click('.discussions-panel__filters')
+    page.click('.discussions-panel__filters-open')
     page.click('.thread-preview')
-    page.click('.context-panel-dropdown')
+    page.click('.action-menu')
     page.click('.context-panel-dropdown__option--close_thread')
     page.expectFlash('Thread closed')
 
@@ -68,7 +70,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.context-panel-dropdown')
+    page.click('.action-menu')
     page.click('.action-dock__button--edit_thread')
     page.fillIn('.discussion-form__title-input input', 'better title')
     page.fillIn('.discussion-form .ProseMirror', 'improved description')
@@ -82,7 +84,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.context-panel-dropdown')
+    page.click('.action-menu')
     page.click('.action-dock__button--edit_thread')
 
     page.fillIn('.discussion-form__title-input input', 'dumb title')
@@ -116,12 +118,12 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.context-panel-dropdown')
+    page.click('.action-menu')
     page.click('.context-panel-dropdown__option--delete_thread')
     page.click('.confirm-modal__submit')
 
     page.expectFlash('Thread deleted')
-    page.expectText('.group-cover-name', 'Dirty Dancing Shoes')
+    page.expectText('.group-page__name', 'Dirty Dancing Shoes')
     page.expectNoText('.discussions-panel', 'What star sign are you?')
   },
 
@@ -129,7 +131,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.context-panel-dropdown')
+    page.click('.action-menu')
     page.click('.context-panel-dropdown__option--pin_thread')
 
     page.expectText('.confirm-modal', 'Pin thread')
@@ -258,7 +260,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_with_versions')
-    page.click('.context-panel-dropdown')
+    page.click('.action-menu')
     page.click('.context-panel-dropdown__option--show_history')
     page.expectText('.revision-history-content del', 'star')
     page.expectText('.revision-history-content ins', 'moon')
