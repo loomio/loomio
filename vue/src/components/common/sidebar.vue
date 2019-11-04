@@ -30,7 +30,7 @@ export default
     EventBus.$on 'toggleSidebar', => @open = !@open
 
     EventBus.$on 'currentComponent', (data) =>
-      @open = Session.user().experiences['sidebar']
+      @open = Session.user().experiences['sidebar'] || false
       @group = data.group
       if @group
         @organization = data.group.parentOrSelf()
@@ -47,7 +47,7 @@ export default
 
     EventBus.$on 'signedIn', (user) =>
       @fetchData()
-      @open = Session.user().experiences['sidebar']
+      @open = Session.user().experiences['sidebar'] || false
 
     @fetchData() if Session.isSignedIn()
 
