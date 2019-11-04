@@ -95,7 +95,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
+v-dialog(v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
   component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal")
 
 </template>

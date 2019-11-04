@@ -12,14 +12,11 @@ import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
 import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact, concat, intersection, difference, orderBy } from 'lodash'
 
 export default
-  mixins: [
-    GroupModalMixin,
-    DiscussionModalMixin,
-  ]
+  mixins: [ GroupModalMixin, DiscussionModalMixin, ]
 
   data: ->
     organization: null
-    open: null
+    open: false
     group: null
     version: AppConfig.version.split('.').slice(-1)[0]
     tree: []
@@ -33,6 +30,7 @@ export default
     EventBus.$on 'toggleSidebar', => @open = !@open
 
     EventBus.$on 'currentComponent', (data) =>
+      @open = Session.user().experiences['sidebar']
       @group = data.group
       if @group
         @organization = data.group.parentOrSelf()
@@ -47,7 +45,10 @@ export default
       collections: ['groups', 'memberships', 'discussions']
       query: (store) => @updateGroups()
 
-    EventBus.$on 'signedIn', (user) => @fetchData()
+    EventBus.$on 'signedIn', (user) =>
+      @fetchData()
+      @open = Session.user().experiences['sidebar']
+
     @fetchData() if Session.isSignedIn()
 
   watch:
@@ -118,7 +119,7 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
+v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
     div.text-center
@@ -142,7 +143,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-divider
 
   //- v-layout(fill-height)
-  v-treeview.sidebar__groups(hoverable :items="tree" :active="activeGroup" :open="expandedGroupIds" style="width: 100%")
+  v-treeview.sidebar__groups(hoverable dense :items="tree" :active="activeGroup" :open="expandedGroupIds" style="width: 100%")
     template(v-slot:append="{item, open}")
       div(v-if="item.click")
         v-icon(v-if="item.icon" @click="item.click") {{item.icon}}

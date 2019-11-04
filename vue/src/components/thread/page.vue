@@ -30,9 +30,12 @@ export default
 </script>
 
 <template lang="pug">
-loading(:until="discussion")
-  v-container.thread-page.max-width-800(v-if="discussion")
-    thread-current-poll-banner(:discussion="discussion")
-    discussion-fork-actions(:discussion='discussion' v-show='discussion.isForking' :key="'fork-actions'+ discussion.id")
-    thread-card(:discussion='discussion' :key="discussion.id")
+.thread-page
+  v-content
+    loading(:until="discussion")
+      v-container.thread-page.max-width-800(v-if="discussion")
+        thread-current-poll-banner(:discussion="discussion")
+        discussion-fork-actions(:discussion='discussion' v-show='discussion.isForking' :key="'fork-actions'+ discussion.id")
+        thread-card(:discussion='discussion' :key="discussion.id")
+  router-view(name="nav")
 </template>

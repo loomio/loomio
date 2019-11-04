@@ -25,6 +25,7 @@ export default class OutcomeModel extends BaseModel
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'poll'
+    @belongsTo 'pollOption'
 
   reactions: ->
     @recordStore.reactions.find

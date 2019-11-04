@@ -15,6 +15,7 @@ export default
   mixins: [InstallSlackModalMixin, GroupModalMixin]
   data: ->
     group: null
+    activeTab: ''
 
   created: ->
     @init()
@@ -23,6 +24,27 @@ export default
 
   watch:
     '$route.params.key': 'init'
+
+  computed:
+    tabs: ->
+      return unless @group
+      query = ''
+      query = '?subgroups='+@$route.query.subgroups if @$route.query.subgroups
+
+      [
+        {id: 0, name: 'threads',   route: @urlFor(@group, null)+query}
+        {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')+query},
+        {id: 2, name: 'members',   route: @urlFor(@group, 'members')+query},
+        {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
+        {id: 5, name: 'subgroups',  route: @urlFor(@group, 'subgroups')+query}
+        {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
+      ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
+
+    coverImageSrc: ->
+      if @group
+        @group.coverUrl()
+      else
+        ''
 
   methods:
     init: ->
@@ -34,21 +56,35 @@ export default
 
       , (error) ->
         EventBus.$emit 'pageError', error
+    titleVisible: (visible) ->
+      EventBus.$emit('content-title-visible', visible)
 
 </script>
 
 <template lang="pug">
-loading(:until='group')
-  //- group-cover-image(:group="group")
-  v-container.group-page.max-width-1024
-    //- group-description-card(:group='group')
+v-content
+  loading(v-if="!group")
+  v-container.group-page.max-width-1024(v-else)
+    v-img(style="border-radius: 8px" :src="coverImageSrc" eager)
+    h1.display-1.my-4(v-observe-visibility="{callback: titleVisible}")
+      span(v-if="group && group.parent()")
+        router-link(:to="urlFor(group.parent())") {{group.parent().name}}
+        space
+        span.grey--text.text--lighten-1 &gt;
+        space
+      span.mr-4
+        | {{group.name}}
+    trial-banner(:group="group")
+    formatted-text(v-if="group" :model="group" column="description")
+    document-list(:model='group')
+    attachment-list(:attachments="group.attachments")
+    v-divider.mt-4
+    v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow)
+      v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
+        span(v-t="'group_page.'+tab.name")
+    join-group-button(:group='group')
     router-view
-      //-   v-tabs(fixed-tabs v-model="activeTab" show-arrows)
-      //-     v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
-      //-       span(v-t="'group_page.'+tab.name")
-      //-   v-divider
 </template>
-
 
 <style lang="css">
 .group-page-tabs .v-tab:not(.v-tab--active) {

@@ -162,7 +162,6 @@ module.exports = {
   ThreadNav: 'thread/nav',
   ThreadPreview: 'thread/preview',
   ThreadPreviewCollection: 'thread/preview_collection',
-  ThreadPollsPanel: 'thread/polls_panel',
   ThreadSearchResult: 'thread/search_result',
   ThreadMembersPanel: 'thread/members_panel',
   PinEventForm: 'thread/pin_event_form',

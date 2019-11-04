@@ -16,6 +16,7 @@ en:
     tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
 
   loomio_tags:
+    all_tags: All tags
     tags: Tags
     apply_tags: Apply tags
     new_tag: Create tag
@@ -91,6 +92,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    no_results_found: No results found
     view: View
     history: History
     option: Option
@@ -434,6 +436,8 @@ en:
     group_and_subgroups: '{{group}} & subgroups'
 
   user_dropdown:
+    pin_sidebar: "Pin sidebar"
+    unpin_sidebar: "Unpin sidebar"
     button_label: 'User menu'
     edit_profile: 'Edit profile'
     email_settings: 'Notification settings'
@@ -1096,6 +1100,7 @@ en:
       submit: Remove member
 
   memberships_panel:
+
     add_coordinator: Make Admin
     remove_coordinator: Demote admin
 
@@ -1633,6 +1638,7 @@ en:
 
   discussions_panel:
     open: Open
+    all: All
     unread: Unread ({{count}})
     closed: Closed
     include_subgroups_mine: '{{name}} and my subgroups'
@@ -1640,6 +1646,8 @@ en:
     no_results_found: No results for "{{search}}"
 
   members_panel:
+    no_results: 'No members found'
+    everyone: 'Everyone'
     sort: 'Sort'
     order_label: "Order"
     order_by_name: 'Name'
@@ -1660,9 +1668,12 @@ en:
     admin: 'Admin'
     sharable_link: 'Shareable Link'
     last_seen: 'Last seen {{date}}'
+    invited_by_name: 'Invited by {{name}}'
 
   polls_panel:
     new_poll: New poll
+    any_type: 'All types'
+    any_status: 'Any status'
     all: 'All'
     open: 'Open'
     closed: 'Closed'
@@ -1673,6 +1684,10 @@ en:
     filename: Filename
     uploaded_by: Uploaded by
     uploaded_at: Uploaded at
+
+  subgroups_panel:
+    search_subgroups_of_name: 'Search subgroups of {{name}}'
+    group_without_subgroups: '{{name}} without subgroups'
 
   poll_common_action_panel:
     anonymous: Votes will be anonymous
@@ -1703,7 +1718,7 @@ en:
     helptext_on: Users will be able to add this meeting to their calendar
     helptext_off: No meeting invite will be sent
     event_duration: Duration
-    event_summary: Summary
+    event_summary: Meeting name
     event_summary_placeholder: What would you like to call this meeting?
     event_description: Meeting description
     event_description_placeholder: What is the agenda for this meeting?
@@ -2129,10 +2144,11 @@ en:
     name_required: Please enter a name
     terms_required: You must agree to the Terms of Service
     account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated!
-    privacy_notice: "We do not sell your personal data or use third party trackers<br><a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
+    privacy_notice: "We will never sell your data. <br><a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
     welcome: New to {{siteName}}?
     welcome_back: Welcome back, {{name}}!
-    login_link: Sign in with email
+    forgot_password: Forgot password
+    login_link: Send sign in email
     set_password: Set password
     set_password_helptext: Want to use a password next time?
     hello: "Hello, {{name}}!"
@@ -2253,7 +2269,7 @@ en:
     start_poll_now: Make a decision now
 
   powered_by:
-    slogan: Better decisions, together
+    slogan: Better decisions together
     powered_by_loomio: Powered by Loomio
     privacy_policy: Privacy policy
     terms_of_service: Terms of service

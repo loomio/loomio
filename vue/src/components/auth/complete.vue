@@ -13,26 +13,29 @@ export default
     user: Object
   data: ->
     attempts: 0
+    loading: false
   methods:
-    submit: -> AuthService.signIn(@user, undefined, ( => @attempts += 1) )
+    submit: ->
+      @loading = true
+      andThen = => @loading = false
+      AuthService.signIn(@user, andThen, ( => @attempts += 1; andThen()) )
 </script>
 <template lang="pug">
 .auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
-  auth-avatar(:user='user')
-  h2.lmo-h2(v-t="'auth_form.check_your_email'")
-  p(v-if='user.sentLoginLink')
+  //- auth-avatar.mx-a(:user='user')
+  h2.mb-4.headline(v-t="'auth_form.check_your_email'")
+  p.mb-4(v-if='user.sentLoginLink')
     span(v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")
     br
     span(v-t="'auth_form.instructions'", v-if='attempts < 3')
   .lmo-validation-error(v-t="'auth_form.too_many_attempts'", v-if='attempts >= 3')
-  p
-  p.lmo-hint-text(v-if='user.sentPasswordLink', v-t="{ path: 'auth_form.password_link_sent', args: { email: user.email }}")
-  .auth-complete__code-input(v-if='user.sentLoginLink && attempts < 3')
+  p.mb-4(v-if='user.sentPasswordLink', v-t="{ path: 'auth_form.password_link_sent', args: { email: user.email }}")
+  .auth-complete__code-input.mb-4(v-if='user.sentLoginLink && attempts < 3')
     .auth-complete__code.mx-auto(style="max-width: 256px")
-      v-text-field.lmo-primary-form-input(outlined :placeholder="$t('auth_form.code')" type='integer' maxlength='6' v-model='user.code')
+      v-text-field.headline.lmo-primary-form-input(outlined :placeholder="$t('auth_form.code')" type='integer' maxlength='6' v-model='user.code')
       //- validation-errors(:subject='session' field='password')
     span(v-t="'auth_form.check_spam_folder'")
-  v-btn(color="primary" @click='submit()', :disabled='!user.code', v-t="'auth_form.sign_in'")
+  v-btn(color="primary" :loading="loading" @click='submit()' :disabled='!user.code' v-t="'auth_form.sign_in'")
 </template>
 <style lang="sass">
 .auth-complete__code input

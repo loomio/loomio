@@ -1,11 +1,9 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
-import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import { debounce, truncate, first, last, some, drop } from 'lodash'
 
 export default
-  mixins: [ChangeVolumeModalMixin]
 
   data: ->
     topDate: Date

@@ -13,7 +13,7 @@ export default
     group: null
     loader: null
     attachmentLoader: null
-    fragment: ''
+    searchQuery: ''
     items: []
     subgroups: 'mine'
     per: 25
@@ -50,14 +50,15 @@ export default
       collections: ['documents', 'attachments']
       query: => @query()
 
-    @fragment = @$route.query.q || ''
+    @searchQuery = @$route.query.q || ''
     @fetch()
 
   watch:
-    '$route.query.q': (val) ->
-      @fragment = val || ''
+    '$route.query.q': debounce (val) ->
+      @searchQuery = val || ''
       @fetch()
       @query()
+    , 500
 
   methods:
     query: ->
@@ -68,23 +69,23 @@ export default
 
       documents = Records.documents.collection.chain().
                      find(groupId: {$in: groupIds}).
-                     find(title: {$regex: ///#{@fragment}///i}).
+                     find(title: {$regex: ///#{@searchQuery}///i}).
                      limit(@from + @per).data()
 
       attachments = Records.attachments.collection.chain().
                      find(groupId: {$in: groupIds}).
-                     find(filename: {$regex: ///#{@fragment}///i}).
+                     find(filename: {$regex: ///#{@searchQuery}///i}).
                      limit(@from + @per).data()
 
       @items = orderBy(documents.concat(attachments), 'createdAt', 'desc')
 
     fetch: debounce ->
       @loader.fetchRecords
-        q: @fragment
+        q: @searchQuery
         from: @from
 
       @attachmentLoader.fetchRecords
-        q: @fragment
+        q: @searchQuery
         from: @from
     , 500
 
@@ -92,6 +93,8 @@ export default
       @from += @per
       @fetch()
 
+    handleSearchQueryChange: (val) ->
+      @$router.replace({ query: { q: val } })
 
   computed:
     showLoadMore: -> !@loader.exhausted && !@attachmentLoader.exhausted
@@ -101,29 +104,27 @@ export default
 </script>
 
 <template lang="pug">
-v-card.group-files-panel
-  //- v-toolbar(flat transparent)
-  //-   v-spacer
-  //- v-divider
-  //-
-  //- v-alert(:value="true" color="info" outlined icon="info" v-t="'group_files_panel.no_files'")
-
-  v-simple-table(:items="items" hide-default-footer)
-    thead
-      tr
-        th(v-t="'group_files_panel.filename'")
-        th(v-t="'group_files_panel.uploaded_by'")
-        th(v-t="'group_files_panel.uploaded_at'")
-    tbody
-      tr(v-for="item in items" :key="item.id")
-        td
-          v-layout(align-center)
-            v-icon mdi-{{item.icon}}
-            a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
-        td
-          user-avatar(:user="item.author()")
-        td
-          time-ago(:date="item.createdAt")
-  v-layout(justify-center)
-    v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="loadMore()" v-t="'common.action.load_more'")
+div
+  v-layout.py-2(align-center wrap)
+    v-text-field(clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
+  v-card.group-files-panel(outlined)
+    p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
+    v-simple-table(v-else :items="items" hide-default-footer)
+      thead
+        tr
+          th(v-t="'group_files_panel.filename'")
+          th(v-t="'group_files_panel.uploaded_by'")
+          th(v-t="'group_files_panel.uploaded_at'")
+      tbody
+        tr(v-for="item in items" :key="item.id")
+          td
+            v-layout(align-center)
+              v-icon mdi-{{item.icon}}
+              a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
+          td
+            user-avatar(:user="item.author()")
+          td
+            time-ago(:date="item.createdAt")
+    v-layout(justify-center)
+      v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="loadMore()" v-t="'common.action.load_more'")
 </template>
