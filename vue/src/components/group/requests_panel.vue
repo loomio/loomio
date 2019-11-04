@@ -12,15 +12,20 @@ import { exact, approximate } from '@/shared/helpers/format_time'
 export default
   data: ->
     requests: []
-    group: Records.groups.fuzzyFind(@$route.params.key)
+    group: null
+
   created: ->
-    if AbilityService.canManageMembershipRequests(@group)
-      Records.membershipRequests.fetchPendingByGroup(@group.key, per: 100)
-      Records.membershipRequests.fetchPreviousByGroup(@group.key, per: 100)
-      @watchRecords
-        collections: ['membershipRequests']
-        query: (store) =>
-          @requests = @group.membershipRequests()
+    Records.groups.findOrFetch(@$route.params.key).then (group) =>
+      @group = group
+
+      if AbilityService.canManageMembershipRequests(@group)
+        Records.membershipRequests.fetchPendingByGroup(@group.key, per: 100)
+        Records.membershipRequests.fetchPreviousByGroup(@group.key, per: 100)
+        @watchRecords
+          collections: ['membershipRequests']
+          query: (store) =>
+            @requests = @group.membershipRequests()
+
   computed:
     unapprovedRequestsByOldestFirst: ->
       unapproved = filter @requests, (request) -> !request.respondedAt
@@ -33,7 +38,11 @@ export default
 </script>
 <template lang="pug">
 .requests-panel
-  v-list(two-line)
-    membership-request(v-for="request in unapprovedRequestsByOldestFirst" :request="request" :key="request.id")
-    membership-request(v-for="request in approvedRequestsByNewestFirst" :request="request" :key="request.id")
+  h2.ma-4.headline(v-t="'membership_requests_card.heading'")
+  loading(v-if="!group")
+  v-card.mt-4(outlined v-else="group")
+    p.text-center.pa-4(v-if="!requests.length" v-t="'common.no_results_found'")
+    v-list(two-line)
+      membership-request(v-for="request in unapprovedRequestsByOldestFirst" :request="request" :key="request.id")
+      membership-request(v-for="request in approvedRequestsByNewestFirst" :request="request" :key="request.id")
 </template>

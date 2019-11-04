@@ -12,10 +12,7 @@ import { exact, approximate } from '@/shared/helpers/format_time'
 export default
   data: ->
     loader: null
-    group: Records.groups.fuzzyFind(@$route.params.key)
-    searchQuery: null
-    subgroups: null
-    filter: null
+    group: null
     per: 50
     from: 0
     order: 'created_at desc'
@@ -25,46 +22,43 @@ export default
       {text: @$t('members_panel.order_by_created_desc'), value:'created_at desc' }
       {text: @$t('members_panel.order_by_admin_desc'), value:'admin desc' }
     ]
-    requests: []
     memberships: []
 
   created: ->
-    EventBus.$emit 'currentComponent',
-      page: 'groupPage'
-      title: @group.name
-      group: @group
-      search:
-        placeholder: @$t('navbar.search_members', name: @group.parentOrSelf().name)
 
-    @loader = new RecordLoader
-      collection: 'memberships'
-      path: 'autocomplete'
-      params:
-        q: @search
-        group_id: @group.id
-        subgroups: @subgroups
-        pending: true
-        filter: @filter
-        per: @per
-        from: @from
-        order: @order
+    Records.groups.findOrFetch(@$route.params.key).then (group) =>
+      @group = group
 
-    @loader.fetchRecords()
+      EventBus.$emit 'currentComponent',
+        page: 'groupPage'
+        title: @group.name
+        group: @group
+        search:
+          placeholder: @$t('navbar.search_members', name: @group.parentOrSelf().name)
 
-    @watchRecords
-      collections: ['memberships', 'groups']
-      query: @query
+      @loader = new RecordLoader
+        collection: 'memberships'
+        path: 'autocomplete'
+        params:
+          group_id: @group.id
+          pending: true
+          per: @per
+          from: @from
+          order: @order
+
+      @watchRecords
+        collections: ['memberships', 'groups']
+        query: @query
+
+      @refresh()
 
   methods:
     exact: exact
     approximate: approximate
-    refresh: ->
-      @fetch()
-      @query()
 
     query: ->
       chain = Records.memberships.collection.chain()
-      switch @subgroups
+      switch @$route.query.subgroups
         when 'mine'
           chain = chain.find(groupId: {$in: intersection(@group.organisationIds(), Session.user().groupIds())})
         when 'all'
@@ -72,12 +66,12 @@ export default
         else
           chain = chain.find(groupId: @group.id)
 
-      if @searchQuery
+      if @$route.query.q
         chain = chain.where (membership) =>
           some [membership.user().name, membership.user().username], (name) =>
-            RegExp("^#{@searchQuery}", "i").test(name) or RegExp(" #{@searchQuery}", "i").test(name)
+            RegExp("^#{@$route.query.q}", "i").test(name) or RegExp(" #{@$route.query.q}", "i").test(name)
 
-      switch @filter
+      switch @$route.query.filter
         when 'admin'
           chain = chain.find(admin: true)
         when 'pending'
@@ -104,18 +98,17 @@ export default
 
       @memberships = slice(records, @loader.numRquested)
 
+    refresh: ->
+      @fetch()
+      @query()
+
     fetch: ->
       @loader.fetchRecords
-        q: @searchQuery
+        q: @$route.query.q
         from: @from
         order: @order
-        filter: @filter
-        subgroups: @subgroups
-
-    show: ->
-      return false if (@recordCount() == 0 && @pending)
-      @initialFetch() if @canView
-      @canView
+        filter: @$route.query.filter
+        subgroups: @$route.query.subgroups
 
     recordsDisplayed: ->
       _.min [@loader.numRequested, @recordCount()]
@@ -126,24 +119,12 @@ export default
                       props:
                         announcement: Records.announcements.buildFromModel(@group.targetModel()))
 
-    handleSearchQueryChange: (val) ->
-      @$route.query.q = val
+    onQueryInput: (val) -> @$router.replace(@mergeQuery(q: val))
 
   computed:
-    canView: ->
-      if @pending
-        AbilityService.canViewPendingMemberships(@group)
-      else
-        AbilityService.canViewMemberships(@group)
-
     membershipRequestsPath: -> LmoUrlService.membershipRequest(@group)
     currentUserIsAdmin: -> Session.user().membershipFor(@group).admin
-
     showLoadMore: -> !@loader.exhausted
-
-    pollType: ->
-      @$t(@group.targetModel().pollTypeKey()) if @group.targetModel().isA('poll')
-
     totalRecords: ->
       if @pending
         @group.pendingMembershipsCount
@@ -157,59 +138,45 @@ export default
       (@group.adminMembershipsCount < 2) && ((@group.membershipsCount - @group.adminMembershipsCount) > 0)
 
   watch:
-    '$route.query':
-      immediate: true
-      handler: (query) ->
-        @filter = query.filter
-        @subgroups = query.subgroups || 'none' # either: all, mine, none
-        @searchQuery = query.q
-        @refresh()
+    '$route.query': debounce ->
+      @refresh()
+    , 500, {leading: false, trailing: true}
 
-    searchQuery: debounce (val, old)->
-      @$router.replace(query: {q: val})
-    ,
-      500
 
 </script>
 
 <template lang="pug">
 .members-panel
-  //- v-subheader Filters
-  //- ul
-  //-   li
-  //-     router-link(:to="{query: {status: 'all' }}") Admins
-  //-   li
-  //-     router-link(:to="{query: {status: 'active'}}") Members
-  //-   li
-  //-     router-link(:to="{query: {status: 'closed'}}") Invited
-  v-alert(v-model="onlyOneAdminWithMultipleMembers" color="primary" type="warning")
-    template(slot="default")
-      span(v-t="'memberships_page.only_one_admin'")
+  loading(v-if="!group")
+  div(v-if="group")
+    v-alert(v-model="onlyOneAdminWithMultipleMembers" color="primary" type="warning")
+      template(slot="default")
+        span(v-t="'memberships_page.only_one_admin'")
 
-  v-layout.py-2(align-center)
-    v-menu
-      template(v-slot:activator="{ on }")
-        v-btn.mr-2.text-lowercase(v-on="on" text)
-          span(v-if="filter == 'admin'" v-t="'members_panel.order_by_admin_desc'")
-          span(v-if="filter == 'pending'" v-t="'members_panel.invitations'")
-          span(v-if="!filter" v-t="'members_panel.everyone'")
-          v-icon mdi-menu-down
-      v-list(dense)
-        v-list-item(:to="mergeQuery({filter: null})")
-          v-list-item-title(v-t="'members_panel.everyone'")
-        v-list-item(:to="mergeQuery({filter: 'admin'})")
-          v-list-item-title(v-t="'members_panel.order_by_admin_desc'")
-        v-list-item(:to="mergeQuery({filter: 'pending'})")
-          v-list-item-title(v-t="'members_panel.invitations'")
-    v-text-field.mr-2(clearable hide-details solo v-model="searchQuery" :placeholder="$t('navbar.search_members', {name: group.name})" append-icon="mdi-magnify")
-    v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'invitation_form.invite_people'")
-    shareable-link-modal(:group="group")
-    v-btn.group-page__requests-tab(:to="urlFor(group, 'members/requests')" v-t="'members_panel.requests'")
+    v-layout.py-2(align-center)
+      v-menu
+        template(v-slot:activator="{ on }")
+          v-btn.mr-2.text-lowercase(v-on="on" text)
+            span(v-if="$route.query.filter == 'admin'" v-t="'members_panel.order_by_admin_desc'")
+            span(v-if="$route.query.filter == 'pending'" v-t="'members_panel.invitations'")
+            span(v-if="!$route.query.filter" v-t="'members_panel.everyone'")
+            v-icon mdi-menu-down
+        v-list(dense)
+          v-list-item(:to="mergeQuery({filter: null})")
+            v-list-item-title(v-t="'members_panel.everyone'")
+          v-list-item(:to="mergeQuery({filter: 'admin'})")
+            v-list-item-title(v-t="'members_panel.order_by_admin_desc'")
+          v-list-item(:to="mergeQuery({filter: 'pending'})")
+            v-list-item-title(v-t="'members_panel.invitations'")
+      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" append-icon="mdi-magnify")
+      v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'invitation_form.invite_people'")
+      shareable-link-modal(:group="group")
+      v-btn.group-page__requests-tab(:to="urlFor(group, 'members/requests')" v-t="'members_panel.requests'")
 
-  v-card(outlined)
-    v-list(three-line)
-      template(v-for="(membership, index) in memberships")
-        v-list-item(:key="membership.id")
+    v-card(outlined)
+      p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
+      v-list(v-else three-line)
+        v-list-item(v-for="membership in memberships" :key="membership.id")
           v-list-item-avatar(size='48')
             router-link(:to="urlFor(membership.user())")
               user-avatar(:user='membership.user()' size='48')
@@ -225,11 +192,9 @@ export default
             v-list-item-subtitle(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
             v-list-item-subtitle(v-if="!membership.acceptedAt")
               span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
-              //- time-ago(:date="membership.createdAt")
           v-list-item-action
             membership-dropdown(:membership="membership")
-        v-divider(v-if="index + 1 < memberships.length" :key="index")
-    v-layout(justify-center)
-      v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+      v-layout(justify-center)
+        v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 
 </template>

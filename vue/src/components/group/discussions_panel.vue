@@ -201,9 +201,8 @@ div.discussions-panel(v-if="group")
         .lmo-hint-text.discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
 
     .discussions-panel__content.pa-4(v-if="$route.query.q")
-      v-alert.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading')
-        p(v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")
-      thread-search-result(v-for="result in searchResults" :key="result.id" :result="result")
+      p.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading' v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")
+      thread-search-result(v-else v-for="result in searchResults" :key="result.id" :result="result")
 </template>
 
 <style lang="sass">

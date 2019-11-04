@@ -92,6 +92,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    no_results_found: No results found
     view: View
     history: History
     option: Option
@@ -1097,6 +1098,7 @@ en:
       submit: Remove member
 
   memberships_panel:
+
     add_coordinator: Make Admin
     remove_coordinator: Demote admin
 
@@ -1642,6 +1644,7 @@ en:
     no_results_found: No results for "{{search}}"
 
   members_panel:
+    no_results: 'No members found'
     everyone: 'Everyone'
     sort: 'Sort'
     order_label: "Order"

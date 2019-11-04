@@ -118,7 +118,7 @@ export default
       v-list(two-line avatar v-if='polls.length')
         poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
 
-      v-alert(v-if='polls.length == 0 && !loader.loading' :value="true" color="grey" outlined icon="info" v-t="'polls_panel.no_polls'")
+      p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
 
       v-layout(justify-center)
         v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
