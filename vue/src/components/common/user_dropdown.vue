@@ -1,12 +1,20 @@
 <script lang="coffee">
 import AppConfig       from '@/shared/services/app_config'
 import Session         from '@/shared/services/session'
+import Records         from '@/shared/services/records'
 import UserHelpService from '@/shared/services/user_help_service'
 
 export default
   methods:
     signOut: ->
       Session.signOut()
+
+  methods:
+    togglePinned: ->
+      if @user.experiences['sidebar']
+        Records.users.removeExperience('sidebar')
+      else
+        Records.users.saveExperience('sidebar')
 
   computed:
     siteName: -> AppConfig.theme.site_name
@@ -18,6 +26,14 @@ export default
 
 <template lang="pug">
 div
+  v-list-item(v-if="!user.experiences['sidebar']" @click="togglePinned" dense)
+      v-list-item-title(v-t="'user_dropdown.pin_sidebar'")
+      v-list-item-icon
+        v-icon mdi-pin
+  v-list-item(v-if="user.experiences['sidebar']" @click="togglePinned" dense)
+      v-list-item-title(v-t="'user_dropdown.unpin_sidebar'")
+      v-list-item-icon
+        v-icon mdi-pin-off
   v-list-item.user-dropdown__list-item-button--profile(to="/profile" dense)
     v-list-item-title(v-t="'user_dropdown.edit_profile'")
     v-list-item-icon

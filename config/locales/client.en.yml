@@ -436,6 +436,8 @@ en:
     group_and_subgroups: '{{group}} & subgroups'
 
   user_dropdown:
+    pin_sidebar: "Pin sidebar"
+    unpin_sidebar: "Unpin sidebar"
     button_label: 'User menu'
     edit_profile: 'Edit profile'
     email_settings: 'Notification settings'
@@ -1716,7 +1718,7 @@ en:
     helptext_on: Users will be able to add this meeting to their calendar
     helptext_off: No meeting invite will be sent
     event_duration: Duration
-    event_summary: Summary
+    event_summary: Meeting name
     event_summary_placeholder: What would you like to call this meeting?
     event_description: Meeting description
     event_description_placeholder: What is the agenda for this meeting?
