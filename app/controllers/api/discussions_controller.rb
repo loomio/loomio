@@ -141,7 +141,8 @@ class API::DiscussionsController < API::RestfulController
   def collection_for_index(collection, filter: params[:filter])
     case filter
     when 'show_closed' then collection.is_closed
-    else                    collection.is_open
+    when 'all' then collection
+    else collection.is_open
     end.sorted_by_importance
   end
 

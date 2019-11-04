@@ -1634,6 +1634,7 @@ en:
 
   discussions_panel:
     open: Open
+    all: All
     unread: Unread ({{count}})
     closed: Closed
     include_subgroups_mine: '{{name}} and my subgroups'
@@ -1680,7 +1681,7 @@ en:
     uploaded_at: Uploaded at
 
   subgroups_panel:
-    search_subgroups_of_name: 'Search subgroups of {{name}}' 
+    search_subgroups_of_name: 'Search subgroups of {{name}}'
 
 
   poll_common_action_panel:

@@ -12,7 +12,6 @@ import { pick } from 'lodash'
 import * as Sentry from '@sentry/browser'
 import VueClipboard from 'vue-clipboard2'
 import WatchRecords from '@/mixins/watch_records'
-import VueYouTubeEmbed from 'vue-youtube-embed'
 import CloseModal from '@/mixins/close_modal'
 import UrlFor from '@/mixins/url_for'
 import FormatDate from '@/mixins/format_date'
@@ -20,13 +19,11 @@ import FormatDate from '@/mixins/format_date'
 Vue.mixin(CloseModal)
 Vue.mixin(WatchRecords)
 Vue.mixin(UrlFor)
-Vue.use(VueYouTubeEmbed)
 Vue.use(VueClipboard)
 Vue.mixin(FormatDate)
 
 Vue.config.productionTip = false
 
-# { pluginConfigFor } = require '@/shared/helpers/plugin'
 import { hardReload, unsupportedBrowser } from '@/shared/helpers/window.coffee'
 import boot from '@/shared/helpers/boot'
 import Session from '@/shared/services/session'

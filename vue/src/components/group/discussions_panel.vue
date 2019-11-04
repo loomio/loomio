@@ -19,10 +19,6 @@ export default
     searchResults: []
     loader: null
     searchLoader: null
-    # searchQuery: @$route.query.q
-    # tag: @$route.query.tag
-    # filter: @$route.query.t || 'open'
-    # subgroups: @$route.query.subgroups || 'mine'
     groupIds: []
 
   methods:
@@ -85,6 +81,8 @@ export default
             chain = chain.where (discussion) -> discussion.isUnread()
           when 'closed'
             chain = chain.find(closedAt: {$ne: null})
+          when 'all'
+            true # noop
           else
             chain = chain.find(closedAt: null)
 
@@ -101,6 +99,7 @@ export default
       else
         params = {from: @from}
         params.filter = 'show_closed' if @$route.query.t == 'closed'
+        params.filter = 'all' if @$route.query.t == 'all'
         params.subgroups = @$route.query.subgroups || 'mine'
         params.tags = @$route.query.tag
         @loader.fetchRecords(params)
@@ -110,6 +109,7 @@ export default
     filterName: (filter) ->
       switch filter
         when 'unread' then 'discussions_panel.unread'
+        when 'all' then 'discussions_panel.all'
         when 'closed' then 'discussions_panel.closed'
         when 'subscribed' then 'change_volume_form.simple.loud'
         else
@@ -117,7 +117,9 @@ export default
 
     onQueryInput: (val) ->
       @$router.replace(@mergeQuery(q: val))
+
   watch:
+    '$route.params': 'init'
     '$route.query': 'refresh'
 
   computed:
@@ -161,12 +163,14 @@ div.discussions-panel(v-if="group")
       v-list(dense)
         v-list-item(:to="mergeQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.open'")
+        v-list-item(:to="mergeQuery({t: 'all'})")
+          v-list-item-title(v-t="'discussions_panel.all'")
         v-list-item(:to="mergeQuery({t: 'closed'})")
           v-list-item-title(v-t="'discussions_panel.closed'")
         v-list-item(:to="mergeQuery({t: 'unread'})")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
-        v-list-item(:to="mergeQuery({t: 'subscribed'})")
-          v-list-item-title(v-t="'change_volume_form.simple.loud'")
+        //- v-list-item(:to="mergeQuery({t: 'subscribed'})")
+        //-   v-list-item-title(v-t="'change_volume_form.simple.loud'")
 
     v-menu
       template(v-slot:activator="{ on }")
