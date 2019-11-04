@@ -6,7 +6,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('visit_group_as_subgroup_member')
-    page.expectText('.group-cover-name', 'Point Break')
+    page.expectText('.group-page__name', 'Point Break')
     page.expectElement('.join-group-button')
     page.ensureSidebar()
     page.expectText('.sidebar__groups', 'Point Break')
@@ -189,7 +189,7 @@ module.exports = {
     page.click('.group-form__submit-button')
 
     page.pause(500)
-    page.expectText('.group-cover-name', 'Clean Dancing Shoes')
+    page.expectText('.group-page__name', 'Clean Dancing Shoes')
   },
 
   // TODO reenable when clearValue bug is fixed
@@ -344,7 +344,8 @@ module.exports = {
 
     page.loadPath('setup_group_with_pending_invitations')
     page.click('.group-page-members-tab')
-    page.click('.group-page__invitations-tab')
-    page.expectText('.invitations-panel tbody', 'shown@test.com')
+    page.click('.members-panel__filters')
+    page.click('.members-panel__filters-invitations')
+    page.expectText('.members-panel .v-card .v-list-item__title', 'shown@test.com')
   }
 }
