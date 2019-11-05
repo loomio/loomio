@@ -59,8 +59,6 @@ export default
         'explore_page.multiple_search_results'
 
     noResultsFound: ->
-      console.log 'searching', @searching
-      console.log '@groups().length < @perPage', @groups().length < @perPage
       !@searching && (@groups().length < @perPage)
 
     orderedGroups: ->
