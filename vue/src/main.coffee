@@ -46,3 +46,6 @@ boot ->
       vuetify: vuetify
       i18n: i18n
     ).$mount('#app')
+
+    if router.history.current.path == "/dashboard" && Session.user().memberships().length == 1
+      router.replace("/g/#{Session.user().memberships()[0].group().key}")
