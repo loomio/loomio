@@ -51,7 +51,9 @@ threadPageChildren = [
 
 
 export default new Router
-  mode: 'history',
+  mode: 'history'
+  scrollBehavior: (to, from, savedPosition) ->
+    { x: 0, y: 0 }
   routes: [
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
