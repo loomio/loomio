@@ -6,15 +6,14 @@ import UserHelpService from '@/shared/services/user_help_service'
 
 export default
   methods:
-    signOut: ->
-      Session.signOut()
-
-  methods:
     togglePinned: ->
       if @user.experiences['sidebar']
         Records.users.removeExperience('sidebar')
       else
         Records.users.saveExperience('sidebar')
+
+    signOut: ->
+      Session.signOut()
 
   computed:
     siteName: -> AppConfig.theme.site_name
