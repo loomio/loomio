@@ -118,8 +118,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
-    page.ensureSidebar()
-    page.click('.sidebar-start-subgroup')
+    page.click('.group-page-subgroups-tab')
+    page.click('.subgroups-card__start')
 
     page.fillIn('#group-name', 'Open please')
     page.click('.group-form__privacy-open')
@@ -139,8 +139,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
-    page.ensureSidebar()
-    page.click('.sidebar-start-subgroup')
+    page.click('.group-page-subgroups-tab')
+    page.click('.subgroups-card__start')
 
     page.fillIn('#group-name', 'Closed please')
     page.click('.group-form__privacy-closed')
@@ -160,8 +160,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
-    page.ensureSidebar()
-    page.click('.sidebar-start-subgroup')
+    page.click('.group-page-subgroups-tab')
+    page.click('.subgroups-card__start')
 
     page.fillIn('#group-name', 'Secret please')
     page.click('.group-form__privacy-secret')
