@@ -7,12 +7,11 @@ import AbilityService     from '@/shared/services/ability_service'
 import RecordLoader       from '@/shared/services/record_loader'
 import ThreadFilter       from '@/shared/services/thread_filter'
 import GroupModalMixin    from '@/mixins/group_modal.coffee'
-import { capitalize, take, keys, every, orderBy } from 'lodash'
-import WatchRecords from '@/mixins/watch_records'
+import { capitalize, take, keys, every, orderBy, debounce } from 'lodash'
 import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
 
 export default
-  mixins: [GroupModalMixin, WatchRecords]
+  mixins: [GroupModalMixin]
 
   data: ->
     dashboardLoaded: Records.discussions.collection.data.length > 0
@@ -26,7 +25,6 @@ export default
       older: []
     loader: null
     searchLoader: null
-    searchQuery: @$route.query.q || ''
     searchResults: []
 
   created: ->
@@ -41,11 +39,7 @@ export default
         placeholder: @$t('navbar.search_all_threads')
 
   watch:
-    '$route.query': (query) ->
-      @searchQuery = ''
-      @searchQuery = @$route.query.q if @$route.query.q
-      @dashboardLoading = false
-      @refresh()
+    '$route.query': 'refresh'
 
   methods:
     init: ->
@@ -70,19 +64,20 @@ export default
       @fetch()
       @query()
 
-    fetch: ->
+    fetch: debounce ->
       return unless @loader
-      if @searchQuery
-        @searchLoader.fetchRecords(q: @searchQuery).then =>
+      if @$route.query.q
+        @searchLoader.fetchRecords(q: @$route.query.q).then =>
           @dashboardLoaded = true
           @query()
       else
         @loader.fetchRecords().then => @dashboardLoaded = true
+    , 300
 
     query: ->
-      if @searchQuery.length
+      if @$route.query.q
         chain = Records.searchResults.collection.chain()
-        chain = chain.find(query: @searchQuery).data()
+        chain = chain.find(query: @$route.query.q).data()
         @searchResults = orderBy(chain, 'rank', 'desc')
       else
         now = new Date()
@@ -103,6 +98,9 @@ export default
 
     filters: (filters) ->
       ['only_threads_in_my_groups', 'show_opened', @filter].concat(filters)
+
+    onQueryInput: (val) ->
+      @$router.replace(@mergeQuery(q: val))
 
   computed:
     titleKey: ->
@@ -128,16 +126,19 @@ v-content
     //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'")
     //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.all'" v-show="filter == 'hide_muted'")
     //- h1.lmo-h1-medium.dashboard-page__heading(v-t="'dashboard_page.filtering.muted'", v-show="filter == 'show_muted'")
+    v-layout.mb-3
+      v-text-field.mr-2.flex-grow-1(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
+
     v-card.mb-3(v-if='!dashboardLoaded', v-for='(viewName, index) in loadingViewNames', :key='index', :class="'dashboard-page__loading dashboard-page__' + viewName", aria-hidden='true')
       v-list(two-line)
         v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
     div(v-if="dashboardLoaded")
-      section.dashboard-page__loaded(v-if="searchQuery")
+      section.dashboard-page__loaded(v-if="$route.query.q")
         v-card
           thread-search-result(v-for="result in searchResults" :key="result.id" :result="result")
 
-      section.dashboard-page__loaded(v-if='!searchQuery')
+      section.dashboard-page__loaded(v-if='!$route.query.q')
         .dashboard-page__empty(v-if='noThreads')
           p(v-html="$t('dashboard_page.no_groups.show_all')" v-if='noGroups')
           .dashboard-page__no-threads(v-if='!noGroups')
