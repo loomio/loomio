@@ -19,7 +19,7 @@ es:
     error:
       sign_in_required_html: |
           Debes estar registrado para proceder.
-          Por favor <a href="/dashboard">regístrate</a>y luego recarga esta página para continuar.
+          Por favor <a href="/dashboard" target="_blank">registrate</a> y después refresca esta página para continuar.
       recaptcha: "No pudimos verificar que no eres un robot. Por favor intenta de nuevo"
       bad_login: "Lo lamentamos, esa contraseña no coincide con la que tenemos archivada"
       username_must_be_alphanumeric: "El nombre de usuario debe contener solamente letras y dígitos en minúscula "
@@ -133,6 +133,7 @@ es:
       invitation_text_html: "te ha invitado a unirte a su grupo"
       link_help: "Haz clic en el enlace para unirte al grupo:"
       accept_invitation: "Aceptar invitación\n "
+      stop_emails: "Dejar de recibir emails de %{site_name}"
     resend_to_join_group:
       subject: "%{member} está esperando que te sumes a %{group_name} en %{site_name}"
     user_added_to_group:
@@ -566,6 +567,8 @@ es:
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: Comentario de %{comment_author}
+  personal_data:
+    title: Datos personales de %{user_name}en%{host_name}
   notified:
     no_matches_found: "No hemos encontrado nada que concuerde con '%{query}'"
     group_users: "(%{count} personas)"

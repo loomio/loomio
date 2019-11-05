@@ -68,7 +68,6 @@ ko:
       new_thread: "새로운 쓰레드"
       loading: '로딩중...'
       translate: '번역'
-      translated: 'Bing으로 번역'
       upload: '업로드'
       uploading: '업로딩중...'
       ok: OK
@@ -87,6 +86,8 @@ ko:
     quiet: '조용히'
     mute: '소거'
     unmute: '소거해제'
+  pin_event_form:
+    title_label: 제목
   change_volume_form:
     simple:
       label: 알림
@@ -232,6 +233,7 @@ ko:
     privacy_private: '이 쓰레드는 {{group}}의 멤버만 볼 수 있습니다.'
     privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
   action_dock:
+    move_items: 이동
     edit_stance: 선택 변경
     close_thread: 토론 주제 닫기
     delete_thread: 쓰레드 삭제

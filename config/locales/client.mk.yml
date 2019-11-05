@@ -21,6 +21,8 @@ mk:
     search: Пребарувај
   error_page:
     forbidden: 'Немате дозвола за да го направите ова.'
+  pin_event_form:
+    title_label: Наслов
   change_volume_form:
     simple:
       label: Известувања
@@ -44,6 +46,8 @@ mk:
     title_label: 'Наслов'
     context_label: 'Контекст'
     privacy_label: 'Приватност'
+  action_dock:
+    edited: Изменето
   join_group_button:
     join_group: Приклучи се во групата
     membership_requested: Барањето за членство е игнорирано.

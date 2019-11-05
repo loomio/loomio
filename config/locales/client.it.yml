@@ -58,6 +58,7 @@ it:
   timezones:
     local: Ora locale ({{value}})
   common:
+    no_results_found: Nessun risultato trovato
     option: Opzione
     add: Aggiungi
     you: Tu
@@ -133,7 +134,6 @@ it:
       add_subgroup: 'Nuovo sottogruppo'
       loading: 'In caricamento...'
       translate: 'Traduci'
-      translated: 'Tradotto da Bing Traduttore'
       upload: 'Carica'
       uploading: 'Caricamento in corso'
       load_more: 'Carica ancora'
@@ -199,6 +199,8 @@ it:
     quiet: 'Quieto'
     mute: 'Silenzioso'
     unmute: 'Rimuovi silenzioso'
+  pin_event_form:
+    title_label: Titolo
   change_volume_form:
     simple:
       label: Notifiche
@@ -444,7 +446,6 @@ it:
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     fork_notice: 'Una nuova discussione è stata creata con {{count}} argomenti da {{title}}'
   announcement:
-    preview: Anteprima
     audiences:
       parent_group: Membri di {{name}}
       formal_group: Membri di {{name}}
@@ -488,7 +489,6 @@ it:
       search_placeholder: Cerca persone...
       members_count: '{{count}} persone saranno notificate'
   action_dock:
-    react: Aggiungi reazione
     add_resource: Aggiungi allegato
     edit_group: Modifica il contesto del gruppo
     add_comment: Commenta
@@ -496,6 +496,7 @@ it:
     edit_thread: Modifica il contesto
     translate_thread: Traduci il contesto
     edit_poll: Modifica sondaggio
+    move_items: Sposta
     translate_poll: Traduci sondaggio
     edit_stance: Cambia posizione
     translate_stance: Traduci il voto
@@ -507,6 +508,7 @@ it:
     edit_outcome: Modifica il risultato
     translate_outcome: Traduci il risultato
     show_history: Mostra la storia della modifica
+    edited: Modificato
     pin_thread: Fissa in alto la discussione
     unpin_thread: Non fissare in alto la discussione
     comment_copied: URL del commento copiato negli appunti
@@ -1092,8 +1094,10 @@ it:
     count: "Vedi tutto:  ({{count}}) decisioni"
   discussions_panel:
     open: Aperto
+    all: Tutte
     closed: Chiuso
   members_panel:
+    everyone: 'Chiunque'
     order_by_name: 'Nome'
     header_name: 'Nome'
     header_username: 'Nome Utente'
@@ -1117,7 +1121,6 @@ it:
   poll_common_calendar_invite:
     poll_option_id: Ora dell'incontro
     event_duration: Durata
-    event_summary: Sommario
     event_description: Descrizione dell'incontro
     location: Luogo
   poll_common_settings:

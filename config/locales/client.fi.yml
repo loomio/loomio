@@ -46,7 +46,6 @@ fi:
       new_thread: "Uusi aihe"
       loading: 'Ladataan'
       translate: 'Käännä'
-      translated: 'Tekstin käänsi Bing-kääntäjä'
       upload: 'Lataa'
       uploading: 'Lataaminen'
   error_page:

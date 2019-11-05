@@ -17,9 +17,6 @@ he:
     deleted_user: "משתמש מחוק"
     placeholder_name: "משתמש מוזמן (%{hostname})"
     error:
-      sign_in_required_html: |
-          אתה נדרש להרשם כדי להמשיך.
-          אנא  <a href="/dashboard">הרשם</a> ואז טען מחדש את הדף כדי להמשיך.
       recaptcha: "לא הצלחנו לאשר שאינך רובוט. אנא נסה שוב!"
       bad_login: "סליחה, סיסמה זו לא תואמת לזו שבמערכת"
       username_must_be_alphanumeric: "שם המשתמש נדרש להיות באותיות אנגלית קטנות ומספרים בלבד"

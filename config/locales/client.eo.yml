@@ -140,6 +140,8 @@ eo:
     quiet: 'Malbrua'
     mute: 'Silentigi'
     unmute: 'Malsilentigi'
+  pin_event_form:
+    title_label: Titolo
   change_volume_form:
     simple:
       label: Sciigoj
@@ -202,13 +204,13 @@ eo:
     title_label: 'Titolo'
     context_label: 'Kunteksto'
     privacy_label: 'Privateco'
-  announcement:
-    preview: Antaŭkontrolo
   action_dock:
     add_comment: Komenti
     edit_poll: Redakti enketon
+    move_items: Movi
     translate_poll: Traduki enketon
     delete_comment: Forigi la komenton
+    edited: Redaktita
     close_thread: Fermigi fadenon
   logo_photo_form:
     heading: 'Nova emblemo de grupo'
@@ -383,6 +385,7 @@ eo:
     save_changes: Konservi
   discussions_panel:
     open: Malfermita
+    all: Ĉiuj
     closed: Fermita
   members_panel:
     order_by_name: 'Nomo'
@@ -396,7 +399,6 @@ eo:
     loomio_group: Grupo
   poll_common_calendar_invite:
     event_duration: Daŭro
-    event_summary: Resumo
   poll_common_form:
     title: Titolo
     details: Detaloj

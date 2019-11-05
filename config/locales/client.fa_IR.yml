@@ -74,7 +74,6 @@ fa_IR:
       new_thread: "موضوع جدید"
       loading: 'در حال بارگذاری'
       translate: 'ترجمه'
-      translated: 'ترجمه از موتور ترجمه Bing'
       upload: 'بارگذاری'
       uploading: 'در حال بارگذاری'
       load_more: 'بارگذاری بیشتر'

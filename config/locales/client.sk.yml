@@ -25,6 +25,8 @@ sk:
     search: Vyhľadávať
   error_page:
     forbidden: 'Na túto akciu nemáte oprávnenie.'
+  pin_event_form:
+    title_label: Názov
   change_volume_form:
     simple:
       label: Upozornenie
@@ -51,6 +53,8 @@ sk:
     title_label: 'Názov'
     context_label: 'Kontext'
     privacy_label: 'Súkromie'
+  action_dock:
+    edited: Aktualizovaný
   join_group_button:
     join_group: Pripojiť sa ku skupine
     membership_requested: Žiadosť o členstvo odoslaná
@@ -128,6 +132,7 @@ sk:
   poll_common:
     save_changes: Uložiť
   discussions_panel:
+    all: Všetko
     closed: Uzatvorené
   members_panel:
     order_by_name: 'Meno'

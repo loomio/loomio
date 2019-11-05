@@ -109,6 +109,8 @@ uk:
     points_abbrev: Кожен голос вартує {{score}} балів
     total: Разом
     action:
+      pin: Закріпити
+      unpin: Відкріпити
       search: 'Пошук'
       back: 'Назад'
       next: 'Наступна'
@@ -129,7 +131,6 @@ uk:
       new_thread: "Нова тема"
       loading: 'Завантаження'
       translate: 'Перекласти'
-      translated: 'Переклад Bing Translator'
       upload: 'Завантажити'
       uploading: 'Завантажити'
       load_more: 'Завантажити більше'
@@ -187,6 +188,8 @@ uk:
     quiet: 'Спокійно'
     mute: 'Вимкнено'
     unmute: 'Увімкнути'
+  pin_event_form:
+    title_label: Назва
   change_volume_form:
     simple:
       label: Сповіщення
@@ -418,7 +421,6 @@ uk:
     privacy_organisation: 'Тему можуть бачити тільки учасники груп {{parent}} та {{group}}.'
     fork_notice: 'Буде створено нову тему з {{count}} елементів від {{title}}'
   announcement:
-    preview: Попередній перегляд
     audiences:
       parent_group: Учасник {{name}}
       formal_group: Учасник {{name}}
@@ -468,7 +470,6 @@ uk:
     flash:
       success: '{{count}} сповіщень надіслано'
   action_dock:
-    react: Додати реакцію
     add_resource: Додати вкладення
     edit_group: Редагувати контекст групи
     add_comment: Коментар
@@ -477,6 +478,7 @@ uk:
     invite_guests: Запросити гостей
     translate_thread: Перекласти контекст
     edit_poll: Редагувати опитування
+    move_items: Перемістити
     announce_poll: Запросити людей до голосування
     announce_poll_active: (Ще нікого не було запрошено)
     translate_poll: Перекласти опитування
@@ -492,6 +494,7 @@ uk:
     announce_outcome_active: (Ще нікого не було сповіщено про цей результат)
     translate_outcome: Перекласти результат
     show_history: Показати історію змін
+    edited: Відредаговано
     pin_thread: Закріпити тему
     unpin_thread: Відкріпити тему
     comment_copied: URL-адресу коментаря скопійовано до буферу обміну
@@ -991,9 +994,6 @@ uk:
       or: або
       join_group: <a href="/explore">долучіться</a> до групи аби бачити теми.
   discussion:
-    subscription_canceled: |
-        <p>Вибачте! Ваша підписка не активна.</p>
-        <p>Будь ласка <a href="{{upgradeUrl}}" target="_blank">оновіть план</a> щоб продовжувати використовувати Loomio.</p>
     activity: 'Оновлення'
     activity_placeholder: 'Поки що жодних оновлень!'
     load_previous: 'Завантажити попередні оновлення'
@@ -1242,6 +1242,7 @@ uk:
     count: "Переглянути усі: ({{count}}) рішень"
   discussions_panel:
     open: Відкрита
+    all: Всі
     closed: Закрита
   members_panel:
     order_by_name: 'Ім''я'
@@ -1276,7 +1277,6 @@ uk:
     helptext_on: Користувачі зможуть додати цю зустріч до свого календаря
     helptext_off: Запрошення на зустріч не буде надіслано 
     event_duration: Тривалість
-    event_summary: Підсумок
     event_summary_placeholder: Як б ви хотіли назвати цю зустріч?
     event_description: Опис зустрічі
     event_description_placeholder: Який порядок денний цієї зустрічі?

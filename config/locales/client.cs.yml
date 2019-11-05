@@ -25,6 +25,7 @@ cs:
   timezones:
     local: Místní čas ({{value}})
   common:
+    no_results_found: Žádné výsledky nenalezeny
     you: Vy
     expand: Rozbalit
     all_day: Celý den
@@ -88,7 +89,6 @@ cs:
       new_thread: "Nové vlákno"
       loading: 'Načítá se'
       translate: 'Přeložit'
-      translated: 'Překlad Bing Translator'
       upload: 'Nahrát'
       uploading: 'Nahrává se'
       load_more: 'Načíst další'
@@ -141,6 +141,8 @@ cs:
     quiet: 'Tichý'
     mute: 'Ztlumit'
     unmute: 'Zapnout zvuk'
+  pin_event_form:
+    title_label: Název
   change_volume_form:
     simple:
       label: Upozornění
@@ -307,13 +309,14 @@ cs:
     group_form:
       modal_title: Vybrat členy skupiny
   action_dock:
-    react: Přidat reakci
     edit_group: Upravit kontext skupiny
     add_comment: Komentář
     copy_url: Kopírovat URL
     edit_thread: Upravit kontext
     translate_thread: Přeložit kontext
+    move_items: Přesunout
     edit_stance: Změnit postoj
+    edited: Upraveno
     tag_thread: Správa štítků
     close_thread: Zavřít vlákno
     delete_thread: Smazat vlákno
@@ -674,6 +677,7 @@ cs:
     count: "Zobrazit všechna: ({{count}}) rozhodnutí"
   discussions_panel:
     open: Otevřená
+    all: Vše
     closed: Zavřená
   members_panel:
     order_by_name: 'Název'

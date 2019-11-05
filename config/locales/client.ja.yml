@@ -38,6 +38,8 @@ ja:
     search: 検索
   error_page:
     forbidden: 'このアクションの許可がありません'
+  pin_event_form:
+    title_label: タイトル
   change_volume_form:
     simple:
       label: 通知

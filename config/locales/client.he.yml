@@ -108,6 +108,8 @@ he:
     points_abbrev: כל הצבעה שווה {{score}} נקודות
     total: סך הכל
     action:
+      pin: סיכה
+      unpin: הסר סיכה
       search: 'חיפוש'
       back: 'חזרה'
       next: 'הבא'
@@ -128,7 +130,6 @@ he:
       new_thread: "שיחה חדשה"
       loading: 'נטען'
       translate: 'תרגום'
-      translated: 'תרגום ע"י מתרגם של בינג'
       upload: 'העלה'
       uploading: 'עולה'
       load_more: 'טען עוד'
@@ -187,6 +188,8 @@ he:
     quiet: 'שקט'
     mute: 'השתקה'
     unmute: 'הסר השתקה'
+  pin_event_form:
+    title_label: כותרת
   change_volume_form:
     simple:
       label: התרעות
@@ -416,7 +419,6 @@ he:
     privacy_organisation: 'משתמשי {{parent}} וה{{group}} יכולו לצפות בשיחה.'
     fork_notice: 'שיחה חדשה תיווצר עם {{count}} פריטים מ{{title}}'
   announcement:
-    preview: תצוגה מקדימה
     audiences:
       parent_group: משתתפי ה{{name}}
       formal_group: משתתפי ה{{name}}
@@ -469,7 +471,6 @@ he:
     flash:
       success: '{{count}} עדכונים נשלחו'
   action_dock:
-    react: הוספת ריאקציה
     add_resource: צרוף קובץ
     edit_group: עריכת תוכן הקבוצה
     add_comment: הערה
@@ -477,6 +478,7 @@ he:
     edit_thread: ערוך תוכן
     translate_thread: תרגום תוכן
     edit_poll: עריכת סקר
+    move_items: העבר
     announce_poll: הזמן אנשים להצביע
     announce_poll_active: (אף אחד עוד לא הוזמן)
     translate_poll: תרגום סקר
@@ -492,6 +494,7 @@ he:
     announce_outcome_active: (אף אחד עוד לא עודכן על התוצאה)
     translate_outcome: תרגם תוצאה
     show_history: הצג היסטוריית עריכה
+    edited: ערוך
     pin_thread: דקור שיחה
     unpin_thread: הסר דקירה של שיחה
     comment_copied: כתובת הURL של ההערה הועתקה לClipboard
@@ -996,9 +999,6 @@ he:
     max_threads_reached: |
         <p>השתמשת בכל {{maxThreads}} השירשורים הפנויים בקבוצה זו.</p>
         <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> בכדי להמשיך לשתף פעולה בLoomio.</p>
-    subscription_canceled: |
-        <p>מצטערים! החשבון שלך לא פעיל.</p>
-        <p>אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> כדי להמשיך להשתמש בלומיו.</p>
     activity: 'פעילות'
     activity_placeholder: 'אין פעילות עוד!'
     load_previous: 'טען פעילויות מוקדמות יותר'
@@ -1246,6 +1246,7 @@ he:
     count: "צפה בכל: ({{count}}) ההחלטות"
   discussions_panel:
     open: פתוח
+    all: הכל
     closed: סגור
   members_panel:
     order_by_name: 'שם'
@@ -1280,7 +1281,6 @@ he:
     helptext_on: משתמשים יועלו להוסיף פגישה זו ליומן שלהם
     helptext_off: הזמנה לפגישה לא תשלח
     event_duration: משך
-    event_summary: סיכום
     event_summary_placeholder: איך תרצה לקרוא לפגישה זו?
     event_description: תיאור הפגישה
     event_description_placeholder: מה התוכנית/לו"ז לפגישה?

@@ -69,7 +69,6 @@ el:
       new_thread: "Νέο θέμα"
       loading: 'Φορτώνει'
       translate: 'Μετάφραση'
-      translated: 'Μεταφράση από τον Μεταφραστή Bing'
       upload: 'Ανέβασμα'
       uploading: 'Φορτώνει'
       load_more: 'Φόρτωση περισσότερα'
@@ -103,6 +102,8 @@ el:
     quiet: 'Ήσυχα'
     mute: 'Σίγαση'
     unmute: 'Κατάργηση σίγασης'
+  pin_event_form:
+    title_label: Τίτλος
   change_volume_form:
     simple:
       label: Ειδοποιήσεις
@@ -234,6 +235,7 @@ el:
     privacy_organisation: 'Το θέμα θα είναι ορατό μόνο στα μέλη της {{parent}} και μέλη της ομάδα {{group}}.'
   action_dock:
     edit_stance: Αλλάξε θέση
+    edited: Επεξεργάστηκε
   formatting:
     attach: Επισυνάψτε αρχείο
   cover_photo_form:
@@ -435,8 +437,10 @@ el:
     save_changes: Αποθήκευση
   discussions_panel:
     open: Άνοιγμα
+    all: Όλα
     closed: Έκλεισε
   members_panel:
+    everyone: 'Όλοι'
     order_by_name: 'Όνομα'
     header_name: 'Όνομα'
     header_username: 'Όνομα χρήστη'

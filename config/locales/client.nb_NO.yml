@@ -103,7 +103,6 @@ nb_NO:
       new_thread: "Ny tråd"
       loading: 'Laster'
       translate: 'Oversett'
-      translated: 'Oversettelse av Bing '
       upload: 'Last opp'
       uploading: 'Laster opp'
       load_more: 'Last mer'
@@ -161,6 +160,8 @@ nb_NO:
     quiet: 'Stille'
     mute: 'Dempet'
     unmute: 'U-Demp'
+  pin_event_form:
+    title_label: Tittel
   change_volume_form:
     simple:
       label: Varslinger
@@ -427,7 +428,6 @@ nb_NO:
     flash:
       success: '{{count}} varslinger sendt'
   action_dock:
-    react: Legg til reaksjon
     add_resource: Legg til vedlegg
     edit_group: Rediger gruppens kontekst
     add_comment: Kommentar

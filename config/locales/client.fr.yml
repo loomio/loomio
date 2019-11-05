@@ -9,7 +9,6 @@ fr:
     yearly: Annuel
   current_plan_button:
     upgrade: Changer d'offre
-    tooltip: Essai Gratuit. Changer d'offre pour inviter plus de personnes et créer plus de discussions.
   loomio_tags:
     tags: Mots-clés
     apply_tags: Appliquer les mots-clés
@@ -135,6 +134,8 @@ fr:
     points_abbrev: Chaque vote vaut {{score}} points
     total: Total
     action:
+      pin: Épingler
+      unpin: Ne plus épingler
       search: 'Rechercher'
       filter: 'Filter :'
       back: 'Retour'
@@ -157,7 +158,6 @@ fr:
       add_subgroup: 'Nouveau sous-groupe'
       loading: 'Chargement'
       translate: 'Traduire'
-      translated: 'Traduit par Bing Translator'
       upload: 'Téléverser'
       uploading: 'Téléchargement'
       load_more: 'Plus'
@@ -222,6 +222,8 @@ fr:
     quiet: 'Bas'
     mute: 'Ignorer'
     unmute: 'Suivre de nouveau'
+  pin_event_form:
+    title_label: Titre
   change_volume_form:
     simple:
       label: Notifications
@@ -229,7 +231,6 @@ fr:
       normal: Normal
       quiet: Ignorer
       loud_explain: Dès qu'il y a de l'activité
-      normal_explain: Lorsque quelqu'un souhaite votre attention
       quiet_explain: Pas de notification
     aria_label: "Formulaire des paramètres de notification"
     loud_label: "Toute l’activité"
@@ -244,7 +245,6 @@ fr:
       quiet_description: "Vous ne recevrez de courriel pour aucune activité dans cette discussion."
       apply_to_all: "Appliquer ces paramètres à toutes les discussions de ce groupe."
       only_this_thread: "Appliquer à cette discussion uniquement"
-      group: "Modifier les préférences de notification pour le groupe"
       messages:
         loud: "Vous recevrez un courriel lorsqu’il y aura une activité dans cette discussion."
         normal: "Vous recevrez un courriel lorsqu’il y aura une proposition dans cette discussion."
@@ -471,7 +471,6 @@ fr:
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
     fork_notice: 'Une nouvelle discussion sera créée avec {{count}} items de {{title}}'
   announcement:
-    preview: Prévisualiser
     audiences:
       parent_group: Membres de {{name}}
       formal_group: Membres de {{name}}
@@ -524,7 +523,6 @@ fr:
     flash:
       success: '{{count}} notifications envoyées'
   action_dock:
-    react: Ajouter votre réaction
     add_resource: Ajouter un document
     edit_group: Modifier la description du groupe
     add_comment: Ajouter un commentaire
@@ -533,6 +531,7 @@ fr:
     invite_guests: Inviter des personnes
     translate_thread: Afficher une traduction automatique du contexte
     edit_poll: Modifier le sondage
+    move_items: Déplacer
     announce_poll: Inviter des personnes au vote
     announce_poll_active: (Personne n'a encore été invité)
     translate_poll: Afficher une traduction automatique du sondage
@@ -548,6 +547,7 @@ fr:
     announce_outcome_active: (Personne n'a encore été notifié de ce résultat)
     translate_outcome: Afficher une traduction automatique du résultat
     show_history: Montrer l’historique des modifications
+    edited: Modifié
     pin_thread: Mettre en avant la discussion
     unpin_thread: Ne plus mettre en avant la discussion
     comment_copied: URL du commentaire copiée
@@ -1053,9 +1053,6 @@ fr:
     max_threads_reached: |
         <p>Vous avez épuisé toutes les {{maxThreads}} invitations disponible pour ce groupe.</p>
         <p>Étape suivante, <a href="{{upgradeUrl}}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
-    subscription_canceled: |
-        <p>Désolé ! Votre abonnement n'est pas actif.</p>
-        <p>Veuillez <a href="{{upgradeUrl}}" target="_blank">mettre à jour</a>pour continuer à utiliser Loomio.</p>
     activity: 'Activité'
     activity_placeholder: 'Aucune activité pour l’instant !'
     load_previous: 'Afficher les activités précédentes'
@@ -1304,8 +1301,10 @@ fr:
     count: "Voir tout : ({{count}}) décisions"
   discussions_panel:
     open: Ouvert
+    all: Tous
     closed: Clôturée
   members_panel:
+    everyone: 'Tous'
     order_by_name: 'Nom'
     header_name: 'Nom'
     header_username: 'Identifiant utilisateur'
@@ -1338,7 +1337,6 @@ fr:
     helptext_on: Les utilisateurs pourront ajouter cette réunion à leur calendrier
     helptext_off: Aucune invitation à la réunion ne sera envoyée
     event_duration: Durée
-    event_summary: Résumé
     event_summary_placeholder: ' Vers où voudriez-vous déplacer cette discussion ? '
     event_description: Description de la réunion
     event_description_placeholder: Quel agenda pour cette réunion

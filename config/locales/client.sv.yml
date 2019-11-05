@@ -105,7 +105,6 @@ sv:
       new_thread: "Ny tråd"
       loading: 'Laddar'
       translate: 'Översätt'
-      translated: 'Översättning av Bing Translator'
       upload: 'Ladda upp'
       uploading: 'Laddar upp'
       load_more: 'Ladda fler'
@@ -163,6 +162,8 @@ sv:
     quiet: 'Tyst'
     mute: 'Tysta ned'
     unmute: 'Ta bort nedtystning'
+  pin_event_form:
+    title_label: Titel
   change_volume_form:
     simple:
       label: Notifieringar
@@ -294,6 +295,7 @@ sv:
     privacy_label: 'Sekretesspolicy'
   action_dock:
     delete_comment: Ta bort kommentar
+    edited: Redigerad
     close_thread: Stäng tråd
   formatting:
     attach: Bifoga fil
@@ -414,6 +416,7 @@ sv:
     save_changes: Spara
   discussions_panel:
     open: Öppen
+    all: Alla
     closed: Stängd
   members_panel:
     order_by_name: 'Namn'

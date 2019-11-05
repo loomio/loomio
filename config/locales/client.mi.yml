@@ -65,7 +65,6 @@ mi:
       new_thread: "Aho hou"
       loading: 'Kei te utaina '
       translate: 'Whakawhitihia te reo'
-      translated: 'Whakawhitihia ma te whakawhiti Bing'
       upload: 'Whakautangia atu'
       uploading: 'Kei te whakautangia'
       load_more: 'Tukua mai anō'
@@ -93,6 +92,8 @@ mi:
     loud: 'Hoihoi'
     mute: 'Whakahāngūtia'
     unmute: 'Whakahoitia'
+  pin_event_form:
+    title_label: Taitara
   change_volume_form:
     simple:
       label: Ngā kōrero pūrongo
@@ -135,8 +136,6 @@ mi:
     group_label: 'Rōpū'
     title_label: 'Taitara'
     privacy_label: 'Matatapu'
-  announcement:
-    preview: Arokite
   action_dock:
     edit_stance: Whakahuritia tōu whakapono-ā-tuhi
   membership_request_form:

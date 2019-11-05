@@ -17,6 +17,8 @@ vi:
     search: Tìm kiếm
   error_page:
     forbidden: 'Bạn không có quyền thực hiện thao tác này.'
+  pin_event_form:
+    title_label: Tiêu đề
   change_volume_form:
     simple:
       label: Thông báo
@@ -95,6 +97,7 @@ vi:
   discussions_panel:
     closed: Đã đóng lại
   members_panel:
+    everyone: 'Mọi người'
     order_by_name: 'Tên'
     header_name: 'Tên'
   polls_panel:

@@ -9,7 +9,6 @@ cmn:
     yearly: 每年
   current_plan_button:
     upgrade: 升级
-    tooltip: 免费试用。升级以邀请更多伙伴并开始更多话题。
   loomio_tags:
     tags: 标签
     apply_tags: 应用标签
@@ -158,7 +157,6 @@ cmn:
       add_subgroup: '新的子群组'
       loading: '载入中'
       translate: '翻译'
-      translated: '使用 Bing 翻译'
       upload: '上传'
       uploading: '正在上传'
       load_more: '载入更多'
@@ -222,13 +220,14 @@ cmn:
     quiet: '安静'
     mute: '静音'
     unmute: '解除静音'
+  pin_event_form:
+    title_label: 标题
   change_volume_form:
     simple:
       label: 通知
       loud: 已订阅
       normal: 普通
       quiet: 忽略
-      normal_explain: 当某人想要引起您的注意时
       quiet_explain: 没有通知
     aria_label: "修改电子邮件设定表"
     loud_label: "所有动态"
@@ -241,7 +240,6 @@ cmn:
       quiet_description: "您不会收到此话题中任何的电子邮件。"
       apply_to_all: "应用这些设定到在此群组中所有的话题。"
       only_this_thread: "仅应用到此话题"
-      group: "修改群组通知偏好设置"
       messages:
         loud: "您将会收到关于此话题动态的电子邮件。"
         normal: "您将会收到关于此话题提案的电子邮件。"
@@ -352,6 +350,7 @@ cmn:
     aria_labels:
       heading: '侧边栏'
       groups_list: '群组'
+      user_list: '用户操作'
   navbar:
     search_all_threads: 搜索所有话题
     search_threads: '在 {{name}} 中搜索话题'
@@ -380,29 +379,55 @@ cmn:
   user_dropdown:
     button_label: '用户菜单'
     help: '帮助'
+    contact_site_name: '联络 {{site_name}}'
     sign_out: '登出'
   membership_card:
     group_members: "群组成员"
     discussion_members: "话题成员"
     poll_members: "{{pollType}} 成员"
+    invite_to_group: "邀请加入群组"
     invite_to_discussion: "邀请到话题"
     invite_to_poll: "邀请到投票"
   membership_dropdown:
     set_title: "设置标题"
+    resend: "重新发送邀请"
     invitation_resent: "重新发送邀请"
     make_coordinator: '设为管理员'
     demote_coordinator: '取消管理员'
     remove_from:
       discussion: "从话题移除"
       group: "从群组移除"
+    cancel_invitation: 取消邀请
   notification_models:
     discussion: '话题：'
     poll: '决策：'
   notifications:
     header: "通知"
+    new_discussion: "<strong>{{name}}</strong> 启动了讨论 <strong>{{title}}</strong> "
+    discussion_announced: "<strong>{{name}}</strong> 分享了讨论 <strong>{{title}}</strong>"
+    new_motion: "<strong>{{name}}</strong> 创建了一个提案 <strong>{{title}}</strong>"
     publish_outcome: "发布成果"
+    new_vote: "<strong>{{name}}</strong> {{position}} 在提案 <strong>{{title}}</strong>"
+    new_comment: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 上评论"
+    comment_replied_to: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回复了您的评论"
+    reaction_created: "<strong>{{name}}</strong> 对您的 {{model}}<strong>{{title}}</strong> 做出了回应 <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/>"
+    reaction_created_vue: "<strong>{{name}}</strong> 做出了 {{reaction}} 反应到您的 {{model}}<strong>{{title}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您"
+    user_reminded: "<strong>{{name}}</strong> 正在等候您参与 <strong>{{title}}</strong>"
+    membership_requested: "<strong>{{name}}</strong> 申请 <strong>{{title}}</strong> 的成员资格"
+    membership_request_approved: '<strong>{{name}}</strong> 接受您加入 <strong>{{title}}</strong> 的申请'
+    user_added_to_group: "<strong>{{name}}</strong> 将您加入到群组 <strong>{{title}}</strong>"
+    user_added_to_group_no_inviter: "您被加入到群组 <strong>{{title}}</strong>"
     motion_outcome_created: "<strong>{{name}}</strong> 发布了提案 <strong>{{title}}</strong> 的成果"
     motion_outcome_updated: "<strong>{{name}}</strong> 更新了提案 <strong>{{title}}</strong> 的成果"
+    new_coordinator: "<strong>{{name}}</strong> 设置您为 <strong>{{title}}</strong> 的管理员"
+    poll_created: "<strong>{{name}}</strong> 启动了一个 {{poll_type}}：<strong>{{title}}</strong>"
+    poll_edited: "<strong>{{name}}</strong> 编辑了一个 {{poll_type}}：<strong>{{title}}</strong>"
+    poll_announced: "<strong>{{name}}</strong> 分享了 {{poll_type}}: <strong>{{title}}</strong>"
+    poll_closing_soon: "{{poll_type}} 即将关闭：<strong>{{title}}</strong>"
+    poll_expired: "{{poll_type}} 已关闭：<strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong>新增选项至：<strong>{{title}}</strong>"
+    stance_created: "<strong>{{name}}</strong> 已参与：<strong>{{title}}</strong>"
   position_buttons_panel:
     heading: 拥有发言权
   extend_proposal_form:
@@ -418,6 +443,7 @@ cmn:
   discussion_form:
     messages:
       created: '话题已发起'
+      updated: '话题已更新'
       forked: '话题副本已创建'
     new_discussion_title: '发起新的话题'
     fork_discussion_title: '创建话题副本'
@@ -441,8 +467,12 @@ cmn:
     send_outcome_explain: 提醒伙伴关于 {{type}} 的结果
     discussion_notification_history: 话题通知历史
     group_notification_history: 群组邀请历史
+    quick_add: "快速添加"
     any_other_groups: "任何其他群组？"
-    preview: 预览
+    notified_people: "{{name}} 已通知 {{length}} 个伙伴："
+    no_notifications_sent: 还没有发送通知
+    history_error: 发生了一点问题！无法载入历史。
+    inviting_guests_to_thread: 不是 {{group}} 成员的伙伴将会被以访客的身份新增到此话题，但不会取得对群组中其他话题的访问权。
     audiences:
       parent_group: '{{name}} 的成员'
       formal_group: '{{name}} 的成员'
@@ -455,18 +485,27 @@ cmn:
       no_invitations_remaining: |
           <p>您已经使用了此群组可用的全部 {{maxMembers}} 个邀请。</p>
           <p>下一步，<a href="{{upgradeUrl}}" target="_blank">选择一个计划</a>以继续在 Loomio 上协作。</p>
+      invitations_remaining: '剩余 {{count}} 个邀请。<a href="{{upgradeUrl}}" target="_blank">升级</a>'
       group_announced:
+        title: 邀请加入群组
         helptext: 您想要邀请谁到群组中？
       discussion_announced:
         title: 邀请到话题
         helptext: 您想要邀请谁到话题中？
+      discussion_edited:
+        helptext: 您想要通知谁关于您的更新？
       poll_announced:
         title: 邀请到投票
         helptext: 您想要邀请谁来投票？
+      poll:
+        helptext: 您想要通知谁关于您的更新？
+      poll_edited:
+        helptext: 您想要通知谁关于您的更新？
       outcome_announced:
         title: 分享成果
       anyone_can_participate: 任何有链接的人都可以参与
       placeholder: 输入名称或电子邮件地址……
+      notified: '{{notified}} 个伙伴将会被通知：'
       notified_singular: '1 个伙伴将会被通知：'
       group_title: '{{name}}（{{count}} 个伙伴）'
     members_list:
@@ -476,7 +515,10 @@ cmn:
       search_placeholder: 搜索伙伴……
       modal_title: 选择群组成员
       members_count: '{{count}} 个人将会被通知'
+    flash:
+      success: '已发送 {{count}} 个通知'
   action_dock:
+    copy_url: 复制 URL
     announce_thread: 发送话题
     invite_guests: 邀请访客
     edit_poll: 编辑投票
@@ -526,6 +568,7 @@ cmn:
       membership_requested: '您已经申请 {{group}} 的成员资格'
   revision_history_modal:
     stance_header: 立场调整历史
+    started_by: '由 <strong>{{name}}</strong> 所启动'
     posted: 已发表
     original_text: 原版
     current_revision: 最新
@@ -616,8 +659,12 @@ cmn:
     organization_name_placeholder: '您想要怎么称呼您的组织？'
     description_placeholder: '描述群组的目的让您的伙伴们知道他们为什么在这里。'
     privacy: '隐私'
+    group_privacy_is_open_description: "任何人都可以找到这个群组并要求加入。只有成员才能看见谁在群组里。所有的话题都是公开的。"
+    group_privacy_is_closed_description: "任何人都可以找到这个群组并要求加入。只有成员才能看见谁在群组里。所有的话题都是私密的。"
+    group_privacy_is_closed_public_threads_description: "任何人都可以找到这个群组并要求加入。只有成员才能看见谁在群组里。话题可以是公开或私密的。"
     group_privacy_is_secret_description: "只有被邀请的成员才能找到此群组，并查看有谁在里面以及查看话题。"
     confirm_change_to_secret: "若您继续，所有在此群组及其子群组的话题都会变为非公开。"
+    confirm_change_to_secret_subgroup: '若您继续，所有的话题都会变为非公开。'
     confirm_change_to_public: '若您继续，所有在此群组的话题都将会变为公开在网路上。'
     confirm_change_to_private_discussions_only: '若您继续，任何在此群组中的公开话题都将会变为非公开。'
     subgroup_privacy_is_open_description: "任何人都可以找到这个子群组并要求加入。只有成员才能看见谁在群组里。所有的话题都是公开的。"
@@ -626,8 +673,10 @@ cmn:
     subgroup_privacy_is_closed_secret_parent_description: "{{parent}} 的成员可以找到这个子群组并要求加入。所有话题都是私密的。只有成员才能看见谁在群组里。"
     subgroup_privacy_is_secret_description: '只有被邀请的成员才能找到此子群组，并查看有谁在里面以及查看话题。'
     advanced_settings: "高级设置"
+    how_do_people_join: "伙伴要怎样加入？"
     membership_granted_upon_request: '任何人都能加入此群组。'
     membership_granted_upon_approval: '任何人都可以要求加入，但必须经过审核。'
+    membership_granted_upon_approval_secret_parent: '<strong>通过提交申请</strong>：任何在 {{parent}} 群组的人都可以申请加入群组。'
     permissions: '权限'
     thread_privacy: '话题隐私设置'
     public_threads: '仅限公开话题'
@@ -748,8 +797,14 @@ cmn:
     remove_admin_from_self:
       question: '您确定您不想要再当管理员了吗？'
   membership_remove_modal:
+    invitation:
+      title: 取消邀请
+      message: 您确定想要取消给 {{name}} 的邀请吗？
+      flash: 邀请已取消
+      submit: 取消邀请
     membership:
       title: 移除成员
+      message: 您确定您想要移除 {{name}} 吗？
       impact_for_group: 这将会移除他们在群组中所有话题与决策的访问权限。
       impact_for_subgroups: 这也会移除他们对此群组的所有子群组的访问权限。
       flash: 成员已移除
@@ -766,12 +821,23 @@ cmn:
       group: 这个标题会出现在这个群组中的 {{name}} 名称旁。使用它来让伙伴们知道他们的角色。
       discussion: 这个标题会出现在这个话题中的 {{name}} 名称旁。使用它来让伙伴们知道他们的角色。
       poll: 这个标题会出现在这个 {{pollType}} 中的 {{name}} 名称旁。使用它来让伙伴们知道他们的角色。
+    title_label: 标题
     title_placeholder: 例子：“协调者”或“主持人”
   pending_invitations_card:
+    heading: 还未确认的邀请
     email: 电子邮件
+    invitation_link: 邀请链接
+    sent: 已发送
+    sent_at: '{{date}} 已发送'
+    copy_url: 复制 URL
+    revoke_invitation: 撤销
   cancel_invitation_form:
+    heading: 取消邀请
+    question: 您确定您想要取消此邀请吗？
     submit: "是的，取消邀请"
     cancel: '否'
+    messages:
+      success: 邀请已取消
   user_page:
     locale_field: '语言：{{value}}'
     invited: '已邀请 {{value}}'
@@ -807,10 +873,13 @@ cmn:
     name_removed: '您在群组中作出的意见、提案与话题会留下，但您的名字将会从中移除。'
     you_can_reactivate: "如果您想要的话，您可以在稍后重新启用您的帐号"
   delete_user_modal:
+    irreversable: "警告：此操作无法撤销。如果您要继续的话："
     you_will_be_deleted: "您的使用者帐号，包含您的名字、电子邮件地址与其他可识别个人的资料，都将会从我们的系统中删除。"
     submit: '是的，删除我的帐号'
   deactivate_user_form:
+    aria_label: '确认冻结帐号'
     title: '冻结帐号'
+    question: '您可以告诉我们为何您要冻结您的帐号吗？'
     placeholder: '回答这个问题是可选的。您分享的任何信息都可以协助我们改善服务 :)'
     submit: '冻结帐号'
   email_settings_page:
@@ -843,11 +912,14 @@ cmn:
     view_recent: 查看所有最近的话题？
     load_more: 载入更多话题
     mark_as_read: 设为已读
+    thread_dismissed: 话题标记为已读
     explain_mute:
+      title: 您尚未静音任何话题。
       explanation_html: |
           静音是一种让您不感兴趣的话题隐藏或消失的方法。
           静音代表您将不会在<strong>最近的</strong>或是<strong>未读</strong>中看到它，且您将不会被提醒关于该话题的动态，像是提案等。
           您将只会在有人 <strong>@提及</strong> 您的名称时被通知。
+      instructions: '要静音话题，滑鼠移到其上并点选静音图示。'
       see_muted_html: '要检视您已静音的讨论串，点选<strong>“已静音”</strong>。您也可以将鼠标移到其上并点选相同的图示以解除静音。'
     filtering:
       filter_threads: 过滤话题
@@ -866,11 +938,17 @@ cmn:
       current_proposal: '当前提案：{{name}}.'
       you_voted: '您已经投票：{{position}}.'
     threads_from:
+      group: '话题从'
+      pinned: '已置顶的话题'
+      proposals: '有待定决策的话题'
+      starred: '已加星标的话题'
       today: '今天'
       yesterday: '昨天'
       thisweek: '本周'
       thismonth: ' 本月'
+      older: '一个月以前'
   inbox_page:
+    no_threads: 太棒了！您已经读完了您收件箱中所有的话题。
     unread_threads: 未读的话题
     view_more: 显示更多
     no_groups:
@@ -879,6 +957,17 @@ cmn:
       or: 或者
       join_group: <a href="/explore">加入</a>群组以观看话题。
   discussion:
+    max_threads_reached: |+
+        <p>您已经使用了此群组可用的全部 {{maxMembers}} 个邀请。</p>
+        <p>下一步，<a href="{{upgradeUrl}}" target="_blank">选择一个计划</a>以继续在 Loomio 上协作。</p>
+
+    activity: '动态'
+    activity_placeholder: '尚无动态！'
+    load_previous: '载入更早的动态'
+    started_by: '由 <strong>{{name}}</strong> 所启动'
+    pin:
+      pinned: '话题已置顶'
+      unpinned: '话题已取消置顶'
     volume:
       mute_message: '已静音的话题'
       unmute_message: '话题解除了静音'
@@ -889,27 +978,40 @@ cmn:
     title: 被这些人看过：
     no_one: 还没有人看过这个
   activity_card:
+    beginning: 开始
+    end: 结束
     unread: "未读 ({{count}})"
     latest: 最新
     context: 上下文
+    attachment_display:
+      aria_label: '附件：'
   thread_context:
+    aria_label: '话题内容'
+    thread_options: '话题选项'
     edit: '编辑'
     edit_thread: '编辑'
     close_thread: '关闭'
     reopen_thread: '重新开放'
     mute_thread: '静音'
+    print_thread: '打印'
     delete_thread: '删除'
   pin_thread_modal:
     title: 置顶话题
     helptext: "已置顶的话题总是会显示在它们群组话题列表的顶部。它们可以被用于提醒成员重要的公告，或是推广一些一般的文章，如行为规范或社群指南等等。"
     pin_thread: 置顶话题
   thread_arrangement_form:
+    sorting: 最早还是最新优先？
     latest: 最新
+    latest_description: 先阅读最近更新
     earliest: 最早
+    earliest_description: 从开始阅读到结束
+    replies: 如何显示回复？
   delete_thread_form:
     aria_label: '删除话题'
     title: 删除话题
     confirm: '删除话题'
+    messages:
+      success: 话题已删除
   move_thread_form:
     aria_label: 移动话题
     title: 移动话题
@@ -943,6 +1045,8 @@ cmn:
     header: 探索群组
     search_placeholder: 搜索公开群组
     no_results_found: "<strong>找不到您要找的群组吗？</strong>如果群组的隐私设置为“私密”，那它就不会在此出现。"
+  authorized_apps_page:
+    revoke: 撤销
   registered_apps_page:
     name: 名称
   registered_app_form:
@@ -964,6 +1068,7 @@ cmn:
     unread: 未读 ({{count}})
     closed: 已关闭
   members_panel:
+    everyone: '每一位成员'
     order_by_name: '名字'
     order_by_created: '最早'
     order_by_created_desc: '最新'
@@ -987,29 +1092,54 @@ cmn:
     participants_count: "{{count}} 个已投票的人将会被通知"
   poll_common_calendar_invite:
     helptext_on: 用户将可以加入这个会面到他们的日程表中
-    event_summary: 摘要
+    event_duration: 时长
   poll_common_settings:
+    multiple_choice:
+      title: 多选
     anyone_can_participate:
       title: 任何人皆可参与
+    anonymous:
+      title: 匿名投票者
+    deanonymize_after_close:
+      title: 关闭后显示投票者
+      helptext_on: 当选取时，匿名的投票者将会在投票关闭后显示身份
     voter_can_add_options:
+      title: 投票者可以新增选项
       helptext_on: 当选取时，参与者可以在投票时加新增他们自己的选项。
     can_respond_maybe:
       title: 投票者可以回应“如果需要的话”
+  poll_common_close_form:
+    close_poll: 关闭投票
   poll_common_reopen_form:
     helptext: 决策在您准备好之前就关闭了吗？重新开启以从群组处收集更多立场。
   poll_common_closing_at_field:
     invalid_date: 日期无效
   poll_common_votes_panel:
+    no_votes_yet: 还没有人投票。
     change_results_order: 变更您的结果顺序
+    none_of_the_above: （以上皆否）
+  poll_common_undecided_panel:
+    show_invitations: 显示未确认的邀请
+    undecided_users: "未决定的 ({{count}})"
+    invitation_count_singular: "已通过电子邮件邀请 1 个额外的伙伴参与"
+    invitation_count_plural: "已通过电子邮件邀请 {{count}} 个额外的伙伴参与"
+  poll_common_undecided_user:
+    reminded: 提醒已发送！
   poll_common_set_outcome_panel:
     share_outcome: 分享成果
+    poll: '此提案已关闭。与群组<strong>分享成果</strong>。'
   poll_common_outcome_form:
     submit: 分享成果
   poll_common_delete_modal:
     question: 您确定要删除这个吗？
+    title: 删除决策
     success: 删除成功
   poll_common_unsubscribe_form:
+    title: 接收更新
+    label: 接收关于此决策的电子邮件更新
     tooltip: 电子邮件更新让您了解此决策，如它何时被编辑，何时过期，或是何时做出了决策。取消勾选此框可以确保您不会再收到关于此决策的电子邮件通知。
+    helptext_on: 您将会收到关于此决策动态的电子邮件
+    helptext_off: 您将不会收到任何关于此决策的电子邮件
     unsubscribed: 成功取消订阅
   poll_common_form:
     title: 标题

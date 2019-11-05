@@ -25,6 +25,8 @@ gl:
     search: Buscar
   error_page:
     forbidden: 'Non tes permisos para facer iso.'
+  pin_event_form:
+    title_label: Título
   change_volume_form:
     simple:
       label: Notificacións
@@ -48,6 +50,8 @@ gl:
     title_label: 'Título'
     context_label: 'Contexto'
     privacy_label: 'Privacidade'
+  action_dock:
+    edited: Editado
   join_group_button:
     join_group: Unirse ó grupo
     membership_requested: Admisión solicitada
@@ -121,6 +125,7 @@ gl:
   poll_common:
     save_changes: Gardar
   discussions_panel:
+    all: Todo
     closed: Pechado
   members_panel:
     order_by_name: 'Nome'

@@ -19,7 +19,7 @@ hu:
     error:
       sign_in_required_html: |
           A folytatáshoz be kell jelentkeznie.
-          Kérem <a href="/dashboard">jelentkezzen be</a> majd töltse be újra az oldalt a folytatáshoz.
+          Kérem <a href="/dashboard" target="_blank">jelentkezzen be</a> majd töltse be újra az oldalt a folytatáshoz.
       recaptcha: "Nem tudtuk ellenőrizni, hogy nem robot vagy-e. Kérlek próbáld újra!"
       bad_login: "Sajnáljuk, de ez a jelszó nem egyezik meg a korábban megadottal."
       username_must_be_alphanumeric: "A felhasználónevek csak kisbetűsek és számok lehetnek"
@@ -265,9 +265,9 @@ hu:
       title: |-
           ## Hivatkozások és képek
       body: |
-          Ismételje meg hangosan:
+          Ismételd meg hangosan:
 
-          Szögletes zárójelek a hivatkozás nevének, majd kerek zárójelek a hivatkozásnak. A zárójelek között nincs szóköz.
+          Szögletes zárójelek a hivatkozás nevének, majd kerek zárójelek a hivatkozás URL-nek. A zárójelek között nincs szóköz.
 
           [Loomio Homepage](https://www.loomio.org/)
 
@@ -502,14 +502,14 @@ hu:
         poll_closing_soon: 'Rangsoroló szavazás 24 órán belül lezárul: %{title}'
         poll_closing_soon_author: 'A rangsoroló szavazásod 24 órán belül lezárul: %{title}'
         poll_expired: "Rangsoroló szavazás eredmények: %{title}"
-        poll_expired_author: 'Rangsoroló szavazás lezárult. Oszd meg az eredményt: %{title}'
-        poll_option_added: '%{actor} hozzáadott lehetőségeket a következőhöz: %{title}'
-        poll_option_added_author: '%{actor} hozzáadott lehetőségeket a következőhöz: %{title}'
+        poll_expired_author: 'Rangsoroló szavazás lezárult. Oszd meg az eredményt ehhez: %{title}'
+        poll_option_added: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
+        poll_option_added_author: '%{actor} hozzáadott lehetőségeket ehhez: %{title}'
         outcome_created: '%{actor} megosztotta az eredményt:%{title}'
-        outcome_created_author: 'Megosztott egy eredményt:%{title}'
+        outcome_created_author: 'Megosztott egy eredményt: %{title}'
         outcome_announced: '%{actor}megosztotta a rangsorolt eredményt.'
-        stance_created: '%{actor} részt vett:%{title}'
-        stance_created_author: "Kérjük, ellenőrizze szavazatát:%{title}"
+        stance_created: '%{actor} részt vett: %{title}'
+        stance_created_author: "Kérünk ellenőrizd a szavazatod: %{title}"
         user_mentioned: '%{actor} megemlített téged a következőben:%{title}'
         user_reminded: '%{actor} emlékezteti Önt, hogy szavazzon:%{title}'
       header:
@@ -532,7 +532,7 @@ hu:
         voted: '<strong>%{participant}</strong>:'
   comment_by: '%{Comment_author} megjegyzése'
   personal_data:
-    title: '%{User_name} személyes adatai a(z) %{host_name} oldalon'
+    title: '%{User_name} személyes adatai itt: %{host_name} '
   notified:
     no_matches_found: "Nem található eredmény a következőre: '%{query}'"
     group_users: "(%{count} ember)"
@@ -545,14 +545,14 @@ hu:
     go_to_dashboad: Ugrás az irányítópultra
   microsoft:
     section_title: "[%{title}](%{url})"
-    new_discussion: "Új téma%{group}"
-    new_comment: "Új megjegyzés%{group}"
-    outcome_created: "Eredmény:%{group}"
+    new_discussion: "Új téma %{group}"
+    new_comment: "Új megjegyzés %{group}"
+    outcome_created: "Eredmény: %{group}"
     poll_created: "Új %{poll_type} itt %{group}"
-    stance_created: "Új válasz a következőre:%{poll}"
+    stance_created: "Új válasz a következőre: %{poll}"
     poll_closing_soon: "A%{poll_type} 24 óra múlva zárul"
     poll_expired: "%{poll_type} lezárult"
-    group_identity_created: "A%{group} eseményei megjelennek ebben a csatornában"
+    group_identity_created: "A %{group} eseményei megjelennek ebben a csatornában"
   slack:
     new_discussion: "Új téma itt *%{group}*: *%{discussion}*"
     outcome_created: "Eredmény: *%{group} *: *%{poll} *"

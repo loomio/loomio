@@ -14,6 +14,8 @@ bg_BG:
       cancel: 'Отказ'
   error_page:
     forbidden: 'Нямате права да правите това.'
+  pin_event_form:
+    title_label: Заглавие
   change_volume_form:
     simple:
       label: Известия
@@ -90,6 +92,7 @@ bg_BG:
   discussions_panel:
     closed: Затворен
   members_panel:
+    everyone: 'Всеки'
     order_by_name: 'Име'
     header_name: 'Име'
   polls_panel:

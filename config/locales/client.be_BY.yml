@@ -42,6 +42,8 @@ be_BY:
     quiet: 'Ціха'
     mute: 'Бязгучна'
     unmute: 'Гучна'
+  pin_event_form:
+    title_label: Назва
   change_volume_form:
     simple:
       label: Апавяшчэнні
@@ -70,6 +72,8 @@ be_BY:
     title_label: 'Назва'
     context_label: 'Апісанне'
     privacy_label: 'Канфідэнцыяльнасць'
+  action_dock:
+    edited: Адрэдагавана
   join_group_button:
     join_group: Далучыцца да групы
     membership_requested: Запыт чалецтва
@@ -166,6 +170,7 @@ be_BY:
   poll_common:
     save_changes: Захаваць
   discussions_panel:
+    all: Усе
     closed: Закрыта
   members_panel:
     order_by_name: 'Імя'

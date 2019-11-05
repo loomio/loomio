@@ -5,8 +5,11 @@ ru:
     small: Небольшая
     medium: Средняя
     large: Крупная
+    monthly: Ежемесячно
+    yearly: Ежегодно
   current_plan_button:
     upgrade: Обновить
+    trial_expired: Срок вашей пробной версии истек. Обновите, чтобы продолжить использовать Loomio.
   loomio_tags:
     tags: Метки
     apply_tags: Применить метки
@@ -22,6 +25,8 @@ ru:
     helptext: Метки позволяют разбивать обсуждения на категории и легко их потом находить
     discussions_count_singular: ({{count}} ветвь)
     discussions_count_plural: ({{count}} ветвей)
+    tag_created: Метка записана
+    tag_destroyed: Метка удалена
     tags_marked: Ветви, помеченные '{{name}}' в {{groupName}}
     no_tags_present: Не нашли ветвей с этой меткой! Попробуйте выбрать другую.
   reactions:
@@ -56,9 +61,13 @@ ru:
     ok_hand: Хорошо
     thumbsup: Одобрение
     thumbsdown: Осуждение
+  new_poll_types:
+    poll: выбирать
   timezones:
-    local: местное время ({{значение}})
+    local: местное время ({{value}})
   common:
+    history: История
+    add: Добавить
     you: Ты
     expand: Развернуть
     all_day: Весь день
@@ -72,11 +81,13 @@ ru:
       am: день
       pm: вечер
     closing_in: 'Закрывается {{time}}'
-    closed_ago: 'Закрыто {{время}}'
+    closed_ago: 'Закрыто {{time}}'
     volume: 'Громкость'
     notification_volume: 'Громкость оповещений'
     group: 'Группа'
     groups: 'Группы'
+    organization: "Организация"
+    organizations: "Организации"
     threads: 'Обсуждения'
     decisions: 'Решения'
     settings: 'Настройки'
@@ -104,7 +115,10 @@ ru:
     copied: 'Скопировать в буфер'
     total: Всего
     action:
+      pin: Закрепить
+      unpin: Открепить
       search: 'Поиск'
+      filter: 'Фильтр'
       back: 'Назад'
       next: 'Следующее'
       close: 'Закрыть'
@@ -124,7 +138,6 @@ ru:
       new_thread: "Новая тема"
       loading: 'Загрузка'
       translate: 'Перевести'
-      translated: 'Переведено с помощью Бинг'
       upload: 'Скачать'
       uploading: 'скачивание'
       load_more: 'Загрузить больше'
@@ -158,6 +171,8 @@ ru:
     _9: 9ый
     _10: 10ый
   devise:
+    sessions:
+      signed_up: Зарегистрирован успешно!
     failure:
       inactive: 'Аккаунт, связанный с указанным адресом электронной почты, деактивирован. Если вы хотите раективировать аккаунт, свяжитесь с нами.'
   error_page:
@@ -176,9 +191,12 @@ ru:
     quiet: 'Ограниченный'
     mute: 'Заглушен'
     unmute: 'Включить'
+  pin_event_form:
+    title_label: Название
   change_volume_form:
     simple:
       label: Уведомления
+      loud: Подписаться
       normal: Нормальный
       quiet: Игнорировать
     aria_label: "Изменить настройки почтового ящика"
@@ -251,11 +269,14 @@ ru:
   sidebar:
     threads: 'Обсуждения'
     my_groups: 'Мои группы'
+    all_groups: 'Все группы'
     recent_threads: 'Последние темы'
     muted_threads: 'Выключить уведомления темы'
+    start_group: 'Новая организация'
     explore: 'Публичная группа'
     start_thread: Новая тема
     start_decision: Новое решение
+    try_beta: Попробуйте Loomio 2.0 бета!
     aria_labels:
       heading: 'Боковая панель'
       groups_list: 'Группы'
@@ -280,8 +301,11 @@ ru:
     edit_profile: 'Редактировать профиль'
     help: 'Помощь'
     sign_out: 'Выйти'
+  membership_card:
+    invite_to_group: "Пригласите в группу"
   membership_dropdown:
     invitation_resent: "Переслать приглашение"
+    make_coordinator: 'Сделать администратором'
   notifications:
     header: "Уведомления"
     no_notifications: "У Вас нет уведомлений"
@@ -308,18 +332,23 @@ ru:
     context_label: 'Описание'
     privacy_label: 'Конфиденциальность'
   announcement:
-    preview: Предварительный просмотр
+    audiences:
+      voters: Люди, которые проголосовали
+      non_voters: Люди, которые не голосовали
     form:
+      group_announced:
+        title: Пригласите в группу
       outcome_announced:
         title: Поделиться результатами
   action_dock:
-    react: Добавить реакцию
     add_resource: Добавить вложение
     add_comment: Комментарий
     copy_url: Скопировать ссылку
     edit_thread: Редактировать контекст
     translate_thread: Перевести контекст
     edit_poll: Редактировать опрос
+    move_items: Переместить
+    announce_poll: Пригласите людей проголосовать
     translate_poll: Перевести опрос
     edit_stance: Изменить позицию
     translate_stance: Перевести голос
@@ -329,12 +358,14 @@ ru:
     translate_comment: Перевести комментарий
     edit_outcome: Редактировать результат
     translate_outcome: Перевести результат
+    edited: Изменено
     pin_thread: Закрепить тему
     tag_thread: Управлять метками
     close_thread: Закрыть тему
     delete_thread: Удалить тему
   formatting:
     attach: Приложить файл
+    merge_selected: Объединить выделенные ячейки
   cover_photo_form:
     heading: 'Новое фото обложки'
     upload_link: 'Загрузить новое фото обложки'
@@ -360,15 +391,22 @@ ru:
   reactions_display:
     you: "Вы"
     you_and_name: "Вы и {{name}}"
+  user_wizard:
+    change_picture: Добавить картинку
+    setup_profile: Настроить профиль
   group_wizard:
     welcome: Успешно!
+    setup_profile: Настроить профиль
     invite_people: Пригласите людей
     start_thread: Начать дискуссию
   group_page:
     threads: Обсуждения
     members: Участники
+    files: Файлы
     settings: Настройки
     subgroups: Подгруппы
+    messages:
+      leave_group_success: 'Вы покинули эту группу'
     new_cover_photo: 'Загрузить новое фото обложки'
     new_group_logo: 'Загрузить новый логотип группы'
     open_discussions: 'Открыть тему'
@@ -389,11 +427,15 @@ ru:
     aria_label: 'Деактивировать группу'
     title: 'Деактивировать группу'
   group_form:
+    new_organisation: Новая организация
     start_group_heading: 'Создать группу'
     start_subgroup_heading: 'Создать подгруппу'
     edit_group_heading: 'Редактировать настройки группы'
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
     group_name: 'Название группы'
+    organization_name: 'Название организации'
+    start_organization_heading: Новая организация
+    description: 'Описание'
     privacy: 'Конфиденциальность'
     profile: Профиль
     public_threads: 'Только публичные темы'
@@ -544,6 +586,7 @@ ru:
     save_changes: Сохранить
   discussions_panel:
     open: Открыто
+    all: Все
     closed: Закрыто
   members_panel:
     order_by_name: 'Название'

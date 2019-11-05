@@ -25,6 +25,8 @@ an:
     search: Buscar
   error_page:
     forbidden: 'No tiens permisos ta fer isto.'
+  pin_event_form:
+    title_label: Titol
   change_volume_form:
     simple:
       label: Notificacions
@@ -51,6 +53,8 @@ an:
     title_label: 'Titol'
     context_label: 'Contexto'
     privacy_label: 'Privacidat'
+  action_dock:
+    edited: Editau
   join_group_button:
     join_group: Unir-se a o grupo
     membership_requested: Pertenencia demandada.
@@ -128,6 +132,7 @@ an:
   poll_common:
     save_changes: Alzar
   discussions_panel:
+    all: Totz/as
     closed: Zarrau
   members_panel:
     order_by_name: 'Nombre'

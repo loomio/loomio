@@ -17,6 +17,9 @@ ru:
     deleted_user: "Удаленный пользователь"
     placeholder_name: "Приглашенный пользователь (%{hostname})"
     error:
+      sign_in_required_html: |
+          Вы должны войти в систему, чтобы продолжить.
+          Пожалуйста <a href="/dashboard" target="_blank">войдите в систему</a> и перезагрузите страницу, чтобы продолжить.
       recaptcha: "Мы не убедились, что вы не робот! Еще раз!"
       bad_login: "Извините, этот пароль не совпадает с тем, который у нас есть в файле"
       username_must_be_alphanumeric: "В имени пользователя должны быть только маленькие английские буквы и цифры."
@@ -130,6 +133,7 @@ ru:
       invitation_text_html: "приглашает вас в свою группу"
       link_help: "Кликнув ниже, вы примете приглашение:"
       accept_invitation: "Принять приглашение"
+      stop_emails: "Прекратить получать письма от %{site_name}"
     resend_to_join_group:
       subject: "%{member} ждет, когда вы вступите в %{group_name} на %{site_name}"
     user_added_to_group:
@@ -560,6 +564,8 @@ ru:
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: Комментарий %{comment_author}
+  personal_data:
+    title: Личные данные %{user_name} на %{host_name}
   notified:
     no_matches_found: "Ничего похожего на '%{query}'"
     group_users: "(%{count} человек)"
@@ -570,6 +576,16 @@ ru:
     helptext: Вы не будете больше получать писем по поводу этого решения.
     visit_poll: Смотреть опрос
     go_to_dashboad: В панель управления
+  microsoft:
+    section_title: "[%{title}](%{url})"
+    new_discussion: "Новая тема в %{group}"
+    new_comment: "Новый комментарий в %{group}"
+    outcome_created: "Результат опубликован в %{group}"
+    poll_created: "Новый %{poll_type} в %{group}"
+    stance_created: "Новый ответ на %{poll}"
+    poll_closing_soon: "%{poll_type} закрывается через 24 часа"
+    poll_expired: "%{poll_type} закрылся"
+    group_identity_created: "События от %{group} теперь будут появляться в этом канале"
   slack:
     new_discussion: "Новая ветка в *%{group}*: *%{discussion}*"
     outcome_created: "В *%{group}* опубликован результат: *%{poll}*"

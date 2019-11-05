@@ -103,6 +103,8 @@ nl_NL:
     points_abbrev: Ieder stem is {{score}} punten waard
     total: Totaal
     action:
+      pin: Vastprikken
+      unpin: Ontprikken
       search: 'Zoek'
       back: 'Terug'
       next: 'Volgende'
@@ -122,7 +124,6 @@ nl_NL:
       new_thread: "Nieuw bord"
       loading: 'Aan het laden'
       translate: 'Vertalen'
-      translated: 'Vertaling door Bing vertaler'
       upload: 'Uploaden'
       uploading: 'Aan het uploaden'
       load_more: 'Laad meer'
@@ -174,6 +175,8 @@ nl_NL:
     quiet: 'Stil'
     mute: 'Dempen'
     unmute: 'Dempen uit'
+  pin_event_form:
+    title_label: Titel
   change_volume_form:
     simple:
       label: Meldingen
@@ -364,7 +367,6 @@ nl_NL:
     privacy_private: 'De discussie zal enkel zichtbaar zijn voor leden van {{group}}'
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
   announcement:
-    preview: Voorbeeld
     form:
       outcome_announced:
         title: Deel uitkomst
@@ -372,7 +374,6 @@ nl_NL:
     group_form:
       members_count: '{{count}} mensen zullen op de hoogte gebracht worden'
   action_dock:
-    react: Reactie toevoegen
     add_resource: Bijlage toevoegen
     edit_group: Groepsbeschrijving bijwerken
     add_comment: Becommentarieer
@@ -381,6 +382,7 @@ nl_NL:
     invite_guests: Nodig gasten uit
     translate_thread: Beschrijving vertalen
     edit_poll: '''Peiling'' bewerken'
+    move_items: Verplaatsen
     translate_poll: '''Peiling'' vertalen'
     edit_stance: Verander standpunt
     translate_stance: Stem vertalen
@@ -391,6 +393,7 @@ nl_NL:
     edit_outcome: Uitkomst bewerken
     translate_outcome: Uitkomst vertalen
     show_history: Toon bewerkingsgeschiedenis
+    edited: Bewerkt
     pin_thread: Bord vastprikken
     unpin_thread: Bord ontprikken
     tag_thread: Labels beheren
@@ -1016,8 +1019,10 @@ nl_NL:
     count: "Zie alles: ({{count}}) beslissingen"
   discussions_panel:
     open: Openen
+    all: Alle
     closed: Gesloten
   members_panel:
+    everyone: 'Iedereen'
     order_by_name: 'Naam'
     header_name: 'Naam'
     header_username: 'Gebruikersnaam'
@@ -1047,7 +1052,6 @@ nl_NL:
     helptext_on: Gebruikers zullen deze vergadering kunnen toevoegen aan hun kalender
     helptext_off: Er zal geen vergaderverzoek verstuurd worden
     event_duration: Duur
-    event_summary: Samenvatting
     event_summary_placeholder: Hoe zou je de vergadering willen benoemen?
     event_description: Vergadering omschrijving
     event_description_placeholder: Wat staat er op de agenda bij deze vergadering?

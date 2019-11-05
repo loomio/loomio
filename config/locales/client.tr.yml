@@ -80,7 +80,6 @@ tr:
       new_thread: "Yeni müzakere"
       loading: 'Yükleniyor'
       translate: 'Tercüme et'
-      translated: 'Bing Translator tercümesi'
       upload: 'Yükle'
       uploading: 'Yükleniyor'
       load_more: 'Daha fazla yükle'
@@ -108,6 +107,8 @@ tr:
     quiet: 'Sessiz'
     mute: 'Sesi kıs'
     unmute: 'Sesi aç'
+  pin_event_form:
+    title_label: Başlık
   change_volume_form:
     simple:
       label: Bildirimler
@@ -203,10 +204,10 @@ tr:
     privacy_public: 'Herhangi bir kişi müzakereyi görebilir. Sadece üyeler katılım gösterebilir.'
     privacy_private: 'Müzakere sadece {{group}} grubunun üyelerine görünür olacaktır.'
     privacy_organisation: 'Müzakere {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
-  announcement:
-    preview: Ön izleme
   action_dock:
+    move_items: Taşı
     edit_stance: Konumunu değiştir
+    edited: Düzenlendi
     tag_thread: Etiketleri yönet
     delete_thread: Müzakereyi sil
   formatting:
@@ -603,6 +604,7 @@ tr:
     save_changes: Kaydet
   discussions_panel:
     open: Açık
+    all: Hepsi
     closed: Kapalı
   members_panel:
     order_by_name: 'İsim'

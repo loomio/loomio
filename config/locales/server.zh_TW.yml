@@ -19,7 +19,7 @@ zh_TW:
     error:
       sign_in_required_html: |
           您必須登入以繼續。
-          請<a href="/dashboard">登入</a>然後重新載入此頁面以繼續。
+          請<a href="/dashboard" target="_blank">登入</a>然後重新整理此頁面以繼續。
       recaptcha: "我們無法確認您是不是機器人。請再試一次！"
       bad_login: "抱歉，這個密碼與我們的檔案上的不一樣"
       username_must_be_alphanumeric: "使用者名稱只能為小寫字母與數字"
@@ -133,6 +133,7 @@ zh_TW:
       invitation_text_html: "已經邀請您加入他們的群組"
       link_help: "點選下面的連結以接受邀請："
       accept_invitation: "接受邀請"
+      stop_emails: "停止從 %{site_name} 收到電子郵件"
     resend_to_join_group:
       subject: "%{member} 正等待您加入在 %{site_name} 上的 %{group_name}"
     user_added_to_group:

@@ -2,6 +2,7 @@ sr:
   loomio_tags:
     name_label: Ime
   common:
+    no_results_found: Nisu pronađeni rezultati
     confirm_discard_changes: Otkaži promene?
     time:
       am: am
@@ -50,7 +51,6 @@ sr:
       new_thread: "Nova nit"
       loading: 'Učitavanje'
       translate: 'Prevedi'
-      translated: 'Prevod Bing Translator'
       upload: 'Prosledi'
       uploading: 'Prosleđivanje'
       ok: U redu
@@ -66,6 +66,8 @@ sr:
     quiet: 'Tiho'
     mute: 'Isključeno'
     unmute: 'Uključi'
+  pin_event_form:
+    title_label: Naslov
   change_volume_form:
     simple:
       label: Obaveštenja
@@ -187,7 +189,9 @@ sr:
     privacy_private: 'Nit će biti vidljiva isključivo članovima {{group}}.'
     privacy_organisation: 'Nit će biti vidljiva članovima {{parent}} i članovima {{group}}.'
   action_dock:
+    move_items: Premesti
     edit_stance: Promeni poziciju
+    edited: Izmenjeno
     delete_thread: Obriši nit
   join_group_button:
     join_group: Pridruži se grupi
@@ -596,6 +600,7 @@ sr:
     save_changes: Snimi
   discussions_panel:
     open: Otvoreno
+    all: Sve
     closed: Zatvoreno
   members_panel:
     order_by_name: 'Ime'

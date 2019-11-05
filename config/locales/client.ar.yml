@@ -71,7 +71,6 @@ ar:
       new_thread: "موضوع جديد"
       loading: 'تحميل'
       translate: 'ترجم'
-      translated: 'ترجم باستخدام مترجم بينغ'
       upload: 'تحميل'
       uploading: 'تحميل'
       invite: دعوة
@@ -87,6 +86,8 @@ ar:
     quiet: 'هادئ'
     mute: 'كتم'
     unmute: 'الغاء الكتم'
+  pin_event_form:
+    title_label: العنوان
   change_volume_form:
     simple:
       label: 'تبليغات '
@@ -191,13 +192,13 @@ ar:
     privacy_public: 'يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.'
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
     privacy_organisation: 'سيكون الموضوع ظاهراً لأعضاء {{parent}} و أعضاء {{group}}.'
-  announcement:
-    preview: معاينة
   action_dock:
     add_comment: تعليق
     edit_poll: تعديل استطلاع الرأي
+    move_items: نقل
     edit_stance: تغيير الموقف
     delete_comment: حذف التعليق
+    edited: 'معدّل '
     delete_thread: حذف الموضوع
   formatting:
     attach: إرفاق ملف
@@ -624,6 +625,7 @@ ar:
     label: المرفقات
   discussions_panel:
     open: مفتوحة
+    all: الكل
     closed: مغلقة
   members_panel:
     order_by_name: 'الاسم '

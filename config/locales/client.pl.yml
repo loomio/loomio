@@ -37,6 +37,7 @@ pl:
   timezones:
     local: Czas lokalny ({{value}})
   common:
+    no_results_found: Nie znaleziono
     you: Ty
     expand: Rozwiń
     all_day: Cały dzień
@@ -103,7 +104,6 @@ pl:
       new_thread: "Nowy wątek"
       loading: 'Ładowanie'
       translate: 'Tłumacz'
-      translated: 'Przetłumaczono przez Translator Bing'
       upload: 'Załaduj'
       uploading: 'Ładowanie'
       load_more: 'Załaduj więcej'
@@ -161,6 +161,8 @@ pl:
     quiet: 'Cicho'
     mute: 'Wyciszono'
     unmute: 'Wyłącz wyciszenie'
+  pin_event_form:
+    title_label: Tytuł
   change_volume_form:
     simple:
       label: Powiadomienia

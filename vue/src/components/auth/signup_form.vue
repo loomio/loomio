@@ -30,7 +30,7 @@ export default
       if AuthService.validSignup(@vars, @user)
         # EventBus.emit $scope, 'processing'
         @loading = true
-        AuthService.signUp(@user).finally ->
+        AuthService.signUp(@user).finally =>
           @loading = false
           # EventBus.emit $scope, 'doneProcessing'
   computed:

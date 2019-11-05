@@ -32,6 +32,7 @@ ga_IE:
   timezones:
     local: An t-am áitiúil ({{luach}})
   common:
+    no_results_found: Níor aimsíodh aon rud
     option: Rogha
     add: Cuir leis
     you: Tusa
@@ -104,7 +105,6 @@ ga_IE:
       new_thread: "Snáith nua"
       loading: 'Ag luchtú'
       translate: 'Aistrigh'
-      translated: 'Aistriúchán ó Bing Translator'
       upload: 'Uasluchtaigh é'
       uploading: 'Ag uasluchtú'
       load_more: 'Luchtaigh tuilleadh'
@@ -137,6 +137,8 @@ ga_IE:
     quiet: 'Ciúin'
     mute: 'Gan fhuaim'
     unmute: 'Díbhalbhaigh é'
+  pin_event_form:
+    title_label: Teideal
   change_volume_form:
     simple:
       label: Fógraí
@@ -249,7 +251,9 @@ ga_IE:
     context_placeholder: 'Cuir dóthain eolas cúlra ar fáil don bhaicle le go mbeidh an plé torthúil. Is féidir seo a nuashonrú fad is atá an plé ar bun'
     privacy_label: 'Príobháideachas'
   action_dock:
+    move_items: Bog é
     edit_stance: Athraigh do sheasamh
+    edited: Curtha in eagar
     delete_thread: Scriosadh an tsnáith
   formatting:
     attach: Ceangail comhad
@@ -565,6 +569,7 @@ ga_IE:
     label: Ceangaltáin
   discussions_panel:
     open: Ar oscailt
+    all: Uile
     closed: Dúnta
   members_panel:
     order_by_name: 'Ainm'

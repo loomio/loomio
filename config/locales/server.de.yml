@@ -17,9 +17,6 @@ de:
     deleted_user: "gelöschter Nutzer"
     placeholder_name: "eingeladener Nutzer (%{hostname})"
     error:
-      sign_in_required_html: |
-          Sie müssen eingeloggt sein um fortfahren zu können.
-          Bitte <a href="/dashboard">melden Sie sich an</a> und aktualisieren Sie diese Seite.
       recaptcha: "Wir konnten leider nicht bestätigen, dass du kein Computer bist. Bitte versuche es erneut."
       bad_login: "Sorry, das Passwort passt nicht zu dem in unserer Datei."
       username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
@@ -145,7 +142,7 @@ de:
     catch_up:
       daily_subject: Gestern auf %{site_name}
       weekly_subject: Letzte Woche auf %{site_name}
-      do_not_reply: Bitte antworte nicht auf diese E-Mail.
+      do_not_reply: Bitte nicht direkt auf diese E-Mail antworten.
       mark_as_read: Als gelesen markieren
       thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
       marked_as_read_success: Alles aus der E-Mail wurde als gelesen markiert

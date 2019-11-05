@@ -80,6 +80,7 @@ hu:
   timezones:
     local: Helyi idő ({{value}})
   common:
+    no_results_found: Nem található eredmény
     history: Előzmény
     option: Választási lehetőség
     add: Hozzáad
@@ -134,6 +135,8 @@ hu:
     points_abbrev: Minden szavazat {{score}} pontot ér
     total: Összesen
     action:
+      pin: Rögzít
+      unpin: Rögzítés feloldása
       search: 'Keresés'
       filter: 'Szűrő'
       back: 'Vissza'
@@ -156,7 +159,6 @@ hu:
       add_subgroup: 'Új alcsoport'
       loading: 'Betöltés'
       translate: 'Fordítás'
-      translated: '"Bing-Translator"-ral fordítva'
       upload: 'Feltölt'
       uploading: 'Feltöltés'
       load_more: 'Több betöltése'
@@ -222,6 +224,9 @@ hu:
     quiet: 'Csendes'
     mute: 'Néma'
     unmute: 'Néma üzemmód kikapcsolása'
+  pin_event_form:
+    title: Rögzítse az idővonalhoz
+    title_label: Cím
   change_volume_form:
     simple:
       label: Értesítések
@@ -229,7 +234,6 @@ hu:
       normal: Normál
       quiet: Figyelmen kívül hagyás
       loud_explain: amikor valami történik
-      normal_explain: amikor valaki a figyelmedet szeretné felhívni
       quiet_explain: nincsenek értesítések
     aria_label: "E-mail beállítások módosítása"
     loud_label: "Összes tevékenység"
@@ -244,7 +248,6 @@ hu:
       quiet_description: "Nem fogsz e-mailt kapni az ebben a témában történő tevékenységről."
       apply_to_all: "Azonos beállítások alkalmazása a csoporton belüli összes témára."
       only_this_thread: "Csak erre a témára vonatkozik"
-      group: "Csoport értesítési beállításainak megváltoztatása"
       messages:
         loud: "A témán belüli új tevékenység esetén értesítést kapsz e-mailben."
         normal: "A témán belüli új javaslat esetén értesítést kapsz e-mailben."
@@ -476,7 +479,6 @@ hu:
     send_group: 'Meghívás a következőhöz: {{name}}'
     send_poll: Elküld {{type}}
     send_outcome: Oszd meg a végeredményt
-    preview: Előnézet
     audiences:
       parent_group: A(z) {{name}} tagjai
       formal_group: A(z) {{name}} tagjai
@@ -526,7 +528,6 @@ hu:
     flash:
       success: '{{count}} értesítés elküldve'
   action_dock:
-    react: Válasz hozzáadása
     add_resource: Melléklet hozzáadása
     edit_group: Csoport leírás szerkesztése
     add_comment: Megjegyzés
@@ -536,6 +537,7 @@ hu:
     invite_guests: Vendégek meghívása
     translate_thread: Leírás fordítása
     edit_poll: A szavazás szerkesztése
+    move_items: Mozgat
     announce_poll: Hívja meg az embereket szavazásra
     announce_poll_active: (Még senkit sem hívtak meg.)
     translate_poll: Szavazás lefordítása
@@ -551,6 +553,7 @@ hu:
     announce_outcome_active: (Senki nem kapott értesítést erről az eredményről)
     translate_outcome: Az eredmény lefordítása
     show_history: A szerkesztési előzmények megjelenítése
+    edited: szerkesztette
     pin_thread: Téma rögzítése
     unpin_thread: Téma rögzítésének megszüntetése
     pin_event: Rögzítse az idővonalhoz
@@ -1369,12 +1372,14 @@ hu:
     count: "Lásd az összes: ({{count}}) döntést"
   discussions_panel:
     open: Nyitva
+    all: Minden
     unread: Olvasatlan ({{count}})
     closed: Zárva
     include_subgroups_mine: '{{name}} és az alcsoportjaim'
     include_subgroups_all: '{{name}} és minden alcsoport'
     no_results_found: Nincs eredmény a (z) "{{search}}" kifejezésre
   members_panel:
+    everyone: 'Mindenki'
     sort: 'Rendezés'
     order_label: "Sorrend"
     order_by_name: 'Név'
@@ -1426,7 +1431,6 @@ hu:
     helptext_on: A felhasználók ezt a találkozót hozzáadhatják naptárukhoz
     helptext_off: Nem küldünk meghívót a találkozóra
     event_duration: Időtartam
-    event_summary: Összefoglalás
     event_summary_placeholder: Minek szeretnéd hívni ezt a találkozót?
     event_description: Találkozó leírása
     event_description_placeholder: Mi a találkozó napirendje?
@@ -1780,10 +1784,8 @@ hu:
     name_required: Adjon meg egy nevet
     terms_required: El kell fogadnia a Szolgáltatási feltételeket
     account_inactive: Hoppá, úgy tűnik, hogy a(z) {{email}} fiókot deaktiválták!
-    privacy_notice: "Nem adjuk el az Ön személyes adatait, és nem használunk harmadik fél nyomkövetőket."
     welcome: Új a(z) {{siteName}} oldalán?
     welcome_back: Üdvözlet újra, {{name}}!
-    login_link: E-mail bejelentkezés
     set_password: Állítsd be a jelszót
     set_password_helptext: A következő alkalommal szeretne jelszót használni?
     hello: "Üdvözlet, {{name}}!"

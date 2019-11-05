@@ -9,7 +9,9 @@ zh_TW:
     yearly: 每年
   current_plan_button:
     upgrade: 升級
-    tooltip: 免費試用。升級以邀請更多夥伴並開始更多討論串。
+    free_trial: 免費試用。剩 {{days}} 天。
+    trial_expired: 您的試用已到期。升級以繼續使用 Loomio。
+    tooltip: "我們的價錢超棒的！現在就升級並享受 Loomio 可以提供給您的組織的好處吧！"
   loomio_tags:
     tags: 標籤
     apply_tags: 套用標籤
@@ -81,6 +83,7 @@ zh_TW:
   timezones:
     local: 本地時間 ({{value}})
   common:
+    no_results_found: 找不到結果
     view: 檢視
     history: 歷史
     option: 選項
@@ -136,6 +139,8 @@ zh_TW:
     points_abbrev: 每個投票價值 {{score}} 分
     total: 總共
     action:
+      pin: 釘選
+      unpin: 取消釘選
       search: '搜尋'
       filter: '過濾器'
       back: '返回'
@@ -158,7 +163,6 @@ zh_TW:
       add_subgroup: '新的子群組'
       loading: '讀取中'
       translate: '翻譯'
-      translated: '採用 Bing 翻譯'
       upload: '上傳'
       uploading: '正在上傳'
       load_more: '載入更多'
@@ -170,6 +174,7 @@ zh_TW:
       delete: 刪除
       unsubscribe: 取消訂閱
       subscribe: 訂閱
+      unignore: 取消忽略
       remind: 提醒
       resend: 重新傳送
       send: 傳送
@@ -224,14 +229,21 @@ zh_TW:
     quiet: '安靜'
     mute: '靜音'
     unmute: '解除靜音'
+  pin_event_form:
+    title: 釘選到時間軸
+    title_label: 標題
   change_volume_form:
+    explain_scope:
+      thread: 這會在您收到此討論串通知時發生變化
+      group: 這會在您收到關於此群組中的所有討論串的通知時發生變化
     simple:
       label: 通知
       loud: 已訂閱
       normal: 普通
       quiet: 忽略
+      question: 您想要什麼時候被通知？
       loud_explain: 只要有活動
-      normal_explain: 當某人想要引起您的注意時
+      normal_explain: 當某人請求您的注意時
       quiet_explain: 沒有通知
     aria_label: "變更電子郵件設定表單"
     loud_label: "所有動態"
@@ -246,7 +258,8 @@ zh_TW:
       quiet_description: "您不會收到此討論串中任何的電子郵件。"
       apply_to_all: "套用這些設定到在此群組中所有的討論串。"
       only_this_thread: "僅套用到此討論串"
-      group: "變更群組通知偏好設定"
+      group: "變更群組的通知"
+      user: "在通知設定下變更"
       messages:
         loud: "您將會收到關於此討論串動態的電子郵件。"
         normal: "您將會收到關於此討論串提案的電子郵件。"
@@ -466,7 +479,7 @@ zh_TW:
     created: '討論串 {{title}} 已在 {{groupName}} 中成功的被建立'
     updated: '儲存變更到 {{title}}'
   discussion_fork_actions:
-    helptext: 選取您想要移動的項目
+    helptext: 選取您想要移動到其他討論串的項目
     move: 移動
     search_placeholder: 利用標題搜尋討論串
     moved: 正在移動留言，這可能需要一點時間
@@ -507,7 +520,7 @@ zh_TW:
     quick_add: "快速新增"
     any_other_groups: "任何其他群組？"
     notified_people: "{{name}} 已通知 {{length}} 個夥伴："
-    preview: 預覽
+    preview: 預覽電子郵件
     no_notifications_sent: 未傳送通知
     history_error: 發生了一點問題！無法載入歷史。
     inviting_guests_to_thread: 不是 {{group}} 成員的夥伴將會被以訪客的身份新增到此討論串，但不會取得對群組中其他討論串的存取權。
@@ -563,7 +576,8 @@ zh_TW:
     flash:
       success: '已傳送 {{count}} 個通知'
   action_dock:
-    react: 新增反應
+    react: 反應
+    notify: 通知
     add_resource: 新增附件
     edit_group: 編輯群組內容
     add_comment: 意見
@@ -573,6 +587,7 @@ zh_TW:
     invite_guests: 邀請來賓
     translate_thread: 翻譯內容
     edit_poll: 編輯投票
+    move_items: 移動
     announce_poll: 邀請夥伴來投票
     announce_poll_active: （尚未邀請任何人）
     translate_poll: 翻譯投票
@@ -588,6 +603,7 @@ zh_TW:
     announce_outcome_active: （尚未通知任何人這個結果）
     translate_outcome: 翻譯結果
     show_history: 顯示編輯歷史
+    edited: 已編輯
     pin_thread: 釘選討論串
     unpin_thread: 取消釘選討論串
     pin_event: 釘選到時間軸
@@ -1191,7 +1207,7 @@ zh_TW:
         <p>下一步，<a href="{{upgradeUrl}}" target="_blank">選擇一個計畫</a>以繼續在 Loomio 上協作。</p>
 
     subscription_canceled: |
-        <p>抱歉！您的訂閱不活躍。</p>
+        <p>抱歉！您的訂閱並未啟用。</p>
         <p>請<a href="{{upgradeUrl}}" target="_blank">升級</a>以繼續使用 Loomio。</p>
     activity: '動態'
     activity_placeholder: '尚無動態！'
@@ -1210,6 +1226,7 @@ zh_TW:
     title: 被這些人看過：
     no_one: 還沒有人看過這個
   activity_card:
+    count_responses: "{{count}} 個回應"
     event_pinned: "已釘選至時間軸"
     event_unpinned: "已從時間軸取消釘選"
     beginning: 開始
@@ -1477,6 +1494,7 @@ zh_TW:
     count: "檢視全部：({{count}}) 個決策"
   discussions_panel:
     open: 公開
+    all: 全部
     unread: 未讀 ({{count}})
     closed: 封閉
     include_subgroups_mine: '{{name}} 與我的子群組'
@@ -1538,7 +1556,6 @@ zh_TW:
     helptext_on: 使用者將可以加入這個會面到他們的行事曆中
     helptext_off: 沒有會面邀請將會被寄送
     event_duration: 持續時間
-    event_summary: 摘要
     event_summary_placeholder: 您想要叫這個會面什麼名字？
     event_description: 會面描述
     event_description_placeholder: 這次會面的議程是什麼？
@@ -1826,6 +1843,7 @@ zh_TW:
     stance_created: 已建立投票
     stance_updated: 已更新投票
   poll_meeting_vote_form:
+    local_time_zone: 本地時間 - {{zone}}
     can_attend: "可以參與"
     unable: "不行"
     if_need_be: 如果需要的話
@@ -1860,6 +1878,7 @@ zh_TW:
     poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 開始了 {{polltype}}"
     poll_created_no_title: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 開始了 {{polltype}}"
     poll_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 編輯了 {{polltype}}"
+    poll_option_added: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> 新增了選項到 {{polltype}}"
     poll_expired: "{{polltype}} 已關閉"
     stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>投票給：<strong>{{title}}</strong>"
     event_removed: "從討論串中移除"
@@ -1921,10 +1940,8 @@ zh_TW:
     name_required: 請輸入名稱
     terms_required: 您必須同意服務條款
     account_inactive: 喔喔，看起來 {{email}} 的帳號已經被停用囉！
-    privacy_notice: "我們不會販賣您的個人資料或使用第三方追蹤程式<br><a href='{{privacyUrl}}' target='_blank'>隱私權政策</a>"
     welcome: 新加入 {{siteName}}？
     welcome_back: 歡迎回來，{{name}}！
-    login_link: 使用電子郵件登入
     set_password: 設定密碼
     set_password_helptext: 下次想要使用密碼嗎？
     hello: "您好，{{name}}！"
@@ -2036,3 +2053,10 @@ zh_TW:
     privacy_policy: 隱私權政策
     terms_of_service: 服務條款
     front_page: 首頁
+  vue_upgraded_modal:
+    use_old_loomio: 使用舊版 Loomio
+    title: 您已在使用 Loomio 2.0 了！
+    body: |
+        <p>這是更快更好的 Loomio！</p>
+        <p>我們覺得您會喜歡它，不過如果您想要的話，您還是可以從側邊欄切換回舊版。</p>
+        <p><a href="{{link}}" target="_blank">看看有什麼新東西。</a></p>

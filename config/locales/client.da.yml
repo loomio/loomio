@@ -23,6 +23,7 @@ da:
   timezones:
     local: Lokal tid ({{value}})
   common:
+    no_results_found: Ingen resultater fundet
     expand: Udvid
     all_day: Hele dagen
     ok_got_it: Ok
@@ -85,7 +86,6 @@ da:
       new_thread: "Ny tråd"
       loading: 'Indlæser'
       translate: 'Oversæt'
-      translated: 'Oversættelse via Bing Translator'
       upload: 'Upload'
       uploading: 'Uploader'
       load_more: 'Hent mere'
@@ -119,6 +119,8 @@ da:
     quiet: 'Lav'
     mute: 'Slået fra'
     unmute: 'Slået til'
+  pin_event_form:
+    title_label: Titel
   change_volume_form:
     simple:
       label: Notifikationer
@@ -299,7 +301,9 @@ da:
     group_form:
       members_count: '{{count}} mennesker vil blive notificeret'
   action_dock:
+    move_items: Flyt
     edit_stance: Rediger stillingtagen
+    edited: Redigeret
     delete_thread: Slet debat
   formatting:
     attach: Vedhæft fil
@@ -825,6 +829,7 @@ da:
     show_results: Vis resultater
   discussions_panel:
     open: Offentlig
+    all: Alle
     closed: Lukket
   members_panel:
     order_by_name: 'Navn'

@@ -20,6 +20,8 @@ ml:
     search: തിരയുക
   error_page:
     forbidden: 'നിങ്ങള്‍ക്ക് ഇതു ചെയ്യാനുള്ള അനുമതിയില്ല'
+  pin_event_form:
+    title_label: തലക്കെട്ട്
   change_volume_form:
     simple:
       label: അറിയിപ്പുകള്‍

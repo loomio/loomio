@@ -5,8 +5,13 @@ es:
     small: Pequeño
     medium: Mediano
     large: Grande
+    monthly: Mensual
+    yearly: Anual
   current_plan_button:
     upgrade: Mejore su abono a Loomio
+    free_trial: Prueba gratis. Quedan {{days}} días
+    trial_expired: Tu periodo de prueba ha terminado. Actualice para continuar usando Loomio.
+    tooltip: "Nuestros precios son fantásticos! Actualice hoy y disfrute lo que Loomio puede ofrecer a su grupo."
   loomio_tags:
     tags: Etiquetas
     apply_tags: Aplicar etiquetas
@@ -59,9 +64,25 @@ es:
     wave: Saludar
     thumbsup: Pulgar arriba
     thumbsdown: Pulgar abajo
+  poll_types:
+    proposal: proposición
+    count: verificación
+    poll: sondeo
+    dot_vote: punto electoral
+    ranked_choice: elección clasificada
+    score: Encuesta de puntuación
+  new_poll_types:
+    proposal: proposición
+    poll: Elegir
+    score: Puntuación
+    ranked_choice: rango
+    dot_vote: asignar
   timezones:
     local: Hora local ({{value}})
   common:
+    no_results_found: No hemos encontrado nada
+    view: Vista
+    history: Historia
     option: Opción
     add: Añadir
     you: Tú
@@ -114,6 +135,8 @@ es:
     points_abbrev: 'Cada voto vale {{score}} puntos '
     total: Total
     action:
+      pin: Fijar
+      unpin: Liberar
       search: 'Buscar'
       filter: 'Filtrar'
       back: 'Atrás'
@@ -133,9 +156,9 @@ es:
       show_more: "Mostrar más"
       view_all: "Mostrar todo"
       new_thread: "Nuevo hilo"
+      add_subgroup: 'Nuevo subgrupo'
       loading: 'Cargando'
       translate: 'Traducir'
-      translated: 'Traducido mediante Bing Translator'
       upload: 'Cargar '
       uploading: 'Cargando'
       load_more: 'Cargar Más'
@@ -201,7 +224,11 @@ es:
     quiet: 'Bajo'
     mute: 'Silenciado '
     unmute: 'Des-silenciar '
+  pin_event_form:
+    title_label: Título
   change_volume_form:
+    explain_scope:
+      thread: Esto cambia cuando seas notificado sobre este hilo
     simple:
       label: Notificaciones
       normal: Normal
@@ -311,6 +338,7 @@ es:
     unread_threads: 'No leído ({{count}})'
     muted_threads: 'Hilos silenciados '
     start_group: 'Nueva organización'
+    start_subgroup: 'Nuevo subgrupo'
     explore: 'Grupos públicos'
     explore_groups: Explorar grupos
     start_thread: Nuevo hilo
@@ -433,7 +461,6 @@ es:
     privacy_organisation: 'Los hilos serán visibles para integrantes de {{parent}} e integrantes de {{group}}.'
     fork_notice: 'Un nuevo hilo será creado con {{count}} items de {{title}}'
   announcement:
-    preview: Vista anticipada
     audiences:
       parent_group: Integrantes de {{name}}
       formal_group: 'Integrantes de {{name}} '
@@ -486,7 +513,6 @@ es:
     flash:
       success: '{{count}} notificaciones enviadas'
   action_dock:
-    react: 'Añadir reacción '
     add_resource: Agregar archivo adjunto
     edit_group: Editar contexto de grupo
     add_comment: Comentario
@@ -495,6 +521,7 @@ es:
     invite_guests: Gente invitada
     translate_thread: Traducir contexto
     edit_poll: Editar encuesta
+    move_items: Mover
     announce_poll: 'Invitar a personas a votar '
     announce_poll_active: '(Nadie ha sido invitado aún) '
     translate_poll: Traducir encuesta
@@ -510,6 +537,7 @@ es:
     announce_outcome_active: (Nadie ha sido notificado sobre el resultado aún)
     translate_outcome: Traducir resultado
     show_history: Ver historial de revisión
+    edited: Editado
     pin_thread: Fijar hilo
     unpin_thread: Soltar hilo
     comment_copied: URL del comentario copiado al portapapeles
@@ -1027,9 +1055,6 @@ es:
     max_threads_reached: |
         <p>Has usado todos {{maxThreads}} los hilos disponibles en este grupo.</p>
         <p>Siguiente paso, <a href="{{upgradeUrl}}" target="_blank">elije un plan</a>para continuar participando en Loomio.</p>
-    subscription_canceled: |
-        <p>Lo sentimos! Tu subscripción no está activa.</p>
-        <p>Por favor <a href="{{upgradeUrl}}" target="_blank"> actualiza </a> para continuar usando Loomio.</p>
     activity: 'Actividad'
     activity_placeholder: 'No hay actividad todavía'
     load_previous: 'Cargar actividad más reciente'
@@ -1286,9 +1311,11 @@ es:
     count: "Ve todas: las ({{count}}) decisiones"
   discussions_panel:
     open: Abierto
+    all: Todos/as
     unread: No leídos {{count}
     closed: 'Cerrado '
   members_panel:
+    everyone: 'Todos'
     sort: 'Orden'
     order_by_name: 'Nombre'
     header_name: 'Nombre'
@@ -1323,7 +1350,6 @@ es:
     helptext_on: Los usuarios podrán añadir esta reunión a sus calendarios
     helptext_off: No se enviara ninguna invitación a la reunión
     event_duration: Duración
-    event_summary: Resumen
     event_summary_placeholder: ¿Cómo te gustaría llamar esta reunión?
     event_description: Descripción de la reunión
     event_description_placeholder: ¿Cuál es la agenda para esta reunión?

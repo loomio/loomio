@@ -97,6 +97,9 @@ sl:
     normal: 'Normalno'
     quiet: 'Tiho'
     mute: 'Neslišno'
+  pin_event_form:
+    title: Pripni na časovnico
+    title_label: Naslov
   change_volume_form:
     simple:
       label: Obvestila
@@ -221,6 +224,7 @@ sl:
     delete_comment: Izbriši komentar
     reply_to_comment: Odgovor
     show_history: Pokaži zgodovino urejanja
+    edited: Urejeno
     pin_thread: Pripni razpravo
     unpin_thread: Odpni razpravo
     pin_event: Pripni na časovnico
@@ -405,6 +409,7 @@ sl:
   poll_common_attachment_form:
     label: Priloge
   discussions_panel:
+    all: Vse
     closed: Zaprto
   members_panel:
     order_by_name: 'Ime'

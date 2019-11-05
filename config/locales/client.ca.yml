@@ -85,7 +85,6 @@ ca:
       new_thread: "Crea una discussió"
       loading: 'Carregant'
       translate: 'Tradueix'
-      translated: 'Traducció realitzada per Bing Translator'
       upload: 'Carrega'
       uploading: 'Carregant'
       ok: D'acord
@@ -119,6 +118,8 @@ ca:
     quiet: 'Fluix'
     mute: 'Silenci'
     unmute: 'Activa el so'
+  pin_event_form:
+    title_label: Títol
   change_volume_form:
     simple:
       label: Notificacions
@@ -235,10 +236,10 @@ ca:
     privacy_public: 'Tothom pot veure la discussió. Només els membres hi poden participar.'
     privacy_private: 'La discussió només serà visible pels membres del grup {{group}}.'
     privacy_organisation: 'La discussió serà visible pels membres de {{parent}} i pels membres de {{group}}.'
-  announcement:
-    preview: Previsualitza
   action_dock:
+    move_items: Mou
     edit_stance: Canvia la decisió
+    edited: Editat
     tag_thread: Gestiona etiquetes
     delete_thread: Elimina la discussió
   join_group_button:
@@ -638,8 +639,10 @@ ca:
     save_changes: Desa
   discussions_panel:
     open: Obert
+    all: Tot
     closed: Tancat
   members_panel:
+    everyone: 'Tothom'
     order_by_name: 'Nom'
     header_name: 'Nom'
     header_username: 'Nom d''usuari'

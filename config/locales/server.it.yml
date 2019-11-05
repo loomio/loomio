@@ -17,9 +17,6 @@ it:
     deleted_user: "Utente eliminato"
     placeholder_name: "Utente invitato"
     error:
-      sign_in_required_html: |
-          Devi essere autenticato per proseguire.
-          Per favore <a href="/dashboard">accedi</a> e poi ricarica la pagina per continuare.
       recaptcha: "Non siamo stati in grado di verificare che tu non sia un robot. Per favore riprova ancora!"
       bad_login: "Spiacente, ma la password non corrisponde con quella che abbiamo archiviato."
       username_must_be_alphanumeric: "I nomi utente devono avere solo lettere minuscole e numeri"

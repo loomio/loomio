@@ -7,8 +7,6 @@ ro:
     large: Mare
     monthly: Lunar
     yearly: Anual
-  current_plan_button:
-    tooltip: Versiune gratuită. Alege un plan superior pentru a adăuga mai mulți utilizatori și mai multe subiecte.
   loomio_tags:
     tags: Etichete
     apply_tags: Aplica etichete
@@ -154,7 +152,6 @@ ro:
       add_subgroup: 'Grup nou subordonat'
       loading: 'Se incarca'
       translate: 'Traducere'
-      translated: 'Tradus cu Bing Translator'
       upload: 'Incarca'
       uploading: 'Se trimite la server'
       load_more: 'Incarca mai mult'
@@ -207,6 +204,8 @@ ro:
     quiet: 'Incet'
     mute: 'Dezactivat'
     unmute: 'Activare'
+  pin_event_form:
+    title_label: Titlu
   change_volume_form:
     simple:
       label: Notificari
@@ -324,10 +323,7 @@ ro:
     privacy_public: 'Oricine poate vedea o discutie. Doar membrii pot participa.'
     privacy_private: 'Discutia va fi vizibila doar membrilor grupului {{group}}.'
     privacy_organisation: 'Discutiile vor fi vizibile doar membrilor din {{parent}} si membrilor grupului {{group}}.'
-  announcement:
-    preview: Previzualizare
   action_dock:
-    react: Adauga reactie
     add_resource: Adauga atasament
     add_comment: Comenteaza
     edit_thread: Editare context
@@ -342,6 +338,7 @@ ro:
     edit_outcome: Editare rezultat
     translate_outcome: Traducere rezultat
     show_history: Arata istorie editari
+    edited: Editat
     pin_thread: Marcheaza conversatie
     unpin_thread: De-marcheaza conversatie
     delete_thread: Sterge discutia
@@ -545,8 +542,10 @@ ro:
     label: Atașamente
   discussions_panel:
     open: Deschis
+    all: Toate
     closed: Inchis
   members_panel:
+    everyone: 'Toti'
     order_by_name: 'Nume'
     header_name: 'Nume'
     header_username: 'Nume utilizator'

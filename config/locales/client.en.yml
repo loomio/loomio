@@ -888,8 +888,8 @@ en:
     organization_name: 'Organization Name'
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
-    group_name_placeholder: 'What do you want to call your group?'
-    organization_name_placeholder: 'What do you want to call your organization?'
+    group_name_placeholder: 'What is the name of your group?'
+    organization_name_placeholder: 'What is the name of your organization?'
     subgroup_name: 'Subgroup Name'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
