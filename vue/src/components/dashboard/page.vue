@@ -151,7 +151,7 @@ v-content
           v-card.mb-3(v-if='views[viewName].length', :class="'thread-preview-collection__container dashboard-page__' + viewName", v-for='viewName in viewNames' :key='viewName')
             v-subheader(v-t="'dashboard_page.threads_from.' + viewName")
             thread-preview-collection.thread-previews-container(:threads='views[viewName]')
-          .dashboard-page__footer(v-if='!loader.exhausted', in-view='$inview && loader.loadMore()', in-view-options='{debounce: 200}')  
+          .dashboard-page__footer(v-if='!loader.exhausted')  
           loading(v-show='loader.loading')
 </template>
 <style lang="css">
