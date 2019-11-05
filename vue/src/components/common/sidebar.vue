@@ -34,10 +34,7 @@ export default
       @group = data.group
       if @group
         @organization = data.group.parentOrSelf()
-        if @$route.query.subgroups
-          @expandedGroupIds = []
-        else
-          @expandedGroupIds = [@organization.id]
+        @expandedGroupIds = [@organization.id]
       else
         @organization = null
 
@@ -80,20 +77,7 @@ export default
         group: group
         member: Session.user().membershipFor(group)?
         children: if group.subgroups
-          orderBy( group.subgroups().map(groupAsItem), ['member', 'name'], ['desc', 'asc']).concat(newSubgroupButton(group))
-        else
-          []
-
-      initalId = 0
-      generateId = -> "id" + (initalId += 1)
-      newSubgroupButton = (parentGroup) =>
-        if AbilityService.canCreateSubgroups(parentGroup)
-          id: generateId()
-          name: @$t('common.action.add_subgroup')
-          click: => @openStartSubgroupModal(parentGroup)
-          icon: 'mdi-plus'
-          subgroups: -> []
-          isStartSubgroupButton: true
+          orderBy(group.subgroups().map(groupAsItem), ['member', 'name'], ['desc', 'asc'])
         else
           []
 
@@ -111,10 +95,6 @@ export default
     user: -> Session.user()
     activeGroup: -> if @group then [@group.id] else []
     logoUrl: -> AppConfig.theme.app_logo_src
-
-    # if we expand or collapse active group, then route changes to that active group with respective subgroups query
-    # otherwise, watch route to determine what should render
-      # 1. navigate
 
 </script>
 
@@ -142,14 +122,11 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
   v-divider
 
-  //- v-layout(fill-height)
   v-treeview.sidebar__groups(hoverable dense :items="tree" :active="activeGroup" :open="expandedGroupIds" style="width: 100%")
     template(v-slot:append="{item, open}")
       div(v-if="item.click")
         v-icon(v-if="item.icon" @click="item.click") {{item.icon}}
     template(v-slot:prepend="{item, open}")
-      //- div(v-if="item.click")
-        //- v-icon(v-if="item.icon" @click="item.click") {{item.icon}}
       router-link(v-if="!item.click" :to="urlFor(item.group)")
         group-avatar(:group="item.group"  v-if="item.group.isParent()")
     template(v-slot:label="{item, open}")
