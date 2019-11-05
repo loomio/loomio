@@ -20,6 +20,9 @@ export default
       true
 
   mounted: ->
+    if @$router.history.current.path == "/dashboard" && Session.user().membershipsCount == 1
+      @$router.replace("/g/#{Session.user().memberships()[0].group().key}")
+
     @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
     if Session.isSignedIn() && Session.user().experiences['show_vue_upgraded_modal']
       openModal
