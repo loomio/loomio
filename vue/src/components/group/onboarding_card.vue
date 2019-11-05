@@ -55,10 +55,11 @@ export default
 
     close: ->
       Records.memberships.saveExperience("dismissProgressCard", Session.user().membershipFor(@group))
+
+  computed:
     setupComplete: ->
       _.every _.invokeMap(@activities, 'complete')
 
-  computed:
     show: ->
       @group.isParent() &&
       Session.user().isAdminOf(@group) &&
@@ -67,22 +68,19 @@ export default
 
 </script>
 <template lang="pug">
-v-card.group-progress-card(outlined flat v-if='show')
+v-card.mb-4.group-progress-card(outlined flat v-if='show')
   v-card-title
-    h2.group-progress-card__title.lmo-card-heading(v-t="'loomio_onboarding.group_progress_card.title'")
+    h4.headline.group-progress-card__title(v-if="!setupComplete" v-t="'loomio_onboarding.group_progress_card.title'")
+    h4.headline.group-progress-card__title(v-if="setupComplete" v-t="'loomio_onboarding.group_progress_card.celebration_message'")
     v-spacer
     dismiss-modal-button.group-progress-card__dismiss(:close="close")
   v-card-text
     v-list(dense).group-progress-card__list
       v-list-item.group-progress-card__list-item(@click='activity.click()' v-for='activity in activities' :key="activity.translate" :class="{'group-progress-card__complete': activity.complete()}")
         v-list-item-icon
-          v-icon(v-if='activity.complete()') mdi-checkbox-marked
-          v-icon(v-if='!activity.complete()') mdi-checkbox-blank-outline
+          v-icon(color="primary" v-if='activity.complete()') mdi-checkbox-marked
+          v-icon(color="primary" v-if='!activity.complete()') mdi-checkbox-blank-outline
         v-list-item-content
           span.group-progress-card__activity-text(v-t="translationFor(activity.translate)")
-    .group-progress-card__celebration-message(v-if='setupComplete()')
-      span 🎉
-      strong(v-t="'loomio_onboarding.group_progress_card.celebration_message'")
-      a(@click='close()' v-t="'loomio_onboarding.group_progress_card.dismiss_this_card'")
     a.group-progress-card__learn-more(href='https://help.loomio.org/' target="_blank" v-t="'loomio_onboarding.group_progress_card.learn_more'")
 </template>
