@@ -28,6 +28,10 @@ class LoggedOutUser
                 recaptcha: recaptcha)
   end
 
+  def memberships_count
+    0
+  end
+
   def nil_methods
     super + [:id, :created_at, :avatar_url, :presence, :restricted, :persisted?]
   end
