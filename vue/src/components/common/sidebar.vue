@@ -56,7 +56,10 @@ export default
 
   methods:
     fetchData: ->
-      Records.users.fetchGroups()
+      Records.users.fetchGroups().then =>
+        if @$router.history.current.path == "/dashboard" && Session.user().membershipsCount == 1
+          @$router.replace("/g/#{Session.user().memberships()[0].group().key}")
+          
       InboxService.load()
 
     unreadCountFor: (group, isOpen) ->
