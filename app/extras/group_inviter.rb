@@ -35,7 +35,7 @@ class GroupInviter
 
   def generate_users!
     User.import(safe_emails(@emails).map do |email|
-      User.new(email: email, time_zone: @inviter.time_zone, detected_locale: @inviter.locale)
+      User.new(email: email, time_zone: @inviter.time_zone, detected_locale: @inviter.locale, experiences: { vue_client: @inviter.experiences['vue_client'] })
     end, on_duplicate_key_ignore: true)
   end
 

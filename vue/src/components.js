@@ -48,6 +48,7 @@ module.exports = {
   GroupFormActions: 'group/form_actions',
   GroupDescriptionCard: 'group/description_card',
   GroupNewForm: 'group/new_form',
+  GroupOnboardingCard: 'group/onboarding_card',
   GroupPrivacyButton: 'group/privacy_button',
   // GroupCoverImage: 'group/cover_image',
   GroupStart: 'group/start',

@@ -32,6 +32,7 @@ export default
     EventBus.$on 'signedIn', => @init()
 
   mounted: ->
+    EventBus.$emit('content-title-visible', false)
     EventBus.$emit 'currentComponent',
       titleKey: @titleKey
       page: 'dashboardPage'
