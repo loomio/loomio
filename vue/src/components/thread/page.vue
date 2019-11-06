@@ -7,7 +7,7 @@ export default
   data: ->
     discussion: null
 
-  created: -> @init()
+  mounted: -> @init()
 
   watch:
     '$route.params.key': 'init'

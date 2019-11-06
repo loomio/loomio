@@ -15,17 +15,17 @@ export isValidBrowser = browser.satisfies({
 
   # // per platform (mobile, desktop or tablet)
   mobile: {
-    safari: '>=12.4',
+    safari: '>=12',
     'android browser': '>=76'
-    chrome: '>=78'
-    firefox: '>=68'
+    chrome: '>0'
+    firefox: '>0'
   },
 
   # // or in general
-  chrome: ">=65",
-  firefox: ">=68",
-  opera: ">=60"
+  chrome: ">=0",
+  firefox: ">=0",
+  opera: ">0"
   'internet explorer': ">11"
-  msedge: ">=17"
+  msedge: ">=16"
   safari: ">=12"
 })
