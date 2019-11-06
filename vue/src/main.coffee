@@ -25,11 +25,11 @@ Vue.mixin(FormatDate)
 
 Vue.config.productionTip = false
 
-import { hardReload, isValidBrowser } from '@/shared/helpers/window.coffee'
+import { hardReload, isIncompatibleBrowser } from '@/shared/helpers/window.coffee'
 import boot from '@/shared/helpers/boot'
 import Session from '@/shared/services/session'
 
-hardReload('/417.html') if !isValidBrowser
+hardReload('/417.html') if isIncompatibleBrowser
 
 boot ->
   Session.fetch().then (data) ->
