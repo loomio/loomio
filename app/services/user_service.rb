@@ -3,7 +3,7 @@ class UserService
     user.attributes = params.slice(:name, :email, :recaptcha, :legal_accepted)
     user.require_valid_signup = true
     user.require_recaptcha = true
-    user.experiences['vue_client'] = true
+    user.experiences['vue_client'] = ENV.fetch('NEW_USERS_USE_VUE', false)
     user.save.tap do
       EventBus.broadcast 'user_create', user
     end
