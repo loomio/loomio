@@ -1,3 +1,4 @@
+import 'url-search-params-polyfill'
 import Vue from 'vue'
 import AppConfig from '@/shared/services/app_config'
 import vuetify from '@/vuetify'
@@ -24,11 +25,11 @@ Vue.mixin(FormatDate)
 
 Vue.config.productionTip = false
 
-import { hardReload, unsupportedBrowser } from '@/shared/helpers/window.coffee'
+import { hardReload, isValidBrowser } from '@/shared/helpers/window.coffee'
 import boot from '@/shared/helpers/boot'
 import Session from '@/shared/services/session'
-hardReload('/417.html') if unsupportedBrowser()
 
+hardReload('/417.html') if !isValidBrowser
 
 boot ->
   Session.fetch().then (data) ->
