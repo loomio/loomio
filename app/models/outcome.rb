@@ -10,7 +10,7 @@ class Outcome < ApplicationRecord
 
   is_rich_text    on: :statement
 
-  set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location
+  set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location, :should_send_calendar_invite
 
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false

@@ -53,7 +53,7 @@ class PermittedParams < Struct.new(:params)
   def outcome_attributes
     [:statement, :statement_format, :poll_id, :poll_option_id,
      :document_ids, {document_ids: []},
-     :custom_fields, {custom_fields: [:event_location, :event_summary, :event_description]},
+     :custom_fields, {custom_fields: [:event_location, :event_summary, :event_description, :should_send_calendar_invite]},
      :files, :image_files, {files: []}, {image_files: []}
    ]
   end

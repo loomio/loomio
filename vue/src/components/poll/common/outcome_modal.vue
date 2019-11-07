@@ -36,13 +36,14 @@ export default
       @bestOption = head sortBy @options, (option) ->
         -1 * option.attendees # sort descending, so the best option is first
 
-      Vue.set(@clone, 'calendarInvite' , true)
+      Vue.set(@clone, 'calendarInvite', true)
 
       @clone.pollOptionId = @outcome.pollOptionId or @bestOption.id
       @clone.customFields.event_summary = @clone.customFields.event_summary or @clone.poll().title
 
     @submit = submitOutcome @, @clone,
       prepareFn: (prepareArgs) =>
+        @clone.customFields.should_send_calendar_invite = @clone.calendarInvite
         @clone.customFields.event_description = @clone.statement if @datesAsOptions()
       successCallback: (data) =>
         eventData = find(data.events, (event) => event.kind == eventKind(@clone)) || {}
