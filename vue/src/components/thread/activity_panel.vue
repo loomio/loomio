@@ -23,7 +23,7 @@ export default
 
   data: ->
     parentEvent: @discussion.createdEvent()
-    focusedEvent: null
+    focalEvent: null
     loader: null
     initialSlots: []
 
@@ -40,24 +40,23 @@ export default
 
     @respondToRoute()
 
-
   methods:
     respondToRoute: ->
-      if parseInt(@$route.params.comment_id)
-        @fetchEvent('commentId', parseInt(@$route.params.comment_id)).then @focusOnEvent
+      args = if parseInt(@$route.params.comment_id)
+        {column: 'commentId', id: parseInt(@$route.params.comment_id), scrollTo: true}
       else if parseInt(@$route.query.p)
-        @fetchEvent('position', parseInt(@$route.query.p)).then @focusOnEvent
+        {column: 'position', id: parseInt(@$route.query.p), scrollTo: true}
       else if parseInt(@$route.params.sequence_id)
-        @fetchEvent('sequenceId', parseInt(@$route.params.sequence_id)).then @focusOnEvent
+        {column: 'sequenceId', id: parseInt(@$route.params.sequence_id), scrollTo: true}
       else
-        @fetchEvent('position', first(@initialSlots))
-
         if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
-          @fetchEvent('position', @parentEvent.childCount)
+          {column: 'position', id: @parentEvent.childCount}
         else
-          @fetchEvent('position', 1)
+          {column: 'position', id: 1}
 
-        @scrollTo('#context')
+      @fetchEvent(args.column, args.id).then (event) =>
+        @focalEvent = event
+        @scrollTo("#sequence-#{event.sequenceId}") if args.scrollTo
 
 
     fetchEvent: (idType, id) ->
@@ -75,6 +74,7 @@ export default
           per: 5
           "#{param}": id
         ).then =>
+          # console.log "fetched: #{idType}, #{id}"
           Promise.resolve(@findEvent(idType, id))
 
     findEvent: (column, id) ->
@@ -94,6 +94,7 @@ export default
           when 'commentId'
             kind: 'new_comment'
             eventableId: id
+        # console.log "finding: ", args
         Records.events.find(args)[0]
 
     fetch: (slots) ->
@@ -107,10 +108,6 @@ export default
         from_sequence_id_of_position: first(slots)
         until_sequence_id_of_position: last(slots)
         per: @padding * 2
-
-    focusOnEvent: (event) ->
-      @initialSlots = [event.position]
-      @scrollTo("#sequence-#{event.sequenceId}")
 
     openArrangementForm: ->
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
@@ -137,5 +134,5 @@ export default
       space
       span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
       span(v-if="!discussion.newestFirst" v-t="'poll_common_votes_panel.oldest_first'")
-  thread-renderer(:newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :initial-slots="initialSlots")
+  thread-renderer(v-if="focalEvent && parentEvent" :newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent")
 </template>

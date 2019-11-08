@@ -10,9 +10,7 @@ export default
 
   props:
     parentEvent: Object
-
-  data: ->
-    initialSlots: [1]
+    focalEvent: Object
 
   created: ->
     @loader = new RecordLoader
@@ -35,5 +33,5 @@ export default
 
 <template lang="pug">
 .event-children
-  thread-renderer(:parent-event="parentEvent" :fetch="fetch" :initial-slots="initialSlots")
+  thread-renderer(:parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent")
 </template>

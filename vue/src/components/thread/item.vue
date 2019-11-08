@@ -77,6 +77,11 @@ export default
       handler: (newVal) ->
         @focusThenFade() if parseInt(newVal) == @event.sequenceId
 
+    '$route.params.comment_id':
+      immediate: true
+      handler: (newVal) ->
+        @focusThenFade() if parseInt(newVal) == @event.eventableId
+
 </script>
 
 <template lang="pug">

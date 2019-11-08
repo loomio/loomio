@@ -8,8 +8,8 @@ import { reverse, compact, debounce, range, min, max, first, last, sortedUniq, s
 export default
   props:
     parentEvent: Object
+    focalEvent: Object
     fetch: Function
-    initialSlots: Array
     newestFirst: Boolean
 
   created: ->
@@ -34,12 +34,11 @@ export default
   methods:
     renderSlots: ->
       return if @parentEvent.childCount == 0
-
       firstByVisible = first(@visibleSlots) && first(@visibleSlots) - (@padding * 2)
       lastByVisible = last(@visibleSlots) && last(@visibleSlots) + (@padding * 2)
 
-      firstByInitial = first(@initialSlots) && first(@initialSlots) - (@padding * 2)
-      lastByInitial = last(@initialSlots) && last(@initialSlots) + (@padding * 2)
+      firstByInitial = @eventOrParent(@focalEvent).position - (@padding * 2)
+      lastByInitial = @eventOrParent(@focalEvent).position + (@padding * 2)
 
       @firstSlot = max([1, min(compact([@firstSlot, firstByInitial, firstByVisible]))])
       @lastSlot = min([@parentEvent.childCount, max(compact([lastByInitial, lastByVisible]))])
@@ -77,22 +76,25 @@ export default
       else
         @visibleSlots = without(@visibleSlots, slot)
 
+    eventOrParent: (event) ->
+      if !@parentEvent or !event.parent() or (event.depth == @parentEvent.depth + 1)
+        event
+      else
+        @eventOrParent(event.parent())
+
   watch:
     visibleSlots:
       immediate: true
       handler: (newVal, oldVal) ->
-        unless isEqual(newVal, oldVal)
+        unless isEqual(newVal, oldVal) or !@parentEvent
           if @parentEvent.depth == 0
-            # console.log 'visibleSlots changed', newVal
             EventBus.$emit 'visibleSlots', newVal
           @renderSlots()
 
     missingSlots: (newVal, oldVal) ->
       @fetchMissing() if @visibleSlots.length
 
-    initialSlots: (newVal) ->
-      @visibleSlots = newVal
-
+    focalEvent: (val) -> @visibleSlots = []
     newestFirst: -> @visibleSlots = []
 
 </script>
@@ -107,5 +109,5 @@ export default
     | visible {{visibleSlots}}
     | missing {{missingSlots}}
   .thread-item-slot(v-for="slot in slots" :key="slot" v-observe-visibility="{callback: (isVisible) => slotVisible(isVisible, slot)}" )
-    thread-item-wrapper(:parent-id="parentEvent.id" :event="eventsBySlot[slot]" :position="parseInt(slot)")
+    thread-item-wrapper(:parent-id="parentEvent.id" :event="eventsBySlot[slot]" :position="parseInt(slot)" :focal-event="focalEvent")
 </template>

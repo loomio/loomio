@@ -10,11 +10,10 @@ export default
     event: Object
     parentId: Number
     position: Number
+    focalEvent: Object
 
   data: ->
     minHeight: null
-
-  mounted: ->
 
   components:
     NewComment: NewComment
@@ -50,7 +49,7 @@ export default
 .thread-item-wrapper(ref="wrapper" :style="minHeightStyle" :id="idString")
   //- | {{minHeight}}
   component(ref="item" v-if="event" :is="componentForKind(event.kind)" :event='event')
-  event-children(v-if='event && event.childCount > 0' :parent-event='event')
+  event-children(v-if='event && event.childCount > 0' :parent-event='event' :focal-event='focalEvent')
   //- div.debug(v-else)
   //-   | parentId {{event.parentId}}
   //-   | position {{event.position}}
