@@ -262,6 +262,7 @@ en:
   pin_event_form:
     title: Pin to timeline
     title_label: Title
+    hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
 
   change_volume_form:
     explain_scope:
