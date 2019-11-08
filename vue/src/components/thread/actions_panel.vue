@@ -7,13 +7,12 @@ import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
-import WatchRecords from '@/mixins/watch_records'
 import { print } from '@/shared/helpers/window'
 import { compact, snakeCase, camelCase, max, map } from 'lodash'
 import ThreadActivityMixin from '@/mixins/thread_activity'
 
 export default
-  mixins: [ AuthModalMixin, WatchRecords ]
+  mixins: [ AuthModalMixin ]
 
   props:
     discussion: Object
