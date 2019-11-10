@@ -42,7 +42,7 @@ export default
             announcement: Records.announcements.buildFromModel(@group)
     ,
       translate: "start_thread"
-      complete:  => @group.discussionsCount > 2
+      complete:  => @group.discussionsCount > 1
       click:     =>
         openModal
           component: 'DiscussionForm'

@@ -3,7 +3,6 @@ ExampleContent = Struct.new(:group) do
 
   def add_to_group!
     group.add_admin!(helper_bot).tap do
-      DiscussionService.create(discussion: introduction_thread, actor: helper_bot)
       DiscussionService.create(discussion: how_it_works_thread, actor: helper_bot)
       PollService.create(poll: example_proposal, actor: helper_bot)
     end.destroy # remove helper bot after s/he has made example content
