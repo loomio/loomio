@@ -11,18 +11,6 @@ export default new class GroupService
   actions: (group, vm) ->
     membership = group.membershipFor(Session.user())
 
-    open_group_wizard:
-      name: 'group_page.options.open_group_wizard'
-      icon: 'mdi-auto-fix'
-      canPerform: ->
-        Session.user().isAdminOf(group)
-      perform: ->
-        openModal
-          component: 'GroupWizard'
-          props:
-            group: group
-            showWelcome: false
-
     change_volume:
       name: 'group_page.options.email_settings'
       icon: 'mdi-email'
