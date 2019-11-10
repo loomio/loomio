@@ -59,6 +59,7 @@ gem 'ruby-saml'
 gem 'google-cloud-translate'
 gem 'discourse-diff'
 gem 'puma'
+gem 'reverse_markdown'
 
 group :development, :test do
   gem 'parallel_tests'
