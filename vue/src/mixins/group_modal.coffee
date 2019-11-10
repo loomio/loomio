@@ -33,10 +33,3 @@ export default
                       props: {
                         group: group
                       })
-
-    openGroupWizard: (group) ->
-      EventBus.$emit('openModal',
-                      component: 'GroupWizard',
-                      props: {
-                        group: group
-                      })
