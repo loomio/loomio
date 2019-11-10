@@ -1,4 +1,15 @@
 ca:
+  loomio_onboarding:
+    group_progress_card:
+      title: Activa el teu grup
+      activities:
+        set_description: Configura la descripció del teu grup
+        set_logo: Escull un logo pel teu grup
+        set_cover_photo: Escull una foto de capçalera pel teu grup
+        invite_people_in: Convida a gent
+        start_thread: Comença un fil de discussió
+        make_decision: Comença una decissió
+      dismiss_this_card: Descarta aquesta fitxa
   loomio_tags:
     tags: Etiquetes
     apply_tags: Aplica etiquetes
@@ -306,7 +317,7 @@ ca:
     edit_group_heading: 'Edita la configuració del grup'
     edit_subgroup_heading: 'Edita la configuració del subgrup'
     group_name: 'Nom del grup'
-    group_name_placeholder: 'Com voleu anomenar el vostre grup?'
+    group_name_placeholder: 'Quin és el nom del teu grup?'
     subgroup_name: 'Nom del subgrup'
     description: 'Descripció'
     description_placeholder: 'Descriviu el propòsit del grup per tal de que els membres sàpiguen perquè estan aquí.'

@@ -74,6 +74,7 @@ an:
       label: 'Opcions'
       email_settings: 'Preferencias de correu electronico '
   group_form:
+    group_name_placeholder: 'Quál ye o nombre d''o tuyo grupo?'
     profile: Perfil
   document:
     form:

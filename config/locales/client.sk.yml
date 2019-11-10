@@ -74,6 +74,7 @@ sk:
       label: 'Nastavenia'
       email_settings: 'Nastavenie emailu'
   group_form:
+    group_name_placeholder: 'Aký je názov vašej skupiny?'
     profile: Profil
   document:
     form:

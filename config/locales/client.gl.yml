@@ -71,6 +71,7 @@ gl:
       label: 'Opcións'
       email_settings: 'Preferencias de correo'
   group_form:
+    group_name_placeholder: 'Cal é o nome do teu grupo?'
     profile: Perfil
   document:
     form:

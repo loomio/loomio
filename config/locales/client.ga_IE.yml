@@ -330,7 +330,7 @@ ga_IE:
   group_form:
     start_group_heading: 'Cuir baicle ar bun'
     group_name: 'Ainm na baicle'
-    group_name_placeholder: 'Cén t-ainm ar mhaith leat a bheith ar an do bhaicle?'
+    group_name_placeholder: 'Cad is ainm den bhaicle seo agatsa?'
     description: 'Cur síos'
     privacy: 'Príobháideachas'
     profile: Beathaisnéisín

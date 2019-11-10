@@ -297,7 +297,7 @@ tr:
     edit_group_heading: 'Grup ayarlarını düzenle'
     edit_subgroup_heading: 'Alt grup ayarlarını düzenle'
     group_name: 'Grup adı'
-    group_name_placeholder: 'Grubuna ne ad vermek istiyorsun?'
+    group_name_placeholder: 'Grup isminizin adı nedir?'
     subgroup_name: 'Alt Grup Adı'
     description: 'Tanım'
     description_placeholder: 'Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.'

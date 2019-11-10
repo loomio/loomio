@@ -56,6 +56,8 @@ vi:
     options:
       label: 'Tùy chọn'
       email_settings: 'Tùy biến email'
+  group_form:
+    group_name_placeholder: 'Tên của nhóm bạn là gì?'
   document:
     form:
       title_label: Tên

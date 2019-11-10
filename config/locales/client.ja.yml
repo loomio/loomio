@@ -79,6 +79,7 @@ ja:
       label: 'オプション'
       email_settings: 'Eメールの設定'
   group_form:
+    group_name_placeholder: 'あなたのグループの名前は何ですか？'
     privacy: 'プライバシー'
     profile: プロフィール
     submit_update: '設定更新'

@@ -302,6 +302,7 @@ sl:
     submit: 'Da, deaktiviraj to skupino'
   group_form:
     start_organization_heading: Nova organizacija
+    group_name_placeholder: 'Kako se imenuje tvoja skupina?'
     privacy: 'Zasebnost'
     profile: Profil
   documents_page:

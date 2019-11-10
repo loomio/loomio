@@ -1,4 +1,16 @@
 he:
+  loomio_onboarding:
+    group_progress_card:
+      title: הפעלת הקבוצה שלך
+      activities:
+        set_description: הגדר את תאור הקבוצה
+        set_logo: בחר לוגו לקבוצה שלך
+        set_cover_photo: בחר תמונת קאבר לקבוצה
+        invite_people_in: הזמן אנשים
+        start_thread: התחל דיון
+        make_decision: התחל החלטה
+      learn_more: למד עוד בעזרה של לומיו
+      dismiss_this_card: בטל את הכרטיס
   plan_names:
     free: חינם
     trial: ניסיון
@@ -646,7 +658,7 @@ he:
     edit_subgroup_heading: 'ערוך הגדרות תת הקבוצה'
     group_name: 'שם הקבוצה'
     start_organization_heading: ארגון חדש
-    group_name_placeholder: 'איך תרצה לקרוא לקבוצה?'
+    group_name_placeholder: 'מה שם הקבוצה שלך?'
     subgroup_name: 'שם תת הקבוצה'
     description: 'תיאור'
     description_placeholder: 'תאר את מטרת הקבוצה כך שחבריה ידעו למה הם פה.'

@@ -51,6 +51,8 @@ bg_BG:
     options:
       label: 'Опции'
       email_settings: 'Известия'
+  group_form:
+    group_name_placeholder: 'Какво е името на вашата група?'
   document:
     form:
       title_label: Име

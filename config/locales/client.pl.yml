@@ -485,7 +485,6 @@ pl:
     edit_group_heading: 'Edytuj ustawienia grupy'
     edit_subgroup_heading: 'Edytuj ustawienia subgrupy'
     group_name: 'Nazwa grupy'
-    group_name_placeholder: 'Jak chcesz nazwać swoją grupę?'
     subgroup_name: 'Nazwa subgrupy'
     description: 'Opis'
     privacy: 'Prywatność'

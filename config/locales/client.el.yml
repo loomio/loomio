@@ -322,7 +322,7 @@ el:
     edit_group_heading: 'Επεξεργαστείτε τις ρυθμίσεις της ομάδας'
     edit_subgroup_heading: 'Επεξεργαστείτε τις ρυθμίσεις της υπο ομάδας'
     group_name: 'Όνομα ομάδας'
-    group_name_placeholder: 'Πως θέλετε να λέτε την ομάδα σας;'
+    group_name_placeholder: 'Ποιο είναι το όνομα της ομάδα σας?'
     subgroup_name: 'Όνομα υπο ομάδας'
     description: 'Περιγραφή'
     description_placeholder: 'Περιγράψτε τον σκοπό της ομάδας σας, ώστε τα μέλη της ομάδας σας να γνωρίζουν γιατί είναι εδώ.'

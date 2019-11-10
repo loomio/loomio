@@ -1,4 +1,17 @@
 zh_TW:
+  loomio_onboarding:
+    group_progress_card:
+      title: 啟用您的群組
+      activities:
+        set_description: 設定您的群組描述
+        set_logo: 為您的群組選擇圖示
+        set_cover_photo: 為您的群組選擇封面圖片
+        invite_people_in: 邀請夥伴在
+        start_thread: 開始討論串
+        make_decision: 啟動決策
+      learn_more: 在 Loomio 說明取得更多資訊
+      celebration_message: 很好！您的群組已經準備好了！🎉
+      dismiss_this_card: 忽略這張卡片
   plan_names:
     free: 免費
     trial: 試用
@@ -13,6 +26,7 @@ zh_TW:
     trial_expired: 您的試用已到期。升級以繼續使用 Loomio。
     tooltip: "我們的價錢超棒的！現在就升級並享受 Loomio 可以提供給您的組織的好處吧！"
   loomio_tags:
+    all_tags: 所有標籤
     tags: 標籤
     apply_tags: 套用標籤
     new_tag: 建立標籤
@@ -403,6 +417,8 @@ zh_TW:
     logo_title: '首頁'
     group_and_subgroups: '{{group}} 與子群組'
   user_dropdown:
+    pin_sidebar: "釘選側邊欄"
+    unpin_sidebar: "取消釘選側邊欄"
     button_label: '使用者選單'
     edit_profile: '編輯簡歷'
     email_settings: '通知設定'
@@ -818,8 +834,8 @@ zh_TW:
     organization_name: '組織名稱'
     start_organization_heading: 新組織
     edit_organization_heading: 編輯組織設定
-    group_name_placeholder: '您想要怎麼稱呼您的群組？'
-    organization_name_placeholder: '您想要怎麼稱呼您的組織？'
+    group_name_placeholder: '您的群組的名稱是？'
+    organization_name_placeholder: '您的組織的名字是什麼？'
     subgroup_name: '子群組名稱'
     description: '描述'
     description_placeholder: '描述群組的目的讓您的夥伴們知道他們為什麼在這裡。'
@@ -1501,6 +1517,8 @@ zh_TW:
     include_subgroups_all: '{{name}} 與所有子群組'
     no_results_found: 「{{search}}」無結果
   members_panel:
+    no_results: '找不到成員'
+    everyone: '每個人'
     sort: '排序'
     order_label: "訂購"
     order_by_name: '名稱'
@@ -1521,8 +1539,11 @@ zh_TW:
     admin: '管理員'
     sharable_link: '可分享的連結'
     last_seen: '最後檢視 {{date}}'
+    invited_by_name: '被 {{name}} 邀請'
   polls_panel:
     new_poll: 新投票
+    any_type: '所有類型'
+    any_status: '任何狀態'
     all: '全部'
     open: '公開'
     closed: '封閉'
@@ -1532,6 +1553,9 @@ zh_TW:
     filename: 檔案名稱
     uploaded_by: 上傳由
     uploaded_at: 上傳於
+  subgroups_panel:
+    search_subgroups_of_name: '搜尋 {{name}} 的子群組'
+    group_without_subgroups: '{{name}} 無子群組'
   poll_common_action_panel:
     anonymous: 投票將會是匿名的
     anonymous_until_close: 在此投票結束前都會是匿名的
@@ -1556,6 +1580,7 @@ zh_TW:
     helptext_on: 使用者將可以加入這個會面到他們的行事曆中
     helptext_off: 沒有會面邀請將會被寄送
     event_duration: 持續時間
+    event_summary: 會面名稱
     event_summary_placeholder: 您想要叫這個會面什麼名字？
     event_description: 會面描述
     event_description_placeholder: 這次會面的議程是什麼？
@@ -1940,8 +1965,11 @@ zh_TW:
     name_required: 請輸入名稱
     terms_required: 您必須同意服務條款
     account_inactive: 喔喔，看起來 {{email}} 的帳號已經被停用囉！
+    privacy_notice: "我們永遠都不會販賣您的資料。<br><a href='{{privacyUrl}}' target='_blank'>隱私權政策</a>"
     welcome: 新加入 {{siteName}}？
     welcome_back: 歡迎回來，{{name}}！
+    forgot_password: 忘記密碼
+    login_link: 傳送登入電子郵件
     set_password: 設定密碼
     set_password_helptext: 下次想要使用密碼嗎？
     hello: "您好，{{name}}！"
@@ -2049,6 +2077,7 @@ zh_TW:
         選項來貼出投票的更新到您 Slack 團隊中的頻道。
     start_poll_now: 現在做決策
   powered_by:
+    slogan: 一起做出更好的決策
     powered_by_loomio: 威力本源 Loomio
     privacy_policy: 隱私權政策
     terms_of_service: 服務條款
