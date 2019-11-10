@@ -1,4 +1,11 @@
 ar:
+  loomio_onboarding:
+    group_progress_card:
+      title: قم بتنشيط فريقك
+      activities:
+        set_logo: قم باختيار شعار لفريقك
+        set_cover_photo: اختر صورة كغلاف لفريقك
+        invite_people_in: قم بدعوة أشخاص
   plan_names:
     free: مجاني
   current_plan_button:
@@ -278,7 +285,6 @@ ar:
     edit_subgroup_heading: 'تعديل إعدادات المجموعة الفرعية'
     group_name: 'اسم المجموعة'
     start_organization_heading: منظمة جديدة
-    group_name_placeholder: 'ماذا تريد أن تدعو مجموعتك؟'
     subgroup_name: 'اسم المجموعة الفرعية'
     description: 'وصف '
     description_placeholder: 'قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.'

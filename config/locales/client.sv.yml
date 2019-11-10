@@ -332,6 +332,7 @@ sv:
       mute_aria_description: Din notifikationsvolym för den här gruppen är satt till Stum. Du kommer inte att få epost om inte någon specifikt vidnämner dig och grupp aktivitet kommer inte att visas på din instrumentbräda.
       mute_message: '"{{name}}" har tagits bort från din instrumentbräda.'
   group_form:
+    group_name_placeholder: 'Vad heter din grupp?'
     privacy: 'Integritet'
     profile: Profil
     submit_start_group: 'Startgrupp'

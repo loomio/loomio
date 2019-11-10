@@ -656,7 +656,6 @@ cmn:
     group_name: '群组名称'
     organization_name: '组织名称'
     start_organization_heading: 新组织
-    organization_name_placeholder: '您想要怎么称呼您的组织？'
     description_placeholder: '描述群组的目的让您的伙伴们知道他们为什么在这里。'
     privacy: '隐私'
     group_privacy_is_open_description: "任何人都可以找到这个群组并要求加入。只有成员才能看见谁在群组里。所有的话题都是公开的。"

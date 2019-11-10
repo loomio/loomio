@@ -1,4 +1,15 @@
 it:
+  loomio_onboarding:
+    group_progress_card:
+      title: Attiva il tuo gruppo
+      activities:
+        set_description: 'Scrivi la descrizione del tuo gruppo '
+        set_logo: Scegli un logo per il tuo gruppo
+        set_cover_photo: 'Scegli una foto di copertina per il tuo gruppo '
+        invite_people_in: Invita persone in
+        start_thread: Inizia un thread di discussione
+        make_decision: Inizia una decisione
+      dismiss_this_card: Elimina questa sezione
   plan_names:
     free: Free
   current_plan_button:
@@ -639,7 +650,7 @@ it:
     edit_subgroup_heading: 'Modifica le impostazioni del sottogruppo'
     group_name: 'Nome del gruppo'
     start_organization_heading: Nuova organizzazione
-    group_name_placeholder: 'Come vuoi chiamare il tuo gruppo?'
+    group_name_placeholder: 'Qual''é il nome del tuo gruppo?'
     subgroup_name: 'Nome del sottogruppo'
     description: 'Descrizione'
     description_placeholder: 'Descrivi lo scopo del tuo gruppo in modo che gli altri partecipanti sappiano il motivo per cui sono qui.'

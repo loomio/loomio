@@ -1,4 +1,15 @@
 nl_NL:
+  loomio_onboarding:
+    group_progress_card:
+      title: Activeer je groep
+      activities:
+        set_description: Omschrijf je groep
+        set_logo: Kies een logo voor je groep
+        set_cover_photo: Kies een foto voor je groep
+        invite_people_in: Nodig mensen uit
+        start_thread: Start een discussiebord
+        make_decision: Start een beslissing
+      dismiss_this_card: Deze kaart afwijzen
   plan_names:
     free: Gratis
   current_plan_button:
@@ -518,7 +529,7 @@ nl_NL:
     edit_group_heading: 'Bewerk groepsinstellingen'
     edit_subgroup_heading: 'Bewerk subgroepinstellingen'
     group_name: 'Groepsnaam'
-    group_name_placeholder: 'Hoe wil je je groep noemen?'
+    group_name_placeholder: 'Wat is de naam van je groep?'
     subgroup_name: 'Subgroep naam'
     description: 'Beschrijving'
     description_placeholder: 'Beschrijf het doel van je groep, zodat je groepsleden weten waarom ze hier zijn.'

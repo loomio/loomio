@@ -65,6 +65,7 @@ mk:
     options:
       label: 'Опции'
   group_form:
+    group_name_placeholder: 'Кое е името на твојата група?'
     profile: Профил
   document:
     form:

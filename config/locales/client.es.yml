@@ -1,4 +1,16 @@
 es:
+  loomio_onboarding:
+    group_progress_card:
+      title: Empieza un grupo
+      activities:
+        set_description: Configura la descripción de tu grupo
+        set_logo: Elige un logo para tu grupo
+        set_cover_photo: Elige una foto de portada para tu grupo
+        invite_people_in: Invita a personas a
+        start_thread: Comience un hilo de discusión
+        make_decision: 'Iniciar una decisión '
+      learn_more: Conoce más en Ayuda Loomio
+      dismiss_this_card: Descartar este cartel
   plan_names:
     free: 'Gratis '
     trial: Prueba
@@ -693,7 +705,7 @@ es:
     edit_subgroup_heading: 'Editar la configuración del subgrupo'
     group_name: 'Nombre del Grupo'
     start_organization_heading: Nueva organización
-    group_name_placeholder: '¿Cómo quiere nombrar al grupo?'
+    group_name_placeholder: '¿Cuál es el nombre de tu grupo?'
     subgroup_name: 'Nombre del sub-grupo '
     description: 'Descripción '
     description_placeholder: 'Describa el propósito del grupo para que los integrantes sepan porque están aquí.'

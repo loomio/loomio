@@ -1,4 +1,15 @@
 ro:
+  loomio_onboarding:
+    group_progress_card:
+      title: Activeaza grupul tau
+      activities:
+        set_description: Seteaza descrierea grupului
+        set_logo: Alege un logo pentru grupul tau
+        set_cover_photo: Alege o poza de fundal pentru grupul tau
+        invite_people_in: Invita participanti
+        start_thread: Incepe o discutie noua
+        make_decision: Creeaza o decizie
+      dismiss_this_card: Ignora aceasta carte
   plan_names:
     free: Gratuit
     trial: Versiune de testare
@@ -399,6 +410,7 @@ ro:
       mute: Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona.
       mute_aria_description: Volumul notificarilor pentru aceast grup este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar activitatea grupului nu va fi afisata in tabloul tau de bord.
   group_form:
+    group_name_placeholder: 'Cum se va numi grupul tău?'
     privacy: 'Confidentialitate'
     confirm_change_to_secret: "Daca vei continua, toate discutiile acestui grup precum si sub-grupurile lui vor deveni private."
     confirm_change_to_secret_subgroup: 'Daca vei continua, toate discutiile vor deveni private.'

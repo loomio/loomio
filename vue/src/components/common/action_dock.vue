@@ -4,11 +4,12 @@ export default
     model: Object
     actions: Object
     menuActions: Object
+    fetchReactions: Boolean
 </script>
 
 <template lang="pug">
 div.d-flex.justify-end.align-center.flex-wrap
-  reaction-display(:model="model" v-if="Object.keys(actions).includes('react')")
+  reaction-display(:model="model" v-if="Object.keys(actions).includes('react')" :fetch="fetchReactions")
   .action-dock__action(v-for='(action, name) in actions' v-if='action.canPerform()' :key="name")
     reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'")
     action-button(v-if="name != 'react'" :action="action" :name="name")

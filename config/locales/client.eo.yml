@@ -1,4 +1,9 @@
 eo:
+  loomio_onboarding:
+    group_progress_card:
+      title: Ŝalti vian grupon
+      activities:
+        invite_people_in: Inviti homojn
   plan_names:
     free: Senpaga
     trial: Provo
@@ -249,6 +254,7 @@ eo:
       label: 'Opcioj'
       email_settings: 'Retpoŝtaj preferoj'
   group_form:
+    group_name_placeholder: 'Kio estas la nomo de via grupo?'
     privacy: 'Privateco'
     profile: Profilo
   documents_page:

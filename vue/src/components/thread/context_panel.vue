@@ -105,7 +105,7 @@ export default
     formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
+    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
   v-divider
 </template>
 <style lang="sass">

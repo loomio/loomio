@@ -1,4 +1,8 @@
 da:
+  loomio_onboarding:
+    group_progress_card:
+      activities:
+        make_decision: Opret en beslutning
   plan_names:
     free: Gratis
   loomio_tags:
@@ -412,7 +416,7 @@ da:
     edit_group_heading: 'Rediger gruppe indstillinger'
     edit_subgroup_heading: 'Rediger undergruppe indstillinger'
     group_name: 'Gruppenavn'
-    group_name_placeholder: 'Hvilket navn ønsker du at give denne gruppe?'
+    group_name_placeholder: 'Hvad er navnet på din gruppe?'
     subgroup_name: 'Undergruppe navn'
     description: 'Beskrivelse'
     description_placeholder: 'Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.'

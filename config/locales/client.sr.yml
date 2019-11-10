@@ -263,7 +263,7 @@ sr:
     edit_group_heading: 'Promeni osobine grupe'
     edit_subgroup_heading: 'Izmeni opcije podgrupe'
     group_name: 'Naziv Grupe'
-    group_name_placeholder: 'Kako želite da se Vaša grupa zove?'
+    group_name_placeholder: 'Kako se zove tvoja grupa?'
     subgroup_name: 'Naziv Podgrupe'
     description: 'Opis'
     description_placeholder: 'Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.'

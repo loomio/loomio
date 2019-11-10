@@ -1,4 +1,16 @@
 de:
+  loomio_onboarding:
+    group_progress_card:
+      title: Gruppe aktivieren
+      activities:
+        set_description: Gruppen-Beschreibung festlegen
+        set_logo: Gruppenlogo auswählen
+        set_cover_photo: Gruppen-Titelbild wählen
+        invite_people_in: Personen einladen
+        start_thread: Neue Diskussion eröffnen
+        make_decision: Entscheidung vorbereiten
+      learn_more: Mehr bei Loomio Help lernen
+      dismiss_this_card: Karte ablehnen
   plan_names:
     free: Gratis
     trial: Testphase
@@ -776,8 +788,7 @@ de:
     organization_name: 'Name der Organisation'
     start_organization_heading: Neue Organisation
     edit_organization_heading: Organisationseinstellungen ändern
-    group_name_placeholder: 'Wie möchtest du die Gruppe nennen?'
-    organization_name_placeholder: 'Wie soll deine Organisation heißen?'
+    group_name_placeholder: 'Wie heißt deine Gruppe?'
     subgroup_name: 'Name der Untergruppe'
     description: 'Beschreibung'
     description_placeholder: 'Beschreibe die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.'

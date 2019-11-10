@@ -1,4 +1,16 @@
 uk:
+  loomio_onboarding:
+    group_progress_card:
+      title: Активуйте свою групу
+      activities:
+        set_description: Додайте опис для групи
+        set_logo: Виберіть логотип для вашої групи
+        set_cover_photo: Виберіть фото обкладинки для вашої групи
+        invite_people_in: Запросіть людей долучитись
+        start_thread: Розпочніть тему для обговорення
+        make_decision: Розпочати процес прийняття рішення
+      learn_more: Дізнайтеся більше в Довідці Loomio
+      dismiss_this_card: Відхилити цю картку
   plan_names:
     free: Безкоштовний
     trial: Пробний
@@ -647,7 +659,7 @@ uk:
     edit_subgroup_heading: 'Редагувати налаштування підгрупи'
     group_name: 'Назва групи'
     start_organization_heading: Нова організація
-    group_name_placeholder: 'Як ви бажаєте назвати свою групу?'
+    group_name_placeholder: 'Назва вашої групи?'
     subgroup_name: 'Назва підгрупи'
     description: 'Опис'
     description_placeholder: 'Опишіть призначення вашої групи, щоб учасники групи розуміли, чому вони тут.'
