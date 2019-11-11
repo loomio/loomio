@@ -211,30 +211,20 @@ v-card
     v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || (invitingToGroup && tooManyInvitations())" @click="submit()" v-t="'common.action.send'")
 </template>
 
-<style lang="css">
-.announcement-form__checkbox {
-  margin: 16px 0;
-}
-
+<style lang="sass">
+.announcement-form__checkbox
+	margin: 16px 0
 .announcement-form__list-item,
-.announcement-form__invited {
-  padding: 0 !important;
-}
-
-.announcement-form__invite {
-  margin-bottom: 16px;
-}
-
+.announcement-form__invited
+	padding: 0 !important
+.announcement-form__invite
+	margin-bottom: 16px
 .announcement-form__shareable-link,
-.announcement-form__help {
-  margin: 8px 0;
-}
+.announcement-form__help
+	margin: 8px 0
+.announcement-form__audience
+	height: 42px
+	min-height: 42px
+	margin-bottom: 8px
 
-.announcement-form__audience {
-  height: 42px;
-  min-height: 42px;
-  margin-bottom: 8px;
-  /* // color: $primary-text-color;
-  i { opacity: 0.8; } */
-}
 </style>

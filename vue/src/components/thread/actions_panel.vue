@@ -81,9 +81,11 @@ export default
   v-divider(v-if="discussion.newestFirst")
 
 </template>
-<style lang="css">
-.add-comment-panel__sign-in-btn { width: 100% }
-.add-comment-panel__join-actions button {
-  width: 100%;
-}
+<style lang="sass">
+.add-comment-panel__sign-in-btn
+	width: 100%
+.add-comment-panel__join-actions
+	button
+		width: 100%
+
 </style>

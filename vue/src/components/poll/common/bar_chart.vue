@@ -1,16 +1,3 @@
-<style lang="css">
-.bar-chart {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.bar-chart svg {
-   height: 100%;
-   width: 100%;
-}
-</style>
-
 <script lang="coffee">
 import svg from 'svg.js'
 import AppConfig from '@/shared/services/app_config'
@@ -66,3 +53,14 @@ export default
 <template>
 <div :style="{height: size+'px', width: size+'px'}" class="bar-chart"></div>
 </template>
+
+<style lang="sass">
+.bar-chart
+	border: 0
+	margin: 0
+	padding: 0
+	svg
+		height: 100%
+		width: 100%
+
+</style>

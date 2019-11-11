@@ -1,7 +1,3 @@
-<style lang="css">
-.progress-chart { background-color: #ccc; }
-</style>
-
 <script lang="coffee">
 import svg from 'svg.js'
 import AppConfig from '@/shared/services/app_config'
@@ -47,3 +43,8 @@ export default
 <template lang="pug">
 div(:style="{width: size+'px', height: size+'px'}" class="progress-chart")
 </template>
+<style lang="sass">
+.progress-chart
+	background-color: #ccc
+
+</style>

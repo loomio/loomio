@@ -87,8 +87,10 @@ v-content
     router-view
 </template>
 
-<style lang="css">
-.group-page-tabs .v-tab:not(.v-tab--active) {
-    color: hsla(0,0%,100%,.85) !important;
-}
+<style lang="sass">
+.group-page-tabs
+	.v-tab
+		&:not(.v-tab--active)
+			color: hsla(0,0%,100%,.85) !important
+
 </style>

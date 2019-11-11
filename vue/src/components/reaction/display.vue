@@ -92,21 +92,16 @@ export default
           span {{ user.name }}
 </template>
 
-<style lang="css">
-.reactions-display__group {
-  opacity: 0.8;
-  display: flex;
-  align-items: center;
-  margin-right: 2px;
-}
-
-.reactions-display__group span {
-    font-size: 20px;
-    line-height: 20px;
-    margin-bottom: -5px;
-}
-
-.reactions-display__emojis {
-  display: flex;
-}
+<style lang="sass">
+.reactions-display__group
+	opacity: 0.8
+	display: flex
+	align-items: center
+	margin-right: 2px
+	span
+		font-size: 20px
+		line-height: 20px
+		margin-bottom: -5px
+.reactions-display__emojis
+	display: flex
 </style>

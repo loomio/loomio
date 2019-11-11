@@ -1,13 +1,3 @@
-<style lang="css">
-.membership-requests-card__request-link {
-  margin: 0;
-  padding: 8px 0;
-  width: 100%;
-  text-transform: none;
-  text-align: left;
-}
-</style>
-
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
@@ -50,3 +40,12 @@ v-card.membership-requests-card(v-if='canManageMembershipRequests() && membershi
     v-btn.membership-requests-card__link(text :to="urlFor(group, 'membership_requests')")
       span(v-t="{ path: 'membership_requests_card.manage_requests_with_count', args: { count: group.pendingMembershipRequests().length } }")
 </template>
+<style lang="sass">
+.membership-requests-card__request-link
+	margin: 0
+	padding: 8px 0
+	width: 100%
+	text-transform: none
+	text-align: left
+
+</style>

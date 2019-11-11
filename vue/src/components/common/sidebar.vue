@@ -59,7 +59,7 @@ export default
       Records.users.fetchGroups().then =>
         if @$router.history.current.path == "/dashboard" && Session.user().membershipsCount == 1
           @$router.replace("/g/#{Session.user().memberships()[0].group().key}")
-          
+
       InboxService.load()
 
     unreadCountFor: (group, isOpen) ->
@@ -150,10 +150,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model
   v-list-item(dense to="/explore")
     v-list-item-title(v-t="'sidebar.explore_groups'")
 </template>
-<style lang="css">
+<style lang="sass">
+.sidebar-item
+	display: block
+	width: 100%
 
-.sidebar-item {
-  display: block;
-  width: 100%;
-}
 </style>

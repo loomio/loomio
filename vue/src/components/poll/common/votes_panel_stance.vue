@@ -1,11 +1,3 @@
-<style lang="css">
-.poll-common-votes-panel__stance {
-  display: flex;
-  align-items: flex-start;
-  margin: 7px 0;
-}
-</style>
-
 <script lang="coffee">
 import { participantName }       from '@/shared/helpers/poll'
 
@@ -14,7 +6,7 @@ export default
     PollCommonDirective: -> import('@/components/poll/common/directive')
   props:
     stance: Object
-    
+
   computed:
     orderedStanceChoices: ->
       _.sortBy @stance.stanceChoices(), 'rank'
@@ -33,3 +25,10 @@ export default
     poll-common-stance(:stance="stance")
         //- poll-common-directive(name='stance-choice', :stance-choice='choice', v-if='choice.score > 0', v-for='choice in orderedStanceChoices', :key='choice.id')
 </template>
+<style lang="sass">
+.poll-common-votes-panel__stance
+	display: flex
+	align-items: flex-start
+	margin: 7px 0
+
+</style>

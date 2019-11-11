@@ -155,47 +155,25 @@ v-content
           .dashboard-page__footer(v-if='!loader.exhausted')  
           loading(v-show='loader.loading')
 </template>
-<style lang="css">
-.dashboard-page {
-}
-
-.dashboard-page .thread-preview__pin {
-  display: none;
-}
-
-.dashboard-page__heading{
-  margin: 20px 0 20px 13px;
-}
-
-.dashboard-page__date-range{
-  /* @include fontSmall; */
-  /* color: $grey-on-grey;
-  padding: 0 $cardPaddingSize; */
-}
-
+<style lang="sass">
+.dashboard-page
+	.thread-preview__pin
+		display: none
+.dashboard-page__heading
+	margin: 20px 0 20px 13px
+.dashboard-page__date-range
 .dashboard-page__no-threads,
 .dashboard-page__no-groups,
-.dashboard-page__explain-mute {
-  /* margin-left: $cardPaddingSize; */
-}
+.dashboard-page__explain-mute
+.dashboard-page__footer
+	height: 1px
+	position: relative
+	bottom: 200px
+.dashboard-page__mute-image--large
+	text-align: center
+	margin: 0 0 10px
+.dashboard-page__mute-image--small
+	text-align: center
+	margin: 0 0 10px
 
-.dashboard-page__footer {
-  height: 1px;
-  position: relative;
-  bottom: 200px;
-}
-
-.dashboard-page__mute-image--large {
-  /* img {
-    max-width: $small-max-px;
-    padding: 0px 40px 0 0;
-  } */
-  text-align: center;
-  margin: 0 0 10px;
-}
-
-.dashboard-page__mute-image--small {
-  text-align: center;
-  margin: 0 0 10px;
-}
 </style>
