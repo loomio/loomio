@@ -5,8 +5,8 @@ describe ExampleContent do
   subject { ExampleContent.new(group) }
 
   describe 'add_to_group!' do
-    it 'creates two example threads' do
-      expect { subject.add_to_group! }.to change { group.discussions.count }.by(2)
+    it 'creates one example thread' do
+      expect { subject.add_to_group! }.to change { group.discussions.count }.by(1)
     end
 
     it 'creates an example proposal' do
