@@ -156,24 +156,24 @@ v-content
           loading(v-show='loader.loading')
 </template>
 <style lang="sass">
-.dashboard-page
-	.thread-preview__pin
-		display: none
-.dashboard-page__heading
-	margin: 20px 0 20px 13px
-.dashboard-page__date-range
-.dashboard-page__no-threads,
-.dashboard-page__no-groups,
-.dashboard-page__explain-mute
-.dashboard-page__footer
-	height: 1px
-	position: relative
-	bottom: 200px
-.dashboard-page__mute-image--large
-	text-align: center
-	margin: 0 0 10px
-.dashboard-page__mute-image--small
-	text-align: center
-	margin: 0 0 10px
+// .dashboard-page
+// 	.thread-preview__pin
+// 		display: none
+// .dashboard-page__heading
+// 	margin: 20px 0 20px 13px
+// .dashboard-page__date-range
+// .dashboard-page__no-threads,
+// .dashboard-page__no-groups,
+// .dashboard-page__explain-mute
+// .dashboard-page__footer
+// 	height: 1px
+// 	position: relative
+// 	bottom: 200px
+// .dashboard-page__mute-image--large
+// 	text-align: center
+// 	margin: 0 0 10px
+// .dashboard-page__mute-image--small
+// 	text-align: center
+// 	margin: 0 0 10px
 
 </style>
