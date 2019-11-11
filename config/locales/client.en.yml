@@ -2213,6 +2213,12 @@ en:
       poll_expired: A poll has expired
       outcome_created: An outcome has been shared
 
+  configure_sso:
+    title: Configure single sign-on (SSO)
+    helptext: |
+      Want to use Loomio within your organization and manage access via OneLogin, Auth0, Microsoft Active Directory, or another SAML provider?
+      We're beta testing our SSO integration, please contact us and we'll get you setup!
+
   install_slack:
     modal_title: Integrate Slack
     modal_helptext: First up, you'll need to sign in to slack. Click the button below to continue.

@@ -119,6 +119,21 @@ export default new class GroupService
                 helptext: 'install_microsoft.card.confirm_remove_helptext'
                 flash:    'install_microsoft.card.identity_removed'
 
+    configure_sso:
+      name: 'configure_sso.title'
+      icon: 'mdi-key-variant'
+      canPerform: ->
+        AbilityService.canAdministerGroup(group)
+      perform: ->
+        openModal
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit:  => vm.$router.replace('/contact')
+              text:
+                title:    'configure_sso.title'
+                helptext: 'configure_sso.helptext'
+
     leave_group:
       name: 'group_page.options.leave_group'
       icon: 'mdi-exit-to-app'
