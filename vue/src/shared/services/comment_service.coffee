@@ -3,6 +3,7 @@ import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
 import openModal from '@/shared/helpers/open_modal'
+import Flash from '@/shared/services/flash'
 
 export default new class CommentService
   actions: (comment, vm) ->
@@ -63,6 +64,18 @@ export default new class CommentService
           component: 'RevisionHistoryModal'
           props:
             model: comment
+
+    copy_url:
+      icon: 'mdi-link'
+      canPerform: -> true
+      perform:    ->
+        el = document.getElementById("url")
+        el.style.display = 'block'
+        el.select()
+        el.setSelectionRange(0, 99999)
+        document.execCommand("copy")
+        el.style.display = 'none'
+        Flash.success("action_dock.comment_copied")
 
     delete_comment:
       icon: 'mdi-delete'

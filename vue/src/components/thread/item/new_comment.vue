@@ -17,7 +17,7 @@ export default
     commentActions: -> CommentService.actions(@eventable, @)
     eventActions: -> EventService.actions(@event, @)
     eventable: -> @event.model()
-    link: -> LmoUrlService.event @event
+    link: -> LmoUrlService.event(@event, {}, absolute: true)
     dockActions: ->
       if AbilityService.canEditComment(@eventable)
         edit_comment = 'edit_comment'
@@ -37,7 +37,7 @@ export default
         reply_to_comment = 'reply_to_comment'
 
       assign(
-        pick @commentActions, compact [reply_to_comment, show_history, 'notification_history', 'translate_comment' , 'delete_comment']
+        pick @commentActions, compact [reply_to_comment, show_history, 'notification_history', 'translate_comment' , 'delete_comment', 'copy_url']
       ,
         pick @eventActions, ['move_event']
       )
@@ -56,6 +56,7 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event")
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
+  input#url(type="text" :value="link" hidden)
   template(v-slot:append)
     comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" :autoFocus="true")
 </template>
