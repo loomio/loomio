@@ -14,7 +14,7 @@
 %div{style: "display: flex; margin: 0 auto; text-align: center"}
   = form_tag(beta_path, method: :put) do
     = hidden_field_tag :enable, value: true
-    = submit_tag "Enable Loomio 2.0 beta"
+    = submit_tag "Enable Loomio 2.0"
 
   &nbsp;
 
@@ -23,6 +23,6 @@
   &nbsp;
 
   = form_tag(beta_path, method: :put) do
-    = submit_tag "Disable Loomio 2.0 beta"
+    = submit_tag "Use Loomio 1.0 (old loomio)"
 
 %p Remember you can return to www.loomio.org/beta to switch back, anytime.
