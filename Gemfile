@@ -34,6 +34,7 @@ gem "sentry-raven"
 gem 'sequenced', '~> 3.1.1'
 gem 'http_accept_language'
 gem 'sprockets-rails', require: 'sprockets/railtie'
+gem 'sprockets', '~> 3.0'
 gem 'uglifier'
 gem 'sass-rails'
 gem 'uuidtools'
