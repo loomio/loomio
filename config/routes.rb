@@ -59,7 +59,7 @@ Loomio::Application.routes.draw do
         put :archive
         post 'upload_photo/:kind', action: :upload_photo
       end
-      
+
       collection do
         get :count_explore_results
         get :suggest_handle
@@ -254,7 +254,7 @@ Loomio::Application.routes.draw do
   end
 
   resources :received_emails, only: :create
-  post :email_processor, to: 'received_emails#reply'
+  post :email_processor, to: 'received_emails#create'
 
   namespace :email_actions do
     get 'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion

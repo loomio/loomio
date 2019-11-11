@@ -4,6 +4,11 @@ import {uniq, concat, compact, map, includes} from 'lodash'
 export default class GroupRecordsInterface extends BaseRecordsInterface
   model: GroupModel
 
+  getHandle: ({name, parentHandle}) ->
+    @fetch
+      path: 'suggest_handle'
+      params: {name: name, parent_handle: parentHandle}
+
   fuzzyFind: (id) ->
     # could be id or key or handle
     @find(id) || _.head(@find(handle: id))
