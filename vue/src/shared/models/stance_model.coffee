@@ -1,6 +1,5 @@
 import BaseModel       from '@/shared/record_store/base_model'
 import AppConfig       from '@/shared/services/app_config'
-import HasDrafts       from '@/shared/mixins/has_drafts'
 import HasTranslations from '@/shared/mixins/has_translations'
 
 export default class StanceModel extends BaseModel
@@ -11,13 +10,15 @@ export default class StanceModel extends BaseModel
   @draftPayloadAttributes: ['reason']
 
   afterConstruction: ->
-    HasDrafts.apply @
     HasTranslations.apply @
 
   defaultValues: ->
     reason: ''
     reasonFormat: 'html'
     visitorAttributes: {}
+    files: []
+    imageFiles: []
+    attachments: []
 
   relationships: ->
     @belongsTo 'poll'
@@ -64,9 +65,6 @@ export default class StanceModel extends BaseModel
 
   votedFor: (option) ->
     _.includes _.map(@pollOptions(), 'id'), option.id
-
-  edited: ->
-    @versionsCount > 1
 
   scoreFor: (option) ->
     choiceForOption = _.find @stanceChoices(), (choice)->

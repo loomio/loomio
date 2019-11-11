@@ -7,8 +7,8 @@ class Events::NewComment < Event
   def self.publish!(comment)
     super comment,
           user: comment.author,
-          parent: comment.parent_event,
-          discussion: comment.discussion
+          discussion: comment.discussion,
+          pinned: comment.should_pin
   end
 
   private

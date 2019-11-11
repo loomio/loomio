@@ -17,6 +17,10 @@ module HasVolume
     end
   end
 
+  def volume_is_normal_or_loud?
+    volume_is_normal? || volume_is_loud?
+  end
+
   def volume_is_loud?
     volume.to_s == 'loud'
   end

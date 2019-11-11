@@ -1,4 +1,7 @@
 module Dev::DashboardHelper
+
+  private
+
   def pinned_discussion
     create_discussion!(:pinned_discussion) { |discussion| pin!(discussion) }
   end
@@ -23,14 +26,13 @@ module Dev::DashboardHelper
     create_discussion!(:muted_group_discussion, group: muted_create_group)
   end
 
-  private
-
   def create_discussion!(name, group: create_group, author: patrick)
     var_name = :"@#{name}"
     if existing = instance_variable_get(var_name)
       existing
     else
       instance_variable_set(var_name, Discussion.create!(title: name.to_s.humanize, group: group, author: author, private: false).tap do |discussion|
+        DiscussionService.create(discussion: discussion, actor: discussion.author)
         yield discussion if block_given?
       end)
     end

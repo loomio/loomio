@@ -1,0 +1,18 @@
+%div{ class: 'panel' }
+  %h3 Emails
+  %div{ class: 'panel-contents' }
+    %table{ id: 'user-emails' }
+      %tr
+        %th Mailer
+        %th To
+        %th Sent At
+        %th Opened At
+        %th Clicked At
+
+      - emails.each do |email|
+        %tr
+          %td= email.mailer
+          %td= email.to
+          %td= email.sent_at
+          %td= email.opened_at
+          %td= email.clicked_at

@@ -1,7 +1,7 @@
 import BaseModel    from '@/shared/record_store/base_model'
 import AppConfig    from '@/shared/services/app_config'
-import HasDrafts    from '@/shared/mixins/has_drafts'
 import HasDocuments from '@/shared/mixins/has_documents'
+import HasTranslations  from '@/shared/mixins/has_translations'
 
 export default class GroupModel extends BaseModel
   @singular: 'group'
@@ -31,22 +31,24 @@ export default class GroupModel extends BaseModel
     membersCanStartDiscussions: true
     membersCanCreateSubgroups: false
     motionsCanBeEdited: false
+    files: []
+    imageFiles: []
+    attachments: []
 
   afterConstruction: ->
     if @privacyIsClosed()
       @allowPublicThreads = @discussionPrivacyOptions == 'public_or_private'
-    HasDrafts.apply @
     HasDocuments.apply @, showTitle: true
+    HasTranslations.apply @
 
   relationships: ->
     @hasMany 'discussions'
     @hasMany 'polls'
     @hasMany 'membershipRequests'
     @hasMany 'memberships'
-    @hasMany 'invitations'
     @hasMany 'groupIdentities'
     @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
-    @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
+    @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'
 
   activeMemberships: ->
@@ -69,6 +71,9 @@ export default class GroupModel extends BaseModel
   fetchToken: ->
     @remote.getMember(@id, 'token').then => @token
 
+  resetToken: ->
+    @remote.postMember(@id, 'reset_token').then => @token
+
   closedPolls: ->
     _.filter @polls(), (poll) ->
       !poll.isActive()
@@ -85,7 +90,7 @@ export default class GroupModel extends BaseModel
     _.some @pendingMembershipRequests()
 
   hasPendingMembershipRequestFrom: (user) ->
-     _.some @pendingMembershipRequests(), (request) ->
+    _.some @pendingMembershipRequests(), (request) ->
       request.requestorId == user.id
 
   previousMembershipRequests: ->
@@ -102,8 +107,14 @@ export default class GroupModel extends BaseModel
   hasPendingInvitations: ->
     _.some @pendingInvitations()
 
+  hasSubgroups: ->
+    @isParent() && @subgroups().length
+
   organisationDiscussions: ->
     @recordStore.discussions.find(groupId: { $in: @organisationIds() }, discussionReaderId: { $ne: null })
+
+  publicOrganisationIds: ->
+    _.map(_.filter(@subgroups().concat(@), (group) -> group.groupPrivacy == 'open'), 'id')
 
   organisationIds: ->
     _.map(@subgroups(), 'id').concat(@id)
@@ -159,11 +170,11 @@ export default class GroupModel extends BaseModel
     else
       AppConfig.theme.icon_src
 
-  coverUrl: (size) ->
+  coverUrl: (size = 'large') ->
     if @isSubgroup() && !@hasCustomCover
       @parent().coverUrl(size)
     else
-      @coverUrls[size] || @coverUrls.small
+      @coverUrls[size]
 
   archive: =>
     @remote.patchMember(@key, 'archive').then =>

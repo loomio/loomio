@@ -1,9 +1,3 @@
-<style lang="scss">
-.poll-common-set-outcome-panel {
-  margin-bottom: 16px;
-}
-</style>
-
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
@@ -23,9 +17,9 @@ export default
       @openPollOutcomeModal(outcome)
 </script>
 
-<template>
-    <div v-if="showPanel()" class="poll-common-set-outcome-panel">
-      <p v-t="'poll_common_set_outcome_panel.' + poll.pollType" class="lmo-hint-text"></p>
-      <v-btn @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.share_outcome'" :aria-label="$t('poll_common.set_outcome')" class="md-primary md-raised poll-common-set-outcome-panel__submit"></v-btn>
-    </div>
+<template lang="pug">
+v-sheet.pa-4.my-4.poll-common-set-outcome-panel(color="primary lighten-5" elevation="2" v-if="showPanel()")
+  p.lmo-hint-text(v-html="$t('poll_common_set_outcome_panel.' + poll.pollType)")
+  v-layout(justify-space-around)
+    v-btn.poll-common-set-outcome-panel__submit( color="accent" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_outcome'")
 </template>

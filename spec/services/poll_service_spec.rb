@@ -31,11 +31,11 @@ describe PollService do
       expect(poll_created.poll_options.first.name).to eq "green"
     end
 
-    it 'does not allow adding custom proposal actions' do
-      poll_created.poll_type = 'proposal'
-      poll_created.poll_option_names = ["superagree"]
-      expect { PollService.create(poll: poll_created, actor: user) }.to_not change { Poll.count }
-    end
+    # it 'does not allow adding custom proposal actions' do
+    #   poll_created.poll_type = 'proposal'
+    #   poll_created.poll_option_names = ["superagree"]
+    #   expect { PollService.create(poll: poll_created, actor: user) }.to_not change { Poll.count }
+    # end
 
     it 'does not create an invalid poll' do
       poll_created.title = ''

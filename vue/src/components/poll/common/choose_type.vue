@@ -51,13 +51,13 @@ export default
 <template>
   <div class="poll-common-choose-type__select-poll-type">
     <div :class="'poll-common-choose-type__poll-type--' + pollType" v-for="(pollType, index) in pollTypes()" :key="index">
-      <v-list-tile @click="choose(pollType)" class="poll-common-choose-type__poll-type">
+      <v-list-item @click="choose(pollType)" class="poll-common-choose-type__poll-type">
         <i :class="'mdi mdi-24px poll-common-choose-type__icon ' + iconForPollType(pollType)"></i>
         <div :class="'poll-common-choose-type__content poll-common-choose-type__start-poll--' + pollType">
           <div v-t="'decision_tools_card.' + pollType + '_title'" class="poll-common-choose-type__poll-type-title md-subhead"></div>
           <div v-t="'poll_' + pollType + '_form.tool_tip_collapsed'" class="poll-common-choose-type__poll-type-subtitle md-caption"></div>
         </div>
-      </v-list-tile>
+      </v-list-item>
     </div>
   </div>
 </template>

@@ -1,6 +1,27 @@
 ru:
+  loomio_onboarding:
+    group_progress_card:
+      title: Активируйте вашу группу
+      activities:
+        set_description: Задайте описание вашей группы
+        set_logo: Выберите логотип вашей группы
+        set_cover_photo: Выберите фото обложки для вашей группы
+        invite_people_in: Пригласите в нее людей
+        start_thread: Начните ветвь дискуссии
+        make_decision: Начните решение
+      learn_more: Смотрите дальше в Справке Loomio
+      dismiss_this_card: Убрать эту карточку
+  plan_names:
+    free: Бесплатная
+    trial: Пробная
+    small: Небольшая
+    medium: Средняя
+    large: Крупная
+    monthly: Ежемесячно
+    yearly: Ежегодно
   current_plan_button:
     upgrade: Обновить
+    trial_expired: Срок вашей пробной версии истек. Обновите, чтобы продолжить использовать Loomio.
   loomio_tags:
     tags: Метки
     apply_tags: Применить метки
@@ -16,6 +37,8 @@ ru:
     helptext: Метки позволяют разбивать обсуждения на категории и легко их потом находить
     discussions_count_singular: ({{count}} ветвь)
     discussions_count_plural: ({{count}} ветвей)
+    tag_created: Метка записана
+    tag_destroyed: Метка удалена
     tags_marked: Ветви, помеченные '{{name}}' в {{groupName}}
     no_tags_present: Не нашли ветвей с этой меткой! Попробуйте выбрать другую.
   reactions:
@@ -50,17 +73,13 @@ ru:
     ok_hand: Хорошо
     thumbsup: Одобрение
     thumbsdown: Осуждение
-  poll_types:
-    proposal: Предложение
-    count: Проверка
-    poll: Опрос
-    dot_vote: Голосов
-    meeting: Голосование за время встречи
-    ranked_choice: Порядок ранжированния
-    score: Оценка опроса
+  new_poll_types:
+    poll: выбирать
   timezones:
-    local: местное время ({{значение}})
+    local: местное время ({{value}})
   common:
+    history: История
+    add: Добавить
     you: Ты
     expand: Развернуть
     all_day: Весь день
@@ -74,11 +93,13 @@ ru:
       am: день
       pm: вечер
     closing_in: 'Закрывается {{time}}'
-    closed_ago: 'Закрыто {{время}}'
+    closed_ago: 'Закрыто {{time}}'
     volume: 'Громкость'
     notification_volume: 'Громкость оповещений'
     group: 'Группа'
     groups: 'Группы'
+    organization: "Организация"
+    organizations: "Организации"
     threads: 'Обсуждения'
     decisions: 'Решения'
     settings: 'Настройки'
@@ -106,6 +127,11 @@ ru:
     copied: 'Скопировать в буфер'
     total: Всего
     action:
+      pin: Закрепить
+      unpin: Открепить
+      search: 'Поиск'
+      filter: 'Фильтр'
+      back: 'Назад'
       next: 'Следующее'
       close: 'Закрыть'
       reopen: 'Открыть вновь'
@@ -116,17 +142,14 @@ ru:
       edit: 'Редактировать'
       remove: 'Удалить'
       like: 'Нравится'
-      back: 'Назад'
       unlike: 'Не нравится'
       update: 'Обновить'
       cancel: 'Отмена'
       show_more: "Показать больше"
       view_all: "Показать все"
       new_thread: "Новая тема"
-      add_subgroup: 'Добавить подгруппу'
       loading: 'Загрузка'
       translate: 'Перевести'
-      translated: 'Переведено с помощью Бинг'
       upload: 'Скачать'
       uploading: 'скачивание'
       load_more: 'Загрузить больше'
@@ -146,6 +169,8 @@ ru:
       export: Экспортировать
     formatting_help:
       label: 'Форматирование'
+  emoji_picker:
+    search: Поиск
   ordinal:
     _1: 1ый
     _2: 2ый
@@ -158,6 +183,8 @@ ru:
     _9: 9ый
     _10: 10ый
   devise:
+    sessions:
+      signed_up: Зарегистрирован успешно!
     failure:
       inactive: 'Аккаунт, связанный с указанным адресом электронной почты, деактивирован. Если вы хотите раективировать аккаунт, свяжитесь с нами.'
   error_page:
@@ -176,25 +203,28 @@ ru:
     quiet: 'Ограниченный'
     mute: 'Заглушен'
     unmute: 'Включить'
+  pin_event_form:
+    title_label: Название
   change_volume_form:
+    simple:
+      label: Уведомления
+      loud: Подписаться
+      normal: Нормальный
+      quiet: Игнорировать
     aria_label: "Изменить настройки почтового ящика"
     loud_label: "Вся активность"
     normal_label: "Объявления"
     quiet_label: "Нет "
     mute_label: "Заглушен"
     discussion:
-      title: "Тема настройки почты"
-      loud_description: "По каждой активности в обсуждении Вы будете уведомлены письмом на указанный почтовый адрес"
-      normal_description: "Вы получите электронное письмо всякий раз, когда предложение открыто, вот-вот закроется, или когда будут опубликованы результаты."
-      quiet_description: "Вы не будете получать письма об этой ветке."
       apply_to_all: "Применить эти настройки ко всем темам в этой группе."
       messages:
         loud: "Вы будете оповещенны по эмаилу о всей активности в этой теме."
         normal: "Вам будут приходить электронные письма касательно предложений в этой ветке."
         quiet: "Вы не будете получать письма об этой ветке."
     membership:
-      title: "Настройки Email {{title}}"
       loud_description: "Вы будете оповещенны по эмаилу о всей активности в этой группе."
+      normal_description: "Вы будете оповещенны по эмаилу о всей активности в этой группе."
       apply_to_all: "Применить эти настройки для всех моих групп"
     user:
       title: Настройки почты для новых групп
@@ -246,12 +276,19 @@ ru:
       label: 'Опубликовать'
     public_privacy_notice: 'Ваш комментарий будет виден всем пользователям сети'
     sign_in: "Войдите чтобы присоеденится к разговору"
+  thread_nav:
+    participants: Участники
   sidebar:
+    threads: 'Обсуждения'
+    my_groups: 'Мои группы'
+    all_groups: 'Все группы'
     recent_threads: 'Последние темы'
     muted_threads: 'Выключить уведомления темы'
+    start_group: 'Новая организация'
     explore: 'Публичная группа'
     start_thread: Новая тема
     start_decision: Новое решение
+    try_beta: Попробуйте Loomio 2.0 бета!
     aria_labels:
       heading: 'Боковая панель'
       groups_list: 'Группы'
@@ -274,12 +311,13 @@ ru:
     logo_title: 'Домашняя страница'
   user_dropdown:
     edit_profile: 'Редактировать профиль'
-    email_settings: 'Настройки эмайла'
     help: 'Помощь'
     sign_out: 'Выйти'
+  membership_card:
+    invite_to_group: "Пригласите в группу"
   membership_dropdown:
     invitation_resent: "Переслать приглашение"
-    make_coordinator: 'Сделать координатором'
+    make_coordinator: 'Сделать администратором'
   notifications:
     header: "Уведомления"
     no_notifications: "У Вас нет уведомлений"
@@ -291,6 +329,8 @@ ru:
     submit: 'Обновить время закрытия'
   discussion_record:
     updated: 'Сохранить изменения для {{title}}'
+  discussion_fork_actions:
+    move: Переместить
   discussion_form:
     aria_label: 'Форма темы'
     messages:
@@ -304,17 +344,23 @@ ru:
     context_label: 'Описание'
     privacy_label: 'Конфиденциальность'
   announcement:
+    audiences:
+      voters: Люди, которые проголосовали
+      non_voters: Люди, которые не голосовали
     form:
+      group_announced:
+        title: Пригласите в группу
       outcome_announced:
         title: Поделиться результатами
   action_dock:
-    react: Добавить реакцию
     add_resource: Добавить вложение
     add_comment: Комментарий
     copy_url: Скопировать ссылку
     edit_thread: Редактировать контекст
     translate_thread: Перевести контекст
     edit_poll: Редактировать опрос
+    move_items: Переместить
+    announce_poll: Пригласите людей проголосовать
     translate_poll: Перевести опрос
     edit_stance: Изменить позицию
     translate_stance: Перевести голос
@@ -324,8 +370,14 @@ ru:
     translate_comment: Перевести комментарий
     edit_outcome: Редактировать результат
     translate_outcome: Перевести результат
+    edited: Изменено
     pin_thread: Закрепить тему
     tag_thread: Управлять метками
+    close_thread: Закрыть тему
+    delete_thread: Удалить тему
+  formatting:
+    attach: Приложить файл
+    merge_selected: Объединить выделенные ячейки
   cover_photo_form:
     heading: 'Новое фото обложки'
     upload_link: 'Загрузить новое фото обложки'
@@ -338,6 +390,7 @@ ru:
     upload_success: 'Логотип успешно изменен'
   join_group_button:
     join_group: Вступить в группу
+    membership_requested: Заявка на участие
   membership_request_form:
     heading: Подать заявку на вступление
     name_label: Имя
@@ -350,11 +403,25 @@ ru:
   reactions_display:
     you: "Вы"
     you_and_name: "Вы и {{name}}"
+  user_wizard:
+    change_picture: Добавить картинку
+    setup_profile: Настроить профиль
+  group_wizard:
+    welcome: Успешно!
+    setup_profile: Настроить профиль
+    invite_people: Пригласите людей
+    start_thread: Начать дискуссию
   group_page:
+    threads: Обсуждения
+    members: Участники
+    files: Файлы
+    settings: Настройки
+    subgroups: Подгруппы
+    messages:
+      leave_group_success: 'Вы покинули эту группу'
     new_cover_photo: 'Загрузить новое фото обложки'
     new_group_logo: 'Загрузить новый логотип группы'
     open_discussions: 'Открыть тему'
-    subgroups: 'Подгруппы'
     invite_people: 'Приглашать'
     visibility_label: 'Видимость'
     options_label: 'Опции'
@@ -363,21 +430,26 @@ ru:
       manage_members: 'Управлять участниками'
       add_subgroup: 'Добавить подгруппу'
       manage_subscription: 'Управлять подписками группы'
+      email_settings: 'Настройки уведомлений'
       leave_group: 'Покинуть группу'
       deactivate_group: 'Деактивировать группу'
   leave_group_form:
     submit: 'Да, покинуть эту группу'
-    add_coordinator: 'Добавить координатора'
   archive_group_form:
     aria_label: 'Деактивировать группу'
     title: 'Деактивировать группу'
   group_form:
+    new_organisation: Новая организация
     start_group_heading: 'Создать группу'
     start_subgroup_heading: 'Создать подгруппу'
     edit_group_heading: 'Редактировать настройки группы'
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
     group_name: 'Название группы'
+    organization_name: 'Название организации'
+    start_organization_heading: Новая организация
+    description: 'Описание'
     privacy: 'Конфиденциальность'
+    profile: Профиль
     public_threads: 'Только публичные темы'
     public_or_private_threads: 'Разрешить публичные и закрытые темы'
     submit_update: 'Обновить настройки'
@@ -394,6 +466,7 @@ ru:
   group_previous_proposals_card:
     heading: Предыдущие предложения
   invitation_form:
+    invite_people: 'Пригласите людей'
     copy_link: 'Копировать'
     custom_message: 'Сообщение от пользователя'
     add_members: 'Добавить участников'
@@ -407,7 +480,6 @@ ru:
   memberships_page:
     members: 'Участники'
     name_label: 'Имя'
-    coordinator_label: 'Координатор'
     remove_member_label: 'Удалить'
   pending_invitations_card:
     copy_url: Скопировать ссылку
@@ -417,7 +489,6 @@ ru:
     email_label: 'Email'
     locale_label: 'Язык'
   email_settings_page:
-    header: Настройки email
     announcement_label: Объявления
     edit: Редактировать
   dashboard_page:
@@ -445,15 +516,15 @@ ru:
     closed:
       closed: 'Тема закрыта'
   activity_card:
-    unread: Непрочитанные
     latest: Последний
+    context: Описание
     attachment_display:
       image_alt: 'Прикрепленное изображение'
+    comment: Комментарий
   thread_group:
     aria_label: 'Название группы'
   thread_context:
     thread_options: 'Настройки обсуждения'
-    email_settings: 'Настройки Email'
     close_thread: 'Закрыть'
     reopen_thread: 'Открыть вновь'
     pin_thread: 'Закрепить'
@@ -525,6 +596,17 @@ ru:
     responses: Ответы
     start_poll: Начните решение
     save_changes: Сохранить
+  discussions_panel:
+    open: Открыто
+    all: Все
+    closed: Закрыто
+  members_panel:
+    order_by_name: 'Название'
+    header_name: 'Название'
+  polls_panel:
+    all: 'Все'
+    open: 'Открыто'
+    closed: 'Закрыто'
   current_polls_card:
     start_poll: Новое решение
   poll_common_set_outcome_panel:
@@ -568,8 +650,6 @@ ru:
       use_existing_group: Использовать существующую группу
     invite:
       heading: 'Шаг 2: Настройте канал Slack-мессенджера'
-      helptext: |
-          Успешно! Теперь выберите канал, на который мы будем отправлять обновления.
       select_a_channel: Выбрать канал
       publish_group: Отправить приветственное сообщение
       publish_group_helptext_on: Мы отправим сообщение на этот канал, чтобы проинструктировать людей о том, как использовать LoomioBot.

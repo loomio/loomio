@@ -34,13 +34,6 @@ nb_NO:
     wave: Vinke
     thumbsup: Tommel opp
     thumbsdown: Tommel ned
-  poll_types:
-    proposal: Forslag
-    count: Ja / Nei
-    poll: Avstemning
-    dot_vote: Steiner i kurver
-    meeting: Tidspunkt
-    ranked_choice: Rangering
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -90,6 +83,8 @@ nb_NO:
     points_abbrev: Hver stemme er verdt {{score}} poeng
     total: Totalt
     action:
+      search: 'Søk'
+      back: 'Tilbake'
       next: 'Neste'
       close: 'Lukk'
       reopen: 'Gjenåpne'
@@ -100,17 +95,14 @@ nb_NO:
       edit: 'Rediger'
       remove: 'Fjern'
       like: 'Liker'
-      back: 'Tilbake'
       unlike: 'U-lik'
       update: 'Oppdater'
       cancel: 'Avbryt'
       show_more: "Vis mer"
       view_all: "Vis alle"
       new_thread: "Ny tråd"
-      add_subgroup: 'Legg til undergruppe'
       loading: 'Laster'
       translate: 'Oversett'
-      translated: 'Oversettelse av Bing '
       upload: 'Last opp'
       uploading: 'Laster opp'
       load_more: 'Last mer'
@@ -134,6 +126,8 @@ nb_NO:
     formatting_help:
       label: 'Formatering'
       title: 'Lær hvordan du kan bruke Markdown for å formatere teksten din'
+  emoji_picker:
+    search: Søk
   ordinal:
     _1: '1.'
     _2: '2.'
@@ -166,26 +160,26 @@ nb_NO:
     quiet: 'Stille'
     mute: 'Dempet'
     unmute: 'U-Demp'
+  pin_event_form:
+    title_label: Tittel
   change_volume_form:
+    simple:
+      label: Varslinger
+      normal: Normalt
     aria_label: "Oppdatere innstillinger for e-post skjema"
     loud_label: "All aktivitet"
     normal_label: "Annonseringer"
     quiet_label: "Ingen e-poster"
     mute_label: "Dempet"
     discussion:
-      title: "Tråd e-post innstillinger "
-      loud_description: "Du vil motta en e-post når det er aktivitet i denne tråden."
-      normal_description: "Du vil motta en e-post når en beslutning er startet, i ferd med å lukkes eller når et resultat av en beslutning er postet."
-      quiet_description: "Du vil ikke motta e-post om denne tråden."
       apply_to_all: "Bruk disse innstillingene på alle tråder i denne gruppen."
       messages:
         loud: "Du vil motta e-post om aktivietet i denne tråden."
         normal: "Du vil motta e-post om beslutninger i denne tråden."
         quiet: "Du vil ikke motta e-post om denne tråden."
     membership:
-      title: "Innstillinger for e-post for {{title}}"
       loud_description: "Du vil motta en e-post hver gang det er aktivitet i denne gruppa."
-      normal_description: "Du vil bare motta e-post om annonseringer i denne gruppa."
+      normal_description: "Du vil motta en e-post hver gang det er aktivitet i denne gruppa."
       quiet_description: "Du vil ikke motta e-post om aktivetet i denne gruppa."
       apply_to_all: "Bruk disse innstillingene på alle gruppene mine."
       messages:
@@ -193,6 +187,7 @@ nb_NO:
         normal: "Du vil bare få e-post om annonseringer i denne gruppa."
         quiet: "Du vil ikke motta e-post om denne gruppa."
     all_groups:
+      loud_description: "Du vil motta e-post om all aktivitet i dine grupper."
       messages:
         loud: "Du vil motta e-post om all aktivitet i dine grupper."
         normal: "Du vil bare motta e-post om annonseringer i alle dine grupper."
@@ -265,6 +260,7 @@ nb_NO:
     public_privacy_notice: 'Kommentaren din vil være synlig for alle på nettet.'
     sign_in: "Logg inn for å bli med i samtalen"
   sidebar:
+    threads: 'Tråder'
     recent_threads: 'Siste tråder'
     unread_threads: 'Uleste tråder ({{count}})'
     muted_threads: 'Dempede tråder'
@@ -297,7 +293,6 @@ nb_NO:
   user_dropdown:
     button_label: 'Brukermeny'
     edit_profile: 'Rediger brukerprofil'
-    email_settings: 'Innstillinger for e-post'
     help: 'Hjelp'
     contact_site_name: 'Kontakt {{site_name}}'
     sign_out: 'Logg ut'
@@ -313,8 +308,6 @@ nb_NO:
     set_title: "Sett tittel"
     resend: "Send  invitasjon på nytt"
     invitation_resent: "Invitasjon sendt på nytt"
-    make_coordinator: 'Sett som koordinator'
-    demote_coordinator: 'Fjern som koordinator'
     remove_from:
       discussion: "Fjern fra tråd"
       group: "Fjern fra gruppe"
@@ -349,7 +342,6 @@ nb_NO:
     motion_outcome_created: "<strong>{{name}}</strong> publiserte resultatet fra beslutningen <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> oppdaterte resultatet for beslutningen <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> godkjente din invitasjon til å bli med i  <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> gjorde deg til koordinator for  <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> startet en {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> redigerte en {{poll_type}}: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> delte en {{poll_type}}: <strong>{{title}}</strong>"
@@ -369,8 +361,6 @@ nb_NO:
   discussion_record:
     created: 'Tråden {{title}} ble opprettet i gruppa: {{groupName}}'
     updated: 'Lagret endringer i  {{title}}'
-  discussion_fork_actions:
-    helptext: "Velg de innleggene du vil flytte til en ny tråd"
   discussion_form:
     aria_label: 'Trådskjema'
     messages:
@@ -438,14 +428,11 @@ nb_NO:
     flash:
       success: '{{count}} varslinger sendt'
   action_dock:
-    react: Legg til reaksjon
     add_resource: Legg til vedlegg
     edit_group: Rediger gruppens kontekst
     add_comment: Kommentar
     copy_url: Kopier URL
     edit_thread: Rediger kontekst
-    announce_thread: Invitert folk til bli med i tråden
-    announce_thread_active: (Ingen har blitt invitert enda)
     translate_thread: Oversett kontekst
     edit_poll: Rediger avstemning
     announce_poll: Inviter folk til å stemme
@@ -467,6 +454,9 @@ nb_NO:
     comment_copied: Kommentar-URL kopiert til utklippstavlen
     poll_copied: Beslutnings-URL kopiert til utklippstavlen
     discussion_copied: Tråd-URL kopiert til utklippstavlen
+    close_thread: Lukk tråd
+  formatting:
+    attach: Legg ved fil
   cover_photo_form:
     aria_label: 'Bytt forsidebilde skjema'
     heading: 'Nytt forsidebilde'
@@ -481,7 +471,6 @@ nb_NO:
     upload_success: 'Logo oppdatert'
   join_group_button:
     join_group: Bli med i gruppe
-    membership_requested: Venter på forespørsel om medlemskap
     messages:
       joined_group: 'Du er nå medlem av gruppen: {{group}}'
   membership_request_form:
@@ -520,6 +509,8 @@ nb_NO:
       pinned: "Denne tråden er festet. Den vil forbli på toppen av gruppelista for alle brukere."
       closed: "Denne tråden har blitt stengt. Den vil ikke være synlig på Skrivebordet, og ligge under 'lukket' på gruppesiden"
   group_page:
+    threads: Tråder
+    settings: Innstillinger
     show_opened: '{{count}} Åpne'
     show_closed: '{{count}} Lukket'
     no_threads_here: Ingen tråder å se her!
@@ -538,7 +529,6 @@ nb_NO:
     form:
       title_label: Navn
   invitation_form:
-    invite_people: 'Inviter folk'
     group: 'Gruppe'
     group_placeholder: 'Velg en gruppe'
     copy_link: 'Kopier'
@@ -551,9 +541,6 @@ nb_NO:
     invitation:
       title: Avslutt invitasjon
       submit: Avslutt invitasjon
-  memberships_panel:
-    add_coordinator: Sett som koordinator
-    remove_coordinator: Fjern som koordinator
   pending_invitations_card:
     email: E-post
     copy_url: Kopier URL
@@ -563,7 +550,6 @@ nb_NO:
     name_label: 'Navn'
     email_label: 'E-post'
   email_settings_page:
-    header: Innstillinger for e-post
     announcement_label: Annonseringer
     update_settings: Lagre endringer
     edit: Rediger
@@ -579,10 +565,10 @@ nb_NO:
   discussion:
     started_by: 'Startet av <strong>{{name}}</strong>'
   activity_card:
-    unread: Ulest
     latest: Siste
+    context: Kontekst
+    comment: Kommentar
   thread_context:
-    email_settings: 'Innstillinger for e-post'
     edit: 'Rediger'
     edit_thread: 'Rediger'
     close_thread: 'Lukk'
@@ -613,6 +599,16 @@ nb_NO:
     ranked_choice_title: Rangering
   poll_common:
     save_changes: Lagre
+  discussions_panel:
+    open: Åpen
+    closed: Lukket
+  members_panel:
+    order_by_name: 'Navn'
+    header_name: 'Navn'
+    invitations: 'Invitasjoner'
+  polls_panel:
+    open: 'Åpen'
+    closed: 'Lukket'
   current_polls_card:
     start_poll: Ny beslutning
   poll_common_select_group:

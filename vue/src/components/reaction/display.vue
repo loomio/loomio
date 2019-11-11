@@ -9,12 +9,13 @@ export default
   mixins: [WatchRecords]
   props:
     model: Object
-    load: Boolean
+    fetch:
+      type: Boolean
+      default: false
 
   data: ->
     diameter: 20
     maxNamesCount: 10
-    loaded: !@load
     reactionHash: {all: []}
 
   mounted: ->
@@ -30,11 +31,11 @@ export default
           @reactionHash['all'].push(user)
           true
 
-    if @load
-      Records.reactions.fetch(params:
-        reactable_type: capitalize(@model.constructor.singular)
-        reactable_id: @model.id
-      ).finally => @loaded = true
+    if @fetch
+      Records.reactions.fetch
+        params:
+          reactable_type: capitalize(@model.constructor.singular)
+          reactable_id: @model.id
 
 
   computed:
@@ -77,31 +78,34 @@ export default
 
 </script>
 <template lang="pug">
-.reactions-display.lmo-flex.lmo-flex__center
-  loading(v-if="!loaded" :diameter="diameter")
-  .lmo-flex.lmo-flex__center(v-if="loaded")
-    .reactions-display__emojis
-      .reaction.lmo-pointer(@click="removeMine(reaction)" v-for="reaction in reactionTypes")
-        v-tooltip(bottom)
-          template(v-slot:activator="{ on }")
-            .reactions-display__group(v-on="on")
-              span {{colonToUnicode(reaction)}}
-              //- span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
-              //- span(v-if="reactionHash[reaction]") list present
-              user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" size="tiny")
-          .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
-            span {{ user.name }}
+.reactions-display.mr-2(v-if="reactionTypes.length")
+  .reactions-display__emojis
+    .reaction.lmo-pointer(@click="removeMine(reaction)" v-for="reaction in reactionTypes" :key="reaction")
+      v-tooltip(bottom)
+        template(v-slot:activator="{ on }")
+          .reactions-display__group(v-on="on")
+            span {{colonToUnicode(reaction)}}
+            //- span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
+            //- span(v-if="reactionHash[reaction]") list present
+            user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
+        .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
+          span {{ user.name }}
 </template>
 
-<style lang="scss">
+<style lang="css">
 .reactions-display__group {
+  opacity: 0.8;
   display: flex;
   align-items: center;
   margin-right: 2px;
-  span {
-    font-size: 20px;
-  }
 }
+
+.reactions-display__group span {
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: -5px;
+}
+
 .reactions-display__emojis {
   display: flex;
 }

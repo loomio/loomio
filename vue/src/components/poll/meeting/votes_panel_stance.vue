@@ -1,12 +1,9 @@
 <script lang="coffee">
-import { listenForTranslations } from '@/shared/helpers/listen'
 import { participantName }       from '@/shared/helpers/poll'
 
 export default
   props:
     stance: Object
-  created: ->
-    # listenForTranslations $scope
   computed:
     participantName: -> participantName(@stance)
 </script>
@@ -17,7 +14,5 @@ export default
   .poll-common-votes-panel__stance-content
     .poll-common-votes-panel__stance-name-and-option
       strong {{ participantName }}
-    .poll-common-votes-panel__stance-reason(v-if="stance.reason")
-      span(v-if="!stance.translation", v-marked="stance.reason")
-      translation(v-if="stance.translation", :model="stance", field="reason")
+    formatted-text.poll-common-votes-panel__stance-reason(:model="stance" column="reason")
 </template>

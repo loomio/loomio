@@ -1,6 +1,31 @@
 eo:
+  loomio_onboarding:
+    group_progress_card:
+      title: Ŝalti vian grupon
+      activities:
+        invite_people_in: Inviti homojn
+  plan_names:
+    free: Senpaga
+    trial: Provo
+    small: Malgranda
+    medium: Mezgranda
+    large: Granda
+    monthly: Monate
+    yearly: Jare
+  current_plan_button:
+    upgrade: Ĝisdatigi
   loomio_tags:
+    tags: Etikedoj
+    apply_tags: Alkroĉi etikedon
+    new_tag: Krei etikedon
     name_label: Nomo
+    color_label: Koloro
+    card_title: Kategoriaj etikedoj
+    modal_title: Krei novan etikedon
+    modal_edit_title: Redakti etikedon
+    modal_destroy_title: Forigi etikedon
+    destroy_tag: Forigi etikedon
+    destroy_helptext: Tiu ĉi ago forigos tiun ĉi etikedon kaj ankaŭ forigos ĝin de ĉiuj fadenoj en la grupo. Ĉu vi certas?
   reactions:
     slight_smile: Ŝati
     heart: Ŝategi
@@ -30,10 +55,6 @@ eo:
     fingers_crossed: Bonŝancon!
     v: Pacon!
     ok_hand: Bone!
-  poll_types:
-    proposal: Propozicio
-    count: Kontroli
-    poll: Enketo
   common:
     you: Vi
     expand: Klarigu!
@@ -81,6 +102,7 @@ eo:
     points_abbrev: Ĉiu voĉo valoras {{score}} poentojn
     total: Entute
     action:
+      search: 'Serĉi'
       next: 'Sekva'
       close: 'Fermigi'
       save: 'Konservi'
@@ -94,13 +116,14 @@ eo:
       show_more: "Montri pli"
       view_all: "Vidi ĉiujn"
       new_thread: "Nova fadeno"
-      add_subgroup: 'Aldoni subgrupon'
       loading: 'Ŝargiĝas'
       translate: 'Traduki'
       uploading: 'Alŝutiĝas'
       ok: Bone!
       retry: Reprovi
       invite: Inviti
+  emoji_picker:
+    search: Serĉi
   ordinal:
     _1: 1a
     _2: 2a
@@ -122,7 +145,13 @@ eo:
     quiet: 'Malbrua'
     mute: 'Silentigi'
     unmute: 'Malsilentigi'
+  pin_event_form:
+    title_label: Titolo
   change_volume_form:
+    simple:
+      label: Sciigoj
+      normal: Normala
+      quiet: Ignori
     mute_label: "Silentigi"
   close_explanation_modal:
     aria_label: Fermigi fadenon
@@ -150,6 +179,8 @@ eo:
     submit_button:
       label: 'Afiŝu'
   sidebar:
+    threads: 'Fadenoj'
+    explore_groups: Esplori grupojn
     start_thread: Nova fadeno
     aria_labels:
       groups_list: 'Grupoj'
@@ -167,12 +198,12 @@ eo:
     help: 'Helpo'
     contact_site_name: 'Kontakti {{site_name}}'
     sign_out: 'Elsaluti'
-  membership_dropdown:
-    make_coordinator: 'Kunordigantigi'
   notifications:
     header: "Sciigoj"
   position_buttons_panel:
     heading: Donu vian opinion
+  discussion_fork_actions:
+    move: Movi
   discussion_form:
     group_label: 'Grupo'
     title_label: 'Titolo'
@@ -181,13 +212,17 @@ eo:
   action_dock:
     add_comment: Komenti
     edit_poll: Redakti enketon
+    move_items: Movi
     translate_poll: Traduki enketon
     delete_comment: Forigi la komenton
+    edited: Redaktita
+    close_thread: Fermigi fadenon
   logo_photo_form:
     heading: 'Nova emblemo de grupo'
     upload_link: 'Alŝuti novan emblemon de grupo'
   join_group_button:
     join_group: Aliĝi al la grupo
+    membership_requested: Membreco petiĝis
     messages:
       joined_group: 'Vi nun estas membro de {{group}}'
   membership_request_form:
@@ -202,16 +237,26 @@ eo:
     you_and_name: "Vi kaj {{name}}"
     you_and_name_and_count_more: "Vi, {{name}} kaj {{count}} pli"
     name_and_count_more: "{{name}} kaj {{count}} pli"
+  group_wizard:
+    welcome: Sukceso!
+    invite_people: Inviti personojn
+    start_thread: Komenci diskuton
   group_page:
+    threads: Fadenoj
+    members: Membroj
+    settings: Agordoj
+    subgroups: Subgrupoj
     show_closed: '{{count}} Fermita'
     new_group_logo: 'Alŝuti novan emblemon de grupo'
-    subgroups: 'Subgrupoj'
     invite_people: 'Inviti'
     options_label: 'Opcioj'
     options:
       label: 'Opcioj'
+      email_settings: 'Retpoŝtaj preferoj'
   group_form:
+    group_name_placeholder: 'Kio estas la nomo de via grupo?'
     privacy: 'Privateco'
+    profile: Profilo
   documents_page:
     confirm_remove_title: Forigu alkroĉaĵon.
   document:
@@ -221,13 +266,12 @@ eo:
     approve: Aprobi
     ignore: Ignori
   invitation_form:
-    invite_people: 'Inviti homojn'
+    invite_people: 'Inviti personojn'
     group: 'Grupo'
     copy_link: 'Kopii'
   memberships_page:
     members: 'Membroj'
     name_label: 'Nomo'
-    coordinator_label: 'Kunordiganto'
     remove_member_label: 'Forviŝi'
   pending_invitations_card:
     email: Retadreso
@@ -247,7 +291,7 @@ eo:
     update_profile: 'Ĝisdatigi profilon'
     help_translate: "Helpu nin traduki Loomion!"
   change_picture_form:
-    title: 'Ŝanĝi bildon'
+    use_gravatar: 'Uzi Gravataron'
   email_settings_page:
     edit: Redakti
   dashboard_page:
@@ -272,8 +316,9 @@ eo:
     no_groups:
       or: aŭ
   activity_card:
-    unread: Nelegitaj
     latest: Plej lasta
+    context: Kunteksto
+    comment: Komenti
   thread_group:
     aria_label: 'Grupnomo'
   thread_context:
@@ -344,13 +389,22 @@ eo:
     participant_name: Via nomo
     participant_email: Retadreso
     save_changes: Konservi
+  discussions_panel:
+    open: Malfermita
+    all: Ĉiuj
+    closed: Fermita
+  members_panel:
+    order_by_name: 'Nomo'
+    header_name: 'Nomo'
+    header_username: 'Uzantnomo'
+  polls_panel:
+    all: 'Ĉiuj'
+    open: 'Malfermita'
+    closed: 'Fermita'
   poll_common_select_group:
     loomio_group: Grupo
   poll_common_calendar_invite:
     event_duration: Daŭro
-    event_summary: Resumo
-  poll_common_closing_at_field:
-    closing_hour: Horo de fermo
   poll_common_form:
     title: Titolo
     details: Detaloj
@@ -385,11 +439,8 @@ eo:
     unable: "Nekapabla"
     your_response: Kiam vi povas ĉeesti?
   poll_dot_vote_vote_form:
-    too_many_dots: Vi uzis tro da punktoj.
     stance_created: Voĉdono kreis
     stance_updated: Voĉdono ĝisdatigita
-  thread_item:
-    poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> fermis la {{polltype}}: <strong>{{title}}</strong>"
   poll_common_publish_facebook_preview:
     link: ligilo
     just_now: Ĝuste nun
@@ -399,12 +450,12 @@ eo:
     heading: Decidoj
   auth_form:
     sign_in: Registriĝi
+    create_account: Krei konton
     sign_in_as: Registriĝi kiel {{name}}
     more_providers: Pli
     name_placeholder: Via nomo
     name_required: Bonvolu entajpi nomon.
     hello: "Saluton, {{name}}!"
-    create_account: Krei konton
     link_accounts: Ligi kontojn
     name: Nomo
     email: Retadreso

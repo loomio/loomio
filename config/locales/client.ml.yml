@@ -10,22 +10,31 @@ ml:
     models:
       proposal: 'ശുപാര്‍ശ '
     action:
+      search: 'തിരയുക'
       save: 'സൂക്ഷിക്കുക'
       edit: 'തിരുത്തുക'
       like: 'ഇഷ്ടപെടുക'
       unlike: 'ഇഷ്ടം തിരിച്ചെടുക്കുക'
       cancel: 'റദ്ദുചെയ്യുക'
+  emoji_picker:
+    search: തിരയുക
   error_page:
     forbidden: 'നിങ്ങള്‍ക്ക് ഇതു ചെയ്യാനുള്ള അനുമതിയില്ല'
+  pin_event_form:
+    title_label: തലക്കെട്ട്
+  change_volume_form:
+    simple:
+      label: അറിയിപ്പുകള്‍
+      quiet: നിരസ്സിക്കുക
   comment_form:
     delete_comment: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
     confirm_delete_message: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '
+  sidebar:
+    threads: 'ചര്‍ച്ചകള്‍'
   navbar:
     search:
       placeholder: 'തിരയുക'
       discussions: 'ചര്‍ച്ചകള്‍'
-  membership_dropdown:
-    make_coordinator: 'എകോപകൻ ആക്കുക'
   notifications:
     header: "അറിയിപ്പുകള്‍"
   position_buttons_panel:
@@ -35,30 +44,41 @@ ml:
     title_label: 'തലക്കെട്ട്'
     context_label: 'പശ്ചാത്തലം'
     privacy_label: 'സ്വകാര്യത'
+  join_group_button:
+    membership_requested: അംഗത്വം അപേക്ഷിച്ചിരിക്കുന്നു
   membership_request_form:
     heading: കൂട്ടത്തില്‍ ചേരാന്‍ ചോദിക്കുക
     name_label: പേരു്
     email_label: ഈമെയില്‍
+  group_wizard:
+    invite_people: ആളുകളെ ക്ഷണിക്കുക
+    start_thread: പുതിയൊരു ചര്‍ച്ച ആരംഭിക്കുക
   group_page:
+    threads: ചര്‍ച്ചകള്‍
+    members: അംഗങ്ങള്‍
     options_label: 'ഐച്ഛികങ്ങള്‍'
     options:
       label: 'ഐച്ഛികങ്ങള്‍'
+      email_settings: 'ഈമെയില്‍ മുന്‍ഗണനകള്‍'
   document:
     form:
       title_label: പേരു്
   membership_requests_page:
     approve: സ്ഥിരീകരിക്കുക
     ignore: നിരസ്സിക്കുക
+  invitation_form:
+    invite_people: 'ആളുകളെ ക്ഷണിക്കുക'
   memberships_page:
     members: 'അംഗങ്ങള്‍'
     name_label: 'പേരു്'
-    coordinator_label: 'എകോപകൻ'
     remove_member_label: 'നീക്കുക'
   profile_page:
     picture_label: 'ചിത്രം'
     name_label: 'പേരു്'
     email_label: 'ഈമെയില്‍'
     locale_label: 'ഭാഷ'
+  activity_card:
+    context: പശ്ചാത്തലം
   thread_group:
     aria_label: 'കൂട്ടത്തിന്റെ പേരു്'
   thread_context:
@@ -80,6 +100,13 @@ ml:
     vote: 'എപ്പോള്‍ വേണമെങ്കിലും താങ്കളുടെ സ്ഥാനം മാറ്റാം'
   poll_common:
     save_changes: സൂക്ഷിക്കുക
+  discussions_panel:
+    closed: അടച്ചു
+  members_panel:
+    order_by_name: 'പേരു്'
+    header_name: 'പേരു്'
+  polls_panel:
+    closed: 'അടച്ചു'
   poll_common_form:
     closed: അടച്ചു
   poll_count_options:

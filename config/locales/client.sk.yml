@@ -15,13 +15,22 @@ sk:
     models:
       proposal: 'Návrh'
     action:
+      search: 'Vyhľadávať'
       save: 'Uložiť'
       edit: 'Upraviť'
       like: 'To sa mi páči'
       unlike: 'To sa mi nepáči'
       cancel: 'Zrušiť'
+  emoji_picker:
+    search: Vyhľadávať
   error_page:
     forbidden: 'Na túto akciu nemáte oprávnenie.'
+  pin_event_form:
+    title_label: Názov
+  change_volume_form:
+    simple:
+      label: Upozornenie
+      quiet: Ignorovať
   inbox:
     clear: 'Vyčistiť'
     unread: 'Neprečítané'
@@ -29,12 +38,12 @@ sk:
     edit_comment: 'Upraviť komentár'
     delete_comment: 'Odstrániť komentár'
     confirm_delete_message: 'Naozaj chcete odstrániť tento komentár?'
+  sidebar:
+    threads: 'Diskusie'
   navbar:
     search:
       placeholder: 'Vyhľadávať'
       discussions: 'Diskusie'
-  membership_dropdown:
-    make_coordinator: 'Urobiť koordinátorom'
   notifications:
     header: "Upozornenie"
   position_buttons_panel:
@@ -44,26 +53,40 @@ sk:
     title_label: 'Názov'
     context_label: 'Kontext'
     privacy_label: 'Súkromie'
+  action_dock:
+    edited: Aktualizovaný
   join_group_button:
     join_group: Pripojiť sa ku skupine
+    membership_requested: Žiadosť o členstvo odoslaná
   membership_request_form:
     heading: Požiadať o členstvo
     name_label: Meno
     email_label: E-mail
+  group_wizard:
+    invite_people: Pozvať ďalších
+    start_thread: Zahájiť diskusiu
   group_page:
+    threads: Diskusie
+    members: Členovia
+    settings: Nastavenia
     options_label: 'Nastavenia'
     options:
       label: 'Nastavenia'
+      email_settings: 'Nastavenie emailu'
+  group_form:
+    group_name_placeholder: 'Aký je názov vašej skupiny?'
+    profile: Profil
   document:
     form:
       title_label: Meno
   membership_requests_page:
     approve: Schváliť
     ignore: Ignorovať
+  invitation_form:
+    invite_people: 'Pozvať ďalších'
   memberships_page:
     members: 'Členovia'
     name_label: 'Meno'
-    coordinator_label: 'Koordinátor'
     remove_member_label: 'Vylúčiť'
   profile_page:
     profile: 'Profil'
@@ -72,6 +95,8 @@ sk:
     username_label: 'Prihlasovacie meno'
     email_label: 'E-mail'
     locale_label: 'Jazyk'
+  change_picture_form:
+    use_gravatar: 'Použiť Gravatar'
   dashboard_page:
     aria_label: 'Ovládací panel'
     mark_as_read: Označiť ako prečítané
@@ -81,7 +106,7 @@ sk:
     no_groups:
       or: alebo
   activity_card:
-    unread: Neprečítané
+    context: Kontext
   thread_group:
     aria_label: 'Názov skupiny'
   thread_context:
@@ -107,6 +132,16 @@ sk:
     vote: 'Môžete kdykoľvek svoj postoj zmeniť'
   poll_common:
     save_changes: Uložiť
+  discussions_panel:
+    all: Všetko
+    closed: Uzatvorené
+  members_panel:
+    order_by_name: 'Meno'
+    header_name: 'Meno'
+    header_username: 'Prihlasovacie meno'
+  polls_panel:
+    all: 'Všetko'
+    closed: 'Uzatvorené'
   poll_common_form:
     closed: Uzatvorené
   poll_count_options:

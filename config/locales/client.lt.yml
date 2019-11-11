@@ -36,12 +36,8 @@ lt:
     metal: Metalas
     ok_hand: Gerai
     wave: Banga
-  poll_types:
-    proposal: Pasiūlymas
-    count: Patikrinti
-    poll: Apklausa
-    meeting: Laiko apklausa
   common:
+    no_results_found: Rezultatų nerasta
     you: Tu
     expand: Išplėsti
     all_day: Visą dieną
@@ -86,6 +82,7 @@ lt:
     copied: 'Nukopijuota į iškarpinę'
     total: Iš viso
     action:
+      back: 'Atgal'
       next: 'Kitas'
       close: 'Užverti'
       save: 'Įrašyti'
@@ -95,13 +92,11 @@ lt:
       edit: 'Redaguoti'
       remove: 'Šalinti'
       like: 'Patinka'
-      back: 'Atgal'
       unlike: 'Nebepatinka'
       update: 'Atnaujinti'
       cancel: 'Atsisakyti'
       show_more: "Rodyti daugiau"
       new_thread: "Nauja gija"
-      add_subgroup: 'Pridėti pogrupį'
       loading: 'Įkeliama'
       load_more: 'Įkelti daugiau'
       ok: Gerai
@@ -114,6 +109,12 @@ lt:
     normal: 'Normalus'
     quiet: 'Tylus'
     mute: 'Nutildyti'
+  pin_event_form:
+    title_label: Antraštė
+  change_volume_form:
+    simple:
+      label: Pranešimai
+      normal: Normalus
   sign_up_form:
     password_label: 'Slaptažodis:'
   signed_out_modal:
@@ -134,6 +135,8 @@ lt:
     submit_button:
       label: 'Išsiųsti'
     private_privacy_notice: 'Jūsų komentaras bus matomas tik {{groupName}} grupės nariams.'
+  sidebar:
+    threads: 'Temos'
   navbar:
     recent_title: 'Pereiti į skydelį'
     unread_title: 'Žiūrėti neskaitytas veiklas'
@@ -159,6 +162,7 @@ lt:
     privacy_label: 'Privatumas'
   action_dock:
     delete_comment: Ištrinti komentarą
+    delete_thread: Ištrinti giją
   join_group_button:
     messages:
       joined_group: 'Dabar jūs esate {{group}} grupės narys'
@@ -166,7 +170,12 @@ lt:
     email_label: El. paštas
   reactions_display:
     you: "Tu"
+  group_wizard:
+    invite_people: Pakviesti žmones
   group_page:
+    threads: Temos
+    settings: Nustatymai
+    subgroups: Pogrupiai
     messages:
       privacy:
         members: 'Dabar ši grupė yra matoma tik nariams'
@@ -174,7 +183,6 @@ lt:
     group_logo: 'Grupės logotipas'
     discussions_placeholder: 'Gija - tai vieta, kurioje visi gali diskutuoti tam tikra tema ir kartu priiminėti sprendimus.'
     members_placeholder: 'Čia esate tik jūs: pakvieskite žmones prisjungti prie jūsų!'
-    subgroups: 'Pogrupiai'
     visibility_label: 'Matomumas'
     options_label: 'Parinktys'
     options:
@@ -189,6 +197,7 @@ lt:
   group_form:
     description: 'Aprašas'
     privacy: 'Privatumas'
+    profile: Profilis
     members_can_create_subgroups: 'Nariai gali kurti pogrupius.'
     members_can_edit_comments: 'Nariai gali bet kuriuo metu redaguoti savo komentarus.'
     submit_update: 'Atnaujinti nustatymus'
@@ -205,14 +214,8 @@ lt:
     group: 'Grupė'
     copy_link: 'Kopijuoti'
   memberships_page:
-    coordinator_label: 'Koordinatorius'
     remove_member_label: 'Šalinti'
     fragment_placeholder: 'Filtruokite naudotojus pagal vardą ar naudotojo vardą...'
-    messages:
-      make_admin_success: '{{name}} dabar yra koordinatorius'
-      remove_admin_success: '{{name}} daugiau nebėra koordinatorius'
-    remove_admin_from_self:
-      question: 'Ar tikrai daugiau nebenorite būti koordinatoriumi?'
   membership_remove_modal:
     invitation:
       title: Atsisakyti pakvietimo
@@ -236,7 +239,6 @@ lt:
       picture_changed: 'Profilio paveikslas atnaujintas'
       password_changed: 'Slaptažodis atnaujintas'
     change_picture_link: 'Keisti paveikslą'
-    deactivate_user_link: 'Pasyvinti paskyrą...'
     profile: 'Profilis'
     edit_profile: 'Redaguoti profilį'
     picture_label: 'Paveikslas'
@@ -245,7 +247,6 @@ lt:
     locale_label: 'Kalba'
     update_profile: 'Atnaujinti profilį'
   email_settings_page:
-    header: El. pašto nustatymai
     messages:
       updated: El. pašto nustatymai atnaujinti
   dashboard_page:
@@ -271,6 +272,8 @@ lt:
   discussion:
     activity: 'Veikla'
     load_previous: 'Įkelti ankstesnę veiklą'
+  activity_card:
+    context: Kontekstas
   thread_group:
     aria_label: 'Grupės pavadinimas'
   thread_context:
@@ -302,6 +305,14 @@ lt:
     save_changes: Įrašyti
   poll_common_attachment_form:
     label: Priedai
+  discussions_panel:
+    open: Atidaryti
+    closed: Uždarytas
+  members_panel:
+    header_username: 'Naudotojo vardas'
+  polls_panel:
+    open: 'Atidaryti'
+    closed: 'Uždarytas'
   poll_common_form:
     closed: Uždarytas
   poll_count_options:

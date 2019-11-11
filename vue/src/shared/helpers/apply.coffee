@@ -13,14 +13,6 @@ export obeyMembersCanAnnounce = (steps, group) ->
   else
     _.without(steps, 'announce')
 
-export applyLoadingFunction = (scope, functionName) ->
-  executing = "#{functionName}Executing"
-  loadingFunction = scope[functionName]
-  scope[functionName] = (args...) ->
-    return if scope[executing]
-    scope[executing] = true
-    loadingFunction(args...).finally -> scope[executing] = false
-
 export applySequence = (scope, options = {}) ->
   applySequence(scope, options)
 
@@ -32,7 +24,7 @@ export applyPollStartSequence = (scope, options = {}) ->
     chooseComplete: (_, pollType) ->
       scope.poll.pollType = pollType
     saveComplete: (_, event) ->
-      LmoUrlService.goTo LmoUrlService.poll(event.model())
+      scope.$router.push LmoUrlService.poll(event.model())
       options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
 export applyDiscussionStartSequence = (scope, options = {}) ->
@@ -45,7 +37,7 @@ export applyDiscussionStartSequence = (scope, options = {}) ->
     steps: obeyMembersCanAnnounce(['save', 'announce'], scope.discussion.group())
     emitter: options.emitter or scope
     saveComplete: (_, event) ->
-      LmoUrlService.goTo LmoUrlService.discussion(event.model())
+      scope.$router.push LmoUrlService.discussion(event.model())
       options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
 applySequence = (scope, options) ->

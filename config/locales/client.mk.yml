@@ -11,23 +11,32 @@ mk:
     models:
       proposal: 'Предлог'
     action:
+      search: 'Пребарувај'
       save: 'Зачувај'
       edit: 'Измени'
       like: 'Ми се допаѓа'
       unlike: 'Не ми се допаѓа'
       cancel: 'Откажи'
+  emoji_picker:
+    search: Пребарувај
   error_page:
     forbidden: 'Немате дозвола за да го направите ова.'
+  pin_event_form:
+    title_label: Наслов
+  change_volume_form:
+    simple:
+      label: Известувања
+      quiet: Игнорирај
   comment_form:
     edit_comment: 'Измени го коментарот'
     delete_comment: 'Избриши го коментарот'
     confirm_delete_message: 'Дали си сигурен/а дека сакаш да го избришиш коментарот?'
+  sidebar:
+    threads: 'Дискусии'
   navbar:
     search:
       placeholder: 'Пребарувај'
       discussions: 'Дискусии'
-  membership_dropdown:
-    make_coordinator: 'Направи координатор'
   notifications:
     header: "Известувања"
   position_buttons_panel:
@@ -37,26 +46,38 @@ mk:
     title_label: 'Наслов'
     context_label: 'Контекст'
     privacy_label: 'Приватност'
+  action_dock:
+    edited: Изменето
   join_group_button:
     join_group: Приклучи се во групата
+    membership_requested: Барањето за членство е игнорирано.
   membership_request_form:
     heading: Побарај да се придружиш на групата
     name_label: Име
     email_label: Email
+  group_wizard:
+    invite_people: Покани луѓе
+    start_thread: Започни дискусија
   group_page:
+    threads: Дискусии
+    members: Членови
     options_label: 'Опции'
     options:
       label: 'Опции'
+  group_form:
+    group_name_placeholder: 'Кое е името на твојата група?'
+    profile: Профил
   document:
     form:
       title_label: Име
   membership_requests_page:
     approve: Одобри
     ignore: Игнорирај
+  invitation_form:
+    invite_people: 'Покани луѓе'
   memberships_page:
     members: 'Членови'
     name_label: 'Име'
-    coordinator_label: 'Координатор'
     remove_member_label: 'Избриши'
   profile_page:
     profile: 'Профил'
@@ -71,6 +92,8 @@ mk:
   inbox_page:
     no_groups:
       or: или
+  activity_card:
+    context: Контекст
   thread_group:
     aria_label: 'Име на групата'
   thread_context:
@@ -90,6 +113,13 @@ mk:
     message_label: 'Твојата порака'
   poll_common:
     save_changes: Зачувај
+  discussions_panel:
+    closed: Затворено
+  members_panel:
+    order_by_name: 'Име'
+    header_name: 'Име'
+  polls_panel:
+    closed: 'Затворено'
   poll_common_form:
     closed: Затворено
   poll_count_options:

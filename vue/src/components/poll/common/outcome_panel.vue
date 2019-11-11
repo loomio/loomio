@@ -1,65 +1,33 @@
 <script lang="coffee">
-import Records        from '@/shared/services/records'
-import Session        from '@/shared/services/session'
-import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
-import { listenForTranslations } from '@/shared/helpers/listen'
-import PollModalMixin from '@/mixins/poll_modal'
-
+import OutcomeService from '@/shared/services/outcome_service'
+import parseISO from 'date-fns/parseISO'
 export default
-  mixins: [PollModalMixin]
-  data: ->
-    actions: [
-      name: 'react'
-      canPerform: => AbilityService.canReactToPoll(@poll)
-    ,
-      name: 'announce_outcome'
-      icon: 'mdi-account-plus'
-      active:     => @poll.outcome().announcementsCount == 0
-      canPerform: => AbilityService.canAdministerPoll(@poll)
-      perform:    => ModalService.open 'AnnouncementModal', announcement: =>
-        Records.announcements.buildFromModel(@poll.outcome())
-    ,
-      name: 'edit_outcome'
-      icon: 'mdi-pencil'
-      canPerform: => AbilityService.canSetPollOutcome(@poll)
-      perform:    => @openPollOutcomeModal(@poll.outcome())
-    ,
-      name: 'translate_outcome'
-      icon: 'mdi-translate'
-      canPerform: => AbilityService.canTranslate(@poll.outcome())
-      perform:    => @poll.outcome().translate(Session.user().locale)
-    ]
-
   props:
     poll: Object
 
-  mounted: ->
-    listenForTranslations(@)
+  methods:
+    parseISO: parseISO
+  computed:
+
+    outcome: -> @poll.outcome()
+    actions: -> OutcomeService.actions(@outcome, @)
 
 </script>
 
 <template lang="pug">
-div(v-if="poll.outcome()" class="poll-common-outcome-panel lmo-action-dock-wrapper")
-  h3.lmo-card-subheading(v-t="'poll_common.outcome'")
-  .poll-common-outcome-panel__authored-by
-    span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: poll.outcome().authorName() } }")
-    time-ago(:date="poll.outcome().createdAt")
-  p(v-marked="poll.outcome().statement" v-if="!poll.outcome().translation" class="lmo-markdown-wrapper")
-  translation(:model="poll.outcome()" :field="statement" v-if="poll.outcome().translation")
-  document-list(:model="poll.outcome()")
-  .lmo-md-actions
-    reaction-display(:model="poll.outcome()" :load="true")
-    action-dock(:model="poll.outcome()" :actions="actions")
-  </div>
-</div>
+v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="outcome" color="primary lighten-5" elevation="2")
+  .title(v-t="'poll_common.outcome'")
+  .poll-common-outcome-panel__authored-by.caption.my-2
+    span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }")
+    space
+    time-ago(:date="outcome.createdAt")
+  .poll-common-outcome__event-info(v-if="outcome.poll().datesAsOptions() && outcome.pollOption()")
+    .title {{outcome.eventSummary}}
+    span {{exactDate(parseISO(outcome.pollOption().name))}}
+    p {{outcome.eventLocation}}
+  formatted-text(:model="outcome" column="statement")
+  document-list(:model="outcome")
+  v-layout(align-center)
+    v-spacer
+    action-dock(:model="outcome" :actions="actions")
 </template>
-
-<style lang="scss">
-@import 'app.scss';
-@import 'variables.scss';
-.poll-common-outcome-panel__authored-by {
-  @include fontSmall;
-  color: $grey-on-white;
-}
-</style>

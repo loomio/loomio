@@ -1,7 +1,21 @@
 he:
+  loomio_onboarding:
+    group_progress_card:
+      title: הפעלת הקבוצה שלך
+      activities:
+        set_description: הגדר את תאור הקבוצה
+        set_logo: בחר לוגו לקבוצה שלך
+        set_cover_photo: בחר תמונת קאבר לקבוצה
+        invite_people_in: הזמן אנשים
+        start_thread: התחל דיון
+        make_decision: התחל החלטה
+      learn_more: למד עוד בעזרה של לומיו
+      dismiss_this_card: בטל את הכרטיס
+  plan_names:
+    free: חינם
+    trial: ניסיון
   current_plan_button:
     upgrade: שדרג
-    tooltip: רכוש חבילת Loomio להזמין עוד אנשים ולהתחיל עוד שירשורים
   loomio_tags:
     tags: תגיות
     apply_tags: החל תגיות
@@ -54,14 +68,6 @@ he:
     wave: גל
     thumbsup: אגודל למעלה להסכמה
     thumbsdown: אגודל למטה לשלילה
-  poll_types:
-    proposal: הצעה
-    count: בדיקה
-    poll: סקר
-    dot_vote: הצבעה בנקודה
-    meeting: הצבעת זמן
-    ranked_choice: דירוג בחירה
-    score: ניקוד סקר
   timezones:
     local: זמן מקומי ({{value}})
   common:
@@ -114,6 +120,10 @@ he:
     points_abbrev: כל הצבעה שווה {{score}} נקודות
     total: סך הכל
     action:
+      pin: סיכה
+      unpin: הסר סיכה
+      search: 'חיפוש'
+      back: 'חזרה'
       next: 'הבא'
       close: 'סגור'
       reopen: 'פתח מחדש'
@@ -124,17 +134,14 @@ he:
       edit: 'עריכה'
       remove: 'הסרה'
       like: 'אהבתי'
-      back: 'חזרה'
       unlike: 'לא אהבתי'
       update: 'עדכון'
       cancel: 'ביטול'
       show_more: "הראה עוד"
       view_all: "צפייה בכל"
       new_thread: "שיחה חדשה"
-      add_subgroup: 'הוסף תת קבוצה'
       loading: 'נטען'
       translate: 'תרגום'
-      translated: 'תרגום ע"י מתרגם של בינג'
       upload: 'העלה'
       uploading: 'עולה'
       load_more: 'טען עוד'
@@ -159,6 +166,8 @@ he:
     formatting_help:
       label: 'פורמט'
       title: 'למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך'
+  emoji_picker:
+    search: חיפוש
   ordinal:
     _1: ראשון
     _2: שני
@@ -191,26 +200,27 @@ he:
     quiet: 'שקט'
     mute: 'השתקה'
     unmute: 'הסר השתקה'
+  pin_event_form:
+    title_label: כותרת
   change_volume_form:
+    simple:
+      label: התרעות
+      normal: רגיל
+      quiet: התעלמ/י
     aria_label: "טופס שינוי הגדרות המייל"
     loud_label: "כל הפעילויות"
     normal_label: "הודעות"
     quiet_label: "אין מיילים"
     mute_label: "השתקה"
     discussion:
-      title: "הגדרות מייל לשיחה"
-      loud_description: "תקבל/י הודעה במייל על כל פעילות בשיחה זו."
-      normal_description: "תקבל/י הודעה במייל כשהצעה מתחילה, עומדת להסגר, או תוצאה מפורסמת"
-      quiet_description: "לא תקבל הודעת מייל על שיחה זו."
       apply_to_all: "יישם את הגדרות אלה על כל השיחות בקבוצה זו."
       messages:
         loud: "מייל ישלח אליך על פעילות בשיחה זו."
         normal: "מייל ישלח אליך על הצעות בשיחה זו."
         quiet: "לא תקבל הודעת מייל על שיחה זו."
     membership:
-      title: "הגדרות מייל עבור {{title}}"
       loud_description: "מייל יישלח אליך כשיש פעילות בקבוצה זו."
-      normal_description: "מייל יישלח אליך רק בהכרזות בקבוצה."
+      normal_description: "מייל יישלח אליך כשיש פעילות בקבוצה זו."
       quiet_description: "מייל לא יישלח אליך בנוגע לפעילות בקבוצה."
       apply_to_all: "החל הגדרות אלו על כל הקבוצות שלי"
       messages:
@@ -218,6 +228,7 @@ he:
         normal: "מייל יישלח אליך רק בהכרזות בקבוצה"
         quiet: "לא יישלח אליך מייל בנוגע לקבוצה זו."
     all_groups:
+      loud_description: "מייל יישלח אליך על כל פעולה בקבוצות שלך."
       messages:
         loud: "מייל יישלח אליך על כל פעולה בקבוצות שלך."
         normal: "יישלחו לך מיילים רק עבור הכרזות בקבוצות שלך."
@@ -291,12 +302,16 @@ he:
     private_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה רק לחברים בקבוצה {{groupName}}.'
     public_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה לכולם.'
     sign_in: "הרשם להצטרפות לדיון"
+  thread_nav:
+    participants: משתתפים
   sidebar:
+    threads: 'שיחות'
     recent_threads: 'שיחות אחרונות'
     unread_threads: 'שיחות שלא נקראו ({{count}})'
     muted_threads: 'שיחות שהושתקו'
     start_group: 'ארגון חדש'
     explore: 'קבוצות ציבוריות'
+    explore_groups: חקור קבוצות
     start_thread: שיחה חדשה
     start_decision: החלטה חדשה
     aria_labels:
@@ -325,7 +340,6 @@ he:
   user_dropdown:
     button_label: 'תפריט משתמש'
     edit_profile: 'עריכת פרופיל'
-    email_settings: 'הגדרות מייל'
     help: 'עזרה'
     contact_site_name: 'צור קשר עם {{site_name}}'
     sign_out: 'יציאה מהמערכת'
@@ -341,8 +355,6 @@ he:
     set_title: "הגדר כותרת"
     resend: "שלח הזמנה שוב"
     invitation_resent: "הזמנה נשלחה שוב"
-    make_coordinator: 'הפיכה למתאם'
-    demote_coordinator: 'הורדת דרגת המתאם'
     remove_from:
       discussion: "הסר מהשיחה"
       group: "הסר מהקבוצה"
@@ -377,7 +389,6 @@ he:
     motion_outcome_created: "<strong>{{name}}</strong> פרסמ/ה תוצאה להצעה <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> עדכן את התוצאה להצעה <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> אישר את הזמנתך להצטרפות <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> נתן לך הרשאה של מתאם של <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> התחיל את {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> ערך את {{poll_type}}: <strong>{{title}}</strong>"
     poll_announced: "<strong>{{name}}</strong> שיתף את {{poll_type}}: <strong>{{title}}</strong>"
@@ -398,7 +409,7 @@ he:
     created: 'השיחה {{title}} נוצרה בהצלחה ב{{groupName}}'
     updated: 'שמור שינויים ל{{title}}'
   discussion_fork_actions:
-    helptext: "בחר פריטים שהיית רוצה להעביר לשיחה חדשה"
+    move: העבר
   discussion_form:
     aria_label: 'טופס שיחה'
     messages:
@@ -472,16 +483,14 @@ he:
     flash:
       success: '{{count}} עדכונים נשלחו'
   action_dock:
-    react: הוספת ריאקציה
     add_resource: צרוף קובץ
     edit_group: עריכת תוכן הקבוצה
     add_comment: הערה
     copy_url: העתק כתובת הדף
     edit_thread: ערוך תוכן
-    announce_thread: הזמן אנשים להצטרף לשיחה
-    announce_thread_active: (אף אחד עוד לא הוזמן)
     translate_thread: תרגום תוכן
     edit_poll: עריכת סקר
+    move_items: העבר
     announce_poll: הזמן אנשים להצביע
     announce_poll_active: (אף אחד עוד לא הוזמן)
     translate_poll: תרגום סקר
@@ -497,12 +506,17 @@ he:
     announce_outcome_active: (אף אחד עוד לא עודכן על התוצאה)
     translate_outcome: תרגם תוצאה
     show_history: הצג היסטוריית עריכה
+    edited: ערוך
     pin_thread: דקור שיחה
     unpin_thread: הסר דקירה של שיחה
     comment_copied: כתובת הURL של ההערה הועתקה לClipboard
     poll_copied: כתובת הURL של ההחלטה הועתקה לClipboard
     discussion_copied: כתובת הURL של השיחה הועתקה לClipboard
     tag_thread: ניהול תגיות
+    close_thread: סגור שיחה
+    delete_thread: מחיקת שיחה
+  formatting:
+    attach: צרוף קובץ
   cover_photo_form:
     aria_label: 'שנה תמונת קאבר של הטופס'
     heading: 'תמונת קאבר חדשה'
@@ -517,7 +531,6 @@ he:
     upload_success: 'לוגו עודכן בהצלחה'
   join_group_button:
     join_group: הצטרפו לקבוצה
-    membership_requested: בקשת חברות בהמתנה
     messages:
       joined_group: 'את/ה עכשיו חבר/ה ב{{group}}'
   membership_request_form:
@@ -556,7 +569,15 @@ he:
     thread_status:
       pinned: "השיחה הזו הוצמדה למעלה. היא תשאר בראש רשימת השיחות בקבוצה לכל המשתמשים."
       closed: "השיחה הזו נסגרה. היא לא תופיע בדשבורד, ותופיע כ'סגורה' בדף הקבוצה."
+  group_wizard:
+    welcome: הצלחה!
+    invite_people: הזמינו אנשים
+    start_thread: התחילו בדיון
   group_page:
+    threads: שיחות
+    members: חברים
+    settings: הגדרות
+    subgroups: תת קבוצה
     show_opened: '{{count}} פתוחים'
     show_closed: '{{count}} סגורים'
     no_threads_here: אין שיחות פה!
@@ -576,12 +597,10 @@ he:
     open_discussions: 'שיחות פתוחות'
     closed_discussions: 'שיחות סגורות'
     discussions_placeholder: 'שיחה היא מקום מפגש משותף לדיון על נושא וקבלת החלטות משותפת.'
-    members: '{{count}} חברים'
     members_placeholder: 'רק אתה פה בינתיים... הזמן כמה אנשים להצטרף אליך!'
     member_options: אפשרויות חבר
     see_all_members: 'ראה את כל {{count}} החברים'
     pending_invitations: '+ {{count}} ממתינים'
-    subgroups: 'תת קבוצה'
     subgroups_placeholder: 'תת קבוצות נותנות לצוותים את המקום שלהם להתעדכן לתכנים הרלוונטיים להם.'
     invite_people: 'הזמן'
     visibility_label: 'נראות'
@@ -589,7 +608,6 @@ he:
     options:
       label: 'אפשרויות'
       edit_group: 'עריכת הגדרות הקבוצה'
-      become_coordinator: הפוך למתאם
       export_data: יצוא דאטה של הקבוצה
       export_data_as_json: יצא את נתוני הקבוצה כקובץ JSON
       export_data_as_csv: יצא את נתוני הקבוצה כקובץ CSV
@@ -597,7 +615,7 @@ he:
       manage_members: 'ניהול חברים'
       add_subgroup: 'הוספת תת קבוצה'
       manage_subscription: 'ניהול מינויים של הקבוצה'
-      email_settings: 'הגדרות מייל'
+      email_settings: 'העדפות דוא״ל'
       leave_group: 'עזוב את הקבוצה'
       deactivate_group: 'הפוך קבוצה ללא פעילה'
     volume:
@@ -620,7 +638,6 @@ he:
       aria_label: 'פרטיות הקבוצה: {{privacy}}'
   description_card:
     title: 'תאור הקבוצה'
-    placeholder: 'מתאמי קבוצות יכולים להשתמש באיזור זה לתיאור מטרות הקבוצה, כך שכולם ידעו למה הם פה.'
     messages:
       description_updated: 'תאור עודכן'
   leave_group_form:
@@ -628,8 +645,6 @@ he:
     title: 'עזוב את הקבוצה'
     question: 'אתם בטוחים שאתם רוצים לצאת מהקבוצה?'
     submit: 'כן, צא מהקבוצה'
-    cannot_leave_group: 'אינך יכול לצאת בגלל שאתה המתאם האחרון בקבוצה. תדרשו לבחור מתאם אחר במקומכם או להפוך את הקבוצה ללא פעילה'
-    add_coordinator: 'הוסף מתאם'
   archive_group_form:
     aria_label: 'הפוך קבוצה ללא פעילה'
     title: 'הפוך קבוצה ללא פעילה'
@@ -642,7 +657,8 @@ he:
     edit_group_heading: 'ערוך הגדרות קבוצה'
     edit_subgroup_heading: 'ערוך הגדרות תת הקבוצה'
     group_name: 'שם הקבוצה'
-    group_name_placeholder: 'איך תרצה לקרוא לקבוצה?'
+    start_organization_heading: ארגון חדש
+    group_name_placeholder: 'מה שם הקבוצה שלך?'
     subgroup_name: 'שם תת הקבוצה'
     description: 'תיאור'
     description_placeholder: 'תאר את מטרת הקבוצה כך שחבריה ידעו למה הם פה.'
@@ -659,6 +675,7 @@ he:
     confirm_change_to_secret_subgroup: 'אם אתה ממשיך, כל השיחות בו יהיו פרטיות.'
     confirm_change_to_public: 'אם אתה ממשיך, כל השיחות בקבוצה יהיו פומביים וזמינים ברשת.'
     confirm_change_to_private_discussions_only: 'אם אתה ממשיך, כל שיחה פומבית בקבוצה תהפך לפרטית.'
+    profile: פרופיל
     subgroup_privacy_is_open_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פומביות."
     subgroup_privacy_is_closed_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פרטיות."
     subgroup_privacy_is_closed_public_threads_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. השיחות בתת הקבוצה הן פומביות או פרטיות."
@@ -669,13 +686,13 @@ he:
     membership_granted_upon_request: 'כל אחד יכול להצטרף לקבוצה.'
     membership_granted_upon_approval: 'כל אחד יכול לבקש להצטרף אבל חייב לקבל אישור.'
     membership_granted_upon_approval_secret_parent: '<strong>כל אחד מה{{parent}} יכול לבקש להצטרף לקבוצה</strong>.'
+    permissions: 'הרשאות'
     features: 'מאפייני הקבוצה'
     thread_privacy: 'פרטיות השיחה'
     public_threads: 'שיחות פומביות בלבד'
     public_discussions_subgroup: 'כל אחד מ{{parentGroupName}} יכול לצפות בדיונים'
     public_or_private_threads: 'אפשר שיחות פומביות ופרטיות'
     private_threads: 'רק חברים יכולים לראות את הדיונים'
-    permissions: 'הרשאות'
     allow_public_threads: 'אפשר שיחות פומביות בקבוצה זו.'
     parent_members_can_see_discussions: 'חברי {{parent}} יכולים לראות שיחות פרטיות.'
     members_can_announce: 'חברים יכולים להודיע לכולם בקבוצה זו.'
@@ -767,7 +784,7 @@ he:
     see_more: "צפה בכל: ({{count}}) ההחלטות"
   invitation_form:
     aria_label: 'טופס הזמנה'
-    invite_people: 'הזמן אנשים'
+    invite_people: 'הזמינו אנשים'
     invite_people_to_group: 'Iהזמנה ל{{name}}'
     group: 'קבוצה'
     group_placeholder: 'בחירת קבוצה'
@@ -775,7 +792,6 @@ he:
     copy_link: 'העתק'
     email_addresses: 'כתובת דואר אלקטרוני'
     email_addresses_placeholder: 'לדוגמא: helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'העתק את הלינק ושלח אותו לכל מי שתרצה לצרף לקבוצה. זה יאפשר להם כניסה לכל השיחות בקבוצה.'
     email_explanation: 'לחלופין, הזן כתובות דואר אלקטרוני מתחת ושלח הזמנה במייל.'
     add_custom_message: 'עשו את הזמנתכם אישית.'
     add_custom_message_link: 'הוסף הודעה אישית.'
@@ -802,15 +818,10 @@ he:
   memberships_page:
     members: 'חברים'
     name_label: 'שם'
-    coordinator_label: 'מתאם'
     remove_member_label: 'הסרה'
     fragment_placeholder: 'סנן משתמשים לפי שם או שם משתמש'
     messages:
       remove_member_success: '{{name}} הןסר'
-      make_admin_success: '{{name}} עכשיו מתאם'
-      remove_admin_success: '{{name}} כבר אינו מתאם'
-    remove_admin_from_self:
-      question: 'אתה בטוח שאתה לא רוצה להיות מתאם יותר?'
   membership_remove_modal:
     invitation:
       title: בטל הזמנה
@@ -824,9 +835,6 @@ he:
       impact_for_subgroups: זה יסיר את הגישה שלהם לכל תת הקבוצות של הקבוצה.
       flash: משתתף הוסר
       submit: הסרת משתתף
-  memberships_panel:
-    add_coordinator: הפוך למתאם
-    remove_coordinator: הורדת דרגת המתאם
   membership_form:
     modal_title:
       group: תן שם לקבוצה
@@ -873,7 +881,6 @@ he:
       deactivated: 'החשבון הושבת'
     change_picture_link: 'שנה תמונה'
     change_password_link: 'אפס סיסמה'
-    deactivate_user_link: 'השבת חשבון...'
     delete_account: 'מחר חשבון לצמיתות'
     delete_user_link: 'מחק חשבון'
     profile: 'פרופיל'
@@ -890,23 +897,18 @@ he:
     location_label: 'מיקום'
     location_placeholder: 'איפה אתה ממוקם?'
     update_profile: 'עדכן פרופיל'
-    deactivate_account: 'השבת חשבון'
     help_translate: "עזור לנו לתרגם את המערכת"
   text_editor:
     select_text_to_link: בחר טקסט לחיבור
     insert_link: הכנס לינק
   change_picture_form:
-    aria_label: 'שנה צורת התמונה'
-    title: 'שנה תמונה'
     helptext: 'אתה יכול לעלות תמונת פרופיל משלך או, אם יש לך חשבון <a href="https://en.gravatar.com/support/whatisgravatar/">אווטר</a>, אתה יכול להשתמש בו.'
     use_initials: 'השתמש בראשי תיבות'
-    use_gravatar: 'השתמש באווטר'
-    use_uploaded: 'העלה תמונה חדשה'
+    use_gravatar: 'שימוש בGravatar'
   change_password_form:
     set_password: הגדר סיסמה
     password_changed: סיסמתך עודכנה
   deactivation_modal:
-    aria_label: 'השבת חשבון'
     introduction: 'כשאתה משבית את חשבונך:'
     no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
     name_removed: 'הערות, הצעות ודיונים שביצעת ישראו אבל השם שלך יוסר מהם'
@@ -914,7 +916,6 @@ he:
     you_can_reactivate: "אם תרצה, תוכל לאקטב את החשבון שלך מחדש בשלב מאוחר יותר "
     submit: 'כן, אני רוצה להשבית'
   delete_user_modal:
-    title: 'מחק את חשבון המשתמש שלך'
     irreversable: "אזהרה: פעולה זו לא ניתנת לביטול. אם אתה ממשיך:"
     you_will_be_deleted: "חשבון המשתמש שלך כולל שמך, כתובת הדוא\"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו."
     submit: 'כן, מחק את חשבון המשתמש שלי'
@@ -925,7 +926,6 @@ he:
     placeholder: 'שאלת רשות. כל מידע שתשתף איתנו יעזור לנו להשתפר :)'
     submit: 'השבת חשבון'
   email_settings_page:
-    header: הגדרות מייל
     email_newsletter: הניוזלטר של לומיו
     email_newsletter_description: "קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד\"כ 2-3 מיילים בשנה."
     daily_summary_label: סיכום יומי במייל
@@ -959,7 +959,6 @@ he:
     load_more: הצג עוד שיחות
     mark_as_read: סמן כנקרא
     dismiss: בטל
-    thread_dismissed: שיחה שוחררה
     thread_recalled: שיחה הושבה
     explain_mute:
       title: לא השתקת אף שיחה עוד.
@@ -1012,9 +1011,6 @@ he:
     max_threads_reached: |
         <p>השתמשת בכל {{maxThreads}} השירשורים הפנויים בקבוצה זו.</p>
         <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> בכדי להמשיך לשתף פעולה בLoomio.</p>
-    subscription_canceled: |
-        <p>מצטערים! החשבון שלך לא פעיל.</p>
-        <p>אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> כדי להמשיך להשתמש בלומיו.</p>
     activity: 'פעילות'
     activity_placeholder: 'אין פעילות עוד!'
     load_previous: 'טען פעילויות מוקדמות יותר'
@@ -1030,8 +1026,8 @@ he:
       closed: 'השיחה נסגרה'
   activity_card:
     beginning: התחלה
-    unread: לא-נקרא
     latest: אחרונים
+    context: הקשר
     chronological: כרונולוגית
     nested: מקונן
     attachment_display:
@@ -1039,12 +1035,12 @@ he:
       image_alt: 'תמונה מצורפת'
     n_previous: 'טען  {{count}} תגובות קודמות'
     n_more: 'טען {{count}} תגובות'
+    comment: הערה
   thread_group:
     aria_label: 'שם הקבוצה'
   thread_context:
     aria_label: 'הקשר השיחה'
     thread_options: 'אפשרויות השיחה'
-    email_settings: 'הגדרות מייל'
     edit: 'עריכה'
     edit_thread: 'עריכה'
     close_thread: 'סגירה'
@@ -1164,14 +1160,10 @@ he:
     search_placeholder: חיפוש בקבוצות פומביות
     single_search_result: "התאמה עם קבוצה פומבית אחת <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} התאמות לקבוצות פומביות <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>לא מוצא את הקבוצה שאתה מחפש?</strong> אם הפרטיות של קבוצה מוגדרת כ-'סודי', היא לא תופיע כאן. אם ידוע לך מי מתאם בקבוצה, תוכל לבקש ממנו הזמנה."
   global:
     messages:
       app_update: 'גרסה חדשה של האפליקציה זמינה לעדכון'
       reload: 'טען מחדש'
-  emoji_picker:
-    search: "בחר אימוג'י"
-    no_emojis_found: "ללא נמצאו אימוג'ים ל-'{{term}}'!"
   authorized_apps_page:
     title: אפליקציות מורשות
     no_applications: "לא נתת הרשאה לאף אפליקציית צד שלישי עוד."
@@ -1213,7 +1205,6 @@ he:
     messages:
       success: "'{{name}}' אינו מורשה להשתמש בחשבונך יותר."
   decision_tools_card:
-    title: כלים לקבלת החלטות
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">עזרה</a>
     proposal_title: הצעה
     count_title: בדיקה
@@ -1264,8 +1255,20 @@ he:
     show_results: הראה תוצאות
   poll_common_index_card:
     title: החלטות קודמות
-    no_polls: לא נמצאו החלטות קודמות.
     count: "צפה בכל: ({{count}}) ההחלטות"
+  discussions_panel:
+    open: פתוח
+    all: הכל
+    closed: סגור
+  members_panel:
+    order_by_name: 'שם'
+    header_name: 'שם'
+    header_username: 'שם משתמש'
+    invitations: 'הזמנה'
+  polls_panel:
+    all: 'הכל'
+    open: 'פתוח'
+    closed: 'סגור'
   poll_common_action_panel:
     anonymous: ההצבעות יהיו אנונימיות
     anonymous_until_close: ההצבעות יהיו אנונימיות עד לסגירת הסקר
@@ -1290,7 +1293,6 @@ he:
     helptext_on: משתמשים יועלו להוסיף פגישה זו ליומן שלהם
     helptext_off: הזמנה לפגישה לא תשלח
     event_duration: משך
-    event_summary: סיכום
     event_summary_placeholder: איך תרצה לקרוא לפגישה זו?
     event_description: תיאור הפגישה
     event_description_placeholder: מה התוכנית/לו"ז לפגישה?
@@ -1320,7 +1322,6 @@ he:
       helptext_on: מצביעעים יכולים לציין זמנים כ-"אם יש צורך"
   poll_common_close_form:
     title: סגור סקר מוקדם
-    helptext: אתה בטוח שאתה מוכן לסגור מוקדם?
     close_proposal: סגור הצעה
     close_poll: סגור סקר
     close_count: סגור בדיקה
@@ -1344,7 +1345,6 @@ he:
     ranked_choice_reopened: סקר לפי דירוג נפתחה מחדש
   poll_common_closing_at_field:
     closing: סוגרים
-    closing_hour: שעת סגירה
   poll_card:
     started_by: התחיל לפי {{name}}
   poll_common_votes_panel:
@@ -1373,7 +1373,6 @@ he:
     dot_vote: 'בחירת הנקודות הזו נסגרה. <storng>שתף את התוצאה</strong> עם הקבוצה.'
     ranked_choice: 'הסקר הדירוג הזה נסגר. <strong>שתף את התוצאה</strong> עם הקבוצה.'
   poll_common_outcome_form:
-    new_title: שתף תוצאה
     update_title: עדכן תוצאה
     outcome_created: תוצאה נוצרה
     outcome_updated: תוצאה עודכנה
@@ -1397,7 +1396,6 @@ he:
     title: כותרת
     details: פירוט
     options: אפשרויות
-    options_placeholder: הוסף אפשרות חדשה...
     no_options: לא הוספת עוד אף אפשרות.
     closing: סוגרים
     closed: סגור
@@ -1412,7 +1410,6 @@ he:
         <p>תרשים עוגה יציג את העמדות בקבוצה, בעוד שהצהרות נותנות לקולות השונים להשמע. </p>
         <p>אל תתאכזב אם אתה לא רואה הסכמה בתחילה, הצעות נועדו להעלות על פני השטח נושאים הדורשים פתרון.</p>
         <p>עם השתתפות טובה, הצעה היא כלי חזק למנדט לביצוע פעולות.</p>
-    tool_tip_collapsed: שאף להסכמה קולקטיבית
     start_header: התחל הצעה
     edit_header: ערוך הצעה
     tip: שאף להסכמה קולקטיבית דרך תהליך שמאפשר לכל הקולות להשמע. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">למד איך</a>
@@ -1425,10 +1422,8 @@ he:
         <p>השתמש בסקר למדידת הפופולריות או להצעת אפשרויות.</p>
         <p>תן כמה אפשרויות לבחור מהן, החלט אם משתתפים בוחרים אפשרות אחת או כמה אפשרויות.</p>
         <p>כולם בוחרים ויכולים להוסיף הצהרה אם ירצו. התוצאות תוצגנה בגרף עמודות.</p>
-    tool_tip_collapsed: מדוד פופולריות או הצע אפשרויות
     start_header: התחל סקר
     edit_header: עריכת סקר
-    tip: מדוד פופולריות של אפשרוית שונות
     title_placeholder: 'לדוגמא: לאן תרצה ללכת בחופשה?'
     details_placeholder: תן את כל הפרטים כדי שאנשים יוכלו לענות על השאלה.
     add_option_placeholder: הוסף אפשרות
@@ -1442,10 +1437,8 @@ he:
         <p>או השתמש בה לעקוב אחרי סיום משימה: "בדקתי שרשימת הקשר שלי נכונה" או "קראתי את המסמך והשארתי פידבק".</p>
         <p>לבדיקה יש <em>מטרה</em>, שהיא מספר המשתתפים שתרצה. המטרה מציינת לקבוצה אם משהו דורש עוד התייחסות או שמשתתפיה מעודכנים היטב.</p>
         <p>יום לפני שהבדיקה נסגרת, היא תתזכר לאלו שלא השתתפו לעשות כן, כמו רועה צאן דיגיטלי.</p>
-    tool_tip_collapsed: עקוב השתתפות וחפש מתנדבים
     start_header: התחל בדיקה
     edit_header: ערוך בדיקה
-    tip: עורר באנשים עניין עם הצעה או בקשה
     title_placeholder: 'לדוגמא: מי רוצה להצטרף לקבוצת עבודה?'
     details_placeholder: הסבר איזו התחייבות נדרשת או תן פירוט על איך להשתתף.
     count_created: בדיקה החלה
@@ -1455,25 +1448,19 @@ he:
         <p>בחירת נקודות היא דרך לתיעדוף רשימה של אפשרויות.</p>
         <p>משתתפים מקבלים מספר 'נקודות' שהם יכולים למקם כרצונם מבין האפשרויות כדי להציג את העדפותיהם.</p>
         <p>התוצאות הכוללות מוצגות, כמו גם ההצבעות האינדיבידואליות, כך שאתה יכול לשקול כמה נקודות מבט.</p>
-    tool_tip_collapsed: תעדף אפשרויות
     start_header: התחל הצבעה של בחירת נקודות
     edit_header: ערוך הצבעה של בחירת נקודות
-    tip: הקצה משאבים במשותף
     title_placeholder: 'לדוגמא: איך אנחנו צריכים להקצות את התקציב שלנו?'
     details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
     add_option_placeholder: הוסף אפשרות
-    dots_per_person: נקודות פר אדם
-    dots_per_person_helptext: מספר הנקודות שיחלק כל משתתף
     dot_vote_created: הצבעת נקודות נוצרה
     dot_vote_updated: הצבעת נקודות עודכנה
   poll_score_form:
     tool_tip_expanded: |
         <p>תוצאת הסקרים מאפשרת לאנשים להביע את דרגת העדפתם לכל אפשרות.</p>
         <p>סך כל הניקוד לכל אפשרות מופיעה כחלק מהתוצאות.</p>
-    tool_tip_collapsed: ניקוד כל אפשרות
     start_header: התחל סקר ניקוד
     edit_header: ערוך סקר ניקוד
-    tip: ניקוד כל אפשרות
     title_placeholder: 'לדוגמא: תן ציון למועמדים מ-0 עד 9'
     details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
     add_option_placeholder: הוסף אפשרות
@@ -1487,10 +1474,8 @@ he:
         <p>אם אתה מוסיף זמנים חדשים בזמן הסקר, אנשים שהצביעו כבר יקבלו הודעה לעדכן את תגובתם. </p>
         <p>אתה יכול לראות מי פנוי מתי ולהחליט מתי תתקיים הפגישה.</p>
         <p>הזמנים מעודכנים באופן אוטומטי לפי הזמן המקומי של המשתתף.</p>
-    tool_tip_collapsed: מצא זמן להפגש
     start_header: התחל סקר זמן
     edit_header: ערוך סקר זמן
-    tip: מצא מתי אנשים פנויים לפגישה
     title_placeholder: 'דוגמא: מתי נקיים את פגישתנו הבאה?'
     details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
     meeting_created: סקר זמן נוצר
@@ -1498,16 +1483,13 @@ he:
     timeslots: משבצות זמן
     no_options: הזן זמנים באיזור הזמן שלך ({{zone}}). משתתפים יראו את הזמנים מתורגמים לאיזורי הזמן שלהם.
     meeting_duration: אורך הפגישה
-    add_option_placeholder: הזן זמן חדש
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>דירוג בחירה היא שיטת הצבעה שמאפשרת לכל מצביע להגיב עם העתפותיהם לפי סדר.</p>
         <p>זוהי אפשרות מועדפת כאשר 'גניבת הצבעות' היא דאגה (ז"א, שתי אפשרויות פופולריות הן דומות מספיק כך שהן מתחלקות בהצבעות ביניהן), וניתנת לשימוש לצורך מימוש קונדורסה או בחירות בסגנון סיבוב שני מיידי.
         </p>
-    tool_tip_collapsed: דרג אפשרויות לפי הסדר
     start_header: התחל דירוג הבחירה
     edit_header: ערוך דרוג הבחירה
-    tip: מצא מתי אנשים פנויים לפגישה
     title_placeholder: 'לדוגמא: את מי תרצה כראש העיר?'
     details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
     meeting_created: דירוג הבחירה נוצר
@@ -1553,8 +1535,6 @@ he:
     reason_placeholder: השאר הודעה, אם תרצה
     stance_created: הצבעה נוצרה
     stance_updated: הצבעה עודכנה
-  poll_common_percent_voted:
-    sentence: "{{percent}}% החברים הצהירו את עמדתם ({{numerator}}/{{denominator}})"
   poll_count_chart_panel:
     out_of: מחוץ ל{{goal}}
   poll_meeting_chart_panel:
@@ -1571,8 +1551,6 @@ he:
     stance_updated: זמינות עודכנה
     reason_placeholder: הסבר מתי אתה פנוי (או תפוס), במידה והכותב צריך להוסיף אפשרויות.
   poll_dot_vote_vote_form:
-    dots_remaining: "{{count}} נקודות נותרו."
-    too_many_dots: השתמשת ביותר מידי נקודות.
     stance_created: הצבעה נוצרה
     stance_updated: הצבעה עודכנה
   poll_ranked_choice_vote_form:
@@ -1580,24 +1558,6 @@ he:
     stance_created: בחירה תועדה במערכת
     stance_updated: בחירה עודכנה
   thread_item:
-    comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> בתגובה ל<strong>{{title}}</strong>"
-    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ערך את כותרת השיחה"
-    discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ערך את תוכן השיחה"
-    discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ערך את הקבצים המצורפים לשיחה"
-    discussion_privacy_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> עדכן את הגדרות הפרטיות של השיחה"
-    discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ערך את השיחה"
-    discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> העביר את השיחה מ<strong>{{title}}</strong>"
-    discussion_closed: "<strong><a href='u/{{username}}'>{{author}}</a></strong> סגר את השיחה"
-    discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> פתח מחדש את השיחה"
-    discussion_forked: "<strong><a href='u/{{username}}'>{{author}}</a></strong> יצר פיצול של שיחה: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
-    outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> שיתף את התוצאה עבור <strong>{{title}}</strong>"
-    poll_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> פתח מחדש את {{polltype}}: <strong>{{title}}</strong>"
-    poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> סגר את {{polltype}}: <strong>{{title}}</strong>"
-    poll_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> התחיל את {{polltype}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ערך את {{polltype}}: <strong>{{title}}</strong>"
-    poll_expired: "{{polltype}} נסגר: <strong>{{title}}</strong>"
-    stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> הצביע על: <strong>{{title}}</strong>"
     event_removed: "הוסר מהשיחה"
   poll_admin_page:
     title: אדמין (מנהל) - {{title}}
@@ -1632,11 +1592,9 @@ he:
     sign_in_to_loomio: התחבר ל{{site_name}}
     sign_in: התחבר
     continue: המשך
+    create_account: צור חשבון
     sign_in_as: הרשם כ{{name}}
-    continue_with_provider: המשך עם {{provider}}
-    continue_with_email: המשך עם המייל
     or_enter_your_email: או, הכנס את המייל שלך
-    invitation_required: חשבון לא נמצא. חשבונות חדשים הם לפי הזמנה בלבד.
     more_providers: עוד
     email_not_present: כתובת מייל נדרשת כאן
     invalid_email: "סליחה, אבל זה לא נראה כמו כתובת מייל תקינה"
@@ -1655,15 +1613,12 @@ he:
     name_required: אנה הכנס שם
     terms_required: עליך לאשר את תנאי השימוש
     account_inactive: אוי, נראה שהחשבון עבור {{email}} אינו פעיל!
-    privacy_notice: "מידע אישי נאסף בעת שימוש ב{{siteName}}. <br/> קרא את <a href='{{privacyUrl}}' target='_blank'>מדיניות הפרטיות</a> כדי ללמוד עוד את הנושא."
     welcome: חדש ב{{siteName}}?
     welcome_back: ברוך השב, {{name}}!
-    login_link: הרשם עם המייל
     set_password: הגדר סיסמה
     set_password_helptext: תרצה להשתמש בסיסמה בפעם הבאה?
     hello: "שלום, {{name}}!"
     new_to_loomio: פעם ראשונה ב{{site_name}}? צור חשבון
-    create_account: צור חשבון
     already_a_user: השתמשת ב{{site_name}} בעבר? הכנס את כתובת המייל בה השתמשת בפעם האחרונה לחיבורה.
     link_accounts: חבר חשבונות
     check_your_email: בדוק את המייל שלך!
@@ -1685,15 +1640,11 @@ he:
       install_helptext: הבוט של Loomio הודיע לקבוצה שלך על הדיונים וההחלטות בLoomio
       installed_title: מחובר לMicrosoft Teams
       installed_helptext: אירועים מקבוצה זו יישלחו לMicrosoft Teams שלך.
-      install_microsoft: חבר צוותים
-      remove_identity: הסר אינטגרציה זו
-      confirm_remove_title: הסר Microsoft Teams
       confirm_remove_helptext: |
           ערוץ הMicrosoft Teams שלך לא יקבל עוד עדכונים על קבוצה זו.
           אתה יכול תמיד להחזיר אותו שוב.
       identity_removed: אינטגרציה הוסרה
     form:
-      webhook_helptext: הזן את הwebhook URL שקיבלת בערוץ הצוותים שלך. <a href="/microsoft">למד עוד על הגדרת Microsoft Teams עם Loomio</a>
       webhook_label: Webhook URL
       webhook_installed: מחובר לMicrosoft Teams
       webhook_placeholder: https://outlook.office.com/...
@@ -1707,8 +1658,6 @@ he:
       poll_expired: סקר הסתיים
       outcome_created: שותפה תוצאה
   install_slack:
-    modal_title: התקן Slack
-    modal_helptext: ראשית כל, עליך להתחבר לסלאק. אנחנו נעביר אותך לשם אוטומטית עוד שניה, או שאתה יכול ללחוץ על הכפתור למטה להמשיך.
     login_to_slack: התחבר לSlack
     card:
       install_title: קשר לSlack
@@ -1742,8 +1691,6 @@ he:
       use_existing_group: השתמש בקבוצה קיימת
     invite:
       heading: 'שלב 2: הגדר ערוץ סלאק'
-      helptext: |
-          הצלחה! עכשיו בחר ערוץ שתרצה להכניס עדכונים לתוכו.
       select_a_channel: בחר ערוץ
       publish_group: פרסם הודעת פתיחה
       publish_group_helptext_on: אנחנו נפרסם הודעה לתוך ערוץ זה כדי להדריך אנשים איך להשתמש בבוט של לומיו.

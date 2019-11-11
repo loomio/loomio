@@ -27,16 +27,13 @@ export default
 </script>
 
 <template lang="pug">
-v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu" lazy)
-  template(v-slot:activator="{on}")
-    v-btn.emoji-picker__toggle(flat icon v-on="on")
-      v-icon mdi-emoticon-outline
+v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
+  template(v-slot:activator="{on: menu}")
+    v-btn.emoji-picker__toggle.action-button(small text v-on="{ ...menu }" v-t="'action_dock.react'")
   emoji-picker(:insert="insert")
-  //- md-tooltip{md-delay: "500"}
-  //-   %span{translate: "reactions_input.add_your_reaction"}
 </template>
 
-<style lang="scss">
+<style lang="css">
 .reactions-input {
   display: flex;
   align-items: center;

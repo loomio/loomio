@@ -4,14 +4,27 @@ import AuthModalMixin from '@/mixins/auth_modal'
 import EventBus from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
+import { each, compact, truncate } from 'lodash'
+import openModal      from '@/shared/helpers/open_modal'
 
 export default
   mixins: [AuthModalMixin]
   data: ->
     pageError: null
-    
+
+  created: ->
+    Session.updateLocale(@$route.query.locale) if @$route.query.locale
+
+    each AppConfig.theme.vuetify, (value, key) =>
+      @$vuetify.theme.themes.light[key] = value if value
+      true
+
   mounted: ->
     @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
+    if Session.isSignedIn() && Session.user().experiences['show_vue_upgraded_modal']
+      openModal
+        maxWidth: 400
+        component: 'VueUpgradedModal'
     EventBus.$on('currentComponent', @setCurrentComponent)
     EventBus.$on 'pageError', (error) =>
       @openAuthModal() if !Session.isSignedIn() and error.status == 403
@@ -19,17 +32,19 @@ export default
     EventBus.$on 'signedIn', =>
       @pageError = null
 
+  watch:
+    '$route': ->
+      @pageError = null
+
   methods:
     setCurrentComponent: (options) ->
-      title = _.truncate(options.title or @$t(options.titleKey), {length: 300})
-      document.querySelector('title').text = _.compact([title, AppConfig.theme.site_name]).join(' | ')
+      @pageError = null
+      title = truncate(options.title or @$t(options.titleKey), {length: 300})
+      document.querySelector('title').text = compact([title, AppConfig.theme.site_name]).join(' | ')
 
       AppConfig.currentGroup      = options.group
       AppConfig.currentDiscussion = options.discussion
       AppConfig.currentPoll       = options.poll
-
-      # scrollTo(options.scrollTo or 'h1') unless options.skipScroll
-      # updateCover()
 
     shouldForceSignIn: (options = {}) ->
       # return false if options.page == "pollPage" and Session.user() !AbilityService.isEmailVerified()
@@ -66,9 +81,27 @@ export default
 v-app
   navbar
   sidebar
-  v-content
-    router-view(v-if="!pageError")
-    error(v-if="pageError" :error="pageError")
+  router-view(v-if="!pageError")
+  common-error(v-if="pageError" :error="pageError")
+  v-spacer
+  common-footer
   modal-launcher
-  flash
+  common-flash
 </template>
+
+<style lang="sass">
+$mdi-font-path: '/fonts/mdi'
+@import '@mdi/font/scss/materialdesignicons.scss'
+
+a
+  text-decoration: none
+
+.text-almost-black
+  color: rgba(0, 0, 0, 0.87)
+
+.max-width-800
+  max-width: 800px
+.max-width-1024
+  max-width: 1024px
+
+</style>

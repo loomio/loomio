@@ -39,7 +39,7 @@ module.exports = (test) ->
     test.getLocationInView(selector, callback)
 
   ensureSidebar: ->
-    @waitFor('.navbar__left')
+    @waitFor('.navbar__sidenav-toggle')
     test.click('.navbar__sidenav-toggle')
     # test.elements 'css selector', '.sidenav-left', (result) =>
     #   if result.value.length == 0
@@ -48,8 +48,16 @@ module.exports = (test) ->
     #   else
     #     console.log 'not there'
 
+  ensureThreadNav: ->
+    test.isVisible '.thread-nav__add-people' , (result) ->
+      if !result.value
+        test.click('.thread-page__open-thread-nav')
+
   pause: (time = 1000) ->
     test.pause(time)
+
+  debug: -> test.pause(9999999)
+
 
   mouseOver: (selector, callback, wait) ->
     @waitFor(selector, wait)
@@ -59,6 +67,11 @@ module.exports = (test) ->
     @waitFor(selector, wait)
     test.clearValue(selector)
     test.setValue(selector, value)
+
+  fillInAndEnter: (selector, value, wait) ->
+    @waitFor(selector, wait)
+    test.clearValue(selector)
+    test.setValue(selector, [value, test.Keys.ENTER])
 
   execute: (script) ->
     test.execute(script)

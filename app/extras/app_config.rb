@@ -61,7 +61,17 @@ class AppConfig
       warn_palette_config:    JSON.parse(ENV.fetch('THEME_WARN_PALETTE_CONFIG',     '{}')),
       custom_primary_palette:  json_parse_or_false('THEME_CUSTOM_PRIMARY_PALETTE'),
       custom_accent_palette:   json_parse_or_false('THEME_CUSTOM_ACCENT_PALETTE'),
-      custom_warn_palette:     json_parse_or_false('THEME_CUSTOM_WARN_PALETTE')
+      custom_warn_palette:     json_parse_or_false('THEME_CUSTOM_WARN_PALETTE'),
+      vuetify: {
+          primary: ENV['THEME_COLOR_PRIMARY'],
+          secondary: ENV['THEME_COLOR_SECONDARY'],
+          accent: ENV['THEME_COLOR_ACCENT'],
+          error: ENV['THEME_COLOR_ERROR'],
+          warning: ENV['THEME_COLOR_WARNING'],
+          info: ENV['THEME_COLOR_INFO'],
+          success: ENV['THEME_COLOR_SUCCESS'],
+          anchor: ENV['THEME_COLOR_ANCHOR']
+      }
     }
   end
 

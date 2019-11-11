@@ -5,7 +5,7 @@ describe PollsController do
   let(:user) { create :user }
   let(:group) { create :formal_group, is_visible_to_public: true }
   let(:discussion) { create :discussion, private: false, group: group }
-  let(:poll) { create :poll, author: user }
+  let(:poll) { create :poll, group: group, author: user }
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:identity) { create :facebook_identity, user: user }
@@ -14,6 +14,12 @@ describe PollsController do
   let(:another_poll) { create :poll }
   let(:closed_poll) { create :poll, author: user, closed_at: 1.day.ago }
   let(:received_email) { create :received_email }
+
+  before do
+    group.add_member!(user)
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    PollService.create(poll: poll, actor: poll.author)
+  end
 
   describe 'show' do
     it 'sets metadata for public polls' do

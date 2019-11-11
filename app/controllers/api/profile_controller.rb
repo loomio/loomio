@@ -4,6 +4,19 @@ class API::ProfileController < API::RestfulController
     respond_with_resource serializer: UserSerializer
   end
 
+  def groups
+    ids = current_user.formal_groups.pluck(:id)
+    self.collection = Group.published.where(id: ids).or(Group.published.where('parent_id in (:ids)', ids: ids).where('is_visible_to_parent_members = true or is_visible_to_public = true'))
+    respond_with_collection serializer: Full::GroupSerializer, root: :groups
+  end
+
+  def time_zones
+    time_zones = User.where('time_zone is not null').joins(:memberships).
+                      where('memberships.group_id': current_user.formal_group_ids).
+                      group(:time_zone).count.sort_by {|k,v| -v }
+    render json: time_zones, root: false
+  end
+
   def mentionable_users
     instantiate_collection do |collection|
       collection.mention_search(current_user, model, params[:q])
@@ -54,15 +67,18 @@ class API::ProfileController < API::RestfulController
 
   def save_experience
     raise ActionController::ParameterMissing.new(:experience) unless params[:experience]
-    service.save_experience user: current_user, actor: current_user, params: { experience: params[:experience] }
+    service.save_experience user: current_user, actor: current_user, params: { experience: params[:experience], remove_experience: params[:remove_experience]}
     respond_with_resource
   end
 
   def email_status
-    respond_with_resource(serializer: Pending::UserSerializer, scope: {has_token: has_membership_token?})
+    respond_with_resource(serializer: Pending::UserSerializer)
   end
 
   private
+  def current_user
+    restricted_user || super
+  end
 
   def model
     load_and_authorize(:group, optional: true) ||
@@ -91,11 +107,6 @@ class API::ProfileController < API::RestfulController
 
   def current_user_params
     { user: current_user, actor: current_user, params: permitted_params.user }
-  end
-
-  def has_membership_token?
-    return unless membership = Membership.find_by(token: params[:token])
-    membership.token if resource.email == membership.user.email
   end
 
   def resource_class

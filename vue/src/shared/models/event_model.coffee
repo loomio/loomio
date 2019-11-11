@@ -1,26 +1,30 @@
 import BaseModel from '@/shared/record_store/base_model'
+import i18n from '@/i18n.coffee'
 
 export default class EventModel extends BaseModel
   @singular: 'event'
   @plural: 'events'
-  @indices: ['id', 'actorId', 'discussionId']
+  @indices: ['id', 'actorId', 'discussionId', 'sequenceId', 'position', 'depth', 'parentId']
 
   @eventTypeMap:
-    group:              'groups'
-    discussion:         'discussions'
-    poll:               'polls'
-    outcome:            'outcomes'
-    stance:             'stances'
-    comment:            'comments'
-    comment_vote:       'comments'
-    membership:         'memberships'
-    membership_request: 'membershipRequests'
+    Group: 'groups'
+    Discussion: 'discussions'
+    Poll: 'polls'
+    Outcome: 'outcomes'
+    Stance: 'stances'
+    Comment: 'comments'
+    CommentVote: 'comments'
+    Membership: 'memberships'
+    MembershipRequest: 'membershipRequests'
 
   relationships: ->
     @belongsTo 'parent', from: 'events'
     @belongsTo 'actor', from: 'users'
     @belongsTo 'discussion'
     @hasMany  'notifications'
+
+  defaultValues: ->
+    pinned: false
 
   parentOrSelf: ->
     if @parentId
@@ -39,13 +43,16 @@ export default class EventModel extends BaseModel
     @deleted = true
 
   actorName: ->
-    @actor().nameWithTitle(@discussion()) if @actor()
+    if @actor()
+      @actor().nameWithTitle(@discussion())
+    else
+      i18n.t('common.anonymous')
 
   actorUsername: ->
     @actor().username if @actor()
 
   model: ->
-    @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
+    @recordStore[@constructor.eventTypeMap[@eventableType]].find(@eventableId)
 
   isUnread: ->
     !@discussion().hasRead(@sequenceId)
@@ -59,21 +66,41 @@ export default class EventModel extends BaseModel
   removeFromThread: =>
     @remote.patchMember(@id, 'remove_from_thread').then => @remove()
 
-  canFork: ->
-    @kind == 'new_comment' && @isSurface()
+  pin: (title) ->
+    @remote.patchMember(@id, 'pin', {pinned_title: title})
+
+  suggestedTitle: ->
+    model = @model()
+    if model.title
+      model.title.replace(///<[^>]*>?///gm, '')
+    else
+      parser = new DOMParser()
+      doc = parser.parseFromString(model.statement || model.body, 'text/html')
+      if el = doc.querySelector('h1,h2,h3')
+        el.textContent
+      else
+        ''
+
+  unpin: -> @remote.patchMember(@id, 'unpin')
 
   isForkable: ->
-    @discussion().isForking() && @kind == 'new_comment'
+    @discussion() && @discussion().isForking
 
   isForking: ->
-    _.includes @discussion().forkedEventIds, @id
+    @discussion() && (@discussion().forkedEventIds.includes(@id) or @parentIsForking())
+
+  parentIsForking: ->
+    @parent() && @parent().isForking()
+
+  forkingDisabled: ->
+    @parentIsForking() || (@parent() && @parent().kind == 'poll_created')
 
   toggleFromFork: ->
     if @isForking()
-      _.pull @discussion().forkedEventIds, @id
+      @discussion().update(forkedEventIds: _.without @discussion().forkedEventIds, @id)
     else
+      @discussion().update(isForking: true)
       @discussion().forkedEventIds.push @id
-    _.invokeMap @recordStore.events.find(parentId: @id), 'toggleFromFork'
 
   next: ->
     @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]

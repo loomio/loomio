@@ -136,6 +136,15 @@ module Plugins
       }.to_proc
     end
 
+    def use_post_route(route, path)
+      @actions.add Proc.new {
+        # prepending rather than appending so we can override application root route
+        Loomio::Application.routes.prepend do
+          post route.to_s => path, constraints: NotGroupSubdomainConstraints
+        end
+      }.to_proc
+    end
+
     def use_root_page(path)
       @actions.add Proc.new {
         Loomio::Application.routes.append do

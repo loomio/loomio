@@ -1,26 +1,21 @@
-<style lang="scss">
-</style>
-
 <script lang="coffee">
-import TimeService from '@/shared/services/time_service'
+import { exact } from '@/shared/helpers/format_time'
+import { parseISO } from 'date-fns'
 
 export default
   props:
     name: String
     zone: String
-  data: ->
-    sameYear    : TimeService.sameYear
-    displayYear : TimeService.displayYear
-    displayDay  : TimeService.displayDay
-    displayDate : TimeService.displayDate
-    displayTime : TimeService.displayTime
-    fullDayDate : TimeService.fullDayDate
+  computed:
+    time: -> exact(parseISO(@name), @zone)
 </script>
 
 <template lang="pug">
-.poll-meeting-time
-  span(v-if='!sameYear(name)') {{ displayYear(name, zone) }}
-  span {{ displayDate(name, zone) }}
-  span {{ displayDay(name, zone) }}
-  span(v-if='!fullDayDate(name)') {{ displayTime(name, zone) }}
+span.poll-meeting-time {{time}}
 </template>
+
+<style lang="css">
+.poll-meeting-time{
+  white-space: nowrap;
+}
+</style>

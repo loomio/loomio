@@ -18,11 +18,6 @@ tr:
     discussions_count_plural: ({{count}} müzakereler)
     tags_marked: 'Müzakereler {{groupName}} içinde ''{{name}}'' ile işaretlendi '
     no_tags_present: Bu etiketle müzakere bulunamadı! Başka birini seçmeyi deneyin.
-  poll_types:
-    proposal: Öneri
-    count: Kontrol et
-    poll: Anket
-    dot_vote: Oy kullan
   timezones:
     local: Yerel saat ({{value}})
   common:
@@ -67,6 +62,8 @@ tr:
     copy_text: 'Metni kopyala'
     copied: 'Panoya kopyalandı'
     action:
+      search: 'Arama'
+      back: 'Geri'
       close: 'Kapat'
       save: 'Kaydet'
       save_changes: 'Değişiklikleri kaydet'
@@ -75,17 +72,14 @@ tr:
       edit: 'Düzenle'
       remove: 'Kaldır'
       like: 'Beğen'
-      back: 'Geri'
       unlike: 'Beğenmekten vazgeç'
       update: 'Güncelle'
       cancel: 'İptal et'
       show_more: "Daha fazla göster"
       view_all: "Hepsini görüntüle"
       new_thread: "Yeni müzakere"
-      add_subgroup: 'Alt grup ekle'
       loading: 'Yükleniyor'
       translate: 'Tercüme et'
-      translated: 'Bing Translator tercümesi'
       upload: 'Yükle'
       uploading: 'Yükleniyor'
       load_more: 'Daha fazla yükle'
@@ -96,6 +90,8 @@ tr:
       invite: Davet et
     formatting_help:
       label: 'Biçimlendirme'
+  emoji_picker:
+    search: Arama
   devise:
     failure:
       inactive: 'Bu e-posta adresiyle ilişkili devre dışı bırakılmış bir hesap var. Hesabınızı yeniden etkinleştirmek istiyorsanız, bizimle iletişime geçin.'
@@ -111,16 +107,21 @@ tr:
     quiet: 'Sessiz'
     mute: 'Sesi kıs'
     unmute: 'Sesi aç'
+  pin_event_form:
+    title_label: Başlık
   change_volume_form:
+    simple:
+      label: Bildirimler
+      normal: Normal
+      quiet: Yok say
     aria_label: "E-posta ayarları formunu değiştir"
     loud_label: "Tüm aktiviteler"
     normal_label: "Duyurular"
     quiet_label: "E-posta yok"
     mute_label: "Sesi kıs"
-    discussion:
-      loud_description: "Bu konuyla ilgili etkinlik olduğunda e-postayla size gönderilecektir."
     membership:
-      title: "{{title}} için e-posta ayarları"
+      loud_description: "Bu grupta ne zaman bir faaliyet olursa size eposta ile gönderilecek."
+      normal_description: "Bu grupta ne zaman bir faaliyet olursa size eposta ile gönderilecek."
   inbox:
     clear: 'Temizle'
     latest: 'En yeniler'
@@ -148,6 +149,7 @@ tr:
     private_privacy_notice: 'Yorumunuz sadece {{groupName}} grubunun üyelerine görünür olacak.'
     public_privacy_notice: 'Yorumunuz web üzerindeki herkese görünür olacak.'
   sidebar:
+    threads: 'Müzakereler'
     explore: 'Genel gruplar'
     start_thread: Yeni konu
     aria_labels:
@@ -170,7 +172,6 @@ tr:
     sign_in: 'Oturum aç'
     logo_title: 'Ana sayfa'
   membership_dropdown:
-    make_coordinator: 'Koordinatör yap'
     cancel_invitation: Davetiyeyi iptal et
   notifications:
     header: "Bildirimler"
@@ -185,6 +186,8 @@ tr:
   discussion_record:
     created: '{{title}} müzakeresi {{groupName}} grubunda başarıyla oluşturuldu '
     updated: 'Değişiklikleri {{title}} konusuna kaydet'
+  discussion_fork_actions:
+    move: Taşı
   discussion_form:
     messages:
       created: 'Müzakere başlatıldı'
@@ -202,8 +205,13 @@ tr:
     privacy_private: 'Müzakere sadece {{group}} grubunun üyelerine görünür olacaktır.'
     privacy_organisation: 'Müzakere {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
   action_dock:
+    move_items: Taşı
     edit_stance: Konumunu değiştir
+    edited: Düzenlendi
     tag_thread: Etiketleri yönet
+    delete_thread: Müzakereyi sil
+  formatting:
+    attach: Dosya ekle
   cover_photo_form:
     heading: 'Yeni kapak fotoğrafı'
     upload_link: 'Yeni kapak fotoğrafı yükle'
@@ -212,6 +220,7 @@ tr:
     upload_link: 'Yeni grup logosu yükle'
   join_group_button:
     join_group: Gruba katıl
+    membership_requested: Üyelik talep edildi
     messages:
       joined_group: 'Şu an {{group}} grubunun bir üyesisin.'
   membership_request_form:
@@ -229,7 +238,14 @@ tr:
     edited_by: '<strong>{{name}}</strong> tarafından düzenlendi'
     posted: Gönderildi
     current_revision: En yeniler
+  group_wizard:
+    invite_people: Kişileri davet et
+    start_thread: Bir müzakere başlat
   group_page:
+    threads: Müzakereler
+    members: Üyeler
+    settings: Ayarlar
+    subgroups: Alt gruplar
     messages:
       privacy:
         members: 'Bu grup şu an sadece grup üyeleri tarafından görülebilir'
@@ -243,7 +259,6 @@ tr:
     discussions_placeholder: 'Müzakere, herkesin bir başlık hakkında tartışarak birlikte kararlar aldığı yerdir.'
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
-    subgroups: 'Alt gruplar'
     invite_people: 'Davet et'
     visibility_label: 'Görünürlük'
     options_label: 'Seçenekler'
@@ -253,6 +268,7 @@ tr:
       manage_members: 'Üyeleri Yönet'
       add_subgroup: 'Alt Grup Ekle'
       manage_subscription: 'Grup Aboneliğini Yönet'
+      email_settings: 'E-posta tercihleri'
       leave_group: 'Gruptan Ayrıl'
       deactivate_group: 'Grubu Devre Dışı Bırak'
     volume:
@@ -281,7 +297,7 @@ tr:
     edit_group_heading: 'Grup ayarlarını düzenle'
     edit_subgroup_heading: 'Alt grup ayarlarını düzenle'
     group_name: 'Grup adı'
-    group_name_placeholder: 'Grubuna ne ad vermek istiyorsun?'
+    group_name_placeholder: 'Grup isminizin adı nedir?'
     subgroup_name: 'Alt Grup Adı'
     description: 'Tanım'
     description_placeholder: 'Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.'
@@ -297,6 +313,7 @@ tr:
     confirm_change_to_secret_subgroup: 'Eğer devam ederseniz, tüm müzakereler gizli yapılacaktır.'
     confirm_change_to_public: 'Eğer devam ederseniz, bu gruptaki tüm müzakereler web üzerinde herkese açık olacaktır.'
     confirm_change_to_private_discussions_only: 'Eğer devam ederseniz, bu gruptaki kamuya açık tüm müzakereler gizlenecektir.'
+    profile: Profil
     subgroup_privacy_is_open_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır."
     subgroup_privacy_is_closed_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir."
     subgroup_privacy_is_closed_public_threads_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açık veya gizli olabilir."
@@ -306,12 +323,12 @@ tr:
     how_do_people_join: "Kişiler nasıl katılabilir?"
     membership_granted_upon_request: 'Herkes gruba katılabilir.'
     membership_granted_upon_approval: 'Herkes katılım talebinde bulunabilir, ancak onaylanması gerekir.'
+    permissions: 'İzinler'
     thread_privacy: 'Müzakere gizliliği'
     public_threads: 'Sadece kamuya açık olan müzakereler'
     public_discussions_subgroup: '{{parentGroupName}} grubunda bulunan herkes müzakereleri görebilir'
     public_or_private_threads: 'Kamuya açık ve gizli müzakerelere izin ver'
     private_threads: 'Sadece üyeler müzakereleri görebilir'
-    permissions: 'İzinler'
     allow_public_threads: 'Bu grupta kamuya açık müzakerelere izin ver.'
     parent_members_can_see_discussions: '{{parent}} grubunun üyeleri gizli müzakereleri görebilir.'
     members_can_add_members: 'Üyeler başkalarını davet edebilir ve katılım isteklerini onaylayabilir.'
@@ -351,7 +368,7 @@ tr:
     heading: Geçmiş öneriler
     see_more: Daha fazlasını görün
   invitation_form:
-    invite_people: 'Kişileri Davet Et'
+    invite_people: 'Kişileri davet et'
     group: 'Grup'
     shareable_link: 'Paylaşılabilir bağlantı'
     copy_link: 'Kopyala'
@@ -380,15 +397,10 @@ tr:
   memberships_page:
     members: 'Üyeler'
     name_label: 'İsim'
-    coordinator_label: 'Koordinatör'
     remove_member_label: 'Kaldır'
     fragment_placeholder: 'Kullanıcıları ad ya da kullanıcı adına göre filtrele...'
     messages:
       remove_member_success: '{{name}} kaldırıldı'
-      make_admin_success: '{{name}} şimdi bir koordinatör'
-      remove_admin_success: '{{name}} artık bir koordinatör değil'
-    remove_admin_from_self:
-      question: 'Artık bir koordinatör olmak istemediğinizden emin misiniz?'
   membership_remove_modal:
     invitation:
       title: Davetiyeyi iptal et
@@ -416,7 +428,6 @@ tr:
       password_changed: 'Şifre güncellendi'
       deactivated: 'Hesap devre dışı bırakıldı'
     change_picture_link: 'Resmi değiştir'
-    deactivate_user_link: 'Hesabınızı devre dışı bırakın'
     profile: 'Profil'
     edit_profile: 'Profili düzenle'
     picture_label: 'Resim'
@@ -425,8 +436,9 @@ tr:
     email_label: 'E-posta'
     locale_label: 'Dil'
     update_profile: 'Profili güncelle'
+  change_picture_form:
+    use_gravatar: 'Gravatar kullan'
   email_settings_page:
-    header: E-posta ayarları
     daily_summary_label: Günlük özet e-postası
     on_participation_description: "Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir."
     announcement_label: Duyurular
@@ -483,8 +495,8 @@ tr:
     volume:
       mute_message: 'Müzakerenin sesi kısıldı'
   activity_card:
-    unread: Okunmamış
     latest: En yeniler
+    context: İçerik
     attachment_display:
       aria_label: 'Dosya eklendi:'
       image_alt: 'Resim eklendi'
@@ -493,7 +505,6 @@ tr:
   thread_context:
     aria_label: 'Müzakere içeriği'
     thread_options: 'Müzakere seçenekleri'
-    email_settings: 'E-posta ayarları'
     edit: 'Düzenle'
     edit_thread: 'Düzenle'
     close_thread: 'Kapat'
@@ -581,8 +592,6 @@ tr:
   global:
     messages:
       reload: 'Tekrar yükle'
-  emoji_picker:
-    no_emojis_found: "'{{term}}' için hiçbir emoji bulunamadı!"
   registered_apps_page:
     name: İsim
   registered_app_form:
@@ -593,6 +602,18 @@ tr:
     poll_title: Anket
   poll_common:
     save_changes: Kaydet
+  discussions_panel:
+    open: Açık
+    all: Hepsi
+    closed: Kapalı
+  members_panel:
+    order_by_name: 'İsim'
+    header_name: 'İsim'
+    header_username: 'Kullanıcı adı'
+  polls_panel:
+    all: 'Hepsi'
+    open: 'Açık'
+    closed: 'Kapalı'
   poll_common_notify_group:
     notify_group: Duyuru
   poll_common_close_form:

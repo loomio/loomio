@@ -29,6 +29,8 @@ te:
     copy: 'కాపీ చేయి'
     total: మొత్తం
     action:
+      search: 'వెతుకు'
+      back: 'వెనుకకు'
       next: 'తదుపరి'
       close: 'మూసివేయి'
       save: 'భద్రపరుచు'
@@ -36,7 +38,6 @@ te:
       edit: 'సవరించు'
       remove: 'తీసివేయి'
       like: 'ఇష్టం'
-      back: 'వెనుకకు'
       unlike: 'అయిష్టం'
       update: 'తాజాకరించు'
       cancel: 'రద్దుచేయి'
@@ -47,6 +48,14 @@ te:
       delete: తొలగించు
       send: పంపించు
       invite: ఆహ్నానించు
+  emoji_picker:
+    search: వెతుకు
+  pin_event_form:
+    title_label: శీర్షిక
+  change_volume_form:
+    simple:
+      label: గమనికలు
+      quiet: విస్మరించు
   sign_up_form:
     password_label: 'సంకేతపదం:'
     password_confirmation_label: 'అదే సంకేతపదం మరోసారి:'
@@ -55,6 +64,7 @@ te:
   comment_form:
     delete_comment: 'వ్యాఖ్యను తొలగించు'
   sidebar:
+    threads: 'చర్చలు'
     aria_labels:
       user_list: 'వాడుకరి చర్యలు'
   navbar:
@@ -65,7 +75,6 @@ te:
     logo_title: 'ముంగిలి పేజీ'
   user_dropdown:
     button_label: 'వాడుకరి మెనూ'
-    email_settings: 'ఈమెయిలు అమరికలు'
     help: 'సహాయం'
   membership_card:
     invitations: "ఆహ్వానాలు"
@@ -80,17 +89,26 @@ te:
     title_label: 'శీర్షిక'
     context_label: 'సందర్భం'
     privacy_label: 'గోప్యత'
+  join_group_button:
+    membership_requested: సభ్యత్వం అభ్యర్థించబడింది
   membership_request_form:
     heading: సమూహంలో చేరుటకు అడగండి
     name_label: పేరు
     email_label: ఈమెయిలు
   reactions_display:
     you: "మీరు"
+  group_wizard:
+    invite_people: వ్యక్తులను ఆహ్వానించండి
+    start_thread: ఒక చర్చను ప్రారంభించండి
   group_page:
+    threads: చర్చలు
+    members: సభ్యులు
+    settings: అమరికలు
     invite_people: 'ఆహ్నానించు'
     options_label: 'ఐచ్ఛికాలు'
     options:
       label: 'ఐచ్ఛికాలు'
+      email_settings: 'వేగు అభిరుచులు'
   group_form:
     privacy: 'అంతరంగికత'
   document:
@@ -100,13 +118,13 @@ te:
     approve: ఆమోదించండి
     ignore: విస్మరించు
   invitation_form:
+    invite_people: 'వ్యక్తులను ఆహ్వానించండి'
     copy_link: 'కాపీ చేయి'
     send: 'పంపించు'
     done: 'పూర్తయింది'
   memberships_page:
     members: 'సభ్యులు'
     name_label: 'పేరు'
-    coordinator_label: 'సమన్వయకర్త'
     remove_member_label: 'తీసివేయి'
   membership_remove_modal:
     invitation:
@@ -120,16 +138,16 @@ te:
     email_label: 'ఈమెయిలు'
     locale_label: 'భాష'
   email_settings_page:
-    header: ఈమెయిలు అమరికలు
     update_settings: మార్పులను భద్రపరచు
   dashboard_page:
     threads_from:
       today: 'నేడు'
       yesterday: 'నిన్న'
+  activity_card:
+    context: సందర్భం
   thread_group:
     aria_label: 'సమూహం పేరు'
   thread_context:
-    email_settings: 'ఈమెయిలు అమరికలు'
     close_thread: 'మూసివేయి'
     delete_thread: 'తొలగించు'
   delete_comment_dialog:
@@ -151,6 +169,14 @@ te:
     name_label: పేరు
   poll_common:
     save_changes: భద్రపరుచు
+  discussions_panel:
+    closed: మూసివేయబడింది
+  members_panel:
+    order_by_name: 'పేరు'
+    header_name: 'పేరు'
+    invitations: 'ఆహ్వానాలు'
+  polls_panel:
+    closed: 'మూసివేయబడింది'
   poll_common_form:
     closed: మూసివేయబడింది
     update: తాజాకరించు

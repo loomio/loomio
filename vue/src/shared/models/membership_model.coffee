@@ -30,18 +30,21 @@ export default class MembershipModel extends BaseModel
     @recordStore.polls.find(guestGroupId: @groupId)[0]
 
   saveVolume: (volume, applyToAll = false) ->
+    @processing = true
     @remote.patchMember(@keyOrId(), 'set_volume',
       volume: volume
       apply_to_all: applyToAll
-      unsubscribe_token: @user().unsubscribeToken).then =>
+      unsubscribe_token: @user().unsubscribeToken
+    ).then =>
       if applyToAll
-        _.each @user().allThreads(), (thread) ->
-          thread.update(discussionReaderVolume: null)
+        @recordStore.discussions.collection.find({ groupId: { $in: @group().organisationIds() } }).forEach((discussion) -> discussion.update(discussionReaderVolume: null))
         _.each @user().memberships(), (membership) ->
           membership.update(volume: volume)
       else
         _.each @group().discussions(), (discussion) ->
           discussion.update(discussionReaderVolume: null)
+    .finally =>
+      @processing = false
 
   resend: ->
     @remote.postMember(@keyOrId(), 'resend').then =>

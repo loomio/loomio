@@ -7,7 +7,7 @@ export default
 
     openStartPollModal: (poll) ->
       EventBus.$emit('openModal',
-                      component: 'PollCommonStartModal',
+                      component: 'PollCommonModal',
                       props: {
                         poll: poll
                       })
@@ -21,7 +21,7 @@ export default
 
     openEditPollModal: (poll) ->
       EventBus.$emit('openModal',
-                      component: 'PollCommonEditModal',
+                      component: 'PollCommonModal',
                       props: {
                         poll: poll.clone()
                       })
@@ -33,13 +33,6 @@ export default
                         outcome: outcome
                       })
 
-    openClosePollModal: (poll) ->
-      EventBus.$emit('openModal',
-                      component: 'PollCommonCloseModal',
-                      props: {
-                        poll: poll
-                      })
-
     openReopenPollModal: (poll) ->
       EventBus.$emit('openModal',
                       component: 'PollCommonReopenModal',
@@ -47,5 +40,9 @@ export default
                         poll: poll
                       })
 
-    closeModal: ->
-      EventBus.$emit('closeModal')
+    openAddOptionModal: (poll) ->
+      EventBus.$emit('openModal',
+                      component: 'PollCommonAddOptionModal',
+                      props: {
+                        poll: poll.clone()
+                      })

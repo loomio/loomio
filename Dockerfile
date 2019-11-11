@@ -4,8 +4,8 @@
 #
 # It is not a standalone image.
 #
-FROM ruby:2.6.3
-ENV REFRESHED_AT 2018-07-17
+FROM ruby:2.6.5
+ENV REFRESHED_AT 2019-11-05
 
 RUN gem update --system
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
@@ -20,7 +20,7 @@ RUN apt-get install -y libxml2-dev libxslt1-dev
 # RUN apt-get install -y python python-dev python-pip python-virtualenv
 
 # install node
-RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
 # RUN mkdir /loomio

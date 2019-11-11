@@ -6,13 +6,13 @@ angular.module('loomioApp').directive 'currentPlanButton', ->
   controller: ['$scope', ($scope) ->
     $scope.enabled = AppConfig.features.app.subscriptions
     $scope.plan = $scope.group.subscriptionPlan
-    $scope.showUpgrade = _.includes(['was-gift', 'trial'], $scope.plan)
-    $scope.upgradeUrl = AppConfig.baseUrl+'upgrade'
+    $scope.showUpgrade = $scope.group.subscriptionState == 'trialing'
+    $scope.upgradeUrl = AppConfig.baseUrl + 'upgrade'
   ]
   template: '
     <span>
       <md-button ng-if="enabled && plan" href="{{upgradeUrl}}" target="_blank" class="lmo-flex__horizontal-center">
-      <i class="mdi mdi-star mdi-24px premium-feature__star" aria-hidden="true"></i>
+      <i class="mdi mdi-rocket mdi-24px premium-feature__star" aria-hidden="true"></i>
       <span ng-if="showUpgrade" translate="current_plan_button.upgrade"></span>
       <span ng-if="!showUpgrade" translate="plan_names.{{plan}}"></span>
       <md-tooltip ng-if="showUpgrade"><span translate="current_plan_button.tooltip"></span></md-tooltip>

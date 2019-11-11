@@ -6,6 +6,12 @@ export default class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
   apiEndPoint: 'profile'
 
+  fetchTimeZones: ->
+    @remote.fetch path: "time_zones"
+
+  fetchGroups: ->
+    @remote.fetch path: "groups"
+
   fetchMentionable: (q, model) =>
     model = model.discussion() if !model.id? && model.discussionId
     model = model.group() if !model.id? && !model.discussionId
@@ -16,24 +22,33 @@ export default class UserRecordsInterface extends BaseRecordsInterface
         "#{model.constructor.singular}_id": model.id
 
   updateProfile: (user) =>
-    @remote.post 'update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })
+    user.processing = true
+    @remote.post('update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })).finally ->
+      user.processing = false
 
   uploadAvatar: (file) =>
     @remote.upload 'upload_avatar', file
 
   changePassword: (user) =>
-    @remote.post 'change_password', user.serialize()
+    user.processing = true
+    @remote.post('change_password', user.serialize()).finally ->
+      user.processing = false
 
   deactivate: (user) =>
-    @remote.post 'deactivate', user.serialize()
+    user.processing = true
+    @remote.post('deactivate', user.serialize()).finally -> user.processing = false
 
   destroy: => @remote.delete '/'
 
   reactivate: (user) =>
-    @remote.post 'reactivate', user.serialize()
+    user.processing = true
+    @remote.post('reactivate', user.serialize()).finally -> user.processing = false
 
   saveExperience: (experience) =>
-    @remote.post 'save_experience', experience: experience
+    @remote.post('save_experience', experience: experience)
+
+  removeExperience: (experience) =>
+    @remote.post('save_experience', experience: experience, remove_experience: 1)
 
   emailStatus: (email, token) ->
     @fetch

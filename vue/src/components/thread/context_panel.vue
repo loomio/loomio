@@ -1,171 +1,134 @@
 <script lang="coffee">
-import Records        from '@/shared/services/records'
-import Session        from '@/shared/services/session'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
 import ThreadService  from '@/shared/services/thread_service'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
-import Flash   from '@/shared/services/flash'
-import urlFor         from '@/mixins/url_for'
-import exactDate      from '@/mixins/exact_date'
-import DiscussionModalMixin from '@/mixins/discussion_modal'
-
-import { listenForTranslations } from '@/shared/helpers/listen'
-import { scrollTo }                                  from '@/shared/helpers/layout'
+import { exact }      from '@/shared/helpers/format_time'
+import { map, compact, pick } from 'lodash'
+import EventBus from '@/shared/services/event_bus'
+import openModal      from '@/shared/helpers/open_modal'
 
 export default
-  mixins: [urlFor, exactDate, DiscussionModalMixin]
   props:
     discussion: Object
 
-  mounted: ->
-    listenForTranslations(@)
-
   data: ->
-    actions: [
-      name: 'react'
-      canPerform: => AbilityService.canAddComment(@discussion)
-    ,
-      name: 'translate_thread'
-      icon: 'mdi-translate'
-      canPerform: => AbilityService.canTranslate(@discussion)
-      perform:    => @discussion.translate(Session.user().locale)
-    ,
-      name: 'add_comment'
-      icon: 'mdi-reply'
-      canPerform: => AbilityService.canAddComment(@discussion)
-      perform:    => scrollTo('.comment-form textarea')
-    ,
-      name: 'pin_thread'
-      icon: 'mdi-pin'
-      canPerform: => AbilityService.canPinThread(@discussion)
-      perform:    => ThreadService.pin(@discussion)
-    ,
-      name: 'unpin_thread'
-      icon: 'mdi-pin-off'
-      canPerform: => AbilityService.canUnpinThread(@discussion)
-      perform:    => ThreadService.unpin(@discussion)
-    ,
-      name: 'show_history',
-      icon: 'mdi-history'
-      canPerform: => @discussion.edited()
-      perform:    => ModalService.open 'RevisionHistoryModal', model: => @discussion
-    ,
-      name: 'edit_thread'
-      icon: 'mdi-pencil'
-      canPerform: => AbilityService.canEditThread(@discussion)
-      perform:    => @openEditDiscussionModal(@discussion)
-    ]
+    actions: ThreadService.actions(@discussion, @)
 
   computed:
+    arrangementAction: -> @actions['edit_arrangement']
+
+    editThread: -> @actions['edit_thread']
+
+    dockActions: ->
+      pick @actions, ['react', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'show_history', 'edit_thread', 'announce_thread']
+
+    menuActions: ->
+      pick @actions, ['edit_tags',  'notification_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+
     status: ->
       return 'pinned' if @discussion.pinned
+
     statusTitle: ->
       @$t("context_panel.thread_status.#{@status}")
 
+    groups: ->
+      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
+        text: group.name
+        disabled: false
+        to: @urlFor(group)
+
+    status: ->
+      return 'pinned' if @discussion.pinned
+
+    statusTitle: ->
+      @$t("context_panel.thread_status.#{@status}")
+
+    groups: ->
+      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
+        text: group.name
+        disabled: false
+        to: @urlFor(group)
+
   methods:
-    # showLintel: (bool) ->
-    #   EventBus.broadcast $rootScope, 'showThreadLintel', bool
-    showRevisionHistory: ->
-      ModalService.open 'RevisionHistoryModal', model: => @discussion
+    exact: exact
+    titleVisible: (visible) ->
+      EventBus.$emit('content-title-visible', visible)
+
+    viewed: (viewed) ->
+      @discussion.markAsSeen() if viewed
+
+    openArrangementForm: -> @actions['edit_arrangement'].perform()
+
+    openSeenByModal: ->
+      openModal
+        component: 'SeenByModal'
+        props:
+          discussion: @discussion
+
 </script>
 
 <template lang="pug">
-//- section.context-panel.lmo-card-padding.lmo-action-dock-wrapper(aria-label="$t('thread_context.aria_label')")
-v-card-text.context-panel
-  .context-panel__top
-    .context-panel__status(v-if='status', :title='statusTitle')
-      i.mdi.mdi-pin(v-if="status == 'pinned'")
-    .context-panel__h1.lmo-flex__grow
-      h1.headline.context-panel__heading
-        span(v-if='!discussion.translation') {{discussion.title}}
-        span(v-if='discussion.translation')
-          translation(:model='discussion', field='title')
-    context-panel-dropdown(:discussion="discussion")
-  v-layout.context-panel__details(align-center)
-    user-avatar.lmo-margin-right(:user='discussion.author()', size='medium')
+.context-panel.lmo-action-dock-wrapper#context(v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
+  v-layout(align-center mr-3 ml-2 pt-2 wrap)
+    v-breadcrumbs.context-panel__breadcrumbs(:items="groups" divider=">")
+    tags-display(:discussion="discussion")
     span
-      strong {{discussion.authorName()}}
-      span.mx-1(aria-hidden='true') ·
-      time-ago.nowrap(:date='discussion.createdAt')
-      span.mx-1(aria-hidden='true') ·
-      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
-        i.mdi.mdi-lock-outline
-        span(v-t="'common.privacy.private'")
-      span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
-        i.mdi.mdi-earth
-        span(v-t="'common.privacy.public'")
-      span(v-show='discussion.seenByCount > 0')
-        span.mx-1(aria-hidden='true') ·
-        span.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }")
-      span(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
-        span.mx-1(aria-hidden='true') ·
-        span(v-t="'thread_context.forked_from'")
-        router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
-    .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'", v-if='discussion.closedAt', md-colors="{color: 'warn-600', 'border-color': 'warn-600'}")
-      v-tooltip(bottom='') {{ exactDate(discussion.closedAt) }}
-  .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'md'", v-marked='discussion.cookedDescription()')
-  .context-panel__description.lmo-markdown-wrapper(v-if="discussion.descriptionFormat == 'html'", v-html='discussion.description')
+    v-spacer
+    span.grey--text.body-2
+      time-ago(:date='discussion.createdAt')
 
-  translation.lmo-markdown-wrapper(v-if='discussion.translation', :model='discussion', field='description')
-  document-list(:model='discussion', :skip-fetch='true')
-  attachment-list(:attachments="discussion.attachments")
-  .lmo-md-actions
-    reaction-display.context-panel__actions-left(:model="discussion" :load="true")
-    action-dock(:model='discussion', :actions='actions')
+  h1.display-1.context-panel__heading.px-3#sequence-0(v-observe-visibility="{callback: titleVisible}")
+    i.mdi.mdi-pin.context-panel__heading-pin(v-if="status == 'pinned'")
+    span(v-if='!discussion.translation.title') {{discussion.title}}
+    span(v-if='discussion.translation.title')
+      translation(:model='discussion', field='title')
+
+  div.mx-3.mb-2
+    .context-panel__details.my-2.body-2(align-center)
+      user-avatar.mr-4(:user='discussion.author()', :size='40')
+      span
+        router-link(:to="urlFor(discussion.author())") {{discussion.authorName()}}
+        mid-dot
+        span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private(v-show='discussion.private')
+          i.mdi.mdi-lock-outline
+          span(v-t="'common.privacy.private'")
+        span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public(v-show='!discussion.private')
+          i.mdi.mdi-earth
+          span(v-t="'common.privacy.public'")
+        span(v-show='discussion.seenByCount > 0')
+          mid-dot
+          a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+        span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
+          mid-dot
+          span(v-t="'thread_context.forked_from'")
+          router-link(:to='urlFor(discussion.forkedEvent())') {{discussion.forkedEvent().discussion().title}}
+      .lmo-badge.lmo-pointer(v-t="'common.privacy.closed'" v-if='discussion.closedAt')
+        v-tooltip(bottom) {{ exact(discussion.closedAt) }}
+    formatted-text.context-panel__description(:model="discussion" column="description")
+    document-list(:model='discussion')
+    attachment-list(:attachments="discussion.attachments")
+    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
+  v-divider
 </template>
-<style lang="scss">
-@import 'variables';
-.context-panel {
-  .lmo-card-heading { margin-top: 7px; }
-  border-bottom: 1px solid $border-color;
-}
+<style lang="sass">
+@import 'variables'
+.context-panel__heading-pin
+  margin-left: 4px
 
-.context-panel__top {
-  display: flex;
-}
+.context-panel
+  .v-breadcrumbs
+    padding: 0px 10px
+    // margin-left: 0;
 
-.context-panel__status {
-  font-size: 20px;
-  line-height: 34px;
-  margin-right: 8px;
-}
+.context-panel__discussion-privacy i
+  position: relative
+  font-size: 14px
+  top: 2px
 
-.context-panel__before-thread-actions {
-  order: 1;
-}
+.context-panel__details
+  color: $grey-on-white
+  align-items: center
 
-.context-panel__thread-actions {
-  margin-right: -10px;
-  display: flex;
-  flex-direction: column;
-}
+.context-panel__description
+  > p:last-of-type
+    margin-bottom: 24px
 
-.context-panel__discussion-privacy i {
-  position: relative;
-  font-size: 14px;
-  top: 2px;
-}
-
-.context-panel__details {
-  color: $grey-on-white;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.context-panel__description {
-  margin-bottom: 16px;
-  p:last-of-type { margin-bottom: 0; }
-}
-
-@media (min-width: $medium-max-px) {
-  .context-panel__before-thread-actions {
-    order: 0;
-  }
-
-  .context-panel__thread-actions {
-    flex-direction: row;
-  }
-}
 </style>

@@ -35,10 +35,12 @@ module Boot
     end
 
     def formal_memberships
+      return nil if user.experiences['vue_client']
       @formal_memberships ||= user.memberships.formal.includes(:user, :group)
     end
 
     def notifications
+      return nil if user.experiences['vue_client']
       @notifications ||= NotificationCollection.new(user).notifications unless user.restricted
     end
 

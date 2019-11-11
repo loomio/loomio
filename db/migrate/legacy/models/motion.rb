@@ -39,7 +39,6 @@ class Motion < ApplicationRecord
   scope :visible_to_public,        -> { joins(:discussion).merge(Discussion.visible_to_public) }
   scope :voting_or_closed_after,   -> (time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
   scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
-  scope :chronologically,          -> { order('created_at asc') }
   scope :with_outcomes,            -> { where('motions.outcome IS NOT NULL AND motions.outcome != ?', '') }
 
   # recency threshold is the minimum length of time for a new motion_closing_soon event to

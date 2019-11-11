@@ -29,6 +29,7 @@ fi:
       proposal: 'Ehdotus'
     copied: 'Kopioitu leikepöydälle'
     action:
+      back: 'Back'
       close: 'Sulje'
       save: 'Tallenna'
       save_changes: 'Tallenna muutokset'
@@ -37,17 +38,14 @@ fi:
       edit: 'Muokkaa'
       remove: 'Poista'
       like: 'Tykkää'
-      back: 'Back'
       unlike: 'En tykkääkkään'
       update: 'Päivitä'
       cancel: 'Peruuta'
       show_more: "Näytä lisää"
       view_all: "Näytä kaikki"
       new_thread: "Uusi aihe"
-      add_subgroup: 'Lisää alaryhmä'
       loading: 'Ladataan'
       translate: 'Käännä'
-      translated: 'Tekstin käänsi Bing-kääntäjä'
       upload: 'Lataa'
       uploading: 'Lataaminen'
   error_page:
@@ -56,6 +54,9 @@ fi:
     internal_server_error: 'Olemme pahoillamme, mutta jotain meni pieleen. Ole hyvä ja koeta uudestaan.'
   volume_levels:
     loud: 'Äänekäs'
+  change_volume_form:
+    simple:
+      label: Ilmoitukset
   inbox:
     unread: 'Lukematon'
   comment_form:
@@ -85,8 +86,6 @@ fi:
     threads_from:
       today: 'Tänään'
       yesterday: 'Eilen'
-  activity_card:
-    unread: Lukematon
   thread_context:
     close_thread: 'Sulje'
   delete_comment_dialog:
@@ -98,5 +97,11 @@ fi:
       delete_comment: 'Poista kommentti'
   poll_common:
     save_changes: Tallenna
+  discussions_panel:
+    open: Avoin
+    closed: Suljettu
+  polls_panel:
+    open: 'Avoin'
+    closed: 'Suljettu'
   poll_common_form:
     closed: Suljettu

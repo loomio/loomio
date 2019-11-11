@@ -34,15 +34,10 @@ pl:
     wave: Machanie
     thumbsup: Poparcie
     thumbsdown: Dezaprobata
-  poll_types:
-    proposal: Propozycja
-    count: Zaznaczenie
-    poll: Ankieta
-    dot_vote: Głosowanie kropkowe
-    meeting: Ankieta datowa
   timezones:
     local: Czas lokalny ({{value}})
   common:
+    no_results_found: Nie znaleziono
     you: Ty
     expand: Rozwiń
     all_day: Cały dzień
@@ -89,6 +84,8 @@ pl:
     points_abbrev: Każdy głos warty jest {{score}} punktów
     total: W sumie
     action:
+      search: 'Szukaj'
+      back: 'Wstecz'
       next: 'Dalej'
       close: 'Zamknij'
       reopen: 'Otworzyć ponownie'
@@ -99,17 +96,14 @@ pl:
       edit: 'Edycja'
       remove: 'Usuń'
       like: 'Lubię'
-      back: 'Wstecz'
       unlike: 'Nie lubię'
       update: 'Zaktualizuj'
       cancel: 'Anuluj'
       show_more: "Pokaż więcej"
       view_all: "Pokaż wszystko"
       new_thread: "Nowy wątek"
-      add_subgroup: 'Dodanie podgrupy'
       loading: 'Ładowanie'
       translate: 'Tłumacz'
-      translated: 'Przetłumaczono przez Translator Bing'
       upload: 'Załaduj'
       uploading: 'Ładowanie'
       load_more: 'Załaduj więcej'
@@ -133,6 +127,8 @@ pl:
     formatting_help:
       label: 'Formatowanie'
       title: 'Naucz się używać Markdown, by sformatować swój tekst'
+  emoji_picker:
+    search: Szukaj
   ordinal:
     _1: '1.'
     _2: '2.'
@@ -165,26 +161,27 @@ pl:
     quiet: 'Cicho'
     mute: 'Wyciszono'
     unmute: 'Wyłącz wyciszenie'
+  pin_event_form:
+    title_label: Tytuł
   change_volume_form:
+    simple:
+      label: Powiadomienia
+      normal: Normalnie
+      quiet: Ignoruj
     aria_label: "Formularz zmiany stawień poczty"
     loud_label: "Wszystkie aktywności"
     normal_label: "Ogłoszenia"
     quiet_label: "Brak wiadomości"
     mute_label: "Wycisz"
     discussion:
-      title: "Ustawienia e-mailowe wątku"
-      loud_description: "Wyślemy do Ciebie e-mail przy każdej aktywności w tym wątku."
-      normal_description: "Wyślemy do Ciebie e-mail za każdym razem, gdy wysuwana jest jakaś propozycja, gdy niedługo się kończy lub gdy prezentowany jest jej rezultat."
-      quiet_description: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."
       apply_to_all: "Zapisz te ustawienia do wszystkich wątków w tej grupie"
       messages:
         loud: "Pocztą otrzymasz powiadomienie o aktywności w tym wątku."
         normal: "Otrzymasz maila dotyczącego propozycji w tym wątku."
         quiet: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."
     membership:
-      title: "Ustawienia poczty dla {{title}}"
       loud_description: "Otrzymasz maila za każdym razem, gdy w grupie pojawi się jakaś aktywność."
-      normal_description: "Otrzymasz maila tylko odnośnie ogłoszeń w grupie."
+      normal_description: "Otrzymasz maila za każdym razem, gdy w grupie pojawi się jakaś aktywność."
       quiet_description: "Nie otrzymasz żadnych maili dotyczących aktywności w tej grupie."
       apply_to_all: "Zastosuj te ustawienia do wszystkich moich grup."
       messages:
@@ -192,6 +189,7 @@ pl:
         normal: "Otrzymasz maila tylko odnośnie ogłoszeń w grupie."
         quiet: "Nie otrzymasz żadnych maili dotyczących tej grupy."
     all_groups:
+      loud_description: "Otrzymasz maila o  aktywnościach we wszystkich Twoich grupach."
       messages:
         loud: "Otrzymasz maila o  aktywnościach we wszystkich Twoich grupach."
         normal: "Otrzymasz wyłącznie maile z ogłoszeniami ze wszystkich Twoich grup."
@@ -257,6 +255,7 @@ pl:
     public_privacy_notice: 'Twój komentarz będzie widoczny dla wszystkich.'
     sign_in: "Zaloguj się, by dołączyć do rozmowy"
   sidebar:
+    threads: 'Wątki'
     recent_threads: 'Najnowsze wątki'
     unread_threads: 'Nieprzeczytane wątki ({{count}})'
     muted_threads: 'Wyciszone wątki'
@@ -287,7 +286,6 @@ pl:
   user_dropdown:
     button_label: 'Menu użytkownika'
     edit_profile: 'Edytuj profil'
-    email_settings: 'Ustawienia e-maili'
     help: 'Pomoc'
     sign_out: 'Wyloguj się'
   membership_card:
@@ -302,8 +300,6 @@ pl:
     set_title: "Nadaj tytuł"
     resend: "Wyślij zaproszenie ponownie"
     invitation_resent: "Zaproszenie wysłane ponownie"
-    make_coordinator: 'Definicja koordynatora'
-    demote_coordinator: 'Odwołaj koordynatora'
     remove_from:
       discussion: "Usuń z wątku"
       group: "Usuń z grupy"
@@ -353,7 +349,6 @@ pl:
       poll_announced:
         title: Zaproś do głosowania
   action_dock:
-    announce_thread_active: (Nikt jeszcze nie został/a zaproszony/a)
     announce_poll: Zaproś ludzi do głosowania
     announce_poll_active: (Nikt jeszcze nie został/a zaproszony/a)
     translate_poll: Przetłumacz ankietę
@@ -374,6 +369,9 @@ pl:
     comment_copied: Adres URL komentarza skopiowano do schowka
     poll_copied: Adres URL decyzji skopiowano do schowka
     discussion_copied: Adres URL wątku skopiowano do schowka
+    close_thread: Zamknij wątek
+  formatting:
+    attach: Załącz plik
   cover_photo_form:
     aria_label: 'Zmień formę zdjęcia głównego'
     heading: 'Nowe zdjęcie główne'
@@ -388,7 +386,7 @@ pl:
     upload_success: 'Zaktualizowano logo'
   join_group_button:
     join_group: Dołączenie do grupy
-    membership_requested: Oczekująca prośba o członkostwo
+    membership_requested: Zgłoszono członkostwo
     messages:
       joined_group: 'Jesteś teraz członkiem grupy {{group}}'
   membership_request_form:
@@ -424,7 +422,14 @@ pl:
     thread_status:
       pinned: "Ten wątek został przypięty. Zostanie na samej górze listy wątków dla wszystkich członków grupy."
       closed: "Ten wątek został zamknięty. Nie będzie się więcej pojawiał w głównym panelu i będzie wyświetlał się pod \"Zamkniętymi\" na stronie grupy."
+  group_wizard:
+    invite_people: Zaproś ludzi
+    start_thread: Rozpocznij dyskusję
   group_page:
+    threads: Wątki
+    members: Członkowie
+    settings: Ustawienia
+    subgroups: Podgrupy
     show_opened: '{{count}} Otwarte'
     show_closed: '{{count}} Zamknięte'
     no_threads_here: Nie ma tu żadnych wątków!
@@ -446,7 +451,6 @@ pl:
     discussions_placeholder: 'Wątek jest miejscem gdzie wszyscy mogą dyskutować temat i podejmować wspólne decyzje.'
     members_placeholder: 'Jesteś jedynym członkiem: zaproś inne osoby!'
     member_options: Opcje członka
-    subgroups: 'Podgrupy'
     subgroups_placeholder: 'Subgrupy dają zespołom własną przestrzeń i wysyłają powiadomienia do właściwych osób.'
     invite_people: 'Zaproś'
     visibility_label: 'Widoczność'
@@ -458,6 +462,7 @@ pl:
       manage_members: 'Zarządzaj użytkownikami'
       add_subgroup: 'Dodaj subgrupę'
       manage_subscription: 'Zarządzaj subskrypcją grupy'
+      email_settings: 'Ustawienia poczty'
       leave_group: 'Opuść grupę'
       deactivate_group: 'Dezaktywuj grupę'
     volume:
@@ -469,8 +474,6 @@ pl:
       quiet_aria_description: Poziom powiadamianie dla tej grupy jest ustawiony na Cicho. Nie będziesz otrzymywać maili o aktywnościach z tej grupy. Jej aktywność będzie wyświetlana na Pulpicie.
       mute: Ukryj tę grupę na pulpicie i nie przesyłaj powiadomień z wyjątkiem @wzmianek
       mute_aria_description: Poziom powiadamiania dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie.
-  leave_group_form:
-    add_coordinator: 'Dodaj koordynatora/kę'
   archive_group_form:
     aria_label: 'Dezaktywuj grupę'
     title: 'Dezaktywuj grupę'
@@ -482,10 +485,10 @@ pl:
     edit_group_heading: 'Edytuj ustawienia grupy'
     edit_subgroup_heading: 'Edytuj ustawienia subgrupy'
     group_name: 'Nazwa grupy'
-    group_name_placeholder: 'Jak chcesz nazwać swoją grupę?'
     subgroup_name: 'Nazwa subgrupy'
     description: 'Opis'
     privacy: 'Prywatność'
+    profile: Profil
     submit_update: 'Zaktualizuj ustawienia'
   documents_page:
     confirm_remove_title: Usunięcie załącznika
@@ -502,19 +505,17 @@ pl:
       request_approved_success: Zgłoszenie członkostwa zaakceptowane
       request_ignored_success: Zgłoszenie członkostwa zignorowane
   invitation_form:
+    invite_people: 'Zaproś ludzi'
     copy_link: 'Kopiuj'
     send: 'Wyślij'
     done: 'Zrobione'
   memberships_page:
     members: 'Członkowie'
     name_label: 'Nazwa'
-    coordinator_label: 'Koordynator'
     remove_member_label: 'Usunięcie'
     fragment_placeholder: 'Filtrowanie użytkowników przez nazwę lub login'
     messages:
       remove_member_success: 'Usunięto {{name}}'
-      make_admin_success: '{{name}} został/a koordynatorem'
-      remove_admin_success: '{{name}} przestał/a być koordynatorem'
   membership_remove_modal:
     invitation:
       title: Anuluj zaproszenie
@@ -522,8 +523,6 @@ pl:
     membership:
       title: Usunięcie członka
       submit: Usunięcie członka
-  memberships_panel:
-    remove_coordinator: Odwołaj koordynatora
   cancel_invitation_form:
     heading: Anuluj zaproszenie
   profile_page:
@@ -533,7 +532,6 @@ pl:
       password_changed: 'Hasło zmienione'
       deactivated: 'Konto wyłączone'
     change_picture_link: 'Zmiana zdjęcia'
-    deactivate_user_link: 'Wyłączenie hasła...'
     profile: 'Profil'
     edit_profile: 'Edycja Profilu'
     picture_label: 'Zdjęcie'
@@ -543,7 +541,6 @@ pl:
     locale_label: 'Język'
     update_profile: 'Zmiana profilu'
   email_settings_page:
-    header: Ustawienia poczty
     daily_summary_label: Dzienna wiadomość z podsumowaniem
     announcement_label: Ogłoszenia
     messages:
@@ -590,8 +587,8 @@ pl:
     load_previous: 'Załaduj wcześniejsze aktywności'
     started_by: 'Rozpoczęte przez <strong>{{name}}</strong>'
   activity_card:
-    unread: Nieprzeczytane
     latest: Ostatnie
+    context: Kontekst
     attachment_display:
       aria_label: 'Dołączony plik:'
       image_alt: 'Dołączone zdjęcie'
@@ -600,7 +597,6 @@ pl:
   thread_context:
     aria_label: 'Kontekst wątku.'
     thread_options: 'Opcje wątku'
-    email_settings: 'Ustawienia e-maili'
     close_thread: 'Zamknij'
     reopen_thread: 'Otworzyć ponownie'
     mute_thread: 'Wycisz'
@@ -638,6 +634,17 @@ pl:
     meeting_title: Ankieta datowa
   poll_common:
     save_changes: Zapis
+  discussions_panel:
+    open: Otwarta
+    closed: Zamknięta
+  members_panel:
+    order_by_name: 'Nazwa'
+    header_name: 'Nazwa'
+    header_username: 'Nazwa użytkownika'
+    invitations: 'Zaproszenia'
+  polls_panel:
+    open: 'Otwarta'
+    closed: 'Zamknięta'
   current_polls_card:
     start_poll: Nowa decyzja
   poll_common_form:

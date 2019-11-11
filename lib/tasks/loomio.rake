@@ -32,7 +32,7 @@ namespace :loomio do
       SendDailyCatchUpEmailJob.perform_later
     end
 
-    AnnouncementService.delay.resend_pending_memberships
+    AnnouncementService.delay.resend_pending_invitations
     LocateUsersAndGroupsJob.perform_later
     if (Time.now.hour == 0)
       UsageReportService.send
@@ -46,5 +46,9 @@ namespace :loomio do
 
   task notify_clients_of_update: :environment do
     MessageChannelService.publish_data({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
+  end
+
+  task update_subscription_members_counts: :environment do
+    SubscriptionService.delay.update_changed_members_counts
   end
 end

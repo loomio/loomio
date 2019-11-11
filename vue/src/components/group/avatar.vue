@@ -1,19 +1,21 @@
 <script lang="coffee">
 export default
   props:
+    onClick: {
+      type: Function
+      default: null
+    }
+    elevation: {
+      type: Number
+      default: 0
+    }
     group: Object
-    size: String
-  computed:
-    csize: ->
-      sizes = ['small', 'medium', 'large']
-      if _.includes(sizes, @size)
-        @size
-      else
-        'small'
+    size:
+      default: '28px'
 </script>
 
-<template>
-    <div :class="'group-avatar lmo-box--' + size" aria-hidden="true">
-      <img :class="'lmo-box--' + csize" :alt="group.name" :src="group.logoUrl()">
-    </div>
+<template lang="pug">
+v-avatar(:size="size" tile :class="'elevation-' + elevation")
+  img(:alt="group.name" v-if="group.logoUrl()" :src="group.logoUrl()" @click="onClick && onClick()")
+  v-icon(v-if="!group.logoUrl()") mdi-group
 </template>

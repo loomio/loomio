@@ -2,6 +2,7 @@ sr:
   loomio_tags:
     name_label: Ime
   common:
+    no_results_found: Nisu pronađeni rezultati
     confirm_discard_changes: Otkaži promene?
     time:
       am: am
@@ -32,6 +33,8 @@ sr:
       proposal: 'Predlog'
     copied: 'Kopirano'
     action:
+      search: 'Traži'
+      back: 'Nazad'
       close: 'Zatvori'
       save: 'Snimi'
       save_changes: 'Sačuvaj promene'
@@ -40,20 +43,19 @@ sr:
       edit: 'Uredi'
       remove: 'Ukloni'
       like: 'Sviđa mi se'
-      back: 'Nazad'
       unlike: 'Ne Sviđa'
       update: 'Ažuriraj'
       cancel: 'Otkaži'
       show_more: "Prikaži više"
       view_all: "Vidi Sve"
       new_thread: "Nova nit"
-      add_subgroup: 'Dodaj podgrupu'
       loading: 'Učitavanje'
       translate: 'Prevedi'
-      translated: 'Prevod Bing Translator'
       upload: 'Prosledi'
       uploading: 'Prosleđivanje'
       ok: U redu
+  emoji_picker:
+    search: Traži
   error_page:
     forbidden: 'Nemate dozvolu da ovo uradite.'
     page_not_found: 'Nismo u mogućnosti da to pronađemo. Možda je obrisano ili premešteno.'
@@ -64,28 +66,32 @@ sr:
     quiet: 'Tiho'
     mute: 'Isključeno'
     unmute: 'Uključi'
+  pin_event_form:
+    title_label: Naslov
   change_volume_form:
+    simple:
+      label: Obaveštenja
+      normal: Normalno
+      quiet: Ignoriši
     loud_label: "Sva aktivnost"
     quiet_label: "Nema ePoruka"
     mute_label: "Utišaj"
     discussion:
-      loud_description: "Dobičete ePoruku kada god ima aktivnosti u ovoj niti."
-      normal_description: "Dobićete ePoruku kada se pojavi predlog, pred njegovo zatvaranje ili kada je ishod određen."
-      quiet_description: "Nećete biti obaveštavani o ovoj niti."
       apply_to_all: "Primeni ove opcije na svim nitima u ovoj grupi."
       messages:
         loud: "Dobićete ePoruku o aktivnostima u ovoj niti."
         normal: "Bićete obavešteni ePorukom o predlozima u ovoj niti."
         quiet: "Nećete biti obaveštavani ePorukom o ovoj grupi."
     membership:
-      title: "Opcije ePoruka za {{title}}"
       loud_description: "Dobićete ePoruku kada god ima aktivnosti u ovoj grupi."
+      normal_description: "Dobićete ePoruku kada god ima aktivnosti u ovoj grupi."
       quiet_description: "Nećete dobijati ePoruke o aktivnostima u ovoj grupi."
       apply_to_all: "Primeni ove opcije na sve moje grupe."
       messages:
         loud: "Bićete obaveštavani ePorukama o svim aktivnostima u ovoj grupi."
         quiet: "Nećete biti obaveštavani ePorukom o ovoj grupi."
     all_groups:
+      loud_description: "Bićete obaveštavani ePorukama o svim aktivnostima u svakoj Vašoj grupi."
       messages:
         loud: "Bićete obaveštavani ePorukama o svim aktivnostima u svakoj Vašoj grupi."
         quiet: "Nećete primati ePoruke ni o jednoj od vaših grupa."
@@ -128,6 +134,7 @@ sr:
     public_privacy_notice: 'Vaš komentar će biti vidljiv svima na mreži.'
     sign_in: "Prijavite se za priključivanje konverzaciji"
   sidebar:
+    threads: 'Niti'
     explore: 'Javne grupe'
     aria_labels:
       heading: 'Traka'
@@ -149,7 +156,6 @@ sr:
     sign_in: 'Prijavi se'
     toggle_sidebar: 'Uklj/Isklj traku'
   membership_dropdown:
-    make_coordinator: 'Učini koordinatorom'
     cancel_invitation: Otkaži poziv
   notifications:
     header: "Obaveštenja"
@@ -164,6 +170,8 @@ sr:
   discussion_record:
     created: 'Nit {{title}} je uspešno kreirana u {{groupName}}'
     updated: 'Sačuvane promene za {{title}}'
+  discussion_fork_actions:
+    move: Premesti
   discussion_form:
     messages:
       created: 'Nit kreirana'
@@ -181,10 +189,13 @@ sr:
     privacy_private: 'Nit će biti vidljiva isključivo članovima {{group}}.'
     privacy_organisation: 'Nit će biti vidljiva članovima {{parent}} i članovima {{group}}.'
   action_dock:
+    move_items: Premesti
     edit_stance: Promeni poziciju
+    edited: Izmenjeno
+    delete_thread: Obriši nit
   join_group_button:
     join_group: Pridruži se grupi
-    membership_requested: Zahtev za članstvom je na čekanju
+    membership_requested: Članstvo je zatraženo
     messages:
       joined_group: 'Vi ste sada član {{group}}'
   membership_request_form:
@@ -198,7 +209,14 @@ sr:
     edited_by: 'Izmenjeno od <strong>{{name}}</strong>'
     posted: Postavljeno
     current_revision: Poslednje
+  group_wizard:
+    invite_people: Pozovi ljude
+    start_thread: Započni diskusiju
   group_page:
+    threads: Niti
+    members: Članovi
+    settings: Podešavanja
+    subgroups: Podgrupe
     messages:
       privacy:
         members: 'Ova grupa je sada vidljiva samo za članove'
@@ -210,7 +228,6 @@ sr:
     discussions_placeholder: 'Nit je mesto gde svako može diskutovati o temi i donositi odluke sa drugima.'
     members_placeholder: 'Samo si ti ovde: pozovi neke ljude da ti se pridruže!'
     member_options: Opcije člana
-    subgroups: 'Podgrupe'
     visibility_label: 'Vidljivost'
     options_label: 'Opcije'
     options:
@@ -219,6 +236,7 @@ sr:
       manage_members: 'Upravljanje Članovima'
       add_subgroup: 'Dodaj Podgrupu'
       manage_subscription: 'Upravljaj Praćenjem Grupa'
+      email_settings: 'Podešavanje ePoruka'
       leave_group: 'Napusti Grupu'
       deactivate_group: 'Deaktiviraj Grupu'
     volume:
@@ -245,7 +263,7 @@ sr:
     edit_group_heading: 'Promeni osobine grupe'
     edit_subgroup_heading: 'Izmeni opcije podgrupe'
     group_name: 'Naziv Grupe'
-    group_name_placeholder: 'Kako želite da se Vaša grupa zove?'
+    group_name_placeholder: 'Kako se zove tvoja grupa?'
     subgroup_name: 'Naziv Podgrupe'
     description: 'Opis'
     description_placeholder: 'Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.'
@@ -257,16 +275,17 @@ sr:
     confirm_change_to_secret_subgroup: 'Ako nastavite, sve niti postaće privatne.'
     confirm_change_to_public: 'Ako nastavite, sve niti u ovoj grupi postaće javne na mreži.'
     confirm_change_to_private_discussions_only: 'Ako nastavite, sve javne niti u ovoj grupi će postati privatne.'
+    profile: Profil
     advanced_settings: "Napredne opcije"
     how_do_people_join: "Kako se ljudi pridružuju?"
     membership_granted_upon_request: 'Svako se može pridružiti grupi.'
     membership_granted_upon_approval: 'Svako može tražiti da se pridruži ali mora biti odobreno.'
+    permissions: 'Dozvole'
     thread_privacy: 'Privatnost niti'
     public_threads: 'Samo javne niti'
     public_discussions_subgroup: 'Svako u {{parentGroupName}} može videti diskusije'
     public_or_private_threads: 'Omogući javne i privatne niti'
     private_threads: 'Samo članovi mogu videti diskusije'
-    permissions: 'Dozvole'
     allow_public_threads: 'Dopusti javne niti u ovoj grupi.'
     parent_members_can_see_discussions: 'Članovi {{parent}} mogu videti privatne niti.'
     members_can_add_members: 'Članovi mogu pozivati ljude i odobravati zahteve da se pridruže.'
@@ -306,7 +325,7 @@ sr:
     heading: Prethodni predlozi
     see_more: Vidi još
   invitation_form:
-    invite_people: 'Pozovi Ljude'
+    invite_people: 'Pozovi ljude'
     group: 'Grupa'
     group_placeholder: 'Odaberi grupu'
     shareable_link: 'Deljivi link'
@@ -335,15 +354,10 @@ sr:
   memberships_page:
     members: 'Članovi'
     name_label: 'Ime'
-    coordinator_label: 'Koordinator'
     remove_member_label: 'Ukloni'
     fragment_placeholder: 'Filtriraj korisnike po imenu ili korisničkom imenu...'
     messages:
       remove_member_success: 'Uklonjen(a) {{name}}'
-      make_admin_success: '{{name}} je sada koordinator'
-      remove_admin_success: '{{name}} nije više koordinator'
-    remove_admin_from_self:
-      question: 'Da li ste sigurni da ne želite više biti koordinator?'
   membership_remove_modal:
     invitation:
       title: Otkaži poziv
@@ -371,7 +385,6 @@ sr:
       password_changed: 'Lozinka izmenjena'
       deactivated: 'Nalog deaktiviran'
     change_picture_link: 'Promeni sliku'
-    deactivate_user_link: 'Deaktiviranje naloga...'
     profile: 'Profil'
     edit_profile: 'Izmena Profila'
     picture_label: 'Slika'
@@ -380,8 +393,9 @@ sr:
     email_label: 'ePošta'
     locale_label: 'Jezik'
     update_profile: 'Promena profila'
+  change_picture_form:
+    use_gravatar: 'Koristi Gravatar'
   email_settings_page:
-    header: ePoruke
     daily_summary_label: Dnevni izveštaj ePorukom
     on_participation_label: Pretplati se na učešće
     on_participation_description: "Kada se priključite niti, sve dalje aktivnosti biće Vam odmah poslate ePorukom."
@@ -446,8 +460,8 @@ sr:
     load_previous: 'Učitaj ranije aktivnosti'
     started_by: 'Kreirano od strane <strong>{{name}}</strong> '
   activity_card:
-    unread: Nepročitano
     latest: Poslednje
+    context: Kontekst
     attachment_display:
       aria_label: 'Prateće datoteke:'
       image_alt: 'Prateća slika'
@@ -456,7 +470,6 @@ sr:
   thread_context:
     aria_label: 'Kontekst niti'
     thread_options: 'Opcije niti'
-    email_settings: 'Opcije ePoruka'
     close_thread: 'Zatvori'
     move_thread: 'Premesti'
     print_thread: 'Štampa'
@@ -541,12 +554,9 @@ sr:
   explore_page:
     single_search_result: "1 javna grupa se podudara sa <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} javnih grupa se podudara sa <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>Ne možeš naći grupu koju tražiš?</strong> Ako je grupa 'tajna', neće se pojaviti ovde. Ako poznaješ koordinatora grupe, možeš ga pitati za pozivnicu."
   global:
     messages:
       reload: 'Osveži'
-  emoji_picker:
-    no_emojis_found: "Nema emoja za '{{term}}'!"
   authorized_apps_page:
     title: Odobrene Aplikacije
     no_applications: "Niste odobrili ni jednu aplikaciju treće strane još uvek."
@@ -588,6 +598,18 @@ sr:
       success: "'{{name}}' ne može više koristiti Vaš nalog."
   poll_common:
     save_changes: Snimi
+  discussions_panel:
+    open: Otvoreno
+    all: Sve
+    closed: Zatvoreno
+  members_panel:
+    order_by_name: 'Ime'
+    header_name: 'Ime'
+    header_username: 'Korisničko Ime'
+  polls_panel:
+    all: 'Sve'
+    open: 'Otvoreno'
+    closed: 'Zatvoreno'
   poll_common_form:
     closed: Zatvoreno
   poll_count_options:

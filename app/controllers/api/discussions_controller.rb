@@ -2,7 +2,6 @@ class API::DiscussionsController < API::RestfulController
   after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
-  include UsesFullSerializer
   include UsesDiscussionEvents
 
   def tags
@@ -85,6 +84,21 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def move_comments
+    EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
+    respond_with_resource
+  end
+
+  def history
+    load_and_authorize(:discussion)
+    res = DiscussionReader.joins(:user).where(discussion: @discussion).where.not(last_read_at: nil).map do |reader|
+      {reader_id: reader.id,
+       last_read_at: reader.last_read_at,
+       user_name: reader.user.name }
+    end
+    render root: false, json: res
+  end
+
   def pin
     service.pin discussion: load_resource, actor: current_user
     respond_with_resource
@@ -95,6 +109,18 @@ class API::DiscussionsController < API::RestfulController
   end
 
   private
+  def group_ids
+    if params.has_key?(:include_subgroups) && params[:include_subgroups] == 'false'
+      [@group&.id]
+    else
+      @group&.id_and_subgroup_ids
+    end
+  end
+
+  def split_tags
+    params[:tags].to_s.split('|')
+  end
+
   def default_scope
     super.merge(tag_cache: DiscussionTagCache.new(Array(resource || collection)).data)
   end
@@ -104,7 +130,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def accessible_records
-    Queries::VisibleDiscussions.new(user: current_user, group_ids: @group&.id_and_subgroup_ids)
+    Queries::VisibleDiscussions.new(user: current_user, group_ids: group_ids, tags: split_tags)
   end
 
   def update_reader(params = {})
@@ -115,7 +141,8 @@ class API::DiscussionsController < API::RestfulController
   def collection_for_index(collection, filter: params[:filter])
     case filter
     when 'show_closed' then collection.is_closed
-    else                    collection.is_open
+    when 'all' then collection
+    else collection.is_open
     end.sorted_by_importance
   end
 

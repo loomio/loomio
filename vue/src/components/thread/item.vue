@@ -8,79 +8,55 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import { submitForm } from '@/shared/helpers/form'
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
 import { includes, camelCase } from 'lodash'
-
-import NewComment from '@/components/thread/item/new_comment.vue'
-import PollCreated from '@/components/thread/item/poll_created.vue'
-import StanceCreated from '@/components/thread/item/stance_created.vue'
-import OutcomeCreated from '@/components/thread/item/outcome_created.vue'
-
-threadItemComponents = [
-  'newComment',
-  'outcomeCreated',
-  'pollCreated',
-  'stanceCreated'
- ]
+import RangeSet from '@/shared/services/range_set'
 
 export default
-  components:
-    NewComment: NewComment
-    PollCreated: PollCreated
-    StanceCreated: StanceCreated
-    OutcomeCreated: OutcomeCreated
-
   props:
-    event: Object
-    eventWindow: Object
+    event:
+      type: Object
+      required: true
 
   data: ->
     isDisabled: false
-    showCommentForm: false
-    parentComment: null
+    collapsed: false
+    hover: false
+    focusStyleClass: null
+
+  mounted: ->
+    @$nextTick =>
+      return unless @$refs.defaultSlot
+      @$refs.defaultSlot.querySelectorAll("img[height]").forEach (node) =>
+        ratio = @$refs.defaultSlot.clientWidth / node.getAttribute('width')
+        node.style.height = parseInt(ratio * node.getAttribute('height')) + 'px'
+
+      @$refs.defaultSlot.querySelectorAll("a:not([target])").forEach (node) =>
+        node.setAttribute('target', '_blank')
 
   methods:
-    viewed: (viewed) ->
-      @event.markAsRead() if viewed
-
-    hasComponent: ->
-      includes(threadItemComponents, camelCase(@event.kind))
-
-    debug: ->
-      window.Loomio.debug
-
-    removeEvent: -> submitForm @, @event,
-      submitFn: @event.removeFromThread
-      flashSuccess: 'thread_item.event_removed'
-
-    camelCase: camelCase
-
-    handleReplyButtonClicked: (obj) ->
-      console.log "reply button clicked", @event
-      @parentComment = obj.eventable
-      @showCommentForm = true
-
-    handleCommentSubmitted: ->
-      @showCommentForm = false
+    viewed: (viewed) -> @event.markAsRead() if viewed
+    focusThenFade: ->
+      @focusStyleClass = 'thread-item--focused'
+      setTimeout =>
+        @focusStyleClass = 'thread-item--previously-focused'
+      , 5000
 
   computed:
-    mdColors: ->
-      obj = {'border-color': 'primary-500'}
-      obj['background-color'] = 'accent-50' if @isFocused
-      obj
+    indentSize: ->
+      switch @event.depth
+        when 0 then 0
+        when 1 then 0
+        when 2 then 12 + 40
+        when 3 then 68
 
-    isFocused: ->
-      @eventWindow.discussion.requestedSequenceId == @event.sequenceId
+    discussion: -> @event.discussion()
 
-    canRemoveEvent: ->
-      AbilityService.canRemoveEventFromThread(@event)
-
-    indent: ->
-      @event.isNested() && @eventWindow.useNesting
+    iconSize: -> if (@event.depth == 1) then 40 else 24
 
     isUnread: ->
-      (Session.user().id != @event.actorId) && @eventWindow.isUnread(@event)
+      (Session.user().id != @event.actorId) && !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
     headline: ->
-      @$t eventHeadline(@event, @eventWindow.useNesting),
+      @$t eventHeadline(@event, true ), # useNesting
         author:   @event.actorName() || @$t('common.anonymous')
         username: @event.actorUsername()
         key:      @event.model().key
@@ -90,94 +66,95 @@ export default
     link: ->
       LmoUrlService.event @event
 
-    unreadColor: ->
-      @$vuetify.theme.primary
+  watch:
+    '$route.query.p':
+      immediate: true
+      handler: (newVal) ->
+        @focusThenFade() if parseInt(newVal) == @event.position && @event.depth == 1
 
+    '$route.params.sequence_id':
+      immediate: true
+      handler: (newVal) ->
+        @focusThenFade() if parseInt(newVal) == @event.sequenceId
+
+    '$route.params.comment_id':
+      immediate: true
+      handler: (newVal) ->
+        @focusThenFade() if parseInt(newVal) == @event.eventableId
 
 </script>
 
 <template lang="pug">
 div
-  .thread-item(md-colors='mdColors', :class="{'thread-item--unread': isUnread}" :style="{'border-color': unreadColor}" v-observe-visibility="{callback: viewed, once: true}")
-    .lmo-flex.lmo-relative.lmo-action-dock-wrapper.lmo-flex--row(:id="'sequence-' + event.sequenceId" :class="{'thread-item--indent': indent}")
-      .lmo-disabled-form(v-show='isDisabled')
-      .thread-item__avatar.lmo-margin-right
-        user-avatar(v-if='!event.isForkable() && event.actor()', :user='event.actor()', size='medium')
-        // <md-checkbox ng-if="event.isForkable()" ng-disabled="!event.canFork()" ng-click="event.toggleFromFork()" ng-checked="event.isForking()"></md-checkbox>
-      .thread-item__body.lmo-flex.lmo-flex__horizontal-center.lmo-flex--column
-        .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between
-          h3.thread-item__title(:id="'event-' + event.id")
-            div(v-if='debug()')
-              | id: {{event.id}}cpid: {{event.model().parentId}}pid: {{event.parentId}}sid: {{event.sequenceId}}position: {{event.position}}depth: {{event.depth}}unread: {{isUnread()}}cc: {{event.childCount}}
-            span(v-html='headline')
-            | &nbsp;
-            span(aria-hidden='true') ·
-            | &nbsp;
-            router-link.thread-item__link.lmo-pointer(:to='link')
-              time-ago.timeago--inline(:date='event.createdAt')
-          button.md-button--tiny(v-if='canRemoveEvent', @click='removeEvent()')
-            i.mdi.mdi-delete
-        component(v-if='hasComponent()' :is='camelCase(event.kind)' @reply-button-clicked="handleReplyButtonClicked" :event='event', :eventable='event.model()')
-    comment-form(v-if="showCommentForm" @comment-submitted="handleCommentSubmitted" :parentComment="parentComment" :discussion="eventWindow.discussion")
-  template(v-if='event.isSurface() && eventWindow.useNesting')
-    event-children(:parent-event='event' :parent-event-window='eventWindow')
+  .thread-item.px-3.pb-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
+    v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
+      .thread-item__avatar.mr-3.mt-0
+        user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
+        v-checkbox.thread-item__is-forking(v-if="event.isForkable()" @change="event.toggleFromFork()" :disabled="event.forkingDisabled()" v-model="event.isForking()")
+      v-layout.thread-item__body(column)
+        v-layout.align-center.wrap
+          h3.thread-item__title.body-2(:id="'event-' + event.id")
+            //- div
+              | id: {{event.id}}
+              | pos {{event.position}}
+              | sid {{event.sequenceId}}
+              | depth: {{event.depth}}
+              | childCount: {{event.childCount}}
+              | eid: {{event.eventableId}}
+            slot(name="headline")
+              span(v-html='headline')
+            mid-dot
+            router-link.grey--text.body-2(:to='link')
+              time-ago(:date='event.createdAt')
+        .default-slot(ref="defaultSlot")
+          slot
+        slot(name="actions")
+  slot(name="append")
 </template>
+<style lang="css">
 
-<style lang="scss">
-@import 'variables';
-@import 'mixins';
+.thread-item__title > .poll-common-stance-choice {
+  display: inline-block;
+}
+.thread-item__title strong {
+  font-weight: normal;
+}
+
 .thread-item {
-  padding: 4px $cardPaddingSize;
+  transition: background 4s ease-out;
+}
+
+.thread-item .v-card__actions {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.thread-item--focused {
+  background-color: var(--v-accent-lighten5);
+}
+
+.thread-item--previously-focused {
+  background-color: none;
+  /* transition: background-color 10s; */
 }
 
 .thread-item--unread {
-  padding-left: $cardPaddingSize - 2px;
-  border-left: 2px solid;
-  &.thread-item--indent {
-    padding-left: $cardPaddingSize + 40px;
-    // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding))
-  }
-}
-
-.thread-item--indent {
-  padding-left: $cardPaddingSize + 42px;
-}
-
-.thread-item--indent-margin {
-  margin-left: $cardPaddingSize + 42px;
-}
-
-.thread-item__title {
-  /* these styles break with BEM but they keep the translations clean*/
-  color: $grey-on-white;
-  strong, a {
-    color: $primary-text-color;
-    @include md-body-2;
-  }
-  strong:nth-child(2) {
-    font-weight: normal;
-    color: $grey-on-white;
-  }
-}
-
-
-.thread-item__headline {
-  min-height: 28px;
+  background-color:  var(--v-primary-lighten5);
 }
 
 .thread-item__body {
   width: 100%;
   min-width: 0;
 }
+
 @media (max-width: $tiny-max-px){
   .thread-item__directive {
     margin-left: -42px;
   }
 }
 
-
 .thread-item__footer {
-  @include fontSmall();
+  /* // @include fontSmall(); */
   color: $grey-on-white;
   clear: both;
 }
@@ -193,17 +170,16 @@ div
 
 .thread-item__link abbr {
   font-weight: normal;
-  color: $grey-on-white;
 }
 
 .thread-item__action {
-  @include lmoBtnLink;
-  color: $link-color;
+  /* // @include lmoBtnLink; */
+  /* color: $link-color; */
 }
 
 .thread-item__action--view-edits {
-  @include lmoBtnLink;
-  color: $grey-on-white;
+  /* // @include lmoBtnLink; */
+  /* color: $grey-on-white; */
 }
 
 .thread-item__timestamp {

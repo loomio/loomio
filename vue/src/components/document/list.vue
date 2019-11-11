@@ -43,45 +43,25 @@ export default
 <template lang="pug">
 section.document-list
   h3.document-list__heading.lmo-card-heading(v-if='showTitle', v-t="{ path: 'document.list.title' }")
-  p.lmo-hint-text.md-caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
-  .document-list__documents.md-block.lmo-flex.lmo-flex--column
-    .document-list__document.lmo-flex.lmo-flex--column(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
-      .document-list__image(v-if='document.isAnImage() && !hidePreview')
-        router-link.lmo-pointer(:to='document.url', target='_blank')
+  p.caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
+  .document-list__documents
+    .document-list__document(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
+      v-layout.document-list__image(column align-center v-if='document.isAnImage() && !hidePreview')
+        a.lmo-pointer(:href='document.url' target='_blank')
           img(:src='document.webUrl', :alt='document.title')
-      .document-list__entry.lmo-flex.lmo-flex__center(layout='row')
+      v-layout.document-list__entry(align-center)
         i(:class='`mdi lmo-margin-right mdi-${document.icon}`', :style='{color: document.color}')
-        router-link.lmo-pointer.lmo-relative.lmo-truncate.lmo-flex.lmo-flex__grow(:to='document.url', target='_blank')
-          .document-list__title.lmo-truncate.lmo-flex__grow
-            | {{ document.title }}
-        .document-list__upload-time.md-caption.lmo-flex__shrink(v-if='!hideDate && !showEdit')
-          | {{ document.createdAt.fromNow() }}
-        //
-          <document_list_edit
-          document="document"
-          ng-if="showEdit"
-          ></document_list_edit>
-        button.md-button--tiny(v-if='showEdit', @click="$emit('documentRemoved', document)")
-          i.mdi.mdi-close
+        a.document-list__title(:href='document.url' target='_blank') {{ document.title }}
 </template>
 
-<style lang="scss">
-@import 'mixins';
-
-.document-list {
-  .md-button--tiny { opacity: 0.5; }
-  &:hover {
-    .md-button--tiny { opacity: 1; }
-  }
-}
-
+<style lang="css">
 .document-list__document {
   margin: 8px 0;
   line-height: 32px;
-  background: $modal-background-color;
-  @include roundedCorners;
-  &--image { padding-top: 8px; }
+  /* // background: $modal-background-color;
+  // @include roundedCorners; */
 }
+.document-list__document--image { padding-top: 8px; }
 
 .document-list__entry {
   padding-left: 8px;
@@ -90,16 +70,11 @@ section.document-list
 .document-list__image {
   margin: auto;
   max-width: 100%;
-  img {
-    max-width: 100%;
-    max-height: 240px;
-  }
 }
 
-.document-list .md-button--tiny {
-  opacity: 0.5;
-  transition: opacity ease-in-out 0.25s;
-  &:hover { opacity: 1; }
+.document-list__image img {
+  max-width: 100%;
+  max-height: 240px;
 }
 
 .document-list__heading {
@@ -116,7 +91,6 @@ section.document-list
 }
 
 .document-list__title {
-  color: $primary-text-color;
   font-size: 14px;
 }
 

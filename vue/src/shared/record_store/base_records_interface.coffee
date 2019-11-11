@@ -1,6 +1,6 @@
 import RestfulClient from './restful_client'
 import utils         from './utils'
-import {pick, each, merge, keys, isNumber, isString, isArray } from 'lodash'
+import {pick, each, merge, keys, isNumber, isString, isArray} from 'lodash'
 import Vue           from 'vue'
 
 export default class BaseRecordsInterface
@@ -80,6 +80,13 @@ export default class BaseRecordsInterface
         chain.find("#{key}": q[key])
         true
       chain.data()
+
+  findOrNull: (q) ->
+    res = @find(q)
+    if isArray(res) and res.length == 0
+      null
+    else
+      res
 
   findById: (id) ->
     @collection.by('id', id)

@@ -44,7 +44,8 @@ module Dev::Scenarios::Auth
                            group_privacy: 'open')
     @group.add_member! patrick
     @group.add_admin! jennifer
-    @discussion = @group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
+    @discussion = Discussion.new(title: 'I carried a watermelon', private: false, author: jennifer, group: @group)
+    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     redirect_to discussion_url(@discussion)
   end
 
@@ -54,8 +55,9 @@ module Dev::Scenarios::Auth
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
     @group.add_admin! jennifer
-    @discussion = Discussion.create!(title: "I carried a watermelon", private: false, author: patrick, group: @group)
-    redirect_to group_url(create_group)
+    @discussion = Discussion.new(title: "I carried a watermelon", private: false, author: jennifer, group: @group)
+    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    redirect_to group_url(@group)
   end
 
   def view_secret_group_as_non_member
@@ -74,7 +76,9 @@ module Dev::Scenarios::Auth
     @group.add_member! patrick
     @group.add_admin! jennifer
     @discussion = @group.discussions.create!(title: 'This thread is private', private: true, author: jennifer)
+    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     @public_discussion = @group.discussions.create!(title: 'This thread is public', private: false, author: jennifer)
+    DiscussionService.create(discussion: @public_discussion, actor: @public_discussion.author)
     redirect_to group_url(@group)
   end
 

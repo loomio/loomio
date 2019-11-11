@@ -1,13 +1,15 @@
 import Records from '@/shared/services/records'
+import {merge, camelCase, defaults, max } from 'lodash'
 
 export default class RecordLoader
   constructor: (opts = {}) ->
+    @exhausted = false
     @loadingFirst = true
     @loading = false
     @loadingMore = false
     @loadingPrevious = false
     @collection   = opts.collection
-    @params       = _.merge({from: 0, per: 25, order: 'id'}, opts.params)
+    @params       = merge({from: 0, per: 25, order: 'id'}, opts.params)
     @path         = opts.path
     @numLoaded    = opts.numLoaded or 0
     @numRequested = opts.numRequested or @params['per']
@@ -20,9 +22,10 @@ export default class RecordLoader
 
   fetchRecords: (opts = {}) ->
     @loading = true
-    Records[_.camelCase(@collection)].fetch
-      path:   @path
-      params: _.defaults({}, opts, @params)
+    @exhausted = false
+    Records[camelCase(@collection)].fetch
+      path: @path
+      params: defaults({}, opts, @params)
     .then (data) =>
       records = data[@collection] || []
       @numLoaded += records.length
@@ -44,6 +47,7 @@ export default class RecordLoader
     if from?
       @params['from'] = from
     else
-      @params['from'] -= @params['per'] if @numLoaded > 0
+      @params['from'] = max([1, @params['from'] - @params['per']])
+
     @loadingPrevious = true
     @fetchRecords()

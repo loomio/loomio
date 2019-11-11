@@ -27,10 +27,6 @@ export default new class AbilityService
   canRespondToComment: (comment) ->
     _.includes comment.discussion().members(), Session.user()
 
-  canForkComment: (comment) ->
-    @canMoveThread(comment.discussion()) &&
-    !comment.isReply()
-
   canStartPoll: (model) ->
     return unless model
     switch model.constructor.singular
@@ -51,7 +47,11 @@ export default new class AbilityService
     _.some _.compact(model.groups()), (group) -> Session.user().isAdminOf(group)
 
   canReactToPoll: (poll) ->
-    @isEmailVerified() and @canParticipateInPoll(poll)
+    return false unless @isEmailVerified()
+    return false unless poll
+    poll.anyoneCanParticipate or
+    @adminOf(poll) or
+    (@memberOf(poll) and (!poll.group() or poll.group().membersCanVote))
 
   canEditStance: (stance) ->
     Session.user() == stance.author()
@@ -61,20 +61,23 @@ export default new class AbilityService
     Session.user().isMemberOf(thread.group()) and
     (Session.user().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
 
-  canRemoveEventFromThread: (event) ->
-    event.kind == 'discussion_edited' && @canAdministerDiscussion(event.discussion())
-
   canCloseThread: (thread) ->
-    @canAdministerDiscussion(thread)
+    !thread.closedAt && @canAdministerDiscussion(thread)
 
   canReopenThread: (thread) ->
-    @canAdministerDiscussion(thread)
+    thread.closedAt && @canAdministerDiscussion(thread)
 
   canPinThread: (thread) ->
     !thread.closedAt && !thread.pinned && @canAdministerGroup(thread.group())
 
   canUnpinThread: (thread) ->
     !thread.closedAt && thread.pinned && @canAdministerGroup(thread.group())
+
+  canPinEvent: (event) ->
+    !event.pinned && event.depth == 1 && @canEditThread(event.discussion())
+
+  canUnpinEvent: (event) ->
+    event.pinned && @canEditThread(event.discussion())
 
   canMoveThread: (thread) ->
     @canAdministerGroup(thread.group()) or
@@ -145,14 +148,12 @@ export default new class AbilityService
     @canAdministerGroup(group)
 
   canEditComment: (comment) ->
-    Session.user().isMemberOf(comment.group()) and
     Session.user().isAuthorOf(comment) and
-    (comment.isMostRecent() or comment.group().membersCanEditComments)
+    (comment.isMostRecent() or comment.group().membersCanEditComments) and
+    comment.discussion().members().includes(Session.user())
 
   canDeleteComment: (comment) ->
-    (Session.user().isMemberOf(comment.group()) and
-    Session.user().isAuthorOf(comment)) or
-    @canAdministerGroup(comment.group())
+    (Session.user().isAuthorOf(comment)) or @canAdministerGroup(comment.group())
 
   canRemoveMembership: (membership) ->
     membership and
@@ -208,19 +209,16 @@ export default new class AbilityService
     !@canJoinGroup(group)
 
   canTranslate: (model) ->
-    AppConfig.inlineTranslation.isAvailable? and
-    _.includes(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
-    !model.translation and
-    Session.user().locale != model.author().locale
+    AppConfig.inlineTranslation.isAvailable and
+    Object.keys(model.translation).length == 0
+    # _.includes(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
+    # !model.translation and Session.user().locale != model.author().locale
 
   canSubscribeToPoll: (poll) ->
     if poll.group()
       @canViewGroup(poll.group())
     else
       @canAdministerPoll() || _.includes(@poll().voters(), Session.user())
-
-  canRemovePollOptions: (poll) ->
-    poll.isNew() || (poll.isActive() && poll.stancesCount == 0)
 
   canEditPoll: (poll) ->
     poll.isActive() and @canAdministerPoll(poll)

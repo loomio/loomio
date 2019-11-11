@@ -3,11 +3,6 @@ mi:
     name_label: Ingoa
   reactions:
     slight_smile: Rawe
-  poll_types:
-    proposal: He whakatakoto
-    count: Whakatika
-    poll: Pōti
-    dot_vote: Pōti ira
   common:
     expand: Whakanui
     ok_got_it: Kei te pai, kua mau
@@ -50,6 +45,8 @@ mi:
     copied: 'Kua taruatia ki te papa whakapine'
     total: Tapeke
     action:
+      search: 'Rapu'
+      back: 'E hoki'
       next: 'Kei mua'
       close: 'Katia'
       reopen: 'Tūwhera anō'
@@ -60,17 +57,14 @@ mi:
       edit: 'Whakatikaina'
       remove: 'Unuhia'
       like: 'Rawe'
-      back: 'E hoki'
       unlike: 'Kaua te rawe'
       update: 'Whakahoungia'
       cancel: 'Whakakorea'
       show_more: "Me whakaatu etahi atu"
       view_all: "Tirohia katoatia"
       new_thread: "Aho hou"
-      add_subgroup: 'Tapirihia he ropu whaiti'
       loading: 'Kei te utaina '
       translate: 'Whakawhitihia te reo'
-      translated: 'Whakawhitihia ma te whakawhiti Bing'
       upload: 'Whakautangia atu'
       uploading: 'Kei te whakautangia'
       load_more: 'Tukua mai anō'
@@ -86,6 +80,8 @@ mi:
       resent: Kua tukua anō te pōwhiri
     formatting_help:
       label: 'He whakanikoniko pūreta'
+  emoji_picker:
+    search: Rapu
   ordinal:
     _1: Tuatahi
     _2: Tuarua
@@ -96,11 +92,13 @@ mi:
     loud: 'Hoihoi'
     mute: 'Whakahāngūtia'
     unmute: 'Whakahoitia'
+  pin_event_form:
+    title_label: Taitara
   change_volume_form:
+    simple:
+      label: Ngā kōrero pūrongo
     aria_label: "Whakahuritia ngā kōwhiringa īmēra"
     mute_label: "Whakahāngūtia"
-    membership:
-      title: "Kōwhiringa īmēra o {{title}}"
   mute_explanation_modal:
     aria_label: Whakahāngūtia te miro
     mute_thread: Whakahāngūtia te miro
@@ -119,6 +117,7 @@ mi:
       label: 'Pānui'
     sign_in: "Me takiuru mai, he whakamana mō te whakawhiti kōrero"
   sidebar:
+    threads: 'Ngā miro'
     muted_threads: 'Ngā miro kāhore e kōrero ana'
   navbar:
     search:
@@ -145,6 +144,9 @@ mi:
   revision_history_modal:
     current_revision: Hou ake
   group_page:
+    threads: Ngā miro
+    members: Ngā Mema
+    settings: Ngā kōwhiringa
     invite_people: 'Pōwhiri'
     options_label: 'Ngā Kōwhiringa'
     options:
@@ -156,7 +158,6 @@ mi:
     form:
       title_label: Ingoa
   invitation_form:
-    invite_people: 'Pōwhiri atu'
     copy_link: 'Tārua'
     send: 'Tukua'
     done: 'Kua mutu'
@@ -183,7 +184,6 @@ mi:
     volume:
       unmute_message: 'Kua whakahoitia'
   activity_card:
-    unread: Kāhore anō kia kitea
     latest: Hou ake
   thread_group:
     aria_label: 'Ingoa rōpū'
@@ -198,6 +198,15 @@ mi:
     poll_title: Pōti
   poll_common:
     save_changes: Tiaki
+  discussions_panel:
+    open: E huaki ana
+    closed: Kua kati
+  members_panel:
+    order_by_name: 'Ingoa'
+    header_name: 'Ingoa'
+  polls_panel:
+    open: 'E huaki ana'
+    closed: 'Kua kati'
   poll_common_form:
     closed: Kua kati
     start: Tīmatatia

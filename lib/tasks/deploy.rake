@@ -69,7 +69,6 @@ namespace :deploy do
       "find plugins/fetched -name '*.*' | xargs git add -f",
       "git add -f plugins",
       "git add public/client/ -f",
-      "git add public/service-worker.js -f",
       "git commit -m 'Add compiled assets / plugin code'",
       "git checkout master")
   end
@@ -84,8 +83,8 @@ namespace :deploy do
   task :cleanup do
     puts "Migrating heroku..."
     run_commands(
-      "#{heroku_cli} run rake db:migrate -a #{heroku_remote}",
-      "#{heroku_cli} restart -a #{heroku_remote}"
+      "#{heroku_cli} run rake db:migrate -a #{heroku_remote}"
+      #"#{heroku_cli} restart -a #{heroku_remote}"
     )
   end
 end

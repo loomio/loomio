@@ -31,6 +31,7 @@ describe MembershipService do
   end
 
   describe 'redeem' do
+    let!(:another_subgroup) { create :formal_group, parent: group }
     before do
       MembershipService.redeem(membership: membership, actor: user)
     end
@@ -41,6 +42,36 @@ describe MembershipService do
 
     it 'notifies the invitor of acceptance' do
       expect(Event.last.kind).to eq 'invitation_accepted'
+    end
+
+  end
+
+
+  describe 'with multiple group ids' do
+    let!(:subgroup) { create :formal_group, parent: group }
+    let(:membership) { create :membership, group: group, inviter: admin, user: user, experiences: { invited_group_ids: [subgroup.id] }  }
+
+    before do
+      subgroup.add_admin! admin
+      MembershipService.redeem(membership: membership, actor: user)
+    end
+
+    it 'adds them to the subgroup' do
+      expect(group.members).to include user
+      expect(subgroup.members).to include user
+    end
+  end
+
+  describe 'with alien group' do
+    let!(:alien_group) { create :formal_group }
+    let(:membership) { create :membership, group: group, inviter: admin, user: user, experiences: { invited_group_ids: [alien_group.id] }  }
+
+    before do
+      MembershipService.redeem(membership: membership, actor: user)
+    end
+
+    it 'cannot invite user to alien group' do
+      expect(alien_group.members).to_not include user
     end
   end
 end

@@ -1,12 +1,28 @@
-<style lang="scss">
-.time-ago { border: 0; }
-</style>
-
 <script lang="coffee">
+import { approximate, exact } from '@/shared/helpers/format_time'
+import { parseISO } from 'date-fns'
+import {isString} from 'lodash'
+
 export default
-  functional: true
   props:
-    date: Object
-  render: (createElement, context) ->
-    createElement('abbr', {class: 'timeago'}, [moment(context.props.date).fromNow()])
+    date: [Date, String]
+
+  data: ->
+    parsedDate: null
+
+  created: ->
+    if isString(@date)
+      @parsedDate = parseISO(@date)
+    else
+      @parsedDate = @date
+
 </script>
+
+<template lang="pug">
+abbr.time-ago(:title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
+</template>
+
+<style lang="css">
+.time-ago{ white-space: nowrap; }
+abbr[title] { border-bottom: none; }
+</style>

@@ -6,7 +6,8 @@ class VersionSerializer < ActiveModel::Serializer
              :previous_id,
              :created_at,
              :item_id,
-             :item_type
+             :item_type,
+             :object_changes
 
   has_one :discussion
   has_one :comment
@@ -14,6 +15,7 @@ class VersionSerializer < ActiveModel::Serializer
   has_one :stance
 
   def changes
+    return {} unless object.object_changes
     object.object_changes.map { |key, changes| [key, changes_for(key, changes)] }.to_h
   end
 
@@ -40,6 +42,7 @@ class VersionSerializer < ActiveModel::Serializer
   def previous_id
     object.previous.try :id
   end
+
 
   def include_discussion?
     object.item_type == 'Discussion'

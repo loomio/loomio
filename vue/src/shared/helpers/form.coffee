@@ -5,21 +5,25 @@ import Session        from '@/shared/services/session'
 import Flash   from '@/shared/services/flash'
 
 import { fieldFromTemplate } from '@/shared/helpers/poll'
-import { scrollTo }          from '@/shared/helpers/layout'
 
 # a helper to aid submitting forms throughout the app
 export submitForm = (scope, model, options = {}) ->
   submit(scope, model, options)
 
 export submitDiscussion = (scope, model, options = {}) ->
+  if model.isForking
+    submitFn = model.moveComments
+  else
+    model.save
+
   submit(scope, model, _.merge(
-    submitFn: if model.isForking() then model.fork else model.save
-    flashSuccess: "discussion_form.messages.#{actionName(model)}"
+    submitFn: submitFn
+    flashSuccess: if model.isForking then "discussion_fork_actions.moved" else "discussion_form.messages.#{actionName(model)}"
     failureCallback: ->
-      scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
+      console.log "failure"
     successCallback: (data) ->
       _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
-      if model.isForking()
+      if model.isForking
         model.forkTarget().discussion().forkedEventIds = []
         _.invokeMap Records.events.find(model.forkedEventIds), 'remove'
       nextOrSkip(data, scope, model)
@@ -29,7 +33,7 @@ export submitOutcome = (scope, model, options = {}) ->
   submit(scope, model, _.merge(
     flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
     failureCallback: ->
-      scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+      # scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
     successCallback: (data) ->
       nextOrSkip(data, scope, model)
   , options))
@@ -41,7 +45,6 @@ export submitStance = (scope, model, options = {}) ->
       EventBus.$emit 'processing'
     successCallback: (data) ->
       model.poll().clearStaleStances()
-      scrollTo '.poll-common-card__results-shown'
       EventBus.$emit 'stanceSaved'
     cleanupFn: ->
       EventBus.$emit 'doneProcessing'
@@ -53,18 +56,10 @@ export submitPoll = (scope, model, options = {}) ->
     prepareFn: =>
       EventBus.$emit 'processing'
       model.customFields.deanonymize_after_close = model.deanonymizeAfterClose if model.anonymous
-      switch model.pollType
-        # for polls with default poll options (proposal, check)
-        when 'proposal', 'count'
-          model.pollOptionNames = _.map fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
-        # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
-        when 'meeting'
-          model.customFields.can_respond_maybe = model.canRespondMaybe
-          model.addOption()
-        else
-          model.addOption()
+      model.customFields.can_respond_maybe = model.canRespondMaybe if model.pollType == 'meeting'
+      model.setErrors({})
     failureCallback: ->
-      scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+      # scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
     successCallback: (data) ->
       _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
       model.removeOrphanOptions()
@@ -104,11 +99,6 @@ upload = (scope, model, options) ->
       )
 
 submit = (scope, model, options = {}) ->
-  # fetch draft from server and listen for changes to it
-  # if model.hasDrafts and model.isNew() and Session.isSignedIn()
-  #   model.fetchAndRestoreDraft()
-  #   EventBus.watch scope, model.draftFields, model.planDraftFetch, true
-
   submitFn  = options.submitFn  or model.save
   confirmFn = options.confirmFn or (-> false)
   (prepareArgs) ->
@@ -183,16 +173,16 @@ nextOrSkip = (data, scope, model) ->
     EventBus.$emit 'skipStep'
 
 actionName = (model) ->
-  return 'forked' if model.isA('discussion') and model.isForking()
+  return 'forked' if model.isA('discussion') and model.isForking
   if model.isNew() then 'created' else 'updated'
 
 setErrors = (scope, model, response) ->
   response.json().then (r) ->
     model.setErrors(r.errors)
 
-eventKind = (model) ->
+export eventKind = (model) ->
   if model.isA('discussion') and model.isNew()
-    return if model.isForking() then 'discussion_forked' else 'new_discussion'
+    return if model.isForking then 'discussion_forked' else 'new_discussion'
 
   if model.isNew()
     "#{model.constructor.singular}_created"

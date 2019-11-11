@@ -1,10 +1,45 @@
 cmn:
+  explore:
+    header: 探索公开群组
+  activerecord:
+    errors:
+      messages:
+        blank: 不能是空白
+        invalid: 不是有效的值
+  errors:
+    noscript: Loomio 需要 JavaScript！请在您的浏览器中启用 JavaScript 以继续
+    messages:
+      email: 您输入的不是有效的电子邮件地址
+  user:
+    error:
+      username_must_be_alphanumeric: "用户名只能为小写字母与数字"
   poll:
     export:
+      percent_voted: "%{num}/%{denom} (%{percent}) 的成员已经表达了他们的立场"
       title: 标题
+      participants: 参与者
       details: 细节
+      group_name: 群组名称
+      total: 总共
   email:
+    reset_password:
+      signoff: |
+          因为您的电子邮件在 %{hostname} 上被输入到“忘记密码”表单中，所以收到这份讯息。
+          然而，您的密码在您完成上面这个连结的表单前都不会被变更。
+          若您还有登入上的问题，回复这封电子邮件以连络客服人员。
     catch_up:
+      mark_as_read: 设为已读
       click_here: 点击这里
+    group_membership_approved:
+      join_group: "加入群组"
   footer:
+    help: 帮助
+    privacy: 隐私
     public_groups: 公共组团
+  poll_mailer:
+    common:
+      or: 或者
+      unsubscribe: 取消订阅
+      create_outcome: 分享成果
+  poll_unsubscribe:
+    go_to_dashboad: 访问仪表板

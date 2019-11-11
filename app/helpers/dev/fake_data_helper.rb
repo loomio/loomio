@@ -1,4 +1,6 @@
 module Dev::FakeDataHelper
+  private
+
   def saved(obj)
     obj.tap(&:save!)
   end

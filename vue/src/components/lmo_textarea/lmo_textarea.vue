@@ -1,38 +1,65 @@
 <script lang="coffee">
 import tippy from 'tippy.js'
-# import 'tippy.js/dist/tippy.css'
 import Records from '@/shared/services/records'
-import _concat from 'lodash/concat'
-import _sortBy from 'lodash/sortBy'
-import _isString from 'lodash/isString'
-import _filter from 'lodash/filter'
-import _uniq from 'lodash/uniq'
-import _map from 'lodash/map'
-import _forEach from 'lodash/forEach'
+import {concat, sortBy, isString, filter, uniq, map, forEach, isEmpty} from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
+import detectIt from 'detect-it'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
-import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
-  OrderedList, BulletList, ListItem, TodoItem, TodoList, Bold, Code,
-  Italic, Link, Strike, Underline, History, Mention, Placeholder } from 'tiptap-extensions'
+import {
+  Blockquote,
+  CodeBlock,
+  HardBreak,
+  Heading,
+  HorizontalRule,
+  OrderedList,
+  BulletList,
+  ListItem,
+  Table,
+  TableHeader,
+  TableCell,
+  TableRow,
+  TodoList,
+  Bold,
+  Code,
+  Italic,
+  Link,
+  Strike,
+  Underline,
+  History,
+  Mention,
+  Placeholder } from 'tiptap-extensions'
+
+import ExternalLink from './external_link'
+import Iframe from './iframe'
+import TodoItem from './todo_item'
+
 import { insertText } from 'tiptap-commands'
 import Image from '@/shared/tiptap_extentions/image.js'
+
+import marked from 'marked'
+import {customRenderer, options} from '@/shared/helpers/marked.coffee'
+marked.setOptions Object.assign({renderer: customRenderer()}, options)
 
 export default
   props:
     model: Object
     field: String
-    placeholder: [String, Object]
-    helptext: [String, Object]
+    label: String
+    placeholder: String
     shouldReset: Boolean
+    maxLength: Number
+    autoFocus:
+      type: Boolean
+      default: false
 
   components:
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
     FilesList: FilesList
-    # EditorMenuBubble: EditorMenuBubble
+    EditorMenuBubble: EditorMenuBubble
 
   data: ->
     query: null
@@ -43,16 +70,19 @@ export default
     navigatedUserIndex: 0
     closeEmojiMenu: false
     linkUrl: null
+    iframeUrl: null
     linkDialogIsOpen: false
-    recentEmojis: 'thumbsup thumbsdown laughing wink sunglasses neutral_face sleeping relieved confused astonished confounded disappointed worried cry weary scream angry v ok_hand wave clap raised_hands pray heart'.split(" ")
+    iframeDialogIsOpen: false
     insertMention: () => {}
     editor: new Editor
+      editorProps:
+        scrollThreshold: 100
+        scrollMargin: 100
       extensions: [
         new Mention(
           # is called when a suggestion starts
           onEnter: ({ query, range, command, virtualNode }) =>
-            # console.log "suggestion started", items, query, range
-            @query = query
+            @query = query.toLowerCase()
             @suggestionRange = range
             @insertMention = command
             @renderPopup(virtualNode)
@@ -60,8 +90,7 @@ export default
 
           # is called when a suggestion has changed
           onChange: ({query, range, virtualNode}) =>
-            # console.log "suggestion changed", items, query, range
-            @query = query
+            @query = query.toLowerCase()
             @suggestionRange = range
             @navigatedUserIndex = 0
             @renderPopup(virtualNode)
@@ -86,8 +115,8 @@ export default
               @downHandler()
               return true
 
-            # pressing enter
-            if (event.keyCode == 13)
+            # pressing enter or tab
+            if [13,9].includes(event.keyCode)
               @enterHandler()
               return true
 
@@ -105,39 +134,64 @@ export default
         new OrderedList(),
         new TodoItem(),
         new TodoList(),
+        new Table(),
+        new TableHeader(),
+        new TableCell(),
+        new TableRow(),
         new Bold(),
         new Code(),
         new Italic(),
-        new Link(),
+        new ExternalLink(),
         new Strike(),
         new Underline(),
         new History(),
+        new Iframe(),
         new Placeholder({
           emptyClass: 'is-empty',
-          emptyNodeText: @$lt(@placeholder),
+          emptyNodeText: @placeholder,
           showOnlyWhenEditable: true,
         })
       ]
-      content: @model[@field]
+      content: (if @model[@field+'Format'] == "md"
+        @model[@field+'Format'] = 'html'
+        @model[@field] = marked(@model[@field] || '')
+      else
+        @model[@field])
       onUpdate: @updateModel
+      autoFocus: @autoFocus
 
   computed:
     hasResults: -> @filteredUsers.length
     showSuggestions: -> @query || @hasResults
     filteredUsers: ->
-      unsorted = _filter Records.users.collection.chain().find(@mentionableUserIds).data(), (u) =>
-        _isString(u.username) &&
-        (u.name.toLowerCase().startsWith(@query) or
-        (u.username || "").toLowerCase().startsWith(@query) or
-        u.name.toLowerCase().includes(" #{@query}"))
-      _sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
+      unsorted = filter Records.users.collection.chain().find(@mentionableUserIds).data(), (u) =>
+        isString(u.username) &&
+        ((u.name || '').toLowerCase().startsWith(@query) or
+        (u.username || '').toLowerCase().startsWith(@query) or
+        (u.name || '').toLowerCase().includes(" #{@query}"))
+      sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
     format: ->
       @model["#{@field}Format"]
+    isTouchDevice: ->
+      detectIt.primaryInput == 'touch'
+
+  created: ->
+    @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
+
+  mounted: ->
+    @updateModel()
+
   methods:
     setLinkUrl: (command) ->
       command({ href: @linkUrl })
       @linkUrl = null
       @linkDialogIsOpen = false
+      @editor.focus()
+
+    setIframeUrl: (command) ->
+      command({ src: @iframeUrl })
+      @iframeUrl = null
+      @iframeDialogIsOpen = false
       @editor.focus()
 
     emitUploading: ->
@@ -156,7 +210,7 @@ export default
       @emitUploading()
 
     removeFile: (name) ->
-      @files = _filter @files, (wrapper) -> wrapper.file.name != name
+      @files = filter @files, (wrapper) -> wrapper.file.name != name
 
     attachFile: ({file}) ->
       wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null}
@@ -184,19 +238,16 @@ export default
       , onFailure)
 
     fileSelected: ->
-      _forEach(@$refs.filesField.files, (file) => @attachFile(file: file))
+      forEach(@$refs.filesField.files, (file) => @attachFile(file: file))
 
     fetchMentionable: ->
       Records.users.fetchMentionable(@query, @model).then (response) =>
-        @mentionableUserIds.concat(_.uniq @mentionableUserIds + _.map(response.users, 'id'))
+        @mentionableUserIds.concat(uniq @mentionableUserIds + map(response.users, 'id'))
 
-    # navigate to the previous item
-    # if it's the first item, navigate to the last one
+    # mentioning methods
     upHandler: ->
       @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length
 
-    # navigate to the next item
-    # if it's the last item, navigate to the first one
     downHandler: ->
       @navigatedUserIndex = (@navigatedUserIndex + 1) % @filteredUsers.length
 
@@ -204,8 +255,6 @@ export default
       user = @filteredUsers[@navigatedUserIndex]
       @selectUser(user) if user
 
-    # we have to replace our suggestion text with a mention
-    # so it's important to pass also the position of your suggestion text
     selectUser: (user) ->
       @insertMention
         range: @suggestionRange
@@ -214,29 +263,39 @@ export default
           label: user.name
       @editor.focus()
 
-     # renders a popup with suggestions
-     # tiptap provides a virtualNode object for using popper.js (or tippy.js) for popups
-     renderPopup: (node) ->
-       return if @popup
-       @popup = tippy(node, {
-         content: @$refs.suggestions,
-         trigger: 'mouseenter',
-         interactive: true,
-         theme: 'dark',
-         placement: 'top-start',
-         performance: true,
-         inertia: true,
-         duration: [400, 200],
-         showOnInit: true,
-         arrow: true,
-         arrowType: 'round'
-       })
+    renderPopup: (node) ->
+      return if @popup
+      @popup = tippy(node, {
+        content: @$refs.suggestions,
+        trigger: 'mouseenter',
+        interactive: true,
+        theme: 'dark',
+        placement: 'top-start',
+        inertia: true,
+        duration: [400, 200],
+        showOnInit: true,
+        arrow: true,
+        arrowType: 'round'
+      })
 
-     destroyPopup: ->
-       if (@popup)
-         @popup.destroyAll()
-         @popup = null
+      if MutationObserver
+        @observer = new MutationObserver => @popup.popperInstance.scheduleUpdate()
+        @observer.observe(@$refs.suggestions, {
+          childList: true,
+          subtree: true,
+          characterData: true,
+        })
+
+    destroyPopup: ->
+      if @popup
+        @popup.destroy()
+        @popup = null
+      @observer.disconnect() if @observer
+
   watch:
+    linkDialogIsOpen: (val) ->
+      return unless val && @$refs.focus
+      requestAnimationFrame => @$refs.focus.focus()
     files: -> @updateModel()
     imageFiles: -> @updateModel()
     shouldReset: ->
@@ -250,97 +309,198 @@ export default
 
 <template lang="pug">
 div
-  v-textarea(v-if="format == 'md'" lmo_textarea v-model="model[field]" :placeholder="$t('comment_form.say_something')")
-  .editor(v-if="format == 'html'")
-    editor-menu-bar.menubar(:editor='editor')
-      div.lmo-flex.lmo-flex__center(slot-scope='{ commands, isActive }')
-        v-menu(lazy)
-          template(v-slot:activator="{on}")
-            v-btn(small flat v-on="on")
-              v-icon mdi-format-size
-              v-icon mdi-menu-down
-          v-list.menubar__dropdown
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })')
-                v-icon mdi-format-header-1
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })')
-                v-icon mdi-format-header-2
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })')
-                v-icon mdi-format-header-3
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.paragraph() }", @click='commands.paragraph')
-                v-icon mdi-format-text
-        v-menu(lazy)
-          template(v-slot:activator="{on}")
-            v-btn(small flat v-on="on")
+  label.caption.v-label.v-label--active.theme--light {{label}}
+  .editor.mb-3
+    editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
+    editor-menu-bubble(v-if="!isTouchDevice" :editor='editor' v-slot='{ commands, isActive, menu }')
+      .menububble(:class="{'is-active': menu.isActive}" :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`")
+        v-tooltip(bottom)
+          template(v-slot:activator="{ on }")
+            v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' v-on="on")
               v-icon mdi-format-bold
-              v-icon mdi-menu-down
-          v-list.menubar__dropdown
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.bold() }", @click='commands.bold')
-                v-icon mdi-format-bold
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.italic() }", @click='commands.italic')
-                v-icon mdi-format-italic
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.strike() }", @click='commands.strike')
-                v-icon mdi-format-strikethrough
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.underline() }", @click='commands.underline')
-                v-icon mdi-format-underline
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote')
-                v-icon mdi-format-quote-close
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.code() }", @click='commands.code')
-                v-icon mdi-code-braces
-        v-menu(lazy)
-          template(v-slot:activator="{on}")
-            v-btn(small flat v-on="on")
-              v-icon mdi-format-list-bulleted
-              v-icon mdi-menu-down
-          v-list.menubar__dropdown
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list')
-                v-icon mdi-format-list-bulleted
-            v-list-tile
-              v-btn(small flat :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list')
-                v-icon mdi-format-list-numbered
-            v-list-tile
-              v-btn(small flat @click='commands.todo_list')
-                v-icon mdi-format-list-checks
-        v-btn(flat small :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
-          v-icon mdi-paperclip
-        v-menu(lazy :close-on-content-click="false" v-model="closeEmojiMenu")
-          template(v-slot:activator="{on}")
-            v-btn.emoji-picker__toggle(v-on="on" flat small :class="{ 'is-active': isActive.underline() }")
-              v-icon mdi-emoticon-outline
-          emoji-picker(:insert="emojiPicked")
-        v-dialog(v-model="linkDialogIsOpen")
-          template(v-slot:activator="{on}")
-            v-btn(flat small v-on="on")
+          span(v-t="'formatting.bold'")
+        v-tooltip(bottom)
+          template(v-slot:activator="{ on }")
+            v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' v-on="on")
+              v-icon mdi-format-italic
+          span(v-t="'formatting.italicize'")
+        v-tooltip(bottom)
+          template(v-slot:activator="{ on }")
+            v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' v-on="on")
+              v-icon mdi-format-strikethrough
+          span(v-t="'formatting.strikethrough'")
+        v-tooltip(bottom)
+          template(v-slot:activator="{ on }")
+            v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' v-on="on")
+              v-icon mdi-format-underline
+          span(v-t="'formatting.underline'")
+        v-tooltip(bottom)
+          template(v-slot:activator="{ on }")
+            v-btn(small icon v-on="on" @click="linkDialogIsOpen = true")
               v-icon mdi-link-variant
+          span(v-t="'formatting.link'")
+        v-dialog(v-model="linkDialogIsOpen" ref="focus" max-width="600px")
           v-card
-            .needsSelection(v-if="editor.view.state.tr.selection.empty")
-              v-card-title.title(v-t="'text_editor.select_text_to_link'")
+            v-card-title.title(v-t="'text_editor.insert_link'")
+            v-card-text
+              v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus v-on:keyup.enter="setLinkUrl(commands.link)")
+            v-card-actions
+              v-spacer
+              v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
 
-            .hasSelection(v-if="!editor.view.state.tr.selection.empty")
+    editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
+      v-layout.menubar.py-2(align-center)
+        v-layout(style="overflow: scroll")
+          v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+            template(v-slot:activator="{on}")
+              v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
+                v-icon mdi-emoticon-outline
+            emoji-picker(:insert="emojiPicked")
+          v-tooltip(bottom v-if="isTouchDevice")
+            template(v-slot:activator="{ on }")
+              v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' v-on="on")
+                v-icon mdi-format-bold
+            span(v-t="'formatting.bold'")
+          v-tooltip(bottom v-if="isTouchDevice")
+            template(v-slot:activator="{ on }")
+              v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' v-on="on")
+                v-icon mdi-format-italic
+            span(v-t="'formatting.italicize'")
+          v-tooltip(bottom v-if="isTouchDevice")
+            template(v-slot:activator="{ on }")
+              v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' v-on="on")
+                v-icon mdi-format-strikethrough
+            span(v-t="'formatting.strikethrough'")
+          v-tooltip(bottom v-if="isTouchDevice")
+            template(v-slot:activator="{ on }")
+              v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' v-on="on")
+                v-icon mdi-format-underline
+            span(v-t="'formatting.underline'")
+          v-tooltip(bottom v-if="isTouchDevice")
+            template(v-slot:activator="{ on }")
+              v-btn(small icon v-on="on" @click="linkDialogIsOpen = true")
+                v-icon mdi-link-variant
+            span(v-t="'formatting.link'")
+          v-dialog(v-if="isTouchDevice" v-model="linkDialogIsOpen" ref="focus" max-width="600px")
+            v-card
               v-card-title.title(v-t="'text_editor.insert_link'")
               v-card-text
-                v-text-field(type="url" label="https://www.example.com" v-model="linkUrl")
+                v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus v-on:keyup.enter="setLinkUrl(commands.link)")
               v-card-actions
                 v-spacer
-                v-btn(@click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
-        //-
-        //- v-btn-toggle(slot-scope='{ commands, isActive }')
-        //- v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()')
-        //-   v-icon mdi-paperclip
-        //- v-btn(small icon @click='commands.horizontal_rule')
-        //-   v-icon mdi-format-page-break
-    editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
-
+                v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()' v-on="on")
+                v-icon mdi-paperclip
+            span(v-t="'formatting.attach'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })' v-on="on")
+                v-icon mdi-format-header-1
+            span(v-t="'formatting.heading1'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })' v-on="on")
+                v-icon mdi-format-header-2
+            span(v-t="'formatting.heading2'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })' v-on="on")
+                v-icon mdi-format-header-3
+            span(v-t="'formatting.heading3'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list' v-on="on")
+                v-icon mdi-format-list-bulleted
+            span(v-t="'formatting.bullet_list'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list' v-on="on")
+                v-icon mdi-format-list-numbered
+            span(v-t="'formatting.number_list'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(icon @click='commands.todo_list' v-on="on")
+                v-icon mdi-format-list-checks
+            span(v-t="'formatting.check_list'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(small icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote' v-on="on")
+                v-icon mdi-format-quote-close
+            span(v-t="'formatting.quote'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(small icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block' v-on="on")
+                v-icon mdi-code-braces
+            span(v-t="'formatting.code_block'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(small icon v-on="on" @click="iframeDialogIsOpen = true")
+                v-icon mdi-youtube
+            span(v-t="'formatting.embed'")
+          v-dialog(v-model="iframeDialogIsOpen" ref="focus" max-width="600px")
+            v-card
+              v-card-title.title(v-t="'text_editor.insert_embedded_url'")
+              v-card-text
+                v-text-field(type="url" label="https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
+              v-card-actions
+                v-spacer
+                v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(icon @click='commands.horizontal_rule' v-on="on")
+                v-icon mdi-minus
+            span(v-t="'formatting.divider'")
+          v-tooltip(bottom)
+            template(v-slot:activator="{ on }")
+              v-btn(icon @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })" v-on="on")
+                v-icon mdi-table
+            span(v-t="'formatting.add_table'")
+          span(v-if="isActive.table()")
+            v-tooltip(bottom)
+              template(v-slot:activator="{ on }")
+                v-btn(icon @click="commands.deleteTable" v-on="on")
+                  v-icon mdi-table-remove
+              span(v-t="'formatting.remove_table'")
+            v-tooltip(bottom)
+              template(v-slot:activator="{ on }")
+                v-btn(icon @click="commands.addColumnBefore" v-on="on")
+                  v-icon mdi-table-column-plus-before
+              span(v-t="'formatting.add_column_before'")
+            v-tooltip(bottom)
+              template(v-slot:activator="{ on }")
+                v-btn(icon @click="commands.addColumnAfter" v-on="on")
+                  v-icon mdi-table-column-plus-after
+              span(v-t="'formatting.add_column_after'")
+            v-tooltip(bottom)
+              template(v-slot:activator="{ on }")
+                v-btn(icon @click="commands.deleteColumn" v-on="on")
+                  v-icon mdi-table-column-remove
+              span(v-t="'formatting.remove_column'")
+            v-tooltip(bottom)
+              template(v-slot:activator="{ on }")
+                v-btn(icon @click="commands.addRowBefore" v-on="on")
+                  v-icon mdi-table-row-plus-before
+              span(v-t="'formatting.add_row_before'")
+            v-tooltip(bottom)
+              template(v-slot:activator="{ on }")
+                v-btn(icon @click="commands.addRowAfter" v-on="on")
+                  v-icon mdi-table-row-plus-after
+              span(v-t="'formatting.add_row_after'")
+            v-tooltip(bottom)
+              template(v-slot:activator="{ on }")
+                v-btn(icon @click="commands.deleteRow" v-on="on")
+                  v-icon mdi-table-row-remove
+              span(v-t="'formatting.remove_row'")
+            v-tooltip(bottom)
+              template(v-slot:activator="{ on }")
+                v-btn(icon @click="commands.toggleCellMerge" v-on="on")
+                  v-icon mdi-table-merge-cells
+              span(v-t="'formatting.merge_selected'")
+        slot(name="actions")
+    v-alert(v-if="maxLength && model[field].length > maxLength" color='error')
+      span( v-t="'poll_common.too_long'")
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')
       .suggestion-list__item(v-for='(user, index) in filteredUsers', :key='user.id', :class="{ 'is-selected': navigatedUserIndex === index }", @click='selectUser(user)')
@@ -353,199 +513,276 @@ div
     input(ref="filesField" type="file" name="files" multiple=true)
 </template>
 
-<style lang="scss">
-@import 'variables.scss';
+<style lang="sass">
+.menububble.is-hidden
+  visibility: hidden
+  opacity: 0
 
-$color-black: #000;
-$color-white: #fff;
+.menububble.is-active
+  visibility: visible
+  opacity: 1
 
-progress {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: $color-white;
-  border: 1px solid $border-color;
-}
+.menububble
+  position: absolute
+  display: flex
+  z-index: 20
+  background: #fff
+  border: 1px solid #ccc
+  border-radius: 5px
+  padding: .3rem
+  margin-bottom: .5rem
+  transform: translateX(-50%)
+  visibility: hidden
+  opacity: 0
+  transition: opacity .2s,visibility .2s
 
-progress::-webkit-progress-bar {
-  background-color: $color-white;
-  border: 1px solid $border-color;
-}
+.lmo-markdown-wrapper
 
-progress::-webkit-progress-value {
-  background-color: lightblue;
-  border: 0;
-  transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
-}
+  h1
+    line-height: 2.75rem
+    font-size: 1.6rem
+    font-weight: 400
+    letter-spacing: .0125em
+    margin-top: 0.5em
 
-progress::-moz-progress-bar {
-  background-color: lightblue;
-  border: 0;
-  transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
-}
+  h2
+    line-height: 2rem
+    font-size: 1.2rem
+    font-weight: 400
+    letter-spacing: .0125em
+    margin-bottom: 0.75em
 
-.menubar__dropdown {
-  .v-list__tile {
-    height: 40px;;
+  h3
+    line-height: 2.5rem
+    font-size: 1rem
+    font-weight: 700
+    letter-spacing: .009375em
 
-    .v-btn {
-      margin-left: 0;
-      margin-right: 0;
-      min-width: 0;
-      .v-icon {
-        font-size: 16px;
-        color: $grey-on-white;
-      }
-    }
-  }
-}
+  p
+    margin-bottom: 12px
 
-.menubar {
-  .v-btn--icon {
-    width: 32px;
-    height: 32px;
-  }
-  .v-btn {
-    min-width: 0;
-    margin-left: 0;
-    margin-right: 0;
-    .v-icon {
-      font-size: 16px;
-      color: $grey-on-white;
-    }
-  }
-}
+  p:last-child
+    margin-bottom: 4px
 
-.ProseMirror {
-  border: 2px solid $border-color;
-  padding: 4px;
-  margin: 4px;
-  border-radius: 4px;
-  outline: none;
-}
+  hr
+    border: 0
+    border-bottom: 2px solid rgba(0,0,0,0.1)
+    margin: 16px 0
 
-.ProseMirror:focus {
-  border-color: var(--v-accent-base);
-}
+  word-wrap: break-word
 
-.ProseMirror img {
-  display: block;
-}
 
-.ProseMirror progress {
+  img
+    aspect-ratio: attr(width) / attr(height)
+    max-width: 100%
+    max-height: 600px
+    width: auto
+    height: auto
+
+  ol, ul
+    padding-left: 24px
+    margin-bottom: 16px
+    ul
+      margin-bottom: 0
+
+  ul
+    list-style: disc
+
+  ol
+    list-style: decimal
+
+  li p
+    margin-bottom: 0
+
+  pre
+    overflow: auto
+    padding: 0
+    font-family: 'Roboto mono', monospace, monospace
+
+  pre:last-of-type
+    padding-bottom: 16px
+
+  code
+    background-color: transparent
+    color: rgba(#000, 0.88)
+    box-shadow: none
+    border-radius: 0
+    white-space: normal
+    font-weight: 400
+    font-family: 'Roboto mono', monospace, monospace
+
+  blockquote
+    font-style: italic
+    border-left: 3px solid rgba(0,0,0,.1)
+    color: rgba(0,0,0,.8)
+    padding-left: .8rem
+
+  table
+    table-layout: fixed
+    width: 100%
+    margin-bottom: 10px
+
+  table td
+    padding: 6px 13px
+    border: 1px solid #ddd
+
+  thead td
+    font-weight: bold
+
+progress
+  -webkit-appearance: none
+  appearance: none
+  background-color: #fff
+  border: 1px solid #ccc
+
+progress::-webkit-progress-bar
+  background-color: #fff
+  border: 1px solid #ccc
+
+progress::-webkit-progress-value
+  background-color: lightblue
+  border: 0
+  transition: width 120ms ease-out, opacity 60ms 60ms ease-in
+
+progress::-moz-progress-bar
+  background-color: lightblue
+  border: 0
+  transition: width 120ms ease-out, opacity 60ms 60ms ease-in
+
+
+.menubar
+  position: sticky
+  bottom: 0
+  background-color: #fff
+
+.menubar, .menububble
+  .v-btn--icon
+    width: 32px
+    height: 32px
+
+  .v-btn
+    min-width: 0
+    margin-left: 0
+    margin-right: 0
+    .v-icon
+      font-size: 16px
+
+.ProseMirror
+  border-bottom: 1px solid #999
+  padding: 4px 0px
+  margin: 4px 0px
+  outline: none
+  overflow-y: scroll
+
+.ProseMirror:focus
+  border-bottom: 2px solid var(--v-primary-base)
+
+.ProseMirror img
+  display: block
+
+.ProseMirror progress
   // display: block;
-}
 
-.editor p.is-empty:first-child::before {
-  content: attr(data-empty-text);
-  float: left;
-  color: #aaa;
-  pointer-events: none;
-  height: 0;
-  font-style: italic;
-}
+ul[data-type="todo_list"]
+  padding-left: 0
+li[data-type="todo_item"]
+  display: flex
+  flex-direction: row
 
-.mention {
-  background: rgba($color-black, 0.1);
-  color: rgba($color-black, 0.6);
-  font-size: 0.8rem;
-  font-weight: bold;
-  border-radius: 5px;
-  padding: 0.2rem 0.5rem;
-  white-space: nowrap;
-}
+.todo-checkbox
+  border: 1px solid #999
+  height: 1em
+  width: 1em
+  box-sizing: border-box
+  margin-right: 8px
+  margin-top: 4px
+  user-select: none
+  border-radius: 0.2em
+  background-color: transparent
 
-.mention-suggestion {
-  color: rgba($color-black, 0.6);
-}
+.ProseMirror .todo-checkbox
+  cursor: pointer
 
-.suggestion-list {
-  padding: 0.2rem;
-  border: 2px solid rgba($color-black, 0.1);
-  font-size: 0.8rem;
-  font-weight: bold;
-  &__no-results {
-    padding: 0.2rem 0.5rem;
-  }
-  &__item {
-    border-radius: 5px;
-    padding: 0.2rem 0.5rem;
-    margin-bottom: 0.2rem;
-    cursor: pointer;
-    &:last-child {
-      margin-bottom: 0;
-    }
-    &.is-selected,
-    &:hover {
-      background-color: rgba($color-white, 0.2);
-    }
-    &.is-empty {
-      opacity: 0.5;
-    }
-  }
-}
+.todo-content
+  flex: 1
+  > p:last-of-type
+    margin-bottom: 0
+  > ul[data-type="todo_list"]
+    margin: .5rem 0
+  p
+    margin: 0
 
-.tippy-tooltip.dark-theme {
-  background-color: $color-black;
-  padding: 0;
-  font-size: 1rem;
-  text-align: inherit;
-  color: $color-white;
-  border-radius: 5px;
-  .tippy-backdrop {
-    display: none;
-  }
-  .tippy-roundarrow {
-    fill: $color-black;
-  }
-  .tippy-popper[x-placement^=top] & .tippy-arrow {
-    border-top-color: $color-black;
-  }
-  .tippy-popper[x-placement^=bottom] & .tippy-arrow {
-    border-bottom-color: $color-black;
-  }
-  .tippy-popper[x-placement^=left] & .tippy-arrow {
-    border-left-color: $color-black;
-  }
-  .tippy-popper[x-placement^=right] & .tippy-arrow {
-    border-right-color: $color-black;
-  }
-}
+li[data-done="true"]
+  > .todo-content
+    > p
+      text-decoration: line-through
+  > .todo-checkbox::before
+    position: relative
+    top: -7px
+    color: var(--v-primary-base)
+    font-size: 1.3rem
+    content: "✓"
 
-ul[data-type="todo_list"] {
-  padding-left: 0;
-}
+li[data-done="false"]
+  text-decoration: none
 
-li[data-type="todo_item"] {
-  display: flex;
-  flex-direction: row;
-}
+.editor p.is-empty:first-child::before
+  content: attr(data-empty-text)
+  float: left
+  color: #aaa
+  pointer-events: none
+  height: 0
 
-.todo-checkbox {
-  border: 2px solid $color-black;
-  height: 0.9em;
-  width: 0.9em;
-  box-sizing: border-box;
-  margin-right: 10px;
-  margin-top: 0.3rem;
-  user-select: none;
-  -webkit-user-select: none;
-  cursor: pointer;
-  border-radius: 0.2em;
-  background-color: transparent;
-  transition: 0.4s background;
-}
+.editor p.is-empty
+  font-size: 16px
+  padding-bottom: 16px
 
-.todo-content {
-  flex: 1;
-}
+.mention
+  background: rgba(#ffb300, 0.3)
+  border-radius: 3px
+  white-space: nowrap
 
-li[data-done="true"] {
-  text-decoration: line-through;
-}
-li[data-done="true"] .todo-checkbox {
-  background-color: $color-black;
-}
-li[data-done="false"] {
-  text-decoration: none;
-}
+.mention-suggestion
+  color: rgba(#000, 0.6)
+
+.suggestion-list
+  padding: 0.2rem
+  border: 2px solid rgba(#000, 0.1)
+  &__no-results
+    padding: 0.2rem 0.5rem
+  &__item
+    font-family: roboto, sans-serif
+    border-radius: 5px
+    padding: 0.2rem 0.5rem
+    margin-bottom: 0.2rem
+    cursor: pointer
+    &:last-child
+      margin-bottom: 0
+    &.is-selected, &:hover
+      background-color: rgba(#fff, 0.2)
+    &.is-empty
+      opacity: 0.5
+
+.tippy-tooltip.dark-theme
+  background-color: #000
+  padding: 0
+  font-size: 1rem
+  text-align: inherit
+  color: #fff
+  border-radius: 5px
+  .tippy-backdrop
+    display: none
+  .tippy-roundarrow
+    fill: #000
+  .tippy-popper[x-placement^=top] & .tippy-arrow
+    border-top-color: #000
+  .tippy-popper[x-placement^=bottom] & .tippy-arrow
+    border-bottom-color: #000
+  .tippy-popper[x-placement^=left] & .tippy-arrow
+    border-left-color: #000
+  .tippy-popper[x-placement^=right] & .tippy-arrow
+    border-right-color: #000
+
+input[type="file"]
+  display: none
 </style>

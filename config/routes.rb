@@ -1,20 +1,19 @@
+def dev_routes_for(namespace)
+  controller = "Dev::#{namespace.to_s.humanize}Controller".constantize.new
+  methods = controller.public_methods - Dev::BaseController.new.public_methods
+
+  namespace namespace do
+    get '/' => :index
+    methods.map { |action| get action }
+  end
+end
+
 Loomio::Application.routes.draw do
   if !Rails.env.production?
     namespace :dev do
-      namespace :discussions do
-        get '/' => :index
-        get ':action'
-      end
-
-      namespace :polls do
-        get '/' => :index
-        get ':action'
-      end
-
-      namespace :nightwatch do
-        get '/' => :index
-        get ':action'
-      end
+      dev_routes_for(:discussions)
+      dev_routes_for(:polls)
+      dev_routes_for(:nightwatch)
 
       get '/', to: 'nightwatch#index'
       get '/:action', to: 'nightwatch#:action'
@@ -22,10 +21,6 @@ Loomio::Application.routes.draw do
   end
 
   mount ActionCable.server => '/cable'
-
-  use_doorkeeper do
-    skip_controllers :applications, :authorized_applications
-  end
 
   constraints(GroupSubdomainConstraints) do
     get '/',              to: 'redirect#subdomain'
@@ -45,6 +40,8 @@ Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
+    resources :attachments, only: :index
+
     resources :boot, only: [] do
       get :site, on: :collection
       get :user, on: :collection
@@ -55,6 +52,7 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:index, :show, :create, :update] do
       member do
         get :token
+        post :reset_token
         get :subgroups
         post :export
         patch :archive
@@ -101,8 +99,10 @@ Loomio::Application.routes.draw do
 
     resources :profile, only: [:show] do
       collection do
+        get  :time_zones
         get  :mentionable_users
         get  :me
+        get  :groups
         get  :email_status
         post :update_profile
         post :set_volume
@@ -118,6 +118,8 @@ Loomio::Application.routes.draw do
     resources :login_tokens, only: [:create]
 
     resources :events, only: :index do
+      patch :pin, on: :member
+      patch :unpin, on: :member
       get :comment, on: :collection
       patch :remove_from_thread, on: :member
     end
@@ -151,6 +153,8 @@ Loomio::Application.routes.draw do
       patch :unpin_reader, on: :member
       patch :move, on: :member
       post  :fork, on: :collection
+      patch :move_comments, on: :member
+      get :history, on: :member
       get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection
@@ -158,7 +162,12 @@ Loomio::Application.routes.draw do
     end
 
     resources :discussion_tags, only: [:create, :destroy]
-    resources :tags
+
+    resources :tags do
+      collection do
+        post :update_model
+      end
+    end
 
 
     resources :search, only: :index
@@ -204,6 +213,8 @@ Loomio::Application.routes.draw do
       collection do
         get :audience
         get :search
+        get :history
+        get :preview
       end
     end
 
@@ -273,13 +284,14 @@ Loomio::Application.routes.draw do
   get 'apps/registered/:id/:slug'          => 'application#index'
   get 'd/:key/comment/:comment'            => 'application#index', as: :discussion_comment
   get 'g/:key/membership_requests'         => 'application#index', as: :group_membership_requests
+  get 'g/:key/members/requests'            => 'application#index', as: :group_members_requests
   get 'g/:key/memberships'                 => 'application#index', as: :group_memberships
+  get 'g/:key/settings'                    => 'application#index', as: :group_settings
   get 'g/:key/previous_polls'              => 'application#index', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#index', as: :group_memberships_username
   get 'g/new'                              => 'application#index', as: :new_group
   get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
-  get 'p/example(/:type)'                  => 'polls#example',               as: :example_poll
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export

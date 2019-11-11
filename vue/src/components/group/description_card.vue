@@ -1,12 +1,25 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
 import { submitForm } from '@/shared/helpers/form'
+import ModalService   from '@/shared/services/modal_service'
 
 export default
   props:
     group: Object
+  methods:
+    openUploadCoverForm: ->
+      ModalService.open 'CoverPhotoForm', group: => group
+
+    openUploadLogoForm: ->
+      ModalService.open 'LogoPhotoForm', group: => group
+
+  computed:
+    logoStyle: ->
+      { 'background-image': "url(#{@group.logoUrl()})" }
+    canPerformActions: ->
+      AbilityService.isSiteAdmin() or AbilityService.canLeaveGroup(@group)
+    canUploadPhotos: -> AbilityService.canAdministerGroup(@group)
 
   created: ->
     @actions = [
@@ -28,25 +41,25 @@ export default
 </script>
 
 <template lang="pug">
-v-card.description-card(aria-labelledby='description-card-title')
-  v-subheader(v-t="'description_card.title'")
-  v-card-text
-    .description-card__placeholder.lmo-hint-text(v-t="'description_card.placeholder'", v-if='!group.description')
-    .description-card__text.lmo-markdown-wrapper(v-if="group.descriptionFormat == 'md'" v-marked='group.description')
-    .description-card__text.lmo-markdown-wrapper(v-if="group.descriptionFormat == 'html'" v-html='group.description')
-    attachment-list(:attachments="group.attachments")
-    document-list(:model='group')
-    .lmo-md-action
-      action-dock(:model='group', :actions='actions')
+.description-card.px-3.pb-3
+  //- v-layout(mb-3)
+  //-   v-spacer
+  //-   join-group-button(:group='group')
+  //-   group-privacy-button(:group='group')
+  //-   group-actions-dropdown(:group='group')
+  .description-card__placeholder(v-t="'description_card.placeholder'", v-if='!group.description')
+  formatted-text.description-card__text(:model="group" column="description")
+  attachment-list(:attachments="group.attachments")
+  document-list(:model='group')
+  //- .group-theme__upload-photo(v-if='canUploadPhotos')
+  //-   button.lmo-flex.lmo-flex__center(@click='openUploadCoverForm()', :title="$t('group_page.new_cover_photo')")
+  //-     i.mdi.mdi-camera.mdi-24px
+  //-     span.group-theme__upload-help-text.caption(translate='group_page.new_photo')
+  //- .group-theme__upload-photo(v-if='canUploadPhotos')
+  //-   button.lmo-flex.lmo-flex__center(@click='openUploadLogoForm()', :title="$t('group_page.new_group_logo')")
+  //-     i.mdi.mdi-camera.mdi-24px
+  //-     span.group-theme__upload-help-text(v-t="'group_page.new_photo'")
+
+  //- .lmo-md-action
+  //-   action-dock(:model='group', :actions='actions')
 </template>
-
-<style lang="scss">
-
-@import 'app.scss';
-
-.description-card__documents-link {
-  @include cardMinorAction;
-  margin: 0 0 0 4px;
-  line-height: 32px;
-}
-</style>

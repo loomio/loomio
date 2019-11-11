@@ -10,8 +10,6 @@ en:
 
             I'm %{sender_name}, a Loomio team member, and I'm here to help you get started.
 
-            Would you like to join a free Loomio training session? Sign up for our [Loomio 101 webinar](%{webinar_url}). This includes a tour of the app and an opportunity to ask any questions you may have.
-
             Have you visited [help.loomio.org](https://help.loomio.org/%{help_locale}/) yet? If not, here are a couple of pages that you might find useful:
 
             [Starting a group](https://help.loomio.org/%{help_locale}/user_manual/getting_started/starting_a_group/?utm_source=welcome_email) guides you through setting up, inviting people and making your first decisions together as a group.

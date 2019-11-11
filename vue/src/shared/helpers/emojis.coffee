@@ -17,9 +17,6 @@ export stripColons = (colons) ->
   else
     colons
 
-debugColons = (colons) ->
-  console.log colons, stripColons(colons), shortcodeCorrect(stripColons(colons)), shortCodeToUnicode(shortcodeCorrect(stripColons(colons)))
-
 export colonToUnicode = (colons) ->
   shortCodeToUnicode(stripColons(colons))
 
@@ -34,7 +31,7 @@ export shortcodeCorrect = (shortcode) ->
     'thinking_face': 'thinking'
     'crossed_fingers': 'fingers_crossed'
     'nerd_face': 'nerd'
-    'hugging': 'hugging_face'
+    'hugging_face': 'hugging'
     'slightly_frowning_face': 'slight_frown'
 
   if corrections[shortcode]?

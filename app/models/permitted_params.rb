@@ -31,7 +31,7 @@ class PermittedParams < Struct.new(:params)
   def poll_attributes
     [:title, :details, :details_format, :poll_type, :discussion_id, :group_id, :closing_at, :anonymous,
      :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
-     :custom_fields, {custom_fields: [:can_respond_maybe, :deanonymize_after_close, :dots_per_person, :max_score, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
+     :custom_fields, {custom_fields: [:can_respond_maybe, :deanonymize_after_close, :dots_per_person, :max_score, :min_score, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
      :document_ids, {document_ids: []},
      :poll_option_names, {poll_option_names: []},
      :files, :image_files, {files: []}, {image_files: []}
@@ -53,7 +53,7 @@ class PermittedParams < Struct.new(:params)
   def outcome_attributes
     [:statement, :statement_format, :poll_id, :poll_option_id,
      :document_ids, {document_ids: []},
-     :custom_fields, {custom_fields: [:event_location, :event_summary, :event_description]},
+     :custom_fields, {custom_fields: [:event_location, :event_summary, :event_description, :should_send_calendar_invite]},
      :files, :image_files, {files: []}, {image_files: []}
    ]
   end
@@ -90,7 +90,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def announcement_attributes
-    [:kind, :recipients, recipients: [{user_ids: []}, {emails: []}]]
+    [:kind, :recipients, {recipients: [{user_ids: []}, {emails: []}]}, :invited_group_ids, {invited_group_ids: []}]
   end
 
   def group_identity_attributes
@@ -100,7 +100,8 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_attributes
-    [:title, :description, :description_format, :group_id, :private,
+    [:title, :description, :description_format, :group_id,
+      :newest_first, :max_depth, :private,
      :forked_event_ids, {forked_event_ids: []},
      :document_ids, {document_ids: []},
      :files, :image_files, {files: []}, {image_files: []}

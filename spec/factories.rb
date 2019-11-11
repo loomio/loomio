@@ -188,7 +188,7 @@ FactoryBot.define do
   end
 
   factory :membership_request do
-    introduction { Faker::Lorem.sentence(4) }
+    introduction { Faker::Lorem.sentence }
     email { Faker::Internet.email }
     name { Faker::Name.name }
     association :group,     factory: :formal_group
@@ -242,17 +242,6 @@ FactoryBot.define do
     user
     association :draftable, factory: :discussion
     payload {{ payload: 'payload' }}
-  end
-
-  factory :application, class: OauthApplication do
-    name { "More like BROAuth, am I right?" }
-    association :owner, factory: :user
-    redirect_uri { "https://www.loomio.org" }
-  end
-
-  factory :access_token, class: Doorkeeper::AccessToken do
-    resource_owner_id { create(:user).id }
-    association :application, factory: :application
   end
 
   factory :poll_option do

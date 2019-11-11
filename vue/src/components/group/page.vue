@@ -6,92 +6,89 @@ import Records           from '@/shared/services/records'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
-import PaginationService from '@/shared/services/pagination_service'
+import InstallSlackModalMixin from '@/mixins/install_slack_modal'
+import GroupModalMixin from '@/mixins/group_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
-import urlFor            from '@/mixins/url_for.coffee'
+import {compact, head, includes, filter} from 'lodash'
 
 export default
-  mixins: [urlFor]
+  mixins: [InstallSlackModalMixin, GroupModalMixin]
   data: ->
     group: null
+    activeTab: ''
 
   created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
+    setTimeout => @openInstallSlackModal() if @$route.query.install_slack
 
   watch:
-    '$route': 'init'
+    '$route.params.key': 'init'
+
+  computed:
+    tabs: ->
+      return unless @group
+      query = ''
+      query = '?subgroups='+@$route.query.subgroups if @$route.query.subgroups
+
+      [
+        {id: 0, name: 'threads',   route: @urlFor(@group, null)+query}
+        {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')+query},
+        {id: 2, name: 'members',   route: @urlFor(@group, 'members')+query},
+        {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
+        {id: 5, name: 'subgroups',  route: @urlFor(@group, 'subgroups')+query}
+        {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
+      ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
+
+    coverImageSrc: ->
+      if @group
+        @group.coverUrl()
+      else
+        ''
 
   methods:
-    groupKey: ->
-      @$route.params.handle || @$route.params.key
-
     init: ->
-      Records.groups.findOrFetch(@groupKey()).then (group) =>
+      Records.groups.findOrFetch(@$route.params.key).then (group) =>
         @group = group
-
-        # Records.groups.findOrFetch(@groupKey(), {}, true).then (group) => @group = group
 
         subscribeTo(@group)
         Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
-        maxDiscussions = if AbilityService.canViewPrivateContent(@group)
-          @group.discussionsCount
-        else
-          @group.publicDiscussionsCount
-
-        @pageWindow = PaginationService.windowFor
-          current:  parseInt(@$route.params.from or 0)
-          min:      0
-          max:      maxDiscussions
-          pageType: 'groupThreads'
-
-        EventBus.$emit 'currentComponent',
-          title: @group.fullName
-          page: 'groupPage'
-          group: @group
-          key: @group.key
-          links:
-            canonical:   LmoUrlService.group(@group, {}, absolute: true)
-            rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
-            prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
-            next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
       , (error) ->
         EventBus.$emit 'pageError', error
-
+    titleVisible: (visible) ->
+      EventBus.$emit('content-title-visible', visible)
 
 </script>
 
 <template lang="pug">
-v-container.lmo-main-container.group-page(grid-list-lg)
-  loading(v-if='!group')
-  div(v-if='group')
-    group-theme(:group='group', :home-page='true')
-    v-layout(row)
-      // <outlet name="before-group-page" model="group"></outlet>
-      v-flex(xs12 md8)
-        v-layout(column)
-          v-flex
-            group-page-description-card(:group='group')
-          v-flex
-            group-page-discussions-card(:group='group')
-      v-flex(xs12 md4)
-        v-layout(column)
-          v-flex
-            // <outlet name="before-group-page-column-right" model="group"></outlet>
-            current-polls-card(:model='group')
-          v-flex
-            membership-requests-card(:group='group')
-          v-flex
-            membership-card(:group='group')
-          v-flex
-            membership-card(:group='group', :pending='true')
-          v-flex
-            subgroups-card(:group='group')
-          v-flex
-            document-card(:group='group')
-          v-flex
-            poll-common-index-card(:model='group', :limit='5', :view-more-link='true')
-            // <outlet name="after-slack-card" model="group"></outlet>
-            // <installslack_card group="group"></install_slack_card>
+v-content
+  loading(v-if="!group")
+  v-container.group-page.max-width-1024(v-else)
+    v-img(style="border-radius: 8px" :src="coverImageSrc" eager)
+    h1.display-1.my-4(v-observe-visibility="{callback: titleVisible}")
+      span(v-if="group && group.parent()")
+        router-link(:to="urlFor(group.parent())") {{group.parent().name}}
+        space
+        span.grey--text.text--lighten-1 &gt;
+        space
+      span.group-page__name.mr-4
+        | {{group.name}}
+    trial-banner(:group="group")
+    group-onboarding-card(v-if="group" :group="group")
+    formatted-text(v-if="group" :model="group" column="description")
+    document-list(:model='group')
+    attachment-list(:attachments="group.attachments")
+    v-divider.mt-4
+    v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow)
+      v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
+        span(v-t="'group_page.'+tab.name")
+    join-group-button(:group='group')
+    router-view
 </template>
+
+<style lang="css">
+.group-page-tabs .v-tab:not(.v-tab--active) {
+    color: hsla(0,0%,100%,.85) !important;
+}
+</style>

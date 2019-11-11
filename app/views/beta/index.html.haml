@@ -1,8 +1,28 @@
-%h1 use beta client?
+%h1 Loomio 2.0 beta
 
-= form_tag(beta_path, method: :put) do
-  = hidden_field_tag :enable, value: true
-  = submit_tag :enable
+%p Using the buttons below you can enable or disable Loomio 2.0 beta for your user account.
 
-= form_tag(beta_path, method: :put) do
-  = submit_tag :disable
+%p
+  To find out what's new, check out
+  %a{href: "https://help.loomio.org/en/user_manual/whats_new_loomio_2/"} what's new in Loomio 2.0
+
+%p
+  To report an issue or discuss changes, please join the
+  %a{href:"https://www.loomio.org/g/GN7EFQTK/loomio-community-product-development"} Loomio Community - Product development
+  group.
+
+%div{style: "display: flex; margin: 0 auto; text-align: center"}
+  = form_tag(beta_path, method: :put) do
+    = hidden_field_tag :enable, value: true
+    = submit_tag "Enable Loomio 2.0 beta"
+
+  &nbsp;
+
+  or
+
+  &nbsp;
+
+  = form_tag(beta_path, method: :put) do
+    = submit_tag "Disable Loomio 2.0 beta"
+
+%p Remember you can return to www.loomio.org/beta to switch back, anytime.

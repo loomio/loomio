@@ -19,14 +19,15 @@ class DiscussionService
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
-    discussion.assign_attributes(params.slice(:private, :title, :description, :pinned))
+    HasRichText.assign_attributes_and_update_files(discussion, params.except(:document_ids))
     version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
     discussion.assign_attributes(params.slice(:document_ids))
     discussion.document_ids = [] if params.slice(:document_ids).empty?
     is_new_version = discussion.is_new_version?
-
     return false unless discussion.valid?
+    rearrange = discussion.max_depth_changed?
     discussion.save!
+    EventService.delay.rearrange_events(discussion) if rearrange
 
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)
@@ -121,6 +122,19 @@ class DiscussionService
     when 'public_only'  then false
     when 'private_only' then true
     else                     discussion.private
+    end
+  end
+
+  def self.mark_summary_email_as_read (user, params)
+    time_start  = Time.at(params[:time_start].to_i).utc
+    time_finish = Time.at(params[:time_finish].to_i).utc
+    time_range = time_start..time_finish
+
+    Queries::VisibleDiscussions.new(user: user).
+                                    unread.
+                                    last_activity_after(time_start).each do |discussion|
+      sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
+      DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
     end
   end
 

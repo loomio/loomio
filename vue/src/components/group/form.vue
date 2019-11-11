@@ -1,129 +1,193 @@
 <script lang="coffee">
 import AppConfig      from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
+import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
-import { scrollTo }            from '@/shared/helpers/layout'
 import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
-import { submitOnEnter }       from '@/shared/helpers/keyboard'
-import GroupModalMixin from '@/mixins/group_modal'
 
 export default
-  mixins: [GroupModalMixin]
   props:
     group: Object
     close: Function
+
   data: ->
+    clone: @group.clone()
     isDisabled: false
     rules: {
       required: (value) ->
         !!value || 'Required.'
     }
     submit: null
-    isExpanded: false
+    uploading: false
+    progress: 0
+
   mounted: ->
     @featureNames = AppConfig.features.group
-    @submit = submitForm @, @group,
+    @submit = submitForm @, @clone,
       prepareFn: =>
-        allowPublic = @group.allowPublicThreads
-        @group.discussionPrivacyOptions = switch @group.groupPrivacy
+        allowPublic = @clone.allowPublicThreads
+        @clone.discussionPrivacyOptions = switch @clone.groupPrivacy
           when 'open'   then 'public_only'
           when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
           when 'secret' then 'private_only'
 
-        @group.parentMembersCanSeeDiscussions = switch @group.groupPrivacy
+        @clone.parentMembersCanSeeDiscussions = switch @clone.groupPrivacy
           when 'open'   then true
-          when 'closed' then @group.parentMembersCanSeeDiscussions
+          when 'closed' then @clone.parentMembersCanSeeDiscussions
           when 'secret' then false
       confirmFn: (model)          => @$t groupPrivacyConfirm(model)
       flashSuccess:               => "group_form.messages.group_#{@actionName}"
       successCallback: (data) =>
         @isExpanded = false
         groupKey = data.groups[0].key
-        @closeModal()
+        @close()
         @$router.push("/g/#{groupKey}")
   methods:
     expandForm: ->
       @isExpanded = true
-      scrollTo '.group-form__permissions', container: '.group-modal md-dialog-content'
 
     privacyStringFor: (privacy) ->
-      @$t groupPrivacy(@group, privacy),
-        parent: @group.parentName()
+      @$t groupPrivacy(@clone, privacy),
+        parent: @clone.parentName()
+
+    selectCoverPhoto: ->
+      @$refs.coverPhotoInput.click()
+
+    selectLogo: ->
+      @$refs.logoInput.click()
+
+    uploadCoverPhoto: ->
+      @uploading = true
+      Records.groups.remote.onUploadSuccess = (response) =>
+        Records.import response
+        @uploading = false
+      Records.groups.remote.upload("#{@group.id}/upload_photo/cover_photo", @$refs.coverPhotoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
+
+    uploadLogo: ->
+      @uploading = true
+      Records.groups.remote.onUploadSuccess = (response) =>
+        Records.import response
+        @uploading = false
+      Records.groups.remote.upload("#{@group.id}/upload_photo/logo", @$refs.logoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
+
   computed:
     actionName: ->
-      if @group.isNew() then 'created' else 'updated'
+      if @clone.isNew() then 'created' else 'updated'
 
     titleLabel: ->
-      if @group.isParent()
+      if @clone.isParent()
         "group_form.group_name"
       else
         "group_form.subgroup_name"
 
     privacyOptions: ->
-      if @group.isSubgroup() && @group.parent().groupPrivacy == 'secret'
+      if @clone.isSubgroup() && @clone.parent().groupPrivacy == 'secret'
         ['closed', 'secret']
       else
         ['open', 'closed', 'secret']
 
     privacyStatement: ->
-      @$t groupPrivacyStatement(@group),
-        parent: @group.parentName()
+      @$t groupPrivacyStatement(@clone),
+        parent: @clone.parentName()
 
     showGroupFeatures: ->
       AbilityService.isSiteAdmin() and _.some(@featureNames)
+
+    groupNamePlaceholder: ->
+      if @clone.parentId
+        'group_form.group_name_placeholder'
+      else
+        'group_form.organization_name_placeholder'
+
+    groupNameLabel: ->
+      if @clone.parentId
+        'group_form.group_name'
+      else
+        'group_form.organization_name'
 </script>
 
 <template lang="pug">
 v-card.group-form
-  .lmo-disabled-form(v-show='isDisabled')
+  v-overlay(:value="uploading")
+    v-progress-circular(size="64" :value="progress")
+  submit-overlay(:value='clone.processing')
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(v-if='group.isNew() && group.parentId', v-t="'group_form.start_subgroup_heading'")
-        h1.headline(v-if='group.isNew() && !group.parentId', v-t="'group_form.start_group_heading'")
-        h1.headline(v-if='!group.isNew()', v-t="'group_form.edit_group_heading'")
+        h1.headline(v-if='clone.parentId', v-t="'group_form.edit_group_heading'")
+        h1.headline(v-if='!clone.parentId', v-t="'group_form.edit_organization_heading'")
       dismiss-modal-button(:close='close')
   v-card-text
-    v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t('group_form.group_name_placeholder')", :rules='[rules.required]', maxlength='255', :label="$t('group_form.group_name')")
-    lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="'group_form.description_placeholder'")
-    validation-errors(:subject="group", field="name")
-    .group-form__privacy-statement.lmo-hint-text {{privacyStatement}}
-    section.group-form__section.group-form__privacy
-      h3.lmo-h3(v-t="'group_form.privacy'")
-      v-radio-group(v-model='group.groupPrivacy')
-        v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
-          template(slot='label')
-            .group-form__privacy-title
-              strong(v-t="'common.privacy.' + privacy")
-            .group-form__privacy-subtitle {{ privacyStringFor(privacy) }}
-    .group-form__advanced(v-if='isExpanded')
-      section.group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
-        h3.lmo-h3(v-t="'group_form.how_do_people_join'")
-        v-radio-group(v-model='group.membershipGrantedUpon')
-          v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
-            template(slot='label')
-              span(v-t="'group_form.membership_granted_upon_' + granted")
-      section.group-form__section.group-form__permissions
-        h3.lmo-h3(v-t="'group_form.permissions'")
-        group-setting-checkbox.group-form__allow-public-threads(:group='group', setting='allowPublicThreads', v-if='group.privacyIsClosed() && !group.isSubgroupOfSecretParent()')
-        group-setting-checkbox.group-form__parent-members-can-see-discussions(:group='group', setting='parentMembersCanSeeDiscussions', :translate-values='{parent: group.parent().name}', v-if='group.isSubgroup() && group.privacyIsClosed()')
-        group-setting-checkbox.group-form__members-can-add-members(:group='group', setting='membersCanAddMembers')
-        group-setting-checkbox.group-form__members-can-announce(:group='group', setting='membersCanAnnounce')
-        group-setting-checkbox.group-form__members-can-create-subgroups(:group='group', setting='membersCanCreateSubgroups', v-if='group.isParent()')
-        group-setting-checkbox.group-form__members-can-start-discussions(:group='group', setting='membersCanStartDiscussions')
-        group-setting-checkbox.group-form__members-can-edit-discussions(:group='group', setting='membersCanEditDiscussions')
-        group-setting-checkbox.group-form__members-can-edit-comments(:group='group', setting='membersCanEditComments')
-        group-setting-checkbox.group-form__members-can-raise-motions(:group='group', setting='membersCanRaiseMotions')
-        group-setting-checkbox.group-form__members-can-vote(:group='group', setting='membersCanVote')
-      section.group-form__section.group-form__features(v-if='showGroupFeatures')
-        h3.lmo-h3(v-t="'group_form.features'")
-        .group-form__feature(v-for='name in featureNames', :key='name')
-          // <md-checkbox id="{{name}}" ng-model="group.features[name]" class="md-checkbox--with-summary"><span for="{{name}}" translate="group_features.{{name}}"></span></md-checkbox>
+
+    v-tabs(fixed-tabs)
+      v-tab(v-t="'group_form.profile'")
+      v-tab.group-form__privacy-tab(v-t="'group_form.privacy'")
+      v-tab.group-form__permissions-tab(v-t="'group_form.permissions'")
+
+      v-tab-item.mt-8
+        .v-input
+          label.v-label.v-label--active.theme--light.lmo-font-12px(v-t="'group_form.click_to_change_image'")
+        v-img.group_form__file-select(:src="group.coverUrl()" width="100%"  @click="selectCoverPhoto()")
+        group-avatar.group_form__file-select.group_form__logo.white(v-if="!group.parentId" :group="group" size="72px" :on-click="selectLogo" :elevation="4")
+        v-text-field.group-form__name#group-name.mt-4(v-model='clone.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
+        v-spacer
+
+        input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto')
+        input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo')
+
+        lmo-textarea.group-form__group-description(:model='clone' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
+        validation-errors(:subject="clone", field="name")
+
+      v-tab-item.mt-8
+        .group-form__section.group-form__privacy
+          v-radio-group(v-model='clone.groupPrivacy')
+            v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
+              template(slot='label')
+                .group-form__privacy-title
+                  strong(v-t="'common.privacy.' + privacy")
+                  mid-dot
+                  span {{ privacyStringFor(privacy) }}
+        p.group-form__privacy-statement.body-2 {{privacyStatement}}
+        .group-form__section.group-form__joining.lmo-form-group(v-if='clone.privacyIsOpen()')
+          v-subheader(v-t="'group_form.how_do_people_join'")
+          v-radio-group(v-model='clone.membershipGrantedUpon')
+            v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
+              template(slot='label')
+                span(v-t="'group_form.membership_granted_upon_' + granted")
+      v-tab-item.mt-8
+        .group-form__section.group-form__permissions
+          p.group-form__privacy-statement.body-2(v-t="'group_form.permissions_explaination'")
+          //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='clone.privacyIsClosed() && !clone.isSubgroupOfSecretParent()')
+          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='clone["parentMembersCanSeeDiscussions"]' :label="$t('group_form.parent_members_can_see_discussions', {parent: clone.parent().name})" v-if='clone.isSubgroup() && clone.privacyIsClosed()')
+          v-checkbox.group-form__members-can-add-members(hide-details v-model='clone["membersCanAddMembers"]' :label="$t('group_form.members_can_add_members')")
+          v-checkbox.group-form__members-can-announce(hide-details v-model='clone["membersCanAnnounce"]' :label="$t('group_form.members_can_announce')")
+          v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='clone["membersCanCreateSubgroups"]' v-if='clone.isParent()' :label="$t('group_form.members_can_create_subgroups')")
+          v-checkbox.group-form__members-can-start-discussions(hide-details v-model='clone["membersCanStartDiscussions"]' :label="$t('group_form.members_can_start_discussions')")
+          v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='clone["membersCanEditDiscussions"]' :label="$t('group_form.members_can_edit_discussions')")
+          v-checkbox.group-form__members-can-edit-comments(hide-details v-model='clone["membersCanEditComments"]' :label="$t('group_form.members_can_edit_comments')")
+          v-checkbox.group-form__members-can-raise-motions(hide-details v-model='clone["membersCanRaiseMotions"]' :label="$t('group_form.members_can_raise_motions')")
+          v-checkbox.group-form__members-can-vote(hide-details v-model='clone["membersCanVote"]' :label="$t('group_form.members_can_vote')")
+
+
+
   v-card-actions
-    v-btn.group-form__advanced-link(flat color="accent", v-if='!isExpanded', @click='expandForm()', v-t="'group_form.advanced_settings'")
-    v-btn.group-form__submit-button(flat color="primary", @click='submit()')
-      span(v-if='group.isNew() && group.isParent()', v-t="'group_form.submit_start_group'")
-      span(v-if='group.isNew() && !group.isParent()', v-t="'group_form.submit_start_subgroup'")
-      span(v-if='!group.isNew()', v-t="'common.action.update_settings'")
+    v-spacer
+    v-btn.group-form__submit-button(color="primary" @click='submit()')
+      span(v-if='clone.isNew() && clone.isParent()' v-t="'group_form.submit_start_group'")
+      span(v-if='clone.isNew() && !clone.isParent()' v-t="'group_form.submit_start_subgroup'")
+      span(v-if='!clone.isNew()' v-t="'common.action.update_settings'")
 </template>
+<style lang="sass">
+.lmo-font-12px
+  font-size: 12px
+
+.group_form__file-select
+  cursor: pointer
+
+.group_form__logo
+  margin-left: 8px
+  margin-top: -30px
+  border-radius: 8px
+
+</style>

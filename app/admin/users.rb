@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  actions :index, :edit, :update, :show, :destroy
+  actions :index, :edit, :show, :destroy
 
   filter :name
   filter :username
@@ -116,6 +116,8 @@ ActiveAdmin.register User do
       end
     end
 
+    render 'emails', { emails: Ahoy::Message.where(user_id: user.id).order("id DESC").limit(30) }
+
     panel("Identities") do
       table_for user.identities.each do |identity|
         column :id
@@ -142,6 +144,10 @@ ActiveAdmin.register User do
       a(href: login_as_admin_user_path(user), target: "_blank") do
         "Login as #{user.name}"
       end
+    end
+
+    panel 'experiences' do
+      p user.experiences
     end
 
     if user.deactivation_response.present?

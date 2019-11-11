@@ -32,6 +32,8 @@ sr_RS:
       proposal: 'Предлог'
     copied: 'Копирано'
     action:
+      search: 'Тражи'
+      back: 'Назад'
       close: 'Затвори'
       save: 'Сними'
       save_changes: 'Сачувај промене'
@@ -40,19 +42,18 @@ sr_RS:
       edit: 'Уреди'
       remove: 'Уклони'
       like: 'Свиђа ми се'
-      back: 'Назад'
       unlike: 'Не Свиђа'
       update: 'Ажурирај'
       cancel: 'Откажи'
       show_more: "Прикажи још"
       view_all: "Прикажи Све"
       new_thread: "Нова нит"
-      add_subgroup: 'Додај подгрупу'
       loading: 'Учитавање'
       translate: 'Преведи'
-      translated: 'Превео Bing Translator'
       upload: 'Отпремљено'
       uploading: 'Отпремање'
+  emoji_picker:
+    search: Тражи
   error_page:
     forbidden: 'Немате дозволу да ово урадите.'
   volume_levels:
@@ -60,12 +61,16 @@ sr_RS:
     normal: 'Нормално'
     quiet: 'Тихо'
     mute: 'Искључено'
+  pin_event_form:
+    title_label: Наслов
   change_volume_form:
+    simple:
+      label: Обавештења
+      normal: Нормално
+      quiet: Игнориши
     loud_label: "Сва активност"
     quiet_label: "Без еПорука"
     mute_label: "Утишај"
-    membership:
-      title: "Подешавања еПорука za {{title}}"
   inbox:
     clear: 'Очисти'
     unread: 'Непрочитано'
@@ -73,13 +78,13 @@ sr_RS:
     edit_comment: 'Измени коментар'
     delete_comment: 'Обриши коментар'
     confirm_delete_message: 'Да ли сте сигурни да желите обрисати овај коментар?'
+  sidebar:
+    threads: 'Низови'
   navbar:
     search:
       placeholder: 'Тражи'
       discussions: 'Низови'
       proposals: 'Предлози'
-  membership_dropdown:
-    make_coordinator: 'Учини координатором'
   notifications:
     header: "Обавештења"
   position_buttons_panel:
@@ -89,8 +94,11 @@ sr_RS:
     title_label: 'Наслов'
     context_label: 'Контекст'
     privacy_label: 'Приватност'
+  action_dock:
+    edited: Измењено
   join_group_button:
     join_group: Придружи се групи
+    membership_requested: Чланство је затражено
   membership_request_form:
     heading: Питај да се придружиш групи
     name_label: Име
@@ -98,10 +106,17 @@ sr_RS:
   revision_history_modal:
     started_by: 'Креирао/ла <strong>{{name}}</strong>'
     posted: Објављено
+  group_wizard:
+    invite_people: Позови људе
+    start_thread: Започни дискусију
   group_page:
+    threads: Низови
+    members: Чланови
+    settings: Подешавања
     options_label: 'Опције'
     options:
       label: 'Опције'
+      email_settings: 'Особине еПорука'
       leave_group: 'Напусти Групу'
       deactivate_group: 'Деактивирај Групу'
     volume:
@@ -110,6 +125,7 @@ sr_RS:
       mute: Сакриј ову групу и не обавештавај док ме неко не @означи.
   group_form:
     description: 'Опис'
+    profile: Профил
     advanced_settings: "Напредне опције"
     submit_update: 'Ажурирај опције'
   document:
@@ -122,12 +138,11 @@ sr_RS:
     heading: Претходни Предлози
     see_more: Види више
   invitation_form:
-    invite_people: 'Позови Људе'
+    invite_people: 'Позови људе'
     group: 'Група'
   memberships_page:
     members: 'Чланови'
     name_label: 'Име'
-    coordinator_label: 'Координатор'
     remove_member_label: 'Уклони'
   profile_page:
     profile: 'Профил'
@@ -136,8 +151,8 @@ sr_RS:
     username_label: 'Корисничко Име'
     email_label: 'еПорука'
     locale_label: 'Језик'
-  email_settings_page:
-    header: Опције еПорука
+  change_picture_form:
+    use_gravatar: 'Користи Граватар'
   dashboard_page:
     aria_label: 'Радна табла'
     mark_as_read: Означи као прочитано
@@ -152,11 +167,10 @@ sr_RS:
   discussion:
     started_by: 'Креирао/ла <strong>{{name}}</strong>'
   activity_card:
-    unread: Непрочитано
+    context: Контекст
   thread_group:
     aria_label: 'Назив групе'
   thread_context:
-    email_settings: 'Опције еПорука'
     close_thread: 'Затвори'
   delete_comment_dialog:
     title: 'Обриши коментар'
@@ -179,6 +193,18 @@ sr_RS:
     vote: 'Можете променити свој став било када'
   poll_common:
     save_changes: Сними
+  discussions_panel:
+    open: Отворено
+    all: Све
+    closed: Истекло
+  members_panel:
+    order_by_name: 'Име'
+    header_name: 'Име'
+    header_username: 'Корисничко Име'
+  polls_panel:
+    all: 'Све'
+    open: 'Отворено'
+    closed: 'Истекло'
   poll_common_form:
     closed: Истекло
   poll_count_options:

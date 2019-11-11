@@ -8,23 +8,24 @@ export eventHeadline = (event, useNesting = false) ->
     when 'new_comment'       then newCommentKey(event, useNesting)
     when 'stance_created'    then stanceCreatedKey(event, useNesting)
     when 'discussion_edited' then discussionEditedKey(event)
+    when 'poll_created' then 'poll_created_no_title'
     else event.kind
   "thread_item.#{key}"
 
 export eventTitle = (event) ->
-  switch event.eventable.type
-    when 'comment'             then event.model().parentAuthorName
-    when 'poll', 'outcome'     then event.model().poll().title
-    when 'group', 'membership' then event.model().group().name
-    when 'stance'              then event.model().poll().title
-    when 'discussion'
+  switch event.eventableType
+    when 'Comment'             then event.model().parentAuthorName
+    when 'Poll', 'Outcome'     then event.model().poll().title
+    when 'Group', 'Membership' then event.model().group().name
+    when 'Stance'              then event.model().poll().title
+    when 'Discussion'
       if event.kind == 'discussion_moved'
         Records.groups.find(event.sourceGroupId).fullName
       else
         event.model().title
 
 export eventPollType = (event) ->
-  return "" unless _.includes ['poll', 'stance', 'outcome'], event.eventable.type
+  return "" unless _.includes ['Poll', 'Stance', 'Outcome'], event.eventableType
   "poll_types.#{event.model().poll().pollType}"
 
 export emojiTitle = (shortname) ->
@@ -80,14 +81,6 @@ export groupPrivacyConfirm = (group) ->
   else if group.attributeIsModified('discussionPrivacyOptions')
     if group.discussionPrivacyOptions == 'private_only'
       'group_form.confirm_change_to_private_discussions_only'
-
-export discussionPrivacy = (discussion, is_private = null) ->
-  if is_private == false
-    'discussion_form.privacy_public'
-  else if discussion.group().parentMembersCanSeeDiscussions
-    'discussion_form.privacy_organisation'
-  else
-    'discussion_form.privacy_private'
 
 newCommentKey = (event, useNesting) ->
   if event.isNested() && !useNesting

@@ -1,11 +1,10 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
 import RangeSet         from '@/shared/services/range_set'
-import HasDrafts        from '@/shared/mixins/has_drafts'
 import HasDocuments     from '@/shared/mixins/has_documents'
-import HasMentions      from '@/shared/mixins/has_mentions'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import HasGuestGroup    from '@/shared/mixins/has_guest_group'
+import { isEqual, isAfter } from 'date-fns'
 
 export default class DiscussionModel extends BaseModel
   @singular: 'discussion'
@@ -18,12 +17,10 @@ export default class DiscussionModel extends BaseModel
   afterConstruction: ->
     @private = @privateDefaultValue() if @isNew()
     HasDocuments.apply @, showTitle: true
-    HasDrafts.apply @
-    HasMentions.apply @, 'description'
     HasTranslations.apply @
     HasGuestGroup.apply @
 
-  defaultValues: =>
+  defaultValues: ->
     private: null
     usesMarkdown: true
     lastItemAt: null
@@ -31,6 +28,13 @@ export default class DiscussionModel extends BaseModel
     description: ''
     descriptionFormat: 'html'
     forkedEventIds: []
+    ranges: []
+    readRanges: []
+    isForking: false
+    newestFirst: false
+    files: []
+    imageFiles: []
+    attachments: []
 
   audienceValues: ->
     name: @group().name
@@ -68,7 +72,7 @@ export default class DiscussionModel extends BaseModel
     @recordStore.reactions.find(reactableId: @id, reactableType: "Discussion")
 
   translationOptions: ->
-    title:     @title
+    title: @title
     groupName: @groupName()
 
   authorName: ->
@@ -99,7 +103,8 @@ export default class DiscussionModel extends BaseModel
     @discussionReaderId? and (!@lastReadAt? or @unreadItemsCount() > 0)
 
   isDismissed: ->
-    @discussionReaderId? and @dismissedAt? and @dismissedAt.isSameOrAfter(@lastActivityAt)
+    @discussionReaderId? and @dismissedAt? and
+    (isEqual(@dismissedAt, @lastActivityAt) or isAfter(@dismissedAt, @lastActivityAt))
 
   hasUnreadActivity: ->
     @isUnread() && @unreadItemsCount() > 0
@@ -132,11 +137,13 @@ export default class DiscussionModel extends BaseModel
     @discussionReaderVolume or @membershipVolume()
 
   saveVolume: (volume, applyToAll = false) =>
+    @processing = true
     if applyToAll
-      @membership().saveVolume(volume)
+      @membership().saveVolume(volume).finally => @processing = false
     else
       @discussionReaderVolume = volume if volume?
-      @remote.patchMember @keyOrId(), 'set_volume', { volume: @discussionReaderVolume }
+      @remote.patchMember(@keyOrId(), 'set_volume', { volume: @discussionReaderVolume }).finally =>
+        @processing = false
 
   isMuted: ->
     @volume() == 'mute'
@@ -144,7 +151,7 @@ export default class DiscussionModel extends BaseModel
   markAsSeen: ->
     return unless @discussionReaderId and !@lastReadAt
     @remote.patchMember @keyOrId(), 'mark_as_seen'
-    @update(lastReadAt: moment())
+    @update(lastReadAt: new Date)
 
   markAsRead: (id) ->
     return if !@discussionReaderId or @hasRead(id)
@@ -156,6 +163,7 @@ export default class DiscussionModel extends BaseModel
     if _.isArray(@readRanges) && _.isArray(attributes.readRanges) && !_.isEqual(attributes.readRanges, @readRanges)
       attributes.readRanges = RangeSet.reduce(@readRanges.concat(attributes.readRanges))
     @baseUpdate(attributes)
+    @readRanges = RangeSet.intersectRanges(@readRanges, @ranges)
 
   updateReadRanges: _.throttle ->
     @remote.patchMember @keyOrId(), 'mark_as_read', ranges: RangeSet.serialize(@readRanges)
@@ -183,33 +191,41 @@ export default class DiscussionModel extends BaseModel
     RangeSet.firstMissing(@ranges, @readRanges)
 
   dismiss: ->
-    @update(dismissedAt: moment())
-    @remote.patchMember @keyOrId(), 'dismiss'
+    @update(dismissedAt: new Date)
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'dismiss').finally => @processing = false
 
   recall: ->
     @update(dismissedAt: null)
-    @remote.patchMember @keyOrId(), 'recall'
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'recall').finally => @processing = false
 
   move: =>
-    @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'move', { group_id: @groupId }).finally => @processing = false
 
   savePin: =>
-    @remote.patchMember @keyOrId(), 'pin'
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'pin').finally => @processing = false
 
   close: =>
-    @remote.patchMember @keyOrId(), 'close'
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'close').finally => @processing = false
 
   reopen: =>
-    @remote.patchMember @keyOrId(), 'reopen'
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'reopen').finally => @processing = false
 
   fork: =>
-    @remote.post 'fork', @serialize()
+    @processing = true
+    @remote.post('fork', @serialize()).finally => @processing = false
 
-  edited: ->
-    @versionsCount > 1
+  moveComments: =>
+    @processing = true
+    @remote.patchMember(@keyOrId(), 'move_comments', { forked_event_ids: @forkedEventIds }).finally => @processing = false
 
-  isForking: ->
-    @forkedEventIds.length > 0
+  # isForking: ->
+  #   @forkedEventIds.length > 0
 
   forkedEvents: ->
     _.sortBy(@recordStore.events.find(@forkedEventIds), 'sequenceId')

@@ -1,6 +1,6 @@
 import Records            from '@/shared/services/records'
 import Session            from '@/shared/services/session'
-import ThreadQueryService from '@/shared/services/thread_query_service'
+import ThreadFilter       from '@/shared/services/thread_filter'
 
 export default new class InboxService
 
@@ -17,16 +17,8 @@ export default new class InboxService
 
   unreadCount: ->
     if @loaded
-      @query().length()
+      @query().length
     else
       "..."
 
-  query: ->
-    ThreadQueryService.queryFor(name: "inbox", filters: @filters)
-
-  queryByGroup: ->
-    _.fromPairs _.map Session.user().inboxGroups(), (group) =>
-      [
-        group.key,
-        ThreadQueryService.queryFor(name: "group_#{group.key}_inbox", filters: @filters, group: group)
-      ]
+  query: -> ThreadFilter(Records, filters: @filters)

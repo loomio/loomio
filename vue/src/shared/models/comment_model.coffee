@@ -1,8 +1,6 @@
 import BaseModel       from '@/shared/record_store/base_model'
 import AppConfig       from '@/shared/services/app_config'
-import HasDrafts       from '@/shared/mixins/has_drafts'
 import HasDocuments    from '@/shared/mixins/has_documents'
-import HasMentions     from '@/shared/mixins/has_mentions'
 import HasTranslations from '@/shared/mixins/has_translations'
 
 export default class CommentModel extends BaseModel
@@ -13,14 +11,15 @@ export default class CommentModel extends BaseModel
   @draftPayloadAttributes: ['body', 'document_ids']
 
   afterConstruction: ->
-    HasDrafts.apply @
     HasDocuments.apply @
-    HasMentions.apply @, 'body'
     HasTranslations.apply @
 
   defaultValues: ->
     usesMarkdown: true
     discussionId: null
+    files: []
+    imageFiles: []
+    attachments: []
     body: ''
     bodyFormat: 'html'
     mentionedUsernames: []
@@ -74,6 +73,3 @@ export default class CommentModel extends BaseModel
 
   beforeDestroy: ->
     _.invokeMap @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'
-
-  edited: ->
-    @versionsCount > 1

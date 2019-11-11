@@ -1,11 +1,3 @@
-<style lang="scss">
-.profile-page-card {
-  @import 'lmo_card';
-  position: relative;
-  @include card;
-}
-</style>
-
 <script lang="coffee">
 import AppConfig      from '@/shared/services/app_config'
 import Session        from '@/shared/services/session'
@@ -14,58 +6,33 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
-import ConfirmModalMixin from '@/mixins/confirm_modal'
-import ChangePasswordModalMixin from '@/mixins/change_password_modal'
+import openModal      from '@/shared/helpers/open_modal'
+import UserService    from '@/shared/services/user_service'
 
 import { submitForm }   from '@/shared/helpers/form'
 import { hardReload }   from '@/shared/helpers/window'
 
 export default
-  mixins: [
-    ConfirmModalMixin,
-    ChangePasswordModalMixin
-  ]
   data: ->
     isDisabled: false
     user: null
+
   created: ->
     @init()
-    EventBus.$emit 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}
+    EventBus.$emit 'currentComponent', { titleKey: 'profile_page.edit_profile', page: 'profilePage'}
     EventBus.$on 'updateProfile', => @init()
     EventBus.$on 'signedIn', => @init()
-  computed:
-    showHelpTranslate: ->
-      AppConfig.features.app.help_link
-    availableLocales: ->
-      AppConfig.locales
-    deactivateUserConfirmOpts: ->
-      text:
-        title: 'deactivate_user_form.title'
-        submit: 'deactivation_modal.submit'
-        fragment: 'deactivate_user'
-      submit: -> Promise.resolve console.log 'submit'
-      successCallback: =>
-        Promise.resolve @openConfirmModal(@reallyDeactivateUserConfirmOpts)
-    deleteUserConfirmOpts: ->
-      text:
-        title: 'delete_user_modal.title'
-        submit: 'delete_user_modal.submit'
-        fragment: 'delete_user_modal'
-      submit: -> Records.users.destroy()
-      successCallback: hardReload
 
-    reallyDeactivateUserConfirmOpts: ->
-      scope: {user: Session.user()}
-      submit: -> Records.users.deactivate(Session.user())
-      text:
-        title:    'deactivate_user_form.title'
-        submit:   'deactivate_user_form.submit'
-        fragment: 'deactivate_user_confirmation'
-      successCallback: -> Session.signOut()
+  computed:
+    showHelpTranslate: -> AppConfig.features.app.help_link
+    availableLocales: -> AppConfig.locales
+    actions: -> UserService.actions(Session.user(), @)
+
   methods:
     init: ->
-      # return unless Session.isSignedIn()
-      @user = Session.user().clone()
+      return unless Session.isSignedIn()
+      @originalUser = Session.user()
+      @user = @originalUser.clone()
       Session.updateLocale(@user.locale)
       @submit = submitForm @, @user,
         flashSuccess: 'profile_page.messages.updated'
@@ -73,66 +40,76 @@ export default
         successCallback: @init
 
     changePicture: ->
-      ModalService.open 'ChangePictureForm'
+      openModal
+        component: 'ChangePictureForm'
 
     changePassword: ->
       @openChangePasswordModal(@user)
 
     openDeleteUserModal: ->
       @isDeleteUserModalOpen = true
+
     closeDeleteUserModal: ->
       @isDeleteUserModalOpen = false
 
 
 </script>
 <template lang="pug">
-.loading-wrapper
-  loading(v-if='!user')
-  main.profile-page(v-if='user')
-    h1.lmo-h1-medium(v-t="'profile_page.profile'")
-    .profile-page-card
-      //- .lmo-disabled-form(v-show='isDisabled')
-      h3.lmo-h3(v-t="'profile_page.edit_profile'")
-      .profile-page__profile-fieldset
-        user-avatar(:user='user', size='featured')
-        v-btn.md-accent.md-button--no-h-margin.profile-page__change-picture(@click='changePicture()', v-t="'profile_page.change_picture_link'")
-      .profile-page__profile-fieldset
-        .md-block
-          label(for='user-name-field', translate='profile_page.name_label')
-          input#user-name-field.profile-page__name-input(required='ng-required', v-model='user.name')
-          validation-errors(:subject='user', field='name')
-        .md-block
-          label(for='user-username-field', translate='profile_page.username_label')
-          input#user-username-field.profile-page__username-input(required='ng-required', v-model='user.username')
-          .md-caption(v-t="'profile_page.username_helptext'")
-          validation-errors(:subject='user', field='username')
-        .md-block
-          label(for='user-email-field', translate='profile_page.email_label')
-          input#user-email-field.profile-page__email-input(required='ng-required', v-model='user.email')
-          validation-errors(:subject='user', field='email')
-        .md-block
-          label(for='user-short-bio-field', translate='profile_page.short_bio_label')
-          lmo-textarea(:model='user' field="shortBio" :placeholder="'profile_page.short_bio_placeholder'")
-          validation-errors(:subject='user', field='shortBio')
-        .md-block
-          label(for='user-location-field', v-t="'profile_page.location_label'")
-          input#user-location-field.profile-page__location-input(v-model='user.location', :placeholder="$t('profile_page.location_placeholder')")
-        .md-block
-          label(for='user-locale-field', translate='profile_page.locale_label')
-            //- <md-select v-model="user.selectedLocale" required="true" class="profile-page__language-input" id="user-locale-field">
-            //- <md-option ng-repeat="locale in availableLocales" ng-value="locale.key">{{locale.name}}</md-option>
-            //- </md-select>
-          validation-errors(:subject='user', field='selectedLocale')
-        p(v-if='showHelpTranslate')
-          router-link.md-caption(v-t="'profile_page.help_translate'", to='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation', target='_blank')
-      .profile-page__update-account.lmo-flex.lmo-flex__space-between
-        v-btn.md-accent.profile-page__change-password(@click='changePassword()', v-t="'profile_page.change_password_link'")
-        v-btn.md-primary.md-raised.profile-page__update-button(@click='submit()', :disabled='isDisabled', v-t="'profile_page.update_profile'")
-    .profile-page-card
-      h3.lmo-h3(v-t="'profile_page.deactivate_account'")
-      v-btn.md-warn.md-button--no-h-margin.profile-page__deactivate(@click='openConfirmModal(deactivateUserConfirmOpts)', v-t="'profile_page.deactivate_user_link'")
+v-content
+  v-container.profile-page.max-width-1024
+    loading(v-if='!user')
+    div(v-if='user')
+      v-card
+        submit-overlay(:value='user.processing')
+        //- v-card-title
+        //-   h1.headline(v-t="'profile_page.edit_profile'")
+        v-card-text
+          v-layout
+            v-flex.profile-page__details
+              v-layout(:column="$vuetify.breakpoint.xs")
+                v-flex
+                  v-text-field.profile-page__name-input(:label="$t('profile_page.name_label')" required v-model="user.name")
+                  validation-errors(:subject='user', field='name')
 
-      h3.lmo-h3(v-t="'profile_page.delete_account'")
-      v-btn.md-warn.md-button--no-h-margin.profile-page__delete(@click='openConfirmModal(deleteUserConfirmOpts)', v-t="'profile_page.delete_user_link'")
+                  v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username")
+                  validation-errors(:subject='user', field='username')
+
+                  v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required='ng-required', v-model='user.email')
+                  validation-errors(:subject='user', field='email')
+
+                v-flex.profile-page__avatar(justify-center @click="changePicture()")
+                  user-avatar(:user='originalUser' size='featured' :no-link="true")
+
+              lmo-textarea(:model='user' field="shortBio" :label="$t('profile_page.short_bio_label')" :placeholder="$t('profile_page.short_bio_placeholder')")
+              validation-errors(:subject='user', field='shortBio')
+
+              v-text-field#user-location-field.profile-page__location-input(v-model='user.location' :label="$t('profile_page.location_label')" :placeholder="$t('profile_page.location_placeholder')")
+
+              v-select#user-locale-field(:label="$t('profile_page.locale_label')" :items="availableLocales" v-model="user.selectedLocale" item-text="name" item-value="key")
+              validation-errors(:subject='user', field='selectedLocale')
+              p(v-if='showHelpTranslate')
+                a(v-t="'profile_page.help_translate'" href='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation' target='_blank')
+        v-card-actions.profile-page__update-account
+          v-spacer
+          v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='isDisabled' v-t="'profile_page.update_profile'")
+
+      v-card.profile-page-card.mt-4
+        v-list
+          v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()" :class="'user-page__' + key")
+            v-list-item-icon
+              v-icon {{action.icon}}
+            v-list-item-title(v-t="action.name")
+        //-
+        //-   v-btn.profile-page__change-password(color="accent" outlined @click='changePassword()' v-t="'profile_page.change_password_link'")
+        //- v-card-text
+        //-   h3.lmo-h3(v-t="'profile_page.deactivate_account'")
+        //-   v-btn.profile-page__deactivate(outlined color="warning" @click='openConfirmModal(deactivateUserConfirmOpts)', v-t="'profile_page.deactivate_account'")
+        //-
+        //-   h3.lmo-h3(v-t="'profile_page.delete_account'")
+        //-   v-btn.profile-page__delete(outlined color="warning" @click='openConfirmModal(deleteUserConfirmOpts)', v-t="'profile_page.delete_user_link'")
 
 </template>
+<style lang="sass">
+.profile-page__avatar
+  cursor: pointer
+</style>

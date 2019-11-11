@@ -25,6 +25,7 @@ angular.module('loomioApp').directive 'announcementForm', ->
     $scope.subscriptionActive = true
     $scope.canInvite = true
     $scope.maxMembers = $scope.announcement.model.group().parentOrSelf().subscriptionMaxMembers || 0
+    $scope.invitingToGroup = $scope.announcement.model.isA('group')
 
     if $scope.announcement.model.group()
       $scope.invitationsRemaining =
@@ -58,11 +59,17 @@ angular.module('loomioApp').directive 'announcementForm', ->
     $scope.audiences      = -> audiencesFor($scope.announcement.model)
     $scope.audienceValues = -> audienceValuesFor($scope.announcement.model)
 
+    $scope.resetSharableLink = ->
+      $scope.announcement.model.resetToken().then ->
+        $scope.shareableLink = LmoUrlService.shareableLink($scope.announcement.model)
+        FlashService.success('invitation_form.shareable_link_reset')
+
     $scope.search = (query) ->
       Records.announcements.search(query, $scope.announcement.model).then (users) ->
         utils.parseJSONList(users)
 
     buildRecipientFromEmail = (email) ->
+      id: email
       email: email
       emailHash: email
       avatarKind: 'mdi-email-outline'

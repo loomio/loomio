@@ -5,64 +5,51 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 
 import { submitForm }    from '@/shared/helpers/form'
-import { submitOnEnter } from '@/shared/helpers/keyboard'
+import { last } from 'lodash'
 
 export default
   props:
-    discussion: Object
-    parentComment: Object
+    comment: Object
+    autoFocus: Boolean
 
   data: ->
     actor: Session.user()
     shouldReset: false
-    comment: @buildComment()
-    isDisabled: null
     canSubmit: true
 
   computed:
-    helptext: ->
-      helptext = if @discussion.private
-        {path: 'comment_form.private_privacy_notice', args: {groupName: @discussion.group().fullName}}
-      else
-        'comment_form.public_privacy_notice'
-
     placeholder: ->
-      if @parentComment
-        {path: 'comment_form.in_reply_to', args: {name: @parentComment.authorName()}}
+      if @comment.parentId
+        @$t('comment_form.in_reply_to', {name: @comment.parent().authorName()})
       else
-        'comment_form.aria_label'
+        @$t('comment_form.aria_label')
 
   methods:
     handleIsUploading: (val) ->
       @canSubmit = !val
-    buildComment: ->
-      Records.comments.build
-        bodyFormat: "html"
-        body: ""
-        discussionId: @discussion.id
-        authorId: Session.user().id
-        parentId: if @parentComment then @parentComment.id else null
 
     reset: ->
       @shouldReset = !@shouldReset
-      @comment = @buildComment()
 
     init: ->
-      @reset()
+      @newComment = @comment.isNew()
       @submit = submitForm @, @comment,
         submitFn: =>
           @comment.save()
         flashSuccess: =>
           EventBus.$emit 'commentSaved'
-          if @comment.isReply()
+          if !@newComment
+            'comment_form.messages.updated'
+          else if @comment.isReply()
             'comment_form.messages.replied'
           else
             'comment_form.messages.created'
         flashOptions:
           name: =>
             @comment.parent().authorName() if @comment.isReply()
-        successCallback: =>
+        successCallback: (data) =>
           @$emit('comment-submitted')
+          @reset()
           @init()
 
       # submitOnEnter @, element: $element
@@ -73,34 +60,17 @@ export default
 </script>
 
 <template lang="pug">
-.comment-form.lmo-relative.lmo-flex--row
-  .thread-item__avatar.lmo-margin-right
-    user-avatar(:user='actor', size='medium')
-  .thread-item__body.lmo-flex--column.lmo-flex__horizontal-center
-    form(v-on:submit.prevent='submit()')
-      .lmo-disabled-form(v-show='isDisabled')
-      lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :helptext="helptext" :shouldReset="shouldReset")
-      v-card-actions
-        v-spacer
-        v-btn.comment-form__submit-button(:disabled="!canSubmit" flat color="primary" type='submit' v-t="'comment_form.submit_button.label'")
-
+v-layout.comment-form.px-3
+  .thread-item__avatar.mr-3
+    user-avatar(:user='actor' :size='40')
+  form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+    submit-overlay(:value='comment.processing')
+    lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :shouldReset="shouldReset" :autoFocus="autoFocus")
+      template(v-slot:actions)
+        v-btn.comment-form__submit-button(:disabled="!canSubmit" color="primary" type='submit' v-t="comment.isNew() ? 'comment_form.submit_button.label' : 'common.action.save' ")
 </template>
 
-<style lang="scss">
-
-.comment-form .lmo-textarea md-input-container {
-  margin-top: -2px;
-}
-.comment-form-attachments input {
-  display: none;
-}
-
-.comment-form-button {
-  margin-left: 10px;
-  &:hover { cursor: pointer; }
-}
-
-.comment-form-container{
-  width: 100%;
-}
+<style lang="sass">
+.comment-form__body
+  flex-grow: 1
 </style>

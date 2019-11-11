@@ -5,6 +5,7 @@ ga_IE:
       author: Údar
       details: Sonraí
       group_name: Ainm na baicle
+      total: Iomlán
   email:
     by_who: ag %{person}
     reply_to_this_discussion: Freagraigh an plé seo

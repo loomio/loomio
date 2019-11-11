@@ -33,7 +33,7 @@ describe API::ProfileController do
       another_user.update deactivated_at: 1.day.ago
       get :show, params: { id: another_user.key }, format: :json
       expect(response.status).to eq 403
-      expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+      expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
     end
   end
 
@@ -41,7 +41,7 @@ describe API::ProfileController do
     it 'returns the current user data' do
       sign_in user
       get :me, format: :json
-      expect(response).to be_success
+      expect(response.status).to eq 200
       json = JSON.parse(response.body)
       expect(json.dig('users', 0, 'id')).to eq user.id
     end
@@ -58,13 +58,13 @@ describe API::ProfileController do
       it 'updates a users profile picture type' do
         user.update avatar_kind: 'gravatar'
         post :update_profile, params: { user: { avatar_kind: 'initials' } }
-        expect(response).to be_success
+        expect(response.status).to eq 200
         expect(user.reload.avatar_kind).to eq 'initials'
       end
 
       it "updates a users profile" do
         post :update_profile, params: { user: user_params }, format: :json
-        expect(response).to be_success
+        expect(response.status).to eq 200
         expect(user.reload.email).to eq user_params[:email]
         json = JSON.parse(response.body)
         user_emails = json['users'].map { |v| v['email'] }
@@ -98,7 +98,7 @@ describe API::ProfileController do
       it "responds with an error when there are unpermitted params" do
         user_params[:dontmindme] = 'wild wooly byte virus'
         post :update_profile, params: { user: user_params }, format: :json
-        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
+        expect(JSON.parse(response.body)['exception']).to include 'ActionController::UnpermittedParameters'
       end
     end
   end
@@ -132,7 +132,7 @@ describe API::ProfileController do
     context 'success' do
       it "deactivates the users account" do
         post :deactivate, params: {user: {deactivation_response: '' }}, format: :json
-        expect(response).to be_success
+        expect(response.status).to eq 200
         json = JSON.parse(response.body)
         user_emails = json['users'].map { |v| v['email'] }
         expect(user_emails).to include user.email
@@ -154,7 +154,7 @@ describe API::ProfileController do
     context 'success' do
       it "deletes the users account" do
         post :destroy
-        expect(response).to be_success
+        expect(response.status).to eq 200
         expect {user.reload}.to raise_error ActiveRecord::RecordNotFound
       end
     end

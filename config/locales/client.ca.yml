@@ -1,4 +1,15 @@
 ca:
+  loomio_onboarding:
+    group_progress_card:
+      title: Activa el teu grup
+      activities:
+        set_description: Configura la descripció del teu grup
+        set_logo: Escull un logo pel teu grup
+        set_cover_photo: Escull una foto de capçalera pel teu grup
+        invite_people_in: Convida a gent
+        start_thread: Comença un fil de discussió
+        make_decision: Comença una decissió
+      dismiss_this_card: Descarta aquesta fitxa
   loomio_tags:
     tags: Etiquetes
     apply_tags: Aplica etiquetes
@@ -25,8 +36,6 @@ ca:
     cry: Plora
     v: Pau
     ok_hand: D'acord
-  poll_types:
-    poll: Enquesta
   common:
     you: Tu
     expand: Expandeix
@@ -69,6 +78,8 @@ ca:
     copied: 'Copiat al porta-retalls'
     total: Total
     action:
+      search: 'Cerca'
+      back: 'Enrere'
       close: 'Tanca'
       save: 'Desa'
       save_changes: 'Desa els canvis'
@@ -77,17 +88,14 @@ ca:
       edit: 'Edita'
       remove: 'Elimina'
       like: 'M''agrada'
-      back: 'Enrere'
       unlike: 'No m''agrada'
       update: 'Actualitza'
       cancel: 'Cancel·la'
       show_more: "Mostra més"
       view_all: "Mostra-ho tot"
       new_thread: "Crea una discussió"
-      add_subgroup: 'Afegeix un subgrup'
       loading: 'Carregant'
       translate: 'Tradueix'
-      translated: 'Traducció realitzada per Bing Translator'
       upload: 'Carrega'
       uploading: 'Carregant'
       ok: D'acord
@@ -96,6 +104,8 @@ ca:
       start: Comença
       delete: Esborrar
       unsubscribe: Cancel·lar la subscripció
+  emoji_picker:
+    search: Cerca
   ordinal:
     _1: 1r
     _2: 2n
@@ -119,28 +129,32 @@ ca:
     quiet: 'Fluix'
     mute: 'Silenci'
     unmute: 'Activa el so'
+  pin_event_form:
+    title_label: Títol
   change_volume_form:
+    simple:
+      label: Notificacions
+      normal: Normal
+      quiet: Ignora
     loud_label: "Tota la activitat"
     quiet_label: "Cap correu electrònic"
     mute_label: "Silenci"
     discussion:
-      loud_description: "Rebreu correus electrònics sempre que hi hagi activitat en aquesta discussió."
-      normal_description: "Rebreu correus electrònics sempre que es creï una proposta, quan estigui a punt de tancar-se o quan es publiqui un resultat."
-      quiet_description: "No rebreu cap correu electrònic sobre aquesta discussió."
       apply_to_all: "Aplica aquesta configuració a totes les discussions d'aquest grup."
       messages:
         loud: "Rebreu l'activitat d'aquesta discussió per correu electrònic."
         normal: "Rebreu les propostes d'aquesta discussió per correu electrònic."
         quiet: "No rebreu cap correu electrònic sobre aquesta discussió."
     membership:
-      title: "Configuració de correu electrònic per {{title}}"
       loud_description: "Rebreu correus electrònics sempre que hi hagi activitat en aquest grup."
+      normal_description: "Rebreu correus electrònics sempre que hi hagi activitat en aquest grup."
       quiet_description: "No rebreu cap correu electrònic sobre aquest grup."
       apply_to_all: "Aplica aquesta configuració a tots els meus grups."
       messages:
         loud: "Rebreu l'activitat d'aquest grup per correu electrònic."
         quiet: "No rebreu cap correu electrònic sobre aquest grup."
     all_groups:
+      loud_description: "Rebreu l'activitat de tots els grups per correu electrònic."
       messages:
         loud: "Rebreu l'activitat de tots els grups per correu electrònic."
         quiet: "No rebreu cap correu electrònic sobre cap grup."
@@ -183,6 +197,7 @@ ca:
     public_privacy_notice: 'El comentari serà visible per a tothom.'
     sign_in: "Inicieu la sessió per unir-vos a la conversa"
   sidebar:
+    threads: 'Fils'
     explore: 'Grups públics'
     aria_labels:
       heading: 'Barra lateral'
@@ -200,7 +215,6 @@ ca:
       comments: 'Comentaris'
     sign_in: 'Inicia la sessió'
   membership_dropdown:
-    make_coordinator: 'Fes coordinador/a'
     cancel_invitation: Cancel·la la invitació
   notifications:
     header: "Notificacions"
@@ -215,6 +229,8 @@ ca:
   discussion_record:
     created: 'La discussió {{title}} s''ha creat correctament a {{groupName}}'
     updated: 'Canvis desats a {{title}}'
+  discussion_fork_actions:
+    move: Mou
   discussion_form:
     messages:
       created: 'Discussió creada'
@@ -232,11 +248,14 @@ ca:
     privacy_private: 'La discussió només serà visible pels membres del grup {{group}}.'
     privacy_organisation: 'La discussió serà visible pels membres de {{parent}} i pels membres de {{group}}.'
   action_dock:
+    move_items: Mou
     edit_stance: Canvia la decisió
+    edited: Editat
     tag_thread: Gestiona etiquetes
+    delete_thread: Elimina la discussió
   join_group_button:
     join_group: Uneix-te al grup
-    membership_requested: Sol·licitud de pertinença pendent
+    membership_requested: Afiliació sol·licitada
     messages:
       joined_group: 'Ara sou membre de {{group}}'
   membership_request_form:
@@ -252,7 +271,14 @@ ca:
     current_revision: Últim
   reactions_display:
     you: "Tu"
+  group_wizard:
+    invite_people: Convida gent
+    start_thread: Comença una discussió
   group_page:
+    threads: Fils
+    members: Membres
+    settings: Configuracions
+    subgroups: Subgrups
     messages:
       privacy:
         members: 'Ara aquest grup és visible només als seus membres'
@@ -263,7 +289,6 @@ ca:
     new_photo: 'Nova fotografia'
     discussions_placeholder: 'Una discussió és el lloc on tothom pot discutir un tema i prendre decisions junts.'
     member_options: Opcions de membres
-    subgroups: 'Subgrups'
     visibility_label: 'Visibilitat'
     options_label: 'Opcions'
     options:
@@ -272,6 +297,7 @@ ca:
       manage_members: 'Administra els membres'
       add_subgroup: 'Afegeix un subgrup'
       manage_subscription: 'Administra les subscripcions del grup'
+      email_settings: 'Preferències del correu electrònic'
       leave_group: 'Abandona el grup'
       deactivate_group: 'Desactiva el grup'
     volume:
@@ -291,7 +317,7 @@ ca:
     edit_group_heading: 'Edita la configuració del grup'
     edit_subgroup_heading: 'Edita la configuració del subgrup'
     group_name: 'Nom del grup'
-    group_name_placeholder: 'Com voleu anomenar el vostre grup?'
+    group_name_placeholder: 'Quin és el nom del teu grup?'
     subgroup_name: 'Nom del subgrup'
     description: 'Descripció'
     description_placeholder: 'Descriviu el propòsit del grup per tal de que els membres sàpiguen perquè estan aquí.'
@@ -303,16 +329,17 @@ ca:
     confirm_change_to_secret_subgroup: 'Si continueu, totes les discussions seran privades.'
     confirm_change_to_public: 'Si continueu, totes les discussions d''aquest grup es faran públiques a internet.'
     confirm_change_to_private_discussions_only: 'Si continueu, totes les discussions públiques d''aquest grup seran privades.'
+    profile: Perfil
     advanced_settings: "Configuració avançada"
     how_do_people_join: "Com s'uneix la gent?"
     membership_granted_upon_request: 'Tothom es pot unir al grup.'
     membership_granted_upon_approval: 'Tothom pot sol·licitar unir-se però és necessària l''aprovació.'
+    permissions: 'Permisos'
     thread_privacy: 'Privacitat de la discussió'
     public_threads: 'Només discussions públiques'
     public_discussions_subgroup: 'Qualsevol en {{parentGroupName}} pot veure les discussions'
     public_or_private_threads: 'Permet discussions públiques i privades'
     private_threads: 'Només els membres poden veure les discussions'
-    permissions: 'Permisos'
     allow_public_threads: 'Permet les discussions públiques en aquest grup.'
     parent_members_can_see_discussions: 'Els membres de {{parent}} poden veure les discussions privades.'
     members_can_add_members: 'Els membres poden convidar gent i aprovar sol·licituds d''unió.'
@@ -351,7 +378,7 @@ ca:
     heading: Propostes anteriors
     see_more: Veure més
   invitation_form:
-    invite_people: 'Convida a gent'
+    invite_people: 'Convida gent'
     group: 'Grup'
     group_placeholder: 'Seleccioneu un grup'
     shareable_link: 'Enllaç per a compartir'
@@ -381,15 +408,10 @@ ca:
   memberships_page:
     members: 'Membres'
     name_label: 'Nom'
-    coordinator_label: 'Coordinador'
     remove_member_label: 'Eliminar'
     fragment_placeholder: 'Filtra els usuaris per nom o per cognom...'
     messages:
       remove_member_success: '{{name}} eliminat'
-      make_admin_success: '{{name}} ara és un coordinador'
-      remove_admin_success: '{{name}} ha deixat de ser coordinador'
-    remove_admin_from_self:
-      question: 'Esteu segur de deixar de ser coordinador?'
   membership_remove_modal:
     invitation:
       title: Cancel·la la invitació
@@ -417,7 +439,6 @@ ca:
       password_changed: 'Contrasenya actualitzada'
       deactivated: 'Compte desactivat'
     change_picture_link: 'Canvia la fotografia'
-    deactivate_user_link: 'Desactiva el compte...'
     profile: 'Perfil'
     edit_profile: 'Edita el perfil'
     picture_label: 'Fotografia'
@@ -427,7 +448,6 @@ ca:
     locale_label: 'Idioma'
     update_profile: 'Actualitza el perfil'
   email_settings_page:
-    header: Configuració del correu electrònic
     daily_summary_label: Correu electrònic de resum diari
     on_participation_label: Subscriure a la participació
     specific_groups: Configuració per grups específics
@@ -494,8 +514,8 @@ ca:
     load_previous: 'Carrega activitats anteriors'
     started_by: 'Destacat per <strong>{{name}}</strong>'
   activity_card:
-    unread: No llegit
     latest: Últim
+    context: Context
     attachment_display:
       aria_label: 'Fitxer adjunt:'
       image_alt: 'Imatge adjunta'
@@ -504,7 +524,6 @@ ca:
   thread_context:
     aria_label: 'Context de la discussió'
     thread_options: 'Opcions de la discussió'
-    email_settings: 'Configuració del correu electrònic'
     close_thread: 'Tanca'
     move_thread: 'Mou'
     print_thread: 'Imprimeix'
@@ -589,12 +608,9 @@ ca:
   explore_page:
     single_search_result: "Coincideix 1 grup públic <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "Coincideixen {{resultCount}} grups públics <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>No s'ha trobat el grup que esteu buscant.</strong> Si la privacitat d'un grup està marcada com a 'secret', el grup no apareixerà aquí. Si coneixeu qui coordina el grup, podeu demanar-li una invitació."
   global:
     messages:
       reload: 'Recarrega'
-  emoji_picker:
-    no_emojis_found: "No s'ha trobat cap emoticona per '{{term}}'."
   authorized_apps_page:
     title: Aplicacions autoritzades
     no_applications: "Encara no heu autoritzat cap aplicació d'un tercer."
@@ -632,6 +648,19 @@ ca:
   poll_common:
     start_poll: Comença una decissió
     save_changes: Desa
+  discussions_panel:
+    open: Obert
+    all: Tot
+    closed: Tancat
+  members_panel:
+    everyone: 'Tothom'
+    order_by_name: 'Nom'
+    header_name: 'Nom'
+    header_username: 'Nom d''usuari'
+  polls_panel:
+    all: 'Tot'
+    open: 'Obert'
+    closed: 'Tancat'
   poll_common_form:
     closed: Tancat
     start: Començar

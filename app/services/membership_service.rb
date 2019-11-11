@@ -4,6 +4,12 @@ class MembershipService
 
     membership.update(user: actor, accepted_at: DateTime.now)
 
+    if membership.inviter
+      membership.inviter.groups.where(id: Array(membership.experiences['invited_group_ids'])).each do |group|
+        group.add_member!(actor, inviter: membership.inviter) if membership.inviter.can?(:add_members, group)
+      end
+    end
+
     Events::InvitationAccepted.publish!(membership)
   end
 
@@ -20,7 +26,7 @@ class MembershipService
   def self.set_volume(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
     if params[:apply_to_all]
-      actor.memberships.update_all(volume: Membership.volumes[params[:volume]])
+      actor.memberships.where(group_id: membership.group.parent_or_self.id_and_subgroup_ids).update_all(volume: Membership.volumes[params[:volume]])
       actor.discussion_readers.update_all(volume: nil)
     else
       membership.set_volume! params[:volume]

@@ -121,6 +121,20 @@ describe API::AnnouncementsController do
     end
   end
 
+  describe 'history' do
+    let(:event) { create :event, kind: 'announcement_created', eventable: group, user: group.creator}
+    let!(:notifications) { create :notification, event: event, user: user }
+
+    it 'responds with event history' do
+      sign_in user
+      get :history, params: {group_id: group.id}
+      expect(response.status).to eq 200
+      puts response.body
+      # expect(JSON.parse response.body)
+
+    end
+  end
+
   describe 'create' do
     let(:notified_user) { create :user }
     let(:member) { create :user }

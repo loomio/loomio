@@ -1,12 +1,11 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
-import HasMentions      from '@/shared/mixins/has_mentions'
-import HasDrafts        from '@/shared/mixins/has_drafts'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 import HasGuestGroup    from '@/shared/mixins/has_guest_group'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
+import { addDays, startOfHour } from 'date-fns'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -17,8 +16,6 @@ export default class PollModel extends BaseModel
 
   afterConstruction: ->
     HasDocuments.apply @, showTitle: true
-    HasDrafts.apply @
-    HasMentions.apply @, 'details'
     HasTranslations.apply @
     HasGuestGroup.apply @
 
@@ -33,26 +30,22 @@ export default class PollModel extends BaseModel
   groups: ->
     _.compact [@group(), @discussionGuestGroup(), @guestGroup()]
 
-  # the polls which haven't closed have the highest importance
-  # (and so have the lowest value here)
-  # Both are sorted by distance from the current time
-  # (IE, polls which have closed or will close closest to now are most important)
-  importance: (now) ->
-    if @closedAt?
-      Math.abs(@closedAt - now)
-    else
-      0.0001 * Math.abs(@closingAt - now)
-
   defaultValues: ->
     discussionId: null
     title: ''
     details: ''
     detailsFormat: 'html'
-    closingAt: moment().add(3, 'days').startOf('hour')
+    closingAt: startOfHour(addDays(new Date, 3))
     pollOptionNames: []
     pollOptionIds: []
-    customFields: {}
-    # optionDate: moment().format('YYYY-MM-DD')
+    customFields: {
+      minimum_stance_choices: null
+      max_score: null
+      min_score: null
+    }
+    files: []
+    imageFiles: []
+    attachments: []
 
   audienceValues: ->
     name: @group().name
@@ -107,6 +100,9 @@ export default class PollModel extends BaseModel
   outcome: ->
     @recordStore.outcomes.find(pollId: @id, latest: true)[0]
 
+  createdEvent: ->
+    @recordStore.events.find(eventableId: @id, kind: 'poll_created')[0]
+
   clearStaleStances: ->
     existing = []
     _.each @latestStances('-createdAt'), (stance) ->
@@ -131,13 +127,16 @@ export default class PollModel extends BaseModel
     @customFields.goal or @membersCount()
 
   close: =>
-    @remote.postMember(@key, 'close')
+    @processing = true
+    @remote.postMember(@key, 'close').finally => @processing = false
 
   reopen: =>
-    @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt})
+    @processing = true
+    @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt}).finally => @processing = false
 
   addOptions: =>
-    @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
+    @processing = true
+    @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames).finally => @processing = false
 
   toggleSubscription: =>
     @remote.postMember(@key, 'toggle_subscription')
@@ -149,20 +148,13 @@ export default class PollModel extends BaseModel
       'edit'
 
   translatedPollType: ->
-    
     I18n.t("poll_types.#{@pollType}")
 
-  addOption: =>
-    @handleDateOption()
-    return unless @newOptionName and !_.includes(@pollOptionNames, @newOptionName)
-    @pollOptionNames.push @newOptionName
-    @setErrors({})
-    @setMinimumStanceChoices()
-    @newOptionName = ''
-
-  handleDateOption: =>
-    @newOptionName = moment(@optionDate).format('YYYY-MM-DD')                                     if @optionDate
-    @newOptionName = moment("#{@newOptionName} #{@optionTime}", 'YYYY-MM-DD h:mma').toISOString() if @optionTime
+  addOption: (option) =>
+    return false if @pollOptionNames.includes(option) or !option
+    @pollOptionNames.push option
+    @pollOptionNames.sort() if @pollType == "meeting"
+    option
 
   setMinimumStanceChoices: =>
     return unless @isNew() and @hasRequiredField('minimum_stance_choices')
@@ -174,9 +166,18 @@ export default class PollModel extends BaseModel
   hasPollSetting: (setting) =>
     AppConfig.pollTemplates[@pollType][setting]?
 
+  hasVariableScore: ->
+    AppConfig.pollTemplates[@pollType]['has_variable_score']
+
+  hasOptionIcons: ->
+    AppConfig.pollTemplates[@pollType]['has_option_icons']
+
+  translateOptionName: ->
+    AppConfig.pollTemplates[@pollType]['translate_option_name']
+
+  datesAsOptions: ->
+    AppConfig.pollTemplates[@pollType]['dates_as_options']
+
   removeOrphanOptions: ->
     _.each @pollOptions(), (option) =>
       option.remove() unless _.includes(@pollOptionNames, option.name)
-
-  edited: ->
-    @versionsCount > 1

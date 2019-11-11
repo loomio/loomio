@@ -27,16 +27,15 @@ export default
 
 <template lang="pug">
 v-card.confirm-modal
-  //- .lmo-disabled-form(v-show="isDisabled")
+  submit-overlay(:value='isDisabled')
   v-card-title
-    v-layout(justify-space-between, align-center)
-      h1.lmo-h1(v-t="confirm.text.title")
-      dismiss-modal-button(v-if="!confirm.forceSubmit", :close="close")
+    h1.headline(v-t="confirm.text.title")
+    v-spacer
+    dismiss-modal-button(v-if="!confirm.forceSubmit", :close="close")
   v-card-text
-    p(v-html="$t(confirm.text.helptext)", v-if="confirm.text.helptext")
-    //- p(ng-include="fragment", ng-if="fragment")
+    p(v-html="confirm.text.raw_helptext || $t(confirm.text.helptext)", v-if="confirm.text.raw_helptext || confirm.text.helptext")
   v-card-actions
-    div(v-if="confirm.forceSubmit")
-    v-btn(v-if="!confirm.forceSubmit", @click="close()", type="button", v-t="'common.action.cancel'")
-    v-btn.confirm-modal__submit(@click="submit() || close()", v-t="confirm.text.submit || 'common.action.ok'", primary, raised)
+    v-btn(text v-if="!confirm.forceSubmit" @click="close()" v-t="'common.action.cancel'")
+    v-spacer
+    v-btn.confirm-modal__submit(color="primary" @click="submit() || close()" v-t="confirm.text.submit || 'common.action.ok'")
 </template>

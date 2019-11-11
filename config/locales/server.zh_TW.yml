@@ -19,7 +19,7 @@ zh_TW:
     error:
       sign_in_required_html: |
           您必須登入以繼續。
-          請<a href="/dashboard">登入</a>然後重新載入此頁面以繼續。
+          請<a href="/dashboard" target="_blank">登入</a>然後重新整理此頁面以繼續。
       recaptcha: "我們無法確認您是不是機器人。請再試一次！"
       bad_login: "抱歉，這個密碼與我們的檔案上的不一樣"
       username_must_be_alphanumeric: "使用者名稱只能為小寫字母與數字"
@@ -133,6 +133,7 @@ zh_TW:
       invitation_text_html: "已經邀請您加入他們的群組"
       link_help: "點選下面的連結以接受邀請："
       accept_invitation: "接受邀請"
+      stop_emails: "停止從 %{site_name} 收到電子郵件"
     resend_to_join_group:
       subject: "%{member} 正等待您加入在 %{site_name} 上的 %{group_name}"
     user_added_to_group:
@@ -566,29 +567,7 @@ zh_TW:
         voted: '<strong>%{participant}</strong>:'
   comment_by: '%{comment_author} 的意見'
   personal_data:
-    title: '%{user_name} 的個人資料位於 %{host_name}'
-  poll_generator:
-    proposal:
-      title: "給 Shelley 和 Jack 錄取通知書"
-      details: Shelley 和 Jack 已經在我們的團隊中當了三個月的實習生，而且不斷表現出令人欽佩的奉獻精神，顯然是我們團隊中的資產。我們是不是應該要讓他們成為正式員工呢？
-    poll:
-      title: "我們可能需要注意週四的晚宴上有什麼食物可能會讓人過敏？"
-      details: 希望我們能在晚宴上看到您！請註明您是否有我們應該注意的任何飲食限制。
-    count:
-      title: "誰可以幫忙組織公司的野餐？"
-      details: Marsa 上次似乎有點太累了，所以這次我們想給她幾個幫手來讓每個人都可以輕鬆點。請說明您是否想幫忙！
-    dot_vote:
-      title: "我們公司下一季的戰略是什麼？"
-      details: 對我們的公司而言，這是非常忙碌的一年，我們需要對我們有限的資源做戰略調配。請說明您認為下一季裡最重要的領域。
-    score:
-      title: "下次會議，您感興趣的主題是什麼？"
-      details: 我們正在準備下次會議要討論的主題。請指出您對下列每個主題的感興趣程度。
-    ranked_choice:
-      title: "我們的下一個副市長應該是誰？"
-      details: "現在是我們的半年度選舉的時候了！這是一個即時投票，將決定我們的下一個副市長。請務必在我們的網站上閱讀每個候選人的介紹！"
-    meeting:
-      title: "我們下次的工作會議什麼時候舉辦？"
-      details: 時間又到了我們開雙月的工作會議的時候了；理想狀態下，我們應該要在下週末前會面。大家什麼時候有空呢？
+    title: 在 %{host_name} 上的 %{user_name} 個人資料
   notified:
     no_matches_found: "沒有符合「%{query}」的搜尋結果"
     group_users: "（%{count} 個夥伴）"

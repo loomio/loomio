@@ -562,30 +562,6 @@ fr:
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: Commentaire par %{comment_author}
-  personal_data:
-    title: Les données personnelles de %{user_name} sont sur %{host_name}
-  poll_generator:
-    proposal:
-      title: "Proposer une embauche à Louise et Jacques"
-      details: Louise et Jacques ont été nos stagiaires ces 3 derniers mois, ils se sont beaucoup investis et sont clairement des ressources pour notre équipe. Doit-on leur proposer une embauche?
-    poll:
-      title: "Il y a-t-il des allergies alimentaires que nous devrons prendre en compte pour le dîner de jeudi?"
-      details: J'ai hâte de vous voir à la maison! Merci d'indiquer les restrictions alimentaires que nous devrions connaître.
-    count:
-      title: "Qui est partant·e pour aider à organiser le pique-nique d'entreprise?"
-      details: Marla s'est sentie dépassée la dernière fois, donc cette fois nous voudrions qu'elle ait de l'aide pour que cela soit plus simple pour tous. Merci d'indiquer si vous êtes partant⋅e!
-    dot_vote:
-      title: "Quelle est notre stratégie d'entreprise pour le trimestre prochain?"
-      details: C'est une année charnière pour notre entreprise et nous devons prioriser l'usage de nos ressources limitées. Merci d'indiquer les thèmes qui selon vous doivent concentrer nos efforts sur le prochain trimestre.
-    score:
-      title: "Quels sont les sujets qui vous intéressent pour la prochaine conférence ?"
-      details: Nous préparons les sujets qui seront évoqués lors de la prochaine conférence. Merci de nous indiqué quels sont ceux qui vous intéressent.
-    ranked_choice:
-      title: "Qui désigner comme maire-adjoint·e?"
-      details: "C'est l'heure de nos élections semestrielles. Ceci est un vote alternatif officiel, qui désignera notre prochain maire-adjoint. N'oubliez pas de vous renseigner sur les différents candidats sur notre site!"
-    meeting:
-      title: "Quand devons-nous tenir notre prochaine réunion d'équipe?"
-      details: C'est l'heure de notre réunion d'équipe bi-hebdomadaire, idéalement nous nous réunirons avant la fin de la semaine prochaine. Quel créneau arrange tout le monde?
   notified:
     no_matches_found: "Pas de résultats pour « %{query} »"
     group_users: "(%{count} personnes)"

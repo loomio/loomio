@@ -1,9 +1,10 @@
 class Full::PollSerializer < ::PollSerializer
-  attributes :poll_option_names, :mentioned_usernames, :complete
+  attributes  :complete
 
   has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_many :documents, serializer: DocumentSerializer, root: :documents
+  has_one :created_event, serializer: Events::BaseSerializer, root: :events
 
   def complete
     true

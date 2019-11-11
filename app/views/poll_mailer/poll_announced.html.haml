@@ -1,4 +1,8 @@
 = render "poll_mailer/common/header"
 = render "poll_mailer/common/summary"
 = render "poll_mailer/#{@info.poll_type}/vote"
+- if @info.poll.discussion && @info.action_name != :export
+  %br
+  %hr
+  = render "poll_mailer/common/discussion_info", discussion: @info.poll.discussion
 = render "poll_mailer/common/footer"

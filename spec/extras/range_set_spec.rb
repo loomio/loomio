@@ -1,6 +1,6 @@
 require_relative '../../app/extras/range_set.rb'
 require 'byebug'
-# require 'rails_helper'
+require 'rails_helper'
 
 describe RangeSet do
   it 'detects overlaps' do
@@ -29,6 +29,20 @@ describe RangeSet do
     expect(RangeSet.subtract_ranges([[1,2],[4,8]], [[1,1], [4,4]])).to eq [[2,2], [5,8]]
     expect(RangeSet.subtract_ranges([[1,2],[4,8]], [[5,6]])).to eq [[1,2], [4,4], [7,8]]
     expect(RangeSet.subtract_ranges([[1,2],[4,8]], [[5,6], [7,8]])).to eq [[1,2], [4,4]]
+    ranges = [[1, 231]]
+    read_ranges = [[1, 54], [62, 63], [65, 65], [67, 68], [76, 77], [79, 80], [85, 86], [89, 91], [97, 97], [100, 100], [112, 112], [115, 115], [120, 120], [126, 126], [134, 134], [137, 138], [141, 155], [167, 180], [184, 185], [187, 187], [192, 210], [219, 231]]
+    expected_result = [[55, 61], [64, 64], [66, 66], [69, 75], [78, 78], [81, 84], [87, 88], [92, 96], [98, 99], [101, 111], [113, 114], [116, 119], [121, 125], [127, 133], [135, 136], [139, 140], [156, 166], [181, 183], [186, 186], [188, 191], [211, 218]]
+    expect(RangeSet.subtract_ranges(ranges, read_ranges)).to eq expected_result
+
+    ranges = [[1, 5], [10,20]]
+    read_ranges = [[1,1], [3,5], [11,14],[18,19]]
+    expected_result = [[2,2],[10,10],[15,17],[20,20]]
+    expect(RangeSet.subtract_ranges(ranges, read_ranges)).to eq expected_result
+
+    ranges = [[1, 5]]
+    read_ranges = [[6,6]]
+    expected_result = [[1,5]]
+    expect(RangeSet.subtract_ranges(ranges, read_ranges)).to eq expected_result
   end
 
   it 'reduces to minimal sets' do

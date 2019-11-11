@@ -26,11 +26,13 @@ class API::DocumentsController < API::RestfulController
   end
 
   def private_group_documents
-    Queries::UnionQuery.for(:documents, [
-      @group.documents,
-      @group.discussion_documents,
-      @group.poll_documents,
-      @group.comment_documents ])
+    group_ids = case params[:subgroups]
+      when 'mine', 'all'
+        @group.id_and_subgroup_ids
+      else
+        Array(@group.id)
+      end
+    Document.where(group_id: group_ids)
   end
 
   def public_group_documents

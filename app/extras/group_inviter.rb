@@ -1,11 +1,12 @@
 class GroupInviter
   class InvitationLimitExceededError < Exception; end
 
-  def initialize(group:, inviter: User.helper_bot, user_ids: [], emails: [])
+  def initialize(group:, inviter: User.helper_bot, user_ids: [], emails: [], invited_group_ids: [])
     @group    = group
     @inviter  = inviter
     @user_ids = Array(user_ids)
     @emails   = Array(emails)
+    @invited_group_ids = Array(invited_group_ids)
   end
 
   def invite!
@@ -33,9 +34,17 @@ class GroupInviter
   private
 
   def generate_users!
-    User.import(@emails.uniq.map do |email|
-      User.new(email: email, time_zone: @inviter.time_zone, detected_locale: @inviter.locale)
+    User.import(safe_emails(@emails).map do |email|
+      User.new(email: email, time_zone: @inviter.time_zone, detected_locale: @inviter.locale, experiences: { vue_client: @inviter.experiences['vue_client'] })
     end, on_duplicate_key_ignore: true)
+  end
+
+  def safe_emails(emails)
+    if ENV['SPAM_REGEX']
+      emails.uniq.reject {|email| Regexp.new(ENV['SPAM_REGEX']).match(email) }
+    else
+      emails.uniq
+    end
   end
 
   def generate_memberships!
@@ -48,6 +57,6 @@ class GroupInviter
                    user: user,
                    group: @group,
                    volume: (2 if @group.is_formal_group?),
-                   accepted_at: (Time.now if user.email_verified))
+                   experiences: {invited_group_ids: @invited_group_ids}.compact )
   end
 end

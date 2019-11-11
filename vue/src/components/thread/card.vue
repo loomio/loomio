@@ -1,19 +1,17 @@
-<style lang="scss">
-.thread-card {
-  order: 10;
-}
-</style>
-
 <script lang="coffee">
 export default
   props:
-    loader: Object
     discussion: Object
+  data: ->
+    viewportIsAbove: false
+    viewportIsBelow: false
 </script>
 
-<template>
-  <v-card class="thread-card">
-    <context-panel :discussion="discussion"></context-panel>
-    <activity-card :loader="loader" :discussion="discussion"></activity-card>
-  </v-card>
+<template lang="pug">
+v-card.thread-card(outlined)
+  context-panel(:discussion="discussion" v-observe-visibility="(isVisible) => viewportIsAbove = isVisible")
+  thread-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
+  activity-panel(:discussion="discussion" :viewport-is-below="viewportIsBelow" :viewport-is-above="viewportIsAbove")
+  div.visibility-sensor(style="min-height: 1px"  v-observe-visibility="(isVisible) => viewportIsBelow = isVisible")
+    thread-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")
 </template>

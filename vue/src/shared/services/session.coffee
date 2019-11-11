@@ -1,11 +1,31 @@
-import 'url-search-params-polyfill';
 import AppConfig     from '@/shared/services/app_config'
 import Records       from '@/shared/services/records'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import RestfulClient from '@/shared/record_store/restful_client'
 import EventBus      from '@/shared/services/event_bus'
+import i18n          from '@/i18n'
 import Vue from 'vue'
 import { hardReload } from '@/shared/helpers/window'
+import { pickBy, identity } from 'lodash'
+
+loadedLocales = ['en']
+
+setI18nLanguage = (locale) ->
+  i18n.locale = locale
+  document.querySelector('html').setAttribute('lang', locale)
+
+loadLocale = (locale) ->
+  if (i18n.locale != locale)
+    if loadedLocales.includes(locale)
+      setI18nLanguage(locale)
+    else
+      import("date-fns/locale/#{locale.toLowerCase().replace('_','-')}/index.js").then (dateLocale) ->
+        i18n.dateLocale = dateLocale
+      import("@/../../config/locales/client.#{locale.replace('-','_')}.yml").then (data) ->
+        data = data[locale]
+        loadedLocales.push(locale)
+        i18n.setLocaleMessage(locale, data)
+        setI18nLanguage(locale)
 
 export default new class Session
   fetch: ->
@@ -25,11 +45,12 @@ export default new class Session
 
     user = @user()
     if @isSignedIn()
-      @updateLocale(user.locale || AppConfig.defaultLocale)
+      @updateLocale(user.locale)
 
       if user.timeZone != AppConfig.timeZone
         user.timeZone = AppConfig.timeZone
         Records.users.updateProfile(user)
+
       EventBus.$emit('signedIn', user)
 
     user
@@ -48,28 +69,17 @@ export default new class Session
     @currentGroup? && @currentGroup.id
 
   updateLocale: (locale) ->
-    return if _.isNil(locale)
-    locale = locale.toLowerCase().replace('_','-')
-    # TODO I18n.useLocale(locale)
-    return if momentLocaleFor(locale) == "en"
-    Records.momentLocales.fetch(path: "#{momentLocaleFor(locale)}.js").then -> moment.locale(locale)
+    loadLocale(locale)
 
   providerIdentity: ->
-    validProviders = _.map(AppConfig.identityProviders, 'name')
-    AppConfig.pendingIdentity if _.includes(validProviders, AppConfig.pendingIdentity.identity_type)
+    validProviders = AppConfig.identityProviders.map (p) -> p.name
+    AppConfig.pendingIdentity if validProviders.includes(AppConfig.pendingIdentity.identity_type)
 
 setDefaultParams = (params) ->
   endpoints = ['stances', 'polls', 'discussions', 'events', 'reactions', 'documents']
-  defaultParams = _.pickBy(params, _.identity)
-  _.each endpoints, (endpoint) ->
+  defaultParams = pickBy(params, identity)
+  endpoints.forEach (endpoint) ->
     Records[endpoint].remote.defaultParams = defaultParams
-
-momentLocaleFor = (locale) ->
-  if _.includes AppConfig.momentLocales.valid, locale
-    locale
-  else
-    _.head locale.split('-')
-
 
 # loggedIn: ->
 #   Flash.success AppConfig.userPayload.flash.notice

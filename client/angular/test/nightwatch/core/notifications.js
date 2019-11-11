@@ -8,10 +8,10 @@ notificationTexts = [
   'mentioned you in',
   'replied to your comment',
   'shared an outcome',
-  'Poll is closing soon',
-  'started a Poll',
+  'poll is closing soon',
+  'started a poll',
   'reacted to your comment',
-  'made you a coordinator',
+  'made you an admin',
   'participated in',
   'added options to'
 ]

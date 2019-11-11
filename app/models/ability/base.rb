@@ -12,7 +12,6 @@ module Ability
     prepend Ability::Identity
     prepend Ability::MembershipRequest
     prepend Ability::Membership
-    prepend Ability::OauthApplication
     prepend Ability::Outcome
     prepend Ability::Poll
     prepend Ability::Reaction
@@ -20,6 +19,7 @@ module Ability
     prepend Ability::User
     prepend Ability::Tag
     prepend Ability::DiscussionTag
+    prepend Ability::Event
 
 
     def initialize(user)
@@ -30,11 +30,11 @@ module Ability
     private
 
     def user_is_member_of?(group_id)
-      @user.group_ids.include?(group_id)
+      @user.memberships.find_by(group_id: group_id)
     end
 
     def user_is_admin_of?(group_id)
-      @user.adminable_group_ids.include?(group_id)
+      @user.admin_memberships.active.find_by(group_id: group_id)
     end
 
     def user_is_member_of_any?(groups)
@@ -42,7 +42,7 @@ module Ability
     end
 
     def user_is_admin_of_any?(groups)
-      @user.admin_memberships.find_by(group: groups)
+      @user.admin_memberships.active.find_by(group: groups)
     end
 
     def user_is_author_of?(object)

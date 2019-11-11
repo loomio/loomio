@@ -232,10 +232,12 @@ class User < ApplicationRecord
   def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
       existing.update(access_token: identity.access_token)
+      existing.assign_logo!
     else
       identities.push(identity)
-      identity.assign_logo! if avatar_kind == 'initials'
+      identity.assign_logo!
     end
+
     self
   end
 
@@ -247,10 +249,6 @@ class User < ApplicationRecord
     ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i +
     self.invited_memberships.accepted.count        -
     self.invited_memberships.pending.count
-  end
-
-  def verified_or_self
-    self.class.verified.find_by(email: email) || self
   end
 
   def first_name
@@ -283,7 +281,7 @@ class User < ApplicationRecord
 
   # Provide can? and cannot? as methods for checking permissions
   def ability
-    @ability ||= Ability::Base.new(self)
+    @ability ||= ::Ability::Base.new(self)
   end
 
   delegate :can?, :cannot?, :to => :ability

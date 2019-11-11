@@ -16,7 +16,6 @@ import ContactRecordsInterface from '@/shared/interfaces/contact_records_interfa
 import VersionRecordsInterface from '@/shared/interfaces/version_records_interface'
 import DraftRecordsInterface from '@/shared/interfaces/draft_records_interface'
 import TranslationRecordsInterface from '@/shared/interfaces/translation_records_interface'
-import OauthRecordsInterface from '@/shared/interfaces/oauth_application_records_interface'
 import SessionRecordsInterface from '@/shared/interfaces/session_records_interface'
 import RegistrationRecordsInterface from '@/shared/interfaces/registration_records_interface'
 import PollRecordsInterface from '@/shared/interfaces/poll_records_interface'
@@ -31,10 +30,12 @@ import GroupIdentityRecordsInterface from '@/shared/interfaces/group_identity_re
 import ReactionRecordsInterface from '@/shared/interfaces/reaction_records_interface'
 import ContactRequestRecordsInterface from '@/shared/interfaces/contact_request_records_interface'
 import DocumentRecordsInterface from '@/shared/interfaces/document_records_interface'
+import AttachmentRecordsInterface from '@/shared/interfaces/attachment_records_interface'
 import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_interface'
 import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_records_interface'
-import LocaleRecordsInterface from '@/shared/interfaces/locale_records_interface'
 import MemberRecordsInterface from '@/shared/interfaces/member_records_interface'
+import DiscussionTagRecordsInterface from '@/shared/interfaces/discussion_tag_records_interface'
+import TagRecordsInterface from '@/shared/interfaces/tag_records_interface'
 
 db      = new loki('default.db')
 records = new RecordStore(db)
@@ -53,7 +54,6 @@ records.addRecordsInterface ContactRecordsInterface
 records.addRecordsInterface VersionRecordsInterface
 records.addRecordsInterface DraftRecordsInterface
 records.addRecordsInterface TranslationRecordsInterface
-records.addRecordsInterface OauthRecordsInterface
 records.addRecordsInterface SessionRecordsInterface
 records.addRecordsInterface RegistrationRecordsInterface
 records.addRecordsInterface PollRecordsInterface
@@ -68,10 +68,12 @@ records.addRecordsInterface GroupIdentityRecordsInterface
 records.addRecordsInterface ReactionRecordsInterface
 records.addRecordsInterface ContactRequestRecordsInterface
 records.addRecordsInterface DocumentRecordsInterface
+records.addRecordsInterface AttachmentRecordsInterface
 records.addRecordsInterface LoginTokenRecordsInterface
 records.addRecordsInterface MessageChannelRecordsInterface
-records.addRecordsInterface LocaleRecordsInterface
 records.addRecordsInterface MemberRecordsInterface
+records.addRecordsInterface DiscussionTagRecordsInterface
+records.addRecordsInterface TagRecordsInterface
 
 AppConfig.records = records
 export default records

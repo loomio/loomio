@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 .poll-proposal-chart {
   border: 0;
   margin: 0;
@@ -9,62 +9,70 @@
    height: 100%;
    width: 100%;
 }
-
 </style>
 
 <script lang="coffee">
 import svg from 'svg.js'
 import AppConfig from '@/shared/services/app_config'
+import { sum, values, compact, keys, each } from 'lodash'
+import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
-    stanceCounts: Array
+    stanceData: Object
     diameter: Number
   data: ->
     svgEl: null
     shapes: []
-    dStanceCounts: @stanceCounts
+    pollColors: AppConfig.pollColors
+    positionColors: optionColors()
   computed:
     radius: ->
-      this.diameter / 2.0
-    uniquePositionsCount: ->
-      _.compact(this.stanceCounts).length
+      @diameter / 2.0
+
   methods:
     arcPath: (startAngle, endAngle) ->
       rad = Math.PI / 180
-      x1 = this.radius + (this.radius * Math.cos(-startAngle * rad))
-      x2 = this.radius + (this.radius * Math.cos(-endAngle * rad))
-      y1 = this.radius + (this.radius * Math.sin(-startAngle * rad))
-      y2 = this.radius + (this.radius * Math.sin(-endAngle * rad))
-      ["M", this.radius, this.radius, "L", x1, y1, "A", this.radius, this.radius, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"].join(' ')
+      x1 = @radius + (@radius * Math.cos(-startAngle * rad))
+      x2 = @radius + (@radius * Math.cos(-endAngle * rad))
+      y1 = @radius + (@radius * Math.sin(-startAngle * rad))
+      y2 = @radius + (@radius * Math.sin(-endAngle * rad))
+      ["M", @radius, @radius, "L", x1, y1, "A", @radius, @radius, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"].join(' ')
     draw: ->
-      _.each this.shapes, (shape) -> shape.remove()
+      @shapes.forEach (shape) -> shape.remove()
       start = 90
 
-      switch this.uniquePositionsCount
+      switch values(@stanceData).filter((v) -> v > 0).length
         when 0
-          this.shapes.push this.svgEl.circle(this.diameter).attr
+          @shapes.push @svgEl.circle(@diameter).attr
             'stroke-width': 0
             fill: '#aaa'
         when 1
-          this.shapes.push this.svgEl.circle(this.diameter).attr
-            'stroke-width': 0
-            fill: AppConfig.pollColors.proposal[_.findIndex(this.stanceCounts, (count) -> count > 0)]
-        else
-          _.each this.stanceCounts, (count, index) =>
+          each @stanceData, (count, position) =>
             return unless count > 0
-            angle = 360/_.sum(this.stanceCounts)*count
-            this.shapes.push this.svgEl.path(this.arcPath(start, start + angle)).attr
+            @shapes.push @svgEl.circle(@diameter).attr
               'stroke-width': 0
-              fill: AppConfig.pollColors.proposal[index]
+              fill: @positionColors[position]
+        else
+          each @stanceData, (count, position) =>
+            return unless count > 0
+            angle = 360/sum(values(@stanceData))*count
+            @shapes.push @svgEl.path(@arcPath(start, start + angle)).attr
+              'stroke-width': 0
+              fill: @positionColors[position]
             start += angle
   watch:
-    stanceCounts: -> this.draw()
+    stanceData: -> @draw()
+
   mounted: ->
-    this.svgEl = svg(this.$el).size('100%', '100%')
-    this.draw()
+    @svgEl = svg(@$el).size('100%', '100%')
+    @draw()
+    
+  beforeDestroy: ->
+    @svgEl.clear()
+    delete @shapes
 </script>
 
-<template>
-<div class="poll-proposal-chart"></div>
+<template lang="pug">
+.poll-proposal-chart
 </template>

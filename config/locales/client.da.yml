@@ -1,4 +1,10 @@
 da:
+  loomio_onboarding:
+    group_progress_card:
+      activities:
+        make_decision: Opret en beslutning
+  plan_names:
+    free: Gratis
   loomio_tags:
     name_label: Navn
     color_label: Farve
@@ -18,15 +24,10 @@ da:
     worried: Bekymret
     neutral_face: Neutral
     angry: Sur
-  poll_types:
-    proposal: Forslag
-    count: Checkmåling
-    poll: Meningsmåling
-    dot_vote: Prikafstemning
-    meeting: Find tidspunkt
   timezones:
     local: Lokal tid ({{value}})
   common:
+    no_results_found: Ingen resultater fundet
     expand: Udvid
     all_day: Hele dagen
     ok_got_it: Ok
@@ -70,6 +71,8 @@ da:
     copy_text: 'Kopier tekst'
     copied: 'Kopieret til clipboard'
     action:
+      search: 'Søg'
+      back: 'Tilbage'
       next: 'Næste'
       close: 'Luk'
       save: 'Gem'
@@ -79,17 +82,14 @@ da:
       edit: 'Rediger'
       remove: 'Slet'
       like: 'Synes om'
-      back: 'Tilbage'
       unlike: 'Synes ikke om'
       update: 'Opdater'
       cancel: 'Annuller'
       show_more: "Vis mere"
       view_all: "Se alle"
       new_thread: "Ny tråd"
-      add_subgroup: 'Tilføj undergruppe'
       loading: 'Indlæser'
       translate: 'Oversæt'
-      translated: 'Oversættelse via Bing Translator'
       upload: 'Upload'
       uploading: 'Uploader'
       load_more: 'Hent mere'
@@ -104,6 +104,8 @@ da:
       invite: Inviter
     formatting_help:
       label: 'Formatering'
+  emoji_picker:
+    search: Søg
   devise:
     failure:
       inactive: 'Der er en deaktiveret konto tilknyttet til denne emailadresse. Hvis du ønsker at aktivere din konto, kontakt os.'
@@ -121,25 +123,27 @@ da:
     quiet: 'Lav'
     mute: 'Slået fra'
     unmute: 'Slået til'
+  pin_event_form:
+    title_label: Titel
   change_volume_form:
+    simple:
+      label: Notifikationer
+      normal: Normal
+      quiet: Ignorér
     aria_label: "Rediger emailindstillinger"
     loud_label: "Al aktivitet"
     normal_label: "Normal"
     quiet_label: "Ingen emails"
     mute_label: "Slå fra"
     discussion:
-      loud_description: "Du vil modtage en email hver gang der er aktivitet på denne debat."
-      normal_description: "Du vil modtage en email hver gang et forslag er oprettet, ved at lukke, eller et resultat er publiceret."
-      quiet_description: "Du vil ikke modtage nogen email ved nogen aktiviteter på denne debat."
       apply_to_all: "Gem disse indstillinger for alle debatter i denne gruppe."
       messages:
         loud: "Du vil få emails ved enhver aktivitet i denne debat."
         normal: "Du vil få email ved forslag i denne debat."
         quiet: "Du vil ikke få emails ved aktivitet i denne debat."
     membership:
-      title: "Emailindstillinger for {{title}}"
       loud_description: "Du vil modtage en email hver gang der er aktivitet i denne gruppe."
-      normal_description: "Du vil modtage en email hver ved publiceringer i denne gruppe."
+      normal_description: "Du vil modtage en email hver gang der er aktivitet i denne gruppe."
       quiet_description: "Du vil ikke modtage emails ved nogen aktivitet i denne gruppe."
       apply_to_all: "Gem disse indstillinger for all mine grupper."
       messages:
@@ -147,6 +151,7 @@ da:
         normal: "Du vil få emails ved publiceringer i denne gruppe."
         quiet: "Du vil ikke få emails ved nogen aktivitet i denne gruppe."
     all_groups:
+      loud_description: "Du vil få emails ved enhver aktivitet i alle dine grupper."
       messages:
         loud: "Du vil få emails ved enhver aktivitet i alle dine grupper."
         normal: "Du vil få emails ved publiceringer i alle dine grupper."
@@ -203,6 +208,7 @@ da:
     public_privacy_notice: 'Din kommentar til kun være synlig for all på internettet.'
     sign_in: "Log ind for at deltage i debatten"
   sidebar:
+    threads: 'Debatter'
     recent_threads: 'Seneste debatter'
     unread_threads: 'Ulæste debatter ({{count}})'
     muted_threads: 'Uden notifikationer'
@@ -233,7 +239,6 @@ da:
     toggle_sidebar: 'Vis/skjul menu'
     logo_title: 'Hjem'
   membership_dropdown:
-    make_coordinator: 'Gør koordinator'
     cancel_invitation: Fortryd invitation
   notifications:
     header: "Notifikationer"
@@ -256,7 +261,6 @@ da:
     motion_outcome_created: "<strong>{{name}}</strong> publicerede et resultat af forslaget <strong>{{title}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> opdaterede resultatet af forslaget <strong>{{title}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> accepterede din invitation til at blev medlem af <strong>{{title}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> gjorde dig til koordinator af <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> startede en {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> redigerede en  {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} lukker snart: <strong>{{title}}</strong>"
@@ -274,6 +278,8 @@ da:
   discussion_record:
     created: 'Debatter {{title}} blev oprettet i {{groupName}}'
     updated: '{{title}} blev gemt'
+  discussion_fork_actions:
+    move: Flyt
   discussion_form:
     aria_label: 'Debat'
     messages:
@@ -299,7 +305,12 @@ da:
     group_form:
       members_count: '{{count}} mennesker vil blive notificeret'
   action_dock:
+    move_items: Flyt
     edit_stance: Rediger stillingtagen
+    edited: Redigeret
+    delete_thread: Slet debat
+  formatting:
+    attach: Vedhæft fil
   cover_photo_form:
     aria_label: 'Skift forsidefoto'
     heading: 'Nyt forsidefoto'
@@ -314,7 +325,7 @@ da:
     upload_success: 'Gruppelogo gemt'
   join_group_button:
     join_group: Bliv medlem
-    membership_requested: Medlemsanmodning afventern
+    membership_requested: Anmodet om medlemsskab
     messages:
       joined_group: 'Du er nu medlem af {{group}}'
   membership_request_form:
@@ -333,7 +344,14 @@ da:
     edited_by: 'Redigeret af <strong>{{name}}</strong>'
     posted: Gemt
     current_revision: Seneste
+  group_wizard:
+    invite_people: Inviter folk
+    start_thread: Start en diskussion
   group_page:
+    threads: Debatter
+    members: Medlemmer
+    settings: Indstillinger
+    subgroups: Undergrupper
     messages:
       privacy:
         members: 'Denne gruppe er nu kun synlig for medlemmer'
@@ -347,7 +365,6 @@ da:
     discussions_placeholder: 'En debat er et sted hvor alle kan give deres mening til kende omkring et specifikt emne og tage beslutninger sammen.'
     members_placeholder: 'Du er det eneste medlem her, inviter nogle mennesker til at være med!'
     member_options: Medlemsinstaillinger
-    subgroups: 'Undergrupper'
     invite_people: 'Inviter'
     visibility_label: 'Visibility'
     options_label: 'Indstillinger'
@@ -357,6 +374,7 @@ da:
       manage_members: 'Administrer medlemmer'
       add_subgroup: 'Opret undergruppe'
       manage_subscription: 'Administrer gruppe abonnement'
+      email_settings: 'E-mail-indstillinger'
       leave_group: 'Forlad gruppe'
       deactivate_group: 'Deaktiver gruppe'
     volume:
@@ -379,7 +397,6 @@ da:
       aria_label: 'Privatinstillinger: {{privacy}}'
   description_card:
     title: 'Gruppe beskrivelse'
-    placeholder: 'Gruppe koordinatorer kan benytte dette område til at beskrive gruppens formål, så at alle ved hvorfor de er her.'
     messages:
       description_updated: 'Beskrivelse gemt'
   leave_group_form:
@@ -387,8 +404,6 @@ da:
     title: 'Forlad gruppe'
     question: 'Er du sikker på at du vil forlade denne gruppe?'
     submit: 'Ja, forlad denne gruppe'
-    cannot_leave_group: 'Du kan ikke forlade denne gruppe da du er den sidste koordinator. Du bliver nødt til at vælge en anden koordinator eller deaktivere gruppen.'
-    add_coordinator: 'Tilføj en koordinator'
   archive_group_form:
     aria_label: 'Deaktiver gruppe'
     title: 'Deaktiver gruppe'
@@ -401,7 +416,7 @@ da:
     edit_group_heading: 'Rediger gruppe indstillinger'
     edit_subgroup_heading: 'Rediger undergruppe indstillinger'
     group_name: 'Gruppenavn'
-    group_name_placeholder: 'Hvilket navn ønsker du at give denne gruppe?'
+    group_name_placeholder: 'Hvad er navnet på din gruppe?'
     subgroup_name: 'Undergruppe navn'
     description: 'Beskrivelse'
     description_placeholder: 'Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.'
@@ -417,6 +432,7 @@ da:
     confirm_change_to_secret_subgroup: 'vis du fortsætter så vil alle debatter i denne gruppe være private.'
     confirm_change_to_public: 'Hvis du fortsætter så vil alle debatter i denne gruppe være offentlige (alle på internettet kan læse dem).'
     confirm_change_to_private_discussions_only: 'Hvis du fortsætter så vil alle offentlige debatter i denne gruppe blive lavet om til private debatter.'
+    profile: Profil
     subgroup_privacy_is_open_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er offentlige (alle på internettet kan læse dem)."
     subgroup_privacy_is_closed_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er private."
     subgroup_privacy_is_closed_public_threads_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen.  Debatter kan være offentlige eller private."
@@ -427,12 +443,12 @@ da:
     membership_granted_upon_request: 'Alle kan blive medlem'
     membership_granted_upon_approval: 'Alle kan anmode om at blive medlem, men skal godkendes.'
     membership_granted_upon_approval_secret_parent: '<strong>På anmodning</strong> så kan alle fra {{parent}} anmode om at blive medlem af gruppen.'
+    permissions: 'Rettigheder'
     thread_privacy: 'Debat privatindstillinger'
     public_threads: 'Kun offentlige debatter'
     public_discussions_subgroup: 'Alle i {{parentGroupName}} kan læse debatter'
     public_or_private_threads: 'Tillad både offentlige og private debatter'
     private_threads: 'Det er kun medlemmer der kan se debatter'
-    permissions: 'Rettigheder'
     allow_public_threads: 'Tillad offentlige debatter i denne gruppe.'
     parent_members_can_see_discussions: 'Medlemmer af {{parent}} kan se private debatter.'
     members_can_add_members: 'Madlemmer kan invitere andre og godkende andmodninger om at blive medlem.'
@@ -476,14 +492,13 @@ da:
     see_more: Se mere
   invitation_form:
     aria_label: 'Invitation form'
-    invite_people: 'Invite folk'
+    invite_people: 'Inviter folk'
     group: 'Gruppe'
     group_placeholder: 'Vælg en gruppe'
     shareable_link: 'Delbart link'
     copy_link: 'Kopier'
     email_addresses: 'Emailadresser'
     email_addresses_placeholder: 'f.eks. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Kopier linket og send det til enhver som du vil ønsker skal være medlem af gruppen. Dette vil give dem adgang til alle debatter i gruppen.'
     add_custom_message: 'Gør din invitation personlig, '
     add_custom_message_link: 'skriv en personlig besked.'
     custom_message: 'Personlig besked'
@@ -509,15 +524,10 @@ da:
   memberships_page:
     members: 'Medlemmer'
     name_label: 'Navn'
-    coordinator_label: 'Koordinator'
     remove_member_label: 'Slet'
     fragment_placeholder: 'Filtrer brugere på navn eller brugernavn...'
     messages:
       remove_member_success: '{{name}} slettet'
-      make_admin_success: '{{name}} er nu koordinator'
-      remove_admin_success: '{{name}} er ikke længere koordinator'
-    remove_admin_from_self:
-      question: 'Er du sikker på at du ikke længere ønsker at være koordinator?'
   membership_remove_modal:
     invitation:
       title: Fortryd invitation
@@ -546,7 +556,6 @@ da:
       deactivated: 'Konto deaktiveret'
     change_picture_link: 'Rediger billede'
     change_password_link: 'Skift adgangskode'
-    deactivate_user_link: 'Deaktiver konto...'
     profile: 'Profil'
     edit_profile: 'Rediger Profil'
     picture_label: 'Billede'
@@ -555,16 +564,11 @@ da:
     email_label: 'Email'
     locale_label: 'Sprog'
     update_profile: 'Gem profil'
-    deactivate_account: 'Deaktiver konto'
   change_picture_form:
-    aria_label: 'Rediger billede'
-    title: 'Rediger billede'
     helptext: 'Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.'
     use_initials: 'Benyt initialer'
-    use_gravatar: 'Benyt gravatar'
-    use_uploaded: 'Upload et nyt billede'
+    use_gravatar: 'Brug Gravatar'
   deactivation_modal:
-    aria_label: 'Deaktiver konto'
     introduction: 'Når du deaktiverer din konto:'
     no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
     name_removed: 'Kommentarer, forslag og debatter som du har lavet vil forblive men dit navn vil blive fjernet fra dem'
@@ -574,7 +578,6 @@ da:
     title: 'Deaktiver konto'
     submit: 'Deaktiver konto'
   email_settings_page:
-    header: Emailindstillinger
     daily_summary_label: Send resumé email hver dag
     on_participation_label: Abonnér ved deltagelse
     on_participation_description: "Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme."
@@ -652,17 +655,17 @@ da:
     volume:
       unmute_message: 'Notifikationer slået til.'
   activity_card:
-    unread: Ulæst
     latest: Seneste
+    context: Beskrivelse
     attachment_display:
       aria_label: 'Fil vedhæftet:'
       image_alt: 'Vedhæftet billede'
+    comment: Kommenter
   thread_group:
     aria_label: 'Gruppenavn'
   thread_context:
     aria_label: 'Debat beskrivelse'
     thread_options: 'Debatindstillinger'
-    email_settings: 'Emailindstillinger '
     edit: 'Rediger'
     edit_thread: 'Rediger'
     close_thread: 'Luk'
@@ -754,12 +757,9 @@ da:
   explore_page:
     single_search_result: "1 offentlig gruppe der matcher <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} offentlige grupper der matcher <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>Kan du ikke finde den gruppe du leder efter?</strong> Hvis en gruppes privatindstillinger er sat til hemmelig, så vil du ikke kunne finde den her. Hvis du kender gruppens koodinator, så kan du anmode dem om at blive medlem."
   global:
     messages:
       reload: 'Genopfrisk'
-  emoji_picker:
-    no_emojis_found: "Kunne ikke finde emoji for '{{term}}'!"
   authorized_apps_page:
     title: Godkendte apps
     no_applications: "Du har ikke godkendt nogle 3parts apps endnu."
@@ -801,7 +801,6 @@ da:
     messages:
       success: "'{{name}}' kan ikke længere bruge din konto."
   decision_tools_card:
-    title: Beslutnings værktøjer
     proposal_title: Forslag
     count_title: Checkmåling
     poll_title: Meningsmåling
@@ -832,6 +831,18 @@ da:
     label: Vedhæftede filer
   poll_common_card:
     show_results: Vis resultater
+  discussions_panel:
+    open: Offentlig
+    all: Alle
+    closed: Lukket
+  members_panel:
+    order_by_name: 'Navn'
+    header_name: 'Navn'
+    header_username: 'Brugernavn'
+  polls_panel:
+    all: 'Alle'
+    open: 'Offentlig'
+    closed: 'Lukket'
   current_polls_card:
     start_poll: Opret stillingtagen
   poll_common_collapsed:
@@ -848,7 +859,6 @@ da:
       title: Send en notifikation til mig når folk deltager
   poll_common_close_form:
     title: Afslut en meningsmåling før tid
-    helptext: Er du sikker på at du ønsker at afslutte før tid?
     close_proposal: Luk forslag
     close_poll: Afslut meningsmåling
     close_count: Afslut checkmåling
@@ -861,7 +871,6 @@ da:
     meeting_closed: Find tidspunkt afsluttet
   poll_common_closing_at_field:
     closing: Lukker
-    closing_hour: Sluttidspunkt
   poll_card:
     started_by: Oprettet af {{name}}
   poll_common_votes_panel:
@@ -880,7 +889,6 @@ da:
     meeting: 'Denne Find Tidspunkt måling er afsluttet. <strong>Del tidspunktet</strong> så alle ved hvornår mødet afholdes.'
     dot_vote: 'Denne prikafstemning er afsluttet. <storng>Del resultatet</strong> med gruppen.'
   poll_common_outcome_form:
-    new_title: Del et resultat
     update_title: Rediger resultat
     outcome_created: Resultat oprettet
     outcome_updated: Resultat gemt
@@ -897,7 +905,6 @@ da:
     start: Start
     update: Opdater
   poll_proposal_form:
-    tool_tip_collapsed: Søg kollektiv enighed
     start_header: Opret forslag
     edit_header: Rediger forslag
     title_placeholder: F.eks. Lad os flyve til månen!
@@ -905,10 +912,8 @@ da:
     proposal_created: Forslag oprettet
     proposal_updated: Forslag redigeret
   poll_poll_form:
-    tool_tip_collapsed: Mål popularitet eller find det rigtige valg
     start_header: Opret meningsmåling
     edit_header: Rediger meningsmåling
-    tip: Mål de forskellige valgmuligheders popularitet
     title_placeholder: F.eks. hvor vil du på ferie?
     details_placeholder: Beskriv alle de detaljer der skal til for at deltagerene kan træffe sin beslutning.
     add_option_placeholder: Tilføj valgmulighed
@@ -916,32 +921,25 @@ da:
     poll_created: Meningsmåling oprettet
     poll_updated: Meningsmpling redigeret
   poll_count_form:
-    tool_tip_collapsed: Track participation and find volunteers
     start_header: Opret checkmåling
     edit_header: Rediger checkmåling
-    tip: Inddrag folk med et tilbud eller en forespørgsel
     title_placeholder: F.eks. Hvem ønsker at være med i arbejdsgruppen?
     count_created: Checkmåling oprettet
     count_updated: Checkmåling redigeret
   poll_dot_vote_form:
-    tool_tip_collapsed: Prioriter muligheder
     start_header: Opret prikafstemning
     edit_header: Rediger prikafstemning
-    tip: Tildel resourcer kollektivt
     title_placeholder: F.eks. HVordan skal vi fordele vores budget?
     details_placeholder: Beskriv alle detaljer som er nødvendige for at folk deltage
     add_option_placeholder: Tilføj mulighed
-    dots_per_person: Antal prikker til fordeling
     dot_vote_created: Prikafstemning oprettet
     dot_vote_updated: Prikafstemning redigeret
   poll_score_form:
     details_placeholder: Bekriv udførligt hvad der skal foregå så at deltagerne har de bedste forudsætninger at melde tilbage
     add_option_placeholder: Tilføj mulighed
   poll_meeting_form:
-    tool_tip_collapsed: Find et tidspunkt hvor alle kan mødes
     start_header: Opret Fund tidspunkt
     edit_header: Rediger Find tidspunkt
-    tip: Find et tidspunkt hvor folk har tid til at deltage
     title_placeholder: F.eks. Hvornår skal vi afholde vores næste styregruppemøde?
     details_placeholder: Bekriv udførligt hvad der skal foregå så at deltagerne har de bedste forudsætninger at melde tilbage
     meeting_created: Find tidspunkt oprettet
@@ -975,8 +973,6 @@ da:
     reason_placeholder: Skrive en besked
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
-  poll_common_percent_voted:
-    sentence: "{{percent}}% af medlemmerne har afgivet deres stemme ({{numerator}}/{{denominator}})"
   poll_count_chart_panel:
     out_of: af {{goal}}
   poll_meeting_chart_panel:
@@ -989,7 +985,6 @@ da:
     stance_created: Tilgængeligt tidspunkt gemt
     stance_updated: Tilgængeligt tidspunkt opdateret
   poll_dot_vote_vote_form:
-    too_many_dots: Du har brugt for mange prikker.
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
   poll_admin_page:

@@ -1,10 +1,8 @@
-<style lang="scss">
+<style lang="css">
 .bar-chart {
   border: 0;
   margin: 0;
   padding: 0;
-  width: 50px;
-  height: 50px;
 }
 
 .bar-chart svg {
@@ -20,7 +18,7 @@ import AppConfig from '@/shared/services/app_config'
 export default
   props:
     stanceCounts: Array
-    size: String # IK: seems bad
+    size: Number
   data: ->
     svgEl: null
     shapes: []
@@ -66,5 +64,5 @@ export default
 </script>
 
 <template>
-<div class="bar-chart"></div>
+<div :style="{height: size+'px', width: size+'px'}" class="bar-chart"></div>
 </template>

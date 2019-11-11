@@ -6,24 +6,38 @@ hr:
       proposal: 'Prijedlog'
   error_page:
     forbidden: 'Nepostojeća dozvola za izvršenje.'
+  change_volume_form:
+    simple:
+      label: Notifikacije
+      quiet: Ignoriraj
   inbox:
     clear: 'Obriši'
   comment_form:
     edit_comment: 'Ažuriranje komentara'
     delete_comment: 'Obriši komentar'
     confirm_delete_message: 'Jeste li sigurni da želite obrisati komentar?'
-  membership_dropdown:
-    make_coordinator: 'Postavljanje koordinatora'
   notifications:
     header: "Notifikacije"
   discussion_form:
     privacy_label: 'Privatnost'
   join_group_button:
     join_group: 'Pridruži se grupi '
+    membership_requested: Članstvo zatraženo
   membership_request_form:
     heading: Zahtjev za pridruženjem grupi
+  group_wizard:
+    invite_people: Pozovi ljude
+    start_thread: Započni raspravu
+  group_page:
+    members: Članovi
+    options:
+      email_settings: 'Postavke e-maila'
+  group_form:
+    profile: Profil
   membership_requests_page:
     ignore: Ignoriraj
+  invitation_form:
+    invite_people: 'Pozovi ljude'
   memberships_page:
     members: 'Članovi'
   profile_page:

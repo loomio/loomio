@@ -8,8 +8,9 @@ proposal:
   material_icon:           mdi-thumbs-up-down
   has_option_icons:        true
   translate_option_name:   true
+  can_add_options:         true
   can_remove_options:      true
-  must_have_options:       true
+  must_have_options:       false
   voters_review_responses: true
   require_stance_choices:  true
   can_vote_anonymously:    true
@@ -28,7 +29,7 @@ count:
   material_icon:          mdi-check-circle
   has_option_icons:       true
   must_have_options:      true
-  must_have_options:      true
+  can_remove_options:     true
   require_stance_choices: true
   can_vote_anonymously:    true
   single_choice:          true
@@ -81,24 +82,6 @@ score:
     - newest_first
     - oldest_first
 
-meeting:
-  poll_options_attributes: []
-  chart_type:              matrix
-  material_icon:           mdi-calendar-question
-  can_add_options:         true
-  can_remove_options:      true
-  must_have_options:       true
-  dates_as_options:        true
-  author_receives_outcome: true
-  has_variable_score:      true
-  has_score_icons:         true
-  prevent_anonymous:       true
-  required_custom_fields:
-    - can_respond_maybe
-  sort_options:
-    - newest_first
-    - oldest_first
-
 ranked_choice:
   poll_options_attributes: []
   chart_type:              bar
@@ -112,6 +95,25 @@ ranked_choice:
   has_option_score_counts: true
   required_custom_fields:
     - minimum_stance_choices
+  sort_options:
+    - newest_first
+    - oldest_first
+
+meeting:
+  poll_options_attributes: []
+  chart_type:              matrix
+  material_icon:           mdi-calendar-question
+  can_add_options:         true
+  can_remove_options:      true
+  must_have_options:       true
+  dates_as_options:        true
+  author_receives_outcome: true
+  has_variable_score:      true
+  has_score_icons:         true
+  prevent_anonymous:       true
+  has_option_score_counts: true
+  required_custom_fields:
+    - can_respond_maybe
   sort_options:
     - newest_first
     - oldest_first

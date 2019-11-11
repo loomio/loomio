@@ -11,6 +11,7 @@ describe API::MembershipsController do
 
   let(:group) { create :formal_group }
   let(:another_group) { create :formal_group }
+  let(:subgroup) { create :formal_group, parent: group }
   let(:discussion) { create :discussion, group: group }
   let(:comment_params) {{
     body: 'Yo dawg those kittens be trippin for some dippin',
@@ -24,6 +25,7 @@ describe API::MembershipsController do
     another_group.add_member! user
     another_group.add_member! alien_named_bang
     another_group.add_member! alien_named_biff
+    subgroup.add_member! user
     group.memberships.create!(user: pending_named_barb, accepted_at: nil)
     sign_in user
   end
@@ -82,7 +84,7 @@ describe API::MembershipsController do
       @another_discussion = FactoryBot.create(:discussion, group: group)
       @membership = group.membership_for(user)
       @membership.set_volume! 'quiet'
-      @second_membership = another_group.membership_for(user)
+      @second_membership = subgroup.membership_for(user)
       @second_membership.set_volume! 'quiet'
       @reader = DiscussionReader.for(discussion: @discussion, user: user)
       @reader.save!
@@ -262,7 +264,7 @@ describe API::MembershipsController do
       it 'does not allow access to an unauthorized group' do
         cant_see_me = create :formal_group
         get :autocomplete, params: { group_id: cant_see_me.id }
-        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+        expect(JSON.parse(response.body)['exception']).to include 'CanCan::AccessDenied'
       end
     end
   end

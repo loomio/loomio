@@ -36,14 +36,6 @@ sv:
     wave: Vinka
     thumbsup: Tumme upp
     thumbsdown: Tumme ner
-  poll_types:
-    proposal: Förslag
-    count: Bock
-    poll: Röstning
-    dot_vote: Punktröstning
-    meeting: Tidsröstning
-    ranked_choice: Valfritt val
-    score: Ränka röster
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -93,6 +85,8 @@ sv:
     points_abbrev: Varje röst är värd {{score}} poäng
     total: Totalt
     action:
+      search: 'Sök'
+      back: 'Tillbaka'
       next: 'Nästa'
       close: 'Stäng'
       reopen: 'Öppna igen'
@@ -103,17 +97,14 @@ sv:
       edit: 'Redigera'
       remove: 'Ta bort'
       like: 'Gilla'
-      back: 'Tillbaka'
       unlike: 'Sluta gilla'
       update: 'Uppdatera'
       cancel: 'Ångra'
       show_more: "Visa mer"
       view_all: "Visa Alla"
       new_thread: "Ny tråd"
-      add_subgroup: 'Skapa undergrupp'
       loading: 'Laddar'
       translate: 'Översätt'
-      translated: 'Översättning av Bing Translator'
       upload: 'Ladda upp'
       uploading: 'Laddar upp'
       load_more: 'Ladda fler'
@@ -137,6 +128,8 @@ sv:
     formatting_help:
       label: 'Utformning'
       title: 'Lär dig hur du använder Märkspråk för att formatera din text'
+  emoji_picker:
+    search: Sök
   ordinal:
     _1: 1:a
     _2: 2:a
@@ -169,26 +162,27 @@ sv:
     quiet: 'Tyst'
     mute: 'Tysta ned'
     unmute: 'Ta bort nedtystning'
+  pin_event_form:
+    title_label: Titel
   change_volume_form:
+    simple:
+      label: Notifieringar
+      normal: Normal
+      quiet: Ignorera
     aria_label: "Byt epostinställningars formulär"
     loud_label: "All aktivitet"
     normal_label: "Meddelanden"
     quiet_label: "Inga e-post"
     mute_label: "Tysta ned"
     discussion:
-      title: "Tråda e-post inställningar"
-      loud_description: "Du kommer stt få ett e-post när det sker aktivitet i tråden."
-      normal_description: "Du kommer att få en e-post när ett förslag har startats, håller på att stänga, eller resultatet är postat."
-      quiet_description: "Du kommer inte få e-post om denna tråd."
       apply_to_all: "Tillämpa dessa inställningar på alla trådar i denna grupp."
       messages:
         loud: "Du kommer att få e-post om aktivitet i denna tråd."
         normal: "Du kommer att få e-post om förslag i denna tråd."
         quiet: "Du kommer inte få e-post om denna tråd."
     membership:
-      title: "E-postinställningar för {{title}}"
       loud_description: "Du kommer att få e-post vid aktivitet i denna grupp."
-      normal_description: "Du kommer bara få e-post vid meddelanden i denna grupp."
+      normal_description: "Du kommer att få e-post vid aktivitet i denna grupp."
       quiet_description: "Du kommer inte få e-post om aktivitet i denna grupp."
       apply_to_all: "Tillämpa dessa inställningar i alla mina grupper."
       messages:
@@ -196,6 +190,7 @@ sv:
         normal: "Du kommer bara få e-post vid meddelanden i denna grupp."
         quiet: "Du kommer inte bli mailad om den här grupp."
     all_groups:
+      loud_description: "Du kommer att bli mailad om alla aktivitetera i alla dina grupper"
       messages:
         loud: "Du kommer att bli mailad om alla aktivitetera i alla dina grupper"
         normal: "Du kommer endast att bli mailade meddelanden i alla dina grupper."
@@ -271,6 +266,7 @@ sv:
     public_privacy_notice: 'Din kommentar kommer att vara synlig för alla på nätet.'
     sign_in: "Logga in för att delta i konversationen"
   sidebar:
+    threads: 'Trådar'
     recent_threads: 'Senaste trådarna'
     unread_threads: 'Olästa trådar ({{count}})'
     muted_threads: 'Stumma trådar'
@@ -288,7 +284,6 @@ sv:
     logo_title: 'Hemsida'
   membership_dropdown:
     invitation_resent: "Inbjudan skickad igen"
-    make_coordinator: 'Gör till koordinator'
   notifications:
     header: "Notifieringar"
   position_buttons_panel:
@@ -300,8 +295,13 @@ sv:
     privacy_label: 'Sekretesspolicy'
   action_dock:
     delete_comment: Ta bort kommentar
+    edited: Redigerad
+    close_thread: Stäng tråd
+  formatting:
+    attach: Bifoga fil
   join_group_button:
     join_group: Bli medlem i gruppen
+    membership_requested: Förfrågan om medlemskap
   membership_request_form:
     heading: Be att få gå med
     name_label: Namn
@@ -313,11 +313,18 @@ sv:
   context_panel:
     thread_status:
       closed: "Denna tråd är stängd. Den kommer inte längre att visas på instrumentbrädan, tråden kommer också vara listad som 'stängd' på gruppsidan."
+  group_wizard:
+    invite_people: Bjud in deltagare
+    start_thread: Starta en diskussion
   group_page:
+    threads: Trådar
+    members: Medlemmar
+    settings: Inställningar
     invite_people: 'Bjud in'
     options_label: 'Alternativ'
     options:
       label: 'Alternativ'
+      email_settings: 'E-postinställningar'
     volume:
       quiet: Skicka mig inte epost om den här gruppen. Aktivitet kommer att visas på instrumentbrädan.
       quiet_aria_description: Din notifikationsvolym för den här gruppen är satt till Tyst. Du kommer inta att få epost om aktivitet i den här gruppen. Grupp aktivitet kommer att visas på din instrumentbräda.
@@ -325,7 +332,9 @@ sv:
       mute_aria_description: Din notifikationsvolym för den här gruppen är satt till Stum. Du kommer inte att få epost om inte någon specifikt vidnämner dig och grupp aktivitet kommer inte att visas på din instrumentbräda.
       mute_message: '"{{name}}" har tagits bort från din instrumentbräda.'
   group_form:
+    group_name_placeholder: 'Vad heter din grupp?'
     privacy: 'Integritet'
+    profile: Profil
     submit_start_group: 'Startgrupp'
     submit_update: 'Uppdatera inställningar'
   documents_page:
@@ -337,13 +346,13 @@ sv:
     approve: Godkänn
     ignore: Ignorera
   invitation_form:
+    invite_people: 'Bjud in deltagare'
     copy_link: 'Kopiera'
     send: 'Skicka'
     done: 'Klar'
   memberships_page:
     members: 'Medlemmar'
     name_label: 'Namn'
-    coordinator_label: 'Koordinator'
     remove_member_label: 'Ta bort'
   profile_page:
     profile: 'Profil'
@@ -352,6 +361,8 @@ sv:
     username_label: 'Användarnamn'
     email_label: 'Email'
     locale_label: 'Språk'
+  change_picture_form:
+    use_gravatar: 'Använd Gravatar'
   email_settings_page:
     announcement_label: Meddelanden
   dashboard_page:
@@ -367,8 +378,8 @@ sv:
       start: Starta
       or: eller
   activity_card:
-    unread: Olästa
     latest: Senaste
+    context: Kontext
   thread_group:
     aria_label: 'Gruppnamn'
   thread_context:
@@ -404,6 +415,18 @@ sv:
     ranked_choice_title: Valfritt val
   poll_common:
     save_changes: Spara
+  discussions_panel:
+    open: Öppen
+    all: Alla
+    closed: Stängd
+  members_panel:
+    order_by_name: 'Namn'
+    header_name: 'Namn'
+    header_username: 'Användarnamn'
+  polls_panel:
+    all: 'Alla'
+    open: 'Öppen'
+    closed: 'Stängd'
   current_polls_card:
     start_poll: Nytt beslut
   poll_common_form:

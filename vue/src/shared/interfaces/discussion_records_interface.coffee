@@ -1,9 +1,17 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import DiscussionModel      from '@/shared/models/discussion_model'
-import {includes} from 'lodash'
+import { includes } from 'lodash'
+
 export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel
-  
+
+  fetchHistoryFor: (discussion) ->
+    params = discussion.id
+
+    @remote.fetch
+      path: discussion.id + '/history'
+      params: params
+
   search: (groupKey, fragment, options = {}) ->
     options.group_id = groupKey
     options.q = fragment
@@ -25,7 +33,7 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
     @fetch
       path: 'inbox'
       params:
-        from:          options['from'] or 0
-        per:           options['per'] or 100
-        since:         options['since'] or moment().startOf('day').subtract(6, 'week').toDate()
-        timeframe_for: options['timeframe_for'] or 'last_activity_at'
+        from: options['from'] or 0
+        per: options['per'] or 100
+        # since: options['since'] or moment().startOf('day').subtract(6, 'week').toDate()
+        # timeframe_for: options['timeframe_for'] or 'last_activity_at'

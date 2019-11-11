@@ -9,7 +9,6 @@ class Events::StanceCreated < Event
   def self.publish!(stance)
     super stance,
           user: stance.participant,
-          parent: stance.parent_event,
           discussion: stance.poll.discussion
   end
 

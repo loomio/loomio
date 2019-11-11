@@ -7,12 +7,30 @@ class API::EventsController < API::RestfulController
   end
 
   def comment
-    discussion = load_and_authorize(:discussion)
+    load_and_authorize(:discussion)
     self.resource = Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])
     respond_with_resource
   end
 
+  def pin
+    @event = Event.find(params[:id])
+    current_user.ability.authorize!(:pin, @event)
+    @event.update(pinned: true, pinned_title: params[:pinned_title])
+    render json: EventCollection.new(@event).serialize!(default_scope)
+  end
+
+  def unpin
+    @event = Event.find(params[:id])
+    current_user.ability.authorize!(:unpin, @event)
+    @event.update(pinned: false)
+    render json: EventCollection.new(@event).serialize!(default_scope)
+  end
+
   private
+
+  def default_scope
+    super.merge(current_user: current_user, my_stances_cache: Caches::Stance.new(user: current_user, parents: resources_to_serialize))
+  end
 
   def order
     %w(sequence_id position).detect {|col| col == params[:order] } || "sequence_id"
@@ -23,17 +41,25 @@ class API::EventsController < API::RestfulController
   end
 
   def from
-    if params[:from]
-      params[:from]
-    elsif params[:comment_id]
-      Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])&.sequence_id
-    else
+    if params[:from_unread]
       reader = DiscussionReader.for(user: current_user, discussion: @discussion)
       if reader.unread_items_count == 0
-        @discussion.last_sequence_id - per + 2
+        id = @discussion.last_sequence_id - per + 2
+        if id > 0
+          id
+        else
+          @discussion.first_sequence_id
+        end
       else
         reader.first_unread_sequence_id
       end
+    elsif params[:from_sequence_id_of_position]
+      position = [params[:from_sequence_id_of_position].to_i, 1].max
+      Event.find_by!(discussion: @discussion, depth: 1, position: position)&.sequence_id
+    elsif params[:comment_id]
+      Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])&.sequence_id
+    else
+      params[:from] || 0
     end
   end
 
@@ -44,6 +70,14 @@ class API::EventsController < API::RestfulController
 
     records = records.where("#{order} >= ?", from)
 
+    if params[:pinned] == 'true'
+      records = records.where(pinned: true)
+    end
+
+    if params[:kind]
+      records = records.where("kind in (?)", params[:kind].split(','))
+    end
+
     %w(parent_id depth sequence_id position).each do |name|
       records = records.where(name => params[name]) if params[name]
       records = records.where("#{name} >= ?", params["min_#{name}"]) if params["min_#{name}"]
@@ -53,7 +87,13 @@ class API::EventsController < API::RestfulController
   end
 
   def page_collection(collection)
-    collection.order(order).limit(per)
+    if params[:until_sequence_id_of_position]
+      position = [params[:until_sequence_id_of_position].to_i, @discussion.created_event.child_count].min
+      max_sequence_id = Event.find_by!(discussion: @discussion, depth: 1, position: position)&.sequence_id
+      collection.order(order).where("sequence_id <= ?", max_sequence_id)
+    else
+      collection.order(order).limit(per)
+    end
   end
 
   def default_page_size

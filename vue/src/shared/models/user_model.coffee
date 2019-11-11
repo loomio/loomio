@@ -16,6 +16,10 @@ export default class UserModel extends BaseModel
   defaultValues: ->
     shortBio: ''
     shortBioFormat: 'html'
+    files: []
+    imageFiles: []
+    attachments: []
+    locale: AppConfig.defaultLocale
 
   localeName: ->
     (_.find(AppConfig.locales, (h) => h.key == @locale) or {}).name
@@ -49,7 +53,7 @@ export default class UserModel extends BaseModel
     _.invokeMap @adminMemberships(), 'groupId'
 
   parentGroups: ->
-    _.filter @groups(), (group) -> group.isParent()
+    _.filter @groups(), (group) -> group.isParent() && group.type == 'FormalGroup'
 
   inboxGroups: ->
     _.flatten [@parentGroups(), @orphanSubgroups()]
@@ -60,16 +64,16 @@ export default class UserModel extends BaseModel
   hasMultipleGroups: ->
     @groups().length > 1
 
-  allThreads:->
+  allThreads: ->
     _.flatten _.map @groups(), (group) ->
       group.discussions()
 
   orphanSubgroups: ->
-    _.filter @groups(), (group) =>
+    _.filter @formalGroups(), (group) =>
       group.isSubgroup() and !@isMemberOf(group.parent())
 
   orphanParents: ->
-    _.uniq _.map @orphanSubgroups(), (group) =>
+    _.uniq _.map @orphanSubgroups(), (group) ->
       group.parent()
 
   isAuthorOf: (object) ->
@@ -88,15 +92,19 @@ export default class UserModel extends BaseModel
     @name.split(' ').slice(1).join(' ')
 
   saveVolume: (volume, applyToAll) ->
+    @processing = true
     @remote.post('set_volume',
       volume: volume
       apply_to_all: applyToAll
-      unsubscribe_token: @unsubscribeToken).then =>
+      unsubscribe_token: @unsubscribeToken
+    ).then =>
       return unless applyToAll
-      _.each @allThreads(), (thread) ->
+      @allThreads().forEach (thread) ->
         thread.update(discussionReaderVolume: null)
-      _.each @memberships(), (membership) ->
+      @memberships().forEach (membership) ->
         membership.update(volume: volume)
+    .finally =>
+      @processing = false
 
   remind: (model) ->
     @remote.postMember(@id, 'remind', {"#{model.constructor.singular}_id": model.id}).then =>

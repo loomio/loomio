@@ -21,7 +21,7 @@ module GroupService
     actor.ability.authorize! :update, group
 
     params[:features].reject! { |_,v| v.blank? } if params.has_key?(:features)
-    group.assign_attributes(params)
+    HasRichText.assign_attributes_and_update_files(group, params)
     group.group_privacy = params[:group_privacy] if params.has_key?(:group_privacy)
     privacy_change = PrivacyChange.new(group)
 

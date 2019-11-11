@@ -13,5 +13,3 @@ export default
   p.lmo-hint-text(v-t="{ path: 'auth_form.account_inactive', args: { email: user.email }}")
   v-btn.md-raised.md-primary.auth-inactive-form__submit.auth-inactive-form__reactivate(@click='reactivateUser()', v-t="'auth_form.reactivate'")
 </template>
-<style lang="scss">
-</style>

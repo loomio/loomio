@@ -5,7 +5,7 @@ class Events::AnnouncementCreated < Event
   def self.publish!(model, actor, memberships, kind)
     super model,
           user: actor,
-          custom_fields: { membership_ids: memberships.pluck(:id), kind: kind }
+          custom_fields: { membership_ids: memberships.pluck(:id), kind: kind}.compact
   end
 
   def memberships
@@ -24,6 +24,6 @@ class Events::AnnouncementCreated < Event
   end
 
   def notification_recipients
-    User.where(id: memberships.pluck(:user_id))
+    User.active.where(id: memberships.pluck(:user_id))
   end
 end

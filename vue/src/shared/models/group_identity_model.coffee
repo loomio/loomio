@@ -4,9 +4,18 @@ import AppConfig from '@/shared/services/app_config'
 export default class GroupIdentityModel extends BaseModel
   @singular: 'groupIdentity'
   @plural: 'groupIdentities'
+  @validEventKinds = [
+    'new_discussion',
+    'new_comment',
+    'poll_created',
+    'poll_closing_soon',
+    'poll_expired',
+    'stance_created'
+  ]
 
   defaultValues: ->
     customFields: {}
+    webhookUrl: null
 
   relationships: ->
     @belongsTo 'group'

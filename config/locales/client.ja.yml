@@ -24,6 +24,7 @@ ja:
     models:
       proposal: '提案'
     action:
+      search: '検索'
       save: '保存'
       save_changes: '変更を保存'
       update_settings: '設定更新'
@@ -33,17 +34,25 @@ ja:
       unlike: 'いいね！を消す'
       update: '更新'
       cancel: 'キャンセル'
+  emoji_picker:
+    search: 検索
   error_page:
     forbidden: 'このアクションの許可がありません'
+  pin_event_form:
+    title_label: タイトル
+  change_volume_form:
+    simple:
+      label: 通知
+      quiet: 拒否
   comment_form:
     delete_comment: 'コメントを削除します'
     confirm_delete_message: '本当にコメントを削除しますか？'
+  sidebar:
+    threads: 'ディスカッション'
   navbar:
     search:
       placeholder: '検索'
       discussions: 'ディスカッション'
-  membership_dropdown:
-    make_coordinator: 'コーディネーターにする'
   notifications:
     header: "通知"
   position_buttons_panel:
@@ -54,16 +63,25 @@ ja:
     privacy_label: '個人情報'
   join_group_button:
     join_group: グループに参加する
+    membership_requested: メンバーリクエストが送られました
   membership_request_form:
     heading: グループへの参加依頼
     name_label: 氏名
     email_label: Eメール
+  group_wizard:
+    invite_people: メンバーを招待する
+    start_thread: ディスカッションを開始する
   group_page:
+    threads: ディスカッション
+    members: メンバー
     options_label: 'オプション'
     options:
       label: 'オプション'
+      email_settings: 'Eメールの設定'
   group_form:
+    group_name_placeholder: 'あなたのグループの名前は何ですか？'
     privacy: 'プライバシー'
+    profile: プロフィール
     submit_update: '設定更新'
   document:
     form:
@@ -71,10 +89,11 @@ ja:
   membership_requests_page:
     approve: 承認
     ignore: 拒否
+  invitation_form:
+    invite_people: 'メンバーを招待する'
   memberships_page:
     members: 'メンバー'
     name_label: '氏名'
-    coordinator_label: 'コーディネーター'
     remove_member_label: '削除'
   profile_page:
     profile: 'プロフィール'
@@ -113,6 +132,15 @@ ja:
     vote: 'いつでも意見を変更することができます'
   poll_common:
     save_changes: 保存
+  discussions_panel:
+    open: 議論中
+    closed: 議論終了
+  members_panel:
+    order_by_name: '氏名'
+    header_name: '氏名'
+  polls_panel:
+    open: '議論中'
+    closed: '議論終了'
   poll_common_form:
     closed: 議論終了
   poll_count_options:

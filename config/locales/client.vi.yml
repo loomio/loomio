@@ -7,22 +7,31 @@ vi:
     models:
       proposal: 'Lời đề nghị'
     action:
+      search: 'Tìm kiếm'
       save: 'Lưu'
       edit: 'Chỉnh sửa'
       like: 'Thích'
       unlike: 'Không thích'
       cancel: 'Hủy bỏ'
+  emoji_picker:
+    search: Tìm kiếm
   error_page:
     forbidden: 'Bạn không có quyền thực hiện thao tác này.'
+  pin_event_form:
+    title_label: Tiêu đề
+  change_volume_form:
+    simple:
+      label: Thông báo
+      quiet: Bỏ qua
   comment_form:
     delete_comment: 'Xóa bình luận'
     confirm_delete_message: 'Bạn có chắc muốn xóa bình luận này?'
+  sidebar:
+    threads: 'Các phần thảo luận'
   navbar:
     search:
       placeholder: 'Tìm kiếm'
       discussions: 'Các phần thảo luận'
-  membership_dropdown:
-    make_coordinator: 'Tạo điều hành viên'
   notifications:
     header: "Thông báo"
   position_buttons_panel:
@@ -32,29 +41,42 @@ vi:
     title_label: 'Tiêu đề'
     context_label: 'Nội dung'
     privacy_label: 'Quyền riêng tư'
+  join_group_button:
+    membership_requested: Đã gửi yêu cầu làm thành viên
   membership_request_form:
     name_label: Tên
     email_label: Email
+  group_wizard:
+    invite_people: Mời thành viên
+    start_thread: Bắt đầu một cuộc thảo luận
   group_page:
+    threads: Các phần thảo luận
+    members: Thành viên
     options_label: 'Tùy chọn'
     options:
       label: 'Tùy chọn'
+      email_settings: 'Tùy biến email'
+  group_form:
+    group_name_placeholder: 'Tên của nhóm bạn là gì?'
   document:
     form:
       title_label: Tên
   membership_requests_page:
     approve: Chấp thuậ
     ignore: Bỏ qua
+  invitation_form:
+    invite_people: 'Mời thành viên'
   memberships_page:
     members: 'Thành viên'
     name_label: 'Tên'
-    coordinator_label: 'Điều hành viên'
     remove_member_label: 'Loại bỏ'
   profile_page:
     picture_label: 'Hình ảnh'
     name_label: 'Tên'
     email_label: 'Email'
     locale_label: 'Ngôn ngữ'
+  activity_card:
+    context: Nội dung
   thread_context:
     close_thread: 'Đóng lại'
   delete_comment_dialog:
@@ -74,6 +96,14 @@ vi:
     vote: 'Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào'
   poll_common:
     save_changes: Lưu
+  discussions_panel:
+    closed: Đã đóng lại
+  members_panel:
+    everyone: 'Mọi người'
+    order_by_name: 'Tên'
+    header_name: 'Tên'
+  polls_panel:
+    closed: 'Đã đóng lại'
   poll_common_form:
     closed: Đã đóng lại
   poll_count_options:

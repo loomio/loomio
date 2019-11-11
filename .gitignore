@@ -49,6 +49,7 @@ vue/tests/reports
 .DS_Store
 node_modules
 /vue/dist
+storage/
 
 vue/tests/reports/
 !vue/tests/reports/generate_screenshots_index.rb

@@ -2,14 +2,13 @@ require('coffeescript/register')
 pageHelper = require('../helpers/page_helper')
 
 module.exports = {
-  'displays a view of recent threads': (test) => {
+  'displays_a_view_of_recent_threads': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard')
     page.expectText('.dashboard-page__collections', 'Poll discussion')
     page.expectText('.dashboard-page__collections', 'Recent discussion')
     page.expectNoText('.dashboard-page__collections', 'Muted discussion')
-    page.expectNoText('.dashboard-page__collections', 'Muted group discussion')
     page.expectNoText('.dashboard-page__collections', 'Old discussion')
   },
 
@@ -21,7 +20,7 @@ module.exports = {
     page.mouseOver('.thread-preview', () => { page.click('.thread-preview__dismiss') })
     page.expectText('.confirm-modal h1', 'Dismiss thread')
     page.click('.confirm-modal__submit')
-    page.expectText('.flash-root__message', 'Thread dismissed')
+    page.expectText('.flash-root__message', 'Thread marked as read')
   },
 
   'explains muting if you have not yet muted a thread': (test) => {

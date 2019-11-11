@@ -28,16 +28,14 @@ export default
 </script>
 <template lang="pug">
 v-card.auth-modal
-  .lmo-disabled-form(v-show='isDisabled')
+  submit-overlay(:value='isDisabled')
   v-card-title
-    i.mdi.mdi-lock-open(ng-if='!showBackButton()')
-    a.auth-modal__back(ng-click='back()', ng-if='showBackButton()')
-      i.mdi.mdi-keyboard-backspace
-    h1.lmo-h1(v-t="{ path: 'auth_form.sign_in_to_loomio', args: { site_name: siteName } }")
+    //- i.mdi.mdi-lock-open(ng-if='!showBackButton()')
+    //- a.auth-modal__back(ng-click='back()', ng-if='showBackButton()')
+    //-   i.mdi.mdi-keyboard-backspace
+    h1.headline(v-t="{ path: 'auth_form.sign_in_to_loomio', args: { site_name: siteName } }")
+    v-spacer
     dismiss-modal-button(v-if='!preventClose' :close="close")
-    div(v-if='preventClose')
   v-card-text
     auth-form(:user='user')
 </template>
-<style lang="scss">
-</style>
