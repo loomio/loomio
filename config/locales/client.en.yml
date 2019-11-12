@@ -645,7 +645,7 @@ en:
     add_resource: Add an attachment
     edit_group: Edit group context
     add_comment: Comment
-    copy_url: Copy URL
+    copy_url: Copy link
     edit_thread: Edit context
     announce_thread: Send thread
     invite_guests: Invite guests
@@ -676,7 +676,7 @@ en:
     move_thread: Move to group
     poll_copied: Decision URL copied to clipboard
     discussion_copied: Thread URL copied to clipboard
-    url_copied: URL copied to clipboard
+    url_copied: Link copied to clipboard
     tag_thread: Manage tags
     close_thread: Close thread
     reopen_thread: Re-open thread
