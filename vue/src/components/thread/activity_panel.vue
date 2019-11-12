@@ -42,6 +42,8 @@ export default
 
   methods:
     respondToRoute: ->
+      return if @parentEvent.childCount == 0
+
       args = if parseInt(@$route.params.comment_id)
         {column: 'commentId', id: parseInt(@$route.params.comment_id), scrollTo: true}
       else if parseInt(@$route.query.p)
@@ -116,6 +118,8 @@ export default
     '$route.params.sequence_id': 'respondToRoute'
     '$route.params.comment_id': 'respondToRoute'
     '$route.query.p': 'respondToRoute'
+    'parentEvent.childCount': (newVal, oldVal) ->
+      @respondToRoute() if oldVal == 0 and newVal != 0
 
   computed:
     canStartPoll: ->
