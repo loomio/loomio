@@ -676,6 +676,7 @@ en:
     move_thread: Move to group
     poll_copied: Decision URL copied to clipboard
     discussion_copied: Thread URL copied to clipboard
+    url_copied: URL copied to clipboard
     tag_thread: Manage tags
     close_thread: Close thread
     reopen_thread: Re-open thread

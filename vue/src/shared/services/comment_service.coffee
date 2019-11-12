@@ -65,18 +65,6 @@ export default new class CommentService
           props:
             model: comment
 
-    copy_url:
-      icon: 'mdi-link'
-      canPerform: -> true
-      perform:    ->
-        el = document.getElementById("url")
-        el.style.display = 'block'
-        el.select()
-        el.setSelectionRange(0, 99999)
-        document.execCommand("copy")
-        el.style.display = 'none'
-        Flash.success("action_dock.comment_copied")
-
     delete_comment:
       icon: 'mdi-delete'
       canPerform: -> AbilityService.canDeleteComment(comment)
