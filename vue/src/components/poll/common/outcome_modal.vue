@@ -58,7 +58,7 @@ export default
 </script>
 
 <template lang="pug">
-v-card.poll-common-modal
+v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='clone.processing')
   v-card-title
     h1.headline

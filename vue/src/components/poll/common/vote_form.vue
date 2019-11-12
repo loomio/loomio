@@ -43,7 +43,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-vote-form
+.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
   poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-layout(wrap)
