@@ -503,7 +503,6 @@ it:
     add_resource: Aggiungi allegato
     edit_group: Modifica il contesto del gruppo
     add_comment: Commenta
-    copy_url: Copia URL
     edit_thread: Modifica il contesto
     translate_thread: Traduci il contesto
     edit_poll: Modifica sondaggio

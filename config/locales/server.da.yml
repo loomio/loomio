@@ -82,23 +82,6 @@ da:
         Hvad er din rolle eller tilgang til at deltaget i denne gruppe? Hvad er vigtigt for andre deltagere at vide om dig for at bedre forstå dit perspektiv?
   how_it_works_thread:
     title: Sådan bruger du Loomio
-    description: |
-        Velkommen til Loomio, et online sted hvor man kan træffe beslutninger sammen.
-
-        Dette er et eksempel på en diskussion. Du kan tilføje kommentarer herunder. En diskussion har et specifikt emne. Denne diskussion omhandler hvordan man bruger Loomio, så opret kommentarer om dette her.
-
-        Du er pt. igang med at læse konteksten for diskussionen, typisk indeholder dette baggrundsinformation for diskussionen. Dette kan opdateres mens man bliver klogere igennem diskussionen.
-
-        Kom igang med Loomio
-        1. Upload et [profilbillede](/profile)
-        2. Introducér dig selv i [Velkommen diskussionen](%{thread_url})
-        3. Kommenter på eksisterende diskussioner, eller start en nye diskussion.
-
-        Tips når man kommunikerer i Loomio
-        * For at notificere en bestemt person , task @ og så deres navn.
-        * Klik på papirklips ikonet for at uploade vedhæftninger.
-
-        Hvis du har spørgsmål, så kig i [vejledningen](http://help.loomio.org).
   first_proposal:
     name: Demonstrations forslag
     description: |

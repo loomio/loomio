@@ -233,6 +233,7 @@ ko:
     privacy_private: '이 쓰레드는 {{group}}의 멤버만 볼 수 있습니다.'
     privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
   action_dock:
+    copy_url: 링크 복사
     move_items: 이동
     edit_stance: 선택 변경
     close_thread: 토론 주제 닫기
