@@ -164,7 +164,7 @@ v-card
     div(v-if="invitingToGroup && !canInvite")
       .announcement-form__invite
         p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: maxMembers})")
-        p(v-if="!subscriptionActive" v-html="$('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+        p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
     div(v-if="!invitingToGroup || canInvite")
       .announcement-form__invite
