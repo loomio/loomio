@@ -120,6 +120,10 @@ export default new class AbilityService
     @canAdministerGroup(group) or
     (Session.user().isMemberOf(group) and group.membersCanStartDiscussions)
 
+  canAnnounceThread: (discussion) ->
+    @canAdministerGroup(discussion.group()) or
+      (Session.user().isMemberOf(group) and discussion.group().membersCanAnnounce)
+
   canAddMembersToGroup: (group) ->
     @canAdministerGroup(group) or
     (Session.user().isMemberOf(group) and group.membersCanAddMembers)
