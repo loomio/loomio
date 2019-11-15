@@ -14,8 +14,8 @@ export default
 span.poll-meeting-time {{time}}
 </template>
 
-<style lang="css">
-.poll-meeting-time{
-  white-space: nowrap;
-}
+<style lang="sass">
+.poll-meeting-time
+	white-space: nowrap
+
 </style>

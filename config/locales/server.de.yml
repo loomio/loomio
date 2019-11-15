@@ -219,24 +219,6 @@ de:
         Was ist zum Beispiel deine Rolle oder der Anlass für deine Teilnahme in dieser Gruppe? Was sollten die Menschen wissen, um zu verstehen, woher du kommst?
   how_it_works_thread:
     title: Wie man Loomio benutzt
-    description: |
-        Willkommen bei Loomio, der Online-Ort für gemeinsame Entscheidungsfindung.
-
-        Das ist ein Beispiels**Diskussion**. Du kannst unten Kommentare einfügen. Ein Diskussion beschäftigt sich meistens mit einem bestimmten Thema. Hier geht es darum, wie Loomio funktioniert, deshalb kannst du deine Fragen dazu hier stellen.
-
-        Du liest gerade die Diskussion **Kontext**, in dem es um Hintergrundinformationen geht. Du kannst es im Verlauf der Diskussion anpassen.
-
-        Um mit Loomio zu beginnen:
-        1. Lade ein [Profilbild](/profile) hoch
-        2. Stelle dich im [Willkommensdiskussion](%{thread_url}) vor
-        3. Kommentiere ein bestehende Diskussion oder eröffne ein neues.
-
-        Tips fürs Posten auf Loomio:
-
-        * um eine Person zu benachrichtigen, tippe ein @ vor ihrem Namen.
-        * Klicke auf die Büroklammer, um Anhänge hinzuzufügen.
-
-        Wenn du Fragen hast, sieh in der [Loomio-Hilfe](http://help.loomio.org) nach.
   first_proposal:
     name: Demo-Vorschlag
     description: |

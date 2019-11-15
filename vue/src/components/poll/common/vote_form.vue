@@ -63,8 +63,8 @@ export default
     poll-common-show-results-button(v-if='stance.isNew()')
     v-btn.poll-common-vote-form__submit(color="primary", @click='submit()', v-t="'poll_common.vote'" :disabled='!selectedOptionId')
 </template>
-<style lang="css">
-.poll-proposal-vote-form__button {
-  height: 112px !important;
-}
+<style lang="sass">
+.poll-proposal-vote-form__button
+	height: 112px !important
+
 </style>

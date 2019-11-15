@@ -246,6 +246,7 @@ zh_TW:
   pin_event_form:
     title: 釘選到時間軸
     title_label: 標題
+    hint: '下次的提示：試著在您點擊「釘選」前先反白某些文字。'
   change_volume_form:
     explain_scope:
       thread: 這會在您收到此討論串通知時發生變化
@@ -597,7 +598,7 @@ zh_TW:
     add_resource: 新增附件
     edit_group: 編輯群組內容
     add_comment: 意見
-    copy_url: 複製 URL
+    copy_url: 複製連結
     edit_thread: 編輯內容
     announce_thread: 傳送討論串
     invite_guests: 邀請來賓
@@ -628,6 +629,7 @@ zh_TW:
     move_thread: 移動到群組
     poll_copied: 決策 URL 已複製到剪貼簿
     discussion_copied: 討論串 URL 已複製到剪貼簿
+    url_copied: 連結已複製到剪貼簿
     tag_thread: 管理標籤
     close_thread: 關閉討論串
     reopen_thread: 重新開啟討論串
@@ -2017,6 +2019,11 @@ zh_TW:
       poll_closing_soon: 投票即將過期
       poll_expired: 投票已過期
       outcome_created: 結果已分享
+  configure_sso:
+    title: 設定單一登入 (SSO)
+    helptext: |
+        想要透過 OneLogin、Auto0、Microsoft Active Directory 或是其他 SAML 提供者登入 Loomio 嗎？
+        我們正在測試我們的 SSO 整合，請聯絡我們，我們將會協助您設定！
   install_slack:
     modal_title: 整合 Slack
     modal_helptext: 首先，您必須登入到 Slack。點選下方的按鈕以繼續。

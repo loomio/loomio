@@ -20,24 +20,19 @@ export default {
   <iframe class="iframe__embed" :src="src"></iframe>
 </div>
 </template>
-<style lang="css">
-.iframe-container {
-  overflow: hidden;
-  padding-top: 56.25%;
-  position: relative;
-}
+<style lang="sass">
+.iframe-container
+	overflow: hidden
+	padding-top: 56.25%
+	position: relative
+	iframe
+		border: 0
+		height: 100%
+		left: 0
+		position: absolute
+		top: 0
+		width: 100%
+.iframe-container-4x3
+	padding-top: 75%
 
-.iframe-container iframe {
-   border: 0;
-   height: 100%;
-   left: 0;
-   position: absolute;
-   top: 0;
-   width: 100%;
-}
-
-/* 4x3 Aspect Ratio */
-.iframe-container-4x3 {
-  padding-top: 75%;
-}
 </style>

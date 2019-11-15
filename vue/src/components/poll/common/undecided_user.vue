@@ -1,14 +1,3 @@
-<style lang="css">
-.poll-common-undecided-user__name {
-  margin-left: 12px;
-}
-
-.poll-common-undecided-user {
-  margin: 8px 0;
-}
-
-</style>
-
 <script lang="coffee">
 import Flash   from '@/shared/services/flash'
 import AbilityService from '@/shared/services/ability_service'
@@ -42,5 +31,11 @@ v-list-item.poll-common-undecided-user
     .poll-common-undecided-user--unreminded(v-if='!user.reminded')
       v-btn.poll-common-undecided-user__remind(color="accent" text @click='remind()', v-t="'common.action.remind'")
   loading(v-if='remindExecuting')
-
 </template>
+<style lang="sass">
+.poll-common-undecided-user__name
+	margin-left: 12px
+.poll-common-undecided-user
+	margin: 8px 0
+
+</style>

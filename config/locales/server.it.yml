@@ -175,25 +175,6 @@ it:
         Qual'è il tuo approccio per partecipare a questo gruppo? Illustra agli altri partecipanti chi sei e qual'è la tua storia.
   how_it_works_thread:
     title: Come usare Loomio
-    description: |
-        Questo è un messaggio automatico di Loomio
-
-        Benvenuti/e su Loomio, un posto online per prendere decisioni insieme.
-
-        Questo è un esempio di **discussione**.  Puoi aggiungere commenti qui sotto. Una discussione è una conversazione su un dato argomento. Questa specifica discussione è su come funziona Loomio, quindi puoi rispondere inserendo domande qui sotto.
-
-        Stai leggendo il **contesto** della discussione, una parte in cui viene esplicitato il tema della discussione.  Puoi aggiornare il contesto successivamente, con il progredire della discussione.
-
-        Per iniziare ad usare Loomio:
-        1. Carica una [profile picture](/profile)
-        2. Presentati nel  [Welcome thread](%{thread_url})
-        3. Scrivi in discussioni esistenti, o creane una nuova
-
-        Suggerimenti per scrivere su Loomio:
-        * Per notificare una specifica persona, digita il simbolo @ seguito dal suo nome.
-        * Cliccca sull'icona della graffetta per aggiungere allegati.
-
-        Se hai domande, guarda il [Loomio help manual](http://help.loomio.org).
   first_proposal:
     name: Proposta dimostrativa
   poll_mailer:

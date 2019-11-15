@@ -1,11 +1,3 @@
-<style lang="css">
-.translation__body {
-  font-style: italic;
-}
-
-.lmo-h1 .translation__body p { margin: 0; }
-</style>
-
 <script lang="coffee">
 export default
   props:
@@ -24,3 +16,11 @@ export default
   .translated-body(v-if="isMd" v-marked='translated')
   .translated-body(v-if="isHtml" v-html='translated')
 </template>
+<style lang="sass">
+.translation__body
+	font-style: italic
+.lmo-h1
+	.translation__body
+		p
+			margin: 0
+</style>

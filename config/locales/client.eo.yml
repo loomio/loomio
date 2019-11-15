@@ -4,6 +4,7 @@ eo:
       title: Ŝalti vian grupon
       activities:
         invite_people_in: Inviti homojn
+        make_decision: Komenci decidon
   plan_names:
     free: Senpaga
     trial: Provo
@@ -211,6 +212,7 @@ eo:
     privacy_label: 'Privateco'
   action_dock:
     add_comment: Komenti
+    copy_url: Kopii ligilon
     edit_poll: Redakti enketon
     move_items: Movi
     translate_poll: Traduki enketon
@@ -388,6 +390,7 @@ eo:
     details: Detaloj
     participant_name: Via nomo
     participant_email: Retadreso
+    start_poll: Komenci decidon
     save_changes: Konservi
   discussions_panel:
     open: Malfermita

@@ -111,78 +111,25 @@ div
         slot(name="actions")
   slot(name="append")
 </template>
-<style lang="css">
+<style lang="sass">
+.thread-item__title
+	& > .poll-common-stance-choice
+		display: inline-block
+	strong
+		font-weight: normal
+.thread-item
+	transition: background 4s ease-out
+	.v-card__actions
+		padding-left: 0
+		padding-right: 0
+.thread-item--focused
+	background-color: var(--v-accent-lighten5)
+.thread-item--previously-focused
+	background-color: none
+.thread-item--unread
+	background-color: var(--v-primary-lighten5)
+.thread-item__body
+	width: 100%
+	min-width: 0
 
-.thread-item__title > .poll-common-stance-choice {
-  display: inline-block;
-}
-.thread-item__title strong {
-  font-weight: normal;
-}
-
-.thread-item {
-  transition: background 4s ease-out;
-}
-
-.thread-item .v-card__actions {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.thread-item--focused {
-  background-color: var(--v-accent-lighten5);
-}
-
-.thread-item--previously-focused {
-  background-color: none;
-  /* transition: background-color 10s; */
-}
-
-.thread-item--unread {
-  background-color:  var(--v-primary-lighten5);
-}
-
-.thread-item__body {
-  width: 100%;
-  min-width: 0;
-}
-
-@media (max-width: $tiny-max-px){
-  .thread-item__directive {
-    margin-left: -42px;
-  }
-}
-
-.thread-item__footer {
-  /* // @include fontSmall(); */
-  color: $grey-on-white;
-  clear: both;
-}
-
-.thread-item__actions {
-  margin-right: 3px;
-  display: inline-block;
-}
-
-.thread-item__link:hover  {
-  text-decoration: underline;
-}
-
-.thread-item__link abbr {
-  font-weight: normal;
-}
-
-.thread-item__action {
-  /* // @include lmoBtnLink; */
-  /* color: $link-color; */
-}
-
-.thread-item__action--view-edits {
-  /* // @include lmoBtnLink; */
-  /* color: $grey-on-white; */
-}
-
-.thread-item__timestamp {
-  display: inline-block;
-}
 </style>

@@ -597,7 +597,7 @@ fr:
     add_resource: Ajouter un document
     edit_group: Modifier la description du groupe
     add_comment: Ajouter un commentaire
-    copy_url: Copier l’URL
+    copy_url: Copier le lien
     edit_thread: Modifier le contexte
     announce_thread: Envoyer la discussion
     invite_guests: Inviter des personnes

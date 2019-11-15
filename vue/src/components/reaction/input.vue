@@ -33,9 +33,9 @@ v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
   emoji-picker(:insert="insert")
 </template>
 
-<style lang="css">
-.reactions-input {
-  display: flex;
-  align-items: center;
-}
+<style lang="sass">
+.reactions-input
+	display: flex
+	align-items: center
+
 </style>
