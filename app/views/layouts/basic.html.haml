@@ -3,13 +3,12 @@
   %head
     %title= AppConfig.theme[:site_name]
     %meta{charset: 'utf-8'}
-    = csrf_meta_tags
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     %link{rel: "shortcut icon",    href: AppConfig.theme[:icon_src]}
     = stylesheet_link_tag 'basic/all'
   %body
     %header
-      %a{href: root_url}
+      %a{href: '/'}
         %img{src: AppConfig.theme[:app_logo_src]}
     %main
       = yield

@@ -20,15 +20,13 @@ class ApplicationController < ActionController::Base
   helper_method :bundle_asset_path
   helper_method :supported_locales
 
-  # this boots the angular app
   def index
     expires_now
     prevent_caching
     if params['old_client'] or (current_user.is_logged_in? && current_user.experiences['old_client'])
       render 'application/index', layout: false
     else
-      tmpl = File.read('public/client/vue/index.html').gsub('Collaborative decision making', I18n.t(:'powered_by.slogan'))
-      render inline: tmpl, layout: false
+      render file: 'public/client/vue/index.html', layout: false
     end
   end
 
