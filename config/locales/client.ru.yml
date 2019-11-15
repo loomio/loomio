@@ -355,7 +355,6 @@ ru:
   action_dock:
     add_resource: Добавить вложение
     add_comment: Комментарий
-    copy_url: Скопировать ссылку
     edit_thread: Редактировать контекст
     translate_thread: Перевести контекст
     edit_poll: Редактировать опрос

@@ -3,6 +3,7 @@ import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
 import openModal from '@/shared/helpers/open_modal'
+import Flash from '@/shared/services/flash'
 
 export default new class CommentService
   actions: (comment, vm) ->

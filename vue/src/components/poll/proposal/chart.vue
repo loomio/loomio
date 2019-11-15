@@ -1,16 +1,3 @@
-<style lang="css">
-.poll-proposal-chart {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.poll-proposal-chart svg {
-   height: 100%;
-   width: 100%;
-}
-</style>
-
 <script lang="coffee">
 import svg from 'svg.js'
 import AppConfig from '@/shared/services/app_config'
@@ -67,7 +54,7 @@ export default
   mounted: ->
     @svgEl = svg(@$el).size('100%', '100%')
     @draw()
-    
+
   beforeDestroy: ->
     @svgEl.clear()
     delete @shapes
@@ -76,3 +63,13 @@ export default
 <template lang="pug">
 .poll-proposal-chart
 </template>
+<style lang="sass">
+.poll-proposal-chart
+	border: 0
+	margin: 0
+	padding: 0
+	svg
+		height: 100%
+		width: 100%
+
+</style>

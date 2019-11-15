@@ -189,6 +189,7 @@ sr:
     privacy_private: 'Nit će biti vidljiva isključivo članovima {{group}}.'
     privacy_organisation: 'Nit će biti vidljiva članovima {{parent}} i članovima {{group}}.'
   action_dock:
+    copy_url: Kopiraj vezu
     move_items: Premesti
     edit_stance: Promeni poziciju
     edited: Izmenjeno

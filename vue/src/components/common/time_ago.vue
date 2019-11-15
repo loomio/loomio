@@ -22,7 +22,10 @@ export default
 abbr.time-ago(:title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
 </template>
 
-<style lang="css">
-.time-ago{ white-space: nowrap; }
-abbr[title] { border-bottom: none; }
+<style lang="sass">
+.time-ago
+	white-space: nowrap
+abbr[title]
+	border-bottom: none
+
 </style>

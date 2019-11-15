@@ -21,7 +21,7 @@ export default
 </script>
 
 <template lang="pug">
-v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+v-card.thread-arrangement-form
   submit-overlay(:value='discussion.processing')
   v-card-title
     span(v-t="'thread_arrangement_form.title'")

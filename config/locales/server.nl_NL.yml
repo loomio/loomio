@@ -173,23 +173,6 @@ nl_NL:
         Wat is je rol of of bedoeling bij deelname aan deze groep? Wat moeten mensen over jou weten om te begrijpen wat je bedoeling is?
   how_it_works_thread:
     title: Hoe gebruik je Loomio
-    description: |
-        Welkom bij Loomio, een online plek om samen beslissingen te nemen.
-
-        Dit is een voorbeeld gesprek **discussie**. Je kunt opmerkingen hieronder toevoegen. Een discussie is een gesprek over een bepaald onderwerp. Deze discussie gaat over hoe Loomio werkt, dus plaats hier je vragen.
-
-        Je bent op dit moment de discussie **context** aan het lezen, een plek voor achtergrond informatie. Je kunt deze updaten terwijl het gesprek verder gaat.
-
-        Om te beginnen met Loomio:
-        1. Upload een [profiel foto](/profiel)
-        2. Stel jezelf voor in de [Welkom discussie](%{thread_url})
-        3. Post in bestaande discussie, of start een nieuwe
-
-        Tips om berichten te plaatsen op Loomio:
-        *Om een bepaald persoon te berichten, type @ gevolg door diens naam.
-        *Klik op het paperclip icoon om bijlagen toe te voegen.
-
-        Als je vragen hebt, check het [Loomio hulp handboek](http://help.loomio.org).
   first_proposal:
     name: Demonstratievoorstel
     description: |

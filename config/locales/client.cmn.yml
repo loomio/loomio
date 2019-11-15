@@ -518,7 +518,6 @@ cmn:
     flash:
       success: '已发送 {{count}} 个通知'
   action_dock:
-    copy_url: 复制 URL
     announce_thread: 发送话题
     invite_guests: 邀请访客
     edit_poll: 编辑投票

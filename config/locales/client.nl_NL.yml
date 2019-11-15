@@ -388,7 +388,7 @@ nl_NL:
     add_resource: Bijlage toevoegen
     edit_group: Groepsbeschrijving bijwerken
     add_comment: Becommentarieer
-    copy_url: Kopieer URL
+    copy_url: Link kopieren
     edit_thread: Beschrijving bijwerken
     invite_guests: Nodig gasten uit
     translate_thread: Beschrijving vertalen

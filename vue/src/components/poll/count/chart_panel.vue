@@ -1,39 +1,3 @@
-<style lang="css">
-.poll-count-chart-panel__chart-container {
-  width: 140px;
-  height: 140px;
-  position: relative;
-}
-
-.poll-count-chart-panel__progress {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.poll-count-chart-panel__incomplete {
-  flex-grow: 1;
-  background-color: #ccc;
-}
-
-.poll-count-chart-panel__data {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-.poll-count-chart-panel__numerator {
-  font-size: 72px;
-  line-height: 72px;
-}
-</style>
-
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import Records   from '@/shared/services/records'
@@ -60,3 +24,30 @@ export default
       .poll-count-chart-panel__numerator {{poll.stancesCount}}
       .poll-count-chart-panel__denominator(v-t="{ path: 'poll_count_chart_panel.out_of', args: { goal: poll.goal() } }")
 </template>
+<style lang="sass">
+.poll-count-chart-panel__chart-container
+	width: 140px
+	height: 140px
+	position: relative
+.poll-count-chart-panel__progress
+	display: flex
+	flex-direction: column
+	height: 100%
+	width: 100%
+.poll-count-chart-panel__incomplete
+	flex-grow: 1
+	background-color: #ccc
+.poll-count-chart-panel__data
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	top: 0
+	position: absolute
+	height: 100%
+	width: 100%
+.poll-count-chart-panel__numerator
+	font-size: 72px
+	line-height: 72px
+
+</style>

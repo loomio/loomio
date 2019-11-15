@@ -22,24 +22,19 @@ export default
         |
         span.lmo-grey-on-white {{ prettifyBytes(attachment.byte_size) }}
 </template>
-<style lang="css">
+<style lang="sass">
+.attachment-list__item
+	display: flex
+	flex-direction: column
+	margin: 8px 0
+	line-height: 32px
+	background: #f6f6f6
+	border-radius: 2px
+.attachment-list__item-details
+	display: flex
+	flex-direction: row
+	align-items: center
+.attachment-list__preview
+	max-width: 100%
 
-.attachment-list__item {
-  display: flex;
-  flex-direction: column;
-  margin: 8px 0;
-  line-height: 32px;
-  background: #f6f6f6;
-  border-radius: 2px;
-}
-
-.attachment-list__item-details {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.attachment-list__preview {
-  max-width: 100%;
-}
 </style>

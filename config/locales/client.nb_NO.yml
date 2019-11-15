@@ -431,7 +431,6 @@ nb_NO:
     add_resource: Legg til vedlegg
     edit_group: Rediger gruppens kontekst
     add_comment: Kommentar
-    copy_url: Kopier URL
     edit_thread: Rediger kontekst
     translate_thread: Oversett kontekst
     edit_poll: Rediger avstemning

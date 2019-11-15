@@ -322,7 +322,7 @@ cs:
   action_dock:
     edit_group: Upravit kontext skupiny
     add_comment: Komentář
-    copy_url: Kopírovat URL
+    copy_url: Kopírovat odkaz
     edit_thread: Upravit kontext
     translate_thread: Přeložit kontext
     move_items: Přesunout

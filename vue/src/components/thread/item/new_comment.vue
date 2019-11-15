@@ -1,6 +1,5 @@
 <script lang="coffee">
 import AbilityService from '@/shared/services/ability_service'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
 
 import { pick, assign, compact } from 'lodash'
 import CommentService from '@/shared/services/comment_service'
@@ -17,7 +16,6 @@ export default
     commentActions: -> CommentService.actions(@eventable, @)
     eventActions: -> EventService.actions(@event, @)
     eventable: -> @event.model()
-    link: -> LmoUrlService.event @event
     dockActions: ->
       if AbilityService.canEditComment(@eventable)
         edit_comment = 'edit_comment'
@@ -39,7 +37,7 @@ export default
       assign(
         pick @commentActions, compact [reply_to_comment, show_history, 'notification_history', 'translate_comment' , 'delete_comment']
       ,
-        pick @eventActions, ['move_event']
+        pick @eventActions, ['move_event', 'copy_url']
       )
 
   data: ->

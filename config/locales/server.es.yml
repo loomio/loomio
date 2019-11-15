@@ -223,24 +223,6 @@ es:
         ¿Cuál es tu rol o porque te unes al grupo? ¿Qué es lo que la gente debería saber sobre ti para entender de donde vienes?
   how_it_works_thread:
     title: Cómo usar Loomio
-    description: |+
-        Bienvenida/o a Loomio, un lugar online donde tomar decisiones juntos.
-
-        Este es un **Hilo** de discusión de ejemplo. Usa este espacio para dar la información relevante que el grupo necesite para tener una discusión productiva. Este hilo es sobre como Loomio funciona, así que añade cualquier pregunta al respecto aquí.
-
-        Estas leyendo el **Contexto** del hilo, un espacio para la información relevante. Puedes cambiarlo a medida que la discusión avanza.
-
-        Para comenzar en Loomio:
-        1. Añade una [foto de perfil](/profile)
-        2. Preséntate al grupo en el [Hilo de bienvenida](%{thread_url})
-        3. Comenta en hilos existentes o inicia uno nuevo
-
-        Consejos para comentar en Loomio:
-        * Para notificar a una persona en particular escribe @seguido de su nombre
-        * Haz clic en el icono del sujetapapeles para añadir adjuntos
-
-        Si tienes preguntas lee el [Manual de Usuario](http://help.loomio.org).
-
   first_proposal:
     name: Propuesta de demostración
     description: |

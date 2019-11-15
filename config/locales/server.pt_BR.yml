@@ -218,23 +218,6 @@ pt_BR:
         Qual é o seu papel ou caminho até chegar a participar deste grupo? O que as pessoas precisam saber de você para entender de onde você veio?
   how_it_works_thread:
     title: Como utilizar o Loomio
-    description: |
-        Seja bem-vindo ao Loomio, uma plataforma online para tomar decisões conjuntas.
-
-        Este é um exemplo de **tópico** de discussão. Você pode adicionar um comentário abaixo. Um tópico é uma conversa sobre um determinado assunto. Este tópico é sobre como o Loomio funciona; então, poste suas dúvidas sobre esse assunto aqui.
-
-        Neste momento, você está lendo o tópico **contexto**, um local para informações básicas. Você poderá atualizá-lo na medida em que a discussão progredir.
-
-        Para começar a utilizar o Loomio:
-        1. Carregue uma [foto de perfil](/profile)
-        2. Apresente-se no [tópido de boas-vindas](%{thread_url})
-        3. Poste em tópicos existentes, ou inicie um novo
-
-        Dicas para postar no Loomio:
-        * Para notificar uma pessoa específica, digite @ seguido do nome dela.
-        * Clique no ícone com um clips para adicionar anexos.
-
-        Em caso de dúvidas, confira o [manual de ajuda do Loomio](http://help.loomio.org).
   first_proposal:
     name: Proposta de demonstração
     description: |

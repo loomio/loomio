@@ -42,7 +42,7 @@ export default
       assign(
         pick PollService.actions(@poll, @), ['show_history', 'export_poll', 'delete_poll', 'translate_poll']
       ,
-        pick EventService.actions(@event, @), ['move_event']
+        pick EventService.actions(@event, @), ['move_event', 'copy_url']
       )
     dockActions: ->
       assign(
