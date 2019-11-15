@@ -97,6 +97,7 @@ FactoryBot.define do
   factory :formal_group do
     sequence(:name) { Faker::Name.name }
     description { 'A description for this group' }
+    handle { GroupService.suggest_handle(name: name, parent_handle: parent&.handle) }
     group_privacy { 'open' }
     discussion_privacy_options { 'public_or_private' }
     members_can_add_members { true }
@@ -318,7 +319,7 @@ FactoryBot.define do
   end
 
   factory :received_email do
-    sender_email { "John Doe <john@doe.com>" }
+    sender_address { "John Doe <john@doe.com>" }
     body { "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah" }
   end
 

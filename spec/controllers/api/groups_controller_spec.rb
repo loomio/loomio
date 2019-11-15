@@ -24,6 +24,27 @@ describe API::GroupsController do
     end
   end
 
+  describe 'suggest_handle' do
+    it 'suggests a handle based on a group name' do
+      get :suggest_handle, params: {name: "test case"}
+      json = JSON.parse(response.body)
+      expect(json['handle']).to eq 'test-case'
+    end
+
+    it 'ensures suggestions are not already taken' do
+      create :formal_group, handle: 'test-case'
+      get :suggest_handle, params: {name: "test case"}
+      json = JSON.parse(response.body)
+      expect(json['handle']).to eq 'test-case-1'
+    end
+
+    it 'subgroup handle includes parent handle' do
+      get :suggest_handle, params: {name: "test case", parent_handle: 'parent'}
+      json = JSON.parse(response.body)
+      expect(json['handle']).to eq 'parent-test-case'
+    end
+  end
+
   describe 'show' do
     it 'returns the group json' do
       discussion

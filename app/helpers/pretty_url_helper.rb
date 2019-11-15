@@ -12,7 +12,7 @@ module PrettyUrlHelper
   end
 
   def group_url(group, options = {})
-    if group.is_parent? and group.handle and !options.delete(:use_key)
+    if group.handle and !options.delete(:use_key)
       group_handle_url(group.handle)
     else
       super group, options.merge(slug: group.name.parameterize)

@@ -5,7 +5,7 @@ describe "Splitting replies from the original message on incoming emails" do
     input_body = "Hi I'm the bit you want,
     On someday (Loomio) #{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS} said:
     This is the bit that you don't want"
-    output_body = Griddler::EmailParser.extract_reply_body(input_body)
+    output_body = ReceivedEmail.fromJSON({'html' => input_body}).body
     expect(output_body).to eq "Hi I'm the bit you want,"
   end
 
@@ -13,7 +13,7 @@ describe "Splitting replies from the original message on incoming emails" do
     input_body = "Hi I'm the bit you want,
     On someday (Loomio) bobo@notloomio.org said:
     This is the bit that you don't want"
-    output_body = Griddler::EmailParser.extract_reply_body(input_body)
+    output_body = ReceivedEmail.fromJSON({'html' => input_body}).body
     expect(output_body).to_not eq "Hi I'm the bit you want,"
   end
 
@@ -21,7 +21,7 @@ describe "Splitting replies from the original message on incoming emails" do
     input_body = "Hi I'm the bit you want,
     #{DiscussionMailer::REPLY_DELIMITER}
     This is the bit that you don't want"
-    output_body = Griddler::EmailParser.extract_reply_body(input_body)
+    output_body = ReceivedEmail.fromJSON({'html' => input_body}).body
     expect(output_body).to eq "Hi I'm the bit you want,"
   end
 end

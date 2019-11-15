@@ -277,7 +277,7 @@ describe Event do
 
     it 'links to an invitation target for a formal group invitation' do
       event = Events::InvitationAccepted.publish!(formal_membership)
-      expect(event.send(:notification_url)).to match "g/#{formal_membership.group.key}"
+      expect(event.send(:notification_url)).to match formal_membership.group.handle
       expect(event.send(:notification_translation_title)).to eq formal_membership.group.full_name
     end
   end

@@ -90,7 +90,7 @@ class UserMailer < BaseMailer
 
   def start_decision(received_email:)
     @email = received_email
-    send_single_mail to: @email.sender_email,
+    send_single_mail to: @email.sender_address,
                      subject_key: "email.start_decision.subject",
                      locale: @email.locale
   end
