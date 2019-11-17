@@ -53,7 +53,7 @@ export default new class PollService
       icon: 'mdi-translate'
       menu: true
       canPerform: -> AbilityService.canTranslate(poll)
-      perform: -> poll.translate(Session.user().locale)
+      perform: -> Session.user() && poll.translate(Session.user().locale)
 
     close_poll:
       icon: 'mdi-close-circle-outline'
