@@ -15,11 +15,12 @@ export default
     loading: false
   methods:
     updateTags: ->
-      @loading = true
-      Records.tags.updateModel(@discussion, @discussionTags).then =>
-        EventBus.$emit 'closeModal'
-      .finally =>
-        @loading = false
+      setTimeout =>
+        @loading = true
+        Records.tags.updateModel(@discussion, @discussionTags).then =>
+          EventBus.$emit 'closeModal'
+        .finally =>
+          @loading = false
   computed:
     groupTags: -> @discussion.group().parentOrSelf().tagNames || []
 
