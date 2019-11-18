@@ -18,9 +18,8 @@ export default
       div
         a(:href="attachment.download_url")
           span {{ attachment.filename }}
-        |
-        |
-        span.lmo-grey-on-white {{ prettifyBytes(attachment.byte_size) }}
+        space
+        span.lmo-grey-on-white ({{ prettifyBytes(attachment.byte_size) }})
 </template>
 <style lang="sass">
 .attachment-list__item
