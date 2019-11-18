@@ -296,6 +296,9 @@ export default
     linkDialogIsOpen: (val) ->
       return unless val && @$refs.focus
       requestAnimationFrame => @$refs.focus.focus()
+    iframeDialogIsOpen: (val) ->
+      return unless val && @$refs.focus
+      requestAnimationFrame => @$refs.focus.focus()
     files: -> @updateModel()
     imageFiles: -> @updateModel()
     shouldReset: ->
@@ -339,7 +342,7 @@ div
             v-btn(small icon v-on="on" @click="linkDialogIsOpen = true")
               v-icon mdi-link-variant
           span(v-t="'formatting.link'")
-        v-dialog(v-model="linkDialogIsOpen" ref="focus" max-width="600px")
+        v-dialog(v-model="linkDialogIsOpen" max-width="600px")
           v-card
             v-card-title.title(v-t="'text_editor.insert_link'")
             v-card-text
@@ -381,11 +384,11 @@ div
               v-btn(small icon v-on="on" @click="linkDialogIsOpen = true")
                 v-icon mdi-link-variant
             span(v-t="'formatting.link'")
-          v-dialog(v-if="isTouchDevice" v-model="linkDialogIsOpen" ref="focus" max-width="600px")
+          v-dialog(v-if="isTouchDevice" v-model="linkDialogIsOpen" max-width="600px")
             v-card
               v-card-title.title(v-t="'text_editor.insert_link'")
               v-card-text
-                v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus v-on:keyup.enter="setLinkUrl(commands.link)")
+                v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl(commands.link)")
               v-card-actions
                 v-spacer
                 v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
@@ -439,11 +442,11 @@ div
               v-btn(small icon v-on="on" @click="iframeDialogIsOpen = true")
                 v-icon mdi-youtube
             span(v-t="'formatting.embed'")
-          v-dialog(v-model="iframeDialogIsOpen" ref="focus" max-width="600px")
+          v-dialog(v-model="iframeDialogIsOpen" max-width="600px")
             v-card
               v-card-title.title(v-t="'text_editor.insert_embedded_url'")
               v-card-text
-                v-text-field(type="url" label="https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
+                v-text-field(type="url" label="https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
               v-card-actions
                 v-spacer
                 v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
