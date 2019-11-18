@@ -24,27 +24,26 @@ export default
       @discussion = options.discussion
       return unless @discussion
 
-      if @discussion.newestFirst
-        @topPosition = @childCount
-        @topDate = @discussion.lastActivityAt
-
-        @bottomPosition = 1
-        @bottomDate = @discussion.createdAt
-      else
-        @topPosition = 1
-        @topDate = @discussion.createdAt
-
-        @bottomDate = @discussion.lastActivityAt
-        @bottomPosition = @childCount
-
       @watchRecords
         key: 'thread-nav'+@discussion.id
-        collections: ["events"]
+        collections: ["events", "discussions"]
         query: =>
           return unless @discussion
           @presets = Records.events.collection.chain()
             .find({pinned: true, parentId: @discussion.createdEvent().id})
             .simplesort('position').data()
+          if @discussion.newestFirst
+            @topPosition = @childCount
+            @topDate = @discussion.lastActivityAt
+
+            @bottomPosition = 1
+            @bottomDate = @discussion.createdAt
+          else
+            @topPosition = 1
+            @topDate = @discussion.createdAt
+
+            @bottomDate = @discussion.lastActivityAt
+            @bottomPosition = @childCount
 
       # move this to activity panel.
       Records.events.fetch
@@ -59,7 +58,6 @@ export default
           @position = last(slots) || 1
         else
           @position = first(slots) || 1
-
         @setHeight()
         @knobOffset = @offsetFor(@position)
         @knobHeight = @unitHeight * (last(slots) - first(slots) + 1)
