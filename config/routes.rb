@@ -291,6 +291,7 @@ Loomio::Application.routes.draw do
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
+  get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment

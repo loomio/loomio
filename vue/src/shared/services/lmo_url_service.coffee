@@ -25,7 +25,7 @@ export default class LmoUrlService
       @buildModelRoute('g', g.key, g.fullName, params, options)
 
   @discussion: (d, params = {}, options = {}) ->
-    @buildModelRoute('d', d.key, d.title, params, options)
+    @buildModelRoute('d', d.key, options.action or d.title, params, options)
 
   @poll: (p, params = {}, options = {}) ->
     @buildModelRoute('p', p.key, options.action or p.title, params, options)

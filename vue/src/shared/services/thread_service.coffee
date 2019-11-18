@@ -6,6 +6,7 @@ import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
+import { hardReload } from '@/shared/helpers/window'
 
 export default new class ThreadService
   actions: (discussion, vm) ->
@@ -31,6 +32,13 @@ export default new class ThreadService
           props:
             model: discussion
             # newVolume: 'normal'
+
+    export_thread:
+      name: 'common.action.export'
+      canPerform: ->
+        AbilityService.canExportThread(discussion)
+      perform: ->
+        hardReload LmoUrlService.discussion(discussion, {}, action: 'export', absolute: true)
 
     unignore:
       name: 'common.action.unignore'
