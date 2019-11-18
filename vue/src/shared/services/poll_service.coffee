@@ -94,7 +94,7 @@ export default new class PollService
       canPerform: ->
         AbilityService.canExportPoll(poll)
       perform: ->
-        vm.$router.push LmoUrlService.poll(poll, {}, action: 'export', absolute: true)
+        vm.$router.push LmoUrlService.poll(poll, {}, action: 'export')
 
     delete_poll:
       name: 'common.action.delete'
