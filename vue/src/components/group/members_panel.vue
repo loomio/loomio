@@ -191,7 +191,7 @@ export default
               v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
             v-list-item-subtitle(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
             v-list-item-subtitle(v-if="!membership.acceptedAt")
-              span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
+              span(v-if="membership.inviter()" v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
           v-list-item-action
             membership-dropdown(:membership="membership")
       v-layout(justify-center)
