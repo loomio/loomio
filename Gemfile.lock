@@ -504,7 +504,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-raven (2.12.2)
+    sentry-raven (2.12.3)
       faraday (>= 0.7.6, < 1.0)
     sequenced (3.1.1)
       activerecord (>= 3.0)
