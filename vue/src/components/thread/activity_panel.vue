@@ -27,7 +27,7 @@ export default
     loader: null
     initialSlots: []
 
-  created: ->
+  mounted: ->
     @loader = new RecordLoader
       collection: 'events'
 
@@ -37,11 +37,11 @@ export default
       query: =>
         @canAddComment = AbilityService.canAddComment(@discussion)
 
-
     @respondToRoute()
 
   methods:
     respondToRoute: ->
+      return if @discussion.key != @$route.params.key
       return if @parentEvent.childCount == 0
 
       args = if parseInt(@$route.params.comment_id)
