@@ -34,6 +34,6 @@ export default
 	flex-direction: row
 	align-items: center
 .attachment-list__preview
-	max-width: 10%
+	max-height: 320px
 
 </style>
