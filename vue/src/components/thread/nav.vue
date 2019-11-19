@@ -1,7 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
-import { debounce, truncate, first, last, some, drop } from 'lodash'
+import { debounce, truncate, first, last, some, drop, min, compact } from 'lodash'
 
 export default
 
@@ -32,6 +32,7 @@ export default
           @presets = Records.events.collection.chain()
             .find({pinned: true, parentId: @discussion.createdEvent().id})
             .simplesort('position').data()
+          @setHeight()
           if @discussion.newestFirst
             @topPosition = @childCount
             @topDate = @discussion.lastActivityAt
@@ -58,7 +59,6 @@ export default
           @position = last(slots) || 1
         else
           @position = first(slots) || 1
-        @setHeight()
         @knobOffset = @offsetFor(@position)
         @knobHeight = @unitHeight * (last(slots) - first(slots) + 1)
         @$vuetify.goTo '.thread-nav__knob', container: '.thread-sidebar'
@@ -66,19 +66,14 @@ export default
   methods:
     setHeight: ->
       @trackHeight = 300
-      while @minOffset() < @minUnitHeight
-        @incrementHeight()
+      while (@minOffset() || @minUnitHeight) < @minUnitHeight
+        @trackHeight = @trackHeight * 1.25
 
     minOffset: ->
-      min = @trackHeight
-      for i in [2..@presets.length]
+      distances = [2..@presets.length].map (i) =>
         if @presets[i] && @presets[i-1]
-          v = (@presets[i].position * @unitHeight) - (@presets[i-1].position * @unitHeight)
-          min = v if v < min
-      min
-
-    incrementHeight: ->
-      @trackHeight = @trackHeight * 1.2
+          parseInt (@presets[i].position * @unitHeight) - (@presets[i-1].position * @unitHeight)
+      min compact distances
 
     onTrackClicked: (event) ->
       @moveKnob(event)
