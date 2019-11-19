@@ -132,7 +132,7 @@ GEM
     benchmark-ips (2.7.2)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    browser (2.6.1)
+    browser (2.7.0)
     builder (3.2.3)
     bullet (6.0.2)
       activesupport (>= 3.0.0)
@@ -577,7 +577,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk-s3
   bootsnap
-  browser (~> 2.6.1)
+  browser (~> 2.7.0)
   bullet
   byebug
   cancancan
