@@ -58,7 +58,7 @@ export default
                       })
 
 
-    stripDescription: (description = '') -> (description).replace(///<[^>]*>?///gm, '')
+    stripDescription: (description) -> (description || '').replace(///<[^>]*>?///gm, '')
 
   watch:
     '$route.query': 'findRecords'

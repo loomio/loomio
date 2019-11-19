@@ -63,7 +63,7 @@ export default
       @publicGroupIds = @group.publicOrganisationIds()
 
       @groupIds = switch (@$route.query.subgroups || 'mine')
-        when 'mine' then uniq(concat(intersection(@group.organisationIds(), Session.user().groupIds()), @publicGroupIds)) # the groups that i'm a member of + any public groups?
+        when 'mine' then uniq(concat(intersection(@group.organisationIds(), Session.user().groupIds()), @publicGroupIds, @group.id)) # @group.id is present if @group is a subgroup of parentgroup that i'm a member of, and that parent group has parentMembersCanSeeDiscussions
         when 'all' then @group.organisationIds()
         else [@group.id]
 
