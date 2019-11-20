@@ -14,7 +14,7 @@ export default
 
   created: ->
     @fetchMissing = debounce ->
-      @fetch(@missingSlots)
+      @fetch(sortBy(@missingSlots))
     , 500
 
     @watchRecords
