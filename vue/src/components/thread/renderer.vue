@@ -14,7 +14,7 @@ export default
 
   created: ->
     @fetchMissing = debounce ->
-      @fetch(sortBy(@missingSlots))
+      @fetch(@missingSlots)
     , 500
 
     @watchRecords
@@ -39,7 +39,7 @@ export default
       # lastSlot cannot be greater than childCount
 
       if @focalEvent
-        focalPosition = @focalEvent.position
+        focalPosition = @eventOrParent(@focalEvent).position
 
         firstRendered = max([1, focalPosition - @padding])
         lastRendered = min([focalPosition + @padding, @parentEvent.childCount])
@@ -53,7 +53,7 @@ export default
       eventsBySlot = {}
       presentPositions = []
       expectedPositions = range(firstRendered, lastRendered+1)
-      # console.log "rendering slots #{@visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, focalEvent: #{@focalEvent}"
+      # console.log "rendering slots #{@visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, focalEvent: ", @focalEvent
 
       for i in [@firstSlot..@lastSlot]
         eventsBySlot[i] = null
@@ -67,7 +67,7 @@ export default
         eventsBySlot[event.position] = event
 
       @eventsBySlot = eventsBySlot
-      @missingSlots = difference(expectedPositions, presentPositions)
+      @missingSlots = sortBy difference(expectedPositions, presentPositions)
 
       if @newestFirst && @parentEvent.depth == 0
         @slots = reverse([@firstSlot..@lastSlot])
