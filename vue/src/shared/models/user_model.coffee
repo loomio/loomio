@@ -27,11 +27,9 @@ export default class UserModel extends BaseModel
   identityFor: (type) ->
     _.find @identities(), (i) -> i.identityType == type
 
-  membershipFor: (group) ->
-    _.head @recordStore.memberships.find(groupId: group.id, userId: @id)
 
   adminMemberships: ->
-    _.filter @memberships(), (m) -> m.admin
+    @recordStore.memberships.find(userId: @id, admin: true)
 
   groupIds: ->
     _.map(@memberships(), 'groupId')
@@ -80,10 +78,12 @@ export default class UserModel extends BaseModel
     @id == object.authorId if object
 
   isAdminOf: (group) ->
-    _.includes(group.adminIds(), @id) if group
+    @recordStore.memberships.find(groupId: group.id, userId: @id, admin: true)[0]?
 
-  isMemberOf: (group) ->
-    _.includes(group.memberIds(), @id) if group
+  isMemberOf: (group) -> @membershipFor(group)?
+
+  membershipFor: (group) ->
+    @recordStore.memberships.find(groupId: group.id, userId: @id)[0]
 
   firstName: ->
     _.head @name.split(' ') if @name
