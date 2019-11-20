@@ -56,8 +56,7 @@ class Event < ApplicationRecord
   def self.build(eventable, **args)
     new({
       kind:       name.demodulize.underscore,
-      eventable:  eventable,
-      created_at: eventable.created_at
+      eventable:  eventable
     }.merge(args))
   end
 
