@@ -39,7 +39,7 @@ export default
       # lastSlot cannot be greater than childCount
 
       if @focalEvent
-        focalPosition = @focalEvent
+        focalPosition = @focalEvent.position
 
         firstRendered = max([1, focalPosition - @padding])
         lastRendered = min([focalPosition + @padding, @parentEvent.childCount])
@@ -99,7 +99,7 @@ export default
             EventBus.$emit 'visibleSlots', newVal
           @renderSlots()
 
-    missingSlots: (newVal, oldVal) ->
+    missingSlots: ->
       @fetchMissing() if @visibleSlots.length
 
     newestFirst: -> @visibleSlots = []
