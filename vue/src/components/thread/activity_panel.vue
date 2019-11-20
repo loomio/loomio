@@ -58,7 +58,11 @@ export default
 
       @fetchEvent(args.column, args.id).then (event) =>
         @focalEvent = event
-        @scrollTo("#sequence-#{event.sequenceId}") if args.scrollTo
+        if args.scrollTo
+          @scrollTo "#sequence-#{event.sequenceId}", =>
+            setTimeout =>
+              @focalEvent = null
+            , 1000
 
 
     fetchEvent: (idType, id) ->
@@ -138,5 +142,5 @@ export default
       space
       span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
       span(v-if="!discussion.newestFirst" v-t="'poll_common_votes_panel.oldest_first'")
-  thread-renderer(v-if="focalEvent && parentEvent" :newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent")
+  thread-renderer(v-if="parentEvent" :newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent")
 </template>
