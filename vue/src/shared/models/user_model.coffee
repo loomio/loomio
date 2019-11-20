@@ -78,6 +78,7 @@ export default class UserModel extends BaseModel
     @id == object.authorId if object
 
   isAdminOf: (group) ->
+    return false unless group
     @recordStore.memberships.find(groupId: group.id, userId: @id, admin: true)[0]?
 
   isMemberOf: (group) -> @membershipFor(group)?
