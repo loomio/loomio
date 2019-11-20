@@ -9,7 +9,7 @@
     "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2"
   },
   "dependencies": {
-    "@sentry/browser": "^5.9.0",
+    "@sentry/browser": "^5.9.1",
     "@sentry/integrations": "^5.7.1",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
