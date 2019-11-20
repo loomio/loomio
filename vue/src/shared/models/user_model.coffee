@@ -83,6 +83,7 @@ export default class UserModel extends BaseModel
   isMemberOf: (group) -> @membershipFor(group)?
 
   membershipFor: (group) ->
+    return unless group
     @recordStore.memberships.find(groupId: group.id, userId: @id)[0]
 
   firstName: ->

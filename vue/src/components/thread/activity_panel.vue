@@ -51,10 +51,13 @@ export default
       else if parseInt(@$route.params.sequence_id)
         {column: 'sequenceId', id: parseInt(@$route.params.sequence_id), scrollTo: true}
       else
-        if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
-          {column: 'position', id: @parentEvent.childCount}
+        if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
+          {column: 'sequenceId', id: @discussion.firstUnreadSequenceId(), scrollTo: true}
         else
-          {column: 'position', id: 1}
+          if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
+            {column: 'position', id: @parentEvent.childCount}
+          else
+            {column: 'position', id: 1}
 
       @fetchEvent(args.column, args.id).then (event) =>
         if args.scrollTo
