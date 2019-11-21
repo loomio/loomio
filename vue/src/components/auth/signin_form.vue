@@ -12,6 +12,8 @@ export default
     user: Object
   data: ->
     vars: {}
+    loading: false
+
   methods:
     signIn: ->
       # EventBus.emit $scope, 'processing'
@@ -23,10 +25,8 @@ export default
       @signIn()
 
     sendLoginLink: ->
-      # EventBus.emit $scope, 'processing'
-      AuthService.sendLoginLink(@user).finally ->
-        # EventBus.emit $scope, 'doneProcessing'
-        console.log 'doneProcessing'
+      AuthService.sendLoginLink(@user).finally =>
+        @loading = false
 
     submit: ->
       if @user.hasPassword or @user.hasToken
@@ -60,9 +60,9 @@ export default
       validation-errors(:subject='user', field='password')
 
       v-card-actions
-        v-btn.auth-signin-form__login-link(:color="user.hasPassword ? '' : 'primary'" v-t="'auth_form.login_link'" @click='sendLoginLink()')
+        v-btn.auth-signin-form__login-link(:color="user.hasPassword ? '' : 'primary'" v-t="'auth_form.login_link'" @click='sendLoginLink()' :loading="loading && !user.password")
         v-spacer
-        v-btn.auth-signin-form__submit(:color="user.hasPassword ? 'primary' : ''" v-t="'auth_form.sign_in'" @click='submit()' :disabled='!user.password' v-if='user.hasPassword')
+        v-btn.auth-signin-form__submit(:color="user.hasPassword ? 'primary' : ''" v-t="'auth_form.sign_in'" @click='submit()' :disabled='!user.password' v-if='user.hasPassword' :loading="loading && user.password")
 
     .auth-signin-form__no-password(v-if='!user.hasPassword')
       v-layout(justify-center)

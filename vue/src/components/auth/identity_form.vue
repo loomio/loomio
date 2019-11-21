@@ -18,7 +18,7 @@ export default
       @user.email = @email
       AuthService.sendLoginLink(@user).then (->), ->
         @user.errors = {email: [@$t('auth_form.email_not_found')]}
-      .finally ->
+      .finally =>
         @loading = false
     createAccount: -> @user.createAccount = true
   computed:
