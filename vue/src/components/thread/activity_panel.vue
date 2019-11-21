@@ -26,6 +26,7 @@ export default
     focalEvent: null
     loader: null
     initialSlots: []
+    isReturning: @discussion.lastReadAt?
 
   mounted: ->
     @loader = new RecordLoader
@@ -139,11 +140,12 @@ export default
 
 <template lang="pug">
 .activity-panel
+  p returning {{isReturning}}
   .text-center.py-2
     v-btn.action-button.grey--text(text small @click="openArrangementForm()" v-if="canEditThread")
       span(v-t="{path: 'activity_card.count_responses', args: {count: parentEvent.childCount}}")
       space
       span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
       span(v-if="!discussion.newestFirst" v-t="'poll_common_votes_panel.oldest_first'")
-  thread-renderer(v-if="parentEvent" :newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent")
+  thread-renderer(v-if="parentEvent" :newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent" :is-returning="isReturning")
 </template>

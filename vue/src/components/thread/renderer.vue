@@ -11,6 +11,7 @@ export default
     focalEvent: Object
     fetch: Function
     newestFirst: Boolean
+    isReturning: Boolean
 
   created: ->
     @fetchMissing = debounce ->
@@ -116,5 +117,5 @@ export default
     | visible {{visibleSlots}}
     | missing {{missingSlots}}
   .thread-item-slot(v-for="slot in slots" :key="slot" v-observe-visibility="{callback: (isVisible) => slotVisible(isVisible, slot)}" )
-    thread-item-wrapper(:parent-id="parentEvent.id" :event="eventsBySlot[slot]" :position="parseInt(slot)" :focal-event="focalEvent")
+    thread-item-wrapper(:parent-id="parentEvent.id" :event="eventsBySlot[slot]" :position="parseInt(slot)" :focal-event="focalEvent" :is-returning="isReturning")
 </template>

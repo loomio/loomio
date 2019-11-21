@@ -12,6 +12,7 @@ import RangeSet from '@/shared/services/range_set'
 
 export default
   props:
+    isReturning: Boolean
     event:
       type: Object
       required: true
@@ -55,7 +56,7 @@ export default
     isUnread: ->
       Session.isSignedIn() &&
       Session.user().id != @event.actorId &&
-      @discussion.readItemsCount() > 0 &&
+      @isReturning &&
       !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
     headline: ->

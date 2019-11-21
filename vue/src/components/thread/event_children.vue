@@ -11,6 +11,7 @@ export default
   props:
     parentEvent: Object
     focalEvent: Object
+    isReturning: Boolean
 
   created: ->
     @loader = new RecordLoader
@@ -33,5 +34,5 @@ export default
 
 <template lang="pug">
 .event-children
-  thread-renderer(:parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent")
+  thread-renderer(:parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent" :is-returning="isReturning")
 </template>
