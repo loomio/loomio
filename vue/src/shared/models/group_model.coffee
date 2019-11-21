@@ -141,7 +141,7 @@ export default class GroupModel extends BaseModel
   logoUrl: ->
     if @logoUrlMedium
       @logoUrlMedium
-    else if @isSubgroup()
+    else if @parent()
       @parent().logoUrl()
     else
       AppConfig.theme.icon_src
