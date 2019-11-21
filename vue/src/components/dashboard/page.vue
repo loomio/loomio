@@ -62,6 +62,7 @@ export default
       @refresh()
 
     refresh: ->
+      return unless Session.isSignedIn()
       @fetch()
       @query()
 
