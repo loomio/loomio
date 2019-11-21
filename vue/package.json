@@ -21,6 +21,7 @@
     "deepmerge": "^4.2.2",
     "detect-it": "^3.0.5",
     "diff-match-patch": "^1.0.4",
+    "intersection-observer": "^0.7.0",
     "jstimezonedetect": "~1.0.7",
     "lodash": "4.17.15",
     "lokijs": "1.5.8",
