@@ -12,7 +12,7 @@ export default
     open: null
     knobOffset: 0
     knobHeight: 32
-    trackHeight: 300
+    trackHeight: 400
     position: 1
     minUnitHeight: 24
     presets: []
@@ -65,7 +65,7 @@ export default
 
   methods:
     setHeight: ->
-      @trackHeight = 300
+      @trackHeight = 400
       while ((@minOffset() || @minUnitHeight) < @minUnitHeight) && (@trackHeight < 100000)
         @trackHeight = @trackHeight * 1.25
 
