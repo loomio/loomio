@@ -19,7 +19,7 @@ export default
       AuthService.signIn(@user).finally => 'doneProcessing'
 
     signInAndSetPassword: ->
-      LmoUrlService.params('set_password', true)
+      @$router.replace(query: {set_password: true})
       @signIn()
 
     sendLoginLink: ->
