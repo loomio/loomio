@@ -34,12 +34,14 @@ export default
     h2.headline(v-t="{ path: 'auth_form.hello', args: { name: user.name || user.email } }")
   .auth-identity-form__options
     .auth-identity-form__new-account.mb-8
-      p(v-t="{ path: 'auth_form.new_to_loomio', args: { site_name: siteName } }")
-      v-btn(color="primary" @click='createAccount()' v-t="'auth_form.create_account'" :disabled="email.length > 0")
+      p.text-center(v-t="{ path: 'auth_form.new_to_loomio', args: { site_name: siteName } }")
+      v-layout(justify-center)
+        v-btn(color="primary" @click='createAccount()' v-t="'auth_form.create_account'" :disabled="email.length > 0")
     .auth-identity-form__existing-account
       .auth-email-form__email
         label(v-t="{ path: 'auth_form.already_a_user', args: { site_name: siteName }}")
         v-text-field#email.lmo-primary-form-input(name='email' type='text' v-autofocus='true' :placeholder="$t('auth_form.email_address_of_existing_account')" v-model='email')
         validation-errors(:subject='user' :field='email')
-      v-btn(color="primary" @click='submit()' v-t="'auth_form.link_accounts'" :loading="loading" :disabled="email.length == 0")
+      v-layout(justify-center)
+        v-btn(color="primary" @click='submit()' v-t="'auth_form.link_accounts'" :loading="loading" :disabled="email.length == 0")
 </template>
