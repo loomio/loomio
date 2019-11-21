@@ -53,7 +53,10 @@ export default
     iconSize: -> if (@event.depth == 1) then 40 else 24
 
     isUnread: ->
-      (Session.user().id != @event.actorId) && !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
+      Session.isSignedIn() &&
+      Session.user().id != @event.actorId &&
+      @event.discussion().readItemsCount > 0 &&
+      !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
     headline: ->
       @$t eventHeadline(@event, true ), # useNesting

@@ -5,14 +5,16 @@ class BetaController < ApplicationController
   end
 
   def update
-    if params[:enable]
-      current_user.experiences['vue_client'] = true
-      current_user.save
-      redirect_to '/dashboard?use_vue=1'
-    else
+    if params[:enable] # don't use old client
       current_user.experiences.delete('vue_client')
+      current_user.experiences.delete('old_client')
       current_user.save
-      redirect_to '/dashboard?'
+      redirect_to '/dashboard'
+    else #use old client
+      current_user.experiences.delete('vue_client')
+      current_user.experiences['old_client'] = true
+      current_user.save
+      redirect_to '/dashboard?old_client=1'
     end
   end
 end
