@@ -140,7 +140,6 @@ export default
 
 <template lang="pug">
 .activity-panel
-  p returning {{isReturning}}
   .text-center.py-2
     v-btn.action-button.grey--text(text small @click="openArrangementForm()" v-if="canEditThread")
       span(v-t="{path: 'activity_card.count_responses', args: {count: parentEvent.childCount}}")
