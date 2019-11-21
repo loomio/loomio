@@ -32,6 +32,10 @@ class LoggedOutUser
     0
   end
 
+  def message_channel
+    nil
+  end
+
   def nil_methods
     super + [:id, :created_at, :avatar_url, :presence, :restricted, :persisted?]
   end
