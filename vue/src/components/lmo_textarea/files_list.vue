@@ -31,7 +31,6 @@ export default
 	p
 		img
 			width: 100%
-.files-list__icon
 .files-list__item
 	display: flex
 	align-items: center
@@ -44,7 +43,4 @@ export default
 .files-list__progress-bar
 	width: 0
 	transition: width 120ms ease-out, opacity 60ms 60ms ease-in
-.files-list__remove
-
-
 </style>
