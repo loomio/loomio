@@ -21,18 +21,18 @@ describe PollsController do
     PollService.create(poll: poll, actor: poll.author)
   end
 
-  describe 'show' do
-    it 'sets metadata for public polls' do
-      poll.update(anyone_can_participate: true)
-      get :show, params: { key: poll.key }
-      expect(assigns(:metadata)[:title]).to eq poll.title
-    end
-
-    it 'does not set metadata for private polls' do
-      get :show, params: { key: poll.key }
-      expect(assigns(:metadata)[:title]).to be_nil
-    end
-  end
+  # describe 'show' do
+  #   it 'sets metadata for public polls' do
+  #     poll.update(anyone_can_participate: true)
+  #     get :show, params: { key: poll.key }
+  #     expect(assigns(:metadata)[:title]).to eq poll.title
+  #   end
+  #
+  #   it 'does not set metadata for private polls' do
+  #     get :show, params: { key: poll.key }
+  #     expect(assigns(:metadata)[:title]).to be_nil
+  #   end
+  # end
 
 
   describe 'export' do
