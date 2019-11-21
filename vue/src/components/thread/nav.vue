@@ -61,7 +61,6 @@ export default
           @position = first(slots) || 1
         @knobOffset = @offsetFor(@position)
         @knobHeight = @unitHeight * (last(slots) - first(slots) + 1)
-        @$vuetify.goTo '.thread-nav__knob', container: '.thread-sidebar'
 
   methods:
     setHeight: ->
