@@ -55,7 +55,7 @@ export default
     isUnread: ->
       Session.isSignedIn() &&
       Session.user().id != @event.actorId &&
-      @event.discussion().readItemsCount > 0 &&
+      @discussion.readItemsCount() > 0 &&
       !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
     headline: ->

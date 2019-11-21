@@ -7,15 +7,18 @@ export default
   props:
     user: Object
     identity: Object
+
+  data: ->
+    loading: false
+
   methods:
     submit: ->
-      # EventBus.emit $scope, 'processing'
+      @loading = true
       @user.email = @email
       AuthService.sendLoginLink(@user).then (->), ->
         @user.errors = {email: [@$t('auth_form.email_not_found')]}
       .finally ->
-        console.log 'doneProcessing'
-        # EventBus.emit $scope, 'doneProcessing'
+        @loading = false
     createAccount: -> @user.createAccount = true
   computed:
     siteName: -> AppConfig.theme.site_name
@@ -36,5 +39,5 @@ export default
         label(v-t="'auth_form.email'")
         v-text-field#email.lmo-primary-form-input(name='email' type='text' v-autofocus='true' :placeholder="$t('auth_form.email_address_of_existing_account')" v-model='email')
         validation-errors(:subject='user' :field='email')
-      v-btn(@click='submit()' v-t="'auth_form.link_accounts'")
+      v-btn(@click='submit()' v-t="'auth_form.link_accounts'" :loading="loading")
 </template>
