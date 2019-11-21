@@ -1,5 +1,9 @@
 module ErrorRescueHelper
   def self.included(base)
+    base.rescue_from(ActionController::UnknownFormat) do
+      respond_with_error message: :"errors.not_found", status: 404
+    end
+    
     base.rescue_from(ActionView::MissingTemplate)  do |exception|
       raise exception unless %w[txt text gif png].include?(params[:format])
     end
