@@ -110,7 +110,7 @@ export default
 
     goToPosition: (position) ->
       unless (@$route.query && @$route.query.p == position)
-        @$router.replace(query: {p: position}, params: {sequence_id: null, comment_id: null})
+        @$router.replace(query: {p: position}, params: {sequence_id: null, comment_id: null}).catch (err) => {}
 
     offsetFor: (position) ->
       if @discussion && @discussion.newestFirst

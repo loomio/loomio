@@ -29,7 +29,7 @@ export default
         if @poll.discussionId
           discussion = @poll.discussion()
           discussionUrl = @urlFor(discussion)+'/'+@poll.createdEvent().sequenceId
-          @$router.replace(discussionUrl)
+          @$router.replace(discussionUrl).catch (err) => {}
 
         EventBus.$emit 'currentComponent',
           group: poll.group()
