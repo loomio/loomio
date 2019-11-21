@@ -17,4 +17,5 @@ browserVersion = parseInt(browser.parsedResult.browser.version)
 export isIncompatibleBrowser =
   (browserName == 'Internet Explorer') ||
   (browserName == 'Microsoft Edge' && browserVersion < 17) ||
-  (browserName == 'Safari' && browserVersion < 12)
+  (browserName == 'Safari' && browserVersion < 12) ||
+  (browserName == 'Firefox' && browserVersion < 50)
