@@ -28,7 +28,9 @@ export default
 <template lang="pug">
 .auth-identity-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   .mb-4.text-center
-    auth-avatar(:user='user')
+    v-layout(justify-center)
+      auth-avatar(:user='user')
+  .mb-4.text-center
     h2.headline(v-t="{ path: 'auth_form.hello', args: { name: user.name || user.email } }")
   .auth-identity-form__options
     .auth-identity-form__new-account.mb-8

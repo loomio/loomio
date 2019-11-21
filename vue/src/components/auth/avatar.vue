@@ -21,5 +21,5 @@ export default
 </script>
 <template lang="pug">
 .auth-avatar
-  user-avatar.auth-avatar__avatar.mx-auto(:user='avatarUser', size='large', :no-link='true')
+  user-avatar.auth-avatar__avatar(:user='avatarUser', size='large', :no-link='true')
 </template>
