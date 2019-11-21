@@ -10,6 +10,7 @@ export default
 
   data: ->
     loading: false
+    email: ''
 
   methods:
     submit: ->
@@ -32,12 +33,11 @@ export default
   .auth-identity-form__options
     .auth-identity-form__new-account.mb-8
       p(v-t="{ path: 'auth_form.new_to_loomio', args: { site_name: siteName } }")
-      v-btn(color="primary" @click='createAccount()', v-t="'auth_form.create_account'")
+      v-btn(color="primary" @click='createAccount()' v-t="'auth_form.create_account'" :disabled="email.length > 0")
     .auth-identity-form__existing-account
-      p(v-t="{ path: 'auth_form.already_a_user', args: { site_name: siteName }}")
       .auth-email-form__email
-        label(v-t="'auth_form.email'")
+        label(v-t="{ path: 'auth_form.already_a_user', args: { site_name: siteName }}")
         v-text-field#email.lmo-primary-form-input(name='email' type='text' v-autofocus='true' :placeholder="$t('auth_form.email_address_of_existing_account')" v-model='email')
         validation-errors(:subject='user' :field='email')
-      v-btn(@click='submit()' v-t="'auth_form.link_accounts'" :loading="loading")
+      v-btn(color="primary" @click='submit()' v-t="'auth_form.link_accounts'" :loading="loading" :disabled="email.length == 0")
 </template>

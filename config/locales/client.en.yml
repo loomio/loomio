@@ -2168,7 +2168,7 @@ en:
     hello: "Hello, {{name}}!"
     new_to_loomio: First time on {{site_name}}?
     already_a_user: Already have an account?
-    email_address_of_existing_account: Email address of existing account
+    email_address_of_existing_account: Enter email address of your existing account
     link_accounts: Link accounts
     check_your_email: Check your email!
     login_link_sent: "We've sent an email to {{email}}."
