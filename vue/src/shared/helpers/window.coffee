@@ -14,5 +14,7 @@ browser = Bowser.getParser(window.navigator.userAgent)
 browserName = browser.parsedResult.browser.name
 browserVersion = parseInt(browser.parsedResult.browser.version)
 
-export isIncompatibleBrowser = (browserName == 'Internet Explorer') ||
-  (browserName == 'Microsoft Edge' && browserVersion < 16)
+export isIncompatibleBrowser =
+  (browserName == 'Internet Explorer') ||
+  (browserName == 'Microsoft Edge' && browserVersion < 17) ||
+  (browserName == 'Safari' && browserVersion < 12)

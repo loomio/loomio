@@ -1,6 +1,6 @@
-%h1 Loomio 2.0 beta
+%h1 Select Loomio version
 
-%p Using the buttons below you can enable or disable Loomio 2.0 beta for your user account.
+%p Loomio 2.0 is the latest version of Loomio. It requires a modern web browser.
 
 %p
   To find out what's new, check out
@@ -12,9 +12,9 @@
   group.
 
 %div{style: "display: flex; margin: 0 auto; text-align: center"}
+
   = form_tag(beta_path, method: :put) do
-    = hidden_field_tag :enable, value: true
-    = submit_tag "Enable Loomio 2.0 beta"
+    = submit_tag "Use Loomio 1.0 (old loomio)"
 
   &nbsp;
 
@@ -23,6 +23,7 @@
   &nbsp;
 
   = form_tag(beta_path, method: :put) do
-    = submit_tag "Disable Loomio 2.0 beta"
+    = hidden_field_tag :enable, value: true
+    = submit_tag "Use Loomio Loomio 2.0"
 
 %p Remember you can return to www.loomio.org/beta to switch back, anytime.
