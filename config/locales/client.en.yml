@@ -2166,8 +2166,9 @@ en:
     set_password: Set password
     set_password_helptext: Want to use a password next time?
     hello: "Hello, {{name}}!"
-    new_to_loomio: First time on {{site_name}}? Create an account
-    already_a_user: Used {{site_name}} before? Enter the email address you used last time to link it up.
+    new_to_loomio: First time on {{site_name}}?
+    already_a_user: Already have an account?
+    email_address_of_existing_account: Email address of existing account
     link_accounts: Link accounts
     check_your_email: Check your email!
     login_link_sent: "We've sent an email to {{email}}."
