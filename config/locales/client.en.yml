@@ -1871,7 +1871,7 @@ en:
       <p>A pie chart gives an overview of the positions in the group, while the statements allow individual voices to be heard. </p>
       <p>Don't be discouraged if you don't see agreement at first, proposals are designed to surface issues that need resolving.</p>
       <p>With good participation a proposal is a powerful mandate to take action.</p>
-    tool_tip_collapsed: Make a proposal. Seek agreement or feedback from others.
+    tool_tip_collapsed: Seek agreement or feedback from others.
     start_header: Start proposal
     edit_header: Edit proposal
     tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Learn more</a>
