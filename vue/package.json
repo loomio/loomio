@@ -9,14 +9,14 @@
     "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2"
   },
   "dependencies": {
-    "@sentry/browser": "^5.9.0",
+    "@sentry/browser": "^5.9.1",
     "@sentry/integrations": "^5.7.1",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "bowser": "^2.7.0",
     "chromedriver": "^78.0.1",
     "core-js": "^2.6.10",
-    "date-fns": "2.7.0",
+    "date-fns": "2.8.0",
     "date-fns-tz": "1.0.8",
     "deepmerge": "^4.2.2",
     "detect-it": "^3.0.5",
