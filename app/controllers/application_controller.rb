@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   before_action :set_last_seen_at           # CurrentUserHelper
   before_action :handle_pending_memberships # PendingActionsHelper
   before_action :set_raven_context
+  before_action :handle_old_browsers
 
   helper_method :current_user
   helper_method :current_version
@@ -39,6 +40,16 @@ class ApplicationController < ActionController::Base
   def ok
     head :ok
   end
+
+  def handle_old_browsers
+    redirect_to '/417' if !request.params['old_client'] &&
+                          !request.xhr? &&
+                          (browser.ie? ||
+                          (browser.chrome? && browser.version.to_i < 50) ||
+                          (browser.safari? && browser.version.to_i < 12) ||
+                          (browser.edge?   && browser.version.to_i < 17))
+  end
+
 
   def redirect_to(url, opts = {})
     return super unless url.is_a? String # GK: for now this override only covers cases where a string has been passed in, so it does not cover cases of a Hash or a Record being passed in
