@@ -109,8 +109,8 @@ export default
       document.addEventListener 'mouseup', onMouseUp
 
     goToPosition: (position) ->
-      @$router.replace(query: {p: position}, params: {sequence_id: null})
-      @scrollTo("#d1p#{position}")
+      unless (@$route.query && @$route.query.p == position)
+        @$router.replace(query: {p: position}, params: {sequence_id: null, comment_id: null})
 
     offsetFor: (position) ->
       if @discussion && @discussion.newestFirst
