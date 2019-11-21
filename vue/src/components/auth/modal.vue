@@ -2,7 +2,7 @@
 import AppConfig from '@/shared/services/app_config'
 import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
-import AuthService from '@/shared/services/auth_service'
+import AuthService   from '@/shared/services/auth_service'
 
 export default
   props:
@@ -11,7 +11,7 @@ export default
 
   data: ->
     siteName: AppConfig.theme.site_name
-    user: Records.users.build()
+    user: Records.users.build(createAccount: false)
     isDisabled: false
 
   mounted: ->
