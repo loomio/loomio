@@ -106,7 +106,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model
   template(v-slot:prepend)
   template(v-slot:append)
     div.text-center
-      a(href="/beta" v-t="'vue_upgraded_modal.use_old_loomio'")
+      a(href="/dashboard?old_client=1" v-t="'vue_upgraded_modal.use_old_loomio'")
     v-layout.ma-2(style="width: 50%")
       v-img(:src="logoUrl")
       v-layout(align-center)
