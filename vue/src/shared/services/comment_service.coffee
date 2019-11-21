@@ -52,7 +52,7 @@ export default new class CommentService
       canPerform: ->
         comment.body && AbilityService.canTranslate(comment)
       perform: ->
-        comment.translate(Session.user().locale)
+        Session.user() && comment.translate(Session.user().locale)
 
     show_history:
       icon: 'mdi-history'

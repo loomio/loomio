@@ -1,4 +1,5 @@
 import 'url-search-params-polyfill'
+import 'intersection-observer'
 import Vue from 'vue'
 import AppConfig from '@/shared/services/app_config'
 import vuetify from '@/vuetify'

@@ -47,4 +47,4 @@ export default new class OutcomeService
       canPerform: ->
         AbilityService.canTranslate(outcome)
       perform: ->
-        outcome.translate(Session.user().locale)
+        Session.user() && outcome.translate(Session.user().locale)

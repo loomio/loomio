@@ -34,21 +34,26 @@ export default
   methods:
     renderSlots: ->
       return if @parentEvent.childCount == 0
-      firstByVisible = first(@visibleSlots) && first(@visibleSlots) - (@padding * 2)
-      lastByVisible = last(@visibleSlots) && last(@visibleSlots) + (@padding * 2)
+      # firstSlot cannot be less than 1
+      # firstSlot should not increase
+      # lastSlot cannot be greater than childCount
 
-      firstByInitial = @eventOrParent(@focalEvent).position - (@padding * 2)
-      lastByInitial = @eventOrParent(@focalEvent).position + (@padding * 2)
+      if @focalEvent
+        focalPosition = @eventOrParent(@focalEvent).position
 
-      @firstSlot = max([1, min(compact([@firstSlot, firstByInitial, firstByVisible]))])
-      @lastSlot = min([@parentEvent.childCount, max(compact([lastByInitial, lastByVisible]))])
+        firstRendered = max([1, focalPosition - @padding])
+        lastRendered = min([focalPosition + @padding, @parentEvent.childCount])
+      else
+        firstRendered = max([1, first(@visibleSlots) - @padding])
+        lastRendered = min([last(@visibleSlots) + @padding, @parentEvent.childCount])
 
-      firstRendered = max([1, first(@visibleSlots) - @padding])
-      lastRendered = min([last(@visibleSlots) + @padding, @parentEvent.childCount])
+      @firstSlot = max([1, min(compact([@firstSlot, (firstRendered - (@padding * 2))]))])
+      @lastSlot = min([@parentEvent.childCount, (lastRendered + (@padding * 2))])
+
       eventsBySlot = {}
       presentPositions = []
       expectedPositions = range(firstRendered, lastRendered+1)
-      # console.log "rendering slots #{@visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, firstByVisible: #{firstByVisible} lastByVisible: #{lastByVisible} padding: #{@padding}, #{@initialSlots}"
+      # console.log "rendering slots #{@visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, focalEvent: ", @focalEvent
 
       for i in [@firstSlot..@lastSlot]
         eventsBySlot[i] = null
@@ -62,7 +67,7 @@ export default
         eventsBySlot[event.position] = event
 
       @eventsBySlot = eventsBySlot
-      @missingSlots = difference(expectedPositions, presentPositions)
+      @missingSlots = sortBy difference(expectedPositions, presentPositions)
 
       if @newestFirst && @parentEvent.depth == 0
         @slots = reverse([@firstSlot..@lastSlot])
@@ -83,6 +88,9 @@ export default
         @eventOrParent(event.parent())
 
   watch:
+    focalEvent: (newVal) ->
+      @renderSlots()
+
     visibleSlots:
       immediate: true
       handler: (newVal, oldVal) ->
@@ -91,10 +99,9 @@ export default
             EventBus.$emit 'visibleSlots', newVal
           @renderSlots()
 
-    missingSlots: (newVal, oldVal) ->
+    missingSlots: ->
       @fetchMissing() if @visibleSlots.length
 
-    focalEvent: (val) -> @visibleSlots = []
     newestFirst: -> @visibleSlots = []
 
 </script>

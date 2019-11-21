@@ -65,6 +65,13 @@ module.exports = {
     page.expectText('.discussions-panel__list', 'Vaya con dios', 20000)
   },
 
+  'closed_subgroup_whose_parent_members_can_see_private_threads': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_subgroup_with_parent_member_visibility')
+    page.expectText('.discussions-panel__list', 'Vaya con dios', 20000)
+  },
+
   'starts_an_open_group': (test) => {
     page = pageHelper(test)
 

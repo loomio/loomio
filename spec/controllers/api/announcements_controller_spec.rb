@@ -140,18 +140,13 @@ describe API::AnnouncementsController do
     let(:member) { create :user }
 
     describe 'discussion' do
-      let(:discussion)    { create :discussion, author: user }
-
-      it 'does not permit non author to announce' do
-        sign_in create(:user)
-        recipients = {user_ids: [notified_user.id], emails: []}
-        post :create, params: {discussion_id: discussion.id,
-                               announcement: {kind: "new_discussion", recipients: recipients}}
-        expect(response.status).to eq 403
+      before do
+        discussion.group.add_member! member
       end
 
+      let(:discussion)    { create :discussion, author: user }
+
       it 'cannot announce unless members_can_announce' do
-        discussion.group.add_member! member
         discussion.group.update(members_can_announce: false)
         sign_in member
         recipients = {user_ids: [notified_user.id], emails: []}
@@ -161,7 +156,6 @@ describe API::AnnouncementsController do
       end
 
       it 'can announce if members_can_announce' do
-        discussion.group.add_member! member
         discussion.group.update(members_can_announce: true)
         sign_in member
         recipients = {user_ids: [notified_user.id], emails: []}

@@ -27,7 +27,7 @@ export default
     loader: null
     initialSlots: []
 
-  created: ->
+  mounted: ->
     @loader = new RecordLoader
       collection: 'events'
 
@@ -37,11 +37,11 @@ export default
       query: =>
         @canAddComment = AbilityService.canAddComment(@discussion)
 
-
     @respondToRoute()
 
   methods:
     respondToRoute: ->
+      return if @discussion.key != @$route.params.key
       return if @parentEvent.childCount == 0
 
       args = if parseInt(@$route.params.comment_id)
@@ -51,14 +51,21 @@ export default
       else if parseInt(@$route.params.sequence_id)
         {column: 'sequenceId', id: parseInt(@$route.params.sequence_id), scrollTo: true}
       else
-        if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
-          {column: 'position', id: @parentEvent.childCount}
+        if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
+          {column: 'sequenceId', id: @discussion.firstUnreadSequenceId(), scrollTo: true}
         else
-          {column: 'position', id: 1}
+          if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
+            {column: 'position', id: @parentEvent.childCount}
+          else
+            {column: 'position', id: 1}
 
       @fetchEvent(args.column, args.id).then (event) =>
-        @focalEvent = event
-        @scrollTo("#sequence-#{event.sequenceId}") if args.scrollTo
+        if args.scrollTo
+          @focalEvent = event
+          @scrollTo "#sequence-#{event.sequenceId}", =>
+            setTimeout =>
+              @focalEvent = null
+            , 1000
 
 
     fetchEvent: (idType, id) ->
@@ -138,5 +145,5 @@ export default
       space
       span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
       span(v-if="!discussion.newestFirst" v-t="'poll_common_votes_panel.oldest_first'")
-  thread-renderer(v-if="focalEvent && parentEvent" :newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent")
+  thread-renderer(v-if="parentEvent" :newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent")
 </template>

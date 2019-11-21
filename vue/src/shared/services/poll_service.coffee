@@ -5,6 +5,7 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
+import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
   actions: (poll, vm) ->
@@ -53,7 +54,7 @@ export default new class PollService
       icon: 'mdi-translate'
       menu: true
       canPerform: -> AbilityService.canTranslate(poll)
-      perform: -> poll.translate(Session.user().locale)
+      perform: -> Session.user() && poll.translate(Session.user().locale)
 
     close_poll:
       icon: 'mdi-close-circle-outline'
@@ -94,7 +95,7 @@ export default new class PollService
       canPerform: ->
         AbilityService.canExportPoll(poll)
       perform: ->
-        vm.$router.push LmoUrlService.poll(poll, {}, action: 'export', absolute: true)
+        hardReload LmoUrlService.poll(poll, {}, action: 'export', absolute: true)
 
     delete_poll:
       name: 'common.action.delete'

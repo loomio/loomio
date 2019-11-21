@@ -29,6 +29,7 @@ export default
         name: 'poll_common.change_vote'
         icon: 'mdi-pencil'
         canPerform: =>
+          (Session.user() && @eventable.participant()) &&
           @eventable.latest && @eventable.poll().isActive() && @eventable.participant() == Session.user()
         perform: =>
           openModal
@@ -39,6 +40,7 @@ export default
       translate_stance:
         icon: 'mdi-translate'
         canPerform: =>
+          (@eventable.author() && Session.user()) &&
           @eventable.author().locale != Session.user().locale &&
           @eventable.reason && AbilityService.canTranslate(@eventable)
         perform: =>

@@ -60,7 +60,7 @@ export default
 </script>
 
 <template lang="pug">
-v-app-bar(app clipped-right elevate-on-scroll color="background")
+v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
   //- template(v-slot:img="{ props }")
   //-   v-img(v-bind="props" gradient="rgba(0,0,0,.3), rgba(0,0,0, .3), rgba(0,0,0,.8)")
 

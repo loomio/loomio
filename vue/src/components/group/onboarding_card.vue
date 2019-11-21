@@ -54,7 +54,7 @@ export default
       "loomio_onboarding.group_progress_card.activities.#{key}"
 
     close: ->
-      Records.memberships.saveExperience("dismissProgressCard", Session.user().membershipFor(@group))
+      Records.users.saveExperience("dismissProgressCard")
 
   computed:
     setupComplete: ->
@@ -63,7 +63,7 @@ export default
     show: ->
       @group.isParent() &&
       Session.user().isAdminOf(@group) &&
-      !Session.user().hasExperienced("dismissProgressCard", @group)
+      !Session.user().hasExperienced("dismissProgressCard")
 
 
 </script>

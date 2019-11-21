@@ -105,12 +105,13 @@ submit = (scope, model, options = {}) ->
     return if scope.isDisabled
     prepare(scope, model, options, prepareArgs)
     if confirm(confirmFn(model))
-      submitFn(model).then(
-        success(scope, model, options),
-        failure(scope, model, options),
-      ).finally(
-        cleanup(scope, model, options)
-      )
+      setTimeout ->
+        submitFn(model).then(
+          success(scope, model, options),
+          failure(scope, model, options),
+        ).finally(
+          cleanup(scope, model, options)
+        )
     else
       cleanup(scope, model, options)
 

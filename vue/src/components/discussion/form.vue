@@ -27,7 +27,8 @@ export default
           @close()
           if isNew
             @$router.push @urlFor(discussion)
-            @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
+            if AbilityService.canAnnounceThread(discussion)
+              @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
 
 
     @watchRecords
