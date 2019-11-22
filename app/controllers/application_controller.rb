@@ -21,15 +21,18 @@ class ApplicationController < ActionController::Base
   helper_method :supported_locales
 
   def index
-    handle_old_browsers
     expires_now
     prevent_caching
-    if ENV['TASK'] == 'e2e' or params['old_client'] or (current_user.is_logged_in? && current_user.experiences['old_client'])
-      render 'application/index', layout: false
+    if should_redirect_to_browser_upgrade?
+      redirect_to('/417')
     else
-      template = File.read(Rails.root.join('public/client/vue/index.html'))
-      template.sub! '<loomio_metadata_tags>', '<%= render "application/social_metadata" %>'
-      render inline: template, layout: false
+      if ENV['TASK'] == 'e2e' or params['old_client'] or (current_user.is_logged_in? && current_user.experiences['old_client'])
+        render 'application/index', layout: false
+      else
+        template = File.read(Rails.root.join('public/client/vue/index.html'))
+        template.sub! '<loomio_metadata_tags>', '<%= render "application/social_metadata" %>'
+        render inline: template, layout: false
+      end
     end
   end
 
@@ -40,16 +43,6 @@ class ApplicationController < ActionController::Base
   def ok
     head :ok
   end
-
-  def handle_old_browsers
-    redirect_to '/417' if !request.params['old_client'] &&
-                          !request.xhr? &&
-                          (browser.ie? ||
-                          (browser.chrome? && browser.version.to_i < 50) ||
-                          (browser.safari? && browser.version.to_i < 12) ||
-                          (browser.edge?   && browser.version.to_i < 17))
-  end
-
 
   def redirect_to(url, opts = {})
     return super unless url.is_a? String # GK: for now this override only covers cases where a string has been passed in, so it does not cover cases of a Hash or a Record being passed in
@@ -68,5 +61,16 @@ class ApplicationController < ActionController::Base
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate' # HTTP 1.1.
     response.headers['Pragma'] = 'no-cache' # HTTP 1.0.
     response.headers['Expires'] = '0' # Proxies.
+  end
+
+  private
+
+  def should_redirect_to_browser_upgrade?
+    !request.params['old_client'] &&
+    !request.xhr? &&
+    (browser.ie? ||
+    (browser.chrome? && browser.version.to_i < 50) ||
+    (browser.safari? && browser.version.to_i < 12) ||
+    (browser.edge?   && browser.version.to_i < 17))
   end
 end
