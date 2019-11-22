@@ -628,6 +628,7 @@ fr:
     move_thread: 'Déplacer dans le groupe '
     poll_copied: URL de la décision copiée
     discussion_copied: URL de la discussion copiée
+    url_copied: Lien copié dans presse-papiers
     tag_thread: Gérer les mots-clés
     close_thread: Clore la discussion
     reopen_thread: Ré-ouvrir la discussion
@@ -1703,7 +1704,6 @@ fr:
         <p>Un diagramme circulaire donne un aperçu des avis dans le groupe, tandis que les explications permettent aux voix individuelles d’être entendues. </p>
         <p>Ne soyez pas découragé⋅e si vous ne voyez pas d’accord au début, les propositions sont faites pour faire émerger les problèmes qui ont besoin d’être résolus.</p>
         <p>Avec une bonne participation, une proposition est un mandat puissant pour passer à l’action.
-    tool_tip_collapsed: Confirmer l'accord, demander des éclaircissements ou vérifier s'il y a objection
     start_header: Faire une proposition
     edit_header: Modifier la proposition
     tip: Recherche le consensus par un processus permettant à tous de s'exprimer.<a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Apprenez-en plus</a>
@@ -1883,6 +1883,26 @@ fr:
     stance_created: Choix enregistré
     stance_updated: Choix mis à jour
   thread_item:
+    comment_replied_to: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>en réponse à <strong>{{title}}</strong>"
+    discussion_title_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a édité le titre de la discussion"
+    discussion_context_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a édité le contexte de la discussion "
+    discussion_attachments_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a édité les pièces jointes de la discussion"
+    discussion_privacy_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a modifié la confidentialité de la discussion"
+    discussion_edited: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a édité la discussion"
+    discussion_moved: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a déplacé la discussion de <strong>{{title}}</strong>"
+    discussion_closed: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a fermé la discussion"
+    discussion_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a réouvert la discussion"
+    discussion_forked: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a créé une ramification logicielle de cette discussion : <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>"
+    outcome_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a partagé un résultat"
+    poll_reopened: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a réouvert le {{polltype}}"
+    poll_closed_by_user: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a fermé le {{polltype}}"
+    poll_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a démarré un {{polltype}}"
+    poll_created_no_title: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a démarré un {{polltype}}"
+    poll_edited: "</strong><a href='/u/{{username}}'>{{polltype}}</a></strong>a édité le {{polltype}}"
+    poll_option_added: "<strong><a href='/u/{{username}}'>{{author}}</a></strong> a ajouté les options au  {{polltype}}"
+    poll_expired: "{{polltype}} fermé"
+    stance_created: "<strong><a href='/u/{{username}}'>{{author}}</a></strong>a voté pour : <strong>{{title}}</strong>"
     event_removed: "retiré de la discussion"
   poll_admin_page:
     title: Administration - {{title}}
@@ -1914,12 +1934,16 @@ fr:
     filter_placeholder: (Tous les sondages)
     groups_placeholder: (Tous les groupes)
   auth_form:
+    code: '000000'
     sign_in_to_loomio: Identifiez-vous sur {{site_name}}
     sign_in: Se connecter
     continue: Continuer
     create_account: Créez un compte
     sign_in_as: Se connecter comme  {{name}}
+    continue_with_provider: Connectez-vous avec {{provider}}
+    continue_with_email: Connectez-vous avec votre adresse mail
     or_enter_your_email: Ou saisir votre adresse e-mail
+    invitation_required: Vous avez besoin d'une invitation afin de créer un compte
     more_providers: Plus
     email_not_present: Une adresse e-mail est nécessaire
     invalid_email: "Désolé, ça ne semble pas être une adresse e-mail valide."
@@ -1938,13 +1962,14 @@ fr:
     name_required: Entrez un nom
     terms_required: Vous devez accepter les Conditions d'utilisation
     account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé !
+    privacy_notice: "Nous ne vendrons jamais vos données. <br><a href='{{privacyUrl}}' target='_blank'> Politique de confidentialité</a>"
     welcome: Nouveau sur {{siteName}} ?
     welcome_back: Content de vous revoir, {{name}} !
+    forgot_password: Mot de passe oublié
+    login_link: Envoyer l'adresse mail d'inscription
     set_password: Définir un mot de passe
     set_password_helptext: Vous souhaitez un mot de passe pour la prochaine fois ?
     hello: "Bonjour, {{name}} !"
-    new_to_loomio: Nouveau sur {{site_name}} ? Créez un compte !
-    already_a_user: Vous avez déjà un compte {{site_name}} ? Entrez votre adresse e-mail pour connecter à ce compte au vôtre.
     link_accounts: Comptes associés
     check_your_email: Vérifier votre e-mail !
     login_link_sent: "Ok, nous avons envoyé un message à {{email}}."
@@ -1952,6 +1977,7 @@ fr:
     too_many_attempts: "Trop de tentatives, essayez de cliquer sur le lien dans le courriel pour vous connecter."
     invalid_code: "Désolé, le code ne correspond pas. Vérifiez le courriel et essayez de nouveau."
     password_link_sent: "Nous avons envoyé un courriel à {{email}} avec les instructions pour définir votre mot de passe."
+    reactivate_link_sent: "Nous vous avons envoyé un mail avec des instructions pour réactiver votre compte"
     signed_in: Connexion réussie
     email_verified: La vérification par courriel a réussi
     name: Nom
@@ -1965,11 +1991,16 @@ fr:
       install_helptext: Le robot Loomio envoie des notifications à votre équipe concernant les discussions et les décisions qui ont lieu sur Loomio.
       installed_title: Connecté·e à Microsoft Teams
       installed_helptext: Les événements de ce groupe seront envoyés vers votre équipe Microsoft Team.
+      install_microsoft: Intégrer Microsoft Teams
+      remove_identity: Retirer l'intégration de Microsoft Teams
+      confirm_remove_title: Retirer l'intégration de Microsoft Teams
       confirm_remove_helptext: |
           Votre canal d'équipes Microsoft ne recevra plus les mises à jour de ce groupe.
           Vous pourrez toujours les ajouter de nouveau.
       identity_removed: Intégration retirée
     form:
+      webhook_helptext: Entrez l'URL webhook fournie par la chaîne de vos équipes. <a href="https://help.loomio.org/en/user_manual/groups/integrations/#microsoft-teams">Apprenez en plus sur comment paramétrez Microsoft Soft Teams avec Loomio</a>
+      webhook_label: L'URL webhook
       webhook_installed: Connecté·e à Microsoft Teams
       webhook_placeholder: https://outlook.office.com/...
       event_kind_helptext: Quels événements devraient être postés dans le canal des équipes ?
@@ -1981,8 +2012,16 @@ fr:
       poll_closing_soon: Un sondage sera bientôt terminé
       poll_expired: Un sondage est achevé
       outcome_created: Un bilan a été partagé
+  configure_sso:
+    title: Configurer le service d'authentification unique (SSO)
+    helptext: |
+        Vous souhaitez utiliser Loomio au sein de votre organisation et gérer les accès via OneLogin, Auth0, Microsoft Active Directory ou un autre fournisseur de norme SAML ?
+        Nous effectuons un bêta-test de notre intégration SSO, contactez-nous pour en faire partie et nous nous occuperons de tout  !
   install_slack:
+    modal_title: Intégrer Slack
+    modal_helptext: Tout d'abord, vous devez vous connectez à Slack. Cliquez sur le bouton ci-dessous pour continuer.
     login_to_slack: Se connecter à Slack
+    remove_slack: Retirer l'intégration de Slack
     card:
       install_title: Se connecter à Slack
       install_helptext: Le robot Loomio notifie votre équipe Slack des discussions et décisions sur Loomio. Vous pouvez aussi démarrer des décisions et voter depuis Slack.
@@ -2014,6 +2053,7 @@ fr:
       use_existing_group: Utilisez un groupe existant
     invite:
       heading: 'Étape2 : Paramétrez une chaîne Slack'
+      helptext: Sélectionnez un canal sur lequel vous souhaiteriez que nous publiions des mises à jour
       select_a_channel: Sélectionnez une chaîne
       publish_group: Envoyez un message de bienvenue
       publish_group_helptext_on: Nous enverrons les messages sur cette chaîne pour expliquer comment utiliser LoomioBot.
@@ -2035,7 +2075,15 @@ fr:
         Maintenant, dès que quelqu’un démarre un sondage dans ce groupe, il ou elle pourra choisir de notifier la chaîne de votre équipe Slack.
     start_poll_now: Prendre une décision maintenant
   powered_by:
+    slogan: De meilleures décisions ensemble
     powered_by_loomio: Propulsé par Loomio
     privacy_policy: Politique de confidentialité
     terms_of_service: Conditions d'utilisation
     front_page: Première page
+  vue_upgraded_modal:
+    use_old_loomio: Utilisez l'ancien Loomio
+    title: Vous êtes sur Loomio 2.0!
+    body: |
+        <p>C'est un Loomio encore plus rapide et amélioré!</p>
+        <p>On pense que vous adorerez cette version, mais si vous le voulez, vous pouvez retourner à tout moment à l'ancienne, depuis la barre latérale.</p>
+        <p><a href="{{link}}" target="_blank">Découvrez les nouveautés.</a></p>

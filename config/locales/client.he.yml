@@ -1617,8 +1617,6 @@ he:
     set_password: הגדר סיסמה
     set_password_helptext: תרצה להשתמש בסיסמה בפעם הבאה?
     hello: "שלום, {{name}}!"
-    new_to_loomio: פעם ראשונה ב{{site_name}}? צור חשבון
-    already_a_user: השתמשת ב{{site_name}} בעבר? הכנס את כתובת המייל בה השתמשת בפעם האחרונה לחיבורה.
     link_accounts: חבר חשבונות
     check_your_email: בדוק את המייל שלך!
     login_link_sent: "שלחנו לך מייל ל{{email}}."

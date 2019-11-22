@@ -1689,8 +1689,6 @@ es:
     set_password: Configura la contraseña
     set_password_helptext: ¿Quieres usar una contraseña la próxima vez?
     hello: "Hola, {{name}}!"
-    new_to_loomio: ¿Primera vez en {{site_name}}? Crea una nueva cuenta
-    already_a_user: ¿Usaste {{site_name}} antes? Ingresa la dirección de correo electrónico que usaste la ultima vez para enlazar la cuenta
     link_accounts: Enlazar cuentas
     check_your_email: ¡Revise su correo electrónico!
     login_link_sent: "Enviamos un correo electrónico a {{correo electrónico}}"

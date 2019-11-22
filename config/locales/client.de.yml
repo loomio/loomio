@@ -1884,8 +1884,6 @@ de:
     set_password: Passwort festlegen
     set_password_helptext: Möchtest du beim nächsten Login ein Passwort verwenden?
     hello: "Hallo, {{name}}!"
-    new_to_loomio: Das erste mal auf {{site_name}}? Erstellen Sie einen Account
-    already_a_user: Haben Sie {{site_name}} bereits davor verwendet? Geben Sie die Mail-Adresse ein, die sie als letzte nutzen, um sie miteinander zu koppeln.
     link_accounts: Verbinden
     check_your_email: Überprüfen Sie Ihren E-Mail-Posteingang
     login_link_sent: "Wir haben eine E-Mail an {{email}} gesendet."

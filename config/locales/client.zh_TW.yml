@@ -1707,7 +1707,7 @@ zh_TW:
         <p>一份圓餅圖會顯示在群組中對於該議題的立場，讓每個人的聲音都能被聽到。</p>
         <p>若您一開始沒看到同意的人，別氣餒，提案就是設計用來突顯需要解決的問題。</p>
         <p>在有良好參與者的狀況下，一個提案就是採與行動的有利動作。</p>
-    tool_tip_collapsed: 確認協議、尋求澄清或檢查異議
+    tool_tip_collapsed: 尋求他人的同意或回饋。
     start_header: 啟動提案
     edit_header: 編輯提案
     tip: 透過一個所有聲音都可以被聽到的過程尋求共識。<a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">更多資訊</a>
@@ -1975,8 +1975,9 @@ zh_TW:
     set_password: 設定密碼
     set_password_helptext: 下次想要使用密碼嗎？
     hello: "您好，{{name}}！"
-    new_to_loomio: 第一次來到 {{site_name}}？建立帳號
-    already_a_user: 您曾用過 {{site_name}}？輸入您上次使用的電子郵件地址以把它們連結起來。
+    new_to_loomio: 第一次來到 {{site_name}}？
+    already_a_user: 已經有帳號了嗎？
+    email_address_of_existing_account: 輸入您既有帳號的電子郵件地址
     link_accounts: 連結帳號
     check_your_email: 檢查您的電子郵件
     login_link_sent: "我們已經寄送了一封電子郵件到 {{email}}。"

@@ -105,7 +105,7 @@ export default
 v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
-    v-layout.mx-10.my-1(column align-center style="max-height: 64px")
+    v-layout.mx-10.my-2(column align-center style="max-height: 64px")
       v-img(:src="logoUrl")
       a.ml-4.caption(href="https://help.loomio.org/en/user_manual/whats_new_loomio_2/" target="_blank") {{version}}
 

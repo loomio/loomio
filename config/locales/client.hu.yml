@@ -1621,7 +1621,6 @@ hu:
         <p>A kördiagram áttekintést nyújt a csoport helyzetéről, míg a hozzászólások lehetővé teszik az egyéni vélemények meghallgatását. </p>
         <p> Nem szabad elkedvetlenedni, ha eleinte nem sikerül megállapodni, a javaslatokat olyan kérdések felvázolására tervezték, amelyeket meg kell oldani.</p>
         <p> jó részvétel mellett a javaslat erős felhatalmazás a cselekvéshez.</p>
-    tool_tip_collapsed: Erősítsd meg az egyetértést, kérj magyarázatot vagy ellenőrizd, hogy van-e kifogás
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése
     tip: Keresd a közös egyetértést olyan folyamaton keresztül, amely lehetővé teszi az összes vélemény meghallgatását. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Tudj meg többet</a>
@@ -1862,8 +1861,6 @@ hu:
     set_password: Állítsd be a jelszót
     set_password_helptext: A következő alkalommal szeretne jelszót használni?
     hello: "Üdvözlet, {{name}}!"
-    new_to_loomio: Először jelent meg a(z) {{site_name}} oldalon? Hozzon létre egy fiókot
-    already_a_user: Használt korábban a {{site_name}}? Írja be az e-mail címet, amelyet utoljára használt a kapcsolat összekapcsolásához.
     link_accounts: Fiókok összekapcsolása
     check_your_email: Nézd meg az e-mailedet!
     login_link_sent: "Küldtünk egy e-mailt a(z) {{email}} címre."
