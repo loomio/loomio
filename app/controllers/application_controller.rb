@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
   before_action :set_last_seen_at           # CurrentUserHelper
   before_action :handle_pending_memberships # PendingActionsHelper
   before_action :set_raven_context
-  before_action :handle_old_browsers
 
   helper_method :current_user
   helper_method :current_version
@@ -22,6 +21,7 @@ class ApplicationController < ActionController::Base
   helper_method :supported_locales
 
   def index
+    handle_old_browsers
     expires_now
     prevent_caching
     if ENV['TASK'] == 'e2e' or params['old_client'] or (current_user.is_logged_in? && current_user.experiences['old_client'])
