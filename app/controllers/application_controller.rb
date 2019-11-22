@@ -66,11 +66,13 @@ class ApplicationController < ActionController::Base
   private
 
   def should_redirect_to_browser_upgrade?
+    !params[:skip_browser_upgrade] &&
+    !@skip_browser_upgrade &&
     !request.params['old_client'] &&
     !request.xhr? &&
-    (browser.ie? ||
+    browser.ie? ||
     (browser.chrome? && browser.version.to_i < 50) ||
     (browser.safari? && browser.version.to_i < 12) ||
-    (browser.edge?   && browser.version.to_i < 17))
+    (browser.edge?   && browser.version.to_i < 17)
   end
 end

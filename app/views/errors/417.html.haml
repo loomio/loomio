@@ -1,14 +1,21 @@
 - @title = "Please update your web browser (417)"
-%h1 Your web browser is too old for Loomio
-%p To fix this, try upgrading your browser from the "About" menu or use your device's software update service found in "Settings".
+%h1 Oh dear. Your web browser is too buggy for the latest (totally exciting!) Loomio release.
 %p
-  Alternatively, install a new browser such as
-  %a{href: "https://www.firefox.com"} Firefox
-  or
-  %a{href: "https://www.google.com/chrome/"} Google Chrome
+  How would you like to proceed?
+  %ul
+    %li
+      Upgrade your browser 🚀
+      Use your "system update" feature, or install
+      %a{href: "http://firefox.com"} Firefox,
+      or
+      %a{href: "https://google.com/chrome"} Chrome,
+      or even consider using another device you have handy 📱
+    %li
+      %a{href: "/dashboard?old_client=1"} Use the old Loomio 🗝️
+      (it won't be around much longer)
+    %li
+      Ignore warnings and
+      %a{href: "/dashboard?skip_browser_upgrade=1"} use Loomio 2 with current browser ⚠️
+
 %p
-  If you're unable to update or use another browser, you can use the
-  %a{href: "/dashboard?old_client=1"} old version of Loomio
-  but for the best experience you need to upgrade your browser.
-%p
-  If you're totally stuck, please email contact@loomio.org and we'll help you.
+  Good luck! 💁‍♂️
