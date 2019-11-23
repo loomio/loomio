@@ -20,6 +20,7 @@ export default class UserModel extends BaseModel
     imageFiles: []
     attachments: []
     locale: AppConfig.defaultLocale
+    experiences: []
 
   localeName: ->
     (_.find(AppConfig.locales, (h) => h.key == @locale) or {}).name
