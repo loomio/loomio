@@ -61,12 +61,16 @@ export default
             {column: 'position', id: 1}
 
       @fetchEvent(args.column, args.id).then (event) =>
+        @focalEvent = event
         if args.scrollTo
-          @focalEvent = event
           @scrollTo "#sequence-#{event.sequenceId}", =>
             setTimeout =>
               @focalEvent = null
             , 1000
+        else
+          setTimeout =>
+            @focalEvent = null
+          , 1000
 
 
     fetchEvent: (idType, id) ->

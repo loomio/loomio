@@ -3,7 +3,7 @@ import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import RecordLoader from '@/shared/services/record_loader'
 import EventHeights from '@/shared/services/event_heights'
-import { reverse, compact, debounce, range, min, max, first, last, sortedUniq, sortBy, difference, isEqual, without } from 'lodash'
+import { reverse, filter, compact, clone, debounce, range, min, max, map, keys, first, last, sortedUniq, sortBy, difference, isEqual, without } from 'lodash'
 
 export default
   props:
@@ -15,7 +15,7 @@ export default
 
   created: ->
     @fetchMissing = debounce ->
-      @fetch(@missingSlots)
+      @fetch(@missingItems)
     , 500
 
     @watchRecords
@@ -25,55 +25,58 @@ export default
 
   data: ->
     eventsBySlot: {}
+    firstItem: null
+    lastItem: null
     visibleSlots: []
-    missingSlots: []
+    missingItems: []
+    renderedItems: []
     slots: []
-    padding: 20
-    firstSlot: null
-    lastSlot: null
+    padding: 2
 
   methods:
     renderSlots: ->
       return if @parentEvent.childCount == 0
-      # firstSlot cannot be less than 1
-      # firstSlot should not increase
-      # lastSlot cannot be greater than childCount
+      return if @visibleSlots.length == 0 and !@focalEvent
+
+      # we can let the browser garbage collect if eventsBySlot is too big
+      # @eventsBySlot = {} if @slots.length > 1000
+      # may want to re scroll after this action.
 
       if @focalEvent
         focalPosition = @eventOrParent(@focalEvent).position
 
-        firstRendered = max([1, focalPosition - @padding])
-        lastRendered = min([focalPosition + @padding, @parentEvent.childCount])
+        @firstItem = max([1, focalPosition - @padding])
+        @lastItem = min([focalPosition + @padding, @parentEvent.childCount])
+        console.log {focalPosition, @padding}
       else
-        firstRendered = max([1, first(@visibleSlots) - @padding])
-        lastRendered = min([last(@visibleSlots) + @padding, @parentEvent.childCount])
+        @firstItem = max(compact [1, first(@visibleSlots) - @padding])
+        @lastItem = min([last(@visibleSlots) + @padding, @parentEvent.childCount])
 
-      @firstSlot = max([1, min(compact([@firstSlot, (firstRendered - (@padding * 2))]))])
-      @lastSlot = min([@parentEvent.childCount, (lastRendered + (@padding * 2))])
+      # fyi
+      # first([]) -> undefined
+      # min([undefined, 1]) -> 1
+      # max([undefined, 1]) -> 1
 
-      eventsBySlot = {}
-      presentPositions = []
-      expectedPositions = range(firstRendered, lastRendered+1)
-      # console.log "rendering slots #{@visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, focalEvent: ", @focalEvent
+      firstSlot = max([1, @firstItem - (@padding * 2)])
+      lastSlot = min([@parentEvent.childCount, @lastItem + (@padding * 2)])
+      console.log {@firstItem, @lastItem, firstSlot, lastSlot}
 
-      for i in [@firstSlot..@lastSlot]
-        eventsBySlot[i] = null
+      presentItems = []
 
       Records.events.collection.chain().
       find(parentId: @parentEvent.id).
-      find(position: {$between: [firstRendered, lastRendered]}).
+      find(position: {$between: [@firstItem, @lastItem]}).
       simplesort('position').
       data().forEach (event) =>
-        presentPositions.push(event.position)
-        eventsBySlot[event.position] = event
+        presentItems.push(event.position)
+        @eventsBySlot[event.position] = event
 
-      @eventsBySlot = eventsBySlot
-      @missingSlots = sortBy difference(expectedPositions, presentPositions)
+      range(firstSlot, lastSlot+1).forEach (slot) =>
+        @eventsBySlot[slot] = null unless @eventsBySlot.hasOwnProperty(slot)
 
-      if @newestFirst && @parentEvent.depth == 0
-        @slots = reverse([@firstSlot..@lastSlot])
-      else
-        @slots = [@firstSlot..@lastSlot]
+      @missingItems = sortBy difference(range(@firstItem, @lastItem+1), presentItems)
+
+      @slots = sortBy map(keys(@eventsBySlot), Number)
 
     slotVisible: (isVisible, slot) ->
       slot = parseInt(slot)
@@ -88,6 +91,13 @@ export default
       else
         @eventOrParent(event.parent())
 
+  computed:
+    adjustedSlots: ->
+      if @newestFirst && @parentEvent.depth == 0
+        reverse clone @slots
+      else
+        @slots
+
   watch:
     focalEvent: (newVal) ->
       @renderSlots()
@@ -100,7 +110,7 @@ export default
             EventBus.$emit 'visibleSlots', newVal
           @renderSlots()
 
-    missingSlots: ->
+    missingItems: ->
       @fetchMissing() if @visibleSlots.length
 
     newestFirst: -> @visibleSlots = []
@@ -108,14 +118,28 @@ export default
 </script>
 <template lang="pug">
 .thread-renderer.mb-2
-  //- div
+  div(v-if="parentEvent.depth == 0")
     | depth {{parentEvent.depth}}
-    | childCount {{parentEvent.childCount}}
     | position {{parentEvent.position}}
+    | childCount {{parentEvent.childCount}}
+    | isFocusing {{(focalEvent && true) || false}}
+    | firstItem {{firstItem}}
+    | lastItem {{lastItem}}
+    | missingItems {{missingItems}}
+    | visibleSlots {{visibleSlots}}
+    | renderedItems {{renderedItems}}
     | slots {{slots}}
-    | initialSlots {{initialSlots}}
-    | visible {{visibleSlots}}
-    | missing {{missingSlots}}
-  .thread-item-slot(v-for="slot in slots" :key="slot" v-observe-visibility="{callback: (isVisible) => slotVisible(isVisible, slot)}" )
+  .thread-item-slot(v-for="slot in adjustedSlots" :key="slot" v-observe-visibility="{callback: (isVisible) => slotVisible(isVisible, slot)}" )
     thread-item-wrapper(:parent-id="parentEvent.id" :event="eventsBySlot[slot]" :position="parseInt(slot)" :focal-event="focalEvent" :is-returning="isReturning")
+  div(v-if="parentEvent.depth == 0")
+    | depth {{parentEvent.depth}}
+    | position {{parentEvent.position}}
+    | childCount {{parentEvent.childCount}}
+    | isFocusing {{(focalEvent && true) || false}}
+    | firstItem {{firstItem}}
+    | lastItem {{lastItem}}
+    | missingItems {{missingItems}}
+    | visibleSlots {{visibleSlots}}
+    | renderedItems {{renderedItems}}
+    | slots {{slots}}
 </template>
