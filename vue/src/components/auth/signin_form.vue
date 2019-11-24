@@ -16,9 +16,9 @@ export default
 
   methods:
     signIn: ->
-      # EventBus.emit $scope, 'processing'
       @user.name = @vars.name if @vars.name?
-      AuthService.signIn(@user).finally => 'doneProcessing'
+      AuthService.signIn(@user).finally =>
+        @loading = false
 
     signInAndSetPassword: ->
       @$router.replace(query: {set_password: true})
@@ -29,6 +29,7 @@ export default
         @loading = false
 
     submit: ->
+      @loading = true
       if @user.hasPassword or @user.hasToken
         @signIn()
       else
@@ -42,9 +43,9 @@ export default
     h2.title.text-center(v-t="{ path: 'auth_form.welcome_back', args: { name: user.firstName() } }")
   .auth-signin-form__token.text-center(v-if='user.hasToken')
     validation-errors(:subject='user', field='token')
-    v-btn.my-4.auth-signin-form__submit(color="primary" @click='submit()' v-if='!user.errors.token')
+    v-btn.my-4.auth-signin-form__submit(color="primary" @click='submit()' v-if='!user.errors.token' :loading="loading")
       span(v-t="{ path: 'auth_form.sign_in_as', args: {name: user.name}}")
-    v-btn.my-4.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token')
+    v-btn.my-4.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token' :loading="loading")
       span(v-t="'auth_form.login_link'")
     p
       span(v-t="'auth_form.set_password_helptext'")
