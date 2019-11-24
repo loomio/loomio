@@ -3,7 +3,7 @@ import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import RecordLoader from '@/shared/services/record_loader'
 import EventHeights from '@/shared/services/event_heights'
-import { reverse, compact, debounce, range, min, max, first, last, sortedUniq, sortBy, difference, isEqual, without } from 'lodash'
+import { reverse, groupBy, filter, compact, clone, debounce, range, min, max, map, keys, first, last, sortedUniq, sortBy, difference, isEqual, without } from 'lodash'
 
 export default
   props:
@@ -15,7 +15,7 @@ export default
 
   created: ->
     @fetchMissing = debounce ->
-      @fetch(@missingSlots)
+      @fetch(@missingItems)
     , 500
 
     @watchRecords
@@ -26,56 +26,55 @@ export default
   data: ->
     eventsBySlot: {}
     visibleSlots: []
-    missingSlots: []
+    missingItems: []
+    focus: null
     slots: []
-    padding: 20
-    firstSlot: null
-    lastSlot: null
+    padding: parseInt(screen.height/40) || 20
 
   methods:
+    grouped: (slots) ->
+      groupBy slots, (slot) -> parseInt(slot * 0.1)
+
     renderSlots: ->
       return if @parentEvent.childCount == 0
-      # firstSlot cannot be less than 1
-      # firstSlot should not increase
-      # lastSlot cannot be greater than childCount
+
+      # we can let the browser garbage collect if eventsBySlot is too big
+      # @eventsBySlot = {} if @slots.length > 1000 # no! just set all existing slots to null so page stays in same place.
+      # may want to re scroll after this action.
 
       if @focalEvent
-        focalPosition = @eventOrParent(@focalEvent).position
-
-        firstRendered = max([1, focalPosition - @padding])
-        lastRendered = min([focalPosition + @padding, @parentEvent.childCount])
+        @focus = @eventOrParent(@focalEvent).position
       else
-        firstRendered = max([1, first(@visibleSlots) - @padding])
-        lastRendered = min([last(@visibleSlots) + @padding, @parentEvent.childCount])
+        @focus = @visibleSlots[parseInt(@visibleSlots.length / 2)] || 1
 
-      @firstSlot = max([1, min(compact([@firstSlot, (firstRendered - (@padding * 2))]))])
-      @lastSlot = min([@parentEvent.childCount, (lastRendered + (@padding * 2))])
+      firstItem = max([1, @focus - @padding])
+      lastItem = min([@focus + @padding, @parentEvent.childCount])
 
-      eventsBySlot = {}
-      presentPositions = []
-      expectedPositions = range(firstRendered, lastRendered+1)
-      # console.log "rendering slots #{@visibleSlots} for depth #{@parentEvent.depth}, position #{@parentEvent.position}, childcount #{@parentEvent.childCount} - firstRendererd #{firstRendered}, lastRendered #{lastRendered}, firstSlot #{@firstSlot}, lastSlot #{@lastSlot}, focalEvent: ", @focalEvent
+      firstSlot = max([1, firstItem - (@padding * 2)])
+      lastSlot = min([@parentEvent.childCount, lastItem + (@padding * 2)])
 
-      for i in [@firstSlot..@lastSlot]
-        eventsBySlot[i] = null
+      presentItems = []
 
       Records.events.collection.chain().
       find(parentId: @parentEvent.id).
-      find(position: {$between: [firstRendered, lastRendered]}).
+      find(position: {$between: [firstItem, lastItem]}).
       simplesort('position').
       data().forEach (event) =>
-        presentPositions.push(event.position)
-        eventsBySlot[event.position] = event
+        presentItems.push(event.position)
+        @eventsBySlot[event.position] = event
 
-      @eventsBySlot = eventsBySlot
-      @missingSlots = sortBy difference(expectedPositions, presentPositions)
+      # after items have been added, we should emit "items added"
+        # if they're above visibleSlots, then we need to issue a hold on! alert
 
-      if @newestFirst && @parentEvent.depth == 0
-        @slots = reverse([@firstSlot..@lastSlot])
-      else
-        @slots = [@firstSlot..@lastSlot]
+      range(firstSlot, lastSlot+1).forEach (slot) =>
+        @eventsBySlot[slot] = null unless @eventsBySlot.hasOwnProperty(slot)
+
+      @missingItems = sortBy difference(range(firstItem, lastItem+1), presentItems)
+
+      @slots = sortBy map(keys(@eventsBySlot), Number)
 
     slotVisible: (isVisible, slot) ->
+      # idea: if adding a slot which is not continuous with the other slots, remove the other slots?
       slot = parseInt(slot)
       if isVisible
         @visibleSlots = sortedUniq(sortBy(@visibleSlots.concat([slot])))
@@ -87,6 +86,13 @@ export default
         event
       else
         @eventOrParent(event.parent())
+
+  computed:
+    adjustedSlots: ->
+      if @newestFirst && @parentEvent.depth == 0
+        reverse clone @slots
+      else
+        @slots
 
   watch:
     focalEvent: (newVal) ->
@@ -100,7 +106,7 @@ export default
             EventBus.$emit 'visibleSlots', newVal
           @renderSlots()
 
-    missingSlots: ->
+    missingItems: ->
       @fetchMissing() if @visibleSlots.length
 
     newestFirst: -> @visibleSlots = []
@@ -108,14 +114,38 @@ export default
 </script>
 <template lang="pug">
 .thread-renderer.mb-2
-  //- div
-    | depth {{parentEvent.depth}}
+  //- div.thread-renderer__stats.caption(v-if="parentEvent.depth == 0")
+    //- | depth {{parentEvent.depth}}
+    //- | position {{parentEvent.position}}
+    | focus {{focus}}
+    | padding {{padding}}
+    br
     | childCount {{parentEvent.childCount}}
-    | position {{parentEvent.position}}
-    | slots {{slots}}
-    | initialSlots {{initialSlots}}
-    | visible {{visibleSlots}}
-    | missing {{missingSlots}}
-  .thread-item-slot(v-for="slot in slots" :key="slot" v-observe-visibility="{callback: (isVisible) => slotVisible(isVisible, slot)}" )
+    | isFocusing {{(focalEvent && true) || false}}
+    br
+    | missingItems
+    p.my-0(v-for="slots in grouped(missingItems)") {{slots}}
+    br
+    | visibleSlots {{visibleSlots}}
+    br
+    | slots
+    p.my-0(v-for="slots in grouped(slots)") {{slots}}
+  .thread-item-slot(v-for="slot in adjustedSlots" :key="slot" v-observe-visibility="{callback: (isVisible) => slotVisible(isVisible, slot)}" )
     thread-item-wrapper(:parent-id="parentEvent.id" :event="eventsBySlot[slot]" :position="parseInt(slot)" :focal-event="focalEvent" :is-returning="isReturning")
 </template>
+
+<style lang="sass">
+.thread-renderer__stats
+  z-index: 1000
+  right: 0px
+  position: fixed
+  bottom: 0px
+  height: 300px
+  width: 256px
+  // opacity: 0.9
+  border: 1px solid #eee
+  background-color: #ccc
+  overflow-y: scroll
+
+
+</style>
