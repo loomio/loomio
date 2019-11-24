@@ -174,27 +174,30 @@ export default
       v-btn.group-page__requests-tab(:to="urlFor(group, 'members/requests')" v-t="'members_panel.requests'")
 
     v-card(outlined)
-      p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
-      v-list(v-else three-line)
-        v-list-item(v-for="membership in memberships" :key="membership.id")
-          v-list-item-avatar(size='48')
-            router-link(:to="urlFor(membership.user())")
-              user-avatar(:user='membership.user()' size='48')
-          v-list-item-content
-            v-list-item-title
-              router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
-              space
-              span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
-              space
-              span.title.caption {{membership.title}}
-              space
-              v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
-            v-list-item-subtitle(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
-            v-list-item-subtitle(v-if="!membership.acceptedAt")
-              span(v-if="membership.inviter()" v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
-          v-list-item-action
-            membership-dropdown(:membership="membership")
-      v-layout(justify-center)
-        v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+      div(v-if="loader.status == 403")
+        p.pa-4.text-center(v-t="'error_page.forbidden'")
+      div(v-else)
+        p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
+        v-list(v-else three-line)
+          v-list-item(v-for="membership in memberships" :key="membership.id")
+            v-list-item-avatar(size='48')
+              router-link(:to="urlFor(membership.user())")
+                user-avatar(:user='membership.user()' size='48')
+            v-list-item-content
+              v-list-item-title
+                router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
+                space
+                span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
+                space
+                span.title.caption {{membership.title}}
+                space
+                v-chip(v-if="membership.admin" small outlined label v-t="'members_panel.admin'")
+              v-list-item-subtitle(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
+              v-list-item-subtitle(v-if="!membership.acceptedAt")
+                span(v-if="membership.inviter()" v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
+            v-list-item-action
+              membership-dropdown(:membership="membership")
+        v-layout(justify-center)
+          v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 
 </template>
