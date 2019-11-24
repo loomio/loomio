@@ -195,7 +195,7 @@ export default
       @editor.focus()
 
     emitUploading: ->
-      @$emit('is-uploading', !(@model.files.length == @files.length && @model.imageFiles.length == @imageFiles.length))
+      @$emit('is-uploading', !((@model.files || []).length == @files.length && (@model.imageFiles || []).length == @imageFiles.length))
 
     emojiPicked: (shortcode, unicode) ->
       { view } = this.editor
