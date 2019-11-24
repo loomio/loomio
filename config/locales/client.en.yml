@@ -1824,6 +1824,7 @@ en:
     meeting: 'This time poll has closed. <strong>Share an outcome</strong> to let others know when the meeting will happen.'
     dot_vote: 'This dot vote has closed. <storng>Share an outcome</strong> with the group.'
     ranked_choice: 'This ranked choice poll has closed. <strong>Share an outcome</strong> with the group.'
+    score: 'This score poll has closed. <strong>Share an outcome</strong> with the group.'
 
   poll_common_outcome_form:
     new_title: Enter an outcome

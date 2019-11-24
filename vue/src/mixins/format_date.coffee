@@ -15,10 +15,7 @@ export default
 
       waitFor selector, =>
         @$vuetify.goTo(selector, duration: 0)
-        setTimeout =>
-          @$vuetify.goTo(selector, duration: 0)
-          callback() if callback
-        , 1000
+        callback() if callback
     approximateDate: (date) -> approximate(date)
     exactDate: (date) -> exact(date)
     timelineDate: (date) -> timeline(date)
