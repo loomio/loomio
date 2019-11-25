@@ -1406,13 +1406,11 @@ en:
     earliest: Oldest
     earliest_description: Read from beginning to end
     replies: How to display replies?
-    linear: Linear
-    linear_description: Arrange things in the order they happened
-    nested_once: Nested once
-    nested_once_description: Place replies under original
-    nested_twice: Nested twice
-    nested_twice_description: Replies under original, up to 2 times
-    changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process. Refresh your browser a few minutes after save to see changes.
+    linear: Flat list
+    linear_description: Items listed as they happened, one after the other.
+    nested_once: Nested
+    nested_once_description: Indent replies under original comment
+    changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process.
 
   delete_thread_form:
     aria_label: 'Delete thread'
