@@ -5,7 +5,8 @@
 # It is not a standalone image.
 #
 FROM ruby:2.6.5
-ENV REFRESHED_AT 2019-11-05
+ENV REFRESHED_AT 2019-11-25
+ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 
 RUN gem update --system
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
