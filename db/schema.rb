@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_070753) do
+ActiveRecord::Schema.define(version: 2019_11_25_082317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -152,10 +152,9 @@ ActiveRecord::Schema.define(version: 2019_11_25_070753) do
     t.index ["failed_at"], name: "index_delayed_jobs_on_failed_at", where: "(failed_at IS NULL)"
     t.index ["locked_at"], name: "index_delayed_jobs_on_locked_at", where: "(locked_at IS NULL)"
     t.index ["locked_by"], name: "index_delayed_jobs_on_locked_by"
-    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
     t.index ["priority"], name: "index_delayed_jobs_on_priority"
     t.index ["queue"], name: "index_delayed_jobs_on_queue"
-    t.index ["run_at", "locked_at", "locked_by", "failed_at"], name: "index_delayed_jobs_on_ready"
+    t.index ["run_at"], name: "index_delayed_jobs_on_run_at"
   end
 
   create_table "discussion_readers", id: :serial, force: :cascade do |t|
