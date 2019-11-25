@@ -1374,6 +1374,7 @@ en:
     aria_label: 'Group name'
 
   thread_context:
+    item_maybe_deleted: "Cannot find the requested location within the thread. It may have been deleted."
     aria_label: 'Thread context'
     thread_options: 'Thread options'
     email_settings: 'Notification settings'

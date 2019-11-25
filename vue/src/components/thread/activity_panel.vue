@@ -7,6 +7,7 @@ import ModalService             from '@/shared/services/modal_service'
 import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
+import Flash   from '@/shared/services/flash'
 import { print } from '@/shared/helpers/window'
 import ThreadService  from '@/shared/services/thread_service'
 
@@ -61,16 +62,19 @@ export default
             {column: 'position', id: 1}
 
       @fetchEvent(args.column, args.id).then (event) =>
-        @focalEvent = event
-        if args.scrollTo
-          @scrollTo "#sequence-#{event.sequenceId}", =>
+        if event
+          @focalEvent = event
+          if args.scrollTo
+            @scrollTo "#sequence-#{event.sequenceId}", =>
+              setTimeout =>
+                @focalEvent = null
+              , 1000
+          else
             setTimeout =>
               @focalEvent = null
             , 1000
         else
-          setTimeout =>
-            @focalEvent = null
-          , 1000
+          Flash.error('thread_context.item_maybe_deleted')
 
 
     fetchEvent: (idType, id) ->
