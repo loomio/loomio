@@ -12,8 +12,6 @@ module Events::LiveUpdate
     end
   end
 
-  handle_asynchronously :notify_clients!
-
   def event_collection
     @event_collection ||= EventCollection.new(self).serialize!
   end
