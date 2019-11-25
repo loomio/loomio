@@ -29,7 +29,7 @@ export default
           @selectedDiscussion.update(forkedEventIds: [])
           @selectedDiscussion.update(isForking: false)
           @close()
-          @$router.push @urlFor(@selectedDiscussion)
+          # @$router.push @urlFor(@selectedDiscussion)
     fetch: debounce ->
       return unless @searchFragment
       Records.discussions.search(@groupId, @searchFragment).then (data) =>
