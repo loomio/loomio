@@ -16,6 +16,7 @@ export default
   data: ->
     isDisabled: false
     user: null
+    originalUser: null
 
   created: ->
     @init()
@@ -31,22 +32,18 @@ export default
   methods:
     init: ->
       return unless Session.isSignedIn()
-      @originalUser = Session.user()
-      @user = @originalUser.clone()
-      Session.updateLocale(@user.locale)
-
       @watchRecords
-        key: @user.id
+        key: Session.user().id
         collections: ['users']
         query: =>
           @originalUser = Session.user()
           @user = @originalUser.clone()
           Session.updateLocale(@user.locale)
 
-      @submit = submitForm @, @user,
-        flashSuccess: 'profile_page.messages.updated'
-        submitFn: Records.users.updateProfile
-        successCallback: @init
+          @submit = submitForm @, @user,
+            flashSuccess: 'profile_page.messages.updated'
+            submitFn: Records.users.updateProfile
+            successCallback: @init
 
     changePicture: ->
       openModal
