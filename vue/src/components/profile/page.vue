@@ -34,6 +34,15 @@ export default
       @originalUser = Session.user()
       @user = @originalUser.clone()
       Session.updateLocale(@user.locale)
+
+      @watchRecords
+        key: @user.id
+        collections: ['users']
+        query: =>
+          @originalUser = Session.user()
+          @user = @originalUser.clone()
+          Session.updateLocale(@user.locale)
+
       @submit = submitForm @, @user,
         flashSuccess: 'profile_page.messages.updated'
         submitFn: Records.users.updateProfile
