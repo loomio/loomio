@@ -9,7 +9,7 @@ class ReceivedEmail
 
   def save
     if valid?
-      UserMailer.start_decision(received_email: self).deliver_now
+      # UserMailer.start_decision(received_email: self).deliver_now
     else
       # send failure email
     end

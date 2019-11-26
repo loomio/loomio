@@ -215,7 +215,7 @@ module Dev::PollsScenarioHelper
     choices += [{poll_option_id: poll.poll_option_ids[1]}] if poll.multiple_choice
 
     StanceService.create(stance: fake_stance(poll: poll, stance_choices_attributes: choices), actor: observer)
-    UserMailer.catch_up(observer).deliver_now
+    UserMailer.catch_up(observer.id).deliver_now
 
     scenario.merge(observer: observer)
   end

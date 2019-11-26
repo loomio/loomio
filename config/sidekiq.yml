@@ -1,0 +1,5 @@
+---
+:queues:
+  - mailers
+  - catch_up_emails
+  - default

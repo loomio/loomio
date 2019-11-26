@@ -38,13 +38,6 @@ class Dev::PollsController < Dev::BaseController
     redirect_to new_poll_url
   end
 
-  def start_poll_with_received_email
-    sign_in saved fake_user
-    email = saved(fake_received_email(sender_email: fake_user.user))
-    UserMailer.start_decision(received_email: email).deliver_now
-    last_email
-  end
-
   def test_activity_items
     user = fake_user
     group = saved fake_group

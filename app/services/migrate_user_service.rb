@@ -21,7 +21,7 @@ class MigrateUserService
     migrate_stances
     update_counters
     source.deactivate!
-    UserMailer.delay(queue: :low_priority).accounts_merged(destination)
+    UserMailer.accounts_merged(destination.id).deliver_later
   end
 
   SCHEMA = {
