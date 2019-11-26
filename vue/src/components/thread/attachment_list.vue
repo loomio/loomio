@@ -35,5 +35,6 @@ export default
 	align-items: center
 .attachment-list__preview
 	max-height: 320px
+  max-width: 100%
 
 </style>
