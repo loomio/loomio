@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_085428) do
+ActiveRecord::Schema.define(version: 2019_11_26_020142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 2019_11_25_085428) do
     t.string "queue", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["failed_at"], name: "delayed_jobs_failed_at_idx"
     t.index ["failed_at"], name: "index_delayed_jobs_on_failed_at", where: "(failed_at IS NULL)"
     t.index ["locked_at"], name: "index_delayed_jobs_on_locked_at", where: "(locked_at IS NULL)"
     t.index ["locked_by"], name: "index_delayed_jobs_on_locked_by"
@@ -273,6 +274,7 @@ ActiveRecord::Schema.define(version: 2019_11_25_085428) do
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["discussion_id"], name: "index_events_on_discussion_id"
+    t.index ["eventable_id"], name: "events_eventable_id_idx"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["kind"], name: "index_events_on_kind"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
@@ -383,6 +385,7 @@ ActiveRecord::Schema.define(version: 2019_11_25_085428) do
     t.index ["parent_id"], name: "index_groups_on_parent_id"
     t.index ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions"
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
+    t.index ["subscription_id"], name: "groups_subscription_id_idx"
     t.index ["token"], name: "index_groups_on_token", unique: true
     t.index ["type"], name: "index_groups_on_type"
   end
@@ -455,6 +458,7 @@ ActiveRecord::Schema.define(version: 2019_11_25_085428) do
     t.string "url"
     t.integer "actor_id"
     t.index ["event_id"], name: "index_notifications_on_event_id"
+    t.index ["user_id", "created_at"], name: "notifications_user_id_created_at_idx"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
