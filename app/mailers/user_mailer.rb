@@ -44,7 +44,7 @@ class UserMailer < BaseMailer
 
   def membership_request_approved(recipient_id, event_id)
     @user = User.find_by(id: recipient_id)
-    @group = Event.find(event_id).eventable.group
+    @group = Event.find_by(id: event_id).eventable.group
 
     send_single_mail to: @user.email,
                      reply_to: @group.admin_email,
@@ -76,9 +76,9 @@ class UserMailer < BaseMailer
                      locale: @user.locale
   end
 
-  def login(user_id:, token_id:)
-    @user = User.find(user_id)
-    @token = LoginToken.find(token_id)
+  def login(user_id, token_id)
+    @user = User.find_by!(id: user_id)
+    @token = LoginToken.find_by!(id: token_id)
     send_single_mail to: @user.email,
                      subject_key: "email.login.subject",
                      subject_params: {site_name: AppConfig.theme[:site_name]},

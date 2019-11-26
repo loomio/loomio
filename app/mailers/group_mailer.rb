@@ -2,8 +2,8 @@ class GroupMailer < BaseMailer
   layout 'invite_people_mailer'
 
   def group_announced(recipient_id, event_id)
-    recipient = User.find_by!(recipient_id)
-    event = Event.find_by!(event_id)
+    recipient = User.find_by!(id: recipient_id)
+    event = Event.find_by!(id: event_id)
     return unless @membership = event.eventable.memberships.find_by(user: recipient)
     @inviter = @membership.inviter || recipient
     send_single_mail to:     recipient.email,
@@ -17,8 +17,8 @@ class GroupMailer < BaseMailer
   end
 
   def membership_requested(recipient_id, event_id)
-    recipient = User.find_by!(recipient_id)
-    event = Event.find_by!(event_id)
+    recipient = User.find_by!(id: recipient_id)
+    event = Event.find_by!(id: event_id)
     @membership_request = event.eventable
     @group = @membership_request.group
     @introduction = @membership_request.introduction

@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Dev::FakeDataHelper
 
-describe MigrateUserService do
+describe MigrateUserWorker do
   let!(:patrick)            { saved fake_user(name: "Patrick Swayze") }
   let!(:jennifer)           { saved fake_user(name: "Jennifer Grey") }
 
@@ -55,7 +55,7 @@ describe MigrateUserService do
   end
 
   it 'updates user_id references from old to new' do
-    expect {MigrateUserService.migrate!(source: patrick, destination: jennifer)}.to change {ActionMailer::Base.deliveries.count}.by(1)
+    expect {MigrateUserWorker.perform_async(patrick.id, jennifer.id)}.to change {ActionMailer::Base.deliveries.count}.by(1)
     patrick.reload
     jennifer.reload
 

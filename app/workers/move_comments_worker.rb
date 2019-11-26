@@ -1,6 +1,6 @@
 class MoveCommentsWorker
   include Sidekiq::Worker
-  def perform(ids:, source_discussion_id:, target_discussion_id:)
+  def perform(ids, source_discussion_id, target_discussion_id)
     source_discussion = Discussion.find(source_discussion_id)
     target_discussion = Discussion.find(target_discussion_id)
 

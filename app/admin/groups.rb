@@ -257,9 +257,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
 
   member_action :export_group, method: :post do
     group = Group.friendly.find(params[:id])
-    GroupExportWorker.perform_async(group_ids: group.all_groups.pluck(:id),
-                                    group_name: group.name,
-                                    actor_id: current_user.id)
+    GroupExportWorker.perform_async(group.all_groups.pluck(:id), group.name, current_user.id)
     redirect_to admin_group_path(group)
   end
 

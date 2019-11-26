@@ -47,7 +47,7 @@ module GroupService
   def self.export(group: , actor: )
     actor.ability.authorize! :show, group
     group_ids = actor.groups.where(id: group.all_groups).pluck(:id)
-    GroupExportJob.perform_later(group_ids: group_ids, actor: actor, group_name: group.name)
+    GroupExportWorker.perform_async(group_ids, group.name, actor.id)
   end
 
   def self.merge(source:, target:, actor:)

@@ -1,15 +1,6 @@
 module HasDrafts
   def perform_draft_purge!(user)
-    if purge_drafts_asynchronously?
-      purge_draft!(user)
-    else
-      purge_draft_without_delay!(user)
-    end
-  end
-
-  # override for models which cannot tolerate non-async draft deletion
-  def purge_drafts_asynchronously?
-    true
+    purge_draft!(user)
   end
 
   def purge_draft!(user)
@@ -18,7 +9,6 @@ module HasDrafts
     draft.payload.except!(field)
     draft.tap(&:save)
   end
-  handle_asynchronously :purge_draft!
 
   def draft_parent
     raise NotImplementedError.new
