@@ -95,8 +95,16 @@ export default
         @slots
 
   watch:
-    focalEvent: (newVal) ->
-      @renderSlots()
+    'parentEvent.childCount': (newVal, oldVal) ->
+      console.log 'parentEvent.childCount', newVal, oldVal
+      if newVal < oldVal
+        @eventsBySlot = {}
+        @visibleSlots = []
+        @missingItems = []
+        @slots = []
+        @renderSlots()
+
+    focalEvent: -> @renderSlots()
 
     visibleSlots:
       immediate: true
