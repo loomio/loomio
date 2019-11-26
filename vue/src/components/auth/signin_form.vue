@@ -67,7 +67,7 @@ export default
 
     .auth-signin-form__no-password(v-if='!user.hasPassword')
       v-layout(justify-center)
-        v-btn.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-t="'auth_form.login_link'")
+        v-btn.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-t="'auth_form.login_link'" :loading="loading")
 </template>
 
 <style lang="sass">

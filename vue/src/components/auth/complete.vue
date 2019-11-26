@@ -35,7 +35,7 @@ export default
       v-text-field.headline.lmo-primary-form-input(outlined :placeholder="$t('auth_form.code')" type='integer' maxlength='6' v-model='user.code')
       //- validation-errors(:subject='session' field='password')
     span(v-t="'auth_form.check_spam_folder'")
-  v-btn(color="primary" :loading="loading" @click='submit()' :disabled='!user.code' v-t="'auth_form.sign_in'")
+  v-btn(color="primary" :loading="loading" @click='submit()' :disabled='!user.code || loading' v-t="'auth_form.sign_in'")
 </template>
 <style lang="sass">
 .auth-complete__code input

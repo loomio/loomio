@@ -16,7 +16,6 @@ export default
       default: ->
   data: ->
     group: null
-    isDisabled: false
     rules: {
       required: (value) -> !!value || 'Required.'
     }
@@ -46,15 +45,11 @@ export default
       confirmFn: (model)          => @$t groupPrivacyConfirm(model)
       flashSuccess:               => "group_form.messages.group_#{@actionName}"
       successCallback: (data) =>
-        @isExpanded = false
         groupKey = data.groups[0].key
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
   methods:
-    expandForm: ->
-      @isExpanded = true
-
     privacyStringFor: (privacy) ->
       @$t groupPrivacy(@group, privacy),
         parent: @group.parentName()
@@ -125,7 +120,7 @@ v-card.group-form
 
   v-card-actions
     v-spacer
-    v-btn.group-form__submit-button(color="primary" @click='submit()')
+    v-btn.group-form__submit-button(:loading="group.processing" color="primary" @click='submit()')
       span(v-if='group.isParent()' v-t="'group_form.submit_start_group'")
       span(v-if='!group.isParent()' v-t="'group_form.submit_start_subgroup'")
 </template>
