@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_020142) do
+ActiveRecord::Schema.define(version: 2019_11_26_021503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -763,6 +763,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_020142) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
+    t.index ["remember_token"], name: "users_remember_token_idx"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
