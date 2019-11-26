@@ -6,7 +6,7 @@ class Events::UserReactivated < Event
   end
 
   def email_users!
-    eventable.send(:mailer).delay(priority: 1).send(email_method, user, self)
+    eventable.send(:mailer).delay(queue: :login_emails).send(email_method, user, self)
   end
 
 end

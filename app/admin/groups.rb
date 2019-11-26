@@ -252,7 +252,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
 
   member_action :delete_group, :method => :post do
     group = Group.friendly.find(params[:id])
-    group.delay.destroy!
+    group.delay(queue: 'low_priority').destroy!
     redirect_to [:admin, :groups]
   end
 
