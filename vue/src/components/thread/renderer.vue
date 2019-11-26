@@ -96,7 +96,6 @@ export default
 
   watch:
     'parentEvent.childCount': (newVal, oldVal) ->
-      console.log 'parentEvent.childCount', newVal, oldVal
       if newVal < oldVal
         @eventsBySlot = {}
         @visibleSlots = []
