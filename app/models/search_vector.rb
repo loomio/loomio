@@ -62,7 +62,7 @@ class SearchVector < ApplicationRecord
         (ids - existing.map(&:discussion_id)).each { |discussion_id| new(discussion_id: discussion_id).update_search_vector }
       end
     end
-    handle_asynchronously :index!
+    handle_asynchronously :index!, queue: :low_priority
   end
 
   def self.index_everything!

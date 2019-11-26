@@ -12,7 +12,6 @@ module Events::Notify::Mentions
                                user_ids: eventable.newly_mentioned_users.pluck(:id)).invite!
     Events::UserMentioned.publish! eventable, user, eventable.newly_mentioned_users
   end
-  handle_asynchronously :notify_mentions!
 
   private
 

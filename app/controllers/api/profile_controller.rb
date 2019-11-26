@@ -56,7 +56,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def destroy
-    service.delay.destroy(user: current_user)
+    service.delay(queue: :low_priority).destroy(user: current_user)
     respond_with_resource
   end
 
