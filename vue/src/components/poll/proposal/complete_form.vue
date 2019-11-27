@@ -16,16 +16,10 @@ export default
 
   data: ->
     poll: null
+    submit: null
 
   created: ->
-    @poll = @newPoll()
-    @submit = submitPoll @, @poll,
-      successCallback: (data) =>
-        @poll = @newPoll()
-        pollKey = data.polls[0].key
-        EventBus.$emit('pollSaved')
-        Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
-          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
+    @init()
 
   computed:
     title_key: ->
@@ -36,6 +30,16 @@ export default
       'poll_' + @poll.pollType + '_form.'+mode+'_header'
 
   methods:
+    init: ->
+      @poll = @newPoll()
+      @submit = submitPoll @, @poll,
+        successCallback: (data) =>
+          @init()
+          pollKey = data.polls[0].key
+          EventBus.$emit('pollSaved')
+          Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
+            @openAnnouncementModal(Records.announcements.buildFromModel(poll))
+
     newPoll: ->
       Records.polls.build
         pollType:              'proposal'
