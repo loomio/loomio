@@ -13,9 +13,12 @@ export default
   props:
     discussion: Object
     close: Function
+
   data: ->
     poll: null
-  created: -> @init()
+
+  mounted: -> @init()
+
   methods:
     init: ->
       @poll = @newPoll()
@@ -23,10 +26,10 @@ export default
         successCallback: (data) =>
           @poll = @newPoll()
           pollKey = data.polls[0].key
+          @init()
           EventBus.$emit('pollSaved')
           Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
             @openAnnouncementModal(Records.announcements.buildFromModel(poll))
-            @init()
 
   computed:
     title_key: ->
@@ -50,7 +53,7 @@ export default
 </script>
 <template lang="pug">
 .poll-proposal-complete-form.pa-2(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
-  submit-overlay(:value="poll.processing")
+  submit-overlay(:value="poll && poll.processing")
   v-card-title
     h1.headline(v-t="title_key")
     v-spacer
