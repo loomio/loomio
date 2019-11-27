@@ -7,6 +7,9 @@ sudo: required
 
 group: edge
 
+services:
+  - redis-server
+
 cache:
   bundler: true
   directories:
