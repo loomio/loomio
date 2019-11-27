@@ -255,10 +255,10 @@ module.exports = {
     page.fillIn('.poll-common-outcome-form__statement .ProseMirror', 'Here is a statement')
     page.fillIn('.poll-common-calendar-invite__summary input', 'This is a meeting title')
     page.fillIn('.poll-common-calendar-invite__location input', '123 Any St, USA')
-    page.fillIn('.poll-common-calendar-invite__description textarea', 'Here is a meeting agenda')
 
     page.click('.poll-common-outcome-form__submit')
     page.expectFlash('Outcome created')
-    page.expectText('.poll-common-outcome-panel', 'Here is a statement')
+    page.click('.dismiss-modal-button')
+    page.expectText('.poll-common-outcome-panel .lmo-markdown-wrapper', 'Here is a statement')
   },
 }
