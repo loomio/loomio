@@ -15,15 +15,18 @@ export default
     close: Function
   data: ->
     poll: null
-  created: ->
-    @poll = @newPoll()
-    @submit = submitPoll @, @poll,
-      successCallback: (data) =>
-        @poll = @newPoll()
-        pollKey = data.polls[0].key
-        EventBus.$emit('pollSaved')
-        Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
-          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
+  created: -> @init()
+  methods:
+    init: ->
+      @poll = @newPoll()
+      @submit = submitPoll @, @poll,
+        successCallback: (data) =>
+          @poll = @newPoll()
+          pollKey = data.polls[0].key
+          EventBus.$emit('pollSaved')
+          Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
+            @openAnnouncementModal(Records.announcements.buildFromModel(poll))
+            @init()
 
   computed:
     title_key: ->
