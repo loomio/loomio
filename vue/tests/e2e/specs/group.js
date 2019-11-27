@@ -354,6 +354,7 @@ module.exports = {
     page.click('.members-panel__filters')
     page.click('.members-panel__filters-invitations')
     page.expectText('.members-panel .v-card .v-list-item__title', 'shown@test.com')
+  },
 
   'encourage_contact_to_setup_saml': (test) => {
     page = pageHelper(test)
@@ -373,7 +374,7 @@ module.exports = {
     page.expectElement('.install-saml-modal__login')
   },
 
-  'allow creation of SAML enforcement': (test) => {
+  'allow_creation_of_SAML_enforcement': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_saml_identity')
