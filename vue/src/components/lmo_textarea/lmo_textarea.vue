@@ -42,6 +42,7 @@ import Image from '@/shared/tiptap_extentions/image.js'
 import marked from 'marked'
 import {customRenderer, options} from '@/shared/helpers/marked.coffee'
 marked.setOptions Object.assign({renderer: customRenderer()}, options)
+import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 
 export default
   props:
@@ -191,7 +192,7 @@ export default
       @editor.focus()
 
     setIframeUrl: (command) ->
-      command({ src: @iframeUrl })
+      command({ src: getEmbedLink(@iframeUrl) })
       @iframeUrl = null
       @iframeDialogIsOpen = false
       @editor.focus()
@@ -388,7 +389,7 @@ div
             v-card
               v-card-title.title(v-t="'text_editor.insert_embedded_url'")
               v-card-text
-                v-text-field(type="url" label="https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
+                v-text-field(type="url" label="e.g. https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
               v-card-actions
                 v-spacer
                 v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
