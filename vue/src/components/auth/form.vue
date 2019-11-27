@@ -1,5 +1,4 @@
 <script lang="coffee">
-import { listenForLoading } from '@/shared/helpers/listen'
 import AppConfig from '@/shared/services/app_config'
 import Session from '@/shared/services/session'
 
@@ -23,7 +22,6 @@ export default
   submit-overlay(:value='isDisabled')
   .auth-form__logging-in(v-if='!loginComplete')
     .auth-form__email-not-set(v-if='!user.emailStatus')
-      p.text-center Loomio is a place to have discussions and collaborate
       auth-provider-form(:user='user' :idp='idp')
       auth-email-form(:user='user' v-if='emailLogin && !idp')
       .auth-form__privacy-notice.caption.text-center.mt-4(v-if='privacyUrl' v-html="$t('auth_form.privacy_notice', { siteName: siteName, privacyUrl: privacyUrl })")

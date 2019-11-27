@@ -44,6 +44,7 @@ export default
       Records.users.remote.upload('upload_avatar', @$refs.fileInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
 
   created: ->
+    Records.users.saveExperience("changePicture")
     @submit = submitForm @, @user,
       flashSuccess: 'profile_page.messages.picture_changed'
       submitFn:     Records.users.updateProfile

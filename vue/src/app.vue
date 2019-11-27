@@ -5,6 +5,7 @@ import EventBus from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import { each, compact, truncate } from 'lodash'
+import openModal      from '@/shared/helpers/open_modal'
 
 export default
   mixins: [AuthModalMixin]
@@ -20,6 +21,10 @@ export default
 
   mounted: ->
     @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
+    if Session.isSignedIn() && Session.user().experiences['show_vue_upgraded_modal']
+      openModal
+        maxWidth: 400
+        component: 'VueUpgradedModal'
     EventBus.$on('currentComponent', @setCurrentComponent)
     EventBus.$on 'pageError', (error) =>
       @openAuthModal() if !Session.isSignedIn() and error.status == 403
@@ -77,12 +82,10 @@ export default
 v-app
   navbar
   sidebar
-  v-content
-    router-view(v-if="!pageError")
-    common-error(v-if="pageError" :error="pageError")
-    v-spacer
-    common-footer
-  thread-nav
+  router-view(v-if="!pageError")
+  common-error(v-if="pageError" :error="pageError")
+  v-spacer
+  common-footer
   modal-launcher
   common-flash
 </template>

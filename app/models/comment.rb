@@ -33,7 +33,6 @@ class Comment < ApplicationRecord
   default_scope { includes(:user).includes(:documents).includes(:discussion) }
 
   scope :in_organisation, ->(group) { joins(:discussion).where("discussions.group_id": group.id) }
-  scope :chronologically, -> { order('created_at asc') }
 
   delegate :name, to: :user, prefix: :user
   delegate :name, to: :user, prefix: :author
@@ -62,17 +61,12 @@ class Comment < ApplicationRecord
     Nokogiri::HTML(self.body).css("h1,h2,h3").length > 0
   end
 
-  def created_event_kind
-    :new_comment
-  end
-
   def parent_event
-    return discussion.created_event unless parent
-    next_parent = parent
-    while (next_parent.parent) do
-      next_parent = next_parent.parent
+    if parent # parent comment
+      parent.created_event # parent comment's 'new_comment' event
+    else
+      discussion.created_event
     end
-    next_parent.created_event
   end
 
   def purge_drafts_asynchronously?

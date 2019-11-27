@@ -55,13 +55,22 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   def slack_title(text = nil, params = {})
     (model.respond_to?(:name) && model.name) ||
     (model.respond_to?(:title) && model.title) ||
-    (model.respond_to?(:body) && model.body)
+    (model.respond_to?(:body) && ensure_markdown(model, 'body'))
   end
 
   def slack_text
-    (model.respond_to?(:description) && model.description) ||
-    (model.respond_to?(:details) && model.details) ||
-    (model.respond_to?(:statement) && model.statement)
+    (model.respond_to?(:description) && ensure_markdown(model, 'description')) ||
+    (model.respond_to?(:details) && ensure_markdown(model, 'details')) ||
+    (model.respond_to?(:statement) && ensure_markdown(model, 'statement'))
+  end
+
+  def ensure_markdown(model, attribute)
+    format_method_name = "#{attribute}_format"
+    if model.respond_to?(format_method_name.to_sym) && model.public_send(format_method_name) == 'html'
+      ReverseMarkdown.convert(model.public_send(attribute))
+    else
+      model.public_send(attribute)
+    end
   end
 
   def slack_link_for(obj, opts = {})

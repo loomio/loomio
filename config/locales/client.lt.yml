@@ -37,6 +37,7 @@ lt:
     ok_hand: Gerai
     wave: Banga
   common:
+    no_results_found: Rezultatų nerasta
     you: Tu
     expand: Išplėsti
     all_day: Visą dieną
@@ -108,6 +109,8 @@ lt:
     normal: 'Normalus'
     quiet: 'Tylus'
     mute: 'Nutildyti'
+  pin_event_form:
+    title_label: Antraštė
   change_volume_form:
     simple:
       label: Pranešimai

@@ -28,27 +28,20 @@ describe Identities::SlackController do
     end
   end
 
-  describe 'install' do
-    let(:identity) { create :slack_identity, user: user }
-
-    it 'boots the app if an identity exists' do
-      identity
-      sign_in user
-      get :install
-      expect(response).to render_template 'application/index'
-    end
-
-    it 'boots the app if a pending identity exists' do
-      session[:pending_identity_id] = identity.id
-      get :install
-      expect(response).to render_template 'application/index'
-    end
-
-    it 'redirects to oauth path if no identity can be found' do
-      get :install
-      expect(response).to_not render_template 'layouts/angular'
-    end
-  end
+  # describe 'install' do
+  #   let(:identity) { create :slack_identity, user: user }
+  #
+  #   it 'boots the app if a pending identity exists' do
+  #     session[:pending_identity_id] = identity.id
+  #     get :install
+  #     expect(response).to render_template 'application/index'
+  #   end
+  #
+  #   it 'redirects to oauth path if no identity can be found' do
+  #     get :install
+  #     expect(response).to_not render_template 'layouts/angular'
+  #   end
+  # end
 
   describe 'participate' do
     let(:group) { create :formal_group }

@@ -13,14 +13,6 @@ export obeyMembersCanAnnounce = (steps, group) ->
   else
     _.without(steps, 'announce')
 
-export applyLoadingFunction = (scope, functionName) ->
-  executing = "#{functionName}Executing"
-  loadingFunction = scope[functionName]
-  scope[functionName] = (args...) ->
-    return if scope[executing]
-    scope[executing] = true
-    loadingFunction(args...).finally -> scope[executing] = false
-
 export applySequence = (scope, options = {}) ->
   applySequence(scope, options)
 

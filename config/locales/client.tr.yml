@@ -80,7 +80,6 @@ tr:
       new_thread: "Yeni müzakere"
       loading: 'Yükleniyor'
       translate: 'Tercüme et'
-      translated: 'Bing Translator tercümesi'
       upload: 'Yükle'
       uploading: 'Yükleniyor'
       load_more: 'Daha fazla yükle'
@@ -108,6 +107,8 @@ tr:
     quiet: 'Sessiz'
     mute: 'Sesi kıs'
     unmute: 'Sesi aç'
+  pin_event_form:
+    title_label: Başlık
   change_volume_form:
     simple:
       label: Bildirimler
@@ -185,6 +186,8 @@ tr:
   discussion_record:
     created: '{{title}} müzakeresi {{groupName}} grubunda başarıyla oluşturuldu '
     updated: 'Değişiklikleri {{title}} konusuna kaydet'
+  discussion_fork_actions:
+    move: Taşı
   discussion_form:
     messages:
       created: 'Müzakere başlatıldı'
@@ -201,12 +204,14 @@ tr:
     privacy_public: 'Herhangi bir kişi müzakereyi görebilir. Sadece üyeler katılım gösterebilir.'
     privacy_private: 'Müzakere sadece {{group}} grubunun üyelerine görünür olacaktır.'
     privacy_organisation: 'Müzakere {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
-  announcement:
-    preview: Ön izleme
   action_dock:
+    move_items: Taşı
     edit_stance: Konumunu değiştir
+    edited: Düzenlendi
     tag_thread: Etiketleri yönet
     delete_thread: Müzakereyi sil
+  formatting:
+    attach: Dosya ekle
   cover_photo_form:
     heading: 'Yeni kapak fotoğrafı'
     upload_link: 'Yeni kapak fotoğrafı yükle'
@@ -292,7 +297,7 @@ tr:
     edit_group_heading: 'Grup ayarlarını düzenle'
     edit_subgroup_heading: 'Alt grup ayarlarını düzenle'
     group_name: 'Grup adı'
-    group_name_placeholder: 'Grubuna ne ad vermek istiyorsun?'
+    group_name_placeholder: 'Grup isminizin adı nedir?'
     subgroup_name: 'Alt Grup Adı'
     description: 'Tanım'
     description_placeholder: 'Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.'
@@ -599,6 +604,7 @@ tr:
     save_changes: Kaydet
   discussions_panel:
     open: Açık
+    all: Hepsi
     closed: Kapalı
   members_panel:
     order_by_name: 'İsim'

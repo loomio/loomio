@@ -3,11 +3,8 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import AppConfig      from '@/shared/services/app_config'
-import WatchRecords from '@/mixins/watch_records'
-import { submitForm }      from '@/shared/helpers/form.coffee'
 
 export default
-  mixins: [WatchRecords]
   props:
     discussion:
       type: Object
@@ -18,11 +15,12 @@ export default
     loading: false
   methods:
     updateTags: ->
-      @loading = true
-      Records.tags.updateModel(@discussion, @discussionTags).then =>
-        EventBus.$emit 'closeModal'
-      .finally =>
-        @loading = false
+      setTimeout =>
+        @loading = true
+        Records.tags.updateModel(@discussion, @discussionTags).then =>
+          EventBus.$emit 'closeModal'
+        .finally =>
+          @loading = false
   computed:
     groupTags: -> @discussion.group().parentOrSelf().tagNames || []
 

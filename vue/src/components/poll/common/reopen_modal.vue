@@ -19,7 +19,7 @@ export default
 </script>
 
 <template lang="pug">
-v-card.poll-common-modal
+v-card.poll-common-reopen-modal
   submit-overlay(:value='poll.processing')
   v-card-title
     h1.headline(v-t="'poll_common_reopen_form.title'")

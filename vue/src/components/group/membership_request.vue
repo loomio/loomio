@@ -30,7 +30,7 @@ div
           space
           mid-dot
           time-ago(:date='request.createdAt')
-        span.caption.lmo-grey-text(v-if="request.respondedAt")
+        span.membership-request__response.caption.lmo-grey-text(v-if="request.respondedAt")
           space
           span(v-t="{ path: 'membership_requests_page.previous_request_response', args: { response: request.formattedResponse(), responder: request.responder().name } }")
           mid-dot

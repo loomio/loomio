@@ -32,6 +32,7 @@ ga_IE:
   timezones:
     local: An t-am áitiúil ({{luach}})
   common:
+    no_results_found: Níor aimsíodh aon rud
     option: Rogha
     add: Cuir leis
     you: Tusa
@@ -104,7 +105,6 @@ ga_IE:
       new_thread: "Snáith nua"
       loading: 'Ag luchtú'
       translate: 'Aistrigh'
-      translated: 'Aistriúchán ó Bing Translator'
       upload: 'Uasluchtaigh é'
       uploading: 'Ag uasluchtú'
       load_more: 'Luchtaigh tuilleadh'
@@ -137,6 +137,8 @@ ga_IE:
     quiet: 'Ciúin'
     mute: 'Gan fhuaim'
     unmute: 'Díbhalbhaigh é'
+  pin_event_form:
+    title_label: Teideal
   change_volume_form:
     simple:
       label: Fógraí
@@ -233,6 +235,8 @@ ga_IE:
   discussion_record:
     created: 'Cruthaíodh an tsnáithe {{title}} go rathúil i {{groupName}}'
     updated: 'Taisc na hathruithe ar an {{title}}'
+  discussion_fork_actions:
+    move: Bog é
   discussion_form:
     messages:
       created: 'Tosaíodh snáithe'
@@ -247,8 +251,12 @@ ga_IE:
     context_placeholder: 'Cuir dóthain eolas cúlra ar fáil don bhaicle le go mbeidh an plé torthúil. Is féidir seo a nuashonrú fad is atá an plé ar bun'
     privacy_label: 'Príobháideachas'
   action_dock:
+    move_items: Bog é
     edit_stance: Athraigh do sheasamh
+    edited: Curtha in eagar
     delete_thread: Scriosadh an tsnáith
+  formatting:
+    attach: Ceangail comhad
   cover_photo_form:
     heading: 'Grianghraf cumhdaigh nua'
     upload_link: 'Uasluchtaigh grianghraf cumhdaigh nua'
@@ -322,7 +330,7 @@ ga_IE:
   group_form:
     start_group_heading: 'Cuir baicle ar bun'
     group_name: 'Ainm na baicle'
-    group_name_placeholder: 'Cén t-ainm ar mhaith leat a bheith ar an do bhaicle?'
+    group_name_placeholder: 'Cad is ainm den bhaicle seo agatsa?'
     description: 'Cur síos'
     privacy: 'Príobháideachas'
     profile: Beathaisnéisín
@@ -561,6 +569,7 @@ ga_IE:
     label: Ceangaltáin
   discussions_panel:
     open: Ar oscailt
+    all: Uile
     closed: Dúnta
   members_panel:
     order_by_name: 'Ainm'

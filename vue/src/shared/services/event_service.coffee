@@ -1,9 +1,18 @@
 import AbilityService from '@/shared/services/ability_service'
 import Flash from '@/shared/services/flash'
 import openModal from '@/shared/helpers/open_modal'
+import LmoUrlService  from '@/shared/services/lmo_url_service'
 
 export default new class EventService
   actions: (event, vm) ->
+    move_event:
+      name: 'action_dock.move_items'
+      perform: ->
+        event.toggleFromFork()
+
+      canPerform: ->
+        AbilityService.canMoveThread(event.discussion())
+
     remove_event:
       perform: ->
         event.removeFromThread().then ->
@@ -14,13 +23,25 @@ export default new class EventService
         AbilityService.canAdministerDiscussion(event.discussion())
 
     pin_event:
-      name: 'action_dock.pin_event'
+      name: 'common.action.pin'
       icon: 'mdi-pin'
       canPerform: -> AbilityService.canPinEvent(event)
-      perform: -> event.pin().then -> Flash.success('activity_card.event_pinned')
+      perform: ->
+        openModal
+          component: 'PinEventForm',
+          props: { event: event }
 
     unpin_event:
-      name: 'action_dock.unpin_event'
+      name: 'common.action.unpin'
       icon: 'mdi-pin-off'
       canPerform: -> AbilityService.canUnpinEvent(event)
       perform: -> event.unpin().then -> Flash.success('activity_card.event_unpinned')
+
+
+    copy_url:
+      icon: 'mdi-link'
+      canPerform: -> true
+      perform:    ->
+        link = LmoUrlService.event(event, {}, absolute: true)
+        vm.$copyText(link).then (e) ->
+          Flash.success("action_dock.url_copied")

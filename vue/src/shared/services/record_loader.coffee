@@ -15,6 +15,7 @@ export default class RecordLoader
     @numRequested = opts.numRequested or @params['per']
     @then         = opts.then or (data) -> data
     @loading      = false
+    @status = null
 
   reset: ->
     @params['from'] = 0
@@ -24,7 +25,7 @@ export default class RecordLoader
     @loading = true
     @exhausted = false
     Records[camelCase(@collection)].fetch
-      path:   @path
+      path: @path
       params: defaults({}, opts, @params)
     .then (data) =>
       records = data[@collection] || []
@@ -33,6 +34,8 @@ export default class RecordLoader
       @exhausted = true if records.length < (opts.per || @params.per)
       data
     .then(@then)
+    .catch (err) =>
+      @status = err.status
     .finally =>
       @loadingFirst = false
       @loadingPrevious = false

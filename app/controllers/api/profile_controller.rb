@@ -7,7 +7,7 @@ class API::ProfileController < API::RestfulController
   def groups
     ids = current_user.formal_groups.pluck(:id)
     self.collection = Group.published.where(id: ids).or(Group.published.where('parent_id in (:ids)', ids: ids).where('is_visible_to_parent_members = true or is_visible_to_public = true'))
-    respond_with_collection serializer: GroupSerializer, root: :groups
+    respond_with_collection serializer: Full::GroupSerializer, root: :groups
   end
 
   def time_zones
@@ -56,7 +56,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def destroy
-    service.delay.destroy(user: current_user)
+    service.delay(queue: :low_priority).destroy(user: current_user)
     respond_with_resource
   end
 
@@ -67,12 +67,12 @@ class API::ProfileController < API::RestfulController
 
   def save_experience
     raise ActionController::ParameterMissing.new(:experience) unless params[:experience]
-    service.save_experience user: current_user, actor: current_user, params: { experience: params[:experience] }
+    service.save_experience user: current_user, actor: current_user, params: { experience: params[:experience], remove_experience: params[:remove_experience]}
     respond_with_resource
   end
 
   def email_status
-    respond_with_resource(serializer: Pending::UserSerializer, scope: {has_token: has_membership_token?})
+    respond_with_resource(serializer: Pending::UserSerializer)
   end
 
   private
@@ -107,11 +107,6 @@ class API::ProfileController < API::RestfulController
 
   def current_user_params
     { user: current_user, actor: current_user, params: permitted_params.user }
-  end
-
-  def has_membership_token?
-    return unless membership = Membership.find_by(token: params[:token])
-    membership.token if resource.email == membership.user.email
   end
 
   def resource_class

@@ -5,6 +5,7 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
+import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
   actions: (poll, vm) ->
@@ -29,7 +30,7 @@ export default new class PollService
             announcement: Records.announcements.buildFromModel(poll)
 
     edit_poll:
-      name: 'action_dock.edit_poll'
+      name: 'common.action.edit'
       icon: 'mdi-pencil'
       canPerform: ->
         AbilityService.canEditPoll(poll)
@@ -41,6 +42,7 @@ export default new class PollService
 
     show_history:
       icon: 'mdi-history'
+      name: 'action_dock.edited'
       canPerform: -> poll.edited()
       perform: ->
         openModal
@@ -52,9 +54,10 @@ export default new class PollService
       icon: 'mdi-translate'
       menu: true
       canPerform: -> AbilityService.canTranslate(poll)
-      perform: -> poll.translate(Session.user().locale)
+      perform: -> Session.user() && poll.translate(Session.user().locale)
 
     close_poll:
+      icon: 'mdi-close-circle-outline'
       name:
         path: 'poll_common.close_poll_type'
         args: {'poll-type': vm.$t(poll.pollTypeKey())}
@@ -78,6 +81,7 @@ export default new class PollService
                 flash: 'poll_common_close_form.poll_closed'
 
     reopen_poll:
+      icon: 'mdi-refresh'
       name: 'common.action.reopen'
       canPerform: ->
         AbilityService.canReopenPoll(poll)
@@ -91,7 +95,7 @@ export default new class PollService
       canPerform: ->
         AbilityService.canExportPoll(poll)
       perform: ->
-        vm.$router.push LmoUrlService.poll(poll, {}, action: 'export', absolute: true)
+        hardReload LmoUrlService.poll(poll, {}, action: 'export', absolute: true)
 
     delete_poll:
       name: 'common.action.delete'

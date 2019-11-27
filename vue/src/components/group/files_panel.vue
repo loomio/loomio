@@ -4,20 +4,18 @@ import RecordLoader   from '@/shared/services/record_loader'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import ModalService   from '@/shared/services/modal_service'
-import WatchRecords   from '@/mixins/watch_records'
+import Session       from '@/shared/services/session'
 
-import { isEmpty, debounce, filter, some, orderBy } from 'lodash'
-import { applyLoadingFunction } from '@/shared/helpers/apply'
+import { isEmpty, intersection, debounce, filter, some, orderBy } from 'lodash'
 
 export default
-  mixins: [WatchRecords]
-
   data: ->
     group: null
     loader: null
     attachmentLoader: null
-    fragment: ''
+    searchQuery: ''
     items: []
+    subgroups: 'mine'
     per: 25
     from: 0
 
@@ -37,6 +35,7 @@ export default
       params:
         group_id: @group.id
         per: @per
+        subgroups: @subgroups
         from: @from
 
     @attachmentLoader = new RecordLoader
@@ -44,75 +43,91 @@ export default
       params:
         group_id: @group.id
         per: @per
+        subgroups: @subgroups
         from: @from
-
-    @fetch()
 
     @watchRecords
       collections: ['documents', 'attachments']
-      query: @query
+      query: => @query()
+
+    @searchQuery = @$route.query.q || ''
+    @fetch()
 
   watch:
-    fragment: debounce ->
+    '$route.query.q': debounce (val) ->
+      @searchQuery = val || ''
       @fetch()
       @query()
-    ,
-      300
+    , 500
 
   methods:
     query: ->
+      groupIds = switch @subgroups
+        when 'none' then [@group.id]
+        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
+        when 'all' then @group.organisationIds()
+
       documents = Records.documents.collection.chain().
-                     find(groupId: @group.id).
-                     find(title: {$regex: ///#{@fragment}///i}).
-                     limit(@loader.numRequested).data()
+                     find(groupId: {$in: groupIds}).
+                     find(title: {$regex: ///#{@searchQuery}///i}).
+                     limit(@from + @per).data()
 
       attachments = Records.attachments.collection.chain().
-                     find(groupId: @group.id).
-                     find(filename: {$regex: ///#{@fragment}///i}).
-                     limit(@loader.numRequested).data()
+                     find(groupId: {$in: groupIds}).
+                     find(filename: {$regex: ///#{@searchQuery}///i}).
+                     limit(@from + @per).data()
 
       @items = orderBy(documents.concat(attachments), 'createdAt', 'desc')
 
-    fetch: ->
+    fetch: debounce ->
       @loader.fetchRecords
-        q: @fragment
+        q: @searchQuery
         from: @from
 
       @attachmentLoader.fetchRecords
-        q: @fragment
+        q: @searchQuery
         from: @from
+    , 500
 
     loadMore: ->
       @from += @per
       @fetch()
 
+    handleSearchQueryChange: (val) ->
+      @$router.replace({ query: { q: val } })
 
   computed:
-    showLoadMore: -> true || !@loader.exhausted && !@attachmentLoader.exhausted
+    showLoadMore: -> !@loader.exhausted && !@attachmentLoader.exhausted
     loading: -> @loader.loading || @attachmentLoader.loading
     canAdministerGroup: -> AbilityService.canAdministerGroup(@group)
 
 </script>
 
 <template lang="pug">
-v-card.group-files-panel
-  v-toolbar(flat transparent)
-    v-spacer
-    v-progress-linear(color="accent" indeterminate :active="loading" absolute bottom)
-  v-divider
-
-  v-data-table(:items="items" hide-default-footer)
-    template(v-slot:no-data)
-      v-alert(:value="true" color="info" outlined icon="info" v-t="'group_files_panel.no_files'")
-    template(v-slot:item="{ item }")
-      tr
-        td
-          v-layout(align-center)
-            v-icon mdi-{{item.icon}}
-            a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
-        td
-          user-avatar(:user="item.author()")
-        td
-          time-ago(:date="item.createdAt")
-  v-btn(v-if="showLoadMore" :disabled="loading" @click="loadMore()" v-t="'common.action.load_more'")
+div
+  v-layout.py-2(align-center wrap)
+    v-text-field(clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
+  v-card.group-files-panel(outlined)
+    div(v-if="loader.status == 403")
+      p.pa-4.text-center(v-t="'error_page.forbidden'")
+    div(v-else)
+      p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
+      v-simple-table(v-else :items="items" hide-default-footer)
+        thead
+          tr
+            th(v-t="'group_files_panel.filename'")
+            th(v-t="'group_files_panel.uploaded_by'")
+            th(v-t="'group_files_panel.uploaded_at'")
+        tbody
+          tr(v-for="item in items" :key="item.id")
+            td
+              v-layout(align-center)
+                v-icon mdi-{{item.icon}}
+                a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
+            td
+              user-avatar(:user="item.author()")
+            td
+              time-ago(:date="item.createdAt")
+      v-layout(justify-center)
+        v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="loadMore()" v-t="'common.action.load_more'")
 </template>

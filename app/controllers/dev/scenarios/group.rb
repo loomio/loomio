@@ -81,6 +81,23 @@ module Dev::Scenarios::Group
     redirect_to group_url(create_subgroup)
   end
 
+  def setup_subgroup_with_parent_member_visibility
+    sign_in patrick
+    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
+                                group_privacy: 'closed')
+    @group.add_admin!  jennifer
+    @group.add_member! jennifer
+    @group.add_member! patrick
+    @subgroup = FormalGroup.create!(name: 'Johnny Utah',
+                                   parent: @group,
+                                   discussion_privacy_options: 'public_or_private',
+                                   parent_members_can_see_discussions: true,
+                                   group_privacy: 'closed', creator: jennifer)
+    discussion = FactoryBot.create :discussion, group: @subgroup, title: "Vaya con dios", private: true, author: jennifer
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    redirect_to group_url(@subgroup)
+  end
+
   def setup_group_with_subgroups_as_admin_landing_in_other_subgroup
     sign_in jennifer
     create_another_group.add_admin! jennifer
@@ -164,7 +181,8 @@ module Dev::Scenarios::Group
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
     @group.add_admin! jennifer
-    @discussion = @group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
+    @discussion = Discussion.new(title: 'I carried a watermelon', private: false, author: jennifer, group: @group)
+    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     redirect_to group_url(@group)
   end
 

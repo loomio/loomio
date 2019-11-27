@@ -31,7 +31,9 @@ class DiscussionSerializer < ActiveModel::Serializer
              :pinned,
              :attachments,
              :mentioned_usernames,
-             :tag_names
+             :tag_names,
+             :newest_first,
+             :max_depth
 
 
   attributes_from_reader :discussion_reader_id,
@@ -44,8 +46,8 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :group, serializer: GroupSerializer, root: :groups
   has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_many :active_polls, serializer: Full::PollSerializer, root: :polls
-  has_one :created_event, serializer: Events::SimpleSerializer, root: :events
-  has_one :forked_event, serializer: Events::SimpleSerializer, root: :events
+  has_one :created_event, serializer: Events::BaseSerializer, root: :events
+  has_one :forked_event, serializer: Events::BaseSerializer, root: :events
 
   has_many :discussion_tags
 

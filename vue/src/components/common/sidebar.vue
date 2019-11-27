@@ -8,22 +8,17 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import InboxService   from '@/shared/services/inbox_service'
 import GroupModalMixin from '@/mixins/group_modal.coffee'
 import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
-import WatchRecords from '@/mixins/watch_records'
 
-import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact, concat, intersection, difference } from 'lodash'
+import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact, concat, intersection, difference, orderBy } from 'lodash'
 
 export default
-  mixins: [
-    GroupModalMixin,
-    DiscussionModalMixin,
-    WatchRecords
-  ]
+  mixins: [ GroupModalMixin, DiscussionModalMixin, ]
 
   data: ->
     organization: null
-    open: null
+    open: false
     group: null
-    version: AppConfig.version.split('.').slice(-1)[0]
+    version: AppConfig.version
     tree: []
     myGroups: []
     otherGroups: []
@@ -35,13 +30,11 @@ export default
     EventBus.$on 'toggleSidebar', => @open = !@open
 
     EventBus.$on 'currentComponent', (data) =>
+      @open = Session.isSignedIn() && Session.user().experiences['sidebar'] || false
       @group = data.group
       if @group
         @organization = data.group.parentOrSelf()
-        if @$route.query.subgroups
-          @expandedGroupIds = []
-        else
-          @expandedGroupIds = [@organization.id]
+        @expandedGroupIds = [@organization.id]
       else
         @organization = null
 
@@ -49,7 +42,10 @@ export default
       collections: ['groups', 'memberships', 'discussions']
       query: (store) => @updateGroups()
 
-    EventBus.$on 'signedIn', (user) => @fetchData()
+    EventBus.$on 'signedIn', (user) =>
+      @fetchData()
+      @open = Session.user().experiences['sidebar'] || false
+
     @fetchData() if Session.isSignedIn()
 
   watch:
@@ -60,7 +56,10 @@ export default
 
   methods:
     fetchData: ->
-      Records.users.fetchGroups()
+      Records.users.fetchGroups().then =>
+        if @$router.history.current.path == "/dashboard" && Session.user().membershipsCount == 1
+          @$router.replace("/g/#{Session.user().memberships()[0].group().key}")
+
       InboxService.load()
 
     unreadCountFor: (group, isOpen) ->
@@ -79,24 +78,13 @@ export default
         id: group.id
         name: group.name
         group: group
+        member: Session.user().membershipFor(group)?
         children: if group.subgroups
-          group.subgroups().map(groupAsItem).concat(newSubgroupButton(group))
+          orderBy(group.subgroups().map(groupAsItem), ['member', 'name'], ['desc', 'asc'])
         else
           []
 
-      initalId = 0
-      generateId = -> "id" + (initalId += 1)
-      newSubgroupButton = (parentGroup) =>
-        if AbilityService.canCreateSubgroups(parentGroup)
-          id: generateId()
-          name: @$t('common.action.add_subgroup')
-          click: => @openStartSubgroupModal(parentGroup)
-          icon: 'mdi-plus'
-          subgroups: -> []
-        else
-          []
-
-      @tree = @organizations.map (group) -> groupAsItem(group)
+      @tree = orderBy( @organizations.map((group) -> groupAsItem(group)), ['name'], ['asc'])
 
     startOrganization: ->
       @canStartGroup() && @openStartGroupModal()
@@ -106,88 +94,62 @@ export default
 
     canViewPublicGroups: -> AbilityService.canViewPublicGroups()
 
-    parentGroupLink: (group) ->
-      if Session.user().isMemberOf(group)
-        @urlFor(group)
-      else
-        @urlFor(group)+"?subgroups=mine"
-
-    userExpandedGroupIds: (ids) ->
-      return unless @group
-      @expandedGroupIds = ids if ids.includes(@group.id)
-      group = if ids.length == 0 then @organization else @group
-      @$router.replace(@groupUrl(group, ids.includes(group.id))).catch((err) => true) if @$route.path == @urlFor(group)
-
-    groupUrl: (group, open) ->
-      if (group.isParent() && group.hasSubgroups() && !open)
-        @urlFor(group)+'?subgroups=mine'
-      else
-        @urlFor(group)
-
   computed:
     user: -> Session.user()
     activeGroup: -> if @group then [@group.id] else []
     logoUrl: -> AppConfig.theme.app_logo_src
 
-    # if we expand or collapse active group, then route changes to that active group with respective subgroups query
-    # otherwise, watch route to determine what should render
-      # 1. navigate
-
 </script>
 
 <template lang="pug">
-v-navigation-drawer.sidenav-left(app v-model="open")
+v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
-    div.text-center
-      a(href="/beta") Switch off beta
-    v-layout.ma-2(style="width: 50%")
+    v-layout.mx-10.my-2(column align-center style="max-height: 64px")
       v-img(:src="logoUrl")
-      v-layout(align-center)
-        span.ml-4 {{version}}
+      a.ml-4.caption(href="https://help.loomio.org/en/user_manual/whats_new_loomio_2/" target="_blank") {{version}}
 
-  v-list-group
+  v-list-group.sidebar__user-dropdown
     template(v-slot:activator)
       v-list-item-content
         v-list-item-title {{user.name}}
         v-list-item-subtitle {{user.email}}
     user-dropdown
   v-divider
-  v-list-item(dense to="/dashboard")
+  v-list-item.sidebar__list-item-button--recent(dense to="/dashboard")
     v-list-item-title(v-t="'sidebar.recent_threads'")
   v-list-item(dense to="/inbox")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
   v-divider
 
-  //- v-layout(fill-height)
-  v-treeview(hoverable :items="tree" :active="activeGroup" @update:open="userExpandedGroupIds" :open="expandedGroupIds" style="width: 100%")
+  v-treeview.sidebar__groups(hoverable dense :items="tree" :active="activeGroup" :open="expandedGroupIds" style="width: 100%")
     template(v-slot:append="{item, open}")
       div(v-if="item.click")
         v-icon(v-if="item.icon" @click="item.click") {{item.icon}}
     template(v-slot:prepend="{item, open}")
-      div(v-if="item.click")
-        //- v-icon(v-if="item.icon" @click="item.click") {{item.icon}}
-      router-link(v-if="!item.click" :to="groupUrl(item.group, open)")
+      router-link(v-if="!item.click" :to="urlFor(item.group)")
         group-avatar(:group="item.group"  v-if="item.group.isParent()")
     template(v-slot:label="{item, open}")
       div(v-if="item.click")
-        a.body-2.sidebar-item.text-almost-black(text @click="item.click") {{item.name}}
-      router-link(v-if="!item.click" :to="groupUrl(item.group, open)")
+        a.body-2.sidebar-item.text-almost-black(text @click="item.click" :class="{ 'sidebar-start-subgroup': item.isStartSubgroupButton }") {{item.name}}
+      router-link(v-if="!item.click" :to="urlFor(item.group)")
         span.body-2.sidebar-item.text-almost-black
           span {{item.group.name}}
           span(v-if='unreadCountFor(item.group, open)')
             space
             span ({{unreadCountFor(item.group, open)}})
 
-  v-list-item(@click="startOrganization()" dense)
+  v-list-item.sidebar__list-item-button--start-group(@click="startOrganization()" dense)
     v-list-item-title(v-t="'sidebar.start_group'")
     v-list-item-avatar(:size="28")
       v-icon(:size="28" tile) mdi-plus
+  v-divider
+  v-list-item(dense to="/explore")
+    v-list-item-title(v-t="'sidebar.explore_groups'")
 </template>
-<style lang="css">
+<style lang="sass">
+.sidebar-item
+	display: block
+	width: 100%
 
-.sidebar-item {
-  display: block;
-  width: 100%;
-}
 </style>

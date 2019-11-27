@@ -19,6 +19,8 @@ km:
     search: ស្វែងរក
   error_page:
     forbidden: 'អ្នកមិនត្រូវបានអនុញ្ញាតឲ្យធ្វើវានោះទេ'
+  pin_event_form:
+    title_label: ចំណងជើង
   change_volume_form:
     simple:
       label: ការជូនដំណឹង

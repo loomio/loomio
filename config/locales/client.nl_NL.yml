@@ -1,4 +1,15 @@
 nl_NL:
+  loomio_onboarding:
+    group_progress_card:
+      title: Activeer je groep
+      activities:
+        set_description: Omschrijf je groep
+        set_logo: Kies een logo voor je groep
+        set_cover_photo: Kies een foto voor je groep
+        invite_people_in: Nodig mensen uit
+        start_thread: Start een discussiebord
+        make_decision: Start een beslissing
+      dismiss_this_card: Deze kaart afwijzen
   plan_names:
     free: Gratis
   current_plan_button:
@@ -103,6 +114,8 @@ nl_NL:
     points_abbrev: Ieder stem is {{score}} punten waard
     total: Totaal
     action:
+      pin: Vastprikken
+      unpin: Ontprikken
       search: 'Zoek'
       back: 'Terug'
       next: 'Volgende'
@@ -122,7 +135,6 @@ nl_NL:
       new_thread: "Nieuw bord"
       loading: 'Aan het laden'
       translate: 'Vertalen'
-      translated: 'Vertaling door Bing vertaler'
       upload: 'Uploaden'
       uploading: 'Aan het uploaden'
       load_more: 'Laad meer'
@@ -174,6 +186,8 @@ nl_NL:
     quiet: 'Stil'
     mute: 'Dempen'
     unmute: 'Dempen uit'
+  pin_event_form:
+    title_label: Titel
   change_volume_form:
     simple:
       label: Meldingen
@@ -270,6 +284,7 @@ nl_NL:
     unread_threads: 'Ongelezen borden ({{count}})'
     muted_threads: 'Gedempte borden'
     explore: 'Openbare groepen'
+    explore_groups: Verken groepen
     start_thread: Nieuw bord
     start_decision: Nieuwe beslissing
     aria_labels:
@@ -343,6 +358,8 @@ nl_NL:
   discussion_record:
     created: 'De discussie {{title}} is met succes aangemaakt in {{groupName}}'
     updated: 'Wijzigingen aan {{title}} opgeslagen'
+  discussion_fork_actions:
+    move: Verplaatsen
   discussion_form:
     aria_label: 'Discussieformulier'
     messages:
@@ -361,7 +378,6 @@ nl_NL:
     privacy_private: 'De discussie zal enkel zichtbaar zijn voor leden van {{group}}'
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
   announcement:
-    preview: Voorbeeld
     form:
       outcome_announced:
         title: Deel uitkomst
@@ -369,15 +385,15 @@ nl_NL:
     group_form:
       members_count: '{{count}} mensen zullen op de hoogte gebracht worden'
   action_dock:
-    react: Reactie toevoegen
     add_resource: Bijlage toevoegen
     edit_group: Groepsbeschrijving bijwerken
     add_comment: Becommentarieer
-    copy_url: Kopieer URL
+    copy_url: Link kopieren
     edit_thread: Beschrijving bijwerken
     invite_guests: Nodig gasten uit
     translate_thread: Beschrijving vertalen
     edit_poll: '''Peiling'' bewerken'
+    move_items: Verplaatsen
     translate_poll: '''Peiling'' vertalen'
     edit_stance: Verander standpunt
     translate_stance: Stem vertalen
@@ -388,10 +404,13 @@ nl_NL:
     edit_outcome: Uitkomst bewerken
     translate_outcome: Uitkomst vertalen
     show_history: Toon bewerkingsgeschiedenis
+    edited: Bewerkt
     pin_thread: Bord vastprikken
     unpin_thread: Bord ontprikken
     tag_thread: Labels beheren
     delete_thread: Bord verwijderen
+  formatting:
+    attach: Bijlage toevoegen
   cover_photo_form:
     aria_label: 'Formulier groepsfoto veranderen'
     heading: 'Nieuwe groepsfoto'
@@ -510,7 +529,7 @@ nl_NL:
     edit_group_heading: 'Bewerk groepsinstellingen'
     edit_subgroup_heading: 'Bewerk subgroepinstellingen'
     group_name: 'Groepsnaam'
-    group_name_placeholder: 'Hoe wil je je groep noemen?'
+    group_name_placeholder: 'Wat is de naam van je groep?'
     subgroup_name: 'Subgroep naam'
     description: 'Beschrijving'
     description_placeholder: 'Beschrijf het doel van je groep, zodat je groepsleden weten waarom ze hier zijn.'
@@ -1011,8 +1030,10 @@ nl_NL:
     count: "Zie alles: ({{count}}) beslissingen"
   discussions_panel:
     open: Openen
+    all: Alle
     closed: Gesloten
   members_panel:
+    everyone: 'Iedereen'
     order_by_name: 'Naam'
     header_name: 'Naam'
     header_username: 'Gebruikersnaam'
@@ -1042,7 +1063,6 @@ nl_NL:
     helptext_on: Gebruikers zullen deze vergadering kunnen toevoegen aan hun kalender
     helptext_off: Er zal geen vergaderverzoek verstuurd worden
     event_duration: Duur
-    event_summary: Samenvatting
     event_summary_placeholder: Hoe zou je de vergadering willen benoemen?
     event_description: Vergadering omschrijving
     event_description_placeholder: Wat staat er op de agenda bij deze vergadering?
@@ -1059,7 +1079,6 @@ nl_NL:
       title: Kiezers mogen opties toevoegen
   poll_common_close_form:
     title: Sluit een peiling voortijdig
-    helptext: Ben je er zeker van dat je vroeger wilt sluiten?
     close_proposal: Voorstel sluiten
     close_poll: Peiling sluiten
     close_count: '''Check'' sluiten'
@@ -1272,8 +1291,6 @@ nl_NL:
     helptext: Sleep en drop opties in de volgorde van voorkeur (waarbij 1 de meest geprefereerde optie is). Je {{count}}  beste keuzes zullen worden opgenomen.
     stance_created: Keuze opgenomen
     stance_updated: Keuze upgedatet
-  thread_item:
-    poll_expired: "{{polltype}} is gesloten: <strong>{{title}}</strong>"
   poll_admin_page:
     title: Administrator - {{title}}
   poll_common_publish_facebook_preview:

@@ -58,6 +58,19 @@ describe API::RegistrationsController do
       expect(u.legal_accepted_at).to be_present
     end
 
+    it "signup via membership of another user" do
+      pending_membership.user.update(email_verified: true)
+      session[:pending_membership_token] = pending_membership.token
+      registration_params[:email] = "newuser@example.com"
+      expect { post :create, params: { user: registration_params } }.to change { User.count }.by(1)
+      expect(response.status).to eq 200
+      expect(JSON.parse(response.body)['signed_in']).to be false
+      u = User.find_by(email: registration_params[:email])
+      expect(u.name).to eq registration_params[:name]
+      expect(u.email).to eq registration_params[:email]
+      expect(u.legal_accepted_at).to be_present
+    end
+
     it "signup via login token" do
       session[:pending_login_token] = login_token.token
       expect { post :create, params: { user: registration_params } }.to change { User.count }.by(0)
@@ -69,14 +82,14 @@ describe API::RegistrationsController do
       expect(u.legal_accepted_at).to be_present
     end
 
-    it 'logs in immediately if pending identity is present' do
-      session[:pending_identity_id] = pending_identity.id
-      expect { post :create, params: { user: registration_params.except(:recaptcha) } }.to change { User.count }.by(0)
-      expect(JSON.parse(response.body)['signed_in']).to be true
-      u = User.find_by(email: registration_params[:email])
-      expect(u.name).to eq registration_params[:name]
-      expect(u.email).to eq registration_params[:email]
-    end
+    # it 'logs in immediately if pending identity is present' do
+    #   session[:pending_identity_id] = pending_identity.id
+    #   expect { post :create, params: { user: registration_params.except(:recaptcha) } }.to change { User.count }.by(0)
+    #   expect(JSON.parse(response.body)['signed_in']).to be true
+    #   u = User.find_by(email: registration_params[:email])
+    #   expect(u.name).to eq registration_params[:name]
+    #   expect(u.email).to eq registration_params[:email]
+    # end
 
     it 'requires acceptance of legal' do
       registration_params.delete(:legal_accepted)

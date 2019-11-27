@@ -103,7 +103,6 @@ nb_NO:
       new_thread: "Ny tråd"
       loading: 'Laster'
       translate: 'Oversett'
-      translated: 'Oversettelse av Bing '
       upload: 'Last opp'
       uploading: 'Laster opp'
       load_more: 'Last mer'
@@ -161,6 +160,8 @@ nb_NO:
     quiet: 'Stille'
     mute: 'Dempet'
     unmute: 'U-Demp'
+  pin_event_form:
+    title_label: Tittel
   change_volume_form:
     simple:
       label: Varslinger
@@ -360,8 +361,6 @@ nb_NO:
   discussion_record:
     created: 'Tråden {{title}} ble opprettet i gruppa: {{groupName}}'
     updated: 'Lagret endringer i  {{title}}'
-  discussion_fork_actions:
-    helptext: "Velg de innleggene du vil flytte til en ny tråd"
   discussion_form:
     aria_label: 'Trådskjema'
     messages:
@@ -429,11 +428,9 @@ nb_NO:
     flash:
       success: '{{count}} varslinger sendt'
   action_dock:
-    react: Legg til reaksjon
     add_resource: Legg til vedlegg
     edit_group: Rediger gruppens kontekst
     add_comment: Kommentar
-    copy_url: Kopier URL
     edit_thread: Rediger kontekst
     translate_thread: Oversett kontekst
     edit_poll: Rediger avstemning
@@ -457,6 +454,8 @@ nb_NO:
     poll_copied: Beslutnings-URL kopiert til utklippstavlen
     discussion_copied: Tråd-URL kopiert til utklippstavlen
     close_thread: Lukk tråd
+  formatting:
+    attach: Legg ved fil
   cover_photo_form:
     aria_label: 'Bytt forsidebilde skjema'
     heading: 'Nytt forsidebilde'

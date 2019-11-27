@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
-import {merge, capitalize, difference, keys, throttle, startsWith, each} from 'lodash'
+import {merge, capitalize, difference, keys, throttle, startsWith, each, compact} from 'lodash'
 import WatchRecords from '@/mixins/watch_records'
 import { colonToUnicode, stripColons } from '@/shared/helpers/emojis'
 
@@ -14,7 +14,7 @@ export default
       default: false
 
   data: ->
-    diameter: 24
+    diameter: 20
     maxNamesCount: 10
     reactionHash: {all: []}
 
@@ -44,7 +44,7 @@ export default
       reactableId: @model.id
 
     reactionTypes: ->
-      difference keys(@reactionHash), ['all']
+      compact difference keys(@reactionHash), ['all']
 
     myReaction: ->
       return unless Session.isSignedIn()
@@ -92,21 +92,16 @@ export default
           span {{ user.name }}
 </template>
 
-<style lang="css">
-.reactions-display__group {
-  opacity: 0.8;
-  display: flex;
-  align-items: center;
-  margin-right: 2px;
-}
-
-.reactions-display__group span {
-    font-size: 24px;
-    line-height: 1;
-    margin-bottom: -4px;
-}
-
-.reactions-display__emojis {
-  display: flex;
-}
+<style lang="sass">
+.reactions-display__group
+	opacity: 0.8
+	display: flex
+	align-items: center
+	margin-right: 2px
+	span
+		font-size: 20px
+		line-height: 20px
+		margin-bottom: -5px
+.reactions-display__emojis
+	display: flex
 </style>

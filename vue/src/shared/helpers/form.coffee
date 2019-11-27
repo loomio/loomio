@@ -20,7 +20,7 @@ export submitDiscussion = (scope, model, options = {}) ->
     submitFn: submitFn
     flashSuccess: if model.isForking then "discussion_fork_actions.moved" else "discussion_form.messages.#{actionName(model)}"
     failureCallback: ->
-      # scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
+      console.log "failure"
     successCallback: (data) ->
       _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
       if model.isForking
@@ -99,23 +99,19 @@ upload = (scope, model, options) ->
       )
 
 submit = (scope, model, options = {}) ->
-  # fetch draft from server and listen for changes to it
-  # if model.hasDrafts and model.isNew() and Session.isSignedIn()
-  #   model.fetchAndRestoreDraft()
-  #   EventBus.watch scope, model.draftFields, model.planDraftFetch, true
-
   submitFn  = options.submitFn  or model.save
   confirmFn = options.confirmFn or (-> false)
   (prepareArgs) ->
     return if scope.isDisabled
     prepare(scope, model, options, prepareArgs)
     if confirm(confirmFn(model))
-      submitFn(model).then(
-        success(scope, model, options),
-        failure(scope, model, options),
-      ).finally(
-        cleanup(scope, model, options)
-      )
+      setTimeout ->
+        submitFn(model).then(
+          success(scope, model, options),
+          failure(scope, model, options),
+        ).finally(
+          cleanup(scope, model, options)
+        )
     else
       cleanup(scope, model, options)
 

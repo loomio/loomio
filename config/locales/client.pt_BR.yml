@@ -1,4 +1,16 @@
 pt_BR:
+  loomio_onboarding:
+    group_progress_card:
+      title: Ativar seu grupo
+      activities:
+        set_description: Defina a descrição do seu grupo
+        set_logo: Escolha a logo para seu grupo
+        set_cover_photo: Escolha a foto de capa para seu grupo
+        invite_people_in: Convide pessoas
+        start_thread: Inicie um tópico de discussão
+        make_decision: Inicie uma decisão
+      learn_more: Aprenda mais no Loomio Help
+      dismiss_this_card: Descarte este cartão
   plan_names:
     free: Grátis
     small: Pequeno
@@ -57,6 +69,7 @@ pt_BR:
   timezones:
     local: Hora local ({{value}})
   common:
+    no_results_found: Nenhum resultado encontrado
     you: Você
     expand: Expandir
     all_day: O dia todo
@@ -104,6 +117,8 @@ pt_BR:
     points_abbrev: Cada voto vale {{score}} pontos
     total: Total
     action:
+      pin: Fixar
+      unpin: Desafixar
       search: 'Pesquisar'
       back: 'Voltar'
       next: 'Próximo'
@@ -124,7 +139,6 @@ pt_BR:
       new_thread: "Nova conversa"
       loading: 'Carregando'
       translate: 'Traduzir'
-      translated: 'Tradução do Bing Tradutor'
       upload: 'Carregar'
       uploading: 'Carregando'
       load_more: 'Carregar mais'
@@ -179,6 +193,8 @@ pt_BR:
     quiet: 'Quieto'
     mute: 'Mudo'
     unmute: 'Com som'
+  pin_event_form:
+    title_label: Título
   change_volume_form:
     simple:
       label: Notificações
@@ -373,7 +389,7 @@ pt_BR:
     created: 'A conversa {{title}} foi criado com sucesso em {{groupName}}'
     updated: 'Mudanças salvas para {{title}}'
   discussion_fork_actions:
-    helptext: "Selecione os itens que você gostaria de mudar para uma nova conversa"
+    move: Mover
   discussion_form:
     aria_label: 'Formulário da conversa'
     messages:
@@ -395,7 +411,6 @@ pt_BR:
     privacy_organisation: 'A conversa será visível para os membros de {{parent}} e membros de {{group}}.'
     fork_notice: 'A nova conversa será criada com {{count}} itens de {{title}}'
   announcement:
-    preview: Visualização
     audiences:
       discussion_group: Membros da conversa
       voters: Pessoas que já votaram
@@ -434,13 +449,13 @@ pt_BR:
       search_placeholder: Buscar pessoas…
       members_count: '{{count}} pessoas serão notificadas'
   action_dock:
-    react: Adicionar uma reação
     add_resource: Adicionar como anexo
     edit_group: Editar contexto do grupo
     add_comment: 'Comentario '
-    copy_url: Copiar URL
+    copy_url: Copiar link
     edit_thread: Editar contexto
     translate_thread: Traduzir contexto
+    move_items: Mover
     edit_stance: Modificar posição
     translate_stance: Traduzir voto
     edit_comment: 'Editar comentário '
@@ -453,12 +468,15 @@ pt_BR:
     announce_outcome_active: (Ninguém foi notificado desse resultado ainda)
     translate_outcome: Traduzir resultado
     show_history: Mostrar histórico de edições
+    edited: Editado
     pin_thread: Afixar conversa
     unpin_thread: Desafixar conversa
     discussion_copied: URL da conversa copiada para o clipboard
     tag_thread: Gerenciar tags
     close_thread: Fechar conversa
     delete_thread: Apagar conversa
+  formatting:
+    attach: Anexar um arquivo
   cover_photo_form:
     aria_label: 'Formulário de modificação da foto de capa'
     heading: 'Nova foto da capa'
@@ -585,7 +603,7 @@ pt_BR:
     edit_group_heading: 'Editar configurações do grupo'
     edit_subgroup_heading: 'Editar configurações do subgrupo'
     group_name: 'Nome do Grupo'
-    group_name_placeholder: 'Como você quer chamar o seu grupo?'
+    group_name_placeholder: 'Qual é o nome do seu grupo?'
     subgroup_name: 'Nome do Subgrupo'
     description: 'Descrição'
     description_placeholder: 'Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.'
@@ -1050,8 +1068,10 @@ pt_BR:
     show_results: Mostrar resultados
   discussions_panel:
     open: Aberto
+    all: Tudo
     closed: Encerrado
   members_panel:
+    everyone: 'Todos'
     order_by_name: 'Nome'
     header_name: 'Nome'
     header_username: 'Nome de usuário'
@@ -1066,8 +1086,6 @@ pt_BR:
     notify_group: Anúncio
     members_helptext: Seu grupo não será notificado
     members_count: "{{count}} pessoas serão notificadas"
-  poll_common_calendar_invite:
-    event_summary: Resumo
   poll_common_settings:
     multiple_choice:
       title: Múltipla escolha

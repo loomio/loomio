@@ -50,7 +50,6 @@ sr_RS:
       new_thread: "Нова нит"
       loading: 'Учитавање'
       translate: 'Преведи'
-      translated: 'Превео Bing Translator'
       upload: 'Отпремљено'
       uploading: 'Отпремање'
   emoji_picker:
@@ -62,6 +61,8 @@ sr_RS:
     normal: 'Нормално'
     quiet: 'Тихо'
     mute: 'Искључено'
+  pin_event_form:
+    title_label: Наслов
   change_volume_form:
     simple:
       label: Обавештења
@@ -93,6 +94,8 @@ sr_RS:
     title_label: 'Наслов'
     context_label: 'Контекст'
     privacy_label: 'Приватност'
+  action_dock:
+    edited: Измењено
   join_group_button:
     join_group: Придружи се групи
     membership_requested: Чланство је затражено
@@ -192,6 +195,7 @@ sr_RS:
     save_changes: Сними
   discussions_panel:
     open: Отворено
+    all: Све
     closed: Истекло
   members_panel:
     order_by_name: 'Име'

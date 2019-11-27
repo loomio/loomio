@@ -9,6 +9,40 @@ import ConfirmModalMixin from '@/mixins/confirm_modal'
 
 export default new class ThreadService
   actions: (discussion, vm) ->
+
+    subscribe:
+      name: 'common.action.subscribe'
+      canPerform: ->
+        discussion.volume() == 'normal' && AbilityService.canChangeVolume(discussion)
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: discussion
+            # newVolume: 'loud'
+
+    unsubscribe:
+      name: 'common.action.unsubscribe'
+      canPerform: ->
+        discussion.volume() == 'loud' && AbilityService.canChangeVolume(discussion)
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: discussion
+            # newVolume: 'normal'
+
+    unignore:
+      name: 'common.action.unignore'
+      canPerform: ->
+        discussion.volume() == 'quiet' && AbilityService.canChangeVolume(discussion)
+      perform: ->
+        openModal
+          component: 'ChangeVolumeForm'
+          props:
+            model: discussion
+            # newVolume: 'quiet'
+
     notification_history:
       name: 'action_dock.notification_history'
       icon: 'mdi-alarm-check'
@@ -50,8 +84,10 @@ export default new class ThreadService
       perform: => @dismiss(discussion)
 
     announce_thread:
+      name: 'invitation_form.invite_people'
       icon: 'mdi-send'
-      canPerform: -> AbilityService.canEditThread(discussion)
+      canPerform: ->
+        AbilityService.canAnnounceThread(discussion)
       perform: ->
         openModal
           component: 'AnnouncementForm'
@@ -62,7 +98,7 @@ export default new class ThreadService
       canPerform: -> AbilityService.canAddComment(discussion)
 
     edit_tags:
-      icon: 'mdi-tag'
+      icon: 'mdi-tag-outline'
       name: 'loomio_tags.card_title'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
@@ -77,6 +113,7 @@ export default new class ThreadService
 
     show_history:
       icon: 'mdi-history'
+      name: 'action_dock.edited'
       canPerform: -> discussion.edited()
       perform: ->
         openModal
@@ -85,6 +122,7 @@ export default new class ThreadService
             model: discussion
 
     edit_thread:
+      name: 'common.action.edit'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread(discussion)
       perform: ->
@@ -93,11 +131,20 @@ export default new class ThreadService
           props:
             discussion: discussion.clone()
 
+    edit_arrangement:
+      icon: 'mdi-directions-fork'
+      canPerform: -> AbilityService.canEditThread(discussion)
+      perform: ->
+        openModal
+          component: 'ArrangementForm',
+          props:
+            discussion: discussion.clone()
+
     translate_thread:
       icon: 'mdi-translate'
       menu: true
       canPerform: -> AbilityService.canTranslate(discussion)
-      perform: -> discussion.translate(Session.user().locale)
+      perform: -> Session.user() && discussion.translate(Session.user().locale)
 
     close_thread:
       menu: true

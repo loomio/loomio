@@ -1,7 +1,7 @@
 class CommentSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id, :body, :body_format, :mentioned_usernames, :discussion_id,
-             :created_at, :updated_at, :parent_id, :parent_author_name,
+             :created_at, :updated_at, :parent_id,
              :versions_count, :attachments, :author_id
 
   # has_one :author, serializer: UserSerializer, root: :users
@@ -10,7 +10,7 @@ class CommentSerializer < ActiveModel::Serializer
   has_many :documents, serializer: DocumentSerializer, root: :documents
 
   def reactions
-    scope.dig(:cache, :reactions).get_for(object)
+    scope.dig(:cache, :reactions).get_for(object, hydrate_on_miss: false)
   end
 
   def mentioned_usernames

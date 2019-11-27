@@ -57,14 +57,14 @@ class GroupSerializer < Simple::GroupSerializer
                         :is_visible_to_parent_members,
                         :parent_members_can_see_discussions,
                         :org_memberships_count,
-                        :org_discussions_count,
-                        :subscription_active
+                        :org_discussions_count
 
 
   has_one :parent, serializer: GroupSerializer, root: :groups
 
   attributes_for_formal :subscription_plan, :subscription_active,
-    :subscription_max_members, :subscription_max_threads
+    :subscription_max_members, :subscription_max_threads, :subscription_expires_at,
+    :subscription_state
 
   def tag_names
     object.info['tag_names'] || []
@@ -84,6 +84,14 @@ class GroupSerializer < Simple::GroupSerializer
 
   def subscription_active
     subscription.is_active?
+  end
+
+  def subscription_expires_at
+    subscription.expires_at
+  end
+
+  def subscription_state
+    subscription.state
   end
 
   def subscription

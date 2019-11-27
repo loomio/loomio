@@ -7,7 +7,7 @@ class SendWeeklyCatchUpEmailJob < ActiveJob::Base
     end
 
     User.email_catch_up.where(time_zone: zones).find_each do |user|
-      UserMailer.delay(priority: 100).catch_up(user, 1.week.ago, 'weekly')
+      UserMailer.delay(queue: :catch_up_emails).catch_up(user, 1.week.ago, 'weekly')
     end
   end
 end

@@ -2,7 +2,7 @@ require('coffeescript/register')
 pageHelper = require('../helpers/page_helper')
 
 module.exports = {
-  'starts a proposal': (test) => { startPollTest(test, 'proposal') },
+  'starts_a_proposal': (test) => { startPollTest(test, 'proposal') },
   'starts a count': (test) => { startPollTest(test, 'count') },
   'starts a poll': (test) => { startPollTest(test, 'poll', (page) => {
     page.fillIn(".poll-poll-form__add-option-input", "bananas")

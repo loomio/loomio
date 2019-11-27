@@ -7,7 +7,7 @@ class StanceSerializer < ActiveModel::Serializer
   has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
 
   def participant
-    object.participant_for_client(user: scope[:current_user]).presence
+    scope && object.participant_for_client(user: scope[:current_user]).presence
   end
 
   def include_participant?

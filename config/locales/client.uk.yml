@@ -1,4 +1,16 @@
 uk:
+  loomio_onboarding:
+    group_progress_card:
+      title: Активуйте свою групу
+      activities:
+        set_description: Додайте опис для групи
+        set_logo: Виберіть логотип для вашої групи
+        set_cover_photo: Виберіть фото обкладинки для вашої групи
+        invite_people_in: Запросіть людей долучитись
+        start_thread: Розпочніть тему для обговорення
+        make_decision: Розпочати процес прийняття рішення
+      learn_more: Дізнайтеся більше в Довідці Loomio
+      dismiss_this_card: Відхилити цю картку
   plan_names:
     free: Безкоштовний
     trial: Пробний
@@ -7,7 +19,6 @@ uk:
     large: Великий
   current_plan_button:
     upgrade: Оновити
-    tooltip: Придбайте план використання loomio, щоб запросити більше людей та розпочати більше тем.
   loomio_tags:
     tags: Мітки
     apply_tags: Застосувати мітки
@@ -110,6 +121,8 @@ uk:
     points_abbrev: Кожен голос вартує {{score}} балів
     total: Разом
     action:
+      pin: Закріпити
+      unpin: Відкріпити
       search: 'Пошук'
       back: 'Назад'
       next: 'Наступна'
@@ -130,7 +143,6 @@ uk:
       new_thread: "Нова тема"
       loading: 'Завантаження'
       translate: 'Перекласти'
-      translated: 'Переклад Bing Translator'
       upload: 'Завантажити'
       uploading: 'Завантажити'
       load_more: 'Завантажити більше'
@@ -188,6 +200,8 @@ uk:
     quiet: 'Спокійно'
     mute: 'Вимкнено'
     unmute: 'Увімкнути'
+  pin_event_form:
+    title_label: Назва
   change_volume_form:
     simple:
       label: Сповіщення
@@ -299,6 +313,7 @@ uk:
     muted_threads: 'Вимкнуті теми'
     start_group: 'Нова організація'
     explore: 'Відкриті групи'
+    explore_groups: Переглянути групи
     start_thread: Нова тема
     start_decision: Нове рішення
     aria_labels:
@@ -396,7 +411,7 @@ uk:
     created: 'Тему {{title}} було успішно створено у {{groupName}}'
     updated: 'Зберегти зміни у {{title}}'
   discussion_fork_actions:
-    helptext: "Виберіть елементи, які потрібно перемістити до нової теми"
+    move: Перемістити
   discussion_form:
     aria_label: 'Форма для теми'
     messages:
@@ -418,7 +433,6 @@ uk:
     privacy_organisation: 'Тему можуть бачити тільки учасники груп {{parent}} та {{group}}.'
     fork_notice: 'Буде створено нову тему з {{count}} елементів від {{title}}'
   announcement:
-    preview: Попередній перегляд
     audiences:
       parent_group: Учасник {{name}}
       formal_group: Учасник {{name}}
@@ -468,15 +482,15 @@ uk:
     flash:
       success: '{{count}} сповіщень надіслано'
   action_dock:
-    react: Додати реакцію
     add_resource: Додати вкладення
     edit_group: Редагувати контекст групи
     add_comment: Коментар
-    copy_url: Скопіювати URL-адресу
+    copy_url: Копіювати посилання
     edit_thread: Редагувати контекст
     invite_guests: Запросити гостей
     translate_thread: Перекласти контекст
     edit_poll: Редагувати опитування
+    move_items: Перемістити
     announce_poll: Запросити людей до голосування
     announce_poll_active: (Ще нікого не було запрошено)
     translate_poll: Перекласти опитування
@@ -492,6 +506,7 @@ uk:
     announce_outcome_active: (Ще нікого не було сповіщено про цей результат)
     translate_outcome: Перекласти результат
     show_history: Показати історію змін
+    edited: Відредаговано
     pin_thread: Закріпити тему
     unpin_thread: Відкріпити тему
     comment_copied: URL-адресу коментаря скопійовано до буферу обміну
@@ -500,6 +515,8 @@ uk:
     tag_thread: Керувати мітками
     close_thread: Закрити тему
     delete_thread: Видалити тему
+  formatting:
+    attach: Додати файл
   cover_photo_form:
     aria_label: 'Змінити фото обкладинки'
     heading: 'Нове фото обкладинки'
@@ -642,7 +659,7 @@ uk:
     edit_subgroup_heading: 'Редагувати налаштування підгрупи'
     group_name: 'Назва групи'
     start_organization_heading: Нова організація
-    group_name_placeholder: 'Як ви бажаєте назвати свою групу?'
+    group_name_placeholder: 'Назва вашої групи?'
     subgroup_name: 'Назва підгрупи'
     description: 'Опис'
     description_placeholder: 'Опишіть призначення вашої групи, щоб учасники групи розуміли, чому вони тут.'
@@ -989,9 +1006,6 @@ uk:
       or: або
       join_group: <a href="/explore">долучіться</a> до групи аби бачити теми.
   discussion:
-    subscription_canceled: |
-        <p>Вибачте! Ваша підписка не активна.</p>
-        <p>Будь ласка <a href="{{upgradeUrl}}" target="_blank">оновіть план</a> щоб продовжувати використовувати Loomio.</p>
     activity: 'Оновлення'
     activity_placeholder: 'Поки що жодних оновлень!'
     load_previous: 'Завантажити попередні оновлення'
@@ -1240,6 +1254,7 @@ uk:
     count: "Переглянути усі: ({{count}}) рішень"
   discussions_panel:
     open: Відкрита
+    all: Всі
     closed: Закрита
   members_panel:
     order_by_name: 'Ім''я'
@@ -1274,7 +1289,6 @@ uk:
     helptext_on: Користувачі зможуть додати цю зустріч до свого календаря
     helptext_off: Запрошення на зустріч не буде надіслано 
     event_duration: Тривалість
-    event_summary: Підсумок
     event_summary_placeholder: Як б ви хотіли назвати цю зустріч?
     event_description: Опис зустрічі
     event_description_placeholder: Який порядок денний цієї зустрічі?
@@ -1304,7 +1318,6 @@ uk:
       helptext_on: Виборці можуть вказувати час як "у разі потреби"
   poll_common_close_form:
     title: Закрити опитування раніше
-    helptext: Ві впевнені, що хочете закрити раніше?
     close_proposal: Закрити пропозицію
     close_poll: Закрити опитування
     close_count: Закрити контрольний список
@@ -1542,7 +1555,6 @@ uk:
     stance_created: Вибір записано
     stance_updated: Вибір оновлено
   thread_item:
-    poll_expired: "{{polltype}} закрито: <strong>{{title}}</strong>"
     event_removed: "Видалені з теми"
   poll_admin_page:
     title: Адміністратор - {{title}}
@@ -1603,8 +1615,6 @@ uk:
     set_password: Встановити пароль
     set_password_helptext: Бажаєте використовувати пароль наступного разу?
     hello: "Вітаємо, {{name}}!"
-    new_to_loomio: Вперше на {{site_name}}? Створити обліковий запис
-    already_a_user: Використовували {{site_name}} раніше? Введіть адресу електронної пошти, яку ви використовували останній раз, щоб прив'язати її.
     link_accounts: Пов'язані облікові записи
     check_your_email: Перевірте пошту
     login_link_sent: "Ми надіслали лист на адресу {{email}}."

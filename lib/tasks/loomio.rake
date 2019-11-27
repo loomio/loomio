@@ -21,8 +21,6 @@ namespace :loomio do
   end
 
   task hourly_tasks: :environment do
-    UserService.delay.delete_many_spam(ENV['DELETE_MANY_SPAM'])
-
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
 
@@ -48,4 +46,12 @@ namespace :loomio do
   task notify_clients_of_update: :environment do
     MessageChannelService.publish_data({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
   end
+
+  task update_subscription_members_counts: :environment do
+    if Date.today.wday == 3
+      SubscriptionService.delay.update_changed_members_counts(['pp-basic-annual', 'pp-pro-annual', 'pp-community-annual'])
+    end
+    SubscriptionService.delay.update_changed_members_counts(['pp-basic-monthly', 'pp-pro-monthly'])
+  end
+
 end

@@ -72,7 +72,8 @@ describe API::PollsController do
         get :search_results_count
 
         json = JSON.parse response.body
-        expect(json['count']).to eq 4
+        expect(json['count']).to eq 3
+        # expect(json['count']).to eq 4 # not including participated polls
       end
     end
 
@@ -84,7 +85,7 @@ describe API::PollsController do
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
-        expect(poll_ids).to include participated_poll.id
+        # expect(poll_ids).to include participated_poll.id
         expect(poll_ids).to include authored_poll.id
         expect(poll_ids).to include group_poll.id
         expect(poll_ids).to_not include another_poll.id
@@ -125,16 +126,17 @@ describe API::PollsController do
         expect(poll_ids).to_not include another_poll.id
       end
 
-      it 'filters by participated' do
-        get :search, params: { user: :participation_by }
-        json = JSON.parse(response.body)
-        poll_ids = json['polls'].map { |p| p['id'] }
-
-        expect(poll_ids).to include participated_poll.id
-        expect(poll_ids).to_not include group_poll.id
-        expect(poll_ids).to_not include authored_poll.id
-        expect(poll_ids).to_not include another_poll.id
-      end
+      # not searching by participated for now
+      # it 'filters by participated' do
+      #   get :search, params: { user: :participation_by }
+      #   json = JSON.parse(response.body)
+      #   poll_ids = json['polls'].map { |p| p['id'] }
+      #
+      #   expect(poll_ids).to include participated_poll.id
+      #   expect(poll_ids).to_not include group_poll.id
+      #   expect(poll_ids).to_not include authored_poll.id
+      #   expect(poll_ids).to_not include another_poll.id
+      # end
 
       it 'filters by authored' do
         get :search, params: { user: :authored_by }
@@ -142,7 +144,7 @@ describe API::PollsController do
         poll_ids = json['polls'].map { |p| p['id'] }
 
         expect(poll_ids).to include authored_poll.id
-        expect(poll_ids).to_not include participated_poll.id
+        # expect(poll_ids).to_not include participated_poll.id # not searching by participated for now
         expect(poll_ids).to_not include group_poll.id
         expect(poll_ids).to_not include another_poll.id
       end
@@ -155,7 +157,7 @@ describe API::PollsController do
 
         expect(poll_ids).to include authored_poll.id
         expect(poll_ids).to_not include group_poll.id
-        expect(poll_ids).to_not include participated_poll.id
+        # expect(poll_ids).to_not include participated_poll.id # not searching by participated for now
         expect(poll_ids).to_not include another_poll.id
       end
     end

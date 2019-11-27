@@ -10,7 +10,7 @@ class StanceChoice < ApplicationRecord
 
   scope :latest, -> { joins(:stance).where("stances.latest": true) }
   scope :reasons_first, -> {
-    joins(:stance).order("CASE coalesce(stances.reason, '') WHEN '' THEN 1 ELSE 0 END")
+    joins(:stance).order(Arel.sql("CASE coalesce(stances.reason, '') WHEN '' THEN 1 ELSE 0 END"))
                   .order(:created_at)
   }
 

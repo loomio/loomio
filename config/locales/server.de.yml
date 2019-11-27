@@ -17,9 +17,6 @@ de:
     deleted_user: "gelöschter Nutzer"
     placeholder_name: "eingeladener Nutzer (%{hostname})"
     error:
-      sign_in_required_html: |
-          Sie müssen eingeloggt sein um fortfahren zu können.
-          Bitte <a href="/dashboard">melden Sie sich an</a> und aktualisieren Sie diese Seite.
       recaptcha: "Wir konnten leider nicht bestätigen, dass du kein Computer bist. Bitte versuche es erneut."
       bad_login: "Sorry, das Passwort passt nicht zu dem in unserer Datei."
       username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
@@ -145,7 +142,7 @@ de:
     catch_up:
       daily_subject: Gestern auf %{site_name}
       weekly_subject: Letzte Woche auf %{site_name}
-      do_not_reply: Bitte antworte nicht auf diese E-Mail.
+      do_not_reply: Bitte nicht direkt auf diese E-Mail antworten.
       mark_as_read: Als gelesen markieren
       thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
       marked_as_read_success: Alles aus der E-Mail wurde als gelesen markiert
@@ -222,24 +219,6 @@ de:
         Was ist zum Beispiel deine Rolle oder der Anlass für deine Teilnahme in dieser Gruppe? Was sollten die Menschen wissen, um zu verstehen, woher du kommst?
   how_it_works_thread:
     title: Wie man Loomio benutzt
-    description: |
-        Willkommen bei Loomio, der Online-Ort für gemeinsame Entscheidungsfindung.
-
-        Das ist ein Beispiels**Diskussion**. Du kannst unten Kommentare einfügen. Ein Diskussion beschäftigt sich meistens mit einem bestimmten Thema. Hier geht es darum, wie Loomio funktioniert, deshalb kannst du deine Fragen dazu hier stellen.
-
-        Du liest gerade die Diskussion **Kontext**, in dem es um Hintergrundinformationen geht. Du kannst es im Verlauf der Diskussion anpassen.
-
-        Um mit Loomio zu beginnen:
-        1. Lade ein [Profilbild](/profile) hoch
-        2. Stelle dich im [Willkommensdiskussion](%{thread_url}) vor
-        3. Kommentiere ein bestehende Diskussion oder eröffne ein neues.
-
-        Tips fürs Posten auf Loomio:
-
-        * um eine Person zu benachrichtigen, tippe ein @ vor ihrem Namen.
-        * Klicke auf die Büroklammer, um Anhänge hinzuzufügen.
-
-        Wenn du Fragen hast, sieh in der [Loomio-Hilfe](http://help.loomio.org) nach.
   first_proposal:
     name: Demo-Vorschlag
     description: |

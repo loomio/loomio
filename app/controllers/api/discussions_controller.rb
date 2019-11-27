@@ -2,7 +2,6 @@ class API::DiscussionsController < API::RestfulController
   after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
-  include UsesFullSerializer
   include UsesDiscussionEvents
 
   def tags
@@ -86,8 +85,18 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def move_comments
-    @event = EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
+    EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
     respond_with_resource
+  end
+
+  def history
+    load_and_authorize(:discussion)
+    res = DiscussionReader.joins(:user).where(discussion: @discussion).where.not(last_read_at: nil).map do |reader|
+      {reader_id: reader.id,
+       last_read_at: reader.last_read_at,
+       user_name: reader.user.name }
+    end
+    render root: false, json: res
   end
 
   def pin
@@ -132,7 +141,8 @@ class API::DiscussionsController < API::RestfulController
   def collection_for_index(collection, filter: params[:filter])
     case filter
     when 'show_closed' then collection.is_closed
-    else                    collection.is_open
+    when 'all' then collection
+    else collection.is_open
     end.sorted_by_importance
   end
 

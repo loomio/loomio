@@ -6,6 +6,6 @@ class GroupExportJob < ActiveJob::Base
     filename = GroupExportService.export(groups, group_name)
     document = Document.create(author: actor, file: File.open(filename), title: filename)
     UserMailer.group_export_ready(actor, group_name, document).deliver
-    document.delay(priority: 20, run_at: 1.week.from_now).destroy!
+    document.delay(queue: :low_priority, run_at: 1.week.from_now).destroy!
   end
 end

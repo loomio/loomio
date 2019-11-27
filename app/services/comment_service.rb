@@ -11,15 +11,15 @@ class CommentService
 
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
-    comment.delay(priority: 1).destroy
+    comment.destroy
     EventBus.broadcast('comment_destroy', comment)
   end
 
   def self.update(comment:, params:, actor:)
     actor.ability.authorize! :update, comment
     comment.edited_at = Time.zone.now
-    comment.assign_attributes(params)
 
+    HasRichText.assign_attributes_and_update_files(comment, params)
     return false unless comment.valid?
     comment.save!
 

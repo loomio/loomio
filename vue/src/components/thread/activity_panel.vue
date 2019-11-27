@@ -3,95 +3,97 @@ import Vue from 'vue'
 import AppConfig                from '@/shared/services/app_config'
 import EventBus                 from '@/shared/services/event_bus'
 import RecordLoader             from '@/shared/services/record_loader'
-import ChronologicalEventWindow from '@/shared/services/chronological_event_window'
-import NestedEventWindow        from '@/shared/services/nested_event_window'
 import ModalService             from '@/shared/services/modal_service'
 import AbilityService           from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
-import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
-import WatchRecords from '@/mixins/watch_records'
+import Flash   from '@/shared/services/flash'
 import { print } from '@/shared/helpers/window'
-import { compact, snakeCase, camelCase, min, max, times, map, without, uniq, throttle, debounce, range, difference, isNumber, isEqual } from 'lodash'
-import RangeSet from '@/shared/services/range_set'
+import ThreadService  from '@/shared/services/thread_service'
+
+import { pickBy, identity, camelCase, first, last, isNumber } from 'lodash'
 
 export default
-  mixins: [ AuthModalMixin, WatchRecords]
+  components:
+    ThreadRenderer: -> import('@/components/thread/renderer.vue')
 
   props:
     discussion: Object
+    viewportIsBelow: Boolean
+    viewportIsAbove: Boolean
 
   data: ->
-    loadingFirst: true
+    parentEvent: @discussion.createdEvent()
+    focalEvent: null
     loader: null
-    per: 20
-    eventsBySlot: {}
-    visibleSlots: []
-    missingPositions: []
-    pageSize: 10
+    initialSlots: []
+    isReturning: @discussion.lastReadAt?
 
-  created: -> @init()
+  mounted: ->
+    @loader = new RecordLoader
+      collection: 'events'
+
+    @watchRecords
+      key: @discussion.id
+      collections: ['groups', 'memberships']
+      query: =>
+        @canAddComment = AbilityService.canAddComment(@discussion)
+
+    @respondToRoute()
 
   methods:
-    init: ->
-      @loader = new RecordLoader
-        collection: 'events'
+    respondToRoute: ->
+      return if @discussion.key != @$route.params.key
+      return if @parentEvent.childCount == 0
 
-      @watchRecords
-        key: @discussion.id
-        collections: ['groups', 'memberships']
-        query: (store) =>
-          @canAddComment = AbilityService.canAddComment(@discussion)
-
-      @watchRecords
-        key: @discussion.id
-        collections: ['events']
-        query: (store) =>
-          return unless @discussion.createdEvent()
-
-          @eventsBySlot = {}
-          times @discussion.createdEvent().childCount, (i) =>
-            @eventsBySlot[i+1] = null
-
-          store.events.collection.chain().
-            find(discussionId: @discussion.id).
-            find(depth: 1).data().forEach (event) =>
-              @eventsBySlot[event.position] = event
-
-      @scrollToInitialPosition()
-
-    scrollToInitialPosition: ->
-      waitFor = (selector, fn) ->
-        if document.querySelector(selector)
-          fn()
-        else
-          setTimeout ->
-            waitFor(selector, fn)
-          , 50
-
-      focusOnEvent = (event) =>
-        waitFor "#sequence-#{event.sequenceId || 0}", =>
-          EventBus.$emit('focusedEvent', event)
-          @$vuetify.goTo "#sequence-#{event.sequenceId || 0}", offset: 96
-
-      commentId = parseInt(@$route.params.comment_id)
-      sequenceId = parseInt(@$route.params.sequence_id)
-
-      if event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
-        focusOnEvent(event)
+      args = if parseInt(@$route.params.comment_id)
+        {column: 'commentId', id: parseInt(@$route.params.comment_id), scrollTo: true}
+      else if parseInt(@$route.query.p)
+        {column: 'position', id: parseInt(@$route.query.p), scrollTo: true}
+      else if parseInt(@$route.params.sequence_id)
+        {column: 'sequenceId', id: parseInt(@$route.params.sequence_id), scrollTo: true}
       else
+        if @discussion.readItemsCount() > 0 && @discussion.unreadItemsCount() > 0
+          {column: 'sequenceId', id: @discussion.firstUnreadSequenceId(), scrollTo: true}
+        else
+          if (@discussion.newestFirst && !@viewportIsBelow) || (!@discussion.newestFirst &&  @viewportIsBelow)
+            {column: 'position', id: @parentEvent.childCount}
+          else
+            {column: 'position', id: 1}
+
+      @fetchEvent(args.column, args.id).then (event) =>
+        if event
+          @focalEvent = event
+          if args.scrollTo
+            @scrollTo "#sequence-#{event.sequenceId}", =>
+              setTimeout =>
+                @focalEvent = null
+              , 1000
+          else
+            setTimeout =>
+              @focalEvent = null
+            , 1000
+        else
+          Flash.error('thread_context.item_maybe_deleted')
+
+
+    fetchEvent: (idType, id) ->
+      if event = @findEvent(idType, id)
+        Promise.resolve(event)
+      else
+        param = switch idType
+          when 'sequenceId' then 'from'
+          when 'commentId' then 'comment_id'
+          when 'position' then 'from_sequence_id_of_position'
+
         @loader.fetchRecords(
           discussion_id: @discussion.id
           order: 'sequence_id'
-          comment_id: commentId
-          from: sequenceId
-          # from_unread: if !commentId && !sequenceId then 1 else null
-          per: @pageSize
+          per: 5
+          "#{param}": id
         ).then =>
-          if event = @findEvent('commentId', commentId) or @findEvent('sequenceId', sequenceId)
-            focusOnEvent(event)
-
-      EventBus.$on 'threadPositionRequest', (position) => @positionRequested(position)
+          # console.log "fetched: #{idType}, #{id}"
+          Promise.resolve(@findEvent(idType, id))
 
     findEvent: (column, id) ->
       return false unless isNumber(id)
@@ -110,79 +112,47 @@ export default
           when 'commentId'
             kind: 'new_comment'
             eventableId: id
+        # console.log "finding: ", args
         Records.events.find(args)[0]
 
-    positionRequested: (id) ->
-      @$vuetify.goTo "#position-#{id}"
+    fetch: (slots) ->
+      return unless slots.length
+      @loader.fetchRecords
+        comment_id: null
+        from: null
+        from_unread: null
+        discussion_id: @discussion.id
+        order: 'sequence_id'
+        from_sequence_id_of_position: first(slots)
+        until_sequence_id_of_position: last(slots)
+        per: @padding * 2
 
-    slotVisible: (isVisible, entry, slot, event) ->
-      slot = parseInt(slot)
-      if isVisible
-        EventBus.$emit('threadPositionUpdated', slot)
-        @visibleSlots = uniq(@visibleSlots.concat([slot])).sort()
-        @missingPositions = uniq(@missingPositions.push(slot)) unless event
-      else
-        @visibleSlots = without @visibleSlots, slot
-        @missingPositions = without @missingPositions, slot
-
-    haveAllEventsBetween: (column, min, max) ->
-      expectedLength = switch column
-        when 'position' then (max - min) + 1
-        when 'sequenceId' then console.error('sequenceId not implemented yet')
-
-      length = Records.events.collection.chain().
-        find(discussionId: @discussion.id).
-        find(depth: 1).
-        find(position: {$between: [min, max]}).data().length
-
-      # console.log "haveAllEventsBetween", length == expectedLength, min, max
-      length == expectedLength
+    openArrangementForm: ->
+      ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
 
   watch:
-    '$route.params.key': 'init'
-    '$route.params.sequence_id': 'scrollToInitialPosition'
-    '$route.params.comment_id': 'scrollToInitialPosition'
-    visibleSlots: throttle (newVal, oldVal) ->
-      return if isEqual(newVal, oldVal)
-      minPosition = min(newVal) || 1
-      maxPosition = max(newVal) || 1
-
-      if @missingPositions.length
-        minPosition = min(@missingPositions)
-        maxPosition = max(@missingPositions)
-
-      if min(newVal) < min(oldVal)
-        #scrolled up
-        minPosition = minPosition - @pageSize
-      else # assume going to scroll down
-        maxPosition = maxPosition + parseInt(@pageSize)
-
-      minPosition = max([1, minPosition])
-      maxPosition = min([maxPosition, @discussion.createdEvent().childCount])
-
-      if @missingPositions.length or !@haveAllEventsBetween('position', minPosition, maxPosition)
-        @loader.fetchRecords(
-          comment_id: null
-          from: null
-          from_unread: null
-          discussion_id: @discussion.id
-          order: 'sequence_id'
-          from_sequence_id_of_position: minPosition
-          until_sequence_id_of_position: maxPosition)
-    ,
-      500
+    '$route.params.sequence_id': 'respondToRoute'
+    '$route.params.comment_id': 'respondToRoute'
+    '$route.query.p': 'respondToRoute'
+    'parentEvent.childCount': (newVal, oldVal) ->
+      @respondToRoute() if oldVal == 0 and newVal != 0
 
   computed:
     canStartPoll: ->
       AbilityService.canStartPoll(@discussion)
 
-    slots: ->
-      times(@discussion.createdEvent().childCount, (p) -> p + 1)
+    canEditThread: ->
+      AbilityService.canEditThread(@discussion)
 
 </script>
 
 <template lang="pug">
 .activity-panel
-  thread-item-slot(v-for="(event, slot) in eventsBySlot" :id="'position-'+slot" :key="slot" :event="event" :position="slot" v-observe-visibility="(isVisible, entry) => slotVisible(isVisible, entry, slot, event)" )
-  thread-actions-panel(:discussion="discussion")
+  .text-center.py-2
+    v-btn.action-button.grey--text(text small @click="openArrangementForm()" v-if="canEditThread")
+      span(v-t="{path: 'activity_card.count_responses', args: {count: parentEvent.childCount}}")
+      space
+      span(v-if="discussion.newestFirst" v-t="'poll_common_votes_panel.newest_first'")
+      span(v-if="!discussion.newestFirst" v-t="'poll_common_votes_panel.oldest_first'")
+  thread-renderer(v-if="parentEvent" :newest-first="discussion.newestFirst" :parent-event="parentEvent" :fetch="fetch" :focal-event="focalEvent" :is-returning="isReturning")
 </template>

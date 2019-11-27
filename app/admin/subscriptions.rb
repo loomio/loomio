@@ -1,10 +1,22 @@
 ActiveAdmin.register Subscription do
+  includes :groups
   actions :new, :create, :index, :show, :edit, :update, :destroy
 
-  filter :kind
+  filter :chargify_subscription_id
+  filter :expires_at, as: :date_range
+  filter :payment_method, as: :select
+  filter :plan, as: :select
+  filter :state, as: :select
 
   index do
     column :plan
+    column 'Groups' do |subscription|
+      if subscription.groups.any?
+        subscription.groups.map { |group| link_to(group.name, admin_group_path(group)) }
+      else
+        nil
+      end
+    end
     column :state
     column :expires_at
     column :payment_method
@@ -45,13 +57,17 @@ ActiveAdmin.register Subscription do
         "no chargify subscription to refresh"
       end
     end
+
+    if subscription.info.present?
+      render 'community_application', { info: subscription.info }
+    end
   end
 
   form do |f|
     inputs 'Subscription' do
       input :plan, as: :select, collection: SubscriptionService::PLANS.keys
       input :payment_method, as: :select, collection: Subscription::PAYMENT_METHODS
-      input :state, as: :select, collection: ['active', 'canceled']
+      input :state, as: :select, collection: ['active', 'canceled', 'trialing']
       input :expires_at
       input :max_threads
       input :max_members

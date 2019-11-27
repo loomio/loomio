@@ -2,6 +2,7 @@ const components = require('./src/components.js')
 const path = require('path')
 
 module.exports = {
+  transpileDependencies: ['vuetify'],
   chainWebpack: config => {
     config.module.rule('yml').test(/\.yml$/).use('js-yaml-loader').loader('js-yaml-loader').end()
     config.module.rule('yml').test(/\.yml$/).use('single-curlys-loader').loader('single-curlys-loader').end()
@@ -32,10 +33,10 @@ module.exports = {
   outputDir: '../public/client/vue',
   assetsDir: '../../client/vue',
   devServer: {
-   proxy: {
-     '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|saml|google|beta|admin|assets)': {target: 'http://localhost:3000'},
-     '^/(cable)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
-   }
+    proxy: {
+      '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|saml|google|beta|admin|assets|upgrade|pricing|community_applications|417)': { target: 'http://localhost:3000' },
+      '^/(cable)': {target: 'ws://localhost:3000', ws: true, secure: false, changeOrigin: true},
+    }
   },
   css: {
     loaderOptions: {

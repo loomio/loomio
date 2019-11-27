@@ -13,7 +13,7 @@ export default
     @watchRecords
       collections: ['polls', 'stances']
       query: (store) =>
-        @poll = find @discussion.activePolls(), (poll) ->
+        @poll = find @discussion.activePolls().filter((poll) -> poll.pollOptionNames.length), (poll) ->
           !store.stances.findOrNull(latest: true, pollId: poll.id, participantId: AppConfig.currentUserId)
 
   computed:
@@ -27,16 +27,16 @@ export default
     event: ->
       @poll && @poll.createdEvent()
 
+
 </script>
 <template lang="pug">
-v-card.current-poll-banner.mb-4.py-2.px-4(:style="styles" v-if="event && $route.params.sequence_id != event.sequenceId" :elevation="3")
+v-card.current-poll-banner.mb-4.py-2.px-4.lmo-no-print(:style="styles" v-if="event && $route.params.sequence_id != event.sequenceId" :elevation="3")
   v-avatar.mr-4(:size="36")
     poll-common-chart-preview(:poll='poll' :size="36")
   .current-poll-banner__title.mr-4
     span {{poll.title}}
   v-spacer
-  poll-common-closing-at.caption.mr-4(approximate :poll="poll")
-  v-btn(color="primary" :to="urlFor(event)" v-t="'poll_common.vote'")
+  v-btn(color="primary" :to="urlFor(event)" v-t="'common.view'")
 </template>
 
 <style lang="sass">

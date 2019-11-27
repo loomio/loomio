@@ -1,6 +1,8 @@
 class Events::BaseSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :sequence_id, :position, :depth, :child_count, :kind, :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields, :pinned
+  attributes :id, :sequence_id, :position, :depth, :child_count, :kind,
+    :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
+    :pinned, :pinned_title
 
   has_one :actor, serializer: UserSerializer, root: :users
   has_one :eventable, polymorphic: true
@@ -11,9 +13,9 @@ class Events::BaseSerializer < ActiveModel::Serializer
     object.user || object.eventable&.user
   end
 
-  # def include_discussion?
-  #   object.discussion_id
-  # end
+  def pinned_title
+    object.custom_fields['pinned_title']
+  end
 
   def include_custom_fields?
     ["poll_edited", "discussion_edited"].include? object.kind

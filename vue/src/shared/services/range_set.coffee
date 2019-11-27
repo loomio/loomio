@@ -1,25 +1,26 @@
+import {each, isEqual, last, max, map, sum, some, filter, compact, sortBy, inRange} from 'lodash'
 
 export default new class RangeSet
   parse: (outer) ->
-    _.map(outer.split(','), (pair) -> _.map(pair.split('-'), (s) -> parseInt(s)))
+    map(outer.split(','), (pair) -> map(pair.split('-'), (s) -> parseInt(s)))
 
   serialize: (ranges) ->
-    _.map(ranges, (range) -> range.join('-')).join(',')
+    map(ranges, (range) -> range.join('-')).join(',')
 
   reduce: (ranges) ->
-    ranges = _.sortBy ranges, (r) -> r[0]
-    reduced = _.compact [ranges.shift()]
-    _.each ranges, (r) ->
-      lastr = _.last(reduced)
+    ranges = sortBy ranges, (r) -> r[0]
+    reduced = compact [ranges.shift()]
+    each ranges, (r) ->
+      lastr = last(reduced)
       if lastr[1] >= (r[0] - 1)
         reduced.pop()
-        reduced.push [lastr[0], _.max([r[1], lastr[1]])]
+        reduced.push [lastr[0], max([r[1], lastr[1]])]
       else
         reduced.push r
     reduced
 
   length: (ranges) ->
-    _.sum _.map(ranges, (range) -> range[1] - range[0] + 1)
+    sum map(ranges, (range) -> range[1] - range[0] + 1)
 
   arrayToRanges: (ary) -> @reduce(ary.map (id) -> [id,id] )
 
@@ -35,36 +36,36 @@ export default new class RangeSet
 
   # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
   rangeToArray: (start, stop, step) ->
-    Array.from({length: (stop - start) / step + 1}, (_, i) => start + (i * step));
+    Array.from({length: (stop - start) / step + 1}, (_, i) -> start + (i * step))
 
   overlaps: (a, b) ->
-    ab = _.sortBy [a, b], (r) -> r[0]
+    ab = sortBy [a, b], (r) -> r[0]
     ab[0][1] >= ab[1][0]
 
   includesValue: (ranges, value) ->
-    _.some ranges, (range) ->
-      _.inRange(value, range[0], range[1]+1)
+    some ranges, (range) ->
+      inRange(value, range[0], range[1] + 1)
 
   # TODO: fix me for complex range sets!
   subtractRange: (whole, part) ->
     return [whole]                                        if (part.length == 0) || (part[0] > whole[1]) || (part[1] < whole[0])
     return []                                             if (part[0] <= whole[0]) && (part[1] >= whole[1])
-    return [[whole[0], part[0]-1], [part[1]+1, whole[1]]] if (part[0] >  whole[0]) && (part[1] <  whole[1])
+    return [[whole[0], part[0] - 1], [part[1] + 1, whole[1]]] if (part[0] >  whole[0]) && (part[1] <  whole[1])
     return [[part[1] + 1, whole[1]]]                      if (part[0] == whole[0]) && (part[1] <  whole[1])
-    return [[whole[0], part[0]-1]]                        if (part[0] >  whole[0]) && (part[1] == whole[1])
+    return [[whole[0], part[0] - 1]]                      if (part[0] >  whole[0]) && (part[1] == whole[1])
 
   subtractRanges: (wholes, parts) ->
     output = wholes
-    while !_.isEqual(@subtractRangesLoop(output, parts), output)
+    while !isEqual(@subtractRangesLoop(output, parts), output)
       output = @subtractRangesLoop(output, parts)
     @reduce output
 
   subtractRangesLoop: (wholes, parts) ->
     output = []
-    _.each wholes, (whole) =>
-      if _.some(parts, (part) => @overlaps(whole, part))
-        _.each _.filter(parts, (part) => @overlaps(whole, part)), (part) =>
-          _.each @subtractRange(whole, part), (remainder) =>
+    each wholes, (whole) =>
+      if some(parts, (part) => @overlaps(whole, part))
+        each filter(parts, (part) => @overlaps(whole, part)), (part) =>
+          each @subtractRange(whole, part), (remainder) ->
             output.push remainder
       else
         output.push whole

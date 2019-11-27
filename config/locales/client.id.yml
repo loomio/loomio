@@ -20,6 +20,8 @@ id:
     search: Cari
   error_page:
     forbidden: 'Anda tidak dapat melakukan hal ini.'
+  pin_event_form:
+    title_label: Judul
   change_volume_form:
     simple:
       label: Notifikasi

@@ -3,13 +3,13 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import { submitDiscussion } from '@/shared/helpers/form'
-import { orderBy } from 'lodash'
+import { orderBy, debounce } from 'lodash'
 
 export default
   data: ->
     selectedDiscussion: null
     submit: null
-    searchFragment: null
+    searchFragment: ''
     searchResults: []
     groupId: @discussion.groupId
     groups: Session.user().formalGroups()
@@ -26,24 +26,26 @@ export default
         successCallback: (data) =>
           @discussion.update(forkedEventIds: [])
           @discussion.update(isForking: false)
-          discussionKey = data.discussions[0].key
-          Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
-            discussion.update(forkedEventIds: [])
-            discussion.update(isForking: false)
-            @close()
-            @$router.push @urlFor(discussion)
-
-  watch:
-    selectedDiscussion: 'setSubmit'
-    searchFragment: (fragment) ->
-      return unless fragment.length
-      Records.discussions.search(@groupId, fragment).then (data) =>
+          @selectedDiscussion.update(forkedEventIds: [])
+          @selectedDiscussion.update(isForking: false)
+          @close()
+          # @$router.push @urlFor(@selectedDiscussion)
+    fetch: debounce ->
+      return unless @searchFragment
+      Records.discussions.search(@groupId, @searchFragment).then (data) =>
         @searchResults = Records.discussions.collection.chain()
           .find(groupId: @groupId)
           .find({ id: { $ne: @discussion.id } })
-          .find(title: { $regex: [fragment, 'i'] })
+          .find(title: { $regex: [@searchFragment, 'i'] })
           .where((d) -> AbilityService.canMoveThread(d))
+          .simplesort('title')
           .data()
+    , 500
+
+
+  watch:
+    selectedDiscussion: 'setSubmit'
+    searchFragment: 'fetch'
 
 </script>
 <template lang="pug">

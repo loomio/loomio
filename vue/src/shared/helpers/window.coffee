@@ -1,5 +1,5 @@
-import bowser from 'bowser'
-window.bowser = bowser
+import Bowser from 'bowser'
+window.bowser = Bowser
 
 export hardReload = (path) ->
   if path
@@ -7,11 +7,15 @@ export hardReload = (path) ->
   else
     window.location.reload()
 
-export unsupportedBrowser = ->
-  (bowser.safari and bowser.version < 9) or (bowser.ie and bowser.version < 11)
-
-export deprecatedBrowser = ->
-  bowser.msie and parseInt(bowser.version) <= 11
-
 export print = -> window.print()
 export is2x = -> window.devicePixelRatio >= 2
+
+browser = Bowser.getParser(window.navigator.userAgent)
+browserName = browser.parsedResult.browser.name
+browserVersion = parseInt(browser.parsedResult.browser.version)
+
+export isIncompatibleBrowser =
+  (browserName == 'Internet Explorer') ||
+  (browserName == 'Microsoft Edge' && browserVersion < 17) ||
+  (browserName == 'Safari' && browserVersion < 12) ||
+  (browserName == 'Firefox' && browserVersion < 50)

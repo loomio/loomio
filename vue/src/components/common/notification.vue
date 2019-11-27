@@ -16,7 +16,8 @@ export default
 
   computed:
     url: ->
-      if @notification.kind == 'membership_requested' && @notification.url
+      return '/' unless @notification.url
+      if @notification.kind == 'membership_requested'
         "/"+@notification.url.split('/')[1]+"/members/requests"
       else if @notification.url.startsWith(AppConfig.baseUrl)
         "/" +@notification.url.replace(AppConfig.baseUrl, '')

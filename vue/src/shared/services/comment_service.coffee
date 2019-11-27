@@ -3,6 +3,7 @@ import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
 import openModal from '@/shared/helpers/open_modal'
+import Flash from '@/shared/services/flash'
 
 export default new class CommentService
   actions: (comment, vm) ->
@@ -29,9 +30,10 @@ export default new class CommentService
           discussionId: comment.discussion().id
           authorId: Session.user().id
           parentId: comment.id
-        vm.showReplyForm = true
+        vm.showReplyForm = !vm.showReplyForm
 
     edit_comment:
+      name: 'common.action.edit'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditComment(comment)
       perform: ->
@@ -50,10 +52,11 @@ export default new class CommentService
       canPerform: ->
         comment.body && AbilityService.canTranslate(comment)
       perform: ->
-        comment.translate(Session.user().locale)
+        Session.user() && comment.translate(Session.user().locale)
 
     show_history:
       icon: 'mdi-history'
+      name: 'action_dock.edited'
       menu: true
       canPerform: -> comment.edited()
       perform: ->

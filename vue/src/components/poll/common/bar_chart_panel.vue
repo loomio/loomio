@@ -1,26 +1,3 @@
-<style lang="css">
-.poll-common-bar-chart {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.poll-common-bar-chart__bar {
-  transition: background-size 0.1s ease-in-out;
-  display: flex;
-  align-items: center;
-  min-width: 4px;
-  min-height: 30px;
-  margin-top: 8px;
-  background-repeat: no-repeat;
-  word-break: break-word;
-  white-space: normal;
-  line-height: 24px;
-  width: 100%;
-  padding: 0 8px;
-}
-</style>
-
 <script lang="coffee">
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
 
@@ -51,3 +28,23 @@ export default
   .poll-common-bar-chart__bar(v-for="option in orderedPollOptions" :key="option.id" :style="styleData(option)")
     | {{barTextFor(option)}}
 </template>
+<style lang="sass">
+.poll-common-bar-chart
+	display: flex
+	flex-direction: column
+	width: 100%
+.poll-common-bar-chart__bar
+	transition: background-size 0.1s ease-in-out
+	display: flex
+	align-items: center
+	min-width: 4px
+	min-height: 30px
+	margin-top: 8px
+	background-repeat: no-repeat
+	word-break: break-word
+	white-space: normal
+	line-height: 24px
+	width: 100%
+	padding: 0 8px
+
+</style>

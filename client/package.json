@@ -41,7 +41,7 @@
     "angular-translate-loader-url": "^2.18.1",
     "angulartics": "1.6.0",
     "angulartics-piwik": "1.0.6",
-    "bowser": "^2.6.1",
+    "bowser": "^2.7.0",
     "diff-match-patch": "^1.0.4",
     "emojione": "~> 2.2.7",
     "jstimezonedetect": "~1.0.7",
@@ -52,19 +52,19 @@
     "@mdi/font": "3.6.95",
     "ment.io": "~0.9.15",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.27",
     "promise-polyfill": "^8.1.3",
     "promise.prototype.finally": "^3.1.1",
     "raven-js": "latest",
-    "showdown": "^1.9.0",
+    "showdown": "^1.9.1",
     "svg.js": "^2.7.1",
     "url-search-params-polyfill": "latest",
     "vinyl-source-stream": "^2.0.0",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.6.3",
     "add-stream": "^1.0.0",
     "babelify": "^10.0.0",
     "browserify": "^16.5.0",
@@ -74,7 +74,7 @@
     "bundle-collapser": "^1.3.0",
     "coffeeify": "^3.0.1",
     "coffeescript": "^2.4.1",
-    "geckodriver": "^1.14.1",
+    "geckodriver": "^1.18.0",
     "globby": "^9.2.0",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^3.0.0",
@@ -103,6 +103,6 @@
     "uglify-es": "^3.3.9",
     "uglifyify": "^5.0.2",
     "vinyl-buffer": "^1.0.1",
-    "yargs": "^14.0.0"
+    "yargs": "^14.2.0"
   }
 }

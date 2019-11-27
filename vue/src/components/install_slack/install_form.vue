@@ -40,18 +40,17 @@ export default
           @$router.replace({ query: {} })
 
   created: ->
-    @group = head(@groups())
-    @fetchChannels().then =>
-      @setSubmit()
+    Records.users.fetchGroups().then =>
+      @group = head(@groups())
+
+      @fetchChannels().then =>
+        @setSubmit()
 
 </script>
 <template lang="pug">
 .install-slack-install-form
-  //- v-card-title
-  //-   h2.headline(v-t="'install_slack.install.heading'")
-  //-   spacer
-  //-   dismiss-modal-button(:close="close")
-  v-card-text
+  loading(v-if="!group")
+  v-card-text(v-if="group")
     .install-slack-install-form__add-to-group(v-if='group.id')
       p.lmo-hint-text(v-t="'install_slack.install.add_to_group_helptext'")
       v-select(return-object v-model='group' @change='setSubmit(group)' :items="groups()" item-text="fullName")

@@ -3,6 +3,7 @@ class UserService
     user.attributes = params.slice(:name, :email, :recaptcha, :legal_accepted)
     user.require_valid_signup = true
     user.require_recaptcha = true
+    user.experiences['vue_client'] = ENV.fetch('NEW_USERS_USE_VUE', false)
     user.save.tap do
       EventBus.broadcast 'user_create', user
     end
@@ -87,13 +88,14 @@ class UserService
 
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    user.update params
+    HasRichText.assign_attributes_and_update_files(user, params)
+    user.save
     EventBus.broadcast('user_update', user, actor, params)
   end
 
   def self.save_experience(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    user.experienced!(params[:experience])
+    user.experienced!(params[:experience], !params[:remove_experience])
     EventBus.broadcast('user_save_experience', user, actor, params)
   end
 end

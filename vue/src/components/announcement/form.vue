@@ -9,7 +9,7 @@ import Session from '@/shared/services/session'
 import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
 import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
-import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash'
+import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge, orderBy} from 'lodash'
 import { submitForm } from '@/shared/helpers/form'
 import { encodeParams } from '@/shared/helpers/encode_params'
 
@@ -119,9 +119,14 @@ export default
     modelKind: -> @announcement.model.constructor.singular
     pollType: -> @announcement.model.pollType
     translatedPollType: -> @announcement.model.poll().translatedPollType() if @announcement.model.isA('poll') or @announcement.model.isA('outcome')
+
     invitableGroups: ->
       return [] unless @announcement.model.isA('group')
-      @announcement.model.subgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
+      if @announcement.model.isParent()
+        @announcement.model.subgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
+      else
+        orderBy(@announcement.model.parent().subgroups().concat([@announcement.model.parent()]).filter((g) -> AbilityService.canAddMembersToGroup(g)), ['parentId', 'name'], ['desc', 'asc'])
+
     canUpdateAnyoneCanParticipate: ->
       @announcement.model.isA('poll') &&
       AbilityService.canAdminister(@announcement.model)
@@ -159,7 +164,7 @@ v-card
     div(v-if="invitingToGroup && !canInvite")
       .announcement-form__invite
         p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: maxMembers})")
-        p(v-if="!subscriptionActive" v-html="$('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+        p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
     div(v-if="!invitingToGroup || canInvite")
       .announcement-form__invite
@@ -185,13 +190,13 @@ v-card
       div(v-if="invitableGroups.length")
         span(v-t="'announcement.any_other_groups'")
         div(v-for="group in invitableGroups" :key="group.id")
-          v-checkbox(v-model="invitedGroupIds" :label="group.name" :value="group.id" hide-details)
+          v-checkbox(:class="{'ml-4': !group.isParent()}" v-model="invitedGroupIds" :label="group.name" :value="group.id" hide-details)
 
       v-layout(v-if="showInvitationsRemaining")
         v-spacer
         p.caption(v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
 
-      div.announcement-form__explain-membership(v-if="guestCount" v-t="{path: 'announcement.inviting_guests_to_thread', args: {group: announcement.model.group().name}}")
+      div.announcement-form__explain-membership(v-if="!invitingToGroup && guestCount" v-t="{path: 'announcement.inviting_guests_to_thread', args: {group: announcement.model.group().name}}")
         //- | 8 members of Loomio Community will be notified about this thread.
 
   v-card-actions
@@ -206,30 +211,20 @@ v-card
     v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || (invitingToGroup && tooManyInvitations())" @click="submit()" v-t="'common.action.send'")
 </template>
 
-<style lang="css">
-.announcement-form__checkbox {
-  margin: 16px 0;
-}
-
+<style lang="sass">
+.announcement-form__checkbox
+	margin: 16px 0
 .announcement-form__list-item,
-.announcement-form__invited {
-  padding: 0 !important;
-}
-
-.announcement-form__invite {
-  margin-bottom: 16px;
-}
-
+.announcement-form__invited
+	padding: 0 !important
+.announcement-form__invite
+	margin-bottom: 16px
 .announcement-form__shareable-link,
-.announcement-form__help {
-  margin: 8px 0;
-}
+.announcement-form__help
+	margin: 8px 0
+.announcement-form__audience
+	height: 42px
+	min-height: 42px
+	margin-bottom: 8px
 
-.announcement-form__audience {
-  height: 42px;
-  min-height: 42px;
-  margin-bottom: 8px;
-  /* // color: $primary-text-color;
-  i { opacity: 0.8; } */
-}
 </style>

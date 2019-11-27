@@ -1,4 +1,10 @@
 eo:
+  loomio_onboarding:
+    group_progress_card:
+      title: Ŝalti vian grupon
+      activities:
+        invite_people_in: Inviti homojn
+        make_decision: Komenci decidon
   plan_names:
     free: Senpaga
     trial: Provo
@@ -9,7 +15,6 @@ eo:
     yearly: Jare
   current_plan_button:
     upgrade: Ĝisdatigi
-    tooltip: Aĉeti loomio-n produkton por inviti pli da partoprenantoj kaj eklabori pri pliaj fadenoj
   loomio_tags:
     tags: Etikedoj
     apply_tags: Alkroĉi etikedon
@@ -141,6 +146,8 @@ eo:
     quiet: 'Malbrua'
     mute: 'Silentigi'
     unmute: 'Malsilentigi'
+  pin_event_form:
+    title_label: Titolo
   change_volume_form:
     simple:
       label: Sciigoj
@@ -174,6 +181,7 @@ eo:
       label: 'Afiŝu'
   sidebar:
     threads: 'Fadenoj'
+    explore_groups: Esplori grupojn
     start_thread: Nova fadeno
     aria_labels:
       groups_list: 'Grupoj'
@@ -195,18 +203,21 @@ eo:
     header: "Sciigoj"
   position_buttons_panel:
     heading: Donu vian opinion
+  discussion_fork_actions:
+    move: Movi
   discussion_form:
     group_label: 'Grupo'
     title_label: 'Titolo'
     context_label: 'Kunteksto'
     privacy_label: 'Privateco'
-  announcement:
-    preview: Antaŭkontrolo
   action_dock:
     add_comment: Komenti
+    copy_url: Kopii ligilon
     edit_poll: Redakti enketon
+    move_items: Movi
     translate_poll: Traduki enketon
     delete_comment: Forigi la komenton
+    edited: Redaktita
     close_thread: Fermigi fadenon
   logo_photo_form:
     heading: 'Nova emblemo de grupo'
@@ -245,6 +256,7 @@ eo:
       label: 'Opcioj'
       email_settings: 'Retpoŝtaj preferoj'
   group_form:
+    group_name_placeholder: 'Kio estas la nomo de via grupo?'
     privacy: 'Privateco'
     profile: Profilo
   documents_page:
@@ -378,9 +390,11 @@ eo:
     details: Detaloj
     participant_name: Via nomo
     participant_email: Retadreso
+    start_poll: Komenci decidon
     save_changes: Konservi
   discussions_panel:
     open: Malfermita
+    all: Ĉiuj
     closed: Fermita
   members_panel:
     order_by_name: 'Nomo'
@@ -394,7 +408,6 @@ eo:
     loomio_group: Grupo
   poll_common_calendar_invite:
     event_duration: Daŭro
-    event_summary: Resumo
   poll_common_form:
     title: Titolo
     details: Detaloj

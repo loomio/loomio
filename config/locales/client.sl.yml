@@ -97,6 +97,9 @@ sl:
     normal: 'Normalno'
     quiet: 'Tiho'
     mute: 'Neslišno'
+  pin_event_form:
+    title: Pripni na časovnico
+    title_label: Naslov
   change_volume_form:
     simple:
       label: Obvestila
@@ -221,6 +224,7 @@ sl:
     delete_comment: Izbriši komentar
     reply_to_comment: Odgovor
     show_history: Pokaži zgodovino urejanja
+    edited: Urejeno
     pin_thread: Pripni razpravo
     unpin_thread: Odpni razpravo
     pin_event: Pripni na časovnico
@@ -228,6 +232,8 @@ sl:
     close_thread: Zapri razpravo
     reopen_thread: Ponovno odpri razpravo
     delete_thread: Izbriši razpravo
+  formatting:
+    attach: Priloži datoteko
   join_group_button:
     join_group: Pridruži se skupini
     membership_requested: Prošnja za včlanitev
@@ -296,6 +302,7 @@ sl:
     submit: 'Da, deaktiviraj to skupino'
   group_form:
     start_organization_heading: Nova organizacija
+    group_name_placeholder: 'Kako se imenuje tvoja skupina?'
     privacy: 'Zasebnost'
     profile: Profil
   documents_page:
@@ -403,6 +410,7 @@ sl:
   poll_common_attachment_form:
     label: Priloge
   discussions_panel:
+    all: Vse
     closed: Zaprto
   members_panel:
     order_by_name: 'Ime'

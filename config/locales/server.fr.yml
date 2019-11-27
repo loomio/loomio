@@ -219,23 +219,6 @@ fr:
         Quel est votre rôle ou votre approche de la participation dans ce groupe ? Qu'est-ce que les gens devraient savoir à propos de votre venue ici ?
   how_it_works_thread:
     title: Comment utiliser Loomio
-    description: |
-        Bienvenue sur Loomio, un espace en ligne pour prendre des décisions ensemble.
-
-        Ceci est un exemple de **fil** de discussion. Vous pouvez ajouter des commentaires ci-dessus. Un fil est une conversation sur un sujet donné. Ce fil parle de la façon dont Loomio fonctionne, vous pouvez donc poster des questions à propos de cela.
-
-        Vous êtes actuellement en train de lire le fil **contexte**, un espace sur les informations de fond. Vous pouvez le mettre à jour au fur et à mesure de l'évolution de la discussion.
-
-        Pour commencer sur Loomio :
-        1. Chargez une [photo de profil](/profile)
-        2. Présentez-vous dans le [fil de bienvenue]%{thread_url})
-        3. Postez sur les fils existants, ou créez-en un nouveau
-
-        Conseils pour poster sur Loomio :
-        * Pour notifier une personne spécifique, utilisez @ suivi de son nom.
-        * Cliquez sur l’icône de trombone pour ajouter une pièce jointe.
-
-        Si vous avez des questions, consultez le [manuel d'aide Loomio](http://help.loomio.org).
   first_proposal:
     name: Proposition de démonstration
     description: |

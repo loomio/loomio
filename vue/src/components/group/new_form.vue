@@ -5,24 +5,31 @@ import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
-import { submitOnEnter }       from '@/shared/helpers/keyboard'
 import GroupModalMixin from '@/mixins/group_modal'
 
 export default
   mixins: [GroupModalMixin]
   props:
-    group: Object
-    close: Function
+    parentId: Number
+    close:
+      type: Function
+      default: ->
   data: ->
-    isDisabled: false
+    group: null
     rules: {
-      required: (value) ->
-        !!value || 'Required.'
+      required: (value) -> !!value || 'Required.'
     }
     submit: null
     uploading: false
     progress: 0
-  mounted: ->
+
+  created: ->
+    @group = Records.groups.build
+      name: @$route.params.name
+      parentId: @parentId
+      customFields:
+        pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
+
     @submit = submitForm @, @group,
       prepareFn: =>
         allowPublic = @group.allowPublicThreads
@@ -38,16 +45,11 @@ export default
       confirmFn: (model)          => @$t groupPrivacyConfirm(model)
       flashSuccess:               => "group_form.messages.group_#{@actionName}"
       successCallback: (data) =>
-        @isExpanded = false
         groupKey = data.groups[0].key
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
-          setTimeout => @openGroupWizard(group) unless group.parentId
   methods:
-    expandForm: ->
-      @isExpanded = true
-
     privacyStringFor: (privacy) ->
       @$t groupPrivacy(@group, privacy),
         parent: @group.parentName()
@@ -118,7 +120,7 @@ v-card.group-form
 
   v-card-actions
     v-spacer
-    v-btn.group-form__submit-button(color="primary" @click='submit()')
+    v-btn.group-form__submit-button(:loading="group.processing" color="primary" @click='submit()')
       span(v-if='group.isParent()' v-t="'group_form.submit_start_group'")
       span(v-if='!group.isParent()' v-t="'group_form.submit_start_subgroup'")
 </template>

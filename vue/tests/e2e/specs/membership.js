@@ -7,14 +7,12 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.click('.group-page-members-tab')
-    page.fillIn('.members-panel__filter input', 'Jennifer')
-    page.click('.membership-dropdown__button')
+    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__remove')
-    // page.expectText('.confirm-modal p', 'Jennifer')
     page.expectText('.confirm-modal h1', 'Remove member')
     page.click('.confirm-modal__submit')
     page.expectFlash('Member removed')
-    page.expectNoText('.members-panel', 'Jennifer Grey')
+    page.expectNoText('.members-panel', 'Emilio Estevez')
   },
 
   'successfully_assigns_coordinator_privileges': (test) => {
@@ -22,10 +20,9 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.click('.group-page-members-tab')
-    page.fillIn('.members-panel__filter input', 'Jennifer')
-    page.click('.membership-dropdown__button')
+    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectFlash('Jennifer Grey is now a coordinator')
+    page.expectFlash('Emilio Estevez is now an admin')
   },
 
   'allows_non-coordinators_to_add_members_if_the_group_settings_allow': (test) => {
@@ -42,10 +39,9 @@ module.exports = {
     page.loadPath('setup_group_with_multiple_coordinators')
 
     page.click('.group-page-members-tab')
-    page.fillIn('.members-panel__filter input', 'Emilio')
-    page.click('.membership-dropdown__button')
+    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectFlash('Emilio Estevez is no longer a coordinator')
+    page.expectFlash('Emilio Estevez is no longer an admin')
   },
 
   'can_self_promote_when_no_coordinators': (test) => {
@@ -53,10 +49,10 @@ module.exports = {
 
     page.loadPath('setup_group_with_no_coordinators')
     page.click('.group-page-members-tab')
-    page.fillIn('.members-panel__filter input', 'Patrick')
+    page.click('.members-panel .v-card .v-list .v-list-item:last-child .membership-dropdown')
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectFlash('Patrick Swayze is now a coordinator')
+    page.expectFlash('Patrick Swayze is now an admin')
   },
 
   'can_self_promote_when_admin_of_parent_group': (test) => {
@@ -64,11 +60,9 @@ module.exports = {
 
     page.loadPath('setup_group_with_subgroups_as_admin')
     page.click('.group-page-members-tab')
-    page.fillIn('.members-panel__filter input', 'Jennifer')
-    page.click('.membership-dropdown__button')
-    page.click('.membership-dropdown__button')
+    page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__toggle-admin')
-    page.expectFlash('Jennifer Grey is now a coordinator')
+    page.expectFlash('Jennifer Grey is now an admin')
   },
 
   'cannot_self_promote_when_coordinators': (test) => {
@@ -76,9 +70,8 @@ module.exports = {
 
     page.loadPath('setup_group_as_member')
     page.click('.group-page-members-tab')
-    page.fillIn('.members-panel__filter input', 'Jennifer')
-    page.click('.membership-dropdown__button')
-    page.expectNoText('.membership-dropdown', 'Demote coordinator')
+    page.click('.membership-dropdown')
+    page.expectNoText('.membership-dropdown', 'Make admin')
   },
 
   'can_set_membership_title': (test) => {
@@ -86,13 +79,11 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.click('.group-page-members-tab')
-    page.fillIn('.members-panel__filter input', 'Patrick')
-    page.click('.membership-dropdown__button')
+    page.click('.members-panel .v-card .v-list .v-list-item:last-child .membership-dropdown')
     page.click('.membership-dropdown__set-title')
     page.fillIn('.membership-form__title-input input', 'Suzerain')
     page.click('.membership-form__submit')
     page.expectFlash('Membership title updated')
-    page.expectText('.members-panel__title', 'Suzerain')
-    // page.expectText('.members-panel__table tbody', 'Patrick Swayze · Suzerain')
+    page.expectText('.members-panel .title', 'Suzerain')
   }
 }

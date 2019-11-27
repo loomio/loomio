@@ -6,7 +6,7 @@ class PollSerializer < ActiveModel::Serializer
              :created_at, :multiple_choice, :custom_fields, :poll_option_names,
              :notify_on_participate, :subscribed, :example, :anonymous, :can_respond_maybe,
              :attachments, :mentioned_usernames
-             
+
   has_one :author, serializer: UserSerializer, root: :users
   has_one :current_outcome, serializer: Full::OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances
@@ -18,7 +18,7 @@ class PollSerializer < ActiveModel::Serializer
   end
 
   def my_stance
-    @my_stances_cache ||= scope[:my_stances_cache].get_for(object) if scope[:my_stances_cache]
+    @my_stances_cache ||= scope[:my_stances_cache].get_for(object) if scope && scope[:my_stances_cache]
   end
 
   def include_subscribed?

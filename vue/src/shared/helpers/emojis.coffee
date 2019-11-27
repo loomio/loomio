@@ -27,7 +27,6 @@ export shortcodeCorrect = (shortcode) ->
   corrections =
     '+1': 'thumbsup'
     '-1': 'thumbsdown'
-    'slight_smile': 'smile'
     'thinking_face': 'thinking'
     'crossed_fingers': 'fingers_crossed'
     'nerd_face': 'nerd'

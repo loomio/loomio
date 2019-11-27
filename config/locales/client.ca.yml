@@ -1,4 +1,15 @@
 ca:
+  loomio_onboarding:
+    group_progress_card:
+      title: Activa el teu grup
+      activities:
+        set_description: Configura la descripció del teu grup
+        set_logo: Escull un logo pel teu grup
+        set_cover_photo: Escull una foto de capçalera pel teu grup
+        invite_people_in: Convida a gent
+        start_thread: Comença un fil de discussió
+        make_decision: Comença una decissió
+      dismiss_this_card: Descarta aquesta fitxa
   loomio_tags:
     tags: Etiquetes
     apply_tags: Aplica etiquetes
@@ -85,7 +96,6 @@ ca:
       new_thread: "Crea una discussió"
       loading: 'Carregant'
       translate: 'Tradueix'
-      translated: 'Traducció realitzada per Bing Translator'
       upload: 'Carrega'
       uploading: 'Carregant'
       ok: D'acord
@@ -119,6 +129,8 @@ ca:
     quiet: 'Fluix'
     mute: 'Silenci'
     unmute: 'Activa el so'
+  pin_event_form:
+    title_label: Títol
   change_volume_form:
     simple:
       label: Notificacions
@@ -217,6 +229,8 @@ ca:
   discussion_record:
     created: 'La discussió {{title}} s''ha creat correctament a {{groupName}}'
     updated: 'Canvis desats a {{title}}'
+  discussion_fork_actions:
+    move: Mou
   discussion_form:
     messages:
       created: 'Discussió creada'
@@ -233,10 +247,10 @@ ca:
     privacy_public: 'Tothom pot veure la discussió. Només els membres hi poden participar.'
     privacy_private: 'La discussió només serà visible pels membres del grup {{group}}.'
     privacy_organisation: 'La discussió serà visible pels membres de {{parent}} i pels membres de {{group}}.'
-  announcement:
-    preview: Previsualitza
   action_dock:
+    move_items: Mou
     edit_stance: Canvia la decisió
+    edited: Editat
     tag_thread: Gestiona etiquetes
     delete_thread: Elimina la discussió
   join_group_button:
@@ -303,7 +317,7 @@ ca:
     edit_group_heading: 'Edita la configuració del grup'
     edit_subgroup_heading: 'Edita la configuració del subgrup'
     group_name: 'Nom del grup'
-    group_name_placeholder: 'Com voleu anomenar el vostre grup?'
+    group_name_placeholder: 'Quin és el nom del teu grup?'
     subgroup_name: 'Nom del subgrup'
     description: 'Descripció'
     description_placeholder: 'Descriviu el propòsit del grup per tal de que els membres sàpiguen perquè estan aquí.'
@@ -636,8 +650,10 @@ ca:
     save_changes: Desa
   discussions_panel:
     open: Obert
+    all: Tot
     closed: Tancat
   members_panel:
+    everyone: 'Tothom'
     order_by_name: 'Nom'
     header_name: 'Nom'
     header_username: 'Nom d''usuari'

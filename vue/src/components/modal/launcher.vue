@@ -2,6 +2,7 @@
 import EventBus from "@/shared/services/event_bus"
 import GroupForm from '@/components/group/form.vue'
 import DiscussionForm from '@/components/discussion/form.vue'
+import ArrangementForm from '@/components/thread/arrangement_form.vue'
 import EditCommentForm from '@/components/thread/edit_comment_form.vue'
 import ConfirmModal from '@/components/common/confirm_modal.vue'
 import ChangeVolumeForm from '@/components/common/change_volume_form'
@@ -25,9 +26,11 @@ import InstallSlackModal from '@/components/install_slack/modal'
 import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/modal'
 import ChangePictureForm from '@/components/profile/change_picture_form'
 import GroupNewForm from '@/components/group/new_form'
-import GroupWizard from '@/components/group/wizard'
-import UserWizard from '@/components/profile/wizard'
+import PinEventForm from '@/components/thread/pin_event_form'
 import MoveCommentsModal from '@/components/discussion/move_comments_modal'
+import SeenByModal from '@/components/thread/seen_by_modal'
+import ExportDataModal from '@/components/group/export_data_modal'
+import VueUpgradedModal from '@/components/user/vue_upgraded_modal'
 
 export default
   components:
@@ -45,6 +48,7 @@ export default
     'ChangePasswordForm': ChangePasswordForm
     'PollCommonOutcomeModal': PollCommonOutcomeModal
     'PollCommonReopenModal': PollCommonReopenModal
+    'ArrangementForm': ArrangementForm
     'AnnouncementForm': AnnouncementForm
     'AnnouncementHistory': AnnouncementHistory
     'MoveThreadForm': MoveThreadForm
@@ -56,24 +60,31 @@ export default
     'InstallMicrosoftTeamsModal': InstallMicrosoftTeamsModal
     'ChangePictureForm': ChangePictureForm
     'GroupNewForm': GroupNewForm
-    'GroupWizard': GroupWizard
-    'UserWizard': UserWizard
+    'PinEventForm': PinEventForm
     'MoveCommentsModal': MoveCommentsModal
+    'SeenByModal': SeenByModal
+    'ExportDataModal': ExportDataModal
+    'VueUpgradedModal': VueUpgradedModal
+
   data: ->
     isOpen: false
     componentName: ""
     componentProps: {}
+    maxWidth: 600
 
   created: ->
     EventBus.$on('openModal', @openModal)
-    EventBus.$on('closeModal', @closeModal)
+    EventBus.$on('closeModal', @doCloseModal)
 
   methods:
     openModal: (opts) ->
+      @maxWidth = opts.maxWidth || 600
       @isOpen = true
       @componentName = opts.component
       @componentProps = opts.props
-    closeModal: -> @isOpen = false
+
+    doCloseModal: -> @isOpen = false
+
     componentKey: ->
       date = new Date()
       date.getTime()
@@ -82,7 +93,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model="isOpen" max-width="600px" persistent :fullscreen="$vuetify.breakpoint.smAndDown")
+v-dialog(v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
   component(:is="componentName" :key="componentKey()" v-bind="componentProps" :close="closeModal")
 
 </template>

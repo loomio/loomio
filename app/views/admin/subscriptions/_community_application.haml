@@ -1,0 +1,27 @@
+%div{ class: 'panel' }
+  %h3 Community Application
+  %div{ class: 'panel-contents' }
+    %strong= t(:"community_applications.choose_group")
+    %p #{Group.find(info["group_id"]).name}
+    %strong= t(:'community_applications.confirm_question')
+    %p #{info["declaration"]}
+    %strong= t :'community_applications.category_question'
+    %p #{info["category"]}
+    %strong= t :'community_applications.purpose'
+    %p #{info["purpose"]}
+    %strong= t :'community_applications.importance'
+    %p #{info["importance"]}
+    %strong= t :'community_applications.source'
+    %p #{info["source"]}
+    %strong= t :'community_applications.decision'
+    %p #{info["decision"]}
+    %strong= t :'community_applications.enable'
+    %p #{info["enable"]}
+    %strong= t :'community_applications.impact'
+    %p #{info["impact"]}
+    %strong= t :'community_applications.social_question'
+    %p #{info["social_permission"]}
+    %strong= t :'community_applications.blog_question'
+    %p #{info["blog_permission"]}
+    %strong= t :'community_applications.anything_else'
+    %p #{info["anything_else"]}

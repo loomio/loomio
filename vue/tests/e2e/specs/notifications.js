@@ -9,10 +9,10 @@ notificationTexts = [
   'mentioned you in',
   'replied to your comment',
   'shared an outcome',
-  'Poll is closing soon',
-  'started a Poll',
-  'reacted to your comment',
-  'made you a coordinator',
+  'poll is closing soon',
+  'started a poll',
+  'reacted 😄 to your comment',
+  'made you an admin',
   'participated in',
   'added options to'
 ]
@@ -22,6 +22,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_all_notifications')
+    page.pause(500)
     page.expectText('.notifications__activity', notificationTexts.length, 100000)
     page.click('.notifications__button')
     notificationTexts.map((text) => { page.expectText('.notifications__dropdown', text) })

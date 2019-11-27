@@ -47,6 +47,9 @@ export default class UserRecordsInterface extends BaseRecordsInterface
   saveExperience: (experience) =>
     @remote.post('save_experience', experience: experience)
 
+  removeExperience: (experience) =>
+    @remote.post('save_experience', experience: experience, remove_experience: 1)
+
   emailStatus: (email, token) ->
     @fetch
       path: 'email_status'

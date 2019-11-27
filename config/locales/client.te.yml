@@ -50,6 +50,8 @@ te:
       invite: ఆహ్నానించు
   emoji_picker:
     search: వెతుకు
+  pin_event_form:
+    title_label: శీర్షిక
   change_volume_form:
     simple:
       label: గమనికలు

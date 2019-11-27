@@ -1,9 +1,19 @@
 it:
+  loomio_onboarding:
+    group_progress_card:
+      title: Attiva il tuo gruppo
+      activities:
+        set_description: 'Scrivi la descrizione del tuo gruppo '
+        set_logo: Scegli un logo per il tuo gruppo
+        set_cover_photo: 'Scegli una foto di copertina per il tuo gruppo '
+        invite_people_in: Invita persone in
+        start_thread: Inizia un thread di discussione
+        make_decision: Inizia una decisione
+      dismiss_this_card: Elimina questa sezione
   plan_names:
     free: Free
   current_plan_button:
     upgrade: Aggiorna
-    tooltip: Acquista un abbonamento a Loomio per invitare più persone ed iniziare più discussioni.
   loomio_tags:
     tags: Etichette
     apply_tags: Inserisci etichette
@@ -59,6 +69,7 @@ it:
   timezones:
     local: Ora locale ({{value}})
   common:
+    no_results_found: Nessun risultato trovato
     option: Opzione
     add: Aggiungi
     you: Tu
@@ -134,7 +145,6 @@ it:
       add_subgroup: 'Nuovo sottogruppo'
       loading: 'In caricamento...'
       translate: 'Traduci'
-      translated: 'Tradotto da Bing Traduttore'
       upload: 'Carica'
       uploading: 'Caricamento in corso'
       load_more: 'Carica ancora'
@@ -200,6 +210,8 @@ it:
     quiet: 'Quieto'
     mute: 'Silenzioso'
     unmute: 'Rimuovi silenzioso'
+  pin_event_form:
+    title_label: Titolo
   change_volume_form:
     simple:
       label: Notifiche
@@ -313,6 +325,7 @@ it:
     start_group: 'Nuova organizzazione'
     start_subgroup: 'Nuovo sottogruppo'
     explore: 'Gruppi pubblici'
+    explore_groups: Esplora gruppi
     start_thread: Nuova discussione
     start_decision: Nuova decisione
     more_groups: Altri gruppi
@@ -422,7 +435,7 @@ it:
     created: 'La discussione {{title}} è stata creata con successo nel gruppo {{groupName}}.'
     updated: 'Salva i cambiamenti a {{title}}'
   discussion_fork_actions:
-    helptext: "Seleziona gli elementi che vuoi spostare in un'altra discussione"
+    move: Sposta
   discussion_form:
     aria_label: 'Modulo discussione'
     messages:
@@ -444,7 +457,6 @@ it:
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     fork_notice: 'Una nuova discussione è stata creata con {{count}} argomenti da {{title}}'
   announcement:
-    preview: Anteprima
     audiences:
       parent_group: Membri di {{name}}
       formal_group: Membri di {{name}}
@@ -488,14 +500,13 @@ it:
       search_placeholder: Cerca persone...
       members_count: '{{count}} persone saranno notificate'
   action_dock:
-    react: Aggiungi reazione
     add_resource: Aggiungi allegato
     edit_group: Modifica il contesto del gruppo
     add_comment: Commenta
-    copy_url: Copia URL
     edit_thread: Modifica il contesto
     translate_thread: Traduci il contesto
     edit_poll: Modifica sondaggio
+    move_items: Sposta
     translate_poll: Traduci sondaggio
     edit_stance: Cambia posizione
     translate_stance: Traduci il voto
@@ -507,6 +518,7 @@ it:
     edit_outcome: Modifica il risultato
     translate_outcome: Traduci il risultato
     show_history: Mostra la storia della modifica
+    edited: Modificato
     pin_thread: Fissa in alto la discussione
     unpin_thread: Non fissare in alto la discussione
     comment_copied: URL del commento copiato negli appunti
@@ -515,6 +527,8 @@ it:
     tag_thread: Gestisci le etichette
     close_thread: Chiudi discussione
     delete_thread: Cancella discussione
+  formatting:
+    attach: Allega file
   cover_photo_form:
     aria_label: 'Cambia modulo dell''immagine di copertina'
     heading: 'Nuova immagine di copertina'
@@ -635,7 +649,7 @@ it:
     edit_subgroup_heading: 'Modifica le impostazioni del sottogruppo'
     group_name: 'Nome del gruppo'
     start_organization_heading: Nuova organizzazione
-    group_name_placeholder: 'Come vuoi chiamare il tuo gruppo?'
+    group_name_placeholder: 'Qual''é il nome del tuo gruppo?'
     subgroup_name: 'Nome del sottogruppo'
     description: 'Descrizione'
     description_placeholder: 'Descrivi lo scopo del tuo gruppo in modo che gli altri partecipanti sappiano il motivo per cui sono qui.'
@@ -1090,8 +1104,10 @@ it:
     count: "Vedi tutto:  ({{count}}) decisioni"
   discussions_panel:
     open: Aperto
+    all: Tutte
     closed: Chiuso
   members_panel:
+    everyone: 'Chiunque'
     order_by_name: 'Nome'
     header_name: 'Nome'
     header_username: 'Nome Utente'
@@ -1115,7 +1131,6 @@ it:
   poll_common_calendar_invite:
     poll_option_id: Ora dell'incontro
     event_duration: Durata
-    event_summary: Sommario
     event_description: Descrizione dell'incontro
     location: Luogo
   poll_common_settings:

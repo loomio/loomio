@@ -46,6 +46,3 @@ export default
                       props: {
                         poll: poll.clone()
                       })
-
-    closeModal: ->
-      EventBus.$emit('closeModal')

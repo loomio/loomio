@@ -1,12 +1,9 @@
 <script lang="coffee">
 import Records       from '@/shared/services/records'
 import LmoUrlService from '@/shared/services/lmo_url_service'
-import WatchRecords from '@/mixins/watch_records'
 import RecordLoader   from '@/shared/services/record_loader'
-import { applyLoadingFunction } from '@/shared/helpers/apply'
 
 export default
-  mixins: [WatchRecords]
   data: ->
     discussion: null
     memberships: []

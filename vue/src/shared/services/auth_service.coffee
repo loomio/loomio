@@ -25,9 +25,9 @@ export default new class AuthService
     EventBus.$emit('closeModal')
     Flash.success('auth_form.signed_in')
 
-    if user && !user.hasExperienced('userWizard')
+    if user && !user.hasProfilePhoto() && !user.hasExperienced('changePicture')
       openModal
-        component: 'UserWizard'
+        component: 'ChangePictureForm'
 
   signIn: (user = {} , onSuccess = -> , onFailure = ->) ->
     Records.sessions.build(

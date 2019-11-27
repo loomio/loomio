@@ -1,10 +1,21 @@
 he:
+  loomio_onboarding:
+    group_progress_card:
+      title: הפעלת הקבוצה שלך
+      activities:
+        set_description: הגדר את תאור הקבוצה
+        set_logo: בחר לוגו לקבוצה שלך
+        set_cover_photo: בחר תמונת קאבר לקבוצה
+        invite_people_in: הזמן אנשים
+        start_thread: התחל דיון
+        make_decision: התחל החלטה
+      learn_more: למד עוד בעזרה של לומיו
+      dismiss_this_card: בטל את הכרטיס
   plan_names:
     free: חינם
     trial: ניסיון
   current_plan_button:
     upgrade: שדרג
-    tooltip: רכוש חבילת Loomio להזמין עוד אנשים ולהתחיל עוד שירשורים
   loomio_tags:
     tags: תגיות
     apply_tags: החל תגיות
@@ -109,6 +120,8 @@ he:
     points_abbrev: כל הצבעה שווה {{score}} נקודות
     total: סך הכל
     action:
+      pin: סיכה
+      unpin: הסר סיכה
       search: 'חיפוש'
       back: 'חזרה'
       next: 'הבא'
@@ -129,7 +142,6 @@ he:
       new_thread: "שיחה חדשה"
       loading: 'נטען'
       translate: 'תרגום'
-      translated: 'תרגום ע"י מתרגם של בינג'
       upload: 'העלה'
       uploading: 'עולה'
       load_more: 'טען עוד'
@@ -188,6 +200,8 @@ he:
     quiet: 'שקט'
     mute: 'השתקה'
     unmute: 'הסר השתקה'
+  pin_event_form:
+    title_label: כותרת
   change_volume_form:
     simple:
       label: התרעות
@@ -297,6 +311,7 @@ he:
     muted_threads: 'שיחות שהושתקו'
     start_group: 'ארגון חדש'
     explore: 'קבוצות ציבוריות'
+    explore_groups: חקור קבוצות
     start_thread: שיחה חדשה
     start_decision: החלטה חדשה
     aria_labels:
@@ -394,7 +409,7 @@ he:
     created: 'השיחה {{title}} נוצרה בהצלחה ב{{groupName}}'
     updated: 'שמור שינויים ל{{title}}'
   discussion_fork_actions:
-    helptext: "בחר פריטים שהיית רוצה להעביר לשיחה חדשה"
+    move: העבר
   discussion_form:
     aria_label: 'טופס שיחה'
     messages:
@@ -416,7 +431,6 @@ he:
     privacy_organisation: 'משתמשי {{parent}} וה{{group}} יכולו לצפות בשיחה.'
     fork_notice: 'שיחה חדשה תיווצר עם {{count}} פריטים מ{{title}}'
   announcement:
-    preview: תצוגה מקדימה
     audiences:
       parent_group: משתתפי ה{{name}}
       formal_group: משתתפי ה{{name}}
@@ -469,14 +483,13 @@ he:
     flash:
       success: '{{count}} עדכונים נשלחו'
   action_dock:
-    react: הוספת ריאקציה
     add_resource: צרוף קובץ
     edit_group: עריכת תוכן הקבוצה
     add_comment: הערה
-    copy_url: העתק כתובת הדף
     edit_thread: ערוך תוכן
     translate_thread: תרגום תוכן
     edit_poll: עריכת סקר
+    move_items: העבר
     announce_poll: הזמן אנשים להצביע
     announce_poll_active: (אף אחד עוד לא הוזמן)
     translate_poll: תרגום סקר
@@ -492,6 +505,7 @@ he:
     announce_outcome_active: (אף אחד עוד לא עודכן על התוצאה)
     translate_outcome: תרגם תוצאה
     show_history: הצג היסטוריית עריכה
+    edited: ערוך
     pin_thread: דקור שיחה
     unpin_thread: הסר דקירה של שיחה
     comment_copied: כתובת הURL של ההערה הועתקה לClipboard
@@ -500,6 +514,8 @@ he:
     tag_thread: ניהול תגיות
     close_thread: סגור שיחה
     delete_thread: מחיקת שיחה
+  formatting:
+    attach: צרוף קובץ
   cover_photo_form:
     aria_label: 'שנה תמונת קאבר של הטופס'
     heading: 'תמונת קאבר חדשה'
@@ -641,7 +657,7 @@ he:
     edit_subgroup_heading: 'ערוך הגדרות תת הקבוצה'
     group_name: 'שם הקבוצה'
     start_organization_heading: ארגון חדש
-    group_name_placeholder: 'איך תרצה לקרוא לקבוצה?'
+    group_name_placeholder: 'מה שם הקבוצה שלך?'
     subgroup_name: 'שם תת הקבוצה'
     description: 'תיאור'
     description_placeholder: 'תאר את מטרת הקבוצה כך שחבריה ידעו למה הם פה.'
@@ -994,9 +1010,6 @@ he:
     max_threads_reached: |
         <p>השתמשת בכל {{maxThreads}} השירשורים הפנויים בקבוצה זו.</p>
         <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> בכדי להמשיך לשתף פעולה בLoomio.</p>
-    subscription_canceled: |
-        <p>מצטערים! החשבון שלך לא פעיל.</p>
-        <p>אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> כדי להמשיך להשתמש בלומיו.</p>
     activity: 'פעילות'
     activity_placeholder: 'אין פעילות עוד!'
     load_previous: 'טען פעילויות מוקדמות יותר'
@@ -1244,6 +1257,7 @@ he:
     count: "צפה בכל: ({{count}}) ההחלטות"
   discussions_panel:
     open: פתוח
+    all: הכל
     closed: סגור
   members_panel:
     order_by_name: 'שם'
@@ -1278,7 +1292,6 @@ he:
     helptext_on: משתמשים יועלו להוסיף פגישה זו ליומן שלהם
     helptext_off: הזמנה לפגישה לא תשלח
     event_duration: משך
-    event_summary: סיכום
     event_summary_placeholder: איך תרצה לקרוא לפגישה זו?
     event_description: תיאור הפגישה
     event_description_placeholder: מה התוכנית/לו"ז לפגישה?
@@ -1308,7 +1321,6 @@ he:
       helptext_on: מצביעעים יכולים לציין זמנים כ-"אם יש צורך"
   poll_common_close_form:
     title: סגור סקר מוקדם
-    helptext: אתה בטוח שאתה מוכן לסגור מוקדם?
     close_proposal: סגור הצעה
     close_poll: סגור סקר
     close_count: סגור בדיקה
@@ -1545,7 +1557,6 @@ he:
     stance_created: בחירה תועדה במערכת
     stance_updated: בחירה עודכנה
   thread_item:
-    poll_expired: "{{polltype}} נסגר: <strong>{{title}}</strong>"
     event_removed: "הוסר מהשיחה"
   poll_admin_page:
     title: אדמין (מנהל) - {{title}}
@@ -1606,8 +1617,6 @@ he:
     set_password: הגדר סיסמה
     set_password_helptext: תרצה להשתמש בסיסמה בפעם הבאה?
     hello: "שלום, {{name}}!"
-    new_to_loomio: פעם ראשונה ב{{site_name}}? צור חשבון
-    already_a_user: השתמשת ב{{site_name}} בעבר? הכנס את כתובת המייל בה השתמשת בפעם האחרונה לחיבורה.
     link_accounts: חבר חשבונות
     check_your_email: בדוק את המייל שלך!
     login_link_sent: "שלחנו לך מייל ל{{email}}."

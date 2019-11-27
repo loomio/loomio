@@ -1,4 +1,8 @@
 da:
+  loomio_onboarding:
+    group_progress_card:
+      activities:
+        make_decision: Opret en beslutning
   plan_names:
     free: Gratis
   loomio_tags:
@@ -23,6 +27,7 @@ da:
   timezones:
     local: Lokal tid ({{value}})
   common:
+    no_results_found: Ingen resultater fundet
     expand: Udvid
     all_day: Hele dagen
     ok_got_it: Ok
@@ -85,7 +90,6 @@ da:
       new_thread: "Ny tråd"
       loading: 'Indlæser'
       translate: 'Oversæt'
-      translated: 'Oversættelse via Bing Translator'
       upload: 'Upload'
       uploading: 'Uploader'
       load_more: 'Hent mere'
@@ -119,6 +123,8 @@ da:
     quiet: 'Lav'
     mute: 'Slået fra'
     unmute: 'Slået til'
+  pin_event_form:
+    title_label: Titel
   change_volume_form:
     simple:
       label: Notifikationer
@@ -272,6 +278,8 @@ da:
   discussion_record:
     created: 'Debatter {{title}} blev oprettet i {{groupName}}'
     updated: '{{title}} blev gemt'
+  discussion_fork_actions:
+    move: Flyt
   discussion_form:
     aria_label: 'Debat'
     messages:
@@ -297,8 +305,12 @@ da:
     group_form:
       members_count: '{{count}} mennesker vil blive notificeret'
   action_dock:
+    move_items: Flyt
     edit_stance: Rediger stillingtagen
+    edited: Redigeret
     delete_thread: Slet debat
+  formatting:
+    attach: Vedhæft fil
   cover_photo_form:
     aria_label: 'Skift forsidefoto'
     heading: 'Nyt forsidefoto'
@@ -404,7 +416,7 @@ da:
     edit_group_heading: 'Rediger gruppe indstillinger'
     edit_subgroup_heading: 'Rediger undergruppe indstillinger'
     group_name: 'Gruppenavn'
-    group_name_placeholder: 'Hvilket navn ønsker du at give denne gruppe?'
+    group_name_placeholder: 'Hvad er navnet på din gruppe?'
     subgroup_name: 'Undergruppe navn'
     description: 'Beskrivelse'
     description_placeholder: 'Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.'
@@ -821,6 +833,7 @@ da:
     show_results: Vis resultater
   discussions_panel:
     open: Offentlig
+    all: Alle
     closed: Lukket
   members_panel:
     order_by_name: 'Navn'
@@ -846,7 +859,6 @@ da:
       title: Send en notifikation til mig når folk deltager
   poll_common_close_form:
     title: Afslut en meningsmåling før tid
-    helptext: Er du sikker på at du ønsker at afslutte før tid?
     close_proposal: Luk forslag
     close_poll: Afslut meningsmåling
     close_count: Afslut checkmåling

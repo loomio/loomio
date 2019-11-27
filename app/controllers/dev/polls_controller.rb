@@ -16,15 +16,17 @@ class Dev::PollsController < Dev::BaseController
 
   def test_discussion
     group = create_group_with_members
-    discussion = saved fake_discussion(group: group)
     sign_in group.admins.first
+    discussion = saved fake_discussion(group: group, author: group.admins.first)
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
     redirect_to discussion_path(discussion)
   end
 
   def test_poll_in_discussion
     group = create_group_with_members
     sign_in group.admins.first
-    discussion = saved fake_discussion(group: group)
+    discussion = saved fake_discussion(group: group, author: group.admins.first)
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
     poll = saved fake_poll(discussion: discussion)
     stance = saved fake_stance(poll: poll)
     StanceService.create(stance: stance, actor: group.members.last)
@@ -48,6 +50,7 @@ class Dev::PollsController < Dev::BaseController
     group = saved fake_group
     group.add_admin! user
     discussion = saved fake_discussion(group: group)
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
 
     sign_in user
     create_activity_items(discussion: discussion, actor: user)

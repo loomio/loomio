@@ -72,6 +72,7 @@ describe Event do
   end
 
   it 'new_comment' do
+    Events::NewComment.publish!(parent_comment)
     expect { Events::NewComment.publish!(comment) }.to change { emails_sent }
     email_users = Events::NewComment.last.send(:email_recipients)
     email_users.should     include user_thread_loud
@@ -96,6 +97,7 @@ describe Event do
   describe 'user_mentioned' do
     it 'notifies the mentioned user' do
       # once for the group, once for the user notification
+      Events::NewComment.publish!(parent_comment)
       expect(MessageChannelService).to receive(:publish_model).twice
 
       CommentService.create(comment: comment, actor: comment.author)

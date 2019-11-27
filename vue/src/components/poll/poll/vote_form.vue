@@ -19,7 +19,7 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @stance.poll().pollOptions()
+        @pollOptions = @stance.poll().pollOptions() if @stance.poll()
 
     @submit = submitStance @, @stance,
       prepareFn: =>

@@ -1,6 +1,5 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
-import HasDrafts        from '@/shared/mixins/has_drafts'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
 
@@ -15,21 +14,24 @@ export default class OutcomeModel extends BaseModel
     statement: ''
     statementFormat: 'html'
     customFields: {}
+    files: []
+    imageFiles: []
+    attachments: []
 
   afterConstruction: ->
-    HasDrafts.apply @
     HasDocuments.apply @
     HasTranslations.apply @
 
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'poll'
+    @belongsTo 'pollOption'
 
   reactions: ->
     @recordStore.reactions.find
       reactableId: @id
       reactableType: _.capitalize(@constructor.singular)
-      
+
   authorName: ->
     @author().nameWithTitle(@poll()) if @author()
 

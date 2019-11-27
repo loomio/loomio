@@ -1,29 +1,39 @@
 <script lang="coffee">
 import ThreadService  from '@/shared/services/thread_service'
 import { exact }      from '@/shared/helpers/format_time'
-import { listenForTranslations } from '@/shared/helpers/listen'
 import { map, compact, pick } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
+import openModal      from '@/shared/helpers/open_modal'
 
 export default
   props:
     discussion: Object
 
-  mounted: ->
-    listenForTranslations(@)
-
   data: ->
     actions: ThreadService.actions(@discussion, @)
 
   computed:
-    editThread: ->
-      pick(ThreadService.actions(@discussion, @), ['edit_thread'])['edit_thread']
+    arrangementAction: -> @actions['edit_arrangement']
+
+    editThread: -> @actions['edit_thread']
 
     dockActions: ->
-      pick ThreadService.actions(@discussion, @), ['react', 'add_comment', 'edit_thread', 'edit_tags', 'announce_thread']
+      pick @actions, ['react', 'add_comment', 'subscribe', 'unsubscribe', 'unignore', 'show_history', 'edit_thread', 'announce_thread']
 
     menuActions: ->
-      pick ThreadService.actions(@discussion, @), [ 'show_history', 'notification_history', 'translate_thread', 'pin_thread', 'unpin_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+      pick @actions, ['edit_tags',  'notification_history', 'translate_thread', 'close_thread', 'reopen_thread', 'move_thread', 'delete_thread']
+
+    status: ->
+      return 'pinned' if @discussion.pinned
+
+    statusTitle: ->
+      @$t("context_panel.thread_status.#{@status}")
+
+    groups: ->
+      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
+        text: group.name
+        disabled: false
+        to: @urlFor(group)
 
     status: ->
       return 'pinned' if @discussion.pinned
@@ -45,12 +55,20 @@ export default
     viewed: (viewed) ->
       @discussion.markAsSeen() if viewed
 
+    openArrangementForm: -> @actions['edit_arrangement'].perform()
+
+    openSeenByModal: ->
+      openModal
+        component: 'SeenByModal'
+        props:
+          discussion: @discussion
+
 </script>
 
 <template lang="pug">
 .context-panel.lmo-action-dock-wrapper#context(v-observe-visibility="{callback: viewed, once: true}" v-on:dblclick="editThread.canPerform() && editThread.perform()")
   v-layout(align-center mr-3 ml-2 pt-2 wrap)
-    v-breadcrumbs(:items="groups" divider=">")
+    v-breadcrumbs.context-panel__breadcrumbs(:items="groups" divider=">")
     tags-display(:discussion="discussion")
     span
     v-spacer
@@ -63,7 +81,7 @@ export default
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')
 
-  .mx-4
+  div.mx-3.mb-2
     .context-panel__details.my-2.body-2(align-center)
       user-avatar.mr-4(:user='discussion.author()', :size='40')
       span
@@ -77,7 +95,7 @@ export default
           span(v-t="'common.privacy.public'")
         span(v-show='discussion.seenByCount > 0')
           mid-dot
-          span.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }")
+          a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
         span.context-panel__fork-details(v-if='discussion.forkedEvent() && discussion.forkedEvent().discussion()')
           mid-dot
           span(v-t="'thread_context.forked_from'")
@@ -87,10 +105,7 @@ export default
     formatted-text.context-panel__description(:model="discussion" column="description")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    v-layout.my-2(align-center)
-      reaction-display.mb-2(:model="discussion" fetch)
-      action-dock(:model='discussion' :actions='dockActions')
-      action-menu.context-panel-dropdown(:model='discussion' :actions='menuActions')
+    action-dock(:model='discussion' :actions='dockActions' :menu-actions='menuActions' fetch-reactions)
   v-divider
 </template>
 <style lang="sass">

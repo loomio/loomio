@@ -1,11 +1,8 @@
 <script lang="coffee">
-import { listenForTranslations } from '@/shared/helpers/listen'
 
 export default
   props:
     poll: Object
-  mounted: ->
-    listenForTranslations(@)
 </script>
 
 <template lang="pug">

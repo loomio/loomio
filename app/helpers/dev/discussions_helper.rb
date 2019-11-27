@@ -1,6 +1,8 @@
 module Dev::DiscussionsHelper
   include Dev::PollsHelper
 
+  private
+
   def create_discussion_with_nested_comments
     group = create_group_with_members
     group.reload

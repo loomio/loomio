@@ -22,8 +22,9 @@ class StanceService
 
   def self.update(stance:, actor:, params:)
     actor.ability.authorize! :update, stance
-    stance.update params
+    HasRichText.assign_attributes_and_update_files(stance, params)
     return false unless stance.valid?
+    stance.save!
 
     EventBus.broadcast 'stance_update', stance, actor
   end

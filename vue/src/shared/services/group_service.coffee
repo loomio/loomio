@@ -11,18 +11,6 @@ export default new class GroupService
   actions: (group, vm) ->
     membership = group.membershipFor(Session.user())
 
-    open_group_wizard:
-      name: 'group_page.options.open_group_wizard'
-      icon: 'mdi-auto-fix'
-      canPerform: ->
-        Session.user().isAdminOf(group)
-      perform: ->
-        openModal
-          component: 'GroupWizard'
-          props:
-            group: group
-            showWelcome: false
-
     change_volume:
       name: 'group_page.options.email_settings'
       icon: 'mdi-email'
@@ -72,15 +60,9 @@ export default new class GroupService
         membership && Session.user().isAdminOf(group)
       perform: ->
         openModal
-          component: 'ConfirmModal'
+          component: 'ExportDataModal'
           props:
-            confirm:
-              submit: group.export
-              text:
-                title:    'group_export_modal.title'
-                helptext: 'group_export_modal.body'
-                submit:   'group_export_modal.submit'
-                flash:    'group_export_modal.flash'
+            group: group
 
     install_slack:
       name: 'install_slack.modal_title'
@@ -165,6 +147,21 @@ export default new class GroupService
                 title:    'install_microsoft.card.confirm_remove_title'
                 helptext: 'install_microsoft.card.confirm_remove_helptext'
                 flash:    'install_microsoft.card.identity_removed'
+
+    configure_sso:
+      name: 'configure_sso.title'
+      icon: 'mdi-key-variant'
+      canPerform: ->
+        AbilityService.canAdministerGroup(group)
+      perform: ->
+        openModal
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit:  => vm.$router.replace('/contact')
+              text:
+                title:    'configure_sso.title'
+                helptext: 'configure_sso.helptext'
 
     leave_group:
       name: 'group_page.options.leave_group'
