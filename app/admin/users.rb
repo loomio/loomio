@@ -118,6 +118,8 @@ ActiveAdmin.register User do
 
     render 'emails', { emails: Ahoy::Message.where(user_id: user.id).order("id DESC").limit(30) }
 
+    render 'visits', { visits: Visit.where(user_id: user.id).order("started_at DESC").limit(30) }
+
     panel("Identities") do
       table_for user.identities.each do |identity|
         column :id
