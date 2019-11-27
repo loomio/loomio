@@ -1,0 +1,22 @@
+%div{ class: 'panel' }
+  %h3 Visits
+  %div{ class: 'panel-contents' }
+    %table{ id: 'user-visits' }
+      %tr
+        %th User agent
+        %th Referrer
+        %th Landing page
+        %th Started at
+        %th Browser
+        %th OS
+        %th Device
+
+      - visits.each do |visit|
+        %tr
+          %td= visit.user_agent
+          %td= visit.referrer
+          %td= visit.landing_page
+          %td= visit.started_at
+          %td= visit.browser
+          %td= visit.os
+          %td= visit.device_type
