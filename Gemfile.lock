@@ -132,7 +132,7 @@ GEM
     benchmark-ips (2.7.2)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    browser (2.7.0)
+    browser (2.7.1)
     builder (3.2.3)
     bullet (6.0.2)
       activesupport (>= 3.0.0)
@@ -284,7 +284,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
-    icalendar (2.5.3)
+    icalendar (2.6.0)
       ice_cube (~> 0.16)
     ice_cube (0.16.3)
     image_processing (1.9.3)
@@ -578,7 +578,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk-s3
   bootsnap
-  browser (~> 2.7.0)
+  browser (~> 2.7.1)
   bullet
   byebug
   cancancan
