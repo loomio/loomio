@@ -23,7 +23,7 @@ PollSearch = Struct.new(:user) do
 
   def searchable_records_sql
     @searchable_records_sql ||= [
-      user.participated_polls,
+      # user.participated_polls,
       user.group_polls,
       user.polls
     ].map(&:to_sql).map(&:presence).compact.join(" UNION ")
