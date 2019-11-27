@@ -184,10 +184,10 @@ export default
 
   methods:
     setLinkUrl: (command) ->
-      if !@linkUrl.includes("://")
-        @linkUrl = "http://".concat(@linkUrl)
-      command({ href: @linkUrl })
-      @linkUrl = null
+      if @linkUrl
+        @linkUrl = "http://".concat(@linkUrl) unless @linkUrl.includes("://")
+        command({ href: @linkUrl })
+        @linkUrl = null
       @linkDialogIsOpen = false
       @editor.focus()
 
