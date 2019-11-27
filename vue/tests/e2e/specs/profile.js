@@ -104,11 +104,11 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_multiple_coordinators')
+    page.pause(300)
     page.ensureSidebar()
     page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.user-page__deactivate_user')
-    page.click('.confirm-modal__submit')
     page.click('.confirm-modal__submit')
     page.expectText('.auth-modal', 'Sign into Loomio')
   },

@@ -111,7 +111,7 @@ module.exports = {
 
     page.loadPath('setup_discussion_for_jennifer')
     page.ensureSidebar()
-    page.expectText('.sidebar-item', 'Dirty Dancing Shoes (2)')
+    page.expectText('.sidebar-item', 'Dirty Dancing Shoes (1)')
   },
 
   'lets_coordinators_and_thread_authors_delete_threads': (test) => {
