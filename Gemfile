@@ -54,6 +54,7 @@ gem 'rack-attack'
 gem 'js_regex'
 gem 'bootsnap', require: false
 gem 'redis-rails'
+gem 'hiredis'
 gem 'ruby-saml'
 gem 'google-cloud-translate'
 gem 'discourse-diff'
