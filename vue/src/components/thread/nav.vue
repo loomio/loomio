@@ -79,6 +79,7 @@ export default
       @goToPosition(@position)
 
     moveKnob: (event) ->
+      console.log 'ontouchmove', event
       adjust = if @knobHeight < 64
            32
         else
@@ -107,6 +108,19 @@ export default
       document.addEventListener 'mousemove', onMouseMove
       document.addEventListener 'mouseup', onMouseUp
 
+    onTouchStart: ->
+      console.log 'onTouchStart'
+      onTouchMove = @moveKnob
+
+      onTouchEnd = =>
+        console.log 'onTouchEnd'
+        document.removeEventListener('touchmove', onTouchMove);
+        document.removeEventListener('touchend', onTouchEnd);
+        @goToPosition(@position)
+
+      document.addEventListener 'touchmove', onTouchMove
+      document.addEventListener 'touchend', onTouchEnd
+
     goToPosition: (position) ->
       unless (@$route.query && @$route.query.p == position)
         @$router.replace(query: {p: position}, params: {sequence_id: null, comment_id: null}).catch (err) => {}
@@ -131,6 +145,12 @@ export default
         @childCount - position + 1
       else
         position
+
+    startHandler: ->
+      console.log 'start touch'
+
+    endHandler: ->
+      console.log 'end touch'
 
   watch:
     'discussion.newestFirst':
@@ -161,7 +181,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
       router-link.thread-nav__preset(v-for="event in presets" :key="event.id" :to="urlFor(event)" :style="{top: offsetFor(event.position)+'px'}")
         .thread-nav__preset--line
         .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
-    .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown")
+    .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart")
   router-link.thread-nav__date(:to="{query:{p: bottomPosition}, params: {sequence_id: null}}") {{approximateDate(bottomDate)}}
 </template>
 
