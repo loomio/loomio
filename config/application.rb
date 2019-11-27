@@ -138,11 +138,11 @@ module Loomio
 
     # expecting something like wss://hostname/cable, defaults to wss://canonical_host/cable
     config.action_cable.url = ENV['ACTION_CABLE_URL'] if ENV['ACTION_CABLE_URL']
-    
+
     config.action_cable.allowed_request_origins = [ENV['CANONICAL_HOST'], 'http://localhost:8080']
 
     if ENV['REDIS_CACHE_URL']
-      config.cache_store = :redis_cache_store, { url: ENV['REDIS_CACHE_URL'] }
+      config.cache_store = :redis_cache_store, { url: ENV['REDIS_CACHE_URL']+'/0' }
     end
   end
 end
