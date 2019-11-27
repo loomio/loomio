@@ -52,7 +52,7 @@ class Document < ApplicationRecord
   end
 
   def url
-    self[:url].starts_with?("http") ? self[:url] : "#{lmo_asset_host}#{self[:url]}"
+    self[:url].to_s.starts_with?("http") ? self[:url] : "#{lmo_asset_host}#{self[:url]}"
   end
 
   private
