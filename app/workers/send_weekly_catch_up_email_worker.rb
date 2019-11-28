@@ -1,5 +1,6 @@
 class SendWeeklyCatchUpEmailWorker
   include Sidekiq::Worker
+  sidekiq_options retry: false, backtrace: true
 
   def perform
     zones = User.pluck('DISTINCT time_zone').select do |zone|
