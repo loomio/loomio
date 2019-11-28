@@ -20,7 +20,7 @@ module.exports = {
     page.expectElement('.thread-previews-container')
     page.click('.thread-preview .action-menu')
     page.pause()
-    page.click('.action-dock__button--dismiss_thread')
+    page.click('.context-panel-dropdown__option--dismiss_thread')
     page.expectText('.confirm-modal h1', 'Dismiss thread')
     page.click('.confirm-modal__submit')
     page.expectFlash('Thread marked as read')
