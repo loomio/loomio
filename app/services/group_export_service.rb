@@ -70,9 +70,7 @@ class GroupExportService
         record
       end.compact!
       klass.import(new_records, validate: false, on_duplicate_key_ignore: true)
-
-      # SearchVector.index_everything!
     end
-    SearchVector.index_without_delay! Discussion.where(group_id: group_ids).pluck(:id)
+    SearchIndexWorker.new.perform(Discussion.where(group_id: group_ids).pluck(:id))
   end
 end

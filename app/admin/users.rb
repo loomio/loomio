@@ -162,7 +162,7 @@ ActiveAdmin.register User do
   member_action :merge, method: :post do
     source = User.friendly.find(params[:id])
     destination = User.find_by!(email: params[:destination_email].strip)
-    MigrateUserService.delay(queue: :low_priority).migrate!(source: source, destination: destination)
+    MigrateUserWorker.perform_async(source.id, destination.id)
     redirect_to admin_user_path(destination)
   end
 

@@ -1,4 +1,6 @@
-class SendWeeklyCatchUpEmailJob < ActiveJob::Base
+class SendWeeklyCatchUpEmailWorker
+  include Sidekiq::Worker
+
   def perform
     zones = User.pluck('DISTINCT time_zone').select do |zone|
       Time.find_zone(zone) &&
@@ -7,7 +9,7 @@ class SendWeeklyCatchUpEmailJob < ActiveJob::Base
     end
 
     User.email_catch_up.where(time_zone: zones).find_each do |user|
-      UserMailer.delay(queue: :catch_up_emails).catch_up(user, 1.week.ago, 'weekly')
+      UserMailer.delay(queue: :catch_up_emails).catch_up(user.id, nil, 'weekly')
     end
   end
 end

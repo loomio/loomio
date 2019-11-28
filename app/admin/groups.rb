@@ -251,16 +251,13 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   end
 
   member_action :delete_group, :method => :post do
-    group = Group.friendly.find(params[:id])
-    group.delay(queue: 'low_priority').destroy!
+    DestroyGroupWorker.perform_async(params[:id])
     redirect_to [:admin, :groups]
   end
 
   member_action :export_group, method: :post do
     group = Group.friendly.find(params[:id])
-    GroupExportJob.perform_later(group_ids: group.all_groups.pluck(:id),
-                                 group_name: group.name,
-                                 actor: current_user)
+    GroupExportWorker.perform_async(group.all_groups.pluck(:id), group.name, current_user.id)
     redirect_to admin_group_path(group)
   end
 

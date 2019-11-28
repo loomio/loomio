@@ -7,7 +7,7 @@ describe GroupMailer do
       @admin = @group.admins.first
       @membership_request = create(:membership_request, group: @group, name: 'bob jones', email: "bobby@jones.org")
       @event = Event.create(kind: 'membership_requested', eventable: @membership_request)
-      @mail = GroupMailer.membership_requested(@admin, @event)
+      @mail = GroupMailer.membership_requested(@admin.id, @event.id)
     end
 
     it 'renders the subject' do

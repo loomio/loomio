@@ -54,20 +54,6 @@ class SearchVector < ApplicationRecord
      END"
   end
 
-  class << self
-    def index!(discussion_ids)
-      Array(discussion_ids).map(&:to_i).uniq.tap do |ids|
-        existing = where(discussion_id: ids)
-        existing.map(&:update_search_vector)
-        (ids - existing.map(&:discussion_id)).each { |discussion_id| new(discussion_id: discussion_id).update_search_vector }
-      end
-    end
-    handle_asynchronously :index!, queue: :low_priority
-  end
-
-  def self.index_everything!
-    index_without_delay! Discussion.pluck(:id)
-  end
 
   def update_search_vector
     tap { |search_vector| build_search_vector && save }

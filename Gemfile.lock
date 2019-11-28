@@ -159,18 +159,13 @@ GEM
     coffee-script-source (1.12.2)
     colored (1.2)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.5)
     css_parser (1.7.0)
       addressable
-    daemons (1.3.1)
     database_cleaner (1.7.0)
-    delayed_job (4.1.8)
-      activesupport (>= 3.0, < 6.1)
-    delayed_job_active_record (4.1.4)
-      activerecord (>= 3.0, < 6.1)
-      delayed_job (>= 3.0, < 5)
     derailed (0.1.0)
       derailed_benchmarks
     derailed_benchmarks (0.0.0)
@@ -272,6 +267,7 @@ GEM
     hashdiff (1.0.0)
     heroku-deflater (0.6.3)
       rack (>= 1.4.5)
+    hiredis (0.6.3)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -383,6 +379,8 @@ GEM
     rack (2.0.7)
     rack-attack (6.2.1)
       rack (>= 1.0, < 3)
+    rack-protection (2.0.7)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rack-timeout (0.5.2)
@@ -511,6 +509,11 @@ GEM
       activerecord (>= 3.0)
       activesupport (>= 3.0)
     sexp_processor (4.12.0)
+    sidekiq (6.0.3)
+      connection_pool (>= 2.2.2)
+      rack (>= 2.0.0)
+      rack-protection (>= 2.0.0)
+      redis (>= 4.1.0)
     signet (0.11.0)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -584,10 +587,7 @@ DEPENDENCIES
   cancancan
   coffee-rails
   custom_counter_cache!
-  daemons
   database_cleaner
-  delayed_job (~> 4.1.8)
-  delayed_job_active_record (~> 4.1.4)
   derailed
   devise (~> 4.7.1)
   devise-i18n
@@ -607,6 +607,7 @@ DEPENDENCIES
   haml-rails (~> 2.0.1)
   has_secure_token
   heroku-deflater
+  hiredis
   http_accept_language
   httparty (~> 0.17.1)
   icalendar
@@ -647,6 +648,7 @@ DEPENDENCIES
   sass-rails
   sentry-raven
   sequenced (~> 3.1.1)
+  sidekiq
   simplecov
   spring
   spring-commands-rspec

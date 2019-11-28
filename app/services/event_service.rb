@@ -36,7 +36,7 @@ class EventService
 
     actor.ability.authorize! :move_comments, source
     actor.ability.authorize! :move_comments, discussion
-    Delayed::Job.enqueue MoveCommentsJob.new(ids, source, discussion)
+    MoveCommentsWorker.perform_async(ids, source.id, discussion.id)
   end
 
   def self.rearrange_events(discussion)

@@ -58,6 +58,7 @@ before_script:
   - if [ "$TASK" = "vue" ];     then export USE_VUE=1; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
   - if [ "$TASK" = "vue" ] || [ "$TASK" = "e2e" ]; then bundle exec rails server -b 0.0.0.0 > /dev/null & fi
+  # - if [ "$TASK" = "vue" ] || [ "$TASK" = "e2e" ]; then bundle exec sidekiq > /dev/null & fi
   - if [ "$TASK" = "e2e" ];     then bundle exec rake client:build; fi
   - if [ "$TASK" = "vue" ];     then cd vue && npm run build && cd ..; fi
   - if [ "$TASK" = "vue" ] || [ "$TASK" = "e2e" ]; then wget http://localhost:3000/; fi
