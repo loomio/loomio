@@ -1,7 +1,7 @@
 ---
 :queues:
   - login_emails
-  - notification_email
+  - notification_emails
   - mailers
   - default
   - low_priority
