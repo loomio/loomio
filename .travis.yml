@@ -7,9 +7,6 @@ sudo: required
 
 group: edge
 
-services:
-  - redis-server
-
 cache:
   bundler: true
   directories:
@@ -37,7 +34,6 @@ env:
     - MIN_THREADS=3
     - MAX_THREADS=3
     - SCREENSHOTS_PATH=/`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
-    - REDIS_QUEUE_URL=redis://localhost:6379
   matrix:
     - TASK=e2e
     - TASK=rspec
