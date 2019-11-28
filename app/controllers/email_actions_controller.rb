@@ -14,7 +14,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   def mark_summary_email_as_read
-    DiscussionService.delay(queue: :low_priority).mark_summary_email_as_read(user, params)
+    DiscussionService.delay(queue: :low_priority).mark_summary_email_as_read(user.id, params)
 
     respond_to do |format|
       format.html {
