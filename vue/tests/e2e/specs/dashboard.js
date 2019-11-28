@@ -15,9 +15,12 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_with_one_thread')
+    page.ensureSidebar()
+    page.click('.sidebar__list-item-button--recent')
     page.expectElement('.thread-previews-container')
     page.click('.thread-preview .action-menu')
-    page.click('.action-dock__button--dismiss_thread')
+    page.pause()
+    page.click('.context-panel-dropdown__option--dismiss_thread')
     page.expectText('.confirm-modal h1', 'Dismiss thread')
     page.click('.confirm-modal__submit')
     page.expectFlash('Thread marked as read')

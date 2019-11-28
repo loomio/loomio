@@ -111,7 +111,7 @@ module.exports = {
 
     page.loadPath('setup_discussion_for_jennifer')
     page.ensureSidebar()
-    page.expectText('.sidebar-item', 'Dirty Dancing Shoes (2)')
+    page.expectText('.sidebar-item', 'Dirty Dancing Shoes (1)')
   },
 
   'lets_coordinators_and_thread_authors_delete_threads': (test) => {
@@ -125,20 +125,6 @@ module.exports = {
     page.expectFlash('Thread deleted')
     page.expectText('.group-page__name', 'Dirty Dancing Shoes')
     page.expectNoText('.discussions-panel', 'What star sign are you?')
-  },
-
-  'can_pin_from_the_discussion_page': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.click('.action-menu')
-    page.click('.context-panel-dropdown__option--pin_thread')
-
-    page.expectText('.confirm-modal', 'Pin thread')
-    page.click('.confirm-modal__submit')
-
-    page.expectFlash('Thread pinned')
-    page.expectElement('.context-panel__heading-pin')
   },
 
   'allows_logged_in_users_to_join_a_group_and_comment': (test) => {
@@ -260,8 +246,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_with_versions')
-    page.click('.action-menu')
-    page.click('.context-panel-dropdown__option--show_history')
+    page.click('.action-dock__button--show_history')
     page.expectText('.revision-history-content del', 'star')
     page.expectText('.revision-history-content ins', 'moon')
   },

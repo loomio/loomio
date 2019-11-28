@@ -126,6 +126,7 @@ module.exports = {
     page.click('.poll-score-vote-form__score-slider .v-slider')
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
+    page.pause()
 
     page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-choice--score', 'An option')
@@ -144,7 +145,6 @@ module.exports = {
     page.click('.poll-meeting-time-field__datepicker-container input')
     page.click('.poll-meeting-form__option-button')
     page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
     page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -243,7 +243,7 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
     page.click('.show-results-button')
-    page.expectText('.poll-common-action-panel__anonymous-message', 'Votes will be anonymous until this poll closes')
+    page.expectText('.poll-common-action-panel__anonymous-message', 'Votes will be anonymous')
   },
 
   'can_send_a_calendar_invite': (test) => {
@@ -255,10 +255,10 @@ module.exports = {
     page.fillIn('.poll-common-outcome-form__statement .ProseMirror', 'Here is a statement')
     page.fillIn('.poll-common-calendar-invite__summary input', 'This is a meeting title')
     page.fillIn('.poll-common-calendar-invite__location input', '123 Any St, USA')
-    page.fillIn('.poll-common-calendar-invite__description textarea', 'Here is a meeting agenda')
 
     page.click('.poll-common-outcome-form__submit')
     page.expectFlash('Outcome created')
-    page.expectText('.poll-common-outcome-panel', 'Here is a statement')
+    page.click('.dismiss-modal-button')
+    page.expectText('.poll-common-outcome-panel .lmo-markdown-wrapper', 'Here is a statement')
   },
 }
