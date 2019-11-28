@@ -85,7 +85,7 @@ class UserMailer < BaseMailer
                      locale: @user.locale
   end
 
-  def user_reactivated(recipient_id)
+  def user_reactivated(recipient_id, event_id)
     @user = User.find_by!(id: recipient_id)
 
     @token = @user.login_tokens.create(is_reactivation: true)
