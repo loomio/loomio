@@ -142,7 +142,7 @@ module Loomio
     config.action_cable.allowed_request_origins = [ENV['CANONICAL_HOST'], 'http://localhost:8080']
 
     if ENV['REDIS_CACHE_URL']
-      config.cache_store = :redis_cache_store, { url: ENV['REDIS_CACHE_URL']+'/0' }
+      config.cache_store = :redis_cache_store, { url: ENV['REDIS_CACHE_URL'] }
     end
   end
 end

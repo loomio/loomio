@@ -1,7 +1,7 @@
 <% if (ENV['REDIS_QUEUE_URL'] || ENV['REDIS_URL']) %>
 default: &default
   adapter: redis
-  url: <%= (ENV['REDIS_QUEUE_URL'] || ENV['REDIS_URL'])+"/0" %>
+  url: <%= (ENV['REDIS_QUEUE_URL'] || ENV['REDIS_URL']) %>
   channel_prefix: loomio
 <% else %>
 default: &default
