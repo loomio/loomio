@@ -25,13 +25,13 @@ namespace :loomio do
     PollService.delay.publish_closing_soon
 
     if ENV['EMAIL_CATCH_UP_WEEKLY']
-      SendWeeklyCatchUpEmailJob.perform_later
+      SendWeeklyCatchUpEmailWorker.perform_async
     else
-      SendDailyCatchUpEmailJob.perform_later
+      SendDailyCatchUpEmailWorker.perform_async
     end
 
     AnnouncementService.delay.resend_pending_invitations
-    LocateUsersAndGroupsJob.perform_later
+    LocateUsersAndGroupsWorker.perform_async
     if (Time.now.hour == 0)
       UsageReportService.send
       ExamplePollService.delay.cleanup
