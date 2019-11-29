@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_033332) do
+ActiveRecord::Schema.define(version: 2019_11_29_023347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -135,28 +135,6 @@ ActiveRecord::Schema.define(version: 2019_11_27_033332) do
     t.datetime "cover_photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "delayed_jobs", id: :serial, force: :cascade do |t|
-    t.integer "priority", default: 0
-    t.integer "attempts", default: 0
-    t.text "handler"
-    t.text "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string "locked_by", limit: 255
-    t.string "queue", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["failed_at"], name: "delayed_jobs_failed_at_idx"
-    t.index ["failed_at"], name: "index_delayed_jobs_on_failed_at", where: "(failed_at IS NULL)"
-    t.index ["locked_at"], name: "index_delayed_jobs_on_locked_at", where: "(locked_at IS NULL)"
-    t.index ["locked_by"], name: "index_delayed_jobs_on_locked_by"
-    t.index ["priority"], name: "index_delayed_jobs_on_priority"
-    t.index ["queue"], name: "index_delayed_jobs_on_queue"
-    t.index ["run_at", "locked_at", "locked_by", "failed_at"], name: "index_delayed_jobs_on_ready"
-    t.index ["run_at"], name: "index_delayed_jobs_on_run_at"
   end
 
   create_table "discussion_readers", id: :serial, force: :cascade do |t|
