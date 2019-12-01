@@ -41,9 +41,11 @@ module HasRichText
       i
     end
 
-    if self[:group_id] && group
-      files.update_all(group_id: self[:group_id])
-      image_files.update_all(group_id: self[:group_id])
+    # TODO: this does not work for either comment or group models, as they dont have group_id
+    if self[:group_id] || group
+      group_id = self[:group_id] || group.id
+      files.update_all(group_id: group_id)
+      image_files.update_all(group_id: group_id)
     end
   end
 
