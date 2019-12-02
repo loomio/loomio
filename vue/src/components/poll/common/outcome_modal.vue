@@ -46,7 +46,7 @@ export default
         @clone.customFields.should_send_calendar_invite = @clone.calendarInvite
         @clone.customFields.event_description = @clone.statement if @datesAsOptions()
       successCallback: (data) =>
-        eventData = find(data.events, (event) => event.kind == eventKind(@clone)) || {}
+        eventData = find(data.events, (event) => event.kind == 'outcome_created') || {}
         event = Records.events.find(eventData.id)
         @closeModal()
         @openAnnouncementModal(Records.announcements.buildFromModel(event))
