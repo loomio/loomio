@@ -12,7 +12,7 @@
     "@sentry/browser": "^5.9.1",
     "@sentry/integrations": "^5.7.1",
     "actioncable": "^5.2.2",
-    "activestorage": "^5.2.2",
+    "activestorage": "^5.2.4",
     "chromedriver": "^78.0.1",
     "core-js": "^2.6.10",
     "date-fns": "2.8.1",
