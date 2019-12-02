@@ -41,10 +41,11 @@ module HasRichText
       i
     end
 
-    if self[:group_id] && group
-      files.update_all(group_id: self[:group_id])
-      image_files.update_all(group_id: self[:group_id])
+    if self.respond_to?(:group) && group
+      files.update_all(group_id: group.id)
+      image_files.update_all(group_id: group.id)
     end
+
   end
 
   def attachment_icon(name)
