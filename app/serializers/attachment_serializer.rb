@@ -6,7 +6,6 @@ class AttachmentSerializer < ActiveModel::Serializer
   has_one :author, serializer: UserSerializer, root: :users
 
   def author
-    # TODO: if object.record is a group, there is no author
     object.record.author
   end
 
