@@ -41,8 +41,7 @@ module HasRichText
       i
     end
 
-    # TODO: this does not work for either comment or group models, as they dont have group_id
-    if group
+    if self.respond_to?(:group) && group
       files.update_all(group_id: group.id)
       image_files.update_all(group_id: group.id)
     end
