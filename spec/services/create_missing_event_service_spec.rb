@@ -14,12 +14,13 @@ describe CreateMissingEventService do
 
   it "creates missing new_discussion events" do
     expect(Event.where(kind: "new_discussion", eventable: discussion).exists?).to be false
+    CreateMissingEventService.new_discussion(discussion)
     event = discussion.created_event
     expect(event.eventable).to eq discussion
     # expect(event.created_at).to eq discussion.created_at
     expect(event.user).to eq discussion.author
     expect(event.parent_id).to be nil
-    expect(event.depth).to be 0
+    expect(event.depth).to eq 0
   end
 
   it "fixes new_comment event depth and parent values" do
@@ -33,8 +34,8 @@ describe CreateMissingEventService do
                                   sequence_id: 1,
                                   created_at: comment.created_at)]
     comment_event = Event.find res.ids.first.to_i
-    expect(comment_event.parent_id).to be nil
-    expect(comment_event.depth).to be 0
+    expect(comment_event.parent_id).to eq nil
+    expect(comment_event.depth).to eq 0
 
     res = Event.import [Event.new(kind: 'new_comment',
                                   discussion_id: reply_comment.discussion.id,
@@ -47,10 +48,10 @@ describe CreateMissingEventService do
                                   created_at: reply_comment.created_at)]
 
     reply_comment_event = Event.find res.ids.first.to_i
-    expect(reply_comment_event.parent_id).to be nil
-    expect(reply_comment_event.depth).to be 0
+    expect(reply_comment_event.parent_id).to eq nil
+    expect(reply_comment_event.depth).to eq 0
 
-    new_discussion_event = discussion.created_event
+    new_discussion_event = CreateMissingEventService.new_discussion(discussion)
 
     comment_event.reload
     reply_comment_event.reload
@@ -61,16 +62,17 @@ describe CreateMissingEventService do
     expect(reply_comment_event.depth).to eq 2
 
     # it should update the discussion ranges
-    expect(RangeSet.includes? discussion.ranges, comment_event.sequence_id).to be true
-    expect(RangeSet.includes? discussion.ranges, reply_comment_event.sequence_id).to be true
+    expect(RangeSet.includes? discussion.ranges, comment_event.sequence_id).to eq true
+    expect(RangeSet.includes? discussion.ranges, reply_comment_event.sequence_id).to eq true
   end
 
   it "creates missing poll, stance, outcome created events" do
-    expect(Event.where(kind: "poll_created", eventable: poll).exists?).to be false
-    expect(Event.where(kind: "stance_created", eventable: stance).exists?).to be false
-    expect(Event.where(kind: "outcome_created", eventable: outcome).exists?).to be false
+    expect(Event.where(kind: "poll_created", eventable: poll).exists?).to eq false
+    expect(Event.where(kind: "stance_created", eventable: stance).exists?).to eq false
+    expect(Event.where(kind: "outcome_created", eventable: outcome).exists?).to eq false
 
-    discussion.created_event
+    new_discussion_event = CreateMissingEventService.new_discussion(discussion)
+    new_poll_event = CreateMissingEventService.poll_created(poll)
 
     poll_event = poll.created_event
 
@@ -78,19 +80,19 @@ describe CreateMissingEventService do
     expect(poll_event.depth).to eq 1
     expect(poll_event.sequence_id).to eq 1
 
-    stance_event = stance.created_event
+    stance_event = CreateMissingEventService.stance_created(stance)
     expect(stance_event.parent_id).to eq poll_event.id
     expect(stance_event.depth).to eq 2
     expect(stance_event.discussion_id).to eq discussion.id
     expect(stance_event.sequence_id).to eq 2
-    expect(stance_event.position).to be 1
+    # expect(stance_event.position).to eq 1
 
-    outcome_event = outcome.created_event
+    outcome_event = CreateMissingEventService.outcome_created(outcome)
     expect(outcome_event.parent_id).to eq poll_event.id
     expect(outcome_event.depth).to eq 2
     expect(outcome_event.discussion_id).to eq discussion.id
     expect(outcome_event.sequence_id).to eq 3
-    expect(outcome_event.position).to eq 2
+    # expect(outcome_event.position).to eq 2
     # create closed poll, stance, outcome
     # ensure created events are created for them
   end
