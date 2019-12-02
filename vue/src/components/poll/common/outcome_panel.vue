@@ -4,13 +4,17 @@ import parseISO from 'date-fns/parseISO'
 export default
   props:
     poll: Object
-
+  data: ->
+    outcome: @poll.outcome()
   methods:
     parseISO: parseISO
   computed:
-
-    outcome: -> @poll.outcome()
     actions: -> OutcomeService.actions(@outcome, @)
+  created: ->
+    @watchRecords
+      collections: ['outcome']
+      query: (records) =>
+        @outcome = @poll.outcome()
 
 </script>
 
