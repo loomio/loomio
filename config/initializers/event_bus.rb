@@ -40,7 +40,7 @@ EventBus.configure do |config|
                 'comment_create',
                 'comment_update',
                 'poll_create',
-                'poll_update') { |model| SearchVector.index! model.discussion_id }
+                'poll_update') { |model| SearchIndexWorker.perform_async(Array(model.discussion_id)) }
 
   # send memos to client side after comment change
   config.listen('comment_destroy')  { |comment|  Memos::CommentDestroyed.publish!(comment) }

@@ -10,15 +10,7 @@ class UserService
   end
 
   def self.destroy(user:)
-    user.deactivate!
-    user.identities.delete_all
-    zombie = User.create(name: I18n.t(:'user.deleted_user'),
-                         email: "deleted-user-#{SecureRandom.uuid}@example.com")
-    zombie.update(deactivated_at: Time.now)
-    MigrateUserService.migrate!(source: user, destination: zombie)
-    user.reload.destroy
-    EventBus.broadcast 'user_destroy', user, zombie
-    zombie
+    DestroyUserWorker.perform_async(user.id)
   end
 
   def self.verify(user: )

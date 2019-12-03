@@ -8,7 +8,13 @@ def dev_routes_for(namespace)
   end
 end
 
+require 'sidekiq/web'
+
 Loomio::Application.routes.draw do
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   if !Rails.env.production?
     namespace :dev do
       dev_routes_for(:discussions)

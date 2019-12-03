@@ -99,7 +99,7 @@ module Dev::Scenarios::Legacy
   end
 
   def setup_accounts_merged_email
-    UserMailer.accounts_merged(patrick).deliver_now
+    UserMailer.accounts_merged(patrick.id).deliver_now
     last_email
   end
 

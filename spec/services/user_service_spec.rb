@@ -15,14 +15,15 @@ describe UserService do
     end
 
     it "migrates all their records to a zombie" do
-      zombie = UserService.destroy(user: @user)
+      UserService.destroy(user: @user)
+      zombie = User.last
       expect(zombie.email).to match /deleted-user-.+@example.com/
       expect(zombie.archived_memberships.count).to eq 1
       expect(zombie.authored_discussions.count).to eq 1
     end
 
     it "deletes the user" do
-      zombie = UserService.destroy(user: @user)
+      UserService.destroy(user: @user)
       expect { @user.reload }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end

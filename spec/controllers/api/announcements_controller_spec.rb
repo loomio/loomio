@@ -129,7 +129,7 @@ describe API::AnnouncementsController do
       sign_in user
       get :history, params: {group_id: group.id}
       expect(response.status).to eq 200
-      puts response.body
+      # puts response.body
       # expect(JSON.parse response.body)
 
     end
