@@ -250,7 +250,7 @@ export default new class ThreadService
           text:
             title: 'pin_thread_modal.title'
             flash: 'discussion.pin.pinned'
-            fragment: 'pin_thread'
+            helptext: 'pin_thread_modal.helptext'
         )
     else
       thread.savePin().then =>
