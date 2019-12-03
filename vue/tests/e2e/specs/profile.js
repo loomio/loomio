@@ -32,14 +32,14 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_profile_with_group_visible_to_members')
-    page.expectText('.user-page__profile', 'Secret Dirty Dancing Shoes')
+    page.expectText('.user-page__groups', 'Secret Dirty Dancing Shoes')
   },
 
   'does_not_display_secret_groups_to_visitors': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_restricted_profile')
-    page.expectNoText('.user-page__profile', 'Secret Dirty Dancing Shoes')
+    page.expectNoText('.user-page__groups', 'Secret Dirty Dancing Shoes')
   },
 
   'allows_you_to_contact_other_users': (test) => {
