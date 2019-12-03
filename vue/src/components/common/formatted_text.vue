@@ -4,17 +4,15 @@ export default
     model:
       type: Object
       required: true
-
     column:
       type: String
       required: true
-
   computed:
     isMd: -> @format == 'md'
     isHtml: -> @format == 'html'
     format: -> @model[@column+"Format"]
     text: -> @model[@column]
-    hasTranslation: -> @model.translation[@column]
+    hasTranslation: -> @model.translation[@column] if @model.translation
     cookedText: ->
       return @model[@column] unless @model.mentionedUsernames
       cooked = @model[@column]
