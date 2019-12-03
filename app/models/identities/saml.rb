@@ -40,6 +40,7 @@ class Identities::Saml < Identities::Base
       settings.issuer                         = saml_metadata_url
       settings.assertion_consumer_service_url = saml_oauth_url
       settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
+      settings.soft = false
 
       # # When disabled, saml validation errors will raise an exception.
       # settings.soft = true
