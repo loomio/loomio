@@ -176,8 +176,8 @@ export default
       @model["#{@field}Format"]
 
     inlineBubbleMenu: ->
-      browser = detect();
-      browser.name == 'firefox' || detectIt.primaryInput == 'touch'
+      browser = detect()
+      browser.name == 'firefox' || browser.name == 'safari' || detectIt.primaryInput == 'touch'
 
   created: ->
     @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
