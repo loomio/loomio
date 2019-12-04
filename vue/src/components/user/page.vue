@@ -76,7 +76,7 @@ v-content.user-page__profile
             space
             span(v-t="'common.groups'")
           v-list(dense)
-            v-list-item.user-page__group(v-for='group in groups' :key='group.id' :href='urlFor(group)')
+            v-list-item.user-page__group(v-for='group in groups' :key='group.id' :to='urlFor(group)')
               v-list-item-avatar
                 v-avatar.mr-2(tile size="48")
                   img(:src='group.logoUrl()')
