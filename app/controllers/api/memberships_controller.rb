@@ -22,7 +22,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def destroy_response
-    render json: Array(resource.group), each_serializer: GroupSerializer, root: :groups
+    render json: Array(resource.group), each_serializer: GroupSerializer, root: :groups, scope: {}
   end
 
   def for_user
