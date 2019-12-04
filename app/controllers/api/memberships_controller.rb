@@ -22,7 +22,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def destroy_response
-    render json: Array(resource.group), each_serializer: Simple::GroupSerializer, root: :groups
+    render json: Array(resource.group), each_serializer: GroupSerializer, root: :groups
   end
 
   def for_user
@@ -32,7 +32,7 @@ class API::MembershipsController < API::RestfulController
     instantiate_collection do |collection|
       Membership.joins(:group).where(group_id: same_group_ids + public_group_ids, user_id: @user.id).active.formal.order('groups.full_name')
     end
-    respond_with_collection serializer: Simple::MembershipSerializer
+    respond_with_collection serializer: MembershipSerializer
   end
 
   def join_group

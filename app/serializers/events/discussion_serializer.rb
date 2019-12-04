@@ -1,5 +1,5 @@
 class Events::DiscussionSerializer < Events::BaseSerializer
-  has_one :source_group, serializer: Simple::GroupSerializer, root: :groups
+  has_one :source_group, serializer: GroupSerializer, root: :groups
 
   def source_group
     Group.find(object.custom_fields['source_group_id'])
