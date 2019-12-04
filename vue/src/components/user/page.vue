@@ -48,15 +48,15 @@ export default
 </script>
 
 <template lang="pug">
-v-content
+v-content.user-page__profile
   v-container.user-page.max-width-800.mt-4
     loading(v-if='isEmptyUser')
-    div(v-else)
-      v-card.user-page__profile
+    div(v-else).user-page__content
+      v-card
         v-card-title
           v-layout.align-center.justify-center
             h1.headline {{user.name}}
-        v-card-text.user-page__content
+        v-card-text
           v-layout.user-page__info.mb-5.align-center.justify-center(column)
             user-avatar.mb-5(v-if="user.hasProfilePhoto()" :user='user', size='featured' :no-link="true")
             .lmo-hint-text @{{user.username}}
