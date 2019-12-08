@@ -12,6 +12,7 @@ it:
       dismiss_this_card: Elimina questa sezione
   plan_names:
     free: Free
+    trial: Prova
   current_plan_button:
     upgrade: Aggiorna
   loomio_tags:
@@ -1007,6 +1008,8 @@ it:
   pin_thread_modal:
     title: Fissa in alto la discussione
     pin_thread: Fissa in alto la discussione
+  thread_arrangement_form:
+    nested_once: Nidificato
   delete_thread_form:
     aria_label: 'Cancella discussione'
     title: Cancella discussione
