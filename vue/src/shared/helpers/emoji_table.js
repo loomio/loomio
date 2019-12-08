@@ -519,6 +519,10 @@ export default {
     'eggplant': '🍆',
     'tomato': '🍅',
     'corn': '🌽',
+    'arrow_right': '➡️',
+    'arrow_left': '⬅️',
+    'arrow_up': '⬆️',
+    'arrow_down': '⬇️'
   },
   'places': {
     'house': '🏠',
