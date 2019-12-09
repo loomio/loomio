@@ -24,14 +24,12 @@ export default
     uploading: false
     progress: 0
 
-  mounted: ->
+  created: ->
     @group = Records.groups.build
       name: @$route.params.name
       parentId: @parentId
       customFields:
         pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
-
-    @suggestHandle()
 
     @submit = submitForm @, @group,
       prepareFn: =>
@@ -52,6 +50,10 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
+
+  mounted: ->
+    @suggestHandle()
+
   methods:
     suggestHandle: ->
       # if group is new, suggest handle whenever name changes
