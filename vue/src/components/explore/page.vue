@@ -6,6 +6,7 @@ import UrlFor    from '@/mixins/url_for'
 import _truncate from 'lodash/truncate'
 import _map      from 'lodash/map'
 import _sortBy   from 'lodash/sortBy'
+import marked    from 'marked'
 
 import { debounce } from 'lodash'
 
@@ -45,7 +46,12 @@ export default
       { 'background-image': "url(#{group.coverUrl('small')})" }
 
     groupDescription: (group) ->
-      _truncate group.description, {length: 100} if group.description
+      description = group.description || ''
+      if group.descriptionFormat == 'md'
+        description = marked(description)
+      parser = new DOMParser()
+      doc = parser.parseFromString(description, 'text/html')
+      _truncate doc.body.textContent, {length: 100}
   computed:
     showMessage: ->
       !@searching &&
