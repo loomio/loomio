@@ -17,6 +17,10 @@ en:
       email: not a valid email address
       spoofed_media_type: The contents of that file don't match its filename
 
+  group:
+    error:
+      handle_must_begin_with_parent_handle: "Must begin with %{parent_handle}-"
+
   user:
     deleted_user: "Deleted User"
     placeholder_name: "Invited user (%{hostname})"

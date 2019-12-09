@@ -19,7 +19,7 @@ export default class LmoUrlService
     "/".concat(route).replace('//', '/')
 
   @group: (g, params = {}, options = {}) ->
-    if g.handle? && g.isParent() && !options.noStub
+    if g.handle? && !options.noStub
       @buildModelRoute('', g.handle, '', params, options)
     else
       @buildModelRoute('g', g.key, g.fullName, params, options)

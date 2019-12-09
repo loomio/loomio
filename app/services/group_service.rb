@@ -75,4 +75,20 @@ module GroupService
       source.destroy
     end
   end
+
+  def self.suggest_handle(name:, parent_handle:)
+    attempt = 0
+    while(Group.where(handle: generate_handle(name, parent_handle, attempt)).exists?) do
+      attempt += 1
+    end
+    generate_handle(name, parent_handle, attempt)
+  end
+
+  private
+
+  def self.generate_handle(name, parent_handle, attempt)
+    [parent_handle,
+     name,
+     (attempt == 0) ? nil : attempt].compact.map{|t| t.to_s.strip.parameterize}.join('-')
+  end
 end

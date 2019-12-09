@@ -121,7 +121,6 @@ export default class BaseModel
       from: name
       with: @constructor.singular + 'Id'
       of: 'id'
-      dynamicView: true
 
     @[name] = =>
       if userArgs.orderBy

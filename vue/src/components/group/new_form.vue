@@ -6,6 +6,7 @@ import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import GroupModalMixin from '@/mixins/group_modal'
+import { isEmpty } from 'lodash'
 
 export default
   mixins: [GroupModalMixin]
@@ -23,12 +24,14 @@ export default
     uploading: false
     progress: 0
 
-  created: ->
+  mounted: ->
     @group = Records.groups.build
       name: @$route.params.name
       parentId: @parentId
       customFields:
         pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
+
+    @suggestHandle()
 
     @submit = submitForm @, @group,
       prepareFn: =>
@@ -50,6 +53,17 @@ export default
           @close()
           @$router.push("/g/#{groupKey}")
   methods:
+    suggestHandle: ->
+      # if group is new, suggest handle whenever name changes
+      # if group is old, suggest handle only if handle is empty
+      if @group.isNew() or isEmpty(@group.handle)
+        parentHandle = if @group.parent()
+          @group.parent().handle
+        else
+          null
+        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
+          @group.handle = data.handle
+
     privacyStringFor: (privacy) ->
       @$t groupPrivacy(@group, privacy),
         parent: @group.parentName()
@@ -91,7 +105,7 @@ export default
 v-card.group-form
   v-overlay(:value="uploading")
     v-progress-circular(size="64" :value="progress")
-  submit-overlay(:value='group.processing')
+  //- submit-overlay(:value='group.processing')
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
@@ -99,8 +113,11 @@ v-card.group-form
         h1.headline(v-if='!group.parentId', v-t="'group_form.start_organization_heading'")
       dismiss-modal-button(:close='close')
   v-card-text
-    v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
+    v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)" @input="suggestHandle()")
     validation-errors(:subject="group", field="name")
+
+    v-text-field.group-form__handle#group-handle(v-model='group.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
+    validation-errors(:subject="group", field="handle")
 
     .group-form__section.group-form__privacy
       v-radio-group(v-model='group.groupPrivacy')
