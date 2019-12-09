@@ -26,6 +26,8 @@ en:
     free_trial: Free trial. {{days}} days remaining.
     trial_expired: Your trial has expired. Upgrade to continue using Loomio.
     tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
+    was_gift_trial: "Your group has been using Loomio for free since {{createdDate}}. Please upgrade to continue using Loomio. {{days}} days remaining. <a href='https://www.loomio.org'>Click here for more info.</a>"
+    was_gift_expired: "Your free Loomio group has now expired. Please upgrade to continue using Loomio. <a href='https://www.loomio.org'>Click here for more info.</a>"
 
   loomio_tags:
     all_tags: All tags
