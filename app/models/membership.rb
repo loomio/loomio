@@ -65,6 +65,14 @@ class Membership < ApplicationRecord
 
   before_create :set_volume
 
+  def saml_authenticated?
+    if group.parent_or_self.saml_provider
+      Time.now + group.parent_or_self.saml_provider.authentication_duration.hours
+    else
+      true
+    end
+  end
+
   def message_channel
     "membership-#{token}"
   end

@@ -49,6 +49,8 @@ class FormalGroup < Group
   has_many :public_comment_documents,    through: :public_comments,    source: :documents
   has_many :tags, foreign_key: :group_id
 
+  has_one :saml_provider, required: false
+
   belongs_to :cohort
   belongs_to :default_group_cover
   belongs_to :subscription

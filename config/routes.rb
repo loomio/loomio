@@ -324,6 +324,15 @@ Loomio::Application.routes.draw do
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
 
 
+  resources :saml_providers, only: [] do
+    member do
+      get :metadata
+      get :auth
+      post :callback
+      get :logout
+    end
+  end
+
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do
       get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
