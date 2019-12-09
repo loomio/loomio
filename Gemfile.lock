@@ -280,7 +280,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
-    icalendar (2.6.0)
+    icalendar (2.6.1)
       ice_cube (~> 0.16)
     ice_cube (0.16.3)
     image_processing (1.9.3)
