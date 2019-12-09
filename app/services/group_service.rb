@@ -40,6 +40,7 @@ module GroupService
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group
+    group.update(handle: "#{parent.handle}-#{group.handle}") if group.handle?
     group.update(parent: parent, subscription_id: nil)
     EventBus.broadcast('group_move', group, parent, actor)
   end
