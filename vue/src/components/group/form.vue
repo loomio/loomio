@@ -144,7 +144,7 @@ v-card.group-form
         v-img.group_form__file-select(:src="group.coverUrl()" width="100%"  @click="selectCoverPhoto()")
         group-avatar.group_form__file-select.group_form__logo.white(v-if="!group.parentId" :group="group" size="72px" :on-click="selectLogo" :elevation="4")
         v-text-field.group-form__name#group-name.mt-4(v-model='clone.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
-        v-text-field.group-form__handle#group-handle(v-model='group.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
+        v-text-field.group-form__handle#group-handle(v-model='clone.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
         validation-errors(:subject="group", field="handle")
         v-spacer
 
