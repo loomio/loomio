@@ -14,7 +14,7 @@
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "chromedriver": "^78.0.1",
-    "core-js": "^2.6.10",
+    "core-js": "^2.6.11",
     "date-fns": "2.8.1",
     "date-fns-tz": "1.0.8",
     "deepmerge": "^4.2.2",
