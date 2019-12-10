@@ -202,7 +202,7 @@ export default class DiscussionModel extends BaseModel
 
   move: =>
     @processing = true
-    @remote.patchMember(@keyOrId(), 'move', { group_id: @groupId }).finally => @processing = false
+    @remote.patchMember(@keyOrId(), 'move', { group_id: @groupId })
 
   savePin: =>
     @processing = true
