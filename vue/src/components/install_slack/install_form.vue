@@ -3,9 +3,9 @@ import Session       from '@/shared/services/session'
 import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import LmoUrlService from '@/shared/services/lmo_url_service'
+import Flash  from '@/shared/services/flash'
 
 import { head, filter, sortBy } from 'lodash'
-import { submitForm }    from '@/shared/helpers/form'
 
 export default
   props:
@@ -24,27 +24,24 @@ export default
     groups: ->
       sortBy(Session.user().adminGroups(), 'fullName')
 
-    setSubmit: () ->
-      @groupIdentity = Records.groupIdentities.build(
-        groupId: @group.id
-        identityType: 'slack'
-        makeAnnouncement: true
-      )
-      @submit = submitForm @, @groupIdentity,
-        prepareFn: =>
-          @groupIdentity.customFields.slack_channel_id = @channel.id
-          @groupIdentity.customFields.slack_channel_name = '#' + @channel.name
-        flashSuccess: 'install_slack.install.slack_installed'
-        successCallback: =>
-          @close()
-          @$router.replace({ query: {} })
+    submit: ->
+      @groupIdentity.customFields.slack_channel_id = @channel.id
+      @groupIdentity.customFields.slack_channel_name = '#' + @channel.name
+      @groupIdentity.save().then =>
+        Flash.success 'install_slack.install.slack_installed'
+        @close()
+        @$router.replace({ query: {} })
 
   created: ->
     Records.users.fetchGroups().then =>
       @group = head(@groups())
 
       @fetchChannels().then =>
-        @setSubmit()
+        @groupIdentity = Records.groupIdentities.build(
+          groupId: @group.id
+          identityType: 'slack'
+          makeAnnouncement: true
+        )
 
 </script>
 <template lang="pug">
