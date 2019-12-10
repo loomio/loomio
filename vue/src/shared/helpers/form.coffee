@@ -6,10 +6,6 @@ import Flash   from '@/shared/services/flash'
 
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 
-# a helper to aid submitting forms throughout the app
-export submitForm = (scope, model, options = {}) ->
-  submit(scope, model, options)
-
 export submitDiscussion = (scope, model, options = {}) ->
   if model.isForking
     submitFn = model.moveComments
