@@ -1,6 +1,6 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-import { submitStance }  from '@/shared/helpers/form'
+import Flash   from '@/shared/services/flash'
 import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
@@ -10,14 +10,19 @@ export default
     selectedOptionId: @stance.pollOptionId()
     optionColors: optionColors()
     optionImages: optionImages()
-  mounted: ->
-    @submit = submitStance @, @stance,
-      prepareFn: =>
-        @stance.id = null
-        @stance.stanceChoicesAttributes = [
-          poll_option_id: @selectedOptionId
-        ]
+
   methods:
+    submit: ->
+      actionName = if stance.isNew() then 'created' else 'updated'
+      @stance.id = null
+      @stance.stanceChoicesAttributes = [
+        poll_option_id: @selectedOptionId
+      ]
+      @stance.save().then =>
+        @stance.poll().clearStaleStances()
+        Flash.success "poll_#{stance.poll().pollType}_vote_form.stance_#{actionName}"
+        @close()
+
     orderedPollOptions: ->
       _.sortBy @stance.poll().pollOptions(), 'priority'
 

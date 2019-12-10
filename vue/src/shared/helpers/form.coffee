@@ -25,18 +25,6 @@ export submitDiscussion = (scope, model, options = {}) ->
       nextOrSkip(data, scope, model)
   , options))
 
-export submitStance = (scope, model, options = {}) ->
-  submit(scope, model, _.merge(
-    flashSuccess: "poll_#{model.poll().pollType}_vote_form.stance_#{actionName(model)}"
-    prepareFn: ->
-      EventBus.$emit 'processing'
-    successCallback: (data) ->
-      model.poll().clearStaleStances()
-      EventBus.$emit 'stanceSaved'
-    cleanupFn: ->
-      EventBus.$emit 'doneProcessing'
-  , options))
-
 export submitMembership = (scope, model, options = {}) ->
   submit(scope, model, _.merge(
     flashSuccess: "membership_form.#{actionName(model)}"

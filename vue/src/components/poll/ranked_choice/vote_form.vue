@@ -1,17 +1,10 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-import WatchRecords from '@/mixins/watch_records'
-import { submitStance }                    from '@/shared/helpers/form'
+import Flash   from '@/shared/services/flash'
 
-import _sortBy from 'lodash/sortBy'
-import _find from 'lodash/find'
-import _matchesProperty from 'lodash/matchesProperty'
-import _take from 'lodash/take'
-import _map from 'lodash/map'
-import _findIndex from 'lodash/findIndex'
+import { sortBy, find, matchesProperty, take, map } from 'lodash'
 
 export default
-  mixins: [WatchRecords]
   props:
     stance: Object
   data: ->
@@ -23,22 +16,24 @@ export default
       query: (records) =>
         @pollOptions = @sortPollOptions(@stance.poll().pollOptions())
 
-    @submit = submitStance @, @stance,
-      prepareFn: =>
-        EventBus.$emit 'processing'
-        @stance.id = null
-        selected = _take @pollOptions, @numChoices
-        @stance.stanceChoicesAttributes = _map selected, (option, index) =>
-          poll_option_id: option.id
-          score:         @numChoices - index
-
   methods:
+    submit: ->
+      @stance.id = null
+      selected = take @pollOptions, @numChoices
+      @stance.stanceChoicesAttributes = map selected, (option, index) =>
+        poll_option_id: option.id
+        score:         @numChoices - index
+      actionName = if @stance.isNew() then 'created' else 'updated'
+      @stance.save().then =>
+        @stance.poll().clearStaleStances()
+        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
+
     sortPollOptions: (pollOptions) ->
-      optionsByPriority = _sortBy pollOptions, 'priority'
-      _sortBy optionsByPriority, (option) => -@scoreFor(option)
+      optionsByPriority = sortBy pollOptions, 'priority'
+      sortBy optionsByPriority, (option) => -@scoreFor(option)
 
     scoreFor: (option) ->
-      choice = _find(@stance.stanceChoices(), _matchesProperty('pollOptionId', option.id))
+      choice = find(@stance.stanceChoices(), matchesProperty('pollOptionId', option.id))
       (choice or {}).score
   computed:
     numChoices: -> @stance.poll().customFields.minimum_stance_choices

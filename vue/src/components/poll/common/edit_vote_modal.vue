@@ -1,8 +1,8 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import { iconFor }          from '@/shared/helpers/poll'
-import { submitStance }  from '@/shared/helpers/form'
 import PollCommonDirective from '@/components/poll/common/directive.vue'
+import Flash   from '@/shared/services/flash'
 import _sortBy from 'lodash/sortBy'
 
 export default
@@ -15,11 +15,14 @@ export default
   components:
     PollCommonDirective: PollCommonDirective
 
-  created: ->
-    @submit = submitStance(@, @stance)
-    EventBus.$on 'stanceSaved', => @close()
-    # EventBus.broadcast $rootScope, 'refreshStance'
   methods:
+    submit: ->
+      actionName = if stance.isNew() then 'created' else 'updated'
+      @stance.save().then =>
+        @stance.poll().clearStaleStances()
+        Flash.success "poll_#{stance.poll().pollType}_vote_form.stance_#{actionName}"
+        @close()
+
     toggleCreation: ->
       @isEditing = false
   computed:
