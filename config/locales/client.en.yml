@@ -26,7 +26,7 @@ en:
     free_trial: Free trial. {{days}} days remaining.
     trial_expired: Your trial has expired. Upgrade to continue using Loomio.
     tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
-    was_gift_trial: "Your group has been using Loomio for free since {{createdDate}}. Unfortunately, we are unable to continue providing a free service. Please upgrade to continue using Loomio. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Read more.</a>"
+    was_gift_trial: "Your group has been using Loomio for free since {{createdDate}}. We are unable to continue providing a free service. Please upgrade to continue using Loomio. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Read more.</a>"
     was_gift_remaining: "{{days}} days remaining."
     was_gift_expired: "Your free plan has now expired."
 
