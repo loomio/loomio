@@ -13,11 +13,10 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   actions :index, :show, :new, :edit, :update, :create
 
   filter :name
+  filter :handle, as: :string
   filter :description
   filter :memberships_count
   filter :created_at
-  filter :handle
-  filter :analytics_enabled
 
   scope :parents_only
 
