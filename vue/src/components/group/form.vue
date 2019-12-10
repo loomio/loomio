@@ -2,8 +2,8 @@
 import AppConfig      from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
 import Records  from '@/shared/services/records'
+import Flash   from '@/shared/services/flash'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
-import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import { isEmpty } from 'lodash'
 
@@ -19,33 +19,33 @@ export default
       required: (value) ->
         !!value || 'Required.'
     }
-    submit: null
     uploading: false
     progress: 0
 
   mounted: ->
     @featureNames = AppConfig.features.group
     @suggestHandle()
-    @submit = submitForm @, @clone,
-      prepareFn: =>
-        allowPublic = @clone.allowPublicThreads
-        @clone.discussionPrivacyOptions = switch @clone.groupPrivacy
-          when 'open'   then 'public_only'
-          when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
-          when 'secret' then 'private_only'
 
-        @clone.parentMembersCanSeeDiscussions = switch @clone.groupPrivacy
-          when 'open'   then true
-          when 'closed' then @clone.parentMembersCanSeeDiscussions
-          when 'secret' then false
-      confirmFn: (model)          => @$t groupPrivacyConfirm(model)
-      flashSuccess:               => "group_form.messages.group_#{@actionName}"
-      successCallback: (data) =>
+  methods:
+    submit: ->
+      allowPublic = @clone.allowPublicThreads
+      @clone.discussionPrivacyOptions = switch @clone.groupPrivacy
+        when 'open'   then 'public_only'
+        when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
+        when 'secret' then 'private_only'
+
+      @clone.parentMembersCanSeeDiscussions = switch @clone.groupPrivacy
+        when 'open'   then true
+        when 'closed' then @clone.parentMembersCanSeeDiscussions
+        when 'secret' then false
+
+      @clone.save().then (data) =>
         @isExpanded = false
         groupKey = data.groups[0].key
+        Flash.success("group_form.messages.group_#{@actionName}")
         @close()
         @$router.push("/g/#{groupKey}")
-  methods:
+
     suggestHandle: ->
       # if group is new, suggest handle whenever name changes
       # if group is old, suggest handle only if handle is empty
