@@ -29,3 +29,8 @@ module.exports = class GroupRecordsInterface extends BaseRecordsInterface
     @fetch
       path: 'count_explore_results'
       params: options
+
+  getHandle: ({name, parentHandle}) ->
+    @fetch
+      path: 'suggest_handle'
+      params: {name: name, parent_handle: parentHandle}

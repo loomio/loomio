@@ -2,8 +2,13 @@
   .lmo-disabled-form{ng-show: "isDisabled"}
   %md-input-container.md-block
     %label{translate: "{{titleLabel()}}"}
-    %input.lmo-primary-form-input#group-name.group-form__name{type: "text", placeholder: "{{'group_form.group_name_placeholder' | translate}}", ng-required: "true", ng-model: "group.name", ng-model-options: "{ allowInvalid: true }", md-maxlength: "255"}
+    %input.lmo-primary-form-input#group-name.group-form__name{type: "text", placeholder: "{{'group_form.group_name_placeholder' | translate}}", ng-required: "true", ng-model: "group.name", ng-model-options: "{ allowInvalid: true }", md-maxlength: "255", ng-change: "suggestHandle()"}}
     %validation_errors{subject: "group", field: "name"}
+
+  %md-input-container.md-block
+    %label{translate: "group_form.handle"}
+    %input.lmo-primary-form-input#group-handle.group-form__handle{type: "text", placeholder: "{{'group_form.group_handle_placeholder' | translate}}", ng-model: "group.handle", ng-model-options: "{ allowInvalid: true }", md-maxlength: "255"}
+    %validation_errors{subject: "group", field: "handle"}
 
   %lmo_textarea{model: "group", field: "description", placeholder: "'group_form.description_placeholder' | translate", label: "'group_form.description' | translate"}
 

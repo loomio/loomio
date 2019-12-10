@@ -877,6 +877,8 @@ en:
     edit_group_heading: 'Edit group settings'
     edit_subgroup_heading: 'Edit subgroup settings'
     group_name: 'Group Name'
+    handle: Handle
+    group_handle_placeholder: "Customize group URL and email, e.g. loomio.org/handle and handle@loomio.org"
     organization_name: 'Organization Name'
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
