@@ -6,10 +6,9 @@ import AbilityService from '@/shared/services/ability_service'
 import AppConfig      from '@/shared/services/app_config'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
-import { submitForm }   from '@/shared/helpers/form'
 import { uniq, compact, concat, sortBy, map, pick } from 'lodash'
 import UserService from '@/shared/services/user_service'
-
+import Flash from '@/shared/services/flash'
 
 export default
   mixins: [ChangeVolumeModalMixin]
@@ -31,14 +30,16 @@ export default
     EventBus.$emit 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}
 
   methods:
+    submit: ->
+      Records.users.updateProfile(@user).then =>
+        @user.processing = false
+        Flash.success 'email_settings_page.messages.updated'
+
     init: ->
       return unless Session.isSignedIn() or Session.user().restricted?
       Session.user().attributeNames.push('unsubscribeToken')
       @originalUser = Session.user()
       @user = Session.user().clone()
-      @submit = submitForm @, @user,
-        submitFn: Records.users.updateProfile
-        flashSuccess: 'email_settings_page.messages.updated'
 
     groupVolume: (group) ->
       group.membershipFor(Session.user()).volume
