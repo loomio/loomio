@@ -13,7 +13,7 @@ export default class MembershipRequestModel extends BaseModel
 
   afterConstruction: ->
     @fakeUser =
-      name: @name
+      name: @name || @email || ''
       email: @email
       avatarKind: 'initials'
       constructor: {singular: 'user'}
