@@ -18,10 +18,12 @@ export default
 <template lang="pug">
 v-alert(outlined color="accent" dense v-if="isTrialing")
   v-layout(align-center)
-    div(v-if="isWasGift")
-      span(v-if="!isExpired" v-html="$t('current_plan_button.was_gift_trial', { days: daysRemaining, createdDate: createdDate })")
+    div.pr-1(v-if="isWasGift")
       span(v-if="isExpired" v-html="$t('current_plan_button.was_gift_expired')")
-    div(v-if="!isWasGift")
+      span(v-if="!isExpired" v-html="$t('current_plan_button.was_gift_remaining', { days: daysRemaining } )")
+      space
+      span(v-html="$t('current_plan_button.was_gift_trial', {createdDate: createdDate })")
+    div.pr-1(v-if="!isWasGift")
       span(v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")
       span(v-if="isExpired" v-t="'current_plan_button.trial_expired'")
     v-spacer
@@ -29,6 +31,3 @@ v-alert(outlined color="accent" dense v-if="isTrialing")
       v-icon mdi-rocket
       span(v-t="'current_plan_button.upgrade'")
 </template>
-
-Subscription.where(plan: 'was-gift', state: 'active').count
-Subscription.where(plan: 'was-gift', state: 'active').update_all(state: 'trialing', expires_at: 37.days.from_now)
