@@ -5,8 +5,7 @@ import AbilityService from '@/shared/services/ability_service'
 import AppConfig      from '@/shared/services/app_config'
 import UserHelpService from '@/shared/services/user_help_service'
 import EventBus from '@/shared/services/event_bus'
-
-import { submitForm } from '@/shared/helpers/form'
+import Flash from '@/shared/services/flash'
 
 export default
   data: ->
@@ -23,15 +22,17 @@ export default
       page: 'inboxPage'
 
   created: ->
-    @submit = submitForm @, @message,
-      flashSuccess: "contact_message_form.new_contact_message",
-      successCallback: =>
-        @submitted = true
-
     if @isLoggedIn
       @message.name = Session.user().name
       @message.email = Session.user().email
       @message.userId = Session.user().id
+
+  methods:
+    submit: ->
+      @message.save().then =>
+        Flash.success "contact_message_form.new_contact_message"
+        @submitted = true
+
   computed:
     isLoggedIn: ->
       Session.isSignedIn()
