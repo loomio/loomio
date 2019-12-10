@@ -3,9 +3,9 @@ import Session  from '@/shared/services/session'
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Gravatar from 'vue-gravatar';
-import { submitForm, uploadForm } from '@/shared/helpers/form'
 import { capitalize } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
+import Flash   from '@/shared/services/flash'
 
 export default
   components:
@@ -43,13 +43,14 @@ export default
         @uploading = false
       Records.users.remote.upload('upload_avatar', @$refs.fileInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
 
+    submit: (kind) ->
+      @user.avatarKind = kind
+      Records.users.updateProfile(@user).then =>
+        Flash.success 'profile_page.messages.picture_changed'
+        EventBus.$emit 'closeModal'
+
   created: ->
     Records.users.saveExperience("changePicture")
-    @submit = submitForm @, @user,
-      flashSuccess: 'profile_page.messages.picture_changed'
-      submitFn:     Records.users.updateProfile
-      prepareFn:    (kind) => @user.avatarKind = kind
-      cleanupFn:    -> EventBus.$emit 'closeModal'
 
 </script>
 <template lang="pug">
