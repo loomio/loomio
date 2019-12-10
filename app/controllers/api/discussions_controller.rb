@@ -140,20 +140,20 @@ class API::DiscussionsController < API::RestfulController
 
   def collection_for_index(collection, filter: params[:filter])
     case filter
-    when 'show_closed' then collection.is_closed
-    when 'all' then collection
-    else collection.is_open
+    when 'show_closed' then collection.kept.is_closed
+    when 'all' then collection.kept
+    else collection.kept.is_open
     end.sorted_by_importance
   end
 
   def collection_for_dashboard(collection, filter: params[:filter])
     case filter
-    when 'show_muted'  then collection.is_open.muted.sorted_by_latest_activity
-    else                    collection.is_open.not_muted.sorted_by_importance
+    when 'show_muted'  then collection.kept.is_open.muted.sorted_by_latest_activity
+    else                    collection.kept.is_open.not_muted.sorted_by_importance
     end
   end
 
   def collection_for_inbox(collection)
-    collection.recent.not_muted.unread.sorted_by_latest_activity.includes(:group, :author)
+    collection.kept.recent.not_muted.unread.sorted_by_latest_activity.includes(:group, :author)
   end
 end
