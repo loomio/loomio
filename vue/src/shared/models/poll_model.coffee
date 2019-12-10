@@ -136,7 +136,7 @@ export default class PollModel extends BaseModel
 
   addOptions: =>
     @processing = true
-    @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames).finally => @processing = false
+    @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
 
   toggleSubscription: =>
     @remote.postMember(@key, 'toggle_subscription')

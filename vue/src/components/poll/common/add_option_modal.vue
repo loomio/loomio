@@ -2,8 +2,8 @@
 import Records  from '@/shared/services/records'
 import AppConfig  from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
-import { submitPoll } from '@/shared/helpers/form'
 import PollModalMixin from '@/mixins/poll_modal'
+import Flash  from '@/shared/services/flash'
 import {uniq, without, isEqual} from 'lodash'
 
 export default
@@ -14,16 +14,15 @@ export default
 
   data: ->
     isDisabled: false
-    submit: null
 
-  created: ->
-    @submit = submitPoll @, @poll,
-      submitFn: @poll.addOptions
-      prepareFn: =>
-        @poll.addOption()
-      successCallback: =>
+  methods:
+    submit: ->
+      @poll.addOption()
+      @poll.addOptions().then =>
+        @poll.removeOrphanOptions()
+        Flash.success "poll_common_add_option.form.options_added"
         @close()
-      flashSuccess: "poll_common_add_option.form.options_added"
+
 </script>
 
 <template lang="pug">
