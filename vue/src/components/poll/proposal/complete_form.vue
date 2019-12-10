@@ -2,9 +2,8 @@
 import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import EventBus                 from '@/shared/services/event_bus'
-import { submitPoll }    from '@/shared/helpers/form'
+import Flash  from '@/shared/services/flash'
 import { iconFor }                from '@/shared/helpers/poll'
-import { applyPollStartSequence } from '@/shared/helpers/apply'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { map } from 'lodash'
 
@@ -16,7 +15,6 @@ export default
 
   data: ->
     poll: null
-    submit: null
 
   created: ->
     @init()
@@ -30,15 +28,19 @@ export default
       'poll_' + @poll.pollType + '_form.'+mode+'_header'
 
   methods:
+    submit: ->
+      @poll.customFields.deanonymize_after_close = @poll.deanonymizeAfterClose if @poll.anonymous
+      @poll.customFields.can_respond_maybe = @poll.canRespondMaybe if @poll.pollType == 'meeting'
+      @poll.setErrors({})
+      @poll.save().then (data) =>
+        pollKey = data.polls[0].key
+        Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
+          Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_created"
+          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
+          @init()
+
     init: ->
       @poll = @newPoll()
-      @submit = submitPoll @, @poll,
-        successCallback: (data) =>
-          @init()
-          pollKey = data.polls[0].key
-          EventBus.$emit('pollSaved')
-          Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
-            @openAnnouncementModal(Records.announcements.buildFromModel(poll))
 
     newPoll: ->
       Records.polls.build
@@ -46,6 +48,7 @@ export default
         discussionId:          @discussion.id
         groupId:               @discussion.groupId
         pollOptionNames:       map fieldFromTemplate('proposal', 'poll_options_attributes'), 'name'
+        details: ''
 
     icon: ->
       iconFor(@poll)

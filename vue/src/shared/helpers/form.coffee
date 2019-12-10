@@ -37,53 +37,11 @@ export submitStance = (scope, model, options = {}) ->
       EventBus.$emit 'doneProcessing'
   , options))
 
-export submitPoll = (scope, model, options = {}) ->
-  submit(scope, model, _.merge(
-    flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
-    prepareFn: =>
-      EventBus.$emit 'processing'
-      model.customFields.deanonymize_after_close = model.deanonymizeAfterClose if model.anonymous
-      model.customFields.can_respond_maybe = model.canRespondMaybe if model.pollType == 'meeting'
-      model.setErrors({})
-    failureCallback: ->
-      # scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
-    successCallback: (data) ->
-      _.invokeMap Records.documents.find(model.removedDocumentIds), 'remove'
-      model.removeOrphanOptions()
-      nextOrSkip(data, scope, model)
-    cleanupFn: ->
-      EventBus.$emit 'doneProcessing'
-  , options))
-
 export submitMembership = (scope, model, options = {}) ->
   submit(scope, model, _.merge(
     flashSuccess: "membership_form.#{actionName(model)}"
     successCallback: -> EventBus.$emit '$close'
   , options))
-
-export upload = (scope, model, options = {}) ->
-  upload(scope, model, options)
-
-export uploadForm = (scope, element, model, options = {}) ->
-  scope.upload     = upload(scope, model, options)
-  scope.selectFile = -> element[0].querySelector('input[type=file]').click()
-  scope.drop       = (event) -> scope.upload(event.dataTransfer.files)
-  if !options.disablePaste
-    EventBus.$on 'filesPasted', (_, files) -> scope.upload(files)
-
-upload = (scope, model, options) ->
-  submitFn = options.submitFn or Records.documents.upload
-  options.loadingMessage = options.loadingMessage or 'common.action.uploading'
-  (files) ->
-    scope.files = files
-    prepare(scope, model, options)
-    for file in files
-      submitFn(file, progress(scope)).then(
-        success(scope, model, options),
-        failure(scope, model, options)
-      ).finally(
-        cleanup(scope, model, options)
-      )
 
 submit = (scope, model, options = {}) ->
   submitFn  = options.submitFn  or model.save

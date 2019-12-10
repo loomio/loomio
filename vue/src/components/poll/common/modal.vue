@@ -1,9 +1,8 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
-import { submitPoll }    from '@/shared/helpers/form'
+import Flash  from '@/shared/services/flash'
 import { iconFor }                from '@/shared/helpers/poll'
-import { applyPollStartSequence } from '@/shared/helpers/apply'
 
 export default
   mixins: [AnnouncementModalMixin]
@@ -12,18 +11,6 @@ export default
     close: Function
   data: ->
     announcement: {}
-  created: ->
-    applyPollStartSequence @,
-      afterSaveComplete: (event) =>
-        @announcement = Records.announcements.buildFromModel(event)
-
-    @submit = submitPoll @, @poll,
-      broadcaster: @
-      successCallback: (data) =>
-        pollKey = data.polls[0].key
-        Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
-          @close()
-          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
 
   computed:
     title_key: ->
@@ -37,6 +24,18 @@ export default
       !@poll.isNew()
 
   methods:
+    submit: ->
+      actionName = if @poll.isNew() then 'created' else 'updated'
+      @poll.customFields.deanonymize_after_close = @poll.deanonymizeAfterClose if @poll.anonymous
+      @poll.customFields.can_respond_maybe = @poll.canRespondMaybe if @poll.pollType == 'meeting'
+      @poll.setErrors({})
+      @poll.save().then (data) =>
+        pollKey = data.polls[0].key
+        Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
+          Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
+          @close()
+          @openAnnouncementModal(Records.announcements.buildFromModel(poll))
+
     icon: ->
       iconFor(@poll)
 
