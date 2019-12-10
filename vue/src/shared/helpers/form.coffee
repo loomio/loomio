@@ -25,15 +25,6 @@ export submitDiscussion = (scope, model, options = {}) ->
       nextOrSkip(data, scope, model)
   , options))
 
-export submitOutcome = (scope, model, options = {}) ->
-  submit(scope, model, _.merge(
-    flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
-    failureCallback: ->
-      # scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
-    successCallback: (data) ->
-      nextOrSkip(data, scope, model)
-  , options))
-
 export submitStance = (scope, model, options = {}) ->
   submit(scope, model, _.merge(
     flashSuccess: "poll_#{model.poll().pollType}_vote_form.stance_#{actionName(model)}"
