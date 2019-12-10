@@ -2,19 +2,17 @@
 import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
-import { submitForm } from '@/shared/helpers/form'
+import Flash  from '@/shared/services/flash'
 
 export default
   props:
     group: Object
     close: Function
 
-  created: ->
-    @submit = submitForm @, @membershipRequest,
-      flashSuccess: 'membership_request_form.messages.membership_requested'
-      flashOptions:
-        group: @group.fullName
-      successCallback: =>
+  methods:
+    submit: ->
+      @membershipRequest.save().then =>
+        Flash.success 'membership_request_form.messages.membership_requested', {group: @group.fullName}
         @close()
 
   data: ->
@@ -22,7 +20,7 @@ export default
       groupId: @group.id
       name:    Session.user().name
       email:   Session.user().email
-      
+
   computed:
     isSignedIn: -> Session.isSignedIn()
 </script>
