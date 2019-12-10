@@ -25,12 +25,6 @@ export submitDiscussion = (scope, model, options = {}) ->
       nextOrSkip(data, scope, model)
   , options))
 
-export submitMembership = (scope, model, options = {}) ->
-  submit(scope, model, _.merge(
-    flashSuccess: "membership_form.#{actionName(model)}"
-    successCallback: -> EventBus.$emit '$close'
-  , options))
-
 submit = (scope, model, options = {}) ->
   submitFn  = options.submitFn  or model.save
   confirmFn = options.confirmFn or (-> false)

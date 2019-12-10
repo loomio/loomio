@@ -1,6 +1,7 @@
 <script lang="coffee">
 import { submitMembership } from '@/shared/helpers/form'
 import MembershipModalMixin from '@/mixins/membership_modal'
+import Flash   from '@/shared/services/flash'
 
 export default
   mixins: [MembershipModalMixin]
@@ -9,10 +10,12 @@ export default
     close: Function
   data: ->
     isDisabled: false
-  created: ->
-    @submit = submitMembership @, @membership,
-      successCallback: =>
+  methods:
+    submit: ->
+      @membership.save().then =>
+        Flash.success "membership_form.updated"
         @closeModal()
+        
 </script>
 <template lang="pug">
 v-card.membership-modal
