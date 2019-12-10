@@ -13,7 +13,7 @@ export default
     daysRemaining: ->
       differenceInDays(@group.subscriptionExpiresAt, new Date) + 1
     createdDate: ->
-      format(new Date(@group.subscriptionCreatedAt), 'do LLLL yyyy')
+      format(new Date(@group.createdAt), 'do LLLL yyyy')
 </script>
 <template lang="pug">
 v-alert(outlined color="accent" dense v-if="isTrialing")
