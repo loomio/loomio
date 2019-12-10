@@ -34,7 +34,7 @@ describe EmailHelper do
     end
 
     it 'returns a group handle url' do
-      expect(helper.polymorphic_url(group_handle)).to match "/#{group.handle}"
+      expect(helper.send(:polymorphic_url, group_handle)).to match "/#{group.handle}"
     end
 
     it 'returns a comment url' do
