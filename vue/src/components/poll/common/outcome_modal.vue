@@ -1,10 +1,9 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import { applySequence } from '@/shared/helpers/apply'
-import { submitOutcome, eventKind } from '@/shared/helpers/form'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import PollModalMixin from '@/mixins/poll_modal'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import Flash from '@/shared/services/flash'
 
 import Vue     from 'vue'
 import { exact } from '@/shared/helpers/format_time'
@@ -41,17 +40,23 @@ export default
       @clone.pollOptionId = @outcome.pollOptionId or @bestOption.id
       @clone.customFields.event_summary = @clone.customFields.event_summary or @clone.poll().title
 
-    @submit = submitOutcome @, @clone,
-      prepareFn: (prepareArgs) =>
-        @clone.customFields.should_send_calendar_invite = @clone.calendarInvite
-        @clone.customFields.event_description = @clone.statement if @datesAsOptions()
-      successCallback: (data) =>
+  methods:
+    submit: ->
+      @clone.customFields.should_send_calendar_invite = @clone.calendarInvite
+      @clone.customFields.event_description = @clone.statement if @datesAsOptions()
+
+      if @clone.isNew()
+        actionName = "created"
+      else
+        actionName = "updated"
+
+      @clone.save().then (data) =>
         eventData = find(data.events, (event) => event.kind == 'outcome_created') || {}
         event = Records.events.find(eventData.id)
+        Flash.success("poll_common_outcome_form.outcome_#{actionName}")
         @closeModal()
         @openAnnouncementModal(Records.announcements.buildFromModel(event))
 
-  methods:
     datesAsOptions: ->
       fieldFromTemplate @clone.poll().pollType, 'dates_as_options'
 
