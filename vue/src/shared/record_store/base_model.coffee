@@ -1,7 +1,7 @@
 import utils from './utils'
 import Vue from 'vue'
 import { isEqual } from 'date-fns'
-import { camelCase, union, each, isArray, union, keys, filter, snakeCase, defaults, orderyBy, assign, includes } from 'lodash'
+import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderyBy, assign, includes } from 'lodash'
 
 export default class BaseModel
   @singular: 'undefinedSingular'
