@@ -41,17 +41,16 @@ export default
       @clone.pollOptionId = @outcome.pollOptionId or @bestOption.id
       @clone.customFields.event_summary = @clone.customFields.event_summary or @clone.poll().title
 
-    @submit = submitOutcome @, @clone,
-      prepareFn: (prepareArgs) =>
-        @clone.customFields.should_send_calendar_invite = @clone.calendarInvite
-        @clone.customFields.event_description = @clone.statement if @datesAsOptions()
-      successCallback: (data) =>
+  methods:
+    submit: ->
+      @clone.customFields.should_send_calendar_invite = @clone.calendarInvite
+      @clone.customFields.event_description = @clone.statement if @datesAsOptions()
+      @clone.save().then (data) =>
         eventData = find(data.events, (event) => event.kind == 'outcome_created') || {}
         event = Records.events.find(eventData.id)
         @closeModal()
         @openAnnouncementModal(Records.announcements.buildFromModel(event))
 
-  methods:
     datesAsOptions: ->
       fieldFromTemplate @clone.poll().pollType, 'dates_as_options'
 
