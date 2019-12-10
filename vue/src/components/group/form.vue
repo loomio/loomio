@@ -55,7 +55,7 @@ export default
         else
           null
         Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
-          @group.handle = data.handle
+          @clone.handle = data.handle
 
     expandForm: ->
       @isExpanded = true
