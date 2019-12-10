@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
-import { submitForm }    from '@/shared/helpers/form'
+import Flash  from '@/shared/services/flash'
 
 export default
   props:
@@ -9,11 +9,12 @@ export default
     close: Function
   data: ->
     contactRequest: Records.contactRequests.build(recipientId: @user.id)
-  created: ->
-    @submit = submitForm @, @contactRequest,
-      flashSuccess: "contact_request_form.email_sent"
-      flashOptions: {name: @user.name}
-      successCallback: => @close()
+  methods:
+    submit: ->
+      @contactRequest.save().then =>
+        Flash.success "contact_request_form.email_sent", {name: @user.name}
+        @close()
+
 </script>
 <template lang="pug">
 v-card.contact-user-modal
