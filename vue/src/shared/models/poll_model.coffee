@@ -132,7 +132,7 @@ export default class PollModel extends BaseModel
 
   reopen: =>
     @processing = true
-    @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt}).finally => @processing = false
+    @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt})
 
   addOptions: =>
     @processing = true
