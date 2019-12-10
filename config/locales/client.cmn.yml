@@ -577,17 +577,6 @@ cmn:
     thread_status:
       pinned: "这个话题已被置顶。它将会保留在群组话题列表的顶部供所有使用者阅读。"
       closed: "这个话题已经关闭。它将不会再出现在仪表板上，并将会在群组页面中列在“已关闭”下。"
-  user_wizard:
-    welcome: 欢迎！
-    welcome_description: 您已成功在 Loomio 上建立新的使用者帐号。只需几个步骤，您就可以将您的组织设置好并准备开始讨论。
-  group_wizard:
-    welcome: 成功！
-    welcome_description: 您已经在 Loomio 上成功建立新组织。只需几个步骤，您就可以将您的组织设置好并准备开始讨论。如果您现在想要跳过此向导，您稍后还是可以在设置栏中再次开启。
-    invite_people: 邀请伙伴
-    invite_people_description: 列出电子邮件以传送邀请给其他人，或复制链接与其他人分享
-    start_thread: 开始讨论
-    start_thread_description: 撰写欢迎注释、讨论您群组的使命或分享上次会议的会议纪录
-    do_it: 我们走吧
   group_page:
     threads: 话题
     members: 成员 ({{count}})

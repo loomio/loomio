@@ -271,9 +271,6 @@ ca:
     current_revision: Últim
   reactions_display:
     you: "Tu"
-  group_wizard:
-    invite_people: Convida gent
-    start_thread: Comença una discussió
   group_page:
     threads: Fils
     members: Membres

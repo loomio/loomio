@@ -715,25 +715,6 @@ fr:
     thread_status:
       pinned: "Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour l’ensemble des utilisateurs."
       closed: "Cette discussion a été close. Elle ne sera plus affichée sur le tableau de bord, et sera affichée dans les discussions closes sur la page du groupe"
-  user_wizard:
-    welcome: Bienvenue !
-    welcome_description: Votre nouveau compte utilisateur vient d'être créé avec succès. Encore quelques étapes pour compléter votre profil et vous serez prêts à participer activement aux discussions.
-    change_picture: Ajouter une photo
-    change_picture_description: Ajouter une photo à votre profil
-    setup_profile: Paramétrer votre profil
-    setup_profile_description: Aider d'autres personnes
-  group_wizard:
-    welcome: Réussite!
-    welcome_description: Vous venez de créer une nouvelle organisation au sein de Loomio avec succès. Encore quelques étapes et celle-ci sera entièrement paramétrée et prête à démarrer des discussions. Si vous souhaitez sauter cette étape d'aide, vous pourrez y revenir plus tard depuis l'onglet de configuration.
-    setup_profile: Paramétrer votre profil
-    setup_profile_description: Paramétrer le texte de description, le logo et la photo de couverture de votre groupe
-    invite_people: Inviter des personnes
-    invite_people_description: 'Lister les adresses mail auxquelles envoyer des invitation ou copier lien à partager '
-    setup_integrations: Paramétrer les intégrations
-    setup_integrations_description: Connecter Loomio avec Slack et/ou Microsoft teams
-    start_thread: Démarrer une discussion
-    start_thread_description: Ecrire une note de bienvenue, discuter de l'objectif de votre groupe ou partager le compte-rendu de votre dernière réunion
-    do_it: C'est parti
   group_page:
     threads: Discussions
     polls: Sondages
@@ -1294,13 +1275,7 @@ fr:
     earliest: Les plus anciens
     earliest_description: Lire du début à la fin
     replies: Comment afficher les réponses ?
-    linear: Linéaire
-    linear_description: Organiser les éléments dans l'ordre de leur occurrence
-    nested_once: 'Imbriqué une fois '
-    nested_once_description: Placer les réponses sous l'original
-    nested_twice: Imbriqué deux fois
-    nested_twice_description: Réponses sous l'original, jusqu'à 2 fois
-    changing_nesting_is_slow: Les changements à l'imbrication peuvent prendre quelques minutes à traiter. Rafraîchir votre navigateur quelques  minutes après l'enregistrement pour voir les modifications effectuées.
+    nested_once: Imbriqué
   delete_thread_form:
     aria_label: 'Supprimer la discussion'
     title: Supprimer la discussion

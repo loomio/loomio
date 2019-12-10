@@ -210,9 +210,6 @@ sr:
     edited_by: 'Izmenjeno od <strong>{{name}}</strong>'
     posted: Postavljeno
     current_revision: Poslednje
-  group_wizard:
-    invite_people: Pozovi ljude
-    start_thread: Započni diskusiju
   group_page:
     threads: Niti
     members: Članovi

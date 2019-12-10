@@ -572,10 +572,6 @@ it:
     you_and_name: "Tu e {{name}}"
     you_and_name_and_count_more: "Tu, {{name}} e altri {{count}} "
     name_and_count_more: "{{name}} e altri {{count}}"
-  group_wizard:
-    welcome: Successo!
-    invite_people: Invita persone
-    start_thread: Comincia discussione
   group_page:
     threads: Discussioni
     members: Membri

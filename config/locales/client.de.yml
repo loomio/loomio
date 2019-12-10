@@ -674,25 +674,6 @@ de:
     thread_status:
       pinned: "Diese Diskussion wurde angeheftet. Sie wird für alle Nutzer an oberster Stelle in der Diskussionsliste angezeigt."
       closed: "Diese Diskussion wurde geschlossen. Sie wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter \"Geschlossen\" angezeigt"
-  user_wizard:
-    welcome: Willkommen
-    welcome_description: 'Du hast erfolgreich ein neues Benutzerkonto auf Loomio erstellt. Jetzt fehlen nur noch ein paar kleine Schritte, für ein fertiges Profil, und dann kannst du auch schon loslegen!  '
-    change_picture: Foto hinzufügen
-    change_picture_description: 'Foto zu deinem Profil hinzufügen '
-    setup_profile: Profil erstellen
-    setup_profile_description: 'Anderen helfen '
-  group_wizard:
-    welcome: Erfolg!
-    welcome_description: 'Du hast erfolgreich eine neue Organisation auf Loomio erstellt. Jetzt fehlen nur noch wenige Schritte, um deine Organisation fertig zu stellen und Diskussionen zu starten. Wenn du diesen Schritt erstmal überspringen möchtest, kannst du ihn später bei Einstellungen öffnen und bearbeiten. '
-    setup_profile: Profil erstellen
-    setup_profile_description: Gruppenlogo, Beschreibung und Profilbild erstellen
-    invite_people: Leute einladen
-    invite_people_description: Erstelle eine E-mail-liste um Einladungen zu schicken, oder kopiere einen Link und teile es mit anderen
-    setup_integrations: Integrationen konfigurieren
-    setup_integrations_description: Loomio mit Slack und/oder Microsoft Teams verbinden
-    start_thread: Diskussion starten
-    start_thread_description: 'Heisse alle Willkommens, bespreche den Zweck der Gruppe oder teile das Protokoll des letzten Meetings mit. '
-    do_it: Los geht's!
   group_page:
     threads: Diskussionen
     polls: Abstimmungen
@@ -1234,6 +1215,7 @@ de:
   thread_arrangement_form:
     latest: Neueste
     earliest: 'Älteste '
+    nested_once: Verschachtelt
   delete_thread_form:
     aria_label: 'Diskussion löschen'
     title: Diskussion löschen

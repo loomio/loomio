@@ -75,14 +75,21 @@ uk:
   poll_types:
     proposal: пропозиція
     poll: опитування
+    meeting: опитування щодо часу
+    ranked_choice: ранговий вибір
+    score: оціночне опитування
   new_poll_types:
     proposal: пропозиція
     count: підрахунок
     poll: вибір
+    score: оцінка
+    ranked_choice: ранжування
     dot_vote: розподіл
+    meeting: опитування щодо часу
   timezones:
     local: За місцевим часом ({{value}})
   common:
+    history: Історія
     you: Ви
     expand: Розгорнути
     all_day: Увесь день
@@ -92,6 +99,7 @@ uk:
     time_zone: Часовий пояс
     local_time: За місцевим часом
     attachments: Вкладення
+    active_time_ago: Остання активність {{time_ago}} тому
     confirm_discard_changes: Скасувати зміни?
     time:
       am: дп
@@ -480,6 +488,7 @@ uk:
     fork_notice: 'Буде створено нову тему з {{count}} елементів від {{title}}'
   announcement:
     discussion_notification_history: Історія сповіщень щодо тем
+    group_notification_history: Історія запрошень до групи
     poll_notification_history: Історія сповіщень щодо опитувань
     outcome_notification_history: Історія сповіщень щодо результатів
     comment_notification_history: Історія сповіщень щодо коментарів
@@ -487,6 +496,7 @@ uk:
     notified_people: "{{name}} сповістив {{length}} людей:"
     preview: Попередній перегляд листа
     no_notifications_sent: Сповіщень не надсилалося
+    history_error: Щось пішло не так! Не вдалося завантажити історію.
     audiences:
       parent_group: Учасник {{name}}
       formal_group: Учасник {{name}}
@@ -628,13 +638,6 @@ uk:
     thread_status:
       pinned: "Ця тема була прикріплена. Вона залишатиметься у верхній частині списку тем групи для всіх користувачів."
       closed: "Цю тему закрито. Вона більш не відображатиметься на інформаційній панелі, і буде знаходитись в розділі \"закрито\" на сторінці групи"
-  user_wizard:
-    welcome_description: Ви успішно створили новий обліковий запис користувача в Loomio. За кілька кроків ви повністю налаштуєте свій профіль і будете готові розпочати роботу.
-  group_wizard:
-    welcome: Успішно!
-    invite_people: Запросити людей
-    invite_people_description: Додайте електронні скриньки для надсилання запрошень, або скопіюйте посилання для запрошення
-    start_thread: Розпочати дискусію
   group_page:
     threads: Теми
     polls: Опитування
@@ -1332,6 +1335,8 @@ uk:
     view_all: Переглянути всі
     save_changes: Зберегти
     change_vote: Змінити голос
+    max_score: Максимальна оцінка
+    min_score: Мінімальна оцінка
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -1454,6 +1459,7 @@ uk:
     ranked_choice_reopened: Рейтингове опитування відновлено
   poll_common_closing_at_field:
     closing: Закривається
+    closing_hour: Час закриття
   poll_card:
     started_by: Розпочато {{name}}
   poll_common_votes_panel:
@@ -1481,6 +1487,7 @@ uk:
     meeting: 'Це опитування щодо часу закрито. <strong>Поширте результат</strong> аби всі знали, коли буде зустріч.'
     dot_vote: 'Це відбіркове голосування закрито. <strong>Поширте результат</strong> у групі.'
     ranked_choice: 'Цеопитування щодо рангового вибору закрито. <strong>Поширте результат</strong> у групі.'
+    score: 'Це опитування закінчилось. <strong>Поділіться результатом</strong> з групою.'
   poll_common_outcome_form:
     update_title: Оновити результат
     outcome_created: Результат створено
@@ -1575,8 +1582,10 @@ uk:
     tool_tip_expanded: |
         <p>Оціночне опитування дозволяє людям висловлювати свій рівень підтримки для кожного з варіантів.</p>
         <p>Загальний бал кожної опції відображається як частина результату обрахунку.</p>
+    tool_tip_collapsed: Варіанти оцінки за шкалою
     start_header: Розпочати оціночне опитування
     edit_header: Редагувати оціночне опитування
+    tip: Оцініть кожен з варіантів за розсувною шкалою
     title_placeholder: Наприклад, оцініть кожного з кандидатів за шкалою 0-9
     details_placeholder: Надайте будь-які уточнюючі деталі, що можливо будуть потрібні людям аби долучитись
     add_option_placeholder: Додати варіант відповіді
@@ -1599,14 +1608,19 @@ uk:
     timeslots: Проміжки часу
     no_options: Введіть час у поточному часовому поясі ({{zone}}). Учасники будуть бачити час, відповідно до місцевого часового поясу.
     meeting_duration: Тривалість зустрічі
+    add_option_placeholder: Додати новий час
+    time_slot_added: Часовий слот додано
+    time_slot_already_added: Часовий слот вже додано
   poll_ranked_choice_form:
     tool_tip_expanded: |
         <p>Ранговий вибір - це метод голосувань, який дозволяє кожному виборцю  упорядковати відповіді згідно власних уподобаннь.</p>
         <p>Цей спосіб є кращім у випадках, коли є потрібно потурбуватись щодо можливості "крадіжки голосів" (тобто два приблизно популярні варіанти є достатньо схожими, і в кінцевому підсумку
         між ними можуть бути подріблені голоси), і може бути використаний для реалізації виборів за методом Кондорсе або голосування в декілька турів.
         </p>
+    tool_tip_collapsed: Розставте варіанти від кращого до гіршого
     start_header: Почати ранговий вибір
     edit_header: Редагувати ранговий вибір
+    tip: Розставте варіанти від кращого до гіршого
     title_placeholder: Наприклад. Кого б ви хотіли бачити мером?
     details_placeholder: Надайте будь-які уточнюючі деталі, що можливо будуть потрібні людям аби долучитись
     meeting_created: Ранговий вибір створено
@@ -1617,6 +1631,7 @@ uk:
     minimum_stance_choices_helptext: Кількість варіантів, які кожен виборець може оцінити
     ranked_choice_created: Ранговий вибір створено
     ranked_choice_updated: Ранговий вибір оновлено
+    rank: Ранжування
   poll_meeting_time_field:
     new_time_slot: Новий проміжок часу
     closing_hour: Час закриття
@@ -1664,6 +1679,7 @@ uk:
     stance_created: Голосування створено
     stance_updated: Голосування оновлено
   poll_meeting_vote_form:
+    local_time_zone: Місцевий час - {{zone}}
     can_attend: "Можу бути"
     unable: "Не можу бути"
     if_need_be: За потреби
@@ -1743,6 +1759,7 @@ uk:
     set_password: Встановити пароль
     set_password_helptext: Бажаєте використовувати пароль наступного разу?
     hello: "Вітаємо, {{name}}!"
+    new_to_loomio: Вперше на {{site_name}}?
     already_a_user: Вже маєте аккаунт?
     email_address_of_existing_account: Введіть електронну адресу наявного облікового запису
     link_accounts: Пов'язані облікові записи

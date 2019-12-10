@@ -25,6 +25,8 @@ zh_TW:
     free_trial: 免費試用。剩 {{days}} 天。
     trial_expired: 您的試用已到期。升級以繼續使用 Loomio。
     tooltip: "我們的價錢超棒的！現在就升級並享受 Loomio 可以提供給您的組織的好處吧！"
+    was_gift_remaining: "剩 {{days}} 天"
+    was_gift_expired: "您的免費方案已過期。"
   loomio_tags:
     all_tags: 所有標籤
     tags: 標籤
@@ -716,25 +718,6 @@ zh_TW:
     thread_status:
       pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
       closed: "這個討論串已經關閉。它將不會再出現在儀表板上，並將會在群組頁面中列在「已關閉」下。"
-  user_wizard:
-    welcome: 歡迎！
-    welcome_description: 您已成功在 Loomio 上建立新的使用者帳號。只需幾個步驟，您就可以將您的組織策定好並準備開始討論。
-    change_picture: 新增照片
-    change_picture_description: 新增照片到您的簡介
-    setup_profile: 設定簡介
-    setup_profile_description: 協助其他人
-  group_wizard:
-    welcome: 成功！
-    welcome_description: 您已經在 Loomio 上成功建立新組織。只需幾個步驟，您就可以將您的組織策定好並準備開始討論。如果您現在想要跳過此精靈，您稍後還是可以在設定分頁中再次開啟。
-    setup_profile: 設定簡介
-    setup_profile_description: 設定您的群組描述、圖示與封面圖片
-    invite_people: 邀請夥伴
-    invite_people_description: 列出電子郵件以傳送邀請給其他人，或複製連結與其他人分享
-    setup_integrations: 設定整合
-    setup_integrations_description: 將 Loomio 與 Slack 和／或 Microsoft Teams 連線
-    start_thread: 啟動新的討論串
-    start_thread_description: 撰寫歡迎註記、您群組的討論目的或分享上次會議的會議紀錄
-    do_it: 我們走吧
   group_page:
     threads: 討論串
     polls: 投票
@@ -833,6 +816,8 @@ zh_TW:
     edit_group_heading: '編輯群組設定'
     edit_subgroup_heading: '編輯子群組設定'
     group_name: '群組名稱'
+    handle: 處理
+    group_handle_placeholder: "對於 URL 與電子郵件來說，例如 loomio.org/handle 與 handle@loomio.org"
     organization_name: '組織名稱'
     start_organization_heading: 新組織
     edit_organization_heading: 編輯組織設定
@@ -1267,6 +1252,7 @@ zh_TW:
   thread_group:
     aria_label: '群組名稱'
   thread_context:
+    item_maybe_deleted: "在討論串找不到請求的位置。他可能已被刪除。"
     aria_label: '討論串內容'
     thread_options: '討論串選項'
     email_settings: '通知設定'
@@ -1297,13 +1283,11 @@ zh_TW:
     earliest: 最舊
     earliest_description: 從開始閱讀到結束
     replies: 如何顯示回覆？
-    linear: 線性
-    linear_description: 安排事情發生的順序
-    nested_once: 巢狀一次
-    nested_once_description: 將回覆置於原始討論串下
-    nested_twice: 巢狀兩次
-    nested_twice_description: 在原始討論串下回覆，兩次
-    changing_nesting_is_slow: 更改巢狀可能需要幾分鐘來處理。在儲存後幾分鐘重新整理您的瀏覽器以檢視變更。
+    linear: 扁平清單
+    linear_description: 列出發生的項目，一個接著一個。
+    nested_once: 巢狀
+    nested_once_description: 讓原始留言底下的回覆縮排
+    changing_nesting_is_slow: 更改巢狀排列方式可能需要幾分鐘的時間來處理。
   delete_thread_form:
     aria_label: '刪除討論串'
     title: 刪除討論串
@@ -1666,6 +1650,7 @@ zh_TW:
     meeting: '此時間投票已關閉。<strong>分享成果</strong>以讓其他人知道會面何時舉行。'
     dot_vote: '此點投票已關閉。與群組<strong>分享成果</strong>。'
     ranked_choice: '這個排序投票已關閉。與群組<strong>分享結果</strong>。'
+    score: '此分數投票已關閉。與群組<strong>分享結果</strong>。'
   poll_common_outcome_form:
     new_title: 輸入結果
     update_title: 更新結果
