@@ -11,6 +11,7 @@ module.exports = {
     page.loadPath('setup_closed_group_to_join')
     page.expectNoElement('.group-page-actions button')
     page.expectNoElement('.discussions-panel__new-thread-button')
+    page.click('.group-page-members-tab')
     page.expectText('.members-panel', 'You do not have permission to do this.')
   },
 
