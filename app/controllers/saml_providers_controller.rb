@@ -10,17 +10,29 @@ class SamlProvidersController < ApplicationController
 
   def callback
     saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: sp_settings)
+    p saml_response.methods - Object.methods
 
     if saml_response.success?
+      if current_user.is_logged_in?
+        if current_user.is_member_of?(samp_provider.group))
+          membership.update(session_expires_at: saml_response.session_expires_at)
+        end
+      else
+        if User.where(email: saml_response.nameid).exists?
+          # send user a sign in email
+        else
+          # create user and sign them in
+        end
+      end
+
+
        # authorize_success, log the user
       # if current_user
       # else existing user with this email?
       # else new user with this email
       #
       # membership for this provider's group
-      p saml_response.session_expires_at
 
-      membership.authenicated_at = Time.now
       redirect to session.delete(:back_to) || dashboard_path
     else
       authorize_failure  # This method shows an error message

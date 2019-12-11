@@ -55,7 +55,10 @@ export default
         Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
       , (error) ->
-        EventBus.$emit 'pageError', error
+        Records.groups.fetchSamlProivderFor(@$route.params.key).then (url) =>
+          window.location = url
+        , (error) ->
+          EventBus.$emit 'pageError', error
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
 
