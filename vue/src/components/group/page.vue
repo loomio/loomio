@@ -76,7 +76,7 @@ v-content
         | {{group.name}}
     trial-banner(:group="group")
     group-onboarding-card(v-if="group" :group="group")
-    formatted-text(v-if="group" :model="group" column="description")
+    formatted-text.group-page__description(v-if="group" :model="group" column="description")
     document-list(:model='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
