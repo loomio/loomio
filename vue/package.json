@@ -13,7 +13,7 @@
     "@sentry/integrations": "^5.10.2",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
-    "chromedriver": "^78.0.1",
+    "chromedriver": "^79.0.0",
     "core-js": "^2.6.11",
     "date-fns": "2.8.1",
     "date-fns-tz": "1.0.8",
