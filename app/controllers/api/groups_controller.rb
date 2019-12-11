@@ -2,6 +2,16 @@ class API::GroupsController < API::RestfulController
   include UsesFullSerializer
   after_action :track_visit, only: :show
 
+  def saml_provider
+    group = ModelLocator.new(:formal_group, params).locate
+
+    if saml_provider = group.saml_provider
+      render json: { saml_provider_id:  saml_provider.id }
+    else
+      respond_with_error(status: 404)
+    end
+  end
+
   def token
     self.resource = load_and_authorize(:formal_group, :invite_people)
     respond_with_resource scope: {include_token: true}

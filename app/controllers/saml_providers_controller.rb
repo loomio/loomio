@@ -5,20 +5,26 @@ class SamlProvidersController < ApplicationController
   end
 
   def metadata
-    render :xml => generate_sp_metadata, :content_type => "application/samlmetadata+xml"
+    render :xml => OneLogin::RubySaml::Metadata.new.generate(sp_settings), :content_type => "application/samlmetadata+xml"
   end
 
   def callback
-    saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], skip_recipient_check: true)
+    saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: sp_settings)
 
-    # if current_user
-    # else existing user with this email?
-    # else new user with this email
-    #
-    # membership for this provider's group
+    if saml_response.success?
+       # authorize_success, log the user
+      # if current_user
+      # else existing user with this email?
+      # else new user with this email
+      #
+      # membership for this provider's group
+      p saml_response.session_expires_at
 
-    membership.authenicated_at = Time.now
-    redirect to session.delete(:back_to) || dashboard_path
+      membership.authenicated_at = Time.now
+      redirect to session.delete(:back_to) || dashboard_path
+    else
+      authorize_failure  # This method shows an error message
+    end
   end
 
   private
@@ -32,8 +38,8 @@ class SamlProvidersController < ApplicationController
 
   def idp_settings
     settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(saml_provider.idp_metadata_url)
-    settings.assertion_consumer_service_url = saml_provider_oauth_url(saml_provider)
-    settings.issuer                         = saml_provider_metadata_url(saml_provider)
+    settings.assertion_consumer_service_url = callback_saml_provider_url(saml_provider)
+    settings.issuer                         = metadata_saml_provider_url(saml_provider)
     settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
     settings
   end
@@ -50,25 +56,11 @@ class SamlProvidersController < ApplicationController
   end
 
   def associate_identity
-    # the saml provider says we have an authenticated user
-    # what's safe?
-    # logged in/logged out and existing email or new email
+    # when can we trust a saml provider to allow us to sign in a user?
+    # when it is a new user to create
+    # when the user already belongs to the group
+    # otherwise we send an email invitation for the user to accept
 
-    # logged out
-      # user account with this email does not exist
-        # -> create user account, mark email as verified, and sign them in
-        
-      # user account with this email exists
-        # the user already belongs to the saml_provider group
-          # -> log them into the account
-        # the user does not belong to the saml_provider group
-          # -> add the user to the group, but send a login email to ensure they have not setup a fake idp
-
-    # logged in
-      # current_user email matches the saml_provider email
-        # -> add them to the group, updated authenticated_at and sign them in
-      # current_user email does not match saml_provider email
-        # should we be looking up identities with this provider to find the user?
 
     if user = current_user.presence || find_group_member_by_email(email)
       user.associate_with_identity(identity)
@@ -80,7 +72,7 @@ class SamlProvidersController < ApplicationController
     end
   end
 
-  def generate_sp_metadata
+  def sp_settings
     settings = OneLogin::RubySaml::Settings.new
 
     # When disabled, saml validation errors will raise an exception.
@@ -99,8 +91,6 @@ class SamlProvidersController < ApplicationController
     settings.security[:metadata_signed] = false
     settings.security[:digest_method] = XMLSecurity::Document::SHA1
     settings.security[:signature_method] = XMLSecurity::Document::RSA_SHA1
-
-    OneLogin::RubySaml::Metadata.new.generate(settings)
+    settings
   end
-
 end
