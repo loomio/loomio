@@ -19,7 +19,8 @@ describe EmailHelper do
   end
 
   describe 'polymorphic_url' do
-    let(:group) { create :formal_group }
+    let(:group) { create :formal_group, handle: nil }
+    let(:group_handle) { create :formal_group }
     let(:discussion) { create :discussion }
     let(:comment) { create :comment }
     let(:utm_hash) { { utm_medium: "wark" }}
@@ -30,6 +31,10 @@ describe EmailHelper do
 
     it 'returns a group url' do
       expect(helper.send(:polymorphic_url, group)).to match "/g/#{group.key}"
+    end
+
+    it 'returns a group handle url' do
+      expect(helper.send(:polymorphic_url, group_handle)).to match "/#{group.handle}"
     end
 
     it 'returns a comment url' do

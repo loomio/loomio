@@ -613,10 +613,6 @@ es:
     thread_status:
       pinned: "Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos del grupo para todos los integrantes."
       closed: "Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo"
-  group_wizard:
-    welcome: Hecho!
-    invite_people: Invitar personas
-    start_thread: Empieza una discusión
   group_page:
     threads: Hilos
     polls: Sondeos
@@ -1120,6 +1116,8 @@ es:
     helptext: "Los hilos fijados siempre aparecen en la parte superior del listado de hilos del grupo. Se pueden usar para informar a los integrantes sobre anuncios importantes, o promover material grupal como el código de conducta u otras guías comunitarias. "
     helptext_two: "En cualquier momento puedes liberar nuevamente los hilos fijados, seleccionando 'Liberar' desde el menú desplegable del hilo."
     pin_thread: 'Fijar hilo '
+  thread_arrangement_form:
+    nested_once: 'Agrupado '
   delete_thread_form:
     aria_label: 'Borrar hilo '
     title: 'Borrar hilo '

@@ -170,8 +170,6 @@ lt:
     email_label: El. paštas
   reactions_display:
     you: "Tu"
-  group_wizard:
-    invite_people: Pakviesti žmones
   group_page:
     threads: Temos
     settings: Nustatymai

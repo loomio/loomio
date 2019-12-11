@@ -26,6 +26,7 @@ import InstallSlackPage from './components/install_slack/page.vue'
 
 import ThreadNav from './components/thread/nav'
 
+import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -52,7 +53,7 @@ threadPageChildren = [
 
 export default new Router
   mode: 'history'
-  
+
   scrollBehavior: (to, from, savedPosition) ->
     if savedPosition
       savedPosition

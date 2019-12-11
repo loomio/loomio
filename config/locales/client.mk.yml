@@ -55,9 +55,6 @@ mk:
     heading: Побарај да се придружиш на групата
     name_label: Име
     email_label: Email
-  group_wizard:
-    invite_people: Покани луѓе
-    start_thread: Започни дискусија
   group_page:
     threads: Дискусии
     members: Членови

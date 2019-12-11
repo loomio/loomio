@@ -402,14 +402,6 @@ ru:
   reactions_display:
     you: "Вы"
     you_and_name: "Вы и {{name}}"
-  user_wizard:
-    change_picture: Добавить картинку
-    setup_profile: Настроить профиль
-  group_wizard:
-    welcome: Успешно!
-    setup_profile: Настроить профиль
-    invite_people: Пригласите людей
-    start_thread: Начать дискуссию
   group_page:
     threads: Обсуждения
     members: Участники

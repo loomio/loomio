@@ -5,6 +5,7 @@ import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
+import { isEmpty } from 'lodash'
 
 export default
   props:
@@ -24,6 +25,7 @@ export default
 
   mounted: ->
     @featureNames = AppConfig.features.group
+    @suggestHandle()
     @submit = submitForm @, @clone,
       prepareFn: =>
         allowPublic = @clone.allowPublicThreads
@@ -44,6 +46,17 @@ export default
         @close()
         @$router.push("/g/#{groupKey}")
   methods:
+    suggestHandle: ->
+      # if group is new, suggest handle whenever name changes
+      # if group is old, suggest handle only if handle is empty
+      if @group.isNew() or isEmpty(@group.handle)
+        parentHandle = if @group.parent()
+          @group.parent().handle
+        else
+          null
+        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
+          @clone.handle = data.handle
+
     expandForm: ->
       @isExpanded = true
 
@@ -131,13 +144,15 @@ v-card.group-form
         v-img.group_form__file-select(:src="group.coverUrl()" width="100%"  @click="selectCoverPhoto()")
         group-avatar.group_form__file-select.group_form__logo.white(v-if="!group.parentId" :group="group" size="72px" :on-click="selectLogo" :elevation="4")
         v-text-field.group-form__name#group-name.mt-4(v-model='clone.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
+        v-text-field.group-form__handle#group-handle(v-model='clone.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
+        validation-errors(:subject="group" field="handle")
         v-spacer
 
         input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto')
         input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo')
 
         lmo-textarea.group-form__group-description(:model='clone' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
-        validation-errors(:subject="clone", field="name")
+        validation-errors(:subject="clone" field="name")
 
       v-tab-item.mt-8
         .group-form__section.group-form__privacy

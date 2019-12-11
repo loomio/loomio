@@ -455,10 +455,6 @@ nl_NL:
   context_panel:
     thread_status:
       pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
-  group_wizard:
-    welcome: Succes!
-    invite_people: Mensen uitnodigen
-    start_thread: Begin een discussie
   group_page:
     threads: Borden
     members: Leden
@@ -855,6 +851,8 @@ nl_NL:
     helptext: "Vastgeprikte borden verschijnen altijd bovenaan de groepslijst van borden. Ze kunnen gebruikt worden om leden te informeren over belangrijke aankondigingen, of om gemeenschappelijke info te verspreiden zoals de code van goede praktijk of gemeenschapsrichtlijnen."
     helptext_two: "Je mag op ieder moment prikkers verwijderen door 'Ontprikken' te selecteren bij het bord dropdown menu"
     pin_thread: Bord vastprikken
+  thread_arrangement_form:
+    nested_once: Genesteld
   delete_thread_form:
     aria_label: 'Bord verwijderen'
     title: Bord verwijderen

@@ -677,24 +677,6 @@ hu:
     thread_status:
       pinned: "Ezt a témát rögzítették. Az összes felhasználó számára a témák listájának tetején fog maradni."
       closed: "Ezt a témát lezárták. Már nem jelenik meg a műszerfalon, és a csoportoldal „lezárt” részében kerül felsorolásra"
-  user_wizard:
-    welcome: Üdvözlünk!
-    change_picture: Adj hozzá képet
-    change_picture_description: Tölts fel egy képet a profilodba
-    setup_profile: Profil beállítása
-    setup_profile_description: Segíts másoknak
-  group_wizard:
-    welcome: Siker!
-    welcome_description: Sikeresen létrehoztál egy új szervezetet a Loomio-n. Néhány lépésen keresztül a közösségi oldal beállításra kerül, hogy készen álljon a beszélgetések megkezdésére. Ha egyelőre ki akarod hagyni ezt a varázslót, akkor később ismét megnyithatod a Beállítások lapon.
-    setup_profile: Profil beállítása
-    setup_profile_description: Állítsa be a csoport leírását, logóját és borítóképét
-    invite_people: Hívj meg embereket
-    invite_people_description: Sorolj fel e-maileket, amelyekkel meghívásokat küldhetsz, vagy másold le a linket, hogy megoszthasd másokkal
-    setup_integrations: Összekapcsolás beállítása
-    setup_integrations_description: Loomio összekapcsolása Slack-el vagy a Microsoft Teams-el
-    start_thread: Kezdj el egy megbeszélést
-    start_thread_description: Írjon üdvözlő üzenetet, beszélje meg csoportja célját, vagy ossza meg az utolsó találkozó jegyzőkönyvét
-    do_it: Menjünk
   group_page:
     threads: Témák
     polls: Szavazások
@@ -1230,6 +1212,7 @@ hu:
     sorting: Legrégebbi vagy legújabb elől?
     latest: Legújabb
     earliest: Legrégebbi
+    nested_once: Beágyazott
   delete_thread_form:
     aria_label: 'Törölje a témát'
     title: Törölje a témát

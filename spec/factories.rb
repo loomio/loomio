@@ -97,6 +97,7 @@ FactoryBot.define do
   factory :formal_group do
     sequence(:name) { Faker::Name.name }
     description { 'A description for this group' }
+    handle { GroupService.suggest_handle(name: name, parent_handle: parent&.handle) }
     group_privacy { 'open' }
     discussion_privacy_options { 'public_or_private' }
     members_can_add_members { true }

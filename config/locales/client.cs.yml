@@ -367,10 +367,6 @@ cs:
   context_panel:
     thread_status:
       pinned: "Toto vlákno bylo připnuté. Zůstane v horní části seznamu témat pro všechny uživatele."
-  group_wizard:
-    welcome: Úspěch!
-    invite_people: Pozvat další
-    start_thread: Zahájit diskuzi
   group_page:
     threads: Vlákna
     members: Členové

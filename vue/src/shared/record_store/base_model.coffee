@@ -1,6 +1,7 @@
 import utils from './utils'
 import Vue from 'vue'
 import { isEqual } from 'date-fns'
+import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes } from 'lodash'
 
 export default class BaseModel
   @singular: 'undefinedSingular'
@@ -44,8 +45,8 @@ export default class BaseModel
 
   clone: ->
     cloneAttributes = {}
-    _.forEach @attributeNames, (attr) =>
-      if _.isArray(@[attr])
+    each @attributeNames, (attr) =>
+      if isArray(@[attr])
         cloneAttributes[attr] = @[attr].slice(0)
       else
         cloneAttributes[attr] = @[attr]
@@ -63,11 +64,10 @@ export default class BaseModel
 
   baseUpdate: (attributes) ->
     @bumpVersion()
-    @attributeNames = _.union(@attributeNames, _.keys(attributes))
-    _.forEach(attributes, (value, key) =>
+    @attributeNames = union @attributeNames, keys(attributes)
+    each attributes, (value, key) =>
       Vue.set(@, key, value)
-      return true
-    )
+      true
 
     @recordsInterface.collection.update(@) if @inCollection()
 
@@ -82,7 +82,7 @@ export default class BaseModel
 
   modifiedAttributes: ->
     return [] unless @clonedFrom?
-    _.filter @attributeNames, (name) =>
+    filter @attributeNames, (name) =>
       @attributeIsModified(name)
 
   isModified: ->
@@ -95,11 +95,11 @@ export default class BaseModel
   baseSerialize: ->
     wrapper = {}
     data = {}
-    paramKey = _.snakeCase(@constructor.serializationRoot or @constructor.singular)
+    paramKey = snakeCase(@constructor.serializationRoot or @constructor.singular)
 
-    _.each @constructor.serializableAttributes or @attributeNames, (attributeName) =>
-      snakeName = _.snakeCase(attributeName)
-      camelName = _.camelCase(attributeName)
+    each @constructor.serializableAttributes or @attributeNames, (attributeName) =>
+      snakeName = snakeCase(attributeName)
+      camelName = camelCase(attributeName)
       if utils.isTimeAttribute(camelName)
         data[snakeName] = @[camelName].toISOString()
       else
@@ -117,31 +117,30 @@ export default class BaseModel
     @relationships()
 
   hasMany: (name, userArgs = {}) ->
-    args = _.defaults userArgs,
+    args = defaults userArgs,
       from: name
       with: @constructor.singular + 'Id'
       of: 'id'
-      dynamicView: true
 
     @[name] = =>
       if userArgs.orderBy
-        _.orderBy @recordStore[args.from].find("#{args.with}": @[args.of]), userArgs.orderBy
+        orderBy @recordStore[args.from].find("#{args.with}": @[args.of]), userArgs.orderBy
       else
         @recordStore[args.from].find("#{args.with}": @[args.of])
 
   belongsTo: (name, userArgs) ->
-    defaults =
+    values =
       from: name + 's'
       by: name + 'Id'
 
-    args = _.assign defaults, userArgs
+    args = assign values, userArgs
 
     @[name] = => @recordStore[args.from].find(@[args.by])
 
   translationOptions: ->
 
   isA: (models...) ->
-    _.includes models, @constructor.singular
+    includes models, @constructor.singular
 
   namedId: ->
     { "#{@constructor.singular}_id": @id }
@@ -192,9 +191,9 @@ export default class BaseModel
     @errors = {}
 
   setErrors: (errorList = []) ->
-    @errors = {}
-    _.each errorList, (errors, key) =>
-      @errors[_.camelCase(key)] = errors
+    Vue.set(@, 'errors', {})
+    each errorList, (errors, key) =>
+      Vue.set(@errors, camelCase(key), errors)
 
   isValid: ->
     @errors.length > 0

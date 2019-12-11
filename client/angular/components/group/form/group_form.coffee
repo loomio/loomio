@@ -1,6 +1,7 @@
 AppConfig      = require 'shared/services/app_config'
 AbilityService = require 'shared/services/ability_service'
 I18n           = require 'shared/services/i18n'
+Records        = require 'shared/services/records'
 
 { groupPrivacy, groupPrivacyStatement } = require 'shared/helpers/helptext'
 
@@ -8,6 +9,19 @@ angular.module('loomioApp').directive 'groupForm', ->
   scope: {group: '=', modal: '=?'}
   templateUrl: 'generated/components/group/form/group_form.html'
   controller: ['$scope', ($scope) ->
+
+    $scope.suggestHandle = ->
+      # if group is new, suggest handle whenever name changes
+      # if group is old, suggest handle only if handle is empty
+      if $scope.group.isNew() or _.isEmpty($scope.group.handle)
+        parentHandle = if $scope.group.parent()
+          $scope.group.parent().handle
+        else
+          null
+        Records.groups.getHandle(name: $scope.group.name, parentHandle: parentHandle).then (data) ->
+          $scope.group.handle = data.handle
+
+    $scope.suggestHandle()
 
     $scope.titleLabel = ->
       if $scope.group.isParent()

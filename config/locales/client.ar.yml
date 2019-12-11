@@ -229,9 +229,6 @@ ar:
     current_revision: الأحدث
   reactions_display:
     you: "أنت"
-  group_wizard:
-    invite_people: قم بدعوة أشخاص
-    start_thread: ابدأ نقاشا
   group_page:
     threads: المواضيع
     members: أعضاء

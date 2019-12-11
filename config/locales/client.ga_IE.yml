@@ -277,10 +277,6 @@ ga_IE:
     current_revision: Is déanaí
   reactions_display:
     you: "Tusa"
-  group_wizard:
-    welcome: D'éirigh leis!
-    invite_people: Tabhair cuirí do dhaoine
-    start_thread: Cuir tús le plé
   group_page:
     threads: Snáitheanna
     members: Comhaltaí

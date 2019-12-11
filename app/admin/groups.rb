@@ -13,38 +13,29 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   actions :index, :show, :new, :edit, :update, :create
 
   filter :name
+  filter :handle, as: :string
   filter :description
   filter :memberships_count
   filter :created_at
-  filter :handle
-  filter :analytics_enabled
 
   scope :parents_only
 
-  # batch_action :delete_spam do |group_ids|
-  #   group_ids.each do |group_id|
-  #     if Group.exists?(group_id)
-  #       group = Group.find(group_id)
-  #       user = group.creator || group.admins.first
-  #       if user
-  #         UserService.delete_spam(user)
-  #       end
-  #     end
-  #
-  #     if Group.exists?(group_id)
-  #       Group.find(group_id).destroy
-  #     end
-  #   end
-  #
-  #   redirect_to admin_groups_path, notice: "#{group_ids.size} spammy groups deleted"
-  # end
+  batch_action :delete_spam do |group_ids|
+    group_ids.each do |group_id|
+      if Group.exists?(group_id)
+        group = Group.find(group_id)
+        user = group.creator || group.admins.first
+        if user
+          UserService.delete_spam(user)
+        end
+      end
 
-  batch_action :use_vue do |group_ids|
-    all_group_ids = Group.where('id in (:ids) or parent_id in (:ids)', ids: group_ids).pluck(:id)
-    user_ids = Membership.where(group_id: all_group_ids).pluck(:user_id).uniq
-    user_count = User.where(id: user_ids).update_all(experiences: {vue_client: true, show_vue_upgraded_modal: true})
+      if Group.exists?(group_id)
+        Group.find(group_id).destroy
+      end
+    end
 
-    redirect_to admin_groups_path, notice: "#{user_count} users updated to vue client"
+    redirect_to admin_groups_path, notice: "#{group_ids.size} spammy groups deleted"
   end
 
   index :download_links => false do
@@ -109,13 +100,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     active_admin_comments
 
     attributes_table do
-      if Plugins.const_defined?("LoomioBuyerExperience")
-        row :standard_plan_link do link_to("standard subscription link", ChargifyService.standard_plan_url(group), target: '_blank' ) end
-        row :plus_plan_link do link_to("plus subscription link", ChargifyService.plus_plan_url(group), target: '_blank') end
-        row :stats_report_link do link_to("Metabase!", "https://metabase.loomio.io/dash/14?parent_group_id=" + group.id.to_s, target: '_blank') end
-        row('Subscription status') do |group| group.subscription.kind if group.subscription end
-      end
-
       row :id
       row :name
       row :key
