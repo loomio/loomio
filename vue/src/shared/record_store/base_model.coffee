@@ -1,7 +1,7 @@
 import utils from './utils'
 import Vue from 'vue'
 import { isEqual } from 'date-fns'
-import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderyBy, assign, includes } from 'lodash'
+import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes } from 'lodash'
 
 export default class BaseModel
   @singular: 'undefinedSingular'
@@ -129,11 +129,11 @@ export default class BaseModel
         @recordStore[args.from].find("#{args.with}": @[args.of])
 
   belongsTo: (name, userArgs) ->
-    defaults =
+    values =
       from: name + 's'
       by: name + 'Id'
 
-    args = assign defaults, userArgs
+    args = assign values, userArgs
 
     @[name] = => @recordStore[args.from].find(@[args.by])
 
