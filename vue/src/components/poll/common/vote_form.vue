@@ -13,7 +13,7 @@ export default
 
   methods:
     submit: ->
-      actionName = if stance.isNew() then 'created' else 'updated'
+      actionName = if @stance.isNew() then 'created' else 'updated'
       @stance.id = null
       @stance.stanceChoicesAttributes = [
         poll_option_id: @selectedOptionId
