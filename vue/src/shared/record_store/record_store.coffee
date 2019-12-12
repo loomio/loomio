@@ -47,7 +47,7 @@ export default class RecordStore
       else
         throw response
     onFailure: (response) =>
-      throw response if response.status != 403
+      throw response
 
   view: ({name, collections, query}) ->
     if !@views[name]

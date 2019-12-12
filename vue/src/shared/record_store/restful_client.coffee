@@ -12,8 +12,7 @@ export default class RestfulClient
   onPrepare: (request)  -> request
   onCleanup: (response) -> response
   onSuccess: (response) -> response
-  onFailure: (response) ->
-    throw response if response.status != 403
+  onFailure: (response) -> throw response
   onUploadSuccess: (response) -> response
 
   constructor: (resourcePlural) ->
