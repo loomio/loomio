@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     if should_redirect_to_browser_upgrade?
       render file: 'public/417.html', status: 417
     else
-      if ENV['TASK'] == 'e2e' or params['old_client'] or (current_user.is_logged_in? && current_user.experiences['old_client'])
+      if ENV['TASK'] == 'e2e' or params['old_client']
         render 'application/index', layout: false
       else
         template = File.read(Rails.root.join('public/client/vue/index.html'))
