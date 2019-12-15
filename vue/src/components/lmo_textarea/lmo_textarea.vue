@@ -163,6 +163,7 @@ export default
       autoFocus: @autoFocus
 
   computed:
+    modelField: -> @model[@field]
     hasResults: -> @filteredUsers.length
     showSuggestions: -> @query || @hasResults
     filteredUsers: ->
@@ -311,6 +312,13 @@ export default
       @editor.clearContent()
       @files = []
       @imageFiles = []
+    modelField: ->
+      content = (if @model[@field+'Format'] == "md"
+        @model[@field+'Format'] = 'html'
+        @model[@field] = marked(@model[@field] || '')
+      else
+        @model[@field])
+      @editor.setContent(content)
 
   beforeDestroy: ->
     @editor.destroy()
