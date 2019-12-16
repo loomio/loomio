@@ -34,7 +34,6 @@ export default
     submit: ->
       Records.users.updateProfile(@user)
       .then =>
-        @user.processing = false
         Flash.success 'email_settings_page.messages.updated'
       .catch onError(@user)
 
