@@ -49,10 +49,9 @@ export default
   methods:
     init: ->
       Records.groups.findOrFetch(@$route.params.key).then (group) =>
-        @group = group
-
-        subscribeTo(@group)
-        Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
+        if group
+          @group = group
+          subscribeTo(@group)
 
       , (error) ->
         EventBus.$emit 'pageError', error

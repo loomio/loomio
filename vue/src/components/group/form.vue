@@ -148,14 +148,14 @@ v-card.group-form
         group-avatar.group_form__file-select.group_form__logo.white(v-if="!group.parentId" :group="group" size="72px" :on-click="selectLogo" :elevation="4")
         v-text-field.group-form__name#group-name.mt-4(v-model='clone.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
         v-text-field.group-form__handle#group-handle(v-model='clone.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
-        validation-errors(:subject="group", field="handle")
+        validation-errors(:subject="group" field="handle")
         v-spacer
 
         input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto')
         input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo')
 
         lmo-textarea.group-form__group-description(:model='clone' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
-        validation-errors(:subject="clone", field="name")
+        validation-errors(:subject="clone" field="name")
 
       v-tab-item.mt-8
         .group-form__section.group-form__privacy

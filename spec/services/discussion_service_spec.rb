@@ -292,8 +292,8 @@ describe 'DiscussionService' do
 
     context 'actor is permitted' do
       it 'deletes the discussion' do
-        discussion.should_receive :destroy!
         DiscussionService.destroy(discussion: discussion, actor: user)
+        expect(discussion.discarded_at).to_not eq nil
       end
     end
 

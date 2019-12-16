@@ -35,16 +35,17 @@ export default
       @poll.setErrors({})
       @poll.save()
       .then (data) =>
+        @init()
+        EventBus.$emit('reset-editor')
         pollKey = data.polls[0].key
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_created"
           @openAnnouncementModal(Records.announcements.buildFromModel(poll))
-          @init()
       .catch onError(@poll)
 
     init: ->
       @poll = @newPoll()
-
+      
     newPoll: ->
       Records.polls.build
         pollType:              'proposal'
