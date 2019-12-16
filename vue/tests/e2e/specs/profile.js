@@ -86,19 +86,19 @@ module.exports = {
   //   page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match")
   // },
   //
-  // 'can_set_a_password': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_discussion')
-  //   page.ensureSidebar()
-  //   page.click('.sidebar__user-dropdown')
-  //   page.click('.user-dropdown__list-item-button--profile')
-  //   page.click('.profile-page__change-password')
-  //   page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
-  //   page.fillIn('.change-password-form__password-confirmation input', 'SmushDemBerries') // TODO: GK: inputs not working properly
-  //   page.click('.change-password-form__submit')
-  //   page.expectFlash('Your password has been updated')
-  // },
+  'can_set_a_password': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
+    page.click('.user-dropdown__list-item-button--profile')
+    page.click('.profile-page__change-password')
+    page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
+    page.fillIn('.change-password-form__password-confirmation input', 'SmushDemBerries') // TODO: GK: inputs not working properly
+    page.click('.change-password-form__submit')
+    page.expectFlash('Your password has been updated')
+  },
 
   'successfully_deactivates_the_account': (test) => {
     page = pageHelper(test)

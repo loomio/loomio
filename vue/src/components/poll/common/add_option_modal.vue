@@ -37,5 +37,5 @@ v-card.poll-common-add-option-modal
     poll-meeting-form-options-field(:poll="poll" v-if="poll.pollType == 'meeting'" add-options-only)
   v-card-actions
     v-spacer
-    v-btn(color="primary" :disabled="!poll.isModified()" @click='submit()' v-t="'poll_common_add_option.form.add_options'")
+    v-btn.poll-add-option__submit(color="primary" :disabled="!poll.isModified()" @click='submit()' v-t="'poll_common_add_option.form.add_options'")
 </template>
