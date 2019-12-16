@@ -1,7 +1,6 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { submitDiscussion } from '@/shared/helpers/form'
 import { map, sortBy, filter } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
@@ -19,25 +18,22 @@ export default
     submitIsDisabled: false
 
   mounted: ->
-    isNew = @discussion.isNew()
-    @submit = submitDiscussion @, @discussion,
-      successCallback: (data) =>
+    @watchRecords
+      collections: ['groups', 'memberships']
+      query: (store) =>
+        @availableGroups = filter(Session.user().formalGroups(), (group) -> AbilityService.canStartThread(group))
+
+  methods:
+    submit: ->
+      @discussion.save().then (data) =>
         discussionKey = data.discussions[0].key
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           @close()
-          if isNew
+          if @discussion.isNew()
             @$router.push @urlFor(discussion)
             if AbilityService.canAnnounceThread(discussion)
               @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
 
-
-    @watchRecords
-      collections: ['groups', 'memberships']
-      query: (store) =>
-        # console.log "running query:", @discussion, Session.user().formalGroups()
-        @availableGroups = filter(Session.user().formalGroups(), (group) -> AbilityService.canStartThread(group))
-
-  methods:
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
 
