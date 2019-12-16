@@ -37,7 +37,7 @@ export default
         flashSuccess: 'install_slack.install.slack_installed'
         successCallback: =>
           @close()
-          @$router.replace({ query: {} })
+          @$router.push({ query: null })
 
   created: ->
     Records.users.fetchGroups().then =>
