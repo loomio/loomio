@@ -31,7 +31,7 @@ export default
       .then =>
         Flash.success 'install_slack.install.slack_installed'
         @close()
-        @$router.replace({ query: {} })
+        @$router.push({ query: null })
       .catch onError(@groupIdentity)
 
   created: ->

@@ -421,7 +421,7 @@ div
             v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
               v-icon mdi-table-merge-cells
         slot(name="actions")
-    v-alert(v-if="maxLength && model[field].length > maxLength" color='error')
+    v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')
