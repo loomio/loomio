@@ -222,7 +222,7 @@ export default class DiscussionModel extends BaseModel
 
   moveComments: =>
     @processing = true
-    @remote.patchMember(@keyOrId(), 'move_comments', { forked_event_ids: @forkedEventIds }).finally => @processing = false
+    @remote.patchMember(@keyOrId(), 'move_comments', { forked_event_ids: @forkedEventIds })
 
   # isForking: ->
   #   @forkedEventIds.length > 0
