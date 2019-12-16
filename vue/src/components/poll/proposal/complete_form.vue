@@ -35,6 +35,7 @@ export default
       @submit = submitPoll @, @poll,
         successCallback: (data) =>
           @init()
+          EventBus.$emit('reset-editor')
           pollKey = data.polls[0].key
           EventBus.$emit('pollSaved')
           Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>

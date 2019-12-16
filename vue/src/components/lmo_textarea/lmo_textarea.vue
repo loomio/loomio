@@ -6,6 +6,7 @@ import {concat, sortBy, isString, filter, uniq, map, forEach, isEmpty} from 'lod
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
 import detectIt from 'detect-it'
+import EventBus                 from '@/shared/services/event_bus'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
@@ -163,7 +164,6 @@ export default
       autoFocus: @autoFocus
 
   computed:
-    modelField: -> @model[@field]
     hasResults: -> @filteredUsers.length
     showSuggestions: -> @query || @hasResults
     filteredUsers: ->
@@ -181,6 +181,7 @@ export default
       browser.name == 'firefox' || browser.name == 'safari' || detectIt.primaryInput == 'touch'
 
   created: ->
+    EventBus.$on('reset-editor', => @reset())
     @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
 
   mounted: ->
@@ -299,6 +300,11 @@ export default
         @popup = null
       @observer.disconnect() if @observer
 
+    reset: ->
+      @editor.clearContent()
+      @files = []
+      @imageFiles = []
+
   watch:
     linkDialogIsOpen: (val) ->
       return unless val && @$refs.focus
@@ -308,17 +314,7 @@ export default
       requestAnimationFrame => @$refs.focus.focus()
     files: -> @updateModel()
     imageFiles: -> @updateModel()
-    shouldReset: ->
-      @editor.clearContent()
-      @files = []
-      @imageFiles = []
-    modelField: ->
-      content = (if @model[@field+'Format'] == "md"
-        @model[@field+'Format'] = 'html'
-        @model[@field] = marked(@model[@field] || '')
-      else
-        @model[@field])
-      @editor.setContent(content)
+    shouldReset: -> @reset()
 
   beforeDestroy: ->
     @editor.destroy()
