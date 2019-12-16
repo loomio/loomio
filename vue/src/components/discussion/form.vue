@@ -5,6 +5,7 @@ import { map, sortBy, filter } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import Flash   from '@/shared/services/flash'
 
 export default
   mixins: [AnnouncementModalMixin]
@@ -25,10 +26,12 @@ export default
 
   methods:
     submit: ->
+      actionName = if @discussion.isNew() then 'created' else 'updated'
       @discussion.save().then (data) =>
         discussionKey = data.discussions[0].key
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           @close()
+          Flash.success("discussion_form.messages.#{actionName}")
           if @discussion.isNew()
             @$router.push @urlFor(discussion)
             if AbilityService.canAnnounceThread(discussion)
