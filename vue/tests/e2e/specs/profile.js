@@ -93,7 +93,7 @@ module.exports = {
     page.ensureSidebar()
     page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
-    page.click('.profile-page__change-password')
+    page.click('.user-page__change_password')
     page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
     page.fillIn('.change-password-form__password-confirmation input', 'SmushDemBerries') // TODO: GK: inputs not working properly
     page.click('.change-password-form__submit')
