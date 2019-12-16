@@ -202,7 +202,7 @@ export default class DiscussionModel extends BaseModel
 
   move: =>
     @processing = true
-    @remote.patchMember(@keyOrId(), 'move', { group_id: @groupId })
+    @remote.patchMember(@keyOrId(), 'move', { group_id: @groupId }).finally => @processing = false
 
   savePin: =>
     @processing = true
@@ -222,7 +222,7 @@ export default class DiscussionModel extends BaseModel
 
   moveComments: =>
     @processing = true
-    @remote.patchMember(@keyOrId(), 'move_comments', { forked_event_ids: @forkedEventIds })
+    @remote.patchMember(@keyOrId(), 'move_comments', { forked_event_ids: @forkedEventIds }).finally => @processing = false
 
   # isForking: ->
   #   @forkedEventIds.length > 0
