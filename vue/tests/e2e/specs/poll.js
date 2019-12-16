@@ -324,6 +324,6 @@ module.exports = {
     page.click('.poll-common-edit-vote__button')
     page.click('.poll-common-vote-form__button:last-child')
     page.click('.poll-common-vote-form__submit')
-
+    page.expectFlash('Vote created')
   },
 }
