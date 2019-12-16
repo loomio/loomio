@@ -16,7 +16,7 @@ export default
 
   methods:
     submit: ->
-      actionName = if stance.isNew() then 'created' else 'updated'
+      actionName = if @stance.isNew() then 'created' else 'updated'
       @stance.save().then =>
         @stance.poll().clearStaleStances()
         Flash.success "poll_#{stance.poll().pollType}_vote_form.stance_#{actionName}"
