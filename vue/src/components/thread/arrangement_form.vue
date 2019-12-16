@@ -1,7 +1,6 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { submitDiscussion } from '@/shared/helpers/form'
 import { map, sortBy, filter } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
@@ -14,9 +13,10 @@ export default
   data: ->
     clone: @discussion.clone()
 
-  mounted: ->
-    @submit = submitDiscussion @, @clone,
-      successCallback: (data) => @close()
+  methods:
+    submit: ->
+      @clone.save().then =>
+        @close()
 
 </script>
 
