@@ -16,7 +16,6 @@ export default
 
   data: ->
     poll: null
-    submit: null
     shouldReset: false
 
   created: ->
