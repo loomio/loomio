@@ -181,7 +181,6 @@ export default
       browser.name == 'firefox' || browser.name == 'safari' || detectIt.primaryInput == 'touch'
 
   created: ->
-    EventBus.$on('reset-editor', => @reset())
     @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
 
   mounted: ->

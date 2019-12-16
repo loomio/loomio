@@ -17,6 +17,7 @@ export default
   data: ->
     poll: null
     submit: null
+    shouldReset: false
 
   created: ->
     @init()
@@ -30,12 +31,15 @@ export default
       'poll_' + @poll.pollType + '_form.'+mode+'_header'
 
   methods:
+    reset: ->
+      @shouldReset = !@shouldReset
+
     init: ->
       @poll = @newPoll()
       @submit = submitPoll @, @poll,
         successCallback: (data) =>
           @init()
-          EventBus.$emit('reset-editor')
+          @reset()
           pollKey = data.polls[0].key
           EventBus.$emit('pollSaved')
           Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
@@ -59,7 +63,7 @@ export default
     h1.headline(v-t="title_key")
     v-spacer
   v-card-text
-    poll-common-directive(:poll='poll', name='form')
+    poll-common-directive(:poll='poll', name='form' :should-reset="shouldReset")
   v-card-actions.poll-common-form-actions
     v-spacer
     v-btn.poll-common-form__submit(color="primary" @click='submit()' v-t="'poll_common_form.start'")
