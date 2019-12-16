@@ -6,6 +6,7 @@ import { optionColors, optionImages } from '@/shared/helpers/poll'
 export default
   props:
     poll: Object
+    shouldReset: Boolean
   data: ->
     items: [
       {text: @$t('poll_proposal_options.agree_disagree'), value: ['agree', 'disagree']}
@@ -20,7 +21,7 @@ export default
 
 <template lang="pug">
 .poll-proposal-form
-  poll-common-form-fields(:poll="poll")
+  poll-common-form-fields(:poll="poll" :should-reset="shouldReset")
   v-select(:disabled="!poll.isNew()" v-model="poll.pollOptionNames" :items="items" :label="$t('poll_common_form.options')")
   poll-common-closing-at-field(:poll="poll")
   poll-common-settings(:poll="poll")

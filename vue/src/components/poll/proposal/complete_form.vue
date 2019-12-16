@@ -16,6 +16,8 @@ export default
 
   data: ->
     poll: null
+    submit: null
+    shouldReset: false
 
   created: ->
     @init()
@@ -36,7 +38,7 @@ export default
       @poll.save()
       .then (data) =>
         @init()
-        EventBus.$emit('reset-editor')
+        @reset()
         pollKey = data.polls[0].key
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_created"
@@ -45,7 +47,10 @@ export default
 
     init: ->
       @poll = @newPoll()
-      
+
+    reset: ->
+      @shouldReset = !@shouldReset
+
     newPoll: ->
       Records.polls.build
         pollType:              'proposal'
@@ -65,7 +70,7 @@ export default
     h1.headline(v-t="title_key")
     v-spacer
   v-card-text
-    poll-common-directive(:poll='poll', name='form')
+    poll-common-directive(:poll='poll', name='form' :should-reset="shouldReset")
   v-card-actions.poll-common-form-actions
     v-spacer
     v-btn.poll-common-form__submit(color="primary" @click='submit()' v-t="'poll_common_form.start'")
