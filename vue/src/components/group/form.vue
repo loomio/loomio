@@ -6,6 +6,7 @@ import Flash   from '@/shared/services/flash'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import { isEmpty } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -39,12 +40,14 @@ export default
         when 'closed' then @clone.parentMembersCanSeeDiscussions
         when 'secret' then false
 
-      @clone.save().then (data) =>
+      @clone.save()
+      .then (data) =>
         @isExpanded = false
         groupKey = data.groups[0].key
         Flash.success("group_form.messages.group_#{@actionName}")
         @close()
         @$router.push("/g/#{groupKey}")
+      .catch onError(@clone)
 
     suggestHandle: ->
       # if group is new, suggest handle whenever name changes

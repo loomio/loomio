@@ -6,6 +6,7 @@ import Flash  from '@/shared/services/flash'
 import { iconFor }                from '@/shared/helpers/poll'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { map } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [AnnouncementModalMixin]
@@ -32,12 +33,14 @@ export default
       @poll.customFields.deanonymize_after_close = @poll.deanonymizeAfterClose if @poll.anonymous
       @poll.customFields.can_respond_maybe = @poll.canRespondMaybe if @poll.pollType == 'meeting'
       @poll.setErrors({})
-      @poll.save().then (data) =>
+      @poll.save()
+      .then (data) =>
         pollKey = data.polls[0].key
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_created"
           @openAnnouncementModal(Records.announcements.buildFromModel(poll))
           @init()
+      .catch onError(@poll)
 
     init: ->
       @poll = @newPoll()

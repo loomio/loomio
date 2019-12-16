@@ -6,6 +6,7 @@ import AppConfig      from '@/shared/services/app_config'
 import UserHelpService from '@/shared/services/user_help_service'
 import EventBus from '@/shared/services/event_bus'
 import Flash from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   data: ->
@@ -29,9 +30,11 @@ export default
 
   methods:
     submit: ->
-      @message.save().then =>
+      @message.save()
+      .then =>
         Flash.success "contact_message_form.new_contact_message"
         @submitted = true
+      .catch onError(@message)
 
   computed:
     isLoggedIn: ->

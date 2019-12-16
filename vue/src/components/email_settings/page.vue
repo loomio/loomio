@@ -9,6 +9,7 @@ import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import { uniq, compact, concat, sortBy, map, pick } from 'lodash'
 import UserService from '@/shared/services/user_service'
 import Flash from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [ChangeVolumeModalMixin]
@@ -31,9 +32,11 @@ export default
 
   methods:
     submit: ->
-      Records.users.updateProfile(@user).then =>
+      Records.users.updateProfile(@user)
+      .then =>
         @user.processing = false
         Flash.success 'email_settings_page.messages.updated'
+      .catch onError(@user)
 
     init: ->
       return unless Session.isSignedIn() or Session.user().restricted?

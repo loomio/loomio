@@ -2,6 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { compact, sortBy, without } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -23,9 +24,11 @@ export default
       @stance.stanceChoicesAttributes = @selectedOptionIds.map (id) =>
         poll_option_id: id
       actionName = if @stance.isNew() then 'created' else 'updated'
-      @stance.save().then =>
+      @stance.save()
+      .then =>
         @stance.poll().clearStaleStances()
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
+      .catch onError(@stance)
 
     orderedPollOptions: ->
       sortBy @pollOptions, 'priority'

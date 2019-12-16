@@ -2,6 +2,7 @@
 import { submitMembership } from '@/shared/helpers/form'
 import MembershipModalMixin from '@/mixins/membership_modal'
 import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [MembershipModalMixin]
@@ -12,10 +13,12 @@ export default
     isDisabled: false
   methods:
     submit: ->
-      @membership.save().then =>
+      @membership.save()
+      .then =>
         Flash.success "membership_form.updated"
         @closeModal()
-        
+      .catch onError(@membership)
+
 </script>
 <template lang="pug">
 v-card.membership-modal

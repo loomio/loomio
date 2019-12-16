@@ -4,7 +4,7 @@ import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import Flash  from '@/shared/services/flash'
-
+import { onError } from '@/shared/helpers/form'
 import { head, filter, sortBy } from 'lodash'
 
 export default
@@ -27,10 +27,12 @@ export default
     submit: ->
       @groupIdentity.customFields.slack_channel_id = @channel.id
       @groupIdentity.customFields.slack_channel_name = '#' + @channel.name
-      @groupIdentity.save().then =>
+      @groupIdentity.save()
+      .then =>
         Flash.success 'install_slack.install.slack_installed'
         @close()
         @$router.replace({ query: {} })
+      .catch onError(@groupIdentity)
 
   created: ->
     Records.users.fetchGroups().then =>

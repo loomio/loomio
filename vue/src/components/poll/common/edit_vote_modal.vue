@@ -4,6 +4,7 @@ import { iconFor }          from '@/shared/helpers/poll'
 import PollCommonDirective from '@/components/poll/common/directive.vue'
 import Flash   from '@/shared/services/flash'
 import _sortBy from 'lodash/sortBy'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -17,10 +18,12 @@ export default
   methods:
     submit: ->
       actionName = if @stance.isNew() then 'created' else 'updated'
-      @stance.save().then =>
+      @stance.save()
+      .then =>
         @stance.poll().clearStaleStances()
         Flash.success "poll_#{stance.poll().pollType}_vote_form.stance_#{actionName}"
         @close()
+      .catch onError(@poll)
 
     toggleCreation: ->
       @isEditing = false

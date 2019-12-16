@@ -3,7 +3,7 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
-import { submitDiscussion } from '@/shared/helpers/form'
+import { onError } from '@/shared/helpers/form'
 import { orderBy, debounce } from 'lodash'
 
 export default
@@ -20,13 +20,15 @@ export default
 
   methods:
     submit: ->
-      @selectedDiscussion.moveComments().then =>
+      @selectedDiscussion.moveComments()
+      .then =>
         @discussion.update(forkedEventIds: [])
         @discussion.update(isForking: false)
         @selectedDiscussion.update(forkedEventIds: [])
         @selectedDiscussion.update(isForking: false)
         @close()
         Flash.success("discussion_fork_actions.moved")
+      .catch onError(@selectedDiscussion)
 
     setIsForking: ->
       @selectedDiscussion.update(isForking: true)

@@ -3,6 +3,7 @@ import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import GroupIdentityModel from '@/shared/models/group_identity_model'
 import Flash  from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -16,9 +17,11 @@ export default
         event_kinds: GroupIdentityModel.validEventKinds
   methods:
     submit: ->
-      @groupIdentity.save().then =>
+      @groupIdentity.save()
+      .then =>
         Flash.success 'install_microsoft.form.webhook_installed'
         @close()
+      .catch onError(@groupIdentity)
 </script>
 <template lang="pug">
 v-card.install-microsoft-modal

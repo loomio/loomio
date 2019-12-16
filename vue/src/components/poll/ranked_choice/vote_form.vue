@@ -1,7 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-
+import { onError } from '@/shared/helpers/form'
 import { sortBy, find, matchesProperty, take, map } from 'lodash'
 
 export default
@@ -24,9 +24,11 @@ export default
         poll_option_id: option.id
         score:         @numChoices - index
       actionName = if @stance.isNew() then 'created' else 'updated'
-      @stance.save().then =>
+      @stance.save()
+      .then =>
         @stance.poll().clearStaleStances()
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
+      .catch onError(@stance)
 
     sortPollOptions: (pollOptions) ->
       optionsByPriority = sortBy pollOptions, 'priority'

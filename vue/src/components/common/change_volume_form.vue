@@ -3,6 +3,7 @@ import Session from '@/shared/services/session'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import GroupService from '@/shared/services/group_service'
 import Flash from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [ChangeVolumeModalMixin]
@@ -27,9 +28,11 @@ export default
 
   methods:
     submit: ->
-      @model.saveVolume(@volume, @applyToAll).then =>
+      @model.saveVolume(@volume, @applyToAll)
+      .then =>
         Flash.success 'change_volume_form.saved'
         @closeModal()
+      .catch onError(@model)  
 
     defaultApplyToAll: ->
       if @model.isA('user') then true else false

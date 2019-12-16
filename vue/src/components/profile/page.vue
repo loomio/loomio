@@ -9,6 +9,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import UserService    from '@/shared/services/user_service'
 import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   data: ->
@@ -52,8 +53,10 @@ export default
       @isDeleteUserModalOpen = false
 
     submit: ->
-      Records.users.updateProfile(@user).then =>
+      Records.users.updateProfile(@user)
+      .then =>
         Flash.success 'profile_page.messages.updated'
+      .catch onError(@user)
 
 </script>
 <template lang="pug">

@@ -2,6 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { optionColors, optionImages } from '@/shared/helpers/poll'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -18,10 +19,12 @@ export default
       @stance.stanceChoicesAttributes = [
         poll_option_id: @selectedOptionId
       ]
-      @stance.save().then =>
+      @stance.save()
+      .then =>
         @stance.poll().clearStaleStances()
         Flash.success "poll_#{stance.poll().pollType}_vote_form.stance_#{actionName}"
         @close()
+      .catch onError(@stance)
 
     orderedPollOptions: ->
       _.sortBy @stance.poll().pollOptions(), 'priority'

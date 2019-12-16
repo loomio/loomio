@@ -3,6 +3,7 @@ import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { sum, map, head, filter, without } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -26,9 +27,11 @@ export default
       @stance.id = null
       @stance.stanceChoicesAttributes = @stanceChoices if sum(map(@stanceChoices, 'score')) > 0
       actionName = if @stance.isNew() then 'created' else 'updated'
-      @stance.save().then =>
+      @stance.save()
+      .then =>
         @stance.poll().clearStaleStances()
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
+      .catch onError(@stance)
 
     rulesForChoice: (choice) ->
       [(v) => (v <= @maxForChoice(choice)) || @$t('poll_dot_vote_vote_form.too_many_dots')]

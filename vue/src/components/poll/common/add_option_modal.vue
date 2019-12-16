@@ -5,6 +5,7 @@ import EventBus from '@/shared/services/event_bus'
 import PollModalMixin from '@/mixins/poll_modal'
 import Flash  from '@/shared/services/flash'
 import {uniq, without, isEqual} from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [PollModalMixin]
@@ -18,10 +19,12 @@ export default
   methods:
     submit: ->
       @poll.addOption()
-      @poll.addOptions().then =>
+      @poll.addOptions()
+      .then =>
         @poll.removeOrphanOptions()
         Flash.success "poll_common_add_option.form.options_added"
         @close()
+      .catch onError(@poll)
 
 </script>
 

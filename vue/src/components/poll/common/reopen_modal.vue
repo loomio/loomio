@@ -2,6 +2,7 @@
 import Records from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
 import { addDays } from 'date-fns'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -10,13 +11,15 @@ export default
 
   created: ->
     @poll.closingAt = addDays(new Date, 7)
-    
+
   methods:
     submit: ->
-      @poll.reopen().then =>
+      @poll.reopen()
+      .then =>
         @poll.processing = false
         Flash.success "poll_common_reopen_form.#{@poll.pollType}_reopened"
         @close()
+      .catch onError(@poll)
   data: ->
     isDisabled: false
 </script>

@@ -6,6 +6,7 @@ import WatchRecords from '@/mixins/watch_records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import Flash from '@/shared/services/flash'
 import { filter } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [WatchRecords, AnnouncementModalMixin]
@@ -23,13 +24,16 @@ export default
         @availableGroups = filter(Session.user().formalGroups(), (group) => group.id != @discussion.groupId)
   methods:
     submit: ->
-      @discussion.move().then (data) =>
+      @discussion.move()
+      .then (data) =>
         Flash.success 'move_thread_form.messages.success', { name: @discussion.group().name }
         discussionKey = data.discussions[0].key
         Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
           @close()
           @$router.push("/d/#{discussionKey}")
           @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
+      .catch onError(@discussion)
+      
     updateTarget: ->
       @targetGroup = Records.groups.find(@discussion.groupId)
 

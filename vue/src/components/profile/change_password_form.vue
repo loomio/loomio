@@ -2,6 +2,7 @@
 import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -16,9 +17,11 @@ export default
 
   methods:
     submit: ->
-      Records.users.updateProfile(@user).then =>
+      Records.users.updateProfile(@user)
+      .then =>
         Flash.success "change_password_form.password_changed"
         @close()
+      .catch onError(@user)
 
 </script>
 <template lang="pug">

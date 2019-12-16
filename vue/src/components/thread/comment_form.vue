@@ -4,7 +4,7 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Flash  from '@/shared/services/flash'
-
+import { onError } from '@/shared/helpers/form'
 import { last } from 'lodash'
 
 export default
@@ -32,7 +32,8 @@ export default
       @shouldReset = !@shouldReset
 
     submit: ->
-      @comment.save().then =>
+      @comment.save()
+      .then =>
         @$emit('comment-submitted')
         flashMessage = if !@comment.isNew()
                         'comment_form.messages.updated'
@@ -42,6 +43,7 @@ export default
                         'comment_form.messages.created'
         Flash.success flashMessage, {name: @comment.parent().authorName() if @comment.isReply()}
         @reset()
+      .catch onError(@comment)
 
 </script>
 

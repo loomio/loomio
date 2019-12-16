@@ -7,6 +7,7 @@ import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import GroupModalMixin from '@/mixins/group_modal'
 import Flash   from '@/shared/services/flash'
 import { isEmpty } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [GroupModalMixin]
@@ -46,12 +47,14 @@ export default
         when 'closed' then @group.parentMembersCanSeeDiscussions
         when 'secret' then false
 
-      @group.save().then (data) =>
+      @group.save()
+      .then (data) =>
         groupKey = data.groups[0].key
         Flash.success "group_form.messages.group_#{@actionName}"
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
+      .catch onError(@group)
 
     suggestHandle: ->
       # if group is new, suggest handle whenever name changes

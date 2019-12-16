@@ -11,7 +11,7 @@ import Flash   from '@/shared/services/flash'
 import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
 import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge, orderBy} from 'lodash'
 import { encodeParams } from '@/shared/helpers/encode_params'
-
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -56,10 +56,12 @@ export default
     submit: ->
       @announcement.recipients = @recipients
       @announcement.invitedGroupIds = @invitedGroupIds
-      @announcement.save().then (data) =>
+      @announcement.save()
+      .then (data) =>
         @announcement.membershipsCount = data.memberships.length
         Flash.success('announcement.flash.success', { count: @announcement.membershipsCount })
         @close()
+      .catch onError(@announcement)
 
     tooManyInvitations: ->
         @showInvitationsRemaining && (@invitationsRemaining < @recipients.length)
