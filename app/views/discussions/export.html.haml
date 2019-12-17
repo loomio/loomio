@@ -2,4 +2,4 @@
 %b= @discussion.author.name + ", " + @discussion.created_at.to_formatted_s
 %p= render_rich_text(@discussion.body, @discussion.body_format)
 
-= render "thread_items", items: @discussion.items, depth: 1
+= render "thread_items", items: @discussion.items

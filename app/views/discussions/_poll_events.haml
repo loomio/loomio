@@ -1,0 +1,6 @@
+- events.select { |e| e.kind == 'stance_created' }.each do |event|
+  - stance = event.eventable
+  - participant = stance.participant_for_client
+  %b= participant.name + ", " + stance.created_at.to_formatted_s
+  - stance.stance_choices.order("score desc").each do |choice|
+    %p= choice.poll_option.name

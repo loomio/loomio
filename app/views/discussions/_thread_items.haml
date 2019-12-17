@@ -1,18 +1,7 @@
-- items.select { |i| i.depth == depth }.each do |item|
+- items.order("created_at desc").each do |item|
   - if item.kind == 'new_comment'
     %b= item.eventable.author.name + ", " + item.eventable.created_at.to_formatted_s
     %p= render_rich_text(item.eventable.body, item.eventable.body_format)
-    - if item.children.length
-      = render 'discussions/thread_items', items: item.children, depth: 2
 
   - if item.kind == 'poll_created'
-    %b= item.eventable.user.name + ", " + item.eventable.created_at.to_formatted_s
-    %p= item.eventable.title
-    %p= render_rich_text(item.eventable.details, item.eventable.details_format)
-    - if item.children.length
-      - item.children.select { |i| i.kind == 'stance_created' }.each do |item|
-        - stance = item.eventable
-        - participant = stance.participant_for_client
-        %b= participant.name + ", " + stance.created_at.to_formatted_s
-        - stance.stance_choices.order("score desc").each do |choice|
-          %p= choice.poll_option.name
+    = render "poll_created", item: item

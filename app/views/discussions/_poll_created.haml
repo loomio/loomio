@@ -1,0 +1,5 @@
+%b= item.eventable.user.name + ", " + item.eventable.created_at.to_formatted_s
+%p= item.eventable.title
+%p= render_rich_text(item.eventable.details, item.eventable.details_format)
+- if item.children.length
+  = render "poll_events", events: item.children
