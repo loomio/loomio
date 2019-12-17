@@ -161,35 +161,35 @@ module.exports = {
   //     page.expectText('.poll-common-stance-created__reason', 'A reason')
   //   })
   // },
-
-  'can_start_a_ranked_choice_in_a_group': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('test_discussion', { controller: 'polls' })
-    page.click('.activity-panel__add-poll')
-    page.click('.decision-tools-card__poll-type--ranked_choice')
-    // page.click('.poll-common-tool-tip__collapse')
-    page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
-    page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
-
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
-    page.click('.poll-common-form__submit')
-
-    page.expectElement('.announcement-form__submit')
-    page.click('.dismiss-modal-button')
-
-    page.expectText('.poll-common-card__title', 'A new proposal')
-    page.expectText('.poll-common-details-panel__details p', 'Some details')
-    page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
-    page.pause(500)
-    page.click('.poll-common-vote-form__submit')
-
-    page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-common-stance-choice--ranked_choice:first-child', 'An option')
-      page.expectText('.poll-common-stance-created__reason', 'A reason')
-    })
-  },
+  //
+  // 'can_start_a_ranked_choice_in_a_group': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('test_discussion', { controller: 'polls' })
+  //   page.click('.activity-panel__add-poll')
+  //   page.click('.decision-tools-card__poll-type--ranked_choice')
+  //   // page.click('.poll-common-tool-tip__collapse')
+  //   page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
+  //   page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
+  //
+  //   page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
+  //   page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
+  //   page.click('.poll-common-form__submit')
+  //
+  //   page.expectElement('.announcement-form__submit')
+  //   page.click('.dismiss-modal-button')
+  //
+  //   page.expectText('.poll-common-card__title', 'A new proposal')
+  //   page.expectText('.poll-common-details-panel__details p', 'Some details')
+  //   page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
+  //   page.pause(500)
+  //   page.click('.poll-common-vote-form__submit')
+  //
+  //   page.scrollTo('.stance-created', () => {
+  //     page.expectText('.poll-common-stance-choice--ranked_choice:first-child', 'An option')
+  //     page.expectText('.poll-common-stance-created__reason', 'A reason')
+  //   })
+  // },
 
   'can_set_an_outcome': (test) => {
     page = pageHelper(test)
