@@ -1161,6 +1161,8 @@ pt_BR:
     total: Total
   poll_poll_vote_form:
     stance_updated: Voto atualizado
+  poll_score_vote_form:
+    stance_updated: Voto atualizado
   poll_meeting_vote_form:
     your_response: Quando você pode participar?
   poll_dot_vote_vote_form:

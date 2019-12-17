@@ -13,10 +13,16 @@ fr:
     messages:
       email: Adresse e-mail non valide
       spoofed_media_type: Les contenus de ce fichier ne correspondent pas à son nom
+  group:
+    error:
+      handle_must_begin_with_parent_handle: "Doit commencer par %{parent_handle}"
   user:
     deleted_user: "Utilisateur supprimé"
     placeholder_name: "Utilisateur invité (%{hostname})"
     error:
+      sign_in_required_html: |
+          Vous devez être connecté pour commencer.
+          Veuillez <a href="/dashboard" target="_blank">vous connecter</a> puis recharger cette page pour continuer.
       recaptcha: "Nous n'avons pas pu confirmer que vous n'êtes pas un robot. Merci de réessayer!"
       bad_login: "Désolé, le mot de passe n’est pas le même que celui enregistré."
       username_must_be_alphanumeric: "Les identifiants doivent être composés uniquement de lettre en minuscules et/ou de chiffres"
@@ -130,6 +136,7 @@ fr:
       invitation_text_html: "vous a invité·e à rejoindre son groupe"
       link_help: "Cliquez sur le lien ci-dessous pour accepter l'invitation:"
       accept_invitation: "Accepter l'invitation"
+      stop_emails: "Cesser de recevoir des emails de %{site_name}"
     resend_to_join_group:
       subject: "%{member} attend que vous rejoignez %{group_name} sur %{site_name}"
     user_added_to_group:
