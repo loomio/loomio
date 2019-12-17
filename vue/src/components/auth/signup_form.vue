@@ -7,7 +7,6 @@ import AuthModalMixin from '@/mixins/auth_modal'
 import Flash from '@/shared/services/flash'
 import VueRecaptcha from 'vue-recaptcha';
 import openModal      from '@/shared/helpers/open_modal'
-import { hardReload } from '@/shared/helpers/window'
 
 export default
   components:

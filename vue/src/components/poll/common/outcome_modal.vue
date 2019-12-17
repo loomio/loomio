@@ -9,6 +9,7 @@ import Vue     from 'vue'
 import { exact } from '@/shared/helpers/format_time'
 import { parseISO } from 'date-fns'
 import { map, sortBy, head, find } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [PollModalMixin, AnnouncementModalMixin]
@@ -50,12 +51,14 @@ export default
       else
         actionName = "updated"
 
-      @clone.save().then (data) =>
+      @clone.save()
+      .then (data) =>
         eventData = find(data.events, (event) => event.kind == 'outcome_created') || {}
         event = Records.events.find(eventData.id)
         Flash.success("poll_common_outcome_form.outcome_#{actionName}")
         @closeModal()
         @openAnnouncementModal(Records.announcements.buildFromModel(event))
+      .catch onError(@clone)
 
     datesAsOptions: ->
       fieldFromTemplate @clone.poll().pollType, 'dates_as_options'

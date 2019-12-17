@@ -2,9 +2,10 @@
 import Records  from '@/shared/services/records'
 import AppConfig  from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
-import { submitPoll } from '@/shared/helpers/form'
 import PollModalMixin from '@/mixins/poll_modal'
+import Flash  from '@/shared/services/flash'
 import {uniq, without, isEqual} from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [PollModalMixin]
@@ -14,16 +15,17 @@ export default
 
   data: ->
     isDisabled: false
-    submit: null
 
-  created: ->
-    @submit = submitPoll @, @poll,
-      submitFn: @poll.addOptions
-      prepareFn: =>
-        @poll.addOption()
-      successCallback: =>
+  methods:
+    submit: ->
+      @poll.addOption()
+      @poll.addOptions()
+      .then =>
+        @poll.removeOrphanOptions()
+        Flash.success "poll_common_add_option.form.options_added"
         @close()
-      flashSuccess: "poll_common_add_option.form.options_added"
+      .catch onError(@poll)
+
 </script>
 
 <template lang="pug">
@@ -38,5 +40,5 @@ v-card.poll-common-add-option-modal
     poll-meeting-form-options-field(:poll="poll" v-if="poll.pollType == 'meeting'" add-options-only)
   v-card-actions
     v-spacer
-    v-btn(color="primary" :disabled="!poll.isModified()" @click='submit()' v-t="'poll_common_add_option.form.add_options'")
+    v-btn.poll-add-option__submit(color="primary" :disabled="!poll.isModified()" @click='submit()' v-t="'poll_common_add_option.form.add_options'")
 </template>

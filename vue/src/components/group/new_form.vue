@@ -3,10 +3,11 @@ import AppConfig      from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
 import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
-import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import GroupModalMixin from '@/mixins/group_modal'
+import Flash   from '@/shared/services/flash'
 import { isEmpty } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [GroupModalMixin]
@@ -20,7 +21,6 @@ export default
     rules: {
       required: (value) -> !!value || 'Required.'
     }
-    submit: null
     uploading: false
     progress: 0
 
@@ -31,30 +31,31 @@ export default
       customFields:
         pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
 
-    @submit = submitForm @, @group,
-      prepareFn: =>
-        allowPublic = @group.allowPublicThreads
-        @group.discussionPrivacyOptions = switch @group.groupPrivacy
-          when 'open'   then 'public_only'
-          when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
-          when 'secret' then 'private_only'
-
-        @group.parentMembersCanSeeDiscussions = switch @group.groupPrivacy
-          when 'open'   then true
-          when 'closed' then @group.parentMembersCanSeeDiscussions
-          when 'secret' then false
-      confirmFn: (model)          => @$t groupPrivacyConfirm(model)
-      flashSuccess:               => "group_form.messages.group_#{@actionName}"
-      successCallback: (data) =>
-        groupKey = data.groups[0].key
-        Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
-          @close()
-          @$router.push("/g/#{groupKey}")
-
   mounted: ->
     @suggestHandle()
 
   methods:
+    submit: ->
+      allowPublic = @group.allowPublicThreads
+      @group.discussionPrivacyOptions = switch @group.groupPrivacy
+        when 'open'   then 'public_only'
+        when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
+        when 'secret' then 'private_only'
+
+      @group.parentMembersCanSeeDiscussions = switch @group.groupPrivacy
+        when 'open'   then true
+        when 'closed' then @group.parentMembersCanSeeDiscussions
+        when 'secret' then false
+
+      @group.save()
+      .then (data) =>
+        groupKey = data.groups[0].key
+        Flash.success "group_form.messages.group_#{@actionName}"
+        Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
+          @close()
+          @$router.push("/g/#{groupKey}")
+      .catch onError(@group)
+
     suggestHandle: ->
       # if group is new, suggest handle whenever name changes
       # if group is old, suggest handle only if handle is empty

@@ -11,18 +11,17 @@ export default
   computed:
     fragment: ->
       "generated/components/fragments/#{@confirm.text.fragment}.html" if @confirm.text.fragment
-  created: ->
-    @submit = (args...) =>
+  methods:
+    submit: ->
       @isDisabled = true
-      @confirm.submit(args...).then =>
+      @confirm.submit().then =>
         @close()
         @$router.push "#{@confirm.redirect}"     if @confirm.redirect?
-        @confirm.successCallback(args...)        if typeof @confirm.successCallback is 'function'
+        @confirm.successCallback()        if typeof @confirm.successCallback is 'function'
         Flash.success @confirm.text.flash if @confirm.text.flash
       .finally =>
         @isDisabled = false
 
-      _.merge @, confirm.scope # not sure why this is necessary
 </script>
 
 <template lang="pug">

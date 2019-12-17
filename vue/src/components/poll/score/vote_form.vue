@@ -1,9 +1,8 @@
 <script lang="coffee">
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
-
-import { submitStance }  from '@/shared/helpers/form'
-
+import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 import { head, filter, map } from 'lodash'
 
 export default
@@ -15,12 +14,6 @@ export default
     stanceChoices: []
 
   created: ->
-    @submit = submitStance @, @stance,
-      prepareFn: =>
-        @$emit 'processing'
-        @stance.id = null
-        @stance.stanceChoicesAttributes = @stanceChoices
-
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
@@ -30,6 +23,16 @@ export default
             poll_option_id: option.id
             score: @stanceChoiceFor(option).score
   methods:
+    submit: ->
+      @stance.id = null
+      @stance.stanceChoicesAttributes = @stanceChoices
+      actionName = if @stance.isNew() then 'created' else 'updated'
+      @stance.save()
+      .then =>
+        @stance.poll().clearStaleStances()
+        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
+      .catch onError(@stance)
+
     stanceChoiceFor: (option) ->
       head(filter(@stance.stanceChoices(), (choice) =>
         choice.pollOptionId == option.id

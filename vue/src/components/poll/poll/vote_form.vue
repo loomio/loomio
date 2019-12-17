@@ -1,13 +1,10 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-import WatchRecords from '@/mixins/watch_records'
-
-import { submitStance }  from '@/shared/helpers/form'
-
+import Flash   from '@/shared/services/flash'
 import { compact, sortBy, without } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
-  mixins: [WatchRecords]
   props:
     stance: Object
 
@@ -21,14 +18,18 @@ export default
       query: (records) =>
         @pollOptions = @stance.poll().pollOptions() if @stance.poll()
 
-    @submit = submitStance @, @stance,
-      prepareFn: =>
-        @$emit 'processing'
-        @stance.id = null
-        @stance.stanceChoicesAttributes = @selectedOptionIds.map (id) =>
-          poll_option_id: id
-
   methods:
+    submit: ->
+      @stance.id = null
+      @stance.stanceChoicesAttributes = @selectedOptionIds.map (id) =>
+        poll_option_id: id
+      actionName = if @stance.isNew() then 'created' else 'updated'
+      @stance.save()
+      .then =>
+        @stance.poll().clearStaleStances()
+        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
+      .catch onError(@stance)
+
     orderedPollOptions: ->
       sortBy @pollOptions, 'priority'
 

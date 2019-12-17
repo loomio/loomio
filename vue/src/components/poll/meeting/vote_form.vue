@@ -2,8 +2,8 @@
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
-import { submitStance }  from '@/shared/helpers/form'
-
+import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 import {compact, map, toPairs, fromPairs, some, sortBy} from 'lodash'
 
 export default
@@ -33,17 +33,22 @@ export default
           poll: => @stance.poll()
           score: lastChoice.score
 
-    @submit = submitStance @, @stance,
-      prepareFn: =>
-        @$emit 'processing'
-        @stance.id = null
-        attrs = compact @stanceChoices.map (choice) ->
-          {poll_option_id: choice.id, score: choice.score} if choice.score > 0
-
-        if some(attrs)
-          @stance.stanceChoicesAttributes = attrs
-
   methods:
+    submit: ->
+      @stance.id = null
+      attrs = compact @stanceChoices.map (choice) ->
+        {poll_option_id: choice.id, score: choice.score} if choice.score > 0
+
+      if some(attrs)
+        @stance.stanceChoicesAttributes = attrs
+
+      actionName = if @stance.isNew() then 'created' else 'updated'
+      @stance.save()
+      .then =>
+        @stance.poll().clearStaleStances()
+        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
+      .catch onError(@stance)
+
     buttonStyleFor: (choice, score) ->
       if choice.score == score
         {opacity: 1}

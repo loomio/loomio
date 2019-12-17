@@ -155,16 +155,6 @@ module.exports = {
     page.expectText('.thread-preview', 'Dirty Dancing Shoes')
   },
 
-  // 'allows_logged_in_users_to_request_to_join_a_closed_group': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('view_closed_group_as_non_member')
-  //   page.click('.thread-preview__link')
-  //   page.click('.join-group-button', 1000)
-  //   page.click('.membership-request-form__submit-btn')
-  //   page.expectFlash('You have requested membership to Closed Dirty Dancing Shoes')
-  // },
-
   'adds_a_comment': (test) => {
     page = pageHelper(test)
 
