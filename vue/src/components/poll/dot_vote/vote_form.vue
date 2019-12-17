@@ -75,6 +75,7 @@ export default
 
 <template lang="pug">
 .poll-dot-vote-vote-form
+  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-subheader.poll-dot-vote-vote-form__dots-remaining(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
   .poll-dot-vote-vote-form__options
     .poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
@@ -85,8 +86,8 @@ export default
 
   poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
-  .poll-common-form-actions
-    poll-common-show-results-button(v-if='stance.isNew()')
+  v-card-actions.poll-common-form-actions
     v-spacer
+    poll-common-show-results-button(v-if='stance.isNew()')
     v-btn.poll-common-vote-form__submit(color="primary" :disabled="dotsRemaining < 0" @click="submit()" v-t="'poll_common.vote'")
 </template>

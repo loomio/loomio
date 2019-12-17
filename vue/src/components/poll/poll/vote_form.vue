@@ -60,8 +60,8 @@ export default
   poll-common-add-option-button(:poll='stance.poll()')
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason.animated(:stance='stance' v-show='selectedOptionIds.length')
-  v-card-actions
-    poll-common-show-results-button(v-show='!selectedOptionIds.length' v-if='stance.isNew()')
+  v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(v-show='selectedOptionIds.length' color="primary" @click='submit()', v-t="'poll_common.vote'")
+    poll-common-show-results-button(v-if='stance.isNew()')
+    v-btn.poll-common-vote-form__submit(:disabled='!selectedOptionIds.length' color="primary" @click='submit()', v-t="'poll_common.vote'")
 </template>

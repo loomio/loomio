@@ -81,6 +81,7 @@ export default
 <template lang='pug'>
 form.poll-meeting-vote-form(@submit.prevent='submit()')
   h3.lmo-card-subheading.lmo-flex__grow(v-t="'poll_meeting_vote_form.your_response'")
+  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   p(v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}")
   .poll-common-vote-form__options
     //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.can_attend'")
@@ -96,8 +97,8 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
-  .poll-common-form-actions.lmo-flex.lmo-flex__space-between
+  v-card-actions.poll-common-form-actions
+    v-spacer
     poll-common-show-results-button(v-if='stance.isNew()')
-    div(v-if='!stance.isNew()')
     v-btn.md-primary.md-raised.poll-common-vote-form__submit(type='submit', v-t="'poll_common.vote'", aria-label=" $t('poll_meeting_vote_form.vote')")
 </template>

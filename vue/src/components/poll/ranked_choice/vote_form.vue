@@ -44,8 +44,7 @@ export default
 
 <template lang='pug'>
 .poll-ranked-choice-vote-form.lmo-relative
-  h3.lmo-card-subheading(v-t="'poll_common.your_response'")
-  poll-common-anonymous-helptext(v-if='stance.poll().anonymous')
+  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   p.lmo-hint-text(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
   sortable-list(v-model="pollOptions")
     sortable-item(v-for="(option, index) in pollOptions" :index="index" :key="option.id" :item="option")
@@ -55,8 +54,8 @@ export default
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
-  .poll-common-form-actions.lmo-flex.lmo-flex__space-between
+  v-card-actions.poll-common-form-actions
+    v-spacer
     poll-common-show-results-button(v-if='stance.isNew()')
-    div(v-if='!stance.isNew()')
-    v-btn.md-primary.md-raised.poll-common-vote-form__submit(@click='submit()', v-t="'poll_common.vote'", aria-label="$t( 'poll_poll_vote_form.vote')")
+    v-btn.poll-common-vote-form__submit(color="primary" @click='submit()', v-t="'poll_common.vote'", aria-label="$t( 'poll_poll_vote_form.vote')")
 </template>

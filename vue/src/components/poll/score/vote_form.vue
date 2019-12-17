@@ -47,6 +47,7 @@ export default
 
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
+  poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   .poll-score-vote-form__options
     .poll-score-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
       v-subheader.poll-score-vote-form__option-label {{ optionFor(choice).name }}
@@ -57,7 +58,7 @@ form.poll-score-vote-form(@submit.prevent='submit()')
   poll-common-add-option-button(:poll='stance.poll()')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
-    poll-common-show-results-button(v-if='stance.isNew()')
     v-spacer
+    poll-common-show-results-button(v-if='stance.isNew()')
     v-btn.poll-common-vote-form__submit(color="primary" type='submit' v-t="'poll_common.vote'")
 </template>
