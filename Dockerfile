@@ -12,6 +12,9 @@ ENV MALLOC_ARENA_MAX=2
 RUN gem update --system
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
 
+# for activestorage previews
+RUN apt-get install -y imagemagick ffmpeg mupdf
+
 # for postgres
 RUN apt-get install -y libpq-dev
 
