@@ -43,7 +43,7 @@ export default
 .poll-common-action-panel(v-if='!poll.closedAt')
   //- poll-common-directive(v-if='userHasVoted', :stance='stance', name='change-your-vote')
   div(v-show='!userHasVoted')
-    v-subheader(v-t="'poll_common.your_response'")
+    h3.py-3(v-t="'poll_common.your_response'")
     poll-common-directive(v-if='userCanParticipate', :stance='stance', name='vote-form')
     .poll-common-unable-to-vote(v-if='!userCanParticipate')
       p.lmo-hint-text(v-t="'poll_common_action_panel.unable_to_vote'")
