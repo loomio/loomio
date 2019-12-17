@@ -1,6 +1,12 @@
-- items.order("created_at desc").each do |item|
+- items.order("created_at asc").each do |item|
   - if item.kind == 'new_comment'
-    %b= item.eventable.author.name + ", " + item.eventable.created_at.to_formatted_s
+    - comment = item.eventable
+    %table
+      %tr
+        %td= render "base_mailer/avatar", user: comment.author
+        %td
+          %b= comment.author.name
+    -# %b= item.eventable.author.name + ", " + item.eventable.created_at.to_formatted_s
     %p= render_rich_text(item.eventable.body, item.eventable.body_format)
 
   - if item.kind == 'poll_created'

@@ -1,5 +1,10 @@
 %h1= @discussion.title
-%b= @discussion.author.name + ", " + @discussion.created_at.to_formatted_s
+%table
+  %tr
+    %td= render "base_mailer/avatar", user: @discussion.author
+    %td
+      %b= @discussion.author.name
+-# %b= @discussion.author.name + ", " + @discussion.created_at.to_formatted_s
 %p= render_rich_text(@discussion.body, @discussion.body_format)
 
 = render "thread_items", items: @discussion.items
