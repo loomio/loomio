@@ -11,7 +11,7 @@ class CommentService
 
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
-    comment.delay(priority: 1).destroy
+    comment.destroy
     EventBus.broadcast('comment_destroy', comment)
   end
 

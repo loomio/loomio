@@ -5,7 +5,7 @@ class Events::InvitationCreated < Event
 
   def trigger!
     super
-    eventable.mailer.delay(priority: 1).invitation_created(eventable, self)
+    eventable.mailer.delay(queue: :invitation_emails).invitation_created(eventable, self)
     eventable.increment!(:send_count)
   end
 end

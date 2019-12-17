@@ -3,8 +3,8 @@ import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-
-import { submitForm }    from '@/shared/helpers/form'
+import Flash  from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 import { last } from 'lodash'
 
 export default
@@ -31,31 +31,19 @@ export default
     reset: ->
       @shouldReset = !@shouldReset
 
-    init: ->
-      @newComment = @comment.isNew()
-      @submit = submitForm @, @comment,
-        submitFn: =>
-          @comment.save()
-        flashSuccess: =>
-          EventBus.$emit 'commentSaved'
-          if !@newComment
-            'comment_form.messages.updated'
-          else if @comment.isReply()
-            'comment_form.messages.replied'
-          else
-            'comment_form.messages.created'
-        flashOptions:
-          name: =>
-            @comment.parent().authorName() if @comment.isReply()
-        successCallback: (data) =>
-          @$emit('comment-submitted')
-          @reset()
-          @init()
-
-      # submitOnEnter @, element: $element
-  mounted: ->
-    @init()
-
+    submit: ->
+      @comment.save()
+      .then =>
+        @$emit('comment-submitted')
+        flashMessage = if !@comment.isNew()
+                        'comment_form.messages.updated'
+                      else if @comment.isReply()
+                        'comment_form.messages.replied'
+                      else
+                        'comment_form.messages.created'
+        Flash.success flashMessage, {name: @comment.parent().authorName() if @comment.isReply()}
+        @reset()
+      .catch onError(@comment)
 
 </script>
 

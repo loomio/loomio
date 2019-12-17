@@ -8,14 +8,14 @@ import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import UserService    from '@/shared/services/user_service'
-
-import { submitForm }   from '@/shared/helpers/form'
-import { hardReload }   from '@/shared/helpers/window'
+import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   data: ->
     isDisabled: false
     user: null
+    originalUser: null
 
   created: ->
     @init()
@@ -31,13 +31,13 @@ export default
   methods:
     init: ->
       return unless Session.isSignedIn()
-      @originalUser = Session.user()
-      @user = @originalUser.clone()
-      Session.updateLocale(@user.locale)
-      @submit = submitForm @, @user,
-        flashSuccess: 'profile_page.messages.updated'
-        submitFn: Records.users.updateProfile
-        successCallback: @init
+      @watchRecords
+        key: Session.user().id
+        collections: ['users']
+        query: =>
+          @originalUser = Session.user()
+          @user = @originalUser.clone()
+          Session.updateLocale(@user.locale)
 
     changePicture: ->
       openModal
@@ -52,6 +52,11 @@ export default
     closeDeleteUserModal: ->
       @isDeleteUserModalOpen = false
 
+    submit: ->
+      Records.users.updateProfile(@user)
+      .then =>
+        Flash.success 'profile_page.messages.updated'
+      .catch onError(@user)
 
 </script>
 <template lang="pug">
@@ -77,8 +82,9 @@ v-content
                   v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required='ng-required', v-model='user.email')
                   validation-errors(:subject='user', field='email')
 
-                v-flex.profile-page__avatar(justify-center @click="changePicture()")
-                  user-avatar(:user='originalUser' size='featured' :no-link="true")
+                .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
+                  user-avatar.mb-4(:user='originalUser' size='featured' :no-link="true")
+                  v-btn(color="accent" @click="changePicture" v-t="'profile_page.change_picture_link'")
 
               lmo-textarea(:model='user' field="shortBio" :label="$t('profile_page.short_bio_label')" :placeholder="$t('profile_page.short_bio_placeholder')")
               validation-errors(:subject='user', field='shortBio')

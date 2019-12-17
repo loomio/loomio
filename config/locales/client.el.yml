@@ -271,9 +271,6 @@ el:
     edited_by: 'Επεξεργάστηκε από <strong>{{name}}</strong>'
     posted: Δημοσιεύθηκε
     current_revision: Τελευταία
-  group_wizard:
-    invite_people: Προσκαλέστε άτομα
-    start_thread: Ξεκινήστε μια συζήτηση
   group_page:
     threads: Θέματα
     members: Μέλη

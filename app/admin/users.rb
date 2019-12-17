@@ -118,6 +118,8 @@ ActiveAdmin.register User do
 
     render 'emails', { emails: Ahoy::Message.where(user_id: user.id).order("id DESC").limit(30) }
 
+    render 'visits', { visits: Visit.where(user_id: user.id).order("started_at DESC").limit(30) }
+
     panel("Identities") do
       table_for user.identities.each do |identity|
         column :id
@@ -160,7 +162,7 @@ ActiveAdmin.register User do
   member_action :merge, method: :post do
     source = User.friendly.find(params[:id])
     destination = User.find_by!(email: params[:destination_email].strip)
-    MigrateUserService.delay(priority: 10).migrate!(source: source, destination: destination)
+    MigrateUserWorker.perform_async(source.id, destination.id)
     redirect_to admin_user_path(destination)
   end
 

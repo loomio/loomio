@@ -2,6 +2,7 @@ export default {
   'common': {
     'slight_smile': '🙂',
     'heart': '❤️',
+    'tada': '🎉',
     'thumbsup': '👍',
     'thumbsdown': '👎',
     'ok_hand': '👌',
@@ -333,7 +334,6 @@ export default {
     'christmas_tree': '🎄',
     'gift': '🎁',
     'tanabata_tree': '🎋',
-    'tada': '🎉',
     'confetti_ball': '🎊',
     'balloon': '🎈',
     'crossed_flags': '🎌',
@@ -519,6 +519,10 @@ export default {
     'eggplant': '🍆',
     'tomato': '🍅',
     'corn': '🌽',
+    'arrow_right': '➡️',
+    'arrow_left': '⬅️',
+    'arrow_up': '⬆️',
+    'arrow_down': '⬇️'
   },
   'places': {
     'house': '🏠',

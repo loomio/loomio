@@ -1,9 +1,10 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import { iconFor }          from '@/shared/helpers/poll'
-import { submitStance }  from '@/shared/helpers/form'
 import PollCommonDirective from '@/components/poll/common/directive.vue'
+import Flash   from '@/shared/services/flash'
 import _sortBy from 'lodash/sortBy'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -11,15 +12,19 @@ export default
     close: Function
   data: ->
     isEditing: true
-    dstance: @stance.clone()
   components:
     PollCommonDirective: PollCommonDirective
 
-  created: ->
-    @submit = submitStance(@, @stance)
-    EventBus.$on 'stanceSaved', => @close()
-    # EventBus.broadcast $rootScope, 'refreshStance'
   methods:
+    submit: ->
+      actionName = if @stance.isNew() then 'created' else 'updated'
+      @stance.save()
+      .then =>
+        @stance.poll().clearStaleStances()
+        Flash.success "poll_#{stance.poll().pollType}_vote_form.stance_#{actionName}"
+        @close()
+      .catch onError(@poll)
+
     toggleCreation: ->
       @isEditing = false
   computed:
@@ -45,7 +50,7 @@ v-card.poll-common-edit-vote-modal
     v-card-text
       v-layout.mb-3(align-center wrap)
         poll-common-directive(:size="48" :stance-choice="choice", name="stance-choice", v-if="choice.id && choice.score > 0", v-for="choice in orderedStanceChoices" :key="choice.id")
-        v-btn(color="accent" outlined @click="toggleCreation()", v-t="'poll_common.change_vote'")
+        v-btn.poll-common-edit-vote__button(color="accent" outlined @click="toggleCreation()", v-t="'poll_common.change_vote'")
       .poll-common-stance-reason
         lmo-textarea.poll-common-vote-form__reason(:model='stance', field='reason', :label="$t('poll_common.reason')", :placeholder="$t('poll_common.reason_placeholder')", maxlength="500")
     v-card-actions

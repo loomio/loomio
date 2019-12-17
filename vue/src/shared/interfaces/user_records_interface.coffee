@@ -23,8 +23,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface
 
   updateProfile: (user) =>
     user.processing = true
-    @remote.post('update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })).finally ->
-      user.processing = false
+    @remote.post('update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })).finally -> user.processing = false
 
   uploadAvatar: (file) =>
     @remote.upload 'upload_avatar', file

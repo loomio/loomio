@@ -1,10 +1,11 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { submitDiscussion } from '@/shared/helpers/form'
 import { map, sortBy, filter } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
+import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -14,9 +15,13 @@ export default
   data: ->
     clone: @discussion.clone()
 
-  mounted: ->
-    @submit = submitDiscussion @, @clone,
-      successCallback: (data) => @close()
+  methods:
+    submit: ->
+      @clone.save()
+      .then =>
+        @close()
+        Flash.success("discussion_form.messages.updated")
+      .catch onError(@clone)
 
 </script>
 
@@ -47,30 +52,30 @@ v-card.thread-arrangement-form
           space
           span(v-t="'thread_arrangement_form.latest_description'")
 
-    //- v-subheader(v-t="'thread_arrangement_form.replies'")
-    //- v-radio-group(v-model="clone.maxDepth")
-    //-   v-radio(:value="1")
-    //-     template(v-slot:label)
-    //-       strong(v-t="'thread_arrangement_form.linear'")
-    //-       space
-    //-       | -
-    //-       space
-    //-       span(v-t="'thread_arrangement_form.linear_description'")
-    //-   v-radio(:value="2")
-    //-     template(v-slot:label)
-    //-       strong(v-t="'thread_arrangement_form.nested_once'")
-    //-       space
-    //-       | -
-    //-       space
-    //-       span(v-t="'thread_arrangement_form.nested_once_description'")
-    //-   v-radio(:value="3")
-    //-     template(v-slot:label)
-    //-       strong(v-t="'thread_arrangement_form.nested_twice'")
-    //-       space
-    //-       | -
-    //-       space
-    //-       span(v-t="'thread_arrangement_form.nested_twice_description'")
-    //- v-alert(type="warning" v-if="clone.maxDepth != discussion.maxDepth" v-t="'thread_arrangement_form.changing_nesting_is_slow'")
+    v-subheader(v-t="'thread_arrangement_form.replies'")
+    v-radio-group(v-model="clone.maxDepth")
+      v-radio(:value="1")
+        template(v-slot:label)
+          strong(v-t="'thread_arrangement_form.linear'")
+          space
+          | -
+          space
+          span(v-t="'thread_arrangement_form.linear_description'")
+      v-radio(:value="2")
+        template(v-slot:label)
+          strong(v-t="'thread_arrangement_form.nested_once'")
+          space
+          | -
+          space
+          span(v-t="'thread_arrangement_form.nested_once_description'")
+      //- v-radio(:value="3")
+      //-   template(v-slot:label)
+      //-     strong(v-t="'thread_arrangement_form.nested_twice'")
+      //-     space
+      //-     | -
+      //-     space
+      //-     span(v-t="'thread_arrangement_form.nested_twice_description'")
+    v-alert(type="warning" v-if="clone.maxDepth != discussion.maxDepth" v-t="'thread_arrangement_form.changing_nesting_is_slow'")
   v-card-actions
     v-spacer
     v-btn(color="primary" @click="submit()" v-t="'common.action.save'")

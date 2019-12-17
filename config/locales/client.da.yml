@@ -344,9 +344,6 @@ da:
     edited_by: 'Redigeret af <strong>{{name}}</strong>'
     posted: Gemt
     current_revision: Seneste
-  group_wizard:
-    invite_people: Inviter folk
-    start_thread: Start en diskussion
   group_page:
     threads: Debatter
     members: Medlemmer

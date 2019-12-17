@@ -62,8 +62,10 @@ v-content
       .inbox-page__no-groups(v-show='groups.length == 0')
         p(v-t="'inbox_page.no_groups.explanation'")
         button.lmo-btn-link--blue(v-t="'inbox_page.no_groups.start'", @click='startGroup()')
+        | &nbsp;
         span(v-t="'inbox_page.no_groups.or'")
-        span(v-t="'inbox_page.no_groups.join_group'")
+        | &nbsp;
+        span(v-html="$t('inbox_page.no_groups.join_group')")
       .inbox-page__group(v-for='group in groups', :key='group.id')
         v-card.mb-3(v-if='views[group.key].length > 0')
           v-card-title

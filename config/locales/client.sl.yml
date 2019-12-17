@@ -245,9 +245,6 @@ sl:
     email_label: Email
     messages:
       membership_requested: 'Zaprosil/a si za članstvo v {{group}}'
-  group_wizard:
-    invite_people: Povabi še koga
-    start_thread: Začni razpravo
   group_page:
     threads: Razprave
     members: Člani

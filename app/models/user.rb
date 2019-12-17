@@ -9,6 +9,7 @@ class User < ApplicationRecord
   include HasMailer
   include CustomCounterCache::Model
   include HasRichText
+  include LocalesHelper
 
   is_rich_text    on: :short_bio
 
@@ -347,7 +348,7 @@ class User < ApplicationRecord
   end
 
   def locale
-    selected_locale || detected_locale || I18n.locale
+    first_supported_locale([selected_locale, detected_locale].compact)
   end
 
   def update_detected_locale(locale)

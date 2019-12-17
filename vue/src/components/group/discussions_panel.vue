@@ -63,7 +63,7 @@ export default
       @publicGroupIds = @group.publicOrganisationIds()
 
       @groupIds = switch (@$route.query.subgroups || 'mine')
-        when 'mine' then uniq(concat(intersection(@group.organisationIds(), Session.user().groupIds()), @publicGroupIds)) # the groups that i'm a member of + any public groups?
+        when 'mine' then uniq(concat(intersection(@group.organisationIds(), Session.user().groupIds()), @publicGroupIds, @group.id)) # @group.id is present if @group is a subgroup of parentgroup that i'm a member of, and that parent group has parentMembersCanSeeDiscussions
         when 'all' then @group.organisationIds()
         else [@group.id]
 
@@ -183,22 +183,25 @@ div.discussions-panel(v-if="group")
     v-btn.discussions-panel__new-thread-button(@click='openStartDiscussionModal(group)' color='primary' v-if='canStartThread' v-t="'navbar.start_thread'")
 
   v-card.discussions-panel(outlined)
-    .discussions-panel__content(v-if="!$route.query.q")
-      .discussions-panel__list--empty.pa-4(v-if='noThreads' :value="true")
-        p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
-        p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
-      .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
-        v-list.thread-previews(two-line)
-          thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)
+    div(v-if="loader.status == 403")
+      p.pa-4.text-center(v-t="'error_page.forbidden'")
+    div(v-else)
+      .discussions-panel__content(v-if="!$route.query.q")
+        .discussions-panel__list--empty.pa-4(v-if='noThreads' :value="true")
+          p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
+          p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
+        .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
+          v-list.thread-previews(two-line)
+            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)
 
-        v-layout(justify-center)
-          v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+          v-layout(justify-center)
+            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 
-        .lmo-hint-text.discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
+          .lmo-hint-text.discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
 
-    .discussions-panel__content.pa-4(v-if="$route.query.q")
-      p.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading' v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")
-      thread-search-result(v-else v-for="result in searchResults" :key="result.id" :result="result")
+      .discussions-panel__content.pa-4(v-if="$route.query.q")
+        p.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading' v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")
+        thread-search-result(v-else v-for="result in searchResults" :key="result.id" :result="result")
 </template>
 
 <style lang="sass">

@@ -40,6 +40,7 @@ module GroupService
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group
+    group.update(handle: "#{parent.handle}-#{group.handle}") if group.handle?
     group.update(parent: parent, subscription_id: nil)
     EventBus.broadcast('group_move', group, parent, actor)
   end
@@ -47,7 +48,7 @@ module GroupService
   def self.export(group: , actor: )
     actor.ability.authorize! :show, group
     group_ids = actor.groups.where(id: group.all_groups).pluck(:id)
-    GroupExportJob.perform_later(group_ids: group_ids, actor: actor, group_name: group.name)
+    GroupExportWorker.perform_async(group_ids, group.name, actor.id)
   end
 
   def self.merge(source:, target:, actor:)
@@ -74,5 +75,21 @@ module GroupService
 
       source.destroy
     end
+  end
+
+  def self.suggest_handle(name:, parent_handle:)
+    attempt = 0
+    while(Group.where(handle: generate_handle(name, parent_handle, attempt)).exists?) do
+      attempt += 1
+    end
+    generate_handle(name, parent_handle, attempt)
+  end
+
+  private
+
+  def self.generate_handle(name, parent_handle, attempt)
+    [parent_handle,
+     name,
+     (attempt == 0) ? nil : attempt].compact.map{|t| t.to_s.strip.parameterize}.join('-')
   end
 end

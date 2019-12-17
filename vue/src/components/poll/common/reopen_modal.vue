@@ -1,7 +1,8 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import { submitForm } from '@/shared/helpers/form'
+import Flash   from '@/shared/services/flash'
 import { addDays } from 'date-fns'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -10,16 +11,21 @@ export default
 
   created: ->
     @poll.closingAt = addDays(new Date, 7)
-    @submit = submitForm @, @poll,
-      submitFn: @poll.reopen
-      flashSuccess: "poll_common_reopen_form.#{@poll.pollType}_reopened"
-      successCallback: => @close()
+
+  methods:
+    submit: ->
+      @poll.reopen()
+      .then =>
+        @poll.processing = false
+        Flash.success "poll_common_reopen_form.#{@poll.pollType}_reopened"
+        @close()
+      .catch onError(@poll)
   data: ->
     isDisabled: false
 </script>
 
 <template lang="pug">
-v-card.poll-common-modal
+v-card.poll-common-reopen-modal
   submit-overlay(:value='poll.processing')
   v-card-title
     h1.headline(v-t="'poll_common_reopen_form.title'")

@@ -65,6 +65,13 @@ module.exports = {
     page.expectText('.discussions-panel__list', 'Vaya con dios', 20000)
   },
 
+  'closed_subgroup_whose_parent_members_can_see_private_threads': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_subgroup_with_parent_member_visibility')
+    page.expectText('.discussions-panel__list', 'Vaya con dios', 20000)
+  },
+
   'starts_an_open_group': (test) => {
     page = pageHelper(test)
 
@@ -89,11 +96,9 @@ module.exports = {
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-closed')
     page.expectNoElement('.group-form__joining')
-    // page.expectElement('.group-form__allow-public-threads')
 
     page.fillIn('#group-name', 'Closed please')
     page.click('.group-form__submit-button')
-    // page.expectText('.group-privacy-button', 'CLOSED')
     page.expectFlash('Group started')
   },
 
@@ -105,12 +110,10 @@ module.exports = {
 
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-secret')
-    // page.expectNoElement('.group-form__allow-public-threads', 2000)
     page.expectNoElement('.group-form__joining')
 
     page.fillIn('.group-form__name input', 'Secret please')
     page.click('.group-form__submit-button')
-    // page.expectText('.group-privacy-button', 'SECRET')
     page.expectFlash('Group started')
   },
 

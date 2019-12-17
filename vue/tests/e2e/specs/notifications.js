@@ -11,7 +11,7 @@ notificationTexts = [
   'shared an outcome',
   'poll is closing soon',
   'started a poll',
-  'reacted 😄 to your comment',
+  'reacted 🙂 to your comment',
   'made you an admin',
   'participated in',
   'added options to'

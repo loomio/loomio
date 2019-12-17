@@ -40,9 +40,7 @@ describe 'DiscussionService' do
       before { discussion.stub(:valid?).and_return(true) }
 
       it 'syncs the discussion search vector' do
-        SearchVector.should_receive(:index!).with(discussion.id)
-        DiscussionService.create(discussion: discussion,
-                                 actor: user)
+        expect {DiscussionService.create(discussion: discussion, actor: user) }.to change {SearchVector.where(discussion_id: discussion.id).count}.by(1)
       end
 
       it 'notifies new mentions' do
@@ -149,10 +147,9 @@ describe 'DiscussionService' do
       end
 
       it 'syncs the discussion search vector' do
-        SearchVector.should_receive(:index!).with(discussion.id)
-        DiscussionService.update discussion: discussion,
-                                 params: discussion_params,
-                                 actor: user
+        DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)
+        discussion_params[:description] = "merry christmas everyone"
+        expect {DiscussionService.update(discussion: discussion, params: discussion_params, actor: user) }.to change {SearchVector.where(discussion_id: discussion.id).first.search_vector}
       end
 
       it 'creates a version with updated title / description / private values' do
@@ -295,8 +292,8 @@ describe 'DiscussionService' do
 
     context 'actor is permitted' do
       it 'deletes the discussion' do
-        discussion.should_receive :destroy!
         DiscussionService.destroy(discussion: discussion, actor: user)
+        expect(discussion.discarded_at).to_not eq nil
       end
     end
 

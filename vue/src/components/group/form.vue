@@ -2,9 +2,11 @@
 import AppConfig      from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
 import Records  from '@/shared/services/records'
+import Flash   from '@/shared/services/flash'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
-import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
+import { isEmpty } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -18,32 +20,46 @@ export default
       required: (value) ->
         !!value || 'Required.'
     }
-    submit: null
     uploading: false
     progress: 0
 
   mounted: ->
     @featureNames = AppConfig.features.group
-    @submit = submitForm @, @clone,
-      prepareFn: =>
-        allowPublic = @clone.allowPublicThreads
-        @clone.discussionPrivacyOptions = switch @clone.groupPrivacy
-          when 'open'   then 'public_only'
-          when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
-          when 'secret' then 'private_only'
+    @suggestHandle()
 
-        @clone.parentMembersCanSeeDiscussions = switch @clone.groupPrivacy
-          when 'open'   then true
-          when 'closed' then @clone.parentMembersCanSeeDiscussions
-          when 'secret' then false
-      confirmFn: (model)          => @$t groupPrivacyConfirm(model)
-      flashSuccess:               => "group_form.messages.group_#{@actionName}"
-      successCallback: (data) =>
+  methods:
+    submit: ->
+      allowPublic = @clone.allowPublicThreads
+      @clone.discussionPrivacyOptions = switch @clone.groupPrivacy
+        when 'open'   then 'public_only'
+        when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
+        when 'secret' then 'private_only'
+
+      @clone.parentMembersCanSeeDiscussions = switch @clone.groupPrivacy
+        when 'open'   then true
+        when 'closed' then @clone.parentMembersCanSeeDiscussions
+        when 'secret' then false
+
+      @clone.save()
+      .then (data) =>
         @isExpanded = false
         groupKey = data.groups[0].key
+        Flash.success("group_form.messages.group_#{@actionName}")
         @close()
         @$router.push("/g/#{groupKey}")
-  methods:
+      .catch onError(@clone)
+
+    suggestHandle: ->
+      # if group is new, suggest handle whenever name changes
+      # if group is old, suggest handle only if handle is empty
+      if @group.isNew() or isEmpty(@group.handle)
+        parentHandle = if @group.parent()
+          @group.parent().handle
+        else
+          null
+        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
+          @clone.handle = data.handle
+
     expandForm: ->
       @isExpanded = true
 
@@ -131,13 +147,15 @@ v-card.group-form
         v-img.group_form__file-select(:src="group.coverUrl()" width="100%"  @click="selectCoverPhoto()")
         group-avatar.group_form__file-select.group_form__logo.white(v-if="!group.parentId" :group="group" size="72px" :on-click="selectLogo" :elevation="4")
         v-text-field.group-form__name#group-name.mt-4(v-model='clone.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
+        v-text-field.group-form__handle#group-handle(v-model='clone.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
+        validation-errors(:subject="group" field="handle")
         v-spacer
 
         input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto')
         input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo')
 
         lmo-textarea.group-form__group-description(:model='clone' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
-        validation-errors(:subject="clone", field="name")
+        validation-errors(:subject="clone" field="name")
 
       v-tab-item.mt-8
         .group-form__section.group-form__privacy

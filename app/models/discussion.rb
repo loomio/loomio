@@ -17,6 +17,7 @@ class Discussion < ApplicationRecord
   include HasCreatedEvent
   include HasRichText
   extend  NoSpam
+  include Discard::Model
 
   no_spam_for :title, :description
 

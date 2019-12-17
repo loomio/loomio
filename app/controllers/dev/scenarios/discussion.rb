@@ -61,7 +61,7 @@ module Dev::Scenarios::Discussion
     jennifer.update(email_catch_up: true)
     CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion), actor: patrick)
     DiscussionService.close(discussion: create_discussion, actor: patrick)
-    UserMailer.catch_up(jennifer, 1.hour.ago).deliver_now
+    UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now
     last_email
   end
 

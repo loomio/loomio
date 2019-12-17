@@ -1,13 +1,10 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
-import WatchRecords from '@/mixins/watch_records'
-
-import { submitStance }  from '@/shared/helpers/form'
-
+import Flash   from '@/shared/services/flash'
 import { compact, sortBy, without } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
-  mixins: [WatchRecords]
   props:
     stance: Object
 
@@ -19,16 +16,20 @@ export default
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
-        @pollOptions = @stance.poll().pollOptions()
-
-    @submit = submitStance @, @stance,
-      prepareFn: =>
-        @$emit 'processing'
-        @stance.id = null
-        @stance.stanceChoicesAttributes = @selectedOptionIds.map (id) =>
-          poll_option_id: id
+        @pollOptions = @stance.poll().pollOptions() if @stance.poll()
 
   methods:
+    submit: ->
+      @stance.id = null
+      @stance.stanceChoicesAttributes = @selectedOptionIds.map (id) =>
+        poll_option_id: id
+      actionName = if @stance.isNew() then 'created' else 'updated'
+      @stance.save()
+      .then =>
+        @stance.poll().clearStaleStances()
+        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
+      .catch onError(@stance)
+
     orderedPollOptions: ->
       sortBy @pollOptions, 'priority'
 
@@ -59,8 +60,8 @@ export default
   poll-common-add-option-button(:poll='stance.poll()')
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason.animated(:stance='stance' v-show='selectedOptionIds.length')
-  v-card-actions
-    poll-common-show-results-button(v-show='!selectedOptionIds.length' v-if='stance.isNew()')
+  v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(v-show='selectedOptionIds.length' color="primary" @click='submit()', v-t="'poll_common.vote'")
+    poll-common-show-results-button(v-if='stance.isNew()')
+    v-btn.poll-common-vote-form__submit(:disabled='!selectedOptionIds.length' color="primary" @click='submit()', v-t="'poll_common.vote'")
 </template>

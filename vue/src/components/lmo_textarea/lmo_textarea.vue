@@ -1,10 +1,12 @@
 <script lang="coffee">
+import { detect } from 'detect-browser'
 import tippy from 'tippy.js'
 import Records from '@/shared/services/records'
 import {concat, sortBy, isString, filter, uniq, map, forEach, isEmpty} from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
 import detectIt from 'detect-it'
+import EventBus                 from '@/shared/services/event_bus'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
@@ -42,6 +44,7 @@ import Image from '@/shared/tiptap_extentions/image.js'
 import marked from 'marked'
 import {customRenderer, options} from '@/shared/helpers/marked.coffee'
 marked.setOptions Object.assign({renderer: customRenderer()}, options)
+import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 
 export default
   props:
@@ -172,8 +175,10 @@ export default
       sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
     format: ->
       @model["#{@field}Format"]
-    isTouchDevice: ->
-      detectIt.primaryInput == 'touch'
+
+    inlineBubbleMenu: ->
+      browser = detect()
+      browser.name == 'firefox' || browser.name == 'safari' || detectIt.primaryInput == 'touch'
 
   created: ->
     @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
@@ -183,19 +188,21 @@ export default
 
   methods:
     setLinkUrl: (command) ->
-      command({ href: @linkUrl })
-      @linkUrl = null
+      if @linkUrl
+        @linkUrl = "http://".concat(@linkUrl) unless @linkUrl.includes("://")
+        command({ href: @linkUrl })
+        @linkUrl = null
       @linkDialogIsOpen = false
       @editor.focus()
 
     setIframeUrl: (command) ->
-      command({ src: @iframeUrl })
+      command({ src: getEmbedLink(@iframeUrl) })
       @iframeUrl = null
       @iframeDialogIsOpen = false
       @editor.focus()
 
     emitUploading: ->
-      @$emit('is-uploading', !(@model.files.length == @files.length && @model.imageFiles.length == @imageFiles.length))
+      @$emit('is-uploading', !((@model.files || []).length == @files.length && (@model.imageFiles || []).length == @imageFiles.length))
 
     emojiPicked: (shortcode, unicode) ->
       { view } = this.editor
@@ -292,6 +299,11 @@ export default
         @popup = null
       @observer.disconnect() if @observer
 
+    reset: ->
+      @editor.clearContent()
+      @files = []
+      @imageFiles = []
+
   watch:
     linkDialogIsOpen: (val) ->
       return unless val && @$refs.focus
@@ -301,10 +313,7 @@ export default
       requestAnimationFrame => @$refs.focus.focus()
     files: -> @updateModel()
     imageFiles: -> @updateModel()
-    shouldReset: ->
-      @editor.clearContent()
-      @files = []
-      @imageFiles = []
+    shouldReset: -> @reset()
 
   beforeDestroy: ->
     @editor.destroy()
@@ -315,33 +324,18 @@ div
   label.caption.v-label.v-label--active.theme--light {{label}}
   .editor.mb-3
     editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
-    editor-menu-bubble(v-if="!isTouchDevice" :editor='editor' v-slot='{ commands, isActive, menu }')
+    editor-menu-bubble(v-if="!inlineBubbleMenu" :editor='editor' v-slot='{ commands, isActive, menu }')
       .menububble(:class="{'is-active': menu.isActive}" :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`")
-        v-tooltip(bottom)
-          template(v-slot:activator="{ on }")
-            v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' v-on="on")
-              v-icon mdi-format-bold
-          span(v-t="'formatting.bold'")
-        v-tooltip(bottom)
-          template(v-slot:activator="{ on }")
-            v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' v-on="on")
-              v-icon mdi-format-italic
-          span(v-t="'formatting.italicize'")
-        v-tooltip(bottom)
-          template(v-slot:activator="{ on }")
-            v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' v-on="on")
-              v-icon mdi-format-strikethrough
-          span(v-t="'formatting.strikethrough'")
-        v-tooltip(bottom)
-          template(v-slot:activator="{ on }")
-            v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' v-on="on")
-              v-icon mdi-format-underline
-          span(v-t="'formatting.underline'")
-        v-tooltip(bottom)
-          template(v-slot:activator="{ on }")
-            v-btn(small icon v-on="on" @click="linkDialogIsOpen = true")
-              v-icon mdi-link-variant
-          span(v-t="'formatting.link'")
+        v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' :title="$t('formatting.bold')")
+          v-icon mdi-format-bold
+        v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' :title="$t('formatting.italicize')")
+          v-icon mdi-format-italic
+        v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' :title="$t('formatting.strikethrough')")
+          v-icon mdi-format-strikethrough
+        v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' :title="$t('formatting.underline')")
+          v-icon mdi-format-underline
+        v-btn(small icon @click="linkDialogIsOpen = true" :title="$t('formatting.link')")
+          v-icon mdi-link-variant
         v-dialog(v-model="linkDialogIsOpen" max-width="600px")
           v-card
             v-card-title.title(v-t="'text_editor.insert_link'")
@@ -359,32 +353,17 @@ div
               v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
                 v-icon mdi-emoticon-outline
             emoji-picker(:insert="emojiPicked")
-          v-tooltip(bottom v-if="isTouchDevice")
-            template(v-slot:activator="{ on }")
-              v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' v-on="on")
-                v-icon mdi-format-bold
-            span(v-t="'formatting.bold'")
-          v-tooltip(bottom v-if="isTouchDevice")
-            template(v-slot:activator="{ on }")
-              v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' v-on="on")
-                v-icon mdi-format-italic
-            span(v-t="'formatting.italicize'")
-          v-tooltip(bottom v-if="isTouchDevice")
-            template(v-slot:activator="{ on }")
-              v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' v-on="on")
-                v-icon mdi-format-strikethrough
-            span(v-t="'formatting.strikethrough'")
-          v-tooltip(bottom v-if="isTouchDevice")
-            template(v-slot:activator="{ on }")
-              v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' v-on="on")
-                v-icon mdi-format-underline
-            span(v-t="'formatting.underline'")
-          v-tooltip(bottom v-if="isTouchDevice")
-            template(v-slot:activator="{ on }")
-              v-btn(small icon v-on="on" @click="linkDialogIsOpen = true")
-                v-icon mdi-link-variant
-            span(v-t="'formatting.link'")
-          v-dialog(v-if="isTouchDevice" v-model="linkDialogIsOpen" max-width="600px")
+          v-btn(v-if="inlineBubbleMenu" small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' :title="$t('formatting.bold')")
+            v-icon mdi-format-bold
+          v-btn(v-if="inlineBubbleMenu" small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' :title="$t('formatting.italicize')")
+            v-icon mdi-format-italic
+          v-btn(v-if="inlineBubbleMenu" small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' :title="$t('formatting.strikethrough')")
+            v-icon mdi-format-strikethrough
+          v-btn(v-if="inlineBubbleMenu" small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' :title="$t('formatting.underline')")
+            v-icon mdi-format-underline
+          v-btn(v-if="inlineBubbleMenu" small icon @click="linkDialogIsOpen = true")
+            v-icon mdi-link-variant
+          v-dialog(v-if="inlineBubbleMenu" v-model="linkDialogIsOpen" max-width="600px")
             v-card
               v-card-title.title(v-t="'text_editor.insert_link'")
               v-card-text
@@ -392,117 +371,57 @@ div
               v-card-actions
                 v-spacer
                 v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()' v-on="on")
-                v-icon mdi-paperclip
-            span(v-t="'formatting.attach'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })' v-on="on")
-                v-icon mdi-format-header-1
-            span(v-t="'formatting.heading1'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })' v-on="on")
-                v-icon mdi-format-header-2
-            span(v-t="'formatting.heading2'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })' v-on="on")
-                v-icon mdi-format-header-3
-            span(v-t="'formatting.heading3'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list' v-on="on")
-                v-icon mdi-format-list-bulleted
-            span(v-t="'formatting.bullet_list'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list' v-on="on")
-                v-icon mdi-format-list-numbered
-            span(v-t="'formatting.number_list'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(icon @click='commands.todo_list' v-on="on")
-                v-icon mdi-format-list-checks
-            span(v-t="'formatting.check_list'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(small icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote' v-on="on")
-                v-icon mdi-format-quote-close
-            span(v-t="'formatting.quote'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(small icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block' v-on="on")
-                v-icon mdi-code-braces
-            span(v-t="'formatting.code_block'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(small icon v-on="on" @click="iframeDialogIsOpen = true")
-                v-icon mdi-youtube
-            span(v-t="'formatting.embed'")
+          v-btn(icon :class="{ 'is-active': isActive.underline() }", @click='$refs.filesField.click()' :title="$t('formatting.attach')")
+            v-icon mdi-paperclip
+          v-btn(icon :class="{ 'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })' :title="$t('formatting.heading1')")
+            v-icon mdi-format-header-1
+          v-btn(icon :class="{ 'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })' :title="$t('formatting.heading2')")
+            v-icon mdi-format-header-2
+          v-btn(icon :class="{ 'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })' :title="$t('formatting.heading3')")
+            v-icon mdi-format-header-3
+          v-btn(icon :class="{ 'is-active': isActive.bullet_list() }", @click='commands.bullet_list' :title="$t('formatting.bullet_list')")
+            v-icon mdi-format-list-bulleted
+          v-btn(icon :class="{ 'is-active': isActive.ordered_list() }", @click='commands.ordered_list' :title="$t('formatting.number_list')")
+            v-icon mdi-format-list-numbered
+          v-btn(icon @click='commands.todo_list' :title="$t('formatting.check_list')")
+            v-icon mdi-format-list-checks
+          v-btn(small icon :class="{ 'is-active': isActive.blockquote() }", @click='commands.blockquote' :title="$t('formatting.quote')")
+            v-icon mdi-format-quote-close
+          v-btn(small icon :class="{ 'is-active': isActive.code_block() }", @click='commands.code_block' :title="$t('formatting.code_block')")
+            v-icon mdi-code-braces
+          v-btn(small icon @click="iframeDialogIsOpen = true" :title="$t('formatting.embed')")
+            v-icon mdi-youtube
           v-dialog(v-model="iframeDialogIsOpen" max-width="600px")
             v-card
               v-card-title.title(v-t="'text_editor.insert_embedded_url'")
               v-card-text
-                v-text-field(type="url" label="https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
+                v-text-field(type="url" label="e.g. https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
               v-card-actions
                 v-spacer
                 v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(icon @click='commands.horizontal_rule' v-on="on")
-                v-icon mdi-minus
-            span(v-t="'formatting.divider'")
-          v-tooltip(bottom)
-            template(v-slot:activator="{ on }")
-              v-btn(icon @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })" v-on="on")
-                v-icon mdi-table
-            span(v-t="'formatting.add_table'")
+          v-btn(icon @click='commands.horizontal_rule' :title="$t('formatting.divider')")
+            v-icon mdi-minus
+          v-btn(icon @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })" :title="$t('formatting.add_table')")
+            v-icon mdi-table
           span(v-if="isActive.table()")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(icon @click="commands.deleteTable" v-on="on")
-                  v-icon mdi-table-remove
-              span(v-t="'formatting.remove_table'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(icon @click="commands.addColumnBefore" v-on="on")
-                  v-icon mdi-table-column-plus-before
-              span(v-t="'formatting.add_column_before'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(icon @click="commands.addColumnAfter" v-on="on")
-                  v-icon mdi-table-column-plus-after
-              span(v-t="'formatting.add_column_after'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(icon @click="commands.deleteColumn" v-on="on")
-                  v-icon mdi-table-column-remove
-              span(v-t="'formatting.remove_column'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(icon @click="commands.addRowBefore" v-on="on")
-                  v-icon mdi-table-row-plus-before
-              span(v-t="'formatting.add_row_before'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(icon @click="commands.addRowAfter" v-on="on")
-                  v-icon mdi-table-row-plus-after
-              span(v-t="'formatting.add_row_after'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(icon @click="commands.deleteRow" v-on="on")
-                  v-icon mdi-table-row-remove
-              span(v-t="'formatting.remove_row'")
-            v-tooltip(bottom)
-              template(v-slot:activator="{ on }")
-                v-btn(icon @click="commands.toggleCellMerge" v-on="on")
-                  v-icon mdi-table-merge-cells
-              span(v-t="'formatting.merge_selected'")
+            v-btn(icon @click="commands.deleteTable" :title="$t('formatting.remove_table')")
+              v-icon mdi-table-remove
+            v-btn(icon @click="commands.addColumnBefore" :title="$t('formatting.add_column_before')")
+              v-icon mdi-table-column-plus-before
+            v-btn(icon @click="commands.addColumnAfter" :title="$t('formatting.add_column_after')")
+              v-icon mdi-table-column-plus-after
+            v-btn(icon @click="commands.deleteColumn" :title="$t('formatting.remove_column')")
+              v-icon mdi-table-column-remove
+            v-btn(icon @click="commands.addRowBefore" :title="$t('formatting.add_row_before')")
+              v-icon mdi-table-row-plus-before
+            v-btn(icon @click="commands.addRowAfter" :title="$t('formatting.add_row_after')")
+              v-icon mdi-table-row-plus-after
+            v-btn(icon @click="commands.deleteRow" :title="$t('formatting.remove_row')")
+              v-icon mdi-table-row-remove
+            v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
+              v-icon mdi-table-merge-cells
         slot(name="actions")
-    v-alert(v-if="maxLength && model[field].length > maxLength" color='error')
+    v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')

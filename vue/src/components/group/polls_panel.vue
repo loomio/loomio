@@ -115,11 +115,14 @@ export default
             v-list-item-title(v-t="'poll_types.'+pollType")
       v-text-field(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_polls', {name: group.name})" append-icon="mdi-magnify")
     v-card(outlined)
-      v-list(two-line avatar v-if='polls.length')
-        poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
+      div(v-if="loader.status == 403")
+        p.pa-4.text-center(v-t="'error_page.forbidden'")
+      div(v-else)
+        v-list(two-line avatar v-if='polls.length')
+          poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
 
-      p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
+        p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
 
-      v-layout(justify-center)
-        v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+        v-layout(justify-center)
+          v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
 </template>

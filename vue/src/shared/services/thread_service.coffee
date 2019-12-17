@@ -73,17 +73,17 @@ export default new class ThreadService
       canPerform: -> AbilityService.canUnpinThread(discussion)
       perform: => @unpin(discussion)
 
-    mute_thread:
-      name: 'volume_levels.mute'
-      icon: 'mdi-volume-mute'
-      canPerform: -> !discussion.isMuted()
-      perform: => @mute(discussion)
-
-    unmute_thread:
-      name: 'volume_levels.unmute'
-      icon: 'mdi-volume-high'
-      canPerform: -> discussion.isMuted()
-      perform: => @mute(discussion)
+    # mute_thread:
+    #   name: 'volume_levels.mute'
+    #   icon: 'mdi-volume-mute'
+    #   canPerform: -> !discussion.isMuted()
+    #   perform: => @mute(discussion)
+    #
+    # unmute_thread:
+    #   name: 'volume_levels.unmute'
+    #   icon: 'mdi-volume-high'
+    #   canPerform: -> discussion.isMuted()
+    #   perform: => @mute(discussion)
 
     dismiss_thread:
       name: 'dashboard_page.mark_as_read'
@@ -258,7 +258,7 @@ export default new class ThreadService
           text:
             title: 'pin_thread_modal.title'
             flash: 'discussion.pin.pinned'
-            fragment: 'pin_thread'
+            helptext: 'pin_thread_modal.helptext'
         )
     else
       thread.savePin().then =>

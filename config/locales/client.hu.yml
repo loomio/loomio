@@ -677,24 +677,6 @@ hu:
     thread_status:
       pinned: "Ezt a témát rögzítették. Az összes felhasználó számára a témák listájának tetején fog maradni."
       closed: "Ezt a témát lezárták. Már nem jelenik meg a műszerfalon, és a csoportoldal „lezárt” részében kerül felsorolásra"
-  user_wizard:
-    welcome: Üdvözlünk!
-    change_picture: Adj hozzá képet
-    change_picture_description: Tölts fel egy képet a profilodba
-    setup_profile: Profil beállítása
-    setup_profile_description: Segíts másoknak
-  group_wizard:
-    welcome: Siker!
-    welcome_description: Sikeresen létrehoztál egy új szervezetet a Loomio-n. Néhány lépésen keresztül a közösségi oldal beállításra kerül, hogy készen álljon a beszélgetések megkezdésére. Ha egyelőre ki akarod hagyni ezt a varázslót, akkor később ismét megnyithatod a Beállítások lapon.
-    setup_profile: Profil beállítása
-    setup_profile_description: Állítsa be a csoport leírását, logóját és borítóképét
-    invite_people: Hívj meg embereket
-    invite_people_description: Sorolj fel e-maileket, amelyekkel meghívásokat küldhetsz, vagy másold le a linket, hogy megoszthasd másokkal
-    setup_integrations: Összekapcsolás beállítása
-    setup_integrations_description: Loomio összekapcsolása Slack-el vagy a Microsoft Teams-el
-    start_thread: Kezdj el egy megbeszélést
-    start_thread_description: Írjon üdvözlő üzenetet, beszélje meg csoportja célját, vagy ossza meg az utolsó találkozó jegyzőkönyvét
-    do_it: Menjünk
   group_page:
     threads: Témák
     polls: Szavazások
@@ -1230,6 +1212,7 @@ hu:
     sorting: Legrégebbi vagy legújabb elől?
     latest: Legújabb
     earliest: Legrégebbi
+    nested_once: Beágyazott
   delete_thread_form:
     aria_label: 'Törölje a témát'
     title: Törölje a témát
@@ -1621,7 +1604,6 @@ hu:
         <p>A kördiagram áttekintést nyújt a csoport helyzetéről, míg a hozzászólások lehetővé teszik az egyéni vélemények meghallgatását. </p>
         <p> Nem szabad elkedvetlenedni, ha eleinte nem sikerül megállapodni, a javaslatokat olyan kérdések felvázolására tervezték, amelyeket meg kell oldani.</p>
         <p> jó részvétel mellett a javaslat erős felhatalmazás a cselekvéshez.</p>
-    tool_tip_collapsed: Erősítsd meg az egyetértést, kérj magyarázatot vagy ellenőrizd, hogy van-e kifogás
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése
     tip: Keresd a közös egyetértést olyan folyamaton keresztül, amely lehetővé teszi az összes vélemény meghallgatását. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Tudj meg többet</a>
@@ -1862,8 +1844,6 @@ hu:
     set_password: Állítsd be a jelszót
     set_password_helptext: A következő alkalommal szeretne jelszót használni?
     hello: "Üdvözlet, {{name}}!"
-    new_to_loomio: Először jelent meg a(z) {{site_name}} oldalon? Hozzon létre egy fiókot
-    already_a_user: Használt korábban a {{site_name}}? Írja be az e-mail címet, amelyet utoljára használt a kapcsolat összekapcsolásához.
     link_accounts: Fiókok összekapcsolása
     check_your_email: Nézd meg az e-mailedet!
     login_link_sent: "Küldtünk egy e-mailt a(z) {{email}} címre."

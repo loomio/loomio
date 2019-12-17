@@ -1,0 +1,8 @@
+---
+:queues:
+  - login_emails
+  - notification_emails
+  - mailers
+  - default
+  - low_priority
+  - catch_up_emails

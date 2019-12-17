@@ -3,7 +3,7 @@ import {approximate, exact, timeline} from '@/shared/helpers/format_time'
 # this is a vue mixin
 export default
   methods:
-    scrollTo: (selector) ->
+    scrollTo: (selector, callback) ->
       waitFor = (selector, fn) ->
         if document.querySelector(selector)
           fn()
@@ -14,11 +14,8 @@ export default
           , 500
 
       waitFor selector, =>
-        # console.log 'scrolling to', selector
         @$vuetify.goTo(selector, duration: 0)
-        setTimeout =>
-          @$vuetify.goTo(selector, duration: 0)
-        , 1000
+        callback() if callback
     approximateDate: (date) -> approximate(date)
     exactDate: (date) -> exact(date)
     timelineDate: (date) -> timeline(date)

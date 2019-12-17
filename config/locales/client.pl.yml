@@ -422,9 +422,6 @@ pl:
     thread_status:
       pinned: "Ten wątek został przypięty. Zostanie na samej górze listy wątków dla wszystkich członków grupy."
       closed: "Ten wątek został zamknięty. Nie będzie się więcej pojawiał w głównym panelu i będzie wyświetlał się pod \"Zamkniętymi\" na stronie grupy."
-  group_wizard:
-    invite_people: Zaproś ludzi
-    start_thread: Rozpocznij dyskusję
   group_page:
     threads: Wątki
     members: Członkowie

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_193247) do
+ActiveRecord::Schema.define(version: 2019_12_10_011354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -137,23 +137,6 @@ ActiveRecord::Schema.define(version: 2019_10_15_193247) do
     t.datetime "updated_at"
   end
 
-  create_table "delayed_jobs", id: :serial, force: :cascade do |t|
-    t.integer "priority", default: 0
-    t.integer "attempts", default: 0
-    t.text "handler"
-    t.text "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string "locked_by", limit: 255
-    t.string "queue", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
-    t.index ["priority"], name: "index_delayed_jobs_on_priority"
-    t.index ["run_at", "locked_at", "locked_by", "failed_at"], name: "index_delayed_jobs_on_ready"
-  end
-
   create_table "discussion_readers", id: :serial, force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at"
@@ -212,8 +195,10 @@ ActiveRecord::Schema.define(version: 2019_10_15_193247) do
     t.jsonb "info", default: {}, null: false
     t.integer "max_depth", default: 2, null: false
     t.boolean "newest_first", default: false, null: false
+    t.datetime "discarded_at"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
+    t.index ["discarded_at"], name: "index_discussions_on_discarded_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
     t.index ["guest_group_id"], name: "index_discussions_on_guest_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true
@@ -269,6 +254,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_193247) do
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true
     t.index ["discussion_id"], name: "index_events_on_discussion_id"
+    t.index ["eventable_id"], name: "events_eventable_id_idx"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["kind"], name: "index_events_on_kind"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
@@ -379,6 +365,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_193247) do
     t.index ["parent_id"], name: "index_groups_on_parent_id"
     t.index ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions"
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
+    t.index ["subscription_id"], name: "groups_subscription_id_idx"
     t.index ["token"], name: "index_groups_on_token", unique: true
     t.index ["type"], name: "index_groups_on_type"
   end
@@ -451,6 +438,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_193247) do
     t.string "url"
     t.integer "actor_id"
     t.index ["event_id"], name: "index_notifications_on_event_id"
+    t.index ["user_id", "created_at"], name: "notifications_user_id_created_at_idx"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -755,6 +743,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_193247) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
+    t.index ["remember_token"], name: "users_remember_token_idx"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
@@ -795,6 +784,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_193247) do
     t.string "utm_content"
     t.string "utm_campaign"
     t.datetime "started_at"
+    t.index ["user_id"], name: "index_visits_on_user_id"
   end
 
   create_table "webhooks", id: :serial, force: :cascade do |t|

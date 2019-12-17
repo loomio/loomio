@@ -26,21 +26,22 @@ import InstallSlackPage from './components/install_slack/page.vue'
 
 import ThreadNav from './components/thread/nav'
 
+import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
 
 groupPageChildren = [
-  {path: 'polls', component: GroupPollsPanel}
-  {path: 'members', component: MembersPanel}
-  {path: 'membership_requests', component: MembershipRequestsPanel}
-  {path: 'members/requests', redirect: 'membership_requests' }
-  {path: 'subgroups', component: GroupSubgroupsPanel}
-  {path: 'files', component: GroupFilesPanel}
-  {path: 'settings', component: GroupSettingsPanel}
-  {path: ':stub?', component: GroupDiscussionsPanel}
-  {path: 'slack/install', component: InstallSlackPage}
+  {path: 'polls', component: GroupPollsPanel, meta: {noScroll: true}}
+  {path: 'members', component: MembersPanel, meta: {noScroll: true}}
+  {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}}
+  {path: 'members/requests', redirect: 'membership_requests', meta: {noScroll: true}}
+  {path: 'subgroups', component: GroupSubgroupsPanel, meta: {noScroll: true}}
+  {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}}
+  {path: 'settings', component: GroupSettingsPanel, meta: {noScroll: true}}
+  {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
+  {path: 'slack/install', component: InstallSlackPage, meta: {noScroll: true}}
 ]
 
 threadPageChildren = [
@@ -52,8 +53,15 @@ threadPageChildren = [
 
 export default new Router
   mode: 'history'
+
   scrollBehavior: (to, from, savedPosition) ->
-    { x: 0, y: 0 }
+    if savedPosition
+      savedPosition
+    else if (to.meta.noScroll and from.meta.noScroll)
+      window.scrollHeight
+    else
+      { x: 0, y: 0 }
+
   routes: [
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
@@ -67,7 +75,7 @@ export default new Router
     {path: '/d/new', component: StartDiscussionPage },
     {path: '/d/:key', name: 'discussion', component: ThreadPage, children: threadPageChildren },
     {path: '/g/new', component: StartGroupPage},
-    {path: '/g/:key', component: GroupPage, children: groupPageChildren},
+    {path: '/g/:key', component: GroupPage, children: groupPageChildren, name: 'groupKey'},
     {path: '/:key', component: GroupPage, children: groupPageChildren},
     {path: '/', redirect: '/dashboard' }
   ]

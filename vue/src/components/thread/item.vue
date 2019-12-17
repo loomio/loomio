@@ -5,13 +5,13 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 
-import { submitForm } from '@/shared/helpers/form'
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
 import { includes, camelCase } from 'lodash'
 import RangeSet from '@/shared/services/range_set'
 
 export default
   props:
+    isReturning: Boolean
     event:
       type: Object
       required: true
@@ -53,7 +53,10 @@ export default
     iconSize: -> if (@event.depth == 1) then 40 else 24
 
     isUnread: ->
-      (Session.user().id != @event.actorId) && !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
+      Session.isSignedIn() &&
+      Session.user().id != @event.actorId &&
+      @isReturning && @discussion &&
+      !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
     headline: ->
       @$t eventHeadline(@event, true ), # useNesting

@@ -81,9 +81,6 @@ be_BY:
     heading: Запытаць пра далучэнне да групы
     name_label: Імя
     email_label: Email
-  group_wizard:
-    invite_people: Запрасіць людзей
-    start_thread: Распачаць абмеркаванне
   group_page:
     threads: Абмеркаванні
     members: Удзельнікі

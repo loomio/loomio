@@ -21,19 +21,17 @@ namespace :loomio do
   end
 
   task hourly_tasks: :environment do
-    UserService.delay.delete_many_spam(ENV['DELETE_MANY_SPAM'])
-
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
 
     if ENV['EMAIL_CATCH_UP_WEEKLY']
-      SendWeeklyCatchUpEmailJob.perform_later
+      SendWeeklyCatchUpEmailWorker.perform_async
     else
-      SendDailyCatchUpEmailJob.perform_later
+      SendDailyCatchUpEmailWorker.perform_async
     end
 
     AnnouncementService.delay.resend_pending_invitations
-    LocateUsersAndGroupsJob.perform_later
+    LocateUsersAndGroupsWorker.perform_async
     if (Time.now.hour == 0)
       UsageReportService.send
       ExamplePollService.delay.cleanup
@@ -49,6 +47,10 @@ namespace :loomio do
   end
 
   task update_subscription_members_counts: :environment do
-    SubscriptionService.delay.update_changed_members_counts
+    if Date.today.wday == 3
+      SubscriptionService.delay.update_changed_members_counts(['pp-basic-annual', 'pp-pro-annual', 'pp-community-annual'])
+    end
+    SubscriptionService.delay.update_changed_members_counts(['pp-basic-monthly', 'pp-pro-monthly'])
   end
+
 end

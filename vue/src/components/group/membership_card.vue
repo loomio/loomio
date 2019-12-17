@@ -74,9 +74,9 @@ export default
 
     records: ->
       if @pending
-        @group.pendingMemberships()
+        Records.memberships.find(groupId: @group.id, acceptedAt: null)
       else
-        @group.activeMemberships()
+        Records.memberships.find(groupId: @group.id, acceptedAt: {$ne: null})
 
     invite: ->
       @openAnnouncementModal(Records.announcements.buildFromModel(@group.targetModel()))

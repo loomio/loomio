@@ -9,13 +9,13 @@ describe SearchVector do
     let!(:poll) { create :poll, discussion: discussion, title: "Water Wombats", details: "Phishing Fail" }
 
     it 'can index multiple discussions' do
-      SearchVector.index! [discussion.id, another_discussion.id]
+      SearchIndexWorker.new.perform([discussion.id, another_discussion.id])
       expect(discussion.reload.search_vector).to be_present
       expect(another_discussion.reload.search_vector).to be_present
     end
 
     it 'includes discussion info' do
-      SearchVector.index! discussion.id
+      SearchIndexWorker.new.perform([discussion.id])
       expect(vector.search_vector).to match /rabid/
       expect(vector.search_vector).to match /wombat/
       expect(vector.search_vector).to match /render/
@@ -23,13 +23,13 @@ describe SearchVector do
     end
 
     it 'includes comment body info' do
-      SearchVector.index! discussion.id
+      SearchIndexWorker.new.perform([discussion.id])
       expect(vector.search_vector).to match /wellb/
       expect(vector.search_vector).to match /seminar/
     end
 
     it 'includes poll info' do
-      SearchVector.index! discussion.id
+      SearchIndexWorker.new.perform([discussion.id])
       expect(vector.search_vector).to match /water/
       expect(vector.search_vector).to match /phish/
     end

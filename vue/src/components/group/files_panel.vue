@@ -108,23 +108,26 @@ div
   v-layout.py-2(align-center wrap)
     v-text-field(clearable hide-details solo @change="handleSearchQueryChange" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
   v-card.group-files-panel(outlined)
-    p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
-    v-simple-table(v-else :items="items" hide-default-footer)
-      thead
-        tr
-          th(v-t="'group_files_panel.filename'")
-          th(v-t="'group_files_panel.uploaded_by'")
-          th(v-t="'group_files_panel.uploaded_at'")
-      tbody
-        tr(v-for="item in items" :key="item.id")
-          td
-            v-layout(align-center)
-              v-icon mdi-{{item.icon}}
-              a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
-          td
-            user-avatar(:user="item.author()")
-          td
-            time-ago(:date="item.createdAt")
-    v-layout(justify-center)
-      v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="loadMore()" v-t="'common.action.load_more'")
+    div(v-if="loader.status == 403")
+      p.pa-4.text-center(v-t="'error_page.forbidden'")
+    div(v-else)
+      p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
+      v-simple-table(v-else :items="items" hide-default-footer)
+        thead
+          tr
+            th(v-t="'group_files_panel.filename'")
+            th(v-t="'group_files_panel.uploaded_by'")
+            th(v-t="'group_files_panel.uploaded_at'")
+        tbody
+          tr(v-for="item in items" :key="item.id")
+            td
+              v-layout(align-center)
+                v-icon mdi-{{item.icon}}
+                a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
+            td
+              user-avatar(:user="item.author()")
+            td
+              time-ago(:date="item.createdAt")
+      v-layout(justify-center)
+        v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="loadMore()" v-t="'common.action.load_more'")
 </template>

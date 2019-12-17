@@ -12,23 +12,24 @@ export default
     user: Object
   data: ->
     vars: {}
+    loading: false
+
   methods:
     signIn: ->
-      # EventBus.emit $scope, 'processing'
       @user.name = @vars.name if @vars.name?
-      AuthService.signIn(@user).finally => 'doneProcessing'
+      AuthService.signIn(@user).finally =>
+        @loading = false
 
     signInAndSetPassword: ->
-      LmoUrlService.params('set_password', true)
+      @$router.replace(query: {set_password: true})
       @signIn()
 
     sendLoginLink: ->
-      # EventBus.emit $scope, 'processing'
-      AuthService.sendLoginLink(@user).finally ->
-        # EventBus.emit $scope, 'doneProcessing'
-        console.log 'doneProcessing'
+      AuthService.sendLoginLink(@user).finally =>
+        @loading = false
 
     submit: ->
+      @loading = true
       if @user.hasPassword or @user.hasToken
         @signIn()
       else
@@ -42,9 +43,9 @@ export default
     h2.title.text-center(v-t="{ path: 'auth_form.welcome_back', args: { name: user.firstName() } }")
   .auth-signin-form__token.text-center(v-if='user.hasToken')
     validation-errors(:subject='user', field='token')
-    v-btn.my-4.auth-signin-form__submit(color="primary" @click='submit()' v-if='!user.errors.token')
+    v-btn.my-4.auth-signin-form__submit(color="primary" @click='submit()' v-if='!user.errors.token' :loading="loading")
       span(v-t="{ path: 'auth_form.sign_in_as', args: {name: user.name}}")
-    v-btn.my-4.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token')
+    v-btn.my-4.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token' :loading="loading")
       span(v-t="'auth_form.login_link'")
     p
       span(v-t="'auth_form.set_password_helptext'")
@@ -60,13 +61,13 @@ export default
       validation-errors(:subject='user', field='password')
 
       v-card-actions
-        v-btn.auth-signin-form__login-link(:color="user.hasPassword ? '' : 'primary'" v-t="'auth_form.login_link'" @click='sendLoginLink()')
+        v-btn.auth-signin-form__login-link(:color="user.hasPassword ? '' : 'primary'" v-t="'auth_form.login_link'" @click='sendLoginLink()' :loading="loading && !user.password")
         v-spacer
-        v-btn.auth-signin-form__submit(:color="user.hasPassword ? 'primary' : ''" v-t="'auth_form.sign_in'" @click='submit()' :disabled='!user.password' v-if='user.hasPassword')
+        v-btn.auth-signin-form__submit(:color="user.hasPassword ? 'primary' : ''" v-t="'auth_form.sign_in'" @click='submit()' :disabled='!user.password' v-if='user.hasPassword' :loading="loading && user.password")
 
     .auth-signin-form__no-password(v-if='!user.hasPassword')
       v-layout(justify-center)
-        v-btn.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-t="'auth_form.login_link'")
+        v-btn.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-t="'auth_form.login_link'" :loading="loading")
 </template>
 
 <style lang="sass">

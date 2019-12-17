@@ -10,6 +10,7 @@ export default
 
   props:
     event: Object
+    isReturning: Boolean
 
   computed:
     eventable: -> @event.model()
@@ -22,7 +23,7 @@ export default
 </script>
 
 <template lang="pug">
-thread-item.outcome-created(:event="event")
+thread-item.outcome-created(:event="event" :is-returning="isReturning")
   //- template(v-slot:actions)
   //-   v-layout(align-center)
   //-     reaction-display(:model="eventable")

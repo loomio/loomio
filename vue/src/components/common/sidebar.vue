@@ -18,7 +18,7 @@ export default
     organization: null
     open: false
     group: null
-    version: AppConfig.version.split('.').slice(-1)[0]
+    version: AppConfig.version
     tree: []
     myGroups: []
     otherGroups: []
@@ -105,12 +105,9 @@ export default
 v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
-    div.text-center
-      a(href="/beta" v-t="'vue_upgraded_modal.use_old_loomio'")
-    v-layout.ma-2(style="width: 50%")
+    v-layout.mx-10.my-2(column align-center style="max-height: 64px")
       v-img(:src="logoUrl")
-      v-layout(align-center)
-        span.ml-4 {{version}}
+      a.ml-4.caption(href="https://help.loomio.org/en/user_manual/whats_new_loomio_2/" target="_blank") {{version}}
 
   v-list-group.sidebar__user-dropdown
     template(v-slot:activator)

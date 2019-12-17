@@ -46,7 +46,8 @@ export default class RecordStore
           @import(data)
       else
         throw response
-    onFailure: (response) => throw response
+    onFailure: (response) =>
+      throw response
 
   view: ({name, collections, query}) ->
     if !@views[name]

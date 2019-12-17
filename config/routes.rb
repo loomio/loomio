@@ -8,7 +8,13 @@ def dev_routes_for(namespace)
   end
 end
 
+require 'sidekiq/web'
+
 Loomio::Application.routes.draw do
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   if !Rails.env.production?
     namespace :dev do
       dev_routes_for(:discussions)
@@ -59,7 +65,10 @@ Loomio::Application.routes.draw do
         put :archive
         post 'upload_photo/:kind', action: :upload_photo
       end
-      get :count_explore_results, on: :collection
+      collection do
+        get :count_explore_results
+        get :suggest_handle
+      end
     end
 
     resources :group_identities, only: [:create, :destroy]

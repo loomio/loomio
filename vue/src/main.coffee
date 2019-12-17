@@ -1,3 +1,4 @@
+require('intersection-observer')
 import 'url-search-params-polyfill'
 import Vue from 'vue'
 import AppConfig from '@/shared/services/app_config'
@@ -7,7 +8,7 @@ import i18n from '@/i18n.coffee'
 import app from '@/app.vue'
 import marked from '@/marked'
 import '@/observe_visibility'
-import './registerServiceWorker'
+# import './registerServiceWorker'
 import { initLiveUpdate } from '@/shared/helpers/cable'
 import { pick } from 'lodash'
 import * as Sentry from '@sentry/browser'
@@ -25,11 +26,8 @@ Vue.mixin(FormatDate)
 
 Vue.config.productionTip = false
 
-import { hardReload, isIncompatibleBrowser } from '@/shared/helpers/window.coffee'
 import boot from '@/shared/helpers/boot'
 import Session from '@/shared/services/session'
-
-hardReload('/417.html') if isIncompatibleBrowser
 
 boot ->
   Session.fetch().then (data) ->

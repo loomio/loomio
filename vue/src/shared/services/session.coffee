@@ -6,7 +6,7 @@ import EventBus      from '@/shared/services/event_bus'
 import i18n          from '@/i18n'
 import Vue from 'vue'
 import { hardReload } from '@/shared/helpers/window'
-import { pickBy, identity } from 'lodash'
+import { pickBy, identity, compact } from 'lodash'
 
 loadedLocales = ['en']
 
@@ -14,14 +14,25 @@ setI18nLanguage = (locale) ->
   i18n.locale = locale
   document.querySelector('html').setAttribute('lang', locale)
 
+
+fixCase = (locale) ->
+  splits = locale.replace('-', '_').split('_')
+  compact([splits[0].toLowerCase(), splits[1] && splits[1].toUpperCase()]).join('_')
+
+loomioLocale = (locale) ->
+  locale.replace('-', '_')
+
+dateFnsLocale = (locale) ->
+  locale.replace('_','-')
+
 loadLocale = (locale) ->
   if (i18n.locale != locale)
     if loadedLocales.includes(locale)
       setI18nLanguage(locale)
     else
-      import("date-fns/locale/#{locale.toLowerCase().replace('_','-')}/index.js").then (dateLocale) ->
+      import("date-fns/locale/#{dateFnsLocale(locale)}/index.js").then (dateLocale) ->
         i18n.dateLocale = dateLocale
-      import("@/../../config/locales/client.#{locale.replace('-','_')}.yml").then (data) ->
+      import("@/../../config/locales/client.#{loomioLocale(locale)}.yml").then (data) ->
         data = data[locale]
         loadedLocales.push(locale)
         i18n.setLocaleMessage(locale, data)

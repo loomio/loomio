@@ -523,10 +523,6 @@ pt_BR:
     thread_status:
       pinned: "Esta conversa foi afixada. Ela permanecerá no topo da lista de conversas do grupo para todos os usuários."
       closed: "Esta conversa foi encerrada. Ela não aparecerá no painel, e será listada na categoria 'encerrada' na página do grupo."
-  group_wizard:
-    welcome: Sucesso!
-    invite_people: Convidar pessoas
-    start_thread: Iniciar uma discussão
   group_page:
     threads: Conversas
     members: Membros ({{count}})

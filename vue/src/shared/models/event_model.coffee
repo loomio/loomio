@@ -71,6 +71,8 @@ export default class EventModel extends BaseModel
 
   suggestedTitle: ->
     model = @model()
+    return '' unless model
+
     if model.title
       model.title.replace(///<[^>]*>?///gm, '')
     else

@@ -1,19 +1,24 @@
 class UserMailer < BaseMailer
   layout 'invite_people_mailer', only: [:membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :user_reactivated, :group_export_ready]
 
-  def accounts_merged(user)
-    @user = user
-    @token = user.login_tokens.create!
+  def accounts_merged(user_id)
+    @user = User.find(user_id)
+    @token = @user.login_tokens.create!
     send_single_mail to: @user.email,
                      subject_key: "user_mailer.accounts_merged.subject",
                      subject_params: { site_name: AppConfig.theme[:site_name] },
                      locale: @user.locale
   end
 
-  def catch_up(user, time_since = nil, frequency = 'daily')
+  def catch_up(user_id, time_since = nil, frequency = 'daily')
+    user = User.find(user_id)
     return unless user.email_catch_up
     @recipient = @user = user
-    @time_start = time_since || 24.hours.ago
+    if frequency == 'daily'
+      @time_start = time_since || 24.hours.ago
+    else
+      @time_start = time_since || 1.week.ago
+    end
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish
 
@@ -37,9 +42,9 @@ class UserMailer < BaseMailer
     end
   end
 
-  def membership_request_approved(recipient, event)
-    @user = recipient
-    @group = event.eventable.group
+  def membership_request_approved(recipient_id, event_id)
+    @user = User.find_by(id: recipient_id)
+    @group = Event.find_by(id: event_id).eventable.group
 
     send_single_mail to: @user.email,
                      reply_to: @group.admin_email,
@@ -48,8 +53,9 @@ class UserMailer < BaseMailer
                      locale: @user.locale
   end
 
-  def user_added_to_group(recipient, event)
-    @user    = recipient
+  def user_added_to_group(recipient_id, event_id)
+    @user    = User.find_by!(id: recipient_id)
+    event = Event.find_by!(id: event_id)
     @group   = event.eventable.group
     @inviter = event.eventable.inviter || @group.admins.first
 
@@ -61,38 +67,32 @@ class UserMailer < BaseMailer
                      locale: [@user.locale, @inviter.locale]
   end
 
-  def group_export_ready(recipient, group_name, document)
-    @user     = recipient
-    @document = document
+  def group_export_ready(recipient_id, group_name, document_id)
+    @user     = User.find(recipient_id)
+    @document = Document.find(document_id)
     send_single_mail to: @user.email,
                      subject_key: "user_mailer.group_export_ready.subject",
                      subject_params: {group_name: group_name},
                      locale: @user.locale
   end
 
-  def login(user:, token:)
-    @user = user
-    @token = token
+  def login(user_id, token_id)
+    @user = User.find_by!(id: user_id)
+    @token = LoginToken.find_by!(id: token_id)
     send_single_mail to: @user.email,
                      subject_key: "email.login.subject",
                      subject_params: {site_name: AppConfig.theme[:site_name]},
                      locale: @user.locale
   end
 
-  def user_reactivated(recipient, event)
-    @user = recipient
-    @token = recipient.login_tokens.create(is_reactivation: true)
+  def user_reactivated(recipient_id, event_id)
+    @user = User.find_by!(id: recipient_id)
+
+    @token = @user.login_tokens.create(is_reactivation: true)
     send_single_mail to: @user.email,
                      subject_key: "email.reactivate.subject",
                      subject_params: {site_name: AppConfig.theme[:site_name]},
                      locale: @user.locale
-  end
-
-  def start_decision(received_email:)
-    @email = received_email
-    send_single_mail to: @email.sender_email,
-                     subject_key: "email.start_decision.subject",
-                     locale: @email.locale
   end
 
   def contact_request(contact_request:)

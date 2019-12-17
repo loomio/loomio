@@ -11,6 +11,7 @@ export default
 
   props:
     event: Object
+    isReturning: Boolean
 
   computed:
     commentActions: -> CommentService.actions(@eventable, @)
@@ -48,7 +49,7 @@ export default
 </script>
 
 <template lang="pug">
-thread-item.new-comment(id="'comment-'+ eventable.id" :event="event")
+thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :is-returning="isReturning")
   template(v-slot:actions)
     action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions')
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")

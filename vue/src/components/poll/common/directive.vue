@@ -63,6 +63,7 @@ export default
     back: Object
     name: String
     size: Number
+    shouldReset: Boolean
   computed:
     componentName: ->
       pollType = (@stance or @outcome or @stanceChoice or @poll).poll().pollType
@@ -75,5 +76,5 @@ export default
 </script>
 
 <template>
-  <component :is="componentName" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back' :size="size"></component>
+  <component :is="componentName" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back' :size="size" :should-reset="shouldReset"></component>
 </template>

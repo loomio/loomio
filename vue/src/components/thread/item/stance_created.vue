@@ -9,6 +9,7 @@ export default
 
   props:
     event: Object
+    isReturning: Boolean
 
   computed:
     eventable: -> @event.model()
@@ -58,7 +59,7 @@ export default
 </script>
 
 <template lang="pug">
-thread-item.stance-created(:event="event")
+thread-item.stance-created(:event="event" :is-returning="isReturning")
   template(v-slot:actions)
     action-dock(:model="eventable" :actions="actions")
   template(v-if="choiceInHeadline" v-slot:headline)

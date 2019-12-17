@@ -20,6 +20,7 @@ export default class GroupModel extends BaseModel
     description: ''
     descriptionFormat: 'html'
     groupPrivacy: 'closed'
+    handle: null
     discussionPrivacyOptions: 'private_only'
     membershipGrantedUpon: 'approval'
     membersCanAnnounce: true
@@ -51,17 +52,8 @@ export default class GroupModel extends BaseModel
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'
 
-  activeMemberships: ->
-    _.filter @memberships(), (m) -> m.acceptedAt
-
   activeMembershipsCount: ->
     @membershipsCount - @pendingMembershipsCount
-
-  pendingMemberships: ->
-    _.filter @memberships(), (m) -> !m.acceptedAt
-
-  hasRelatedDocuments: ->
-    @hasDocuments() or @allDocuments().length > 0
 
   parentOrSelf: ->
     if @isParent() then @ else @parent()
@@ -73,14 +65,6 @@ export default class GroupModel extends BaseModel
 
   resetToken: ->
     @remote.postMember(@id, 'reset_token').then => @token
-
-  closedPolls: ->
-    _.filter @polls(), (poll) ->
-      !poll.isActive()
-
-  activePolls: ->
-    _.filter @polls(), (poll) ->
-      poll.isActive()
 
   pendingMembershipRequests: ->
     _.filter @membershipRequests(), (membershipRequest) ->
@@ -110,9 +94,6 @@ export default class GroupModel extends BaseModel
   hasSubgroups: ->
     @isParent() && @subgroups().length
 
-  organisationDiscussions: ->
-    @recordStore.discussions.find(groupId: { $in: @organisationIds() }, discussionReaderId: { $ne: null })
-
   publicOrganisationIds: ->
     _.map(_.filter(@subgroups().concat(@), (group) -> group.groupPrivacy == 'open'), 'id')
 
@@ -120,20 +101,16 @@ export default class GroupModel extends BaseModel
     _.map(@subgroups(), 'id').concat(@id)
 
   membershipFor: (user) ->
-    _.find @memberships(), (membership) -> membership.userId == user.id
+    @recordStore.memberships.find(groupId: @id, userId: user.id)[0]
 
   members: ->
     @recordStore.users.find(id: {$in: @memberIds()})
 
   adminMemberships: ->
-    _.filter @memberships(), (membership) -> membership.admin
+    @recordStore.memberships.find(groupId: @id, admin: true)
 
   admins: ->
-    adminIds = _.map(@adminMemberships(), (membership) -> membership.userId)
-    @recordStore.users.find(id: {$in: adminIds})
-
-  coordinatorsIncludes: (user) ->
-    _.some @recordStore.memberships.where(groupId: @id, userId: user.id)
+    @recordStore.users.find(id: {$in: @adminIds()})
 
   memberIds: ->
     _.map @memberships(), 'userId'
@@ -165,7 +142,7 @@ export default class GroupModel extends BaseModel
   logoUrl: ->
     if @logoUrlMedium
       @logoUrlMedium
-    else if @isSubgroup()
+    else if @parent()
       @parent().logoUrl()
     else
       AppConfig.theme.icon_src

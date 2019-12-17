@@ -26,6 +26,9 @@ en:
     free_trial: Free trial. {{days}} days remaining.
     trial_expired: Your trial has expired. Upgrade to continue using Loomio.
     tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
+    was_gift_trial: "Your group has been using Loomio for free since {{createdDate}}. We are unable to continue providing a free service. Please upgrade to continue using Loomio. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Read more.</a>"
+    was_gift_remaining: "{{days}} days remaining."
+    was_gift_expired: "Your free plan has now expired."
 
   loomio_tags:
     all_tags: All tags
@@ -774,28 +777,6 @@ en:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
-  user_wizard:
-    welcome: Welcome!
-    welcome_description: You've successfully created a new user account on Loomio. In a few steps, you'll have your profile fully setup and ready to begin participating.
-    change_picture: Add picture
-    change_picture_description: Add a picture to your profile
-    setup_profile: Setup profile
-    setup_profile_description: Help others
-
-  group_wizard:
-    welcome: Success!
-    welcome_description: You've successfully created a new organization on Loomio. In a few steps, you'll have your organization fully setup and ready to start discussions. If you want to skip this wizard for now, you can open it again from the Settings tab.
-    setup_profile: Setup profile
-    setup_profile_description: Set your group's description, logo and cover photo
-    invite_people: Invite people
-    invite_people_description: List emails to send invitations to, or copy a link to share with others
-    setup_integrations: Setup integrations
-    setup_integrations_description: Connect Loomio with Slack and/or Microsoft Teams
-    start_thread: Start a discussion
-    start_thread_description: Write a welcome note, discuss the purpose of your group, or share the minutes of your last meeting
-    do_it: Let's go
-
-
   group_page:
     threads: Threads
     polls: Polls
@@ -899,6 +880,8 @@ en:
     edit_group_heading: 'Edit group settings'
     edit_subgroup_heading: 'Edit subgroup settings'
     group_name: 'Group Name'
+    handle: Handle
+    group_handle_placeholder: "For URL and email, e.g. loomio.org/handle and handle@loomio.org"
     organization_name: 'Organization Name'
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
@@ -1374,6 +1357,7 @@ en:
     aria_label: 'Group name'
 
   thread_context:
+    item_maybe_deleted: "Cannot find the requested location within the thread. It may have been deleted."
     aria_label: 'Thread context'
     thread_options: 'Thread options'
     email_settings: 'Notification settings'
@@ -1406,13 +1390,11 @@ en:
     earliest: Oldest
     earliest_description: Read from beginning to end
     replies: How to display replies?
-    linear: Linear
-    linear_description: Arrange things in the order they happened
-    nested_once: Nested once
-    nested_once_description: Place replies under original
-    nested_twice: Nested twice
-    nested_twice_description: Replies under original, up to 2 times
-    changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process. Refresh your browser a few minutes after save to see changes.
+    linear: Flat list
+    linear_description: Items listed as they happened, one after the other.
+    nested_once: Nested
+    nested_once_description: Indent replies under original comment
+    changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process.
 
   delete_thread_form:
     aria_label: 'Delete thread'
@@ -1824,6 +1806,7 @@ en:
     meeting: 'This time poll has closed. <strong>Share an outcome</strong> to let others know when the meeting will happen.'
     dot_vote: 'This dot vote has closed. <storng>Share an outcome</strong> with the group.'
     ranked_choice: 'This ranked choice poll has closed. <strong>Share an outcome</strong> with the group.'
+    score: 'This score poll has closed. <strong>Share an outcome</strong> with the group.'
 
   poll_common_outcome_form:
     new_title: Enter an outcome
@@ -1871,7 +1854,7 @@ en:
       <p>A pie chart gives an overview of the positions in the group, while the statements allow individual voices to be heard. </p>
       <p>Don't be discouraged if you don't see agreement at first, proposals are designed to surface issues that need resolving.</p>
       <p>With good participation a proposal is a powerful mandate to take action.</p>
-    tool_tip_collapsed: Confirm agreement, seek clarification or check for objection
+    tool_tip_collapsed: Seek agreement or feedback from others.
     start_header: Start proposal
     edit_header: Edit proposal
     tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Learn more</a>
@@ -2049,6 +2032,10 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
 
+  poll_score_vote_form:
+    stance_created: Vote created
+    stance_updated: Vote updated
+
   poll_meeting_vote_form:
     local_time_zone: Local time - {{zone}}
     can_attend: "Can attend"
@@ -2166,8 +2153,9 @@ en:
     set_password: Set password
     set_password_helptext: Want to use a password next time?
     hello: "Hello, {{name}}!"
-    new_to_loomio: First time on {{site_name}}? Create an account
-    already_a_user: Used {{site_name}} before? Enter the email address you used last time to link it up.
+    new_to_loomio: First time on {{site_name}}?
+    already_a_user: Already have an account?
+    email_address_of_existing_account: Enter email address of your existing account
     link_accounts: Link accounts
     check_your_email: Check your email!
     login_link_sent: "We've sent an email to {{email}}."

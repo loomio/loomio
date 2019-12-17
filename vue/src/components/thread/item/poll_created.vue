@@ -14,6 +14,7 @@ export default
   mixins: [PollModalMixin]
   props:
     event: Object
+    isReturning: Boolean
 
   created: ->
     EventBus.$on 'showResults', => @buttonPressed = true
@@ -54,7 +55,7 @@ export default
 </script>
 
 <template lang="pug">
-thread-item.poll-created(:event="event")
+thread-item.poll-created(:event="event" :is-returning="isReturning")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline
       span(v-if='!poll.translation.title') {{poll.title}}

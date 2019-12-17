@@ -1,7 +1,7 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
-import { debounce, truncate, first, last, some, drop } from 'lodash'
+import { debounce, truncate, first, last, some, drop, min, compact } from 'lodash'
 
 export default
 
@@ -12,7 +12,7 @@ export default
     open: null
     knobOffset: 0
     knobHeight: 32
-    trackHeight: 300
+    trackHeight: 400
     position: 1
     minUnitHeight: 24
     presets: []
@@ -30,8 +30,9 @@ export default
         query: =>
           return unless @discussion
           @presets = Records.events.collection.chain()
-            .find({pinned: true, parentId: @discussion.createdEvent().id})
+            .find({pinned: true, discussionId: @discussion.id})
             .simplesort('position').data()
+          @setHeight()
           if @discussion.newestFirst
             @topPosition = @childCount
             @topDate = @discussion.lastActivityAt
@@ -58,27 +59,20 @@ export default
           @position = last(slots) || 1
         else
           @position = first(slots) || 1
-        @setHeight()
         @knobOffset = @offsetFor(@position)
         @knobHeight = @unitHeight * (last(slots) - first(slots) + 1)
-        @$vuetify.goTo '.thread-nav__knob', container: '.thread-sidebar'
 
   methods:
     setHeight: ->
-      @trackHeight = 300
-      while @minOffset() < @minUnitHeight
-        @incrementHeight()
+      @trackHeight = 400
+      while ((@minOffset() || @minUnitHeight) < @minUnitHeight) && (@trackHeight < 100000)
+        @trackHeight = @trackHeight * 1.25
 
     minOffset: ->
-      min = @trackHeight
-      for i in [2..@presets.length]
+      distances = [2..@presets.length].map (i) =>
         if @presets[i] && @presets[i-1]
-          v = (@presets[i].position * @unitHeight) - (@presets[i-1].position * @unitHeight)
-          min = v if v < min
-      min
-
-    incrementHeight: ->
-      @trackHeight = @trackHeight * 1.2
+          parseInt (@presets[i].position * @unitHeight) - (@presets[i-1].position * @unitHeight)
+      min compact distances
 
     onTrackClicked: (event) ->
       @moveKnob(event)
@@ -114,8 +108,8 @@ export default
       document.addEventListener 'mouseup', onMouseUp
 
     goToPosition: (position) ->
-      @$router.replace(query: {p: position}, params: {sequence_id: null})
-      @scrollTo("#d1p#{position}")
+      unless (@$route.query && @$route.query.p == position)
+        @$router.replace(query: {p: position}, params: {sequence_id: null, comment_id: null}).catch (err) => {}
 
     offsetFor: (position) ->
       if @discussion && @discussion.newestFirst

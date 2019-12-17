@@ -1,6 +1,6 @@
 module HasCreatedEvent
   def created_event
-    events.find_by(kind: created_event_kind) # || restore_missing_created_event
+    events.find_by(kind: created_event_kind)
   end
 
   def created_event_kind

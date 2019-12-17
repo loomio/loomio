@@ -52,7 +52,7 @@ describe API::SearchController do
 
     it "can find a discussion by comment body" do
       comment.update body: 'find me'
-      SearchVector.index! comment.discussion_id
+      SearchIndexWorker.new.perform([comment.discussion_id])
       result = search_for('find')
       expect(@result_keys).to include discussion.key
       expect(@ranks).to include SearchVector::WEIGHT_VALUES[0] * SearchVector::RECENCY_VALUES[0]
