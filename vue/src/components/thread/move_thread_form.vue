@@ -2,10 +2,11 @@
 import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
 import I18n           from '@/i18n'
-import { submitForm } from '@/shared/helpers/form'
-import { filter } from 'lodash'
 import WatchRecords from '@/mixins/watch_records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import Flash from '@/shared/services/flash'
+import { filter } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [WatchRecords, AnnouncementModalMixin]
@@ -14,27 +15,25 @@ export default
     close: Function
   data: ->
     targetGroup: null
-    submit: null
     availableGroups: []
   created: ->
     @updateTarget()
-    @submit = submitForm @, @discussion,
-      submitFn: @discussion.move
-      flashSuccess: 'move_thread_form.messages.success'
-      flashOptions:
-        name: => @discussion.group().name
-      successCallback: (data) =>
-        discussionKey = data.discussions[0].key
-        Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
-          @close()
-          @$router.push("/d/#{discussionKey}")
-          @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
         @availableGroups = filter(Session.user().formalGroups(), (group) => group.id != @discussion.groupId)
   methods:
-
+    submit: ->
+      @discussion.move()
+      .then (data) =>
+        Flash.success 'move_thread_form.messages.success', { name: @discussion.group().name }
+        discussionKey = data.discussions[0].key
+        Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
+          @close()
+          @$router.push("/d/#{discussionKey}")
+          @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
+      .catch onError(@discussion)
+      
     updateTarget: ->
       @targetGroup = Records.groups.find(@discussion.groupId)
 

@@ -2032,6 +2032,10 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
 
+  poll_score_vote_form:
+    stance_created: Vote created
+    stance_updated: Vote updated
+
   poll_meeting_vote_form:
     local_time_zone: Local time - {{zone}}
     can_attend: "Can attend"

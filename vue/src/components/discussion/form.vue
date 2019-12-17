@@ -1,11 +1,12 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { submitDiscussion } from '@/shared/helpers/form'
 import { map, sortBy, filter } from 'lodash'
 import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
+import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [AnnouncementModalMixin]
@@ -19,25 +20,27 @@ export default
     submitIsDisabled: false
 
   mounted: ->
-    isNew = @discussion.isNew()
-    @submit = submitDiscussion @, @discussion,
-      successCallback: (data) =>
-        discussionKey = data.discussions[0].key
-        Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
-          @close()
-          if isNew
-            @$router.push @urlFor(discussion)
-            if AbilityService.canAnnounceThread(discussion)
-              @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
-
-
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
-        # console.log "running query:", @discussion, Session.user().formalGroups()
         @availableGroups = filter(Session.user().formalGroups(), (group) -> AbilityService.canStartThread(group))
 
   methods:
+    submit: ->
+      actionName = if @discussion.isNew() then 'created' else 'updated'
+      @discussion.save()
+      .then (data) =>
+        discussionKey = data.discussions[0].key
+        Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
+          @close()
+          Flash.success("discussion_form.messages.#{actionName}")
+          if @discussion.isNew()
+            @$router.push @urlFor(discussion)
+            if AbilityService.canAnnounceThread(discussion)
+              @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
+      .catch onError(@discussion)  
+
+
     updatePrivacy: ->
       @discussion.private = @discussion.privateDefaultValue()
 

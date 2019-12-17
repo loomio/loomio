@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_225942) do
+ActiveRecord::Schema.define(version: 2019_12_10_011354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -195,8 +195,10 @@ ActiveRecord::Schema.define(version: 2019_12_01_225942) do
     t.jsonb "info", default: {}, null: false
     t.integer "max_depth", default: 2, null: false
     t.boolean "newest_first", default: false, null: false
+    t.datetime "discarded_at"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
+    t.index ["discarded_at"], name: "index_discussions_on_discarded_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
     t.index ["guest_group_id"], name: "index_discussions_on_guest_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true

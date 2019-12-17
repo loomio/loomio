@@ -11,20 +11,19 @@ module.exports = {
     page.loadPath('setup_closed_group_to_join')
     page.expectNoElement('.group-page-actions button')
     page.expectNoElement('.discussions-panel__new-thread-button')
-    // TODO: GK: clarify what people can and can't see when not a member
-    // page.expectNoElement('.members-card')
+    page.click('.group-page-members-tab')
+    page.expectText('.members-panel', 'You do not have permission to do this.')
   },
 
-  // 'displays_public_content': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_closed_group_to_join')
-  //   page.expectText('.description-card__text', 'An FBI agent goes undercover')
-  //   page.expectText('.thread-previews', "The name's Johnny Utah!")
-  //   page.click('.group-page-subgroups-tab')
-  //
-  //   page.expectText('.group-subgroups-panel', 'Johnny Utah')
-  // },
+  'displays_public_content': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_closed_group_to_join')
+    page.expectText('.group-page__description', 'An FBI agent goes undercover')
+    page.expectText('.thread-previews', "The name's Johnny Utah!")
+    page.click('.group-page-subgroups-tab')
+    page.expectText('.group-subgroups-panel', 'Johnny Utah')
+  },
 
   'adds_you_to_the_group_when_button_is_clicked': (test) => {
     page = pageHelper(test)

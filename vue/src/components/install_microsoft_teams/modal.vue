@@ -1,8 +1,9 @@
 <script lang="coffee">
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
-import { submitForm } from '@/shared/helpers/form'
 import GroupIdentityModel from '@/shared/models/group_identity_model'
+import Flash  from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -14,10 +15,13 @@ export default
       identityType: 'microsoft'
       customFields:
         event_kinds: GroupIdentityModel.validEventKinds
-  created: ->
-    @submit = submitForm @, @groupIdentity,
-      flashSuccess: 'install_microsoft.form.webhook_installed'
-      successCallback: => @close()
+  methods:
+    submit: ->
+      @groupIdentity.save()
+      .then =>
+        Flash.success 'install_microsoft.form.webhook_installed'
+        @close()
+      .catch onError(@groupIdentity)
 </script>
 <template lang="pug">
 v-card.install-microsoft-modal

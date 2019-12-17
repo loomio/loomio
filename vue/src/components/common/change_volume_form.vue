@@ -1,8 +1,10 @@
 <script lang="coffee">
 import Session from '@/shared/services/session'
-import { submitForm } from '@/shared/helpers/form'
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
 import GroupService from '@/shared/services/group_service'
+import Flash from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
+
 export default
   mixins: [ChangeVolumeModalMixin]
   props:
@@ -20,18 +22,18 @@ export default
     applyToAll: @defaultApplyToAll()
     volume: @newVolume || @defaultVolume()
 
-  mounted: ->
-    @submit = submitForm @, @model,
-      submitFn: (model) =>
-        model.saveVolume(@volume, @applyToAll)
-      flashSuccess: 'change_volume_form.saved'
-      successCallback: => @closeModal()
-
   computed:
     formChanged: ->
       (@volume != @defaultVolume()) || (@applyToAll != @defaultApplyToAll())
 
   methods:
+    submit: ->
+      @model.saveVolume(@volume, @applyToAll)
+      .then =>
+        Flash.success 'change_volume_form.saved'
+        @closeModal()
+      .catch onError(@model)  
+
     defaultApplyToAll: ->
       if @model.isA('user') then true else false
 

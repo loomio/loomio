@@ -85,5 +85,16 @@ module.exports = {
     page.click('.membership-form__submit')
     page.expectFlash('Membership title updated')
     page.expectText('.members-panel .v-list .v-list-item:last-child .title', 'Suzerain')
+  },
+
+  'can_change_volume': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group')
+    page.click('.group-page-settings-tab')
+    page.click('.group-page-actions__change_volume')
+    page.click('.volume-loud')
+    page.click('.change-volume-form__submit')
+    page.expectFlash('Notification settings updated')
   }
 }

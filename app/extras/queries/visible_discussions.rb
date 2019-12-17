@@ -6,6 +6,7 @@ class Queries::VisibleDiscussions < Delegator
     @relation = Discussion.
                   joins(:group).
                   where('groups.archived_at IS NULL').
+                  where('discarded_at IS NULL').
                   includes(:author, :polls, {group: [:parent]})
 
     if tags.any?

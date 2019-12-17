@@ -12,7 +12,8 @@ class DiscussionService
 
   def self.destroy(discussion:, actor:)
     actor.ability.authorize!(:destroy, discussion)
-    discussion.destroy!
+    discussion.discard!
+    DestroyDiscussionWorker.perform_async(discussion.id)
     EventBus.broadcast('discussion_destroy', discussion, actor)
   end
 
