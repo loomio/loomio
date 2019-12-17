@@ -4,4 +4,4 @@
   %b= participant.name + ", " + stance.created_at.to_formatted_s
   - stance.stance_choices.order("score desc").each do |choice|
     %p= choice.poll_option.name
-    %p= stance.reason
+    %p= render_rich_text(stance.reason, stance.reason_format)
