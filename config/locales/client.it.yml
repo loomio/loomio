@@ -1272,6 +1272,9 @@ it:
   poll_poll_vote_form:
     stance_created: Voto creato
     stance_updated: Voto aggiornato
+  poll_score_vote_form:
+    stance_created: Voto creato
+    stance_updated: Voto aggiornato
   poll_meeting_vote_form:
     if_need_be: Solo se necessario
     your_response: Quando puoi esserci?

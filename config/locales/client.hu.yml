@@ -1759,6 +1759,9 @@ hu:
   poll_poll_vote_form:
     stance_created: Szavazás létrehozva
     stance_updated: A szavazás frissítve
+  poll_score_vote_form:
+    stance_created: Szavazás létrehozva
+    stance_updated: Szavazás frissítve
   poll_meeting_vote_form:
     local_time_zone: Helyi idő - {{zone}}
     can_attend: "Lehet részt venni"

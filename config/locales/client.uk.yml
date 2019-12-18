@@ -1678,6 +1678,9 @@ uk:
   poll_poll_vote_form:
     stance_created: Голосування створено
     stance_updated: Голосування оновлено
+  poll_score_vote_form:
+    stance_created: Голосування створено
+    stance_updated: Голосування оновлено
   poll_meeting_vote_form:
     local_time_zone: Місцевий час - {{zone}}
     can_attend: "Можу бути"
