@@ -145,6 +145,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
     page.click('.poll-meeting-time-field__datepicker-container input')
     page.click('.poll-meeting-form__option-button')
+    page.click('.v-card__title .headline')
     page.click('.poll-common-form__submit')
     page.expectElement('.announcement-form__submit')
     page.click('.dismiss-modal-button')
