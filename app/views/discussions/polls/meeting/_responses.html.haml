@@ -1,0 +1,9 @@
+.poll-mailer-meeting-responses
+  %h3= t(:"poll_mailer.common.responses")
+  %table
+    - @info.poll.stances.latest.with_reason.each do |stance|
+      %tr
+        %td= render partial: 'base_mailer/avatar', locals: { user: stance.participant }
+        %td.poll-mailer-common-responses__reason
+          #{stance.participant.name}:
+          = render_rich_text(stance.reason, stance.reason_format)
