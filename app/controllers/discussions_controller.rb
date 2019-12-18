@@ -6,7 +6,7 @@ class DiscussionsController < ApplicationController
 
   def export
     @discussion = load_and_authorize(:discussion, :show)
-    byebug
+    # byebug
     respond_to do |format|
       format.html
       # format.csv { send_data @exporter.to_csv, filename:@exporter.file_name }
