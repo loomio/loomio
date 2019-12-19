@@ -195,7 +195,7 @@ GEM
     errbase (0.1.1)
     erubi (1.9.0)
     erubis (2.7.0)
-    excon (0.64.0)
+    excon (0.71.1)
     execjs (2.7.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
