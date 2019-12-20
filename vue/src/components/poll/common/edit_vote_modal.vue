@@ -23,7 +23,7 @@ export default
         @stance.poll().clearStaleStances()
         Flash.success "poll_#{stance.poll().pollType}_vote_form.stance_#{actionName}"
         @close()
-      .catch onError(@poll)
+      .catch onError(@stance)
 
     toggleCreation: ->
       @isEditing = false
