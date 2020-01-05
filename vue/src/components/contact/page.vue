@@ -15,7 +15,6 @@ export default
     isDisabled: false
     helpLink: UserHelpService.helpLink()
     contactEmail: AppConfig.contactEmail
-    submit: null
 
   mounted: ->
     EventBus.$emit 'currentComponent',
