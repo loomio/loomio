@@ -65,6 +65,7 @@ class Document < ApplicationRecord
   # we'll set the finalized path later in set_final_urls
   def set_initial_url
     self.url = file.url unless manual_url?
+    self.save!
   end
 
   def set_metadata
