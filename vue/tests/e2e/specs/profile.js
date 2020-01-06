@@ -58,44 +58,47 @@ module.exports = {
     page.expectNoElement('.user-page__contact-user')
   },
 
-  // 'does_not_accept_short_passwords': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_discussion')
-  //   page.ensureSidebar()
-  //   page.click('.sidebar__user-dropdown')
-  //   page.click('.user-dropdown__list-item-button--profile')
-  //   page.click('.profile-page__change-password')
-  //   page.fillIn('.change-password-form__password input', 'Smush') // TODO: GK: inputs not working properly
-  //   page.fillIn('.change-password-form__password-confirmation input', 'Smush') // TODO: GK: inputs not working properly
-  //   page.click('.change-password-form__submit')
-  //   page.expectText('.change-password-form__password-container .lmo-validation-error__message', "is too short")
-  // },
-  //
-  // 'does_not_accept_mismatched_passwords': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('setup_discussion')
-  //   page.ensureSidebar()
-  //   page.click('.sidebar__user-dropdown')
-  //   page.click('.user-dropdown__list-item-button--profile')
-  //   page.click('.profile-page__change-password')
-  //   page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
-  //   page.fillIn('.change-password-form__password-confirmation input', 'SmishDemBorries') // TODO: GK: inputs not working properly
-  //   page.click('.change-password-form__submit')
-  //   page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match")
-  // },
-  //
-  'can_set_a_password': (test) => {
+  'does_not_accept_short_passwords': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
+    page.pause()
     page.ensureSidebar()
     page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.user-page__change_password')
-    page.fillIn('.change-password-form__password input', 'SmushDemBerries') // TODO: GK: inputs not working properly
-    page.fillIn('.change-password-form__password-confirmation input', 'SmushDemBerries') // TODO: GK: inputs not working properly
+    page.fillIn('.change-password-form__password input', 'Smush')
+    page.fillIn('.change-password-form__password-confirmation input', 'Smush')
+    page.click('.change-password-form__submit')
+    page.expectText('.change-password-form__password-container .lmo-validation-error__message', "is too short")
+  },
+
+  'does_not_accept_mismatched_passwords': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.pause()
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
+    page.click('.user-dropdown__list-item-button--profile')
+    page.click('.user-page__change_password')
+    page.fillIn('.change-password-form__password input', 'SmushDemBerries')
+    page.fillIn('.change-password-form__password-confirmation input', 'SmishDemBorries')
+    page.click('.change-password-form__submit')
+    page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match")
+  },
+
+  'can_set_a_password': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.pause()
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
+    page.click('.user-dropdown__list-item-button--profile')
+    page.click('.user-page__change_password')
+    page.fillIn('.change-password-form__password input', 'SmushDemBerries')
+    page.fillIn('.change-password-form__password-confirmation input', 'SmushDemBerries')
     page.click('.change-password-form__submit')
     page.expectFlash('Your password has been updated')
   },
