@@ -226,6 +226,22 @@ fr:
         Quel est votre rôle ou votre approche de la participation dans ce groupe ? Qu'est-ce que les gens devraient savoir à propos de votre venue ici ?
   how_it_works_thread:
     title: Comment utiliser Loomio
+    description: |
+        Bienvenue sur Loomio, une plateforme en ligne  pour prendre des décisions ensemble.
+
+        Ceci est un exemple de discussion **fil de discussion**. Vous pouvez ajouter des commentaires ci-dessous. Un fil de discussion est une conversation sur un sujet donné. Ce fil de discussion traite du fonctionnement de Loomio, postez donc des questions à ce sujet ici.
+
+        Vous êtes en train de lire le fil de discussion **contexte**, un espace pour obtenir des informations de fond. Vous pouvez le mettre à jour au fur et à mesure que la discussion progresse.
+
+        Pour démarrez avec Loomio :
+        1. Téléchargez une[image de profil](/profile)
+        2. Postez dans les fils de discussion existants, ou démarrer une nouvelle discussion
+
+        Astuces pour poster sur Loomio :
+        * Pour notifier une personne spécifique, tapez @ suivi de son nom.
+        * Cliquez sur l'icône du trombone pour ajouter des pièces jointes.
+
+        Si vous avez des questions, consultez le [Manuel d'aide Loomio] (http://help.loomio.org).
   first_proposal:
     name: Proposition de démonstration
     description: |
@@ -552,6 +568,8 @@ fr:
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: Commentaire par %{comment_author}
+  personal_data:
+    title: Données personnelles de %{user_name}sur %{host_name}
   notified:
     no_matches_found: "Pas de résultats pour « %{query} »"
     group_users: "(%{count} personnes)"

@@ -10,6 +10,7 @@ de:
         start_thread: Neue Diskussion eröffnen
         make_decision: Entscheidung vorbereiten
       learn_more: Mehr bei Loomio Help lernen
+      celebration_message: Ta-da! Deine Gruppe ist bereit! 🎉
       dismiss_this_card: Karte ablehnen
   plan_names:
     free: Gratis
@@ -22,6 +23,7 @@ de:
   current_plan_button:
     upgrade: Upgrade
   loomio_tags:
+    all_tags: Alle Schlagwörter
     tags: Schlagwörter
     apply_tags: Schlagwörter übernehmen
     new_tag: Schlagwort erstellen
@@ -85,6 +87,7 @@ de:
     poll: wählen
     score: Ergebnis
     ranked_choice: Prioritäten setzen
+    dot_vote: Punktabstimmung
     meeting: Zeitumfrage
   timezones:
     local: Ortszeit ({{value}})
@@ -568,6 +571,7 @@ de:
     flash:
       success: '{{count}} Benachrichtigungen gesendet'
   action_dock:
+    react: Reagieren
     add_resource: Anhang hinzufügen
     edit_group: Gruppenbeschreibung bearbeiten
     add_comment: Kommentieren
@@ -608,6 +612,10 @@ de:
     delete_thread: Diskussion löschen
     notification_history: Benachrichtigungs-Verlauf
   formatting:
+    bold: Fett
+    italicize: Kursiv
+    strikethrough: Durchgestrichen
+    underline: Unterstrichen
     code_block: Code-Block
     attach: Datei anhängen
     heading1: Überschrift groß
@@ -1213,9 +1221,17 @@ de:
     helptext_two: "Du kannst angeheftete Inhalte jederzeit entfernen, indem du im Drop-down-Menü die Option \"Anheften deaktiveren\" auswählst"
     pin_thread: Diskussion anheften
   thread_arrangement_form:
+    title: Diskussionsanordnung
+    for_everyone: Dies ändert die Anordnung für alle, nicht nur für dich.
+    sorting: Älteste oder Neueste zuerst?
     latest: Neueste
+    latest_description: Neueste Beiträge zuerst lesen
     earliest: 'Älteste '
+    earliest_description: Von Anfang bis Ende lesen
+    replies: Wie sollen Antworten angezeigt werden?
+    linear_description: Einträge in der Reihenfolge des Erstellens auflisten
     nested_once: Verschachtelt
+    nested_once_description: Antworten unter dem Originaleintrag eingerückt darstellen
   delete_thread_form:
     aria_label: 'Diskussion löschen'
     title: Diskussion löschen
@@ -1608,6 +1624,7 @@ de:
         <p>Ein Kuchendiagramm zeigt die verschiedenen Abstimmungspositionen in der Gruppe übersichtlich an, während durch die Abstimmungsbegründungen auch einzelne Meinungen nicht unter den Tisch fallen und gehört werden. </p>
         <p>Lass dich nicht entmutigen, wenn es zunächst nicht zu einer Einigung kommt, Vorschläge sind dafür vorgesehen, Diskussionspunkte in den Fokus zu rücken, die einer Klärung bedürfen.</p>
         <p>Mit einer ausreichend großen Abstimmungsbeteiligung ist ein Vorschlag somit ein mächtiges Werkzeug, um der Abstimmung im nächsten Schritt Handlungen und Taten folgen zu lassen.</p>
+    tool_tip_collapsed: Frage nach Zustimmung oder Feedback von anderen.
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten
     tip: 'Triff gemeinsam Entscheidungen durch ein Verfahren, dass alle Stimmen mit einbezieht. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">
@@ -1775,6 +1792,7 @@ de:
     stance_created: Wahl erstellt
     stance_updated: Wahl aktualisiert
   poll_meeting_vote_form:
+    local_time_zone: Ortszeit - {{zone}}
     can_attend: "Kann teilnehmen"
     unable: "Unfähig"
     if_need_be: Wenn nötig
