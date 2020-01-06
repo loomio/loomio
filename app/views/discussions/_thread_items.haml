@@ -5,8 +5,7 @@
       %tr
         %td= render "base_mailer/avatar", user: comment.author
         %td
-          %b= comment.author.name
-    -# %b= item.eventable.author.name + ", " + item.eventable.created_at.to_formatted_s
+          %b= comment.author.name + ", " + item.eventable.created_at.to_formatted_s(:long_ordinal)
     %p= render_rich_text(item.eventable.body, item.eventable.body_format)
     %hr
 

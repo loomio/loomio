@@ -2,4 +2,4 @@
   %tr
     %td= render "base_mailer/avatar", user: poll.user
     %td
-      %span=raw t(:"poll_mailer.#{poll.poll_type}.header.poll_created", actor: poll.user.name, title: poll.title)
+      %b=raw t(:"poll_mailer.#{poll.poll_type}.header.poll_created", actor: poll.user.name, title: poll.title) + ", " + poll.created_at.to_formatted_s(:long_ordinal)
