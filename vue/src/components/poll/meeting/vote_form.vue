@@ -100,5 +100,5 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
   v-card-actions.poll-common-form-actions
     v-spacer
     poll-common-show-results-button(v-if='stance.isNew()')
-    v-btn.md-primary.md-raised.poll-common-vote-form__submit(type='submit', v-t="'poll_common.vote'", aria-label=" $t('poll_meeting_vote_form.vote')")
+    v-btn.poll-common-vote-form__submit(color="primary" type='submit' v-t="'poll_common.vote'")
 </template>

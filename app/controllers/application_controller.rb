@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
     (browser.ie? ||
     (browser.chrome?  && browser.version.to_i < 65) ||
     (browser.firefox? && !browser.platform.ios? && browser.version.to_i < 55) ||
-    (browser.safari?  && browser.version.to_i < 12) ||
+    (browser.safari?  && browser.version.to_i < 11) ||
     (browser.edge?    && browser.version.to_i < 17))
   end
 end

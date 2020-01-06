@@ -25,6 +25,7 @@ zh_TW:
     free_trial: 免費試用。剩 {{days}} 天。
     trial_expired: 您的試用已到期。升級以繼續使用 Loomio。
     tooltip: "我們的價錢超棒的！現在就升級並享受 Loomio 可以提供給您的組織的好處吧！"
+    was_gift_trial: "自 {{createdDate}} 開始，您的群組免費使用 Loomio 這麼久了。我們無法繼續提供免費服務。請升級以繼續使用 Loomio。<a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>閱讀更多。</a>"
     was_gift_remaining: "剩 {{days}} 天"
     was_gift_expired: "您的免費方案已過期。"
   loomio_tags:
@@ -1852,6 +1853,9 @@ zh_TW:
   poll_meeting_chart_panel:
     total: 全部
   poll_poll_vote_form:
+    stance_created: 已建立投票
+    stance_updated: 已更新投票
+  poll_score_vote_form:
     stance_created: 已建立投票
     stance_updated: 已更新投票
   poll_meeting_vote_form:

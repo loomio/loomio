@@ -1771,6 +1771,9 @@ de:
   poll_poll_vote_form:
     stance_created: Wahl erstellt
     stance_updated: Wahl aktualisiert
+  poll_score_vote_form:
+    stance_created: Wahl erstellt
+    stance_updated: Wahl aktualisiert
   poll_meeting_vote_form:
     can_attend: "Kann teilnehmen"
     unable: "Unfähig"

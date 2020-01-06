@@ -977,6 +977,9 @@ da:
   poll_poll_vote_form:
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
+  poll_score_vote_form:
+    stance_created: Stemme afgivet
+    stance_updated: Stemme redigeret
   poll_meeting_vote_form:
     your_response: Hvornår har du tid?
     stance_created: Tilgængeligt tidspunkt gemt
