@@ -28,6 +28,8 @@ RUN apt-get install -y libxml2-dev libxslt1-dev
 RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
+RUN gem install bundler
+
 # RUN mkdir /loomio
 WORKDIR /loomio
 ADD . /loomio
