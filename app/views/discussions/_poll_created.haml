@@ -1,9 +1,4 @@
 - poll = item.eventable
--# %b= poll.user.name + ", " + poll.created_at.to_formatted_s
--# %p= poll.title
--# %p= render_rich_text(poll.details, poll.details_format)
--# - if item.children.length
--#   = render "poll_events", events: item.children
 
 = render "discussions/polls/common/header", poll: poll
 = render "discussions/polls/common/summary", poll: poll
