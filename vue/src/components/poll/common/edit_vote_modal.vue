@@ -21,7 +21,7 @@ export default
       @stance.save()
       .then =>
         @stance.poll().clearStaleStances()
-        Flash.success "poll_#{stance.poll().pollType}_vote_form.stance_#{actionName}"
+        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
         @close()
       .catch onError(@stance)
 
@@ -55,5 +55,5 @@ v-card.poll-common-edit-vote-modal
         lmo-textarea.poll-common-vote-form__reason(:model='stance', field='reason', :label="$t('poll_common.reason')", :placeholder="$t('poll_common.reason_placeholder')", maxlength="500")
     v-card-actions
       v-spacer
-      v-btn(color="primary" @click="submit()", v-t="'poll_common.save_changes'")
+      v-btn.poll-common-edit-vote__submit(color="primary" @click="submit()", v-t="'poll_common.save_changes'")
 </template>
