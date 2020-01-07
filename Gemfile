@@ -24,7 +24,7 @@ gem 'paper_trail', '~> 10.3.1'
 gem 'rinku'
 gem 'sidekiq'
 gem 'friendly_id', '~> 5.3.0'
-gem 'httparty', '~> 0.17.1'
+gem 'httparty', '~> 0.17.3'
 gem 'browser', '~> 2.7.1'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
