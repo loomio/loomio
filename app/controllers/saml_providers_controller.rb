@@ -1,36 +1,47 @@
 class SamlProvidersController < ApplicationController
   def auth
     session[:back_to] = params[:back_to] || request.referrer
+    session[:saml_provider_id] = params[:id]
     redirect_to idp_auth_url
   end
 
   def metadata
-    render :xml => OneLogin::RubySaml::Metadata.new.generate(sp_settings), :content_type => "application/samlmetadata+xml"
+    render :xml => OneLogin::RubySaml::Metadata.new.generate(sp_settings(params_saml_provider)), :content_type => "application/samlmetadata+xml"
+  end
+
+  def invitation_created
+    render plain: "Almost there! Please check your #{params[:email]} inbox for a link to join #{saml_provider.group.name}."
   end
 
   def callback
-    saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: sp_settings)
+    saml_provider = session_saml_provider
+    saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: sp_settings(saml_provider))
 
     if saml_response.success?
       if current_user.is_logged_in?
         saml_provider.group.add_member!(current_user)
+        redirect_to session.delete(:back_to) || dashboard_path
       else
-        if User.where(email: saml_response.nameid).exists?
-          # send user a sign in email
-        else
-          # create user and sign them in
-        end
+        GroupInviter.new(
+          group:    saml_provider.group,
+          inviter:  saml_provider.group.creator,
+          emails:   Array(saml_response.nameid),
+        ).invite!
+        redirect_to invitation_created_saml_providers_url(email: saml_response.nameid)
       end
-
-      redirect_to session.delete(:back_to) || dashboard_path
     else
       authorize_failure  # This method shows an error message
     end
   end
 
   private
-  def saml_provider
-    @saml_provider ||= SamlProvider.find_by!(id: params[:id])
+
+  def params_saml_provider
+    SamlProvider.find_by!(id: params[:id])
+  end
+
+  def session_saml_provider
+    SamlProvider.find_by!(id: session[:saml_provider_id])
   end
 
   def idp_auth_url
@@ -38,9 +49,9 @@ class SamlProvidersController < ApplicationController
   end
 
   def idp_settings
-    settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(saml_provider.idp_metadata_url)
-    settings.assertion_consumer_service_url = callback_saml_provider_url(saml_provider)
-    settings.issuer                         = metadata_saml_provider_url(saml_provider)
+    settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(params_saml_provider.idp_metadata_url)
+    settings.assertion_consumer_service_url = callback_saml_providers_url
+    settings.issuer                         = metadata_saml_provider_url(params_saml_provider)
     settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
     settings
   end
@@ -73,7 +84,7 @@ class SamlProvidersController < ApplicationController
     end
   end
 
-  def sp_settings
+  def sp_settings(saml_provider)
     settings = OneLogin::RubySaml::Settings.new
 
     # When disabled, saml validation errors will raise an exception.
@@ -81,7 +92,7 @@ class SamlProvidersController < ApplicationController
 
     #SP section
     settings.issuer                         = metadata_saml_provider_url(saml_provider)
-    settings.assertion_consumer_service_url = callback_saml_provider_url(saml_provider)
+    settings.assertion_consumer_service_url = callback_saml_providers_url
     settings.assertion_consumer_logout_service_url = logout_saml_provider_url(saml_provider)
 
     settings.name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"

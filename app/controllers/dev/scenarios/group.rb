@@ -104,8 +104,7 @@ module Dev::Scenarios::Group
   end
 
   def setup_closed_group
-    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
-                                group_privacy: 'closed')
+    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes', group_privacy: 'closed')
     @group.add_admin!  patrick
     @group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @group)
@@ -127,7 +126,7 @@ module Dev::Scenarios::Group
     SamlProvider.create(group: @group, idp_metadata_url: "https://app.onelogin.com/saml/metadata/c5690a10-4e33-4a57-9389-30dd92996629")
     # @group.add_admin!  patrick
     @group.add_admin! jennifer
-    sign_in patrick
+    # sign_in patrick
     redirect_to group_url(create_group)
   end
 
