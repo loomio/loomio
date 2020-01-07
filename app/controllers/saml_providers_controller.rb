@@ -10,26 +10,29 @@ class SamlProvidersController < ApplicationController
   end
 
   def invitation_created
-    render plain: "Almost there! Please check your #{params[:email]} inbox for a link to join #{session_saml_provider.group.name}."
+    render plain: "Almost there! Please check your #{params[:email]} inbox for a link to join #{params_saml_provider.group.name}."
   end
 
   def callback
     saml_provider = session_saml_provider
     saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: sp_settings(saml_provider))
 
+    session.delete(:saml_provider_id)
+
     if saml_response.success?
+      email = saml_response.nameid
+      group = saml_provider.group
+
       if current_user.is_logged_in?
-        saml_provider.group.add_member!(current_user)
-        redirect_to session.delete(:back_to) || dashboard_path
+        group.add_member!(current_user)
+        signed_in_success_redirect
+      elsif user_is_existing_member?(email, group)
+        sign_in User.active.find_by!(email: email)
+        signed_in_success_redirect
       else
-        inviter = GroupInviter.new(
-          group:    saml_provider.group,
-          inviter:  saml_provider.group.creator,
-          emails:   Array(saml_response.nameid),
-        ).invite!
-        # what is a valid kind?
-        Events::AnnouncementCreated.publish! saml_provider.group, saml_provider.group.creator, inviter.invited_memberships, 'invitation_created'
-        redirect_to invitation_created_saml_providers_url(email: saml_response.nameid)
+        inviter = GroupInviter.new(group: group, emails: [email], inviter: group.creator).invite!
+        Events::AnnouncementCreated.publish! group, group.creator, inviter.invited_memberships, :group_announced
+        redirect_to invitation_created_saml_provider_url(saml_provider.id, email: email)
       end
     else
       authorize_failure  # This method shows an error message
@@ -37,6 +40,14 @@ class SamlProvidersController < ApplicationController
   end
 
   private
+
+  def signed_in_success_redirect
+    redirect_to session.delete(:back_to) || dashboard_path
+  end
+
+  def user_is_existing_member?(email, group)
+    Membership.active.joins(:user).where('users.email' => email, :group_id => group.id).exists?
+  end
 
   def params_saml_provider
     SamlProvider.find_by!(id: params[:id])

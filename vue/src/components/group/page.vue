@@ -8,11 +8,12 @@ import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import InstallSlackModalMixin from '@/mixins/install_slack_modal'
 import GroupModalMixin from '@/mixins/group_modal'
+import AuthModalMixin from '@/mixins/auth_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
 import {compact, head, includes, filter} from 'lodash'
 
 export default
-  mixins: [InstallSlackModalMixin, GroupModalMixin]
+  mixins: [InstallSlackModalMixin, GroupModalMixin, AuthModalMixin]
   data: ->
     group: null
     activeTab: ''
@@ -48,16 +49,22 @@ export default
 
   methods:
     init: ->
+      # has saml provider
+        # not signed in
+        # signed in but not a member
+        # signed in && member
       Records.groups.findOrFetch(@$route.params.key)
       .then (group) =>
         @group = group
         subscribeTo(@group)
-      .catch (error) =>
-        EventBus.$emit 'pageError', error
       .finally =>
-        console.log 'finally'
         Records.groups.fetchSamlProvider(@$route.params.key).then (obj) =>
-          window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
+          if !Session.isSignedIn() && Session.pendingInvitation()
+            @openAuthModal()
+          else
+            window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
+        .catch =>
+          EventBus.$emit 'pageError', error
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)

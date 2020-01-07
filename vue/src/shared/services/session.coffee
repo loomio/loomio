@@ -86,6 +86,9 @@ export default new class Session
     validProviders = AppConfig.identityProviders.map (p) -> p.name
     AppConfig.pendingIdentity if validProviders.includes(AppConfig.pendingIdentity.identity_type)
 
+  pendingInvitation: ->
+    AppConfig.pendingIdentity.identity_type?
+
 setDefaultParams = (params) ->
   endpoints = ['stances', 'polls', 'discussions', 'events', 'reactions', 'documents']
   defaultParams = pickBy(params, identity)
