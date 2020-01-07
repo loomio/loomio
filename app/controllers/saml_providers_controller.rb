@@ -10,7 +10,7 @@ class SamlProvidersController < ApplicationController
   end
 
   def invitation_created
-    render plain: "Almost there! Please check your #{params[:email]} inbox for a link to join #{saml_provider.group.name}."
+    render plain: "Almost there! Please check your #{params[:email]} inbox for a link to join #{session_saml_provider.group.name}."
   end
 
   def callback
@@ -22,11 +22,13 @@ class SamlProvidersController < ApplicationController
         saml_provider.group.add_member!(current_user)
         redirect_to session.delete(:back_to) || dashboard_path
       else
-        GroupInviter.new(
+        inviter = GroupInviter.new(
           group:    saml_provider.group,
           inviter:  saml_provider.group.creator,
           emails:   Array(saml_response.nameid),
         ).invite!
+        # what is a valid kind?
+        Events::AnnouncementCreated.publish! saml_provider.group, saml_provider.group.creator, inviter.invited_memberships, 'invitation_created'
         redirect_to invitation_created_saml_providers_url(email: saml_response.nameid)
       end
     else
