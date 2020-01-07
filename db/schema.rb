@@ -417,7 +417,6 @@ ActiveRecord::Schema.define(version: 2019_12_10_011354) do
     t.string "token"
     t.datetime "accepted_at"
     t.string "title"
-    t.datetime "saml_verified_at"
     t.index ["archived_at"], name: "index_memberships_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true

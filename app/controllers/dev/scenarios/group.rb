@@ -114,11 +114,19 @@ module Dev::Scenarios::Group
   end
 
   def setup_secret_group
-    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
-                                group_privacy: 'secret')
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
     @group.add_admin!  patrick
     @group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @group)
+    sign_in patrick
+    redirect_to group_url(create_group)
+  end
+
+  def setup_saml_group
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
+    SamlProvider.create(group: @group, idp_metadata_url: "https://app.onelogin.com/saml/metadata/c5690a10-4e33-4a57-9389-30dd92996629")
+    # @group.add_admin!  patrick
+    @group.add_admin! jennifer
     sign_in patrick
     redirect_to group_url(create_group)
   end

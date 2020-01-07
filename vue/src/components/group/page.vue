@@ -48,16 +48,17 @@ export default
 
   methods:
     init: ->
-      Records.groups.findOrFetch(@$route.params.key).then (group) =>
-        if group
-          @group = group
-          subscribeTo(@group)
+      Records.groups.findOrFetch(@$route.params.key)
+      .then (group) =>
+        @group = group
+        subscribeTo(@group)
+      .catch (error) =>
+        EventBus.$emit 'pageError', error
+      .finally =>
+        console.log 'finally'
+        Records.groups.fetchSamlProvider(@$route.params.key).then (obj) =>
+          window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
 
-      , (error) ->
-        Records.groups.fetchSamlProivderFor(@$route.params.key).then (url) =>
-          window.location = url
-        , (error) ->
-          EventBus.$emit 'pageError', error
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
 

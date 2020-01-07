@@ -8,7 +8,7 @@ class API::GroupsController < API::RestfulController
     if saml_provider = group.saml_provider
       render json: { saml_provider_id:  saml_provider.id }
     else
-      respond_with_error(status: 404)
+      render json: {}, status: 404
     end
   end
 

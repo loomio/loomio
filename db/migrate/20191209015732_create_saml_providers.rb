@@ -5,6 +5,5 @@ class CreateSamlProviders < ActiveRecord::Migration[5.2]
     add_column :saml_providers, :idp_metadata_url, :string, null: false
     add_column :saml_providers, :authentication_duration, :integer, null: false, default: 24
     add_index  :saml_providers, :group_id
-    add_column :memberships,    :saml_verified_at, :datetime
   end
 end

@@ -4,10 +4,10 @@ import {uniq, concat, compact, map, includes} from 'lodash'
 export default class GroupRecordsInterface extends BaseRecordsInterface
   model: GroupModel
 
-  fetchSamlProivder: (id) ->
+  fetchSamlProvider: (id) ->
     @fetch
       path: "#{id}/saml_provider"
-      
+
   fuzzyFind: (id) ->
     # could be id or key or handle
     @find(id) || _.head(@find(handle: id))
