@@ -60,6 +60,7 @@ gem 'google-cloud-translate'
 gem 'discourse-diff'
 gem 'puma'
 gem 'reverse_markdown'
+gem 'discard', '~> 1.0'
 
 group :development, :test do
   gem 'parallel_tests'

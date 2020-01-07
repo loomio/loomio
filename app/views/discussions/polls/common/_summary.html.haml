@@ -1,0 +1,24 @@
+.poll-mailer-common-summary
+  %h1= poll.title
+  -# %h1= link_to @info.poll.title, @info.target_url, class: 'poll-mailer__poll-title'
+  -# -if @info.action_name == :export
+  -#   %p
+  -#   = t(:"poll.export.also_available")
+  -#   = link_to "CSV", poll_export_path(@poll, format: 'csv')
+
+  %p
+
+  - if poll.current_outcome
+    %h2= t(:"poll_common.outcome")
+    %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
+
+    %h2= t(:"poll_types.#{poll.poll_type}")
+
+  %p= render_rich_text(poll.details, poll.details_format)
+
+  %p
+    - if poll.active?
+      = t(:"poll_mailer.common.you_have_until", when: formatted_time_in_zone(poll.closing_at, poll.time_zone))
+    - else
+      = t(:"poll_common_form.closed")
+      = formatted_time_in_zone(poll.closed_at, poll.time_zone)

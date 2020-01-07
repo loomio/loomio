@@ -13,6 +13,9 @@ uk:
     messages:
       email: адреса електронної пошти не вірна
       spoofed_media_type: Вміст файлу не відповідає його імені
+  group:
+    error:
+      handle_must_begin_with_parent_handle: "Має починатись з %{parent_handle}-"
   user:
     deleted_user: "Видалені користувачі"
     placeholder_name: "Запрошено користувача (%{hostname})"

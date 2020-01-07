@@ -1611,6 +1611,9 @@ es:
   poll_poll_vote_form:
     stance_created: Voto creado
     stance_updated: Voto actualizado
+  poll_score_vote_form:
+    stance_created: Voto creado
+    stance_updated: Voto actualizado
   poll_meeting_vote_form:
     can_attend: "Puedo ir"
     unable: "No puedo ir"

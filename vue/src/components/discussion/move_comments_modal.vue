@@ -2,13 +2,13 @@
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import AbilityService from '@/shared/services/ability_service'
-import { submitDiscussion } from '@/shared/helpers/form'
+import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 import { orderBy, debounce } from 'lodash'
 
 export default
   data: ->
     selectedDiscussion: null
-    submit: null
     searchFragment: ''
     searchResults: []
     groupId: @discussion.groupId
@@ -19,17 +19,21 @@ export default
     close: Function
 
   methods:
-    setSubmit: ->
+    submit: ->
+      @selectedDiscussion.moveComments()
+      .then =>
+        @discussion.update(forkedEventIds: [])
+        @discussion.update(isForking: false)
+        @selectedDiscussion.update(forkedEventIds: [])
+        @selectedDiscussion.update(isForking: false)
+        @close()
+        Flash.success("discussion_fork_actions.moved")
+      .catch onError(@selectedDiscussion)
+
+    setIsForking: ->
       @selectedDiscussion.update(isForking: true)
       @selectedDiscussion.update(forkedEventIds: @discussion.forkedEventIds)
-      @submit = submitDiscussion @, @selectedDiscussion,
-        successCallback: (data) =>
-          @discussion.update(forkedEventIds: [])
-          @discussion.update(isForking: false)
-          @selectedDiscussion.update(forkedEventIds: [])
-          @selectedDiscussion.update(isForking: false)
-          @close()
-          # @$router.push @urlFor(@selectedDiscussion)
+
     fetch: debounce ->
       return unless @searchFragment
       Records.discussions.search(@groupId, @searchFragment).then (data) =>
@@ -42,9 +46,8 @@ export default
           .data()
     , 500
 
-
   watch:
-    selectedDiscussion: 'setSubmit'
+    selectedDiscussion: 'setIsForking'
     searchFragment: 'fetch'
 
 </script>

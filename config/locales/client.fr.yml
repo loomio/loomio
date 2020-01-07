@@ -25,6 +25,9 @@ fr:
     free_trial: Essai gratuit.  {{days}} jours restants.
     trial_expired: Votre période d'essai est terminé. Passez dès maintenant en version premium pour continuer à utiliser Loomio en toute tranquillité.
     tooltip: "Nos prix sont imbattables ! Passez en version premium dès aujourd'hui et profitez de toutes les fonctionnalités de Loomio pour votre travail en groupe."
+    was_gift_trial: "Votre groupe utilise Loomio gratuitement depuis {{createdDate}}}. Nous ne sommes pas en mesure de continuer à fournir un service gratuit. Changez d'offre pour continuer à utiliser Loomio. </a>En savoir plus ici.</a>"
+    was_gift_remaining: "{{days}} jours restants."
+    was_gift_expired: "Votre forfait gratuit a maintenant expiré."
   loomio_tags:
     all_tags: Tous les mots-clés
     tags: Mots-clés
@@ -813,6 +816,8 @@ fr:
     edit_group_heading: 'Modifier les paramètres du groupe'
     edit_subgroup_heading: 'Modifier les paramètres du sous-groupe'
     group_name: 'Nom du groupe'
+    handle: Gérer
+    group_handle_placeholder: "Pour l'adresse URL et l'e-mail, par ex. loomio.org/handle et handle@loomio.org"
     organization_name: 'Nom de l''organisation'
     start_organization_heading: Nouveau groupe
     edit_organization_heading: Modifier les paramètres de l'organisation
@@ -1245,6 +1250,7 @@ fr:
   thread_group:
     aria_label: 'Nom du groupe'
   thread_context:
+    item_maybe_deleted: "Impossible de trouver l'emplacement demandé dans le fil de discussion. Il a peut-être été supprimé."
     aria_label: 'Contexte de la discussion'
     thread_options: 'Options de la discussion'
     email_settings: 'Paramètres de notification'
@@ -1275,7 +1281,11 @@ fr:
     earliest: Les plus anciens
     earliest_description: Lire du début à la fin
     replies: Comment afficher les réponses ?
+    linear: Liste fixe.
+    linear_description: Les éléments ont été listés au fur et à mesure de leur occurrence, l'un après l'autre.
     nested_once: Imbriqué
+    nested_once_description: Placer les réponses sous le commentaire original
+    changing_nesting_is_slow: Les changements à l'imbrication peuvent prendre quelques minutes à traiter.
   delete_thread_form:
     aria_label: 'Supprimer la discussion'
     title: Supprimer la discussion
@@ -1638,6 +1648,7 @@ fr:
     meeting: 'Le sondage réunion est fermé. <strong>Partagez le résultat</strong> pour informer les autres de la date choisie pour la réunion.'
     dot_vote: 'Ce vote à point est fermé. <strong>Partagez un résultat</strong> avec le groupe.'
     ranked_choice: 'Ce classement par préférence est fermé. <strong>Partagez un résultat</strong> avec le groupe.'
+    score: 'Ce sondage a été clôturé. <strong>Partager un résultat</strong> avec le groupe.'
   poll_common_outcome_form:
     new_title: Entrer un résultat
     update_title: Mettre à jour le résultat
@@ -1679,6 +1690,7 @@ fr:
         <p>Un diagramme circulaire donne un aperçu des avis dans le groupe, tandis que les explications permettent aux voix individuelles d’être entendues. </p>
         <p>Ne soyez pas découragé⋅e si vous ne voyez pas d’accord au début, les propositions sont faites pour faire émerger les problèmes qui ont besoin d’être résolus.</p>
         <p>Avec une bonne participation, une proposition est un mandat puissant pour passer à l’action.
+    tool_tip_collapsed: Demander l'accord ou le retour des autres.
     start_header: Faire une proposition
     edit_header: Modifier la proposition
     tip: Recherche le consensus par un processus permettant à tous de s'exprimer.<a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Apprenez-en plus</a>
@@ -1839,6 +1851,9 @@ fr:
   poll_poll_vote_form:
     stance_created: Vote créé
     stance_updated: Vote mis à jour
+  poll_score_vote_form:
+    stance_created: Vote créé
+    stance_updated: Vote mis à jour
   poll_meeting_vote_form:
     local_time_zone: heure locale - {{zone}}
     can_attend: "Disponible"
@@ -1945,6 +1960,9 @@ fr:
     set_password: Définir un mot de passe
     set_password_helptext: Vous souhaitez un mot de passe pour la prochaine fois ?
     hello: "Bonjour, {{name}} !"
+    new_to_loomio: Première fois sur {{{nom_du_site}}} ?
+    already_a_user: Vous avez déjà un compte ?
+    email_address_of_existing_account: Entrez l'adresse e-mail de votre compte existant
     link_accounts: Comptes associés
     check_your_email: Vérifier votre e-mail !
     login_link_sent: "Ok, nous avons envoyé un message à {{email}}."

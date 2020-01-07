@@ -1,6 +1,5 @@
 <script lang="coffee">
 import Records       from '@/shared/services/records'
-import { submitForm }    from '@/shared/helpers/form'
 import Session from '@/shared/services/session'
 import Flash from '@/shared/services/flash'
 import AuthModalMixin from '@/mixins/auth_modal'

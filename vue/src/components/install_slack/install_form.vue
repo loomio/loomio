@@ -3,9 +3,9 @@ import Session       from '@/shared/services/session'
 import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
 import LmoUrlService from '@/shared/services/lmo_url_service'
-
+import Flash  from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 import { head, filter, sortBy } from 'lodash'
-import { submitForm }    from '@/shared/helpers/form'
 
 export default
   props:
@@ -24,45 +24,38 @@ export default
     groups: ->
       sortBy(Session.user().adminGroups(), 'fullName')
 
-    setSubmit: () ->
-      @groupIdentity = Records.groupIdentities.build(
+    submit: ->
+      @groupIdentity = Records.groupIdentities.build
         groupId: @group.id
         identityType: 'slack'
         makeAnnouncement: true
-      )
-      @submit = submitForm @, @groupIdentity,
-        prepareFn: =>
-          @groupIdentity.customFields.slack_channel_id = @channel.id
-          @groupIdentity.customFields.slack_channel_name = '#' + @channel.name
-        flashSuccess: 'install_slack.install.slack_installed'
-        successCallback: =>
-          @close()
-          @$router.replace({ query: {} })
+        customFields:
+          slack_channel_id: @channel.id
+          slack_channel_name: '#' + @channel.name
+      @groupIdentity.save()
+      .then =>
+        Flash.success 'install_slack.install.slack_installed'
+        @close()
+        @$router.push({ query: null })
+      .catch onError(@groupIdentity)
 
   created: ->
     Records.users.fetchGroups().then =>
       @group = head(@groups())
-
-      @fetchChannels().then =>
-        @setSubmit()
+      @fetchChannels()
 
 </script>
 <template lang="pug">
 .install-slack-install-form
   loading(v-if="!group")
-  v-card-text(v-if="group")
-    .install-slack-install-form__add-to-group(v-if='group.id')
+  v-card-text(v-if="group && group.id")
+    .install-slack-install-form__add-to-group
       p.lmo-hint-text(v-t="'install_slack.install.add_to_group_helptext'")
-      v-select(return-object v-model='group' @change='setSubmit(group)' :items="groups()" item-text="fullName")
+      v-select(return-object v-model='group' :items="groups()" item-text="fullName")
 
-    .install-slack-install-form__add-to-group(v-if='groupIdentity')
+    .install-slack-install-form__add-to-channel
       p.lmo-hint-text(v-t="'install_slack.invite.helptext'")
       v-select(return-object v-model='channel', :placeholder="$t('install_slack.invite.select_a_channel')" :items="channels" item-text="name")
-      v-checkbox(v-model='groupIdentity.makeAnnouncement')
-        div(slot="label")
-          strong(v-t="'install_slack.invite.publish_group'")
-          p.caption(v-t="'install_slack.invite.publish_group_helptext_on'", v-if='groupIdentity.makeAnnouncement')
-          p.caption(v-t="'install_slack.invite.publish_group_helptext_off'", v-if='!groupIdentity.makeAnnouncement')
 
   v-card-actions.install-slack-form__actions
     v-spacer

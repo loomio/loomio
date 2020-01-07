@@ -28,7 +28,11 @@ export default
     label: ->
       formatDistance(@poll.closingAt, new Date, {addSuffix: true})
   watch:
-    closingDate: (val) -> @updateClosingAt()
+    'poll.closingAt': (val) ->
+      @closingHour = format(startOfHour(@poll.closingAt), 'HH:mm')
+      @closingDate = format(@poll.closingAt, 'yyyy-MM-dd')
+    closingDate: (val) ->
+      @updateClosingAt()
     closingHour: (val) -> @updateClosingAt()
 </script>
 

@@ -1,0 +1,29 @@
+%table
+  %thead
+    %tr
+      %td
+      - poll.poll_options.each do |option|
+        %td.poll-mailer-meeting__cell
+          %div= option.display_time option.name, poll.time_zone if option.has_time?
+          %div= option.display_day  option.name, poll.time_zone
+          %div= option.display_date option.name, poll.time_zone
+  %tbody
+    %tr
+      %td= t(:"poll_meeting_vote_form.can_attend")
+      - poll.meeting_score_tallies.each do |option, tally|
+        %td.poll-mailer-meeting__cell
+          %span= "#{tally[:yes].to_i}"
+    %tr
+      %td= t(:"poll_meeting_vote_form.if_need_be")
+      - poll.meeting_score_tallies.each do |option, tally|
+        %td.poll-mailer-meeting__cell
+          %span= "#{tally[:maybe].to_i}"
+    - poll.stances.latest.each do |stance|
+      %tr
+        %td.poll-mailer-meeting__participant-name= stance.participant.name
+        - poll.poll_options.each do |option|
+          %td.poll-mailer-meeting__cell
+            - stance_choice = stance.stance_choices.find_by(poll_option:option)
+            - if stance_choice&.score.to_i > 0
+              - icon_name = stance_icon_for(poll, stance_choice)
+              = image_tag "poll_mailer/vote-icon-#{icon_name}.png", alt: "#{icon_name} icon", class: "poll-mailer-meeting__option-icon"

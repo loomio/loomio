@@ -1,7 +1,8 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import Records        from '@/shared/services/records'
-import { submitForm }   from '@/shared/helpers/form'
+import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -9,15 +10,18 @@ export default
     close: Function
   data: ->
     processing: false
-    submit: null
 
   created: ->
     @user.password = ''
     @user.passwordConfirmation = ''
-    @submit = submitForm @, @user,
-      submitFn: Records.users.updateProfile
-      flashSuccess: "change_password_form.password_changed"
-      successCallback: => @close()
+
+  methods:
+    submit: ->
+      Records.users.updateProfile(@user)
+      .then =>
+        Flash.success "change_password_form.password_changed"
+        @close()
+      .catch onError(@user)
 
 </script>
 <template lang="pug">

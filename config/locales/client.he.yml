@@ -1539,6 +1539,9 @@ he:
   poll_poll_vote_form:
     stance_created: הצבעה נוצרה
     stance_updated: הצבעה עודכנה
+  poll_score_vote_form:
+    stance_created: הצבעה נוצרה
+    stance_updated: הצבעה עודכנה
   poll_meeting_vote_form:
     can_attend: "יכול להופיע"
     unable: "לא יכול"

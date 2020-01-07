@@ -1277,6 +1277,9 @@ nl_NL:
   poll_poll_vote_form:
     stance_created: Stemming gemaakt
     stance_updated: Stemming geactualiseerd
+  poll_score_vote_form:
+    stance_created: Stemming aangemaakt
+    stance_updated: Stemming geactualiseerd
   poll_meeting_vote_form:
     your_response: Wanneer kan je aanwezig zijn?
     stance_created: Beschikbaarheid opgeslagen
