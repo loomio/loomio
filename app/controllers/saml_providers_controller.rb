@@ -38,7 +38,7 @@ class SamlProvidersController < ApplicationController
         redirect_to invitation_created_saml_provider_url(saml_provider.id, email: email)
       end
     else
-      authorize_failure  # This method shows an error message
+      render :error
     end
   end
 
