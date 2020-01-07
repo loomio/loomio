@@ -37,7 +37,8 @@ module Ability::Group
          :archive,
          :publish,
          :export,
-         :view_pending_invitations], ::Group do |group|
+         :view_pending_invitations,
+         :set_saml_provider], ::Group do |group|
       user_is_admin_of?(group.id)
     end
 

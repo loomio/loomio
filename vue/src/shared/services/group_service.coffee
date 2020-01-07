@@ -126,13 +126,9 @@ export default new class GroupService
         AbilityService.canAdministerGroup(group)
       perform: ->
         openModal
-          component: 'ConfirmModal'
+          component: 'InstallSamlProviderModal'
           props:
-            confirm:
-              submit:  => vm.$router.replace('/contact')
-              text:
-                title:    'configure_sso.title'
-                helptext: 'configure_sso.helptext'
+            group: group
 
     leave_group:
       name: 'group_page.options.leave_group'
