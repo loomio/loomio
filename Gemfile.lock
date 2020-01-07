@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/loomio/custom_counter_cache.git
+  remote: https://github.com/loomio/custom_counter_cache.git
   revision: 7a4ed2c70c6a00cbee468d81295bdb3d4a86f2a7
   branch: rails5
   specs:
@@ -7,14 +7,14 @@ GIT
       rails (>= 4.0)
 
 GIT
-  remote: git://github.com/loomio/griddler-mailin.git
+  remote: https://github.com/loomio/griddler-mailin.git
   revision: 5a1d1ea7612308b8d3890b1c6d7a51c5b485498c
   specs:
     griddler-mailin (0.0.1)
       griddler
 
 GIT
-  remote: git://github.com/loomio/griddler.git
+  remote: https://github.com/loomio/griddler.git
   revision: 52cfe124f0edf588f0e9f84fbc762e464384f67c
   specs:
     griddler (1.3.1)
@@ -22,7 +22,7 @@ GIT
       rails (>= 3.2.0)
 
 GIT
-  remote: git://github.com/loomio/twitter-text.git
+  remote: https://github.com/loomio/twitter-text.git
   revision: 0931cb3782bf32023e7ff05282a46023718f42fe
   specs:
     twitter-text (1.14.7)
@@ -132,7 +132,7 @@ GEM
     benchmark-ips (2.7.2)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    browser (2.7.1)
+    browser (3.0.1)
     builder (3.2.3)
     bullet (6.0.2)
       activesupport (>= 3.0.0)
@@ -583,7 +583,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk-s3
   bootsnap
-  browser (~> 2.7.1)
+  browser (~> 3.0.1)
   bullet
   byebug
   cancancan
