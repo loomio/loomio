@@ -206,7 +206,7 @@ GEM
       i18n (>= 1.6, < 1.8)
     faraday (0.17.1)
       multipart-post (>= 1.2, < 3)
-    ffi (1.11.1)
+    ffi (1.11.3)
     fog-aws (3.5.2)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
@@ -285,7 +285,7 @@ GEM
     icalendar (2.6.1)
       ice_cube (~> 0.16)
     ice_cube (0.16.3)
-    image_processing (1.9.3)
+    image_processing (1.10.0)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.13, < 3)
     inherited_resources (1.11.0)
@@ -485,7 +485,7 @@ GEM
     rspec-support (3.9.0)
     ruby-saml (1.11.0)
       nokogiri (>= 1.5.10)
-    ruby-vips (2.0.14)
+    ruby-vips (2.0.16)
       ffi (~> 1.9)
     ruby_parser (3.13.1)
       sexp_processor (~> 4.9)
@@ -614,7 +614,7 @@ DEPENDENCIES
   http_accept_language
   httparty (~> 0.17.3)
   icalendar
-  image_processing (~> 1.9)
+  image_processing (~> 1.10)
   js_regex
   launchy
   maxminddb
