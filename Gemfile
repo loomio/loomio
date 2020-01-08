@@ -38,7 +38,7 @@ gem 'sass-rails'
 gem 'uuidtools'
 gem 'ahoy_matey', '~> 3.0.1'
 gem 'ahoy_email', '~> 1.1.0'
-gem 'geocoder', '1.5.2'
+gem 'geocoder', '1.6.0'
 gem 'maxminddb'
 gem 'oj'
 gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
