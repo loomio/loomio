@@ -77,7 +77,7 @@ GEM
       activemodel (= 5.2.3)
       activesupport (= 5.2.3)
       arel (>= 9.0)
-    activerecord-import (1.0.3)
+    activerecord-import (1.0.4)
       activerecord (>= 3.2)
     activerecord-nulldb-adapter (0.4.0)
       activerecord (>= 2.0.0)
@@ -132,9 +132,9 @@ GEM
     benchmark-ips (2.7.2)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    browser (2.7.1)
+    browser (3.0.1)
     builder (3.2.3)
-    bullet (6.0.2)
+    bullet (6.1.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.0.1)
@@ -206,7 +206,7 @@ GEM
       i18n (>= 1.6, < 1.8)
     faraday (0.17.1)
       multipart-post (>= 1.2, < 3)
-    ffi (1.11.1)
+    ffi (1.11.3)
     fog-aws (3.5.2)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
@@ -285,7 +285,7 @@ GEM
     icalendar (2.6.1)
       ice_cube (~> 0.16)
     ice_cube (0.16.3)
-    image_processing (1.9.3)
+    image_processing (1.10.0)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.13, < 3)
     inherited_resources (1.11.0)
@@ -342,7 +342,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
-    newrelic_rpm (6.7.0.359)
+    newrelic_rpm (6.8.0.360)
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
@@ -361,7 +361,7 @@ GEM
     parallel (1.19.1)
     parallel_tests (2.30.0)
       parallel
-    pg (1.1.4)
+    pg (1.2.1)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -379,9 +379,9 @@ GEM
     puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.8)
-    rack-attack (6.2.1)
+    rack-attack (6.2.2)
       rack (>= 1.0, < 3)
-    rack-protection (2.0.7)
+    rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -430,7 +430,7 @@ GEM
       i18n
       polyamorous (= 2.3.0)
     redcarpet (3.5.0)
-    redis (4.1.1)
+    redis (4.1.3)
     redis-actionpack (5.0.2)
       actionpack (>= 4.0, < 6)
       redis-rack (>= 1, < 3)
@@ -485,7 +485,7 @@ GEM
     rspec-support (3.9.0)
     ruby-saml (1.11.0)
       nokogiri (>= 1.5.10)
-    ruby-vips (2.0.14)
+    ruby-vips (2.0.16)
       ffi (~> 1.9)
     ruby_parser (3.13.1)
       sexp_processor (~> 4.9)
@@ -511,7 +511,7 @@ GEM
       activerecord (>= 3.0)
       activesupport (>= 3.0)
     sexp_processor (4.12.0)
-    sidekiq (6.0.3)
+    sidekiq (6.0.4)
       connection_pool (>= 2.2.2)
       rack (>= 2.0.0)
       rack-protection (>= 2.0.0)
@@ -547,14 +547,14 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
-    uniform_notifier (1.12.1)
+    uniform_notifier (1.13.0)
     uuidtools (2.1.5)
     warden (1.2.8)
       rack (>= 2.0.6)
@@ -575,7 +575,7 @@ DEPENDENCIES
   actioncable
   active_model_serializers (~> 0.8.1)
   activeadmin (~> 2.4.0)
-  activerecord-import (= 1.0.3)
+  activerecord-import (= 1.0.4)
   activerecord-nulldb-adapter
   ahoy_email (~> 1.1.0)
   ahoy_matey (~> 3.0.1)
@@ -583,7 +583,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk-s3
   bootsnap
-  browser (~> 2.7.1)
+  browser (~> 3.0.1)
   bullet
   byebug
   cancancan
@@ -614,7 +614,7 @@ DEPENDENCIES
   http_accept_language
   httparty (~> 0.17.3)
   icalendar
-  image_processing (~> 1.9)
+  image_processing (~> 1.10)
   js_regex
   launchy
   maxminddb
@@ -625,7 +625,7 @@ DEPENDENCIES
   paper_trail (~> 10.3.1)
   paperclip (~> 6.1.0)
   parallel_tests
-  pg (~> 1.1.4)
+  pg (~> 1.2.1)
   poltergeist
   premailer-rails
   puma
