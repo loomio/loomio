@@ -1,10 +1,14 @@
 <script lang="coffee">
 import Records           from '@/shared/services/records'
+import Session           from '@/shared/services/session'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
+import AuthModalMixin from '@/mixins/auth_modal'
 import { first, last } from 'lodash'
 
 export default
+  mixins: [AuthModalMixin]
+
   data: ->
     discussion: null
     threadPercentage: 0
@@ -30,17 +34,24 @@ export default
     openThreadNav: -> EventBus.$emit('toggleThreadNav')
 
     init: ->
-      Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
-          @discussion = discussion
-          EventBus.$emit 'currentComponent',
-            page: 'threadPage'
-            discussion: @discussion
-            group: @discussion.group()
+      Records.discussions.findOrFetchById(@$route.params.key)
+      .then (discussion) =>
+        @discussion = discussion
+        EventBus.$emit 'currentComponent',
+          page: 'threadPage'
+          discussion: @discussion
+          group: @discussion.group()
 
-            title: @discussion.title
-      ,
-        (error) -> EventBus.$emit 'pageError', error
-
+          title: @discussion.title
+      .finally =>
+        Records.samlProviders.fetchByDiscussionId(@$route.params.key)
+        .then (obj) =>
+          if !Session.isSignedIn() && Session.pendingInvitation()
+            @openAuthModal()
+          else
+            window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
+        .catch (error) =>
+          EventBus.$emit 'pageError', error
 
 </script>
 
