@@ -119,8 +119,9 @@ v-card.group-form
     v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)" @input="suggestHandle()")
     validation-errors(:subject="group", field="name")
 
-    v-text-field.group-form__handle#group-handle(v-model='group.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
-    validation-errors(:subject="group", field="handle")
+    div(v-if="!group.parent() || (group.parent() && group.parent().handle)")
+      v-text-field.group-form__handle#group-handle(v-model='group.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
+      validation-errors(:subject="group", field="handle")
 
     .group-form__section.group-form__privacy
       v-radio-group(v-model='group.groupPrivacy')
