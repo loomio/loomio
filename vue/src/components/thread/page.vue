@@ -56,6 +56,7 @@ export default
             window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
         .catch (error) =>
           EventBus.$emit 'pageError', @discussionFetchError if @discussionFetchError
+          @discussionFetchError = null
 
 </script>
 

@@ -69,6 +69,7 @@ export default
             window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
         .catch (error) =>
           EventBus.$emit 'pageError', @groupFetchError if @groupFetchError
+          @groupFetchError = null
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
