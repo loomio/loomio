@@ -24,12 +24,14 @@ export default
 <template lang="pug">
 v-card.install-microsoft-modal
   v-card-title
-    h1.headline(v-t="'install_saml_provider.title'")
+    h1.headline(v-t="'configure_sso.title'")
     v-spacer
     dismiss-modal-button(:close="close")
-  v-card-text
+  v-card-text(v-if="group.subscriptionPlan == 'pp-pro-monthly' || group.subscriptionPlan == 'pp-pro-annual'")
     //- p.lmo-hint-text(v-html="$t('install_microsoft.form.webhook_helptext')")
-    v-text-field(v-model='idpMetadataUrl')
+    v-text-field(v-model='idpMetadataUrl' :label="$t('configure_sso.idp_metadata_url')" :placeholder="$t('configure_sso.idp_metadata_url_placeholder')")
+  v-card-text(v-else)
+    p(v-html="$t('configure_sso.pro_plan_only')")
 
   v-card-actions
     v-spacer
