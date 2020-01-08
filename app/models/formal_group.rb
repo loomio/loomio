@@ -198,7 +198,7 @@ class FormalGroup < Group
   private
 
   def handle_is_valid
-    self.handle = nil if self.handle.to_s.strip == ""
+    self.handle = nil if self.handle.to_s.strip == "" || (is_subgroup? && parent.handle.nil?)
     return if handle.nil?
     self.handle = handle.parameterize
     if is_subgroup? && parent.handle && !handle.starts_with?("#{parent.handle}-")
