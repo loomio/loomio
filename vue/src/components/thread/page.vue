@@ -13,6 +13,7 @@ export default
     discussion: null
     threadPercentage: 0
     position: 0
+    group: null
 
   created: ->
     EventBus.$on 'visibleSlots', (slots) =>
@@ -37,10 +38,11 @@ export default
       Records.discussions.findOrFetchById(@$route.params.key)
       .then (discussion) =>
         @discussion = discussion
+        @group = @discussion.group()
         EventBus.$emit 'currentComponent',
           page: 'threadPage'
           discussion: @discussion
-          group: @discussion.group()
+          group: @group
 
           title: @discussion.title
       .finally =>
@@ -51,7 +53,7 @@ export default
           else
             window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
         .catch (error) =>
-          EventBus.$emit 'pageError', error
+          EventBus.$emit 'pageError', error if !@discussion
 
 </script>
 

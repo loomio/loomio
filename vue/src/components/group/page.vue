@@ -58,13 +58,14 @@ export default
         @group = group
         subscribeTo(@group)
       .finally =>
-        Records.samlProviders.fetchByGroupId(@$route.params.key).then (obj) =>
+        Records.samlProviders.fetchByGroupId(@$route.params.key)
+        .then (obj) =>
           if !Session.isSignedIn() && Session.pendingInvitation()
             @openAuthModal()
           else
             window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
         .catch (error) =>
-          EventBus.$emit 'pageError', error
+          EventBus.$emit 'pageError', error if !@group
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
