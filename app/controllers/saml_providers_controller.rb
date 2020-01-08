@@ -1,4 +1,6 @@
 class SamlProvidersController < ApplicationController
+  layout 'basic'
+
   def auth
     session[:back_to] = params[:back_to] || request.referrer
     session[:saml_provider_id] = params[:id]
@@ -10,7 +12,8 @@ class SamlProvidersController < ApplicationController
   end
 
   def invitation_created
-    render plain: "Almost there! Please check your #{params[:email]} inbox for a link to join #{params_saml_provider.group.name}."
+    @email = params[:email]
+    @group_name = params_saml_provider.group.name
   end
 
   def callback
@@ -35,7 +38,7 @@ class SamlProvidersController < ApplicationController
         redirect_to invitation_created_saml_provider_url(saml_provider.id, email: email)
       end
     else
-      authorize_failure  # This method shows an error message
+      render :error
     end
   end
 

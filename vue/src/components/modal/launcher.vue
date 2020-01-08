@@ -30,6 +30,7 @@ import MoveCommentsModal from '@/components/discussion/move_comments_modal'
 import SeenByModal from '@/components/thread/seen_by_modal'
 import ExportDataModal from '@/components/group/export_data_modal'
 import VueUpgradedModal from '@/components/user/vue_upgraded_modal'
+import InstallSamlProviderModal from '@/components/install_saml_provider/modal'
 
 export default
   components:
@@ -63,6 +64,7 @@ export default
     'SeenByModal': SeenByModal
     'ExportDataModal': ExportDataModal
     'VueUpgradedModal': VueUpgradedModal
+    'InstallSamlProviderModal': InstallSamlProviderModal
 
   data: ->
     isOpen: false

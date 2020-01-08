@@ -3,6 +3,10 @@ en:
   explore:
     header: Explore public groups
 
+  saml_providers:
+    invitation_created:
+      success: "Success! Please check your %{email} inbox for a link to join %{group_name}."
+      error: "Your SAML provider could not authenticate %{email} for %{group_name}."
   activerecord:
     errors:
       messages:

@@ -126,6 +126,8 @@ module Dev::Scenarios::Group
     SamlProvider.create(group: @group, idp_metadata_url: "https://app.onelogin.com/saml/metadata/c5690a10-4e33-4a57-9389-30dd92996629")
     # @group.add_admin!  patrick
     @group.add_admin! jennifer
+    @discussion = Discussion.new(title: "I carried a watermelon", author: jennifer, group: @group)
+    DiscussionService.create(discussion: @discussion, actor: jennifer)
     # sign_in patrick
     redirect_to group_url(create_group)
   end
