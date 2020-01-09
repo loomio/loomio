@@ -361,7 +361,7 @@ GEM
     parallel (1.19.1)
     parallel_tests (2.30.0)
       parallel
-    pg (1.2.1)
+    pg (1.2.2)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -625,7 +625,7 @@ DEPENDENCIES
   paper_trail (~> 10.3.1)
   paperclip (~> 6.1.0)
   parallel_tests
-  pg (~> 1.2.1)
+  pg (~> 1.2.2)
   poltergeist
   premailer-rails
   puma
