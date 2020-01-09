@@ -14,6 +14,7 @@ export default
     threadPercentage: 0
     position: 0
     group: null
+    discussionFetchError: null
 
   created: ->
     EventBus.$on 'visibleSlots', (slots) =>
@@ -43,8 +44,9 @@ export default
           page: 'threadPage'
           discussion: @discussion
           group: @group
-
           title: @discussion.title
+      .catch (error) =>
+        @discussionFetchError = error
       .finally =>
         Records.samlProviders.fetchByDiscussionId(@$route.params.key)
         .then (obj) =>
@@ -53,7 +55,8 @@ export default
           else
             window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
         .catch (error) =>
-          EventBus.$emit 'pageError', error if !@discussion
+          EventBus.$emit 'pageError', @discussionFetchError if @discussionFetchError
+          @discussionFetchError = null
 
 </script>
 

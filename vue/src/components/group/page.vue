@@ -17,6 +17,7 @@ export default
   data: ->
     group: null
     activeTab: ''
+    groupFetchError: null
 
   created: ->
     @init()
@@ -57,6 +58,8 @@ export default
       .then (group) =>
         @group = group
         subscribeTo(@group)
+      .catch (error) =>
+        @groupFetchError = error
       .finally =>
         Records.samlProviders.fetchByGroupId(@$route.params.key)
         .then (obj) =>
@@ -65,7 +68,8 @@ export default
           else
             window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
         .catch (error) =>
-          EventBus.$emit 'pageError', error if !@group
+          EventBus.$emit 'pageError', @groupFetchError if @groupFetchError
+          @groupFetchError = null
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)

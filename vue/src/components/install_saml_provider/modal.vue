@@ -11,6 +11,11 @@ export default
     group: Object
   data: ->
     idpMetadataUrl: ''
+    samlProviderId: null
+  mounted: ->
+    Records.samlProviders.fetchByGroupId(@$route.params.key)
+    .then (res) =>
+      @samlProviderId = res.saml_provider_id
   methods:
     submit: ->
       remote = new RestfulClient('saml_providers')
@@ -27,13 +32,14 @@ v-card.install-microsoft-modal
     h1.headline(v-t="'configure_sso.title'")
     v-spacer
     dismiss-modal-button(:close="close")
-  v-card-text(v-if="group.subscriptionPlan == 'pp-pro-monthly' || group.subscriptionPlan == 'pp-pro-annual'")
-    //- p.lmo-hint-text(v-html="$t('install_microsoft.form.webhook_helptext')")
-    v-text-field(v-model='idpMetadataUrl' :label="$t('configure_sso.idp_metadata_url')" :placeholder="$t('configure_sso.idp_metadata_url_placeholder')")
+  div(v-if="group.subscriptionPlan == 'pp-pro-monthly' || group.subscriptionPlan == 'pp-pro-annual'")
+    v-card-text
+      p.helptext(v-html="$t('configure_sso.helptext')")
+      v-text-field(v-model='idpMetadataUrl' :label="$t('configure_sso.idp_metadata_url')" :placeholder="$t('configure_sso.idp_metadata_url_placeholder')")
+    v-card-actions
+      v-spacer
+      v-btn(color='primary' @click='submit()', v-t="'common.action.save'")
   v-card-text(v-else)
+    p.helptext(v-html="$t('configure_sso.helptext')")
     p(v-html="$t('configure_sso.pro_plan_only')")
-
-  v-card-actions
-    v-spacer
-    v-btn(color='primary' @click='submit()', v-t="'common.action.save'")
 </template>
