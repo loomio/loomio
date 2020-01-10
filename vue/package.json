@@ -15,7 +15,7 @@
     "activestorage": "^5.2.2",
     "chromedriver": "^79.0.0",
     "core-js": "^2.6.11",
-    "date-fns": "2.8.1",
+    "date-fns": "2.9.0",
     "date-fns-tz": "1.0.9",
     "deepmerge": "^4.2.2",
     "detect-browser": "^4.8.0",
