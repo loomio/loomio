@@ -22,8 +22,9 @@ export default
   mounted: ->
     @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
     EventBus.$on('currentComponent', @setCurrentComponent)
+    EventBus.$on 'openAuthModal', => @openAuthModal()
     EventBus.$on 'pageError', (error) =>
-      @openAuthModal() if !Session.isSignedIn() and error.status == 403
+      # @openAuthModal() if !Session.isSignedIn() and error.status == 403
       @pageError = error
     EventBus.$on 'signedIn', =>
       @pageError = null
@@ -45,6 +46,7 @@ export default
     shouldForceSignIn: (options = {}) ->
       # return false if options.page == "pollPage" and Session.user() !AbilityService.isEmailVerified()
       # return false if AbilityService.isEmailVerified()
+      return true if Session.pendingInvitation()
       return false if Session.isSignedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
       return true  if AppConfig.pendingIdentity.identity_type?
 

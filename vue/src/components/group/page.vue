@@ -50,26 +50,18 @@ export default
 
   methods:
     init: ->
-      # has saml provider
-        # not signed in
-        # signed in but not a member
-        # signed in && member
       Records.groups.findOrFetch(@$route.params.key)
       .then (group) =>
         @group = group
         subscribeTo(@group)
       .catch (error) =>
-        @groupFetchError = error
+        if error.status == 403
+          EventBus.$emit 'openAuthModal'
+        else
+          EventBus.$emit 'pageError', error
       .finally =>
-        Records.samlProviders.fetchByGroupId(@$route.params.key)
-        .then (obj) =>
-          if !Session.isSignedIn() && Session.pendingInvitation()
-            @openAuthModal()
-          else
-            window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
-        .catch (error) =>
-          EventBus.$emit 'pageError', @groupFetchError if @groupFetchError
-          @groupFetchError = null
+        if !Session.pendingInvitation() && (!Session.user() || !Session.user().membershipFor(@group))
+          Records.samlProviders.authenticateForGroup(@$route.params.key)
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)

@@ -46,17 +46,13 @@ export default
           group: @group
           title: @discussion.title
       .catch (error) =>
-        @discussionFetchError = error
+        if error.status == 403
+          EventBus.$emit 'openAuthModal'
+        else
+          EventBus.$emit 'pageError', error
       .finally =>
-        Records.samlProviders.fetchByDiscussionId(@$route.params.key)
-        .then (obj) =>
-          if !Session.isSignedIn() && Session.pendingInvitation()
-            @openAuthModal()
-          else
-            window.location = "/saml_providers/#{obj.saml_provider_id}/auth" if !Session.user() || !Session.user().membershipFor(@group)
-        .catch (error) =>
-          EventBus.$emit 'pageError', @discussionFetchError if @discussionFetchError
-          @discussionFetchError = null
+        if !Session.pendingInvitation() && (!Session.user() || !Session.user().membershipFor(@group))
+          Records.samlProviders.authenticateForDiscussion(@$route.params.key)
 
 </script>
 
