@@ -12,7 +12,7 @@ class TagService
     DiscussionTag.where(discussion: discussion).destroy_all
 
     Tag.where(group: group, name: tag_names).each do |tag|
-      DiscussionTag.create(discussion: discussion, group: group, tag: tag)
+      DiscussionTag.create(discussion: discussion, tag: tag)
     end
 
     discussion.info[:tag_names] = tag_names
