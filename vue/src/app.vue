@@ -20,6 +20,7 @@ export default
       true
 
   mounted: ->
+    @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
     EventBus.$on 'currentComponent',     @setCurrentComponent
     EventBus.$on 'openAuthModal',     => @openAuthModal()
     EventBus.$on 'pageError', (error) => @pageError = error
