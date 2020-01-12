@@ -8,12 +8,11 @@ import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
 import InstallSlackModalMixin from '@/mixins/install_slack_modal'
 import GroupModalMixin from '@/mixins/group_modal'
-import AuthModalMixin from '@/mixins/auth_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
 import {compact, head, includes, filter} from 'lodash'
 
 export default
-  mixins: [InstallSlackModalMixin, GroupModalMixin, AuthModalMixin]
+  mixins: [InstallSlackModalMixin, GroupModalMixin]
   data: ->
     group: null
     activeTab: ''
