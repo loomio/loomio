@@ -40,8 +40,6 @@ export default
       AppConfig.currentPoll       = options.poll
 
     shouldForceSignIn: (options = {}) ->
-      # return false if options.page == "pollPage" and Session.user() !AbilityService.isEmailVerified()
-      # return false if AbilityService.isEmailVerified()
       return true if Session.pendingInvitation()
       return false if Session.isSignedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
       return true  if AppConfig.pendingIdentity.identity_type?
