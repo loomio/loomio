@@ -42,7 +42,6 @@ export default
     shouldForceSignIn: (options = {}) ->
       return true if Session.pendingInvitation()
       return false if Session.isSignedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
-      return true  if AppConfig.pendingIdentity.identity_type?
 
       switch @$route.path
         when '/email_preferences' then !Session.user().restricted?
