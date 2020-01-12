@@ -20,14 +20,10 @@ export default
       true
 
   mounted: ->
-    @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
-    EventBus.$on('currentComponent', @setCurrentComponent)
-    EventBus.$on 'openAuthModal', => @openAuthModal()
-    EventBus.$on 'pageError', (error) =>
-      # @openAuthModal() if !Session.isSignedIn() and error.status == 403
-      @pageError = error
-    EventBus.$on 'signedIn', =>
-      @pageError = null
+    EventBus.$on 'currentComponent',     @setCurrentComponent
+    EventBus.$on 'openAuthModal',     => @openAuthModal()
+    EventBus.$on 'pageError', (error) => @pageError = error
+    EventBus.$on 'signedIn',          => @pageError = null
 
   watch:
     '$route': ->

@@ -50,18 +50,12 @@ export default
 
   methods:
     init: ->
-      Records.groups.findOrFetch(@$route.params.key)
+      Records.groups.findOrFetchOrAuthorize(@$route.params.key)
       .then (group) =>
         @group = group
         subscribeTo(@group)
       .catch (error) =>
-        if error.status == 403
-          EventBus.$emit 'openAuthModal'
-        else
-          EventBus.$emit 'pageError', error
-      .finally =>
-        if !Session.pendingInvitation() && (!Session.user() || !Session.user().membershipFor(@group))
-          Records.samlProviders.authenticateForGroup(@$route.params.key)
+        EventBus.$emit 'pageError', error
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)

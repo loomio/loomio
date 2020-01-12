@@ -1,9 +1,22 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import DiscussionModel      from '@/shared/models/discussion_model'
+import Session              from '@/shared/services/session'
+import EventBus             from '@/shared/services/event_bus'
 import { includes } from 'lodash'
 
 export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel
+
+  findOrFetchOrAuthorize: (id, options = {}, ensureComplete = false) ->
+    findOrFetchById(id, options, ensureComplete)
+    .catch (error) ->
+      EventBus.$emit 'openAuthModal' if error.status == 403
+      throw error
+    .finally =>
+      return if Session.pendingInvitation()
+      if discussion = @find(id) && (!Session.isSignedIn() ||
+                                    !Session.user().membershipFor(discussion.group()))
+        @recordStore.samlProviders.authenticateForGroup(id)
 
   fetchHistoryFor: (discussion) ->
     params = discussion.id

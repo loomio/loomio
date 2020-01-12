@@ -36,23 +36,16 @@ export default
     openThreadNav: -> EventBus.$emit('toggleThreadNav')
 
     init: ->
-      Records.discussions.findOrFetchById(@$route.params.key)
+      Records.discussions.findOrFetchOrAuthorize(@$route.params.key)
       .then (discussion) =>
         @discussion = discussion
-        @group = @discussion.group()
         EventBus.$emit 'currentComponent',
           page: 'threadPage'
           discussion: @discussion
-          group: @group
+          group: @discussion.group()
           title: @discussion.title
       .catch (error) =>
-        if error.status == 403
-          EventBus.$emit 'openAuthModal'
-        else
-          EventBus.$emit 'pageError', error
-      .finally =>
-        if !Session.pendingInvitation() && (!Session.user() || !Session.user().membershipFor(@group))
-          Records.samlProviders.authenticateForDiscussion(@$route.params.key)
+        EventBus.$emit 'pageError', error
 
 </script>
 
