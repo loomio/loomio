@@ -93,4 +93,18 @@ module.exports = {
     page.pause(2000)
     page.waitForUrlToContain('i-carried-a-watermelon')
   },
+
+  'should_reauth_viewing_group_with_expired_session': (test) => {
+    page = pageHelper(test)
+    page.loadPathNoMain('setup_saml_group?privacy=secret&sign_in=1&member=1&expired=1')
+    page.pause(2000)
+    page.waitForUrlToContain('saml_providers')
+  },
+
+  'should_reauth_viewing_discussion_with_expired_session': (test) => {
+    page = pageHelper(test)
+    page.loadPathNoMain('setup_saml_group?privacy=secret&sign_in=1&member=1&expired=1&discussion=1')
+    page.pause(5000)
+    page.waitForUrlToContain('saml_providers')
+  }
 }

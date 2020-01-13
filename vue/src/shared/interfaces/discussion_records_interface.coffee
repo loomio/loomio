@@ -25,7 +25,8 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
   shouldTrySaml: (id) ->
     return false if Session.pendingInvitation()
     if discussion = @find(id)
-      !Session.isSignedIn() || !Session.user().membershipFor(discussion.group())
+      membership = Session.user().membershipFor(discussion.group())
+      !Session.isSignedIn() || !membership || membership.samlSessionExpired()
     else
       true
 

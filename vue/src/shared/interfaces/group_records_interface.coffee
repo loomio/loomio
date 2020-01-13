@@ -33,7 +33,9 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
         throw error
 
   shouldTrySaml: (id) ->
-    !Session.pendingInvitation() && (!Session.isSignedIn() || !Session.user().membershipFor(@fuzzyFind(id)))
+    return false if Session.pendingInvitation()
+    membership = Session.user().membershipFor(@fuzzyFind(id))
+    !Session.isSignedIn() || !membership || membership.samlSessionExpired()
 
   fetchByParent: (parentGroup) ->
     @fetch

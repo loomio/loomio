@@ -25,16 +25,20 @@ class SamlProvidersController < ApplicationController
     if saml_response.success?
       email = saml_response.nameid
       group = saml_provider.group
+      expires_at = saml_response.session_expires_at
 
       if current_user.is_logged_in?
         group.add_member!(current_user)
+        update_session_expires_at!(current_user, group, expires_at)
         signed_in_success_redirect
       elsif user_is_existing_member?(email, group)
-        sign_in User.active.find_by!(email: email)
+        sign_in user = User.active.find_by!(email: email)
+        update_session_expires_at!(user, group, expires_at)
         signed_in_success_redirect
       else
         inviter = GroupInviter.new(group: group, emails: [email], inviter: group.creator).invite!
         Events::AnnouncementCreated.publish! group, group.creator, inviter.invited_memberships, :group_announced
+        update_session_expires_at!(User.find_by!(email: email), group, expires_at)
         redirect_to invitation_created_saml_provider_url(saml_provider.id, email: email)
       end
     else
@@ -43,6 +47,11 @@ class SamlProvidersController < ApplicationController
   end
 
   private
+
+  def update_session_expires_at!(user, group, expires_at = 48.hours.from_now)
+    membership = Membership.not_archived.where(user_id: user.id, group_id: group.id).first
+    membership.update(saml_session_expires_at: expires_at)
+  end
 
   def signed_in_success_redirect
     redirect_to session.delete(:back_to) || dashboard_path
