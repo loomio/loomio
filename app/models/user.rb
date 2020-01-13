@@ -62,7 +62,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :username, if: :email_verified
   before_validation :generate_username, if: :email_verified
   validates_length_of :username, maximum: 30
-  validates_length_of :short_bio, maximum: 500
+  validates_length_of :short_bio, maximum: 5000
   validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
   validates_confirmation_of :password, if: :password_required?
 
