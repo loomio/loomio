@@ -25,6 +25,9 @@ export default
         @close()
       .catch =>
         alert("boo")
+  computed:
+    isProPlan: ->
+      @group.subscriptionPlan == 'pp-pro-monthly' || @group.subscriptionPlan == 'pp-pro-annual'
 </script>
 <template lang="pug">
 v-card.install-microsoft-modal
@@ -32,14 +35,11 @@ v-card.install-microsoft-modal
     h1.headline(v-t="'configure_sso.title'")
     v-spacer
     dismiss-modal-button(:close="close")
-  div(v-if="group.subscriptionPlan == 'pp-pro-monthly' || group.subscriptionPlan == 'pp-pro-annual'")
-    v-card-text
-      p.helptext(v-html="$t('configure_sso.helptext')")
-      v-text-field(v-model='idpMetadataUrl' :label="$t('configure_sso.idp_metadata_url')" :placeholder="$t('configure_sso.idp_metadata_url_placeholder')")
-    v-card-actions
-      v-spacer
-      v-btn(color='primary' @click='submit()', v-t="'common.action.save'")
-  v-card-text(v-else)
+  v-card-text
     p.helptext(v-html="$t('configure_sso.helptext')")
-    p(v-html="$t('configure_sso.pro_plan_only')")
+    p(v-if="!isProPlan" v-html="$t('configure_sso.pro_plan_only')")
+    v-text-field(v-if="isProPlan" v-model='idpMetadataUrl' :label="$t('configure_sso.idp_metadata_url')" :placeholder="$t('configure_sso.idp_metadata_url_placeholder')")
+  v-card-actions(v-if="isProPlan")
+    v-spacer
+    v-btn(color='primary' @click='submit()', v-t="'common.action.save'")
 </template>
