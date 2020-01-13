@@ -121,6 +121,21 @@ module Dev::Scenarios::Group
     redirect_to group_url(create_group)
   end
 
+  def setup_saml_group
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: params['privacy'])
+    SamlProvider.create(group: @group, idp_metadata_url: "https://saml_provider.example.com")
+    # @group.add_admin!  patrick
+    @group.add_admin! jennifer
+    sign_in patrict if params[:sign_in]
+    if params[:discussion]
+      @discussion = Discussion.new(title: "I carried a watermelon", author: jennifer, group: @group)
+      DiscussionService.create(discussion: @discussion, actor: jennifer)
+      redirect_to discussion_url(@discussion)
+    else
+      redirect_to group_url(create_group)
+    end
+  end
+
   def setup_saml_secret_group_not_signed_in
     @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
     SamlProvider.create(group: @group, idp_metadata_url: "https://saml_provider.example.com")
