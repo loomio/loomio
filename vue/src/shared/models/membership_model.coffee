@@ -9,7 +9,7 @@ export default class MembershipModel extends BaseModel
   @searchableFields: ['userName', 'userUsername']
 
   samlSessionExpired: ->
-    !compareAsc(new Date(), @samlSessionExpiresAt)
+    compareAsc(new Date(), @samlSessionExpiresAt)
 
   relationships: ->
     @belongsTo 'group'
