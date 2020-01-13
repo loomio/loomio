@@ -17,15 +17,33 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
     else
       @remote.fetchById(id, options).then => @fuzzyFind(id)
 
+  # findOrFetchOrAuthorize: (id, options = {}, ensureComplete = false) ->
+  #   @findOrFetch(id, options, ensureComplete)
+  #   .catch (error) ->
+  #     EventBus.$emit 'openAuthModal' if error.status == 403
+  #     throw error
+  #   .finally =>
+  #     if !Session.pendingInvitation() && (!Session.isSignedIn() ||
+  #                                         !Session.user().membershipFor(@fuzzyFind(id)))
+  #       @recordStore.samlProviders.authenticateForGroup(id)
+
   findOrFetchOrAuthorize: (id, options = {}, ensureComplete = false) ->
-    findOrFetch(id, options, ensureComplete)
-    .catch (error) ->
-      EventBus.$emit 'openAuthModal' if error.status == 403
-      throw error
-    .finally =>
-      if !Session.pendingInvitation() && (!Session.isSignedIn() ||
-                                          !Session.user().membershipFor(@fuzzyFind(id)))
+    @findOrFetch(id, options, ensureComplete)
+    .then (group) =>
+      @recordStore.samlProviders.authenticateForGroup(id) if @shouldTrySaml(id)
+      group
+    .catch (error) =>
+      if @shouldTrySaml(id)
         @recordStore.samlProviders.authenticateForGroup(id)
+        .then =>
+          @fuzzyFind(id)
+        .catch ->
+          EventBus.$emit 'openAuthModal' if error.status == 403
+      else
+        throw error
+
+  shouldTrySaml: (id) ->
+    !Session.pendingInvitation() && (!Session.isSignedIn() || !Session.user().membershipFor(@fuzzyFind(id)))
 
   fetchByParent: (parentGroup) ->
     @fetch

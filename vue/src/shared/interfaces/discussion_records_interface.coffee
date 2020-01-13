@@ -8,15 +8,23 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel
 
   findOrFetchOrAuthorize: (id, options = {}, ensureComplete = false) ->
-    findOrFetchById(id, options, ensureComplete)
-    .catch (error) ->
-      EventBus.$emit 'openAuthModal' if error.status == 403
-      throw error
-    .finally =>
-      return if Session.pendingInvitation()
-      if discussion = @find(id) && (!Session.isSignedIn() ||
-                                    !Session.user().membershipFor(discussion.group()))
-        @recordStore.samlProviders.authenticateForGroup(id)
+    @findOrFetchById(id, options, ensureComplete)
+    .then (discussion) =>
+      @recordStore.samlProviders.authenticateForDiscussion(id) if @shouldTrySaml(id)
+      discussion
+    .catch (error) =>
+      if @shouldTrySaml(id)
+        @recordStore.samlProviders.authenticateForDiscussion(id)
+        .then =>
+          @find(id)
+        .catch ->
+          EventBus.$emit 'openAuthModal' if error.status == 403
+      else
+        throw error
+
+  shouldTrySaml: (id) ->
+    discussion = @find(id)
+    !Session.pendingInvitation() && (!Session.isSignedIn() || !Session.user().membershipFor(discussion.group()))
 
   fetchHistoryFor: (discussion) ->
     params = discussion.id

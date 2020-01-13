@@ -121,14 +121,66 @@ module Dev::Scenarios::Group
     redirect_to group_url(create_group)
   end
 
-  def setup_saml_group
+  def setup_saml_secret_group_not_signed_in
     @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
-    SamlProvider.create(group: @group, idp_metadata_url: "https://app.onelogin.com/saml/metadata/c5690a10-4e33-4a57-9389-30dd92996629")
+    SamlProvider.create(group: @group, idp_metadata_url: "https://saml_provider.example.com")
     # @group.add_admin!  patrick
     @group.add_admin! jennifer
     @discussion = Discussion.new(title: "I carried a watermelon", author: jennifer, group: @group)
     DiscussionService.create(discussion: @discussion, actor: jennifer)
     # sign_in patrick
+    redirect_to group_url(create_group)
+  end
+
+  def setup_saml_secret_group_pending_invitation
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
+    SamlProvider.create(group: @group, idp_metadata_url: "https://saml_provider.example.com")
+    @group.add_admin! jennifer
+    membership = FactoryBot.create :membership, group: @group, accepted_at: nil, inviter: jennifer, user: patrick
+    redirect_to membership
+  end
+
+  def setup_saml_secret_group_not_member
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
+    SamlProvider.create(group: @group, idp_metadata_url: "https://saml_provider.example.com")
+    # @group.add_admin!  patrick
+    @group.add_admin! jennifer
+    @discussion = Discussion.new(title: "I carried a watermelon", author: jennifer, group: @group)
+    DiscussionService.create(discussion: @discussion, actor: jennifer)
+    sign_in patrick
+    redirect_to group_url(create_group)
+  end
+
+  def setup_saml_secret_group_as_member
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
+    SamlProvider.create(group: @group, idp_metadata_url: "https://saml_provider.example.com")
+    @group.add_admin!  patrick
+    @group.add_admin! jennifer
+    @discussion = Discussion.new(title: "I carried a watermelon", author: jennifer, group: @group)
+    DiscussionService.create(discussion: @discussion, actor: jennifer)
+    sign_in patrick
+    redirect_to group_url(create_group)
+  end
+
+  def setup_saml_closed_group_not_signed_in
+    @group = FormalGroup.create!(name: 'Closed Shoes', handle: 'closed-shoes', group_privacy: 'closed')
+    SamlProvider.create(group: @group, idp_metadata_url: "https://saml_provider.example.com")
+    # @group.add_admin!  patrick
+    @group.add_admin! jennifer
+    @discussion = Discussion.new(title: "I carried a watermelon", author: jennifer, group: @group)
+    DiscussionService.create(discussion: @discussion, actor: jennifer)
+    # sign_in patrick
+    redirect_to group_url(create_group)
+  end
+
+  def setup_saml_closed_group_not_member
+    @group = FormalGroup.create!(name: 'Closed Shoes', handle: 'closed-shoes', group_privacy: 'closed')
+    SamlProvider.create(group: @group, idp_metadata_url: "https://saml_provider.example.com")
+    # @group.add_admin!  patrick
+    @group.add_admin! jennifer
+    @discussion = Discussion.new(title: "I carried a watermelon", author: jennifer, group: @group)
+    DiscussionService.create(discussion: @discussion, actor: jennifer)
+    sign_in patrick
     redirect_to group_url(create_group)
   end
 
