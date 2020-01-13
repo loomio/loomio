@@ -24,8 +24,10 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
 
   shouldTrySaml: (id) ->
     return false if Session.pendingInvitation()
-    discussion = @find(id)
-    !Session.isSignedIn() || (discussion && !Session.user().membershipFor(discussion.group()))
+    if discussion = @find(id)
+      !Session.isSignedIn() || !Session.user().membershipFor(discussion.group())
+    else
+      true
 
   fetchHistoryFor: (discussion) ->
     params = discussion.id
