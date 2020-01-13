@@ -13,7 +13,7 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
       @recordStore.samlProviders.authenticateForDiscussion(id) if @shouldTrySaml(id)
       discussion
     .catch (error) =>
-      if error.status == 403
+      if error.status == 403 && @shouldTrySaml(id)
         @recordStore.samlProviders.authenticateForDiscussion(id)
         .then =>
           @find(id)
