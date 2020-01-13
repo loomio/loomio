@@ -13,25 +13,19 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
       @recordStore.samlProviders.authenticateForDiscussion(id) if @shouldTrySaml(id)
       discussion
     .catch (error) =>
-      @recordStore.samlProviders.authenticateForDiscussion(id)
-      .then =>
-        @find(id)
-      .catch ->
-        EventBus.$emit 'openAuthModal' if error.status == 403
+      if error.status == 403
+        @recordStore.samlProviders.authenticateForDiscussion(id)
+        .then =>
+          @find(id)
+        .catch ->
+          EventBus.$emit 'openAuthModal'
+      else
         throw error
-      # this doesnt work because we never got the discussion record in the unhappy path
-      # if @shouldTrySaml(id)
-      #   @recordStore.samlProviders.authenticateForDiscussion(id)
-      #   .then =>
-      #     @find(id)
-      #   .catch ->
-      #     EventBus.$emit 'openAuthModal' if error.status == 403
-      # else
-      #   throw error
 
   shouldTrySaml: (id) ->
+    return false if Session.pendingInvitation()
     discussion = @find(id)
-    !Session.pendingInvitation() && (!Session.isSignedIn() || !Session.user().membershipFor(discussion.group()))
+    !Session.isSignedIn() || (discussion && !Session.user().membershipFor(discussion.group()))
 
   fetchHistoryFor: (discussion) ->
     params = discussion.id

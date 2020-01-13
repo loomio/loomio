@@ -55,7 +55,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_non_member')
-    page.expectElement('.error-page')
+    page.expectElement('.auth-modal')
   },
 
   'displays_threads_from_subgroups_in_the_discussions_card': (test) => {
