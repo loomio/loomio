@@ -80,13 +80,6 @@ module.exports = {
     page.waitForUrlToContain('saml_providers')
   },
 
-  // 'should_pop_sign_in_modal_viewing_secret_group_thread_pending_invitation': (test) => {
-  //   page = pageHelper(test)
-  //   page.loadPathNoMain('setup_saml_secret_group_pending_invitation&discussion=1')
-  //   page.pause(2000)
-  //   page.expectElement('.auth-modal')
-  // },
-
   'should_auth_saml_viewing_closed_group_thread_not_member': (test) => {
     page = pageHelper(test)
     page.loadPathNoMain('setup_saml_group?sign_in=1&privacy=closed&discussion=1')
