@@ -17,21 +17,21 @@ module.exports = {
 
   'should_auth_saml_viewing_secret_group_not_signed_in': (test) => {
     page = pageHelper(test)
-    page.loadPath('setup_saml_secret_group_not_signed_in')
+    page.loadPath('setup_saml_group?privacy=secret')
     page.pause(2000)
     page.waitForUrlToContain('saml_providers')
   },
 
   'should_auth_saml_viewing_closed_group_not_signed_in': (test) => {
     page = pageHelper(test)
-    page.loadPath('setup_saml_closed_group_not_signed_in')
+    page.loadPath('setup_saml_group?privacy=closed')
     page.pause(2000)
     page.waitForUrlToContain('saml_providers')
   },
 
   'should_auth_saml_viewing_secret_group_not_member': (test) => {
     page = pageHelper(test)
-    page.loadPath('setup_saml_secret_group_not_member')
+    page.loadPath('setup_saml_group?sign_in=1&privacy=secret')
     page.pause(2000)
     page.waitForUrlToContain('saml_providers')
   },
@@ -45,15 +45,15 @@ module.exports = {
 
   'should_auth_saml_viewing_closed_group_not_member': (test) => {
     page = pageHelper(test)
-    page.loadPath('setup_saml_closed_group_not_member')
+    page.loadPath('setup_saml_group?sign_in=1&privacy=closed')
     page.pause(2000)
     page.waitForUrlToContain('saml_providers')
   },
 
   'should_auth_saml_viewing_secret_group_as_member': (test) => {
     page = pageHelper(test)
-    page.loadPath('setup_saml_secret_group_as_member')
+    page.loadPath('setup_saml_group?privacy=secret&sign_in=1&member=1')
     page.pause(2000)
-    page.waitForUrlToContain('secret-shoes')
+    page.waitForUrlToContain('dirty-dancing-shoes')
   },
 }
