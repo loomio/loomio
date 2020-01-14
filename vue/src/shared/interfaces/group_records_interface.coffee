@@ -28,7 +28,7 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
         .then =>
           @fuzzyFind(id)
         .catch ->
-          EventBus.$emit 'openAuthModal'
+          EventBus.$emit 'openAuthModal' if !Session.isSignedIn()
           throw error
       else
         throw error
