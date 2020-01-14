@@ -17,7 +17,7 @@ describe UserMailer do
       @group = create(:formal_group)
       @membership = create(:membership, user: @user, group: @group)
       @event = Events::MembershipRequestApproved.create(kind: 'membership_request_approved', user: @user, eventable: @membership)
-      @mail = UserMailer.membership_request_approved(@user, @event)
+      @mail = UserMailer.membership_request_approved(@user.id, @event.id)
     end
 
     it_behaves_like 'email_meta'
@@ -31,7 +31,7 @@ describe UserMailer do
     end
 
     it 'assigns confirmation_url for email body' do
-      @mail.body.encoded.should match(@group.key)
+      @mail.body.encoded.should match(@group.handle)
     end
 
   end
@@ -43,7 +43,7 @@ describe UserMailer do
       @group = create(:formal_group, full_name: "Group full name")
       @membership = create(:membership, user: @user, group: @group, inviter: @inviter)
       @event = Events::UserAddedToGroup.create(kind: 'user_added_to_group', user: @inviter, eventable: @membership)
-      @mail = UserMailer.user_added_to_group(@user, @event)
+      @mail = UserMailer.user_added_to_group(@user.id, @event.id)
     end
 
     it 'renders the subject' do
@@ -72,7 +72,7 @@ describe UserMailer do
 
   describe 'catch_up' do
     let(:user) { create :user, email_catch_up: true }
-    subject { UserMailer.catch_up(user).deliver_now }
+    subject { UserMailer.catch_up(user.id).deliver_now }
     let(:discussion) { build :discussion, group: group }
     let(:poll) { build :poll, discussion: discussion }
     let(:comment) { build :comment, discussion: discussion }

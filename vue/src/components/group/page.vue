@@ -16,6 +16,7 @@ export default
   data: ->
     group: null
     activeTab: ''
+    groupFetchError: null
 
   created: ->
     @init()
@@ -48,14 +49,13 @@ export default
 
   methods:
     init: ->
-      Records.groups.findOrFetch(@$route.params.key).then (group) =>
+      Records.groups.findOrFetchOrAuthorize(@$route.params.key)
+      .then (group) =>
         @group = group
-
         subscribeTo(@group)
-        Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
-
-      , (error) ->
+      .catch (error) =>
         EventBus.$emit 'pageError', error
+
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
 
@@ -76,7 +76,7 @@ v-content
         | {{group.name}}
     trial-banner(:group="group")
     group-onboarding-card(v-if="group" :group="group")
-    formatted-text(v-if="group" :model="group" column="description")
+    formatted-text.group-page__description(v-if="group" :model="group" column="description")
     document-list(:model='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4

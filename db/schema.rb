@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_033332) do
+ActiveRecord::Schema.define(version: 2020_01_13_211726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -137,28 +137,6 @@ ActiveRecord::Schema.define(version: 2019_11_27_033332) do
     t.datetime "updated_at"
   end
 
-  create_table "delayed_jobs", id: :serial, force: :cascade do |t|
-    t.integer "priority", default: 0
-    t.integer "attempts", default: 0
-    t.text "handler"
-    t.text "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string "locked_by", limit: 255
-    t.string "queue", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["failed_at"], name: "delayed_jobs_failed_at_idx"
-    t.index ["failed_at"], name: "index_delayed_jobs_on_failed_at", where: "(failed_at IS NULL)"
-    t.index ["locked_at"], name: "index_delayed_jobs_on_locked_at", where: "(locked_at IS NULL)"
-    t.index ["locked_by"], name: "index_delayed_jobs_on_locked_by"
-    t.index ["priority"], name: "index_delayed_jobs_on_priority"
-    t.index ["queue"], name: "index_delayed_jobs_on_queue"
-    t.index ["run_at", "locked_at", "locked_by", "failed_at"], name: "index_delayed_jobs_on_ready"
-    t.index ["run_at"], name: "index_delayed_jobs_on_run_at"
-  end
-
   create_table "discussion_readers", id: :serial, force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at"
@@ -217,8 +195,10 @@ ActiveRecord::Schema.define(version: 2019_11_27_033332) do
     t.jsonb "info", default: {}, null: false
     t.integer "max_depth", default: 2, null: false
     t.boolean "newest_first", default: false, null: false
+    t.datetime "discarded_at"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
+    t.index ["discarded_at"], name: "index_discussions_on_discarded_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
     t.index ["guest_group_id"], name: "index_discussions_on_guest_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true
@@ -437,6 +417,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_033332) do
     t.string "token"
     t.datetime "accepted_at"
     t.string "title"
+    t.jsonb "custom_fields", default: {}, null: false
     t.index ["archived_at"], name: "index_memberships_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
@@ -621,6 +602,13 @@ ActiveRecord::Schema.define(version: 2019_11_27_033332) do
     t.index ["created_at"], name: "index_reactions_on_created_at"
     t.index ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type"
     t.index ["user_id"], name: "index_reactions_on_user_id"
+  end
+
+  create_table "saml_providers", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.string "idp_metadata_url", null: false
+    t.integer "authentication_duration", default: 24, null: false
+    t.index ["group_id"], name: "index_saml_providers_on_group_id"
   end
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|

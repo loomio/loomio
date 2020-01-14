@@ -13,6 +13,9 @@ zh_TW:
     messages:
       email: 您輸入的不是有效的電子郵件地址
       spoofed_media_type: 檔案內容不符合其檔案名稱
+  group:
+    error:
+      handle_must_begin_with_parent_handle: "必須以 %{parent_handle} 開始。"
   user:
     deleted_user: "已刪除的使用者"
     placeholder_name: "已邀請的使用者 (%{hostname})"
@@ -223,6 +226,22 @@ zh_TW:
         您在此群組中的角色是什麼？夥伴應該知道您從哪裡來嗎？
   how_it_works_thread:
     title: 如何使用 Loomio
+    description: |
+        歡迎來到 Loomio，一個線上協同討論的地方。
+
+        這是一個範例**討論串**。您可以在下面新增評論。討論串是用來討論特定主題的地方。這個討論串討論的是關於 Loomio 如何運作，所以在那裡貼出關於這個的問題吧。
+
+        您目前正在閱讀討論串**內容**，這是提供背景資訊的空間。您可以隨著討論進度更新它。
+
+        要入門 Loomio：
+        1. 上傳[簡歷照片](/profile)
+        2. 在已有的討論串中貼文，或是啟動一個新的
+
+        在 Loomio 上貼文的秘訣：
+        * 要通知特定的人，在他們的名字前輸入 @
+        * 點選迴紋針圖示來新增附件
+
+        若您有什麼問題，看看[Loomio 說明手冊](http://help.loomio.org).
   first_proposal:
     name: 提案範例
     description: |

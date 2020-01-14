@@ -68,9 +68,6 @@ ja:
     heading: グループへの参加依頼
     name_label: 氏名
     email_label: Eメール
-  group_wizard:
-    invite_people: メンバーを招待する
-    start_thread: ディスカッションを開始する
   group_page:
     threads: ディスカッション
     members: メンバー

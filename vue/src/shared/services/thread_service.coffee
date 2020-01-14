@@ -6,6 +6,7 @@ import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import ConfirmModalMixin from '@/mixins/confirm_modal'
+import { hardReload } from '@/shared/helpers/window'
 
 export default new class ThreadService
   actions: (discussion, vm) ->
@@ -31,6 +32,13 @@ export default new class ThreadService
           props:
             model: discussion
             # newVolume: 'normal'
+
+    # export_thread:
+    #   name: 'common.action.export'
+    #   canPerform: ->
+    #     AbilityService.canExportThread(discussion)
+    #   perform: ->
+    #     hardReload LmoUrlService.discussion(discussion, {}, action: 'export', absolute: true)
 
     unignore:
       name: 'common.action.unignore'
@@ -65,17 +73,17 @@ export default new class ThreadService
       canPerform: -> AbilityService.canUnpinThread(discussion)
       perform: => @unpin(discussion)
 
-    mute_thread:
-      name: 'volume_levels.mute'
-      icon: 'mdi-volume-mute'
-      canPerform: -> !discussion.isMuted()
-      perform: => @mute(discussion)
-
-    unmute_thread:
-      name: 'volume_levels.unmute'
-      icon: 'mdi-volume-high'
-      canPerform: -> discussion.isMuted()
-      perform: => @mute(discussion)
+    # mute_thread:
+    #   name: 'volume_levels.mute'
+    #   icon: 'mdi-volume-mute'
+    #   canPerform: -> !discussion.isMuted()
+    #   perform: => @mute(discussion)
+    #
+    # unmute_thread:
+    #   name: 'volume_levels.unmute'
+    #   icon: 'mdi-volume-high'
+    #   canPerform: -> discussion.isMuted()
+    #   perform: => @mute(discussion)
 
     dismiss_thread:
       name: 'dashboard_page.mark_as_read'
@@ -250,7 +258,7 @@ export default new class ThreadService
           text:
             title: 'pin_thread_modal.title'
             flash: 'discussion.pin.pinned'
-            fragment: 'pin_thread'
+            helptext: 'pin_thread_modal.helptext'
         )
     else
       thread.savePin().then =>

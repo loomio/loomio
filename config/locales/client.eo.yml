@@ -239,10 +239,6 @@ eo:
     you_and_name: "Vi kaj {{name}}"
     you_and_name_and_count_more: "Vi, {{name}} kaj {{count}} pli"
     name_and_count_more: "{{name}} kaj {{count}} pli"
-  group_wizard:
-    welcome: Sukceso!
-    invite_people: Inviti personojn
-    start_thread: Komenci diskuton
   group_page:
     threads: Fadenoj
     members: Membroj
@@ -435,6 +431,9 @@ eo:
   poll_meeting_chart_panel:
     total: Entute
   poll_poll_vote_form:
+    stance_created: Voĉdono kreita
+    stance_updated: Voĉdono ĝisdatigita
+  poll_score_vote_form:
     stance_created: Voĉdono kreita
     stance_updated: Voĉdono ĝisdatigita
   poll_meeting_vote_form:

@@ -268,9 +268,6 @@ ko:
     aria_label: 검토 이력
     posted: 저장됨
     current_revision: 최신
-  group_wizard:
-    invite_people: 초대 명단
-    start_thread: 그룹 시작하기
   group_page:
     threads: 토론
     members: 멤버

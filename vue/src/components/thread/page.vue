@@ -1,5 +1,6 @@
 <script lang="coffee">
 import Records           from '@/shared/services/records'
+import Session           from '@/shared/services/session'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import { first, last } from 'lodash'
@@ -9,6 +10,8 @@ export default
     discussion: null
     threadPercentage: 0
     position: 0
+    group: null
+    discussionFetchError: null
 
   created: ->
     EventBus.$on 'visibleSlots', (slots) =>
@@ -30,17 +33,16 @@ export default
     openThreadNav: -> EventBus.$emit('toggleThreadNav')
 
     init: ->
-      Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
-          @discussion = discussion
-          EventBus.$emit 'currentComponent',
-            page: 'threadPage'
-            discussion: @discussion
-            group: @discussion.group()
-
-            title: @discussion.title
-      ,
-        (error) -> EventBus.$emit 'pageError', error
-
+      Records.discussions.findOrFetchOrAuthorize(@$route.params.key)
+      .then (discussion) =>
+        @discussion = discussion
+        EventBus.$emit 'currentComponent',
+          page: 'threadPage'
+          discussion: @discussion
+          group: @discussion.group()
+          title: @discussion.title
+      .catch (error) =>
+        EventBus.$emit 'pageError', error
 
 </script>
 

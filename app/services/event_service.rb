@@ -36,14 +36,14 @@ class EventService
 
     actor.ability.authorize! :move_comments, source
     actor.ability.authorize! :move_comments, discussion
-    Delayed::Job.enqueue MoveCommentsJob.new(ids, source, discussion)
+    MoveCommentsWorker.perform_async(ids, source.id, discussion.id)
   end
 
   def self.rearrange_events(discussion)
     items = Event.where(discussion_id: discussion.id).order(:sequence_id)
     items.update_all(parent_id: discussion.created_event.id, position: 0, depth: 1, child_count: 0)
     items.each(&:set_parent_and_depth!)
-    parent_ids = items.pluck(:parent_id).sort.uniq
+    parent_ids = items.pluck(:parent_id).compact.sort.uniq
     Event.where(id: parent_ids).each do |parent_event|
       Event.reorder_with_parent_id(parent_event.id)
       child_count = items.where(parent_id: parent_event.id).count

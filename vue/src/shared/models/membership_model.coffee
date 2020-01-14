@@ -1,11 +1,18 @@
 import BaseModel from '@/shared/record_store/base_model'
 import AppConfig from '@/shared/services/app_config'
+import compareAsc from 'date-fns/compareAsc'
 
 export default class MembershipModel extends BaseModel
   @singular: 'membership'
   @plural: 'memberships'
   @indices: ['id', 'userId', 'groupId']
   @searchableFields: ['userName', 'userUsername']
+
+  samlSessionExpired: ->
+    switch compareAsc(new Date(), @samlSessionExpiresAt)
+      when 1 then true
+      when -1 then false
+      else true
 
   relationships: ->
     @belongsTo 'group'

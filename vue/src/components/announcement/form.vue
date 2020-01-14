@@ -10,9 +10,8 @@ import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
 import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
 import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge, orderBy} from 'lodash'
-import { submitForm } from '@/shared/helpers/form'
 import { encodeParams } from '@/shared/helpers/encode_params'
-
+import { onError } from '@/shared/helpers/form'
 
 export default
   props:
@@ -53,19 +52,17 @@ export default
 
       @canInvite = @subscriptionActive && (!@announcement.model.group().parentOrSelf().subscriptionMaxMembers || @invitationsRemaining > 0)
 
-  mounted: ->
-    @submit = submitForm @, @announcement,
-      prepareFn: =>
-        @announcement.recipients = @recipients
-        @announcement.invitedGroupIds = @invitedGroupIds
-      successCallback: (data) =>
-        @announcement.membershipsCount = data.memberships.length
-        @close()
-      flashSuccess: 'announcement.flash.success'
-      flashOptions:
-        count: => @announcement.membershipsCount
-
   methods:
+    submit: ->
+      @announcement.recipients = @recipients
+      @announcement.invitedGroupIds = @invitedGroupIds
+      @announcement.save()
+      .then (data) =>
+        @announcement.membershipsCount = data.memberships.length
+        Flash.success('announcement.flash.success', { count: @announcement.membershipsCount })
+        @close()
+      .catch onError(@announcement)
+
     tooManyInvitations: ->
         @showInvitationsRemaining && (@invitationsRemaining < @recipients.length)
 
@@ -207,7 +204,7 @@ v-card
     div(v-if="recipients.length")
       p(v-show="invitingToGroup && tooManyInvitations()" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
     v-spacer
-    v-btn(text color="accent" :href="previewUrl" target="_blank" v-t="'announcement.preview'")
+    //- v-btn(text color="accent" :href="previewUrl" target="_blank" v-t="'announcement.preview'")
     v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || (invitingToGroup && tooManyInvitations())" @click="submit()" v-t="'common.action.send'")
 </template>
 

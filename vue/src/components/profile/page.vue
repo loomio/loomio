@@ -8,9 +8,8 @@ import ModalService   from '@/shared/services/modal_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import UserService    from '@/shared/services/user_service'
-
-import { submitForm }   from '@/shared/helpers/form'
-import { hardReload }   from '@/shared/helpers/window'
+import Flash   from '@/shared/services/flash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   data: ->
@@ -40,11 +39,6 @@ export default
           @user = @originalUser.clone()
           Session.updateLocale(@user.locale)
 
-          @submit = submitForm @, @user,
-            flashSuccess: 'profile_page.messages.updated'
-            submitFn: Records.users.updateProfile
-            successCallback: @init
-
     changePicture: ->
       openModal
         component: 'ChangePictureForm'
@@ -58,6 +52,11 @@ export default
     closeDeleteUserModal: ->
       @isDeleteUserModalOpen = false
 
+    submit: ->
+      Records.users.updateProfile(@user)
+      .then =>
+        Flash.success 'profile_page.messages.updated'
+      .catch onError(@user)
 
 </script>
 <template lang="pug">
@@ -84,7 +83,7 @@ v-content
                   validation-errors(:subject='user', field='email')
 
                 .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
-                  user-avatar(:user='originalUser' size='featured' :no-link="true")
+                  user-avatar.mb-4(:user='originalUser' size='featured' :no-link="true")
                   v-btn(color="accent" @click="changePicture" v-t="'profile_page.change_picture_link'")
 
               lmo-textarea(:model='user' field="shortBio" :label="$t('profile_page.short_bio_label')" :placeholder="$t('profile_page.short_bio_placeholder')")

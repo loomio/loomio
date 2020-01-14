@@ -27,9 +27,9 @@ export default
           ['pin_thread', 'unpin_thread', "edit_tags", 'move_thread', 'close_thread', 'delete_thread']
       else
         if @$vuetify.breakpoint.smAndDown
-          ['dismiss_thread', 'mute_thread', 'unmute_thread', "edit_tags", 'close_thread']
+          ['dismiss_thread', "edit_tags", 'close_thread']
         else
-          ['mute_thread', 'unmute_thread', "edit_tags", 'close_thread']
+          ["edit_tags", 'close_thread']
       pick(ThreadService.actions(@thread, @), actions)
 
     canPerformAny: ->

@@ -1,10 +1,12 @@
 <script lang="coffee">
+import { detect } from 'detect-browser'
 import tippy from 'tippy.js'
 import Records from '@/shared/services/records'
 import {concat, sortBy, isString, filter, uniq, map, forEach, isEmpty} from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
 import detectIt from 'detect-it'
+import EventBus                 from '@/shared/services/event_bus'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 
@@ -173,8 +175,10 @@ export default
       sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
     format: ->
       @model["#{@field}Format"]
-    isTouchDevice: ->
-      detectIt.primaryInput == 'touch'
+
+    inlineBubbleMenu: ->
+      browser = detect()
+      browser.name == 'firefox' || browser.name == 'safari' || detectIt.primaryInput == 'touch'
 
   created: ->
     @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
@@ -184,10 +188,10 @@ export default
 
   methods:
     setLinkUrl: (command) ->
-      if !@linkUrl.includes("://")
-        @linkUrl = "http://".concat(@linkUrl)
-      command({ href: @linkUrl })
-      @linkUrl = null
+      if @linkUrl
+        @linkUrl = "http://".concat(@linkUrl) unless @linkUrl.includes("://")
+        command({ href: @linkUrl })
+        @linkUrl = null
       @linkDialogIsOpen = false
       @editor.focus()
 
@@ -295,6 +299,11 @@ export default
         @popup = null
       @observer.disconnect() if @observer
 
+    reset: ->
+      @editor.clearContent()
+      @files = []
+      @imageFiles = []
+
   watch:
     linkDialogIsOpen: (val) ->
       return unless val && @$refs.focus
@@ -304,10 +313,7 @@ export default
       requestAnimationFrame => @$refs.focus.focus()
     files: -> @updateModel()
     imageFiles: -> @updateModel()
-    shouldReset: ->
-      @editor.clearContent()
-      @files = []
-      @imageFiles = []
+    shouldReset: -> @reset()
 
   beforeDestroy: ->
     @editor.destroy()
@@ -318,7 +324,7 @@ div
   label.caption.v-label.v-label--active.theme--light {{label}}
   .editor.mb-3
     editor-content.editor__content(:editor='editor').lmo-markdown-wrapper
-    editor-menu-bubble(v-if="!isTouchDevice" :editor='editor' v-slot='{ commands, isActive, menu }')
+    editor-menu-bubble(v-if="!inlineBubbleMenu" :editor='editor' v-slot='{ commands, isActive, menu }')
       .menububble(:class="{'is-active': menu.isActive}" :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`")
         v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' :title="$t('formatting.bold')")
           v-icon mdi-format-bold
@@ -347,17 +353,17 @@ div
               v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
                 v-icon mdi-emoticon-outline
             emoji-picker(:insert="emojiPicked")
-          v-btn(v-if="isTouchDevice" small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' :title="$t('formatting.bold')")
+          v-btn(v-if="inlineBubbleMenu" small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' :title="$t('formatting.bold')")
             v-icon mdi-format-bold
-          v-btn(v-if="isTouchDevice" small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' :title="$t('formatting.italicize')")
+          v-btn(v-if="inlineBubbleMenu" small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' :title="$t('formatting.italicize')")
             v-icon mdi-format-italic
-          v-btn(v-if="isTouchDevice" small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' :title="$t('formatting.strikethrough')")
+          v-btn(v-if="inlineBubbleMenu" small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' :title="$t('formatting.strikethrough')")
             v-icon mdi-format-strikethrough
-          v-btn(v-if="isTouchDevice" small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' :title="$t('formatting.underline')")
+          v-btn(v-if="inlineBubbleMenu" small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' :title="$t('formatting.underline')")
             v-icon mdi-format-underline
-          v-btn(v-if="isTouchDevice" small icon @click="linkDialogIsOpen = true")
+          v-btn(v-if="inlineBubbleMenu" small icon @click="linkDialogIsOpen = true")
             v-icon mdi-link-variant
-          v-dialog(v-if="isTouchDevice" v-model="linkDialogIsOpen" max-width="600px")
+          v-dialog(v-if="inlineBubbleMenu" v-model="linkDialogIsOpen" max-width="600px")
             v-card
               v-card-title.title(v-t="'text_editor.insert_link'")
               v-card-text
@@ -415,7 +421,7 @@ div
             v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
               v-icon mdi-table-merge-cells
         slot(name="actions")
-    v-alert(v-if="maxLength && model[field].length > maxLength" color='error')
+    v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
   .suggestion-list(v-show='showSuggestions', ref='suggestions')
     template(v-if='hasResults')

@@ -55,7 +55,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_non_member')
-    page.expectElement('.error-page')
+    page.expectElement('.auth-modal')
   },
 
   'displays_threads_from_subgroups_in_the_discussions_card': (test) => {
@@ -96,11 +96,9 @@ module.exports = {
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-closed')
     page.expectNoElement('.group-form__joining')
-    // page.expectElement('.group-form__allow-public-threads')
 
     page.fillIn('#group-name', 'Closed please')
     page.click('.group-form__submit-button')
-    // page.expectText('.group-privacy-button', 'CLOSED')
     page.expectFlash('Group started')
   },
 
@@ -112,12 +110,10 @@ module.exports = {
 
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-secret')
-    // page.expectNoElement('.group-form__allow-public-threads', 2000)
     page.expectNoElement('.group-form__joining')
 
     page.fillIn('.group-form__name input', 'Secret please')
     page.click('.group-form__submit-button')
-    // page.expectText('.group-privacy-button', 'SECRET')
     page.expectFlash('Group started')
   },
 

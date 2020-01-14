@@ -12,7 +12,8 @@ class DiscussionService
 
   def self.destroy(discussion:, actor:)
     actor.ability.authorize!(:destroy, discussion)
-    discussion.destroy!
+    discussion.discard!
+    DestroyDiscussionWorker.perform_async(discussion.id)
     EventBus.broadcast('discussion_destroy', discussion, actor)
   end
 
@@ -125,7 +126,8 @@ class DiscussionService
     end
   end
 
-  def self.mark_summary_email_as_read (user, params)
+  def self.mark_summary_email_as_read (user_id, params)
+    user = User.find_by!(id: user_id)
     time_start  = Time.at(params[:time_start].to_i).utc
     time_finish = Time.at(params[:time_finish].to_i).utc
     time_range = time_start..time_finish

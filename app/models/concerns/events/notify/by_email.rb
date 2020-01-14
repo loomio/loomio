@@ -6,11 +6,10 @@ module Events::Notify::ByEmail
 
   # send event emails
   def email_users!
-    email_recipients.active.where.not(id: user).uniq.each do |recipient|
-      eventable.send(:mailer).delay(queue: :notification_emails).send(email_method, recipient, self)
+    email_recipients.active.where.not(id: user).uniq.pluck(:id).each do |recipient_id|
+      eventable.send(:mailer).delay(queue: :notification_emails).send(email_method, recipient_id, self.id)
     end
   end
-  handle_asynchronously :email_users!, queue: :notification_emails
 
   # override to specify a custom subject for emails sent by this event
   def email_subject_key

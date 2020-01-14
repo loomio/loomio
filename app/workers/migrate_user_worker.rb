@@ -1,27 +1,17 @@
-class MigrateUserService
-  def self.migrate_by_email!(source:, destination:)
-    new(source: User.find_by!(email: source),
-        destination: User.find_by!(email: destination)).migrate!
-  end
-
-  def self.migrate!(source:, destination:)
-    new(source: source, destination: destination).migrate!
-  end
+class MigrateUserWorker
+  include Sidekiq::Worker
 
   attr_reader :source, :destination
 
-  def initialize(source:, destination:)
-    @source = source
-    @destination = destination
-  end
-
-  def migrate!
+  def perform(source_id, destination_id)
+    @source = User.find_by!(id: source_id)
+    @destination = User.find_by!(id: destination_id)
     delete_duplicates
     operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
     migrate_stances
     update_counters
     source.deactivate!
-    UserMailer.delay(queue: :low_priority).accounts_merged(destination)
+    UserMailer.delay.accounts_merged(destination.id)
   end
 
   SCHEMA = {

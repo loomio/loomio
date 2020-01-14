@@ -10,6 +10,8 @@ class Group < ApplicationRecord
   initialized_with_token :token
 
   belongs_to :creator, class_name: 'User'
+  alias_method :author, :creator
+  
   belongs_to :parent, class_name: 'Group'
 
   has_many :discussions,             foreign_key: :group_id, dependent: :destroy

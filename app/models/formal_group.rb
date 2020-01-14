@@ -13,7 +13,8 @@ class FormalGroup < Group
 
   validate :limit_inheritance
   validates :subscription, absence: true, if: :is_subgroup?
-
+  validate :handle_is_valid
+  validates :handle, uniqueness: true, allow_nil: true
 
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
@@ -48,6 +49,8 @@ class FormalGroup < Group
   has_many :public_poll_documents,       through: :public_polls,       source: :documents
   has_many :public_comment_documents,    through: :public_comments,    source: :documents
   has_many :tags, foreign_key: :group_id
+
+  has_one :saml_provider, required: false, foreign_key: :group_id
 
   belongs_to :cohort
   belongs_to :default_group_cover
@@ -195,6 +198,15 @@ class FormalGroup < Group
   end
 
   private
+
+  def handle_is_valid
+    self.handle = nil if self.handle.to_s.strip == "" || (is_subgroup? && parent.handle.nil?)
+    return if handle.nil?
+    self.handle = handle.parameterize
+    if is_subgroup? && parent.handle && !handle.starts_with?("#{parent.handle}-")
+      errors.add(:handle, I18n.t(:'group.error.handle_must_begin_with_parent_handle', parent_handle: parent.handle))
+    end
+  end
 
   def limit_inheritance
     if parent_id.present?

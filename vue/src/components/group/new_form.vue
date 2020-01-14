@@ -3,9 +3,11 @@ import AppConfig      from '@/shared/services/app_config'
 import AbilityService from '@/shared/services/ability_service'
 import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
-import { submitForm }          from '@/shared/helpers/form'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import GroupModalMixin from '@/mixins/group_modal'
+import Flash   from '@/shared/services/flash'
+import { isEmpty } from 'lodash'
+import { onError } from '@/shared/helpers/form'
 
 export default
   mixins: [GroupModalMixin]
@@ -19,7 +21,6 @@ export default
     rules: {
       required: (value) -> !!value || 'Required.'
     }
-    submit: null
     uploading: false
     progress: 0
 
@@ -30,26 +31,42 @@ export default
       customFields:
         pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
 
-    @submit = submitForm @, @group,
-      prepareFn: =>
-        allowPublic = @group.allowPublicThreads
-        @group.discussionPrivacyOptions = switch @group.groupPrivacy
-          when 'open'   then 'public_only'
-          when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
-          when 'secret' then 'private_only'
+  mounted: ->
+    @suggestHandle()
 
-        @group.parentMembersCanSeeDiscussions = switch @group.groupPrivacy
-          when 'open'   then true
-          when 'closed' then @group.parentMembersCanSeeDiscussions
-          when 'secret' then false
-      confirmFn: (model)          => @$t groupPrivacyConfirm(model)
-      flashSuccess:               => "group_form.messages.group_#{@actionName}"
-      successCallback: (data) =>
+  methods:
+    submit: ->
+      allowPublic = @group.allowPublicThreads
+      @group.discussionPrivacyOptions = switch @group.groupPrivacy
+        when 'open'   then 'public_only'
+        when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
+        when 'secret' then 'private_only'
+
+      @group.parentMembersCanSeeDiscussions = switch @group.groupPrivacy
+        when 'open'   then true
+        when 'closed' then @group.parentMembersCanSeeDiscussions
+        when 'secret' then false
+
+      @group.save()
+      .then (data) =>
         groupKey = data.groups[0].key
+        Flash.success "group_form.messages.group_#{@actionName}"
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
-  methods:
+      .catch onError(@group)
+
+    suggestHandle: ->
+      # if group is new, suggest handle whenever name changes
+      # if group is old, suggest handle only if handle is empty
+      if @group.isNew() or isEmpty(@group.handle)
+        parentHandle = if @group.parent()
+          @group.parent().handle
+        else
+          null
+        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
+          @group.handle = data.handle
+
     privacyStringFor: (privacy) ->
       @$t groupPrivacy(@group, privacy),
         parent: @group.parentName()
@@ -91,7 +108,7 @@ export default
 v-card.group-form
   v-overlay(:value="uploading")
     v-progress-circular(size="64" :value="progress")
-  submit-overlay(:value='group.processing')
+  //- submit-overlay(:value='group.processing')
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
@@ -99,8 +116,12 @@ v-card.group-form
         h1.headline(v-if='!group.parentId', v-t="'group_form.start_organization_heading'")
       dismiss-modal-button(:close='close')
   v-card-text
-    v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")
+    v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)" @input="suggestHandle()")
     validation-errors(:subject="group", field="name")
+
+    div(v-if="!group.parent() || (group.parent() && group.parent().handle)")
+      v-text-field.group-form__handle#group-handle(v-model='group.handle', :placeholder="$t('group_form.group_handle_placeholder')" maxlength='100' :label="$t('group_form.handle')")
+      validation-errors(:subject="group", field="handle")
 
     .group-form__section.group-form__privacy
       v-radio-group(v-model='group.groupPrivacy')

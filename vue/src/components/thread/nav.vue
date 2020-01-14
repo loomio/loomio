@@ -30,7 +30,7 @@ export default
         query: =>
           return unless @discussion
           @presets = Records.events.collection.chain()
-            .find({pinned: true, parentId: @discussion.createdEvent().id})
+            .find({pinned: true, discussionId: @discussion.id})
             .simplesort('position').data()
           @setHeight()
           if @discussion.newestFirst

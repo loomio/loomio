@@ -3,6 +3,10 @@ en:
   explore:
     header: Explore public groups
 
+  saml_providers:
+    invitation_created:
+      success: "Success! Please check your %{email} inbox for a link to join %{group_name}."
+      error: "Your SAML provider could not authenticate %{email} for %{group_name}."
   activerecord:
     errors:
       messages:
@@ -16,6 +20,10 @@ en:
     messages:
       email: not a valid email address
       spoofed_media_type: The contents of that file don't match its filename
+
+  group:
+    error:
+      handle_must_begin_with_parent_handle: "Must begin with %{parent_handle}-"
 
   user:
     deleted_user: "Deleted User"

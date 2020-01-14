@@ -21,16 +21,10 @@ export default
 
   mounted: ->
     @openAuthModal() if !Session.isSignedIn() && @shouldForceSignIn()
-    if Session.isSignedIn() && Session.user().experiences['show_vue_upgraded_modal']
-      openModal
-        maxWidth: 400
-        component: 'VueUpgradedModal'
-    EventBus.$on('currentComponent', @setCurrentComponent)
-    EventBus.$on 'pageError', (error) =>
-      @openAuthModal() if !Session.isSignedIn() and error.status == 403
-      @pageError = error
-    EventBus.$on 'signedIn', =>
-      @pageError = null
+    EventBus.$on 'currentComponent',     @setCurrentComponent
+    EventBus.$on 'openAuthModal',     => @openAuthModal()
+    EventBus.$on 'pageError', (error) => @pageError = error
+    EventBus.$on 'signedIn',          => @pageError = null
 
   watch:
     '$route': ->
@@ -47,10 +41,8 @@ export default
       AppConfig.currentPoll       = options.poll
 
     shouldForceSignIn: (options = {}) ->
-      # return false if options.page == "pollPage" and Session.user() !AbilityService.isEmailVerified()
-      # return false if AbilityService.isEmailVerified()
+      return true if Session.pendingInvitation()
       return false if Session.isSignedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
-      return true  if AppConfig.pendingIdentity.identity_type?
 
       switch @$route.path
         when '/email_preferences' then !Session.user().restricted?
@@ -60,20 +52,6 @@ export default
              '/polls',          \
              '/p/new',      \
              '/g/new' then true
-      # switch options.page
-      #   when 'emailSettingsPage' then !Session.user().restricted?
-      #   when 'dashboardPage',      \
-      #        'inboxPage',          \
-      #        'profilePage',        \
-      #        'authorizedAppsPage', \
-      #        'registeredAppsPage', \
-      #        'registeredAppPage',  \
-      #        'pollsPage',          \
-      #        'pollPage',           \
-      #        'startPollPage',      \
-      #        'upgradePage',        \
-      #        'startGroupPage' then true
-
 
 </script>
 

@@ -383,9 +383,6 @@ ro:
     more_reactions: "{{count}} mai multe"
     you: "Tu"
     you_and_name: "Tu si {{name}}"
-  group_wizard:
-    invite_people: Invita oameni
-    start_thread: Discuţie noua
   group_page:
     threads: Discutii
     members: Membri

@@ -97,9 +97,6 @@ te:
     email_label: ఈమెయిలు
   reactions_display:
     you: "మీరు"
-  group_wizard:
-    invite_people: వ్యక్తులను ఆహ్వానించండి
-    start_thread: ఒక చర్చను ప్రారంభించండి
   group_page:
     threads: చర్చలు
     members: సభ్యులు

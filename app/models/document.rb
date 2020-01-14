@@ -52,7 +52,7 @@ class Document < ApplicationRecord
   end
 
   def url
-    self[:url].starts_with?("http") ? self[:url] : "#{lmo_asset_host}#{self[:url]}"
+    self[:url].to_s.starts_with?("http") ? self[:url] : "#{lmo_asset_host}#{self[:url]}"
   end
 
   private
@@ -65,6 +65,7 @@ class Document < ApplicationRecord
   # we'll set the finalized path later in set_final_urls
   def set_initial_url
     self.url = file.url unless manual_url?
+    self.save!
   end
 
   def set_metadata

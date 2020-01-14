@@ -1,0 +1,15 @@
+.poll-mailer-ranked-choice-responses
+  %h3= t(:"poll_mailer.common.responses")
+  %table
+    - poll.stances.latest.each do |stance|
+      %tr
+        %td
+          %table
+            %td= render 'base_mailer/avatar', user: stance.participant_for_client(user: poll.user)
+            %td.poll-mailer-common-responses__reason
+              %strong
+                #{stance.participant_for_client(user: poll.user).name}:
+      %tr
+        %td= render_rich_text(stance.reason, stance.reason_format)
+      %tr
+        %td= render 'discussions/polls/ranked_choice/stance_chart', stance: stance

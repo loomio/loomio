@@ -16,7 +16,7 @@ export default
     submit: ->
       @loading = true
       @user.email = @email
-      AuthService.sendLoginLink(@user).then (->), ->
+      AuthService.sendLoginLink(@user).then (=>), =>
         @user.errors = {email: [@$t('auth_form.email_not_found')]}
       .finally =>
         @loading = false

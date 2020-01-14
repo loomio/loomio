@@ -3,11 +3,13 @@ class DiscussionMailer < BaseMailer
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
   %w(new_discussion invitation_created discussion_edited discussion_announced
      new_comment user_mentioned comment_replied_to new_comment).each do |action|
-    define_method action, ->(recipient, event) { send_thread_email(recipient, event) }
+    define_method action, ->(recipient_id, event_id) { send_thread_email(recipient_id, event_id) }
   end
 
   private
-  def send_thread_email(recipient, event)
+  def send_thread_email(recipient_id, event_id)
+    recipient = User.find_by!(id: recipient_id)
+    event = Event.find_by!(id: event_id)
     return if recipient == User.helper_bot
 
     @info = DiscussionEmailInfo.new(recipient: recipient, event: event, action_name: action_name)

@@ -8,7 +8,13 @@ def dev_routes_for(namespace)
   end
 end
 
+require 'sidekiq/web'
+
 Loomio::Application.routes.draw do
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   if !Rails.env.production?
     namespace :dev do
       dev_routes_for(:discussions)
@@ -40,6 +46,7 @@ Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
+    resources :saml_providers, only: [:create, :destroy, :index]
     resources :attachments, only: :index
 
     resources :boot, only: [] do
@@ -51,6 +58,7 @@ Loomio::Application.routes.draw do
 
     resources :groups, only: [:index, :show, :create, :update] do
       member do
+        get :saml_provider
         get :token
         post :reset_token
         get :subgroups
@@ -59,7 +67,10 @@ Loomio::Application.routes.draw do
         put :archive
         post 'upload_photo/:kind', action: :upload_photo
       end
-      get :count_explore_results, on: :collection
+      collection do
+        get :count_explore_results
+        get :suggest_handle
+      end
     end
 
     resources :group_identities, only: [:create, :destroy]
@@ -291,6 +302,7 @@ Loomio::Application.routes.draw do
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
+  get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
@@ -317,6 +329,19 @@ Loomio::Application.routes.draw do
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
 
+
+  resources :saml_providers, only: [] do
+    collection do
+      post :callback
+    end
+
+    member do
+      get :invitation_created
+      get :metadata
+      get :auth
+      get :logout
+    end
+  end
 
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do

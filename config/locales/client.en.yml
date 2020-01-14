@@ -26,6 +26,9 @@ en:
     free_trial: Free trial. {{days}} days remaining.
     trial_expired: Your trial has expired. Upgrade to continue using Loomio.
     tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
+    was_gift_trial: "Your group has been using Loomio for free since {{createdDate}}. We are unable to continue providing a free service. Please upgrade to continue using Loomio. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Read more.</a>"
+    was_gift_remaining: "{{days}} days remaining."
+    was_gift_expired: "Your free plan has now expired."
 
   loomio_tags:
     all_tags: All tags
@@ -774,28 +777,6 @@ en:
       pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
-  user_wizard:
-    welcome: Welcome!
-    welcome_description: You've successfully created a new user account on Loomio. In a few steps, you'll have your profile fully setup and ready to begin participating.
-    change_picture: Add picture
-    change_picture_description: Add a picture to your profile
-    setup_profile: Setup profile
-    setup_profile_description: Help others
-
-  group_wizard:
-    welcome: Success!
-    welcome_description: You've successfully created a new organization on Loomio. In a few steps, you'll have your organization fully setup and ready to start discussions. If you want to skip this wizard for now, you can open it again from the Settings tab.
-    setup_profile: Setup profile
-    setup_profile_description: Set your group's description, logo and cover photo
-    invite_people: Invite people
-    invite_people_description: List emails to send invitations to, or copy a link to share with others
-    setup_integrations: Setup integrations
-    setup_integrations_description: Connect Loomio with Slack and/or Microsoft Teams
-    start_thread: Start a discussion
-    start_thread_description: Write a welcome note, discuss the purpose of your group, or share the minutes of your last meeting
-    do_it: Let's go
-
-
   group_page:
     threads: Threads
     polls: Polls
@@ -899,6 +880,8 @@ en:
     edit_group_heading: 'Edit group settings'
     edit_subgroup_heading: 'Edit subgroup settings'
     group_name: 'Group Name'
+    handle: Handle
+    group_handle_placeholder: "For URL and email, e.g. loomio.org/handle and handle@loomio.org"
     organization_name: 'Organization Name'
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
@@ -2049,6 +2032,10 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
 
+  poll_score_vote_form:
+    stance_created: Vote created
+    stance_updated: Vote updated
+
   poll_meeting_vote_form:
     local_time_zone: Local time - {{zone}}
     can_attend: "Can attend"
@@ -2216,10 +2203,12 @@ en:
       outcome_created: An outcome has been shared
 
   configure_sso:
-    title: Configure single sign-on (SSO)
-    helptext: |
-      Want to use Loomio within your organization and manage access via OneLogin, Auth0, Microsoft Active Directory, or another SAML provider?
-      We're beta testing our SSO integration, please contact us and we'll get you setup!
+    title: Configure single sign-on
+    helptext: Integrate with OneLogin, Auth0, Microsoft Active Directory, or any other SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Learn more</a>.
+    idp_metadata_url: IDP Metadata URL
+    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
+    pro_plan_only: This feature is only available to Pro plan customers. Please check out our <a href="/upgrade" target="_blank">upgrade page</a> for more details.
+    success: Single sign-on successfully configured
 
   install_slack:
     modal_title: Integrate Slack

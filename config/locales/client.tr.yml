@@ -238,9 +238,6 @@ tr:
     edited_by: '<strong>{{name}}</strong> tarafından düzenlendi'
     posted: Gönderildi
     current_revision: En yeniler
-  group_wizard:
-    invite_people: Kişileri davet et
-    start_thread: Bir müzakere başlat
   group_page:
     threads: Müzakereler
     members: Üyeler

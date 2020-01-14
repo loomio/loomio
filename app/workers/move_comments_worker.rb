@@ -1,5 +1,9 @@
-MoveCommentsJob = Struct.new(:ids, :source_discussion, :target_discussion) do
-  def perform
+class MoveCommentsWorker
+  include Sidekiq::Worker
+  def perform(ids, source_discussion_id, target_discussion_id)
+    source_discussion = Discussion.find(source_discussion_id)
+    target_discussion = Discussion.find(target_discussion_id)
+
     #safe
     safe_ids = Event.where(id: ids, discussion_id: source_discussion.id).pluck(:id)
 

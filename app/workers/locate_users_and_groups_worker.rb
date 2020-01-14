@@ -1,5 +1,5 @@
-class LocateUsersAndGroupsJob < ActiveJob::Base
-  queue_as :low_priority
+class LocateUsersAndGroupsWorker
+  include Sidekiq::Worker
 
   def perform
     LocationService.locate_users_from_visits(within_last: '70 minutes')

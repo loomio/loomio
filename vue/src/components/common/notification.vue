@@ -9,10 +9,11 @@ export default
     unread: Boolean
   methods:
     membershipRequestActor: ->
+      name = (@notification.translationValues.name || @notification.translationValues.email || '').toString()
       Records.users.build
-        name:           @notification.translationValues.name
-        avatarInitials: @notification.translationValues.name.toString().split(' ').map((n) -> n[0]).join('')
-        avatarKind:     'initials'
+        name: name
+        avatarInitials: name.split(' ').map((n) -> n[0]).join('')
+        avatarKind: 'initials'
 
   computed:
     url: ->
@@ -40,10 +41,19 @@ export default
     actor: ->
       @notification.actor() || @membershipRequestActor()
 
+    isRouterLink: ->
+      !@url.includes("/invitations/")
+
+    componentType: ->
+      if @isRouterLink
+        'router-link'
+      else
+        'a'
+
 </script>
 
 <template lang="pug">
-router-link(:to="url")
+component(:is="componentType" :to="isRouterLink && url" :href="!isRouterLink && url")
   v-layout.notification.body-2(align-center :class="{'notification--unread': unread}")
     .notification__avatar.ma-2
       user-avatar(v-if="actor", :user="actor", size="thirtysix")

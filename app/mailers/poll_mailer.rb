@@ -8,12 +8,14 @@ class PollMailer < BaseMailer
      poll_closing_soon poll_closing_soon_author
      poll_expired  poll_expired_author
      user_mentioned user_reminded).each do |action|
-    define_method action, ->(recipient, event) { send_poll_email(recipient, event, action) }
+    define_method action, ->(recipient_id, event_id) { send_poll_email(recipient_id, event_id, action) }
   end
 
   private
 
-  def send_poll_email(recipient, event, action_name)
+  def send_poll_email(recipient_id, event_id, action_name)
+    recipient = User.find_by!(id: recipient_id)
+    event = Event.find_by!(id: event_id)
     return if User::BOT_EMAILS.values.include?(recipient.email)
     headers = {
       "Precedence":               :bulk,
