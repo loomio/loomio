@@ -19,6 +19,7 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface
           @find(id)
         .catch ->
           EventBus.$emit 'openAuthModal'
+          throw error
       else
         throw error
 

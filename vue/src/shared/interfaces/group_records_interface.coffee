@@ -29,6 +29,7 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
           @fuzzyFind(id)
         .catch ->
           EventBus.$emit 'openAuthModal'
+          throw error
       else
         throw error
 
