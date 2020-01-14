@@ -8,7 +8,7 @@ import { some } from 'lodash'
 export default
   methods:
     canStartThreads: ->
-      Session.user().id &&
+      Session.isSignedIn() &&
       some(Session.user().groups(), (group) => AbilityService.canStartThread(group))
 
     openStartDiscussionModal: (group) ->

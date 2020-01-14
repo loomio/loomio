@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_011354) do
+ActiveRecord::Schema.define(version: 2020_01_13_211726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -417,6 +417,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_011354) do
     t.string "token"
     t.datetime "accepted_at"
     t.string "title"
+    t.jsonb "custom_fields", default: {}, null: false
     t.index ["archived_at"], name: "index_memberships_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
@@ -601,6 +602,13 @@ ActiveRecord::Schema.define(version: 2019_12_10_011354) do
     t.index ["created_at"], name: "index_reactions_on_created_at"
     t.index ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type"
     t.index ["user_id"], name: "index_reactions_on_user_id"
+  end
+
+  create_table "saml_providers", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.string "idp_metadata_url", null: false
+    t.integer "authentication_duration", default: 24, null: false
+    t.index ["group_id"], name: "index_saml_providers_on_group_id"
   end
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|

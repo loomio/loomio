@@ -16,6 +16,7 @@ export default
   data: ->
     group: null
     activeTab: ''
+    groupFetchError: null
 
   created: ->
     @init()
@@ -48,13 +49,13 @@ export default
 
   methods:
     init: ->
-      Records.groups.findOrFetch(@$route.params.key).then (group) =>
-        if group
-          @group = group
-          subscribeTo(@group)
-
-      , (error) ->
+      Records.groups.findOrFetchOrAuthorize(@$route.params.key)
+      .then (group) =>
+        @group = group
+        subscribeTo(@group)
+      .catch (error) =>
         EventBus.$emit 'pageError', error
+
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
 

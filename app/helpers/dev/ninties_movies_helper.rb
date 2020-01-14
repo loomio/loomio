@@ -83,6 +83,7 @@ module Dev::NintiesMoviesHelper
     unless @group
       @group = FormalGroup.new(name: 'Dirty Dancing Shoes',
                                   group_privacy: 'closed',
+                                  handle: 'shoes',
                                   discussion_privacy_options: 'public_or_private', creator: patrick)
       GroupService.create(group: @group, actor: @group.creator)
       @group.add_admin!  patrick

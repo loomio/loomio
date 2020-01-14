@@ -1,5 +1,7 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import GroupModel           from '@/shared/models/group_model'
+import Session              from '@/shared/services/session'
+import EventBus             from '@/shared/services/event_bus'
 import {uniq, concat, compact, map, includes} from 'lodash'
 export default class GroupRecordsInterface extends BaseRecordsInterface
   model: GroupModel
@@ -14,6 +16,26 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
       Promise.resolve(record)
     else
       @remote.fetchById(id, options).then => @fuzzyFind(id)
+
+  findOrFetchOrAuthorize: (id, options = {}, ensureComplete = false) ->
+    @findOrFetch(id, options, ensureComplete)
+    .then (group) =>
+      @recordStore.samlProviders.authenticateForGroup(id) if @shouldTrySaml(id)
+      group
+    .catch (error) =>
+      if error.status == 403 && @shouldTrySaml(id)
+        @recordStore.samlProviders.authenticateForGroup(id)
+        .then =>
+          @fuzzyFind(id)
+        .catch ->
+          EventBus.$emit 'openAuthModal'
+      else
+        throw error
+
+  shouldTrySaml: (id) ->
+    return false if Session.pendingInvitation()
+    membership = Session.user().membershipFor(@fuzzyFind(id))
+    !Session.isSignedIn() || !membership || membership.samlSessionExpired()
 
   fetchByParent: (parentGroup) ->
     @fetch

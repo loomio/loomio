@@ -2203,10 +2203,11 @@ en:
       outcome_created: An outcome has been shared
 
   configure_sso:
-    title: Configure single sign-on (SSO)
-    helptext: |
-      Want to use Loomio within your organization and manage access via OneLogin, Auth0, Microsoft Active Directory, or another SAML provider?
-      We're beta testing our SSO integration, please contact us and we'll get you setup!
+    title: Configure single sign-on
+    helptext: Integrate with OneLogin, Auth0, Microsoft Active Directory, or any other SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Learn more</a>.
+    idp_metadata_url: IDP Metadata URL
+    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
+    pro_plan_only: This feature is only available to Pro plan customers. Please check out our <a href="/upgrade" target="_blank">upgrade page</a> for more details.
 
   install_slack:
     modal_title: Integrate Slack
