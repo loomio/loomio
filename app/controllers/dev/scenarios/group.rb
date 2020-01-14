@@ -130,7 +130,7 @@ module Dev::Scenarios::Group
 
     if params[:member]
       membership = @group.add_member! patrick
-      membership.update(saml_session_expires_at: 1.minute.ago) if params[:expired]
+      membership.update(saml_session_expires_at: if params[:expired] then 1.minute.ago else 1.day.from_now end)
     end
 
     sign_in patrick if params[:sign_in]
