@@ -21,7 +21,7 @@ export default
       remote = new RestfulClient('saml_providers')
       remote.create(idp_metadata_url: @idpMetadataUrl, group_id: @group.id)
       .then =>
-        Flash.success 'install_microsoft.form.webhook_installed'
+        Flash.success 'configure_sso.success'
         @close()
       .catch =>
         alert("boo")

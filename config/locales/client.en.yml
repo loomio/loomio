@@ -2208,6 +2208,7 @@ en:
     idp_metadata_url: IDP Metadata URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
     pro_plan_only: This feature is only available to Pro plan customers. Please check out our <a href="/upgrade" target="_blank">upgrade page</a> for more details.
+    success: Single sign-on successfully configured
 
   install_slack:
     modal_title: Integrate Slack
