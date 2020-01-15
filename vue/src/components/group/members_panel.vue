@@ -149,7 +149,7 @@ export default
 .members-panel
   loading(v-if="!group")
   div(v-if="group")
-    v-alert(v-model="onlyOneAdminWithMultipleMembers" color="primary" type="warning")
+    v-alert.my-2(v-model="onlyOneAdminWithMultipleMembers" color="primary" type="warning")
       template(slot="default")
         span(v-t="'memberships_page.only_one_admin'")
 
