@@ -19,7 +19,7 @@ class SamlProvidersController < ApplicationController
   def callback
     saml_provider = session_saml_provider
     saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: sp_settings(saml_provider))
-
+    p "callback saml provider id: #{session[:saml_provider_id]}"
     session.delete(:saml_provider_id)
 
     if saml_response.success?
