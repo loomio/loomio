@@ -20,10 +20,12 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
   findOrFetchOrAuthorize: (id, options = {}, ensureComplete = false) ->
     @findOrFetch(id, options, ensureComplete)
     .then (group) =>
+      console.debug "found group, #{id} try saml #{@shouldTrySaml(id)}"
       @recordStore.samlProviders.authenticateForGroup(id) if @shouldTrySaml(id)
       group
     .catch (error) =>
       if error.status == 403 && @shouldTrySaml(id)
+        console.debug "missing group, #{id} try saml #{@shouldTrySaml(id)}"
         @recordStore.samlProviders.authenticateForGroup(id)
         .then =>
           @fuzzyFind(id)
@@ -36,6 +38,13 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
   shouldTrySaml: (id) ->
     return false if Session.pendingInvitation()
     membership = Session.user().membershipFor(@fuzzyFind(id))
+
+    console.debug
+      id: id
+      signed_in: Session.isSignedIn()
+      membership: membership
+      expired: membership.samlSessionExpired() if membership
+
     !Session.isSignedIn() || !membership || membership.samlSessionExpired()
 
   fetchByParent: (parentGroup) ->

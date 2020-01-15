@@ -27,15 +27,20 @@ class SamlProvidersController < ApplicationController
       group = saml_provider.group
       expires_at = saml_response.session_expires_at
 
+      logger.debug ['saml', email, group.name, expires_at].join(',')
+
       if current_user.is_logged_in?
+        logger.debug 'saml logged in case'
         group.add_member!(current_user)
         update_session_expires_at!(current_user, group, expires_at)
         signed_in_success_redirect
       elsif user_is_existing_member?(email, group)
+        logger.debug 'saml logged out, existing member case'
         sign_in user = User.active.find_by!(email: email)
         update_session_expires_at!(user, group, expires_at)
         signed_in_success_redirect
       else
+        logger.debug 'saml logged out, invite case'
         inviter = GroupInviter.new(group: group, emails: [email], inviter: group.creator).invite!
         Events::AnnouncementCreated.publish! group, group.creator, inviter.invited_memberships, :group_announced
         update_session_expires_at!(User.find_by!(email: email), group, expires_at)
