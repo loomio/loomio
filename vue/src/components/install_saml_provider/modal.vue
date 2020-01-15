@@ -11,11 +11,6 @@ export default
     group: Object
   data: ->
     idpMetadataUrl: ''
-    samlProviderId: null
-  mounted: ->
-    Records.samlProviders.fetchByGroupId(@$route.params.key)
-    .then (res) =>
-      @samlProviderId = res.saml_provider_id
   methods:
     submit: ->
       remote = new RestfulClient('saml_providers')
