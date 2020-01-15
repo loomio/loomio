@@ -79,6 +79,9 @@ export default
       @goToPosition(@position)
 
     moveKnob: (event) ->
+      # needs to be able to distinguish between touch event and mouse event
+      # currently this is designed to get position from the latter
+      # the former has a slightly different structure
       console.log 'ontouchmove', event
       adjust = if @knobHeight < 64
            32
@@ -101,8 +104,8 @@ export default
       onMouseMove = @moveKnob
 
       onMouseUp = =>
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
+        document.removeEventListener 'mousemove', onMouseMove
+        document.removeEventListener 'mouseup', onMouseUp
         @goToPosition(@position)
 
       document.addEventListener 'mousemove', onMouseMove
