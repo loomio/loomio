@@ -15,7 +15,7 @@ export default
   data: ->
     groupIds: []
     resultsCount: 0
-    perPage: AppConfig.pageSize.exploreGroups
+    perPage: 50
     canLoadMoreGroups: true
     query: ""
     searching: false

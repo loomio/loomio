@@ -12,9 +12,15 @@ nl_NL:
       dismiss_this_card: Deze kaart afwijzen
   plan_names:
     free: Gratis
+    small: Klein
+    medium: Medium
+    large: Groot
+    monthly: Maandelijks
+    yearly: Jaarlijks
   current_plan_button:
     upgrade: Upgrade
   loomio_tags:
+    all_tags: Alle labels
     tags: Labels
     apply_tags: Labels toekennen
     new_tag: Label aanmaken
@@ -109,6 +115,7 @@ nl_NL:
     models:
       proposal: 'Voorstel'
     copy: 'Kopiëren'
+    reset: 'Reset'
     copy_text: 'Kopieer tekst'
     copied: 'Gekopieerd naar klembord'
     points_abbrev: Ieder stem is {{score}} punten waard
@@ -117,9 +124,11 @@ nl_NL:
       pin: Vastprikken
       unpin: Ontprikken
       search: 'Zoek'
+      filter: 'Filter'
       back: 'Terug'
       next: 'Volgende'
       close: 'Sluiten'
+      reopen: 'Heropen'
       save: 'Bewaren'
       save_changes: 'Wijzigingen bewaren'
       update_settings: 'Instellingen bijwerken'
@@ -133,6 +142,7 @@ nl_NL:
       show_more: "Laat meer zien"
       view_all: "Bekijk alles"
       new_thread: "Nieuw bord"
+      add_subgroup: 'Nieuwe subgroep'
       loading: 'Aan het laden'
       translate: 'Vertalen'
       upload: 'Uploaden'
@@ -146,16 +156,26 @@ nl_NL:
       delete: Delete
       unsubscribe: Uitschrijven
       subscribe: Inschrijven
+      unignore: Niet negeren
       remind: Herinneren
       resend: Opnieuw versturen
       send: Versturen
+      last_seen: Laatst gezien
       invite: Uitnodigen
       resent: Uitnodiging opniew verstuurd
+      apply: Toepassen
+      add_people: Mensen toevoegen
     formatting_help:
       label: 'Aan het formatteren'
       title: 'Leer hoe je Markdown kan gebruiken om tekst op te maken'
   emoji_picker:
     search: Zoek
+    common: Vaak gebruikt
+    hands: Handen
+    people: Gezichten en mensen
+    nature: Natuur
+    objects: Dingen
+    places: Plaatsen
   ordinal:
     _1: 1e
     _2: 2e
@@ -187,19 +207,27 @@ nl_NL:
     mute: 'Dempen'
     unmute: 'Dempen uit'
   pin_event_form:
+    title: Pin vast aan de tijdslijn
     title_label: Titel
   change_volume_form:
     simple:
       label: Meldingen
+      loud: Geabonneerd
       normal: Normaal
       quiet: Negeer
+      question: Wanneer wil je meldingen ontvangen?
+      loud_explain: wanneer er activiteit is
+      normal_explain: wanneer iemand je aandacht vraagt
+      quiet_explain: geen meldingen
     aria_label: "Verander e-mail-instellingen formulier"
     loud_label: "Alle activiteit"
     normal_label: "Aankondigingen"
     quiet_label: "Geen e-mails"
     mute_label: "Dempen"
+    saved: "Notificatie instellingen aangepast"
     discussion:
       apply_to_all: "Pas deze instellingen toe op alle discussies in deze groep"
+      group: "Verander de meldingen van deze groep"
       messages:
         loud: "Activiteit op dit bord zal je per mail gemeld worden."
         normal: "Je zal ge-e-maild worden over voorstellen op dit bord."
@@ -283,6 +311,7 @@ nl_NL:
     recent_threads: 'Recente borden'
     unread_threads: 'Ongelezen borden ({{count}})'
     muted_threads: 'Gedempte borden'
+    start_subgroup: 'Nieuwe subgroep'
     explore: 'Openbare groepen'
     explore_groups: Verken groepen
     start_thread: Nieuw bord
@@ -310,15 +339,31 @@ nl_NL:
     sign_in: 'Inloggen'
     toggle_sidebar: 'Sleep zijbalk'
     logo_title: 'Homepage'
+    group_and_subgroups: '{{group}} & subgroepen'
   user_dropdown:
+    pin_sidebar: "Zijbalk vastzetten"
+    unpin_sidebar: "Zijbalk losmaken"
+    button_label: 'Gebruikersmenu'
     edit_profile: 'Profiel bewerken'
+    email_settings: 'Melding instellingen'
     help: 'Hulp'
     contact_site_name: 'Contacteer {{site_name}}'
     sign_out: 'Uitloggen'
+  membership_card:
+    group_members: "Groepsleden"
+    poll_members: "{{pollType}} gebruikers"
+    invite_to_group: "Nodig voor uit voor de groep"
+    invite_to_poll: "Nodig uit om te stemmen"
+    invitations: "Uitnodigingen"
   membership_dropdown:
+    set_title: "Titel aanmaken"
+    resend: "Uitnodiging opnieuw sturen"
     invitation_resent: "Uitnodiging opniew verstuurd"
     make_coordinator: 'Admin maken'
     cancel_invitation: Annuleer uitnodiging
+  notification_models:
+    poll: 'besluit:'
+    outcome: 'uitkomst:'
   notifications:
     header: "Meldingen"
     no_notifications: "Je hebt geen meldingen"
@@ -331,6 +376,7 @@ nl_NL:
     new_vote: "<strong>{{name}}</strong> {{position}} ten aanzien van het voorstel <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> heeft gereageerd op <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> heeft geantwoord op je opmerking in <strong>{{title}}</strong>"
+    reaction_created_vue: "<strong>{{name}}</strong> heeft gereageerd {{reaction}} op je {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> heeft je vermeld in <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> wacht op jouw participatie in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> heeft gevraagd lid te mogen worden van <strong>{{title}}</strong>"
@@ -378,7 +424,15 @@ nl_NL:
     privacy_private: 'De discussie zal enkel zichtbaar zijn voor leden van {{group}}'
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
   announcement:
+    send_discussion_explain: Nodig mensen uit op te participeren in de discussie
+    send_group: Nodig mensen uit voor {{name}}
+    send_poll: Verstuur {{type}}
+    send_outcome: Stuur de uitkomst
     form:
+      group_announced:
+        title: Nodig voor uit voor de groep
+      poll_announced:
+        title: Nodig uit om te stemmen
       outcome_announced:
         title: Deel uitkomst
       anyone_can_participate: Iedereen met een link kan deelnemen
@@ -407,6 +461,7 @@ nl_NL:
     edited: Bewerkt
     pin_thread: Bord vastprikken
     unpin_thread: Bord ontprikken
+    pin_event: Pin vast aan de tijdslijn
     tag_thread: Labels beheren
     delete_thread: Bord verwijderen
   formatting:
@@ -734,6 +789,7 @@ nl_NL:
     placeholder: 'Deze vraag beantwoorden is optioneel. Elke informatie die je wil delen zal ons helpen nog te verbeteren :)'
     submit: 'Deactiveer account'
   email_settings_page:
+    header: Melding instellingen
     daily_summary_label: Dagelijkse samenvatting per e-mail
     daily_summary_description: "Iedere morgen krijg je een e-mail met de gemiste activiteiten van de dag ervoor. Zo is het gemakkelijk om op de hoogte te blijven van alle activiteiten."
     on_participation_label: Abonneer op deelname
@@ -835,9 +891,11 @@ nl_NL:
   thread_context:
     aria_label: 'Discussie context'
     thread_options: 'Bord opties'
+    email_settings: 'Melding instellingen'
     edit: 'Bewerk'
     edit_thread: 'Bewerken'
     close_thread: 'Sluiten'
+    reopen_thread: 'Heropen'
     pin_thread: 'Vastprikken'
     unpin_thread: 'Ontprikken'
     mute_thread: 'Dempen'
@@ -1035,6 +1093,7 @@ nl_NL:
     order_by_name: 'Naam'
     header_name: 'Naam'
     header_username: 'Gebruikersnaam'
+    invitations: 'Uitnodigingen'
   polls_panel:
     all: 'Alle'
     open: 'Openen'

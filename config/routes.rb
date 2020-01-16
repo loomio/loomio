@@ -46,6 +46,7 @@ Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
+    resources :saml_providers, only: [:create, :destroy, :index]
     resources :attachments, only: :index
 
     resources :boot, only: [] do
@@ -57,6 +58,7 @@ Loomio::Application.routes.draw do
 
     resources :groups, only: [:index, :show, :create, :update] do
       member do
+        get :saml_provider
         get :token
         post :reset_token
         get :subgroups
@@ -327,6 +329,19 @@ Loomio::Application.routes.draw do
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
 
+
+  resources :saml_providers, only: [] do
+    collection do
+      post :callback
+    end
+
+    member do
+      get :invitation_created
+      get :metadata
+      get :auth
+      get :logout
+    end
+  end
 
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do

@@ -1,6 +1,10 @@
 zh_TW:
   explore:
     header: 探索公開群組
+  saml_providers:
+    invitation_created:
+      success: "成功！請檢查您的 %{email} 收件匣，並尋找連結來加入 %{group_name}。"
+      error: "您的 SAML 提供者無法為 %{group_name} 驗證 %{email}。"
   activerecord:
     errors:
       messages:

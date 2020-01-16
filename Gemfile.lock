@@ -105,7 +105,7 @@ GEM
     arbre (1.2.1)
       activesupport (>= 3.0.0)
     arel (9.0.0)
-    autoprefixer-rails (9.7.3)
+    autoprefixer-rails (9.7.4)
       execjs
     awesome_print (1.8.0)
     aws-eventstream (1.0.3)
@@ -132,7 +132,7 @@ GEM
     benchmark-ips (2.7.2)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    browser (3.0.1)
+    browser (3.0.3)
     builder (3.2.3)
     bullet (6.1.0)
       activesupport (>= 3.0.0)
@@ -202,8 +202,8 @@ GEM
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
-    faker (2.10.0)
-      i18n (>= 1.6, < 1.8)
+    faker (2.10.1)
+      i18n (>= 1.6, < 2)
     faraday (0.17.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.3)
@@ -280,12 +280,12 @@ GEM
     httparty (0.17.3)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.7.0)
+    i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     icalendar (2.6.1)
       ice_cube (~> 0.16)
     ice_cube (0.16.3)
-    image_processing (1.10.1)
+    image_processing (1.10.3)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     inherited_resources (1.11.0)
@@ -346,7 +346,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
-    oj (3.10.0)
+    oj (3.10.1)
     orm_adapter (0.5.0)
     os (1.0.1)
     paper_trail (10.3.1)
@@ -359,9 +359,9 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     parallel (1.19.1)
-    parallel_tests (2.30.0)
+    parallel_tests (2.30.1)
       parallel
-    pg (1.2.1)
+    pg (1.2.2)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -583,7 +583,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk-s3
   bootsnap
-  browser (~> 3.0.1)
+  browser (~> 3.0.3)
   bullet
   byebug
   cancancan
@@ -625,7 +625,7 @@ DEPENDENCIES
   paper_trail (~> 10.3.1)
   paperclip (~> 6.1.0)
   parallel_tests
-  pg (~> 1.2.1)
+  pg (~> 1.2.2)
   poltergeist
   premailer-rails
   puma

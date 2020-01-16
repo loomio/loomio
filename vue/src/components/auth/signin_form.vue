@@ -61,9 +61,9 @@ export default
       validation-errors(:subject='user', field='password')
 
       v-card-actions
-        v-btn.auth-signin-form__login-link(:color="user.hasPassword ? '' : 'primary'" v-t="'auth_form.login_link'" @click='sendLoginLink()' :loading="loading && !user.password")
+        v-btn.auth-signin-form__login-link(:color="user.hasPassword ? '' : 'primary'" v-t="'auth_form.login_link'" @click='sendLoginLink()' :loading="!user.password && loading")
         v-spacer
-        v-btn.auth-signin-form__submit(:color="user.hasPassword ? 'primary' : ''" v-t="'auth_form.sign_in'" @click='submit()' :disabled='!user.password' v-if='user.hasPassword' :loading="loading && user.password")
+        v-btn.auth-signin-form__submit(:color="user.hasPassword ? 'primary' : ''" v-t="'auth_form.sign_in'" @click='submit()' :disabled='!user.password' v-if='user.hasPassword' :loading="user.password && loading")
 
     .auth-signin-form__no-password(v-if='!user.hasPassword')
       v-layout(justify-center)

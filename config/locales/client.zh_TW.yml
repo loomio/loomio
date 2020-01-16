@@ -2010,10 +2010,12 @@ zh_TW:
       poll_expired: 投票已過期
       outcome_created: 結果已分享
   configure_sso:
-    title: 設定單一登入 (SSO)
-    helptext: |
-        想要透過 OneLogin、Auto0、Microsoft Active Directory 或是其他 SAML 提供者登入 Loomio 嗎？
-        我們正在測試我們的 SSO 整合，請聯絡我們，我們將會協助您設定！
+    title: 設定單一登入
+    helptext: 整合 OneLogin、Auth0、Microsoft Active Directory 或其他 SAML 提供者。<a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">取得更多資訊</a>。
+    idp_metadata_url: IDP 詮釋資料 URL
+    idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
+    pro_plan_only: 此功能僅供專業方案的顧客使用。請看看我們的<a href="/upgrade" target="_blank">升級頁面</a>以取得更多資訊。
+    success: 已成功設定單一登入
   install_slack:
     modal_title: 整合 Slack
     modal_helptext: 首先，您必須登入到 Slack。點選下方的按鈕以繼續。

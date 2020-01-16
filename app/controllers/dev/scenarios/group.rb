@@ -104,8 +104,7 @@ module Dev::Scenarios::Group
   end
 
   def setup_closed_group
-    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
-                                group_privacy: 'closed')
+    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes', group_privacy: 'closed')
     @group.add_admin!  patrick
     @group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @group)
@@ -114,13 +113,43 @@ module Dev::Scenarios::Group
   end
 
   def setup_secret_group
-    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
-                                group_privacy: 'secret')
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
     @group.add_admin!  patrick
     @group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @group)
     sign_in patrick
     redirect_to group_url(create_group)
+  end
+
+  def setup_saml_group
+    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes', handle: 'dirty-dancing-shoes', group_privacy: params[:privacy] || 'secret')
+    provider_url = "https://saml_provider.example.com"
+    # provider_url = 'https://app.onelogin.com/saml/metadata/c5690a10-4e33-4a57-9389-30dd92996629'
+    SamlProvider.create(group: @group, idp_metadata_url: provider_url)
+    @group.add_admin! jennifer
+
+    if params[:member]
+      membership = @group.add_member! patrick
+      membership.update(saml_session_expires_at: if params[:expired] then 1.minute.ago else 1.day.from_now end)
+    end
+
+    sign_in patrick if params[:sign_in]
+
+    if params[:discussion]
+      @discussion = Discussion.new(title: "I carried a watermelon", author: jennifer, group: @group)
+      DiscussionService.create(discussion: @discussion, actor: jennifer)
+      redirect_to discussion_url(@discussion)
+    else
+      redirect_to group_url(create_group)
+    end
+  end
+
+  def setup_saml_secret_group_pending_invitation
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
+    SamlProvider.create(group: @group, idp_metadata_url: "https://saml_provider.example.com")
+    @group.add_admin! jennifer
+    membership = FactoryBot.create :membership, group: @group, accepted_at: nil, inviter: jennifer, user: patrick
+    redirect_to membership
   end
 
   def setup_group_with_multiple_coordinators

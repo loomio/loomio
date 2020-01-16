@@ -1,7 +1,6 @@
 <script lang="coffee">
 export default
-  props:
-    error: Object
+  props: ['error']
 </script>
 <template lang="pug">
 v-content.pb-12

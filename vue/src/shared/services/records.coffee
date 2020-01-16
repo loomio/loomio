@@ -36,6 +36,7 @@ import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_
 import MemberRecordsInterface from '@/shared/interfaces/member_records_interface'
 import DiscussionTagRecordsInterface from '@/shared/interfaces/discussion_tag_records_interface'
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface'
+import SamlProviderRecordsInterface from '@/shared/interfaces/saml_provider_records_interface'
 
 db      = new loki('default.db')
 records = new RecordStore(db)
@@ -74,6 +75,7 @@ records.addRecordsInterface MessageChannelRecordsInterface
 records.addRecordsInterface MemberRecordsInterface
 records.addRecordsInterface DiscussionTagRecordsInterface
 records.addRecordsInterface TagRecordsInterface
+records.addRecordsInterface SamlProviderRecordsInterface
 
 AppConfig.records = records
 export default records
