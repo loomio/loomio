@@ -1,7 +1,4 @@
 class Membership < ApplicationRecord
-  extend  HasCustomFields
-  set_custom_fields :saml_session_expires_at
-
   class InvitationAlreadyUsed < StandardError
     attr_accessor :membership
     def initialize(obj)

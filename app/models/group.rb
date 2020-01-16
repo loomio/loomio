@@ -11,7 +11,7 @@ class Group < ApplicationRecord
 
   belongs_to :creator, class_name: 'User'
   alias_method :author, :creator
-  
+
   belongs_to :parent, class_name: 'Group'
 
   has_many :discussions,             foreign_key: :group_id, dependent: :destroy
@@ -108,13 +108,5 @@ class Group < ApplicationRecord
 
   def is_formal_group?
     type == "FormalGroup"
-  end
-
-  after_create :guess_cohort
-  def guess_cohort
-    if self.cohort_id.blank?
-      cohort_id = Group.where('cohort_id is not null').order('cohort_id desc').first.try(:cohort_id)
-      self.update_attribute(:cohort_id, cohort_id) if cohort_id
-    end
   end
 end

@@ -52,7 +52,6 @@ class FormalGroup < Group
 
   has_one :saml_provider, required: false, foreign_key: :group_id
 
-  belongs_to :cohort
   belongs_to :default_group_cover
   belongs_to :subscription
 
