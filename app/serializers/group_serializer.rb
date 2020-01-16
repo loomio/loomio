@@ -10,7 +10,6 @@ class GroupSerializer < Simple::GroupSerializer
   end
 
   attributes :id,
-             :cohort_id,
              :key,
              :handle,
              :type,

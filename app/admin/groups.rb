@@ -145,7 +145,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       row :members_can_create_subgroups
       row :handle
       row :is_referral
-      row :cohort_id
       row :subscription_id
       row :enable_experiments
       row :analytics_enabled
