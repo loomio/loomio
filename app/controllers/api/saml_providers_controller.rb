@@ -15,13 +15,14 @@ class API::SamlProvidersController < API::RestfulController
     OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(params[:idp_metadata_url])
 
     SamlProvider.create(group: group, idp_metadata_url: params[:idp_metadata_url])
-    group.memberships.update_all(saml_session_expires_at: nil)
+    group.memberships.update_all(saml_session_expires_at: Time.current)
     render json: { success: :ok }
   end
 
   def destroy
     group = load_and_authorize(:group, :set_saml_provider)
     SamlProvider.where(group: group).destroy_all
+    group.memberships.update_all(saml_session_expires_at: nil)
     render json: { success: :ok }
   end
 
