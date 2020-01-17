@@ -2,7 +2,7 @@ class MembershipService
   def self.redeem(membership:, actor:)
     raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
 
-    expires_at = if membership.group.parent_or_self.saml_provider?
+    expires_at = if membership.group.is_formal_group? && membership.group.parent_or_self.saml_provider?
       Time.current
     else
       nil
