@@ -8,14 +8,14 @@ module.exports = (test, browser) ->
     test.refresh()
 
   loadPath: (path, opts = {}) ->
-    test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
+    test.url encodeURI("#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}")
     test.waitForElementPresent('main', 10000) # TODO should be 10K max
 
   loadPathNoMain: (path, opts = {}) ->
-    test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
+    test.url encodeURI("#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}")
 
   goTo: (path) ->
-    test.url "#{base_url}/#{path}"
+    test.url encodeURI("#{base_url}/#{path}")
 
   waitForUrlToContain: (string) ->
     test.assert.urlContains(string)
