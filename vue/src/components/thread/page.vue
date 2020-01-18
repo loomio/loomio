@@ -34,7 +34,7 @@ export default
 
     init: ->
       Records.samlProviders.authenticateForDiscussion(@$route.params.key)
-      Records.discussions.findOrFetch(@$route.params.key)
+      Records.discussions.findOrFetchById(@$route.params.key)
       .then (discussion) =>
         @discussion = discussion
         EventBus.$emit 'currentComponent',
