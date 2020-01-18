@@ -58,6 +58,7 @@ class SamlProvidersController < ApplicationController
   private
   def should_auth_for_group(group)
     return false unless SamlProvider.find_by(group_id: group.id)
+    return false if pending_membership
     return true if !current_user.is_logged_in?
     membership = group.membership_for(current_user)
     !membership ||
