@@ -7,7 +7,7 @@ export default class MembershipModel extends BaseModel
   @plural: 'memberships'
   @indices: ['id', 'userId', 'groupId']
   @searchableFields: ['userName', 'userUsername']
-  
+
   relationships: ->
     @belongsTo 'group'
     @belongsTo 'user'
