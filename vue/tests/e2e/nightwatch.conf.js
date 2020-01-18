@@ -11,15 +11,23 @@ if (process.env.RAILS_ENV == 'test') {
 module.exports = {
   src_folders: ['./tests/e2e/specs'],
   output_folder: './tests/reports',
-  selenium: {
-    start_process: true,
-    server_path: selenium.path,
-    log_path: './tests/reports',
-    cli_args: {
-      'webdriver.chrome.driver': chromedriver.path,
-      'webdriver.ie.driver': ''
-    }
+  webdriver: {
+    "start_process" : true,
+    server_path: "node_modules/.bin/chromedriver",
+    cli_args: [ "--verbose" ],
+    port: 9515
   },
+  //
+  //
+  // selenium: {
+  //   start_process: true,
+  //   server_path: selenium.path,
+  //   log_path: './tests/reports',
+  //   cli_args: {
+  //     'webdriver.chrome.driver': chromedriver.path,
+  //     'webdriver.ie.driver': ''
+  //   }
+  // },
   test_settings: {
     default: {
       screenshots: {
@@ -30,8 +38,8 @@ module.exports = {
       },
       launch_url: "about:blank",
       skip_testcases_on_fail: false,
-      selenium_port: 4444,
-      selenium_host: 'localhost',
+      // selenium_port: 4444,
+      // selenium_host: 'localhost',
       desiredCapabilities: {
         browserName: 'chrome',
         chromeOptions : { args: chromeOptions },
