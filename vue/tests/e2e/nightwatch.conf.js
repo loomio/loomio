@@ -1,5 +1,6 @@
 var selenium = require('selenium-server-standalone-jar');
 var chromedriver = require('chromedriver');
+var geckodriver = require('geckodriver')
 
 var chromeOptions = []
 if (process.env.RAILS_ENV == 'test') {
@@ -13,9 +14,9 @@ module.exports = {
   output_folder: './tests/reports',
   webdriver: {
     "start_process" : true,
-    server_path: "node_modules/.bin/chromedriver",
-    cli_args: [ "--verbose" ],
-    port: 9515
+    server_path: geckodriver.path,
+    // cli_args: [ "--verbose" ],
+    port: geckodriver.port
   },
   //
   //
@@ -41,10 +42,11 @@ module.exports = {
       // selenium_port: 4444,
       // selenium_host: 'localhost',
       desiredCapabilities: {
-        browserName: 'chrome',
-        chromeOptions : { args: chromeOptions },
+        browserName: 'firefox',
+        // chromeOptions : { args: chromeOptions },
         javascriptEnabled: true,
-        acceptSslCerts: true
+        acceptSslCerts: true,
+        elementScrollBehavior: 1
       },
     }
   }
