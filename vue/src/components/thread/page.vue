@@ -33,7 +33,8 @@ export default
     openThreadNav: -> EventBus.$emit('toggleThreadNav')
 
     init: ->
-      Records.discussions.findOrFetchOrAuthorize(@$route.params.key)
+      Records.samlProviders.authenticateForDiscussion(@$route.params.key)
+      Records.discussions.findOrFetch(@$route.params.key)
       .then (discussion) =>
         @discussion = discussion
         EventBus.$emit 'currentComponent',

@@ -8,12 +8,12 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
     @fetch
       params:
         group_id: id
-    .then (obj) ->
-      window.location = "/saml_providers/#{obj.saml_provider_id}/auth"
+    .then (shouldAuth) ->
+      window.location = "/saml_providers/auth?group_id=#{id}" if shouldAuth
 
   authenticateForDiscussion: (id) ->
     @fetch
       params:
         discussion_id: id
-    .then (obj) ->
-      window.location = "/saml_providers/#{obj.saml_provider_id}/auth"
+    .then (shouldAuth) ->
+      window.location = "/saml_providers/auth?discussion_id=#{id}" if shouldAuth
