@@ -9,6 +9,7 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
     fetch("/saml_providers/should_auth?group_id=#{id}")
     .then (response) -> response.json().then (shouldAuth) ->
       if shouldAuth
+        EventBus.$emit 'closeModal'
         Flash.success 'configure_sso.redirecting'
         window.location = "/saml_providers/auth?group_id=#{id}"
 
@@ -16,5 +17,6 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
     fetch("/saml_providers/should_auth?discussion_id=#{id}")
     .then (response) -> response.json().then (shouldAuth) ->
       if shouldAuth
+        EventBus.$emit 'closeModal'
         Flash.success 'configure_sso.redirecting'
         window.location = "/saml_providers/auth?discussion_id=#{id}" if shouldAuth
