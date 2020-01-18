@@ -56,6 +56,7 @@ export default
         subscribeTo(@group)
       .catch (error) =>
         EventBus.$emit 'pageError', error
+        EventBus.$emit 'openAuthModal' if error.status == 403
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)

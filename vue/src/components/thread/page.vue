@@ -44,6 +44,7 @@ export default
           title: @discussion.title
       .catch (error) =>
         EventBus.$emit 'pageError', error
+        EventBus.$emit 'openAuthModal' if error.status == 403
 
 </script>
 
