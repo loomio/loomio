@@ -5,15 +5,11 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
   model: SamlProviderModel
 
   authenticateForGroup: (id) ->
-    @fetch
-      params:
-        group_id: id
-    .then (shouldAuth) ->
+    fetch("/saml_providers/should_auth?group_id=#{id}")
+    .then (response) -> response.json().then (shouldAuth) ->
       window.location = "/saml_providers/auth?group_id=#{id}" if shouldAuth
 
   authenticateForDiscussion: (id) ->
-    @fetch
-      params:
-        discussion_id: id
-    .then (shouldAuth) ->
+    fetch("/saml_providers/should_auth?discussion_id=#{id}")
+    .then (response) -> response.json().then (shouldAuth) ->
       window.location = "/saml_providers/auth?discussion_id=#{id}" if shouldAuth

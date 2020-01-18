@@ -48,7 +48,7 @@ class SamlProvidersController < ApplicationController
         inviter = GroupInviter.new(group: group, emails: [email], inviter: group.creator).invite!
         Events::AnnouncementCreated.publish! group, group.creator, inviter.invited_memberships, :group_announced
         update_session_expires_at!(User.find_by!(email: email), group, expires_at)
-        redirect_to invitation_created_saml_provider_url(saml_provider.id, email: email)
+        redirect_to invitation_created_saml_providers_url(email: email, group_id: group.id)
       end
     else
       render :error
@@ -58,7 +58,7 @@ class SamlProvidersController < ApplicationController
   private
   def should_auth_for_group(group)
     return false unless SamlProvider.find_by(group_id: group.id)
-    return true if !current_user.is_signed_in?
+    return true if !current_user.is_logged_in?
     membership = group.membership_for(current_user)
     !membership ||
     !membership.saml_session_expires_at ||
@@ -87,11 +87,11 @@ class SamlProvidersController < ApplicationController
   end
 
   def params_saml_provider
-    SamlProvider.find_by!(id: params[:id])
+    SamlProvider.find_by!(group_id: find_group!.id)
   end
 
   def session_saml_provider
-    SamlProvider.find_by!(id: session[:saml_provider_id])
+    SamlProvider.find_by!(group_id: session[:saml_group_id])
   end
 
   def idp_auth_url
