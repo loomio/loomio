@@ -8,14 +8,14 @@ module.exports = (test, browser) ->
     test.refresh()
 
   loadPath: (path, opts = {}) ->
-    test.url encodeURI("#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}")
+    test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
     test.waitForElementPresent('main', 10000) # TODO should be 10K max
 
   loadPathNoMain: (path, opts = {}) ->
-    test.url encodeURI("#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}")
+    test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
 
   goTo: (path) ->
-    test.url encodeURI("#{base_url}/#{path}")
+    test.url "#{base_url}/#{path}"
 
   waitForUrlToContain: (string) ->
     test.assert.urlContains(string)
@@ -36,13 +36,13 @@ module.exports = (test, browser) ->
     test.expect.element(selector).to.not.be.present.after(wait)
 
   click: (selector, pause) ->
-    # @scrollTo selector, () ->
-    test.click(selector)
-    test.pause(pause) if pause
+    @scrollTo selector, () ->
+      test.click(selector)
+      test.pause(pause) if pause
 
   scrollTo: (selector, callback, wait) ->
     @waitFor(selector, wait)
-    callback()
+    test.getLocationInView(selector, callback)
 
   ensureSidebar: ->
     @waitFor('.navbar__sidenav-toggle')

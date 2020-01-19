@@ -101,10 +101,10 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit', 1000)
 
-    // page.scrollTo('.poll-common-stance-choice', () => {
+    page.scrollTo('.poll-common-stance-choice', () => {
       page.expectText('.poll-common-stance-choice--dot_vote', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
-    // })
+    })
   },
 
   'can_start_a_score_poll_in_a_group': (test) => {
@@ -129,10 +129,10 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit', 1000)
 
-    // page.scrollTo('.stance-created', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-choice--score', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
-    // })
+    })
   },
 
   'can_start_a_time_poll_in_a_group': (test) => {
@@ -157,10 +157,10 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit', 1000)
 
-    // page.scrollTo('.stance-created', () => {
-      // page.expectText('.poll-meeting-time', '8am')
+    page.scrollTo('.stance-created', () => {
+      page.expectText('.poll-meeting-time', '8am')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
-    // })
+    })
   },
 
   'can_start_a_ranked_choice_in_a_group': (test) => {
@@ -186,10 +186,10 @@ module.exports = {
     page.pause(500)
     page.click('.poll-common-vote-form__submit')
 
-    // page.scrollTo('.stance-created', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-choice--ranked_choice:first-child', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
-    // })
+    })
   },
 
   'can_set_an_outcome': (test) => {
@@ -217,11 +217,11 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
-    // page.scrollTo('.poll-common-action-panel', () => {
+    page.scrollTo('.poll-common-action-panel', () => {
       page.click('.poll-common-vote-form__button:first-child')
       page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
       page.click('.poll-common-vote-form__submit')
-    // })
+    })
 
     page.expectText('.poll-common-stance-created__reason', 'A reason')
 
@@ -286,9 +286,9 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
-    // page.scrollTo('.poll-common-action-panel', () => {
+    page.scrollTo('.poll-common-action-panel', () => {
       page.click('.poll-common-add-option-button button')
-    // })
+    })
 
     page.fillInAndEnter('.poll-poll-form__add-option-input', 'Yet another option')
     page.click('.poll-add-option__submit')
@@ -317,10 +317,10 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
-    // page.scrollTo('.stance-created', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-choice', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
-    // })
+    })
 
     page.click('.action-dock__button--edit_stance')
     page.click('.poll-common-edit-vote__button')
@@ -351,10 +351,10 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
-    // page.scrollTo('.stance-created', () => {
+    page.scrollTo('.stance-created', () => {
       page.expectText('.poll-common-stance-choice', 'An option')
       page.expectText('.poll-common-stance-created__reason', 'A reason')
-    // })
+    })
 
     page.click('.action-dock__button--edit_stance')
     page.fillIn('.poll-common-vote-form__reason .ProseMirror', "An updated reason")
