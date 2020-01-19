@@ -33,7 +33,8 @@ export default
     openThreadNav: -> EventBus.$emit('toggleThreadNav')
 
     init: ->
-      Records.discussions.findOrFetchOrAuthorize(@$route.params.key)
+      Records.samlProviders.authenticateForDiscussion(@$route.params.key)
+      Records.discussions.findOrFetchById(@$route.params.key)
       .then (discussion) =>
         @discussion = discussion
         EventBus.$emit 'currentComponent',
@@ -43,6 +44,7 @@ export default
           title: @discussion.title
       .catch (error) =>
         EventBus.$emit 'pageError', error
+        EventBus.$emit 'openAuthModal' if error.status == 403
 
 </script>
 

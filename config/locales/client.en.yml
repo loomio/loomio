@@ -2203,6 +2203,7 @@ en:
       outcome_created: An outcome has been shared
 
   configure_sso:
+    redirecting: Please wait, redirecting to sign-in provider
     title: Configure single sign-on
     enabled: Single sign-on is enabled
     helptext: Integrate with OneLogin, Auth0, Microsoft Active Directory, or any other SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Learn more</a>.

@@ -1,11 +1,8 @@
 class API::SamlProvidersController < API::RestfulController
   def index
-    if group = find_group
-      saml_provider = SamlProvider.find_by!(group_id: group.id)
-      render json: { saml_provider_id:  saml_provider.id, idp_metadata_url: saml_provider.idp_metadata_url }
-    else
-      render json: {}, status: 404
-    end
+    saml_provider = SamlProvider.find_by!(group_id: params[:group_id])
+        render json: { saml_provider_id:  saml_provider.id,
+                       idp_metadata_url: saml_provider.idp_metadata_url }
   end
 
   def create
@@ -24,14 +21,5 @@ class API::SamlProvidersController < API::RestfulController
     SamlProvider.where(group: group).destroy_all
     group.memberships.update_all(saml_session_expires_at: nil)
     render json: { success: :ok }
-  end
-
-  private
-  def find_group
-    if params[:group_id]
-      ModelLocator.new(:formal_group, id: params[:group_id]).locate.parent_or_self
-    elsif params[:discussion_id]
-      ModelLocator.new(:discussion, id: params[:discussion_id]).locate.group.parent_or_self
-    end
   end
 end

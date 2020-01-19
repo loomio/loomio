@@ -1,9 +1,13 @@
 class SamlProvidersController < ApplicationController
   layout 'basic'
 
+  def should_auth
+    render json: should_auth_for_group(find_group!)
+  end
+
   def auth
     session[:back_to] = params[:back_to] || request.referrer
-    session[:saml_provider_id] = params[:id]
+    session[:saml_group_id] = find_group!.id
     redirect_to idp_auth_url
   end
 
@@ -44,7 +48,7 @@ class SamlProvidersController < ApplicationController
         inviter = GroupInviter.new(group: group, emails: [email], inviter: group.creator).invite!
         Events::AnnouncementCreated.publish! group, group.creator, inviter.invited_memberships, :group_announced
         update_session_expires_at!(User.find_by!(email: email), group, expires_at)
-        redirect_to invitation_created_saml_provider_url(saml_provider.id, email: email)
+        redirect_to invitation_created_saml_providers_url(email: email, group_id: group.id)
       end
     else
       render :error
@@ -52,6 +56,25 @@ class SamlProvidersController < ApplicationController
   end
 
   private
+
+  def should_auth_for_group(group)
+    return false unless SamlProvider.find_by(group_id: group.id)
+    return false if pending_membership
+    return true if !current_user.is_logged_in?
+    membership = group.membership_for(current_user)
+    !membership ||
+    !membership.saml_session_expires_at ||
+    (membership.saml_session_expires_at < Time.current)
+  end
+
+  def find_group!
+    if params[:group_id]
+      ModelLocator.new(:formal_group, id: params[:group_id]).locate!.parent_or_self
+    elsif params[:discussion_id]
+      ModelLocator.new(:discussion, id: params[:discussion_id]).locate!.group.parent_or_self
+    end
+  end
+
 
   def update_session_expires_at!(user, group, expires_at = 48.hours.from_now)
     membership = Membership.not_archived.where(user_id: user.id, group_id: group.id).first
@@ -67,11 +90,11 @@ class SamlProvidersController < ApplicationController
   end
 
   def params_saml_provider
-    SamlProvider.find_by!(id: params[:id])
+    SamlProvider.find_by!(group_id: find_group!.id)
   end
 
   def session_saml_provider
-    SamlProvider.find_by!(id: session[:saml_provider_id])
+    SamlProvider.find_by!(group_id: session[:saml_group_id])
   end
 
   def idp_auth_url
