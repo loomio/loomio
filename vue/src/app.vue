@@ -41,7 +41,7 @@ export default
       AppConfig.currentPoll       = options.poll
 
     shouldForceSignIn: (options = {}) ->
-      return true if Session.pendingInvitation()
+      return true if AppConfig.pendingIdentity.identity_type?
       return false if Session.isSignedIn() && AppConfig.pendingIdentity.identity_type != "loomio"
 
       switch @$route.path

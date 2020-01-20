@@ -123,7 +123,7 @@ export default new class GroupService
       name: 'configure_sso.title'
       icon: 'mdi-key-variant'
       canPerform: ->
-        AbilityService.canAdministerGroup(group)
+        AbilityService.canAdministerGroup(group) && group.isParent()
       perform: ->
         openModal
           component: 'InstallSamlProviderModal'

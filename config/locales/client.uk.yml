@@ -2004,11 +2004,6 @@ uk:
       poll_closing_soon: Опитування скоро закривається
       poll_expired: Опитування закінчилось
       outcome_created: Результат оприлюднено
-  configure_sso:
-    title: Налаштування єдиного входу (SSO)
-    helptext: |
-        Хочете використовувати Loomio у вашій організації та керувати доступом через OneLogin, Auth0, Microsoft Active Directory або іншого постачальника SAML?
-        Ми проводимо бета-тест інтеграції з SSO. Зв'яжіться з нами, і ми зробимо налаштування для вас!
   install_slack:
     modal_title: Інтеграція зі Slack
     modal_helptext: Спочатку вам потрібно ввійти у Slack. Натисніть кнопку нижче, щоб продовжити.

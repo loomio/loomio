@@ -123,13 +123,16 @@ module Dev::Scenarios::Group
 
   def setup_saml_group
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes', handle: 'dirty-dancing-shoes', group_privacy: params[:privacy] || 'secret')
+    @group.create_subscription(plan: 'pp-pro-annual')
     provider_url = "https://saml_provider.example.com"
     # provider_url = 'https://app.onelogin.com/saml/metadata/c5690a10-4e33-4a57-9389-30dd92996629'
+    patrick.update(email: params[:email]) if params[:email]
+
     SamlProvider.create(group: @group, idp_metadata_url: provider_url)
     @group.add_admin! jennifer
 
     if params[:member]
-      membership = @group.add_member! patrick
+      membership = @group.add_admin! patrick
       membership.update(saml_session_expires_at: if params[:expired] then 1.minute.ago else 1.day.from_now end)
     end
 

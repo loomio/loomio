@@ -87,7 +87,7 @@ export default new class Session
     AppConfig.pendingIdentity if validProviders.includes(AppConfig.pendingIdentity.identity_type)
 
   pendingInvitation: ->
-    AppConfig.pendingIdentity.identity_type?
+    AppConfig.pendingIdentity.identity_type == 'membership'
 
 setDefaultParams = (params) ->
   endpoints = ['stances', 'polls', 'discussions', 'events', 'reactions', 'documents']

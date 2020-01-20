@@ -17,27 +17,6 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
     else
       @remote.fetchById(id, options).then => @fuzzyFind(id)
 
-  findOrFetchOrAuthorize: (id, options = {}, ensureComplete = false) ->
-    @findOrFetch(id, options, ensureComplete)
-    .then (group) =>
-      @recordStore.samlProviders.authenticateForGroup(id) if @shouldTrySaml(id)
-      group
-    .catch (error) =>
-      if error.status == 403 && @shouldTrySaml(id)
-        @recordStore.samlProviders.authenticateForGroup(id)
-        .then =>
-          @fuzzyFind(id)
-        .catch ->
-          EventBus.$emit 'openAuthModal' if !Session.isSignedIn()
-          throw error
-      else
-        throw error
-
-  shouldTrySaml: (id) ->
-    return false if Session.pendingInvitation()
-    membership = Session.user().membershipFor(@fuzzyFind(id))
-    !Session.isSignedIn() || !membership || membership.samlSessionExpired()
-
   fetchByParent: (parentGroup) ->
     @fetch
       path: "#{parentGroup.id}/subgroups"

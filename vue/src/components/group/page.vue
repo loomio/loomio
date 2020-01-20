@@ -49,12 +49,14 @@ export default
 
   methods:
     init: ->
-      Records.groups.findOrFetchOrAuthorize(@$route.params.key)
+      Records.samlProviders.authenticateForGroup(@$route.params.key)
+      Records.groups.findOrFetch(@$route.params.key)
       .then (group) =>
         @group = group
         subscribeTo(@group)
       .catch (error) =>
         EventBus.$emit 'pageError', error
+        EventBus.$emit 'openAuthModal' if error.status == 403
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)

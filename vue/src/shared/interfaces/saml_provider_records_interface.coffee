@@ -1,19 +1,24 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import SamlProviderModel           from '@/shared/models/saml_provider_model'
-# import {uniq, concat, compact, map, includes} from 'lodash'
+import Flash  from '@/shared/services/flash'
+import EventBus  from '@/shared/services/event_bus'
+
 export default class GroupRecordsInterface extends BaseRecordsInterface
   model: SamlProviderModel
 
   authenticateForGroup: (id) ->
-    @fetch
-      params:
-        group_id: id
-    .then (obj) ->
-      window.location = "/saml_providers/#{obj.saml_provider_id}/auth"
+    fetch("/saml_providers/should_auth?group_id=#{id}")
+    .then (response) -> response.json().then (shouldAuth) ->
+      if shouldAuth
+        EventBus.$emit 'closeModal'
+        Flash.success 'configure_sso.redirecting'
+        window.location = "/saml_providers/auth?group_id=#{id}"
+
 
   authenticateForDiscussion: (id) ->
-    @fetch
-      params:
-        discussion_id: id
-    .then (obj) ->
-      window.location = "/saml_providers/#{obj.saml_provider_id}/auth"
+    fetch("/saml_providers/should_auth?discussion_id=#{id}")
+    .then (response) -> response.json().then (shouldAuth) ->
+      if shouldAuth
+        EventBus.$emit 'closeModal'
+        Flash.success 'configure_sso.redirecting'
+        window.location = "/saml_providers/auth?discussion_id=#{id}" if shouldAuth

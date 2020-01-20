@@ -18,6 +18,15 @@ class API::SessionsController < Devise::SessionsController
   def destroy
     ActionCable.server.broadcast current_user.message_channel, action: :logged_out
     sign_out resource_name
+
+    # temp fix because we've changed the session domain
+    if ENV['CANONICAL_HOST'] == 'www.loomio.org'
+      cookies.delete :_loomio, domain: '.loomio.org'
+      cookies.delete :remember_user_token, domain: '.loomio.org'
+      cookies.delete :_loomio
+      cookies.delete :remember_user_token
+    end
+
     flash[:notice] = t(:'devise.sessions.signed_out')
     render json: { success: :ok }
   end

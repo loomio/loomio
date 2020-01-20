@@ -114,7 +114,7 @@ fr:
     time_zone: Fuseau horaire
     local_time: Heure locale
     attachments: Pièces jointes
-    active_time_ago: Actif il y à {{time_ago}}
+    active_time_ago: Actif pour la dernière fois {{time_ago}}
     confirm_discard_changes: Annuler vos modifications ?
     time:
       am: le matin
@@ -2005,11 +2005,6 @@ fr:
       poll_closing_soon: Un sondage sera bientôt terminé
       poll_expired: Un sondage est achevé
       outcome_created: Un bilan a été partagé
-  configure_sso:
-    title: Configurer le service d'authentification unique (SSO)
-    helptext: |
-        Vous souhaitez utiliser Loomio au sein de votre organisation et gérer les accès via OneLogin, Auth0, Microsoft Active Directory ou un autre fournisseur de norme SAML ?
-        Nous effectuons un bêta-test de notre intégration SSO, contactez-nous pour en faire partie et nous nous occuperons de tout  !
   install_slack:
     modal_title: Intégrer Slack
     modal_helptext: Tout d'abord, vous devez vous connectez à Slack. Cliquez sur le bouton ci-dessous pour continuer.
