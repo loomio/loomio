@@ -79,10 +79,6 @@ export default
       @goToPosition(@position)
 
     moveKnob: (event) ->
-      # needs to be able to distinguish between touch event and mouse event
-      # currently this is designed to get position from the latter
-      # the former has a slightly different structure
-      console.log 'ontouchmove', event
       adjust = if @knobHeight < 64
            32
         else
@@ -92,7 +88,13 @@ export default
       @position = @positionFor(@getEventOffset(event))
 
     getEventOffset: (event) ->
-      offset = event.clientY - @$refs.slider.getBoundingClientRect().top
+      # touch event structure differs from that of mouse event
+      clientY = if event.touches
+        event.touches[0].clientY
+      else
+        event.clientY
+
+      offset = clientY - @$refs.slider.getBoundingClientRect().top
       if offset < 0
         0
       else if offset > @trackHeight
@@ -112,11 +114,9 @@ export default
       document.addEventListener 'mouseup', onMouseUp
 
     onTouchStart: ->
-      console.log 'onTouchStart'
       onTouchMove = @moveKnob
 
       onTouchEnd = =>
-        console.log 'onTouchEnd'
         document.removeEventListener('touchmove', onTouchMove);
         document.removeEventListener('touchend', onTouchEnd);
         @goToPosition(@position)
@@ -148,12 +148,6 @@ export default
         @childCount - position + 1
       else
         position
-
-    startHandler: ->
-      console.log 'start touch'
-
-    endHandler: ->
-      console.log 'end touch'
 
   watch:
     'discussion.newestFirst':
