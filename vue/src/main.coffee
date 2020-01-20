@@ -17,6 +17,9 @@ import WatchRecords from '@/mixins/watch_records'
 import CloseModal from '@/mixins/close_modal'
 import UrlFor from '@/mixins/url_for'
 import FormatDate from '@/mixins/format_date'
+import Vue2TouchEvents from 'vue2-touch-events'
+
+Vue.use(Vue2TouchEvents)
 
 Vue.mixin(CloseModal)
 Vue.mixin(WatchRecords)

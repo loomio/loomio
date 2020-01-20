@@ -79,6 +79,8 @@ export default
       @goToPosition(@position)
 
     moveKnob: (event) ->
+      event.preventDefault()
+      event.stopImmediatePropagation()
       adjust = if @knobHeight < 64
            32
         else
@@ -88,7 +90,13 @@ export default
       @position = @positionFor(@getEventOffset(event))
 
     getEventOffset: (event) ->
-      offset = event.clientY - @$refs.slider.getBoundingClientRect().top
+      # touch event structure differs from that of mouse event
+      clientY = if event.touches
+        event.touches[0].clientY
+      else
+        event.clientY
+
+      offset = clientY - @$refs.slider.getBoundingClientRect().top
       if offset < 0
         0
       else if offset > @trackHeight
@@ -100,12 +108,23 @@ export default
       onMouseMove = @moveKnob
 
       onMouseUp = =>
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
+        document.removeEventListener 'mousemove', onMouseMove
+        document.removeEventListener 'mouseup', onMouseUp
         @goToPosition(@position)
 
       document.addEventListener 'mousemove', onMouseMove
       document.addEventListener 'mouseup', onMouseUp
+
+    onTouchStart: ->
+      onTouchMove = @moveKnob
+
+      onTouchEnd = =>
+        document.removeEventListener 'touchmove', onTouchMove
+        document.removeEventListener 'touchend', onTouchEnd
+        @goToPosition(@position)
+
+      document.addEventListener 'touchmove', onTouchMove, { passive: false }
+      document.addEventListener 'touchend', onTouchEnd
 
     goToPosition: (position) ->
       unless (@$route.query && @$route.query.p == position)
@@ -161,7 +180,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
       router-link.thread-nav__preset(v-for="event in presets" :key="event.id" :to="urlFor(event)" :style="{top: offsetFor(event.position)+'px'}")
         .thread-nav__preset--line
         .thread-nav__preset--title {{event.pinnedTitle || event.suggestedTitle()}}
-    .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown")
+    .thread-nav__knob(:style="{top: knobOffset+'px', height: knobHeight+'px'}" ref="knob" @mousedown="onMouseDown" v-touch:start="onTouchStart")
   router-link.thread-nav__date(:to="{query:{p: bottomPosition}, params: {sequence_id: null}}") {{approximateDate(bottomDate)}}
 </template>
 
