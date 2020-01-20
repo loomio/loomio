@@ -36,9 +36,8 @@ module.exports = (test, browser) ->
     test.expect.element(selector).to.not.be.present.after(wait)
 
   click: (selector, pause) ->
-    @scrollTo selector, () ->
-      test.click(selector)
-      test.pause(pause) if pause
+    test.click(selector)
+    test.pause(pause) if pause
 
   scrollTo: (selector, callback, wait) ->
     @waitFor(selector, wait)
@@ -81,17 +80,6 @@ module.exports = (test, browser) ->
 
   execute: (script) ->
     test.execute(script)
-
-  selectFromAutocomplete: (selector, value) ->
-    @fillIn(selector, value)
-    @click(selector)
-    @pause()
-    @execute("document.querySelector('.md-autocomplete-suggestions li').click()")
-
-  selectOption: (selector, option) ->
-    # TODO
-    # @click selector
-    # element(By.cssContainingText('md-option', option)).click()
 
   expectValue: (selector, value, wait) ->
     @waitFor(selector, wait)

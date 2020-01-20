@@ -1,3 +1,4 @@
 <template lang="pug">
-span &nbsp;
+span
+  |  &nbsp;
 </template>
