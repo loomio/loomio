@@ -79,6 +79,8 @@ export default
       @goToPosition(@position)
 
     moveKnob: (event) ->
+      event.preventDefault()
+      event.stopImmediatePropagation()
       adjust = if @knobHeight < 64
            32
         else
@@ -117,11 +119,11 @@ export default
       onTouchMove = @moveKnob
 
       onTouchEnd = =>
-        document.removeEventListener('touchmove', onTouchMove);
-        document.removeEventListener('touchend', onTouchEnd);
+        document.removeEventListener 'touchmove', onTouchMove
+        document.removeEventListener 'touchend', onTouchEnd
         @goToPosition(@position)
 
-      document.addEventListener 'touchmove', onTouchMove
+      document.addEventListener 'touchmove', onTouchMove, { passive: false }
       document.addEventListener 'touchend', onTouchEnd
 
     goToPosition: (position) ->
