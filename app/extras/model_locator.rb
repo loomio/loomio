@@ -12,6 +12,10 @@ ModelLocator = Struct.new(:model, :params) do
     end
   end
 
+  def locate!
+    locate or raise ActiveRecord::RecordNotFound
+  end
+
   private
 
   def key_or_id

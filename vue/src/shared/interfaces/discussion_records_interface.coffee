@@ -7,30 +7,6 @@ import { includes } from 'lodash'
 export default class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel
 
-  findOrFetchOrAuthorize: (id, options = {}, ensureComplete = false) ->
-    @findOrFetchById(id, options, ensureComplete)
-    .then (discussion) =>
-      @recordStore.samlProviders.authenticateForDiscussion(id) if @shouldTrySaml(id)
-      discussion
-    .catch (error) =>
-      if error.status == 403 && @shouldTrySaml(id)
-        @recordStore.samlProviders.authenticateForDiscussion(id)
-        .then =>
-          @find(id)
-        .catch ->
-          EventBus.$emit 'openAuthModal' if !Session.isSignedIn()
-          throw error
-      else
-        throw error
-
-  shouldTrySaml: (id) ->
-    return false if Session.pendingInvitation()
-    if discussion = @find(id)
-      membership = Session.user().membershipFor(discussion.group())
-      !Session.isSignedIn() || !membership || membership.samlSessionExpired()
-    else
-      true
-
   fetchHistoryFor: (discussion) ->
     params = discussion.id
 

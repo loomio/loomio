@@ -13,6 +13,7 @@ module Dev::NintiesMoviesHelper
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
                               uploaded_avatar: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"),
+                              experiences: {changePicture: true},
                               detected_locale: 'en',
                               email_verified: true)
 
@@ -35,6 +36,7 @@ module Dev::NintiesMoviesHelper
                   User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
+                               experiences: {changePicture: true},
                                uploaded_avatar: File.new("#{Rails.root}/spec/fixtures/images/jennifer.png"),
                                email_verified: true)
     @jennifer.update(avatar_kind: 'uploaded')
