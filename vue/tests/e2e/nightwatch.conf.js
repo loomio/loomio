@@ -40,9 +40,8 @@ module.exports = {
       selenium_port: 4444,
       selenium_host: 'localhost',
       desiredCapabilities: {
-        browserName: 'firefox',
-        // chromeOptions : { args: chromeOptions },
-        // javascriptEnabled: true,
+        browserName: 'chrome',
+        chromeOptions : { args: chromeOptions },
         acceptSslCerts: true,
         acceptInsecureCerts: true
       },
