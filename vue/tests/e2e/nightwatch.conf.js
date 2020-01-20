@@ -12,21 +12,21 @@ if (process.env.RAILS_ENV == 'test') {
 module.exports = {
   src_folders: ['./tests/e2e/specs'],
   output_folder: './tests/reports',
-  webdriver: {
-    "start_process" : true,
-    "server_path": geckodriver.path,
-    "cli_args": [ "--log", "debug" ],
-    "port": geckodriver.port
-  },
-  // selenium: {
-  //   start_process: true,
-  //   server_path: selenium.path,
-  //   log_path: './tests/reports',
-  //   cli_args: {
-  //     'webdriver.chrome.driver': chromedriver.path,
-  //     'webdriver.gecko.driver': geckodriver.path
-  //   }
+  // webdriver: {
+  //   "start_process" : true,
+  //   "server_path": geckodriver.path,
+  //   "cli_args": [ "--log", "debug" ],
+  //   "port": geckodriver.port
   // },
+  selenium: {
+    start_process: true,
+    server_path: selenium.path,
+    log_path: './tests/reports',
+    cli_args: {
+      'webdriver.chrome.driver': chromedriver.path,
+      'webdriver.gecko.driver': geckodriver.path
+    }
+  },
   test_settings: {
     default: {
       screenshots: {
@@ -37,8 +37,8 @@ module.exports = {
       },
       launch_url: "about:blank",
       skip_testcases_on_fail: false,
-      // selenium_port: 4444,
-      // selenium_host: 'localhost',
+      selenium_port: 4444,
+      selenium_host: 'localhost',
       desiredCapabilities: {
         browserName: 'firefox',
         // chromeOptions : { args: chromeOptions },
