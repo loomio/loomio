@@ -35,7 +35,7 @@ env:
     - MAX_THREADS=3
     - SCREENSHOTS_PATH=/`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
   matrix:
-    - TASK=e2e
+    # - TASK=e2e
     - TASK=rspec
     - TASK=plugins
     - TASK=vue
