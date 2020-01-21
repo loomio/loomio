@@ -3,6 +3,8 @@ class SamlProvidersController < ApplicationController
 
   def should_auth
     render json: should_auth_for_group(find_group!)
+  rescue ActiveRecord::RecordNotFound => error
+    render json: {exception: "#{error.class} #{error.to_s}"}, root: false, status: 404
   end
 
   def auth
