@@ -56,7 +56,7 @@
     "@vue/cli-plugin-babel": "^3.12.0",
     "@vue/cli-plugin-e2e-nightwatch": "^3.12.1",
     "@vue/cli-plugin-pwa": "^4.1.2",
-    "@vue/cli-service": "^3.12.0",
+    "@vue/cli-service": "4.1.2",
     "acorn": "^7.1.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "coffee-loader": "^0.9.0",
@@ -71,6 +71,6 @@
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.6.11",
     "vuetify-loader": "latest",
-    "webpack": "latest"
+    "webpack": "4.41.5"
   }
 }

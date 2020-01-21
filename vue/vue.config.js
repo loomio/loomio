@@ -31,7 +31,6 @@ module.exports = {
 
   },
   outputDir: '../public/client/vue',
-  assetsDir: '../../client/vue',
   devServer: {
    proxy: {
    '^/(api|dev|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|community_applications|417|saml_providers)': {target: 'http://localhost:3000'},
