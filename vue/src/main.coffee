@@ -1,4 +1,18 @@
 require('intersection-observer')
+
+if !Object.entries
+  Object.entries = (obj) ->
+    ownProps = Object.keys(obj)
+    i = ownProps.length
+    resArray = new Array(i)
+    # preallocate the Array
+    while i--
+      resArray[i] = [
+        ownProps[i]
+        obj[ownProps[i]]
+      ]
+    resArray
+
 import 'url-search-params-polyfill'
 import Vue from 'vue'
 import AppConfig from '@/shared/services/app_config'
