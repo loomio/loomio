@@ -3,25 +3,54 @@
   %div{ class: 'panel-contents' }
     %strong= t(:"community_applications.choose_group")
     %p #{Group.find(info["group_id"]).name}
-    %strong= t(:'community_applications.confirm_question')
-    %p #{info["declaration"]}
-    %strong= t :'community_applications.category_question'
-    %p #{info["category"]}
-    %strong= t :'community_applications.purpose'
-    %p #{info["purpose"]}
-    %strong= t :'community_applications.importance'
-    %p #{info["importance"]}
-    %strong= t :'community_applications.source'
-    %p #{info["source"]}
-    %strong= t :'community_applications.decision'
-    %p #{info["decision"]}
-    %strong= t :'community_applications.enable'
-    %p #{info["enable"]}
-    %strong= t :'community_applications.impact'
-    %p #{info["impact"]}
-    %strong= t :'community_applications.social_question'
-    %p #{info["social_permission"]}
-    %strong= t :'community_applications.blog_question'
-    %p #{info["blog_permission"]}
-    %strong= t :'community_applications.anything_else'
-    %p #{info["anything_else"]}
+    - if info["declaration"]
+      %strong= t(:'community_applications.confirm_question')
+      %p #{info["declaration"]}
+    - if info["category"]
+      %strong= t :'community_applications.category_question'
+      %p #{info["category"]}
+    - if info["purpose"]
+      %strong= t :'community_applications.purpose'
+      %p #{info["purpose"]}
+    - if info["importance"]
+      %strong= t :'community_applications.importance'
+      %p #{info["importance"]}
+    - if info["source"]
+      %strong= t :'community_applications.source'
+      %p #{info["source"]}
+    - if info["decision"]
+      %strong= t :'community_applications.decision'
+      %p #{info["decision"]}
+    - if info["enable"]
+      %strong= t :'community_applications.enable'
+      %p #{info["enable"]}
+    - if info["impact"]
+      %strong= t :'community_applications.impact'
+      %p #{info["impact"]}
+    - if info["social_permission"]
+      %strong= t :'community_applications.social_question'
+      %p #{info["social_permission"]}
+    - if info["blog_permission"]
+      %strong= t :'community_applications.blog_question'
+      %p #{info["blog_permission"]}
+
+    - if info["size"]
+      %strong= t :'community_applications.size'
+      %p= t :"community_applications.sizes.#{info['size']}"
+
+    - if info["usage"]
+      %strong= t :'community_applications.usage'
+      - info["usage"].each do |use|
+        %p= t :"community_applications.uses.#{use}"
+
+    - if info["role"]
+      %strong= t :'community_applications.role'
+      %p= info["role"]
+
+    - if info["website"]
+      %strong= t :"community_applications.website"
+      %p= info["website"]
+
+    - if info["anything_else"]
+      %strong= t :'community_applications.anything_else'
+      %p #{info["anything_else"]}
