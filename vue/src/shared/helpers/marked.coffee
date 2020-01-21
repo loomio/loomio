@@ -30,4 +30,4 @@ export customRenderer = (opts) ->
     _super.link(href, title, text).replace('<a ', '<a rel="noopener noreferrer" target="_blank" ')
 
   renderer
-export options = {gfm: true, sanitize: true, breaks: true, smartypants: false, tables: true}
+export options = {gfm: true, breaks: true, smartypants: false, tables: true}
