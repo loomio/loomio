@@ -31,8 +31,6 @@ class ApplicationController < ActionController::Base
       else
         template = File.read(Rails.root.join('public/client/vue/index.html'))
         template.sub! '<loomio_metadata_tags>', '<%= render "application/social_metadata" %>'
-        template.gsub! '/js/', '/client/vue/js/'
-        template.gsub! '/css/', '/client/vue/css/'
         render inline: template, layout: false
       end
     end
