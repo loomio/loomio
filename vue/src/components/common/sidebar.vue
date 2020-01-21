@@ -136,7 +136,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model
         span.body-2.sidebar-item.text-almost-black
           span {{item.group.name}}
           span(v-if='unreadCountFor(item.group, open)')
-            space
+            | &nbsp;
             span ({{unreadCountFor(item.group, open)}})
 
   v-list-item.sidebar__list-item-button--start-group(@click="startOrganization()" dense)
