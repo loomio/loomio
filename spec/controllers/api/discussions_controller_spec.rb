@@ -571,20 +571,20 @@ describe API::DiscussionsController do
       #   expect(reader.reload.read_items_count).to eq 0
       # end
 
-      it 'responds with reader fields' do
-        # also testing accumulation
-        new_comment.discussion = discussion
-        CommentService.create(comment: new_comment, actor: user)
-        patch :mark_as_read, params: { id: discussion.id, ranges: "2-2" }
-        patch :mark_as_read, params: { id: discussion.id, ranges: "3-3" }
-        json = JSON.parse(response.body)
-        reader.reload
-
-        expect(json['discussions'][0]['id']).to eq discussion.id
-        expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
-        expect(json['discussions'][0]['read_ranges']).to eq [[2,3]]
-        # expect(json['discussions'][0]['read_items_count']).to eq 2
-      end
+      # it 'responds with reader fields' do
+      #   # also testing accumulation
+      #   new_comment.discussion = discussion
+      #   CommentService.create(comment: new_comment, actor: user)
+      #   patch :mark_as_read, params: { id: discussion.id, ranges: "2-2" }
+      #   patch :mark_as_read, params: { id: discussion.id, ranges: "3-3" }
+      #   json = JSON.parse(response.body)
+      #   reader.reload
+      #
+      #   expect(json['discussions'][0]['id']).to eq discussion.id
+      #   expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
+      #   expect(json['discussions'][0]['read_ranges']).to eq [[2,3]]
+      #   # expect(json['discussions'][0]['read_items_count']).to eq 2
+      # end
     end
   end
 
