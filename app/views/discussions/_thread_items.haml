@@ -1,14 +1,3 @@
 - items.order("created_at asc").each do |item|
-  - if item.kind == 'new_comment'
-    - comment = item.eventable
-    %table
-      %tr
-        %td= render "base_mailer/avatar", user: comment.author
-        %td
-          %b= comment.author.name + ", " + item.eventable.created_at.to_formatted_s(:long_ordinal)
-    %p= render_rich_text(item.eventable.body, item.eventable.body_format)
-    %hr
-
-  - if item.kind == 'poll_created'
-    = render "poll_created", item: item
-    %hr
+  - next unless ['new_comment', 'poll_created'].include? item.kind
+  = render "discussions/thread_items/#{item.kind}", item: item

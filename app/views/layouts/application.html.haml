@@ -1,0 +1,21 @@
+!!!
+%html{lang: I18n.locale}
+  %head
+    %title= AppConfig.theme[:site_name]
+    %meta{charset: 'utf-8'}
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    %link{rel: "shortcut icon",    href: AppConfig.theme[:icon_src]}
+    =raw vue_head
+    -# = stylesheet_link_tag 'basic/all'
+  %body
+    %main#app.v-application.v-application--is-ltr.theme--light
+      %div.v-application--wrap
+        -# %header.lmo-no-print.v-sheet.v-sheet--tile.theme--light.v-toolbar.v-app-bar.v-app-bar--clipped.v-app-bar--elevate-on-scroll.v-app-bar--fixed.v-app-bar--hide-shadow.background
+          .v-toolbar__content
+            header, toolbar
+        = yield
+    %footer
+      - if @footer
+        = render @footer
+    = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]
+    -# =raw vue_js

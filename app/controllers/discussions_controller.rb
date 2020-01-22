@@ -4,12 +4,14 @@ class DiscussionsController < ApplicationController
   include EmailHelper
   helper :email
 
-  def export
-    @discussion = load_and_authorize(:discussion, :show)
-    # byebug
-    respond_to do |format|
-      format.html
-      # format.csv { send_data @exporter.to_csv, filename:@exporter.file_name }
+  def show
+    if !current_user.is_logged_in? or params[:export]
+      @discussion = load_and_authorize(:discussion, :show)
+      respond_to do |format|
+        format.html
+      end
+    else
+      boot_app
     end
   end
 end

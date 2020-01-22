@@ -1,24 +1,23 @@
-.poll-mailer-common-summary
-  %h1= poll.title
-  -# %h1= link_to @info.poll.title, @info.target_url, class: 'poll-mailer__poll-title'
-  -# -if @info.action_name == :export
-  -#   %p
-  -#   = t(:"poll.export.also_available")
-  -#   = link_to "CSV", poll_export_path(@poll, format: 'csv')
-
-  %p
-
-  - if poll.current_outcome
-    %h2= t(:"poll_common.outcome")
-    %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
-
-    %h2= t(:"poll_types.#{poll.poll_type}")
-
+.layout.justify-space-between
+  %h1.poll-common-card__title.headline
+    %span= poll.title
+    %span.ml-2.v-chip.v-chip--outlined.theme--light.v-size--small.warning.warning--text
+      %span.v-chip__content
+        - if poll.active?
+          = t(:"poll_mailer.common.you_have_until", when: formatted_time_in_zone(poll.closing_at, poll.time_zone))
+        - else
+          = t(:"poll_common_form.closed")
+          = formatted_time_in_zone(poll.closed_at, poll.time_zone)
+        -# %abbr.closing-in.timeago--inline
+        -#   %span{:title => "January 21, 14:55"} Closed January 21, 14:55
+- if poll.current_outcome
+  .pa-4.my-4.poll-common-outcome-panel.v-sheet.theme--light.elevation-2.primary.lighten-5
+    .title= t(:"poll_common.outcome")
+    .poll-common-outcome-panel__authored-by.caption.my-2
+      %span= t(:'email.by_who', person: poll.current_outcome.author.name)
+      %span
+        = render 'discussions/time_ago', time: poll.current_outcome.created_at
+    .lmo-markdown-wrapper.body-2.text--primary
+      %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
+.lmo-markdown-wrapper.body-2.text--primary.poll-common-details-panel__details
   %p= render_rich_text(poll.details, poll.details_format)
-
-  %p
-    - if poll.active?
-      = t(:"poll_mailer.common.you_have_until", when: formatted_time_in_zone(poll.closing_at, poll.time_zone))
-    - else
-      = t(:"poll_common_form.closed")
-      = formatted_time_in_zone(poll.closed_at, poll.time_zone)

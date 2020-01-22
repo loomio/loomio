@@ -21,6 +21,26 @@ class ApplicationController < ActionController::Base
   helper_method :supported_locales
 
   def index
+    boot_app
+  end
+
+  def crowdfunding
+    render layout: 'basic'
+  end
+
+  def ok
+    head :ok
+  end
+
+  protected
+  def prevent_caching
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate' # HTTP 1.1.
+    response.headers['Pragma'] = 'no-cache' # HTTP 1.0.
+    response.headers['Expires'] = '0' # Proxies.
+  end
+
+  private
+  def boot_app
     expires_now
     prevent_caching
     if should_redirect_to_browser_upgrade?
@@ -36,14 +56,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def crowdfunding
-    render layout: 'basic'
-  end
-
-  def ok
-    head :ok
-  end
-
   def redirect_to(url, opts = {})
     return super unless url.is_a? String # GK: for now this override only covers cases where a string has been passed in, so it does not cover cases of a Hash or a Record being passed in
     host = URI(url).host
@@ -55,15 +67,6 @@ class ApplicationController < ActionController::Base
       super
     end
   end
-
-  protected
-  def prevent_caching
-    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate' # HTTP 1.1.
-    response.headers['Pragma'] = 'no-cache' # HTTP 1.0.
-    response.headers['Expires'] = '0' # Proxies.
-  end
-
-  private
 
   def should_redirect_to_browser_upgrade?
     !params[:skip_browser_upgrade] &&
