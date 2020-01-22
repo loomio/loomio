@@ -29,8 +29,6 @@ export default
 
         @pollOptions = @poll.pollOptions()
         @participants = @poll.participants()
-    # EventBus.listen $scope, 'timeZoneSelected', (e, zone) ->
-    #   $scope.zone = zone
 
   methods:
     scoreColor: (score) ->
@@ -62,10 +60,11 @@ export default
       ((count * 32)) + 'px'
 
     scoreFor: (user, option) ->
-      if @stancesByUserId[user.id]
-        @stancesByUserId[user.id].scoreFor(option)
+      if @stancesbyuserid[user.id]
+        @stancesbyuserid[user.id].scorefor(option)
       else
         0
+        
     classForScore: (score) ->
       switch score
         when 2 then 'poll-meeting-chart__cell--yes'
@@ -88,7 +87,7 @@ export default
         td {{currentUserTimeZone}}
         td(v-for="user in participants" :key="user.id")
           user-avatar(:user="user")
-        td.total Total
+        td.total(v-t="'common.total'")
     tbody
       tr(v-for="option in orderedPollOptions" :key="option.id")
         td.poll-meeting-chart__meeting-time

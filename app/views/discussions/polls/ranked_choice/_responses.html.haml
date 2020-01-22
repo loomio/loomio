@@ -1,11 +1,10 @@
 .poll-mailer-ranked-choice-responses
-  %h3= t(:"poll_mailer.common.responses")
   %table
     - poll.stances.latest.each do |stance|
       %tr
         %td
           %table
-            %td= render 'base_mailer/avatar', user: stance.participant_for_client(user: poll.user)
+            %td= render 'discussions/avatar', user: stance.participant_for_client(user: poll.user), size: 'small'
             %td.poll-mailer-common-responses__reason
               %strong
                 #{stance.participant_for_client(user: poll.user).name}:

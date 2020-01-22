@@ -86,6 +86,11 @@ class Stance < ApplicationRecord
     end
   end
 
+  def score_for(option)
+    choice = stance_choices.find_by(poll_option_id: option.id)
+    (choice && choice.score) || 0
+  end
+
   private
 
   def enough_stance_choices

@@ -1,8 +1,13 @@
-.poll-mailer-proposal__chart
-  %h3= t(:"poll_mailer.common.results")
-  %img.poll-mailer-proposal__chart-image{src: google_pie_chart_url(poll)}
-  .poll-mailer-proposal__chart-legend
-    %table
-      - poll.poll_options.each_with_index do |option, index|
-        %tr.poll-mailer-proposal__chart-legend-option
-          %td{style: "border-color: #{option.color};"}= "#{t(:"poll_proposal_options.#{option.name}")} - #{poll.stance_counts[index]}"
+.poll-common-card__results-shown.body-2
+  .poll-proposal-chart-panel
+    .v-subheader.theme--light= t(:"poll_mailer.common.results")
+    .poll-proposal-chart-panel__chart-container
+      .poll-proposal-chart.poll-proposal-chart-panel__chart
+        %img.poll-mailer-proposal__chart-image{src: google_pie_chart_url(poll)}
+      .poll-mailer-proposal__chart-legend
+        %table
+          - poll.poll_options.each_with_index do |option, index|
+            %tr.poll-mailer-proposal__chart-legend-option
+              %td{style: "border-color: #{option.color};"}= "#{t(:"poll_proposal_options.#{option.name}")} - #{poll.stance_counts[index]}"
+        .poll-common-percent-voted.lmo-hint-text
+          %span=t(:'poll_mailer.common.people_have_voted', num: poll.stances_count, pct: poll.pct_voted)

@@ -1,29 +1,29 @@
-%table
-  %thead
-    %tr
-      %td
-      - poll.poll_options.each do |option|
-        %td.poll-mailer-meeting__cell
-          %div= option.display_time option.name, poll.time_zone if option.has_time?
-          %div= option.display_day  option.name, poll.time_zone
-          %div= option.display_date option.name, poll.time_zone
-  %tbody
-    %tr
-      %td= t(:"poll_meeting_vote_form.can_attend")
-      - poll.meeting_score_tallies.each do |option, tally|
-        %td.poll-mailer-meeting__cell
-          %span= "#{tally[:yes].to_i}"
-    %tr
-      %td= t(:"poll_meeting_vote_form.if_need_be")
-      - poll.meeting_score_tallies.each do |option, tally|
-        %td.poll-mailer-meeting__cell
-          %span= "#{tally[:maybe].to_i}"
-    - poll.stances.latest.each do |stance|
+- stances_by_user_id = {}
+- poll.stances.latest.each { |stance| stances_by_user_id[stance.participant_id] = stance }
+
+.poll-meeting-chart-panel
+  %table.poll-meeting-chart-table.body-2
+    %thead
       %tr
-        %td.poll-mailer-meeting__participant-name= stance.participant.name
-        - poll.poll_options.each do |option|
-          %td.poll-mailer-meeting__cell
-            - stance_choice = stance.stance_choices.find_by(poll_option:option)
-            - if stance_choice&.score.to_i > 0
-              - icon_name = stance_icon_for(poll, stance_choice)
-              = image_tag "poll_mailer/vote-icon-#{icon_name}.png", alt: "#{icon_name} icon", class: "poll-mailer-meeting__option-icon"
+        %td timezone
+        - poll.participants.each do |user|
+          %td=render 'discussions/avatar', user: user, size: 'small'
+        %td= t(:'poll.export.total')
+    %tbody
+      - poll.poll_options.order(:name).each do |poll_option|
+        %tr
+          %td.poll-meeting-chart__meeting-time
+            = render 'discussions/time_ago', time: Time.parse(poll_option.name).in_time_zone
+
+          - poll.participants.each do |user|
+            %td
+              - score = (stances_by_user_id[user.id] && stances_by_user_id[user.id].score_for(poll_option)) || 0
+              - class_for_score = 'poll-meeting-chart__cell--yes' if score == 2
+              - class_for_score = 'poll-meeting-chart__cell--maybe' if score == 1
+              - class_for_score = 'poll-meeting-chart__cell--no' if score == 0
+
+              .poll-meeting-chart__cell{class: class_for_score}
+                %span &nbsp;
+
+          %td.total
+            %strong=poll_option.total_score/2

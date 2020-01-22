@@ -2010,8 +2010,6 @@ en:
   poll_count_options:
     'yes': 'Yes'
     'no': 'No'
-    yes_meaning: I volunteer, give my consent, or have completed the given task
-    no_meaning: I am unable to contribute or to participate in this decision
 
   poll_count_vote_form:
     reason_label: Message

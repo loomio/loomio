@@ -114,6 +114,11 @@ class Poll < ApplicationRecord
   delegate :locale, to: :author
   delegate :guest_group, to: :discussion, prefix: true, allow_nil: true
 
+
+  def pct_voted
+    ((poll.stances_count / group.memberships_count) * 100).to_i
+  end
+
   def groups
     [group, discussion&.guest_group, guest_group].compact
   end

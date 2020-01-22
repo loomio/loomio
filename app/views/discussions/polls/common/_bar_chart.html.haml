@@ -1,5 +1,4 @@
-%h3= t('poll_mailer.common.results')
-%table{style: "width: 100%"}
+%table.body-2{style: "width: 100%"}
   - poll.poll_options.each_with_index do |poll_option, index|
     %tr
       %td #{poll.poll.stance_counts[index]} - #{poll_option.display_name(zone: poll.time_zone)}

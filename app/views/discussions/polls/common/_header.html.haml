@@ -4,7 +4,7 @@
   .layout.thread-item__body.column
     .layout.align-center.wrap
       %h3.thread-item__title.body-2
-        =raw t(:"poll_mailer.#{poll.poll_type}.subject.poll_created", actor: poll.user.name, title: poll.title)
+        =raw t(:"poll_mailer.#{poll.poll_type}.header.poll_created", actor: poll.user.name, title: poll.title)
         %span
           %span{"aria-hidden" => "true"}  ·
         %span.grey--text.body-2
