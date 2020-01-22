@@ -50,7 +50,6 @@ class ApplicationController < ActionController::Base
         render 'application/index', layout: false
       else
         template = File.read(Rails.root.join('public/client/vue/index.html'))
-        template.sub! '<loomio_metadata_tags>', '<%= render "application/social_metadata" %>'
         render inline: template, layout: false
       end
     end

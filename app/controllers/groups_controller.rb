@@ -6,13 +6,13 @@ class GroupsController < ApplicationController
 
   def show
     metadata
-    if !current_user.is_logged_in? or params[:export]
+    if params[:sign_in] or current_user.is_logged_in?
+      boot_app
+    else
       @group = load_and_authorize(:group, :show)
       respond_to do |format|
         format.html
       end
-    else
-      boot_app
     end
   end
 

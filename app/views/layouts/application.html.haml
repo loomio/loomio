@@ -15,7 +15,7 @@
             .v-toolbar__title= AppConfig.theme[:site_name]
             .spacer
             .v-toolbar__items
-            %a.navbar__sign-in.v-btn.v-btn--flat.v-btn--text.theme--light.v-size--default{:href => "/dashboard"}= t(:'navbar.sign_in')
+            %a.navbar__sign-in.v-btn.v-btn--flat.v-btn--text.theme--light.v-size--default{:href => "?sign_in=1"}= t(:'navbar.sign_in')
         = yield
         %footer.v-footer.v-sheet.v-sheet--tile.theme--light
           .layout.justify-space-around
@@ -26,4 +26,3 @@
               %span ·
               %a{:href => AppConfig.theme[:terms_url], :target => "_blank"}= t(:'powered_by.terms_of_service')
     = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]
-    -# =raw vue_js
