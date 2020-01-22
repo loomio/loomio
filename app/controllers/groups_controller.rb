@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   include UsesMetadata
   include LoadAndAuthorize
+  include EmailHelper
 
   def show
     if !current_user.is_logged_in? or params[:export]

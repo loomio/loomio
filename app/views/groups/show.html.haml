@@ -6,11 +6,10 @@
           .v-responsive.v-image{:style => "border-radius: 8px;"}
             .v-responsive__sizer{:style => "padding-bottom: 20.4082%;"}
             .v-image__image.v-image__image--cover{:style => "background-image: url(#{@group.cover_photo.url(:large_desktop)}); background-position: center center;"}
-            .v-responsive__content{:style => "width: 980px;"}
           %h1.display-1.my-4
-            %span.group-page__name.mr-4=@group.full_name
+            %span.group-page__name.mr-4= @group.full_name
           .lmo-markdown-wrapper.body-2.text--primary.group-page__description
-            %div
+            = render_rich_text @group.description, @group.description_format
           %hr.mt-4.v-divider.theme--light{"aria-orientation" => "horizontal", :role => "separator"}/
           .v-tabs.v-tabs--centered.v-tabs--grow.theme--light
             .v-item-group.theme--light.v-slide-group.v-tabs-bar.v-tabs-bar--is-mobile.primary--text.transparent{:role => "tablist"}
@@ -60,14 +59,11 @@
             .discussions-panel.v-card.v-card--outlined.v-sheet.theme--light
               %div
                 .discussions-panel__content
-                  /
                   .discussions-panel__list.thread-preview-collection__container
                     .v-list.thread-previews.v-sheet.v-sheet--tile.theme--light.v-list--two-line{:role => "list"}
                       %a.thread-preview.thread-preview__link.v-list-item.v-list-item--link.theme--light{:href => "/d/CEupg6yw/another-discussion-title", :role => "listitem", :tabindex => "0"}
                         .v-avatar.v-list-item__avatar{:style => "height: 40px; min-width: 40px; width: 40px;"}
-                          /
                           .poll-common-chart-preview
-                            /
                             .progress-chart{:showmystance => "true", :style => "width: 48px; height: 48px;"}
                               %svg#SvgjsSvg1009{:height => "100%", :version => "1.1", :width => "100%", :xmlns => "http://www.w3.org/2000/svg", "xmlns:svgjs" => "http://svgjs.com/svgjs", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
                                 %defs#SvgjsDefs1010
@@ -76,8 +72,6 @@
                                 %circle#SvgjsCircle1013{:cx => "24", :cy => "24", :fill => "#ffffff", :r => "12"}
                                 %text#SvgjsText1014{:anchor => "middle", "font-family" => "Helvetica, Arial, sans-serif", "font-size" => "15.84", :size => "15.84", "text-anchor" => "middle", :x => "24", :y => "6.908000946044922"}
                                   %tspan#SvgjsTspan1015{:dy => "20.592", :x => "24"} 1
-                            /
-                            /
                         .v-list-item__content
                           .v-list-item__title{:style => "align-items: center;"}
                             /
