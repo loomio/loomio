@@ -60,11 +60,11 @@ export default
       ((count * 32)) + 'px'
 
     scoreFor: (user, option) ->
-      if @stancesbyuserid[user.id]
-        @stancesbyuserid[user.id].scorefor(option)
+      if @stancesByUserId[user.id]
+        @stancesByUserId[user.id].scoreFor(option)
       else
         0
-        
+
     classForScore: (score) ->
       switch score
         when 2 then 'poll-meeting-chart__cell--yes'
