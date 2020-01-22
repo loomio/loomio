@@ -56,7 +56,7 @@ class API::DiscussionsController < API::RestfulController
 
   def mark_as_read
     service.mark_as_read(discussion: load_resource, params: params, actor: current_user)
-    respond_with_resource
+    head :ok
   end
 
   def dismiss
