@@ -51,7 +51,7 @@ class API::DiscussionsController < API::RestfulController
 
   def mark_as_seen
     service.mark_as_seen discussion: load_resource, actor: current_user
-    respond_with_resource
+    head :ok
   end
 
   def mark_as_read
