@@ -10,9 +10,35 @@
   %body
     %main#app.v-application.v-application--is-ltr.theme--light
       %div.v-application--wrap
-        -# %header.lmo-no-print.v-sheet.v-sheet--tile.theme--light.v-toolbar.v-app-bar.v-app-bar--clipped.v-app-bar--elevate-on-scroll.v-app-bar--fixed.v-app-bar--hide-shadow.background
-          .v-toolbar__content
-            header, toolbar
+        %header.lmo-no-print.v-sheet.v-sheet--tile.theme--light.v-toolbar.v-app-bar.v-app-bar--clipped.v-app-bar--elevate-on-scroll.v-app-bar--fixed.v-app-bar--hide-shadow.background{"data-booted" => "true", :style => "height: 56px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"}
+          .v-toolbar__content{:style => "height: 56px;"}
+            -# %button.navbar__sidenav-toggle.v-btn.v-btn--flat.v-btn--icon.v-btn--round.theme--light.v-size--default{:type => "button"}
+            -#   %span.v-btn__content
+            -#     .v-avatar.v-avatar--tile{:style => "height: 36px; min-width: 36px; width: 36px;"}
+            -#       %i.v-icon.notranslate.mdi.mdi-menu.theme--light{"aria-hidden" => "true"}
+            .v-toolbar__title= AppConfig.theme[:site_name]
+            .spacer
+            .v-toolbar__items
+            %a.navbar__sign-in.v-btn.v-btn--flat.v-btn--text.theme--light.v-size--default{:href => "/dashboard"}= t(:'navbar.sign_in')
+
+        -# %header.lmo-no-print.v-sheet.v-sheet--tile.theme--light.v-toolbar.v-app-bar.v-app-bar--clipped.v-app-bar--elevate-on-scroll.v-app-bar--fixed.v-app-bar--is-scrolled.background{"data-booted" => "true", :style => "height: 56px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"}
+        -#   .v-toolbar__content{:style => "height: 56px;"}
+        -#     %button.navbar__sidenav-toggle.v-btn.v-btn--flat.v-btn--icon.v-btn--round.theme--light.v-size--default{:type => "button"}
+        -#       %span.v-btn__content
+        -#         .v-avatar.v-avatar--tile{:style => "height: 36px; min-width: 36px; width: 36px;"}
+        -#           %i.v-icon.notranslate.mdi.mdi-menu.theme--light{"aria-hidden" => "true"}
+        -#     /
+        -#     .spacer
+        -#     .v-menu.notifications
+        -#       .v-menu__content.theme--light{:role => "menu", :style => "min-width: 0px; top: 12px; left: 0px; transform-origin: left top 0px; z-index: 0; display: none;"}
+        -#     %button.notifications__button.v-btn.v-btn--flat.v-btn--icon.v-btn--round.theme--light.v-size--default{"aria-label" => "Notifications panel", :type => "button"}
+        -#       %span.v-btn__content
+        -#         %span.v-badge
+        -#           %i.v-icon.notranslate.mdi.mdi-bell.theme--light{"aria-hidden" => "true"}
+        -#           %span.v-badge__badge.accent{:style => "display: none;"}
+        -#             %span.notifications__activity 0
+        -#     .v-toolbar__items
+
         = yield
     %footer
       - if @footer
