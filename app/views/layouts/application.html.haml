@@ -6,7 +6,10 @@
     %link{rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto'}
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
     = render 'application/social_metadata'
-    =raw vue_head
+    - vue_css_includes.each do |src|
+      %link{rel: 'stylesheet', href: src}
+    - vue_js_includes.each do |src|
+      %script{defer:'', src: src}
   %body
     %main#app.v-application.v-application--is-ltr.theme--light
       %div.v-application--wrap
@@ -26,4 +29,3 @@
               %span ·
               %a{:href => AppConfig.theme[:terms_url], :target => "_blank"}= t(:'powered_by.terms_of_service')
     = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]
-    =raw vue_js

@@ -1,10 +1,10 @@
 module ApplicationHelper
-  def vue_head
+  def vue_css_includes
     vue_index = File.read(Rails.root.join('public/client/vue/index.html'))
-    Nokogiri::HTML(vue_index).css('head link').to_s
+    Nokogiri::HTML(vue_index).css('head link').map {|el| el.attr(:href) }
   end
-  def vue_js
+  def vue_js_includes
     vue_index = File.read(Rails.root.join('public/client/vue/index.html'))
-    Nokogiri::HTML(vue_index).css('script').to_s
+    Nokogiri::HTML(vue_index).css('script').map {|el| el.attr(:src) }
   end
 end
