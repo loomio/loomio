@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
   helper :email
 
   def show
+    metadata
     if !current_user.is_logged_in? or params[:export]
       @group = load_and_authorize(:group, :show)
       respond_to do |format|

@@ -5,6 +5,7 @@ class DiscussionsController < ApplicationController
   helper :email
 
   def show
+    metadata
     if !current_user.is_logged_in? or params[:export]
       @discussion = load_and_authorize(:discussion, :show)
       respond_to do |format|
