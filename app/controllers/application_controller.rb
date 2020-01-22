@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
   include ForceSslHelper
   include SentryRavenHelper
   include PrettyUrlHelper
+  include LoadAndAuthorize
+  include EmailHelper
+  include ApplicationHelper
+  helper :email
 
   around_action :process_time_zone          # LocalesHelper
   around_action :use_preferred_locale       # LocalesHelper
@@ -22,6 +26,19 @@ class ApplicationController < ActionController::Base
 
   def index
     boot_app
+  end
+
+  def show
+    if current_user.can? :show, resource
+      respond_to do |format|
+        format.html
+        format.rss  { render :"show.xml" }
+        format.xml
+      end
+    else
+      # should deliver a static error page with defered boot
+      boot_app
+    end
   end
 
   def crowdfunding

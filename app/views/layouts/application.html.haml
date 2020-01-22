@@ -1,15 +1,20 @@
 !!!
 %html{lang: I18n.locale}
   %head
-    %title= AppConfig.theme[:site_name]
+    %title= metadata[:title]
     %meta{charset: 'utf-8'}
     %link{rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto'}
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
-    = render 'application/social_metadata'
-    - vue_css_includes.each do |src|
-      %link{rel: 'stylesheet', href: src}
-    - vue_js_includes.each do |src|
-      %script{defer:'', src: src}
+    %meta{:content => metadata[:title], :property => "og:title"}
+    %meta{:content => metadata[:description], :name => "description", :property => "og:description"}
+    - metadata[:image_urls].each do |image_url|
+      %meta{:content => image_url, :property => "og:image"}
+    %meta{:content => AppConfig.theme[:site_name], :property => "og:site_name"}
+    %meta{:content => "website", :property => "og:type"}
+  - vue_css_includes.each do |src|
+    %link{rel: 'stylesheet', href: src}
+  - vue_js_includes.each do |src|
+    %script{defer:'', src: src}
   %body
     %main#app.v-application.v-application--is-ltr.theme--light
       %div.v-application--wrap
