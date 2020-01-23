@@ -11,10 +11,10 @@
       %meta{:content => image_url, :property => "og:image"}
     %meta{:content => AppConfig.theme[:site_name], :property => "og:site_name"}
     %meta{:content => "website", :property => "og:type"}
-  - vue_css_includes.each do |src|
-    %link{rel: 'stylesheet', href: src}
-  - vue_js_includes.each do |src|
-    %script{defer:'', src: src}
+    - vue_css_includes.each do |src|
+      %link{rel: 'stylesheet', href: src}
+    - vue_js_includes.each do |src|
+      %script{defer:'', src: src}
   %body
     %main#app.v-application.v-application--is-ltr.theme--light
       %div.v-application--wrap
