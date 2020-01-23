@@ -18,7 +18,7 @@ atom_feed do |feed|
         author.name item.author_name
         author.uri  user_url(item.author)
       end
-      entry.link discussion_comment_url(comment: event.eventable)
+      entry.link comment_url(key: event.eventable.discussion.key, comment_id: event.eventable.id)
     end
   end
 end if LoggedOutUser.new.ability.can?(:show, @discussion)
