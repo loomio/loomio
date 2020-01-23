@@ -13,8 +13,9 @@
     %meta{:content => "website", :property => "og:type"}
     - vue_css_includes.each do |src|
       %link{rel: 'stylesheet', href: src}
-    - vue_js_includes.each do |src|
-      %script{defer:'', src: src}
+    - if !browser.bot?
+      - vue_js_includes.each do |src|
+        %script{defer:'', src: src}
   %body
     %main#app.v-application.v-application--is-ltr.theme--light
       %div.v-application--wrap
