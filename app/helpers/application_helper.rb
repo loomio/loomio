@@ -3,13 +3,14 @@ module ApplicationHelper
     vue_index = File.read(Rails.root.join('public/client/vue/index.html'))
     Nokogiri::HTML(vue_index).css('head link').map {|el| el.attr(:href) }
   end
+
   def vue_js_includes
     vue_index = File.read(Rails.root.join('public/client/vue/index.html'))
     Nokogiri::HTML(vue_index).css('script').map {|el| el.attr(:src) }
   end
 
   def metadata
-    @metadata ||= if current_user.can? :show, resource
+    @metadata ||= if resource && current_user.can?(:show, resource)
       "Metadata::#{controller_name.singularize.camelize}Serializer".constantize.new(resource)
     else
       {title: AppConfig.theme[:site_name], image_urls: []}

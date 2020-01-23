@@ -1,6 +1,7 @@
 ModelLocator = Struct.new(:model, :params) do
 
   def locate
+    return nil unless defined?(resource_class)
     if model.to_sym == :user
       resource_class.verified.find_by(username: params[:id] || params[:username]) || resource_class.friendly.find(params[:id] || params[:user_id])
     elsif model.to_sym == :group || model.to_sym == :formal_group
