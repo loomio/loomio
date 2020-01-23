@@ -18,6 +18,6 @@
       %span
         = render 'discussions/time_ago', time: poll.current_outcome.created_at
     .lmo-markdown-wrapper.body-2.text--primary
-      %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
+      %p= render_rich_text_fast(poll.current_outcome.statement, poll.current_outcome.statement_format)
 .lmo-markdown-wrapper.body-2.text--primary.poll-common-details-panel__details
-  %p= render_rich_text(poll.details, poll.details_format)
+  %p= render_rich_text_fast(poll.details, poll.details_format)

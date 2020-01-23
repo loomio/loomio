@@ -16,4 +16,4 @@
               = render 'discussions/time_ago', time: comment.created_at
         .default-slot
           .lmo-markdown-wrapper.body-2.text--primary.thread-item__body.new-comment__body
-            = render_rich_text(comment.body, comment.body_format)
+            = render_rich_text_fast(comment.body, comment.body_format)

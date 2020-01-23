@@ -9,6 +9,6 @@
               %strong
                 #{stance.participant_for_client(user: poll.user).name}:
       %tr
-        %td= render_rich_text(stance.reason, stance.reason_format)
+        %td= render_rich_text_fast(stance.reason, stance.reason_format)
       %tr
         %td= render 'discussions/polls/ranked_choice/stance_chart', stance: stance
