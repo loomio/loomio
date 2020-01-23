@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
   include ForceSslHelper
   include SentryRavenHelper
   include PrettyUrlHelper
+  include LoadAndAuthorize
+  include EmailHelper
+  include ApplicationHelper
+  helper :email
 
   around_action :process_time_zone          # LocalesHelper
   around_action :use_preferred_locale       # LocalesHelper
@@ -21,18 +25,19 @@ class ApplicationController < ActionController::Base
   helper_method :supported_locales
 
   def index
-    expires_now
-    prevent_caching
-    if should_redirect_to_browser_upgrade?
-      render file: 'public/417.html', status: 417
-    else
-      if ENV['TASK'] == 'e2e' or params['old_client']
-        render 'application/index', layout: false
-      else
-        template = File.read(Rails.root.join('public/client/vue/index.html'))
-        template.sub! '<loomio_metadata_tags>', '<%= render "application/social_metadata" %>'
-        render inline: template, layout: false
+    boot_app
+  end
+
+  def show
+    if current_user.can? :show, resource
+      respond_to do |format|
+        format.html
+        format.rss  { render :"show.xml" }
+        format.xml
       end
+    else
+      # should deliver a static error page with defered boot
+      boot_app
     end
   end
 
@@ -42,6 +47,29 @@ class ApplicationController < ActionController::Base
 
   def ok
     head :ok
+  end
+
+  protected
+  def prevent_caching
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate' # HTTP 1.1.
+    response.headers['Pragma'] = 'no-cache' # HTTP 1.0.
+    response.headers['Expires'] = '0' # Proxies.
+  end
+
+  private
+  def boot_app
+    expires_now
+    prevent_caching
+    if should_redirect_to_browser_upgrade?
+      render file: 'public/417.html', status: 417
+    else
+      if ENV['TASK'] == 'e2e' or params['old_client']
+        render 'application/index', layout: false
+      else
+        template = File.read(Rails.root.join('public/client/vue/index.html'))
+        render inline: template, layout: false
+      end
+    end
   end
 
   def redirect_to(url, opts = {})
@@ -55,15 +83,6 @@ class ApplicationController < ActionController::Base
       super
     end
   end
-
-  protected
-  def prevent_caching
-    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate' # HTTP 1.1.
-    response.headers['Pragma'] = 'no-cache' # HTTP 1.0.
-    response.headers['Expires'] = '0' # Proxies.
-  end
-
-  private
 
   def should_redirect_to_browser_upgrade?
     !params[:skip_browser_upgrade] &&

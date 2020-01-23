@@ -1,0 +1,47 @@
+.thread-page.mt-12
+  %main.v-content
+    .v-content__wrap
+      %div
+        .container.thread-page.max-width-800
+          %div.thread-card.v-card.v-card--outlined.v-sheet.theme--light
+            %div#context.context-panel
+              %div.layout.align-center.mr-3.ml-2.pt-2.wrap
+                %ul.v-breadcrumbs.context-panel__breadcrumbs.theme--light
+                  %li
+                    %a{href: group_url(@discussion.group)}=@discussion.group.full_name
+                %div.thread-tags
+                %div.spacer
+                %span.grey--text.body-2
+                  = render 'discussions/time_ago', time: @discussion.created_at
+              %h1#sequence-0.display-1.context-panel__heading.px-3
+                = @discussion.title
+              .mx-3.mb-2
+                .context-panel__details.my-2.body-2.align-center.layout
+                  %span.mr-2
+                    = render "discussions/avatar", user: @discussion.author
+                  -# %a.user-avatar.mr-4{:href => "/u/jennifergrey", :style => "width: 40px; margin: 0px;"}
+                  -#   .v-avatar{:style => "height: 40px; min-width: 40px; width: 40px;", :title => "Jennifer Grey"}
+                  -#     %img{:alt => "Jennifer Grey", :src => "/system/users/uploaded_avatars/000/001/902/large/jennifer.png?1579658115"}/
+                  %span
+                    %a{:href => user_url(@discussion.author)}=@discussion.author.name
+                    %span
+                      %span{"aria-hidden" => "true"} ·
+                    - if @discussion.private
+                      %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private
+                        %i.mdi.mdi-lock-outline
+                        %span Private
+                    -else
+                      %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public
+                        %i.mdi.mdi-earth
+                        %span Public
+                    %span
+                      %span
+                        %span{"aria-hidden" => "true"} ·
+                      %span.context-panel__seen_by_count
+                        Seen by
+                        = @discussion.seen_by_count
+                .lmo-markdown-wrapper.body-2.text--primary.context-panel__description
+                  = render_rich_text(@discussion.body, @discussion.body_format)
+              %hr.v-divider.my-4.theme--light{"aria-orientation" => "horizontal", :role => "separator"}
+            .activity-panel
+              = render "thread_items", items: @discussion.items

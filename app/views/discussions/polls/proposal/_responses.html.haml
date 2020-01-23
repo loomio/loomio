@@ -1,1 +1,22 @@
-= render "discussions/polls/common/responses", poll: poll
+- poll.stances.latest.each do |stance|
+  .stance-created
+    .thread-item.px-3.pb-1
+      #sequence-4.layout.lmo-action-dock-wrapper.ml-5
+        - voter = stance.participant_for_client(user: poll.user)
+        .thread-item__avatar.mr-3.mt-0= render 'discussions/avatar', user: voter, size: 'small'
+        .layout.thread-item__body.column
+          .layout.align-center.wrap
+            %h3.thread-item__title.body-2
+              %a{:href => user_url(voter)}= voter.name
+              - stance.stance_choices.each do |stance_choice|
+                .poll-common-stance-choice.mr-1.mb-1{:row => ""}
+                  %span
+                    .v-avatar.v-avatar--tile{:style => "height: 24px; min-width: 24px; width: 24px;"}
+                      %img{:alt => t("poll_#{poll.poll_type}_options.#{stance_choice.poll_option.name}"), :src => "/img/#{stance_choice.poll_option.name}.svg"}/
+              %span
+                %span{"aria-hidden" => "true"}  ·
+              %span.grey--text.body-2
+                = render 'discussions/time_ago', time: stance.created_at
+          .poll-common-stance
+            .lmo-markdown-wrapper.body-2.text--primary.poll-common-stance-created__reason
+              = render_rich_text(stance.reason, stance.reason_format)

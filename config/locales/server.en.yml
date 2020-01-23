@@ -389,6 +389,7 @@ en:
       verify_stance_for_unverified_user: "Thanks for voting in %{title}. Please verify your email address, so we can send you the results when they're ready."
       verify_stance_for_verified_user: "It looks like you voted in %{title}. If this was you, please click the link below to confirm your vote."
       you_have_until: You have until %{when} to participate.
+      people_have_voted: "%{num} people have voted (%{pct}%)"
 
     proposal:
       subject:

@@ -1,8 +1,4 @@
 class GroupsController < ApplicationController
-  include UsesMetadata
-  include LoadAndAuthorize
-  layout false
-
   def export
     @exporter = GroupExporter.new(load_and_authorize(:formal_group, :export))
 

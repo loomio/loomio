@@ -1,0 +1,38 @@
+!!!
+%html{lang: I18n.locale}
+  %head
+    %title= metadata[:title]
+    %meta{charset: 'utf-8'}
+    %link{rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto'}
+    %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
+    %meta{:content => metadata[:title], :property => "og:title"}
+    %meta{:content => metadata[:description], :name => "description", :property => "og:description"}
+    - metadata[:image_urls].each do |image_url|
+      %meta{:content => image_url, :property => "og:image"}
+    %meta{:content => AppConfig.theme[:site_name], :property => "og:site_name"}
+    %meta{:content => "website", :property => "og:type"}
+  - vue_css_includes.each do |src|
+    %link{rel: 'stylesheet', href: src}
+  - vue_js_includes.each do |src|
+    %script{defer:'', src: src}
+  %body
+    %main#app.v-application.v-application--is-ltr.theme--light
+      %div.v-application--wrap
+        %header.lmo-no-print.v-sheet.v-sheet--tile.theme--light.v-toolbar.v-app-bar.v-app-bar--clipped.v-app-bar--elevate-on-scroll.v-app-bar--fixed.v-app-bar--hide-shadow.background{"data-booted" => "true", :style => "height: 56px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"}
+          .v-toolbar__content{:style => "height: 56px;"}
+            .v-toolbar__title= AppConfig.theme[:site_name]
+            .spacer
+            .v-toolbar__items
+            %a.navbar__sign-in.v-btn.v-btn--flat.v-btn--text.theme--light.v-size--default{:href => "?sign_in=1"}= t(:'navbar.sign_in')
+        = yield
+        %footer.v-footer.v-sheet.v-sheet--tile.theme--light
+          .layout.justify-space-around
+            .powered-by.caption
+              %a{:href => "/?frontpage", :target => "_blank"}= t(:'powered_by.powered_by_loomio')
+              %span ·
+              %a{:href => AppConfig.theme[:privacy_url], :target => "_blank"}= t(:'powered_by.privacy_policy')
+              %span ·
+              %a{:href => AppConfig.theme[:terms_url], :target => "_blank"}= t(:'powered_by.terms_of_service')
+              %span ·
+              %a{:href => AppConfig.theme[:help_url], :target => "_blank"}= t(:'common.help')
+    = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]

@@ -1,5 +1,11 @@
-%table
-  %tr
-    %td= render "base_mailer/avatar", user: poll.user
-    %td
-      %b=raw t(:"poll_mailer.#{poll.poll_type}.header.poll_created", actor: poll.user.name, title: poll.title) + ", " + poll.created_at.to_formatted_s(:long_ordinal)
+#sequence-3.layout.lmo-action-dock-wrapper{:style => "margin-left: 0px;"}
+  .thread-item__avatar.mr-3.mt-0
+    = render 'discussions/avatar', user: poll.user
+  .layout.thread-item__body.column
+    .layout.align-center.wrap
+      %h3.thread-item__title.body-2
+        =raw t(:"poll_mailer.#{poll.poll_type}.header.poll_created", actor: poll.user.name, title: poll.title)
+        %span
+          %span{"aria-hidden" => "true"}  ·
+        %span.grey--text.body-2
+          = render 'discussions/time_ago', time: poll.created_at
