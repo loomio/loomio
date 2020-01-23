@@ -59,7 +59,7 @@ module EmailHelper
 
   def reply_to_address_with_group_name(model:, user:)
     return unless user.is_logged_in?
-    "\"#{model.discussion.group.full_name}\" <#{reply_to_address(model: model, user: user)}>"
+    "\"#{model.discussion.group.full_name.truncate(40)}\" <#{reply_to_address(model: model, user: user)}>"
   end
 
   def render_email_plaintext(text)
