@@ -1,24 +1,25 @@
-# import '@babel/polyfill' # I've not had a lot of luck with this actually
-import 'url-search-params-polyfill'
+if !process.env.VUE_CLI_MODERN_BUILD
+  # import '@babel/polyfill' # I've not had a lot of luck with this actually
+  require('es6-shim')
+  require('url-search-params-polyfill')
+  window.Promise = window.Promise or require 'promise-polyfill' # polyfill for Promise object
+  require('promise.prototype.finally').shim()                   # polyfill for Promise.finally
+  require('whatwg-fetch')                                       # polyfill for Fetch API
+  require('intersection-observer')
 
-window.Promise = window.Promise or require 'promise-polyfill' # polyfill for Promise object
-require('promise.prototype.finally').shim()                   # polyfill for Promise.finally
-require('whatwg-fetch')                                       # polyfill for Fetch API
-require('intersection-observer')
-
-# polyfill for Object.entries
-if !Object.entries
-  Object.entries = (obj) ->
-    ownProps = Object.keys(obj)
-    i = ownProps.length
-    resArray = new Array(i)
-    # preallocate the Array
-    while i--
-      resArray[i] = [
-        ownProps[i]
-        obj[ownProps[i]]
-      ]
-    resArray
+  # polyfill for Object.entries
+  if !Object.entries
+    Object.entries = (obj) ->
+      ownProps = Object.keys(obj)
+      i = ownProps.length
+      resArray = new Array(i)
+      # preallocate the Array
+      while i--
+        resArray[i] = [
+          ownProps[i]
+          obj[ownProps[i]]
+        ]
+      resArray
 
 import Vue from 'vue'
 import AppConfig from '@/shared/services/app_config'
