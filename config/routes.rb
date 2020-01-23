@@ -288,7 +288,6 @@ Loomio::Application.routes.draw do
   get 'apps/authorized'                    => 'application#index'
   get 'apps/registered/:id'                => 'application#index'
   get 'apps/registered/:id/:slug'          => 'application#index'
-  get 'd/:key/comment/:comment'            => 'application#index', as: :discussion_comment
   get 'g/:key/membership_requests'         => 'application#index', as: :group_membership_requests
   get 'g/:key/members/requests'            => 'application#index', as: :group_members_requests
   get 'g/:key/memberships'                 => 'application#index', as: :group_memberships
