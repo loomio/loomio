@@ -1,6 +1,3 @@
-window.Promise = window.Promise or require 'promise-polyfill' # polyfill for Promise object
-require('promise.prototype.finally').shim()                   # polyfill for Promise.finally
-require 'whatwg-fetch'                                        # polyfill for Fetch API
 import { encodeParams } from '@/shared/helpers/encode_params'
 
 export default class RestfulClient

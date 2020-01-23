@@ -1,7 +1,12 @@
-import '@babel/polyfill'
+# import '@babel/polyfill' # I've not had a lot of luck with this actually
+import 'url-search-params-polyfill'
 
+window.Promise = window.Promise or require 'promise-polyfill' # polyfill for Promise object
+require('promise.prototype.finally').shim()                   # polyfill for Promise.finally
+require('whatwg-fetch')                                       # polyfill for Fetch API
 require('intersection-observer')
 
+# polyfill for Object.entries
 if !Object.entries
   Object.entries = (obj) ->
     ownProps = Object.keys(obj)
@@ -15,7 +20,6 @@ if !Object.entries
       ]
     resArray
 
-import 'url-search-params-polyfill'
 import Vue from 'vue'
 import AppConfig from '@/shared/services/app_config'
 import vuetify from '@/vuetify'
