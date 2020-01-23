@@ -55,6 +55,10 @@ class API::RestfulController < API::SnorlaxBase
     end
   end
 
+  def respond_ok
+    render json: {}, status: 200
+  end
+
   def respond_with_collection(scope: default_scope, serializer: resource_serializer, root: serializer_root)
     if events_to_serialize.any?
       render json: EventCollection.new(events_to_serialize).serialize!(scope)
