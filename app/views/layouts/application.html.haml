@@ -7,7 +7,7 @@
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
     %meta{:content => metadata[:title], :property => "og:title"}
     %meta{:content => metadata[:description], :name => "description", :property => "og:description"}
-    - metadata[:image_urls].each do |image_url|
+    - metadata.fetch(:image_urls, []).each do |image_url|
       %meta{:content => image_url, :property => "og:image"}
     %meta{:content => AppConfig.theme[:site_name], :property => "og:site_name"}
     %meta{:content => "website", :property => "og:type"}
