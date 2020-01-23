@@ -1,3 +1,5 @@
+import '@babel/polyfill'
+
 require('intersection-observer')
 
 if !Object.entries
