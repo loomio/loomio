@@ -4,6 +4,7 @@ import AppConfig from '@/shared/services/app_config'
 export default
   data: ->
     privacyUrl: AppConfig.theme.privacy_url
+    helpUrl: AppConfig.theme.help_url
     termsUrl: AppConfig.theme.terms_url
     frontPageUrl: AppConfig.baseUrl + "?frontpage"
     showFrontPage: AppConfig.baseUrl != "https://www.loomio.org/"
@@ -24,4 +25,9 @@ v-footer
         | ·
         | &nbsp;
         a(:href="termsUrl" v-t="'powered_by.terms_of_service'" target="_blank")
+      span(v-if="helpUrl")
+        | &nbsp;
+        | ·
+        | &nbsp;
+        a(:href="helpUrl" v-t="'common.help'" target="_blank")
 </template>
