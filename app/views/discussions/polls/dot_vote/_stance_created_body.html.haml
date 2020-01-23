@@ -1,0 +1,19 @@
+.layout.align-center.wrap
+  %h3.thread-item__title.body-2
+    %a{:href => user_url(voter)}= voter.name
+    %span
+      %span{"aria-hidden" => "true"}  ·
+    %span.grey--text.body-2
+      = render 'discussions/time_ago', time: stance.created_at
+%table{style: "width: 100%"}
+  - stance.stance_choices.order('score desc').each do |stance_choice|
+    %tr
+      %td= "#{stance_choice.score} - #{stance_choice.poll_option.name}"
+    %tr
+      %td
+        %table{style: "width: #{dot_vote_stance_choice_percentage_for(stance, stance_choice)}%"}
+          %tr
+            %td{height: '24px', style: "background-color: #{stance_choice.poll_option.color}"}
+.poll-common-stance
+  .lmo-markdown-wrapper.body-2.text--primary.poll-common-stance-created__reason
+    = render_rich_text_fast(stance.reason, stance.reason_format)

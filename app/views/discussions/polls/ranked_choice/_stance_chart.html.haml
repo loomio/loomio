@@ -1,5 +1,0 @@
-%table{style: "width: 100%"}
-  - stance.stance_choices.order('score desc').each do |stance_choice|
-    %tr
-      %td= render "poll_mailer/common/chip", color: stance_choice.poll_option.color
-      %td= "#{stance_choice.rank} - #{stance_choice.poll_option.name}"

@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
 
   def show
     if current_user.can? :show, resource
+      @pagination = pagination_params
       respond_to do |format|
         format.html
         format.rss  { render :"show.xml" }
@@ -50,6 +51,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def pagination_params
+    { limit: params.fetch(:limit, 100).to_i, offset: params.fetch(:offset, 0).to_i }
+  end
+
   def prevent_caching
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate' # HTTP 1.1.
     response.headers['Pragma'] = 'no-cache' # HTTP 1.0.

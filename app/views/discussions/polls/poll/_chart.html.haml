@@ -1,1 +1,9 @@
-= render "discussions/polls/common/bar_chart", poll: poll
+%table.body-2.pb-2{style: "width: 100%"}
+  - poll.poll_options.each_with_index do |poll_option, index|
+    %tr
+      %td #{poll.poll.stance_counts[index]} - #{poll_option.display_name(zone: poll.time_zone)}
+    %tr
+      %td
+        %table{style: "width: #{percentage_for(poll.poll, index)}%"}
+          %tr
+            %td{height: '48px', style: "background-color: #{AppConfig.colors.dig(poll.poll_type, index)}"}

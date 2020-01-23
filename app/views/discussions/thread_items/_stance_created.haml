@@ -1,0 +1,10 @@
+- stance = item.eventable
+- poll = stance.poll
+- voter = stance.participant_for_client(user: poll.user)
+.stance-created
+  .thread-item.px-3.pb-1
+    .layout.lmo-action-dock-wrapper.ml-5
+      .thread-item__avatar.mr-3.mt-0
+        = render 'discussions/avatar', user: voter, size: 'small'
+      .layout.thread-item__body.column
+        = render "discussions/polls/#{poll.poll_type}/stance_created_body", stance: stance, voter: voter, poll: poll
