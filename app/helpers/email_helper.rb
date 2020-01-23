@@ -29,6 +29,15 @@ module EmailHelper
     end
   end
 
+  def render_rich_text_fast(text, format = "md")
+    return "" unless text
+    if format == "md"
+      markdownify(text).html_safe
+    else
+      text.html_safe
+    end
+  end
+
   def emojify(text)
     Emojifier.emojify!(text)
   end
