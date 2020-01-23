@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def metadata
-    @metadata ||= if resource && current_user.can?(:show, resource)
+    @metadata ||= if should_have_metadata && current_user.can?(:show, resource)
       "Metadata::#{controller_name.singularize.camelize}Serializer".constantize.new(resource)
     else
       {title: AppConfig.theme[:site_name], image_urls: []}
@@ -26,4 +26,7 @@ module ApplicationHelper
     controller_name.singularize
   end
 
+  def should_have_metadata
+    %w{discussion group poll user}.include? controller_name.singularize.downcase
+  end
 end
