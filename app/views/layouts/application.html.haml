@@ -10,11 +10,12 @@
     %meta{:content => AppConfig.theme[:site_name], :property => "og:site_name"}
     %meta{:content => "website", :property => "og:type"}
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
-    =raw vue_css_includes
+    = raw vue_css_includes
     - if !params[:export] && !browser.bot?
-      =raw vue_js_includes
+      = raw vue_js_includes
   %body
-    %main#app.v-application.v-application--is-ltr.theme--light
+    #app
+    #ssr.v-application.v-application--is-ltr.theme--light
       %div.v-application--wrap
         %header.lmo-no-print.v-sheet.v-sheet--tile.theme--light.v-toolbar.v-app-bar.v-app-bar--clipped.v-app-bar--elevate-on-scroll.v-app-bar--fixed.v-app-bar--hide-shadow.background{"data-booted" => "true", :style => "height: 56px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"}
           .v-toolbar__content{:style => "height: 56px;"}
