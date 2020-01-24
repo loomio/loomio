@@ -38,6 +38,7 @@ import CloseModal from '@/mixins/close_modal'
 import UrlFor from '@/mixins/url_for'
 import FormatDate from '@/mixins/format_date'
 import Vue2TouchEvents from 'vue2-touch-events'
+import { initContent } from '@/shared/services/ssr_content'
 
 Vue.use(Vue2TouchEvents)
 
@@ -61,7 +62,7 @@ boot ->
         scope.setUser pick(Session.user(), ['id', 'email', 'username'])
 
     initLiveUpdate()
-
+    initContent()
     new Vue(
       render: (h) -> h(app)
       router: router
