@@ -125,7 +125,7 @@ export default
         order: 'sequence_id'
         from_sequence_id_of_position: first(slots)
         until_sequence_id_of_position: last(slots)
-        per: @padding * 2
+        per: @padding * 4
 
     openArrangementForm: ->
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
