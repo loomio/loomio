@@ -14,7 +14,7 @@ class Clients::Slack < Clients::Base
 
   # We are doing two requests and combining them here
   def fetch_channels
-    channels = get "conversations.list", params: {types: "public_channel,private_channel"}, options: { success: ->(response) { response['channels'] } }
+    channels = get "conversations.list", params: {types: "public_channel,private_channel", limit: 1000}, options: { success: ->(response) { response['channels'] } }
 
     json = if channels.success
       [channels].map(&:json).flatten.reject {|channel| channel['name'].starts_with?("mpdm-") }
