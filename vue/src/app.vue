@@ -57,7 +57,7 @@ export default
 </script>
 
 <template lang="pug">
-v-app
+v-app.app-is-booted
   navbar
   sidebar
   router-view(v-if="!pageError")
