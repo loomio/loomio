@@ -3,19 +3,16 @@
   %head
     %title= metadata[:title]
     %meta{charset: 'utf-8'}
-    %link{rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto'}
-    %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
     %meta{:content => metadata[:title], :property => "og:title"}
     %meta{:content => metadata[:description], :name => "description", :property => "og:description"}
     - metadata.fetch(:image_urls, []).each do |image_url|
       %meta{:content => image_url, :property => "og:image"}
     %meta{:content => AppConfig.theme[:site_name], :property => "og:site_name"}
     %meta{:content => "website", :property => "og:type"}
-    - vue_css_includes.each do |src|
-      %link{rel: 'stylesheet', href: src}
+    %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
+    =raw vue_css_includes
     - if !params[:export] && !browser.bot?
-      - vue_js_includes.each do |src|
-        %script{defer:'', src: src}
+      =raw vue_js_includes
   %body
     %main#app.v-application.v-application--is-ltr.theme--light
       %div.v-application--wrap
