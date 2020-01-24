@@ -124,8 +124,8 @@ export default
         discussion_id: @discussion.id
         order: 'sequence_id'
         from_sequence_id_of_position: first(slots)
-        until_sequence_id_of_position: last(slots)
-        per: @padding * 4
+        # until_sequence_id_of_position: last(slots)
+        per: (last(slots) - first(slots)) + (@padding * 2)
 
     openArrangementForm: ->
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
