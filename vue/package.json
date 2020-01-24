@@ -2,6 +2,7 @@
   "name": "vue",
   "version": "0.1.0",
   "private": true,
+  "browserslist": ["IE 11", "> 0.5%", "last 2 versions", "Firefox ESR", "not dead"],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --modern",

@@ -1,0 +1,13 @@
+.layout.align-center.wrap
+  %h3#event-1473.thread-item__title.body-2
+    %a{:href => user_url(voter)}= voter.name
+    %span
+      %span{"aria-hidden" => "true"}  ·
+    %span.grey--text.body-2
+      = render 'discussions/time_ago', time: stance.created_at
+- stance.stance_choices.each do |stance_choice|
+  .poll-common-stance-choice.mr-1.mb-1.poll-common-stance-choice--poll.body-2{:row => ""}
+    %span=stance_choice.poll_option.name
+.poll-common-stance
+  .lmo-markdown-wrapper.body-2.text--primary.poll-common-stance-created__reason
+    = render_rich_text_fast(stance.reason, stance.reason_format)

@@ -9,7 +9,7 @@
   %body
     %header
       %a{href: '/'}
-        %img{src: AppConfig.theme[:app_logo_src]}
+        %img{style: 'max-width: 100%', src: AppConfig.theme[:app_logo_src]}
     %main
       = yield
     %footer
