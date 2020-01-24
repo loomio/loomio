@@ -8,7 +8,7 @@ export hasContent = ->
   node != null
 
 export insertContent = (selector) ->
-  document.querySelector(selector).appendChild(node)
+  document.querySelector(selector).appendChild(node) if node
 
 export removeContent = (selector) ->
   node.parentElement.removeChild(node)
