@@ -2,6 +2,7 @@
 import Records       from '@/shared/services/records'
 import openModal      from '@/shared/helpers/open_modal'
 import Session       from '@/shared/services/session'
+import {every, invokeMap} from 'lodash'
 export default
   props:
     group: Object
@@ -58,7 +59,7 @@ export default
 
   computed:
     setupComplete: ->
-      _.every _.invokeMap(@activities, 'complete')
+      every invokeMap(@activities, 'complete')
 
     show: ->
       @group.isParent() &&

@@ -6,7 +6,7 @@ import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import GroupModalMixin from '@/mixins/group_modal'
 import Flash   from '@/shared/services/flash'
-import { isEmpty } from 'lodash'
+import { isEmpty, compact } from 'lodash'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -29,7 +29,7 @@ export default
       name: @$route.params.name
       parentId: @parentId
       customFields:
-        pending_emails: _.compact((@$route.params.pending_emails || "").split(','))
+        pending_emails: compact((@$route.params.pending_emails || "").split(','))
 
   mounted: ->
     @suggestHandle()

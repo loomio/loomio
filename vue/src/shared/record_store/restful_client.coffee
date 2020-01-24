@@ -1,4 +1,5 @@
 import { encodeParams } from '@/shared/helpers/encode_params'
+import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil, identity } from 'lodash'
 
 export default class RestfulClient
   defaultParams: {}
@@ -15,17 +16,17 @@ export default class RestfulClient
   constructor: (resourcePlural) ->
     @defaultParams.unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token')
     @defaultParams.membership_token = new URLSearchParams(location.search).get('membership_token')
-    @defaultParams = _.omitBy(@defaultParams, _.isNil)
+    @defaultParams = omitBy(@defaultParams, isNil)
     @processing = []
-    @resourcePlural = _.snakeCase(resourcePlural)
+    @resourcePlural = snakeCase(resourcePlural)
 
   buildUrl: (path, params) ->
-    path = _.compact([@apiPrefix, @resourcePlural, path]).join('/')
+    path = compact([@apiPrefix, @resourcePlural, path]).join('/')
     return path unless params?
     path + "?" + encodeParams(params)
 
   memberPath: (id, action) ->
-    _.compact([id, action]).join('/')
+    compact([id, action]).join('/')
 
   fetchById: (id, params = {}) ->
     @getMember(id, '', params)
@@ -48,10 +49,10 @@ export default class RestfulClient
 
   request: (path, method, body = {}) ->
     opts =
-      method:      method
+      method: method
       credentials: 'same-origin'
-      headers:     { 'Content-Type': 'application/json' }
-      body:        JSON.stringify(body)
+      headers: { 'Content-Type': 'application/json' }
+      body: JSON.stringify(body)
     delete opts.body if method == 'GET'
     @onPrepare()
     fetch(path, opts).then (response) =>
@@ -83,7 +84,7 @@ export default class RestfulClient
 
   upload: (path, file, options = {}, onProgress) ->
     new Promise (resolve, reject) =>
-      data = new FormData();
+      data = new FormData()
       data.append(options.fileField     || 'file',     file)
       data.append(options.filenameField || 'filename', file.name.replace(/[^a-z0-9_\-\.]/gi, '_'))
 
@@ -92,7 +93,7 @@ export default class RestfulClient
       @currentUpload.responseType = 'json'
       @currentUpload.addEventListener 'load', =>
         if (@currentUpload.status >= 200 && @currentUpload.status < 300)
-          @currentUpload.response = JSON.parse(@currentUpload.response) if _.isString(@currentUpload.response)
+          @currentUpload.response = JSON.parse(@currentUpload.response) if isString(@currentUpload.response)
           @onUploadSuccess(@currentUpload.response)
           resolve(@currentUpload.response)
           @currentUpload = null
@@ -105,4 +106,4 @@ export default class RestfulClient
     @currentUpload.abort() if @currentUpload
 
   paramsFor: (params) ->
-    _.defaults({}, @defaultParams, _.pickBy(params, _.identity))
+    defaults({}, @defaultParams, pickBy(params, identity))

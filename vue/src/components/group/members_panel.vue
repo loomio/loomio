@@ -5,7 +5,7 @@ import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
-import {includes, some, compact, intersection, orderBy, slice, debounce} from 'lodash'
+import {includes, some, compact, intersection, orderBy, slice, debounce, min} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import { exact, approximate } from '@/shared/helpers/format_time'
 
@@ -111,7 +111,7 @@ export default
         subgroups: @$route.query.subgroups
 
     recordsDisplayed: ->
-      _.min [@loader.numRequested, @recordCount()]
+      min [@loader.numRequested, @recordCount()]
 
     invite: ->
       EventBus.$emit('openModal',

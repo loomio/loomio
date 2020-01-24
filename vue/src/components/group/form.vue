@@ -5,7 +5,7 @@ import Records  from '@/shared/services/records'
 import Flash   from '@/shared/services/flash'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
-import { isEmpty } from 'lodash'
+import { isEmpty, some } from 'lodash'
 import { onError } from '@/shared/helpers/form'
 
 export default
@@ -108,7 +108,7 @@ export default
         parent: @clone.parentName()
 
     showGroupFeatures: ->
-      AbilityService.isSiteAdmin() and _.some(@featureNames)
+      AbilityService.isSiteAdmin() and some(@featureNames)
 
     groupNamePlaceholder: ->
       if @clone.parentId

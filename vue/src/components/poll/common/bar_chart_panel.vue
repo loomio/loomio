@@ -1,5 +1,6 @@
 <script lang="coffee">
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
+import {max, values, orderBy } from 'lodash'
 
 export default
   props:
@@ -10,7 +11,7 @@ export default
     barTextFor: (option) ->
       "#{option.name} - #{this.countFor(option)}".replace(/\s/g, '\u00a0')
     percentageFor: (option) ->
-      max = _.max(_.values(this.poll.stanceData))
+      max = max(values(this.poll.stanceData))
       return unless max > 0
       "#{100 * this.countFor(option) / max}%"
     backgroundImageFor: (option) ->
@@ -20,7 +21,7 @@ export default
       'background-size': "#{this.percentageFor(option)} 100%"
   computed:
     orderedPollOptions: ->
-      _.orderBy(this.poll.pollOptions(), ['priority'])
+      orderBy(this.poll.pollOptions(), ['priority'])
 </script>
 
 <template lang="pug">
