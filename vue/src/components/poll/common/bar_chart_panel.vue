@@ -1,27 +1,27 @@
 <script lang="coffee">
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
-import {max, values, orderBy } from 'lodash'
+import { max, values, orderBy } from 'lodash'
 
 export default
   props:
     poll: Object
   methods:
     countFor: (option) ->
-      this.poll.stanceData[option.name] or 0
+      @poll.stanceData[option.name] or 0
     barTextFor: (option) ->
-      "#{option.name} - #{this.countFor(option)}".replace(/\s/g, '\u00a0')
+      "#{option.name} - #{@countFor(option)}".replace(/\s/g, '\u00a0')
     percentageFor: (option) ->
-      max = max(values(this.poll.stanceData))
-      return unless max > 0
-      "#{100 * this.countFor(option) / max}%"
+      max_val = max(values(@poll.stanceData))
+      return unless max_val > 0
+      "#{100 * @countFor(option) / max_val}%"
     backgroundImageFor: (option) ->
       "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
     styleData: (option) ->
-      'background-image': this.backgroundImageFor(option)
-      'background-size': "#{this.percentageFor(option)} 100%"
+      'background-image': @backgroundImageFor(option)
+      'background-size': "#{@percentageFor(option)} 100%"
   computed:
     orderedPollOptions: ->
-      orderBy(this.poll.pollOptions(), ['priority'])
+      orderBy(@poll.pollOptions(), ['priority'])
 </script>
 
 <template lang="pug">
