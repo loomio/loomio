@@ -13,7 +13,7 @@
     %meta{:content => "website", :property => "og:type"}
     - vue_css_includes.each do |src|
       %link{rel: 'stylesheet', href: src}
-    - if !browser.bot?
+    - if !params[:export] && !browser.bot?
       - vue_js_includes.each do |src|
         %script{defer:'', src: src}
   %body
