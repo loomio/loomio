@@ -11,5 +11,5 @@ export insertContent = (selector) ->
   document.querySelector(selector).appendChild(node) if node
 
 export removeContent = (selector) ->
-  node.parentElement.removeChild(node)
+  node.parentElement.removeChild(node) if node
   node = null
