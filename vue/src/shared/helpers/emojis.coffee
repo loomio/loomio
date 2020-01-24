@@ -12,8 +12,8 @@ colonsRx = /\:[a-zA-Z0-9-_+]+\:/g
 export { emojis, emojisByCategory }
 
 export stripColons = (colons) ->
-  if (colons[0] == ':') && (colons[colons.length-1] == ':')
-    colons.substring(1, colons.length-1)
+  if colons && (colons[0] == ':') && (colons[colons.length - 1] == ':')
+    colons.substring(1, colons.length - 1)
   else
     colons
 
