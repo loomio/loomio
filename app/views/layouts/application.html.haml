@@ -3,13 +3,14 @@
   %head
     %title= metadata[:title]
     %meta{charset: 'utf-8'}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %meta{:content => metadata[:title], :property => "og:title"}
     %meta{:content => metadata[:description], :name => "description", :property => "og:description"}
     - metadata.fetch(:image_urls, []).each do |image_url|
       %meta{:content => image_url, :property => "og:image"}
     %meta{:content => AppConfig.theme[:site_name], :property => "og:site_name"}
     %meta{:content => "website", :property => "og:type"}
-    %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
+    %link{rel: "icon", href: AppConfig.theme[:icon_src]}
     = raw vue_css_includes
     - if !params[:export] && !browser.bot?
       = raw vue_js_includes
