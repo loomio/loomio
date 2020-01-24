@@ -69,6 +69,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_subgroup_with_parent_member_visibility')
+    page.pause(2000)
     page.expectText('.discussions-panel__list', 'Vaya con dios', 20000)
   },
 
