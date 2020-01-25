@@ -32,7 +32,8 @@ import {
   Underline,
   History,
   Mention,
-  Placeholder } from 'tiptap-extensions'
+  Placeholder,
+  TrailingNode } from 'tiptap-extensions'
 
 import ExternalLink from './external_link'
 import Iframe from './iframe'
@@ -154,7 +155,8 @@ export default
           emptyClass: 'is-empty',
           emptyNodeText: @placeholder,
           showOnlyWhenEditable: true,
-        })
+        }),
+        new TrailingNode({node: 'paragraph', notAfter: ['paragraph']})
       ]
       content: (if @model[@field+'Format'] == "md"
         @model[@field+'Format'] = 'html'
@@ -460,6 +462,14 @@ div
   transition: opacity .2s,visibility .2s
 
 .lmo-markdown-wrapper
+  blockquote, h1, h2, h3, ol, p, pre, ul
+    margin: 1rem 0
+
+  blockquote:first-child, h1:first-child, h2:first-child, h3:first-child, ol:first-child, p:first-child, pre:first-child, ul:first-child
+    margin-top: 0
+
+  blockquote:last-child, h1:last-child, h2:last-child, h3:last-child, ol:last-child, p:last-child, pre:last-child, ul:last-child
+    margin-bottom: 0
 
   h1
     line-height: 2.75rem
@@ -518,26 +528,49 @@ div
     margin-bottom: 0
 
   pre
-    overflow: auto
-    padding: 0
-    font-family: 'Roboto mono', monospace, monospace
+    // padding: .7rem 1rem
+    // border-radius: 5px
+    // background: #000
+    // color: #fff
+    // font-size: .8rem
+    overflow-x: auto
+    // overflow: auto
+    // padding: 0
+    // font-family: 'Roboto mono', monospace, monospace
+    // white-space: pre-wrap
 
-  pre:last-of-type
-    padding-bottom: 16px
+  code::before
+    content: ''
+    letter-spacing: normal
+    
+  pre code
+    display: block
 
-  code
-    background-color: transparent
-    color: rgba(#000, 0.88)
-    box-shadow: none
-    border-radius: 0
-    white-space: normal
-    font-weight: 400
-    font-family: 'Roboto mono', monospace, monospace
+  p code
+    display: inline-block
+    // padding: 0 .4rem
+    // border-radius: 5px
+    // font-size: .8rem
+    // font-weight: 700
+    background: rgba(0, 0, 0, .1)
+    // color: rgba(0, 0, 0, .8)
+
+  // pre:last-of-type
+  //   padding-bottom: 16px
+
+  // code
+  //   background-color: transparent
+  //   color: rgba(#000, 0.88)
+  //   box-shadow: none
+  //   border-radius: 0
+  //   white-space: normal
+  //   font-weight: 400
+  //   font-family: 'Roboto mono', monospace, monospace
 
   blockquote
     font-style: italic
     border-left: 3px solid rgba(0,0,0,.1)
-    color: rgba(0,0,0,.8)
+    // color: rgba(0,0,0,.8)
     padding-left: .8rem
 
   table
