@@ -1836,8 +1836,6 @@ uk:
   poll_count_options:
     'yes': 'Так'
     'no': 'Ні'
-    yes_meaning: Готовий бути добровольцем або виконати це завдання
-    no_meaning: Я не можу бути корисним або взяти участь у прийнятті цього рішення
   poll_count_vote_form:
     reason_label: Повідомлення
     reason_placeholder: Якщо бажаєте, залиште повідомлення

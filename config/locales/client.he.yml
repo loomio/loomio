@@ -1525,8 +1525,6 @@ he:
   poll_count_options:
     'yes': 'כן'
     'no': 'לא'
-    yes_meaning: אני מתנדב, נותן את הסכמתי, או השלמתי את המשימה הנתונה
-    no_meaning: אני לא מסוגל לתרום או להשתתף בהחלטה זו
   poll_count_vote_form:
     reason_label: הודעה
     reason_placeholder: השאר הודעה, אם תרצה

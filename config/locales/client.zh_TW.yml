@@ -1839,8 +1839,6 @@ zh_TW:
   poll_count_options:
     'yes': '是'
     'no': '否'
-    yes_meaning: 我自願，給予我的同意，或是完成了任務
-    no_meaning: 我不能貢獻或參與這個決策
   poll_count_vote_form:
     reason_label: 訊息
     reason_placeholder: 如果您想要的話可以留下訊息
@@ -2010,12 +2008,17 @@ zh_TW:
       poll_expired: 投票已過期
       outcome_created: 結果已分享
   configure_sso:
+    redirecting: 請稍候，正在重新島向到登入提供者
     title: 設定單一登入
+    enabled: 單一登入已啟用
     helptext: 整合 OneLogin、Auth0、Microsoft Active Directory 或其他 SAML 提供者。<a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">取得更多資訊</a>。
+    warning_helptext: "警告：點擊儲存後，您將必須與提供商進行身份驗證。"
     idp_metadata_url: IDP 詮釋資料 URL
     idp_metadata_url_placeholder: https://app.myprovider.com/saml/metadata/abc123
     pro_plan_only: 此功能僅供專業方案的顧客使用。請看看我們的<a href="/upgrade" target="_blank">升級頁面</a>以取得更多資訊。
     success: 已成功設定單一登入
+    destroyed: 已移除單一登入
+    invalid_idp_metadata_url: 無效的 IDP 詮釋資料 URL
   install_slack:
     modal_title: 整合 Slack
     modal_helptext: 首先，您必須登入到 Slack。點選下方的按鈕以繼續。

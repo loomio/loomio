@@ -1322,8 +1322,6 @@ nl_NL:
   poll_count_options:
     'yes': 'Ja'
     'no': 'Nee'
-    yes_meaning: Ik geef me vrijwillig op, geef mijn toestemming, of heb de opgedragen taak afgerond
-    no_meaning: Ik ben niet in staat om deel te nemen aan de beslissing
   poll_count_vote_form:
     reason_label: Bericht
     reason_placeholder: Laat een bericht achter als je wil

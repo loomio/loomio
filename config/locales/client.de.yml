@@ -1772,8 +1772,6 @@ de:
   poll_count_options:
     'yes': 'Ja'
     'no': 'Nein'
-    yes_meaning: Ich melde mich freiwillig, gebe meine Zustimmung oder habe die geforderte Aufgabe erfüllt
-    no_meaning: Ich kann leider keinen Beitrag zu dieser Diskussion leisten bzw. nicht daran teilnehmen
   poll_count_vote_form:
     reason_label: Nachricht
     reason_placeholder: Hinterlassen Sie eine Nachricht, wenn Sie möchten

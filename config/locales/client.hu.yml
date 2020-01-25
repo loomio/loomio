@@ -1743,8 +1743,6 @@ hu:
   poll_count_options:
     'yes': 'Igen'
     'no': 'Nem'
-    yes_meaning: Önként jelentkezem, hozzájárulást adok, vagy teljesítem a megadott feladatot
-    no_meaning: Nem tudok hozzájárulni vagy részt venni ebben a döntésben
   poll_count_vote_form:
     reason_label: Üzenet
     reason_placeholder: Ha szeretne, hagyjon üzenetet

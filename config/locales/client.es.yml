@@ -1597,8 +1597,6 @@ es:
   poll_count_options:
     'yes': 'Si'
     'no': 'No'
-    yes_meaning: He voluntariado, dado mi consentimiento, o completado la tarea
-    no_meaning: Estoy habilitado para contribuir o participar en esta decisión
   poll_count_vote_form:
     reason_label: Mensaje
     reason_placeholder: 'Deja un mensaje si quieres '

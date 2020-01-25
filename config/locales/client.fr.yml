@@ -1835,8 +1835,6 @@ fr:
   poll_count_options:
     'yes': 'Oui'
     'no': 'Non'
-    yes_meaning: Je me propose, suis d’accord, ou ai terminé la tâche en question
-    no_meaning: Je ne peux pas contribuer ou participer à cette décision
   poll_count_vote_form:
     reason_label: Message
     reason_placeholder: Laissez un message si vous le voulez
