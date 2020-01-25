@@ -13,16 +13,6 @@ export default
     newestFirst: Boolean
     isReturning: Boolean
 
-  created: ->
-    @fetchMissing = debounce ->
-      @fetch(@missingItems)
-    , 500
-
-    @watchRecords
-      key: 'parentEvent'+@parentEvent.id
-      collections: ['events']
-      query: => @renderSlots()
-
   data: ->
     eventsBySlot: {}
     visibleSlots: []
@@ -30,6 +20,19 @@ export default
     focus: null
     slots: []
     padding: parseInt(screen.height/40) || 20
+
+  created: ->
+    @fetchMissing = debounce ->
+      @fetch(@missingItems, @padding)
+    ,
+      1000
+    ,
+      {leading: true, trailing: false, maxWait: 3000}
+
+    @watchRecords
+      key: 'parentEvent'+@parentEvent.id
+      collections: ['events']
+      query: => @renderSlots()
 
   methods:
     grouped: (slots) ->

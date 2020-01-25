@@ -115,7 +115,7 @@ export default
         # console.log "finding: ", args
         Records.events.find(args)[0]
 
-    fetch: (slots) ->
+    fetch: (slots, padding) ->
       return unless slots.length
       @loader.fetchRecords
         comment_id: null
@@ -125,7 +125,7 @@ export default
         order: 'sequence_id'
         from_sequence_id_of_position: first(slots)
         until_sequence_id_of_position: last(slots)
-        # per: (last(slots) - first(slots)) + (@padding * 2)
+        per: padding * 4
 
     openArrangementForm: ->
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
