@@ -239,7 +239,7 @@ module.exports = {
   'can_reactivate_the_account': (test) =>  {
     page = pageHelper(test)
 
-    page.loadPath('setup_user_reactivation_email')
+    page.loadPathNoApp('setup_user_reactivation_email')
     page.click('.base-mailer__button')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')

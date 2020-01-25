@@ -11,7 +11,7 @@ module.exports = (test, browser) ->
     test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
     test.waitForElementPresent('.app-is-booted', 10000)
 
-  loadPathNoMain: (path, opts = {}) ->
+  loadPathNoApp: (path, opts = {}) ->
     test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
 
   goTo: (path) ->

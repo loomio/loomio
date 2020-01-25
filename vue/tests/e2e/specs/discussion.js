@@ -256,7 +256,7 @@ module.exports = {
   'invites_a_user_to_a_discussion': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_discussion_mailer_new_discussion_email')
+    page.loadPathNoApp('setup_discussion_mailer_new_discussion_email')
     page.click('.thread-mailer__subject a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
@@ -270,7 +270,7 @@ module.exports = {
   'invites_an_email_to_a_discussion': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_discussion_mailer_invitation_created_email')
+    page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
     page.click('.thread-mailer__subject a', 2000)
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
