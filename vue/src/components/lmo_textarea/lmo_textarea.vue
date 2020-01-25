@@ -78,6 +78,7 @@ export default
     iframeDialogIsOpen: false
     insertMention: () => {}
     editor: new Editor
+      disablePasteRules: true
       editorProps:
         scrollThreshold: 100
         scrollMargin: 100
