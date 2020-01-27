@@ -55,7 +55,7 @@ before_script:
   - if [ "$TASK" = "vue" ];     then export USE_VUE=1; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
   - if [ "$TASK" = "vue" ]; then bundle exec rails server -b 0.0.0.0 > /dev/null & fi
-  - cd vue && npm run build && cd ..; fi
+  - cd vue && npm run build && cd ..
   - if [ "$TASK" = "vue" ]; then wget http://localhost:3000/; fi
 
 script:
