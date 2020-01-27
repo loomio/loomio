@@ -37,8 +37,6 @@ subscribeToGroup = (group) ->
 subscribeToUser = ->
   ensureConnection().subscriptions.create { channel: "UserChannel" },
     received: (data) ->
-      if data.action? && !AppConfig.loggingOut
-        AppConfig.loggingOut = true
       Records.import(data)
 
 subscribeToMembership = ->
