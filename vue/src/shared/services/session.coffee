@@ -67,7 +67,6 @@ export default new class Session
     user
 
   signOut: ->
-    AppConfig.loggingOut = true
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
   isSignedIn: ->
