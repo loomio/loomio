@@ -39,12 +39,6 @@ subscribeToUser = ->
     received: (data) ->
       if data.action? && !AppConfig.loggingOut
         AppConfig.loggingOut = true
-        ModalService.open 'ConfirmModal', confirm: ->
-          submit:      Session.signOut
-          forceSubmit: true
-          text:
-            title:    "signed_out_modal.title"
-            helptext: "signed_out_modal.message"
       Records.import(data)
 
 subscribeToMembership = ->
