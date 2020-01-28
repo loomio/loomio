@@ -28,6 +28,7 @@ export default
       .then =>
         @stance.poll().clearStaleStances()
         Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
+        EventBus.$emit "closeModal"
       .catch onError(@stance)
 
     sortPollOptions: (pollOptions) ->
