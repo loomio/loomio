@@ -6,6 +6,13 @@ describe GroupsController do
   let(:user) { create :user }
   before { group.add_member! user }
 
+  describe 'index' do
+    it 'works' do
+      get :index
+      expect(response.status).to eq 200
+    end
+  end
+
   describe 'show' do
     it 'displays an xml feed' do
       get :show, params: { key: group.key }, format: :rss
