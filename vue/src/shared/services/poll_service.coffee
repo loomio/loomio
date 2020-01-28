@@ -95,7 +95,7 @@ export default new class PollService
       canPerform: ->
         AbilityService.canExportPoll(poll)
       perform: ->
-        hardReload LmoUrlService.poll(poll, {}, action: 'export', absolute: true)
+        hardReload LmoUrlService.poll(poll, {export: 1}, action: 'export', absolute: true)
 
     delete_poll:
       name: 'common.action.delete'
