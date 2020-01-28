@@ -17,9 +17,13 @@ module ApplicationHelper
     end.as_json
   end
 
+  def resource
+    ModelLocator.new(resource_name, params).locate
+  end
+  
   def assign_resource
     instance_variable_get("@#{resource_name}") ||
-    instance_variable_set("@#{resource_name}", ModelLocator.new(resource_name, params).locate!)
+    instance_variable_set("@#{resource_name}", resource)
   end
 
   def resource_name
