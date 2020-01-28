@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
     @total = @groups.count
     limit = params.fetch(:limit, 50)
     @pages = (@total < limit) ? 1 : (@total / limit) + 1
-    @page = params.fetch(:page, 1)
+    @page = params.fetch(:page, 1).to_i.clamp(1, @pages)
     @offset = @page == 1 ? 0 : @page * limit
     @groups.limit(limit).offset(@offset)
   end
