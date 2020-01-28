@@ -1514,6 +1514,9 @@ en:
     single_search_result: "1 public group matching <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} public groups matching <strong>{{searchTerm}}:</strong>"
     no_results_found: "<strong>Can't find the group you're looking for?</strong> If a group's privacy is set to 'secret', it won't appear here."
+    newest_first: Newest first
+    biggest_first: Biggest first
+    order_by: Order groups by
 
   global:
     messages:

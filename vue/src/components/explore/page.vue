@@ -19,6 +19,10 @@ export default
     query: ""
     searching: false
     order: "memberships_count"
+    orderOptions: [
+      {name: @$t('explore_page.newest_first'), val: "created_at"},
+      {name: @$t('explore_page.biggest_first'), val: "memberships_count"}
+    ]
   mounted: ->
     EventBus.$emit 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
     @search()
@@ -52,6 +56,9 @@ export default
       parser = new DOMParser()
       doc = parser.parseFromString(description, 'text/html')
       _truncate doc.body.textContent, {length: 100}
+
+    handleOrderChange: (val) ->
+      @$router.replace(@mergeQuery({ order: val }))
   computed:
     showMessage: ->
       !@searching &&
@@ -86,7 +93,7 @@ v-content
   v-container.explore-page.max-width-1024
     //- h1.headline(v-t="'explore_page.header'")
     v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")
-
+    v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="orderOptions[1]")
     loading(v-show="searching")
     .explore-page__search-results(v-show='showMessage', v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})")
     v-row.explore-page__groups.my-4(wrap)
