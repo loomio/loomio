@@ -25,9 +25,7 @@ export default
     @fetchMissing = debounce ->
       @fetch(@missingItems, @padding)
     ,
-      1000
-    ,
-      {leading: true, trailing: false, maxWait: 3000}
+      500
 
     @watchRecords
       key: 'parentEvent'+@parentEvent.id
