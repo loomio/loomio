@@ -20,3 +20,10 @@
                     %span.mr-4= group.discussions_count
                     %i.v-icon.notranslate.mr-2.mdi.mdi-thumbs-up-down.theme--light
                     %span.mr-4= group.polls_count
+        .row.align-center.justify-center
+          %span <
+          - (1..@pages).each do |page|
+            &nbsp;
+            %a{href: "/explore?q=&page=#{page}"}= page
+            &nbsp;
+          %span >

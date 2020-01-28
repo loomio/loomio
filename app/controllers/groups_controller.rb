@@ -1,6 +1,12 @@
 class GroupsController < ApplicationController
   def index
-    @groups = FormalGroup.limit(10).all
+    @groups = Queries::ExploreGroups.new.search_for(params[:q])
+    @total = @groups.count
+    limit = params.fetch(:limit, 50)
+    @pages = (@total < limit) ? 1 : (@total / limit) + 1
+    @page = params.fetch(:page, 1)
+    @offset = @page == 1 ? 0 : @page * limit
+    @groups.limit(limit).offset(@offset)
   end
 
   def export
