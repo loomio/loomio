@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   def index
-    @groups = Queries::ExploreGroups.new.search_for(params[:q])
+    @groups = Queries::ExploreGroups.new.search_for(params[:q]).order('groups.memberships_count DESC')
     @total = @groups.count
     limit = params.fetch(:limit, 50)
     @pages = (@total < limit) ? 1 : (@total / limit) + 1
