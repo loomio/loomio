@@ -5,6 +5,13 @@ describe GroupsController do
   let(:guest_group) { create :guest_group }
   let(:user) { create :user }
 
+  describe 'index' do
+    it 'works' do
+      get :index
+      expect(response.status).to eq 200
+    end
+  end
+
   describe 'show' do
     describe 'secret' do
       before { group.update(group_privacy: 'secret')}

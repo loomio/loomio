@@ -5,10 +5,9 @@ import EventBus  from '@/shared/services/event_bus'
 import UrlFor    from '@/mixins/url_for'
 import _truncate from 'lodash/truncate'
 import _map      from 'lodash/map'
-import _sortBy   from 'lodash/sortBy'
 import marked    from 'marked'
 
-import { debounce } from 'lodash'
+import { debounce, camelCase, orderBy } from 'lodash'
 
 export default
   mixins: [UrlFor]
@@ -19,6 +18,11 @@ export default
     canLoadMoreGroups: true
     query: ""
     searching: false
+    order: "memberships_count"
+    orderOptions: [
+      {name: @$t('explore_page.newest_first'), val: "created_at"},
+      {name: @$t('explore_page.biggest_first'), val: "memberships_count"}
+    ]
   mounted: ->
     EventBus.$emit 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
     @search()
@@ -36,11 +40,11 @@ export default
 
     search: debounce ->
       @groupIds = []
-      Records.groups.fetchExploreGroups(@query, per: @perPage).then(@handleSearchResults)
+      Records.groups.fetchExploreGroups(@query, per: @perPage, order: @order).then(@handleSearchResults)
     , 250
 
     loadMore: ->
-      Records.groups.fetchExploreGroups(@query, from: @groupIds.length, per: @perPage).then(@handleSearchResults)
+      Records.groups.fetchExploreGroups(@query, from: @groupIds.length, per: @perPage, order: @order).then(@handleSearchResults)
 
     groupCover: (group) ->
       { 'background-image': "url(#{group.coverUrl('small')})" }
@@ -52,6 +56,9 @@ export default
       parser = new DOMParser()
       doc = parser.parseFromString(description, 'text/html')
       _truncate doc.body.textContent, {length: 100}
+
+    handleOrderChange: (val) ->
+      @$router.replace(@mergeQuery({ order: val }))
   computed:
     showMessage: ->
       !@searching &&
@@ -68,12 +75,17 @@ export default
       !@searching && (@groups().length < @perPage)
 
     orderedGroups: ->
-      _sortBy @groups(), '-recentActivityCount'
+      orderBy @groups(), [camelCase(@order)], ['desc']
 
   watch:
     'query': ->
       @searching = true
       @search()
+    '$route.query.order':
+      immediate: true
+      handler: ->
+        @order = @$route.query.order
+        @search()
 </script>
 
 <template lang='pug'>
@@ -81,9 +93,8 @@ v-content
   v-container.explore-page.max-width-1024
     //- h1.headline(v-t="'explore_page.header'")
     v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")
-
+    v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="orderOptions[1]")
     loading(v-show="searching")
-
     .explore-page__search-results(v-show='showMessage', v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})")
     v-row.explore-page__groups.my-4(wrap)
       v-col(:lg="6" :md="6" :sm="12" v-for='group in orderedGroups', :key='group.id')
