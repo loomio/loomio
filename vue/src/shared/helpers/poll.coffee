@@ -36,7 +36,7 @@ export settingsFor = (poll) ->
     ('canRespondMaybe'       if poll.pollType == 'meeting'),
     ('anonymous'             if !fieldFromTemplate(poll.pollType, 'prevent_anonymous')),
     ('deanonymizeAfterClose' if poll.anonymous),
-    ('voterCanAddOptions'    if fieldFromTemplate(poll.pollType, 'can_add_options'))
+    ('voterCanAddOptions'    if fieldFromTemplate(poll.pollType, 'can_add_options') && poll.pollType != 'proposal')
   ]
 
 export myLastStanceFor = (poll) ->
