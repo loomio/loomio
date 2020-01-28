@@ -29,7 +29,9 @@ class ApplicationController < ActionController::Base
   end
 
   def show
+    resource = ModelLocator.new(resource_name, params).locate!
     if current_user.can? :show, resource
+      assign_resource
       @pagination = pagination_params
       respond_to do |format|
         format.html
@@ -38,7 +40,7 @@ class ApplicationController < ActionController::Base
       end
     else
       # should deliver a static error page with defered boot
-      boot_app
+      boot_app(status: 403)
     end
   end
 
@@ -62,7 +64,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def boot_app
+  def boot_app(status: 200)
     expires_now
     prevent_caching
     if should_redirect_to_browser_upgrade?
@@ -72,7 +74,7 @@ class ApplicationController < ActionController::Base
         render 'application/index', layout: false
       else
         template = File.read(Rails.root.join('public/client/vue/index.html'))
-        render inline: template, layout: false
+        render inline: template, layout: false, status: status
       end
     end
   end
