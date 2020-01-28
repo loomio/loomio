@@ -163,6 +163,7 @@ en:
     points_abbrev: Each vote worth {{score}} points
     total: Total
     action:
+      print: Print
       pin: Pin
       unpin: Unpin
       search: 'Search'
