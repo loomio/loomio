@@ -6,7 +6,7 @@ class Events::BaseSerializer < ActiveModel::Serializer
 
   has_one :actor, serializer: UserSerializer, root: :users
   has_one :eventable, polymorphic: true
-  # has_one :discussion, serializer: DiscussionSerializer, root: :discussions
+  has_one :discussion, serializer: Simple::DiscussionSerializer, root: :discussions
   has_one :parent, serializer: Events::BaseSerializer, root: :events
 
   def actor
