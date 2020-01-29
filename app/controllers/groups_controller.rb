@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   def index
     @groups = Queries::ExploreGroups.new.search_for(params[:q]).where.not(name: nil).order('groups.memberships_count DESC')
     @total = @groups.count
-    limit = 2
+    limit = params.fetch(:limit, 50)
     if @total < limit
       @pages = 1
     else
