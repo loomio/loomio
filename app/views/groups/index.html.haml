@@ -13,7 +13,7 @@
                   .v-responsive__content{style: "width: 970px;"}
                 .v-card__title= group.name
                 .v-card__text
-                  .explore-page__group-description= raw render_rich_text_fast(group.description, group.description_format).truncate(100)
+                  .explore-page__group-description= strip_tags(render_rich_text_fast(group.description, group.description_format)).truncate(100)
                   .layout.explore-page__group-stats.justify-start.align-center
                     %i.v-icon.notranslate.mr-2.mdi.mdi-account-multiple.theme--light
                     %span.mr-4= group.memberships_count
