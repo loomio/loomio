@@ -61,7 +61,7 @@ class Simple::DiscussionSerializer < ActiveModel::Serializer
   end
 
   def created_event
-    @created_event ||= scope[:discussion_created_event_cache].get_for(object)
+    @created_event ||= scope[:discussion_event_cache].get_for(object, hydrate_on_miss: true).find {|event| event.kind == "new_discussion" }
   end
 
   def include_created_event?
