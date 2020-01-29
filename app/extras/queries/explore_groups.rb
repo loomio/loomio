@@ -4,10 +4,6 @@ class Queries::ExploreGroups < Delegator
                      .parents_only
                      .published
                      .where.not(name: nil)
-                     .where('memberships_count > 4')
-                     .where('discussions_count > 2')
-                     .eager_load(:subscription)
-                     .where("subscriptions.state = 'active'")
   end
 
   def search_for(q)

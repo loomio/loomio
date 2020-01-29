@@ -1,6 +1,11 @@
 class GroupsController < ApplicationController
   def index
-    @groups = Queries::ExploreGroups.new.search_for(params[:q]).order('groups.memberships_count DESC')
+    @groups = Queries::ExploreGroups.new.search_for(params[:q])
+      .where('memberships_count > 4')
+      .where('discussions_count > 2')
+      .eager_load(:subscription)
+      .where("subscriptions.state = 'active'")
+      .order('groups.memberships_count DESC')
     @total = @groups.count
     limit = params.fetch(:limit, 50)
     if @total < limit
