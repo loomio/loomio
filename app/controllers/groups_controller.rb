@@ -1,8 +1,8 @@
 class GroupsController < ApplicationController
   def index
     @groups = Queries::ExploreGroups.new.search_for(params[:q])
-      .where('memberships_count > 4')
-      .where('discussions_count > 2')
+      .where('groups.memberships_count > 4')
+      .where('groups.discussions_count > 2')
       .eager_load(:subscription)
       .where("subscriptions.state = 'active'")
       .order('groups.memberships_count DESC')
