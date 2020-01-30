@@ -28,7 +28,7 @@ export default
         key: 'thread-nav'+@discussion.id
         collections: ["events", "discussions"]
         query: =>
-          return unless @discussion
+          return unless @discussion && @discussion.createdEvent()
           @presets = Records.events.collection.chain()
             .find({pinned: true, discussionId: @discussion.id})
             .simplesort('position').data()
@@ -162,7 +162,7 @@ export default
       @trackHeight / @childCount
 
     childCount: ->
-      if @discussion
+      if @discussion && @discussion.createdEvent()
         @discussion.createdEvent().childCount
       else
         10
