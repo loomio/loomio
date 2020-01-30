@@ -3,8 +3,7 @@ class Queries::ExploreGroups < Delegator
     @relation = FormalGroup.where(is_visible_to_public: true)
                      .parents_only
                      .published
-                     .order('groups.memberships_count DESC')
-
+                     .where.not(name: nil)
   end
 
   def search_for(q)

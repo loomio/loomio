@@ -1,4 +1,27 @@
 class GroupsController < ApplicationController
+  def index
+    @groups = Queries::ExploreGroups.new.search_for(params[:q])
+      .where('groups.memberships_count > 4')
+      .where('groups.discussions_count > 2')
+      .eager_load(:subscription)
+      .where("subscriptions.state = 'active'")
+      .order('groups.memberships_count DESC')
+    @total = @groups.count
+    limit = params.fetch(:limit, 50)
+    if @total < limit
+      @pages = 1
+    else
+      if @total % limit > 0
+        @pages = @total / limit + 1
+      else
+        @pages = @total / limit
+      end
+    end
+    @page = params.fetch(:page, 1).to_i.clamp(1, @pages)
+    @offset = @page == 1 ? 0 : ((@page - 1) * limit)
+    @groups = @groups.limit(limit).offset(@offset)
+  end
+
   def export
     @exporter = GroupExporter.new(load_and_authorize(:formal_group, :export))
 

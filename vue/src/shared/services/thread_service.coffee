@@ -33,12 +33,12 @@ export default new class ThreadService
             model: discussion
             # newVolume: 'normal'
 
-    # export_thread:
-    #   name: 'common.action.export'
-    #   canPerform: ->
-    #     AbilityService.canExportThread(discussion)
-    #   perform: ->
-    #     hardReload LmoUrlService.discussion(discussion, {}, action: 'export', absolute: true)
+    export_thread:
+      name: 'common.action.print'
+      canPerform: ->
+        AbilityService.canExportThread(discussion)
+      perform: ->
+        hardReload LmoUrlService.discussion(discussion, {export: 1}, {absolute: true, print: true})
 
     unignore:
       name: 'common.action.unignore'

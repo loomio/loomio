@@ -23,7 +23,10 @@ class API::GroupsController < API::RestfulController
   end
 
   def index
-    instantiate_collection { |collection| collection.search_for(params[:q]).order(recent_activity_count: :desc) }
+    # when query involves joining on subscriptions, will need to specify table name for created_at
+    order_attributes = ['created_at', 'memberships_count']
+    order = (order_attributes.include? params[:order])? params[:order] + ' DESC' : 'memberships_count DESC'
+    instantiate_collection { |collection| collection.search_for(params[:q]).order(order) }
     respond_with_collection
   end
 
