@@ -102,6 +102,11 @@ class FormalGroup < Group
 
   before_validation :ensure_handle_is_not_empty
 
+
+  def object
+    self
+  end
+  
   def ensure_handle_is_not_empty
     self.handle = nil if self.handle.to_s.strip == ""
   end
