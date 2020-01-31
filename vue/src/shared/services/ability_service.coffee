@@ -77,7 +77,7 @@ export default new class AbilityService
     @canAdministerDiscussion(thread)
 
   canPinEvent: (event) ->
-    !event.pinned && @canEditThread(event.discussion())
+    !event.pinned && event.isSurface() && @canEditThread(event.discussion())
 
   canUnpinEvent: (event) ->
     event.pinned && @canEditThread(event.discussion())
