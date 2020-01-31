@@ -8,26 +8,27 @@ export default
   data: ->
     discussion: null
     isDisabled: false
-  created: ->
+    group: null
+
+  mounted: ->
     @init()
+
   methods:
     init: ->
       EventBus.$emit 'currentComponent', { page: 'startDiscussionPage', skipScroll: true }
-      @discussion = Records.discussions.build
-        title:       @$route.query.title
-        groupId:     parseInt(@$route.query.group_id)
 
-      Records.groups.findOrFetch(@$route.params.group_id).then =>
-        # applyDiscussionStartSequence @,
-        #   emitter: @
-        #   afterSaveComplete: (event) ->
-        #     ModalService.open 'AnnouncementModal', announcement: ->
-        #       Records.announcements.buildFromModel(event)
+      Records.groups.findOrFetchById(parseInt(@$route.query.group_id)).then (group) =>
+        @group = group
+      .finally =>
+        @discussion = Records.discussions.build
+          title:       @$route.query.title
+          groupId:     parseInt(@$route.query.group_id)
+
 </script>
 <template lang="pug">
 v-content
   v-container.start-discussion-page.max-width-1024
     h2.headline(v-t="'discussion_form.new_discussion_title'")
     .discussion-start-discussion
-      discussion-form(:discussion='discussion')
+      discussion-form(v-if="discussion" :discussion='discussion')
 </template>
