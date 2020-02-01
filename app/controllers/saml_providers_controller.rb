@@ -92,7 +92,11 @@ class SamlProvidersController < ApplicationController
   end
 
   def params_saml_provider
-    SamlProvider.find_by!(group_id: find_group!.id)
+    if params[:id]
+      SamlProvider.find(params[:id])
+    else
+      SamlProvider.find_by!(group_id: find_group!.id)
+    end
   end
 
   def session_saml_provider
