@@ -141,6 +141,7 @@ ro:
     points_abbrev: Fiecare vot valorează {{score}} puncte
     total: Total
     action:
+      print: Imprima
       search: 'Cauta'
       filter: 'Filtrează'
       back: 'Inapoi'

@@ -84,6 +84,7 @@ ga_IE:
     copied: 'Macasamhaltha chuig an ghearrthaisce'
     total: Iomlán
     action:
+      print: Clóbhuail
       search: 'Cuardaigh'
       filter: 'Scagaire'
       back: 'Siar'

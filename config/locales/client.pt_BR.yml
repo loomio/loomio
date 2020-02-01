@@ -117,6 +117,7 @@ pt_BR:
     points_abbrev: Cada voto vale {{score}} pontos
     total: Total
     action:
+      print: Imprimir
       pin: Fixar
       unpin: Desafixar
       search: 'Pesquisar'

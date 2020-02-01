@@ -81,6 +81,7 @@ cs:
     copied: 'Zkopírováno'
     total: Celkem
     action:
+      print: Tisk
       search: 'Vyhledávat'
       back: 'Zpět'
       next: 'Další'

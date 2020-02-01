@@ -147,6 +147,7 @@ de:
     points_abbrev: Jede Stimme ist {{score}} Punkte wert
     total: Gesamt
     action:
+      print: Drucken
       pin: Anheften
       unpin: Anheften deaktivieren
       search: 'Suchen'
@@ -1334,6 +1335,7 @@ de:
     single_search_result: "1 öffentliche Gruppe für <strong>{{searchTerm}}</strong> gefunden:"
     multiple_search_results: "{{resultCount}} öffentliche Gruppen für <strong>{{searchTerm}}</strong> gefunden:"
     no_results_found: "<strong>Kannst die Gruppe die du suchst nicht finden?</strong> Wenn eine Gruppe als 'privat' eingestellt ist, wird sie hier nicht erscheinen. "
+    newest_first: Neueste zuerst
   global:
     messages:
       app_update: 'Eine neue Version der App ist verfügbar'

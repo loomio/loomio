@@ -120,6 +120,7 @@ he:
     points_abbrev: כל הצבעה שווה {{score}} נקודות
     total: סך הכל
     action:
+      print: הדפס
       pin: סיכה
       unpin: הסר סיכה
       search: 'חיפוש'
@@ -1157,6 +1158,7 @@ he:
     search_placeholder: חיפוש בקבוצות פומביות
     single_search_result: "התאמה עם קבוצה פומבית אחת <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} התאמות לקבוצות פומביות <strong>{{searchTerm}}:</strong>"
+    newest_first: הכי חדש קודם
   global:
     messages:
       app_update: 'גרסה חדשה של האפליקציה זמינה לעדכון'

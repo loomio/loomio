@@ -338,6 +338,7 @@ zh_TW:
       verify_stance_for_unverified_user: "感謝您投票給 %{title}。請驗證您的電子郵件地址，這樣我們才能在準備好的時候寄結果給您。"
       verify_stance_for_verified_user: "您似乎投了 %{title}。如果這個是您的話，請點選下面的連結來確認您的投票。"
       you_have_until: 您到 %{when} 前都可以參與。
+      people_have_voted: "%{num} 個夥伴已投票 (%{pct}%)"
     proposal:
       subject:
         poll_created: '%{actor} 啟動了一個提案：%{title}'

@@ -60,6 +60,7 @@ ar:
     copy: 'نسخ'
     copied: 'تم النسخ'
     action:
+      print: طباعة
       search: 'بحث'
       back: 'عودة'
       close: 'مغلق'

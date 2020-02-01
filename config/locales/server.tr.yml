@@ -5,6 +5,7 @@ tr:
       author: Yazar
       details: Detaylar
       group_name: Grup adı
+      total: Toplam
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
@@ -55,4 +56,7 @@ tr:
     reset_email_timeframe: E-postanın ulaşması 5 dakikaya kadar sürebilir. Eğer e-posta ulaşmazsa, spam klasörünüzü kontrol ettiğinizden emin olun.
     length_restriction: Şifreler en az 8 karakter uzunluğunda olmalıdır.
     forbidden_passwords: ' "12345" gibi yaygın şifreler hesabınızın güvenliği için yasaklanmıştır.'
+  poll_mailer:
+    common:
+      unsubscribe: Aboneliği iptal et
   comment_by: '%{comment_author} tarafından yapılan yorum'

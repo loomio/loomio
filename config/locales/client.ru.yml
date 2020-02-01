@@ -127,6 +127,7 @@ ru:
     copied: 'Скопировать в буфер'
     total: Всего
     action:
+      print: Печать
       pin: Закрепить
       unpin: Открепить
       search: 'Поиск'

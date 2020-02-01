@@ -156,6 +156,7 @@ fr:
     points_abbrev: Chaque vote vaut {{score}} points
     total: Total
     action:
+      print: Imprimer
       pin: Épingler
       unpin: Ne plus épingler
       search: 'Rechercher'
@@ -1388,6 +1389,7 @@ fr:
     single_search_result: "1 groupe public correspond à <strong>{{searchTerm}} :</strong>"
     multiple_search_results: "{{resultCount}} groupes publics correspondent à <strong>{{searchTerm}} :</strong>"
     no_results_found: "<strong>Vous ne trouvez pas ce que vous cherchez ? </strong>Si le paramètre de confidentialité d'un groupe est  défini sur \"secret\", il n’apparaîtra pas ici."
+    newest_first: Les plus récents en premier
   global:
     messages:
       app_update: 'Une nouvelle version de l’application est disponible'

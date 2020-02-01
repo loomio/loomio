@@ -103,6 +103,7 @@ eo:
     points_abbrev: Ĉiu voĉo valoras {{score}} poentojn
     total: Entute
     action:
+      print: Presi
       search: 'Serĉi'
       next: 'Sekva'
       close: 'Fermigi'

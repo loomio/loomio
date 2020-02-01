@@ -50,6 +50,7 @@ ko:
       proposal: '제안'
     copied: '복사됨'
     action:
+      print: 인쇄
       search: '검색'
       back: '이전'
       close: '닫기'

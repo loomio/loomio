@@ -150,6 +150,7 @@ hu:
     points_abbrev: Minden szavazat {{score}} pontot ér
     total: Összesen
     action:
+      print: Nyomtatás
       pin: Rögzít
       unpin: Rögzítés feloldása
       search: 'Keresés'
@@ -1314,6 +1315,7 @@ hu:
     search_placeholder: Keress nyilvános csoportokat
     single_search_result: "1 nyilvános csoport felel meg a <strong> {{searchTerm}}:</strong>"
     no_results_found: "<strong> Nem találja a keresett csoportot? </strong> Ha egy csoport adatvédelmének „titkos” beállítása van, akkor itt nem jelenik meg."
+    newest_first: Először a legújabb
   global:
     messages:
       app_update: 'Az alkalmazás új verziója elérhető'
