@@ -2,6 +2,7 @@
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
 import PollModalMixin from '@/mixins/poll_modal'
+import Session        from '@/shared/services/session'
 
 export default
   mixins: [PollModalMixin]
@@ -13,8 +14,9 @@ export default
 
     openOutcomeForm: ->
       outcome = @poll.outcome() or
-      Records.outcomes.build(pollId: @poll.id)
+      Records.outcomes.build(pollId: @poll.id, statementFormat: Session.defaultFormat())
       @openPollOutcomeModal(outcome)
+      
 </script>
 
 <template lang="pug">

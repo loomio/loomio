@@ -30,8 +30,7 @@ export default
   methods:
     init: ->
       @newComment = Records.comments.build
-        bodyFormat: "html"
-        body: ""
+        bodyFormat: Session.defaultFormat()
         discussionId: @discussion.id
         authorId: Session.user().id
 

@@ -14,7 +14,6 @@ setI18nLanguage = (locale) ->
   i18n.locale = locale
   document.querySelector('html').setAttribute('lang', locale)
 
-
 fixCase = (locale) ->
   splits = locale.replace('-', '_').split('_')
   compact([splits[0].toLowerCase(), splits[1] && splits[1].toUpperCase()]).join('_')
@@ -39,6 +38,8 @@ loadLocale = (locale) ->
         setI18nLanguage(locale)
 
 export default new class Session
+  defaultFormat: -> @user().shortBioFormat || 'html'
+
   fetch: ->
     # unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token')
     # membership_token  = new URLSearchParams(location.search).get('membership_token')

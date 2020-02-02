@@ -73,7 +73,10 @@ export default new class PollService
                 openModal
                   component: 'PollCommonOutcomeModal'
                   props:
-                    outcome: Records.outcomes.build(pollId: poll.id)
+                    outcome: Records.outcomes.build
+                      pollId: poll.id
+                      statementFormat: Session.defaultFormat()
+
               text:
                 title: 'poll_common_close_form.title'
                 helptext: 'poll_common_close_form.helptext'

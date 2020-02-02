@@ -7,8 +7,7 @@ export convertToHtml = (model, field) ->
   model[field] = marked(model[field] || '')
 
 export convertToMd = (model, field) ->
-  import("showdown").then (showdown) =>
-    console.log showdown
+  import("showdown").then (showdown) ->
     converter = new showdown.Converter()
     model["#{field}Format"] = "md"
     model[field] = converter.makeMarkdown(model[field] || '')
