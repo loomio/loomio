@@ -13,8 +13,8 @@ describe Queries::ExploreGroups do
     group.update_attribute(:discussions_count, 3)
     group.subscription = Subscription.create(plan: 'trial', state: 'active')
     group.save
-    second_group.update_attribute(:memberships_count, 5)
-    second_group.update_attribute(:discussions_count, 3)
+    second_group.update_attribute(:memberships_count, 4)
+    second_group.update_attribute(:discussions_count, 1)
     second_group.subscription = Subscription.create(plan: 'trial', state: 'active')
     second_group.save
     archived_group.update_attribute(:memberships_count, 5)
@@ -44,6 +44,12 @@ describe Queries::ExploreGroups do
       subgroup.save
       expect(Queries::ExploreGroups.new).to_not include subgroup
     end
+
+    it 'does not show groups that fail to meet the criteria for members or discussions count' do
+      expect(Queries::ExploreGroups.new).to include group
+      expect(Queries::ExploreGroups.new).to_not include second_group
+    end
+
   end
 
   describe '#search_for' do
