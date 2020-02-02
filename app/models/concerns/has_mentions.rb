@@ -10,25 +10,25 @@ module HasMentions
   end
 
   def mentioned_usernames
-    extract_mentioned_screen_names(mentionable_text).uniq - [self.author.username]
+    if text_format == "md"
+      extract_mentioned_screen_names(mentionable_text).uniq - [self.author.username]
+    else
+      Nokogiri::HTML(mentionable_text).search("span.mention[data-mention-id]").map do |el|
+        el['data-mention-id']
+      end.filter { |id_or_username| id_or_username.to_i.to_s != id_or_username }
+    end
   end
 
   def mentioned_user_ids
+    # html text could use ids or usernames depending on the age of the content
+    return [] if text_format == "md"
     Nokogiri::HTML(mentionable_text).search("span.mention[data-mention-id]").map do |el|
       el['data-mention-id']
-    end.map(&:to_i)
+    end.filter { |id_or_username| id_or_username.to_i.to_s == id_or_username }
   end
 
   def mentioned_users
-     User.visible_by(author).where(mentioned_users_query)
-  end
-
-  def mentioned_users_query
-    if text_format == "md"
-      {username: mentioned_usernames}
-    else
-      {id: mentioned_user_ids}
-    end
+    User.visible_by(author).where("username in (:usernames) or users.id in (:ids)", usernames: mentioned_usernames, ids: mentioned_user_ids)
   end
 
   # users mentioned in the text, but not yet sent notifications

@@ -5,7 +5,7 @@ import EventBus from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import { each, compact, truncate } from 'lodash'
-import openModal      from '@/shared/helpers/open_modal'
+import openModal from '@/shared/helpers/open_modal'
 
 export default
   mixins: [AuthModalMixin]

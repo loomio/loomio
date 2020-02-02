@@ -2204,6 +2204,12 @@ en:
       poll_expired: A poll has expired
       outcome_created: An outcome has been shared
 
+  convert_to_markdown:
+    title: Convert to Markdown
+    body:
+      This will convert existing WYSIWYG content to Markdown. Please be aware that any formmatting not supported by Markdown will be dropped.
+      If you wish to use Markdown by default for new content, change the format of your bio in your user profile.
+
   configure_sso:
     redirecting: Please wait, redirecting to sign-in provider
     title: Configure single sign-on

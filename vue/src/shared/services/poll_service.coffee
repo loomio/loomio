@@ -76,7 +76,6 @@ export default new class PollService
                     outcome: Records.outcomes.build
                       pollId: poll.id
                       statementFormat: Session.defaultFormat()
-
               text:
                 title: 'poll_common_close_form.title'
                 helptext: 'poll_common_close_form.helptext'

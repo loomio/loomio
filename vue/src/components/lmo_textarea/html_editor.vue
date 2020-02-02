@@ -43,9 +43,6 @@ import TodoItem from './todo_item'
 import { insertText } from 'tiptap-commands'
 import Image from '@/shared/tiptap_extentions/image.js'
 
-import marked from 'marked'
-import {customRenderer, options} from '@/shared/helpers/marked.coffee'
-marked.setOptions Object.assign({renderer: customRenderer()}, options)
 import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 
 export default
@@ -159,11 +156,7 @@ export default
         }),
         new TrailingNode({node: 'paragraph', notAfter: ['paragraph']})
       ]
-      content: (if @model[@field+'Format'] == "md"
-        @model[@field+'Format'] = 'html'
-        @model[@field] = marked(@model[@field] || '')
-      else
-        @model[@field])
+      content: @model[@field]
       onUpdate: @updateModel
       autoFocus: @autoFocus
 
@@ -271,7 +264,7 @@ export default
       @insertMention
         range: @suggestionRange
         attrs:
-          id: user.id,
+          id: user.username,
           label: user.name
       @editor.focus()
 
