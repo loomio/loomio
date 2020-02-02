@@ -14,20 +14,16 @@ import { colonsToUnicode } from '@/shared/helpers/emojis'
 export customRenderer = (opts) ->
   _super   = new marked.Renderer(opts)
   renderer = clone(_super)
-  cook = (text) ->
-    text = colonsToUnicode(text)
-    text = text.replace(/\[\[@([a-zA-Z0-9]+)\]\]/g, "<a class='lmo-user-mention' href='/u/$1'>@$1</a>")
-    text
 
-  renderer.paragraph = (text) -> _super.paragraph cook(text)
-  renderer.listitem  = (text) -> _super.listitem  cook(text)
-  renderer.tablecell = (text, flags) -> _super.tablecell cook(text), flags
+  renderer.paragraph = (text) -> _super.paragraph colonsToUnicode(text)
+  renderer.listitem  = (text) -> _super.listitem  colonsToUnicode(text)
+  renderer.tablecell = (text, flags) -> _super.tablecell colonsToUnicode(text), flags
 
   renderer.heading   = (text, level) ->
     _super.heading(colonsToUnicode(text), level, text, {slug: kebabCase})
 
   renderer.link      = (href, title, text) ->
-    _super.link(href, title, text).replace('<a ', '<a rel="noopener noreferrer" target="_blank" ')
+    _super.link(href, title, text).replace('<a ', '<a rel="noopener noreferrer nofollow" target="_blank" ')
 
   renderer
 export options = {gfm: true, breaks: true, smartypants: false, tables: true}

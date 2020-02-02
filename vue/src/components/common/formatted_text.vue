@@ -17,7 +17,7 @@ export default
       return @model[@column] unless @model.mentionedUsernames
       cooked = @model[@column]
       @model.mentionedUsernames.forEach (username) ->
-        cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
+        cooked = cooked.replace(///@#{username}///g, "[@#{username}](/u/#{username})")
       cooked
 </script>
 

@@ -1,8 +1,7 @@
 import marked from 'marked'
 import {customRenderer, options} from '@/shared/helpers/marked.coffee'
 import I18n from '@/i18n'
-# import Turndown from 'turndown'
-
+  
 export convertToHtml = (model, field) ->
   marked.setOptions Object.assign({renderer: customRenderer()}, options)
   model["#{field}Format"] = "html"
