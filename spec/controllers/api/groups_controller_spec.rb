@@ -2,10 +2,15 @@ require 'rails_helper'
 describe API::GroupsController do
 
   let(:user) { create :user }
+  let(:user_two) { create :user }
+  let(:user_three) { create :user }
+  let(:user_four) { create :user }
   let(:group) { create :formal_group, creator: user }
   let(:guest_group) { create :guest_group, creator: user }
   let(:subgroup) { create :formal_group, parent: group }
   let(:discussion) { create :discussion, group: group }
+  let(:discussion_two) { create :discussion, group: group }
+  let(:discussion_three) { create :discussion, group: group }
   let(:another_group) { create :guest_group }
 
   before do
@@ -138,12 +143,22 @@ describe API::GroupsController do
   end
 
   describe 'count_explore_results' do
+    before do
+      group.add_member! user_two
+      group.add_member! user_three
+      group.add_member! user_four
+    end
     it 'returns the number of explore group results matching the search term' do
       group.update_attribute(:name, 'exploration team')
-      explore_group = create(:formal_group, name: 'investigation team')
       second_explore_group = create(:formal_group, name: 'inspection group')
+      discussion
+      discussion_two
+      discussion_three
+      group.subscription = Subscription.create(plan: 'trial', state: 'active')
+      group.save
+      group.reload
       get :count_explore_results, params: { q: 'team' }
-      expect(JSON.parse(response.body)['count']).to eq 2
+      expect(JSON.parse(response.body)['count']).to eq 1
     end
   end
 
