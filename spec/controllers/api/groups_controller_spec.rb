@@ -142,13 +142,13 @@ describe API::GroupsController do
       group.update_attribute(:name, 'exploration team')
       group.update_attribute(:memberships_count, 5)
       group.update_attribute(:discussions_count, 3)
+      group.subscription = Subscription.create(plan: 'trial', state: 'active')
+      group.save
       second_explore_group = create(:formal_group, name: 'inspection group')
       second_explore_group.update_attribute(:memberships_count, 5)
       second_explore_group.update_attribute(:discussions_count, 3)
       second_explore_group.subscription = Subscription.create(plan: 'trial', state: 'active')
-      group.subscription = Subscription.create(plan: 'trial', state: 'active')
-      group.save
-      group.reload
+      second_explore_group.save
       get :count_explore_results, params: { q: 'team' }
       expect(JSON.parse(response.body)['count']).to eq 1
     end
