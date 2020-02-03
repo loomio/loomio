@@ -9,9 +9,18 @@ describe Queries::ExploreGroups do
     group.update_attribute(:is_visible_to_public, true)
     second_group.update_attribute(:is_visible_to_public, true)
     archived_group.update_attribute(:is_visible_to_public, true)
-    group.update_attribute(:memberships_count, 4)
-    second_group.update_attribute(:memberships_count, 2)
-    archived_group.update_attribute(:memberships_count, 4)
+    group.update_attribute(:memberships_count, 5)
+    group.update_attribute(:discussions_count, 3)
+    group.subscription = Subscription.create(plan: 'trial', state: 'active')
+    group.save
+    second_group.update_attribute(:memberships_count, 4)
+    second_group.update_attribute(:discussions_count, 1)
+    second_group.subscription = Subscription.create(plan: 'trial', state: 'active')
+    second_group.save
+    archived_group.update_attribute(:memberships_count, 5)
+    archived_group.update_attribute(:discussions_count, 3)
+    archived_group.subscription = Subscription.create(plan: 'trial', state: 'active')
+    archived_group.save
   end
 
   describe 'visible groups' do
@@ -29,8 +38,18 @@ describe Queries::ExploreGroups do
     it 'only shows parent groups' do
       subgroup = FactoryBot.create(:formal_group, parent: group)
       subgroup.update_attribute(:is_visible_to_public, true)
+      subgroup.update_attribute(:memberships_count, 5)
+      subgroup.update_attribute(:discussions_count, 3)
+      subgroup.subscription = Subscription.create(plan: 'trial', state: 'active')
+      subgroup.save
       expect(Queries::ExploreGroups.new).to_not include subgroup
     end
+
+    it 'does not show groups that fail to meet the criteria for members or discussions count' do
+      expect(Queries::ExploreGroups.new).to include group
+      expect(Queries::ExploreGroups.new).to_not include second_group
+    end
+
   end
 
   describe '#search_for' do

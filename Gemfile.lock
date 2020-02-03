@@ -165,7 +165,7 @@ GEM
     crass (1.0.6)
     css_parser (1.7.0)
       addressable
-    database_cleaner (1.7.0)
+    database_cleaner (1.8.1)
     derailed (0.1.0)
       derailed_benchmarks
     derailed_benchmarks (0.0.0)
@@ -346,7 +346,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
-    oj (3.10.1)
+    oj (3.10.2)
     orm_adapter (0.5.0)
     os (1.0.1)
     paper_trail (10.3.1)
@@ -506,7 +506,7 @@ GEM
       tilt
     sentry-raven (2.13.0)
       faraday (>= 0.7.6, < 1.0)
-    sequenced (3.1.1)
+    sequenced (3.2.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
     sexp_processor (4.12.0)
@@ -650,7 +650,7 @@ DEPENDENCIES
   s3_uploader
   sass-rails
   sentry-raven
-  sequenced (~> 3.1.1)
+  sequenced (~> 3.2.0)
   sidekiq
   simplecov
   spring

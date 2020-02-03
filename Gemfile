@@ -31,7 +31,7 @@ gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 gem 'image_processing', '~> 1.10'
 gem "sentry-raven"
-gem 'sequenced', '~> 3.1.1'
+gem 'sequenced', '~> 3.2.0'
 gem 'http_accept_language'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'uglifier'
