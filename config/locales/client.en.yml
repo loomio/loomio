@@ -2207,8 +2207,8 @@ en:
   convert_to_markdown:
     title: Convert to Markdown
     body:
-      This will convert existing WYSIWYG content to Markdown. Please be aware that any formmatting not supported by Markdown will be dropped.
-      If you wish to use Markdown by default for new content, change the format of your bio in your user profile.
+      Press OK to convert WYSIWYG content to Markdown. Some minor formatting differences may occur.
+      To use Markdown by default, go to 'Edit Profile' and save your Introduction as Markdown.
 
   configure_sso:
     redirecting: Please wait, redirecting to sign-in provider

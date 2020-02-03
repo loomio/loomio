@@ -41,6 +41,7 @@
     "register-service-worker": "^1.6.2",
     "svg.js": "^2.7.1",
     "tippy.js": "^4.3.5",
+    "textarea-caret": "^3.1.0",
     "tiptap": "1.26.6",
     "tiptap-commands": "1.12.5",
     "tiptap-extensions": "1.28.6",
