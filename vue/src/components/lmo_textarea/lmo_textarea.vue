@@ -78,6 +78,8 @@ export default
     linkDialogIsOpen: false
     iframeDialogIsOpen: false
     insertMention: () => {}
+    popup: null
+    observer: null
     editor: new Editor
       disablePasteRules: true
       editorProps:
@@ -542,7 +544,7 @@ div
   code::before
     content: ''
     letter-spacing: normal
-    
+
   pre code
     display: block
 
