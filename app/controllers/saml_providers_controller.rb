@@ -144,7 +144,7 @@ class SamlProvidersController < ApplicationController
 
     #SP section
     settings.issuer                         = metadata_saml_provider_url(saml_provider)
-    settings.assertion_consumer_service_url = callback_saml_providers_url
+    settings.assertion_consumer_service_url = callback_saml_provider_url(saml_provider)
     settings.assertion_consumer_logout_service_url = logout_saml_provider_url(saml_provider)
 
     settings.name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
