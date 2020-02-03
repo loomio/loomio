@@ -7,12 +7,14 @@ class DiscussionMailer < BaseMailer
   end
 
   private
+
   def send_thread_email(recipient_id, event_id)
     recipient = User.find_by!(id: recipient_id)
     event = Event.find_by!(id: event_id)
     return if recipient == User.helper_bot
 
     @info = DiscussionEmailInfo.new(recipient: recipient, event: event, action_name: action_name)
+    @discussion = event.eventable.discussion
 
     headers[message_id_header] = message_id
     headers['Precedence'] = 'bulk'
