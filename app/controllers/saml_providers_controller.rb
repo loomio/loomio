@@ -102,7 +102,7 @@ class SamlProvidersController < ApplicationController
 
   def idp_settings
     settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(params_saml_provider.idp_metadata_url)
-    settings.assertion_consumer_service_url = callback_saml_providers_url(params_saml_provider)
+    settings.assertion_consumer_service_url = callback_saml_provider_url(params_saml_provider)
     settings.issuer                         = metadata_saml_provider_url(params_saml_provider)
     settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
     settings
