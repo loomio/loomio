@@ -9,7 +9,6 @@ class SamlProvidersController < ApplicationController
 
   def auth
     session[:back_to] = params[:back_to] || request.referrer
-    session[:saml_group_id] = find_group!.id
     redirect_to idp_auth_url
   end
 
@@ -23,10 +22,8 @@ class SamlProvidersController < ApplicationController
   end
 
   def callback
-    saml_provider = session_saml_provider
+    saml_provider = params_saml_provider
     saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: sp_settings(saml_provider))
-    p "callback saml provider id: #{session[:saml_provider_id]}"
-    session.delete(:saml_provider_id)
 
     if saml_response.success?
       email = saml_response.nameid
@@ -99,17 +96,13 @@ class SamlProvidersController < ApplicationController
     end
   end
 
-  def session_saml_provider
-    SamlProvider.find_by!(group_id: session[:saml_group_id])
-  end
-
   def idp_auth_url
     OneLogin::RubySaml::Authrequest.new.create(idp_settings)
   end
 
   def idp_settings
     settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(params_saml_provider.idp_metadata_url)
-    settings.assertion_consumer_service_url = callback_saml_providers_url
+    settings.assertion_consumer_service_url = callback_saml_providers_url(params_saml_provider)
     settings.issuer                         = metadata_saml_provider_url(params_saml_provider)
     settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
     settings

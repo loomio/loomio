@@ -330,13 +330,13 @@ Loomio::Application.routes.draw do
 
   resources :saml_providers, only: [] do
     collection do
-      post :callback
       get :auth
       get :should_auth
       get :invitation_created
     end
 
     member do
+      post :callback
       get :metadata
       get :logout
     end
