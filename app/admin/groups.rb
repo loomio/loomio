@@ -89,6 +89,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
         column(:invter)      { |m| m.inviter.try(:name) }
         column(:accepted_at) { |m| m.accepted_at }
         column(:archived_at) { |m| m.archived_at }
+        column(:saml_session_expires_at) { |m| m.saml_session_expires_at }
         column "Support" do |m|
           if m.user.name.present?
             link_to("Search for #{m.user.name}", "https://support.loomio.org/scp/users.php?a=search&query=#{m.user.name.downcase.split(' ').join('+')}")
