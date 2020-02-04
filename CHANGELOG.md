@@ -1,4 +1,4 @@
-## 2020-01-31
+## 2020-01-31 (Loomio 2.0.2)
 - Add support for SAML for individual groups
 - Add server side rendered pages for groups, threads and explore
 - Add polyfills for old browsers
