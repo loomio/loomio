@@ -9,6 +9,7 @@ class SamlProvidersController < ApplicationController
 
   def auth
     session[:back_to] = params[:back_to] || request.referrer
+    session[:saml_group_id] = find_group!.id
     redirect_to idp_auth_url
   end
 
@@ -22,7 +23,7 @@ class SamlProvidersController < ApplicationController
   end
 
   def callback
-    saml_provider = params_saml_provider
+    saml_provider = session_saml_provider
     saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: sp_settings(saml_provider))
 
     if saml_response.success?
@@ -36,12 +37,12 @@ class SamlProvidersController < ApplicationController
         logger.debug 'saml logged in case'
         group.add_member!(current_user)
         update_session_expires_at!(current_user, group, expires_at)
-        signed_in_success_redirect(group)
+        signed_in_success_redirect
       elsif user_is_existing_member?(email, group)
         logger.debug 'saml logged out, existing member case'
         sign_in user = User.active.find_by!(email: email)
         update_session_expires_at!(user, group, expires_at)
-        signed_in_success_redirect(group)
+        signed_in_success_redirect
       else
         logger.debug 'saml logged out, invite case'
         inviter = GroupInviter.new(group: group, emails: [email], inviter: group.creator).invite!
@@ -52,6 +53,7 @@ class SamlProvidersController < ApplicationController
     else
       render :error
     end
+    session.delete(:saml_group_id)
   end
 
   private
@@ -80,8 +82,8 @@ class SamlProvidersController < ApplicationController
     membership.update(saml_session_expires_at: expires_at)
   end
 
-  def signed_in_success_redirect(group)
-    redirect_to session.delete(:back_to) || group_url(group)
+  def signed_in_success_redirect
+    redirect_to session.delete(:back_to) || group_url(session_saml_provider.group) || dashboard_path
   end
 
   def user_is_existing_member?(email, group)
@@ -96,13 +98,17 @@ class SamlProvidersController < ApplicationController
     end
   end
 
+  def session_saml_provider
+    SamlProvider.find_by!(group_id: session[:saml_group_id])
+  end
+
   def idp_auth_url
     OneLogin::RubySaml::Authrequest.new.create(idp_settings)
   end
 
   def idp_settings
     settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(params_saml_provider.idp_metadata_url)
-    settings.assertion_consumer_service_url = callback_saml_provider_url(params_saml_provider)
+    settings.assertion_consumer_service_url = callback_saml_providers_url
     settings.issuer                         = metadata_saml_provider_url(params_saml_provider)
     settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
     settings
@@ -144,7 +150,7 @@ class SamlProvidersController < ApplicationController
 
     #SP section
     settings.issuer                         = metadata_saml_provider_url(saml_provider)
-    settings.assertion_consumer_service_url = callback_saml_provider_url(saml_provider)
+    settings.assertion_consumer_service_url = callback_saml_providers_url
     settings.assertion_consumer_logout_service_url = logout_saml_provider_url(saml_provider)
 
     settings.name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"

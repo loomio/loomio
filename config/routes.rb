@@ -333,10 +333,10 @@ Loomio::Application.routes.draw do
       get :auth
       get :should_auth
       get :invitation_created
+      post :callback
     end
 
     member do
-      post :callback
       get :metadata
       get :logout
     end
