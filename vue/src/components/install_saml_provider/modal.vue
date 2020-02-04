@@ -70,7 +70,7 @@ v-card.install-microsoft-modal
         span(v-t="'configure_sso.sp_metadata_url'")
         span :
         space
-        a(:href="spMetadataUrl" target="_blank") {{spMetadataUrl}}
+        a(:href="spMetadataUrl + '.xml'" target="_blank") {{spMetadataUrl}}
     v-card-actions
       v-spacer
       v-btn(color='primary' @click='destroy()' v-t="'common.action.remove'")
