@@ -543,6 +543,8 @@ en:
     move: Move
     search_placeholder: Find thread by title
     moved: Moving comments, this might take a moment
+    move_to_existing_thread: Move to existing thread
+    start_new_thread: Or, start new thread
 
   discussion_form:
     aria_label: 'Thread form'
@@ -551,7 +553,7 @@ en:
       updated: 'Thread updated'
       forked:  'Thread fork created'
     new_discussion_title: 'Start new thread'
-    fork_discussion_title: 'Fork a thread'
+    moving_items_title: 'Move items to new thread'
     edit_discussion_title: 'Edit thread'
     group_label: 'Group'
     group_placeholder: 'Select a group'
@@ -655,7 +657,7 @@ en:
     invite_guests: Invite guests
     translate_thread: Translate context
     edit_poll: Edit poll
-    move_items: Move
+    move_items: Move items
     announce_poll: Invite people to vote
     announce_poll_active: (No one has been invited yet)
     translate_poll: Translate poll
@@ -686,7 +688,7 @@ en:
     reopen_thread: Re-open thread
     delete_thread: Delete thread
     notification_history: Notification history
-    move_comments: Move comments
+    move_item: Move item
 
   formatting:
     bold: Bold

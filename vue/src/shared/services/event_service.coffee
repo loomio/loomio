@@ -6,7 +6,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 export default new class EventService
   actions: (event, vm) ->
     move_event:
-      name: 'action_dock.move_items'
+      name: 'action_dock.move_item'
       perform: ->
         event.toggleFromFork()
 
