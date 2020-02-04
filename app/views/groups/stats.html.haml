@@ -1,0 +1,75 @@
+.group-page.mt-12
+  %main.v-content
+    .container.max-width-1024
+      .v-responsive.v-image{:style => "border-radius: 8px;"}
+        .v-responsive__sizer{:style => "padding-bottom: 20.4082%;"}
+        .v-image__image.v-image__image--cover{:style => "background-image: url(#{@group.cover_photo.url(:largedesktop)}); background-position: center center;"}
+      %h1.display-1.my-4
+        %span.group-page__name.mr-4= @group.full_name
+      .lmo-markdown-wrapper.body-2.text--primary.group-page__description
+        = raw render_rich_text(@group.description, @group.description_format)
+      %hr.mt-4.v-divider.theme--light{"aria-orientation" => "horizontal", :role => "separator"}/
+      .v-card.v-card--outlined.v-sheet.theme--light.mt-2.px-3
+        %div.py-3.px-3.stretch
+          %span.headline Group stats
+          %table
+            %tr
+              %th
+                %h4{ style: "text-align: center" } Visits
+              %th
+                %h4{ style: "text-align: center" } Members
+              %th
+                %h4{ style: "text-align: center" } Subgroups
+              %th
+                %h4{ style: "text-align: center" } Threads
+              %th
+                %h4{ style: "text-align: center" } Polls
+              %th
+                %h4{ style: "text-align: center" } Thread items
+
+            %tr
+              %td
+                %h2{ style: "text-align: center"}= Queries::GroupStats.visits_count(@group)
+              %td
+                %h2{ style: "text-align: center"}= @group.org_memberships_count
+              %td
+                %h2{ style: "text-align: center"}= @group.subgroups.count
+              %td
+                %h2{ style: "text-align: center"}= Queries::GroupStats.discussions_count(@group)
+              %td
+                %h2{ style: "text-align: center"}= Queries::GroupStats.polls_count(@group)
+              %td
+                %h2{ style: "text-align: center"}= Queries::GroupStats.thread_items_count(@group)
+
+      - if @group.is_parent?
+        .v-card.v-card--outlined.v-sheet.theme--light.mt-2.px-3
+          %div.py-3.px-3.stretch
+            %span.headline Organisation stats (including subgroups)
+            %table
+              %tr
+                %th
+                  %h4{ style: "text-align: center" } Visits
+                %th
+                  %h4{ style: "text-align: center" } Members
+                %th
+                  %h4{ style: "text-align: center" } Subgroups
+                %th
+                  %h4{ style: "text-align: center" } Threads
+                %th
+                  %h4{ style: "text-align: center" } Polls
+                %th
+                  %h4{ style: "text-align: center" } Thread items
+
+              %tr
+                %td
+                  %h2{ style: "text-align: center"}= Queries::GroupStats.visits_count_including_subgroups(@group)
+                %td
+                  %h2{ style: "text-align: center"}= @group.memberships_count
+                %td
+                  %h2{ style: "text-align: center"}= @group.subgroups.count
+                %td
+                  %h2{ style: "text-align: center"}= Queries::GroupStats.discussions_count_including_subgroups(@group)
+                %td
+                  %h2{ style: "text-align: center"}= Queries::GroupStats.polls_count_including_subgroups(@group)
+                %td
+                  %h2{ style: "text-align: center"}= Queries::GroupStats.thread_items_count_including_subgroups(@group)
