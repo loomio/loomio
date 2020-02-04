@@ -52,7 +52,6 @@ export default new class GroupService
         Records.memberships.makeAdmin(membership).then ->
           Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
 
-
     export_data:
       name: 'group_page.options.export_data'
       icon: 'mdi-database-export'

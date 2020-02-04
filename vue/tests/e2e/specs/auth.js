@@ -123,7 +123,7 @@ module.exports = {
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
-    // page.fillIn('.comment-form .ProseMirror', 'I am new!')
+    // page.fillIn('.comment-form .lmo-textarea', 'I am new!')
     // page.click('.dismiss-modal-button')
     // page.click('.comment-form__submit-button')
     // page.expectFlash('Comment added')

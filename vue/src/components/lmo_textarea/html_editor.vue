@@ -620,20 +620,20 @@ progress::-moz-progress-bar
     .v-icon
       font-size: 16px
 
-.ProseMirror
+.lmo-textarea
   border-bottom: 1px solid #999
   padding: 4px 0px
   margin: 4px 0px
   outline: none
   overflow-y: scroll
 
-.ProseMirror:focus
+.lmo-textarea:focus
   border-bottom: 2px solid var(--v-primary-base)
 
-.ProseMirror img
+.lmo-textarea img
   display: block
 
-.ProseMirror progress
+.lmo-textarea progress
   // display: block;
 
 ul[data-type="todo_list"]
@@ -653,7 +653,7 @@ li[data-type="todo_item"]
   border-radius: 0.2em
   background-color: transparent
 
-.ProseMirror .todo-checkbox
+.lmo-textarea .todo-checkbox
   cursor: pointer
 
 .todo-content
