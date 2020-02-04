@@ -10,10 +10,18 @@ export default
         component: 'MoveCommentsModal'
         props:
           discussion: @discussion
+  computed:
+    styles: ->
+      { bar, top } = @$vuetify.application
+      return
+        display: 'flex'
+        position: 'sticky'
+        top: "#{bar + top}px"
+        zIndex: 1
 </script>
 
 <template lang='pug'>
-v-banner.discussion-fork-actions(single-line sticky elevation="4" v-model='discussion.isForking' icon="mdi-call-split" color="accent")
+v-banner.discussion-fork-actions(single-line sticky :elevation="4" v-model='discussion.isForking' icon="mdi-call-split" color="accent" :style="styles")
   span(v-t="'discussion_fork_actions.helptext'")
   template(v-slot:actions)
     v-btn(color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'")
