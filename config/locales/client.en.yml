@@ -2216,6 +2216,7 @@ en:
     success: Single sign-on successfully configured
     destroyed: Single sign-on removed
     invalid_idp_metadata_url: Invalid IDP metadata URL
+    sp_metadata_url: SP Metadata URL
 
   install_slack:
     modal_title: Integrate Slack

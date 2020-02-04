@@ -21,6 +21,7 @@ export default
     .then (data) =>
       @idpMetadataUrl = data.idp_metadata_url
       @samlProviderId = data.saml_provider_id
+      @spMetadataUrl = data.sp_metadata_url
     .catch =>
       # all good
     .finally =>
@@ -64,7 +65,12 @@ v-card.install-microsoft-modal
         span(v-t="'configure_sso.idp_metadata_url'")
         span :
         space
-        span {{idpMetadataUrl}}
+        a(:href="idpMetadataUrl" target="_blank") {{idpMetadataUrl}}
+      p
+        span(v-t="'configure_sso.sp_metadata_url'")
+        span :
+        space
+        a(:href="spMetadataUrl" target="_blank") {{spMetadataUrl}}
     v-card-actions
       v-spacer
       v-btn(color='primary' @click='destroy()' v-t="'common.action.remove'")
