@@ -29,7 +29,7 @@ class SamlProvidersController < ApplicationController
     if saml_response.success?
       email = saml_response.nameid
       group = saml_provider.group
-      expires_at = saml_response.session_expires_at
+      expires_at = saml_response.session_expires_at || 2.days.from_now
 
       logger.debug ['saml', email, group.name, expires_at].join(',')
 
