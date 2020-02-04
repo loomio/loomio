@@ -98,7 +98,7 @@ v-content
     //- h1.headline(v-t="'explore_page.header'")
     v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")
     v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="order")
-    loading(v-show="searching")
+    loading(:until="!searching")
     .explore-page__no-results-found(v-show='noResultsFound', v-html="$t('explore_page.no_results_found')")
     .explore-page__search-results(v-show='showMessage', v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})")
     v-row.explore-page__groups.my-4(v-show="!searching" wrap)

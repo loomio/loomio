@@ -57,7 +57,7 @@ v-card.install-microsoft-modal
     h1.headline(v-t="'configure_sso.title'")
     v-spacer
     dismiss-modal-button(:close="close")
-  loading(v-if="loading")
+  loading(:until="!loading")
   div(v-if="samlProviderId")
     v-card-text
       p(v-t="'configure_sso.enabled'")
