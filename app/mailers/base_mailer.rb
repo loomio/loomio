@@ -3,6 +3,7 @@ class BaseMailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   include EmailHelper
   include LocalesHelper
+  include ApplicationHelper
 
   helper :email
 
