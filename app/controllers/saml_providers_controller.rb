@@ -36,12 +36,12 @@ class SamlProvidersController < ApplicationController
         logger.debug 'saml logged in case'
         group.add_member!(current_user)
         update_session_expires_at!(current_user, group, expires_at)
-        signed_in_success_redirect
+        signed_in_success_redirect(group)
       elsif user_is_existing_member?(email, group)
         logger.debug 'saml logged out, existing member case'
         sign_in user = User.active.find_by!(email: email)
         update_session_expires_at!(user, group, expires_at)
-        signed_in_success_redirect
+        signed_in_success_redirect(group)
       else
         logger.debug 'saml logged out, invite case'
         inviter = GroupInviter.new(group: group, emails: [email], inviter: group.creator).invite!
@@ -80,8 +80,8 @@ class SamlProvidersController < ApplicationController
     membership.update(saml_session_expires_at: expires_at)
   end
 
-  def signed_in_success_redirect
-    redirect_to session.delete(:back_to) || dashboard_path
+  def signed_in_success_redirect(group)
+    redirect_to session.delete(:back_to) || group_url(group)
   end
 
   def user_is_existing_member?(email, group)
