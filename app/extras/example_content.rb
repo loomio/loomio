@@ -4,8 +4,18 @@ ExampleContent = Struct.new(:group) do
   def add_to_group!
     group.add_admin!(helper_bot).tap do
       DiscussionService.create(discussion: how_it_works_thread, actor: helper_bot)
+      DiscussionService.create(discussion: general_chat_thread, actor: helper_bot)
       PollService.create(poll: example_proposal, actor: helper_bot)
     end.destroy # remove helper bot after s/he has made example content
+  end
+
+  def general_chat_thread
+    @general_chat_thread ||= group.discussions.build(
+      author:        helper_bot,
+      title:         I18n.t('general_chat_thread.title'),
+      description:   I18n.t('general_chat_thread.description'),
+      private:       !!group.discussion_private_default
+    )
   end
 
   def how_it_works_thread
