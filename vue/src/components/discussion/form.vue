@@ -38,7 +38,7 @@ export default
             @$router.push @urlFor(discussion)
             if AbilityService.canAnnounceThread(discussion)
               @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
-      .catch onError(@discussion)  
+      .catch onError(@discussion)
 
 
     updatePrivacy: ->
@@ -88,6 +88,9 @@ export default
     showUpgradeMessage: ->
       @discussion.isNew() && !@canStartThread
 
+    isMovingItems: ->
+      @discussion.isForking
+
 </script>
 
 <template lang="pug">
@@ -95,12 +98,13 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
   submit-overlay(:value='discussion.processing')
   v-card-title
     h1.headline
-      span(v-if="discussion.isNew()" v-t="'discussion_form.new_discussion_title'")
+      span(v-if="discussion.isNew() && !isMovingItems" v-t="'discussion_form.new_discussion_title'")
+      span(v-if="discussion.isNew() && isMovingItems" v-t="'discussion_form.moving_items_title'")
       span(v-if="!discussion.isNew()" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
   .pa-4
-    .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew()')
+    .lmo-hint-text(v-t="'group_page.discussions_placeholder'", v-show='discussion.isNew() && !isMovingItems')
     .body-1(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
