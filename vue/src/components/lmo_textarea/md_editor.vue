@@ -78,6 +78,11 @@ export default
         position: 'absolute'
         top: ((coords.top - @textarea().scrollTop) + coords.height + 16) + 'px'
         left: coords.left + 'px'
+  computed:
+    previewAction: ->
+      if @preview then 'common.action.edit' else 'common.action.preview'
+    previewIcon: ->
+      if @preview then 'mdi-pencil' else 'mdi-eye'
 </script>
 
 <template lang="pug">
@@ -91,7 +96,8 @@ div(style="position: relative")
     v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.use_wysiwyg'")
     v-btn(text x-small href="/markdown" target="_blank" v-t="'formatting.markdown_help'")
     v-spacer
-    v-btn.mr-4(text @click="preview = !preview" v-t="preview ? 'common.action.edit' : 'common.action.preview' ")
+    v-btn.mr-4(text @click="preview = !preview" v-t="previewAction")
+
     slot(name="actions")
   suggestion-list(:query="query" :filtered-users="filteredUsers" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername)
 </template>

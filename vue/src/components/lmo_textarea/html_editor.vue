@@ -79,7 +79,7 @@ export default
     navigatedUserIndex: 0
     suggestionListStyles: {}
     closeEmojiMenu: false
-    linkUrl: "https://"
+    linkUrl: ""
     iframeUrl: ""
     linkDialogIsOpen: false
     iframeDialogIsOpen: false
