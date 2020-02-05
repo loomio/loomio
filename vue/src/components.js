@@ -132,6 +132,7 @@ module.exports = {
   PollMeetingAddOptionMenu: 'poll/meeting/add_option_menu',
   PollMeetingVoteForm: 'poll/meeting/vote_form',
   PollMeetingVotesPanelStance: 'poll/meeting/votes_panel_stance',
+  PollOptionChip: 'poll/common/poll_option_chip',
   PollPollChartPanel: 'poll/poll/chart_panel',
   PollPollForm: 'poll/poll/form',
   PollPollVoteForm: 'poll/poll/vote_form',
