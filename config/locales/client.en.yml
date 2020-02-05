@@ -699,11 +699,12 @@ en:
     heading1: Big heading
     heading2: Medium heading
     heading3: Small heading
+    paragraph: Paragraph
     bullet_list: List
     number_list: Numbered list
     check_list: Checklist
     quote: Quote
-    embed: Embed
+    embed: Embed video
     divider: Divider
     add_table: Add table
     remove_table: Remove table
@@ -714,6 +715,7 @@ en:
     add_row_after: Add row after
     remove_row: Remove row
     merge_selected: Merge selected cells
+    switch_to_markdown: Switch to Markdown
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
