@@ -818,7 +818,7 @@ en:
       label: 'Options'
       edit_group: 'Edit group settings'
       open_group_wizard: 'Group Setup Wizard'
-      become_coordinator: Become Admin
+      become_coordinator: Become admin
       export_data: Export group data
       export_data_as_json: Export group data as JSON
       export_data_as_csv: Export group data as CSV

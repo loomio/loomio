@@ -52,6 +52,13 @@ export default new class GroupService
         Records.memberships.makeAdmin(membership).then ->
           Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
 
+    group_stats:
+      name: 'group_page.stats'
+      icon: 'mdi-chart-bar'
+      canPerform: ->
+        AbilityService.canAdministerGroup(group)
+      perform: ->
+        window.open("#{AppConfig.baseUrl}g/#{group.key}/stats?export=1", "_blank")
 
     export_data:
       name: 'group_page.options.export_data'
@@ -129,14 +136,6 @@ export default new class GroupService
           component: 'InstallSamlProviderModal'
           props:
             group: group
-
-    group_stats:
-      name: 'group_page.stats'
-      icon: 'mdi-chart-bar'
-      canPerform: ->
-        AbilityService.canAdministerGroup(group)
-      perform: ->
-        window.open("#{AppConfig.baseUrl}g/#{group.key}/stats?export=1", "_blank")
 
     leave_group:
       name: 'group_page.options.leave_group'
