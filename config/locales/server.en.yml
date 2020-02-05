@@ -355,13 +355,11 @@ en:
         ## Links and Images
 
       body: |
-        Repeat out loud:
-
-        Square brackets for name then round brackets for URL. There's no spaces between the brackets.
+        Square brackets with title, round brackets with URL. No spaces between the brackets.
 
         [Loomio Homepage](https://www.loomio.org/)
 
-        Images are the same, but prefixed with an exclamation mark.
+        Images are the same, but prefixed with an exclamation mark. Title is used as alt text.
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
 

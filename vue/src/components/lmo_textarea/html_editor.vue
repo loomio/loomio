@@ -1,11 +1,13 @@
 <script lang="coffee">
 import { detect } from 'detect-browser'
 import Records from '@/shared/services/records'
+import Session from '@/shared/services/session'
 import {concat, sortBy, isString, filter, uniq, map, forEach, isEmpty} from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
 import detectIt from 'detect-it'
 import EventBus from '@/shared/services/event_bus'
+import I18n from '@/i18n'
 import { convertToMd } from '@/shared/services/format_converter'
 
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
@@ -69,7 +71,7 @@ export default
 
   data: ->
     query: null
-    moreButtons: false
+    expanded: null
     suggestionRange: null
     files: []
     imageFiles: []
@@ -158,8 +160,8 @@ export default
           emptyClass: 'is-empty',
           emptyNodeText: @placeholder,
           showOnlyWhenEditable: true,
-        }),
-        new TrailingNode({node: 'paragraph', notAfter: ['paragraph']})
+        })
+        # new TrailingNode({node: 'paragraph', notAfter: ['paragraph']})
       ]
       content: @model[@field]
       onUpdate: @updateModel
@@ -177,10 +179,22 @@ export default
     @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
 
   mounted: ->
+    @expanded = Session.user().experiences['html-editor.expanded']
     @updateModel()
 
   methods:
-    convertToMd: convertToMd
+    convertToMd: ->
+      if confirm I18n.t('formatting.markdown_confirm')
+        convertToMd(@model, @field)
+        Records.users.saveExperience('html-editor.uses-markdown')
+    toggleExpanded: ->
+      if !@expanded
+        @expanded = true
+        Records.users.saveExperience('html-editor.expanded')
+      else
+        @expanded = false
+        Records.users.removeExperience('html-editor.expanded')
+
     setLinkUrl: (command) ->
       if @linkUrl
         @linkUrl = "http://".concat(@linkUrl) unless @linkUrl.includes("://")
@@ -272,12 +286,6 @@ export default
       @imageFiles = []
 
   watch:
-    linkDialogIsOpen: (val) ->
-      return unless val && @$refs.focus
-      requestAnimationFrame => @$refs.focus.focus()
-    iframeDialogIsOpen: (val) ->
-      return unless val && @$refs.focus
-      requestAnimationFrame => @$refs.focus.focus()
     files: -> @updateModel()
     imageFiles: -> @updateModel()
     shouldReset: -> @reset()
@@ -311,60 +319,68 @@ div
           v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
             v-icon mdi-table-merge-cells
         v-layout.menubar.py-2(align-center)
-          v-layout(style="overflow: scroll")
-            v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+          v-layout(wrap)
+            //- attach
+            v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
+              v-icon mdi-paperclip
+
+            //- v-btn(icon @click='$refs.imageFilesField.click()' :title="$t('formatting.insert_image')")
+            //-   v-icon mdi-image
+
+            //- link
+            v-menu(:close-on-content-click="false" v-model="linkDialogIsOpen" min-width="320px")
               template(v-slot:activator="{on}")
-                v-btn.emoji-picker__toggle(v-on="on" icon)
-                  v-icon mdi-emoticon-outline
-              emoji-picker(:insert="emojiPicked")
-            v-btn(icon @click="linkDialogIsOpen = true" :title="$t('formatting.link')")
-              v-icon mdi-link
-            v-dialog(v-model="linkDialogIsOpen" max-width="600px")
+                v-btn(icon v-on="on" :title="$t('formatting.link')")
+                  v-icon mdi-link
               v-card
+                p Highlight some text to link first!
                 v-card-title.title(v-t="'text_editor.insert_link'")
                 v-card-text
                   v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl(commands.link)")
                 v-card-actions
                   v-spacer
                   v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
-            v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
-              v-icon mdi-paperclip
 
-            v-btn(icon :outlined="isActive.bold()", @click='commands.bold' :title="$t('formatting.bold')")
-              v-icon mdi-format-bold
-            v-btn(icon :outlined="isActive.italic()", @click='commands.italic' :title="$t('formatting.italicize')")
-              v-icon mdi-format-italic
-            v-btn(v-if="moreButtons" icon :outlined="isActive.strike()", @click='commands.strike' :title="$t('formatting.strikethrough')")
-              v-icon mdi-format-strikethrough
-            v-btn(v-if="moreButtons" icon :outlined="isActive.underline()", @click='commands.underline' :title="$t('formatting.underline')")
-              v-icon mdi-format-underline
-            v-btn(v-if="moreButtons" icon :outlined="isActive.blockquote()", @click='commands.blockquote' :title="$t('formatting.blockquote')")
-              v-icon mdi-format-quote-close
+            //- emoji
+            v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+              template(v-slot:activator="{on}")
+                v-btn.emoji-picker__toggle(v-on="on" icon)
+                  v-icon mdi-emoticon-outline
+              emoji-picker(:insert="emojiPicked")
 
-            v-btn(v-if="moreButtons" small icon :outlined="isActive.code_block()", @click='commands.code_block' :title="$t('formatting.code_block')")
-              v-icon mdi-code-braces
-            v-menu
+            //- headings menu
+            v-menu(v-if="!expanded")
               template(v-slot:activator="{ on }")
-                v-btn.drop-down-button(icon v-on="on")
+                v-btn.drop-down-button(icon v-on="on" :title="$t('formatting.heading')")
                   v-icon mdi-format-size
                   v-icon.menu-down-arrow mdi-menu-down
               v-list(dense)
-                v-list-item(@click='commands.heading({ level: 1 })' :class="{ 'v-list-item--active': isActive.heading({level: 1}) }")
-                  v-list-item-icon
-                    v-icon mdi-format-header-1
-                  v-list-item-title(v-t="'formatting.heading1'")
-                v-list-item(@click='commands.heading({ level: 2 })' :class="{ 'v-list-item--active': isActive.heading({level: 2}) }")
-                  v-list-item-icon
-                    v-icon mdi-format-header-2
-                  v-list-item-title(v-t="'formatting.heading2'")
-                v-list-item(@click='commands.heading({ level: 3 })'  :class="{ 'v-list-item--active': isActive.heading({level: 3}) }")
-                  v-list-item-icon
-                    v-icon mdi-format-header-3
-                  v-list-item-title(v-t="'formatting.heading3'" )
+                template(v-for="i in 3")
+                  v-list-item(@click='commands.heading({ level: i })' :class="{ 'v-list-item--active': isActive.heading({level: i}) }")
+                    v-list-item-icon
+                      v-icon {{'mdi-format-header-'+i}}
+                    v-list-item-title(v-t="'formatting.heading'+i")
                 v-list-item(@click='commands.paragraph()' :class="{ 'v-list-item--active': isActive.paragraph() }")
                   v-list-item-icon
                     v-icon mdi-format-pilcrow
                   v-list-item-title(v-t="'formatting.paragraph'")
+
+            template(v-if="expanded")
+              v-btn(icon @click='commands.paragraph()' :outlined="isActive.paragraph()" :title="$t('formatting.paragraph')")
+                v-icon mdi-format-pilcrow
+              template(v-for="i in 3")
+                v-btn(icon @click='commands.heading({ level: i })' :outlined='isActive.heading({level: i})' :title="$t('formatting.heading'+i)")
+                  v-icon {{'mdi-format-header-'+i}}
+
+            //- bold
+            v-btn(icon @click='commands.bold' :outlined="isActive.bold()" :title="$t('formatting.bold')")
+              v-icon mdi-format-bold
+
+            //- italic
+            v-btn(icon @click='commands.italic' :outlined="isActive.italic()" :title="$t('formatting.italicize')")
+              v-icon mdi-format-italic
+
+            //- list menu (always a menu)
             v-menu
               template(v-slot:activator="{ on }")
                 v-btn.drop-down-button(icon v-on="on")
@@ -384,31 +400,46 @@ div
                     v-icon mdi-format-list-checks
                   v-list-item-title(v-t="'formatting.check_list'")
 
-            v-btn(v-if="moreButtons" icon @click='iframeDialogIsOpen = true' :title="$t('formatting.embed')")
-              v-icon mdi-youtube
-
-            v-btn(v-if="moreButtons" icon @click='commands.horizontal_rule' :title="$t('formatting.divider')")
-              v-icon mdi-minus
-
-            v-btn(v-if="moreButtons" icon @click='commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })' :title="$t('formatting.add_table')")
-              v-icon mdi-table
-
-            v-btn(v-if="moreButtons" icon @click="convertToMd(model, field)" :title="$t('formatting.switch_to_markdown')")
-              v-icon mdi-markdown
-
-            v-dialog(v-model="iframeDialogIsOpen" max-width="600px")
-              v-card
-                v-card-title.title(v-t="'text_editor.insert_embedded_url'")
-                v-card-text
-                  v-text-field(type="url" label="e.g. https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
-                v-card-actions
-                  v-spacer
-                  v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
-
-            v-btn(icon @click="moreButtons = !moreButtons")
-              v-icon(v-if="!moreButtons") mdi-chevron-right
-              v-icon(v-if="moreButtons") mdi-chevron-left
-
+            //- extra text marks
+            template(v-if="expanded")
+              //- strikethrough
+              v-menu(:close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
+                template(v-slot:activator="{on}")
+                  v-btn(icon v-on="on" :title="$t('formatting.embed')")
+                    v-icon mdi-youtube
+                v-card
+                  v-card-title.title(v-t="'text_editor.insert_embedded_url'")
+                  v-card-text
+                    v-text-field(type="url" label="e.g. https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
+                  v-card-actions
+                    v-spacer
+                    v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
+              //- strikethrought
+              v-btn(icon :outlined="isActive.strike()", @click='commands.strike' :title="$t('formatting.strikethrough')")
+                v-icon mdi-format-strikethrough
+              //- underline
+              v-btn(icon :outlined="isActive.underline()", @click='commands.underline' :title="$t('formatting.underline')")
+                v-icon mdi-format-underline
+              //- blockquote
+              v-btn(icon :outlined="isActive.blockquote()", @click='commands.blockquote' :title="$t('formatting.blockquote')")
+                v-icon mdi-format-quote-close
+              //- code block
+              v-btn(small icon :outlined="isActive.code_block()", @click='commands.code_block' :title="$t('formatting.code_block')")
+                v-icon mdi-code-braces
+              //- embded
+              v-btn(icon @click='commands.horizontal_rule' :title="$t('formatting.divider')")
+                v-icon mdi-minus
+              //- table
+              v-btn(icon @click='commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })' :title="$t('formatting.add_table')")
+                v-icon mdi-table
+              //- markdown (save experience)
+              v-btn(icon @click="convertToMd" :title="$t('formatting.edit_markdown')")
+                v-icon mdi-markdown
+            //- expand button
+            v-btn(icon @click="toggleExpanded")
+              v-icon(v-if="!expanded") mdi-chevron-right
+              v-icon(v-if="expanded") mdi-chevron-left
+          //- save button?
           slot(name="actions")
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")

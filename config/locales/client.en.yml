@@ -695,10 +695,12 @@ en:
     underline: Underline
     link: Link
     code_block: Code block
+    insert_image: Insert image
     attach: Attach file
-    heading1: Big heading
-    heading2: Medium heading
-    heading3: Small heading
+    heading_size: Heading size
+    heading1: Heading 1
+    heading2: Heading 2
+    heading3: Heading 3
     paragraph: Paragraph
     bullet_list: List
     number_list: Numbered list
@@ -715,7 +717,8 @@ en:
     add_row_after: Add row after
     remove_row: Remove row
     merge_selected: Merge selected cells
-    switch_to_markdown: Switch to Markdown
+    edit_markdown: Edit Markdown
+    markdown_confirm: Some formatting may be lost converting wysiwyg content to markdown.
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -2205,12 +2208,6 @@ en:
       poll_closing_soon: A poll is expiring soon
       poll_expired: A poll has expired
       outcome_created: An outcome has been shared
-
-  convert_to_markdown:
-    title: Convert to Markdown
-    body:
-      Press OK to convert WYSIWYG content to Markdown. Some minor formatting differences may occur.
-      To use Markdown by default, go to 'Edit Profile' and save your Introduction as Markdown.
 
   configure_sso:
     redirecting: Please wait, redirecting to sign-in provider

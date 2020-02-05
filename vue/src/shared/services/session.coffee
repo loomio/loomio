@@ -38,7 +38,11 @@ loadLocale = (locale) ->
         setI18nLanguage(locale)
 
 export default new class Session
-  defaultFormat: -> @user().shortBioFormat || 'html'
+  defaultFormat: ->
+    if @user().experiences['html-editor.uses-markdown']
+      'md'
+    else
+      'html'
 
   fetch: ->
     # unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token')

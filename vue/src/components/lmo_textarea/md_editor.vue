@@ -2,6 +2,7 @@
 import { convertToHtml } from '@/shared/services/format_converter'
 import getCaretCoordinates from 'textarea-caret'
 import Mentioning from './mentioning.coffee'
+import Records from '@/shared/services/records'
 import SuggestionList from './suggestion_list'
 
 export default
@@ -25,9 +26,12 @@ export default
     query: ''
     navigatedUserIndex: 0
     suggestionListStyles: {}
+    preview: false
 
   methods:
-    convertToHtml: convertToHtml
+    convertToHtml: ->
+      convertToHtml(@model, @field)
+      Records.users.removeExperience('html-editor.uses-markdown')
 
     textarea: ->
       @$refs.field.$el.querySelector('textarea')
@@ -78,8 +82,16 @@ export default
 
 <template lang="pug">
 div(style="position: relative")
-  v-textarea(v-model="model[field]" @keyup="onKeyUp" @keydown="onKeyDown" ref="field")
-  v-btn(@click="convertToHtml(model, field)") HTML
-  slot(name="actions")
+  v-textarea(v-if="!preview" v-model="model[field]" @keyup="onKeyUp" @keydown="onKeyDown" ref="field")
+  formatted-text(v-if="preview" :model="model" :column="field")
+  v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
+    p No content to preview
+
+  v-layout(align-center)
+    v-btn(text x-small @click="convertToHtml(model, field)") Use WYSIWYG
+    v-btn(text x-small href="/markdown" target="_blank") Markdown help
+    v-spacer
+    v-btn.mr-4(text @click="preview = !preview") Preview
+    slot(name="actions")
   suggestion-list(:query="query" :filtered-users="filteredUsers" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername)
 </template>
