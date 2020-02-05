@@ -1,11 +1,8 @@
 <script lang="coffee">
-import { detect } from 'detect-browser'
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
-import {concat, sortBy, isString, filter, uniq, map, forEach, isEmpty} from 'lodash'
 import FileUploader from '@/shared/services/file_uploader'
 import FilesList from './files_list.vue'
-import detectIt from 'detect-it'
 import EventBus from '@/shared/services/event_bus'
 import I18n from '@/i18n'
 import { convertToMd } from '@/shared/services/format_converter'
@@ -171,10 +168,6 @@ export default
     format: ->
       @model["#{@field}Format"]
 
-    inlineBubbleMenu: ->
-      browser = detect()
-      browser.name == 'firefox' || browser.name == 'safari' || detectIt.primaryInput == 'touch'
-
   created: ->
     @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
 
@@ -225,7 +218,7 @@ export default
       @emitUploading()
 
     removeFile: (name) ->
-      @files = filter @files, (wrapper) -> wrapper.file.name != name
+      @files = @files.filter (wrapper) -> wrapper.file.name != name
 
     attachFile: ({file}) ->
       wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null}
@@ -253,7 +246,7 @@ export default
       , onFailure)
 
     fileSelected: ->
-      forEach(@$refs.filesField.files, (file) => @attachFile(file: file))
+      @$refs.filesField.files.forEach (file) => @attachFile(file: file)
 
     upHandler: ->
       @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length

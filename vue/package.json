@@ -25,8 +25,6 @@
     "date-fns": "2.9.0",
     "date-fns-tz": "1.0.9",
     "deepmerge": "^4.2.2",
-    "detect-browser": "^4.8.0",
-    "detect-it": "^3.0.5",
     "diff-match-patch": "^1.0.4",
     "es6-shim": "^0.35.5",
     "intersection-observer": "^0.7.0",
