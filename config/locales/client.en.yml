@@ -779,6 +779,7 @@ en:
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
   group_page:
+    stats: Group stats
     threads: Threads
     polls: Polls
     members: Members

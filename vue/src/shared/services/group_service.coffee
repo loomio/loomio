@@ -130,6 +130,14 @@ export default new class GroupService
           props:
             group: group
 
+    group_stats:
+      name: 'group_page.stats'
+      icon: 'mdi-chart-bar'
+      canPerform: ->
+        AbilityService.canAdministerGroup(group)
+      perform: ->
+        window.open("#{AppConfig.baseUrl}g/#{group.key}/stats?export=1", "_blank")
+
     leave_group:
       name: 'group_page.options.leave_group'
       icon: 'mdi-exit-to-app'

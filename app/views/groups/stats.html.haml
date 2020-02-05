@@ -6,32 +6,38 @@
         .v-image__image.v-image__image--cover{:style => "background-image: url(#{@group.cover_photo.url(:largedesktop)}); background-position: center center;"}
       %h1.display-1.my-4
         %span.group-page__name.mr-4= @group.full_name
-      .lmo-markdown-wrapper.body-2.text--primary.group-page__description
-        = raw render_rich_text(@group.description, @group.description_format)
       %hr.mt-4.v-divider.theme--light{"aria-orientation" => "horizontal", :role => "separator"}/
       .v-card.v-card--outlined.v-sheet.theme--light.mt-2.px-3
         %div.py-3.px-3.stretch
-          %span.headline Group stats
-          %table
+          %div.pb-3
+            %span.headline= t(:"group.stats.group_stats")
+            %br
+            %span.caption.pl-2
+              %span= render 'discussions/time_ago', time: @group.created_at
+              %span to
+              %span= render 'discussions/time_ago', time: Time.now
+          %table{ style: "height: 100%; width: 100%" }
             %tr
               %th
-                %h4{ style: "text-align: center" } Visits
+                %h4{ style: "text-align: center" }= t(:"group.stats.visits")
               %th
-                %h4{ style: "text-align: center" } Members
+                %h4{ style: "text-align: center" }= t(:"group.stats.members")
               %th
-                %h4{ style: "text-align: center" } Subgroups
+                %h4{ style: "text-align: center" }= t(:"group.stats.subgroups")
               %th
-                %h4{ style: "text-align: center" } Threads
+                %h4{ style: "text-align: center" }= t(:"group.stats.threads")
               %th
-                %h4{ style: "text-align: center" } Polls
+                %h4{ style: "text-align: center" }= t(:"group.stats.polls")
               %th
-                %h4{ style: "text-align: center" } Thread items
+                %h4{ style: "text-align: center" }= t(:"group.stats.votes")
+              %th
+                %h4{ style: "text-align: center" }= t(:"group.stats.comments")
 
             %tr
               %td
                 %h2{ style: "text-align: center"}= Queries::GroupStats.visits_count(@group)
               %td
-                %h2{ style: "text-align: center"}= @group.org_memberships_count
+                %h2{ style: "text-align: center"}= @group.memberships_count
               %td
                 %h2{ style: "text-align: center"}= @group.subgroups.count
               %td
@@ -39,26 +45,36 @@
               %td
                 %h2{ style: "text-align: center"}= Queries::GroupStats.polls_count(@group)
               %td
-                %h2{ style: "text-align: center"}= Queries::GroupStats.thread_items_count(@group)
+                %h2{ style: "text-align: center"}= Queries::GroupStats.stances_count(@group)
+              %td
+                %h2{ style: "text-align: center"}= Queries::GroupStats.comments_count(@group)
 
-      - if @group.is_parent?
+      - if @group.is_parent? && @group.subgroups.length > 0
         .v-card.v-card--outlined.v-sheet.theme--light.mt-2.px-3
           %div.py-3.px-3.stretch
-            %span.headline Organisation stats (including subgroups)
-            %table
+            %div.pb-3
+              %span.headline= t(:"group.stats.org_stats")
+              %br
+              %span.caption.pl-2
+                %span= render 'discussions/time_ago', time: @group.created_at
+                %span to
+                %span= render 'discussions/time_ago', time: Time.now
+            %table{ style: "height: 100%; width: 100%" }
               %tr
                 %th
-                  %h4{ style: "text-align: center" } Visits
+                  %h4{ style: "text-align: center" }= t(:"group.stats.visits")
                 %th
-                  %h4{ style: "text-align: center" } Members
+                  %h4{ style: "text-align: center" }= t(:"group.stats.members")
                 %th
-                  %h4{ style: "text-align: center" } Subgroups
+                  %h4{ style: "text-align: center" }= t(:"group.stats.subgroups")
                 %th
-                  %h4{ style: "text-align: center" } Threads
+                  %h4{ style: "text-align: center" }= t(:"group.stats.threads")
                 %th
-                  %h4{ style: "text-align: center" } Polls
+                  %h4{ style: "text-align: center" }= t(:"group.stats.polls")
                 %th
-                  %h4{ style: "text-align: center" } Thread items
+                  %h4{ style: "text-align: center" }= t(:"group.stats.votes")
+                %th
+                  %h4{ style: "text-align: center" }= t(:"group.stats.comments")
 
               %tr
                 %td
@@ -72,4 +88,6 @@
                 %td
                   %h2{ style: "text-align: center"}= Queries::GroupStats.polls_count_including_subgroups(@group)
                 %td
-                  %h2{ style: "text-align: center"}= Queries::GroupStats.thread_items_count_including_subgroups(@group)
+                  %h2{ style: "text-align: center"}= Queries::GroupStats.stances_count_including_subgroups(@group)
+                %td
+                  %h2{ style: "text-align: center"}= Queries::GroupStats.comments_count_including_subgroups(@group)
