@@ -33,7 +33,7 @@ export default
 </script>
 
 <template lang="pug">
-div.lmo-textarea
+div
   label.caption.v-label.v-label--active.theme--light {{label}}
 
   .editor.mb-3

@@ -1,10 +1,11 @@
 <script lang="coffee">
 import { convertToHtml } from '@/shared/services/format_converter'
-import Records from '@/shared/services/records'
-import {concat, sortBy, isString, filter, uniq, map, forEach, isEmpty} from 'lodash'
 import getCaretCoordinates from 'textarea-caret'
+import Mentioning from './mentioning.coffee'
+import SuggestionList from './suggestion_list'
 
 export default
+  mixins: [Mentioning]
   props:
     model: Object
     field: String
@@ -16,11 +17,14 @@ export default
       type: Boolean
       default: false
 
+  components:
+    SuggestionList: SuggestionList
+
   data: ->
     mentionableUserIds: []
     query: ''
     navigatedUserIndex: 0
-    suggestionListStyle: {}
+    suggestionListStyles: {}
 
   methods:
     convertToHtml: convertToHtml
@@ -34,10 +38,9 @@ export default
       if res
         @query = res[1]
         @fetchMentionable()
-        @renderPopup()
+        @updatePopup()
       else
         @query = ''
-        # @destroyPopup()
 
     onKeyDown: (e) ->
       coords = getCaretCoordinates(@textarea(), @textarea().selectionStart)
@@ -72,35 +75,16 @@ export default
       @textarea().value = beforeText + user.username + ' ' + afterText
       @textarea().selectionEnd = (beforeText + user.username).length + 1
 
-    fetchMentionable: ->
-      return unless @query
-      Records.users.fetchMentionable(@query, @model).then (response) =>
-        @mentionableUserIds.concat(uniq @mentionableUserIds + map(response.users, 'id'))
-
-    mentionPosition: ->
-
-    renderPopup: ->
+    updatePopup: ->
       return unless @$refs.field
       coords = getCaretCoordinates(@textarea(), @textarea().selectionStart - @query.length)
       rect = @textarea().getBoundingClientRect();
       offset = "#{coords.left}, -#{coords.top - @textarea().scrollTop} "
 
-      @suggestionListStyle =
+      @suggestionListStyles =
         position: 'absolute'
-        top: "#{(coords.top - @textarea().scrollTop) + coords.height + 16}px"
-        left: "#{coords.left}px"
-
-  computed:
-    showSuggestions: -> @query || @filteredUsers.length
-    filteredUsers: ->
-      return [] unless @query
-      unsorted = filter Records.users.collection.chain().find(@mentionableUserIds).data(), (u) =>
-        isString(u.username) &&
-        ((u.name || '').toLowerCase().startsWith(@query) or
-        (u.username || '').toLowerCase().startsWith(@query) or
-        (u.name || '').toLowerCase().includes(" #{@query}"))
-      sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
-
+        top: ((coords.top - @textarea().scrollTop) + coords.height + 16) + 'px'
+        left: coords.left + 'px'
 </script>
 
 <template lang="pug">
@@ -108,16 +92,5 @@ div(style="position: relative")
   v-textarea(v-model="model[field]" @keyup="onKeyUp" @keydown="onKeyDown" ref="field")
   v-btn(@click="convertToHtml(model, field)") HTML
   slot(name="actions")
-  v-card(outlined elevation=4 v-show='showSuggestions' ref='suggestions' :style="suggestionListStyle")
-    template(v-if='filteredUsers.length')
-      v-list(dense)
-        v-list-item(dense v-for='(user, index) in filteredUsers', :key='user.id', :class="{ 'v-list-item--active': navigatedUserIndex === index }", @click='selectUser(user)')
-          v-list-item-icon
-            user-avatar(:user="user" size=36)
-          v-list-item-content
-            v-list-item-title
-              | {{ user.name }}
-            v-list-item-subtitle
-              | {{ "@" + user.username }}
-    v-card-subtitle(v-else v-t="'common.no_results_found'")
+  suggestion-list(:query="query" :filtered-users="filteredUsers" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername)
 </template>
