@@ -9,8 +9,10 @@ export default
   data: ->
     expand: false
   computed:
+    isTooLong: ->
+      @name.length > 30
     displayName: ->
-      if @name.length > 30
+      if @isTooLong
         @name.substring(0, 30) + "..."
       else
         @name
@@ -19,7 +21,7 @@ export default
 <template lang="pug">
 v-menu(v-model="expand" bottom='' right='' transition='scale-transition' origin='top left')
   template(v-slot:activator='{ on }')
-    v-chip(v-on="on" :close="removable" :color="color" @click:close="remove(name)") {{displayName}}
+    v-chip(v-on="isTooLong && on" :close="removable" :color="color" @click:close="remove(name)") {{displayName}}
   v-card(:style="'background-color: ' + color")
     v-card-text
       span {{name}}
