@@ -50,6 +50,7 @@
               %td
                 %p{ style: "text-align: center"}= Queries::GroupStats.comments_count(@group)
           - if Queries::GroupStats.polls_count(@group) > 0
+            - poll_types_count = Queries::GroupStats.poll_types_count(@group)
             %table{ style: "height: 100%; width: 100%"}
               %span= t(:"group.stats.polls")
               %tr
@@ -69,19 +70,19 @@
                   %p{ style: "text-align: center" }= t(:"group.stats.poll_types.time")
               %tr
                 %th
-                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["proposal"] || 0
+                  %p{ style: "text-align: center" }= poll_types_count["proposal"] || 0
                 %th
-                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["count"] || 0
+                  %p{ style: "text-align: center" }= poll_types_count["count"] || 0
                 %th
-                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["poll"] || 0
+                  %p{ style: "text-align: center" }= poll_types_count["poll"] || 0
                 %th
-                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["dot_vote"] || 0
+                  %p{ style: "text-align: center" }= poll_types_count["dot_vote"] || 0
                 %th
-                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["score"] || 0
+                  %p{ style: "text-align: center" }= poll_types_count["score"] || 0
                 %th
-                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["ranked_choice"] || 0
+                  %p{ style: "text-align: center" }= poll_types_count["ranked_choice"] || 0
                 %th
-                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["meeting"] || 0
+                  %p{ style: "text-align: center" }= poll_types_count["meeting"] || 0
 
       - if @group.is_parent? && @group.subgroups.any?
         .v-card.v-card--outlined.v-sheet.theme--light.mt-2.px-3
@@ -128,6 +129,7 @@
                   %p{ style: "text-align: center"}= Queries::GroupStats.comments_count(@group.id_and_subgroup_ids)
 
             - if Queries::GroupStats.polls_count(@group) > 0
+              - org_poll_types_count = Queries::GroupStats.poll_types_count(@group.id_and_subgroup_ids)
               %table{ style: "height: 100%; width: 100%"}
                 %span= t(:"group.stats.polls")
                 %tr
@@ -147,16 +149,16 @@
                     %p{ style: "text-align: center" }= t(:"group.stats.poll_types.time")
                 %tr
                   %th
-                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group.id_and_subgroup_ids)["proposal"] || 0
+                    %p{ style: "text-align: center" }= org_poll_types_count["proposal"] || 0
                   %th
-                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group.id_and_subgroup_ids)["count"] || 0
+                    %p{ style: "text-align: center" }= org_poll_types_count["count"] || 0
                   %th
-                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group.id_and_subgroup_ids)["poll"] || 0
+                    %p{ style: "text-align: center" }= org_poll_types_count["poll"] || 0
                   %th
-                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group.id_and_subgroup_ids)["dot_vote"] || 0
+                    %p{ style: "text-align: center" }= org_poll_types_count["dot_vote"] || 0
                   %th
-                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group.id_and_subgroup_ids)["score"] || 0
+                    %p{ style: "text-align: center" }= org_poll_types_count["score"] || 0
                   %th
-                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group.id_and_subgroup_ids)["ranked_choice"] || 0
+                    %p{ style: "text-align: center" }= org_poll_types_count["ranked_choice"] || 0
                   %th
-                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group.id_and_subgroup_ids)["meeting"] || 0
+                    %p{ style: "text-align: center" }= org_poll_types_count["meeting"] || 0
