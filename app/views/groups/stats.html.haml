@@ -1,0 +1,72 @@
+.group-page.mt-12
+  %main.v-content
+    .container.max-width-1024
+      .v-responsive.v-image{:style => "border-radius: 8px;"}
+        .v-responsive__sizer{:style => "padding-bottom: 20.4082%;"}
+        .v-image__image.v-image__image--cover{:style => "background-image: url(#{@group.cover_photo.url(:largedesktop)}); background-position: center center;"}
+      %h1.display-1.my-4
+        %span.group-page__name.mr-4= @group.full_name
+      %hr.mt-4.v-divider.theme--light{"aria-orientation" => "horizontal", :role => "separator"}/
+      .v-card.v-card--outlined.v-sheet.theme--light.mt-2.px-3
+        %div.py-3.px-3.stretch
+          %div.pb-3
+            %span.headline= t(:"group.stats.group_stats")
+            %br
+            %span.caption
+              %span= render 'discussions/time_ago', time: @group.created_at
+              %span -
+              %span= render 'discussions/time_ago', time: Time.now
+          %table{ style: "height: 100%; width: 100%" }
+            = render 'groups/stats/general_header'
+            %tr
+              %td
+                %p{ style: "text-align: center"}= Queries::GroupStats.visits_count(@group)
+              %td
+                %p{ style: "text-align: center"}= @group.memberships_count
+              %td
+                %p{ style: "text-align: center"}= @group.subgroups.count
+              %td
+                %p{ style: "text-align: center"}= Queries::GroupStats.discussions_count(@group)
+              %td
+                %p{ style: "text-align: center"}= Queries::GroupStats.polls_count(@group)
+              %td
+                %p{ style: "text-align: center"}= Queries::GroupStats.stances_count(@group)
+              %td
+                %p{ style: "text-align: center"}= Queries::GroupStats.comments_count(@group)
+          - if Queries::GroupStats.polls_count(@group) > 0
+            %table{ style: "height: 100%; width: 100%"}
+              = render 'groups/stats/polls_header'
+              = render 'groups/stats/poll_type_count', poll_type_count: Queries::GroupStats.poll_types_count(@group)
+
+      - if @group.is_parent? && @group.subgroups.any?
+        .v-card.v-card--outlined.v-sheet.theme--light.mt-2.px-3
+          %div.py-3.px-3.stretch
+            %div.pb-3
+              %span.headline= t(:"group.stats.org_stats")
+              %br
+              %span.caption
+                %span= render 'discussions/time_ago', time: @group.created_at
+                %span -
+                %span= render 'discussions/time_ago', time: Time.now
+            %table{ style: "height: 100%; width: 100%" }
+              = render 'groups/stats/general_header'
+              %tr
+                %td
+                  %p{ style: "text-align: center"}= Queries::GroupStats.org_visits_count(@group)
+                %td
+                  %p{ style: "text-align: center"}= @group.org_memberships_count
+                %td
+                  %p{ style: "text-align: center"}= @group.subgroups.count
+                %td
+                  %p{ style: "text-align: center"}= Queries::GroupStats.discussions_count(@group.id_and_subgroup_ids)
+                %td
+                  %p{ style: "text-align: center"}= Queries::GroupStats.polls_count(@group.id_and_subgroup_ids)
+                %td
+                  %p{ style: "text-align: center"}= Queries::GroupStats.stances_count(@group.id_and_subgroup_ids)
+                %td
+                  %p{ style: "text-align: center"}= Queries::GroupStats.comments_count(@group.id_and_subgroup_ids)
+
+            - if Queries::GroupStats.polls_count(@group) > 0
+              %table{ style: "height: 100%; width: 100%"}
+                = render 'groups/stats/polls_header'
+                = render 'groups/stats/poll_type_count', poll_type_count: Queries::GroupStats.poll_types_count(@group.id_and_subgroup_ids)

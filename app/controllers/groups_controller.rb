@@ -25,4 +25,8 @@ class GroupsController < ApplicationController
       format.csv { send_data @exporter.to_csv }
     end
   end
+
+  def stats
+    @group = load_and_authorize(:formal_group, :export)
+  end
 end

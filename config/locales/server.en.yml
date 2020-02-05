@@ -24,6 +24,26 @@ en:
   group:
     error:
       handle_must_begin_with_parent_handle: "Must begin with %{parent_handle}-"
+    stats:
+      group_stats: Group stats
+      org_stats: Organisation stats (including subgroups)
+      visits: Visits
+      members: Members
+      subgroups: Subgroups
+      threads: Threads
+      polls: Polls
+      votes: Votes
+      comments: Comments
+      general: General
+      polls: Polls
+      poll_types:
+        proposal: Proposal
+        count: Count
+        choose: Choose
+        allocate: Allocate
+        score: Score
+        rank: Rank
+        time: Time poll
 
   user:
     deleted_user: "Deleted User"
