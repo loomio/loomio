@@ -43,14 +43,6 @@ export default
         @query = ''
 
     onKeyDown: (e) ->
-      coords = getCaretCoordinates(@textarea(), @textarea().selectionStart)
-      rect = @textarea().getBoundingClientRect();
-      # console.log coords, rect,
-      #   scrollTop: @textarea().scrollTop
-      #   scrollHeight: @textarea().scrollHeight
-      #   scrollHeightMinusScrollTop: @textarea().scrollHeight - @textarea().scrollTop
-      #   clientHeight: @textarea().clientHeight
-      #   top_minus_scrolltop: coords.top - @textarea().scrollTop
       if @query
         # up
         if (event.keyCode == 38)
@@ -78,9 +70,6 @@ export default
     updatePopup: ->
       return unless @$refs.field
       coords = getCaretCoordinates(@textarea(), @textarea().selectionStart - @query.length)
-      rect = @textarea().getBoundingClientRect();
-      offset = "#{coords.left}, -#{coords.top - @textarea().scrollTop} "
-
       @suggestionListStyles =
         position: 'absolute'
         top: ((coords.top - @textarea().scrollTop) + coords.height + 16) + 'px'

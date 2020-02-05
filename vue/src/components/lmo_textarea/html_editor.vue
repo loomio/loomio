@@ -240,7 +240,6 @@ export default
     fileSelected: ->
       forEach(@$refs.filesField.files, (file) => @attachFile(file: file))
 
-    # mentioning methods
     upHandler: ->
       @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length
 
@@ -292,83 +291,84 @@ div
   .editor.mb-3
     editor-content.html-editor__textarea(:editor='editor').lmo-markdown-wrapper
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
-      v-layout.menubar.py-2(align-center)
-        v-layout(style="overflow: scroll")
-          v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-            template(v-slot:activator="{on}")
-              v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
-                v-icon mdi-emoticon-outline
-            emoji-picker(:insert="emojiPicked")
-          v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' :title="$t('formatting.bold')")
-            v-icon mdi-format-bold
-          v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' :title="$t('formatting.italicize')")
-            v-icon mdi-format-italic
-          v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' :title="$t('formatting.strikethrough')")
-            v-icon mdi-format-strikethrough
-          v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' :title="$t('formatting.underline')")
-            v-icon mdi-format-underline
-          v-btn(small icon @click="linkDialogIsOpen = true")
-            v-icon mdi-link-variant
-          v-dialog(v-model="linkDialogIsOpen" max-width="600px")
-            v-card
-              v-card-title.title(v-t="'text_editor.insert_link'")
-              v-card-text
-                v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl(commands.link)")
-              v-card-actions
-                v-spacer
-                v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
-          v-btn(icon :class="{'is-active': isActive.underline() }", @click='$refs.filesField.click()' :title="$t('formatting.attach')")
-            v-icon mdi-paperclip
-          v-btn(icon :class="{'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })' :title="$t('formatting.heading1')")
-            v-icon mdi-format-header-1
-          v-btn(icon :class="{'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })' :title="$t('formatting.heading2')")
-            v-icon mdi-format-header-2
-          v-btn(icon :class="{'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })' :title="$t('formatting.heading3')")
-            v-icon mdi-format-header-3
-          v-btn(icon :class="{'is-active': isActive.bullet_list() }", @click='commands.bullet_list' :title="$t('formatting.bullet_list')")
-            v-icon mdi-format-list-bulleted
-          v-btn(icon :class="{'is-active': isActive.ordered_list() }", @click='commands.ordered_list' :title="$t('formatting.number_list')")
-            v-icon mdi-format-list-numbered
-          v-btn(icon @click='commands.todo_list' :title="$t('formatting.check_list')")
-            v-icon mdi-format-list-checks
-          v-btn(small icon :class="{'is-active': isActive.blockquote() }", @click='commands.blockquote' :title="$t('formatting.quote')")
-            v-icon mdi-format-quote-close
-          v-btn(small icon :class="{'is-active': isActive.code_block() }", @click='commands.code_block' :title="$t('formatting.code_block')")
-            v-icon mdi-code-braces
-          v-btn(small icon @click="iframeDialogIsOpen = true" :title="$t('formatting.embed')")
-            v-icon mdi-youtube
-          v-btn(small icon @click="convertToMd(model, field)" title="MD")
-            v-icon mdi-markdown
-          v-dialog(v-model="iframeDialogIsOpen" max-width="600px")
-            v-card
-              v-card-title.title(v-t="'text_editor.insert_embedded_url'")
-              v-card-text
-                v-text-field(type="url" label="e.g. https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
-              v-card-actions
-                v-spacer
-                v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
-          v-btn(icon @click='commands.horizontal_rule' :title="$t('formatting.divider')")
-            v-icon mdi-minus
-          v-btn(icon @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })" :title="$t('formatting.add_table')")
-            v-icon mdi-table
-          span(v-if="isActive.table()")
-            v-btn(icon @click="commands.deleteTable" :title="$t('formatting.remove_table')")
-              v-icon mdi-table-remove
-            v-btn(icon @click="commands.addColumnBefore" :title="$t('formatting.add_column_before')")
-              v-icon mdi-table-column-plus-before
-            v-btn(icon @click="commands.addColumnAfter" :title="$t('formatting.add_column_after')")
-              v-icon mdi-table-column-plus-after
-            v-btn(icon @click="commands.deleteColumn" :title="$t('formatting.remove_column')")
-              v-icon mdi-table-column-remove
-            v-btn(icon @click="commands.addRowBefore" :title="$t('formatting.add_row_before')")
-              v-icon mdi-table-row-plus-before
-            v-btn(icon @click="commands.addRowAfter" :title="$t('formatting.add_row_after')")
-              v-icon mdi-table-row-plus-after
-            v-btn(icon @click="commands.deleteRow" :title="$t('formatting.remove_row')")
-              v-icon mdi-table-row-remove
-            v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
-              v-icon mdi-table-merge-cells
-        slot(name="actions")
+      div
+        v-layout.menubar(align-center v-if="isActive.table()")
+          v-btn(icon @click="commands.deleteTable" :title="$t('formatting.remove_table')")
+            v-icon mdi-table-remove
+          v-btn(icon @click="commands.addColumnBefore" :title="$t('formatting.add_column_before')")
+            v-icon mdi-table-column-plus-before
+          v-btn(icon @click="commands.addColumnAfter" :title="$t('formatting.add_column_after')")
+            v-icon mdi-table-column-plus-after
+          v-btn(icon @click="commands.deleteColumn" :title="$t('formatting.remove_column')")
+            v-icon mdi-table-column-remove
+          v-btn(icon @click="commands.addRowBefore" :title="$t('formatting.add_row_before')")
+            v-icon mdi-table-row-plus-before
+          v-btn(icon @click="commands.addRowAfter" :title="$t('formatting.add_row_after')")
+            v-icon mdi-table-row-plus-after
+          v-btn(icon @click="commands.deleteRow" :title="$t('formatting.remove_row')")
+            v-icon mdi-table-row-remove
+          v-btn(icon @click="commands.toggleCellMerge" :title="$t('formatting.merge_selected')")
+            v-icon mdi-table-merge-cells
+        v-layout.menubar.py-2(align-center)
+          v-layout(style="overflow: scroll")
+            v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+              template(v-slot:activator="{on}")
+                v-btn.emoji-picker__toggle(v-on="on" small icon :class="{ 'is-active': isActive.underline() }")
+                  v-icon mdi-emoticon-outline
+              emoji-picker(:insert="emojiPicked")
+            v-btn(small icon :class="{ 'is-active': isActive.bold() }", @click='commands.bold' :title="$t('formatting.bold')")
+              v-icon mdi-format-bold
+            v-btn(small icon :class="{ 'is-active': isActive.italic() }", @click='commands.italic' :title="$t('formatting.italicize')")
+              v-icon mdi-format-italic
+            v-btn(small icon :class="{ 'is-active': isActive.strike() }", @click='commands.strike' :title="$t('formatting.strikethrough')")
+              v-icon mdi-format-strikethrough
+            v-btn(small icon :class="{ 'is-active': isActive.underline() }", @click='commands.underline' :title="$t('formatting.underline')")
+              v-icon mdi-format-underline
+            v-btn(small icon @click="linkDialogIsOpen = true")
+              v-icon mdi-link-variant
+            v-dialog(v-model="linkDialogIsOpen" max-width="600px")
+              v-card
+                v-card-title.title(v-t="'text_editor.insert_link'")
+                v-card-text
+                  v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl(commands.link)")
+                v-card-actions
+                  v-spacer
+                  v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
+            v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
+              v-icon mdi-paperclip
+            v-btn(icon :class="{'is-active': isActive.heading({ level: 1 }) }", @click='commands.heading({ level: 1 })' :title="$t('formatting.heading1')")
+              v-icon mdi-format-header-1
+            v-btn(icon :class="{'is-active': isActive.heading({ level: 2 }) }", @click='commands.heading({ level: 2 })' :title="$t('formatting.heading2')")
+              v-icon mdi-format-header-2
+            v-btn(icon :class="{'is-active': isActive.heading({ level: 3 }) }", @click='commands.heading({ level: 3 })' :title="$t('formatting.heading3')")
+              v-icon mdi-format-header-3
+            v-btn(icon :class="{'is-active': isActive.bullet_list() }", @click='commands.bullet_list' :title="$t('formatting.bullet_list')")
+              v-icon mdi-format-list-bulleted
+            v-btn(icon :class="{'is-active': isActive.ordered_list() }", @click='commands.ordered_list' :title="$t('formatting.number_list')")
+              v-icon mdi-format-list-numbered
+            v-btn(icon @click='commands.todo_list' :title="$t('formatting.check_list')")
+              v-icon mdi-format-list-checks
+            v-btn(small icon :class="{'is-active': isActive.blockquote() }", @click='commands.blockquote' :title="$t('formatting.quote')")
+              v-icon mdi-format-quote-close
+            v-btn(small icon :class="{'is-active': isActive.code_block() }", @click='commands.code_block' :title="$t('formatting.code_block')")
+              v-icon mdi-code-braces
+            v-btn(small icon @click="iframeDialogIsOpen = true" :title="$t('formatting.embed')")
+              v-icon mdi-youtube
+            v-btn(small icon @click="convertToMd(model, field)" title="MD")
+              v-icon mdi-markdown
+            v-dialog(v-model="iframeDialogIsOpen" max-width="600px")
+              v-card
+                v-card-title.title(v-t="'text_editor.insert_embedded_url'")
+                v-card-text
+                  v-text-field(type="url" label="e.g. https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
+                v-card-actions
+                  v-spacer
+                  v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
+            v-btn(icon @click='commands.horizontal_rule' :title="$t('formatting.divider')")
+              v-icon mdi-minus
+            v-btn(icon @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })" :title="$t('formatting.add_table')")
+              v-icon mdi-table
+          slot(name="actions")
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
 
