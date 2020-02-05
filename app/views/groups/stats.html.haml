@@ -17,37 +17,71 @@
               %span -
               %span= render 'discussions/time_ago', time: Time.now
           %table{ style: "height: 100%; width: 100%" }
+            %span General
             %tr
               %th
-                %h4{ style: "text-align: center" }= t(:"group.stats.visits")
+                %p{ style: "text-align: center" }= t(:"group.stats.visits")
               %th
-                %h4{ style: "text-align: center" }= t(:"group.stats.members")
+                %p{ style: "text-align: center" }= t(:"group.stats.members")
               %th
-                %h4{ style: "text-align: center" }= t(:"group.stats.subgroups")
+                %p{ style: "text-align: center" }= t(:"group.stats.subgroups")
               %th
-                %h4{ style: "text-align: center" }= t(:"group.stats.threads")
+                %p{ style: "text-align: center" }= t(:"group.stats.threads")
               %th
-                %h4{ style: "text-align: center" }= t(:"group.stats.polls")
+                %p{ style: "text-align: center" }= t(:"group.stats.polls")
               %th
-                %h4{ style: "text-align: center" }= t(:"group.stats.votes")
+                %p{ style: "text-align: center" }= t(:"group.stats.votes")
               %th
-                %h4{ style: "text-align: center" }= t(:"group.stats.comments")
+                %p{ style: "text-align: center" }= t(:"group.stats.comments")
 
             %tr
               %td
-                %h2{ style: "text-align: center"}= Queries::GroupStats.visits_count(@group)
+                %p{ style: "text-align: center"}= Queries::GroupStats.visits_count(@group)
               %td
-                %h2{ style: "text-align: center"}= @group.memberships_count
+                %p{ style: "text-align: center"}= @group.memberships_count
               %td
-                %h2{ style: "text-align: center"}= @group.subgroups.count
+                %p{ style: "text-align: center"}= @group.subgroups.count
               %td
-                %h2{ style: "text-align: center"}= Queries::GroupStats.discussions_count(@group)
+                %p{ style: "text-align: center"}= Queries::GroupStats.discussions_count(@group)
               %td
-                %h2{ style: "text-align: center"}= Queries::GroupStats.polls_count(@group)
+                %p{ style: "text-align: center"}= Queries::GroupStats.polls_count(@group)
               %td
-                %h2{ style: "text-align: center"}= Queries::GroupStats.stances_count(@group)
+                %p{ style: "text-align: center"}= Queries::GroupStats.stances_count(@group)
               %td
-                %h2{ style: "text-align: center"}= Queries::GroupStats.comments_count(@group)
+                %p{ style: "text-align: center"}= Queries::GroupStats.comments_count(@group)
+          - if Queries::GroupStats.polls_count(@group) > 0
+            %table{ style: "height: 100%; width: 100%"}
+              %span Polls
+              %tr
+                %th
+                  %p{ style: "text-align: center" } Proposal
+                %th
+                  %p{ style: "text-align: center" } Count
+                %th
+                  %p{ style: "text-align: center" } Choose
+                %th
+                  %p{ style: "text-align: center" } Allocate
+                %th
+                  %p{ style: "text-align: center" } Score
+                %th
+                  %p{ style: "text-align: center" } Rank
+                %th
+                  %p{ style: "text-align: center" } Time poll
+              %tr
+                %th
+                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["proposal"] || 0
+                %th
+                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["count"] || 0
+                %th
+                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["poll"] || 0
+                %th
+                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["dot_vote"] || 0
+                %th
+                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["score"] || 0
+                %th
+                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["ranked_choice"] || 0
+                %th
+                  %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["meeting"] || 0
 
       - if @group.is_parent? && @group.subgroups.any?
         .v-card.v-card--outlined.v-sheet.theme--light.mt-2.px-3
@@ -60,34 +94,69 @@
                 %span to
                 %span= render 'discussions/time_ago', time: Time.now
             %table{ style: "height: 100%; width: 100%" }
+              %span General
               %tr
                 %th
-                  %h4{ style: "text-align: center" }= t(:"group.stats.visits")
+                  %p{ style: "text-align: center" }= t(:"group.stats.visits")
                 %th
-                  %h4{ style: "text-align: center" }= t(:"group.stats.members")
+                  %p{ style: "text-align: center" }= t(:"group.stats.members")
                 %th
-                  %h4{ style: "text-align: center" }= t(:"group.stats.subgroups")
+                  %p{ style: "text-align: center" }= t(:"group.stats.subgroups")
                 %th
-                  %h4{ style: "text-align: center" }= t(:"group.stats.threads")
+                  %p{ style: "text-align: center" }= t(:"group.stats.threads")
                 %th
-                  %h4{ style: "text-align: center" }= t(:"group.stats.polls")
+                  %p{ style: "text-align: center" }= t(:"group.stats.polls")
                 %th
-                  %h4{ style: "text-align: center" }= t(:"group.stats.votes")
+                  %p{ style: "text-align: center" }= t(:"group.stats.votes")
                 %th
-                  %h4{ style: "text-align: center" }= t(:"group.stats.comments")
+                  %p{ style: "text-align: center" }= t(:"group.stats.comments")
 
               %tr
                 %td
-                  %h2{ style: "text-align: center"}= Queries::GroupStats.visits_count_including_subgroups(@group)
+                  %p{ style: "text-align: center"}= Queries::GroupStats.org_visits_count(@group)
                 %td
-                  %h2{ style: "text-align: center"}= @group.memberships_count
+                  %p{ style: "text-align: center"}= @group.org_memberships_count
                 %td
-                  %h2{ style: "text-align: center"}= @group.subgroups.count
+                  %p{ style: "text-align: center"}= @group.subgroups.count
                 %td
-                  %h2{ style: "text-align: center"}= Queries::GroupStats.discussions_count_including_subgroups(@group)
+                  %p{ style: "text-align: center"}= Queries::GroupStats.discussions_count(@group.id_and_subgroup_ids)
                 %td
-                  %h2{ style: "text-align: center"}= Queries::GroupStats.polls_count_including_subgroups(@group)
+                  %p{ style: "text-align: center"}= Queries::GroupStats.polls_count(@group.id_and_subgroup_ids)
                 %td
-                  %h2{ style: "text-align: center"}= Queries::GroupStats.stances_count_including_subgroups(@group)
+                  %p{ style: "text-align: center"}= Queries::GroupStats.stances_count(@group.id_and_subgroup_ids)
                 %td
-                  %h2{ style: "text-align: center"}= Queries::GroupStats.comments_count_including_subgroups(@group)
+                  %p{ style: "text-align: center"}= Queries::GroupStats.comments_count(@group.id_and_subgroup_ids)
+
+            - if Queries::GroupStats.polls_count(@group) > 0
+              %table{ style: "height: 100%; width: 100%"}
+                %span Polls
+                %tr
+                  %th
+                    %p{ style: "text-align: center" } Proposal
+                  %th
+                    %p{ style: "text-align: center" } Count
+                  %th
+                    %p{ style: "text-align: center" } Choose
+                  %th
+                    %p{ style: "text-align: center" } Allocate
+                  %th
+                    %p{ style: "text-align: center" } Score
+                  %th
+                    %p{ style: "text-align: center" } Rank
+                  %th
+                    %p{ style: "text-align: center" } Time poll
+                %tr
+                  %th
+                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["proposal"] || 0
+                  %th
+                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["count"] || 0
+                  %th
+                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["poll"] || 0
+                  %th
+                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["dot_vote"] || 0
+                  %th
+                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["score"] || 0
+                  %th
+                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["ranked_choice"] || 0
+                  %th
+                    %p{ style: "text-align: center" }= Queries::GroupStats.poll_types_count(@group)["meeting"] || 0
