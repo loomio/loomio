@@ -88,10 +88,10 @@ div(style="position: relative")
     p No content to preview
 
   v-layout(align-center)
-    v-btn(text x-small @click="convertToHtml(model, field)") Use WYSIWYG
-    v-btn(text x-small href="/markdown" target="_blank") Markdown help
+    v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.use_wysiwyg'")
+    v-btn(text x-small href="/markdown" target="_blank" v-t="'formatting.markdown_help'")
     v-spacer
-    v-btn.mr-4(text @click="preview = !preview") Preview
+    v-btn.mr-4(text @click="preview = !preview" v-t="preview ? 'common.action.edit' : 'common.action.preview' ")
     slot(name="actions")
   suggestion-list(:query="query" :filtered-users="filteredUsers" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername)
 </template>

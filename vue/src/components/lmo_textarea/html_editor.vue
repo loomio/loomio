@@ -344,14 +344,14 @@ div
             //- emoji
             v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
               template(v-slot:activator="{on}")
-                v-btn.emoji-picker__toggle(v-on="on" icon)
+                v-btn.emoji-picker__toggle(v-on="on" icon  :title="$t('formatting.insert_emoji')")
                   v-icon mdi-emoticon-outline
               emoji-picker(:insert="emojiPicked")
 
             //- headings menu
             v-menu(v-if="!expanded")
               template(v-slot:activator="{ on }")
-                v-btn.drop-down-button(icon v-on="on" :title="$t('formatting.heading')")
+                v-btn.drop-down-button(icon v-on="on" :title="$t('formatting.heading_size')")
                   v-icon mdi-format-size
                   v-icon.menu-down-arrow mdi-menu-down
               v-list(dense)
@@ -381,7 +381,7 @@ div
               v-icon mdi-format-italic
 
             //- list menu (always a menu)
-            v-menu
+            v-menu(v-if="expanded")
               template(v-slot:activator="{ on }")
                 v-btn.drop-down-button(icon v-on="on")
                   v-icon mdi-format-list-bulleted

@@ -164,6 +164,7 @@ en:
     total: Total
     action:
       print: Print
+      preview: Preview
       pin: Pin
       unpin: Unpin
       search: 'Search'
@@ -693,9 +694,10 @@ en:
     italicize: Italicize
     strikethrough: Strikethrough
     underline: Underline
-    link: Link
+    link: Insert link
     code_block: Code block
     insert_image: Insert image
+    insert_emoji: Insert emoji
     attach: Attach file
     heading_size: Heading size
     heading1: Heading 1
@@ -717,7 +719,9 @@ en:
     add_row_after: Add row after
     remove_row: Remove row
     merge_selected: Merge selected cells
+    use_wysiwyg: Use wysiwyg
     edit_markdown: Edit Markdown
+    markdown_help: Markdown help
     markdown_confirm: Some formatting may be lost converting wysiwyg content to markdown.
 
   cover_photo_form:
