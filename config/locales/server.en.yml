@@ -34,6 +34,16 @@ en:
       polls: Polls
       votes: Votes
       comments: Comments
+      general: General
+      polls: Polls
+      poll_types:
+        proposal: Proposal
+        count: Count
+        choose: Choose
+        allocate: Allocate
+        score: Score
+        rank: Rank
+        time: Time poll
 
   user:
     deleted_user: "Deleted User"
