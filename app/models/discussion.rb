@@ -97,7 +97,6 @@ class Discussion < ApplicationRecord
   define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
   define_counter_cache(:versions_count)       { |discussion| discussion.versions.count }
   define_counter_cache(:items_count)          { |discussion| discussion.items.count }
-  define_counter_cache(:comments_count)       { |discussion| discussion.comments.count }
   define_counter_cache(:seen_by_count)        { |discussion| discussion.discussion_readers.where("last_read_at is not null").count }
 
   update_counter_cache :group, :discussions_count
