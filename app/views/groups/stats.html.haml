@@ -17,23 +17,7 @@
               %span -
               %span= render 'discussions/time_ago', time: Time.now
           %table{ style: "height: 100%; width: 100%" }
-            %span= t(:"group.stats.general")
-            %tr
-              %th
-                %p{ style: "text-align: center" }= t(:"group.stats.visits")
-              %th
-                %p{ style: "text-align: center" }= t(:"group.stats.members")
-              %th
-                %p{ style: "text-align: center" }= t(:"group.stats.subgroups")
-              %th
-                %p{ style: "text-align: center" }= t(:"group.stats.threads")
-              %th
-                %p{ style: "text-align: center" }= t(:"group.stats.polls")
-              %th
-                %p{ style: "text-align: center" }= t(:"group.stats.votes")
-              %th
-                %p{ style: "text-align: center" }= t(:"group.stats.comments")
-
+            = render 'groups/stats/general_header'
             %tr
               %td
                 %p{ style: "text-align: center"}= Queries::GroupStats.visits_count(@group)
@@ -52,22 +36,7 @@
           - if Queries::GroupStats.polls_count(@group) > 0
             - poll_types_count = Queries::GroupStats.poll_types_count(@group)
             %table{ style: "height: 100%; width: 100%"}
-              %span= t(:"group.stats.polls")
-              %tr
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.poll_types.proposal")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.poll_types.count")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.poll_types.choose")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.poll_types.allocate")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.poll_types.score")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.poll_types.rank")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.poll_types.time")
+              = render 'groups/stats/polls_header'
               %tr
                 %th
                   %p{ style: "text-align: center" }= poll_types_count["proposal"] || 0
@@ -95,23 +64,7 @@
                 %span -
                 %span= render 'discussions/time_ago', time: Time.now
             %table{ style: "height: 100%; width: 100%" }
-              %span= t(:"group.stats.general")
-              %tr
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.visits")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.members")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.subgroups")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.threads")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.polls")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.votes")
-                %th
-                  %p{ style: "text-align: center" }= t(:"group.stats.comments")
-
+              = render 'groups/stats/general_header'
               %tr
                 %td
                   %p{ style: "text-align: center"}= Queries::GroupStats.org_visits_count(@group)
@@ -131,22 +84,7 @@
             - if Queries::GroupStats.polls_count(@group) > 0
               - org_poll_types_count = Queries::GroupStats.poll_types_count(@group.id_and_subgroup_ids)
               %table{ style: "height: 100%; width: 100%"}
-                %span= t(:"group.stats.polls")
-                %tr
-                  %th
-                    %p{ style: "text-align: center" }= t(:"group.stats.poll_types.proposal")
-                  %th
-                    %p{ style: "text-align: center" }= t(:"group.stats.poll_types.count")
-                  %th
-                    %p{ style: "text-align: center" }= t(:"group.stats.poll_types.choose")
-                  %th
-                    %p{ style: "text-align: center" }= t(:"group.stats.poll_types.allocate")
-                  %th
-                    %p{ style: "text-align: center" }= t(:"group.stats.poll_types.score")
-                  %th
-                    %p{ style: "text-align: center" }= t(:"group.stats.poll_types.rank")
-                  %th
-                    %p{ style: "text-align: center" }= t(:"group.stats.poll_types.time")
+                = render 'groups/stats/polls_header'
                 %tr
                   %th
                     %p{ style: "text-align: center" }= org_poll_types_count["proposal"] || 0
