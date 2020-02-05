@@ -14,7 +14,7 @@
             %br
             %span.caption.pl-2
               %span= render 'discussions/time_ago', time: @group.created_at
-              %span to
+              %span -
               %span= render 'discussions/time_ago', time: Time.now
           %table{ style: "height: 100%; width: 100%" }
             %tr
@@ -49,7 +49,7 @@
               %td
                 %h2{ style: "text-align: center"}= Queries::GroupStats.comments_count(@group)
 
-      - if @group.is_parent? && @group.subgroups.length > 0
+      - if @group.is_parent? && @group.subgroups.any?
         .v-card.v-card--outlined.v-sheet.theme--light.mt-2.px-3
           %div.py-3.px-3.stretch
             %div.pb-3
