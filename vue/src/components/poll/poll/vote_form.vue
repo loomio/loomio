@@ -56,7 +56,7 @@ export default
   v-list(column)
     v-list-item.poll-common-vote-form__button(align-center @click='select(option)' v-for='option in orderedPollOptions()' :key='option.id')
       v-list-item-title
-        v-chip.mr-2(:color="option.color") {{ option.name }}
+        poll-option-chip.mr-2(:color="option.color" :name="option.name")
         v-icon(v-if="isSelected(option)" color="accent") mdi-check
   poll-common-add-option-button(:poll='stance.poll()')
   validation-errors(:subject='stance', field='stanceChoices')
