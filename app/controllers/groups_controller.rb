@@ -27,6 +27,6 @@ class GroupsController < ApplicationController
   end
 
   def stats
-    @group = load_and_authorize(:formal_group, :show)
+    @group = load_and_authorize(:formal_group, :export)
   end
 end
