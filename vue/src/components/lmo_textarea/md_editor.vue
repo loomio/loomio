@@ -28,6 +28,7 @@ export default
     preview: false
 
   methods:
+    reset: -> true
     convertToHtml: ->
       convertToHtml(@model, @field)
       Records.users.removeExperience('html-editor.uses-markdown')
@@ -54,7 +55,7 @@ export default
       name = file.name.replace(/[\W_]+/g, '') | 'file';
 
       uploadingText = (pct) ->
-        "![uploading-#{name}](#{"*".repeat parseInt(pct / 10)})"
+        "![uploading-#{name}](#{"*".repeat parseInt(pct / 5)})"
 
       insertPlaceholder = (text) =>
         beforeText = @model[@field].slice(0, @textarea().selectionStart)
@@ -102,9 +103,9 @@ div(style="position: relative")
   v-layout(align-center)
     v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
       v-icon mdi-paperclip
-    v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.use_wysiwyg'")
-    v-btn(text x-small href="/markdown" target="_blank" v-t="'formatting.markdown_help'")
+    v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.wysiwyg'")
     v-spacer
+    v-btn(text href="/markdown" target="_blank" v-t="'common.help'")
     v-btn.mr-4(text @click="preview = !preview" v-t="previewAction")
 
     slot(name="actions")
