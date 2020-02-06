@@ -95,8 +95,8 @@ export default
 
 <template lang="pug">
 div(style="position: relative")
-  v-textarea(v-if="!preview" ref="field" v-model="model[field]" @paste="onPaste" @drop="onDrop" @dragover.prevent="onDragOver")
-  formatted-text(v-if="preview" :model="model" :column="field" :placeholder="placeholder")
+  v-textarea(v-if="!preview" ref="field" v-model="model[field]" :placeholder="placeholder" @paste="onPaste" @drop="onDrop" @dragover.prevent="onDragOver")
+  formatted-text(v-if="preview" :model="model" :column="field")
   v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
     p(v-t="'common.empty'")
 
