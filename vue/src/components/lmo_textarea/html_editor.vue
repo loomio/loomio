@@ -120,9 +120,6 @@ export default
     format: ->
       @model["#{@field}Format"]
 
-  created: ->
-    @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
-
   mounted: ->
     @expanded = Session.user().experiences['html-editor.expanded']
     @updateModel()

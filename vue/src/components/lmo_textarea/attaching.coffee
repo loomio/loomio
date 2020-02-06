@@ -5,10 +5,13 @@ export default
     files: []
     imageFiles: []
 
+  created: ->
+    @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
+    
   watch:
     files: -> @updateFiles()
     imageFiles: -> @updateFiles()
-    
+
   methods:
     updateFiles: ->
       @model.files = @files.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
