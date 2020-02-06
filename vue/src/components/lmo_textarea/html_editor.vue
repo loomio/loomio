@@ -7,7 +7,7 @@ import EventBus from '@/shared/services/event_bus'
 import I18n from '@/i18n'
 import { convertToMd } from '@/shared/services/format_converter'
 
-import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
+import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
 
 import {
   Blockquote,
@@ -43,11 +43,12 @@ import Image from '@/shared/tiptap_extentions/image.js'
 
 import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
 
-import Mentioning from './mentioning.coffee'
+import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
 import SuggestionList from './suggestion_list'
+import Attaching from './attaching.coffee'
 
 export default
-  mixins: [Mentioning]
+  mixins: [CommonMentioning, HtmlMentioning, Attaching]
   props:
     model: Object
     field: String
@@ -63,18 +64,11 @@ export default
     EditorContent: EditorContent
     EditorMenuBar: EditorMenuBar
     FilesList: FilesList
-    EditorMenuBubble: EditorMenuBubble
     SuggestionList: SuggestionList
 
   data: ->
-    query: null
     expanded: null
     suggestionRange: null
-    files: []
-    imageFiles: []
-    mentionableUserIds: []
-    navigatedUserIndex: 0
-    suggestionListStyles: {}
     closeEmojiMenu: false
     linkUrl: ""
     iframeUrl: ""
@@ -87,49 +81,7 @@ export default
         scrollThreshold: 100
         scrollMargin: 100
       extensions: [
-        new Mention(
-          # is called when a suggestion starts
-          onEnter: ({ query, range, command, virtualNode }) =>
-            @query = query.toLowerCase()
-            @suggestionRange = range
-            @insertMention = command
-            @updatePopup(virtualNode)
-            @fetchMentionable()
-
-          # is called when a suggestion has changed
-          onChange: ({query, range, virtualNode}) =>
-            @query = query.toLowerCase()
-            @suggestionRange = range
-            @navigatedUserIndex = 0
-            @updatePopup(virtualNode)
-            @fetchMentionable()
-
-          # is called when a suggestion is cancelled
-          onExit: =>
-            @query = null
-            @suggestionRange = null
-            @navigatedUserIndex = 0
-
-          # is called on every keyDown event while a suggestion is active
-          onKeyDown: ({ event }) =>
-            # pressing up arrow
-            if (event.keyCode == 38)
-              @upHandler()
-              return true
-
-            # pressing down arrow
-            if (event.keyCode == 40)
-              @downHandler()
-              return true
-
-            # pressing enter or tab
-            if [13,9].includes(event.keyCode)
-              @enterHandler()
-              return true
-
-            return false
-        ),
-
+        new Mention(MentionPluginConfig.bind(@)()),
         new Blockquote(),
         new BulletList(),
         new CodeBlock(),
@@ -180,6 +132,7 @@ export default
       if confirm I18n.t('formatting.markdown_confirm')
         convertToMd(@model, @field)
         Records.users.saveExperience('html-editor.uses-markdown')
+
     toggleExpanded: ->
       if !@expanded
         @expanded = true
@@ -202,9 +155,6 @@ export default
       @iframeDialogIsOpen = false
       @editor.focus()
 
-    emitUploading: ->
-      @$emit('is-uploading', !((@model.files || []).length == @files.length && (@model.imageFiles || []).length == @imageFiles.length))
-
     emojiPicked: (shortcode, unicode) ->
       { view } = this.editor
       insertText(unicode)(view.state, view.dispatch, view)
@@ -213,65 +163,7 @@ export default
 
     updateModel: ->
       @model[@field] = @editor.getHTML()
-      @model.files = @files.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
-      @model.imageFiles = @imageFiles.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
-      @emitUploading()
-
-    removeFile: (name) ->
-      @files = @files.filter (wrapper) -> wrapper.file.name != name
-
-    attachFile: ({file}) ->
-      wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null}
-      @files.push(wrapper)
-      @emitUploading()
-      uploader = new FileUploader onProgress: (e) ->
-        wrapper.percentComplete = parseInt(e.loaded / e.total * 100)
-
-      uploader.upload(file).then (blob) =>
-        wrapper.blob = blob
-        @updateModel()
-      ,
-      (e) ->
-        console.log "attachment failed to upload"
-
-    attachImageFile: ({file, onProgress, onComplete, onFailure}) ->
-      wrapper = {file: file, blob: null}
-      @imageFiles.push(wrapper)
-      @emitUploading()
-      uploader = new FileUploader onProgress: onProgress
-      uploader.upload(file).then((blob) =>
-        wrapper.blob = blob
-        onComplete(blob)
-        @updateModel()
-      , onFailure)
-
-    fileSelected: ->
-      @$refs.filesField.files.forEach (file) => @attachFile(file: file)
-
-    upHandler: ->
-      @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length
-
-    downHandler: ->
-      @navigatedUserIndex = (@navigatedUserIndex + 1) % @filteredUsers.length
-
-    enterHandler: ->
-      user = @filteredUsers[@navigatedUserIndex]
-      @selectUser(user) if user
-
-    selectUser: (user) ->
-      @insertMention
-        range: @suggestionRange
-        attrs:
-          id: user.username,
-          label: user.name
-      @editor.focus()
-
-    updatePopup: (node) ->
-      coords = node.getBoundingClientRect()
-      @suggestionListStyles =
-        position: 'fixed'
-        top: coords.y + 24 + 'px'
-        left: coords.x + 'px'
+      @updateFiles()
 
     reset: ->
       @editor.clearContent()
@@ -279,8 +171,6 @@ export default
       @imageFiles = []
 
   watch:
-    files: -> @updateModel()
-    imageFiles: -> @updateModel()
     shouldReset: -> @reset()
 
   beforeDestroy: ->
