@@ -10,11 +10,10 @@ import { last } from 'lodash'
 export default
   props:
     comment: Object
-    autoFocus: Boolean
+    autofocus: Boolean
 
   data: ->
     actor: Session.user()
-    shouldReset: false
     canSubmit: true
 
   computed:
@@ -28,9 +27,6 @@ export default
     handleIsUploading: (val) ->
       @canSubmit = !val
 
-    reset: ->
-      @shouldReset = !@shouldReset
-
     submit: ->
       @comment.save()
       .then =>
@@ -42,7 +38,6 @@ export default
                       else
                         'comment_form.messages.created'
         Flash.success flashMessage, {name: @comment.parent().authorName() if @comment.isReply()}
-        @reset()
       .catch onError(@comment)
 
 </script>
@@ -53,7 +48,7 @@ v-layout.comment-form.px-3
     user-avatar(:user='actor' :size='40')
   form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
     submit-overlay(:value='comment.processing')
-    lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :shouldReset="shouldReset" :autoFocus="autoFocus")
+    lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :autofocus="autofocus")
       template(v-slot:actions)
         v-btn.comment-form__submit-button(:disabled="!canSubmit" color="primary" type='submit' v-t="comment.isNew() ? 'comment_form.submit_button.label' : 'common.action.save' ")
 </template>

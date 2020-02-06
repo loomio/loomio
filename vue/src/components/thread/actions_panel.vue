@@ -29,20 +29,26 @@ export default
 
   methods:
     init: ->
-      @newComment = Records.comments.build
-        bodyFormat: Session.defaultFormat()
-        discussionId: @discussion.id
-        authorId: Session.user().id
-
       @watchRecords
         key: @discussion.id
         collections: ['groups', 'memberships']
         query: (store) =>
           @canAddComment = AbilityService.canAddComment(@discussion)
+      @reset()
+
+    reset: ->
+      console.log 'resetting'
+      @newComment = Records.comments.build
+        clonedFrom: 'new'
+        bodyFormat: Session.defaultFormat()
+        discussionId: @discussion.id
+        authorId: Session.user().id
 
     signIn:     -> @openAuthModal()
     isLoggedIn: -> Session.isSignedIn()
 
+  watch:
+    'newComment.clonedFrom': 'reset'
   computed:
     canStartPoll: ->
       AbilityService.canStartPoll(@discussion)

@@ -11,8 +11,15 @@ export default
   watch:
     files: -> @updateFiles()
     imageFiles: -> @updateFiles()
+    'model.clonedFrom': ->
+      @reset()
+      @resetFiles()
 
   methods:
+    resetFiles: ->
+      @files = []
+      @imageFiles = []
+
     updateFiles: ->
       @model.files = @files.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
       @model.imageFiles = @imageFiles.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id

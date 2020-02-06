@@ -12,19 +12,12 @@ export default
     field: String
     label: String
     placeholder: String
-    shouldReset: Boolean
     maxLength: Number
-    autoFocus:
-      type: Boolean
-      default: false
+    autofocus: Boolean
 
   components:
     'html-editor': HtmlEditor
     'md-editor': MdEditor
-
-  data: ->
-    files: []
-    imageFiles: []
 
   computed:
     format: ->
@@ -37,10 +30,10 @@ div
   label.caption.v-label.v-label--active.theme--light {{label}}
 
   .editor.mb-3
-    html-editor(v-if="format == 'html'" :model='model' :field='field' :placeholder="placeholder" :maxLength="maxLength" :autoFocus="autoFocus")
+    html-editor(v-if="format == 'html'" :model='model' :field='field' :placeholder="placeholder" :maxLength="maxLength" :autofocus="autofocus")
       template(v-for="(_, name) in $scopedSlots" :slot="name" slot-scope="slotData")
         slot(:name="name" v-bind="slotData")
-    md-editor(v-if="format == 'md'" :model='model' :field='field' :placeholder="placeholder" :maxLength="maxLength" :autoFocus="autoFocus")
+    md-editor(v-if="format == 'md'" :model='model' :field='field' :placeholder="placeholder" :maxLength="maxLength" :autofocus="autofocus")
       template(v-for="(_, name) in $scopedSlots" :slot="name" slot-scope="slotData")
         slot(:name="name" v-bind="slotData")
 

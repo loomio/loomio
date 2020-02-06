@@ -34,9 +34,8 @@ export default
     field: String
     label: String
     placeholder: String
-    shouldReset: Boolean
     maxLength: Number
-    autoFocus:
+    autofocus:
       type: Boolean
       default: false
 
@@ -92,7 +91,7 @@ export default
       ]
       content: @model[@field]
       onUpdate: @updateModel
-      autoFocus: @autoFocus
+      autofocus: @autofocus
 
   computed:
     format: ->
@@ -103,6 +102,8 @@ export default
     @updateModel()
 
   methods:
+    reset: -> @editor.clearContent()
+
     convertToMd: ->
       if confirm I18n.t('formatting.markdown_confirm')
         convertToMd(@model, @field)
@@ -139,14 +140,6 @@ export default
     updateModel: ->
       @model[@field] = @editor.getHTML()
       @updateFiles()
-
-    reset: ->
-      @editor.clearContent()
-      @files = []
-      @imageFiles = []
-
-  watch:
-    shouldReset: -> @reset()
 
   beforeDestroy: ->
     @editor.destroy()

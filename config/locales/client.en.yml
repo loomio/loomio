@@ -722,7 +722,6 @@ en:
     merge_selected: Merge selected cells
     wysiwyg: wysiwyg
     edit_markdown: Edit Markdown
-    markdown_help: Markdown help
     markdown_confirm: Some formatting may be lost converting wysiwyg content to markdown.
     upload_failed: Upload failed
 

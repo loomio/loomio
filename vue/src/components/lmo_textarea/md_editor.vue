@@ -16,7 +16,7 @@ export default
     placeholder: String
     shouldReset: Boolean
     maxLength: Number
-    autoFocus:
+    autofocus:
       type: Boolean
       default: false
 
@@ -96,11 +96,11 @@ export default
 <template lang="pug">
 div(style="position: relative")
   v-textarea(v-if="!preview" ref="field" v-model="model[field]" @paste="onPaste" @drop="onDrop" @dragover.prevent="onDragOver")
-  formatted-text(v-if="preview" :model="model" :column="field")
+  formatted-text(v-if="preview" :model="model" :column="field" :placeholder="placeholder")
   v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
     p(v-t="'common.empty'")
 
-  v-layout(align-center)
+  v-layout.menubar(align-center)
     v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
       v-icon mdi-paperclip
     v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.wysiwyg'")
