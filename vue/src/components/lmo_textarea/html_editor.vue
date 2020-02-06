@@ -68,7 +68,6 @@ export default
 
   data: ->
     expanded: null
-    suggestionRange: null
     closeEmojiMenu: false
     linkUrl: ""
     iframeUrl: ""

@@ -72,6 +72,9 @@ export MdMentioning =
         left: coords.left + 'px'
 
 export HtmlMentioning =
+  data: ->
+    suggestionRange: null
+
   methods:
     upHandler: ->
       @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length
