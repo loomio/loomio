@@ -9,30 +9,10 @@ import { convertToMd } from '@/shared/services/format_converter'
 
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
 
-import {
-  Blockquote,
-  CodeBlock,
-  HardBreak,
-  Heading,
-  HorizontalRule,
-  OrderedList,
-  BulletList,
-  ListItem,
-  Table,
-  TableHeader,
-  TableCell,
-  TableRow,
-  TodoList,
-  Bold,
-  Code,
-  Italic,
-  Link,
-  Strike,
-  Underline,
-  History,
-  Mention,
-  Placeholder,
-  TrailingNode } from 'tiptap-extensions'
+import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
+  OrderedList, BulletList, ListItem, Table, TableHeader, TableCell,
+  TableRow, TodoList, Bold, Code, Italic, Link, Strike, Underline,
+  History, Mention, Placeholder, TrailingNode } from 'tiptap-extensions'
 
 import ExternalLink from './external_link'
 import Iframe from './iframe'
