@@ -75,6 +75,9 @@ export HtmlMentioning =
   data: ->
     suggestionRange: null
 
+  created:->
+    @insertMention = -> {}
+
   methods:
     upHandler: ->
       @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length

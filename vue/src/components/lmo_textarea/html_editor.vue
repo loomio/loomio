@@ -73,7 +73,6 @@ export default
     iframeUrl: ""
     linkDialogIsOpen: false
     iframeDialogIsOpen: false
-    insertMention: () => {}
     editor: new Editor
       disablePasteRules: true
       editorProps:
