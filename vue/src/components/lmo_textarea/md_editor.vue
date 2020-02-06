@@ -38,13 +38,12 @@ export default
       return if items.filter((item) => item.getAsFile()).length == 0
 
       event.preventDefault()
-      files = items.map (item) =>
+      @handleUploads items.map (item) =>
         new File([item.getAsFile()],
                  event.clipboardData.getData('text/plain') || Date.now(),
                  {lastModified: Date.now(), type: item.type})
 
     handleUploads: (files) ->
-      console.log 'hande uploads', files
       Array.from(files).forEach (file) =>
         if ((/image/i).test(file.type))
           @insertImage(file)
@@ -52,34 +51,38 @@ export default
           @attachFile({file: file})
 
     insertImage: (file) ->
-      beforeText = @model[@field].slice(0, @textarea().selectionStart)
-      afterText = @model[@field].slice(@textarea().selectionStart)
       name = file.name.replace(/[\W_]+/g, '') | 'file';
-      uploadingText = (pct) -> " ![uploading-#{name}](#{pct}%) "
-      @model[@field] = beforeText + uploadingText(0) + afterText
-      regex = ///!\[uploading-#{name}\]\(\d+%\)///
+
+      uploadingText = (pct) ->
+        "![uploading-#{name}](#{"*".repeat parseInt(pct / 10)})"
+
+      insertPlaceholder = (text) =>
+        beforeText = @model[@field].slice(0, @textarea().selectionStart)
+        afterText = @model[@field].slice(@textarea().selectionStart)
+        @model[@field] = beforeText + "\n" + text + "\n" + afterText
+
+      updatePlaceholder = (text) =>
+        @model[@field] = @model[@field].replace(///!\[uploading-#{name}\]\(\**\)///, text)
+
+      insertPlaceholder(uploadingText(0))
 
       @attachImageFile
         file: file
         onProgress: (e) =>
-          pct = parseInt(e.loaded / e.total * 100)
-          @model[@field] = @model[@field].replace(regex, uploadingText(pct))
+          updatePlaceholder(uploadingText(parseInt(e.loaded / e.total * 100)))
 
         onComplete: (blob) =>
-          @model[@field] = @model[@field].replace(regex, "![#{name}](#{blob.preview_url})")
+          updatePlaceholder("![#{name}](#{blob.preview_url})")
 
         onFailure: () =>
-          # @model[@field].replace(regex, '')
+          updatePlaceholder("![#{name}](#{@$t('formatting.upload_failed')}")
 
     onDrop: (event) ->
-      console.log 'drop', event
       return unless event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length
       event.preventDefault()
       @handleUploads(event.dataTransfer.files)
 
-    onDragOver: (event) ->
-      false
-
+    onDragOver: (event) -> false
 
   computed:
     previewAction: ->
@@ -91,10 +94,10 @@ export default
 
 <template lang="pug">
 div(style="position: relative")
-  v-textarea(v-if="!preview" ref="field" v-model="model[field]" @keyup="onKeyUp" @keydown="onKeyDown" @paste="onPaste" @drop="onDrop" @dragover.prevent="onDragOver")
+  v-textarea(v-if="!preview" ref="field" v-model="model[field]" @paste="onPaste" @drop="onDrop" @dragover.prevent="onDragOver")
   formatted-text(v-if="preview" :model="model" :column="field")
   v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
-    p No content to preview
+    p(v-t="'common.empty'")
 
   v-layout(align-center)
     v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")

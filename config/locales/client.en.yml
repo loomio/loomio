@@ -107,6 +107,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    empty: Empty
     no_results_found: No results found
     view: View
     history: History
@@ -723,6 +724,7 @@ en:
     edit_markdown: Edit Markdown
     markdown_help: Markdown help
     markdown_confirm: Some formatting may be lost converting wysiwyg content to markdown.
+    upload_failed: Upload failed
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
