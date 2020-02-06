@@ -720,7 +720,7 @@ en:
     add_row_after: Add row after
     remove_row: Remove row
     merge_selected: Merge selected cells
-    use_wysiwyg: Use wysiwyg
+    wysiwyg: wysiwyg
     edit_markdown: Edit Markdown
     markdown_help: Markdown help
     markdown_confirm: Some formatting may be lost converting wysiwyg content to markdown.
