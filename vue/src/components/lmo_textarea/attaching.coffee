@@ -7,7 +7,7 @@ export default
 
   created: ->
     @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
-    
+
   watch:
     files: -> @updateFiles()
     imageFiles: -> @updateFiles()
@@ -46,7 +46,7 @@ export default
       uploader.upload(file).then((blob) =>
         wrapper.blob = blob
         onComplete(blob)
-        @updateModel()
+        @updateFiles()
       , onFailure)
 
     fileSelected: ->
