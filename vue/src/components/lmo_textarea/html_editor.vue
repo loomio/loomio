@@ -316,6 +316,10 @@ div
 </template>
 
 <style lang="sass">
+
+.ProseMirror
+  outline: none
+
 progress
   -webkit-appearance: none
   appearance: none
