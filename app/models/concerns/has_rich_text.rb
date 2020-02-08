@@ -65,7 +65,7 @@ module HasRichText
 
   private
   def add_required_link_attributes(text)
-    fragment = Nokogiri::HTML.parse(text)
+    fragment = Nokogiri::HTML::DocumentFragment.parse(text)
     fragment.css('a').each do |node|
       node['rel'] = 'nofollow noreferrer noopener'
       node['target'] = '_blank'
