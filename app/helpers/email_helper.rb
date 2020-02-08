@@ -43,7 +43,7 @@ module EmailHelper
   end
 
   def markdownify(text)
-    renderer = Redcarpet::Render::HTML.new(filter_html: true, hard_wrap: true, link_attributes: {rel: "ugc noreferrer", target: :_blank})
+    renderer = Redcarpet::Render::HTML.new(filter_html: true, hard_wrap: true, link_attributes: {rel: "nofollow noreferrer noopener", target: :_blank})
     Redcarpet::Markdown.new(renderer, *MARKDOWN_OPTIONS).render(text)
   end
 

@@ -1183,7 +1183,7 @@ en:
     help_translate: "Help us translate Loomio"
 
   text_editor:
-    select_text_to_link: Select some text to link
+    select_text_to_link: First, select some text to link
     insert_link: Insert link
     insert_embedded_url: Embed video
 

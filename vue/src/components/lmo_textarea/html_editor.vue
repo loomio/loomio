@@ -106,6 +106,11 @@ export default
     'shouldReset': 'reset'
 
   methods:
+    selectedText: ->
+      { selection, state } = @editor
+      { from, to } = selection
+      state.doc.textBetween(from, to, ' ')
+
     reset: ->
       @editor.clearContent()
       @resetFiles()
@@ -185,18 +190,20 @@ div
             //-   v-icon mdi-image
 
             //- link
-            v-menu(:close-on-content-click="false" v-model="linkDialogIsOpen" min-width="320px")
+            v-menu(:close-on-content-click="!selectedText()" v-model="linkDialogIsOpen" min-width="320px")
               template(v-slot:activator="{on}")
                 v-btn(icon v-on="on" :title="$t('formatting.link')")
                   v-icon mdi-link
               v-card
-                p Highlight some text to link first!
-                v-card-title.title(v-t="'text_editor.insert_link'")
-                v-card-text
-                  v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl(commands.link)")
-                v-card-actions
-                  v-spacer
-                  v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
+                template(v-if="selectedText()")
+                  v-card-title.title(v-t="'text_editor.insert_link'")
+                  v-card-text
+                    v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl(commands.link)")
+                  v-card-actions
+                    v-spacer
+                    v-btn(color="primary" @click="setLinkUrl(commands.link)" v-t="'common.action.apply'")
+                template(v-else)
+                  v-card-title(v-t="'text_editor.select_text_to_link'")
 
             //- emoji
             v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
