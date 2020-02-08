@@ -12,6 +12,7 @@ module HasRichText
             tags = %w[strong em b i p s code pre big div small hr br span h1 h2 h3 h4 h5 h6 ul ol li abbr a img blockquote table thead th tr td iframe u]
             attributes = %w[href src alt title class data-type data-done data-mention-id width height target colspan rowspan]
             self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
+            self[field] = ensure_rel_nofollow(self[field])
           end
         end
         before_save :"sanitize_#{field}!"
@@ -60,5 +61,14 @@ module HasRichText
     params[:files] = Array(params[:files]).filter {|id| !existing_ids.include?(id) }
     model.reload
     model.assign_attributes(params)
+  end
+
+  private
+  def ensure_rel_nofollow(text)
+    fragment = Nokogiri::HTML.parse(text)
+    fragment.css('a').each do |node|
+      node['rel'] = 'ugc noreferrer'
+    end
+    fragment.to_s
   end
 end

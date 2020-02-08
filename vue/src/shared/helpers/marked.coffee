@@ -23,7 +23,7 @@ export customRenderer = (opts) ->
     _super.heading(colonsToUnicode(text), level, text, {slug: kebabCase})
 
   renderer.link      = (href, title, text) ->
-    _super.link(href, title, text).replace('<a ', '<a rel="noopener noreferrer nofollow" target="_blank" ')
+    _super.link(href, title, text).replace('<a ', '<a rel="ugc noreferrer" target="_blank" ')
 
   renderer
 export options = {gfm: true, breaks: true, smartypants: false, tables: true}
