@@ -27,8 +27,12 @@ export default
   data: ->
     preview: false
 
+  watch:
+    shouldReset: 'reset'
+
   methods:
-    reset: -> true
+    reset: -> @resetFiles()
+
     convertToHtml: ->
       convertToHtml(@model, @field)
       Records.users.removeExperience('html-editor.uses-markdown')

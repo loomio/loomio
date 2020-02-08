@@ -15,6 +15,7 @@ export default
   data: ->
     actor: Session.user()
     canSubmit: true
+    shouldReset: false
 
   computed:
     placeholder: ->
@@ -31,6 +32,7 @@ export default
       @comment.save()
       .then =>
         @$emit('comment-submitted')
+        @shouldReset = !@shouldReset
         flashMessage = if !@comment.isNew()
                         'comment_form.messages.updated'
                       else if @comment.isReply()
@@ -48,7 +50,7 @@ v-layout.comment-form.px-3
     user-avatar(:user='actor' :size='40')
   form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
     submit-overlay(:value='comment.processing')
-    lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :autofocus="autofocus")
+    lmo-textarea(:model='comment' @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :autofocus="autofocus" :shouldReset="shouldReset")
       template(v-slot:actions)
         v-btn.comment-form__submit-button(:disabled="!canSubmit" color="primary" type='submit' v-t="comment.isNew() ? 'comment_form.submit_button.label' : 'common.action.save' ")
 </template>

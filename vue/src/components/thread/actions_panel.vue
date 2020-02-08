@@ -37,9 +37,7 @@ export default
       @reset()
 
     reset: ->
-      console.log 'resetting'
       @newComment = Records.comments.build
-        clonedFrom: 'new'
         bodyFormat: Session.defaultFormat()
         discussionId: @discussion.id
         authorId: Session.user().id
@@ -47,8 +45,6 @@ export default
     signIn:     -> @openAuthModal()
     isLoggedIn: -> Session.isSignedIn()
 
-  watch:
-    'newComment.clonedFrom': 'reset'
   computed:
     canStartPoll: ->
       AbilityService.canStartPoll(@discussion)
@@ -74,7 +70,7 @@ export default
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel
-        comment-form(v-if='canAddComment' :comment="newComment")
+        comment-form(v-if='canAddComment' :comment="newComment" @comment-submitted="reset()")
         .add-comment-panel__join-actions(v-if='!canAddComment')
           join-group-button(:group='discussion.group()' v-if='isLoggedIn()' :block='true')
           v-btn.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'" @click='signIn()' v-if='!isLoggedIn()')

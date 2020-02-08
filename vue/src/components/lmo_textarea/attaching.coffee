@@ -11,9 +11,6 @@ export default
   watch:
     files: -> @updateFiles()
     imageFiles: -> @updateFiles()
-    'model.clonedFrom': ->
-      @reset()
-      @resetFiles()
 
   methods:
     resetFiles: ->

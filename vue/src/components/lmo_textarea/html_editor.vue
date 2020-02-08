@@ -35,6 +35,7 @@ export default
     label: String
     placeholder: String
     maxLength: Number
+    shouldReset: Boolean
     autofocus:
       type: Boolean
       default: false
@@ -101,8 +102,13 @@ export default
     @expanded = Session.user().experiences['html-editor.expanded']
     @updateModel()
 
+  watch:
+    'shouldReset': 'reset'
+
   methods:
-    reset: -> @editor.clearContent()
+    reset: ->
+      @editor.clearContent()
+      @resetFiles()
 
     convertToMd: ->
       if confirm I18n.t('formatting.markdown_confirm')
