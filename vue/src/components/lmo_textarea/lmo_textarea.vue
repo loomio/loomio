@@ -31,7 +31,7 @@ export default
 div
   label.caption.v-label.v-label--active.theme--light {{label}}
 
-  .editor.mb-3
+  .lmo-textarea.mb-3
     html-editor(v-if="format == 'html'" :model='model' :field='field' :placeholder="placeholder" :maxLength="maxLength" :autofocus="autofocus" :shouldReset="shouldReset")
       template(v-for="(_, name) in $scopedSlots" :slot="name" slot-scope="slotData")
         slot(:name="name" v-bind="slotData")

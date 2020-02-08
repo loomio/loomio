@@ -417,14 +417,14 @@ li[data-done="true"]
 li[data-done="false"]
   text-decoration: none
 
-.editor p.is-empty:first-child::before
+.lmo-textarea p.is-empty:first-child::before
   content: attr(data-empty-text)
   float: left
   color: #aaa
   pointer-events: none
   height: 0
 
-.editor p.is-empty
+.lmo-textarea p.is-empty
   font-size: 16px
   padding-bottom: 16px
 
