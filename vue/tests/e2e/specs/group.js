@@ -189,7 +189,7 @@ module.exports = {
     page.click('.group-page-actions__edit_group')
 
     page.fillIn('#group-name', 'Clean Dancing Shoes')
-    page.fillIn('.group-form__group-description .lmo-textarea div[contenteditable=true]', 'Dusty sandles')
+    page.fillIn('.group-form__group-description .lmo-textarea textarea', 'Dusty sandles')
     page.click('.group-form__submit-button')
 
     page.pause(500)

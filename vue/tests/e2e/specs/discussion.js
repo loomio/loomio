@@ -73,7 +73,7 @@ module.exports = {
     page.click('.action-menu')
     page.click('.action-dock__button--edit_thread')
     page.fillIn('.discussion-form__title-input input', 'better title')
-    page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', 'improved description')
+    page.fillIn('.discussion-form .lmo-textarea textarea', 'improved description')
     page.click('.discussion-form__submit')
     page.click('.dismiss-modal-button', 500)
     page.expectText('.context-panel__heading', 'better title')
@@ -88,13 +88,13 @@ module.exports = {
     page.click('.action-dock__button--edit_thread')
 
     page.fillIn('.discussion-form__title-input input', 'dumb title')
-    page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', 'rubbish description')
+    page.fillIn('.discussion-form .lmo-textarea textarea', 'rubbish description')
     page.click('.dismiss-modal-button', 500)
 
     page.click('.action-dock__button--edit_thread')
 
     page.expectNoText('.discussion-form__title-input input', 'dumb title')
-    page.expectNoText('.discussion-form .lmo-textarea div[contenteditable=true]', 'rubbish description')
+    page.expectNoText('.discussion-form .lmo-textarea textarea', 'rubbish description')
 
   },
 
@@ -206,7 +206,8 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', '@jennifer')
     page.expectText('.suggestion-list', 'Jennifer Grey')
-    page.click('.suggestion-list')
+    page.click('.suggestion-list .v-list-item__title')
+    page.pause(1000)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', '@Jennifer Grey')
   },
