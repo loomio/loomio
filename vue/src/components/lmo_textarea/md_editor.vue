@@ -99,7 +99,7 @@ export default
 
 <template lang="pug">
 div(style="position: relative")
-  v-textarea(v-if="!preview" ref="field" v-model="model[field]" :placeholder="placeholder" @paste="onPaste" @drop="onDrop" @dragover.prevent="onDragOver")
+  v-textarea(v-if="!preview" ref="field" v-model="model[field]" :placeholder="placeholder" @keyup="onKeyUp" @keydown="onKeyDown" @paste="onPaste" @drop="onDrop" @dragover.prevent="onDragOver")
   formatted-text(v-if="preview" :model="model" :column="field")
   v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
     p(v-t="'common.empty'")
@@ -113,7 +113,7 @@ div(style="position: relative")
     v-btn.mr-4(text x-small @click="preview = !preview" v-t="previewAction")
 
     slot(name="actions")
-  suggestion-list(:query="query" :filtered-users="filteredUsers" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername)
+  suggestion-list(:query="query" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-user="selectUser")
 
   files-list(:files="files" v-on:removeFile="removeFile")
 

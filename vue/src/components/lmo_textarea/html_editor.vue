@@ -308,7 +308,7 @@ div
     v-alert(v-if="maxLength && model[field] && model[field].length > maxLength" color='error')
       span( v-t="'poll_common.too_long'")
 
-  suggestion-list(:query="query" :filtered-users="filteredUsers" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex")
+  suggestion-list(:query="query" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" @select-user="selectUser")
   files-list(:files="files" v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")

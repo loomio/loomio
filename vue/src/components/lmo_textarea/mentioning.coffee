@@ -1,60 +1,67 @@
-import {sortBy, isString, filter, uniq, map} from 'lodash'
+import {sortBy, isString, filter, uniq, map, debounce} from 'lodash'
 import Records from '@/shared/services/records'
 import getCaretCoordinates from 'textarea-caret'
 
 export CommonMentioning =
   data: ->
     mentionableUserIds: []
+    mentionable: []
     query: ''
     navigatedUserIndex: 0
     suggestionListStyles: {}
 
-  methods:
-    fetchMentionable: ->
+  mounted: ->
+    @fetchMentionable = debounce ->
       Records.users.fetchMentionable(@query, @model).then (response) =>
         @mentionableUserIds.concat(uniq @mentionableUserIds + map(response.users, 'id'))
+        @findMentionable()
+    ,
+      250
 
-  computed:
-    filteredUsers: ->
+  methods:
+    findMentionable: ->
       unsorted = filter Records.users.collection.chain().find(@mentionableUserIds).data(), (u) =>
         isString(u.username) &&
         ((u.name || '').toLowerCase().startsWith(@query) or
         (u.username || '').toLowerCase().startsWith(@query) or
         (u.name || '').toLowerCase().includes(" #{@query}"))
-      sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
+      @mentionable = sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
 
 export MdMentioning =
   methods:
     textarea: ->
       @$refs.field.$el.querySelector('textarea')
 
-    onKeyUp: ->
-      # find if the user is mentioning at cursor position
+    onKeyUp: (event) ->
       res = @textarea().value.slice(0, @textarea().selectionStart).match(/@(\w+)$/)
       if res
         @query = res[1]
         @fetchMentionable()
+        @findMentionable()
+        @respondToKey(event)
         @updatePopup()
       else
         @query = ''
 
-    onKeyDown: (e) ->
-      if @query
-        # up
-        if (event.keyCode == 38)
-          @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length
-          e.preventDefault()
+    onKeyDown: (event) ->
+      @respondToKey(event) if @query
 
-        # down
-        if (event.keyCode == 40)
-          @navigatedUserIndex = (@navigatedUserIndex + 1) % @filteredUsers.length
-          e.preventDefault()
+    respondToKey: (event) ->
+      if (event.keyCode == 38)
+        @navigatedUserIndex = ((@navigatedUserIndex + @mentionable.length) - 1) % @mentionable.length
+        event.preventDefault()
 
-        # enter or tab
-        if [13,9].includes(event.keyCode)
-          if user = @filteredUsers[@navigatedUserIndex]
-            @selectUser(user)
-            e.preventDefault()
+      # down
+      if (event.keyCode == 40)
+        @navigatedUserIndex = (@navigatedUserIndex + 1) % @mentionable.length
+        event.preventDefault()
+
+      # enter or tab
+      if [13,9].includes(event.keyCode)
+        if user = @mentionable[@navigatedUserIndex]
+          @selectUser(user)
+          @query = ''
+          event.preventDefault()
 
     selectUser: (user) ->
       text = @textarea().value
@@ -62,6 +69,8 @@ export MdMentioning =
       afterText = @textarea().value.slice(@textarea().selectionStart)
       @textarea().value = beforeText + user.username + ' ' + afterText
       @textarea().selectionEnd = (beforeText + user.username).length + 1
+      @query = ''
+      @textarea().focus
 
     updatePopup: ->
       return unless @$refs.field
@@ -80,13 +89,13 @@ export HtmlMentioning =
 
   methods:
     upHandler: ->
-      @navigatedUserIndex = ((@navigatedUserIndex + @filteredUsers.length) - 1) % @filteredUsers.length
+      @navigatedUserIndex = ((@navigatedUserIndex + @mentionable.length) - 1) % @mentionable.length
 
     downHandler: ->
-      @navigatedUserIndex = (@navigatedUserIndex + 1) % @filteredUsers.length
+      @navigatedUserIndex = (@navigatedUserIndex + 1) % @mentionable.length
 
     enterHandler: ->
-      user = @filteredUsers[@navigatedUserIndex]
+      user = @mentionable[@navigatedUserIndex]
       @selectUser(user) if user
 
     selectUser: (user) ->
@@ -112,6 +121,7 @@ export MentionPluginConfig = ->
     @insertMention = command
     @updatePopup(virtualNode)
     @fetchMentionable()
+    @findMentionable()
 
   # is called when a suggestion has changed
   onChange: ({query, range, virtualNode}) =>
@@ -120,6 +130,7 @@ export MentionPluginConfig = ->
     @navigatedUserIndex = 0
     @updatePopup(virtualNode)
     @fetchMentionable()
+    @findMentionable()
 
   # is called when a suggestion is cancelled
   onExit: =>
