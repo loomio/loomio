@@ -75,7 +75,7 @@ describe API::CommentsController do
         it "prevents xss href" do
           post :create, params: { comment: {discussion_id: discussion.id, body: "<a href=\"javascript:alert('hi')\" >hello</a>", body_format: "html"} }
           expect(response.status).to eq 200
-          expect(Comment.last.body).to eq "<a>hello</a>"
+          expect(Comment.last.body).to eq "<a rel=\"nofollow ugc noreferrer noopener\" target=\"_blank\">hello</a>"
         end
 
         it 'allows guest group members to comment' do

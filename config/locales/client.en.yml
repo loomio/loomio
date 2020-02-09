@@ -107,6 +107,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    empty: Empty
     no_results_found: No results found
     view: View
     history: History
@@ -164,6 +165,7 @@ en:
     total: Total
     action:
       print: Print
+      preview: Preview
       pin: Pin
       unpin: Unpin
       search: 'Search'
@@ -695,17 +697,21 @@ en:
     italicize: Italicize
     strikethrough: Strikethrough
     underline: Underline
-    link: Link
+    link: Insert link
     code_block: Code block
+    insert_image: Insert image
+    insert_emoji: Insert emoji
     attach: Attach file
-    heading1: Big heading
-    heading2: Medium heading
-    heading3: Small heading
+    heading_size: Heading size
+    heading1: Heading 1
+    heading2: Heading 2
+    heading3: Heading 3
+    paragraph: Paragraph
     bullet_list: List
     number_list: Numbered list
     check_list: Checklist
     quote: Quote
-    embed: Embed
+    embed: Embed video
     divider: Divider
     add_table: Add table
     remove_table: Remove table
@@ -716,6 +722,10 @@ en:
     add_row_after: Add row after
     remove_row: Remove row
     merge_selected: Merge selected cells
+    wysiwyg: wysiwyg
+    edit_markdown: Edit Markdown
+    markdown_confirm: Some formatting may be lost converting wysiwyg content to markdown.
+    upload_failed: Upload failed
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -1176,7 +1186,7 @@ en:
     help_translate: "Help us translate Loomio"
 
   text_editor:
-    select_text_to_link: Select some text to link
+    select_text_to_link: First, select some text to link
     insert_link: Insert link
     insert_embedded_url: Embed video
 

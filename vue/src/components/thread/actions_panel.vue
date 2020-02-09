@@ -29,17 +29,18 @@ export default
 
   methods:
     init: ->
-      @newComment = Records.comments.build
-        bodyFormat: "html"
-        body: ""
-        discussionId: @discussion.id
-        authorId: Session.user().id
-
       @watchRecords
         key: @discussion.id
         collections: ['groups', 'memberships']
         query: (store) =>
           @canAddComment = AbilityService.canAddComment(@discussion)
+      @reset()
+
+    reset: ->
+      @newComment = Records.comments.build
+        bodyFormat: Session.defaultFormat()
+        discussionId: @discussion.id
+        authorId: Session.user().id
 
     signIn:     -> @openAuthModal()
     isLoggedIn: -> Session.isSignedIn()
@@ -69,7 +70,7 @@ export default
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel
-        comment-form(v-if='canAddComment' :comment="newComment")
+        comment-form(v-if='canAddComment' :comment="newComment" @comment-submitted="reset()")
         .add-comment-panel__join-actions(v-if='!canAddComment')
           join-group-button(:group='discussion.group()' v-if='isLoggedIn()' :block='true')
           v-btn.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'" @click='signIn()' v-if='!isLoggedIn()')

@@ -189,7 +189,7 @@ module.exports = {
     page.click('.group-page-actions__edit_group')
 
     page.fillIn('#group-name', 'Clean Dancing Shoes')
-    page.fillIn('.group-form__group-description .ProseMirror', 'Dusty sandles')
+    page.fillIn('.group-form__group-description .lmo-textarea textarea', 'Dusty sandles')
     page.click('.group-form__submit-button')
 
     page.pause(500)
@@ -310,7 +310,7 @@ module.exports = {
     page.loadPath('setup_group')
     page.click('.discussions-panel__new-thread-button')
     page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
-    page.fillIn('.discussion-form .ProseMirror', "I've had the time of my life")
+    page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life")
     page.click('.discussion-form__submit')
     page.expectFlash("Thread started")
     page.expectText('.context-panel__heading', 'Nobody puts baby in a corner' )
@@ -323,12 +323,12 @@ module.exports = {
   //   page.loadPath('setup_group')
   //   page.click('.discussions-panel__new-thread-button')
   //   page.fillIn('.discussion-form__title-input', 'Nobody puts baby in a corner')
-  //   page.fillIn('.discussion-form .ProseMirror', "I've had the time of my life")
+  //   page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life")
   //   page.click('.dismiss-modal-button')
   //   page.pause()
   //   page.click('.discussions-panel__new-thread-button')
   //   page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
-  //   page.expectValue('.discussion-form .ProseMirror', "I've had the time of my life" )
+  //   page.expectValue('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life" )
   // },
 
   'lets_you_change_membership_volume': (test) => {

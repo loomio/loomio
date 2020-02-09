@@ -1,5 +1,6 @@
 <script lang="coffee">
 import AppConfig    from '@/shared/services/app_config'
+import Session      from '@/shared/services/session'
 import Records      from '@/shared/services/records'
 import ModalService from '@/shared/services/modal_service'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
@@ -28,10 +29,11 @@ export default
 
     newPoll: (pollType) ->
       Records.polls.build
-        pollType:              pollType
-        discussionId:          @discussion.id
-        groupId:               @discussion.groupId or @group.id
-        pollOptionNames:       map @callFieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
+        pollType: pollType
+        discussionId: @discussion.id
+        groupId: @discussion.groupId or @group.id
+        pollOptionNames: map @callFieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
+        detailsFormat: Session.defaultFormat()
 
     callFieldFromTemplate: (pollType, field) ->
       fieldFromTemplate(pollType, field)

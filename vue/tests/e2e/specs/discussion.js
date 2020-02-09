@@ -73,7 +73,7 @@ module.exports = {
     page.click('.action-menu')
     page.click('.action-dock__button--edit_thread')
     page.fillIn('.discussion-form__title-input input', 'better title')
-    page.fillIn('.discussion-form .ProseMirror', 'improved description')
+    page.fillIn('.discussion-form .lmo-textarea textarea', 'improved description')
     page.click('.discussion-form__submit')
     page.click('.dismiss-modal-button', 500)
     page.expectText('.context-panel__heading', 'better title')
@@ -88,13 +88,13 @@ module.exports = {
     page.click('.action-dock__button--edit_thread')
 
     page.fillIn('.discussion-form__title-input input', 'dumb title')
-    page.fillIn('.discussion-form .ProseMirror', 'rubbish description')
+    page.fillIn('.discussion-form .lmo-textarea textarea', 'rubbish description')
     page.click('.dismiss-modal-button', 500)
 
     page.click('.action-dock__button--edit_thread')
 
     page.expectNoText('.discussion-form__title-input input', 'dumb title')
-    page.expectNoText('.discussion-form .ProseMirror', 'rubbish description')
+    page.expectNoText('.discussion-form .lmo-textarea textarea', 'rubbish description')
 
   },
 
@@ -136,7 +136,7 @@ module.exports = {
     page.click('.join-group-button')
     page.expectFlash('You are now a member of Open Dirty Dancing Shoes')
 
-    page.fillIn('.comment-form .ProseMirror', 'I am new!')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'I am new!')
     page.click('.comment-form__submit-button', 500)
     page.expectFlash('Comment added')
   },
@@ -145,7 +145,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_as_guest')
-    page.fillIn('.comment-form .ProseMirror', 'I am a guest!')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'I am a guest!')
     page.click('.comment-form__submit-button')
     page.expectFlash('Comment added')
 
@@ -168,7 +168,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.fillIn('.comment-form .ProseMirror', 'Here is a heart!')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Here is a heart!')
     page.click('.comment-form .emoji-picker__toggle')
     page.click('.emoji-picker__emojis span[title="heart"]')
     page.click('.comment-form__submit-button')
@@ -179,12 +179,12 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.fillIn('.comment-form .ProseMirror', 'original comment right heerrr')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right heerrr')
     page.click('.comment-form__submit-button')
     page.click('.thread-item .action-menu')
     page.click('.context-panel-dropdown__option--reply_to_comment')
 
-    page.fillIn('.comment-form .ProseMirror', 'hi this is my comment')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'hi this is my comment')
     page.click('.comment-form__submit-button')
     page.expectText('.event-children .new-comment__body', 'hi this is my comment')
     page.expectFlash('Patrick Swayze notified of reply')
@@ -200,25 +200,41 @@ module.exports = {
     page.expectElement('.reactions-display')
   },
 
-  'mentions_a_user': (test) => {
+  'mentions_a_user_in_wysiwyg': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.fillIn('.comment-form .ProseMirror', '@jennifer')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', '@jennifer')
     page.expectText('.suggestion-list', 'Jennifer Grey')
-    page.click('.suggestion-list')
+    page.click('.suggestion-list .v-list-item__title')
+    page.pause(1000)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', '@Jennifer Grey')
+  },
+
+  'mentions_a_user_in_markdown': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.click('i.mdi-chevron-right')
+    page.click('i.mdi-markdown')
+    page.acceptConfirm()
+    page.fillIn('.comment-form .lmo-textarea textarea', '@jennifer')
+    page.expectText('.suggestion-list', 'Jennifer Grey')
+    page.click('.suggestion-list .v-list-item__title')
+    page.pause(1000)
+    page.click('.comment-form__submit-button')
+    page.expectText('.new-comment', '@jennifergrey')
   },
 
   'edits_a_comment': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.fillIn('.comment-form .ProseMirror', 'original comment right hur')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right hur')
     page.click('.comment-form__submit-button')
     page.click('.action-dock__button--edit_comment')
-    page.fillIn('.edit-comment-form .ProseMirror', 'edited comment right thur')
+    page.fillIn('.edit-comment-form .lmo-textarea div[contenteditable=true]', 'edited comment right thur')
     page.click('.edit-comment-form .comment-form__submit-button', 1000)
     page.expectText('.new-comment', 'edited comment right thur')
   },
@@ -245,7 +261,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.fillIn('.comment-form .ProseMirror', 'original comment right hur')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right hur')
     page.click('.comment-form__submit-button')
     page.click('.thread-item .action-menu')
     page.click('.context-panel-dropdown__option--delete_comment')
@@ -260,7 +276,7 @@ module.exports = {
     page.click('.thread-mailer__subject a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
-    page.fillIn('.comment-form .ProseMirror', 'Hello world!')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
     page.click('.comment-form__submit-button')
     page.expectText('.thread-item__title', 'Jennifer Grey', 10000)
     page.expectText('.thread-item__body', 'Hello world!')

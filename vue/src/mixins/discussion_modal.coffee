@@ -9,13 +9,15 @@ export default
   methods:
     canStartThreads: ->
       Session.isSignedIn() &&
-      some(Session.user().groups(), (group) => AbilityService.canStartThread(group))
+      some(Session.user().groups(), (group) -> AbilityService.canStartThread(group))
 
     openStartDiscussionModal: (group) ->
       EventBus.$emit('openModal',
                       component: 'DiscussionForm',
                       props: {
-                        discussion: Records.discussions.build(groupId: group.id)
+                        discussion: Records.discussions.build
+                          descriptionFormat: Session.defaultFormat()
+                          groupId: group.id
                       })
 
     openForkedDiscussionModal: (discussion) ->
@@ -23,8 +25,8 @@ export default
                       component: 'DiscussionForm',
                       props: {
                         discussion: Records.discussions.build
-                          groupId:        discussion.groupId
-                          private:        discussion.private
+                          groupId: discussion.groupId
+                          private: discussion.private
                           forkedEventIds: discussion.forkedEventIds
                           description: discussion.description
                           descriptionFormat: discussion.descriptionFormat

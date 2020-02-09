@@ -40,8 +40,7 @@ export default class BaseModel
 
   afterConstruction: ->
 
-  defaultValues: ->
-    {}
+  defaultValues: -> {}
 
   clone: ->
     cloneAttributes = {}

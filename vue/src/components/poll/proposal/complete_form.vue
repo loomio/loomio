@@ -3,6 +3,7 @@ import Records from '@/shared/services/records'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
 import EventBus                 from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
+import Session from '@/shared/services/session'
 import { iconFor }                from '@/shared/helpers/poll'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { map } from 'lodash'
@@ -52,11 +53,11 @@ export default
 
     newPoll: ->
       Records.polls.build
-        pollType:              'proposal'
-        discussionId:          @discussion.id
-        groupId:               @discussion.groupId
-        pollOptionNames:       map fieldFromTemplate('proposal', 'poll_options_attributes'), 'name'
-        details: ''
+        pollType: 'proposal'
+        discussionId: @discussion.id
+        groupId: @discussion.groupId
+        pollOptionNames: map fieldFromTemplate('proposal', 'poll_options_attributes'), 'name'
+        detailsFormat: Session.defaultFormat()
 
     icon: ->
       iconFor(@poll)

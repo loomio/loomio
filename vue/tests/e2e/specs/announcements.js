@@ -53,7 +53,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.click('.activity-panel__add-proposal')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
-    page.fillIn('.poll-common-form-fields .ProseMirror', 'Some details')
+    page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__submit')
     page.expectFlash('Proposal started')
     page.expectElement('.announcement-form')
