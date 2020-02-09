@@ -21,8 +21,9 @@ export default
   data: ->
     membershipRequest: Records.membershipRequests.build
       groupId: @group.id
-      name:    Session.user().name
-      email:   Session.user().email
+      name: Session.user().name
+      email: Session.user().email
+      introduction: null
 
   computed:
     isSignedIn: -> Session.isSignedIn()
@@ -38,9 +39,9 @@ v-card.membership-request-form
     .membership-request-form__visitor(v-if='!isSignedIn')
       v-text-field.membership-request-form__name(v-model='membershipRequest.name' :required='true' :label="$t('membership_request_form.name_label')")
       v-text-field.membership-request-form__email(v-model='membershipRequest.email' :required='true' :label="$t('membership_request_form.email_label')")
-      validation-errors(:subject='membershipRequest', field='email')
+      validation-errors(:subject='membershipRequest' field='email')
     .membership-request-form__reason
-      v-textarea.membership-request-form__introduction(v-model='membershipRequest.introduction', :required='false', maxlength='250' :label="$t('membership_request_form.introduction_label')")
+      v-textarea.membership-request-form__introduction(v-model='membershipRequest.introduction' :required='false' maxlength='250' :label="$t('membership_request_form.introduction_label')")
   v-card-actions
     v-btn.membership-request-form__cancel-btn(@click='close()' v-t="'common.action.cancel'")
     v-spacer
