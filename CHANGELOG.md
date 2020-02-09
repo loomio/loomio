@@ -1,3 +1,13 @@
+## 2020-02-10 (Loomio 2.1.0)
+- Major improvements to text editor: added Markdown support, previewing, collapsible menu:
+![new_text_editor](https://user-images.githubusercontent.com/10443269/74111288-73809280-4bf8-11ea-858b-1123226a05a3.gif)
+- Add ability to move comments and polls to a new thread
+- Add group stats page, accessible from Settings panel
+- Add documentation for setting up MS Azure Active Directory single sign-on
+- Fix group data export
+- Fix membership requests not displaying
+- Fix a couple with issues with SAML
+
 ## 2020-01-31 (Loomio 2.0.2)
 - Add support for SAML for individual groups
 - Add server side rendered pages for groups, threads and explore
