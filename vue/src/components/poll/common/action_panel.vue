@@ -17,6 +17,7 @@ export default
   data: ->
     stance: @lastStanceOrNew()
     newStance: Records.stances.build(
+      reasonFormat: Session.defaultFormat()
       pollId:    @poll.id,
       userId:    AppConfig.currentUserId
     ).choose(@$route.params.poll_option_id)
