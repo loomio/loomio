@@ -200,7 +200,7 @@ module.exports = {
     page.expectElement('.reactions-display')
   },
 
-  'mentions_a_user': (test) => {
+  'mentions_a_user_in_wysiwyg': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
@@ -210,6 +210,21 @@ module.exports = {
     page.pause(1000)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', '@Jennifer Grey')
+  },
+
+  'mentions_a_user_in_markdown': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.click('i.mdi-chevron-right')
+    page.click('i.mdi-markdown')
+    page.acceptConfirm()
+    page.fillIn('.comment-form .lmo-textarea textarea', '@jennifer')
+    page.expectText('.suggestion-list', 'Jennifer Grey')
+    page.click('.suggestion-list .v-list-item__title')
+    page.pause(1000)
+    page.click('.comment-form__submit-button')
+    page.expectText('.new-comment', '@jennifergrey')
   },
 
   'edits_a_comment': (test) => {

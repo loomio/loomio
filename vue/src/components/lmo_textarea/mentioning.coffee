@@ -67,10 +67,10 @@ export MdMentioning =
       text = @textarea().value
       beforeText = @textarea().value.slice(0, @textarea().selectionStart - @query.length)
       afterText = @textarea().value.slice(@textarea().selectionStart)
-      @textarea().value = beforeText + user.username + ' ' + afterText
+      @model[@field] = beforeText + user.username + ' ' + afterText
       @textarea().selectionEnd = (beforeText + user.username).length + 1
-      @query = ''
       @textarea().focus
+      @query = ''
 
     updatePopup: ->
       return unless @$refs.field
