@@ -14,9 +14,11 @@ export default
 
     openOutcomeForm: ->
       outcome = @poll.outcome() or
-      Records.outcomes.build(pollId: @poll.id, statementFormat: Session.defaultFormat())
+      Records.outcomes.build
+        pollId: @poll.id
+        statementFormat: Session.defaultFormat()
       @openPollOutcomeModal(outcome)
-      
+
 </script>
 
 <template lang="pug">
