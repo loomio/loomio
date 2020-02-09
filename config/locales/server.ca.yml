@@ -1,4 +1,13 @@
 ca:
+  group:
+    stats:
+      members: Membres
+      subgroups: Subgrups
+      threads: Fils
+      votes: Vots
+      comments: Comentaris
+      poll_types:
+        proposal: Proposta
   poll:
     export:
       title: Títol

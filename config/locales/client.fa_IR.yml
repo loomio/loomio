@@ -135,6 +135,9 @@ fa_IR:
     threads: موضوعات
     members: اعضا
     settings: تنظیمات
+    options:
+      edit_group: 'ویرایش تنظیمات گروه'
+      leave_group: 'ترک گروه'
   group_form:
     privacy: 'حریم شخصی'
     submit_update: 'به روز رسانی تنطیمات'

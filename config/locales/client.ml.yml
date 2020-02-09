@@ -56,7 +56,9 @@ ml:
     options_label: 'ഐച്ഛികങ്ങള്‍'
     options:
       label: 'ഐച്ഛികങ്ങള്‍'
+      edit_group: 'കൂട്ടത്തിന്റെ ക്രമീകരണങ്ങള്‍ മാറ്റുക'
       email_settings: 'ഈമെയില്‍ മുന്‍ഗണനകള്‍'
+      leave_group: 'കൂട്ടം വിടുക'
   document:
     form:
       title_label: പേരു്

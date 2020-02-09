@@ -368,7 +368,6 @@ nb_NO:
       updated: 'Tråd oppdatert'
       forked: 'Trådforgreining opprettet'
     new_discussion_title: 'Start en ny tråd'
-    fork_discussion_title: 'Forgren en tråd'
     edit_discussion_title: 'Rediger tråd'
     group_label: 'Gruppe'
     group_placeholder: 'Velg en gruppe'

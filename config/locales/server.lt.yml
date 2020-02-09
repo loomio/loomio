@@ -1,4 +1,11 @@
 lt:
+  group:
+    stats:
+      subgroups: Pogrupiai
+      threads: Temos
+      poll_types:
+        proposal: Pasiūlymas
+        time: Laiko apklausa
   poll:
     export:
       title: Antraštė

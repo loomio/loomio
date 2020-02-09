@@ -9,6 +9,13 @@ ro:
   errors:
     messages:
       spoofed_media_type: Continutul acelui fisier nu corespunde cu numele lui
+  group:
+    stats:
+      members: Membri
+      threads: Subiecte
+      comments: Comentarii
+      poll_types:
+        proposal: Propunere
   poll:
     error:
       cannot_add_options: Nu poti adauga optiuni la sondajul acesta

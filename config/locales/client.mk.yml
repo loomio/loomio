@@ -61,6 +61,8 @@ mk:
     options_label: 'Опции'
     options:
       label: 'Опции'
+      edit_group: 'Измени ги подесувањата на групата'
+      leave_group: 'Напушти ја групата'
   group_form:
     group_name_placeholder: 'Кое е името на твојата група?'
     profile: Профил

@@ -1,4 +1,10 @@
 be_BY:
+  group:
+    stats:
+      members: Удзельнікі
+      threads: Абмеркаванні
+      poll_types:
+        proposal: Прапанова
   poll:
     export:
       title: Назва

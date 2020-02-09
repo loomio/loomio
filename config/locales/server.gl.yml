@@ -1,4 +1,10 @@
 gl:
+  group:
+    stats:
+      members: Membros
+      threads: Debates
+      poll_types:
+        proposal: Proposta
   poll:
     export:
       title: Título

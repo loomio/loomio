@@ -13,6 +13,18 @@ hu:
     messages:
       email: Nem érvényes e-mail cím
       spoofed_media_type: A fájl tartalma nem egyezik a fájlnévvel
+  group:
+    stats:
+      members: Tagok
+      subgroups: alcsoportok
+      threads: Témák
+      votes: Szavazatok
+      comments: Hozzászólások
+      polls: Szavazások
+      poll_types:
+        proposal: Javaslat
+        rank: Rangsorolás
+        time: Időpont választás
   user:
     deleted_user: "Törölt felhasználó"
     placeholder_name: "Meghívott felhasználó (%{hostname})"

@@ -13,6 +13,17 @@ it:
     messages:
       email: indirizzo mail non valido
       spoofed_media_type: I contenuti di questo file non corrispondono al suo nome file
+  group:
+    stats:
+      members: Membri
+      subgroups: Sottogruppi
+      threads: Discussioni
+      votes: Voti
+      comments: Commenti
+      poll_types:
+        proposal: Proposta
+        rank: Posizione
+        time: Sondaggio per incontro
   user:
     deleted_user: "Utente eliminato"
     placeholder_name: "Utente invitato"

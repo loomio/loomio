@@ -1,4 +1,10 @@
 ml:
+  group:
+    stats:
+      members: അംഗങ്ങള്‍
+      threads: ചര്‍ച്ചകള്‍
+      poll_types:
+        proposal: 'ശുപാര്‍ശ '
   poll:
     export:
       title: തലക്കെട്ട്

@@ -55,7 +55,9 @@ km:
     options_label: 'ជម្រើស '
     options:
       label: 'ជម្រើស '
+      edit_group: 'កំណត់ការកែសម្រួលក្រុម'
       email_settings: 'ចំណង់ចំណូលចិត្តអ៊ីម៉ែល '
+      leave_group: 'ចាកចេញពីក្រុម'
   document:
     form:
       title_label: ឈ្មោះ

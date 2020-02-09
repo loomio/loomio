@@ -11,6 +11,16 @@ cs:
     messages:
       email: není platnou e-mailovou adresou
       spoofed_media_type: Obsah tohoto souboru neodpovídá jeho názvu
+  group:
+    stats:
+      members: Členové
+      subgroups: Podskupiny
+      threads: Vlákna
+      votes: Hlasování
+      comments: Komentáře
+      poll_types:
+        proposal: Návrh
+        time: Doba hlasování
   user:
     deleted_user: "Odstraněný uživatel"
     error:

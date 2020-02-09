@@ -1,4 +1,10 @@
 an:
+  group:
+    stats:
+      members: Miembros
+      threads: Discusions
+      poll_types:
+        proposal: Propuesta
   poll:
     export:
       title: Titol

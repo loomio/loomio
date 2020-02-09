@@ -1,4 +1,10 @@
 sk:
+  group:
+    stats:
+      members: Členovia
+      threads: Diskusie
+      poll_types:
+        proposal: Návrh
   poll:
     export:
       title: Názov

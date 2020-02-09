@@ -13,6 +13,16 @@ he:
     messages:
       email: כתובת המייל אינו תקין
       spoofed_media_type: תוכנו של הקובץ אינו תואם לשמו
+  group:
+    stats:
+      members: חברים
+      subgroups: תת קבוצה
+      threads: שיחות
+      votes: הצבעות
+      comments: הערות
+      poll_types:
+        proposal: הצעה
+        time: הצבעת זמן
   user:
     deleted_user: "משתמש מחוק"
     placeholder_name: "משתמש מוזמן (%{hostname})"

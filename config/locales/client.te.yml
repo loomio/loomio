@@ -105,7 +105,9 @@ te:
     options_label: 'ఐచ్ఛికాలు'
     options:
       label: 'ఐచ్ఛికాలు'
+      edit_group: 'సమూహ అమరికలను సవరించండి'
       email_settings: 'వేగు అభిరుచులు'
+      leave_group: 'సమూహాన్ని వదిలివెళ్ళండి'
   group_form:
     privacy: 'అంతరంగికత'
   document:

@@ -69,7 +69,9 @@ an:
     options_label: 'Opcions'
     options:
       label: 'Opcions'
+      edit_group: 'Editar configuracions d''o grupo'
       email_settings: 'Preferencias de correu electronico '
+      leave_group: 'Abandonar grupo'
   group_form:
     group_name_placeholder: 'Quál ye o nombre d''o tuyo grupo?'
     profile: Perfil

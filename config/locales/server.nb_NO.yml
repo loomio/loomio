@@ -1,4 +1,11 @@
 nb_NO:
+  group:
+    stats:
+      threads: Tråder
+      comments: Kommentarer
+      poll_types:
+        proposal: Forslag
+        time: Tidspunkt
   poll:
     export:
       title: Tittel

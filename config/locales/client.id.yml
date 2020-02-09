@@ -56,7 +56,9 @@ id:
     options_label: 'Pilihan'
     options:
       label: 'Pilihan'
+      edit_group: 'Ubah setelan kelompok'
       email_settings: 'Preferensi surel'
+      leave_group: 'Tinggalkan kelompok'
   document:
     form:
       title_label: Nama

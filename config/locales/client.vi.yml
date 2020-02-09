@@ -52,7 +52,9 @@ vi:
     options_label: 'Tùy chọn'
     options:
       label: 'Tùy chọn'
+      edit_group: 'Chỉnh sửa thiết lập nhóm'
       email_settings: 'Tùy biến email'
+      leave_group: 'Rời khỏi nhóm'
   group_form:
     group_name_placeholder: 'Tên của nhóm bạn là gì?'
   document:

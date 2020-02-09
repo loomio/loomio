@@ -13,6 +13,18 @@ es:
     messages:
       email: No es una dirección de email válida
       spoofed_media_type: El contenido de ese archivo no se asemeja al nombre del mismo
+  group:
+    stats:
+      members: Integrantes
+      subgroups: Subgrupos
+      threads: Hilos
+      votes: Votos
+      comments: Comentarios
+      polls: Sondeos
+      poll_types:
+        proposal: Propuesta
+        rank: Rango
+        time: Coordinar horario
   user:
     deleted_user: "Usuario Eliminado"
     placeholder_name: "Usuario invitado (%{hostname})"

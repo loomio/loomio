@@ -1,4 +1,13 @@
 ar:
+  group:
+    stats:
+      members: أعضاء
+      subgroups: الفِرَق الفرعية
+      threads: المواضيع
+      votes: أصوات
+      comments: التعليقات
+      poll_types:
+        proposal: اقتراح
   poll:
     export:
       title: العنوان

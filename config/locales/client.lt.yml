@@ -185,6 +185,8 @@ lt:
     options_label: 'Parinktys'
     options:
       label: 'Parinktys'
+      leave_group: 'Palikti grupę'
+      deactivate_group: 'Pasyvinti grupę'
     volume:
       loud: Siųsti el. laišką kai tik atsiranda kokia nors veikla.
       loud_aria_description: Jūsų pranešimų garsumas šiai grupei yra nustatytas į Garsus. Jums bus siunčiami el. laiškai, kai tik atsiras kokia nors veikla.

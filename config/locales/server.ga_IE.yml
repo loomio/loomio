@@ -1,4 +1,13 @@
 ga_IE:
+  group:
+    stats:
+      members: Comhaltaí
+      subgroups: Fobhaiclí
+      threads: Snáitheanna
+      comments: Tráchtanna
+      poll_types:
+        proposal: Togra
+        rank: Rangaigh
   poll:
     export:
       title: Teideal

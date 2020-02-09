@@ -321,7 +321,9 @@ sv:
     options_label: 'Alternativ'
     options:
       label: 'Alternativ'
+      edit_group: 'Redigera gruppinställningarna'
       email_settings: 'E-postinställningar'
+      leave_group: 'Lämna gruppen'
     volume:
       quiet: Skicka mig inte epost om den här gruppen. Aktivitet kommer att visas på instrumentbrädan.
       quiet_aria_description: Din notifikationsvolym för den här gruppen är satt till Tyst. Du kommer inta att få epost om aktivitet i den här gruppen. Grupp aktivitet kommer att visas på din instrumentbräda.

@@ -1,4 +1,9 @@
 hr:
+  group:
+    stats:
+      members: Članovi
+      poll_types:
+        proposal: Prijedlog
   footer:
     about: O nama
     blog: Blog

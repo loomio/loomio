@@ -1,4 +1,8 @@
 fi:
+  group:
+    stats:
+      poll_types:
+        proposal: Ehdotus
   email:
     unsubscribe: 'Lopeta tilaus tai muuta sinun sähköpostiasetuksia:'
   footer:

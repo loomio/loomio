@@ -1,4 +1,10 @@
 mk:
+  group:
+    stats:
+      members: Членови
+      threads: Дискусии
+      poll_types:
+        proposal: Предлог
   poll:
     export:
       title: Наслов

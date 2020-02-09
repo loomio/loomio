@@ -1,4 +1,13 @@
 el:
+  group:
+    stats:
+      members: Μέλη
+      subgroups: Υποομάδες
+      threads: Θέματα
+      comments: Σχόλια
+      poll_types:
+        proposal: Πρόταση
+        time: Χρόνος ψηφοφορίας
   poll:
     export:
       title: Τίτλος

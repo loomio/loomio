@@ -1,4 +1,10 @@
 bg_BG:
+  group:
+    stats:
+      members: Членове
+      threads: Дискусии
+      poll_types:
+        proposal: Предложение
   poll:
     export:
       title: Заглавие

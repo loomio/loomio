@@ -16,6 +16,17 @@ fr:
   group:
     error:
       handle_must_begin_with_parent_handle: "Doit commencer par %{parent_handle}"
+    stats:
+      members: Membres
+      subgroups: Sous-groupes
+      threads: Discussions
+      votes: Votes
+      comments: Commentaires
+      polls: Sondages
+      poll_types:
+        proposal: Proposition
+        rank: Classer
+        time: Sondage horaire de réunion
   user:
     deleted_user: "Utilisateur supprimé"
     placeholder_name: "Utilisateur invité (%{hostname})"

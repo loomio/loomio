@@ -10,6 +10,13 @@ cmn:
     noscript: Loomio 需要 JavaScript！请在您的浏览器中启用 JavaScript 以继续
     messages:
       email: 您输入的不是有效的电子邮件地址
+  group:
+    stats:
+      members: 成员 ({{count}})
+      threads: 话题
+      comments: 意见
+      poll_types:
+        proposal: 提案
   user:
     error:
       username_must_be_alphanumeric: "用户名只能为小写字母与数字"

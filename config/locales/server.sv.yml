@@ -1,4 +1,11 @@
 sv:
+  group:
+    stats:
+      members: Medlemmar
+      threads: Trådar
+      poll_types:
+        proposal: Förslag
+        time: Tidsröstning
   poll:
     export:
       title: Titel

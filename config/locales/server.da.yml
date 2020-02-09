@@ -1,4 +1,14 @@
 da:
+  group:
+    stats:
+      members: Medlemmer
+      subgroups: Undergrupper
+      threads: Debatter
+      votes: Stemmer
+      comments: Kommentarer
+      poll_types:
+        proposal: Forslag
+        time: Find et tidspunkt
   poll:
     export:
       title: Titel

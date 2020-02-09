@@ -1,4 +1,11 @@
 te:
+  group:
+    stats:
+      members: సభ్యులు
+      threads: చర్చలు
+      comments: వ్యాఖ్యలు
+      poll_types:
+        proposal: ప్రతిపాదన
   poll:
     export:
       title: శీర్షిక

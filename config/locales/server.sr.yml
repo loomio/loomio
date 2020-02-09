@@ -1,4 +1,13 @@
 sr:
+  group:
+    stats:
+      members: Članovi
+      subgroups: Podgrupe
+      threads: Niti
+      votes: Glasovi
+      comments: Komentari
+      poll_types:
+        proposal: Predlog
   poll:
     export:
       title: Naslov

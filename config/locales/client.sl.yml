@@ -271,12 +271,7 @@ sl:
     options_label: 'Možnosti'
     options:
       label: 'Možnosti'
-      edit_group: 'Urejanje nastavitev skupine'
-      become_coordinator: Postani skrbnik
-      export_data: Izvozi podatke skupine
-      export_data_as_json: Izvozi podatke skupine kot JSON
-      export_data_as_csv: Izvozi podatke skupine kot CSV
-      export_data_as_html: Izvozi podatke skupine kot HTML
+      edit_group: 'Uredi nastavitve skupine'
       manage_members: 'Upravljanje članov'
       add_subgroup: 'Dodaj podskupino'
       email_settings: 'Nastavitve e-pošte'

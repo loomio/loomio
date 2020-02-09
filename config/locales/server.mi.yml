@@ -1,4 +1,11 @@
 mi:
+  group:
+    stats:
+      members: Ngā Mema
+      threads: Ngā miro
+      comments: Ngā kōrero poto
+      poll_types:
+        proposal: He whakatakoto
   poll:
     export:
       title: Taitara

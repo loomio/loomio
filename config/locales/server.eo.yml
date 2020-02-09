@@ -1,4 +1,13 @@
 eo:
+  group:
+    stats:
+      members: Membroj
+      subgroups: Subgrupoj
+      threads: Fadenoj
+      votes: Voĉdonoj
+      comments: Komentoj
+      poll_types:
+        proposal: Propozicio
   poll:
     export:
       title: Titolo

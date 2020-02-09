@@ -28,7 +28,9 @@ hr:
   group_page:
     members: Članovi
     options:
+      edit_group: 'Uredi postavke grupe'
       email_settings: 'Postavke e-maila'
+      leave_group: 'Napusti grupu'
   group_form:
     profile: Profil
   membership_requests_page:

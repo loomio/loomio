@@ -1,4 +1,12 @@
 ko:
+  group:
+    stats:
+      members: 멤버
+      subgroups: 소그룹
+      threads: 토론 주제
+      comments: 댓글
+      poll_types:
+        proposal: 제안
   poll:
     export:
       title: 제목

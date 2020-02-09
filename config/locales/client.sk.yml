@@ -69,7 +69,9 @@ sk:
     options_label: 'Nastavenia'
     options:
       label: 'Nastavenia'
+      edit_group: 'Upraviť nastavenia skupiny'
       email_settings: 'Nastavenie emailu'
+      leave_group: 'Opustiť skupinu'
   group_form:
     group_name_placeholder: 'Aký je názov vašej skupiny?'
     profile: Profil

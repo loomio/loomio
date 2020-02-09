@@ -1,4 +1,10 @@
 km:
+  group:
+    stats:
+      members: សមាជិក
+      threads: ការពិភាក្សារ
+      poll_types:
+        proposal: សំណើ
   poll:
     export:
       title: ចំណងជើង

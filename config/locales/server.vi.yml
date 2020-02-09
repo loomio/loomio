@@ -1,4 +1,10 @@
 vi:
+  group:
+    stats:
+      members: Thành viên
+      threads: Các phần thảo luận
+      poll_types:
+        proposal: Lời đề nghị
   poll:
     export:
       title: Tiêu đề

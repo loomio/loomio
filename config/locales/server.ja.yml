@@ -1,4 +1,10 @@
 ja:
+  group:
+    stats:
+      members: メンバー
+      threads: ディスカッション
+      poll_types:
+        proposal: 提案
   poll:
     export:
       title: タイトル

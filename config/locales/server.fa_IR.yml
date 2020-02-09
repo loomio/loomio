@@ -1,4 +1,9 @@
 fa_IR:
+  group:
+    stats:
+      members: اعضا
+      threads: موضوعات
+      comments: نظرات
   poll:
     export:
       total: مقدار کلی

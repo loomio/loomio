@@ -13,6 +13,14 @@ sl:
     messages:
       email: ni veljaven email naslov
       spoofed_media_type: Vsebina te datoteke se ne ujema z imenom
+  group:
+    stats:
+      members: Člani
+      subgroups: Podskupine
+      threads: Teme
+      comments: Komentarji
+      poll_types:
+        proposal: Predlog
   user:
     deleted_user: "Izbrisan uporabnik"
     placeholder_name: "Povabljen uporabnik (%{hostname})"

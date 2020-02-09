@@ -13,6 +13,18 @@ de:
     messages:
       email: das ist keine gültige E-Mail-Adresse
       spoofed_media_type: Der Inhalt der Datei stimmt nicht mit dem Dateinamen überein
+  group:
+    stats:
+      members: Mitglieder
+      subgroups: Untergruppen
+      threads: Diskussionen
+      votes: Abstimmungsbeiträge
+      comments: Kommentare
+      polls: Abstimmungen
+      poll_types:
+        proposal: Vorschläge
+        rank: Rang
+        time: Terminfindung
   user:
     deleted_user: "gelöschter Nutzer"
     placeholder_name: "eingeladener Nutzer (%{hostname})"

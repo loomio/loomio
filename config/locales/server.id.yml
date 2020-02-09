@@ -1,4 +1,10 @@
 id:
+  group:
+    stats:
+      members: Anggota
+      threads: Diskusi
+      poll_types:
+        proposal: Usulan
   poll:
     export:
       title: Judul

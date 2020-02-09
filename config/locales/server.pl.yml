@@ -1,4 +1,13 @@
 pl:
+  group:
+    stats:
+      members: Członkowie
+      subgroups: Podgrupy
+      threads: Wątki
+      comments: Komentarze
+      poll_types:
+        proposal: Propozycja
+        time: Ankieta datowa
   poll:
     export:
       title: Tytuł

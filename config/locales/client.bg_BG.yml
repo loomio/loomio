@@ -47,7 +47,9 @@ bg_BG:
     options_label: 'Опции'
     options:
       label: 'Опции'
+      edit_group: 'Редактирай настройките на групата'
       email_settings: 'Известия'
+      leave_group: 'Напусни групата'
   group_form:
     group_name_placeholder: 'Какво е името на вашата група?'
   document:

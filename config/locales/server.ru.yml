@@ -13,6 +13,15 @@ ru:
     messages:
       email: не является верным адресом электронной почты
       spoofed_media_type: Содержимое этого файла не соответствует его названию
+  group:
+    stats:
+      members: Участники
+      subgroups: Подгруппы
+      threads: Обсуждения
+      comments: Комментарии
+      poll_types:
+        proposal: Предложение
+        time: Голосование за время встречи
   user:
     deleted_user: "Удаленный пользователь"
     placeholder_name: "Приглашенный пользователь (%{hostname})"

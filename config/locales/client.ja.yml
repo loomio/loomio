@@ -74,7 +74,9 @@ ja:
     options_label: 'オプション'
     options:
       label: 'オプション'
+      edit_group: 'グループの設定を編集します'
       email_settings: 'Eメールの設定'
+      leave_group: 'グループを離れます'
   group_form:
     group_name_placeholder: 'あなたのグループの名前は何ですか？'
     privacy: 'プライバシー'

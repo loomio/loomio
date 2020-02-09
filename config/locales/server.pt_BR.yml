@@ -13,6 +13,16 @@ pt_BR:
     messages:
       email: Não é um endereço de e-mail válido
       spoofed_media_type: 'O conteúdo daquele arquivo não corresponde ao nome do arquivo '
+  group:
+    stats:
+      members: Membros ({{count}})
+      subgroups: Subgrupos
+      threads: Conversas
+      votes: Votos
+      comments: Comentários
+      poll_types:
+        proposal: Proposta
+        time: Tempo de votação
   user:
     deleted_user: "Usuário excluído"
     placeholder_name: "Usuário convidado (%{hostname})"
