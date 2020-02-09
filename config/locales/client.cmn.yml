@@ -135,6 +135,7 @@ cmn:
     points_abbrev: 每个投票价值 {{score}} 分
     total: 总共
     action:
+      print: 打印
       search: '搜索'
       filter: '过滤器'
       back: '返回'

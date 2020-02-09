@@ -299,6 +299,7 @@ Loomio::Application.routes.draw do
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
+  get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
   get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
@@ -330,10 +331,10 @@ Loomio::Application.routes.draw do
 
   resources :saml_providers, only: [] do
     collection do
-      post :callback
       get :auth
       get :should_auth
       get :invitation_created
+      post :callback
     end
 
     member do

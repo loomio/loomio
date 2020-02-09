@@ -4,6 +4,16 @@ class API::DiscussionsController < API::RestfulController
   include UsesPolls
   include UsesDiscussionEvents
 
+  def create
+    instantiate_resource
+    if resource_params[:forked_event_ids] && resource_params[:forked_event_ids].any?
+      EventService.move_comments(discussion: create_action.discussion, params: resource_params, actor: current_user)
+    else
+      create_action
+    end
+    respond_with_resource
+  end
+
   def tags
     instantiate_collection do |collection|
       collection.sorted_by_latest_activity.joins(:discussion_tags)

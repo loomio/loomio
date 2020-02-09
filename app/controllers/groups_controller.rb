@@ -1,11 +1,6 @@
 class GroupsController < ApplicationController
   def index
-    @groups = Queries::ExploreGroups.new.search_for(params[:q])
-      .where('groups.memberships_count > 4')
-      .where('groups.discussions_count > 2')
-      .eager_load(:subscription)
-      .where("subscriptions.state = 'active'")
-      .order('groups.memberships_count DESC')
+    @groups = Queries::ExploreGroups.new.search_for(params[:q]).order('groups.memberships_count DESC')
     @total = @groups.count
     limit = params.fetch(:limit, 50)
     if @total < limit
@@ -29,5 +24,9 @@ class GroupsController < ApplicationController
       format.html
       format.csv { send_data @exporter.to_csv }
     end
+  end
+
+  def stats
+    @group = load_and_authorize(:formal_group, :export)
   end
 end

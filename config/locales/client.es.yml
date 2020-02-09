@@ -147,6 +147,7 @@ es:
     points_abbrev: 'Cada voto vale {{score}} puntos '
     total: Total
     action:
+      print: 'Imprimir '
       pin: Fijar
       unpin: Liberar
       search: 'Buscar'
@@ -1219,6 +1220,7 @@ es:
     search_placeholder: Buscar grupos públicos
     single_search_result: "1 grupo público coincide con <strong>{{searchTerm}}:</strong> "
     multiple_search_results: "{{resultCount}} grupos públicos coinciden con <strong>{{searchTerm}}:</strong>"
+    newest_first: El más reciente primero
   global:
     messages:
       app_update: 'Una nueva versión de la app está disponible '

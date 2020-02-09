@@ -156,6 +156,7 @@ zh_TW:
     points_abbrev: 每個投票價值 {{score}} 分
     total: 總共
     action:
+      print: 列印
       pin: 釘選
       unpin: 取消釘選
       search: '搜尋'
@@ -1391,6 +1392,9 @@ zh_TW:
     single_search_result: "1 個公開群組符合 <strong>{{searchTerm}}：</strong>"
     multiple_search_results: "{{resultCount}} 個公開群組符合 <strong>{{searchTerm}}：</strong>"
     no_results_found: "<strong>找不到您要找的群組嗎？</strong>如果群組的隱私設定為「私密」，那它就不會在此出現。"
+    newest_first: 最新的放在最前面
+    biggest_first: 最大的放在最前面
+    order_by: 群組排序由
   global:
     messages:
       app_update: '新版的應用程式已經可用'

@@ -1,7 +1,35 @@
 tr:
+  loomio_onboarding:
+    group_progress_card:
+      title: Grubunuzu etkinleştirin
+      activities:
+        set_description: Grubunuzun açıklamasını ayarlayın
+        set_logo: Grubunuz için bir logo seçin
+        set_cover_photo: Grubunuz için bir kapak fotoğrafı seçin
+        invite_people_in: Kişileri davet edin
+        start_thread: Bir müzakere başlatın
+        make_decision: Bir karar başlatın
+      learn_more: Loomio Yardım'da daha fazla bilgi edinin
+      celebration_message: Güzel! Grubunuz hazır! 🎉
+      dismiss_this_card: Bu kartı kapat
+  plan_names:
+    free: Bedava
+    trial: Deneme
+    small: Küçük
+    medium: Orta
+    large: Büyük
+    monthly: Aylık
+    yearly: Yıllık
   current_plan_button:
     upgrade: Yükselt
+    free_trial: Ücretsiz deneme. {{days}} gün kaldı.
+    trial_expired: Deneme süresi doldu. Loomio'yu kullanmaya devam etmek için paketinizi   yükseltin.
+    tooltip: "Fiyatlarımız harika! Bugün paketinizi yükseltin ve Loomio'nun grubunuza neler sunabileceğini keşfedin."
+    was_gift_trial: "{{CreatedDate}} tarihinden beri grubunuz Loomio'yu ücretsiz kullanıyor. Ücretsiz bir hizmet sunmaya devam edemiyoruz. Loomio'yu kullanmaya devam etmek için lütfen paketinizi yükseltin. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Daha fazla bilgi.</a>"
+    was_gift_remaining: "{{days}} gün kaldı."
+    was_gift_expired: "Ücretsiz planınızın süresi doldu."
   loomio_tags:
+    all_tags: Tüm etiketler
     tags: Etiketler
     apply_tags: Etiketleri uygula
     new_tag: Etiket oluştur
@@ -16,17 +44,77 @@ tr:
     helptext: Etiketler, konuşmaları kategorilere ayırmanızı ve daha sonra kolayca bulmanızı sağlar
     discussions_count_singular: ({{count}} müzakere)
     discussions_count_plural: ({{count}} müzakereler)
+    tag_created: Etiket kaydedildi
+    tag_destroyed: Etiket kaldırıldı
     tags_marked: 'Müzakereler {{groupName}} içinde ''{{name}}'' ile işaretlendi '
     no_tags_present: Bu etiketle müzakere bulunamadı! Başka birini seçmeyi deneyin.
+  reactions:
+    slight_smile: Beğen
+    heart: Aşk
+    laughing: Kahkaha
+    clap: Alkış
+    hugging: Kucaklama
+    sunglasses: Harika
+    wink: Göz kırp
+    nerd: Zeki
+    relieved: Rahatlamış
+    worried: Endişeli
+    confused: Aklı karışmış
+    confounded: Şaşkın
+    neutral_face: Tarafsız
+    slight_frown: Hoşnutsuz
+    disappointed: Hayal kırıklığına uğramış
+    angry: Kızgın
+    weary: Yorgun
+    astonished: Hayrete düşmüş
+    rolling_eyes: Gözlerini devir
+    cry: Ağla
+    scream: Çığlık
+    sleeping: Canı sıkkın
+    thinking: Düşünceli
+    raised_hands: Heyecanlı
+    pray: Dua etmek
+    fingers_crossed: Şans dilemek
+    v: Huzur
+    metal: Metal
+    ok_hand: Tamam
+    wave: Dalga
+    thumbsup: Onayla
+    thumbsdown: Reddet
+  poll_types:
+    proposal: öneri
+    count: kontrol et
+    poll: anket
+    dot_vote: nokta oyu
+    meeting: zaman anketi
+    ranked_choice: tercihli oy
+    score: skor anketi
+  new_poll_types:
+    proposal: öneri
+    count: miktar
+    poll: seç
+    score: skor
+    ranked_choice: sıra
+    dot_vote: tahsis et
+    meeting: zaman anketi
   timezones:
     local: Yerel saat ({{value}})
   common:
+    no_results_found: Sonuç bulunamadı
+    view: İncele
+    history: Geçmiş
+    option: Seçenek
+    add: Ekle
+    you: Sen
     expand: Genişlet
+    all_day: Tüm gün
     ok_got_it: Tamam, anladım
     learn_more: Daha fazla bilgi edin
     not_found: Bulunamadı
     time_zone: Saat dilimi
     local_time: Yerel saat
+    attachments: Ekler
+    active_time_ago: Son aktif {{time_ago}}
     confirm_discard_changes: Değişikliklerden vazgeç?
     time:
       am: am
@@ -37,10 +125,13 @@ tr:
     notification_volume: 'Bildirim ses düzeyi'
     group: 'Grup'
     groups: 'Gruplar'
+    organization: "Organizasyon"
+    organizations: "Organizasyonlar"
     threads: 'Müzakereler'
     decisions: 'Kararlar'
     settings: 'Ayarlar'
     help: 'Yardım'
+    anonymous: Anonim
     privacy:
       privacy: 'Gizlilik'
       public: 'Genel'
@@ -59,12 +150,19 @@ tr:
     models:
       proposal: 'Öneri'
     copy: 'Kopyala'
+    reset: 'Sıfırla'
     copy_text: 'Metni kopyala'
     copied: 'Panoya kopyalandı'
+    points_abbrev: ' Her oy {{Score}} puan değerinde'
+    total: Toplam
     action:
+      print: Yazdır
       search: 'Arama'
+      filter: 'Filtrele'
       back: 'Geri'
+      next: 'Sonraki'
       close: 'Kapat'
+      reopen: 'Yeniden aç'
       save: 'Kaydet'
       save_changes: 'Değişiklikleri kaydet'
       update_settings: 'Ayarları güncelle'
@@ -78,6 +176,7 @@ tr:
       show_more: "Daha fazla göster"
       view_all: "Hepsini görüntüle"
       new_thread: "Yeni müzakere"
+      add_subgroup: 'Yeni alt grup'
       loading: 'Yükleniyor'
       translate: 'Tercüme et'
       upload: 'Yükle'
@@ -85,8 +184,15 @@ tr:
       load_more: 'Daha fazla yükle'
       share: Paylaş
       ok: Tamam
+      retry: Yeniden dene
       done: Tamamlandı
       start: Başla
+      delete: Sil
+      unsubscribe: Aboneliği iptal et
+      subscribe: Abone ol
+      remind: Hatırlat
+      resend: Yeniden gönder
+      send: Gönder
       invite: Davet et
     formatting_help:
       label: 'Biçimlendirme'
@@ -150,6 +256,7 @@ tr:
     public_privacy_notice: 'Yorumunuz web üzerindeki herkese görünür olacak.'
   sidebar:
     threads: 'Müzakereler'
+    start_subgroup: 'Yeni alt grup'
     explore: 'Genel gruplar'
     start_thread: Yeni konu
     aria_labels:
@@ -238,6 +345,8 @@ tr:
     edited_by: '<strong>{{name}}</strong> tarafından düzenlendi'
     posted: Gönderildi
     current_revision: En yeniler
+  reactions_display:
+    you: "Sen"
   group_page:
     threads: Müzakereler
     members: Üyeler
@@ -346,8 +455,11 @@ tr:
     manage_requests: Talepleri yönet
     manage_requests_with_count: Talepleri yönet ({{count}})
   documents_page:
+    title: Ekler
     confirm_remove_title: Eki kaldır
   document:
+    list:
+      title: Ekler
     form:
       title_label: İsim
   membership_requests_page:
@@ -505,6 +617,7 @@ tr:
     edit: 'Düzenle'
     edit_thread: 'Düzenle'
     close_thread: 'Kapat'
+    reopen_thread: 'Yeniden aç'
     mute_thread: 'Sesi kıs'
     move_thread: 'Taşı'
     print_thread: 'Yazdır'
@@ -598,7 +711,10 @@ tr:
     count_title: Kontrol et
     poll_title: Anket
   poll_common:
+    start_poll: Bir karar başlatın
     save_changes: Kaydet
+  poll_common_attachment_form:
+    label: Ekler
   discussions_panel:
     open: Açık
     all: Hepsi
@@ -621,6 +737,10 @@ tr:
   poll_count_options:
     'yes': 'Evet'
     'no': 'Hayır'
+  poll_meeting_chart_panel:
+    total: Toplam
+  poll_common_subscribe_form:
+    subscribe: Abone ol
   polls_page:
     heading: Kararlar
   auth_form:

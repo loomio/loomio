@@ -71,6 +71,7 @@ da:
     copy_text: 'Kopier tekst'
     copied: 'Kopieret til clipboard'
     action:
+      print: Print
       search: 'Søg'
       back: 'Tilbage'
       next: 'Næste'
@@ -754,6 +755,7 @@ da:
   explore_page:
     single_search_result: "1 offentlig gruppe der matcher <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} offentlige grupper der matcher <strong>{{searchTerm}}:</strong>"
+    newest_first: Nyeste først
   global:
     messages:
       reload: 'Genopfrisk'

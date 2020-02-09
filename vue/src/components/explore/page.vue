@@ -17,7 +17,7 @@ export default
     perPage: 50
     canLoadMoreGroups: true
     query: ""
-    searching: false
+    searching: true
     order: null
     orderOptions: [
       {name: @$t('explore_page.newest_first'), val: "created_at"},
@@ -49,6 +49,7 @@ export default
     , 250
 
     loadMore: ->
+      @searching = true
       Records.groups.fetchExploreGroups(@query, from: @groupIds.length, per: @perPage, order: @order).then(@handleSearchResults)
 
     groupCover: (group) ->
@@ -66,9 +67,7 @@ export default
       @$router.replace(@mergeQuery({ order: val }))
   computed:
     showMessage: ->
-      !@searching &&
-      @query &&
-      @groups().length > 0
+      !@searching && @query.length > 0 && @groups().length > 0
 
     searchResultsMessage: ->
       if @groups().length == 1
@@ -77,7 +76,7 @@ export default
         'explore_page.multiple_search_results'
 
     noResultsFound: ->
-      !@searching && (@groups().length < @perPage)
+      !@searching && (@groups().length == 0)
 
     orderedGroups: ->
       orderBy @groups(), [camelCase(@order)], ['desc']
@@ -99,9 +98,10 @@ v-content
     //- h1.headline(v-t="'explore_page.header'")
     v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")
     v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="order")
-    loading(v-show="searching")
+    loading(:until="!searching")
+    .explore-page__no-results-found(v-show='noResultsFound', v-html="$t('explore_page.no_results_found')")
     .explore-page__search-results(v-show='showMessage', v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})")
-    v-row.explore-page__groups.my-4(wrap)
+    v-row.explore-page__groups.my-4(v-show="!searching" wrap)
       v-col(:lg="6" :md="6" :sm="12" v-for='group in orderedGroups', :key='group.id')
         v-card.explore-page__group.my-4(:to='urlFor(group)')
           v-img.explore-page__group-cover(:src="group.coverUrl('small')")
@@ -115,8 +115,8 @@ v-content
               span.mr-4 {{group.discussionsCount}}
               v-icon.mr-2 mdi-thumbs-up-down
               span.mr-4 {{group.pollsCount}}
-    .lmo-show-more(v-show='canLoadMoreGroups')
-      v-btn(v-show="!searching" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more")
-    .explore-page__no-results-found(v-show='noResultsFound', v-html="$t('explore_page.no_results_found')")
+      .lmo-show-more(v-show='canLoadMoreGroups')
+        v-btn(v-show="!searching" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more")
+
 
 </template>

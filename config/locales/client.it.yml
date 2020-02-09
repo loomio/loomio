@@ -124,6 +124,7 @@ it:
     points_abbrev: Ogni voto vale {{score}} punti
     total: Totale
     action:
+      print: Stampa
       search: 'Ricerca'
       filter: 'Filtra'
       back: 'Indietro'
@@ -1062,6 +1063,7 @@ it:
   explore_page:
     header: Esplora gruppi
     search_placeholder: Cerca tra i gruppi pubblici
+    newest_first: I voti più nuovi prima
   authorized_apps_page:
     revoke: Revoca
   registered_apps_page:

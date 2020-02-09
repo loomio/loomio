@@ -33,6 +33,7 @@ sr:
       proposal: 'Predlog'
     copied: 'Kopirano'
     action:
+      print: Štampa
       search: 'Traži'
       back: 'Nazad'
       close: 'Zatvori'

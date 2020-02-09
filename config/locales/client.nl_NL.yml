@@ -121,6 +121,7 @@ nl_NL:
     points_abbrev: Ieder stem is {{score}} punten waard
     total: Totaal
     action:
+      print: Afdrukken
       pin: Vastprikken
       unpin: Ontprikken
       search: 'Zoek'
@@ -996,6 +997,7 @@ nl_NL:
     search_placeholder: Zoek naar openbare groepen
     single_search_result: "1 openbare groep die overeen komt met <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} openbare groepen die overeen komen met <strong>{{searchTerm}}:</strong>"
+    newest_first: Nieuwste eerst
   global:
     messages:
       app_update: 'Er is een nieuwe versie van de app beschikbaar'

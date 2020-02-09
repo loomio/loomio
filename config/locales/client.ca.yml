@@ -78,6 +78,7 @@ ca:
     copied: 'Copiat al porta-retalls'
     total: Total
     action:
+      print: Imprimeix
       search: 'Cerca'
       back: 'Enrere'
       close: 'Tanca'

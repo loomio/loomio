@@ -25,13 +25,11 @@ class SamlProvidersController < ApplicationController
   def callback
     saml_provider = session_saml_provider
     saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: sp_settings(saml_provider))
-    p "callback saml provider id: #{session[:saml_provider_id]}"
-    session.delete(:saml_provider_id)
 
     if saml_response.success?
       email = saml_response.nameid
       group = saml_provider.group
-      expires_at = saml_response.session_expires_at
+      expires_at = saml_response.session_expires_at || 2.days.from_now
 
       logger.debug ['saml', email, group.name, expires_at].join(',')
 
@@ -55,6 +53,7 @@ class SamlProvidersController < ApplicationController
     else
       render :error
     end
+    session.delete(:saml_group_id)
   end
 
   private
@@ -84,7 +83,7 @@ class SamlProvidersController < ApplicationController
   end
 
   def signed_in_success_redirect
-    redirect_to session.delete(:back_to) || dashboard_path
+    redirect_to session.delete(:back_to) || group_url(session_saml_provider.group) || dashboard_path
   end
 
   def user_is_existing_member?(email, group)
@@ -92,7 +91,11 @@ class SamlProvidersController < ApplicationController
   end
 
   def params_saml_provider
-    SamlProvider.find_by!(group_id: find_group!.id)
+    if params[:id]
+      SamlProvider.find(params[:id])
+    else
+      SamlProvider.find_by!(group_id: find_group!.id)
+    end
   end
 
   def session_saml_provider
