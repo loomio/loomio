@@ -31,7 +31,9 @@ export default
     shouldReset: 'reset'
 
   methods:
-    reset: -> @resetFiles()
+    reset: ->
+      @preview = false
+      @resetFiles()
 
     convertToHtml: ->
       convertToHtml(@model, @field)
