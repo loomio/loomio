@@ -274,7 +274,7 @@ div
                 v-card
                   v-card-title.title(v-t="'text_editor.insert_embedded_url'")
                   v-card-text
-                    v-text-field(type="url" label="e.g. https://www.youtube.com/embed/fuWfEwlWFlw" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
+                    v-text-field(type="url" label="e.g. https://www.youtube.com/watch?v=Zlzuqsunpxc" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl(commands.iframe)")
                   v-card-actions
                     v-spacer
                     v-btn(color="primary" @click="setIframeUrl(commands.iframe)" v-t="'common.action.apply'")
