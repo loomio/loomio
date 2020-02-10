@@ -63,7 +63,8 @@ v-dialog(v-model='dialog' max-width="600px")
         v-icon mdi-window-close
     v-card-text
       span.subtitle-2(v-t="'invitation_form.group_url'")
-      p.mt-2.mb-0.caption(v-t="'invitation_form.shareable_group_url_explanation'")
+      p.mt-2.mb-0.caption(v-if="group.groupPrivacy == 'secret'" v-t="'invitation_form.secret_group_url_explanation'")
+      p.mt-2.mb-0.caption(v-else v-t="'invitation_form.shareable_group_url_explanation'")
       v-layout(align-center)
         v-text-field.shareable-link-modal__shareable-link(:value='groupUrl' :disabled='true')
         v-btn.shareable-link-modal__copy(ref="groupUrlButton" text color="accent" v-t="'common.copy'" v-clipboard:copy='groupUrl' v-clipboard:success='copiedGroupUrl' v-clipboard:error="error")

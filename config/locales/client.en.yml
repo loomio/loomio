@@ -1059,6 +1059,7 @@ en:
     copy_link: 'Copy'
     email_addresses: 'Email addresses'
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
+    secret_group_url_explanation: "This is the address for your group. Only invited members will be able to see the group."
     shareable_group_url_explanation: 'You can share this link publicly. People can request to join and you can approve or ignore requests.'
     shareable_invitation_explanation: 'Do not share this link publicly. Anyone with it can join your group without your approval. Share this only within private communications to allow people in your organization to join.'
     shareable_link_reset: 'Shareable link reset. The previous link will no longer work.'
