@@ -21,7 +21,7 @@ export default
 </script>
 
 <template lang='pug'>
-v-banner.discussion-fork-actions(single-line sticky :elevation="4" v-model='discussion.isForking' icon="mdi-call-split" color="accent" :style="styles")
+v-banner.discussion-fork-actions(single-line sticky :elevation="4" v-if='discussion.isForking' icon="mdi-call-split" color="accent" :style="styles")
   span(v-t="'discussion_fork_actions.helptext'")
   template(v-slot:actions)
     v-btn(color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'")
