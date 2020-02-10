@@ -1044,6 +1044,9 @@ en:
     see_more: "See all: ({{count}}) decisions"
 
   invitation_form:
+    group_url: Group URL
+    reusable_invitation_link: Reusable invitation link
+    error: "Error when trying to copy to clipboard"
     aria_label: 'Invitation form'
     invite_people: 'Invite people'
     invite_guests: 'Invite guests'
@@ -1052,10 +1055,13 @@ en:
     group: 'Group'
     group_placeholder: 'Select a group'
     shareable_link: 'Shareable link'
+    share_group: 'Share your group'
     copy_link: 'Copy'
     email_addresses: 'Email addresses'
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Anyone with the sharable link can join the group as if they were invited. Do not share it with people who you do not want in your group.'
+    secret_group_url_explanation: "This is the address for your group. Only invited members will be able to see the group."
+    shareable_group_url_explanation: 'You can share this link publicly. People can request to join and you can approve or ignore requests.'
+    shareable_invitation_explanation: 'Do not share this link publicly. Anyone with it can join your group without your approval. Share this only within private communications to allow people in your organization to join.'
     shareable_link_reset: 'Shareable link reset. The previous link will no longer work.'
     email_explanation: 'Alternatively, enter email addresses below to send invitations by email.'
     add_custom_message: 'Make your invite personal, '
