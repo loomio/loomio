@@ -57,6 +57,8 @@ v-dialog(v-model='dialog' max-width="600px")
     v-card-title
       h1.headline(v-t="'invitation_form.share_group'")
       v-spacer
+      v-btn(icon small href="https://help.loomio.org/en/user_manual/groups/membership/" target="_blank" :title="$t('common.help')")
+        v-icon mdi-help-circle-outline
       v-btn.dismiss-modal-button(icon small @click='dialog = false')
         v-icon mdi-window-close
     v-card-text

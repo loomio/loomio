@@ -1060,7 +1060,7 @@ en:
     email_addresses: 'Email addresses'
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_group_url_explanation: 'You can share this link publicly. People can request to join and you can approve or ignore requests.'
-    shareable_invitation_explanation: 'Do not share this link publicly. Anyone with it can join your group without your approval. Share this only within private communications to allow people in your organization to join, rather than inviting via email.'
+    shareable_invitation_explanation: 'Do not share this link publicly. Anyone with it can join your group without your approval. Share this only within private communications to allow people in your organization to join.'
     shareable_link_reset: 'Shareable link reset. The previous link will no longer work.'
     email_explanation: 'Alternatively, enter email addresses below to send invitations by email.'
     add_custom_message: 'Make your invite personal, '
