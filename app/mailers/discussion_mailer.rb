@@ -12,21 +12,22 @@ class DiscussionMailer < BaseMailer
     event = Event.find_by!(id: event_id)
     return if recipient == User.helper_bot
 
-    @info = DiscussionEmailInfo.new(recipient: recipient, event: event, action_name: action_name)
+    # @info = DiscussionEmailInfo.new(recipient: recipient, event: event, action_name: action_name)
+    @discussion = event.eventable.discussion
 
     headers[message_id_header] = message_id
     headers['Precedence'] = 'bulk'
     headers['X-Auto-Response-Suppress'] = 'OOF'
     headers['Auto-Submitted'] = 'auto-generated'
 
-    send_single_mail  to: @info.recipient.email,
-                      from: from_user_via_loomio(@info.actor),
-                      reply_to: reply_to_address_with_group_name(model: @info.eventable, user: @info.recipient),
+    send_single_mail  to: recipient.email,
+                      from: from_user_via_loomio(event.user),
+                      reply_to: reply_to_address_with_group_name(model: event.eventable, user: recipient),
                       subject_key: event.email_subject_key || "discussion_mailer.#{action_name}.subject",
-                      subject_params: { actor: @info.actor.name,
-                                        group: @info.discussion.group.full_name,
-                                        discussion: @info.discussion.title },
-                      locale: @info.recipient.locale
+                      subject_params: { actor: event.user.name,
+                                        group: @discussion.group.full_name,
+                                        discussion: @discussion.title },
+                      locale: recipient.locale
   end
 
   def message_id_header
@@ -34,6 +35,26 @@ class DiscussionMailer < BaseMailer
   end
 
   def message_id
-    "<#{@info.discussion.id}@#{ENV['SMTP_DOMAIN']}>"
+    "<#{@discussion.id}@#{ENV['SMTP_DOMAIN']}>"
   end
 end
+
+
+# def initialize(recipient:, event:, action_name:)
+#   @recipient = recipient
+#   @event = event
+#   @action_name = action_name
+# end
+#
+# # So far eventable can be: Discussion, Comment, or Invitation
+# def eventable
+#   @eventable ||= event.eventable
+# end
+#
+# def actor
+#   @actor ||= event.user
+# end
+#
+# def discussion
+#   @discussion ||= eventable.discussion
+# end
