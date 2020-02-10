@@ -38,23 +38,3 @@ class DiscussionMailer < BaseMailer
     "<#{@discussion.id}@#{ENV['SMTP_DOMAIN']}>"
   end
 end
-
-
-# def initialize(recipient:, event:, action_name:)
-#   @recipient = recipient
-#   @event = event
-#   @action_name = action_name
-# end
-#
-# # So far eventable can be: Discussion, Comment, or Invitation
-# def eventable
-#   @eventable ||= event.eventable
-# end
-#
-# def actor
-#   @actor ||= event.user
-# end
-#
-# def discussion
-#   @discussion ||= eventable.discussion
-# end
