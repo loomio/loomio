@@ -1,12 +1,12 @@
 .thread-mailer__footer
-  - if @info.recipient.is_logged_in?
-    %img.thread-mailer__footer-image{src: @info.pixel_src, alt: '', width: 1, height: 1}
+  - if recipient.is_logged_in?
+    %img.thread-mailer__footer-image{src: pixel_src(event, recipient), alt: '', width: 1, height: 1}
 
     %p.thread-mailer__footer-links
       &mdash;
       %br
-      = t(:'discussion_mailer.reply_or_view_online_html', url: @info.target_url, hostname: AppConfig.theme[:site_name])
+      = t(:'discussion_mailer.reply_or_view_online_html', url: target_url(args = {}, event.eventable, recipient, action_name), hostname: AppConfig.theme[:site_name])
       %br
-      = t :'discussion_mailer.turn_off_notifications_html', url: @info.unfollow_url if @info.can_unfollow?
-      = t :"discussion_mailer.change_email_preferences_html", email_preferences_url: @info.preferences_url
+      = t :'discussion_mailer.turn_off_notifications_html', url: unfollow_url(event.eventable.discussion, action_name, recipient) if can_unfollow?(event.eventable.discussion, action_name, recipient)
+      = t :"discussion_mailer.change_email_preferences_html", email_preferences_url: preferences_url(recipient, action_name)
   = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"
