@@ -1,7 +1,7 @@
 %h1 Export for #{@exporter.group.full_name}
 %p
   Also available in
-  = link_to "CSV", group_export_path(@exporter.group, format: 'csv')
+  = link_to "CSV", group_export_path(@exporter.group, format: 'csv', :export => 1)
 
 
 = render 'export_table', name: 'Groups',      records: @exporter.formal_groups, fields: @exporter.formal_group_fields
