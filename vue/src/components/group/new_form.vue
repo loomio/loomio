@@ -116,7 +116,7 @@ v-card.group-form
         h1.headline(v-if='!group.parentId', v-t="'group_form.start_organization_heading'")
       dismiss-modal-button(:close='close')
   v-card-text
-    v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)" @input="suggestHandle()")
+    v-text-field.group-form__name#group-name(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)" @keyup="suggestHandle()")
     validation-errors(:subject="group", field="name")
 
     div(v-if="!group.parent() || (group.parent() && group.parent().handle)")
