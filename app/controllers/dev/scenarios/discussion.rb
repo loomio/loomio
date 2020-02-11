@@ -5,27 +5,6 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_url(create_discussion)
   end
 
-  def setup_discussion_mailer_new_discussion_email
-    sign_in jennifer
-    @group = FactoryBot.create(:formal_group, name: "Girdy Dancing Shoes", creator: patrick)
-    @group.add_admin! patrick
-    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
-    event = DiscussionService.create(discussion: discussion, actor: patrick)
-    AnnouncementService.create(model: discussion, actor: patrick, params: {recipients: {user_ids: [jennifer.id]}, kind: "new_discussion"})
-    last_email
-  end
-
-  def setup_discussion_mailer_invitation_created_email
-    group = FactoryBot.create(:formal_group, name: "Dirty Dancing Shoes", creator: patrick)
-    group.add_admin! patrick
-    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: group)
-    event = DiscussionService.create(discussion: discussion, actor: patrick)
-    comment = FactoryBot.build(:comment, discussion: discussion)
-    CommentService.create(comment: comment, actor: patrick)
-    AnnouncementService.create(model: discussion, actor: patrick, params: {recipients: {emails: 'jen@example.com'}, kind: "new_discussion"})
-    last_email
-  end
-
   def setup_multiple_discussions
     sign_in patrick
     create_discussion
@@ -105,6 +84,29 @@ module Dev::Scenarios::Discussion
     create_discussion.update_versions_count
     sign_in patrick
     redirect_to discussion_url(create_discussion)
+  end
+
+  # discussion mailer emails
+
+  def setup_discussion_mailer_new_discussion_email
+    sign_in jennifer
+    @group = FactoryBot.create(:formal_group, name: "Girdy Dancing Shoes", creator: patrick)
+    @group.add_admin! patrick
+    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
+    event = DiscussionService.create(discussion: discussion, actor: patrick)
+    AnnouncementService.create(model: discussion, actor: patrick, params: {recipients: {user_ids: [jennifer.id]}, kind: "new_discussion"})
+    last_email
+  end
+
+  def setup_discussion_mailer_invitation_created_email
+    group = FactoryBot.create(:formal_group, name: "Dirty Dancing Shoes", creator: patrick)
+    group.add_admin! patrick
+    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: group)
+    event = DiscussionService.create(discussion: discussion, actor: patrick)
+    comment = FactoryBot.build(:comment, discussion: discussion)
+    CommentService.create(comment: comment, actor: patrick)
+    AnnouncementService.create(model: discussion, actor: patrick, params: {recipients: {emails: 'jen@example.com'}, kind: "discussion_announced"})
+    last_email
   end
 
   def setup_discussion_mailer_new_comment_email
