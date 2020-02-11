@@ -125,7 +125,6 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_mailer_comment_replied_to_email
-    # this doesn't work properly?
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick)
     @group.add_member! jennifer
