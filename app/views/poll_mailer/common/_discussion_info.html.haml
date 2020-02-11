@@ -6,8 +6,8 @@
       - else
         %img.poll-mailer-common-avatar__image{src: asset_url(AppConfig.theme[:icon_src])}
     %td
-      = link_to discussion.group.full_name, @info.target_url(back_to: group_url(discussion.group))
+      = link_to discussion.group.full_name, target_url({back_to: group_url(discussion.group)}, poll, recipient)
       %span -
-      = link_to discussion.title, @info.target_url(back_to: discussion_url(discussion))
+      = link_to discussion.title, target_url({back_to: discussion_url(discussion)}, poll, recipient)
 %p= render_rich_text(discussion.body, discussion.body_format)
 = render "discussion_mailer/attachments", resource: discussion

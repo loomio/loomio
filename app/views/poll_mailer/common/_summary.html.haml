@@ -1,25 +1,25 @@
 .poll-mailer-common-summary
-  %h1= link_to @info.poll.title, @info.target_url, class: 'poll-mailer__poll-title'
-  -if @info.action_name == :export
+  %h1= link_to poll.title, target_url({}, poll, recipient), class: 'poll-mailer__poll-title'
+  -if action_name == :export
     %p
     = t(:"poll.export.also_available")
-    = link_to "CSV", poll_export_path(@poll, format: 'csv')
+    = link_to "CSV", poll_export_path(poll, format: 'csv', :export => 1)
 
   %p
 
-  - if @info.outcome
+  - if poll.current_outcome
     %h2= t(:"poll_common.outcome")
-    %p= render_rich_text(@info.outcome.statement, @info.outcome.statement_format)
+    %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
 
-    %h2= t(:"poll_types.#{@info.poll_type}")
+    %h2= t(:"poll_types.#{poll.poll_type}")
 
-  %p= render_rich_text(@info.poll.details, @info.poll.details_format)
+  %p= render_rich_text(poll.details, poll.details_format)
 
   %p
-    - if @info.poll.active?
-      = t(:"poll_mailer.common.you_have_until", when: formatted_time_in_zone(@info.poll.closing_at, @info.time_zone))
+    - if poll.active?
+      = t(:"poll_mailer.common.you_have_until", when: formatted_time_in_zone(poll.closing_at, time_zone(recipient, poll)))
     - else
       = t(:"poll_common_form.closed")
-      = formatted_time_in_zone(@info.poll.closed_at, @info.time_zone)
+      = formatted_time_in_zone(poll.closed_at, time_zone(recipient, poll))
 
-  = render "discussion_mailer/attachments", resource: @info.poll
+  = render "discussion_mailer/attachments", resource: poll

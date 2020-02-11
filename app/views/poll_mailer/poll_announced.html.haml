@@ -1,8 +1,8 @@
-= render "poll_mailer/common/header"
-= render "poll_mailer/common/summary"
-= render "poll_mailer/#{@info.poll_type}/vote"
-- if @info.poll.discussion && @info.action_name != :export
+= render "poll_mailer/common/header", poll: @poll, event: @event, action_name: @action_name
+= render "poll_mailer/common/summary", poll: @poll, recipient: @recipient, action_name: @action_name
+= render "poll_mailer/#{@poll.poll_type}/vote", poll: @poll, recipient: @recipient, action_name: @action_name
+- if @poll.discussion && @action_name != :export
   %br
   %hr
-  = render "poll_mailer/common/discussion_info", discussion: @info.poll.discussion
-= render "poll_mailer/common/footer"
+  = render "poll_mailer/common/discussion_info", discussion: @poll.discussion, poll: @poll, recipient: @recipient
+= render "poll_mailer/common/footer", poll: @poll, recipient: @recipient

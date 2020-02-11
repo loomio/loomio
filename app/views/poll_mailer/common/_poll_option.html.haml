@@ -1,14 +1,15 @@
 - poll       = poll_option.poll
-- time_zone  = (@info || @recipient).time_zone
+- time_zone  = time_zone(recipient, poll)
 - class_name = local_assigns[:small] ? "poll-mailer-#{poll.poll_type}__option-icon--small" : "poll-mailer-#{poll.poll_type}__option-icon"
 - show_link  = local_assigns[:link]
 - stance_choice = local_assigns.fetch(:stance_choice, nil)
 - show_score = poll.has_variable_score && stance_choice
+- target_url = target_url({poll_option_id: poll_option.id}, poll, recipient)
 
 - if poll.has_option_icons
   - if show_link
-    %td= link_to image_tag("poll_mailer/vote-button-#{poll_option.name}.png", alt: "#{poll_option.name} icon", class: class_name), @info.target_url(poll_option_id: poll_option.id)
-    %td{class: "poll-mailer-#{poll.poll_type}__option-name"}= link_to t("poll_#{poll.poll_type}_options.#{poll_option.name}"), @info.target_url(poll_option_id: poll_option.id)
+    %td= link_to image_tag("poll_mailer/vote-button-#{poll_option.name}.png", alt: "#{poll_option.name} icon", class: class_name), target_url
+    %td{class: "poll-mailer-#{poll.poll_type}__option-name"}= link_to t("poll_#{poll.poll_type}_options.#{poll_option.name}"), target_url
   - else
     %td= image_tag("poll_mailer/vote-button-#{poll_option.name}.png", alt: "#{poll_option.name} icon", class: class_name)
     %td= t("poll_#{poll.poll_type}_options.#{poll_option.name}")
@@ -24,7 +25,7 @@
   - if show_link
     %td= stance_choice.rank_or_score if show_score
     %td= render 'poll_mailer/common/chip', color: poll_option.color
-    %td= link_to poll_option.display_name(zone: time_zone), @info.target_url(poll_option_id: poll_option.id)
+    %td= link_to poll_option.display_name(zone: time_zone), target_url
   - else
     %td= stance_choice.rank_or_score if show_score
     %td= render 'poll_mailer/common/chip', color: poll_option.color
