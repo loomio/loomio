@@ -2,7 +2,7 @@ require('coffeescript/register')
 pageHelper = require('../helpers/pageHelper.coffee')
 
 module.exports = {
-  'invites_a_user_to_a_discussion': (test) => {
+  'new_discussion': (test) => {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_new_discussion_email')
@@ -16,7 +16,7 @@ module.exports = {
     page.expectText('.context-panel__breadcrumbs', 'Girdy Dancing Shoes')
   },
 
-  'invites_an_email_to_a_discussion': (test) => {
+  'invitation_created': (test) => {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
@@ -27,5 +27,12 @@ module.exports = {
     page.expectText('.context-panel__heading', 'go to the moon', 10000)
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
+  },
+
+  'new_comment': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_discussion_mailer_new_comment_email')
+    page.expectText('.thread-mailer__subject', "Jennifer Grey commented in: What star sign are you?")
   },
 }
