@@ -2,6 +2,8 @@ require('coffeescript/register')
 pageHelper = require('../helpers/pageHelper.coffee')
 
 module.exports = {
+  '@disabled': true,
+  
   'proposal_poll_announced': (test) => {
     page = pageHelper(test)
 
