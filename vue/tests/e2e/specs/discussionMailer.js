@@ -35,4 +35,18 @@ module.exports = {
     page.loadPathNoApp('setup_discussion_mailer_new_comment_email')
     page.expectText('.thread-mailer__subject', "Jennifer Grey commented in: What star sign are you?")
   },
+
+  'comment_replied_to': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_discussion_mailer_comment_replied_to_email')
+    page.expectText('.thread-mailer__subject', "Patrick Swayze replied to you in: What star sign are you?")
+  },
+
+  'user_mentioned': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_discussion_mailer_user_mentioned_email')
+    page.expectText('.thread-mailer__subject', "Jennifer Grey mentioned you in What star sign are you?")
+  },
 }
