@@ -538,7 +538,7 @@ en:
         poll_closing_soon: '<strong>%{actor}</strong>''s check is closing in 24 hours.'
         poll_closing_soon_author: 'Your check is closing in 24 hours - now is a great time to remind people about it or extend the closing time if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> check closed: %{title}"
-        poll_expired_author: 'Here are the results of your check. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
+        poll_expired_author: 'Your check has closed. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared an outcome.'
         outcome_announced: '<strong>%{actor}</strong> shared an outcome.'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
