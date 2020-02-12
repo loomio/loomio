@@ -23,7 +23,7 @@
     "activestorage": "^5.2.2",
     "core-js": "^2.6.11",
     "date-fns": "2.9.0",
-    "date-fns-tz": "1.0.9",
+    "date-fns-tz": "1.0.10",
     "deepmerge": "^4.2.2",
     "diff-match-patch": "^1.0.4",
     "es6-shim": "^0.35.5",
