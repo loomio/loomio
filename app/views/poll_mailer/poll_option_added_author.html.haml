@@ -1,4 +1,4 @@
-= render "poll_mailer/common/header"
-= render "poll_mailer/common/option_added"
-= render "poll_mailer/#{@info.poll_type}/vote", title_key: 'poll_mailer.common.option_added_you_voted'
-= render "poll_mailer/common/footer"
+= render "poll_mailer/common/header", poll: @poll, event: @event, action_name: @action_name
+= render "poll_mailer/common/option_added", poll: @poll, event: @event, recipient: @recipient
+= render "poll_mailer/#{@poll.poll_type}/vote", poll: @poll, recipient: @recipient, action_name: @action_name, title_key: 'poll_mailer.common.option_added_you_voted'
+= render "poll_mailer/common/footer", poll: @poll, recipient: @recipient
