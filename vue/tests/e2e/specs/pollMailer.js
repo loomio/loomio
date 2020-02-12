@@ -102,4 +102,55 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "edited the score poll")
   },
 
+  'proposal_outcome_announced': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_proposal_poll_outcome_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "shared a proposal outcome")
+  },
+
+  'poll_outcome_announced': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_poll_poll_outcome_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "shared a poll outcome")
+  },
+
+  'count_outcome_announced': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_count_poll_outcome_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "shared an outcome")
+  },
+
+  'dot_vote_outcome_announced': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_dot_vote_poll_outcome_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "shared a dot vote outcome")
+  },
+
+  'meeting_outcome_announced': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_meeting_poll_outcome_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "shared a time poll outcome")
+  },
+
+  'ranked_choice_outcome_announced': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_ranked_choice_poll_outcome_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "shared a ranked choice outcome")
+  },
+
+  'score_outcome_announced': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_score_poll_outcome_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "shared a poll outcome")
+  },
+
+
+
 }
