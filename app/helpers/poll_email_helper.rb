@@ -42,7 +42,8 @@ module PollEmailHelper
   end
 
   def formatted_time_zone(recipient, poll)
-    ActiveSupport::TimeZone[time_zone].to_s if time_zone(recipient, poll)
+    time_zone = time_zone(recipient, poll)
+    ActiveSupport::TimeZone[time_zone].to_s if time_zone
   end
 
   # def outcome(poll)
