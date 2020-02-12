@@ -482,7 +482,7 @@ en:
       subject:
         poll_created: '%{actor} started a poll: %{title}'
         poll_edited: '%{actor} edited the poll: %{title}'
-        poll_announced: '%{actor} invited you to vote in a poll: %{title}'
+        poll_announced: '%{actor} invited you to vote in a score poll: %{title}'
         poll_closing_soon: 'Poll closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
         poll_expired: "Poll results: %{title}"
@@ -499,7 +499,7 @@ en:
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
         poll_edited: '<strong>%{actor}</strong> edited the poll'
-        poll_announced: '<strong>%{actor}</strong> invited you to vote in a poll'
+        poll_announced: '<strong>%{actor}</strong> invited you to vote in a score poll'
         poll_closing_soon: '<strong>%{actor}</strong>''s poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> poll closed: %{title}"
@@ -519,7 +519,7 @@ en:
       subject:
         poll_created: '%{actor} is checking: %{title}'
         poll_edited: '%{actor} edited the check: %{title}'
-        poll_announced: '%{actor} invited you to participate: %{title}'
+        poll_announced: '%{actor} invited you to participate in a count: %{title}'
         poll_closing_soon: '24 hours left to check: %{title}'
         poll_closing_soon_author: 'Your check closes in 24 hours: %{title}'
         poll_expired: "Check closed: %{title}"
@@ -534,7 +534,7 @@ en:
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
         poll_edited: '<strong>%{actor}</strong> edited the check'
-        poll_announced: '<strong>%{actor}</strong> invited you to participate'
+        poll_announced: '<strong>%{actor}</strong> invited you to participate in a count'
         poll_closing_soon: '<strong>%{actor}</strong>''s check is closing in 24 hours.'
         poll_closing_soon_author: 'Your check is closing in 24 hours - now is a great time to remind people about it or extend the closing time if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> check closed: %{title}"
