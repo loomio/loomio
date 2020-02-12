@@ -53,4 +53,53 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "invited you to vote in a score poll")
   },
 
+  'proposal_poll_edited': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_proposal_poll_edited_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "edited the proposal")
+  },
+
+  'poll_poll_edited': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_poll_poll_edited_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "edited the poll")
+  },
+
+  'count_poll_edited': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_count_poll_edited_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "edited the check")
+  },
+
+  'dot_vote_poll_edited': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_dot_vote_poll_edited_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "edited the dot vote")
+  },
+
+  'meeting_poll_edited': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_meeting_poll_edited_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "edited the time poll")
+  },
+
+  'ranked_choice_poll_edited': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_ranked_choice_poll_edited_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "edited the ranked choice")
+  },
+
+  'score_poll_edited': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_score_poll_edited_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "edited the score poll")
+  },
+
 }

@@ -2,7 +2,7 @@
 %h3= t(:"poll_mailer.common.your_response") if recipient_stance
 
 - if recipient_stance
-  = render 'poll_mailer/common/stance', stance: recipient_stance
+  = render 'poll_mailer/common/stance', stance: recipient_stance, poll: poll, recipient: recipient
 - else
   %p= t(:"poll_mailer.common.time_zone", zone: formatted_time_zone(recipient, poll)) if poll.poll_type == 'meeting'
   %table{class: "poll-mailer-#{poll.poll_type}__poll-options"}

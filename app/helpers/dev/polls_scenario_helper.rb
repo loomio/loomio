@@ -81,7 +81,7 @@ module Dev::PollsScenarioHelper
     StanceService.create(stance: fake_stance(poll: poll), actor: observer)
     PollService.update(poll: poll, params: { title: "New title" }, actor: actor)
     recipients = {user_ids: [observer.id], emails: [observer.email]}
-    announcement_params = { kind: "poll_announced", recipients: recipients }
+    announcement_params = { kind: "poll_edited", recipients: recipients }
     AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
 
     {discussion: discussion,

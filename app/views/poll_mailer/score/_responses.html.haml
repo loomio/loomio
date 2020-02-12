@@ -1,14 +1,14 @@
 .poll-mailer-score-responses
   %h3= t(:"poll_mailer.common.responses")
   %table
-    - @info.poll.stances.latest.each do |stance|
+    - poll.stances.latest.each do |stance|
       %tr
         %td
           %table
-            %td= render 'base_mailer/avatar', user: stance.participant_for_client(user: @info.recipient)
+            %td= render 'base_mailer/avatar', user: stance.participant_for_client(user: recipient)
             %td.poll-mailer-common-responses__reason
               %strong
-                #{stance.participant_for_client(user: @info.recipient).name}:
+                #{stance.participant_for_client(user: recipient).name}:
       %tr
         %td= render_rich_text(stance.reason, stance.reason_format)
       %tr
