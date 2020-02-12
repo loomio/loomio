@@ -1,6 +1,6 @@
 = render "poll_mailer/common/header", poll: @poll, event: @event, action_name: @action_name
 = render "poll_mailer/common/summary", poll: @poll, recipient: @recipient, action_name: @action_name
-= render "poll_mailer/#{@poll.poll_type}/vote", poll: @poll, recipient: @recipient, action_name: @action_name
+= render "poll_mailer/#{@poll.poll_type}/vote", poll: @poll, recipient: @recipient
 - if @poll.discussion && @action_name != :export
   %br
   %hr
