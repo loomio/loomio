@@ -1,3 +1,3 @@
-= render "poll_mailer/common/header"
-= render "poll_mailer/common/stance", stance: @info.eventable
-= render "poll_mailer/common/footer"
+= render "poll_mailer/common/header", poll: @poll, event: @event, action_name: @action_name
+= render "poll_mailer/common/stance", stance: @event.eventable, poll: @poll, recipient: @recipient
+= render "poll_mailer/common/footer", poll: @poll, recipient: @recipient

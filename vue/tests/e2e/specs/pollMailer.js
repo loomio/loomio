@@ -151,6 +151,56 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "shared a poll outcome")
   },
 
+  'proposal_stance_created': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_proposal_poll_stance_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "voted on")
+  },
+
+  'poll_stance_created': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_poll_poll_stance_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "voted on")
+  },
+
+  'count_stance_created': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_count_poll_stance_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "voted on")
+  },
+
+  'dot_vote_stance_created': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_dot_vote_poll_stance_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "voted on")
+  },
+
+  'meeting_stance_created': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_meeting_poll_stance_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "participated in")
+  },
+
+  // 'ranked_choice_stance_created': (test) => {
+  //   // GK: the setup task fails for this for some reason; something to do with stance choices
+  //   page = pageHelper(test)
+  //
+  //   page.loadPathNoApp('test_ranked_choice_poll_stance_created_email', { controller: 'polls' })
+  //   page.expectText('.poll-mailer__subject', "voted on")
+  // },
+
+  'score_stance_created': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_score_poll_stance_created_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "voted on")
+  },
+
 
 
 }
