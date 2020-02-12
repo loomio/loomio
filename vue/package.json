@@ -60,7 +60,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "chromedriver": "^79.0.2",
+    "chromedriver": "^80.0.1",
     "@mdi/font": "^3.8.95",
     "@vue/cli-plugin-babel": "^4.1.2",
     "@vue/cli-plugin-e2e-nightwatch": "^3.12.1",
