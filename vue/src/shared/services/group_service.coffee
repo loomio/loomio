@@ -79,6 +79,8 @@ export default new class GroupService
       perform: ->
         openModal
           component: 'InstallSlackModal'
+          props:
+            group: group
 
     remove_slack:
       name: 'install_slack.remove_slack'
