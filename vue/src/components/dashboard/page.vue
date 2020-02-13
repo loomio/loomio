@@ -88,7 +88,7 @@ export default
         @views.yesterday = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subDays(now, 2), to: subDays(now, 1))
         @views.thisweek  = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subWeeks(now, 1), to: subDays(now, 2))
         @views.thismonth = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 1),  to: subWeeks(now, 1))
-        @views.older     = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 6),  to: subMonths(now, 1))
+        @views.older     = ThreadFilter(Records, filters: @filters('hide_proposals'), from: subMonths(now, 12),  to: subMonths(now, 1))
 
 
 

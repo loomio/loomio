@@ -22,7 +22,7 @@ export default
         @channels = response
 
     groups: ->
-      sortBy(Session.user().adminGroups(), 'fullName')
+      sortBy(Session.user().adminGroups().filter((group) => [group.parentId, group.id].includes(@group.id)) , 'fullName')
 
     submit: ->
       @groupIdentity = Records.groupIdentities.build

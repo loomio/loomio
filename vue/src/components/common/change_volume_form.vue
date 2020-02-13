@@ -10,7 +10,6 @@ export default
   props:
     model: Object
     close: Function
-    newVolume: String
     showClose:
       default: true
       type: Boolean
@@ -20,7 +19,7 @@ export default
     volumeLevels: ["loud", "normal", "quiet"]
     isDisabled: false
     applyToAll: @defaultApplyToAll()
-    volume: @newVolume || @defaultVolume()
+    volume: @defaultVolume()
 
   computed:
     formChanged: ->
@@ -32,7 +31,7 @@ export default
       .then =>
         Flash.success 'change_volume_form.saved'
         @closeModal()
-      .catch onError(@model)  
+      .catch onError(@model)
 
     defaultApplyToAll: ->
       if @model.isA('user') then true else false
@@ -41,7 +40,7 @@ export default
       switch @model.constructor.singular
         when 'discussion' then @model.volume()
         when 'membership' then @model.volume
-        when 'user'       then null
+        when 'user'       then @model.defaultMembershipVolume
 
     labelFor: (volume) ->
       @$t("change_volume_form.simple.#{volume}_explain") + ' ('+@$t("change_volume_form.simple.#{volume}")+')'

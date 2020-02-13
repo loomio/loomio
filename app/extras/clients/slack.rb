@@ -17,7 +17,7 @@ class Clients::Slack < Clients::Base
     channels = get "conversations.list", params: {types: "public_channel,private_channel", limit: 1000}, options: { success: ->(response) { response['channels'] } }
 
     json = if channels.success
-      [channels].map(&:json).flatten.reject {|channel| channel['name'].starts_with?("mpdm-") }
+      [channels].map(&:json).flatten.reject {|channel| channel['name'].starts_with?("mpdm-") }.sort_by {|channel| channel['name'].downcase }
     else
       []
     end
