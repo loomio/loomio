@@ -21,7 +21,6 @@ export default
   created: ->
     @init()
     EventBus.$on 'signedIn', => @init()
-    setTimeout => @openInstallSlackModal() if @$route.query.install_slack
 
   watch:
     '$route.params.key': 'init'
@@ -54,6 +53,7 @@ export default
       .then (group) =>
         @group = group
         subscribeTo(@group)
+        @openInstallSlackModal(@group) if @$route.query.install_slack
       .catch (error) =>
         EventBus.$emit 'pageError', error
         EventBus.$emit 'openAuthModal' if error.status == 403
