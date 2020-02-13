@@ -107,6 +107,7 @@ export HtmlMentioning =
       @editor.focus()
 
     updatePopup: (node) ->
+      return unless node
       coords = node.getBoundingClientRect()
       @suggestionListStyles =
         position: 'fixed'
