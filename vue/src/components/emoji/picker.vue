@@ -1,6 +1,6 @@
 <script lang="coffee">
 
-import { emojisByCategory } from '@/shared/helpers/emojis'
+import { emojisByCategory, srcForEmoji, charToCodePoint } from '@/shared/helpers/emojis'
 import { each, keys } from 'lodash'
 
 export default
@@ -11,6 +11,10 @@ export default
 
   data: ->
     search: ''
+
+  methods:
+    srcForEmoji: srcForEmoji
+    charToCodePoint: charToCodePoint
 
   computed:
     emojis: ->
@@ -35,7 +39,8 @@ export default
   div(v-for='(emojiGroup, category) in emojis', :key='category')
     h5(v-t="'emoji_picker.'+category")
     div.emoji-picker__emojis
-      span(v-for='(emoji, emojiName) in emojiGroup', :key='emojiName', @click='insert(emojiName, emoji)', :title='emojiName') {{ emoji }}
+      //- span(v-for='(emoji, emojiName) in emojiGroup', :key='emojiName', @click='insert(emojiName, emoji)', :title='emojiName') {{ emoji }}
+      img(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName' :alt="emoji" :src="srcForEmoji(charToCodePoint(emoji))")
 </template>
 
 <style lang="sass">
