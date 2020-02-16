@@ -2,5 +2,5 @@
 - struct = OpenStruct.new(eventable: OpenStruct.new(poll: poll))
 
 = render "poll_mailer/common/summary", poll: poll, recipient: @recipient, action_name: :catch_up
-= render "poll_mailer/#{@poll.poll_type}/chart", poll: poll, recipient: @recipient
-= render "poll_mailer/#{@poll.poll_type}/vote", poll: poll, recipient: @recipient
+= render "poll_mailer/#{poll.poll_type}/chart", poll: poll, recipient: @recipient
+= render "poll_mailer/#{poll.poll_type}/vote", poll: poll, recipient: @recipient
