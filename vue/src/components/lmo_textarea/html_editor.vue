@@ -365,15 +365,15 @@ progress::-moz-progress-bar
     .v-icon
       font-size: 16px
 
-.html-editor__textarea
+.html-editor__textarea .ProseMirror
   border-bottom: 1px solid #999
   padding: 4px 0px
   margin: 4px 0px
   outline: none
   overflow-y: scroll
 
-.html-editor__textarea:focus
-  border-bottom: 2px solid var(--v-primary-base)
+.html-editor__textarea .ProseMirror:focus
+  border-bottom: 1px solid var(--v-primary-base)
 
 // .lmo-textarea img
 //   display: block
