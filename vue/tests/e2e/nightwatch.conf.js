@@ -3,11 +3,7 @@ var chromedriver = require('chromedriver');
 
 var chromeOptions = ["window-size=1280,1500"]
 
-if (process.env.RAILS_ENV == 'test') {
-  console.log("WORD UP!!!!!!!!! running in HEADLESS MODE")
-  chromeOptions.push "headless"
-
-}
+if (process.env.RAILS_ENV == 'test') { chromeOptions.push("headless") }
 
 module.exports = {
   src_folders: ['./tests/e2e/specs'],
