@@ -9,7 +9,7 @@
           -if @info.action_name == :export
             %p
             = t(:"poll.export.also_available")
-            = link_to "CSV", poll_export_path(@poll, format: 'csv')
+            = link_to "CSV", poll_export_path(@poll, format: 'csv', :export => 1)
           %div.thread-card.v-card.v-card--outlined.v-sheet.theme--light.pa-4
             = render "discussions/thread_items/poll_created", item: @poll.created_event
             -# -# = render "poll_mailer/common/stance_table", rows: @exporter.stance_list
