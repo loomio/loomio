@@ -23,23 +23,10 @@ module EmailHelper
   def render_rich_text(text, format = "md")
     return "" unless text
     if format == "md"
-      Redcarpet::Render::SmartyPants.render(emojify(markdownify(text))).html_safe
-    else
-      text.html_safe
-    end
-  end
-
-  def render_rich_text_fast(text, format = "md")
-    return "" unless text
-    if format == "md"
       markdownify(text).html_safe
     else
       text.html_safe
     end
-  end
-
-  def emojify(text)
-    Emojifier.emojify!(text)
   end
 
   def markdownify(text)
