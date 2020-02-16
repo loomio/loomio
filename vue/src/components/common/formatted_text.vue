@@ -34,6 +34,7 @@ div.lmo-markdown-wrapper.body-2.text--primary
 img.emoji
   width: 1.4em !important
   vertical-align: top
+  margin: 0 .05em
 
 .lmo-markdown-wrapper
   blockquote, h1, h2, h3, ol, p, pre, ul
