@@ -36,9 +36,7 @@ export default
     placeholder: String
     maxLength: Number
     shouldReset: Boolean
-    autofocus:
-      type: Boolean
-      default: false
+    autofocus: Boolean
 
   components:
     EditorContent: EditorContent
@@ -92,7 +90,7 @@ export default
       ]
       content: @model[@field]
       onUpdate: @updateModel
-      autofocus: @autofocus
+      autoFocus: @autofocus
 
   computed:
     format: ->
@@ -316,6 +314,12 @@ div
 </template>
 
 <style lang="sass">
+
+.ProseMirror [contenteditable="false"]
+  white-space: normal
+
+.ProseMirror [contenteditable="true"]
+  white-space: pre-wrap
 
 .ProseMirror
   outline: none
