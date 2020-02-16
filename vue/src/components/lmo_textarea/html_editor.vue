@@ -36,9 +36,7 @@ export default
     placeholder: String
     maxLength: Number
     shouldReset: Boolean
-    autofocus:
-      type: Boolean
-      default: false
+    autofocus: Boolean
 
   components:
     EditorContent: EditorContent
@@ -92,7 +90,7 @@ export default
       ]
       content: @model[@field]
       onUpdate: @updateModel
-      autofocus: @autofocus
+      autoFocus: @autofocus
 
   computed:
     format: ->
@@ -317,6 +315,12 @@ div
 
 <style lang="sass">
 
+.ProseMirror [contenteditable="false"]
+  white-space: normal
+
+.ProseMirror [contenteditable="true"]
+  white-space: pre-wrap
+
 .ProseMirror
   outline: none
 
@@ -361,15 +365,15 @@ progress::-moz-progress-bar
     .v-icon
       font-size: 16px
 
-.html-editor__textarea
+.html-editor__textarea .ProseMirror
   border-bottom: 1px solid #999
   padding: 4px 0px
   margin: 4px 0px
   outline: none
   overflow-y: scroll
 
-.html-editor__textarea:focus
-  border-bottom: 2px solid var(--v-primary-base)
+.html-editor__textarea .ProseMirror:focus
+  border-bottom: 1px solid var(--v-primary-base)
 
 // .lmo-textarea img
 //   display: block

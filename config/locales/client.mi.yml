@@ -45,6 +45,7 @@ mi:
     copied: 'Kua taruatia ki te papa whakapine'
     total: Tapeke
     action:
+      preview: Arokite
       search: 'Rapu'
       back: 'E hoki'
       next: 'Kei mua'
