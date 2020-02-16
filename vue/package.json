@@ -17,13 +17,13 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.3",
-    "@sentry/browser": "5.10.2",
-    "@sentry/integrations": "5.10.2",
+    "@sentry/browser": "5.12.1",
+    "@sentry/integrations": "5.12.0",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "core-js": "^2.6.11",
     "date-fns": "2.9.0",
-    "date-fns-tz": "1.0.9",
+    "date-fns-tz": "1.0.10",
     "deepmerge": "^4.2.2",
     "diff-match-patch": "^1.0.4",
     "es6-shim": "^0.35.5",
@@ -60,12 +60,12 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "chromedriver": "^79.0.2",
+    "chromedriver": "^80.0.1",
     "@mdi/font": "^3.8.95",
-    "@vue/cli-plugin-babel": "^4.1.2",
+    "@vue/cli-plugin-babel": "^4.2.2",
     "@vue/cli-plugin-e2e-nightwatch": "^3.12.1",
-    "@vue/cli-plugin-pwa": "^4.1.2",
-    "@vue/cli-service": "4.1.2",
+    "@vue/cli-service": "4.2.2",
+    "@vue/cli-plugin-pwa": "^4.2.2",
     "acorn": "^7.1.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "coffee-loader": "^0.9.0",
@@ -80,6 +80,6 @@
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.6.11",
     "vuetify-loader": "latest",
-    "webpack": "4.41.5"
+    "webpack": "4.41.6"
   }
 }

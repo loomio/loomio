@@ -100,6 +100,7 @@ zh_TW:
   timezones:
     local: 本地時間 ({{value}})
   common:
+    empty: 空
     no_results_found: 找不到結果
     view: 檢視
     history: 歷史
@@ -157,6 +158,7 @@ zh_TW:
     total: 總共
     action:
       print: 列印
+      preview: 預覽
       pin: 釘選
       unpin: 取消釘選
       search: '搜尋'
@@ -504,6 +506,8 @@ zh_TW:
     move: 移動
     search_placeholder: 利用標題搜尋討論串
     moved: 正在移動留言，這可能需要一點時間
+    move_to_existing_thread: 移至現有討論串
+    start_new_thread: 或開始新討論串
   discussion_form:
     aria_label: '討論串表單'
     messages:
@@ -511,7 +515,7 @@ zh_TW:
       updated: '討論串已更新'
       forked: '討論串分支已建立'
     new_discussion_title: '啟動新的討論串'
-    fork_discussion_title: '分支討論串'
+    moving_items_title: '移動項目至新討論串'
     edit_discussion_title: '編輯討論串'
     group_label: '群組'
     group_placeholder: '選擇一個群組'
@@ -608,7 +612,7 @@ zh_TW:
     invite_guests: 邀請來賓
     translate_thread: 翻譯內容
     edit_poll: 編輯投票
-    move_items: 移動
+    move_items: 移動項目
     announce_poll: 邀請夥伴來投票
     announce_poll_active: （尚未邀請任何人）
     translate_poll: 翻譯投票
@@ -639,23 +643,27 @@ zh_TW:
     reopen_thread: 重新開啟討論串
     delete_thread: 刪除討論串
     notification_history: 通知歷史
-    move_comments: 移動留言
+    move_item: 移動項目
   formatting:
     bold: 粗體
     italicize: 義大利斜體
     strikethrough: 刪除線
     underline: 底線
-    link: 連結
+    link: 插入連結
     code_block: 程式碼區塊
+    insert_image: 插入圖片
+    insert_emoji: 插入顏文字
     attach: 附加檔案
-    heading1: 大標題
-    heading2: 中標題
-    heading3: 小標題
+    heading_size: 標題大小
+    heading1: 標題 1
+    heading2: 標題 2
+    heading3: 標題 3
+    paragraph: 段落
     bullet_list: 清單
     number_list: 編號清單
     check_list: 清單
     quote: 引用
-    embed: 嵌入
+    embed: 嵌入影片
     divider: 分配者
     add_table: 新增表格
     remove_table: 移除表格
@@ -666,6 +674,10 @@ zh_TW:
     add_row_after: 新增列，在這些之後
     remove_row: 移除列
     merge_selected: 合併選定的儲存格
+    wysiwyg: 所見即所得
+    edit_markdown: 編輯 Markdown
+    markdown_confirm: 將所見即所得內容轉換為 Markdown 可能會遺失某些格式。
+    upload_failed: 上傳失敗
   cover_photo_form:
     aria_label: '變更封面照片表單'
     heading: '新的封面圖片'
@@ -721,6 +733,7 @@ zh_TW:
       pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
       closed: "這個討論串已經關閉。它將不會再出現在儀表板上，並將會在群組頁面中列在「已關閉」下。"
   group_page:
+    stats: 群組統計
     threads: 討論串
     polls: 投票
     members: 成員 ({{count}})
@@ -761,9 +774,9 @@ zh_TW:
       open_group_wizard: '群組設定精靈'
       become_coordinator: 成為管理員
       export_data: 匯出群組資料
-      export_data_as_json: 將群組資料匯出為 JSON
-      export_data_as_csv: 將群組資料匯出為 CSV
-      export_data_as_html: 將群組資料匯出為 HTML
+      export_data_as_json: 匯出群組資料為 JSON
+      export_data_as_csv: 匯出群組資料為 CSV
+      export_data_as_html: 匯出群組資料為 HTML
       manage_members: '管理成員'
       add_subgroup: '新增子群組'
       manage_subscription: '管理群組訂閱'
@@ -951,6 +964,9 @@ zh_TW:
   group_decisions_card:
     see_more: "檢視全部：({{count}}) 個決策"
   invitation_form:
+    group_url: 群組 URL
+    reusable_invitation_link: 可重複使用的邀請連結
+    error: "嘗試複製到剪貼簿時發生錯誤"
     aria_label: '邀請表單'
     invite_people: '邀請夥伴'
     invite_guests: '邀請來賓'
@@ -959,10 +975,13 @@ zh_TW:
     group: '群組'
     group_placeholder: '選擇一個群組'
     shareable_link: '可分享的連結'
+    share_group: '分享您的群組'
     copy_link: '複製'
     email_addresses: '電子郵件地址'
     email_addresses_placeholder: '範例：helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: '任何持有分享出去的連結的人都可以如同他們被邀請那樣加入。所以不要把連結分享給您不想要他加入的人。'
+    secret_group_url_explanation: "這是您群組的網址。僅有已受邀的成員才能看到這個群組。"
+    shareable_group_url_explanation: '您可以公開分享此連結。人們可以請求加入，而您可以批准或忽略請求。'
+    shareable_invitation_explanation: '不要公開分享此連結。任何取得此連結的人都可以不經您的批准而加入您的群組。請只在私人通訊中分享此連結以讓您組織中的成員加入。'
     shareable_link_reset: '可分享的連結已重設。先前的連結已不再可用。'
     email_explanation: '替代方案是，在下面輸入電子郵件地址來以電子郵件傳送邀請。'
     add_custom_message: '讓您的邀請變為私人的，'
@@ -1081,7 +1100,7 @@ zh_TW:
     deactivate_account: '停用使用者帳號'
     help_translate: "協助我們翻譯 Loomio"
   text_editor:
-    select_text_to_link: 選取要連結的文字
+    select_text_to_link: 首先，選取一些文字來進行連結
     insert_link: 插入連結
     insert_embedded_url: 嵌入影片
   change_picture_form:
@@ -2023,6 +2042,7 @@ zh_TW:
     success: 已成功設定單一登入
     destroyed: 已移除單一登入
     invalid_idp_metadata_url: 無效的 IDP 詮釋資料 URL
+    sp_metadata_url: SP 詮釋資料 URL
   install_slack:
     modal_title: 整合 Slack
     modal_helptext: 首先，您必須登入到 Slack。點選下方的按鈕以繼續。
