@@ -27,13 +27,7 @@ class PollMailer < BaseMailer
       "X-Auto-Response-Suppress": :OOF,
       "Auto-Submitted":           :"auto-generated"
     }
-
-    # @info = PollEmailInfo.new(
-    #   recipient:   recipient,
-    #   event:       event,
-    #   action_name: action_name
-    # )
-
+    
     if @event.eventable.respond_to?(:calendar_invite) && @event.eventable.calendar_invite
       attachments['meeting.ics'] = {
         content_type:              'text/calendar',

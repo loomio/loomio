@@ -8,7 +8,8 @@ class PollsController < ApplicationController
 
   def export
     @exporter = PollExporter.new(load_and_authorize(:poll, :export))
-    @info = @exporter.poll_info(current_user)
+    @recipient = current_user
+    @action_name = :export
 
     respond_to do |format|
       format.html
@@ -33,7 +34,7 @@ class PollsController < ApplicationController
   def current_user
     restricted_user || super
   end
-  
+
   def is_subscribed?
     resource.poll_unsubscriptions.find_by(user: current_user).blank?
   end
