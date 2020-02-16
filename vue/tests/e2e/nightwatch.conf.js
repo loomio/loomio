@@ -1,10 +1,11 @@
 var selenium = require('selenium-server-standalone-jar');
 var chromedriver = require('chromedriver');
 
-var chromeOptions = []
+var chromeOptions = ["window-size=1280,1500"]
+
 if (process.env.RAILS_ENV == 'test') {
   console.log("WORD UP!!!!!!!!! running in HEADLESS MODE")
-  chromeOptions = [ "headless" ]
+  chromeOptions.push "headless"
 
 }
 

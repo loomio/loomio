@@ -39,9 +39,9 @@ export default
   div(v-for='(emojiGroup, category) in emojis', :key='category')
     h5(v-t="'emoji_picker.'+category")
     div.emoji-picker__emojis(v-if="replaceEmojis()")
-      span(v-for='(emoji, emojiName) in emojiGroup', :key='emojiName', @click='insert(emojiName, emoji)', :title='emojiName') {{ emoji }}
+      span(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName') {{ emoji }}
     div.emoji-picker__emojis(v-else)
-      img(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName' :alt="emoji" :src="srcForEmoji(emoji)")
+      img(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :alt="emojiName" :src="srcForEmoji(emoji)")
 </template>
 
 <style lang="sass">
