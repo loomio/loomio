@@ -1,6 +1,6 @@
 <script lang="coffee">
 
-import { emojisByCategory, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis'
+import { emojisByCategory, srcForEmoji, replaceEmojis } from '@/shared/helpers/emojis'
 import { each, keys } from 'lodash'
 
 export default
@@ -14,10 +14,9 @@ export default
 
   methods:
     srcForEmoji: srcForEmoji
-
+    replaceEmojis: replaceEmojis
 
   computed:
-    emojiSupported: -> emojiSupported
     emojis: ->
       if @search
         obj = {}
@@ -39,7 +38,7 @@ export default
 .emoji-picker
   div(v-for='(emojiGroup, category) in emojis', :key='category')
     h5(v-t="'emoji_picker.'+category")
-    div.emoji-picker__emojis(v-if="emojiSupported")
+    div.emoji-picker__emojis(v-if="replaceEmojis()")
       span(v-for='(emoji, emojiName) in emojiGroup', :key='emojiName', @click='insert(emojiName, emoji)', :title='emojiName') {{ emoji }}
     div.emoji-picker__emojis(v-else)
       img(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName' :alt="emoji" :src="srcForEmoji(emoji)")

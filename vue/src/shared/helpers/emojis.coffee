@@ -69,7 +69,6 @@ export imgForEmoji = (char) ->
   '<img class="emoji" src="' + srcForEmoji(char) + '">'
 
 export emojiSupported = do ->
-  return true if process.env.RAILS_ENV == 'test'
   node = document.createElement('canvas')
   return false if !node.getContext or !node.getContext('2d') or typeof node.getContext('2d').fillText != 'function'
   ctx = node.getContext('2d')
@@ -78,8 +77,11 @@ export emojiSupported = do ->
   ctx.fillText '😃', 0, 0
   ctx.getImageData(16, 16, 1, 1).data[0] != 0
 
+export replaceEmojis = ->
+  !emojiSupported && AppConfig.features.app.env != 'test'
+
 export emojiReplaceText = (text) ->
-  if emojiSupported
+  if replaceEmojis()
     text
   else
     text.replace rx, (match) -> imgForEmoji(match)

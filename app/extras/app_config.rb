@@ -78,6 +78,7 @@ class AppConfig
 
   def self.app_features
     {
+      env: Rails.env,
       subscriptions:              ENV.fetch('FEATURES_SUBSCRIPTIONS', false),
       email_login:                !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
