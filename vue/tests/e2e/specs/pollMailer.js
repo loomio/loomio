@@ -2,8 +2,6 @@ require('coffeescript/register')
 pageHelper = require('../helpers/pageHelper.coffee')
 
 module.exports = {
-  // '@disabled': true,
-
   'proposal_poll_announced': (test) => {
     page = pageHelper(test)
 
@@ -250,6 +248,55 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "is closing in 24 hours")
   },
 
+  'proposal_poll_closing_soon_author': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_proposal_poll_closing_soon_author_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "is closing in 24 hours")
+  },
+
+  'poll_poll_closing_soon_author': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_poll_poll_closing_soon_author_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "is closing in 24 hours")
+  },
+
+  'count_poll_closing_soon_author': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_count_poll_closing_soon_author_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "is closing in 24 hours")
+  },
+
+  'dot_vote_poll_closing_soon_author': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_dot_vote_poll_closing_soon_author_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "is closing in 24 hours")
+  },
+
+  'meeting_poll_closing_soon_author': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_meeting_poll_closing_soon_author_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "is closing in 24 hours")
+  },
+
+  'ranked_choice_poll_closing_soon_author': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_ranked_choice_poll_closing_soon_author_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "is closing in 24 hours")
+  },
+
+  'score_poll_closing_soon_author': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_score_poll_closing_soon_author_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "is closing in 24 hours")
+  },
+
   'proposal_poll_expired_author': (test) => {
     page = pageHelper(test)
 
@@ -333,7 +380,5 @@ module.exports = {
     page.loadPathNoApp('test_score_poll_options_added_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "added options to")
   },
-
-
 
 }
