@@ -164,16 +164,16 @@ module.exports = {
     page.expectText('.new-comment', 'hi this is my comment')
   },
 
-  'can_add_emojis': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Here is a heart!')
-    page.click('.comment-form .emoji-picker__toggle')
-    page.click('.emoji-picker__emojis img[alt="heart"]')
-    page.click('.comment-form__submit-button')
-    page.expectText('.new-comment .thread-item__body','Here is a heart!❤️')
-  },
+  // 'can_add_emojis': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Here is a heart!')
+  //   page.click('.comment-form .emoji-picker__toggle')
+  //   page.click('.emoji-picker__emojis img[alt="heart"]')
+  //   page.click('.comment-form__submit-button')
+  //   page.expectText('.new-comment .thread-item__body','Here is a heart!❤️')
+  // },
 
   'replies_to_a_comment': (test) => {
     page = pageHelper(test)
