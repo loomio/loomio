@@ -21,22 +21,6 @@ module PollEmailHelper
     poll.stances.latest.find_by(participant: recipient)
   end
 
-  def poll_options(poll)
-    poll.ordered_poll_options
-  end
-
-  # def poll_type(poll)
-  #   poll.poll_type
-  # end
-
-  def undecided(poll)
-    poll.undecided
-  end
-
-  def undecided_max
-    20
-  end
-
   def time_zone(recipient, poll)
     recipient.time_zone || poll.time_zone
   end
@@ -45,10 +29,6 @@ module PollEmailHelper
     time_zone = time_zone(recipient, poll)
     ActiveSupport::TimeZone[time_zone].to_s if time_zone
   end
-
-  # def outcome(poll)
-  #   poll.current_outcome
-  # end
 
   def choice_img(poll)
     prefix = poll.multiple_choice ? 'check' : 'radio'
