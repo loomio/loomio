@@ -1,4 +1,4 @@
 %table.poll-mailer__subject
   %tr
     %td
-      %span=raw t(:"poll_mailer.#{poll.poll_type}.header.#{action_name}", actor: (actor(event).presence || poll.author).name, title: poll.title)
+      %span=raw t(:"poll_mailer.#{poll.poll_type}.header.#{action_name}", actor: (anonymous_or_actor_for(event).presence || poll.author).name, title: poll.title)

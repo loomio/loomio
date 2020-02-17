@@ -1,6 +1,6 @@
 -# optionally display only stances created since a given date
 - since ||= 100.years.ago
-- actor = actor(event)
+- actor = anonymous_or_actor_for(event)
 
 .poll-mailer-common-responses
   %h3= t(:"poll_mailer.common.responses")

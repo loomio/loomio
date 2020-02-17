@@ -9,7 +9,7 @@ module PollEmailHelper
     recipient.login_tokens.create!(redirect: redirect_path)
   end
 
-  def actor(event)
+  def anonymous_or_actor_for(event)
     @actor ||= if event.eventable.is_a?(Stance)
       event.eventable.participant_for_client
     else

@@ -1,5 +1,5 @@
 %table.poll-mailer__subject
   %tr
-    %td= render "avatar", user: actor(event)
+    %td= render "avatar", user: anonymous_or_actor_for(event)
     %td
-      %span=raw t(:"poll_mailer.#{poll.poll_type}.header.#{action_name}", actor: actor(event).name, title: poll.title)
+      %span=raw t(:"poll_mailer.#{poll.poll_type}.header.#{action_name}", actor: anonymous_or_actor_for(event).name, title: poll.title)
