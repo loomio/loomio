@@ -110,6 +110,7 @@ Loomio::Application.routes.draw do
         get  :me
         get  :groups
         get  :email_status
+        get  :email_exists
         post :update_profile
         post :set_volume
         post :upload_avatar

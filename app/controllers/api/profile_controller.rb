@@ -75,6 +75,10 @@ class API::ProfileController < API::RestfulController
     respond_with_resource(serializer: Pending::UserSerializer)
   end
 
+  def email_exists
+    render json: {email: params[:email], exists: User.where(email: params[:email]).any?}
+  end
+
   private
   def current_user
     restricted_user || super
