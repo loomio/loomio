@@ -3,5 +3,5 @@
   - stance.stance_choices.each do |choice|
     %tr= render 'poll_mailer/common/poll_option', poll_option: choice.poll_option, stance_choice: choice, poll: poll, recipient: recipient
 - if stance.participant == recipient
-  = link_to t(:"poll_mailer.common.change_your_stance"), target_url({change_vote: true}, poll, recipient)
+  = link_to t(:"poll_mailer.common.change_your_stance"), target_url(args: {change_vote: true}, poll: poll, recipient: recipient)
 %p= render_rich_text(stance.reason, stance.reason_format)

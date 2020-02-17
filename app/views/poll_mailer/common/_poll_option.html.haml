@@ -4,7 +4,7 @@
 - show_link  = local_assigns[:link]
 - stance_choice = local_assigns.fetch(:stance_choice, nil)
 - show_score = poll.has_variable_score && stance_choice
-- target_url = target_url({poll_option_id: poll_option.id}, poll, recipient)
+- target_url = target_url(args: {poll_option_id: poll_option.id}, poll: poll, recipient: recipient)
 
 - if poll.has_option_icons
   - if show_link

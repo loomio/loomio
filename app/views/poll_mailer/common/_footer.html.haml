@@ -1,6 +1,6 @@
 .poll-mailer-common-footer
   .poll-mailer-common-footer__spacer= PollMailer::REPLY_DELIMITER
   .poll-mailer-common-footer__text
-    = link_to t(:"poll_mailer.common.view_on_loomio", site_name: AppConfig.theme[:site_name]), target_url({}, poll, recipient)
+    = link_to t(:"poll_mailer.common.view_on_loomio", site_name: AppConfig.theme[:site_name]), target_url(poll: poll, recipient: recipient)
   = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"
   %p= t(:'email.value_proposition', site_name: AppConfig.theme[:site_name])

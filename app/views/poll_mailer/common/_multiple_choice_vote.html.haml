@@ -8,4 +8,4 @@
   %table{class: "poll-mailer-#{poll.poll_type}__poll-options"}
     - poll.ordered_poll_options.each do |option|
       %tr.poll-mailer__poll-option= render 'poll_mailer/common/poll_option', poll: poll, recipient: recipient, poll_option: option
-  = link_to t(:"poll_mailer.common.vote_now"), target_url({}, poll, recipient), class: "base-mailer__button base-mailer__button--accent"
+  = link_to t(:"poll_mailer.common.vote_now"), target_url(poll: poll, recipient: recipient), class: "base-mailer__button base-mailer__button--accent"

@@ -35,7 +35,7 @@ module PollEmailHelper
     "poll_mailer/#{prefix}_off.png"
   end
 
-  def target_url(args = {}, poll, recipient)
+  def target_url(poll:, recipient:, args: {})
     membership = membership(poll, recipient)
     args.merge!(membership_token: membership.token) if membership
     polymorphic_url(poll, poll_mailer_utm_hash(args))
