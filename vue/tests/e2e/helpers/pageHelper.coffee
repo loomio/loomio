@@ -36,9 +36,8 @@ module.exports = (test, browser) ->
     test.expect.element(selector).to.not.be.present.after(wait)
 
   click: (selector, pause) ->
-    @scrollTo selector, () ->
-      test.click(selector)
-      test.pause(pause) if pause
+    test.click(selector)
+    test.pause(pause) if pause
 
   scrollTo: (selector, callback, wait) ->
     @waitFor(selector, wait)
