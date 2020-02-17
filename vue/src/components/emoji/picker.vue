@@ -58,11 +58,11 @@ export default
   flex-wrap: wrap
   font-size: 48px
 
-    img, span
-      width: 48px
-      height: 48px
-      cursor: pointer
-      text-align: center
-      display: block
-      margin: 4px
+  img, span
+    width: 48px
+    height: 48px
+    cursor: pointer
+    text-align: center
+    display: block
+    margin: 4px
 </style>
