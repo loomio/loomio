@@ -217,6 +217,15 @@ en:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
 
+  merge_accounts:
+    modal:
+      title: Merge accounts
+      helptext: "We can help you merge the account under <strong>{{sourceEmail}}</strong> into that of <strong>{{targetEmail}}</strong>. Click Verify and we'll send a verification email to {{targetEmail}} to begin the process."
+      submit: Verify
+      flash: Verification email sent!
+    email_taken: Sorry, that email is already associated with another user. Does that email belong to you?
+    find_out_more: Find out more. 
+
   emoji_picker:
     search: Search
     common: Frequently used

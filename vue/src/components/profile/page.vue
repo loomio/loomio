@@ -60,13 +60,25 @@ export default
     closeDeleteUserModal: ->
       @isDeleteUserModalOpen = false
 
-    checkEmailExistence: (e) ->
-      inputEmail = e.target.value
-      # return if @originalUser.email == inputEmail
-      Records.users.checkEmailExistence(inputEmail).then (res) =>
+    openMergeAccountsModal: ->
+      sendVerification = => Records.users.sendMergeVerificationEmail(@originalUser.email, @user.email)
+      openModal
+        component: 'ConfirmModal'
+        props:
+          confirm:
+            submit: sendVerification
+            text:
+              title:    'merge_accounts.modal.title'
+              raw_helptext: @$t('merge_accounts.modal.helptext', sourceEmail: @originalUser.email, targetEmail: @user.email)
+              submit:   'merge_accounts.modal.submit'
+              flash:    'merge_accounts.modal.flash'
+
+    checkEmailExistence: ->
+      # return if @originalUser.email == @user.email
+      Records.users.checkEmailExistence(@user.email).then (res) =>
         if res.exists
           @existingEmails = uniq(@existingEmails.concat([res.email]))
-        if includes(@existingEmails, inputEmail)
+        if includes(@existingEmails, @user.email)
           @emailExists = true
           @isDisabled = true
         else
@@ -101,10 +113,13 @@ v-content
                   v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username")
                   validation-errors(:subject='user', field='username')
 
-                  span existingEmails: {{ existingEmails }}
+                  //- span existingEmails: {{ existingEmails }}
                   v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' @keyup="checkEmailExistence")
                   validation-errors(:subject='user', field='email')
-                  span.email-taken-message(v-if="emailExists") Sorry, that email is already associated with another user. Do you want to merge these accounts?
+                  div(v-if="emailExists")
+                    span.email-taken-message(v-t="'merge_accounts.email_taken'")
+                    space
+                    a(@click="openMergeAccountsModal" v-t="'merge_accounts.find_out_more'")
 
                 .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
                   user-avatar.mb-4(:user='originalUser' size='featured' :no-link="true")

@@ -79,6 +79,11 @@ class API::ProfileController < API::RestfulController
     render json: {email: params[:email], exists: User.where(email: params[:email]).any?}
   end
 
+  def send_merge_verification_email
+    byebug
+    render json: { success: :ok }
+  end
+
   private
   def current_user
     restricted_user || super
