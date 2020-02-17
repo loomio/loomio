@@ -1,7 +1,7 @@
 class Events::PollClosingSoon < Event
   include Events::Notify::InApp
-  include Events::Notify::ByEmail
   include Events::Notify::Author
+  include Events::Notify::ByEmail
   include Events::Notify::ThirdParty
 
   def self.publish!(poll)

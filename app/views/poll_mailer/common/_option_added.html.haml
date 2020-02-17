@@ -1,4 +1,4 @@
 .poll-mailer-common-option-added
   %table
-    - @info.poll_options.where(name: @info.event.custom_fields['poll_option_names']).each do |option|
-      %tr= render 'poll_mailer/common/poll_option', poll_option: option
+    - poll.poll_options.where(name: event.custom_fields['poll_option_names']).each do |option|
+      %tr= render 'poll_mailer/common/poll_option', poll_option: option, poll: poll, recipient: recipient

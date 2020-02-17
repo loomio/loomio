@@ -1,22 +1,23 @@
 -# optionally display only stances created since a given date
 - since ||= 100.years.ago
+- actor = anonymous_or_actor_for(event)
 
 .poll-mailer-common-responses
   %h3= t(:"poll_mailer.common.responses")
-  - @info.poll.grouped_stance_choices(since: since).each do |poll_option, stance_choices|
+  - poll.grouped_stance_choices(since: since).each do |poll_option, stance_choices|
     .poll-mailer-common-responses__poll-option{style: "border-color: #{poll_option.color}"}
       %h4
-        - if @info.poll.translate_option_name
+        - if poll.translate_option_name
           %span= t(:"poll_proposal_options.#{poll_option.name}")
         - else
-          %span= poll_option.display_name(zone: @info.time_zone)
+          %span= poll_option.display_name(zone: time_zone(recipient, poll))
       %table
         - stance_choices.each do |stance_choice|
           %tr
-            %td.poll-mailer-common__avatar= render 'base_mailer/avatar', user: stance_choice.stance.participant_for_client(user: @info.actor)
+            %td.poll-mailer-common__avatar= render 'base_mailer/avatar', user: stance_choice.stance.participant_for_client(user: actor)
             %td.poll-mailer-common-responses__reason
               - if stance_choice.stance.reason.present?
-                %span= "#{stance_choice.stance.participant_for_client(user: @info.actor).name}:"
+                %span= "#{stance_choice.stance.participant_for_client(user: actor).name}:"
                 %span= render_rich_text(stance_choice.stance.reason, stance_choice.stance.reason_format)
               - else
-                %span= stance_choice.stance.participant_for_client(user: @info.actor).name
+                %span= stance_choice.stance.participant_for_client(user: actor).name
