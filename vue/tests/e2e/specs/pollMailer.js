@@ -99,7 +99,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('test_score_poll_edited_email', { controller: 'polls' })
-    page.expectText('.poll-mailer__subject', "edited the score poll")
+    page.expectText('.poll-mailer__subject', "edited the poll")
   },
 
   'proposal_outcome_announced': (test) => {
@@ -169,7 +169,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('test_count_poll_stance_created_email', { controller: 'polls' })
-    page.expectText('.poll-mailer__subject', "voted on")
+    page.expectText('.poll-mailer__subject', "participated in")
   },
 
   'dot_vote_stance_created': (test) => {
