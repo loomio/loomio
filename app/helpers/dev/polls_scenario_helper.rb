@@ -89,7 +89,7 @@ module Dev::PollsScenarioHelper
      actor:    actor}
   end
 
-  def poll_mentioned_scenario(poll_type:)
+  def poll_user_mentioned_scenario(poll_type:)
     scenario = poll_created_scenario(poll_type: poll_type)
     voter    = saved(fake_user)
     group_member = saved(fake_user)
