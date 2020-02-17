@@ -1,7 +1,7 @@
 module DiscussionEmailHelper
   include PrettyUrlHelper
 
-  def target_url(args = {}, eventable, recipient, action_name)
+  def target_url(eventable:, recipient:, action_name:, args: {})
     membership = membership(eventable.discussion, recipient)
     args.merge!(membership_token: membership.token) if membership
     polymorphic_url(eventable, utm_hash(args, action_name))
