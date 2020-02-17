@@ -68,8 +68,10 @@ export default
           @existingEmails = uniq(@existingEmails.concat([res.email]))
         if includes(@existingEmails, inputEmail)
           @emailExists = true
+          @isDisabled = true
         else
           @emailExists = false
+          @isDisabled = false
 
     submit: ->
       Records.users.updateProfile(@user)
