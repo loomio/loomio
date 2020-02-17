@@ -27,7 +27,7 @@ class PollMailer < BaseMailer
       "X-Auto-Response-Suppress": :OOF,
       "Auto-Submitted":           :"auto-generated"
     }
-    
+
     if @event.eventable.respond_to?(:calendar_invite) && @event.eventable.calendar_invite
       attachments['meeting.ics'] = {
         content_type:              'text/calendar',
@@ -40,7 +40,7 @@ class PollMailer < BaseMailer
       locale:        @recipient.locale,
       to:            @recipient.email,
       subject_key:   @event.email_subject_key || "poll_mailer.#{@poll.poll_type}.subject.#{@action_name}",
-      subject_params: { title: @poll.title, actor: actor(@event) },
+      subject_params: { title: @poll.title, actor: anonymous_or_actor_for(@event) },
       layout:        'base_mailer'
     )
   end
