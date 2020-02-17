@@ -56,7 +56,7 @@ export default
 	flex-direction: row
 	flex-wrap: wrap
 	font-size: 48px
-	span
+  img, span
 		width: 48px
 		height: 48px
 		cursor: pointer
