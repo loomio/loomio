@@ -46,22 +46,23 @@ export default
 
 <style lang="sass">
 .emoji-picker
-	padding: 4px
-	background-color: #fff
-	max-width: 232px
-	max-height: 400px
-	overflow-y: auto
-.emoji-picker__emojis
-	display: flex
-	flex-direction: row
-	flex-wrap: wrap
-	font-size: 48px
-  img, span
-		width: 48px
-		height: 48px
-		cursor: pointer
-		text-align: center
-		display: block
-		margin: 4px
+  padding: 4px
+  background-color: #fff
+  max-width: 232px
+  max-height: 400px
+  overflow-y: auto
 
+.emoji-picker__emojis
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  font-size: 48px
+
+    img, span
+      width: 48px
+      height: 48px
+      cursor: pointer
+      text-align: center
+      display: block
+      margin: 4px
 </style>
