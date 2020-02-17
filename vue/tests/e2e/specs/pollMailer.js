@@ -297,6 +297,55 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "is closing in 24 hours")
   },
 
+  'proposal_poll_user_mentioned': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_proposal_poll_user_mentioned_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "mentioned you in")
+  },
+
+  'poll_poll_user_mentioned': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_poll_poll_user_mentioned_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "mentioned you in")
+  },
+
+  'count_poll_user_mentioned': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_count_poll_user_mentioned_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "mentioned you in")
+  },
+
+  'dot_vote_poll_user_mentioned': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_dot_vote_poll_user_mentioned_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "mentioned you in")
+  },
+
+  'meeting_poll_user_mentioned': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_meeting_poll_user_mentioned_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "mentioned you in")
+  },
+
+  // 'ranked_choice_poll_user_mentioned': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPathNoApp('test_ranked_choice_poll_user_mentioned_email', { controller: 'polls' })
+  //   page.expectText('.poll-mailer__subject', "mentioned you in")
+  // },
+
+  'score_poll_user_mentioned': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('test_score_poll_user_mentioned_email', { controller: 'polls' })
+    page.expectText('.poll-mailer__subject', "mentioned you in")
+  },
+
   'proposal_poll_expired_author': (test) => {
     page = pageHelper(test)
 
