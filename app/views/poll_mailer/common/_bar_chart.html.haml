@@ -1,10 +1,10 @@
 %h3= t('poll_mailer.common.results')
 %table{style: "width: 100%"}
-  - @info.poll_options.each_with_index do |poll_option, index|
+  - poll.ordered_poll_options.each_with_index do |poll_option, index|
     %tr
-      %td #{@info.poll.stance_counts[index]} - #{poll_option.display_name(zone: @info.time_zone)}
+      %td #{poll.stance_counts[index]} - #{poll_option.display_name(zone: time_zone(recipient, poll))}
     %tr
       %td
-        %table{style: "width: #{percentage_for(@info.poll, index)}%"}
+        %table{style: "width: #{percentage_for(poll, index)}%"}
           %tr
-            %td{height: '48px', style: "background-color: #{AppConfig.colors.dig(@info.poll_type, index)}"}
+            %td{height: '48px', style: "background-color: #{AppConfig.colors.dig(poll.poll_type, index)}"}

@@ -1,4 +1,5 @@
 class UserMailer < BaseMailer
+  helper PollEmailHelper
   layout 'invite_people_mailer', only: [:membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :user_reactivated, :group_export_ready]
 
   def accounts_merged(user_id)

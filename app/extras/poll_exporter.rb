@@ -9,10 +9,6 @@ class PollExporter
     "#{@poll.title.parameterize}-#{I18n.t("common.action.export").downcase}.csv"
   end
 
-  def poll_info(current_user)
-     PollEmailInfo.new(recipient: current_user, event: @poll.created_event, action_name: :export)
-  end
-
   def label(key, *opts)
     I18n.t("poll.export.#{key}", *opts)
   end

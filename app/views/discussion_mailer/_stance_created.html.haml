@@ -11,6 +11,6 @@
     %td
       %table
         - stance.stance_choices.order("score desc").each do |choice|
-          %tr= render "poll_mailer/common/poll_option", poll_option: choice.poll_option, stance_choice: choice, small: true
+          %tr= render "poll_mailer/common/poll_option", poll_option: choice.poll_option, stance_choice: choice, small: true, recipient: recipient
 
 %p= render_rich_text(stance.reason, stance.reason_format)

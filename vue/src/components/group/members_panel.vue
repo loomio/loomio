@@ -5,7 +5,7 @@ import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
-import {includes, some, compact, intersection, orderBy, slice, debounce, min} from 'lodash'
+import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp} from 'lodash'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import { exact, approximate } from '@/shared/helpers/format_time'
 
@@ -69,7 +69,8 @@ export default
       if @$route.query.q
         chain = chain.where (membership) =>
           some [membership.user().name, membership.user().username], (name) =>
-            RegExp("^#{@$route.query.q}", "i").test(name) or RegExp(" #{@$route.query.q}", "i").test(name)
+            q = escapeRegExp(@$route.query.q)
+            RegExp("^#{q}", "i").test(name) or RegExp(" #{q}", "i").test(name)
 
       switch @$route.query.filter
         when 'admin'

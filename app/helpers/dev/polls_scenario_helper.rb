@@ -81,12 +81,24 @@ module Dev::PollsScenarioHelper
     StanceService.create(stance: fake_stance(poll: poll), actor: observer)
     PollService.update(poll: poll, params: { title: "New title" }, actor: actor)
     recipients = {user_ids: [observer.id], emails: [observer.email]}
-    announcement_params = { kind: "poll_announced", recipients: recipients }
+    announcement_params = { kind: "poll_edited", recipients: recipients }
     AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
 
     {discussion: discussion,
      observer: observer,
      actor:    actor}
+  end
+
+  def poll_user_mentioned_scenario(poll_type:)
+    scenario = poll_created_scenario(poll_type: poll_type)
+    voter    = saved(fake_user)
+    group_member = saved(fake_user)
+    scenario[:poll].group.add_member!(voter)
+    scenario[:poll].group.add_member!(group_member)
+    choices  =  [{poll_option_id: scenario[:poll].poll_option_ids[0]}]
+    StanceService.create(stance: fake_stance(poll: scenario[:poll], reason: "<p><span class='mention' data-mention-id='#{group_member.username}'>@#{group_member.name}</span> </p>", reason_format: "html", stance_choices_attributes: choices), actor: voter)
+
+    scenario.merge(observer: group_member)
   end
 
   def poll_stance_created_scenario(poll_type:)
