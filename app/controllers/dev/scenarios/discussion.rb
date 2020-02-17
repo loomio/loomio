@@ -88,13 +88,13 @@ module Dev::Scenarios::Discussion
 
   # discussion mailer emails
 
-  def setup_discussion_mailer_new_discussion_email
+  def setup_discussion_mailer_discussion_announced_email
     sign_in jennifer
     @group = FactoryBot.create(:formal_group, name: "Girdy Dancing Shoes", creator: patrick)
     @group.add_admin! patrick
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
-    AnnouncementService.create(model: discussion, actor: patrick, params: {recipients: {user_ids: [jennifer.id]}, kind: "new_discussion"})
+    AnnouncementService.create(model: discussion, actor: patrick, params: {recipients: {user_ids: [jennifer.id]}, kind: "discussion_announced"})
     last_email
   end
 

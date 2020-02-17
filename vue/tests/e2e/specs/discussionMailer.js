@@ -2,10 +2,10 @@ require('coffeescript/register')
 pageHelper = require('../helpers/pageHelper.coffee')
 
 module.exports = {
-  'new_discussion': (test) => {
+  'discussion_announced': (test) => {
     page = pageHelper(test)
 
-    page.loadPathNoApp('setup_discussion_mailer_new_discussion_email')
+    page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
     page.click('.thread-mailer__subject a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
