@@ -10,12 +10,15 @@ import openModal      from '@/shared/helpers/open_modal'
 import UserService    from '@/shared/services/user_service'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
+import { includes, uniq } from 'lodash'
 
 export default
   data: ->
     isDisabled: false
     user: null
     originalUser: null
+    existingEmails: []
+    emailExists: false
 
   created: ->
     @init()
@@ -31,13 +34,18 @@ export default
   methods:
     init: ->
       return unless Session.isSignedIn()
-      @watchRecords
-        key: Session.user().id
-        collections: ['users']
-        query: =>
-          @originalUser = Session.user()
-          @user = @originalUser.clone()
-          Session.updateLocale(@user.locale)
+      @originalUser = Session.user()
+      @user = @originalUser.clone()
+      Session.updateLocale(@user.locale)
+
+      # @watchRecords
+      #   key: Session.user().id
+      #   collections: ['users']
+      #   query: =>
+      #     console.log 'firing query'
+      #     @originalUser = Session.user()
+      #     @user = @originalUser.clone()
+      #     Session.updateLocale(@user.locale)
 
     changePicture: ->
       openModal
@@ -52,10 +60,22 @@ export default
     closeDeleteUserModal: ->
       @isDeleteUserModalOpen = false
 
+    checkEmailExistence: (e) ->
+      inputEmail = e.target.value
+      # return if @originalUser.email == inputEmail
+      Records.users.checkEmailExistence(inputEmail).then (res) =>
+        if res.exists
+          @existingEmails = uniq(@existingEmails.concat([res.email]))
+        if includes(@existingEmails, inputEmail)
+          @emailExists = true
+        else
+          @emailExists = false
+
     submit: ->
       Records.users.updateProfile(@user)
       .then =>
         Flash.success 'profile_page.messages.updated'
+        @init()
       .catch onError(@user)
 
 </script>
@@ -79,8 +99,10 @@ v-content
                   v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username")
                   validation-errors(:subject='user', field='username')
 
-                  v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required='ng-required', v-model='user.email')
+                  span existingEmails: {{ existingEmails }}
+                  v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' @keyup="checkEmailExistence")
                   validation-errors(:subject='user', field='email')
+                  span.email-taken-message(v-if="emailExists") Sorry, that email is already associated with another user. Do you want to merge these accounts?
 
                 .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
                   user-avatar.mb-4(:user='originalUser' size='featured' :no-link="true")
@@ -118,4 +140,6 @@ v-content
 <style lang="sass">
 .profile-page__avatar
   cursor: pointer
+.email-taken-message
+  color: red
 </style>
