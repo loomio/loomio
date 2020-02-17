@@ -89,4 +89,5 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_created_as_logged_out
   observe_scenario :poll_closed
   observe_scenario :poll_meeting_populated,     only: [:meeting]
+  observe_scenario :poll_user_mentioned, email: true
 end
