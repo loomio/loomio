@@ -18,7 +18,7 @@ export default new class UserService
             user: user
 
     merge_accounts:
-      icon: 'mdi-lock-reset'
+      icon: 'mdi-account-multiple'
       name: 'profile_page.merge_accounts'
       canPerform: -> true
       perform: ->

@@ -1,16 +1,15 @@
 <script lang="coffee">
 import Session        from '@/shared/services/session'
 import Records from '@/shared/services/records'
+import Flash from '@/shared/services/flash'
 
 export default
   props:
     close: Function
   data: ->
-    targetEmail: ''
+    targetEmail: null
     emailChecked: false
-
-  mounted: ->
-    Records.users.removeExperience('show_vue_upgraded_modal')
+    emailExists: false
 
   computed:
     isCurrentEmail: ->
@@ -18,39 +17,42 @@ export default
 
   methods:
     reset: ->
-      @targetEmail = ''
+      @targetEmail = null
       @emailChecked = false
+      @emailExists = false
 
-    sendVerification: -> Records.users.sendMergeVerificationEmail(@targetEmail)
+    sendVerification: ->
+      Records.users.sendMergeVerificationEmail(@targetEmail).then =>
+        Flash.success 'merge_accounts.modal.flash'
+        @close()
 
     checkEmailExistence: ->
       return if @isCurrentEmail
-      Records.users.checkEmailExistence(@user.email).then (res) =>
-        if res.exists
-          @existingEmails = uniq(@existingEmails.concat([res.email]))
-        if includes(@existingEmails, @user.email)
-          @emailExists = true
-          @isDisabled = true
-        else
-          @emailExists = false
-          @isDisabled = false
+      Records.users.checkEmailExistence(@targetEmail).then (res) =>
+        @emailChecked = true
+        @emailExists = res.exists
 
 </script>
 
 <template lang="pug">
 v-card
+  v-card-title
+    h1.headline Merge accounts
+    v-spacer
+    dismiss-modal-button(:close="close")
   v-card-text
-    v-layout(column)
-      h1.mb-8 Merge accounts
-      div(v-if="!emailChecked")
-        p Do you have another Loomio account you would like to merge this account with? Enter the email and we'll check to see the other account exists.
-        p After that you'll need to verify that the email account is yours before we can proceed with the merge.
-      div(v-else)
-        p We've confirmed that the email address {{targetEmail}} belongs to another account.
-        p Would you like to proceed with verifying {{targetEmail}} belongs to you?
-    v-card-actions
-      v-btn(v-if="emailChecked" block color="accent" @click="reset") Try another email address
-      v-spacer
-      v-btn.mt-4(v-if="!emailChecked" block color="accent" @click="checkEmailExistence") Check address
-      v-btn.mt-4(v-else block color="primary") Verify address
+    div(v-if="!emailChecked")
+      p Do you have another Loomio account you would like to merge this account with? Enter the corresponding email address and we'll check to see the other account exists.
+      p After that you'll need to verify that the email account is yours before we can proceed with the merge.
+      v-text-field(v-model="targetEmail" label="another@email.com")
+    div(v-if="emailChecked && emailExists")
+      p We've confirmed that the email address {{targetEmail}} belongs to another account.
+      p Would you like to proceed with verifying {{targetEmail}} belongs to you?
+    div(v-if="emailChecked && !emailExists")
+      p Unfortunately, we could not find a corresponding account for this email address. Please try again.
+  v-card-actions
+    v-btn(v-if="emailChecked" color="accent" @click="reset") Try another email address
+    v-spacer
+    v-btn(v-if="!emailChecked && !emailExists" color="accent" @click="checkEmailExistence" :disabled="!targetEmail") Check address
+    v-btn(v-if="emailChecked && emailExists" color="primary" @click="sendVerification") Verify address
 </template>
