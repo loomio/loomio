@@ -61,7 +61,7 @@ export default
       @isDeleteUserModalOpen = false
 
     openMergeAccountsModal: ->
-      sendVerification = => Records.users.sendMergeVerificationEmail(@originalUser.email, @user.email)
+      sendVerification = => Records.users.sendMergeVerificationEmail(@user.email)
       openModal
         component: 'ConfirmModal'
         props:

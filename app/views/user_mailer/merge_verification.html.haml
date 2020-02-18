@@ -1,0 +1,3 @@
+%p= t :'user_mailer.merge_verification.body_html', name: @target_user.name, target_email: @target_user.email, source_email: @source_user.email
+%p= link_to t(:"user_mailer.merge_verification.confirm"), "https://www.google.com", class: "base-mailer__button base-mailer__button--accent"
+%p= @hash

@@ -60,9 +60,8 @@ export default class UserRecordsInterface extends BaseRecordsInterface
       params:
         email: email
 
-  sendMergeVerificationEmail: (sourceEmail, targetEmail) ->
+  sendMergeVerificationEmail: (targetEmail) ->
     @fetch
       path: 'send_merge_verification_email'
       params:
-        source_email: sourceEmail
         target_email: targetEmail
