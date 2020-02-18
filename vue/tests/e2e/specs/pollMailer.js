@@ -70,6 +70,10 @@ module.exports = {
 
     page.loadPathNoApp('test_proposal_poll_edited_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "edited the proposal")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "You voted")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'poll_poll_edited': (test) => {
@@ -77,6 +81,10 @@ module.exports = {
 
     page.loadPathNoApp('test_poll_poll_edited_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "edited the poll")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "You voted")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'count_poll_edited': (test) => {
@@ -84,6 +92,10 @@ module.exports = {
 
     page.loadPathNoApp('test_count_poll_edited_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "edited the check")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "You voted")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'dot_vote_poll_edited': (test) => {
@@ -91,6 +103,10 @@ module.exports = {
 
     page.loadPathNoApp('test_dot_vote_poll_edited_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "edited the dot vote")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "You voted")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'meeting_poll_edited': (test) => {
@@ -98,6 +114,10 @@ module.exports = {
 
     page.loadPathNoApp('test_meeting_poll_edited_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "edited the time poll")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "You voted")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'ranked_choice_poll_edited': (test) => {
@@ -105,6 +125,10 @@ module.exports = {
 
     page.loadPathNoApp('test_ranked_choice_poll_edited_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "edited the ranked choice")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "You voted")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'score_poll_edited': (test) => {
@@ -112,6 +136,10 @@ module.exports = {
 
     page.loadPathNoApp('test_score_poll_edited_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "edited the poll")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "You voted")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'proposal_outcome_announced': (test) => {
