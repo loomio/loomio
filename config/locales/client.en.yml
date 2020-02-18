@@ -224,7 +224,7 @@ en:
       submit: Verify
       flash: Verification email sent!
     email_taken: Sorry, that email is already associated with another user. Does that email belong to you?
-    find_out_more: Find out more. 
+    find_out_more: Find out more.
 
   emoji_picker:
     search: Search
@@ -1179,6 +1179,7 @@ en:
       picture_changed: 'Profile picture updated'
       password_changed: 'Password updated'
       deactivated: 'Account deactivated'
+    merge_accounts: Merge accounts
     change_picture_link: 'Change picture'
     change_password_link: 'Reset password'
     delete_account: 'Permanently Delete account'

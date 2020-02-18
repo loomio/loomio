@@ -60,7 +60,7 @@ export default
     closeDeleteUserModal: ->
       @isDeleteUserModalOpen = false
 
-    openMergeAccountsModal: ->
+    openSendVerificationModal: ->
       sendVerification = => Records.users.sendMergeVerificationEmail(@user.email)
       openModal
         component: 'ConfirmModal'
@@ -119,7 +119,7 @@ v-content
                   div(v-if="emailExists")
                     span.email-taken-message(v-t="'merge_accounts.email_taken'")
                     space
-                    a(@click="openMergeAccountsModal" v-t="'merge_accounts.find_out_more'")
+                    a(@click="openSendVerificationModal" v-t="'merge_accounts.find_out_more'")
 
                 .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
                   user-avatar.mb-4(:user='originalUser' size='featured' :no-link="true")
