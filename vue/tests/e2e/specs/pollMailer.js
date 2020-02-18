@@ -83,7 +83,7 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "edited the poll")
     page.expectText('.poll-mailer-common-summary', "you have until")
     page.expectText('.poll-mailer__vote', "You voted")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -94,7 +94,7 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "edited the check")
     page.expectText('.poll-mailer-common-summary', "you have until")
     page.expectText('.poll-mailer__vote', "You voted")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -105,7 +105,7 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "edited the dot vote")
     page.expectText('.poll-mailer-common-summary', "you have until")
     page.expectText('.poll-mailer__vote', "You voted")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -116,7 +116,7 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "edited the time poll")
     page.expectText('.poll-mailer-common-summary', "you have until")
     page.expectText('.poll-mailer__vote', "You voted")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer__meeting-chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -127,7 +127,7 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "edited the ranked choice")
     page.expectText('.poll-mailer-common-summary', "you have until")
     page.expectText('.poll-mailer__vote', "You voted")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-ranked-choice__chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -138,7 +138,7 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "edited the poll")
     page.expectText('.poll-mailer-common-summary', "you have until")
     page.expectText('.poll-mailer__vote', "You voted")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -158,7 +158,7 @@ module.exports = {
     page.loadPathNoApp('test_poll_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a poll outcome")
     page.expectText('.poll-mailer-common-summary', "Outcome")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -168,7 +168,7 @@ module.exports = {
     page.loadPathNoApp('test_count_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared an outcome")
     page.expectText('.poll-mailer-common-summary', "Outcome")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -178,7 +178,7 @@ module.exports = {
     page.loadPathNoApp('test_dot_vote_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a dot vote outcome")
     page.expectText('.poll-mailer-common-summary', "Outcome")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -188,7 +188,7 @@ module.exports = {
     page.loadPathNoApp('test_meeting_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a time poll outcome")
     page.expectText('.poll-mailer-common-summary', "Outcome")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer__meeting-chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -198,7 +198,7 @@ module.exports = {
     page.loadPathNoApp('test_ranked_choice_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a ranked choice outcome")
     page.expectText('.poll-mailer-common-summary', "Outcome")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-ranked-choice__chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -208,7 +208,7 @@ module.exports = {
     page.loadPathNoApp('test_score_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a poll outcome")
     page.expectText('.poll-mailer-common-summary', "Outcome")
-    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
     page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
@@ -463,6 +463,10 @@ module.exports = {
 
     page.loadPathNoApp('test_proposal_poll_expired_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "has closed")
+    page.expectElement('.poll-mailer__create_outcome')
+    page.expectElement('.poll-mailer-common-summary')
+    page.expectElement('.poll-mailer-common-responses')
+    page.expectText('.poll-mailer-proposal__chart', "Results")
   },
 
   'poll_poll_expired_author': (test) => {
@@ -470,6 +474,10 @@ module.exports = {
 
     page.loadPathNoApp('test_poll_poll_expired_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "has closed")
+    page.expectElement('.poll-mailer__create_outcome')
+    page.expectElement('.poll-mailer-common-summary')
+    page.expectElement('.poll-mailer-common-responses')
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
   },
 
   'count_poll_expired_author': (test) => {
@@ -477,6 +485,10 @@ module.exports = {
 
     page.loadPathNoApp('test_count_poll_expired_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "has closed")
+    page.expectElement('.poll-mailer__create_outcome')
+    page.expectElement('.poll-mailer-common-summary')
+    page.expectElement('.poll-mailer-common-responses')
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
   },
 
   'dot_vote_poll_expired_author': (test) => {
@@ -484,6 +496,10 @@ module.exports = {
 
     page.loadPathNoApp('test_dot_vote_poll_expired_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "has closed")
+    page.expectElement('.poll-mailer__create_outcome')
+    page.expectElement('.poll-mailer-common-summary')
+    page.expectElement('.poll-mailer-common-responses')
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
   },
 
   'meeting_poll_expired_author': (test) => {
@@ -491,6 +507,10 @@ module.exports = {
 
     page.loadPathNoApp('test_meeting_poll_expired_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "has closed")
+    page.expectElement('.poll-mailer__create_outcome')
+    page.expectElement('.poll-mailer-common-summary')
+    page.expectElement('.poll-mailer-common-responses')
+    page.expectText('.poll-mailer__meeting-chart', "Results")
   },
 
   'ranked_choice_poll_expired_author': (test) => {
@@ -498,6 +518,10 @@ module.exports = {
 
     page.loadPathNoApp('test_ranked_choice_poll_expired_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "has closed")
+    page.expectElement('.poll-mailer__create_outcome')
+    page.expectElement('.poll-mailer-common-summary')
+    page.expectElement('.poll-mailer-common-responses')
+    page.expectText('.poll-mailer-ranked-choice__chart', "Results")
   },
 
   'score_poll_expired_author': (test) => {
@@ -505,6 +529,10 @@ module.exports = {
 
     page.loadPathNoApp('test_score_poll_expired_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "has closed")
+    page.expectElement('.poll-mailer__create_outcome')
+    page.expectElement('.poll-mailer-common-summary')
+    page.expectElement('.poll-mailer-common-responses')
+    page.expectText('.poll-mailer-common-bar-chart', "Results")
   },
 
   'poll_poll_option_added_author': (test) => {
@@ -512,6 +540,8 @@ module.exports = {
 
     page.loadPathNoApp('test_poll_poll_options_added_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "added options to")
+    page.expectElement('.poll-mailer-common-option-added')
+    page.expectElement('.poll-mailer__vote')
   },
 
   'dot_vote_poll_option_added_author': (test) => {
@@ -519,6 +549,8 @@ module.exports = {
 
     page.loadPathNoApp('test_dot_vote_poll_options_added_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "added options to")
+    page.expectElement('.poll-mailer-common-option-added')
+    page.expectElement('.poll-mailer__vote')
   },
 
   'meeting_poll_option_added_author': (test) => {
@@ -526,6 +558,8 @@ module.exports = {
 
     page.loadPathNoApp('test_meeting_poll_options_added_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "added options to")
+    page.expectElement('.poll-mailer-common-option-added')
+    page.expectElement('.poll-mailer__vote')
   },
 
   'ranked_choice_poll_option_added_author': (test) => {
@@ -533,6 +567,8 @@ module.exports = {
 
     page.loadPathNoApp('test_ranked_choice_poll_options_added_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "added options to")
+    page.expectElement('.poll-mailer-common-option-added')
+    page.expectElement('.poll-mailer__vote')
   },
 
   'score_poll_option_added_author': (test) => {
@@ -540,6 +576,8 @@ module.exports = {
 
     page.loadPathNoApp('test_score_poll_options_added_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "added options to")
+    page.expectElement('.poll-mailer-common-option-added')
+    page.expectElement('.poll-mailer__vote')
   },
 
 }
