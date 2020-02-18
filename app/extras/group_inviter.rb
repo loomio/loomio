@@ -4,8 +4,9 @@ class GroupInviter
   def initialize(group:, inviter: User.helper_bot, user_ids: [], emails: [], invited_group_ids: [])
     @group    = group
     @inviter  = inviter
-    @user_ids = Array(user_ids)
-    @emails   = Array(emails)
+    # seems like the two arrays get mixed up sometimes, let's sort them out
+    @emails = Array(emails).concat(Array(user_ids)).filter   {|val| val.to_s.include?('@')}
+    @user_ids = Array(emails).concat(Array(user_ids)).reject {|val| val.to_s.include?('@')}
     @invited_group_ids = Array(invited_group_ids)
   end
 

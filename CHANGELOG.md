@@ -1,3 +1,16 @@
+## 2020-02-17 (Loomio 2.1.1)
+
+- Add coverage of more iterations of Youtube URLs for video embed in text editor
+- Add distinction between Group URL and Group Invitation Link in Share modal, under Members tab
+- Alphabetize list of Slack channels in Install Slack modal
+- Remove list of groups from Install Slack modal
+- Increase Dashboard timeframe for "Older" filter, from 6 months to 12 months
+- Fix autofocus when replying in thread
+- Fix displaying user's notification settings
+- Fix handle suggestion on new group form
+- Fix download link for CSV in group HTML export template
+- Fix download link for CSV in poll HTML export template
+
 ## 2020-02-10 (Loomio 2.1.0)
 - Major improvements to text editor: added Markdown support, previewing, collapsible menu:
 ![new_text_editor](https://user-images.githubusercontent.com/10443269/74111288-73809280-4bf8-11ea-858b-1123226a05a3.gif)
