@@ -324,6 +324,8 @@ Loomio::Application.routes.draw do
   get '/g/:key/membership_requests/new'    => redirect('410.html')
   get '/comments/:id'                      => redirect('410.html')
 
+  get '/merge_users/confirm' => 'merge_users#confirm'
+  post '/merge_users/merge' => 'merge_users#merge'
 
   # for IE / other browsers which insist on requesting things which don't exist
   get '/favicon.ico'                       => 'application#ok'

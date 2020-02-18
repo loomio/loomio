@@ -100,4 +100,13 @@ class UserService
     sha1 << target_user.reset_password_token
     UserMailer.merge_verification(source_user: user, target_user: target_user, hash: sha1.hexdigest).deliver_now
   end
+
+  def self.validate_account_merge_hash(source_user:, target_user:, hash:)
+    sha1 = Digest::SHA1.new
+    sha1 << source_user.reset_password_token
+    sha1 << target_user.reset_password_token
+    reconstructed_hash = sha1.hexdigest
+    hash == reconstructed_hash
+  end
+
 end
