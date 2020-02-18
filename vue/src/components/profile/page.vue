@@ -74,7 +74,7 @@ export default
               flash:    'merge_accounts.modal.flash'
 
     checkEmailExistence: ->
-      # return if @originalUser.email == @user.email
+      return if @originalUser.email == @user.email
       Records.users.checkEmailExistence(@user.email).then (res) =>
         if res.exists
           @existingEmails = uniq(@existingEmails.concat([res.email]))
