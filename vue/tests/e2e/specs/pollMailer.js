@@ -147,6 +147,9 @@ module.exports = {
 
     page.loadPathNoApp('test_proposal_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a proposal outcome")
+    page.expectText('.poll-mailer-common-summary', "Outcome")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'poll_outcome_announced': (test) => {
@@ -154,6 +157,9 @@ module.exports = {
 
     page.loadPathNoApp('test_poll_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a poll outcome")
+    page.expectText('.poll-mailer-common-summary', "Outcome")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'count_outcome_announced': (test) => {
@@ -161,6 +167,9 @@ module.exports = {
 
     page.loadPathNoApp('test_count_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared an outcome")
+    page.expectText('.poll-mailer-common-summary', "Outcome")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'dot_vote_outcome_announced': (test) => {
@@ -168,6 +177,9 @@ module.exports = {
 
     page.loadPathNoApp('test_dot_vote_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a dot vote outcome")
+    page.expectText('.poll-mailer-common-summary', "Outcome")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'meeting_outcome_announced': (test) => {
@@ -175,6 +187,9 @@ module.exports = {
 
     page.loadPathNoApp('test_meeting_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a time poll outcome")
+    page.expectText('.poll-mailer-common-summary', "Outcome")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'ranked_choice_outcome_announced': (test) => {
@@ -182,6 +197,9 @@ module.exports = {
 
     page.loadPathNoApp('test_ranked_choice_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a ranked choice outcome")
+    page.expectText('.poll-mailer-common-summary', "Outcome")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'score_outcome_announced': (test) => {
@@ -189,6 +207,9 @@ module.exports = {
 
     page.loadPathNoApp('test_score_poll_outcome_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "shared a poll outcome")
+    page.expectText('.poll-mailer-common-summary', "Outcome")
+    page.expectText('.poll-mailer-proposal__chart', "Results")
+    page.expectText('.poll-mailer-common-responses', "Responses")
   },
 
   'proposal_stance_created': (test) => {
