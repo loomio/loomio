@@ -1,2 +1,3 @@
-%p= render_rich_text(eventable.body, eventable.body_format)
-= render "attachments", resource: eventable
+%div.thread-mailer__body
+  %p= render_rich_text(eventable.body, eventable.body_format)
+  = render "attachments", resource: eventable
