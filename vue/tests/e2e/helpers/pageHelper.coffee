@@ -36,6 +36,7 @@ module.exports = (test, browser) ->
     test.expect.element(selector).to.not.be.present.after(wait)
 
   click: (selector, pause) ->
+    @waitFor(selector)
     test.click(selector)
     test.pause(pause) if pause
 
