@@ -400,6 +400,8 @@ module.exports = {
 
     page.loadPathNoApp('test_proposal_poll_user_mentioned_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "mentioned you in")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "Please respond")
   },
 
   'poll_poll_user_mentioned': (test) => {
@@ -407,6 +409,8 @@ module.exports = {
 
     page.loadPathNoApp('test_poll_poll_user_mentioned_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "mentioned you in")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "Please respond")
   },
 
   'count_poll_user_mentioned': (test) => {
@@ -414,6 +418,8 @@ module.exports = {
 
     page.loadPathNoApp('test_count_poll_user_mentioned_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "mentioned you in")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "Please respond")
   },
 
   'dot_vote_poll_user_mentioned': (test) => {
@@ -421,6 +427,8 @@ module.exports = {
 
     page.loadPathNoApp('test_dot_vote_poll_user_mentioned_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "mentioned you in")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "Please respond")
   },
 
   'meeting_poll_user_mentioned': (test) => {
@@ -428,6 +436,8 @@ module.exports = {
 
     page.loadPathNoApp('test_meeting_poll_user_mentioned_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "mentioned you in")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "Please respond")
   },
 
   // 'ranked_choice_poll_user_mentioned': (test) => {
@@ -435,6 +445,8 @@ module.exports = {
   //
   //   page.loadPathNoApp('test_ranked_choice_poll_user_mentioned_email', { controller: 'polls' })
   //   page.expectText('.poll-mailer__subject', "mentioned you in")
+  //   page.expectText('.poll-mailer-common-summary', "you have until")
+  //   page.expectText('.poll-mailer__vote', "Please respond")
   // },
 
   'score_poll_user_mentioned': (test) => {
@@ -442,6 +454,8 @@ module.exports = {
 
     page.loadPathNoApp('test_score_poll_user_mentioned_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "mentioned you in")
+    page.expectText('.poll-mailer-common-summary', "you have until")
+    page.expectText('.poll-mailer__vote', "Please respond")
   },
 
   'proposal_poll_expired_author': (test) => {
