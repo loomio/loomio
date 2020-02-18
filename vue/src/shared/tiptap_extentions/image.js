@@ -82,7 +82,7 @@ function insertImage(file, view, coordinates, attachImageFile) {
 }
 
 function handleUploads({files, view, attachFile, attachImageFile, coordinates}) {
-  Array.from(files).forEach(file => {
+  Array.from(files || []).forEach(file => {
     if ((/image/i).test(file.type)) {
       insertImage(file, view, coordinates, attachImageFile)
     } else {
