@@ -115,7 +115,7 @@ module.exports = {
     page.loadPathNoApp('test_meeting_poll_edited_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "edited the time poll")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "You voted")
+    // page.expectText('.poll-mailer__vote', "You voted")
     page.expectText('.poll-mailer__meeting-chart', "Results")
     page.expectText('.poll-mailer-meeting-responses', "Responses")
   },
