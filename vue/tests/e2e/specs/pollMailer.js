@@ -302,7 +302,7 @@ module.exports = {
     page.loadPathNoApp('test_dot_vote_poll_closing_soon_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "is closing in 24 hours")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'meeting_poll_closing_soon': (test) => {
@@ -311,7 +311,7 @@ module.exports = {
     page.loadPathNoApp('test_meeting_poll_closing_soon_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "is closing in 24 hours")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'ranked_choice_poll_closing_soon': (test) => {
@@ -320,7 +320,7 @@ module.exports = {
     page.loadPathNoApp('test_ranked_choice_poll_closing_soon_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "is closing in 24 hours")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'score_poll_closing_soon': (test) => {
@@ -329,7 +329,7 @@ module.exports = {
     page.loadPathNoApp('test_score_poll_closing_soon_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "is closing in 24 hours")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'proposal_poll_closing_soon_author': (test) => {
@@ -365,7 +365,7 @@ module.exports = {
     page.loadPathNoApp('test_dot_vote_poll_closing_soon_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "is closing in 24 hours")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'meeting_poll_closing_soon_author': (test) => {
@@ -374,7 +374,7 @@ module.exports = {
     page.loadPathNoApp('test_meeting_poll_closing_soon_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "is closing in 24 hours")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'ranked_choice_poll_closing_soon_author': (test) => {
@@ -383,7 +383,7 @@ module.exports = {
     page.loadPathNoApp('test_ranked_choice_poll_closing_soon_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "is closing in 24 hours")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'score_poll_closing_soon_author': (test) => {
@@ -392,7 +392,7 @@ module.exports = {
     page.loadPathNoApp('test_score_poll_closing_soon_author_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "is closing in 24 hours")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'proposal_poll_user_mentioned': (test) => {
@@ -428,7 +428,7 @@ module.exports = {
     page.loadPathNoApp('test_dot_vote_poll_user_mentioned_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "mentioned you in")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'meeting_poll_user_mentioned': (test) => {
@@ -437,7 +437,7 @@ module.exports = {
     page.loadPathNoApp('test_meeting_poll_user_mentioned_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "mentioned you in")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   // 'ranked_choice_poll_user_mentioned': (test) => {
@@ -446,7 +446,7 @@ module.exports = {
   //   page.loadPathNoApp('test_ranked_choice_poll_user_mentioned_email', { controller: 'polls' })
   //   page.expectText('.poll-mailer__subject', "mentioned you in")
   //   page.expectElement('.poll-mailer-common-summary')
-  //   page.expectText('.poll-mailer__vote', "Please respond")
+  //   page.expectText('.poll-mailer__vote', "Vote now")
   // },
 
   'score_poll_user_mentioned': (test) => {
@@ -455,7 +455,7 @@ module.exports = {
     page.loadPathNoApp('test_score_poll_user_mentioned_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "mentioned you in")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'proposal_poll_expired_author': (test) => {
