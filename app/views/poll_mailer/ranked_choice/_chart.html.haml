@@ -1,15 +1,16 @@
-%h3= t('poll_mailer.common.results')
-%table{style: "width: 100%"}
-  %thead
-    %th
-    %th
-    - (1..poll.poll.minimum_stance_choices).each do |score|
-      %th.align-right= t(:"ordinal._#{score}")
-    %th.align-right= t(:"common.total")
-  - poll.ordered_poll_options.sort_by(&:total_score).reverse.each do |poll_option|
-    %tr
-      %td= render "poll_mailer/common/chip", color: poll_option.color
-      %td= poll_option.display_name
-      - (1..poll.minimum_stance_choices).reverse_each do |score|
-        %td.align-right= poll_option.stance_choices.where(score: score).count
-      %td.align-right= poll_option.total_score
+%div.poll-mailer-ranked-choice__chart
+  %h3= t('poll_mailer.common.results')
+  %table{style: "width: 100%"}
+    %thead
+      %th
+      %th
+      - (1..poll.poll.minimum_stance_choices).each do |score|
+        %th.align-right= t(:"ordinal._#{score}")
+      %th.align-right= t(:"common.total")
+    - poll.ordered_poll_options.sort_by(&:total_score).reverse.each do |poll_option|
+      %tr
+        %td= render "poll_mailer/common/chip", color: poll_option.color
+        %td= poll_option.display_name
+        - (1..poll.minimum_stance_choices).reverse_each do |score|
+          %td.align-right= poll_option.stance_choices.where(score: score).count
+        %td.align-right= poll_option.total_score
