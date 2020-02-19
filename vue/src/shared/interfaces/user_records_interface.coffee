@@ -53,3 +53,15 @@ export default class UserRecordsInterface extends BaseRecordsInterface
     @fetch
       path: 'email_status'
       params: _.pickBy({email: email, token: token}, _.identity)
+
+  checkEmailExistence: (email) ->
+    @fetch
+      path: 'email_exists'
+      params:
+        email: email
+
+  sendMergeVerificationEmail: (targetEmail) ->
+    @fetch
+      path: 'send_merge_verification_email'
+      params:
+        target_email: targetEmail

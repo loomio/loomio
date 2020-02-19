@@ -10,12 +10,13 @@ import openModal      from '@/shared/helpers/open_modal'
 import UserService    from '@/shared/services/user_service'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
+import { includes, uniq } from 'lodash'
 
 export default
   data: ->
-    isDisabled: false
     user: null
     originalUser: null
+    existingEmails: []
 
   created: ->
     @init()
@@ -27,17 +28,14 @@ export default
     showHelpTranslate: -> AppConfig.features.app.help_link
     availableLocales: -> AppConfig.locales
     actions: -> UserService.actions(Session.user(), @)
+    emailExists: -> includes(@existingEmails, @user.email)
 
   methods:
     init: ->
       return unless Session.isSignedIn()
-      @watchRecords
-        key: Session.user().id
-        collections: ['users']
-        query: =>
-          @originalUser = Session.user()
-          @user = @originalUser.clone()
-          Session.updateLocale(@user.locale)
+      @originalUser = Session.user()
+      @user = @originalUser.clone()
+      Session.updateLocale(@user.locale)
 
     changePicture: ->
       openModal
@@ -52,10 +50,29 @@ export default
     closeDeleteUserModal: ->
       @isDeleteUserModalOpen = false
 
+    openSendVerificationModal: ->
+      openModal
+        component: 'ConfirmModal'
+        props:
+          confirm:
+            submit: => Records.users.sendMergeVerificationEmail(@user.email)
+            text:
+              title:    'merge_accounts.modal.title'
+              raw_helptext: @$t('merge_accounts.modal.helptext', sourceEmail: @originalUser.email, targetEmail: @user.email)
+              submit:   'merge_accounts.modal.submit'
+              flash:    'merge_accounts.modal.flash'
+
+    checkEmailExistence: ->
+      return if @originalUser.email == @user.email
+      Records.users.checkEmailExistence(@user.email).then (res) =>
+        if res.exists
+          @existingEmails = uniq(@existingEmails.concat([res.email]))
+
     submit: ->
       Records.users.updateProfile(@user)
       .then =>
         Flash.success 'profile_page.messages.updated'
+        @init()
       .catch onError(@user)
 
 </script>
@@ -79,8 +96,13 @@ v-content
                   v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username")
                   validation-errors(:subject='user', field='username')
 
-                  v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required='ng-required', v-model='user.email')
+                  //- span existingEmails: {{ existingEmails }}
+                  v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' @keyup="checkEmailExistence")
                   validation-errors(:subject='user', field='email')
+                  .profile-page__email-taken(v-if="emailExists")
+                    span.email-taken-message(v-t="'merge_accounts.email_taken'")
+                    space
+                    a.email-taken-find-out-more(@click="openSendVerificationModal" v-t="'merge_accounts.find_out_more'")
 
                 .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
                   user-avatar.mb-4(:user='originalUser' size='featured' :no-link="true")
@@ -97,7 +119,7 @@ v-content
                 a(v-t="'profile_page.help_translate'" href='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation' target='_blank')
         v-card-actions.profile-page__update-account
           v-spacer
-          v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='isDisabled' v-t="'profile_page.update_profile'")
+          v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='emailExists' v-t="'profile_page.update_profile'")
 
       v-card.profile-page-card.mt-4
         v-list
@@ -118,4 +140,6 @@ v-content
 <style lang="sass">
 .profile-page__avatar
   cursor: pointer
+.email-taken-message
+  color: red
 </style>
