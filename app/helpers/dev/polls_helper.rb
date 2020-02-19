@@ -29,6 +29,10 @@ module Dev::PollsHelper
         poll.poll_options.sample(poll.minimum_stance_choices).map do |option|
           [option.name, index+=1]
         end.to_h
+      elsif poll.require_all_choices
+        poll.poll_options.map do |option|
+          [option.name, index+=1]
+        end.to_h
       else
         poll.poll_option_names.sample
       end
