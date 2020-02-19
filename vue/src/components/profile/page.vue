@@ -51,12 +51,11 @@ export default
       @isDeleteUserModalOpen = false
 
     openSendVerificationModal: ->
-      sendVerification = => Records.users.sendMergeVerificationEmail(@user.email)
       openModal
         component: 'ConfirmModal'
         props:
           confirm:
-            submit: sendVerification
+            submit: => Records.users.sendMergeVerificationEmail(@user.email)
             text:
               title:    'merge_accounts.modal.title'
               raw_helptext: @$t('merge_accounts.modal.helptext', sourceEmail: @originalUser.email, targetEmail: @user.email)
@@ -100,7 +99,7 @@ v-content
                   //- span existingEmails: {{ existingEmails }}
                   v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' @keyup="checkEmailExistence")
                   validation-errors(:subject='user', field='email')
-                  div(v-if="emailExists")
+                  .profile-page__email-taken(v-if="emailExists")
                     span.email-taken-message(v-t="'merge_accounts.email_taken'")
                     space
                     a(@click="openSendVerificationModal" v-t="'merge_accounts.find_out_more'")

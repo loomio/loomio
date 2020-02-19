@@ -220,11 +220,14 @@ en:
   merge_accounts:
     modal:
       title: Merge accounts
-      helptext: "We can help you merge the account under <strong>{{sourceEmail}}</strong> into that of <strong>{{targetEmail}}</strong>. Click Verify and we'll send a verification email to {{targetEmail}} to begin the process."
+      helptext: "You can merge the account under <strong>{{sourceEmail}}</strong> into that of <strong>{{targetEmail}}</strong>. Click Verify and a verification email will be sent to {{targetEmail}} to begin the process."
       submit: Verify
       flash: Verification email sent!
     email_taken: Sorry, that email is already associated with another user. Does that email belong to you?
     find_out_more: Find out more.
+    placeholder_modal_text: |
+      <p>If you would like to merge two accounts together, simply enter the respective email address (belonging to the other account) into your Profile page email field, and follow the instructions that appear.</p>
+      <p>Need help? <a href="/contact" target="_blank">Contact us</a>.
 
   emoji_picker:
     search: Search

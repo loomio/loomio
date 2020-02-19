@@ -23,7 +23,12 @@ export default new class UserService
       canPerform: -> true
       perform: ->
         EventBus.$emit 'openModal',
-          component: 'MergeAccountsModal'
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              text:
+                title: 'merge_accounts.modal.title'
+                raw_helptext: vm.$t('merge_accounts.placeholder_modal_text')
 
     deactivate_user:
       icon: 'mdi-exit-run'
