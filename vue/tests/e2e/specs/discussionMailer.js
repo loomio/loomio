@@ -6,6 +6,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
+    page.expectText('.thread-mailer__subject', "invited you to join")
+    page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
     page.click('.thread-mailer__subject a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
@@ -20,6 +22,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
+    page.expectText('.thread-mailer__subject', "invited you to join")
+    page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
     page.click('.thread-mailer__subject a', 2000)
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
@@ -34,6 +38,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_discussion_mailer_new_comment_email')
     page.expectText('.thread-mailer__subject', "Jennifer Grey commented in: What star sign are you?")
+    page.expectText('.thread-mailer__body', "hello patrick.")
   },
 
   'comment_replied_to': (test) => {
@@ -41,6 +46,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_discussion_mailer_comment_replied_to_email')
     page.expectText('.thread-mailer__subject', "Patrick Swayze replied to you in: What star sign are you?")
+    page.expectText('.thread-mailer__body', "why, hello there jen")
   },
 
   'user_mentioned': (test) => {
@@ -48,5 +54,6 @@ module.exports = {
 
     page.loadPathNoApp('setup_discussion_mailer_user_mentioned_email')
     page.expectText('.thread-mailer__subject', "Jennifer Grey mentioned you in What star sign are you?")
+    page.expectText('.thread-mailer__body', "hey @patrickswayze wanna dance?")
   },
 }
