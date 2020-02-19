@@ -95,18 +95,8 @@ class UserService
     target_user = User.active.find_by!(email: target_email)
     actor.update_attribute(:reset_password_token, User.generate_unique_secure_token)
     target_user.update_attribute(:reset_password_token, User.generate_unique_secure_token)
-    sha1 = Digest::SHA1.new
-    sha1 << actor.reset_password_token
-    sha1 << target_user.reset_password_token
-    UserMailer.merge_verification(source_user: actor, target_user: target_user, hash: sha1.hexdigest).deliver_now
-  end
-
-  def self.validate_account_merge_hash(source_user:, target_user:, hash:)
-    sha1 = Digest::SHA1.new
-    sha1 << source_user.reset_password_token
-    sha1 << target_user.reset_password_token
-    reconstructed_hash = sha1.hexdigest
-    hash == reconstructed_hash
+    hash = MergeUsersService.build_merge_hash(source_user: actor, target_user: target_user)
+    UserMailer.merge_verification(source_user: actor, target_user: target_user, hash: hash).deliver_now
   end
 
 end
