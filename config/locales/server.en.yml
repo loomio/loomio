@@ -129,10 +129,10 @@ en:
     merge_verification:
       subject: "Verify your %{site_name} email address for merging"
       body_html: |
-        Hi %{name},
-        A request was made to merge your user account under the address <strong>%{source_email}</strong> with the account belonging to this address, <strong>%{target_email}</strong>.
-        After this process is complete, you will no longer be able to login with <strong>%{source_email}</strong>, and only with <strong>%{target_email}</strong>.
-        Please confirm that this is what you want to do.
+        <p>Hi %{name},</p>
+        <p>A request was made to merge your user account under the address <strong>%{source_email}</strong> with the account belonging to this address, <strong>%{target_email}</strong>.</p>
+        <p>After this process is complete, you will no longer be able to login with <strong>%{source_email}</strong>, and only with <strong>%{target_email}</strong>.</p>
+        <p>Please confirm that this is what you want to do.</p>
       verify: Verify email and proceed
       confirm_page:
         confirm: Confirm merge
