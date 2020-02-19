@@ -92,7 +92,7 @@ class UserService
 
   def self.send_merge_verification_email(user:, actor:, target_email:)
     actor.ability.authorize! :update, user
-    target_user = User.find_by!(email: target_email)
+    target_user = User.active.find_by!(email: target_email)
     user.update_attribute(:reset_password_token, User.generate_unique_secure_token)
     target_user.update_attribute(:reset_password_token, User.generate_unique_secure_token)
     sha1 = Digest::SHA1.new
