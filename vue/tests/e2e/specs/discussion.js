@@ -33,6 +33,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_non_member')
+    page.expectElement('.thread-previews')
     page.click('.thread-preview__link')
     page.expectElement('.time-ago')
   },
@@ -181,6 +182,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right heerrr')
     page.click('.comment-form__submit-button')
+    page.expectFlash('Comment added')
     page.click('.thread-item .action-menu')
     page.click('.action-dock__button--reply_to_comment')
 
@@ -233,6 +235,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right hur')
     page.click('.comment-form__submit-button')
+    page.expectFlash('Comment added')
     page.click('.action-dock__button--edit_comment')
     page.fillIn('.edit-comment-form .lmo-textarea div[contenteditable=true]', 'edited comment right thur')
     page.click('.edit-comment-form .comment-form__submit-button', 1000)
@@ -243,6 +246,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_comment_with_versions')
+    page.expectText('.new-comment', 'What moon sign are you?')
     page.click('.action-dock__button--show_history')
     page.expectText('.revision-history-content del', 'star')
     page.expectText('.revision-history-content ins', 'moon')
