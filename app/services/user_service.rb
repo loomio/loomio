@@ -90,7 +90,7 @@ class UserService
     EventBus.broadcast('user_save_experience', user, actor, params)
   end
 
-  def self.send_merge_verification_email(user:, actor:, target_email:)
+  def self.send_merge_verification_email(actor:, target_email:)
     actor.ability.authorize! :update, actor
     target_user = User.active.find_by!(email: target_email)
     actor.update_attribute(:reset_password_token, User.generate_unique_secure_token)
