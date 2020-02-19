@@ -56,5 +56,5 @@ thread-item.new-comment(id="'comment-'+ eventable.id" :event="event" :is-returni
   document-list(:model='eventable' skip-fetch)
   attachment-list(:attachments="eventable.attachments")
   template(v-slot:append)
-    comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" :autofocus="true")
+    comment-form(v-if="showReplyForm" :comment="newComment" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" autofocus)
 </template>

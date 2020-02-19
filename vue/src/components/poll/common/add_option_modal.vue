@@ -18,13 +18,15 @@ export default
 
   methods:
     submit: ->
-      @poll.addOption()
-      @poll.addOptions()
-      .then =>
-        @poll.removeOrphanOptions()
-        Flash.success "poll_common_add_option.form.options_added"
-        @close()
-      .catch onError(@poll)
+      # there's a race condition here because of the way we are adding poll form options
+      # hence the setTimeout
+      setTimeout =>
+        @poll.addOptions()
+        .then =>
+          @poll.removeOrphanOptions()
+          Flash.success "poll_common_add_option.form.options_added"
+          @close()
+        .catch onError(@poll)
 
 </script>
 

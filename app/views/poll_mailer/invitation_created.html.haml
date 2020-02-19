@@ -1,12 +1,12 @@
-- case @info.eventable.intent
+- case @event.eventable.intent
 - when 'join_poll'
-  = render "poll_mailer/common/header"
-  = render "poll_mailer/common/summary"
-  = render "poll_mailer/#{@info.poll_type}/vote"
-  = render "poll_mailer/common/footer"
+  = render "poll_mailer/common/header", poll: @poll, event: @event, action_name: @action_name
+  = render "poll_mailer/common/summary", poll: @poll, recipient: @recipient, action_name: @action_name
+  = render "poll_mailer/#{@poll.poll_type}/vote", poll: @poll, recipient: @recipient
+  = render "poll_mailer/common/footer", poll: @poll, recipient: @recipient
 - when 'join_outcome'
-  = render "poll_mailer/common/header"
-  = render "poll_mailer/common/summary", include_outcome: true
-  = render "poll_mailer/#{@info.poll_type}/chart"
-  = render "poll_mailer/#{@info.poll_type}/responses"
-  = render "poll_mailer/common/footer"
+  = render "poll_mailer/common/header", poll: @poll, event: @event, action_name: @action_name
+  = render "poll_mailer/common/summary", poll: @poll, recipient: @recipient, action_name: @action_name, include_outcome: true
+  = render "poll_mailer/#{@poll.poll_type}/chart", poll: @poll, recipient: @recipient
+  = render "poll_mailer/#{@poll.poll_type}/responses", poll: @poll, recipient: @recipient, event: @event
+  = render "poll_mailer/common/footer", poll: @poll, recipient: @recipient

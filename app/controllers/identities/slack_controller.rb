@@ -50,7 +50,7 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def user_to_join
-    @user_to_join ||= current_user.presence || identity_to_join&.user || identity_to_join&.create_user!
+    @user_to_join ||= current_user.presence || identity_to_join&.user || identity_to_join&.find_or_create_user!
   end
 
   def identity_to_join
