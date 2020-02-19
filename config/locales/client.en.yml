@@ -217,6 +217,18 @@ en:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
 
+  merge_accounts:
+    modal:
+      title: Merge accounts
+      helptext: "You can merge the account under <strong>{{sourceEmail}}</strong> into that of <strong>{{targetEmail}}</strong>. Click Verify and a verification email will be sent to {{targetEmail}} to begin the process."
+      submit: Verify
+      flash: Verification email sent!
+    email_taken: Sorry, that email is already associated with another user. Does that email belong to you?
+    find_out_more: Find out more.
+    placeholder_modal_text: |
+      <p>If you would like to merge two accounts together, simply enter the respective email address (belonging to the other account) into your Profile page email field, and follow the instructions that appear.</p>
+      <p>Need help? <a href="/contact" target="_blank">Contact us</a>.
+
   emoji_picker:
     search: Search
     common: Frequently used
@@ -1170,6 +1182,7 @@ en:
       picture_changed: 'Profile picture updated'
       password_changed: 'Password updated'
       deactivated: 'Account deactivated'
+    merge_accounts: Merge accounts
     change_picture_link: 'Change picture'
     change_password_link: 'Reset password'
     delete_account: 'Permanently Delete account'

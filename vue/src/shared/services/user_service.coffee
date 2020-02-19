@@ -17,6 +17,19 @@ export default new class UserService
           props:
             user: user
 
+    merge_accounts:
+      icon: 'mdi-account-multiple'
+      name: 'profile_page.merge_accounts'
+      canPerform: -> true
+      perform: ->
+        EventBus.$emit 'openModal',
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              text:
+                title: 'merge_accounts.modal.title'
+                raw_helptext: vm.$t('merge_accounts.placeholder_modal_text')
+
     deactivate_user:
       icon: 'mdi-exit-run'
       name: 'deactivate_user_form.title'
