@@ -14,11 +14,9 @@ import { includes, uniq } from 'lodash'
 
 export default
   data: ->
-    isDisabled: false
     user: null
     originalUser: null
     existingEmails: []
-    emailExists: false
 
   created: ->
     @init()
@@ -30,6 +28,7 @@ export default
     showHelpTranslate: -> AppConfig.features.app.help_link
     availableLocales: -> AppConfig.locales
     actions: -> UserService.actions(Session.user(), @)
+    emailExists: -> includes(@existingEmails, @user.email)
 
   methods:
     init: ->
@@ -37,15 +36,6 @@ export default
       @originalUser = Session.user()
       @user = @originalUser.clone()
       Session.updateLocale(@user.locale)
-
-      # @watchRecords
-      #   key: Session.user().id
-      #   collections: ['users']
-      #   query: =>
-      #     console.log 'firing query'
-      #     @originalUser = Session.user()
-      #     @user = @originalUser.clone()
-      #     Session.updateLocale(@user.locale)
 
     changePicture: ->
       openModal
@@ -78,12 +68,6 @@ export default
       Records.users.checkEmailExistence(@user.email).then (res) =>
         if res.exists
           @existingEmails = uniq(@existingEmails.concat([res.email]))
-        if includes(@existingEmails, @user.email)
-          @emailExists = true
-          @isDisabled = true
-        else
-          @emailExists = false
-          @isDisabled = false
 
     submit: ->
       Records.users.updateProfile(@user)
@@ -136,7 +120,7 @@ v-content
                 a(v-t="'profile_page.help_translate'" href='https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation' target='_blank')
         v-card-actions.profile-page__update-account
           v-spacer
-          v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='isDisabled' v-t="'profile_page.update_profile'")
+          v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='emailExists' v-t="'profile_page.update_profile'")
 
       v-card.profile-page-card.mt-4
         v-list
