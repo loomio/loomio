@@ -126,6 +126,27 @@ en:
         Your two loomio accounts have been merged into one account.
         To access loomio from now on, please use <strong>%{email}</strong> when you sign in.
 
+    merge_verification:
+      subject: "Verify your %{site_name} email address for merging"
+      body_html: |
+        <p>Hi %{name},</p>
+        <p>A request was made to merge your user account under the address <strong>%{source_email}</strong> with the account belonging to this address, <strong>%{target_email}</strong>.</p>
+        <p>After this process is complete, you will no longer be able to login with <strong>%{source_email}</strong>, and only with <strong>%{target_email}</strong>.</p>
+        <p>Please confirm that this is what you want to do.</p>
+      verify: Verify email and proceed
+      confirm_page:
+        confirm: Confirm merge
+        body_html: |
+          <p>Please confirm that you would like to merge the account under <strong>%{source_email}</strong> into the account under <strong>%{target_email}</strong>.</p>
+          <p>You will thereafter only be able to sign in via <strong>%{target_email}</strong></p>
+          <p>This change will be irreversible.</p>
+        merge: Merge accounts
+      complete_page:
+        title: Merge successful!
+        body_html: |
+          <p>The merge of your user accounts was successful. You will receive a confirmation email at <strong>%{target_email}</strong> shortly.</p>
+          <p>Please <a href="/contact" target="_blank">contact us</a> if you have any further questions.</p>
+
   email:
     common:
       or_enter_code: Or, enter the code below

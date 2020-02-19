@@ -11,6 +11,16 @@ class UserMailer < BaseMailer
                      locale: @user.locale
   end
 
+  def merge_verification(source_user:, target_user:, hash:)
+    @source_user = source_user
+    @target_user = target_user
+    @hash = hash
+    send_single_mail to: @target_user.email,
+                     subject_key: "user_mailer.merge_verification.subject",
+                     subject_params: {site_name: AppConfig.theme[:site_name]},
+                     locale: @target_user.locale
+  end
+
   def catch_up(user_id, time_since = nil, frequency = 'daily')
     user = User.find(user_id)
     return unless user.email_catch_up

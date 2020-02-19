@@ -97,8 +97,8 @@ class ApplicationController < ActionController::Base
     !request.params['old_client'] &&
     !request.xhr? &&
     (browser.ie? ||
-    (browser.chrome?  && browser.version.to_i < 65) ||
-    (browser.firefox? && !browser.platform.ios? && browser.version.to_i < 55) ||
+    (browser.chrome?  && browser.version.to_i < 50) ||
+    (browser.firefox? && !browser.platform.ios? && browser.version.to_i < 50) ||
     (browser.safari?  && browser.version.to_i < 11) ||
     (browser.edge?    && browser.version.to_i < 17))
   end
