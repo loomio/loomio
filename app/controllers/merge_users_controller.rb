@@ -8,7 +8,7 @@ class MergeUsersController < ApplicationController
     if MergeUsersService.validate(source_user: @source_user, target_user: @target_user, hash: @hash)
       render :confirm
     else
-      render 'errors/422'
+      render 'errors/422', status: 422
     end
   end
 
@@ -20,7 +20,7 @@ class MergeUsersController < ApplicationController
       MigrateUserWorker.perform_async(@source_user.id, @target_user.id)
       render :complete
     else
-      render 'errors/422'
+      render 'errors/422', status: 422
     end
   end
 

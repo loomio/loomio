@@ -89,14 +89,4 @@ class UserService
     user.experienced!(params[:experience], !params[:remove_experience])
     EventBus.broadcast('user_save_experience', user, actor, params)
   end
-
-  def self.send_merge_verification_email(actor:, target_email:)
-    actor.ability.authorize! :update, actor
-    target_user = User.active.find_by!(email: target_email)
-    actor.update_attribute(:reset_password_token, User.generate_unique_secure_token)
-    target_user.update_attribute(:reset_password_token, User.generate_unique_secure_token)
-    hash = MergeUsersService.build_merge_hash(source_user: actor, target_user: target_user)
-    UserMailer.merge_verification(source_user: actor, target_user: target_user, hash: hash).deliver_now
-  end
-
 end
