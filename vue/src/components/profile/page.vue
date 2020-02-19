@@ -102,7 +102,7 @@ v-content
                   .profile-page__email-taken(v-if="emailExists")
                     span.email-taken-message(v-t="'merge_accounts.email_taken'")
                     space
-                    a(@click="openSendVerificationModal" v-t="'merge_accounts.find_out_more'")
+                    a.email-taken-find-out-more(@click="openSendVerificationModal" v-t="'merge_accounts.find_out_more'")
 
                 .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
                   user-avatar.mb-4(:user='originalUser' size='featured' :no-link="true")
