@@ -106,7 +106,7 @@ module.exports = {
     page.expectElement('.poll-mailer-common-summary')
     page.expectText('.poll-mailer__vote', "You voted")
     page.expectText('.poll-mailer-common-bar-chart', "Results")
-    page.expectText('.poll-mailer-common-responses', "Responses")
+    page.expectText('.poll-mailer-dot-vote-responses', "Responses")
   },
 
   'meeting_poll_edited': (test) => {
@@ -128,7 +128,7 @@ module.exports = {
     page.expectElement('.poll-mailer-common-summary')
     page.expectText('.poll-mailer__vote', "You voted")
     page.expectText('.poll-mailer-ranked-choice__chart', "Results")
-    page.expectText('.poll-mailer-common-responses', "Responses")
+    page.expectText('.poll-mailer-ranked-choice-responses', "Responses")
   },
 
   'score_poll_edited': (test) => {
@@ -139,7 +139,7 @@ module.exports = {
     page.expectElement('.poll-mailer-common-summary')
     page.expectText('.poll-mailer__vote', "You voted")
     page.expectText('.poll-mailer-common-bar-chart', "Results")
-    page.expectText('.poll-mailer-common-responses', "Responses")
+    page.expectText('.poll-mailer-score-responses', "Responses")
   },
 
   'proposal_outcome_announced': (test) => {
@@ -179,7 +179,7 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "shared a dot vote outcome")
     page.expectText('.poll-mailer-common-summary', "Outcome")
     page.expectText('.poll-mailer-common-bar-chart', "Results")
-    page.expectText('.poll-mailer-common-responses', "Responses")
+    page.expectText('.poll-mailer-dot-vote-responses', "Responses")
   },
 
   'meeting_outcome_announced': (test) => {
@@ -189,7 +189,7 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "shared a time poll outcome")
     page.expectText('.poll-mailer-common-summary', "Outcome")
     page.expectText('.poll-mailer__meeting-chart', "Results")
-    page.expectText('.poll-mailer-common-responses', "Responses")
+    page.expectText('.poll-mailer-meeting-responses', "Responses")
   },
 
   'ranked_choice_outcome_announced': (test) => {
@@ -199,7 +199,7 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "shared a ranked choice outcome")
     page.expectText('.poll-mailer-common-summary', "Outcome")
     page.expectText('.poll-mailer-ranked-choice__chart', "Results")
-    page.expectText('.poll-mailer-common-responses', "Responses")
+    page.expectText('.poll-mailer-ranked-choice-responses', "Responses")
   },
 
   'score_outcome_announced': (test) => {
@@ -209,7 +209,7 @@ module.exports = {
     page.expectText('.poll-mailer__subject', "shared a poll outcome")
     page.expectText('.poll-mailer-common-summary', "Outcome")
     page.expectText('.poll-mailer-common-bar-chart', "Results")
-    page.expectText('.poll-mailer-common-responses', "Responses")
+    page.expectText('.poll-mailer-score-responses', "Responses")
   },
 
   'proposal_stance_created': (test) => {
