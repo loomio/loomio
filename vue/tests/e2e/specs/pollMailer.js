@@ -117,7 +117,7 @@ module.exports = {
     page.expectElement('.poll-mailer-common-summary')
     page.expectText('.poll-mailer__vote', "You voted")
     page.expectText('.poll-mailer__meeting-chart', "Results")
-    page.expectText('.poll-mailer-common-responses', "Responses")
+    page.expectText('.poll-mailer-meeting-responses', "Responses")
   },
 
   'ranked_choice_poll_edited': (test) => {
