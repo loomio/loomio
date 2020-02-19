@@ -49,10 +49,9 @@ module.exports = {
 
     page.loadPath('setup_group_with_no_coordinators')
     page.click('.group-page-members-tab')
-    page.click('.members-panel .v-card .v-list .v-list-item:last-child .membership-dropdown')
-    page.click('.membership-dropdown__button')
-    page.click('.membership-dropdown__toggle-admin')
-    page.pause()
+    page.click('.members-panel .v-card .v-list .v-list-item:last-child .membership-dropdown', 500)
+    page.click('.membership-dropdown__button', 500)
+    page.click('.membership-dropdown__toggle-admin', 500)
     page.expectFlash('Patrick Swayze is now an admin')
   },
 
