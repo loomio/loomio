@@ -35,7 +35,7 @@ module.exports = {
     page.loadPathNoApp('test_dot_vote_poll_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "invited you to participate in a dot vote")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'meeting_poll_announced': (test) => {
@@ -44,7 +44,7 @@ module.exports = {
     page.loadPathNoApp('test_meeting_poll_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "invited you to participate in a time poll")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'ranked_choice_poll_announced': (test) => {
@@ -53,7 +53,7 @@ module.exports = {
     page.loadPathNoApp('test_ranked_choice_poll_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "invited you to rank options in a poll")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'score_poll_announced': (test) => {
@@ -62,7 +62,7 @@ module.exports = {
     page.loadPathNoApp('test_score_poll_created_email', { controller: 'polls' })
     page.expectText('.poll-mailer__subject', "invited you to vote in a score poll")
     page.expectElement('.poll-mailer-common-summary')
-    page.expectText('.poll-mailer__vote', "Please respond")
+    page.expectText('.poll-mailer__vote', "Vote now")
   },
 
   'proposal_poll_edited': (test) => {
