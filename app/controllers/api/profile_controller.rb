@@ -80,7 +80,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def send_merge_verification_email
-    service.send_merge_verification_email(user: current_user, actor: current_user, target_email: params[:target_email])
+    service.send_merge_verification_email(actor: current_user, target_email: params[:target_email])
     render json: { success: :ok }
   end
 
