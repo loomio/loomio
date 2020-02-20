@@ -1,4 +1,6 @@
 <script lang="coffee">
+import { emojiReplaceText } from '@/shared/helpers/emojis.coffee'
+
 export default
   props:
     model:
@@ -11,7 +13,7 @@ export default
     isMd: -> @format == 'md'
     isHtml: -> @format == 'html'
     format: -> @model[@column+"Format"]
-    text: -> @model[@column]
+    text: -> emojiReplaceText(@model[@column])
     hasTranslation: -> @model.translation[@column] if @model.translation
     cookedText: ->
       return @model[@column] unless @model.mentionedUsernames
@@ -29,6 +31,10 @@ div.lmo-markdown-wrapper.body-2.text--primary
 </template>
 
 <style lang="sass">
+img.emoji
+  width: 1.4em !important
+  vertical-align: top
+  margin: 0 .05em
 
 .lmo-markdown-wrapper
   blockquote, h1, h2, h3, ol, p, pre, ul

@@ -3,7 +3,7 @@ import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import {merge, capitalize, difference, keys, throttle, startsWith, each, compact} from 'lodash'
 import WatchRecords from '@/mixins/watch_records'
-import { colonToUnicode, stripColons } from '@/shared/helpers/emojis'
+import { colonToUnicode, stripColons, imgForEmoji, srcForEmoji, replaceEmojis } from '@/shared/helpers/emojis'
 
 export default
   mixins: [WatchRecords]
@@ -17,6 +17,7 @@ export default
     diameter: 20
     maxNamesCount: 10
     reactionHash: {all: []}
+    replaceEmojis: replaceEmojis
 
   mounted: ->
     @watchRecords
@@ -57,6 +58,7 @@ export default
       difference keys(@reactionHash), ['all']
 
   methods:
+    srcForEmoji: srcForEmoji
     stripColons: stripColons
     colonToUnicode: colonToUnicode
     removeMine: (reaction) ->
@@ -84,9 +86,8 @@ export default
       v-tooltip(bottom)
         template(v-slot:activator="{ on }")
           .reactions-display__group(v-on="on")
-            span {{colonToUnicode(reaction)}}
-            //- span(v-if="reactionHash[reaction].length > 1") {{reactionHash[reaction].length}}
-            //- span(v-if="reactionHash[reaction]") list present
+            span(v-if="replaceEmojis()") {{colonToUnicode(reaction)}}
+            img.emoji(v-else :src="srcForEmoji(colonToUnicode(reaction))")
             user-avatar.reactions-display__author(v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
         .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
           span {{ user.name }}
