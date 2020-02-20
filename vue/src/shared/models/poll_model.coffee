@@ -2,7 +2,6 @@ import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
-import HasGuestGroup    from '@/shared/mixins/has_guest_group'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import { addDays, startOfHour } from 'date-fns'
@@ -17,7 +16,6 @@ export default class PollModel extends BaseModel
   afterConstruction: ->
     HasDocuments.apply @, showTitle: true
     HasTranslations.apply @
-    HasGuestGroup.apply @
 
   pollTypeKey: ->
     "poll_types.#{@pollType}"
@@ -26,9 +24,6 @@ export default class PollModel extends BaseModel
     @discussion() or @author()
 
   poll: -> @
-
-  groups: ->
-    _.compact [@group(), @discussionGuestGroup(), @guestGroup()]
 
   defaultValues: ->
     discussionId: null
@@ -54,7 +49,6 @@ export default class PollModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
     @belongsTo 'group'
-    @belongsTo 'guestGroup', from: 'groups'
     @hasMany   'pollOptions'
     @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
     @hasMany   'pollDidNotVotes'
@@ -62,15 +56,6 @@ export default class PollModel extends BaseModel
 
   authorName: ->
     @author().nameWithTitle(@)
-
-  discussionGuestGroupId: ->
-    @discussion().guestGroupId if @discussion()
-
-  discussionGuestGroup: ->
-    @discussion().guestGroup() if @discussion()
-
-  groupIds: ->
-    _.compact [@groupId, @guestGroupId, @discussionGuestGroupId()]
 
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")

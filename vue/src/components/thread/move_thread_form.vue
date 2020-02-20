@@ -21,7 +21,7 @@ export default
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
-        @availableGroups = filter(Session.user().formalGroups(), (group) => group.id != @discussion.groupId)
+        @availableGroups = filter(Session.user().groups(), (group) => group.id != @discussion.groupId)
   methods:
     submit: ->
       @discussion.move()
@@ -33,7 +33,7 @@ export default
           @$router.push("/d/#{discussionKey}")
           @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
       .catch onError(@discussion)
-      
+
     updateTarget: ->
       @targetGroup = Records.groups.find(@discussion.groupId)
 

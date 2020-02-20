@@ -39,7 +39,7 @@ module Dev::Scenarios::Auth
   end
 
   def view_open_discussion_as_visitor
-    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
                            membership_granted_upon: 'request',
                            group_privacy: 'open')
     @group.add_member! patrick
@@ -51,7 +51,7 @@ module Dev::Scenarios::Auth
 
   def view_closed_group_as_non_member
     sign_in patrick
-    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
     @group.add_admin! jennifer
@@ -63,13 +63,13 @@ module Dev::Scenarios::Auth
   def view_secret_group_as_non_member
     patrick.update(is_admin: false)
     sign_in patrick
-    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     redirect_to group_url(@group)
   end
 
   def view_closed_group_as_visitor
-    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 membership_granted_upon: 'approval',
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
@@ -83,7 +83,7 @@ module Dev::Scenarios::Auth
   end
 
   def view_secret_group_as_visitor
-    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @group.add_admin! patrick
     redirect_to group_url(@group)

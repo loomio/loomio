@@ -9,7 +9,7 @@ describe 'GroupService' do
 
   describe 'create' do
     it 'creates a new group' do
-      expect { GroupService.create(group: group, actor: user) }.to change { FormalGroup.count }.by(1)
+      expect { GroupService.create(group: group, actor: user) }.to change { Group.count }.by(1)
       expect(group.reload.creator).to eq user
     end
 

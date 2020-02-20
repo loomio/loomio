@@ -28,7 +28,7 @@ describe Discussion do
     # provides a default when the discussion is new
     # when present passes the value on unmodified
     let(:discussion) { Discussion.new }
-    let(:group) { FormalGroup.new }
+    let(:group) { Group.new }
 
     subject { discussion.private }
 
@@ -71,7 +71,7 @@ describe Discussion do
 
   describe "validator: privacy_is_permitted_by_group" do
     let(:discussion) { Discussion.new }
-    let(:group) { FormalGroup.new }
+    let(:group) { Group.new }
     subject { discussion }
 
 

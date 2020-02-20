@@ -40,11 +40,6 @@ export default class UserModel extends BaseModel
       find(id: { $in: @groupIds() }).
       simplesort('fullName').data()
 
-  formalGroups: ->
-    @recordStore.groups.collection.chain().
-      find(id: { $in: @groupIds() }, type: "FormalGroup").
-      simplesort('fullName').data()
-
   adminGroups: ->
     _.invokeMap @adminMemberships(), 'group'
 
@@ -52,7 +47,7 @@ export default class UserModel extends BaseModel
     _.invokeMap @adminMemberships(), 'groupId'
 
   parentGroups: ->
-    _.filter @groups(), (group) -> group.isParent() && group.type == 'FormalGroup'
+    _.filter @groups(), (group) -> group.isParent()
 
   inboxGroups: ->
     _.flatten [@parentGroups(), @orphanSubgroups()]
@@ -68,7 +63,7 @@ export default class UserModel extends BaseModel
       group.discussions()
 
   orphanSubgroups: ->
-    _.filter @formalGroups(), (group) =>
+    _.filter @groups(), (group) =>
       group.isSubgroup() and !@isMemberOf(group.parent())
 
   orphanParents: ->
@@ -134,9 +129,9 @@ export default class UserModel extends BaseModel
     if model.isA('group')
       (@membershipFor(model) or {}).title
     else if model.isA('discussion')
-      @titleFor(model.guestGroup()) or @titleFor(model.group())
+      @titleFor(model.group())
     else if model.isA('poll')
-      @titleFor(model.guestGroup()) or @titleFor(model.discussion()) or @titleFor(model.group())
+      @titleFor(model.discussion()) or @titleFor(model.group())
 
   belongsToPayingGroup: ->
     _.some @groups(), (group) -> group.subscriptionKind == 'paid'

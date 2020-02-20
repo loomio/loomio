@@ -5,7 +5,6 @@ class Poll < ApplicationRecord
   include HasEvents
   include HasMentions
   include HasDrafts
-  include HasGuestGroup
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
@@ -41,7 +40,7 @@ class Poll < ApplicationRecord
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
   belongs_to :discussion
-  belongs_to :group, class_name: "FormalGroup"
+  belongs_to :group
 
 
   after_update :remove_poll_options
@@ -155,7 +154,7 @@ class Poll < ApplicationRecord
   end
 
   def group
-    super || NullFormalGroup.new
+    super || NullGroup.new
   end
 
   def group_members

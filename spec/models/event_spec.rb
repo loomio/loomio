@@ -154,7 +154,7 @@ describe Event do
     describe 'voters_review_responses', focus: true do
       let(:group_notified) {{
         id: discussion.group_id,
-        type: "FormalGroup",
+        type: "Group",
         notified_ids: [user_thread_loud.id, user_thread_normal.id]
       }.with_indifferent_access}
 

@@ -42,9 +42,6 @@ export default
   .poll-common-undecided-panel__panel.poll-common-undecided-panel__users(v-if='showingUndecided')
     v-subheader(v-t="{ path: 'poll_common_undecided_panel.undecided_users', args: { count: poll.undecidedCount } }")
     poll-common-undecided-user(:user='user', :poll='poll', v-for='user in poll.undecided()', :key='user.id')
-    p(v-if='!canEditPoll()')
-      span.lmo-hint-text(v-if='poll.guestGroup().pendingInvitationsCount == 1', v-t="'poll_common_undecided_panel.invitation_count_singular'")
-      span.lmo-hint-text(v-if='poll.guestGroup().pendingInvitationsCount > 1', v-t="{ path: 'poll_common_undecided_panel.invitation_count_plural', args: { count: poll.guestGroup().pendingInvitationsCount } }")
     div(v-if='moreMembershipsToLoad()')
       v-btn(color="accent" outlined v-t="'common.action.load_more'", aria-label='common.action.load_more', @click='loadMemberships()')
     // moreInvitationsToLoad does not exist?

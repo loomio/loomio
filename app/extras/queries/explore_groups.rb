@@ -2,7 +2,7 @@ class Queries::ExploreGroups < Delegator
   def initialize
     min_members = ENV.fetch('EXPLORE_MIN_MEMBERS', 4)
     min_threads = ENV.fetch('EXPLORE_MIN_THREADS', 2)
-    @relation = FormalGroup.where(is_visible_to_public: true)
+    @relation = Group.where(is_visible_to_public: true)
                      .parents_only
                      .published
                      .where('groups.name IS NOT NULL')

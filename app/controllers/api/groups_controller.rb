@@ -68,10 +68,6 @@ class API::GroupsController < API::RestfulController
     Queries::ExploreGroups.new
   end
 
-  def resource_class
-    FormalGroup
-  end
-
   # serialize out the parent with the group
   def resources_to_serialize
     Array(collection || [resource, resource&.parent].compact)

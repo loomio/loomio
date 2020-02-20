@@ -176,8 +176,3 @@ export default class GroupModel extends BaseModel
   groupIdentityFor: (type) ->
     _.find @groupIdentities(), (gi) ->
       gi.userIdentity().identityType == type
-
-  targetModel: ->
-    @recordStore.discussions.find(guestGroupId: @id)[0] or
-    @recordStore.polls.find(guestGroupId: @id)[0] or
-    @

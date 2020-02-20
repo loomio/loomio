@@ -7,7 +7,6 @@ class Discussion < ApplicationRecord
   include HasTimeframe
   include HasEvents
   include HasMentions
-  include HasGuestGroup
   include HasDrafts
   include HasImportance
   include MessageChannel
@@ -47,7 +46,7 @@ class Discussion < ApplicationRecord
     [:title, :description]
   end
 
-  belongs_to :group, class_name: 'FormalGroup'
+  belongs_to :group
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
   has_many :polls, dependent: :destroy

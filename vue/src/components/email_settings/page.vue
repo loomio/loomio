@@ -23,7 +23,7 @@ export default
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
-        groups = Session.user().formalGroups()
+        groups = Session.user().groups()
         user = Session.user()
         @groups = sortBy groups, 'fullName'
 

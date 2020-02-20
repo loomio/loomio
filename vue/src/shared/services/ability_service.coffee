@@ -30,7 +30,7 @@ export default new class AbilityService
   canStartPoll: (model) ->
     return unless model
     switch model.constructor.singular
-      when 'discussion' then @canStartPoll(model.group()) || @canStartPoll(model.guestGroup())
+      when 'discussion' then @canStartPoll(model.group())
       when 'group'      then (@canAdministerGroup(model) or Session.user().isMemberOf(model) and model.membersCanRaiseMotions)
 
   canParticipateInPoll: (poll) ->
