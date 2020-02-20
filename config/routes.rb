@@ -373,8 +373,5 @@ Loomio::Application.routes.draw do
     get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
   end
 
-  get '/beta' => 'beta#index'
-  put '/beta' => 'beta#update'
-
   get ":id", to: 'groups#show', as: :group_handle, format: :html
 end
