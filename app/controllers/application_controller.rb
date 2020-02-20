@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include LocalesHelper
-  include AngularHelper
   include ProtectedFromForgery
   include ErrorRescueHelper
   include CurrentUserHelper
@@ -20,7 +19,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :current_version
-  helper_method :client_asset_path
   helper_method :bundle_asset_path
   helper_method :supported_locales
 
@@ -70,12 +68,8 @@ class ApplicationController < ActionController::Base
     if should_redirect_to_browser_upgrade?
       render file: 'public/417.html', status: 417
     else
-      if ENV['TASK'] == 'e2e' or params['old_client']
-        render 'application/index', layout: false
-      else
-        template = File.read(Rails.root.join('public/client/vue/index.html'))
-        render inline: template, layout: false, status: status
-      end
+      template = File.read(Rails.root.join('public/client/vue/index.html'))
+      render inline: template, layout: false, status: status
     end
   end
 
@@ -94,7 +88,6 @@ class ApplicationController < ActionController::Base
   def should_redirect_to_browser_upgrade?
     !params[:skip_browser_upgrade] &&
     !@skip_browser_upgrade &&
-    !request.params['old_client'] &&
     !request.xhr? &&
     (browser.ie? ||
     (browser.chrome?  && browser.version.to_i < 50) ||

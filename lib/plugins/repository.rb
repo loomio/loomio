@@ -18,7 +18,6 @@ module Plugins
         plugin.actions.map(&:call)
         plugin.assets.map        { |asset|  save_asset(asset) }
         plugin.static_assets.map { |asset|  save_static_asset(asset) }
-        plugin.outlets.map       { |outlet| active_outlets[outlet.outlet_name] = active_outlets[outlet.outlet_name] << outlet }
         plugin.routes.map        { |route|  save_route(route) }
         plugin.events.map        { |events| events.call(EventBus) }
         plugin.extensions.map    { |ext|    ext.proc.call(ext.const); reload_callbacks[ext.const.to_s.to_sym].add(ext.proc) }

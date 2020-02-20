@@ -2,7 +2,6 @@ module Boot
   class Site
     include LocalesHelper
     include Routing
-    include AngularHelper
 
     def payload
       @payload ||= {
