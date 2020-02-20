@@ -19,8 +19,7 @@ class Events::ReactionCreated < Event
   def notification_translation_values
     super.merge(
       reaction:     eventable.reaction.downcase,
-      model:        I18n.t(:"notification_models.#{reactable.class.to_s.downcase}"),
-      reaction_src: Emojifier.emojify_src!(eventable.reaction.downcase)
+      model:        I18n.t(:"notification_models.#{reactable.class.to_s.downcase}")
     )
   end
 

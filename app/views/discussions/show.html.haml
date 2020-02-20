@@ -41,7 +41,7 @@
                         Seen by
                         = @discussion.seen_by_count
                 .lmo-markdown-wrapper.body-2.text--primary.context-panel__description
-                  = render_rich_text_fast(@discussion.body, @discussion.body_format)
+                  = render_rich_text(@discussion.body, @discussion.body_format)
               %hr.v-divider.my-4.theme--light{"aria-orientation" => "horizontal", :role => "separator"}
             .activity-panel
               - @discussion.items.order("created_at #{@discussion.newest_first ? 'desc' : 'asc'}").where(kind: ['new_comment', 'poll_created', 'stance_created']).limit(@pagination[:limit]).offset(@pagination[:offset]).each do |item|
