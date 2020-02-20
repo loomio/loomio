@@ -267,7 +267,7 @@ describe Event do
   describe 'invitation_accepted' do
     let(:poll) { create :poll }
     let(:guest_membership) { create :pending_membership, group: poll.guest_group }
-    let(:formal_membership) { create :pending_membership, group: create(:formal_group) }
+    let(:formal_membership) { create :pending_membership, group: create(:group) }
 
     it 'links to a group for a guest group invitation' do
       event = Events::InvitationAccepted.publish!(guest_membership)

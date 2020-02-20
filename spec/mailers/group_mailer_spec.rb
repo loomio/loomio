@@ -3,7 +3,7 @@ require "rails_helper"
 describe GroupMailer do
   describe '#membership_requested' do
     before do
-      @group = create(:formal_group)
+      @group = create(:group)
       @admin = @group.admins.first
       @membership_request = create(:membership_request, group: @group, name: 'bob jones', email: "bobby@jones.org")
       @event = Event.create(kind: 'membership_requested', eventable: @membership_request)

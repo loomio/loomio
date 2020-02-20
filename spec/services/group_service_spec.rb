@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe 'GroupService' do
   let(:user) { create(:user) }
-  let(:group) { build(:formal_group) }
+  let(:group) { build(:group) }
   let(:guest_group) { build(:guest_group) }
-  let(:parent) { create(:formal_group, default_group_cover: create(:default_group_cover))}
-  let(:subgroup) { build(:formal_group, parent: parent) }
+  let(:parent) { create(:group, default_group_cover: create(:default_group_cover))}
+  let(:subgroup) { build(:group, parent: parent) }
 
   describe 'create' do
     it 'creates a new group' do
@@ -43,7 +43,7 @@ describe 'GroupService' do
       end
 
       it "is true for second group" do
-        create(:formal_group).add_admin! user
+        create(:group).add_admin! user
         GroupService.create(group: group, actor: user)
         expect(group.is_referral).to be true
       end

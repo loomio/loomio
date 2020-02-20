@@ -57,7 +57,7 @@ class GroupInviter
     Membership.new(inviter: @inviter,
                    user: user,
                    group: @group,
-                   volume: (2 if @group.is_formal_group?),
+                   volume: 2,
                    experiences: {invited_group_ids: @invited_group_ids}.compact )
   end
 end

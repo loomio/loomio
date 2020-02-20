@@ -242,7 +242,7 @@ class Group < ApplicationRecord
   def target_model
     Discussion.find_by(guest_group_id: id) ||
     Poll.find_by(guest_group_id: id) ||
-    (group if is_formal_group?)
+    group
   end
 
   def groups

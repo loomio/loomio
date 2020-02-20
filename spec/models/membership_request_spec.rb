@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe MembershipRequest do
-  let(:group) { create(:formal_group) }
+  let(:group) { create(:group) }
   let(:membership_request) { build(:membership_request, group: group, requestor: build(:user)) }
   let(:long_introduction) { "h#{'i' * 400}!"}
   let(:responder) { stub_model User }

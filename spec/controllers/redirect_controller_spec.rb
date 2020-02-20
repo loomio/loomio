@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe RedirectController do
-  let(:group) { create(:formal_group, handle: "handle") }
+  let(:group) { create(:group, handle: "handle") }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
 

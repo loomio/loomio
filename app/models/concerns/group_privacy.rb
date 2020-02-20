@@ -31,7 +31,7 @@ module GroupPrivacy
       end
 
       # closed subgroup of hidden parent means parent members can seeee it!
-      if is_formal_group? && is_subgroup_of_hidden_parent?
+      if is_subgroup_of_hidden_parent?
         self.is_visible_to_parent_members = true
         self.is_visible_to_public = false
       end
@@ -48,7 +48,7 @@ module GroupPrivacy
   def group_privacy
     if is_visible_to_public?
       self.public_discussions_only? ? 'open' : 'closed'
-    elsif is_formal_group? && is_subgroup_of_hidden_parent? && is_visible_to_parent_members?
+    elsif is_subgroup_of_hidden_parent? && is_visible_to_parent_members?
       'closed'
     else
       'secret'

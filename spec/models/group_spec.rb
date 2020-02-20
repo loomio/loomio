@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Group do
   let(:user) { create(:user) }
-  let(:group) { create(:formal_group) }
+  let(:group) { create(:group) }
   let(:discussion) { create :discussion, group: group }
 
   context 'default cover photo' do
@@ -61,8 +61,8 @@ describe Group do
 
   context "subgroup" do
     before :each do
-      @group = create(:formal_group)
-      @subgroup = create(:formal_group, :parent => @group)
+      @group = create(:group)
+      @subgroup = create(:group, :parent => @group)
       @group.reload
     end
 
@@ -82,7 +82,7 @@ describe Group do
 
   context "an existing hidden group" do
     before :each do
-      @group = create(:formal_group, is_visible_to_public: false)
+      @group = create(:group, is_visible_to_public: false)
       @user = create(:user)
     end
 
@@ -112,18 +112,18 @@ describe Group do
     context "parent_members_can_see_discussions = true" do
 
       it "errors for a hidden_from_everyone subgroup" do
-        expect { create(:formal_group,
+        expect { create(:group,
                         is_visible_to_public: false,
                         is_visible_to_parent_members: false,
-                        parent: create(:formal_group),
+                        parent: create(:group),
                         parent_members_can_see_discussions: true) }.to raise_error ActiveRecord::RecordInvalid
       end
 
       it "does not error for a visible to parent subgroup" do
-        expect { create(:formal_group,
+        expect { create(:group,
                         is_visible_to_public: false,
                         is_visible_to_parent_members: true,
-                        parent: create(:formal_group),
+                        parent: create(:group),
                         parent_members_can_see_discussions: true) }.to_not raise_error
       end
     end
@@ -162,11 +162,11 @@ describe Group do
   end
 
   describe 'id_and_subgroup_ids' do
-    let(:group) { create(:formal_group) }
-    let(:subgroup) { create(:formal_group, parent: group) }
+    let(:group) { create(:group) }
+    let(:subgroup) { create(:group, parent: group) }
 
     it 'returns empty for new group' do
-      expect(build(:formal_group).id_and_subgroup_ids).to be_empty
+      expect(build(:group).id_and_subgroup_ids).to be_empty
     end
 
     it 'returns the id for groups with no subgroups' do
@@ -181,8 +181,8 @@ describe Group do
   end
 
   describe "org membership count" do
-    let!(:group) { create(:formal_group) }
-    let!(:subgroup) { create(:formal_group, parent: group) }
+    let!(:group) { create(:group) }
+    let!(:subgroup) { create(:group, parent: group) }
     it 'returns total number of memberships in the org' do
       expect(group.memberships.count + subgroup.memberships.count).to eq 3
       expect(group.org_memberships_count).to eq 2
@@ -190,7 +190,7 @@ describe Group do
   end
 
   describe "has_max_members" do
-    let!(:group) { create(:formal_group) }
+    let!(:group) { create(:group) }
     it 'is true when subscription max members is eq to org_memberships_count' do
       Subscription.for(group).update(max_members: group.org_memberships_count)
       expect(group.has_max_members).to eq true

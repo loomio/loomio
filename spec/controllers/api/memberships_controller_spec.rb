@@ -32,7 +32,7 @@ describe API::MembershipsController do
 
   describe 'create' do
     it 'sets the membership volume' do
-      new_group = FactoryBot.create(:formal_group)
+      new_group = FactoryBot.create(:group)
       user.update_attribute(:default_membership_volume, 'quiet')
       membership = Membership.create!(user: user, group: new_group)
       expect(membership.volume).to eq 'quiet'
@@ -123,8 +123,8 @@ describe API::MembershipsController do
   describe 'add_to_subgroup' do
     context 'permitted' do
       let(:parent_member) { FactoryBot.create(:user) }
-      let(:parent_group) { FactoryBot.create(:formal_group) }
-      let(:subgroup) { create(:formal_group, parent: parent_group) }
+      let(:parent_group) { FactoryBot.create(:group) }
+      let(:subgroup) { create(:group, parent: parent_group) }
 
       before do
         parent_group.add_member!(user)
@@ -185,7 +185,7 @@ describe API::MembershipsController do
 
       context 'logged out' do
         before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
-        let(:private_group) { create(:formal_group, is_visible_to_public: false) }
+        let(:private_group) { create(:group, is_visible_to_public: false) }
 
         it 'returns users filtered by group for a public group' do
           group.update(group_privacy: 'open')
@@ -301,7 +301,7 @@ describe API::MembershipsController do
       end
 
       it 'does not return duplicate users' do
-        third_group = create(:formal_group)
+        third_group = create(:group)
         third_group.add_member! user
         third_group.add_member! user_named_biff
         another_group.add_member! user_named_biff

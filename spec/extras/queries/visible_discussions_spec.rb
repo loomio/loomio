@@ -11,7 +11,7 @@ describe Queries::VisibleDiscussions do
   end
 
   describe 'sorted_by_importance' do
-    let(:group) { create(:formal_group, is_visible_to_public: true) }
+    let(:group) { create(:group, is_visible_to_public: true) }
     let!(:no_importance) { create :discussion, private: false, group: group }
     let!(:has_decision)  { create :discussion, private: false, group: group, polls: [create(:poll)] }
     let!(:pinned)        { create :discussion, private: false, group: group, pinned: true }
@@ -37,9 +37,9 @@ describe Queries::VisibleDiscussions do
 
   describe 'logged out' do
     let(:logged_out_user) { LoggedOutUser.new }
-    let!(:public_discussion) { create(:discussion, private: false, group: create(:formal_group, is_visible_to_public: true)) }
-    let!(:another_public_discussion) { create(:discussion, private: false, group: create(:formal_group, is_visible_to_public: true)) }
-    let!(:private_discussion) { create(:discussion, group: create(:formal_group, is_visible_to_public: false)) }
+    let!(:public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
+    let!(:another_public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
+    let!(:private_discussion) { create(:discussion, group: create(:group, is_visible_to_public: false)) }
 
     it 'shows groups visible to public if no groups are specified' do
       query = Queries::VisibleDiscussions.new(user: logged_out_user)

@@ -383,7 +383,7 @@ nb_NO:
   announcement:
     audiences:
       parent_group: Medlemmer av {{name}}
-      formal_group: Medlemmer av {{name}}
+      group: Medlemmer av {{name}}
       discussion_group: Medlemmer i tråden
       voters: Folk som har stemt
       non_voters: Folk som ikke har stemt

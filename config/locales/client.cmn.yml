@@ -476,7 +476,7 @@ cmn:
     inviting_guests_to_thread: 不是 {{group}} 成员的伙伴将会被以访客的身份新增到此话题，但不会取得对群组中其他话题的访问权。
     audiences:
       parent_group: '{{name}} 的成员'
-      formal_group: '{{name}} 的成员'
+      group: '{{name}} 的成员'
       discussion_group: 话题的成员
       voters: 已经投票的伙伴
       non_voters: 尚未投票的伙伴

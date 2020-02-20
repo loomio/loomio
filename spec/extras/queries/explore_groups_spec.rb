@@ -36,7 +36,7 @@ describe Queries::ExploreGroups do
     end
 
     it 'only shows parent groups' do
-      subgroup = FactoryBot.create(:formal_group, parent: group)
+      subgroup = FactoryBot.create(:group, parent: group)
       subgroup.update_attribute(:is_visible_to_public, true)
       subgroup.update_attribute(:memberships_count, 5)
       subgroup.update_attribute(:discussions_count, 3)

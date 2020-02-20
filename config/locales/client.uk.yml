@@ -546,7 +546,7 @@ uk:
     inviting_guests_to_thread: Люди, які не є учасниками {{group}}, будуть додані до цієї теми як гості та не будуть мати доступ до інших тем групи.
     audiences:
       parent_group: Учасник {{name}}
-      formal_group: Учасник {{name}}
+      group: Учасник {{name}}
       discussion_group: Учасники теми
       voters: Люди, які проголосували
       non_voters: Люди, які не проголосували

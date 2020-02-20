@@ -546,7 +546,7 @@ fr:
     inviting_guests_to_thread: Les personnes n'étant pas membres de {{group}} seront ajoutés en tant qu'invités et n'auront pas accès aux autres discussions du groupe
     audiences:
       parent_group: Membres de {{name}}
-      formal_group: Membres de {{name}}
+      group: Membres de {{name}}
       discussion_group: Membres de la discussion
       voters: Personnes qui ont voté
       non_voters: Personnes qui n'ont pas voté

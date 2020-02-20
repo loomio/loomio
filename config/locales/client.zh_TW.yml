@@ -551,7 +551,7 @@ zh_TW:
     inviting_guests_to_thread: 不是 {{group}} 成員的夥伴將會被以訪客的身份新增到此討論串，但不會取得對群組中其他討論串的存取權。
     audiences:
       parent_group: '{{name}} 的成員'
-      formal_group: '{{name}} 的成員'
+      group: '{{name}} 的成員'
       discussion_group: 討論串的成員
       voters: 已經投票的夥伴
       non_voters: 尚未投票的夥伴

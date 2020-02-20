@@ -476,7 +476,7 @@ es:
   announcement:
     audiences:
       parent_group: Integrantes de {{name}}
-      formal_group: 'Integrantes de {{name}} '
+      group: 'Integrantes de {{name}} '
       discussion_group: Integrantes del hilo
       voters: Gente que ha votado
       non_voters: Gente que no ha votado

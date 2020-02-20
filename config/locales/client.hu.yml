@@ -510,7 +510,7 @@ hu:
     history_error: Valami elromlott! Nem tudtuk betölteni az előzményeket.
     audiences:
       parent_group: A(z) {{name}} tagjai
-      formal_group: A(z) {{name}} tagjai
+      group: A(z) {{name}} tagjai
       discussion_group: A téma tagjai
       voters: Emberek, akik szavaztak
       non_voters: Emberek, akik nem szavaztak

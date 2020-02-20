@@ -2,7 +2,7 @@ require 'rails_helper'
 describe 'CommentService' do
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create(:formal_group) }
+  let(:group) { create(:group) }
   let(:discussion) { create :discussion, group: group, author: user }
   let(:comment) { create :comment, discussion: discussion, author: user }
   let(:reaction) { create :reaction, reactable: comment, user: user }

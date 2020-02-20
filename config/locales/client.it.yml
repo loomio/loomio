@@ -461,7 +461,7 @@ it:
   announcement:
     audiences:
       parent_group: Membri di {{name}}
-      formal_group: Membri di {{name}}
+      group: Membri di {{name}}
       discussion_group: Membri della discussione
       voters: Persone che hanno votato
       non_voters: Persone che non hanno votato

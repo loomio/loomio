@@ -5,7 +5,7 @@ describe API::TagsController, type: :controller do
   let(:user) { create :user }
   let(:group) { create :group }
   let!(:tag) { create :tag, name: "test", color: "#ffffff", group: group }
-  let!(:another_tag) { create :tag, name: "anothertag", color: "#654321", group: create(:formal_group, is_visible_to_public: false) }
+  let!(:another_tag) { create :tag, name: "anothertag", color: "#654321", group: create(:group, is_visible_to_public: false) }
 
   describe 'update_model' do
     before { sign_in user }

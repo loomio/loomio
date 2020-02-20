@@ -59,7 +59,7 @@ describe API::SearchController do
     end
 
     it "does not display content the user does not have access to" do
-      DiscussionService.update discussion: discussion, params: { group: create(:formal_group) }, actor: user
+      DiscussionService.update discussion: discussion, params: { group: create(:group) }, actor: user
       search_for('find')
 
       expect(@result_keys).to_not include discussion.key

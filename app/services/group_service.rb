@@ -6,7 +6,7 @@ module GroupService
 
     group.is_referral = actor.groups.size > 0
 
-    if group.is_formal_group? && group.is_parent?
+    if group.is_parent?
       group.default_group_cover = DefaultGroupCover.sample
       group.creator             = actor if actor.is_logged_in?
       ExampleContent.new(group).add_to_group! if AppConfig.app_features[:example_content]

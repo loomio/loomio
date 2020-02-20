@@ -434,7 +434,7 @@ he:
   announcement:
     audiences:
       parent_group: משתתפי ה{{name}}
-      formal_group: משתתפי ה{{name}}
+      group: משתתפי ה{{name}}
       discussion_group: חברי השיחה
       voters: אנשים שהצביעו
       non_voters: אנשים שלא הצביעו

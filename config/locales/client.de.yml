@@ -522,7 +522,7 @@ de:
     inviting_guests_to_thread: 'Personen die keine Mitglieder von {{group}} sind werden zu dieser Diskussion als Gäste eingeladen, aber kein Zugang zu anderen Diskussionen erhalten. '
     audiences:
       parent_group: Mitglieder von {{name}}
-      formal_group: Mitglieder von {{name}}
+      group: Mitglieder von {{name}}
       discussion_group: Diskussionsteilnehmer
       voters: Personen die abgestimmt haben
       non_voters: Personen die noch nicht abgestimmt haben

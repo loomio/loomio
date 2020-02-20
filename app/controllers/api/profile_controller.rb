@@ -5,14 +5,14 @@ class API::ProfileController < API::RestfulController
   end
 
   def groups
-    ids = current_user.formal_groups.pluck(:id)
+    ids = current_user.groups.pluck(:id)
     self.collection = Group.published.where(id: ids).or(Group.published.where('parent_id in (:ids)', ids: ids).where('is_visible_to_parent_members = true or is_visible_to_public = true'))
     respond_with_collection serializer: Full::GroupSerializer, root: :groups
   end
 
   def time_zones
     time_zones = User.where('time_zone is not null').joins(:memberships).
-                      where('memberships.group_id': current_user.formal_group_ids).
+                      where('memberships.group_id': current_user.group_ids).
                       group(:time_zone).count.sort_by {|k,v| -v }
     render json: time_zones, root: false
   end

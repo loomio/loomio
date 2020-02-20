@@ -78,7 +78,7 @@ describe API::GroupsController do
 
     context 'logged out' do
       before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
-      let(:private_group) { create(:formal_group, is_visible_to_public: false) }
+      let(:private_group) { create(:group, is_visible_to_public: false) }
 
       it 'returns public groups if the user is logged out' do
         get :show, params: { id: group.key }, format: :json
@@ -144,7 +144,7 @@ describe API::GroupsController do
       group.update_attribute(:discussions_count, 3)
       group.subscription = Subscription.create(plan: 'trial', state: 'active')
       group.save
-      second_explore_group = create(:formal_group, name: 'inspection group')
+      second_explore_group = create(:group, name: 'inspection group')
       second_explore_group.update_attribute(:memberships_count, 5)
       second_explore_group.update_attribute(:discussions_count, 3)
       second_explore_group.subscription = Subscription.create(plan: 'trial', state: 'active')

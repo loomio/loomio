@@ -153,7 +153,7 @@ describe API::StancesController do
       let(:user) { create(:user) }
 
       before do
-        group = create(:formal_group, members_can_vote: false)
+        group = create(:group, members_can_vote: false)
         poll.update(group: group, discussion: create(:discussion, group: group))
         sign_in user
       end
@@ -198,7 +198,7 @@ describe API::StancesController do
     describe 'poll.group.members_can_vote true' do
       let(:user) { create(:user) }
       before do
-        group = create(:formal_group, members_can_vote: true)
+        group = create(:group, members_can_vote: true)
         poll.update(group: group, discussion: create(:discussion, group: group))
         sign_in user
       end
