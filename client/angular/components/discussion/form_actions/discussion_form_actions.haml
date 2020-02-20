@@ -1,4 +1,0 @@
-.discussion-form-actions.lmo-md-actions
-  %outlet{name: "before-discussion-submit", model: "discussion"}
-  %md-button.md-primary.md-raised.discussion-form__submit{ng-click: "submit()", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "common.action.start", ng-if: "discussion.isNew()" }
-  %md-button.md-primary.md-raised.discussion-form__submit{ng-click: "submit()", ng-disabled: "submitIsDisabled", translate: "common.action.save", ng-if: "!discussion.isNew()" }
