@@ -110,6 +110,8 @@ Loomio::Application.routes.draw do
         get  :me
         get  :groups
         get  :email_status
+        get  :email_exists
+        get  :send_merge_verification_email
         post :update_profile
         post :set_volume
         post :upload_avatar
@@ -322,6 +324,8 @@ Loomio::Application.routes.draw do
   get '/g/:key/membership_requests/new'    => redirect('410.html')
   get '/comments/:id'                      => redirect('410.html')
 
+  get '/merge_users/confirm' => 'merge_users#confirm'
+  post '/merge_users/merge' => 'merge_users#merge'
 
   # for IE / other browsers which insist on requesting things which don't exist
   get '/favicon.ico'                       => 'application#ok'

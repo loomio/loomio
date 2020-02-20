@@ -75,6 +75,15 @@ class API::ProfileController < API::RestfulController
     respond_with_resource(serializer: Pending::UserSerializer)
   end
 
+  def email_exists
+    render json: {email: params[:email], exists: User.where(email: params[:email]).any?}
+  end
+
+  def send_merge_verification_email
+    MergeUsersService.send_merge_verification_email(actor: current_user, target_email: params[:target_email])
+    render json: { success: :ok }
+  end
+
   private
   def current_user
     restricted_user || super

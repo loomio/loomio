@@ -1,10 +1,11 @@
-%h3= t('poll_mailer.common.results')
-%table{style: "width: 100%"}
-  - poll.ordered_poll_options.each_with_index do |poll_option, index|
-    %tr
-      %td #{poll.stance_counts[index]} - #{poll_option.display_name(zone: time_zone(recipient, poll))}
-    %tr
-      %td
-        %table{style: "width: #{percentage_for(poll, index)}%"}
-          %tr
-            %td{height: '48px', style: "background-color: #{AppConfig.colors.dig(poll.poll_type, index)}"}
+%div.poll-mailer-common-bar-chart
+  %h3= t('poll_mailer.common.results')
+  %table{style: "width: 100%"}
+    - poll.ordered_poll_options.each_with_index do |poll_option, index|
+      %tr
+        %td #{poll.stance_counts[index]} - #{poll_option.display_name(zone: time_zone(recipient, poll))}
+      %tr
+        %td
+          %table{style: "width: #{percentage_for(poll, index)}%"}
+            %tr
+              %td{height: '48px', style: "background-color: #{AppConfig.colors.dig(poll.poll_type, index)}"}

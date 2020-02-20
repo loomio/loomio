@@ -1,0 +1,8 @@
+.invite-people-mailer
+  .invite-people-mailer__container
+    .mailer__header
+      .mailer__header-logo
+        = image_tag AppConfig.theme[:email_header_logo_src], alt: "Logo", class: "mailer__header-logo-image"
+    .invite-people-mailer__body
+      %p= t :'user_mailer.merge_verification.body_html', name: @target_user.name, target_email: @target_user.email, source_email: @source_user.email
+      %p= link_to t(:"user_mailer.merge_verification.verify"), merge_users_confirm_path(:source_id => @source_user.id, :target_id => @target_user.id, :hash => @hash), class: "base-mailer__button base-mailer__button--accent"

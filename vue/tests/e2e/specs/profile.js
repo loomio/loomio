@@ -126,6 +126,25 @@ module.exports = {
     page.click('.user-page__delete_user')
     page.click('.confirm-modal__submit')
     page.expectText('.auth-modal', 'Sign into Loomio', 12000)
+  },
+
+  'merges_accounts': (test) => {
+    page = pageHelper(test)
+    page.loadPath('setup_group')
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
+    page.click('.user-dropdown__list-item-button--profile')
+    page.clear('.profile-page__email-input input')
+    page.fillIn('.profile-page__email-input input', 'jennifer_grey@example.com')
+    page.expectElement('.profile-page__email-taken')
+    page.click('.email-taken-find-out-more')
+    page.click('.confirm-modal__submit')
+    page.expectFlash('Verification email sent!')
+    page.loadLastEmail()
+    page.click('.base-mailer__button')
+    page.pause()
+    page.click('.btn--accent--raised')
+    page.expectText('.header', "Merge successful!")
   }
 
 }
