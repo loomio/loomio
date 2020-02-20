@@ -4,7 +4,7 @@ describe Identities::SlackController do
   let(:user) { create :user }
 
   describe 'authorized' do
-    let!(:group) { create :formal_group }
+    let!(:group) { create :group }
     let(:group_identity) { create :group_identity, group: group, identity: identity, slack_channel_id: "C123" }
     let(:identity) { create :slack_identity, user: nil }
 
@@ -44,7 +44,7 @@ describe Identities::SlackController do
   # end
 
   describe 'participate' do
-    let(:group) { create :formal_group }
+    let(:group) { create :group }
     let(:discussion) { create :discussion, group: group }
     let(:poll) { create :poll_proposal, discussion: discussion }
     let(:identity) { create :slack_identity, user: user, uid: "U123" }
@@ -168,7 +168,7 @@ describe Identities::SlackController do
       team_id: identity.slack_team_id,
       team_domain: "example"
     } }
-    let(:group) { create :formal_group }
+    let(:group) { create :group }
     let(:identity) { create :slack_identity, custom_fields: { slack_team_id: "T123" } }
     let(:group_identity) { create(:group_identity, group: group, identity: identity, custom_fields: {
       slack_channel_id: "C123",

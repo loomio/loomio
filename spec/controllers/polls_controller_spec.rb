@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe PollsController do
   let(:user) { create :user }
-  let(:group) { create :formal_group, is_visible_to_public: true }
+  let(:group) { create :group, is_visible_to_public: true }
   let(:discussion) { create :discussion, private: false, group: group }
   let(:poll) { create :poll, group: group, author: user }
   let(:user) { create :user }

@@ -76,7 +76,7 @@ describe UserMailer do
     let(:discussion) { build :discussion, group: group }
     let(:poll) { build :poll, discussion: discussion }
     let(:comment) { build :comment, discussion: discussion }
-    let(:group) { create :formal_group }
+    let(:group) { create :group }
     before { group.add_member! user }
 
     let(:some_content) do

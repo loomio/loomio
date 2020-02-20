@@ -15,7 +15,7 @@ module Dev::Scenarios::Legacy
   end
 
   def setup_group_invitation_ignored
-    group  = FactoryBot.create :formal_group
+    group  = FactoryBot.create :group
     event = AnnouncementService.create(model: group, actor: group.creator, params: { kind: 'group_announced', recipients: {emails: ['hello@example.com']}})
     ActionMailer::Base.deliveries.clear
     AnnouncementService.resend_pending_memberships(since: 1.hour.ago, till: 1.hour.from_now)

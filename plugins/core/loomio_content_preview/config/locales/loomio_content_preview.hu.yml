@@ -1,7 +1,0 @@
-hu:
-  loomio_content_preview:
-    preview_pane:
-      no_content: Nincs előzetes megtekinthető tartalom
-      helptext: Megjegyzésed így fog megjelenni a tevékenységi listában.
-    preview_button:
-      preview: Előnézet

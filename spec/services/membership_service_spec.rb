@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe MembershipService do
-  let(:group) { create :formal_group, discussion_privacy_options: :public_only, is_visible_to_public: true, membership_granted_upon: :request }
+  let(:group) { create :group, discussion_privacy_options: :public_only, is_visible_to_public: true, membership_granted_upon: :request }
   let(:user)  { create :user }
   let(:admin) { create :user }
   let(:unverified_user) { create :user, email_verified: false }
@@ -10,7 +10,7 @@ describe MembershipService do
   before { group.add_admin! admin }
 
   describe 'destroy' do
-    let!(:subgroup) { create :formal_group, parent: group }
+    let!(:subgroup) { create :group, parent: group }
     let!(:subgroup_discussion) { create :discussion, group: subgroup, private: false }
     let!(:discussion) { create :discussion, group: group, private: false }
     let!(:poll) { create :poll, group: group }
@@ -31,7 +31,7 @@ describe MembershipService do
   end
 
   describe 'redeem' do
-    let!(:another_subgroup) { create :formal_group, parent: group }
+    let!(:another_subgroup) { create :group, parent: group }
     before do
       MembershipService.redeem(membership: membership, actor: user)
     end
@@ -48,7 +48,7 @@ describe MembershipService do
 
 
   describe 'with multiple group ids' do
-    let!(:subgroup) { create :formal_group, parent: group }
+    let!(:subgroup) { create :group, parent: group }
     let(:membership) { create :membership, group: group, inviter: admin, user: user, experiences: { invited_group_ids: [subgroup.id] }  }
 
     before do
@@ -63,7 +63,7 @@ describe MembershipService do
   end
 
   describe 'with alien group' do
-    let!(:alien_group) { create :formal_group }
+    let!(:alien_group) { create :group }
     let(:membership) { create :membership, group: group, inviter: admin, user: user, experiences: { invited_group_ids: [alien_group.id] }  }
 
     before do

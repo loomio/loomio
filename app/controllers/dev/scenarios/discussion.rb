@@ -13,7 +13,7 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_as_guest
-    group      = FactoryBot.create :formal_group, group_privacy: 'secret'
+    group      = FactoryBot.create :group, group_privacy: 'secret'
     discussion = FactoryBot.build :discussion, group: group, title: "Dirty Dancing Shoes"
     DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
     discussion.create_guest_group
@@ -90,7 +90,7 @@ module Dev::Scenarios::Discussion
 
   def setup_discussion_mailer_discussion_announced_email
     sign_in jennifer
-    @group = FactoryBot.create(:formal_group, name: "Girdy Dancing Shoes", creator: patrick)
+    @group = FactoryBot.create(:group, name: "Girdy Dancing Shoes", creator: patrick)
     @group.add_admin! patrick
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
@@ -99,7 +99,7 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_mailer_invitation_created_email
-    group = FactoryBot.create(:formal_group, name: "Dirty Dancing Shoes", creator: patrick)
+    group = FactoryBot.create(:group, name: "Dirty Dancing Shoes", creator: patrick)
     group.add_admin! patrick
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)

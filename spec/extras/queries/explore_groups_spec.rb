@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Queries::ExploreGroups do
-  let(:group)              { create :formal_group }
-  let(:second_group)       { create :formal_group }
-  let(:archived_group)     { create :formal_group, archived_at: 1.day.ago }
+  let(:group)              { create :group }
+  let(:second_group)       { create :group }
+  let(:archived_group)     { create :group, archived_at: 1.day.ago }
 
   before do
     group.update_attribute(:is_visible_to_public, true)

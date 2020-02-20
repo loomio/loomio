@@ -3,7 +3,7 @@ require 'rails_helper'
 describe API::TagsController, type: :controller do
 
   let(:user) { create :user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let!(:tag) { create :tag, name: "test", color: "#ffffff", group: group }
   let!(:another_tag) { create :tag, name: "anothertag", color: "#654321", group: create(:formal_group, is_visible_to_public: false) }
 

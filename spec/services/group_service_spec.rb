@@ -51,8 +51,8 @@ describe 'GroupService' do
   end
 
   describe' move' do
-    let(:group) { create :formal_group, subscription_id: 100 }
-    let(:parent) { create :formal_group }
+    let(:group) { create :group, subscription_id: 100 }
+    let(:parent) { create :group }
     let(:admin) { create :user, is_admin: true }
     let(:user) { create :user }
 
@@ -69,13 +69,13 @@ describe 'GroupService' do
   end
 
   describe 'merge' do
-    let!(:source) { create :formal_group }
-    let!(:target) { create :formal_group }
+    let!(:source) { create :group }
+    let!(:target) { create :group }
     let!(:user) { create :user, is_admin: true }
     let!(:shared_user) { create :user }
     let!(:source_user) { create :user }
     let!(:target_user) { create :user }
-    let!(:source_subgroup) { create :formal_group, parent: source }
+    let!(:source_subgroup) { create :group, parent: source }
     let!(:source_discussion) { create :discussion, group: source }
     let!(:source_comment) { create :comment, discussion: source_discussion }
     let!(:source_poll) { create :poll, group: source }

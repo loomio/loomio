@@ -2,9 +2,9 @@ require 'rails_helper'
 describe API::GroupsController do
 
   let(:user) { create :user }
-  let(:group) { create :formal_group, creator: user }
+  let(:group) { create :group, creator: user }
   let(:guest_group) { create :guest_group, creator: user }
-  let(:subgroup) { create :formal_group, parent: group }
+  let(:subgroup) { create :group, parent: group }
   let(:discussion) { create :discussion, group: group }
   let(:another_group) { create :guest_group }
 
@@ -32,7 +32,7 @@ describe API::GroupsController do
     end
 
     it 'ensures suggestions are not already taken' do
-      create :formal_group, handle: 'test-case'
+      create :group, handle: 'test-case'
       get :suggest_handle, params: {name: "test case"}
       json = JSON.parse(response.body)
       expect(json['handle']).to eq 'test-case-1'

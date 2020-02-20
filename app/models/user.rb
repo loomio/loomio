@@ -129,7 +129,7 @@ class User < ApplicationRecord
   has_many :documents, foreign_key: :author_id, dependent: :destroy
   has_many :drafts, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
-  has_many :tags, through: :formal_groups
+  has_many :tags, through: :groups
 
 
   has_one :deactivation_response,

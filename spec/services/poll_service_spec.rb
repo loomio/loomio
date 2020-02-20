@@ -7,8 +7,8 @@ describe PollService do
   let(:poll) { create :poll, discussion: discussion }
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create :formal_group }
-  let(:another_group) { create :formal_group }
+  let(:group) { create :group }
+  let(:another_group) { create :group }
 
   let(:discussion) { create :discussion, group: group }
   let(:stance) { create :stance, poll: poll_created, choice: poll_created.poll_options.first.name }

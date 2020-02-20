@@ -9,26 +9,26 @@ describe Group do
 
     it 'returns an uploaded cover url if one exists' do
       cover_photo_stub = OpenStruct.new(url: 'test.jpg')
-      group = create :formal_group, default_group_cover: create(:default_group_cover)
+      group = create :group, default_group_cover: create(:default_group_cover)
       group.stub(:cover_photo).and_return(cover_photo_stub)
       expect(cover_photo_stub.url).to match group.cover_photo.url
     end
 
     it 'returns the default cover photo for the group if it is a parent group' do
-      group = create :formal_group, default_group_cover: create(:default_group_cover)
+      group = create :group, default_group_cover: create(:default_group_cover)
       expect(group.default_group_cover.cover_photo.url).to match group.cover_photo.url
     end
 
     it 'returns the parents default cover photo if it is a subgroup' do
-      parent = create :formal_group, default_group_cover: create(:default_group_cover)
-      group = create :formal_group, parent: parent
+      parent = create :group, default_group_cover: create(:default_group_cover)
+      group = create :group, parent: parent
       expect(parent.default_group_cover.cover_photo.url).to match group.cover_photo.url
     end
   end
 
   context "memberships" do
     it "deletes memberships assoicated with it" do
-      group = create :formal_group
+      group = create :group
       membership = group.add_member! create :user
       group.destroy
       expect { membership.reload }.to raise_error ActiveRecord::RecordNotFound
@@ -42,19 +42,19 @@ describe Group do
 
   context 'logo_or_parent_logo' do
     it 'returns the group logo if it is a parent' do
-      group = create :formal_group
+      group = create :group
       expect(group.logo_or_parent_logo).to eq group.logo
     end
 
     it 'returns the parents logo if one does not exist' do
-      parent = create :formal_group, logo: fixture_for('images/strongbad.png')
-      group = create :formal_group, parent: parent
+      parent = create :group, logo: fixture_for('images/strongbad.png')
+      group = create :group, parent: parent
       expect(group.logo_or_parent_logo).to eq parent.logo
     end
 
     it 'returns the group logo if one exists' do
-      parent = create :formal_group
-      group = create :formal_group, parent: parent, logo: fixture_for('images/strongbad.png')
+      parent = create :group
+      group = create :group, parent: parent, logo: fixture_for('images/strongbad.png')
       expect(group.logo_or_parent_logo).to eq group.logo
     end
   end

@@ -25,7 +25,6 @@ module Plugins
         plugin.extensions.clear
         plugin.installed = true
       end
-      save_plugin_yaml
     end
 
     def self.translations_for(locale = I18n.locale)
@@ -78,11 +77,6 @@ module Plugins
       @@plugin_yaml ||= { 'path' => '..' }
     end
     private_class_method :plugin_yaml
-
-    def self.save_plugin_yaml
-      File.open([Rails.root, :client, :tasks, :config, :"plugins.yml"].join('/'), 'w') { |f| f.write plugin_yaml.to_yaml }
-    end
-    private_class_method :save_plugin_yaml
 
     def self.reload_callbacks
       @@reload_callbacks ||= Hash.new { |hash, key| hash[key] = Set.new }

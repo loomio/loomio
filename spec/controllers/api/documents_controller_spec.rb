@@ -3,7 +3,7 @@ require 'rails_helper'
 describe API::DocumentsController do
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:public_discussion) { create :discussion, group: group, private: false }
   let(:private_discussion) { create :discussion, group: group, private: true }
 

@@ -38,7 +38,7 @@ describe AnnouncementService do
   end
 
   describe 'create' do
-    let!(:group) { create :formal_group }
+    let!(:group) { create :group }
     let!(:discussion) { create :discussion, group: group }
     let!(:poll) { create :poll, discussion: discussion }
     let!(:user) { create :user }

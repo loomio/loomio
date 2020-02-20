@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe EventService do
   let(:user) { create :user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:discussion) { build :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
   let(:comment1) { create(:comment, discussion: discussion, user: user) }

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe GroupIdentityService do
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:group_identity) { build :group_identity, group: group, identity: identity, slack_channel_name: "channel", slack_channel_id: "123" }
   let(:user) { create :user }
   let(:another_user) { create :user }

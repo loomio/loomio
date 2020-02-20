@@ -8,7 +8,7 @@ describe API::StancesController do
   let(:poll_option) { create :poll_option, poll: poll }
   let(:old_stance) { create :stance, poll: poll, participant: user, poll_options: [poll_option] }
   let(:discussion) { create :discussion, group: group }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:stance_params) {{
     poll_id: poll.id,
     stance_choices_attributes: [{poll_option_id: poll_option.id}],

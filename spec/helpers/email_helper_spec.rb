@@ -19,8 +19,8 @@ describe EmailHelper do
   end
 
   describe 'polymorphic_url' do
-    let(:group) { create :formal_group, handle: nil }
-    let(:group_handle) { create :formal_group }
+    let(:group) { create :group, handle: nil }
+    let(:group_handle) { create :group }
     let(:discussion) { create :discussion }
     let(:comment) { create :comment }
     let(:utm_hash) { { utm_medium: "wark" }}

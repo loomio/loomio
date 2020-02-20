@@ -2,7 +2,7 @@ require 'rails_helper'
 describe API::SearchController do
 
   let(:user)    { create :user }
-  let(:group)   { create :formal_group }
+  let(:group)   { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:comment) { create :comment, discussion: discussion }
 

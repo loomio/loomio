@@ -2,7 +2,7 @@ require 'rails_helper'
 describe API::ProfileController do
 
   let(:user) { create :user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:another_user) { create :user }
   let(:user_params) { { name: "new name", email: "new@email.com" } }
 
@@ -183,9 +183,9 @@ describe API::ProfileController do
 
   describe "mentionable" do
     let(:user)  { create :user }
-    let(:group) { create :formal_group }
-    let(:subgroup) { create :formal_group, parent: group}
-    let(:completely_unrelated_group) { create :formal_group }
+    let(:group) { create :group }
+    let(:subgroup) { create :group, parent: group}
+    let(:completely_unrelated_group) { create :group }
     let!(:jgroupmember) { create :user, name: 'rspecjgroupmember', username: 'rspecqueenie' }
     let!(:jalien)  { create :user, name: 'rspecjalien', username: 'rspecqueenbee' }
     let!(:esubgroupmember)   { create :user, name: 'rspecesubgroupmember', username: 'rspeccoolguy' }

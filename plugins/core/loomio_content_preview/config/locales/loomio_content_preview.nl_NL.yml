@@ -1,7 +1,0 @@
-nl_NL:
-  loomio_content_preview:
-    preview_pane:
-      no_content: Geen inhoud om weer te geven
-      helptext: Je commentaar zal op deze manier weergegeven worden in het activiteitenoverzicht.
-    preview_button:
-      preview: Voorbeeld

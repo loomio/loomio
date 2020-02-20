@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Queries::VisibleDiscussions do
   let(:user) { create :user }
-  let(:group) { create :formal_group, discussion_privacy_options: 'public_or_private' }
+  let(:group) { create :group, discussion_privacy_options: 'public_or_private' }
   let(:author) { create :user }
   let(:discussion) { create :discussion, group: group, author: author, private: true }
 
@@ -145,8 +145,8 @@ describe Queries::VisibleDiscussions do
     end
 
     context 'parent_members_can_see_discussions' do
-      let(:parent_group) { create :formal_group, group_privacy: 'secret'}
-      let(:group) { create :formal_group,
+      let(:parent_group) { create :group, group_privacy: 'secret'}
+      let(:group) { create :group,
                            parent: parent_group,
                            parent_members_can_see_discussions: true,
                            is_visible_to_public: false,
@@ -168,8 +168,8 @@ describe Queries::VisibleDiscussions do
     end
 
     context 'only members can see discussions' do
-      let(:parent_group) { create :formal_group }
-      let(:group) { create :formal_group,
+      let(:parent_group) { create :group }
+      let(:group) { create :group,
                            parent: parent_group,
                            parent_members_can_see_discussions: false,
                            is_visible_to_parent_members: true }

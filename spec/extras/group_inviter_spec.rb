@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe GroupInviter do
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:invitee) { create :user }

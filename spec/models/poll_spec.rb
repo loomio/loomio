@@ -148,7 +148,7 @@ describe Poll do
   end
 
   describe 'undecided' do
-    let!(:group) { create :formal_group }
+    let!(:group) { create :group }
     let!(:poll) { create :poll, group: group, discussion: discussion }
     let!(:discussion) { create :discussion, group: group }
     let!(:user) { create :user }
