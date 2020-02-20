@@ -33,6 +33,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_non_member')
+    page.expectElement('.thread-previews')
     page.click('.thread-preview__link')
     page.expectElement('.time-ago')
   },
@@ -49,7 +50,7 @@ module.exports = {
     page.click('.discussions-panel__filters-open')
     page.click('.thread-preview')
     page.click('.action-menu')
-    page.click('.context-panel-dropdown__option--close_thread')
+    page.click('.action-dock__button--close_thread')
     page.expectFlash('Thread closed')
 
     page.pause(500)
@@ -119,7 +120,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.click('.action-menu')
-    page.click('.context-panel-dropdown__option--delete_thread')
+    page.click('.action-dock__button--delete_thread')
     page.click('.confirm-modal__submit')
 
     page.expectFlash('Thread deleted')
@@ -164,16 +165,16 @@ module.exports = {
     page.expectText('.new-comment', 'hi this is my comment')
   },
 
-  'can_add_emojis': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Here is a heart!')
-    page.click('.comment-form .emoji-picker__toggle')
-    page.click('.emoji-picker__emojis span[title="heart"]')
-    page.click('.comment-form__submit-button')
-    page.expectText('.new-comment .thread-item__body','Here is a heart!❤️')
-  },
+  // 'can_add_emojis': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Here is a heart!')
+  //   page.click('.comment-form .emoji-picker__toggle')
+  //   page.click('.emoji-picker__emojis img[alt="heart"]')
+  //   page.click('.comment-form__submit-button')
+  //   page.expectText('.new-comment .thread-item__body','Here is a heart!❤️')
+  // },
 
   'replies_to_a_comment': (test) => {
     page = pageHelper(test)
@@ -181,8 +182,9 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right heerrr')
     page.click('.comment-form__submit-button')
+    page.expectFlash('Comment added')
     page.click('.thread-item .action-menu')
-    page.click('.context-panel-dropdown__option--reply_to_comment')
+    page.click('.action-dock__button--reply_to_comment')
 
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'hi this is my comment')
     page.click('.comment-form__submit-button')
@@ -196,7 +198,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.expectNoElement('.reaction')
     page.click('.emoji-picker__toggle')
-    page.click('.emoji-picker__emojis span[title="heart"]')
+    page.click('.emoji-picker__emojis img[alt="heart"]')
     page.expectElement('.reactions-display')
   },
 
@@ -233,6 +235,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right hur')
     page.click('.comment-form__submit-button')
+    page.expectFlash('Comment added')
     page.click('.action-dock__button--edit_comment')
     page.fillIn('.edit-comment-form .lmo-textarea div[contenteditable=true]', 'edited comment right thur')
     page.click('.edit-comment-form .comment-form__submit-button', 1000)
@@ -243,6 +246,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_comment_with_versions')
+    page.expectText('.new-comment', 'What moon sign are you?')
     page.click('.action-dock__button--show_history')
     page.expectText('.revision-history-content del', 'star')
     page.expectText('.revision-history-content ins', 'moon')
@@ -264,7 +268,7 @@ module.exports = {
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'original comment right hur')
     page.click('.comment-form__submit-button')
     page.click('.thread-item .action-menu')
-    page.click('.context-panel-dropdown__option--delete_comment')
+    page.click('.action-dock__button--delete_comment')
     page.click('.confirm-modal__submit')
     page.expectNoText('.activity-panel', 'original comment right thur')
   },

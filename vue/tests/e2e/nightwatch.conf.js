@@ -30,7 +30,7 @@ module.exports = {
       selenium_host: 'localhost',
       desiredCapabilities: {
         browserName: 'chrome',
-        chromeOptions : { args: chromeOptions },
+        chromeOptions : { w3c: false, args: chromeOptions },
         javascriptEnabled: true,
         acceptSslCerts: true
       },
