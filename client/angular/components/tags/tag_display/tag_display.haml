@@ -1,3 +1,0 @@
-.thread-tags.lmo-flex{ng-show: "anyTags()"}
-  %a.lmo-badge{ng-repeat: "dtag in discussionTags() | orderBy: 'tag().name' track by dtag.id", lmo-href-for: "dtag.tag()", style: "color: {{dtag.tag().color}}; border-color: {{dtag.tag().color}};"}
-    %span {{dtag.tag().name}}

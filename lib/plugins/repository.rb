@@ -18,14 +18,12 @@ module Plugins
         plugin.actions.map(&:call)
         plugin.assets.map        { |asset|  save_asset(asset) }
         plugin.static_assets.map { |asset|  save_static_asset(asset) }
-        plugin.outlets.map       { |outlet| active_outlets[outlet.outlet_name] = active_outlets[outlet.outlet_name] << outlet }
         plugin.routes.map        { |route|  save_route(route) }
         plugin.events.map        { |events| events.call(EventBus) }
         plugin.extensions.map    { |ext|    ext.proc.call(ext.const); reload_callbacks[ext.const.to_s.to_sym].add(ext.proc) }
         plugin.extensions.clear
         plugin.installed = true
       end
-      save_plugin_yaml
     end
 
     def self.translations_for(locale = I18n.locale)
@@ -78,11 +76,6 @@ module Plugins
       @@plugin_yaml ||= { 'path' => '..' }
     end
     private_class_method :plugin_yaml
-
-    def self.save_plugin_yaml
-      File.open([Rails.root, :client, :tasks, :config, :"plugins.yml"].join('/'), 'w') { |f| f.write plugin_yaml.to_yaml }
-    end
-    private_class_method :save_plugin_yaml
 
     def self.reload_callbacks
       @@reload_callbacks ||= Hash.new { |hash, key| hash[key] = Set.new }

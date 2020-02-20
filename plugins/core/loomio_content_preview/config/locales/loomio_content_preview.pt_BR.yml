@@ -1,7 +1,0 @@
-pt_BR:
-  loomio_content_preview:
-    preview_pane:
-      no_content: Sem conteúdo para visualização
-      helptext: Seu comentário aparecerá assim no feed de atividades
-    preview_button:
-      preview: Visualização
