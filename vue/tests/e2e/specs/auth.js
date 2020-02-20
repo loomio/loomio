@@ -96,6 +96,7 @@ module.exports = {
     page.click('.auth-signin-form__submit')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
+    page.pause()
     page.expectFlash('Signed in successfully')
   },
 

@@ -14,6 +14,9 @@ module.exports = (test, browser) ->
   loadPathNoApp: (path, opts = {}) ->
     test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
 
+  loadLastEmail: ->
+    test.url "#{base_url}/dev/last_email"
+
   goTo: (path) ->
     test.url "#{base_url}/#{path}"
 
@@ -78,6 +81,15 @@ module.exports = (test, browser) ->
     @waitFor(selector, wait)
     test.clearValue(selector)
     test.setValue(selector, [value, test.Keys.ENTER])
+
+
+  clear: (selector, wait) ->
+    @waitFor(selector, wait)
+    test.getValue(selector, (result) ->
+      chars = result.value.split('')
+      chars.forEach(() => this.setValue(selector, test.Keys.RIGHT_ARROW))
+      chars.forEach(() => this.setValue(selector, test.Keys.BACK_SPACE))
+      )
 
   execute: (script) ->
     test.execute(script)

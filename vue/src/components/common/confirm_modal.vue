@@ -36,5 +36,5 @@ v-card.confirm-modal
   v-card-actions
     v-btn(text v-if="!confirm.forceSubmit" @click="close()" v-t="'common.action.cancel'")
     v-spacer
-    v-btn.confirm-modal__submit(color="primary" @click="submit() || close()" v-t="confirm.text.submit || 'common.action.ok'")
+    v-btn.confirm-modal__submit(color="primary" @click="(confirm.submit && submit()) || close()" v-t="confirm.text.submit || 'common.action.ok'")
 </template>

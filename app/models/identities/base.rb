@@ -16,8 +16,10 @@ class Identities::Base < ApplicationRecord
     after_initialize { self.identity_type = type }
   end
 
-  def create_user!
-    User.new(name: self.name, email: self.email).associate_with_identity(self)
+  def find_or_create_user!
+    User.find_or_create_by(email: self.email) do |user|
+      user.name = self.name
+    end.associate_with_identity(self)
   end
 
   def assign_logo!
