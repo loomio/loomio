@@ -353,14 +353,12 @@ describe Dev::PollsController do
     expect_text('.poll-mailer__vote', "Vote now")
   end
 
-  # // 'ranked_choice_poll_user_mentioned': (test) => {
-  # //   page = pageHelper(test)
-  # //
-  # //   page.loadPathNoApp('test_ranked_choice_poll_user_mentioned_email', { controller: 'polls' })
-  # //   expect_text('.poll-mailer__subject', "mentioned you in")
-  # //   expect_element('.poll-mailer-common-summary')
-  # //   expect_text('.poll-mailer__vote', "Vote now")
-  # // },
+  # it 'test_ranked_choice_poll_user_mentioned_email' do
+  #   get :test_ranked_choice_poll_user_mentioned_email
+  #   expect_text('.poll-mailer__subject', "mentioned you in")
+  #   expect_element('.poll-mailer-common-summary')
+  #   expect_text('.poll-mailer__vote', "Vote now")
+  # end
 
   it 'test_score_poll_user_mentioned_email' do
     get :test_score_poll_user_mentioned_email
