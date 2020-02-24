@@ -24,7 +24,7 @@ module Dev::PollsHelper
     (2..4).to_a.sample.times do
       u = fake_user
       poll.group.add_member!(u) if poll.group
-      fake_stance(poll: poll).create!
+      fake_stance(poll: poll).save
     end
     poll.update_stance_data
   end
