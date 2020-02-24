@@ -2,7 +2,6 @@ var selenium = require('selenium-server-standalone-jar');
 var chromedriver = require('chromedriver');
 
 var chromeOptions = ["window-size=1280,1500"]
-
 if (process.env.RAILS_ENV == 'test') { chromeOptions.push("headless") }
 
 module.exports = {
