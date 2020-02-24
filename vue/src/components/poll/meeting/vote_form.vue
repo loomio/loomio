@@ -36,11 +36,9 @@ export default
   methods:
     submit: ->
       @stance.id = null
-      attrs = compact @stanceChoices.map (choice) ->
-        {poll_option_id: choice.id, score: choice.score} if choice.score > 0
 
-      if some(attrs)
-        @stance.stanceChoicesAttributes = attrs
+      @stance.stanceChoicesAttributes = @stanceChoices.map (choice) ->
+        {poll_option_id: choice.id, score: choice.score}
 
       actionName = if @stance.isNew() then 'created' else 'updated'
       @stance.save()

@@ -114,13 +114,25 @@ module Dev::FakeDataHelper
 
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
-    choices = 1..poll.minimum_stance_choices
+
+    index = 0
+    choice = if poll.minimum_stance_choices > 1
+      poll.poll_options.sample(poll.minimum_stance_choices).map do |option|
+        [option.name, index+=1]
+      end.to_h
+    elsif poll.require_all_choices
+      poll.poll_options.map do |option|
+        [option.name, index+=1]
+      end.to_h
+    else
+      poll.poll_option_names.sample
+    end
 
     Stance.new({
       poll: poll,
       participant: fake_user,
-      reason: Faker::Hacker.say_something_smart,
-      stance_choices_attributes: choices.map { |i| { poll_option_id: poll.poll_option_ids[i] } }
+      reason: [Faker::Hipster.sentence, ""].sample,
+      choice: choice
     }.merge(args))
   end
 

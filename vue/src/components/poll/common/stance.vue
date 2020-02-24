@@ -32,7 +32,7 @@ export default
 
 <template lang="pug">
 .poll-common-stance
-  span.caption(v-if='stance.stanceChoices().length == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
+  span.caption(v-if='stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
   v-layout(v-if="!reasonOnly" wrap align-center)
     poll-common-stance-choice(:stance-choice='choice' v-if='showChoice(choice)' v-for='choice in orderedStanceChoices' :key='choice.id')
   formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
