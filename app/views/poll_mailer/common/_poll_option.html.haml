@@ -14,8 +14,7 @@
     %td= image_tag("poll_mailer/vote-button-#{poll_option.name}.png", alt: "#{poll_option.name} icon", class: class_name)
     %td= t("poll_#{poll.poll_type}_options.#{poll_option.name}")
 - elsif poll.has_score_icons
-  - if stance_choice.present?
-    - icon_name = stance_icon_for(poll, stance_choice)
+  - if stance_choice.present? && icon_name = stance_icon_for(poll, stance_choice)
     %td= image_tag "poll_mailer/vote-icon-#{icon_name}.png", alt: "#{icon_name} icon", class: "poll-mailer-meeting__option-icon"
   - else
     %td= render 'poll_mailer/common/chip', color: poll_option.color

@@ -95,8 +95,7 @@ module Dev::PollsScenarioHelper
     group_member = saved(fake_user)
     scenario[:poll].group.add_member!(voter)
     scenario[:poll].group.add_member!(group_member)
-    choices  =  [{poll_option_id: scenario[:poll].poll_option_ids[0]}]
-    StanceService.create(stance: fake_stance(poll: scenario[:poll], reason: "<p><span class='mention' data-mention-id='#{group_member.username}'>@#{group_member.name}</span> </p>", reason_format: "html", stance_choices_attributes: choices), actor: voter)
+    StanceService.create(stance: fake_stance(poll: scenario[:poll], reason: "<p><span class='mention' data-mention-id='#{group_member.username}'>@#{group_member.name}</span> </p>", reason_format: "html"), actor: voter)
 
     scenario.merge(observer: group_member)
   end
@@ -106,8 +105,7 @@ module Dev::PollsScenarioHelper
     voter    = saved(fake_user)
     scenario[:poll].update(notify_on_participate: true)
     scenario[:poll].group.add_member!(voter)
-    choices  =  [{poll_option_id: scenario[:poll].poll_option_ids[0]}]
-    StanceService.create(stance: fake_stance(poll: scenario[:poll], stance_choices_attributes: choices), actor: voter)
+    StanceService.create(stance: fake_stance(poll: scenario[:poll]), actor: voter)
 
     scenario.merge(observer: scenario[:poll].author, voter: voter)
   end
