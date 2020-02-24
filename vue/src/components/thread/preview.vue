@@ -64,37 +64,42 @@ v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread
 </template>
 
 <style lang="sass">
-.v-list-item__action:last-of-type:not(:only-child), .v-list-item__icon:last-of-type:not(:only-child)
-	margin-left: 0
-.thread-preview__status-icon
-	padding: 4px 8px
-.thread-preview__pin
-	width: 32px
-	font-size: 20px
-	text-align: center
-.thread-preview--unread
-	font-weight: 500
 .thread-preview
-	border-left: 2px solid #fff
+  .v-list-item__avatar
+    overflow: visible
+
+.v-list-item__action:last-of-type:not(:only-child), .v-list-item__icon:last-of-type:not(:only-child)
+  margin-left: 0
+
+.thread-preview__status-icon
+  padding: 4px 8px
+.thread-preview__pin
+  width: 32px
+  font-size: 20px
+  text-align: center
+.thread-preview--unread
+  font-weight: 500
+.thread-preview
+  border-left: 2px solid #fff
 .thread-preview--unread-border
-	border-color: var(--v-primary-base)
+  border-color: var(--v-primary-base)
 .thread-preview__position-icon-container
-	width: 23px
-	height: 23px
-	position: absolute
-	left: 15px
-	top: 43px
-	background-color: white
-	border-radius: 100%
-	box-shadow: 0 2px 1px rgba(0,0,0,.15)
+  width: 23px
+  height: 23px
+  position: absolute
+  left: 15px
+  top: 43px
+  background-color: white
+  border-radius: 100%
+  box-shadow: 0 2px 1px rgba(0,0,0,.15)
 .thread-preview__position-icon
-	background-repeat: no-repeat
-	height: 21px
-	margin: 1px 0 0 1px
-	width: 21px
+  background-repeat: no-repeat
+  height: 21px
+  margin: 1px 0 0 1px
+  width: 21px
 .thread-preview__undecided-icon
-	font-size: 14px
-	line-height: 24px
-	text-align: center
+  font-size: 14px
+  line-height: 24px
+  text-align: center
 
 </style>

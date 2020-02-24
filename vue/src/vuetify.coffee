@@ -5,9 +5,13 @@ Vue.use(Vuetify)
 
 import colors from 'vuetify/lib/util/colors'
 
+useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+
+
 export default new Vuetify(
   iconfont: 'mdi'
   theme:
+    dark: useDarkMode
     themes:
       light:
         primary: colors.amber.darken1
@@ -18,7 +22,6 @@ export default new Vuetify(
         info: colors.lightBlue.base
         success: colors.green.base
         anchor: colors.cyan.base
-        background: '#fafafa'
     options:
       customProperties: true
 )
