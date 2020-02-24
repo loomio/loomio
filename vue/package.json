@@ -57,7 +57,7 @@
     "vue-slicksort": "^1.1.3",
     "vue2-touch-events": "^2.2.1",
     "vuebar": "0.0.20",
-    "vuetify": "2.1.14",
+    "vuetify": "2.2.12",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
