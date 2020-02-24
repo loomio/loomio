@@ -18,5 +18,5 @@ v-card.edit-comment-form
     h1.headline(v-t="'comment_form.edit_comment'")
     v-spacer
     dismiss-modal-button(:close="close")
-  comment-form(:comment="comment" @comment-submitted="close()")
+  comment-form(:comment="comment" @comment-submitted="close()" autofocus)
 </template>

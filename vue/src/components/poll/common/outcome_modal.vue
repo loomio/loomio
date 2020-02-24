@@ -90,7 +90,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
 
 
 
-    lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='clone' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
+    lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='clone' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')" autofocus)
       template(v-slot:actions)
         v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' v-t="'common.action.save'")
     validation-errors(:subject="clone" field="statement")

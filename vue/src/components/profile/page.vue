@@ -10,7 +10,7 @@ import openModal      from '@/shared/helpers/open_modal'
 import UserService    from '@/shared/services/user_service'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { includes, uniq } from 'lodash'
+import { includes, uniq, debounce } from 'lodash'
 
 export default
   data: ->
@@ -62,11 +62,12 @@ export default
               submit:   'merge_accounts.modal.submit'
               flash:    'merge_accounts.modal.flash'
 
-    checkEmailExistence: ->
+    checkEmailExistence: debounce ->
       return if @originalUser.email == @user.email
       Records.users.checkEmailExistence(@user.email).then (res) =>
         if res.exists
           @existingEmails = uniq(@existingEmails.concat([res.email]))
+    , 250
 
     submit: ->
       Records.users.updateProfile(@user)

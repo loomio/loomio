@@ -77,11 +77,8 @@ export emojiSupported = do ->
   ctx.fillText '😃', 0, 0
   ctx.getImageData(16, 16, 1, 1).data[0] != 0
 
-export replaceEmojis = ->
-  !emojiSupported && AppConfig.features.app.env != 'test'
-
 export emojiReplaceText = (text) ->
-  if replaceEmojis()
+  if emojiSupported
     text
   else
     text.replace rx, (match) -> imgForEmoji(match)

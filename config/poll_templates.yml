@@ -112,6 +112,7 @@ meeting:
   has_score_icons:         true
   prevent_anonymous:       true
   has_option_score_counts: true
+  require_all_choices:     true
   required_custom_fields:
     - can_respond_maybe
   sort_options:

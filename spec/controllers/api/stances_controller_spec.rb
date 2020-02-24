@@ -237,6 +237,37 @@ describe API::StancesController do
         expect(poll.members).to include user
       end
     end
+
+    describe 'poll.require_all_choices = true' do
+      let(:poll) { create :poll_meeting, discussion: discussion }
+
+      before do
+        discussion.group.add_member! user
+        user.update(email_verified: true)
+        sign_in user
+      end
+
+      it 'prevents fewer choices than poll options' do
+        stance_params = {
+          poll_id: poll.id,
+          stance_choices_attributes: [],
+          reason: "here is my stance"
+        }
+        expect { post :create, params: { stance: stance_params} }.to_not change { Stance.count }
+        puts response.body
+        expect(response.status).to eq 422
+      end
+
+      it 'allows the right number of choices' do
+        stance_params = {
+          poll_id: poll.id,
+          stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id , score: 1}],
+          reason: "here is my stance"
+        }
+        expect { post :create, params: { stance: stance_params} }.to change { Stance.count }.by(1)
+        expect(response.status).to eq 200
+      end
+    end
   end
 
   describe "create as logged in member without token" do

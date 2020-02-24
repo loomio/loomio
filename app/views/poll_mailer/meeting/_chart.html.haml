@@ -27,6 +27,5 @@
           - poll.ordered_poll_options.each do |option|
             %td.poll-mailer-meeting__cell
               - stance_choice = stance.stance_choices.find_by(poll_option:option)
-              - if stance_choice&.score.to_i > 0
-                - icon_name = stance_icon_for(poll, stance_choice)
+              - if stance_choice&.score.to_i > 0 && icon_name = stance_icon_for(poll, stance_choice)
                 = image_tag "poll_mailer/vote-icon-#{icon_name}.png", alt: "#{icon_name} icon", class: "poll-mailer-meeting__option-icon"
