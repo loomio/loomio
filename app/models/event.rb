@@ -73,6 +73,9 @@ class Event < ApplicationRecord
             events.position is distinct from t.seq")
   end
 
+  def actor
+    user
+  end
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
   def trigger!
