@@ -94,9 +94,16 @@ class Stance < ApplicationRecord
   private
 
   def enough_stance_choices
-    return unless poll.require_stance_choices
-    if stance_choices.length < poll.minimum_stance_choices
-      errors.add(:stance_choices, I18n.t(:"stance.error.too_short"))
+    if poll.require_stance_choices
+      if stance_choices.length < poll.minimum_stance_choices
+        errors.add(:stance_choices, I18n.t(:"stance.error.too_short"))
+      end
+    end
+
+    if poll.require_all_choices
+      if stance_choices.length < poll.poll_options.length
+        errors.add(:stance_choices, I18n.t(:"stance.error.too_short"))
+      end
     end
   end
 
