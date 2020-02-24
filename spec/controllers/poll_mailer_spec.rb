@@ -98,7 +98,7 @@ describe Dev::PollsController do
     get :test_meeting_poll_edited_email
     expect_text('.poll-mailer__subject', "edited the time poll")
     expect_element('.poll-mailer-common-summary')
-    # expect_text('.poll-mailer__vote', "You voted")
+    expect_text('.poll-mailer__vote', "You voted")
     expect_text('.poll-mailer__meeting-chart', "Results")
     expect_text('.poll-mailer-meeting-responses', "Responses")
   end
