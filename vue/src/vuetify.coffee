@@ -11,7 +11,7 @@ useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: da
 export default new Vuetify(
   iconfont: 'mdi'
   theme:
-    dark: useDarkMode
+    # dark: useDarkMode
     themes:
       light:
         primary: colors.amber.darken1
