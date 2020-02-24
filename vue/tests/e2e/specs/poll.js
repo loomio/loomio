@@ -323,7 +323,7 @@ module.exports = {
     })
 
     page.click('.action-dock__button--edit_stance')
-    page.click('.poll-common-edit-vote__button')
+    page.click('.poll-common-edit-vote__button', 500)
     page.click('.poll-common-vote-form__button:last-child')
     page.click('.poll-common-vote-form__submit')
     page.expectFlash('Vote created')
@@ -356,7 +356,7 @@ module.exports = {
       page.expectText('.poll-common-stance-created__reason', 'A reason')
     })
 
-    page.click('.action-dock__button--edit_stance')
+    page.click('.action-dock__button--edit_stance', 500)
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', "An updated reason")
     page.click('.poll-common-edit-vote__submit')
     page.expectFlash('Vote updated')

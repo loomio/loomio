@@ -235,11 +235,11 @@ module.exports = {
 
     // confirm the settings have stuck
     page.click('.group-form__privacy-tab')
-    page.expectElementNow('.group-form__privacy-open input[aria-checked="true"]')
+    page.expectElement('.group-form__privacy-open input[aria-checked="true"]')
     page.click('.group-form__permissions-tab')
-    page.expectElementNow('.group-form__membership-granted-upon-request input[aria-checked="true"]')
-    page.expectElementNow('.group-form__members-can-add-members input[aria-checked="true"]')
-    page.expectElementNow('.group-form__members-can-create-subgroups input[aria-checked="true"]')
+    page.expectElement('.group-form__membership-granted-upon-request input[aria-checked="true"]')
+    page.expectElement('.group-form__members-can-add-members input[aria-checked="true"]')
+    page.expectElement('.group-form__members-can-create-subgroups input[aria-checked="true"]')
   },
 
   'can_be_a_very_locked_down_group': (test) => {
@@ -267,12 +267,12 @@ module.exports = {
     page.pause(500)
 
     // reopen form
-    page.click('.group-page-settings-tab')
-    page.click('.group-page-actions__edit_group')
+    page.click('.group-page-settings-tab', 500)
+    page.click('.group-page-actions__edit_group', 500)
 
     // confirm the settings have stuck
-    page.click('.group-form__privacy-tab')
-    page.expectElementNow('.group-form__privacy-secret input[aria-checked="true"]')
+    page.click('.group-form__privacy-tab', 500)
+    page.expectElement('.group-form__privacy-secret input[aria-checked="true"]')
 
     page.click('.group-form__permissions-tab')
     page.expectNoElement('.group-form__members-can-start-discussions input[aria-checked="true"]')
