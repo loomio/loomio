@@ -61,7 +61,7 @@ before_script:
 script:
   - if [ "$TASK" = "rspec" ];   then bundle exec rspec; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rspec plugins; fi
-  - if [ "$TASK" = "vue" ];     then cd vue && npm run test:e2e:standalone && cd .. ;  fi
+  - if [ "$TASK" = "vue" ];     then cd vue && FORCE_COLOR=1 npm run test:e2e:standalone && cd .. ;  fi
 
 after_script:
   - if [ "$TASK" = "vue" ];     then cd ${TRAVIS_BUILD_DIR}/vue/tests/reports && bundle exec ruby rename_screenshots.rb && bundle exec ruby generate_screenshots_index.rb && cd.. ; fi
