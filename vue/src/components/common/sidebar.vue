@@ -149,7 +149,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model
 </template>
 <style lang="sass">
 .sidebar-item
-	display: block
-	width: 100%
+  display: block
+  width: 100%
 
+.sidebar__groups .v-treeview-node__label
+  overflow: visible
 </style>
