@@ -156,5 +156,5 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model
   overflow: visible
 
 .sidebar__groups .v-treeview-node__level
-  width: 12px
+  width: 16px
 </style>
