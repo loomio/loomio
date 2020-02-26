@@ -30,6 +30,14 @@ en:
     was_gift_remaining: "{{days}} days remaining."
     was_gift_expired: "Your free plan has now expired."
 
+  subscription_status:
+    plan: "Plan - {{name}}"
+    state: "Status - {{state}}"
+    active_members: "Active members - {{count}}"
+    max_threads: "Max threads - {{count}}"
+    max_members: "Max members - {{count}}"
+    expires_at: "Expires - {{date}}"
+
   loomio_tags:
     all_tags: All tags
     tags: Tags
@@ -853,6 +861,7 @@ en:
       email_settings: 'Email preferences'
       leave_group: 'Leave group'
       deactivate_group: 'Deactivate group'
+      subscription_status: 'Subscription status'
     volume:
       loud: Email whenever there is activity.
       loud_aria_description: Your notification volume for this group is set to Loud. You will be emailed whenever there is activity.
