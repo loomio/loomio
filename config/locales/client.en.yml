@@ -36,6 +36,7 @@ en:
     active_members: "Active members - {{count}}"
     max_threads: "Max threads - {{count}}"
     max_members: "Max members - {{count}}"
+    expires_at: "Expires - {{date}}"
 
   loomio_tags:
     all_tags: All tags
