@@ -18,12 +18,12 @@ v-card.mt-2(outlined)
     v-spacer
     v-btn.dismiss-modal-button(icon small @click="close")
       v-icon mdi-window-close
-  v-card-text
+  div.ml-8.my-4
     p(v-t="{ path: 'subscription_status.plan', args: { name: planName }}")
     p(v-t="{ path: 'subscription_status.state', args: { state: planStatus }}")
     p(v-t="{ path: 'subscription_status.active_members', args: { count: group.orgMembersCount }}")
     p(v-if="group.subscriptionMaxMembers" v-t="{ path: 'subscription_status.max_members', args: { count: group.subscriptionMaxMembers }}")
-    p(v-if="group.subscriptionMaxThreads" v-t="{ path: 'subscription_status.max_members', args: { count: group.subscriptionMaxThreads }}")
+    p(v-if="group.subscriptionMaxThreads" v-t="{ path: 'subscription_status.max_threads', args: { count: group.subscriptionMaxThreads }}")
   v-card-actions
     v-btn(color="accent" href="https://help.loomio.org/en/subscriptions/" target="_blank" v-t="'common.help'")
     v-spacer
