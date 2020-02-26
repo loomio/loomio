@@ -34,7 +34,7 @@ export default new class GroupService
             group: group
 
     manage_subscription:
-      name: 'group_page.options.manage_subscription'
+      name: 'group_page.options.subscription_status'
       icon: 'mdi-rocket'
       canPerform: ->
         group.isParent() && Session.user().isAdminOf(group) && group.subscriptionPlan?
