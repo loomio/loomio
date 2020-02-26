@@ -1,3 +1,13 @@
+## 2020-02-26 (Loomio 2.1.2)
+
+- Added ability for users to merge their own accounts together
+- Added Emoji compatibility for Linux and older Windows
+- Added basic subscription information to Group Settings
+- Upgraded Vuetify
+- Refactored email templates to not use instance variables
+- Fix signing into Loomio via Slack when email already exists
+- Fix styling of mentions
+
 ## 2020-02-17 (Loomio 2.1.1)
 
 - Add coverage of more iterations of Youtube URLs for video embed in text editor
