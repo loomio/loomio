@@ -39,7 +39,10 @@ export default new class GroupService
       canPerform: ->
         group.isParent() && Session.user().isAdminOf(group) && group.subscriptionPlan?
       perform: ->
-        window.location = AppConfig.baseUrl + "upgrade"
+        openModal
+          component: 'GroupSubscriptionCard'
+          props:
+            group: group
 
     become_coordinator:
       name: 'group_page.options.become_coordinator'
