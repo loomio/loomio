@@ -31,11 +31,11 @@ en:
     was_gift_expired: "Your free plan has now expired."
 
   subscription_status:
-    plan: "Plan: {{name}}"
-    state: "Status: {{state}}"
-    active_members: "Active members: {{count}}"
-    max_threads: "Max threads: {{count}}"
-    max_members: "Max members: {{count}}"
+    plan: "Plan - {{name}}"
+    state: "Status - {{state}}"
+    active_members: "Active members - {{count}}"
+    max_threads: "Max threads - {{count}}"
+    max_members: "Max members - {{count}}"
 
   loomio_tags:
     all_tags: All tags
