@@ -24,8 +24,8 @@ v-card.mt-2(outlined)
     p Plan: {{planName}}
     p Status: {{planStatus}}
     p Active members: {{group.orgMembersCount}}
-    p Max members: {{group.subscriptionMaxMembers}}
-    p Max threads: {{group.subscriptionMaxThreads}}
+    p(v-if="group.subscriptionMaxMembers") Max members: {{group.subscriptionMaxMembers}}
+    p(v-if="group.subscriptionMaxThreads") Max threads: {{group.subscriptionMaxThreads}}
   v-card-actions
     v-btn(color="accent" href="https://help.loomio.org/en/subscriptions/" target="_blank" v-t="'common.help'")
     v-spacer
