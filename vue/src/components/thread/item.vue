@@ -17,12 +17,11 @@ export default
       required: true
 
   data: ->
-    isDisabled: false
-    collapsed: false
-    hover: false
-    focusStyleClass: null
+    isUnread: false
+    isFocused: false
 
   mounted: ->
+    @updateIsUnread()
     @$nextTick =>
       return unless @$refs.defaultSlot
       @$refs.defaultSlot.querySelectorAll("img[height]").forEach (node) =>
@@ -34,11 +33,9 @@ export default
 
   methods:
     viewed: (viewed) -> @event.markAsRead() if viewed
-    focusThenFade: ->
-      @focusStyleClass = 'thread-item--focused'
-      setTimeout =>
-        @focusStyleClass = 'thread-item--previously-focused'
-      , 5000
+
+    updateIsUnread: ->
+      @isUnread = Session.isSignedIn() && Session.user().id != @event.actorId && @isReturning && @discussion && !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
   computed:
     indentSize: ->
@@ -51,12 +48,6 @@ export default
     discussion: -> @event.discussion()
 
     iconSize: -> if (@event.depth == 1) then 40 else 24
-
-    isUnread: ->
-      Session.isSignedIn() &&
-      Session.user().id != @event.actorId &&
-      @isReturning && @discussion &&
-      !RangeSet.includesValue(@discussion.readRanges, @event.sequenceId)
 
     headline: ->
       @$t eventHeadline(@event, true ), # useNesting
@@ -73,23 +64,23 @@ export default
     '$route.query.p':
       immediate: true
       handler: (newVal) ->
-        @focusThenFade() if parseInt(newVal) == @event.position && @event.depth == 1
+        @isFocused = parseInt(newVal) == @event.position && @event.depth == 1
 
     '$route.params.sequence_id':
       immediate: true
       handler: (newVal) ->
-        @focusThenFade() if parseInt(newVal) == @event.sequenceId
+        @isFocused = parseInt(newVal) == @event.sequenceId
 
     '$route.params.comment_id':
       immediate: true
       handler: (newVal) ->
-        @focusThenFade() if parseInt(newVal) == @event.eventableId
+        @isFocused = parseInt(newVal) == @event.eventableId
 
 </script>
 
 <template lang="pug">
 div
-  .thread-item.px-3.pb-1(:class="[{'thread-item--unread': isUnread}, focusStyleClass]" v-observe-visibility="{callback: viewed, once: true}")
+  .thread-item.px-3.pb-1(v-observe-visibility="{callback: viewed, once: true}")
     v-layout.lmo-action-dock-wrapper(:style="{'margin-left': indentSize+'px'}"  :id="'sequence-' + event.sequenceId")
       .thread-item__avatar.mr-3.mt-0
         user-avatar(v-if='!event.isForkable() && event.actor()' :user='event.actor()' :size='iconSize')
@@ -107,8 +98,16 @@ div
             slot(name="headline")
               span(v-html='headline')
             mid-dot
-            router-link.grey--text.body-2(:to='link')
+            router-link.grey--text(:to='link')
               time-ago(:date='event.createdAt')
+            | {{isUnread}}
+            | {{isFocused}}
+            span(v-if="isUnread")
+              mid-dot
+              | new
+            span(v-if="isFocused")
+              mid-dot
+              | read here
         .default-slot(ref="defaultSlot")
           slot
         slot(name="actions")
@@ -120,17 +119,11 @@ div
 		display: inline-block
 	strong
 		font-weight: normal
+
 .thread-item
-	transition: background 4s ease-out
 	.v-card__actions
 		padding-left: 0
 		padding-right: 0
-.thread-item--focused
-	background-color: var(--v-accent-lighten5)
-.thread-item--previously-focused
-	background-color: none
-.thread-item--unread
-	background-color: var(--v-primary-lighten5)
 .thread-item__body
 	width: 100%
 	min-width: 0

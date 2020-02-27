@@ -61,17 +61,9 @@ export default
 
 <template lang="pug">
 v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
-  //- template(v-slot:img="{ props }")
-  //-   v-img(v-bind="props" gradient="rgba(0,0,0,.3), rgba(0,0,0, .3), rgba(0,0,0,.8)")
-
   v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()")
     v-avatar(tile size="36px")
       v-icon mdi-menu
-
-
-  //- v-toolbar-title.group-cover-name(v-if="groupPage")
-  //-   span {{group.name}}
-
   v-toolbar-title(v-if="showTitle" @click="$vuetify.goTo('head', {duration: 0})") {{title}}
   v-spacer
   notifications(v-if='isLoggedIn')

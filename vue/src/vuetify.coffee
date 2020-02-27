@@ -8,7 +8,7 @@ import colors from 'vuetify/lib/util/colors'
 useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
 
 
-export default new Vuetify(
+export default new Vuetify
   iconfont: 'mdi'
   theme:
     dark: useDarkMode
@@ -24,4 +24,3 @@ export default new Vuetify(
         anchor: colors.cyan.base
     options:
       customProperties: true
-)

@@ -19,7 +19,7 @@ export default
 </script>
 
 <template lang="pug">
-v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="outcome" color="primary lighten-5" elevation="2")
+v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="outcome" color="accent" elevation="2")
   .title(v-t="'poll_common.outcome'")
   .poll-common-outcome-panel__authored-by.caption.my-2
     span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }")
