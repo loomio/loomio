@@ -64,23 +64,19 @@ gem 'reverse_markdown'
 gem 'discard', '~> 1.2'
 
 group :development, :test do
-  gem 'parallel_tests'
   gem 'byebug'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'dotenv-rails'
   gem 'database_cleaner'
-  gem 'gemrat'
   gem 'derailed'
   gem 'rails-controller-testing'
 end
 
 group :development do
   gem 'bullet'
-  gem "stackprof"
   gem 'spring'
   gem "spring-commands-rspec"
-  gem 'launchy'
   gem 'awesome_print'
 end
 
@@ -93,7 +89,6 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
-  gem 'simplecov', require: false
 end
 
 group :production do
