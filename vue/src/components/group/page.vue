@@ -56,7 +56,7 @@ export default
         @openInstallSlackModal(@group) if @$route.query.install_slack
       .catch (error) =>
         EventBus.$emit 'pageError', error
-        EventBus.$emit 'openAuthModal' if error.status == 403
+        EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
