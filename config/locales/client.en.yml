@@ -545,6 +545,7 @@ en:
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
+    group_announced: "<strong>{{name}}</strong> invited you to the group <strong>{{title}}</strong>"
 
   position_buttons_panel:
     heading: Have your say
