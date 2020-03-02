@@ -72,7 +72,7 @@
     "coffeescript": "^2.5.1",
     "fibers": "^4.0.2",
     "js-yaml-loader": "^1.2.2",
-    "sass": "^1.26.1",
+    "sass": "^1.26.2",
     "sass-loader": "^8.0.2",
     "selenium-server-standalone-jar": "latest",
     "vue-cli-plugin-coffee": "latest",
