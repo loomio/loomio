@@ -138,8 +138,8 @@ en:
         confirm: Confirm merge
         body_html: |
           <p>Please confirm that you would like to merge the account under <strong>%{source_email}</strong> into the account under <strong>%{target_email}</strong>.</p>
-          <p>You will thereafter only be able to sign in via <strong>%{target_email}</strong></p>
-          <p>This change will be irreversible.</p>
+          <p>Your account under <strong>%{source_email}</strong> will be deleted, and you will thereafter only be able to sign in via <strong>%{target_email}</strong>.</p>
+          <p>This change is irreversible.</p>
         merge: Merge accounts
       complete_page:
         title: Merge successful!
