@@ -11,7 +11,7 @@ module Ability::Discussion
         discussion.members.include?(user) ||
         discussion.guest_group.memberships.find_by(token: user.membership_token) ||
         discussion.anyone_can_participate ||
-        (discussion.group.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id))
+        (discussion.group.parent_members_can_see_discussions? && user_is_member_of_group_id?(discussion.group.parent_id))
       )
     end
 
@@ -27,19 +27,19 @@ module Ability::Discussion
       (user.email_verified? &&
        discussion.group.present? &&
        discussion.group.members_can_start_discussions? &&
-       user_is_member_of?(discussion.group_id)) ||
+       user_is_member_of_group_id?(discussion.group_id)) ||
       user_is_admin_of?(discussion.group_id)
     end
 
     can [:announce], ::Discussion do |discussion|
       user_is_admin_of?(discussion.group_id) ||
-        (discussion.group.members_can_announce? && user_is_member_of?(discussion.group_id))
+        (discussion.group.members_can_announce? && user_is_member_of_group_id?(discussion.group_id))
     end
 
     can [:update], ::Discussion do |discussion|
       user.email_verified? &&
       if discussion.group.members_can_edit_discussions?
-        user_is_member_of?(discussion.group_id)
+        user_is_member_of_group_id?(discussion.group_id)
       else
         user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
       end

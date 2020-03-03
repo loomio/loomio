@@ -7,8 +7,8 @@ module Ability::Group
         false
       else
         group.is_visible_to_public? or
-        user_is_member_of?(group.id) or
-        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
+        user_is_member_of_group_id?(group.id) or
+        (group.is_visible_to_parent_members? and user_is_member_of_group_id?(group.parent_id))
       end
     end
 
@@ -22,9 +22,9 @@ module Ability::Group
         false
       else
         (group.is_guest_group? && user.ability.can?(:show, group.target_model)) or
-        user_is_member_of?(group.id) or
+        user_is_member_of_group_id?(group.id) or
         group.group_privacy == 'open' or
-        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
+        (group.is_visible_to_parent_members? and user_is_member_of_group_id?(group.parent_id))
       end
     end
 
@@ -44,7 +44,7 @@ module Ability::Group
          :make_draft,
          :move_discussions_to,
          :view_previous_proposals], ::Group do |group|
-      user.email_verified? && user_is_member_of?(group.id)
+      user.email_verified? && user_is_member_of_group_id?(group.id)
     end
 
     can [:add_members,
@@ -52,7 +52,7 @@ module Ability::Group
          :announce,
          :manage_membership_requests], ::Group do |group|
       user.email_verified? && Subscription.for(group).is_active? && !group.has_max_members &&
-      ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
+      ((group.members_can_add_members? && user_is_member_of_group_id?(group.id)) ||
       user_is_admin_of?(group.id))
     end
 
@@ -61,7 +61,7 @@ module Ability::Group
     can [:add_subgroup], ::Group do |group|
       user.email_verified? &&
       group.is_parent? &&
-      user_is_member_of?(group.id) &&
+      user_is_member_of_group_id?(group.id) &&
       (group.members_can_create_subgroups? || user_is_admin_of?(group.id))
     end
 
@@ -78,7 +78,7 @@ module Ability::Group
       user.email_verified? &&
       group.is_parent? ||
       ( user_is_admin_of?(group.parent_id) ||
-        (user_is_member_of?(group.parent_id) && group.parent.members_can_create_subgroups?) )
+        (user_is_member_of_group_id?(group.parent_id) && group.parent.members_can_create_subgroups?) )
     end
 
     can :join, ::Group do |group|
@@ -88,7 +88,7 @@ module Ability::Group
 
     can :start_poll, ::Group do |group|
       user_is_admin_of?(group&.id) ||
-      (user_is_member_of?(group&.id) && group.members_can_raise_motions)
+      (user_is_member_of_group_id?(group&.id) && group.members_can_raise_motions)
     end
 
     can :merge, ::Group do |group|

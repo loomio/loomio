@@ -14,7 +14,7 @@ module Ability::MembershipRequest
       group = membership_request.group
 
       user_is_admin_of?(group.id) or
-        (user_is_member_of?(group.id) and group.members_can_add_members?)
+        (user_is_member_of_group_id?(group.id) and group.members_can_add_members?)
     end
   end
 end

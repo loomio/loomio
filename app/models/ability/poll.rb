@@ -23,11 +23,13 @@ module Ability::Poll
       )
     end
 
-    can [:show, :toggle_subscription, :subscribe_to], ::Poll do |poll|
-      poll.anyone_can_participate ||
-      user_is_author_of?(poll) ||
+    can [:show], ::Poll do |poll|
+      poll.visible_to == 'public' ||
+      poll.visible_to == 'organization' && user_is_member_of_org?(poll, user) ||
+      poll.visible_to == 'group' && poll.group.members.include?(user) ||
       can?(:show, poll.discussion) ||
-      poll.members.include?(user) ||
+      poll.visible_to == 'voters' && poll.voters.include?(user) ||
+      user_is_author_of?(poll) ||
       poll.guest_group.memberships.pluck(:token).include?(user.membership_token)
     end
 
@@ -59,6 +61,5 @@ module Ability::Poll
     can :reopen, ::Poll do |poll|
       poll.closed? && can?(:update, poll)
     end
-
   end
 end

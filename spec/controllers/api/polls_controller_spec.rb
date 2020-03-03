@@ -417,31 +417,5 @@ describe API::PollsController do
       expect { delete :destroy, params: { id: poll.key } }.to_not change { Poll.count }
       expect(response.status).to eq 403
     end
-
-  end
-
-  describe 'toggle_subscription' do
-    it 'creates an unsubscription if one does not exist' do
-      sign_in user
-      expect { post :toggle_subscription, params: { id: poll.key } }.to change { poll.unsubscribers.count }.by(1)
-      expect(response.status).to eq 200
-    end
-
-    it 'deletes an unsubscription if one does exist' do
-      sign_in user
-      poll.poll_unsubscriptions.create(user: user)
-      expect { post :toggle_subscription, params: { id: poll.key } }.to change { poll.unsubscribers.count }.by(-1)
-      expect(response.status).to eq 200
-    end
-
-    it 'does not allow visitors to have an unsubscription' do
-      expect { post :toggle_subscription, params: { id: poll.key } }.to_not change { poll.unsubscribers.count }
-      expect(response.status).to eq 403
-    end
-
-    it 'does not allow users who cant see the poll to have unsubscriptions' do
-      sign_in another_user
-      expect { post :toggle_subscription, params: { id: poll.key } }.to_not change { poll.unsubscribers.count }
-    end
   end
 end

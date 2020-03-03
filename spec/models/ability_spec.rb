@@ -223,7 +223,6 @@ describe "User abilities" do
       end
     end
 
-
     context "members_can_edit_discussions" do
       before do
         group.update members_can_edit_discussions: true
@@ -301,18 +300,18 @@ describe "User abilities" do
       @other_membership = group.add_member! other_user
     end
 
-    it { should     be_able_to(:update, group) }
-    it { should     be_able_to(:email_members, group) }
-    it { should     be_able_to(:destroy, discussion) }
-    it { should     be_able_to(:move, discussion) }
-    it { should     be_able_to(:update, discussion) }
-    it { should     be_able_to(:make_admin, @other_membership) }
-    it { should     be_able_to(:make_admin, @subgroup_membership) }
-    it { should     be_able_to(:remove_admin, @other_membership) }
-    it { should     be_able_to(:destroy, @other_membership) }
-    it { should     be_able_to(:destroy, another_user_comment) }
-    it { should     be_able_to(:destroy, own_pending_membership) }
-    it { should     be_able_to(:destroy, other_members_pending_membership) }
+    it { should be_able_to(:update, group) }
+    it { should be_able_to(:email_members, group) }
+    it { should be_able_to(:destroy, discussion) }
+    it { should be_able_to(:move, discussion) }
+    it { should be_able_to(:update, discussion) }
+    it { should be_able_to(:make_admin, @other_membership) }
+    it { should be_able_to(:make_admin, @subgroup_membership) }
+    it { should be_able_to(:remove_admin, @other_membership) }
+    it { should be_able_to(:destroy, @other_membership) }
+    it { should be_able_to(:destroy, another_user_comment) }
+    it { should be_able_to(:destroy, own_pending_membership) }
+    it { should be_able_to(:destroy, other_members_pending_membership) }
 
     it "should be able to join a closed subgroup" do
       should be_able_to(:join, closed_subgroup)
@@ -331,11 +330,11 @@ describe "User abilities" do
 
     context "group members invitable by admins" do
       before { group.update_attribute(:members_can_add_members, false) }
-      it { should     be_able_to(:add_members, group) }
-      it { should     be_able_to(:invite_people, group) }
-      it { should     be_able_to(:manage_membership_requests, group) }
-      it { should     be_able_to(:approve, membership_request) }
-      it { should     be_able_to(:ignore, membership_request) }
+      it { should be_able_to(:add_members, group) }
+      it { should be_able_to(:invite_people, group) }
+      it { should be_able_to(:manage_membership_requests, group) }
+      it { should be_able_to(:approve, membership_request) }
+      it { should be_able_to(:ignore, membership_request) }
     end
   end
 
@@ -371,8 +370,7 @@ describe "User abilities" do
     let(:comment_in_private_discussion) { Comment.new discussion: private_discussion, author: user, body: 'hi' }
     let(:public_discussion) { create :discussion, group: group, private: false }
     let(:comment_in_public_discussion) { Comment.new discussion: public_discussion, author: user, body: 'hi' }
-    let(:new_discussion) { user.authored_discussions.new(
-                           group: group, title: "new discussion") }
+    let(:new_discussion) { user.authored_discussions.new( group: group, title: "new discussion") }
     let(:another_user_comment) { create :comment, discussion: private_discussion }
     let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
     let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }

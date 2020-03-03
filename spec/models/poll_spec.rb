@@ -40,44 +40,6 @@ describe Poll do
     expect(option_poll.poll_options.map(&:name)).to eq ['A', 'C', 'B']
   end
 
-  describe "guest group" do
-    it "deletes guest group when poll is deleted" do
-      group = poll.tap(&:save).guest_group
-      poll.destroy
-      expect { group.reload }.to raise_error ActiveRecord::RecordNotFound
-    end
-  end
-
-  describe 'anyone_can_participate=' do
-
-    describe 'existing poll' do
-      before { poll.save }
-      it 'changes guest group membership_granted_upon to request' do
-        poll.update(anyone_can_participate: true)
-        expect(poll.guest_group.reload.membership_granted_upon).to eq 'request'
-      end
-
-      it 'changes guest group membership_granted_upon to approval' do
-        poll.update(anyone_can_participate: false)
-        expect(poll.guest_group.reload.membership_granted_upon).to eq 'invitation'
-      end
-    end
-
-    describe 'unpersisted poll' do
-      it 'changes guest group membership_granted_upon to request' do
-        poll.anyone_can_participate = true
-        poll.save
-        expect(poll.reload.guest_group.reload.membership_granted_upon).to eq 'request'
-      end
-
-      it 'changes guest group membership_granted_upon to approval' do
-        poll.anyone_can_participate = false
-        poll.save
-        expect(poll.reload.guest_group.reload.membership_granted_upon).to eq 'invitation'
-      end
-    end
-  end
-
   describe 'ordered_poll_options' do
     let(:poll) { create :poll }
     let(:meeting) { create :poll_meeting }
@@ -114,36 +76,129 @@ describe Poll do
       expect(poll.is_new_version?).to eq true
     end
 
-    it 'is not a new version if anyone_can_participate is changed' do
-      poll.anyone_can_participate = false
+    it 'is not a new version if voteable_by is changed' do
+      poll.voteable_by = 'invited'
       expect(poll.is_new_version?).to eq false
     end
   end
 
-  describe 'members' do
-    let(:poll) { create :poll, group: create(:group) }
-    let(:user) { create :user }
+  describe 'permissions' do
+    let(:parent_group) { create :group }
+    let(:group)        { create :group, parent: parent_group }
+    let(:poll)         { create :poll, group: group, author: poll_author }
+    let(:user)         { create :user }
 
-    it 'includes members of the guest group' do
-      expect {
-        poll.guest_group.add_member! user
-      }.to change { poll.members.count }.by(1)
+    let(:poll_author)       { create :user }
+    let(:public_user)       { create :user }
+    let(:parent_group_user) { create :user }
+    let(:group_user)        { create :user }
+    let(:invited_user)      { create :user }
+
+    before do
+      parent_group.add_member! parent_group_user
+      group.add_member! group_user
+      poll.stances.create!(user: invited_user)
     end
 
-    it 'includes members of the formal group' do
-      expect {
-        poll.group.add_member! user
-      }.to change { poll.members.count }.by(1)
+    describe 'visible_by' do
+      it 'public' do
+        poll.visible_by = 'public'
+        expect(public_user.ability.can?(:show, poll)).to be true
+        expect(parent_group_user.ability.can?(:show, poll)).to be true
+        expect(group_user.ability.can?(:show, poll)).to be true
+        expect(invited_user.ability.can?(:show, poll)).to be true
+        expect(poll_author.ability.can?(:show, poll)).to be true
+      end
+
+      it 'parent_group' do
+        poll.visible_by = 'parent_group'
+        expect(public_user.ability.can?(:show, poll)).to be false
+        expect(parent_group_user.ability.can?(:show, poll)).to be true
+        expect(group_user.ability.can?(:show, poll)).to be true
+        expect(invited_user.ability.can?(:show, poll)).to be true
+      end
+
+      it 'group' do
+        poll.visible_by = 'group'
+        expect(public_user.ability.can?(:show, poll)).to be false
+        expect(parent_group_user.ability.can?(:show, poll)).to be false
+        expect(group_user.ability.can?(:show, poll)).to be true
+        expect(invited_user.ability.can?(:show, poll)).to be true
+      end
+
+      it 'invited' do
+        # only those people specifically invited to the poll
+        poll.visible_by = 'invited'
+        expect(public_user.ability.can?(:show, poll)).to be false
+        expect(parent_group_user.ability.can?(:show, poll)).to be false
+        expect(group_user.ability.can?(:show, poll)).to be false
+        expect(invited_user.ability.can?(:show, poll)).to be true
+      end
     end
 
-    it 'decrements when removing from the guest group' do
-      membership = poll.guest_group.add_member! user
-      expect { membership.destroy }.to change { poll.members.count }.by(-1)
-    end
+    describe 'voteable_by' do
+      it 'public' do
+        poll.voteable_by = 'public'
+        expect(public_user.ability.can?(:vote_in, poll)).to be true
+        expect(parent_group_user.ability.can?(:vote_in, poll)).to be true
+        expect(group_user.ability.can?(:vote_in, poll)).to be true
+        expect(invited_user.ability.can?(:vote_in, poll)).to be true
+      end
 
-    it 'decrements when removing from the formal group' do
-      membership = poll.group.add_member! user
-      expect { membership.destroy }.to change { poll.members.count }.by(-1)
+      it 'parent_group' do
+        poll.voteable_by = 'parent_group'
+        expect(public_user.ability.can?(:vote_in, poll)).to be false
+        expect(parent_group_user.ability.can?(:vote_in, poll)).to be true
+        expect(group_user.ability.can?(:vote_in, poll)).to be true
+        expect(invited_user.ability.can?(:vote_in, poll)).to be true
+      end
+
+      it 'group' do
+        poll.voteable_by = 'group'
+        expect(public_user.ability.can?(:vote_in, poll)).to be false
+        expect(parent_group_user.ability.can?(:vote_in, poll)).to be false
+        expect(group_user.ability.can?(:vote_in, poll)).to be true
+        expect(invited_user.ability.can?(:vote_in, poll)).to be true
+      end
+
+      it 'invited' do
+        poll.voteable_by = 'invited'
+        expect(public_user.ability.can?(:vote_in, poll)).to be false
+        expect(parent_group_user.ability.can?(:vote_in, poll)).to be false
+        expect(group_user.ability.can?(:vote_in, poll)).to be false
+        expect(invited_user.ability.can?(:vote_in, poll)).to be true
+      end
+    end
+  end
+
+  describe 'voters' do
+    # a person who votes or has the right to vote at an election.
+
+    context 'voteable_by' do
+      it 'public' do
+        # voters is just those people who have voted already
+        expect(poll.voters.includes?(parent_group_user)).to be true
+        expect(poll.voters.includes?(group_user)).to be true
+        expect(poll.voters.includes?(invited_user)).to be true
+      end
+
+      it 'parent_group' do
+        expect(poll.voters.includes?(parent_group_user)).to be true
+        expect(poll.voters.includes?(group_user)).to be true
+        expect(poll.voters.includes?(invited_user)).to be true
+      end
+
+      it 'group' do
+        expect(poll.voters.includes?(parent_group_user)).to be false
+        expect(poll.voters.includes?(group_user)).to be true
+        expect(poll.voters.includes?(invited_user)).to be true
+      end
+
+      it 'invited' do
+        expect(poll.voters.includes?(parent_group_user)).to be false
+        expect(poll.voters.includes?(group_user)).to be false
+        expect(poll.voters.includes?(invited_user)).to be true
+      end
     end
   end
 
@@ -157,9 +212,23 @@ describe Poll do
       poll.update_undecided_count
     end
 
-    it 'includes members of the guest group' do
+    context 'voteable_by' do
+      it 'public' do
+      end
+
+      it 'parent_group' do
+      end
+
+      it 'group' do
+      end
+
+      it 'invited' do
+      end
+    end
+
+    it 'includes guests' do
       expect {
-        poll.guest_group.add_member! user
+        Stance.create(poll: poll, participant: create(:user))
       }.to change { poll.reload.undecided_count }.by(1)
     end
 
@@ -169,11 +238,11 @@ describe Poll do
       }.to change { poll.reload.undecided_count }.by(1)
     end
 
-    it 'includes members of the discussion group' do
-      expect {
-        poll.discussion.guest_group.add_member! user
-      }.to change { poll.reload.undecided_count }.by(1)
-    end
+    # it 'includes members of the discussion group' do
+    #   expect {
+    #     poll.discussion.guest_group.add_member! user
+    #   }.to change { poll.reload.undecided_count }.by(1)
+    # end
 
     it 'decrements when removing from the guest group' do
       membership = poll.guest_group.add_member! user

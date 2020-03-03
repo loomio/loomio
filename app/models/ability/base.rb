@@ -29,8 +29,12 @@ module Ability
 
     private
 
-    def user_is_member_of?(group_id)
+    def user_is_member_of_group_id?(group_id)
       @user.memberships.find_by(group_id: group_id)
+    end
+
+    def user_is_member_of_group_or_parent?(group)
+      user_is_member_of_group_id?(group.id) || user_is_member_of_group_id?(group.parent_id)
     end
 
     def user_is_admin_of?(group_id)

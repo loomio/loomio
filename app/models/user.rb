@@ -227,7 +227,7 @@ class User < ApplicationRecord
     super(warden_conditions.merge(email_verified: true))
   end
 
-  define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
+  define_counter_cache(:memberships_count) {|user| user.memberships.count }
 
   def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)

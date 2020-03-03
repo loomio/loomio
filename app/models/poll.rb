@@ -15,7 +15,7 @@ class Poll < ApplicationRecord
 
   is_rich_text    on: :details
 
-  extend  NoSpam
+  extend NoSpam
   no_spam_for :title, :details
 
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices, :can_respond_maybe, :deanonymize_after_close, :max_score
@@ -36,12 +36,12 @@ class Poll < ApplicationRecord
   is_mentionable on: :details
 
   belongs_to :author, class_name: "User", required: true
+
   has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
   belongs_to :discussion
   belongs_to :group
-
 
   after_update :remove_poll_options
 
@@ -49,14 +49,8 @@ class Poll < ApplicationRecord
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant
 
-  has_many :poll_unsubscriptions, dependent: :destroy
-  has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
-
   has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
-
-  has_many :poll_did_not_votes, dependent: :destroy
-  has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
   has_many :documents, as: :model, dependent: :destroy
 
@@ -67,12 +61,7 @@ class Poll < ApplicationRecord
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
   scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_id": participant.id) }
   scope :authored_by, ->(user) { where(author: user) }
-  scope :with_includes, -> { includes(
-    :documents,
-    :poll_options,
-    :outcomes,
-    {stances: [:stance_choices]})
-  }
+  scope :with_includes, -> { includes( :documents, :poll_options, :outcomes, {stances: [:stance_choices]}) }
 
   scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
      active
@@ -111,22 +100,27 @@ class Poll < ApplicationRecord
   define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
-  delegate :guest_group, to: :discussion, prefix: true, allow_nil: true
-
 
   def pct_voted
     ((poll.stances_count / group.memberships_count) * 100).to_i
   end
 
-  def groups
-    [group, discussion&.guest_group, guest_group].compact
+  def undecided
+    voters.where.not(id: participants)
   end
 
-  def undecided
+  def voters
     if active?
-      members.where.not(id: participants)
+      case voteable_by
+      when 'parent_group', 'public' then
+        User.active.joins(:memberships).where(Memberships.active).where('memberships.group_id' => [group&.parent_id, group&.id].compact)
+      when 'group' then
+        group.members
+      when 'invited' then
+        participants
+      end
     else
-      poll_did_not_voters
+      particpants
     end
   end
 
@@ -151,10 +145,6 @@ class Poll < ApplicationRecord
                                               .where("stances.latest": true)
                                               .to_a
                                               .group_by(&:poll_option)
-  end
-
-  def group
-    super || NullGroup.new
   end
 
   def group_members
