@@ -51,7 +51,6 @@ v-card.my-6(v-if="canSee" outlined)
           tr(v-for="(val, key) in tableData" :key="key")
             td(v-t="'subscription_status.' + key")
             td(v-html="val")
-
   v-card-actions
     v-spacer
     v-btn(color="primary" href="/upgrade" target="_blank") Upgrade
