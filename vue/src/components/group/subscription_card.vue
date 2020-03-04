@@ -13,8 +13,10 @@ export default
     planStatus: ->
       startCase(@group.subscriptionState)
     renewalDate: ->
-      return null unless @group.subscriptionInfo.chargify_next_assessment_at
+      return null unless @hasSubscriptionInfo && @group.subscriptionInfo.chargify_next_assessment_at
       @exactDate(parseISO(@group.subscriptionInfo.chargify_next_assessment_at))
+    hasSubscriptionInfo: ->
+      @group.subscriptionInfo
     tableData: ->
       {
         plan: @planName
@@ -24,8 +26,8 @@ export default
         active_members: @group.orgMembersCount
         max_members: @group.subscriptionMaxMembers if @group.subscriptionMaxMembers
         max_threads: @group.subscriptionMaxThreads if @group.subscriptionMaxThreads
-        referral_code: "<strong>#{@group.subscriptionInfo.chargify_referral_code}</strong>" if @group.subscriptionInfo.chargify_referral_code
-        chargify_link: "<a href=#{@group.subscriptionInfo.chargify_management_link} target=_blank>#{@group.subscriptionInfo.chargify_management_link}</a>" if @group.subscriptionInfo.chargify_management_link
+        referral_code: "<strong>#{@group.subscriptionInfo.chargify_referral_code}</strong>" if @hasSubscriptionInfo && @group.subscriptionInfo.chargify_referral_code
+        chargify_link: "<a href=#{@group.subscriptionInfo.chargify_management_link} target=_blank>#{@group.subscriptionInfo.chargify_management_link}</a>" if @hasSubscriptionInfo && @group.subscriptionInfo.chargify_management_link
       }
 </script>
 <template lang="pug">
