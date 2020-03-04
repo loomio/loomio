@@ -54,7 +54,10 @@ namespace :loomio do
   end
 
   task refresh_expiring_chargify_management_links: :environment do
-    SubscriptionService.delay.refresh_expiring_management_links
+    # run this once a week
+    if Date.today.sunday?
+      SubscriptionService.delay.refresh_expiring_management_links
+    end
   end
 
 end
