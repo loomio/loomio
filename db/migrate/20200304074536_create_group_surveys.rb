@@ -3,7 +3,9 @@ class CreateGroupSurveys < ActiveRecord::Migration[5.2]
     create_table :group_surveys
     add_column :group_surveys, :group_id, :integer, null: false
     add_column :group_surveys, :category, :string
+    add_column :group_surveys, :location, :string
     add_column :group_surveys, :size, :string
+    add_column :group_surveys, :declaration, :string
     add_column :group_surveys, :purpose, :text
     add_column :group_surveys, :usage, :string
     add_column :group_surveys, :referrer, :string

@@ -276,7 +276,9 @@ ActiveRecord::Schema.define(version: 2020_03_04_074536) do
   create_table "group_surveys", force: :cascade do |t|
     t.integer "group_id", null: false
     t.string "category"
+    t.string "location"
     t.string "size"
+    t.string "declaration"
     t.text "purpose"
     t.string "usage"
     t.string "referrer"
