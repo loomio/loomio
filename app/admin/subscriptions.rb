@@ -58,7 +58,7 @@ ActiveAdmin.register Subscription do
       end
     end
 
-    if subscription.info.present?
+    if subscription.info.present? && subscription.info["group_id"].present?
       render 'community_application', { info: subscription.info }
     end
   end
