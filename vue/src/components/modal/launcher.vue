@@ -31,7 +31,6 @@ import SeenByModal from '@/components/thread/seen_by_modal'
 import ExportDataModal from '@/components/group/export_data_modal'
 import VueUpgradedModal from '@/components/user/vue_upgraded_modal'
 import InstallSamlProviderModal from '@/components/install_saml_provider/modal'
-import GroupSubscriptionCard from '@/components/group/subscription_card'
 
 export default
   components:
@@ -66,7 +65,6 @@ export default
     'ExportDataModal': ExportDataModal
     'VueUpgradedModal': VueUpgradedModal
     'InstallSamlProviderModal': InstallSamlProviderModal
-    'GroupSubscriptionCard': GroupSubscriptionCard
 
   data: ->
     isOpen: false

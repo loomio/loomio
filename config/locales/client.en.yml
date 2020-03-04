@@ -31,12 +31,15 @@ en:
     was_gift_expired: "Your free plan has now expired."
 
   subscription_status:
-    plan: "Plan - {{name}}"
-    state: "Status - {{state}}"
-    active_members: "Active members - {{count}}"
-    max_threads: "Max threads - {{count}}"
-    max_members: "Max members - {{count}}"
-    expires_at: "Expires - {{date}}"
+    plan: "Plan"
+    state: "Status"
+    active_members: "Active members"
+    max_threads: "Max threads"
+    max_members: "Max members"
+    expires_at: "Expires"
+    renews_at: "Renews"
+    referral_code: "Chargify referral code"
+    chargify_link: "Chargify billing portal"
 
   loomio_tags:
     all_tags: All tags
