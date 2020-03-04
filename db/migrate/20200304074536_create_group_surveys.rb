@@ -12,6 +12,7 @@ class CreateGroupSurveys < ActiveRecord::Migration[5.2]
     add_column :group_surveys, :role, :string
     add_column :group_surveys, :website, :string
     add_column :group_surveys, :misc, :text
+    add_timestamps :group_surveys
     add_index  :group_surveys, :group_id
   end
 end

@@ -285,6 +285,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_074536) do
     t.string "role"
     t.string "website"
     t.text "misc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_group_surveys_on_group_id"
   end
 
