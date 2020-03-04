@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_16_011754) do
+ActiveRecord::Schema.define(version: 2020_03_04_074536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -271,6 +271,23 @@ ActiveRecord::Schema.define(version: 2020_01_16_011754) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_group_identities_on_group_id"
     t.index ["identity_id"], name: "index_group_identities_on_identity_id"
+  end
+
+  create_table "group_surveys", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.string "category"
+    t.string "location"
+    t.string "size"
+    t.string "declaration"
+    t.text "purpose"
+    t.string "usage"
+    t.string "referrer"
+    t.string "role"
+    t.string "website"
+    t.text "misc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_surveys_on_group_id"
   end
 
   create_table "group_visits", id: :serial, force: :cascade do |t|
