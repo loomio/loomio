@@ -64,7 +64,7 @@ class GroupSerializer < Simple::GroupSerializer
 
   attributes_for_formal :subscription_plan, :subscription_active,
     :subscription_max_members, :subscription_max_threads, :subscription_expires_at,
-    :subscription_state, :subscription_created_at
+    :subscription_state, :subscription_created_at, :subscription_info
 
   def tag_names
     object.info['tag_names'] || []
@@ -96,6 +96,10 @@ class GroupSerializer < Simple::GroupSerializer
 
   def subscription_created_at
     subscription.created_at
+  end
+
+  def subscription_info
+    subscription.info
   end
 
   def subscription
