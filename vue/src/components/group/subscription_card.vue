@@ -48,7 +48,7 @@ v-card.my-6(v-if="canSee" outlined)
     v-simple-table(dense)
       template(v-slot:default)
         tbody
-          tr(v-for="(val, key) in tableData" :key="key")
+          tr(v-for="(val, key) in tableData" :key="key" v-if="val")
             td(v-t="'subscription_status.' + key")
             td(v-html="val")
   v-card-actions
