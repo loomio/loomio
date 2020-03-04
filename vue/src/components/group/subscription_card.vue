@@ -1,11 +1,14 @@
 <script lang="coffee">
 import { startCase } from 'lodash'
 import parseISO from 'date-fns/parseISO'
+import AbilityService from '@/shared/services/ability_service'
 
 export default
   props:
     group: Object
   computed:
+    canSee: ->
+      AbilityService.canAdministerGroup(@group)
     expiresAt: ->
       @exactDate(@group.subscriptionExpiresAt)
     planName: ->
@@ -35,7 +38,7 @@ export default
       }
 </script>
 <template lang="pug">
-v-card.my-6(outlined)
+v-card.my-6(v-if="canSee" outlined)
   v-card-title
     v-icon.mr-2(color="primary") mdi-rocket
     h1.headline(v-t="'group_page.options.subscription_status'")
