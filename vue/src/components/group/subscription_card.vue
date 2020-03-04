@@ -17,6 +17,10 @@ export default
       @exactDate(parseISO(@group.subscriptionInfo.chargify_next_assessment_at))
     hasSubscriptionInfo: ->
       @group.subscriptionInfo
+    hasReferralCode: ->
+      @hasSubscriptionInfo && @group.subscriptionInfo.chargify_referral_code
+    hasChargifyLink: ->
+      @hasSubscriptionInfo && @group.subscriptionInfo.chargify_management_link
     tableData: ->
       {
         plan: @planName
@@ -26,8 +30,8 @@ export default
         active_members: @group.orgMembersCount
         max_members: @group.subscriptionMaxMembers if @group.subscriptionMaxMembers
         max_threads: @group.subscriptionMaxThreads if @group.subscriptionMaxThreads
-        referral_code: "<strong>#{@group.subscriptionInfo.chargify_referral_code}</strong>" if @hasSubscriptionInfo && @group.subscriptionInfo.chargify_referral_code
-        chargify_link: "<a href=#{@group.subscriptionInfo.chargify_management_link} target=_blank>#{@group.subscriptionInfo.chargify_management_link}</a>" if @hasSubscriptionInfo && @group.subscriptionInfo.chargify_management_link
+        referral_code: "<strong>#{@group.subscriptionInfo.chargify_referral_code}</strong>" if @hasReferralCode
+        chargify_link: "<a href=#{@group.subscriptionInfo.chargify_management_link} target=_blank>#{@group.subscriptionInfo.chargify_management_link}</a>" if @hasChargifyLink
       }
 </script>
 <template lang="pug">
