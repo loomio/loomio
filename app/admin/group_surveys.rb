@@ -3,6 +3,8 @@ ActiveAdmin.register GroupSurvey do
 
   index do
     column :id
+    column :created_at
+    column :updated_at
     # column 'Group Id', :group_id
     column 'Group Name' do |survey|
       group = Group.find(survey.group_id)
