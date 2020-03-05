@@ -3,10 +3,20 @@ ActiveAdmin.register GroupSurvey do
 
   index do
     column :id
-    column 'Group Id', :group_id
+    # column 'Group Id', :group_id
     column 'Group Name' do |survey|
       group = Group.find(survey.group_id)
       link_to(group.name, admin_group_path(group))
+    end
+    column 'Subscription Plan' do |survey|
+      group = Group.find(survey.group_id)
+      subscription = Subscription.find(group.subscription_id)
+      link_to(subscription.plan, admin_subscription_path(subscription))
+    end
+    column 'Subscription State' do |survey|
+      group = Group.find(survey.group_id)
+      subscription = Subscription.find(group.subscription_id)
+      link_to(subscription.state, admin_subscription_path(subscription))
     end
     column :category
     column :location
