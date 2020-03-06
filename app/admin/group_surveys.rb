@@ -2,7 +2,7 @@ ActiveAdmin.register GroupSurvey do
   permit_params :group_id, :category, :location, :size, :declaration, :purpose, :usage, :referrer, :role, :website, :misc
 
   actions :index, :show, :new, :edit, :update, :create
-  
+
   index do
     column :id
     # column 'Group Id', :group_id
@@ -32,6 +32,6 @@ ActiveAdmin.register GroupSurvey do
     column :misc
     column :created_at
     column :updated_at
-    # actions
+    actions
   end
 end
