@@ -18,6 +18,7 @@ export default
     sizes: ['ten', 'twenty', 'fifty', 'two_hundred', 'five_hundred', 'two_thousand', 'else']
     uses: ['governance', 'collaboration', 'engagement', 'self_management', 'remote', 'document', 'decision_making', 'funding', 'project', 'forum', 'other']
     referrers: ['google', 'invitation', 'referral', 'social', 'capterra', 'other']
+    usage: []
     rules: {
       required: (input) ->
         if input && input.length
@@ -40,6 +41,11 @@ export default
           .catch(onError(@survey, () => @submitting = false))
       else
         @submitting = false
+
+  watch:
+    usage: ->
+      return unless @usage.length
+      @survey.usage = @usage.join(", ")
 </script>
 
 <template lang="pug">
@@ -58,7 +64,7 @@ v-card.group-form
       v-radio-group(v-model='survey.size' :label="$t('group_survey.size_question')" :rules="[rules.required]")
         v-radio(v-for='size in sizes' :key='size' :value='size' :aria-label='size' :label="$t('group_survey.sizes.' + size)")
 
-      v-radio-group(v-model='survey.usage' :label="$t('group_survey.usage')" multiple :rules="[rules.required]")
+      v-radio-group(v-model='usage' :label="$t('group_survey.usage')" multiple :rules="[rules.required]")
         v-radio(v-for='use in uses' :key='use' :value='use' :aria-label='use' :label="$t('group_survey.uses.' + use)")
 
       v-radio-group(v-model='survey.referrer' :label="$t('group_survey.referrer')" :rules="[rules.required]")
