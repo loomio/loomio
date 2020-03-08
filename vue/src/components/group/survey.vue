@@ -14,7 +14,7 @@ export default
   data: ->
     submitting: false
     survey: null
-    categories: ['company', 'cooperative', 'bcorp', 'government', 'nonprofit', 'political', 'society', 'union', 'university', 'other']
+    categories: ['company', 'cooperative', 'bcorp', 'government', 'nonprofit', 'political', 'society', 'union', 'university', 'activist', 'club', 'collective', 'community', 'faith', 'volunteer', 'other']
     sizes: ['ten', 'twenty', 'fifty', 'two_hundred', 'five_hundred', 'two_thousand', 'else']
     uses: ['governance', 'collaboration', 'engagement', 'self_management', 'remote', 'document', 'decision_making', 'funding', 'project', 'forum', 'other']
     referrers: ['google', 'invitation', 'referral', 'social', 'capterra', 'other']
@@ -46,15 +46,14 @@ export default
 v-card.group-form
   submit-overlay(:value='submitting')
   v-card-title
-    h1.headline A few more questions
-    //- dismiss-modal-button(:close='close')
+    h1.headline(v-t="'group_survey.title'")
+    p.body-1.mt-4(v-t="'group_survey.subtitle'")
   v-card-text
-    span {{survey}}
-    v-form(v-model="valid" ref="form")
+    v-form(ref="form")
       v-text-field(v-model='survey.location' :label="$t('group_survey.location')" :rules="[rules.required]")
 
       v-radio-group(v-model='survey.category' :label="$t('group_survey.category_question')" :rules="[rules.required]")
-        v-radio(v-for='category in categories' :key='category' :value='category' :aria-label='category' :label="$t('group_survey.categories_normal.' + category)")
+        v-radio(v-for='category in categories' :key='category' :value='category' :aria-label='category' :label="$t('group_survey.categories.' + category)")
 
       v-radio-group(v-model='survey.size' :label="$t('group_survey.size_question')" :rules="[rules.required]")
         v-radio(v-for='size in sizes' :key='size' :value='size' :aria-label='size' :label="$t('group_survey.sizes.' + size)")
@@ -73,7 +72,7 @@ v-card.group-form
 
   v-card-actions
     v-spacer
-    v-btn.group-form__submit-button(:disabled="submitting" color="primary" @click='submit()' v-t="'group_form.submit_start_group'")
+    v-btn.group-form__submit-button(:disabled="submitting" color="primary" @click='submit()' v-t="'common.action.save'")
 </template>
 <style>
 .v-text-field__details {
