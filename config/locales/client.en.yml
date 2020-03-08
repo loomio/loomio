@@ -151,6 +151,7 @@ en:
     settings: 'Settings'
     help: 'Help'
     anonymous: Anonymous
+    required: Required
     privacy:
       privacy: 'Privacy'
       public: 'Public'
@@ -2344,3 +2345,86 @@ en:
       <p>It's a faster, better Loomio!</p>
       <p>We think you'll love it, but if you need to, you can switch back to the old version from the sidebar.</p>
       <p><a href="{{link}}" target="_blank">Find out what's new.</a></p>
+
+  group_survey:
+    categories_community:
+      activist: Activist organization
+      club: Club (sports club or other type of club)
+      collective: Collective
+      community: Community of purpose
+      faith: Faith or spiritual group
+      volunteer: Volunteer organization
+    categories_normal:
+      company: Company
+      cooperative: Cooperative
+      bcorp: B-Corp or Social Enterprise
+      government: Government/Local Government
+      nonprofit: Nonprofit
+      political: Political party
+      society: Society or Association
+      union: Union
+      university: University or School
+      other: Other
+    sizes:
+      ten: "< 10"
+      twenty: "11 - 20"
+      fifty: "21 - 50"
+      two_hundred: "51 - 200"
+      five_hundred: "201 - 500"
+      two_thousand: "501 - 2000"
+      else: "> 2000"
+    uses:
+      governance: Governance for Board, Committee or Trust
+      collaboration: Collaborative working group
+      engagement: Stakeholder or member engagement
+      self_management: Self-management (collaborative workplace)
+      remote: Remote working
+      document: Collaborative document development, e.g. a strategic plan
+      decision_making: Decision-making processes (Advice, Consent)
+      funding: Funding or Grant decisions
+      project: Project team
+      forum: Forum
+      other: Other
+    referrers:
+      google: Google search
+      invitation: Invited to a Loomio group
+      referral: Referral
+      social: Social media (Facebook, Twitter, LinkedIn)
+      capterra: Capterra
+      other: Other
+    title: Community & Volunteer Application
+    survey_title: Thank you for your subscription!
+    declaration: "My group is a community and volunteer group. We have no full-time paid staff."
+    get_a_group_html: |
+      You need a group to continue. Click here to <a href="/start_new" target="_blank">start a group</a>, then reload this page.
+    intro_html: |
+      <p>Hi %{name}!</p>
+      <p>Please allow us to get to know you better. We will not share any information provided in this form without your permission.</p>
+    eligible_html: |
+      <h2>Is your group eligible?</h2>
+      <p>Volunteer and community groups have no full-time paid staff and are supported by members giving their time to achieve a social or environmental purpose.</p>
+      <p>We look forward to helping you make even more of a difference!</p>
+    choose_group: Choose your group
+    location: Where is your group based?
+    importance: "What are you using Loomio for and why is this important to you?"
+    source: "How did you hear about Loomio? What made you decide to try it?"
+    decision: "Can you tell us about a decision your group has made together on Loomio?"
+    enable: "What does using Loomio enable for your group that wouldn’t be possible otherwise?"
+    impact: "What is the impact you are hoping to have with your group? If you are successful, what will be different in the world?"
+    purpose: "What is the purpose of your group?"
+    permissions_yes: 'Yes'
+    permissions_no: 'No'
+    permissions_maybe: 'Maybe, tell me more'
+    blog_question: 'Are you willing to be contacted for a blog story, and to provide some images and photos?'
+    social_question: 'Do you give Loomio permission to publicly share that your group is using Loomio? (e.g. on social media)'
+    confirm_question: Community and Volunteer group declaration - I confirm
+    category_question: "Select which category best describes your group"
+    anything_else: "Is there anything else you'd like to tell us?"
+    size_question: "How many people are in your group?"
+    role: "What is your role in the group?"
+    website: "Website URL"
+    usage: "How do you plan to use Loomio? (Check all that apply)"
+    referrer: "How did you hear about Loomio?"
+    help_html: |
+      <p>Thanks for answering these questions. When you click 'Submit' below, you will be taken to a page where you can purchase a community plan for your group.</p>
+      <p>We do not monitor this form, so if you have any questions or want to purchase at a later date, please <a href="/contact" target="_blank">contact us</a>.</p>
