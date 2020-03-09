@@ -40,6 +40,7 @@ export default
             @submitting = false
           .catch(onError(@survey, () => @submitting = false))
       else
+        Flash.error('group_survey.validation_error')
         @submitting = false
 
   watch:
