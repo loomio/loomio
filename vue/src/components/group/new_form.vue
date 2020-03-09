@@ -53,10 +53,11 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
-          openModal
-            component: 'GroupSurvey'
-            props:
-              group: group
+          if group.isParent()
+            openModal
+              component: 'GroupSurvey'
+              props:
+                group: group
       .catch onError(@group)
 
     suggestHandle: ->

@@ -2350,6 +2350,7 @@ en:
     title: Success! Just a few more details
     subtitle: Please help us get to know you better. We will not share any information provided in this form without your permission.
     validation_error: Please fill out all required fields.
+    success: Thank you!
     categories:
       activist: Activist organization
       club: Club (sports club or other type of club)

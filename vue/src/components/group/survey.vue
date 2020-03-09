@@ -36,6 +36,7 @@ export default
       if @$refs.form.validate()
         @survey.save()
           .then (data) =>
+            Flash.success('group_survey.success')
             @close()
             @submitting = false
           .catch(onError(@survey, () => @submitting = false))
