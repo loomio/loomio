@@ -53,6 +53,7 @@ export default
 v-card.group-survey
   submit-overlay(:value='submitting')
   v-card-title
+    v-icon.mr-2(color="primary") mdi-rocket
     h1.headline(v-t="'group_survey.title'")
     p.body-1.mt-4(v-t="'group_survey.subtitle'")
   v-card-text
