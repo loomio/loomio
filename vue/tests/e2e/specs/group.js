@@ -86,6 +86,19 @@ module.exports = {
     page.fillIn('#group-name', 'Open please')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
+    page.pause(500)
+
+    page.expectElement('.group-survey')
+    page.fillIn('.group-survey__location input', "Los Angeles")
+    page.click('.group-survey__category-business')
+    page.click('.group-survey__size-ten')
+    page.click('.group-survey__usage-governance')
+    page.click('.group-survey__referrer-google')
+    page.fillIn('.group-survey__role input', "Queen")
+    page.fillIn('.group-survey__website input', "dirtydancing.com")
+    page.fillIn('.group-survey__misc textarea', "booya")
+    page.click('.group-survey__submit-button')
+    page.expectFlash('Thank you!')
   },
 
   'starts_a_closed_group': (test) => {
@@ -130,8 +143,8 @@ module.exports = {
     page.expectElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-
     page.pause(500)
+
     page.click('.group-page-settings-tab')
     page.click('.group-page-actions__edit_group')
     page.click('.group-form__permissions-tab')
@@ -151,8 +164,8 @@ module.exports = {
     page.expectNoElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-
     page.pause(500)
+
     page.click('.group-page-settings-tab')
     page.click('.group-page-actions__edit_group')
     page.click('.group-form__permissions-tab')
@@ -172,8 +185,8 @@ module.exports = {
     page.expectNoElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-
     page.pause(500)
+
     page.click('.group-page-settings-tab')
     page.click('.group-page-actions__edit_group')
     page.click('.group-form__permissions-tab')
