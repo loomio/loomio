@@ -1,10 +1,7 @@
 ActiveAdmin.register FormalGroup, as: 'Group' do
+  includes :group_survey
 
   controller do
-    def show
-      @survey = GroupSurvey.find_by(group_id: Group.find(params[:id]))
-    end
-
     def permitted_params
       params.permit!
     end
@@ -69,9 +66,9 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       render 'subscription', { subscription: Subscription.for(group)}
     end
 
-    if controller.instance_variable_get(:@survey)
+    if group.group_survey
       panel("Group survey") do
-        link_to("Group survey", admin_group_survey_path(controller.instance_variable_get(:@survey)))
+        link_to("Group survey", admin_group_survey_path(group.group_survey))
       end
     end
 
