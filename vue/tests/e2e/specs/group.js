@@ -90,7 +90,7 @@ module.exports = {
 
     page.expectElement('.group-survey')
     page.fillIn('.group-survey__location input', "Los Angeles")
-    page.click('.group-survey__category-company')
+    page.click('.group-survey__category-business')
     page.click('.group-survey__size-ten')
     page.click('.group-survey__usage-governance')
     page.click('.group-survey__referrer-google')

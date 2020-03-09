@@ -14,7 +14,22 @@ export default
   data: ->
     submitting: false
     survey: null
-    categories: ['company', 'cooperative', 'bcorp', 'government', 'nonprofit', 'political', 'society', 'union', 'university', 'activist', 'club', 'collective', 'community', 'faith', 'volunteer', 'other']
+    categories: [
+      'business'
+      'bcorp'
+      'cooperative'
+      'consultant'
+      'government'
+      'nonprofit'
+      'union'
+      'party'
+      'activist'
+      'community'
+      'education'
+      'faith'
+      'volunteer'
+      'other'
+    ]
     sizes: ['ten', 'twenty', 'fifty', 'two_hundred', 'five_hundred', 'two_thousand', 'else']
     uses: ['governance', 'collaboration', 'engagement', 'self_management', 'remote', 'document', 'decision_making', 'funding', 'project', 'forum', 'other']
     referrers: ['google', 'invitation', 'referral', 'social', 'capterra', 'other']

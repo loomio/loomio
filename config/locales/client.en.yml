@@ -2352,21 +2352,19 @@ en:
     validation_error: Please fill out all required fields.
     success: Thank you!
     categories:
-      activist: Activist organization
-      club: Club (sports club or other type of club)
-      collective: Collective
-      community: Community of purpose
-      faith: Faith or spiritual group
-      volunteer: Volunteer organization
-      company: Company
+      business: Business
+      bcorp: B-Corp or Social enterprise
       cooperative: Cooperative
-      bcorp: B-Corp or Social Enterprise
+      consultant: Consultant services or agency
       government: Government/Local Government
       nonprofit: Nonprofit
-      political: Political party
-      society: Society or Association
       union: Union
-      university: University or School
+      party: Political party
+      activist: Activist organization
+      community: Community or collective
+      education: Education or research
+      faith: Faith or spiritual group
+      volunteer: Volunteer organization
       other: Other
     sizes:
       ten: "< 10"
