@@ -1,4 +1,5 @@
 ActiveAdmin.register GroupSurvey do
+  menu false
   includes :group
   permit_params :group_id, :category, :location, :size, :declaration, :purpose, :usage, :referrer, :role, :website, :misc
 
