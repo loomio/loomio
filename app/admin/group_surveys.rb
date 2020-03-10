@@ -1,5 +1,5 @@
 ActiveAdmin.register GroupSurvey do
-  includes :group
+  # includes :group
   permit_params :group_id, :category, :location, :size, :declaration, :purpose, :usage, :referrer, :role, :website, :misc
 
   actions :index, :show, :new, :edit, :update, :create
@@ -8,7 +8,7 @@ ActiveAdmin.register GroupSurvey do
     column :id
     column :group_id
     column 'Group Name' do |survey|
-      link_to(survey.group.name, admin_group_path(survey.group))
+      link_to(survey.group.name, admin_group_path(survey.group)) if survey.group
     end
     # column 'Subscription Plan' do |survey|
     #   group = Group.find(survey.group_id)
