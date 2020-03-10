@@ -1,5 +1,5 @@
 ActiveAdmin.register GroupSurvey do
-  # includes :group
+  includes :group
   permit_params :group_id, :category, :location, :size, :declaration, :purpose, :usage, :referrer, :role, :website, :misc
 
   actions :index, :show, :new, :edit, :update, :create
