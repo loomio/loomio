@@ -7,9 +7,9 @@ ActiveAdmin.register GroupSurvey do
   index do
     column :id
     column :group_id
-    column 'Group Name' do |survey|
-      link_to(survey.group.name, admin_group_path(survey.group)) if survey.group
-    end
+    # column 'Group Name' do |survey|
+    #   link_to(survey.group.name, admin_group_path(survey.group)) if survey.group
+    # end
     # column 'Subscription Plan' do |survey|
     #   group = Group.find(survey.group_id)
     #   subscription = Subscription.find(group.subscription_id)
