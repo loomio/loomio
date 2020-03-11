@@ -89,7 +89,7 @@ group :test do
   gem 'poltergeist'
   gem 'webmock'
   gem 'rack_session_access'
-  gem 'rspec-rails', '~> 3.9.0'
+  gem 'rspec-rails', '~> 3.9.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
