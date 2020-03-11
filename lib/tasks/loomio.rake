@@ -60,4 +60,10 @@ namespace :loomio do
     end
   end
 
+  task populate_chargify_management_links: :environment do
+    if Date.today.sunday?
+      SubscriptionService.delay.populate_management_links
+    end
+  end
+
 end
