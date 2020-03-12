@@ -19,6 +19,7 @@ module.exports = {
     page.click('.join-group-button')
     page.signInViaEmail('new@account.com')
     page.pause(500)
+    
     page.click('.dismiss-modal-button')
     page.click('.join-group-button', 500)
     page.ensureSidebar()
