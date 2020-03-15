@@ -89,11 +89,12 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
 
     panel("Members") do
-      table_for group.all_memberships.each do
+      table_for group.all_memberships.order(created_at: :desc).each do
         column(:name)        { |m| link_to m.user.name, admin_user_path(m.user) }
         column(:email)       { |m| m.user.email }
         column(:coordinator) { |m| m.admin }
         column(:invter)      { |m| m.inviter.try(:name) }
+        column(:created_at)  { |m| m.created_at }
         column(:accepted_at) { |m| m.accepted_at }
         column(:archived_at) { |m| m.archived_at }
         column(:saml_session_expires_at) { |m| m.saml_session_expires_at }
