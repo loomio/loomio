@@ -43,9 +43,10 @@ v-menu.notifications(offset-y bottom v-model="open")
           span.notifications__activity {{unread.length}}
         v-icon mdi-bell
   v-sheet.notifications__dropdown.py-2
-    div(v-for="notification in notifications", :key="notification.id")
+    div(v-if ="notifications.length > 0" v-for="notification in notifications", :key="notification.id")
       notification(:notification="notification", :unread="unreadIds.includes(notification.id)")
-    div(v-if="notifications.length == 0" v-t="'notifications.no_notifications'")
+    v-layout.align-center.justify-center(v-if="notifications.length == 0")
+      span.py-3.px-3(v-t="'notifications.no_notifications'")
 </template>
 
 <style lang="sass">
