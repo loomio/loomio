@@ -172,7 +172,8 @@ export default new class AbilityService
 
   canResendMembership: (membership) ->
     membership and
-    !membership.acceptedAt
+    !membership.acceptedAt and
+    membership.inviter() == Session.user()
 
   canManageMembershipRequests: (group) ->
     (group.membersCanAddMembers and Session.user().isMemberOf(group)) or @canAdministerGroup(group)
