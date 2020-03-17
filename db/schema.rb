@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_063922) do
+ActiveRecord::Schema.define(version: 2020_03_17_215305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -632,6 +632,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_063922) do
     t.integer "versions_count", default: 0
     t.string "reason_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
+    t.datetime "cast_at"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
   end

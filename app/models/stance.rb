@@ -41,12 +41,13 @@ class Stance < ApplicationRecord
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
+  scope :cast,           -> { where("cast_at IS NOT NULL") }
+  scope :not_cast,       -> { where("cast_at IS NULL") }
 
   validate :enough_stance_choices
   validate :total_score_is_valid
   validate :participant_is_complete
   validates :reason, length: { maximum: 500 }
-
 
   delegate :locale,         to: :author
   delegate :group,          to: :poll, allow_nil: true
