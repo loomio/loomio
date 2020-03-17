@@ -1,18 +1,11 @@
 class ConvertDidNotVotesToStances < ActiveRecord::Migration[5.2]
   def change
-    stances = []
     puts "before"
     puts "did not vote count:", PollDidNotVote.count
     puts "stance count:", Stance.count
-    PollDidNotVote.find_each do |dnv|
-      stances << Stance.new(
-        poll_id: dnv.poll_id,
-        participant_id: dnv.user_id,
-        created_at: poll.created_at,
-        updated_at: poll.updated_at
-      )
-    end
-    Stance.import(stances)
+
+    execute "INSERT INTO stances (poll_id, participant_id, created_at) (SELECT poll_did_not_votes.poll_id as poll_id, poll_did_not_votes.user_id as participant_id, polls.created_at as created_at FROM poll_did_not_votes JOIN polls ON poll_did_not_votes.poll_id = polls.id)"
+
     puts "after"
     puts "did not vote count:", PollDidNotVote.count
     puts "stance count:", Stance.count
