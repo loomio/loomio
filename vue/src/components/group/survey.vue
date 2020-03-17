@@ -58,11 +58,6 @@ export default
       else
         Flash.error('group_survey.validation_error')
         @submitting = false
-
-  watch:
-    usage: ->
-      return unless @usage.length
-      @survey.usage = @usage.join(", ")
 </script>
 
 <template lang="pug">
@@ -82,7 +77,7 @@ v-card.group-survey
       v-radio-group.group-survey__size(v-model='survey.size' :label="$t('group_survey.size_question')" :rules="[rules.required]")
         v-radio(v-for='size in sizes' :key='size' :value='size' :aria-label='size' :label="$t('group_survey.sizes.' + size)" :class="'group-survey__size-' + size")
 
-      v-radio-group.group-survey__usage(v-model='usage' :label="$t('group_survey.usage')" :rules="[rules.required]")
+      v-radio-group.group-survey__usage(v-model='survey.usage' :label="$t('group_survey.usage')" :rules="[rules.required]")
         v-radio(v-for='use in uses' :key='use' :value='use' :aria-label='use' :label="$t('group_survey.uses.' + use)" :class="'group-survey__usage-' + use")
 
       v-radio-group.group-survey__referrer(v-model='survey.referrer' :label="$t('group_survey.referrer')" :rules="[rules.required]")
