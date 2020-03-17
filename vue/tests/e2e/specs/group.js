@@ -19,7 +19,7 @@ module.exports = {
     page.click('.join-group-button')
     page.signInViaEmail('new@account.com')
     page.pause(500)
-    
+
     page.click('.dismiss-modal-button')
     page.click('.join-group-button', 500)
     page.ensureSidebar()
@@ -89,17 +89,17 @@ module.exports = {
     page.expectFlash('Group started')
     page.pause(500)
 
-    page.expectElement('.group-survey')
-    page.fillIn('.group-survey__location input', "Los Angeles")
-    page.click('.group-survey__category-business')
-    page.click('.group-survey__size-ten')
-    page.click('.group-survey__usage-governance')
-    page.click('.group-survey__referrer-google')
-    page.fillIn('.group-survey__role input', "Queen")
-    page.fillIn('.group-survey__website input', "dirtydancing.com")
-    page.fillIn('.group-survey__misc textarea', "booya")
-    page.click('.group-survey__submit-button')
-    page.expectFlash('Thank you!')
+    // page.expectElement('.group-survey')
+    // page.fillIn('.group-survey__location input', "Los Angeles")
+    // page.click('.group-survey__category-business')
+    // page.click('.group-survey__size-ten')
+    // page.click('.group-survey__usage-governance')
+    // page.click('.group-survey__referrer-google')
+    // page.fillIn('.group-survey__role input', "Queen")
+    // page.fillIn('.group-survey__website input', "dirtydancing.com")
+    // page.fillIn('.group-survey__misc textarea', "booya")
+    // page.click('.group-survey__submit-button')
+    // page.expectFlash('Thank you!')
   },
 
   'starts_a_closed_group': (test) => {
