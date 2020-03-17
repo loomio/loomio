@@ -14,6 +14,7 @@ class Ahoy::Store < Ahoy::DatabaseStore
   def track_visit(data)
     data[:id] = ensure_uuid(data.delete(:visit_token))
     data[:visitor_id] = ensure_uuid(data.delete(:visitor_token))
+    data[:gclid] = request.parameters[:gclid]
     super(data)
   end
 

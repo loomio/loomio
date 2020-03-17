@@ -1,3 +1,15 @@
+## 2020-03-16 (Loomio 2.1.3)
+
+- Add subscription information panel in Group Settings
+- Add support for Loom (video platform) share and embed links in text editor
+- Add sorting of Pinned Threads alphanumerically
+- Add in-app notification for Group invitation
+- Fix Meeting Poll vote form reset issue
+- Fix Group page tabs and Thread action tabs not being scrollable on mobile
+- Fix reopen Thread action not showing
+- Fix sign-in modal showing when user is already signed in in some situations
+- Fix completion link in merge accounts email
+
 ## 2020-02-26 (Loomio 2.1.2)
 
 - Added ability for users to merge their own accounts together
