@@ -48,36 +48,6 @@ describe Poll do
     end
   end
 
-  describe 'anyone_can_participate=' do
-
-    describe 'existing poll' do
-      before { poll.save }
-      it 'changes guest group membership_granted_upon to request' do
-        poll.update(anyone_can_participate: true)
-        expect(poll.guest_group.reload.membership_granted_upon).to eq 'request'
-      end
-
-      it 'changes guest group membership_granted_upon to approval' do
-        poll.update(anyone_can_participate: false)
-        expect(poll.guest_group.reload.membership_granted_upon).to eq 'invitation'
-      end
-    end
-
-    describe 'unpersisted poll' do
-      it 'changes guest group membership_granted_upon to request' do
-        poll.anyone_can_participate = true
-        poll.save
-        expect(poll.reload.guest_group.reload.membership_granted_upon).to eq 'request'
-      end
-
-      it 'changes guest group membership_granted_upon to approval' do
-        poll.anyone_can_participate = false
-        poll.save
-        expect(poll.reload.guest_group.reload.membership_granted_upon).to eq 'invitation'
-      end
-    end
-  end
-
   describe 'ordered_poll_options' do
     let(:poll) { create :poll }
     let(:meeting) { create :poll_meeting }
