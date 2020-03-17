@@ -89,8 +89,6 @@ export default
         if @$route.query.tag
           chain = chain.find({tagNames: {'$contains': @$route.query.tag}})
 
-        chain = chain.compoundsort([['pinned', true], ['lastActivityAt', true]])
-
         @discussions = chain.data()
 
     fetch: debounce ->
@@ -123,6 +121,12 @@ export default
     '$route.query': 'refresh'
 
   computed:
+    pinnedDiscussions: ->
+      orderBy(@discussions.filter((discussion) -> discussion.pinned), ['title'], ['asc'])
+
+    regularDiscussions: ->
+      orderBy(@discussions.filter((discussion) -> !discussion.pinned), ['lastActivityAt'], ['desc'])
+
     groupTags: ->
       @group && @group.parentOrSelf().tagNames || []
 
@@ -192,7 +196,8 @@ div.discussions-panel(v-if="group")
           p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(two-line)
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions" :key="thread.id" :thread="thread" group-page)
+            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions" :key="thread.id" :thread="thread" group-page)
+            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
 
           v-layout(justify-center)
             v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")

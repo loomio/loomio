@@ -220,7 +220,7 @@ export default new class ThreadService
           submit: thread.close
           text:
             title: 'close_explanation_modal.close_thread'
-            fragment: 'close_thread'
+            helptext: 'close_explanation_modal.body'
             flash: 'discussion.closed.closed'
         )
     else
