@@ -43,7 +43,7 @@
     "tiptap": "1.26.6",
     "tiptap-commands": "1.12.5",
     "tiptap-extensions": "1.28.6",
-    "turndown": "^5.0.3",
+    "turndown": "^6.0.0",
     "turndown-plugin-gfm": "^1.0.2",
     "url-search-params-polyfill": "^8.0.0",
     "vinyl-source-stream": "^2.0.0",
