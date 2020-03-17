@@ -37,7 +37,7 @@ v-card.change-password-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.sto
       v-text-field.change-password-form__password(:label="$t('sign_up_form.password_label')" required type='password' v-model='user.password')
       validation-errors(:subject='user', field='password')
     .change-password-form__password-confirmation-container
-      v-text-field.change-password-form__password-confirmation(:label="$t('sign_up_form.password_confirmation_label')" required='true' type='password' v-model='user.passwordConfirmation')
+      v-text-field.change-password-form__password-confirmation(:label="$t('sign_up_form.password_confirmation_label')" required='true' type='password' v-model='user.passwordConfirmation' autocomplete="new-password")
       validation-errors(:subject='user', field='passwordConfirmation')
   v-card-actions
     v-spacer
