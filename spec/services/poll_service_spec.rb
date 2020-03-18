@@ -171,16 +171,6 @@ describe PollService do
       PollService.close(poll: poll_created, actor: user)
       expect(user.ability.can?(:create, stance_created)).to eq false
     end
-
-    it 'creates poll_did_not_votes for each member that did not vote' do
-      formal_user = create :user
-      guest_user = create :user
-      PollService.create(poll: poll_created, actor: user)
-      poll_created.group.add_member! formal_user
-      poll_created.guest_group.add_member! guest_user
-      PollService.close(poll: poll_created, actor: user)
-      expect(poll_created.reload.poll_did_not_voters).to include(formal_user, guest_user)
-    end
   end
 
   describe 'expire_lapsed_polls' do

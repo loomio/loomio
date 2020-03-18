@@ -11,7 +11,6 @@ module GroupExportRelations
 
     has_many :exportable_poll_options,          through: :exportable_polls, source: :poll_options
     has_many :exportable_poll_unsubscriptions,  through: :exportable_polls, source: :poll_unsubscriptions
-    has_many :exportable_poll_did_not_votes,    through: :exportable_polls, source: :poll_did_not_votes
     has_many :exportable_outcomes,              through: :exportable_polls, source: :outcomes
     has_many :exportable_stances,               through: :exportable_polls, source: :stances
     has_many :exportable_stance_choices,        through: :exportable_stances, source: :stance_choices
@@ -47,7 +46,6 @@ module GroupExportRelations
     has_many :exportable_outcome_authors, through: :exportable_outcomes,            source: :author
     has_many :exportable_stance_authors,  through: :exportable_stances,             source: :participant
     has_many :reader_users,               through: :discussion_readers,             source: :user
-    has_many :non_voters,                 through: :exportable_poll_did_not_votes,  source: :user
 
     # events
     has_many :membership_events,          through: :memberships,          source: :events
@@ -76,8 +74,7 @@ module GroupExportRelations
       self.exportable_outcome_authors,
       self.exportable_stance_authors,
       self.reaction_users,
-      self.reader_users,
-      self.non_voters
+      self.reader_users
     ])
   end
 

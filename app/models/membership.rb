@@ -60,7 +60,6 @@ class Membership < ApplicationRecord
   update_counter_cache :group, :memberships_count
   update_counter_cache :group, :pending_memberships_count
   update_counter_cache :group, :admin_memberships_count
-  update_counter_cache :group, :undecided_count
   update_counter_cache :user,  :memberships_count
 
   before_create :set_volume

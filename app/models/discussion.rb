@@ -105,10 +105,6 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
-  def update_undecided_count
-    polls.active.each(&:update_undecided_count)
-  end
-
   def created_event_kind
     :new_discussion
   end

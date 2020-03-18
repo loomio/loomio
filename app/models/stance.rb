@@ -32,7 +32,7 @@ class Stance < ApplicationRecord
   alias :author :participant
 
   update_counter_cache :poll, :stances_count
-  update_counter_cache :poll, :undecided_count
+  update_counter_cache :poll, :uncast_stances_count
 
   scope :latest, -> { where(latest: true) }
   scope :newest_first,   -> { order(created_at: :desc) }
@@ -42,7 +42,7 @@ class Stance < ApplicationRecord
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
   scope :cast,           -> { where("cast_at IS NOT NULL") }
-  scope :not_cast,       -> { where("cast_at IS NULL") }
+  scope :uncast,         -> { where("cast_at IS NULL") }
 
   validate :enough_stance_choices
   validate :total_score_is_valid

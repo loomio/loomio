@@ -12,7 +12,6 @@ class GroupExportService
     discussion_tags
     exportable_polls
     exportable_poll_options
-    exportable_poll_did_not_votes
     exportable_poll_unsubscriptions
     exportable_outcomes
     exportable_stances

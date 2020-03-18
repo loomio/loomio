@@ -56,8 +56,8 @@ class Poll < ApplicationRecord
   has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
-  has_many :poll_did_not_votes, dependent: :destroy
-  has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
+  # has_many :poll_did_not_votes, dependent: :destroy
+  # has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
   has_many :documents, as: :model, dependent: :destroy
 
@@ -108,15 +108,18 @@ class Poll < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
   define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_count) { |poll| poll.undecided.count }
+  define_counter_cache(:uncast_stances_count) { |poll| poll.stances.latest.uncast.count }
   define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
   delegate :guest_group, to: :discussion, prefix: true, allow_nil: true
 
-
-  def pct_voted
-    ((poll.stances_count / group.memberships_count) * 100).to_i
+  def cast_stances_count
+    stances_count - uncast_stances_count
+  end
+  
+  def cast_stances_pct
+    ((poll.cast_stances_count / poll.stances_count) * 100).to_i
   end
 
   def groups
