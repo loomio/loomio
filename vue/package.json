@@ -22,7 +22,7 @@
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "core-js": "^2.6.11",
-    "date-fns": "2.10.0",
+    "date-fns": "2.11.0",
     "date-fns-tz": "1.0.10",
     "deepmerge": "^4.2.2",
     "diff-match-patch": "^1.0.4",
