@@ -162,7 +162,7 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
-    css_parser (1.7.0)
+    css_parser (1.7.1)
       addressable
     database_cleaner (1.8.3)
     derailed (0.1.0)
@@ -362,7 +362,7 @@ GEM
       addressable
       css_parser (>= 1.6.0)
       htmlentities (>= 4.0.0)
-    premailer-rails (1.10.3)
+    premailer-rails (1.11.0)
       actionmailer (>= 3)
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (4.0.3)
