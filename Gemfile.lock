@@ -351,7 +351,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    pg (1.2.2)
+    pg (1.2.3)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -605,7 +605,7 @@ DEPENDENCIES
   oj
   paper_trail (~> 10.3.1)
   paperclip (~> 6.1.0)
-  pg (~> 1.2.2)
+  pg (~> 1.2.3)
   poltergeist
   premailer-rails
   puma
