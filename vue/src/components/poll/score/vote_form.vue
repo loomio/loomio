@@ -14,14 +14,17 @@ export default
     stanceChoices: []
 
   created: ->
+    done = false
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
         @pollOptions = @poll.pollOptions()
 
-        @stanceChoices = map @pollOptions, (option) =>
-            poll_option_id: option.id
-            score: @stanceChoiceFor(option).score
+        if !done
+          done = true
+          @stanceChoices = map @pollOptions, (option) =>
+              poll_option_id: option.id
+              score: @stanceChoiceFor(option).score
   methods:
     submit: ->
       @stance.id = null
