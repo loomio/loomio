@@ -16,13 +16,13 @@
     "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.8.3",
+    "@babel/polyfill": "^7.8.7",
     "@sentry/browser": "5.14.2",
-    "@sentry/integrations": "5.13.0",
+    "@sentry/integrations": "5.14.2",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "core-js": "^2.6.11",
-    "date-fns": "2.10.0",
+    "date-fns": "2.11.0",
     "date-fns-tz": "1.0.10",
     "deepmerge": "^4.2.2",
     "diff-match-patch": "^1.0.4",
@@ -32,12 +32,12 @@
     "jstimezonedetect": "~1.0.7",
     "lodash": "4.17.15",
     "lokijs": "1.5.8",
-    "marked": "^0.8.0",
+    "marked": "^0.8.1",
     "pretty-bytes": "^5.3.0",
     "promise-polyfill": "^8.1.2",
     "promise.prototype.finally": "^3.1.2",
     "raven-js": "latest",
-    "register-service-worker": "^1.7.0",
+    "register-service-worker": "^1.7.1",
     "svg.js": "^2.7.1",
     "textarea-caret": "^3.1.0",
     "tiptap": "1.26.6",
@@ -56,7 +56,7 @@
     "vue-router": "^3.1.6",
     "vue-slicksort": "^1.1.3",
     "vue2-touch-events": "^2.2.1",
-    "vuetify": "2.2.17",
+    "vuetify": "2.2.18",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
@@ -72,7 +72,7 @@
     "coffeescript": "^2.5.1",
     "fibers": "^4.0.2",
     "js-yaml-loader": "^1.2.2",
-    "sass": "^1.26.2",
+    "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
     "selenium-server-standalone-jar": "latest",
     "vue-cli-plugin-coffee": "latest",
@@ -80,6 +80,6 @@
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.6.11",
     "vuetify-loader": "latest",
-    "webpack": "4.41.6"
+    "webpack": "4.42.0"
   }
 }
