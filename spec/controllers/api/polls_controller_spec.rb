@@ -23,6 +23,7 @@ describe API::PollsController do
 
   before { group.add_member! user }
 
+
   describe 'show' do
     it 'shows a poll' do
       sign_in user

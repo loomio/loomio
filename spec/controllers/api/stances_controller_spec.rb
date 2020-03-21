@@ -22,6 +22,54 @@ describe API::StancesController do
     visitor_attributes: { name: "Johnny Doe", email: "john@doe.ninja", legal_accepted: true }
   }}
 
+  describe 'invite' do
+    let(:notified_user) { create :user }
+    let(:member)        { create :user }
+    let(:poll)          { create :poll, author: user }
+
+    before do
+      sign_in user
+    end
+
+    it 'does not permit non author to announce' do
+      sign_in create(:user)
+      post :invite, params: {poll_id: poll.id, user_ids: [notified_user.id]}
+      expect(response.status).to eq 403
+    end
+
+    it 'invite a group member' do
+      post :invite, params: {poll_id: poll.id, user_ids: [notified_user.id]}
+      expect(response.status).to eq 200
+      json = JSON.parse response.body
+      expect(json['stances'].length).to eq 1
+      expect(json['stances'][0]['participant_id']).to eq notified_user.id
+      expect(notified_user.reload.notifications.count).to eq 1
+      expect(poll.participants).to include notified_user
+    end
+
+    it 'invite new user by email' do
+      post :invite, params: {poll_id: poll.id, emails: ['jim@example.com']}
+      json = JSON.parse response.body
+      expect(response.status).to eq 200
+      email_user = User.find_by(email: "jim@example.com")
+      json = JSON.parse response.body
+      expect(json.stances.length).to eq 1
+      expect(email_user.notifications.count).to eq 1
+      expect(email_user.email_verified).to be false
+      expect(email_user.memberships.pending.count).to eq 1
+      expect(poll.participants).to include email_user
+    end
+
+    it 'invite existing user by email' do
+      post :invite, params: {poll_id: poll.id, emails: [notified_user.email]}
+      json = JSON.parse response.body
+      expect(response.status).to eq 200
+      expect(json.stances.length).to eq 1
+      expect(User.find(json.stances.first.user_id).email).to eq 1
+      expect(notified_user.participated_polls).to include poll
+    end
+  end
+
   describe 'index' do
     before { group.add_member! user }
 

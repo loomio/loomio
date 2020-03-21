@@ -1,4 +1,21 @@
 class StanceService
+  def self.invite(poll:, params:, actor:)
+    actor.ability.authorize! :invite, poll
+
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         emails: params[:emails],
+                                         user_ids: params[:user_ids])
+
+    result = Stance.import(users.map do |user|
+      Stance.new(participant_id: user.id, poll_id: poll.id)
+    end)
+
+    stances = Stance.where(id: result.ids.map(&:to_i))
+
+    Events::AnnouncementCreated.publish! poll, actor, stances, 'poll_announced'
+    stances
+  end
+
   def self.destroy(stance:, actor:)
     actor.ability.authorize! :destroy, stance
     stance.destroy

@@ -198,51 +198,6 @@ describe API::AnnouncementsController do
       end
     end
 
-    describe 'poll' do
-      let(:poll)          { create :poll, author: user }
-
-      it 'does not permit non author to announce' do
-        sign_in create(:user)
-        recipients = {user_ids: [notified_user.id], emails: []}
-        post :create, params: {poll_id: poll.id,
-                               announcement: {kind: "poll_created", recipients: recipients}}
-        expect(response.status).to eq 403
-      end
-
-      it 'notify exising user' do
-        recipients = {user_ids: [notified_user.id], emails: []}
-        post :create, params: {poll_id: poll.id,
-                               announcement: {kind: "poll_created", recipients: recipients}}
-        json = JSON.parse response.body
-        expect(response.status).to eq 200
-        expect(notified_user.notifications.count).to eq 1
-        expect(poll.guest_group.members).to include notified_user
-      end
-
-      it 'notify new user by email' do
-        recipients = {user_ids: [], emails: ['jim@example.com']}
-        post :create, params: {poll_id: poll.id,
-                               announcement: {kind: "poll_created", recipients: recipients}}
-        json = JSON.parse response.body
-        expect(response.status).to eq 200
-        email_user = User.find_by(email: "jim@example.com")
-        expect(email_user.notifications.count).to eq 1
-        expect(email_user.email_verified).to be false
-        expect(email_user.memberships.pending.count).to eq 1
-        expect(poll.guest_group.members).to include email_user
-      end
-
-      it 'notify existing user by email' do
-        recipients = {user_ids: [], emails: [notified_user.email]}
-        post :create, params: {poll_id: poll.id,
-                               announcement: {kind: "poll_created", recipients: recipients}}
-        json = JSON.parse response.body
-        expect(response.status).to eq 200
-        expect(User.where(email: notified_user.email).count).to eq 1
-        expect(notified_user.groups).to include poll.guest_group
-      end
-    end
-
     describe 'outcome' do
       let(:poll)    { create :poll, author: user, closed_at: 1.day.ago }
       let(:outcome) { create :outcome, author: user, poll: poll }
