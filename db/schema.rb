@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_223004) do
+ActiveRecord::Schema.define(version: 2020_03_23_000527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -666,6 +666,8 @@ ActiveRecord::Schema.define(version: 2020_03_11_223004) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.jsonb "info"
+    t.datetime "canceled_at"
+    t.datetime "activated_at"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
