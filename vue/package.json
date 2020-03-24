@@ -80,6 +80,6 @@
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.6.11",
     "vuetify-loader": "latest",
-    "webpack": "4.42.0"
+    "webpack": "4.42.1"
   }
 }
