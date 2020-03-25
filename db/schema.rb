@@ -60,7 +60,9 @@ ActiveRecord::Schema.define(version: 2020_03_23_000527) do
     t.string "name"
     t.jsonb "properties"
     t.datetime "time"
+    t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
     t.index ["properties"], name: "ahoy_events_properties", using: :gin
+    t.index ["properties"], name: "index_ahoy_events_on_properties", opclass: :jsonb_path_ops, using: :gin
   end
 
   create_table "ahoy_messages", id: :serial, force: :cascade do |t|
@@ -99,7 +101,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_000527) do
     t.string "utm_content"
     t.string "utm_campaign"
     t.datetime "started_at"
-    t.uuid "gclid"
+    t.string "gclid"
     t.uuid "latitude"
     t.uuid "longitude"
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
@@ -816,33 +818,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_000527) do
     t.datetime "created_at"
     t.jsonb "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
-  end
-
-  create_table "visits", id: :uuid, default: nil, force: :cascade do |t|
-    t.uuid "visitor_id"
-    t.string "ip"
-    t.text "user_agent"
-    t.text "referrer"
-    t.text "landing_page"
-    t.integer "user_id"
-    t.string "referring_domain"
-    t.string "search_keyword"
-    t.string "browser"
-    t.string "os"
-    t.string "device_type"
-    t.integer "screen_height"
-    t.integer "screen_width"
-    t.string "country"
-    t.string "region"
-    t.string "city"
-    t.string "utm_source"
-    t.string "utm_medium"
-    t.string "utm_term"
-    t.string "utm_content"
-    t.string "utm_campaign"
-    t.datetime "started_at"
-    t.string "gclid"
-    t.index ["user_id"], name: "index_visits_on_user_id"
   end
 
   create_table "webhooks", id: :serial, force: :cascade do |t|
