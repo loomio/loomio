@@ -49,11 +49,14 @@ export default
 
   methods:
     init: ->
-      console.log ahoy.trackAll()
       Records.samlProviders.authenticateForGroup(@$route.params.key)
       Records.groups.findOrFetch(@$route.params.key)
       .then (group) =>
         @group = group
+        ahoy.trackView
+          groupId: @group.id
+          organisationId: @group.parentOrSelf().id
+          pageType: 'groupPage'
         subscribeTo(@group)
         @openInstallSlackModal(@group) if @$route.query.install_slack
       .catch (error) =>
