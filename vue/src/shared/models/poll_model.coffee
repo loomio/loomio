@@ -55,10 +55,10 @@ export default class PollModel extends BaseModel
     @belongsTo 'discussion'
     @belongsTo 'group'
     @belongsTo 'guestGroup', from: 'groups'
-    @hasMany   'pollOptions'
-    @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
+    @hasMany   'pollOptions', orderBy: 'priority'
+    @hasMany   'stances'
     @hasMany   'pollDidNotVotes'
-    @hasMany   'versions', sortBy: 'createdAt'
+    @hasMany   'versions'
 
   authorName: ->
     @author().nameWithTitle(@)
