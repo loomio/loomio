@@ -1,5 +1,4 @@
 class API::DiscussionsController < API::RestfulController
-  after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
   include UsesDiscussionEvents
@@ -133,10 +132,6 @@ class API::DiscussionsController < API::RestfulController
 
   def default_scope
     super.merge(tag_cache: DiscussionTagCache.new(Array(resource || collection)).data)
-  end
-
-  def track_visit
-    VisitService.record(group: resource.group, visit: current_visit, user: current_user)
   end
 
   def accessible_records

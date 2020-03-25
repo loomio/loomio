@@ -21,6 +21,7 @@
     "@sentry/integrations": "5.14.2",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
+    "ahoy.js": "^0.3.4",
     "core-js": "^2.6.11",
     "date-fns": "2.11.0",
     "date-fns-tz": "1.0.10",
