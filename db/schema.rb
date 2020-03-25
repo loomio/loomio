@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_000527) do
+ActiveRecord::Schema.define(version: 2020_03_25_025150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_000527) do
   end
 
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
-    t.uuid "visit_token"
+    t.uuid "visit_id"
     t.integer "user_id"
     t.string "name"
     t.jsonb "properties"
@@ -322,19 +322,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_000527) do
     t.index ["group_id"], name: "index_group_surveys_on_group_id"
   end
 
-  create_table "group_visits", id: :serial, force: :cascade do |t|
-    t.uuid "visit_id"
-    t.integer "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer "user_id"
-    t.boolean "member", default: false, null: false
-    t.index ["created_at"], name: "index_group_visits_on_created_at"
-    t.index ["group_id"], name: "index_group_visits_on_group_id"
-    t.index ["member"], name: "index_group_visits_on_member"
-    t.index ["visit_id", "group_id"], name: "index_group_visits_on_visit_id_and_group_id", unique: true
-  end
-
   create_table "groups", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255
     t.datetime "created_at"
@@ -550,19 +537,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_000527) do
     t.index ["email"], name: "index_personas_on_email"
     t.index ["identity_type", "uid"], name: "index_omniauth_identities_on_identity_type_and_uid"
     t.index ["user_id"], name: "index_personas_on_user_id"
-  end
-
-  create_table "organisation_visits", id: :serial, force: :cascade do |t|
-    t.uuid "visit_id"
-    t.integer "organisation_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer "user_id"
-    t.boolean "member", default: false, null: false
-    t.index ["created_at"], name: "index_organisation_visits_on_created_at"
-    t.index ["member"], name: "index_organisation_visits_on_member"
-    t.index ["organisation_id"], name: "index_organisation_visits_on_organisation_id"
-    t.index ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true
   end
 
   create_table "outcomes", id: :serial, force: :cascade do |t|

@@ -7,8 +7,6 @@ class CreateAhoyVisitsAndEvents < ActiveRecord::Migration[5.2]
     add_column :ahoy_visits, :longitude, :uuid
     add_index  :ahoy_visits, [:visit_token], unique: true
 
-    rename_column :ahoy_events, :visit_id, :visit_token
-
     add_index :ahoy_events, [:name, :time]
     add_index :ahoy_events, :properties, using: :gin, opclass: :jsonb_path_ops
   end
