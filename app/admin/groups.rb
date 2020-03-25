@@ -1,4 +1,5 @@
 ActiveAdmin.register FormalGroup, as: 'Group' do
+  includes :group_survey
 
   controller do
     def permitted_params
@@ -65,6 +66,12 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       render 'subscription', { subscription: Subscription.for(group)}
     end
 
+    if group.group_survey
+      panel("Group survey") do
+        link_to("Group survey", admin_group_survey_path(group.group_survey))
+      end
+    end
+
     if group.parent_id
       panel("Parent group") do
         link_to group.parent.name, admin_group_path(group.parent)
@@ -82,11 +89,12 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
 
     panel("Members") do
-      table_for group.all_memberships.each do
+      table_for group.all_memberships.order(created_at: :desc).each do
         column(:name)        { |m| link_to m.user.name, admin_user_path(m.user) }
         column(:email)       { |m| m.user.email }
         column(:coordinator) { |m| m.admin }
         column(:invter)      { |m| m.inviter.try(:name) }
+        column(:created_at)  { |m| m.created_at }
         column(:accepted_at) { |m| m.accepted_at }
         column(:archived_at) { |m| m.archived_at }
         column(:saml_session_expires_at) { |m| m.saml_session_expires_at }

@@ -254,7 +254,6 @@ describe API::StancesController do
           reason: "here is my stance"
         }
         expect { post :create, params: { stance: stance_params} }.to_not change { Stance.count }
-        puts response.body
         expect(response.status).to eq 422
       end
 

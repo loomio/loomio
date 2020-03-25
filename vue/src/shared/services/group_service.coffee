@@ -33,17 +33,6 @@ export default new class GroupService
           props:
             group: group
 
-    manage_subscription:
-      name: 'group_page.options.subscription_status'
-      icon: 'mdi-rocket'
-      canPerform: ->
-        group.isParent() && Session.user().isAdminOf(group) && group.subscriptionPlan?
-      perform: ->
-        openModal
-          component: 'GroupSubscriptionCard'
-          props:
-            group: group
-
     become_coordinator:
       name: 'group_page.options.become_coordinator'
       icon: 'mdi-shield-star'

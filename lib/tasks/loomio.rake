@@ -53,4 +53,17 @@ namespace :loomio do
     SubscriptionService.delay.update_changed_members_counts(['pp-basic-monthly', 'pp-pro-monthly'])
   end
 
+  task refresh_expiring_chargify_management_links: :environment do
+    # run this once a week
+    if Date.today.sunday?
+      SubscriptionService.delay.refresh_expiring_management_links
+    end
+  end
+
+  task populate_chargify_management_links: :environment do
+    if Date.today.sunday?
+      SubscriptionService.delay.populate_management_links
+    end
+  end
+
 end

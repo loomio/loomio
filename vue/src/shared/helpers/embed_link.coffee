@@ -3,6 +3,8 @@ export getEmbedLink = (link) ->
     getYoutubeEmbedLink(link)
   else if link.includes("vimeo.com/")
     getVimeoEmbedLink(link)
+  else if link.includes("loom.com")
+    getLoomEmbedLink(link)
   else
     link
 
@@ -27,3 +29,9 @@ getYoutubeId = (url) ->
   else
     id = url
   return id
+
+getLoomEmbedLink = (link) ->
+  if link.includes("share")
+    link.replace("share", "embed")
+  else
+    link
