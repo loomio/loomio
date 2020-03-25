@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_025150) do
     t.datetime "time"
     t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
     t.index ["properties"], name: "ahoy_events_properties", using: :gin
-    t.index ["properties"], name: "index_ahoy_events_on_properties", opclass: :jsonb_path_ops, using: :gin
   end
 
   create_table "ahoy_messages", id: :serial, force: :cascade do |t|
@@ -78,8 +77,8 @@ ActiveRecord::Schema.define(version: 2020_03_25_025150) do
     t.index ["user_id"], name: "index_ahoy_messages_on_user_id", where: "(user_id IS NOT NULL)"
   end
 
-  create_table "ahoy_visits", primary_key: "visit_token", id: :uuid, default: nil, force: :cascade do |t|
-    t.uuid "visitor_token"
+  create_table "ahoy_visits", id: :uuid, default: nil, force: :cascade do |t|
+    t.string "visitor_token"
     t.string "ip"
     t.text "user_agent"
     t.text "referrer"
@@ -102,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_03_25_025150) do
     t.string "utm_campaign"
     t.datetime "started_at"
     t.string "gclid"
+    t.string "visit_token"
     t.uuid "latitude"
     t.uuid "longitude"
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
@@ -765,10 +765,10 @@ ActiveRecord::Schema.define(version: 2020_03_25_025150) do
     t.datetime "last_seen_at"
     t.datetime "legal_accepted_at"
     t.boolean "email_newsletter", default: false, null: false
-    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
