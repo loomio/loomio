@@ -40,7 +40,7 @@ module Ability::Poll
       )
     end
 
-    can [:invite], ::Poll do |poll|
+    can [:invite, :announce], ::Poll do |poll|
       if poll.discussion
         can?(:announce, poll.discussion)
       else
