@@ -12,7 +12,7 @@ class StanceService
 
     stances = Stance.where(id: result.ids.map(&:to_i))
 
-    Events::AnnouncementCreated.publish! poll, actor, stances, 'poll_announced'
+    Events::PollAnnounced.publish!(poll, actor, stances)
     stances
   end
 

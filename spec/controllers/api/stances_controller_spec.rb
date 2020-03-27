@@ -53,10 +53,10 @@ describe API::StancesController do
       expect(response.status).to eq 200
       email_user = User.find_by(email: "jim@example.com")
       json = JSON.parse response.body
-      expect(json.stances.length).to eq 1
+      expect(json['stances'].length).to eq 1
       expect(email_user.notifications.count).to eq 1
       expect(email_user.email_verified).to be false
-      expect(email_user.memberships.pending.count).to eq 1
+      expect(email_user.stances.uncast.count).to eq 1
       expect(poll.participants).to include email_user
     end
 
@@ -64,8 +64,9 @@ describe API::StancesController do
       post :invite, params: {poll_id: poll.id, emails: [notified_user.email]}
       json = JSON.parse response.body
       expect(response.status).to eq 200
-      expect(json.stances.length).to eq 1
-      expect(User.find(json.stances.first.user_id).email).to eq 1
+      expect(json['stances'].length).to eq 1
+      json.dig(:stances, 0, :participant_id)
+      expect(User.find(json['stances'].first['participant_id']).email).to eq notified_user.email
       expect(notified_user.participated_polls).to include poll
     end
   end
