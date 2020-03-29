@@ -63,12 +63,12 @@ class MigrateUserWorker
   end
 
   def migrate_stances
-    poll_ids = source.participated_poll_ids & destination.participated_poll_ids
     Stance.where(participant: source).update_all(participant_id: destination.id)
-    Stance.where(participant: destination, poll_id: poll_ids).update_all(latest: false)
+    Stance.where(participant: destination).update_all(latest: false)
 
+    poll_ids = Stance.where(participant: destination).pluck(:poll_id).uniq
     Poll.where(id: poll_ids).each do |poll|
-      poll.stances.where(participant: destination)
+      poll.stances.where(participant: destination).where('cast_at is not null')
                   .order(created_at: :desc)
                   .first
                   .update_attribute(:latest, true)
