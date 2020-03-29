@@ -5,7 +5,7 @@ describe MigrateUserWorker do
   let!(:patrick)            { saved fake_user(name: "Patrick Swayze") }
   let!(:jennifer)           { saved fake_user(name: "Jennifer Grey") }
 
-  let!(:visit)              { Visit.create(user: patrick, id: SecureRandom.uuid) }
+  let!(:visit)              { Ahoy::Visit.create(user: patrick, id: SecureRandom.uuid) }
   let!(:ahoy_message)       { Ahoy::Message.create(user: patrick) }
   let!(:ahoy_event)         { Ahoy::Event.create(id: SecureRandom.uuid, visit: visit, user: patrick) }
 
