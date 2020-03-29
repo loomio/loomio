@@ -21,8 +21,8 @@ class Queries::UsersByVolumeQuery
     else
       rel.joins_discussion_readers(model)
          .joins_formal_memberships(model)
-         .where("gm.id is NOT NULL OR fm.id is NOT NULL")
-         .where("coalesce(dr.volume, fm.volume, gm.volume, 2) #{operator} :volume", volume: volume)
+         .where("fm.id is NOT NULL")
+         .where("coalesce(dr.volume, fm.volume, 2) #{operator} :volume", volume: volume)
     end
   end
 end
