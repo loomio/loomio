@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_022947) do
+ActiveRecord::Schema.define(version: 2020_03_28_230631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -148,7 +148,12 @@ ActiveRecord::Schema.define(version: 2020_03_18_022947) do
     t.boolean "participating", default: false, null: false
     t.datetime "dismissed_at"
     t.string "read_ranges_string"
+    t.integer "inviter_id"
+    t.string "token"
+    t.datetime "revoked_at"
+    t.boolean "admin", default: false, null: false
     t.index ["discussion_id"], name: "index_motion_read_logs_on_discussion_id"
+    t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true
   end
 
@@ -633,8 +638,12 @@ ActiveRecord::Schema.define(version: 2020_03_18_022947) do
     t.string "reason_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.datetime "cast_at"
+    t.string "token"
+    t.datetime "revoked_at"
+    t.boolean "admin", default: false, null: false
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
+    t.index ["token"], name: "index_stances_on_token", unique: true
   end
 
   create_table "subscriptions", id: :serial, force: :cascade do |t|
@@ -651,6 +660,8 @@ ActiveRecord::Schema.define(version: 2020_03_18_022947) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.jsonb "info"
+    t.datetime "canceled_at"
+    t.datetime "activated_at"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
