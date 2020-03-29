@@ -6,14 +6,12 @@ describe Stance do
     let(:ranked_choice) { create :poll_ranked_choice }
     let(:user) { create :user }
 
-    before { poll.create_guest_group }
-
     it 'allows no stance choices for meetings / polls' do
       expect(Stance.new(poll: poll, participant: user)).to be_valid
     end
 
     it 'requires a stance choice for proposals' do
-      expect(Stance.new(poll: proposal, participant: user)).to_not be_valid
+      expect(Stance.new(poll: proposal, participant: user, cast_at: Time.zone.now)).to_not be_valid
     end
 
     it 'requires a certain number of stance choices to be passed' do
@@ -32,23 +30,22 @@ describe Stance do
     let(:author) { FactoryBot.create(:user) }
 
     it "string" do
-      stance = Stance.create(poll: poll, participant: author, choice: 'dog')
+      Stance.create(poll: poll, participant: author, choice: 'dog')
       poll.update_stance_data
       expect(poll.stance_data).to eq({'dog' => 1, 'cat' => 0})
     end
 
     it "array" do
-      stance = Stance.create(poll: poll, participant: author, choice: ['dog', 'cat'])
+      Stance.create(poll: poll, participant: author, choice: ['dog', 'cat'])
       poll.update_stance_data
       expect(poll.stance_data).to eq({'dog' => 1, 'cat' => 1})
     end
 
     # TODO: when we have poll types which accept alternate scores, update this test to test that.
     it "map" do
-      stance = Stance.create(poll: poll, participant: author, choice: {'dog' => 1, 'cat' => 1})
+      Stance.create(poll: poll, participant: author, choice: {'dog' => 1, 'cat' => 1})
       poll.update_stance_data
       expect(poll.stance_data).to eq({'dog' => 1, 'cat' => 1})
     end
-
   end
 end

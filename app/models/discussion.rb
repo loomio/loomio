@@ -7,7 +7,6 @@ class Discussion < ApplicationRecord
   include HasTimeframe
   include HasEvents
   include HasMentions
-  include HasGuestGroup
   include HasDrafts
   include HasImportance
   include MessageChannel
@@ -66,6 +65,8 @@ class Discussion < ApplicationRecord
   has_many :items, -> { includes(:user).thread_events }, class_name: 'Event', dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
+  has_many :readers, -> { where('discussion_readers.revoked_at IS NULL') }, through: :discussion_readers, source: :user
+  has_many :admin_readers, -> { where('discussion_readers.revoked_at IS NULL').where('discussion_readers.admin': true) }, through: :discussion_readers, source: :user
 
   scope :search_for, ->(fragment) do
      joins("INNER JOIN users ON users.id = discussions.author_id")
@@ -104,6 +105,27 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :open_discussions_count
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
+
+  def members
+    User.where(id: group.members.pluck(:id).concat(readers.pluck(:id)).uniq)
+  end
+
+  def admins
+    User.where(id: group.admins.pluck(:id).concat(admin_readers.pluck(:id)).uniq)
+  end
+
+  def add_guest!(user, inviter = nil)
+    discussion_readers.find_or_create_by(user_id: user.id) do |discussion_reader|
+      discussion_reader.inviter = inviter
+      # TODO should apply default notification /volume settings from user at this point
+    end
+  end
+
+  def add_admin!(user, inviter = nil)
+    discussion_readers.find_or_create_by(user_id: user.id) do |discussion_reader|
+      discussion_reader.inviter = inviter
+    end.tap { |dr| dr.update_attribute(:admin, true) }
+  end
 
   def created_event_kind
     :new_discussion

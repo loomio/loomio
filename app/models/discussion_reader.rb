@@ -2,8 +2,14 @@ class DiscussionReader < ApplicationRecord
   include CustomCounterCache::Model
   include HasVolume
 
+  extend HasTokens
+  initialized_with_token :token
+
+  scope :active, -> { where('cancelled_at IS NOT NULL') }
+
   belongs_to :user
   belongs_to :discussion
+  belongs_to :inviter, class_name: 'User'
 
   delegate :update_importance, to: :discussion
   delegate :importance, to: :discussion
@@ -85,7 +91,7 @@ class DiscussionReader < ApplicationRecord
   def first_unread_sequence_id
     Array(unread_ranges.first).first.to_i
   end
-  
+
   # maybe yagni, because the client should do this locally
   def unread_ranges
     RangeSet.subtract_ranges(discussion.ranges, read_ranges)

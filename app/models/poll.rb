@@ -5,7 +5,6 @@ class Poll < ApplicationRecord
   include HasEvents
   include HasMentions
   include HasDrafts
-  include HasGuestGroup
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
@@ -55,16 +54,16 @@ class Poll < ApplicationRecord
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
-  has_many :participants, through: :stances, source: :participant
+  has_many :voters, -> {where('stances.revoked_at IS NULL')}, through: :stances, source: :participant
+  has_many :admin_voters, -> { where('stances.admin': true).where('revoked_at IS NULL') }, through: :stances, source: :participant
+  has_many :undecided, -> { where('stances.cast_at IS NULL') }, through: :stances, source: :participant
+  has_many :participants, -> { where('stances.cast_at IS NOT NULL') }, through: :stances, source: :participant
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
 
   has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
-
-  # has_many :poll_did_not_votes, dependent: :destroy
-  # has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
   has_many :documents, as: :model, dependent: :destroy
 
@@ -129,18 +128,6 @@ class Poll < ApplicationRecord
     ((poll.cast_stances_count / poll.stances_count) * 100).to_i
   end
 
-  def groups
-    [group, discussion&.guest_group, guest_group].compact
-  end
-
-  def undecided
-    if active?
-      members.where.not(id: participants)
-    else
-      poll_did_not_voters
-    end
-  end
-
   def time_zone
     custom_fields.fetch('time_zone', author.time_zone)
   end
@@ -168,10 +155,6 @@ class Poll < ApplicationRecord
     super || NullFormalGroup.new
   end
 
-  def group_members
-    super.joins(:groups).where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
-  end
-
   def update_stance_data
     update_attribute(:stance_data, zeroed_poll_options.merge(
       self.class.connection.select_all(%{
@@ -195,6 +178,24 @@ class Poll < ApplicationRecord
         end
       end
     ) if chart_type == 'matrix'
+  end
+
+  def admins
+    User.where(id: [group.admins, discussion&.admins, admin_voters].compact.map {|rel| rel.pluck(:id) }.flatten)
+    # User.where(id: group.admins.pluck(:id).concat(admin_voters.pluck(:id)))
+  end
+
+  def members
+    User.where(id: [group.members, discussion&.readers, voters].compact.map {|rel| rel.pluck(:id) }.flatten)
+    # User.where(id: group.members.pluck(:id).concat(voters.pluck(:id)))
+  end
+
+  def add_guest!(user)
+    stances.find_or_create_by(participant_id: user.id)
+  end
+
+  def add_admin!(user)
+    stances.find_or_create_by(participant_id: user.id).tap {|s| s.update_attribute(:admin, true) }
   end
 
   def active?

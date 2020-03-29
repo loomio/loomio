@@ -36,8 +36,8 @@ module PollEmailHelper
   end
 
   def target_url(poll:, recipient:, args: {})
-    membership = membership(poll, recipient)
-    args.merge!(membership_token: membership.token) if membership
+    stance = recipient_stance(recipient, poll)
+    args.merge!(stance_token: stance.token) if stance
     polymorphic_url(poll, poll_mailer_utm_hash(args))
   end
 
@@ -52,11 +52,4 @@ module PollEmailHelper
       utm_source: action_name
     }.merge(args)
   end
-
-  private
-
-  def membership(poll, recipient)
-    poll.guest_group.memberships.find_by(user: recipient)
-  end
-
 end

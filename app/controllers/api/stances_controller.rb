@@ -1,10 +1,4 @@
 class API::StancesController < API::RestfulController
-  def invite
-    poll = load_and_authorize(:poll, :invite)
-    self.collection = service.invite(poll: poll, params: params, actor: current_user)
-    respond_with_collection
-  end
-
   def my_stances
     self.collection = current_user.stances.latest.includes({poll: :discussion})
     self.collection = collection.where('polls.discussion_id': @discussion.id) if load_and_authorize(:discussion, optional: true)

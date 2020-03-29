@@ -187,4 +187,17 @@ describe Queries::VisibleDiscussions do
       subject.should_not include discussion
     end
   end
+
+  describe 'guest access' do
+    let(:discussion) { create :discussion, author: author, private: true }
+    it 'returns discussions via discussion reader' do
+      discussion.add_guest!(user)
+      Queries::VisibleDiscussions.new(user: user).should include discussion
+    end
+
+    it 'returns discussions via discussion reader' do
+      discussion
+      Queries::VisibleDiscussions.new(user: user).should_not include discussion
+    end
+  end
 end

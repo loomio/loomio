@@ -51,6 +51,10 @@ class Group < ApplicationRecord
   define_counter_cache(:pending_memberships_count) { |group| group.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
 
+  def discussion_id
+    nil
+  end
+  
   def target_model
     Discussion.find_by(guest_group_id: id) ||
     Poll.find_by(guest_group_id: id) ||

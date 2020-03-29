@@ -7,8 +7,26 @@ class PollService
     return false unless poll.valid?
     poll.save!
 
+    Stance.create!(participant: actor, poll: poll, admin: true)
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll, actor)
+  end
+
+  def self.announce(poll:, actor:, params:)
+    actor.ability.authorize! :announce, poll
+
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         emails: params[:emails],
+                                         user_ids: params[:user_ids])
+
+    Stance.import(users.map do |user|
+      Stance.new(participant_id: user.id, poll_id: poll.id)
+    end)
+
+    stances = Stance.where(participant_id: users.pluck(:id))
+
+    Events::PollAnnounced.publish!(poll, actor, stances)
+    stances
   end
 
   def self.close(poll:, actor:)

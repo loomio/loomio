@@ -106,9 +106,6 @@ export default
       Records.announcements.fetchAudience(@announcement.model, kind).then (data) =>
         each sortBy(utils.parseJSONList(data), (e) => e.name || e.email ), @addRecipient
 
-    resetShareableLink: ->
-      @announcement.model.resetToken().then =>
-        Flash.success('invitation_form.shareable_link_reset')
     closeHistory: -> @historyOpen = false
 
   computed:
@@ -127,12 +124,6 @@ export default
     canUpdateAnyoneCanParticipate: ->
       @announcement.model.isA('poll') &&
       AbilityService.canAdminister(@announcement.model)
-
-    shareableLink: ->
-      if @announcement.model.token
-        LmoUrlService.shareableLink(@announcement.model)
-      else
-        @$t('common.action.loading')
 
     invitingToGroup: ->
       @announcement.model.isA('group')
@@ -216,7 +207,6 @@ v-card
 	padding: 0 !important
 .announcement-form__invite
 	margin-bottom: 16px
-.announcement-form__shareable-link,
 .announcement-form__help
 	margin: 8px 0
 .announcement-form__audience

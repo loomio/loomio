@@ -22,54 +22,6 @@ describe API::StancesController do
     visitor_attributes: { name: "Johnny Doe", email: "john@doe.ninja", legal_accepted: true }
   }}
 
-  describe 'invite' do
-    let(:notified_user) { create :user }
-    let(:member)        { create :user }
-    let(:poll)          { create :poll, author: user }
-
-    before do
-      sign_in user
-    end
-
-    it 'does not permit non author to announce' do
-      sign_in create(:user)
-      post :invite, params: {poll_id: poll.id, user_ids: [notified_user.id]}
-      expect(response.status).to eq 403
-    end
-
-    it 'invite a group member' do
-      post :invite, params: {poll_id: poll.id, user_ids: [notified_user.id]}
-      expect(response.status).to eq 200
-      json = JSON.parse response.body
-      expect(json['stances'].length).to eq 1
-      expect(json['stances'][0]['participant_id']).to eq notified_user.id
-      expect(notified_user.reload.notifications.count).to eq 1
-      expect(poll.participants).to include notified_user
-    end
-
-    it 'invite new user by email' do
-      post :invite, params: {poll_id: poll.id, emails: ['jim@example.com']}
-      json = JSON.parse response.body
-      expect(response.status).to eq 200
-      email_user = User.find_by(email: "jim@example.com")
-      json = JSON.parse response.body
-      expect(json['stances'].length).to eq 1
-      expect(email_user.notifications.count).to eq 1
-      expect(email_user.email_verified).to be false
-      expect(email_user.stances.uncast.count).to eq 1
-      expect(poll.participants).to include email_user
-    end
-
-    it 'invite existing user by email' do
-      post :invite, params: {poll_id: poll.id, emails: [notified_user.email]}
-      json = JSON.parse response.body
-      expect(response.status).to eq 200
-      expect(json['stances'].length).to eq 1
-      json.dig(:stances, 0, :participant_id)
-      expect(User.find(json['stances'].first['participant_id']).email).to eq notified_user.email
-      expect(notified_user.participated_polls).to include poll
-    end
-  end
 
   describe 'index' do
     before { group.add_member! user }
@@ -177,10 +129,10 @@ describe API::StancesController do
     describe "verified user votes" do
       it "creates stance and updates name and email" do
         user.update(email_verified: true)
-        poll.guest_group.add_member! user
+        poll.add_guest! user
         sign_in user
         expect { post :create, params: {stance: stance_params } }.to_not change {ActionMailer::Base.deliveries.count}
-        expect(user.stances.count).to eq 1
+        expect(user.stances.latest.count).to eq 1
         expect(response.status).to eq 200
         expect(user.reload.email_verified).to eq true
       end
@@ -190,7 +142,7 @@ describe API::StancesController do
       poll.update(anonymous: true)
       user.update(email_verified: true)
       sign_in user
-      poll.guest_group.add_member! user
+      poll.add_guest! user
       post :create, params: { stance: stance_params }
       json = JSON.parse(response.body)
       expect(response.status).to eq 200
@@ -214,13 +166,13 @@ describe API::StancesController do
       end
 
       it 'admin of discussion guest group can vote' do
-        poll.discussion.guest_group.add_admin! user
+        poll.discussion.add_admin! user
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
 
       it 'admin of poll guest group can vote' do
-        poll.guest_group.add_admin! user
+        poll.add_admin! user
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
@@ -231,14 +183,14 @@ describe API::StancesController do
         expect(response.status).to eq 403
       end
 
-      it 'member of discussion guest group cannot vote' do
-        poll.discussion.guest_group.add_member! user
+      it 'guest of discussion cannot vote' do
+        poll.discussion.add_guest! user
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 403
       end
 
-      it 'member of poll guest group can vote' do
-        poll.guest_group.add_member! user
+      it 'guest of poll can vote' do
+        poll.add_guest! user
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 403
       end
@@ -252,20 +204,20 @@ describe API::StancesController do
         sign_in user
       end
 
-      it 'member of formal group cannot vote' do
+      it 'member of formal group can vote' do
         poll.group.add_member! user
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
 
-      it 'member of discussion guest group cannot vote' do
-        poll.discussion.guest_group.add_member! user
+      it 'guest of discussion can vote' do
+        poll.discussion.add_guest! user
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
 
-      it 'member of poll guest group can vote' do
-        poll.guest_group.add_member! user
+      it 'guest of poll can vote' do
+        poll.add_guest! user
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end

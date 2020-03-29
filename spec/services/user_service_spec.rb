@@ -29,7 +29,7 @@ describe UserService do
   end
 
   describe 'verify' do
-    it 'sets email_verfied true if email is unique' do
+    it 'sets email_verified true if email is unique' do
       user = FactoryBot.create(:user, email_verified: false, email: 'user@example.com')
       user = UserService.verify(user: user)
       expect(user.email_verified).to be true

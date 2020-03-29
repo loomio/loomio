@@ -1,4 +1,12 @@
 class OutcomeService
+  def self.announce(outcome:, actor:, params:)
+    actor.ability.authorize! :announce, outcome
+
+    users = UserInviter.where_or_create!(inviter: actor, emails: params[:emails], user_ids: params[:user_ids])
+    Events::OutcomeAnnounced.publish!(outcome, actor, users)
+    users
+  end
+
   def self.create(outcome:, actor:)
     actor.ability.authorize! :create, outcome
 

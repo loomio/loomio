@@ -40,14 +40,6 @@ describe Poll do
     expect(option_poll.poll_options.map(&:name)).to eq ['A', 'C', 'B']
   end
 
-  describe "guest group" do
-    it "deletes guest group when poll is deleted" do
-      group = poll.tap(&:save).guest_group
-      poll.destroy
-      expect { group.reload }.to raise_error ActiveRecord::RecordNotFound
-    end
-  end
-
   describe 'ordered_poll_options' do
     let(:poll) { create :poll }
     let(:meeting) { create :poll_meeting }
@@ -94,9 +86,9 @@ describe Poll do
     let(:poll) { create :poll, group: create(:formal_group) }
     let(:user) { create :user }
 
-    it 'includes members of the guest group' do
+    it 'includes guests' do
       expect {
-        poll.guest_group.add_member! user
+        Stance.create(poll: poll, participant: user)
       }.to change { poll.members.count }.by(1)
     end
 
@@ -105,24 +97,22 @@ describe Poll do
         poll.group.add_member! user
       }.to change { poll.members.count }.by(1)
     end
-
-    it 'decrements when removing from the guest group' do
-      membership = poll.guest_group.add_member! user
-      expect { membership.destroy }.to change { poll.members.count }.by(-1)
-    end
-
-    it 'decrements when removing from the formal group' do
-      membership = poll.group.add_member! user
-      expect { membership.destroy }.to change { poll.members.count }.by(-1)
-    end
   end
 
-  describe 'participants' do
+  describe 'voters and participants and undecided' do
     let(:poll) { create :poll, group: create(:formal_group) }
     let(:user) { create :user }
 
-    it 'increments when a vote is created' do
-      expect { create(:stance, poll: poll, participant: user) }.to change { poll.participants.count }.by(1)
+    it 'increments voters when a vote is created' do
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.voters.count }.by(1)
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.participants.count }.by(0)
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.undecided.count }.by(1)
+    end
+
+    it 'increments participants when a vote is cast' do
+      expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.voters.count }.by(1)
+      expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.participants.count }.by(1)
+      expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.undecided.count }.by(0)
     end
   end
 

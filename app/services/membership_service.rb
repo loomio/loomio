@@ -73,6 +73,16 @@ class MembershipService
 
   def self.destroy(membership:, actor:)
     actor.ability.authorize! :destroy, membership
+    now = Time.zone.now
+
+    DiscussionReader.joins(:discussion).where(
+      'discussions.group_id': membership.group.id_and_subgroup_ids,
+      user_id: membership.user_id).update_all(revoked_at: now)
+
+    Stance.joins(:poll).where(
+      'polls.group_id': membership.group.id_and_subgroup_ids,
+      participant_id: membership.user_id).update_all(revoked_at: now)
+
     membership.destroy
     EventBus.broadcast('membership_destroy', membership, actor)
   end

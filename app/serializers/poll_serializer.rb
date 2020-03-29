@@ -10,7 +10,6 @@ class PollSerializer < ActiveModel::Serializer
   has_one :author, serializer: UserSerializer, root: :users
   has_one :current_outcome, serializer: Full::OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances
-  has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
 
   def subscribed

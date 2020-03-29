@@ -32,11 +32,6 @@ describe Group do
       membership = group.add_member! create :user
       group.destroy
       expect { membership.reload }.to raise_error ActiveRecord::RecordNotFound
-
-      group = create :guest_group
-      membership = group.add_member! create :user
-      group.destroy
-      expect { membership.reload }.to raise_error ActiveRecord::RecordNotFound
     end
   end
 

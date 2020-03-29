@@ -1,7 +1,6 @@
 require 'event_bus'
 
 EventBus.configure do |config|
-
   config.listen('new_comment_event',
                 'new_discussion_event',
                 'discussion_edited_event',
@@ -26,11 +25,6 @@ EventBus.configure do |config|
                 'discussion_create',
                 'comment_create',
                 'poll_create') { |model, actor| model.perform_draft_purge!(actor) }
-
-  # Make creator a guest group admin on creation
-  config.listen('group_create',
-                'discussion_create',
-                'poll_create') { |model, actor| model.guest_group.add_admin!(actor) }
 
   # Index search vectors after model creation
   config.listen('discussion_create',
@@ -72,11 +66,9 @@ EventBus.configure do |config|
 
   # update stance data for polls
   config.listen('stance_create')  { |stance| stance.poll.update_stance_data }
-  config.listen('stance_create')  { |stance| stance.poll.guest_group.add_member!(stance.participant) }
 
   # publish reply event after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) if comment.parent }
-  config.listen('comment_create') { |comment| comment.discussion.guest_group.add_member! comment.author }
 
   # update discussion importance
   config.listen('discussion_pin',

@@ -5,6 +5,9 @@ class Stance < ApplicationRecord
   include HasEvents
   include HasCreatedEvent
 
+  extend HasTokens
+  initialized_with_token :token
+
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
   include Translatable
   is_translatable on: :reason
@@ -66,6 +69,7 @@ class Stance < ApplicationRecord
   end
 
   def choice=(choice)
+    self.cast_at = Time.zone.now
     if choice.kind_of?(Hash)
       self.stance_choices_attributes = poll.poll_options.where(name: choice.keys).map do |option|
         {poll_option_id: option.id,
@@ -95,6 +99,7 @@ class Stance < ApplicationRecord
   private
 
   def enough_stance_choices
+    return unless self.cast_at
     if poll.require_stance_choices
       if stance_choices.length < poll.minimum_stance_choices
         errors.add(:stance_choices, I18n.t(:"stance.error.too_short"))
