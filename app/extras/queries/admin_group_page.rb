@@ -1,7 +1,7 @@
 class Queries::AdminGroupPage
-  def self.visits_per_day_sql(group)
-    "select date_trunc('day', created_at) date, count(id) from organisation_visits where organisation_id = #{group.id} group by date order by date"
-  end
+  # def self.visits_per_day_sql(group)
+  #   "select date_trunc('day', created_at) date, count(id) from organisation_visits where organisation_id = #{group.id} group by date order by date"
+  # end
 
   def self.members_per_day_sql(group)
     "select date_trunc('day', created_at) date, count(distinct user_id) from memberships where group_id = #{group.id} group by date order by date"
@@ -29,16 +29,16 @@ class Queries::AdminGroupPage
 
   def self.fetch_data(group)
     {
-      visits: run_per_day(visits_per_day_sql(group)),
+      # visits: run_per_day(visits_per_day_sql(group)),
       members: run_per_day(members_per_day_sql(group)),
       threads: run_per_day(threads_per_day_sql(group)),
       polls: run_per_day(polls_per_day_sql(group))
     }
   end
 
-  def self.visits_count(group)
-    OrganisationVisit.where(organisation_id: group.id).count
-  end
+  # def self.visits_count(group)
+  #   OrganisationVisit.where(organisation_id: group.id).count
+  # end
 
   def self.thread_items_count(group)
     Discussion.where(group_id: group.id_and_subgroup_ids).sum(:items_count)
