@@ -29,21 +29,21 @@ class Queries::VisibleDiscussions < Delegator
   def unread
     return self unless @user.is_logged_in?
     @relation = @relation.
-                  where('(dv.dismissed_at IS NULL) OR (dv.dismissed_at < discussions.last_activity_at)').
-                  where('dv.last_read_at IS NULL OR (dv.last_read_at < discussions.last_activity_at)')
+                  where('(dr.dismissed_at IS NULL) OR (dr.dismissed_at < discussions.last_activity_at)').
+                  where('dr.last_read_at IS NULL OR (dr.last_read_at < discussions.last_activity_at)')
     self
   end
 
   def muted
     return self unless @user.is_logged_in?
-    @relation = @relation.where('(dv.volume = :mute) OR (dv.volume IS NULL AND m.volume = :mute) ',
+    @relation = @relation.where('(dr.volume = :mute) OR (dr.volume IS NULL AND m.volume = :mute) ',
                                 {mute: DiscussionReader.volumes[:mute]})
     self
   end
 
   def not_muted
     return self unless @user.is_logged_in?
-    @relation = @relation.where('(dv.volume > :mute) OR (dv.volume IS NULL AND m.volume > :mute)',
+    @relation = @relation.where('(dr.volume > :mute) OR (dr.volume IS NULL AND m.volume > :mute)',
                                 {mute: DiscussionReader.volumes[:mute]})
     self
   end
@@ -84,9 +84,9 @@ class Queries::VisibleDiscussions < Delegator
       # or they are a member of the group
       # or they are a member of the guest group
       # or user belongs to parent group and permission is inherited
-      relation = relation.joins("LEFT OUTER JOIN discussion_readers dv ON dv.discussion_id = discussions.id AND dv.user_id = #{user.id}")
+      relation = relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = discussions.id AND dr.user_id = #{user.id}")
       relation = relation.joins("LEFT OUTER JOIN memberships m ON m.user_id = #{user.id} AND m.group_id = discussions.group_id")
-      relation.where('((discussions.private = false) OR (m.id IS NOT NULL) OR (dv.id IS NOT NULL and dv.revoked_at IS NULL AND dv.inviter_id IS NOT NULL) OR
+      relation.where('((discussions.private = false) OR (m.id IS NOT NULL) OR (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
                        (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids)))',
                      user_group_ids: user.group_ids)
     else
