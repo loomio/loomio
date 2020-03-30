@@ -1,6 +1,5 @@
 class API::GroupsController < API::RestfulController
   include UsesFullSerializer
-  after_action :track_visit, only: :show
 
   def token
     self.resource = load_and_authorize(:formal_group, :invite_people)
@@ -55,10 +54,6 @@ class API::GroupsController < API::RestfulController
   end
 
   private
-  def track_visit
-    VisitService.record(group: resource, visit: current_visit, user: current_user)
-  end
-
   def ensure_photo_params
     params.require(:file)
     raise ActionController::UnpermittedParameters.new([:kind]) unless ['logo', 'cover_photo'].include? params.require(:kind)

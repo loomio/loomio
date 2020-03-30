@@ -10,6 +10,7 @@ import InstallSlackModalMixin from '@/mixins/install_slack_modal'
 import GroupModalMixin from '@/mixins/group_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
 import {compact, head, includes, filter} from 'lodash'
+import ahoy from 'ahoy.js'
 
 export default
   mixins: [InstallSlackModalMixin, GroupModalMixin]
@@ -52,6 +53,10 @@ export default
       Records.groups.findOrFetch(@$route.params.key)
       .then (group) =>
         @group = group
+        ahoy.trackView
+          groupId: @group.id
+          organisationId: @group.parentOrSelf().id
+          pageType: 'groupPage'
         subscribeTo(@group)
         @openInstallSlackModal(@group) if @$route.query.install_slack
       .catch (error) =>

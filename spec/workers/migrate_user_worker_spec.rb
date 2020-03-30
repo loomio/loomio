@@ -5,9 +5,7 @@ describe MigrateUserWorker do
   let!(:patrick)            { saved fake_user(name: "Patrick Swayze") }
   let!(:jennifer)           { saved fake_user(name: "Jennifer Grey") }
 
-  let!(:visit)              { Visit.create(user: patrick, id: SecureRandom.uuid) }
-  let!(:group_visit)        { GroupVisit.create(group: group, user: patrick, visit: visit) }
-  let!(:organisation_visit) { OrganisationVisit.create(organisation: group, user: patrick, visit: visit) }
+  let!(:visit)              { Ahoy::Visit.create(user: patrick, id: SecureRandom.uuid) }
   let!(:ahoy_message)       { Ahoy::Message.create(user: patrick) }
   let!(:ahoy_event)         { Ahoy::Event.create(id: SecureRandom.uuid, visit: visit, user: patrick) }
 
@@ -75,8 +73,6 @@ describe MigrateUserWorker do
     assert_equal membership_request.reload.requestor, jennifer
     assert_equal identity.reload.user, jennifer
     assert_equal visit.reload.user, jennifer
-    assert_equal group_visit.reload.user, jennifer
-    assert_equal organisation_visit.reload.user, jennifer
     assert_equal DiscussionReader.find_by(discussion: discussion, user: jennifer).present?, true
     assert_equal DiscussionReader.count, 1
     assert_equal another_group.members.include?(jennifer), true
