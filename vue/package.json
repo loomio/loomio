@@ -18,7 +18,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "@sentry/browser": "5.15.2",
-    "@sentry/integrations": "5.15.0",
+    "@sentry/integrations": "5.15.4",
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "core-js": "^2.6.11",
