@@ -19,8 +19,8 @@
           %table{ style: "height: 100%; width: 100%" }
             = render 'groups/stats/general_header'
             %tr
-              %td
-                %p{ style: "text-align: center"}= Queries::GroupStats.visits_count(@group)
+              -# %td
+              -#   %p{ style: "text-align: center"}= Queries::GroupStats.visits_count(@group)
               %td
                 %p{ style: "text-align: center"}= @group.memberships_count
               %td
@@ -51,8 +51,8 @@
             %table{ style: "height: 100%; width: 100%" }
               = render 'groups/stats/general_header'
               %tr
-                %td
-                  %p{ style: "text-align: center"}= Queries::GroupStats.org_visits_count(@group)
+                -# %td
+                -#   %p{ style: "text-align: center"}= Queries::GroupStats.org_visits_count(@group)
                 %td
                   %p{ style: "text-align: center"}= @group.org_memberships_count
                 %td
