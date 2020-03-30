@@ -134,7 +134,7 @@ export default new class AbilityService
     group.adminsInclude(Session.user())
 
   canEditComment: (comment) ->
-    Session.user().isAuthorOf(comment) and
+    comment.authorIs(Session.user()) and
     (comment.isMostRecent() or comment.group().membersCanEditComments) and
     comment.discussion().membersInclude(Session.user())
 

@@ -123,6 +123,10 @@ class Discussion < ApplicationRecord
     discussion_readers.create!(user: user, inviter: inviter, admin: true, volume: DiscussionReader.volumes[:normal])
   end
 
+  def poll_id
+    nil
+  end
+
   def created_event_kind
     :new_discussion
   end

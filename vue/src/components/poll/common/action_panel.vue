@@ -32,7 +32,7 @@ export default
 
   methods:
     lastStanceOrNew: ->
-      myLastStanceFor(@poll) || @newStance
+      @poll.stanceFor(Session.user()) || @newStance
 
   computed:
     userCanParticipate: ->

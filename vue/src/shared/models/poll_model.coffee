@@ -5,6 +5,7 @@ import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import { addDays, startOfHour } from 'date-fns'
+import { head, sortBy, map, includes, difference, invokeMap, each, max } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -54,8 +55,18 @@ export default class PollModel extends BaseModel
     @hasMany   'pollDidNotVotes'
     @hasMany   'versions'
 
+  voters: ->
+    @latestStances().map (stance) -> stance.participant()
+
+  members: ->
+    @group().members().concat(@voters())
+
   adminsInclude: (user) ->
-    _.includes(poll.adminMembers(), Session.user()) || Session.user().isAuthorOf(poll)
+    stance = @stanceFor(user)
+    @authorIs(user) || (stance && stance.admin) || @group().adminsInclude(user)
+
+  stanceFor: (user) ->
+    head sortBy(@recordStore.stances.find(latest: true, pollId: @id, participantId: user.id), 'createdAt')
 
   authorName: ->
     @author().nameWithTitle(@)
@@ -64,7 +75,7 @@ export default class PollModel extends BaseModel
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
   participantIds: ->
-    _.map(@latestStances(), 'participantId')
+    map(@latestStances(), 'participantId')
 
   # who's voted?
   participants: ->
@@ -73,9 +84,9 @@ export default class PollModel extends BaseModel
   # who hasn't voted?
   undecided: ->
     if @isActive()
-      _.difference(@members(), @participants())
+      difference(@members(), @participants())
     else
-      _.invokeMap @pollDidNotVotes(), 'user'
+      invokeMap @pollDidNotVotes(), 'user'
 
   membersCount: ->
     # NB: this won't work for people who vote, then leave the group.
@@ -93,13 +104,13 @@ export default class PollModel extends BaseModel
 
   clearStaleStances: ->
     existing = []
-    _.each @latestStances('-createdAt'), (stance) ->
-      if _.includes(existing, stance.participant())
+    each @latestStances('-createdAt'), (stance) ->
+      if includes(existing, stance.participant())
         stance.latest = false
       else
         existing.push(stance.participant())
 
-  latestStances: (order, limit) ->
+  latestStances: (order = '-createdAt', limit) ->
     _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
 
   hasDescription: ->
@@ -146,10 +157,10 @@ export default class PollModel extends BaseModel
 
   setMinimumStanceChoices: =>
     return unless @isNew() and @hasRequiredField('minimum_stance_choices')
-    @customFields.minimum_stance_choices = _.max [@pollOptionNames.length, 1]
+    @customFields.minimum_stance_choices = max [@pollOptionNames.length, 1]
 
   hasRequiredField: (field) =>
-    _.includes AppConfig.pollTemplates[@pollType].required_custom_fields, field
+    includes AppConfig.pollTemplates[@pollType].required_custom_fields, field
 
   hasPollSetting: (setting) =>
     AppConfig.pollTemplates[@pollType][setting]?
@@ -167,5 +178,5 @@ export default class PollModel extends BaseModel
     AppConfig.pollTemplates[@pollType]['dates_as_options']
 
   removeOrphanOptions: ->
-    _.each @pollOptions(), (option) =>
-      option.remove() unless _.includes(@pollOptionNames, option.name)
+    @pollOptions().forEach (option) =>
+      option.remove() unless @pollOptionNames.includes(option.name)
