@@ -12,4 +12,8 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
              :revoked_at
 
   has_one :user, serializer: UserSerializer, root: :users
+
+  def volume
+    object[:volume]
+  end
 end

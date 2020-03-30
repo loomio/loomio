@@ -8,7 +8,7 @@ module GroupService
                                          emails: params[:emails],
                                          user_ids: params[:user_ids])
 
-    memberships = users.where.not(id: group.all_member_ids).map do |user|
+    new_memberships = users.where.not(id: group.all_member_ids).map do |user|
       Membership.new inviter: actor,
                      user: user,
                      group: group,
@@ -16,7 +16,9 @@ module GroupService
                      experiences: {invited_group_ids: invited_group_ids}.compact
     end
 
-    Membership.import memberships
+    Membership.import(new_memberships, on_duplicate_key_ignore: true)
+
+    memberships = Membership.where(group: group, user_ids: users.pluck(:id))
 
     group.update_pending_memberships_count
     group.update_memberships_count

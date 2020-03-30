@@ -19,6 +19,6 @@ class Events::DiscussionAnnounced < Event
   end
 
   def notification_recipients
-    User.active.joins(:discussion_readers).where('discussion_readers.id IN (?)', custom_fields['discussion_reader_ids'])
+    User.distinct.active.joins('LEFT OUTER JOIN discussion_readers dr on dr.user_id = users.id').where('dr.id IN (?)', custom_fields['discussion_reader_ids'])
   end
 end

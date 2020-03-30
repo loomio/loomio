@@ -19,11 +19,12 @@ class PollService
                                          emails: params[:emails],
                                          user_ids: params[:user_ids])
 
-    Stance.import(users.map do |user|
+    new_stances =  users.map do |user|
       Stance.new(participant: user, poll: poll, inviter: actor, volume: DiscusisonReader.volumes[:normal])
-    end)
+    end
+    Stance.import(new_stances, on_duplicate_key_ignore: true)
 
-    stances = Stance.where(participant_id: users.pluck(:id))
+    stances = Stance.where(participant_id: users.pluck(:id), poll: poll)
 
     Events::PollAnnounced.publish!(poll, actor, stances)
     stances
