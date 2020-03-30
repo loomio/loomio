@@ -5,7 +5,7 @@ import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import { addDays, startOfHour } from 'date-fns'
-import { head, sortBy, map, includes, difference, invokeMap, each, max } from 'lodash'
+import { head, orderBy, map, includes, difference, invokeMap, each, max } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -51,7 +51,7 @@ export default class PollModel extends BaseModel
     @belongsTo 'discussion'
     @belongsTo 'group'
     @hasMany   'pollOptions'
-    @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
+    @hasMany   'stances'
     @hasMany   'pollDidNotVotes'
     @hasMany   'versions'
 
@@ -66,7 +66,7 @@ export default class PollModel extends BaseModel
     @authorIs(user) || (stance && stance.admin) || @group().adminsInclude(user)
 
   stanceFor: (user) ->
-    head sortBy(@recordStore.stances.find(latest: true, pollId: @id, participantId: user.id), 'createdAt')
+    head orderBy(@recordStore.stances.find(latest: true, pollId: @id, participantId: user.id), 'createdAt', 'desc')
 
   authorName: ->
     @author().nameWithTitle(@)

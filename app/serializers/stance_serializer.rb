@@ -4,6 +4,8 @@ class StanceSerializer < ActiveModel::Serializer
              :reason,
              :reason_format,
              :latest,
+             :admin,
+             :cast_at,
              :mentioned_usernames,
              :created_at,
              :locale,
@@ -20,7 +22,7 @@ class StanceSerializer < ActiveModel::Serializer
   def volume
     object[:volume]
   end
-  
+
   def participant
     scope && object.participant_for_client(user: scope[:current_user]).presence
   end

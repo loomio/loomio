@@ -20,7 +20,7 @@ class PollService
                                          user_ids: params[:user_ids])
 
     new_stances =  users.map do |user|
-      Stance.new(participant: user, poll: poll, inviter: actor, volume: DiscusisonReader.volumes[:normal])
+      Stance.new(participant: user, poll: poll, inviter: actor, volume: DiscussionReader.volumes[:normal])
     end
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
