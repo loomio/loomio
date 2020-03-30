@@ -10,6 +10,7 @@ import InstallSlackModalMixin from '@/mixins/install_slack_modal'
 import GroupModalMixin from '@/mixins/group_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
 import {compact, head, includes, filter} from 'lodash'
+import ahoy from 'ahoy.js'
 
 export default
   mixins: [InstallSlackModalMixin, GroupModalMixin]
@@ -52,11 +53,15 @@ export default
       Records.groups.findOrFetch(@$route.params.key)
       .then (group) =>
         @group = group
+        ahoy.trackView
+          groupId: @group.id
+          organisationId: @group.parentOrSelf().id
+          pageType: 'groupPage'
         subscribeTo(@group)
         @openInstallSlackModal(@group) if @$route.query.install_slack
       .catch (error) =>
         EventBus.$emit 'pageError', error
-        EventBus.$emit 'openAuthModal' if error.status == 403
+        EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
     titleVisible: (visible) ->
       EventBus.$emit('content-title-visible', visible)
@@ -82,7 +87,8 @@ v-content
     document-list(:model='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
-    v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow)
+    v-tabs(v-model="activeTab" center-active background-color="transparent" centered grow show-arrows)
+      v-tabs-slider
       v-tab(v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' " exact)
         span(v-t="'group_page.'+tab.name")
     join-group-button(:group='group')

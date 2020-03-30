@@ -18,20 +18,21 @@ export default
 
   created: ->
     EventBus.$on 'timeZoneSelected', (e, zone) => @zone = zone
-
+    done = false
     @watchRecords
       collections: ['poll_options', 'poll']
       query: (records) =>
         @canRespondMaybe =  @stance.poll().customFields.can_respond_maybe
         @stanceValues = if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
         @pollOptions = sortBy @stance.poll().pollOptions(), 'name'
-
-        @stanceChoices = @pollOptions.map (option) =>
-          lastChoice = @stance.stanceChoices().find((sc) => sc.pollOptionId == option.id) || {score: 0}
-          id: option.id
-          pollOption: => option
-          poll: => @stance.poll()
-          score: lastChoice.score
+        if !done
+          done = true
+          @stanceChoices = @pollOptions.map (option) =>
+            lastChoice = @stance.stanceChoices().find((sc) => sc.pollOptionId == option.id) || {score: 0}
+            id: option.id
+            pollOption: => option
+            poll: => @stance.poll()
+            score: lastChoice.score
 
   methods:
     submit: ->

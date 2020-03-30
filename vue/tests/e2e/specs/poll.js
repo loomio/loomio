@@ -295,70 +295,70 @@ module.exports = {
     page.expectFlash('New options added')
   },
 
-  'can_edit_a_vote': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('test_discussion', { controller: 'polls' })
-    page.click('.activity-panel__add-poll')
-    page.click('.decision-tools-card__poll-type--poll')
-    // page.click(".poll-common-tool-tip__collapse")
-    page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
-    page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
-    page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
-    page.click('.dismiss-modal-button')
-
-    page.expectText('.poll-common-card__title', 'A new proposal')
-    page.expectText('.poll-common-details-panel__details p', 'Some details')
-
-    page.click('.poll-common-vote-form__button')
-    page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
-    page.click('.poll-common-vote-form__submit')
-
-    page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-common-stance-choice', 'An option')
-      page.expectText('.poll-common-stance-created__reason', 'A reason')
-    })
-
-    page.click('.action-dock__button--edit_stance')
-    page.click('.poll-common-edit-vote__button')
-    page.click('.poll-common-vote-form__button:last-child')
-    page.click('.poll-common-vote-form__submit')
-    page.expectFlash('Vote created')
-  },
-
-  'can_edit_a_reason': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('test_discussion', { controller: 'polls' })
-    page.click('.activity-panel__add-poll')
-    page.click('.decision-tools-card__poll-type--poll')
-    // page.click(".poll-common-tool-tip__collapse")
-    page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
-    page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
-    page.click('.poll-common-form__submit')
-    page.expectElement('.announcement-form__submit')
-    page.click('.dismiss-modal-button')
-
-    page.expectText('.poll-common-card__title', 'A new proposal')
-    page.expectText('.poll-common-details-panel__details p', 'Some details')
-
-    page.click('.poll-common-vote-form__button')
-    page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
-    page.click('.poll-common-vote-form__submit')
-
-    page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-common-stance-choice', 'An option')
-      page.expectText('.poll-common-stance-created__reason', 'A reason')
-    })
-
-    page.click('.action-dock__button--edit_stance')
-    page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', "An updated reason")
-    page.click('.poll-common-edit-vote__submit')
-    page.expectFlash('Vote updated')
-  },
+  // 'can_edit_a_vote': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('test_discussion', { controller: 'polls' })
+  //   page.click('.activity-panel__add-poll')
+  //   page.click('.decision-tools-card__poll-type--poll')
+  //   // page.click(".poll-common-tool-tip__collapse")
+  //   page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
+  //   page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
+  //   page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
+  //   page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
+  //   page.click('.poll-common-form__submit')
+  //   page.expectElement('.announcement-form__submit')
+  //   page.click('.dismiss-modal-button')
+  //
+  //   page.expectText('.poll-common-card__title', 'A new proposal')
+  //   page.expectText('.poll-common-details-panel__details p', 'Some details')
+  // 
+  //   page.click('.poll-common-vote-form__button')
+  //   page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
+  //   page.click('.poll-common-vote-form__submit')
+  //
+  //   page.scrollTo('.stance-created', () => {
+  //     page.expectText('.poll-common-stance-choice', 'An option')
+  //     page.expectText('.poll-common-stance-created__reason', 'A reason')
+  //   })
+  //
+  //   page.click('.action-dock__button--edit_stance')
+  //   page.click('.poll-common-edit-vote__button', 500)
+  //   page.click('.poll-common-vote-form__button:last-child')
+  //   page.click('.poll-common-vote-form__submit')
+  //   page.expectFlash('Vote created')
+  // },
+  //
+  // 'can_edit_a_reason': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('test_discussion', { controller: 'polls' })
+  //   page.click('.activity-panel__add-poll')
+  //   page.click('.decision-tools-card__poll-type--poll')
+  //   // page.click(".poll-common-tool-tip__collapse")
+  //   page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
+  //   page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
+  //   page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
+  //   page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
+  //   page.click('.poll-common-form__submit')
+  //   page.expectElement('.announcement-form__submit')
+  //   page.click('.dismiss-modal-button')
+  //
+  //   page.expectText('.poll-common-card__title', 'A new proposal')
+  //   page.expectText('.poll-common-details-panel__details p', 'Some details')
+  //
+  //   page.click('.poll-common-vote-form__button')
+  //   page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
+  //   page.click('.poll-common-vote-form__submit')
+  //
+  //   page.scrollTo('.stance-created', () => {
+  //     page.expectText('.poll-common-stance-choice', 'An option')
+  //     page.expectText('.poll-common-stance-created__reason', 'A reason')
+  //   })
+  //
+  //   page.click('.action-dock__button--edit_stance', 500)
+  //   page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', "An updated reason")
+  //   page.click('.poll-common-edit-vote__submit')
+  //   page.expectFlash('Vote updated')
+  // },
 }

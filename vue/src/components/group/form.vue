@@ -143,7 +143,7 @@ v-card.group-form
 
       v-tab-item.mt-8
         .v-input
-          label.v-label.v-label--active.theme--light.lmo-font-12px(v-t="'group_form.click_to_change_image'")
+          label.v-label.v-label--active.lmo-font-12px(v-t="'group_form.click_to_change_image'")
         v-img.group_form__file-select(:src="group.coverUrl()" width="100%"  @click="selectCoverPhoto()")
         group-avatar.group_form__file-select.group_form__logo.white(v-if="!group.parentId" :group="group" size="72px" :on-click="selectLogo" :elevation="4")
         v-text-field.group-form__name#group-name.mt-4(v-model='clone.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]', maxlength='255', :label="$t(groupNameLabel)")

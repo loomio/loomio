@@ -52,7 +52,7 @@ export default class PollModel extends BaseModel
     @hasMany   'pollOptions'
     @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
     @hasMany   'pollDidNotVotes'
-    @hasMany   'versions', sortBy: 'createdAt'
+    @hasMany   'versions'
 
   adminsInclude: (user) ->
     _.includes(poll.adminMembers(), Session.user()) || Session.user().isAuthorOf(poll)

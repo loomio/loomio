@@ -54,7 +54,8 @@ export default
 <template lang="pug">
 .actions-panel#add-comment
   v-divider(v-if="!discussion.newestFirst")
-  v-tabs.activity-panel__actions.mb-3(grow icons-and-text v-model="currentAction")
+  v-tabs.activity-panel__actions.mb-3(grow icons-and-text v-model="currentAction" show-arrows)
+    v-tabs-slider
     v-tab(href='#add-comment')
       span(v-t="'activity_card.comment'")
       v-icon mdi-comment

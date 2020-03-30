@@ -46,6 +46,7 @@ ActiveAdmin.register Subscription do
       row :max_threads
       row :max_members
       row :max_orgs
+      row :info
     end
 
     panel("Refresh chargify") do
@@ -56,10 +57,6 @@ ActiveAdmin.register Subscription do
       else
         "no chargify subscription to refresh"
       end
-    end
-
-    if subscription.info.present?
-      render 'community_application', { info: subscription.info }
     end
   end
 

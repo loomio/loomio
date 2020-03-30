@@ -4,7 +4,7 @@ class PermittedParams < Struct.new(:params)
     stance invitation group_request group discussion discussion_reader comment
     contact_message user_deactivation_response announcement document
     draft oauth_application group_identity contact_request reaction
-    tag discussion_tag
+    tag discussion_tag group_survey
   )
 
   MODELS.each do |kind|
@@ -147,5 +147,9 @@ class PermittedParams < Struct.new(:params)
 
   def document_attributes
     [:url, :title, :model_id, :model_type, :file, :filename]
+  end
+
+  def group_survey_attributes
+    [:group_id, :declaration, :category, :location, :size, :purpose, :referrer, :role, :website, :misc, :usage]
   end
 end

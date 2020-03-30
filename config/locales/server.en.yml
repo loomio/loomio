@@ -138,8 +138,8 @@ en:
         confirm: Confirm merge
         body_html: |
           <p>Please confirm that you would like to merge the account under <strong>%{source_email}</strong> into the account under <strong>%{target_email}</strong>.</p>
-          <p>You will thereafter only be able to sign in via <strong>%{target_email}</strong></p>
-          <p>This change will be irreversible.</p>
+          <p>Your account under <strong>%{source_email}</strong> will be deleted, and you will thereafter only be able to sign in via <strong>%{target_email}</strong>.</p>
+          <p>This change is irreversible.</p>
         merge: Merge accounts
       complete_page:
         title: Merge successful!
@@ -756,19 +756,9 @@ en:
     stance_not_valid: "Sorry, we weren't able to create a stance for *%{poll}*. <%{url}|Click here> to vote on the poll directly."
     group_identity_created: |
       Hello, I'm Loomio Bot! *%{author}* added me.
-      I can help your team make decisions together.
+      I'll tell you whenever there are new threads or polls within *%{group}*
 
-      My functions include:
-
-      - Initiating threads and decisions on Loomio directly from Slack
-      - Announcing when new threads and decisions are happening on Loomio
-      - Allowing people vote on decisions from Slack
-      - communicating the outcome of decisions
-
-      To find out more, type _/loomio help_
-
-      You'll need to be a part of the Loomio group *%{group}* to participate.
-      If you haven't joined yet, <%{url}|Click here> to do so.
+      If you haven't joined *%{group}* yet, <%{url}|Click here> to do so.
     request_authorization_message: "Just one more step: <%{url}|Click here> to authorize your slack account to use Loomio. (You'll only have to do this once)"
     poll_closed: "*%{title}* has closed already! <%{url}|Click here> to view the results."
     go_to_slack: Go to Slack

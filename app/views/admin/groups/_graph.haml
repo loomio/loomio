@@ -11,13 +11,13 @@
    }
   }
   data = #{ Queries::AdminGroupPage.fetch_data(group).to_json.to_s.html_safe }
-  visitsData = data["visits"]
+  // visitsData = data["visits"]
   membersData = data["members"]
   threadsData = data["threads"]
   pollsData = data["polls"]
   ctx = document.getElementById("myChart").getContext('2d')
   labels = membersData.map((r) => { return new Date(r["date"]) }) // GK: NB: labels are overridden by x-axis time units
-  visitsDataset = visitsData.map(parseDataForChart)
+  // visitsDataset = visitsData.map(parseDataForChart)
   membersDataset = membersData.map(parseDataForChart)
   threadsDataset = threadsData.map(parseDataForChart)
   pollsDataset = pollsData.map(parseDataForChart)
@@ -25,12 +25,14 @@
     type: 'bar',
     data: {
       labels: labels,
-      datasets: [{
-        label: "Visits",
-        backgroundColor: 'rgba(244, 215, 66, 1)',
-        borderColor: 'rgb(244, 215, 66)',
-        data: visitsDataset
-      }, {
+      datasets: [
+      // {
+      //   label: "Visits",
+      //   backgroundColor: 'rgba(244, 215, 66, 1)',
+      //   borderColor: 'rgb(244, 215, 66)',
+      //   data: visitsDataset
+      // },
+      {
         label: "Members",
         backgroundColor: 'rgba(80, 65, 244, 1)',
         borderColor: 'rgb(80, 65, 244)',

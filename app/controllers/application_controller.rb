@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_version
   helper_method :bundle_asset_path
   helper_method :supported_locales
+  
+  after_action :associate_user_to_visit
 
   def index
     boot_app
