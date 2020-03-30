@@ -15,3 +15,7 @@ Ahoy.server_side_visits = :when_needed
 Ahoy.geocode = :async
 Ahoy.visit_duration = 30.minutes
 Ahoy.mask_ips = true
+
+AhoyEmail.api = true
+AhoyEmail.default_options[:open] = true
+AhoyEmail.default_options[:utm_params] = true
