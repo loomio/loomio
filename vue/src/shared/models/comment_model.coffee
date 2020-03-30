@@ -41,9 +41,6 @@ export default class CommentModel extends BaseModel
   group: ->
     @discussion().group()
 
-  guestGroup: ->
-    @discussion().guestGroup()
-
   memberIds: ->
     @discussion().memberIds()
 

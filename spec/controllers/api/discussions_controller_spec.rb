@@ -118,7 +118,7 @@ describe API::DiscussionsController do
       it 'displays guest threads' do
         DiscussionService.create(discussion: another_discussion, actor: another_discussion.author)
         sign_in user
-        DiscussionReader.for(user: user, discussion: another_discussion).set_volume! :normal
+        another_discussion.add_guest!(user, another_discussion.author)
         get :dashboard
         json = JSON.parse(response.body)
         discussion_ids = json['discussions'].map { |d| d['id'] }
@@ -199,7 +199,7 @@ describe API::DiscussionsController do
 
       it 'displays discussion to guest group members' do
         discussion.group.memberships.find_by(user: user).destroy
-        discussion.add_guest!(user)
+        discussion.add_guest!(user, discussion.author)
         get :show, params: { id: discussion.key }
         json = JSON.parse(response.body)
 

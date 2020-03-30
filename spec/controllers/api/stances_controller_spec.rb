@@ -129,7 +129,7 @@ describe API::StancesController do
     describe "verified user votes" do
       it "creates stance and updates name and email" do
         user.update(email_verified: true)
-        poll.add_guest! user
+        poll.add_guest! user, poll.author
         sign_in user
         expect { post :create, params: {stance: stance_params } }.to_not change {ActionMailer::Base.deliveries.count}
         expect(user.stances.latest.count).to eq 1
@@ -142,7 +142,7 @@ describe API::StancesController do
       poll.update(anonymous: true)
       user.update(email_verified: true)
       sign_in user
-      poll.add_guest! user
+      poll.add_guest! user, poll.author
       post :create, params: { stance: stance_params }
       json = JSON.parse(response.body)
       expect(response.status).to eq 200
@@ -166,13 +166,13 @@ describe API::StancesController do
       end
 
       it 'admin of discussion guest group can vote' do
-        poll.discussion.add_admin! user
+        poll.discussion.add_admin! user, discussion.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
 
       it 'admin of poll guest group can vote' do
-        poll.add_admin! user
+        poll.add_admin! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
@@ -184,13 +184,13 @@ describe API::StancesController do
       end
 
       it 'guest of discussion cannot vote' do
-        poll.discussion.add_guest! user
+        poll.discussion.add_guest! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 403
       end
 
       it 'guest of poll can vote' do
-        poll.add_guest! user
+        poll.add_guest! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 403
       end
@@ -211,13 +211,13 @@ describe API::StancesController do
       end
 
       it 'guest of discussion can vote' do
-        poll.discussion.add_guest! user
+        poll.discussion.add_guest! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
 
       it 'guest of poll can vote' do
-        poll.add_guest! user
+        poll.add_guest! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end

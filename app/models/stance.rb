@@ -17,6 +17,7 @@ class Stance < ApplicationRecord
   is_rich_text    on: :reason
 
   belongs_to :poll, required: true
+  belongs_to :inviter, class_name: 'User'
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
@@ -25,7 +26,6 @@ class Stance < ApplicationRecord
   def self.always_versioned_fields
     [:reason]
   end
-
 
   accepts_nested_attributes_for :stance_choices
   attr_accessor :visitor_attributes

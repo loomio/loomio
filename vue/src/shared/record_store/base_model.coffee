@@ -135,6 +135,7 @@ export default class BaseModel
     args = assign values, userArgs
 
     @[name] = => @recordStore[args.from].find(@[args.by])
+    @[name+'Is'] = (obj) => @recordStore[args.from].find(@[args.by]) == obj
 
   translationOptions: ->
 

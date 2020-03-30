@@ -641,6 +641,8 @@ ActiveRecord::Schema.define(version: 2020_03_28_230631) do
     t.string "token"
     t.datetime "revoked_at"
     t.boolean "admin", default: false, null: false
+    t.integer "inviter_id"
+    t.integer "volume"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["token"], name: "index_stances_on_token", unique: true

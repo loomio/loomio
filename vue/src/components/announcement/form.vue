@@ -58,7 +58,7 @@ export default
       @announcement.invitedGroupIds = @invitedGroupIds
       @announcement.save()
       .then (data) =>
-        @announcement.membershipsCount = data.memberships.length
+        @announcement.membershipsCount = data.users.length
         Flash.success('announcement.flash.success', { count: @announcement.membershipsCount })
         @close()
       .catch onError(@announcement)

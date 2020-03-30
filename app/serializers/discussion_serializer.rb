@@ -40,7 +40,10 @@ class DiscussionSerializer < ActiveModel::Serializer
                          :discussion_reader_volume,
                          :last_read_at,
                          :dismissed_at,
-                         :read_ranges
+                         :read_ranges,
+                         :revoked_at,
+                         :inviter_id,
+                         :admin
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups

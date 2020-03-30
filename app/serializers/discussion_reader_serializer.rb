@@ -6,7 +6,10 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
              :read_ranges,
              :last_read_at,
              :dismissed_at,
-             :volume
+             :volume,
+             :inviter_id,
+             :admin,
+             :revoked_at
 
   has_one :user, serializer: UserSerializer, root: :users
 end

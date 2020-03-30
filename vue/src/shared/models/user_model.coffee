@@ -75,15 +75,15 @@ export default class UserModel extends BaseModel
     _.uniq _.map @orphanSubgroups(), (group) ->
       group.parent()
 
-  isAuthorOf: (object) ->
-    @id == object.authorId if object
-
-  isAdminOf: (group) ->
-    return false unless group
-    @recordStore.memberships.find(groupId: group.id, userId: @id, admin: true)[0]?
-
-  isMemberOf: (group) -> @membershipFor(group)?
-
+  # isAuthorOf: (object) ->
+  #   @id == object.authorId if object
+  #
+  # isAdminOf: (group) ->
+  #   return false unless group
+  #   @recordStore.memberships.find(groupId: group.id, userId: @id, admin: true)[0]?
+  #
+  # isMemberOf: (group) -> @membershipFor(group)?
+  #
   membershipFor: (group) ->
     return unless group
     @recordStore.memberships.find(groupId: group.id, userId: @id)[0]
@@ -134,9 +134,9 @@ export default class UserModel extends BaseModel
     if model.isA('group')
       (@membershipFor(model) or {}).title
     else if model.isA('discussion')
-      @titleFor(model.guestGroup()) or @titleFor(model.group())
+      @titleFor(model.group())
     else if model.isA('poll')
-      @titleFor(model.guestGroup()) or @titleFor(model.discussion()) or @titleFor(model.group())
+      @titleFor(model.discussion()) or @titleFor(model.group())
 
   belongsToPayingGroup: ->
     _.some @groups(), (group) -> group.subscriptionKind == 'paid'

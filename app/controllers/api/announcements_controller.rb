@@ -8,6 +8,13 @@ class API::AnnouncementsController < API::RestfulController
 
   def create
     current_user.ability.authorize! :announce, target_model
+
+    # juggle data
+    if params[:announcement]
+      params[:emails] = params.dig(:announcement, :recipients, :emails)
+      params[:user_ids] = params.dig(:announcement, :recipients, :user_ids)
+    end
+
     if target_model.is_a?(Group)
       self.collection = GroupService.announce(group: target_model, actor: current_user, params: params)
       respond_with_collection serializer: MembershipSerializer, root: :memberships

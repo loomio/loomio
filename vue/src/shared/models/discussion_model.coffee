@@ -58,6 +58,19 @@ export default class DiscussionModel extends BaseModel
 
   discussion: -> @
 
+  members: ->
+    # pull out the discussion_readers user_ids
+    @recordStore.users.find(@group().memberIds())
+
+  membersInclude: (user) ->
+    (@inviterId && !@revokedAt && Session.user() == user) or
+    @group().membersInclude(user)
+
+  adminsInclude: (user) ->
+    @author() == user or
+    (@inviterId && @admin && !@revokedAt && Session.user() == user) or
+    @group().adminsInclude(user)
+
   createdEvent: ->
     res = @recordStore.events.find(kind: 'new_discussion', eventableId: @id)
     res[0] unless _.isEmpty(res)

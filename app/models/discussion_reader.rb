@@ -5,8 +5,6 @@ class DiscussionReader < ApplicationRecord
   extend HasTokens
   initialized_with_token :token
 
-  scope :active, -> { where('cancelled_at IS NOT NULL') }
-
   belongs_to :user
   belongs_to :discussion
   belongs_to :inviter, class_name: 'User'
@@ -14,6 +12,9 @@ class DiscussionReader < ApplicationRecord
   delegate :update_importance, to: :discussion
   delegate :importance, to: :discussion
   delegate :message_channel, to: :user
+
+  scope :invitations, -> { where("discussion_readers.inviter_id IS NOT NULL and discussion_readers.revoked_at IS NULL") }
+  scope :admins, -> { where('discussion_readers.admin': true) }
 
   update_counter_cache :discussion, :seen_by_count
 

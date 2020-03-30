@@ -9,7 +9,7 @@ module Ability::Discussion
       !discussion.group.archived_at && (
         discussion.public? ||
         discussion.members.include?(user) ||
-        discussion.discussion_readers.find_by(token: user.discussion_reader_token) ||
+        discussion.guests.find_by(token: user.discussion_reader_token) ||
         (discussion.group.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id))
       )
     end
@@ -19,7 +19,7 @@ module Ability::Discussion
     end
 
     can :update_version, ::Discussion do |discussion|
-      user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
+      discussion.author == user or discussion.admins.include?(user)
     end
 
     can :create, ::Discussion do |discussion|

@@ -191,7 +191,7 @@ describe Queries::VisibleDiscussions do
   describe 'guest access' do
     let(:discussion) { create :discussion, author: author, private: true }
     it 'returns discussions via discussion reader' do
-      discussion.add_guest!(user)
+      discussion.add_guest!(user, discussion.author)
       Queries::VisibleDiscussions.new(user: user).should include discussion
     end
 

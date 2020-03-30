@@ -237,7 +237,7 @@ describe API::PollsController do
       end
 
       it 'guest cannot raise motions' do
-        discussion.add_guest! user
+        discussion.add_guest! user, discussion.author
         post :create, params: { poll: poll_params }
         expect(response.status).to eq 403
       end
@@ -256,7 +256,7 @@ describe API::PollsController do
       end
 
       it 'guest can raise motions' do
-        discussion.add_guest! user
+        discussion.add_guest! user, discussion.author
         post :create, params: { poll: poll_params }
         expect(response.status).to eq 200
       end

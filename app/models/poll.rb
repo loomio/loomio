@@ -190,12 +190,12 @@ class Poll < ApplicationRecord
     # User.where(id: group.members.pluck(:id).concat(voters.pluck(:id)))
   end
 
-  def add_guest!(user)
-    stances.find_or_create_by(participant_id: user.id)
+  def add_guest!(user, author)
+    stances.create!(participant_id: user.id, inviter: author, volume: DiscussionReader.volumes[:normal])
   end
 
-  def add_admin!(user)
-    stances.find_or_create_by(participant_id: user.id).tap {|s| s.update_attribute(:admin, true) }
+  def add_admin!(user, author)
+    stances.create!(participant_id: user.id, inviter: author, volume: DiscussionReader.volumes[:normal], admin: true)
   end
 
   def active?

@@ -20,7 +20,7 @@ class PollService
                                          user_ids: params[:user_ids])
 
     Stance.import(users.map do |user|
-      Stance.new(participant_id: user.id, poll_id: poll.id)
+      Stance.new(participant: user, poll: poll, inviter: actor, volume: DiscusisonReader.volumes[:normal])
     end)
 
     stances = Stance.where(participant_id: users.pluck(:id))

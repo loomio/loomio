@@ -25,9 +25,6 @@ export default class PollModel extends BaseModel
 
   poll: -> @
 
-  groups: ->
-    _.compact [@group(), @discussionGuestGroup(), @guestGroup()]
-
   defaultValues: ->
     discussionId: null
     title: ''
@@ -52,23 +49,16 @@ export default class PollModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
     @belongsTo 'group'
-    @belongsTo 'guestGroup', from: 'groups'
     @hasMany   'pollOptions'
     @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
     @hasMany   'pollDidNotVotes'
     @hasMany   'versions', sortBy: 'createdAt'
 
+  adminsInclude: (user) ->
+    _.includes(poll.adminMembers(), Session.user()) || Session.user().isAuthorOf(poll)
+
   authorName: ->
     @author().nameWithTitle(@)
-
-  discussionGuestGroupId: ->
-    @discussion().guestGroupId if @discussion()
-
-  discussionGuestGroup: ->
-    @discussion().guestGroup() if @discussion()
-
-  groupIds: ->
-    _.compact [@groupId, @guestGroupId, @discussionGuestGroupId()]
 
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")

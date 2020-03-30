@@ -18,11 +18,10 @@ class DiscussionService
                                          user_ids: params[:user_ids])
 
     DiscussionReader.import(users.map do |user|
-      DiscussionReader.new(user_id: user.id, discussion_id: discussion.id)
+      DiscussionReader.new(user: user, discussion: discussion, inviter: actor, volume: 2)
     end)
 
-    discussion_readers = DiscussionReader.where(user_id: users.pluck(:id),
-                                                discussion_id: discussion.id)
+    discussion_readers = DiscussionReader.where(user_id: users.pluck(:id), discussion_id: discussion.id)
 
     Events::DiscussionAnnounced.publish!(discussion, actor, discussion_readers)
     discussion_readers
