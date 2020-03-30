@@ -3,8 +3,8 @@
   %div{ class: 'panel-contents' }
     %table{ id: 'stats-table' }
       %tr
-        -# %td
-        -#   %h2{ style: "text-align: center"}= Queries::AdminGroupPage.visits_count(group)
+        %td
+          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.visits_count(group)
         %td
           %h2{ style: "text-align: center"}= group.org_memberships_count
         %td
@@ -17,8 +17,8 @@
           %h2{ style: "text-align: center"}= Queries::AdminGroupPage.thread_items_count(group)
 
       %tr
-        -# %th
-        -#   %h4{ style: "text-align: center" } Visits
+        %th
+          %h4{ style: "text-align: center" } Visits
         %th
           %h4{ style: "text-align: center" } Members
         %th
