@@ -122,6 +122,7 @@ nl_NL:
     total: Totaal
     action:
       print: Afdrukken
+      preview: Voorbeeld
       pin: Vastprikken
       unpin: Ontprikken
       search: 'Zoek'
@@ -169,6 +170,9 @@ nl_NL:
     formatting_help:
       label: 'Aan het formatteren'
       title: 'Leer hoe je Markdown kan gebruiken om tekst op te maken'
+  merge_accounts:
+    modal:
+      submit: Bevestigen
   emoji_picker:
     search: Zoek
     common: Vaak gebruikt
@@ -448,7 +452,6 @@ nl_NL:
     invite_guests: Nodig gasten uit
     translate_thread: Beschrijving vertalen
     edit_poll: '''Peiling'' bewerken'
-    move_items: Verplaatsen
     translate_poll: '''Peiling'' vertalen'
     edit_stance: Verander standpunt
     translate_stance: Stem vertalen
@@ -536,9 +539,9 @@ nl_NL:
     options:
       label: 'Opties'
       edit_group: 'Bewerk groepsinstellingen'
+      export_data: Groepsdata exporteren
       manage_members: 'Beheer leden'
       add_subgroup: 'Voeg subgroep toe'
-      manage_subscription: 'Beheer groepsinschrijving'
       email_settings: 'E-mail voorkeuren'
       leave_group: 'Verlaat groep'
       deactivate_group: 'Deactiveer groep'
@@ -1459,3 +1462,11 @@ nl_NL:
         Je bent erin geslaagd Slack toe te voegen aan je groep <strong>{{name}}</strong>.
         Als nu eender wie een peiling start in deze group, zullen ze de optie hebben om updates over die peiling te posten op een kanaal van je slack team.
     start_poll_now: Maak nu een beslissing
+  group_survey:
+    categories:
+      business: Zakelijk
+      other: Andere
+    uses:
+      other: Andere
+    referrers:
+      other: Andere

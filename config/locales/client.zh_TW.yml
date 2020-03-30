@@ -28,6 +28,16 @@ zh_TW:
     was_gift_trial: "自 {{createdDate}} 開始，您的群組免費使用 Loomio 這麼久了。我們無法繼續提供免費服務。請升級以繼續使用 Loomio。<a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>閱讀更多。</a>"
     was_gift_remaining: "剩 {{days}} 天"
     was_gift_expired: "您的免費方案已過期。"
+  subscription_status:
+    plan: "方案"
+    state: "狀態"
+    active_members: "活躍成員"
+    max_threads: "最大討論串"
+    max_members: "最大成員"
+    expires_at: "過期"
+    renews_at: "續訂"
+    referral_code: "儲值推薦代碼"
+    chargify_link: "儲值計費入口"
   loomio_tags:
     all_tags: 所有標籤
     tags: 標籤
@@ -133,6 +143,7 @@ zh_TW:
     settings: '設定'
     help: '教學文件'
     anonymous: 匿名
+    required: 必要
     privacy:
       privacy: '隱私權'
       public: '公開'
@@ -209,6 +220,17 @@ zh_TW:
     formatting_help:
       label: '格式化'
       title: '學習如何使用 Markdown 來格式化您的文字'
+  merge_accounts:
+    modal:
+      title: 合併帳號
+      helptext: "您可以將 <strong>{{sourceEmail}}</strong> 的帳號合併到 <strong>{{targetEmail}}</strong>。點擊驗證，然後驗證用的電子郵件將會傳送到 {{targetEmail}} 以開始流程。"
+      submit: 驗證
+      flash: 驗證用的電子郵件已傳送！
+    email_taken: 抱歉，該電子郵件已與其他使用者相關聯。該電子郵件屬於您嗎？
+    find_out_more: 了解更多資訊。
+    placeholder_modal_text: |
+        <p>如果您想要合併兩個帳號，只要在您的個人檔案頁面的電子郵件欄位輸入對應的電子郵件地址（屬於其他帳號），然後遵照出現的指示操作。</p>
+        <p>需要協助嗎？<a href="/contact" target="_blank">聯絡我們</a>。
   emoji_picker:
     search: 搜尋
     common: 經常使用
@@ -318,10 +340,9 @@ zh_TW:
   close_explanation_modal:
     aria_label: 關閉討論串
     close_thread: 關閉討論串
-    body_header: |
-        <p>關閉舊的或無關的討論串以將它們從檢視中移除，並指示它們已經被關閉。</p>
-    body_footer: |
-        <p>所有人還是可以在已關閉的討論串中評論或開啟投票，但其將不會出現在群組的討論串清單或儀表板上。</p>
+    body: |
+        <p>關閉舊或無關的討論串以將其從檢視畫面中移除，並指出討論已結束。</p>
+        <p>每個人都還是可以在已關閉的討論串中發表評論或發起投票，但它不會再出現在群組的討論串清單與儀表板上。</p>
     image_alt: 關閉討論串所有
   mute_explanation_modal:
     aria_label: 討論串設為靜音
@@ -491,6 +512,7 @@ zh_TW:
     outcome_created: "<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> 已參與：<strong>{{title}}</strong>"
+    group_announced: "<strong>{{name}}</strong> 邀請您加入群組 <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: 擁有發言權
   extend_proposal_form:
@@ -783,6 +805,7 @@ zh_TW:
       email_settings: '電子郵件設定'
       leave_group: '離開群組'
       deactivate_group: '停用群組'
+      subscription_status: '訂閱狀態'
     volume:
       loud: 只要有活動就立刻寄發電子郵件。
       loud_aria_description: 您在此群組的通知音量設定為大聲。只要一有動態，您就會收到電子郵件。
@@ -1079,6 +1102,7 @@ zh_TW:
       picture_changed: '簡歷照片已更新'
       password_changed: '密碼已更新'
       deactivated: '帳號已停用'
+    merge_accounts: 合併帳號
     change_picture_link: '變更照片'
     change_password_link: '重設密碼'
     delete_account: '永久刪除帳號'
@@ -2115,3 +2139,59 @@ zh_TW:
         <p>這是更快更好的 Loomio！</p>
         <p>我們覺得您會喜歡它，不過如果您想要的話，您還是可以從側邊欄切換回舊版。</p>
         <p><a href="{{link}}" target="_blank">看看有什麼新東西。</a></p>
+  group_survey:
+    title: 成功！只要再一些詳細資訊
+    subtitle: 請協助我們更了解您。未經您的許可，我們不會將您的任何資訊分享其他人。
+    validation_error: 請填寫所有必填欄位。
+    success: 感謝您！
+    categories:
+      business: 商務
+      bcorp: B-Corp 或社會企業
+      cooperative: 合作社
+      consultant: 顧問服務或代理
+      government: 政府／地方政府
+      nonprofit: 非營利組織
+      union: 聯盟
+      party: 政黨
+      activist: 活動家組織
+      community: 社群或共同體
+      education: 教育或研究
+      faith: 信仰或靈修團體
+      volunteer: 志工組織
+      other: 其他
+    sizes:
+      ten: "< 10"
+      twenty: "11 - 20"
+      fifty: "21 - 50"
+      two_hundred: "51 - 200"
+      five_hundred: "201 - 500"
+      two_thousand: "501 - 2000"
+      else: "> 2000"
+    uses:
+      governance: 董事會、委員會或信託
+      collaboration: 協作小組
+      engagement: 利害關係人或成員參與
+      self_management: 自治（協作空間）
+      remote: 遠端工作
+      document: 協作文件開發，如策略計畫
+      decision_making: 決策流程（諮詢、同意）
+      funding: 資助或撥款決定
+      project: 專案團隊
+      forum: 論壇
+      other: 其他
+    referrers:
+      google: Google 搜尋
+      invitation: 邀請加入 Loomio 群組
+      referral: 轉介
+      social: 社群媒體 (Facebook, Twitter, LinkedIn)
+      capterra: Capterra
+      other: 其他
+    location: 您的群組在哪裡？
+    purpose: "您群組的目的是什麼？"
+    category_question: "選擇最能描述您群組的分類"
+    anything_else: "您還有什麼想告訴我們的嗎？"
+    size_question: "您的群組中有多少人？"
+    role: "您在群組中的角色是什麼？"
+    website: "網站 URL"
+    usage: "您打算如何使用 Loomio？選擇最適合您的"
+    referrer: "您是如何得知 Loomio 的？"

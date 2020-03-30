@@ -147,3 +147,10 @@ ja:
     'no': 'いいえ'
   auth_form:
     name_placeholder: あなたの名前
+  group_survey:
+    categories:
+      other: その他
+    uses:
+      other: その他
+    referrers:
+      other: その他

@@ -108,3 +108,10 @@ vi:
   poll_count_options:
     'yes': 'Đồng Ý'
     'no': 'Không đồng ý'
+  group_survey:
+    categories:
+      other: Khác
+    uses:
+      other: Khác
+    referrers:
+      other: Khác

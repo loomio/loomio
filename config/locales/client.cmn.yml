@@ -136,6 +136,7 @@ cmn:
     total: 总共
     action:
       print: 打印
+      preview: 预览
       search: '搜索'
       filter: '过滤器'
       back: '返回'
@@ -277,10 +278,6 @@ cmn:
   close_explanation_modal:
     aria_label: 关闭话题
     close_thread: 关闭话题
-    body_header: |
-        <p>关闭旧的或无关的话题以将它们从视图中移除，并标记它们已经被关闭。</p>
-    body_footer: |
-        <p>所有人还是可以在已关闭的话题中评论或开启投票，但其将不会出现在群组的话题列表或仪表板上。</p>
   mute_explanation_modal:
     aria_label: 话题设为静音
     mute_thread: 话题设为静音
@@ -447,7 +444,6 @@ cmn:
       updated: '话题已更新'
       forked: '话题副本已创建'
     new_discussion_title: '发起新的话题'
-    fork_discussion_title: '创建话题副本'
     edit_discussion_title: '编辑话题'
     group_label: '组'
     group_placeholder: '选择一个群组'
@@ -545,12 +541,12 @@ cmn:
     italicize: 斜体
     strikethrough: 删除线
     underline: 下划线
-    link: 链接
+    link: 插入链接
     code_block: 代码块
     attach: 上传附件
     check_list: 清单
     quote: 引用
-    embed: 嵌入
+    embed: 嵌入影片
   cover_photo_form:
     upload_link: '上传新的封面图片'
     image_size_helptext: '理想的图片尺寸是 1400x320 像素'
@@ -604,14 +600,11 @@ cmn:
     options_label: '选项'
     options:
       label: '选项'
+      edit_group: '编辑团队设置'
       open_group_wizard: '群组设定向导'
-      become_coordinator: 成为管理员
       export_data: 导出群组资料
-      export_data_as_json: 将群组资料导出为 JSON
-      export_data_as_csv: 将群组资料导出为 CSV
-      export_data_as_html: 将群组资料导出为 HTML
       manage_members: '管理成员'
-      leave_group: '离开群组'
+      leave_group: '离开团队'
       deactivate_group: '停用群组'
     volume:
       loud: 只要有活动就立刻寄发电子邮件。
@@ -753,7 +746,6 @@ cmn:
     copy_link: '复制'
     email_addresses: '电子邮件地址'
     email_addresses_placeholder: '范例：helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: '任何持有分享出去的链接的人都可以如同他们被邀请那样加入。所以不要把链接分享给您不想要他加入的人。'
     shareable_link_reset: '可分享的链接已重设。先前的链接已不再可用。'
     email_explanation: '替代方案是，在下面输入电子邮件地址来以电子邮件发送邀请。'
     add_custom_message: '让您的邀请变为私人的，'
@@ -1256,3 +1248,10 @@ cmn:
       custom_message: 自定义消息
   slack_added_modal:
     title: 成功！
+  group_survey:
+    categories:
+      other: 其他的
+    uses:
+      other: 其他的
+    referrers:
+      other: 其他的

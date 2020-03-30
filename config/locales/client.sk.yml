@@ -148,3 +148,11 @@ sk:
     'no': 'Nie'
   auth_form:
     name_placeholder: Vaše meno
+  group_survey:
+    categories:
+      business: Obchod
+      other: Ostatné
+    uses:
+      other: Ostatné
+    referrers:
+      other: Ostatné

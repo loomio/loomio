@@ -61,6 +61,7 @@ ar:
     copied: 'تم النسخ'
     action:
       print: طباعة
+      preview: معاينة
       search: 'بحث'
       back: 'عودة'
       close: 'مغلق'
@@ -203,7 +204,6 @@ ar:
   action_dock:
     add_comment: تعليق
     edit_poll: تعديل استطلاع الرأي
-    move_items: نقل
     edit_stance: تغيير الموقف
     delete_comment: حذف التعليق
     edited: 'معدّل '
@@ -251,12 +251,11 @@ ar:
     options_label: 'الخيارات'
     options:
       label: 'الخيارات'
-      edit_group: 'تعديل خيارات الفريق'
+      edit_group: 'تعديل إعدادات المجموعة'
       manage_members: 'إدارة الأعضاء'
       add_subgroup: 'أضف فريقا فرعيا'
-      manage_subscription: 'إدارة اشتراكات المجموعة'
       email_settings: 'إعدادات البريد الإلكتروني'
-      leave_group: 'غادر الفريق'
+      leave_group: 'غادر المجموعة'
       deactivate_group: 'إلغاء المجموعة'
     volume:
       loud: قم بإرسال رسالة الكترونية عندما يكون هناك أي نشاط.
@@ -679,3 +678,6 @@ ar:
       custom_message: رسالة مخصصة
   powered_by:
     privacy_policy: سياسة الخصوصية
+  group_survey:
+    categories:
+      business: أعمال

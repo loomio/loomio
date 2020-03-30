@@ -20,6 +20,25 @@ zh_TW:
   group:
     error:
       handle_must_begin_with_parent_handle: "必須以 %{parent_handle} 開始。"
+    stats:
+      group_stats: 群組統計
+      org_stats: 組織統計（包含子群組）
+      visits: 造訪
+      members: 成員 ({{count}})
+      subgroups: 子群組
+      threads: 討論串
+      votes: 投票
+      comments: 意見
+      general: 一般
+      polls: 投票
+      poll_types:
+        proposal: 提案
+        count: 計數
+        choose: 選擇
+        allocate: 分配
+        score: 分數
+        rank: 排名
+        time: 時間投票
   user:
     deleted_user: "已刪除的使用者"
     placeholder_name: "已邀請的使用者 (%{hostname})"
@@ -92,6 +111,26 @@ zh_TW:
           %{name} 您好，
           您的兩個 Loomio 帳號已經合併為一個。
           從現在開始，要存取 Loomio，請使用 <strong>%{email}</strong> 登入。
+    merge_verification:
+      subject: "驗證您的 %{site_name} 電子郵件地址以進行合併"
+      body_html: |
+          <p>您好 %{name}，</p>
+          <p>有一個將您的 <strong>%{source_email}</strong> 使用者帳號合併到屬於 <strong>%{target_email}</strong> 帳號的請求。</p>
+          <p>在這個程序完成後，您將無法再使用 <strong>%{source_email}</strong> 登入，僅能使用 <strong>%{target_email}</strong>。</p>
+          <p>請確定這是您想要執行的動作。</p>
+      verify: 驗證電子郵件並繼續
+      confirm_page:
+        confirm: 確認合併
+        body_html: |
+            <p>請確認您想要將 <strong>%{source_email}</strong> 的帳號合併到 <strong>%{target_email}</strong>。</p>
+            <p>您的 <strong>%{source_email}</strong> 將會被刪除，您將只能透過 <strong>%{target_email}</strong> 登入。</p>
+            <p>此變動是不可逆的。</p>
+        merge: 合併帳號
+      complete_page:
+        title: 合併成功！
+        body_html: |
+            <p>您的使用者帳號合併成功。您很快就會在 <strong>%{target_email}</strong> 收到確認信。</p>
+            <p>如果您還有其他問題的話，請<a href="/contact" target="_blank">聯絡我們</a>。</p>
   email:
     common:
       or_enter_code: 或是在下方輸入代碼
@@ -306,15 +345,13 @@ zh_TW:
       title: |
           ## 連結與圖片
       body: |
-          大聲複誦：
-
-          方括號括住名稱而圓括號括住 URL。括號間並無空格。
+          使用中括號括住標題，並使用小括號括住 URL。括號間並無空格。
 
           [Loomio 首頁](https://www.loomio.org/)
 
-          圖片也一樣，但要加驚嘆號前綴。
+          圖片的用法也相同，但必須多一個驚嘆號前綴。標題是替代用的文字。
 
-          ![loomio logo](https://i.imgur.com/Fvtworb.png)
+          ![loomio 圖示](https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: '提醒：%{member} 正等候您加入 %{group_name}'
   poll_mailer:
@@ -406,7 +443,7 @@ zh_TW:
       subject:
         poll_created: '%{actor} 啟動了一個投票：%{title}'
         poll_edited: '%{actor} 編輯了投票：%{title}'
-        poll_announced: '%{actor} 邀請您投票：%{title}'
+        poll_announced: '%{actor} 邀請您在得分投票中投票：%{title}'
         poll_closing_soon: '24小時內關閉的投票：%{title}'
         poll_closing_soon_author: '您的投票將於24小時內關閉：%{title}'
         poll_expired: "投票結果：%{title}"
@@ -422,7 +459,7 @@ zh_TW:
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個投票'
         poll_edited: '<strong>%{actor}</strong> 編輯了投票'
-        poll_announced: '<strong>%{actor}</strong> 邀請您投票'
+        poll_announced: '<strong>%{actor}</strong> 邀請您在得分投票中投票'
         poll_closing_soon: '<strong>%{actor}</strong> 的投票將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
         poll_closing_soon_author: '您的投票將於24小時內關閉，現在正是您提醒其他人關於這個投票或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的投票已關閉：%{title}"
@@ -440,7 +477,7 @@ zh_TW:
       subject:
         poll_created: '%{actor} 正在勾選：%{title}'
         poll_edited: '%{actor} 編輯了一個勾選：%{title}'
-        poll_announced: '%{actor} 邀請您參與：%{title}'
+        poll_announced: '%{actor} 邀請您參與計數：%{title}'
         poll_closing_soon: '剩餘24小時的勾選：%{title}'
         poll_closing_soon_author: '您的勾選將於24小時內關閉：%{title}'
         poll_expired: "勾選已關閉：%{title}"
@@ -454,11 +491,11 @@ zh_TW:
       header:
         poll_created: '<strong>%{actor}</strong> 正在勾選'
         poll_edited: '<strong>%{actor}</strong> 編輯了勾選'
-        poll_announced: '<strong>%{actor}</strong> 邀請您參與'
+        poll_announced: '<strong>%{actor}</strong> 邀請您參與計數'
         poll_closing_soon: '<strong>%{actor}</strong> 的勾選將於24小時內關閉。'
         poll_closing_soon_author: '您的勾選將於24小時內關閉，現在正是您提醒其他人關於這個勾選或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的勾選已關閉：%{title}"
-        poll_expired_author: '這是您的勾選的成果。若需要的話，<strong>分享成果</strong>來讓人們知道下一步會發生什麼事。'
+        poll_expired_author: '您的勾選已關閉。如果需要的話，<strong>請分享結果</strong>以讓夥伴們知道再來會發生什麼事。'
         outcome_created: '<strong>%{actor}</strong> 已分享了成果。'
         outcome_announced: '<strong>%{actor}</strong> 已分享了成果。'
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
@@ -608,20 +645,10 @@ zh_TW:
         %{integrations}
     stance_not_valid: "抱歉，我們無法為 *%{poll}* 建立立場。<%{url}|點選這裡>來直接在投票上投出您的一票。"
     group_identity_created: |
-        大家好，我是 Loomio 機器人！*%{author}* 把我加進來了。
-        我可以協助您的團隊共同做出決策。
+        嗨，我是 Loomio 機器人 *%{author}* 把我加進來了。
+        *%{group}* 中有新的討論串或投票時，我會告訴你。
 
-        我的功能包含了：
-
-        - 直接在 Slack 初始化在 Loomio 上的討論串
-        - 在 Loomio 上有新討論串與決策時宣佈
-        - 讓夥伴可以從 Slack 處投票
-        - 溝通決策的結果
-
-        要知道更多東西，請輸入 _/loomio help_
-
-        您必須為 Loomio 群組 *%{group}* 的成員才能參與。
-        若您尚未加入，<%{url}|點選這裡>以加入。
+        如果你還沒有加入 *%{group}*，請<%{url}|點擊此處>。
     request_authorization_message: "只要多一個步驟：<%{url}|點選這裡>以授權您的 Slack 帳號使用 Loomio。（您只需要做這件事情一次）"
     poll_closed: "*%{title}* 已定案！<%{url}|點選這裡>以檢視結果。"
     go_to_slack: 到 Slack

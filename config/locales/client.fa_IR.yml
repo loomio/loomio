@@ -89,6 +89,9 @@ fa_IR:
       resend: ارسال دوباره
       send: ارسال
       resent: ارسال دوباره دعوت نامه
+  merge_accounts:
+    modal:
+      submit: تایید کردن
   ordinal:
     _1: اول
     _2: دوم

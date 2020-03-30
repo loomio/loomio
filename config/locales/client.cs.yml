@@ -119,6 +119,9 @@ cs:
       resent: Pozvánka přeposlána
     formatting_help:
       label: 'Formátování'
+  merge_accounts:
+    modal:
+      submit: Ověřit
   emoji_picker:
     search: Vyhledávat
   ordinal:
@@ -326,7 +329,6 @@ cs:
     copy_url: Kopírovat odkaz
     edit_thread: Upravit kontext
     translate_thread: Přeložit kontext
-    move_items: Přesunout
     edit_stance: Změnit postoj
     edited: Upraveno
     tag_thread: Správa štítků
@@ -391,8 +393,8 @@ cs:
       manage_members: 'Správa členů'
       add_subgroup: 'Přidání skupiny'
       email_settings: 'Nastavení emailu'
-      leave_group: 'Opuštění skupiny'
-      deactivate_group: 'Deaktivování skupiny'
+      leave_group: 'Opustit skupinu'
+      deactivate_group: 'Deaktivovat skupinu'
   description_card:
     title: 'Popis skupiny'
     messages:
@@ -795,3 +797,11 @@ cs:
   slack_added_modal:
     title: Úspěch!
     start_poll_now: Rozhodněte se nyní
+  group_survey:
+    categories:
+      business: Obchod
+      other: Ostatní
+    uses:
+      other: Ostatní
+    referrers:
+      other: Ostatní

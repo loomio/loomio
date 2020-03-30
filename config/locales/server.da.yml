@@ -151,16 +151,6 @@ da:
     links:
       title: |
           ## Link og billeder
-      body: |
-          Gentga højt:
-
-          Skarpe paranteser for navnet og almindelige paranteser for URLen. Der er ikke noget mellemrum mellem skarpe og normale paranteser.
-
-          [Loomio Hjemmeside](https://www.loomio.org/)
-
-          Links til billeder er det sammen bare med et udråbstegns foranstillet.
-
-          ![loomio logo](https://i.imgur.com/Fvtworb.png)
   poll_mailer:
     common:
       or: eller

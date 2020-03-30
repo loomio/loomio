@@ -113,14 +113,4 @@ sr:
     links:
       title: |
           ## Veze i Slike
-      body: |
-          Ponavljaj naglas:
-
-          Uglaste zagrade za ime, a zatim normalne za URL. Nema razmaka između zagrada.
-
-          [Lumio Početna](https://www.loomio.org/)
-
-          Za slike važi isto pravilo, samo se koristi uzvičnik kao prefiks.
-
-          ![lumio logo](https://i.imgur.com/Fvtworb.png)
   comment_by: Komentar od %{comment_author}

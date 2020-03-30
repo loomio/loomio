@@ -191,7 +191,6 @@ sr:
     privacy_organisation: 'Nit će biti vidljiva članovima {{parent}} i članovima {{group}}.'
   action_dock:
     copy_url: Kopiraj vezu
-    move_items: Premesti
     edit_stance: Promeni poziciju
     edited: Izmenjeno
     delete_thread: Obriši nit
@@ -231,13 +230,12 @@ sr:
     options_label: 'Opcije'
     options:
       label: 'Opcije'
-      edit_group: 'Podešavanja Grupe'
+      edit_group: 'Promeni osobine grupe'
       manage_members: 'Upravljanje Članovima'
       add_subgroup: 'Dodaj Podgrupu'
-      manage_subscription: 'Upravljaj Praćenjem Grupa'
       email_settings: 'Podešavanje ePoruka'
-      leave_group: 'Napusti Grupu'
-      deactivate_group: 'Deaktiviraj Grupu'
+      leave_group: 'Napusti grupu'
+      deactivate_group: 'Deaktiviraj grupu'
     volume:
       loud: ePoruka kada god ima aktivnosti.
       loud_aria_description: Obim tvojih obaveštenja za ovu grupu je postavljen na Glasno. Dobijaćeš ePoruke kada god ima aktivnosti ovde.
@@ -616,3 +614,11 @@ sr:
     'no': 'Ne'
   auth_form:
     name_placeholder: Tvoje ime
+  group_survey:
+    categories:
+      business: Poslovanje
+      other: Ostalo
+    uses:
+      other: Ostalo
+    referrers:
+      other: Ostalo

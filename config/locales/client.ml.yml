@@ -111,3 +111,10 @@ ml:
   poll_count_options:
     'yes': 'അതെ'
     'no': 'അല്ല'
+  group_survey:
+    categories:
+      other: മറ്റുള്ളത്
+    uses:
+      other: മറ്റുള്ളത്
+    referrers:
+      other: മറ്റുള്ളത്
