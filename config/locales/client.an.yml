@@ -148,3 +148,11 @@ an:
     'no': 'No'
   auth_form:
     name_placeholder: O tuyo nombre
+  group_survey:
+    categories:
+      business: Negocios
+      other: Unatro
+    uses:
+      other: Unatro
+    referrers:
+      other: Unatro

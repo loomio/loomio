@@ -111,3 +111,10 @@ id:
   poll_count_options:
     'yes': 'Ya'
     'no': 'Tidak'
+  group_survey:
+    categories:
+      other: Lainnya
+    uses:
+      other: Lainnya
+    referrers:
+      other: Lainnya

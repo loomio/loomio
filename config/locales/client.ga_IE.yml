@@ -252,7 +252,6 @@ ga_IE:
     context_placeholder: 'Cuir dóthain eolas cúlra ar fáil don bhaicle le go mbeidh an plé torthúil. Is féidir seo a nuashonrú fad is atá an plé ar bun'
     privacy_label: 'Príobháideachas'
   action_dock:
-    move_items: Bog é
     edit_stance: Athraigh do sheasamh
     edited: Curtha in eagar
     delete_thread: Scriosadh an tsnáith
@@ -303,7 +302,7 @@ ga_IE:
       manage_members: 'Riar na comhaltaí'
       add_subgroup: 'Cuir fobhaicle leis'
       email_settings: 'Sainroghanna ríomhphoist'
-      leave_group: 'Fág an bhaicle seo'
+      leave_group: 'Fág an bhaicle'
       deactivate_group: 'Díghníomhachtaigh an bhaicle'
     volume:
       loud: Seol ríomhphost chugam nuair a bhíonn gníomhaíocht ann.
@@ -617,3 +616,11 @@ ga_IE:
       do_it_later: Déanfaidh mé sin ar ball
   slack_added_modal:
     title: D'éirigh leis!
+  group_survey:
+    categories:
+      business: Gnó
+      other: Eile
+    uses:
+      other: Eile
+    referrers:
+      other: Eile

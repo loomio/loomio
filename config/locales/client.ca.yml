@@ -79,6 +79,7 @@ ca:
     total: Total
     action:
       print: Imprimeix
+      preview: Previsualitza
       search: 'Cerca'
       back: 'Enrere'
       close: 'Tanca'
@@ -249,7 +250,6 @@ ca:
     privacy_private: 'La discussió només serà visible pels membres del grup {{group}}.'
     privacy_organisation: 'La discussió serà visible pels membres de {{parent}} i pels membres de {{group}}.'
   action_dock:
-    move_items: Mou
     edit_stance: Canvia la decisió
     edited: Editat
     tag_thread: Gestiona etiquetes
@@ -294,10 +294,9 @@ ca:
       edit_group: 'Edita la configuració del grup'
       manage_members: 'Administra els membres'
       add_subgroup: 'Afegeix un subgrup'
-      manage_subscription: 'Administra les subscripcions del grup'
       email_settings: 'Preferències del correu electrònic'
       leave_group: 'Abandona el grup'
-      deactivate_group: 'Desactiva el grup'
+      deactivate_group: 'Desactivació del grup'
     volume:
       loud_message: Rebreu correus electrònics de tota l'activitat de "{{name}}."
       normal_message: 'Només rebre correus electrònics dels esdeveniments importants de "{{name}}."'
@@ -670,3 +669,11 @@ ca:
   auth_form:
     name_placeholder: El teu nom
     name: Nom
+  group_survey:
+    categories:
+      business: Empresa
+      other: Altres
+    uses:
+      other: Altres
+    referrers:
+      other: Altres

@@ -157,6 +157,7 @@ fr:
     total: Total
     action:
       print: Imprimer
+      preview: Prévisualiser
       pin: Épingler
       unpin: Ne plus épingler
       search: 'Rechercher'
@@ -207,6 +208,9 @@ fr:
     formatting_help:
       label: 'Mise en forme'
       title: 'Apprenez à utiliser Markdown pour mettre en forme votre texte'
+  merge_accounts:
+    modal:
+      submit: Vérifier
   emoji_picker:
     search: Rechercher
     common: Fréquemment utilisé
@@ -316,10 +320,6 @@ fr:
   close_explanation_modal:
     aria_label: Clore la discussion
     close_thread: Clore la discussion
-    body_header: |
-        <p>Clore des discussions anciennes ou hors-sujet pour les retirer des listes et indiquer que la discussion est close.</p>
-    body_footer: |
-        N'importe qui peut toujours ajouter un commentaire ou démarrer un sondage sur une discussion close, mais elle n'apparaitra pas dans la liste des discussions et sur les tableaux de bord des membres.<p>
     image_alt: Clore toutes les discussions
   mute_explanation_modal:
     aria_label: Ignorer la discussion
@@ -510,7 +510,6 @@ fr:
       updated: 'Discussion mise à jour'
       forked: 'Discussion scindée'
     new_discussion_title: 'Créer une nouvelle discussion'
-    fork_discussion_title: 'Scinder une discussion'
     edit_discussion_title: 'Modifier la discussion'
     group_label: 'Groupe'
     group_placeholder: 'Sélectionner un groupe'
@@ -607,7 +606,6 @@ fr:
     invite_guests: Inviter des personnes
     translate_thread: Afficher une traduction automatique du contexte
     edit_poll: Modifier le sondage
-    move_items: Déplacer
     announce_poll: Inviter des personnes au vote
     announce_poll_active: (Personne n'a encore été invité)
     translate_poll: Afficher une traduction automatique du sondage
@@ -638,23 +636,19 @@ fr:
     reopen_thread: Ré-ouvrir la discussion
     delete_thread: Supprimer la discussion
     notification_history: Historique des notifications
-    move_comments: 'Déplacer les commentaires '
   formatting:
     bold: Audacieux
     italicize: Italique
     strikethrough: Barrer
     underline: Souligner
-    link: Lien
+    link: Insérer un lien
     code_block: Bloc de code
     attach: Joindre un fichier
-    heading1: Grand titre
-    heading2: Titre moyen
-    heading3: Petit titre
     bullet_list: Liste
     number_list: Liste numérotée
     check_list: Checkliste
     quote: Citation
-    embed: Intégrer
+    embed: Intégrer la vidéo
     divider: Séparateur
     add_table: Ajouter un tableau
     remove_table: Retirer un tableau
@@ -758,14 +752,9 @@ fr:
       label: 'Options'
       edit_group: 'Modifier les paramètres du groupe'
       open_group_wizard: 'Assistant de configuration de groupe '
-      become_coordinator: Devenir administrateur
-      export_data: Exporter les données du groupe
-      export_data_as_json: Exporter les données du groupe au format JSON
-      export_data_as_csv: Exporter les données du groupe au format CSV
-      export_data_as_html: Exporter les données du groupe au format HTML
+      export_data: Exporter les données de votre groupe
       manage_members: 'Gérer les membres'
       add_subgroup: 'Ajouter un sous-groupe'
-      manage_subscription: 'Gérer les inscriptions au groupe'
       email_settings: 'Préférences de courriel'
       leave_group: 'Quitter le groupe'
       deactivate_group: 'Désactiver le groupe'
@@ -961,7 +950,6 @@ fr:
     copy_link: 'Copier'
     email_addresses: 'Adresses e-mail'
     email_addresses_placeholder: 'ex. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Toute personne en possession du lien à partager peut rejoindre le groupe comme si elle avait reçu une invitation. Ne partager pas ce lien avec les personnes que vous ne souhaitez pas voir rejoindre votre groupe.'
     shareable_link_reset: 'Réinitialisation du lien à partager. Le lien précédent ne fonctionnera plus.'
     email_explanation: 'Ou alors saisissez les adresses e-mail ci-dessous pour envoyer les invitations.'
     add_custom_message: 'Personnalisez votre invitation'
@@ -1080,7 +1068,6 @@ fr:
     deactivate_account: 'Désactiver le compte utilisateur'
     help_translate: "Aidez-nous à traduire Loomio"
   text_editor:
-    select_text_to_link: Sélectionnez le texte du lien
     insert_link: Insérer un lien
     insert_embedded_url: Intégrer la vidéo
   change_picture_form:
@@ -2075,3 +2062,16 @@ fr:
         <p>C'est un Loomio encore plus rapide et amélioré!</p>
         <p>On pense que vous adorerez cette version, mais si vous le voulez, vous pouvez retourner à tout moment à l'ancienne, depuis la barre latérale.</p>
         <p><a href="{{link}}" target="_blank">Découvrez les nouveautés.</a></p>
+  group_survey:
+    categories:
+      business: Business
+      activist: Organisation militante
+      faith: Foi ou groupe spirituel
+      volunteer: Organisme bénévole
+      other: Autre
+    uses:
+      other: Autre
+    referrers:
+      other: Autre
+    category_question: "Choisissez la catégorie qui décrit le mieux votre groupe"
+    anything_else: "Y a-t-il autre chose que vous aimeriez nous dire ?"

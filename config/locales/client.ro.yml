@@ -142,6 +142,7 @@ ro:
     total: Total
     action:
       print: Imprima
+      preview: Previzualizare
       search: 'Cauta'
       filter: 'Filtrează'
       back: 'Inapoi'
@@ -189,6 +190,9 @@ ro:
     formatting_help:
       label: 'Formatare'
       title: 'Invață să folosești Markdown pentru a formata textul'
+  merge_accounts:
+    modal:
+      submit: Verifica
   emoji_picker:
     search: Cauta
     common: Utilizate frecvent
@@ -399,7 +403,9 @@ ro:
     options_label: 'Optiuni'
     options:
       label: 'Optiuni'
+      edit_group: 'Editeaza setarile grupului'
       email_settings: 'Preferinte email'
+      leave_group: 'Paraseste grupul'
     volume:
       loud: Trimite email ori de cate ori exista activitate.
       normal: 'Trimite email pentru fiecare activitate importanta: discutii si propuneri noi, rezultate, etc.'
@@ -588,3 +594,12 @@ ro:
   install_slack:
     progress:
       invite: Invită
+  group_survey:
+    success: Multumim!
+    categories:
+      business: Afaceri
+      other: Altele
+    uses:
+      other: Altele
+    referrers:
+      other: Altele

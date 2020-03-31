@@ -290,16 +290,6 @@ ru:
     links:
       title: |
           ## Ссылки и изображения
-      body: |
-          Повторяйте вслух:
-
-          Квадратные скобки для имени, затем круглые скобки для URL. Никаких пробелов между скобами.
-
-          [Сайт Loomio](https://www.loomio.org/)
-
-          С картинками все то же, только восклицательный знак в начале.
-
-          ![логотип loomio](https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: 'НАПОМИНАЕМ: %{member} ждет, когда вы вступите в %{group_name}'
   poll_mailer:
@@ -390,7 +380,6 @@ ru:
       subject:
         poll_created: '%{actor} открыли опрос: %{title}'
         poll_edited: '%{actor} отредактировали опрос: %{title}'
-        poll_announced: '%{actor} приглашает вас проголосовать в опросе: %{title}'
         poll_closing_soon: 'Опрос закрывается через 24 часа: %{title}'
         poll_closing_soon_author: 'Ваш опрос закрывается через 24 часа: %{title}'
         poll_expired: "Результаты опроса: %{title}"
@@ -406,7 +395,6 @@ ru:
       header:
         poll_created: '<strong>%{actor}</strong> открыли опрос'
         poll_edited: '<strong>%{actor}</strong> отредактировали опрос'
-        poll_announced: '<strong>%{actor}</strong> приглашает вас проголосовать в опросе'
         poll_closing_soon: 'Опрос <strong>%{actor}</strong> закрывается через 24 часа. Хорошее время, чтобы проголосовать, изменить свое мнение или пригласить других поучаствовать.'
         poll_closing_soon_author: 'Ваш опрос закрывается через 24 часа — хорошее время, чтобы напомнить о нем людям или продлить сроки голосования, если нужно.'
         poll_expired: "Опрос <strong>%{actor}</strong> закрылся: %{title}"
@@ -424,7 +412,6 @@ ru:
       subject:
         poll_created: '%{actor} проводит перекличку: %{title}'
         poll_edited: '%{actor} отредактировали перекличку: %{title}'
-        poll_announced: '%{actor} приглашает вас поучаствовать: %{title}'
         poll_closing_soon: 'Осталось 24 часа, чтобы откликнуться: %{title}'
         poll_closing_soon_author: 'Ваша перекличку закроется через 24 часа: %{title}'
         poll_expired: "Перекличка закрыта: %{title}"
@@ -438,11 +425,9 @@ ru:
       header:
         poll_created: '<strong>%{actor}</strong> проводит перекличку'
         poll_edited: '<strong>%{actor}</strong> отредактировали перекличку'
-        poll_announced: '<strong>%{actor}</strong> приглашает вас поучаствовать'
         poll_closing_soon: 'Перекличка <strong>%{actor}</strong> закроется через 24 часа'
         poll_closing_soon_author: 'Ваша перекличка закроется через 24 часа — самое время напомнить о ней людям или продлить сроки, если надо.'
         poll_expired: "Перекличка <strong>%{actor}</strong> закрыта: %{title}"
-        poll_expired_author: 'Вот результаты вашей переклички. Если нужно, <strong>поделитесь результатом</strong>, чтобы люди знали, что дальше.'
         outcome_created: '<strong>%{actor}</strong> поделились результатом.'
         outcome_announced: '<strong>%{actor}</strong> поделились результатом.'
         stance_created: "<strong>%{actor}</strong> поучаствовали в: %{title}"
@@ -591,21 +576,6 @@ ru:
         Попробовать сказать "/loomio" в одном из следующих каналов?
         %{integrations}
     stance_not_valid: "Увы, мы не смогли создать позицию для *%{poll}*. <%{url}|Щелкните здесь>, чтобы проголосовать напрямую в опросе."
-    group_identity_created: |
-        Привет, я бот Loomio! Меня создали *%{author}*.
-        Я могу помочь вашей команде принимать совместные решения.
-
-        В числе моих функций:
-
-        - Открытие веток и решений в Loomio напрямую из Slack
-        - Оповещение, когда в Loomio появляются новые ветки и решения
-        - Возможность голосовать по решениям из Slack
-        - Сообщение о результатах решений
-
-        Чтобы узнать больше, напишите  _/loomio help_
-
-        Вам нужно быть в частью Loomio-группы *%{group}*, чтобы участвовать.
-        Если вы еще не присоедились, <%{url}|Щелкните здесь>, чтобы это сделать.
     request_authorization_message: "Остался лишь один шаг: <%{url}|Щелкните здесь>, чтобы авторизовать использование Loomio для вашей учетки slack. (Это нужно сделать только один раз)"
     poll_closed: "*%{title}* уже закрыли! <%{url}|Щелкните здесь>, чтобы посмотреть результаты."
     go_to_slack: В Slack

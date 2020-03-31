@@ -274,16 +274,6 @@ hu:
     links:
       title: |-
           ## Hivatkozások és képek
-      body: |
-          Ismételd meg hangosan:
-
-          Szögletes zárójelek a hivatkozás nevének, majd kerek zárójelek a hivatkozás URL-nek. A zárójelek között nincs szóköz.
-
-          [Loomio Homepage](https://www.loomio.org/)
-
-          A képek ugyanígy, csak egy felkiáltójel van előtte.
-
-          ![loomio logo](https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: 'EMLÉKEZTETÉS: %{member} arra vár, hogy csatlakozzon ide: %{group_name}'
   poll_mailer:
@@ -374,7 +364,6 @@ hu:
       subject:
         poll_created: '%{actor} szavazást indított:%{title}'
         poll_edited: '%{actor} szerkesztette a szavazást:%{title}'
-        poll_announced: '%{actor} meghívott téged, hogy szavazz itt: %{title}'
         poll_closing_soon: 'A szavazás lezárul 24 órán belül: %{title}'
         poll_closing_soon_author: 'A szavazásod 24 órán belül lezárul:%{title}'
         poll_expired: "Szavazás eredménye:%{title}"
@@ -390,7 +379,6 @@ hu:
       header:
         poll_created: '<strong>%{actor}</strong> elindított egy szavazást'
         poll_edited: '<strong>%{actor}</strong> szerkesztett egy szavazást'
-        poll_announced: '<strong>%{actor}</strong> meghívott téged hogy szavazz'
         poll_closing_soon: '<strong>%{actor}</strong> javaslata 24 órán belül lezárul. Itt az ideje, hogy szavazz, akár megváltoztasd a szavazatodat, vagy ösztönözd mások részvételét.'
         poll_closing_soon_author: 'A szavazásod 24 órán belül lezárul - remek alkalom, hogy emlékeztesse az embereket erre, vagy ha szükséges, meghosszabbítsd a határidőt.'
         poll_expired: "<strong>%{actor}'s</strong> szavazás lezárult: %{title}"
@@ -408,7 +396,6 @@ hu:
       subject:
         poll_created: '%{actor} ellenőrzi:%{title}'
         poll_edited: '%{actor} szerkesztette a felmérést: %{title}'
-        poll_announced: '%{actor} meghívott a részvételre:%{title}'
         poll_closing_soon: '24 óra marad a felmérésre: %{title}'
         poll_closing_soon_author: 'A felmérés 24 órán belül lezárul:%{title}'
         poll_expired: "Felmérés lezárva: %{title}"
@@ -422,11 +409,9 @@ hu:
       header:
         poll_created: '<strong>%{actor}</strong> ellenőrzi'
         poll_edited: '<strong>%{actor}</strong> szerkesztett egy felmérést'
-        poll_announced: '<strong>%{actor}</strong> meghívott téged, hogy vegyél részt'
         poll_closing_soon: '<strong>%{actor}</strong> felmérése 24 órán belül zárul.'
         poll_closing_soon_author: 'A felmérés 24 órán belül zárul - ez egy remek alkalom, hogy emlékeztesd az embereket erre, vagy ha szükséges, meghosszabbítsd a határidőt.'
         poll_expired: "<strong>%{actor}'s</strong> ellenőrzés lezárult: %{title}"
-        poll_expired_author: 'Itt vannak a felmérésed eredményei. Ha szükséges, <strong>oszd meg az eredményt</strong>, hogy az emberek megtudják, hogy mi fog történni ezután.'
         outcome_created: '<strong>%{actor}</strong> megosztott egy szavazás eredményét.'
         outcome_announced: '<strong>%{actor}</strong> megosztott egy szavazás eredményét.'
         stance_created: "<strong>%{actor}</strong> részt vett itt: %{title}"
@@ -574,19 +559,6 @@ hu:
         Sajnáljuk, úgy tűnik, hogy nincs ehhez a csatornához csatolt loomio csoport. Próbáld futtatni a '/loomio' ehelyett a következő csatornák egyikén
         %{integrations}
     stance_not_valid: "Sajnáljuk, nem tudtunk kialakítani álláspontot a *%{poll} * számára. <%{url} | Kattints ide> közvetlenül a szavazáshoz történő szavazáshoz."
-    group_identity_created: |
-        Helló, Loomio Bot vagyok! *%{author} * hozzáadott engem.
-        Segíthetek a csapatodnak együtt hozni döntéseket.
-
-        Funkcióim:
-        - Témák és döntések kezdeményezése a Loomio-on közvetlenül a Slack-tól
-        - Bejelentés, amikor új témák és döntések történnek a Loomio-n
-        - Annak lehetővé tétele, hogy az emberek Slack döntésein szavazzanak- a döntések eredményének kommunikálása
-
-        További információért írja be: _/loomio help_
-
-        A Loomio csoport tagja kell hogy legyél *%{group}* részt tudj venni.
-        Ha még nem csatlakoztál, <%{url}|Kattints ide>
     request_authorization_message: "Még egy lépés: <%{url} |Kattints ide>, hogy engedélyezze a Slack fiókját a Loomio használatához (ezt csak egyszer kell megtenned)."
     poll_closed: "*%{title} * már bezárt! <%{url} | Kattints ide> az eredmények megtekintéséhez."
     go_to_slack: Ugrás a Slack-be

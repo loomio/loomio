@@ -128,6 +128,9 @@ sv:
     formatting_help:
       label: 'Utformning'
       title: 'Lär dig hur du använder Märkspråk för att formatera din text'
+  merge_accounts:
+    modal:
+      submit: Verifiera
   emoji_picker:
     search: Sök
   ordinal:
@@ -208,10 +211,6 @@ sv:
   close_explanation_modal:
     aria_label: Stäng tråd
     close_thread: Stäng tråd
-    body_header: |
-        <p>Stäng gamla eller irrelevanta trådar för att ta bort dem från visning och visa att diskussionen har stängts.</p>
-    body_footer: |
-        <p>Vem som helst kan fortfarande kommentera eller starta en omröstning i en stängd tråd, men det kommer inte att visas i gruppens trådlista eller i instrumentbrädan.</p>
     image_alt: Stänger alla trådar
   mute_explanation_modal:
     aria_label: Gör tråd stum
@@ -446,3 +445,11 @@ sv:
   install_slack:
     progress:
       invite: Bjud in
+  group_survey:
+    categories:
+      business: Företag
+      other: Andra
+    uses:
+      other: Andra
+    referrers:
+      other: Andra

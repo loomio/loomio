@@ -126,6 +126,9 @@ nb_NO:
     formatting_help:
       label: 'Formatering'
       title: 'Lær hvordan du kan bruke Markdown for å formatere teksten din'
+  merge_accounts:
+    modal:
+      submit: Verifiser
   emoji_picker:
     search: Søk
   ordinal:
@@ -205,10 +208,6 @@ nb_NO:
   close_explanation_modal:
     aria_label: Lukk tråd
     close_thread: Lukk tråd
-    body_header: |
-        <p>Lukk gamle eller irrelevante tråder for å gjør de usynlige for å indikere at diskusjonen er stengt.</p>
-    body_footer: |
-        <p>Alle kan kommentere eller starte en beslutning i en lukket tråd, men det vil ikke være synlig i gruppens tråder eller på skrivebordet. </p>
     image_alt: Lukker alle tråder
   mute_explanation_modal:
     aria_label: Demp tråd

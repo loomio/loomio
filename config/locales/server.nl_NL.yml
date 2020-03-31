@@ -233,16 +233,6 @@ nl_NL:
     links:
       title: |
           ## Links en afbeeldingen
-      body: |
-          Herhaal hardop:
-
-          Rechte haakjes voor naam en dan ronde haakjes voor URL. Er zitten geen spaties tussen de haakjes.
-
-          [Loomio Homepage](https://www.loomio.org/)
-
-          Afbeeldingen zijn hetzelfde, maar voorafgegaan door een uitroepteken.
-
-          ![loomio logo](https://i.imgur.com/Fvtworb.png)
   poll_mailer:
     common:
       or: of
