@@ -2,8 +2,9 @@ module DiscussionEmailHelper
   include PrettyUrlHelper
 
   def target_url(eventable:, recipient:, action_name:, args: {})
-    discussion_reader = eventable.discussion.discussion_readers.find_by(user: recipient)
-    args.merge!(discussion_reader_token: discussion_reader.token) if !eventable.discussion.group.members.include?(recipient)
+    if discussion_reader = DiscussionReader.claimable.find_by(user: recipient, discussion: eventable.discussion)
+      args.merge!(discussion_reader_token: discussion_reader.token)
+    end
     polymorphic_url(eventable, utm_hash(args, action_name))
   end
 

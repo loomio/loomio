@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_010038) do
+ActiveRecord::Schema.define(version: 2020_03_31_084707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_010038) do
     t.string "token"
     t.datetime "revoked_at"
     t.boolean "admin", default: false, null: false
+    t.datetime "accepted_at"
     t.index ["discussion_id"], name: "index_motion_read_logs_on_discussion_id"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true
@@ -666,6 +667,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_010038) do
     t.boolean "admin", default: false, null: false
     t.integer "inviter_id"
     t.integer "volume"
+    t.datetime "accepted_at"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["token"], name: "index_stances_on_token", unique: true

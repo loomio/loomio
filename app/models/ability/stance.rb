@@ -13,5 +13,9 @@ module Ability::Stance
     can [:make_draft, :create], ::Stance do |stance|
       user.can? :vote_in, stance.poll
     end
+
+    can :redeem, ::Stance do |stance|
+      Stance.claimable.include?(stance)
+    end
   end
 end

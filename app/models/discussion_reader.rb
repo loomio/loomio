@@ -13,9 +13,13 @@ class DiscussionReader < ApplicationRecord
   delegate :importance, to: :discussion
   delegate :message_channel, to: :user
 
-  scope :invitations, -> { where("discussion_readers.inviter_id IS NOT NULL and discussion_readers.revoked_at IS NULL") }
+  scope :invitations, -> { where("discussion_readers.inviter_id IS NOT NULL
+                              AND discussion_readers.revoked_at IS NULL") }
   scope :admins, -> { where('discussion_readers.admin': true) }
-  scope :claimable, -> { where('discussion_readers.user_id IS NULL AND discussion_readers.revoked_at IS NULL') }
+
+  scope :claimable, -> { where('discussion_readers.inviter_id IS NOT NULL
+                            AND discussion_readers.accepted_at IS NULL
+                            AND discussion_readers.revoked_at IS NULL') }
 
   update_counter_cache :discussion, :seen_by_count
 
