@@ -227,6 +227,7 @@ describe API::DiscussionsController do
 
       it 'returns a public discussions' do
         get :show, params: { id: public_discussion.id }, format: :json
+        expect(response.status).to eq 200
         json = JSON.parse(response.body)
         discussion_ids = json['discussions'].map { |d| d['id'] }
         expect(discussion_ids).to_not include private_discussion.id

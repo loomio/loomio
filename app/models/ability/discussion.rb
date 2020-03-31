@@ -7,7 +7,7 @@ module Ability::Discussion
          :dismiss,
          :subscribe_to], ::Discussion do |discussion|
       # do we want to support having a discussion_reader_token but not being logged in yet?
-      Queries::VisibleDiscussions.new(user: user).include?(discussion)
+      Queries::VisibleDiscussions.new(user: user, show_public: true).include?(discussion)
     end
 
     can [:mark_as_read, :mark_as_seen], ::Discussion do |discussion|
