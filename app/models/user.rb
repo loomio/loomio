@@ -195,7 +195,7 @@ class User < ApplicationRecord
   end
 
   def self.email_status_for(email)
-    verified_first.find_by(email: email)&.email_status || :unused
+    find_by(email: email)&.email_status || :unused
   end
 
   def self.find_for_database_authentication(warden_conditions)

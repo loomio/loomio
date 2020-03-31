@@ -92,7 +92,7 @@ module PendingActionsHelper
   end
 
   def pending_discussion_reader
-    DiscussionReader.claimable.find_by(token: pending_discussion_reader_token)
+    DiscussionReader.redeemable.find_by(token: pending_discussion_reader_token)
   end
 
   def pending_membership_token

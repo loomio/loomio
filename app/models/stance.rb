@@ -46,7 +46,7 @@ class Stance < ApplicationRecord
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
   scope :cast,           -> { where("cast_at IS NOT NULL") }
   scope :uncast,         -> { where("cast_at IS NULL") }
-  scope :claimable, -> { where('stances.inviter_id IS NOT NULL
+  scope :redeemable, -> { where('stances.inviter_id IS NOT NULL
                             AND stances.cast_at IS NULL
                             AND stances.accepted_at IS NULL
                             AND stances.revoked_at IS NULL') }
