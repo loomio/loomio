@@ -18,7 +18,7 @@ module GroupService
 
     Membership.import(new_memberships, on_duplicate_key_ignore: true)
 
-    memberships = Membership.where(group: group, user_ids: users.pluck(:id))
+    memberships = Membership.where(group: group, user_id: users.pluck(:id))
 
     group.update_pending_memberships_count
     group.update_memberships_count

@@ -77,22 +77,13 @@ class Queries::VisibleDiscussions < Delegator
     user ||= LoggedOutUser.new
 
     relation = relation.where('discussions.group_id IN (:group_ids)', group_ids: group_ids) if group_ids.any?
-
-    if user.is_logged_in?
-      # select where
-      # the discussion is public
-      # or they are a member of the group
-      # or they are a member of the guest group
-      # or user belongs to parent group and permission is inherited
-      relation = relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = discussions.id AND dr.user_id = #{user.id}")
-      relation = relation.joins("LEFT OUTER JOIN memberships m ON m.user_id = #{user.id} AND m.group_id = discussions.group_id")
-      relation.where('((discussions.private = false) OR (m.id IS NOT NULL) OR (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-                       (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids)))',
-                     user_group_ids: user.group_ids)
-    else
-      relation.where('groups.is_visible_to_public': true)
-              .where('discussions.private': false)
-    end
+    relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = discussions.id AND dr.user_id = #{user.id || 0}")
+            .joins("LEFT OUTER JOIN memberships m ON m.user_id = #{user.id || 0} AND m.group_id = discussions.group_id")
+            .where("groups.archived_at IS NULL")
+            .where("(discussions.private = false) OR
+                    (m.id IS NOT NULL AND m.archived_at IS NULL) OR
+                    (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
+                    (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))", user_group_ids: user.group_ids)
   end
 
 end

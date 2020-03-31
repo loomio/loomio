@@ -6,12 +6,8 @@ module Ability::Discussion
          :print,
          :dismiss,
          :subscribe_to], ::Discussion do |discussion|
-      !discussion.group.archived_at && (
-        discussion.public? ||
-        discussion.members.include?(user) ||
-        discussion.guests.find_by(token: user.discussion_reader_token) ||
-        (discussion.group.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id))
-      )
+      # do we want to support having a discussion_reader_token but not being logged in yet?
+      Queries::VisibleDiscussions.new(user: user).include?(discussion)
     end
 
     can [:mark_as_read, :mark_as_seen], ::Discussion do |discussion|
