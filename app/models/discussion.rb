@@ -66,8 +66,8 @@ class Discussion < ApplicationRecord
 
   has_many :discussion_readers, dependent: :destroy
   has_many :readers, through: :discussion_readers, source: :user
-  has_many :guests, -> { merge DiscussionReader.invitations }, through: :discussion_readers, source: :user
-  has_many :admin_guests, -> { merge DiscussionReader.invitations.admins }, through: :discussion_readers, source: :user
+  has_many :guests, -> { merge DiscussionReader.guests }, through: :discussion_readers, source: :user
+  has_many :admin_guests, -> { merge DiscussionReader.admins }, through: :discussion_readers, source: :user
 
   scope :search_for, ->(fragment) do
      joins("INNER JOIN users ON users.id = discussions.author_id")

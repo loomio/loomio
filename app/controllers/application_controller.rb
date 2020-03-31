@@ -14,14 +14,14 @@ class ApplicationController < ActionController::Base
   around_action :process_time_zone          # LocalesHelper
   around_action :use_preferred_locale       # LocalesHelper
   before_action :set_last_seen_at           # CurrentUserHelper
-  before_action :handle_pending_memberships # PendingActionsHelper
+  before_action :handle_pending_actions     # PendingActionsHelper
   before_action :set_raven_context
 
   helper_method :current_user
   helper_method :current_version
   helper_method :bundle_asset_path
   helper_method :supported_locales
-  
+
   after_action :associate_user_to_visit
 
   def index
