@@ -13,8 +13,8 @@ class DiscussionReader < ApplicationRecord
   delegate :importance, to: :discussion
   delegate :message_channel, to: :user
 
-  scope :invitations, -> { where("discussion_readers.inviter_id IS NOT NULL
-                              AND discussion_readers.revoked_at IS NULL") }
+  # scope :invitations, -> { where("discussion_readers.inviter_id IS NOT NULL
+  #                             AND discussion_readers.revoked_at IS NULL") }
   scope :admins, -> { where('discussion_readers.admin': true) }
 
   scope :redeemable, -> { where('discussion_readers.inviter_id IS NOT NULL
