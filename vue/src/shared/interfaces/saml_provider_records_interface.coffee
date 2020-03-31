@@ -2,6 +2,7 @@ import BaseRecordsInterface from '@/shared/record_store/base_records_interface'
 import SamlProviderModel           from '@/shared/models/saml_provider_model'
 import Flash  from '@/shared/services/flash'
 import EventBus  from '@/shared/services/event_bus'
+import AppConfig         from '@/shared/services/app_config'
 
 export default class GroupRecordsInterface extends BaseRecordsInterface
   model: SamlProviderModel

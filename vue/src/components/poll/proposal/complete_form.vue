@@ -8,6 +8,7 @@ import { iconFor }                from '@/shared/helpers/poll'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { map } from 'lodash'
 import { onError } from '@/shared/helpers/form'
+import AppConfig from '@/shared/services/app_config'
 
 export default
   mixins: [AnnouncementModalMixin]
@@ -52,11 +53,16 @@ export default
       @shouldReset = !@shouldReset
 
     newPoll: ->
+      pollOptionNames = if AppConfig.features.app.proposal_consent_default
+        ['consent', 'abstain', 'objection']
+      else
+        map fieldFromTemplate('proposal', 'poll_options_attributes'), 'name'
+
       Records.polls.build
         pollType: 'proposal'
         discussionId: @discussion.id
         groupId: @discussion.groupId
-        pollOptionNames: map fieldFromTemplate('proposal', 'poll_options_attributes'), 'name'
+        pollOptionNames: pollOptionNames
         detailsFormat: Session.defaultFormat()
 
     icon: ->
