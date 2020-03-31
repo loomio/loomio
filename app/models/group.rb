@@ -54,7 +54,11 @@ class Group < ApplicationRecord
   def discussion_id
     nil
   end
-  
+
+  def poll_id
+    nil
+  end
+
   def target_model
     Discussion.find_by(guest_group_id: id) ||
     Poll.find_by(guest_group_id: id) ||
