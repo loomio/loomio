@@ -124,6 +124,7 @@ export default new class GroupService
       name: 'configure_sso.title'
       icon: 'mdi-key-variant'
       canPerform: ->
+        AppConfig.features.app.group_sso &&
         AbilityService.canAdministerGroup(group) && group.isParent()
       perform: ->
         openModal

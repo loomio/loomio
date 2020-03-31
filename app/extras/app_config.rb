@@ -91,7 +91,8 @@ class AppConfig
       default_thread_render_mode: ENV.fetch('FEATURES_DEFAULT_THREAD_RENDER_MODE', 'chronological'),
       show_microsoft_card:        ENV.fetch('FEATURES_ENABLE_MICROSOFT_TEAMS',     false),
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT',       false),
-      require_group_survey: ENV.fetch('REQUIRE_GROUP_SURVEY', 0)
+      group_survey:               ENV.fetch('FEATURES_GROUP_SURVEY', false),
+      group_sso:                  ENV.fetch('FEATURES_GROUP_SSO', false)
     }
   end
 

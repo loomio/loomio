@@ -7,6 +7,7 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
   model: SamlProviderModel
 
   authenticateForGroup: (id) ->
+    return unless AppConfig.features.app.group_sso
     fetch("/saml_providers/should_auth?group_id=#{id}")
     .then (response) -> response.json().then (shouldAuth) ->
       if shouldAuth
@@ -16,6 +17,7 @@ export default class GroupRecordsInterface extends BaseRecordsInterface
 
 
   authenticateForDiscussion: (id) ->
+    return unless AppConfig.features.app.group_sso
     fetch("/saml_providers/should_auth?discussion_id=#{id}")
     .then (response) -> response.json().then (shouldAuth) ->
       if shouldAuth
