@@ -1,6 +1,7 @@
 class Queries::VisibleDiscussions < Delegator
-  def initialize(user:, group_ids: [], tags: [])
+  def initialize(user:, group_ids: [], tags: [], show_public: false)
     @user = user || LoggedOutUser.new
+    @show_public = show_public
     @group_ids = group_ids || []
 
     @relation = Discussion.
@@ -80,7 +81,7 @@ class Queries::VisibleDiscussions < Delegator
     relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = discussions.id AND dr.user_id = #{user.id || 0}")
             .joins("LEFT OUTER JOIN memberships m ON m.user_id = #{user.id || 0} AND m.group_id = discussions.group_id")
             .where("groups.archived_at IS NULL")
-            .where("(discussions.private = false) OR
+            .where("#{'discussions.private = false OR' if @show_public}
                     (m.id IS NOT NULL AND m.archived_at IS NULL) OR
                     (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
                     (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))", user_group_ids: user.group_ids)

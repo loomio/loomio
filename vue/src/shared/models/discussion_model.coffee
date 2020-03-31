@@ -1,5 +1,6 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
+import Session          from '@/shared/services/session'
 import RangeSet         from '@/shared/services/range_set'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'

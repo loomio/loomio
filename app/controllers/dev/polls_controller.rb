@@ -8,9 +8,9 @@ class Dev::PollsController < Dev::BaseController
     poll = saved fake_poll
     PollService.create(poll: poll, actor: poll.author)
     membership = poll.guest_group.memberships.create group: poll.guest_group, user: fake_unverified_user
-    AnnouncementService.create(model: poll,
-                               params: {kind: 'poll_created', recipients: {emails: [email]}},
-                               actor: poll.author)
+    PollService.announce(poll: poll,
+                         params: {kind: 'poll_created', emails: [email]},
+                         actor: poll.author)
     redirect_to poll.guest_group.memberships.last
   end
 
