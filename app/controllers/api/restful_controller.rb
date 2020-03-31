@@ -7,7 +7,7 @@ class API::RestfulController < API::SnorlaxBase
   include ::SentryRavenHelper
   include ::PendingActionsHelper
 
-  before_action :attach_pending_membership_token_to_user
+  before_action :attach_pending_tokens_to_user
   around_action :use_preferred_locale       # LocalesHelper
   before_action :set_paper_trail_whodunnit  # gem 'paper_trail'
   before_action :set_raven_context          # SentryRavenHelper

@@ -58,7 +58,10 @@ export default
       @announcement.invitedGroupIds = @invitedGroupIds
       @announcement.save()
       .then (data) =>
-        @announcement.membershipsCount = data.users.length
+        @announcement.membershipsCount = data.memberships.length if @announcement.model.isA('group')
+        @announcement.membershipsCount = data.discussion_readers.length if @announcement.model.isA('discussion')
+        @announcement.membershipsCount = data.stances.length if @announcement.model.isA('poll')
+
         Flash.success('announcement.flash.success', { count: @announcement.membershipsCount })
         @close()
       .catch onError(@announcement)

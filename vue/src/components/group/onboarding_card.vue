@@ -63,7 +63,7 @@ export default
 
     show: ->
       @group.isParent() &&
-      Session.user().isAdminOf(@group) &&
+      @group.adminsInclude(Session.user()) &&
       !Session.user().hasExperienced("dismissProgressCard")
 
 

@@ -9,13 +9,17 @@ module PendingActionsHelper
     if current_user.is_logged_in?
       consume_pending_group(current_user)
       consume_pending_membership(current_user)
+      # consume_pending_discussion_reader(current_user)
+      # consume_pending_stance(cur  rent_user)
     else
-      attach_pending_membership_token_to_user
+      attach_pending_tokens_to_user
     end
   end
 
-  def attach_pending_membership_token_to_user
+  def attach_pending_tokens_to_user
     current_user.membership_token = pending_membership&.token
+    # current_user.discussion_reader_token = pending_discussion_reader&.token
+    # current_user.stance_token = pending_stance&.token
   end
 
   def handle_pending_actions(user)
@@ -55,6 +59,20 @@ module PendingActionsHelper
     if pending_membership
       MembershipService.redeem(membership: pending_membership, actor: user)
     end
+
+    if m = pending_guest_membership
+      if m.target_model.is_a?(Discussion)
+        dr = DiscussionReader.create!(token: m.token, discussion_id: m.target_model.id, inviter_id: m.inviter_id)
+        m.destroy
+        session[:pending_discussion_reader_token] = dr.token
+      end
+
+      if m.target_model.is_a?(Poll)
+        # TODO might need to only count stances with user_id on poll
+        stance = Stance.create!(token: m.token, poll_id: m.target_model.id, inviter_id: m.inviter_id)
+        session[:pending_stance_token] = stance.token
+      end
+    end
   end
 
   def pending_group
@@ -66,7 +84,15 @@ module PendingActionsHelper
   end
 
   def pending_membership
-    Membership.pending.find_by(token: pending_membership_token) if pending_membership_token
+    Membership.formal.pending.find_by(token: pending_membership_token) if pending_membership_token
+  end
+
+  def pending_guest_membership
+    Membership.guest.pending.find_by(token: pending_membership_token) if pending_membership_token
+  end
+
+  def pending_discussion_reader
+    DiscussionReader.claimable.find_by(token: pending_discussion_reader_token)
   end
 
   def pending_membership_token

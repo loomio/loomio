@@ -64,7 +64,6 @@ module.exports = {
   Loading: 'common/loading',
   LoadingContent: 'common/loading_content',
   MatrixChart: 'poll/meeting/matrix_chart',
-  MembershipCard: 'group/membership_card',
   MembershipDropdown: 'group/membership_dropdown',
   MembershipRequest: 'group/membership_request',
   MembershipRequestForm: 'group/membership_request_form',
