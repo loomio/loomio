@@ -186,6 +186,10 @@ class User < ApplicationRecord
     .where('fm.archived_at': nil)
   }
 
+  def default_format
+    self.experiences.fetch('html-editor.uses-markdown', 'html')
+  end
+
   def set_legal_accepted_at
     self.legal_accepted_at = Time.now
   end
