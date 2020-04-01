@@ -365,7 +365,7 @@ module Dev::NintiesMoviesHelper
     poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
     PollService.announce(
       poll: poll,
-      params: { kind: :poll_created, user_ids: patrick.id },
+      params: { kind: :poll_created, user_ids: [patrick.id] },
       actor: jennifer
     )
 
