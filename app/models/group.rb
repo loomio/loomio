@@ -95,12 +95,4 @@ class Group < ApplicationRecord
       update(creator: user) if creator.blank?
     end.reload
   end
-
-  def is_guest_group?
-    type == "GuestGroup"
-  end
-
-  def is_formal_group?
-    type == "FormalGroup"
-  end
 end

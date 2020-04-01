@@ -3,13 +3,11 @@ module Ability::Group
     super(user)
 
     can [:show], ::Group do |group|
-      if group.archived_at || group.is_guest_group?
-        false
-      else
-        group.is_visible_to_public? or
-        user_is_member_of?(group.id) or
-        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
-      end
+      Queries::VisibleDiscussions.new(user: user, show_public: true).include?(group)
+      # !group.archived_at AND
+      #   (group.is_visible_to_public? or
+      #    user_is_member_of?(group.id) or
+      #    (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id)))
     end
 
     can [:vote_in], ::Group do |group|

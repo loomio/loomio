@@ -118,7 +118,6 @@ class Poll < ApplicationRecord
   define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
-  delegate :guest_group, to: :discussion, prefix: true, allow_nil: true
 
   def cast_stances_count
     stances_count - uncast_stances_count

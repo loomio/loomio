@@ -57,17 +57,17 @@ module Dev::PollsScenarioHelper
      actor: scenario[:actor]}
   end
 
-  def poll_created_as_visitor_scenario(poll_type:)
-    actor = saved fake_user
-    poll = fake_poll(poll_type: poll_type, discussion: nil)
-    event = PollService.create(poll: poll, actor: actor)
-    poll.update(anyone_can_participate: true)
-    membership = poll.guest_group.memberships.create(user: fake_user(email_verified: false))
-
-    {poll: poll,
-     actor: actor,
-     params: {membership_token: membership.token}}
-  end
+  # def poll_created_as_visitor_scenario(poll_type:)
+  #   actor = saved fake_user
+  #   poll = fake_poll(poll_type: poll_type, discussion: nil)
+  #   event = PollService.create(poll: poll, actor: actor)
+  #   poll.update(anyone_can_participate: true)
+  #   membership = poll.add_guest!(saved fake_user(email_verified: false))
+  #
+  #   {poll: poll,
+  #    actor: actor,
+  #    params: {membership_token: membership.token}}
+  # end
 
   def poll_edited_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)

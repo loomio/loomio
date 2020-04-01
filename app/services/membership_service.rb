@@ -83,7 +83,8 @@ class MembershipService
       'polls.group_id': membership.group.id_and_subgroup_ids,
       participant_id: membership.user_id).update_all(revoked_at: now)
 
-    membership.destroy
+    Membership.where(user_id: actor.id, group_id: group.id_and_subgroup_ids).destroy_all
+
     EventBus.broadcast('membership_destroy', membership, actor)
   end
 

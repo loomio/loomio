@@ -112,6 +112,7 @@ class DiscussionService
     actor.ability.authorize! :mark_as_seen, discussion
     reader = DiscussionReader.for_model(discussion, actor)
     reader.viewed!
+    MessageChannelService.publish_model(reader.discussion)
     EventBus.broadcast('discussion_mark_as_seen', reader, actor)
   end
 

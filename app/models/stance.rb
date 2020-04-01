@@ -46,7 +46,7 @@ class Stance < ApplicationRecord
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
   scope :cast,           -> { where("cast_at IS NOT NULL") }
   scope :uncast,         -> { where("cast_at IS NULL") }
-  
+
   scope :redeemable, -> { where('stances.inviter_id IS NOT NULL
                              AND stances.cast_at IS NULL
                              AND stances.accepted_at IS NULL
@@ -60,10 +60,7 @@ class Stance < ApplicationRecord
   delegate :locale,         to: :author
   delegate :group,          to: :poll, allow_nil: true
   delegate :mailer,         to: :poll, allow_nil: true
-  delegate :groups,         to: :poll
   delegate :group_id,       to: :poll
-  delegate :guest_group,    to: :poll
-  delegate :guest_group_id, to: :poll
   delegate :discussion_id,  to: :poll
   delegate :members,        to: :poll
 

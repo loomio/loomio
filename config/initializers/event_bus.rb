@@ -50,9 +50,9 @@ EventBus.configure do |config|
     MessageChannelService.publish_data(ActiveModel::ArraySerializer.new([reader], each_serializer: DiscussionReaderSerializer, root: :discussions).as_json, to: reader.message_channel)
   end
 
-  config.listen('discussion_mark_as_seen') do |reader|
-    MessageChannelService.publish_model(reader.discussion)
-  end
+  # config.listen('discussion_mark_as_seen') do |reader|
+  #   MessageChannelService.publish_model(reader.discussion)
+  # end
 
   # alert clients that notifications have been read
   config.listen('notification_viewed') do |actor|
@@ -62,7 +62,6 @@ EventBus.configure do |config|
   # update discussion or comment versions_count when title or description edited
   config.listen('discussion_update', 'comment_update', 'poll_update', 'stance_update') { |model| model.update_versions_count }
 
-  config.listen('membership_destroy') { |membership| Queries::OrganisationMemberships.for(membership).destroy_all }
 
   # update stance data for polls
   config.listen('stance_create')  { |stance| stance.poll.update_stance_data }
