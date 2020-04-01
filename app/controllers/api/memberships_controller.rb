@@ -16,7 +16,7 @@ class API::MembershipsController < API::RestfulController
         collection.pending
       else
         collection.active
-      end.where(group: model.groups).order('admin desc, created_at desc')
+      end.where(group: model.group).order('admin desc, created_at desc')
     end
     respond_with_collection(scope: index_scope)
   end
@@ -57,7 +57,7 @@ class API::MembershipsController < API::RestfulController
         when 'mine', 'all'
           model.group.id_and_subgroup_ids
         else
-          model.groups
+          [model.group.id]
         end
 
       collection = collection.where(group_id: group_ids)

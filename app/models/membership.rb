@@ -54,7 +54,6 @@ class Membership < ApplicationRecord
   delegate :name, :full_name, to: :group, prefix: :group
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
-  delegate :target_model, to: :group
   delegate :mailer, to: :user
 
   update_counter_cache :group, :memberships_count
