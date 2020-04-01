@@ -61,6 +61,7 @@ export default
         @announcement.membershipsCount = data.memberships.length if @announcement.model.isA('group')
         @announcement.membershipsCount = data.discussion_readers.length if @announcement.model.isA('discussion')
         @announcement.membershipsCount = data.stances.length if @announcement.model.isA('poll')
+        @announcement.membershipsCount = data.users.length if @announcement.model.isA('outcome')
 
         Flash.success('announcement.flash.success', { count: @announcement.membershipsCount })
         @close()
