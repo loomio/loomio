@@ -291,16 +291,6 @@ de:
     links:
       title: |
           ## Links und Bilder
-      body: |
-          Ganz wichtig:
-
-          Eckige Klammern sind für den angezeigten Text und runde Klammern für die URL. Kein Leerzeichen dazwischen!
-
-          [Loomio Homepage](https://www.loomio.org/)
-
-          Für Bilder gilt dasselbe, nur dass du ein Ausrufezeichen davor setzt.
-
-          ![Loomio-Logo](https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: 'ERINNERUNG: %{member} wartet darauf, dass du %{group_name} beitrittst'
   poll_mailer:
@@ -391,7 +381,6 @@ de:
       subject:
         poll_created: '%{actor} hat eine Umfrage eröffnet: %{title}'
         poll_edited: '%{actor} hat die Umfrage %{title} bearbeitet'
-        poll_announced: '%{actor} hat dich eingeladen, an der Umfrage %{title}teilzunehmen'
         poll_closing_soon: 'In 24 Std. schliesst die Umfrage: %{title}'
         poll_closing_soon_author: 'Deine Umfrage %{title} endet in 24 Std.'
         poll_expired: "Umfrageergebnisse: %{title}"
@@ -407,7 +396,6 @@ de:
       header:
         poll_created: '<strong>%{actor}</strong> hat eine Umfrage eröffnet'
         poll_edited: '<strong>%{actor}</strong> hat die Umfrage überarbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat dich zu einer Umfrage eingeladen'
         poll_closing_soon: '<strong>%{actor}</strong>''s Umfrage läuft in 24 Std. ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder Andere zum Mitmachen zu aufzufordern.'
         poll_closing_soon_author: 'Deine Umfrage schliesst in 24 Std - jetzt ist ein guter Zeitpunkt, andere nochmal and Mitmachen zu erinnern oder wenn gegebenenfalls die Frist zu verlängern.'
         poll_expired: "<strong>%{actor}s</strong> Umfrage %{title}wurde geschlossen"
@@ -425,7 +413,6 @@ de:
       subject:
         poll_created: '%{actor} fragt nach einer Bestätigung: %{title}'
         poll_edited: '%{actor} hat die Bestätigung bearbeitet: %{title}'
-        poll_announced: '%{actor} hat dich eingeladen hier teilzunehmen: %{title}'
         poll_closing_soon: 'Du hast noch 24 Stunden Zeit %{title} zu prüfen'
         poll_closing_soon_author: 'Deine Bestätigung endet in 24 Std: %{title}'
         poll_expired: "Bestätigung abgeschlossen: %{title}"
@@ -439,11 +426,9 @@ de:
       header:
         poll_created: '<strong>%{actor}</strong> fragt nach einer Bestätigung'
         poll_edited: '<strong>%{actor}</strong> hat die Bestätigung bearbeitet'
-        poll_announced: '<strong>%{actor}</strong> hat dich eingeladen teilzunehmen'
         poll_closing_soon: 'Nur noch 24 Std. bleiben für<strong>%{actor}</strong>''s Bestätigung '
         poll_closing_soon_author: 'Deine Bestätigung läuft in 24 Std. ab -  jetzt ist ein guter Zeitpunkt, andere aufzufordern noch mitzumachen oder wenn nötig die Frist verlängern.'
         poll_expired: "Die von <strong>%{actor}</strong> angeforderte Bestätigung ist abgeschlossen: %{title}"
-        poll_expired_author: 'Hier ist das Ergebnis für die angeforderte Bestätigung. Wenn nötig kannst du <strong>das Ergebnis in der Gruppe bekannt geben</strong>, um Mitglieder über die nächsten Schritte zu informieren.'
         outcome_created: '<strong>%{actor}</strong> hat ein Ergebnis bekannt gegeben.'
         outcome_announced: '<strong>%{actor}</strong> hat ein Ergebnis bekannt gegeben.'
         stance_created: "<strong>%{actor}</strong> hat in %{title} teilgenommen"
@@ -590,21 +575,6 @@ de:
         Versuche es stattdessen mit, '/ loomio' in einem der folgenden Kanäle?
         %{integrations}
     stance_not_valid: "Leider konnten wir keine Einstellung für *%{poll}* erstellen. <%{url}|Klicke hier>, um direkt über die Umfrage abzustimmen."
-    group_identity_created: |
-        Hallo, ich bin Loomio Bot! *%{author}* hat mich hinzugefügt.
-        Ich helfe deinem Team, gemeinsam Entscheidungen zu treffen.
-
-        Meine Funktionen umfassen:
-
-        - Diskussionen und Entscheidungen direkt von Slack auf Loomo zu bringen
-        - Neue Diskussionen und Entscheidungen auf Loomio anzukündigen
-        - Ermöglichen, dass man von Slack aus mit abstimmen kann
-        - Entscheidungsergebnisse mitteilen
-
-        Um mehr zu erfahren, tippe _ / loomio help_
-
-        Du musst Teil der Loomio-Gruppe *%{group}* sein, um teilnehmen zu können.
-        Wenn du noch nicht beigetreten bist, kannst du dies tun indem du <%{url}| Hier klickst>
     request_authorization_message: "Nur nnoch ein Schritt: <%{url}| Klicke hier>, um dein Slack-Konto für die Nutzung von Loomio zu autorisieren. (Du musst dies nur einmal tun)"
     poll_closed: "*%{title}* ist bereits abgeschlossen! <%{url}|Klicke hier> um die Ergebnisse zu sehen."
     go_to_slack: Zu Slack gehen

@@ -291,10 +291,12 @@ el:
     options_label: 'Ρυθμίσεις'
     options:
       label: 'Ρυθμίσεις'
-      edit_group: 'Ρυθμίσεις επεξεργασίας ομάδας'
+      edit_group: 'Επεξεργαστείτε τις ρυθμίσεις της ομάδας'
       manage_members: 'Διαχείριση μελών'
       add_subgroup: 'Προσθέστε υποομάδα'
       email_settings: 'Προτιμήσεις Ηλεκτρονικού Ταχυδρομείου'
+      leave_group: 'Φύγετε από την ομάδα '
+      deactivate_group: 'Απενεργοποίηση ομάδας'
     volume:
       loud: Αποστολή ηλεκτρονικού μηνύματος όποτε υπάρχει δραστηριότητα.
       quiet: Μην στείλετε ηλεκτρονικό μήνυμα για αυτή την ομάδα. Η δραστηριότητα θα εμφανιστεί στο ταμπλό.
@@ -469,3 +471,12 @@ el:
   install_slack:
     progress:
       invite: Πρόσκληση
+  group_survey:
+    success: Ευχαριστούμε!
+    categories:
+      business: Επιχειρήσεις
+      other: Άλλο
+    uses:
+      other: Άλλο
+    referrers:
+      other: Άλλο

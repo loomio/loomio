@@ -32,6 +32,7 @@ env:
     - MIN_THREADS=3
     - MAX_THREADS=3
     - SCREENSHOTS_PATH=/`date "+%Y-%m-%d_%H-%M"`/${TRAVIS_REPO_SLUG}/
+    - FEATURES_GROUP_SSO=1
   matrix:
     - TASK=rspec
     - TASK=plugins

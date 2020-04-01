@@ -29,7 +29,7 @@ export default
 
 <template lang="pug">
 div
-  label.caption.v-label.v-label--active.theme--light {{label}}
+  label.caption.v-label.v-label--active {{label}}
 
   .lmo-textarea.mb-3
     html-editor(v-if="format == 'html'" :model='model' :field='field' :placeholder="placeholder" :maxLength="maxLength" :autofocus="autofocus" :shouldReset="shouldReset")

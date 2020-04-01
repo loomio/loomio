@@ -8,7 +8,7 @@ class LocationService
         city = subquery.city
     FROM (
       SELECT DISTINCT(user_id) user_id, country, city, region, started_at
-      FROM visits
+      FROM ahoy_visits
       WHERE started_at > (CURRENT_TIMESTAMP - interval '#{within_last}')
         AND country is not null
       ORDER BY started_at DESC

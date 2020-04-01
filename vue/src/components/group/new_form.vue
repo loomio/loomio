@@ -4,13 +4,12 @@ import AbilityService from '@/shared/services/ability_service'
 import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
-import GroupModalMixin from '@/mixins/group_modal'
 import Flash   from '@/shared/services/flash'
 import { isEmpty, compact } from 'lodash'
 import { onError } from '@/shared/helpers/form'
+import openModal from '@/shared/helpers/open_modal'
 
 export default
-  mixins: [GroupModalMixin]
   props:
     parentId: Number
     close:
@@ -54,6 +53,11 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
+          if group.isParent() && AppConfig.features.app.group_survey
+            openModal
+              component: 'GroupSurvey'
+              props:
+                group: group
       .catch onError(@group)
 
     suggestHandle: ->

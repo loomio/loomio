@@ -121,6 +121,7 @@ he:
     total: סך הכל
     action:
       print: הדפס
+      preview: תצוגה מקדימה
       pin: סיכה
       unpin: הסר סיכה
       search: 'חיפוש'
@@ -247,10 +248,6 @@ he:
   close_explanation_modal:
     aria_label: סגור שיחה
     close_thread: סגור שיחה
-    body_header: |
-        <p>סגור שיחות ישנות או לא רלוונטיות להסרתם מהמסך ולציין שהדיון נסגר</p>
-    body_footer: |
-        <p>כל אחד רשאי להגיב או לפתוח בסקר בשיחה סגורה, אבל זה לא יוצג ברשימת השיחות של הקבוצה או בדשבורד</p>
     image_alt: סוגר את כל השיחות
   mute_explanation_modal:
     aria_label: השתק שיחה
@@ -418,7 +415,6 @@ he:
       updated: 'שיחה עודכנה'
       forked: 'פיצול שיחה נוצרה'
     new_discussion_title: 'התחל/י שיחה חדשה'
-    fork_discussion_title: 'פיצול שיחה'
     edit_discussion_title: 'עריכת שיחה'
     group_label: 'קבוצה'
     group_placeholder: 'בחירת קבוצה'
@@ -490,7 +486,6 @@ he:
     edit_thread: ערוך תוכן
     translate_thread: תרגום תוכן
     edit_poll: עריכת סקר
-    move_items: העבר
     announce_poll: הזמן אנשים להצביע
     announce_poll_active: (אף אחד עוד לא הוזמן)
     translate_poll: תרגום סקר
@@ -516,6 +511,7 @@ he:
     close_thread: סגור שיחה
     delete_thread: מחיקת שיחה
   formatting:
+    link: הכנס לינק
     attach: צרוף קובץ
   cover_photo_form:
     aria_label: 'שנה תמונת קאבר של הטופס'
@@ -603,14 +599,10 @@ he:
     options_label: 'אפשרויות'
     options:
       label: 'אפשרויות'
-      edit_group: 'עריכת הגדרות הקבוצה'
-      export_data: יצוא דאטה של הקבוצה
-      export_data_as_json: יצא את נתוני הקבוצה כקובץ JSON
-      export_data_as_csv: יצא את נתוני הקבוצה כקובץ CSV
-      export_data_as_html: יצא את נתוני הקבוצה כקובץ HTML
+      edit_group: 'ערוך הגדרות קבוצה'
+      export_data: יצוא נתונים מהקבוצה
       manage_members: 'ניהול חברים'
       add_subgroup: 'הוספת תת קבוצה'
-      manage_subscription: 'ניהול מינויים של הקבוצה'
       email_settings: 'העדפות דוא״ל'
       leave_group: 'עזוב את הקבוצה'
       deactivate_group: 'הפוך קבוצה ללא פעילה'
@@ -895,7 +887,6 @@ he:
     update_profile: 'עדכן פרופיל'
     help_translate: "עזור לנו לתרגם את המערכת"
   text_editor:
-    select_text_to_link: בחר טקסט לחיבור
     insert_link: הכנס לינק
   change_picture_form:
     helptext: 'אתה יכול לעלות תמונת פרופיל משלך או, אם יש לך חשבון <a href="https://en.gravatar.com/support/whatisgravatar/">אווטר</a>, אתה יכול להשתמש בו.'
@@ -1715,3 +1706,11 @@ he:
     privacy_policy: מדיניות פרטיות
     terms_of_service: תנאי שימוש
     front_page: עמוד ראשי
+  group_survey:
+    categories:
+      business: עסק
+      other: אחר
+    uses:
+      other: אחר
+    referrers:
+      other: אחר

@@ -151,6 +151,7 @@ hu:
     total: Összesen
     action:
       print: Nyomtatás
+      preview: Előnézet
       pin: Rögzít
       unpin: Rögzítés feloldása
       search: 'Keresés'
@@ -201,6 +202,9 @@ hu:
     formatting_help:
       label: 'Formázás'
       title: 'Így használhatod a Markdown-t a szöveg formázására'
+  merge_accounts:
+    modal:
+      submit: Ellenőrzés
   emoji_picker:
     search: Keresés
     common: Gyakran használt
@@ -302,10 +306,6 @@ hu:
   close_explanation_modal:
     aria_label: Téma lezárása
     close_thread: Téma lezárása
-    body_header: |
-        <p>Zárd le a régi vagy már tárgytalan témákat, eltüntetve őket a folyamból és jelezd, hogy a megbeszélés lezárult.</p>
-    body_footer: |
-        <p>Bárki hozzászólhat vagy indíthat újabb szavazást egy már lezárt témában, de ez nem fog megjelenni a csoport témalistáján vagy a kezdőlapon.</p>
     image_alt: Minden téma lezárása
   mute_explanation_modal:
     aria_label: Téma némítása
@@ -484,7 +484,6 @@ hu:
       updated: 'A téma frissítve'
       forked: 'Téma elágazás létrehozva'
     new_discussion_title: 'Új téma indítása'
-    fork_discussion_title: 'Téma elágaztatása'
     edit_discussion_title: 'Téma szerkesztése'
     group_label: 'Csoport'
     group_placeholder: 'Válassz egy csoportot'
@@ -567,7 +566,6 @@ hu:
     invite_guests: Vendégek meghívása
     translate_thread: Leírás fordítása
     edit_poll: A szavazás szerkesztése
-    move_items: Mozgat
     announce_poll: Hívja meg az embereket szavazásra
     announce_poll_active: (Még senkit sem hívtak meg.)
     translate_poll: Szavazás lefordítása
@@ -597,23 +595,19 @@ hu:
     reopen_thread: Téma újranyitása
     delete_thread: Téma törlése
     notification_history: Értesítési előtörténet
-    move_comments: Hozzászólások mozgatása
   formatting:
     bold: Félkövér
     italicize: Dőlt
     strikethrough: Áthúzott
     underline: Aláhúzott
-    link: Hivatkozás
+    link: Illessz be egy hivatkozást
     code_block: Kód rész
     attach: Fájl csatolása
-    heading1: Nagy címsor
-    heading2: Közepes címsor
-    heading3: Kis címsor
     bullet_list: Lista
     number_list: Számozott lista
     check_list: Ellenőrzőlista
     quote: Idézet
-    embed: Beágyaz
+    embed: Videó beágyazása
     divider: Osztó
     add_table: Táblázat hozzáadása
     remove_table: Táblázat eltávolítása
@@ -715,16 +709,11 @@ hu:
     options_label: 'Lehetőségek'
     options:
       label: 'Lehetőségek'
-      edit_group: 'A csoport beállításainak szerkesztése'
+      edit_group: 'A csoportbeállítások szerkesztése'
       open_group_wizard: 'Csoportbeállítás varázsló'
-      become_coordinator: Legyek adminisztrátor
-      export_data: Csoportadatok letöltése
-      export_data_as_json: Csoportadatok letöltése JSON formátumban
-      export_data_as_csv: Csoportadatok letöltése CSV formátumban
-      export_data_as_html: Csoportadatok letöltése HTML formátumban
+      export_data: Csoport adatok letöltése
       manage_members: 'Tagok kezelése'
       add_subgroup: 'Alcsoport hozzáadása'
-      manage_subscription: 'Csoport előfizetés kezelése'
       email_settings: 'E-mail beállítások'
       leave_group: 'Kilépés a csoportból'
       deactivate_group: 'Csoport deaktiválása'
@@ -903,7 +892,6 @@ hu:
     copy_link: 'Másolás'
     email_addresses: 'E-mail címek'
     email_addresses_placeholder: 'például. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Bárki, aki rendelkezik megosztható linktel, úgy csatlakozhat a csoporthoz, mintha meghívnák. Ne ossza meg azokkal az emberekkel, akiket nem akar a csoportjában.'
     shareable_link_reset: 'Megosztható link visszaállítása. Az előző link már nem működik.'
     email_explanation: 'Alternatív megoldásként írhatja be az e-mail címeket az alábbiakba, hogy e-mailben meghívókat küldjön.'
     add_custom_message: 'Tedd személyessé a meghívást,'
@@ -1021,7 +1009,6 @@ hu:
     deactivate_account: 'Deaktiválja a felhasználói fiókot'
     help_translate: "Segítsen a Loomio fordításában"
   text_editor:
-    select_text_to_link: Válassza ki a csatolni kívánt szöveget
     insert_link: Illessz be egy hivatkozást
     insert_embedded_url: Videó beágyazása
   change_picture_form:
@@ -1954,3 +1941,12 @@ hu:
   vue_upgraded_modal:
     use_old_loomio: Váltás a régi Loomio-ra
     title: A Loomio 2.0-t használod!
+  group_survey:
+    success: Köszi!
+    categories:
+      business: Üzleti
+      other: Egyéb
+    uses:
+      other: Egyéb
+    referrers:
+      other: Egyéb

@@ -32,7 +32,7 @@ export default
       .catch onError(@stance)
 
     orderedPollOptions: ->
-      sortBy @pollOptions, 'priority'
+      sortBy @pollOptions, 'name'
 
     select: (option) ->
       if @isSelected(option)

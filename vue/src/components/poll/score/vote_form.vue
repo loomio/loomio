@@ -3,7 +3,7 @@ import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import { onError } from '@/shared/helpers/form'
-import { head, filter, map } from 'lodash'
+import { head, filter, map, sortBy } from 'lodash'
 
 export default
   props:
@@ -14,18 +14,24 @@ export default
     stanceChoices: []
 
   created: ->
+    done = false
     @watchRecords
       collections: ['poll_options']
       query: (records) =>
         @pollOptions = @poll.pollOptions()
 
-        @stanceChoices = map @pollOptions, (option) =>
-            poll_option_id: option.id
-            score: @stanceChoiceFor(option).score
+        if !done
+          done = true
+          @stanceChoices = map @pollOptions, (option) =>
+              poll_option_id: option.id
+              score: @stanceChoiceFor(option).score
+              name: option.name
   methods:
     submit: ->
       @stance.id = null
-      @stance.stanceChoicesAttributes = @stanceChoices
+      @stance.stanceChoicesAttributes = map @stanceChoices, (choice) =>
+        poll_option_id: choice.poll_option_id
+        score: choice.score
       actionName = if @stance.isNew() then 'created' else 'updated'
       @stance.save()
       .then =>
@@ -44,13 +50,16 @@ export default
 
   computed:
     poll: -> @stance.poll()
+
+    orderedStanceChoices: -> sortBy @stanceChoices, 'name'
 </script>
 
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
+  span {{stanceChoices}}
   poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   .poll-score-vote-form__options
-    .poll-score-vote-form__option(v-for='choice in stanceChoices', :key='choice.poll_option_id')
+    .poll-score-vote-form__option(v-for='choice in orderedStanceChoices', :key='choice.poll_option_id')
       v-subheader.poll-score-vote-form__option-label {{ optionFor(choice).name }}
       v-slider.poll-score-vote-form__score-slider(v-model='choice.score' :color="optionFor(choice).color" :thumb-color="optionFor(choice).color" :track-color="optionFor(choice).color" :height="4" :thumb-size="24" :thumb-label="(choice.score > 0) ? 'always' : true" :min="poll.customFields.min_score" :max="poll.customFields.max_score")
         //- template(v-slot:append)

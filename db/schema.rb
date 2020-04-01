@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_16_011754) do
+ActiveRecord::Schema.define(version: 2020_03_25_025150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_01_16_011754) do
     t.string "name"
     t.jsonb "properties"
     t.datetime "time"
+    t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
     t.index ["properties"], name: "ahoy_events_properties", using: :gin
   end
 
@@ -74,6 +75,37 @@ ActiveRecord::Schema.define(version: 2020_01_16_011754) do
     t.datetime "clicked_at"
     t.index ["token"], name: "index_ahoy_messages_on_token"
     t.index ["user_id"], name: "index_ahoy_messages_on_user_id", where: "(user_id IS NOT NULL)"
+  end
+
+  create_table "ahoy_visits", id: :uuid, default: nil, force: :cascade do |t|
+    t.string "visitor_token"
+    t.string "ip"
+    t.text "user_agent"
+    t.text "referrer"
+    t.text "landing_page"
+    t.integer "user_id"
+    t.string "referring_domain"
+    t.string "search_keyword"
+    t.string "browser"
+    t.string "os"
+    t.string "device_type"
+    t.integer "screen_height"
+    t.integer "screen_width"
+    t.string "country"
+    t.string "region"
+    t.string "city"
+    t.string "utm_source"
+    t.string "utm_medium"
+    t.string "utm_term"
+    t.string "utm_content"
+    t.string "utm_campaign"
+    t.datetime "started_at"
+    t.string "gclid"
+    t.string "visit_token"
+    t.uuid "latitude"
+    t.uuid "longitude"
+    t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
+    t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -273,17 +305,21 @@ ActiveRecord::Schema.define(version: 2020_01_16_011754) do
     t.index ["identity_id"], name: "index_group_identities_on_identity_id"
   end
 
-  create_table "group_visits", id: :serial, force: :cascade do |t|
-    t.uuid "visit_id"
-    t.integer "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer "user_id"
-    t.boolean "member", default: false, null: false
-    t.index ["created_at"], name: "index_group_visits_on_created_at"
-    t.index ["group_id"], name: "index_group_visits_on_group_id"
-    t.index ["member"], name: "index_group_visits_on_member"
-    t.index ["visit_id", "group_id"], name: "index_group_visits_on_visit_id_and_group_id", unique: true
+  create_table "group_surveys", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.string "category"
+    t.string "location"
+    t.string "size"
+    t.string "declaration"
+    t.text "purpose"
+    t.string "usage"
+    t.string "referrer"
+    t.string "role"
+    t.string "website"
+    t.text "misc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_surveys_on_group_id"
   end
 
   create_table "groups", id: :serial, force: :cascade do |t|
@@ -503,19 +539,6 @@ ActiveRecord::Schema.define(version: 2020_01_16_011754) do
     t.index ["user_id"], name: "index_personas_on_user_id"
   end
 
-  create_table "organisation_visits", id: :serial, force: :cascade do |t|
-    t.uuid "visit_id"
-    t.integer "organisation_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer "user_id"
-    t.boolean "member", default: false, null: false
-    t.index ["created_at"], name: "index_organisation_visits_on_created_at"
-    t.index ["member"], name: "index_organisation_visits_on_member"
-    t.index ["organisation_id"], name: "index_organisation_visits_on_organisation_id"
-    t.index ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true
-  end
-
   create_table "outcomes", id: :serial, force: :cascade do |t|
     t.integer "poll_id"
     t.text "statement", null: false
@@ -649,6 +672,8 @@ ActiveRecord::Schema.define(version: 2020_01_16_011754) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.jsonb "info"
+    t.datetime "canceled_at"
+    t.datetime "activated_at"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
   end
 
@@ -740,10 +765,10 @@ ActiveRecord::Schema.define(version: 2020_01_16_011754) do
     t.datetime "last_seen_at"
     t.datetime "legal_accepted_at"
     t.boolean "email_newsletter", default: false, null: false
-    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
@@ -767,32 +792,6 @@ ActiveRecord::Schema.define(version: 2020_01_16_011754) do
     t.datetime "created_at"
     t.jsonb "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
-  end
-
-  create_table "visits", id: :uuid, default: nil, force: :cascade do |t|
-    t.uuid "visitor_id"
-    t.string "ip"
-    t.text "user_agent"
-    t.text "referrer"
-    t.text "landing_page"
-    t.integer "user_id"
-    t.string "referring_domain"
-    t.string "search_keyword"
-    t.string "browser"
-    t.string "os"
-    t.string "device_type"
-    t.integer "screen_height"
-    t.integer "screen_width"
-    t.string "country"
-    t.string "region"
-    t.string "city"
-    t.string "utm_source"
-    t.string "utm_medium"
-    t.string "utm_term"
-    t.string "utm_content"
-    t.string "utm_campaign"
-    t.datetime "started_at"
-    t.index ["user_id"], name: "index_visits_on_user_id"
   end
 
   create_table "webhooks", id: :serial, force: :cascade do |t|

@@ -37,6 +37,9 @@ img.emoji
   margin: 0 .05em
 
 .lmo-markdown-wrapper
+  span.mention
+    color: var(--v-anchor-base)
+
   blockquote, h1, h2, h3, ol, p, pre, ul
     margin: 1rem 0
 

@@ -109,3 +109,10 @@ km:
   poll_count_options:
     'yes': 'បាទ/ចាស!'
     'no': 'ទេ'
+  group_survey:
+    categories:
+      other: 'ផ្សេងទៀត '
+    uses:
+      other: 'ផ្សេងទៀត '
+    referrers:
+      other: 'ផ្សេងទៀត '

@@ -128,6 +128,7 @@ ru:
     total: Всего
     action:
       print: Печать
+      preview: Предварительный просмотр
       pin: Закрепить
       unpin: Открепить
       search: 'Поиск'
@@ -170,6 +171,9 @@ ru:
       export: Экспортировать
     formatting_help:
       label: 'Форматирование'
+  merge_accounts:
+    modal:
+      submit: Подтвердить
   emoji_picker:
     search: Поиск
   ordinal:
@@ -359,7 +363,6 @@ ru:
     edit_thread: Редактировать контекст
     translate_thread: Перевести контекст
     edit_poll: Редактировать опрос
-    move_items: Переместить
     announce_poll: Пригласите людей проголосовать
     translate_poll: Перевести опрос
     edit_stance: Изменить позицию
@@ -419,9 +422,9 @@ ru:
     options_label: 'Опции'
     options:
       label: 'Опции'
+      edit_group: 'Редактировать настройки группы'
       manage_members: 'Управлять участниками'
       add_subgroup: 'Добавить подгруппу'
-      manage_subscription: 'Управлять подписками группы'
       email_settings: 'Настройки уведомлений'
       leave_group: 'Покинуть группу'
       deactivate_group: 'Деактивировать группу'
@@ -663,3 +666,7 @@ ru:
     privacy_policy: Политика конфиденциальности
     terms_of_service: Условия использования
     front_page: Заглавная страница
+  group_survey:
+    categories:
+      business: Бизнес
+      volunteer: Волонтерская организация

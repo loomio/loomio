@@ -54,6 +54,8 @@ Loomio::Application.routes.draw do
       get :user, on: :collection
     end
 
+    resources :group_surveys, only: [:create]
+
     resources :usage_reports, only: [:create]
 
     resources :groups, only: [:index, :show, :create, :update] do

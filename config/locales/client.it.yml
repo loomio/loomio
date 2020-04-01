@@ -125,6 +125,7 @@ it:
     total: Totale
     action:
       print: Stampa
+      preview: Anteprima
       search: 'Ricerca'
       filter: 'Filtra'
       back: 'Indietro'
@@ -172,6 +173,9 @@ it:
     formatting_help:
       label: 'Formattazione'
       title: 'Impara come usare il Markdown per formattare il tuo testo'
+  merge_accounts:
+    modal:
+      submit: Verifica
   emoji_picker:
     search: Ricerca
     common: Frequentemente usato
@@ -258,10 +262,6 @@ it:
   close_explanation_modal:
     aria_label: Chiudi discussione
     close_thread: Chiudi discussione
-    body_header: |
-        <p>Chiudi i threads vecchi o irrilevanti per rimuoverli dalla vista e indicare che la discussione è conclusa.</p>
-    body_footer: |
-        <p>Chiuque può ancora commentare o iniziare un sondaggio in una discussione chiusa, ma non appariranno nella lista delle discussioni del gruppo o nel cruscotto</p>
     image_alt: Chiudi tutte le discussioni
   mute_explanation_modal:
     aria_label: Silenzia discussione
@@ -445,7 +445,6 @@ it:
       updated: 'Discussione aggiornata'
       forked: 'Biforcazione della discussione creata'
     new_discussion_title: 'Lancia una nuova discussione'
-    fork_discussion_title: 'Biforca una discussione'
     edit_discussion_title: 'Modifica il nome della discussione'
     group_label: 'Gruppo'
     group_placeholder: 'Scegli un gruppo'
@@ -508,7 +507,6 @@ it:
     edit_thread: Modifica il contesto
     translate_thread: Traduci il contesto
     edit_poll: Modifica sondaggio
-    move_items: Sposta
     translate_poll: Traduci sondaggio
     edit_stance: Cambia posizione
     translate_stance: Traduci il voto
@@ -600,12 +598,12 @@ it:
     options_label: 'Opzioni'
     options:
       label: 'Opzioni'
-      edit_group: 'Modifica le Impostazioni del Gruppo'
+      edit_group: 'Modifica le impostazioni del gruppo'
+      export_data: Esporta i dati del gruppo
       manage_members: 'Gestisci membri'
       add_subgroup: 'Aggiungi sottogruppo'
-      manage_subscription: 'Gestisci le sottoscrizioni al gruppo'
       email_settings: 'Opzioni email'
-      leave_group: 'Abbandona il gruppo'
+      leave_group: 'Lascia il gruppo'
       deactivate_group: 'Disattiva gruppo'
     volume:
       loud: Invia una mail in caso di qualsiasi tipo di attività.
@@ -1323,3 +1321,14 @@ it:
     privacy_policy: Policy della Privacy
     terms_of_service: Termini del servizio
     front_page: Prima pagina
+  group_survey:
+    categories:
+      business: Business
+      activist: Organizzazione attivista
+      faith: Gruppo spirituale o di fede
+      volunteer: Organizzazione di volontariato
+      other: Altro
+    uses:
+      other: Altro
+    referrers:
+      other: Altro

@@ -118,6 +118,7 @@ pt_BR:
     total: Total
     action:
       print: Imprimir
+      preview: Visualização
       pin: Fixar
       unpin: Desafixar
       search: 'Pesquisar'
@@ -162,6 +163,9 @@ pt_BR:
     formatting_help:
       label: 'Formatação'
       title: 'Aprenda como usar Markdown para formatar seu texto'
+  merge_accounts:
+    modal:
+      submit: Verificar
   emoji_picker:
     search: Pesquisar
   ordinal:
@@ -240,10 +244,6 @@ pt_BR:
   close_explanation_modal:
     aria_label: Fechar conversa
     close_thread: Fechar conversa
-    body_header: |
-        <p>Encerre conversas antigas ou irrelevantes para removê-las da visualização e indicar que a discussão foi finalizada.</p>
-    body_footer: |
-        <p>Todos ainda podem comentar ou iniciar uma votação numa conversa encerrada, mas ela não será exibida na lista de tópicos do grupo ou no painel.</p>
     image_alt: Fechando todas as conversas
   mute_explanation_modal:
     aria_label: Silenciar conversa
@@ -398,7 +398,6 @@ pt_BR:
       updated: 'Conversa atualizada'
       forked: 'Divisão da conversa criada'
     new_discussion_title: 'Iniciar nova conversa'
-    fork_discussion_title: 'Dividir uma conversa'
     edit_discussion_title: 'Editar conversa'
     group_label: 'Grupo'
     group_placeholder: 'Selecionar um grupo'
@@ -456,7 +455,6 @@ pt_BR:
     copy_url: Copiar link
     edit_thread: Editar contexto
     translate_thread: Traduzir contexto
-    move_items: Mover
     edit_stance: Modificar posição
     translate_stance: Traduzir voto
     edit_comment: 'Editar comentário '
@@ -554,13 +552,13 @@ pt_BR:
     options_label: 'Opções'
     options:
       label: 'Opções'
-      edit_group: 'Editar Configurações do Grupo'
+      edit_group: 'Editar configurações do grupo'
+      export_data: Exportar data do grupo
       manage_members: 'Gerenciar Membros'
       add_subgroup: 'Adicionar Subgrupo'
-      manage_subscription: 'Gerenciar Inscrições do Grupo '
       email_settings: 'Preferências de e-mail'
-      leave_group: 'Sair do Grupo'
-      deactivate_group: 'Desativar Grupo'
+      leave_group: 'Sair do grupo'
+      deactivate_group: 'Desativar grupo'
     volume:
       loud: Enviar e-mail sempre que houver atividade.
       loud_aria_description: O seu volume de notificação para este grupo está definido como Alto. Você receberá um e-mail sempre que houver atividade.
@@ -1215,3 +1213,11 @@ pt_BR:
   powered_by:
     privacy_policy: Política de Privacidade
     terms_of_service: Termo de Serviço
+  group_survey:
+    categories:
+      business: Negócios
+      other: Outro
+    uses:
+      other: Outro
+    referrers:
+      other: Outro

@@ -30,6 +30,17 @@ en:
     was_gift_remaining: "{{days}} days remaining."
     was_gift_expired: "Your free plan has now expired."
 
+  subscription_status:
+    plan: "Plan"
+    state: "Status"
+    active_members: "Active members"
+    max_threads: "Max threads"
+    max_members: "Max members"
+    expires_at: "Expires"
+    renews_at: "Renews"
+    referral_code: "Chargify referral code"
+    chargify_link: "Chargify billing portal"
+
   loomio_tags:
     all_tags: All tags
     tags: Tags
@@ -140,6 +151,7 @@ en:
     settings: 'Settings'
     help: 'Help'
     anonymous: Anonymous
+    required: Required
     privacy:
       privacy: 'Privacy'
       public: 'Public'
@@ -350,9 +362,8 @@ en:
   close_explanation_modal:
     aria_label: Close thread
     close_thread: Close thread
-    body_header: |
+    body: |
       <p>Close old or irrelevant threads to remove them from view and indicate the discussion has closed.</p>
-    body_footer: |
       <p>Anyone may still comment or start a poll in a closed thread, but it will not appear in the group's thread list or on the dashboard.</p>
     image_alt: Closing threads all
 
@@ -537,6 +548,7 @@ en:
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
+    group_announced: "<strong>{{name}}</strong> invited you to the group <strong>{{title}}</strong>"
 
   position_buttons_panel:
     heading: Have your say
@@ -851,6 +863,7 @@ en:
       email_settings: 'Email preferences'
       leave_group: 'Leave group'
       deactivate_group: 'Deactivate group'
+      subscription_status: 'Subscription status'
     volume:
       loud: Email whenever there is activity.
       loud_aria_description: Your notification volume for this group is set to Loud. You will be emailed whenever there is activity.
@@ -2330,3 +2343,60 @@ en:
       <p>It's a faster, better Loomio!</p>
       <p>We think you'll love it, but if you need to, you can switch back to the old version from the sidebar.</p>
       <p><a href="{{link}}" target="_blank">Find out what's new.</a></p>
+
+  group_survey:
+    title: Success! Just a few more details
+    subtitle: Please help us get to know you better. We will not share any information provided in this form without your permission.
+    validation_error: Please fill out all required fields.
+    success: Thank you!
+    categories:
+      business: Business
+      bcorp: B-Corp or Social enterprise
+      cooperative: Cooperative
+      consultant: Consultant services or agency
+      government: Government/Local Government
+      nonprofit: Nonprofit
+      union: Union
+      party: Political party
+      activist: Activist organization
+      community: Community or collective
+      education: Education or research
+      faith: Faith or spiritual group
+      volunteer: Volunteer organization
+      other: Other
+    sizes:
+      ten: "< 10"
+      twenty: "11 - 20"
+      fifty: "21 - 50"
+      two_hundred: "51 - 200"
+      five_hundred: "201 - 500"
+      two_thousand: "501 - 2000"
+      else: "> 2000"
+    uses:
+      governance: Governance for Board, Committee or Trust
+      collaboration: Collaborative working group
+      engagement: Stakeholder or member engagement
+      self_management: Self-management (collaborative workplace)
+      remote: Remote working
+      document: Collaborative document development, e.g. a strategic plan
+      decision_making: Decision-making processes (Advice, Consent)
+      funding: Funding or Grant decisions
+      project: Project team
+      forum: Forum
+      other: Other
+    referrers:
+      google: Google search
+      invitation: Invited to a Loomio group
+      referral: Referral
+      social: Social media (Facebook, Twitter, LinkedIn)
+      capterra: Capterra
+      other: Other
+    location: Where is your group based?
+    purpose: "What is the purpose of your group?"
+    category_question: "Select which category best describes your group"
+    anything_else: "Is there anything else you'd like to tell us?"
+    size_question: "How many people are in your group?"
+    role: "What is your role in the group?"
+    website: "Website URL"
+    usage: "How do you plan to use Loomio? Choose the best fit"
+    referrer: "How did you hear about Loomio?"

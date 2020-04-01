@@ -100,3 +100,10 @@ bg_BG:
     closed: 'Затворен'
   poll_common_form:
     closed: Затворен
+  group_survey:
+    categories:
+      other: Друго
+    uses:
+      other: Друго
+    referrers:
+      other: Друго

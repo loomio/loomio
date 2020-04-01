@@ -1,6 +1,7 @@
 class Queries::GroupStats
   def self.visits_count(group_id)
-    GroupVisit.where(group_id: group_id).count
+    # GroupVisit.where(group_id: group_id).count
+    Ahoy::Event.where("properties -> 'groupId' is not null and properties ->> 'groupId' = '#{group_id}'").pluck(:visit_id).uniq.count
   end
 
   def self.comments_count(group_ids)
@@ -20,7 +21,8 @@ class Queries::GroupStats
   end
 
   def self.org_visits_count(group)
-    OrganisationVisit.where(organisation_id: group.id).count
+    # OrganisationVisit.where(organisation_id: group.id).count
+    Ahoy::Event.where("properties -> 'organisationId' is not null and properties ->> 'organisationId' = '#{group.id}'").pluck(:visit_id).uniq.count
   end
 
   def self.poll_types_count(group_ids)

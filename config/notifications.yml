@@ -17,3 +17,4 @@ kinds:
   - stance_created
   - poll_option_added
   - discussion_announced
+  - group_announced

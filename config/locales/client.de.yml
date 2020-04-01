@@ -148,6 +148,7 @@ de:
     total: Gesamt
     action:
       print: Drucken
+      preview: Vorschau
       pin: Anheften
       unpin: Anheften deaktivieren
       search: 'Suchen'
@@ -197,6 +198,9 @@ de:
     formatting_help:
       label: 'Markdown-Formatierung'
       title: 'Mehr über die Textformatierung mit Markdown lernen'
+  merge_accounts:
+    modal:
+      submit: überprüfen
   emoji_picker:
     search: Suchen
     common: 'Oft verwendet '
@@ -298,10 +302,6 @@ de:
   close_explanation_modal:
     aria_label: Diskussion schließen
     close_thread: Diskussion schließen
-    body_header: |
-        <p>Schließe alte oder irrelevante Diskussionen, um sie aus der Ansicht zu entfernen und bekanntzugeben, dass die Diskussion beendet ist.</p>
-    body_footer: |
-        <p>Teilnehmer können immer noch in in abgeschlossenen Diskussionen Kommentare abgeben oder Umfragen starten, diese werden aber nicht mehr in der Diskussionsliste oder im Dashboard angezeigt.</p>
     image_alt: Alle Diskussionen schließen
   mute_explanation_modal:
     aria_label: Diskussion stummschalten
@@ -487,7 +487,6 @@ de:
       updated: 'Diskussion aktualisiert'
       forked: 'Diskussion aufgespaltet'
     new_discussion_title: 'Neue Diskussion beginnen'
-    fork_discussion_title: 'Diskussion aufspalten'
     edit_discussion_title: 'Diskussion bearbeiten'
     group_label: 'Gruppe'
     group_placeholder: 'Gruppe auswählen'
@@ -582,7 +581,6 @@ de:
     invite_guests: Gäste einladen
     translate_thread: Beschreibung übersetzen
     edit_poll: Umfrage bearbeiten
-    move_items: Verschieben
     announce_poll: Personen zur Umfrage einladen
     announce_poll_active: (bis jetzt wurde niemand eingeladen)
     translate_poll: Umfrage übersetzen
@@ -617,16 +615,14 @@ de:
     italicize: Kursiv
     strikethrough: Durchgestrichen
     underline: Unterstrichen
+    link: Link einfügen
     code_block: Code-Block
     attach: Datei anhängen
-    heading1: Überschrift groß
-    heading2: Überschrift mittel
-    heading3: Überschrift klein
     bullet_list: Aufzählung
     number_list: Nummerierte Aufzählung
     check_list: Checkliste
     quote: Zitat
-    embed: Einfügen
+    embed: Video einfügen
     divider: Horizontale Linie
     add_table: Tabelle einfügen
     remove_table: Tabelle entfernen
@@ -722,14 +718,9 @@ de:
       label: 'Optionen'
       edit_group: 'Gruppeneinstellungen bearbeiten'
       open_group_wizard: 'Assistent für die Gruppenerstellung'
-      become_coordinator: Admin werden
       export_data: Gruppendaten exportieren
-      export_data_as_json: Gruppendaten im JSON-Format exportieren
-      export_data_as_csv: Gruppendaten im CSV-Format exportieren
-      export_data_as_html: Gruppendaten im HTML-Format exportieren
       manage_members: 'Mitglieder verwalten'
       add_subgroup: 'Untergruppe anlegen'
-      manage_subscription: 'Gruppenbenachrichtigungen verwalten'
       email_settings: 'E-Mail-Einstellungen'
       leave_group: 'Gruppe verlassen'
       deactivate_group: 'Gruppe deaktivieren'
@@ -915,7 +906,6 @@ de:
     copy_link: 'Kopieren'
     email_addresses: 'E-Mail-Adressen'
     email_addresses_placeholder: 'z. B. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Jeder mit einem teilbaren Link kann dieser Gruppe als Mitglied beitreten. Bitte teile ihn nicht mit Personen die du nicht in deiner Gruppe haben möchtest. '
     shareable_link_reset: 'Der teilbare Link wurde zurückgesetzt. Der vorherige Link funktioniert nicht mehr.'
     email_explanation: 'Alternativ kannst du im Folgenden E-Mail-Adressen eingeben, um Einladungen per E-Mail zu senden.'
     add_custom_message: 'Mache die Einladung persönlicher'
@@ -1034,7 +1024,6 @@ de:
     deactivate_account: 'Benutzerkonto deaktivieren'
     help_translate: "Hilf mit, Loomio zu übersetzen"
   text_editor:
-    select_text_to_link: Text zum verlinken markieren
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
   change_picture_form:
@@ -1995,3 +1984,16 @@ de:
     front_page: Titelseite
   vue_upgraded_modal:
     use_old_loomio: Das alte Loomio verwenden
+  group_survey:
+    categories:
+      business: Business
+      activist: Aktivistorganisation
+      faith: Religiöse oder spirituelle Gemeinschaft
+      volunteer: Gemeinnützige Organisation
+      other: Andere
+    uses:
+      other: Andere
+    referrers:
+      other: Andere
+    category_question: "Wähle aus, welche Kategorie deine Gruppe am ehesten beschreibt"
+    anything_else: "Gibt es noch etwas, dass du uns mitteilen möchtest?"

@@ -1,4 +1,12 @@
 tr:
+  group:
+    stats:
+      members: Üyeler
+      subgroups: Alt gruplar
+      threads: Müzakereler
+      comments: Yorumlar
+      poll_types:
+        proposal: Öneri
   poll:
     export:
       title: Başlık

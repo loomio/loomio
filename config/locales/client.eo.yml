@@ -104,6 +104,7 @@ eo:
     total: Entute
     action:
       print: Presi
+      preview: Antaŭkontrolo
       search: 'Serĉi'
       next: 'Sekva'
       close: 'Fermigi'
@@ -215,7 +216,6 @@ eo:
     add_comment: Komenti
     copy_url: Kopii ligilon
     edit_poll: Redakti enketon
-    move_items: Movi
     translate_poll: Traduki enketon
     delete_comment: Forigi la komenton
     edited: Redaktita
@@ -251,7 +251,9 @@ eo:
     options_label: 'Opcioj'
     options:
       label: 'Opcioj'
+      edit_group: 'Redakti la grupajn agordojn'
       email_settings: 'Retpoŝtaj preferoj'
+      leave_group: 'Elirii grupon'
   group_form:
     group_name_placeholder: 'Kio estas la nomo de via grupo?'
     privacy: 'Privateco'
@@ -481,3 +483,11 @@ eo:
     link: Bonvolu komuti al alia retumilo
   slack_added_modal:
     title: Sukceso!
+  group_survey:
+    categories:
+      business: Entrepreno
+      other: Alia
+    uses:
+      other: Alia
+    referrers:
+      other: Alia

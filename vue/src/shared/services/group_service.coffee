@@ -33,14 +33,6 @@ export default new class GroupService
           props:
             group: group
 
-    manage_subscription:
-      name: 'group_page.options.manage_subscription'
-      icon: 'mdi-rocket'
-      canPerform: ->
-        group.isParent() && Session.user().isAdminOf(group) && group.subscriptionPlan?
-      perform: ->
-        window.location = AppConfig.baseUrl + "upgrade"
-
     become_coordinator:
       name: 'group_page.options.become_coordinator'
       icon: 'mdi-shield-star'
@@ -132,6 +124,7 @@ export default new class GroupService
       name: 'configure_sso.title'
       icon: 'mdi-key-variant'
       canPerform: ->
+        AppConfig.features.app.group_sso &&
         AbilityService.canAdministerGroup(group) && group.isParent()
       perform: ->
         openModal

@@ -156,7 +156,7 @@ export default
 
 <template lang="pug">
 div
-  label.caption.v-label.v-label--active.theme--light {{label}}
+  label.caption.v-label.v-label--active {{label}}
   .editor.mb-3
     editor-content.html-editor__textarea(:editor='editor').lmo-markdown-wrapper
     editor-menu-bar(:editor='editor' v-slot='{ commands, isActive, focused }')
@@ -347,7 +347,6 @@ progress::-moz-progress-bar
 .menubar
   position: sticky
   bottom: 0
-  background-color: #fff
 
 .menubar
   .drop-down-button
