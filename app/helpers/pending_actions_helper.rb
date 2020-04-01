@@ -24,24 +24,27 @@ module PendingActionsHelper
       consume_pending_membership(user)
       consume_pending_discussion_reader(user)
       consume_pending_stance(user)
+      session.delete(:pending_login_token)
+      session.delete(:pending_identity_id)
+      session.delete(:pending_group_token)
+      session.delete(:pending_membership_token)
+      session.delete(:pending_discussion_reader_token)
+      session.delete(:pending_stance_token)
     end
   end
 
   def consume_pending_login_token
     pending_login_token.update(used: true) if pending_login_token
-    session.delete(:pending_login_token)
   end
 
   def consume_pending_identity(user)
     user.associate_with_identity(pending_identity) if pending_identity
-    session.delete(:pending_identity_id)
   end
 
   def consume_pending_group(user)
     if pending_group
       membership = pending_group.memberships.build(user: user)
       MembershipService.redeem(membership: membership, actor: user)
-      session.delete(:pending_group_token)
     end
   end
 
@@ -49,21 +52,16 @@ module PendingActionsHelper
     if pending_membership
       MembershipService.redeem(membership: pending_membership, actor: user)
     end
-    session.delete(:pending_membership_token)
   end
 
   def consume_pending_discussion_reader(user)
     if pending_discussion_reader
       DiscussionReaderSerivce.redeem(discussion_reader: pending_discussion_reader, actor: user)
     end
-    session.delete(:pending_discussion_reader_token)
   end
 
   def consume_pending_stance(user)
-    if pending_stance
-      StanceService.redeem(stance: pending_stance, actor: user)
-    end
-    session.delete(:pending_stance_token)
+    StanceService.redeem(stance: pending_stance, actor: user) if pending_stance
   end
 
   def pending_group
