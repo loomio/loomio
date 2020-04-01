@@ -179,8 +179,8 @@ export default new class AbilityService
     @canViewGroup(group)
 
   canJoinGroup: (group) ->
-    ((group.membershipGrantedUpon == 'request') and @canViewGroup(group) and !group.membersInclude(Session.user())) ||
-    ((group.membershipGrantedUpon == 'approval') and @canViewGroup(group) and group.parent().adminsInclude(Session.user()) and !group.membersInclude(Session.user()))
+    return false if !@canViewGroup(group) or group.membersInclude(Session.user())
+    group.membershipGrantedUpon == 'request' or group.parentOrSelf().adminsInclude(Session.user())
 
   canRequestMembership: (group) ->
     group.membershipGrantedUpon == 'approval' and
