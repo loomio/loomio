@@ -3,13 +3,11 @@ module Ability::Membership
     super(user)
 
     can [:update], ::Membership do |membership|
-      membership.user_id == user.id ||
-      user_is_admin_of?(membership.group_id) ||
-      user_is_admin_of?(membership.target_model.group_id)
+      membership.user_id == user.id || membership.group.admins.include?(user)
     end
 
     can [:make_admin], ::Membership do |membership|
-      user_is_admin_of?(membership.group_id) ||
+      membership.group.admins.include?(user) ||
       (user_is_member_of?(membership.group_id) && membership.user == user && membership.group.admin_memberships.count == 0) ||
       (user_is_admin_of?(membership.group.parent_id) && user == membership.user)
     end

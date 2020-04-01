@@ -59,7 +59,7 @@ export default class PollModel extends BaseModel
     @latestStances().map (stance) -> stance.participant()
 
   members: ->
-    @group().members().concat(@voters())
+    ((@group() && @group().members()) || []).concat(@voters())
 
   adminsInclude: (user) ->
     stance = @stanceFor(user)
