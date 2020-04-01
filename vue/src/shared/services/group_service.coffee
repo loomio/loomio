@@ -38,8 +38,7 @@ export default new class GroupService
       icon: 'mdi-shield-star'
       canPerform: ->
         membership && membership.admin == false &&
-          (group.adminMembershipsCount == 0 or
-          Session.user().isAdminOf(group.parent()))
+          (group.adminMembershipsCount == 0 or group.parentOrSelf().adminsInclude(Session.user()))
       perform: ->
         Records.memberships.makeAdmin(membership).then ->
           Flash.success "memberships_page.messages.make_admin_success", name: Session.user().name
@@ -56,7 +55,7 @@ export default new class GroupService
       name: 'group_page.options.export_data'
       icon: 'mdi-database-export'
       canPerform: ->
-        membership && Session.user().isAdminOf(group)
+        membership && group.adminsInclude(Session.user())
       perform: ->
         openModal
           component: 'ExportDataModal'
