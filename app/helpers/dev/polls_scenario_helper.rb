@@ -20,7 +20,9 @@ module Dev::PollsScenarioHelper
 
   def poll_share_scenario(poll_type:)
     observer = saved fake_user
-    event = PollService.create(poll: fake_poll(poll_type: poll_type, group: create_group_with_members, discussion: nil), actor: observer)
+    group = create_group_with_members
+    group.add_admin!(observer)
+    event = PollService.create(poll: fake_poll(poll_type: poll_type, group: group, discussion: nil), actor: observer)
      {observer: observer,
      actor: observer,
      poll: event.eventable,
