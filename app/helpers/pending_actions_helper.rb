@@ -56,7 +56,7 @@ module PendingActionsHelper
 
   def consume_pending_discussion_reader(user)
     if pending_discussion_reader
-      DiscussionReaderSerivce.redeem(discussion_reader: pending_discussion_reader, actor: user)
+      DiscussionReaderService.redeem(discussion_reader: pending_discussion_reader, actor: user)
     end
   end
 
