@@ -11,22 +11,14 @@ module Ability::Group
     end
 
     can [:vote_in], ::Group do |group|
-      if group.is_formal_group?
-        user_is_admin_of(group.id) ||
-        (user_is_member_of(group.id) && group.members_can_vote)
-      else
-        user_is_member_of(group.id)
-      end
+      group.admins.include?(user) || (group.members_can_vote && group.members.include?(user))
     end
 
     can [:see_private_content, :subscribe_to], ::Group do |group|
-      if group.archived_at
-        false
-      else
-        user_is_member_of?(group.id) or
+      !group.archived_at && (
         group.group_privacy == 'open' or
-        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
-      end
+        group.members.include?(user) or
+        (group.is_visible_to_parent_members? and group.parent_or_self.members.include?(user)))
     end
 
     can [:update,
@@ -36,7 +28,7 @@ module Ability::Group
          :export,
          :view_pending_invitations,
          :set_saml_provider], ::Group do |group|
-      user_is_admin_of?(group.id)
+      group.admins.include?(user)
     end
 
     can [:members_autocomplete,
