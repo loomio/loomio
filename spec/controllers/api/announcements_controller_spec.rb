@@ -297,7 +297,7 @@ describe API::AnnouncementsController do
         post :create, params: {group_id: group.id, emails: [notified_user.email]}
         expect(response.status).to eq 200
         expect(User.where(email: notified_user.email).count).to eq 1
-        expect(notified_user.groups).to include group.guest_group
+        expect(notified_user.groups).to include group
       end
 
       it 'does not allow announcement if max members is reached' do
