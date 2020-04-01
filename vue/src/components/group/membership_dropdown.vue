@@ -56,7 +56,7 @@ export default
     canToggleAdmin: ->
       (@membership.group().adminMembershipsCount == 0 and @membership.user() == Session.user()) or
       (AbilityService.canAdministerGroup(@membership.group()) and (!@membership.admin or @canRemoveMembership(@membership))) or
-      (@membership.userIs(Session.user()) && @membership.group().parent().adminsInclude(Session.user()))
+      (@membership.userIs(Session.user()) && @membership.group().parentOrSelf().adminsInclude(Session.user()))
 
 
     toggleAdmin: (membership) ->
