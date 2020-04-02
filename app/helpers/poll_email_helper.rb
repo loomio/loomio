@@ -18,7 +18,7 @@ module PollEmailHelper
   end
 
   def recipient_stance(recipient, poll)
-    poll.stances.latest.find_by(participant: recipient)
+    poll.stances.latest.find_by(participant: recipient) || Stance.new(poll: poll, participant: recipient)
   end
 
   def time_zone(recipient, poll)
