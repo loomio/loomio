@@ -13,8 +13,12 @@ describe Queries::VisibleDiscussions do
   describe 'sorted_by_importance' do
     let(:group) { create(:formal_group, is_visible_to_public: true) }
     let!(:no_importance) { create :discussion, private: false, group: group }
-    let!(:has_decision)  { create :discussion, private: false, group: group, polls: [create(:poll)] }
+    let!(:has_decision)  { create :discussion, private: false, group: group }
     let!(:pinned)        { create :discussion, private: false, group: group, pinned: true }
+
+    before do
+      create(:poll, discussion: has_decision)
+    end
 
     it 'orders discussions by importance when logged out' do
       [pinned, has_decision, no_importance].map(&:update_importance)
