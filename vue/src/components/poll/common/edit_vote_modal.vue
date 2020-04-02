@@ -17,7 +17,7 @@ export default
 
   methods:
     submit: ->
-      actionName = if @stance.isNew() then 'created' else 'updated'
+      actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
       .then =>
         @stance.poll().clearStaleStances()
@@ -38,8 +38,8 @@ v-card.poll-common-edit-vote-modal
   submit-overlay(:value="stance.processing")
   v-card-title
     h1.headline
-      span(v-if="stance.isNew()", v-t="'poll_common.your_response'")
-      span(v-if="!stance.isNew()", v-t="'poll_common.change_your_response'")
+      span(v-if="!stance.castAt", v-t="'poll_common.your_response'")
+      span(v-if="stance.castAt", v-t="'poll_common.change_your_response'")
     v-spacer
     dismiss-modal-button(:close="close")
 

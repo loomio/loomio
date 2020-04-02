@@ -235,7 +235,7 @@ module.exports = {
   'can_start_an_anonymous_poll': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('test_discussion', { controller: 'polls' })
+    page.loadPath('/polls/test_discussion')
     page.click('.activity-panel__add-proposal')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
@@ -312,7 +312,7 @@ module.exports = {
   //
   //   page.expectText('.poll-common-card__title', 'A new proposal')
   //   page.expectText('.poll-common-details-panel__details p', 'Some details')
-  // 
+  //
   //   page.click('.poll-common-vote-form__button')
   //   page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
   //   page.click('.poll-common-vote-form__submit')
