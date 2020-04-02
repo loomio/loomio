@@ -100,6 +100,7 @@ class Poll < ApplicationRecord
   validate :valid_minimum_stance_choices
   validate :closes_in_future
   validate :require_custom_fields
+  validate :discussion_group_is_poll_group
 
   alias_method :user, :author
   alias_method :draft_parent, :discussion
@@ -277,6 +278,12 @@ class Poll < ApplicationRecord
   def closes_in_future
     return if !self.active? || !self.closing_at || self.closing_at > Time.zone.now
     errors.add(:closing_at, I18n.t(:"validate.motion.must_close_in_future"))
+  end
+
+  def discussion_group_is_poll_group
+    if poll.discussion and poll.group and poll.discussion.group != poll.group
+      self.errors.add(:group, 'Poll group is not discussion group')
+    end
   end
 
   def prevent_added_options

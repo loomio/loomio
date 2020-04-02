@@ -1,18 +1,32 @@
-class Dev::PollsController < Dev::BaseController
+class Dev::PollsController < Dev::NightwatchController
   include Dev::PollsHelper
   include Dev::PollsScenarioHelper
 
-  # def test_invitation_to_vote_in_poll
-  #   sign_out
-  #   email = "#{Random.new(Time.now.to_i).rand(99999999)}@example.com"
-  #   poll = saved fake_poll
-  #   PollService.create(poll: poll, actor: poll.author)
-  #   membership = poll.add_guest!fake_unverified_user
-  #   PollService.announce(poll: poll,
-  #                        params: {kind: 'poll_created', emails: [email]},
-  #                        actor: poll.author)
-  #   redirect_to poll.guest_group.memberships.last
-  # end
+  def test_invite_to_poll
+    admin = saved fake_user
+
+    if params[:guest]
+      user = saved fake_unverified_user
+    else
+      user = saved fake_user
+    end
+
+    group = saved fake_group
+
+    group.add_admin! admin
+    group.add_member! user
+
+    discussion = fake_discussion(group: group)
+
+    DiscussionService.create(discussion: discussion, actor: admin)
+
+    # select poll type here
+    poll = fake_poll(group: group, discussion: discussion, author: admin)
+    PollService.create(poll: poll, actor: poll.author)
+
+    PollService.announce(poll: poll, params: {user_ids: [user.id]}, actor: poll.author)
+    last_email
+  end
 
   def test_discussion
     group = create_group_with_members

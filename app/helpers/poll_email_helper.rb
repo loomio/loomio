@@ -38,18 +38,18 @@ module PollEmailHelper
   def target_url(poll:, recipient:, args: {})
     stance = recipient_stance(recipient, poll)
     args.merge!(stance_token: stance.token) if stance
-    polymorphic_url(poll, poll_mailer_utm_hash(args))
+    polymorphic_url(poll, poll_mailer_utm_hash.merge(args))
   end
 
-  def unsubscribe_url(poll, recipient, action_name)
-    poll_unsubscribe_url poll, poll_mailer_utm_hash(action_name).merge(unsubscribe_token: recipient.unsubscribe_token)
+  def unsubscribe_url(poll, recipient)
+    poll_unsubscribe_url poll, poll_mailer_utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
   end
 
-  def poll_mailer_utm_hash(args = {}, action_name)
+  def poll_mailer_utm_hash
     {
       utm_medium: 'email',
       utm_campaign: 'poll_mailer',
       utm_source: action_name
-    }.merge(args)
+    }
   end
 end
