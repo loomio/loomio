@@ -8,11 +8,11 @@ module.exports = (test, browser) ->
     test.refresh()
 
   loadPath: (path, opts = {}) ->
-    test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
+    test.url "#{base_url}/dev/#{path}"
     test.waitForElementPresent('.app-is-booted', 10000)
 
   loadPathNoApp: (path, opts = {}) ->
-    test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
+    test.url "#{base_url}/dev/#{path}"
 
   loadLastEmail: ->
     test.url "#{base_url}/dev/last_email"
