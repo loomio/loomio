@@ -126,3 +126,11 @@ mk:
     'no': 'Не'
   auth_form:
     name_placeholder: Твоето име
+  group_survey:
+    categories:
+      business: Бизнис
+      other: Друго
+    uses:
+      other: Друго
+    referrers:
+      other: Друго

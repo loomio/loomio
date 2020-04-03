@@ -157,6 +157,7 @@ uk:
     total: Разом
     action:
       print: Друкувати
+      preview: Попередній перегляд
       pin: Закріпити
       unpin: Відкріпити
       search: 'Пошук'
@@ -206,6 +207,9 @@ uk:
     formatting_help:
       label: 'Форматувати'
       title: 'Дізнайтесь як використовувати Markdown для форматування текту'
+  merge_accounts:
+    modal:
+      submit: Підтвердити
   emoji_picker:
     search: Пошук
     common: Часто використовується
@@ -315,10 +319,6 @@ uk:
   close_explanation_modal:
     aria_label: Закрити тему
     close_thread: Закрити тему
-    body_header: |
-        <p>Закрийте старі або нерелевантні теми, щоб прибрати їх з перегляду та вказати, що обговорення закрито.</p>
-    body_footer: |
-        <p>Будь-хто може продовжувати додавати коментарі або починати опитування в закритій темі, але вона не з'явиться у списку тем групи та на інформаційній панелі.</p>
     image_alt: Закрити всі теми
   mute_explanation_modal:
     aria_label: Вимкнути сповіщення для теми
@@ -510,7 +510,6 @@ uk:
       updated: 'Оновленні теми'
       forked: 'Гілку теми створено'
     new_discussion_title: 'Створити нову тему'
-    fork_discussion_title: 'Створити гілку теми'
     edit_discussion_title: 'Редагувати тему'
     group_label: 'Група'
     group_placeholder: 'Вибрати групу'
@@ -607,7 +606,6 @@ uk:
     invite_guests: Запросити гостей
     translate_thread: Перекласти контекст
     edit_poll: Редагувати опитування
-    move_items: Перемістити
     announce_poll: Запросити людей до голосування
     announce_poll_active: (Ще нікого не було запрошено)
     translate_poll: Перекласти опитування
@@ -638,23 +636,19 @@ uk:
     reopen_thread: Повторно відкрити тему
     delete_thread: Видалити тему
     notification_history: Історія сповіщень
-    move_comments: Перемістити коментар
   formatting:
     bold: Жирний
     italicize: Курсив
     strikethrough: Закреслений
     underline: Підкреслений
-    link: Посилання
+    link: Додайте посилання
     code_block: Блок коду
     attach: Додати файл
-    heading1: Великий заголовок
-    heading2: Середній заголовок
-    heading3: Малий заголовок
     bullet_list: Список
     number_list: Нумерований список
     check_list: Чеклист
     quote: Цитата
-    embed: Вбудований елемент
+    embed: Додати відео
     divider: Дільник
     add_table: Додати таблицю
     remove_table: Видалити таблицю
@@ -758,14 +752,9 @@ uk:
       label: 'Додатково'
       edit_group: 'Редагувати налаштування групи'
       open_group_wizard: 'Майстер налаштування групи'
-      become_coordinator: Стати координатором
       export_data: Експортувати дані групи
-      export_data_as_json: Експортувати дані групи у JSON
-      export_data_as_csv: Експортувати дані групи у CSV
-      export_data_as_html: Експортувати дані групи у HTML
       manage_members: 'Керувати учасниками'
       add_subgroup: 'Додати підгрупу'
-      manage_subscription: 'Керувати підпискою групи'
       email_settings: 'Налаштування електронної пошти'
       leave_group: 'Залишити групу'
       deactivate_group: 'Відключити групу'
@@ -961,7 +950,6 @@ uk:
     copy_link: 'Копіювати'
     email_addresses: 'Адреса електроної пошти'
     email_addresses_placeholder: 'наприклад helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Будь-хто, хто має посилання, може приєднатися до групи, як ніби вони були запрошені. Не діліться цим посиланням з людьми, яких ви не хочете бачити у своїй групі.'
     shareable_link_reset: 'Скинути посилання для запрошення. Попереднє посилання більше не працюватиме.'
     email_explanation: 'Або введіть адреси електронної пошти нижче, щоб надіслати запрошення поштою.'
     add_custom_message: 'Зробіть ваше запрошення особистим,'
@@ -1080,7 +1068,6 @@ uk:
     deactivate_account: 'Відключити обліковий запис'
     help_translate: "Допоможіть нам перекласти Loomio"
   text_editor:
-    select_text_to_link: Додайте текст для посилання
     insert_link: Додайте посилання
     insert_embedded_url: Додати відео
   change_picture_form:
@@ -2076,3 +2063,11 @@ uk:
         <p>Це швидша та краща Loomio!</p>
         <p>Ми сподіваємось, що вона сподобається вам, та за потреби, ви можете перейти на попередню версію у бічній панелі.</p>
         <p><a href="{{link}}" target="_blank">Дізнайтесь, що нового.</a></p>
+  group_survey:
+    categories:
+      business: Бізнес
+      other: Інше
+    uses:
+      other: Інше
+    referrers:
+      other: Інше

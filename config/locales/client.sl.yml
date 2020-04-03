@@ -430,3 +430,11 @@ sl:
   install_slack:
     progress:
       invite: Povabi
+  group_survey:
+    categories:
+      business: Podjetništvo
+      other: Drugo
+    uses:
+      other: Drugo
+    referrers:
+      other: Drugo

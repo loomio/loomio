@@ -306,7 +306,6 @@ da:
     group_form:
       members_count: '{{count}} mennesker vil blive notificeret'
   action_dock:
-    move_items: Flyt
     edit_stance: Rediger stillingtagen
     edited: Redigeret
     delete_thread: Slet debat
@@ -371,7 +370,6 @@ da:
       edit_group: 'Rediger gruppe indstillinger'
       manage_members: 'Administrer medlemmer'
       add_subgroup: 'Opret undergruppe'
-      manage_subscription: 'Administrer gruppe abonnement'
       email_settings: 'E-mail-indstillinger'
       leave_group: 'Forlad gruppe'
       deactivate_group: 'Deaktiver gruppe'
@@ -1022,3 +1020,11 @@ da:
       invite: Inviter
     invite:
       custom_message: Personlig besked
+  group_survey:
+    categories:
+      business: Virksomhed
+      other: Andre
+    uses:
+      other: Andre
+    referrers:
+      other: Andre

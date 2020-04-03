@@ -191,3 +191,10 @@ te:
   install_slack:
     progress:
       invite: ఆహ్నానించు
+  group_survey:
+    categories:
+      other: ఇతరాలు
+    uses:
+      other: ఇతరాలు
+    referrers:
+      other: ఇతరాలు

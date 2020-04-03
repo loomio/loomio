@@ -235,7 +235,6 @@ ko:
     privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
   action_dock:
     copy_url: 링크 복사
-    move_items: 이동
     edit_stance: 선택 변경
     close_thread: 토론 주제 닫기
     delete_thread: 쓰레드 삭제
@@ -290,12 +289,11 @@ ko:
     options_label: '선택사항'
     options:
       label: '선택사항'
-      edit_group: '그룹 설정 수정'
+      edit_group: '그룹 설정 편집'
       manage_members: '멤버 관리'
       add_subgroup: '소그룹 추가하기'
-      manage_subscription: '그룹 가입 관리'
       email_settings: '이메일 환경설정'
-      leave_group: '그룹 떠나기'
+      leave_group: '그룹 탈퇴'
       deactivate_group: '그룹 비활성화'
     volume:
       loud: 활동이 있을 때마다 이메일 합니다.
@@ -645,3 +643,10 @@ ko:
     'no': '아니요'
   auth_form:
     name_placeholder: 이름
+  group_survey:
+    categories:
+      other: 다른것
+    uses:
+      other: 다른것
+    referrers:
+      other: 다른것

@@ -585,7 +585,7 @@ DEPENDENCIES
   fog-aws
   friendly_id (~> 5.3.0)
   geocoder (= 1.6.2)
-  google-cloud-translate
+  google-cloud-translate (= 1.4.0)
   gravtastic
   griddler!
   griddler-mailin!

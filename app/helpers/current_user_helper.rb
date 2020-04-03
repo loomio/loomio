@@ -14,8 +14,14 @@ module CurrentUserHelper
   private
 
   def associate_user_to_visit
-    if current_user.is_logged_in? and current_visit and current_visit.user_id.nil?
+    return unless current_visit
+
+    if current_user.is_logged_in? and current_visit.user_id.nil?
       current_visit.update(user_id: current_user.id)
+    end
+    
+    if params[:gclid] and current_visit.gclid.nil?
+      current_visit.update(gclid: params[:gclid])
     end
   end
 

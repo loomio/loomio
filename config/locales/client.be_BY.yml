@@ -186,3 +186,11 @@ be_BY:
     'no': 'Не'
   auth_form:
     name_placeholder: Ваша імя
+  group_survey:
+    categories:
+      business: Бізнес
+      other: Іншы
+    uses:
+      other: Іншы
+    referrers:
+      other: Іншы

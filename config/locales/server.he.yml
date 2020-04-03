@@ -288,16 +288,6 @@ he:
     links:
       title: |
           ## קישורים ותמונות
-      body: |
-          חזור בקול רם:
-
-          סוגריים מרובעים עבור שם ואחריהם סוגריים עגולים עבור כתובת האתר. אין רווחים בין הסוגריים.
-
-          [Loomio דף הבית] (https://www.loomio.org/)
-
-          אותו דבר עם התמונות, רק לפני להוסיף סימן קריאה.
-
-          ! [loomio logo] (https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: 'תזכורת: %{member} ממתין שתצטרף %{group_name}'
   poll_mailer:
@@ -388,7 +378,6 @@ he:
       subject:
         poll_created: '%{actor} התחיל סקר: %{title}'
         poll_edited: '%{actor} ערך את הסקר: %{title}'
-        poll_announced: '%{actor} הזמין אותך להצביע על סקר: %{title}'
         poll_closing_soon: 'סקר נסגר בעוד 24 שעות: %{title}'
         poll_closing_soon_author: 'הסקר שלך נסגר בעוד 24 שעות: %{title}'
         poll_expired: "תוצאות הסקר: %{title}"
@@ -404,7 +393,6 @@ he:
       header:
         poll_created: '<strong>%{actor}</strong> התחיל סקר'
         poll_edited: '<strong>%{actor}</strong> ערך את הסקר'
-        poll_announced: '<strong>%{actor}</strong> הזמין אותך להצביע לסקרyou to vote in a poll'
         poll_closing_soon: 'הסקר של <strong>%{actor}</strong> נסגרת בעוד 24 שעות. עכשיו הזמן להצביע, לשנות את דעתך או לעודד אחרים להשתתף.'
         poll_closing_soon_author: 'הסקר שלך נסגר בעוד 24 שעות - עכשיו הזמן להזכיר לאנשים על כך או להאריך את הדדליין אם נדרש.'
         poll_expired: "הסקר של <strong>%{actor}</strong> נסגר: %{title}"
@@ -422,7 +410,6 @@ he:
       subject:
         poll_created: '%{actor} בודק את: %{title}'
         poll_edited: '%{actor} ערך את הבדיקה: %{title}'
-        poll_announced: '%{actor} הזמין אותך להשתתף: %{title}'
         poll_closing_soon: '24 שעות נותרו לבדוק את: %{title}'
         poll_closing_soon_author: 'בדיקתך נסגרת בעוד 24 שעות: %{title}'
         poll_expired: "בדיקה נסגרה: %{title}"
@@ -436,11 +423,9 @@ he:
       header:
         poll_created: '<strong>%{actor}</strong> עורך בדיקה'
         poll_edited: '<strong>%{actor}</strong> ערך את הבדיקה'
-        poll_announced: '<strong>%{actor}</strong> הזמין אותך להשתתףyou to participate'
         poll_closing_soon: 'בדיקתו של <strong>%{actor}</strong> מסתיימת בתוך 24 שעות.'
         poll_closing_soon_author: 'בדיקתך נסגרת בעוד 24 שעות - עכשיו זה זמן טוב להזכיר לאנשים על כך או להאריך את זמן הסגירה אם נדרש.'
         poll_expired: "בדיקתו של <strong>%{actor}</strong> נסגרה: %{title}"
-        poll_expired_author: 'להלן התוצאות של בדיקתך. אם נדרש, <strong> שתף תוצאה</strong> כדי שאנשים ידעו מה השלב הבא. '
         outcome_created: '<strong>%{actor}</strong> שיתף תוצאה.'
         outcome_announced: '<strong>%{actor}</strong> שיתף תוצאה.'
         stance_created: "<strong>%{actor}</strong> השתתף ב: %{title}"
@@ -587,23 +572,6 @@ he:
         נסה להריץ '/loomio' באחד הערוצים הבאים במקום?
         %{integrations}
     stance_not_valid: "מצטערים, לא הצלחנו לייצר מקרה עבור  *%{poll}*. <%{url}|הקלק כאן> כדי להצביע ישירות בסקר."
-    group_identity_created: |
-        שלום, אני Loomio בוט! *%{author}* הוסיף אותי.
-        אני יכול לעזור לצוות שלך לקבל החלטות ביחד.
-
-        הפונקציות שלי כוללות:
-
-        - לייצר נושאים והחלטות ב-Loomio ישירות מ-Slack
-        - הכרזה כאשר שירשורים חדשים והחלטות קורים בLoomio
-        - מתן אפשרות לאנשים להצביע על החלטות מSlack
-        - תקשור תוצאות על החלטות
-
-        כדי לברר פרטים נוספים, הקלד _/loomio help_
-
-        יהיה עליך להיות חלק מקבוצת Loomio *%{group}* כדי להשתתף.
-        אם עדיין לא הצטרפת, <|לחץ כאן> כדי לעשות זאת.
-
-        אם עוד לא הצטרפת, <%{url}|לחץ כאן> כדי לעשות זאת.
     request_authorization_message: "רק צעד אחד נוסף: <%{url}|לחץ כאן> כדי לאשר את חשבון הSlack שלך להשתמש ב-Loomio. (אתה רק צריך לעשות את זה פעם אחת)"
     poll_closed: "*%{title}* נסגר כבר! <%{url}|לחץ כאן> לצפיה בתוצאות."
     go_to_slack: עבור לSlack

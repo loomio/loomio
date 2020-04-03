@@ -157,6 +157,7 @@ tr:
     total: Toplam
     action:
       print: Yazdır
+      preview: Ön izleme
       search: 'Arama'
       filter: 'Filtrele'
       back: 'Geri'
@@ -312,7 +313,6 @@ tr:
     privacy_private: 'Müzakere sadece {{group}} grubunun üyelerine görünür olacaktır.'
     privacy_organisation: 'Müzakere {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
   action_dock:
-    move_items: Taşı
     edit_stance: Konumunu değiştir
     edited: Düzenlendi
     tag_thread: Etiketleri yönet
@@ -370,13 +370,12 @@ tr:
     options_label: 'Seçenekler'
     options:
       label: 'Seçenekler'
-      edit_group: 'Grup Ayarlarını Düzenle'
+      edit_group: 'Grup ayarlarını düzenle'
       manage_members: 'Üyeleri Yönet'
       add_subgroup: 'Alt Grup Ekle'
-      manage_subscription: 'Grup Aboneliğini Yönet'
       email_settings: 'E-posta tercihleri'
-      leave_group: 'Gruptan Ayrıl'
-      deactivate_group: 'Grubu Devre Dışı Bırak'
+      leave_group: 'Gruptan ayrıl'
+      deactivate_group: 'Grubu devre dışı bırak'
     volume:
       loud: Herhangi bir etkinlik olduğunda e-posta gönder.
       loud_aria_description: Bu grup için bildirim ses düzeyiniz Yüksek Ses'e ayarlandı. Her ne zaman bir faaliyet olursa size e-posta gönderilecektir.
@@ -746,3 +745,11 @@ tr:
   auth_form:
     name_placeholder: Adın
     name: İsim
+  group_survey:
+    categories:
+      business: İş hayatı
+      other: Diğer
+    uses:
+      other: Diğer
+    referrers:
+      other: Diğer

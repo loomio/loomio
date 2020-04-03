@@ -3,6 +3,8 @@ import GroupService from '@/shared/services/group_service'
 import Records        from '@/shared/services/records'
 import Session from '@/shared/services/session'
 import EventBus from '@/shared/services/event_bus'
+import AppConfig      from '@/shared/services/app_config'
+
 export default
   data: ->
     group: Records.groups.fuzzyFind(@$route.params.key)
@@ -20,10 +22,13 @@ export default
       query: =>
         @actions = GroupService.actions(@group, @)
         @membership = @group.membershipFor(Session.user())
+  computed:
+    showSubcriptionCard: -> AppConfig.features.app.subscriptions
+
 </script>
 <template lang="pug">
 div
-  group-subscription-card(:group="group")
+  group-subscription-card(v-if="showSubcriptionCard" :group="group")
   v-card.mt-2(outlined)
     v-list.settings-panel
       v-list-item(v-for="(action, name) in actions" :key="name" @click="action.perform()" v-if='action.canPerform()' :class="'group-page-actions__' + name")

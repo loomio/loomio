@@ -127,6 +127,9 @@ pl:
     formatting_help:
       label: 'Formatowanie'
       title: 'Naucz się używać Markdown, by sformatować swój tekst'
+  merge_accounts:
+    modal:
+      submit: Weryfikuj
   emoji_picker:
     search: Szukaj
   ordinal:
@@ -200,10 +203,6 @@ pl:
   close_explanation_modal:
     aria_label: Zamknij wątek
     close_thread: Zamknij wątek
-    body_header: |
-        Zamknij stare i niepotrzebne wątki, by usunąć je z widoku i zaznaczyć, że dyskusja jest już zakończona.
-    body_footer: |
-        Każdy/a może w dalszym ciągu komentować i tworzyć ankiety w zamkniętym wątku, lecz nie pojawią się one w głównym panelu grupy.
   mute_explanation_modal:
     aria_label: Wycisz wątek
     mute_thread: Wycisz wątek

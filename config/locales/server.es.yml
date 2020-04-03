@@ -1,6 +1,10 @@
 es:
   explore:
     header: Explorar grupos públicos
+  saml_providers:
+    invitation_created:
+      success: "Victoria! por favor verifique su %{email} bandeja de entrada para un enlace para unirte a %{group_name}."
+      error: "Su proveedor SAML no pudo autentificar %{email} para %{group_name}."
   activerecord:
     errors:
       messages:
@@ -14,15 +18,23 @@ es:
       email: No es una dirección de email válida
       spoofed_media_type: El contenido de ese archivo no se asemeja al nombre del mismo
   group:
+    error:
+      handle_must_begin_with_parent_handle: "Debe comenzar con %{parent_handle}-"
     stats:
+      group_stats: Estadísticas de grupo
+      org_stats: Estadísticas de la organización (incluyendo subgrupos)
+      visits: Visitas
       members: Integrantes
       subgroups: Subgrupos
       threads: Hilos
       votes: Votos
       comments: Comentarios
+      general: General
       polls: Sondeos
       poll_types:
         proposal: Propuesta
+        count: Cuenta
+        choose: Elegir
         rank: Rango
         time: Coordinar horario
   user:
@@ -97,6 +109,26 @@ es:
           Hola %{name},
           Tus dos cuentas de Loomio han sido integradas en una sola.
           Para acceder a Loomio desde ahora por favor usa <strong>%{email}</strong> cuando ingreses.
+    merge_verification:
+      subject: "Verifica tu %{site_name} correo electrónico para unirse"
+      body_html: |
+          <p>Hola%{name},</p>
+          <p>Se ha solicitado fusionar tu cuenta de usuario bajo una dirección<strong>%{source_email}</strong>con una cuenta que pertenece a esa dirección,<strong>%{target_email}</strong>.</p>
+          <p>Cuando este proceso se haya finalizado ya no podrás acceder con<strong>%{source_email}</strong>, y sólo podrás con <strong>%{target_email}</strong>.</p>
+          <p>Por favor confirma que esto es lo que quieres hacer.</p>
+      verify: Verifica el email y procede
+      confirm_page:
+        confirm: Confirma fusión
+        body_html: |
+            <p>Por favor confirma que te gustaría fusionar la cuenta bajo<strong>%{source_email}</strong>con la cuenta bajo <strong>%{target_email}</strong>.</p>
+            <p>Tu cuenta bajo <strong>%{source_email}</strong> se borrará y después de esto sólo podrás acceder por medio de <strong>%{target_email}</strong>.</p>
+            <p>Este cambio será irreversible</p>
+        merge: Fusionar cuentas
+      complete_page:
+        title: Fusión satisfactoria!
+        body_html: |
+            <p>La fusión de su cuenta de usuario fue satisfactoria. En breves recibirás un email de confirmación a<strong>%{target_email}</strong>.</p>
+            <p>Por favor <a href="/contact" target="_blank">contacta con nosotros</a>si tienes más preguntas.</p>
   email:
     common:
       or_enter_code: O, ingresa el código debajo
@@ -235,6 +267,23 @@ es:
         ¿Cuál es tu rol o porque te unes al grupo? ¿Qué es lo que la gente debería saber sobre ti para entender de donde vienes?
   how_it_works_thread:
     title: Cómo usar Loomio
+    description: |
+        Bienvenido a Loomio, un lugar online para toma de decisiones.
+
+        Este es un ejemplo de **hilo** de discusión. Puedes añadir comentarios debajo. Un hilo es una conversación de un tema dado. Este hilo trata de como trabaja Loomio, así que pon preguntas sobre el tema aquí.
+
+        En estos momentos estás leyendo **contexto**, un espacio para la información de trasfondo. Puedes actualizarlo según la conversación vaya progresando.
+
+        Para empezar con Loomio:
+        1. Carga una [foto de perfil](/perfil)
+        2. Publica en hilos que ya existan o empieza uno nuevo
+
+        Trucos para publicar en Loomio:
+        *Para notificar a una persona específica, escribe  @  seguido de su nombre.
+        *Clica el icono del clip para añadir adjuntos.
+
+
+        Si tienes preguntas, revisa el [Manual de ayuda de Loomio] (http://help.loomio.org).
   first_proposal:
     name: Propuesta de demostración
     description: |
@@ -295,15 +344,13 @@ es:
       title: |
           ## Enlaces e imágenes
       body: |
-          Repite en voz alta:
+          Corchetes con título, paréntesis con la URL. Sin espacios entre los los paréntesis o corchetes.
 
-          Corchetes para los nombres luego paréntesis para las URL. Sin espacio entre ellos.
+          [Página de inicio de Loomio](https://www.loomio.org/)
 
-          [Loomio Homepage](https://www.loomio.org/)
+          Las imágenes son las mismas, pero prefijadas con un signo de exclamación. El título se usa como texto alternativo.
 
-          Las imágenes son iguales, pero precedidas por un signo de exclamación.
-
-          ![loomio logo](https://i.imgur.com/Fvtworb.png)
+          ![El logo de loomio](https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: 'RECORDATORIO: %{member} está esperando que te unas %{group_name}'
   poll_mailer:
@@ -327,6 +374,7 @@ es:
       verify_stance_for_unverified_user: "Gracias por votar en %{title}. Por favor verifica tu dirección de email para que podamos enviarte los resultados cuando estén listos. "
       verify_stance_for_verified_user: "Parece que has votado en %{title}. Si fuiste tu, por favor haz clic en el siguiente enlace para confirmar tu voto. "
       you_have_until: 'Tienes hasta %{when} para participar '
+      people_have_voted: "%{num}la gente ha votado (%{pct}%)"
     proposal:
       subject:
         poll_created: '*%{actor} comenzó una propuesta: %{title}'
@@ -394,7 +442,7 @@ es:
       subject:
         poll_created: '*%{actor} comenzó una encuesta: %{title}'
         poll_edited: '%{actor} editó la encuesta: %{title}'
-        poll_announced: '%{actor} te invitó a votar en una encuesta: %{title}'
+        poll_announced: '%{actor}te invitó para votar en un sondeo de puntuación: %{title}'
         poll_closing_soon: 'Encuesta cerrando en 24hr: %{title}'
         poll_closing_soon_author: 'Tu encuesta cierra en 24hr: %{title}'
         poll_expired: "Resultado de la encuesta: %{title}"
@@ -410,7 +458,7 @@ es:
       header:
         poll_created: '<strong>%{actor}</strong> inicio una encuesta'
         poll_edited: '<strong>%{actor}</strong> edito la encuesta'
-        poll_announced: '<strong>%{actor}</strong> te invitó a votar en una encuesta'
+        poll_announced: '<strong>%{actor}</strong>te invitó para votar en un sondeo de puntuación'
         poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24 horas. Ahora es un buen momento para votar, cambiar su voto o motivar a otros a participar. '
         poll_closing_soon_author: 'Tu encuesta cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
         poll_expired: "La propuesta de<strong>%{actor}</strong> ha cerrado: %{title}"
@@ -428,7 +476,7 @@ es:
       subject:
         poll_created: '%{actor} está mirando: %{title}'
         poll_edited: '%{actor} editó la comprobación: %{title}'
-        poll_announced: '%{actor} te invitó a participar en: %{title}'
+        poll_announced: '%{actor}te invitó a participar en un escrutinio: %{title}'
         poll_closing_soon: 'Quedan 24 horas para participar en: %{title}'
         poll_closing_soon_author: 'Su comprobación %{title} cierra en 24 horas'
         poll_expired: "Comprobación %{title} cerrada"
@@ -442,11 +490,11 @@ es:
       header:
         poll_created: '<strong>%{actor}</strong> esta mirando'
         poll_edited: '<strong>%{actor}</strong> editó la comprobación'
-        poll_announced: '<strong>%{actor}</strong> te invitó a participar '
+        poll_announced: '<strong>%{actor}</strong>te invitó a participar en un escrutinio.'
         poll_closing_soon: 'La comprobació de <strong>%{actor}</strong> cierra en 24 horas.'
         poll_closing_soon_author: 'Su comprobación cierra en 24 horas. Ahora es un buen momento para motivar a otros a participar o alargar la fecha de cierre.'
         poll_expired: "La comprobación %{title} de<strong>%{actor}</strong> ha cerrado"
-        poll_expired_author: 'Este es el resultado de tu comprobación. De ser necesario <strong> comparte el resultado</strong> para que la gente sepa lo que sucederá a continuación.'
+        poll_expired_author: 'Tu chequeo se ha cerrado. Si es necesario, <strong>comparte un resultado</strong> para hacer saber a la gente lo que pasará luego.'
         outcome_created: '<strong>%{actor}</strong> publicó el resultado.'
         outcome_announced: '<strong>%{actor}</strong> publicó el resultado.'
         stance_created: "<strong>%{actor}</strong> participó en: %{title}"
@@ -596,20 +644,10 @@ es:
         %{integrations}
     stance_not_valid: "Perdón pero no pudimos crear el voto en *%{poll}*. <%{url} |Haz clic aquí> para votar directamente. "
     group_identity_created: |
-        Hola, soy Loomio Bot. *%{author}* me ha añadido.
-        Puedo ayudar a tu equipo a tomar decisiones juntos.
+        Hola, soy un Robot de Loomio! *%{author}* añádeme
+        Te diré cuando haya nuevos hilos o sondeos dentro de *%{group}*
 
-        Mis funcionalidades incluyen:
-
-        - iniciar hilos y decisiones en Loomio directamente desde Slack
-        - anunciar cuando hay nuevos hilos y decisiones en Loomio
-        - permitirle a las personas votar en decisiones desde Slack
-        - comunicar el resultado de las decisiones
-
-        Para saber más escribe _/loomio help_
-
-        Para participar, deberás ser parte del grupo *%{group}* en Loomio.
-        Si aún no eres parte, <%{url}|Haz clic aquí> para unirte.
+        Si todavía no te has unido *%{group}*,<%{url}|Clica aquí> para hacerlo.
     request_authorization_message: "Solo un paso más: <%{url}haz clic aquí> para autorizar que tu cuenta de Slack use Loomio. (solo deberás hacerlo una vez)"
     poll_closed: "*%{title}* ha cerrado! <%{url} haz clic aquí>  para ver el resultado"
     go_to_slack: Ir a Slack

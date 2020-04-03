@@ -141,3 +141,11 @@ gl:
     'no': 'Non'
   auth_form:
     name_placeholder: O teu nome
+  group_survey:
+    categories:
+      business: Negocio
+      other: Outro
+    uses:
+      other: Outro
+    referrers:
+      other: Outro

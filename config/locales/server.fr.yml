@@ -312,16 +312,6 @@ fr:
     links:
       title: |
           ## Liens et Images
-      body: |
-          Répétez à voix haute :
-
-          Entre crochets pour le nom et l'URL entre parenthèses. Il n'y a pas d'espace entre les parenthèses.
-
-          [La page d'accueil Loomio](https://www.loomio.org/)
-
-          C'est la même chose pour les images, mais précédé d'un point d'exclamation.
-
-          ![logo loomio](https://i.imgur.com/Fvtworb.png)
   group_mailer:
     resend: 'RAPPEL : %{member} attend que vous rejoignez %{group_name}'
   poll_mailer:
@@ -412,7 +402,6 @@ fr:
       subject:
         poll_created: '%{actor} a démarré un sondage: %{title}'
         poll_edited: '%{actor} a modifié un sondage : %{title}'
-        poll_announced: '%{actor} vous a invité·e à voter sur un sondage : %{title}'
         poll_closing_soon: 'Le sondage se termine dans 24 heures: %{title}'
         poll_closing_soon_author: 'Votre sondage se termine dans 24 heures : %{title}'
         poll_expired: "Résultats du sondage : %{title}"
@@ -428,7 +417,6 @@ fr:
       header:
         poll_created: ' <strong>%{actor}</strong> a démarré un sondage'
         poll_edited: '<strong>%{actor}</strong> a modifié un sondage'
-        poll_announced: '<strong>%{actor}</strong> vous a invité·e à voter dans un sondage'
         poll_closing_soon: 'Le sondage de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre sondage se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "Le sondage de <strong>%{actor}</strong> est clôturé: %{title}"
@@ -446,7 +434,6 @@ fr:
       subject:
         poll_created: '%{actor} participe à une vérification : %{title}'
         poll_edited: '%{actor} a modifié la vérification : %{title}'
-        poll_announced: '%{actor} vous a invité·e à participer : %{title}'
         poll_closing_soon: 'Plus que 24 heures pour participer à la vérification : %{title}'
         poll_closing_soon_author: 'Votre vérification se termine dans 24 heures : %{title}'
         poll_expired: "Vérification terminée : %{title}"
@@ -460,11 +447,9 @@ fr:
       header:
         poll_created: '<strong>%{actor}</strong> participe à la vérification'
         poll_edited: '<strong>%{actor}</strong> a modifié la vérification'
-        poll_announced: '<strong>%{actor}</strong> vous a invité·e à participer'
         poll_closing_soon: 'La vérification de <strong>%{actor}</strong> se termine dans 24 heures.'
         poll_closing_soon_author: 'Votre vérification se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "La vérification de <strong>%{actor}</strong> est terminé : %{title}"
-        poll_expired_author: 'Voici le résultat de votre vérification. Si nécessaire, <strong>partagez le résultat</strong> pour que tout le monde sache ce qui va suivre.'
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat.'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat.'
         stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
@@ -613,22 +598,6 @@ fr:
         Essayez plutôt de taper '/loomio' dans l'une des chaînes suivantes:
         %{integrations}
     stance_not_valid: "Désolé, nous n'avons pas compris votre position pour *%{poll}*. <%{url}|Cliquez ici> pour participer à la décision directement."
-    group_identity_created: |
-        Salut, Je suis le Robot Loomio! *%{author}* m'a ajouté.
-        Je peux aider votre équipe à prendre des décisions ensemble.
-
-        Je peux:
-
-        - vous notifier lorsqu'une décision doit être prise
-        - vous permettre de voter directement depuis Slack
-        - montrer les points d'accord et de désaccord
-        - diffuser le résultat de vos prises de décisions
-        - garder la trace de vos décisions dans votre groupe Loomio.
-
-        Pour en savoir plus, tapez _/loomio help_
-
-        Vous devrez faire partie du groupe Loomio *%{group}* pour participer.
-        Si vous ne l'avez pas encore rejoint, <%{url}|cliquez ici> pour le faire.
     request_authorization_message: "Une dernière étape : <%{url}|cliquez ici> pour autoriser votre compte Slack à utiliser Loomio. (vous n'aurez à donner cette autorisation qu'une seule fois)"
     poll_closed: "*%{title}* est déjà terminé! <%{url}|cliquez ici> pour voir les résultats."
     go_to_slack: Allez sur Slack

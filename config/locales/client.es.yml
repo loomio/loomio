@@ -148,6 +148,7 @@ es:
     total: Total
     action:
       print: 'Imprimir '
+      preview: Vista anticipada
       pin: Fijar
       unpin: Liberar
       search: 'Buscar'
@@ -197,6 +198,10 @@ es:
     formatting_help:
       label: 'Formato '
       title: 'Aprenda a usar Markdown para dar formato a su texto'
+  merge_accounts:
+    modal:
+      title: Fusionar cuentas
+      submit: Verificar
   emoji_picker:
     search: Buscar
     common: Usado con frecuencia
@@ -285,10 +290,6 @@ es:
   close_explanation_modal:
     aria_label: Cerrar hilo
     close_thread: 'Cerrar hilo '
-    body_header: |
-        <p>Cierra hilos irrelevantes o viejos para removerlos de la vista e indicar que la discusión ha finalizado</p>
-    body_footer: |
-        <p>Cualquier persona podrá aún comentar o iniciar una propuesta en un hilo cerrado, pero el mismo no aparecerá en el listado de hilos del grupo o el escritorio</p>
     image_alt: Todos los hilos cerrados
   mute_explanation_modal:
     aria_label: 'Silenciar hilo '
@@ -460,7 +461,6 @@ es:
       updated: 'Hilo actualizado'
       forked: 'Bifurcación del hilo creado'
     new_discussion_title: 'Inicia un nuevo hilo'
-    fork_discussion_title: 'Bifurcar un hilo'
     edit_discussion_title: 'Editar hilo'
     group_label: 'Grupo'
     group_placeholder: 'Seleccionar un grupo'
@@ -534,7 +534,6 @@ es:
     invite_guests: Gente invitada
     translate_thread: Traducir contexto
     edit_poll: Editar encuesta
-    move_items: Mover
     announce_poll: 'Invitar a personas a votar '
     announce_poll_active: '(Nadie ha sido invitado aún) '
     translate_poll: Traducir encuesta
@@ -560,6 +559,7 @@ es:
     close_thread: 'Cerrar hilo '
     delete_thread: 'Eliminar hilo '
   formatting:
+    link: Inserte un enlace
     attach: 'Adjuntar archivos '
   cover_photo_form:
     aria_label: 'Formulario para cargar la foto de portada '
@@ -615,6 +615,7 @@ es:
       pinned: "Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos del grupo para todos los integrantes."
       closed: "Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo"
   group_page:
+    stats: Estadísticas de grupo
     threads: Hilos
     polls: Sondeos
     members: Integrantes
@@ -652,16 +653,12 @@ es:
     options:
       label: 'Opciones'
       edit_group: 'Editar la configuración del grupo'
-      export_data: Exportar los datos del grupo
-      export_data_as_json: Exportar los datos del grupo en formato JSON
-      export_data_as_csv: Exportar los datos del grupo en formato CSV
-      export_data_as_html: Exportar los datos del grupo en formato HTML
+      export_data: Exportar la data grupal
       manage_members: 'Administrar integrantes '
       add_subgroup: 'Agregar un Subgrupo'
-      manage_subscription: 'Administrar las Suscripciones del grupo '
       email_settings: 'Preferencias de correo electrónico '
-      leave_group: 'Dejar el grupo'
-      deactivate_group: 'Desactivar el grupo'
+      leave_group: 'Abandonar el grupo '
+      deactivate_group: 'Desactivar el grupo '
     volume:
       loud: Enviar correo electrónico siempre que haya actividad.
       loud_aria_description: El volumen de notificaciones para este grupo está establecido como Alto. Se te enviará un correo electrónico siempre que haya actividad.
@@ -837,9 +834,6 @@ es:
     copy_link: 'Copiar'
     email_addresses: 'Correo electrónico'
     email_addresses_placeholder: 'ej. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Cualquiera con un enlace compartible puede unirse al grupo si se les invita.
-
-      No lo compartas con personas que no quieras en el grupo.'
     shareable_link_reset: 'Reiniciar el enlace compartible. El enlace previo no funcionará.'
     email_explanation: 'Como alternativa, puede añadir las direcciones de correo electrónico y enviar invitaciones por correo electrónico.'
     add_custom_message: 'Personalice la invitación, '
@@ -928,6 +922,7 @@ es:
       picture_changed: 'Imagen de perfil actualizada'
       password_changed: 'Contraseña actualizada'
       deactivated: 'Cuanta desactivada'
+    merge_accounts: Fusionar cuentas
     change_picture_link: 'Cambiar imagen'
     change_password_link: 'Restablece contraseña'
     delete_account: 'Eliminar cuenta permanentemente '
@@ -948,7 +943,6 @@ es:
     update_profile: 'Actualizar perfil'
     help_translate: "Ayúdanos a traducir Loomio"
   text_editor:
-    select_text_to_link: Selecciona algún texto para el enlace
     insert_link: Inserte un enlace
   change_picture_form:
     helptext: 'Puede cargar su propia foto de perfil, o puede usarla la de <href="https://en.gravatar.com/support/whatisgravatar/"> Gravatar </a>, si tiene cuenta.'
@@ -1787,3 +1781,47 @@ es:
     privacy_policy: Política de privacidad
     terms_of_service: Términos de servicio
     front_page: Portada
+  group_survey:
+    success: Gracias!
+    categories:
+      business: Negocios
+      cooperative: Cooperativa
+      consultant: Servicios o agencia de asesoría
+      government: Gobierno/Gobierno local
+      nonprofit: Sin ánimo de lucro
+      union: Unión
+      party: Partido político
+      activist: Organización activista
+      community: Comunitario o colectivo
+      education: Educación o investigación
+      faith: Fé o grupo espiritual
+      volunteer: Organización de voluntariado
+      other: Otro
+    sizes:
+      ten: "< 10"
+      twenty: "11 - 20"
+      fifty: "21 - 50"
+      two_hundred: "51 - 200"
+      five_hundred: "201 - 500"
+      two_thousand: "501 - 2000"
+      else: "> 2000"
+    uses:
+      collaboration: Grupo de trabajo colaborativo
+      engagement: Compromiso del accionista o miembro
+      self_management: Auto-gestión (Lugar de trabajo colaborativo)
+      remote: Trabajo remoto
+      document: Desarrollo del documento colaborativo, ej. un plan estratégico.
+      decision_making: Procesos de toma de decisiones (Asesoramiento, Consentimiento)
+      funding: Decisión de financiamiento o subvención
+      project: Equipo de proyecto
+      forum: Foro
+      other: Otro
+    referrers:
+      google: Búsqueda Google
+      invitation: Invitado a un grupo de Loomio
+      referral: Referencias
+      social: Medios sociales (Facebook, Twitter, Linkedln)
+      other: Otro
+    category_question: "Selecciona que categoría describe mejor a tu grupo"
+    anything_else: "¿Hay algo más que te gustaría decirnos?"
+    size_question: "¿Cuánta gente hay en su grupo?"

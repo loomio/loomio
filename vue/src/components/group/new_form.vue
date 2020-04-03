@@ -53,7 +53,7 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           @close()
           @$router.push("/g/#{groupKey}")
-          if group.isParent() && AppConfig.features.app.require_group_survey
+          if group.isParent() && AppConfig.features.app.group_survey
             openModal
               component: 'GroupSurvey'
               props:

@@ -220,3 +220,10 @@ mi:
   install_slack:
     progress:
       invite: Pōwhiri
+  group_survey:
+    categories:
+      other: Ētahi atu
+    uses:
+      other: Ētahi atu
+    referrers:
+      other: Ētahi atu
