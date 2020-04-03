@@ -37,7 +37,8 @@ export default
 
   computed:
     optionGroups: ->
-      if @stance.poll().pollOptionNames.length == 4
+      options = @pollOptions()
+      if options.length == 4
         [[options[0], options[1]], [options[2], options[3]]]
       else
         [options]
