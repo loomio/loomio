@@ -57,7 +57,7 @@ gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'hiredis'
 gem 'ruby-saml'
-gem 'google-cloud-translate'
+gem 'google-cloud-translate', '1.4.0'
 gem 'discourse-diff'
 gem 'puma'
 gem 'reverse_markdown'
