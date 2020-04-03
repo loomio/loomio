@@ -10,5 +10,5 @@
   - else
     %p= t(:"poll_mailer.common.time_zone", zone: formatted_time_zone(recipient, poll)) if poll.poll_type == 'meeting'
     %table{class: "poll-mailer-#{poll.poll_type}__poll-options"}
-      - poll.ordered_poll_options.each do |option|
+      - poll.poll_options.each do |option|
         %tr.poll-mailer__poll-option= render 'poll_mailer/common/poll_option', poll: poll, recipient: recipient, poll_option: option, link: true

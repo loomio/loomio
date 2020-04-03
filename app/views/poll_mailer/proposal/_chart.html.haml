@@ -3,6 +3,6 @@
   %img.poll-mailer-proposal__chart-image{src: google_pie_chart_url(poll)}
   .poll-mailer-proposal__chart-legend
     %table
-      - poll.ordered_poll_options.each_with_index do |option, index|
+      - poll.poll_options.each_with_index do |option, index|
         %tr.poll-mailer-proposal__chart-legend-option
           %td{style: "border-color: #{option.color};"}= "#{t(:"poll_proposal_options.#{option.name}")} - #{poll.stance_counts[index]}"

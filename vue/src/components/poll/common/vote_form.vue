@@ -24,9 +24,6 @@ export default
         EventBus.$emit "closeModal"
       .catch onError(@stance)
 
-    orderedPollOptions: ->
-      _.sortBy @stance.poll().pollOptions(), 'priority'
-
     isSelected: (option) ->
       @selectedOptionId == option.id
 
@@ -40,9 +37,8 @@ export default
 
   computed:
     optionGroups: ->
-      options = @orderedPollOptions()
-      length = options.length
-      if length == 4
+      options = @stance.poll().pollOptions()
+      if options.length == 4
         [[options[0], options[1]], [options[2], options[3]]]
       else
         [options]
