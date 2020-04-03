@@ -208,14 +208,6 @@ class Poll < ApplicationRecord
     end
   end
 
-  def poll_options
-    if self.dates_as_options
-      self.poll_options.order(name: :asc)
-    else
-      self.poll_options.order(priority: :asc)
-    end
-  end
-
   def poll_option_names
     poll_options.order(:priority).pluck(:name)
   end
