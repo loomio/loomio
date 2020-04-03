@@ -215,7 +215,10 @@ class Poll < ApplicationRecord
   def poll_option_names=(names)
     names    = Array(names)
     existing = Array(poll_options.pluck(:name))
-    (names - existing).each_with_index { |name, priority| poll_options.build(name: name, priority: existing.count + priority) }
+    names = names.sort if poll_type == 'meeting'
+    names.each_with_index do |name, priority|
+      poll_options.find_or_initialize_by(name: name).priority = priority
+    end
     @poll_option_removed_names = (existing - names)
   end
 
