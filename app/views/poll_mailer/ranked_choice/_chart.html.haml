@@ -7,7 +7,7 @@
       - (1..poll.poll.minimum_stance_choices).each do |score|
         %th.align-right= t(:"ordinal._#{score}")
       %th.align-right= t(:"common.total")
-    - poll.ordered_poll_options.sort_by(&:total_score).reverse.each do |poll_option|
+    - poll.poll_options.sort_by(&:total_score).reverse.each do |poll_option|
       %tr
         %td= render "poll_mailer/common/chip", color: poll_option.color
         %td= poll_option.display_name

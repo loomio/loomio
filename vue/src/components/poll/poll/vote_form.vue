@@ -31,9 +31,6 @@ export default
         EventBus.$emit('closeModal')
       .catch onError(@stance)
 
-    orderedPollOptions: ->
-      sortBy @pollOptions, 'name'
-
     select: (option) ->
       if @isSelected(option)
         @selectedOptionIds = without(@selectedOptionIds, option.id)
@@ -54,7 +51,7 @@ export default
   submit-overlay(:value="stance.processing")
   poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
   v-list(column)
-    v-list-item.poll-common-vote-form__button(align-center @click='select(option)' v-for='option in orderedPollOptions()' :key='option.id')
+    v-list-item.poll-common-vote-form__button(align-center @click='select(option)' v-for='option in pollOptions' :key='option.id')
       v-list-item-title
         v-chip.mr-2(:color="option.color") {{ option.name }}
         v-icon(v-if="isSelected(option)" color="accent") mdi-check
