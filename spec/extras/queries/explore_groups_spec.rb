@@ -38,18 +38,8 @@ describe Queries::ExploreGroups do
     it 'only shows parent groups' do
       subgroup = FactoryBot.create(:formal_group, parent: group)
       subgroup.update_attribute(:is_visible_to_public, true)
-      subgroup.update_attribute(:memberships_count, 5)
-      subgroup.update_attribute(:discussions_count, 3)
-      subgroup.subscription = Subscription.create(plan: 'trial', state: 'active')
-      subgroup.save
       expect(Queries::ExploreGroups.new).to_not include subgroup
     end
-
-    it 'does not show groups that fail to meet the criteria for members or discussions count' do
-      expect(Queries::ExploreGroups.new).to include group
-      expect(Queries::ExploreGroups.new).to_not include second_group
-    end
-
   end
 
   describe '#search_for' do
