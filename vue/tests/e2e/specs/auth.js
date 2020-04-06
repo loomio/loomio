@@ -179,7 +179,7 @@ module.exports = {
     page.expectText('.group-page__name', 'Secret Dirty Dancing Shoes')
   },
 
-  'can_invite_existing_user': (test) => {
+  'invite_existing_user': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_invitation_to_user_with_password')
@@ -190,11 +190,11 @@ module.exports = {
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
-    // page.expectText('.group-page__name', 'Dirty Dancing Shoes')
-    // page.expectNoElement('.join-group-button')
+    page.expectText('.group-page__name', 'Dirty Dancing Shoes')
+    page.expectNoElement('.join-group-button')
   },
 
-  'can_invite_new_user': (test) => {
+  'invite_new_user': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_invitation_to_visitor')
@@ -204,7 +204,7 @@ module.exports = {
     page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input')
     page.click('.auth-signup-form__submit')
     page.expectFlash('Signed in successfully')
-    // page.expectText('.group-page__name', 'Dirty Dancing Shoes')
+    page.expectText('.group-page__name', 'Dirty Dancing Shoes')
   },
 
   // // commented out because selenium clearValue is broken on Chrome.
