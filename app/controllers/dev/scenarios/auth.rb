@@ -1,16 +1,21 @@
 module Dev::Scenarios::Auth
-  def setup_invitation_to_visitor
-    membership = FactoryBot.create(:membership,
-      user: FactoryBot.create(:user, name: nil, email_verified: false),
-      group: create_group
-    )
-    redirect_to membership_url(membership)
+  def setup_invitation_email_to_visitor
+    group = create_group
+    params = {emails: ['newuser@example.com']}
+
+    GroupService.announce(group:group, params: params, actor: group.creator)
+
+    last_email
   end
 
-  def setup_invitation_to_user_with_password
-    membership = create_group.membership_for(jennifer)
-    membership.update(accepted_at: nil)
-    redirect_to membership_url(membership)
+  def setup_invitation_email_to_user_with_password
+    group = create_group
+    user = saved fake_user
+    params = {user_ids: [user.id]}
+
+    GroupService.announce(group:group, params: params, actor: group.creator)
+
+    last_email
   end
 
   def setup_deactivated_user

@@ -182,7 +182,9 @@ module.exports = {
   'invite_existing_user': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_invitation_to_user_with_password')
+    page.loadPath('setup_invitation_email_to_user_with_password')
+    page.expectText('.invite-people-mailer__body', 'Accept invitation')
+    page.click('.base-mailer__button--primary', 2000)
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signin-form', 'Welcome back, Jennifer!')
     page.click('.auth-signin-form__submit')
@@ -197,7 +199,9 @@ module.exports = {
   'invite_new_user': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_invitation_to_visitor')
+    page.loadPathNoApp('setup_invitation_email_to_visitor')
+    page.expectText('.invite-people-mailer__body', 'Accept invitation')
+    page.click('.base-mailer__button--primary', 2000)
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signup-form', 'New to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
