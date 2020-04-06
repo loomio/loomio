@@ -18,7 +18,7 @@ module.exports = {
     page.expectText('.context-panel__breadcrumbs', 'Girdy Dancing Shoes')
   },
 
-  'invitation_created': (test) => {
+  'invite_guest_to_comment_in_discussion': (test) => {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')

@@ -76,8 +76,12 @@ class Queries::VisibleDiscussions < Delegator
   def self.apply_privacy_sql(user: nil, group_ids: [], relation: nil, show_public: false)
     user ||= LoggedOutUser.new
 
+    if user.discussion_reader_token
+      or_discussion_reader_token = "OR dr.token = #{ActiveRecord::Base.connection.quote(user.discussion_reader_token)}"
+    end
+
     relation = relation.where('discussions.group_id IN (:group_ids)', group_ids: group_ids) if group_ids.any?
-    relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = discussions.id AND dr.user_id = #{user.id || 0}")
+    relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = discussions.id AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
             .joins("LEFT OUTER JOIN memberships m ON m.user_id = #{user.id || 0} AND m.group_id = discussions.group_id")
             .where("groups.archived_at IS NULL")
             .where("#{'(discussions.private = false) OR' if show_public}
