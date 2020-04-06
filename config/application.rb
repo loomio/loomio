@@ -123,7 +123,6 @@ module Loomio
 
     config.action_mailer.default_url_options = config.action_controller.default_url_options = {
       host:     ENV['CANONICAL_HOST'],
-      # port:     (!Rails.env.production? && ENV['USE_VUE'] && !ENV['TRAVIS_MODE']) ? 8080 : ENV['CANONICAL_PORT'],
       port:     port,
       protocol: ENV['FORCE_SSL'] ? 'https' : 'http'
     }.compact
