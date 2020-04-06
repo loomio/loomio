@@ -66,7 +66,7 @@
     "@vue/cli-plugin-babel": "^4.2.3",
     "@vue/cli-plugin-e2e-nightwatch": "^3.12.1",
     "@vue/cli-service": "4.2.3",
-    "@vue/cli-plugin-pwa": "^4.2.3",
+    "@vue/cli-plugin-pwa": "^4.3.0",
     "acorn": "^7.1.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "coffee-loader": "^0.9.0",
