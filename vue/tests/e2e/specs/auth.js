@@ -182,7 +182,7 @@ module.exports = {
   'invite_existing_user': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_invitation_email_to_user_with_password')
+    page.loadPathNoApp('setup_invitation_email_to_user_with_password')
     page.expectText('.invite-people-mailer__body', 'Accept invitation')
     page.click('.base-mailer__button--primary', 2000)
     page.click('.auth-email-form__submit')
