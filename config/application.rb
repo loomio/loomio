@@ -117,10 +117,9 @@ module Loomio
       config.action_mailer.delivery_method = :test
     end
 
-    port = nil
+    port = ENV['CANONICAL_PORT']
     port = 3000 if Rails.env.development?
     port = 8080 if ENV['USE_VUE']
-    port = ENV['CANONICAL_PORT'] if Rails.env.production?
 
     config.action_mailer.default_url_options = config.action_controller.default_url_options = {
       host:     ENV['CANONICAL_HOST'],
