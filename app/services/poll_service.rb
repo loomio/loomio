@@ -24,6 +24,15 @@ class PollService
     end
     Stance.import(new_stances, on_duplicate_key_ignore: true)
 
+    if poll.discussion
+      new_discussion_readers = users.map do |user|
+        DiscussionReader.new(user: user, discussion: poll.discussion, inviter: actor, volume: DiscussionReader.volumes[:normal])
+      end
+
+      DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
+    end
+
+
     stances = Stance.where(participant_id: users.pluck(:id), poll: poll)
 
     Events::PollAnnounced.publish!(poll, actor, stances)

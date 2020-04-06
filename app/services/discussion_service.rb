@@ -16,8 +16,9 @@ class DiscussionService
     users = UserInviter.where_or_create!(inviter: actor,
                                          emails: params[:emails],
                                          user_ids: params[:user_ids])
+
     new_discussion_readers = users.map do |user|
-      DiscussionReader.new(user: user, discussion: discussion, inviter: actor, volume: 2)
+      DiscussionReader.new(user: user, discussion: discussion, inviter: actor, volume: DiscussionReader.volumes[:normal])
     end
 
     DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
