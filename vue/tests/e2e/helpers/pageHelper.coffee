@@ -124,15 +124,24 @@ module.exports = (test, browser) ->
     test.acceptAlert()
     @pause()
 
-
   signInViaPassword: (email, password) ->
     page = pageHelper(test)
-    page.fillIn '.auth-email-form__email input', email
+    page.fillIn '.auth-email-form__email input', email if email
     page.click '.auth-email-form__submit'
     page.fillIn '.auth-signin-form__password input', password
     page.click '.auth-signin-form__submit'
 
-  signInViaEmail: (email = "new@account.com") ->
+  signInViaEmail: (email) ->
+    page.fillIn('.auth-email-form__email input', email)
+    page.click('.auth-email-form__submit')
+    page.click('.auth-signin-form__submit')
+    page.expectText('.auth-complete', 'Check your email')
+    page.loadPath('use_last_login_token')
+    page.click('.auth-signin-form__submit')
+    page.expectFlash('Signed in successfully')
+
+
+  signUpViaEmail: (email = "new@account.com") ->
     page = pageHelper(test)
     page.fillIn '.auth-email-form__email input', email
     page.click '.auth-email-form__submit'

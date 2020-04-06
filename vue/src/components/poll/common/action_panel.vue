@@ -14,6 +14,7 @@ export default
 
   data: ->
     stance: @lastStanceOrNew()
+    userCanParticipate: AbilityService.canParticipateInPoll(@poll)
     newStance: Records.stances.build(
       reasonFormat: Session.defaultFormat()
       pollId:    @poll.id,
@@ -25,14 +26,11 @@ export default
       collections: ["stances"]
       query: (records) =>
         @stance = @lastStanceOrNew()
+        @userCanParticipate = AbilityService.canParticipateInPoll(@poll)
 
   methods:
     lastStanceOrNew: ->
       @poll.stanceFor(Session.user()) || @newStance
-
-  computed:
-    userCanParticipate: ->
-      AbilityService.canParticipateInPoll(@poll)
 
 </script>
 

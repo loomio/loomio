@@ -14,7 +14,8 @@ module Dev::FakeDataHelper
       password: 'loginlogin',
       detected_locale: 'en',
       email_verified: true,
-      legal_accepted: true
+      legal_accepted: true,
+      experiences: {changePicture: true}
     }.merge(args))
   end
 

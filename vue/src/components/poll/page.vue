@@ -17,9 +17,6 @@ export default
   created: ->
     Records.polls.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
       EventBus.$emit 'pageError', error
-    EventBus.$on 'signedIn', =>
-      Records.polls.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
-        EventBus.$emit 'pageError', error
 
   methods:
     init: (poll) ->

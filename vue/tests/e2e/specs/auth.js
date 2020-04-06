@@ -105,14 +105,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_as_visitor')
-    page.fillIn('.auth-email-form__email input', 'jennifer_grey@example.com')
-    page.click('.auth-email-form__submit')
-    page.click('.auth-signin-form__submit')
-    page.expectText('.auth-complete', 'Check your email')
-    page.loadPath('use_last_login_token')
-    page.click('.auth-signin-form__submit')
-    page.expectFlash('Signed in successfully')
-    // page.expectText('.dashboard-page__heading', 'Recent Threads')
+    page.signInViaEmail('jennifer_grey@example.com')
+    page.expectElement('.dashboard-page')
   },
 
   'can_login_from_a_discussion_page': (test) => {

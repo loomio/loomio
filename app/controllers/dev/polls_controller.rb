@@ -4,17 +4,15 @@ class Dev::PollsController < Dev::NightwatchController
 
   def test_invite_to_poll
     admin = saved fake_user
+    group = saved fake_group
+    group.add_admin! admin
 
     if params[:guest]
       user = saved fake_unverified_user
     else
       user = saved fake_user
+      group.add_member! user
     end
-
-    group = saved fake_group
-
-    group.add_admin! admin
-    group.add_member! user
 
     discussion = fake_discussion(group: group)
 
