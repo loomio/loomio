@@ -149,6 +149,9 @@ module.exports = (test, browser) ->
     page.fillIn '.auth-signup-form__name input', name
     page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input')
     page.click '.auth-signup-form__submit'
+    page.expectElement('.change-picture-form')
+    page.click('.dismiss-modal-button')
+
 
   waitFor: (selector, wait = 8000) ->
     test.waitForElementVisible(selector, wait) if selector?

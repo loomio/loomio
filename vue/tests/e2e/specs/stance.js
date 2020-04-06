@@ -1,0 +1,15 @@
+require('coffeescript/register')
+pageHelper = require('../helpers/pageHelper.coffee')
+
+module.exports = {
+  'invite_guest_to_vote': (test) => {
+    page = pageHelper(test)
+    page.loadPathNoApp('polls/test_invite_to_poll?guest=1')
+    page.click('.poll-mailer__poll-title', 2000)
+    page.signUpViaInvitation()
+    page.click('.poll-common-vote-form__button')
+    page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
+    page.click('.poll-common-vote-form__submit')
+    page.expectFlash('Vote created')
+  }
+}
