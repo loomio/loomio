@@ -3,17 +3,17 @@ module PendingActionsHelper
   def handle_pending_actions(user = current_user)
     if params[:membership_token]
       session[:pending_membership_token] = params[:membership_token]
-      user.membership_token = params[:membership_token]
+      # user.membership_token = params[:membership_token]
     end
 
     if params[:discussion_reader_token]
       session[:pending_discussion_reader_token] = params[:discussion_reader_token]
-      user.discussion_reader_token = params[:discussion_reader_token]
+      # user.discussion_reader_token = params[:discussion_reader_token]
     end
 
     if params[:stance_token]
       session[:pending_stance_token] = params[:stance_token]
-      user.stance_token = params[:stance_token]
+      # user.stance_token = params[:stance_token]
     end
 
     if user.is_logged_in?
