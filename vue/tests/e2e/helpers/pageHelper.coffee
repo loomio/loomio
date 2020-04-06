@@ -164,3 +164,6 @@ module.exports = (test, browser) ->
 
   waitFor: (selector, wait = 8000) ->
     test.waitForElementVisible(selector, wait) if selector?
+
+  waitForElementNotVisible: (selector, wait = 8000) ->
+    test.waitForElementNotVisible(selector, wait) if selector?

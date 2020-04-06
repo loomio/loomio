@@ -10,7 +10,8 @@ module.exports = {
     page.click('.poll-common-vote-form__button')
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
-    page.expectFlash('Vote created')
+    page.waitForElementNotVisible('.submit-overlay')
+    page.expectElement('.action-dock__button--edit_stance')
   },
 
   'invite_member_to_vote': (test) => {
