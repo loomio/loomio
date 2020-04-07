@@ -109,16 +109,16 @@ class Discussion < ApplicationRecord
 
   def members
     User.active.distinct.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id}").
+      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
              (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
   end
 
   def admins
     User.active.distinct.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id}").
+      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       where('(m.admin = TRUE AND m.id IS NOT NULL AND m.archived_at IS NULL) OR
              (dr.admin = TRUE AND dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
   end
