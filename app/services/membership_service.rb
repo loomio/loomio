@@ -2,7 +2,7 @@ class MembershipService
   def self.redeem(membership:, actor:)
     raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
 
-    expires_at = if membership.group.is_formal_group? && membership.group.parent_or_self.saml_provider
+    expires_at = if membership.group.parent_or_self.saml_provider
       Time.current
     else
       nil
@@ -73,7 +73,18 @@ class MembershipService
 
   def self.destroy(membership:, actor:)
     actor.ability.authorize! :destroy, membership
-    membership.destroy
+    now = Time.zone.now
+
+    DiscussionReader.joins(:discussion).where(
+      'discussions.group_id': membership.group.id_and_subgroup_ids,
+      user_id: membership.user_id).update_all(revoked_at: now)
+
+    Stance.joins(:poll).where(
+      'polls.group_id': membership.group.id_and_subgroup_ids,
+      participant_id: membership.user_id).update_all(revoked_at: now)
+
+    Membership.where(user_id: actor.id, group_id: membership.group.id_and_subgroup_ids).destroy_all
+
     EventBus.broadcast('membership_destroy', membership, actor)
   end
 

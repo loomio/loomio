@@ -18,8 +18,6 @@ module Dev::NintiesMoviesHelper
                               email_verified: true)
 
     @patrick.update(avatar_kind: 'uploaded')
-    @patrick.experienced!("vue_client") if params[:vue]
-    @patrick.experienced!("introductionCarousel")
     @patrick
   end
 
@@ -40,8 +38,6 @@ module Dev::NintiesMoviesHelper
                                uploaded_avatar: File.new("#{Rails.root}/spec/fixtures/images/jennifer.png"),
                                email_verified: true)
     @jennifer.update(avatar_kind: 'uploaded')
-    @jennifer.experienced!("vue_client") if params[:vue]
-    @jennifer.experienced!("introductionCarousel")
     @jennifer
   end
 
@@ -52,8 +48,6 @@ module Dev::NintiesMoviesHelper
                           password: 'gh0stmovie',
                           username: 'mingthemerciless',
                           email_verified: true)
-    @max.experienced!("vue_client") if params[:vue]
-    @max.experienced!("introductionCarousel")
     @max
   end
 
@@ -368,11 +362,10 @@ module Dev::NintiesMoviesHelper
     membership = Membership.create(user: emilio, group: another_group, inviter: patrick)
     MembershipService.redeem(membership: membership, actor: emilio)
 
-    'poll_created'
     poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
-    AnnouncementService.create(
-      model: poll,
-      params: { kind: :poll_created, recipients: { user_ids: patrick.id }},
+    PollService.announce(
+      poll: poll,
+      params: { kind: :poll_created, user_ids: [patrick.id] },
       actor: jennifer
     )
 
@@ -384,9 +377,9 @@ module Dev::NintiesMoviesHelper
 
     PollService.create(poll: poll, actor: jennifer)
     outcome = FactoryBot.build(:outcome, poll: poll)
-    AnnouncementService.create(
-      model: outcome,
-      params: { kind: :outcome_created, recipients: { user_ids: patrick.id } },
+    OutcomeService.announce(
+      outcome: outcome,
+      params: {user_ids: patrick.id},
       actor: jennifer
     )
 

@@ -3,7 +3,7 @@ module ErrorRescueHelper
     base.rescue_from(ActionController::UnknownFormat) do
       respond_with_error message: :"errors.not_found", status: 404
     end
-    
+
     base.rescue_from(ActionView::MissingTemplate)  do |exception|
       raise exception unless %w[txt text gif png].include?(params[:format])
     end
@@ -14,8 +14,8 @@ module ErrorRescueHelper
 
     base.rescue_from(Membership::InvitationAlreadyUsed) do |exception|
       session.delete(:pending_membership_token)
-      if current_user.ability.can?(:show, exception.membership.target_model)
-        redirect_to polymorphic_url(exception.membership.target_model) || dashboard_url
+      if current_user.ability.can?(:show, exception.membership.group)
+        redirect_to polymorphic_url(exception.membership.group) || dashboard_url
       else
         respond_with_error message: :"invitation.invitation_already_used"
       end

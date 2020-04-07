@@ -3,33 +3,21 @@ module Ability::Group
     super(user)
 
     can [:show], ::Group do |group|
-      if group.archived_at || group.is_guest_group?
-        false
-      else
-        group.is_visible_to_public? or
-        user_is_member_of?(group.id) or
-        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
-      end
+      !group.archived_at &&
+      (group.is_visible_to_public? or
+       user_is_member_of?(group.id) or
+       (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id)))
     end
 
     can [:vote_in], ::Group do |group|
-      if group.is_formal_group?
-        user_is_admin_of(group.id) ||
-        (user_is_member_of(group.id) && group.members_can_vote)
-      else
-        user_is_member_of(group.id)
-      end
+      group.admins.include?(user) || (group.members_can_vote && group.members.include?(user))
     end
 
     can [:see_private_content, :subscribe_to], ::Group do |group|
-      if group.archived_at
-        false
-      else
-        (group.is_guest_group? && user.ability.can?(:show, group.target_model)) or
-        user_is_member_of?(group.id) or
+      !group.archived_at && (
         group.group_privacy == 'open' or
-        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
-      end
+        group.members.include?(user) or
+        (group.is_visible_to_parent_members? and group.parent_or_self.members.include?(user)))
     end
 
     can [:update,
@@ -39,7 +27,7 @@ module Ability::Group
          :export,
          :view_pending_invitations,
          :set_saml_provider], ::Group do |group|
-      user_is_admin_of?(group.id)
+      group.admins.include?(user)
     end
 
     can [:members_autocomplete,
@@ -56,17 +44,16 @@ module Ability::Group
          :announce,
          :manage_membership_requests], ::Group do |group|
       user.email_verified? && Subscription.for(group).is_active? && !group.has_max_members &&
-      ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
-      user_is_admin_of?(group.id))
+      (((group.members_can_add_members? && user_is_member_of?(group.id)) || user_is_admin_of?(group.id)))
     end
 
     # please note that I don't like this duplication either.
     # add_subgroup checks against a parent group
     can [:add_subgroup], ::Group do |group|
       user.email_verified? &&
-      group.is_parent? &&
+      (group.is_parent? &&
       user_is_member_of?(group.id) &&
-      (group.members_can_create_subgroups? || user_is_admin_of?(group.id))
+      (group.members_can_create_subgroups? || user_is_admin_of?(group.id)))
     end
 
     can :move, ::Group do |group|

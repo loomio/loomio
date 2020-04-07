@@ -14,7 +14,7 @@ export default
 
   methods:
     submit: ->
-      actionName = if @stance.isNew() then 'created' else 'updated'
+      actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.id = null
       @stance.stanceChoicesAttributes = [{poll_option_id: @selectedOptionId}]
       @stance.save()
@@ -62,7 +62,7 @@ export default
   poll-common-stance-reason.animated(:stance='stance', v-show='selectedOptionId', v-if='stance')
   v-card-actions
     v-spacer
-    poll-common-show-results-button(v-if='stance.isNew()')
+    poll-common-show-results-button(v-if='!stance.castAt')
     v-btn.poll-common-vote-form__submit(color="primary", @click='submit()', v-t="'poll_common.vote'" :disabled='!selectedOptionId')
 </template>
 <style lang="sass">

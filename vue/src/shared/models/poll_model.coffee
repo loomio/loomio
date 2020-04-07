@@ -2,10 +2,10 @@ import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
-import HasGuestGroup    from '@/shared/mixins/has_guest_group'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import { addDays, startOfHour } from 'date-fns'
+import { head, orderBy, map, includes, difference, invokeMap, each, max } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -17,7 +17,6 @@ export default class PollModel extends BaseModel
   afterConstruction: ->
     HasDocuments.apply @, showTitle: true
     HasTranslations.apply @
-    HasGuestGroup.apply @
 
   pollTypeKey: ->
     "poll_types.#{@pollType}"
@@ -26,9 +25,6 @@ export default class PollModel extends BaseModel
     @discussion() or @author()
 
   poll: -> @
-
-  groups: ->
-    _.compact [@group(), @discussionGuestGroup(), @guestGroup()]
 
   defaultValues: ->
     discussionId: null
@@ -54,29 +50,35 @@ export default class PollModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
     @belongsTo 'group'
-    @belongsTo 'guestGroup', from: 'groups'
-    @hasMany   'pollOptions', orderBy: 'priority'
+    @hasMany   'pollOptions'
     @hasMany   'stances'
     @hasMany   'pollDidNotVotes'
     @hasMany   'versions'
 
+  voters: ->
+    @latestStances().map (stance) -> stance.participant()
+
+  members: ->
+    ((@group() && @group().members()) || []).concat(@voters())
+
+  adminsInclude: (user) ->
+    stance = @stanceFor(user)
+    @authorIs(user) || (stance && stance.admin) || @group().adminsInclude(user)
+
+  membersInclude: (user) ->
+    @stanceFor(user) || @group().membersInclude(user)
+
+  stanceFor: (user) ->
+    head orderBy(@recordStore.stances.find(latest: true, pollId: @id, participantId: user.id), 'createdAt', 'desc')
+
   authorName: ->
     @author().nameWithTitle(@)
-
-  discussionGuestGroupId: ->
-    @discussion().guestGroupId if @discussion()
-
-  discussionGuestGroup: ->
-    @discussion().guestGroup() if @discussion()
-
-  groupIds: ->
-    _.compact [@groupId, @guestGroupId, @discussionGuestGroupId()]
 
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
   participantIds: ->
-    _.map(@latestStances(), 'participantId')
+    map(@latestStances(), 'participantId')
 
   # who's voted?
   participants: ->
@@ -85,9 +87,9 @@ export default class PollModel extends BaseModel
   # who hasn't voted?
   undecided: ->
     if @isActive()
-      _.difference(@members(), @participants())
+      difference(@members(), @participants())
     else
-      _.invokeMap @pollDidNotVotes(), 'user'
+      invokeMap @pollDidNotVotes(), 'user'
 
   membersCount: ->
     # NB: this won't work for people who vote, then leave the group.
@@ -105,13 +107,13 @@ export default class PollModel extends BaseModel
 
   clearStaleStances: ->
     existing = []
-    _.each @latestStances('-createdAt'), (stance) ->
-      if _.includes(existing, stance.participant())
+    each @latestStances('-createdAt'), (stance) ->
+      if includes(existing, stance.participant())
         stance.latest = false
       else
         existing.push(stance.participant())
 
-  latestStances: (order, limit) ->
+  latestStances: (order = '-createdAt', limit) ->
     _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
 
   hasDescription: ->
@@ -158,10 +160,10 @@ export default class PollModel extends BaseModel
 
   setMinimumStanceChoices: =>
     return unless @isNew() and @hasRequiredField('minimum_stance_choices')
-    @customFields.minimum_stance_choices = _.max [@pollOptionNames.length, 1]
+    @customFields.minimum_stance_choices = max [@pollOptionNames.length, 1]
 
   hasRequiredField: (field) =>
-    _.includes AppConfig.pollTemplates[@pollType].required_custom_fields, field
+    includes AppConfig.pollTemplates[@pollType].required_custom_fields, field
 
   hasPollSetting: (setting) =>
     AppConfig.pollTemplates[@pollType][setting]?
@@ -179,5 +181,5 @@ export default class PollModel extends BaseModel
     AppConfig.pollTemplates[@pollType]['dates_as_options']
 
   removeOrphanOptions: ->
-    _.each @pollOptions(), (option) =>
-      option.remove() unless _.includes(@pollOptionNames, option.name)
+    @pollOptions().forEach (option) =>
+      option.remove() unless @pollOptionNames.includes(option.name)

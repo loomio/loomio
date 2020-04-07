@@ -444,7 +444,6 @@ en:
     start_thread: New thread
     start_decision: New decision
     more_groups: More groups
-    try_beta: Try Loomio 2.0 beta!
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Threads actions'
@@ -797,7 +796,6 @@ en:
     closing_at_changed: "closing time set to {{time}}"
     private_changed: "privacy set to {{private}}"
     group_id_changed: "moved to {{name}}"
-
 
   reactions_input:
     add_your_reaction: Add your reaction

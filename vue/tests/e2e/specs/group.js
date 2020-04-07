@@ -17,7 +17,7 @@ module.exports = {
 
     page.loadPath('view_open_group_as_visitor')
     page.click('.join-group-button')
-    page.signInViaEmail('new@account.com')
+    page.signUpViaEmail('new@account.com')
     page.pause(500)
 
     page.click('.dismiss-modal-button')

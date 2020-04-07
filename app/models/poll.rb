@@ -5,7 +5,6 @@ class Poll < ApplicationRecord
   include HasEvents
   include HasMentions
   include HasDrafts
-  include HasGuestGroup
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
@@ -19,7 +18,14 @@ class Poll < ApplicationRecord
   extend  NoSpam
   no_spam_for :title, :details
 
-  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices, :can_respond_maybe, :deanonymize_after_close, :max_score
+  set_custom_fields :meeting_duration,
+                    :time_zone,
+                    :dots_per_person,
+                    :pending_emails,
+                    :minimum_stance_choices,
+                    :can_respond_maybe,
+                    :deanonymize_after_close,
+                    :max_score
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name can_vote_anonymously
                        can_add_options can_remove_options author_receives_outcome
@@ -48,16 +54,16 @@ class Poll < ApplicationRecord
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
-  has_many :participants, through: :stances, source: :participant
+  has_many :voters, -> {where('stances.revoked_at IS NULL')}, through: :stances, source: :participant
+  has_many :admin_voters, -> { where('stances.admin': true).where('revoked_at IS NULL') }, through: :stances, source: :participant
+  has_many :undecided, -> { where('stances.cast_at IS NULL') }, through: :stances, source: :participant
+  has_many :participants, -> { where('stances.cast_at IS NOT NULL') }, through: :stances, source: :participant
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
 
   has_many :poll_options, -> { order('priority') }, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
-
-  has_many :poll_did_not_votes, dependent: :destroy
-  has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
   has_many :documents, as: :model, dependent: :destroy
 
@@ -94,6 +100,7 @@ class Poll < ApplicationRecord
   validate :valid_minimum_stance_choices
   validate :closes_in_future
   validate :require_custom_fields
+  validate :discussion_group_is_poll_group
 
   alias_method :user, :author
   alias_method :draft_parent, :discussion
@@ -108,27 +115,17 @@ class Poll < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
   define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_count) { |poll| poll.undecided.count }
+  define_counter_cache(:uncast_stances_count) { |poll| poll.stances.latest.uncast.count }
   define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
-  delegate :guest_group, to: :discussion, prefix: true, allow_nil: true
 
-
-  def pct_voted
-    ((poll.stances_count / group.memberships_count) * 100).to_i
+  def cast_stances_count
+    stances_count - uncast_stances_count
   end
 
-  def groups
-    [group, discussion&.guest_group, guest_group].compact
-  end
-
-  def undecided
-    if active?
-      members.where.not(id: participants)
-    else
-      poll_did_not_voters
-    end
+  def cast_stances_pct
+    ((poll.cast_stances_count / poll.stances_count) * 100).to_i
   end
 
   def time_zone
@@ -158,10 +155,6 @@ class Poll < ApplicationRecord
     super || NullFormalGroup.new
   end
 
-  def group_members
-    super.joins(:groups).where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
-  end
-
   def update_stance_data
     update_attribute(:stance_data, zeroed_poll_options.merge(
       self.class.connection.select_all(%{
@@ -185,6 +178,24 @@ class Poll < ApplicationRecord
         end
       end
     ) if chart_type == 'matrix'
+  end
+
+  def admins
+    User.where(id: [group.admins, discussion&.admins, admin_voters].compact.map {|rel| rel.pluck(:id) }.flatten)
+    # User.where(id: group.admins.pluck(:id).concat(admin_voters.pluck(:id)))
+  end
+
+  def members
+    User.where(id: [group.members, discussion&.readers, voters].compact.map {|rel| rel.pluck(:id) }.flatten)
+    # User.where(id: group.members.pluck(:id).concat(voters.pluck(:id)))
+  end
+
+  def add_guest!(user, author)
+    stances.create!(participant_id: user.id, inviter: author, volume: DiscussionReader.volumes[:normal])
+  end
+
+  def add_admin!(user, author)
+    stances.create!(participant_id: user.id, inviter: author, volume: DiscussionReader.volumes[:normal], admin: true)
   end
 
   def active?
@@ -262,6 +273,12 @@ class Poll < ApplicationRecord
   def closes_in_future
     return if !self.active? || !self.closing_at || self.closing_at > Time.zone.now
     errors.add(:closing_at, I18n.t(:"validate.motion.must_close_in_future"))
+  end
+
+  def discussion_group_is_poll_group
+    if poll.discussion and poll.group and poll.discussion.group != poll.group
+      self.errors.add(:group, 'Poll group is not discussion group')
+    end
   end
 
   def prevent_added_options

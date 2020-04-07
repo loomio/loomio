@@ -21,6 +21,6 @@ class Events::InvitationAccepted < Event
   end
 
   def notification_url
-    polymorphic_url(eventable.target_model)
+    polymorphic_url(eventable.group)
   end
 end

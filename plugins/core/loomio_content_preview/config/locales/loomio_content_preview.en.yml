@@ -1,7 +1,0 @@
-en:
-  loomio_content_preview:
-    preview_pane:
-      no_content: No content to preview
-      helptext: Your comment will appear like this in the activity feed.
-    preview_button:
-      preview: Preview

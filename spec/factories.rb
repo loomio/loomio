@@ -108,10 +108,6 @@ FactoryBot.define do
     end
   end
 
-  factory :guest_group do
-    group_privacy { 'closed' }
-  end
-
   factory :group_identity do
     association :group, factory: :formal_group
     association :identity, factory: :slack_identity
@@ -140,7 +136,6 @@ FactoryBot.define do
   factory :discussion do
     association :author, :factory => :user
     association :group, :factory => :formal_group
-    association :guest_group, factory: :guest_group
     title { Faker::Name.name }
     description { 'A description for this discussion. Should this be *rich*?' }
     uses_markdown { true }
@@ -253,7 +248,6 @@ FactoryBot.define do
     title { "This is a poll" }
     details { "with a description" }
     association :author, factory: :user
-    association :guest_group, factory: :guest_group
     poll_option_names { ["engage"] }
   end
 
@@ -263,7 +257,6 @@ FactoryBot.define do
     details { "with a description" }
     association :author, factory: :user
     poll_option_names { %w[agree abstain disagree block] }
-    association :guest_group, factory: :guest_group
   end
 
   factory :poll_dot_vote, class: Poll do
@@ -273,7 +266,6 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { %w(apple banana orange) }
     custom_fields { { dots_per_person: 8 } }
-    association :guest_group, factory: :guest_group
   end
 
   factory :poll_meeting, class: Poll do
@@ -283,7 +275,6 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { ['01-01-2015'] }
     custom_fields { { can_respond_maybe: false } }
-    association :guest_group, factory: :guest_group
   end
 
   factory :poll_ranked_choice, class: Poll do
@@ -293,7 +284,6 @@ FactoryBot.define do
     association :author, factory: :user
     poll_option_names { %w(apple banana orange) }
     custom_fields { { minimum_stance_choices: 2 } }
-    association :guest_group, factory: :guest_group
   end
 
   factory :outcome do

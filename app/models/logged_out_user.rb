@@ -1,7 +1,7 @@
 class LoggedOutUser
   include Null::User
   include AvatarInitials
-  attr_accessor :name, :email, :token, :membership_token, :avatar_initials, :locale, :legal_accepted, :recaptcha
+  attr_accessor :name, :email, :token, :avatar_initials, :locale, :legal_accepted, :recaptcha
 
   alias :read_attribute_for_serialization :send
 
@@ -9,14 +9,26 @@ class LoggedOutUser
     Tag.none
   end
 
-  def initialize(name: nil, email: nil, token: nil, membership_token: nil, locale: I18n.locale)
+  def initialize(name: nil, email: nil, token: nil, locale: I18n.locale, params: {})
     @name = name
     @email = email
     @token = token
-    @membership_token = membership_token
     @locale = locale
+    @params = params
     apply_null_methods!
     set_avatar_initials if (@name || @email)
+  end
+
+  def membership_token
+    @params[:membership_token]
+  end
+
+  def stance_token
+    @params[:stance_token]
+  end
+
+  def discussion_reader_token
+    @params[:discussion_reader_token]
   end
 
   def create_user

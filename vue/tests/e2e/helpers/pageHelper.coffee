@@ -8,11 +8,11 @@ module.exports = (test, browser) ->
     test.refresh()
 
   loadPath: (path, opts = {}) ->
-    test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
+    test.url "#{base_url}/dev/#{path}"
     test.waitForElementPresent('.app-is-booted', 10000)
 
   loadPathNoApp: (path, opts = {}) ->
-    test.url "#{base_url}/dev/#{opts.controller || 'nightwatch'}/#{path}"
+    test.url "#{base_url}/dev/#{path}"
 
   loadLastEmail: ->
     test.url "#{base_url}/dev/last_email"
@@ -124,15 +124,24 @@ module.exports = (test, browser) ->
     test.acceptAlert()
     @pause()
 
-
   signInViaPassword: (email, password) ->
     page = pageHelper(test)
-    page.fillIn '.auth-email-form__email input', email
+    page.fillIn '.auth-email-form__email input', email if email
     page.click '.auth-email-form__submit'
     page.fillIn '.auth-signin-form__password input', password
     page.click '.auth-signin-form__submit'
 
-  signInViaEmail: (email = "new@account.com") ->
+  signInViaEmail: (email) ->
+    page.fillIn('.auth-email-form__email input', email)
+    page.click('.auth-email-form__submit')
+    page.click('.auth-signin-form__submit')
+    page.expectText('.auth-complete', 'Check your email')
+    page.loadPath('use_last_login_token')
+    page.click('.auth-signin-form__submit')
+    page.expectFlash('Signed in successfully')
+
+
+  signUpViaEmail: (email = "new@account.com") ->
     page = pageHelper(test)
     page.fillIn '.auth-email-form__email input', email
     page.click '.auth-email-form__submit'
@@ -149,6 +158,12 @@ module.exports = (test, browser) ->
     page.fillIn '.auth-signup-form__name input', name
     page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input')
     page.click '.auth-signup-form__submit'
+    page.expectElement('.change-picture-form')
+    page.click('.dismiss-modal-button')
+
 
   waitFor: (selector, wait = 8000) ->
     test.waitForElementVisible(selector, wait) if selector?
+
+  waitForElementNotVisible: (selector, wait = 8000) ->
+    test.waitForElementNotVisible(selector, wait) if selector?

@@ -45,7 +45,7 @@ export default
         @$t('common.action.loading')
 
     canAddMembers: ->
-      AbilityService.canAddMembers(@group.targetModel().group() || @group) && !@pending
+      AbilityService.canAddMembersToGroup(@group) && !@pending
 
 </script>
 

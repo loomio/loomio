@@ -200,7 +200,7 @@ describe API::ProfileController do
       group.add_member! jgroupmember
       subgroup.add_member! esubgroupmember
       completely_unrelated_group.add_member! jalien
-      discussion.guest_group.add_member! jguest
+      discussion.add_guest! jguest, discussion.author
       sign_in user
     end
 

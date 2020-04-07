@@ -34,15 +34,6 @@ public/service-worker.js
 
 dump.rdb
 
-client/node_modules
-client/angular/dependencies
-client/angular/test/screenshots
-client/angular/templates.coffee
-client/tasks/config/plugins.yml
-client/tests_output
-client/angular/test/screenshots
-client/angular/test/nightwatch/plugins
-client/angular/test/log
 vue/node_modules
 vue/tests/reports
 

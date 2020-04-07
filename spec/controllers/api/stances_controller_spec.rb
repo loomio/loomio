@@ -22,6 +22,7 @@ describe API::StancesController do
     visitor_attributes: { name: "Johnny Doe", email: "john@doe.ninja", legal_accepted: true }
   }}
 
+
   describe 'index' do
     before { group.add_member! user }
 
@@ -128,10 +129,10 @@ describe API::StancesController do
     describe "verified user votes" do
       it "creates stance and updates name and email" do
         user.update(email_verified: true)
-        poll.guest_group.add_member! user
+        poll.add_guest! user, poll.author
         sign_in user
         expect { post :create, params: {stance: stance_params } }.to_not change {ActionMailer::Base.deliveries.count}
-        expect(user.stances.count).to eq 1
+        expect(user.stances.latest.count).to eq 1
         expect(response.status).to eq 200
         expect(user.reload.email_verified).to eq true
       end
@@ -141,7 +142,7 @@ describe API::StancesController do
       poll.update(anonymous: true)
       user.update(email_verified: true)
       sign_in user
-      poll.guest_group.add_member! user
+      poll.add_guest! user, poll.author
       post :create, params: { stance: stance_params }
       json = JSON.parse(response.body)
       expect(response.status).to eq 200
@@ -165,13 +166,13 @@ describe API::StancesController do
       end
 
       it 'admin of discussion guest group can vote' do
-        poll.discussion.guest_group.add_admin! user
+        poll.discussion.add_admin! user, discussion.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
 
       it 'admin of poll guest group can vote' do
-        poll.guest_group.add_admin! user
+        poll.add_admin! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
@@ -182,14 +183,14 @@ describe API::StancesController do
         expect(response.status).to eq 403
       end
 
-      it 'member of discussion guest group cannot vote' do
-        poll.discussion.guest_group.add_member! user
+      it 'guest of discussion cannot vote' do
+        poll.discussion.add_guest! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 403
       end
 
-      it 'member of poll guest group can vote' do
-        poll.guest_group.add_member! user
+      it 'guest of poll can vote' do
+        poll.add_guest! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 403
       end
@@ -203,20 +204,20 @@ describe API::StancesController do
         sign_in user
       end
 
-      it 'member of formal group cannot vote' do
+      it 'member of formal group can vote' do
         poll.group.add_member! user
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
 
-      it 'member of discussion guest group cannot vote' do
-        poll.discussion.guest_group.add_member! user
+      it 'guest of discussion can vote' do
+        poll.discussion.add_guest! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end
 
-      it 'member of poll guest group can vote' do
-        poll.guest_group.add_member! user
+      it 'guest of poll can vote' do
+        poll.add_guest! user, poll.author
         post :create, params: { stance: stance_params }
         expect(response.status).to eq 200
       end

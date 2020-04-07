@@ -2,12 +2,24 @@ class DiscussionReader < ApplicationRecord
   include CustomCounterCache::Model
   include HasVolume
 
+  extend HasTokens
+  initialized_with_token :token
+
   belongs_to :user
   belongs_to :discussion
+  belongs_to :inviter, class_name: 'User'
 
   delegate :update_importance, to: :discussion
   delegate :importance, to: :discussion
   delegate :message_channel, to: :user
+
+  scope :guests, -> { where("discussion_readers.inviter_id IS NOT NULL
+                              AND discussion_readers.revoked_at IS NULL") }
+  scope :admins, -> { guests.where('discussion_readers.admin': true) }
+
+  scope :redeemable, -> { where('discussion_readers.inviter_id IS NOT NULL
+                            AND discussion_readers.accepted_at IS NULL
+                            AND discussion_readers.revoked_at IS NULL') }
 
   update_counter_cache :discussion, :seen_by_count
 
@@ -85,7 +97,7 @@ class DiscussionReader < ApplicationRecord
   def first_unread_sequence_id
     Array(unread_ranges.first).first.to_i
   end
-  
+
   # maybe yagni, because the client should do this locally
   def unread_ranges
     RangeSet.subtract_ranges(discussion.ranges, read_ranges)

@@ -2,7 +2,6 @@ module Boot
   class Site
     include LocalesHelper
     include Routing
-    include AngularHelper
 
     def payload
       @payload ||= {
@@ -58,7 +57,7 @@ module Boot
         pollTypes:         AppConfig.poll_types,
         pollColors:        AppConfig.colors,
         timeZones:         AppConfig.timezones,
-        assetRoot:         "/client/#{current_version}/",
+        assetRoot:         "/client/#{Loomio::Version.current}/",
         identityProviders: AppConfig.providers.fetch('identity', []).map do |provider|
           ({ name: provider, href: send("#{provider}_oauth_path") } if ENV["#{provider.upcase}_APP_KEY"])
         end.compact

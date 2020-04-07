@@ -1,7 +1,0 @@
-.auth-email-form
-  %md-input-container.md-block.auth-email-form__email
-    %label{translate: "auth_form.email"}
-    %input.lmo-primary-form-input#email{name: "email", type: "email", placeholder: "{{ 'auth_form.email_placeholder' | translate}}", ng-model: "email"}
-    %validation_errors{subject: "user", field: "email"}
-
-  %md-button.md-primary.md-raised.auth-email-form__submit{ng-click: "submit()", ng-disabled: "!email", translate: "auth_form.continue_with_email", aria-label: "{{ 'auth_form.continue_with_email' | translate }}"}

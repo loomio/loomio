@@ -7,13 +7,15 @@ module Ability::Stance
     end
 
     can [:update], ::Stance do |stance|
-      user.email_verified? &&
-      stance.participant == user &&
-      stance.latest?
+      user.email_verified? && stance.participant == user && stance.latest?
     end
 
     can [:make_draft, :create], ::Stance do |stance|
       user.can? :vote_in, stance.poll
+    end
+
+    can :redeem, ::Stance do |stance|
+      Stance.redeemable.include?(stance)
     end
   end
 end

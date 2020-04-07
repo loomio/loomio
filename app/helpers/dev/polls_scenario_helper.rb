@@ -9,8 +9,7 @@ module Dev::PollsScenarioHelper
     poll = fake_poll(discussion: discussion, poll_type: poll_type)
     event = PollService.create(poll: poll, actor: actor)
     recipients = {user_ids: [user.id], emails: [user.email]}
-    announcement_params = { kind: "poll_announced", recipients: recipients }
-    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
+    PollService.announce(poll: poll, params: recipients, actor: actor)
 
     {discussion: discussion,
      observer: user,
@@ -21,7 +20,9 @@ module Dev::PollsScenarioHelper
 
   def poll_share_scenario(poll_type:)
     observer = saved fake_user
-    event = PollService.create(poll: fake_poll(poll_type: poll_type, discussion: nil), actor: observer)
+    group = create_group_with_members
+    group.add_admin!(observer)
+    event = PollService.create(poll: fake_poll(poll_type: poll_type, group: group, discussion: nil), actor: observer)
      {observer: observer,
      actor: observer,
      poll: event.eventable,
@@ -58,17 +59,17 @@ module Dev::PollsScenarioHelper
      actor: scenario[:actor]}
   end
 
-  def poll_created_as_visitor_scenario(poll_type:)
-    actor = saved fake_user
-    poll = fake_poll(poll_type: poll_type, discussion: nil)
-    event = PollService.create(poll: poll, actor: actor)
-    poll.update(anyone_can_participate: true)
-    membership = poll.guest_group.memberships.create(user: fake_user(email_verified: false))
-
-    {poll: poll,
-     actor: actor,
-     params: {membership_token: membership.token}}
-  end
+  # def poll_created_as_visitor_scenario(poll_type:)
+  #   actor = saved fake_user
+  #   poll = fake_poll(poll_type: poll_type, discussion: nil)
+  #   event = PollService.create(poll: poll, actor: actor)
+  #   poll.update(anyone_can_participate: true)
+  #   membership = poll.add_guest!(saved fake_user(email_verified: false))
+  #
+  #   {poll: poll,
+  #    actor: actor,
+  #    params: {membership_token: membership.token}}
+  # end
 
   def poll_edited_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
@@ -80,9 +81,7 @@ module Dev::PollsScenarioHelper
 
     StanceService.create(stance: fake_stance(poll: poll), actor: observer)
     PollService.update(poll: poll, params: { title: "New title" }, actor: actor)
-    recipients = {user_ids: [observer.id], emails: [observer.email]}
-    announcement_params = { kind: "poll_edited", recipients: recipients }
-    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
+    PollService.announce(poll: poll, params: {user_ids: [observer.id], emails: [observer.email], kind: "poll_edited" }, actor: actor)
 
     {discussion: discussion,
      observer: observer,
@@ -132,9 +131,7 @@ module Dev::PollsScenarioHelper
                                                      closing_at: 1.day.from_now))
 
     PollService.create(poll: poll, actor: actor)
-    recipients = {user_ids: [non_voter.id], emails: [non_voter.email]}
-    announcement_params = { kind: "poll_announced", recipients: recipients }
-    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
+    PollService.announce(poll: poll, params: {user_ids: [non_voter.id], emails: [non_voter.email], kind: "poll_announced"}, actor: actor)
 
     PollService.publish_closing_soon
 
@@ -160,9 +157,7 @@ module Dev::PollsScenarioHelper
     discussion.group.add_member! voter
     PollService.create(poll: poll, actor: actor)
     PollService.publish_closing_soon
-    recipients = {user_ids: [voter.id], emails: [voter.email]}
-    announcement_params = { kind: "poll_announced", recipients: recipients }
-    AnnouncementService.create(model: poll, params: announcement_params, actor: actor)
+    PollService.announce(poll: poll, params: {user_ids: [voter.id], emails: [voter.email],  kind: "poll_announced"}, actor: actor)
 
     { discussion: discussion,
       observer: voter,
@@ -201,9 +196,7 @@ module Dev::PollsScenarioHelper
     outcome    = fake_outcome(poll: poll)
 
     OutcomeService.create(outcome: outcome, actor: actor)
-    recipients = {user_ids: [observer.id], emails: [observer.email]}
-    announcement_params = { kind: "outcome_announced", recipients: recipients }
-    AnnouncementService.create(model: outcome, params: announcement_params, actor: actor)
+    OutcomeService.announce(outcome: outcome, params: {user_ids: [observer.id], emails: [observer.email], kind: "outcome_announced"}, actor: actor)
 
     { discussion: discussion,
       observer: observer,

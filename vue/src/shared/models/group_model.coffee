@@ -106,6 +106,11 @@ export default class GroupModel extends BaseModel
   members: ->
     @recordStore.users.find(id: {$in: @memberIds()})
 
+  membersInclude: (user) ->
+    @membershipFor(user)
+  adminsInclude: (user) ->
+    @recordStore.memberships.find(groupId: @id, userId: user.id, admin: true)[0]
+
   adminMemberships: ->
     @recordStore.memberships.find(groupId: @id, admin: true)
 
@@ -176,8 +181,3 @@ export default class GroupModel extends BaseModel
   groupIdentityFor: (type) ->
     _.find @groupIdentities(), (gi) ->
       gi.userIdentity().identityType == type
-
-  targetModel: ->
-    @recordStore.discussions.find(guestGroupId: @id)[0] or
-    @recordStore.polls.find(guestGroupId: @id)[0] or
-    @

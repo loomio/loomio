@@ -40,11 +40,13 @@ class DiscussionSerializer < ActiveModel::Serializer
                          :discussion_reader_volume,
                          :last_read_at,
                          :dismissed_at,
-                         :read_ranges
+                         :read_ranges,
+                         :revoked_at,
+                         :inviter_id,
+                         :admin
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
-  has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_many :active_polls, serializer: Full::PollSerializer, root: :polls
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
   has_one :forked_event, serializer: Events::BaseSerializer, root: :events

@@ -40,45 +40,7 @@ describe Poll do
     expect(option_poll.poll_options.map(&:name)).to eq ['A', 'C', 'B']
   end
 
-  describe "guest group" do
-    it "deletes guest group when poll is deleted" do
-      group = poll.tap(&:save).guest_group
-      poll.destroy
-      expect { group.reload }.to raise_error ActiveRecord::RecordNotFound
-    end
-  end
-
-  describe 'anyone_can_participate=' do
-
-    describe 'existing poll' do
-      before { poll.save }
-      it 'changes guest group membership_granted_upon to request' do
-        poll.update(anyone_can_participate: true)
-        expect(poll.guest_group.reload.membership_granted_upon).to eq 'request'
-      end
-
-      it 'changes guest group membership_granted_upon to approval' do
-        poll.update(anyone_can_participate: false)
-        expect(poll.guest_group.reload.membership_granted_upon).to eq 'invitation'
-      end
-    end
-
-    describe 'unpersisted poll' do
-      it 'changes guest group membership_granted_upon to request' do
-        poll.anyone_can_participate = true
-        poll.save
-        expect(poll.reload.guest_group.reload.membership_granted_upon).to eq 'request'
-      end
-
-      it 'changes guest group membership_granted_upon to approval' do
-        poll.anyone_can_participate = false
-        poll.save
-        expect(poll.reload.guest_group.reload.membership_granted_upon).to eq 'invitation'
-      end
-    end
-  end
-
-  describe 'poll_options' do
+  describe 'ordered_poll_options' do
     let(:poll) { create :poll }
     let(:meeting) { create :poll_meeting }
 
@@ -124,9 +86,9 @@ describe Poll do
     let(:poll) { create :poll, group: create(:formal_group) }
     let(:user) { create :user }
 
-    it 'includes members of the guest group' do
+    it 'includes guests' do
       expect {
-        poll.guest_group.add_member! user
+        Stance.create(poll: poll, participant: user)
       }.to change { poll.members.count }.by(1)
     end
 
@@ -135,73 +97,22 @@ describe Poll do
         poll.group.add_member! user
       }.to change { poll.members.count }.by(1)
     end
-
-    it 'decrements when removing from the guest group' do
-      membership = poll.guest_group.add_member! user
-      expect { membership.destroy }.to change { poll.members.count }.by(-1)
-    end
-
-    it 'decrements when removing from the formal group' do
-      membership = poll.group.add_member! user
-      expect { membership.destroy }.to change { poll.members.count }.by(-1)
-    end
   end
 
-  describe 'undecided' do
-    let!(:group) { create :formal_group }
-    let!(:poll) { create :poll, group: group, discussion: discussion }
-    let!(:discussion) { create :discussion, group: group }
-    let!(:user) { create :user }
-
-    before do
-      poll.update_undecided_count
-    end
-
-    it 'includes members of the guest group' do
-      expect {
-        poll.guest_group.add_member! user
-      }.to change { poll.reload.undecided_count }.by(1)
-    end
-
-    it 'includes members of the formal group' do
-      expect {
-        poll.group.add_member! user
-      }.to change { poll.reload.undecided_count }.by(1)
-    end
-
-    it 'includes members of the discussion group' do
-      expect {
-        poll.discussion.guest_group.add_member! user
-      }.to change { poll.reload.undecided_count }.by(1)
-    end
-
-    it 'decrements when removing from the guest group' do
-      membership = poll.guest_group.add_member! user
-      expect { membership.destroy }.to change { poll.reload.undecided_count }.by(-1)
-    end
-
-    it 'decrements when removing from the discussion group' do
-      membership = poll.discussion.guest_group.add_member! user
-      expect { membership.destroy }.to change { poll.reload.undecided_count }.by(-1)
-    end
-
-    it 'decrements when removing from the formal group' do
-      membership = poll.group.add_member! user
-      expect { membership.destroy }.to change { poll.reload.undecided_count }.by(-1)
-    end
-
-    it 'decrements when a vote is created' do
-      poll.group.add_member! user
-      expect { create(:stance, poll: poll, participant: user) }.to change { poll.reload.undecided_count }.by(-1)
-    end
-  end
-
-  describe 'participants' do
+  describe 'voters and participants and undecided' do
     let(:poll) { create :poll, group: create(:formal_group) }
     let(:user) { create :user }
 
-    it 'increments when a vote is created' do
-      expect { create(:stance, poll: poll, participant: user) }.to change { poll.participants.count }.by(1)
+    it 'increments voters when a vote is created' do
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.voters.count }.by(1)
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.participants.count }.by(0)
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.undecided.count }.by(1)
+    end
+
+    it 'increments participants when a vote is cast' do
+      expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.voters.count }.by(1)
+      expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.participants.count }.by(1)
+      expect { create(:stance, poll: poll, choice: poll.poll_option_names.first, participant: user) }.to change { poll.undecided.count }.by(0)
     end
   end
 

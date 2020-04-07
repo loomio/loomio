@@ -1,7 +1,0 @@
-uk:
-  loomio_content_preview:
-    preview_pane:
-      no_content: Немає вмісту для попереднього перегляду
-      helptext: Ваш коментар з'явиться подібно до цього у каналі активності.
-    preview_button:
-      preview: Попередній перегляд

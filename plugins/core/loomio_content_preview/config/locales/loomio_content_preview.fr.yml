@@ -1,7 +1,0 @@
-fr:
-  loomio_content_preview:
-    preview_pane:
-      no_content: Aucun contenu à prévisualiser
-      helptext: Votre commentaire apparaîtra ainsi dans le flux d’activité.
-    preview_button:
-      preview: Prévisualiser

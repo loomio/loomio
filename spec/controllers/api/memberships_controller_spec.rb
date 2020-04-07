@@ -45,23 +45,11 @@ describe API::MembershipsController do
     let(:poll) { create :poll }
     let(:user) { create :user }
     let(:group_invite) { create :membership, accepted_at: nil, inviter: user, group: group }
-    let(:discussion_invite) { create :membership, accepted_at: nil, inviter: user, group: discussion.guest_group }
-    let(:poll_invite) { create :membership, accepted_at: nil, inviter: user, group: poll.guest_group }
 
     before { sign_in user }
 
     it 'can resend a group invite' do
       expect { post :resend, params: { id: group_invite.id } }.to change { ActionMailer::Base.deliveries.count }.by(1)
-      expect(response.status).to eq 200
-    end
-
-    it 'can resend a discussion invite' do
-      expect { post :resend, params: { id: discussion_invite.id } }.to change { ActionMailer::Base.deliveries.count }.by(1)
-      expect(response.status).to eq 200
-    end
-
-    it 'can resend a poll invite' do
-      expect { post :resend, params: { id: poll_invite.id } }.to change { ActionMailer::Base.deliveries.count }.by(1)
       expect(response.status).to eq 200
     end
 
@@ -210,13 +198,11 @@ describe API::MembershipsController do
   describe 'for_user' do
     let(:public_group) { create :formal_group, is_visible_to_public: true }
     let(:private_group) { create :formal_group, is_visible_to_public: false }
-    let(:guest_group) { create :guest_group }
 
     it 'returns visible groups for the given user' do
       public_group
       private_group.add_member! another_user
       group.add_member! another_user
-      guest_group.add_member! another_user
 
       get :for_user, params: { user_id: another_user.id }
       json = JSON.parse(response.body)
@@ -224,7 +210,6 @@ describe API::MembershipsController do
       expect(group_ids).to include group.id
       expect(group_ids).to_not include public_group.id
       expect(group_ids).to_not include private_group.id
-      expect(group_ids).to_not include guest_group.id
     end
   end
 
@@ -337,50 +322,4 @@ describe API::MembershipsController do
       expect { post :save_experience }.to raise_error { ActionController::ParameterMissing }
     end
   end
-
-  describe 'undecided' do
-    let(:poll) { create :poll, discussion: discussion }
-    let(:another_poll) { create :poll }
-    let(:stance) { create :stance, poll: poll, participant: another_user, stance_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }] }
-
-    it 'fetches an undecided membership' do
-      get :undecided, params: { poll_id: poll.id }
-      expect(response.status).to eq 200
-
-      json = JSON.parse(response.body)
-      user_ids = json['users'].map { |u| u['id'] }
-
-      expect(user_ids).to include user.id
-    end
-
-    it 'does not fetch a membership from another group' do
-      alien_named_biff
-      get :undecided, params: { poll_id: poll.id }
-      expect(response.status).to eq 200
-
-      json = JSON.parse(response.body)
-      user_ids = json['users'].map { |u| u['id'] }
-
-      expect(user_ids).to_not include alien_named_biff.id
-    end
-
-    it 'does not fetch a membership who has voted' do
-      stance
-      get :undecided, params: { poll_id: poll.id }
-      expect(response.status).to eq 200
-
-      json = JSON.parse(response.body)
-      membership_user_ids = json['memberships'].map { |m| m['user_id'] }
-      user_ids = json['users'].map { |u| u['id'] }
-
-      expect(membership_user_ids).to_not include stance.participant_id
-      expect(user_ids).to_not include stance.participant_id
-    end
-
-    it 'does not fetch memberships for polls you dont have access to' do
-      get :undecided, params: { poll_id: another_poll.id }
-      expect(response.status).to eq 403
-    end
-  end
-
 end

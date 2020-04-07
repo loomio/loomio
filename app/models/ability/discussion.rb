@@ -6,13 +6,8 @@ module Ability::Discussion
          :print,
          :dismiss,
          :subscribe_to], ::Discussion do |discussion|
-      !discussion.group.archived_at && (
-        discussion.public? ||
-        discussion.members.include?(user) ||
-        discussion.guest_group.memberships.find_by(token: user.membership_token) ||
-        discussion.anyone_can_participate ||
-        (discussion.group.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id))
-      )
+      # do we want to support having a discussion_reader_token but not being logged in yet?
+      Queries::VisibleDiscussions.new(user: user, show_public: true).include?(discussion)
     end
 
     can [:mark_as_read, :mark_as_seen], ::Discussion do |discussion|
@@ -20,37 +15,33 @@ module Ability::Discussion
     end
 
     can :update_version, ::Discussion do |discussion|
-      user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
+      discussion.author == user or discussion.admins.include?(user)
     end
 
     can :create, ::Discussion do |discussion|
-      (user.email_verified? &&
-       discussion.group.present? &&
-       discussion.group.members_can_start_discussions? &&
-       user_is_member_of?(discussion.group_id)) ||
-      user_is_admin_of?(discussion.group_id)
+      user.email_verified? &&
+      (discussion.admins.include?(user) ||
+      (discussion.group && discussion.group.members_can_start_discussions? && discussion.members.include?(user)))
     end
 
     can [:announce], ::Discussion do |discussion|
-      user_is_admin_of?(discussion.group_id) ||
-        (discussion.group.members_can_announce? && user_is_member_of?(discussion.group_id))
+      user.email_verified? &&
+      (discussion.admins.include?(user) || (discussion.group.members_can_announce? && discussion.members.include?(user)))
     end
 
     can [:update], ::Discussion do |discussion|
       user.email_verified? &&
-      if discussion.group.members_can_edit_discussions?
-        user_is_member_of?(discussion.group_id)
-      else
-        user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
-      end
+      (discussion.author == user ||
+      discussion.admins.include?(user) ||
+      (discussion.group.members_can_edit_discussions? && discussion.members.include?(user)))
     end
 
     can :pin, ::Discussion do |discussion|
-      user_is_admin_of?(discussion.group_id)
+      discussion.admins.include?(user)
     end
 
     can [:destroy, :move, :move_comments], ::Discussion do |discussion|
-      user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
+      discussion.author == user or discussion.admins.include?(user)
     end
 
     can :fork, ::Discussion do |discussion|
@@ -67,11 +58,11 @@ module Ability::Discussion
     end
 
     can :remove_events, ::Discussion do |discussion|
-      user_is_author_of?(discussion) || user_is_admin_of?(discussion.group_id)
+      discussion.author == user or discussion.admins.include?(user)
     end
 
     can :start_poll, ::Discussion do |discussion|
-      can?(:start_poll, discussion.group) || can?(:start_poll, discussion.guest_group)
+      can?(:start_poll, discussion.group) || discussion.admins.include?(user)
     end
   end
 end

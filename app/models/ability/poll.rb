@@ -2,25 +2,19 @@ module Ability::Poll
   def initialize(user)
     super(user)
 
-    can :view_pending_invitations, ::Poll do |poll|
-      can? :view_pending_invitations, poll.guest_group
-    end
-
     can :make_draft, ::Poll do |poll|
       user.is_logged_in? && can?(:show, poll)
     end
 
     can :add_options, ::Poll do |poll|
-      user_is_author_of?(poll) ||
-      (user.can?(:vote_in, poll) && poll.voter_can_add_options)
+      user_is_author_of?(poll) || (user.can?(:vote_in, poll) && poll.voter_can_add_options)
     end
 
     can :vote_in, ::Poll do |poll|
-      poll.active? && (
-        poll.anyone_can_participate ||
-        (poll.group.members_can_vote && user_is_member_of_any?(poll.groups)) ||
-        user_is_admin_of_any?(poll.groups)
-      )
+      poll.active? &&
+      (poll.anyone_can_participate ||
+      (poll.group.members_can_vote && poll.members.include?(user)) ||
+      poll.admins.include?(user))
     end
 
     can [:show, :toggle_subscription, :subscribe_to], ::Poll do |poll|
@@ -28,32 +22,30 @@ module Ability::Poll
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
       poll.members.include?(user) ||
-      poll.guest_group.memberships.pluck(:token).include?(user.membership_token)
+      poll.stances.find_by(token: user.stance_token)
     end
 
     can :create, ::Poll do |poll|
       user.email_verified? &&
-       (
-        (poll.group.members_can_raise_motions && user_is_member_of_any?(poll.groups)) ||
-        user_is_admin_of_any?(poll.groups) ||
-        !poll.groups.any?(&:presence)
-      )
+      (poll.admins.include?(user) ||
+      (poll.group.members_can_raise_motions && poll.members.include?(user)) ||
+      !poll.group.presence)
     end
 
-    can [:announce], ::Poll do |poll|
+    can [:invite, :announce], ::Poll do |poll|
       if poll.discussion
         can?(:announce, poll.discussion)
       else
-        user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
+        poll.author == user || poll.admins.include?(user)
       end
     end
 
     can [:update, :share, :remind, :destroy, :export], ::Poll do |poll|
-      user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
+      poll.author == user || poll.admins.include?(user)
     end
 
     can :close, ::Poll do |poll|
-      poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
+      poll.active? && poll.author == user || poll.admins.include?(user)
     end
 
     can :reopen, ::Poll do |poll|

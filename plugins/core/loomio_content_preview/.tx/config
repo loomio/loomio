@@ -1,8 +1,0 @@
-[main]
-host = https://www.transifex.com
-
-[loomio-1.loomio_content_preview]
-file_filter = config/locales/loomio_content_preview.<lang>.yml
-source_file = config/locales/loomio_content_preview.en.yml
-source_lang = en
-type = YAML

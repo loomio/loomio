@@ -1,4 +1,9 @@
 class StanceService
+  def self.redeem(stance:, actor:)
+    actor.ability.authorize! :redeem, stance
+    stance.update(participant: actor, accepted_at: Time.zone.now)
+  end
+
   def self.destroy(stance:, actor:)
     actor.ability.authorize! :destroy, stance
     stance.destroy
@@ -11,6 +16,7 @@ class StanceService
     actor = actor.create_user if !actor.is_logged_in?
 
     stance.assign_attributes(participant: actor)
+    stance.cast_at = Time.zone.now
     return false unless stance.valid?
 
     stance.poll.stances.where(participant: actor).update_all(latest: false)

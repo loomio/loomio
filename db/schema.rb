@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_025150) do
+ActiveRecord::Schema.define(version: 2020_03_31_084707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -180,7 +180,13 @@ ActiveRecord::Schema.define(version: 2020_03_25_025150) do
     t.boolean "participating", default: false, null: false
     t.datetime "dismissed_at"
     t.string "read_ranges_string"
+    t.integer "inviter_id"
+    t.string "token"
+    t.datetime "revoked_at"
+    t.boolean "admin", default: false, null: false
+    t.datetime "accepted_at"
     t.index ["discussion_id"], name: "index_motion_read_logs_on_discussion_id"
+    t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true
   end
 
@@ -601,13 +607,14 @@ ActiveRecord::Schema.define(version: 2020_03_25_025150) do
     t.jsonb "matrix_counts", default: [], null: false
     t.boolean "notify_on_participate", default: false, null: false
     t.boolean "example", default: false, null: false
-    t.integer "undecided_count", default: 0, null: false
+    t.integer "uncast_stances_count", default: 0, null: false
     t.boolean "voter_can_add_options", default: false, null: false
     t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false
     t.integer "versions_count", default: 0
     t.string "details_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
+    t.boolean "anyone_can_participate", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
@@ -654,8 +661,16 @@ ActiveRecord::Schema.define(version: 2020_03_25_025150) do
     t.integer "versions_count", default: 0
     t.string "reason_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
+    t.datetime "cast_at"
+    t.string "token"
+    t.datetime "revoked_at"
+    t.boolean "admin", default: false, null: false
+    t.integer "inviter_id"
+    t.integer "volume"
+    t.datetime "accepted_at"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
+    t.index ["token"], name: "index_stances_on_token", unique: true
   end
 
   create_table "subscriptions", id: :serial, force: :cascade do |t|

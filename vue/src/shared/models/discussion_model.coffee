@@ -1,9 +1,9 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
+import Session          from '@/shared/services/session'
 import RangeSet         from '@/shared/services/range_set'
 import HasDocuments     from '@/shared/mixins/has_documents'
 import HasTranslations  from '@/shared/mixins/has_translations'
-import HasGuestGroup    from '@/shared/mixins/has_guest_group'
 import { isEqual, isAfter } from 'date-fns'
 
 export default class DiscussionModel extends BaseModel
@@ -18,7 +18,6 @@ export default class DiscussionModel extends BaseModel
     @private = @privateDefaultValue() if @isNew()
     HasDocuments.apply @, showTitle: true
     HasTranslations.apply @
-    HasGuestGroup.apply @
 
   defaultValues: ->
     private: null
@@ -59,6 +58,19 @@ export default class DiscussionModel extends BaseModel
     # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
+
+  members: ->
+    # pull out the discussion_readers user_ids
+    @recordStore.users.find(@group().memberIds())
+
+  membersInclude: (user) ->
+    (@inviterId && !@revokedAt && Session.user() == user) or
+    @group().membersInclude(user)
+
+  adminsInclude: (user) ->
+    @author() == user or
+    (@inviterId && @admin && !@revokedAt && Session.user() == user) or
+    @group().adminsInclude(user)
 
   createdEvent: ->
     res = @recordStore.events.find(kind: 'new_discussion', eventableId: @id)

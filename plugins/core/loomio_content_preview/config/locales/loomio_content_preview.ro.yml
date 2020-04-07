@@ -1,7 +1,0 @@
-ro:
-  loomio_content_preview:
-    preview_pane:
-      no_content: Nici un continut de previzualizat
-      helptext: Comentariul tau va aparea asa in fluxul activitatilor
-    preview_button:
-      preview: Previzualizare

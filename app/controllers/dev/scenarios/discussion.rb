@@ -16,8 +16,7 @@ module Dev::Scenarios::Discussion
     group      = FactoryBot.create :formal_group, group_privacy: 'secret'
     discussion = FactoryBot.build :discussion, group: group, title: "Dirty Dancing Shoes"
     DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
-    discussion.create_guest_group
-    discussion.reload.guest_group.add_member! jennifer
+    discussion.add_guest!(jennifer, discussion.author)
     sign_in jennifer
 
     redirect_to discussion_url(discussion)
@@ -94,7 +93,7 @@ module Dev::Scenarios::Discussion
     @group.add_admin! patrick
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
-    AnnouncementService.create(model: discussion, actor: patrick, params: {recipients: {user_ids: [jennifer.id]}, kind: "discussion_announced"})
+    DiscussionService.announce(discussion: discussion, actor: patrick, params: {user_ids: [jennifer.id], kind: "discussion_announced"})
     last_email
   end
 
@@ -105,7 +104,7 @@ module Dev::Scenarios::Discussion
     event = DiscussionService.create(discussion: discussion, actor: patrick)
     comment = FactoryBot.build(:comment, discussion: discussion)
     CommentService.create(comment: comment, actor: patrick)
-    AnnouncementService.create(model: discussion, actor: patrick, params: {recipients: {emails: 'jen@example.com'}, kind: "discussion_announced"})
+    DiscussionService.announce(discussion: discussion, actor: patrick, params: {emails: 'jen@example.com', kind: "discussion_announced"})
     last_email
   end
 

@@ -3,10 +3,9 @@ describe API::GroupsController do
 
   let(:user) { create :user }
   let(:group) { create :formal_group, creator: user }
-  let(:guest_group) { create :guest_group, creator: user }
   let(:subgroup) { create :formal_group, parent: group }
   let(:discussion) { create :discussion, group: group }
-  let(:another_group) { create :guest_group }
+  let(:another_group) { create :formal_group }
 
   before do
     group.add_admin! user
@@ -69,11 +68,6 @@ describe API::GroupsController do
       group_ids = json['groups'].map { |g| g['id'] }
       expect(group_ids).to include subgroup.id
       expect(group_ids).to include group.id
-    end
-
-    it 'does not load guest groups' do
-      get :show, params: { id: guest_group.key }, format: :json
-      expect(response.status).to eq 404
     end
 
     context 'logged out' do

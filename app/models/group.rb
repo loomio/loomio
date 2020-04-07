@@ -51,18 +51,12 @@ class Group < ApplicationRecord
   define_counter_cache(:pending_memberships_count) { |group| group.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
 
-  def target_model
-    Discussion.find_by(guest_group_id: id) ||
-    Poll.find_by(guest_group_id: id) ||
-    (group if is_formal_group?)
+  def discussion_id
+    nil
   end
 
-  def groups
-    Array(self)
-  end
-
-  def guest_group
-    self
+  def poll_id
+    nil
   end
 
   def mailer
@@ -100,13 +94,5 @@ class Group < ApplicationRecord
       m.make_admin!
       update(creator: user) if creator.blank?
     end.reload
-  end
-
-  def is_guest_group?
-    type == "GuestGroup"
-  end
-
-  def is_formal_group?
-    type == "FormalGroup"
   end
 end

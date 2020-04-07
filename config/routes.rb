@@ -195,6 +195,7 @@ Loomio::Application.routes.draw do
     resource :outcomes,     only: [:create, :update]
 
     resources :stances,     only: [:index, :create, :update, :destroy] do
+      get :invite, on: :collection
       get :my_stances, on: :collection
     end
 
@@ -374,9 +375,6 @@ Loomio::Application.routes.draw do
     post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
     get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
   end
-
-  get '/beta' => 'beta#index'
-  put '/beta' => 'beta#update'
 
   get ":id", to: 'groups#show', as: :group_handle, format: :html
 end

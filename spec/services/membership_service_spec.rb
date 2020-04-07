@@ -19,9 +19,9 @@ describe MembershipService do
     it 'cascade deletes memberships' do
       membership
       subgroup.add_member! user
-      subgroup_discussion.guest_group.add_member! user
-      discussion.guest_group.add_member! user
-      poll.guest_group.add_member! user
+      subgroup_discussion.add_guest! user, subgroup_discussion.author
+      discussion.add_guest! user, discussion.author
+      poll.stances.create!(participant: user)
       MembershipService.destroy membership: membership, actor: user
       expect(subgroup.members).to_not include user
       expect(subgroup_discussion.members).to_not include user

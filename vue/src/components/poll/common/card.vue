@@ -17,13 +17,15 @@ export default
     EventBus.$on 'showResults', => @buttonPressed = true
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
     @watchRecords
-      collections: ["stances"]
+      collections: ["stances", "outcomes"]
       query: (records) =>
         @myLastStance = myLastStanceFor(@poll)?
+        @outcome = @poll.outcome()
 
   data: ->
     buttonPressed: false
     myLastStance: null
+    outcome: null
 
   computed:
     icon: -> iconFor(@poll)
@@ -45,7 +47,7 @@ v-card
       v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
   v-card-text
     poll-common-set-outcome-panel(:poll='poll')
-    poll-common-outcome-panel(:poll='poll', v-if='poll.outcome()')
+    poll-common-outcome-panel(:poll='poll', v-if='outcome')
     poll-common-details-panel(:poll='poll')
     .poll-common-card__results-shown(v-if='showResults')
       poll-common-directive(:poll='poll', name='chart-panel')

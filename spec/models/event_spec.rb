@@ -151,19 +151,18 @@ describe Event do
   end
 
   describe 'poll_closing_soon' do
-    describe 'voters_review_responses', focus: true do
-      let(:group_notified) {{
-        id: discussion.group_id,
-        type: "FormalGroup",
-        notified_ids: [user_thread_loud.id, user_thread_normal.id]
-      }.with_indifferent_access}
-
+    describe 'voters_review_responses' do
       it 'should notify previously notified users when voters_review_responses is true' do
         poll = create(:poll_proposal, discussion: discussion)
-        create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        Events::AnnouncementCreated.publish!(poll, poll.author, poll.group.memberships.where(user: [user_thread_loud, user_thread_normal]), "poll_created")
+        stances = [
+          create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud),
+          create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_normal)
+        ]
+
+        Events::PollAnnounced.publish!(poll, poll.author, stances)
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
+
 
         notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         notified_users.should include user_thread_loud
@@ -189,10 +188,13 @@ describe Event do
 
       it 'should notify previously notified users who have not participated when voters_review_responses is false' do
         # a loud user participates, so they dont get a closing soon announcement
-        create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        stances = [
+          create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud),
+          create(:stance, poll: poll, participant: user_thread_normal)
+        ]
 
         # quiet user who has been announced to before
-        Events::AnnouncementCreated.publish!(poll, poll.author, poll.group.memberships.where(user: [user_thread_loud, user_thread_normal]), "poll_created")
+        Events::PollAnnounced.publish!(poll, poll.author, stances)
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -236,8 +238,6 @@ describe Event do
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
 
     before do
-      poll_meeting.guest_group.add_member! guest_user
-      poll_meeting.poll_unsubscriptions.create(user: user_unsubscribed)
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
     end
 
@@ -261,24 +261,6 @@ describe Event do
       gi = create(:group_identity, identity: identity, group: outcome.group)
       Events::OutcomeCreated.publish!(outcome)
       expect(WebMock).to_not have_requested(:post, identity.access_token)
-    end
-  end
-
-  describe 'invitation_accepted' do
-    let(:poll) { create :poll }
-    let(:guest_membership) { create :pending_membership, group: poll.guest_group }
-    let(:formal_membership) { create :pending_membership, group: create(:formal_group) }
-
-    it 'links to a group for a guest group invitation' do
-      event = Events::InvitationAccepted.publish!(guest_membership)
-      expect(event.send(:notification_url)).to match "p/#{poll.key}"
-      expect(event.send(:notification_translation_title)).to eq poll.title
-    end
-
-    it 'links to an invitation target for a formal group invitation' do
-      event = Events::InvitationAccepted.publish!(formal_membership)
-      expect(event.send(:notification_url)).to match formal_membership.group.handle
-      expect(event.send(:notification_translation_title)).to eq formal_membership.group.full_name
     end
   end
 
@@ -323,31 +305,40 @@ describe Event do
     let(:poll) { create :poll, discussion: discussion }
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
     let(:outcome) { create :outcome, poll: poll_meeting }
-    let(:invitation) { create :invitation, group: poll.guest_group }
 
-    def publish_announcement_for(model, users, kind = "poll_created")
-      Events::AnnouncementCreated.publish!(model, model.author, poll.group.memberships.where(user: Array(users)), kind)
+    def stance_for(user)
+      Stance.create(participant: user, poll: poll)
     end
 
     it 'does not email people with thread quiet' do
-      expect { publish_announcement_for(poll, user_thread_quiet) }.to_not change { emails_sent }
+      expect {
+        Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_thread_quiet)])
+      }.to_not change { emails_sent }
     end
 
     it 'does not email people with group quiet' do
-      expect { publish_announcement_for(poll, user_membership_quiet) }.to_not change { emails_sent }
+      expect {
+        Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_membership_quiet)])
+      }.to_not change { emails_sent }
     end
 
     it 'sends invitations' do
-      expect { publish_announcement_for(poll, user_thread_normal) }.to change { emails_sent }.by(1)
+      expect {
+        Events::PollAnnounced.publish!(poll, poll.author, [stance_for(user_thread_normal)])
+      }.to change { emails_sent }.by(1)
     end
 
     it 'notifies the author if the eventable is an appropriate outcome' do
-      expect { publish_announcement_for(outcome, user_thread_normal, "outcome_created") }.to change { emails_sent }.by(1)
+      expect {
+        Events::OutcomeAnnounced.publish!(outcome, poll.author, [user_thread_normal])
+      }.to change { emails_sent }.by(1)
     end
 
     it 'can send an ical attachment with an outcome' do
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
-      expect { publish_announcement_for(outcome, user_thread_normal, "outcome_created") }.to change { emails_sent }
+      expect {
+        Events::OutcomeAnnounced.publish!(outcome, poll.author, [user_thread_normal])
+      }.to change { emails_sent }
       mail = ActionMailer::Base.deliveries.last
       expect(mail.attachments).to have(1).attachment
       expect(mail.attachments.first).to be_a Mail::Part
