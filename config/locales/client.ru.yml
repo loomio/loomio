@@ -293,7 +293,6 @@ ru:
     explore: 'Публичная группа'
     start_thread: Новая тема
     start_decision: Новое решение
-    try_beta: Попробуйте Loomio 2.0 бета!
     aria_labels:
       heading: 'Боковая панель'
       groups_list: 'Группы'

@@ -344,7 +344,6 @@ cmn:
     start_thread: 新话题
     start_decision: 新决策
     more_groups: 更多群组
-    try_beta: 试试看 Loomio 2.0 beta！
     aria_labels:
       heading: '侧边栏'
       groups_list: '群组'

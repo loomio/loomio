@@ -413,7 +413,6 @@ zh_TW:
     start_thread: 新討論串
     start_decision: 新決策
     more_groups: 更多群組
-    try_beta: 試試看 Loomio 2.0 beta！
     aria_labels:
       heading: '側邊欄'
       threads_list: '討論串動作'

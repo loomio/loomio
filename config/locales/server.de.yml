@@ -15,6 +15,7 @@ de:
       spoofed_media_type: Der Inhalt der Datei stimmt nicht mit dem Dateinamen überein
   group:
     stats:
+      group_stats: Gruppen-Statistik
       members: Mitglieder
       subgroups: Untergruppen
       threads: Diskussionen
@@ -94,6 +95,9 @@ de:
           Hallo %{name},
           Deine zwei Loomio-Konten wurden zu einem gemacht.
           Um nun auf Loomio zugreifen zu können, bitte nutze <strong>%{email}</strong> beim Einloggen.
+    merge_verification:
+      confirm_page:
+        merge: Benutzerkonten zusammenführen
   email:
     common:
       or_enter_code: oder gib den Code unten ein

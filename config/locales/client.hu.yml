@@ -375,7 +375,6 @@ hu:
     start_thread: Új téma
     start_decision: Új döntés
     more_groups: Több csoport
-    try_beta: Próbáld ki a Loomio 2.0 béta verziót!
     aria_labels:
       heading: 'Oldalsáv'
       threads_list: 'Téma műveletek'

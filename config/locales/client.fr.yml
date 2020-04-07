@@ -389,7 +389,6 @@ fr:
     start_thread: Nouvelle discussion
     start_decision: Nouvelle décision
     more_groups: davantage de groupes
-    try_beta: Testez la version 2.0 de Loomio !
     aria_labels:
       heading: 'Barre latérale'
       threads_list: 'Actions du fil de discussion'

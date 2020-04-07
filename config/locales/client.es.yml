@@ -10,6 +10,7 @@ es:
         start_thread: Comience un hilo de discusión
         make_decision: 'Iniciar una decisión '
       learn_more: Conoce más en Ayuda Loomio
+      celebration_message: Genial! Vuestro grupo está listo para actuar!
       dismiss_this_card: Descartar este cartel
   plan_names:
     free: 'Gratis '
@@ -24,7 +25,19 @@ es:
     free_trial: Prueba gratis. Quedan {{days}} días
     trial_expired: Tu periodo de prueba ha terminado. Actualice para continuar usando Loomio.
     tooltip: "Nuestros precios son fantásticos! Actualice hoy y disfrute lo que Loomio puede ofrecer a su grupo."
+    was_gift_trial: "Vuestro grupo ha estado usando Loomio de forma gratuita desde {{createdDate}}. Ya no podemos seguir ofreciendo un servicio gratuito. Por favor actualiza a otro superior para continuar usando Loomio.<a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Leer más.</a>"
+    was_gift_remaining: "Quedan {{días}} días"
+    was_gift_expired: "Vuestro plan gratuito ha caducado"
+  subscription_status:
+    plan: "Proyecto"
+    state: "Posición"
+    active_members: "Miembros activos"
+    max_threads: "Máximo de hilos"
+    max_members: "Máximo de miembros"
+    expires_at: "Caduca"
+    renews_at: "Renueva"
   loomio_tags:
+    all_tags: Todas las etiquetas
     tags: Etiquetas
     apply_tags: Aplicar etiquetas
     new_tag: Crear etiqueta
@@ -92,6 +105,7 @@ es:
   timezones:
     local: Hora local ({{value}})
   common:
+    empty: Vacío
     no_results_found: No hemos encontrado nada
     view: Vista
     history: Historia
@@ -123,6 +137,7 @@ es:
     settings: 'Configuración '
     help: 'Ayuda'
     anonymous: Anónimo
+    required: Solicitado
     privacy:
       privacy: 'Privacidad'
       public: 'Público'
@@ -202,6 +217,9 @@ es:
     modal:
       title: Fusionar cuentas
       submit: Verificar
+      flash: Email de verificación enviado!
+    email_taken: Lo sentimos, este email ya está asociado con otro usuario. ¿Este email es el tuyo?
+    find_out_more: Descubre más
   emoji_picker:
     search: Buscar
     common: Usado con frecuencia
@@ -249,30 +267,48 @@ es:
       thread: Esto cambia cuando seas notificado sobre este hilo
     simple:
       label: Notificaciones
+      loud: Suscrito
       normal: Normal
       quiet: Ignorar
+      question: ¿Cuándo quieres que se te notifique?
+      loud_explain: Cuando quiera que haya una actividad
+      normal_explain: cuando alguien solicita tu atención
+      quiet_explain: Sin notificaciones
     aria_label: "Formulario para cambiar las notificaciones de correo electrónico"
     loud_label: "Toda la actividad"
     normal_label: "Anuncios"
     quiet_label: "No enviar correo"
     mute_label: "Silenciar "
+    saved: "Ajustes de notificaciones actualizados"
     discussion:
+      title: "Notificaciones de los hilos"
+      loud_description: "Se te enviará un email con toda la actividad en este hilo."
+      normal_description: "Sólo se te enviará un email con actividad importante en este hilo."
+      quiet_description: "No se te enviará ninguna actividad en este hilo"
       apply_to_all: "Aplicar esta configuración para todos los hilos de este grupo."
+      only_this_thread: "Solamente se aplica en este hilo"
+      group: "Cambiar notificaciones del grupo"
+      user: "Cambiar los ajustes de notificaciones del usuario"
       messages:
         loud: "Recibirás la actividad de este hilo por correo electrónico. "
         normal: "Recibirás correo electrónico sobre propuestas en este hilo. "
         quiet: "No recibirás correo electrónico sobre este hilo."
     membership:
+      title: "Notificaciones para {{título}}"
       loud_description: "Recibirás correo electrónico siempre que haya actividad en este grupo."
       normal_description: "Recibirás correo electrónico siempre que haya actividad en este grupo."
       quiet_description: "No recibirás correo electrónico sobre la actividad en este grupo."
       apply_to_all: "Aplicar esta configuración para todos mis grupos. "
+      apply_to_organization: "Solicitar para todos los grupos en {{organización}}"
       messages:
         loud: "Recibirás correo electrónico sobre toda la actividad en este grupo. "
         normal: "Sólo se enviarán anuncios por correo electrónico en este grupo."
         quiet: "No recibirás correo electrónico sobre este grupo."
     all_groups:
+      title: "Preferencias de notificación para todos los grupos"
       loud_description: "Recibirá por correo electrónico toda la actividad de todos sus grupos."
+      normal_description: "Sólo se te enviará actividad importante en todos tus grupos."
+      quiet_description: "No se te enviará ninguna actividad en ninguno de tus grupos."
       messages:
         loud: "Recibirá por correo electrónico toda la actividad de todos sus grupos."
         normal: "Sólo se te enviarán anuncios por correo electrónico en todos sus grupos."
@@ -348,6 +384,8 @@ es:
   sidebar:
     threads: 'Hilos'
     my_groups: 'Mis grupos'
+    other_groups: 'Otros grupos'
+    all_groups: 'Todos los grupos'
     recent_threads: 'Hilos recientes'
     unread_threads: 'No leído ({{count}})'
     muted_threads: 'Hilos silenciados '
@@ -357,12 +395,18 @@ es:
     explore_groups: Explorar grupos
     start_thread: Nuevo hilo
     start_decision: 'Nueva decisión  '
+    more_groups: Más grupos
     aria_labels:
       heading: 'Barra Lateral '
       threads_list: 'Acciones del hilo'
       groups_list: 'Grupos'
       user_list: 'Acciones de usuario'
   navbar:
+    search_all_threads: Busca todos los hilos
+    search_threads: 'Busca todos los hilos {{nombre}}'
+    search_members: 'Busca miembros en {{nombre}}'
+    search_subgroups: 'Busca miembros en {{nombre}}'
+    search_files: 'Busca ficheros en {{nombre}}'
     recent_title: 'Ir al Escritorio'
     unread_title: 'Ver los mensajes no leídos'
     start_thread: 'Nuevo hilo '
@@ -383,6 +427,7 @@ es:
   user_dropdown:
     button_label: 'Menú del usuario'
     edit_profile: 'Editar perfil '
+    email_settings: 'Ajustes de notificación'
     help: 'Ayuda'
     contact_site_name: 'Contacto {{site_name}}'
     sign_out: 'Salir'
@@ -454,6 +499,7 @@ es:
     updated: 'Guardar cambios en {{title}}'
   discussion_fork_actions:
     move: Mover
+    start_new_thread: O empieza un nuevo hilo
   discussion_form:
     aria_label: 'Formulario del hilo'
     messages:
@@ -474,6 +520,8 @@ es:
     privacy_organisation: 'Los hilos serán visibles para integrantes de {{parent}} e integrantes de {{group}}.'
     fork_notice: 'Un nuevo hilo será creado con {{count}} items de {{title}}'
   announcement:
+    send_discussion: Manda hilo
+    send_group: Invita a gente a {{nombre}}
     audiences:
       parent_group: Integrantes de {{name}}
       formal_group: 'Integrantes de {{name}} '
@@ -531,6 +579,7 @@ es:
     add_comment: Comentario
     copy_url: Copiar enlace
     edit_thread: Editar contexto
+    announce_thread: Manda hilo
     invite_guests: Gente invitada
     translate_thread: Traducir contexto
     edit_poll: Editar encuesta
@@ -971,6 +1020,7 @@ es:
     placeholder: 'Contestar a esta pregunta es opcional. Cualquier información que compartas nos ayudará a mejorar :)'
     submit: 'Desactiva cuenta '
   email_settings_page:
+    header: Ajustes de notificación
     email_newsletter: Boletín de noticias de Loomio
     email_newsletter_description: "Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año."
     daily_summary_label: Correo electrónico de resumen diario
@@ -1093,6 +1143,7 @@ es:
   thread_context:
     aria_label: 'Contexto del hilo'
     thread_options: 'Preferencias del hilo'
+    email_settings: 'Ajustes de notificación'
     edit: 'Editar'
     edit_thread: 'Editar'
     close_thread: 'Cerrar'
@@ -1822,6 +1873,10 @@ es:
       referral: Referencias
       social: Medios sociales (Facebook, Twitter, Linkedln)
       other: Otro
+    location: ¿Dónde está establecido tu grupo?
+    purpose: "¿Cuál es el propósito de vuestro grupo?"
     category_question: "Selecciona que categoría describe mejor a tu grupo"
     anything_else: "¿Hay algo más que te gustaría decirnos?"
     size_question: "¿Cuánta gente hay en su grupo?"
+    usage: "¿Cómo has planeado usar Loomio? Elige lo que más encaja."
+    referrer: "¿Cómo supiste de Loomio?"
