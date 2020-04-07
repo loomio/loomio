@@ -4,8 +4,7 @@ namespace :client do
     puts "Building clientside assets..."
     run_commands(
       "rm -rf public/client/*",
-      "cd client && npm i && node_modules/gulp/bin/gulp.js compile && cd ..",
-      "cd vue && npm i && npm run build && cd ..",
-      "mv public/client/development public/client/#{loomio_version}")
+      "cd vue && npm i && npm run build && cd .."
+    )
   end
 end
