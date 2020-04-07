@@ -32,6 +32,8 @@ class User < ApplicationRecord
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
+  attr_accessor :discussion_reader_token
+  attr_accessor :stance_token
 
   attr_accessor :legal_accepted
 
@@ -109,10 +111,7 @@ class User < ApplicationRecord
   has_many :discussions,
            through: :groups
 
-  has_many :authored_discussions,
-           class_name: 'Discussion',
-           foreign_key: 'author_id',
-           dependent: :destroy
+  has_many :authored_discussions, class_name: 'Discussion', foreign_key: 'author_id', dependent: :destroy
 
   has_many :polls, foreign_key: :author_id
 
@@ -157,14 +156,18 @@ class User < ApplicationRecord
   scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :mention_search, -> (user, model, query) do
-    # allow mentioning of anyone in the organisation
-    group_ids = (model.group.parent_or_self.id_and_subgroup_ids + [model.guest_group.id]).compact.uniq
-    distinct.active.
-      search_for(query).
-      joins(:memberships).
-      where("memberships.group_id": group_ids).
-      where.not('users.id': user.id).
-      order("users.name")
+    # allow mentioning of anyone in the organisation or guests of the discussion
+    group_ids = model.group.parent_or_self.id_and_subgroup_ids
+    relation = distinct.active.
+                        search_for(query).
+                        joins("LEFT OUTER JOIN memberships ON memberships.user_id = users.id").
+                        where.not('users.id': user.id).order("users.name")
+    if model.discussion_id
+      relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id}").
+               where("memberships.group_id IN (:group_ids) OR dr.id IS NOT NULL", group_ids: group_ids)
+    else
+      relation.where("memberships.group_id IN (:group_ids)", group_ids: group_ids)
+    end
   end
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
@@ -174,7 +177,7 @@ class User < ApplicationRecord
     .where('memberships.group_id': group.id)
   }
 
-  scope :joins_readers, ->(model) {
+  scope :joins_discussion_readers, ->(model) {
     joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id.to_i})")
   }
 
@@ -183,34 +186,9 @@ class User < ApplicationRecord
     .where('fm.archived_at': nil)
   }
 
-  scope :joins_guest_memberships, ->(model) {
-     joins("LEFT OUTER JOIN memberships gm ON (gm.user_id = users.id AND gm.group_id = #{model.guest_group_id.to_i})")
-    .where('gm.archived_at': nil)
-  }
-
-  # This is a double-nested join select raw sql statement, eek!
-  # But, it's not soo complicated. Here's what's going on:
-  # Join 1: Grab all instances of a user receiving an announcement from the given model, based on the model's announcement ids
-  # Join 2: Group those instances, taking the most recent instance's created_at as the last_notified_at timestamp
-  #
-  # then, we join that timestamp to the current user query, available in the last_notified_at column
-  # scope :with_last_notified_at, ->(model) {
-  #   select('users.*, last_notified_at').joins(<<~SQL)
-  #     -- join #2
-  #     LEFT JOIN (
-  #       SELECT users.id as user_id, max(notified.created_at) as last_notified_at
-  #       FROM users
-  #       -- join #1
-  #       LEFT JOIN (
-  #         SELECT user_ids, created_at
-  #         FROM   announcees
-  #         WHERE  announcees.announcement_id IN (#{model.announcement_ids.join(',').presence || '-1'})
-  #       ) notified ON notified.user_ids ? users.id::varchar
-  #       GROUP BY users.id
-  #     ) announcements ON announcements.user_id = users.id
-  #   SQL
-  # }
-  #
+  def default_format
+    self.experiences.fetch('html-editor.uses-markdown', 'html')
+  end
 
   def set_legal_accepted_at
     self.legal_accepted_at = Time.now
@@ -221,7 +199,7 @@ class User < ApplicationRecord
   end
 
   def self.email_status_for(email)
-    verified_first.find_by(email: email)&.email_status || :unused
+    find_by(email: email)&.email_status || :unused
   end
 
   def self.find_for_database_authentication(warden_conditions)

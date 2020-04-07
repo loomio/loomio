@@ -5,5 +5,9 @@ module Ability::DiscussionReader
     can [:update], ::DiscussionReader do |reader|
       reader.user.id == user.id
     end
+
+    can [:redeem], ::DiscussionReader do |reader|
+      DiscussionReader.redeemable.include?(reader)
+    end
   end
 end

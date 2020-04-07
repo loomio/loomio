@@ -1,7 +1,6 @@
 require 'event_bus'
 
 EventBus.configure do |config|
-
   config.listen('new_comment_event',
                 'new_discussion_event',
                 'discussion_edited_event',
@@ -27,11 +26,6 @@ EventBus.configure do |config|
                 'comment_create',
                 'poll_create') { |model, actor| model.perform_draft_purge!(actor) }
 
-  # Make creator a guest group admin on creation
-  config.listen('group_create',
-                'discussion_create',
-                'poll_create') { |model, actor| model.guest_group.add_admin!(actor) }
-
   # Index search vectors after model creation
   config.listen('discussion_create',
                 'discussion_update',
@@ -56,9 +50,9 @@ EventBus.configure do |config|
     MessageChannelService.publish_data(ActiveModel::ArraySerializer.new([reader], each_serializer: DiscussionReaderSerializer, root: :discussions).as_json, to: reader.message_channel)
   end
 
-  config.listen('discussion_mark_as_seen') do |reader|
-    MessageChannelService.publish_model(reader.discussion)
-  end
+  # config.listen('discussion_mark_as_seen') do |reader|
+  #   MessageChannelService.publish_model(reader.discussion)
+  # end
 
   # alert clients that notifications have been read
   config.listen('notification_viewed') do |actor|
@@ -68,15 +62,12 @@ EventBus.configure do |config|
   # update discussion or comment versions_count when title or description edited
   config.listen('discussion_update', 'comment_update', 'poll_update', 'stance_update') { |model| model.update_versions_count }
 
-  config.listen('membership_destroy') { |membership| Queries::OrganisationMemberships.for(membership).destroy_all }
 
   # update stance data for polls
   config.listen('stance_create')  { |stance| stance.poll.update_stance_data }
-  config.listen('stance_create')  { |stance| stance.poll.guest_group.add_member!(stance.participant) }
 
   # publish reply event after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) if comment.parent }
-  config.listen('comment_create') { |comment| comment.discussion.guest_group.add_member! comment.author }
 
   # update discussion importance
   config.listen('discussion_pin',

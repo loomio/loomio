@@ -56,7 +56,7 @@ export default
     canToggleAdmin: ->
       (@membership.group().adminMembershipsCount == 0 and @membership.user() == Session.user()) or
       (AbilityService.canAdministerGroup(@membership.group()) and (!@membership.admin or @canRemoveMembership(@membership))) or
-      (@membership.user() == Session.user() && Session.user().isAdminOf(@membership.group().parent()))
+      (@membership.userIs(Session.user()) && @membership.group().parentOrSelf().adminsInclude(Session.user()))
 
 
     toggleAdmin: (membership) ->
@@ -82,7 +82,7 @@ export default
         v-list-item-title(v-t="'membership_dropdown.make_coordinator'", v-if='!membership.admin')
         v-list-item-title(v-t="'membership_dropdown.demote_coordinator'", v-if='membership.admin')
       v-list-item.membership-dropdown__remove(v-if='canRemoveMembership()' @click='removeMembership()')
-        v-list-item-title(v-if='membership.acceptedAt' v-t="{ path: 'membership_dropdown.remove_from.' + membership.group().targetModel().constructor.singular, args: {pollType: membership.group().targetModel().isA('poll') && membership.group().targetModel().translatedPollType()} }")
+        v-list-item-title(v-if='membership.acceptedAt' v-t="'membership_dropdown.remove_from.group'")
         //- v-list-item-title(v-if='membership.acceptedAt')
         //-   span "remove membership"
         v-list-item-title(v-t="'membership_dropdown.cancel_invitation'", v-if='!membership.acceptedAt')

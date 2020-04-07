@@ -118,7 +118,7 @@ export default
       EventBus.$emit('openModal',
                       component: 'AnnouncementForm',
                       props:
-                        announcement: Records.announcements.buildFromModel(@group.targetModel()))
+                        announcement: Records.announcements.buildFromModel(@group))
 
     onQueryInput: (val) -> @$router.replace(@mergeQuery(q: val))
 
@@ -133,7 +133,7 @@ export default
         @group.membershipsCount - @group.pendingMembershipsCount
 
     canAddMembers: ->
-      AbilityService.canAddMembers(@group.targetModel().group() || @group) && !@pending
+      AbilityService.canAddMembersToGroup(@group) && !@pending
 
     onlyOneAdminWithMultipleMembers: ->
       (@group.adminMembershipsCount < 2) && ((@group.membershipsCount - @group.adminMembershipsCount) > 0)

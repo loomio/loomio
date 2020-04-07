@@ -11,11 +11,11 @@ module Dev::FakeDataHelper
     User.new({
       name: Faker::Name.name,
       email: Faker::Internet.email,
-      password: Faker::Internet.password,
+      password: 'loginlogin',
       detected_locale: 'en',
-      is_admin: true,
       email_verified: true,
-      legal_accepted: true
+      legal_accepted: true,
+      experiences: {changePicture: true}
     }.merge(args))
   end
 

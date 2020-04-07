@@ -18,7 +18,7 @@ module PollEmailHelper
   end
 
   def recipient_stance(recipient, poll)
-    poll.stances.latest.find_by(participant: recipient)
+    poll.stances.latest.find_by(participant: recipient) || Stance.new(poll: poll, participant: recipient)
   end
 
   def time_zone(recipient, poll)
@@ -36,27 +36,20 @@ module PollEmailHelper
   end
 
   def target_url(poll:, recipient:, args: {})
-    membership = membership(poll, recipient)
-    args.merge!(membership_token: membership.token) if membership
-    polymorphic_url(poll, poll_mailer_utm_hash(args))
+    stance = recipient_stance(recipient, poll)
+    args.merge!(stance_token: stance.token) if stance
+    polymorphic_url(poll, poll_mailer_utm_hash.merge(args))
   end
 
-  def unsubscribe_url(poll, recipient, action_name)
-    poll_unsubscribe_url poll, poll_mailer_utm_hash(action_name).merge(unsubscribe_token: recipient.unsubscribe_token)
+  def unsubscribe_url(poll, recipient)
+    poll_unsubscribe_url poll, poll_mailer_utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
   end
 
-  def poll_mailer_utm_hash(args = {}, action_name)
+  def poll_mailer_utm_hash
     {
       utm_medium: 'email',
       utm_campaign: 'poll_mailer',
       utm_source: action_name
-    }.merge(args)
+    }
   end
-
-  private
-
-  def membership(poll, recipient)
-    poll.guest_group.memberships.find_by(user: recipient)
-  end
-
 end

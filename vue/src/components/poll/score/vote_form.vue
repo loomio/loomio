@@ -32,7 +32,7 @@ export default
       @stance.stanceChoicesAttributes = map @stanceChoices, (choice) =>
         poll_option_id: choice.poll_option_id
         score: choice.score
-      actionName = if @stance.isNew() then 'created' else 'updated'
+      actionName = if !@stance.castAt then 'created' else 'updated'
       @stance.save()
       .then =>
         @stance.poll().clearStaleStances()
@@ -69,6 +69,6 @@ form.poll-score-vote-form(@submit.prevent='submit()')
   poll-common-stance-reason(:stance='stance')
   v-card-actions.poll-common-form-actions
     v-spacer
-    poll-common-show-results-button(v-if='stance.isNew()')
+    poll-common-show-results-button(v-if='!stance.castAt')
     v-btn.poll-common-vote-form__submit(color="primary" type='submit' v-t="'poll_common.vote'")
 </template>

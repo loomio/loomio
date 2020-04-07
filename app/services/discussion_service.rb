@@ -10,6 +10,25 @@ class DiscussionService
     Events::NewDiscussion.publish!(discussion)
   end
 
+  def self.announce(discussion:, actor:, params:)
+    actor.ability.authorize! :announce, discussion
+
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         emails: params[:emails],
+                                         user_ids: params[:user_ids])
+
+    new_discussion_readers = users.map do |user|
+      DiscussionReader.new(user: user, discussion: discussion, inviter: actor, volume: DiscussionReader.volumes[:normal])
+    end
+
+    DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
+
+    discussion_readers = DiscussionReader.where(user_id: users.pluck(:id), discussion_id: discussion.id)
+
+    Events::DiscussionAnnounced.publish!(discussion, actor, discussion_readers)
+    discussion_readers
+  end
+
   def self.destroy(discussion:, actor:)
     actor.ability.authorize!(:destroy, discussion)
     discussion.discard!
@@ -94,6 +113,7 @@ class DiscussionService
     actor.ability.authorize! :mark_as_seen, discussion
     reader = DiscussionReader.for_model(discussion, actor)
     reader.viewed!
+    MessageChannelService.publish_model(reader.discussion)
     EventBus.broadcast('discussion_mark_as_seen', reader, actor)
   end
 

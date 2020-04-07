@@ -2,7 +2,7 @@ module PrettyUrlHelper
   include Routing
 
   def join_url(model, opts = {})
-    super opts.merge(model: model.class.to_s.underscore, token: model.guest_group.token)
+    super opts.merge(model: model.class.to_s.underscore, token: model.group.token)
   end
 
   def discussion_url(discussion, options = {})
@@ -20,7 +20,6 @@ module PrettyUrlHelper
   def polymorphic_url(model, opts = {})
     case model
     when NilClass, LoggedOutUser       then nil
-    when GuestGroup                    then polymorphic_url(model.target_model, opts)
     when FormalGroup, GroupIdentity    then group_url(model.group, opts)
     when PaperTrail::Version           then polymorphic_url(model.item, opts)
     when MembershipRequest             then group_url(model.group, opts.merge(use_key: true))
@@ -45,7 +44,7 @@ module PrettyUrlHelper
     when Poll, Outcome, Stance then model.poll.title
     when Reaction              then model.reactable.discussion.title # TODO: deal with polymorphic reactions here
     when Group                 then model.full_name
-    when Membership            then polymorphic_title(model.target_model)
+    when Membership            then polymorphic_title(model.group)
     end
   end
 end

@@ -7,8 +7,36 @@ class PollService
     return false unless poll.valid?
     poll.save!
 
+    Stance.create!(participant: actor, poll: poll, admin: true, reason_format: actor.default_format)
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll, actor)
+  end
+
+  def self.announce(poll:, actor:, params:)
+    actor.ability.authorize! :announce, poll
+
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         emails: params[:emails],
+                                         user_ids: params[:user_ids])
+
+    new_stances =  users.map do |user|
+      Stance.new(participant: user, poll: poll, inviter: actor, volume: DiscussionReader.volumes[:normal], reason_format: user.default_format)
+    end
+    Stance.import(new_stances, on_duplicate_key_ignore: true)
+
+    if poll.discussion
+      new_discussion_readers = users.map do |user|
+        DiscussionReader.new(user: user, discussion: poll.discussion, inviter: actor, volume: DiscussionReader.volumes[:normal])
+      end
+
+      DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
+    end
+
+
+    stances = Stance.where(participant_id: users.pluck(:id), poll: poll)
+
+    Events::PollAnnounced.publish!(poll, actor, stances)
+    stances
   end
 
   def self.close(poll:, actor:)
@@ -25,8 +53,6 @@ class PollService
     return false unless poll.valid?
 
     poll.save!
-    poll.poll_did_not_votes.delete_all
-    poll.update_undecided_count
 
     EventBus.broadcast('poll_reopen', poll, actor)
     Events::PollReopened.publish!(poll, actor)
@@ -50,10 +76,7 @@ class PollService
   end
 
   def self.do_closing_work(poll:)
-    poll.poll_did_not_votes.delete_all
-    poll.poll_did_not_votes.import poll.undecided.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
     poll.update(closed_at: Time.now) unless poll.closed_at.present?
-    poll.update_undecided_count
   end
 
   def self.update(poll:, params:, actor:)

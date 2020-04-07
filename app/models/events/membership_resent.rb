@@ -2,7 +2,7 @@ class Events::MembershipResent < Event
   include Events::Notify::ByEmail
 
   def self.publish!(membership, actor)
-    super membership.target_model,
+    super membership.group,
           user: actor,
           custom_fields: { membership_id: membership.id }
   end

@@ -38,16 +38,11 @@ class Comment < ApplicationRecord
   delegate :name, to: :user, prefix: :author
   delegate :email, to: :user, prefix: :user
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
-  delegate :participants, to: :discussion, prefix: :discussion
   delegate :group_id, to: :discussion, allow_nil: true
   delegate :full_name, to: :group, prefix: :group
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
   delegate :mailer, to: :discussion
-  delegate :id, to: :group, prefix: :group
-  delegate :groups, to: :discussion
-  delegate :guest_group, to: :discussion
-  delegate :guest_group_id, to: :discussion
   delegate :members, to: :discussion
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }

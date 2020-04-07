@@ -107,10 +107,6 @@ class FormalGroup < Group
     self.handle = nil if self.handle.to_s.strip == ""
   end
 
-  def update_undecided_count
-    polls.active.each(&:update_undecided_count)
-  end
-
   def logo_or_parent_logo
     if is_parent?
       logo

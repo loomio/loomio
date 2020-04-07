@@ -7,18 +7,22 @@ describe Queries::VisibleDiscussions do
   let(:discussion) { create :discussion, group: group, author: author, private: true }
 
   subject do
-    Queries::VisibleDiscussions.new(user: user, group_ids: [group.id])
+    Queries::VisibleDiscussions.new(user: user, group_ids: [group.id], show_public: true)
   end
 
   describe 'sorted_by_importance' do
     let(:group) { create(:formal_group, is_visible_to_public: true) }
     let!(:no_importance) { create :discussion, private: false, group: group }
-    let!(:has_decision)  { create :discussion, private: false, group: group, polls: [create(:poll)] }
+    let!(:has_decision)  { create :discussion, private: false, group: group }
     let!(:pinned)        { create :discussion, private: false, group: group, pinned: true }
+
+    before do
+      create(:poll, discussion: has_decision)
+    end
 
     it 'orders discussions by importance when logged out' do
       [pinned, has_decision, no_importance].map(&:update_importance)
-      query = Queries::VisibleDiscussions.new(user: LoggedOutUser.new).sorted_by_importance.to_a
+      query = Queries::VisibleDiscussions.new(user: LoggedOutUser.new, show_public: true).sorted_by_importance.to_a
       expect(query[0]).to eq pinned
       expect(query[1]).to eq has_decision
       expect(query[2]).to eq no_importance
@@ -42,21 +46,21 @@ describe Queries::VisibleDiscussions do
     let!(:private_discussion) { create(:discussion, group: create(:formal_group, is_visible_to_public: false)) }
 
     it 'shows groups visible to public if no groups are specified' do
-      query = Queries::VisibleDiscussions.new(user: logged_out_user)
+      query = Queries::VisibleDiscussions.new(user: logged_out_user, show_public: true)
       expect(query).to include public_discussion
       expect(query).to include another_public_discussion
       expect(query).to_not include private_discussion
     end
 
     it 'shows specified groups if they are public' do
-      query = Queries::VisibleDiscussions.new(user: logged_out_user, group_ids: [public_discussion.group_id])
+      query = Queries::VisibleDiscussions.new(user: logged_out_user, group_ids: [public_discussion.group_id], show_public: true)
       expect(query).to include public_discussion
       expect(query).to_not include another_public_discussion
       expect(query).to_not include private_discussion
     end
 
     it 'shows nothing if no public groups are specified' do
-      query = Queries::VisibleDiscussions.new(user: logged_out_user, group_ids: [private_discussion.group_id])
+      query = Queries::VisibleDiscussions.new(user: logged_out_user, group_ids: [private_discussion.group_id], show_public: true)
       expect(query).to_not include public_discussion
       expect(query).to_not include another_public_discussion
       expect(query).to_not include private_discussion
@@ -185,6 +189,19 @@ describe Queries::VisibleDiscussions do
       discussion
       group.archive!
       subject.should_not include discussion
+    end
+  end
+
+  describe 'guest access' do
+    let(:discussion) { create :discussion, author: author, private: true }
+    it 'returns discussions via discussion reader' do
+      discussion.add_guest!(user, discussion.author)
+      Queries::VisibleDiscussions.new(user: user).should include discussion
+    end
+
+    it 'returns discussions via discussion reader' do
+      discussion
+      Queries::VisibleDiscussions.new(user: user).should_not include discussion
     end
   end
 end

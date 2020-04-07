@@ -144,6 +144,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def collection_for_index(collection, filter: params[:filter])
+    collection = Queries::VisibleDiscussions.new(user: current_user, group_ids: group_ids, tags: split_tags, show_public: true)
     case filter
     when 'show_closed' then collection.is_closed
     when 'all' then collection
@@ -152,6 +153,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def collection_for_dashboard(collection, filter: params[:filter])
+    collection = Queries::VisibleDiscussions.new(user: current_user)
     case filter
     when 'show_muted'  then collection.is_open.muted.sorted_by_latest_activity
     else                    collection.is_open.not_muted.sorted_by_importance

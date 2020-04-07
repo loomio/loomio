@@ -22,59 +22,52 @@ export default new class AbilityService
     _.intersection(Session.user().groupIds(), user.groupIds()).length
 
   canAddComment: (thread) ->
-    _.includes thread.members(), Session.user()
+    thread.membersInclude(Session.user())
 
   canRespondToComment: (comment) ->
-    _.includes comment.discussion().members(), Session.user()
+    comment.discussion().membersInclude(Session.user())
 
   canStartPoll: (model) ->
     return unless model
     switch model.constructor.singular
-      when 'discussion' then @canStartPoll(model.group()) || @canStartPoll(model.guestGroup())
-      when 'group'      then (@canAdministerGroup(model) or Session.user().isMemberOf(model) and model.membersCanRaiseMotions)
+      when 'discussion' then @canStartPoll(model.group())
+      when 'group'      then model.adminsInclude(Session.user()) or (model.membersInclude(Session.user()) and model.membersCanRaiseMotions)
 
   canParticipateInPoll: (poll) ->
     return false unless poll
     return false unless poll.isActive()
     poll.anyoneCanParticipate or
-    @adminOf(poll) or
-    (@memberOf(poll) and (!poll.group() or poll.group().membersCanVote))
-
-  memberOf: (model) ->
-    _.some _.compact(model.groups()), (group) -> Session.user().isMemberOf(group)
-
-  adminOf: (model) ->
-    _.some _.compact(model.groups()), (group) -> Session.user().isAdminOf(group)
+    poll.adminsInclude(Session.user()) or
+    (poll.membersInclude(Session.user()) and (!poll.group() or poll.group().membersCanVote))
 
   canReactToPoll: (poll) ->
     return false unless @isEmailVerified()
     return false unless poll
     poll.anyoneCanParticipate or
-    @adminOf(poll) or
-    (@memberOf(poll) and (!poll.group() or poll.group().membersCanVote))
+    poll.adminsInclude(Session.user()) or
+    (poll.membersInclude(Session.user()) and (!poll.group() or poll.group().membersCanVote))
 
   canEditStance: (stance) ->
     Session.user() == stance.author()
 
   canEditThread: (thread) ->
-    @canAdministerGroup(thread.group()) or
-    Session.user().isMemberOf(thread.group()) and
-    (Session.user().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
+    thread.adminsInclude(Session.user()) or
+    (thread.membersInclude(Session.user()) and
+     (thread.group().membersCanEditDiscussions or thread.author() == Session.user()))
 
   canCloseThread: (thread) ->
-    !thread.closedAt && @canAdministerDiscussion(thread)
+    !thread.closedAt && thread.adminsInclude(Session.user())
 
   canReopenThread: (thread) ->
-    thread.closedAt && @canAdministerDiscussion(thread)
+    thread.closedAt && thread.adminsInclude(Session.user())
 
   canPinThread: (thread) ->
-    !thread.closedAt && !thread.pinned && @canAdministerGroup(thread.group())
+    !thread.closedAt && !thread.pinned && thread.adminsInclude(Session.user())
 
   canUnpinThread: (thread) ->
-    !thread.closedAt && thread.pinned && @canAdministerGroup(thread.group())
+    !thread.closedAt && thread.pinned && thread.adminsInclude(Session.user())
 
-  canExportThread: (thread) ->
-    @canAdministerDiscussion(thread)
+  canExportThread: (thread) -> thread.adminsInclude(Session.user())
 
   canPinEvent: (event) ->
     !event.pinned && event.isSurface() && @canEditThread(event.discussion())
@@ -83,35 +76,30 @@ export default new class AbilityService
     event.pinned && @canEditThread(event.discussion())
 
   canMoveThread: (thread) ->
-    @canAdministerGroup(thread.group()) or
-    Session.user().isAuthorOf(thread)
+    thread.adminsInclude(Session.user()) or thread.author() == Session.user()
 
   canDeleteThread: (thread) ->
-    @canAdministerGroup(thread.group()) or
-    Session.user().isAuthorOf(thread)
+    thread.adminsInclude(Session.user()) or thread.author() == Session.user()
 
   canChangeGroupVolume: (group) ->
-    Session.user().isMemberOf(group)
+    group.membersInclude(Session.user())
 
   canAdminister: (model) ->
     switch model.constructor.singular
-      when 'group'                     then @canAdministerGroup(model.group())
-      when 'discussion', 'comment'     then @canAdministerDiscussion(model.discussion())
-      when 'outcome', 'stance', 'poll' then @canAdministerPoll(model.poll())
+      when 'group'                     then model.adminsInclude(Session.user())
+      when 'discussion', 'comment'     then model.discussion().adminsInclude(Session.user())
+      when 'outcome', 'stance', 'poll' then model.poll().adminsInclude(Session.user())
 
   canAdministerGroup: (group) ->
-    Session.user().isAdminOf(group)
+    group.adminsInclude(Session.user())
 
-  canAdministerDiscussion: (discussion) ->
-    Session.user().isAuthorOf(discussion) or
-    @canAdministerGroup(discussion.group())
+  canAdministerDiscussion: (discussion) -> discussion.adminsInclude(Session.user())
 
-  canChangeVolume: (discussion) ->
-    _.includes discussion.members(), Session.user()
+  canChangeVolume: (discussion) -> discussion.membersInclude(Session.user())
 
   canManageGroupSubscription: (group) ->
     group.isParent() and
-    @canAdministerGroup(group) and
+    group.adminsInclude(Session.user()) and
     group.subscriptionKind? and
     group.subscriptionKind != 'trial' and
     group.subscriptionPaymentMethod != 'manual'
@@ -120,63 +108,51 @@ export default new class AbilityService
     Session.user().id == group.creatorId
 
   canStartThread: (group) ->
-    @canAdministerGroup(group) or
-    (Session.user().isMemberOf(group) and group.membersCanStartDiscussions)
+    group.adminsInclude(Session.user()) or
+    (group.membersInclude(Session.user()) and group.membersCanStartDiscussions)
 
   canAnnounceThread: (discussion) ->
-    @canAdministerGroup(discussion.group()) or
-      (Session.user().isMemberOf(discussion.group()) and discussion.group().membersCanAnnounce)
+    discussion.adminsInclude(Session.user()) or
+    (discussion.membersInclude(Session.user()) and discussion.group().membersCanAnnounce)
 
   canAddMembersToGroup: (group) ->
-    @canAdministerGroup(group) or
-    (Session.user().isMemberOf(group) and group.membersCanAddMembers)
-
-  canAddMembers: (group) ->
-    @canAddMembersToGroup(group) || @canAddMembersToGroup(group.targetModel().group())
-
-  canAddDocuments: (group) ->
-    @canAdministerGroup(group)
-
-  canEditDocument: (group) ->
-    @canAdministerGroup(group)
+    group.adminsInclude(Session.user()) or
+    (group.membersInclude(Session.user()) and group.membersCanAddMembers)
 
   canCreateSubgroups: (group) ->
     group.isParent() and
-    (@canAdministerGroup(group) or
-    (Session.user().isMemberOf(group) and group.membersCanCreateSubgroups))
+    (group.adminsInclude(Session.user()) or
+    (group.membersInclude(Session.user()) and group.membersCanCreateSubgroups))
 
   canEditGroup: (group) ->
-    @canAdministerGroup(group)
+    group.adminsInclude(Session.user())
 
   canLeaveGroup: (group) ->
     Session.user().membershipFor(group)?
 
   canArchiveGroup: (group) ->
-    @canAdministerGroup(group)
+    group.adminsInclude(Session.user())
 
   canEditComment: (comment) ->
-    Session.user().isAuthorOf(comment) and
+    comment.authorIs(Session.user()) and
     (comment.isMostRecent() or comment.group().membersCanEditComments) and
-    comment.discussion().members().includes(Session.user())
+    comment.discussion().membersInclude(Session.user())
 
   canDeleteComment: (comment) ->
-    (Session.user().isAuthorOf(comment)) or @canAdministerGroup(comment.group())
+    comment.authorIs(Session.user()) or comment.discussion().adminsInclude(Session.user())
 
   canRemoveMembership: (membership) ->
     membership and
     (membership.user() == Session.user() or @canAdministerGroup(membership.group()))
 
   canSetMembershipTitle: (membership) ->
-    Session.user() == membership.user() or
-    @canAdministerGroup(membership.group())
+    Session.user() == membership.user() or @canAdministerGroup(membership.group())
 
   canResendMembership: (membership) ->
-    membership and
-    !membership.acceptedAt and
-    membership.inviter() == Session.user()
+    membership and !membership.acceptedAt and membership.inviter() == Session.user()
 
   canManageMembershipRequests: (group) ->
-    (group.membersCanAddMembers and Session.user().isMemberOf(group)) or @canAdministerGroup(group)
+    (group.membersCanAddMembers and group.membersInclude(Session.user())) or group.adminsInclude(Session.user())
 
   canViewPublicGroups: ->
     AppConfig.features.app.public_groups
@@ -185,34 +161,31 @@ export default new class AbilityService
     @isEmailVerified() and (AppConfig.features.app.create_group || Session.user().isAdmin)
 
   canViewGroup: (group) ->
-    !group.privacyIsSecret() or
-    Session.user().isMemberOf(group)
+    !group.privacyIsSecret() or group.membersInclude(Session.user())
 
   canViewPrivateContent: (group) ->
-    Session.user().isMemberOf(group)
+    group.membersInclude(Session.user())
 
   canCreateContentFor: (group) ->
-    Session.user().isMemberOf(group)
+    group.membersInclude(Session.user())
 
   canViewMemberships: (group) ->
-    Session.user().isMemberOf(group)                       ||
-    Session.user().isMemberOf(group.targetModel().group()) ||
-    group.targetModel().anyoneCanParticipate
+    group.membersInclude(Session.user())
 
   canViewPendingMemberships: (group) ->
-    @canAdministerGroup(group) || @canAdministerGroup(group.targetModel().group())
+    group.adminsInclude(Session.user())
 
   canViewPreviousPolls: (group) ->
     @canViewGroup(group)
 
   canJoinGroup: (group) ->
-    ((group.membershipGrantedUpon == 'request') and @canViewGroup(group) and !Session.user().isMemberOf(group)) ||
-    ((group.membershipGrantedUpon == 'approval') and @canViewGroup(group) and Session.user().isAdminOf(group.parent()) and !Session.user().isMemberOf(group))
+    return false if !@canViewGroup(group) or group.membersInclude(Session.user())
+    group.membershipGrantedUpon == 'request' or group.parentOrSelf().adminsInclude(Session.user())
 
   canRequestMembership: (group) ->
-    (group.membershipGrantedUpon == 'approval') and
+    group.membershipGrantedUpon == 'approval' and
     @canViewGroup(group) and
-    !Session.user().isMemberOf(group) and
+    !group.membersInclude(Session.user()) and
     !@canJoinGroup(group)
 
   canTranslate: (model) ->
@@ -222,28 +195,22 @@ export default new class AbilityService
     # !model.translation and Session.user().locale != model.author().locale
 
   canSubscribeToPoll: (poll) ->
-    if poll.group()
-      @canViewGroup(poll.group())
-    else
-      @canAdministerPoll() || _.includes(@poll().voters(), Session.user())
+    poll.membersInclude(Session.user())
 
   canEditPoll: (poll) ->
-    poll.isActive() and @canAdministerPoll(poll)
+    poll.isActive() and poll.adminsInclude(Session.user())
 
   canDeletePoll: (poll) ->
-    @canAdministerPoll(poll)
+    poll.adminsInclude(Session.user())
 
   canExportPoll: (poll) ->
-    @canAdministerPoll(poll)
+    poll.adminsInclude(Session.user())
 
   canSetPollOutcome: (poll) ->
-    poll.isClosed() and @canAdministerPoll(poll)
-
-  canAdministerPoll: (poll) ->
-    _.includes(poll.adminMembers(), Session.user()) || Session.user().isAuthorOf(poll)
+    poll.isClosed() and poll.adminsInclude(Session.user())
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)
 
   canReopenPoll: (poll) ->
-    poll.isClosed() and @canAdministerPoll(poll)
+    poll.isClosed() and poll.adminsInclude(Session.user())

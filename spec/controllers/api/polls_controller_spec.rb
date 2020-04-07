@@ -23,6 +23,7 @@ describe API::PollsController do
 
   before { group.add_member! user }
 
+
   describe 'show' do
     it 'shows a poll' do
       sign_in user
@@ -178,8 +179,7 @@ describe API::PollsController do
       expect(poll.title).to eq poll_params[:title]
       expect(poll.discussion).to eq discussion
       expect(poll.author).to eq user
-      expect(poll.guest_group).to be_present
-      expect(poll.guest_group.admins).to include user
+      expect(poll.admins).to include user
 
       json = JSON.parse(response.body)
       expect(json['polls'].length).to eq 1
@@ -194,8 +194,8 @@ describe API::PollsController do
       poll = Poll.last
       expect(poll.discussion).to eq nil
       expect(poll.group.presence).to eq nil
-      expect(poll.guest_group).to be_present
-      expect(poll.guest_group.admins).to include user
+      expect(poll.author).to eq user
+      expect(poll.admins).to include user
     end
 
     it 'does not allow visitors to create polls' do
@@ -230,20 +230,14 @@ describe API::PollsController do
         expect(response.status).to eq 200
       end
 
-      it 'admin of discussion guest group can raise motions' do
-        discussion.guest_group.add_admin! user
-        post :create, params: { poll: poll_params }
-        expect(response.status).to eq 200
-      end
-
       it 'member of formal group cannot raise motions' do
         discussion.group.add_member! user
         post :create, params: { poll: poll_params }
         expect(response.status).to eq 403
       end
 
-      it 'member of discussion guest group cannot raise motions' do
-        discussion.guest_group.add_member! user
+      it 'guest cannot raise motions' do
+        discussion.add_guest! user, discussion.author
         post :create, params: { poll: poll_params }
         expect(response.status).to eq 403
       end
@@ -261,8 +255,8 @@ describe API::PollsController do
         expect(response.status).to eq 200
       end
 
-      it 'member of discussion guest group can raise motions' do
-        discussion.guest_group.add_member! user
+      it 'guest can raise motions' do
+        discussion.add_guest! user, discussion.author
         post :create, params: { poll: poll_params }
         expect(response.status).to eq 200
       end
@@ -376,8 +370,6 @@ describe API::PollsController do
 
       expect(poll.reload.active?).to eq true
       expect(poll.closing_at).to be_within(1.second).of(poll_params[:closing_at])
-      expect(poll.poll_did_not_votes).to be_empty
-      expect(poll.undecided_count).to eq 3
     end
 
     it 'cannot reopen an active poll' do

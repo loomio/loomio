@@ -42,25 +42,16 @@ class Membership < ApplicationRecord
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
 
-  scope :undecided_for, ->(poll) {
-     joins(:user)
-    .joins("LEFT OUTER JOIN stances ON stances.participant_id = users.id AND stances.poll_id = #{poll.id}")
-    .where(group: [poll.group, poll.discussion_guest_group, poll.guest_group])
-    .where('stances.id': nil).accepted
-  }
-
   delegate :name, :email, to: :user, prefix: :user
   delegate :parent, to: :group, prefix: :group, allow_nil: true
   delegate :name, :full_name, to: :group, prefix: :group
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
-  delegate :target_model, to: :group
   delegate :mailer, to: :user
 
   update_counter_cache :group, :memberships_count
   update_counter_cache :group, :pending_memberships_count
   update_counter_cache :group, :admin_memberships_count
-  update_counter_cache :group, :undecided_count
   update_counter_cache :user,  :memberships_count
 
   before_create :set_volume
@@ -87,6 +78,6 @@ class Membership < ApplicationRecord
   private
 
   def set_volume
-    self.volume = user.default_membership_volume if id.nil? && group.is_formal_group?
+    self.volume = user.default_membership_volume if id.nil?
   end
 end

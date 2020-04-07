@@ -11,7 +11,7 @@ class Events::AnnouncementResend < Event
   end
 
   def email_method
-    custom_fields['kind']
+    'group_announced'
   end
 
   def email_subject_key

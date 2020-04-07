@@ -31,6 +31,8 @@ class API::RegistrationsController < Devise::RegistrationsController
   def email_can_be_verified?
     (pending_membership&.user  ||
      pending_login_token&.user ||
+     pending_discussion_reader&.user ||
+     pending_stance&.user ||
      pending_identity)&.email == sign_up_params[:email]
   end
 

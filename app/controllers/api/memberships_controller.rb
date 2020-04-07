@@ -16,7 +16,7 @@ class API::MembershipsController < API::RestfulController
         collection.pending
       else
         collection.active
-      end.where(group: model.groups).order('admin desc, created_at desc')
+      end.where(group: model.group).order('admin desc, created_at desc')
     end
     respond_with_collection(scope: index_scope)
   end
@@ -57,7 +57,7 @@ class API::MembershipsController < API::RestfulController
         when 'mine', 'all'
           model.group.id_and_subgroup_ids
         else
-          model.groups
+          [model.group.id]
         end
 
       collection = collection.where(group_id: group_ids)
@@ -110,17 +110,10 @@ class API::MembershipsController < API::RestfulController
     respond_with_resource
   end
 
-  def undecided
-    poll = load_and_authorize(:poll)
-    instantiate_collection { |collection| collection.where(group: poll.groups, user: poll.undecided) }
-    respond_with_collection
-  end
-
   private
   def valid_orders
     ['created_at', 'created_at desc', 'users.name', 'admin desc', 'accepted_at desc', 'accepted_at']
   end
-
 
   def index_scope
     { email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id), include_inviter: true }

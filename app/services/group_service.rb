@@ -1,4 +1,31 @@
 module GroupService
+  def self.announce(group:, params:, actor:)
+    actor.ability.authorize! :announce, group
+
+    invited_group_ids = Array(params[:invited_group_ids]).map(&:to_i)
+
+    users = UserInviter.where_or_create!(inviter: actor,
+                                         emails: params[:emails],
+                                         user_ids: params[:user_ids])
+
+    new_memberships = users.where.not(id: group.all_member_ids).map do |user|
+      Membership.new inviter: actor,
+                     user: user,
+                     group: group,
+                     volume: 2,
+                     experiences: {invited_group_ids: invited_group_ids}.compact
+    end
+
+    Membership.import(new_memberships, on_duplicate_key_ignore: true)
+
+    memberships = Membership.where(group: group, user_id: users.pluck(:id))
+
+    group.update_pending_memberships_count
+    group.update_memberships_count
+    Events::AnnouncementCreated.publish!(group, actor, memberships)
+    Membership.where(user_id: users.pluck(:id), group_id: group.id)
+  end
+
   def self.create(group:, actor: )
     actor.ability.authorize! :create, group
 
@@ -6,13 +33,14 @@ module GroupService
 
     group.is_referral = actor.groups.size > 0
 
-    if group.is_formal_group? && group.is_parent?
+    if group.is_parent?
       group.default_group_cover = DefaultGroupCover.sample
       group.creator             = actor if actor.is_logged_in?
       ExampleContent.new(group).add_to_group! if AppConfig.app_features[:example_content]
     end
 
     group.save!
+    group.add_admin!(actor)
 
     EventBus.broadcast('group_create', group, actor)
   end

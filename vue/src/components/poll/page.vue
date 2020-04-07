@@ -17,9 +17,6 @@ export default
   created: ->
     Records.polls.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
       EventBus.$emit 'pageError', error
-    EventBus.$on 'signedIn', =>
-      Records.polls.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
-        EventBus.$emit 'pageError', error
 
   methods:
     init: (poll) ->
@@ -60,6 +57,6 @@ v-content
         v-layout(column v-if='!isEmptyPoll')
           poll-common-example-card(v-if='poll.example', :poll='poll')
           poll-common-card.mb-3(:poll='poll')
-          membership-card(:group='poll.guestGroup()')
-          membership-card(:group='poll.guestGroup()', :pending='true')
+          //- membership-card(:group='poll.guestGroup()')
+          //- membership-card(:group='poll.guestGroup()', :pending='true')
 </template>

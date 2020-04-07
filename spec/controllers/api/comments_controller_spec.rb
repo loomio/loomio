@@ -78,14 +78,20 @@ describe API::CommentsController do
           expect(Comment.last.body).to eq "<a rel=\"nofollow ugc noreferrer noopener\" target=\"_blank\">hello</a>"
         end
 
-        it 'allows guest group members to comment' do
+        it 'allows guests to comment' do
           discussion.group.memberships.find_by(user: user).destroy
-          discussion.guest_group.add_member! user
+          discussion.discussion_readers.create(user: user, inviter: discussion.author)
 
           post :create, params: { comment: comment_params }
           expect(response.status).to eq 200
           expect(Comment.where(body: comment_params[:body],
                                user_id: user.id)).to exist
+        end
+
+        it 'disallows aliens to comment' do
+          discussion.group.memberships.find_by(user: user).destroy
+          post :create, params: { comment: comment_params }
+          expect(response.status).to eq 403
         end
 
         it 'responds with a discussion with a reader' do
@@ -109,7 +115,7 @@ describe API::CommentsController do
 
           it 'invites non-members to the discussion' do
             comment_params[:body] = "Hello, @#{another_user.username}!"
-            expect { post :create, params: { comment: comment_params }, format: :json }.to change { discussion.guest_group.memberships.count }.by(1)
+            expect { post :create, params: { comment: comment_params }, format: :json }.to change { discussion.readers.count }.by(1)
           end
         end
       end

@@ -16,6 +16,8 @@ export default class RestfulClient
   constructor: (resourcePlural) ->
     @defaultParams.unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token')
     @defaultParams.membership_token = new URLSearchParams(location.search).get('membership_token')
+    @defaultParams.stance_token = new URLSearchParams(location.search).get('stance_token')
+    @defaultParams.discussion_reader_token = new URLSearchParams(location.search).get('discussion_reader_token')
     @defaultParams = omitBy(@defaultParams, isNil)
     @processing = []
     @resourcePlural = snakeCase(resourcePlural)

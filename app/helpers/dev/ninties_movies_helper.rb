@@ -362,11 +362,10 @@ module Dev::NintiesMoviesHelper
     membership = Membership.create(user: emilio, group: another_group, inviter: patrick)
     MembershipService.redeem(membership: membership, actor: emilio)
 
-    'poll_created'
     poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
-    AnnouncementService.create(
-      model: poll,
-      params: { kind: :poll_created, recipients: { user_ids: patrick.id }},
+    PollService.announce(
+      poll: poll,
+      params: { kind: :poll_created, user_ids: [patrick.id] },
       actor: jennifer
     )
 
@@ -378,9 +377,9 @@ module Dev::NintiesMoviesHelper
 
     PollService.create(poll: poll, actor: jennifer)
     outcome = FactoryBot.build(:outcome, poll: poll)
-    AnnouncementService.create(
-      model: outcome,
-      params: { kind: :outcome_created, recipients: { user_ids: patrick.id } },
+    OutcomeService.announce(
+      outcome: outcome,
+      params: {user_ids: patrick.id},
       actor: jennifer
     )
 

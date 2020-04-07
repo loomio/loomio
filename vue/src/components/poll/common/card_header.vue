@@ -15,7 +15,7 @@ export default
       pick PollService.actions(@poll, @), ['announce_poll']
 
     groups: ->
-      map compact([@poll.group().parent(), @poll.group(), @poll.discussion()]), (model) =>
+      map compact([@poll.group(), @poll.discussion()]), (model) =>
         text: model.name || model.title
         disabled: false
         to: @urlFor(model)
