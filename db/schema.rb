@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_053732) do
+ActiveRecord::Schema.define(version: 2020_04_07_060647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -614,7 +614,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_053732) do
     t.jsonb "matrix_counts", default: [], null: false
     t.boolean "notify_on_participate", default: false, null: false
     t.boolean "example", default: false, null: false
-    t.integer "uncast_stances_count", default: 0, null: false
+    t.integer "undecided_count", default: 0, null: false
     t.boolean "voter_can_add_options", default: false, null: false
     t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false
