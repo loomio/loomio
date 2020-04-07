@@ -186,7 +186,7 @@ module.exports = {
     page.expectText('.invite-people-mailer__body', 'Accept invitation')
     page.click('.base-mailer__button--primary', 2000)
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-signin-form', 'Welcome back, Jennifer!')
+    page.expectText('.auth-signin-form', 'Welcome back,')
     page.click('.auth-signin-form__submit')
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
