@@ -12,6 +12,8 @@ module PendingActionsHelper
       session.delete(:pending_login_token)
       session.delete(:pending_identity_id)
       session.delete(:pending_group_token)
+      session.delete(:pending_discussion_reader_token)
+      session.delete(:pending_stance_token)
     end
   end
 
@@ -67,7 +69,7 @@ module PendingActionsHelper
   end
 
   def pending_discussion_reader
-    DiscussionReader.redeemable.find_by(token: pending_discussion_reader_token)
+    DiscussionReader.redeemable.find_by(token: pending_discussion_reader_token) if pending_discussion_reader_token
   end
 
   def pending_stance_token
@@ -75,7 +77,7 @@ module PendingActionsHelper
   end
 
   def pending_stance
-    Stance.redeemable.find_by(token: pending_stance_token)
+    Stance.redeemable.find_by(token: pending_stance_token) if pending_stance_token
   end
 
   # def pending_guest_membership
