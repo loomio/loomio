@@ -50,7 +50,7 @@ export default class PollModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
     @belongsTo 'group'
-    @hasMany   'pollOptions'
+    @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'pollDidNotVotes'
     @hasMany   'versions'
