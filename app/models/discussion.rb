@@ -108,6 +108,7 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
 
   def members
+    # User.where(id: group.members.pluck(:id).concat(guests.pluck(:id)).uniq)
     User.active.distinct.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
@@ -116,6 +117,7 @@ class Discussion < ApplicationRecord
   end
 
   def admins
+    # User.where(id: group.admins.pluck(:id).concat(admin_guests.pluck(:id)).uniq)
     User.active.distinct.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").

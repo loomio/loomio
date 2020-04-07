@@ -181,6 +181,7 @@ class Poll < ApplicationRecord
   end
 
   def admins
+    # User.where(id: [group.admins, discussion&.admins, admin_voters].compact.map {|rel| rel.pluck(:id) }.flatten)
     User.active.distinct.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
@@ -191,6 +192,7 @@ class Poll < ApplicationRecord
   end
 
   def members
+    # User.where(id: [group.members, discussion&.readers, voters].compact.map {|rel| rel.pluck(:id) }.flatten)
     User.active.distinct.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
