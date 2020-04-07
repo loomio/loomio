@@ -1,3 +1,14 @@
+## 2020-04-07 (Loomio 2.1.4)
+
+- Updated Tiptap for text editor
+- Removed Slack bot support for creating polls/threads
+- Fixed group invitation so other members can resend invitation
+- Fixed poll vote form resetting if poll data changes partway
+- Fixed poll options not displaying in order
+- Fixed exported poll chart sometimes displaying incorrect information
+- Fixed inconsistent poll names
+- Fixed explore page query for open source installs
+
 ## 2020-03-16 (Loomio 2.1.3)
 
 - Add subscription information panel in Group Settings

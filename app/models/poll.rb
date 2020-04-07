@@ -62,7 +62,7 @@ class Poll < ApplicationRecord
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
 
-  has_many :poll_options, dependent: :destroy
+  has_many :poll_options, -> { order('priority') }, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
@@ -166,7 +166,7 @@ class Poll < ApplicationRecord
         GROUP BY poll_options.name
       }).map { |row| [row['name'], row['total'].to_i] }.to_h))
 
-    update_attribute(:stance_counts, ordered_poll_options.pluck(:name).map { |name| stance_data[name] })
+    update_attribute(:stance_counts, poll_options.pluck(:name).map { |name| stance_data[name] })
     poll_options.map(&:update_option_score_counts) if poll.has_option_score_counts
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
@@ -211,19 +211,11 @@ class Poll < ApplicationRecord
   end
 
   def meeting_score_tallies
-    ordered_poll_options.map do |option|
+    poll_options.map do |option|
       [option.id, {
         maybe:    option.stance_choices.latest.where(score: 1).count,
         yes:      option.stance_choices.latest.where(score: 2).count
       }]
-    end
-  end
-
-  def ordered_poll_options
-    if self.dates_as_options
-      self.poll_options.order(name: :asc)
-    else
-      self.poll_options.order(priority: :asc)
     end
   end
 
@@ -234,7 +226,10 @@ class Poll < ApplicationRecord
   def poll_option_names=(names)
     names    = Array(names)
     existing = Array(poll_options.pluck(:name))
-    (names - existing).each_with_index { |name, priority| poll_options.build(name: name, priority: existing.count + priority) }
+    names = names.sort if poll_type == 'meeting'
+    names.each_with_index do |name, priority|
+      poll_options.find_or_initialize_by(name: name).priority = priority
+    end
     @poll_option_removed_names = (existing - names)
   end
 

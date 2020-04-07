@@ -50,7 +50,7 @@ describe Poll do
         'Apple',
         'Pineapple'
       ])
-      expect(poll.ordered_poll_options.first.name).to eq 'Orange'
+      expect(poll.reload.poll_options.first.name).to eq 'Orange'
     end
 
     it 'orders by name when meeting poll' do
@@ -59,7 +59,7 @@ describe Poll do
         '01-01-2017',
         '01-01-2016',
       ])
-      expect(meeting.ordered_poll_options.first.name).to eq '01-01-2016'
+      expect(meeting.reload.poll_options.first.name).to eq '01-01-2016'
     end
   end
 

@@ -97,7 +97,7 @@ GEM
       addressable (>= 2.3.2)
       nokogiri
       safely_block (>= 0.1.1)
-    ahoy_matey (3.0.1)
+    ahoy_matey (3.0.2)
       activesupport (>= 5)
       device_detector
       geocoder (>= 1.4.5)
@@ -109,8 +109,8 @@ GEM
       execjs
     awesome_print (1.8.0)
     aws-eventstream (1.0.3)
-    aws-partitions (1.283.0)
-    aws-sdk-core (3.91.1)
+    aws-partitions (1.294.0)
+    aws-sdk-core (3.92.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
@@ -118,7 +118,7 @@ GEM
     aws-sdk-kms (1.30.0)
       aws-sdk-core (~> 3, >= 3.71.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.61.1)
+    aws-sdk-s3 (1.61.2)
       aws-sdk-core (~> 3, >= 3.83.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.1)
@@ -164,14 +164,14 @@ GEM
     crass (1.0.6)
     css_parser (1.7.1)
       addressable
-    database_cleaner (1.8.3)
+    database_cleaner (1.8.4)
     derailed (0.1.0)
       derailed_benchmarks
     derailed_benchmarks (0.0.0)
       benchmark-ips (~> 2)
       get_process_mem (~> 0)
       memory_profiler (~> 0)
-    device_detector (1.0.2)
+    device_detector (1.0.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -190,7 +190,7 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
-    errbase (0.1.1)
+    errbase (0.2.0)
     erubi (1.9.0)
     erubis (2.7.0)
     excon (0.73.0)
@@ -339,7 +339,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    oj (3.10.5)
+    oj (3.10.6)
     orm_adapter (0.5.0)
     os (1.0.1)
     paper_trail (10.3.1)
@@ -482,7 +482,7 @@ GEM
       fog-aws (>= 0.9.4)
       mime-types
     safe_yaml (1.0.5)
-    safely_block (0.2.2)
+    safely_block (0.3.0)
       errbase (>= 0.1.1)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -530,7 +530,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -561,7 +561,7 @@ DEPENDENCIES
   activerecord-import (= 1.0.4)
   activerecord-nulldb-adapter
   ahoy_email (~> 1.1.0)
-  ahoy_matey (~> 3.0.1)
+  ahoy_matey (~> 3.0.2)
   autoprefixer-rails
   awesome_print
   aws-sdk-s3

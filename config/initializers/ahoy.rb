@@ -12,7 +12,7 @@ end
 
 Ahoy.api = true
 Ahoy.server_side_visits = :when_needed
-Ahoy.geocode = :async
+Ahoy.geocode = Rails.env.production? ? :async : false
 Ahoy.visit_duration = 30.minutes
 Ahoy.mask_ips = true
 
