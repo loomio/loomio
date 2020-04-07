@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_033823) do
+ActiveRecord::Schema.define(version: 2020_04_07_053732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_033823) do
     t.index ["revoked_at"], name: "revoked_at_null", where: "(revoked_at IS NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true
+    t.index ["user_id"], name: "index_discussion_readers_on_user_id"
   end
 
   create_table "discussion_search_vectors", id: :serial, force: :cascade do |t|

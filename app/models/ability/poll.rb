@@ -13,22 +13,22 @@ module Ability::Poll
     can :vote_in, ::Poll do |poll|
       poll.active? &&
       (poll.anyone_can_participate ||
-      (poll.group.members_can_vote && poll.members.include?(user)) ||
-      poll.admins.include?(user))
+      (poll.group.members_can_vote && poll.members.exists?(user.id)) ||
+      poll.admins.exists?(user.id))
     end
 
     can [:show, :toggle_subscription, :subscribe_to], ::Poll do |poll|
       poll.anyone_can_participate ||
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
-      poll.members.include?(user) ||
+      poll.members.exists?(user.id) ||
       poll.stances.find_by(token: user.stance_token)
     end
 
     can :create, ::Poll do |poll|
       user.email_verified? &&
-      (poll.admins.include?(user) ||
-      (poll.group.members_can_raise_motions && poll.members.include?(user)) ||
+      (poll.admins.exists?(user.id) ||
+      (poll.group.members_can_raise_motions && poll.members.exists?(user.id)) ||
       !poll.group.presence)
     end
 
@@ -36,16 +36,16 @@ module Ability::Poll
       if poll.discussion
         can?(:announce, poll.discussion)
       else
-        poll.author == user || poll.admins.include?(user)
+        poll.author == user || poll.admins.exists?(user.id)
       end
     end
 
     can [:update, :share, :remind, :destroy, :export], ::Poll do |poll|
-      poll.author == user || poll.admins.include?(user)
+      poll.author == user || poll.admins.exists?(user.id)
     end
 
     can :close, ::Poll do |poll|
-      poll.active? && poll.author == user || poll.admins.include?(user)
+      poll.active? && poll.author == user || poll.admins.exists?(user.id)
     end
 
     can :reopen, ::Poll do |poll|
