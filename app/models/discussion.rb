@@ -109,7 +109,7 @@ class Discussion < ApplicationRecord
 
   def members
     # User.where(id: group.members.pluck(:id).concat(guests.pluck(:id)).uniq)
-    User.active.distinct.
+    User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
@@ -118,7 +118,7 @@ class Discussion < ApplicationRecord
 
   def admins
     # User.where(id: group.admins.pluck(:id).concat(admin_guests.pluck(:id)).uniq)
-    User.active.distinct.
+    User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       where('(m.admin = TRUE AND m.id IS NOT NULL AND m.archived_at IS NULL) OR

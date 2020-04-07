@@ -13,7 +13,7 @@ class Queries::UsersByVolumeQuery
 
   def self.users_by_volume(model, operator, volume)
     return User.none if model.nil?
-    User.active.distinct.
+    User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{model.discussion_id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{model.group_id || 0}").
       joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{model.poll_id || 0} AND s.latest = TRUE").
