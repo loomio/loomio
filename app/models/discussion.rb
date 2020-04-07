@@ -108,11 +108,19 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
 
   def members
-    User.where(id: group.members.pluck(:id).concat(guests.pluck(:id)).uniq)
+    User.active.distinct.
+      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id} AND dr.user_id = users.id").
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id}").
+      where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
+             (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
   end
 
   def admins
-    User.where(id: group.admins.pluck(:id).concat(admin_guests.pluck(:id)).uniq)
+    User.active.distinct.
+      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id} AND dr.user_id = users.id").
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id}").
+      where('(m.admin = TRUE AND m.id IS NOT NULL AND m.archived_at IS NULL) OR
+             (dr.admin = TRUE AND dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
   end
 
   def add_guest!(user, inviter)
