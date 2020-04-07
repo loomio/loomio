@@ -85,7 +85,7 @@ class MigrateUserWorker
       destination.group_polls,
       destination.participated_polls
     ].flatten.uniq.each do |poll|
-      poll.update_uncast_stances_count
+      poll.update_undecided_count
       poll.update_stances_count
       poll.update_stance_data
     end

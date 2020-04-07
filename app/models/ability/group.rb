@@ -10,14 +10,14 @@ module Ability::Group
     end
 
     can [:vote_in], ::Group do |group|
-      group.admins.include?(user) || (group.members_can_vote && group.members.include?(user))
+      group.admins.exists?(user.id) || (group.members_can_vote && group.members.exists?(user.id))
     end
 
     can [:see_private_content, :subscribe_to], ::Group do |group|
       !group.archived_at && (
         group.group_privacy == 'open' or
-        group.members.include?(user) or
-        (group.is_visible_to_parent_members? and group.parent_or_self.members.include?(user)))
+        group.members.exists?(user.id) or
+        (group.is_visible_to_parent_members? and group.parent_or_self.members.exists?(user.id)))
     end
 
     can [:update,
@@ -27,7 +27,7 @@ module Ability::Group
          :export,
          :view_pending_invitations,
          :set_saml_provider], ::Group do |group|
-      group.admins.include?(user)
+      group.admins.exists?(user.id)
     end
 
     can [:members_autocomplete,
@@ -36,7 +36,7 @@ module Ability::Group
          :make_draft,
          :move_discussions_to,
          :view_previous_proposals], ::Group do |group|
-      user.email_verified? && user_is_member_of?(group.id)
+      user.email_verified? && group.members.exists?(user.id)
     end
 
     can [:add_members,
@@ -44,7 +44,7 @@ module Ability::Group
          :announce,
          :manage_membership_requests], ::Group do |group|
       user.email_verified? && Subscription.for(group).is_active? && !group.has_max_members &&
-      (((group.members_can_add_members? && user_is_member_of?(group.id)) || user_is_admin_of?(group.id)))
+      ((group.members_can_add_members? && group.members.exists?(user.id)) || group.admins.exists?(user.id))
     end
 
     # please note that I don't like this duplication either.
@@ -52,8 +52,8 @@ module Ability::Group
     can [:add_subgroup], ::Group do |group|
       user.email_verified? &&
       (group.is_parent? &&
-      user_is_member_of?(group.id) &&
-      (group.members_can_create_subgroups? || user_is_admin_of?(group.id)))
+      group.members.exists?(user.id) &&
+      (group.members_can_create_subgroups? || group.admins.exists?(user.id)))
     end
 
     can :move, ::Group do |group|

@@ -61,7 +61,7 @@ class MembershipRequest < ApplicationRecord
   end
 
   def already_in_group?
-    group_members.include?(requestor)
+    group_members.exists?(requestor.id)
   end
 
   def pending_request_already_exists?

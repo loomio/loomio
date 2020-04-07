@@ -115,13 +115,13 @@ class Poll < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
   define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
-  define_counter_cache(:uncast_stances_count) { |poll| poll.stances.latest.uncast.count }
+  define_counter_cache(:undecided_count) { |poll| poll.stances.latest.uncast.count }
   define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
 
   def cast_stances_count
-    stances_count - uncast_stances_count
+    stances_count - undecided_count
   end
 
   def cast_stances_pct

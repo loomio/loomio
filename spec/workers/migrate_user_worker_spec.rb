@@ -75,7 +75,7 @@ describe MigrateUserWorker do
     assert_equal visit.reload.user, jennifer
     assert_equal DiscussionReader.find_by(discussion: discussion, user: jennifer).present?, true
     assert_equal DiscussionReader.count, 1
-    assert_equal another_group.members.include?(jennifer), true
+    assert_equal another_group.members.exists?(jennifer.id), true
     assert_equal jennifer.memberships_count, 2
 
     assert_equal 1, poll.reload.stances_count
