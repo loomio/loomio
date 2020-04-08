@@ -15,7 +15,7 @@ module Ability::Stance
     end
 
     can :redeem, ::Stance do |stance|
-      Stance.redeemable.include?(stance)
+      Stance.redeemable.exists?(stance.id)
     end
   end
 end

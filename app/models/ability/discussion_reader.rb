@@ -7,7 +7,7 @@ module Ability::DiscussionReader
     end
 
     can [:redeem], ::DiscussionReader do |reader|
-      DiscussionReader.redeemable.include?(reader)
+      DiscussionReader.redeemable.exists?(reader.id)
     end
   end
 end
