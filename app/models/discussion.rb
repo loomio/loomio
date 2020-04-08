@@ -126,11 +126,19 @@ class Discussion < ApplicationRecord
   end
 
   def add_guest!(user, inviter)
-    discussion_readers.create!(user: user, inviter: inviter, volume: DiscussionReader.volumes[:normal])
+    if dr = discussion_readers.find_by(user: user)
+      dr.update(inviter: inviter)
+    else
+      discussion_readers.create!(user: user, inviter: inviter, volume: DiscussionReader.volumes[:normal])
+    end
   end
 
   def add_admin!(user, inviter)
-    discussion_readers.create!(user: user, inviter: inviter, admin: true, volume: DiscussionReader.volumes[:normal])
+    if dr = discussion_readers.find_by(user: user)
+      dr.update(inviter: inviter, admin: true)
+    else
+      discussion_readers.create!(user: user, inviter: inviter, admin: true, volume: DiscussionReader.volumes[:normal])
+    end
   end
 
   def poll_id
