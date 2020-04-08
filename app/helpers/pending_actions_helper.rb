@@ -36,6 +36,14 @@ module PendingActionsHelper
     if pending_membership
       MembershipService.redeem(membership: pending_membership, actor: user)
     end
+
+    if pending_guest_membership
+      group_id = pending_guest_membership.group_id
+      if model = (Discussion.find_by(guest_group_id: group_id) || Poll.find_by(guest_group_id: group_id))
+        model.add_guest!(user, pending_guest_membership.inviter)
+      end
+      pending_guest_membership.destroy
+    end
   end
 
   def consume_pending_discussion_reader(user)
@@ -80,9 +88,9 @@ module PendingActionsHelper
     Stance.redeemable.find_by(token: pending_stance_token) if pending_stance_token
   end
 
-  # def pending_guest_membership
-  #   Membership.guest.pending.find_by(token: pending_membership_token) if pending_membership_token
-  # end
+  def pending_guest_membership
+    Membership.guest.pending.find_by(token: pending_membership_token) if pending_membership_token
+  end
 
   def pending_identity
     Identities::Base.find_by(id: session[:pending_identity_id]) if session[:pending_identity_id]
