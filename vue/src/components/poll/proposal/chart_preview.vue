@@ -12,8 +12,8 @@ export default
 .poll-proposal-chart-preview(:style="{width: size+'px', height: size+'px'}")
   poll-proposal-chart.poll-common-collapsed__pie-chart(:stance-data='stanceData', :diameter='size')
   .poll-proposal-chart-preview__stance-container(v-if='showMyStance')
-    div(v-if='myStance', :class='`poll-proposal-chart-preview__stance poll-proposal-chart-preview__stance--${this.myStance.pollOption().name}`')
-    .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-if='!myStance') ?
+    div(v-if='myStance && myStance.castAt', :class='`poll-proposal-chart-preview__stance poll-proposal-chart-preview__stance--${this.myStance.pollOption().name}`')
+    .poll-proposal-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else) ?
 </template>
 <style lang="sass">
 .poll-proposal-chart-preview
