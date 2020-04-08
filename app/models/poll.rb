@@ -125,6 +125,7 @@ class Poll < ApplicationRecord
   end
 
   def cast_stances_pct
+    return 0 if poll.stances_count == 0
     ((poll.cast_stances_count / poll.stances_count) * 100).to_i
   end
 
