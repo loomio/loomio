@@ -18,8 +18,8 @@ describe MigrateUserWorker do
   let!(:reaction)           { saved fake_reaction(reactable: patrick_comment, user: patrick) }
   let!(:poll)               { saved fake_poll(discussion: discussion) }
   let!(:outcome)            { saved fake_outcome(poll: poll) }
-  let!(:patrick_stance)     { saved fake_stance(poll: poll, participant: patrick) }
-  let!(:jennifer_stance)    { saved fake_stance(poll: poll, participant: jennifer) }
+  let!(:patrick_stance)     { fake_stance(poll: poll, participant: patrick) }
+  let!(:jennifer_stance)    { fake_stance(poll: poll, participant: jennifer) }
   let!(:pending_membership) { saved fake_membership(inviter: patrick, group: group, user: saved(fake_user(email_verified: false))) }
   let!(:membership_request) { saved fake_membership_request(requestor: patrick, group: group) }
   let!(:identity)           { saved fake_identity(user: patrick) }
