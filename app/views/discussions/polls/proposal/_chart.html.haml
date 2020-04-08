@@ -10,4 +10,4 @@
             %tr.poll-mailer-proposal__chart-legend-option
               %td{style: "border-color: #{option.color};"}= "#{t(:"poll_proposal_options.#{option.name}")} - #{poll.stance_counts[option.priority]}"
         .poll-common-percent-voted.lmo-hint-text
-          %span=t(:'poll_mailer.common.people_have_voted', num: poll.stances_count, pct: poll.pct_voted)
+          %span=t(:'poll_mailer.common.people_have_voted', num: poll.cast_stances_count, pct: poll.cast_stances_pct)
