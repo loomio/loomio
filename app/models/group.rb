@@ -18,9 +18,9 @@ class Group < ApplicationRecord
 
   belongs_to :creator, class_name: 'User'
   alias_method :author, :creator
-  alias_method :draft_parent, :parent
 
   belongs_to :parent, class_name: 'Group'
+  alias_method :draft_parent, :parent
 
   has_many :discussions,             foreign_key: :group_id, dependent: :destroy
   has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'
@@ -281,7 +281,7 @@ class Group < ApplicationRecord
   def identity_for(type)
     group_identities.joins(:identity).find_by("omniauth_identities.identity_type": type)
   end
-  
+
   private
 
   def handle_is_valid
