@@ -8,7 +8,7 @@ class Group < ApplicationRecord
   include MessageChannel
   include GroupPrivacy
   include HasEvents
-  include GroupExportRelations
+
   extend HasTokens
   extend  NoSpam
 
@@ -71,7 +71,7 @@ class Group < ApplicationRecord
            class_name: 'Group',
            foreign_key: 'parent_id'
   has_many :all_subgroups, dependent: :destroy, class_name: 'Group', foreign_key: :parent_id
-
+  include GroupExportRelations
 
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }
