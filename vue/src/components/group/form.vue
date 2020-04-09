@@ -140,6 +140,7 @@ v-card.group-form
       v-tab(v-t="'group_form.profile'")
       v-tab.group-form__privacy-tab(v-t="'group_form.privacy'")
       v-tab.group-form__permissions-tab(v-t="'group_form.permissions'")
+      v-tab.group-form__thread-defaults-tab(v-t="'common.threads'")
 
       v-tab-item.mt-8
         .v-input
@@ -188,7 +189,50 @@ v-card.group-form
           v-checkbox.group-form__members-can-raise-motions(hide-details v-model='clone["membersCanRaiseMotions"]' :label="$t('group_form.members_can_raise_motions')")
           v-checkbox.group-form__members-can-vote(hide-details v-model='clone["membersCanVote"]' :label="$t('group_form.members_can_vote')")
 
+      v-tab-item.mt-8
+        .group-form__section.group-form__defaults
+          p(v-t="'group_form.thread_defaults_help'")
+          v-card-subtitle(v-t="'thread_arrangement_form.sorting'")
+          v-radio-group(v-model="clone.newThreadsNewestFirst")
+            v-radio(:value="false")
+              template(v-slot:label)
+                strong(v-t="'thread_arrangement_form.earliest'")
+                space
+                | -
+                space
+                span(v-t="'thread_arrangement_form.earliest_description'")
 
+            v-radio(:value="true")
+              template(v-slot:label)
+                strong(v-t="'thread_arrangement_form.latest'")
+                space
+                | -
+                space
+                span(v-t="'thread_arrangement_form.latest_description'")
+
+          v-subheader(v-t="'thread_arrangement_form.replies'")
+          v-radio-group(v-model="clone.newThreadsMaxDepth")
+            v-radio(:value="1")
+              template(v-slot:label)
+                strong(v-t="'thread_arrangement_form.linear'")
+                space
+                | -
+                space
+                span(v-t="'thread_arrangement_form.linear_description'")
+            v-radio(:value="2")
+              template(v-slot:label)
+                strong(v-t="'thread_arrangement_form.nested_once'")
+                space
+                | -
+                space
+                span(v-t="'thread_arrangement_form.nested_once_description'")
+            //- v-radio(:value="3")
+            //-   template(v-slot:label)
+            //-     strong(v-t="'thread_arrangement_form.nested_twice'")
+            //-     space
+            //-     | -
+            //-     space
+            //-     span(v-t="'thread_arrangement_form.nested_twice_description'")
 
   v-card-actions
     v-spacer

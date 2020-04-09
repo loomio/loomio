@@ -84,6 +84,7 @@ class PermittedParams < Struct.new(:params)
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :members_can_raise_motions,
      :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups,
+     :new_threads_max_depth, :new_threads_newest_first,
      :document_ids, {document_ids: []}, :features, {features: AppConfig.group_features.presence || {}},
      :files, :image_files, {files: []}, {image_files: []}
    ]
