@@ -48,7 +48,7 @@ export default
         'join_group_button.join_group'
 
     canJoinGroup: ->
-      AbilityService.canJoinGroup(@group)
+      @group && AbilityService.canJoinGroup(@group)
 
     canRequestMembership: ->
       AbilityService.canRequestMembership(@group)
