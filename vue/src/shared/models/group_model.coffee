@@ -135,9 +135,6 @@ export default class GroupModel extends BaseModel
   privacyIsSecret: ->
     @groupPrivacy == 'secret'
 
-  isSubgroup: ->
-    @parentId?
-
   isArchived: ->
     @archivedAt?
 
@@ -153,7 +150,7 @@ export default class GroupModel extends BaseModel
       AppConfig.theme.icon_src
 
   coverUrl: (size = 'large') ->
-    if @isSubgroup() && !@hasCustomCover
+    if @parent() && !@hasCustomCover
       @parent().coverUrl(size)
     else
       @coverUrls[size]
@@ -176,7 +173,7 @@ export default class GroupModel extends BaseModel
     @subscriptionKind?
 
   isSubgroupOfSecretParent: ->
-    @isSubgroup() && @parent().privacyIsSecret()
+    @parent() && @parent().privacyIsSecret()
 
   groupIdentityFor: (type) ->
     _.find @groupIdentities(), (gi) ->
