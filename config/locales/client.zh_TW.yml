@@ -844,6 +844,7 @@ zh_TW:
     question: '您確定您想要停用此群組嗎？'
     submit: '是的，停用此群組'
   group_form:
+    thread_defaults_help: 新討論串的預設設定
     click_to_change_image: 封面圖片與圖示（點擊以變更）
     permissions_explaination: '有兩種等級的成員資格：管理員與成員。管理員擁有所有權限。選取成員權限：'
     aria_label: '群組表單'
