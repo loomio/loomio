@@ -2217,14 +2217,13 @@ en:
     password: Password
     reactivate: Reactivate account
 
-  install_mattermost:
-    title: Integrate Mattermost
-    helptext: Relay notifications to Mattermost (or other compatible incoming webhooks)
-    success: Integration connected
-    remove: Remove Mattermost integration
+  install_webhook:
+    title: Add webhook integration
+    helptext: Send Loomio notifications to other services, such as a team chatroom.
+    success: Webhook added!
+    remove: Remove webhook
     confirm_remove_helptext: Are you sure you want to remove this integration?
-    removed: Integration removed
-
+    removed: Webhook removed
     form:
       webhook_helptext: Enter the webhook URL to send notifications to. <a href="https://help.loomio.org/en/user_manual/groups/integrations/">Learn how to find your webhook URL</a>
       webhook_label: Webhook URL

@@ -1,4 +1,4 @@
-class Mattermost::StanceSerializer < Mattermost::BaseSerializer
+class Webhook::StanceSerializer < Webhook::BaseSerializer
   def section_title
     object.eventable.stance_choices.map do |sc|
       if object.eventable.poll.has_variable_score

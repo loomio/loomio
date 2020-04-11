@@ -1,4 +1,4 @@
-class Mattermost::PollSerializer < Mattermost::BaseSerializer
+class Webhook::PollSerializer < Webhook::BaseSerializer
   private
 
   def text_options

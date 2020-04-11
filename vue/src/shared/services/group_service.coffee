@@ -119,35 +119,35 @@ export default new class GroupService
                 helptext: 'install_microsoft.card.confirm_remove_helptext'
                 flash:    'install_microsoft.card.identity_removed'
 
-    install_mattermost:
-      name: 'install_mattermost.title'
+    install_webhook:
+      name: 'install_webhook.title'
       icon: 'mdi-chat-processing'
       canPerform: ->
-        # AppConfig.features.app.show_mattermost_card &&
-        !group.groupIdentityFor('mattermost') &&
+        # AppConfig.features.app.show_webhook_card &&
+        !group.groupIdentityFor('webhook') &&
         AbilityService.canAdministerGroup(group)
       perform: ->
         openModal
-          component: 'InstallMattermostModal'
+          component: 'InstallWebhookModal'
           props:
             group: group
 
-    remove_mattermost:
-      name: 'install_mattermost.remove'
+    remove_webhook:
+      name: 'install_webhook.remove'
       icon: 'mdi-chat-processing'
       canPerform: ->
-        group.groupIdentityFor('mattermost') &&
+        group.groupIdentityFor('webhook') &&
         AbilityService.canAdministerGroup(group)
       perform: ->
         openModal
           component: 'ConfirmModal'
           props:
             confirm:
-              submit: group.groupIdentityFor('mattermost').destroy
+              submit: group.groupIdentityFor('webhook').destroy
               text:
-                title: 'install_mattermost.remove'
-                helptext: 'install_mattermost.confirm_remove_helptext'
-                flash: 'install_mattermost.removed'
+                title: 'install_webhook.remove'
+                helptext: 'install_webhook.confirm_remove_helptext'
+                flash: 'install_webhook.removed'
 
     configure_sso:
       name: 'configure_sso.title'

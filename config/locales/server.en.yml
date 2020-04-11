@@ -742,8 +742,7 @@ en:
     poll_expired: "%{poll_type} has closed"
     group_identity_created: "Events from %{group} will now appear in this channel"
 
-  mattermost:
-    # section_title: "[%{title}](%{url})"
+  webhook:
     new_discussion: "%{actor} started a discussion: [%{title}](%{url})"
     new_comment: "%{actor} commented in [%{title}](%{url})"
     outcome_created: "%{actor} shared an outcome for [%{title}](%{url})"
@@ -751,7 +750,7 @@ en:
     stance_created: "%{actor} voted in [%{title}](%{url})"
     poll_closing_soon: "[%{title}](%{url}) closes in 24 hours"
     poll_expired: "[%{title}](%{url}) has closed"
-    group_identity_created: "[%{title}](%{url}) is now connected to this channel"
+    group_identity_created: "%{actor} has enabled notifications from [%{title}](%{url})"
 
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"

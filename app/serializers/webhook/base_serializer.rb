@@ -1,11 +1,11 @@
-class Mattermost::BaseSerializer < ActiveModel::Serializer
+class Webhook::BaseSerializer < ActiveModel::Serializer
   include PrettyUrlHelper
   include PollEmailHelper
 
   attributes :text
 
   def text
-    I18n.t(:"mattermost.#{object.kind}", text_options)
+    I18n.t(:"webhook.#{object.kind}", text_options)
   end
 
   private

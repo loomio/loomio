@@ -1,4 +1,4 @@
-class Clients::Mattermost < Clients::Base
+class Clients::Webhook < Clients::Base
 
   def post_content!(event)
     post @token, params: serialized_event(event)

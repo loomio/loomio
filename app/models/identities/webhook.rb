@@ -1,6 +1,6 @@
-class Identities::Mattermost < Identities::Base
+class Identities::Webhook < Identities::Base
   include Identities::WithClient
-  set_identity_type :mattermost
+  set_identity_type :webhook
   set_custom_fields :event_kinds
 
   def valid_event_kinds
