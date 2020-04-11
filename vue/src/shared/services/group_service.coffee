@@ -119,6 +119,36 @@ export default new class GroupService
                 helptext: 'install_microsoft.card.confirm_remove_helptext'
                 flash:    'install_microsoft.card.identity_removed'
 
+    install_mattermost:
+      name: 'install_mattermost.title'
+      icon: 'mdi-chat-processing'
+      canPerform: ->
+        # AppConfig.features.app.show_mattermost_card &&
+        !group.groupIdentityFor('mattermost') &&
+        AbilityService.canAdministerGroup(group)
+      perform: ->
+        openModal
+          component: 'InstallMattermostModal'
+          props:
+            group: group
+
+    remove_mattermost:
+      name: 'install_mattermost.remove'
+      icon: 'mdi-chat-processing'
+      canPerform: ->
+        group.groupIdentityFor('mattermost') &&
+        AbilityService.canAdministerGroup(group)
+      perform: ->
+        openModal
+          component: 'ConfirmModal'
+          props:
+            confirm:
+              submit: group.groupIdentityFor('mattermost').destroy
+              text:
+                title: 'install_mattermost.remove'
+                helptext: 'install_mattermost.confirm_remove_helptext'
+                flash: 'install_mattermost.removed'
+
     configure_sso:
       name: 'configure_sso.title'
       icon: 'mdi-key-variant'

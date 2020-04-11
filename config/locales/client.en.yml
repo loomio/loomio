@@ -2217,6 +2217,20 @@ en:
     password: Password
     reactivate: Reactivate account
 
+  install_mattermost:
+    title: Integrate Mattermost
+    helptext: Relay notifications to Mattermost (or other compatible incoming webhooks)
+    success: Integration connected
+    remove: Remove Mattermost integration
+    confirm_remove_helptext: Are you sure you want to remove this integration?
+    removed: Integration removed
+
+    form:
+      webhook_helptext: Enter the webhook URL to send notifications to. <a href="https://help.loomio.org/en/user_manual/groups/integrations/">Learn how to find your webhook URL</a>
+      webhook_label: Webhook URL
+      webhook_placeholder: https://mattermost.example.com/...
+      event_kind_helptext: Which events should be posted into the channel?
+
   install_microsoft:
     modal_title: Install Microsoft Teams
     card:
