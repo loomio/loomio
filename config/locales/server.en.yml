@@ -743,14 +743,26 @@ en:
     group_identity_created: "Events from %{group} will now appear in this channel"
 
   webhook:
-    new_discussion: "%{actor} started a discussion: [%{title}](%{url})"
-    new_comment: "%{actor} commented in [%{title}](%{url})"
-    outcome_created: "%{actor} shared an outcome for [%{title}](%{url})"
-    poll_created: "%{actor} started a %{poll_type} in [%{title}](%{url})"
+    new_discussion: |
+      %{actor} started a discussion: [%{title}](%{url})
+
+      %{body}
+    new_comment: |
+      %{actor} commented in [%{title}](%{url})
+
+      %{body}
+    outcome_created: |
+      %{actor} shared an outcome for the %{poll_type}: [%{title}](%{url})
+
+      %{body}
+    poll_created: |
+      %{actor} started a %{poll_type}: [%{title}](%{url})
+
+      %{body}
     stance_created: "%{actor} voted in [%{title}](%{url})"
     poll_closing_soon: "[%{title}](%{url}) closes in 24 hours"
-    poll_expired: "[%{title}](%{url}) has closed"
-    group_identity_created: "%{actor} has enabled notifications from [%{title}](%{url})"
+    poll_expired: "%{poll_type}: [%{title}](%{url}) has closed"
+    poll_closed: "%{actor} closed the %{poll_type}: [%{title}](%{url})"
 
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"

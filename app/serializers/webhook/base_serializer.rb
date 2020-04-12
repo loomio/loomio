@@ -13,12 +13,29 @@ class Webhook::BaseSerializer < ActiveModel::Serializer
   def text_options
     {
       actor: user.name,
-      title: object.eventable.title,
-      url: polymorphic_url(object.eventable, default_url_options)
+      title: title,
+      body: body,
+      url: polymorphic_url(eventable, default_url_options)
     }
+  end
+
+  def title
+    eventable.title
+  end
+
+  def body
+    if object.eventable.body_format == 'html'
+      ReverseMarkdown.convert(eventable.body)
+    else
+      eventable.body
+    end
   end
 
   def user
     anonymous_or_actor_for(object)
+  end
+
+  def eventable
+    object.eventable
   end
 end

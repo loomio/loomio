@@ -4,8 +4,6 @@ class WebhookService
 
     return false unless webhook.valid?
     webhook.save!
-
-    webhook.client.publish_created!
   end
 
   def self.destroy(webhook:, actor:)

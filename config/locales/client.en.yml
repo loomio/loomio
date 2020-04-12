@@ -2221,7 +2221,7 @@ en:
     integrations: Integrations
     subtitle: Connect to Microsoft Teams, Mattermost, Zapier or anything that supports webhooks
     we_have_guides: |
-      See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help getting a webhook url for your service.
+      See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.
     microsoft_teams: Microsoft Teams
     mattermost: Mattermost
     add_webhook: Add webhook

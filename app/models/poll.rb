@@ -129,6 +129,14 @@ class Poll < ApplicationRecord
     ((poll.cast_stances_count / poll.stances_count) * 100).to_i
   end
 
+  def body
+    details
+  end
+
+  def body_format
+    details_format
+  end
+
   def time_zone
     custom_fields.fetch('time_zone', author.time_zone)
   end

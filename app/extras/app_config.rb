@@ -1,5 +1,6 @@
 class AppConfig
   CONFIG_FILES = %w(
+    webhook_event_kinds
     colors
     durations
     emojis
