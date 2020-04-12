@@ -38,6 +38,7 @@ import DiscussionTagRecordsInterface from '@/shared/interfaces/discussion_tag_re
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface'
 import SamlProviderRecordsInterface from '@/shared/interfaces/saml_provider_records_interface'
 import GroupSurveyRecordsInterface from '@/shared/interfaces/group_survey_records_interface'
+import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface'
 
 db      = new loki('default.db')
 records = new RecordStore(db)
@@ -78,6 +79,7 @@ records.addRecordsInterface DiscussionTagRecordsInterface
 records.addRecordsInterface TagRecordsInterface
 records.addRecordsInterface SamlProviderRecordsInterface
 records.addRecordsInterface GroupSurveyRecordsInterface
+records.addRecordsInterface WebhookRecordsInterface
 
 AppConfig.records = records
 export default records

@@ -89,55 +89,22 @@ export default new class GroupService
                 helptext: 'install_slack.card.confirm_remove_helptext'
                 flash:    'install_slack.card.identity_removed'
 
-    install_microsoft_teams:
-      name: 'install_microsoft.card.install_microsoft'
-      icon: 'mdi-microsoft'
-      canPerform: ->
-        # AppConfig.features.app.show_microsoft_card &&
-        !group.groupIdentityFor('microsoft') &&
-        AbilityService.canAdministerGroup(group)
-      perform: ->
-        openModal
-          component: 'InstallMicrosoftTeamsModal'
-          props:
-            group: group
-
-    remove_microsoft_teams:
-      name: 'install_microsoft.card.remove_identity'
-      icon: 'mdi-microsoft'
-      canPerform: ->
-        group.groupIdentityFor('microsoft') &&
-        AbilityService.canAdministerGroup(group)
-      perform: ->
-        openModal
-          component: 'ConfirmModal'
-          props:
-            confirm:
-              submit:     group.groupIdentityFor('microsoft').destroy
-              text:
-                title:    'install_microsoft.card.confirm_remove_title'
-                helptext: 'install_microsoft.card.confirm_remove_helptext'
-                flash:    'install_microsoft.card.identity_removed'
-
     install_webhook:
-      name: 'install_webhook.title'
+      name: 'webhook.title'
       icon: 'mdi-chat-processing'
       canPerform: ->
-        # AppConfig.features.app.show_webhook_card &&
-        !group.groupIdentityFor('webhook') &&
-        AbilityService.canAdministerGroup(group)
+        group.adminsInclude(Session.user())
       perform: ->
         openModal
-          component: 'InstallWebhookModal'
+          component: 'WebhookForm'
           props:
             group: group
 
     remove_webhook:
-      name: 'install_webhook.remove'
+      name: 'webhook.remove'
       icon: 'mdi-chat-processing'
       canPerform: ->
-        group.groupIdentityFor('webhook') &&
-        AbilityService.canAdministerGroup(group)
+        group.adminsInclude(Session.user())
       perform: ->
         openModal
           component: 'ConfirmModal'
@@ -145,9 +112,9 @@ export default new class GroupService
             confirm:
               submit: group.groupIdentityFor('webhook').destroy
               text:
-                title: 'install_webhook.remove'
-                helptext: 'install_webhook.confirm_remove_helptext'
-                flash: 'install_webhook.removed'
+                title: 'webhook.remove'
+                helptext: 'webhook.confirm_remove_helptext'
+                flash: 'webhook.removed'
 
     configure_sso:
       name: 'configure_sso.title'

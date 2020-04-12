@@ -2217,18 +2217,23 @@ en:
     password: Password
     reactivate: Reactivate account
 
-  install_webhook:
-    title: Add webhook integration
-    helptext: Send Loomio notifications to other services, such as a team chatroom.
+  webhook:
+    title: Connect to other apps
+    subtitle: Send notifications from Loomio to other apps you use via "webhooks".
+    we_have_guides: |
+      It's easy to connect Loomio into the other tools your group uses, such as Microsoft Teams, Mattermost or Zapier. See our <a href="" target="_blank">webhook setup guides</a> for step by step instructions.
+    microsoft_teams: Microsoft Teams
+    mattermost: Mattermost
+    form_title: Add webhook
     success: Webhook added!
-    remove: Remove webhook
-    confirm_remove_helptext: Are you sure you want to remove this integration?
+    remove: Remove integration
+    confirm_remove: Are you sure you want to remove this webhook?
     removed: Webhook removed
-    form:
-      webhook_helptext: Enter the webhook URL to send notifications to. <a href="https://help.loomio.org/en/user_manual/groups/integrations/">Learn how to find your webhook URL</a>
-      webhook_label: Webhook URL
-      webhook_placeholder: https://mattermost.example.com/...
-      event_kind_helptext: Which events should be posted into the channel?
+    url_label: Webhook URL
+    url_placeholder: https://hooks.example.com/...
+    name_label: Name
+    name_placeholder: Give this webhook a name so you can identify it later on
+    event_kind_helptext: Which events do you want to be notified of?
 
   install_microsoft:
     modal_title: Install Microsoft Teams

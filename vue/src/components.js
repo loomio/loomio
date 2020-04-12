@@ -55,7 +55,7 @@ module.exports = {
   GroupSubscriptionCard: 'group/subscription_card',
   HelpBubble: 'common/help_bubble',
   InstallMicrosoftTeamsModal: 'install_microsoft_teams/modal',
-  InstallWebhookModal: 'install_webhook/modal',
+  WebhookForm: 'webhook/form',
   InstallSlackForm: 'install_slack/form',
   InstallSlackInstallForm: 'install_slack/install_form',
   InstallSlackModal: 'install_slack/modal',

@@ -23,7 +23,7 @@ import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsModal from '@/components/tags/modal'
 import InstallSlackModal from '@/components/install_slack/modal'
 import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/modal'
-import InstallWebhookModal from '@/components/install_webhook/modal'
+import WebhookForm from '@/components/webhook/form'
 import ChangePictureForm from '@/components/profile/change_picture_form'
 import GroupNewForm from '@/components/group/new_form'
 import PinEventForm from '@/components/thread/pin_event_form'
@@ -59,7 +59,7 @@ export default
     TagsModal
     InstallSlackModal
     InstallMicrosoftTeamsModal
-    InstallWebhookModal
+    WebhookForm
     ChangePictureForm
     GroupNewForm
     PinEventForm
