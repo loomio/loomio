@@ -187,7 +187,11 @@ class User < ApplicationRecord
   }
 
   def default_format
-    self.experiences.fetch('html-editor.uses-markdown', 'html')
+    if self.experiences.fetch('html-editor.uses-markdown')
+      'md'
+    else
+      'html'
+    end
   end
 
   def set_legal_accepted_at
