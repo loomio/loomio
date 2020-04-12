@@ -187,7 +187,7 @@ class User < ApplicationRecord
   }
 
   def default_format
-    if self.experiences.fetch('html-editor.uses-markdown')
+    if experiences['html-editor.uses-markdown']
       'md'
     else
       'html'
