@@ -90,8 +90,8 @@ export default new class GroupService
                 flash:    'install_slack.card.identity_removed'
 
     install_webhook:
-      name: 'webhook.title'
-      icon: 'mdi-chat-processing'
+      name: 'webhook.integrations'
+      icon: 'mdi-webhook'
       canPerform: ->
         group.adminsInclude(Session.user())
       perform: ->
@@ -102,7 +102,7 @@ export default new class GroupService
 
     remove_webhook:
       name: 'webhook.remove'
-      icon: 'mdi-chat-processing'
+      icon: 'mdi-webhook'
       canPerform: ->
         group.adminsInclude(Session.user())
       perform: ->
@@ -120,7 +120,7 @@ export default new class GroupService
       name: 'configure_sso.title'
       icon: 'mdi-key-variant'
       canPerform: ->
-        AppConfig.features.app.group_sso &&
+        # AppConfig.features.app.group_sso &&
         AbilityService.canAdministerGroup(group) && group.isParent()
       perform: ->
         openModal

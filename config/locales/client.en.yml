@@ -2218,13 +2218,13 @@ en:
     reactivate: Reactivate account
 
   webhook:
-    title: Connect to other apps
-    subtitle: Send notifications from Loomio to other apps you use via "webhooks".
+    integrations: Integrations
+    subtitle: Connect to Microsoft Teams, Mattermost, Zapier or anything that supports webhooks
     we_have_guides: |
-      It's easy to connect Loomio into the other tools your group uses, such as Microsoft Teams, Mattermost or Zapier. See our <a href="" target="_blank">webhook setup guides</a> for step by step instructions.
+      See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help getting a webhook url for your service.
     microsoft_teams: Microsoft Teams
     mattermost: Mattermost
-    form_title: Add webhook
+    add_webhook: Add webhook
     success: Webhook added!
     remove: Remove integration
     confirm_remove: Are you sure you want to remove this webhook?
@@ -2268,7 +2268,7 @@ en:
 
   configure_sso:
     redirecting: Please wait, redirecting to sign-in provider
-    title: Configure single sign-on
+    title: Single sign-on
     enabled: Single sign-on is enabled
     helptext: Integrate with OneLogin, Auth0, Microsoft Active Directory, or any other SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Learn more</a>.
     warning_helptext: "Warning: You'll be required to authenticate with your provider after you click save."
