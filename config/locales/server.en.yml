@@ -762,7 +762,8 @@ en:
     stance_created: "%{actor} voted in [%{title}](%{url})"
     poll_closing_soon: "[%{title}](%{url}) closes in 24 hours"
     poll_expired: "%{poll_type}: [%{title}](%{url}) has closed"
-    poll_closed: "%{actor} closed the %{poll_type}: [%{title}](%{url})"
+    poll_closed_by_user: "%{actor} closed the %{poll_type}: [%{title}](%{url})"
+    poll_reopened: "%{actor} reopened %{poll_type}: [%{title}](%{url})"
 
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"
