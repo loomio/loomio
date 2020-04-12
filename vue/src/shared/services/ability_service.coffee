@@ -111,9 +111,9 @@ export default new class AbilityService
     group.adminsInclude(Session.user()) or
     (group.membersInclude(Session.user()) and group.membersCanStartDiscussions)
 
-  canAnnounceThread: (discussion) ->
-    discussion.adminsInclude(Session.user()) or
-    (discussion.membersInclude(Session.user()) and discussion.group().membersCanAnnounce)
+  canAnnounceTo: (model) ->
+    model.group().adminsInclude(Session.user()) or
+    (model.membersInclude(Session.user()) and model.group().membersCanAnnounce)
 
   canAddMembersToGroup: (group) ->
     group.adminsInclude(Session.user()) or

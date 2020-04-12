@@ -22,7 +22,7 @@ export default new class PollService
     announce_poll:
       icon: 'mdi-send'
       canPerform: ->
-        AbilityService.canEditPoll(poll)
+        AbilityService.canAnnounceTo(poll)
       perform: ->
         openModal
           component: 'AnnouncementForm'
