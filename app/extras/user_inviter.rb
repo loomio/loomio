@@ -1,7 +1,11 @@
 class UserInviter
   def self.where_or_create!(emails:, user_ids:, inviter:)
-    emails = Array(emails)
-    user_ids = Array(user_ids)
+
+    # sorry, the ui seems to mix em up
+    mixed = Array(emails).concat(Array(user_ids))
+    emails = mixed.filter {|email| email.to_s.include?("@") }
+    user_ids = mixed.reject {|id| id.to_s.include?("@") }
+
     User.import(safe_emails(emails).map do |email|
       User.new(email: email, time_zone: inviter.time_zone, detected_locale: inviter.locale)
     end, on_duplicate_key_ignore: true)
