@@ -43,7 +43,7 @@
     "textarea-caret": "^3.1.0",
     "tiptap": "1.26.8",
     "tiptap-commands": "1.12.7",
-    "tiptap-extensions": "1.28.8",
+    "tiptap-extensions": "1.29.0",
     "turndown": "^6.0.0",
     "turndown-plugin-gfm": "^1.0.2",
     "url-search-params-polyfill": "^8.0.0",
