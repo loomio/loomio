@@ -89,7 +89,7 @@ module PendingActionsHelper
   end
 
   def pending_guest_membership
-    Membership.guest.pending.find_by(token: pending_membership_token) if pending_membership_token
+    Membership.guest.find_by(token: pending_membership_token) if pending_membership_token
   end
 
   def pending_identity
