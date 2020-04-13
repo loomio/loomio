@@ -5,7 +5,7 @@ export audiencesFor = (model) ->
   compact [
     ('parent_group'     if model.isA('group') && model.parent()),
     ('formal_group'     if model.isA('discussion', 'poll', 'outcome') && audienceSize(model, 'formal_group')),
-    ('discussion_group' if model.isA('poll', 'outcome') && audienceSize(model, 'discussion_group')),
+    ('discussion_group' if model.isA('poll', 'outcome') && model.discussion() && audienceSize(model, 'discussion_group')),
     ('voters'           if model.isA('poll', 'outcome') && audienceSize(model, 'voters')),
     ('undecided'        if model.isA('poll') && audienceSize(model, 'undecided')),
     ('non_voters'       if model.isA('poll') && audienceSize(model, 'non_voters') && model.stancesCount > 1)
