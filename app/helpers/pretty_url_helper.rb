@@ -28,6 +28,7 @@ module PrettyUrlHelper
     when Comment                       then comment_url(model.discussion, model, opts)
     when Membership                    then membership_url(model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)
+    when GuestGroup                    then (Discussion.find_by(guest_group_id: model.id) || Poll.find_by(guest_group_id: model.id))
     else super
     end
   end
