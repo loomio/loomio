@@ -120,6 +120,19 @@ describe API::AnnouncementsController do
       expect(json.map {|u| u['id']}.sort).to include non_voter.id
       expect(json.map {|u| u['id']}.sort).to_not include voter.id
     end
+
+    it 'undecided' do
+      poll = create :poll, author: user
+      voter = create :user
+      non_voter = create :user
+      create :stance, poll: poll, participant: voter, cast_at: Time.now
+      create :stance, poll: poll, participant: non_voter
+
+      get :audience, params: {poll_id: poll.id, kind: "non_voters"}
+      json = JSON.parse response.body
+      expect(json.map {|u| u['id']}.sort).to include non_voter.id
+      expect(json.map {|u| u['id']}.sort).to_not include voter.id
+    end
   end
 
   describe 'history' do
