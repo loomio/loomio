@@ -157,7 +157,7 @@ class User < ApplicationRecord
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :mention_search, -> (user, model, query) do
     # allow mentioning of anyone in the organisation or guests of the discussion
-    group_ids = [model.group.id, model.group.parent_id].compact 
+    group_ids = model.group.parent_or_self.id_and_subgroup_ids
     relation = active.search_for(query).
                       joins("LEFT OUTER JOIN memberships ON memberships.user_id = users.id").
                       where.not('users.id': user.id).order("users.name")
