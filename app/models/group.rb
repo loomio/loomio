@@ -55,6 +55,10 @@ class Group < ApplicationRecord
     nil
   end
 
+  def active_memberships_count
+    memberships_count - pending_memberships_count
+  end
+
   def poll_id
     nil
   end

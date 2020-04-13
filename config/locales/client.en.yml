@@ -620,7 +620,8 @@ en:
       formal_group: Members of {{name}}
       discussion_group: Members of thread
       voters: People who have voted
-      non_voters: People who have not voted
+      undecided: Undecided people
+      non_voters: Not yet invited
 
     form:
       too_many_invitations: |
@@ -2066,7 +2067,7 @@ en:
     stance_updated: Vote updated
 
   poll_common_percent_voted:
-    sentence: "{{numerator}} people have voted ({{percent}}%)"
+    sentence: "{{numerator}} of {{denominator}} people have voted ({{percent}}%)"
 
   poll_count_chart_panel:
     out_of: out of {{goal}}
