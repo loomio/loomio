@@ -102,18 +102,20 @@ describe API::AnnouncementsController do
 
     it 'voters' do
       poll = create :poll, author: user
-      stance = create :stance, poll: poll
+      stance = create :stance, poll: poll, cast_at: 5.minutes.ago
       get :audience, params: {poll_id: poll.id, kind: "voters"}
       json = JSON.parse response.body
       expect(json.map {|u| u['id']}.sort).to eq Array(stance.participant.id)
     end
 
     it 'non_voters' do
-      poll = create :poll, author: user
+      # non voters .. means has not been invited to vote, but part of the group
+      poll = create :poll, group: group, author: user
       voter = create :user
       non_voter = create :user
+      group.add_member! voter
+      group.add_member! non_voter
       create :stance, poll: poll, participant: voter, cast_at: Time.now
-      create :stance, poll: poll, participant: non_voter
 
       get :audience, params: {poll_id: poll.id, kind: "non_voters"}
       json = JSON.parse response.body
@@ -124,13 +126,13 @@ describe API::AnnouncementsController do
     it 'undecided' do
       poll = create :poll, author: user
       voter = create :user
-      non_voter = create :user
+      undecided_voter = create :user
       create :stance, poll: poll, participant: voter, cast_at: Time.now
-      create :stance, poll: poll, participant: non_voter
+      create :stance, poll: poll, participant: undecided_voter
 
-      get :audience, params: {poll_id: poll.id, kind: "non_voters"}
+      get :audience, params: {poll_id: poll.id, kind: "undecided"}
       json = JSON.parse response.body
-      expect(json.map {|u| u['id']}.sort).to include non_voter.id
+      expect(json.map {|u| u['id']}.sort).to include undecided_voter.id
       expect(json.map {|u| u['id']}.sort).to_not include voter.id
     end
   end

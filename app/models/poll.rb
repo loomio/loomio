@@ -125,8 +125,8 @@ class Poll < ApplicationRecord
   end
 
   def cast_stances_pct
-    return 0 if poll.stances_count == 0
-    ((poll.participants_count / poll.stances_count) * 100).to_i
+    return 0 if stances_count == 0
+    ((participants_count.to_f / stances_count) * 100).to_i
   end
 
   def time_zone
@@ -208,8 +208,7 @@ class Poll < ApplicationRecord
     User.active.
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0} AND s.latest = TRUE").
-      where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
-             (s.id IS NULL)')
+      where('(m.id IS NOT NULL AND m.archived_at IS NULL) AND (s.id IS NULL)')
   end
 
 

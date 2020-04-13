@@ -8,10 +8,11 @@ import AbilityService from '@/shared/services/ability_service'
 import Session from '@/shared/services/session'
 import AppConfig      from '@/shared/services/app_config'
 import Flash   from '@/shared/services/flash'
-import { audiencesFor, audienceValuesFor } from '@/shared/helpers/announcement'
-import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge, orderBy} from 'lodash'
+import { audiencesFor, audienceValuesFor, audienceSize } from '@/shared/helpers/announcement'
+import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge, orderBy, some, filter} from 'lodash'
 import { encodeParams } from '@/shared/helpers/encode_params'
 import { onError } from '@/shared/helpers/form'
+import md5 from 'md5'
 
 export default
   props:
@@ -70,9 +71,10 @@ export default
     tooManyInvitations: ->
         @showInvitationsRemaining && (@invitationsRemaining < @recipients.length)
 
-    audiences: -> audiencesFor(@announcement.model)
+    audiences: -> filter audiencesFor(@announcement.model), @audienceSize
 
     audienceValues: -> audienceValuesFor(@announcement.model)
+    audienceSize: (audience) -> audienceSize(@announcement.model, audience)
 
     search: debounce (query) ->
       Records.announcements.search(query, @announcement.model).then (data) =>
@@ -87,7 +89,7 @@ export default
       id: email
       name: email
       email: email
-      emailHash: email
+      emailHash: md5(email)
       avatarKind: 'mdi-email-outline'
 
     copied: (e) ->
@@ -101,7 +103,7 @@ export default
 
     addRecipient: (recipient) ->
       return unless recipient
-      return if includes(@recipients, recipient)
+      return if some(@recipients, (r) -> r.emailHash == recipient.emailHash)
       @searchResults.unshift recipient
       @recipients.unshift recipient
       @query = ''
@@ -174,7 +176,10 @@ v-card
           span(v-t="'announcement.quick_add'")
           space
           span(v-for='(audience, index) in audiences()' :key='audience')
-            a.announcement-form__audience(@click='loadAudience(audience)' v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
+            a.announcement-form__audience(@click='loadAudience(audience)')
+              span(v-t="{ path: 'announcement.audiences.' + audience, args: audienceValues() }")
+              space
+              span ({{ audienceSize(audience) }})
             span(v-if="index < audiences().length - 1")
               | ,
               space

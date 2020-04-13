@@ -34,6 +34,9 @@ class PollService
 
 
     stances = Stance.where(participant_id: users.pluck(:id), poll: poll)
+    poll.update_stances_count
+    poll.update_undecided_count
+    poll.update_stance_data
 
     Events::PollAnnounced.publish!(poll, actor, stances)
     stances

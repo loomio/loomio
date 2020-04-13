@@ -5,12 +5,5 @@ export default
 </script>
 
 <template>
-    <div v-if="poll.membersCount() > 0" class="poll-common-percent-voted lmo-hint-text">
-      <span v-t="{ path: 'poll_common_percent_voted.sentence', args: { numerator: poll.stancesCount, denominator: poll.membersCount(), percent: poll.percentVoted() } }"></span>
-    </div>
+  <span v-t="{ path: 'poll_common_percent_voted.sentence', args: { numerator: poll.participantsCount, denominator: poll.stancesCount, percent: poll.castStancesPct } }"></span>
 </template>
-<style lang="sass">
-.poll-common-percent-voted
-	margin: 16px 0
-
-</style>
