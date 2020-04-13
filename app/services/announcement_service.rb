@@ -6,8 +6,9 @@ class AnnouncementService
     when 'parent_group'     then model.parent.accepted_members.where.not(id: model.member_ids)
     when 'formal_group'     then model.group.accepted_members
     when 'discussion_group' then model.discussion.readers
-    when 'voters'           then model.poll.voters
-    when 'non_voters'       then model.poll.undecided
+    when 'voters'           then model.poll.particpants
+    when 'undecided'        then model.poll.undecided
+    when 'non_voters'       then model.poll.non_voters
     else
       raise UnknownAudienceKindError.new
     end.active.where.not(id: actor.id)

@@ -169,7 +169,7 @@ describe API::AnnouncementsController do
         expect(json['stances'].length).to eq 1
         expect(email_user.notifications.count).to eq 1
         expect(email_user.email_verified).to be false
-        expect(email_user.stances.uncast.count).to eq 1
+        expect(email_user.stances.undecided.count).to eq 1
         expect(poll.voters).to include email_user
       end
 
