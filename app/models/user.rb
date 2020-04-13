@@ -157,11 +157,10 @@ class User < ApplicationRecord
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :mention_search, -> (user, model, query) do
     # allow mentioning of anyone in the organisation or guests of the discussion
-    group_ids = model.group.parent_or_self.id_and_subgroup_ids
-    relation = distinct.active.
-                        search_for(query).
-                        joins("LEFT OUTER JOIN memberships ON memberships.user_id = users.id").
-                        where.not('users.id': user.id).order("users.name")
+    group_ids = [model.group.id, model.group.parent_id].compact 
+    relation = active.search_for(query).
+                      joins("LEFT OUTER JOIN memberships ON memberships.user_id = users.id").
+                      where.not('users.id': user.id).order("users.name")
     if model.discussion_id
       relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id}").
                where("memberships.group_id IN (:group_ids) OR dr.id IS NOT NULL", group_ids: group_ids)
