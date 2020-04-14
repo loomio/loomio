@@ -1,4 +1,4 @@
-ActiveAdmin.register FormalGroup, as: 'Discussion' do
+ActiveAdmin.register Group, as: 'Discussion' do
 
   controller do
     def permitted_params
@@ -6,7 +6,7 @@ ActiveAdmin.register FormalGroup, as: 'Discussion' do
     end
 
     def find_resource
-      FormalGroup.friendly.find(params[:id])
+      Group.friendly.find(params[:id])
     end
   end
 

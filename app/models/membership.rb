@@ -32,9 +32,6 @@ class Membership < ApplicationRecord
   scope :pending,       -> { where(accepted_at: nil) }
   scope :accepted,      -> { where('accepted_at IS NOT NULL') }
 
-  scope :guest,  -> { joins(:group).where("groups.type": "GuestGroup") }
-  scope :formal, -> { joins(:group).where("groups.type": "FormalGroup") }
-
   scope :search_for, ->(query) { joins(:user).where("users.name ilike :query or users.username ilike :query or users.email ilike :query", query: "%#{query}%") }
 
   scope :email_verified, -> { joins(:user).where("users.email_verified": true) }

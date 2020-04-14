@@ -89,9 +89,9 @@ class User < ApplicationRecord
            foreign_key: :inviter_id
 
   has_many :formal_groups,
-           -> { where(type: "FormalGroup") },
+           -> { where(type: "Group") },
            through: :memberships,
-           class_name: 'FormalGroup',
+           class_name: 'Group',
            source: :group
 
   has_many :adminable_groups,

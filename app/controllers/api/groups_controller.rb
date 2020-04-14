@@ -65,7 +65,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def resource_class
-    FormalGroup
+    Group
   end
 
   # serialize out the parent with the group

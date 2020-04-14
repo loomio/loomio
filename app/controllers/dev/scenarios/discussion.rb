@@ -109,7 +109,7 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_mailer_new_comment_email
-    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
+    @group = Group.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick).set_volume!(:loud)
     @group.add_member! jennifer
 
@@ -124,7 +124,7 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_mailer_comment_replied_to_email
-    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
+    @group = Group.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick)
     @group.add_member! jennifer
 
@@ -141,7 +141,7 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_mailer_user_mentioned_email
-    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
+    @group = Group.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick)
     @group.add_member! jennifer
 

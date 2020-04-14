@@ -4,7 +4,7 @@ class GroupSerializer < Simple::GroupSerializer
   def self.attributes_for_formal(*attrs)
     attrs.each do |attr|
       define_method attr, -> { object.send attr }
-      define_method :"include_#{attr}?", -> { object.type == "FormalGroup" }
+      define_method :"include_#{attr}?", -> { object.type == "Group" }
     end
     attributes *attrs
   end
@@ -126,7 +126,7 @@ class GroupSerializer < Simple::GroupSerializer
   end
 
   def include_logo_url_medium?
-    type == "FormalGroup" && object.logo.present?
+    type == "Group" && object.logo.present?
   end
 
   def cover_urls

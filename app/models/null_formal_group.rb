@@ -1,4 +1,4 @@
-class NullFormalGroup
+class NullGroup
   include Null::Group
 
   def initialize
@@ -6,11 +6,11 @@ class NullFormalGroup
   end
 
   def cover_photo
-    FormalGroup.new.cover_photo
+    Group.new.cover_photo
   end
 
   def logo
-    FormalGroup.new.logo
+    Group.new.logo
   end
 
   def parent_or_self

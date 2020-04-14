@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_041126) do
+ActiveRecord::Schema.define(version: 2020_04_14_201547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_041126) do
     t.datetime "updated_at"
   end
 
-  create_table "discussion_readers", id: :serial, force: :cascade do |t|
+  create_table "discussion_readers", id: :integer, default: -> { "nextval('motion_read_logs_id_seq'::regclass)" }, force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -393,7 +393,6 @@ ActiveRecord::Schema.define(version: 2020_04_09_041126) do
     t.integer "closed_polls_count", default: 0, null: false
     t.integer "polls_count", default: 0, null: false
     t.integer "subgroups_count", default: 0, null: false
-    t.string "type", default: "FormalGroup", null: false
     t.integer "open_discussions_count", default: 0, null: false
     t.integer "closed_discussions_count", default: 0, null: false
     t.string "token"
@@ -419,7 +418,6 @@ ActiveRecord::Schema.define(version: 2020_04_09_041126) do
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
     t.index ["subscription_id"], name: "groups_subscription_id_idx"
     t.index ["token"], name: "index_groups_on_token", unique: true
-    t.index ["type"], name: "index_groups_on_type"
   end
 
   create_table "login_tokens", id: :serial, force: :cascade do |t|

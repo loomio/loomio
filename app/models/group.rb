@@ -241,7 +241,7 @@ class Group < ApplicationRecord
   end
 
   def org_discussions_count
-    FormalGroup.where(id: id_and_subgroup_ids).sum(:discussions_count)
+    Group.where(id: id_and_subgroup_ids).sum(:discussions_count)
   end
 
   def has_max_members

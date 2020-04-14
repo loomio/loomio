@@ -1,2 +1,2 @@
-class FormalGroupSerializer < GroupSerializer
+class GroupSerializer < GroupSerializer
 end

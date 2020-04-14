@@ -7,6 +7,6 @@ class Restricted::GroupSerializer < ActiveModel::Serializer
   end
 
   def include_logo_url_medium?
-    object.type == "FormalGroup" && object.logo.present?
+    object.type == "Group" && object.logo.present?
   end
 end

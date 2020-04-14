@@ -2,7 +2,7 @@ class MembershipsController < ApplicationController
   include PrettyUrlHelper
 
   def join
-    group = FormalGroup.published.find_by!(token: params.require(:token))
+    group = Group.published.find_by!(token: params.require(:token))
     session[:pending_group_token] = group.token
     redirect_to back_to_url || polymorphic_url(group)
   end
