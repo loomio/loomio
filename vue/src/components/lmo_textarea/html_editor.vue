@@ -14,7 +14,6 @@ import { Blockquote, CodeBlock, HardBreak, Heading, HorizontalRule,
   TableRow, TodoList, Bold, Code, Italic, Link, Strike, Underline,
   History, Mention, Placeholder, TrailingNode } from 'tiptap-extensions'
 
-import ExternalLink from './external_link'
 import Iframe from './iframe'
 import TodoItem from './todo_item'
 
@@ -52,11 +51,12 @@ export default
     linkDialogIsOpen: false
     iframeDialogIsOpen: false
     editor: new Editor
-      disablePasteRules: true
+      # disablePasteRules: true
       editorProps:
         scrollThreshold: 100
         scrollMargin: 100
       extensions: [
+        new Link(),
         new Mention(MentionPluginConfig.bind(@)()),
         new Blockquote(),
         new BulletList(),
@@ -76,7 +76,6 @@ export default
         new Bold(),
         new Code(),
         new Italic(),
-        new ExternalLink(),
         new Strike(),
         new Underline(),
         new History(),
