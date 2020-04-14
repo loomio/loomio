@@ -1,14 +1,6 @@
 class GroupSerializer < Simple::GroupSerializer
   embed :ids, include: true
 
-  def self.attributes_for_formal(*attrs)
-    attrs.each do |attr|
-      define_method attr, -> { object.send attr }
-      define_method :"include_#{attr}?", -> { object.type == "Group" }
-    end
-    attributes *attrs
-  end
-
   attributes :id,
              :key,
              :handle,
@@ -45,23 +37,21 @@ class GroupSerializer < Simple::GroupSerializer
              :attachments,
              :tag_names,
              :new_threads_max_depth,
-             :new_threads_newest_first
-
-  attributes_for_formal :cover_urls,
-                        :has_custom_cover,
-                        :experiences,
-                        :enable_experiments,
-                        :features,
-                        :open_discussions_count,
-                        :closed_discussions_count,
-                        :recent_activity_count,
-                        :is_subgroup_of_hidden_parent,
-                        :is_visible_to_parent_members,
-                        :parent_members_can_see_discussions,
-                        :org_memberships_count,
-                        :org_discussions_count,
-                        :org_members_count
-
+             :new_threads_newest_first,
+             :cover_urls,
+             :has_custom_cover,
+             :experiences,
+             :enable_experiments,
+             :features,
+             :open_discussions_count,
+             :closed_discussions_count,
+             :recent_activity_count,
+             :is_subgroup_of_hidden_parent,
+             :is_visible_to_parent_members,
+             :parent_members_can_see_discussions,
+             :org_memberships_count,
+             :org_discussions_count,
+             :org_members_count
 
   has_one :parent, serializer: GroupSerializer, root: :groups
 

@@ -72,7 +72,7 @@ module PendingActionsHelper
   end
 
   def pending_membership
-    Membership.formal.pending.find_by(token: pending_membership_token) if pending_membership_token
+    Membership.pending.find_by(token: pending_membership_token) if pending_membership_token
   end
 
   def pending_guest_model

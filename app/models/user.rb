@@ -77,7 +77,7 @@ class User < ApplicationRecord
            dependent: :destroy
 
   has_many :memberships,
-           -> { where(archived_at: nil) },
+           -> { joins("INNER JOIN groups mg on mg.id = memberships.group_id").where(archived_at: nil) },
            dependent: :destroy
 
   has_many :archived_memberships,
@@ -180,7 +180,7 @@ class User < ApplicationRecord
     joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id.to_i})")
   }
 
-  scope :joins_formal_memberships, ->(model) {
+  scope :joins_memberships, ->(model) {
      joins("LEFT OUTER JOIN memberships fm ON (fm.user_id = users.id AND fm.group_id = #{model.group_id.to_i})")
     .where('fm.archived_at': nil)
   }
@@ -209,7 +209,7 @@ class User < ApplicationRecord
     super(warden_conditions.merge(email_verified: true))
   end
 
-  define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
+  define_counter_cache(:memberships_count) {|user| user.memberships.count }
 
   def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
