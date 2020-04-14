@@ -36,6 +36,7 @@ export default
     recaptchaKey: -> AppConfig.recaptchaKey
     termsUrl: -> AppConfig.theme.terms_url
     privacyUrl: -> AppConfig.theme.privacy_url
+    newsletterEnabled: -> AppConfig.newsletterEnabled
     name: -> @user.name
     allow: ->
       AppConfig.features.app.create_user or AppConfig.pendingIdentity.identity_type?
@@ -55,11 +56,16 @@ div(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @ke
       //- label(v-t="'auth_form.name'")
       v-text-field(type='text' autofocus :placeholder="$t('auth_form.name_placeholder')" v-model='vars.name' required='true')
     .auth-signup-form__consent(v-if='termsUrl')
-      v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted')
+      v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)
         template(v-slot:label)
           span(v-html="$t('auth_form.i_accept', { termsUrl: termsUrl, privacyUrl: privacyUrl })")
       validation-errors(:subject='user', field='legalAccepted')
-    v-card-actions
+    .auth-signup-form__newsletter(v-if='newsletterEnabled')
+      v-checkbox.auth-signup-form__newsletter-accepted(v-model='vars.emailNewsletter' hide-details)
+        template(v-slot:label)
+          span(v-html="$t('auth_form.newsletter_label')")
+
+    v-card-actions.mt-8
       v-btn(v-t="'common.action.back'" @click='user.emailStatus = null')
       v-spacer
       v-btn.auth-signup-form__submit(color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
