@@ -1,4 +1,4 @@
-class Microsoft::BaseSerializer < ActiveModel::Serializer
+class Webhook::Microsoft::BaseSerializer < ActiveModel::Serializer
   include PrettyUrlHelper
   attribute :type, key: :"@type"
   attribute :context, key: :"@context"

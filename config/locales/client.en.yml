@@ -2222,6 +2222,10 @@ en:
 
   webhook:
     integrations: Integrations
+    format: Format
+    formats:
+      markdown: Markdown (for Mattermost, Zapier and others)
+      microsoft: Microsoft Teams
     subtitle: Connect to Microsoft Teams, Mattermost, Zapier or anything that supports webhooks
     we_have_guides: |
       See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.

@@ -8,6 +8,7 @@ export default class WebhookModel extends BaseModel
   defaultValues: ->
     name: null
     url: null
+    format: null
     eventKinds: AppConfig.webhookEventKinds
 
   relationships: ->

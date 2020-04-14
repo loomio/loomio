@@ -1,4 +1,4 @@
-class Microsoft::PollSerializer < Microsoft::BaseSerializer
+class Webhook::Microsoft::PollSerializer < Webhook::Microsoft::BaseSerializer
 
   def section_subtitle
     object.eventable.details

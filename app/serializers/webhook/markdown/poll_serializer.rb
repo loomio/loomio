@@ -1,4 +1,4 @@
-class Webhook::PollSerializer < Webhook::BaseSerializer
+class Webhook::Markdown::PollSerializer < Webhook::Markdown::BaseSerializer
   private
 
   def text_options

@@ -1,4 +1,4 @@
-class Webhook::BaseSerializer < ActiveModel::Serializer
+class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   include PrettyUrlHelper
   include PollEmailHelper
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_091658) do
+ActiveRecord::Schema.define(version: 2020_04_14_224655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -815,6 +815,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_091658) do
     t.jsonb "event_kinds", default: [], null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "format", default: "markdown", null: false
     t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 

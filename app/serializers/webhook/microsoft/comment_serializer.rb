@@ -1,4 +1,4 @@
-class Microsoft::CommentSerializer < Microsoft::BaseSerializer
+class Webhook::Microsoft::CommentSerializer < Webhook::Microsoft::BaseSerializer
   def section_title
     object.discussion.title
   end

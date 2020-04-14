@@ -1,4 +1,4 @@
-class Webhook::OutcomeSerializer < Webhook::PollSerializer
+class Webhook::Markdown::OutcomeSerializer < Webhook::Markdown::PollSerializer
   def body
     if eventable.statement_format == 'html'
       ReverseMarkdown.convert(eventable.statement)

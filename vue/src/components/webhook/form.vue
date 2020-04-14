@@ -13,6 +13,10 @@ export default
     webhook: Records.webhooks.build
       groupId: @group.id
     kinds: AppConfig.webhookEventKinds
+    formats: [
+      {text: @$t('webhook.formats.markdown'), value: "markdown"}
+      {text: @$t('webhook.formats.microsoft'), value: "microsoft"}
+    ]
 
   methods:
     submit: ->
@@ -30,6 +34,7 @@ v-card.webhook-form
   v-card-text.install-webhook-form
     p.lmo-hint-text(v-t="'webhook.subtitle'")
     p.lmo-hint-text(v-html="$t('webhook.we_have_guides', {url: 'https://help.loomio.org/en/user_manual/groups/integrations/'})")
+    v-select(v-model="webhook.format" :items="formats" :label="$t('webhook.format')")
     v-text-field.webhook-form__name(v-model='webhook.name' :label="$t('webhook.name_label')" :placeholder="$t('webhook.name_placeholder')")
     validation-errors(:subject='webhook' field='name')
     v-text-field.webhook-form__url(type="url" v-model='webhook.url' :label="$t('webhook.url_label')" :placeholder="$t('webhook.url_placeholder')")
