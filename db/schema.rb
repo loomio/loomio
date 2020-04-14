@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_041126) do
+ActiveRecord::Schema.define(version: 2020_04_14_091658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -153,11 +153,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_041126) do
     t.integer "versions_count", default: 0
     t.string "body_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.index ["created_at"], name: "index_comments_on_created_at"
-    t.index ["discussion_id"], name: "index_comments_on_commentable_id"
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
-    t.index ["parent_id"], name: "index_comments_on_parent_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "default_group_covers", id: :serial, force: :cascade do |t|
@@ -185,16 +181,9 @@ ActiveRecord::Schema.define(version: 2020_04_09_041126) do
     t.datetime "revoked_at"
     t.boolean "admin", default: false, null: false
     t.datetime "accepted_at"
-    t.index ["accepted_at"], name: "accepted_at_null", where: "(accepted_at IS NULL)"
-    t.index ["accepted_at"], name: "index_discussion_readers_on_accepted_at"
-    t.index ["discussion_id"], name: "index_motion_read_logs_on_discussion_id"
-    t.index ["inviter_id"], name: "index_discussion_readers_on_inviter_id"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
-    t.index ["revoked_at"], name: "index_discussion_readers_on_revoked_at"
-    t.index ["revoked_at"], name: "revoked_at_null", where: "(revoked_at IS NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true
-    t.index ["user_id"], name: "index_discussion_readers_on_user_id"
   end
 
   create_table "discussion_search_vectors", id: :serial, force: :cascade do |t|
@@ -302,7 +291,6 @@ ActiveRecord::Schema.define(version: 2020_04_09_041126) do
     t.index ["discussion_id"], name: "index_events_on_discussion_id"
     t.index ["eventable_id"], name: "events_eventable_id_idx"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
-    t.index ["kind"], name: "index_events_on_kind"
     t.index ["parent_id", "discussion_id"], name: "index_events_on_parent_id_and_discussion_id", where: "(discussion_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id"
     t.index ["pinned"], name: "index_events_on_pinned_true", where: "(pinned IS TRUE)"
