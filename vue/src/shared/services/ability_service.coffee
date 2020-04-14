@@ -138,10 +138,10 @@ export default new class AbilityService
 
   canRemoveMembership: (membership) ->
     membership and
-    (membership.user() == Session.user() or @canAdministerGroup(membership.group()))
+    (membership.user() == Session.user() or @canAdminister(membership.group()))
 
   canSetMembershipTitle: (membership) ->
-    Session.user() == membership.user() or @canAdministerGroup(membership.group())
+    Session.user() == membership.user() or @canAdminister(membership.group())
 
   canResendMembership: (membership) ->
     membership and !membership.acceptedAt and membership.inviter() == Session.user()
