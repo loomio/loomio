@@ -29,7 +29,7 @@
     "diff-match-patch": "^1.0.4",
     "emoji-unicode": "^2.0.0",
     "es6-shim": "^0.35.5",
-    "intersection-observer": "^0.7.0",
+    "intersection-observer": "^0.8.0",
     "jstimezonedetect": "~1.0.7",
     "lodash": "4.17.15",
     "lokijs": "1.5.8",
