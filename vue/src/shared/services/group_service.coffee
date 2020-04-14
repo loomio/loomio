@@ -47,7 +47,7 @@ export default new class GroupService
       name: 'group_page.stats'
       icon: 'mdi-chart-bar'
       canPerform: ->
-        AbilityService.canAdministerGroup(group)
+        AbilityService.canAdminister(group)
       perform: ->
         window.open("#{AppConfig.baseUrl}g/#{group.key}/stats?export=1", "_blank")
 
@@ -66,7 +66,7 @@ export default new class GroupService
       name: 'install_slack.modal_title'
       icon: 'mdi-slack'
       canPerform: ->
-        AbilityService.canAdministerGroup(group) && !group.groupIdentityFor('slack')
+        AbilityService.canAdminister(group) && !group.groupIdentityFor('slack')
       perform: ->
         openModal
           component: 'InstallSlackModal'
@@ -77,7 +77,7 @@ export default new class GroupService
       name: 'install_slack.remove_slack'
       icon: 'mdi-slack'
       canPerform: ->
-        AbilityService.canAdministerGroup(group) && group.groupIdentityFor('slack')
+        AbilityService.canAdminister(group) && group.groupIdentityFor('slack')
       perform: ->
         openModal
           component: 'ConfirmModal'
@@ -95,7 +95,7 @@ export default new class GroupService
       canPerform: ->
         # AppConfig.features.app.show_microsoft_card &&
         !group.groupIdentityFor('microsoft') &&
-        AbilityService.canAdministerGroup(group)
+        AbilityService.canAdminister(group)
       perform: ->
         openModal
           component: 'InstallMicrosoftTeamsModal'
@@ -107,7 +107,7 @@ export default new class GroupService
       icon: 'mdi-microsoft'
       canPerform: ->
         group.groupIdentityFor('microsoft') &&
-        AbilityService.canAdministerGroup(group)
+        AbilityService.canAdminister(group)
       perform: ->
         openModal
           component: 'ConfirmModal'
@@ -124,7 +124,7 @@ export default new class GroupService
       icon: 'mdi-key-variant'
       canPerform: ->
         AppConfig.features.app.group_sso &&
-        AbilityService.canAdministerGroup(group) && group.isParent()
+        AbilityService.canAdminister(group) && group.isParent()
       perform: ->
         openModal
           component: 'InstallSamlProviderModal'

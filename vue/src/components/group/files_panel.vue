@@ -99,7 +99,7 @@ export default
   computed:
     showLoadMore: -> !@loader.exhausted && !@attachmentLoader.exhausted
     loading: -> @loader.loading || @attachmentLoader.loading
-    canAdministerGroup: -> AbilityService.canAdministerGroup(@group)
+    canAdminister: -> AbilityService.canAdminister(@group)
 
 </script>
 
