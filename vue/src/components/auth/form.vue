@@ -23,6 +23,8 @@ export default
     .auth-form__email-not-set(v-if='!user.emailStatus')
       auth-provider-form(:user='user')
       auth-email-form(:user='user' v-if='emailLogin')
+      .text-center.caption.mt-4
+        a.auth-form__sign-in-help(href="https://help.loomio.org/en/user_manual/users/sign_in/" target="_blank" v-t="'auth_form.sign_in_help'")
       .auth-form__privacy-notice.caption.text-center.mt-4(v-if='privacyUrl' v-html="$t('auth_form.privacy_notice', { siteName: siteName, privacyUrl: privacyUrl })")
     .auth-form__email-set(v-if='user.emailStatus')
       auth-identity-form(v-if='pendingProviderIdentity && !user.createAccount' :user='user' :identity='pendingProviderIdentity')

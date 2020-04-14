@@ -2166,6 +2166,7 @@ en:
   auth_form:
     code: '000000'
     sign_in_to_loomio: Sign into {{site_name}}
+    sign_in_help: Trouble signing in?
     sign_in: Sign in
     continue: Continue
     create_account: Create account
