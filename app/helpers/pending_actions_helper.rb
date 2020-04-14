@@ -45,6 +45,13 @@ module PendingActionsHelper
     end
   end
 
+  # memberships are valid even if not accepted, but this lets us know if people are using them
+  def accept_pending_membership
+    group = @group or (@discussion && @discussion.group)
+    return unless group
+    MembershipService.redeem_if_pending!(group.membership_for(current_user))
+  end
+
   def consume_pending_discussion_reader(user)
     if pending_discussion_reader
       DiscussionReaderService.redeem(discussion_reader: pending_discussion_reader, actor: user)
