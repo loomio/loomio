@@ -41,7 +41,6 @@ module PendingActionsHelper
       group_id = pending_guest_membership.group_id
       model = Discussion.find_by(guest_group_id: group_id) || Poll.find_by(guest_group_id: group_id)
       model.add_guest!(user, pending_guest_membership.inviter) if model
-      pending_guest_membership.destroy
     end
   end
 
