@@ -1,2 +1,0 @@
-class GroupSerializer < GroupSerializer
-end
