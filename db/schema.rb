@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_201547) do
     t.datetime "updated_at"
   end
 
-  create_table "discussion_readers", id: :integer, default: -> { "nextval('motion_read_logs_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "discussion_readers", id: :serial, force: :cascade do |t| 
     t.integer "user_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"

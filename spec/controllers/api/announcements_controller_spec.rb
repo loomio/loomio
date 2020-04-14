@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe API::AnnouncementsController do
   let(:user)  { create :user }
-  let(:group) { create :formal_group }
-  let(:another_group) { create :formal_group, parent: group }
-  let(:an_unknown_group) { create :formal_group }
+  let(:group) { create :group }
+  let(:another_group) { create :group, parent: group }
+  let(:an_unknown_group) { create :group }
 
   before do
     group.add_admin! user
@@ -15,7 +15,7 @@ describe API::AnnouncementsController do
     let!(:a_friend)        { create :user, name: "Friendly Fran" }
     let!(:an_acquaintance) { create :user, name: "Acquaintance Annie" }
     let!(:a_stranger)      { create :user, name: "Alien Alan" }
-    let(:subgroup) { create :formal_group, parent: group}
+    let(:subgroup) { create :group, parent: group}
 
     before do
       group.add_member! user
@@ -66,9 +66,9 @@ describe API::AnnouncementsController do
   end
 
   describe 'audience' do
-    let(:group)      { create :formal_group }
+    let(:group)      { create :group }
     let(:discussion) { create :discussion, group: group }
-    let(:subgroup)   { create :formal_group, parent: group }
+    let(:subgroup)   { create :group, parent: group }
     let(:both_user)  { create :user }
     let(:parent_user){ create :user }
 
@@ -86,8 +86,8 @@ describe API::AnnouncementsController do
       expect(user_ids).to_not include user.id
     end
 
-    it 'formal_group' do
-      get :audience, params: {discussion_id: discussion.id, kind: "formal_group"}
+    it 'group' do
+      get :audience, params: {discussion_id: discussion.id, kind: "group"}
       json = JSON.parse response.body
       expect(json.map {|u| u['id']}.sort).to eq group.member_ids.reject{|id| id == user.id}.sort
     end
@@ -283,7 +283,7 @@ describe API::AnnouncementsController do
     end
 
     describe 'group' do
-      let(:group) { create :formal_group, creator: user}
+      let(:group) { create :group, creator: user}
 
       it 'does not permit non author to announce' do
         sign_in create(:user)

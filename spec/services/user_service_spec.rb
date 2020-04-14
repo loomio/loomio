@@ -4,7 +4,7 @@ describe UserService do
   describe 'destroy' do
     before do
       @user = FactoryBot.create :user
-      @group = FactoryBot.create :formal_group
+      @group = FactoryBot.create :group
       @membership = @group.add_member! @user
       @discussion = FactoryBot.create :discussion, author: @user, group: @group
     end
@@ -44,8 +44,8 @@ describe UserService do
 
   describe 'delete_spam' do
     let(:spam_user) { FactoryBot.create :user }
-    let(:spam_group) { FactoryBot.build :formal_group }
-    let(:innocent_group) { FactoryBot.create :formal_group }
+    let(:spam_group) { FactoryBot.build :group }
+    let(:innocent_group) { FactoryBot.create :group }
     let(:discussion_in_spam_group) { FactoryBot.build :discussion, group: spam_group }
     let(:spam_discussion_in_innocent_group) { FactoryBot.build :discussion, group: innocent_group }
     let(:discussion_in_innocent_group) { FactoryBot.create :discussion, group: innocent_group }

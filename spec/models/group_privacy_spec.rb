@@ -1,6 +1,6 @@
 require 'rails_helper'
 describe Group do
-  let(:group) { create(:formal_group) }
+  let(:group) { create(:group) }
 
   describe "group_privacy" do
     it 'gets values for "open" correctly' do
@@ -95,8 +95,8 @@ describe Group do
       end
 
       describe "closed subgroup of secret parent" do
-        let(:secret_parent) { create(:formal_group, group_privacy: 'secret')}
-        let(:group) { create(:formal_group, parent: secret_parent, group_privacy: 'closed')}
+        let(:secret_parent) { create(:group, group_privacy: 'secret')}
+        let(:group) { create(:group, parent: secret_parent, group_privacy: 'closed')}
 
         it "is visible_to_parent_members and not visible to public" do
           expect(group.is_visible_to_public).to eq false

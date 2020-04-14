@@ -2,10 +2,10 @@ require 'rails_helper'
 describe API::GroupsController do
 
   let(:user) { create :user }
-  let(:group) { create :formal_group, creator: user }
-  let(:subgroup) { create :formal_group, parent: group }
+  let(:group) { create :group, creator: user }
+  let(:subgroup) { create :group, parent: group }
   let(:discussion) { create :discussion, group: group }
-  let(:another_group) { create :formal_group }
+  let(:another_group) { create :group }
 
   before do
     group.add_admin! user
@@ -31,7 +31,7 @@ describe API::GroupsController do
     end
 
     it 'ensures suggestions are not already taken' do
-      create :formal_group, handle: 'test-case'
+      create :group, handle: 'test-case'
       get :suggest_handle, params: {name: "test case"}
       json = JSON.parse(response.body)
       expect(json['handle']).to eq 'test-case-1'
@@ -72,7 +72,7 @@ describe API::GroupsController do
 
     context 'logged out' do
       before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
-      let(:private_group) { create(:formal_group, is_visible_to_public: false) }
+      let(:private_group) { create(:group, is_visible_to_public: false) }
 
       it 'returns public groups if the user is logged out' do
         get :show, params: { id: group.key }, format: :json
@@ -138,7 +138,7 @@ describe API::GroupsController do
       group.update_attribute(:discussions_count, 3)
       group.subscription = Subscription.create(plan: 'trial', state: 'active')
       group.save
-      second_explore_group = create(:formal_group, name: 'inspection group')
+      second_explore_group = create(:group, name: 'inspection group')
       second_explore_group.update_attribute(:memberships_count, 5)
       second_explore_group.update_attribute(:discussions_count, 3)
       second_explore_group.subscription = Subscription.create(plan: 'trial', state: 'active')

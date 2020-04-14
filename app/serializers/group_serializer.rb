@@ -126,7 +126,7 @@ class GroupSerializer < Simple::GroupSerializer
   end
 
   def include_logo_url_medium?
-    type == "Group" && object.logo.present?
+    object.logo.present?
   end
 
   def cover_urls

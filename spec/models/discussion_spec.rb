@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Discussion do
   let(:user)       { create :user }
-  let(:group)      { create :formal_group }
+  let(:group)      { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:motion)     { create :motion, discussion: discussion }
 

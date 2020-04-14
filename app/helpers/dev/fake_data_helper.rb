@@ -27,7 +27,7 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  # todo fake_formal_group ?
+  # todo fake_group ?
   def fake_group(args = {})
     name = Faker::Company.name
     Group.new({name: name, handle: name.parameterize,

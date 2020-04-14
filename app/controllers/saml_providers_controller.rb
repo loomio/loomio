@@ -70,7 +70,7 @@ class SamlProvidersController < ApplicationController
 
   def find_group!
     if params[:group_id]
-      ModelLocator.new(:formal_group, id: params[:group_id]).locate!.parent_or_self
+      ModelLocator.new(:group, id: params[:group_id]).locate!.parent_or_self
     elsif params[:discussion_id]
       ModelLocator.new(:discussion, id: params[:discussion_id]).locate!.group.parent_or_self
     end

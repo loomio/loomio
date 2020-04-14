@@ -83,7 +83,7 @@ describe Poll do
   end
 
   describe 'members' do
-    let(:poll) { create :poll, group: create(:formal_group) }
+    let(:poll) { create :poll, group: create(:group) }
     let(:user) { create :user }
 
     it 'includes guests' do
@@ -100,7 +100,7 @@ describe Poll do
   end
 
   describe 'voters and participants and undecided' do
-    let(:poll) { create :poll, group: create(:formal_group) }
+    let(:poll) { create :poll, group: create(:group) }
     let(:user) { create :user }
 
     it 'increments voters when a vote is created' do
@@ -117,7 +117,7 @@ describe Poll do
   end
 
   describe 'time_zone' do
-    let(:poll) { create :poll, group: create(:formal_group), author: user }
+    let(:poll) { create :poll, group: create(:group), author: user }
     let(:user) { create :user, time_zone: "Asia/Seoul" }
 
     it 'defaults to the authors time zone' do

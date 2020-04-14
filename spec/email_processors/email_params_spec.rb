@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe EmailParams do
   let(:user) { create :user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:discussion) { create :discussion }
   let(:reply_host) { 'loomio.example.org' }
   let(:to_params) { {
