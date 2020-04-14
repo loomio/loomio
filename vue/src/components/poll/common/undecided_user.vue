@@ -10,7 +10,7 @@ export default
     remindExecuting: false
   methods:
     canAdministerPoll: ->
-      AbilityService.canAdministerPoll(@poll)
+      AbilityService.canAdminister(@poll)
 
     remind: ->
       @remindExecuting = true

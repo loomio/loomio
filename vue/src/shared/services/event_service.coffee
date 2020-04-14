@@ -20,7 +20,7 @@ export default new class EventService
 
       canPerform: ->
         event.kind == 'discussion_edited' &&
-        AbilityService.canAdministerDiscussion(event.discussion())
+        AbilityService.canAdminister(event.discussion())
 
     pin_event:
       name: 'common.action.pin'

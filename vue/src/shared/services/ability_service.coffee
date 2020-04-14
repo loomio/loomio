@@ -90,11 +90,6 @@ export default new class AbilityService
       when 'discussion', 'comment'     then model.discussion().adminsInclude(Session.user())
       when 'outcome', 'stance', 'poll' then model.poll().adminsInclude(Session.user())
 
-  canAdministerGroup: (group) ->
-    group.adminsInclude(Session.user())
-
-  canAdministerDiscussion: (discussion) -> discussion.adminsInclude(Session.user())
-
   canChangeVolume: (discussion) -> discussion.membersInclude(Session.user())
 
   canManageGroupSubscription: (group) ->
