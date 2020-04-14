@@ -36,13 +36,16 @@ class GroupSerializer < Simple::GroupSerializer
              :group_privacy,
              :memberships_count,
              :pending_memberships_count,
+             :active_memberships_count,
              :membership_granted_upon,
              :discussion_privacy_options,
              :has_discussions,
              :admin_memberships_count,
              :archived_at,
              :attachments,
-             :tag_names
+             :tag_names,
+             :new_threads_max_depth,
+             :new_threads_newest_first
 
   attributes_for_formal :cover_urls,
                         :has_custom_cover,

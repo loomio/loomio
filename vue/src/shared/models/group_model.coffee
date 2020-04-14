@@ -52,9 +52,6 @@ export default class GroupModel extends BaseModel
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'
 
-  activeMembershipsCount: ->
-    @membershipsCount - @pendingMembershipsCount
-
   parentOrSelf: ->
     if @isParent() then @ else @parent()
 
@@ -135,9 +132,6 @@ export default class GroupModel extends BaseModel
   privacyIsSecret: ->
     @groupPrivacy == 'secret'
 
-  isSubgroup: ->
-    @parentId?
-
   isArchived: ->
     @archivedAt?
 
@@ -153,7 +147,7 @@ export default class GroupModel extends BaseModel
       AppConfig.theme.icon_src
 
   coverUrl: (size = 'large') ->
-    if @isSubgroup() && !@hasCustomCover
+    if @parent() && !@hasCustomCover
       @parent().coverUrl(size)
     else
       @coverUrls[size]
@@ -176,7 +170,7 @@ export default class GroupModel extends BaseModel
     @subscriptionKind?
 
   isSubgroupOfSecretParent: ->
-    @isSubgroup() && @parent().privacyIsSecret()
+    @parent() && @parent().privacyIsSecret()
 
   groupIdentityFor: (type) ->
     _.find @groupIdentities(), (gi) ->

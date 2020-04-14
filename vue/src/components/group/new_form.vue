@@ -86,7 +86,7 @@ export default
         "group_form.subgroup_name"
 
     privacyOptions: ->
-      if @group.isSubgroup() && @group.parent().groupPrivacy == 'secret'
+      if @group.parent() && @group.parent().groupPrivacy == 'secret'
         ['closed', 'secret']
       else
         ['open', 'closed', 'secret']

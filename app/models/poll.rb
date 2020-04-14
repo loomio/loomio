@@ -54,10 +54,10 @@ class Poll < ApplicationRecord
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
-  has_many :voters, -> {where('stances.revoked_at IS NULL')}, through: :stances, source: :participant
-  has_many :admin_voters, -> { where('stances.admin': true).where('revoked_at IS NULL') }, through: :stances, source: :participant
-  has_many :undecided, -> { where('stances.cast_at IS NULL') }, through: :stances, source: :participant
-  has_many :participants, -> { where('stances.cast_at IS NOT NULL') }, through: :stances, source: :participant
+  has_many :voters,       -> { merge(Stance.latest) }, through: :stances, source: :participant
+  has_many :admin_voters, -> { merge(Stance.latest.admin) }, through: :stances, source: :participant
+  has_many :undecided,    -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
+  has_many :participants, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
@@ -115,18 +115,18 @@ class Poll < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
   define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_count) { |poll| poll.stances.latest.uncast.count }
+  define_counter_cache(:undecided_count) { |poll| poll.stances.latest.undecided.count }
   define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
 
-  def cast_stances_count
+  def participants_count
     stances_count - undecided_count
   end
 
   def cast_stances_pct
-    return 0 if poll.stances_count == 0
-    ((poll.cast_stances_count / poll.stances_count) * 100).to_i
+    return 0 if stances_count == 0
+    ((participants_count.to_f / stances_count) * 100).to_i
   end
 
   def time_zone
@@ -202,6 +202,16 @@ class Poll < ApplicationRecord
              (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
              (s.id IS NOT NULL and s.revoked_at IS NULL)')
   end
+
+  def non_voters
+    # people who have not been given a vote yet
+    User.active.
+      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
+      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0} AND s.latest = TRUE").
+      where('(m.id IS NOT NULL AND m.archived_at IS NULL) AND (s.id IS NULL)')
+  end
+
+
 
   def add_guest!(user, author)
     stances.create!(participant_id: user.id, inviter: author, volume: DiscussionReader.volumes[:normal])

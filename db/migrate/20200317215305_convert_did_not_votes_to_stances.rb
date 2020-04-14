@@ -9,7 +9,7 @@ class ConvertDidNotVotesToStances < ActiveRecord::Migration[5.2]
     puts "after"
     puts "did not vote count:", PollDidNotVote.count
     puts "stance count:", Stance.count
-    puts "cast stance count:", Stance.cast.count
-    puts "not cast stance count:", Stance.uncast.count
+    puts "cast stance count:", Stance.decided.count
+    puts "not cast stance count:", Stance.undecided.count
   end
 end

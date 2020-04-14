@@ -47,7 +47,7 @@ export default new class AuthService
 
   signUp: (user, onSuccess = -> , onFailure = -> ) ->
     Records.registrations.build(
-      _.pick(user, ['email', 'name', 'recaptcha', 'legalAccepted'])
+      _.pick(user, ['email', 'name', 'recaptcha', 'legalAccepted', 'emailNewsletter'])
     ).save().then (data) =>
       if user.hasToken or data.signed_in
         @authSuccess(data)
@@ -76,5 +76,6 @@ export default new class AuthService
     if _.keys(user.errors)
       user.name           = vars.name
       user.legalAccepted  = vars.legalAccepted
+      user.emailNewsletter = vars.emailNewsletter
 
     return _.keys(user.errors).length == 0

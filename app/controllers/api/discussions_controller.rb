@@ -23,6 +23,7 @@ class API::DiscussionsController < API::RestfulController
 
   def show
     load_and_authorize(:discussion)
+    accept_pending_membership
     respond_with_resource
   end
 

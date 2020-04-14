@@ -39,7 +39,7 @@ export default
         {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
         {id: 5, name: 'subgroups',  route: @urlFor(@group, 'subgroups')+query}
         {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
-      ].filter (obj) => !(obj.name == "subgroups" && @group.isSubgroup())
+      ].filter (obj) => !(obj.name == "subgroups" && @group.parent())
 
     coverImageSrc: ->
       if @group

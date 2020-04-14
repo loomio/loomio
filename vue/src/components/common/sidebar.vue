@@ -102,7 +102,7 @@ export default
 </script>
 
 <template lang="pug">
-v-navigation-drawer.sidenav-left.lmo-no-print(app disable-resize-watcher v-model="open")
+v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
     v-layout.mx-10.my-2(column align-center style="max-height: 64px")

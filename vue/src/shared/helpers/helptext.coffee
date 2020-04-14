@@ -56,7 +56,7 @@ export groupPrivacy = (group, privacy) ->
           'group_form.subgroup_privacy_is_closed_description'
 
 export groupPrivacyStatement = (group) ->
-  if group.isSubgroup() && group.parent().privacyIsSecret()
+  if group.parent() && group.parent().privacyIsSecret()
     if group.privacyIsClosed()
       'group_form.privacy_statement.private_to_parent_members'
     else

@@ -11,6 +11,7 @@ export default
     selectedOptionId: @stance.pollOptionId()
     optionColors: optionColors()
     optionImages: optionImages()
+    debug: @$route.query.debug
 
   methods:
     submit: ->
@@ -48,6 +49,7 @@ export default
 .poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
   poll-common-anonymous-helptext(v-if='stance.poll().anonymous' :poll="stance.poll()")
+  span(v-if="debug") {{stance}}
   v-layout(wrap)
     v-layout.mb-4(justify-space-around v-for='(optionGroup, index) in optionGroups' :key="index")
       v-btn.poll-common-vote-form__button.poll-proposal-vote-form__button(color="accent" :style="style(option)" text outlined v-for='option in optionGroup' :key='option.id' @click='select(option)')
