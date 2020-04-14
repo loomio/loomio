@@ -52,9 +52,6 @@ export default class GroupModel extends BaseModel
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'
 
-  activeMembershipsCount: ->
-    @membershipsCount - @pendingMembershipsCount
-
   parentOrSelf: ->
     if @isParent() then @ else @parent()
 

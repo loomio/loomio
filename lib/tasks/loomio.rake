@@ -35,6 +35,7 @@ namespace :loomio do
     if (Time.now.hour == 0)
       UsageReportService.send
       ExamplePollService.delay.cleanup
+      LoginToken.where("created_at < ?", 24.hours.ago).delete_all
     end
   end
 

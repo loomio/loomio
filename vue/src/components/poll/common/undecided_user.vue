@@ -9,8 +9,8 @@ export default
   data: ->
     remindExecuting: false
   methods:
-    canAdministerPoll: ->
-      AbilityService.canAdministerPoll(@poll)
+    canAdminister: ->
+      AbilityService.canAdminister(@poll)
 
     remind: ->
       @remindExecuting = true
@@ -25,7 +25,7 @@ v-list-item.poll-common-undecided-user
     user-avatar(:user='user', size='thirtysix')
   v-list-item-content
     v-list-item-title.poll-common-undecided-user__name {{ user.name || user.email }}
-  v-list-item-action.poll-common-undecided-user__action(v-if='poll.isActive() && canAdministerPoll() && !remindExecuting')
+  v-list-item-action.poll-common-undecided-user__action(v-if='poll.isActive() && canAdminister() && !remindExecuting')
     .poll-common-undecided-user--reminded(v-if='user.reminded')
       p.lmo-hint-text(v-t="'poll_common_undecided_user.reminded'")
     .poll-common-undecided-user--unreminded(v-if='!user.reminded')

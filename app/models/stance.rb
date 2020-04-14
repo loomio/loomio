@@ -37,15 +37,16 @@ class Stance < ApplicationRecord
   update_counter_cache :poll, :stances_count
   update_counter_cache :poll, :undecided_count
 
-  scope :latest, -> { where(latest: true) }
+  scope :latest,         -> { where(latest: true).where(revoked_at: nil) }
+  scope :admin,         ->  { where(admin: true) }
   scope :newest_first,   -> { order(created_at: :desc) }
   scope :oldest_first,   -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
-  scope :cast,           -> { where("cast_at IS NOT NULL") }
-  scope :uncast,         -> { where("cast_at IS NULL") }
+  scope :decided,        -> { where("cast_at IS NOT NULL") }
+  scope :undecided,      -> { where("cast_at IS NULL") }
 
   scope :redeemable, -> { where('stances.inviter_id IS NOT NULL
                              AND stances.cast_at IS NULL

@@ -17,6 +17,7 @@ module HasRichText
         end
         before_save :"sanitize_#{field}!"
         validates field, {length: {maximum: Rails.application.secrets.max_message_length}}
+        validates_inclusion_of :"#{field}_format", in: ['html', 'md']
       end
     end
   end

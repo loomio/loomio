@@ -1,3 +1,9 @@
+## 2020-04-14 (Loomio 2.1.5)
+
+- Simplified architecture for adding guests to discussions and polls
+- Removed Loomio v1 (Angular) client
+
+
 ## 2020-04-07 (Loomio 2.1.4)
 
 - Updated Tiptap for text editor

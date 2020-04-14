@@ -1,4 +1,8 @@
 class MembershipService
+  def self.redeem_if_pending!(membership)
+    redeem(membership: membership, actor: membership.user) if membership && membership.accepted_at.nil?
+  end
+
   def self.redeem(membership:, actor:)
     raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
 

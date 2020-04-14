@@ -18,6 +18,7 @@ class API::GroupsController < API::RestfulController
 
   def show
     self.resource = load_and_authorize(:formal_group)
+    accept_pending_membership
     respond_with_resource
   end
 

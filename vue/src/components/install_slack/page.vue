@@ -20,7 +20,7 @@ export default
   methods:
     show: ->
       true
-      # AbilityService.canAdministerGroup(@group) &&
+      # AbilityService.canAdminister(@group) &&
       # find AppConfig.identityProviders, (provider) -> provider.name == 'slack'
 
     groupIdentity: ->
@@ -30,7 +30,7 @@ export default
       @openInstallSlackModal(@group, false)
 
     canRemoveIdentity: ->
-      AbilityService.canAdministerGroup($scope.group)
+      AbilityService.canAdminister($scope.group)
 
     remove: ->
       @openConfirmModal

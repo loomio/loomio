@@ -620,7 +620,8 @@ en:
       formal_group: Members of {{name}}
       discussion_group: Members of thread
       voters: People who have voted
-      non_voters: People who have not voted
+      undecided: Undecided people
+      non_voters: Not yet invited
 
     form:
       too_many_invitations: |
@@ -2066,7 +2067,7 @@ en:
     stance_updated: Vote updated
 
   poll_common_percent_voted:
-    sentence: "{{numerator}} people have voted ({{percent}}%)"
+    sentence: "{{numerator}} of {{denominator}} people have voted ({{percent}}%)"
 
   poll_count_chart_panel:
     out_of: out of {{goal}}
@@ -2165,6 +2166,7 @@ en:
   auth_form:
     code: '000000'
     sign_in_to_loomio: Sign into {{site_name}}
+    sign_in_help: Trouble signing in?
     sign_in: Sign in
     continue: Continue
     create_account: Create account
@@ -2187,6 +2189,7 @@ en:
     check_spam_folder: If the email does not arrive soon, check your spam folder.
     sign_up_helptext: Please complete this form to create a user account
     i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
+    newsletter_label: "I want to receive the <a href='https://help.loomio.org/en/newsletter/' target='_blank'>Loomio newsletter</a>"
     name_placeholder: Your name
     name_required: Please enter a name
     terms_required: You must agree to the Terms of Service

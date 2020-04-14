@@ -211,6 +211,7 @@ fr:
   merge_accounts:
     modal:
       submit: Vérifier
+      flash: Mail de vérification envoyé !
   emoji_picker:
     search: Rechercher
     common: Fréquemment utilisé

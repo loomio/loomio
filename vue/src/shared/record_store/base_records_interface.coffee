@@ -56,6 +56,7 @@ export default class BaseRecordsInterface
   findOrFetchById: (id, params = {}, ensureComplete = false) ->
     record = @find(id)
     if record and (!ensureComplete || record.complete)
+      @remote.fetchById(id, params)
       Promise.resolve(record)
     else
       @remote.fetchById(id, params).then => @find(id)

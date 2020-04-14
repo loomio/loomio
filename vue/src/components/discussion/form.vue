@@ -36,7 +36,7 @@ export default
           Flash.success("discussion_form.messages.#{actionName}")
           if @discussion.isNew()
             @$router.push @urlFor(discussion)
-            if AbilityService.canAnnounceThread(discussion)
+            if AbilityService.canAnnounceTo(discussion)
               @openAnnouncementModal(Records.announcements.buildFromModel(discussion))
       .catch onError(@discussion)
 

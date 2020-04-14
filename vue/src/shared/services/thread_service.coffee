@@ -95,7 +95,7 @@ export default new class ThreadService
       name: 'invitation_form.invite_people'
       icon: 'mdi-send'
       canPerform: ->
-        AbilityService.canAnnounceThread(discussion)
+        AbilityService.canAnnounceTo(discussion)
       perform: ->
         openModal
           component: 'AnnouncementForm'
