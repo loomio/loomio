@@ -43,7 +43,7 @@ class Simple::DiscussionSerializer < ActiveModel::Serializer
                          :read_ranges
 
   has_one :author, serializer: UserSerializer, root: :users
-  has_one :group, serializer: GroupSerializer, root: :groups
+  has_one :group, serializer: ::GroupSerializer, root: :groups
   has_one :created_event, serializer: Events::CreatedSerializer, root: :events
 
   has_many :discussion_tags

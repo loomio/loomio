@@ -1,0 +1,2 @@
+class FormalGroupSerializer < GroupSerializer
+end
