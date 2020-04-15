@@ -76,9 +76,7 @@ class User < ApplicationRecord
            class_name: 'Membership',
            dependent: :destroy
 
-  has_many :memberships,
-           -> { joins("INNER JOIN groups mg on mg.id = memberships.group_id").where(archived_at: nil) },
-           dependent: :destroy
+  has_many :memberships, -> { where(archived_at: nil) }, dependent: :destroy
 
   has_many :archived_memberships,
            -> { where('archived_at IS NOT NULL') },
@@ -89,7 +87,6 @@ class User < ApplicationRecord
            foreign_key: :inviter_id
 
   has_many :groups,
-           -> { where(type: "Group") },
            through: :memberships,
            class_name: 'Group',
            source: :group
