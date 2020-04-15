@@ -106,14 +106,6 @@ class Clients::Base
     raise NotImplementedError.new
   end
 
-  def serialized_event(event)
-    serializer = [
-      "#{self.class.name.demodulize}::#{event.kind.classify}Serializer",
-      "#{self.class.name.demodulize}::#{event.eventable.class}Serializer",
-      "#{self.class.name.demodulize}::BaseSerializer"
-    ].detect { |str| str.constantize rescue nil }.constantize
-    serializer.new(event, root: false).as_json
-  end
 
   def default_host
     raise NotImplementedError.new

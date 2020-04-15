@@ -1,4 +1,4 @@
-class Slack::PollSerializer < Slack::BaseSerializer
+class Webhook::Slack::PollSerializer < Webhook::Slack::BaseSerializer
   private
 
   def first_attachment

@@ -1,4 +1,4 @@
-class Slack::GroupIdentityCreatedSerializer < Slack::BaseSerializer
+class Webhook::Slack::GroupIdentityCreatedSerializer < Webhook::Slack::BaseSerializer
   private
 
   def text_options

@@ -1,4 +1,4 @@
-class Slack::BaseSerializer < ActiveModel::Serializer
+class Webhook::Slack::BaseSerializer < ActiveModel::Serializer
   include PrettyUrlHelper
   attributes :text, :username, :icon_url, :channel, :attachments
 
