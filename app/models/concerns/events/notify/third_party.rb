@@ -1,9 +1,6 @@
 module Events::Notify::ThirdParty
   def trigger!
     super
-    if eventable.group
-      eventable.group.identities.map { |i| i.notify! self }
-      eventable.group.webhooks.each { |w| w.publish!(self) }
-    end
+    NotifyWebhooksWorker.perform_async(self.id)
   end
 end

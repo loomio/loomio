@@ -25,8 +25,6 @@ describe Event do
   let(:poll) { create :poll, discussion: discussion, details: user_mentioned_text, author: author }
   let(:outcome) { create :outcome, poll: poll, statement: user_mentioned_text, author: author }
 
-  let(:guest_user) { create :user }
-
   def emails_sent
     ActionMailer::Base.deliveries.count
   end
