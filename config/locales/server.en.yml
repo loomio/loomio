@@ -713,27 +713,16 @@ en:
     group_identity_created: "Events from %{group} will now appear in this channel"
 
   webhook:
-    new_discussion: |
-      %{actor} started a discussion: [%{title}](%{url})
-
-      %{body}
-    new_comment: |
-      %{actor} commented in [%{title}](%{url})
-
-      %{body}
-    outcome_created: |
-      %{actor} shared an outcome for the %{poll_type}: [%{title}](%{url})
-
-      %{body}
-    poll_created: |
-      %{actor} started a %{poll_type}: [%{title}](%{url})
-
-      %{body}
-    stance_created: "%{actor} voted in [%{title}](%{url})"
-    poll_closing_soon: "[%{title}](%{url}) closes in 24 hours"
-    poll_expired: "%{poll_type}: [%{title}](%{url}) has closed"
-    poll_closed_by_user: "%{actor} closed the %{poll_type}: [%{title}](%{url})"
-    poll_reopened: "%{actor} reopened %{poll_type}: [%{title}](%{url})"
+    markdown:
+      new_discussion: "%{actor} started a discussion: [%{title}](%{url})"
+      new_comment: "%{actor} commented in [%{title}](%{url})"
+      outcome_created: "%{actor} shared an outcome of the %{poll_type}: [%{title}](%{url})"
+      poll_created: "%{actor} started a %{poll_type}: [%{title}](%{url})"
+      stance_created: "%{actor} voted in [%{title}](%{url})"
+      poll_closing_soon: "24 hours remaining: [%{title}](%{url})"
+      poll_expired: "%{poll_type}: [%{title}](%{url}) has closed"
+      poll_closed_by_user: "%{actor} closed the %{poll_type}: [%{title}](%{url})"
+      poll_reopened: "%{actor} reopened %{poll_type}: [%{title}](%{url})"
 
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"

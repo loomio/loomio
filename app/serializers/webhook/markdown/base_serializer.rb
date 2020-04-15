@@ -5,7 +5,7 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   attributes :text
 
   def text
-    I18n.t(:"webhook.#{object.kind}", text_options)
+    I18n.t(:"webhook.markdown.#{object.kind}", text_options)
   end
 
   private

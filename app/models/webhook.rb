@@ -1,7 +1,7 @@
 class Webhook < ApplicationRecord
   belongs_to :group
   validates_presence_of :name, :url, :format
-  validates_inclusion_of :format, in: ['markdown', 'microsoft']
+  validates_inclusion_of :format, in: ['markdown', 'microsoft', 'slack']
 
   def publish!(event)
     return unless AppConfig.webhook_event_kinds.include?(event.kind)
