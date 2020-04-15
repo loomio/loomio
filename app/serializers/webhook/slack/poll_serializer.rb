@@ -1,4 +1,4 @@
-class Webhook::Markdown::PollSerializer < Webhook::Slack::BaseSerializer
+class Webhook::Slack::PollSerializer < Webhook::Slack::BaseSerializer
   private
 
   def text_options
