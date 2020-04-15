@@ -32,8 +32,6 @@ v-card.webhook-form
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text.install-webhook-form
-    p.lmo-hint-text(v-t="'webhook.subtitle'")
-    p.lmo-hint-text(v-html="$t('webhook.we_have_guides', {url: 'https://help.loomio.org/en/user_manual/groups/integrations/'})")
     v-select(v-model="webhook.format" :items="formats" :label="$t('webhook.format')")
     v-text-field.webhook-form__name(v-model='webhook.name' :label="$t('webhook.name_label')" :placeholder="$t('webhook.name_placeholder')")
     validation-errors(:subject='webhook' field='name')

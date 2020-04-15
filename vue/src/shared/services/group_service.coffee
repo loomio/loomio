@@ -89,32 +89,17 @@ export default new class GroupService
                 helptext: 'install_slack.card.confirm_remove_helptext'
                 flash:    'install_slack.card.identity_removed'
 
-    install_webhook:
-      name: 'webhook.integrations'
+    webhooks:
+      name: 'webhook.webhooks'
       icon: 'mdi-webhook'
       canPerform: ->
         group.adminsInclude(Session.user())
       perform: ->
         openModal
-          component: 'WebhookForm'
+          component: 'WebhookList'
           props:
             group: group
 
-    remove_webhook:
-      name: 'webhook.remove'
-      icon: 'mdi-webhook'
-      canPerform: ->
-        group.adminsInclude(Session.user())
-      perform: ->
-        openModal
-          component: 'ConfirmModal'
-          props:
-            confirm:
-              submit: group.groupIdentityFor('webhook').destroy
-              text:
-                title: 'webhook.remove'
-                helptext: 'webhook.confirm_remove_helptext'
-                flash: 'webhook.removed'
 
     configure_sso:
       name: 'configure_sso.title'

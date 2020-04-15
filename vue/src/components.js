@@ -56,6 +56,7 @@ module.exports = {
   HelpBubble: 'common/help_bubble',
   InstallMicrosoftTeamsModal: 'install_microsoft_teams/modal',
   WebhookForm: 'webhook/form',
+  WebhookList: 'webhook/list',
   InstallSlackForm: 'install_slack/form',
   InstallSlackInstallForm: 'install_slack/install_form',
   InstallSlackModal: 'install_slack/modal',

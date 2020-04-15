@@ -1,7 +1,7 @@
 class API::WebhooksController < API::RestfulController
-  def create
-    instantiate_resource
-    create_action
-    success_response
+  def index
+    load_and_authorize(:group, :update)
+    self.collection = @group.webhooks
+    respond_with_collection
   end
 end
