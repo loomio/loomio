@@ -41,5 +41,5 @@ v-card.webhook-form
     v-checkbox.webhook-form__event-kind(hide-details v-for='kind in kinds' v-model='webhook.eventKinds' :key="kind" :label="$t('install_microsoft.event_kinds.' + kind)" :value="kind")
   v-card-actions
     v-spacer
-    v-btn(color='primary' @click='submit()', v-t="'common.action.save'")
+    v-btn(color='primary' @click='submit()' v-t="'common.action.save'" :loading="webhook.processing")
 </template>
