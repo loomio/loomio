@@ -40,9 +40,9 @@ class Clients::Slack < Clients::Base
   private
   def serialized_event(event)
     serializer = [
-      "Webhook::Slack::#{event.kind.classify}Serializer",
-      "Webhook::Slack::#{event.eventable.class}Serializer",
-      "Webhook::Slack::BaseSerializer"
+      "Slack::#{event.kind.classify}Serializer",
+      "Slack::#{event.eventable.class}Serializer",
+      "Slack::BaseSerializer"
     ].detect { |str| str.constantize rescue nil }.constantize
     serializer.new(event, root: false).as_json
   end

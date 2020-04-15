@@ -22,24 +22,24 @@ class ::Slack::Participator
   private
 
   def poll_not_found
-    ::Webhook::Slack::Ephemeral::PollNotFoundSerializer.new({}, root: false).as_json
+    ::Slack::Ephemeral::PollNotFoundSerializer.new({}, root: false).as_json
   end
 
   def poll_closed
-    ::Webhook::Slack::Ephemeral::PollClosedSerializer.new(@poll, root: false).as_json
+    ::Slack::Ephemeral::PollClosedSerializer.new(@poll, root: false).as_json
   end
 
   def actor_not_found
     back_to = slack_authorized_url(slack: [@domain, @channel].join('-'))
-    ::Webhook::Slack::Ephemeral::UserNotFoundSerializer.new(slack_oauth_url(back_to: back_to, team: @team_id), root: false).as_json
+    ::Slack::Ephemeral::UserNotFoundSerializer.new(slack_oauth_url(back_to: back_to, team: @team_id), root: false).as_json
   end
 
   def stance_created
-    ::Webhook::Slack::Ephemeral::StanceCreatedSerializer.new(@stance, root: false).as_json
+    ::Slack::Ephemeral::StanceCreatedSerializer.new(@stance, root: false).as_json
   end
 
   def stance_not_valid
-    ::Webhook::Slack::Ephemeral::StanceNotValidSerializer.new(@poll, root: false).as_json
+    ::Slack::Ephemeral::StanceNotValidSerializer.new(@poll, root: false).as_json
   end
 
   def perform_stance_creation!
