@@ -1,10 +1,6 @@
 module Null::Group
   include Null::Object
 
-  def initialize
-    apply_null_methods!
-  end
-
   def group
     self
   end

@@ -4,7 +4,6 @@ class GroupSerializer < Simple::GroupSerializer
   attributes :id,
              :key,
              :handle,
-             :type,
              :name,
              :full_name,
              :description,
