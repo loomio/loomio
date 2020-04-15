@@ -50,13 +50,19 @@ class GroupSerializer < Simple::GroupSerializer
              :parent_members_can_see_discussions,
              :org_memberships_count,
              :org_discussions_count,
-             :org_members_count
+             :org_members_count,
+             # should break these out of here soon
+             :subscription_plan,
+             :subscription_active,
+             :subscription_max_members,
+             :subscription_max_threads,
+             :subscription_expires_at,
+             :subscription_state,
+             :subscription_created_at,
+             :subscription_info
 
   has_one :parent, serializer: GroupSerializer, root: :groups
 
-  attributes_for_formal :subscription_plan, :subscription_active,
-    :subscription_max_members, :subscription_max_threads, :subscription_expires_at,
-    :subscription_state, :subscription_created_at, :subscription_info
 
   def tag_names
     object.info['tag_names'] || []

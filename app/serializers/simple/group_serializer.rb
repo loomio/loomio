@@ -5,7 +5,6 @@ class Simple::GroupSerializer < ActiveModel::Serializer
              :handle,
              :name,
              :full_name,
-             :type,
              :created_at,
              :creator_id,
              :is_visible_to_public,
