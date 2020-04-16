@@ -47,7 +47,6 @@ export default class GroupModel extends BaseModel
     @hasMany 'polls'
     @hasMany 'membershipRequests'
     @hasMany 'memberships'
-    @hasMany 'groupIdentities'
     @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'
     @belongsTo 'parent', from: 'groups'
@@ -171,7 +170,3 @@ export default class GroupModel extends BaseModel
 
   isSubgroupOfSecretParent: ->
     @parent() && @parent().privacyIsSecret()
-
-  groupIdentityFor: (type) ->
-    _.find @groupIdentities(), (gi) ->
-      gi.userIdentity().identityType == type

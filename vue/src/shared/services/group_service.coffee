@@ -62,33 +62,6 @@ export default new class GroupService
           props:
             group: group
 
-    install_slack:
-      name: 'install_slack.modal_title'
-      icon: 'mdi-slack'
-      canPerform: ->
-        AbilityService.canAdminister(group) && !group.groupIdentityFor('slack')
-      perform: ->
-        openModal
-          component: 'InstallSlackModal'
-          props:
-            group: group
-
-    remove_slack:
-      name: 'install_slack.remove_slack'
-      icon: 'mdi-slack'
-      canPerform: ->
-        AbilityService.canAdminister(group) && group.groupIdentityFor('slack')
-      perform: ->
-        openModal
-          component: 'ConfirmModal'
-          props:
-            confirm:
-              submit:     group.groupIdentityFor('slack').destroy
-              text:
-                title:    'install_slack.card.confirm_remove_title'
-                helptext: 'install_slack.card.confirm_remove_helptext'
-                flash:    'install_slack.card.identity_removed'
-
     webhooks:
       name: 'webhook.webhooks'
       icon: 'mdi-webhook'

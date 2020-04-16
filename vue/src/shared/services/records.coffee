@@ -26,7 +26,6 @@ import OutcomeRecordsInterface from '@/shared/interfaces/outcome_records_interfa
 import PollDidNotVoteRecordsInterface from '@/shared/interfaces/poll_did_not_vote_records_interface'
 import IdentityRecordsInterface from '@/shared/interfaces/identity_records_interface'
 import ContactMessageRecordsInterface from '@/shared/interfaces/contact_message_records_interface'
-import GroupIdentityRecordsInterface from '@/shared/interfaces/group_identity_records_interface'
 import ReactionRecordsInterface from '@/shared/interfaces/reaction_records_interface'
 import ContactRequestRecordsInterface from '@/shared/interfaces/contact_request_records_interface'
 import DocumentRecordsInterface from '@/shared/interfaces/document_records_interface'
@@ -67,7 +66,6 @@ records.addRecordsInterface OutcomeRecordsInterface
 records.addRecordsInterface PollDidNotVoteRecordsInterface
 records.addRecordsInterface IdentityRecordsInterface
 records.addRecordsInterface ContactMessageRecordsInterface
-records.addRecordsInterface GroupIdentityRecordsInterface
 records.addRecordsInterface ReactionRecordsInterface
 records.addRecordsInterface ContactRequestRecordsInterface
 records.addRecordsInterface DocumentRecordsInterface

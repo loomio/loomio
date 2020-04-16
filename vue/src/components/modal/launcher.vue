@@ -21,8 +21,6 @@ import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsModal from '@/components/tags/modal'
-import InstallSlackModal from '@/components/install_slack/modal'
-import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/modal'
 import WebhookForm from '@/components/webhook/form'
 import WebhookList from '@/components/webhook/list'
 import ChangePictureForm from '@/components/profile/change_picture_form'
@@ -58,8 +56,6 @@ export default
     PollCommonAddOptionModal
     RevisionHistoryModal
     TagsModal
-    InstallSlackModal
-    InstallMicrosoftTeamsModal
     WebhookForm
     WebhookList
     ChangePictureForm
