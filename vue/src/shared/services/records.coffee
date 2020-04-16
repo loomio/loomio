@@ -26,7 +26,6 @@ import OutcomeRecordsInterface from '@/shared/interfaces/outcome_records_interfa
 import PollDidNotVoteRecordsInterface from '@/shared/interfaces/poll_did_not_vote_records_interface'
 import IdentityRecordsInterface from '@/shared/interfaces/identity_records_interface'
 import ContactMessageRecordsInterface from '@/shared/interfaces/contact_message_records_interface'
-import GroupIdentityRecordsInterface from '@/shared/interfaces/group_identity_records_interface'
 import ReactionRecordsInterface from '@/shared/interfaces/reaction_records_interface'
 import ContactRequestRecordsInterface from '@/shared/interfaces/contact_request_records_interface'
 import DocumentRecordsInterface from '@/shared/interfaces/document_records_interface'
@@ -38,6 +37,7 @@ import DiscussionTagRecordsInterface from '@/shared/interfaces/discussion_tag_re
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface'
 import SamlProviderRecordsInterface from '@/shared/interfaces/saml_provider_records_interface'
 import GroupSurveyRecordsInterface from '@/shared/interfaces/group_survey_records_interface'
+import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface'
 
 db      = new loki('default.db')
 records = new RecordStore(db)
@@ -66,7 +66,6 @@ records.addRecordsInterface OutcomeRecordsInterface
 records.addRecordsInterface PollDidNotVoteRecordsInterface
 records.addRecordsInterface IdentityRecordsInterface
 records.addRecordsInterface ContactMessageRecordsInterface
-records.addRecordsInterface GroupIdentityRecordsInterface
 records.addRecordsInterface ReactionRecordsInterface
 records.addRecordsInterface ContactRequestRecordsInterface
 records.addRecordsInterface DocumentRecordsInterface
@@ -78,6 +77,7 @@ records.addRecordsInterface DiscussionTagRecordsInterface
 records.addRecordsInterface TagRecordsInterface
 records.addRecordsInterface SamlProviderRecordsInterface
 records.addRecordsInterface GroupSurveyRecordsInterface
+records.addRecordsInterface WebhookRecordsInterface
 
 AppConfig.records = records
 export default records

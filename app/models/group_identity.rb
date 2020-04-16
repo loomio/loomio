@@ -17,4 +17,5 @@ class GroupIdentity < ApplicationRecord
 
   delegate :slack_team_name, to: :identity
   delegate :slack_team_id, to: :identity
+  delegate :title, to: :group
 end

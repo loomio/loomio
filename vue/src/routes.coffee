@@ -22,7 +22,6 @@ import ContactPage from './components/contact/page.vue'
 import EmailSettingsPage from './components/email_settings/page.vue'
 import StartDiscussionPage from './components/start_discussion/page.vue'
 import UserPage from './components/user/page.vue'
-import InstallSlackPage from './components/install_slack/page.vue'
 
 import ThreadNav from './components/thread/nav'
 
@@ -41,7 +40,6 @@ groupPageChildren = [
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}}
   {path: 'settings', component: GroupSettingsPanel, meta: {noScroll: true}}
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
-  {path: 'slack/install', component: InstallSlackPage, meta: {noScroll: true}}
 ]
 
 threadPageChildren = [

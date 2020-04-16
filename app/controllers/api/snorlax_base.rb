@@ -125,9 +125,12 @@ class API::SnorlaxBase < ActionController::Base
   end
 
   def destroy_response
-    render json: {success: 'success'}
+    success_response
   end
 
+  def success_response
+    render json: {success: 'success'}
+  end
   def load_resource
     self.resource = resource_class.find(params[:id])
   end

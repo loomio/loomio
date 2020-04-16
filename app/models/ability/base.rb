@@ -20,6 +20,7 @@ module Ability
     prepend Ability::Tag
     prepend Ability::DiscussionTag
     prepend Ability::Event
+    prepend Ability::Webhook
 
 
     def initialize(user)

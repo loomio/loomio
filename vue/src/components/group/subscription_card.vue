@@ -8,7 +8,7 @@ export default
     group: Object
   computed:
     canSee: ->
-      AbilityService.canAdministerGroup(@group)
+      AbilityService.canAdminister(@group)
     expiresAt: ->
       @exactDate(@group.subscriptionExpiresAt)
     planName: ->

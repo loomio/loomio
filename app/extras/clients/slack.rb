@@ -38,6 +38,14 @@ class Clients::Slack < Clients::Base
   end
 
   private
+  def serialized_event(event)
+    serializer = [
+      "Slack::#{event.kind.classify}Serializer",
+      "Slack::#{event.eventable.class}Serializer",
+      "Slack::BaseSerializer"
+    ].detect { |str| str.constantize rescue nil }.constantize
+    serializer.new(event, root: false).as_json
+  end
 
   def default_is_success
     ->(response) { response.success? && JSON.parse(response.body)['ok'].present? }

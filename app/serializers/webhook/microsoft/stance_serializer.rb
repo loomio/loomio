@@ -1,4 +1,4 @@
-class Microsoft::StanceSerializer < Microsoft::BaseSerializer
+class Webhook::Microsoft::StanceSerializer < Webhook::Microsoft::BaseSerializer
   def section_title
     object.eventable.stance_choices.map do |sc|
       if object.eventable.poll.has_variable_score

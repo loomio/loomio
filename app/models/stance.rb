@@ -64,8 +64,17 @@ class Stance < ApplicationRecord
   delegate :group_id,       to: :poll
   delegate :discussion_id,  to: :poll
   delegate :members,        to: :poll
+  delegate :title,          to: :poll
 
   alias :author :participant
+
+  def body
+    reason
+  end
+
+  def body_format
+    reason_format
+  end
 
   def parent_event
     poll.created_event

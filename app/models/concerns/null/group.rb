@@ -14,7 +14,7 @@ module Null::Group
   end
 
   def empty_methods
-    [:member_ids, :members, :admins]
+    [:member_ids, :members, :admins, :webhooks]
   end
 
   def zero_methods

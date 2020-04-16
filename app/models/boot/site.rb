@@ -58,6 +58,7 @@ module Boot
         pollColors:        AppConfig.colors,
         timeZones:         AppConfig.timezones,
         assetRoot:         "/client/#{Loomio::Version.current}/",
+        webhookEventKinds: AppConfig.webhook_event_kinds,
         identityProviders: AppConfig.providers.fetch('identity', []).map do |provider|
           ({ name: provider, href: send("#{provider}_oauth_path") } if ENV["#{provider.upcase}_APP_KEY"])
         end.compact

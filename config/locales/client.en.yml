@@ -2220,28 +2220,27 @@ en:
     password: Password
     reactivate: Reactivate account
 
-  install_microsoft:
-    modal_title: Install Microsoft Teams
-    card:
-      install_title: Connect to Microsoft Teams
-      install_helptext: Loomio bot notifies your team of discussions and decisions on Loomio.
-      installed_title: Connected to Microsoft Teams
-      installed_helptext: Events from this group will be sent to your Microsoft Team.
-      install_microsoft: Integrate Microsoft Teams
-      remove_identity: Remove Microsoft Teams integration
-      confirm_remove_title: Remove Microsoft Teams integration
-      confirm_remove_helptext: |
-        Your microsoft teams channel will no longer receive updates about this group.
-        You can always go back and add it again.
-      identity_removed: Integration removed
-
-    form:
-      webhook_helptext: Enter the webhook URL provided by your Teams channel. <a href="https://help.loomio.org/en/user_manual/groups/integrations/#microsoft-teams">Learn more about setting up Microsoft Teams with Loomio</a>
-      webhook_label: Webhook URL
-      webhook_installed: Connected to Microsoft Teams
-      webhook_placeholder: https://outlook.office.com/...
-      event_kind_helptext: Which events should be posted into the Teams channel?
-
+  webhook:
+    integrations: Integrations
+    webhooks: Webhooks
+    format: Format
+    formats:
+      markdown: Markdown (for Mattermost, Zapier and others)
+      microsoft: Microsoft Teams
+      slack: Slack
+    subtitle: Connect to Slack, Microsoft Teams, Mattermost, Zapier or anything that supports webhooks
+    we_have_guides: |
+      See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.
+    add_webhook: Add webhook
+    success: Webhook added!
+    remove: Remove webhook
+    confirm_remove: "Are you sure you want to remove the webhook: {{name}}?"
+    removed: Webhook removed
+    url_label: Webhook URL
+    url_placeholder: https://hooks.example.com/...
+    name_label: Name
+    name_placeholder: Give this webhook a name so you can identify it later on
+    event_kind_helptext: Which events do you want to be notified of?
     event_kinds:
       new_discussion: A new thread is started
       new_comment: A new comment has been made
@@ -2249,11 +2248,13 @@ en:
       stance_created: A new vote has been cast
       poll_closing_soon: A poll is expiring soon
       poll_expired: A poll has expired
+      poll_closed_by_user: A poll is closed before it's deadline
+      poll_reopened: A poll is re-opened for voting
       outcome_created: An outcome has been shared
 
   configure_sso:
     redirecting: Please wait, redirecting to sign-in provider
-    title: Configure single sign-on
+    title: Single sign-on
     enabled: Single sign-on is enabled
     helptext: Integrate with OneLogin, Auth0, Microsoft Active Directory, or any other SAML Provider. <a href="https://help.loomio.org/en/user_manual/groups/integrations#single-sign-on-saml" target="_blank">Learn more</a>.
     warning_helptext: "Warning: You'll be required to authenticate with your provider after you click save."
@@ -2264,62 +2265,6 @@ en:
     destroyed: Single sign-on removed
     invalid_idp_metadata_url: Invalid IDP metadata URL
     sp_metadata_url: SP Metadata URL
-
-  install_slack:
-    modal_title: Integrate Slack
-    modal_helptext: First up, you'll need to sign in to slack. Click the button below to continue.
-    login_to_slack: Log in to Slack
-    remove_slack: Remove Slack integration
-
-    card:
-      install_title: Connect to Slack
-      install_helptext: Loomio bot notifies your Slack team of discussions and decisions on Loomio. You can also start decisions and vote from within Slack.
-      installed_title: Connected to Slack
-      installed_helptext: This group has been connected to the slack team <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. Events from this group will appear in the <strong>{{channel}}</strong> channel.
-      install_slack: Connect Slack
-      remove_identity: Remove this integration
-      confirm_remove_title: Remove slack integration
-      confirm_remove_helptext: |
-        Your slack channel will no longer receive updates about this group.
-        You can always go back and add it again.
-      identity_removed: Integration removed
-
-    progress:
-      install: Install
-      invite: Invite
-      decide: Decide
-
-    install:
-      heading: 'Step 1: Select a Loomio group to integrate'
-      tooltip_heading: Loomio and Slack work great together
-      it_does_this: Engage users where they are
-      and_also_this: Start polls instantly and get feedback in real time
-      and_also_also_this: Let people know outcome and iterate your thinking quickly
-      add_to_group_helptext: Select a group to link with Slack
-      create_new_group_helptext: Don't have a Loomio group? Simply enter a name and we'll make one for you
-      group_name: Group name
-      group_name_placeholder: Name your new group...
-      slack_installed: Slack installed
-      install_slack: Install slack now
-      start_new_group: Start a new group
-      use_existing_group: Use an existing group
-
-    invite:
-      heading: 'Step 2: Setup a Slack channel'
-      helptext: Select a channel you'd like us to post updates into.
-      select_a_channel: Select a channel
-      publish_group: Post a welcome message
-      publish_group_helptext_on: We'll post the a message into this channel to instruct people how to use LoomioBot.
-      publish_group_helptext_off: We won't post anything until you create a poll.
-      custom_message: Custom message
-      set_channel: Set channel
-
-    decide:
-      heading: 'Step 3: Make a decision together'
-      helptext: "Now that you're all set up, it's time to start making decisions. Select from one of the options below:"
-
-    common:
-      do_it_later: I'll do this later
 
   browser_warning:
     message: "IMPORTANT! You are using an outdated browser ({{name}} {{version}}) which is not supported by {{site}}."

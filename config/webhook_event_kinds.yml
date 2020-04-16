@@ -1,0 +1,9 @@
+- new_discussion
+- new_comment
+- poll_created
+- poll_closing_soon
+- poll_expired
+- poll_closed_by_user
+- poll_reopened
+- outcome_created
+- stance_created
