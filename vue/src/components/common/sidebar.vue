@@ -71,7 +71,7 @@ export default
     updateGroups: ->
       @organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents()))
       @unreadCounts = {}
-      Session.user().formalGroups().forEach (group) =>
+      Session.user().groups().forEach (group) =>
         @unreadCounts[group.id] = filter(group.discussions(), (discussion) -> discussion.isUnread()).length
 
       groupAsItem = (group) ->

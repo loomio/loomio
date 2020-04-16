@@ -2,8 +2,8 @@ require 'rails_helper'
 describe API::MembershipRequestsController do
 
   let(:user) { create :user }
-  let(:group) { create :formal_group, members_can_add_members: true }
-  let(:other_group) { create :formal_group }
+  let(:group) { create :group, members_can_add_members: true }
+  let(:other_group) { create :group }
   let(:pending_membership_request) { create :membership_request, group: group }
   let(:other_pending_membership_request) { create :membership_request, group: other_group }
   let(:approved_membership_request) { create :membership_request, group: group }

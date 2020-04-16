@@ -8,7 +8,7 @@ describe API::StancesController do
   let(:poll_option) { create :poll_option, poll: poll }
   let(:old_stance) { create :stance, poll: poll, participant: user, poll_options: [poll_option] }
   let(:discussion) { create :discussion, group: group }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:stance_params) {{
     poll_id: poll.id,
     stance_choices_attributes: [{poll_option_id: poll_option.id}],
@@ -154,7 +154,7 @@ describe API::StancesController do
       let(:user) { create(:user) }
 
       before do
-        group = create(:formal_group, members_can_vote: false)
+        group = create(:group, members_can_vote: false)
         poll.update(group: group, discussion: create(:discussion, group: group))
         sign_in user
       end
@@ -199,7 +199,7 @@ describe API::StancesController do
     describe 'poll.group.members_can_vote true' do
       let(:user) { create(:user) }
       before do
-        group = create(:formal_group, members_can_vote: true)
+        group = create(:group, members_can_vote: true)
         poll.update(group: group, discussion: create(:discussion, group: group))
         sign_in user
       end

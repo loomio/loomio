@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe MembershipsController do
-  let(:group) { FactoryBot.create(:formal_group) }
+  let(:group) { FactoryBot.create(:group) }
   let(:user) { FactoryBot.create(:user) }
-  let(:another_group) { FactoryBot.create(:formal_group) }
+  let(:another_group) { FactoryBot.create(:group) }
   let(:another_user) { FactoryBot.create(:user) }
 
   describe "join" do

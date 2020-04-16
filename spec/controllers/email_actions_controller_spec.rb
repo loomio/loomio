@@ -4,7 +4,7 @@ describe EmailActionsController do
   describe "unfollow_discussion" do
     before do
       @user = FactoryBot.create(:user)
-      @group = FactoryBot.create(:formal_group)
+      @group = FactoryBot.create(:group)
       @group.add_member!(@user)
 
       @discussion = FactoryBot.build(:discussion, group: @group)
@@ -22,7 +22,7 @@ describe EmailActionsController do
   describe "follow_discussion" do
     before do
       @user = FactoryBot.create(:user)
-      @group = FactoryBot.create(:formal_group)
+      @group = FactoryBot.create(:group)
       @group.add_member!(@user)
 
       @discussion = FactoryBot.build(:discussion, group: @group)
@@ -40,7 +40,7 @@ describe EmailActionsController do
     before do
       @user = FactoryBot.create(:user)
       @author = FactoryBot.create(:user)
-      @group = FactoryBot.create(:formal_group)
+      @group = FactoryBot.create(:group)
       @group.add_member!(@user)
       @group.add_member!(@author)
 
@@ -72,7 +72,7 @@ describe EmailActionsController do
   #   it 'marks content as read' do
   #     @user = create(:user)
   #     @voter = create(:user)
-  #     @group = create(:formal_group)
+  #     @group = create(:group)
   #     @group.add_member!(@user)
   #     @group.add_member!(@voter)
   #     @time_start = 1.hour.ago

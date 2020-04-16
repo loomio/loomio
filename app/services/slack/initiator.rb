@@ -66,6 +66,6 @@ class ::Slack::Initiator
   end
 
   def target_groups
-    @target_groups ||= FormalGroup.by_slack_team(@team_id)
+    @target_groups ||= Group.by_slack_team(@team_id)
   end
 end

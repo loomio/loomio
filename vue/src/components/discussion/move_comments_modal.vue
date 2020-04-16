@@ -13,7 +13,7 @@ export default
     searchFragment: ''
     searchResults: []
     groupId: @discussion.groupId
-    groups: Session.user().formalGroups()
+    groups: Session.user().groups()
 
   props:
     discussion: Object

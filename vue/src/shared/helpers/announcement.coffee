@@ -4,7 +4,7 @@ import { compact } from 'lodash'
 export audiencesFor = (model) ->
   compact [
     ('parent_group'     if model.isA('group') && model.parent()),
-    ('formal_group'     if model.isA('discussion', 'poll', 'outcome') && audienceSize(model, 'formal_group')),
+    ('group'            if model.isA('discussion', 'poll', 'outcome') && audienceSize(model, 'group')),
     ('discussion_group' if model.isA('poll', 'outcome') && model.discussion() && audienceSize(model, 'discussion_group')),
     ('voters'           if model.isA('poll', 'outcome') && audienceSize(model, 'voters')),
     ('undecided'        if model.isA('poll') && audienceSize(model, 'undecided')),
@@ -22,7 +22,7 @@ export audienceSize = (model, audience) ->
 
   switch audience
     when 'parent_group' then model.group().parent().activeMembershipsCount
-    when 'formal_group' then model.group().activeMembershipsCount - 1
+    when 'group' then model.group().activeMembershipsCount - 1
     when 'discussion_group' then model.discussion().seenByCount - 1
     when 'voters' then model.poll().participantsCount - youParticipated
     when 'undecided' then model.poll().undecidedCount - youUndecided

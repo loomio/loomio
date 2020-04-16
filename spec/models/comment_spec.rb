@@ -52,12 +52,12 @@ describe Comment do
 
   describe "#mentioned_users" do
     before do
-      @group = create :formal_group
+      @group = create :group
       @member = create :user
       @group.add_member! @member
 
       # there's another group current_user belongs to, they want to mention someone from that group
-      @another_group = create :formal_group
+      @another_group = create :group
       @another_member = create :user
       @another_group.add_member! @another_member
       @another_group.add_member! user

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe PollSearch do
   let(:user) { create :user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let!(:closed_long_ago)  { create :poll, closed_at: 1.month.ago, closing_at: 1.month.ago,      author: user }
   let!(:closed_soon)      { create :poll, closed_at: 1.day.ago,   closing_at: 1.day.ago,        author: user }

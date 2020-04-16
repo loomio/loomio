@@ -4,7 +4,7 @@ class Queries::ExploreGroups < Delegator
     min_threads = ENV.fetch('EXPLORE_MIN_THREADS', 0)
     require_subscription = ENV.fetch('EXPLORE_REQUIRE_SUBSCRIPTION', false)
 
-    @relation = FormalGroup.where(is_visible_to_public: true)
+    @relation = Group.where(is_visible_to_public: true)
                      .parents_only
                      .published
                      .where('groups.name IS NOT NULL')

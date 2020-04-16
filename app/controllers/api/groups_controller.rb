@@ -2,7 +2,7 @@ class API::GroupsController < API::RestfulController
   include UsesFullSerializer
 
   def token
-    self.resource = load_and_authorize(:formal_group, :invite_people)
+    self.resource = load_and_authorize(:group, :invite_people)
     respond_with_resource scope: {include_token: true}
   end
 
@@ -11,13 +11,13 @@ class API::GroupsController < API::RestfulController
   end
 
   def reset_token
-    self.resource = load_and_authorize(:formal_group, :invite_people)
+    self.resource = load_and_authorize(:group, :invite_people)
     resource.update(token: resource.class.generate_unique_secure_token)
     respond_with_resource scope: {include_token: true}
   end
 
   def show
-    self.resource = load_and_authorize(:formal_group)
+    self.resource = load_and_authorize(:group)
     accept_pending_membership
     respond_with_resource
   end
@@ -65,7 +65,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def resource_class
-    FormalGroup
+    Group
   end
 
   # serialize out the parent with the group

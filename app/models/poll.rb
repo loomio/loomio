@@ -47,7 +47,7 @@ class Poll < ApplicationRecord
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
   belongs_to :discussion
-  belongs_to :group, class_name: "FormalGroup"
+  belongs_to :group, class_name: "Group"
 
 
   after_update :remove_poll_options
@@ -161,7 +161,7 @@ class Poll < ApplicationRecord
   end
 
   def group
-    super || NullFormalGroup.new
+    super || NullGroup.new
   end
 
   def update_stance_data

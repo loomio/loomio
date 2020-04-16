@@ -34,7 +34,7 @@ export default
           key: @user.id
           collections: ['groups', 'memberships']
           query: (store) =>
-            @groups = @user.formalGroups()
+            @groups = @user.groups()
             @canContactUser = AbilityService.canContactUser(@user)
 
     loadGroupsFor: (user) ->

@@ -46,7 +46,7 @@ class Discussion < ApplicationRecord
     [:title, :description]
   end
 
-  belongs_to :group, class_name: 'FormalGroup'
+  belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
   has_many :polls, dependent: :destroy

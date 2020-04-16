@@ -383,7 +383,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_084307) do
     t.integer "closed_polls_count", default: 0, null: false
     t.integer "polls_count", default: 0, null: false
     t.integer "subgroups_count", default: 0, null: false
-    t.string "type", default: "FormalGroup", null: false
     t.integer "open_discussions_count", default: 0, null: false
     t.integer "closed_discussions_count", default: 0, null: false
     t.string "token"
@@ -409,7 +408,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_084307) do
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
     t.index ["subscription_id"], name: "groups_subscription_id_idx"
     t.index ["token"], name: "index_groups_on_token", unique: true
-    t.index ["type"], name: "index_groups_on_type"
   end
 
   create_table "login_tokens", id: :serial, force: :cascade do |t|

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Queries::VisibleDiscussions do
   let(:user) { create :user }
-  let(:group) { create :formal_group, discussion_privacy_options: 'public_or_private' }
+  let(:group) { create :group, discussion_privacy_options: 'public_or_private' }
   let(:author) { create :user }
   let(:discussion) { create :discussion, group: group, author: author, private: true }
 
@@ -11,7 +11,7 @@ describe Queries::VisibleDiscussions do
   end
 
   describe 'sorted_by_importance' do
-    let(:group) { create(:formal_group, is_visible_to_public: true) }
+    let(:group) { create(:group, is_visible_to_public: true) }
     let!(:no_importance) { create :discussion, private: false, group: group }
     let!(:has_decision)  { create :discussion, private: false, group: group }
     let!(:pinned)        { create :discussion, private: false, group: group, pinned: true }
@@ -41,9 +41,9 @@ describe Queries::VisibleDiscussions do
 
   describe 'logged out' do
     let(:logged_out_user) { LoggedOutUser.new }
-    let!(:public_discussion) { create(:discussion, private: false, group: create(:formal_group, is_visible_to_public: true)) }
-    let!(:another_public_discussion) { create(:discussion, private: false, group: create(:formal_group, is_visible_to_public: true)) }
-    let!(:private_discussion) { create(:discussion, group: create(:formal_group, is_visible_to_public: false)) }
+    let!(:public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
+    let!(:another_public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
+    let!(:private_discussion) { create(:discussion, group: create(:group, is_visible_to_public: false)) }
 
     it 'shows groups visible to public if no groups are specified' do
       query = Queries::VisibleDiscussions.new(user: logged_out_user, show_public: true)
@@ -149,8 +149,8 @@ describe Queries::VisibleDiscussions do
     end
 
     context 'parent_members_can_see_discussions' do
-      let(:parent_group) { create :formal_group, group_privacy: 'secret'}
-      let(:group) { create :formal_group,
+      let(:parent_group) { create :group, group_privacy: 'secret'}
+      let(:group) { create :group,
                            parent: parent_group,
                            parent_members_can_see_discussions: true,
                            is_visible_to_public: false,
@@ -172,8 +172,8 @@ describe Queries::VisibleDiscussions do
     end
 
     context 'only members can see discussions' do
-      let(:parent_group) { create :formal_group }
-      let(:group) { create :formal_group,
+      let(:parent_group) { create :group }
+      let(:group) { create :group,
                            parent: parent_group,
                            parent_members_can_see_discussions: false,
                            is_visible_to_parent_members: true }

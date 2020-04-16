@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe OutcomeService do
   let(:user) { create :user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion, author: user, closed_at: 1.day.ago }
   let(:outcome) { create :outcome, poll: poll, author: user }

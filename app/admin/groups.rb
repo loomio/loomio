@@ -1,4 +1,4 @@
-ActiveAdmin.register FormalGroup, as: 'Group' do
+ActiveAdmin.register Group, as: 'Group' do
   includes :group_survey
 
   controller do
@@ -7,7 +7,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
 
     def find_resource
-      FormalGroup.friendly.find(params[:id])
+      Group.friendly.find(params[:id])
     end
   end
 

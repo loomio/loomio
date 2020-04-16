@@ -1,6 +1,6 @@
 module Dev::Scenarios::Legacy
   def setup_discussion_mailer_new_comment_email
-    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
+    @group = Group.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick).set_volume!(:loud)
     @group.add_member! jennifer
 
@@ -15,7 +15,7 @@ module Dev::Scenarios::Legacy
   end
 
   def setup_group_invitation_ignored
-    group  = FactoryBot.create :formal_group
+    group  = FactoryBot.create :group
     event = GroupService.announce(group: group, actor: group.creator, params: { emails: ['hello@example.com']})
     ActionMailer::Base.deliveries.clear
     AnnouncementService.resend_pending_memberships(since: 1.hour.ago, till: 1.hour.from_now)
@@ -39,7 +39,7 @@ module Dev::Scenarios::Legacy
   end
 
   def setup_discussion_mailer_user_mentioned_email
-    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
+    @group = Group.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick)
     @group.add_member! jennifer
 
@@ -52,7 +52,7 @@ module Dev::Scenarios::Legacy
   end
 
   def setup_discussion_mailer_comment_replied_to_email
-    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
+    @group = Group.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick)
     @group.add_member! jennifer
 
@@ -84,12 +84,12 @@ module Dev::Scenarios::Legacy
   def setup_explore_groups
     sign_in patrick
     30.times do |i|
-      explore_group = FormalGroup.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
+      explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
       GroupService.create(group: explore_group, actor: patrick)
       explore_group.update_attribute(:memberships_count, i)
     end
-    FormalGroup.limit(15).update_all(name: 'Footloose')
-    redirect_to group_url(FormalGroup.last)
+    Group.limit(15).update_all(name: 'Footloose')
+    redirect_to group_url(Group.last)
   end
 
   def setup_group_with_pinned_discussion

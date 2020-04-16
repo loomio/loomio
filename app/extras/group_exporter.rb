@@ -2,7 +2,7 @@ class GroupExporter
   attr_accessor :group
 
   EXPORT_MODELS = {
-    formal_groups: %w[id key name description created_at],
+    groups: %w[id key name description created_at],
     memberships:   %w[group_id user_id user_name user_email admin created_at accepted_at],
     discussions:   %w[id group_id author_id author_name title description created_at],
     comments:      %w[id group_id discussion_id author_id discussion_title author_name body created_at],

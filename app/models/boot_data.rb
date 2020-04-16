@@ -26,8 +26,7 @@ BootData = Struct.new(:user) do
 
   def serializer_scope
     {
-      formal_memberships: formal_memberships,
-      guest_memberships:  guest_memberships
+      memberships: memberships,
     }.merge(authed_serializer_scope)
   end
 
@@ -39,12 +38,8 @@ BootData = Struct.new(:user) do
     }
   end
 
-  def guest_memberships
-    @guest_memberships ||= user.memberships.guest.includes(:user, :inviter, {group: :parent})
-  end
-
-  def formal_memberships
-    @formal_memberships ||= user.memberships.formal.includes(:user, :group)
+  def memberships
+    @memberships ||= user.memberships.includes(:user, :group)
   end
 
   def notifications

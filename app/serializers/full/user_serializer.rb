@@ -4,17 +4,12 @@ class Full::UserSerializer < UserSerializer
              :locale, :default_membership_volume, :experiences, :is_coordinator,
              :email_newsletter, :is_admin, :memberships_count
 
-  has_many :formal_memberships, serializer: MembershipSerializer, root: :memberships
-  has_many :guest_memberships,  serializer: Simple::MembershipSerializer, root: :memberships
+  has_many :memberships, serializer: MembershipSerializer, root: :memberships
   has_many :notifications,      serializer: NotificationSerializer, root: :notifications
   has_many :identities,         serializer: IdentitySerializer, root: :identities
 
-  def guest_memberships
-    from_scope :guest_memberships
-  end
-
-  def formal_memberships
-    from_scope :formal_memberships
+  def memberships
+    from_scope :memberships
   end
 
   def notifications

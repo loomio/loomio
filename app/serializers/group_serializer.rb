@@ -1,18 +1,9 @@
 class GroupSerializer < Simple::GroupSerializer
   embed :ids, include: true
 
-  def self.attributes_for_formal(*attrs)
-    attrs.each do |attr|
-      define_method attr, -> { object.send attr }
-      define_method :"include_#{attr}?", -> { object.type == "FormalGroup" }
-    end
-    attributes *attrs
-  end
-
   attributes :id,
              :key,
              :handle,
-             :type,
              :name,
              :full_name,
              :description,
@@ -45,29 +36,33 @@ class GroupSerializer < Simple::GroupSerializer
              :attachments,
              :tag_names,
              :new_threads_max_depth,
-             :new_threads_newest_first
-
-  attributes_for_formal :cover_urls,
-                        :has_custom_cover,
-                        :experiences,
-                        :enable_experiments,
-                        :features,
-                        :open_discussions_count,
-                        :closed_discussions_count,
-                        :recent_activity_count,
-                        :is_subgroup_of_hidden_parent,
-                        :is_visible_to_parent_members,
-                        :parent_members_can_see_discussions,
-                        :org_memberships_count,
-                        :org_discussions_count,
-                        :org_members_count
-
+             :new_threads_newest_first,
+             :cover_urls,
+             :has_custom_cover,
+             :experiences,
+             :enable_experiments,
+             :features,
+             :open_discussions_count,
+             :closed_discussions_count,
+             :recent_activity_count,
+             :is_subgroup_of_hidden_parent,
+             :is_visible_to_parent_members,
+             :parent_members_can_see_discussions,
+             :org_memberships_count,
+             :org_discussions_count,
+             :org_members_count,
+             # should break these out of here soon
+             :subscription_plan,
+             :subscription_active,
+             :subscription_max_members,
+             :subscription_max_threads,
+             :subscription_expires_at,
+             :subscription_state,
+             :subscription_created_at,
+             :subscription_info
 
   has_one :parent, serializer: GroupSerializer, root: :groups
 
-  attributes_for_formal :subscription_plan, :subscription_active,
-    :subscription_max_members, :subscription_max_threads, :subscription_expires_at,
-    :subscription_state, :subscription_created_at, :subscription_info
 
   def tag_names
     object.info['tag_names'] || []
@@ -126,7 +121,7 @@ class GroupSerializer < Simple::GroupSerializer
   end
 
   def include_logo_url_medium?
-    type == "FormalGroup" && object.logo.present?
+    object.logo.present?
   end
 
   def cover_urls

@@ -7,8 +7,8 @@ describe User do
   }
 
   let(:user) { create(:user) }
-  let(:group) { create(:formal_group) }
-  let(:restrictive_group) { create(:formal_group, members_can_start_discussions: false) }
+  let(:group) { create(:group) }
+  let(:restrictive_group) { create(:group, members_can_start_discussions: false) }
   let(:admin) { create :user }
   let(:new_user) { build(:user, password: "a_good_password", password_confirmation: "a_good_password") }
 

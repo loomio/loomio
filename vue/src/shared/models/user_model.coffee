@@ -40,9 +40,9 @@ export default class UserModel extends BaseModel
       find(id: { $in: @groupIds() }).
       simplesort('fullName').data()
 
-  formalGroups: ->
+  groups: ->
     @recordStore.groups.collection.chain().
-      find(id: { $in: @groupIds() }, type: "FormalGroup").
+      find(id: { $in: @groupIds() }).
       simplesort('fullName').data()
 
   adminGroups: ->
@@ -52,7 +52,7 @@ export default class UserModel extends BaseModel
     _.invokeMap @adminMemberships(), 'groupId'
 
   parentGroups: ->
-    _.filter @groups(), (group) -> group.isParent() && group.type == 'FormalGroup'
+    _.filter @groups(), (group) -> group.isParent()
 
   inboxGroups: ->
     _.flatten [@parentGroups(), @orphanSubgroups()]
@@ -68,7 +68,7 @@ export default class UserModel extends BaseModel
       group.discussions()
 
   orphanSubgroups: ->
-    _.filter @formalGroups(), (group) =>
+    _.filter @groups(), (group) =>
       group.parent() and !group.parent().membersInclude(@)
 
   orphanParents: ->

@@ -23,7 +23,7 @@ export default
     @watchRecords
       collections: ['groups', 'memberships']
       query: (store) =>
-        @availableGroups = filter(Session.user().formalGroups(), (group) -> AbilityService.canStartThread(group))
+        @availableGroups = filter(Session.user().groups(), (group) -> AbilityService.canStartThread(group))
 
   methods:
     submit: ->

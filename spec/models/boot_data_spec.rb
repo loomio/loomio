@@ -2,7 +2,7 @@ require 'rails_helper'
 
  describe Boot::User do
     let(:user) { create :user }
-    let(:group) { create :formal_group }
+    let(:group) { create :group }
     let(:discussion) { create :discussion, group: group }
     let!(:membership) { group.add_member! user }
     let(:subject) { Boot::User.new(user) }

@@ -22,7 +22,7 @@ class Events::MembershipResent < Event
   end
 
   def eventable_key
-    return :group if eventable.is_a?(FormalGroup)
+    return :group if eventable.is_a?(Group)
     eventable.class.to_s.downcase
   end
 

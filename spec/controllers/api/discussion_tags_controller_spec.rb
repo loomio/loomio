@@ -3,8 +3,8 @@ require 'rails_helper'
 describe API::DiscussionTagsController, type: :controller do
 
   let(:user) { create :user }
-  let(:group) { create :formal_group }
-  let(:another_group) { create :formal_group }
+  let(:group) { create :group }
+  let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:another_discussion) { create :discussion, group: group }
   let(:hidden_discussion) { create :discussion }

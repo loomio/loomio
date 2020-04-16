@@ -4,7 +4,7 @@ describe API::GroupIdentitiesController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:identity) { create :slack_identity, user: user }
-  let(:group) { create :formal_group }
+  let(:group) { create :group }
   let(:group_identity) { create :group_identity, identity: identity, group: group }
   let(:group_identity_params) {{
     group_id: group.id,

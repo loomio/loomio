@@ -4,7 +4,7 @@ class AnnouncementService
   def self.audience_for(model, kind, actor)
     case kind
     when 'parent_group'     then model.parent.accepted_members.where.not(id: model.member_ids)
-    when 'formal_group'     then model.group.accepted_members
+    when 'group', 'formal_group' then model.group.accepted_members
     when 'discussion_group' then model.discussion.readers
     when 'voters'           then model.poll.participants
     when 'undecided'        then model.poll.undecided

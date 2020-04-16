@@ -32,7 +32,7 @@ class Identities::SlackController < Identities::BaseController
   def authorized
     @team, @channel = params[:slack].to_s.split("-")
     if user_to_join
-      FormalGroup.by_slack_channel(@channel).each { |g| g.add_member! user_to_join }
+      Group.by_slack_channel(@channel).each { |g| g.add_member! user_to_join }
       sign_in user_to_join
     end
     render template: 'slack/authorized', layout: 'basic'

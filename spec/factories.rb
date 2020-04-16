@@ -6,16 +6,16 @@ FactoryBot.define do
 
   factory :membership do |m|
     m.user { |u| u.association(:user)}
-    m.group { |g| g.association(:formal_group)}
+    m.group { |g| g.association(:group)}
   end
 
   factory :pending_membership, class: Membership do |m|
     m.user { |u| u.association(:unverified_user)}
-    m.group { |g| g.association(:formal_group)}
+    m.group { |g| g.association(:group)}
   end
 
   factory :tag, class: Tag do
-    association :group, factory: :formal_group
+    association :group, factory: :group
     # name "metatag"
     # color "#656565"
   end
@@ -80,7 +80,7 @@ FactoryBot.define do
     custom_fields { { facebook_group_id: "G123" } }
   end
 
-  factory :formal_group do
+  factory :group do
     sequence(:name) { Faker::Name.name }
     description { 'A description for this group' }
     handle { GroupService.suggest_handle(name: name, parent_handle: parent&.handle) }
@@ -103,7 +103,7 @@ FactoryBot.define do
   end
 
   factory :group_identity do
-    association :group, factory: :formal_group
+    association :group, factory: :group
     association :identity, factory: :slack_identity
   end
 
@@ -129,7 +129,7 @@ FactoryBot.define do
 
   factory :discussion do
     association :author, :factory => :user
-    association :group, :factory => :formal_group
+    association :group, :factory => :group
     title { Faker::Name.name }
     description { 'A description for this discussion. Should this be *rich*?' }
     uses_markdown { true }
@@ -173,14 +173,14 @@ FactoryBot.define do
     single_use { true }
     intent {'join_group'}
     association :inviter, factory: :user
-    association :group, factory: :formal_group
+    association :group, factory: :group
   end
 
   factory :membership_request do
     introduction { Faker::Lorem.sentence }
     email { Faker::Internet.email }
     name { Faker::Name.name }
-    association :group,     factory: :formal_group
+    association :group,     factory: :group
     association :requestor, factory: :user
   end
 

@@ -1,12 +1,12 @@
 class EventParentMigrator
   def self.migrate_some_groups(num = 100)
-    FormalGroup.where("not(features ? 'nested_comments')").order("id DESC").limit(num).each do |group|
+    Group.where("not(features ? 'nested_comments')").order("id DESC").limit(num).each do |group|
       EventParentMigrator.delay(queue: :low_priority).migrate_group_id!(group.id)
     end
   end
 
   def self.migrate_group_id!(group_id)
-    group = FormalGroup.find group_id
+    group = Group.find group_id
     return if group.features['nested_comments']
     assign_surface_comment_parents(group)
     assign_reply_comment_parents(group)

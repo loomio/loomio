@@ -37,10 +37,8 @@ module PendingActionsHelper
       MembershipService.redeem(membership: pending_membership, actor: user)
     end
 
-    if pending_guest_membership
-      group_id = pending_guest_membership.group_id
-      model = Discussion.find_by(guest_group_id: group_id) || Poll.find_by(guest_group_id: group_id)
-      model.add_guest!(user, pending_guest_membership.inviter) if model
+    if pending_guest_model
+      model.add_guest!(user, pending_guest_model.inviter)
     end
   end
 
@@ -74,12 +72,12 @@ module PendingActionsHelper
   end
 
   def pending_membership
-    Membership.formal.pending.find_by(token: pending_membership_token) if pending_membership_token
+    Membership.pending.find_by(token: pending_membership_token) if pending_membership_token
   end
 
-  def pending_guest_membership
-    if pending_membership_token
-      Membership.guest.find_by(token: pending_membership_token)
+  def pending_guest_model
+    if pending_membership_token && membership = Membership.find_by(token: pending_membership_token)
+      Discussion.find_by(guest_group_id: membership.group_id) || Poll.find_by(guest_group_id: membership.group_id)
     else
       nil
     end

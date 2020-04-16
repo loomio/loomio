@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Queries::ExploreGroups do
-  let(:group)              { create :formal_group }
-  let(:second_group)       { create :formal_group }
-  let(:archived_group)     { create :formal_group, archived_at: 1.day.ago }
+  let(:group)              { create :group }
+  let(:second_group)       { create :group }
+  let(:archived_group)     { create :group, archived_at: 1.day.ago }
 
   before do
     group.update_attribute(:is_visible_to_public, true)
@@ -36,7 +36,7 @@ describe Queries::ExploreGroups do
     end
 
     it 'only shows parent groups' do
-      subgroup = FactoryBot.create(:formal_group, parent: group)
+      subgroup = FactoryBot.create(:group, parent: group)
       subgroup.update_attribute(:is_visible_to_public, true)
       expect(Queries::ExploreGroups.new).to_not include subgroup
     end

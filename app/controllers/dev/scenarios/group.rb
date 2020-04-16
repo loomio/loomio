@@ -37,7 +37,7 @@ module Dev::Scenarios::Group
 
   def setup_group_with_empty_draft
     sign_in patrick
-    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @group.add_admin! patrick
     membership = Membership.find_by(user: patrick, group: @group)
@@ -70,12 +70,12 @@ module Dev::Scenarios::Group
 
   def setup_subgroup_with_parent_member_visibility
     sign_in patrick
-    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 group_privacy: 'closed')
     @group.add_admin!  jennifer
     @group.add_member! jennifer
     @group.add_member! patrick
-    @subgroup = FormalGroup.create!(name: 'Johnny Utah',
+    @subgroup = Group.create!(name: 'Johnny Utah',
                                    parent: @group,
                                    discussion_privacy_options: 'public_or_private',
                                    parent_members_can_see_discussions: true,
@@ -94,7 +94,7 @@ module Dev::Scenarios::Group
   end
 
   def setup_open_group
-    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
                                 group_privacy: 'open')
     @group.add_admin!  patrick
     @group.add_member! jennifer
@@ -104,7 +104,7 @@ module Dev::Scenarios::Group
   end
 
   def setup_closed_group
-    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes', group_privacy: 'closed')
+    @group = Group.create!(name: 'Closed Dirty Dancing Shoes', group_privacy: 'closed')
     @group.add_admin!  patrick
     @group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @group)
@@ -113,7 +113,7 @@ module Dev::Scenarios::Group
   end
 
   def setup_secret_group
-    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
+    @group = Group.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
     @group.add_admin!  patrick
     @group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @group)
@@ -122,7 +122,7 @@ module Dev::Scenarios::Group
   end
 
   def setup_saml_group
-    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes', handle: 'dirty-dancing-shoes', group_privacy: params[:privacy] || 'secret')
+    @group = Group.create!(name: 'Dirty Dancing Shoes', handle: 'dirty-dancing-shoes', group_privacy: params[:privacy] || 'secret')
     @group.create_subscription(plan: 'pp-pro-annual')
     provider_url = "https://saml_provider.example.com"
     # provider_url = 'https://app.onelogin.com/saml/metadata/c5690a10-4e33-4a57-9389-30dd92996629'
@@ -148,7 +148,7 @@ module Dev::Scenarios::Group
   end
 
   def setup_saml_secret_group_pending_invitation
-    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
+    @group = Group.create!(name: 'Secret Dirty Dancing Shoes', handle: 'secret-shoes', group_privacy: 'secret')
     SamlProvider.create(group: @group, idp_metadata_url: "https://saml_provider.example.com")
     @group.add_admin! jennifer
     membership = FactoryBot.create :membership, group: @group, accepted_at: nil, inviter: jennifer, user: patrick
@@ -187,7 +187,7 @@ module Dev::Scenarios::Group
 
   def view_open_group_as_non_member
     sign_in patrick
-    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes', membership_granted_upon: 'request', group_privacy: 'open')
+    @group = Group.create!(name: 'Open Dirty Dancing Shoes', membership_granted_upon: 'request', group_privacy: 'open')
     @group.add_admin! jennifer
     @discussion = Discussion.new(title: "I carried a watermelon", private: false, author: jennifer, group: @group)
     DiscussionService.create(discussion: @discussion, actor: jennifer)
@@ -196,7 +196,7 @@ module Dev::Scenarios::Group
   end
 
   def view_open_group_as_visitor
-    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
+    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
     @group.add_admin! jennifer
