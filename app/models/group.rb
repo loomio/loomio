@@ -67,6 +67,9 @@ class Group < ApplicationRecord
     GroupMailer
   end
 
+  def title
+    name
+  end
   def message_channel
     "/group-#{self.key}"
   end

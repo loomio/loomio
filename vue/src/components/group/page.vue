@@ -6,14 +6,13 @@ import Records           from '@/shared/services/records'
 import EventBus          from '@/shared/services/event_bus'
 import AbilityService    from '@/shared/services/ability_service'
 import LmoUrlService     from '@/shared/services/lmo_url_service'
-import InstallSlackModalMixin from '@/mixins/install_slack_modal'
 import GroupModalMixin from '@/mixins/group_modal'
 import { subscribeTo }   from '@/shared/helpers/cable'
 import {compact, head, includes, filter} from 'lodash'
 import ahoy from 'ahoy.js'
 
 export default
-  mixins: [InstallSlackModalMixin, GroupModalMixin]
+  mixins: [GroupModalMixin]
   data: ->
     group: null
     activeTab: ''
@@ -58,7 +57,6 @@ export default
           organisationId: @group.parentOrSelf().id
           pageType: 'groupPage'
         subscribeTo(@group)
-        @openInstallSlackModal(@group) if @$route.query.install_slack
       .catch (error) =>
         EventBus.$emit 'pageError', error
         EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()

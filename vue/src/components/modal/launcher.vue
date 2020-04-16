@@ -21,8 +21,8 @@ import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsModal from '@/components/tags/modal'
-import InstallSlackModal from '@/components/install_slack/modal'
-import InstallMicrosoftTeamsModal from '@/components/install_microsoft_teams/modal'
+import WebhookForm from '@/components/webhook/form'
+import WebhookList from '@/components/webhook/list'
 import ChangePictureForm from '@/components/profile/change_picture_form'
 import GroupNewForm from '@/components/group/new_form'
 import PinEventForm from '@/components/thread/pin_event_form'
@@ -34,39 +34,40 @@ import InstallSamlProviderModal from '@/components/install_saml_provider/modal'
 import GroupSurvey from '@/components/group/survey'
 
 export default
-  components:
-    'GroupForm': GroupForm
-    'DiscussionForm': DiscussionForm
-    'EditCommentForm': EditCommentForm
-    'ConfirmModal': ConfirmModal
-    'ChangeVolumeForm': ChangeVolumeForm
-    'PollCommonModal': PollCommonModal
-    'PollCommonEditVoteModal': PollCommonEditVoteModal
-    'ContactRequestForm': ContactRequestForm
-    'AuthModal': AuthModal
-    'MembershipRequestForm': MembershipRequestForm
-    'MembershipModal': MembershipModal
-    'ChangePasswordForm': ChangePasswordForm
-    'PollCommonOutcomeModal': PollCommonOutcomeModal
-    'PollCommonReopenModal': PollCommonReopenModal
-    'ArrangementForm': ArrangementForm
-    'AnnouncementForm': AnnouncementForm
-    'AnnouncementHistory': AnnouncementHistory
-    'MoveThreadForm': MoveThreadForm
-    'PollCommonAddOptionModal': PollCommonAddOptionModal
-    'RevisionHistoryModal': RevisionHistoryModal
-    'TagsModal': TagsModal
-    'InstallSlackModal': InstallSlackModal
-    'InstallMicrosoftTeamsModal': InstallMicrosoftTeamsModal
-    'ChangePictureForm': ChangePictureForm
-    'GroupNewForm': GroupNewForm
-    'PinEventForm': PinEventForm
-    'MoveCommentsModal': MoveCommentsModal
-    'SeenByModal': SeenByModal
-    'ExportDataModal': ExportDataModal
-    'VueUpgradedModal': VueUpgradedModal
-    'InstallSamlProviderModal': InstallSamlProviderModal
-    'GroupSurvey': GroupSurvey
+  components: {
+    GroupForm
+    DiscussionForm
+    EditCommentForm
+    ConfirmModal
+    ChangeVolumeForm
+    PollCommonModal
+    PollCommonEditVoteModal
+    ContactRequestForm
+    AuthModal
+    MembershipRequestForm
+    MembershipModal
+    ChangePasswordForm
+    PollCommonOutcomeModal
+    PollCommonReopenModal
+    ArrangementForm
+    AnnouncementForm
+    AnnouncementHistory
+    MoveThreadForm
+    PollCommonAddOptionModal
+    RevisionHistoryModal
+    TagsModal
+    WebhookForm
+    WebhookList
+    ChangePictureForm
+    GroupNewForm
+    PinEventForm
+    MoveCommentsModal
+    SeenByModal
+    ExportDataModal
+    VueUpgradedModal
+    InstallSamlProviderModal
+    GroupSurvey
+  }
 
   data: ->
     isOpen: false

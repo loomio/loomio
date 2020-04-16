@@ -62,62 +62,17 @@ export default new class GroupService
           props:
             group: group
 
-    install_slack:
-      name: 'install_slack.modal_title'
-      icon: 'mdi-slack'
+    webhooks:
+      name: 'webhook.webhooks'
+      icon: 'mdi-webhook'
       canPerform: ->
-        AbilityService.canAdminister(group) && !group.groupIdentityFor('slack')
+        group.adminsInclude(Session.user())
       perform: ->
         openModal
-          component: 'InstallSlackModal'
+          component: 'WebhookList'
           props:
             group: group
 
-    remove_slack:
-      name: 'install_slack.remove_slack'
-      icon: 'mdi-slack'
-      canPerform: ->
-        AbilityService.canAdminister(group) && group.groupIdentityFor('slack')
-      perform: ->
-        openModal
-          component: 'ConfirmModal'
-          props:
-            confirm:
-              submit:     group.groupIdentityFor('slack').destroy
-              text:
-                title:    'install_slack.card.confirm_remove_title'
-                helptext: 'install_slack.card.confirm_remove_helptext'
-                flash:    'install_slack.card.identity_removed'
-
-    install_microsoft_teams:
-      name: 'install_microsoft.card.install_microsoft'
-      icon: 'mdi-microsoft'
-      canPerform: ->
-        # AppConfig.features.app.show_microsoft_card &&
-        !group.groupIdentityFor('microsoft') &&
-        AbilityService.canAdminister(group)
-      perform: ->
-        openModal
-          component: 'InstallMicrosoftTeamsModal'
-          props:
-            group: group
-
-    remove_microsoft_teams:
-      name: 'install_microsoft.card.remove_identity'
-      icon: 'mdi-microsoft'
-      canPerform: ->
-        group.groupIdentityFor('microsoft') &&
-        AbilityService.canAdminister(group)
-      perform: ->
-        openModal
-          component: 'ConfirmModal'
-          props:
-            confirm:
-              submit:     group.groupIdentityFor('microsoft').destroy
-              text:
-                title:    'install_microsoft.card.confirm_remove_title'
-                helptext: 'install_microsoft.card.confirm_remove_helptext'
-                flash:    'install_microsoft.card.identity_removed'
 
     configure_sso:
       name: 'configure_sso.title'

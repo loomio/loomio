@@ -1,9 +1,8 @@
 class OutcomeSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id, :statement, :statement_format, :latest,
-    :created_at, :custom_fields, :attachments, :event_summary, :event_location
+    :created_at, :custom_fields, :attachments, :event_summary, :event_location, :poll_id
 
-  has_one :poll, serializer: PollSerializer
   has_one :poll_option, serializer: PollOptionSerializer
   has_one :author, serializer: UserSerializer
   has_many :reactions, serializer: ReactionSerializer, root: :reactions
@@ -11,6 +10,7 @@ class OutcomeSerializer < ActiveModel::Serializer
   def include_reactions?
     scope.dig(:cache, :reactions).present?
   end
+
   def reactions
     scope.dig(:cache, :reactions).get_for(object)
   end

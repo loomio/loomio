@@ -52,7 +52,7 @@ export default
 
 </script>
 <template lang="pug">
-v-card.install-microsoft-modal
+v-card.install-saml-modal
   v-card-title
     h1.headline(v-t="'configure_sso.title'")
     v-spacer

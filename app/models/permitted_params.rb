@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     contact_message user_deactivation_response announcement document
-    draft oauth_application group_identity contact_request reaction
+    draft oauth_application group_identity webhook contact_request reaction
     tag discussion_tag group_survey
   )
 
@@ -98,6 +98,10 @@ class PermittedParams < Struct.new(:params)
    [:group_id, :identity_type, :webhook_url, :make_announcement,
     :custom_fields, custom_fields: [:slack_channel_name, :slack_channel_id, :event_kinds, event_kinds: []]
    ]
+  end
+
+  def webhook_attributes
+   [:group_id, :url, :name, :format, :event_kinds, {event_kinds: []}]
   end
 
   def discussion_attributes

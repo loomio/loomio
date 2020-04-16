@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_091658) do
+ActiveRecord::Schema.define(version: 2020_04_14_224655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -808,13 +808,15 @@ ActiveRecord::Schema.define(version: 2020_04_14_091658) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  create_table "webhooks", id: :serial, force: :cascade do |t|
-    t.integer "hookable_id"
-    t.string "hookable_type"
-    t.string "kind", null: false
-    t.string "uri", null: false
-    t.text "event_types", default: [], array: true
-    t.index ["hookable_type", "hookable_id"], name: "index_webhooks_on_hookable_type_and_hookable_id"
+  create_table "webhooks", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.string "name", null: false
+    t.string "url", null: false
+    t.jsonb "event_kinds", default: [], null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "format", default: "markdown", null: false
+    t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

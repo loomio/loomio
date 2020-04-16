@@ -80,20 +80,6 @@ FactoryBot.define do
     custom_fields { { facebook_group_id: "G123" } }
   end
 
-  factory :microsoft_identity, class: Identities::Microsoft do
-    user
-    identity_type { "microsoft" }
-    access_token { "https://outlook.office.com/webhook.url" }
-    uid { "https://outlook.office.com/webhook.url" }
-  end
-
-  factory :contact do
-    user
-    sequence(:email) { Faker::Internet.email }
-    sequence(:name) { Faker::Name.name }
-    source { 'gmail' }
-  end
-
   factory :formal_group do
     sequence(:name) { Faker::Name.name }
     description { 'A description for this group' }
@@ -106,6 +92,14 @@ FactoryBot.define do
       group.parent&.add_admin!(user)
       group.add_admin!(user)
     end
+  end
+
+  factory :webhook do
+    name {"webhook"}
+    url {"https://outlook.office.com/webhook.url"}
+    event_kinds {['poll_created']}
+    format {"markdown"}
+    association :group
   end
 
   factory :group_identity do
@@ -217,13 +211,6 @@ FactoryBot.define do
     comment_blurb { "comment blurb" }
     priority { 1.0 }
     query { "test query" }
-  end
-
-  factory :webhook do
-    association :hookable, factory: :discussion
-    uri { "www.test.com" }
-    kind { :slack }
-    event_types { ['motion_closing_soon', 'new_motion', 'motion_outcome_created'] }
   end
 
   factory :default_group_cover do

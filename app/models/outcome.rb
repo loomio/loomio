@@ -29,6 +29,10 @@ class Outcome < ApplicationRecord
   validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option
 
+  def body_format
+    statement_format
+  end
+  
   def parent_event
     poll.created_event
   end

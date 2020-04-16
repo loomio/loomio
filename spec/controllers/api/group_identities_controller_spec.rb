@@ -6,19 +6,11 @@ describe API::GroupIdentitiesController do
   let(:identity) { create :slack_identity, user: user }
   let(:group) { create :formal_group }
   let(:group_identity) { create :group_identity, identity: identity, group: group }
-  let(:webhook_identity) { create :microsoft_identity, user: user }
   let(:group_identity_params) {{
     group_id: group.id,
     identity_type: :slack,
     custom_fields: { slack_channel_id: '123', slack_channel_name: 'General' }
   }}
-  let(:webhook_group_identity_params) {{
-    group_id: group.id,
-    identity_type: :microsoft,
-    webhook_url: 'https://outlook.office.com/webhook',
-    custom_fields: { event_kinds: ['poll_created'] }
-  }}
-
   before { group.add_admin! user }
 
   describe 'create' do
@@ -45,16 +37,6 @@ describe API::GroupIdentitiesController do
       group.memberships.find_by(user: user).update(admin: false)
       expect { post :create, params: { group_identity: group_identity_params } }.to_not change { GroupIdentity.count }
       expect(response.status).to eq 403
-    end
-
-    it 'handles creating two separate webhooks' do
-      webhook_identity
-      expect { post :create, params: { group_identity: webhook_group_identity_params } }.to change { Identities::Base.count }
-      gi = GroupIdentity.last
-      expect(gi.identity).to_not eq webhook_identity
-      expect(gi.identity.access_token).to eq webhook_group_identity_params[:webhook_url]
-      expect(gi.identity.event_kinds).to include 'poll_created'
-      expect(gi.identity.event_kinds).to_not include 'poll_closing_soon'
     end
   end
 
