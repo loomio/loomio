@@ -1,7 +1,6 @@
 class VersionSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id,
-             :changes,
              :whodunnit,
              :previous_id,
              :created_at,
@@ -13,11 +12,6 @@ class VersionSerializer < ActiveModel::Serializer
   has_one :comment
   has_one :poll
   has_one :stance
-
-  def changes
-    return {} unless object.object_changes
-    object.object_changes.map { |key, changes| [key, changes_for(key, changes)] }.to_h
-  end
 
   def whodunnit
     object.whodunnit.to_i
@@ -43,7 +37,6 @@ class VersionSerializer < ActiveModel::Serializer
     object.previous.try :id
   end
 
-
   def include_discussion?
     object.item_type == 'Discussion'
   end
@@ -58,12 +51,5 @@ class VersionSerializer < ActiveModel::Serializer
 
   def include_stance?
     object.item_type == 'Stance'
-  end
-  private
-
-  def changes_for(key, changes)
-    return changes unless ['description', 'details', 'body', 'reason'].include?(key)
-    # render inline html for markdown fields
-    Discourse::Diff.new(changes[0].to_s, changes[1].to_s).side_by_side_markdown
   end
 end

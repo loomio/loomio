@@ -52,13 +52,11 @@ gem 'has_secure_token'
 gem "autoprefixer-rails"
 gem 'icalendar'
 gem 'rack-attack'
-gem 'js_regex'
 gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'hiredis'
 gem 'ruby-saml'
 gem 'google-cloud-translate', '1.4.0'
-gem 'discourse-diff'
 gem 'slack_mrkdwn'
 gem 'puma'
 gem 'reverse_markdown'

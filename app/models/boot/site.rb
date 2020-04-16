@@ -18,10 +18,6 @@ module Boot
         plugins:             Plugins::Repository.to_config,
         theme:               AppConfig.theme,
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
-        regex: {
-          url:               JsRegex.new(AppConfig::URL_REGEX),
-          email:             JsRegex.new(AppConfig::EMAIL_REGEX)
-        },
         features: {
           group:             AppConfig.group_features,
           app:               AppConfig.app_features
