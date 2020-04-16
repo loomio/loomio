@@ -5,7 +5,9 @@ class NotifyWebhooksWorker
     event = Event.find(event_id)
     eventable = event.eventable
     if eventable.group
-      eventable.group.identities.map { |i| i.notify!(event) }
+      eventable.group.identities.each do |i|
+        i.notify!(event) if i.respond_to? :notify!
+      end
       eventable.group.webhooks.each { |w| w.publish!(event) }
     end
   end
