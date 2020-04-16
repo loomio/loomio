@@ -34,9 +34,14 @@ module Ability::Group
          :set_volume,
          :see_members,
          :make_draft,
-         :move_discussions_to,
          :view_previous_proposals], ::Group do |group|
       user.email_verified? && group.members.exists?(user.id)
+    end
+
+    can [:move_discussions_to], ::Group do |group|
+      user.email_verified? &&
+      (group.admins.exists?(user.id) ||
+      (group.members_can_start_discussions? && group.members.exists?(user.id)))
     end
 
     can [:add_members,
