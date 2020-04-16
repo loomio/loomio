@@ -2,7 +2,20 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   include PrettyUrlHelper
   include PollEmailHelper
 
-  attributes :text
+  attributes :text, :icon_url, :username
+
+  def icon_url
+    url = object.eventable.group.logo.url(:medium)
+    if url.starts_with?('http')
+      url
+    else
+      "https://#{ENV['CANONICAL_HOST']}#{url}"
+    end
+  end
+
+  def username
+    AppConfig.theme[:site_name]
+  end
 
   def text
     if has_body
