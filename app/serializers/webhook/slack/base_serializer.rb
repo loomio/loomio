@@ -1,15 +1,9 @@
 class Webhook::Slack::BaseSerializer < Webhook::Markdown::BaseSerializer
-  def text
-    I18n.t(:"webhook.markdown.#{object.kind}", text_options)
+  def headline
+    SlackMrkdwn.from(super)
   end
 
-  private
-
   def body
-    if object.eventable.body_format == 'html'
-      ReverseMarkdown.convert(eventable.body)
-    else
-      eventable.body
-    end
+    SlackMrkdwn.from(super)
   end
 end

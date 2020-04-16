@@ -5,6 +5,22 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   attributes :text
 
   def text
+    if has_body
+      headline + "\n\n" + body.to_s
+    else
+      headline
+    end
+  end
+
+  def has_body
+    %w[new_discussion
+       new_comment
+       outcome_created
+       poll_created
+       stance_created].include? object.kind
+  end
+
+  def headline
     I18n.t(:"webhook.markdown.#{object.kind}", text_options)
   end
 
@@ -15,8 +31,17 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
       actor: user.name,
       title: title,
       body: body,
-      url: polymorphic_url(eventable, default_url_options)
-    }
+      url: polymorphic_url(eventable, default_url_options),
+      poll_type: poll_type
+    }.compact
+  end
+
+  def poll_type
+    if object.eventable.respond_to?(:poll)
+      I18n.t("poll_types.#{object.eventable.poll.poll_type}")
+    else
+      nil
+    end
   end
 
   def title
@@ -24,11 +49,21 @@ class Webhook::Markdown::BaseSerializer < ActiveModel::Serializer
   end
 
   def body
-    if object.eventable.body_format == 'html'
-      ReverseMarkdown.convert(eventable.body)
+    if eventable.is_a? Outcome
+      var = eventable.statement
     else
-      eventable.body
+      var = eventable.body
     end
+
+    if body_format == 'html'
+      ReverseMarkdown.convert(var)
+    else
+      var
+    end
+  end
+
+  def body_format
+    eventable.body_format
   end
 
   def user
