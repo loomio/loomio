@@ -617,7 +617,7 @@ en:
 
     audiences:
       parent_group: Members of {{name}}
-      formal_group: Members of {{name}}
+      group: Members of {{name}}
       discussion_group: Members of thread
       voters: People who have voted
       undecided: Undecided people
