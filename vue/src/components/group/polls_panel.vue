@@ -1,12 +1,16 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
+import AbilityService from '@/shared/services/ability_service'
 import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus       from '@/shared/services/event_bus'
 import Session       from '@/shared/services/session'
+import PollModalMixin from '@/mixins/poll_modal'
 import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash'
 
 export default
+  mixins: [ PollModalMixin ]
+
   data: ->
     group: null
     polls: []
@@ -37,6 +41,13 @@ export default
       @refresh()
 
   methods:
+    openSelectPollTypeModal: ->
+      EventBus.$emit 'openModal',
+                     component: 'PollCommonStartForm'
+                     props:
+                       group: @group
+                       isModal: true
+
     onQueryInput: (val) -> @$router.replace(@mergeQuery(q: val))
 
     refresh: debounce ->
@@ -68,7 +79,7 @@ export default
           some [poll.title, poll.details], (field) =>
             every @$route.query.q.split(' '), (frag) -> RegExp(frag, "i").test(field)
 
-      @polls = chain.simplesort('-createdAt').limit(@loader.numRequested).data()
+      @polls = chain.simplesort('id', true).limit(@loader.numRequested).data()
 
     fetch: ->
       @loader.fetchRecords
@@ -82,6 +93,8 @@ export default
 
   watch:
     '$route.query': 'refresh'
+  computed:
+    canStartPoll: -> AbilityService.canStartPoll(@group)
 
 </script>
 
@@ -113,7 +126,8 @@ export default
             v-list-item-title(v-t="'polls_panel.any_type'")
           v-list-item(v-for="pollType in pollTypes" :key="pollType" :to="mergeQuery({poll_type: pollType})" )
             v-list-item-title(v-t="'poll_types.'+pollType")
-      v-text-field(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_polls', {name: group.name})" append-icon="mdi-magnify")
+      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_polls', {name: group.name})" append-icon="mdi-magnify")
+      v-btn.polls-panel__new-poll-button(@click='openSelectPollTypeModal' color='primary' v-if='canStartPoll' v-t="'polls_panel.new_poll'")
     v-card(outlined)
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
