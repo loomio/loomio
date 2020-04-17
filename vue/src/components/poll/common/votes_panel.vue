@@ -12,6 +12,8 @@ sortFn =
     stance.pollOption().priority
   priority_last: (stance) ->
     -(stance.pollOption().priority)
+  undecided_first: (stance) ->
+    -(stance.castAt)
 
 export default
   components:
@@ -19,8 +21,6 @@ export default
   props:
     poll: Object
   data: ->
-    fix: {}
-    loader: null
   created: ->
     @fix.votesOrder = @sortOptions[0]
     @loader =  new RecordLoader
