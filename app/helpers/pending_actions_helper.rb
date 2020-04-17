@@ -38,7 +38,7 @@ module PendingActionsHelper
     end
 
     if pending_guest_model
-      model.add_guest!(user, pending_guest_model.inviter)
+      pending_guest_model.add_guest!(user, pending_membership.inviter)
     end
   end
 
