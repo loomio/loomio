@@ -34,11 +34,12 @@ module PendingActionsHelper
 
   def consume_pending_membership(user)
     if pending_membership
-      MembershipService.redeem(membership: pending_membership, actor: user)
-    end
-
-    if pending_guest_model
-      pending_guest_model.add_guest!(user, pending_membership.inviter)
+      if pending_guest_model
+        pending_guest_model.add_guest!(user, pending_membership.inviter)
+        pending_membership.destroy
+      else
+        MembershipService.redeem(membership: pending_membership, actor: user)
+      end
     end
   end
 
