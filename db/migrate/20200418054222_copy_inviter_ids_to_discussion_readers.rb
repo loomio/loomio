@@ -1,5 +1,6 @@
 class CopyInviterIdsToDiscussionReaders < ActiveRecord::Migration[5.2]
   def change
+    return if ENV['CANONICAL_HOST'] == 'www.loomio.org'
     execute "UPDATE discussion_readers
              SET inviter_id = memberships.inviter_id,
                  token = memberships.token
