@@ -7,7 +7,8 @@ class CopyInviterIdsToDiscussionReaders < ActiveRecord::Migration[5.2]
              FROM discussions, memberships
              WHERE discussion_readers.discussion_id = discussions.id AND
                    memberships.group_id = discussions.guest_group_id"
-    execute "DELETE memberships WHERE user_id IS NULL"
+    execute "DELETE FROM memberships WHERE user_id IS NULL"
+    execute "VACUUM FULL memberships"
     execute "DELETE FROM events
              USING events e
              LEFT OUTER JOIN memberships m ON e.eventable_type = 'Membership' and e.eventable_id = m.id
