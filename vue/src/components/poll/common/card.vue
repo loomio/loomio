@@ -15,7 +15,6 @@ export default
     poll: Object
 
   created: ->
-    # Records.polls.findOrFetchById(@poll.key)
     EventBus.$on 'showResults', => @buttonPressed = true
     EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
     @watchRecords

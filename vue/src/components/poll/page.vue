@@ -14,19 +14,18 @@ export default
   data: ->
     poll: null
 
-  created: ->
-    Records.polls.findOrFetchById(@$route.params.key, {}, true).then @init, (error) ->
-      EventBus.$emit 'pageError', error
+  created: -> @init()
 
   methods:
-    init: (poll) ->
-      if poll and isEmpty @poll?
+    init: ->
+      Records.polls.findOrFetchById(@$route.params.key)
+      .then (poll) =>
         @poll = poll
 
-        if @poll.discussionId
-          discussion = @poll.discussion()
-          discussionUrl = @urlFor(discussion)+'/'+@poll.createdEvent().sequenceId
-          @$router.replace(discussionUrl).catch (err) => {}
+        # if @poll.discussionId
+        #   discussion = @poll.discussion()
+        #   discussionUrl = @urlFor(discussion)+'/'+@poll.createdEvent().sequenceId
+        #   @$router.replace(discussionUrl).catch (err) => {}
 
         EventBus.$emit 'currentComponent',
           group: poll.group()
@@ -42,21 +41,15 @@ export default
 
         if @$route.params.change_vote
           ModalService.open 'PollCommonEditVoteModal', stance: => myLastStanceFor(@poll)
-
-  computed:
-    isEmptyPoll: -> isEmpty @poll
+      .catch (error) ->
+        EventBus.$emit 'pageError', error
+        EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
 </script>
 
 <template lang="pug">
 v-content
-  loading(:until="poll")
-    div(v-if="poll")
-      v-container.poll-page.max-width-800
-        loading(v-if='isEmptyPoll')
-        v-layout(column v-if='!isEmptyPoll')
-          poll-common-example-card(v-if='poll.example', :poll='poll')
-          poll-common-card.mb-3(:poll='poll')
-          //- membership-card(:group='poll.guestGroup()')
-          //- membership-card(:group='poll.guestGroup()', :pending='true')
+  v-container.poll-page.max-width-800
+    loading(:until="poll")
+    poll-common-card.mb-3(:poll='poll')
 </template>
