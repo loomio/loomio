@@ -10,7 +10,7 @@ class API::PollsController < API::RestfulController
     instantiate_collection do |collection|
       collection = collection.where(discussion: @discussion) if load_and_authorize(:discussion, optional: true)
       collection = collection.where(author: current_user)    if params[:authored_only]
-      collection.order(:created_at)
+      collection.order(id: :desc)
     end
     respond_with_collection
   end
@@ -37,7 +37,7 @@ class API::PollsController < API::RestfulController
 
   def search
     instantiate_collection do | colleciton |
-      poll_search.perform(search_filters)
+      PollSearch.new(current_user).perform(search_filters)
     end
     respond_with_collection
   end
@@ -53,10 +53,6 @@ class API::PollsController < API::RestfulController
 
   private
 
-  def poll_search
-    PollSearch.new(current_user)
-  end
-
   def search_filters
     params.slice(:group_key, :subgroups, :poll_type, :discussion_key, :status, :user, :query)
   end
@@ -66,9 +62,6 @@ class API::PollsController < API::RestfulController
   end
 
   def accessible_records
-    Queries::UnionQuery.for(:polls, [
-      current_user.polls,
-      Poll.where(id: Queries::VisiblePolls.new(user: current_user).pluck(:id))
-    ])
+    Queries::VisiblePolls.new(user: current_user)
   end
 end

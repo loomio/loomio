@@ -21,6 +21,7 @@ export default
       Records.polls.findOrFetchById(@$route.params.key)
       .then (poll) =>
         @poll = poll
+        subscribeTo(@poll)
 
         # if @poll.discussionId
         #   discussion = @poll.discussion()
@@ -32,9 +33,6 @@ export default
           poll:  poll
           title: poll.title
           page: 'pollPage'
-          skipScroll: true
-
-        subscribeTo(@poll)
 
         if @$route.params.set_outcome
           ModalService.open 'PollCommonOutcomeModal', outcome: => Records.outcomes.build(pollId: @poll.id)
@@ -48,8 +46,9 @@ export default
 </script>
 
 <template lang="pug">
-v-content
-  v-container.poll-page.max-width-800
-    loading(:until="poll")
-    poll-common-card.mb-3(:poll='poll')
+.poll-page
+  v-content
+    v-container.max-width-800
+      loading(:until="poll")
+        poll-common-card(:poll='poll')
 </template>

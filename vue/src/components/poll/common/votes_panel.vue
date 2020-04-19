@@ -18,8 +18,10 @@ sortFn =
 export default
   components:
     PollCommonDirective: -> import('@/components/poll/common/directive')
+
   props:
     poll: Object
+
   data: ->
   created: ->
     @fix.votesOrder = @sortOptions[0]
@@ -30,6 +32,7 @@ export default
         order: @fix.votesOrder
     @loader.fetchRecords()
     EventBus.$on 'refreshStance', => @loader.fetchRecords()
+
   methods:
     hasSomeVotes: ->
       @poll.stancesCount > 0
@@ -63,5 +66,4 @@ export default
     v-list
       poll-common-directive(:stance='stance', name='votes-panel-stance', v-for='stance in stances()', :key='stance.id')
     button(v-if='moreToLoad()', v-t="'common.action.load_more'", @click='loader.loadMore()')
-  poll-common-undecided-panel(:poll='poll')
 </template>
