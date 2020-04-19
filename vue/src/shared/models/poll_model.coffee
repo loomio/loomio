@@ -121,9 +121,6 @@ export default class PollModel extends BaseModel
   isClosed: ->
     @closedAt?
 
-  goal: ->
-    @customFields.goal or @membersCount()
-
   close: =>
     @processing = true
     @remote.postMember(@key, 'close').finally => @processing = false
