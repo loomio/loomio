@@ -98,15 +98,3 @@ setDefaultParams = (params) ->
   defaultParams = pickBy(params, identity)
   endpoints.forEach (endpoint) ->
     Records[endpoint].remote.defaultParams = defaultParams
-
-# loggedIn: ->
-#   Flash.success AppConfig.userPayload.flash.notice
-# $scope.pageError = null
-# $scope.refreshing  = true
-# $injector.get('$timeout') ->
-#   $scope.refreshing = false
-  # Flash.success AppConfig.userPayload.flash.notice
-#   delete AppConfig.userPayload.flash.notice
-# if LmoUrlService.params().set_password
-#   delete LmoUrlService.params().set_password
-#   ModalService.open 'ChangePasswordForm'

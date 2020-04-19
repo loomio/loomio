@@ -2,7 +2,6 @@
 import Session       from '@/shared/services/session'
 import Records       from '@/shared/services/records'
 import EventBus      from '@/shared/services/event_bus'
-import ModalService  from '@/shared/services/modal_service'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 
 import {compact, isEmpty}  from 'lodash'
@@ -35,10 +34,10 @@ export default
           page: 'pollPage'
 
         if @$route.params.set_outcome
-          ModalService.open 'PollCommonOutcomeModal', outcome: => Records.outcomes.build(pollId: @poll.id)
+          # ModalService.open 'PollCommonOutcomeModal', outcome: => Records.outcomes.build(pollId: @poll.id)
 
         if @$route.params.change_vote
-          ModalService.open 'PollCommonEditVoteModal', stance: => myLastStanceFor(@poll)
+          # ModalService.open 'PollCommonEditVoteModal', stance: => myLastStanceFor(@poll)
       .catch (error) ->
         EventBus.$emit 'pageError', error
         EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()

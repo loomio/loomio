@@ -2,7 +2,6 @@
 import AppConfig    from '@/shared/services/app_config'
 import Session      from '@/shared/services/session'
 import Records      from '@/shared/services/records'
-import ModalService from '@/shared/services/modal_service'
 import { fieldFromTemplate } from '@/shared/helpers/poll'
 import PollModalMixin from '@/mixins/poll_modal'
 import AnnouncementModalMixin from '@/mixins/announcement_modal'
@@ -23,7 +22,7 @@ export default
     openPollModal: (pollType) ->
       @openStartPollModal(@newPoll(pollType))
 
-    pollTypes: -> 
+    pollTypes: ->
       if @isModal
         AppConfig.pollTypes
       else
