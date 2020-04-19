@@ -33,10 +33,10 @@ export default
           title: poll.title
           page: 'pollPage'
 
-        if @$route.params.set_outcome
+        # if @$route.params.set_outcome
           # ModalService.open 'PollCommonOutcomeModal', outcome: => Records.outcomes.build(pollId: @poll.id)
 
-        if @$route.params.change_vote
+        # if @$route.params.change_vote
           # ModalService.open 'PollCommonEditVoteModal', stance: => myLastStanceFor(@poll)
       .catch (error) ->
         EventBus.$emit 'pageError', error
