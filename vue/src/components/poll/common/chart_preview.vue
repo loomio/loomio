@@ -25,7 +25,7 @@ export default
 <template lang="pug">
 .poll-common-chart-preview
   bar-chart(v-if="chartType == 'bar'", :stance-counts='poll.stanceCounts' :showMyStance="showMyStance"  :size='size')
-  progress-chart(v-if="chartType == 'progress'", :stance-counts='poll.stanceCounts', :goal='this.poll.goal()' :showMyStance="showMyStance"  :size='size')
+  progress-chart(v-if="chartType == 'progress'", :stance-counts='poll.stanceCounts', :goal='poll.stancesCount' :showMyStance="showMyStance"  :size='size')
   poll-proposal-chart-preview(v-if="chartType == 'pie'", :stance-data='poll.stanceData', :my-stance='myStance' :showMyStance="showMyStance" :size='size')
   matrix-chart(v-if="chartType == 'matrix'", :matrix-counts='poll.matrixCounts' :showMyStance="showMyStance"  :size='size')
 </template>

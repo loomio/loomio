@@ -13,6 +13,11 @@ class CommentSerializer < ActiveModel::Serializer
     scope.dig(:cache, :reactions).get_for(object, hydrate_on_miss: false)
   end
 
+  def include_documents?
+    (object.created_at > Date.parse("2019-11-01")) &&
+    from_cache(:documents).present?
+  end
+
   def mentioned_usernames
     from_cache :mentions
   end
@@ -29,9 +34,6 @@ class CommentSerializer < ActiveModel::Serializer
     from_cache(:mentions).present?
   end
 
-  def include_documents?
-    from_cache(:documents).present?
-  end
 
   def parent_author_name
     object.parent&.author_name

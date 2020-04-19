@@ -5,6 +5,10 @@ class Full::PollSerializer < ::PollSerializer
   has_many :documents, serializer: DocumentSerializer, root: :documents
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
 
+  def include_documents?
+    object.created_at > Date.parse("2019-11-01")
+  end
+
   def complete
     true
   end
