@@ -7,10 +7,11 @@ class DiscussionService
     #these should really be sent from the client, but it's ok here for now
     discussion.max_depth = discussion.group.new_threads_max_depth
     discussion.newest_first = discussion.group.new_threads_newest_first
-    
+
     return false unless discussion.valid?
 
     discussion.save!
+    discussion.update_attachments!
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion)
   end
@@ -52,6 +53,7 @@ class DiscussionService
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
     discussion.save!
+    discussion.update_attachments!
     EventService.delay(queue: :low_priority).rearrange_events(discussion) if rearrange
 
     version_service.handle_version_update!

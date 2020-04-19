@@ -15,6 +15,7 @@ class OutcomeService
     outcome.poll.outcomes.update_all(latest: false)
     outcome.store_calendar_invite if outcome.should_send_calendar_invite
     outcome.save!
+    outcome.update_attachments!
 
     EventBus.broadcast 'outcome_create', outcome, actor
     Events::OutcomeCreated.publish!(outcome)
