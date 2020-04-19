@@ -81,16 +81,10 @@ export default
     fetch: debounce ->
       @loader.fetchRecords
         q: @searchQuery
-        from: @from
 
       @attachmentLoader.fetchRecords
         q: @searchQuery
-        from: @from
     , 500
-
-    loadMore: ->
-      @from += @per
-      @fetch()
 
     handleSearchQueryChange: (val) ->
       @$router.replace({ query: { q: val } })
@@ -128,5 +122,5 @@ div
             td
               time-ago(:date="item.createdAt")
       v-layout(justify-center)
-        v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="loadMore()" v-t="'common.action.load_more'")
+        v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
 </template>

@@ -5,42 +5,40 @@ import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus       from '@/shared/services/event_bus'
 import Session       from '@/shared/services/session'
-import PollModalMixin from '@/mixins/poll_modal'
 import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash'
 
 export default
-  mixins: [ PollModalMixin ]
-
   data: ->
     group: null
     polls: []
     loader: null
-    per: 50
-    from: 0
     pollTypes: AppConfig.pollTypes
 
   created: ->
-    Records.groups.findOrFetch(@$route.params.key).then (group) =>
-      @group = group
+    @initLoader().fetchRecords().then =>
+      @group = Records.groups.find(@$route.params.key)
 
       EventBus.$emit 'currentComponent',
         page: 'groupPage'
         title: @group.name
         group: @group
-        search:
-          placeholder: @$t('navbar.search_polls', name: @group.parentOrSelf().name)
-
-      @loader = new RecordLoader
-        collection: 'polls'
-        path: 'search'
 
       @watchRecords
         collections: ['polls', 'groups', 'memberships']
         query: => @findRecords()
 
-      @refresh()
-
   methods:
+    initLoader: ->
+      @loader = new RecordLoader
+        collection: 'polls'
+        params:
+          group_key: @$route.params.key
+          status: @$route.query.status
+          poll_type: @$route.query.poll_type
+          query: @$route.query.q
+          subgroups: @$route.query.subgroups
+          per: 25
+
     openSelectPollTypeModal: ->
       EventBus.$emit 'openModal',
                      component: 'PollCommonStartForm'
@@ -50,12 +48,7 @@ export default
 
     onQueryInput: (val) -> @$router.replace(@mergeQuery(q: val))
 
-    refresh: debounce ->
-      @fetch()
-      @findRecords()
-    , 500
-
-    findRecords: (store) ->
+    findRecords: ->
       groupIds = switch @$route.query.subgroups
         when 'none' then [@group.id]
         when 'all' then @group.organisationIds()
@@ -79,20 +72,12 @@ export default
           some [poll.title, poll.details], (field) =>
             every @$route.query.q.split(' '), (frag) -> RegExp(frag, "i").test(field)
 
-      @polls = chain.simplesort('id', true).limit(@loader.numRequested).data()
-
-    fetch: ->
-      @loader.fetchRecords
-        group_key: @group.key
-        status: @$route.query.status
-        poll_type: @$route.query.poll_type
-        per: @per
-        from: @from
-        query: @$route.query.q
-        subgroups: @$route.query.subgroups
+      @polls = chain.simplesort('createdAt', true).limit(@loader.params.from + @loader.params.per).data()
 
   watch:
-    '$route.query': 'refresh'
+    '$route.query': ->
+      @initLoader().fetchRecords()
+
   computed:
     canStartPoll: -> AbilityService.canStartPoll(@group)
 
@@ -133,10 +118,10 @@ export default
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
         v-list(two-line avatar v-if='polls.length')
-          poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
+          poll-common-preview(:poll='poll' v-for='poll in polls' :key='poll.id')
 
         p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
 
         v-layout(justify-center)
-          v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+          v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 </template>

@@ -20,11 +20,6 @@ export default class RecordLoader
     @params['from'] = 0
     @numLoaded = 0
 
-  fetch: ->
-    @fetchRecords().then =>
-      @params.from = @params.from + @params.per
-      @
-
   fetchRecords: (opts = {}) ->
     @loading = true
     @exhausted = false
@@ -33,6 +28,7 @@ export default class RecordLoader
       params: defaults({}, opts, @params)
     .then (data) =>
       records = data[@collection] || []
+      @params.from = @params.from + @params.per
       @numLoaded += records.length
       @exhausted = true if records.length < (opts.per || @params.per)
       data
