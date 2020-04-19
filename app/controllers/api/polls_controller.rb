@@ -8,15 +8,8 @@ class API::PollsController < API::RestfulController
 
   def index
     instantiate_collection do |collection|
-      collection = collection.where(discussion: @discussion) if load_and_authorize(:discussion, optional: true)
-      collection = collection.where(author: current_user)    if params[:authored_only]
-      collection.order(id: :desc)
+      PollQuery.filter(chain: collection, params: params).order(created_at: :desc)
     end
-    respond_with_collection
-  end
-
-  def closed
-    instantiate_collection { |collection| collection.where(discussion: load_and_authorize(:discussion)) }
     respond_with_collection
   end
 
@@ -36,10 +29,6 @@ class API::PollsController < API::RestfulController
   end
 
   def search
-    instantiate_collection do | colleciton |
-      PollSearch.new(current_user).perform(search_filters)
-    end
-    respond_with_collection
   end
 
   def search_results_count
@@ -53,15 +42,12 @@ class API::PollsController < API::RestfulController
 
   private
 
-  def search_filters
-    params.slice(:group_key, :subgroups, :poll_type, :discussion_key, :status, :user, :query)
-  end
-
   def default_scope
-    super.merge(current_user: current_user, my_stances_cache: Caches::Stance.new(user: current_user, parents: resources_to_serialize))
+    super.merge(current_user: current_user,
+                my_stances_cache: Caches::Stance.new(user: current_user, parents: resources_to_serialize))
   end
 
   def accessible_records
-    Queries::VisiblePolls.new(user: current_user)
+    PollQuery.visible_to(user: current_user)
   end
 end

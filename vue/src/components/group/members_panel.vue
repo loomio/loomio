@@ -110,9 +110,6 @@ export default
         filter: @$route.query.filter
         subgroups: @$route.query.subgroups
 
-    recordsDisplayed: ->
-      min [@loader.numRequested, @recordCount()]
-
     invite: ->
       EventBus.$emit('openModal',
                       component: 'AnnouncementForm',
