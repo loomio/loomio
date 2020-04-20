@@ -45,13 +45,13 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-start-form(:is="isModal ? 'v-card' : 'div'") 
-  v-card-title(v-if="isModal")
-    v-layout(justify-space-between style="align-items: center")
-      .group-form__group-title
-        h1.headline Choose poll type
-      dismiss-modal-button
+.poll-common-start-form
   v-list.decision-tools-card__poll-types(two-line dense)
+    v-card-title(v-if="isModal")
+      v-layout(justify-space-between style="align-items: center")
+        .group-form__group-title
+          h1.headline Choose poll type
+        dismiss-modal-button
     //- v-list-item
     //-   v-list-item-avatar
     //-     v-icon

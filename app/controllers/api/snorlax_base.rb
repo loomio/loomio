@@ -130,6 +130,7 @@ class API::SnorlaxBase < ActionController::Base
   def success_response
     render json: {success: 'success'}
   end
+  
   def load_resource
     self.resource = resource_class.find(params[:id])
   end

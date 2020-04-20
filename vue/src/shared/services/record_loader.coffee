@@ -20,6 +20,9 @@ export default class RecordLoader
     @params['from'] = 0
     @numLoaded = 0
 
+  limit: ->
+    @params.from + @params.per
+
   fetchRecords: (opts = {}) ->
     @loading = true
     @exhausted = false

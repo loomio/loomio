@@ -6,11 +6,17 @@ export default
   props:
     poll: Object
 
+  computed:
     groups: ->
       map compact([@poll.group(), @poll.discussion()]), (model) =>
-        text: model.name || model.title
-        disabled: false
-        to: @urlFor(model)
+        if model.isA('discussion')
+          text: model.name || model.title
+          disabled: false
+          to: @urlFor(model)+'/'+@poll.createdEvent().sequenceId
+        else
+          text: model.name || model.title
+          disabled: false
+          to: @urlFor(model)
 </script>
 
 <template lang="pug">

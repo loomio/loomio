@@ -15,9 +15,8 @@ export default
     pollTypes: AppConfig.pollTypes
 
   created: ->
+    @group = Records.groups.find(@$route.params.key)
     @initLoader().fetchRecords().then =>
-      @group = Records.groups.find(@$route.params.key)
-
       EventBus.$emit 'currentComponent',
         page: 'groupPage'
         title: @group.name
