@@ -34,9 +34,11 @@ export default
       @buttonPressed || @myLastStance || @poll.isClosed()
 
     menuActions: ->
+      @myLastStance
       pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll', 'translate_poll']
 
     dockActions: ->
+      @myLastStance
       pick PollService.actions(@poll, @), ['announce_poll', 'edit_stance']
 
 </script>
