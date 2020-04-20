@@ -18,11 +18,12 @@ module Ability::Poll
     end
 
     can [:show, :toggle_subscription, :subscribe_to], ::Poll do |poll|
-      poll.anyone_can_participate ||
-      user_is_author_of?(poll) ||
-      can?(:show, poll.discussion) ||
-      poll.members.exists?(user.id) ||
-      poll.stances.find_by(token: user.stance_token)
+      PollQuery.visible_to(user: user, show_public: true).exists?(poll.id)
+      # poll.anyone_can_participate ||
+      # user_is_author_of?(poll) ||
+      # can?(:show, poll.discussion) ||
+      # poll.members.exists?(user.id) ||
+      # poll.stances.find_by(token: user.stance_token)
     end
 
     can :create, ::Poll do |poll|

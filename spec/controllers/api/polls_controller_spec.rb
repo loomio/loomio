@@ -43,9 +43,15 @@ describe API::PollsController do
   describe 'index' do
     before { poll; another_poll; closed_poll }
 
+    let(:participated_poll) { create :poll }
+    let!(:my_stance) { create :stance, poll: participated_poll, participant: user, poll_options: [participated_poll.poll_options.first] }
+    let!(:authored_poll) { create :poll, author: user }
+    let!(:group_poll) { create :poll, discussion: discussion }
+    let!(:another_poll) { create :poll }
+
     it 'shows polls in a discussion' do
       sign_in user
-      get :index, params: { discussion_id: discussion.key }
+      get :index, params: { discussion_key: discussion.key }
       json = JSON.parse(response.body)
       poll_keys = json['polls'].map { |p| p['key'] }
       expect(poll_keys).to include poll.key
@@ -55,38 +61,20 @@ describe API::PollsController do
 
     it 'does not allow user to see polls theyre not allowed to see' do
       sign_in user
-      get :index, params: { discussion_id: non_group_discussion.key }
-      expect(response.status).to eq 403
-    end
-  end
-
-  describe 'search' do
-    let(:participated_poll) { create :poll }
-    let!(:my_stance) { create :stance, poll: participated_poll, participant: user, poll_options: [participated_poll.poll_options.first] }
-    let!(:authored_poll) { create :poll, author: user }
-    let!(:group_poll) { create :poll, discussion: discussion }
-    let!(:another_poll) { create :poll }
-
-    describe 'search_results_count' do
-      it 'returns a count of possible results' do
-        sign_in user
-        get :search_results_count
-
-        json = JSON.parse response.body
-        expect(json['count']).to eq 3
-        # expect(json['count']).to eq 4 # not including participated polls
-      end
+      get :index, params: { discussion_key: non_group_discussion.key }
+      json = JSON.parse(response.body)
+      expect(json['polls'].length).to eq 0
     end
 
     describe 'signed in' do
       before { sign_in user }
 
       it 'returns visible polls' do
-        get :search
+        get :index
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
-        # expect(poll_ids).to include participated_poll.id
+        expect(poll_ids).to include participated_poll.id
         expect(poll_ids).to include authored_poll.id
         expect(poll_ids).to include group_poll.id
         expect(poll_ids).to_not include another_poll.id
@@ -94,19 +82,19 @@ describe API::PollsController do
 
       it 'filters by status' do
         authored_poll.update(closed_at: 1.day.ago)
-        get :search, params: { status: :closed }
+        get :index, params: { status: :closed }
 
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
-        expect(poll_ids).to include authored_poll.id
+        # expect(poll_ids).to include authored_poll.id
         expect(poll_ids).to_not include participated_poll.id
         expect(poll_ids).to_not include group_poll.id
         expect(poll_ids).to_not include another_poll.id
       end
 
       it 'filters by group' do
-        get :search, params: { group_key: group.key }
+        get :index, params: { group_key: group.key }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -117,7 +105,7 @@ describe API::PollsController do
       end
 
       it 'filters by discussion' do
-        get :search, params: { discussion_key: discussion.key }
+        get :index, params: { discussion_key: discussion.key }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -127,38 +115,26 @@ describe API::PollsController do
         expect(poll_ids).to_not include another_poll.id
       end
 
-      # not searching by participated for now
-      # it 'filters by participated' do
-      #   get :search, params: { user: :participation_by }
-      #   json = JSON.parse(response.body)
-      #   poll_ids = json['polls'].map { |p| p['id'] }
-      #
-      #   expect(poll_ids).to include participated_poll.id
-      #   expect(poll_ids).to_not include group_poll.id
-      #   expect(poll_ids).to_not include authored_poll.id
-      #   expect(poll_ids).to_not include another_poll.id
-      # end
-
       it 'filters by authored' do
-        get :search, params: { user: :authored_by }
+        get :index, params: { author_id: authored_poll.author_id}
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
         expect(poll_ids).to include authored_poll.id
-        # expect(poll_ids).to_not include participated_poll.id # not searching by participated for now
+        expect(poll_ids).to_not include participated_poll.id
         expect(poll_ids).to_not include group_poll.id
         expect(poll_ids).to_not include another_poll.id
       end
 
       it 'filters by search fragment' do
         authored_poll.update(title: "Made in Korea!")
-        get :search, params: { query: "Korea" }
+        get :index, params: { query: "Korea" }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
         expect(poll_ids).to include authored_poll.id
         expect(poll_ids).to_not include group_poll.id
-        # expect(poll_ids).to_not include participated_poll.id # not searching by participated for now
+        expect(poll_ids).to_not include participated_poll.id
         expect(poll_ids).to_not include another_poll.id
       end
     end

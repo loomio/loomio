@@ -189,8 +189,6 @@ Loomio::Application.routes.draw do
       post :add_options, on: :member
       post :toggle_subscription, on: :member
       get  :closed, on: :collection
-      get  :search, on: :collection
-      get  :search_results_count, on: :collection
     end
 
     resource :outcomes,     only: [:create, :update]

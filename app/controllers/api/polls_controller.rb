@@ -28,13 +28,6 @@ class API::PollsController < API::RestfulController
     respond_with_resource
   end
 
-  def search
-  end
-
-  def search_results_count
-    render json: { count: poll_search.perform(search_filters).count }
-  end
-
   def toggle_subscription
     service.toggle_subscription(poll: load_resource, actor: current_user)
     respond_with_resource

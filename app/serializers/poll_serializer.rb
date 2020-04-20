@@ -13,6 +13,10 @@ class PollSerializer < ActiveModel::Serializer
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
 
+  def include_group?
+    object.group_id
+  end
+  
   def my_stance
     @my_stances_cache ||= scope[:my_stances_cache].get_for(object) if scope && scope[:my_stances_cache]
   end

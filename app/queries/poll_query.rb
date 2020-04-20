@@ -23,9 +23,10 @@ class PollQuery
                  .joins("LEFT OUTER JOIN stances s ON s.poll_id = polls.id AND (s.participant_id = #{user.id || 0} #{or_stance_token})")
                  .joins("LEFT OUTER JOIN groups g on g.id = polls.group_id").where("g.archived_at IS NULL")
                  .where("#{'discussions.private = FALSE OR polls.anyone_can_participate = TRUE OR ' if show_public}
+                         polls.author_id = :user_id OR
                          (m.id IS NOT NULL AND m.archived_at IS NULL) OR
                          (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-                         (s.id IS NOT NULL AND s.revoked_at IS NULL)")
+                         (s.id IS NOT NULL AND s.revoked_at IS NULL)", user_id: user.id)
     chain
   end
 
@@ -37,7 +38,11 @@ class PollQuery
       chain = chain.where(group_id: group_ids)
     end
 
-    chain = chain.where(discussion_id: params[:discussion_id]) if params[:discussion_id]
+    if discussion = Discussion.find_by(key: params[:discussion_key]) || Discussion.find_by(id: params[:discussion_id])
+      chain = chain.where(discussion_id: discussion.id)
+    end
+
+    chain = chain.where(author_id: params[:author_id]) if params[:author_id]
     chain = chain.where(poll_type: params[:poll_type]) if params[:poll_type]
     chain = chain.send(params[:status]) if %w(active closed).include?(params[:status])
     chain = chain.search_for(params[:query]) if params[:query]
