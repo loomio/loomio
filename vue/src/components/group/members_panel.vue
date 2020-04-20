@@ -199,6 +199,6 @@ export default
             v-list-item-action
               membership-dropdown(:membership="membership")
         v-layout(justify-center)
-          v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+          v-btn.my-2(outlined color='accent' v-if="showLoadMore" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 
 </template>

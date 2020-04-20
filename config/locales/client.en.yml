@@ -550,19 +550,6 @@ en:
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
     group_announced: "<strong>{{name}}</strong> invited you to the group <strong>{{title}}</strong>"
 
-  position_buttons_panel:
-    heading: Have your say
-
-  extend_proposal_form:
-    aria_label: Change close time
-    title: 'Change close time'
-    success: 'Proposal close time updated'
-    submit: 'Update closing time'
-
-  discussion_record:
-    created: 'The thread {{title}} was successfully created in {{groupName}}'
-    updated: 'Saved changes to {{title}}'
-
   discussion_fork_actions:
     helptext: Select items you'd like to move to another thread
     move: Move
@@ -1010,44 +997,44 @@ en:
     manage_requests: Manage requests
     manage_requests_with_count: Manage requests ({{count}})
 
-  documents_page:
-    title: Attachments
-    fragment_placeholder: Search for attachments...
-    add_document: Add attachment
-    no_documents: No attachments found for this group. Click 'Add Attachment' above to add one.
-    no_documents_from_fragment: No attachments found named '{{fragment}}'
-    confirm_remove_title: Remove attachment
-    confirm_remove_helptext: Are you sure you want to remove this attachment?
-    document_removed: Attachment removed
-
-  document:
-    error:
-      invalid_format: Oops! Your URL is invalid. Ensure it begins with http:// or https://
-    card:
-      no_documents: No attachments have been uploaded into this group yet
-      view_documents: View all
-    list:
-      title: Attachments
-      no_group_documents: No attachments have been uploaded to the group description yet
-    management:
-      content_header: All attachments
-      uploaded_to: in
-    modal:
-      title: Add an attachment
-    method_form:
-      helptext: Attach files or links to share them with the group.
-      url_helptext: Link to websites and online resources
-      file_helptext: Upload files from your computer
-    form:
-      url_label: URL
-      helptext: Click here, paste, or drop file to upload
-      url_placeholder: E.g. https://www.example.com/attachment.zip
-      title_helptext: What should we call this attachment?
-      title_label: Name
-      title_placeholder: E.g. 'Community Guidelines'
-    flash:
-      success: Attachment saved
-      destroyed: Attachment removed
+  # documents_page:
+  #   title: Attachments
+  #   fragment_placeholder: Search for attachments...
+  #   add_document: Add attachment
+  #   no_documents: No attachments found for this group. Click 'Add Attachment' above to add one.
+  #   no_documents_from_fragment: No attachments found named '{{fragment}}'
+  #   confirm_remove_title: Remove attachment
+  #   confirm_remove_helptext: Are you sure you want to remove this attachment?
+  #   document_removed: Attachment removed
+  #
+  # document:
+  #   error:
+  #     invalid_format: Oops! Your URL is invalid. Ensure it begins with http:// or https://
+  #   card:
+  #     no_documents: No attachments have been uploaded into this group yet
+  #     view_documents: View all
+  #   list:
+  #     title: Attachments
+  #     no_group_documents: No attachments have been uploaded to the group description yet
+  #   management:
+  #     content_header: All attachments
+  #     uploaded_to: in
+  #   modal:
+  #     title: Add an attachment
+  #   method_form:
+  #     helptext: Attach files or links to share them with the group.
+  #     url_helptext: Link to websites and online resources
+  #     file_helptext: Upload files from your computer
+  #   form:
+  #     url_label: URL
+  #     helptext: Click here, paste, or drop file to upload
+  #     url_placeholder: E.g. https://www.example.com/attachment.zip
+  #     title_helptext: What should we call this attachment?
+  #     title_label: Name
+  #     title_placeholder: E.g. 'Community Guidelines'
+  #   flash:
+  #     success: Attachment saved
+  #     destroyed: Attachment removed
 
   membership_requests_page:
     heading: Membership Requests
@@ -1105,14 +1092,6 @@ en:
       no_invitations: 'Uhoh! Please verify the email address is correct and try again.'
       max_invitations: 'If you want to send more than 100 invitations, use a team link.'
 
-  add_members_modal:
-    aria_label: 'Add members from parent group'
-    heading: 'Add people from {{name}}'
-    add_members: 'Add members'
-    user_added_to_subgroup: '{{name}} added to Subgroup'
-    users_added_to_subgroup: '{{count}} Users added to Subgroup'
-    no_members_to_add: 'All members of {{parent}} belong to this subgroup'
-
   memberships_page:
     members: 'Members'
     name_label: 'Name'
@@ -1149,32 +1128,11 @@ en:
   membership_form:
     modal_title:
       group:      Set group title
-      discussion: Set thread title
-      poll:       Set {{pollType}} title
     title_helptext:
       group:      This title will appear beside {{name}}'s name within this group. Use it to let people know their role.
-      discussion: This title will appear beside {{name}}'s name within this thread. Use it to let people know their role.
-      poll:       This title will appear beside {{name}}'s name within this {{pollType}}. Use it to let people know their role.
     title_label: title
     title_placeholder: E.g. 'Coordinator', or 'Facilitator'
     updated: Membership title updated
-
-  pending_invitations_card:
-    heading: Pending invitations
-    email: Email
-    invitation_link: Invitation link
-    sent: Sent
-    sent_at: Sent {{date}}
-    copy_url: Copy URL
-    revoke_invitation: Revoke
-
-  cancel_invitation_form:
-    heading: Cancel invitation
-    question: Are you sure you want to cancel this invitation?
-    submit: "Yes, cancel invitation"
-    cancel: 'No'
-    messages:
-      success: Invitation cancelled
 
   user_page:
     contact_user: 'Contact {{name}}'
@@ -1288,6 +1246,7 @@ en:
   thread_preview:
     replies_count: "{{count}} replies"
     unread_count: "{{count}} unread"
+
   dashboard_page:
     aria_label: 'Dashboard'
     no_groups:
@@ -1459,70 +1418,11 @@ en:
     messages:
       success: Thread has been moved to {{name}}
 
-
-  print_modal:
-    load_discussion: Loading entire discussion
-    helptext: Just a second, we're fetching all of the events in this thread for printing...
-
   delete_comment_dialog:
     title: 'Delete comment'
     question: 'Are you sure you want to delete this comment?'
     confirm: 'Delete comment'
 
-  new_comment_item:
-    aria_label: 'Comment by {{author}}'
-    context_menu:
-      aria_label: 'Comment options'
-      edit_comment: 'Edit comment'
-      delete_comment: 'Delete comment'
-    in_reply_to: 'in reply to <strong>{{recipient}}</strong>'
-    edited: 'Edited'
-
-  new_vote_item:
-    agree: 'agreed'
-    abstain: 'abstained'
-    disagree: 'disagreed'
-    block: 'blocked'
-    agree_with_statement: 'agreed: <span>{{statement}}</span>'
-    abstain_with_statement: 'abstained: <span>{{statement}}</span>'
-    disagree_with_statement: 'disagreed: <span>{{statement}}</span>'
-    block_with_statement: 'blocked: <span>{{statement}}</span>'
-
-  new_proposal_item:
-    author_created_proposal: 'started a proposal: <span>{{title}}</span>'
-
-  proposal_closed_item:
-    proposal_closed: 'The proposal has closed: <span>{{title}}</span>'
-
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: 'closed the proposal: <span>{{title}}</span>'
-
-  proposal_edited_item:
-    name: 'updated the proposal title: <span>{{title}}</span>'
-    description: 'updated the proposal description'
-    closing_at: 'updated the proposal to close at <span>{{time}}</span>'
-    description_name: 'updated the proposal title and description'
-    closing_at_name: 'updated the proposal title and closing time'
-    closing_at_description: 'updated the proposal description and closing time'
-    closing_at_description_name: 'updated the proposal title, description and closing time'
-
-  proposal_outcome_created_item:
-    proposal_outcome_created: 'published a proposal outcome:'
-
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: 'updated the proposal outcome:'
-
-  discussion_edited_item:
-    attachment_ids: 'updated the thread attachments'
-    title: 'updated the thread title: <span>{{title}}</span>'
-    description: 'updated the thread context'
-    description_title: 'updated the thread title and context'
-    private: 'updated the thread privacy to'
-    public_to_private: 'private'
-    private_to_public: 'public'
-    private_title: 'updated the thread title and privacy'
-    description_private: 'updated the thread context and privacy'
-    description_private_title: 'updated the thread title, context and privacy'
 
   contact_message_form:
     title: "Hi there! How can we help?"

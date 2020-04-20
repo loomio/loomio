@@ -200,7 +200,7 @@ div.discussions-panel(v-if="group")
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
 
           v-layout(justify-center)
-            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+            v-btn.my-2.discussions-panel__show-more(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 
           .lmo-hint-text.discussions-panel__no-more-threads.text-center.pa-1(v-t="{ path: 'group_page.no_more_threads' }", v-if='loader.numLoaded > 0 && loader.exhausted')
 
