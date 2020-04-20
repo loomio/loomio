@@ -1786,6 +1786,7 @@ en:
     oldest_first: Oldest first
     priority_first: Agree first
     priority_last: Block first
+    undecided_first: Undecided first
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     none_of_the_above: (None of the above)

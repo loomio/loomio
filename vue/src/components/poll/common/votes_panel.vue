@@ -14,8 +14,11 @@ export default
   data: ->
     stances: []
     order: 'newest_first'
-    sortOptions: fieldFromTemplate(@poll.pollType, 'sort_options').map (option) =>
-      {text: @$t('poll_common_votes_panel.'+option), value: option}
+    sortOptions:
+      [
+        {text: @$t('poll_common_votes_panel.newest_first'), value: "newest_first"}
+        {text: @$t('poll_common_votes_panel.undecided_first'), value: "undecided_first"}
+      ]
 
   created: ->
     @refresh()
@@ -30,19 +33,11 @@ export default
 
   methods:
     findRecords: ->
-      {
-        newest_first: ["castAt", true]
-        oldest_first: ["castAt", false]
-        priority_first: "poll_options.priority ASC"
-        priority_last: "poll_options.priority DESC"
-        undecided_first: "cast_at DESC NULLS FIRST"
-      }
-
       chain = Records.stances.collection.chain().find(pollId: @poll.id).find(latest: true)
       chain = switch @order
         when 'newest_first'
           chain.simplesort('castAt', true)
-        when 'oldest_first'
+        when 'undecided_first'
           chain.simplesort('castAt', false)
       @stances = chain.limit(@loader.limit()).data()
 
@@ -56,9 +51,6 @@ export default
           poll_key: @poll.key
           order: {
             newest_first: "cast_at DESC NULLS LAST"
-            oldest_first: "cast_at ASC NULLS LAST"
-            priority_first: "poll_options.priority ASC"
-            priority_last: "poll_options.priority DESC"
             undecided_first: "cast_at DESC NULLS FIRST"
           }[@order]
 

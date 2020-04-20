@@ -13,8 +13,8 @@ class API::StancesController < API::RestfulController
 
   def valid_orders
     [
-      'cast_at DESC NUllS LAST', # lastest stances
-      'cast_at DESC NUllS FIRST' # undecided first
+      'cast_at DESC NULLS LAST', # lastest stances
+      'cast_at DESC NULLS FIRST' # undecided first
     ]
   end
 end
