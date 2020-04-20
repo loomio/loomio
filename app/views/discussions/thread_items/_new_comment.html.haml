@@ -3,13 +3,13 @@
   .thread-item.px-3.pb-1
     #sequence-2.layout.lmo-action-dock-wrapper{:style => "margin-left: 0px;"}
       .thread-item__avatar.mr-3.mt-0
-        = render "discussions/avatar", user: item.user
+        = render "discussions/avatar", user: comment.author
       .layout.thread-item__body.column
         .layout.align-center.wrap
           %h3.thread-item__title.body-2{id: "event-#{item.id}"}
             %span
               %strong
-                %a{:href => user_url(item.user)}= item.user.name
+                %a{:href => user_url(comment.author)}= comment.author.name
             %span
               %span{"aria-hidden" => "true"} ·
             %span.grey--text.body-2{:href => "/d/CEupg6yw/another-discussion-title/2"}
