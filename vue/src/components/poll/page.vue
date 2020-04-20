@@ -49,5 +49,5 @@ export default
   v-content
     v-container.max-width-800
       loading(:until="poll")
-        poll-common-card(:poll='poll')
+        poll-common-card(:poll='poll' is-page)
 </template>

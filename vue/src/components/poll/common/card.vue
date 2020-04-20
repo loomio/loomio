@@ -13,6 +13,7 @@ export default
 
   props:
     poll: Object
+    isPage: Boolean
 
   created: ->
     EventBus.$on 'showResults', => @buttonPressed = true
@@ -27,6 +28,10 @@ export default
     buttonPressed: false
     myLastStance: null
     outcome: null
+
+  methods:
+    titleVisible: (visible) ->
+      EventBus.$emit('content-title-visible', visible) if @isPage
 
   computed:
     icon: -> iconFor(@poll)
@@ -47,7 +52,7 @@ export default
 v-card
   poll-common-card-header(:poll='poll')
   v-card-title
-    h1.poll-common-card__title.display-1
+    h1.poll-common-card__title.display-1(v-observe-visibility="{callback: titleVisible}")
       span(v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       v-chip.ml-3(outlined small color="info" v-t="'poll_types.' + poll.pollType")
