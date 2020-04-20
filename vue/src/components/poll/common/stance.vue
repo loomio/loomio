@@ -24,6 +24,6 @@ export default
   span(v-else)
     span.caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
     v-layout(v-if="!reasonOnly" wrap align-center)
-      poll-common-stance-choice(:stance-choice='choice' v-if='choice.show()' v-for='choice in stance.orderedStanceChoices()' :key='choice.id')
+      poll-common-stance-choice(:poll="stance.poll()" :stance-choice='choice' v-if='choice.show()' v-for='choice in stance.orderedStanceChoices()' :key='choice.id')
     formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
 </template>

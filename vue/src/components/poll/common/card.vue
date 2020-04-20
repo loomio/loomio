@@ -62,3 +62,7 @@ v-card
     .poll-common-card__results-shown(v-if='showResults')
       poll-common-votes-panel(:poll='poll')
 </template>
+<style lang="sass">
+.v-card__title .poll-common-card__title
+  word-break: normal
+</style>

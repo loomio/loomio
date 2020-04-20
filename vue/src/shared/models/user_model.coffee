@@ -131,12 +131,7 @@ export default class UserModel extends BaseModel
 
   titleFor: (model) ->
     return unless model
-    if model.isA('group')
-      (@membershipFor(model) or {}).title
-    else if model.isA('discussion')
-      @titleFor(model.group())
-    else if model.isA('poll')
-      @titleFor(model.discussion()) or @titleFor(model.group())
+    (model.group().membershipFor(@) || {}).title
 
   belongsToPayingGroup: ->
     _.some @groups(), (group) -> group.subscriptionKind == 'paid'

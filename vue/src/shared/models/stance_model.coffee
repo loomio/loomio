@@ -1,6 +1,7 @@
 import BaseModel       from '@/shared/record_store/base_model'
 import AppConfig       from '@/shared/services/app_config'
 import HasTranslations from '@/shared/mixins/has_translations'
+import i18n from '@/i18n.coffee'
 import { sumBy, map, head, each, compact, flatten, includes, find, orderBy } from 'lodash'
 
 export default class StanceModel extends BaseModel
@@ -25,6 +26,12 @@ export default class StanceModel extends BaseModel
     @belongsTo 'poll'
     @hasMany 'stanceChoices'
     @belongsTo 'participant', from: 'users'
+
+  participantName: ->
+    if @participant()
+      @participant().nameWithTitle(@poll())
+    else
+      i18n.t('common.anonymous')
 
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Stance")
