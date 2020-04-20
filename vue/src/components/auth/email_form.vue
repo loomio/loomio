@@ -40,7 +40,7 @@ export default
   text-align: center
 
 .auth-email-form
-  max-width: 256px
+  max-width: 400px
   margin: 0 auto
 .auth-email-form__submit
   margin: 0 auto
