@@ -4,12 +4,11 @@ class GroupQuery
   end
 
   def self.visible_to(user: , chain: start, show_public: false)
-    ids = user.group_ids
-
-    Group.includes(:subscription, :creator)
-         .published.where(id: ids)
-         .or(Group.published
-                  .where('parent_id in (:ids)', ids: ids)
-                  .where('is_visible_to_parent_members = true or is_visible_to_public = true'))
+    chain.published
+    .joins("LEFT OUTER JOIN memberships m on m.group_id = groups.id AND m.user_id = #{user.id || 0}")
+    .joins("LEFT OUTER JOIN memberships pm on pm.group_id = groups.parent_id AND pm.user_id = #{user.id || 0}")
+    .where("#{'groups.is_visible_to_public = true OR ' if show_public}
+            (m.id IS NOT NULL AND memberships.archived_at is not null) OR
+            (pm.id IS NOT NULL AND pm.is_visible_to_parent_members = true))")
   end
 end
