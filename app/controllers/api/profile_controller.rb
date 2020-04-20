@@ -5,8 +5,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def groups
-    ids = current_user.groups.pluck(:id)
-    self.collection = Group.published.where(id: ids).or(Group.published.where('parent_id in (:ids)', ids: ids).where('is_visible_to_parent_members = true or is_visible_to_public = true'))
+    self.collection = GroupQuery.visible_to(user: current_user)
     respond_with_collection serializer: Full::GroupSerializer, root: :groups
   end
 

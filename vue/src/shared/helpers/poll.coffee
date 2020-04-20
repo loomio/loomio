@@ -45,9 +45,3 @@ export myLastStanceFor = (poll) ->
     pollId: poll.id
     participantId: AppConfig.currentUserId
   ), 'createdAt')
-
-export participantName = (stance) ->
-  if stance.participant()
-    stance.participant().nameWithTitle(stance.poll())
-  else
-    i18n.t('common.anonymous')

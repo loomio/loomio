@@ -34,6 +34,8 @@ export default
       .then (data) =>
         pollKey = data.polls[0].key
         Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
+          if !@poll.discussionId
+            @$router.replace(@urlFor(poll)).catch (err) => {}
           Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
           @close()
           @openAnnouncementModal(Records.announcements.buildFromModel(poll))

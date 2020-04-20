@@ -80,7 +80,7 @@ v-content
       span.group-page__name.mr-4
         | {{group.name}}
     trial-banner(:group="group")
-    group-onboarding-card(v-if="group" :group="group")
+    group-onboarding-card(:group="group")
     formatted-text.group-page__description(v-if="group" :model="group" column="description")
     document-list(:model='group')
     attachment-list(:attachments="group.attachments")

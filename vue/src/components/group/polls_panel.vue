@@ -1,5 +1,6 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
+import AbilityService from '@/shared/services/ability_service'
 import Records from '@/shared/services/records'
 import RecordLoader from '@/shared/services/record_loader'
 import EventBus       from '@/shared/services/event_bus'
@@ -11,40 +12,42 @@ export default
     group: null
     polls: []
     loader: null
-    per: 50
-    from: 0
     pollTypes: AppConfig.pollTypes
 
   created: ->
-    Records.groups.findOrFetch(@$route.params.key).then (group) =>
-      @group = group
-
+    @group = Records.groups.find(@$route.params.key)
+    @initLoader().fetchRecords().then =>
       EventBus.$emit 'currentComponent',
         page: 'groupPage'
         title: @group.name
         group: @group
-        search:
-          placeholder: @$t('navbar.search_polls', name: @group.parentOrSelf().name)
-
-      @loader = new RecordLoader
-        collection: 'polls'
-        path: 'search'
 
       @watchRecords
         collections: ['polls', 'groups', 'memberships']
         query: => @findRecords()
 
-      @refresh()
-
   methods:
+    initLoader: ->
+      @loader = new RecordLoader
+        collection: 'polls'
+        params:
+          group_key: @$route.params.key
+          status: @$route.query.status
+          poll_type: @$route.query.poll_type
+          query: @$route.query.q
+          subgroups: @$route.query.subgroups
+          per: 25
+
+    openSelectPollTypeModal: ->
+      EventBus.$emit 'openModal',
+                     component: 'PollCommonStartForm'
+                     props:
+                       group: @group
+                       isModal: true
+
     onQueryInput: (val) -> @$router.replace(@mergeQuery(q: val))
 
-    refresh: debounce ->
-      @fetch()
-      @findRecords()
-    , 500
-
-    findRecords: (store) ->
+    findRecords: ->
       groupIds = switch @$route.query.subgroups
         when 'none' then [@group.id]
         when 'all' then @group.organisationIds()
@@ -68,20 +71,14 @@ export default
           some [poll.title, poll.details], (field) =>
             every @$route.query.q.split(' '), (frag) -> RegExp(frag, "i").test(field)
 
-      @polls = chain.simplesort('-createdAt').limit(@loader.numRequested).data()
-
-    fetch: ->
-      @loader.fetchRecords
-        group_key: @group.key
-        status: @$route.query.status
-        poll_type: @$route.query.poll_type
-        per: @per
-        from: @from
-        query: @$route.query.q
-        subgroups: @$route.query.subgroups
+      @polls = chain.simplesort('createdAt', true).limit(@loader.params.from + @loader.params.per).data()
 
   watch:
-    '$route.query': 'refresh'
+    '$route.query': ->
+      @initLoader().fetchRecords()
+
+  computed:
+    canStartPoll: -> AbilityService.canStartPoll(@group)
 
 </script>
 
@@ -113,16 +110,17 @@ export default
             v-list-item-title(v-t="'polls_panel.any_type'")
           v-list-item(v-for="pollType in pollTypes" :key="pollType" :to="mergeQuery({poll_type: pollType})" )
             v-list-item-title(v-t="'poll_types.'+pollType")
-      v-text-field(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_polls', {name: group.name})" append-icon="mdi-magnify")
+      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_polls', {name: group.name})" append-icon="mdi-magnify")
+      v-btn.polls-panel__new-poll-button(@click='openSelectPollTypeModal' color='primary' v-if='canStartPoll' v-t="'polls_panel.new_poll'")
     v-card(outlined)
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
         v-list(two-line avatar v-if='polls.length')
-          poll-common-preview(:poll='poll', v-for='poll in polls', :key='poll.id')
+          poll-common-preview(:poll='poll' v-for='poll in polls' :key='poll.id')
 
         p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
 
         v-layout(justify-center)
-          v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.loadMore()" v-t="'common.action.load_more'")
+          v-btn.my-2(outlined color='accent' v-if="!loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords()" v-t="'common.action.load_more'")
 </template>

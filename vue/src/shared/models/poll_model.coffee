@@ -103,11 +103,11 @@ export default class PollModel extends BaseModel
 
   clearStaleStances: ->
     existing = []
-    each @latestStances('-createdAt'), (stance) ->
-      if includes(existing, stance.participant())
+    each @latestStances(), (stance) ->
+      if includes(existing, stance.participantId)
         stance.latest = false
       else
-        existing.push(stance.participant())
+        existing.push(stance.participantId)
 
   latestStances: (order = '-createdAt', limit) ->
     _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
@@ -166,6 +166,9 @@ export default class PollModel extends BaseModel
 
   hasOptionIcons: ->
     AppConfig.pollTemplates[@pollType]['has_option_icons']
+    
+  singleChoice: ->
+    AppConfig.pollTemplates[@pollType]['single_choice']
 
   translateOptionName: ->
     AppConfig.pollTemplates[@pollType]['translate_option_name']

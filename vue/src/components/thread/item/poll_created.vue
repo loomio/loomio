@@ -58,7 +58,7 @@ export default
 thread-item.poll-created(:event="event" :is-returning="isReturning")
   v-layout(justify-space-between)
     h1.poll-common-card__title.headline
-      span(v-if='!poll.translation.title') {{poll.title}}
+      router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title" :model='poll', field='title')
       poll-common-closing-at.ml-2(:poll='poll')
   poll-common-set-outcome-panel(:poll='poll')

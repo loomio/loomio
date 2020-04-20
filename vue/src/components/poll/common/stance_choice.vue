@@ -5,6 +5,9 @@ import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
+    poll:
+      type: Object
+      required: true
     stanceChoice: Object
     size:
       type: Number
@@ -18,9 +21,6 @@ export default
     optionImages: optionImages()
 
   computed:
-    poll: ->
-      @stanceChoice.poll()
-
     color: ->
       @pollOption.color
 

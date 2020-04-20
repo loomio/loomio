@@ -1,6 +1,5 @@
 <script lang="coffee">
 import Records       from '@/shared/services/records'
-import ModalService  from '@/shared/services/modal_service'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import EventBus      from '@/shared/services/event_bus'
 

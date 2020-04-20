@@ -35,18 +35,6 @@ export default
         disabled: false
         to: @urlFor(group)
 
-    status: ->
-      return 'pinned' if @discussion.pinned
-
-    statusTitle: ->
-      @$t("context_panel.thread_status.#{@status}")
-
-    groups: ->
-      map compact([@discussion.group().parent(), @discussion.group()]), (group) =>
-        text: group.name
-        disabled: false
-        to: @urlFor(group)
-
   methods:
     exact: exact
     titleVisible: (visible) ->

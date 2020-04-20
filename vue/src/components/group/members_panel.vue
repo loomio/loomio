@@ -1,7 +1,6 @@
 <script lang="coffee">
 import Records        from '@/shared/services/records'
 import AbilityService from '@/shared/services/ability_service'
-import ModalService   from '@/shared/services/modal_service'
 import RecordLoader   from '@/shared/services/record_loader'
 import Session        from '@/shared/services/session'
 import EventBus       from '@/shared/services/event_bus'
@@ -110,9 +109,6 @@ export default
         order: @order
         filter: @$route.query.filter
         subgroups: @$route.query.subgroups
-
-    recordsDisplayed: ->
-      min [@loader.numRequested, @recordCount()]
 
     invite: ->
       EventBus.$emit('openModal',

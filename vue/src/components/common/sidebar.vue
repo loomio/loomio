@@ -12,7 +12,7 @@ import DiscussionModalMixin from '@/mixins/discussion_modal.coffee'
 import { isUndefined, sortBy, filter, find, head, uniq, map, sum, compact, concat, intersection, difference, orderBy } from 'lodash'
 
 export default
-  mixins: [ GroupModalMixin, DiscussionModalMixin, ]
+  mixins: [ GroupModalMixin, DiscussionModalMixin ]
 
   data: ->
     organization: null

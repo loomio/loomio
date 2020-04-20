@@ -1569,52 +1569,6 @@ en:
       app_update: 'A new version of the app is available'
       reload: 'Reload'
 
-  authorized_apps_page:
-    title: Authorized Apps
-    no_applications: "You haven't authorized any third party apps yet."
-    notice: "You've given the following thirdparty apps permission to use your account. Click 'Revoke' to disable them."
-    revoke: Revoke
-
-  registered_apps_page:
-    title: Registered Applications
-    no_applications: "You don't have any OAuth applications yet! Click below to create one."
-    name: Name
-    redirect_uris: Redirect URIs
-    create_new_application: New Application
-
-  registered_app_page:
-    uid: Application ID
-    secret: Application Secret
-
-  registered_app_form:
-    new_application_title: New Application
-    edit_application_title: Update Application
-    name_label: Name
-    name_placeholder: What is your application called?
-    redirect_uri_label: Redirect Uris
-    redirect_uri_placeholder: "The callback uri for your application, Eg: https://myapplication.com/loomio/callback"
-    redirect_uri_note: (one line per URI, use 'urn:ietf:wg:oauth:2.0:oob' for local tests)
-    new_application_submit: Create Application
-    edit_application_submit: Update Application
-    messages:
-      logo_changed: Logo updated.
-      created: "Created '{{name}}'"
-      updated: "Updated '{{name}}'"
-
-  remove_app_form:
-    title: Deactivate {{name}}
-    question: "Are you sure you want to deactivate the application '{{name}}'? This action cannot be undone."
-    submit: Deactivate
-    messages:
-      success: "'{{name}}' was successfully deactivated"
-
-  revoke_app_form:
-    title: Revoke access for {{name}}
-    question: "Are you sure you disallow '{{name}}' to use your account?"
-    submit: Revoke Access
-    messages:
-      success: "'{{name}}' can no longer use your account."
-
   decision_tools_card:
     title: Facilitate
     help_text: <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Help</a>
@@ -1827,10 +1781,12 @@ en:
     started_by: Started by {{name}}
 
   poll_common_votes_panel:
+    undecided: Undecided
     newest_first: Newest first
     oldest_first: Oldest first
     priority_first: Agree first
     priority_last: Block first
+    undecided_first: Undecided first
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     none_of_the_above: (None of the above)

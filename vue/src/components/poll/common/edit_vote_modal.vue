@@ -49,7 +49,7 @@ v-card.poll-common-edit-vote-modal
   div(v-if="isEditing")
     v-card-text
       v-layout.mb-3(align-center wrap)
-        poll-common-directive(:size="48" :stance-choice="choice", name="stance-choice", v-if="choice.id && choice.score > 0", v-for="choice in orderedStanceChoices" :key="choice.id")
+        poll-common-directive(:size="48" :stance-choice="choice" :poll="stance.poll()" name="stance-choice", v-if="choice.id && choice.score > 0", v-for="choice in orderedStanceChoices" :key="choice.id")
         v-btn.poll-common-edit-vote__button(color="accent" outlined @click="toggleCreation()", v-t="'poll_common.change_vote'")
       .poll-common-stance-reason
         lmo-textarea.poll-common-vote-form__reason(:model='stance', field='reason', :label="$t('poll_common.reason')", :placeholder="$t('poll_common.reason_placeholder')", maxlength="500" autofocus)
