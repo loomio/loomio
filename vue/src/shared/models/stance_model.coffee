@@ -1,7 +1,7 @@
 import BaseModel       from '@/shared/record_store/base_model'
 import AppConfig       from '@/shared/services/app_config'
 import HasTranslations from '@/shared/mixins/has_translations'
-import { sumBy, map, head, each, compact, flatten, includes, find } from 'lodash'
+import { sumBy, map, head, each, compact, flatten, includes, find, orderBy } from 'lodash'
 
 export default class StanceModel extends BaseModel
   @singular: 'stance'
@@ -29,6 +29,9 @@ export default class StanceModel extends BaseModel
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Stance")
 
+  singleChoice: ->
+    @poll().singleChoice() && !!@castAt
+
   memberIds: ->
     @poll().memberIds()
 
@@ -49,6 +52,13 @@ export default class StanceModel extends BaseModel
 
   pollOptions: ->
     @recordStore.pollOptions.find(@pollOptionIds())
+
+  orderedStanceChoices: ->
+    order = if @poll().pollType == 'ranked_choice'
+      'asc'
+    else
+      'desc'
+    orderBy @stanceChoices(), 'rankOrScore', order
 
   stanceChoiceNames: ->
     map(@pollOptions(), 'name')

@@ -21,9 +21,9 @@ export default
   .poll-common-votes-panel__stance-content
     .poll-common-votes-panel__stance-name-and-option
       v-layout(align-center)
-        span.pr-2 {{ participantName }}
-    poll-common-stance(:stance="stance")
-        //- poll-common-directive(name='stance-choice', :stance-choice='choice', v-if='choice.score > 0', v-for='choice in orderedStanceChoices', :key='choice.id')
+        strong.pr-2 {{ participantName }}
+        poll-common-stance-choice(v-if="stance.singleChoice()" :stance-choice="stance.stanceChoice()")
+    poll-common-stance(:stance="stance" :reason-only="stance.singleChoice()")
 </template>
 <style lang="sass">
 .poll-common-votes-panel__stance
