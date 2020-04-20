@@ -616,7 +616,7 @@ DEPENDENCIES
   rack-attack
   rack-timeout
   rack_session_access
-  rails (~> 5.2.3)
+  rails (= 5.2.4.2)
   rails-controller-testing
   rails_12factor
   rails_serve_static_assets
