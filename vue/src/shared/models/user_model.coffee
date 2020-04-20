@@ -25,10 +25,6 @@ export default class UserModel extends BaseModel
   localeName: ->
     (_.find(AppConfig.locales, (h) => h.key == @locale) or {}).name
 
-  identityFor: (type) ->
-    _.find @identities(), (i) -> i.identityType == type
-
-
   adminMemberships: ->
     @recordStore.memberships.find(userId: @id, admin: true)
 
@@ -130,7 +126,7 @@ export default class UserModel extends BaseModel
     _.compact([@name, @titleFor(model)]).join(' · ')
 
   titleFor: (model) ->
-    return unless model
+    return unless model && model.group()
     (model.group().membershipFor(@) || {}).title
 
   belongsToPayingGroup: ->

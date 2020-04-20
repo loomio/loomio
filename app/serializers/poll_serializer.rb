@@ -7,6 +7,7 @@ class PollSerializer < ActiveModel::Serializer
              :notify_on_participate, :anonymous, :can_respond_maybe,
              :attachments, :mentioned_usernames
 
+  has_one :group, serializer: GroupSerializer, root: :groups
   has_one :author, serializer: UserSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances

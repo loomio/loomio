@@ -37,7 +37,7 @@ export default
       pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll', 'translate_poll']
 
     dockActions: ->
-      pick PollService.actions(@poll, @), ['announce_poll']
+      pick PollService.actions(@poll, @), ['announce_poll', 'edit_stance']
 
 </script>
 
@@ -59,7 +59,7 @@ v-card
     poll-common-action-panel(:poll='poll')
     action-dock(:actions="dockActions" :menu-actions="menuActions")
 
-    .poll-common-card__results-shown(v-if='showResults')
+    .poll-common-card__results-shown.mt-4(v-if='showResults')
       poll-common-votes-panel(:poll='poll')
 </template>
 <style lang="sass">

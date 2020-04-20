@@ -9,6 +9,17 @@ import { hardReload } from '@/shared/helpers/window'
 
 export default new class PollService
   actions: (poll, vm) ->
+    edit_stance:
+      name: 'poll_common.change_vote'
+      icon: 'mdi-pencil'
+      canPerform: =>
+        poll.isActive() && Session.user() && poll.stanceFor(Session.user()) && poll.stanceFor(Session.user()).castAt
+      perform: =>
+        openModal
+          component: 'PollCommonEditVoteModal',
+          props:
+            stance: poll.stanceFor(Session.user()).clone()
+
     notification_history:
       name: 'action_dock.notification_history'
       icon: 'mdi-alarm-check'
