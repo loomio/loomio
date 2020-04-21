@@ -12,6 +12,7 @@ class DiscussionSerializer < ApplicationSerializer
 
   attributes :id,
              :key,
+             :group_id,
              :title,
              :description,
              :description_format,

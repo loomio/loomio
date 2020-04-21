@@ -13,6 +13,8 @@ class Simple::DiscussionSerializer < ApplicationSerializer
   attributes :id,
              :key,
              :title,
+             :group_id,
+             :author_id,
              :description,
              :description_format,
              :ranges,
