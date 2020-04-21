@@ -116,7 +116,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def index_scope
-    { email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id), include_inviter: true }
+    default_scope.merge({ email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:user_id), include_inviter: true })
   end
 
   def model

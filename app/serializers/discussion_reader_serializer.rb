@@ -2,6 +2,7 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id,
+             :user_id,
              :discussion_id,
              :read_ranges,
              :last_read_at,

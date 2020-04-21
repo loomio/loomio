@@ -39,6 +39,7 @@ export default
         collection: 'memberships'
         path: 'autocomplete'
         params:
+          exclude_types: 'group'
           group_id: @group.id
           pending: true
           per: @per

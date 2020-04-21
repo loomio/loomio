@@ -77,7 +77,7 @@ class API::RestfulController < API::SnorlaxBase
   end
 
   def default_scope
-    { current_user: current_user }
+    { current_user: current_user, exclude_types: params[:exclude_types].to_s.split(' ') }
   end
 
 end

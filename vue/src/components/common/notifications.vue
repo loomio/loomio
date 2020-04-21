@@ -1,12 +1,9 @@
 <script lang="coffee">
 import Records   from '@/shared/services/records'
 import AppConfig from '@/shared/services/app_config'
-import WatchRecords from '@/mixins/watch_records'
 import {compact, orderBy} from 'lodash'
 
 export default
-  mixins: [WatchRecords]
-
   data: ->
     notifications: []
     unread: []

@@ -22,6 +22,7 @@ export default
       # console.log "fetch parent pid #{@parentEvent.id}, missing: #{slots}"
       return unless slots.length
       @loader.fetchRecords(
+        exclude_types: 'group discussion'
         comment_id: null
         from_unread: null
         discussion_id: @parentEvent.discussionId

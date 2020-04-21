@@ -39,10 +39,12 @@ export default
           collection: 'discussions'
           params:
             group_id: @group.id
+            exclude_types: 'group outcome event'
 
         @searchLoader = new RecordLoader
           collection: 'searchResults'
           params:
+            exclude_types: 'group stance outcome event poll'
             subgroups: @$route.query.subgroups || 'all'
             group_id: @group.id
 
