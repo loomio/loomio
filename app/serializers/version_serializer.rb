@@ -1,5 +1,4 @@
-class VersionSerializer < ActiveModel::Serializer
-  embed :ids, include: true
+class VersionSerializer < ApplicationSerializer
   attributes :id,
              :whodunnit,
              :previous_id,

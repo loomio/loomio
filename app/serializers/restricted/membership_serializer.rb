@@ -1,4 +1,4 @@
-class Restricted::MembershipSerializer < ActiveModel::Serializer
+class Restricted::MembershipSerializer < ApplicationSerializer
   embed :ids, include: true
   attributes :id, :volume, :user_id
   has_one :group, serializer: Restricted::GroupSerializer, root: :groups

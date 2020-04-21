@@ -1,4 +1,4 @@
-class MembershipSerializer < ActiveModel::Serializer
+class MembershipSerializer < ApplicationSerializer
 
   has_one :group, serializer: GroupSerializer, root: :groups
 

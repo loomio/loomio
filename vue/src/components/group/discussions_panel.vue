@@ -39,10 +39,12 @@ export default
           collection: 'discussions'
           params:
             group_id: @group.id
+            exclude_records: 'group'
 
         @searchLoader = new RecordLoader
           collection: 'searchResults'
           params:
+            exclude_records: 'group'
             subgroups: @$route.query.subgroups || 'all'
             group_id: @group.id
 

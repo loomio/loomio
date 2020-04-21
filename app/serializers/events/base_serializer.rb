@@ -1,5 +1,4 @@
-class Events::BaseSerializer < ActiveModel::Serializer
-  embed :ids, include: true
+class Events::BaseSerializer < ApplicationSerializer
   attributes :id, :sequence_id, :position, :depth, :child_count, :kind,
     :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
     :pinned, :pinned_title

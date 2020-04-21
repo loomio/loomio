@@ -1,6 +1,4 @@
-class DiscussionSerializer < ActiveModel::Serializer
-  embed :ids, include: true
-
+class DiscussionSerializer < ApplicationSerializer
   def self.attributes_from_reader(*attrs)
     attrs.each do |attr|
       case attr
