@@ -25,6 +25,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     include_type?('stance')
   end
 
+  def include_my_stance?
+    include_type?('stance')
+  end
+
   def include_stance_choices?
     include_type?('stance_choice')
   end
@@ -38,6 +42,14 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_author?
+    include_type?('user')
+  end
+
+  def include_actor?
+    include_type?('user')
+  end
+
+  def include_inviter?
     include_type?('user')
   end
 

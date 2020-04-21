@@ -4,7 +4,7 @@ class PollSerializer < ApplicationSerializer
              :closed_at, :closing_at, :stances_count, :participants_count, :undecided_count, :cast_stances_pct, :versions_count,
              :created_at, :multiple_choice, :custom_fields, :poll_option_names,
              :notify_on_participate, :anonymous, :can_respond_maybe,
-             :attachments, :mentioned_usernames
+             :attachments, :mentioned_usernames, :author_id
 
   has_one :group, serializer: GroupSerializer, root: :groups
   has_one :author, serializer: UserSerializer, root: :users
