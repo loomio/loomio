@@ -5,7 +5,7 @@ import Records  from '@/shared/services/records'
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import Flash   from '@/shared/services/flash'
-import { isEmpty, compact } from 'lodash'
+import { isEmpty, compact, debounce } from 'lodash'
 import { onError } from '@/shared/helpers/form'
 import openModal from '@/shared/helpers/open_modal'
 
@@ -24,6 +24,18 @@ export default
     progress: 0
 
   created: ->
+    @suggestHandle = debounce ->
+      # if group is new, suggest handle whenever name changes
+      # if group is old, suggest handle only if handle is empty
+      if @group.isNew() or isEmpty(@group.handle)
+        parentHandle = if @group.parent()
+          @group.parent().handle
+        else
+          null
+        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
+          @group.handle = data.handle
+    , 500
+
     @group = Records.groups.build
       name: @$route.params.name
       parentId: @parentId
@@ -60,16 +72,6 @@ export default
                 group: group
       .catch onError(@group)
 
-    suggestHandle: ->
-      # if group is new, suggest handle whenever name changes
-      # if group is old, suggest handle only if handle is empty
-      if @group.isNew() or isEmpty(@group.handle)
-        parentHandle = if @group.parent()
-          @group.parent().handle
-        else
-          null
-        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
-          @group.handle = data.handle
 
     privacyStringFor: (privacy) ->
       @$t groupPrivacy(@group, privacy),
