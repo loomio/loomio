@@ -8,6 +8,10 @@ class Events::BaseSerializer < ApplicationSerializer
   has_one :discussion, serializer: Simple::DiscussionSerializer, root: :discussions
   has_one :parent, serializer: Events::BaseSerializer, root: :events
 
+  def actor_id
+    object.user_id
+  end
+  
   def actor
     object.user || object.eventable&.user
   end
