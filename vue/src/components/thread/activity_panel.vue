@@ -63,15 +63,7 @@ export default
       @fetchEvent(args.column, args.id).then (event) =>
         if event
           @focalEvent = event
-          if args.scrollTo
-            @scrollTo "#sequence-#{event.sequenceId}", =>
-              setTimeout =>
-                @focalEvent = null
-              , 1000
-          else
-            setTimeout =>
-              @focalEvent = null
-            , 1000
+          @scrollTo "#sequence-#{@focalEvent.sequenceId}" if args.scrollTo
         else
           Flash.error('thread_context.item_maybe_deleted')
 
@@ -114,9 +106,15 @@ export default
         # console.log "finding: ", args
         Records.events.find(args)[0]
 
+    refocus: ->
+      if @focalEvent
+        @scrollTo("#sequence-#{@focalEvent.sequenceId}").then =>
+          @focalEvent = null
+
+
     fetch: (slots, padding) ->
       return unless slots.length
-      @loader.fetchRecords
+      @loader.fetchRecords(
         comment_id: null
         from: null
         from_unread: null
@@ -124,7 +122,7 @@ export default
         order: 'sequence_id'
         from_sequence_id_of_position: first(slots)
         until_sequence_id_of_position: last(slots)
-        per: padding * 4
+        per: padding * 4).then => @refocus()
 
     openArrangementForm: ->
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
