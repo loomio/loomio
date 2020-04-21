@@ -9,6 +9,14 @@ class ApplicationSerializer < ActiveModel::Serializer
     include_type?('discussion')
   end
 
+  def include_created_event?
+    include_type?('event')
+  end
+
+  def include_forked_event?
+    include_type?('event')
+  end
+
   def include_group?
     include_type?('group')
   end

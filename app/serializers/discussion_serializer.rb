@@ -81,11 +81,11 @@ class DiscussionSerializer < ApplicationSerializer
   end
 
   def include_created_event?
-    scope[:discussion_event_cache].present?
+    super && scope[:discussion_event_cache].present?
   end
 
   def include_forked_event?
-    scope[:discussion_event_cache].present?
+    super && scope[:discussion_event_cache].present?
   end
 
   def scope
