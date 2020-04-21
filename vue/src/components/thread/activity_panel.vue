@@ -108,9 +108,8 @@ export default
 
     refocus: ->
       if @focalEvent
-        @scrollTo("#sequence-#{@focalEvent.sequenceId}").then =>
-          @focalEvent = null
-
+        @$vuetify.goTo("#sequence-#{@focalEvent.sequenceId}", duration: 0)
+        @focalEvent = null
 
     fetch: (slots, padding) ->
       return unless slots.length
@@ -122,7 +121,7 @@ export default
         order: 'sequence_id'
         from_sequence_id_of_position: first(slots)
         until_sequence_id_of_position: last(slots)
-        per: padding * 4).then => @refocus()
+        per: padding * 4).then @refocus
 
     openArrangementForm: ->
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
