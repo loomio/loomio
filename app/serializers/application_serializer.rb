@@ -2,7 +2,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   def exclude_record?(type)
-    !Array((scope || {})[:exclude_records]).include?(type)
+    !Array((scope || {})[:exclude_types]).include?(type)
   end
 
   def include_discussion?

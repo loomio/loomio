@@ -32,7 +32,7 @@ export default
     @loader = new RecordLoader
       collection: 'events'
         params:
-          exclude_records: 'group discussion membership'
+          exclude_types: 'group discussion membership'
 
     @watchRecords
       key: @discussion.id
@@ -80,7 +80,7 @@ export default
           when 'position' then 'from_sequence_id_of_position'
 
         @loader.fetchRecords(
-          exclude_records: 'discussion group'
+          exclude_types: 'discussion group'
           discussion_id: @discussion.id
           order: 'sequence_id'
           per: 5
@@ -117,7 +117,7 @@ export default
     fetch: (slots, padding) ->
       return unless slots.length
       @loader.fetchRecords(
-        exclude_records: 'discussion group'
+        exclude_types: 'discussion group'
         comment_id: null
         from: null
         from_unread: null
