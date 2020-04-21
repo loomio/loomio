@@ -21,6 +21,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     include_type?('group')
   end
 
+  def include_active_polls?
+    include_type?('poll')
+  end
+
   def include_eventable?
     include_type?(object.eventable_type.downcase)
   end
