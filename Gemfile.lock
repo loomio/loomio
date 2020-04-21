@@ -447,7 +447,6 @@ GEM
       railties (>= 5.0)
     reverse_markdown (2.0.0)
       nokogiri
-    rinku (2.0.6)
     rspec-activemodel-mocks (1.1.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -625,7 +624,6 @@ DEPENDENCIES
   redcarpet (~> 3.5.0)
   redis-rails
   reverse_markdown
-  rinku
   rspec-activemodel-mocks
   rspec-collection_matchers
   rspec-its
