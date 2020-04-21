@@ -75,8 +75,6 @@ Loomio::Application.routes.draw do
       end
     end
 
-    resources :group_identities, only: [:create, :destroy]
-
     resources :memberships, only: [:index, :create, :update, :destroy] do
       collection do
         post :add_to_subgroup
