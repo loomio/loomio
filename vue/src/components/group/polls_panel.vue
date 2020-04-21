@@ -31,7 +31,7 @@ export default
       @loader = new RecordLoader
         collection: 'polls'
         params:
-          exclude_types: 'discussion group event'
+          exclude_types: 'discussion group'
           group_key: @$route.params.key
           status: @$route.query.status
           poll_type: @$route.query.poll_type
