@@ -85,7 +85,7 @@ v-card.group-survey
 
       v-text-field.group-survey__role(v-model='survey.role' :label="$t('group_survey.role')" :rules="[rules.required]")
 
-      v-text-field.group-survey__website(v-model='survey.website' :label="$t('group_survey.website')" :rules="[rules.required]")
+      v-text-field.group-survey__website(v-model='survey.website' :label="$t('group_survey.website')")
 
       v-textarea.group-survey__misc(v-model='survey.misc' :label="$t('group_survey.anything_else')")
 
