@@ -1,10 +1,10 @@
-class OutcomeSerializer < ActiveModel::Serializer
-  embed :ids, include: true
+class OutcomeSerializer < ApplicationSerializer
   attributes :id, :statement, :statement_format, :latest,
-    :created_at, :custom_fields, :attachments, :event_summary, :event_location, :poll_id
+    :created_at, :custom_fields, :attachments, :event_summary,
+    :event_location, :poll_id, :author_id
 
-  has_one :poll_option, serializer: PollOptionSerializer
-  has_one :author, serializer: UserSerializer
+  has_one :poll_option, serializer: PollOptionSerializer, root: :poll_options
+  has_one :author, serializer: UserSerializer, root: :users
   has_many :reactions, serializer: ReactionSerializer, root: :reactions
 
   def include_reactions?
@@ -31,5 +31,4 @@ class OutcomeSerializer < ActiveModel::Serializer
   def scope
     Hash(super)
   end
-
 end

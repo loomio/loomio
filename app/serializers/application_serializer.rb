@@ -1,47 +1,55 @@
 class ApplicationSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
+  def exclude_record?(type)
+    !Array((scope || {})[:exclude_records]).include?(type)
+  end
+
   def include_discussion?
-    !Array(scope[:exclude_records]).include?('discussion')
+    exclude_record?('discussion')
   end
 
   def include_group?
-    !Array(scope[:exclude_records]).include?('group')
+    exclude_record?('group')
   end
 
   def include_eventable?
-    !Array(scope[:exclude_records]).include?(object.eventable_type.downcase)
+    exclude_record?(object.eventable_type.downcase)
   end
 
   def include_poll_options?
-    !Array(scope[:exclude_records]).include?('poll_option')
+    exclude_record?('poll_option')
   end
 
   def include_stances?
-    !Array(scope[:exclude_records]).include?('stance')
+    exclude_record?('stance')
   end
 
   def include_stance_choices?
-    !Array(scope[:exclude_records]).include?('stance_choice')
+    exclude_record?('stance_choice')
+  end
+
+  def include_participant?
+    exclude_record?('user')
+  end
+  
+  def include_user?
+    exclude_record?('user')
   end
 
   def include_author?
-    !Array(scope[:exclude_records]).include?('user')
-  end
-
-  def include_author?
-    !Array(scope[:exclude_records]).include?('user')
+    exclude_record?('user')
   end
 
   def include_outcome?
-    !Array(scope[:exclude_records]).include?('outcome')
+    exclude_record?('outcome')
   end
 
   def include_current_outcome?
-    !Array(scope[:exclude_records]).include?('outcome')
+    exclude_record?('outcome')
   end
 
   def include_outcomes?
-    !Array(scope[:exclude_records]).include?('outcome')
+    exclude_record?('outcome')
   end
 end
