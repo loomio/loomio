@@ -2,7 +2,6 @@
 import Session  from '@/shared/services/session'
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
-import { myLastStanceFor, iconFor }  from '@/shared/helpers/poll'
 import PollCommonDirective from '@/components/poll/common/directive'
 import PollService from '@/shared/services/poll_service'
 import { pick } from 'lodash'
@@ -21,12 +20,12 @@ export default
     @watchRecords
       collections: ["stances", "outcomes"]
       query: (records) =>
-        @myLastStance = myLastStanceFor(@poll)?
+        @myStance = @poll.stanceFor(Session.user()) || Records.stances.build()
         @outcome = @poll.outcome()
 
   data: ->
     buttonPressed: false
-    myLastStance: null
+    myStance: null
     outcome: null
 
   methods:
@@ -34,16 +33,15 @@ export default
       EventBus.$emit('content-title-visible', visible) if @isPage
 
   computed:
-    icon: -> iconFor(@poll)
     showResults: ->
-      @buttonPressed || @myLastStance || @poll.isClosed()
+      @buttonPressed || @myStance.castAt || @poll.isClosed()
 
     menuActions: ->
-      @myLastStance
+      @myStance
       pick PollService.actions(@poll, @), ['edit_poll', 'close_poll', 'reopen_poll', 'export_poll', 'delete_poll', 'translate_poll']
 
     dockActions: ->
-      @myLastStance
+      @myStance
       pick PollService.actions(@poll, @), ['announce_poll', 'edit_stance']
 
 </script>
